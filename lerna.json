@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "npmClient": "yarn",
+  "useWorkspaces": true,
+  "command": {
+    "publish": {
+      "registry": "https://registry.npmjs.org"
+    },
+    "version": {
+      "changelogPreset": "./changelog.preset.config.js",
+      "allowBranch": [
+        "master",
+        "release/*"
+      ]
+    }
+  }
+}

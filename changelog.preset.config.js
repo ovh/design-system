@@ -41,7 +41,7 @@ const header = `
   {{~else}}
     {{~@root.repoUrl}}
   {{~/if~}}
-  /compare/diff?targetBranch=refs%2Ftags%2F{{previousTag}}&sourceBranch=refs%2Ftags%2F{{currentTag}})
+  /compare/{{previousTag}}...{{currentTag}})
 {{~else}}
   {{~version}}
 {{~/if}}
@@ -53,6 +53,6 @@ module.exports = Promise.resolve()
     preset.writerOpts.mainTemplate = main;
     preset.writerOpts.headerPartial = header;
     preset.writerOpts.commitUrlFormat = '{{host}}/{{owner}}/{{repository}}/commits/{{hash}}'
-    preset.writerOpts.compareUrlFormat = '{{host}}/{{owner}}/{{repository}}/compare/{{currentTag}}%0D{{previousTag}}'
+    preset.writerOpts.compareUrlFormat = '{{host}}/{{owner}}/{{repository}}/compare/{{currentTag}}...{{previousTag}}'
     return preset
   })

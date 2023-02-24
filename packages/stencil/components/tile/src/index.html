@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html dir='ltr' lang='en'>
+<head>
+  <meta charset='utf-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0' />
+  <title>Dev ods-tile</title>
+
+  <script type="module">
+    !window.ods && (window.ods = {config: {logging: {active:true}}});
+  </script>
+
+  <script type='module' src='/build/ods-tile.esm.js'></script>
+  <script nomodule src='/build/ods-tile.js'></script>
+  <link rel="stylesheet" href="/build/ods-tile.css">
+</head>
+<body>
+
+<p>Size</p>
+<osds-tile size='s'>Small</osds-tile>
+<osds-tile>Default</osds-tile>
+<osds-tile size='l'>Large</osds-tile>
+
+<p>Variant</p>
+<osds-tile variant='ghost'>Ghost</osds-tile>
+<osds-tile variant='primary'>Primary</osds-tile>
+<osds-tile variant='secondary'>Secondary</osds-tile>
+
+<p>Block</p>
+<osds-tile block size='s'>Block small</osds-tile>
+<osds-tile block>Block</osds-tile>
+<osds-tile block size='l'>Block large</osds-tile>
+
+<p>Square</p>
+<osds-tile square size='s'>Square small</osds-tile>
+<osds-tile square>Square</osds-tile>
+<osds-tile square size='l'>Square large</osds-tile>
+
+<p>Disabled</p>
+<osds-tile size='s' disabled>Small</osds-tile>
+<osds-tile disabled>Default</osds-tile>
+<osds-tile size='l' disabled>Large</osds-tile>
+<osds-tile variant='ghost' disabled>Ghost</osds-tile>
+<osds-tile variant='primary' disabled>Primary</osds-tile>
+<osds-tile variant='secondary' disabled>Secondary</osds-tile>
+<osds-tile block size='s' disabled>Block small</osds-tile>
+<osds-tile block disabled>Block</osds-tile>
+<osds-tile block size='l' disabled>Block large</osds-tile>
+<osds-tile square size='s' disabled>Square small</osds-tile>
+<osds-tile square disabled>Square</osds-tile>
+<osds-tile square size='l' disabled>Square large</osds-tile>
+
+<script>
+  document.querySelectorAll('ods-tile').forEach((elem) => {});
+</script>
+</body>
+</html>

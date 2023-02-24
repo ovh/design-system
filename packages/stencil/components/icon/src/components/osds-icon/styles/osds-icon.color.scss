@@ -1,0 +1,18 @@
+@import '~@ovhcloud/ods-theming/color/ods-component-color';
+@import 'osds-icon.mixins';
+
+@mixin osds-icon-theme-color() {
+  @include ods-one-hue-foreach-theme-color('500') using($color) {
+    @include osds-icon-on-selected-host() {
+      background-color: $color;
+    }
+  }
+
+  [contrasted] {
+    @include ods-and-one-hue-foreach-theme-color('500-contrasted') using($color) {
+      @include osds-icon-on-selected-host() {
+        background-color: $color;
+      }
+    }
+  }
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html dir='ltr' lang='en'>
+<head>
+  <meta charset='utf-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0' />
+  <title>Dev ods-chip</title>
+
+  <script type="module">
+    !window.ods && (window.ods = {config: {logging: {active:true}}});
+  </script>
+
+  <script type='module' src='/build/ods-chip.esm.js'></script>
+  <script nomodule src='/build/ods-chip.js'></script>
+  <link rel="stylesheet" href="/build/ods-chip.css">
+</head>
+<body>
+
+<p>Size</p>
+<osds-chip size='s'>Small</osds-chip>
+<osds-chip>Default</osds-chip>
+<osds-chip size='l'>Large</osds-chip>
+
+<p>Variant</p>
+<osds-chip variant='ghost'>Ghost</osds-chip>
+<osds-chip variant='primary'>Primary</osds-chip>
+<osds-chip variant='secondary'>Secondary</osds-chip>
+
+<p>Block</p>
+<osds-chip block size='s'>Block small</osds-chip>
+<osds-chip block>Block</osds-chip>
+<osds-chip block size='l'>Block large</osds-chip>
+
+<p>Square</p>
+<osds-chip square size='s'>Square small</osds-chip>
+<osds-chip square>Square</osds-chip>
+<osds-chip square size='l'>Square large</osds-chip>
+
+<p>Disabled</p>
+<osds-chip size='s' disabled>Small</osds-chip>
+<osds-chip disabled>Default</osds-chip>
+<osds-chip size='l' disabled>Large</osds-chip>
+<osds-chip variant='ghost' disabled>Ghost</osds-chip>
+<osds-chip variant='primary' disabled>Primary</osds-chip>
+<osds-chip variant='secondary' disabled>Secondary</osds-chip>
+<osds-chip block size='s' disabled>Block small</osds-chip>
+<osds-chip block disabled>Block</osds-chip>
+<osds-chip block size='l' disabled>Block large</osds-chip>
+<osds-chip square size='s' disabled>Square small</osds-chip>
+<osds-chip square disabled>Square</osds-chip>
+<osds-chip square size='l' disabled>Square large</osds-chip>
+
+<script>
+  document.querySelectorAll('ods-chip').forEach((elem) => {});
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+# Layout
+
+## Spacing
+export const spacingItem = {
+    display: 'flex',
+    height: '1rem',
+    backgroundColor: 'var(--ods-color-blue-500)',
+};
+
+### Size baseline
+
+These 10 values are the baseline for the complete spacing system. All spacing concepts are inherited from the below
+list.
+
+| name    | size(rem) | size(px)   | preview                                                                     |
+|-- ---   | --------  | ---------- | -------                                                                     |
+| **4XS** | 0.063rem  | 1px        | <span style={Object.assign({}, spacingItem, { width: '0.063rem' })}></span> |
+| **3XS** | 0.125rem  | 2px        | <span style={Object.assign({}, spacingItem, { width: '0.125rem' })}></span> |
+| **2XS** | 0.25rem   | 4px        | <span style={Object.assign({}, spacingItem, { width: '0.25rem' })}></span>  |
+| **XS**  | 0.5rem    | 8px        | <span style={Object.assign({}, spacingItem, { width: '0.5rem' })}></span>   |
+| **SM**  | 0.75rem   | 12px       | <span style={Object.assign({}, spacingItem, { width: '0.75rem' })}></span>  |
+| **MD**  | 1rem      | 16px       | <span style={Object.assign({}, spacingItem, { width: '1rem' })}></span>     |
+| **LG**  | 1.25rem   | 20px       | <span style={Object.assign({}, spacingItem, { width: '1.25rem' })}></span>  |
+| **XL**  | 1.5rem    | 24px       | <span style={Object.assign({}, spacingItem, { width: '1.5rem' })}></span>   |
+| **2XL** | 2rem      | 32px       | <span style={Object.assign({}, spacingItem, { width: '2rem' })}></span>     |
+| **3XL** | 2.5rem    | 40px       | <span style={Object.assign({}, spacingItem, { width: '2.5rem' })}></span>   |
+| **4XL** | 3rem      | 48px       | <span style={Object.assign({}, spacingItem, { width: '3rem' })}></span>     |
+
+All those sizes exists also as negative values (ex: `4XS` size has its negative value `-4XS`).
+
+## Grid
+_Every layout should sit on a grid that brings order and hierarchy to the interface. Define a grid separately for mobile, tablet and desktop devices with columns, gutters, and margins so your interface can adapt to any platform easily._
+
+## Breakpoints
+
+| name             | purpose                                                           | size(rem) | size(px)   |
+|-- -------------- | ----------------------------------------------------------------- | --------  | ---------- |
+| `--ods-mq-sm`    | For small viewports as mobile devices (in portrait)               | 36rem     | 576px      |
+| `--ods-mq-md`    | For smartphones (in landscape) or tablet (in portrait) viewports  | 48rem     | 768px      |
+| `--ods-mq-lg`    | For small desktops or tablets (in landscape) viewports            | 62rem     | 992px      |
+| `--ods-mq-xl`    | For desktops viewports                                            | 75rem     | 1200px     |
+| `--ods-mq-xxl`   | For widescreen desktops

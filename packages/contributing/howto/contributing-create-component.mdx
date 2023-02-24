@@ -1,0 +1,404 @@
+# Create a Component
+
+<!-- TOC -->
+
+* [Create a Component](#create-a-component)
+  * [Prerequisites](#prerequisites)
+  * [Generic definition](#generic-definition)
+    * [@ovhcloud/ods-core](#odscore)
+    * [@ovhcloud/ods-testing](#odstesting)
+    * [@ovhcloud/ods-theming](#odstheming)
+      * [Component Size](#component-size)
+  * [Web Component](#web-component)
+  * [Component stories](#component-stories)
+  * [Component documentation](#component-documentation)
+    * [Design](#design)
+    * [Specifications](#specifications)
+    * [Usage](#usage)
+  * [Testing](#testing)
+  * [Theming](#theming)
+
+<!-- TOC -->
+
+## Prerequisites
+
+To create a new component into OVHcloud Design System code base, be sure that:
+
+* the component is meant to be part of the Design System
+* it has been defined with *Functional specifications*
+
+## Generic definition
+
+Regardless of what framework or implementation the component will have, it needs to be defined generically in several
+packages.
+> ⚠️️ **Please note**<br />
+> Be sure to document interfaces, classes, functions, constants etc. with TSdoc and Typedoc syntax so that the automatic
+> technical specifications can be generated.
+
+### @ovhcloud/ods-core
+
+This library contains all the code base of `ODS` with all the code that
+is not specific to any particular framework like `StencilJs`.
+It contains the definitions of the components (attributes, default values, logical stuff, etc.)
+You will describe the main generic part of the component in a few files:
+
+```
+@ovhcloud/ods-core
+└── src
+    ├── components:
+    │   ├── %name%
+    │   │   ├── ods-%name%-attributes.ts                 // component attributes
+    │   │   ├── ods-%name%-controller.ts                 // common controller logic for component
+    │   │   ├── ods-%name%-default-attributes.ts         // component default values for attributes
+    │   │   ├── ods-%name%-events.ts                     // component events
+    │   │   ├── ods-%name%-methods.ts                    // component public methods
+    │   │   ├── ods-%name%.ts                            // component interface that sets events, methods, attributes and controller logic
+    │   │   │  ...                                            // create as many type definition files as needed
+    │   │   └── public-api.ts                                 // import above files here
+    └── public-api.ts                                         // import %name%/public-api.js here
+```
+
+### @ovhcloud/ods-testing
+
+You will describe the component testing datasets:
+
+```
+@ovhcloud/ods-testing
+└── src
+    ├── components
+    │   ├── %name%
+    │   │   ├── ods-button-base-attributes.ts                // component default attributes values for testing purposes
+    │   │   └── ...                                          // any files you need to make more datasets
+    │   │   └── public-api.ts                                // import above files here
+    └── public-api.ts                                        // import %name%/public-api.js here
+```
+
+### @ovhcloud/ods-theming
+
+You will describe the component styling configuration in the directory `packages/libraries/theming`.
+Your component can use the defined theming colors (`primary`, `error`, `accent`, etc.) and typography,
+but you wil have to declare different values concerning the size of your component in these files:
+
+```
+@ovhcloud/ods-theming
+└── size
+    ├── ods-size-definitions.scss                         // define component size
+    └── ods-theming-size.scss                             // create component size config
+    └── ods-theming-size-%name%.scss                 // component size
+```
+
+Then, fill it inside each theme (at least the `blue-jeans` embedded theme, in `packages/themes/blue-jeans`):
+
+```
+@ovhcloud/ods-theme-blue-jeans
+└── theme
+    └── theme.scss                 // return the size config of the component
+```
+
+#### Component Size
+
+Start first with a declaration for your component in the file `ods-theming-size-%name%.scss`:
+
+```
+/// @access private
+@function ods-get-%name%-size-properties($size-name) {
+  @return (
+    // declare custom properties to fill in each theme
+    prop1: var(--ods-size-%name%-#{$size-name}-prop1),
+    prop2: var(--ods-size-%name%-#{$size-name}-prop2)
+  )
+}
+
+/// @access private
+@function ods-get-%name%-component-size-definition() {
+  @return (
+    // declare different sizes here:
+    sm: ods-get-%name%-size-properties(sm),
+    md: ods-get-%name%-size-properties(md)
+  );
+}
+```
+
+Then, declare your component inside the following `mixin` (`ods-theming-size.scss`):
+
+```
+@function ods-create-size-config(
+  // ...
+  $my-component
+) {
+  @return (
+    // ...
+    my-component: ods-create-component-size-config(my-component, $my-component)
+  );
+}
+```
+
+Finally, add an entry inside `ods-size-definitions.scss`:
+
+```
+
+$ods-size-definitions: (
+  // ...
+  my-component: ods-get-%name%-component-size-definition(),
+);
+```
+
+And fill up the theme `blue-jeans` in `packages/themes/blue-jeans/theme/theme.scss`:
+
+```
+@function ods-blue-jeans-theme-config() {
+  @return (
+    color-config: ods-create-color-config(/* ... */),
+    typography-config: ods-create-typography-config(/* ... */),
+    size-config: ods-create-size-config(
+      /* ... */
+      $my-component: (
+        md:(
+          prop1: 3rem, /// you can set a css value to be reuse in your component
+          prop2: var(--ods-size-06) /// you can use a value from another variable of ODS theming
+        )
+      )
+    )
+  );
+}
+```
+
+> You will be able to use the value through the variable `var(--ods-size-my-component-md-prop1)` in your component sass
+
+## Web Component
+
+> ⚠️️ **Please note**<br />
+> Our Web Components are made with [StencilJS](https://stenciljs.com/) framework
+
+In order to create the complete Web Component for Stencil, React and Vue, with styling, testing and (manual) docs,
+create the following structures.
+
+In `packages/stencil/components/my-component`:
+
+```
+@ovhcloud/ods-stencil-%name%
+├── docs
+│   └── osds-%name%
+│       ├── events
+│       │   ├── usage.*.mdx                                 // extra documentation for events
+│       ├── methods
+│       │   ├── usage.*.mdx                                 // extra documentation for public methods
+│       ├── properties
+│       │   ├── usage.*.mdx                                 // extra documentation for attributes/properties
+│       └── usage.mdx                                       // extra documentation entrypoint
+│       └── usage.*.mdx                                     // another special usage
+├── react
+│   ├── .gitignore                                          // ignore declaration
+│   ├── .npmignore                                          // npm declaration
+│   ├── CHANGELOG.md                                        // changelog to init as empty
+│   ├── package.json                                        // Main package
+│   ├── tsconfig.cjs.json                                   // Typescript configuration for commonJS
+│   └── tsconfig.json                                       // Typescript configuration
+├── src
+│   ├── components
+│   │   └── osds-%name%
+│   │       ├── osds-%name%.e2e.screenshot.ts               // end-to-End visual regression tests
+│   │       ├── osds-%name%.e2e.ts                          // end-to-end tests
+│   │       ├── osds-%name%.scss                            // Sass component styling
+│   │       ├── osds-%name%.spec.ts                         // unit tests
+│   │       ├── osds-%name%.tsx                             // main component template
+│   │       ├── public-api.ts                               // import above files here
+│   │       └── style
+│   │           ├── osds-%name%.color.scss                  // color-specific Sass component styling
+│   │           ├── osds-%name%.mixins.scss                 // mixins for Sass component styling
+│   │           ├── osds-%name%.size.scss                   // size-specific Sass component styling
+│   │           └── osds-%name%.typography.scss             // typography-specific Sass component styling
+│   ├── global.dev.ts                                       // Global script file to only include in dev mode with the www dev server
+│   ├── global.prod.ts                                      // Global script file to only include in prod mode for build prod
+│   ├── global.ts                                           // Main global file to include in this package in any cases (dev and prod mode)
+│   ├── index.html                                          // Stencil template to display while launching `yarn start`
+│   └── index.ts                                            // Stencil instanciation for template
+├── vue
+│   ├── .gitignore                                          // ignore declaration
+│   ├── .npmignore                                          // npm declaration
+│   ├── CHANGELOG.md                                        // changelog to init as empty
+│   ├── package.json                                        // Main package
+│   ├── tsconfig.cjs.json                                   // Typescript configuration for commonJS
+│   └── tsconfig.json                                       // Typescript configuration
+├── .gitignore                                              // ignore declaration
+├── .npmignore                                              // npm declaration
+├── CHANGELOG.md                                            // changelog to init as empty
+├── jest.config.ts                                          // Jest configuration for tests (inherited)
+├── package.json                                            // Main package
+├── stencil.config.ts                                       // Stencil configuration (inherited)
+├── tsconfig.dev.json                                       // Typescript configuration for dev (inherited)
+├── tsconfig.json                                           // Typescript configuration (inherited)
+├── tsconfig.prod.json                                      // Typescript configuration for production (inherited)
+└── typedoc.json                                            // Typedoc configuration (inherited)
+```
+
+> ℹ️ **Tip**<br />
+> You might consider either configure the same as it can be with sibling components, or copy/pasting a previously
+> finished component while being cautious about replacing code in it
+
+## Component stories
+
+A [Story](https://storybook.js.org/docs/react/get-started/whats-a-story) captures the rendered state of a UI component.
+You'll have to write stories for your new component that describe all states a component can support.
+
+Keep structure as following in `packages/tools/storybook/stories/components/my-component`:
+
+```
+@ovhcloud/ods-storybook
+└── stories
+│   └── components
+│       └── %name%
+│           ├── %name%.design.stories.mdx
+│           ├── %name%.specifications.stories.mdx
+│           ├── %name%.web-component.stories.page.mdx
+│           ├── %name%.web-component.stories.ts
+```
+
+Design and specifications stories import documentation you'll write in separate files.
+We'll see it in another [section](#component-documentation).
+
+In `%name%.web-component.stories.page.mdx`, add following imports:
+
+```
+import { Canvas, Description, Meta, DocsContainer } from '@storybook/addon-docs';
+
+import Usage from '@ovhcloud/ods-stencil-%name%/docs/osds-%name%/usage.mdx';
+import APITable from '@ovhcloud/ods-stencil-%name%/dist/docs/components/osds-%name%/readme.md';
+```
+
+Then, you can add the `meta title`, your component title and the table of contents.
+
+In `%name%.web-component.stories.ts`, import component and storybook related elements and defineCustomElements as
+following:
+
+```
+import { XDConfig } from 'storybook-addon-xd-designs/lib/config';
+import changelog from '@ovhcloud/ods-stencil-%name%/CHANGELOG.md';
+import { config } from 'storybook-addon-xd-designs';
+import { defineCustomElements } from '@ovhcloud/ods-stencil-%name%/loader';
+import { html } from 'lit-html';
+import { iframe } from '../../../.storybook/iframe';
+import page from './%name%.web-component.stories.page.mdx';
+
+defineCustomElements();
+```
+
+With Storybook, you can compose arguments dynamically. `args` describes the arguments to your new component.
+We accustomed to set default story parameters as following:
+
+```
+const storyParams = {
+  disabled: {
+    category: 'Misc',
+    defaultValue: false
+  }
+};
+```
+
+> ⚠️️ **Please note**<br />
+> This is an example for disabled property, please replace/add code according to your need
+
+The `export default` defines metadata about component.
+Title will show up in the navigation UI story of Storybook.
+Please add the new component related XD url to artboardUrl.
+
+```
+export default {
+  title: 'UI Components/%Component% [molecule]/Web Component',
+  parameters: {
+    notes: {
+      API: iframe('/stencil-components-%name%/modules/index.html'),
+      changelog,
+    },
+    docs: { page },
+    design: config({
+      artboardUrl: 'https://xd.adobe.com/view/%id%',
+    } as XDConfig),
+  },
+  argTypes: extractArgTypes(storyParams)
+};
+```
+
+Then, you can create a template of how args map to rendering:
+
+```
+const TemplateDefault = (args: any) => html`
+  <osds-%name% ...=${getTagAttributes(args)}>
+  </osds-%name%>
+```
+
+And for each story you can reuse that template (or create a new template for each variant you need):
+
+```
+export const Default = TemplateDefault.bind({});
+Default.args = {
+  ...extractStoryParams(storyParams)
+};
+```
+
+## Component documentation
+
+### Design
+
+You'll describe the overview of the new component here. It will be displayed in Storybook under `Overview` tab.
+
+In `packages/design`:
+
+```
+@ovhcloud/ods-design
+├── assets
+│   └── design-images
+│       └── %name%                                             // store images of preview or zoning in this file
+└── components
+    └── %name%
+        ├── design-%name%.mdx                                  // main file to describe the component overview
+```
+
+### Specifications
+
+You will describe the specifications of the new component here.
+It will be displayed in Storybook under `Specifications` tab.
+
+Structure from `packages/specifications` directory:
+
+```
+@ovhcloud/ods-specifications
+└── components
+    └── %name%
+        ├── specifications-%name%.mdx                                  // main file to describe the component specifications
+        ├── specifications-%name%-contents.mdx *optional*              // all component contents description
+        ├── specifications-%name%-events.mdx *optional*                // all component events description
+        ├── specifications-%name%-methods.mdx *optional*               // all component public methods description
+        ├── specifications-%name%-properties.mdx *optional*            // all component properties description
+        └── specifications-%name%-tests.mdx *optional*                 // all component tests description
+```
+
+In `specifications-%name%.mdx`, you have to import the generated doc and Storybook addon as following:
+
+```
+import Specs from '@ovhcloud/ods-core/src/components/%name%/docs/spec.md';
+import {Description} from '@storybook/addon-docs';
+
+<Description>{Specs}</Description>
+```
+
+> ⚠️️ **Please note**<br />
+> It is important that you comment all attributes, events,
+> component and controller related methods in `packages/libraries/core/src/components/%name%`
+> in order to generate the documentation for Specifications.
+
+### Usage
+
+You will describe the usage of the component here. It will be displayed in Storybook under `Docs` tab.
+
+The structure has been described [here](#web-component).
+
+## Testing
+
+Unit, end-to-end and screenshots tests are required for each component:
+[Testing guidelines](?path=/story/contributing-how-to-s-write-your-own-tests--page)
+
+## Theming
+
+Components use the theming system:
+[Theming guidelines](?path=/story/contributing-how-to-s-use-theming-for-your-component--page)

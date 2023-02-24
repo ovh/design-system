@@ -1,0 +1,21 @@
+// general mixins and functions for the component
+
+@mixin osds-code-on-selected-host() {
+  :host(&) {
+    @include osds-code-on-main-element() {
+      @content;
+    }
+  }
+}
+
+@mixin osds-code-on-container-element() {
+  .code_container {
+    @content;
+  }
+}
+
+@mixin osds-code-on-main-element() {
+  .code__wrapper {
+    @content;
+  }
+}

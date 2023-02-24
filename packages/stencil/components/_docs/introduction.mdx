@@ -1,0 +1,24 @@
+# Stencil Design System Components
+
+> _NOTE: The Web Components are distributed as ES2017 JavaScript_
+> _Modules, and use the Custom Elements API. They are compatible with all modern_
+> _browsers including Chrome, Firefox, Safari, Edge, and IE11, but an additional_
+> _tooling step is required to resolve _bare module specifiers_, as well as_
+> _transpilation and polyfills for IE11._
+
+Here below, you can find numerous items referring as components used in the design system. They are categorized based on 
+the principles of [Atomic Design](https://bradfrost.com/blog/post/extending-atomic-design/), presented by 
+[Brad Frost](https://bradfrost.com/).
+You can also find attached to each component the related category they are :
+
+* 🅰️ : **Atom** - The foundational building block that comprise all our user interfaces. These atoms include basic HTML 
+elements like form labels, inputs, buttons, and others that can’t be broken down any further without ceasing to be 
+functional.
+* ⚛️ : **Molecule** - Simple group of UI elements functioning together as a unit. For example, a form label, search input, 
+and button can join together to create a search form molecule.
+* 🅾️ : **Organism** - Complex UI component composed of groups of molecules and/or atoms and/or other organisms. 
+Multiple organisms form distinct sections of an interface.
+* 🔠 : **Template** - Page-level objects that place components into a layout and articulate the design’s underlying content 
+structure. You might see a template as a "page wireframe", i.e. a page with components, but without content.
+* 📄 : **Page**/**Layout** - Specific instance of templates that show what a UI looks like with real representative content in 
+place.

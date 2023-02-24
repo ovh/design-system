@@ -1,0 +1,116 @@
+import DesignCartColors from './design-cart-colors.mdx';
+import DesignCartDependencies from './design-cart-dependencies.mdx';
+import DesignCartRounded from './design-cart-rounded.mdx';
+import DesignCartSizes from './design-cart-sizes.mdx';
+import DesignCartItemOptionZoningPreview from './design-cart-item-option-zoning-preview.mdx';
+import DesignCartItemZoningPreview from './design-cart-item-zoning-preview.mdx';
+import DesignCartSectionZoningPreview from './design-cart-section-zoning-preview.mdx';
+import DesignCartZoningPreview from './design-cart-zoning-preview.mdx';
+import DesignCartFooterZoningPreview from './design-cart-footer-zoning-preview.mdx';
+import DesignCartResponsivePreview from './design-cart-responsive-preview.mdx';
+
+## Preview
+![Preview of Cart](design-images/cart/all-cart-preview.png)
+
+<DesignCartDependencies />
+
+## Description
+The cart displays the contents of the order.
+It can be used to enable user to make purchase of a product or service.
+It maintains the user's current shopping cart that is used during the purchase process.
+
+## Zoning
+### The cart
+
+<DesignCartZoningPreview />
+
+The cart is made of :
+- header: content for header like title
+- content: main content made of sections, item and options
+- footer: display the total price and some custom content (like button)
+
+### The cart section
+
+<DesignCartSectionZoningPreview />
+
+The cart section is made of :
+- content: main content made of items and options
+
+There are as many sections as necessary.
+
+### The cart item
+
+<DesignCartItemZoningPreview />
+
+The name of the added product and its price are displayed inline as a cart item inside the cart section.
+
+The cart item is made of :
+- subhead: reference or information about the item
+- title: name of the item
+- price: price of the item (VAT included or not)
+- extra: content to display the duration period text with the VAT information
+
+### The cart item option
+<DesignCartItemOptionZoningPreview />
+
+An option for one item is displayed below the cart item as a cart item option.
+
+The cart item option is made of :
+- subhead: reference or information about the option
+- title: name of the option
+- price: price of the item (VAT included or not)
+- extra: content to display the duration period text with the VAT information
+
+### The cart footer
+<DesignCartFooterZoningPreview />
+Below the cart section, the cart footer displays a cart total and optional cart footer item.
+
+### The cart footer item
+Cart footer item works as cart item, it is made of :
+- subhead: reference or information about the footer item
+- title: name of the footer item
+- price: price of the footer item (VAT included or not)
+- extra: extra information to display
+
+### The cart total
+The total amount of the order is displayed inline.
+A button can be displayed at the bottom of the cart in order to go to the next step of the order.
+
+The cart total is made of :
+- total: wording for the total amount
+- info: wording about the number of products
+- price: total price of the cart
+- extra: additional content like a button
+
+## Variants
+_no variant_
+
+## Colors
+<DesignCartColors />
+
+## Sizes
+<DesignCartSizes />
+
+## States
+### Read-only
+
+the element's value can not be updated by the user.
+
+### Empty
+
+this empty state can be used when user has not added any product or service to the cart. there is no interaction enabled in the cart (no click).
+
+## Behaviours
+_N/A_
+
+## Flex
+The cart can be adapted to the parent's container with `flex`.
+
+## Rounded
+<DesignCartRounded />
+
+## Collapsed
+<DesignCartResponsivePreview />
+The cart is expanded by default on desktop, but it is collapsed on small devices. A handle and the cart total are displayed when collapsed.
+The user can swipe the cart on mobile to expand it and close it.
+When the cart is expanded, the user can scroll on the contents.

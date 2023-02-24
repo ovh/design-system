@@ -1,0 +1,22 @@
+@import 'styles/osds-select-group.color';
+@import 'styles/osds-select-group.size';
+@import 'styles/osds-select-group.typography';
+@import '~@ovhcloud/ods-theming/color/ods-theming-color';
+@import '~@ovhcloud/ods-theming/ods-theme';
+
+// CSS for the component but not for theming
+
+:host {
+  margin: 0;
+  position: relative;
+    align-items: center;
+    cursor: default;
+    display: flex;
+}
+
+// apply the theme template for the component
+@include ods-theme-component() {
+  @include osds-select-group-theme-color();
+  @include osds-select-group-theme-size();
+  @include osds-select-group-theme-typography();
+}

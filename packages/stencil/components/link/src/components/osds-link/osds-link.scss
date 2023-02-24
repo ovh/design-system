@@ -1,0 +1,74 @@
+@import 'styles/osds-link.mixins';
+@import 'styles/osds-link.color';
+@import 'styles/osds-link.typography';
+@import '~@ovhcloud/ods-theming/color/ods-theming-color';
+@import '~@ovhcloud/ods-theming/ods-theme';
+
+// CSS for the component but not for theming
+
+:host {
+  @include osds-link-on-link-container() {
+    cursor: pointer;
+    text-decoration: none;
+    outline: none;
+    user-select: auto;
+  }
+
+  @include osds-link-on-text-content() {
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 0 var(--ods-size-02);
+    transition: background-size .2s ease-in,
+                color ease-in-out .1s;
+  }
+}
+
+::slotted([slot="start"]),
+::slotted([slot="end"]) {
+  vertical-align: top;
+}
+
+:host(:not([href])),
+:host([href=""]) {
+  @include osds-link-on-link-container() {
+    appearance: none;
+    border: none;
+    padding: 0;
+    text-align: inherit;
+  }
+}
+
+:not([disabled]) {
+  :host(&:hover),
+  :host(&:focus) {
+    @include osds-link-on-text-content() {
+      background-size: 100% var(--ods-size-02);
+      transition: background-size .2s ease-out;
+    }
+  }
+
+  :host(&:focus) {
+    outline-style: dotted;
+    outline-width: var(--ods-size-inset-02);
+    outline-offset: var(--ods-size-inset-03);
+
+    @include osds-link-on-text-content() {
+      outline: none;
+    }
+  }
+}
+
+:host([disabled]) {
+  cursor: not-allowed;
+  opacity: .5;
+
+  @include osds-link-on-link-container() {
+    pointer-events: none;
+  }
+}
+
+// apply the theme template for the component
+@include ods-theme-component() {
+  @include osds-link-theme-color();
+  @include osds-link-theme-typography();
+}

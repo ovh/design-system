@@ -1,0 +1,25 @@
+@import '~@ovhcloud/ods-theming/size/ods-component-size';
+@import './osds-accordion.mixins';
+
+@mixin osds-accordion-theme-size() {
+  $size-definitions: ods-get-size-definitions();
+  $component-size-definition: ods-get-component-size-definition($size-definitions, accordion);
+  $size-properties: ods-get-size-properties($component-size-definition, md);
+
+  [opened] {
+    @include osds-accordion-on-selected-host() {
+      @include osds-accordion-on-main() {
+        @include osds-accordion-on-summary() {
+          padding-bottom: ods-get-size-property($size-properties, padding);
+        }
+      }
+    }
+  }
+
+  :host {
+    @include osds-accordion-on-main() {
+      border: ods-get-size-property($size-properties, border-width) solid;
+      padding: ods-get-size-property($size-properties, padding);
+    }
+  }
+}

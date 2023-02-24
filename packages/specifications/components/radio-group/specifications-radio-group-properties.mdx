@@ -1,0 +1,11 @@
+| Name         | Type      | default | Description                 |
+|--------------|-----------|---------|-----------------------------|
+| `[Label]`     | `string`  | `''`    | group label                  |
+| `[LabelId]`     | `string`  | `''`    | The id to an external description                  |
+| `[beforeSave]`     | `({ value }: { value?: string }) => Promise<void>`  | `-`    | before save input allow to set a function that returns a promise. It is called before each time a save is performed                  |
+| `[save]`     | `({ value }: { value?: string }) => Promise<void>`  | `-`    | save input allow to set a function that returns a promise. It is called before each time an update is performed and allowing to manage pessimistic update strategy                  |
+| `[afterSave]`     | `({ value }: { value?: string }) => Promise<void>`  | `-`    | after save input allow to set a function that returns a promise. It is called after each time a save is performed                  |
+| `[disabled]` | `boolean` | `false` | If group is disabled or not |
+| `[name]`     | `string`  | `-`    | group name                  |
+| `[value]`    | `any`     | `-`    | group value                 |
+| `[required]`     | `boolean` | `false` | Check if a selection is required or not |

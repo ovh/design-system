@@ -1,0 +1,23 @@
+@import '~@ovhcloud/ods-theming/typography/ods-theming-typography';
+@import '~@ovhcloud/ods-theming/typography/ods-component-typography';
+@import './osds-text.mixins';
+
+@mixin osds-text-theme-typography() {
+  /** typography properties */
+
+  @include ods-foreach-theme-typography-level() using ($level-name) {
+    @include ods-and-foreach-theme-typography-size($level-name) using($typos) {
+
+        @include osds-text-on-selected-host() {
+          font: {
+            size: ods-get-typography-property($typos, font-size);
+            weight: ods-get-typography-property($typos, font-weight);
+            family: ods-get-typography-property($typos, font-family);
+            style: ods-get-typography-property($typos, font-style);
+          }
+          letter-spacing: ods-get-typography-property($typos, letter-spacing);
+          line-height: ods-get-typography-property($typos, line-height);
+        }
+    }
+  }
+}

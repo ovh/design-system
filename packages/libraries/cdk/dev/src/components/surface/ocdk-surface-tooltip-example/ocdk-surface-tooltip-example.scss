@@ -1,0 +1,15 @@
+:host {
+  /* overlay important properties */
+  display: inline-block; /* best practice for web component */
+  position: relative; /* must be here to make the positioning working well */
+  text-align: initial; /* must be here to make the positioning working well for RTL alignment */
+  padding: 0; /* must be here to make the computing works. If you need padding, apply it on trigger or surface */
+  /* end overlay important properties */
+}
+
+ocdk-surface {
+  background: rgb(134, 134, 210);
+  box-shadow: rgb(0 0 0 / 20%) 0 5px 5px -3px, rgb(0 0 0 / 14%) 0 8px 10px 1px, rgb(0 0 0 / 12%) 0 3px 14px 2px;
+  border-radius: 10px;
+  padding: 10px;
+}

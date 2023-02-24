@@ -1,0 +1,38 @@
+{
+  "name": "@ovhcloud/ods-cdk",
+  "version": "10.2.0",
+  "description": "OvhCloud Component Development Kit",
+  "author": "OVH SAS",
+  "license": "Apache-2.0",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "scripts": {
+    "ignore:rm": "git clean -Xdf",
+    "start": "stencil build --docs --dev --watch --serve",
+    "build:esm": "tsc -p tsconfig.esm.json -out dist/esm/index.ts",
+    "build:cjs": "tsc -p tsconfig.cjs.json",
+    "build:prod:esm": "tsc -p tsconfig.esm.prod.json",
+    "build:prod:amd": "tsc -p tsconfig.amd.prod.json",
+    "build:prod:cjs": "tsc -p tsconfig.cjs.prod.json",
+    "build": "npm run build:esm --if-present && npm run build:cjs --if-present && npm run build:css --if-present",
+    "build:prod": "npm run build:prod:esm --if-present && npm run build:prod:cjs --if-present && npm run build:css --if-present && node ./scripts/generate-ocdk-version.js",
+    "watch": "tsc -w -p tsconfig.esm.json",
+    "doc:api": "typedoc --plugin none src/*",
+    "build:css": "yarn run build:css:sass && yarn run build:css:prefix",
+    "build:css:sass": "node-sass --importer ../../../node_modules/node-sass-package-importer/dist/cli.js src/ocdk.scss -o dist",
+    "build:css:prefix": "postcss dist/**/*.css --dir dist --use autoprefixer --parser postcss-scss"
+  },
+  "devDependencies": {
+    "@ovhcloud/ods-library-dev": "^10.2.0",
+    "@ovhcloud/ods-testing": "^10.2.0",
+    "@ovhcloud/ods-theming": "^10.2.0",
+    "autoprefixer": "~10.3.7",
+    "node-sass": "^6.0.1",
+    "postcss": "^8.3.9",
+    "postcss-cli": "^9.0.1",
+    "postcss-scss": "^4.0.1"
+  },
+  "publishConfig": {
+    "registry": ""
+  }
+}

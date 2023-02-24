@@ -1,0 +1,38 @@
+@import 'styles/osds-divider.color.scss';
+@import 'styles/osds-divider.mixins.scss';
+@import 'styles/osds-divider.size.scss';
+
+@import '~@ovhcloud/ods-theming/color/ods-theming-color';
+@import '~@ovhcloud/ods-theming/ods-theme';
+
+:host {
+  /* Bug on Safari: issue on the height when no content inside the html element.
+   * The height is half the wanted with a margin.
+   * FIX: Divider height set to fit-content on Safari browser only
+   * In Safari web browsers, media uses minimum resolution and WebKit appearance properties in recent versions
+   * http://browserhacks.com/#hack-8a0d11a6b2e3d172711eed35cb7237b9
+   * Chrome ≥ 28  Safari ≥ 9  Internet Explorer/Edge >= 12  Opera ≥ 14
+   * see also : https://www.browserstack.com/guide/create-browser-specific-css
+   * https://gist.github.com/jbutko/6718701?permalink_comment_id=2630350#gistcomment-2630350
+  */
+  @media not all and (min-resolution:.001dpcm) {
+    @supports (-webkit-appearance:none) {
+      height: fit-content;
+    }
+  }
+  padding: 0;
+  border: none;
+  display: flex;
+  width: 100%;
+  hr {
+    border: none;
+    margin: 0;
+    width: 100%;
+  }
+}
+
+// apply the theme template for the component
+@include ods-theme-component() {
+  @include osds-divider-theme-color();
+  @include osds-divider-theme-size();
+}

@@ -1,0 +1,18 @@
+```html
+<osds-select id="myOdsSelect" >
+  <osds-select-option value="1">Value 1</osds-select-option>
+  <osds-select-option value="2">Value 2</osds-select-option>
+  <osds-select-option value="3">Value 3</osds-select-option>
+</osds-select>
+```
+
+```typescript
+// vanilla typescript
+const odsSelect = document.querySelector('osds-select#myOdsSelect');
+
+async function componentOnLoad() {
+    await customElements.whenDefined('osds-select');
+    odsSelect.reset()
+  }
+  componentOnLoad();
+```

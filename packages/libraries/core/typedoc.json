@@ -1,0 +1,11 @@
+{
+  "disableSources": true,
+  "entryPoints": [
+    "src/index.ts"
+  ],
+  "excludeInternal": true,
+  "excludePrivate": true,
+  "excludeProtected": true,
+  "hideGenerator": true,
+  "out": "typedoc/docs"
+}

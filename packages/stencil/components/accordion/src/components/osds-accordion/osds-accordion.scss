@@ -1,0 +1,57 @@
+@import 'styles/osds-accordion.mixins';
+@import 'styles/osds-accordion.color';
+@import 'styles/osds-accordion.size';
+@import 'styles/osds-accordion.typography';
+@import '~@ovhcloud/ods-theming/color/ods-theming-color';
+@import '~@ovhcloud/ods-theming/ods-theme';
+
+:host {
+  @include osds-accordion-on-summary() {
+    cursor: pointer;
+    list-style: none;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  @include osds-accordion-on-summary-marker() {
+    display: none;
+  }
+}
+
+@keyframes toggle {
+  0% {
+    opacity: 0;
+    margin-top: -1.25rem;
+  }
+  100% {
+    opacity: 1;
+    margin-top: 0;
+  }
+}
+
+details[open] > slot {
+  animation: var(--ods-accordion-animation-opening, none);
+}
+
+details > slot {
+  display: block;
+}
+
+:host([disabled]) {
+  * {
+    opacity: 0.5;
+  }
+
+  @include osds-accordion-on-summary() {
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+@include ods-theme-component() {
+  @include osds-accordion-theme-color();
+  @include osds-accordion-theme-size();
+  @include osds-accordion-theme-typography();
+}

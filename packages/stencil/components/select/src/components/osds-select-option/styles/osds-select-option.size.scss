@@ -1,0 +1,14 @@
+@import '~@ovhcloud/ods-theming/size/ods-component-size';
+@import './osds-select-option.mixins';
+
+@mixin osds-select-option-theme-size() {
+  /** sizes */
+
+  @include ods-foreach-theme-size(select) using ($sizes) {
+    @include osds-select-option-on-main-element() {
+      height: ods-get-size-property($sizes, height);
+      border-width: ods-get-size-property($sizes, border-width);
+      padding: ods-get-size-property($sizes, padding);
+    }
+  }
+}

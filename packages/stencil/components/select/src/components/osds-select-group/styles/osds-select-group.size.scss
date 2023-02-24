@@ -1,0 +1,13 @@
+@import '~@ovhcloud/ods-theming/size/ods-component-size';
+@import './osds-select-group.mixins';
+
+@mixin osds-select-group-theme-size() {
+
+  @include ods-foreach-theme-size(select) using ($sizes) {
+    @include osds-select-group-on-selected-host() {
+      height: ods-get-size-property($sizes, height);
+      border-width: ods-get-size-property($sizes, border-width);
+      padding: ods-get-size-property($sizes, padding);
+    }
+  }
+}

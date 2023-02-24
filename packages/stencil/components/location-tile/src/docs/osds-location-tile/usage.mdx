@@ -1,0 +1,40 @@
+import CheckedProperty from '@ovhcloud/ods-stencil-location-tile/src/docs/osds-location-tile/properties/usage.checked.mdx';
+import DisabledProperty from '@ovhcloud/ods-stencil-location-tile/src/docs/osds-location-tile/properties/usage.disabled.mdx';
+import InteractiveProperty from '@ovhcloud/ods-stencil-location-tile/src/docs/osds-location-tile/properties/usage.interactive.mdx';
+import SizeProperty from '@ovhcloud/ods-stencil-location-tile/src/docs/osds-location-tile/properties/usage.size.mdx';
+import VariantProperty from '@ovhcloud/ods-stencil-location-tile/src/docs/osds-location-tile/properties/usage.variant.mdx';
+import GenericStyle from '@ovhcloud/ods-core/docs/generic-style.mdx';
+
+<GenericStyle />
+
+## Usage
+
+### Default with iso
+<osds-location-tile iso="fr">
+  <span slot="country">Country</span>
+  <span slot="city">City</span>
+  <span slot="info">Info</span>
+</osds-location-tile>
+
+```html
+<osds-location-tile iso="fr">
+  <span slot="country">Country</span>
+  <span slot="city">City</span>
+  <span slot="info">Info</span>
+</osds-location-tile>
+```
+
+### Variant
+<VariantProperty />
+
+### Size
+<SizeProperty />
+
+### Interactive
+<InteractiveProperty />
+
+### Checked
+<CheckedProperty />
+
+### Disabled
+<DisabledProperty />

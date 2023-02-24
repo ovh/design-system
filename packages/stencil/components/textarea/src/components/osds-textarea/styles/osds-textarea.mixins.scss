@@ -1,0 +1,19 @@
+// general mixins and functions for the component
+
+@mixin osds-textarea-on-selected-host() {
+  :host(&) {
+    @content;
+  }
+}
+
+@mixin osds-textarea-on-main-element() {
+  textarea {
+    @content;
+  }
+}
+
+@mixin osds-textarea-on-focus() {
+  :host(&[hasFocus]){
+    @content;
+  }
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html dir='ltr' lang='en'>
+<head>
+  <meta charset='utf-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0' />
+  <title>Dev osds-link</title>
+
+  <script type="module">
+    !window.ods && (window.ods = {config: {logging: {active:true}}});
+  </script>
+
+  <script type='module' src='/build/osds-link.esm.js'></script>
+  <script nomodule src='/build/osds-link.js'></script>
+  <link rel="stylesheet" href="/build/osds-link.css">
+</head>
+<body>
+
+<p>Color</p>
+<osds-link color="default">default</osds-link>
+<osds-link color="primary">primary</osds-link>
+<osds-link color="success">success</osds-link>
+
+<p>Disabled</p>
+<osds-link disabled>Default</osds-link>
+
+<p>Contrasted</p>
+<osds-link contrasted>Default</osds-link>
+
+<script>
+
+  let logger;
+  document.addEventListener('odsInitialized', ({detail}) => {
+    const instance = detail.instance;
+    instance.logging(true);
+    logger = new instance.logger('www');
+    logger.log('odsInitialized received');
+  })
+
+  document.querySelectorAll('osds-link').forEach((elem) => {
+    elem.addEventListener('osdsLinkClick', function(event) {
+      logger && logger.log('(html) addEventListener odsLinkClick: %o', event);
+    });
+  });
+</script>
+</body>
+</html>

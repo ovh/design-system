@@ -1,0 +1,11 @@
+{
+  "default": "design-images/item-quantity-selector/item-quantity-selector-colors/item-quantity-selector-color-default.png",
+  "primary": "design-images/item-quantity-selector/item-quantity-selector-colors/item-quantity-selector-color-primary.png",
+  "text": "design-images/item-quantity-selector/item-quantity-selector-colors/item-quantity-selector-color-text.png",
+  "accent": "design-images/item-quantity-selector/item-quantity-selector-colors/item-quantity-selector-color-accent.png",
+  "error": "design-images/item-quantity-selector/item-quantity-selector-colors/item-quantity-selector-color-error.png",
+  "warning": "design-images/item-quantity-selector/item-quantity-selector-colors/item-quantity-selector-color-warning.png",
+  "success": "design-images/item-quantity-selector/item-quantity-selector-colors/item-quantity-selector-color-success.png",
+  "info": "design-images/item-quantity-selector/item-quantity-selector-colors/item-quantity-selector-color-info.png",
+  "promotion": "design-images/item-quantity-selector/item-quantity-selector-colors/item-quantity-selector-color-promotion.png"
+}

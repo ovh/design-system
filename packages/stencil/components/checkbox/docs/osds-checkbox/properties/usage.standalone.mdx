@@ -1,0 +1,37 @@
+<style>
+  {`
+    .check-button:not([checked]) {
+      background: #8f562d;
+    }
+    .check-button[checked] {
+      background: green;
+    }
+    .check-button[has-focus] {
+      border: 2px solid black;
+    }
+  `}
+</style>
+
+<osds-checkbox value="my-value" name="my-input-name">
+  <div class="check-button">your DOM element to be decorated as checkbox</div>
+</osds-checkbox>
+
+```html
+
+<style>
+  .check-button:not([checked]) {
+    background: #8f562d;
+  }
+
+  .check-button[checked] {
+    background: green;
+  }
+
+  .check-button[has-focus] {
+    border: 2px solid black;
+  }
+</style>
+<osds-checkbox value="my-value" name="my-input-name">
+  <div class="check-button">your DOM element to be decorated as checkbox</div>
+</osds-checkbox>
+```

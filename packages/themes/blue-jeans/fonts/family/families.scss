@@ -1,0 +1,35 @@
+/*
+ * TO BE REMOVED PRIOR TO USE WITH A DISTANT CDN
+ *
+ * FONT FAMILIES
+ * This file contains all specific font families, mostly our icons (ODS Icons) and the brand font (Source Sans Pro)
+ */
+
+@import 'base64-fonts';
+
+$source-sans-pro-font-families: $source-sans-pro-base64;
+
+@each $font-weight, $font-category in $source-sans-pro-font-families {
+  @each $font-style in map_keys($font-category) {
+      $font-files: map_get($font_category, $font_style);
+
+      @font-face {
+        font-display: fallback;
+        font-family: "Source Sans Pro";
+        font-stretch: normal;
+        font-style: #{$font-style};
+        font-weight: #{$font-weight};
+        src: #{map_get($font-files, 'woff2')}
+             #{map_get($font-files, 'woff')};
+      }
+  }
+}
+
+@font-face {
+  font-family: "ODS Icons";
+  font-weight: 200;
+  font-style: normal;
+  font-stretch: normal;
+  font-display: block;
+  src: #{$ods-icons-base64};
+}

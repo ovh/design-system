@@ -1,0 +1,52 @@
+@import '~@ovhcloud/ods-theming/size/ods-component-size';
+@import './osds-range.mixins';
+
+@mixin osds-range-theme-size() {
+  /** sizes */
+
+  :host(:not([size])) {
+    $size-definitions: ods-get-size-definitions();
+    $component-size-definition: ods-get-component-size-definition($size-definitions, range);
+    $size-properties: ods-get-size-properties($component-size-definition, md);
+
+    @include osds-range-inputs() {
+      outline-width: ods-get-size-property($size-properties, outline-width);
+      outline-offset: ods-get-size-property($size-properties, outline-offset);
+
+      // Track size
+      &::-webkit-slider-runnable-track {
+        height: ods-get-size-property($size-properties, bar-height);
+        border-radius: ods-get-size-property($size-properties, bar-radius);
+      }
+      &::-moz-range-track {
+        height: ods-get-size-property($size-properties, bar-height);
+        border-radius: ods-get-size-property($size-properties, bar-radius);
+      }
+      &::-ms-fill-upper {
+        height: ods-get-size-property($size-properties, bar-height);
+        border-radius: ods-get-size-property($size-properties, bar-radius);
+      }
+
+      // Thumb size
+      &::-webkit-slider-thumb {
+        width: ods-get-size-property($size-properties, thumb-size);
+        height: ods-get-size-property($size-properties, thumb-size);
+        border-width: ods-get-size-property($size-properties, thumb-border);
+        margin-top: calc(#{ods-get-size-property($size-properties, bar-height)} * -.5);
+      }
+      &::-moz-range-thumb {
+        width: ods-get-size-property($size-properties, thumb-size);
+        height: ods-get-size-property($size-properties, thumb-size);
+        border-width: ods-get-size-property($size-properties, thumb-border);
+      }
+      &::-ms-thumb {
+        width: ods-get-size-property($size-properties, thumb-size);
+        height: ods-get-size-property($size-properties, thumb-size);
+        border-width: ods-get-size-property($size-properties, thumb-border);
+      }
+    }
+    @include osds-range-on-multi-element() {
+      margin-top: calc(#{ods-get-size-property($size-properties, bar-height)} * -1);
+    }
+  }
+}

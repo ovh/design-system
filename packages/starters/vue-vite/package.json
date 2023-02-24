@@ -1,0 +1,32 @@
+{
+  "name": "@ovhcloud/ods-starter-vue-vite",
+  "version": "10.2.0",
+  "private": true,
+  "description": "ODS vue vite application starter",
+  "author": "OVH SAS",
+  "license": "Apache-2.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "build:prod": "npm run build"
+  },
+  "dependencies": {
+    "@ovhcloud/ods-core": "^10.2.0",
+    "@ovhcloud/ods-stencil": "^10.2.0",
+    "@ovhcloud/ods-theme-blue-jeans": "^10.2.0",
+    "@ovhcloud/ods-theming": "^10.2.0",
+    "@vue/cli-service": "^5.0.8",
+    "vue": "^3.2.37"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^3.1.0",
+    "typescript": "^4.6.4",
+    "vite": "^3.1.0",
+    "vue-tsc": "^0.40.4"
+  },
+  "publishConfig": {
+    "registry": ""
+  }
+}

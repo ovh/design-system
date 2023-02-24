@@ -1,0 +1,16 @@
+@import '~@ovhcloud/ods-theming/size/ods-component-size';
+@import './osds-textarea.mixins';
+
+@mixin osds-textarea-theme-size() {
+  /** sizes */
+  $size-definitions: ods-get-size-definitions();
+  $component-size-definition: ods-get-component-size-definition($size-definitions, textarea);
+  $size-properties: ods-get-size-properties($component-size-definition, md);
+
+  :host {
+    @include osds-textarea-on-main-element() {
+      border-radius: ods-get-size-property($size-properties, border-radius);
+      padding: ods-get-size-property($size-properties, padding);
+    }
+  }
+}

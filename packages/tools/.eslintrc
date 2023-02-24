@@ -1,0 +1,13 @@
+{
+  "overrides": [
+    {
+      "files": ["saofile.js"],
+      "env": {
+        "node": true
+      },
+      "rules": {
+        "no-console": 0
+      }
+    }
+  ]
+}

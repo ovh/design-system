@@ -1,0 +1,42 @@
+import DesignQuantityStates from './design-quantity-states.mdx';
+import DesignQuantityBehaviours from './design-quantity-behaviours.mdx';
+
+## Preview
+<!-- PUT SOME FINAL EXAMPLES AS IMAGES HERE -->
+<!-- IMAGE IMPORT IS WITH THE FOLLOWING FORMATTING: -->
+<!-- ![Alternative text](design-images/link-to-the-corresponding-image.png) -->
+![Preview of quantity](design-images/quantity/quantity-preview.png)
+
+## Description
+The Quantity component is used to choose the quantity of a selected item. It has different UIs, but they all have the
+same purpose.
+
+This component might use [Input]() and [Button]().
+Please note that osd-input or native input can be used as input and any component can be used as controls.
+
+## Zoning
+The component contains a quantity container and a way to change it freely.
+There are three areas:
+![Preview of zoning](design-images/quantity/quantity-zoning.png)
+
+Basic use is with two [Button](/)s and an [Input]().
+There are two controls: minus control is used to lower the quantity and plus control is used to increase the quantity.
+There is a content area where quantity is displayed.
+Keyboard and steps (through + / - controls) can be used to select the quantity or directly on changing the value in the input.
+
+## Colors
+Colors don't apply directly to Quantity but come from used component (ie.Input and Button components)
+
+## States
+Here are the states Quantity can have:
+
+<DesignQuantityStates />
+
+## Behaviours
+Quantity is aware when minimal / maximal value has been reached. In this case the minus / plus control is disabled.
+
+<DesignQuantityBehaviours />
+
+## Contrasted
+Contrasted doesn't apply directly to Quantity. It comes from used components (ie.Input and Button components).
+

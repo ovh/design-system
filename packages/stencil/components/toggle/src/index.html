@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html dir='ltr' lang='en'>
+<head>
+  <meta charset='utf-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0' />
+  <title>Dev ods-toggle</title>
+
+  <script type="module">
+    !window.ods && (window.ods = {config: {logging: {active:true}}});
+  </script>
+
+  <script type='module' src='/build/osds-toggle.esm.js'></script>
+  <script nomodule src='/build/osds-toggle.js'></script>
+  <link rel="stylesheet" href="/build/osds-toggle.css">
+</head>
+<body>
+
+<h3>Toggle (On)</h3>
+<osds-toggle checked></osds-toggle>
+<osds-toggle checked checking></osds-toggle>
+<osds-toggle checked disabled></osds-toggle>
+<osds-toggle checked interactive></osds-toggle>
+
+<h3>Toggle (Off)</h3>
+<osds-toggle></osds-toggle>
+<osds-toggle checking></osds-toggle>
+<osds-toggle disabled></osds-toggle>
+<osds-toggle interactive></osds-toggle>
+
+<h3>Toggle (On - Contrasted)</h3>
+<div style="display: inline-block; padding: 1em; background-color: blue;">
+  <osds-toggle checked contrasted></osds-toggle>
+  <osds-toggle checked disabled contrasted></osds-toggle>
+  <osds-toggle checked contrasted interactive></osds-toggle>
+</div>
+
+<h3>Toggle (Off - Contrasted)</h3>
+<div style="display: inline-block; padding: 1em; background-color: blue;">
+  <osds-toggle contrasted></osds-toggle>
+  <osds-toggle disabled contrasted></osds-toggle>
+  <osds-toggle contrasted interactive></osds-toggle>
+</div>
+
+<script>
+  document.querySelectorAll('ods-toggle').forEach((elem) => {});
+</script>
+</body>
+</html>

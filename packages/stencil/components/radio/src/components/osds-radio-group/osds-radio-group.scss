@@ -1,0 +1,14 @@
+@import '~@ovhcloud/ods-theming/color/ods-theming-color';
+@import '~@ovhcloud/ods-theming/ods-theme';
+
+// CSS for the component but not for theming
+
+:host {
+}
+
+slot {
+}
+
+// apply the theme template for the component
+@include ods-theme-component() {
+}

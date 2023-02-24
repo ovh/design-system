@@ -1,0 +1,12 @@
+@import '~@ovhcloud/ods-theming/size/ods-component-size';
+@import './osds-tile.mixins';
+
+@mixin osds-tile-theme-size() {
+  /** sizes */
+
+  @include ods-foreach-theme-size(tile) using ($sizes) {
+    @include osds-tile-on-selected-host() {
+      padding: ods-get-size-property($sizes, padding);
+    }
+  }
+}

@@ -1,0 +1,141 @@
+# Create a controller for a component
+
+<!-- TOC -->
+
+* [Create a controller for a component](#create-a-controller-for-a-component)
+  * [Define the controller](#define-the-controller)
+  * [Link Controller to Component](#link-controller-to-component)
+  * [Controller testing](#controller-testing)
+    * [Create a mock](#create-a-mock)
+    * [Controller unit tests](#controller-unit-tests)
+
+<!-- TOC -->
+
+## Define the controller
+
+In OVHcloud Design System code base, we used to move logic to controller. Common controller logic will be used by the
+different implementations.
+Controller is the glue between framework implementation and the third party service.
+
+Create your controller file in @ovhcloud/ods-core component folder:
+
+```
+@ovhcloud/ods-core
+└── src
+    ├── components
+    │   ├── %component%
+    │   │   ├── ods-%component%-controller.spec.ts             // unit tests for controller
+    │   │   ├── ods-%component%-controller.ts                  // common controller logic for component
+    │   │   ├── ods-%component%-mock.ts                        // mocked generic implementation for controller testing
+    │   │   │  ...                                             // create as many type definition files as needed
+    │   │   └── public-api.ts                                  // import above files here
+    └── public-api.ts                                   // import %component%/public-api.js here
+```
+
+`ods-%component%-controller.ts` template:
+
+```
+import { Ods%Component%Controller } from '../ods-component-controller';
+
+export class Ods%Component%Controller extends OdsComponentController<Ods%Component%> {
+
+  constructor(component: Ods%Component%) {
+    super(component);
+  }
+
+  // Define your method logic here
+}
+```
+
+> ⚠️️ **Please note**<br />
+> Be sure to document this controller with TSdoc and Typedoc syntax so that the automatic technical specifications can
+> be generated.
+
+## Link Controller to Component
+
+In `ods-%component%-controller.ts`, import your component:
+
+```
+import { Ods%Component% } from './ods-%component%';
+```
+
+In your component file, `osds-%component%.tsx`, import your controller:
+
+```
+import { Ods%Component%Controller } from '@ovhcloud/ods-core';
+```
+
+Then, instantiate the controller in your component class:
+
+```
+/** @see OdsComponent.controller */
+  controller: Ods%Component%Controller = new Ods%Component%Controller(this);
+```
+
+## Controller testing
+
+### Create a mock
+
+A mock of your component can be used for testing your controller.
+In `ods-%component%-mock.ts`, import Controller, component and all events and methods you need for your mock:
+
+```
+import { Ods%Component% } from './ods-%component%';
+import { Ods%Component%Methods } from './ods-%component%-methods';
+import { Ods%Component%Events } from './ods-%component%-events';
+import { Ods%Component%Controller } from './ods-%component%-controller';
+```
+
+Then:
+
+```
+export class Ods%Component%Mock implements Ods%Component%<Ods%Component%Methods, Ods%Component%Events> {
+
+controller: Ods%Component%Controller = jest.fn() as unknown as Ods%Component%Controller;
+// Define all properties, methods or events you need for your mock here
+}
+```
+
+### Controller unit tests
+
+In `ods-%component%-controller.spec.ts`, you can follow template as below:
+
+```
+import { Ods%Component% } from './ods-%component%';
+import { Ods%Component%Controller } from './ods-%component%-controller';
+import { Ods%Component%Mock } from './ods-%component%-mock';
+
+describe('spec:ods-%component%-controller', () => {
+  let controller: Ods%Component%Controller;
+  let component: Ods%Component%;
+
+  function setup(attributes: Partial<Ods%Component%> = {}) {
+      component = {...component, ...attributes};
+      controller = new Ods%Component%Controller(component);
+  }
+
+  beforeEach(() => {
+      component = new Ods%Component%Mock();
+      component.el = document.createElement('osds-%component%') as HTMLElement;
+  });
+
+  afterEach(() => {
+      jest.clearAllMocks();
+  });
+
+  it('should initialize', () => {
+      setup(component);
+      expect(controller).toBeTruthy();
+  });
+
+  describe('methods', () => {
+    // Write down your tests here
+  });
+});
+```
+
+For more guidelines regarding testing, please head over to
+the [Testing page](?path=/story/contributing-how-to-s-write-your-own-tests--page).
+
+
+

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html dir='ltr' lang='en'>
+
+<head>
+  <meta charset='utf-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0' />
+  <title>Dev osds-accordion</title>
+
+  <script type="module">
+    !window.ods && (window.ods = { config: { logging: { active: true } } });
+  </script>
+
+  <script type='module' src='/build/osds-accordion.esm.js'></script>
+  <script nomodule src='/build/osds-accordion.js'></script>
+  <script type='module' src='/build/osds-text.esm.js'></script>
+  <script nomodule src='/build/osds-text.js'></script>
+  <link rel="stylesheet" href="/build/osds-accordion.css">
+  <link rel="stylesheet" href="/build/osds-text.css">
+</head>
+
+<body style="background-color: #F5F5F5;">
+
+  <p>Default</p>
+  <osds-accordion>
+    <span slot='summary'>
+      Lorem ipsum
+    </span>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam pulvinar ornare augue, nec elementum lectus maximus
+    vel. Praesent dignissim est diam, a tempor leo commodo non. Morbi ut suscipit enim. Ut nunc nunc, eleifend ut
+    lacinia quis, mattis quis metus. Vestibulum at elit porta, tincidunt diam in, mattis mauris. Duis tincidunt ut
+    mauris a faucibus. Nulla sodales lacus et nibh euismod, vel pellentesque justo condimentum.
+  </osds-accordion>
+  <br>
+  <button id="openButton">Open/Close</button>
+  <br>
+
+  <p>Opened</p>
+  <osds-accordion opened>
+    <span slot='summary'>
+      Lorem ipsum
+    </span>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam pulvinar ornare augue, nec elementum lectus maximus
+    vel. Praesent dignissim est diam, a tempor leo commodo non. Morbi ut suscipit enim. Ut nunc nunc, eleifend ut
+    lacinia quis, mattis quis metus. Vestibulum at elit porta, tincidunt diam in, mattis mauris. Duis tincidunt ut
+    mauris a faucibus. Nulla sodales lacus et nibh euismod, vel pellentesque justo condimentum.
+  </osds-accordion>
+
+  <p>Disabled</p>
+  <osds-accordion disabled>
+    <span slot='summary'>
+      Lorem ipsum
+    </span>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam pulvinar ornare augue, nec elementum lectus
+    maximus vel. Praesent dignissim est diam, a tempor leo commodo non. Morbi ut suscipit enim. Ut nunc nunc,
+    eleifend ut lacinia quis, mattis quis metus. Vestibulum at elit porta, tincidunt diam in, mattis mauris. Duis
+    tincidunt ut mauris a faucibus. Nulla sodales lacus et nibh euismod, vel pellentesque justo condimentum.
+  </osds-accordion>
+
+  <p>Accordion Group</p>
+  <osds-accordion-group>
+    <osds-accordion>
+      <span slot='summary'>
+        Lorem ipsum
+      </span>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam pulvinar ornare augue, nec elementum lectus
+      maximus vel. Praesent dignissim est diam, a tempor leo commodo non. Morbi ut suscipit enim. Ut nunc nunc,
+      eleifend ut lacinia quis, mattis quis metus. Vestibulum at elit porta, tincidunt diam in, mattis mauris. Duis
+      tincidunt ut mauris a faucibus. Nulla sodales lacus et nibh euismod, vel pellentesque justo condimentum.
+    </osds-accordion>
+    <osds-accordion>
+      <span slot='summary'>
+        Suspendisse id justo neque
+      </span>
+      Suspendisse id justo neque. Sed lacinia condimentum justo, vel efficitur orci scelerisque at. In volutpat
+      bibendum luctus. Morbi laoreet nunc vel elit iaculis interdum. Curabitur pellentesque neque ut risus mattis,
+      eget pretium neque semper. Sed eleifend lobortis nisl in accumsan. Sed faucibus nulla eu enim ornare, quis
+      gravida diam blandit. Praesent ultricies pulvinar dictum. Morbi non molestie massa. Proin velit nibh, luctus
+      in posuere vulputate, dictum quis velit. Mauris ut sem ac orci fermentum porttitor ut sit amet quam. Nullam
+      eget pharetra nunc. In hac habitasse platea dictumst. Cras justo metus, feugiat sed odio eu, faucibus sodales
+      turpis. Maecenas nec convallis risus.
+    </osds-accordion>
+    <osds-accordion>
+      <span slot='summary'>
+        Suspendisse id justo neque
+      </span>
+      Suspendisse id justo neque. Sed lacinia condimentum justo, vel efficitur orci scelerisque at. In volutpat
+      bibendum luctus. Morbi laoreet nunc vel elit iaculis interdum. Curabitur pellentesque neque ut risus mattis,
+      eget pretium neque semper. Sed eleifend lobortis nisl in accumsan. Sed faucibus nulla eu enim ornare, quis
+      gravida diam blandit. Praesent ultricies pulvinar dictum. Morbi non molestie massa. Proin velit nibh, luctus
+      in posuere vulputate, dictum quis velit. Mauris ut sem ac orci fermentum porttitor ut sit amet quam. Nullam
+      eget pharetra nunc. In hac habitasse platea dictumst. Cras justo metus, feugiat sed odio eu, faucibus sodales
+      turpis. Maecenas nec convallis risus.
+    </osds-accordion>
+  </osds-accordion-group>
+  <script>
+    document.addEventListener('odsInitialized', ({ detail }) => {
+      const instance = detail.instance;
+      instance.logging(true);
+      const logger = new instance.logger('www');
+      logger.log('odsInitialized received');
+
+      const elem = document.querySelector('osds-accordion');
+      elem.addEventListener('odsAccordionToggle', event => {
+        logger.log('(html) addEventListener odsAccordionToggle: ', event.detail);
+      });
+
+      const button = document.getElementById('openButton');
+      button.addEventListener('click', event => {
+        elem.opened = !elem.opened;
+      });
+    })
+  </script>
+
+</body>
+
+</html>

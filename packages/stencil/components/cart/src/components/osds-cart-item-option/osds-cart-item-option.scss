@@ -1,0 +1,48 @@
+@import 'styles/osds-cart-item-option.mixins';
+@import 'styles/osds-cart-item-option.color';
+@import 'styles/osds-cart-item-option.size';
+@import 'styles/osds-cart-item-option.typography';
+@import '~@ovhcloud/ods-theming/ods-theme';
+
+:host {
+
+  @include osds-cart-item-option-on-main-content() {
+    align-items: baseline;
+    display: grid;
+    gap: 0 0;
+    grid-template-areas:
+      "subhead price"
+      "title extra";
+    grid-template-columns: 1fr auto;
+  }
+}
+
+slot {
+  display: grid;
+}
+
+slot[name="subhead"] {
+  grid-area: subhead;
+  align-content: center;
+}
+
+slot[name="title"] {
+  grid-area: title;
+}
+
+slot[name="price"] {
+  grid-area: price;
+  justify-content: right;
+}
+
+slot[name="extra"] {
+  grid-area: extra;
+  justify-content: right;
+  align-self: flex-start;
+}
+
+// apply the theme template for the component
+@include ods-theme-component() {
+  @include osds-cart-item-option-theme-color();
+  @include osds-cart-item-option-theme-size();
+}

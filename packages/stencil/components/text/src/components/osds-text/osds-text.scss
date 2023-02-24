@@ -1,0 +1,15 @@
+@import 'styles/osds-text.mixins';
+@import 'styles/osds-text.color';
+@import 'styles/osds-text.typography';
+@import '~@ovhcloud/ods-theming/color/ods-theming-color';
+@import '~@ovhcloud/ods-theming/ods-theme';
+
+:host([break-spaces]) {
+  white-space: break-spaces;
+}
+
+// apply the theme template for the component
+@include ods-theme-component() {
+  @include osds-text-theme-color();
+  @include osds-text-theme-typography();
+}

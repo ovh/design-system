@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html dir='ltr' lang='en'>
+<head>
+  <meta charset='utf-8'/>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0'/>
+  <title>Dev osds-cart</title>
+
+  <script type="module">
+    !window.ods && (window.ods = {config: {logging: {active:true}}});
+  </script>
+
+  <script type='module' src='/build/osds-cart.esm.js'></script>
+  <script nomodule src='/build/osds-cart.js'></script>
+  <link rel="stylesheet" href="/build/osds-cart.css">
+
+  <style>
+    osds-cart {
+      position: sticky;
+      top: 100%;
+      bottom: 0;
+    }
+    .cart-container {
+      height: 100vh;
+      position: relative;
+    }
+
+    .cart-option-divider {
+      padding: 0 1rem;
+      background-color: hsla(186, 100%, 98%, 1);
+    }
+  </style>
+</head>
+
+<body>
+<div class="cart-container">
+<osds-cart flex collapsible>
+  <osds-cart-header slot="header">
+    My selection
+  </osds-cart-header>
+  <osds-cart-section>
+    <osds-cart-item>
+      <span slot="subhead">Main product subhead</span>
+      <span slot="title">Main product title</span>
+      <span slot="price">X XXX,XX ¤</span>
+      <span slot="extra">ex.VAT / month</span>
+    </osds-cart-item>
+
+    <osds-divider color="primary" size="0" separator="true"></osds-divider>
+
+    <osds-cart-item-option>
+      <span slot="subhead">Option subhead</span>
+      <span slot="title">Option title</span>
+      <span slot="price">X XXX,XX ¤</span>
+      <span slot="extra">ex.VAT / month</span>
+    </osds-cart-item-option>
+
+    <div class="cart-option-divider">
+      <osds-divider color="primary" size="0" separator="true"></osds-divider>
+    </div>
+
+    <osds-cart-item-option>
+      <span slot="subhead">Another option subhead</span>
+      <span slot="title">Another option title</span>
+      <span slot="price">X XXX,XX ¤</span>
+      <span slot="extra">ex.VAT / month</span>
+    </osds-cart-item-option>
+
+    <div class="cart-option-divider">
+      <osds-divider color="primary" size="0" separator="true"></osds-divider>
+    </div>
+
+    <osds-cart-item-option>
+      <span slot="subhead">Another option subhead</span>
+      <span slot="title">Another option title</span>
+      <span slot="price">X XXX,XX ¤</span>
+      <span slot="extra">ex.VAT / month</span>
+    </osds-cart-item-option>
+
+    <div class="cart-option-divider">
+      <osds-divider color="primary" size="0" separator="true"></osds-divider>
+    </div>
+
+    <osds-cart-item-option>
+      <span slot="subhead">Another option subhead</span>
+      <span slot="title">Another option title</span>
+      <span slot="price">X XXX,XX ¤</span>
+      <span slot="extra">ex.VAT / month</span>
+    </osds-cart-item-option>
+  </osds-cart-section>
+
+  <osds-cart-section>
+    <osds-cart-item-option>
+      <span slot="subhead">Option subhead</span>
+      <span slot="title">Option title</span>
+      <span slot="price">X XXX,XX ¤</span>
+      <span slot="extra">ex.VAT / month</span>
+    </osds-cart-item-option>
+
+    <div class="cart-option-divider">
+      <osds-divider color="primary" size="0" separator="true"></osds-divider>
+    </div>
+
+    <osds-cart-item-option>
+      <span slot="subhead">Another option subhead</span>
+      <span slot="title">Another option title</span>
+      <span slot="price">X XXX,XX ¤</span>
+      <span slot="extra">ex.VAT / month</span>
+    </osds-cart-item-option>
+
+    <div class="cart-option-divider">
+      <osds-divider color="primary" size="0" separator="true"></osds-divider>
+    </div>
+
+    <osds-cart-item-option>
+      <span slot="subhead">Another option subhead</span>
+      <span slot="title">Another option title</span>
+      <span slot="price">X XXX,XX ¤</span>
+      <span slot="extra">ex.VAT / month</span>
+    </osds-cart-item-option>
+  </osds-cart-section>
+
+  <osds-cart-footer slot="footer">
+    <osds-cart-total>
+      <span slot="total">Total</span>
+      <span slot="info">X products</span>
+      <span slot="price">X XXX,XX ¤</span>
+      <span slot="extra">ex.VAT / month</span>
+    </osds-cart-total>
+  </osds-cart-footer>
+</osds-cart>
+</div>
+
+<osds-cart id="cart-a">
+  <osds-cart-header slot="header">
+    Your selection
+  </osds-cart-header>
+  <osds-cart-section id="cart-a-section">
+  </osds-cart-section>
+
+  <span slot="empty">empty !</span>
+</osds-cart>
+
+<osds-cart-manager id="cart-manager-a">
+  <osds-cart-header slot="header">
+    Your selection
+  </osds-cart-header>
+  <span slot="footer-content">a text</span>
+  <osds-cart-footer slot="empty">
+    Your order summary is empty
+  </osds-cart-footer>
+</osds-cart-manager>
+
+<script>
+  const myPriceFormatter = (num) => {
+    return (
+      num
+        .toFixed(2)
+        .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+    )
+  }
+
+  const myTranslations = {
+    'cart.total.info': '{{products}} produits',
+    'cart.price': '€ {{price}}',
+    'cart.extra': 'extra',
+    'footer.item.price': '€ {{price}}',
+  }
+  const sections = [
+    {
+      item: {
+        subhead: "item",
+        price: 3000,
+        product: true
+      },
+      options: [
+        {subhead: "option1", price: 3000},
+        {subhead: "option1", price: 3000}
+      ]
+    },
+    {
+      item: {
+        subhead: "item",
+        price: 3000
+      },
+      options: [
+        {subhead: "option1", price: 3000}
+      ]
+    }
+  ];
+
+
+  const sections2 = [
+    {
+      item: {
+        subhead: "item2",
+        price: 3000,
+        product: true
+      },
+      options: [
+        {subhead: "option1", price: 3000}
+      ]
+    }
+  ];
+
+  const footer = {
+    items: [
+      {title: "test", price: 1000},
+      {
+        total: "Total",
+        info: "info",
+        extra: "extra",
+      }
+    ]
+  };
+
+
+  let logger;
+
+  document.addEventListener('odsInitialized', ({detail}) => {
+    const instance = detail.instance;
+    instance.logging(true);
+    logger = new instance.logger('www');
+    logger.log('odsInitialized received');
+    instance.i18n(i18n);
+  })
+
+  // translation system to replace with the application one
+  const translationSystem = (key, values) => {
+    logger && logger.log('[i18nHook] translating...', {key, values});
+    let translation = myTranslations[key];
+    Object.keys(values)
+      .forEach((valueName) => {
+        if (typeof values[valueName] === 'number' && valueName === 'price') {
+          values[valueName] = myPriceFormatter(values[valueName])
+        }
+        translation = translation.replace(`{{${valueName}}}`, values[valueName])
+      })
+    return translation;
+  }
+
+  // interfacing the translation system with the component
+  const i18n = (key, values) => {
+    return translationSystem(key, values);
+  }
+
+  const cartManagerElement = document.getElementById("cart-manager-a");
+  // cartManagerElement.sections = sections;
+  cartManagerElement.footer = footer;
+  cartManagerElement.i18n = i18n;
+
+  setTimeout(() => {
+    cartManagerElement.sections = sections;
+    //cartManagerElement.flex = true;
+  }, 10000)
+
+
+  const cartElement = document.getElementById("cart-a");
+  const cartASectionElement = document.getElementById("cart-a-section");
+
+  // add an item in the section later
+  setTimeout(() => {
+    const item = document.createElement('osds-cart-item')
+      item.innerHTML = '<span slot="subhead">Main product subhead</span>';
+    cartASectionElement.appendChild(item);
+  }, 6000)
+
+</script>
+</body>
+</html>

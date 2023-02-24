@@ -1,0 +1,73 @@
+import {Description} from '@storybook/addon-docs';
+import Specs from '@ovhcloud/ods-core/src/components/cart/docs/spec.md';
+import DesignCartZoningPreview from '@ovhcloud/ods-design/components/cart/design-cart-zoning-preview.mdx';
+
+import SpecsCartSection from './specifications-cart-section.mdx';
+import SpecsCartItem from './specifications-cart-item.mdx';
+import SpecsCartItemOption from './specifications-cart-item-option.mdx';
+import SpecsCartFooter from './specifications-cart-footer.mdx';
+import SpecsCartFooterItem from './specifications-cart-footer-item.mdx';
+import SpecsCartTotal from './specifications-cart-total.mdx';
+import SpecsCartManager from './specifications-cart-manager.mdx';
+
+## Description
+The cart is a presentational component and displays the contents of a cart.
+It is made of several subcomponents :
+- `cart`: the main component to use
+- `cart-section`: a section container that contains items and options
+- `cart-item`: a line for an item with a price
+- `cart-item-option`: a line for an item's option with a price
+- `cart-footer`: display the cart footer item and the cart total
+- `cart-footer-item`: a line for an item with a price and optional extra
+- `cart-total`: display the total price and total quantity of product for the cart
+
+The cart manager is the smart version of the cart with computing.
+
+<Description>{Specs}</Description>
+
+## Contents
+<DesignCartZoningPreview />
+
+| Name        | Description                                                    |
+|-------------|----------------------------------------------------------------|
+| `header` | header content like a title                                       |
+| `content` | main content displayed. Set here the cart-section                |
+| `footer` | footer content to display. You can put some button inside it here |
+| `cart-empty` | displayed content when there are no items in the cart         |
+
+## Tests
+
+**header**
+- should displays the passed content in the header zone
+
+**content**
+- should displays the main content in the main content zone
+
+**footer**
+- should displays the passed content in the footer zone
+
+**empty**
+- should displays the empty content in case of no items
+
+**size**
+- should have `sm` size by default
+
+**rounded**
+- should have `all` rounded by default
+
+**method:getItemQuantity**
+- should returns the number of item placed in the cart
+
+<SpecsCartSection />
+
+<SpecsCartItem />
+
+<SpecsCartItemOption />
+
+<SpecsCartFooter />
+
+<SpecsCartFooterItem />
+
+<SpecsCartTotal />
+
+<SpecsCartManager />

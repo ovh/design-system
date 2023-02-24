@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html dir='ltr' lang='en'>
+<head>
+  <meta charset='utf-8'/>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0'/>
+  <title>Dev ods-stencil</title>
+
+  <script type="module">
+    !window.ods && (window.ods = {config: {logging: {active:true}}});
+  </script>
+
+  <script type='module' src='/cdk/esm/index.js'></script>
+  <script type='module' src='/build/ods-stencil.esm.js'></script>
+  <script nomodule src='/build/ods-stencil.js'></script>
+  <link rel="stylesheet" href="/build/ods-stencil.css">
+  <link rel="stylesheet" href="/cdk/ocdk.css">
+
+
+  <style>
+    .cart-option-divider {
+      padding: 0 1rem;
+    }
+  </style>
+</head>
+<body>
+
+<ocdk-connected-overlay opened>
+  <div>my content in overlay</div>
+</ocdk-connected-overlay>
+
+<p>Button</p>
+<osds-button id="button-a">Default</osds-button>
+
+<p>Cart</p>
+
+<div class="cart-container">
+  <osds-cart flex collapsible>
+    <osds-cart-header slot="header">
+      My selection
+    </osds-cart-header>
+
+    <osds-cart-section>
+      <osds-cart-item>
+        <span slot="subhead">Main product subhead</span>
+        <span slot="title">Main product title</span>
+        <span slot="price">X XXX,XX ¤</span>
+        <span slot="extra">ex.VAT / month</span>
+      </osds-cart-item>
+
+      <osds-divider color="primary" size="0" separator="true"></osds-divider>
+
+      <osds-cart-item-option>
+        <span slot="subhead">Option subhead</span>
+        <span slot="title">Option title</span>
+        <span slot="price">X XXX,XX ¤</span>
+        <span slot="extra">ex.VAT / month</span>
+      </osds-cart-item-option>
+
+      <osds-divider class="cart-option-divider" color="primary" size="0" separator="true"></osds-divider>
+
+      <osds-cart-item-option>
+        <span slot="subhead">Another option subhead</span>
+        <span slot="title">Another option title</span>
+        <span slot="price">X XXX,XX ¤</span>
+        <span slot="extra">ex.VAT / month</span>
+      </osds-cart-item-option>
+
+      <osds-divider class="cart-option-divider" color="primary" size="0" separator="true"></osds-divider>
+
+      <osds-cart-item-option>
+        <span slot="subhead">Another option subhead</span>
+        <span slot="title">Another option title</span>
+        <span slot="price">X XXX,XX ¤</span>
+        <span slot="extra">ex.VAT / month</span>
+      </osds-cart-item-option>
+
+      <osds-divider class="cart-option-divider" color="primary" size="0" separator="true"></osds-divider>
+
+      <osds-cart-item-option>
+        <span slot="subhead">Another option subhead</span>
+        <span slot="title">Another option title</span>
+        <span slot="price">X XXX,XX ¤</span>
+        <span slot="extra">ex.VAT / month</span>
+      </osds-cart-item-option>
+    </osds-cart-section>
+
+    <osds-cart-section>
+
+      <osds-cart-item-option>
+        <span slot="subhead">Option subhead</span>
+        <span slot="title">Option title</span>
+        <span slot="price">X XXX,XX ¤</span>
+        <span slot="extra">ex.VAT / month</span>
+      </osds-cart-item-option>
+
+      <osds-divider color="primary" size="0" separator="true"></osds-divider>
+
+      <osds-cart-item-option>
+        <span slot="subhead">Another option subhead</span>
+        <span slot="title">Another option title</span>
+        <span slot="price">X XXX,XX ¤</span>
+        <span slot="extra">ex.VAT / month</span>
+      </osds-cart-item-option>
+
+      <osds-divider class="cart-option-divider" color="primary" size="0" separator="true"></osds-divider>
+
+      <osds-cart-item-option>
+        <span slot="subhead">Another option subhead</span>
+        <span slot="title">Another option title</span>
+        <span slot="price">X XXX,XX ¤</span>
+        <span slot="extra">ex.VAT / month</span>
+      </osds-cart-item-option>
+    </osds-cart-section>
+
+
+    <osds-cart-section>
+      <osds-cart-item>
+        <span slot="subhead">Main product subhead</span>
+        <span slot="title">
+          <div>Main product title line 1</div>
+          <div>Main product title line 2</div>
+          <div>Main product title line 3</div>
+        </span>
+        <span slot="price">X XXX,XX ¤</span>
+        <span slot="extra">ex.VAT / month</span>
+      </osds-cart-item>
+    </osds-cart-section>
+
+    <osds-cart-footer slot="footer">
+      <osds-cart-total>
+        <span slot="total">Total</span>
+        <span slot="info">X products</span>
+        <span slot="price">X XXX,XX ¤</span>
+        <span slot="extra">ex.VAT / month</span>
+      </osds-cart-total>
+    </osds-cart-footer>
+  </osds-cart>
+</div>
+
+<script type="module">
+  document.addEventListener('odsInitialized', ({detail}) => {
+    const instance = detail.instance;
+    instance.logging(true);
+    const logger = new instance.logger('custom logger');
+    logger.log('ods initialized event received', {detail});
+    logger.error('my log with the same logger as ODS');
+
+    instance.logging(false);
+    logger.log('my log disabled as ods log is disabled');
+    instance.logging(true);
+  })
+</script>
+
+</body>
+</html>

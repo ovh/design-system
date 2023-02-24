@@ -1,0 +1,68 @@
+@import 'styles/osds-cart-footer-item.mixins';
+@import 'styles/osds-cart-footer-item.color';
+@import 'styles/osds-cart-footer-item.size';
+@import 'styles/osds-cart-footer-item.typography';
+@import '~@ovhcloud/ods-theming/ods-theme';
+
+:host {
+
+  @include osds-cart-footer-item-on-main-content() {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: 1fr 1fr;
+    gap: 0 0;
+    grid-template-areas:
+      "cell-subhead-title cell-price-extra"
+      "cell-subhead-title cell-price-extra";
+  }
+}
+
+slot {
+  display: grid;
+}
+
+.cell-subhead-title {
+  display: grid;
+  grid-area: cell-subhead-title;
+  align-content: center;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "subhead"
+    "title";
+}
+
+.cell-price-extra {
+  display: grid;
+  grid-area: cell-price-extra;
+  align-content: center;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "price"
+    "extra";
+}
+
+slot[name="subhead"] {
+  grid-area: subhead;
+  align-content: center;
+}
+
+slot[name="title"] {
+  grid-area: title;
+}
+
+slot[name="price"] {
+  grid-area: price;
+  justify-content: right;
+}
+
+slot[name="extra"] {
+  grid-area: extra;
+  justify-content: right;
+}
+
+// apply the theme template for the component
+@include ods-theme-component() {
+  @include osds-cart-footer-item-theme-color();
+  @include osds-cart-footer-item-theme-size();
+  @include osds-cart-footer-item-theme-typography();
+}

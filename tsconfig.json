@@ -1,0 +1,41 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "allowUnreachableCode": false,
+    "baseUrl": ".",
+    "declaration": false,
+    "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true,
+    "jsx": "react",
+    "jsxFactory": "h",
+    "jsxFragmentFactory": "Fragment",
+    "lib": ["dom", "es2018", "esnext.array"],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "pretty": true,
+    "skipLibCheck": false,
+    "paths": {
+      "@ovhcloud/ods-cdk": ["./packages/libraries/cdk/src/index"],
+      "@ovhcloud/ods-core": ["./packages/libraries/core/src/index"],
+      "@ovhcloud/ods-testing": ["./packages/libraries/testing/src/index"],
+      "@ovhcloud/ods-theming": ["./packages/libraries/theming/src/index"],
+      "@ovhcloud/ods-stencil/libraries/stencil-core": ["./packages/stencil/libraries/stencil-core/src/index"],
+      "@ovhcloud/ods-stencil/libraries/stencil-testing": ["./packages/stencil/libraries/stencil-testing/src/index"],
+      "@ovhcloud/ods-stencil/*": ["./packages/stencil/*"],
+    },
+    "resolveJsonModule": true,
+    "strictNullChecks": true,
+    "strict": true,
+    "target": "es2017"
+  },
+  "exclude": [
+    "node_modules",
+    "**/*.d.ts",
+    "**/*.e2e.ts",
+    "**/*.spec.ts"
+  ]
+}

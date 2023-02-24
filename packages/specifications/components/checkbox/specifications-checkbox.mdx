@@ -1,0 +1,60 @@
+import SpecsCheckboxContents from '@ovhcloud/ods-specifications/components/checkbox/specifications-checkbox-contents.mdx';
+import SpecsCheckboxIntegration from '@ovhcloud/ods-specifications/components/checkbox/specifications-checkbox-integration.mdx';
+import SpecsCheckboxTests from '@ovhcloud/ods-specifications/components/checkbox/specifications-checkbox-tests.mdx';
+import Specs from '@ovhcloud/ods-core/src/components/checkbox/docs/spec.md';
+import {Description} from '@storybook/addon-docs';
+
+## Description
+
+The `checkbox` component is a smart component that have only logical behavior, no UI at all.
+The given child as main content plays the role of the UI part only.
+This component is compatible with `tile` or some custom components.
+
+`checkbox` brings all the behavior of a vanilla checkbox.
+It renders a hidden vanilla `input` with all the properties that applies on it.
+It has `name` and `value` attributes,
+it can be `checked` and `disabled`.
+
+`checkbox` override the defined focusable behavior of its child by disabling `tabindex` on it.
+So, it manages focusing by `click` or `tabulation`.
+
+When `checkbox` has been focused through the mouse, it adds `has-focus` attribute on itself and on its child.
+When it has been focused by the `tabulation`, it adds `has-focus` attribute on itself too, but have a `:focus-visible`
+enabled that add a `dashed` border to itself.
+
+Setting `disabled` property on Checkbox component triggers `disabled` property on its child.
+It is the same for `checked` and `has-focus`.
+
+### usage with custom component
+
+it can be used with your own component from another libraries.
+The only constraints is that component must manage these attributes:
+
+- `checked`
+- `disabled`
+- `has-focus` in order to display it with the `focused` styles
+
+and optionally with these:
+
+- `updating` in order to manage a loading style during `checking` (used for pessimistic update)
+
+```html
+<!-- stencil example -->
+<osds-checkbox value="my-value" name="my-input-name">
+  <your-custom-component>checkbox UI like</your-custom-component>
+</osds-checkbox>
+```
+
+## Contents
+
+<SpecsCheckboxContents />
+
+## Integration
+
+<SpecsCheckboxIntegration />
+
+<Description>{Specs}</Description>
+
+## Tests
+
+<SpecsCheckboxTests />

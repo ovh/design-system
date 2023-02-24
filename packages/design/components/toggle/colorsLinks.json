@@ -1,0 +1,11 @@
+{
+  "default": "design-images/toggle/toggle-colors/toggle-color-default.png",
+  "primary": "design-images/toggle/toggle-colors/toggle-color-primary.png",
+  "text": "design-images/toggle/toggle-colors/toggle-color-text.png",
+  "accent": "design-images/toggle/toggle-colors/toggle-color-accent.png",
+  "error": "design-images/toggle/toggle-colors/toggle-color-error.png",
+  "warning": "design-images/toggle/toggle-colors/toggle-color-warning.png",
+  "success": "design-images/toggle/toggle-colors/toggle-color-success.png",
+  "info": "design-images/toggle/toggle-colors/toggle-color-info.png",
+  "promotion": "design-images/toggle/toggle-colors/toggle-color-promotion.png"
+}

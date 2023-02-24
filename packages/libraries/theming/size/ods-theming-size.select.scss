@@ -1,0 +1,18 @@
+
+/// @access private
+@function ods-get-select-size-properties($size-name) {
+  @return (
+    height: var(--ods-size-select-#{$size-name}-height),
+    border-width: var(--ods-size-select-#{$size-name}-border-width),
+    border-radius: var(--ods-size-select-#{$size-name}-border-radius),
+    padding: var(--ods-size-select-#{$size-name}-padding),
+    width: var(--ods-size-select-#{$size-name}-width)
+  )
+}
+
+/// @access private
+@function ods-get-select-component-size-definition() {
+  @return (
+    md: ods-get-select-size-properties(md),
+  );
+}

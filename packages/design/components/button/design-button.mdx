@@ -1,0 +1,67 @@
+import DesignButtonVariants from './design-button-variants.mdx';
+import DesignButtonColors from './design-button-colors.mdx';
+import DesignButtonVariantsColors from './design-button-variants-colors.mdx';
+import DesignButtonSizes from './design-button-sizes.mdx';
+import DesignButtonContrasted from './design-button-contrasted.mdx';
+import DesignButtonStates from './design-button-states.mdx';
+import DesignButtonBehaviours from './design-button-behaviours.mdx';
+import DesignButtonZoningPreview from './design-button-zoning-preview.mdx';
+
+## Preview
+![Preview of button](design-images/button/button-preview.png)
+
+## Description
+The button is the main component that is used anywhere.
+It has many features and some variants.
+The button can display anything as content.
+The main use is to set a title and an optional icon (`icon` component).
+It can be displayed in different sizes and colors.
+When it is disabled, the user cannot interact with it.
+
+## Zoning
+
+<DesignButtonZoningPreview />
+
+The button is made of :
+- start: zone for start content like icon prefixes
+- center: main content of the button like the button name
+- end: zone for end content like icon suffixes
+
+## Variants
+Our button has several variants to display it the proper way it is meant for the current situation
+
+<DesignButtonVariants />
+
+## Colors
+Each palette can be applied to the button.
+
+<DesignButtonColors />
+
+## Variants and Colors
+Here are a recap for every color with every variant possible
+
+<DesignButtonVariantsColors />
+
+## Sizes
+Each button size has its height, padding and font-size.
+
+<DesignButtonSizes />
+
+## States
+The disabled button is presented with a less important opacity, and it has no ability of interaction (no hover, no focus, no click).
+
+<DesignButtonStates />
+
+## Behaviours
+Each button behaviour is defined here, whether it's keyboard-related or mouse-related.
+
+<DesignButtonBehaviours />
+
+## Contrasted
+For dark backgrounds, buttons have a contrasted version to be displayed.
+
+<DesignButtonContrasted />
+
+## Flex
+The button can be adapted to the parent's container with `flex`.
+In this case, the width of the button no longer fit the text, but grow to the parent's width.

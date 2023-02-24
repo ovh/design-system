@@ -1,0 +1,100 @@
+@import 'styles/osds-toggle.mixins';
+@import 'styles/osds-toggle.color';
+@import 'styles/osds-toggle.size';
+@import '~@ovhcloud/ods-theming/color/ods-theming-color';
+@import '~@ovhcloud/ods-theming/ods-theme';
+
+// CSS for the component but not for theming
+
+:host {
+  align-items: center;
+  border-style: solid;
+  border-color: transparent;
+  box-shadow: none;
+  box-sizing: border-box;
+  display: inline-flex;
+  margin: 0;
+  opacity: 1;
+}
+
+@include osds-toggle-on-main-element() {
+  display: flex;
+  width: 100%;
+}
+
+@include osds-toggle-on-container-element() {
+  position: relative;
+  display: inline-block;
+}
+
+@include osds-toggle-on-slider-element() {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+@include osds-toggle-on-slider-before-element() {
+  position: absolute;
+  content: "";
+  left: 0;
+  bottom: 0;
+  transition: var(--ods-toggle-transition-slider, none);
+}
+
+:host([interactive]) {
+  @include osds-toggle-on-slider-element() {
+    cursor: pointer;
+  }
+}
+
+:host([disabled]) {
+  cursor: not-allowed;
+
+  @include osds-toggle-on-main-element() {
+    pointer-events: none;
+  }
+}
+
+slot {
+  display: inline-flex;
+  flex: 1;
+}
+
+:host([checking]) {
+  @include osds-toggle-on-container-element() {
+    overflow: visible;
+
+    &:after {
+      content: '';
+      position: absolute;
+      left: -2px;
+      top: -2px;
+      background-size: 400%;
+      width: calc(100% + 4px);
+      height: calc(100% + 4px);
+      z-index: -1;
+      animation: var(--ods-toggle-animation-checking-shadow, none);
+      filter: blur(5px);
+    }
+
+    @keyframes steam {
+      0% {
+        background-position: 0 0;
+      }
+      50% {
+        background-position: 100% 0;
+      }
+      100% {
+        background-position: 0 0;
+      }
+    }
+  }
+}
+
+// apply the theme template for the component
+@include ods-theme-component() {
+  @include osds-toggle-theme-color();
+  @include osds-toggle-theme-size();
+}

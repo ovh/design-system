@@ -1,0 +1,15 @@
+// general mixins and functions for the component
+
+@mixin osds-content-addon-on-main-content() {
+  :host(&) {
+    @include osds-content-addon-on-main-element() {
+      @content;
+    }
+  }
+}
+
+@mixin osds-content-addon-on-main-element() {
+  .osds-content-addon {
+    @content;
+  }
+}

@@ -1,0 +1,13 @@
+// general mixins and functions for the component
+
+@mixin osds-tile-on-selected-host() {
+  :host(&) {
+    @content;
+  }
+}
+
+@mixin osds-tile-on-main-element() {
+  .tile__wrapper {
+    @content;
+  }
+}

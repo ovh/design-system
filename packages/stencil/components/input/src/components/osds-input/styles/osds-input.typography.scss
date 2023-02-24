@@ -1,0 +1,29 @@
+@import '~@ovhcloud/ods-theming/typography/ods-theming-typography';
+@import '~@ovhcloud/ods-theming/typography/ods-component-typography';
+@import './osds-input.mixins';
+
+@mixin osds-input-theme-typography() {
+  /** typography properties */
+
+  [size='md'] {
+    :host(&) input {
+      $typography-properties: ods-get-typography-properties(body, '400');
+      font-family: ods-get-typography-property($typography-properties, font-family);
+      font-size: ods-get-typography-property($typography-properties, font-size);
+      font-style: ods-get-typography-property($typography-properties, font-style);
+      font-weight: ods-get-typography-property($typography-properties, font-weight);
+      letter-spacing: ods-get-typography-property($typography-properties, letter-spacing);
+      line-height: ods-get-typography-property($typography-properties, line-height);
+
+      &::placeholder {
+        $typography-properties: ods-get-typography-properties(body, '300');
+        font-family: ods-get-typography-property($typography-properties, font-family);
+        font-size: ods-get-typography-property($typography-properties, font-size);
+        font-style: ods-get-typography-property($typography-properties, font-style);
+        font-weight: ods-get-typography-property($typography-properties, font-weight);
+        letter-spacing: ods-get-typography-property($typography-properties, letter-spacing);
+        line-height: ods-get-typography-property($typography-properties, line-height);
+      }
+    }
+  }
+}

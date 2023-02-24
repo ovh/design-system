@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html dir='ltr' lang='en'>
+<head>
+  <meta charset='utf-8'/>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0'/>
+  <title>Dev osds-select</title>
+
+  <script type="module">
+    !window.ods && (window.ods = {config: {logging: {active: true}}});
+  </script>
+
+  <script type='module' src='/build/osds-select.esm.js'></script>
+  <script nomodule src='/build/osds-select.js'></script>
+  <link rel="stylesheet" href="/build/osds-select.css">
+</head>
+<body>
+
+<h3>default</h3>
+<div style="text-align:center">
+  <osds-select id="select1">
+    <osds-select-group>Group title</osds-select-group>
+    <osds-select-option value="1">hezh <strong>Value 1</strong></osds-select-option>
+    <osds-select-option value="2">Value 2</osds-select-option>
+    <osds-select-option value="3">Value 3</osds-select-option>
+  </osds-select>
+  <button onclick="select1Toggle(event)">toggle</button>
+  <p id="select1-info"></p>
+</div>
+
+<h3>with placeholder</h3>
+<osds-select id="select2">
+  <span slot="placeholder"><i>Select</i> Country</span>
+  <osds-select-group>Group title</osds-select-group>
+  <osds-select-option value="1">hezh <strong>Value 1</strong></osds-select-option>
+  <osds-select-option value="2">Value 2</osds-select-option>
+  <osds-select-option value="3">Value 3</osds-select-option>
+</osds-select>
+<p id="select2-info"></p>
+
+<h3>flex</h3>
+<osds-select id="select3" flex>
+  <span slot="placeholder"><i>Select</i> Country</span>
+  <osds-select-group>Group title</osds-select-group>
+  <osds-select-option value="1">hezh <strong>Value 1 way toooooooooooooooooooo long for a select but way
+    toooooooooooooooooooo long for a select but</strong></osds-select-option>
+  <osds-select-option value="2">Value 2</osds-select-option>
+  <osds-select-option value="3">Value 3</osds-select-option>
+</osds-select>
+<p id="select3-info"></p>
+
+<h3>error</h3>
+<osds-select id="select4" error>
+  <span slot="placeholder"><i>Select</i> Country</span>
+  <osds-select-group>Group title</osds-select-group>
+  <osds-select-option value="1">hezh <strong>Value 1</strong></osds-select-option>
+  <osds-select-option value="2">Value 2</osds-select-option>
+  <osds-select-option value="3">Value 3</osds-select-option>
+</osds-select>
+<p id="select4-info"></p>
+
+<h3>required</h3>
+<osds-select id="select5" required>
+  <span slot="placeholder"><i>Select</i> Country</span>
+  <osds-select-group>Group title</osds-select-group>
+  <osds-select-option value="1">hezh <strong>Value 1</strong></osds-select-option>
+  <osds-select-option value="2">Value 2</osds-select-option>
+  <osds-select-option value="3">Value 3</osds-select-option>
+</osds-select>
+<button onclick="select5Clear()">clear (value)</button>
+<button onclick="select5Reset()">reset (to default value)</button>
+<button onclick="select5ValidateMySelect()">validate my select</button>
+<p id="select5-info"></p>
+
+<h3>clear</h3>
+<osds-select id="select6" required>
+  <span slot="placeholder"><i>Select</i> Country</span>
+  <osds-select-group>Group title</osds-select-group>
+  <osds-select-option value="1">hezh <strong>Value 1</strong></osds-select-option>
+  <osds-select-option value="2">Value 2</osds-select-option>
+  <osds-select-option value="3">Value 3</osds-select-option>
+</osds-select>
+<button onclick="select6Clear()">clear (value)</button>
+<p id="select6-info"></p>
+
+<h3>with truncated option content</h3>
+<osds-select id="select7">
+  <span slot="placeholder"><i>Select</i> Country</span>
+  <osds-select-group>Group title</osds-select-group>
+  <osds-select-option value="1">hezh <strong>Value 1</strong></osds-select-option>
+  <osds-select-option value="2">A value 2 way toooooooooooooooooooo long for a select but</osds-select-option>
+  <osds-select-option value="3">Value 3</osds-select-option>
+</osds-select>
+<p id="select7-info"></p>
+
+<h3>with a long list of options</h3>
+<osds-select id="select8">
+  <span slot="placeholder"><i>Select</i> Country</span>
+  <osds-select-group>Group title</osds-select-group>
+  <osds-select-option value="1">hezh <strong>Value 1</strong></osds-select-option>
+  <osds-select-option value="2">Value 2</osds-select-option>
+  <osds-select-option value="3">Value 3</osds-select-option>
+  <osds-select-option value="4">Value 4</osds-select-option>
+  <osds-select-option value="5">Value 5</osds-select-option>
+  <osds-select-option value="6">Value 6</osds-select-option>
+  <osds-select-option value="7">Value 7</osds-select-option>
+  <osds-select-option value="8">Value 8</osds-select-option>
+  <osds-select-option value="9">Value 9</osds-select-option>
+  <osds-select-option value="10">Value 10</osds-select-option>
+  <osds-select-option value="11">Value 11</osds-select-option>
+  <osds-select-option value="12">Value 12</osds-select-option>
+  <osds-select-option value="13">Value 13</osds-select-option>
+  <osds-select-option value="14">Value 14</osds-select-option>
+  <osds-select-option value="15">Value 15</osds-select-option>
+  <osds-select-option value="16">Value 16</osds-select-option>
+  <osds-select-option value="17">Value 17</osds-select-option>
+  <osds-select-option value="18">Value 18</osds-select-option>
+  <osds-select-option value="19">Value 19</osds-select-option>
+  <osds-select-option value="20">Value 20</osds-select-option>
+</osds-select>
+<p id="select8-info"></p>
+
+<h3>default value & reset</h3>
+<osds-select id="select9" default-value="3">
+  <span slot="placeholder"><i>Select</i> Country</span>
+  <osds-select-group>Group title</osds-select-group>
+  <osds-select-option value="1">hezh <strong>Value 1</strong></osds-select-option>
+  <osds-select-option value="2">A value 2 way toooooooooooooooooooo long for a select but...</osds-select-option>
+  <osds-select-option value="3">Value 3</osds-select-option>
+</osds-select>
+<button onclick="select9Reset()">reset (to default value)</button>
+<p id="select9-info"></p>
+
+<h3>disabled</h3>
+<osds-select id="select10" disabled>
+  <span slot="placeholder"><i>Select</i> Country</span>
+  <osds-select-group>Group title</osds-select-group>
+  <osds-select-option value="1">hezh <strong>Value 1</strong></osds-select-option>
+  <osds-select-option value="2">Value 2</osds-select-option>
+  <osds-select-option value="3">Value 3</osds-select-option>
+</osds-select>
+<p id="select10-info"></p>
+
+<h3>value="2"</h3>
+<osds-select id="select11" value="2">
+  <span slot="placeholder"><i>Select</i> Country</span>
+  <osds-select-group>Group title</osds-select-group>
+  <osds-select-option value="1">hezh <strong>Value 1</strong></osds-select-option>
+  <osds-select-option value="2">Value 2</osds-select-option>
+  <osds-select-option value="3">Value 3</osds-select-option>
+</osds-select>
+<p id="select11-info"></p>
+
+</body>
+</html>

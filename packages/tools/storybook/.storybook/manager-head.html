@@ -1,0 +1,161 @@
+<style>
+    body {
+        letter-spacing: 0.03rem;
+    }
+
+    #root > div {
+        margin: -10px 0;
+        width: calc(100vw + 10px);
+        height: calc(100vh + 20px);
+    }
+
+    a[title*="Design System"]::after {
+        content: 'Design System';
+        position: absolute;
+        top: 0;
+        left: 2.5rem;
+        font-size: 1rem;
+        color: #0045A1;
+        line-height: 1.9rem;
+    }
+
+    button[title="Shortcuts"] {
+        display: none;
+    }
+
+    .sidebar-subheading.sidebar-subheading {
+        font-size: 1em;
+        font-weight: bold;
+        letter-spacing: normal;
+        text-transform: none;
+        color: #00175C;
+    }
+
+    .sidebar-item[id*="components-"][data-nodetype="group"] > svg[color='primary'] {
+        display: none;
+    }
+
+    .sidebar-item[id*="components-"][data-nodetype="group"]:not([id*="quark"]):not([id*="atom"]):not([id*="molecule"]):not([id*="organism"]):not([id*="layout"]):not([id*="template"]):not([id*="meta"]) > svg {
+        display: initial;
+    }
+
+    .sidebar-item [class^='badge-']::before {
+        border-radius: .5em;
+        content: attr(badge-type);
+        display: inline-block;
+        font-size: .8em;
+        font-weight: 600;
+        margin-right: .5em;
+        min-width: 4.3em;
+        padding: 0 .3em;
+        text-align: center;
+        text-transform: capitalize;
+        border: solid 1px transparent;
+    }
+
+    .sidebar-item > .badge-quark::before {
+        background-color: #00175C;
+        color: #FFF;
+    }
+
+    .sidebar-item > .badge-atom::before {
+        background-color: #000D9E;
+        color: #FFF;
+    }
+
+    .sidebar-item > .badge-molecule::before {
+        background-color: #004FD6;
+        color: #FFF;
+    }
+
+    .sidebar-item > .badge-organism::before {
+        background-color: #4CB2F6;
+        color: #000D1F;
+        text-shadow: 0 0 2px #FFF, 0 0 2px #FFF;
+    }
+
+    .sidebar-item > .badge-layout::before {
+        background-color: #BDF1FF;
+        color: #000D9E;
+        border-color: #4CB2F6;
+    }
+
+    .sidebar-item > .badge-template::before {
+        background-color: #FFF;
+        color: #000D9E;
+        border-color: #4CB2F6;
+    }
+
+    .sidebar-item > .badge-meta::before {
+        background-color: #000D1F;
+        color: #FFF;
+        font-style: italic;
+    }
+
+    /*
+     * Avoid padding on APIs iframes
+     */
+    .addon-notes-container #panel-tab-content [class^='css-'] {
+        box-sizing: border-box;
+        margin: 0;
+        max-width: inherit;
+        min-height: 85vh;
+        padding: 0;
+    }
+
+    div[role="main"] > div {
+        box-shadow: none;
+        border-left: solid 1px #008fd4;
+    }
+
+    #release-selector {
+        background: none;
+        border-radius: .3em;
+        border: dashed 1px #008fd4;
+        color: #008fd4;
+        display: block;
+        font-size: 0.8em;
+        margin-bottom: -1em;
+        margin-top: 0.3em;
+        text-align: center;
+        width: 100%;
+    }
+</style>
+<link rel="shortcut icon" href="./favicon.ico">
+
+<script type="module">
+    import { releases } from './releases.js';
+
+    const createHeaderElement = (element) => {
+      const timer = setInterval(function(){
+        let selector = document.querySelector('.sidebar-header');
+        if (selector !== null) {
+          selector.parentNode.insertBefore(element, selector.nextSibling);
+          clearInterval(timer);
+        }
+      }, 500);
+    };
+
+    const urlVersionRegex = /\/(latest|v(\d\.?){3}[^\/]*)\//gmi;
+    if (urlVersionRegex.test(location.href)) {
+      const releasesSelector = document.createElement('select');
+      releasesSelector.id = 'release-selector';
+      Object.entries(releases).map((value) => {
+        const option = document.createElement('option');
+        option.text = value[0];
+        option.value = value[1];
+        releasesSelector.appendChild(option)
+      });
+      createHeaderElement(releasesSelector);
+
+      releasesSelector.onchange = (selection) => {
+        const version = selection.target.value === 'latest' ? 'latest' : `v${selection.target.value}`;
+        location.pathname = location.pathname.replace(urlVersionRegex, version);
+      };
+    } else {
+      const version = document.createElement('div');
+      version.id = 'release-selector';
+      version.innerText = Object.keys(releases)[0];
+      createHeaderElement(version);
+    }
+</script>

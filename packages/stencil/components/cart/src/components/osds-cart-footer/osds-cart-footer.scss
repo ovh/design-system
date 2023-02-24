@@ -1,0 +1,18 @@
+@import 'styles/osds-cart-footer.mixins';
+@import 'styles/osds-cart-footer.color';
+@import 'styles/osds-cart-footer.size';
+@import 'styles/osds-cart-footer.typography';
+@import '~@ovhcloud/ods-theming/ods-theme';
+
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+// apply the theme template for the component
+@include ods-theme-component() {
+  @include osds-cart-footer-theme-color();
+  @include osds-cart-footer-theme-size();
+  @include osds-cart-footer-theme-typography();
+}
+

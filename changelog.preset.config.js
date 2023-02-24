@@ -1,6 +1,6 @@
 const main = `
 
-[Latest version](https://todo-changelog)
+[Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
 
 {{> header}}
 
@@ -20,9 +20,9 @@ const main = `
 
 const header = `
 {{#if isPatch~}}
-  # [{{version}}](https://todo-ods-doc/{{currentTag}}/?path=/docs/design-system-changelog--page)
+  # [{{version}}](https://ovhcloud.design/{{currentTag}}/?path=/docs/design-system-changelog--page)
 {{~else~}}
-  # [{{version}}](https://todo-ods-doc/{{currentTag}}/?path=/docs/design-system-changelog--page)
+  # [{{version}}](https://ovhcloud.design/{{currentTag}}/?path=/docs/design-system-changelog--page)
 {{~/if}}
 {{~#if title}} "{{title}}"
 {{~/if}}

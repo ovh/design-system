@@ -1,0 +1,25 @@
+@import 'styles/osds-cart-header.mixins';
+@import 'styles/osds-cart-header.color';
+@import 'styles/osds-cart-header.size';
+@import 'styles/osds-cart-header.typography';
+@import '~@ovhcloud/ods-theming/ods-theme';
+
+:host {
+  display: block;
+
+  .cart-mobile-handle {
+    display: block;
+    cursor: pointer;
+
+    hr {
+      border: none;
+    }
+  }
+}
+
+// apply the theme template for the component
+@include ods-theme-component() {
+  @include osds-cart-header-theme-color();
+  @include osds-cart-header-theme-size();
+  @include osds-cart-header-theme-typography();
+}

@@ -1,0 +1,225 @@
+## Usage
+
+### Global rendering
+```html
+<osds-cart>
+  <osds-cart-header slot="header">
+    Header
+  </osds-cart-header>
+
+  <osds-cart-section>
+    <osds-cart-item>
+      <span slot="subhead">Subhead</span>
+      <span slot="title">Title</span>
+      <span slot="price">Price</span>
+      <span slot="extra">Extra</span>
+    </osds-cart-item>
+    <osds-cart-item-option>
+      <span slot="subhead">Subhead</span>
+      <span slot="title">Title</span>
+      <span slot="price">Price</span>
+      <span slot="extra">Extra</span>
+    </osds-cart-item-option>
+  </osds-cart-section>
+
+  <osds-cart-footer>
+    <osds-cart-footer-item>
+      <span slot="subhead">Subhead</span>
+      <span slot="title">Title</span>
+      <span slot="price">Price</span>
+      <span slot="extra">Extra</span>
+    </osds-cart-footer-item>
+    <osds-cart-total>
+      <span slot="total">Total</span>
+      <span slot="info">Info</span>
+      <span slot="price">Price</span>
+      <span slot="extra">Extra</span>
+    </osds-cart-total>
+  </osds-cart-footer>
+</osds-cart>
+```
+
+### Empty
+Add slot `empty` so its content will be displayed if there is no `<osds-cart-item></osds-cart-item>`
+or no `<osds-cart-item-option></osds-cart-item-option>`.
+```html
+<osds-cart>
+  <span slot="empty">Empty !</span>
+</osds-cart>
+```
+
+### Cart Manager
+```html
+<osds-cart-manager>
+  <osds-cart-header slot="header">
+    Header
+  </osds-cart-header>
+
+  <osds-cart-section>
+    <osds-cart-item>
+      <span slot="extra"></span>
+    </osds-cart-item>
+  </osds-cart-section>
+
+  <osds-cart-footer slot="content">
+    <osds-button>Button</osds-button>
+  </osds-cart-footer>
+</osds-cart-manager>
+```
+
+### Collapsed cart
+* Add attributes `collapsed` and `collapsible` on `osds-cart`.
+The handle (`<hr>`) will now be displayed in `osds-cart-header` since collapsible has been set on `osds-cart`.
+* Add an `<osds-cart-total>` : this part is always displayed, on cart collapsed or expanded.
+You can add some items too but it won't be displayed now, only when the cart will be expanded.
+* Add attribute `rounded` set to `top` so only top of the cart will be rounded.
+```html
+<div class="cart-container" style={{'height: 100vh,position: relative'}}>
+  <osds-cart flex collapsed collapsible rounded="top" style={{'position: sticky, top: 100%, bottom: 0'}}>
+    <osds-cart-header slot="header">
+      <hr style={{'border: none, borderRadius: 2px, height: 4px, width: 66px, backgroundColor: #FFF'}}>
+    </osds-cart-header>
+
+    <osds-cart-section>
+      <osds-cart-item>
+        <span slot="subhead">Main product subhead</span>
+        <span slot="title">Main product title</span>
+        <span slot="price">X XXX,XX ¤</span>
+        <span slot="extra">ex.VAT / month</span>
+      </osds-cart-item>
+
+      <osds-divider color="primary" size="0" separator="true"></osds-divider>
+
+      <osds-cart-item-option>
+        <span slot="subhead">Option subhead</span>
+        <span slot="title">Option title</span>
+        <span slot="price">X XXX,XX ¤</span>
+        <span slot="extra">ex.VAT / month</span>
+      </osds-cart-item-option>
+    </osds-cart-section>
+
+    <osds-cart-footer slot="footer">
+      <osds-cart-total>
+        <span slot="total">Total</span>
+        <span slot="info">X products</span>
+        <span slot="price">X XXX,XX ¤</span>
+        <span slot="extra">ex.VAT / month</span>
+      </osds-cart-total>
+    </osds-cart-footer>
+  </osds-cart>
+</div>
+```
+
+### Expanded cart
+* Attribute `collapsed` is not true anymore but we keep attribute `collapsible` thus, user can scroll on content in the expanded cart.
+* The handle (`<hr>`) is still displayed here since collapsible is still set on `osds-cart`.
+```html
+<div class="cart-container" style={{'height: 100vh,position: relative'}}>
+<osds-cart flex collapsible rounded="top" style={{'position: sticky, top: 100%, bottom: 0'}}>
+  <osds-cart-header slot="header">
+    <hr style={{'border: none, borderRadius: 2px, height: 4px, width: 66px, backgroundColor: #FFF'}}>
+  </osds-cart-header>
+
+  <osds-cart-section>
+    <osds-cart-item>
+      <span slot="subhead">Main product subhead</span>
+      <span slot="title">Main product title</span>
+      <span slot="price">X XXX,XX ¤</span>
+      <span slot="extra">ex.VAT / month</span>
+    </osds-cart-item>
+
+    <osds-divider color="primary" size="0" separator="true"></osds-divider>
+
+    <osds-cart-item-option>
+      <span slot="subhead">Option subhead</span>
+      <span slot="title">Option title</span>
+      <span slot="price">X XXX,XX ¤</span>
+      <span slot="extra">ex.VAT / month</span>
+    </osds-cart-item-option>
+  </osds-cart-section>
+
+  <osds-cart-footer slot="footer">
+    <osds-cart-total>
+      <span slot="total">Total</span>
+      <span slot="info">X products</span>
+      <span slot="price">X XXX,XX ¤</span>
+      <span slot="extra">ex.VAT / month</span>
+    </osds-cart-total>
+  </osds-cart-footer>
+</osds-cart>
+</div>
+```
+
+### With button component
+```html
+<osds-cart>
+  <osds-cart-section>
+    <osds-cart-item>
+      <span slot="subhead">Subhead</span>
+      <span slot="title">Title</span>
+      <span slot="price">Price</span>
+      <span slot="extra">Extra</span>
+    </osds-cart-item>
+    <osds-cart-item-option>
+      <span slot="subhead">Subhead</span>
+      <span slot="title">Title</span>
+      <span slot="price">Price</span>
+      <span slot="extra">Extra</span>
+    </osds-cart-item-option>
+  </osds-cart-section>
+
+  <osds-cart-footer>
+    <osds-cart-footer-item>
+      <span slot="subhead">Subhead</span>
+      <span slot="title">Title</span>
+      <span slot="price">Price</span>
+      <span slot="extra">Extra</span>
+    </osds-cart-footer-item>
+    <osds-cart-total>
+      <span slot="total">Total</span>
+      <span slot="info">Info</span>
+      <span slot="price">Price</span>
+      <span slot="extra">Extra</span>
+      <osds-button>Button</osds-button>
+    </osds-cart-total>
+  </osds-cart-footer>
+</osds-cart>
+```
+
+### With divider component
+```html
+<osds-cart>
+  <osds-cart-section>
+    <osds-cart-item>
+      <span slot="subhead">Subhead</span>
+      <span slot="title">Title</span>
+      <span slot="price">Price</span>
+      <span slot="extra">Extra</span>
+    </osds-cart-item>
+    <osds-cart-item-option>
+      <span slot="subhead">Subhead</span>
+      <span slot="title">Title</span>
+      <span slot="price">Price</span>
+      <span slot="extra">Extra</span>
+    </osds-cart-item-option>
+  </osds-cart-section>
+
+  <osds-cart-footer>
+    <osds-cart-footer-item>
+      <span slot="subhead">Subhead</span>
+      <span slot="title">Title</span>
+      <span slot="price">Price</span>
+      <span slot="extra">Extra</span>
+    </osds-cart-footer-item>
+
+    <osds-divider color="primary" size="6" separator="true" contrasted="true"></osds-divider>
+
+    <osds-cart-total>
+      <span slot="total">Total</span>
+      <span slot="info">Info</span>
+      <span slot="price">Price</span>
+      <span slot="extra">Extra</span>
+    </osds-cart-total>
+  </osds-cart-footer>
+</osds-cart>
+```

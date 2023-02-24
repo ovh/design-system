@@ -1,0 +1,21 @@
+@import '~@ovhcloud/ods-theming/typography/ods-theming-typography';
+@import '~@ovhcloud/ods-theming/typography/ods-component-typography';
+@import './osds-select-group.mixins';
+
+@mixin osds-select-group-theme-typography() {
+
+  [size='md'] {
+    @include osds-select-group-on-selected-host() {
+      $typography-properties: ods-get-typography-properties(body, '400');
+      font-family: ods-get-typography-property($typography-properties, font-family);
+      font-size: ods-get-typography-property($typography-properties, font-size);
+      font-style: ods-get-typography-property($typography-properties, font-style);
+      letter-spacing: ods-get-typography-property($typography-properties, letter-spacing);
+      line-height: ods-get-typography-property($typography-properties, line-height);
+    }
+  }
+
+  :host {
+    font-weight: var(--ods-typo-weight-semibold);
+  }
+}

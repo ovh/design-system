@@ -1,0 +1,15 @@
+@import '~@ovhcloud/ods-theming/size/ods-component-size';
+@import './osds-radio-button.mixins';
+
+@mixin osds-radio-button-theme-size() {
+  /** sizes */
+
+  @include ods-foreach-theme-size(radio-button) using ($sizes) {
+    @include osds-radio-button-on-main-element() {
+      border-width: ods-get-size-property($sizes, border-width);
+      height: ods-get-size-property($sizes, height);
+      margin: ods-get-size-property($sizes, margin);
+      width: ods-get-size-property($sizes, width);
+    }
+  }
+}

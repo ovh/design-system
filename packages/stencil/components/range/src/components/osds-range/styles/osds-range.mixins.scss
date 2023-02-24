@@ -1,0 +1,31 @@
+// general mixins and functions for the component
+
+@mixin osds-range-on-selected-host() {
+  :host(&) {
+    @content;
+  }
+}
+
+@mixin osds-range-on-selected-dual-host() {
+  :host(&.dual-range) {
+    @content;
+  }
+}
+
+@mixin osds-range-on-main-element() {
+  .range-input {
+    @content;
+  }
+}
+
+@mixin osds-range-on-multi-element() {
+  .range-input_dual {
+    @content;
+  }
+}
+
+@mixin osds-range-inputs() {
+  .range-input, .range-input_dual {
+    @content;
+  }
+}

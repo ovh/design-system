@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html dir='ltr' lang='en'>
+<head>
+  <meta charset='utf-8'/>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0'/>
+  <title>Dev osds-checkbox</title>
+
+  <script type="module">
+    !window.ods && (window.ods = {config: {logging: {active: true}}});
+  </script>
+
+  <script type='module' src='/build/osds-checkbox.esm.js'></script>
+  <script nomodule src='/build/osds-checkbox.js'></script>
+  <link rel="stylesheet" href="/build/osds-checkbox.css">
+  <style>
+    #div-with-custom-focus-style[has-focus] {
+      background: #7f7f7f;
+    }
+  </style>
+</head>
+<body>
+
+<p>tile without checkbox</p>
+<osds-tile>myTile1</osds-tile>
+
+<p>tile without checkbox (interactive)</p>
+<osds-tile interactive>myTile1</osds-tile>
+<p>tile without checkbox (disabled)</p>
+<osds-tile disabled>myTile1</osds-tile>
+<p>tile without checkbox (interactive disabled)</p>
+<osds-tile interactive disabled>myTile1</osds-tile>
+
+<p>basic</p>
+<style>
+  .check-button:not([checked]) {
+    background: #8f562d;
+  }
+
+  .check-button[checked] {
+    background: green;
+  }
+
+  .check-button[has-focus] {
+    border: 2px solid black;
+  }
+</style>
+<osds-checkbox>
+  <div class="check-button">your DOM element to be decorated as checkbox</div>
+</osds-checkbox>
+
+<p>default</p>
+<osds-checkbox on-click="onClickCheckbox()" value="val-tile2" id="checkbox-c">
+  <div id="div-with-custom-focus-style">a div with custom has-focus style, in checkbox</div>
+</osds-checkbox>
+
+<p>with tile</p>
+<osds-checkbox on-click="onClickCheckbox()" value="val-tile1" id="checkbox-a">
+  <osds-tile interactive>myTile1</osds-tile>
+</osds-checkbox>
+
+<p id="checkbox-a-info"></p>
+<p>disabled</p>
+<osds-checkbox disabled on-click="onClickCheckbox()" value="val-tile1" id="checkbox-a">
+  <osds-tile interactive>myTile1</osds-tile>
+</osds-checkbox>
+
+<script type="module">
+  document.addEventListener('odsInitialized', ({detail}) => {
+    const instance = detail.instance;
+    instance.logging(true);
+    const logger = new instance.logger('custom logger');
+    logger.log('ods initialized event received', {detail});
+    logger.error('my log with the same logger as ODS');
+
+    instance.logging(false);
+    logger.log('my log disabled as ods log is disabled');
+    instance.logging(true);
+  })
+
+  import { defineCustomElements } from '/tile/loader/index.js';
+
+  defineCustomElements();
+</script>
+
+</body>
+</html>

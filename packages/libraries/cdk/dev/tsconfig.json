@@ -1,0 +1,26 @@
+{
+  "extends": "../../../../tsconfig.json",
+  "compilerOptions": {
+    "jsx": "react",
+    "jsxFactory": "h",
+    "declaration": true,
+    "paths": {
+      "~@ovhcloud/ods-cdk": ["./packages/libraries/cdk/src/index"]
+    }
+    },
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/**/*.spec.ts",
+    "**/**/*.spec.tsx",
+    "**/**/*.e2e.ts",
+    "**/**/*.e2e.screenshot.ts",
+    "**/**/*.d.ts",
+    "**/.stencil",
+    "**/**/global.prod.ts",
+    "*/dist",
+    "react"
+  ]
+}

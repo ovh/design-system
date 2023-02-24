@@ -1,0 +1,33 @@
+# Technical Specification of Cart manager service
+
+## Description
+
+The cart-manager service manage all the logical stuff and computes the cart items.
+
+## Methods
+
+**getTotalAmount:`number`**
+
+Get the total amount of the cart sections.
+
+| Arguments  | Type                    | Default | Description                       |
+|------------|-------------------------|---------|-----------------------------------|
+| `sections` | `OdsCartManagerSection` | -       | the sections of items to sum      |
+| `vatMode`  | `boolean`               | `false` | get the total included VAT or not |
+
+**getProductQuantity:`number`**
+
+Get the total number of items and / or options indicated as product.
+
+| Arguments   | Type                       | Default | Description             |
+|-------------|----------------------------|---------|-------------------------|
+| `sections`  | `OdsCartManagerSection`    | -       | the sections of items   |
+
+## Tests
+
+**method:getTotalAmount**
+- should return the total amount of the cart excluded VAT by default
+- should return the total amount of the cart with VAT if specified
+
+**method:getProductQuantity**
+- should return the number of item tagged as product

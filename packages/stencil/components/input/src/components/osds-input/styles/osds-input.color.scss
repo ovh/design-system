@@ -1,0 +1,80 @@
+@import '~@ovhcloud/ods-theming/color/ods-component-color';
+@import './osds-input.mixins';
+
+@mixin osds-input-theme-color-error-state() {
+  .ods-error {
+    $border: ods-get-color-variable($intent-name: error, $hue: '500');
+    @include osds-input-on-selected-host() {
+      border-color: $border;
+    }
+
+    $border: ods-get-color-variable($intent-name: error, $hue: '500');
+    @include osds-input-on-focus() {
+      border-color: $border;
+    }
+  }
+}
+
+@mixin osds-input-theme-color() {
+
+  /** base colors */
+  :host(:not([hasfocus])){
+    background-color: ods-get-color-variable($palette-name: 'gray', $hue: '000');
+  }
+
+  :host input {
+    outline: none;
+    border: none;
+    background: none;
+
+    &:not(:focus){
+      background-color: transparent;
+    }
+  }
+
+  input,
+  input::placeholder{
+      color: ods-get-color-variable($intent-name: text, $hue: '500');
+      opacity: 1;
+    }
+
+  /** disabled colors */
+  [disabled],
+  [disabled]:focus {
+    @include osds-input-on-selected-host() {
+      opacity: .5;
+    }
+  }
+
+  /** main colors */
+  @include ods-all-hue-foreach-theme-color((
+    background-color: '100',
+    border-color: '200'
+  )) using($colors) {
+    @include osds-input-on-selected-host() {
+      border-color: map_get($colors, border-color);
+    }
+    @include osds-input-on-focus() {
+      border-color: map_get($colors, border-color);
+      background-color: map_get($colors, background-color);
+    }
+  }
+
+  [contrasted] {
+    @include ods-all-hue-foreach-theme-color((
+      background-color: '100-contrasted',
+      border-color: '200-contrasted'
+    )) using($colors) {
+      @include osds-input-on-selected-host() {
+        border-color: map_get($colors, border-color);
+      }
+      @include osds-input-on-focus() {
+        border-color: map_get($colors, border-color);
+        background-color: map_get($colors, background-color);
+      }
+    }
+  }
+
+  /** Override error state colors in */
+  @include osds-input-theme-color-error-state();
+}

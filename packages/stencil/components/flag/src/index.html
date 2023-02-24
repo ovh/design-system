@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html dir='ltr' lang='en'>
+<head>
+  <meta charset='utf-8'/>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0'/>
+  <title>Dev ods-flag</title>
+
+  <script type="module">
+    !window.ods && (window.ods = {config: {logging: {active: true}}});
+  </script>
+
+  <script type='module' src='/build/osds-flag.esm.js'></script>
+  <script nomodule src='/build/osds-flag.js'></script>
+  <link rel="stylesheet" href="/build/osds-flag.css">
+  <style>
+    .flag-container {
+      width: 200px;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Default layout</h2>
+<i>(displayed only with wrong iso code, or during loading)</i>
+<div class="flag-container">
+  <osds-flag iso="johnDoe"></osds-flag>
+</div>
+
+<h2>Default country</h2>
+<div class="flag-container">
+  <osds-flag></osds-flag>
+</div>
+
+<h2>using asset path of ods</h2>
+<div class="flag-container">
+  <osds-flag iso="us"></osds-flag>
+</div>
+
+<h2>using custom asset path</h2>
+<div class="flag-container">
+  <osds-flag iso="de" asset-path="../flags-custom-path/"></osds-flag>
+</div>
+
+<h2>using custom svg src</h2>
+<div class="flag-container">
+  <osds-flag iso="de" src="../flags-custom-path/it.svg"></osds-flag>
+</div>
+
+<h2>without sized parent container</h2>
+<osds-flag iso="fr"></osds-flag>
+<osds-flag iso="de"></osds-flag>
+
+<h2>example (gb) with lazy loading (load only if visible)</h2>
+<div class="flag-container">
+  <osds-flag iso="gb" lazy></osds-flag>
+</div>
+
+<h2>example (wrong iso) with lazy loading (load only if visible)</h2>
+<div class="flag-container">
+  <osds-flag iso="toto" lazy></osds-flag>
+</div>
+
+</body>
+</html>

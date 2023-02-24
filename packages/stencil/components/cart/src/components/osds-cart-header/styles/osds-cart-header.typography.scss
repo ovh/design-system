@@ -1,0 +1,13 @@
+@import '~@ovhcloud/ods-theming/typography/ods-component-typography';
+
+@mixin osds-cart-header-theme-typography() {
+  :host {
+    $heading: ods-get-typography-properties(heading, "400");
+    font-family: ods-get-typography-property($heading, font-family);
+    font-size: ods-get-typography-property($heading, font-size);
+    font-style: ods-get-typography-property($heading, font-style);
+    font-weight: ods-get-typography-property($heading, font-weight);
+    letter-spacing: ods-get-typography-property($heading, letter-spacing);
+    line-height: ods-get-typography-property($heading, line-height);
+  }
+}

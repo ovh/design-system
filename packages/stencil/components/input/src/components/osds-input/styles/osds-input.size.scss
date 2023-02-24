@@ -1,0 +1,19 @@
+@import '~@ovhcloud/ods-theming/size/ods-component-size';
+@import './osds-input.mixins';
+
+@mixin osds-input-theme-size() {
+  /** sizes */
+
+  @include ods-foreach-theme-size(input) using ($sizes) {
+    @include osds-input-on-selected-host() {
+      height: ods-get-size-property($sizes, height);
+      border-width: ods-get-size-property($sizes, border-width);
+      border-radius: ods-get-size-property($sizes, border-radius);
+      padding: ods-get-size-property($sizes, padding);
+
+      osds-icon {
+        width: ods-get-size-property($sizes, icon-width);
+      }
+    }
+  }
+}

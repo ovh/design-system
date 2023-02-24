@@ -1,0 +1,33 @@
+@import 'styles/osds-select-option.color';
+@import 'styles/osds-select-option.size';
+@import 'styles/osds-select-option.typography';
+@import '~@ovhcloud/ods-theming/color/ods-theming-color';
+@import '~@ovhcloud/ods-theming/ods-theme';
+
+// CSS for the component but not for theming
+
+:host {
+  margin: 0;
+  display: block;
+  position: relative;
+
+  .option {
+    align-items: center;
+    display: flex;
+  }
+
+  .option>.truncated {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: break-all;
+  }
+}
+
+// apply the theme template for the component
+@include ods-theme-component() {
+  @include osds-select-option-theme-color();
+  @include osds-select-option-theme-size();
+  @include osds-select-option-theme-typography();
+}

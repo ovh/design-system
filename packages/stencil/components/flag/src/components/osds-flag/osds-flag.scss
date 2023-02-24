@@ -1,0 +1,29 @@
+:host {
+  display: block;
+  box-shadow: 0 0 var(--ods-size-05) var(--ods-color-gray-200);
+  aspect-ratio: 4/3;
+}
+
+@supports not (aspect-ratio: 4/3) {
+  :host::before {
+    float: left;
+    padding-top: 75%;
+    content: "";
+  }
+
+  :host::after {
+    display: block;
+    content: "";
+    clear: both;
+  }
+}
+
+.svg-inner {
+  display: flex;
+}
+
+.svg-inner.flag-default {
+  height: 100%;
+  width: 100%;
+  background: var(--ods-color-gray-200);
+}

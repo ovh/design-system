@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html dir='ltr' lang='en'>
+<head>
+  <meta charset='utf-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0' />
+  <title>Dev osds-quantity</title>
+
+  <script type="module">
+    !window.ods && (window.ods = {config: {logging: {active:true}}});
+  </script>
+
+  <script type='module' src='/build/osds-quantity.esm.js'></script>
+  <script nomodule src='/build/osds-quantity.js'></script>
+  <link rel="stylesheet" href="/build/osds-quantity.css">
+</head>
+<body>
+<osds-button color="primary">
+  htrshrhfe fez
+</osds-button>
+<p>Quantity using osds-components</p>
+<osds-quantity onclick="globalMethod()" id="quantity-1">
+  <osds-button slot="minus" color="primary" size="sm">-</osds-button>
+  <osds-input style="max-width: 45px" type="number" color="primary" min="1" max="10" step="1
+" value="1"></osds-input>
+  <osds-button slot="plus" color="primary" size="sm">+</osds-button>
+</osds-quantity>
+
+<p>Quantity using vanilla elements</p>
+<osds-quantity onclick="globalMethod()" id="quantity-1">
+  <button slot="minus" color="primary" size="sm">-</button>
+  <input style="max-width: 45px" type="number" color="primary" min="1" max="10" step="1
+" value="1"/>
+  <button slot="plus" color="primary" size="sm">+</button>
+</osds-quantity>
+</body>
+</html>

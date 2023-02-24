@@ -1,0 +1,13 @@
+@import '~@ovhcloud/ods-theming/size/ods-component-size';
+@import 'osds-icon.mixins';
+
+@mixin osds-icon-theme-size() {
+  /** sizes */
+
+  @include ods-foreach-theme-size(icon) using ($sizes) {
+    @include osds-icon-on-selected-host() {
+      height: ods-get-size-property($sizes, height);
+      width: ods-get-size-property($sizes, width);
+    }
+  }
+}

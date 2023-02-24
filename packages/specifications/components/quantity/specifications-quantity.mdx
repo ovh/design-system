@@ -1,0 +1,36 @@
+import {Description} from '@storybook/addon-docs';
+import Specs from '@ovhcloud/ods-core/src/components/quantity/docs/spec.md';
+import SpecsQuantityContents from '@ovhcloud/ods-specifications/components/quantity/specifications-quantity-contents.mdx';
+import SpecsQuantityIntegration from '@ovhcloud/ods-specifications/components/quantity/specifications-quantity-integration.mdx';
+import SpecsQuantityTests from '@ovhcloud/ods-specifications/components/quantity/specifications-quantity-tests.mdx';
+
+## Description
+The Quantity aims to show and modify a desired quantity.
+It can be displayed as 2 [Button](/)s with an [Input](/). Standard use for Quantity is with 2 osds-button as controls and an osds-input of type=number
+but native input can also be used as input and `<div>` or another component can be used as controls.
+
+##### Listeners
+* Listening input. If an osds-input is used, it listens odsValueChange event. If an HTMLInputElement is used, it listens onChange event.<br/>
+  When input value changes, input's `[min]` | `[max]` property is checked and minus | plus control is set to `[disabled]` if `[min]` | `[max]` value has been reached.
+* Listening native event (click event).<br/> Trigger stepDown() public method of input.
+* Listening native event (click event).<br/> Trigger stepUp() public method of input.
+
+The user is warned if an input (osds-input or native input) cannot be found. Same goes for minus and plus controls.
+
+## Properties
+Setting `disabled` property on Quantity component triggers `disabled` property on its 3 children.
+Only Quantity component knows its 3 children, none of them (controls, input) know parent component.
+
+#### Types
+Types don't apply directly to Quantity. It comes from used components (ie.Input and Button components).
+
+<Description>{Specs}</Description>
+
+## Contents
+<SpecsQuantityContents />
+
+## Integration
+<SpecsQuantityIntegration />
+
+## Tests
+<SpecsQuantityTests />

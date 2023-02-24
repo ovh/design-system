@@ -1,0 +1,50 @@
+/*
+ * TYPOGRAPHY SIZING
+ * This file contains all necessary font-size/line-height values
+ */
+
+$typo-base: 1; // 1rem as base
+$typo-ratio: 1; // default ratio is 1, used for zooming on text
+$typo-sizes: (
+        "01": 0.75,  // 12px
+        "02": 0.875, // 14px
+        "03": 1,     // 16px
+        "04": 1.125, // 18px
+        "05": 1.25,  // 20px
+        "06": 1.5,   // 24px
+        "07": 1.75,  // 28px
+        "08": 2.25,  // 39px
+        "09": 3.375, // 54px
+);
+$line-height-sizes: (
+        "01": 0.875, // 14px
+        "02": 1.125, // 18px
+        "03": 1.25,  // 20px
+        "04": 1.375, // 22px
+        "05": 1.75,  // 28px
+        "06": 2,     // 32px
+        "07": 2.188, // 35px
+        "08": 2.813, // 45px
+        "09": 4.188, // 67px
+);
+$letter-spacing-sizes: (
+        "01": -0.019, // -.3px
+        "02": 0,      // 0px
+);
+
+:root {
+  /* TYPOGRAPHY SIZING */
+  --ods-typo-size-ratio: #{$typo-ratio};
+
+  @each $size, $value in $typo-sizes {
+    --ods-typo-size-#{$size}: calc(#{$typo-base * $value}rem * var(--ods-typo-size-ratio));
+  }
+
+  @each $size, $value in $line-height-sizes {
+    --ods-line-height-size-#{$size}: calc(#{$typo-base * $value}rem * var(--ods-typo-size-ratio));
+  }
+
+  @each $size, $value in $letter-spacing-sizes {
+    --ods-letter-spacing-size-#{$size}: calc(#{$typo-base * $value}rem * var(--ods-typo-size-ratio));
+  }
+}

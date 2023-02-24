@@ -1,0 +1,65 @@
+import DesignButtonVariants from '../components/button/design-button-variants.mdx';
+
+
+# Components principles
+_All components have to follow some rules about color,
+size, variant and contrast_
+
+## Color
+Each component take as input the color.
+If no color is specified, the default one is applied.
+
+the color can be:
+
+| size    | description |
+|---------|-------------|
+| default<br />`by default` | mainly no color            |
+| primary | the most used color |
+| accent  | used to render visible a specific component, like CTAs buttons|
+| error   | the component is in error state |
+| warning | the component have a warning to notice |
+| info    | the component have a info to notice |
+| success | the component is in a done success |
+
+## Size
+Each component can have different sizes.
+If no size is specified, the `m` (middle) size is applied.
+
+- xs
+- sm
+- md `by default`
+- lg
+- xl
+
+The `size` attribute is an `enum` and set by default to `m`
+
+## Variant
+Each component can have some variant.
+They are specific for each component.
+A variant is an alternative design for the same component.
+
+For instance, the `button` component have some variants:
+<DesignButtonVariants />
+
+The `variant` attribute is an `enum` and set by default to the default variant.
+
+## Contrasted
+A component can be displayed in a `contrasted` way.
+When a component is placed on top of another with the same `color` for both,
+the second has to be contrasted.
+
+For instance, if we have a cart with a `primary` color (applied on background)
+and we have to place a button inside it.
+If the button have to be displayed in `primary` color too,
+we can have a contrast problem : same color on cart's background
+and in button's background.
+To avoid this, the contrast notion allow us to display a component
+in a contrasted way.
+So, here the button has to be contrasted.
+
+The `contrasted` attribute is a `boolean` and set by default to `false`
+
+## Disabled
+Each component can be deactivated, and the user cannot interact with it.
+
+The `disabled` attribute is a `boolean` and set by default to `false`

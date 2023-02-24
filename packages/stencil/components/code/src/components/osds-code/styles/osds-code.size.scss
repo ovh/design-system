@@ -1,0 +1,18 @@
+@import '~@ovhcloud/ods-theming/size/ods-component-size';
+@import './osds-code.mixins';
+
+@mixin osds-code-theme-size() {
+  /** sizes */
+
+  @include ods-foreach-theme-size(code) using ($sizes) {
+    @include osds-code-on-selected-host() {
+      border-radius: ods-get-size-property($sizes, border-radius);
+      min-height: ods-get-size-properties($sizes, min-height);
+      padding: 0;
+
+      @include osds-code-on-container-element() {
+        padding: ods-get-size-property($sizes, padding-y) ods-get-size-property($sizes, padding-x);
+      }
+    }
+  }
+}

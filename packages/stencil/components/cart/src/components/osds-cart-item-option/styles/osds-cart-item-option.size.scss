@@ -1,0 +1,17 @@
+@import '~@ovhcloud/ods-theming/size/ods-component-size';
+@import '~@ovhcloud/ods-theming/size/ods-theming-size';
+@import 'styles/osds-cart-item-option.mixins';
+
+@mixin osds-cart-item-option-theme-size() {
+  $size-definitions: ods-get-size-definitions();
+  $component-size-definition: ods-get-component-size-definition($size-definitions, cart);
+
+  :host {
+    $size-properties: ods-get-size-properties($component-size-definition, sm);
+    padding: ods-get-size-property($size-properties, section-padding);
+  }
+
+  :host([flex]) {
+    width: 100%;
+  }
+}

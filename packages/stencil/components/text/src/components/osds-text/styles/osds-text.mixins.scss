@@ -1,0 +1,6 @@
+// general mixins and functions for the component
+@mixin osds-text-on-selected-host() {
+  :host(&) {
+      @content;
+  }
+}

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html dir='ltr' lang='en'>
+<head>
+  <meta charset='utf-8'/>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0'/>
+  <title>Dev osds-input</title>
+
+  <script type="module">
+    !window.ods && (window.ods = {config: {logging: {active:true}}});
+  </script>
+
+  <script type='module' src='/build/osds-input.esm.js'></script>
+  <script nomodule src='/build/osds-input.js'></script>
+  <link rel="stylesheet" href="/build/osds-input.css">
+  <style>
+    .error-msg {
+      display: none;
+      background: gray;
+    }
+  </style>
+</head>
+<body>
+
+<section>
+
+  <article>
+    <h2>[number disabled]</h2>
+    <osds-input
+      type="number"
+      placeholder="Here is a number"
+      disabled
+    >
+    </osds-input>
+  </article>
+
+  <article>
+    <h2>[number odsInput-1]</h2>
+    <osds-input
+      id="odsInput-1"
+      type="number"
+      placeholder="Here is a number"
+      min="1"
+      max="4"
+      step="2"
+      color="primary"
+    >
+    </osds-input>
+  </article>
+
+  <article>
+    <h2>[number odsInput-2]</h2>
+    <osds-input
+      id="odsInput-2" type="number"
+      value="8"
+      min="0"
+      max="14"
+      step="4"
+    >
+    </osds-input>
+  </article>
+</section>
+
+<section>
+  <h2>[number color]</h2>
+  <article style="padding: 1em;">
+    <osds-input type="number" color="default" placeholder="default"></osds-input>
+    <osds-input type="number" color="primary" placeholder="primary"></osds-input>
+    <osds-input type="number" color="text" placeholder="text"></osds-input>
+    <osds-input type="number" color="accent" placeholder="accent"></osds-input>
+    <osds-input type="number" color="error" placeholder="error"></osds-input>
+    <osds-input type="number" color="warning" placeholder="warning"></osds-input>
+    <osds-input type="number" color="success" placeholder="success"></osds-input>
+    <osds-input type="number" color="info" placeholder="info"></osds-input>
+    <osds-input type="number" color="promotion" placeholder="promotion"></osds-input>
+  </article>
+
+  <h2>[number color contrasted]</h2>
+  <article style=" background: #000e9c; padding: 1em;">
+    <osds-input type="number" contrasted color="default" placeholder="default"></osds-input>
+    <osds-input type="number" contrasted color="primary" placeholder="primary"></osds-input>
+    <osds-input type="number" contrasted color="text" placeholder="text"></osds-input>
+    <osds-input type="number" contrasted color="accent" placeholder="accent"></osds-input>
+    <osds-input type="number" contrasted color="error" placeholder="error"></osds-input>
+    <osds-input type="number" contrasted color="warning" placeholder="warning"></osds-input>
+    <osds-input type="number" contrasted color="success" placeholder="success"></osds-input>
+    <osds-input type="number" contrasted color="info" placeholder="info"></osds-input>
+    <osds-input type="number" contrasted color="promotion" placeholder="promotion"></osds-input>
+  </article>
+
+
+</section>
+
+<article id="example-3">
+  <h2>[number]</h2>
+  <osds-input id="input-3" type="number" placeholder="Here is a number" min1="1" max1="4" step1="2" default-value="3">
+  </osds-input><button onclick="input3Clear()">clear</button><button onclick="input3Reset()">reset</button>
+  <span class="error-msg forbidden-value">Forbidden value</span>
+  <span class="error-msg value-missing">Value required please</span>
+  <span class="error-msg step-mismatch">Please insert a value by step 2, starting from 1</span>
+  <span class="error-msg valid">Not valid</span>
+</article>
+<section>
+
+</section>
+
+<script>
+  const odsInput1 = document.querySelector('osds-input#odsInput-1');
+  const odsInput2 = document.querySelector('osds-input#odsInput-2');
+
+
+  let logger;
+  document.addEventListener('odsInitialized', ({detail}) => {
+    const instance = detail.instance;
+    instance.logging(true);
+    logger = new instance.logger('www');
+    logger.log('odsInitialized received');
+  })
+
+  odsInput1.addEventListener('odsValueChange', (event) => {
+    logger && logger.log("🟡 odsValueChange event", event.detail);
+
+    odsInput1.getValidity().then((validity) => {
+      logger && logger.log("🟡 getValidity odsInput-1 from Event", validity);
+    });
+  })
+
+  async function getValidityForOdsInput1() {
+    await customElements.whenDefined('osds-input');
+    odsInput1.getValidity().then((validity) => {
+      logger && logger.log("🟡 getValidity odsInput-1", validity);
+    });
+  }
+
+  async function getValidityForOdsInput2() {
+    await customElements.whenDefined('osds-input');
+    odsInput2.getValidity().then((validity) => {
+      logger && logger.log("🔴 getValidity odsInput-2", validity);
+    });
+  }
+
+  getValidityForOdsInput1();
+  getValidityForOdsInput2();
+
+</script>
+
+</body>
+</html>

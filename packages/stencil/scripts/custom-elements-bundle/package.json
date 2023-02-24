@@ -1,0 +1,9 @@
+{
+  "name": "@ovhcloud/ods-stencil-custom-elements-bundle",
+  "version": "0.0.0",
+  "description": "ODS Components exported as bundled custom elements, extending HTMLElement.",
+  "main": "./index.js",
+  "types": "./custom-elements-bundle.d.ts",
+  "private": true,
+  "sideEffects": false
+}

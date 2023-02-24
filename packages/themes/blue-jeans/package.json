@@ -1,0 +1,32 @@
+{
+  "name": "@ovhcloud/ods-theme-blue-jeans",
+  "version": "10.2.0",
+  "description": "Blue Jeans theme, containing color variables & fonts",
+  "license": "Apache-2.0",
+  "style": "index.css",
+  "scripts": {
+    "build": "yarn run build:prod",
+    "build:prod": "yarn run build:sass:prefix",
+    "generate:licence": "npx generate-license-file --input package.json --output THIRD-PARTY-LICENCES --overwrite",
+    "generate:theme": "node-sass --importer ../../../node_modules/node-sass-package-importer/dist/cli.js theme/ -o dist && node-sass --importer ../../../node_modules/node-sass-package-importer/dist/cli.js fonts/index.scss dist/fonts.css",
+    "generate:prefix": "postcss dist/**/*.css --dir dist --use autoprefixer --parser postcss-scss",
+    "build:sass:prefix": "yarn run generate:theme && yarn run generate:prefix"
+  },
+  "dependencies": {
+    "@ovhcloud/ods-theming": "^10.2.0"
+  },
+  "publishConfig": {
+    "registry": ""
+  },
+  "devDependencies": {
+    "autoprefixer": "~10.3.7",
+    "node-sass": "^6.0.1",
+    "postcss": "^8.3.9",
+    "postcss-cli": "^9.0.1",
+    "postcss-scss": "^4.0.1"
+  },
+  "browserslist": [
+    "last 4 version",
+    "maintained node versions"
+  ]
+}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html dir='ltr' lang='en'>
+<head>
+  <meta charset='utf-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0' />
+  <title>Dev osds-button</title>
+
+  <script type="module">
+    !window.ods && (window.ods = {config: {logging: {active:true}}});
+  </script>
+
+  <script type='module' src='/build/osds-button.esm.js'></script>
+  <script nomodule src='/build/osds-button.js'></script>
+<!--  <script type="text/javascript">ods.instance().logging(true)</script>-->
+  <link rel="stylesheet" href="/build/osds-button.css">
+</head>
+<body>
+
+<p>Size</p>
+<osds-button size='sm'>Small</osds-button>
+<osds-button>Default</osds-button>
+<osds-button size='lg'>Large</osds-button>
+
+<p>Variant</p>
+<osds-button variant='ghost'>Ghost</osds-button>
+<osds-button variant='stroked'>Primary</osds-button>
+<osds-button variant='flat'>Secondary</osds-button>
+
+<p>Color</p>
+<osds-button color="default">default</osds-button>
+<osds-button color="primary">primary</osds-button>
+<osds-button color="success">success</osds-button>
+
+<p>Square</p>
+<osds-button square size='s'>Square small</osds-button>
+<osds-button square>Square</osds-button>
+<osds-button square size='l'>Square large</osds-button>
+
+<p>Disabled</p>
+<osds-button size='s' disabled>Small</osds-button>
+<osds-button disabled>Default</osds-button>
+<osds-button size='l' disabled>Large</osds-button>
+<osds-button variant='ghost' disabled>Ghost</osds-button>
+<osds-button variant='primary' disabled>Primary</osds-button>
+<osds-button variant='secondary' disabled>Secondary</osds-button>
+<osds-button block size='s' disabled>Block small</osds-button>
+<osds-button block disabled>Block</osds-button>
+<osds-button block size='l' disabled>Block large</osds-button>
+<osds-button square size='s' disabled>Square small</osds-button>
+<osds-button square disabled>Square</osds-button>
+<osds-button square size='l' disabled>Square large</osds-button>
+
+<script>
+  document.addEventListener('odsInitialized', ({detail}) => {
+    const instance = detail.instance;
+    instance.logging(true);
+    const logger = new instance.logger('www');
+    logger.log('odsInitialized received');
+
+    document.querySelectorAll('osds-button').forEach((elem) => {
+      elem.addEventListener('osdsButtonClick', function(event) {
+        logger.log('(html) addEventListener odsButtonClick: %o', event);
+      });
+    });
+  })
+</script>
+</body>
+</html>

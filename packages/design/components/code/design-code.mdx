@@ -1,0 +1,36 @@
+## Preview
+<osds-code style={{ pointerEvents: 'none' }}>
+  <osds-button slot='copy'></osds-button>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+</osds-code>
+
+## Description
+The Code component displays a code container. This is only a read-only component.
+An optional action can be placed in order to copy the code.
+The standard usage is with a `ods-button` in order to copy the content into clipboard.
+When an `ods-button` is placed, the button will be automatically filled with the copy `ods-icon`,
+except if you set up one yourself.
+
+For a `copy` action set with an `ods-button`, you cannot modify some properties:
+- `contrasted` (fixed to the contrary of the component's `contrasted` attribute itself)
+- `size` (fixed to `sm`)
+
+When you set the `ods-icon` inside the button, you cannot modify some properties:
+- `contrasted` (fixed to the contrary of the component's `contrasted` attribute itself)
+- `size` (fixed to `xs`)
+
+You can use the copy action with a `vanilla button` if you want to customize more.
+
+## Zoning
+The component has a main content in it and an optional zone called `copy`.
+
+<osds-code style={{ pointerEvents: 'none' }}>
+  <div slot='copy'>Copy</div>
+  Content
+</osds-code>
+
+## Colors
+All available colors can be applied on the code : default, primary, text, accent, error, warning, success, info and promotion
+
+## Sizes
+The Code has one size : `md`.

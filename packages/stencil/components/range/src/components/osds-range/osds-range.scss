@@ -1,0 +1,128 @@
+@import 'styles/osds-range.color.scss';
+@import 'styles/osds-range.mixins.scss';
+@import 'styles/osds-range.size.scss';
+@import 'styles/osds-range.typography.scss';
+
+@import '~@ovhcloud/ods-theming/color/ods-theming-color';
+@import '~@ovhcloud/ods-theming/ods-theme';
+
+:host {
+  display: inline-flex;
+  flex-flow: column;
+  width: var(--width);
+  position: relative;
+}
+
+[disabled] {
+  @include osds-range-on-selected-host() {
+    cursor: not-allowed;
+    opacity: .5;
+
+    * {
+      pointer-events: none;
+    }
+  }
+}
+
+[flex] {
+  @include osds-range-on-selected-host() {
+    width: 100%;
+    display: flex;
+  }
+}
+
+:host(.dual-range) {
+  .range-input,
+  .range-input_dual {
+    pointer-events: none;
+  }
+
+  .range-input_dual {
+    position: absolute;
+  }
+}
+
+.range-input,
+.range-input_dual {
+  -webkit-appearance: none;
+  background-color: transparent;
+  border-color: transparent;
+  box-sizing: border-box;
+  color: transparent;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  width: inherit;
+
+  &:focus-visible {
+    outline-style: dotted;
+  }
+
+  &::-webkit-slider-runnable-track {
+    box-shadow: none;
+    border: none;
+    cursor: pointer;
+  }
+  &::-moz-range-track {
+    box-shadow: none;
+    border: none;
+    cursor: pointer;
+  }
+  &::-ms-fill-upper {
+    box-shadow: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  @mixin thumb {
+    -webkit-appearance: none;
+    box-sizing: border-box;
+    box-shadow: none;
+    border-radius: 50%;
+    border-style: solid;
+    cursor: pointer;
+    pointer-events: auto;
+  }
+
+  &::-webkit-slider-thumb {
+    @include thumb;
+  }
+  &::-moz-range-thumb {
+    @include thumb;
+  }
+  &::-ms-thumb {
+    @include thumb;
+  }
+}
+
+.range-bounds:not(:empty) {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+
+  ::slotted([slot="start-bound"]) {
+    margin-bottom: var(--ods-size-stack-04);
+    text-align: start;
+    width: 100%;
+  }
+
+  ::slotted([slot="end-bound"]) {
+    margin-bottom: var(--ods-size-stack-04);
+    text-align: end;
+    width: 100%;
+  }
+ }
+
+.input-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  width: inherit;
+}
+
+// apply the theme template for the component
+@include ods-theme-component() {
+  @include osds-range-theme-color();
+  @include osds-range-theme-size();
+  @include osds-range-theme-typography();
+}

@@ -1,0 +1,26 @@
+// general mixins and functions for the component
+
+@mixin osds-input-on-selected-host() {
+  :host(&) {
+    @content;
+  }
+}
+
+@mixin osds-input-on-main-element() {
+  :host(&) input {
+    @content;
+  }
+}
+
+@mixin osds-input-on-focus() {
+  :host(&[hasFocus]){
+    @content;
+  }
+}
+
+
+@mixin osds-input-on-type-number-main-element() {
+  input[type=number] {
+    @content;
+  }
+}

@@ -1,0 +1,13 @@
+// general mixins and functions for the component
+
+@mixin osds-quantity-on-selected-host() {
+  :host(&) {
+    @content;
+  }
+}
+
+@mixin osds-quantity-on-main-element() {
+  //.quantity__wrapper {
+  //  @content;
+  //}
+}

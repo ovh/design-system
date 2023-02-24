@@ -1,0 +1,23 @@
+@import '~@ovhcloud/ods-theming/size/ods-component-size';
+@import './osds-button.mixins';
+
+.button {
+  height: 3.25rem;
+  border-radius: var(--ods-size-border-radius-02);
+  border-width: var(--ods-size-inset-02);
+  padding: 0 var(--ods-size-squish-06-x);
+}
+
+@mixin osds-button-theme-size() {
+  /** sizes */
+
+  @include ods-foreach-theme-size(button) using ($sizes) {
+    @include osds-button-on-selected-host() {
+      border-radius: ods-get-size-property($sizes, border-radius);
+      border-width: ods-get-size-property($sizes, border-width);
+      font-size: ods-get-size-property($sizes, font-size);
+      height: ods-get-size-property($sizes, height);
+      padding: ods-get-size-property($sizes, padding-y) ods-get-size-property($sizes, padding-x);
+    }
+  }
+}

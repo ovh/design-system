@@ -1,0 +1,13 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "declaration": true,
+    "paths": {
+      "@ovhcloud/ods-core": ["./packages/libraries/core/src/index"],
+      "@ovhcloud/ods-theming": ["./packages/libraries/theming/src/index"]
+    }
+  },
+  "include": [
+    "src"
+  ]
+}

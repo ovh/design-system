@@ -1,0 +1,54 @@
+@import 'styles/osds-checkbox-button.mixins';
+@import 'styles/osds-checkbox-button.color';
+@import 'styles/osds-checkbox-button.size';
+@import 'styles/osds-checkbox-button.typography';
+@import '~@ovhcloud/ods-theming/color/ods-theming-color';
+@import '~@ovhcloud/ods-theming/ods-theme';
+
+// CSS for the component but not for theming
+
+:host {
+  align-items: center;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  width: fit-content;
+  cursor: pointer;
+
+  .checkbox-button {
+    border-radius: var(--ods-size-border-radius-02);
+    border-style: solid;
+    position:relative;
+    text-align: center;
+    vertical-align: middle;
+
+    osds-icon {
+      display: none;
+      position: absolute;
+    }
+  }
+}
+
+:is([checked], [indeterminate]) {
+  @include osds-checkbox-button-on-checked-element() {
+    display: block;
+  }
+}
+
+[disabled] {
+  @include osds-checkbox-button-on-selected-host() {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+
+slot {
+  display: block;
+}
+
+// apply the theme template for the component
+@include ods-theme-component() {
+  @include osds-checkbox-button-theme-color();
+  @include osds-checkbox-button-theme-size();
+  @include osds-checkbox-button-theme-typography();
+}

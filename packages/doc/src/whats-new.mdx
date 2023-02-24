@@ -1,0 +1,100 @@
+<style>
+  {`
+    * {
+        font-family: "Source Sans Pro","Trebuchet MS","Arial","Segoe UI",sans-serif !important;
+    }
+  `}
+</style>
+
+# What's new ?
+
+
+## v10.2.0
+
+A new library called `CDK` for `Component Development Kit` is available.
+The main objective is to make the development to be easier thanks to helpers.
+The first integrated feature is an overlay system that allows manipulating and displaying content
+on foreground of the page.
+[CDK Documentation](/story/cdk-getting-started--page)
+
+We added a new entire section for `contributions` in the storybook.
+Feel free to read the [Contributing Documentation](/story/contributing-getting-started--page) if you want to contribute.
+
+We simplified our developer environment with a `global.dev.ts` file in order to
+make the developer tests isolated from the production build.
+
+We optimized our CI/CD workflow for a more reactive and efficient build time and release time.
+
+We fixed some issue about automated screenshot testing with some timeout.
+
+[Technical Changelog](/story/code-changelog--page)
+
+## v10.1.0
+
+We added the select component (version 1).
+[See Select Documentation](/story/ui-components-select-atom-overview--page)
+
+[Technical Changelog](/story/code-changelog--page)
+
+## v10.0.0
+
+We updated a lot of third dependencies (stencilJs, typescript, jest, puppeteer, ...):
+```text
+@stencil/core ~2.6.0 to ~2.18.1
+@stencil/sass ~1.4.1 to ~2.0.0
+jest ~26.6.3 to ~27.4.5
+@types/jest ~26.0.24 to ~27.5.2
+jest-cli ~26.6.3 to ~27.4.5
+jest-puppeteer ^5.0.4 to ~6.1.1
+jest-puppeteer-preset ^5.0.4 to ~6.1.1
+ts-jest ~26.5.6 to ~27.1.5
+typescript 4.2.3 to 4.7.4
+puppeteer ~5.5.0 to ~10.0.0
+yarn-2.4.2 to yarn-3.2.4
+node-fetch ~2.6.6 to ~2.6.7
+ts-node ~9.1.1 to ~10.7.0
+```
+> If you are an `ODS` contributor, you may need to do some changes
+
+We now build all of our components for `React` and `Vue` frameworks.
+They allow to use all the potential and features of your high-end JS framework.
+You can read the updated [Getting Started](/story/code-getting-started--page)
+and more especially the [ODS Starters chapter](/story/code-getting-started--page#ods-starters)
+to initialize an App with ODS and see how it works depending the framework.
+
+Also, `ods-cart` is no more impacted by a parent container with `text-align:center`.
+
+`ods-textarea` had an incorrect `spellcheck` property than could be equal to `spellcheck="false'` which is incorrect in HTML.
+Now it is in DOM only if it is `true`.
+
+You can now disable animation on `ods-toggle` by defining a CSS value `--ods-toggle-transition-slider: none`.
+
+Css variables `--ods-size-squish-n-*` and `--ods-size-stretch-n-*` are no more incorrect.
+It was previously set with only one number instead of two, accordingly with CSS3.
+
+As it is a major version, you have to do the [migration guide 9.x to 10.x](/story/code-migration-guide-9-x-to-10-x--page)
+
+[Technical Changelog](/story/code-changelog--page)
+
+## v9.1.0
+
+Adding 2 new components :
+- accordion: display a content that can be collapsed
+- code: display a snippet of code and copy it into the clipboard
+
+If you already have customized themes, you have to declare the variables for this 2 new components.
+see more in the migration guide 9.x
+
+## February 2022
+The V1 **Design System** graphical charter is finalized. This charter contains :
+* Multiple color palettes (blue, gray, red, orange, green, availability & promotion extra colors)
+* A Typography system
+* All spacing options
+* Components:
+  * **Buttons**
+  * **Form items** (inputs, dropdowns, checkboxes, radios, radio buttons, toggle buttons, range, textarea, etc.)
+  * **Chips & Badges**
+  * **Cards**
+  * **Cart**
+
+[It is visible here](https://xd.adobe.com/view/031606c8-8f2f-4163-a2c2-f037d64bb294-5645)

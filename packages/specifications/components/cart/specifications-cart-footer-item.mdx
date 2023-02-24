@@ -1,0 +1,32 @@
+import {Description} from '@storybook/addon-docs';
+import Specs from '@ovhcloud/ods-core/src/components/cart-footer-item/docs/spec.md';
+import DesignCartFooterItemZoningPreview from '@ovhcloud/ods-design/components/cart/design-cart-footer-item-zoning-preview.mdx';
+
+## Description
+The cart footer item displays a title, a subhead and a price equivalent to a subtotal. Extra information is optional.
+
+<Description>{Specs}</Description>
+
+## Contents
+<DesignCartFooterItemZoningPreview />
+
+| Name      | Description                           |
+|-----------|---------------------------------------|
+| `title`   | the item name (displayed as accented) |
+| `subhead` | the item context or reference         |
+| `price`   | the item option price excluded VAT    |
+| `extra`   | extra information like "HT / month"   |
+
+## Tests
+
+**Extra zone**
+- should displays the passed content in the extra zone
+
+**Title**
+- should display the name of the item
+
+**Subhead**
+- should display the specified subhead
+
+**Price**
+- should display the subtotal price of the added item

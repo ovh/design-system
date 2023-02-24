@@ -1,0 +1,27 @@
+@import 'styles/osds-quantity.mixins';
+@import '~@ovhcloud/ods-theming/color/ods-theming-color';
+@import '~@ovhcloud/ods-theming/ods-theme';
+
+// CSS for the component but not for theming
+
+:host {
+  display: flex;
+  flex-direction: row;
+  --ods-input-text-align: center;
+}
+:host([disabled]) {
+  cursor: not-allowed;
+}
+
+slot:not([name]) {
+  margin-left: .25em;
+  margin-right: .25em;
+}
+
+slot {
+  display: block;
+}
+
+// apply the theme template for the component
+@include ods-theme-component() {
+}

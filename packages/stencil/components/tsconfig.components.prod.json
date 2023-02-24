@@ -1,0 +1,54 @@
+{
+  "extends": "./tsconfig.prod.json",
+  "compilerOptions": {
+    "jsx": "react",
+    "jsxFactory": "h",
+    "declaration": true,
+    "allowJs": true,
+    "paths": {
+      "@ovhcloud/ods-stencil/components/*": ["./packages/stencil/components/*"]
+    }
+  },
+  "include": [
+    "src",
+    "accordion/src",
+    "button/src",
+    "cart/src",
+    "checkbox/src",
+    "checkbox-button/src",
+    "chip/src",
+    "code/src",
+    "content-addon/src",
+    "divider/src",
+    "flag/src",
+    "icon/src",
+    "input/src",
+    "link/src",
+    "location-tile/src",
+    "message/src",
+    "quantity/src",
+    "radio/src",
+    "radio-button/src",
+    "range/src",
+    "select/src",
+    "skeleton/src",
+    "text/src",
+    "textarea/src",
+    "tile/src",
+    "toggle/src"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/**/*.spec.ts",
+    "**/**/*.spec.tsx",
+    "**/**/*.e2e.ts",
+    "**/**/*.e2e.screenshot.ts",
+    "**/**/*.d.ts",
+    "**/.stencil",
+    "**/**/www.ts",
+    "**/**/global.dev.ts",
+    "**/**/www.components.ts",
+    "**/**/dist",
+    "react"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "@ovhcloud/ods-specifications",
+  "private": true,
+  "version": "10.2.0",
+  "description": "ODS design specifications",
+  "author": "OVH SAS",
+  "license": "Apache-2.0",
+  "main": "",
+  "module": "",
+  "dependencies": {
+    "@ovhcloud/ods-design": "^10.2.0"
+  },
+  "devDependencies": {
+    "typescript": "4.7.4"
+  },
+  "publishConfig": {
+    "registry": ""
+  }
+}

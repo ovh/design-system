@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html dir='ltr' lang='en'>
+<head>
+  <meta charset='utf-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0' />
+  <title>Dev osds-radio-button</title>
+
+  <script type="module">
+    !window.ods && (window.ods = {config: {logging: {active:true}}});
+  </script>
+
+  <script type='module' src='/build/osds-radio-button.esm.js'></script>
+  <script nomodule src='/build/osds-radio-button.js'></script>
+  <link rel="stylesheet" href="/build/osds-radio-button.css">
+</head>
+<body>
+<div>Radio button</div>
+<osds-radio-button color='primary'></osds-radio-button>
+<div>Radio button | interactive</div>
+<osds-radio-button color='primary' interactive></osds-radio-button>
+<div>Radio button | checked</div>
+<osds-radio-button color='primary' checked></osds-radio-button>
+<div>Radio button | has-focus </div>
+<osds-radio-button color='primary' has-focus></osds-radio-button>
+<div>Radio button | has-focus + interactive </div>
+<osds-radio-button color='primary' has-focus interactive></osds-radio-button>
+<div>Radio button | disabled </div>
+<osds-radio-button color='primary' disabled></osds-radio-button>
+<div>Radio button | disabled + interactive </div>
+<osds-radio-button color='primary' disabled interactive></osds-radio-button>
+</body>
+</html>

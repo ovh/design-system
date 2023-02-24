@@ -1,0 +1,9 @@
+@import '~@ovhcloud/ods-theming/color/ods-component-color';
+@import './osds-select-group.mixins';
+
+@mixin osds-select-group-theme-color() {
+
+  :host {
+    color: ods-get-color-variable($intent-name: text, $hue: '500');
+  }
+}

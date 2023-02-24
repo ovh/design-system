@@ -1,0 +1,38 @@
+@import '~@ovhcloud/ods-theming/size/ods-component-size';
+@import './osds-toggle.mixins';
+
+@mixin osds-toggle-theme-size() {
+  $size-definitions: ods-get-size-definitions();
+  $component-size-definition: ods-get-component-size-definition($size-definitions, toggle);
+  $size-properties: ods-get-size-properties($component-size-definition, md);
+
+  [checked] {
+    @include osds-toggle-on-selected-host() {
+      @include osds-toggle-on-main-element() {
+        @include osds-toggle-on-slider-before-element() {
+          transform: translateX(ods-get-size-property($size-properties, height));
+        }
+      }
+    }
+  }
+
+  :host {
+    @include osds-toggle-on-main-element() {
+      @include osds-toggle-on-container-element() {
+        width: ods-get-size-property($size-properties, width);
+        height: ods-get-size-property($size-properties, height);
+        border-radius: ods-get-size-property($size-properties, handle-border-radius);
+      }
+
+      @include osds-toggle-on-slider-element() {
+        border-radius: ods-get-size-property($size-properties, border-radius);
+      }
+
+      @include osds-toggle-on-slider-before-element() {
+        border-radius: ods-get-size-property($size-properties, handle-border-radius);
+        width: ods-get-size-property($size-properties, height);
+        height: ods-get-size-property($size-properties, height);
+      }
+    }
+  }
+}

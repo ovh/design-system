@@ -1,0 +1,15 @@
+@import '~@ovhcloud/ods-theming/size/ods-component-size';
+@import './osds-divider.mixins';
+
+@mixin osds-divider-theme-size() {
+  /** sizes */
+
+  @include ods-foreach-theme-size(divider) using ($sizes) {
+    @include osds-divider-on-selected-host() {
+      margin: calc(#{ods-get-size-properties($sizes, margin-y)} / 2) 0;
+      hr {
+        height: ods-get-size-property($sizes, height);
+      }
+    }
+  }
+}

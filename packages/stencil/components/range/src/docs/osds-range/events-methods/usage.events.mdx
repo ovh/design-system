@@ -1,0 +1,16 @@
+For more details go to [Events](#events)
+
+#### OdsValueChange
+
+```html
+<osds-range id="odsRange-1"></osds-range>
+
+<script>
+  const odsRange1 = document.querySelector('osds-range#odsRange-1');
+
+  odsRange1.addEventListener('odsValueChange', (event) => {
+    console.log("odsValueChange event", event.detail);
+  })
+</script>
+
+```

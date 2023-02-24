@@ -1,0 +1,10 @@
+{
+  "extends": "../../../tsconfig.prod.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "paths": {
+      "@ovhcloud/ods-design/*": ["./packages/design/*"],
+      "@ovhcloud/ods-specifications/*": ["./packages/specifications/*"]
+    }
+  }
+}

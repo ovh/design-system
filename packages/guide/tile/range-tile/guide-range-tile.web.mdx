@@ -1,0 +1,844 @@
+## Usage
+
+### Composition of a range-tile
+
+#### Template
+
+First we add the [radio](?path=/story/components-radio-radio-atom-design--page)
+and the [tile](?path=/docs/components-tile-tile-atom-design--page) components:
+```html
+<osds-radio>
+  <osds-tile interactive>
+  </osds-tile>
+</osds-radio>
+```
+
+We set the [tile](?path=/docs/components-tile-tile-atom-design--page) component with `interactive` to allow the selection.
+
+Now we can add a [range](?path=/story/components-range-atom-design--page) component with its `min`, `max` values and its `slots`:
+```html
+<osds-radio>
+  <osds-tile interactive>
+
+    <osds-range min="1" max="58">
+      <osds-text slot="start-bound">1tb</osds-text>
+      <osds-text slot="end-bound">58tb</osds-text>
+    </osds-range>
+
+  </osds-tile>
+</osds-radio>
+```
+
+Now we can add an [input](?path=/story/components-input%EF%B8%8F-atom-design--page) component with its `min`, `max` values:
+```html
+<osds-radio>
+  <osds-tile interactive>
+
+    <osds-range min="1" max="58">
+      <osds-text slot="start-bound">1tb</osds-text>
+      <osds-text slot="end-bound">58tb</osds-text>
+    </osds-range>
+
+    <osds-input type="number" min="1" max="58"></osds-input>
+
+  </osds-tile>
+</osds-radio>
+```
+
+Then we can add the price with a [content-addon](?path=/docs/components-content-addon-layout-web-component--default) component:
+```html
+<osds-radio>
+  <osds-tile interactive>
+
+    <osds-range min="1" max="58">
+      <osds-text slot="start-bound">1tb</osds-text>
+      <osds-text slot="end-bound">58tb</osds-text>
+    </osds-range>
+
+    <osds-input type="number" min="1" max="58"></osds-input>
+
+    <span slot='end'>
+      <osds-content-addon>
+        <span slot="main">
+          <osds-text>XXXX,XX ¤</osds-text>
+        </span>
+        <span slot="bottom">
+          <osds-text>ex.VAT / month</osds-text>
+        </span>
+      </osds-content-addon>
+    </span>
+
+  </osds-tile>
+</osds-radio>
+```
+
+To complete this template, we add some style and attributes (`color`, `flex`, `size` and for text component a `level`):
+```html
+<style>
+  .range-tile__tile {
+    align-items: center;
+  }
+
+  .range-tile__tile__range {
+    display: flex;
+    width: 100%;
+  }
+
+  .range-tile__input {
+    margin: 0 var(--ods-size-06);
+    width: 3rem;
+  }
+
+  osds-radio {
+    margin-bottom: var(--ods-size-06);
+    display: block;
+  }
+</style>
+
+<osds-radio>
+    <osds-tile class="range-tile__tile" color="primary" interactive flex>
+
+      <osds-range color="primary" flex min="1" max="58">
+        <osds-text slot="start-bound" level="subtitle" size="sm" color="primary">1tb</osds-text>
+        <osds-text slot="end-bound" level="subtitle" size="sm" color="primary">58tb</osds-text>
+      </osds-range>
+
+      <osds-input class="range-tile__input" type="number" color="primary" min="1" max="58"></osds-input>
+
+      <span slot='end'>
+        <osds-content-addon>
+          <span slot="main">
+            <osds-text level="subtitle" color="primary">XXXX,XX ¤</osds-text>
+          </span>
+          <span slot="bottom" style="text-align': right" class="bottom">
+            <osds-text level="caption" size="xs" color="primary">ex.VAT / month</osds-text>
+          </span>
+        </osds-content-addon>
+      </span>
+
+    </osds-tile>
+</osds-radio>
+```
+
+#### Native JavaScript Script
+
+Add `id` to radio, [input](?path=/story/components-input%EF%B8%8F-atom-design--page) and [range](?path=/story/components-range-atom-design--page) components:
+```html
+<osds-radio id="radio">
+    <osds-tile>
+
+      <osds-range id="range">
+        <osds-text slot="start-bound">1tb</osds-text>
+        <osds-text slot="end-bound">58tb</osds-text>
+      </osds-range>
+
+      <osds-input id="input"></osds-input>
+
+      <span slot='end'>
+        <osds-content-addon>
+          <span slot="main">
+            <osds-text>XXXX,XX ¤</osds-text>
+          </span>
+          <span slot="bottom">
+            <osds-text>ex.VAT / month</osds-text>
+          </span>
+        </osds-content-addon>
+      </span>
+
+    </osds-tile>
+</osds-radio>
+```
+
+
+Now we need to connect all the value of our components.
+Add a script tag to the template, start by waiting for the component to be define and get all elements that will communicates:
+```html
+<script>
+  (async () => {
+    await customElements.whenDefined('osds-radio');
+  })();
+
+  var radio = document.getElementById('radio');
+  var input = document.getElementById('input');
+  var range = document.getElementById('range');
+
+</script>
+```
+
+To initialise a `value` we need to set the value on the [radio](?path=/story/components-radio-radio-atom-design--page) component of all components with the [radio](?path=/story/components-radio-radio-atom-design--page) value that we can add to the template:
+```html
+<!-- template -->
+<osds-radio id="radio" value="5">
+    <osds-tile>
+<!-- ... -->
+
+<script>
+  // ...
+  input.setAttribute('value', Number(radio.value));
+  range.setAttribute('value', Number(radio.value));
+</script>
+```
+
+To simplify this we will use a `setProperty` function:
+```html
+<script>
+  // ...
+
+  //old way
+  //input.setAttribute('value', Number(radio.value));
+  //range.setAttribute('value', Number(radio.value));
+
+  //new way with a setProperty function
+  function setProperty(elements, attribute, value) {
+    elements.forEach((element) => {
+      element.setAttribute(attribute, value);
+    });
+  }
+
+  setProperty([input, range], 'value', Number(radio.value));
+
+</script>
+```
+
+To update the `value` from the [input](?path=/story/components-input%EF%B8%8F-atom-design--page) we need to listen
+to his `odsValueChange` event and set the property to the [radio](?path=/story/components-radio-radio-atom-design--page)
+and the [range](?path=/story/components-range-atom-design--page):
+```html
+<script>
+  // ...
+  input.addEventListener('odsValueChange', (event) => {
+    setProperty([radio, range], 'value', Number(event.detail.value));
+  });
+</script>
+```
+
+To update the `value` from the [range](?path=/story/components-range-atom-design--page) we need to listen
+to his `odsValueChange` event and set the property to the [radio](?path=/story/components-radio-radio-atom-design--page)
+and the [input](?path=/story/components-input%EF%B8%8F-atom-design--page) :
+```html
+<script>
+  // ...
+  range.addEventListener('odsValueChange', (event) => {
+    setProperty([radio, input], 'value', Number(event.detail.value));
+  });
+</script>
+```
+
+Full Script :
+```html
+<script>
+  (async () => {
+    await customElements.whenDefined('osds-radio');
+  })();
+
+  function setProperty(elements, attribute, value) {
+    elements.forEach((element) => {
+      element.setAttribute(attribute, value);
+    });
+  }
+
+  var radio = document.getElementById('radio');
+  var input = document.getElementById('input');
+  var range = document.getElementById('range');
+
+  setProperty([input, range], 'value', Number(radio.value));
+
+  input.addEventListener('odsValueChange', (event) => {
+    setProperty([radio, range], 'value', Number(event.detail.value));
+  });
+
+  range.addEventListener('odsValueChange', (event) => {
+    setProperty([radio, input], 'value', Number(event.detail.value));
+  });
+</script>
+```
+
+
+__Final template:__
+
+```html
+<style>
+  .range-tile__tile {
+    align-items: center;
+  }
+
+  .range-tile__tile__range {
+    display: flex;
+    width: 100%;
+  }
+
+  .range-tile__input {
+    margin: 0 var(--ods-size-06);
+    width: 3rem;
+  }
+
+  osds-radio {
+    margin-bottom: var(--ods-size-06);
+    display: block;
+  }
+</style>
+
+<osds-radio id="radio" value="5">
+    <osds-tile class="range-tile__tile" color="primary" interactive flex>
+
+      <osds-range id="range" color="primary" flex min="1" max="58">
+        <osds-text slot="start-bound" level="subtitle" size="sm" color="primary">1tb</osds-text>
+        <osds-text slot="end-bound" level="subtitle" size="sm" color="primary">58tb</osds-text>
+      </osds-range>
+
+      <osds-input id="input" class="range-tile__input" type="number" color="primary" min="1" max="58"></osds-input>
+
+      <span slot='end'>
+        <osds-content-addon>
+          <span slot="main">
+            <osds-text level="subtitle" color="primary">XXXX,XX ¤</osds-text>
+          </span>
+          <span slot="bottom" style="text-align: right" class="bottom">
+            <osds-text level="caption" size="xs" color="primary">ex.VAT / month</osds-text>
+          </span>
+        </osds-content-addon>
+      </span>
+
+    </osds-tile>
+</osds-radio>
+
+<script>
+  (async () => {
+    await customElements.whenDefined('osds-radio');
+  })();
+
+  var radio = document.getElementById('radio');
+  var input = document.getElementById('input');
+  var range = document.getElementById('range');
+
+  function setProperty(elements, attribute, value) {
+    elements.forEach((element) => {
+      element.setAttribute(attribute, value);
+    });
+  }
+
+  setProperty([input, range], 'value', Number(radio.value));
+
+  input.addEventListener('odsValueChange', (event) => {
+    setProperty([radio, range], 'value', Number(event.detail.value));
+  });
+
+  range.addEventListener('odsValueChange', (event) => {
+    setProperty([radio, input], 'value', Number(event.detail.value));
+  });
+</script>
+```
+
+### Group of range-tile
+
+Following the example of a simple [radio](?path=/story/components-radio-radio-atom-design--page), we need to loop into items to create multiple [radio](?path=/story/components-radio-radio-atom-design--page) inside a radio-group.
+
+#### Template
+
+To start, for the template we just need a [radio-group](?path=/docs/components-radio-radio-group-molecule-web-component--default) component with an id and a script tag (you can apply the same style from [radio](?path=/story/components-radio-radio-atom-design--page) composition):
+```html
+<osds-radio-group id="radio-group">
+</osds-radio-group>
+
+<script>
+</script>
+```
+
+#### Native JavaScript Script
+
+##### Define components and set items
+
+Add a script tag to the template, start by waiting for the component to be define and get the radio-group:
+```html
+<script>
+(async () => {
+  await customElements.whenDefined('osds-radio-group');
+  await customElements.whenDefined('osds-radio');
+})();
+
+var radioGroup = document.getElementById('radio-group');
+
+</script>
+```
+
+Set a list of items that we will used:
+```html
+<script>
+// ...
+
+var items = [
+  {
+    value: 1,
+    min: 1,
+    max: 58,
+    price: {
+      main: 20,
+      currency: "¤",
+      vat: "ex.VAT / month"
+    }
+  },
+  {
+    value: 15,
+    min: 1,
+    max: 42,
+    price: {
+      main: 5,
+      currency: "¤",
+      vat: "ex.VAT / month"
+    }
+  },
+  {
+    value: 2,
+    min: 1,
+    max: 8,
+    price: {
+      main: 15,
+      currency: "¤",
+      vat: "ex.VAT / month"
+    }
+  }];
+</script>
+```
+
+##### Radio template
+
+To start we need a function `html_radioTemplate` with 2 parameters `item` and `index`, that will return a template :
+```html
+<script>
+// ...
+
+function html_radioTemplate(item, index) {
+      return `
+        <osds-radio id="radio${index}" value="${item.value}">
+          <osds-tile class="range-tile__tile" color="primary" interactive flex>
+
+            <osds-range id="range${index}" color="primary" flex min="${item.min}" max="${item.max}">
+              <osds-text slot="start-bound" level="subtitle" size="sm" color="primary">${item.min}tb</osds-text>
+              <osds-text slot="end-bound" level="subtitle" size="sm" color="primary">${item.max}tb</osds-text>
+            </osds-range>
+
+            <osds-input id="input${index}" class="range-tile__input" type="number" color="primary" min="${item.min}" max="${item.max}"></osds-input>
+
+            <span slot='end'>
+              <osds-content-addon>
+                <span slot="main">
+                  <osds-text level="subtitle" color="primary">${item.price.main}${item.price.currency}</osds-text>
+                </span>
+                <span slot="bottom" style="text-align: right">
+                  <osds-text level="caption" size="xs" color="primary">${item.price.vat}</osds-text>
+                </span>
+              </osds-content-addon>
+            </span>
+          </osds-tile>
+        </osds-radio>
+      `;
+    };
+</script>
+```
+
+##### Loop into items and attach to radio-group
+
+Now we need to loop into the `items` set before and add our template to the [radio-group](?path=/docs/components-radio-radio-group-molecule-web-component--default) with `insertAdjacentHTML`:
+```html
+<script>
+// ...
+
+  items.forEach((item, index) => {
+    radioGroup.insertAdjacentHTML('beforeend', html_radioTemplate(item, index));
+  });
+</script>
+```
+
+##### Link elements for each radio
+
+Get our elements with `getElements` function and set the value with `setProperty`:
+```html
+<script>
+// ...
+
+  function getElements(index) {
+    const radio = document.getElementById('radio' + index);
+    const input = document.getElementById('input' + index);
+    const range = document.getElementById('range' + index);
+    return {radio, input, range};
+  }
+
+  function setProperty(elements, attribute, value) {
+    elements.forEach((element) => {
+      element.setAttribute(attribute, value);
+    });
+  }
+
+  items.forEach((item, index) => {
+    radioGroup.insertAdjacentHTML('beforeend', html_radioTemplate(item, index));
+
+    const {radio, input, range} = getElements(index);
+
+    setProperty([input, range], 'value', Number(radio.value));
+
+    input.addEventListener('odsValueChange', (event) => {
+      setProperty([radio, range], 'value', Number(event.detail.value));
+    });
+
+  });
+</script>
+```
+
+Listen each input to set the value on change (and do the same for the range) :
+```html
+<style>
+  .range-tile__tile {
+    align-items: center;
+  }
+
+  .range-tile__tile__range {
+    display: flex;
+    width: 100%;
+  }
+
+  .range-tile__input {
+    margin: 0 var(--ods-size-06);
+    width: 3rem;
+  }
+
+  osds-radio {
+    margin-bottom: var(--ods-size-06);
+    display: block;
+  }
+
+  osds-input {
+    --ods-input-text-align: center;
+  }
+</style>
+
+<osds-radio-group id="radio-group">
+</osds-radio-group>
+
+<script>
+// ...
+
+  items.forEach((item, index) => {
+    radioGroup.insertAdjacentHTML('beforeend', html_radioTemplate(item, index));
+
+    const {radio, input, range} = getElements(index);
+
+    setProperty([input, range], 'value', Number(radio.value));
+
+    input.addEventListener('odsValueChange', (event) => {
+      setProperty([radio, range], 'value', Number(event.detail.value));
+    });
+
+    range.addEventListener('odsValueChange', (event) => {
+      setProperty([radio, input], 'value', Number(event.detail.value));
+    });
+
+  });
+</script>
+```
+
+
+__Final template:__
+```html
+<style>
+  .range-tile__tile {
+    align-items: center;
+  }
+
+  .range-tile__tile__range {
+    display: flex;
+    width: 100%;
+  }
+
+  .range-tile__input {
+    margin: 0 var(--ods-size-06);
+    width: 3rem;
+  }
+
+  osds-radio {
+    margin-bottom: var(--ods-size-06);
+    display: block;
+  }
+
+  osds-input {
+    --ods-input-text-align: center;
+  }
+</style>
+
+<osds-radio-group id="radio-group">
+</osds-radio-group>
+
+<script>
+  (async () => {
+    await customElements.whenDefined('osds-radio-group');
+    await customElements.whenDefined('osds-radio');
+  })();
+
+  var radioGroup = document.getElementById('radio-group');
+
+  var items = [
+    {
+      value: 1,
+      min: 1,
+      max: 58,
+      price: {
+        main: 20,
+        currency: "¤",
+        vat: "ex.VAT / month"
+      }
+    },
+    {
+      value: 15,
+      min: 1,
+      max: 42,
+      price: {
+        main: 5,
+        currency: "¤",
+        vat: "ex.VAT / month"
+      }
+    },
+    {
+      value: 2,
+      min: 1,
+      max: 8,
+      price: {
+        main: 15,
+        currency: "¤",
+        vat: "ex.VAT / month"
+      }
+    }];
+
+  function html_radioTemplate(item, index) {
+    return `
+      <osds-radio id="radio${index}" value="${item.value}">
+        <osds-tile class="range-tile__tile" color="primary" interactive flex>
+
+          <osds-range id="range${index}" color="primary" flex min="${item.min}" max="${item.max}">
+            <osds-text slot="start-bound" level="subtitle" size="sm" color="primary">${item.min}tb</osds-text>
+            <osds-text slot="end-bound" level="subtitle" size="sm" color="primary">${item.max}tb</osds-text>
+          </osds-range>
+
+          <osds-input id="input${index}" class="range-tile__input" type="number" color="primary" min="${item.min}" max="${item.max}"></osds-input>
+
+          <span slot='end'>
+            <osds-content-addon>
+              <span slot="main">
+                <osds-text level="subtitle" color="primary">${item.price.main}${item.price.currency}</osds-text>
+              </span>
+              <span slot="bottom" style="text-align': right">
+                <osds-text level="caption" size="xs" color="primary">${item.price.vat}</osds-text>
+              </span>
+            </osds-content-addon>
+          </span>
+        </osds-tile>
+      </osds-radio>
+    `;
+  };
+
+  function getElements(index) {
+    const radio = document.getElementById('radio' + index);
+    const input = document.getElementById('input' + index);
+    const range = document.getElementById('range' + index);
+    return {radio, input, range};
+  }
+
+  function setProperty(elements, attribute, value) {
+    elements.forEach((element) => {
+      element.setAttribute(attribute, value);
+    });
+  }
+
+  items.forEach((item, index) => {
+    radioGroup.insertAdjacentHTML('beforeend', html_radioTemplate(item, index));
+
+    const {radio, input, range} = getElements(index);
+
+    setProperty([input, range], 'value', Number(radio.value));
+
+    input.addEventListener('odsValueChange', (event) => {
+      setProperty([radio, range], 'value', Number(event.detail.value));
+    });
+
+    range.addEventListener('odsValueChange', (event) => {
+      setProperty([radio, input], 'value', Number(event.detail.value));
+    });
+
+  });
+
+</script>
+```
+
+### Validation
+
+Template:
+```html
+<div class="radio-container">
+    <osds-radio id="radio" value="5">
+        <osds-tile id="tile" class="range-tile__tile" color="primary" interactive flex>
+
+          <osds-range id="range" color="primary" flex min="1" max="58" step="2">
+            <osds-text slot="start-bound" level="subtitle" size="sm" color="primary">1tb</osds-text>
+            <osds-text slot="end-bound" level="subtitle" size="sm" color="primary">58tb</osds-text>
+          </osds-range>
+
+          <osds-input id="input" class="range-tile__input" type="number" color="primary" min="1" max="58" step="2"></osds-input>
+
+          <span slot='end'>
+            <osds-content-addon>
+              <span slot="main">
+                <osds-text level="subtitle" color="primary">XXXX,XX ¤</osds-text>
+              </span>
+              <span slot="bottom" style="text-align: right" class="bottom">
+                <osds-text level="caption" size="xs" color="primary">ex.VAT / month</osds-text>
+              </span>
+            </osds-content-addon>
+          </span>
+
+        </osds-tile>
+    </osds-radio>
+    <span>
+      <osds-text
+        id="error-msg-value-missing"
+        class="error-msg"
+        level="caption" size="md" color="error"
+      >Value required please</osds-text>
+      <osds-text
+        id="error-msg-step-mismatch"
+        class="error-msg"
+        level="caption" size="md" color="error"
+      >Please insert a value by step 2, starting from 1</osds-text>
+      <osds-text
+        id="error-msg-valid"
+        class="error-msg"
+        level="caption" size="md" color="error"
+      >Not valid</osds-text>
+    </span>
+  </div>
+```
+
+Style:
+```css
+.range-tile__tile {
+    align-items: center;
+  }
+
+  .range-tile__tile__range {
+    display: flex;
+    width: 100%;
+  }
+
+  .range-tile__input {
+    --ods-input-text-align: center;
+    margin: 0 var(--ods-size-06);
+    width: 3rem;
+  }
+
+  .radio-container {
+    margin-bottom: var(--ods-size-06);
+    display: block;
+  }
+
+  .error-msg {
+    display: none;
+  }
+```
+
+Script:
+```ts
+  import { OdsErrorStateControl, OdsFormControl, OdsInputValueChangeEventDetail, OdsValidityState } from '@ovhcloud/ods-core';
+
+  // Wait radio and input component to be defined
+  (async () => {
+    await customElements.whenDefined('osds-radio');
+    await customElements.whenDefined('osds-input');
+  })();
+
+  // function to quickly set a an attribute to components
+  function setProperty(elements: HTMLElement[], attribute: string, value: any) {
+    elements.forEach(element => {
+      element.setAttribute(attribute, value);
+    });
+  }
+
+  // Get All elements
+  const radio: (HTMLElement & OsdsRadio) | null = document.getElementById('radio') as HTMLElement & OsdsRadio;
+  const input: (HTMLElement & OsdsInput) | null = document.getElementById('input') as HTMLElement & OsdsInput;
+  const range: (HTMLElement & OsdsRange) | null = document.getElementById('range') as HTMLElement & OsdsRange;
+  const tile: (HTMLElement & OsdsTile) | null = document.getElementById('tile') as HTMLElement & OsdsTile;
+  const inputErrorValueMissing: HTMLElement | null = document.querySelector('#error-msg-value-missing');
+  const inputErrorStepMismatch: HTMLElement | null = document.querySelector('#error-msg-step-mismatch');
+  const inputErrorValid: HTMLElement | null = document.querySelector('#error-msg-valid');
+
+  // Keep the default tile color in a tileDefaultColor (we will use it to restore the color)
+  const tileDefaultColor = tile.color;
+
+  // Set value for range and input with the radio value set in the tempate
+  setProperty([input, range], 'value', Number(radio.value));
+
+  // Set the value of the input and the radio when range when range changed
+  range.addEventListener('odsValueChange', (event: Event) => {
+    const evt = event as CustomEvent<OdsRangeValueChangeEventDetail>;
+    setProperty([input, radio], 'value', Number(evt.detail.value));
+  });
+
+  // Listen the value change of the input
+  input.addEventListener('odsValueChange', (event: Event) => {
+    const evt = event as CustomEvent<OdsInputValueChangeEventDetail>;
+
+    interface ErrorMessagesConnexion {
+      el: HTMLElement | null;
+      error: keyof OdsValidityState;
+    }
+
+    interface FoundErrorMessagesConnexion extends ErrorMessagesConnexion {
+      el: HTMLElement;
+    }
+
+    // Create an OdsFormControl and attach it to the formControl of the input
+    const inputFormControl = new OdsFormControl('2');
+    input.formControl = inputFormControl;
+
+    // Create OdsErrorStateControl and attach it to the errorStateControl of the input
+    class myErrorStateControl extends OdsErrorStateControl {}
+
+    const inputErrorStateControl = new myErrorStateControl();
+    input.errorStateControl = inputErrorStateControl;
+
+    // Link the elements to display with the type of error
+    const errorMessagesConnexions: ErrorMessagesConnexion[] = [
+      { el: inputErrorValueMissing, error: 'valueMissing' },
+      { el: inputErrorStepMismatch, error: 'stepMismatch' },
+      { el: inputErrorValid, error: 'invalid' },
+    ];
+
+    // Set the display to none if element of the error message is found
+    const filteredErrorMessagesConnexions = errorMessagesConnexions
+      .filter((cnx): cnx is FoundErrorMessagesConnexion => cnx.el !== null)
+      .map(cnx => {
+        cnx.el.style.display = 'none';
+        return cnx;
+      });
+
+    // Execute an asynchrone function to manage errors
+    (async () => {
+
+      // Get the errors
+      const shouldFilter = await Promise.all(filteredErrorMessagesConnexions.map(cnx => inputFormControl.hasError(cnx.error)));
+      const filteredErrors = filteredErrorMessagesConnexions.filter((value, index) => {
+        return shouldFilter[index];
+      });
+
+      // If there is an error or not we set the properties of input and tile
+      if (!filteredErrors.length) {
+        setProperty([radio, range], 'value', Number(evt.detail.value));
+        setProperty([tile], 'color', tileDefaultColor);
+        input.removeAttribute('error');
+      } else {
+        setProperty([input], 'error', true);
+        setProperty([tile], 'color', 'error');
+      }
+
+      // Display the errors
+      filteredErrors.forEach(cnx => (cnx.el.style.display = 'block'));
+    })();
+  });
+```

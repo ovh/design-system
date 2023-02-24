@@ -1,0 +1,11 @@
+{
+  "default": "design-images/chip/chip-colors/chip-color-default.png",
+  "primary": "design-images/chip/chip-colors/chip-color-primary.png",
+  "text": "design-images/chip/chip-colors/chip-color-text.png",
+  "accent": "design-images/chip/chip-colors/chip-color-accent.png",
+  "error": "design-images/chip/chip-colors/chip-color-error.png",
+  "warning": "design-images/chip/chip-colors/chip-color-warning.png",
+  "success": "design-images/chip/chip-colors/chip-color-success.png",
+  "info": "design-images/chip/chip-colors/chip-color-info.png",
+  "promotion": "design-images/chip/chip-colors/chip-color-promotion.png"
+}

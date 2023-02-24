@@ -1,0 +1,24 @@
+// general mixins and functions for the component
+@mixin osds-link-on-selected-host() {
+  :host(&) {
+      @content;
+  }
+}
+
+@mixin osds-link-on-link-container() {
+  .link {
+    @content;
+  }
+}
+
+@mixin osds-link-on-text-container() {
+  .link__text-container {
+    @content;
+  }
+}
+
+@mixin osds-link-on-text-content() {
+  .link__centered-text {
+    @content;
+  }
+}

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Testing report</title>
+  <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <style>
+    .mdc-card {
+      width: 600px;
+      display: flex;
+      margin: 30px auto;
+    }
+
+    .mdc-card-wrapper__text-section:last-child {
+      padding-bottom: 16px;
+    }
+
+    .mdc-card-wrapper__text-section:first-child, .mdc-card__media + .mdc-card-wrapper__text-section {
+      padding-top: 16px;
+    }
+
+    .mdc-card-wrapper__text-section {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+
+    .demo-card__title {
+      font-family: Roboto, sans-serif;
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-font-smoothing: antialiased;
+      font-size: 1.25rem;
+      line-height: 2rem;
+      font-weight: 500;
+      letter-spacing: .0125em;
+      text-decoration: inherit;
+      text-transform: inherit;
+    }
+
+    .mdc-list-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: inherit;
+      margin: 5px;
+    }
+
+    .mdc-list-item__text {
+      width: 150px;
+    }
+  </style>
+</head>
+<body>
+
+
+<header class="mdc-top-app-bar">
+  <div class="mdc-top-app-bar__row">
+    <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+      <button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button" aria-label="Open navigation menu">
+        menu
+      </button>
+      <span class="mdc-top-app-bar__title">Testing report</span>
+    </section>
+  </div>
+</header>
+<main class="mdc-top-app-bar--fixed-adjust">
+
+
+  <div class="mdc-card">
+
+    <div class="mdc-card-wrapper__text-section">
+      <div class="demo-card__title">Stencil</div>
+      <div class="demo-card__subhead">
+
+        <ul class="mdc-list" id="ods-stencil-e2e-list">
+        </ul>
+      </div>
+    </div>
+
+
+  </div>
+
+
+</main>
+
+<script>
+  const MDCTopAppBar = mdc.topAppBar.MDCTopAppBar;
+  const MDCTopAppBarFoundation = mdc.topAppBar.MDCTopAppBarFoundation;
+  const topAppBar = new MDCTopAppBar(document.querySelector('.mdc-top-app-bar'));
+
+  const selector = '.mdc-button, .mdc-icon-button, .mdc-card__primary-action';
+  const ripples = [].map.call(document.querySelectorAll(selector), function (el) {
+    return new mdc.ripple.MDCRipple(el);
+  });
+
+  const odsStencilE2eList = document.getElementById('ods-stencil-e2e-list');
+
+  const elements = [
+    {name: 'osds-accordion', id: 'accordion'},
+    {name: 'osds-button', id: 'button'},
+    {name: 'osds-cart', id: 'cart'},
+    {name: 'osds-chip', id: 'chip'},
+    {name: 'osds-code', id: 'code'},
+    {name: 'osds-content-addon', id: 'content-addon'},
+    {name: 'osds-divider', id: 'divider'},
+    {name: 'osds-flag', id: 'flag'},
+    {name: 'osds-icon', id: 'icon'},
+    {name: 'osds-input', id: 'input'},
+    {name: 'osds-link', id: 'link'},
+    {name: 'osds-location-tile', id: 'location-tile'},
+    {name: 'osds-radio', id: 'radio'},
+    {name: 'osds-range', id: 'range'},
+    {name: 'osds-text', id: 'text'},
+    {name: 'osds-tile', id: 'tile'},
+    {name: 'osds-toggle', id: 'toggle'},
+  ].map((componentDef) => {
+    return `
+          <li class="mdc-list-item" tabindex="0">
+
+            <a class="mdc-list-item__text">${componentDef.name}</a>
+
+            <a class="mdc-button mdc-button--raised" href="packages/stencil/components/${componentDef.id}/screenshot/compare.html">
+              <span class="mdc-button__ripple"></span>
+              <i class="material-icons mdc-button__icon" aria-hidden="true">screenshot</i>
+              <span class="mdc-button__label">screenshots</span>
+            </a>
+
+            <a class="mdc-button mdc-button--raised"
+                    href="packages/stencil/components/${componentDef.id}/coverage/lcov-report/index.html">
+              <span class="mdc-button__ripple"></span>
+              <i class="material-icons mdc-button__icon" aria-hidden="true">grading</i>
+              <span class="mdc-button__label">coverage</span>
+            </a>
+          </li>
+    `;
+  }).join("\n")
+  odsStencilE2eList.innerHTML = elements;
+
+  const list = new mdc.list.MDCList(document.getElementById('ods-stencil-e2e-list'));
+</script>
+</body>
+</html>

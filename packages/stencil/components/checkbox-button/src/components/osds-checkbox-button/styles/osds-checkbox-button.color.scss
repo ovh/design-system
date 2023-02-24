@@ -1,0 +1,34 @@
+@import '~@ovhcloud/ods-theming/color/ods-component-color';
+@import './osds-checkbox-button.mixins';
+
+@mixin osds-checkbox-button-theme-color() {
+  :host {
+    .checkbox-button {
+      outline: none;
+    }
+  }
+
+  @include ods-all-hue-foreach-theme-color((
+    background-color-checked: '500',
+    background-color-hover: '100',
+    background-color-focus: '200',
+    background-color-active: '200',
+    border-color: '500'
+  )) using($colors) {
+    @include osds-checkbox-button-on-main-element() {
+      border-color: map_get($colors, border-color);
+    }
+
+    @include osds-checkbox-button-on-hover {
+      @include osds-checkbox-button-on-main-element() {
+        background-color: map_get($colors, background-color-hover);
+      }
+    }
+
+    @include osds-checkbox-button-on-active {
+      @include osds-checkbox-button-on-main-element() {
+        background-color: map_get($colors, background-color-active);
+      }
+    }
+  }
+}

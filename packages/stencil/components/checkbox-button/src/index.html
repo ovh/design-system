@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html dir='ltr' lang='en'>
+<head>
+  <meta charset='utf-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0' />
+  <title>Dev osds-checkbox-button</title>
+
+  <script type="module">
+    !window.ods && (window.ods = {config: {logging: {active:true}}});
+  </script>
+
+  <script type='module' src='/build/osds-checkbox-button.esm.js'></script>
+  <script nomodule src='/build/osds-checkbox-button.js'></script>
+  <link rel="stylesheet" href="/build/osds-checkbox-button.css">
+</head>
+<body>
+<p>basic</p>
+<osds-checkbox-button></osds-checkbox-button>
+
+<p>on-focus</p>
+<osds-checkbox-button on-focus></osds-checkbox-button>
+
+<p>on-focus interactive</p>
+<osds-checkbox-button on-focus interactive></osds-checkbox-button>
+
+<p>on-focus interactive disabled</p>
+<osds-checkbox-button  on-focus interactive disabled></osds-checkbox-button>
+
+
+<p>on-focus interactive checked</p>
+<osds-checkbox-button on-focus interactive checked></osds-checkbox-button>
+
+<p>interactive checked indeterminate</p>
+<osds-checkbox-button interactive checked indeterminate></osds-checkbox-button>
+
+<p>interactive disabled checked indeterminate</p>
+<osds-checkbox-button  interactive disabled checked indeterminate></osds-checkbox-button>
+
+</body>
+</html>

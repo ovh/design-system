@@ -1,0 +1,11 @@
+{
+  "default": "design-images/link/link-colors/link-color-default.png",
+  "primary": "design-images/link/link-colors/link-color-primary.png",
+  "text": "design-images/link/link-colors/link-color-text.png",
+  "accent": "design-images/link/link-colors/link-color-accent.png",
+  "error": "design-images/link/link-colors/link-color-error.png",
+  "warning": "design-images/link/link-colors/link-color-warning.png",
+  "success": "design-images/link/link-colors/link-color-success.png",
+  "info": "design-images/link/link-colors/link-color-info.png",
+  "promotion": "design-images/link/link-colors/link-color-promotion.png"
+}

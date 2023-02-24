@@ -1,0 +1,21 @@
+// general mixins and functions for the component
+
+@mixin osds-button-on-selected-host() {
+  :host(&) {
+    @include osds-button-on-main-element() {
+      @content;
+    }
+  }
+}
+
+@mixin osds-button-on-text-container() {
+  .button__text-container {
+    @content;
+  }
+}
+
+@mixin osds-button-on-main-element() {
+  .button {
+    @content;
+  }
+}

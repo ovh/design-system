@@ -1,0 +1,20 @@
+# Code principles
+
+## Types
+For those who are using types for expressing how a component should be restricted to, it is mostly common to use the
+proper way of declaring it.
+As of now, we are using two declarations that are exported :
+- an _Array_ constant, which contains a read-only array with all values (in case you need values for documentation)
+- an _union type_ that can be used elsewhere
+
+>**Example of declaration for a button variant (in TypeScript) :**
+>```typescript
+>export const ButtonColorValues = ['default', 'primary', 'secondary'] as const;
+>export type ButtonColor = typeof ButtonColorValues[number];
+>```
+>rendering as :
+>```text
+>ButtonColorValues = readonly ['default', 'primary', 'secondary'];
+>ButtonColor = 'default' | 'primary' | 'secondary';
+>```
+

@@ -1,0 +1,175 @@
+# Typography
+
+- [Font-families&#10240;](#font-families)
+- [Font levels&#10240;](#font-levels)
+  - [Heading level&#10240;](#heading-level)
+  - [Subheading level&#10240;](#subheading-level)
+  - [Body level&#10240;](#body-level)
+  - [Button level&#10240;](#button-level)
+  - [Caption level&#10240;](#caption-level)
+- [Font-size baseline&#10240;](#font-size-baseline)
+- [Font-weight baseline&#10240;](#font-weight-baseline)
+
+## Font-families
+Source Sans Pro is the main font used in the OVHcloud universe. It can be used for headings as well as paragraphs.
+
+The current font-family complete definition (with fallbacks) is:
+`"Source Sans Pro", "Trebuchet MS", Arial, "Segoe UI", sans-serif`
+
+## Font levels
+export const fontLevelItem = {
+color: "var(--ods-color-primary-500)",
+display: "block",
+fontFamily: `"Source Sans Pro"`,
+textAlign: "center"
+};
+
+This font hierarchy should be the only one used throughout the entire OVHcloud ecosystem.
+
+### "Heading" level
+Each variable exists here as `--ods-typography-heading-%TYPE%-%PROPERTY%` (ex: `--ods-typography-heading-100-font-size`).
+
+| type    | `font-size` (rem) | `line-height` (rem) | `font-weight`  | `font-style` | `letter-spacing` (rem) | preview                                                                                                                                                                                                                                                                                                                                                                         |
+| -       | -                 | -                   | -              | -            | -                      | -                                                                                                                                                                                                                                                                                                                                                                               |
+| **100** | 1                 | 1.25                | 600 (semibold) | normal       | 0                      | <span style={Object.assign({}, fontLevelItem, { fontSize: 'var(--ods-typography-heading-100-font-size)', lineHeight: 'var(--ods-typography-heading-100-line-height)', fontWeight: 'var(--ods-typography-heading-100-font-weight)', fontStyle: 'var(--ods-typography-heading-100-font-style)', letterSpacing: 'var(--ods-typography-heading-100-letter-spacing)' })}>Text</span> |
+| **200** | 1                 | 1.375               | 700 (bold)     | normal       | 0                      | <span style={Object.assign({}, fontLevelItem, { fontSize: 'var(--ods-typography-heading-200-font-size)', lineHeight: 'var(--ods-typography-heading-200-line-height)', fontWeight: 'var(--ods-typography-heading-200-font-weight)', fontStyle: 'var(--ods-typography-heading-200-font-style)', letterSpacing: 'var(--ods-typography-heading-200-letter-spacing)' })}>Text</span> |
+| **300** | 1.125             | 1.375               | 700 (bold)     | normal       | 0                      | <span style={Object.assign({}, fontLevelItem, { fontSize: 'var(--ods-typography-heading-300-font-size)', lineHeight: 'var(--ods-typography-heading-300-line-height)', fontWeight: 'var(--ods-typography-heading-300-font-weight)', fontStyle: 'var(--ods-typography-heading-300-font-style)', letterSpacing: 'var(--ods-typography-heading-300-letter-spacing)' })}>Text</span> |
+| **400** | 1.25              | 1.75                | 700 (bold)     | normal       | 0                      | <span style={Object.assign({}, fontLevelItem, { fontSize: 'var(--ods-typography-heading-400-font-size)', lineHeight: 'var(--ods-typography-heading-400-line-height)', fontWeight: 'var(--ods-typography-heading-400-font-weight)', fontStyle: 'var(--ods-typography-heading-400-font-style)', letterSpacing: 'var(--ods-typography-heading-400-letter-spacing)' })}>Text</span> |
+| **500** | 1.5               | 2                   | 700 (bold)     | normal       | 0                      | <span style={Object.assign({}, fontLevelItem, { fontSize: 'var(--ods-typography-heading-500-font-size)', lineHeight: 'var(--ods-typography-heading-500-line-height)', fontWeight: 'var(--ods-typography-heading-500-font-weight)', fontStyle: 'var(--ods-typography-heading-500-font-style)', letterSpacing: 'var(--ods-typography-heading-500-letter-spacing)' })}>Text</span> |
+| **600** | 1.75              | 2.188               | 700 (bold)     | normal       | 0                      | <span style={Object.assign({}, fontLevelItem, { fontSize: 'var(--ods-typography-heading-600-font-size)', lineHeight: 'var(--ods-typography-heading-600-line-height)', fontWeight: 'var(--ods-typography-heading-600-font-weight)', fontStyle: 'var(--ods-typography-heading-600-font-style)', letterSpacing: 'var(--ods-typography-heading-600-letter-spacing)' })}>Text</span> |
+| **700** | 2.25              | 2.813               | 700 (bold)     | normal       | 0                      | <span style={Object.assign({}, fontLevelItem, { fontSize: 'var(--ods-typography-heading-700-font-size)', lineHeight: 'var(--ods-typography-heading-700-line-height)', fontWeight: 'var(--ods-typography-heading-700-font-weight)', fontStyle: 'var(--ods-typography-heading-700-font-style)', letterSpacing: 'var(--ods-typography-heading-700-letter-spacing)' })}>Text</span> |
+| **800** | 3.375             | 4.188               | 700 (bold)     | normal       | 0                      | <span style={Object.assign({}, fontLevelItem, { fontSize: 'var(--ods-typography-heading-800-font-size)', lineHeight: 'var(--ods-typography-heading-800-line-height)', fontWeight: 'var(--ods-typography-heading-800-font-weight)', fontStyle: 'var(--ods-typography-heading-800-font-style)', letterSpacing: 'var(--ods-typography-heading-800-letter-spacing)' })}>Text</span> |
+
+### "Subheading" level
+Each variable exists here as `--ods-typography-subheading-%TYPE%-%PROPERTY%` (ex: `--ods-typography-subheading-100-font-size`).
+
+| type    | `font-size` (rem) | `line-height` (rem) | `font-weight`  | `font-style` | `letter-spacing` (rem) | preview                                                                                                                                                                                                                                                                                                                                                                                        |
+| -       | -                 | -                   | -              | -            | -                      | -                                                                                                                                                                                                                                                                                                                                                                                              |
+| **100** | 1                 | 1.25                | 600 (semibold) | normal       | 0                      | <span style={Object.assign({}, fontLevelItem, { fontSize: 'var(--ods-typography-subheading-100-font-size)', lineHeight: 'var(--ods-typography-subheading-100-line-height)', fontWeight: 'var(--ods-typography-subheading-100-font-weight)', fontStyle: 'var(--ods-typography-subheading-100-font-style)', letterSpacing: 'var(--ods-typography-subheading-100-letter-spacing)' })}>Text</span> |
+| **200** | 1.25              | 1.75                | 700 (bold)     | normal       | 0                      | <span style={Object.assign({}, fontLevelItem, { fontSize: 'var(--ods-typography-subheading-200-font-size)', lineHeight: 'var(--ods-typography-subheading-200-line-height)', fontWeight: 'var(--ods-typography-subheading-200-font-weight)', fontStyle: 'var(--ods-typography-subheading-200-font-style)', letterSpacing: 'var(--ods-typography-subheading-200-letter-spacing)' })}>Text</span> |
+
+### "Body" level
+Each variable exists here as `--ods-typography-body-%TYPE%-%PROPERTY%` (ex: `--ods-typography-body-100-font-size`).
+
+| type    | `font-size` (rem) | `line-height` (rem) | `font-weight`  | `font-style` | `letter-spacing` (rem) | preview                                                                                                                                                                                                                                                                                                                                                          |
+| -       | -                 | -                   | -              | -            | -                      | -                                                                                                                                                                                                                                                                                                                                                                |
+| **100** | 0.875             | 1.125               | 400 (regular)  | normal       | 0                      | <span style={Object.assign({}, fontLevelItem, { fontSize: 'var(--ods-typography-body-100-font-size)', lineHeight: 'var(--ods-typography-body-100-line-height)', fontWeight: 'var(--ods-typography-body-100-font-weight)', fontStyle: 'var(--ods-typography-body-100-font-style)', letterSpacing: 'var(--ods-typography-body-100-letter-spacing)' })}>Text</span> |
+| **200** | 0.875             | 1.125               | 600 (semibold) | normal       | 0                      | <span style={Object.assign({}, fontLevelItem, { fontSize: 'var(--ods-typography-body-200-font-size)', lineHeight: 'var(--ods-typography-body-200-line-height)', fontWeight: 'var(--ods-typography-body-200-font-weight)', fontStyle: 'var(--ods-typography-body-200-font-style)', letterSpacing: 'var(--ods-typography-body-200-letter-spacing)' })}>Text</span> |
+| **300** | 1                 | 1.25                | 400 (regular)  | italic       | 0                      | <span style={Object.assign({}, fontLevelItem, { fontSize: 'var(--ods-typography-body-300-font-size)', lineHeight: 'var(--ods-typography-body-300-line-height)', fontWeight: 'var(--ods-typography-body-300-font-weight)', fontStyle: 'var(--ods-typography-body-300-font-style)', letterSpacing: 'var(--ods-typography-body-300-letter-spacing)' })}>Text</span> |
+| **400** | 1                 | 1.25                | 400 (regular)  | normal       | 0                      | <span style={Object.assign({}, fontLevelItem, { fontSize: 'var(--ods-typography-body-400-font-size)', lineHeight: 'var(--ods-typography-body-400-line-height)', fontWeight: 'var(--ods-typography-body-400-font-weight)', fontStyle: 'var(--ods-typography-body-400-font-style)', letterSpacing: 'var(--ods-typography-body-400-letter-spacing)' })}>Text</span> |
+| **500** | 1                 | 1.25                | 600 (semibold) | normal       | 0                      | <span style={Object.assign({}, fontLevelItem, { fontSize: 'var(--ods-typography-body-500-font-size)', lineHeight: 'var(--ods-typography-body-500-line-height)', fontWeight: 'var(--ods-typography-body-500-font-weight)', fontStyle: 'var(--ods-typography-body-500-font-style)', letterSpacing: 'var(--ods-typography-body-500-letter-spacing)' })}>Text</span> |
+| **600** | 1.25              | 1.75                | 400 (regular)  | normal       | 0                      | <span style={Object.assign({}, fontLevelItem, { fontSize: 'var(--ods-typography-body-600-font-size)', lineHeight: 'var(--ods-typography-body-600-line-height)', fontWeight: 'var(--ods-typography-body-600-font-weight)', fontStyle: 'var(--ods-typography-body-600-font-style)', letterSpacing: 'var(--ods-typography-body-600-letter-spacing)' })}>Text</span> |
+
+### "Button" level
+Each variable exists here as `--ods-typography-button-%TYPE%-%PROPERTY%` (ex: `--ods-typography-button-100-font-size`).
+
+| type    | `font-size` (rem) | `line-height` (rem) | `font-weight`  | `font-style` | `letter-spacing` (rem) | preview                                                                                                                                                                                                                                                                                                                                                                    |
+| -       | -                 | -                   | -              | -            | -                      | -                                                                                                                                                                                                                                                                                                                                                                          |
+| **100** | 1                 | 1.25                | 600 (semibold) | normal       | 0                      | <span style={Object.assign({}, fontLevelItem, { fontSize: 'var(--ods-typography-button-100-font-size)', lineHeight: 'var(--ods-typography-button-100-line-height)', fontWeight: 'var(--ods-typography-button-100-font-weight)', fontStyle: 'var(--ods-typography-button-100-font-style)', letterSpacing: 'var(--ods-typography-button-100-letter-spacing)' })}>Text</span> |
+
+### "Caption" level
+Each variable exists here as `--ods-typography-caption-%TYPE%-%PROPERTY%` (ex: `--ods-typography-caption-100-font-size`).
+
+| type    | `font-size` (rem) | `line-height` (rem) | `font-weight` | `font-style` | `letter-spacing` (rem) | preview                                                                                                                                                                                                                                                                                                                                                                         |
+| -       | -                 | -                   | -             | -            | -                      | -                                                                                                                                                                                                                                                                                                                                                                               |
+| **100** | 0.75              | 0.875               | 400 (regular) | normal       | -0.313                 | <span style={Object.assign({}, fontLevelItem, { fontSize: 'var(--ods-typography-caption-100-font-size)', lineHeight: 'var(--ods-typography-caption-100-line-height)', fontWeight: 'var(--ods-typography-caption-100-font-weight)', fontStyle: 'var(--ods-typography-caption-100-font-style)', letterSpacing: 'var(--ods-typography-caption-100-letter-spacing)' })}>Text</span> |
+
+---
+
+## Font-size baseline
+export const fontSizeItem = {
+    color: "var(--ods-color-primary-500)",
+    display: "flex",
+    fontFamily: `"Source Sans Pro"`,
+    height: "3rem",
+    placeItems: "center",
+    placeContent: "center"
+};
+
+These 9 values are the baseline font sizes used in the OVHcloud universe. All font levels are inherited from the below
+list.
+
+However, those variables **should not be used directly in the code**. Instead, use the font level variables above that incoporate
+the font-size.
+
+| name                 | size(rem) | size(px)   | preview                                                                                            |
+| -                    | --------  | ---------- | -------                                                                                            |
+| `--ods-typo-size-01` | 0.75      | 12         | <span style={Object.assign({}, fontSizeItem, { fontSize: 'var(--ods-typo-size-01)' })}>Text</span> |
+| `--ods-typo-size-02` | 0.875     | 14         | <span style={Object.assign({}, fontSizeItem, { fontSize: 'var(--ods-typo-size-02)' })}>Text</span> |
+| `--ods-typo-size-03` | 1         | 16         | <span style={Object.assign({}, fontSizeItem, { fontSize: 'var(--ods-typo-size-03)' })}>Text</span> |
+| `--ods-typo-size-04` | 1.125     | 18         | <span style={Object.assign({}, fontSizeItem, { fontSize: 'var(--ods-typo-size-04)' })}>Text</span> |
+| `--ods-typo-size-05` | 1.25      | 20         | <span style={Object.assign({}, fontSizeItem, { fontSize: 'var(--ods-typo-size-05)' })}>Text</span> |
+| `--ods-typo-size-06` | 1.5       | 24         | <span style={Object.assign({}, fontSizeItem, { fontSize: 'var(--ods-typo-size-06)' })}>Text</span> |
+| `--ods-typo-size-07` | 1.75      | 28         | <span style={Object.assign({}, fontSizeItem, { fontSize: 'var(--ods-typo-size-07)' })}>Text</span> |
+| `--ods-typo-size-08` | 2.25      | 36         | <span style={Object.assign({}, fontSizeItem, { fontSize: 'var(--ods-typo-size-08)' })}>Text</span> |
+| `--ods-typo-size-09` | 3.375     | 54         | <span style={Object.assign({}, fontSizeItem, { fontSize: 'var(--ods-typo-size-09)' })}>Text</span> |
+
+## Line-height baseline
+export const lineHeightItem = {
+  color: "var(--ods-color-primary-500)",
+  fontFamily: `"Source Sans Pro"`,
+  textAlign: "center",
+  fontSize: 'var(--ods-line-height-size-07)',
+};
+
+These 9 values are the baseline line heights used in the OVHcloud universe. All font levels are inherited from the below
+list.
+
+However, those variables **should not be used directly in the code**. Instead, use the font level variables above that incoporate
+the font-size.
+
+| name                        | size(rem) | size(px) | preview                                                                                                       |
+| -                           | --------  | -------  | -------                                                                                                       |
+| `--ods-line-height-size-01` | 0.875     | 14       | <span style={Object.assign({}, lineHeightItem, { lineHeight: 'var(--ods-line-height-size-01)' })}>Text</span> |
+| `--ods-line-height-size-02` | 1.125     | 18       | <span style={Object.assign({}, lineHeightItem, { lineHeight: 'var(--ods-line-height-size-02)' })}>Text</span> |
+| `--ods-line-height-size-03` | 1.25      | 20       | <span style={Object.assign({}, lineHeightItem, { lineHeight: 'var(--ods-line-height-size-03)' })}>Text</span> |
+| `--ods-line-height-size-04` | 1.375     | 22       | <span style={Object.assign({}, lineHeightItem, { lineHeight: 'var(--ods-line-height-size-04)' })}>Text</span> |
+| `--ods-line-height-size-05` | 1.75      | 28       | <span style={Object.assign({}, lineHeightItem, { lineHeight: 'var(--ods-line-height-size-05)' })}>Text</span> |
+| `--ods-line-height-size-06` | 2         | 39       | <span style={Object.assign({}, lineHeightItem, { lineHeight: 'var(--ods-line-height-size-06)' })}>Text</span> |
+| `--ods-line-height-size-07` | 2.188     | 54       | <span style={Object.assign({}, lineHeightItem, { lineHeight: 'var(--ods-line-height-size-07)' })}>Text</span> |
+| `--ods-line-height-size-08` | 2.813     | 45       | <span style={Object.assign({}, lineHeightItem, { lineHeight: 'var(--ods-line-height-size-08)' })}>Text</span> |
+| `--ods-line-height-size-09` | 4.188     | 67       | <span style={Object.assign({}, lineHeightItem, { lineHeight: 'var(--ods-line-height-size-09)' })}>Text</span> |
+
+## Letter-spacing baseline
+export const letterSpacingItem = {
+  color: "var(--ods-color-primary-500)",
+  display: "block",
+  fontFamily: `"Source Sans Pro"`,
+  textAlign: "center",
+  fontSize: 'var(--ods-line-height-size-03)',
+};
+
+These 2 values are the baseline letter spacing used in the OVHcloud universe. All font levels are inherited from the below
+list.
+
+However, those variables **should not be used directly in the code**. Instead, use the font level variables above that incoporate
+the font-size.
+
+| name                           | size(rem) | size(px) | preview                                                                                                                |
+| -                              | --------  | -------  | -------                                                                                                                |
+| `--ods-letter-spacing-size-01` | -0.063    | -1       | <span style={Object.assign({}, letterSpacingItem, { letterSpacing: 'var(--ods-letter-spacing-size-01)' })}>Text</span> |
+| `--ods-letter-spacing-size-02` | 0         | 0        | <span style={Object.assign({}, letterSpacingItem, { letterSpacing: 'var(--ods-letter-spacing-size-02)' })}>Text</span> |
+
+## Font-weight baseline
+export const fontWeightItem = {
+    color: "var(--ods-color-primary-500)",
+    display: "block",
+    fontFamily: `"Source Sans Pro"`,
+    textAlign: "center",
+    fontSize: "var(--ods-typo-size-07)"
+};
+
+These 6 values are the baseline font-weight used in the OVHcloud universe. All font levels are inherited from the below
+list.
+
+However, those variables **should not be used directly in the code**. Instead, use the font level variables above that incoporate
+the font-weight.
+
+| name                            | weight   | preview                                                                                                           |
+| -                               | -------- | -------                                                                                                           |
+| `--ods-typo-weight-extra-light` | 200      | <span style={Object.assign({}, fontWeightItem, { fontWeight: 'var(--ods-typo-weight-extra-light)' })}>Text</span> |
+| `--ods-typo-weight-light`       | 300      | <span style={Object.assign({}, fontWeightItem, { fontWeight: 'var(--ods-typo-weight-light)' })}>Text</span>       |
+| `--ods-typo-weight-regular`     | 400      | <span style={Object.assign({}, fontWeightItem, { fontWeight: 'var(--ods-typo-weight-regular)' })}>Text</span>     |
+| `--ods-typo-weight-semibold`    | 600      | <span style={Object.assign({}, fontWeightItem, { fontWeight: 'var(--ods-typo-weight-semibold)' })}>Text</span>    |
+| `--ods-typo-weight-bold`        | 700      | <span style={Object.assign({}, fontWeightItem, { fontWeight: 'var(--ods-typo-weight-bold)' })}>Text</span>        |
+| `--ods-typo-weight-black`       | 900      | <span style={Object.assign({}, fontWeightItem, { fontWeight: 'var(--ods-typo-weight-black)' })}>Text</span>       |

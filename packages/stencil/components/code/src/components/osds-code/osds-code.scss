@@ -1,0 +1,37 @@
+@import 'styles/osds-code.mixins';
+@import 'styles/osds-code.color';
+@import 'styles/osds-code.size';
+@import 'styles/osds-code.typography.scss';
+@import '~@ovhcloud/ods-theming/color/ods-theming-color';
+@import '~@ovhcloud/ods-theming/reset/ods-theming-reset.button';
+@import '~@ovhcloud/ods-theming/ods-theme';
+
+// CSS for the component but not for theming
+:host {
+  @include osds-code-on-main-element() {
+    position: relative;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+
+    @include osds-code-on-container-element() {
+      flex: 1 1 auto;
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      white-space: pre-line;
+    }
+  }
+}
+
+slot[name='copy'] {
+  display: flex;
+  margin: var(--ods-size-03);
+}
+
+// apply the theme template for the component
+@include ods-theme-component() {
+  @include osds-code-theme-color();
+  @include osds-code-theme-size();
+  @include osds-code-theme-typography();
+}

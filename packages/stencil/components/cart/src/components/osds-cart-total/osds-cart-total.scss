@@ -1,0 +1,52 @@
+@import 'styles/osds-cart-total.mixins';
+@import 'styles/osds-cart-total.color';
+@import 'styles/osds-cart-total.size';
+@import 'styles/osds-cart-total.typography';
+@import '~@ovhcloud/ods-theming/ods-theme';
+
+:host {
+
+  @include osds-cart-total-on-main-content() {
+    align-items: baseline;
+    display: grid;
+    gap: 0 0;
+    grid-template-areas:
+      "total price"
+      "info extra"
+      "content content";
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto;
+  }
+}
+
+slot {
+  display: grid;
+
+}
+
+slot[name="total"] {
+  grid-area: total;
+  align-content: center;
+}
+
+slot[name="info"] {
+  grid-area: info;
+  align-content: center;
+}
+
+slot[name="price"] {
+  grid-area: price;
+  justify-content: right;
+}
+
+slot[name="extra"] {
+  grid-area: extra;
+  justify-content: right;
+}
+
+// apply the theme template for the component
+@include ods-theme-component() {
+  @include osds-cart-total-theme-color();
+  @include osds-cart-total-theme-size();
+  @include osds-cart-total-theme-typography();
+}

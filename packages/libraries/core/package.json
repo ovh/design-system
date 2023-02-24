@@ -1,0 +1,31 @@
+{
+  "name": "@ovhcloud/ods-core",
+  "version": "10.2.0",
+  "description": "ODS core",
+  "author": "OVH SAS",
+  "license": "Apache-2.0",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "scripts": {
+    "ignore:rm": "git clean -Xdf",
+    "build:esm": "tsc -p tsconfig.esm.json",
+    "build:cjs": "tsc -p tsconfig.cjs.json",
+    "build": "npm run build:esm && npm run build:cjs && node ./scripts/generate-ods-version.js",
+    "build:prod": "npm run build",
+    "watch": "tsc -w -p tsconfig.esm.json",
+    "doc": "typedoc --plugin none src/* && typedoc --plugin typedoc-plugin-markdown --hideBreadcrumbs true --hideInPageTOC true && typedoc --json ./typedoc/typedoc.json --pretty && tsc src/utils/typedoc/typedoc-json-to-md.ts && node scripts/generate-typedoc-md.js",
+    "generate:licence": "npx generate-license-file --input package.json --output THIRD-PARTY-LICENCES --overwrite",
+    "test:spec": "jest",
+    "test:spec:ci": "jest --ci --detectOpenHandles"
+  },
+  "peerDependencies": {
+    "@ovhcloud/ods-theming": ">=2"
+  },
+  "devDependencies": {
+    "@ovhcloud/ods-library-dev": "^10.2.0",
+    "@ovhcloud/ods-theming": "^10.2.0"
+  },
+  "publishConfig": {
+    "registry": ""
+  }
+}

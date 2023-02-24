@@ -1,0 +1,55 @@
+@import 'styles/osds-radio-button.mixins';
+@import 'styles/osds-radio-button.color';
+@import 'styles/osds-radio-button.size';
+@import 'styles/osds-radio-button.typography';
+@import '~@ovhcloud/ods-theming/color/ods-theming-color';
+@import '~@ovhcloud/ods-theming/ods-theme';
+
+// CSS for the component but not for theming
+
+:host {
+  align-items: center;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  width: fit-content;
+
+  .radio-button {
+    border-radius: 50%;
+    border-style: solid;
+    cursor: pointer;
+    position:relative;
+    vertical-align: middle;
+  }
+}
+
+[checked] {
+  @include osds-radio-button-on-checked-element() {
+    border-radius: 50%;
+    content: "";
+    height: 70%;
+    left: 15%;
+    position:absolute;
+    top: 15%;
+    width: 70%;
+  }
+}
+
+[disabled] {
+  @include osds-radio-button-on-selected-host() {
+    opacity: 0.5;
+  }
+  @include osds-radio-button-on-main-element() {
+    cursor: not-allowed;
+  }
+}
+
+slot {
+  display: block;
+}
+
+// apply the theme template for the component
+@include ods-theme-component() {
+  @include osds-radio-button-theme-color();
+  @include osds-radio-button-theme-size();
+  @include osds-radio-button-theme-typography();
+}

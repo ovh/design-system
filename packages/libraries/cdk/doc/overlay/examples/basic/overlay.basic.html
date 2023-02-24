@@ -1,0 +1,32 @@
+<style>
+  #basic-container-1 {
+    /* overlay important properties */
+    position: relative; /* must be here to make the positioning working well */
+    text-align: initial; /* must be here to make the positioning working well for RTL alignment */
+    padding: 0; /* must be here to make the computing works. If you need padding, apply it on trigger or surface */
+    /* end overlay important properties */
+
+    display: inline-block; /* recommended */
+
+    color: white;
+  }
+
+  #basic-trigger-1 {
+    background: #0d4aa9;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 4px;
+  }
+
+  #basic-surface-1 {
+    background: #0e2231;
+    border-radius: 4px;
+    padding: 5px;
+  }
+
+</style>
+
+<div id="basic-container-1">
+  <div id="basic-trigger-1" onclick="basic1Toggle()">My trigger</div>
+  <ocdk-surface id="basic-surface-1">My surface</ocdk-surface>
+</div>

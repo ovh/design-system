@@ -1,0 +1,69 @@
+For more details go to [Methods](#methods)
+
+#### getValidity
+
+```html
+<osds-textarea placeholder="Placeholder"></osds-textarea>
+
+<script>
+  const odsTextArea = document.querySelector('osds-textarea');
+
+  async function componentOnLoad() {
+    await customElements.whenDefined('osds-textarea');
+    odsTextArea.getValidity().then((validity) => {
+      console.log("getValidity odsTextArea-1", validity);
+    });
+  }
+
+  componentOnLoad();
+</script>
+```
+
+#### clear
+```html
+<osds-textarea placeholder="Placeholder"></osds-textarea>
+
+<script>
+  const odsTextArea = document.querySelector('osds-textarea');
+
+  async function componentOnLoad() {
+    await customElements.whenDefined('osds-textarea');
+    odsTextArea.clear()
+  }
+
+  componentOnLoad();
+</script>
+```
+
+#### reset
+```html
+<osds-textarea placeholder="Placeholder" default-value="default" value="value"></osds-textarea>
+
+<script>
+  const odsTextArea = document.querySelector('osds-textarea');
+
+  async function componentOnLoad() {
+    await customElements.whenDefined('osds-textarea');
+    odsTextArea.reset()
+  }
+
+  componentOnLoad();
+</script>
+```
+#### setTextAreaTabindex
+
+```html
+<osds-textarea placeholder="Placeholder"></osds-textarea>
+
+<script>
+  const odsTextArea = document.querySelector('osds-textarea');
+
+  async function componentOnLoad() {
+    await customElements.whenDefined('osds-textarea');
+    odsTextArea.setTextAreaTabindex(-1);
+  }
+
+  componentOnLoad();
+</script>
+```
+

@@ -1,0 +1,11 @@
+{
+  "default": "design-images/input/input-colors/input-color-default.png",
+  "primary": "design-images/input/input-colors/input-color-primary.png",
+  "text": "design-images/input/input-colors/input-color-text.png",
+  "accent": "design-images/input/input-colors/input-color-accent.png",
+  "error": "design-images/input/input-colors/input-color-error.png",
+  "warning": "design-images/input/input-colors/input-color-warning.png",
+  "success": "design-images/input/input-colors/input-color-success.png",
+  "info": "design-images/input/input-colors/input-color-info.png",
+  "promotion": "design-images/input/input-colors/input-color-promotion.png"
+}

@@ -1,0 +1,16 @@
+import {Description} from '@storybook/addon-docs';
+import Specs from '@ovhcloud/ods-core/src/components/input/docs/spec.md';
+import SpecsInputTests from '@ovhcloud/ods-specifications/components/input/specifications-input-tests.mdx';
+
+## Description
+The input is the main item used in forms.
+This input is used strictly for one-line number inputting. For other uses, go to [Radio](/?path=/docs/components-radio-radio-atom-design--page).
+
+This component is using the native HTMLInputElement at far as possible.
+
+you can customize the `text-align` of text by defining a CSS variable `--ods-input-text-align` equals to `center` for instance.
+
+<Description>{Specs}</Description>
+
+## Tests
+<SpecsInputTests />

@@ -1,0 +1,32 @@
+// general mixins and functions for the component
+
+@mixin osds-toggle-on-selected-host() {
+  :host(&) {
+    @content;
+  }
+}
+
+@mixin osds-toggle-on-main-element() {
+  .toggle__wrapper {
+    @content;
+  }
+}
+
+
+@mixin osds-toggle-on-container-element() {
+  .toggle__container {
+    @content;
+  }
+}
+
+@mixin osds-toggle-on-slider-element() {
+  .toggle__slider {
+    @content;
+  }
+}
+
+@mixin osds-toggle-on-slider-before-element() {
+  .toggle__slider:before {
+    @content;
+  }
+}

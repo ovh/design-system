@@ -1,0 +1,70 @@
+@import '~@ovhcloud/ods-theming/color/ods-component-color';
+@import './osds-accordion.mixins';
+
+@mixin osds-accordion-theme() {
+
+  @include ods-all-hue-foreach-theme-color((
+    background-color: '000',
+    border-color: '200',
+    color: '500',
+  )) using($colors) {
+    @include osds-accordion-on-selected-host() {
+      @include osds-accordion-on-main() {
+        background-color: map_get($colors, background-color);
+        border-color: map_get($colors, border-color);
+        color: var(--ods-color-text-500);
+
+        @include osds-accordion-on-summary() {
+          color: map_get($colors, color);
+        }
+      }
+    }
+  }
+
+  :not([opened]) {
+    @include ods-and-all-hue-foreach-theme-color((
+      border-color: '100'
+    )) using($colors) {
+      @include osds-accordion-on-selected-host() {
+        @include osds-accordion-on-main() {
+          border-color: map_get($colors, border-color);
+        }
+      }
+    }
+  }
+
+  [contrasted] {
+    @include ods-and-all-hue-foreach-theme-color((
+      background-color: '000-contrasted',
+      border-color: '200-contrasted',
+      color: '500-contrasted'
+    )) using($colors) {
+      @include osds-accordion-on-selected-host() {
+        @include osds-accordion-on-main() {
+          background-color: map_get($colors, background-color);
+          border-color: map_get($colors, border-color);
+          color: var(--ods-color-text-500-contrasted);
+
+          @include osds-accordion-on-summary() {
+            color: map_get($colors, color);
+          }
+        }
+      }
+    }
+    &:not([opened]) {
+      @include ods-and-all-hue-foreach-theme-color((
+        border-color: '100-contrasted'
+      )) using($colors) {
+        @include osds-accordion-on-selected-host() {
+          @include osds-accordion-on-main() {
+            border-color: map_get($colors, border-color);
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin osds-accordion-theme-color() {
+  @include osds-accordion-theme();
+}

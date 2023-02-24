@@ -1,0 +1,11 @@
+{
+  "default": "design-images/icon/icon-colors/icon-color-default.png",
+  "primary": "design-images/icon/icon-colors/icon-color-primary.png",
+  "text": "design-images/icon/icon-colors/icon-color-text.png",
+  "accent": "design-images/icon/icon-colors/icon-color-accent.png",
+  "error": "design-images/icon/icon-colors/icon-color-error.png",
+  "warning": "design-images/icon/icon-colors/icon-color-warning.png",
+  "success": "design-images/icon/icon-colors/icon-color-success.png",
+  "info": "design-images/icon/icon-colors/icon-color-info.png",
+  "promotion": "design-images/icon/icon-colors/icon-color-promotion.png"
+}

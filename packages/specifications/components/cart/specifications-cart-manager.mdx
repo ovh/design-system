@@ -1,0 +1,60 @@
+import {Description} from '@storybook/addon-docs';
+import Specs from '@ovhcloud/ods-core/src/components/cart-manager/docs/spec.md';
+
+## Description
+The cart-manager is a smart component with all the logical stuff about items management.
+
+It uses several components :
+- `cart`: the main component to use to present the cart
+- `cart-section`: a section container that contains items and options
+- `cart-item`: a line for an item with a price
+- `cart-item-option`: a line for an item's option with a price
+- `cart-footer`: display the total amount
+
+<Description>{Specs}</Description>
+
+##### OdsI18nHook
+
+<SpecI18nHook />
+
+I18N keys for the `cart-manager`:
+
+| Name                | Description                                    | Example             | variables            |
+|---------------------|------------------------------------------------|---------------------|----------------------|
+| `cart.price`        | total price for `item-option` and `cart-total` | {price} euros       | `price`: `number`    |
+| `footer.item.price` | price for `cart-footer-item`                   | {price} euros       | `price`: `string`    |
+| `cart.total.info`   | info for `cart-total`                          | {products} products | `products`: `number` |
+| `cart.extra`        | extra for `cart-total`                         | incl. VAT           |                      |
+
+## Contents
+<DesignCartZoningPreview />
+
+| Name     | Description                                                       |
+|----------|-------------------------------------------------------------------|
+| `header` | header content like a title                                       |
+| `empty`  | displayed content when there are no items in the cart             |
+| `footer` | footer content to display. You can put some button inside it here |
+
+## Tests
+
+**header**
+- should displays the passed content in the header zone
+
+**content**
+- should displays the main content in the main content zone
+
+**footer**
+- should displays the passed content in the footer zone
+
+**size**
+- should have `sm` size by default
+
+**empty**
+- should display no items if empty set to true
+
+**method:getTotalAmount**
+- should returns the total amount excluded VAT by default
+- should returns the total amount with VAT if specified
+
+**method:getItemQuantity**
+- should returns the number of item placed in the cart

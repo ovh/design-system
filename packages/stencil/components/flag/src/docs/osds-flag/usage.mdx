@@ -4,6 +4,14 @@ import GenericStyle from '@ovhcloud/ods-core/docs/generic-style.mdx';
 
 ## Usage
 
+You have to setup ods and call Ods.instance().assetPath() before using Flag component.
+For more details about assets, see [Installation](?path=/docs/code-stencil-components-how-to-install--page#assets) page.
+
+You can have an example of usage in our three Starters for:
+[React](?path=/story/code-starters-react--page),
+[React Vite](?path=/story/code-starters-react-vite--page),
+[Vue Vite](?path=/story/code-starters-vue-vite--page)
+
 ### Default
 will set `fr` flag by default
 <div class="container">
@@ -24,6 +32,7 @@ will set `fr` flag by default
 ```
 
 ### Custom asset path
+For some cases, you may want to use a custom path that will override the ODS path:
 <div class="container">
   <osds-flag iso="de" asset-path="../flags-custom-path/"></osds-flag>
 </div>
@@ -33,6 +42,7 @@ will set `fr` flag by default
 ```
 
 ### Custom src file
+Same goes with `src` attribute when you want to point at your own SVG:
 <div class="container">
   <osds-flag iso="de" src="../flags-custom-path/it.svg"></osds-flag>
 </div>

@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-stencil-checkbox-button-react",
-  "version": "10.2.0",
+  "version": "11.0.1",
   "private": true,
   "description": "React specific wrapper for ods",
   "keywords": [],
@@ -20,7 +20,7 @@
     "dist/"
   ],
   "dependencies": {
-    "@ovhcloud/ods-stencil-cart": "^10.2.0",
+    "@ovhcloud/ods-stencil-cart": "^11.0.1",
     "tslib": "*"
   },
   "peerDependencies": {

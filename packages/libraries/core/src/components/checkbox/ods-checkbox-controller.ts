@@ -11,7 +11,7 @@ export class OdsCheckboxController extends OdsComponentController<OdsCheckbox> {
 
   constructor(component: OdsCheckbox) {
     super(component);
-    console.log('OdsCheckboxController');
+    this.logger.log('OdsCheckboxController');
   }
 
   /**

@@ -85,7 +85,6 @@ export class OsdsCheckbox implements OdsCheckbox<OdsStencilMethods<OdsCheckboxMe
   connectedCallback() {
     console.log('2 getOdsWindow()', (getOdsWindow() as any).winId)
     console.log('Build.isBrowser', Build.isBrowser);
-    console.log('Build.isBrowser', global?.window);
     this.logger.log(`[checkbox=${this.inputId}]`, 'connectedCallback');
   }
 

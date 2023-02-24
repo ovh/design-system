@@ -5,6 +5,7 @@ import viteLogo from './assets/vite.svg'
 
 // for each react component you use from `ODS`, use this import:
 import { OsdsText } from '@ovhcloud/ods-stencil/components/react';
+import { odsSetup } from '@ovhcloud/ods-core';
 
 // for each component's type you use from ODS, you will need to import the core or theming:
 import { Ods, OdsTextSize } from '@ovhcloud/ods-core';
@@ -15,6 +16,10 @@ import '@ovhcloud/ods-theme-blue-jeans/index.css';
 import './App.css';
 
 import Demo from './demo/Demo';
+
+// you have to setup ods before using it:
+odsSetup();
+Ods.instance().assetPath('flags/flags-4x3/');
 
 Ods.instance().logging(true);
 

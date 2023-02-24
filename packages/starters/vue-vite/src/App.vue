@@ -6,21 +6,25 @@ import odsLogo from './assets/ods.svg'
 import viteLogo from './assets/vite.svg'
 import vueLogo from './assets/vue.svg'
 
+import Demo from './demo/Demo.vue';
+
 // for each react component you use from `ODS`, use this import:
 import { OsdsText } from '@ovhcloud/ods-stencil/components/vue';
 
 // for each component's type you use from ODS, you will need to import the core or theming:
-import { OdsTextSize } from '@ovhcloud/ods-core';
+import { OdsTextSize, odsSetup, Ods } from '@ovhcloud/ods-core';
 import { OdsThemeColorHue, OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 
 // you can directly import the generated ods theme here, or through the application css (app.css)
 import '@ovhcloud/ods-theme-blue-jeans/index.css';
 
+// you have to setup ods before using it:
+odsSetup();
+Ods.instance().assetPath('flags/flags-4x3/');
+
 // enable logging of ODS and custom logger
 // Ods.instance().logging(true);
 
-
-import Demo from './demo/Demo.vue';
 </script>
 
 <template>

@@ -1,6 +1,7 @@
 import React from 'react'
 import reactLogo from './assets/react.svg'
 import odsLogo from './assets/ods.svg'
+import { odsSetup } from '@ovhcloud/ods-core'
 
 // for each react component you use from `ODS`, use this import:
 import { OsdsText } from '@ovhcloud/ods-stencil/components/react';
@@ -14,6 +15,10 @@ import '@ovhcloud/ods-theme-blue-jeans/index.css';
 import './App.css';
 
 import Demo from './demo/Demo';
+
+// you have to setup ods before using it:
+odsSetup();
+Ods.instance().assetPath('flags/flags-4x3/');
 
 Ods.instance().logging(true);
 

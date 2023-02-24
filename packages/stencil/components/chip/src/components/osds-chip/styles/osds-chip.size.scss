@@ -13,9 +13,5 @@
         gap: ods-get-size-property($sizes, inline-margin);
       }
     }
-
-    :host(&[selectable]) osds-icon {
-      width: ods-get-size-property($sizes, icon-width);
-    }
   }
 }

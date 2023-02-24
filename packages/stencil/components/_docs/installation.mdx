@@ -35,7 +35,35 @@ via css import:
 @import '~@ovhcloud/ods-theme-blue-jeans/index.css';
 ```
 
+## Assets
+
+### Ods-flag
+You would like to use the flags in your application, please note you will have to use the flags from ODS.
+
+Here is the package you will need: `@ovhcloud/ods-stencil/components/flag/dist/flags`
+
+You have to copy the flags svg where you need them in your application.
+
+First, you have to setup ods before using it by calling odsSetup in your application:
+
+```typescript
+import { odsSetup } from '@ovhcloud/ods-core';
+odsSetup();
+```
+
+Then, you have to call Ods.instance().assetPath();
+```typescript
+Ods.instance().assetPath(`path/`);
+```
+
 ## Import components
+
+> ⚠️️ **Please note**<br />
+> odsSetup must be strictly called before using any component.
+> ```typescript
+  import { odsSetup } from '@ovhcloud/ods-core';
+  odsSetup();
+  ```
 
 You can import independently some components **built in es2017**:
 

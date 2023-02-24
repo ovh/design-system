@@ -61,7 +61,7 @@ function applyAssetConf(odsConf: OdsDeepPartial<OdsConfig>): void {
  * create all the globals properties set up into window (when available).
  */
 export function odsSetup(/*userConfig?: OdsConfig*/): void {
-  console.log('odsSetup');
+  //console.log('odsSetup');
   const win = getOdsWindow();
   if (win) {
 
@@ -84,12 +84,12 @@ export function odsSetup(/*userConfig?: OdsConfig*/): void {
     }
 
     // set the current ODS version into the right property and create the instance if needed
-    console.log('[odsSetup] VERSION', VERSION);
+    //console.log('[odsSetup] VERSION', VERSION);
     if (!winFilled.ods.versions[ VERSION ]) {
-      console.log('[odsSetup] call instance');
+      //console.log('[odsSetup] call instance');
       winFilled.ods.versions[ VERSION ] = Ods.instance(config);
     } else {
-      console.log('[odsSetup] instance already set');
+      //console.log('[odsSetup] instance already set');
     }
 
     // always set as latest the superior detected versions
@@ -97,7 +97,7 @@ export function odsSetup(/*userConfig?: OdsConfig*/): void {
       winFilled.ods.latest = winFilled.ods.versions[ VERSION ];
     }
   }
-  console.log('odsSetup end');
+  //console.log('odsSetup end');
 }
 
 const win = getOdsWindow();

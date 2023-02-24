@@ -1,4 +1,4 @@
-import { Build, Component, Element, getAssetPath, h, Host, Prop, State, Watch } from '@stencil/core';
+import { Build, Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
 import {
   ODS_COUNTRY_ISO_CODE,
   OdsFlag,
@@ -38,7 +38,7 @@ export class OsdsFlag implements OdsFlag<OdsStencilMethods<OdsFlagMethods>, OdsS
   private logger = new OdsLogger('OsdsFlag');
 
   connectedCallback() {
-    console.log('flag connectedCallback');
+    this.logger.log('flag connectedCallback');
     this.onInit();
   }
 
@@ -48,8 +48,10 @@ export class OsdsFlag implements OdsFlag<OdsStencilMethods<OdsFlagMethods>, OdsS
 
   /** @see OdsFlagBehavior.getAssetPath */
   getAssetPath(url: string) {
-    console.log('flag getAssetPath');
-    return getAssetPath(url);
+    this.logger.log('flag getAssetPath');
+    // todo currently we are not using getAssetPath from stencil since it doesn't work in React integration
+    //return getAssetPath(url);
+    return url;
   }
 
   /** @see OdsFlagBehavior.load */
@@ -57,7 +59,7 @@ export class OsdsFlag implements OdsFlag<OdsStencilMethods<OdsFlagMethods>, OdsS
   @Watch('assetPath')
   @Watch('src')
   load() {
-    console.log('flag load');
+    this.logger.log('flag load');
     this.logger.log('[load]', `${this.iso} - iso, assetPath or src updated. load...`);
     this.controller.load(this.visible, Build.isBrowser)
       .then((svgContent) => {
@@ -74,7 +76,7 @@ export class OsdsFlag implements OdsFlag<OdsStencilMethods<OdsFlagMethods>, OdsS
 
   /** @see OdsFlagBehavior.onInit */
   onInit() {
-    console.log('flag onInit');
+    this.logger.log('flag onInit');
     this.logger.log('[onInit]');
     this.controller.onInit(() => {
       this.visible = true;
@@ -82,7 +84,7 @@ export class OsdsFlag implements OdsFlag<OdsStencilMethods<OdsFlagMethods>, OdsS
   }
 
   render() {
-    console.log('flag render');
+    this.logger.log('flag render');
     const { ariaLabel } = this;
     return (
       <Host aria-label={ariaLabel && !odsHasAriaHidden(this.hostElement) ? ariaLabel : null} role="img">

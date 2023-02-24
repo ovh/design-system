@@ -292,6 +292,9 @@ export function getStencilConfig({
     ],
     ...globalScriptOption,
 
+    devServer: {
+      startupTimeout: 30000
+    },
     testing: {
       ...(jestConfig ? convertedJestConfig : {}),
       browserHeadless: false,

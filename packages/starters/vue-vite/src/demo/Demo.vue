@@ -10,11 +10,12 @@ import {
   OsdsRadio,
   OsdsRadioGroup,
   OsdsTile,
-  OsdsToggle
+  OsdsToggle,
+  OsdsFlag
 } from '@ovhcloud/ods-stencil/components/vue';
 
 // each type you import types from ODS, you will need to import the core
-import { Ods, OdsCheckboxButtonSize, OdsExternalLogger, OdsMessageType } from '@ovhcloud/ods-core';
+import { Ods, OdsCheckboxButtonSize, OdsExternalLogger, OdsMessageType, ODS_COUNTRY_ISO_CODE } from '@ovhcloud/ods-core';
 
 // each theming related type you use, you will need to import the theming
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
@@ -44,6 +45,11 @@ function handleMyButtonClick() {
     <div>
       <OsdsButton :color="OdsThemeColorIntent.primary" @click="handleOdsButtonClick" flex>ODS button</OsdsButton>
       <MyButton :flex="true" @click="handleMyButtonClick" id="my-button">My Vue Button based on ODS</MyButton>
+    </div>
+
+    <h5>Ods Flag</h5>
+    <div style="height: 20px; width: 30px; margin: auto">
+      <OsdsFlag :iso="ODS_COUNTRY_ISO_CODE.PL" />
     </div>
 
     <h5>Ods Message</h5>

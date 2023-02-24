@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-stencil-components",
-  "version": "10.2.0",
+  "version": "11.0.1",
   "private": true,
   "description": "Stencil bundled components",
   "author": "OVH SAS",
@@ -21,19 +21,19 @@
     "start": "stencil build --docs --dev --watch --serve"
   },
   "dependencies": {
-    "@ovhcloud/ods-cdk": "^10.2.0",
-    "@ovhcloud/ods-core": "^10.2.0",
-    "@ovhcloud/ods-stencil-core": "^10.2.0",
+    "@ovhcloud/ods-cdk": "^11.0.1",
+    "@ovhcloud/ods-core": "^11.0.1",
+    "@ovhcloud/ods-stencil-core": "^11.0.1",
     "@stencil/core": "~2.18.1",
     "tslib": "^2.1.0"
   },
   "devDependencies": {
     "@jest/core": "^27.5.1",
     "@jest/types": "^26.6.2",
-    "@ovhcloud/ods-stencil-testing": "^10.2.0",
-    "@ovhcloud/ods-testing": "^10.2.0",
-    "@ovhcloud/ods-theme-blue-jeans": "^10.2.0",
-    "@ovhcloud/ods-theming": "^10.2.0",
+    "@ovhcloud/ods-stencil-testing": "^11.0.1",
+    "@ovhcloud/ods-testing": "^11.0.1",
+    "@ovhcloud/ods-theme-blue-jeans": "^11.0.1",
+    "@ovhcloud/ods-theming": "^11.0.1",
     "@stencil/postcss": "~2.1.0",
     "@stencil/react-output-target": "~0.2.1",
     "@stencil/sass": "~2.0.0",

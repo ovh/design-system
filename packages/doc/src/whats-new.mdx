@@ -8,6 +8,27 @@
 
 # What's new ?
 
+## v11.0.0
+
+Flag component has been modified; you’ll need to update as explained in the migration guide.
+For more details about assets, see [Installation](/docs/code-stencil-components-how-to-install--page#assets) page.
+New attributes are available on this component: `lazy`, `assetPath` and `src`.
+
+Before importing any component you now have to setup ods, for more details see [migration guide 10.x to 11.x](/story/code-migration-guide-10-x-to-11-x--page).
+
+[Dual range](/story/ui-components-range-atom-web-component--dual) is now available for Range component; It offers two handles to set a min and max value.
+
+To build resilient infrastructure and promote sustainable industrialization, we moved code that could be agnostic.
+Now, ODS components logic has been moved into controllers.
+If you want to contribute to ODS by developing new components, please refer to the how-to section for controllers in our [Storybook](?path=/story/contributing-how-to-s-create-a-controller--page).
+
+Now, Button component has `download` and `rel` new attributes available when it is used as a link (href).
+
+We had blur events on Quantity component to set the correct value regarding the Quantity bounds.
+It means when the user set manually a value that is out of bounds for Quantity, the value will be automatically reset to a correct value.
+When Quantity is out of bounds, the field value is now in error state.
+
+As it is a major version, you have to do the [migration guide 10.x to 11.x](/story/code-migration-guide-10-x-to-11-x--page)
 
 ## v10.2.0
 

@@ -7,13 +7,16 @@ import './components';
 import './global';
 import { OdsLogger } from '@ovhcloud/ods-core';
 import { Ods, odsSetup } from '@ovhcloud/ods-core';
+import { OsdsFlag } from '@ovhcloud/ods-stencil/components/flag/src';
 
 odsSetup();
+
+const flag: (HTMLElement & OsdsFlag) | null = document.getElementById('flag-1') as (HTMLElement & OsdsFlag) | null;
+
 const logger = new OdsLogger('global-dev');
-logger.log('init');
+logger.log('init', flag);
 
 (window as any).globalMethod = async function () {
-  logger.log('globalMethod');
 };
 
 Ods.instance().assetPath('../flags/flags-4x3/');

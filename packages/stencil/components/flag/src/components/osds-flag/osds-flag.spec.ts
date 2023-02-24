@@ -144,7 +144,8 @@ describe('spec:osds-flag', () => {
     expect(spy).toHaveBeenCalledWith(true, false);
   });
 
-  it('should call getAssetPath from node_modules', async () => {
+  // todo currently we are not using getAssetPath from stencil since it doesn't work in React integration
+  xit('should call getAssetPath from node_modules', async () => {
     await setup();
     instance.getAssetPath('my-mocked-path');
     expect(getAssetPath).toHaveBeenNthCalledWith(1, 'my-mocked-path');

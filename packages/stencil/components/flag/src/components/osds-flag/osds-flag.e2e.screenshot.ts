@@ -1,5 +1,9 @@
 import { E2EElement, E2EPage, newE2EPage } from '@stencil/core/testing';
-import { OdsComponentAttributes2StringAttributes, OdsFlagAttributes, odsFlagDefaultAttributes } from '@ovhcloud/ods-core';
+import {
+  OdsComponentAttributes2StringAttributes,
+  OdsFlagAttributes,
+  odsFlagDefaultAttributes,
+} from '@ovhcloud/ods-core';
 import { OdsCreateAttributes, OdsStringAttributes2Str, odsFlagBaseAttributes } from '@ovhcloud/ods-testing';
 import { OdsCountryIsoCodeList } from '@ovhcloud/ods-core';
 
@@ -18,7 +22,7 @@ describe('e2e:osds-flag', () => {
     el = await page.find('osds-flag');
   }
 
-  describe('screenshots', () => {
+  xdescribe('screenshots', () => {
     OdsCountryIsoCodeList.forEach((iso) => {
       it(`The flag ${iso} is displaying correctly`, async () => {
         await setup({

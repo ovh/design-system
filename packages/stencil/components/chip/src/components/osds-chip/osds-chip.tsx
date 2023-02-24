@@ -71,7 +71,7 @@ export class OsdsChip implements OdsChip<OdsStencilMethods<OdsChipMethods>, OdsS
       }}>
         <span class={'chip__wrapper'}>
           <slot></slot>
-          {removable ? <osds-icon {...{ name: OdsIconName.CLOSE, size: OdsIconSize.xs, color, contrasted }}></osds-icon> : ''}
+          {removable ? <osds-icon {...{ name: OdsIconName.CLOSE, size: OdsIconSize.xxs, color, contrasted }}></osds-icon> : ''}
         </span>
       </Host>
     );

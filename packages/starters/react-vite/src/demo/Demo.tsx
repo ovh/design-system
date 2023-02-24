@@ -11,11 +11,12 @@ import {
   OsdsRadio,
   OsdsRadioGroup,
   OsdsTile,
-  OsdsToggle
+  OsdsToggle,
+  OsdsFlag
 } from '@ovhcloud/ods-stencil/components/react';
 
 // each type you import types from ODS, you will need to import the core
-import { Ods, OdsCheckboxButtonSize, OdsExternalLogger, OdsMessageType } from '@ovhcloud/ods-core';
+import { Ods, OdsCheckboxButtonSize, OdsExternalLogger, OdsMessageType, ODS_COUNTRY_ISO_CODE } from '@ovhcloud/ods-core';
 
 // each theming related type you use, you will need to import the theming
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
@@ -47,6 +48,11 @@ const Demo: React.FC = () => (
     <div>
       <OsdsButton color={OdsThemeColorIntent.primary} onClick={handleOdsButtonClick} flex>ODS button</OsdsButton>
       <MyButton flex={true} onClick={handleMyButtonClick}>My React Button based on ODS</MyButton>
+    </div>
+
+    <h5>Ods Flag</h5>
+    <div style={{height: 20, width: 30, margin: 'auto'}}>
+      <OsdsFlag iso={ODS_COUNTRY_ISO_CODE.PL} />
     </div>
 
     <h5>Ods Message</h5>

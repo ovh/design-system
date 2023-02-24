@@ -139,11 +139,11 @@ export class OdsLoadContent {
     if (!req) {
       // check browser fetch availability
       if (typeof fetch !== 'undefined' && typeof document !== 'undefined') {
-        // console.log('getContent trigger fetch', url)
+        // this.logger.log('getContent trigger fetch', url)
         // we don't already have a request
         req = fetch(url)
           .then((rsp) => {
-            // console.log('getContent trigger fetched', rsp.statusText);
+            // this.logger.log('getContent trigger fetched', rsp.statusText);
             if (rsp.ok) {
               return rsp.text().then((svgContent) => {
             // console.log('getContent svgContent', svgContent);

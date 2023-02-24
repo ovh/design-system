@@ -21,6 +21,7 @@
 
   @include osds-chip-on-main-element() {
     display: flex;
+    align-items: center;
   }
 }
 

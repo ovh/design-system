@@ -4,10 +4,6 @@
 
 ![githubbanner](./assets/githubbanner.png)
 
-[![Maintenance]()]() [![Build Status]()]()
-
-[![NPM]()]()
-
 ### Getting Started
 
 Please read `getting-started` guide into `packages/contributing/contributing-getting-started`
@@ -21,7 +17,7 @@ to start using `ODS.
 Clone and install `ods` by using yarn.
 ```
 git clone https://github.com/ovh/design-system.git
-cd ods
+cd design-system
 yarn
 ```
 

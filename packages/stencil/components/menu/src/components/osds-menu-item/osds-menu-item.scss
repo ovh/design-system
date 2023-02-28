@@ -1,0 +1,14 @@
+@import 'styles/osds-menu-item.color.scss';
+@import 'styles/osds-menu-item.size.scss';
+
+@import '~@ovhcloud/ods-theming/color/ods-theming-color';
+@import '~@ovhcloud/ods-theming/ods-theme';
+
+:host{
+  display: block;
+}
+
+@include ods-theme-component() {
+  @include osds-menu-item-theme-color();
+  @include osds-menu-item-theme-size();
+}

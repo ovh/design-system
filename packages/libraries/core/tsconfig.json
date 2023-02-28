@@ -3,7 +3,8 @@
   "compilerOptions": {
     "declaration": true,
     "paths": {
-      "@ovhcloud/ods-theming": ["./packages/libraries/theming/src/index"]
+      "@ovhcloud/ods-theming": ["./packages/libraries/theming/src/index"],
+      "@ovhcloud/ods-cdk": ["./packages/libraries/cdk/src/index"]
     }
   },
   "include": [

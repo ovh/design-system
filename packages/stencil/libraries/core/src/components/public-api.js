@@ -21,6 +21,7 @@ export * from './icon/public-api';
 export * from './input/public-api';
 export * from './link/public-api';
 export * from './location-tile/public-api';
+export * from './menu/public-api';
 export * from './message/public-api';
 export * from './quantity/public-api';
 export * from './radio/public-api';

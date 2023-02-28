@@ -47,6 +47,7 @@ export function OdsGetJestConfig({
         '^@ovhcloud/ods-theming$': `${basePath}/packages/libraries/theming/src/index`,
         '^@ovhcloud/ods-stencil/libraries/stencil-core$': `${basePath}/packages/stencil/libraries/stencil-core/src/index`,
         '^@ovhcloud/ods-stencil/libraries/stencil-testing': `${basePath}/packages/stencil/libraries/stencil-testing/src/index`,
+        '^@ovhcloud/ods-cdk': `${basePath}/packages/libraries/cdk/src/index`,
         '^@ovhcloud/ods-stencil/(.*)$': `${basePath}/packages/stencil/$1`,
       }: {})
     },

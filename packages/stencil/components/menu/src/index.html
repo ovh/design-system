@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html dir='ltr' lang='en'>
+<head>
+  <meta charset='utf-8'/>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0'/>
+  <title>Dev osds-menu</title>
+
+  <script type="module">
+    !window.ods && (window.ods = {config: {logging: {active: true}}});
+  </script>
+
+  <script type='module' src='/build/osds-menu.esm.js'></script>
+  <script nomodule src='/build/osds-menu.js'></script>
+  <link rel="stylesheet" href="/build/osds-menu.css">
+</head>
+<body>
+  <div>
+    <osds-menu>
+      <osds-button slot="menu-title" color="primary" variant="stroked">Menu <osds-icon name='home' size='xs'></osds-icon></osds-button>
+      <osds-menu-item>
+        <osds-text>Group/Text 1</osds-text>
+      </osds-menu-item>
+      <osds-menu-item>
+        <osds-link href="#" color="primary">Link 1</osds-link>
+      </osds-menu-item>
+      <osds-menu-item>
+        <osds-link href="#" color="primary">Link 2</osds-link>
+      </osds-menu-item>
+      <osds-divider color="text" separator="true"></osds-divider>
+      <osds-menu-item>
+        <osds-text>Group/Text 2</osds-text>
+      </osds-menu-item>
+      <osds-menu-item>
+        <osds-button size='sm' href="#">Button 1</osds-button>
+      </osds-menu-item>
+      <osds-menu-item>
+        <osds-button size='sm' href="#">Button 2</osds-button>
+      </osds-menu-item>
+      <osds-divider color="text" separator="true"></osds-divider>
+      <osds-menu-item>
+        <osds-text>Group/Text 3</osds-text>
+      </osds-menu-item>
+      <osds-menu-item>
+        <osds-button size='sm' href="#" variant='ghost' flex>Button 1</osds-button>
+      </osds-menu-item>
+      <osds-menu-item>
+        <osds-button size='sm' href="#" variant='ghost' flex>Button 2</osds-button>
+      </osds-menu-item>
+    </osds-menu>
+
+    <osds-menu>
+      <osds-button slot="menu-title" color="primary" variant="ghost">Bare Metal <osds-icon name='home' size='xs'></osds-icon></osds-button>
+      <osds-menu-item>
+        <osds-text>Group/Text 1</osds-text>
+      </osds-menu-item>
+      <osds-menu-item>
+        <osds-link href="#" color="primary">Link 1</osds-link>
+      </osds-menu-item>
+      <osds-menu-item>
+        <osds-link href="#" color="primary">Link 2</osds-link>
+      </osds-menu-item>
+      <osds-divider color="text" separator="true"></osds-divider>
+      <osds-menu-item>
+        <osds-text>Group/Text 2</osds-text>
+      </osds-menu-item>
+      <osds-menu-item>
+        <osds-button size='sm' href="#">Button 1</osds-button>
+      </osds-menu-item>
+      <osds-menu-item>
+        <osds-button size='sm' href="#">Button 2</osds-button>
+      </osds-menu-item>
+      <osds-divider color="text" separator="true"></osds-divider>
+      <osds-menu-item>
+        <osds-text>Group/Text 3</osds-text>
+      </osds-menu-item>
+      <osds-menu-item>
+        <osds-button size='sm' href="#" variant='ghost' flex>Button 1</osds-button>
+      </osds-menu-item>
+      <osds-menu-item>
+        <osds-button size='sm' href="#" variant='ghost' flex>Button 2</osds-button>
+      </osds-menu-item>
+    </osds-menu>
+
+    <osds-menu disabled>
+      <osds-button slot="menu-title" color="primary" variant="stroked">Menu <osds-icon name='home' size='xs'></osds-icon></osds-button>
+      <osds-menu-item>
+        <osds-link color="primary">Link</osds-link>
+      </osds-menu-item>
+    </osds-menu>
+  </div>
+  <div style='margin-top: 30px'>
+    <osds-menu>
+      <osds-button slot="menu-title" color="primary" variant="stroked" size='sm'>Menu <osds-icon name='home' size='xs'></osds-icon></osds-button>
+      <osds-menu-item>
+        <osds-text>Group/Text 1</osds-text>
+      </osds-menu-item>
+      <osds-menu-item>
+        <osds-link href="#" color="primary">Link 1</osds-link>
+      </osds-menu-item>
+      <osds-menu-item>
+        <osds-link href="#" color="primary">Link 2</osds-link>
+      </osds-menu-item>
+      <osds-divider color="text" separator="true"></osds-divider>
+      <osds-menu-item>
+        <osds-text>Group/Text 2</osds-text>
+      </osds-menu-item>
+      <osds-menu-item>
+        <osds-button size='sm' href="#">Button 1</osds-button>
+      </osds-menu-item>
+      <osds-menu-item>
+        <osds-button size='sm' href="#">Button 2</osds-button>
+      </osds-menu-item>
+      <osds-divider color="text" separator="true"></osds-divider>
+      <osds-menu-item>
+        <osds-text>Group/Text 3</osds-text>
+      </osds-menu-item>
+      <osds-menu-item>
+        <osds-button size='sm' href="#" variant='ghost' flex>Button 1</osds-button>
+      </osds-menu-item>
+      <osds-menu-item>
+        <osds-button size='sm' href="#" variant='ghost' flex>Button 2</osds-button>
+      </osds-menu-item>
+    </osds-menu>
+
+    <osds-menu>
+      <osds-button slot="menu-title" color="primary" variant="ghost" size='sm'>Bare Metal <osds-icon name='home' size='xs'></osds-icon></osds-button>
+      <osds-menu-item>
+        <osds-text>Group/Text 1</osds-text>
+      </osds-menu-item>
+      <osds-menu-item>
+        <osds-link href="#" color="primary">Link 1</osds-link>
+      </osds-menu-item>
+      <osds-menu-item>
+        <osds-link href="#" color="primary">Link 2</osds-link>
+      </osds-menu-item>
+      <osds-divider color="text" separator="true"></osds-divider>
+      <osds-menu-item>
+        <osds-text>Group/Text 2</osds-text>
+      </osds-menu-item>
+      <osds-menu-item>
+        <osds-button size='sm' href="#">Button 1</osds-button>
+      </osds-menu-item>
+      <osds-menu-item>
+        <osds-button size='sm' href="#">Button 2</osds-button>
+      </osds-menu-item>
+      <osds-divider color="text" separator="true"></osds-divider>
+      <osds-menu-item>
+        <osds-text>Group/Text 3</osds-text>
+      </osds-menu-item>
+      <osds-menu-item>
+        <osds-button size='sm' href="#" variant='ghost' flex>Button 1</osds-button>
+      </osds-menu-item>
+      <osds-menu-item>
+        <osds-button size='sm' href="#" variant='ghost' flex>Button 2</osds-button>
+      </osds-menu-item>
+    </osds-menu>
+
+    <osds-menu disabled>
+      <osds-button slot="menu-title" color="primary" variant="stroked" size='sm'>Menu <osds-icon name='home' size='xs'></osds-icon></osds-button>
+      <osds-menu-item>
+        <osds-link color="primary">Link</osds-link>
+      </osds-menu-item>
+    </osds-menu>
+  </div>
+  <div style='margin-top: 30px'>
+    <osds-menu>
+      <osds-button slot="menu-title" color="error" variant="stroked" size='sm'>Menu <osds-icon name='home' size='xs'></osds-icon></osds-button>
+      <osds-menu-item>
+        <osds-text>Group/Text 1</osds-text>
+      </osds-menu-item>
+      <osds-menu-item>
+        <osds-link href="#" color="primary">Link 1</osds-link>
+      </osds-menu-item>
+      <osds-menu-item>
+        <osds-link href="#" color="primary">Link 2</osds-link>
+      </osds-menu-item>
+      <osds-divider color="text" separator="true"></osds-divider>
+      <osds-menu-item>
+        <osds-text>Group/Text 2</osds-text>
+      </osds-menu-item>
+      <osds-menu-item>
+        <osds-button size='sm' href="#">Button 1</osds-button>
+      </osds-menu-item>
+      <osds-menu-item>
+        <osds-button size='sm' href="#">Button 2</osds-button>
+      </osds-menu-item>
+      <osds-divider color="text" separator="true"></osds-divider>
+      <osds-menu-item>
+        <osds-text>Group/Text 3</osds-text>
+      </osds-menu-item>
+      <osds-menu-item>
+        <osds-button size='sm' href="#" variant='ghost' flex>Button 1</osds-button>
+      </osds-menu-item>
+      <osds-menu-item>
+        <osds-button size='sm' href="#" variant='ghost' flex>Button 2</osds-button>
+      </osds-menu-item>
+    </osds-menu>
+
+    <osds-menu>
+      <osds-button slot="menu-title" color="warning" variant="stroked" size='sm'>Menu <osds-icon name='home' size='xs'></osds-icon></osds-button>
+      <osds-menu-item>
+        <osds-text>Group/Text 1</osds-text>
+      </osds-menu-item>
+      <osds-menu-item>
+        <osds-link href="#" color="primary">Link 1</osds-link>
+      </osds-menu-item>
+      <osds-menu-item>
+        <osds-link href="#" color="primary">Link 2</osds-link>
+      </osds-menu-item>
+      <osds-divider color="text" separator="true"></osds-divider>
+      <osds-menu-item>
+        <osds-text>Group/Text 2</osds-text>
+      </osds-menu-item>
+      <osds-menu-item>
+        <osds-button size='sm' href="#">Button 1</osds-button>
+      </osds-menu-item>
+      <osds-menu-item>
+        <osds-button size='sm' href="#">Button 2</osds-button>
+      </osds-menu-item>
+      <osds-divider color="text" separator="true"></osds-divider>
+      <osds-menu-item>
+        <osds-text>Group/Text 3</osds-text>
+      </osds-menu-item>
+      <osds-menu-item>
+        <osds-button size='sm' href="#" variant='ghost' flex>Button 1</osds-button>
+      </osds-menu-item>
+      <osds-menu-item>
+        <osds-button size='sm' href="#" variant='ghost' flex>Button 2</osds-button>
+      </osds-menu-item>
+    </osds-menu>
+
+    <osds-menu>
+      <osds-button slot="menu-title" color="success" variant="stroked" size='sm'>Menu <osds-icon name='home' size='xs'></osds-icon></osds-button>
+      <osds-menu-item>
+        <osds-text>Group/Text 1</osds-text>
+      </osds-menu-item>
+      <osds-menu-item>
+        <osds-link href="#" color="primary">Link 1</osds-link>
+      </osds-menu-item>
+      <osds-menu-item>
+        <osds-link href="#" color="primary">Link 2</osds-link>
+      </osds-menu-item>
+      <osds-divider color="text" separator="true"></osds-divider>
+      <osds-menu-item>
+        <osds-text>Group/Text 2</osds-text>
+      </osds-menu-item>
+      <osds-menu-item>
+        <osds-button size='sm' href="#">Button 1</osds-button>
+      </osds-menu-item>
+      <osds-menu-item>
+        <osds-button size='sm' href="#">Button 2</osds-button>
+      </osds-menu-item>
+      <osds-divider color="text" separator="true"></osds-divider>
+      <osds-menu-item>
+        <osds-text>Group/Text 3</osds-text>
+      </osds-menu-item>
+      <osds-menu-item>
+        <osds-button size='sm' href="#" variant='ghost' flex>Button 1</osds-button>
+      </osds-menu-item>
+      <osds-menu-item>
+        <osds-button size='sm' href="#" variant='ghost' flex>Button 2</osds-button>
+      </osds-menu-item>
+    </osds-menu>
+  </div>
+
+</body>
+</html>

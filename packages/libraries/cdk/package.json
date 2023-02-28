@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-cdk",
-  "version": "12.0.2",
+  "version": "12.0.3",
   "description": "OvhCloud Component Development Kit",
   "author": "OVH SAS",
   "license": "Apache-2.0",
@@ -23,9 +23,9 @@
     "build:css:prefix": "postcss dist/**/*.css --dir dist --use autoprefixer --parser postcss-scss"
   },
   "devDependencies": {
-    "@ovhcloud/ods-library-dev": "^12.0.2",
-    "@ovhcloud/ods-testing": "^12.0.2",
-    "@ovhcloud/ods-theming": "^12.0.2",
+    "@ovhcloud/ods-library-dev": "^12.0.3",
+    "@ovhcloud/ods-testing": "^12.0.3",
+    "@ovhcloud/ods-theming": "^12.0.3",
     "autoprefixer": "~10.3.7",
     "node-sass": "^6.0.1",
     "postcss": "^8.3.9",

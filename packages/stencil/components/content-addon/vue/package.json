@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-stencil-content-addon-vue",
-  "version": "12.0.2",
+  "version": "12.0.3",
   "private": true,
   "description": "Vue specific wrapper for ods",
   "keywords": [],
@@ -20,7 +20,7 @@
     "dist/"
   ],
   "dependencies": {
-    "@ovhcloud/ods-stencil-content-addon": "^12.0.2"
+    "@ovhcloud/ods-stencil-content-addon": "^12.0.3"
   },
   "peerDependencies": {
     "vue": ">=3"

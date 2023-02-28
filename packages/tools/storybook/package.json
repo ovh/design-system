@@ -1,18 +1,18 @@
 {
   "name": "@ovhcloud/ods-storybook",
-  "version": "12.0.0",
+  "version": "12.0.1",
   "main": "index.js",
   "license": "Apache-2.0",
   "dependencies": {
-    "@ovhcloud/ods-core": "^12.0.0",
-    "@ovhcloud/ods-design": "^12.0.0",
-    "@ovhcloud/ods-guide": "^12.0.0",
-    "@ovhcloud/ods-specifications": "^12.0.0",
-    "@ovhcloud/ods-starter-react": "^12.0.0",
-    "@ovhcloud/ods-starter-react-vite": "^12.0.0",
-    "@ovhcloud/ods-stencil": "^12.0.0",
-    "@ovhcloud/ods-theme-blue-jeans": "^12.0.0",
-    "@ovhcloud/ods-theming": "^12.0.0",
+    "@ovhcloud/ods-core": "^12.0.1",
+    "@ovhcloud/ods-design": "^12.0.1",
+    "@ovhcloud/ods-guide": "^12.0.1",
+    "@ovhcloud/ods-specifications": "^12.0.1",
+    "@ovhcloud/ods-starter-react": "^12.0.1",
+    "@ovhcloud/ods-starter-react-vite": "^12.0.1",
+    "@ovhcloud/ods-stencil": "^12.0.1",
+    "@ovhcloud/ods-theme-blue-jeans": "^12.0.1",
+    "@ovhcloud/ods-theming": "^12.0.1",
     "react": "^16.8.0"
   },
   "devDependencies": {

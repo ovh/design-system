@@ -8,6 +8,20 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
 
 
+# [12.0.1](https://ovhcloud.design/v12.0.1/?path=/docs/design-system-changelog--page) (2023-02-28)
+[compare](https://github.com/ovh/design-system/compare/v12.0.0...v12.0.1)
+
+### Bug Fixes
+
+* **ods:** update generate doc script for releasing ([96e4e81](https://github.com/ovh/design-system/commit/96e4e8132908ba6cf0c0cbf8211110f9e51b5d4d))
+
+
+
+
+
+[Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
+
+
 # [12.0.0](https://ovhcloud.design/v12.0.0/?path=/docs/design-system-changelog--page) (2023-02-27)
 12.0.0
 

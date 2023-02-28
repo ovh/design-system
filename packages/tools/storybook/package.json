@@ -48,8 +48,5 @@
     "start": "start-storybook -p 6006 $(yarn node ./.storybook/static-dirs.js)",
     "start:nocache": "start-storybook -p 6006 $(yarn node ./.storybook/static-dirs.js) --no-manager-cache",
     "start:quiet": "start-storybook -p 6006 --quiet $(yarn node ./.storybook/static-dirs.js)"
-  },
-  "publishConfig": {
-    "registry": ""
   }
 }

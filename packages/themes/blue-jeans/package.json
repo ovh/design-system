@@ -15,9 +15,6 @@
   "dependencies": {
     "@ovhcloud/ods-theming": "^12.0.2"
   },
-  "publishConfig": {
-    "registry": ""
-  },
   "devDependencies": {
     "autoprefixer": "~10.3.7",
     "node-sass": "^6.0.1",

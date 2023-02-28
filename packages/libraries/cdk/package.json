@@ -31,8 +31,5 @@
     "postcss": "^8.3.9",
     "postcss-cli": "^9.0.1",
     "postcss-scss": "^4.0.1"
-  },
-  "publishConfig": {
-    "registry": ""
   }
 }

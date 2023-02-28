@@ -6,8 +6,5 @@
   "author": "OVH SAS",
   "license": "Apache-2.0",
   "main": "",
-  "module": "",
-  "publishConfig": {
-    "registry": ""
-  }
+  "module": ""
 }

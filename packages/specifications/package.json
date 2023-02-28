@@ -12,8 +12,5 @@
   },
   "devDependencies": {
     "typescript": "4.7.4"
-  },
-  "publishConfig": {
-    "registry": ""
   }
 }

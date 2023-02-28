@@ -40,8 +40,5 @@
   },
   "peerDependencies": {
     "@ovhcloud/ods-stencil-icon": ">=10.0"
-  },
-  "publishConfig": {
-    "registry": ""
   }
 }

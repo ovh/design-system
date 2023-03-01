@@ -3,24 +3,33 @@
 
 @mixin osds-range-theme-color-error-state() {
   .ods-error {
+    $background-track: linear-gradient(ods-get-color-variable($intent-name: error, $hue: '500'), ods-get-color-variable($intent-name: error, $hue: '500')) 0/var(--ods-range-percent-value) 100% no-repeat, ods-get-color-variable($intent-name: error, $hue: '300');
+    $background-dualtrack: linear-gradient(to right, ods-get-color-variable($intent-name: error, $hue: '300') 0, ods-get-color-variable($intent-name: error, $hue: '300') min(var(--ods-range-percent-value), var(--ods-range-percent-value-secondary)), ods-get-color-variable($intent-name: error, $hue: '500') min(var(--ods-range-percent-value), var(--ods-range-percent-value-secondary)), ods-get-color-variable($intent-name: error, $hue: '500') max(var(--ods-range-percent-value), var(--ods-range-percent-value-secondary)), ods-get-color-variable($intent-name: error, $hue: '300') max(var(--ods-range-percent-value), var(--ods-range-percent-value-secondary)), ods-get-color-variable($intent-name: error, $hue: '300') 100%);
+    $background-thumb: ods-get-color-variable($intent-name: error, $hue: '000');
+    $hover-color: ods-get-color-variable($intent-name: error, $hue: '100');
     $border: ods-get-color-variable($intent-name: error, $hue: '500');
 
     @include osds-range-on-selected-host() {
       @include osds-range-on-main-element() {
         outline-color: $border;
 
-        &::-moz-range-track {
-          background-color: $border;
-        }
+        @include track-color($background-track);
+        @include thumb-color($background-thumb, $border, $hover-color);
+      }
+    }
 
-        &::-moz-range-thumb {
-          background-color: $border;
-          border-color: $border;
-        }
+    @include osds-range-on-selected-dual-host() {
+      @include osds-range-on-main-element() {
+        outline-color: $border;
 
-        &::-moz-range-progress {
-          background-color: $border;
-        }
+        @include track-color($background-dualtrack);
+        @include thumb-color($background-thumb, $border, $hover-color);
+      }
+
+      @include osds-range-on-multi-element() {
+        outline-color: $border;
+
+        @include thumb-color($background-thumb, $border, $hover-color);
       }
     }
   }
@@ -114,7 +123,7 @@
       }
     }
 
-    &:not([disabled]) {
+    &:not([disabled]):not(.ods-error) {
       @include osds-range-on-selected-host() {
         @include osds-range-inputs() {
           &:focus-visible {

@@ -1,4 +1,4 @@
-import { OdsThemeColorIntent } from '@ods/theming';
+import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 import { OdsChipSize } from './ods-chip-size';
 import { OdsChipVariant } from './ods-chip-variant';
 export const odsChipDefaultAttributesDoc = {

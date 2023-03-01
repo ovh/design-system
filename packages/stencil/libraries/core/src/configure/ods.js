@@ -26,7 +26,7 @@ import { OdsExternalLogger } from '../logger/ods-external-logger';
  * import {
  *   OdsInitializedEvent,
  *   OdsInitializedEventName
- * } from '@ods/core';
+ * } from '@ovhcloud/ods-core';
  *
  * document.addEventListener(OdsInitializedEventName, (event) => {
  *   const evt = event as OdsInitializedEvent;
@@ -39,13 +39,13 @@ import { OdsExternalLogger } from '../logger/ods-external-logger';
  *
  * @example enable log on demand via typescript
  * ```typescript
- * import { Ods } from '@ods/core';
+ * import { Ods } from '@ovhcloud/ods-core';
  * Ods.instance().logging(true);
  * ```
  *
  * @example configure different element of `ODS`
  * ```typescript
- * import { Ods } from '@ods/core';
+ * import { Ods } from '@ovhcloud/ods-core';
  * const my translationCbk: OdsI18nHook = (key, values) => `${key} to be translated`;
  * Ods.instance()
  *   .logging(true)
@@ -54,7 +54,7 @@ import { OdsExternalLogger } from '../logger/ods-external-logger';
  *
  * @example use the embedded logger of `ODS` via typescript
  * ```typescript
- * import { Ods } from '@ods/core';
+ * import { Ods } from '@ovhcloud/ods-core';
  *
  * Ods.instance().logging(true);
  * const myLogger = new (Ods.instance().logger)('MY CONTEXT');

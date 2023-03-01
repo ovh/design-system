@@ -1,4 +1,4 @@
-import { OdsThemeColorIntent } from '@ods/theming';
+import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 import { OdsButtonSize } from './ods-button-size';
 import { OdsButtonVariant } from './ods-button-variant';
 import { OdsButtonType } from './ods-button-type';

@@ -1,7 +1,7 @@
 import { OdsComponentController } from '../ods-component-controller';
 import { OdsGetValidityState } from '../../form/validation/ods-get-validity-state';
 import { OdsLogger } from '../../logger/ods-logger';
-import { OdsThemeColorIntent } from '@ods/theming';
+import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 import { OdsWarnComponentAttribute } from '../../logger/ods-warn-logger';
 /**
  * common controller logic for range component used by the different implementations.

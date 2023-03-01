@@ -1,4 +1,4 @@
-import { OdsThemeColorIntent } from '@ods/theming';
+import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 export const odsToggleDefaultAttributes = {
   contrasted: false,
   checked: false,

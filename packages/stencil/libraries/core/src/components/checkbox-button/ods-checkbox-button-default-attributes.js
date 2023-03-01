@@ -1,5 +1,5 @@
 import { OdsCheckboxButtonSize } from './ods-checkbox-button-size';
-import { OdsThemeColorIntent } from '@ods/theming';
+import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 /**
  * default attribute values of checkbox button
  */

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html dir='ltr' lang='en'>
+<head>
+  <meta charset='utf-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0' />
+  <title>Dev osds-tabs</title>
+
+  <script type="module">
+    !window.ods && (window.ods = {config: {logging: {active:true}}});
+  </script>
+
+  <script type='module' src='/build/osds-tabs.esm.js'></script>
+  <script nomodule src='/build/osds-tabs.js'></script>
+  <!--  <script type="text/javascript">ods.instance().logging(true)</script>-->
+  <link rel="stylesheet" href="/build/osds-tabs.css">
+</head>
+<body>
+
+<p>Tabs manager</p>
+<osds-tabs>
+  
+  <osds-tabs-panel value="1">Les serveurs les plus abordables, adaptés à la plupart des usages.</osds-tabs-panel>
+  <osds-tabs-panel value="2">Des serveurs polyvalents pour les petites et moyennes entreprises.</osds-tabs-panel>
+  <osds-tabs-panel value="3">Des serveurs conçus pour les infrastructures complexes à haute résilience.</osds-tabs-panel>
+  <osds-tabs-panel value="4">Les serveurs les plus puissants, optimisés pour les charges critiques.</osds-tabs-panel>
+  <osds-tabs-panel value="5">Des serveurs pour l'archivage, la sauvegarde ou le stockage distribué.</osds-tabs-panel>
+  <osds-tabs-panel value="6">Des serveurs optimisés pour les jeux vidéo et les plateformes de streaming.</osds-tabs-panel>
+  <osds-tabs-panel value="7">Des serveurs optimisés pour les jeux vidéo et les plateformes de streaming.</osds-tabs-panel>
+</osds-tabs>
+<!-- <osds-tabs-panel value="1">Les serveurs les plus abordables, adaptés à la plupart des usages.</osds-tabs-panel>
+<osds-tabs-panel value="2">Des serveurs polyvalents pour les petites et moyennes entreprises.</osds-tabs-panel>
+<osds-tabs-panel value="3">Des serveurs conçus pour les infrastructures complexes à haute résilience.</osds-tabs-panel>
+<osds-tabs-panel value="4">Les serveurs les plus puissants, optimisés pour les charges critiques.</osds-tabs-panel>
+<osds-tabs-panel value="5">Des serveurs pour l'archivage, la sauvegarde ou le stockage distribué.</osds-tabs-panel>
+<osds-tabs-panel value="6">Des serveurs optimisés pour les jeux vidéo et les plateformes de streaming.</osds-tabs-panel>
+<osds-tabs-panel value="7">Des serveurs optimisés pour les jeux vidéo et les plateformes de streaming.</osds-tabs-panel> -->
+
+<script>
+  document.addEventListener('odsInitialized', ({detail}) => {
+    const instance = detail.instance;
+    instance.logging(true);
+    const logger = new instance.logger('www');
+    logger.log('odsInitialized received');
+
+    document.querySelectorAll('osds-tabs').forEach((elem) => {
+      elem.addEventListener('osdstabsClick', function(event) {
+        logger.log('(html) addEventListener odstabsClick: %o', event);
+      });
+    });
+  })
+</script>
+</body>
+</html>

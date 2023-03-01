@@ -1,0 +1,56 @@
+@import '~@ovhcloud/ods-theming/ods-theme';
+@import './styles/osds-tabs.typography';
+@import '~@ovhcloud/ods-theming/color/ods-theming-color';
+@import '~@ovhcloud/ods-theming/ods-theme';
+
+.tabs {
+  //background: lightsalmon;
+
+  .tabs-content {
+    //background: yellow;
+    padding: 1rem;
+  }
+
+  .tabs-nav-wrap {
+    //background: green;
+
+    .tabs-nav-list {
+      //background: orange;
+      position: relative;
+      display: flex;
+      transition: opacity .3s;
+
+      .tabs-tab {
+        //background: lightcyan;
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        outline: none;
+        cursor: pointer;
+
+        div {
+          padding: 18px 2rem 5px 2rem;
+          color: #0050D7;
+          //background: pink;
+        }
+
+        &.tabs-tab-disabled div {
+          color: rgba(0,0,0,.25);
+          cursor: not-allowed;
+        }
+
+        &.tabs-tab-active div {
+          //background: red;
+          color: #000E9C;
+          border-bottom: 2px solid #000E9C;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}
+
+// apply the theme template for the component
+@include ods-theme-component() {
+  @include osds-tabs-theme-typography();
+}

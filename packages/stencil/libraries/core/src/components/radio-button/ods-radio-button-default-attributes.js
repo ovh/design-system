@@ -1,5 +1,5 @@
 import { OdsRadioButtonSize } from './ods-radio-button-size';
-import { OdsThemeColorIntent } from '@ods/theming';
+import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 /**
  * default attribute values of radio button
  */

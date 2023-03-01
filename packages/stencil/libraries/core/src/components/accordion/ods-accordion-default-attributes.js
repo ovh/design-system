@@ -1,5 +1,5 @@
 import { OdsAccordionSize } from './ods-accordion-size';
-import { OdsThemeColorIntent } from '@ods/theming';
+import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 /**
  * Default attribute values of Accordion component
  * (this are values for `odsAccordionDefaultAttributes`)

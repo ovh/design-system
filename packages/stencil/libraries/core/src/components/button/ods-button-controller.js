@@ -2,7 +2,7 @@ import { OdsButtonSize } from './ods-button-size';
 import { OdsButtonVariant } from './ods-button-variant';
 import { OdsComponentController } from '../ods-component-controller';
 import { OdsLogger } from './../../logger/ods-logger';
-import { OdsThemeColorIntent } from '@ods/theming';
+import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 import { OdsWarnComponentAttribute } from '../../logger/ods-warn-logger';
 /**
  * common controller logic for button component used by the different implementations.

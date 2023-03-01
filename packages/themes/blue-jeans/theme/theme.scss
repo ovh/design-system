@@ -194,6 +194,12 @@
         lg: (width: calc(21.875rem * var(--ods-size-ratio))),
         xl: (width: calc(31.25rem * var(--ods-size-ratio))),
       ),
+      $tabs: (
+        md: (
+          height: var(--ods-size-08),
+          width: var(--ods-size-11)          
+        )
+      ),
       $textarea: (
         md: (
           padding: var(--ods-size-inset-04),

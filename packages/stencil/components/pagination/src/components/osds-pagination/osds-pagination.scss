@@ -1,0 +1,81 @@
+@import 'styles/osds-pagination.color';
+@import 'styles/osds-pagination.size';
+@import 'styles/osds-pagination.typography';
+@import '~@ovhcloud/ods-theming/color/ods-theming-color';
+@import '~@ovhcloud/ods-theming/ods-theme';
+
+// CSS for the component but not for theming
+
+:host {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  text-align: left;
+
+  .button {
+    width: 36px;
+    height: 36px;
+    color: green;
+    background-color: red;
+  }
+
+  ul {
+    list-style-type: none;
+  }
+
+  li {
+    display: inline;
+    list-style-type: none; 
+    padding-left: 10px;
+    white-space: nowrap;
+  }
+
+  &[disabled] {
+    
+  }
+
+  .overlay {
+    border-style: solid;
+    display: none;
+    position: absolute;
+    max-width: available;
+    max-width: -moz-available;
+    max-width: -webkit-available;
+    z-index: 2;
+    min-height: calc(2.25rem * var(--ods-size-ratio));
+    max-height: calc(var(--ods-size-stack-11) * 7.5);
+    overflow: auto;
+  }
+}
+
+:not([disabled]):focus-visible {
+  @include osds-pagination-on-selected-host() {
+    outline-style: dotted;
+    outline-width: var(--ods-size-inset-02);
+    outline-offset: var(--ods-size-inset-02);
+  }
+}
+
+[disabled] {
+  @include osds-pagination-on-selected-host() {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+[flex] {
+  @include osds-pagination-on-selected-host() {
+    display: flex;
+  }
+  @include osds-pagination-on-select-element() {
+    flex: 1;
+  }
+}
+
+// apply the theme template for the component
+@include ods-theme-component() {
+  @include osds-pagination-theme-color();
+  @include osds-pagination-theme-size();
+  @include osds-pagination-theme-typography();
+}

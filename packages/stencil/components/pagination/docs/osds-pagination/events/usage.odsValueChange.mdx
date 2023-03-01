@@ -1,0 +1,19 @@
+```html
+<osds-pagination id="myOdsPagination">
+  <osds-pagination-option value="1">Value 1</osds-pagination-option>
+  <osds-pagination-option value="2">Value 2</osds-pagination-option>
+  <osds-pagination-option value="3">Value 3</osds-pagination-option>
+</osds-pagination>
+```
+
+```typescript
+// vanilla typescript
+import { OdsPaginationCurrentChangeEvent } from '@ovhcloud/ods-core';
+
+const odsPagination = document.queryPaginationor('osds-pagination#myOdsPagination');
+
+odsPagination.addEventListener('odsCurrentChange', event => {
+  const evt = event as OdsPaginationCurrentChangeEvent;
+  console.log('odsCurrentChange event', evt.detail);
+});
+```

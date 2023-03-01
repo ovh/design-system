@@ -1,0 +1,47 @@
+@import '~@ovhcloud/ods-theming/color/ods-component-color';
+@import './osds-pagination.mixins';
+
+@mixin osds-pagination-theme-color-error-state() {
+  .ods-error {
+    $border: ods-get-color-variable(
+      $intent-name: error,
+      $hue: '500',
+    );
+    @include osds-pagination-on-select-element() {
+      border-color: $border;
+    }
+    @include osds-pagination-on-overlay-element() {
+      border-color: $border;
+    }
+  }
+}
+
+@mixin osds-pagination-theme-color() {
+  /** main colors */
+  :host {
+    osds-icon {
+      background-color: ods-get-color-variable($intent-name: primary, $hue: '800');
+    } 
+
+    osds-button.selectedpage::part(button) {
+      background-color: ods-get-color-variable($intent-name: primary, $hue: '800');
+      color: white;
+    }
+
+    .overlay {
+      border-color: var(--ods-color-primary-200);
+      background-color: var(--ods-color-primary-000);
+    }
+  }
+
+  /** disabled colors */
+  [disabled],
+  [disabled]:focus {
+    @include osds-pagination-on-selected-host() {
+      opacity: 0.5;
+    }
+  }
+
+  /** Override error state colors in */
+  @include osds-pagination-theme-color-error-state();
+}

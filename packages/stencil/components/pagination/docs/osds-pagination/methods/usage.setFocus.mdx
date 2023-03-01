@@ -1,0 +1,18 @@
+```html
+<osds-pagination id="myOdsPagination">
+  <osds-pagination-option value="1">Value 1</osds-pagination-option>
+  <osds-pagination-option value="2">Value 2</osds-pagination-option>
+  <osds-pagination-option value="3">Value 3</osds-pagination-option>
+</osds-pagination>
+```
+
+```typescript
+// vanilla typescript
+const odsPagination = document.queryPaginationor('osds-pagination#myOdsPagination');
+
+async function componentOnLoad() {
+  await customElements.whenDefined('osds-pagination');
+  odsPagination.setFocus();
+}
+componentOnLoad();
+```

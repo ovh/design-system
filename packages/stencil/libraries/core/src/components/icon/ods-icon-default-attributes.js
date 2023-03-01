@@ -1,5 +1,5 @@
 import { OdsIconSize } from './ods-icon-size';
-import { OdsThemeColorIntent } from '@ods/theming';
+import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 export const odsIconDefaultAttributesDoc = {
   ariaName: '',
   color: OdsThemeColorIntent.default,

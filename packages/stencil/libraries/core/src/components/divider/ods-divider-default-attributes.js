@@ -1,4 +1,4 @@
-import { OdsThemeColorIntent } from '@ods/theming';
+import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 import { OdsDividerSize } from './ods-divider-size';
 export const odsDividerDefaultAttributesDoc = {
   color: OdsThemeColorIntent.default,

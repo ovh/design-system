@@ -1,4 +1,4 @@
-import { OdsThemeColorIntent } from '@ods/theming';
+import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 import { OdsHTMLAnchorElementTarget } from '../../types/ods-html-anchor-element-target';
 /**
  * default attribute values of link

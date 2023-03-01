@@ -1,4 +1,4 @@
-import { OdsThemeColorIntent } from '@ods/theming';
+import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 import { OdsTileSize } from './ods-tile-size';
 import { OdsTileVariant } from './ods-tile-variant';
 export const odsTileDefaultAttributesDoc = {

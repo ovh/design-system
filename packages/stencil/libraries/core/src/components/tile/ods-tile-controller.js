@@ -1,6 +1,6 @@
 import { OdsComponentController } from '../ods-component-controller';
 import { OdsLogger } from './../../logger/ods-logger';
-import { OdsThemeColorIntent } from '@ods/theming';
+import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 import { OdsTileSize } from './ods-tile-size';
 import { OdsTileVariant } from './ods-tile-variant';
 import { OdsWarnComponentAttribute } from '../../logger/ods-warn-logger';

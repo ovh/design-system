@@ -1,6 +1,6 @@
 import { OdsComponentController } from '../ods-component-controller';
 import { OdsLogger } from '../../logger/ods-logger';
-import { OdsThemeColorIntent } from '@ods/theming';
+import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 import { odsIsTermInEnum } from '../../types/guard/ods-is-term-in-enum';
 /**
  * common controller logic for chip component used by the different implementations.

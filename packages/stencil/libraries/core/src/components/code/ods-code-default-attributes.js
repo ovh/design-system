@@ -1,5 +1,5 @@
 import { OdsCodeSize } from './ods-code-size';
-import { OdsThemeColorIntent } from '@ods/theming';
+import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 /**
  * Default attribute values of Code component
  * (this are values for `odsCodeDefaultAttributes`)

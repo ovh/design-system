@@ -1,4 +1,4 @@
-import { OdsThemeColorIntent } from '@ods/theming';
+import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 export const odsMessageDefaultAttributes = {
   color: OdsThemeColorIntent.default,
   flex: false,

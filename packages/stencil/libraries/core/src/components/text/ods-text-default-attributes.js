@@ -1,4 +1,4 @@
-import { OdsThemeColorIntent, OdsThemeColorHue } from '@ods/theming';
+import { OdsThemeColorIntent, OdsThemeColorHue } from '@ovhcloud/ods-theming';
 import { OdsTextSize } from './ods-text-size';
 import { OdsTextLevel } from './ods-text-level';
 /**

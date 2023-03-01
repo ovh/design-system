@@ -1,4 +1,4 @@
-import { OdsThemeColorIntent } from '@ods/theming';
+import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 import { OdsInputSize } from './ods-input-size';
 import { OdsInputType } from './ods-input-type';
 export const odsInputDefaultAttributesDoc = {

@@ -1,12 +1,12 @@
 import { OdsComponentController } from '../../ods-component-controller';
-import { OdsTabsPanel } from './ods-tabs-panel';
+import { OdsTabPanel } from './ods-tab-panel';
 
 /**
  * common controller logic for text component used by the different implementations.
  * it contains all the glue between framework implementation and the third party service.
  */
-export class OdsTabsPanelController extends OdsComponentController<OdsTabsPanel> {
-  constructor(component: OdsTabsPanel) {
+export class OdsTabPanelController extends OdsComponentController<OdsTabPanel> {
+  constructor(component: OdsTabPanel) {
     super(component);
   }
 

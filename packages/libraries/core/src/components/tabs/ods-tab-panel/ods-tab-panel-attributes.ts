@@ -1,7 +1,7 @@
 import { OdsComponentAttributes } from '../../ods-component-attributes';
-import { OdsTabsSize, } from '../ods-tabs-size';
+import { OdsTabsSize, } from '../ods-tabs/ods-tabs-size';
 
-export interface OdsTabsPanelAttributes extends OdsComponentAttributes {
+export interface OdsTabPanelAttributes extends OdsComponentAttributes {
   size?: OdsTabsSize
   /**
    * The value of the corresponding Tab. Must use the index of the Tab when no value was passed to Tab.

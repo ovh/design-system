@@ -1,4 +1,4 @@
-export interface OdsTabsPanelBehavior {
+export interface OdsTabPanelBehavior {
     /**
      * before render component function
      * should be called before component render

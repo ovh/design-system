@@ -9,16 +9,29 @@
     !window.ods && (window.ods = {config: {logging: {active:true}}});
   </script>
 
-  <script type='module' src='/build/osds-tabs.esm.js'></script>
-  <script nomodule src='/build/osds-tabs.js'></script>
-  <!--  <script type="text/javascript">ods.instance().logging(true)</script>-->
-  <link rel="stylesheet" href="/build/osds-tabs.css">
+<script type='module' src='/build/osds-tabs.esm.js'></script>
+<script nomodule src='/build/osds-tabs.js'></script>
+<script type='module' src='/build/osds-link.esm.js'></script>
+<script nomodule src='/build/osds-link.js'></script>
+<!--  <script type="text/javascript">ods.instance().logging(true)</script>-->
+<link rel="stylesheet" href="/build/osds-tabs.css">
+<link rel="stylesheet" href="/build/osds-link.css">
 </head>
 <body>
 
+  <p>Tabs manager</p>
+  <osds-tabs />
+  
+
 <p>Tabs manager</p>
 <osds-tabs>
-  
+</osds-tabs>
+
+<br/>
+<br/>
+<p>Tabs manager with disabled</p>
+<osds-tabs>
+  <osds-tab-bar slot="top" />
   <osds-tabs-panel value="1">Les serveurs les plus abordables, adaptés à la plupart des usages.</osds-tabs-panel>
   <osds-tabs-panel value="2">Des serveurs polyvalents pour les petites et moyennes entreprises.</osds-tabs-panel>
   <osds-tabs-panel value="3">Des serveurs conçus pour les infrastructures complexes à haute résilience.</osds-tabs-panel>
@@ -27,6 +40,8 @@
   <osds-tabs-panel value="6">Des serveurs optimisés pour les jeux vidéo et les plateformes de streaming.</osds-tabs-panel>
   <osds-tabs-panel value="7">Des serveurs optimisés pour les jeux vidéo et les plateformes de streaming.</osds-tabs-panel>
 </osds-tabs>
+
+<div><ods-link size='s'>Coucou</ods-link></div>
 <!-- <osds-tabs-panel value="1">Les serveurs les plus abordables, adaptés à la plupart des usages.</osds-tabs-panel>
 <osds-tabs-panel value="2">Des serveurs polyvalents pour les petites et moyennes entreprises.</osds-tabs-panel>
 <osds-tabs-panel value="3">Des serveurs conçus pour les infrastructures complexes à haute résilience.</osds-tabs-panel>

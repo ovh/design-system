@@ -1,4 +1,4 @@
-import { OdsComponentController } from '../ods-component-controller';
+import { OdsComponentController } from '../../ods-component-controller';
 import { OdsTabs } from './ods-tabs';
 
 /**

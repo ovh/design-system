@@ -1,6 +1,6 @@
-import { OdsComponentGenericMethods } from '../ods-component-generic-methods';
-import { OdsComponentGenericEvents } from '../ods-component-generic-events';
-import { OdsComponent } from '../ods-component';
+import { OdsComponentGenericMethods } from '../../ods-component-generic-methods';
+import { OdsComponentGenericEvents } from '../../ods-component-generic-events';
+import { OdsComponent } from '../../ods-component';
 import { OdsTabsMethods } from './ods-tabs-methods';
 import { OdsTabsEvents } from './ods-tabs-events';
 import { OdsTabsController } from './ods-tabs-controller';

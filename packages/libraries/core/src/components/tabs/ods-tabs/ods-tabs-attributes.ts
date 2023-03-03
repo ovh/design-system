@@ -1,4 +1,4 @@
-import { OdsComponentAttributes } from '../ods-component-attributes';
+import { OdsComponentAttributes } from '../../ods-component-attributes';
 import { OdsTabsSize, } from './ods-tabs-size';
 
 // interface TabItemType {

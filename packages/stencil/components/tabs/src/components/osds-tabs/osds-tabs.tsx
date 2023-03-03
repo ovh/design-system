@@ -1,6 +1,6 @@
 import { Component, h, Prop, Element, Host, } from '@stencil/core';
 import { HTMLStencilElement } from '@stencil/core/internal';
-import { OdsTabs, OdsTabsEvents, OdsTabsSize, OdsTabsMethods, OdsTabsController, odsTabsDefaultAttributes } from '@ovhcloud/ods-core';
+import { OdsTabs, OdsTabsEvents, OdsTabsSize, OdsTabsMethods, OdsTabsController, odsTabsDefaultAttributes, } from '@ovhcloud/ods-core';
 import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libraries/stencil-core';
 
 //import { HTMLStencilElement } from '@stencil/core/internal';
@@ -145,7 +145,11 @@ export class OsdsTabs implements OdsTabs<OdsStencilMethods<OdsTabsMethods>, OdsS
           <div class="tabs-content">
             <div>{this.defaultActiveKey ? items[parseInt(this.defaultActiveKey)].children : ``}</div>
           </div>
-          {/* <slot /> */}
+          <slot name="top"/>
+          <slot />
+          <div>
+            <div>test link</div>
+          </div>
         </div>
       </div>
       </Host>

@@ -33,7 +33,8 @@ export * from './text/public-api';
 export * from './textarea/public-api';
 export * from './tile/public-api';
 export * from './toggle/public-api';
-
+export * from './breadcrumbs/public-api';
+export * from './breadcrumb-item/public-api';
 export * from './ods-component';
 export * from './ods-component-generic-attributes';
 export * from './ods-component-attributes-2-string-attributes';

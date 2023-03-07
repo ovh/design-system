@@ -1,0 +1,53 @@
+@import '~@ovhcloud/ods-theming/color/ods-component-color';
+@import 'osds-breadcrumb.mixins';
+
+@mixin osds-breadcrumb-theme-color() {
+
+  :host {
+    @include osds-breadcrumb-on-text-content() {
+      background-image: linear-gradient(currentColor, currentColor);
+    }
+  }
+
+  :host(:not([href])),
+  :host([href=""]) {
+    @include osds-breadcrumb-on-breadcrumb-container() {
+      background-color: transparent;
+    }
+  }
+
+  @include ods-all-hue-foreach-theme-color((
+          color: '500',
+  )) using($colors) {
+    @include osds-breadcrumb-on-selected-host() {
+      @include osds-breadcrumb-on-breadcrumb-container() {
+        color: map_get($colors, color);
+      }
+    }
+  }
+
+  @include ods-all-hue-foreach-theme-color((
+          color: '700',
+          border-color: '700',
+  )) using($colors) {
+    :host(&:hover),
+    :host(&:focus) {
+      @include osds-breadcrumb-on-breadcrumb-container() {
+        color: map_get($colors, color);
+      }
+    }
+  }
+
+  [contrasted] {
+    @include ods-and-all-hue-foreach-theme-color((
+            color: '500-contrasted'
+    )) using($colors) {
+      @include osds-breadcrumb-on-selected-host() {
+        @include osds-breadcrumb-on-breadcrumb-container() {
+          color: map_get($colors, color);
+        }
+      }
+    }
+  }
+}
+

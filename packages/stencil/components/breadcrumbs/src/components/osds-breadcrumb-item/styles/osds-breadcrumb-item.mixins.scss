@@ -1,0 +1,24 @@
+// general mixins and functions for the component
+@mixin osds-breadcrumb-on-selected-host() {
+  :host(&) {
+      @content;
+  }
+}
+
+@mixin osds-breadcrumb-on-breadcrumb-container() {
+  .breadcrumb {
+    @content;
+  }
+}
+
+@mixin osds-breadcrumb-on-text-container() {
+  .breadcrumb__text-container {
+    @content;
+  }
+}
+
+@mixin osds-breadcrumb-on-text-content() {
+  .breadcrumb__centered-text {
+    @content;
+  }
+}

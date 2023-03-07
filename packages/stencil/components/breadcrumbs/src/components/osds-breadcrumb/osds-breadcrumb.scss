@@ -1,0 +1,19 @@
+@import 'styles/osds-breadcrumb.mixins';
+@import 'styles/osds-breadcrumb.color';
+@import 'styles/osds-breadcrumb.typography';
+@import '~@ovhcloud/ods-theming/color/ods-theming-color';
+@import '~@ovhcloud/ods-theming/ods-theme';
+
+// CSS for the component but not for theming
+
+:host {
+
+
+  }
+
+  osds-breadcrumb-item {
+    background-color: red;
+
+  }
+
+

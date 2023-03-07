@@ -1,0 +1,14 @@
+// @access private
+@function ods-get-breadcrumbs-size-properties($size-name) {
+    @return (
+      height: var(--ods-size-breadcrumbs-#{$size-name}-height),
+      width: var(--ods-size-breadcrumbs-#{$size-name}-width),
+    )
+  }
+
+  /// @access private
+  @function ods-get-breadcrumbs-component-size-definition() {
+    @return (
+      md: ods-get-breadcrumbs-size-properties(md)
+    );
+  }

@@ -1,0 +1,17 @@
+@import '~@ovhcloud/ods-theming/color/ods-theming-color';
+@import '~@ovhcloud/ods-theming/ods-theme';
+
+// CSS for the component but not for theming
+
+li {
+  display: inline;
+}
+
+/*li::after {
+  color: #4f5693;
+  content: ' | ';
+}*/
+
+.breadcrumb-separator {
+  display: inline-flex;
+}

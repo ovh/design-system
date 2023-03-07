@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <title>Dev osds-breadcrumbs</title>
+
+    <script type="module">
+      !window.ods && (window.ods = { config: { logging: { active: true } } });
+    </script>
+
+    <script type="module" src="/build/osds-breadcrumbs.esm.js"></script>
+    <script nomodule src="/build/osds-breadcrumbs.js"></script>
+    <link rel="stylesheet" href="/build/osds-breadcrumbs.css" />
+  </head>
+  <body>
+    <p>Navigation</p>
+    <osds-breadcrumb>
+      <osds-breadcrumb-item>
+        <osds-link color="primary" href="home">
+          <osds-icon name="home" color="primary" size="sm"></osds-icon>
+        </osds-link>
+      </osds-breadcrumb-item>
+      <osds-breadcrumb-item id="start"><osds-link color="primary" href="web">Web</osds-link></osds-breadcrumb-item>
+      <osds-breadcrumb-item><osds-link color="primary" href="Domains">Domains</osds-link></osds-breadcrumb-item>
+      <osds-breadcrumb-item><osds-link color="primary" href="Informations générales">Informations générales</osds-link></osds-breadcrumb-item>
+      <osds-breadcrumb-item id="end"><osds-link color="primary" href="Zone DNS" disabled="true">Zone DNS</osds-link></osds-breadcrumb-item>
+    </osds-breadcrumb>
+
+    <p>Navigation with ellipsis</p>
+    <osds-breadcrumb>
+      <osds-breadcrumb-item>
+        <osds-link color="primary" href="home">
+          <osds-icon name="home" color="primary" size="sm"></osds-icon>
+        </osds-link>
+      </osds-breadcrumb-item>
+
+      <osds-breadcrumb-item><osds-link color="primary" href="web">Web</osds-link></osds-breadcrumb-item>
+      <osds-breadcrumb-item><osds-link color="primary" href="Domains">Domains</osds-link></osds-breadcrumb-item>
+      <osds-breadcrumb-item><osds-link color="primary" href="Informations générales">Informations générales</osds-link></osds-breadcrumb-item>
+      <osds-breadcrumb-item><osds-link color="primary" href="test">test</osds-link></osds-breadcrumb-item>
+      <osds-breadcrumb-item><osds-link color="primary" href="toto">toto</osds-link></osds-breadcrumb-item>
+      <osds-breadcrumb-item><osds-link color="primary" href="Zone DNS" disabled="true">Zone DNS</osds-link></osds-breadcrumb-item>
+    </osds-breadcrumb>
+
+    <script>
+      let logger;
+      document.addEventListener('odsInitialized', ({ detail }) => {
+        const instance = detail.instance;
+        instance.logging(true);
+        logger = new instance.logger('www');
+        logger.log('odsInitialized received');
+      });
+
+      document.querySelectorAll('osds-breadcrumbs').forEach(elem => {
+        elem.addEventListener('osdsBreadcrumbsClick', function (event) {
+          logger && logger.log('(html) addEventListener odsBreadcrumbsClick: %o', event);
+        });
+      });
+    </script>
+  </body>
+</html>

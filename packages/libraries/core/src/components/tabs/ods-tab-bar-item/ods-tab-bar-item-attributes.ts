@@ -4,7 +4,11 @@ import { OdsTabsSize, } from '../ods-tabs/ods-tabs-size';
 export interface OdsTabBarItemAttributes extends OdsComponentAttributes {
   size?: OdsTabsSize
   /**
-   * The slots of the corresponding Tab
+   * The panel of the corresponding Tab
    */
-  slots?: string
+  panel?: string
+  /**
+   * The checked status of the tab
+   */
+  checked: boolean
 }

@@ -7,6 +7,11 @@ import './components';
 import './global';
 import { OdsLogger } from '@ovhcloud/ods-core';
 
+
+import '@ovhcloud/ods-stencil/components/link';
+import '@ovhcloud/ods-stencil/components/icon';
+import '@ovhcloud/ods-stencil/components/text';
+
 const logger = new OdsLogger('global-dev');
 logger.log('init');
 
@@ -15,5 +20,11 @@ logger.log('init');
 };
 
 (async () => {
+  await customElements.whenDefined('osds-text');
+  await customElements.whenDefined('osds-link');
   await customElements.whenDefined('osds-tabs');
+  await customElements.whenDefined('osds-tab-bar');
+  await customElements.whenDefined('osds-tabs-bar-item');
+  await customElements.whenDefined('osds-tab-panel');
 })();
+

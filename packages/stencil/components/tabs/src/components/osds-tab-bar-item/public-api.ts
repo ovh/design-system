@@ -1,0 +1,1 @@
+export { OsdsTabBarItem } from './osdsTabBarItem';

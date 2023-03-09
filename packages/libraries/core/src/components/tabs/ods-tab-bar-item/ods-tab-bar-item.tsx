@@ -8,7 +8,7 @@ import { OdsTabBarItemAttributes } from './ods-tab-bar-item-attributes';
 import { OdsTabBarItemBehavior } from './ods-tab-bar-item-behavior';
 
 /**
- * interface description ofe all implementation of `ods-tabs`.
+ * interface description ofe all implementation of `ods-tab-bar-item`.
  * each implementation must have defined events, methods, attributes
  * and one controller for the common behavior logic
  */

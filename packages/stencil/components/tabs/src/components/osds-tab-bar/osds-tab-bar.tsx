@@ -1,4 +1,4 @@
-import { Component, h, Prop, Element, } from '@stencil/core';
+import { Component, h, Prop, Element, Host, } from '@stencil/core';
 import { HTMLStencilElement } from '@stencil/core/internal';
 import { OdsTabBar, OdsTabBarEvents, OdsTabsSize, OdsTabBarMethods, OdsTabBarController, OdsTabBarDefaultAttributes } from '@ovhcloud/ods-core';
 import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libraries/stencil-core';
@@ -16,7 +16,7 @@ import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libra
   styleUrl: 'osds-tab-bar.scss',
   shadow: true,
 })
-export class OsdsTabs implements OdsTabBar<OdsStencilMethods<OdsTabBarMethods>, OdsStencilEvents<OdsTabBarEvents>> {
+export class OsdsTabBar implements OdsTabBar<OdsStencilMethods<OdsTabBarMethods>, OdsStencilEvents<OdsTabBarEvents>> {
   /** @see OdsComponent.controller */
   controller: OdsTabBarController = new OdsTabBarController(this as OdsTabBar);
 
@@ -44,7 +44,11 @@ export class OsdsTabs implements OdsTabBar<OdsStencilMethods<OdsTabBarMethods>, 
 
   render() {
     return (
-        <div>osds-tab-bar</div>
+      <Host>
+        <div class="tabs-nav-list">
+          <slot/>
+        </div>
+      </Host>
     );
   }
 }

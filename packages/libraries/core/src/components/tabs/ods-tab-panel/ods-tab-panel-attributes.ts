@@ -4,9 +4,9 @@ import { OdsTabsSize, } from '../ods-tabs/ods-tabs-size';
 export interface OdsTabPanelAttributes extends OdsComponentAttributes {
   size?: OdsTabsSize
   /**
-   * The value of the corresponding Tab. Must use the index of the Tab when no value was passed to Tab.
+   * The name of the corresponding Tab. Must use the index of the Tab when no value was passed to Tab.
    */
-  value?: string | number
+  name?: string
   /**
    * 	The content of the component.
    */

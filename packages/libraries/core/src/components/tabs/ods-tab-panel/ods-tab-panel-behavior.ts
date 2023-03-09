@@ -3,7 +3,7 @@ export interface OdsTabPanelBehavior {
      * before render component function
      * should be called before component render
      * it have to check the validity of attributes.
-     * @see OdsTabController.validateAttributes
+     * @see OdsTabPanelController.validateAttributes
      */
     beforeRender(): void;
   }

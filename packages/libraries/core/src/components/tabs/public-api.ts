@@ -33,3 +33,7 @@ export * from './ods-tab-panel/ods-tab-panel-behavior';
 export * from './ods-tab-panel/ods-tab-panel-default-attributes';
 export * from './ods-tab-panel/ods-tab-panel-events';
 export * from './ods-tab-panel/ods-tab-panel-methods';
+
+export * from './ods-panel-value';
+export * from './ods-tab-item-click-event'
+export * from './ods-tab-panel-click-event'

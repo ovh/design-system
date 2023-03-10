@@ -23,21 +23,13 @@ export class OsdsTabs implements OdsTabs<OdsStencilMethods<OdsTabsMethods>, OdsS
   /** @see OdsTabsBehavior.hostElement */
   @Element() hostElement!: HTMLStencilElement;
 
-  /** @see OdsTabsAttributes.center */
-  @Prop({ reflect: true }) public center?: boolean = odsTabsDefaultAttributes.center;
-  /** @see OdsTabsAttributes.activeKey */
-  @Prop({ reflect: true, mutable: true }) public activeKey?: string = odsTabsDefaultAttributes.defaultActiveKey;
-  /** @see OdsTabsAttributes.defaultActiveKey */
-  @Prop({ reflect: true, mutable: true }) public defaultActiveKey?: string = odsTabsDefaultAttributes.defaultActiveKey;
-  /** @see OdsTabsAttributes.items */
-  @Prop({ reflect: true }) public items?: any = odsTabsDefaultAttributes.items;
-  /** @see OdsSelectAttributes.size */
+  /** @see OdsTabsAttributes.panelActive */
+  @Prop({ reflect: true }) public panelActive?: string = odsTabsDefaultAttributes.panelActive;
+  /** @see OdsTabsAttributes.OdsTabsSize */
   @Prop({ reflect: true }) size?: OdsTabsSize = odsTabsDefaultAttributes.size;
 
   /** @see OdsTabsEvents.odsValueChange */
-  @Event({
-    eventName: 'odsTabPanelClickEvent',
-  })
+  @Event({ eventName: 'odsTabPanelClickEvent' })
   odsTabPanelClickEvent!: EventEmitter<OdsTabPanelClickEvent>;
 
   private emitChange(value: any) {
@@ -74,16 +66,15 @@ export class OsdsTabs implements OdsTabs<OdsStencilMethods<OdsTabsMethods>, OdsS
   componentDidLoad() {
     (async () => {
       this.afterInit();
+      if (this.panelActive) {
+        this.emitChange(this.panelActive);
+      }
     })();
   }
 
   render() {
     return (
-      <Host
-        {...{
-          tabIndex: this.activeKey,
-        }}
-      >
+      <Host>
         <div class="tabs">
           <div class="tabs-nav-wrap">
             <slot />

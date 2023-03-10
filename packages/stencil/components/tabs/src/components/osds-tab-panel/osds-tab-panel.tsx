@@ -32,7 +32,7 @@ export class OsdsTabsPanel implements OdsTabPanel<OdsStencilMethods<OdsTabPanelM
 
   @State() panelNameIndex2: any = '';
 
-  @Listen('odsTabItemClickEvent', { target: 'document' })
+  @Listen('odsTabPanelClickEvent', { target: 'document' })
   async todoCompletedHandler(event: CustomEvent<OdsTabPanelClickEvent>) {
     if (event.detail.value) {
       this.panelNameIndex2 = event.detail.value;
@@ -41,7 +41,7 @@ export class OsdsTabsPanel implements OdsTabPanel<OdsStencilMethods<OdsTabPanelM
 
   /** @see OdsButtonBehavior.beforeRender */
   beforeRender(): void {
-    //this.controller.vadivdateAttributes();
+    //this.controller.validateAttributes();
   }
 
   afterInit() {

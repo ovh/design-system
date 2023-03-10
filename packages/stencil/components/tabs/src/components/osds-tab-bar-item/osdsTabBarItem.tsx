@@ -53,16 +53,11 @@ export class OsdsTabBarItem implements OdsTabBarItem<OdsStencilMethods<OdsTabBar
    */
   @State() panelNameIndex: any = '';
 
-  /**
-   * The tabindex of the radio button.
-   * @internal
-   */
-  @State() panelNameIndex2: any = '';
 
   @Listen('odsTabPanelClickEvent', { target: 'document' })
   handleValueChange(event: CustomEvent<OdsTabPanelClickEvent>) {
     if (event.detail.value) {
-      this.panelNameIndex2 = event.detail.value;
+      this.panelNameIndex = event.detail.value;
     }
   }   
   /** 
@@ -97,7 +92,7 @@ export class OsdsTabBarItem implements OdsTabBarItem<OdsStencilMethods<OdsTabBar
   render() {
     const {
       panel,
-      panelNameIndex2,
+      panelNameIndex,
     } = this
     return (
       <Host {...{
@@ -105,7 +100,7 @@ export class OsdsTabBarItem implements OdsTabBarItem<OdsStencilMethods<OdsTabBar
       }}>
         <div 
           onKeyDown={event => this.onKeyPress(event, panel)}
-          class={`tabs-tab ${panel === panelNameIndex2 ? `tabs-tab-active` : ``}`}
+          class={`tabs-tab ${panel === panelNameIndex ? `tabs-tab-active` : ``}`}
         >
           <div role="tab" tabIndex={panel}>
              <slot/>

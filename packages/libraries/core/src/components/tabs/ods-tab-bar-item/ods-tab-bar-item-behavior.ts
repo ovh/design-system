@@ -1,8 +1,7 @@
 export interface OdsTabBarItemBehavior {
     /**
-     * reference to the host element.
+     * reference to the panel name index
      */
-    // el: HTMLElement
     panelNameIndex: string;
     /**
      * before render component function
@@ -11,11 +10,4 @@ export interface OdsTabBarItemBehavior {
      * @see OdsTabBarBehaviorController.validateAttributes
      */
     beforeRender(): void;
-
-    tabitemizedComponent: (HTMLElement & OdsTabBarItemizable) | null;
-  }
-  
-export interface OdsTabBarItemizable {
-  checked: boolean;
 }
-  

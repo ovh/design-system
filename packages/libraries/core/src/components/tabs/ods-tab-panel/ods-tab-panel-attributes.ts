@@ -8,10 +8,6 @@ export interface OdsTabPanelAttributes extends OdsComponentAttributes {
    */
   name?: string
   /**
-   * 	The content of the component.
-   */
-  child?: Node
-  /**
    * 	Override or extend the styles applied to the component
    */
   classes?: object

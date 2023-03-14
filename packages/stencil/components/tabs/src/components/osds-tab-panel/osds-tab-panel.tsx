@@ -50,8 +50,11 @@ export class OsdsTabsPanel implements OdsTabPanel<OdsStencilMethods<OdsTabPanelM
   componentDidLoad() {
     (async () => {
       this.afterInit();
-      this.tabsId = this.hostElement.parentElement?.getAttribute('tabs-id')
     })();
+  }
+
+  componentWillLoad() {
+    this.tabsId = this.hostElement.parentElement?.getAttribute('tabs-id')
   }
 
   render() {

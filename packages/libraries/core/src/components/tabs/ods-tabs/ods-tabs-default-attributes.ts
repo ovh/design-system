@@ -7,9 +7,6 @@ import { OdsTabsSize, } from './ods-tabs-size';
  * @enum
  */
 export const odsTabsDefaultAttributesDoc = {
-  center: false,
-  defaultActiveKey: '0',
-  items: [],
   size: OdsTabsSize.md,
   tabsId: '',
 } as const;

@@ -23,7 +23,6 @@ export class OsdsTabBar implements OdsTabBar<OdsStencilMethods<OdsTabBarMethods>
   /** @see OdsTabBarBehavior.hostElement */
   @Element() hostElement!: HTMLStencilElement;
 
-  @Prop({ reflect: true }) public slots?: string = OdsTabBarDefaultAttributes.slots;
   /** @see OdsSelectAttributes.size */
   @Prop({ reflect: true }) size?: OdsTabsSize = OdsTabBarDefaultAttributes.size;
 

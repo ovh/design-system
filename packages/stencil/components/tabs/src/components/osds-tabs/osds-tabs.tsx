@@ -1,6 +1,10 @@
-import { Component, h, Prop, Element, Host, Listen, State, Event, EventEmitter, Watch } from '@stencil/core';
+import { Component, h, Prop, Element, Host,
+  Listen,
+  State, Event, EventEmitter, Watch } from '@stencil/core';
 import { HTMLStencilElement } from '@stencil/core/internal';
-import { OdsTabs, OdsTabsEvents, OdsTabPanelClickEvent, OdsTabItemClickEvent, OdsTabsSize, OdsTabsMethods, OdsTabsController, odsTabsDefaultAttributes } from '@ovhcloud/ods-core';
+import { OdsTabs, OdsTabsEvents, OdsTabPanelClickEvent,
+  OdsTabItemClickEvent,
+  OdsTabsSize, OdsTabsMethods, OdsTabsController, odsTabsDefaultAttributes } from '@ovhcloud/ods-core';
 import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libraries/stencil-core';
 
 //import { HTMLStencilElement } from '@stencil/core/internal';
@@ -27,13 +31,19 @@ export class OsdsTabs implements OdsTabs<OdsStencilMethods<OdsTabsMethods>, OdsS
   @Prop({ reflect: true }) public panelActive?: string = odsTabsDefaultAttributes.panelActive;
   /** @see OdsTabsAttributes.OdsTabsSize */
   @Prop({ reflect: true }) size?: OdsTabsSize = odsTabsDefaultAttributes.size;
+  /** @see OdsTabsAttributes.tabsIds */
+  @Prop({ reflect: true }) tabsId?: string = odsTabsDefaultAttributes.tabsId;
 
-  /** @see OdsTabsEvents.odsValueChange */
-  @Event({ eventName: 'odsTabPanelClickEvent' })
-  odsTabPanelClickEvent!: EventEmitter<OdsTabPanelClickEvent>;
-
+  /** @see OdsTabsEvents.odsTabPanelClickEvent */
+  @Event({
+    bubbles: false,
+    composed: false,
+  }) private odsTabPanelClickEvent!: EventEmitter<OdsTabPanelClickEvent>;
+  
   private emitChange(value: any) {
-    this.odsTabPanelClickEvent.emit({ value });
+    const event = this.odsTabPanelClickEvent.emit({ value, id: this.tabsId });
+    event.preventDefault()
+    event.stopPropagation()
   }
 
   /**
@@ -51,7 +61,7 @@ export class OsdsTabs implements OdsTabs<OdsStencilMethods<OdsTabsMethods>, OdsS
 
   @Watch('panelNameIndex')
   handleWatchPanelNameIndex(value: CustomEvent<OdsTabPanelClickEvent>) {
-    this.emitChange(value);
+    this.emitChange(value)
   }
 
   /** @see OdsButtonBehavior.beforeRender */
@@ -67,14 +77,20 @@ export class OsdsTabs implements OdsTabs<OdsStencilMethods<OdsTabsMethods>, OdsS
     (async () => {
       this.afterInit();
       if (this.panelActive) {
-        this.emitChange(this.panelActive);
+        this.emitChange(this.panelActive)
       }
     })();
   }
 
   render() {
     return (
-      <Host>
+      <Host {...{
+        onClick: (event : any) => {
+          if (event?.srcElement?.attributes?.[0].value) {
+            this.emitChange(event?.srcElement?.attributes?.[0].value)
+          }
+        }
+      }}>
         <div class="tabs">
           <div class="tabs-nav-wrap">
             <slot />

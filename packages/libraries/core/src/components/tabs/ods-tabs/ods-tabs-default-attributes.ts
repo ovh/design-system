@@ -10,7 +10,8 @@ export const odsTabsDefaultAttributesDoc = {
   center: false,
   defaultActiveKey: '0',
   items: [],
-  size: OdsTabsSize.md,  
+  size: OdsTabsSize.md,
+  tabsId: '',
 } as const;
 
 export const odsTabsDefaultAttributes = odsTabsDefaultAttributesDoc as OdsTabsAttributes;

@@ -7,7 +7,7 @@
     cursor: pointer;
 
     div {
-      padding: 18px 2rem 5px 2rem;
+      padding: 18px 1rem 5px 1rem;
       color: #0050D7;
       //background: pink;
     }
@@ -20,7 +20,7 @@
     &.tabs-tab-active div {
       //background: red;
       color: #000E9C;
-      border-bottom: 2px solid #000E9C;
+      border-bottom: 3px solid #000E9C;
       font-weight: 600;
     }
   }

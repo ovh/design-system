@@ -26,4 +26,5 @@ export interface OdsTabsAttributes extends OdsComponentAttributes {
    * Tabs default panel
    */
   panelActive?: string
+  tabsId?: string
 }

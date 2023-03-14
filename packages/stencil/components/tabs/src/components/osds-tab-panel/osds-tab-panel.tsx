@@ -1,4 +1,6 @@
-import { Component, h, Prop, Element, State, Listen,  } from '@stencil/core';
+import { Component, h, Prop, Element, State, Listen,
+  // Watch,
+} from '@stencil/core';
 import { HTMLStencilElement } from '@stencil/core/internal';
 import { OdsTabPanel, OdsTabsSize, OdsTabPanelEvents, OdsTabPanelClickEvent, OdsTabPanelMethods, OdsTabPanelController, odsTabPanelDefaultAttributes } from '@ovhcloud/ods-core';
 import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libraries/stencil-core';
@@ -21,21 +23,18 @@ export class OsdsTabsPanel implements OdsTabPanel<OdsStencilMethods<OdsTabPanelM
   /** @see OdsTabPanelBehavior.hostElement */
   @Element() hostElement!: HTMLStencilElement;
 
-  /** @see OdsTabPanelAttributes.value */
+  /** @see OdsTabPanelAttributes.name */
   @Prop({ reflect: true, mutable: true }) public name?: string = odsTabPanelDefaultAttributes.name;
-  /** @see OdsTabPanelAttributes.children */
-  @Prop({ reflect: true }) public child?: Node = odsTabPanelDefaultAttributes.child;
-  /** @see OdsTabPanelAttributes.classes */
-  @Prop({ reflect: true }) public classes?: object = odsTabPanelDefaultAttributes.classes;
   /** @see OdsSelectAttributes.size */
   @Prop({ reflect: true }) size?: OdsTabsSize = odsTabPanelDefaultAttributes.size;
 
-  @State() panelNameIndex2: any = '';
+  @State() panelNameIndex: any = '';
+  @State() tabsId: any = '';
 
-  @Listen('odsTabPanelClickEvent', { target: 'document' })
+  @Listen('odsTabPanelClickEvent', { target: 'body', capture: true, })
   async todoCompletedHandler(event: CustomEvent<OdsTabPanelClickEvent>) {
-    if (event.detail.value) {
-      this.panelNameIndex2 = event.detail.value;
+    if (event.detail.value && event.detail.id && (event.detail.id === this.tabsId)) {
+      this.panelNameIndex = event.detail.value;
     }
   }
 
@@ -51,15 +50,16 @@ export class OsdsTabsPanel implements OdsTabPanel<OdsStencilMethods<OdsTabPanelM
   componentDidLoad() {
     (async () => {
       this.afterInit();
+      this.tabsId = this.hostElement.parentElement?.getAttribute('tabs-id')
     })();
   }
 
   render() {
-    const { name, panelNameIndex2 } = this;
+    const { name, panelNameIndex,} = this;
 
     return (
       <div>
-        { (name === panelNameIndex2) ? (
+        { (name === panelNameIndex) ? (
           <div class="tab-panel">
             <slot></slot>
           </div>

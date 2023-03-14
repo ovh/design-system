@@ -43,7 +43,6 @@ export class OsdsTabBarItem implements OdsTabBarItem<OdsStencilMethods<OdsTabBar
   @Event() odsTabItemClickEvent!: EventEmitter<OdsTabItemClickEvent>;
 
   private emitChange(value: OdsPanelValue) {
-    console.info('OsdsTabBarItem OdsTabItemClickEvent emitChange !')
     this.odsTabItemClickEvent.emit({value});
   }
 
@@ -52,11 +51,11 @@ export class OsdsTabBarItem implements OdsTabBarItem<OdsStencilMethods<OdsTabBar
    * @internal
    */
   @State() panelNameIndex: any = '';
+  @State() tabsId: any = '';
 
-
-  @Listen('odsTabPanelClickEvent', { target: 'document' })
+  @Listen('odsTabPanelClickEvent', { target: 'body', capture: true })
   handleValueChange(event: CustomEvent<OdsTabPanelClickEvent>) {
-    if (event.detail.value) {
+    if (event.detail.value && event.detail.id && (event.detail.id === this.tabsId)) {
       this.panelNameIndex = event.detail.value;
     }
   }   
@@ -83,6 +82,10 @@ export class OsdsTabBarItem implements OdsTabBarItem<OdsStencilMethods<OdsTabBar
     })();
   }
 
+  componentWillLoad() {
+    this.tabsId = this.hostElement.parentNode?.parentElement?.getAttribute('tabs-id')
+  }
+
   onKeyPress = (event: any, panel: any) => {
     if (event.keyCode === 13 || event.keyCode === 32) {
       this.setPanelName(panel)
@@ -95,9 +98,7 @@ export class OsdsTabBarItem implements OdsTabBarItem<OdsStencilMethods<OdsTabBar
       panelNameIndex,
     } = this
     return (
-      <Host {...{
-        onClick: () => this.setPanelName(panel)
-      }}>
+      <Host>
         <div 
           onKeyDown={event => this.onKeyPress(event, panel)}
           class={`tabs-tab ${panel === panelNameIndex ? `tabs-tab-active` : ``}`}

@@ -38,6 +38,8 @@ export class OsdsTabBarItem implements OdsTabBarItem<OdsStencilMethods<OdsTabBar
   @Prop({ reflect: true }) size?: OdsTabsSize = OdsTabBarItemDefaultAttributes.size;
   /** @see OdsTabsItemAttributes.checked */
   @Prop({ reflect: true, mutable: true }) checked: boolean = OdsTabBarItemDefaultAttributes.checked;
+  /** @see OdsTabsItemAttributes.disabled */
+  @Prop({ reflect: true, mutable: true }) disabled: boolean | undefined = OdsTabBarItemDefaultAttributes.disabled;
 
   /** @see OdsTabsEvents.odsValueChange */
   @Event() odsTabItemClickEvent!: EventEmitter<OdsTabItemClickEvent>;
@@ -55,7 +57,8 @@ export class OsdsTabBarItem implements OdsTabBarItem<OdsStencilMethods<OdsTabBar
 
   @Listen('odsTabPanelClickEvent', { target: 'body', capture: true })
   handleValueChange(event: CustomEvent<OdsTabPanelClickEvent>) {
-    if (event.detail.value && event.detail.id && (event.detail.id === this.tabsId)) {
+    if (event.detail.value && event.detail.id
+      && (event.detail.id === this.tabsId) && !this.disabled) {
       this.panelNameIndex = event.detail.value;
     }
   }   
@@ -96,12 +99,14 @@ export class OsdsTabBarItem implements OdsTabBarItem<OdsStencilMethods<OdsTabBar
     const {
       panel,
       panelNameIndex,
-    } = this
+      disabled,
+    } = this;
+
     return (
       <Host>
         <div 
           onKeyDown={event => this.onKeyPress(event, panel)}
-          class={`tabs-tab ${panel === panelNameIndex ? `tabs-tab-active` : ``}`}
+          class={`tabs-tab ${panel === panelNameIndex ? `tabs-tab-active` : ``} ${disabled ? `tabs-tab-disabled` : ``}`}
         >
           <div role="tab" tabIndex={panel}>
              <slot/>

@@ -86,8 +86,8 @@ export class OsdsTabs implements OdsTabs<OdsStencilMethods<OdsTabsMethods>, OdsS
     return (
       <Host {...{
         onClick: (event : any) => {
-          if (event?.srcElement?.attributes?.[0].value) {
-            this.emitChange(event?.srcElement?.attributes?.[0].value)
+          if (event.target?.panel && !event.target?.disabled) {
+            this.emitChange(event.target?.panel)
           }
         }
       }}>

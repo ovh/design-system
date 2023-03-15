@@ -11,4 +11,8 @@ export interface OdsTabBarItemAttributes extends OdsComponentAttributes {
    * The checked status of the tab
    */
   checked: boolean
+  /**
+   * The tab is disabled or not
+   */
+  disabled?: boolean | undefined
 }

@@ -9,6 +9,7 @@ import { OdsTabsSize, } from '../ods-tabs/ods-tabs-size';
 export const OdsTabBarItemDefaultAttributesDoc = {
   size: OdsTabsSize.md,  
   checked: false,
+  disabled: false,
 } as const;
 
 export const OdsTabBarItemDefaultAttributes = OdsTabBarItemDefaultAttributesDoc as OdsTabBarItemAttributes;

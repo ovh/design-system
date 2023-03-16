@@ -14,4 +14,8 @@ export interface OdsTabsAttributes extends OdsComponentAttributes {
    * Tabs id
    */
   tabsId?: string
+  /**
+   * The tab is contrasted
+   */
+  contrasted?: boolean | undefined
 }

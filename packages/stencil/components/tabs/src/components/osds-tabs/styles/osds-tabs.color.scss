@@ -1,0 +1,48 @@
+@import '~@ovhcloud/ods-theming/color/ods-component-color';
+
+@mixin osds-tabs-theme-color() {
+    /** main colors */
+    .tabs-tab {
+        &.tabs-tab-contrasted {
+            div {
+              color: white;
+            }
+      
+            div:hover {
+              color: #BEF1FF;
+            }
+      
+            &.tabs-tab-active div {
+              color: white;
+            }
+            
+            &.tabs-tab-active div:hover {
+              color: #BEF1FF;
+            }
+      
+            &.tabs-tab-disabled div {
+              color: rgba(255, 255, 255, .25);
+            }
+          }
+      
+          div {
+            color: var(--ods-color-primary-500);
+          }
+      
+          div:hover {
+            color:var(--ods-color-primary-700);
+          }
+      
+          &.tabs-tab-disabled div {
+            color: rgba(0,0,0,.25);
+          }
+            
+          &.tabs-tab-active div {
+            color: var(--ods-color-primary-500);
+          }
+      
+          &.tabs-tab-active div:hover {
+            color: var(--ods-color-primary-700);
+          }        
+    }
+}

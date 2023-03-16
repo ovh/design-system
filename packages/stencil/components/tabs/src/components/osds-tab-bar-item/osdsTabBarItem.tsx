@@ -54,6 +54,7 @@ export class OsdsTabBarItem implements OdsTabBarItem<OdsStencilMethods<OdsTabBar
    */
   @State() panelNameIndex: any = '';
   @State() tabsId: any = '';
+  @State() contrasted: boolean = false;
 
   @Listen('odsTabPanelClickEvent', { target: 'body', capture: true })
   handleValueChange(event: CustomEvent<OdsTabPanelClickEvent>) {
@@ -87,6 +88,9 @@ export class OsdsTabBarItem implements OdsTabBarItem<OdsStencilMethods<OdsTabBar
 
   componentWillLoad() {
     this.tabsId = this.hostElement.parentNode?.parentElement?.getAttribute('tabs-id')
+    if (this.hostElement.parentNode?.parentElement?.hasAttribute('contrasted')) {
+      this.contrasted = true
+    }
   }
 
   onKeyPress = (event: any, panel: any) => {
@@ -100,13 +104,14 @@ export class OsdsTabBarItem implements OdsTabBarItem<OdsStencilMethods<OdsTabBar
       panel,
       panelNameIndex,
       disabled,
+      contrasted,
     } = this;
 
     return (
       <Host>
         <div 
           onKeyDown={event => this.onKeyPress(event, panel)}
-          class={`tabs-tab ${panel === panelNameIndex ? `tabs-tab-active` : ``} ${disabled ? `tabs-tab-disabled` : ``}`}
+          class={`tabs-tab ${contrasted ? `tabs-tab-contrasted` : ``} ${panel === panelNameIndex ? `tabs-tab-active` : `` } ${disabled ? `tabs-tab-disabled` : ``}`}
         >
           <div role="tab" tabIndex={panel}>
              <slot/>

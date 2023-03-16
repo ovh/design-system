@@ -27,6 +27,8 @@ export class OsdsTabs implements OdsTabs<OdsStencilMethods<OdsTabsMethods>, OdsS
   /** @see OdsTabsBehavior.hostElement */
   @Element() hostElement!: HTMLStencilElement;
 
+  /** @see OdsTabsAttributes.contrasted */
+  @Prop({ reflect: true }) public contrasted?: boolean | undefined = odsTabsDefaultAttributes.contrasted;
   /** @see OdsTabsAttributes.panelActive */
   @Prop({ reflect: true }) public panelActive?: string = odsTabsDefaultAttributes.panelActive;
   /** @see OdsTabsAttributes.OdsTabsSize */
@@ -83,6 +85,7 @@ export class OsdsTabs implements OdsTabs<OdsStencilMethods<OdsTabsMethods>, OdsS
   }
 
   render() {
+    const { contrasted, } = this;
     return (
       <Host {...{
         onClick: (event : any) => {
@@ -91,7 +94,7 @@ export class OsdsTabs implements OdsTabs<OdsStencilMethods<OdsTabsMethods>, OdsS
           }
         }
       }}>
-        <div class="tabs">
+        <div class={`tabs ${contrasted ? `tabs-contrasted` : ``}`}>
           <div class="tabs-nav-wrap">
             <slot />
           </div>

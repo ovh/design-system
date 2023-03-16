@@ -1,26 +1,63 @@
+@import '~@ovhcloud/ods-theming/ods-theme';
+@import '../osds-tabs/styles/osds-tabs.typography.scss';
+@import '../osds-tabs/styles/osds-tabs.color.scss';
+@import '~@ovhcloud/ods-theming/color/ods-theming-color';
+@import '~@ovhcloud/ods-theming/ods-theme';
+
 .tabs-tab {
-    //background: lightcyan;
     position: relative;
     display: inline-flex;
     align-items: center;
     outline: none;
     cursor: pointer;
 
+    &.tabs-tab-contrasted {
+
+      div:hover {
+        border-bottom: 2px solid var(--ods-color-primary-100);
+      }
+
+      &.tabs-tab-active div {
+        border-bottom: 2px solid white;
+      }
+
+      &.tabs-tab-active div:hover {
+        border-bottom: 2px solid var(--ods-color-primary-100);
+      }
+
+      &.tabs-tab-disabled div {
+        cursor: not-allowed;
+      }
+    }
+
     div {
       padding: 18px 1rem 5px 1rem;
-      color: #0050D7;
-      //background: pink;
+      margin: 0 0.5rem;
+    }
+
+    div:hover {
+      border-bottom: 2px solid var(--ods-color-primary-700);
     }
 
     &.tabs-tab-disabled div {
-      color: rgba(0,0,0,.25);
       cursor: not-allowed;
     }
 
-    &.tabs-tab-active div {
-      //background: red;
-      color: #000E9C;
-      border-bottom: 3px solid #000E9C;
-      font-weight: 600;
+    &.tabs-tab-disabled div:hover {
+      border-bottom: none;
     }
-  }
+
+    &.tabs-tab-active div {
+      border-bottom: 2px solid var(--ods-color-primary-500);
+    }
+
+    &.tabs-tab-active div:hover {
+      border-bottom: 2px solid var(--ods-color-primary-700);
+    }
+}
+
+// apply the theme template for the component
+@include ods-theme-component() {
+  @include osds-tabs-theme-typography();
+  @include osds-tabs-theme-color();
+}

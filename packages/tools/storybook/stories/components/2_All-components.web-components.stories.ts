@@ -20,7 +20,7 @@ const allComponents = [
     },
     slots: {
       summary: `Accordion`,
-      DEFAULT: olesIpsum(),
+      DEFAULT: olesIpsum(OlesIpsumGeneration.sentences, 1),
     },
   },
   {
@@ -30,11 +30,11 @@ const allComponents = [
       DEFAULT: `
       <osds-accordion opened>
         <span slot="summary">Accordion Group</span>
-        ${olesIpsum()}
+        ${olesIpsum(OlesIpsumGeneration.sentences, 1)}
       </osds-accordion>
       <osds-accordion>
         <span slot="summary">Accordion</span>
-        ${olesIpsum()}
+        ${olesIpsum(OlesIpsumGeneration.sentences, 1)}
       </osds-accordion>`,
     },
   },
@@ -254,7 +254,8 @@ const TemplateAllComponents = () => html`
     .container {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      grid-gap: 1em;
+      grid-gap: 2em 1em;
+      grid-template-rows: masonry;
     }
     .item {
       color: inherit;
@@ -262,7 +263,6 @@ const TemplateAllComponents = () => html`
       display: flex;
       justify-content: center;
       margin: auto;
-      min-height: 10em;
       text-decoration: inherit;
       width: 100%;
     }

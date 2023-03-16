@@ -46,6 +46,7 @@ export const parameters = {
           ['Introduction', '1.x to 2.x', '2.x to 3.x', '3.x to 4.x', '4.x to 5.x', '5.x to 6.x', '6.x to 8.x', '8.x to 9.x', '9.x to 10.x'],
           'Code principles'],
         'UI Components',
+        ['All Components', 'Introduction'],
         'Libraries',
         'Stencil',
         'CDK',

@@ -99,3 +99,29 @@ We recommend using `string &` until the issue is closed:
 ```typescript
 type MyType = string & keyof Component
 ```
+
+### Error to sign commit with GPG key on WSL
+
+You may have this error while commiting on WSL with GPG
+
+```
+error: gpg failed to sign the data
+```
+
+To fix that, you can add this to your bashrc file :
+
+```bash
+export GPG_TTY=$(tty)
+```
+
+
+### Stencil module not found after fresh install
+
+If you have an error to build your project after just cloning it,
+you can add this line to your bashrc to temporary fix it :
+
+```bash
+export PATH="$PATH:$HOME/<YOUR_ODS_PROJECT_FOLDER>/node_modules/.bin/"
+```
+This fix is just a workaround and a real fix may be found later.
+This is not a sustainable solution since you'll need to update it if you change your ODS Project folder location.

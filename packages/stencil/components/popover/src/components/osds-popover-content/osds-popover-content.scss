@@ -1,0 +1,11 @@
+@import 'styles/osds-popover-content.color';
+@import 'styles/osds-popover-content.size';
+
+@import '~@ovhcloud/ods-theming/color/ods-theming-color';
+@import '~@ovhcloud/ods-theming/ods-theme';
+
+
+@include ods-theme-component() {
+  @include osds-popover-content-theme-color();
+  @include osds-popover-content-theme-size();
+}

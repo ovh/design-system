@@ -6263,6 +6263,19 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-stencil-popover@workspace:packages/stencil/components/popover":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-stencil-popover@workspace:packages/stencil/components/popover"
+  dependencies:
+    "@ovhcloud/ods-stencil-button": ^11.0.1
+    "@ovhcloud/ods-stencil-component": ^11.0.1
+    "@ovhcloud/ods-stencil-component-dev": ^11.0.1
+    "@ovhcloud/ods-stencil-divider": ^11.0.1
+  peerDependencies:
+    "@ovhcloud/ods-stencil-icon": ">=11.0"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-stencil-quantity-react@workspace:packages/stencil/components/quantity/react":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-quantity-react@workspace:packages/stencil/components/quantity/react"

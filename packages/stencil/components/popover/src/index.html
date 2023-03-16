@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html dir='ltr' lang='en'>
+<head>
+  <meta charset='utf-8'/>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0'/>
+  <title>Dev osds-popover</title>
+
+  <script type="module">
+    !window.ods && (window.ods = {config: {logging: {active: true}}});
+  </script>
+
+  <script type='module' src='/build/osds-popover.esm.js'></script>
+  <script nomodule src='/build/osds-popover.js'></script>
+  <link rel="stylesheet" href="/build/osds-popover.css">
+</head>
+<body>
+
+  <osds-popover>
+    <span slot="popover-trigger">Trigger</span>
+    <osds-popover-content>
+      <span slot="popover-header">My popover title</span>
+      <osds-text>Lorem ipsum dolor sit amet</osds-text>
+      <span slot="popover-footer">
+        <osds-button>Dismiss</osds-button>
+        <osds-button>Action</osds-button>
+      </span>
+    </osds-popover-content>
+  </osds-popover>
+
+</body>
+
+</html>

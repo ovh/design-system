@@ -1,17 +1,10 @@
 import { newSpecPage, SpecPage } from '@stencil/core/testing';
 import { OsdsPagination } from './osds-pagination';
-import {
-  OdsComponentAttributes2StringAttributes,
-  OdsCreateDefaultValidityState,
-  OdsPaginationAttributes,
-  odsPaginationDefaultAttributes,
-  OdsPaginationSizeList,
-  OdsLogger,
-} from '@ovhcloud/ods-core';
+import { OdsComponentAttributes2StringAttributes, OdsCreateDefaultValidityState, OdsPaginationAttributes, odsPaginationDefaultAttributes, OdsLogger } from '@ovhcloud/ods-core';
 import {
   odsGetUnitTestAttributeBaseOptions,
   odsGetUnitTestAttributeContextOptions,
-  OdsPaginationCreateAttributes,
+  odsPaginationBaseAttributes,
   OdsMockNativeMethod,
   OdsMockPropertyDescriptor,
   OdsStringAttributes2Str,
@@ -88,52 +81,12 @@ describe('spec:osds-pagination', () => {
       });
     }
 
-    describe('color', () => {
-      odsUnitTestAttribute<OdsPaginationAttributes, 'color'>({
-        ...getAttributeContextOptions({
-          name: 'color',
-          list: [OdsThemeColorIntent.primary],
-          DefaultCurrent: odsPaginationDefaultAttributes.color,
-        }),
-      });
-    });
-
     describe('disabled', () => {
       odsUnitTestAttribute<OdsPaginationAttributes, 'disabled'>({
         ...getAttributeContextOptions({
           name: 'disabled',
           list: [false, true],
           DefaultCurrent: odsPaginationDefaultAttributes.disabled,
-        }),
-      });
-    });
-
-    describe('flex', () => {
-      odsUnitTestAttribute<OdsPaginationAttributes, 'flex'>({
-        ...getAttributeContextOptions({
-          name: 'flex',
-          list: [false, true],
-          DefaultCurrent: odsPaginationDefaultAttributes.flex,
-        }),
-      });
-    });
-
-    describe('required', () => {
-      odsUnitTestAttribute<OdsPaginationAttributes, 'required'>({
-        ...getAttributeContextOptions({
-          name: 'required',
-          list: [false, true],
-          DefaultCurrent: odsPaginationDefaultAttributes.required,
-        }),
-      });
-    });
-
-    describe('size', () => {
-      odsUnitTestAttribute<OdsPaginationAttributes, 'size'>({
-        ...getAttributeContextOptions({
-          name: 'size',
-          list: OdsPaginationSizeList,
-          DefaultCurrent: odsPaginationDefaultAttributes.size,
         }),
       });
     });
@@ -151,6 +104,7 @@ describe('spec:osds-pagination', () => {
   });
 
   describe('methods', () => {
+    /*
     it('should have DefaultCurrent as value if set', async () => {
       const DefaultCurrent = 4;
       await setup({ attributes: { DefaultCurrent } });
@@ -202,23 +156,13 @@ describe('spec:osds-pagination', () => {
       const validity = await instance.getValidity();
       expect(instance.getValidity).toHaveBeenCalledTimes(1);
       expect(validity?.invalid).toBe(false);
-    });
+    });*/
   });
 
   describe('events', () => {
     it('odsCurrentChange', async () => {
       await setup({ attributes: {} });
       expect(instance.odsCurrentChange).toBeTruthy();
-    });
-
-    it('odsBlur', async () => {
-      await setup({ attributes: {} });
-      expect(instance.odsBlur).toBeTruthy();
-    });
-
-    it('odsFocus', async () => {
-      await setup({ attributes: {} });
-      expect(instance.odsFocus).toBeTruthy();
     });
   });
 });

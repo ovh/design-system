@@ -5,8 +5,6 @@ export * from './ods-pagination-create-default-ods-validity-state';
 export * from './ods-pagination-default-attributes';
 export * from './ods-pagination-events';
 export * from './ods-pagination-methods';
-export * from './ods-pagination-size';
-export * from './ods-pagination-arrow-size';
 export * from './ods-pagination-validity-state';
 export * from './ods-pagination-current-change-event';
 export * from './ods-pagination-current-change-event-detail';

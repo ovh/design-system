@@ -6,8 +6,6 @@ import {
   odsPaginationDefaultAttributes,
   OdsPaginationEvents,
   OdsPaginationMethods,
-  OdsPaginationSize,
-  OdsPaginationArrowSize,
   OdsPaginationValidityState,
   OdsPaginationCurrentChangeEventDetail,
   OdsIconSize,
@@ -48,20 +46,8 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
   /** @see OdsPaginationAttributes.totalPages */
   @Prop({ reflect: true }) totalPages = odsPaginationDefaultAttributes.totalPages;
 
-  /** @see OdsPaginationAttributes.color */
-  @Prop({ reflect: true }) color: OdsThemeColorIntent.primary = odsPaginationDefaultAttributes.color;
-
   /** @see OdsPaginationAttributes.disabled */
   @Prop({ reflect: true, mutable: true }) disabled = odsPaginationDefaultAttributes.disabled;
-
-  /** @see OdsPaginationAttributes.flex */
-  @Prop({ reflect: true }) flex = odsPaginationDefaultAttributes.flex;
-
-  /** @see OdsPaginationAttributes.size */
-  @Prop({ reflect: true }) size: OdsPaginationSize = odsPaginationDefaultAttributes.size;
-
-  /** @see OdsPaginationAttributes.arrowSize */
-  @Prop({ reflect: true }) arrowSize: OdsPaginationArrowSize = odsPaginationDefaultAttributes.arrowSize;
 
   /** @see OdsPaginationEvents.odsCurrentChange */
   @Event() odsCurrentChange!: EventEmitter<OdsPaginationCurrentChangeEventDetail>;
@@ -209,47 +195,7 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
   }
 
   render() {
-    const { totalPages, disabled, flex, color, size, arrowSize } = this;
-
-    let iconArrowSize: OdsIconSize, iconEllipsisSize: OdsIconSize, buttonSize: OdsButtonSize, arrowButtonSize: OdsButtonSize;
-    switch (arrowSize) {
-      case OdsPaginationArrowSize.sm:
-        iconArrowSize = OdsIconSize.sm;
-        arrowButtonSize = OdsButtonSize.sm;
-        break;
-      case OdsPaginationArrowSize.md:
-        iconArrowSize = OdsIconSize.md;
-        arrowButtonSize = OdsButtonSize.md;
-        break;
-      case OdsPaginationArrowSize.lg:
-        iconArrowSize = OdsIconSize.lg;
-        arrowButtonSize = OdsButtonSize.md;
-        break;
-      case OdsPaginationArrowSize.xl:
-        iconArrowSize = OdsIconSize.xl;
-        arrowButtonSize = OdsButtonSize.md;
-        break;
-      default:
-        iconArrowSize = OdsIconSize.sm;
-        arrowButtonSize = OdsButtonSize.sm;
-        break;
-    }
-    switch (size) {
-      case OdsPaginationSize.sm:
-        buttonSize = OdsButtonSize.sm;
-        iconEllipsisSize = OdsIconSize.xs;
-        break;
-      case OdsPaginationSize.md:
-        buttonSize = OdsButtonSize.md;
-        iconEllipsisSize = OdsIconSize.sm;
-        break;
-      default:
-        buttonSize = OdsButtonSize.sm;
-        iconEllipsisSize = OdsIconSize.xs;
-        break;
-    }
-
-    console.log('iconArrowSize: ', iconArrowSize, ' iconEllipsisSize: ', iconEllipsisSize, ' buttonSize: ', buttonSize);
+    const { totalPages, disabled } = this;
 
     let pageList = [];
     for (let i = 1; i <= totalPages; i++) {
@@ -301,7 +247,6 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
       <Host
         {...{
           class: `${disabled ? 'disabled' : ''}${this.hasError() ? ' ods-error' : ''}`,
-          flex,
           onFocus: this.onFocus.bind(this),
           onBlur: this.onBlur.bind(this),
           pageIndex: this.disabled ? -1 : this.pageindex,
@@ -314,14 +259,14 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
             <li>
               <osds-button
                 contrasted={true}
-                color={color}
+                color={OdsThemeColorIntent.primary}
                 disabled={this.pageindex > 1 ? false : true}
                 onClick={() => {
                   this.setPageIndex(Number(this.pageindex) - 1);
                 }}
-                size={arrowButtonSize}
+                size={OdsButtonSize.sm}
               >
-                <osds-icon size={iconArrowSize} name={OdsIconName.CHEVRON_LEFT} color={OdsThemeColorIntent.primary}></osds-icon>
+                <osds-icon size={OdsIconSize.sm} name={OdsIconName.CHEVRON_LEFT} color={OdsThemeColorIntent.primary}></osds-icon>
               </osds-button>
             </li>
             {pageList.map(page => {
@@ -330,7 +275,7 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
                   <span>
                     {pageList.length > 6 && pageList.length - this.pageindex > 3 && page.id == pageList.length && (
                       <osds-icon
-                        size={iconEllipsisSize}
+                        size={OdsIconSize.sm}
                         color={OdsThemeColorIntent.primary}
                         name={OdsIconName.ELLIPSIS}
                         style={{ paddingBottom: '10px', cursor: 'not-allowed' }}
@@ -341,7 +286,7 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
                         class={this.pageindex == page.id ? 'selectedpage' : ''}
                         contrasted={this.pageindex == page.id ? false : true}
                         color={OdsThemeColorIntent.primary}
-                        size={size == OdsPaginationSize.sm ? OdsButtonSize.sm : OdsButtonSize.md}
+                        size={OdsButtonSize.sm}
                         onClick={() => {
                           this.setPageIndex(Number(page.id));
                         }}
@@ -352,7 +297,7 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
                     {pageList.length > 6 && this.pageindex > 4 && page.id == 1 && (
                       <li>
                         <osds-icon
-                          size={iconEllipsisSize}
+                          size={OdsIconSize.sm}
                           color={OdsThemeColorIntent.text}
                           name={OdsIconName.ELLIPSIS}
                           style={{ paddingBottom: '10px', cursor: 'not-allowed' }}
@@ -366,14 +311,14 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
             <li>
               <osds-button
                 contrasted={true}
-                color={color}
+                color={OdsThemeColorIntent.primary}
                 disabled={this.pageindex < pageList.length ? false : true}
                 onClick={() => {
                   this.setPageIndex(Number(this.pageindex) + 1);
                 }}
-                size={arrowButtonSize}
+                size={OdsButtonSize.sm}
               >
-                <osds-icon size={iconArrowSize} name={OdsIconName.CHEVRON_RIGHT} color={OdsThemeColorIntent.primary}></osds-icon>
+                <osds-icon size={OdsIconSize.sm} name={OdsIconName.CHEVRON_RIGHT} color={OdsThemeColorIntent.primary}></osds-icon>
               </osds-button>
             </li>
           </ul>

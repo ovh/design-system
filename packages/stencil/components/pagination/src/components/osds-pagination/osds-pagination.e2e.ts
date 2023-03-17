@@ -120,7 +120,7 @@ describe('e2e:osds-pagination', () => {
             forbiddenValue: false,
           },
           value: '',
-          selection: null,
+          current: null,
         };
       });
 

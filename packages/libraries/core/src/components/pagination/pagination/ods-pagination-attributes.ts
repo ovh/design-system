@@ -1,7 +1,4 @@
-import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 import { OdsComponentAttributes } from '../../ods-component-attributes';
-import { OdsPaginationSize } from './ods-pagination-size';
-import { OdsPaginationArrowSize } from './ods-pagination-arrow-size';
 
 export interface OdsPaginationAttributes extends OdsComponentAttributes {
   /**
@@ -21,19 +18,4 @@ export interface OdsPaginationAttributes extends OdsComponentAttributes {
    * The total amount of pages
    */
   totalPages: any;
-  /** full width or not: see component principles */
-  flex: boolean;
-  /** size: see component principles */
-  size: OdsPaginationSize;
-  /** arrowSize: see component principles */
-  arrowSize: OdsPaginationArrowSize;
-
-  /*
-   * color of the select input and his icon arrow.
-   * color is not yet customizable trough his attribute.
-   * for now, it is forced to primary color (internally)
-   * @experimental
-   */
-  /** the primary color of the theme */
-  color: OdsThemeColorIntent.primary;
 }

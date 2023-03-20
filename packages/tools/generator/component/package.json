@@ -1,0 +1,16 @@
+{
+  "name": "@ovhcloud/ods-component-generator",
+  "version": "0.0.0",
+  "private": true,
+  "description": "OVHcloud Design System UI Component generator",
+  "author": "OVH SAS",
+  "license": "Apache-2.0",
+  "scripts": {
+    "generate": "sao . _tmp && rm -rf _tmp"
+  },
+  "devDependencies": {
+    "lodash.kebabcase": "^4.1.1",
+    "lodash.startcase": "^4.4.0",
+    "sao": "^1.7.1"
+  }
+}

@@ -36,10 +36,9 @@
   }
 }
 
-[disabled] {
-    opacity: 0.5;
-    cursor: not-allowed;
-    pointer-events: none;
+:host([disabled]) {
+  pointer-events: none;
+  opacity: 0.5;
 }
 
 // apply the theme template for the component

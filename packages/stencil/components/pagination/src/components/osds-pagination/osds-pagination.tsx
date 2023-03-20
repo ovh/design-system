@@ -268,7 +268,7 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
                 color={OdsThemeColorIntent.primary}
                 disabled={this.pageindex > 1 ? false : true}
                 onKeyDown={(event: any) => {
-                  if (this.pageindex > 1) this.onKeyPress(event, Number(this.pageindex) - 1);
+                  if (this.pageindex > 1 && !disabled) this.onKeyPress(event, Number(this.pageindex) - 1);
                 }}
                 onClick={() => {
                   this.setPageIndex(Number(this.pageindex) - 1);
@@ -296,7 +296,9 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
                         contrasted={this.pageindex == page.id ? false : true}
                         color={OdsThemeColorIntent.primary}
                         size={OdsButtonSize.sm}
-                        onKeyDown={(event: any) => this.onKeyPress(event, Number(page.id))}
+                        onKeyDown={(event: any) => {
+                          if (!disabled) this.onKeyPress(event, Number(page.id));
+                        }}
                         onClick={() => {
                           this.setPageIndex(Number(page.id));
                         }}
@@ -324,7 +326,7 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
                 color={OdsThemeColorIntent.primary}
                 disabled={this.pageindex < pageList.length ? false : true}
                 onKeyDown={(event: any) => {
-                  if (this.pageindex < pageList.length) this.onKeyPress(event, Number(this.pageindex) + 1);
+                  if (this.pageindex < pageList.length && !disabled) this.onKeyPress(event, Number(this.pageindex) + 1);
                 }}
                 onClick={() => {
                   this.setPageIndex(Number(this.pageindex) + 1);

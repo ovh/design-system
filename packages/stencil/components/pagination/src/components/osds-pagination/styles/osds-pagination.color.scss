@@ -7,12 +7,6 @@
       $intent-name: error,
       $hue: '500',
     );
-    @include osds-pagination-on-select-element() {
-      border-color: $border;
-    }
-    @include osds-pagination-on-overlay-element() {
-      border-color: $border;
-    }
   }
 }
 

@@ -6,14 +6,3 @@
   }
 }
 
-@mixin osds-pagination-on-select-element() {
-  :host(&) .button {
-    @content;
-  }
-}
-
-@mixin osds-pagination-on-overlay-element() { // TO REMOVE
-  :host(&) .overlay {
-    @content;
-  }
-}

@@ -2,28 +2,8 @@
 @import './osds-pagination.mixins';
 
 @mixin osds-pagination-theme-size() {
-  @include ods-foreach-theme-size(select) using ($sizes) {
-    @include osds-pagination-on-select-element() {
-      height: ods-get-size-property($sizes, height);
-      border-width: ods-get-size-property($sizes, border-width);
-      border-radius: ods-get-size-property($sizes, border-radius);
-      padding: ods-get-size-property($sizes, padding);
-      width: ods-get-size-property($sizes, width);
-
-      &.opened {
-        border-bottom-right-radius: 0;
-        border-bottom-left-radius: 0;
-      }
-
-      .overlay {
-        top: ods-get-size-property($sizes, height);
-      }
-    }
-
-    @include osds-pagination-on-overlay-element() {
-      border-width: 0 ods-get-size-property($sizes, border-width) ods-get-size-property($sizes, border-width) ods-get-size-property($sizes, border-width);
-      top: ods-get-size-property($sizes, height);
-      width: calc(100% - var(--ods-size-inline-02));
-    }
+  osds-button::part(button) {
+    //width: 36px;
+    height: 36px;
   }
 }

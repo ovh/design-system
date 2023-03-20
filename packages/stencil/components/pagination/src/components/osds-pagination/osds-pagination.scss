@@ -12,13 +12,6 @@
   position: relative;
   text-align: left;
 
-  .button {
-    width: 36px;
-    height: 36px;
-    color: green;
-    background-color: red;
-  }
-
   ul {
     list-style-type: none;
   }
@@ -31,20 +24,7 @@
   }
 
   &[disabled] {
-    
-  }
-
-  .overlay {
-    border-style: solid;
-    display: none;
-    position: absolute;
-    max-width: available;
-    max-width: -moz-available;
-    max-width: -webkit-available;
-    z-index: 2;
-    min-height: calc(2.25rem * var(--ods-size-ratio));
-    max-height: calc(var(--ods-size-stack-11) * 7.5);
-    overflow: auto;
+      opacity: 0.5;
   }
 }
 
@@ -57,20 +37,9 @@
 }
 
 [disabled] {
-  @include osds-pagination-on-selected-host() {
     opacity: 0.5;
     cursor: not-allowed;
     pointer-events: none;
-  }
-}
-
-[flex] {
-  @include osds-pagination-on-selected-host() {
-    display: flex;
-  }
-  @include osds-pagination-on-select-element() {
-    flex: 1;
-  }
 }
 
 // apply the theme template for the component

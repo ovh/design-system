@@ -1,0 +1,31 @@
+@import 'styles/osds-breadcrumb-item.mixins';
+@import 'styles/osds-breadcrumb-item.color';
+@import 'styles/osds-breadcrumb-item.size';
+@import 'styles/osds-breadcrumb-item.typography';
+@import '~@ovhcloud/ods-theming/color/ods-theming-color';
+@import '~@ovhcloud/ods-theming/ods-theme';
+
+// CSS targeted only for this component
+// /!\ for theming purposes, it has to be done in theming files
+// (i.e. packages/libraries/theming/...)
+:host {
+}
+
+:host([attribute]) {
+}
+
+// apply the theme template for the component
+@include ods-theme-component() {
+  @include osds-breadcrumb-item-theme-color();
+  @include osds-breadcrumb-item-theme-size();
+  @include osds-breadcrumb-item-theme-typography();
+}
+
+li {
+  list-style: none;
+  display: inline-block;
+}
+
+.ellipsis {
+  cursor: 'pointer';
+}

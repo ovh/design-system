@@ -1,6 +1,7 @@
 /**
  * Entry point for all public APIs of this package.
  */
+export * from './a11y/public-api';
 export * from './common/public-api';
 export * from './components/public-api';
 export * from './configure/public-api';

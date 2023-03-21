@@ -96,9 +96,9 @@ export class OsdsTabs implements OdsTabs<OdsStencilMethods<OdsTabsMethods>, OdsS
       }}>
         <div class={`tabs ${contrasted ? `tabs-contrasted` : ``}`}>
           <div class="tabs-nav-wrap">
-            <slot />
+            <slot name="top" />
           </div>
-          <slot />
+          <slot/>
         </div>
       </Host>
     );

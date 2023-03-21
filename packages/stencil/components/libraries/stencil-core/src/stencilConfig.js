@@ -67,7 +67,7 @@ import { vueOutputTarget } from '@stencil/vue-output-target';
  * @param prod - production specific options to set
  */
 export function getStencilConfig({ namespace, args, jestConfig, distCustomElements, distCustomElementsBundle, reactOutput, vueOutput, dev, prod }) {
-  const isCi = args.some((arg) => arg.match(/(--|:)ci/g)),
+  const isCi = args.some((arg) => arg.match(/(--|:)ci/g)), 
   /**
    * stencil doc:
    * ```
@@ -76,7 +76,7 @@ export function getStencilConfig({ namespace, args, jestConfig, distCustomElemen
    * ```
    * @see https://stenciljs.com/docs/cli
    */
-  isDev = args.includes('--dev'),
+  isDev = args.includes('--dev'), 
   /**
    * stencil doc:
    * ```
@@ -92,11 +92,28 @@ export function getStencilConfig({ namespace, args, jestConfig, distCustomElemen
   jestConfig = args.includes('test') ? jestConfig : undefined;
   let convertedJestConfig = {};
   if (jestConfig) {
-    convertedJestConfig = {
-      verbose: jestConfig.verbose,
-      testRegex: jestConfig.testRegex,
-      moduleNameMapper: jestConfig.moduleNameMapper,
-    };
+    convertedJestConfig = Object.assign(Object.assign({}, jestConfig), {
+      // preset: "../../../../node_modules/jest-puppeteer",
+      // transform: { "^.+\\.(js|ts|tsx)$": "<rootDir>/../../../../node_modules/@stencil/core/testing/jest-preprocessor.js" },
+      // testEnvironment:  "<rootDir>/../../../../node_modules/@stencil/core/testing/jest-environment.js"
+      // incompatible props
+      bail: undefined, restoreMocks: undefined, transform: jestConfig.transform,
+      // adaptations
+      testRegex: jestConfig.testRegex, globalSetup: jestConfig.globalSetup === null ? undefined : jestConfig.globalSetup, globalTeardown: jestConfig.globalTeardown === null ? undefined : jestConfig.globalTeardown, prettierPath: jestConfig.prettierPath === null ? undefined : jestConfig.prettierPath, resolver: jestConfig.resolver === null ? undefined : jestConfig.resolver,
+      // force erase preset
+      preset: undefined
+    });
+    // warning incompatible props
+    Object.keys(jestConfig)
+      .filter(k => ['bail', 'restoreMocks', 'transform'].some(p => p === k))
+      .forEach((k) => {
+      if (!(jestConfig === null || jestConfig === void 0 ? void 0 : jestConfig[k])) {
+        throw new Error(`[getStencilConfig] incompatible property from jest config not integrated into jest stencil. property=${k}`);
+      }
+    });
+    if (jestConfig.preset) {
+      console.warn(`[ WARN ] [getStencilConfig] ignoring property from jest config not integrated into jest stencil. property=preset`);
+    }
   }
   // manage copy task with custom-element package.json if needed (prod)
   let distCustomElementsCopy = [];
@@ -183,7 +200,9 @@ export function getStencilConfig({ namespace, args, jestConfig, distCustomElemen
         };
         return [output];
       })() : []),
-    ] }), globalScriptOption), { testing: Object.assign(Object.assign(Object.assign({}, (jestConfig ? convertedJestConfig : {})), { browserHeadless: false, browserSlowMo: 2000 }), (isCi ? {
+    ] }), globalScriptOption), { devServer: {
+      startupTimeout: 30000
+    }, testing: Object.assign(Object.assign(Object.assign({}, (jestConfig ? convertedJestConfig : {})), { browserHeadless: false, browserSlowMo: 2000 }), (isCi ? {
       browserHeadless: true,
       browserSlowMo: 0,
       /**

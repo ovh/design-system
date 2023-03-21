@@ -1,0 +1,6 @@
+@import '~@ovhcloud/ods-theming/typography/ods-theming-typography';
+@import '~@ovhcloud/ods-theming/typography/ods-component-typography';
+@import './osds-popover.mixins';
+
+// Main CSS mixin for typography
+@mixin osds-popover-theme-typography() { }

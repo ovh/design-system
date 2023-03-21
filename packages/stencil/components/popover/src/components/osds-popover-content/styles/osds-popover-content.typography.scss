@@ -1,0 +1,26 @@
+@import '~@ovhcloud/ods-theming/typography/ods-theming-typography';
+@import '~@ovhcloud/ods-theming/typography/ods-component-typography';
+@import './osds-popover-content.mixins';
+
+// Main CSS mixin for typography
+@mixin osds-popover-content-theme-typography() {
+  :host {
+    $typography-properties: ods-get-typography-properties(body, '400');
+    font-family: ods-get-typography-property($typography-properties, font-family);
+    font-size: ods-get-typography-property($typography-properties, font-size);
+    font-style: ods-get-typography-property($typography-properties, font-style);
+    font-weight: ods-get-typography-property($typography-properties, font-weight);
+    letter-spacing: ods-get-typography-property($typography-properties, letter-spacing);
+    line-height: ods-get-typography-property($typography-properties, line-height);
+
+    slot[name='popover-header']{
+      $typography-properties: ods-get-typography-properties(subheading, '200');
+      font-family: ods-get-typography-property($typography-properties, font-family);
+      font-size: ods-get-typography-property($typography-properties, font-size);
+      font-style: ods-get-typography-property($typography-properties, font-style);
+      font-weight: ods-get-typography-property($typography-properties, font-weight);
+      letter-spacing: ods-get-typography-property($typography-properties, letter-spacing);
+      line-height: ods-get-typography-property($typography-properties, line-height);
+    }
+  }
+}

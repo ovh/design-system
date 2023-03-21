@@ -19,4 +19,5 @@ const args = process.argv.slice(2);
  * ```
  */
 const config: Config.InitialOptions = OdsGetJestConfig({ basePath: '<rootDir>/../../..', stencil: false, args });
+console.log(config);
 export default config;

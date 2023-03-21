@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Host, Method, Prop, State, Watch, h } from '@stencil/core';
 import {
   OdsLogger,
   OdsPagination,
@@ -6,11 +6,9 @@ import {
   odsPaginationDefaultAttributes,
   OdsPaginationEvents,
   OdsPaginationMethods,
-  OdsPaginationValidityState,
   OdsPaginationCurrentChangeEventDetail,
   OdsIconSize,
   OdsIconName,
-  OdsPaginationCreateDefaultOdsValidityState,
   OdsButtonSize,
 } from '@ovhcloud/ods-core';
 import { HTMLStencilElement } from '@stencil/core/internal';
@@ -52,15 +50,6 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
   /** @see OdsPaginationEvents.odsCurrentChange */
   @Event() odsCurrentChange!: EventEmitter<OdsPaginationCurrentChangeEventDetail>;
 
-  @State()
-  selectedOptionLabel = '';
-
-  /** is the select was touched by the user */
-  dirty = false;
-
-  @State()
-  validityState: OdsPaginationValidityState = OdsPaginationCreateDefaultOdsValidityState();
-
   /** @see OdsPaginationEvents.odsFocus */
   @Event() odsFocus!: EventEmitter<void>;
   private onFocus() {
@@ -76,7 +65,7 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
 
   @Watch('defaultCurrent')
   onDefaultCurrentChange(defaultCurrent?: number) {
-    this.logger.debug(`[input=${this.current}]`, 'DefaultCurrent', defaultCurrent);
+    this.logger.debug(`current: ${this.current}]`, 'defaultCurrent: ', defaultCurrent);
   }
 
   componentWillLoad() {
@@ -97,7 +86,7 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
 
   @Watch('current')
   async onCurrentChange(current: number, oldCurrent?: number) {
-    this.logger.log(`[select=${this.current}]`, 'current changed. emit new current', { current });
+    this.logger.log(`current: ${this.current}]`, 'current changed. emit new current', { current });
     this.emitChange(current, oldCurrent);
   }
 
@@ -106,37 +95,7 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
     this.odsCurrentChange.emit({
       current: current,
       oldCurrent: oldCurrent,
-      validity: this.validityState,
     });
-  }
-
-  /**
-   * @internal
-   * @see OdsPaginationMethods.clear
-   */
-  @Method()
-  async clear() {
-    this.validityState = OdsPaginationCreateDefaultOdsValidityState();
-    this.current = 1;
-  }
-
-  /**
-   * @internal
-   * @see OdsPaginationMethods.getValidity
-   */
-  @Method()
-  async getValidity() {
-    return this.validityState;
-  }
-
-  /**
-   * @internal
-   * @see OdsPaginationMethods.reset
-   */
-  @Method()
-  async reset() {
-    this.current = this.defaultCurrent || 1;
-    this.validityState = OdsPaginationCreateDefaultOdsValidityState();
   }
 
   /**
@@ -157,41 +116,14 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
     this.pageindex = current;
   }
 
-  /**
-   * @see OdsPaginationMethods.setPageIndex
-   */
-  @Method()
-  async validate() {
-    this.validityState = this.controller.getValidity();
-    return this.validityState;
-  }
-
   changeValue(current: number) {
-    this.logger.log(`[select=${this.current}]`, 'current changed', { current });
     this.current = current;
-  }
-
-  // Hide overlay when we click anywhere else in the window.
-  @Listen('click', { target: 'window' })
-  checkForClickOutside(ev: any) {
-    if (!this.dirty || this.el.contains(ev.target)) {
-      // click on component, do nothing
-      return;
-    }
-    this.logger.log('[checkForClickOutside]', arguments, { validity: this.validityState });
-    if (this.dirty) {
-      this.validityState = this.controller.getValidity();
-    }
   }
 
   @Watch('disabled')
   closeWhenDisabled(disabled?: boolean) {
     if (disabled) {
     }
-  }
-
-  private hasError(): boolean {
-    return this.validityState.invalid;
   }
 
   onKeyPress = (event: any, page: any) => {
@@ -252,7 +184,7 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
     return (
       <Host
         {...{
-          class: `${disabled ? 'disabled' : ''}${this.hasError() ? ' ods-error' : ''}`,
+          class: `${disabled ? 'disabled' : ''}`,
           onFocus: this.onFocus.bind(this),
           onBlur: this.onBlur.bind(this),
           pageIndex: this.disabled ? -1 : this.pageindex,

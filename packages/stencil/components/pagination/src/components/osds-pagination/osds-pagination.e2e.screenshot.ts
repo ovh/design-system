@@ -12,11 +12,6 @@ describe('e2e:osds-pagination', () => {
 
     await page.setContent(`
       <osds-pagination>
-        <span slot="placeholder">Pagination country</span>
-        <osds-pagination-group>My group title</osds-pagination-group>
-        <osds-pagination-option>Value 1</osds-pagination-option>
-        <osds-pagination-option>Value 2</osds-pagination-option>
-        <osds-pagination-option>Value 3</osds-pagination-option>
       </osds-pagination>
     `);
     await page.evaluate(() => document.body.style.setProperty('margin', '0px'));

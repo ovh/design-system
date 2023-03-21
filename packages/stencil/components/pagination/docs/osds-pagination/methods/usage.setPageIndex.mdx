@@ -6,8 +6,9 @@
 // vanilla typescript
 const odsPagination = document.querySelector('osds-pagination#myOdsPagination');
 
-odsPagination.addEventListener('odsBlur', event => {
-  const evt = event as CustomEvent<void>;
-  console.log('odsBlur event', evt.detail);
-});
+async function componentOnLoad() {
+  await customElements.whenDefined('osds-pagination');
+  odsPagination.reset();
+}
+componentOnLoad();
 ```

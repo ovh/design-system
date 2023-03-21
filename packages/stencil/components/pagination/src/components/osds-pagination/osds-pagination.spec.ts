@@ -1,6 +1,6 @@
 import { newSpecPage, SpecPage } from '@stencil/core/testing';
 import { OsdsPagination } from './osds-pagination';
-import { OdsComponentAttributes2StringAttributes, OdsCreateDefaultValidityState, OdsPaginationAttributes, odsPaginationDefaultAttributes, OdsLogger } from '@ovhcloud/ods-core';
+import { OdsComponentAttributes2StringAttributes, OdsPaginationAttributes, odsPaginationDefaultAttributes, OdsLogger } from '@ovhcloud/ods-core';
 import {
   odsGetUnitTestAttributeBaseOptions,
   odsGetUnitTestAttributeContextOptions,
@@ -15,9 +15,6 @@ import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 
 const logger = new OdsLogger('osds-pagination-spec');
 
-// mock validity property that does not exist when stencil mock HTMLInputElement
-OdsMockPropertyDescriptor(HTMLInputElement.prototype, 'validity', () => OdsCreateDefaultValidityState());
-
 describe('spec:osds-pagination', () => {
   logger.log('init');
   let page: SpecPage;
@@ -29,7 +26,7 @@ describe('spec:osds-pagination', () => {
     jest.clearAllMocks();
   });
 
-  async function setup({ attributes = {}, html = `` }: { attributes?: Partial<OdsPaginationAttributes>; html?: string }) {
+  async function setup({ attributes = {} }: { attributes?: Partial<OdsPaginationAttributes> }) {
     const minimalAttributes: OdsPaginationAttributes = OdsPaginationCreateAttributes(attributes);
     const stringAttributes = OdsComponentAttributes2StringAttributes<OdsPaginationAttributes>(minimalAttributes, odsPaginationDefaultAttributes);
 
@@ -38,7 +35,7 @@ describe('spec:osds-pagination', () => {
 
     page = await newSpecPage({
       components: [OsdsPagination],
-      html: `<osds-pagination ${OdsStringAttributes2Str(stringAttributes)}>${html}</osds-pagination>`,
+      html: `<osds-pagination ${OdsStringAttributes2Str(stringAttributes)}></osds-pagination>`,
     });
 
     instance = page.rootInstance;
@@ -63,13 +60,13 @@ describe('spec:osds-pagination', () => {
   describe('attributes', () => {
     function getAttributeContextOptions<Name extends keyof OdsPaginationAttributes = keyof OdsPaginationAttributes>({
       name,
-      list,
-      DefaultCurrent,
+      current,
+      defaultCurrent,
     }: odsGetUnitTestAttributeContextOptions<OdsPaginationAttributes, Name>) {
       return odsGetUnitTestAttributeBaseOptions<OdsPaginationAttributes, Name, OsdsPagination>({
         name,
-        list,
-        DefaultCurrent,
+        current,
+        defaultCurrent,
         instance: () => instance,
         root: () => page.root,
         wait: () => page.waitForChanges(),
@@ -110,21 +107,6 @@ describe('spec:osds-pagination', () => {
       await setup({ attributes: { DefaultCurrent } });
       expect(instance).toBeTruthy();
       expect(instance?.value).toBe(`${DefaultCurrent}`);
-    });
-
-    it('should call reset function and set value to DefaultCurrent', async () => {
-      const DefaultCurrent = 4;
-      await setup({ attributes: { DefaultCurrent, value: 2 } });
-      expect(instance).toBeTruthy();
-      await instance.reset();
-      expect(instance?.value).toBe(`${DefaultCurrent}`);
-    });
-
-    it('should call reset function and set value to empty string if DefaultCurrent is unset', async () => {
-      await setup({ attributes: { value: 2 } });
-      expect(instance).toBeTruthy();
-      await instance.reset();
-      expect(instance?.value).toBe('');
     });
 
     it('should call clear function and set value to an empty string', async () => {

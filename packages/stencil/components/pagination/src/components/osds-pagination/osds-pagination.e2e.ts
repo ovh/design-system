@@ -22,15 +22,12 @@ describe('e2e:osds-pagination', () => {
 
     await page.setContent(`
       <osds-pagination ${OdsStringAttributes2Str(stringAttributes)}>
-        <osds-pagination-option value="42">value</osds-pagination-option>
       </osds-pagination>
     `);
     await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
 
     el = await page.find('osds-pagination');
     divElement = await page.find('osds-pagination >>> div');
-    optionElement = await page.find('osds-pagination > osds-pagination-option');
-    optionDivElement = await page.find('osds-pagination > osds-pagination-option >>> div');
   }
 
   describe('defaults', () => {
@@ -52,9 +49,6 @@ describe('e2e:osds-pagination', () => {
     });
   });
 
-  // TODO getValidity
-  // TODO getPaginationion
-
   describe('method:setPageIndex', () => {
     it('should set inputTabindex to -1', async () => {
       await setup({ attributes: {} });
@@ -62,36 +56,6 @@ describe('e2e:osds-pagination', () => {
       await page.waitForChanges();
       const value = el.getAttribute('tabindex');
       expect(value).toBe('-1');
-    });
-  });
-
-  describe('method:clear', () => {
-    it('should clear the value', async () => {
-      await setup({ attributes: { value: 3 } });
-      await el.callMethod('clear');
-      await page.waitForChanges();
-      const value = await el.getProperty('value');
-      expect(value).toBe('');
-    });
-  });
-
-  describe('method:reset', () => {
-    it('should not reset the value because DefaultCurrent is missing', async () => {
-      await setup({ attributes: { value: 3, DefaultCurrent: undefined } });
-      await el.callMethod('reset');
-      await page.waitForChanges();
-      const value = await el.getProperty('value');
-      await page.waitForChanges();
-      expect(value).toBe(`${odsPaginationDefaultAttributes.DefaultCurrent}`);
-    });
-
-    it('should set the value to DefaultCurrent', async () => {
-      const DefaultCurrent = 6;
-      await setup({ attributes: { value: 3, DefaultCurrent } });
-      await el.callMethod('reset');
-      await page.waitForChanges();
-      const value = await el.getProperty('value');
-      expect(value).toBe(`${DefaultCurrent}`);
     });
   });
 
@@ -110,17 +74,8 @@ describe('e2e:osds-pagination', () => {
 
       beforeEach(() => {
         odsPaginationCurrentChangeEventDetailBase = {
-          oldValue: '',
-          validity: {
-            invalid: false,
-            stepMismatch: false,
-            valid: true,
-            valueMissing: false,
-            customError: false,
-            forbiddenValue: false,
-          },
-          value: '',
-          current: null,
+          oldCurrent: 1,
+          current: 1,
         };
       });
 
@@ -172,17 +127,17 @@ console.log('before clicks');
       });
 */
       it('should emit when component value property change', async () => {
-        const newValue = '42';
+        const newValue = 2;
         await setup({});
         const odsCurrentChange = await el.spyOnEvent('odsCurrentChange');
 
-        el.setProperty('value', `${newValue}`);
+        el.setProperty('value', newValue);
         await page.waitForChanges();
 
         const expected: OdsPaginationCurrentChangeEventDetail = {
           ...odsPaginationCurrentChangeEventDetailBase,
-          oldValue: '',
-          value: `${newValue}`,
+          oldCurrent: 1,
+          current: newValue,
         };
 
         // expect.objectContaining(expected) is not working with stencil

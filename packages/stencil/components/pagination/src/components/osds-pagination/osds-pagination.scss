@@ -1,6 +1,5 @@
 @import 'styles/osds-pagination.color';
 @import 'styles/osds-pagination.size';
-@import 'styles/osds-pagination.typography';
 @import '~@ovhcloud/ods-theming/color/ods-theming-color';
 @import '~@ovhcloud/ods-theming/ods-theme';
 
@@ -45,5 +44,4 @@
 @include ods-theme-component() {
   @include osds-pagination-theme-color();
   @include osds-pagination-theme-size();
-  @include osds-pagination-theme-typography();
 }

@@ -132,9 +132,7 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
     }
   };
 
-  render() {
-    const { totalPages, disabled } = this;
-
+  createPageList(totalPages: number) {
     let pageList = [];
     for (let i = 1; i <= totalPages; i++) {
       pageList.push({ id: i, active: false });
@@ -180,11 +178,18 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
         pageList[totalPages - 1].active = true;
       }
     }
+    return pageList;
+  }
+
+  render() {
+    const { totalPages, disabled } = this;
+
+    let pageList = this.createPageList(totalPages);
 
     return (
       <Host
         {...{
-          class: `${disabled ? 'disabled' : ''}`,
+          class: disabled ? 'disabled' : '',
           onFocus: this.onFocus.bind(this),
           onBlur: this.onBlur.bind(this),
           pageIndex: this.disabled ? -1 : this.pageindex,
@@ -194,11 +199,11 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
       >
         <div>
           <ul>
-            <li>
+            <li class="arrows">
               <osds-button
                 contrasted={true}
                 color={OdsThemeColorIntent.primary}
-                disabled={this.pageindex > 1 ? false : true}
+                disabled={disabled ? true : this.pageindex == 1}
                 onKeyDown={(event: any) => {
                   if (this.pageindex > 1 && !disabled) this.onKeyPress(event, Number(this.pageindex) - 1);
                 }}
@@ -215,17 +220,13 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
                 return (
                   <span>
                     {pageList.length > 6 && pageList.length - this.pageindex > 3 && page.id == pageList.length && (
-                      <osds-icon
-                        size={OdsIconSize.sm}
-                        color={OdsThemeColorIntent.primary}
-                        name={OdsIconName.ELLIPSIS}
-                        style={{ paddingBottom: '10px', cursor: 'not-allowed' }}
-                      ></osds-icon>
+                      <osds-icon size={OdsIconSize.sm} color={OdsThemeColorIntent.primary} name={OdsIconName.ELLIPSIS} class="ellipsis"></osds-icon>
                     )}
                     <li>
                       <osds-button
-                        class={this.pageindex == page.id ? 'selectedpage' : ''}
+                        class={`${this.pageindex == page.id ? 'selectedpage' : ''}`}
                         contrasted={this.pageindex == page.id ? false : true}
+                        disabled={disabled ? true : false}
                         color={OdsThemeColorIntent.primary}
                         size={OdsButtonSize.sm}
                         onKeyDown={(event: any) => {
@@ -240,23 +241,18 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
                     </li>
                     {pageList.length > 6 && this.pageindex > 4 && page.id == 1 && (
                       <li>
-                        <osds-icon
-                          size={OdsIconSize.sm}
-                          color={OdsThemeColorIntent.text}
-                          name={OdsIconName.ELLIPSIS}
-                          style={{ paddingBottom: '10px', cursor: 'not-allowed' }}
-                        ></osds-icon>
+                        <osds-icon size={OdsIconSize.sm} color={OdsThemeColorIntent.text} name={OdsIconName.ELLIPSIS} class="ellipsis"></osds-icon>
                       </li>
                     )}
                   </span>
                 );
             })}
 
-            <li>
+            <li class="arrows">
               <osds-button
                 contrasted={true}
                 color={OdsThemeColorIntent.primary}
-                disabled={this.pageindex < pageList.length ? false : true}
+                disabled={disabled ? true : this.pageindex >= pageList.length}
                 onKeyDown={(event: any) => {
                   if (this.pageindex < pageList.length && !disabled) this.onKeyPress(event, Number(this.pageindex) + 1);
                 }}

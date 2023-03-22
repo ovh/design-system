@@ -102,43 +102,13 @@ describe('spec:osds-pagination', () => {
 
   describe('methods', () => {
     /*
-    it('should have DefaultCurrent as value if set', async () => {
-      const DefaultCurrent = 4;
-      await setup({ attributes: { DefaultCurrent } });
-      expect(instance).toBeTruthy();
-      expect(instance?.value).toBe(`${DefaultCurrent}`);
-    });
-
-    it('should call clear function and set value to an empty string', async () => {
-      await setup({ attributes: { value: 2 } });
-      expect(instance).toBeTruthy();
-      await instance.clear();
-      expect(instance?.value).toBe('');
-    });
-
-    it('should call setFocus function and change the focus state of the component', async () => {
-      await setup({ attributes: {} });
-      expect(instance).toBeTruthy();
-      expect(htmlPagination).toBeTruthy();
-      await instance.setFocus();
-      expect(htmlPagination?.value).toBe('');
-    });
-
     it('should call setPageIndex function and inputTabindex should be set to 4', async () => {
       await setup({ attributes: { value: 2 } });
       expect(instance).toBeTruthy();
       await instance.setPageIndex(4);
       expect(instance?.pageindex).toBe(4);
     });
-
-    it('should call getValidity function and get an OdsValidityState.invalid to true', async () => {
-      await setup({ attributes: { value: 'my-value-1' } });
-      expect(instance).toBeTruthy();
-      jest.spyOn(instance, 'getValidity');
-      const validity = await instance.getValidity();
-      expect(instance.getValidity).toHaveBeenCalledTimes(1);
-      expect(validity?.invalid).toBe(false);
-    });*/
+    */
   });
 
   describe('events', () => {

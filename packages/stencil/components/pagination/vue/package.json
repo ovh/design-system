@@ -19,9 +19,6 @@
   "files": [
     "dist/"
   ],
-  "dependencies": {
-    "@ovhcloud/ods-stencil-quantity": "^11.0.1"
-  },
   "peerDependencies": {
     "vue": ">=3"
   },

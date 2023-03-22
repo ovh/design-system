@@ -18,12 +18,19 @@
   li {
     display: inline;
     list-style-type: none; 
-    padding-left: 10px;
     white-space: nowrap;
   }
 
-  &[disabled] {
-      opacity: 0.5;
+  .ellipsis, .disabled {
+    cursor: not-allowed;
+  }
+
+  .arrows {
+    padding: 0.5rem;
+  }
+
+  osds-button::part(button) {
+    border-radius: 4px 4px 4px 4px;  
   }
 }
 
@@ -36,8 +43,12 @@
 }
 
 :host([disabled]) {
-  pointer-events: none;
   opacity: 0.5;
+  cursor: not-allowed !important;
+}
+
+:host([disabled]) osds-button::part(button) {
+  cursor: not-allowed !important;
 }
 
 // apply the theme template for the component

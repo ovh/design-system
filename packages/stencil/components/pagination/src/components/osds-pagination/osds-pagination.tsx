@@ -33,19 +33,19 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
    * The current selecte page
    * @internal
    */
-  @State() pageindex = 0;
+  @State() pageindex: number = 0;
 
   /** @see OdsPaginationAttributes.current */
-  @Prop({ reflect: true, mutable: true }) current = odsPaginationDefaultAttributes.current;
+  @Prop({ reflect: true, mutable: true }) current: number = odsPaginationDefaultAttributes.current;
 
   /** @see OdsPaginationAttributes.defaultCurrent */
-  @Prop({ reflect: true }) defaultCurrent? = odsPaginationDefaultAttributes.defaultCurrent;
+  @Prop({ reflect: true }) defaultCurrent?: number = odsPaginationDefaultAttributes.defaultCurrent;
 
   /** @see OdsPaginationAttributes.totalPages */
-  @Prop({ reflect: true }) totalPages = odsPaginationDefaultAttributes.totalPages;
+  @Prop({ reflect: true }) totalPages: number = odsPaginationDefaultAttributes.totalPages;
 
   /** @see OdsPaginationAttributes.disabled */
-  @Prop({ reflect: true, mutable: true }) disabled = odsPaginationDefaultAttributes.disabled;
+  @Prop({ reflect: true, mutable: true }) disabled: boolean = odsPaginationDefaultAttributes.disabled;
 
   /** @see OdsPaginationEvents.odsCurrentChange */
   @Event() odsCurrentChange!: EventEmitter<OdsPaginationCurrentChangeEventDetail>;

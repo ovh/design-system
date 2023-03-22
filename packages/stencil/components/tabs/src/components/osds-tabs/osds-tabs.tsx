@@ -1,5 +1,5 @@
 import { Component, h, Prop, Element, Host,
-  Listen,
+  Listen, Method,
   State, Event, EventEmitter, Watch } from '@stencil/core';
 import { HTMLStencilElement } from '@stencil/core/internal';
 import { OdsTabs, OdsTabsEvents, OdsTabPanelClickEvent,
@@ -53,6 +53,15 @@ export class OsdsTabs implements OdsTabs<OdsStencilMethods<OdsTabsMethods>, OdsS
    * @internal
    */
   @State() panelNameIndex: any = '';
+
+  /**
+   * @internal
+   * @see OdsSelectMethods.setInputTabindex
+   */
+  @Method()
+  async setPanelNameIndex(value: string) {
+    this.panelNameIndex = value;
+  }
 
   @Listen('odsTabItemClickEvent')
   handleValueChange(event: CustomEvent<OdsTabItemClickEvent>) {

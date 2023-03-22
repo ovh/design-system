@@ -155,6 +155,7 @@ describe('e2e:osds-tabs', () => {
         html: tabsDom1
       });
       await el.callMethod('setPanelNameIndex', 'advance')
+      await page.waitForChanges();
     });
     it('should display advance panel and item', async () => {
         expect(await page.find('osds-tab-panel[name=advance] >>> div div.tab-panel')).not.toBeNull();

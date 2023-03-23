@@ -3,6 +3,7 @@
 @import '../osds-tabs/styles/osds-tabs.color.scss';
 @import '~@ovhcloud/ods-theming/color/ods-theming-color';
 @import '~@ovhcloud/ods-theming/ods-theme';
+@import '../osds-tab-bar-item/osds-tab-bar-item.color.scss';
 
 .tabs-tab {
     position: relative;
@@ -14,7 +15,7 @@
     &.tabs-tab-contrasted {
 
       div:hover {
-        border-bottom: 2px solid var(--ods-color-primary-100);
+        border-bottom: 2px solid var(--ods-color-primary-100); // creer un fichier tab-bar-item-color.scss
       }
 
       &.tabs-tab-active div {
@@ -31,7 +32,7 @@
     }
 
     div {
-      padding: 18px 1rem 5px 1rem;
+      padding: 18px 16px 8px 16px;
       margin: 0 0.5rem;
     }
 
@@ -60,4 +61,5 @@
 @include ods-theme-component() {
   @include osds-tabs-theme-typography();
   @include osds-tabs-theme-color();
+  @include osds-tab-item-theme-color();
 }

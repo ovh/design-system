@@ -1,0 +1,7 @@
+@import '~@ovhcloud/ods-theming/color/ods-component-color';
+
+@mixin osds-tab-item-theme-color() {
+    [contrasted] {
+        background-color: pink;
+    }
+}

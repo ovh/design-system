@@ -1,4 +1,4 @@
-import { Component, h, Prop, Element, State, Listen,
+import { Component, h, Prop, Element, State, Listen, Host,
   // Watch,
 } from '@stencil/core';
 import { HTMLStencilElement } from '@stencil/core/internal';
@@ -58,16 +58,21 @@ export class OsdsTabsPanel implements OdsTabPanel<OdsStencilMethods<OdsTabPanelM
   }
 
   render() {
-    const { name, panelNameIndex,} = this;
+    const { name, panelNameIndex } = this;
 
     return (
-      <div>
-        { (name === panelNameIndex) ? (
-          <div class="tab-panel">
-            <slot></slot>
-          </div>
-        ) : '' }
-      </div>
+      <Host 
+      {...{
+        role: 'tabpanel'
+      }}>
+        <div>
+          { (name === panelNameIndex) ? (
+            <div class="tab-panel">
+              <slot></slot>
+            </div>
+          ) : '' }
+        </div>
+      </Host>
     );
   }
 }

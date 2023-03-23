@@ -10,10 +10,11 @@ export const config: Config = getStencilConfig({
   jestConfig: jestConfig.default,
   reactOutput: {
     componentCorePackage: '@ovhcloud/ods-stencil/components/tabs',
-    excludeComponents: ['osds-link', 'osds-text'],
+    excludeComponents: ['osds-link', 'osds-text']
   },
   vueOutput: {
     componentCorePackage: '@ovhcloud/ods-stencil/components/tabs',
+    excludeComponents: ['osds-link', 'osds-text']
   },
   dev: {
     globalScript: 'src/global.dev.ts',

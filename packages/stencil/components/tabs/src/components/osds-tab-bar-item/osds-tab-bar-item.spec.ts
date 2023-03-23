@@ -27,12 +27,10 @@ describe('spec:ods-tabs-controller', () => {
   let panelSlot: HTMLElement | undefined | null;
   let divTabsTab: HTMLElement | undefined | null;
   let divRoleTabSlot: HTMLElement | undefined | null;
-  let divRoleTab: HTMLElement | undefined | null;
   let divTabsTabContrasted: HTMLElement | undefined | null;
   let divTabsTabDisabled: HTMLElement | undefined | null;
   let instance: OsdsTabBarItem;
   let loggerSpyReferences: OdsLoggerSpyReferences;
-
 
   async function setup({ attributes= {} , html = `` }: { attributes?: Partial<OdsTabBarItemAttributes>, html?: string } = {}) {
     const minimalAttributes: OdsTabBarItemAttributes = OdsCreateAttributes(attributes, odsTabBarItemBaseAttributes);
@@ -47,8 +45,7 @@ describe('spec:ods-tabs-controller', () => {
 
     panelSlot = page.root?.shadowRoot?.querySelector('slot');
     divTabsTab = page.root?.shadowRoot?.querySelector('div.tabs-tab');
-    divRoleTab = page.root?.shadowRoot?.querySelector('div[role=tab]');
-    divRoleTabSlot = page.root?.shadowRoot?.querySelector('div[role=tab] slot');
+    divRoleTabSlot = page.root?.shadowRoot?.querySelector('div.tabs-tab slot');
     divTabsTabContrasted = page.root?.shadowRoot?.querySelector('div.tabs-tab-contrasted');
     divTabsTabDisabled= page.root?.shadowRoot?.querySelector('div.tabs-tab-disabled');
     
@@ -69,9 +66,9 @@ describe('spec:ods-tabs-controller', () => {
             await setup();
             expect(divTabsTab).toBeTruthy();
         });
-        it('should have a role tabs', async () => {
+        it('should have a role tab', async () => {
             await setup();
-            expect(divRoleTab).toBeTruthy();
+            expect(page.root?.getAttribute('role')).toBe('tab')
         });
         it('should have a role tabs slot', async () => {
             await setup();

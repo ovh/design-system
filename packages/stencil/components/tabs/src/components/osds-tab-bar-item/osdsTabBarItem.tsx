@@ -108,12 +108,19 @@ export class OsdsTabBarItem implements OdsTabBarItem<OdsStencilMethods<OdsTabBar
     } = this;
 
     return (
-      <Host>
+      <Host
+      {...{
+        contrasted,
+        disabled,
+        role: 'tab',
+        tabIndex: panel,
+        active: (panel === panelNameIndex) ? 'true' : 'false'
+      }}>
         <div 
-          onKeyDown={event => this.onKeyPress(event, panel)}
           class={`tabs-tab ${contrasted ? `tabs-tab-contrasted` : ``} ${panel === panelNameIndex ? `tabs-tab-active` : `` } ${disabled ? `tabs-tab-disabled` : ``}`}
+          onKeyDown={event => this.onKeyPress(event, panel)}
         >
-          <div role="tab" tabIndex={panel}>
+          <div>
              <slot/>
           </div>
         </div>

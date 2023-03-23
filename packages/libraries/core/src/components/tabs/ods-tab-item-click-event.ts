@@ -1,4 +1,4 @@
-import { OdsPanelValue } from './public-api';
+import { OdsPanelValue } from './ods-panel-value';
 
 export interface OdsTabItemClickEvent {
   value: OdsPanelValue,

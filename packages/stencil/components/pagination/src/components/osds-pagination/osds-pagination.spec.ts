@@ -41,6 +41,11 @@ describe('spec:osds-pagination', () => {
       await setup({ attributes: { current: 6, totalPages: 10 } });
       expect(instance?.pageindex).toEqual(6);
     });
+
+    it('if the defaultCurrent of the pagination is 6, then page index should be 6', async () => {
+      await setup({ attributes: { defaultCurrent: 6, totalPages: 10 } });
+      expect(instance?.pageindex).toEqual(6);
+    });
   });
 
   describe('methods', () => {
@@ -49,6 +54,13 @@ describe('spec:osds-pagination', () => {
       expect(instance).toBeTruthy();
       await instance.setPageIndex(4);
       expect(instance?.pageindex).toBe(4);
+    });
+  });
+
+  describe('disabled', () => {
+    it('should disabled attributes is falsy', async () => {
+      await setup({ attributes: { disabled: false, current: 2, totalPages: 10 } });
+      expect(page.root?.disabled).toBeFalsy();
     });
   });
 });

@@ -70,12 +70,12 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
 
   componentWillLoad() {
     this.onDefaultCurrentChange();
-    if (this.current === 0 && this.defaultCurrent !== undefined) {
+
+    if (this.defaultCurrent !== undefined) {
       this.current = this.defaultCurrent;
     }
 
-    this.pageindex = this.defaultCurrent;
-    if (this.current) this.pageindex = this.current;
+    this.pageindex = this.current;
   }
 
   /**
@@ -138,7 +138,7 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
       pageList.push({ id: i, active: false });
     }
 
-    let pageSelected = this.pageindex;
+    let pageSelected: number = this.pageindex;
     let startIndex = Math.max(pageSelected - 2, 1);
     let endIndex = Math.min(startIndex + 4, totalPages);
 

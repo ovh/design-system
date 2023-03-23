@@ -46,6 +46,11 @@ describe('spec:osds-pagination', () => {
       await setup({ attributes: { defaultCurrent: 6, totalPages: 10 } });
       expect(instance?.pageindex).toEqual(6);
     });
+
+    it('if the totalPages of the pagination is 10, then totalPages should be 1O', async () => {
+      await setup({ attributes: { defaultCurrent: 6, totalPages: 10 } });
+      expect(instance?.totalPages).toEqual(10);
+    });
   });
 
   describe('methods', () => {

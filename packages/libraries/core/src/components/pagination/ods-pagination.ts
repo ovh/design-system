@@ -1,6 +1,6 @@
-import { OdsComponentGenericMethods } from '../../ods-component-generic-methods';
-import { OdsComponentGenericEvents } from '../../ods-component-generic-events';
-import { OdsComponent } from '../../ods-component';
+import { OdsComponentGenericMethods } from '../ods-component-generic-methods';
+import { OdsComponentGenericEvents } from '../ods-component-generic-events';
+import { OdsComponent } from '../ods-component';
 import { OdsPaginationMethods } from './ods-pagination-methods';
 import { OdsPaginationEvents } from './ods-pagination-events';
 import { OdsPaginationAttributes } from './ods-pagination-attributes';

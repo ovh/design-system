@@ -50,19 +50,6 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
   /** @see OdsPaginationEvents.odsCurrentChange */
   @Event() odsCurrentChange!: EventEmitter<OdsPaginationCurrentChangeEventDetail>;
 
-  /** @see OdsPaginationEvents.odsFocus */
-  @Event() odsFocus!: EventEmitter<void>;
-  private onFocus() {
-    this.odsFocus.emit();
-  }
-
-  /** @see OdsPaginationEvents.odsBlur */
-  @Event() odsBlur!: EventEmitter<void>;
-
-  onBlur() {
-    this.odsBlur.emit();
-  }
-
   @Watch('defaultCurrent')
   onDefaultCurrentChange(defaultCurrent?: number) {
     this.logger.debug(`current: ${this.current}]`, 'defaultCurrent: ', defaultCurrent);
@@ -96,15 +83,6 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
       current: current,
       oldCurrent: oldCurrent,
     });
-  }
-
-  /**
-   * @internal
-   * @see OdsPaginationMethods.setFocus
-   */
-  @Method()
-  async setFocus() {
-    this.el.focus();
   }
 
   /**
@@ -190,8 +168,6 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
       <Host
         {...{
           class: disabled ? 'disabled' : '',
-          onFocus: this.onFocus.bind(this),
-          onBlur: this.onBlur.bind(this),
           pageIndex: this.disabled ? -1 : this.pageindex,
           totalPages: this.totalPages,
           current: this.current,

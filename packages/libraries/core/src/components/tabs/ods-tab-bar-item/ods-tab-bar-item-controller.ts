@@ -9,5 +9,18 @@ export class OdsTabBarItemController extends OdsComponentController<OdsTabBarIte
   constructor(component: OdsTabBarItem) {
     super(component);
   }
+
+  /**
+   * 
+   * @param event 
+  */
+  async handlePanelKeyEvent(event: KeyboardEvent, panel: string) {
+    if (event.keyCode === 13 || event.keyCode === 32) {
+      this.component.setPanelName(panel)
+      //event.defaultPrevented();
+      event.preventDefault();
+    }
+  }
+
   afterInit(): void {}
 }

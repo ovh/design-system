@@ -48,6 +48,10 @@ export class OsdsTabBarItem implements OdsTabBarItem<OdsStencilMethods<OdsTabBar
     this.odsTabItemClickEvent.emit({value});
   }
 
+  private async handlePanelKeyEvent(event: KeyboardEvent, panel: string) {
+    await this.controller.handlePanelKeyEvent(event, panel);
+  }  
+
   /**
    * The tabindex of the radio button.
    * @internal
@@ -93,11 +97,11 @@ export class OsdsTabBarItem implements OdsTabBarItem<OdsStencilMethods<OdsTabBar
     }
   }
 
-  onKeyPress = (event: any, panel: any) => {
-    if (event.keyCode === 13 || event.keyCode === 32) {
-      this.setPanelName(panel)
-    }
-  };
+  // onKeyPress = (event: any, panel: any) => {
+  //   if (event.keyCode === 13 || event.keyCode === 32) {
+  //     this.setPanelName(panel, panel)
+  //   }
+  // };
 
   render() {
     const {
@@ -114,13 +118,13 @@ export class OsdsTabBarItem implements OdsTabBarItem<OdsStencilMethods<OdsTabBar
         disabled,
         role: 'tab',
         tabIndex: panel,
-        active: (panel === panelNameIndex) ? 'true' : 'false'
+        active: (panel === panelNameIndex) ? 'true' : 'false',
+        onKeyDown: (event: any) => this.handlePanelKeyEvent(event, panel)
       }}>
-        <div 
+        <div
           class={`tabs-tab ${contrasted ? `tabs-tab-contrasted` : ``} ${panel === panelNameIndex ? `tabs-tab-active` : `` } ${disabled ? `tabs-tab-disabled` : ``}`}
-          onKeyDown={event => this.onKeyPress(event, panel)}
         >
-          <div>
+          <div role="tab" tabIndex={panel}>
              <slot/>
           </div>
         </div>

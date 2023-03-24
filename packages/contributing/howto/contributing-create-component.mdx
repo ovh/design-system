@@ -237,6 +237,22 @@ In `packages/stencil/components/my-component`:
 └── typedoc.json                                            // Typedoc configuration (inherited)
 ```
 
+In order to enable your component to eventually be used in another component, add your component as below in `tsconfig.components.dev.json` and `tsconfig.components.prod.json`
+under `packages/stencil/components` directory:
+``` typescript
+ "include": [
+    "src",
+    "%component%/src",
+  ],
+```
+
+Then, in the same directory, add your component in `stencil.config.ts` as following:
+``` typescript
+bundles: [
+    { components: ['osds-%component%'] },
+  ],
+```
+
 > ℹ️ **Tip**<br />
 > You might consider either configure the same as it can be with sibling components, or copy/pasting a previously
 > finished component while being cautious about replacing code in it
@@ -387,6 +403,8 @@ import {Description} from '@storybook/addon-docs';
 <Description>{Specs}</Description>
 ```
 
+Then, run `yarn doc` in your terminal to generate this documentation.
+
 > ⚠️️ **Please note**<br />
 > It is important that you comment all attributes, events,
 > component and controller related methods in `packages/libraries/core/src/components/%name%`
@@ -396,7 +414,7 @@ import {Description} from '@storybook/addon-docs';
 
 You will describe the usage of the component here. It will be displayed in Storybook under `Docs` tab.
 
-The structure has been described [here](#web-component).
+You can check its [structure](#web-component).
 
 ## Testing
 
@@ -405,5 +423,5 @@ Unit, end-to-end and screenshots tests are required for each component:
 
 ## Theming
 
-Components use the theming system:
+Components use the theming system and style from theme can be customized when necessary:
 [Theming guidelines](?path=/story/contributing-how-to-s-use-theming-for-your-component--page)

@@ -1,5 +1,17 @@
 # Theming
 
+<!-- TOC -->
+
+* [Introduction](#introduction)
+* [Customize a style from theming](#customize-a-style-from-theming)
+    * [On the component itself](#on-the-component-itself)
+    * [Override imported component style](#override-imported-component-style)
+    * [Customize theme color](#customize-theme-color)
+
+<!-- TOC -->
+
+## Introduction
+
 All components use the theming system.
 
 Defining a theme means define some configuration as following:
@@ -8,3 +20,51 @@ Defining a theme means define some configuration as following:
 * **typographyConfig**: all the defined typography properties for each component
 
 You can read more documentation on the [Theming Principles](/story/code-our-principles-theming--page)
+
+## Customize a style from theming
+
+You can customize a color, a size or even a typography for all components.
+
+> ⚠️️ **Please note**<br />
+> Be sure to customize a style when it is strictly necessary for your case.
+
+### On the component itself
+You will need to apply your specific style on the host of the component itself.
+For instance, you would like to apply a specific color to your component, different from the one offered by the theme:
+``` css
+:host {
+  background-color: red;
+}
+```
+
+### Override imported component style
+You are using an ODS component, with its own style, in your component but, you need to customize some of its style.
+You will need to use the correct selector in your CSS.
+
+For instance, if you would like to customize the OdsIcon style, with a specific color, in your component, you just need to use the following selector:
+``` css
+osds-icon {
+  background-color: red;
+}
+```
+
+Regarding the OdsButton, we assigned a `.button` class to it so you won't be able to override its style as above example.
+You can customize it as following:
+``` css
+osds-button::part(button) {
+  background-color: red;
+}
+```
+
+`::part` will allow you to select and style elements inside a shadow tree.
+
+### Customize theme color
+You can customize the theme color for your component or an imported component using `ods-get-color-variable()` as following:
+``` css
+:host {
+    color: ods-get-color-variable($intent-name: primary, $hue: '800');
+    background-color: ods-get-color-variable($palette-name: 'blue', $hue: '050');
+  }
+```
+
+Difference between intent-name and palette-name is described in [Theming Principles](/story/code-our-principles-theming--page).

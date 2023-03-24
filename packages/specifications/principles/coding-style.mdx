@@ -31,11 +31,27 @@ To summarize, all generic code has to be delocalized into our `Core` folder : `@
 ### TypeScript
 
 #### any type
-
 You should avoid to use `any` type and consider using whether a type `intersection` or `generics`.
 
-#### TSDoc comments
+#### Types
+For those who are using types for expressing how a component should be restricted to, it is mostly common to use the
+proper way of declaring it.
+As of now, we are using two declarations that are exported :
+- an _Array_ constant, which contains a read-only array with all values (in case you need values for documentation)
+- an _union type_ that can be used elsewhere
 
+>**Example of declaration for a button variant (in TypeScript) :**
+>```typescript
+>export const ButtonColorValues = ['default', 'primary', 'secondary'] as const;
+>export type ButtonColor = typeof ButtonColorValues[number];
+>```
+>rendering as :
+>```text
+>ButtonColorValues = readonly ['default', 'primary', 'secondary'];
+>ButtonColor = 'default' | 'primary' | 'secondary';
+>```
+
+#### TSDoc comments
 By using TSDoc, we can comment and document the detail of the code easily so, you should add TSDoc comments to the following:
 * All classes
 * All properties

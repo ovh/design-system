@@ -11,8 +11,7 @@ describe('e2e:osds-pagination', () => {
     onPage && onPage({ page });
 
     await page.setContent(`
-      <osds-pagination>
-      </osds-pagination>
+      <osds-pagination current=5 total-pages=7></osds-pagination>
     `);
     await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
 
@@ -37,7 +36,7 @@ describe('e2e:osds-pagination', () => {
         await page.waitForChanges();
 
         await page.evaluate(() => {
-          const element = document.queryPaginationor('osds-pagination') as HTMLElement;
+          const element = document.querySelector('osds-pagination') as HTMLElement;
           return { width: element.clientWidth, height: element.clientHeight };
         });
         await page.setViewport({ width: 600, height: 600 });

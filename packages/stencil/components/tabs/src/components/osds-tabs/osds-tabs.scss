@@ -1,10 +1,4 @@
 @import '~@ovhcloud/ods-theming/ods-theme';
 @import './styles/osds-tabs.typography';
-@import './styles/osds-tabs.color.scss';
 @import '~@ovhcloud/ods-theming/color/ods-theming-color';
 @import '~@ovhcloud/ods-theming/ods-theme';
-
-// apply the theme template for the component
-@include ods-theme-component() {
-  @include osds-tabs-theme-color();
-}

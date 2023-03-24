@@ -1,35 +1,16 @@
 @import '~@ovhcloud/ods-theming/ods-theme';
 @import '../osds-tabs/styles/osds-tabs.typography.scss';
-@import '../osds-tabs/styles/osds-tabs.color.scss';
-@import '~@ovhcloud/ods-theming/color/ods-theming-color';
+@import './osds-tab-bar-item.mixin.scss';
 @import '~@ovhcloud/ods-theming/ods-theme';
 @import '../osds-tab-bar-item/osds-tab-bar-item.color.scss';
 
-.tabs-tab {
+:host {
+  .tabs-tab {
     position: relative;
     display: inline-flex;
     align-items: center;
     outline: none;
     cursor: pointer;
-
-    &.tabs-tab-contrasted {
-
-      div:hover {
-        border-bottom: 2px solid var(--ods-color-primary-100); // creer un fichier tab-bar-item-color.scss
-      }
-
-      &.tabs-tab-active div {
-        border-bottom: 2px solid white;
-      }
-
-      &.tabs-tab-active div:hover {
-        border-bottom: 2px solid var(--ods-color-primary-100);
-      }
-
-      &.tabs-tab-disabled div {
-        cursor: not-allowed;
-      }
-    }
 
     div {
       padding: 18px 16px 8px 16px;
@@ -37,29 +18,38 @@
     }
 
     div:hover {
-      border-bottom: 2px solid var(--ods-color-primary-700);
+      border-bottom-width: 2px;
+      border-bottom-style: solid;
     }
-
-    &.tabs-tab-disabled div {
-      cursor: not-allowed;
-    }
-
-    &.tabs-tab-disabled div:hover {
-      border-bottom: none;
-    }
-
-    &.tabs-tab-active div {
-      border-bottom: 2px solid var(--ods-color-primary-500);
-    }
-
-    &.tabs-tab-active div:hover {
-      border-bottom: 2px solid var(--ods-color-primary-700);
-    }
+  }
 }
+
+:host([disabled]) {
+  .tabs-tab {
+    div {
+      cursor: not-allowed;        
+    }
+    div:hover {
+      border-bottom: none; 
+    }
+  }
+}  
+
+:host([active]) {
+  .tabs-tab {
+    div {
+      border-bottom-width: 2px;
+      border-bottom-style: solid;
+    }
+    div:hover {
+      border-bottom-width: 2px;
+      border-bottom-style: solid;
+    }
+  }
+}  
 
 // apply the theme template for the component
 @include ods-theme-component() {
   @include osds-tabs-theme-typography();
-  @include osds-tabs-theme-color();
   @include osds-tab-item-theme-color();
 }

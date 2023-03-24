@@ -46,8 +46,8 @@ describe('spec:ods-tabs-controller', () => {
     panelSlot = page.root?.shadowRoot?.querySelector('slot');
     divTabsTab = page.root?.shadowRoot?.querySelector('div.tabs-tab');
     divRoleTabSlot = page.root?.shadowRoot?.querySelector('div.tabs-tab slot');
-    divTabsTabContrasted = page.root?.shadowRoot?.querySelector('div.tabs-tab-contrasted');
-    divTabsTabDisabled= page.root?.shadowRoot?.querySelector('div.tabs-tab-disabled');
+    divTabsTabContrasted = page.root?.shadowRoot?.querySelector('[contrasted] div.tabs-tab');
+    divTabsTabDisabled= page.root?.shadowRoot?.querySelector('[disabled] div.tabs-tab');
     
   }
 

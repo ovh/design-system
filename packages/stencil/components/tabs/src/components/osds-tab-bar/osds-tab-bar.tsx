@@ -43,7 +43,9 @@ export class OsdsTabBar implements OdsTabBar<OdsStencilMethods<OdsTabBarMethods>
 
   render() {
     return (
-      <Host>
+      <Host {...{
+        role: 'tablist',
+      }}>
         <div class="tabs-nav-list">
           <slot/>
         </div>

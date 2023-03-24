@@ -9,7 +9,7 @@
 
 @mixin osds-button-theme-typography() {
   /** typography properties */
-  @each $size in ('md','sm') {
+  @each $size in ('md','sm', 'lg') {
     :host([size='#{$size}']) .button__text-container {
       $typography-properties: ods-get-typography-properties(button, '100');
       font-family: ods-get-typography-property($typography-properties, font-family);

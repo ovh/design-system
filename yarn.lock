@@ -6677,7 +6677,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-pagination-vue@workspace:packages/stencil/components/pagination/vue"
   dependencies:
-    "@ovhcloud/ods-stencil-quantity": ^11.0.1
     rimraf: ^3.0.2
     typescript: 4.7.4
     vue: ^3.2.41

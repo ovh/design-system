@@ -94,16 +94,6 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
     this.pageindex = current;
   }
 
-  changeValue(current: number) {
-    this.current = current;
-  }
-
-  @Watch('disabled')
-  closeWhenDisabled(disabled?: boolean) {
-    if (disabled) {
-    }
-  }
-
   onKeyPress = (event: any, page: any) => {
     if (event.keyCode === 13 || event.keyCode === 32) {
       this.setPageIndex(page);

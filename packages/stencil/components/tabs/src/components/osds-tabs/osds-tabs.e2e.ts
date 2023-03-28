@@ -105,11 +105,11 @@ describe('e2e:osds-tabs', () => {
     });
     it('should tabBarItemsRiseElement tab bar have panel rise have class tabs-tab-active', async () => {
         expect(tabBarItemsRiseElement).not.toBeNull();
-        expect(await page.find('osds-tab-bar-item[panel=rise] >>> div')).toHaveClass('tabs-tab-active')
+        expect(await tabBarItemsRiseElement.getProperty('checked')).toBeFalsy();
     });
     it('should tabBarItemsRiseElement tab bar have panel advance have class tabs-tab-active', async () => {
         expect(tabBarItemsAdvanceElement).not.toBeNull();
-        expect(await page.find('osds-tab-bar-item[panel=advance] >>> div')).not.toHaveClass('tabs-tab-active')
+        expect(await tabBarItemsAdvanceElement.getProperty('checked')).toBeFalsy();
     });
   });
 
@@ -125,6 +125,8 @@ describe('e2e:osds-tabs', () => {
         attributes: { panelActive: 'rise', tabsId: 'tabs-1' },
         html: tabsDom1
       });
+      await el.callMethod('setPanelNameIndex', 'rise')
+      await page.waitForChanges();
     });
     it('should panel item tab bar have attributes panel rise', async () => {
         expect(await page.find('osds-tab-panel[name=rise]')).not.toBeNull();

@@ -218,6 +218,18 @@ const allComponents = [
     },
   },
   {
+    tag: 'osds-tabs',
+    url: '/?path=/story/ui-components-tabs-tabs-meta-web-component--default',
+    attributes: {
+      color: OdsThemeColorIntent.text,
+      level: OdsTextLevel.body,
+      size: OdsTextSize._500,
+    },
+    slots: {
+      DEFAULT: `Tabs`,
+    },
+  },
+  {
     tag: 'osds-text',
     url: '/?path=/story/ui-components-text-quark-web-component--default',
     attributes: {

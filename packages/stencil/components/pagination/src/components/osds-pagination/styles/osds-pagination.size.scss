@@ -3,7 +3,8 @@
 
 @mixin osds-pagination-theme-size() {
   osds-button::part(button) {
-    //width: 36px;
-    height: 36px;
+    width: 2.25rem;
+    height: 2.25rem;
+    padding: 0;
   }
 }

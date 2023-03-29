@@ -59,6 +59,17 @@ export class OsdsBreadcrumbItem implements OdsBreadcrumbItem<OdsStencilMethods<O
     this.odsBlur.emit();
   }
 
+  private resetDomItems = (items: any) => {
+    items[(items.length - 1) / 2].showCollapsedIndicator = false;
+
+    const toto = Array.from(items);
+    toto.map((item: any) => {
+      item.displayed = true;
+      return item;
+    });
+    console.info('items map : ', toto)
+  }
+
   render() {
     const { active, color, collapsed, disabled, displayed, /*el,*/ showCollapsedIndicator } = this;
     return (
@@ -75,26 +86,31 @@ export class OsdsBreadcrumbItem implements OdsBreadcrumbItem<OdsStencilMethods<O
         }}
       >
         <li>
-          <slot name="start"></slot>
-          <slot></slot>
-          <slot name="end"></slot>
+           { displayed ? (
+            <div>
+              <slot name="start"></slot>
+              <slot></slot>
+              <slot name="end"></slot>
+            </div>
+           ) : ('')}
+           {showCollapsedIndicator ? (
+              <a
+                onClick={() => {
+                  console.log('ellipsis click');
+                  const items = this.el.parentNode?.querySelectorAll('osds-breadcrumb-item')
+                  this.resetDomItems(items);
+                }}
+                class="ellipsis"
+              >
+               <osds-icon
+                 {...{
+                   name: OdsIconName.ELLIPSIS,
+                   size: OdsIconSize.xxs,
+                   color: 'primary' as OdsThemeColorIntent,
+                 }}></osds-icon>
+              </a>            
+           ) : ''}
         </li>
-        {showCollapsedIndicator && (
-          <a
-            onClick={() => {
-              console.log('ellipsis click');
-            }}
-            class="ellipsis"
-          >
-            <osds-icon
-              {...{
-                name: OdsIconName.ELLIPSIS,
-                size: OdsIconSize.xxs,
-                color: 'primary' as OdsThemeColorIntent,
-              }}
-            ></osds-icon>
-          </a>
-        )}
       </Host>
     );
   }

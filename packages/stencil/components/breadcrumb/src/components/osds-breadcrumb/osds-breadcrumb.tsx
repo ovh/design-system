@@ -42,7 +42,6 @@ export class OsdsBreadcrumb implements OdsBreadcrumb<OdsStencilMethods<OdsBreadc
   onCollapsedClick(ev: CustomEvent) {
     const items = this.getBreadcrumbItems();
     const collapsedBreadcrumbs = items.filter((item: any) => item?.collapsed);
-
     this.collapsedClick.emit({ ...ev.detail, collapsedBreadcrumbs });
   }
   @Watch('maxItems')
@@ -59,7 +58,6 @@ export class OsdsBreadcrumb implements OdsBreadcrumb<OdsStencilMethods<OdsBreadc
 
   private breadcrumbInit = () => {
     const items = this.getBreadcrumbItems();
-
     this.setMaxItems(items);
   };
 
@@ -75,17 +73,13 @@ export class OsdsBreadcrumb implements OdsBreadcrumb<OdsStencilMethods<OdsBreadc
 
   private setMaxItems = (items: any) => {
     if (items.length > 4) {
-      items[0].salut = 'toto';
       items[(items.length - 1) / 2].showCollapsedIndicator = true;
-      const toto = items.map((item: any, index: any) => {
-        /*  if (index !== 0 || index !== items.length - 1) {
-          item.displayed = false;
-        } */
-        item.displayed = 'toto';
+      items.map((item: any, index: any) => {
+        if (index !== 0 && (index !== items.length - 1)) {
+            item.displayed = false;
+        }
         return item;
       });
-      console.log('toto', toto);
-      console.log(items, 'items');
     }
   };
 

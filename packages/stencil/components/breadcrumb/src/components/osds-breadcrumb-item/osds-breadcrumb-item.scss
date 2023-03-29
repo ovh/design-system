@@ -14,6 +14,21 @@
 :host([attribute]) {
 }
 
+:host([displayed]) {
+  // background-color: pink !important;
+  display: inline-block;
+}
+:host([show-collapsed-indicator]) {
+  //background-color: yellow !important;
+  display: inline-block;
+}
+
+:host {
+  display: none;
+  overflow: hidden;
+}
+
+
 // apply the theme template for the component
 @include ods-theme-component() {
   @include osds-breadcrumb-item-theme-color();

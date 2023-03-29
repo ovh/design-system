@@ -23,4 +23,5 @@ export * from './text/public-api';
 export * from './textarea/public-api';
 export * from './tile/public-api';
 export * from './toggle/public-api';
-export * from './breadcrumb/public-api';
+export * from './breadcrumb/breadcrumb/public-api';
+//export * from './breadcrumb/breadcrumb-item/public-api';

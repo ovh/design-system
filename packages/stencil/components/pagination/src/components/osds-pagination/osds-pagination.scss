@@ -26,7 +26,12 @@
   }
 
   .arrows {
-    padding: 0.5rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+
+    osds-icon {
+      margin-top: 0.2rem;
+    }
   }
 
   osds-button::part(button) {

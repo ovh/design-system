@@ -10,6 +10,7 @@ import {
   OdsIconSize,
   OdsIconName,
   OdsButtonSize,
+  OdsButtonVariant,
 } from '@ovhcloud/ods-core';
 import { HTMLStencilElement } from '@stencil/core/internal';
 import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libraries/stencil-core';
@@ -167,7 +168,7 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
           <ul>
             <li class="arrows">
               <osds-button
-                contrasted={true}
+                variant={OdsButtonVariant.ghost}
                 color={OdsThemeColorIntent.primary}
                 disabled={disabled ? true : this.pageindex == 1}
                 onKeyDown={(event: any) => {
@@ -191,7 +192,7 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
                     <li>
                       <osds-button
                         class={`${this.pageindex == page.id ? 'selectedpage' : ''}`}
-                        contrasted={this.pageindex == page.id ? false : true}
+                        variant={this.pageindex == page.id ? OdsButtonVariant.flat : OdsButtonVariant.ghost}
                         disabled={disabled ? true : false}
                         color={OdsThemeColorIntent.primary}
                         size={OdsButtonSize.sm}
@@ -216,7 +217,7 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
 
             <li class="arrows">
               <osds-button
-                contrasted={true}
+                variant={OdsButtonVariant.ghost}
                 color={OdsThemeColorIntent.primary}
                 disabled={disabled ? true : this.pageindex >= pageList.length}
                 onKeyDown={(event: any) => {

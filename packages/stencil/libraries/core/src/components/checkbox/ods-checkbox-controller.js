@@ -8,6 +8,7 @@ export class OdsCheckboxController extends OdsComponentController {
   constructor(component) {
     super(component);
     this.logger = new OdsLogger('OdsCheckboxController');
+    this.logger.log('OdsCheckboxController');
   }
   /**
    * detect the element to works with the checkbox and warn if not found.

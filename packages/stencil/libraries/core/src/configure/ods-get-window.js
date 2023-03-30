@@ -6,7 +6,7 @@ export function getOdsWindow() {
   if (typeof window !== "undefined") {
     const win = window;
     win.winId = win.winId ? win.winId : Date.now();
-    // console.log('want window id=', (win as any).winId, { setupId: win.ods?.setupId, config: win.ods?.config });
+    //console.log('want window id=', (win as any).winId, { setupId: win.ods?.setupId, config: win.ods?.config });
     return win;
   }
   return undefined;

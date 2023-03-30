@@ -1,4 +1,4 @@
-import { OdsThemeColorIntent } from '@ods/theming';
+import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 export const odsRangeDefaultAttributesDoc = {
   color: OdsThemeColorIntent.default,
   disabled: false,

@@ -1,6 +1,7 @@
 export * from './ods-input';
 export * from './ods-input-controller';
 export * from './ods-input-attributes';
+export * from './ods-input-behavior';
 export * from './ods-input-default-attributes';
 export * from './ods-input-events';
 export * from './ods-input-get-validity-state';

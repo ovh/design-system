@@ -1,5 +1,5 @@
 import { OdsTextAreaSize } from './ods-textarea-size';
-import { OdsThemeColorIntent } from '@ods/theming';
+import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 export const odsTextAreaDefaultAttributesDoc = {
   textAreaId: undefined,
   ariaLabel: null,

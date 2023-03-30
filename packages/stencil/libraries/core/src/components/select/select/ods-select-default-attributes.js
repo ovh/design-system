@@ -1,4 +1,4 @@
-import { OdsThemeColorIntent } from '@ods/theming';
+import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 import { OdsSelectSize } from './ods-select-size';
 // import { OdsSelectSize } from './ods-select-size';
 /**

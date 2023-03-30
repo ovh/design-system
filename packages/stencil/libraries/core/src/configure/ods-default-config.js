@@ -6,5 +6,8 @@ export const odsDefaultConfig = {
   logging: {
     active: false,
     color: true
+  },
+  asset: {
+    path: ''
   }
 };

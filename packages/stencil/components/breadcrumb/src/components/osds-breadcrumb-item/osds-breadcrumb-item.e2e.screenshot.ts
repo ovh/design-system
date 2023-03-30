@@ -1,26 +1,57 @@
 import { E2EElement, E2EPage, newE2EPage } from '@stencil/core/testing';
-import { OdsBreadcrumbItemAttributes, OdsComponentAttributes2StringAttributes, odsBreadcrumbItemDefaultAttributes } from '@ovhcloud/ods-core';
-import { OdsCreateAttributes, OdsStringAttributes2Str, odsBreadcrumbBaseAttributes } from '@ovhcloud/ods-testing';
+import { OdsBreadcrumbItemAttributes } from '@ovhcloud/ods-core';
 
 describe('e2e:osds-breadcrumb-item', () => {
   let page: E2EPage;
   let el: E2EElement;
 
-  async function setup({ attributes = {}, html = `` }: { attributes?: Partial<OdsBreadcrumbItemAttributes>; html?: string } = {}) {
-    const minimalAttributes: OdsBreadcrumbItemAttributes = OdsCreateAttributes(attributes, odsBreadcrumbBaseAttributes);
-    const stringAttributes = OdsComponentAttributes2StringAttributes<OdsBreadcrumbItemAttributes>(minimalAttributes, odsBreadcrumbItemDefaultAttributes);
-
+  async function setup({ onPage }: { attributes?: Partial<OdsBreadcrumbItemAttributes>; html?: string; onPage?: ({ page }: { page: E2EPage }) => void } = {}) {
     page = await newE2EPage();
+    onPage && onPage({ page });
     await page.setContent(`
-      <osds-breadcrumb-item ${OdsStringAttributes2Str(stringAttributes)}>
-        ${html}
-      </osds-breadcrumb-item>
+
+    <osds-breadcrumb-item>
+      <osds-link color="primary" href="home"> Home </osds-link>
+    </osds-breadcrumb-item>
+    <osds-breadcrumb-item><osds-link color="primary" href="web">Web</osds-link></osds-breadcrumb-item>
+    <osds-breadcrumb-item><osds-text>Domain</osds-text></osds-breadcrumb-item>
+  </osds-breadcrumb>
+  <osds-breadcrumb>
+  <osds-breadcrumb-item>
+    <osds-link color="primary" href="home"> Home </osds-link>
+  </osds-breadcrumb-item>
+  <osds-breadcrumb-item><osds-link color="primary" href="web">Web</osds-link></osds-breadcrumb-item>
+  <osds-breadcrumb-item><osds-link color="primary" href="Domains">Domains</osds-link></osds-breadcrumb-item>
+  <osds-breadcrumb-item><osds-link color="primary" href="Informations générales">General information</osds-link></osds-breadcrumb-item>
+  <osds-breadcrumb-item><osds-text>DNS zone</osds-text></osds-breadcrumb-item>
+
     `);
     await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
-    el = await page.find('osds-breadcrumb-item');
+    el = await page.find('osds-breadcrumb');
   }
-
+  const screenshotActions = [
+    {
+      actionDescription: 'no action',
+      action: () => {
+        // noop
+      },
+    },
+  ];
   describe('screenshots', () => {
-    // Screenshot testing
+    screenshotActions.forEach(({ actionDescription, action }) => {
+      it(actionDescription, async () => {
+        await setup({});
+        action();
+        await page.waitForChanges();
+
+        await page.evaluate(() => {
+          const element = document.querySelector('osds-breadcrumb-item') as HTMLElement;
+          return { width: element.clientWidth, height: element.clientHeight };
+        });
+        await page.setViewport({ width: 600, height: 600 });
+        const results = await page.compareScreenshot({ fullPage: false, omitBackground: true });
+        expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
+      });
+    });
   });
 });

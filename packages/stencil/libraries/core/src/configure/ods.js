@@ -2,6 +2,7 @@ import { OdsLogger } from '../logger/ods-logger';
 import { VERSION } from '../version';
 import { odsDefaultConfig } from './ods-default-config';
 import { OdsExternalLogger } from '../logger/ods-external-logger';
+import { getOdsWindow } from './ods-get-window';
 /**
  * Main class that controls ODS :
  * - manage / create this singleton
@@ -26,7 +27,7 @@ import { OdsExternalLogger } from '../logger/ods-external-logger';
  * import {
  *   OdsInitializedEvent,
  *   OdsInitializedEventName
- * } from '@ods/core';
+ * } from '@ovhcloud/ods-core';
  *
  * document.addEventListener(OdsInitializedEventName, (event) => {
  *   const evt = event as OdsInitializedEvent;
@@ -39,13 +40,13 @@ import { OdsExternalLogger } from '../logger/ods-external-logger';
  *
  * @example enable log on demand via typescript
  * ```typescript
- * import { Ods } from '@ods/core';
+ * import { Ods } from '@ovhcloud/ods-core';
  * Ods.instance().logging(true);
  * ```
  *
  * @example configure different element of `ODS`
  * ```typescript
- * import { Ods } from '@ods/core';
+ * import { Ods } from '@ovhcloud/ods-core';
  * const my translationCbk: OdsI18nHook = (key, values) => `${key} to be translated`;
  * Ods.instance()
  *   .logging(true)
@@ -54,7 +55,7 @@ import { OdsExternalLogger } from '../logger/ods-external-logger';
  *
  * @example use the embedded logger of `ODS` via typescript
  * ```typescript
- * import { Ods } from '@ods/core';
+ * import { Ods } from '@ovhcloud/ods-core';
  *
  * Ods.instance().logging(true);
  * const myLogger = new (Ods.instance().logger)('MY CONTEXT');
@@ -72,9 +73,16 @@ export class Ods {
     this.config = config;
     this.version = VERSION;
     this.genericLogger = new OdsLogger('ODS', 'OVHcloud Design System');
+    const winA = window;
+    // console.log('ici winA', (winA as any));
+    // console.log('ici winA', (winA as any).gg);
+    winA.gg = 'winA';
+    // console.log('ici winA', (winA as any).gg);
     this.config = config;
+    this.instanceId = Ods._instanceId++;
+    // console.log(`[Ods #${this.instanceId}]`, 'ods constructor');
     this.genericLogger.info('Hi! You are using OVHcloud Design System components, feel free to check out https://go/odsdoc/', {
-      id: Ods._instanceId++,
+      id: this.instanceId,
       version: this.version
     });
     const odsEvent = new CustomEvent("odsInitialized", {
@@ -100,7 +108,29 @@ export class Ods {
    * The singleton is retrieved if exist
    */
   static instance(config = odsDefaultConfig) {
-    this._instance = this._instance ? this._instance : new Ods(config);
+    var _a, _b;
+    // console.log('[Ods] static ods.instance');
+    // console.log('[Ods] static ods.instance', 'already set instance number: this._instance.instanceId', this._instance?.instanceId);
+    if (!this._instance) {
+      const win = getOdsWindow();
+      // check if an instance is already set through the window for the concerned version
+      // example: if we inserted ods twice in an application or if we inserted an independent package plus le bundled package, we are in this case
+      // console.log('[Ods] static ods.instance win.ods', win?.ods);
+      // console.log('[Ods] static ods.instance win.ods.config', win?.ods?.config);
+      if (((_a = win === null || win === void 0 ? void 0 : win.ods) === null || _a === void 0 ? void 0 : _a.versions) && ((_b = win === null || win === void 0 ? void 0 : win.ods) === null || _b === void 0 ? void 0 : _b.versions[VERSION])) {
+        // console.log('[Ods] static ods.instance already set in win', win.ods.versions[ VERSION ].instanceId);
+        this._instance = win.ods.versions[VERSION];
+      }
+      else {
+        // console.log('[Ods] static ods.instance create new instance');
+        // console.log('[Ods] static ods.instance', 'wanted config=', JSON.stringify(config));
+        this._instance = new Ods(config);
+        // console.log('[Ods] static ods.instance created with id=', this._instance.instanceId);
+      }
+    }
+    else {
+      // console.log('[Ods] static ods.instance', 'instance already set id=', this._instance.instanceId);
+    }
     return this._instance;
   }
   /**
@@ -114,6 +144,23 @@ export class Ods {
   }
   getI18n() {
     return this.i18nHook;
+  }
+  /**
+   * set the default asset path where to find the different assets of `ODS`.
+   * @param path - path like `my-ods-svg/`
+   */
+  assetPath(path) {
+    // console.log(`[Ods #${this.instanceId}].assetPath`, 'ods wanted path', path);
+    this.config.asset.path = path;
+    // console.log(`[Ods #${this.instanceId}].assetPath`, 'path set. this.config=', this.config);
+    return this;
+  }
+  /**
+   * get all the configuration of `ODS`
+   */
+  getConfig() {
+    // console.log(`[Ods #${this.instanceId}].getCOnfig`, 'this.config=', JSON.stringify(this.config));
+    return this.config;
   }
   /**
    * enable or not the logging for the `ODS` instance

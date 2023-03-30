@@ -1,6 +1,6 @@
 import { OdsComponentController } from '../ods-component-controller';
 import { OdsLogger } from './../../logger/ods-logger';
-import { OdsThemeColorIntent } from '@ods/theming';
+import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 import { OdsWarnComponentAttribute } from '../../logger/ods-warn-logger';
 /**
  * common controller logic for toggle component used by the different implementations.

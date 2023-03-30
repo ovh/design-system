@@ -1,3 +1,4 @@
+import { OdsComputedUtils } from '../../utils/computed/ods-computed-utils';
 import { OdsLogger } from '../../logger/ods-logger';
 export class OdsCartManagerService {
   constructor() {
@@ -12,20 +13,20 @@ export class OdsCartManagerService {
     this.logger.log(sections);
     const totalPriceItem = sections
       .map(section => section.item.price)
-      .reduce(OdsCartManagerService.sumReducer, 0);
+      .reduce(OdsComputedUtils.sumReducer, 0);
     const totalVatItem = sections
       .map(section => section.item.vat)
-      .reduce(OdsCartManagerService.sumReducer, 0);
+      .reduce(OdsComputedUtils.sumReducer, 0);
     const totalPriceOption = sections
       .map(section => section.options
       .map(option => option.price)
-      .reduce(OdsCartManagerService.sumReducer, 0))
-      .reduce(OdsCartManagerService.sumReducer, 0);
+      .reduce(OdsComputedUtils.sumReducer, 0))
+      .reduce(OdsComputedUtils.sumReducer, 0);
     const totalVatOption = sections
       .map(section => section.options
       .map(option => option.vat)
-      .reduce(OdsCartManagerService.sumReducer, 0))
-      .reduce(OdsCartManagerService.sumReducer, 0);
+      .reduce(OdsComputedUtils.sumReducer, 0))
+      .reduce(OdsComputedUtils.sumReducer, 0);
     this.logger.log('totalPriceItem', totalPriceItem);
     this.logger.log('totalVatItem', totalVatItem);
     this.logger.log('totalPriceOption', totalPriceOption);
@@ -47,8 +48,5 @@ export class OdsCartManagerService {
     const optionAsProduct = sections.filter((element) => element.options.some((el) => el.product === true)).length;
     this.logger.log('optionAsProduct', optionAsProduct);
     return itemAsProduct + optionAsProduct;
-  }
-  static sumReducer(acc, val) {
-    return acc + (val || 0);
   }
 }

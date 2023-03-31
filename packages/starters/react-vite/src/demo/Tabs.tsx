@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { OsdsTabs, OsdsTabBar, OsdsTabBarItem, OsdsTabPanel, OsdsLink } from '@ovhcloud/ods-stencil/components/react';
-import { useLocation, } from 'react-router-dom';
+import { useLocation, Link, Route, Routes, } from 'react-router-dom';
 
 const DefaultPanel: React.FC = () => <div>Default panel</div>;
 const ActivePanel: React.FC = () => <div>Active panel</div>;
@@ -15,6 +15,10 @@ const TabsUsage: React.FC = () => {
     setActivePanel('hover');
     setActivePanel2(location.pathname.substring(1));
   }, []);
+
+  useEffect(() => {
+    setActivePanel2(location.pathname.substring(1));
+  }, [location.pathname]);
 
   return (
     <div>
@@ -41,32 +45,22 @@ const TabsUsage: React.FC = () => {
         <OsdsTabs panelActive={panel2} tabsId="tabs-2">
           <OsdsTabBar slot="top">
             <OsdsTabBarItem panel="default">
-              <OsdsLink color="primary" href="/default">
-                Default
-              </OsdsLink>
+              <Link to="/default">Default</Link>
             </OsdsTabBarItem>
             <OsdsTabBarItem panel="hover">
-              <OsdsLink color="primary" href="/hover">
-                Hover
-              </OsdsLink>
+              <Link to="/hover">Hover</Link>
             </OsdsTabBarItem>
             <OsdsTabBarItem panel="active">
-              <OsdsLink color="primary" href="/active">
-                Active
-              </OsdsLink>
+              <Link to="/active">Active</Link>
             </OsdsTabBarItem>
           </OsdsTabBar>
-          <OsdsTabPanel name="default">
-            <DefaultPanel/>
-          </OsdsTabPanel>
-          <OsdsTabPanel name="hover">
-            <ActivePanel/>
-          </OsdsTabPanel>
-          <OsdsTabPanel name="active">
-            <HoverPanel/>
-          </OsdsTabPanel>
         </OsdsTabs>
       </div>
+      <Routes>
+          <Route path="/default" element={<DefaultPanel/>} />
+          <Route path="/active" element={<ActivePanel/>} />
+          <Route path="/hover" element={<HoverPanel/>} />
+      </Routes>
     </div>
   );
 };

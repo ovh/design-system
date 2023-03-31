@@ -44,7 +44,7 @@ function handleMyButtonClick() {
 const Demo: React.FC = () => (
   <div className={'ods-demo'}>
     <h3 className={'ods-subheading-200'}>ODS React components</h3>
-    {/* <h5>Ods Button</h5>
+    <h5>Ods Button</h5>
     <div>
       <OsdsButton color={OdsThemeColorIntent.primary} onClick={handleOdsButtonClick} flex>ODS button</OsdsButton>
       <MyButton flex={true} onClick={handleMyButtonClick}>My React Button based on ODS</MyButton>
@@ -91,7 +91,7 @@ const Demo: React.FC = () => (
     <CartUsage></CartUsage>
 
     <h5>Ods CartManager</h5>
-    <CartManagerUsage></CartManagerUsage> */}
+    <CartManagerUsage></CartManagerUsage>
 
     <h5>Ods Tabs Usage</h5>
     <TabsUsage/>

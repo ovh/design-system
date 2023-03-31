@@ -1,14 +1,7 @@
-import { Component, h, Prop, Element, Host,
-  Listen, Method,
-  State, Event, EventEmitter, Watch } from '@stencil/core';
+import { Component, h, Prop, Element, Host, Listen, Method, State, Event, EventEmitter, Watch } from '@stencil/core';
 import { HTMLStencilElement } from '@stencil/core/internal';
-import { OdsTabs, OdsTabsEvents, OdsTabPanelClickEvent,
-  OdsTabItemClickEvent,
-  OdsTabsSize, OdsTabsMethods, OdsTabsController, odsTabsDefaultAttributes } from '@ovhcloud/ods-core';
+import { OdsTabs, OdsTabsEvents, OdsTabPanelClickEvent, OdsTabItemClickEvent, OdsTabsSize, OdsTabsMethods, OdsTabsController, odsTabsDefaultAttributes } from '@ovhcloud/ods-core';
 import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libraries/stencil-core';
-
-//import { HTMLStencilElement } from '@stencil/core/internal';
-//import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 
 /**
  * @slot start - Fixed start Tabs content
@@ -72,6 +65,11 @@ export class OsdsTabs implements OdsTabs<OdsStencilMethods<OdsTabsMethods>, OdsS
 
   @Watch('panelNameIndex')
   handleWatchPanelNameIndex(value: CustomEvent<OdsTabPanelClickEvent>) {
+    this.emitChange(value)
+  }
+
+  @Watch('panelActive')
+  handleWatchPanelActive(value: string) {
     this.emitChange(value)
   }
 

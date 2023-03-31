@@ -21,7 +21,7 @@ import { Ods, OdsCheckboxButtonSize, OdsExternalLogger, OdsMessageType, ODS_COUN
 // each theming related type you use, you will need to import the theming
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 
-
+import TabsUsage from './Tabs';
 import CartManagerUsage from './CartManagerUsage';
 import CartUsage from './CartUsage';
 import MyButton from './MyButton';
@@ -92,6 +92,9 @@ const Demo: React.FC = () => (
 
     <h5>Ods CartManager</h5>
     <CartManagerUsage></CartManagerUsage>
+
+    <h5>Ods Tabs Usage</h5>
+    <TabsUsage/>
   </div>
 );
 

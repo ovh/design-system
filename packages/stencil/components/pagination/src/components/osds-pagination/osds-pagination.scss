@@ -22,7 +22,8 @@
   }
 
   .ellipsis, .disabled {
-    cursor: not-allowed;
+    cursor: not-allowed !important;
+    pointer-events: auto;
   }
 
   .arrows {

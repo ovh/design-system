@@ -37782,7 +37782,16 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"yauzl@npm:^2.10.0":
+"yarn-global@npm:^1.1.0":
+  version: 1.2.0
+  resolution: "yarn-global@npm:1.2.0"
+  dependencies:
+    user-home: ^2.0.0
+  checksum: b72a9e4fd56967c0cb69d3d8f534164e0d1c53437935a2118267e8af4d467422042e2716c874118af87e53c14c2ae1f1255a2f27d205537ef77c9af66676ad2b
+  languageName: node
+  linkType: hard
+
+"yauzl@npm:^2.10.0, yauzl@npm:^2.4.2":
   version: 2.10.0
   resolution: "yauzl@npm:2.10.0"
   dependencies:

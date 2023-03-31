@@ -11,6 +11,7 @@ import {
   OdsIconName,
   OdsButtonSize,
   OdsButtonVariant,
+  OdsTextSize,
 } from '@ovhcloud/ods-core';
 import { HTMLStencilElement } from '@stencil/core/internal';
 import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libraries/stencil-core';
@@ -179,7 +180,7 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
                 }}
                 size={OdsButtonSize.sm}
               >
-                <osds-icon size={OdsIconSize.sm} name={OdsIconName.CHEVRON_LEFT} color={OdsThemeColorIntent.primary}></osds-icon>
+                <osds-icon size={OdsIconSize.sm} name={OdsIconName.CHEVRON_LEFT} color={OdsThemeColorIntent.primary} class={this.pageindex == 1 ? 'disabled' : ''}></osds-icon>
               </osds-button>
             </li>
             {pageList.map(page => {
@@ -187,7 +188,13 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
                 return (
                   <span>
                     {pageList.length > 6 && pageList.length - this.pageindex > 3 && page.id == pageList.length && (
-                      <osds-icon size={OdsIconSize.sm} color={OdsThemeColorIntent.primary} name={OdsIconName.ELLIPSIS} class="ellipsis"></osds-icon>
+                      <li>
+                        <osds-button disabled={true} variant={OdsButtonVariant.ghost}>
+                          <osds-text size={OdsTextSize._500} color={OdsThemeColorIntent.primary} class="disabled">
+                            &#8230;
+                          </osds-text>
+                        </osds-button>
+                      </li>
                     )}
                     <li>
                       <osds-button
@@ -208,7 +215,11 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
                     </li>
                     {pageList.length > 6 && this.pageindex > 4 && page.id == 1 && (
                       <li>
-                        <osds-icon size={OdsIconSize.sm} color={OdsThemeColorIntent.text} name={OdsIconName.ELLIPSIS} class="ellipsis"></osds-icon>
+                        <osds-button disabled={true} variant={OdsButtonVariant.ghost}>
+                          <osds-text size={OdsTextSize._500} color={OdsThemeColorIntent.primary} class="disabled">
+                            &#8230;
+                          </osds-text>
+                        </osds-button>
                       </li>
                     )}
                   </span>
@@ -228,7 +239,12 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
                 }}
                 size={OdsButtonSize.sm}
               >
-                <osds-icon size={OdsIconSize.sm} name={OdsIconName.CHEVRON_RIGHT} color={OdsThemeColorIntent.primary}></osds-icon>
+                <osds-icon
+                  size={OdsIconSize.sm}
+                  name={OdsIconName.CHEVRON_RIGHT}
+                  color={OdsThemeColorIntent.primary}
+                  class={this.pageindex >= pageList.length ? 'disabled' : ''}
+                ></osds-icon>
               </osds-button>
             </li>
           </ul>

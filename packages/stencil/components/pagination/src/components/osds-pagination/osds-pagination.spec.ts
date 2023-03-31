@@ -79,7 +79,7 @@ describe('spec:osds-pagination', () => {
     it('should generate the correct page list', async () => {
       await setup({ attributes: { disabled: false, current: 2, totalPages: 9 } });
       const pageList = instance.createPageList(instance.totalPages);
-      //console.log('### Pagelist : ', pageList);
+
       expect(pageList).toHaveLength(9);
       expect(pageList[0].id).toEqual(1);
       expect(pageList[1].id).toEqual(2);
@@ -95,7 +95,7 @@ describe('spec:osds-pagination', () => {
     it('should display the correct page list following to the current page 5', async () => {
       await setup({ attributes: { disabled: false, current: 5, totalPages: 9 } });
       const pageList = instance.createPageList(instance.totalPages);
-      console.log('### Pagelist : ', pageList);
+
       expect(pageList).toHaveLength(9);
       expect(pageList[0].active).toBeTruthy();
       expect(pageList[1].active).toBeFalsy();
@@ -111,6 +111,7 @@ describe('spec:osds-pagination', () => {
     it('should display the correct page list following to the current page 2', async () => {
       await setup({ attributes: { disabled: false, current: 2, totalPages: 9 } });
       const pageList = instance.createPageList(instance.totalPages);
+
       expect(pageList).toHaveLength(9);
       expect(pageList[0].active).toBeTruthy();
       expect(pageList[1].active).toBeTruthy();

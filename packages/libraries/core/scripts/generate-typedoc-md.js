@@ -29,6 +29,7 @@ const components = [
   'OdsLink',
   'OdsLocationTile',
   'OdsMessage',
+  'OdsPagination',
   'OdsQuantity',
   'OdsRadio',
   'OdsRadioButton',

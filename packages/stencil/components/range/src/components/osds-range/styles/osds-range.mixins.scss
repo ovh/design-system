@@ -29,3 +29,56 @@
     @content;
   }
 }
+
+@mixin track-color($color) {
+  &::-moz-range-track {
+    background: $color;
+  }
+  &::-webkit-slider-runnable-track {
+    background: $color;
+  }
+  &::-ms-track {
+    background: $color;
+  }
+}
+
+@mixin thumb-color($background, $border, $hover-color){
+  &::-moz-range-thumb {
+    background-color: $background;
+    border-color: $border;
+
+    &:hover {
+      background-color: $hover-color;
+    }
+
+    &:active {
+      background-color: $border;
+    }
+  }
+
+  &::-webkit-slider-thumb {
+    background-color: $background;
+    border-color: $border;
+
+    &:hover {
+      background-color: $hover-color;
+    }
+
+    &:active {
+      background-color: $border;
+    }
+  }
+
+  &::-ms-thumb {
+    background-color: $background;
+    border-color: $border;
+
+    &:hover {
+      background-color: $hover-color;
+    }
+
+    &:active {
+      background-color: $border;
+    }
+  }
+}

@@ -26,7 +26,7 @@ import { OdsExternalLogger } from '../logger/ods-external-logger';
  * import {
  *   OdsInitializedEvent,
  *   OdsInitializedEventName
- * } from '@ovhcloud/ods-core';
+ * } from '@ods/core';
  *
  * document.addEventListener(OdsInitializedEventName, (event) => {
  *   const evt = event as OdsInitializedEvent;

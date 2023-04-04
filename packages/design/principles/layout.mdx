@@ -1,42 +1,41 @@
+<div style={{
+    position: 'absolute',
+    inset: '5em'
+}}>
+
 # Layout
 
 ## Spacing
-export const spacingItem = {
-    display: 'flex',
-    height: '1rem',
-    backgroundColor: 'var(--ods-color-blue-500)',
-};
+| ID     | Token                                          | EM                      | PX                  | Preview                                                                                    | Comments |
+|--------|------------------------------------------------|-------------------------|---------------------|--------------------------------------------------------------------------------------------|----------|
+| `000`  | <small>`--ods-blue-jeans-spacing-000`</small>  | <small>`0`</small>      | <small>`0`</small>  | <div style={{width:'0em',height:'1.6em',background:'hsl(234.6, 100%, 30.6%)'}}></div>      |          |
+| `100`  | <small>`--ods-blue-jeans-spacing-100`</small>  | <small>`0.0625`</small> | <small>`1`</small>  | <div style={{width:'0.0625em',height:'1.6em',background:'hsl(234.6, 100%, 30.6%)'}}></div> |          |
+| `200`  | <small>`--ods-blue-jeans-spacing-200`</small>  | <small>`0.125`</small>  | <small>`2`</small>  | <div style={{width:'0.125em',height:'1.6em',background:'hsl(234.6, 100%, 30.6%)'}}></div>  |          |
+| `300`  | <small>`--ods-blue-jeans-spacing-300`</small>  | <small>`0.25`</small>   | <small>`4`</small>  | <div style={{width:'0.25em',height:'1.6em',background:'hsl(234.6, 100%, 30.6%)'}}></div>   |          |
+| `400`  | <small>`--ods-blue-jeans-spacing-400`</small>  | <small>`0.5`</small>    | <small>`8`</small>  | <div style={{width:'0.5em',height:'1.6em',background:'hsl(234.6, 100%, 30.6%)'}}></div>    |          |
+| `500`  | <small>`--ods-blue-jeans-spacing-500`</small>  | <small>`0.75`</small>   | <small>`12`</small> | <div style={{width:'0.75em',height:'1.6em',background:'hsl(234.6, 100%, 30.6%)'}}></div>   |          |
+| `600`  | <small>`--ods-blue-jeans-spacing-600`</small>  | <small>`1`</small>      | <small>`16`</small> | <div style={{width:'1em',height:'1.6em',background:'hsl(234.6, 100%, 30.6%)'}}></div>      |          |
+| `700`  | <small>`--ods-blue-jeans-spacing-700`</small>  | <small>`1.25`</small>   | <small>`20`</small> | <div style={{width:'1.25em',height:'1.6em',background:'hsl(234.6, 100%, 30.6%)'}}></div>   |          |
+| `800`  | <small>`--ods-blue-jeans-spacing-800`</small>  | <small>`1.5`</small>    | <small>`24`</small> | <div style={{width:'1.5em',height:'1.6em',background:'hsl(234.6, 100%, 30.6%)'}}></div>    |          |
+| `900`  | <small>`--ods-blue-jeans-spacing-900`</small>  | <small>`2`</small>      | <small>`32`</small> | <div style={{width:'2em',height:'1.6em',background:'hsl(234.6, 100%, 30.6%)'}}></div>      |          |
+| `1000` | <small>`--ods-blue-jeans-spacing-1000`</small> | <small>`2.5`</small>    | <small>`40`</small> | <div style={{width:'2.5em',height:'1.6em',background:'hsl(234.6, 100%, 30.6%)'}}></div>    |          |
+| `1100` | <small>`--ods-blue-jeans-spacing-1100`</small> | <small>`3`</small>      | <small>`48`</small> | <div style={{width:'3em',height:'1.6em',background:'hsl(234.6, 100%, 30.6%)'}}></div>      |          |
 
-### Size baseline
-
-These 10 values are the baseline for the complete spacing system. All spacing concepts are inherited from the below
-list.
-
-| name    | size(rem) | size(px)   | preview                                                                     |
-|-- ---   | --------  | ---------- | -------                                                                     |
-| **4XS** | 0.063rem  | 1px        | <span style={Object.assign({}, spacingItem, { width: '0.063rem' })}></span> |
-| **3XS** | 0.125rem  | 2px        | <span style={Object.assign({}, spacingItem, { width: '0.125rem' })}></span> |
-| **2XS** | 0.25rem   | 4px        | <span style={Object.assign({}, spacingItem, { width: '0.25rem' })}></span>  |
-| **XS**  | 0.5rem    | 8px        | <span style={Object.assign({}, spacingItem, { width: '0.5rem' })}></span>   |
-| **SM**  | 0.75rem   | 12px       | <span style={Object.assign({}, spacingItem, { width: '0.75rem' })}></span>  |
-| **MD**  | 1rem      | 16px       | <span style={Object.assign({}, spacingItem, { width: '1rem' })}></span>     |
-| **LG**  | 1.25rem   | 20px       | <span style={Object.assign({}, spacingItem, { width: '1.25rem' })}></span>  |
-| **XL**  | 1.5rem    | 24px       | <span style={Object.assign({}, spacingItem, { width: '1.5rem' })}></span>   |
-| **2XL** | 2rem      | 32px       | <span style={Object.assign({}, spacingItem, { width: '2rem' })}></span>     |
-| **3XL** | 2.5rem    | 40px       | <span style={Object.assign({}, spacingItem, { width: '2.5rem' })}></span>   |
-| **4XL** | 3rem      | 48px       | <span style={Object.assign({}, spacingItem, { width: '3rem' })}></span>     |
-
-All those sizes exists also as negative values (ex: `4XS` size has its negative value `-4XS`).
-
-## Grid
-_Every layout should sit on a grid that brings order and hierarchy to the interface. Define a grid separately for mobile, tablet and desktop devices with columns, gutters, and margins so your interface can adapt to any platform easily._
+## Border-radius
+| Size   | Token                                                | EM                    | PX                   | Preview                                                                                                                    | Comments   |
+|--------|------------------------------------------------------|-----------------------|----------------------|----------------------------------------------------------------------------------------------------------------------------|------------|
+| `100`  | <small>`--ods-blue-jeans-border-radius-100`</small>  | <small>`0.25`</small> | <small>`4`</small>   | <div style={{width:'5em',height:'1.6em',borderRadius:'0.25em ',margin:'auto',background:'hsl(234.6, 100%, 30.6%)'}}></div> |            |
+| `200`  | <small>`--ods-blue-jeans-border-radius-200`</small>  | <small>`0.5`</small>  | <small>`8`</small>   | <div style={{width:'5em',height:'1.6em',borderRadius:'0.5em ',margin:'auto',background:'hsl(234.6, 100%, 30.6%)'}}></div>  |            |
+| `300`  | <small>`--ods-blue-jeans-border-radius-300`</small>  | <small>`1`</small>    | <small>`16`</small>  | <div style={{width:'5em',height:'1.6em',borderRadius:'1em ',margin:'auto',background:'hsl(234.6, 100%, 30.6%)'}}></div>    |            |
+| `full` | <small>`--ods-blue-jeans-border-radius-full`</small> | <small>`50%`</small>  | <small>`50%`</small> | <div style={{width:'5em',height:'1.6em',borderRadius:'50% ',margin:'auto',background:'hsl(234.6, 100%, 30.6%)'}}></div>    | Round item |
 
 ## Breakpoints
+| Size  | Token                                            | EM                    | PX                    | Comments     |
+|-------|--------------------------------------------------|-----------------------|-----------------------|--------------|
+| `100` | <small>`--ods-blue-jeans-breakpoint-100`</small> | <small>`36`</small>   | <small>`576`</small>  | Mobile       |
+| `200` | <small>`--ods-blue-jeans-breakpoint-200`</small> | <small>`48`</small>   | <small>`768`</small>  | Tablet       |
+| `300` | <small>`--ods-blue-jeans-breakpoint-300`</small> | <small>`62`</small>   | <small>`992`</small>  | Desktop      |
+| `400` | <small>`--ods-blue-jeans-breakpoint-400`</small> | <small>`75`</small>   | <small>`1200`</small> | Large screen |
+| `500` | <small>`--ods-blue-jeans-breakpoint-500`</small> | <small>`87.5`</small> | <small>`1400`</small> | Widescreen   |
 
-| name             | purpose                                                           | size(rem) | size(px)   |
-|-- -------------- | ----------------------------------------------------------------- | --------  | ---------- |
-| `--ods-mq-sm`    | For small viewports as mobile devices (in portrait)               | 36rem     | 576px      |
-| `--ods-mq-md`    | For smartphones (in landscape) or tablet (in portrait) viewports  | 48rem     | 768px      |
-| `--ods-mq-lg`    | For small desktops or tablets (in landscape) viewports            | 62rem     | 992px      |
-| `--ods-mq-xl`    | For desktops viewports                                            | 75rem     | 1200px     |
-| `--ods-mq-xxl`   | For widescreen desktops
+</div>

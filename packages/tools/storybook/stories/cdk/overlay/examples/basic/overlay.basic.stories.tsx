@@ -66,7 +66,7 @@ const storyParams = {
 const typescriptFile = require(`!!raw-loader!@ovhcloud/ods-cdk/doc/overlay/examples/basic/overlay.basic.ts`).default;
 const htmlFile = require(`!!raw-loader!@ovhcloud/ods-cdk/doc/overlay/examples/basic/overlay.basic.html`).default;
 export default {
-  title: 'CDK/Overlay/examples/Basic',
+  title: 'Libraries/CDK/Overlay/examples/Basic',
   parameters: {
     docs: { page },
     controls: { expanded: true },

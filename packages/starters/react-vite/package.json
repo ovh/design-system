@@ -34,7 +34,6 @@
     "registry": ""
   },
   "resolutions": {
-    "ua-parser-js": "0.7.18",
-    "@types/react": "^18.0.17"
+    "ua-parser-js": "0.7.18"
   }
 }

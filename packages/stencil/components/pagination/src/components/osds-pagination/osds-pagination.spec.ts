@@ -97,6 +97,7 @@ describe('spec:osds-pagination', () => {
       const pageList = instance.createPageList(instance.totalPages);
 
       expect(pageList).toHaveLength(9);
+      expect(instance.current).toBe(5);
       expect(pageList[0].active).toBeTruthy();
       expect(pageList[1].active).toBeFalsy();
       expect(pageList[2].active).toBeFalsy();
@@ -113,6 +114,7 @@ describe('spec:osds-pagination', () => {
       const pageList = instance.createPageList(instance.totalPages);
 
       expect(pageList).toHaveLength(9);
+      expect(instance.current).toBe(2);
       expect(pageList[0].active).toBeTruthy();
       expect(pageList[1].active).toBeTruthy();
       expect(pageList[2].active).toBeTruthy();

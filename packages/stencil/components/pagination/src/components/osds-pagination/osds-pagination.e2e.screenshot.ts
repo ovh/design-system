@@ -1,48 +1,53 @@
 import { E2EElement, E2EPage, newE2EPage } from '@stencil/core/testing';
-
-import { OdsPaginationAttributes } from '@ovhcloud/ods-core';
+import { OdsPaginationAttributes, odsPaginationDefaultAttributes, OdsComponentAttributes2StringAttributes } from '@ovhcloud/ods-core';
+import { OdsCreateAttributes, OdsStringAttributes2Str, odsPaginationBaseAttributes } from '@ovhcloud/ods-testing';
 
 describe('e2e:osds-pagination', () => {
   let page: E2EPage;
   let el: E2EElement;
 
-  async function setup({ onPage }: { attributes?: Partial<OdsPaginationAttributes>; html?: string; onPage?: ({ page }: { page: E2EPage }) => void } = {}) {
+  async function setup({ attributes = { totalPages: 21, current: 5 }, html = `` }: { attributes?: Partial<OdsPaginationAttributes>; html?: string } = {}) {
+    const minimalAttributes: OdsPaginationAttributes = OdsCreateAttributes(attributes, odsPaginationBaseAttributes);
+    const stringAttributes = OdsComponentAttributes2StringAttributes<OdsPaginationAttributes>(minimalAttributes, odsPaginationDefaultAttributes);
+
     page = await newE2EPage();
-    onPage && onPage({ page });
-
     await page.setContent(`
-      <osds-pagination current=5 total-pages=7></osds-pagination>
+      <osds-pagination ${OdsStringAttributes2Str(stringAttributes)}>
+        ${html}
+      </osds-pagination>
     `);
-    await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
-
+    await page.evaluate(() => document.body.style.setProperty('margin', '4px'));
     el = await page.find('osds-pagination');
   }
 
-  const screenshotActions = [
-    {
-      actionDescription: 'no action',
-      action: () => {
-        // noop
-      },
-    },
-  ];
+  describe('screenshots of totalPages of 21', () => {
+    for (let current = 1; current <= 21; current++) {
+      const screenshotActions = [
+        {
+          actionDescription: `page ${current} on 21`,
+          action: () => {},
+        },
+      ];
+      screenshotActions.forEach(({ actionDescription, action }) => {
+        it(actionDescription, async () => {
+          await setup({
+            attributes: {
+              current,
+              totalPages: 21,
+            },
+          });
+          action();
+          await page.waitForChanges();
 
-  describe('screenshots', () => {
-    // Todo : add active behaviour on top of hover and focus
-    screenshotActions.forEach(({ actionDescription, action }) => {
-      it(actionDescription, async () => {
-        await setup({});
-        action();
-        await page.waitForChanges();
-
-        await page.evaluate(() => {
-          const element = document.querySelector('osds-pagination') as HTMLElement;
-          return { width: element.clientWidth, height: element.clientHeight };
+          await page.evaluate(() => {
+            const element = document.querySelector('osds-pagination') as HTMLElement;
+            return { width: element.clientWidth, height: element.clientHeight };
+          });
+          await page.setViewport({ width: 600, height: 600 });
+          const results = await page.compareScreenshot('pagination', { fullPage: false, omitBackground: true });
+          expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
         });
-        await page.setViewport({ width: 600, height: 600 });
-        const results = await page.compareScreenshot('select', { fullPage: false, omitBackground: true });
-        expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
       });
-    });
+    }
   });
 });

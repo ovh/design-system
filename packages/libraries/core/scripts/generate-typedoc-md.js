@@ -36,6 +36,7 @@ const components = [
   'OdsRange',
   'OdsSelect',
   'OdsSkeleton',
+  'OdsTabs',
   'OdsText',
   'OdsTextarea',
   'OdsTile',

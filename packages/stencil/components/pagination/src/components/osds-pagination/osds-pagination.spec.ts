@@ -63,9 +63,14 @@ describe('spec:osds-pagination', () => {
   });
 
   describe('disabled', () => {
-    it('should disabled attributes is falsy', async () => {
-      await setup({ attributes: { disabled: false, current: 2, totalPages: 10 } });
+    it('should disabled attributes is falsy by default', async () => {
+      await setup({ attributes: { current: 2, totalPages: 10 } });
       expect(page.root?.disabled).toBeFalsy();
+    });
+
+    it('should disabled attributes is true', async () => {
+      await setup({ attributes: { disabled: true, current: 2, totalPages: 10 } });
+      expect(page.root?.disabled).toBeDefined();
     });
   });
 

@@ -5,6 +5,17 @@
   osds-button::part(button) {
     width: 2.25rem;
     height: 2.25rem;
+    border-radius: var(--ods-size-border-radius-01);  
     padding: 0;
+  }
+
+
+  .arrows {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+
+    osds-icon {
+      vertical-align: middle;
+    }
   }
 }

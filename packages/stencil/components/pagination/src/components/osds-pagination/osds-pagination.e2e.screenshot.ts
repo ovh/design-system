@@ -50,4 +50,36 @@ describe('e2e:osds-pagination', () => {
       });
     }
   });
+
+  describe('screenshots of totalPages of 21 and disabled', () => {
+    for (let current = 1; current <= 21; current++) {
+      const screenshotActions = [
+        {
+          actionDescription: `page ${current} on 21 and disabled`,
+          action: () => {},
+        },
+      ];
+      screenshotActions.forEach(({ actionDescription, action }) => {
+        it(actionDescription, async () => {
+          await setup({
+            attributes: {
+              current,
+              totalPages: 21,
+              disabled: true,
+            },
+          });
+          action();
+          await page.waitForChanges();
+
+          await page.evaluate(() => {
+            const element = document.querySelector('osds-pagination') as HTMLElement;
+            return { width: element.clientWidth, height: element.clientHeight };
+          });
+          await page.setViewport({ width: 600, height: 600 });
+          const results = await page.compareScreenshot('pagination', { fullPage: false, omitBackground: true });
+          expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
+        });
+      });
+    }
+  });
 });

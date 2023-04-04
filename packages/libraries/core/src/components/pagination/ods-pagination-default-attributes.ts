@@ -2,7 +2,7 @@
 import { OdsPaginationAttributes } from './ods-pagination-attributes';
 
 /**
- * default attribute values of select
+ * default attribute values of pagination
  */
 export const odsPaginationDefaultAttributesDoc: OdsPaginationAttributes = {
   disabled: false,

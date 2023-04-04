@@ -5,5 +5,5 @@
 
 import { OdsLogger } from '@ovhcloud/ods-core';
 
-const logger = new OdsLogger('select.global');
+const logger = new OdsLogger('pagination.global');
 logger.log('init');

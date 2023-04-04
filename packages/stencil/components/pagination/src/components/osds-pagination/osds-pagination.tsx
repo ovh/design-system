@@ -32,7 +32,7 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
   @Element() el!: HTMLStencilElement;
 
   /**
-   * The current selecte page
+   * The current selected page
    * @internal
    */
   @State() pageindex: number = 0;

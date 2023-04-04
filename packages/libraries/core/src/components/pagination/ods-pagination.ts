@@ -7,7 +7,7 @@ import { OdsPaginationAttributes } from './ods-pagination-attributes';
 import { OdsPaginationController } from './ods-pagination-controller';
 
 /**
- * interface description of all implementation of `ods-select-option`.
+ * interface description of all implementation of `ods-pagination`.
  * each implementation must have defined events, methods, attributes
  * and one controller for the common behavior logic
  */

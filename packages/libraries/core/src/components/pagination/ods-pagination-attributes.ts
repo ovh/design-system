@@ -2,7 +2,7 @@ import { OdsComponentAttributes } from '../ods-component-attributes';
 
 export interface OdsPaginationAttributes extends OdsComponentAttributes {
   /**
-   * indicates if the select is entirely disabled.
+   * indicates if the pagination is entirely disabled.
    * it means no interactions (hover, click, focus, etc)
    */
   disabled: boolean;

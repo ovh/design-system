@@ -22,22 +22,10 @@
   }
 
   .ellipsis, .disabled {
-    cursor: not-allowed !important;
+    cursor: not-allowed;
     pointer-events: auto;
   }
 
-  .arrows {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-
-    osds-icon {
-      margin-top: 0.2rem;
-    }
-  }
-
-  osds-button::part(button) {
-    border-radius: 4px 4px 4px 4px;  
-  }
 }
 
 :not([disabled]):focus-visible {
@@ -50,11 +38,11 @@
 
 :host([disabled]) {
   opacity: 0.5;
-  cursor: not-allowed !important;
+  cursor: not-allowed;
 }
 
 :host([disabled]) osds-button::part(button) {
-  cursor: not-allowed !important;
+  cursor: not-allowed;
 }
 
 // apply the theme template for the component

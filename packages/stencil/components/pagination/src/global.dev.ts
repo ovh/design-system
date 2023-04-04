@@ -14,7 +14,7 @@ import '@ovhcloud/ods-stencil/components/text';
 const logger = new OdsLogger('global-dev');
 logger.log('init');
 
-/* wait for the select to be initialized as web component */
+/* wait for the pagination to be initialized as web component */
 (async () => {
   await customElements.whenDefined('osds-pagination');
 })();

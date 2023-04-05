@@ -123,4 +123,70 @@ describe('e2e:osds-pagination', () => {
       expect(linkList.length).toBe(9);
     });
   });
+
+  describe('should change page if we click', () => {
+    it('pageindex from 1 to 4 by button click', async () => {
+      await setup({ attributes: { current: 2, totalPages: 5 } });
+
+      const linkList = await page.findAll('osds-pagination >>> li');
+
+      const indexBeforeClick = Number(el.getAttribute('pageindex'));
+      expect(indexBeforeClick).toEqual(2);
+
+      await linkList[1].click();
+
+      await page.waitForChanges();
+
+      const pageindex = Number(el.getAttribute('pageindex'));
+      expect(pageindex).toEqual(1);
+    });
+
+    it('pageindex from 2 to 3 by button click', async () => {
+      await setup({ attributes: { current: 2, totalPages: 5 } });
+
+      const linkList = await page.findAll('osds-pagination >>> li');
+
+      const indexBeforeClick = Number(el.getAttribute('pageindex'));
+      expect(indexBeforeClick).toEqual(2);
+
+      await linkList[3].click();
+
+      await page.waitForChanges();
+
+      const pageindex = Number(el.getAttribute('pageindex'));
+      expect(pageindex).toEqual(3);
+    });
+
+    it('pageindex from 2 to 4 by button click', async () => {
+      await setup({ attributes: { current: 2, totalPages: 5 } });
+
+      const linkList = await page.findAll('osds-pagination >>> li');
+
+      const indexBeforeClick = Number(el.getAttribute('pageindex'));
+      expect(indexBeforeClick).toEqual(2);
+
+      await linkList[4].click();
+
+      await page.waitForChanges();
+
+      const pageindex = Number(el.getAttribute('pageindex'));
+      expect(pageindex).toEqual(4);
+    });
+
+    it('pageindex from 2 to 5 by button click', async () => {
+      await setup({ attributes: { current: 2, totalPages: 5 } });
+
+      const linkList = await page.findAll('osds-pagination >>> li');
+
+      const indexBeforeClick = Number(el.getAttribute('pageindex'));
+      expect(indexBeforeClick).toEqual(2);
+
+      await linkList[5].click();
+
+      await page.waitForChanges();
+
+      const pageindex = Number(el.getAttribute('pageindex'));
+      expect(pageindex).toEqual(5);
+    });
+  });
 });

@@ -51,4 +51,76 @@ describe('e2e:osds-pagination', () => {
       expect(osdsButtonPaginationPageButtonElement).not.toBeNull();
     });
   });
+
+  describe('check the pagination structure', () => {
+    it('< 1 > should have 3 li', async () => {
+      await setup({ attributes: { current: 1, totalPages: 1 } });
+
+      const linkList = await page.findAll('osds-pagination >>> li');
+      expect(linkList.length).toBe(3);
+    });
+
+    it('< 1 2 > should have 4 li', async () => {
+      await setup({ attributes: { current: 1, totalPages: 2 } });
+
+      const linkList = await page.findAll('osds-pagination >>> li');
+      expect(linkList.length).toBe(4);
+    });
+
+    it('< 1 2 3 > should have 5 li', async () => {
+      await setup({ attributes: { current: 1, totalPages: 3 } });
+
+      const linkList = await page.findAll('osds-pagination >>> li');
+      expect(linkList.length).toBe(5);
+    });
+
+    it('< 1 2 3 4 > should have 6 li', async () => {
+      await setup({ attributes: { current: 1, totalPages: 4 } });
+
+      const linkList = await page.findAll('osds-pagination >>> li');
+      expect(linkList.length).toBe(6);
+    });
+
+    it('< 1 2 3 4 5 > should have 7 li', async () => {
+      await setup({ attributes: { current: 1, totalPages: 5 } });
+
+      const linkList = await page.findAll('osds-pagination >>> li');
+      expect(linkList.length).toBe(7);
+    });
+
+    it('< 1 2 3 4 5 6 > should have 8 li', async () => {
+      await setup({ attributes: { current: 1, totalPages: 6 } });
+
+      const linkList = await page.findAll('osds-pagination >>> li');
+      expect(linkList.length).toBe(8);
+    });
+
+    it('< 1 2 3 4 5 … 7 > should have 8 li', async () => {
+      await setup({ attributes: { current: 1, totalPages: 7 } });
+
+      const linkList = await page.findAll('osds-pagination >>> li');
+      expect(linkList.length).toBe(9);
+    });
+
+    it('< 1 2 3 4 5 … 8 > should have 8 li', async () => {
+      await setup({ attributes: { current: 1, totalPages: 8 } });
+
+      const linkList = await page.findAll('osds-pagination >>> li');
+      expect(linkList.length).toBe(9);
+    });
+
+    it('< 1 … 4 5 6 … 21 > should have 9 li', async () => {
+      await setup({ attributes: { current: 5, totalPages: 21 } });
+
+      const linkList = await page.findAll('osds-pagination >>> li');
+      expect(linkList.length).toBe(9);
+    });
+
+    it('< 1 … 4 5 6 … 9000 > should have 9 li', async () => {
+      await setup({ attributes: { current: 5, totalPages: 9000 } });
+
+      const linkList = await page.findAll('osds-pagination >>> li');
+      expect(linkList.length).toBe(9);
+    });
+  });
 });

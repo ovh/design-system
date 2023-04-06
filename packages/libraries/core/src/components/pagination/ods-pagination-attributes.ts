@@ -9,13 +9,13 @@ export interface OdsPaginationAttributes extends OdsComponentAttributes {
   /**
    * Its corresponding default current page. If no current page, it will be this page selected by default.
    */
-  defaultCurrent?: any;
+  defaultCurrent?: number;
   /**
    * Its corresponding current page.
    */
-  current: any;
+  current: number;
   /**
    * The total amount of pages
    */
-  totalPages: any;
+  totalPages: number;
 }

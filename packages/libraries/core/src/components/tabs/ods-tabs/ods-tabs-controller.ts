@@ -10,8 +10,16 @@ export class OdsTabsController extends OdsComponentController<OdsTabs> {
     super(component);
   }
 
-  /**
-   * mandatory function
-   */
-  afterInit(): void {}
+
+  afterInit() {
+    this.changeActivePanel(this.component.panel);
+  }
+
+  changeActivePanel(panel: string) {
+    this.component.getTabItems().forEach(item => item.active = item.panel === panel);
+    this.component.getTabPanels().forEach(tabPanel => tabPanel.active = tabPanel.name === panel);
+    this.component.panel = panel;
+    this.component.emitChanged();
+  }
+
 }

@@ -1,1 +1,1 @@
-export type OdsPanelValue = string | number | null;
+export type OdsPanelValue = string;

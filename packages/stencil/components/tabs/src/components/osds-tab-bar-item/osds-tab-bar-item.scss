@@ -1,52 +1,23 @@
 @import '~@ovhcloud/ods-theming/ods-theme';
-@import '../osds-tabs/styles/osds-tabs.typography.scss';
-@import './osds-tab-bar-item.mixin.scss';
+@import 'src/components/osds-tab-bar-item/styles/osds-tab-bar-item.typography';
+@import 'src/components/osds-tab-bar-item/styles/osds-tab-bar-item.mixin';
 @import '~@ovhcloud/ods-theming/ods-theme';
-@import '../osds-tab-bar-item/osds-tab-bar-item.color.scss';
+@import 'src/components/osds-tab-bar-item/styles/osds-tab-bar-item.color';
 
 :host {
-  .tabs-tab {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    outline: none;
-    cursor: pointer;
+  cursor: pointer;
+  white-space: nowrap;
 
-    div {
-      padding: 18px 16px 8px 16px;
-      margin: 0 0.5rem;
-    }
-
-    div:hover {
-      border-bottom-width: 2px;
-      border-bottom-style: solid;
-    }
-  }
+  padding: var(--ods-size-inset-04) var(--ods-size-inset-06);
+  margin: 0 var(--ods-size-inset-05);
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
 }
 
 :host([disabled]) {
-  .tabs-tab {
-    div {
-      cursor: not-allowed;        
-    }
-    div:hover {
-      border-bottom: none; 
-    }
-  }
-}  
+  cursor: not-allowed;
+}
 
-:host([active]) {
-  .tabs-tab {
-    div {
-      border-bottom-width: 2px;
-      border-bottom-style: solid;
-    }
-    div:hover {
-      border-bottom-width: 2px;
-      border-bottom-style: solid;
-    }
-  }
-}  
 
 // apply the theme template for the component
 @include ods-theme-component() {

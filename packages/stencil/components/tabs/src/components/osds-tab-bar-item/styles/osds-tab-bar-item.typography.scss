@@ -1,8 +1,7 @@
 @import '~@ovhcloud/ods-theming/typography/ods-component-typography';
 
 @mixin osds-tabs-theme-typography() {
-  /** typography properties */
-  .tabs-tab {
+  :host {
     font-family: var(--ods-font-family);
     font-size: var(--ods-typo-size-03);
     line-height: var(--ods-typo-size-04);

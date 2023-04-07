@@ -1,12 +1,22 @@
-import { Component, h, Prop, Element, Host, Listen, Method, State, Event, EventEmitter, Watch } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, Listen, Prop, Watch } from '@stencil/core';
 import { HTMLStencilElement } from '@stencil/core/internal';
-import { OdsTabs, OdsTabsEvents, OdsTabPanelClickEvent, OdsTabItemClickEvent, OdsTabsSize, OdsTabsMethods, OdsTabsController, odsTabsDefaultAttributes } from '@ovhcloud/ods-core';
+import {
+  OdsLogger,
+  OdsTabBarItem,
+  OdsTabItemSelectEventDetail,
+  OdsTabPanel,
+  OdsTabs,
+  OdsTabsChangeEventDetail,
+  OdsTabsController,
+  odsTabsDefaultAttributes,
+  OdsTabsEvents,
+  OdsTabsMethods,
+  OdsTabsSize,
+} from '@ovhcloud/ods-core';
 import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libraries/stencil-core';
 
 /**
- * @slot start - Fixed start Tabs content
- * @slot (unnamed) - Tabs content
- * @slot end - Fixed end Tabs content
+ * Main tabs component
  */
 @Component({
   tag: 'osds-tabs',
@@ -14,68 +24,68 @@ import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libra
   shadow: true,
 })
 export class OsdsTabs implements OdsTabs<OdsStencilMethods<OdsTabsMethods>, OdsStencilEvents<OdsTabsEvents>> {
+  private logger = new OdsLogger('OsdsTabs');
+
   /** @see OdsComponent.controller */
   controller: OdsTabsController = new OdsTabsController(this as OdsTabs);
 
-  /** @see OdsTabsBehavior.hostElement */
-  @Element() hostElement!: HTMLStencilElement;
+  /** @see OdsTabsBehavior.el */
+  @Element() el!: HTMLStencilElement;
 
   /** @see OdsTabsAttributes.contrasted */
-  @Prop({ reflect: true }) public contrasted?: boolean | undefined = odsTabsDefaultAttributes.contrasted;
-  /** @see OdsTabsAttributes.panelActive */
-  @Prop({ reflect: true }) public panelActive?: string = odsTabsDefaultAttributes.panelActive;
-  /** @see OdsTabsAttributes.OdsTabsSize */
-  @Prop({ reflect: true }) size?: OdsTabsSize = odsTabsDefaultAttributes.size;
-  /** @see OdsTabsAttributes.tabsIds */
-  @Prop({ reflect: true }) tabsId?: string = odsTabsDefaultAttributes.tabsId;
+  @Prop({ reflect: true }) public contrasted: boolean = odsTabsDefaultAttributes.contrasted;
 
-  /** @see OdsTabsEvents.odsTabPanelClickEvent */
-  @Event({
-    bubbles: false,
-    composed: false,
-  }) private odsTabPanelClickEvent!: EventEmitter<OdsTabPanelClickEvent>;
-  
-  private emitChange(value: any) {
-    const event = this.odsTabPanelClickEvent.emit({ value, id: this.tabsId });
-    event.preventDefault()
-    event.stopPropagation()
+  /** @see OdsTabsAttributes.panel */
+  @Prop({ reflect: true, mutable: true }) public panel = odsTabsDefaultAttributes.panel;
+
+  /** @see OdsTabsAttributes.size */
+  @Prop({ reflect: true }) size: OdsTabsSize = odsTabsDefaultAttributes.size;
+
+  /** @see OdsTabsEvents.odsTabsChanged */
+  @Event() odsTabsChanged!: EventEmitter<OdsTabsChangeEventDetail>;
+
+  /**
+   * @see OdsTabsBehavior.handleTabItemSelection
+   */
+  @Listen('odsTabItemSelectEvent')
+  handleTabItemSelection(event: CustomEvent<OdsTabItemSelectEventDetail>) {
+    this.logger.log('[handleTabItemSelection]', { event });
+    this.controller.changeActivePanel(event.detail.panel);
   }
 
   /**
-   * The tabindex of the radio button.
-   * @internal
+   * send stencil event for ODS integrator
+   * @see OdsTabsBehavior.emitChanged
+   * @see OdsTabsController.changeActivePanel
    */
-  @State() panelNameIndex: any = '';
+  emitChanged() {
+    this.odsTabsChanged.emit({ panel: this.panel });
+  }
 
   /**
-   * @internal
-   * @see OdsSelectMethods.setInputTabindex
+   * retrieve tab items from the light DOM
+   * @see OdsTabsBehavior.getTabItems
+   * @see OdsTabsController.changeActivePanel
    */
-  @Method()
-  async setPanelNameIndex(value: string) {
-    this.panelNameIndex = value;
+  getTabItems() {
+    return Array.from(this.el.querySelectorAll<OdsTabBarItem & HTMLElement>('osds-tab-bar-item'));
   }
 
-  @Listen('odsTabItemClickEvent')
-  handleValueChange(event: CustomEvent<OdsTabItemClickEvent>) {
-    if (event.detail.value) {
-      this.panelNameIndex = event.detail.value;
-    }
+  /**
+   * retrieve tab panels from the light DOM
+   * @see OdsTabsBehavior.getTabPanels
+   * @see OdsTabsController.changeActivePanel
+   */
+  getTabPanels() {
+    return Array.from(this.el.querySelectorAll<OdsTabPanel & HTMLElement>('osds-tab-panel'));
   }
 
-  @Watch('panelNameIndex')
-  handleWatchPanelNameIndex(value: CustomEvent<OdsTabPanelClickEvent>) {
-    this.emitChange(value)
-  }
-
-  @Watch('panelActive')
-  handleWatchPanelActive(value: string) {
-    this.emitChange(value)
-  }
-
-  /** @see OdsButtonBehavior.beforeRender */
-  beforeRender(): void {
-    //this.controller.vadivdateAttributes();
+  /**
+   * when panel property changes, it will change the active panel
+   */
+  @Watch('panel')
+  onPanelPropChange(panel: string) {
+    this.controller.changeActivePanel(panel);
   }
 
   afterInit() {
@@ -83,30 +93,16 @@ export class OsdsTabs implements OdsTabs<OdsStencilMethods<OdsTabsMethods>, OdsS
   }
 
   componentDidLoad() {
-    (async () => {
-      this.afterInit();
-      if (this.panelActive) {
-        this.emitChange(this.panelActive)
-      }
-    })();
+    this.afterInit();
   }
 
   render() {
-    const { contrasted, } = this;
     return (
-      <Host {...{
-        onClick: (event : any) => {
-          if (event.target?.panel && !event.target?.disabled) {
-            this.emitChange(event.target?.panel)
-          }
-        }
-      }}>
-        <div class={`tabs ${contrasted ? `tabs-contrasted` : ``}`}>
-          <div class="tabs-nav-wrap">
-            <slot name="top" />
-          </div>
-          <slot/>
+      <Host>
+        <div class="tabs-nav-wrap">
+          <slot name='top' />
         </div>
+        <slot />
       </Host>
     );
   }

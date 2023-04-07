@@ -1,1 +1,1 @@
-export { OsdsTabBarItem } from './osdsTabBarItem';
+export { OsdsTabBarItem } from './osds-tab-bar-item';

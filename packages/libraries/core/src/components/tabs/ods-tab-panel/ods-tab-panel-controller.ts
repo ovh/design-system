@@ -9,9 +9,4 @@ export class OdsTabPanelController extends OdsComponentController<OdsTabPanel> {
   constructor(component: OdsTabPanel) {
     super(component);
   }
-
-  /**
-   * mandatory function
-   */
-  afterInit(): void {}
 }

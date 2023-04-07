@@ -1,3 +1,8 @@
-.tab-panel {
-    padding: 1rem;
+:host {
+  padding: var(--ods-size-inset-06);
+  display: block;
+}
+
+:host(:not([active])) {
+  display: none;
 }

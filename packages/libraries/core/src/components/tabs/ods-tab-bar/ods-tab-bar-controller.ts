@@ -9,9 +9,4 @@ export class OdsTabBarController extends OdsComponentController<OdsTabBar> {
   constructor(component: OdsTabBar) {
     super(component);
   }
-
-  /**
-   * mandatory function
-   */
-  afterInit(): void {}
 }

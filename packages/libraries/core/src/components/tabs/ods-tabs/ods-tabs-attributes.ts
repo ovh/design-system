@@ -5,17 +5,13 @@ export interface OdsTabsAttributes extends OdsComponentAttributes {
   /**
    * Tabs size
    */
-  size?: OdsTabsSize
+  size: OdsTabsSize;
   /**
-   * Tabs default panel
+   * Tabs active panel
    */
-  panelActive?: string
-  /**
-   * Tabs id
-   */
-  tabsId?: string
+  panel: string;
   /**
    * The tab is contrasted
    */
-  contrasted?: boolean | undefined
+  contrasted: boolean;
 }

@@ -1,6 +1,6 @@
 import { OdsClearLoggerSpy, OdsInitializeLoggerSpy, OdsLoggerSpyReferences } from '@ovhcloud/ods-testing/src';
 
-import { OsdsTabBarItem } from './osdsTabBarItem';
+import { OsdsTabBarItem } from './osds-tab-bar-item';
 import {
     OdsTabBarItemAttributes,
     OdsTabBarDefaultAttributes,
@@ -48,7 +48,7 @@ describe('spec:ods-tabs-controller', () => {
     divRoleTabSlot = page.root?.shadowRoot?.querySelector('div.tabs-tab slot');
     divTabsTabContrasted = page.root?.shadowRoot?.querySelector('[contrasted] div.tabs-tab');
     divTabsTabDisabled= page.root?.shadowRoot?.querySelector('[disabled] div.tabs-tab');
-    
+
   }
 
   it('should render', async () => {

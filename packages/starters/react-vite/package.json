@@ -32,8 +32,5 @@
   },
   "publishConfig": {
     "registry": ""
-  },
-  "resolutions": {
-    "ua-parser-js": "0.7.18"
   }
 }

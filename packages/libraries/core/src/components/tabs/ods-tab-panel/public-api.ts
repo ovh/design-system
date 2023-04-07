@@ -8,5 +8,5 @@ export * from './ods-tab-panel-events';
 export * from './ods-tab-panel-methods';
 
 export * from '../ods-panel-value';
-export * from '../ods-tab-item-click-event'
-export * from '../ods-tab-panel-click-event'
+export * from '../ods-tab-item-select-event-detail'
+export * from '../ods-tabs-change-event-detail'

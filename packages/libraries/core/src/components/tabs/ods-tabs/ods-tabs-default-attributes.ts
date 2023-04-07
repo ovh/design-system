@@ -8,8 +8,8 @@ import { OdsTabsSize, } from './ods-tabs-size';
  */
 export const odsTabsDefaultAttributesDoc = {
   size: OdsTabsSize.md,
-  tabsId: '',
   contrasted: false,
+  panel: ''
 } as const;
 
 export const odsTabsDefaultAttributes = odsTabsDefaultAttributesDoc as OdsTabsAttributes;

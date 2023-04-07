@@ -1,14 +1,12 @@
 import { OdsComponentAttributes } from '../../ods-component-attributes';
-import { OdsTabsSize, } from '../ods-tabs/ods-tabs-size';
 
 export interface OdsTabPanelAttributes extends OdsComponentAttributes {
-  size?: OdsTabsSize
   /**
-   * The name of the corresponding Tab. Must use the index of the Tab when no value was passed to Tab.
+   *  is the panel is active or nor
    */
-  name?: string
+  active: boolean;
   /**
-   * 	Override or extend the styles applied to the component
+   * identifier name of the panel
    */
-  classes?: object
+  name: string;
 }

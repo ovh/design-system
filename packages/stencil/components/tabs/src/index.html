@@ -16,26 +16,44 @@
 </head>
 <body>
 
-  <section>
-    <p><b>TABS SIMPLE EXEMPLE</b></p>
-    <div>
-      <osds-tabs panel-active="active" tabs-id="tabs-101">
-        <osds-tab-bar slot="top">
-          <osds-tab-bar-item panel="default">Default</osds-tab-bar-item>
-          <osds-tab-bar-item panel="hover">Hover</osds-tab-bar-item>
-          <osds-tab-bar-item panel="active">Active</osds-tab-bar-item>
-        </osds-tab-bar>
-        <osds-tab-panel name="default">Default</osds-tab-panel>
-        <osds-tab-panel name="hover">Hover</osds-tab-panel>
-        <osds-tab-panel name="active">Active</osds-tab-panel>
-      </osds-tabs>
-    </div>
-  </section>
-
-<!-- <section>
+<section>
   <p><b>TABS SIMPLE EXEMPLE</b></p>
   <div>
-    <osds-tabs panel-active="rise" tabs-id="tabs-1">
+    <osds-tabs panel="hover">
+      <osds-tab-bar slot="top">
+        <osds-tab-bar-item panel="default">Default</osds-tab-bar-item>
+        <osds-tab-bar-item panel="hover">Hover</osds-tab-bar-item>
+        <osds-tab-bar-item panel="active">Active</osds-tab-bar-item>
+      </osds-tab-bar>
+      <osds-tab-panel name="default">Default</osds-tab-panel>
+      <osds-tab-panel name="hover">Hover</osds-tab-panel>
+      <osds-tab-panel name="active">Active</osds-tab-panel>
+    </osds-tabs>
+  </div>
+</section>
+
+<section>
+  <p><b>TABS SIMPLE EXEMPLE</b></p>
+  <div>
+    <osds-tabs panel="active">
+      <osds-tab-bar slot="top">
+        <osds-tab-bar-item panel="default">Default</osds-tab-bar-item>
+        <osds-tab-bar-item panel="hover">Hover</osds-tab-bar-item>
+        <osds-tab-bar-item panel="active">Active</osds-tab-bar-item>
+      </osds-tab-bar>
+      <div>
+        <osds-tab-panel name="default">Default</osds-tab-panel>
+      </div>
+      <osds-tab-panel name="hover">Hover</osds-tab-panel>
+      <osds-tab-panel name="active">Active</osds-tab-panel>
+    </osds-tabs>
+  </div>
+</section>
+
+<section>
+  <p><b>TABS SIMPLE EXEMPLE</b></p>
+  <div>
+    <osds-tabs panel="rise">
       <osds-tab-bar slot="top">
         <osds-tab-bar-item panel="rise">Rise</osds-tab-bar-item>
         <osds-tab-bar-item panel="advance">Advance</osds-tab-bar-item>
@@ -57,7 +75,7 @@
 <section>
   <p><b>TABS SIMPLE EXEMPLE WITH OSDS-LINK IN ITEMS</b></p>
   <div>
-    <osds-tabs panel-active="rise" tabs-id="tabs-22">
+    <osds-tabs panel="rise">
       <osds-tab-bar slot="top">
         <osds-tab-bar-item panel="rise">
           <osds-link color="primary" href="/rise">Rise</osds-link>
@@ -91,7 +109,7 @@
 <br/>
 <section>
   <div>
-    <osds-tabs panel-active="rise" tabs-id="tabs-2">
+    <osds-tabs panel="rise">
       <osds-tab-bar slot="top">
         <osds-tab-bar-item panel="rise">Informations Générales</osds-tab-bar-item>
         <osds-tab-bar-item panel="advance">Partitions</osds-tab-bar-item>
@@ -110,7 +128,7 @@
 <section>
   <p><b>TABS WITH DISABLED ITEMS</b></p>
   <div>
-    <osds-tabs panel-active="rise" tabs-id="tabs-134">
+    <osds-tabs panel="rise">
       <osds-tab-bar slot="top">
         <osds-tab-bar-item panel="rise">Rise</osds-tab-bar-item>
         <osds-tab-bar-item panel="advance" disabled>Advance</osds-tab-bar-item>
@@ -129,12 +147,11 @@
   </div>
 </section>
 
-
 <br/>
 <section>
   <p><b>TABS CONTRASTED EXEMPLE</b></p>
-  <div style="background-color:#000D1F">
-    <osds-tabs panel-active="rise" tabs-id="tabs-12" contrasted>
+  <div style="background-color:#000D1F;color:white">
+    <osds-tabs panel="rise" contrasted>
       <osds-tab-bar slot="top">
         <osds-tab-bar-item panel="rise">Rise</osds-tab-bar-item>
         <osds-tab-bar-item panel="advance">Advance</osds-tab-bar-item>
@@ -156,8 +173,8 @@
 <br/>
 <section>
   <p><b>TABS CONTRASTED EXEMPLE WITH DISABLED ITEMS</b></p>
-  <div style="background-color:#000D1F">
-    <osds-tabs panel-active="rise" tabs-id="tabs-1234" contrasted>
+  <div style="background-color:#000D1F;color:white">
+    <osds-tabs panel="rise" contrasted>
       <osds-tab-bar slot="top">
         <osds-tab-bar-item panel="rise">Rise</osds-tab-bar-item>
         <osds-tab-bar-item disabled panel="advance">Advance</osds-tab-bar-item>
@@ -176,49 +193,8 @@
   </div>
 </section>
 
-<br/>
-<section>
-  <p><b>DON'T DO IT</b></p>
-  <div>
-    <osds-tabs panel-active="rise1" tabs-id="tabs-4">
-      <osds-tab-bar slot="top">
-        <osds-tab-bar-item panel="rise1">Rise</osds-tab-bar-item>
-        <osds-tab-bar-item panel="advance1">Advance</osds-tab-bar-item>
-        <osds-tab-bar-item panel="scale1"> Scale</osds-tab-bar-item>
-        <osds-tab-bar-item panel="high1">High Grade</osds-tab-bar-item>
-        <osds-tab-bar-item panel="storage1">Storage</osds-tab-bar-item>
-        <osds-tab-bar-item panel="game1">Game</osds-tab-bar-item>
-      </osds-tab-bar>
-      <osds-tab-panel name="rise1">
-        <osds-tabs panel-active="rise1" tabs-id="tabs-6">
-          <osds-tab-bar slot="top">
-            <osds-tab-bar-item panel="rise1">Rise</osds-tab-bar-item>
-            <osds-tab-bar-item panel="advance1">Advance</osds-tab-bar-item>
-            <osds-tab-bar-item panel="scale1"> Scale</osds-tab-bar-item>
-            <osds-tab-bar-item panel="high1">High Grade</osds-tab-bar-item>
-            <osds-tab-bar-item panel="storage1">Storage</osds-tab-bar-item>
-            <osds-tab-bar-item panel="game1">Game</osds-tab-bar-item>
-          </osds-tab-bar>
-          <osds-tab-panel name="storage">Des serveurs pour l'archivage, la sauvegarde ou le stockage distribué.</osds-tab-panel>
-          <osds-tab-panel name="advance1">Des serveurs polyvalents pour les petites et moyennes entreprises.</osds-tab-panel>
-          <osds-tab-panel name="scale1">Des serveurs conçus pour les infrastructures complexes à haute résilience.</osds-tab-panel>
-          <osds-tab-panel name="high1">Les serveurs les plus puissants, optimisés pour les charges critiques.</osds-tab-panel>
-          <osds-tab-panel name="storage1">Des serveurs pour l'archivage, la sauvegarde ou le stockage distribué.</osds-tab-panel>
-          <osds-tab-panel name="game1">Des serveurs optimisés pour les jeux vidéo et les plateformes de streaming.</osds-tab-panel>
-        </osds-tabs>
-      </osds-tab-panel>
-      <osds-tab-panel name="rise1">Les serveurs les plus abordables, adaptés à la plupart des usages.</osds-tab-panel>
-      <osds-tab-panel name="advance1">Des serveurs polyvalents pour les petites et moyennes entreprises.</osds-tab-panel>
-      <osds-tab-panel name="scale1">Des serveurs conçus pour les infrastructures complexes à haute résilience.</osds-tab-panel>
-      <osds-tab-panel name="high1">Les serveurs les plus puissants, optimisés pour les charges critiques.</osds-tab-panel>
-      <osds-tab-panel name="storage1">Des serveurs pour l'archivage, la sauvegarde ou le stockage distribué.</osds-tab-panel>
-      <osds-tab-panel name="game1">Des serveurs optimisés pour les jeux vidéo et les plateformes de streaming.</osds-tab-panel>
-    </osds-tabs>
-  </div>
-</section> -->
 
 
-  
 <script>
   document.addEventListener('odsInitialized', ({detail}) => {
     const instance = detail.instance;

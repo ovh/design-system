@@ -1,5 +1,4 @@
-.tabs-nav-list {
-    position: relative;
-    display: flex;
-    transition: opacity .3s;
+:host {
+  display: flex;
+  transition: opacity .3s;
 }

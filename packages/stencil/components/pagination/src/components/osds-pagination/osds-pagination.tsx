@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Host, Method, Prop, State, Watch, h } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Host, Method, Prop, Watch, h, Fragment } from '@stencil/core';
 import {
   OdsLogger,
   OdsPagination,
@@ -31,12 +31,6 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
 
   @Element() el!: HTMLStencilElement;
 
-  /**
-   * The current selected page
-   * @internal
-   */
-  @State() pageindex: number = 0;
-
   /** @see OdsPaginationAttributes.current */
   @Prop({ reflect: true, mutable: true }) current: number = odsPaginationDefaultAttributes.current;
 
@@ -64,7 +58,7 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
       this.current = this.defaultCurrent;
     }
 
-    this.pageindex = this.current;
+    this.current = this.current;
   }
 
   /**
@@ -93,7 +87,7 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
    */
   @Method()
   async setPageIndex(current: number) {
-    this.pageindex = current;
+    this.current = current;
   }
 
   onKeyPress = (event: any, page: any) => {
@@ -105,15 +99,12 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
   render() {
     const { totalPages, disabled } = this;
 
-    let pageList = this.controller.createPageList(totalPages, this.pageindex);
+    let pageList = this.controller.createPageList(totalPages, this.current);
 
     return (
       <Host
         {...{
           class: disabled ? 'disabled' : '',
-          pageIndex: this.disabled ? -1 : this.pageindex,
-          totalPages: this.totalPages,
-          current: this.current,
         }}
       >
         <div>
@@ -122,24 +113,24 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
               <osds-button
                 variant={OdsButtonVariant.ghost}
                 color={OdsThemeColorIntent.primary}
-                disabled={disabled ? true : this.pageindex == 1}
+                disabled={disabled ? true : this.current == 1}
                 onKeyDown={(event: any) => {
-                  if (this.pageindex > 1 && !disabled) this.onKeyPress(event, Number(this.pageindex) - 1);
+                  if (this.current > 1 && !disabled) this.onKeyPress(event, Number(this.current) - 1);
                 }}
                 onClick={() => {
-                  this.setPageIndex(Number(this.pageindex) - 1);
+                  this.setPageIndex(Number(this.current) - 1);
                 }}
                 size={OdsButtonSize.sm}
               >
-                <osds-icon size={OdsIconSize.sm} name={OdsIconName.CHEVRON_LEFT} color={OdsThemeColorIntent.primary} class={this.pageindex == 1 ? 'disabled' : ''}></osds-icon>
+                <osds-icon size={OdsIconSize.sm} name={OdsIconName.CHEVRON_LEFT} color={OdsThemeColorIntent.primary} class={this.current == 1 ? 'disabled' : ''}></osds-icon>
               </osds-button>
             </li>
             {pageList
               .filter(page => page.active)
               .map(page => {
                 return (
-                  <span key={page.id}>
-                    {pageList.length > 6 && pageList.length - this.pageindex > 3 && page.id == pageList.length && (
+                  <>
+                    {pageList.length > 6 && pageList.length - this.current > 3 && page.id == pageList.length && (
                       <li>
                         <osds-button disabled={true} variant={OdsButtonVariant.ghost}>
                           <osds-text size={OdsTextSize._500} color={OdsThemeColorIntent.primary} class="disabled">
@@ -150,13 +141,17 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
                     )}
                     <li>
                       <osds-button
-                        class={`${this.pageindex == page.id ? 'selectedpage' : ''}`}
-                        variant={this.pageindex == page.id ? OdsButtonVariant.flat : OdsButtonVariant.ghost}
+                        key={page.id}
+                        class={`${this.current == page.id ? 'selectedpage' : ''}`}
+                        variant={this.current == page.id ? OdsButtonVariant.flat : OdsButtonVariant.ghost}
                         disabled={disabled ? true : false}
                         color={OdsThemeColorIntent.primary}
                         size={OdsButtonSize.sm}
                         onKeyDown={(event: any) => {
-                          if (!disabled) this.onKeyPress(event, Number(page.id));
+                          if (!disabled) {
+                            this.onKeyPress(event, Number(page.id));
+                            this.el.focus();
+                          }
                         }}
                         onClick={() => {
                           this.setPageIndex(Number(page.id));
@@ -165,7 +160,7 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
                         {page.id}
                       </osds-button>
                     </li>
-                    {pageList.length > 6 && this.pageindex > 4 && page.id == 1 && (
+                    {pageList.length > 6 && this.current > 4 && page.id == 1 && (
                       <li>
                         <osds-button disabled={true} variant={OdsButtonVariant.ghost}>
                           <osds-text size={OdsTextSize._500} color={OdsThemeColorIntent.primary} class="disabled">
@@ -174,7 +169,7 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
                         </osds-button>
                       </li>
                     )}
-                  </span>
+                  </>
                 );
               })}
 
@@ -182,12 +177,12 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
               <osds-button
                 variant={OdsButtonVariant.ghost}
                 color={OdsThemeColorIntent.primary}
-                disabled={disabled ? true : this.pageindex >= pageList.length}
+                disabled={disabled ? true : this.current >= pageList.length}
                 onKeyDown={(event: any) => {
-                  if (this.pageindex < pageList.length && !disabled) this.onKeyPress(event, Number(this.pageindex) + 1);
+                  if (this.current < pageList.length && !disabled) this.onKeyPress(event, Number(this.current) + 1);
                 }}
                 onClick={() => {
-                  this.setPageIndex(Number(this.pageindex) + 1);
+                  this.setPageIndex(Number(this.current) + 1);
                 }}
                 size={OdsButtonSize.sm}
               >
@@ -195,7 +190,7 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
                   size={OdsIconSize.sm}
                   name={OdsIconName.CHEVRON_RIGHT}
                   color={OdsThemeColorIntent.primary}
-                  class={this.pageindex >= pageList.length ? 'disabled' : ''}
+                  class={this.current >= pageList.length ? 'disabled' : ''}
                 ></osds-icon>
               </osds-button>
             </li>

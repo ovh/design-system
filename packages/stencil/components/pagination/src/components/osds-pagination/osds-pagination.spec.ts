@@ -39,12 +39,12 @@ describe('spec:osds-pagination', () => {
   describe('attributes', () => {
     it('if the current of the pagination is 6, then page index should be 6', async () => {
       await setup({ attributes: { current: 6, totalPages: 10 } });
-      expect(instance?.pageindex).toEqual(6);
+      expect(instance?.current).toEqual(6);
     });
 
     it('if the defaultCurrent of the pagination is 6, then page index should be 6', async () => {
       await setup({ attributes: { defaultCurrent: 6, totalPages: 10 } });
-      expect(instance?.pageindex).toEqual(6);
+      expect(instance?.current).toEqual(6);
     });
 
     it('if the totalPages of the pagination is 10, then totalPages should be 1O', async () => {
@@ -58,7 +58,7 @@ describe('spec:osds-pagination', () => {
       await setup({ attributes: { current: 2, totalPages: 10 } });
       expect(instance).toBeTruthy();
       await instance.setPageIndex(4);
-      expect(instance?.pageindex).toBe(4);
+      expect(instance?.current).toBe(4);
     });
   });
 
@@ -78,7 +78,7 @@ describe('spec:osds-pagination', () => {
     it('should set the correct page number', async () => {
       await setup({ attributes: { disabled: false, current: 2, totalPages: 8 } });
       instance.setPageIndex(3);
-      expect(instance?.pageindex).toBe(3);
+      expect(instance?.current).toBe(3);
     });
   });
 });

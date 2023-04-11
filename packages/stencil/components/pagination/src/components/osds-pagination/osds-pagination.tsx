@@ -61,11 +61,9 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
     this.current = this.current;
   }
 
-  /**
-   * once the component did load, update the state depending the children,
-   * in order to synchronize the already set current with the placeholder
-   */
-  async componentDidLoad() {}
+  async componentDidUpdate() {
+    (this.el.shadowRoot?.querySelector('.selectedpage') as HTMLStencilElement)?.focus();
+  }
 
   @Watch('current')
   async onCurrentChange(current: number, oldCurrent?: number) {

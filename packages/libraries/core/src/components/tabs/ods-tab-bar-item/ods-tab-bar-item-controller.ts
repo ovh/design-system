@@ -15,10 +15,12 @@ export class OdsTabBarItemController extends OdsComponentController<OdsTabBarIte
    * @param event
   */
   handlePanelKeyEvent(event: KeyboardEvent) {
-    if (event.keyCode === 13 || event.keyCode === 32) {
-      this.component.select();
-      //event.defaultPrevented();
-      event.preventDefault();
+    if (!this.component.disabled) {
+      if (event.keyCode === 13 || event.keyCode === 32) {
+        this.component.select();
+        //event.defaultPrevented();
+        event.preventDefault();
+      }
     }
   }
 

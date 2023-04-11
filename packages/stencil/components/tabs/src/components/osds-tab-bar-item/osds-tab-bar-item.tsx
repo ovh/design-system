@@ -1,17 +1,15 @@
-import { Component, Element, Event, EventEmitter, h, Host, Listen, Prop } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, Listen, Method, Prop } from '@stencil/core';
 import { HTMLStencilElement } from '@stencil/core/internal';
 import {
   OdsLogger,
   OdsTabBarItem,
   OdsTabBarItemController,
-  OdsTabBarItemDefaultAttributes,
+  odsTabBarItemDefaultAttributes,
   OdsTabBarItemEvents,
   OdsTabBarItemMethods,
   OdsTabItemSelectEventDetail,
 } from '@ovhcloud/ods-core';
 import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libraries/stencil-core';
-
-// import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 
 /**
  * An Item that is part of the tab bar
@@ -31,13 +29,13 @@ export class OsdsTabBarItem implements OdsTabBarItem<OdsStencilMethods<OdsTabBar
   @Element() el!: HTMLStencilElement;
 
   /** @see OdsTabBarItemAttributes.panel */
-  @Prop({ reflect: true }) public panel = OdsTabBarItemDefaultAttributes.panel;
+  @Prop({ reflect: true }) panel: string = odsTabBarItemDefaultAttributes.panel;
 
   /** @see OdsTabBarItemAttributes.active */
-  @Prop({ reflect: true }) active = OdsTabBarItemDefaultAttributes.active;
+  @Prop({ reflect: true }) active: boolean = odsTabBarItemDefaultAttributes.active;
 
   /** @see OdsTabBarItemAttributes.disabled */
-  @Prop({ reflect: true }) disabled = OdsTabBarItemDefaultAttributes.disabled;
+  @Prop({ reflect: true }) disabled: boolean = odsTabBarItemDefaultAttributes.disabled;
 
   /** @see OdsTabBarItemAttributes.contrasted */
   @Prop({ reflect: true, mutable: true }) contrasted = false;
@@ -65,6 +63,7 @@ export class OsdsTabBarItem implements OdsTabBarItem<OdsStencilMethods<OdsTabBar
    * select the panel by emitting
    * @see OdsTabBarItemBehavior.select
    */
+  @Method()
   select() {
     this.odsTabItemSelectEvent.emit({ panel: this.panel, tabItem: this });
   }
@@ -85,16 +84,9 @@ export class OsdsTabBarItem implements OdsTabBarItem<OdsStencilMethods<OdsTabBar
   }
 
   render() {
-    const {
-      disabled,
-      contrasted,
-    } = this;
-
     return (
       <Host
         {...{
-          contrasted,
-          disabled,
           role: 'tab',
           tabIndex: this.getTabIndex(),
           active: this.active,

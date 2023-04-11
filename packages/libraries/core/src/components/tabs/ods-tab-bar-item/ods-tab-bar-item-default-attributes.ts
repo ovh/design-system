@@ -11,4 +11,4 @@ export const OdsTabBarItemDefaultAttributesDoc = {
   contrasted: false
 } as const;
 
-export const OdsTabBarItemDefaultAttributes = OdsTabBarItemDefaultAttributesDoc as OdsTabBarItemAttributes;
+export const odsTabBarItemDefaultAttributes = OdsTabBarItemDefaultAttributesDoc as OdsTabBarItemAttributes;

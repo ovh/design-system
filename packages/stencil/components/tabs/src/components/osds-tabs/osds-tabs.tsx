@@ -2,9 +2,7 @@ import { Component, Element, Event, EventEmitter, h, Host, Listen, Prop, Watch }
 import { HTMLStencilElement } from '@stencil/core/internal';
 import {
   OdsLogger,
-  OdsTabBarItem,
   OdsTabItemSelectEventDetail,
-  OdsTabPanel,
   OdsTabs,
   OdsTabsChangeEventDetail,
   OdsTabsController,
@@ -33,10 +31,10 @@ export class OsdsTabs implements OdsTabs<OdsStencilMethods<OdsTabsMethods>, OdsS
   @Element() el!: HTMLStencilElement;
 
   /** @see OdsTabsAttributes.contrasted */
-  @Prop({ reflect: true }) public contrasted: boolean = odsTabsDefaultAttributes.contrasted;
+  @Prop({ reflect: true }) contrasted: boolean = odsTabsDefaultAttributes.contrasted;
 
   /** @see OdsTabsAttributes.panel */
-  @Prop({ reflect: true, mutable: true }) public panel = odsTabsDefaultAttributes.panel;
+  @Prop({ reflect: true, mutable: true }) panel: string = odsTabsDefaultAttributes.panel;
 
   /** @see OdsTabsAttributes.size */
   @Prop({ reflect: true }) size: OdsTabsSize = odsTabsDefaultAttributes.size;
@@ -68,7 +66,7 @@ export class OsdsTabs implements OdsTabs<OdsStencilMethods<OdsTabsMethods>, OdsS
    * @see OdsTabsController.changeActivePanel
    */
   getTabItems() {
-    return Array.from(this.el.querySelectorAll<OdsTabBarItem & HTMLElement>('osds-tab-bar-item'));
+    return this.controller.getTabItems('osds-tab-bar-item');
   }
 
   /**
@@ -77,7 +75,7 @@ export class OsdsTabs implements OdsTabs<OdsStencilMethods<OdsTabsMethods>, OdsS
    * @see OdsTabsController.changeActivePanel
    */
   getTabPanels() {
-    return Array.from(this.el.querySelectorAll<OdsTabPanel & HTMLElement>('osds-tab-panel'));
+    return this.controller.getTabPanels('osds-tab-panel');
   }
 
   /**
@@ -94,6 +92,14 @@ export class OsdsTabs implements OdsTabs<OdsStencilMethods<OdsTabsMethods>, OdsS
 
   componentDidLoad() {
     this.afterInit();
+  }
+
+  beforeInit() {
+    this.controller.beforeInit();
+  }
+
+  componentWillLoad() {
+    this.beforeInit();
   }
 
   render() {

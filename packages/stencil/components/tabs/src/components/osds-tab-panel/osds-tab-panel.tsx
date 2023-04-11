@@ -26,10 +26,10 @@ export class OsdsTabsPanel implements OdsTabPanel<OdsStencilMethods<OdsTabPanelM
   @Element() el!: HTMLStencilElement;
 
   /** @see OdsTabPanelAttributes.active */
-  @Prop({ reflect: true }) active = odsTabPanelDefaultAttributes.active;
+  @Prop({ reflect: true }) active: boolean = odsTabPanelDefaultAttributes.active;
 
   /** @see OdsTabPanelAttributes.name */
-  @Prop({ reflect: true }) name = odsTabPanelDefaultAttributes.name;
+  @Prop({ reflect: true }) name: string = odsTabPanelDefaultAttributes.name;
 
   render() {
     return (

@@ -1,176 +1,200 @@
-import { E2EElement, E2EPage, newE2EPage } from '@stencil/core/testing';
+import { E2EElement, E2EPage, EventSpy, newE2EPage } from '@stencil/core/testing';
 import {
-  OdsTabsAttributes,
-  OdsTabsSize,
-  odsTabsDefaultAttributes,
   OdsComponentAttributes2StringAttributes,
+  OdsTabsAttributes,
+  OdsTabsChangeEventDetail,
+  odsTabsDefaultAttributes,
+  OdsTabsEvents,
 } from '@ovhcloud/ods-core';
-import { OdsCreateAttributes, OdsStringAttributes2Str, odsTabsBaseAttributes, } from '@ovhcloud/ods-testing';
-import { debug } from 'console';
-;
-// import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { OdsCreateAttributes, OdsStringAttributes2Str, odsTabsBaseAttributes } from '@ovhcloud/ods-testing';
+
 
 describe('e2e:osds-tabs', () => {
   let page: E2EPage;
   let el: E2EElement;
-//   let slotContent: E2EElement;
-//   let linkElement: E2EElement;
-  let tabsElement: E2EElement;
-  let tabsNavWrapElement: E2EElement;
-  let slotElement: E2EElement;
-  let panelItemsElement: E2EElement;
-  let tabBarElement: E2EElement;
+  let panelRiseElement: E2EElement;
+  let panelAdvanceElement: E2EElement;
+  let itemRiseElement: E2EElement;
+  let itemAdvanceElement: E2EElement;
+  let activeElementId: string | undefined;
 
-  let tabBarItemsRiseElement: E2EElement;
-  let tabBarItemsAdvanceElement: E2EElement;
+  const getTabsDom1 = (disabled = false) => `
+<osds-tab-bar slot='top'>
+  <osds-tab-bar-item panel='advance' id='item-advance' ${disabled ? 'disabled' : ''}>Advance</osds-tab-bar-item>
+  <osds-tab-bar-item panel='rise' id='item-rise'>Rise</osds-tab-bar-item>
+</osds-tab-bar>`;
+
+  const spyEvent = async (eventName: keyof OdsTabsEvents) => await el.spyOnEvent(eventName);
 
 
-  async function setup({ attributes = {}, html = `` }: { attributes?: Partial<OdsTabsAttributes>, html?: string } = {}) {
+  async function setup({
+                         attributes = {},
+                         nativeAttributes = {},
+                         html = ``,
+                       }: { attributes?: Partial<OdsTabsAttributes>, nativeAttributes?: Partial<HTMLElement>, html?: string } = {}) {
     const minimalAttributes: OdsTabsAttributes = OdsCreateAttributes(attributes, odsTabsBaseAttributes);
     const stringAttributes = OdsComponentAttributes2StringAttributes<OdsTabsAttributes>(minimalAttributes, odsTabsDefaultAttributes);
+    const nativeStringAttributes = OdsComponentAttributes2StringAttributes<Partial<HTMLElement>>(nativeAttributes, {});
 
     page = await newE2EPage();
     await page.setContent(`
-      <osds-tabs ${OdsStringAttributes2Str(stringAttributes)}>
+      <osds-tabs ${OdsStringAttributes2Str(stringAttributes)} ${OdsStringAttributes2Str(nativeStringAttributes)}>
         ${html}
       </osds-tabs>
     `);
-    await page.evaluate(() => document.body.style.setProperty('margin', '4px'));
+    await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
     el = await page.find('osds-tabs');
 
-    tabsElement = await page.find('osds-tabs >>> div.tabs');
-    tabsNavWrapElement = await page.find('osds-tabs >>> div.tabs > div');
-    slotElement = await page.find('osds-tabs >>> div.tabs > div > slot[name=top]');
-    panelItemsElement = await page.find('osds-tabs >>> div.tabs > div');
-    tabBarElement = await page.find('osds-tab-bar');
-
-    tabBarItemsRiseElement = await page.find('osds-tab-bar-item[panel=rise]');
-    tabBarItemsAdvanceElement = await page.find('osds-tab-bar-item[panel=advance]');
+    await updateReferences();
   }
 
-  describe('defaults', () => {
-    beforeEach(async () => {
-      await setup();
-    });
-    it('should render', async () => {
-      expect(el).not.toBeNull();
-      expect(tabsElement).toHaveClass('tabs');
-    });
-    it('should have a tabs nav wrap element', async () => {
-        expect(tabsNavWrapElement).not.toBeNull();
-        expect(tabsNavWrapElement).toHaveClass('tabs-nav-wrap');
-      });
-      it('should have a slot element', async () => {
-        expect(slotElement).not.toBeNull();
-        expect(await slotElement.getProperty('name')).toBe('top');
-      });
-  });   
+  /**
+   * updates references to elements and properties
+   */
+  async function updateReferences() {
+    activeElementId = await page.evaluate(() => document.activeElement?.id);
 
-  describe('with panel active rise and id tabs-1', () => {
-    beforeEach(async () => {
-      await setup({ attributes: { panelActive: 'rise', tabsId: 'tabs-1' } });
-    });
-    it('should have attributes panel active rise', async () => {
-        expect(el).not.toBeNull();
-        expect(await el.getProperty('panelActive')).toBe('rise')
-      });
-      it('should have attributes tabsId tabs-1', async () => {
-        expect(el).not.toBeNull();
-        expect(await el.getProperty('tabsId')).toBe('tabs-1')
-      });
+    itemRiseElement = await page.find('osds-tab-bar-item[panel=rise]');
+    itemAdvanceElement = await page.find('osds-tab-bar-item[panel=advance]');
+    panelRiseElement = await page.find('osds-tab-panel[name=rise]');
+    panelAdvanceElement = await page.find('osds-tab-panel[name=advance]');
+  }
+
+  it('should render', async () => {
+    await setup();
+    expect(el).not.toBeNull();
+    expect(el).toHaveClass('hydrated');
   });
 
-  describe('with panel active rise and id tabs-1, tab bar item', () => {
-    const tabsDom1 = `<osds-tab-bar slot="top">
-            <osds-tab-bar-item panel="rise">Rise</osds-tab-bar-item>
-            <osds-tab-bar-item panel="advance">Advance</osds-tab-bar-item>
-        </osds-tab-bar>`
-    beforeEach(async () => {
-      await setup({
-        attributes: { panelActive: 'rise', tabsId: 'tabs-1' },
-        html: tabsDom1
-      });
-    });
-    it('should osds tab bar have attributes slot top', async () => {
-        expect(tabBarElement).not.toBeNull();
-        expect(await tabBarElement.getProperty('slot')).toBe('top')
-    });
-    it('should tabBarItemsRiseElement tab bar have attributes panel rise', async () => {
-        expect(tabBarItemsRiseElement).not.toBeNull();
-        expect(await tabBarItemsRiseElement.getProperty('panel')).toBe('rise')
-    });
-    it('should tabBarItemsAdvanceElement tab bar have attributes slot top', async () => {
-        expect(tabBarItemsAdvanceElement).not.toBeNull();
-        expect(await tabBarItemsAdvanceElement.getProperty('panel')).toBe('advance')
-    });
-    it('should tabBarItemsRiseElement tab bar have panel rise have class tabs-tab-active', async () => {
-        expect(tabBarItemsRiseElement).not.toBeNull();
-        expect(await tabBarItemsRiseElement.getProperty('checked')).toBeFalsy();
-    });
-    it('should tabBarItemsRiseElement tab bar have panel advance have class tabs-tab-active', async () => {
-        expect(tabBarItemsAdvanceElement).not.toBeNull();
-        expect(await tabBarItemsAdvanceElement.getProperty('checked')).toBeFalsy();
-    });
-  });
+  describe('focusing', () => {
 
-  describe('with panel active rise and id tabs-1, tab bar item and tab panel', () => {
-    const tabsDom1 = `<osds-tab-bar slot="top">
-            <osds-tab-bar-item panel="rise">Rise</osds-tab-bar-item>
-            <osds-tab-bar-item panel="advance">Advance</osds-tab-bar-item>
-        </osds-tab-bar>
-        <osds-tab-panel name="rise">Les serveurs les plus abordables, adaptés à la plupart des usages.</osds-tab-panel>
-      <osds-tab-panel name="advance">Des serveurs polyvalents pour les petites et moyennes entreprises.</osds-tab-panel>`
-    beforeEach(async () => {
-      await setup({
-        attributes: { panelActive: 'rise', tabsId: 'tabs-1' },
-        html: tabsDom1
-      });
-      await el.callMethod('setPanelNameIndex', 'rise')
+    it('item should be focusable', async () => {
+      await setup({ attributes: { panel: '' }, html: getTabsDom1() });
       await page.waitForChanges();
-    });
-    it('should panel item tab bar have attributes panel rise', async () => {
-        expect(await page.find('osds-tab-panel[name=rise]')).not.toBeNull();
-        expect(await (await page.find('osds-tab-panel[name=rise]')).getProperty('name')).toBe('rise')
-    });
-    it('should panel item tab bar have attributes panel advance', async () => {
-        expect(await page.find('osds-tab-panel[name=advance]')).not.toBeNull();
-        expect(await (await page.find('osds-tab-panel[name=advance]')).getProperty('name')).toBe('advance')
-    });
-    it('should osds-tab-panel[name=rise] tab bar have panel rise displayed', async () => {
-        expect(await page.find('osds-tab-panel[name=rise] >>> div div.tab-panel')).not.toBeNull();
-    });
-    it('should osds-tab-panel[name=advance] tab bar have panel advance not displayed', async () => {
-        expect(await page.find('osds-tab-panel[name=advance] >>> div div.tab-panel')).toBeNull();
-    });
-  });
+      await updateReferences();
+      expect(activeElementId).toEqual('');
 
-  describe('with panel active rise and id tabs-1, tab bar item and tab panel, click advance', () => {
-    const tabsDom1 = `<osds-tab-bar slot="top">
-            <osds-tab-bar-item panel="rise">Rise</osds-tab-bar-item>
-            <osds-tab-bar-item panel="advance">Advance</osds-tab-bar-item>
-        </osds-tab-bar>
-        <osds-tab-panel name="rise">Les serveurs les plus abordables, adaptés à la plupart des usages.</osds-tab-panel>
-      <osds-tab-panel name="advance">Des serveurs polyvalents pour les petites et moyennes entreprises.</osds-tab-panel>`
-    beforeEach(async () => {
-      await setup({
-        attributes: { panelActive: 'rise', tabsId: 'tabs-1' },
-        html: tabsDom1
-      });
-      await el.callMethod('setPanelNameIndex', 'advance')
+      await itemRiseElement.focus();
       await page.waitForChanges();
+      await updateReferences();
+      expect(activeElementId).toEqual('item-rise');
     });
-    it('should display advance panel and item', async () => {
-        expect(await page.find('osds-tab-panel[name=advance] >>> div div.tab-panel')).not.toBeNull();
+
+    it('should be focusable with tab', async () => {
+      await setup({ attributes: { panel: '' }, html: getTabsDom1() });
+      await page.waitForChanges();
+      await updateReferences();
+      expect(activeElementId).toEqual('');
+
+      await el.press('Tab');
+      await page.waitForChanges();
+      await updateReferences();
+      expect(activeElementId).toEqual('item-advance');
+
+      await el.press('Tab');
+      await page.waitForChanges();
+      await updateReferences();
+      expect(activeElementId).toEqual('item-rise');
     });
-    it('should osds-tab-panel[name=rise] tab bar have panel rise not displayed', async () => {
-        expect(await page.find('osds-tab-panel[name=rise] >>> div div.tab-panel')).toBeNull();
+
+    it('item should NOT be focusable if disabled', async () => {
+      await setup({ attributes: { panel: '' }, html: getTabsDom1(true) });
+      await page.waitForChanges();
+      await updateReferences();
+      expect(activeElementId).toEqual('');
+
+      await el.press('Tab');
+      await page.waitForChanges();
+      await updateReferences();
+      expect(activeElementId).toEqual('item-rise');
     });
   });
 
-  describe('sizes', () => {
-    it('should have a medium size', async () => {
-        await setup({ attributes: { size: OdsTabsSize.md } });
-        expect(await el.getProperty('size')).toBe(OdsTabsSize.md);
+  describe('keypress', () => {
+
+    it('item should be enabled on Enter/space', async () => {
+      await setup({ attributes: { panel: '' }, html: getTabsDom1() });
+
+      await page.waitForChanges();
+      await updateReferences();
+      expect(await itemRiseElement.getProperty('active')).toEqual(false);
+      expect(await itemAdvanceElement.getProperty('active')).toEqual(true);
+
+      await itemRiseElement.press('Enter');
+      await page.waitForChanges();
+      await updateReferences();
+      expect(await itemRiseElement.getProperty('active')).toEqual(true);
+      expect(await itemAdvanceElement.getProperty('active')).toEqual(false);
+
+      await itemAdvanceElement.press('Space');
+      await page.waitForChanges();
+      await updateReferences();
+      expect(await itemRiseElement.getProperty('active')).toEqual(false);
+      expect(await itemAdvanceElement.getProperty('active')).toEqual(true);
     });
   });
+
+  describe('tab-bar standalone', () => {
+
+    beforeEach(async () => {
+      await setup({ attributes: { panel: 'rise' }, html: getTabsDom1() });
+    });
+
+    describe('click on item rise', () => {
+      it('should select the rise panel', async () => {
+        await page.waitForChanges();
+        await itemAdvanceElement.click();
+        await page.waitForChanges();
+        await updateReferences();
+        expect(await itemRiseElement.getProperty('active')).toEqual(false);
+        expect(await itemAdvanceElement.getProperty('active')).toEqual(true);
+      });
+    });
+
+    it('should select the rise panel', async () => {
+      await page.waitForChanges();
+      await updateReferences();
+      expect(await itemRiseElement.getProperty('active')).toEqual(true);
+      expect(await itemAdvanceElement.getProperty('active')).toEqual(false);
+    });
+  });
+
+
+  describe('with panel content', () => {
+
+    beforeEach(async () => {
+      const tabsDom1 = getTabsDom1() + `
+<osds-tab-panel name='advance'>Des serveurs polyvalents pour les petites et moyennes entreprises.</osds-tab-panel>
+<osds-tab-panel name='rise'>Les serveurs les plus abordables, adaptés à la plupart des usages.</osds-tab-panel>`;
+
+      await setup({ attributes: { panel: 'rise' }, html: tabsDom1 });
+    });
+
+
+    describe('click on item rise', () => {
+      it('should select the rise panel', async () => {
+        const expected: OdsTabsChangeEventDetail = { panel: 'advance' };
+        const odsTabsChanged: EventSpy = await spyEvent('odsTabsChanged');
+
+        await page.waitForChanges();
+        await itemAdvanceElement.click();
+        await page.waitForChanges();
+        await updateReferences();
+        expect(await panelRiseElement.getProperty('active')).toEqual(false);
+        expect(await panelAdvanceElement.getProperty('active')).toEqual(true);
+        expect(odsTabsChanged).toHaveReceivedEventDetail(expected);
+      });
+    });
+
+    it('should select active panel', async () => {
+      const odsTabsChanged: EventSpy = await spyEvent('odsTabsChanged');
+      await page.waitForChanges();
+      await updateReferences();
+      expect(await panelRiseElement.getProperty('active')).toEqual(true);
+      expect(await panelAdvanceElement.getProperty('active')).toEqual(false);
+      expect(odsTabsChanged).not.toHaveReceivedEvent();
+    });
+  });
+
+
 });

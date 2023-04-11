@@ -9,6 +9,11 @@ export interface OdsTabsBehavior {
   el: HTMLElement;
 
   /**
+   * Before init, it must call the init of controller in order to make trigger the panel at initialization
+   */
+  beforeInit(): void;
+
+  /**
    * After init, it must call the init of controller in order to make initialized active panel really active
    */
   afterInit(): void;

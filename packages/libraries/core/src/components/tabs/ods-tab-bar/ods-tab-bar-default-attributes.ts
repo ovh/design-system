@@ -7,7 +7,7 @@ import { OdsTabsSize, } from '../ods-tabs/ods-tabs-size';
  * @enum
  */
 export const OdsTabBarDefaultAttributesDoc = {
-  size: OdsTabsSize.md,  
+  size: OdsTabsSize.md,
 } as const;
 
-export const OdsTabBarDefaultAttributes = OdsTabBarDefaultAttributesDoc as OdsTabBarAttributes;
+export const odsTabBarDefaultAttributes = OdsTabBarDefaultAttributesDoc as OdsTabBarAttributes;

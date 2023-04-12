@@ -12,9 +12,15 @@ import {
 } from '@ovhcloud/ods-testing';
 import { getAttributeContextOptions } from '@ovhcloud/ods-stencil/libraries/stencil-testing';
 import { OsdsTabsPanel } from './osds-tab-panel';
-import { OdsComponentAttributes2StringAttributes, OdsTabPanelAttributes } from '@ovhcloud/ods-core';
+import {
+  OdsComponentAttributes2StringAttributes,
+  OdsLogger,
+  OdsTabPanel,
+  OdsTabPanelAttributes,
+  OdsTabPanelController,
+  odsTabPanelDefaultAttributes,
+} from '@ovhcloud/ods-core';
 import { newSpecPage, SpecPage } from '@stencil/core/testing';
-import { OdsLogger, OdsTabPanel, OdsTabPanelController, odsTabPanelDefaultAttributes } from '@ovhcloud/ods-core/src';
 
 describe('spec:OsdsTabsPanel', () => {
   let page: SpecPage;

@@ -1,8 +1,6 @@
 @import '~@ovhcloud/ods-theming/ods-theme';
-@import 'src/components/osds-tab-bar-item/styles/osds-tab-bar-item.typography';
-@import 'src/components/osds-tab-bar-item/styles/osds-tab-bar-item.mixin';
-@import '~@ovhcloud/ods-theming/ods-theme';
-@import 'src/components/osds-tab-bar-item/styles/osds-tab-bar-item.color';
+@import './styles/osds-tab-bar-item.typography';
+@import './styles/osds-tab-bar-item.color';
 
 :host {
   cursor: pointer;

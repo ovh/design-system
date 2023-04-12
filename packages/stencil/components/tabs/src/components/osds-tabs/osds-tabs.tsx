@@ -80,10 +80,16 @@ export class OsdsTabs implements OdsTabs<OdsStencilMethods<OdsTabsMethods>, OdsS
 
   /**
    * when panel property changes, it will change the active panel
+   * @see OdsTabsBehavior.onPanelPropChange
    */
   @Watch('panel')
   onPanelPropChange(panel: string) {
     this.controller.changeActivePanel(panel);
+  }
+
+  @Watch('contrasted')
+  onContrastedPropChange(contrasted: boolean) {
+    this.controller.propagateContrastedToItems(contrasted);
   }
 
   afterInit() {

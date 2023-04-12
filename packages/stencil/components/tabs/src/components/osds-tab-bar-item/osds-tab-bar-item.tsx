@@ -64,7 +64,7 @@ export class OsdsTabBarItem implements OdsTabBarItem<OdsStencilMethods<OdsTabBar
    * @see OdsTabBarItemBehavior.select
    */
   @Method()
-  select() {
+  async select() {
     this.odsTabItemSelectEvent.emit({ panel: this.panel, tabItem: this });
   }
 

@@ -6519,7 +6519,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-tabs-react@workspace:packages/stencil/components/tabs/react"
   dependencies:
-    "@ovhcloud/ods-stencil-cart": ^11.0.1
     "@types/react": 17.0.37
     "@types/react-dom": 17.0.11
     react: 16.14.0

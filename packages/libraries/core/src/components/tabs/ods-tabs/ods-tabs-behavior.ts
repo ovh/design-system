@@ -46,4 +46,10 @@ export interface OdsTabsBehavior {
    * @param panel - new value of the panel
    */
   onPanelPropChange(panel: string): void;
+
+  /**
+   * when contrasted panel property changed, set the contrast on the items
+   * @param contrasted - contrast or not
+   */
+  onContrastedPropChange(contrasted: boolean): void;
 }

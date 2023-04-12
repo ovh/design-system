@@ -1,10 +1,10 @@
-You can `disabled` some items, but you cannot disable the entire `tabs` with an attribute on the `tabs`.
+You can set a `contrasted` mode on the `tabs`.
+It will configure all the items to be `contrasted` automatically.
 
-
-<osds-tabs>
+<osds-tabs contrasted style={{ background: 'blue' }}>
   <osds-tab-bar slot="top">
     <osds-tab-bar-item panel="one">One</osds-tab-bar-item>
-    <osds-tab-bar-item panel="two" disabled>Two</osds-tab-bar-item>
+    <osds-tab-bar-item panel="two">Two</osds-tab-bar-item>
     <osds-tab-bar-item panel="three">Three</osds-tab-bar-item>
   </osds-tab-bar>
   <osds-tab-panel name="one">Oles ipsum dolor sit amet, discere vero causae sed tempus</osds-tab-panel>
@@ -13,10 +13,10 @@ You can `disabled` some items, but you cannot disable the entire `tabs` with an 
 </osds-tabs>
 
 ```html
-<osds-tabs>
+<osds-tabs contrasted>
   <osds-tab-bar slot="top">
     <osds-tab-bar-item panel="one">One</osds-tab-bar-item>
-    <osds-tab-bar-item panel="two" disabled>Two</osds-tab-bar-item>
+    <osds-tab-bar-item panel="two">Two</osds-tab-bar-item>
     <osds-tab-bar-item panel="three">Three</osds-tab-bar-item>
   </osds-tab-bar>
   <osds-tab-panel name="one">Oles ipsum dolor sit amet, discere vero causae sed tempus</osds-tab-panel>

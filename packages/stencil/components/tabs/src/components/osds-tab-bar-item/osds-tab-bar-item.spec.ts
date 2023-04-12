@@ -12,17 +12,17 @@ import {
   odsUnitTestAttribute,
   OdsUnitTestAttributeType,
 } from '@ovhcloud/ods-testing';
-
 import { OsdsTabBarItem } from './osds-tab-bar-item';
 import {
   OdsComponentAttributes2StringAttributes,
+  OdsLogger,
   OdsTabBarItemAttributes,
   OdsTabBarItemController,
+  odsTabBarItemDefaultAttributes,
+  OdsTabBarItemDefaultAttributesDoc,
 } from '@ovhcloud/ods-core';
-
 import { newSpecPage, SpecPage } from '@stencil/core/testing';
 import { getAttributeContextOptions } from '@ovhcloud/ods-stencil/libraries/stencil-testing';
-import { OdsLogger, odsTabBarItemDefaultAttributes, OdsTabBarItemDefaultAttributesDoc } from '@ovhcloud/ods-core/src';
 
 describe('spec:OsdsTabBarItem', () => {
   let page: SpecPage;

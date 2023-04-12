@@ -17,12 +17,17 @@ describe('e2e:osds-tabs', () => {
   let itemRiseElement: E2EElement;
   let itemAdvanceElement: E2EElement;
   let activeElementId: string | undefined;
+  // let odsTabsChanged: EventSpy;
 
   const getTabsDom1 = (disabled = false) => `
 <osds-tab-bar slot='top'>
-  <osds-tab-bar-item panel='advance' id='item-advance' ${disabled ? 'disabled' : ''}>Advance</osds-tab-bar-item>
-  <osds-tab-bar-item panel='rise' id='item-rise'>Rise</osds-tab-bar-item>
+  <osds-tab-bar-item panel='rise' id='item-rise' ${disabled ? 'disabled' : ''}>Rise</osds-tab-bar-item>
+  <osds-tab-bar-item panel='advance' id='item-advance'>Advance</osds-tab-bar-item>
 </osds-tab-bar>`;
+
+  const getTabsWithPanels = () => getTabsDom1() + `
+<osds-tab-panel name='rise'>Les serveurs les plus abordables, adaptés à la plupart des usages.</osds-tab-panel>
+<osds-tab-panel name='advance'>Des serveurs polyvalents pour les petites et moyennes entreprises.</osds-tab-panel>`;
 
   const spyEvent = async (eventName: keyof OdsTabsEvents) => await el.spyOnEvent(eventName);
 
@@ -31,18 +36,24 @@ describe('e2e:osds-tabs', () => {
                          attributes = {},
                          nativeAttributes = {},
                          html = ``,
-                       }: { attributes?: Partial<OdsTabsAttributes>, nativeAttributes?: Partial<HTMLElement>, html?: string } = {}) {
+                       }: {
+    attributes?: Partial<OdsTabsAttributes>,
+    nativeAttributes?: Partial<HTMLElement>,
+    html?: string
+  } = {}) {
     const minimalAttributes: OdsTabsAttributes = OdsCreateAttributes(attributes, odsTabsBaseAttributes);
     const stringAttributes = OdsComponentAttributes2StringAttributes<OdsTabsAttributes>(minimalAttributes, odsTabsDefaultAttributes);
     const nativeStringAttributes = OdsComponentAttributes2StringAttributes<Partial<HTMLElement>>(nativeAttributes, {});
 
     page = await newE2EPage();
+    // odsTabsChanged = await page.spyOnEvent('odsTabsChanged');
+
     await page.setContent(`
       <osds-tabs ${OdsStringAttributes2Str(stringAttributes)} ${OdsStringAttributes2Str(nativeStringAttributes)}>
         ${html}
       </osds-tabs>
     `);
-    await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
+    await page.evaluate(() => document.body.style.setProperty('margin', '4px'));
     el = await page.find('osds-tabs');
 
     await updateReferences();
@@ -89,12 +100,12 @@ describe('e2e:osds-tabs', () => {
       await el.press('Tab');
       await page.waitForChanges();
       await updateReferences();
-      expect(activeElementId).toEqual('item-advance');
+      expect(activeElementId).toEqual('item-rise');
 
       await el.press('Tab');
       await page.waitForChanges();
       await updateReferences();
-      expect(activeElementId).toEqual('item-rise');
+      expect(activeElementId).toEqual('item-advance');
     });
 
     it('item should NOT be focusable if disabled', async () => {
@@ -106,7 +117,7 @@ describe('e2e:osds-tabs', () => {
       await el.press('Tab');
       await page.waitForChanges();
       await updateReferences();
-      expect(activeElementId).toEqual('item-rise');
+      expect(activeElementId).toEqual('item-advance');
     });
   });
 
@@ -116,84 +127,111 @@ describe('e2e:osds-tabs', () => {
       await setup({ attributes: { panel: '' }, html: getTabsDom1() });
 
       await page.waitForChanges();
+
+      await itemAdvanceElement.press('Enter');
+      await page.waitForChanges();
       await updateReferences();
       expect(await itemRiseElement.getProperty('active')).toEqual(false);
       expect(await itemAdvanceElement.getProperty('active')).toEqual(true);
 
-      await itemRiseElement.press('Enter');
+      await itemRiseElement.press('Space');
       await page.waitForChanges();
       await updateReferences();
       expect(await itemRiseElement.getProperty('active')).toEqual(true);
       expect(await itemAdvanceElement.getProperty('active')).toEqual(false);
-
-      await itemAdvanceElement.press('Space');
-      await page.waitForChanges();
-      await updateReferences();
-      expect(await itemRiseElement.getProperty('active')).toEqual(false);
-      expect(await itemAdvanceElement.getProperty('active')).toEqual(true);
     });
   });
 
   describe('tab-bar standalone', () => {
 
-    beforeEach(async () => {
-      await setup({ attributes: { panel: 'rise' }, html: getTabsDom1() });
-    });
+    it('should select the first panel by default', async () => {
+      await setup({ attributes: { panel: '' }, html: getTabsDom1() });
 
-    describe('click on item rise', () => {
-      it('should select the rise panel', async () => {
-        await page.waitForChanges();
-        await itemAdvanceElement.click();
-        await page.waitForChanges();
-        await updateReferences();
-        expect(await itemRiseElement.getProperty('active')).toEqual(false);
-        expect(await itemAdvanceElement.getProperty('active')).toEqual(true);
-      });
-    });
-
-    it('should select the rise panel', async () => {
       await page.waitForChanges();
       await updateReferences();
       expect(await itemRiseElement.getProperty('active')).toEqual(true);
       expect(await itemAdvanceElement.getProperty('active')).toEqual(false);
+
+      // info: cannot test if event is fired during init:
+      // const expected: OdsTabsChangeEventDetail = { panel: 'rise' };
+      // expect(odsTabsChanged).toHaveReceivedEventDetail(expected);
+    });
+
+    describe('selected', () => {
+      describe('click on item advance', () => {
+        it('should select the advance panel', async () => {
+          await setup({ attributes: { panel: 'rise' }, html: getTabsDom1() });
+          const expected: OdsTabsChangeEventDetail = { panel: 'advance' };
+          const odsTabsChanged: EventSpy = await spyEvent('odsTabsChanged');
+
+          await page.waitForChanges();
+          await itemAdvanceElement.click();
+          await page.waitForChanges();
+          await updateReferences();
+          expect(await itemRiseElement.getProperty('active')).toEqual(false);
+          expect(await itemAdvanceElement.getProperty('active')).toEqual(true);
+          expect(odsTabsChanged).toHaveReceivedEventDetail(expected);
+        });
+      });
+
+      it('should select the advance panel', async () => {
+        await setup({ attributes: { panel: 'advance' }, html: getTabsDom1() });
+        const odsTabsChanged: EventSpy = await spyEvent('odsTabsChanged');
+        await page.waitForChanges();
+        await updateReferences();
+        expect(await itemRiseElement.getProperty('active')).toEqual(false);
+        expect(await itemAdvanceElement.getProperty('active')).toEqual(true);
+        expect(odsTabsChanged).not.toHaveReceivedEvent();
+      });
     });
   });
 
 
   describe('with panel content', () => {
 
-    beforeEach(async () => {
-      const tabsDom1 = getTabsDom1() + `
-<osds-tab-panel name='advance'>Des serveurs polyvalents pour les petites et moyennes entreprises.</osds-tab-panel>
-<osds-tab-panel name='rise'>Les serveurs les plus abordables, adaptés à la plupart des usages.</osds-tab-panel>`;
+    it('should select the first panel by default', async () => {
+      await setup({ attributes: { panel: '' }, html: getTabsWithPanels() });
 
-      await setup({ attributes: { panel: 'rise' }, html: tabsDom1 });
-    });
-
-
-    describe('click on item rise', () => {
-      it('should select the rise panel', async () => {
-        const expected: OdsTabsChangeEventDetail = { panel: 'advance' };
-        const odsTabsChanged: EventSpy = await spyEvent('odsTabsChanged');
-
-        await page.waitForChanges();
-        await itemAdvanceElement.click();
-        await page.waitForChanges();
-        await updateReferences();
-        expect(await panelRiseElement.getProperty('active')).toEqual(false);
-        expect(await panelAdvanceElement.getProperty('active')).toEqual(true);
-        expect(odsTabsChanged).toHaveReceivedEventDetail(expected);
-      });
-    });
-
-    it('should select active panel', async () => {
-      const odsTabsChanged: EventSpy = await spyEvent('odsTabsChanged');
       await page.waitForChanges();
       await updateReferences();
       expect(await panelRiseElement.getProperty('active')).toEqual(true);
       expect(await panelAdvanceElement.getProperty('active')).toEqual(false);
-      expect(odsTabsChanged).not.toHaveReceivedEvent();
+
+      // info: cannot test if event is fired during init:
+      // const expected: OdsTabsChangeEventDetail = { panel: 'rise' };
+      // expect(odsTabsChanged).toHaveReceivedEventDetail(expected);
     });
+
+    describe('selected', () => {
+
+      describe('click on item advance', () => {
+        it('should select the advance panel', async () => {
+        await setup({ attributes: { panel: 'rise' }, html: getTabsWithPanels() });
+          const expected: OdsTabsChangeEventDetail = { panel: 'advance' };
+          const odsTabsChanged: EventSpy = await spyEvent('odsTabsChanged');
+
+          await page.waitForChanges();
+          await itemAdvanceElement.click();
+          await page.waitForChanges();
+          await updateReferences();
+          expect(await panelRiseElement.getProperty('active')).toEqual(false);
+          expect(await panelAdvanceElement.getProperty('active')).toEqual(true);
+          expect(odsTabsChanged).toHaveReceivedEventDetail(expected);
+        });
+      });
+
+      it('should select active panel', async () => {
+        await setup({ attributes: { panel: 'rise' }, html: getTabsWithPanels() });
+        const odsTabsChanged: EventSpy = await spyEvent('odsTabsChanged');
+        await page.waitForChanges();
+        await updateReferences();
+        expect(await panelRiseElement.getProperty('active')).toEqual(true);
+        expect(await panelAdvanceElement.getProperty('active')).toEqual(false);
+        expect(odsTabsChanged).not.toHaveReceivedEvent();
+      });
+
+    });
+
   });
 
 

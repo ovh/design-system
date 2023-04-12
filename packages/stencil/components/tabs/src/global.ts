@@ -5,5 +5,5 @@
 
 import { OdsLogger } from '@ovhcloud/ods-core';
 
-const logger = new OdsLogger('button.global');
+const logger = new OdsLogger('tabs.global');
 logger.log('init');

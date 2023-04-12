@@ -13,11 +13,12 @@ export class OdsTabsController extends OdsComponentController<OdsTabs> {
   }
 
   afterInit() {
-    this.changeActivePanel(this.component.panel);
+    // nothing for now
   }
 
   beforeInit() {
-    this.component.onPanelPropChange(this.component.panel);
+    this.changeActivePanel(this.component.panel);
+    this.component.onContrastedPropChange(this.component.contrasted);
   }
 
   changeActivePanel(panel: string) {
@@ -28,8 +29,14 @@ export class OdsTabsController extends OdsComponentController<OdsTabs> {
     }
     items.forEach(item => item.active = item.panel === panel);
     this.component.getTabPanels().forEach(tabPanel => tabPanel.active = tabPanel.name === panel);
-    this.component.panel = panel;
-    this.component.emitChanged();
+    if (this.component.panel !== panel) {
+      this.component.panel = panel;
+      this.component.emitChanged();
+    }
+  }
+
+  propagateContrastedToItems(contrasted: boolean) {
+    this.component.getTabItems().forEach((item) => item.contrasted = contrasted);
   }
 
   getTabItems(elementTag: string) {

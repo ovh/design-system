@@ -1,23 +1,25 @@
 /* eslint-disable no-console */
 jest.mock('@ovhcloud/ods-core/src/components/tabs/ods-tabs/ods-tabs-controller'); // keep jest.mock before any import
 
-import { OdsTabItemSelectEventDetail } from '@ovhcloud/ods-core/src';
-import { OdsClearLoggerSpy, OdsInitializeLoggerSpy, OdsLoggerSpyReferences } from '@ovhcloud/ods-testing/src';
-import { OsdsTabs } from './osds-tabs';
 import {
   OdsComponentAttributes2StringAttributes,
   OdsLogger,
+  OdsTabItemSelectEventDetail,
   OdsTabsAttributes,
   OdsTabsController,
   odsTabsDefaultAttributes,
   OdsTabsSize,
 } from '@ovhcloud/ods-core';
 import {
+  OdsClearLoggerSpy,
   OdsCreateAttributes,
+  OdsInitializeLoggerSpy,
+  OdsLoggerSpyReferences,
   OdsStringAttributes2Str,
   odsTabsBaseAttributes,
   odsUnitTestAttribute,
 } from '@ovhcloud/ods-testing';
+import { OsdsTabs } from './osds-tabs';
 import { newSpecPage, SpecPage } from '@stencil/core/testing';
 import { getAttributeContextOptions } from '@ovhcloud/ods-stencil/libraries/stencil-testing';
 import { OsdsTabBarItem } from '../osds-tab-bar-item/osds-tab-bar-item';
@@ -191,11 +193,24 @@ describe('spec:OsdsTabs', () => {
     });
   });
 
-  it('should call controller.changeActivePanel when panel changed', async () => {
-    await setup({ attributes: { panel: 'a' }, html: baseHtml({}) });
-    await page.waitForChanges();
-    instance.panel = 'b';
-    await page.waitForChanges();
-    expect(controller.changeActivePanel).toHaveBeenCalledWith('b');
+  describe('onPanelPropChange', () => {
+    it('should call controller.changeActivePanel when panel changed', async () => {
+      await setup({ attributes: { panel: 'a' }, html: baseHtml({}) });
+      await page.waitForChanges();
+      instance.panel = 'b';
+      await page.waitForChanges();
+      expect(controller.changeActivePanel).toHaveBeenCalledWith('b');
+    });
   });
+
+  describe('onContrastedPropChange', () => {
+    it('should call controller.propagateContrastedToItems when contrasted changed', async () => {
+      await setup({ attributes: { panel: 'a', contrasted: false }, html: baseHtml({}) });
+      await page.waitForChanges();
+      instance.contrasted = true;
+      await page.waitForChanges();
+      expect(controller.propagateContrastedToItems).toHaveBeenCalledWith(true);
+    });
+  });
+
 });

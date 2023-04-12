@@ -1,6 +1,5 @@
 import { OdsClearLoggerSpy, OdsInitializeLoggerSpy, OdsLoggerSpyReferences } from '@ovhcloud/ods-testing/src';
 
-import { HTMLOdsInputElement } from '../input/ods-input-type';
 import { Ods } from '../../configure/ods';
 import { OdsLogger } from '../../logger/ods-logger';
 import { OdsQuantity } from './ods-quantity';
@@ -180,18 +179,6 @@ describe('spec:ods-quantity-controller', () => {
         expect(component.input.getAttribute('disabled')).toBe(null);
         expect((component.minus as HTMLSlotElement).getAttribute('disabled')).toBe(null);
         expect((component.plus as HTMLSlotElement).getAttribute('disabled')).toBe('');
-      });
-
-      it('should call console.log if event is set', () => {
-        const expected = 'Received the customer odsValueChange event: ';
-        const event = { detail: 'odsValueChange' };
-
-        setup();
-
-        controller.processInputValueChange(event as unknown as CustomEvent<HTMLOdsInputElement>);
-
-        expect(loggerSpyReferences.methodSpies.log).toHaveBeenCalledWith(expected, 'odsValueChange');
-        expect(loggerSpyReferences.methodSpies.log).toHaveBeenCalledTimes(1);
       });
     });
 

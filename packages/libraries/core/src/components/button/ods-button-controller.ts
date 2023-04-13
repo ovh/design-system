@@ -42,4 +42,39 @@ export class OdsButtonController extends OdsComponentController<OdsButton> {
       attribute: this.component.variant
     });
   }
+
+  handleClick(event: MouseEvent): void {
+    this.logger.log('Click on osds-button');
+
+    if (this.component.type === "submit") {
+      const form = (event.target as HTMLElement).closest("form");
+      if (form) {
+        this.submitForm(form, event);
+      }
+    }
+  }
+
+  handleKey(event: KeyboardEvent): void {
+    if(event.key === " " || event.key === "Enter") {
+      this.logger.log('Key on osds-button');
+
+      if (this.component.type === "submit") {
+        const form = (event.target as HTMLElement).closest("form");
+        if (form) {
+          this.submitForm(form, event);
+        }
+      }
+    }
+  }
+
+  private submitForm(form: HTMLFormElement, event: MouseEvent | KeyboardEvent) {
+    event.preventDefault();
+
+    const fakeButton = document.createElement('button');
+    fakeButton.type = 'submit';
+    fakeButton.style.display = 'none';
+    form.appendChild(fakeButton);
+    fakeButton.click();
+    fakeButton.remove();
+  }
 }

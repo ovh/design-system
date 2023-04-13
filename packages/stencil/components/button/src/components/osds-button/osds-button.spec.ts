@@ -32,6 +32,10 @@ describe('spec:osds-button', () => {
   let instance: OsdsButton;
   let controller: OdsButtonController;
 
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   async function setup({ attributes= {} , html = `` }: { attributes?: Partial<OdsButtonAttributes>, html?: string } = {}) {
     const minimalAttributes: OdsButtonAttributes = OdsCreateAttributes(attributes, odsButtonBaseAttributes);
     const stringAttributes = OdsComponentAttributes2StringAttributes<OdsButtonAttributes>(minimalAttributes, odsButtonDefaultAttributes);
@@ -210,6 +214,22 @@ describe('spec:osds-button', () => {
   });
 
   describe('controller', () => {
+    it('should call handleClick of controller', async () => {
+      const click = new MouseEvent('click');
+      await setup({});
+      instance.handleClick(click);
+      expect(controller.handleClick).toHaveBeenCalledTimes(1);
+      expect(controller.handleClick).toHaveBeenCalledWith(click);
+    });
+
+    it('should call handleKey of controller', async () => {
+      await setup({});
+      const key = new KeyboardEvent("keyup", { key : "Enter" });
+      instance.handleKey(key);
+      expect(controller.handleKey).toHaveBeenCalledTimes(1);
+      expect(controller.handleKey).toHaveBeenCalledWith(key);
+    });
+
     it('should call controller.validateAttributes', async () => {
       await setup();
       expect(controller.validateAttributes).toHaveBeenCalledWith();

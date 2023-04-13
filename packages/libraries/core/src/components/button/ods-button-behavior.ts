@@ -6,4 +6,6 @@ export interface OdsButtonBehavior {
    * @see OdsButtonController.validateAttributes
    */
   beforeRender(): void;
+  handleClick(event: MouseEvent): void;
+  handleKey(event: KeyboardEvent): void;
 }

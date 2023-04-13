@@ -61,6 +61,16 @@
   <span slot='end'>end</span>
 </osds-button>
 
+<p>In Form</p>
+<form action='' method='get'>
+  <div>
+    <label for="text">Enter text: </label>
+    <input type="text" name="text" id="text" required>
+  </div>
+
+  <osds-button type='submit' size='sm'>submit</osds-button>
+</form>
+
 <script>
   document.addEventListener('odsInitialized', ({detail}) => {
     const instance = detail.instance;

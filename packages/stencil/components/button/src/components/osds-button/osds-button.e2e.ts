@@ -16,17 +16,36 @@ describe('e2e:osds-button', () => {
   let slotContent: E2EElement;
   let linkElement: E2EElement;
   let buttonElement: E2EElement;
+  let checkSubmit;
 
-  async function setup({ attributes = {}, html = `` }: { attributes?: Partial<OdsButtonAttributes>, html?: string } = {}) {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
+  async function setup({ attributes = {}, html = ``, inForm }: { attributes?: Partial<OdsButtonAttributes>, html?: string, inForm?: boolean } = {}) {
     const minimalAttributes: OdsButtonAttributes = OdsCreateAttributes(attributes, odsButtonBaseAttributes);
     const stringAttributes = OdsComponentAttributes2StringAttributes<OdsButtonAttributes>(minimalAttributes, odsButtonDefaultAttributes);
+    let content = '';
+    const button = `<osds-button ${OdsStringAttributes2Str(stringAttributes)}>
+          ${html}
+        </osds-button>`;
 
     page = await newE2EPage();
-    await page.setContent(`
-      <osds-button ${OdsStringAttributes2Str(stringAttributes)}>
-        ${html}
-      </osds-button>
-    `);
+
+    if (inForm) {
+      content = `
+       <form onsubmit="onSubmit()">
+          ${button}
+        </form>
+      `
+    } else {
+      content = button;
+    }
+
+    checkSubmit = jest.fn();
+    await page.exposeFunction('onSubmit', checkSubmit); // EXPOSE
+
+    await page.setContent(content);
     await page.evaluate(() => document.body.style.setProperty('margin', '4px'));
     el = await page.find('osds-button');
 
@@ -168,6 +187,23 @@ describe('e2e:osds-button', () => {
       expect(await el.getProperty('size')).toBe(OdsButtonSize.md);
     });
   });
+
+  describe('form', () => {
+    beforeEach(async () => {
+      await setup({ attributes: { type: 'submit' }, html: `submit`, inForm: true });
+    });
+
+    it('should submit a form with click when type is submit', async () => {
+      await el.click();
+      expect(checkSubmit).toHaveBeenCalledTimes(1);
+    });
+
+    it('should submit a form with key is pressed when type is submit', async () => {
+      await el.press("Enter");
+      expect(checkSubmit).toHaveBeenCalledTimes(1);
+    });
+  });
+
 });
 
 

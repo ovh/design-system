@@ -25,14 +25,6 @@ export interface OdsQuantityBehavior {
   plus: HTMLSlotElement | null;
 
   /**
-  * before init component function
-  * should be called in connectedCallback stencil method
-  * should init input
-  * @see OdsQuantityController.initInput
-  */
-  beforeInit(): void;
-
-  /**
   * after init component function
   * should be called after component loads
   * should process input value change
@@ -43,6 +35,7 @@ export interface OdsQuantityBehavior {
   /**
   * after render component function
   * should be called after component render
+  * should init input
   * should init slots
   * @see OdsQuantityController.initSlots
   */

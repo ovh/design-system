@@ -23,5 +23,8 @@ export const config: Config = getStencilConfig({
   },
   prod: {
     globalScript: 'src/global.prod.ts'
+  },
+  test: {
+    globalScript: 'src/global.test.ts',
   }
 });

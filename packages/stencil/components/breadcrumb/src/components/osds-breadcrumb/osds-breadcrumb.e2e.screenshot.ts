@@ -10,6 +10,20 @@ describe('e2e:osds-breadcrumb', () => {
     onPage && onPage({ page });
     await page.setContent(`
     <osds-breadcrumb>
+    <osds-breadcrumb-item>
+      <osds-link color="primary" href="home"> Home </osds-link>
+    </osds-breadcrumb-item>
+    <osds-breadcrumb-item><osds-link color="primary" href="web">Web</osds-link></osds-breadcrumb-item>
+    <osds-breadcrumb-item><osds-text>Domain</osds-text></osds-breadcrumb-item>
+  </osds-breadcrumb>
+  <osds-breadcrumb>
+  <osds-breadcrumb-item>
+    <osds-link color="primary" href="home"> Home </osds-link>
+  </osds-breadcrumb-item>
+  <osds-breadcrumb-item><osds-link color="primary" href="web">Web</osds-link></osds-breadcrumb-item>
+  <osds-breadcrumb-item><osds-link color="primary" href="Domains">Domains</osds-link></osds-breadcrumb-item>
+  <osds-breadcrumb-item><osds-link color="primary" href="Informations générales">General information</osds-link></osds-breadcrumb-item>
+  <osds-breadcrumb-item><osds-text>DNS zone</osds-text></osds-breadcrumb-item>
 </osds-breadcrumb>
     `);
     await page.evaluate(() => document.body.style.setProperty('margin', '0px'));

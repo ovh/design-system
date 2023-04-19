@@ -3,9 +3,7 @@
 
 .button {
   height: 3.25rem;
-  border-radius: var(--ods-size-border-radius-02);
   border-width: var(--ods-size-inset-02);
-  padding: 0 var(--ods-size-squish-06-x);
 }
 
 @mixin osds-button-theme-size() {
@@ -13,11 +11,11 @@
 
   @include ods-foreach-theme-size(button) using ($sizes) {
     @include osds-button-on-selected-host() {
-      border-radius: ods-get-size-property($sizes, border-radius);
+      border-radius: var(--ods-size-button-border-radius, ods-get-size-property($sizes, border-radius));
       border-width: ods-get-size-property($sizes, border-width);
       font-size: ods-get-size-property($sizes, font-size);
       height: ods-get-size-property($sizes, height);
-      padding: ods-get-size-property($sizes, padding-y) ods-get-size-property($sizes, padding-x);
+      padding: ods-get-size-property($sizes, padding-y) var(--ods-size-button-padding-x, ods-get-size-property($sizes, padding-x));
     }
   }
 }

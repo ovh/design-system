@@ -1,0 +1,21 @@
+@import 'styles/osds-menu-group.color.scss';
+@import 'styles/osds-menu-group.size.scss';
+@import 'styles/osds-menu-group.typography.scss';
+
+@import '~@ovhcloud/ods-theming/color/ods-theming-color';
+@import '~@ovhcloud/ods-theming/ods-theme';
+
+:host{
+  display: inline-block;
+  max-width: 24rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-break: break-all;
+}
+
+@include ods-theme-component() {
+  @include osds-menu-group-theme-color();
+  @include osds-menu-group-theme-size();
+  @include osds-menu-group-theme-typography();
+}

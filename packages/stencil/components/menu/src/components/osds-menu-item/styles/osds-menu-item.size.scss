@@ -2,4 +2,7 @@
 
 @mixin osds-menu-item-theme-size() {
 
+  //::slotted(:not(osds-button)) {
+  //  padding: 0 var(--ods-size-inset-04);
+  //}
 }

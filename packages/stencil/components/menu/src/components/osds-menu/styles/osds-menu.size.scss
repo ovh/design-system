@@ -3,9 +3,14 @@
 @mixin osds-menu-theme-size() {
   /** sizes */
 
-
   ocdk-surface {
-    padding: 8px;
-    width: inherit;
+    padding: 0;
+    width: auto;
+    max-width: 25rem;
+    overflow: hidden;
   }
+}
+
+::slotted(osds-menu-group:first-of-type) {
+  padding-top: var(--ods-size-inset-04);
 }

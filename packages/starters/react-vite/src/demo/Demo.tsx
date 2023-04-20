@@ -2,7 +2,7 @@ import React from 'react';
 
 // you can import react proxy from the independent package
 import { OsdsButton } from '@ovhcloud/ods-stencil/components/button/react';
-
+import { OsdsBreadcrumb, OsdsBreadcrumbItem } from '@ovhcloud/ods-stencil/components/breadcrumb/react';
 // you can import multiple react proxies from the grouped package
 import {
   OsdsCheckbox,
@@ -12,7 +12,9 @@ import {
   OsdsRadioGroup,
   OsdsTile,
   OsdsToggle,
-  OsdsFlag
+  OsdsFlag,
+  OsdsLink,
+  OsdsText,
 } from '@ovhcloud/ods-stencil/components/react';
 
 // each type you import types from ODS, you will need to import the core
@@ -20,7 +22,6 @@ import { Ods, OdsCheckboxButtonSize, OdsExternalLogger, OdsMessageType, ODS_COUN
 
 // each theming related type you use, you will need to import the theming
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
-
 
 import CartManagerUsage from './CartManagerUsage';
 import CartUsage from './CartUsage';
@@ -40,18 +41,51 @@ function handleMyButtonClick() {
   logger.log('click on myButton');
 }
 
-
 const Demo: React.FC = () => (
   <div className={'ods-demo'}>
     <h3 className={'ods-subheading-200'}>ODS React components</h3>
     <h5>Ods Button</h5>
     <div>
-      <OsdsButton color={OdsThemeColorIntent.primary} onClick={handleOdsButtonClick} flex>ODS button</OsdsButton>
-      <MyButton flex={true} onClick={handleMyButtonClick}>My React Button based on ODS</MyButton>
+      <OsdsButton color={OdsThemeColorIntent.primary} onClick={handleOdsButtonClick} flex>
+        ODS button
+      </OsdsButton>
+      <MyButton flex={true} onClick={handleMyButtonClick}>
+        My React Button based on ODS
+      </MyButton>
     </div>
+    <h5>Ods Breadcrumb</h5>
+    <OsdsBreadcrumb>
+      <OsdsBreadcrumbItem>
+        <OsdsLink color={OdsThemeColorIntent.primary}>item1</OsdsLink>
+      </OsdsBreadcrumbItem>
+      <OsdsBreadcrumbItem>
+        <OsdsLink color={OdsThemeColorIntent.primary}>item2</OsdsLink>
+      </OsdsBreadcrumbItem>
+      <OsdsBreadcrumbItem>
+        <OsdsText>item active</OsdsText>
+      </OsdsBreadcrumbItem>
+    </OsdsBreadcrumb>
 
+    <OsdsBreadcrumb>
+      <OsdsBreadcrumbItem>
+        <OsdsLink color={OdsThemeColorIntent.primary}>item1</OsdsLink>
+      </OsdsBreadcrumbItem>
+      <OsdsBreadcrumbItem>
+        <OsdsLink color={OdsThemeColorIntent.primary}>item2</OsdsLink>
+      </OsdsBreadcrumbItem>
+      <OsdsBreadcrumbItem>
+        <OsdsLink color={OdsThemeColorIntent.primary}>item3</OsdsLink>
+      </OsdsBreadcrumbItem>
+      <OsdsBreadcrumbItem>
+        <OsdsLink color={OdsThemeColorIntent.primary}>item4</OsdsLink>
+      </OsdsBreadcrumbItem>
+      <OsdsBreadcrumbItem>
+        <OsdsText>item active</OsdsText>
+      </OsdsBreadcrumbItem>
+    </OsdsBreadcrumb>
+    <div></div>
     <h5>Ods Flag</h5>
-    <div style={{height: 20, width: 30, margin: 'auto'}}>
+    <div style={{ height: 20, width: 30, margin: 'auto' }}>
       <OsdsFlag iso={ODS_COUNTRY_ISO_CODE.PL} />
     </div>
 

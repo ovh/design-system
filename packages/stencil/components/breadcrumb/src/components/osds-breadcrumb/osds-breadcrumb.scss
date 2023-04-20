@@ -15,6 +15,11 @@
   @include osds-breadcrumb-theme-size();
   @include osds-breadcrumb-theme-typography();
 }
+
+ul {
+  padding: 0;
+}
+
 ::slotted(osds-breadcrumb-item):before {
   content: '|';
   padding: 8px;
@@ -33,4 +38,10 @@ span:before {
 span:first-child::before {
   content: '';
 }
+
 // apply the theme template for the component
+@include ods-theme-component() {
+  @include osds-breadcrumb-theme-typography();
+  @include osds-breadcrumb-theme-size();
+  @include osds-breadcrumb-theme-color();
+}

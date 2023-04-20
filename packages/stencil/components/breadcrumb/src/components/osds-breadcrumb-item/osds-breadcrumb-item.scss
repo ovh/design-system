@@ -9,20 +9,6 @@
 // /!\ for theming purposes, it has to be done in theming files
 // (i.e. packages/libraries/theming/...)
 
-:host([attribute]) {
-}
-
-:host {
-  display: inline-block;
-}
-
-// apply the theme template for the component
-@include ods-theme-component() {
-  @include osds-breadcrumb-item-theme-color();
-  @include osds-breadcrumb-item-theme-size();
-  @include osds-breadcrumb-item-theme-typography();
-}
-
 li {
   display: inline-block;
 }

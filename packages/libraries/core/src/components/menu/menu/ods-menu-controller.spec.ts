@@ -143,7 +143,7 @@ describe('spec:ods-menu-controller', () => {
     });
 
     describe('method: handleSurfaceKey', () => {
-      xit('should do nothing if key is not ESCAPE', async () => {
+      it('should do nothing if key is not ESCAPE', async () => {
         setup(component);
 
         component.surface = new OcdkSurfaceMock() as OcdkSurface;
@@ -160,7 +160,7 @@ describe('spec:ods-menu-controller', () => {
         expect(component.surface.opened).toBeTruthy();
       });
 
-      xit('should close the surface on ESCAPE press', async () => {
+      it('should close the surface on ESCAPE press', async () => {
         setup(component);
 
         component.surface = new OcdkSurfaceMock() as OcdkSurface;
@@ -236,7 +236,7 @@ describe('spec:ods-menu-controller', () => {
         expect(component.surface.opened).toBeTruthy();
       });
 
-      xit('should close the surface when click outside of the component', async () => {
+      it('should close the surface when click outside of the component', async () => {
         setup(component);
         component.surface = new OcdkSurfaceMock() as OcdkSurface;
         component.surface!.opened = true;
@@ -247,7 +247,7 @@ describe('spec:ods-menu-controller', () => {
           composed: true
         });
 
-        const target = document.createElement("OSDS-LINK");
+        const target = document.createElement("OSDS-BUTTON");
         Object.defineProperty(event, 'target', { value: target })
 
         await controller.checkForClickOutside(event);

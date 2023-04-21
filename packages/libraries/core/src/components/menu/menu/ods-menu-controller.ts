@@ -55,40 +55,7 @@ export class OdsMenuController extends OdsComponentController<OdsMenu> {
   }
 
   handleSurfaceKey(event: KeyboardEvent): void {
-    const currentElement = (event.target as HTMLElement).closest('osds-menu-item');
-
-    if(event.key === "ArrowUp"){
-      this.logger.log('Key up in surface');
-      let previousElement = currentElement?.previousElementSibling;
-
-      while (previousElement && (previousElement.tagName === "OSDS-MENU-ITEM" || previousElement.tagName === "OSDS-DIVIDER")) {
-        if (previousElement.firstElementChild?.tagName === "OSDS-LINK"){
-          (previousElement.firstElementChild.shadowRoot?.querySelector('a') as HTMLElement).focus();
-          break;
-        } else if (previousElement.firstElementChild?.tagName === "OSDS-BUTTON") {
-          (previousElement.firstElementChild as HTMLElement).focus();
-          break;
-        } else {
-          previousElement = previousElement.previousElementSibling;
-        }
-      }
-    } else if (event.key === "ArrowDown") {
-      this.logger.log('Key down in surface');
-      let nextElement = currentElement?.nextElementSibling;
-
-      while (nextElement && (nextElement.tagName === "OSDS-MENU-ITEM" || nextElement.tagName === "OSDS-DIVIDER")) {
-        if (nextElement.firstElementChild?.tagName === "OSDS-LINK" ) {
-          (nextElement.firstElementChild.shadowRoot?.querySelector('a') as HTMLElement).focus();
-          break;
-        } else if (nextElement.firstElementChild?.tagName === "OSDS-BUTTON") {
-          (nextElement.firstElementChild as HTMLElement).focus();
-          break;
-        }
-        else {
-          nextElement = nextElement.nextElementSibling;
-        }
-      }
-    } else if (event.key === "Escape") {
+    if (event.key === "Escape") {
       this.logger.log('EscapeKey in surface');
       if(this.component.surface) {
         this.component.surface.opened = false;
@@ -101,7 +68,7 @@ export class OdsMenuController extends OdsComponentController<OdsMenu> {
       return;
     } else {
       this.logger.log('Click outside component while he is opened');
-      this.component.surface.close();
+      this.component.surface.opened = false;
     }
   }
 

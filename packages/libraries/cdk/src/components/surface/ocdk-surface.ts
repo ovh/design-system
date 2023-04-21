@@ -11,8 +11,9 @@ import { OcdkSurfaceMaxDimensions } from './core/ocdk-surface-max-dimensions';
 import { OcdkSurfaceStrategyDefiner } from './core/system/ocdk-surface-strategy-definer';
 import { OcdkSurfaceStrategyDefinerConfig } from './core/system/ocdk-surface-strategy-definer-config';
 import { ocdkGetCorrectPropertyName } from '../../utils/css/ocdk-get-correct-property-name';
+import { OcdkSurfaceBehaviour } from './ocdk-surface-behaviour';
 
-export class OcdkSurface extends HTMLElement {
+export class OcdkSurface extends HTMLElement implements OcdkSurfaceBehaviour {
   static totalIds = 0;
   adapter: OcdkSurfaceAdapter;
   private anchorElement!: Element | null;

@@ -32,9 +32,15 @@ describe('e2e:osds-menu', () => {
     menuItemsSlotContent = await page.find('osds-menu >>> ocdk-surface');
   }
 
+  const template = `
+  <osds-button slot="menu-title" color="primary">Button</osds-button>
+  <osds-menu-item><osds-button color="primary" size='sm' variant='ghost' flex disabled><span slot="start">Action</span></osds-button></osds-menu-item>
+  `;
+
   it('should render', async () => {
     await setup({ attributes: { } });
     expect(el).not.toBeNull();
+    expect(el).toHaveClass('hydrated');
   });
 
   describe('menu title slot', () => {
@@ -63,28 +69,32 @@ describe('e2e:osds-menu', () => {
     });
 
     it('should change the display of the surface when clicked on', async () => {
-      const button = `<osds-button slot="menu-title" color="primary">Button</osds-button>`;
-      const surface = `<osds-menu-item><osds-link href="#" color="primary">Link</osds-link></osds-menu-item>`;
-      await setup({ attributes: { }, html: button + surface });
+      await setup({ attributes: { }, html: template });
       await menuTitleContent.click();
-      expect(menuItemsSlotContent).toHaveClass('ocdk-surface--open')
+      expect(menuItemsSlotContent).toHaveClass('ocdk-surface--open');
     });
 
     xit('should change the display of the surface when enter is pressed', async () => {
-      const button = `<osds-button slot="menu-title" color="primary">Button</osds-button>`;
-      const surface = `<osds-menu-item><osds-link href="#" color="primary">Link</osds-link></osds-menu-item>`;
-      await setup({ attributes: { }, html: button + surface });
+      await setup({ attributes: { }, html: template });
       await menuTitleContent.press('Enter');
-      expect(menuItemsSlotContent).toHaveClass('ocdk-surface--open')
+      expect(menuItemsSlotContent).toHaveClass('ocdk-surface--open');
     });
 
     xit('should change the display of the surface when space is pressed', async () => {
-      const button = `<osds-button slot="menu-title" color="primary">Button</osds-button>`;
-      const surface = `<osds-menu-item><osds-link href="#" color="primary">Link</osds-link></osds-menu-item>`;
-      await setup({ attributes: { }, html: button + surface });
+      await setup({ attributes: { }, html: template });
       await page.focus('[slot="menu-title"]');
       await page.keyboard.press('Space');
-      expect(menuItemsSlotContent).toHaveClass('ocdk-surface--open')
+      expect(menuItemsSlotContent).toHaveClass('ocdk-surface--open');
+    });
+  });
+
+  describe('disabled', () => {
+    it('should have disabled attribute on menu-title slot element', async () => {
+      await setup({ attributes: { }, html: template });
+      const trigger = await page.find('osds-button');
+      el.setAttribute('disabled', 'disabled');
+      await page.waitForChanges();
+      expect(trigger).toHaveAttribute('disabled');
     });
   });
 
@@ -95,9 +105,7 @@ describe('e2e:osds-menu', () => {
     });
 
     it('should hide the surface when a click happened outside of the surface', async () => {
-      const button = `<osds-button slot="menu-title" color="primary">Button</osds-button>`;
-      const surface = `<osds-menu-item><osds-link href="#" color="primary">Link</osds-link></osds-menu-item>`;
-      await setup({ attributes: { }, html: button + surface });
+      await setup({ attributes: { }, html: template });
       await menuTitleContent.click();
       await el.click();
       expect(menuItemsSlotContent).not.toHaveClass('ocdk-surface--open')

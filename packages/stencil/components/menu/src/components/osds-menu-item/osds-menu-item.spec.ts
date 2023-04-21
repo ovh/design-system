@@ -19,10 +19,10 @@ describe('spec:osds-menu', () => {
 
   let page: SpecPage;
   let instance: OsdsMenuItem;
-  let menuItemText: HTMLSlotElement | null | undefined;
+  let menuItemContent: HTMLSlotElement | null | undefined;
 
   function findElements(){
-    menuItemText = page.root.shadowRoot.querySelector('slot:not([name])');
+    menuItemContent = page.root.shadowRoot.querySelector('slot:not([name])');
   };
 
   async function setup({ attributes = {}, html = `` }: { attributes?: Partial<OdsMenuItemAttributes>, html?: string }) {
@@ -47,7 +47,7 @@ describe('spec:osds-menu', () => {
   describe('contents', () => {
     it('should have an unnamed slot', async () => {
       await setup({ attributes: {}, html: `` });
-      expect(menuItemText).toBeTruthy();
+      expect(menuItemContent).toBeTruthy();
     });
   });
 });

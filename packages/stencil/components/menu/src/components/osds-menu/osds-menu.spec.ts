@@ -117,6 +117,14 @@ describe('spec:osds-menu', () => {
       expect(controller.handleTriggerKey).toHaveBeenCalledTimes(1);
       expect(controller.handleTriggerKey).toHaveBeenCalledWith(key);
     });
+
+    it('should call handleSurfaceKey of controller', async () => {
+      await setup({});
+      const key = new KeyboardEvent("keyup", { key : "ArrowUp" });
+      instance.handleSurfaceKey(key);
+      expect(controller.handleSurfaceKey).toHaveBeenCalledTimes(1);
+      expect(controller.handleSurfaceKey).toHaveBeenCalledWith(key);
+    });
   })
 
   describe('controller functions',  () => {

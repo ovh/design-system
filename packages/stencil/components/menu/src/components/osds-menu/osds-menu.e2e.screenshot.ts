@@ -17,16 +17,16 @@ describe('e2e:osds-menu', () => {
     await page.setContent(`
       <osds-menu>
         <osds-button slot="menu-title" color="primary">Button <osds-icon name='home' size='xs'></osds-icon></osds-button>
-        <osds-menu-item>
+        <osds-menu-group>
           <osds-text>Group 1</osds-text>
-        </osds-menu-item>
+        </osds-menu-group>
         <osds-menu-item>
-          <osds-link href="#" color="primary">Link</osds-link>
+          <osds-button size="sm" href="#" variant="ghost">Button </osds-button>
         </osds-menu-item>
         <osds-divider color="text" separator="true"></osds-divider>
-        <osds-menu-item>
+        <osds-menu-group>
           <osds-text>Group 2</osds-text>
-        </osds-menu-item>
+        </osds-menu-group>
         <osds-menu-item>
           <osds-button size="sm" href="#" variant="ghost">Button </osds-button>
         </osds-menu-item>

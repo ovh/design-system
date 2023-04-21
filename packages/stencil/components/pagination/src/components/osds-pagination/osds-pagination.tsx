@@ -148,7 +148,6 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
                         onKeyDown={(event: any) => {
                           if (!disabled) {
                             this.onKeyPress(event, Number(page.id));
-                            this.el.focus();
                           }
                         }}
                         onClick={() => {

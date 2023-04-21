@@ -10,8 +10,16 @@ export class OdsPaginationController extends OdsComponentController<OdsPaginatio
     super(component);
   }
 
+  /**
+    Creates a list of pages for pagination with given number of total pages and selected page.
+    @param totalPages - Total number of pages.
+    @param pageSelected - Selected page number.
+    @returns An array of objects representing pages with 'id' (page number) and 'active' (displayed page) properties.
+  */
   createPageList(totalPages: number, pageSelected: number) {
-    let pageList = [];
+    const pageList: Array<{ active: boolean; id: number }> = [];
+
+    // Create initial pageList with 'active' property set to false for each page.
     for (let i = 1; i <= totalPages; i++) {
       pageList.push({ id: i, active: false });
     }
@@ -19,17 +27,19 @@ export class OdsPaginationController extends OdsComponentController<OdsPaginatio
     let startIndex = Math.max(pageSelected - 2, 1);
     let endIndex = Math.min(startIndex + 4, totalPages);
 
+    // If there are less than or equal to 5 pages, set all pages as active (all displayed).
     if (totalPages <= 5) {
       for (let i = 0; i < pageList.length; i++) {
         pageList[i].active = true;
       }
     } else {
-      // >6
+      // If there are more than 5 pages, set only some of them as active (not all displayed).
       if (totalPages - pageSelected < 2) {
-        // last pages of a long list
+        // If selected page is one of the last pages of a long list, show the last 5 pages.
         startIndex = totalPages - 4;
       }
       if (totalPages > 5 && endIndex - startIndex < 4) {
+        // If there are fewer than 4 pages between startIndex and endIndex, adjust them.
         if (startIndex === 1) {
           endIndex = Math.min(startIndex + 5, totalPages);
         } else if (endIndex === totalPages) {
@@ -38,9 +48,11 @@ export class OdsPaginationController extends OdsComponentController<OdsPaginatio
       }
 
       for (let i = startIndex; i <= endIndex; i++) {
+        // If i is two pages away from the selected page, skip it if it is between 4 and totalPages-2.
         if (i == pageSelected - 2 && pageSelected < totalPages - 1 && pageSelected > 4 && pageSelected < totalPages - 2) {
           continue;
         }
+        // If i is two pages away from the selected page, skip it if it is greater than 5.
         if (i == pageSelected + 2 && pageSelected < totalPages - 3 && i > 5) {
           continue;
         }
@@ -48,10 +60,12 @@ export class OdsPaginationController extends OdsComponentController<OdsPaginatio
       }
 
       if (startIndex > 1) {
+        // If startIndex is not 1, show the first page as active.
         pageList[0].active = true;
       }
 
       if (endIndex < totalPages) {
+        // If endIndex is not equal to totalPages, show the last page as active.
         pageList[totalPages - 1].active = true;
       }
     }

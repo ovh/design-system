@@ -5,10 +5,10 @@ import { OdsPaginationMethods } from './ods-pagination-methods';
 import { OdsPaginationCurrentChangeEventDetail } from './ods-pagination-current-change-event-detail';
 
 export class OdsPaginationMock implements OdsPagination<OdsPaginationMethods, OdsPaginationEvents> {
-  disabled: boolean = false;
+  disabled = false;
   defaultCurrent?: number;
-  current: number = 1;
-  totalPages: number = 1;
+  current = 1;
+  totalPages = 1;
 
   odsCurrentChange!: OdsPaginationCurrentChangeEventDetail;
 

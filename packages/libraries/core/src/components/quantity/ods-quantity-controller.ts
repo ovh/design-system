@@ -33,13 +33,15 @@ export class OdsQuantityController extends OdsComponentController<OdsQuantity> {
   }
 
   private onBlur() {
-    if (this.component.input && this.component.input.max && this.component.input.min) {
+    if (this.component.input) {
       const valueAsNb = Number(this.component.input.value);
       const minNb = Number(this.component.input.min);
       const maxNb = Number(this.component.input.max);
 
-      if (!isNaN(valueAsNb)) {
-        this.component.input.value = `${Math.max(minNb, Math.min(maxNb, valueAsNb))}`;
+      if((this.component.input.min || this.component.input.min === 0)  && (this.component.input.max || this.component.input.max === 0)) {
+        if (!isNaN(valueAsNb)) {
+          this.component.input.value = `${Math.max(minNb, Math.min(maxNb, valueAsNb))}`;
+        }
       }
     }
   }
@@ -49,11 +51,11 @@ export class OdsQuantityController extends OdsComponentController<OdsQuantity> {
       this.logger.log("Received the customer odsValueChange event: ", event.detail);
     }
     if (this.component.input && this.component.minus && this.component.plus) {
-      if (this.component.input.value && this.component.input.min && this.component.input.max) {
-        const valueAsNb = Number(this.component.input.value);
-        const minNb = Number(this.component.input.min);
-        const maxNb = Number(this.component.input.max);
+      const valueAsNb = Number(this.component.input.value);
+      const minNb = Number(this.component.input.min);
+      const maxNb = Number(this.component.input.max);
 
+      if ((this.component.input.value || this.component.input.value === 0)  && (this.component.input.min || this.component.input.min === 0)  && (this.component.input.max || this.component.input.max === 0)) {
         this.removeDisabled(this.component.minus, this.component.plus);
 
         if (!isNaN(valueAsNb)) {

@@ -20,7 +20,8 @@
     "packages/stencil/components/!(loader|custom-elements|custom-elements-bundle)*/vue",
     "packages/stencil",
     "packages/starters/*",
-    "packages/tools/*"
+    "packages/tools/*",
+    "packages/tools/generator/component"
   ],
   "scripts": {
     "build": "lerna run build",
@@ -35,10 +36,8 @@
     "doc": "lerna run doc",
     "doc:api": "lerna run doc:api",
     "doc:api:slow": "lerna run --concurrency 1 doc:api",
+    "generate:component": "yarn workspace @ovhcloud/ods-component-generator run generate",
     "generate:licence": "npx generate-license-file --input package.json --output THIRD-PARTY-LICENCES --overwrite && lerna run generate:licence",
-    "generate:stencil:component": "yarn workspace @ovhcloud/ods-stencil-component-generator run generate",
-    "generate:stencil:library": "yarn workspace @ovhcloud/ods-stencil-library-generator run generate",
-    "generate:story": "yarn workspace @ovhcloud/ods-story-generator run generate",
     "generate:theme": "lerna run generate:theme",
     "ignore:rm": "lerna run ignore:rm",
     "lerna:ls:pl": "lerna ls -pl",
@@ -107,6 +106,7 @@
     "registry": ""
   },
   "resolutions": {
-    "ua-parser-js": "0.7.18"
+    "ua-parser-js": "0.7.18",
+    "@types/react": "^16.14.0"
   }
 }

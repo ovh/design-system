@@ -1,0 +1,213 @@
+## Testing
+To build a robust Design System, we are heavily testing our components.
+
+### Types of tests
+
+Common imports for all types of tests:
+``` typescript
+import {
+  Ods%Component%Attributes,
+  ods%Component%DefaultAttributes,
+  OdsComponentAttributes2StringAttributes
+} from '@ovhcloud/ods-core';
+import {
+  ods%Component%BaseAttributes,
+  OdsCreateAttributes,
+  OdsStringAttributes2Str
+} from '@ovhcloud/ods-testing';
+
+// only when you'll have colors to test on your component
+import { OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
+```
+
+Common setup for all following types of test:
+``` typescript
+async function setup({
+                       attributes = {},
+                       html = ``
+                     }: { attributes?: Partial<Ods%Component%Attributes>, html?: string } = {}) {
+    const minimalAttributes: Ods%Component%Attributes = OdsCreateAttributes(attributes, ods%Component%BaseAttributes);
+    const stringAttributes = OdsComponentAttributes2StringAttributes<Ods%Component%Attributes>(minimalAttributes, ods%Component%DefaultAttributes);
+    }
+```
+
+#### Unit testing
+Add the following imports to the common ones:
+``` typescript
+import {
+  odsUnitTestAttribute
+} from '@ovhcloud/ods-testing';
+import { getAttributeContextOptions } from '@ovhcloud/ods-stencil/libraries/stencil-testing';
+```
+
+Then, you add the testing setup and test the component attributes as explained below:
+``` typescript
+describe('spec:osds-%component%', () => {
+  let page: SpecPage;
+  let instance: Osds%Component%;
+
+  // add the setup common to all types of tests here
+
+      page = await newSpecPage({
+        components: [Osds%Component%],
+        html: `<osds-%component% ${OdsStringAttributes2Str(stringAttributes)}>${html}</osds-%component%>`,
+      });
+
+      instance = page.rootInstance;
+  }
+
+  describe('attributes', () => {
+    const config = {
+      page: () => page,
+      instance: () => instance,
+      setup
+    };
+
+    // example to test all colors
+    describe('color', () => {
+      odsUnitTestAttribute<Ods%Component%Attributes, 'color'>({
+        ...getAttributeContextOptions<Ods%Component%Attributes, Osds%Component%, 'color'>({
+          name: 'color',
+          list: OdsThemeColorIntentList,
+          defaultValue: ods%Component%DefaultAttributes.color,
+          ...config
+        })
+      });
+    });
+
+    // example for a boolean attribute, here the attribute contrasted for instance
+    describe('contrasted', () => {
+      odsUnitTestAttribute<Ods%Component%Attributes, 'contrasted'>({
+        ...getAttributeContextOptions<Ods%Component%Attributes, Osds%Component%, 'contrasted'>({
+          name: 'contrasted',
+          list: [true, false],
+          defaultValue: ods%Component%DefaultAttributes.contrasted,
+          ...config
+        })
+      });
+    });
+  });
+});
+```
+
+#### End-to-end testing
+
+Testing setup:
+``` typescript
+describe('e2e:osds-%component%', () => {
+  let page: E2EPage;
+
+  // add the setup common to all types of tests here
+
+  page = await newE2EPage();
+      await page.setContent(`
+        <osds-%component% ${OdsStringAttributes2Str(stringAttributes)}>
+          ${html}
+        </osds-%component%>
+      `);
+});
+```
+
+Setup and attributes are now ready for your component testing.
+
+#### Visual regression testing
+Setup is similar to end-to-end testing:
+``` typescript
+describe('e2e:osds-%component%', () => {
+  let page: E2EPage;
+
+  // add the setup common to all types of tests here
+
+  page = await newE2EPage();
+      await page.setContent(`
+        <osds-%component% ${OdsStringAttributes2Str(stringAttributes)}>
+          ${html}
+        </osds-%component%>
+      `);
+});
+```
+
+After setting content, you can declare every action and/or behaviour you would like to test with screenshots.
+For instance, no action, contrasted, disabled and error actions:
+``` typescript
+const screenshotActions = [
+    {
+      actionDescription: 'no action',
+      action: () => {
+        // noop
+      },
+    }, {
+      actionDescription: 'contrasted',
+      action: () => el.setProperty('contrasted', true),
+    }, {
+      actionDescription: 'disabled',
+      action: () => el.setProperty('disabled', true),
+    }, {
+      actionDescription: 'error',
+      action: () => el.setProperty('error', true),
+    }
+  ];
+```
+
+And no behaviour, hover and focus behaviours:
+``` typescript
+const screenshotBehaviours = [
+    {
+      behaviourDescription: 'no behaviour',
+      behaviour: () => {
+        // noop
+      },
+    }, {
+      behaviourDescription: 'hover',
+      behaviour: () => el.hover(),
+    }, {
+      behaviourDescription: 'focus',
+      behaviour: () => el.focus(),
+    },
+  ];
+```
+
+Then, you can check screenshot visual differences for previously declared actions and behaviours, but also each color, size or variant etc. if there is any:
+``` typescript
+describe('screenshots', () => {
+  screenshotActions.forEach(({ actionDescription, action }) => {
+    screenshotBehaviours.forEach(({ behaviourDescription, behaviour }) => {
+      OdsThemeColorIntentList.forEach((color) => {
+        Ods%Component%SizeList.forEach((size) => {
+          Ods%Component%VariantList.forEach((variant) => {
+            it([color, actionDescription, behaviourDescription].join(', '), async () => {
+              await setup({
+                attributes: {
+                  color,
+                  size,
+                  variant
+                },
+              });
+              action();
+              behaviour();
+              await page.waitForChanges();
+
+              await page.evaluate(() => {
+                const element = document.querySelector('osds-%component%') as HTMLElement;
+                return { width: element.clientWidth, height: element.clientHeight };
+              });
+              await page.setViewport({ width: 600, height:600 });
+              const results = await page.compareScreenshot('%component%', { fullPage: false, omitBackground: true });
+              expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
+            });
+          });
+        });
+      });
+    });
+  });
+});
+```
+
+
+
+
+
+
+
+
+

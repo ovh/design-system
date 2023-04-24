@@ -5,6 +5,7 @@ import { OdsLogger } from '../../logger/ods-logger';
 import { OdsQuantity } from './ods-quantity';
 import { OdsQuantityController } from './ods-quantity-controller';
 import { OdsQuantityMock } from './ods-quantity-mock';
+import { HTMLOdsInputElement, OdsInputType } from '../input/ods-input-type';
 
 describe('spec:ods-quantity-controller', () => {
   let controller: OdsQuantityController;
@@ -20,6 +21,7 @@ describe('spec:ods-quantity-controller', () => {
 
   function setup(attributes: Partial<OdsQuantity> = {}) {
     component = { ...component, ...attributes };
+    document.body.appendChild(component.el);
     controller = new OdsQuantityController(component);
   }
 
@@ -84,6 +86,85 @@ describe('spec:ods-quantity-controller', () => {
         expect(spyInputAddEventListener).toHaveBeenCalledWith('change', expect.any(Function));
         expect(spyInputAddEventListener).toHaveBeenCalledWith('blur', expect.any(Function));
         expect(spyInputAddEventListener).toHaveBeenCalledTimes(2);
+      });
+
+      describe('methods:initInput onBlur', () => {
+        it('should change value of input if inferior to min on Blur', () => {
+          const input = document.createElement('input');
+          input.setAttribute('type', 'number');
+          input.setAttribute('value', '-1');
+          input.setAttribute('min', '2');
+          component.el.appendChild(input);
+
+          setup();
+          component.el.appendChild(input);
+
+          controller.initInput();
+          input.focus();
+          input.blur();
+
+          expect(input.value).toEqual(input.min);
+        })
+
+        it('should change value of input if superior to max on Blur',  () => {
+          const input = document.createElement('input');
+          input.setAttribute('type', 'number');
+          input.setAttribute('value', '11');
+          input.setAttribute('max', '10');
+
+          setup();
+          component.el.appendChild(input);
+
+          controller.initInput();
+          input.focus();
+          input.blur();
+
+          expect(input.value).toEqual(input.max);
+        })
+
+        it('should change value of osds-input if inferior to min on Blur',  () => {
+          const input = document.createElement('osds-input') as HTMLOdsInputElement;
+          input.type = OdsInputType.number;
+          input.setAttribute('type', 'number');
+          input.tabIndex = 0;
+          input.setAttribute('tabindex', '0');
+          input.value = "-2";
+          input.setAttribute('value', '-2');
+          input.min = 2;
+          input.setAttribute('min', '2');
+
+          setup();
+          component.el.appendChild(input);
+
+          controller.initInput();
+          input.focus();
+          input.blur();
+          input.dispatchEvent(new CustomEvent('odsInputBlur'));
+
+          expect(input.value).toEqual(input.min);
+        })
+
+        it('should change value of osds-input if superior to max on Blur',  () => {
+          const input = document.createElement('osds-input') as HTMLOdsInputElement;
+          input.type = OdsInputType.number;
+          input.setAttribute('type', 'number');
+          input.tabIndex = 0;
+          input.setAttribute('tabindex', '0');
+          input.value = "11";
+          input.setAttribute('value', '11');
+          input.max = 10;
+          input.setAttribute('max', '10');
+
+          setup();
+          component.el.appendChild(input);
+
+          controller.initInput();
+          input.focus();
+          input.blur();
+          input.dispatchEvent(new CustomEvent('odsInputBlur'));
+
+          expect(input.value).toEqual(input.max);
+        })
       });
 
       describe('methods:initInput validation', () => {
@@ -156,6 +237,21 @@ describe('spec:ods-quantity-controller', () => {
       it('should set disable to minus slot', () => {
         component.input = (component.input as HTMLInputElement)
         component.input.min = '5';
+        component.input.max = '10';
+
+        setup();
+
+        controller.processInputValueChange();
+
+        expect(component.input.getAttribute('disabled')).toBe(null);
+        expect((component.minus as HTMLSlotElement).getAttribute('disabled')).toBe('');
+        expect((component.plus as HTMLSlotElement).getAttribute('disabled')).toBe(null);
+      });
+
+      it('should set disable to minus slot when value and min are 0', () => {
+        component.input = (component.input as HTMLInputElement);
+        component.input.value = '0';
+        component.input.min = '0';
         component.input.max = '10';
 
         setup();

@@ -77,6 +77,20 @@ describe('e2e:osds-quantity', () => {
     });
   });
 
+  xdescribe('minus button', () => {
+    it('should disabled minus button if value and min are equals to 0', async () => {
+      const zeroTemplate = `
+          <osds-button slot="minus" color="primary" size="sm">-</osds-button>
+          <osds-input type="number" color="primary" min="0" max="3" step="1" value="0"></osds-input>
+          <osds-button slot="plus" color="primary" size="sm">+</osds-button>`;
+
+      await setup({ attributes: {}, html: zeroTemplate });
+      await page.waitForChanges();
+
+      expect(minusElement).toHaveAttribute('disabled');
+    })
+  })
+
   // todo this.component.input.stepDown() from controller is not a function error
   xdescribe('step down', () => {
 

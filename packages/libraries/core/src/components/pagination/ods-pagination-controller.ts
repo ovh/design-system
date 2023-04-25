@@ -1,5 +1,6 @@
 import { OdsComponentController } from '../ods-component-controller';
 import { OdsPagination } from './ods-pagination';
+import { OdsPaginationPageList } from './ods-pagination-page-list';
 
 /**
  * common controller logic for pagination component used by the different implementations.
@@ -17,7 +18,7 @@ export class OdsPaginationController extends OdsComponentController<OdsPaginatio
     @returns An array of objects representing pages with 'id' (page number) and 'active' (displayed page) properties.
   */
   createPageList(totalPages: number, pageSelected: number) {
-    const pageList: Array<{ active: boolean; id: number }> = [];
+    const pageList: OdsPaginationPageList = [];
 
     // Create initial pageList with 'active' property set to false for each page.
     for (let i = 1; i <= totalPages; i++) {
@@ -70,5 +71,29 @@ export class OdsPaginationController extends OdsComponentController<OdsPaginatio
       }
     }
     return pageList;
+  }
+
+  handlePreviousKeyDown(event: KeyboardEvent, page: number) {
+    if (this.component.current > 1 && !this.component.disabled) this.onKeyDown(event, page);
+  }
+
+  handleNextKeyDown(event: KeyboardEvent, page: number, pageList: OdsPaginationPageList) {
+    if (this.component.current < pageList.length && !this.component.disabled) this.onKeyDown(event, page);
+  }
+
+  handlePageKeyDown(event: KeyboardEvent, page: number) {
+    if (!this.component.disabled)
+      // potentiellement inutile, disabled
+      this.onKeyDown(event, page);
+  }
+
+  onKeyDown(event: KeyboardEvent, page: number) {
+    if (event.keyCode === 13 || event.keyCode === 32) {
+      this.setPageIndex(page);
+    }
+  }
+
+  setPageIndex(current: number) {
+    this.component.current = current;
   }
 }

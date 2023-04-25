@@ -12,6 +12,7 @@ import {
   OdsButtonSize,
   OdsButtonVariant,
   OdsTextSize,
+  OdsPaginationPageList,
 } from '@ovhcloud/ods-core';
 import { HTMLStencilElement } from '@stencil/core/internal';
 import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libraries/stencil-core';
@@ -85,19 +86,25 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
    */
   @Method()
   async setPageIndex(current: number) {
-    this.current = current;
+    this.controller.setPageIndex(current);
   }
 
-  onKeyPress = (event: any, page: any) => {
-    if (event.keyCode === 13 || event.keyCode === 32) {
-      this.setPageIndex(page);
-    }
-  };
+  handlePreviousKeyDown(event: KeyboardEvent, page: number) {
+    this.controller.handlePreviousKeyDown(event, page);
+  }
+
+  handleNextKeyDown(event: KeyboardEvent, page: number, pageList: OdsPaginationPageList) {
+    this.controller.handleNextKeyDown(event, page, pageList);
+  }
+
+  handlePageKeyDown(event: KeyboardEvent, page: number) {
+    this.controller.handlePageKeyDown(event, page);
+  }
 
   render() {
     const { totalPages, disabled } = this;
 
-    let pageList = this.controller.createPageList(totalPages, this.current);
+    const pageList: OdsPaginationPageList = this.controller.createPageList(totalPages, this.current);
 
     return (
       <Host
@@ -112,9 +119,7 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
                 variant={OdsButtonVariant.ghost}
                 color={OdsThemeColorIntent.primary}
                 disabled={disabled ? true : this.current == 1}
-                onKeyDown={(event: any) => {
-                  if (this.current > 1 && !disabled) this.onKeyPress(event, Number(this.current) - 1);
-                }}
+                onKeyDown={(event: KeyboardEvent) => this.handlePreviousKeyDown(event, Number(this.current) - 1)}
                 onClick={() => {
                   this.setPageIndex(Number(this.current) - 1);
                 }}
@@ -142,14 +147,10 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
                         key={page.id}
                         class={`${this.current == page.id ? 'selectedpage' : ''}`}
                         variant={this.current == page.id ? OdsButtonVariant.flat : OdsButtonVariant.ghost}
-                        disabled={disabled ? true : false}
+                        disabled={disabled}
                         color={OdsThemeColorIntent.primary}
                         size={OdsButtonSize.sm}
-                        onKeyDown={(event: any) => {
-                          if (!disabled) {
-                            this.onKeyPress(event, Number(page.id));
-                          }
-                        }}
+                        onKeyDown={(event: KeyboardEvent) => this.handlePageKeyDown(event, Number(page.id))}
                         onClick={() => {
                           this.setPageIndex(Number(page.id));
                         }}
@@ -175,12 +176,8 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
                 variant={OdsButtonVariant.ghost}
                 color={OdsThemeColorIntent.primary}
                 disabled={disabled ? true : this.current >= pageList.length}
-                onKeyDown={(event: any) => {
-                  if (this.current < pageList.length && !disabled) this.onKeyPress(event, Number(this.current) + 1);
-                }}
-                onClick={() => {
-                  this.setPageIndex(Number(this.current) + 1);
-                }}
+                onKeyDown={(event: KeyboardEvent) => this.handleNextKeyDown(event, Number(this.current) + 1, pageList)}
+                onClick={() => this.setPageIndex(Number(this.current) + 1)}
                 size={OdsButtonSize.sm}
               >
                 <osds-icon

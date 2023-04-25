@@ -17,11 +17,12 @@ export class OdsQuantityController extends OdsComponentController<OdsQuantity> {
 
   initInput(): void {
     const foundOsdsInput = this.component.el.querySelector('osds-input[type=number]') as (OdsInput & HTMLElement);
+    this.clearEventListeners();
     if (!foundOsdsInput) {
       const foundNativeInput = this.component.el.querySelector('input[type=number]') as (OdsInput & HTMLElement);
       if (foundNativeInput) {
         this.component.input = foundNativeInput;
-        this.component.input.addEventListener('change', () => this.processInputValueChange())
+        this.component.input.addEventListener('change', this.processInputValueChange.bind(this));
         this.component.input.addEventListener('blur', this.onBlur.bind(this));
       } else {
         this.logger.warn('An input of type number is mandatory.');
@@ -44,10 +45,7 @@ export class OdsQuantityController extends OdsComponentController<OdsQuantity> {
     }
   }
 
-  processInputValueChange(event?: CustomEvent<(OdsInput & HTMLElement)>): void {
-    if (event) {
-      this.logger.log("Received the customer odsValueChange event: ", event.detail);
-    }
+  processInputValueChange(): void {
     if (this.component.input && this.component.minus && this.component.plus) {
       if (this.component.input.value && this.component.input.min && this.component.input.max) {
         const valueAsNb = Number(this.component.input.value);
@@ -80,7 +78,7 @@ export class OdsQuantityController extends OdsComponentController<OdsQuantity> {
   }
 
   clearEventListeners(): void {
-    this.component.input?.removeEventListener('change', () => this.processInputValueChange());
+    this.component.input?.removeEventListener('change', this.processInputValueChange);
     this.component.input?.removeEventListener('blur', this.onBlur);
     this.component.input?.removeEventListener('odsInputBlur', this.onBlur);
   }

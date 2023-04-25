@@ -8,4 +8,5 @@ import './global';
 
 import '@ovhcloud/ods-stencil/components/button';
 import '@ovhcloud/ods-stencil/components/input';
+import '@ovhcloud/ods-stencil/components/icon';
 

@@ -16,8 +16,8 @@
     "**/**/*.e2e.screenshot.ts",
     "**/.stencil",
     "**/**/*.d.ts",
+    "**/**/global.dev.ts",
     "**/**/global.prod.ts",
-    "**/**/global.test.ts",
     "react"
   ]
 }

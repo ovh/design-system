@@ -217,6 +217,10 @@ export function getStencilConfig({
     tsConfigOption = { tsconfig: dev?.tsConfig ? dev.tsConfig : 'tsconfig.dev.json' };
   } else if (isProd) {
     tsConfigOption = { tsconfig: prod?.tsConfig ? prod.tsConfig : 'tsconfig.prod.json' };
+  } else if (isTest) {
+    tsConfigOption = { tsconfig: test?.tsConfig ? test.tsConfig : 'tsconfig.test.json' };
+  } else {
+    tsConfigOption = { tsconfig: 'tsconfig.json' };
   }
   tsConfigOption?.tsconfig && console.info(`ODS: using ${tsConfigOption.tsconfig}`);
 

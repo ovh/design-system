@@ -28,6 +28,7 @@ const components = [
   'OdsInput',
   'OdsLink',
   'OdsLocationTile',
+  'OdsMenu',
   'OdsMessage',
   'OdsQuantity',
   'OdsRadio',

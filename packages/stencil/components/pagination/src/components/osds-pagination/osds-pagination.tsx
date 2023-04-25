@@ -63,7 +63,8 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
   }
 
   async componentDidUpdate() {
-    (this.el.shadowRoot?.querySelector('.selectedpage') as HTMLStencilElement)?.focus();
+    const selectedPage = this.el.shadowRoot?.querySelector('.selectedpage') as HTMLStencilElement;
+    if (document.activeElement === document.body && selectedPage) selectedPage.focus();
   }
 
   @Watch('current')
@@ -130,10 +131,11 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
             </li>
             {pageList
               .filter(page => page.active)
-              .map(page => {
+              .map((_, index) => {
+                const pageId: number = index + 1;
                 return (
                   <>
-                    {pageList.length > 6 && pageList.length - this.current > 3 && page.id == pageList.length && (
+                    {pageList.length > 6 && pageList.length - this.current > 3 && pageId == pageList.length && (
                       <li>
                         <osds-button disabled={true} variant={OdsButtonVariant.ghost}>
                           <osds-text size={OdsTextSize._500} color={OdsThemeColorIntent.primary} class="disabled">
@@ -144,21 +146,21 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
                     )}
                     <li>
                       <osds-button
-                        key={page.id}
-                        class={`${this.current == page.id ? 'selectedpage' : ''}`}
-                        variant={this.current == page.id ? OdsButtonVariant.flat : OdsButtonVariant.ghost}
+                        key={pageId}
+                        class={`${this.current == pageId ? 'selectedpage' : ''}`}
+                        variant={this.current == pageId ? OdsButtonVariant.flat : OdsButtonVariant.ghost}
                         disabled={disabled}
                         color={OdsThemeColorIntent.primary}
                         size={OdsButtonSize.sm}
-                        onKeyDown={(event: KeyboardEvent) => this.handlePageKeyDown(event, Number(page.id))}
+                        onKeyDown={(event: KeyboardEvent) => this.handlePageKeyDown(event, Number(pageId))}
                         onClick={() => {
-                          this.setPageIndex(Number(page.id));
+                          this.setPageIndex(Number(pageId));
                         }}
                       >
-                        {page.id}
+                        {pageId}
                       </osds-button>
                     </li>
-                    {pageList.length > 6 && this.current > 4 && page.id == 1 && (
+                    {pageList.length > 6 && this.current > 4 && pageId == 1 && (
                       <li>
                         <osds-button disabled={true} variant={OdsButtonVariant.ghost}>
                           <osds-text size={OdsTextSize._500} color={OdsThemeColorIntent.primary} class="disabled">

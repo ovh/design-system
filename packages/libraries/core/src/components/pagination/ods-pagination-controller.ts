@@ -15,14 +15,14 @@ export class OdsPaginationController extends OdsComponentController<OdsPaginatio
     Creates a list of pages for pagination with given number of total pages and selected page.
     @param totalPages - Total number of pages.
     @param pageSelected - Selected page number.
-    @returns An array of objects representing pages with 'id' (page number) and 'active' (displayed page) properties.
+    @returns An array of objects representing pages with an array of the size of the number of pages and 'active' (displayed page) properties.
   */
   createPageList(totalPages: number, pageSelected: number) {
     const pageList: OdsPaginationPageList = [];
 
     // Create initial pageList with 'active' property set to false for each page.
-    for (let i = 1; i <= totalPages; i++) {
-      pageList.push({ id: i, active: false });
+    for (let i = 0; i <= totalPages; i++) {
+      pageList.push({ active: false });
     }
 
     let startIndex = Math.max(pageSelected - 2, 1);
@@ -66,23 +66,19 @@ export class OdsPaginationController extends OdsComponentController<OdsPaginatio
   }
 
   handlePreviousKeyDown(event: KeyboardEvent, page: number) {
-    if (this.component.current > 1 && !this.component.disabled) this.onKeyDown(event, page - 1);
+    if (this.component.current > 1) this.onKeyDown(event, page - 1);
   }
 
   handleNextKeyDown(event: KeyboardEvent, page: number, pageList: OdsPaginationPageList) {
-    if (this.component.current < pageList.length && !this.component.disabled) this.onKeyDown(event, page + 1);
+    if (this.component.current < pageList.length) this.onKeyDown(event, page + 1);
   }
 
   handlePageKeyDown(event: KeyboardEvent, page: number) {
-    if (!this.component.disabled)
-      // potentiellement inutile, disabled
-      this.onKeyDown(event, page);
+    this.onKeyDown(event, page);
   }
 
   onKeyDown(event: KeyboardEvent, page: number) {
-    if (event.keyCode === 13 || event.keyCode === 32) {
-      this.setPageIndex(page);
-    }
+    if (event.keyCode === 13 || event.keyCode === 32) this.setPageIndex(page);
   }
 
   setPageIndex(current: number) {

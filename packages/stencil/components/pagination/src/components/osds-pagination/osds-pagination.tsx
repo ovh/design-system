@@ -119,7 +119,7 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
                 variant={OdsButtonVariant.ghost}
                 color={OdsThemeColorIntent.primary}
                 disabled={disabled ? true : this.current == 1}
-                onKeyDown={(event: KeyboardEvent) => this.handlePreviousKeyDown(event, Number(this.current) - 1)}
+                onKeyDown={(event: KeyboardEvent) => this.handlePreviousKeyDown(event, Number(this.current))}
                 onClick={() => {
                   this.setPageIndex(Number(this.current) - 1);
                 }}
@@ -176,7 +176,7 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
                 variant={OdsButtonVariant.ghost}
                 color={OdsThemeColorIntent.primary}
                 disabled={disabled ? true : this.current >= pageList.length}
-                onKeyDown={(event: KeyboardEvent) => this.handleNextKeyDown(event, Number(this.current) + 1, pageList)}
+                onKeyDown={(event: KeyboardEvent) => this.handleNextKeyDown(event, Number(this.current), pageList)}
                 onClick={() => this.setPageIndex(Number(this.current) + 1)}
                 size={OdsButtonSize.sm}
               >

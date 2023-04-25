@@ -26,7 +26,7 @@ export class OdsPaginationController extends OdsComponentController<OdsPaginatio
     }
 
     let startIndex = Math.max(pageSelected - 2, 1);
-    let endIndex = Math.min(startIndex + 4, totalPages);
+    const endIndex = Math.min(startIndex + 4, totalPages);
 
     // If there are less than or equal to 5 pages, set all pages as active (all displayed).
     if (totalPages <= 5) {
@@ -38,14 +38,6 @@ export class OdsPaginationController extends OdsComponentController<OdsPaginatio
       if (totalPages - pageSelected < 2) {
         // If selected page is one of the last pages of a long list, show the last 5 pages.
         startIndex = totalPages - 4;
-      }
-      if (totalPages > 5 && endIndex - startIndex < 4) {
-        // If there are fewer than 4 pages between startIndex and endIndex, adjust them.
-        if (startIndex === 1) {
-          endIndex = Math.min(startIndex + 5, totalPages);
-        } else if (endIndex === totalPages) {
-          startIndex = Math.max(endIndex - 5, 1);
-        }
       }
 
       for (let i = startIndex; i <= endIndex; i++) {
@@ -74,11 +66,11 @@ export class OdsPaginationController extends OdsComponentController<OdsPaginatio
   }
 
   handlePreviousKeyDown(event: KeyboardEvent, page: number) {
-    if (this.component.current > 1 && !this.component.disabled) this.onKeyDown(event, page);
+    if (this.component.current > 1 && !this.component.disabled) this.onKeyDown(event, page - 1);
   }
 
   handleNextKeyDown(event: KeyboardEvent, page: number, pageList: OdsPaginationPageList) {
-    if (this.component.current < pageList.length && !this.component.disabled) this.onKeyDown(event, page);
+    if (this.component.current < pageList.length && !this.component.disabled) this.onKeyDown(event, page + 1);
   }
 
   handlePageKeyDown(event: KeyboardEvent, page: number) {

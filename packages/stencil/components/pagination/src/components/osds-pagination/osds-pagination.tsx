@@ -6,7 +6,7 @@ import {
   odsPaginationDefaultAttributes,
   OdsPaginationEvents,
   OdsPaginationMethods,
-  OdsPaginationCurrentChangeEventDetail,
+  OdsPaginationChangedEventDetail,
   OdsIconSize,
   OdsIconName,
   OdsButtonSize,
@@ -44,8 +44,8 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
   /** @see OdsPaginationAttributes.disabled */
   @Prop({ reflect: true, mutable: true }) disabled: boolean = odsPaginationDefaultAttributes.disabled;
 
-  /** @see OdsPaginationEvents.odsCurrentChange */
-  @Event() odsCurrentChange!: EventEmitter<OdsPaginationCurrentChangeEventDetail>;
+  /** @see OdsPaginationEvents.odsPaginationChanged */
+  @Event() odsPaginationChanged!: EventEmitter<OdsPaginationChangedEventDetail>;
 
   @Watch('defaultCurrent')
   onDefaultCurrentChange(defaultCurrent?: number) {
@@ -75,7 +75,7 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
 
   private emitChange(current: number, oldCurrent?: number) {
     this.logger.debug('emit', { current, oldCurrent });
-    this.odsCurrentChange.emit({
+    this.odsPaginationChanged.emit({
       current: current,
       oldCurrent: oldCurrent,
     });

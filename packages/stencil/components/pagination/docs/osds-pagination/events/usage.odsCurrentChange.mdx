@@ -8,8 +8,8 @@ import { OdsPaginationCurrentChangeEvent } from '@ovhcloud/ods-core';
 
 const odsPagination = document.querySelector('osds-pagination#myOdsPagination');
 
-odsPagination.addEventListener('odsCurrentChange', event => {
+odsPagination.addEventListener('odsPaginationChanged', event => {
   const evt = event as OdsPaginationCurrentChangeEvent;
-  console.log('odsCurrentChange event', evt.detail);
+  console.log('odsPaginationChanged event', evt.detail);
 });
 ```

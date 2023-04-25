@@ -1,6 +1,6 @@
 import { E2EElement, E2EPage, newE2EPage } from '@stencil/core/testing';
 
-import { OdsComponentAttributes2StringAttributes, OdsPaginationAttributes, odsPaginationDefaultAttributes, OdsPaginationCurrentChangeEventDetail } from '@ovhcloud/ods-core';
+import { OdsComponentAttributes2StringAttributes, OdsPaginationAttributes, odsPaginationDefaultAttributes, OdsPaginationChangedEventDetail } from '@ovhcloud/ods-core';
 import { OdsStringAttributes2Str, OdsCreateAttributes, odsPaginationBaseAttributes } from '@ovhcloud/ods-testing';
 
 describe('e2e:osds-pagination', () => {

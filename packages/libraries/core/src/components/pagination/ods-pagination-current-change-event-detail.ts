@@ -1,4 +1,4 @@
-export interface OdsPaginationCurrentChangeEventDetail {
+export interface OdsPaginationChangedEventDetail {
   current: number;
   oldCurrent?: number;
 }

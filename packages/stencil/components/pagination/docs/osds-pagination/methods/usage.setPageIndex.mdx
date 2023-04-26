@@ -5,9 +5,5 @@
 ```typescript
 // vanilla typescript
 const odsPagination = document.querySelector('osds-pagination#myOdsPagination');
-
-async function componentOnLoad() {
-  await customElements.whenDefined('osds-pagination');
-}
-componentOnLoad();
+odsPagination?.setPageIndex(1);
 ```

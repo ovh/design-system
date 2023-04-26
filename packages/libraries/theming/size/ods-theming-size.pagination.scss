@@ -1,0 +1,15 @@
+
+/// @access private
+@function ods-get-pagination-size-properties($size-name) {
+  @return (
+    height: var(--ods-size-pagination-#{$size-name}-height),
+    width: var(--ods-size-pagination-#{$size-name}-width)
+  )
+}
+
+/// @access private
+@function ods-get-pagination-component-size-definition() {
+  @return (
+    md: ods-get-pagination-size-properties(md),
+  );
+}

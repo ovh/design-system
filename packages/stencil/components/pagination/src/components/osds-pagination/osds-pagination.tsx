@@ -106,7 +106,6 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
     const { totalPages, disabled } = this;
 
     const pageList: OdsPaginationPageList = this.controller.createPageList(totalPages, this.current);
-    console.log('pageList:', pageList);
 
     return (
       <Host
@@ -120,7 +119,7 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
               <osds-button
                 variant={OdsButtonVariant.ghost}
                 color={OdsThemeColorIntent.primary}
-                disabled={disabled ? true : this.current == 1}
+                disabled={disabled || this.current == 1}
                 onKeyDown={(event: KeyboardEvent) => this.handlePreviousKeyDown(event, Number(this.current))}
                 onClick={() => {
                   this.setPageIndex(Number(this.current) - 1);

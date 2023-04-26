@@ -13,12 +13,4 @@
       color: white;
     }
   }
-
-  /** disabled colors */
-  [disabled],
-  [disabled]:focus {
-    @include osds-pagination-on-selected-host() {
-      opacity: 0.5;
-    }
-  }
 }

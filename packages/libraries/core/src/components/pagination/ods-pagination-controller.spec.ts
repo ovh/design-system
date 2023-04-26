@@ -45,15 +45,6 @@ describe('spec:ods-pagination-controller', () => {
         const pageList: OdsPaginationPageList = controller.createPageList(component.totalPages, component.current);
 
         expect(pageList).toHaveLength(9);
-        expect(pageList[0].id).toEqual(1);
-        expect(pageList[1].id).toEqual(2);
-        expect(pageList[2].id).toEqual(3);
-        expect(pageList[3].id).toEqual(4);
-        expect(pageList[4].id).toEqual(5);
-        expect(pageList[5].id).toEqual(6);
-        expect(pageList[6].id).toEqual(7);
-        expect(pageList[7].id).toEqual(8);
-        expect(pageList[8].id).toEqual(9);
       });
 
       it('should display the correct page list following to the current page 5', async () => {

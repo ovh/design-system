@@ -106,6 +106,7 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
     const { totalPages, disabled } = this;
 
     const pageList: OdsPaginationPageList = this.controller.createPageList(totalPages, this.current);
+    console.log('pageList:', pageList);
 
     return (
       <Host
@@ -131,8 +132,8 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
             </li>
             {pageList
               .filter(page => page.active)
-              .map((_, index) => {
-                const pageId: number = index + 1;
+              .map(page => {
+                const pageId = pageList.indexOf(page) + 1;
                 return (
                   <>
                     {pageList.length > 6 && pageList.length - this.current > 3 && pageId == pageList.length && (

@@ -21,7 +21,7 @@ export class OdsPaginationController extends OdsComponentController<OdsPaginatio
     const pageList: OdsPaginationPageList = [];
 
     // Create initial pageList with 'active' property set to false for each page.
-    for (let i = 0; i <= totalPages; i++) {
+    for (let i = 1; i <= totalPages; i++) {
       pageList.push({ active: false });
     }
 

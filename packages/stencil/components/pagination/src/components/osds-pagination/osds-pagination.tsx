@@ -35,32 +35,14 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
   /** @see OdsPaginationAttributes.current */
   @Prop({ reflect: true, mutable: true }) current: number = odsPaginationDefaultAttributes.current;
 
-  /** @see OdsPaginationAttributes.defaultCurrent */
-  @Prop({ reflect: true }) defaultCurrent?: number = odsPaginationDefaultAttributes.defaultCurrent;
-
-  /** @see OdsPaginationAttributes.totalPages */
-  @Prop({ reflect: true }) totalPages: number = odsPaginationDefaultAttributes.totalPages;
+  /** @see OdsPaginationAttributes.total */
+  @Prop({ reflect: true }) total: number = odsPaginationDefaultAttributes.total;
 
   /** @see OdsPaginationAttributes.disabled */
   @Prop({ reflect: true, mutable: true }) disabled: boolean = odsPaginationDefaultAttributes.disabled;
 
   /** @see OdsPaginationEvents.odsPaginationChanged */
   @Event() odsPaginationChanged!: EventEmitter<OdsPaginationChangedEventDetail>;
-
-  @Watch('defaultCurrent')
-  onDefaultCurrentChange(defaultCurrent?: number) {
-    this.logger.debug(`current: ${this.current}]`, 'defaultCurrent: ', defaultCurrent);
-  }
-
-  componentWillLoad() {
-    this.onDefaultCurrentChange();
-
-    if (this.defaultCurrent !== undefined) {
-      this.current = this.defaultCurrent;
-    }
-
-    this.current = this.current;
-  }
 
   async componentDidUpdate() {
     const selectedPage = this.el.shadowRoot?.querySelector('.selectedpage') as HTMLStencilElement;
@@ -90,22 +72,34 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
     this.controller.setPageIndex(current);
   }
 
+  // clicks events
+
+  handlePreviousClick(page: number) {
+    this.controller.handlePreviousClick(page);
+  }
+  handleNextClick(page: number) {
+    this.controller.handleNextClick(page);
+  }
+  handlePageClick(page: number) {
+    this.controller.handlePageClick(page);
+  }
+
+  // keyDown events
+
   handlePreviousKeyDown(event: KeyboardEvent, page: number) {
     this.controller.handlePreviousKeyDown(event, page);
   }
-
   handleNextKeyDown(event: KeyboardEvent, page: number, pageList: OdsPaginationPageList) {
     this.controller.handleNextKeyDown(event, page, pageList);
   }
-
   handlePageKeyDown(event: KeyboardEvent, page: number) {
     this.controller.handlePageKeyDown(event, page);
   }
 
   render() {
-    const { totalPages, disabled } = this;
+    const { total, disabled } = this;
 
-    const pageList: OdsPaginationPageList = this.controller.createPageList(totalPages, this.current);
+    const pageList: OdsPaginationPageList = this.controller.createPageList(total, this.current);
 
     return (
       <Host>
@@ -116,9 +110,7 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
               color={OdsThemeColorIntent.primary}
               disabled={disabled || this.current == 1}
               onKeyDown={(event: KeyboardEvent) => this.handlePreviousKeyDown(event, Number(this.current))}
-              onClick={() => {
-                this.setPageIndex(Number(this.current) - 1);
-              }}
+              onClick={() => this.handlePreviousClick(Number(this.current))}
               size={OdsButtonSize.sm}
             >
               <osds-icon size={OdsIconSize.sm} name={OdsIconName.CHEVRON_LEFT} color={OdsThemeColorIntent.primary} class={this.current == 1 ? 'disabled' : ''}></osds-icon>
@@ -148,9 +140,7 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
                       color={OdsThemeColorIntent.primary}
                       size={OdsButtonSize.sm}
                       onKeyDown={(event: KeyboardEvent) => this.handlePageKeyDown(event, Number(pageId))}
-                      onClick={() => {
-                        this.setPageIndex(Number(pageId));
-                      }}
+                      onClick={() => this.handlePageClick(Number(pageId))}
                     >
                       {pageId}
                     </osds-button>
@@ -174,7 +164,7 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
               color={OdsThemeColorIntent.primary}
               disabled={disabled ? true : this.current >= pageList.length}
               onKeyDown={(event: KeyboardEvent) => this.handleNextKeyDown(event, Number(this.current), pageList)}
-              onClick={() => this.setPageIndex(Number(this.current) + 1)}
+              onClick={() => this.handleNextClick(Number(this.current))}
               size={OdsButtonSize.sm}
             >
               <osds-icon

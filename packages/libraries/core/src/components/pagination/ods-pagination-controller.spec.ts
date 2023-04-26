@@ -33,24 +33,24 @@ describe('spec:ods-pagination-controller', () => {
   describe('methods', () => {
     describe('createPageList', () => {
       it('should generate the correct number of pages', async () => {
-        const attributes = { disabled: false, current: 2, totalPages: 8 };
+        const attributes = { disabled: false, current: 2, total: 8 };
         setup(attributes);
-        const pageList = controller.createPageList(component.totalPages, component.current);
+        const pageList = controller.createPageList(component.total, component.current);
         expect(pageList).toHaveLength(8);
       });
 
       it('should generate the correct page list', async () => {
-        const attributes = { disabled: false, current: 2, totalPages: 9 };
+        const attributes = { disabled: false, current: 2, total: 9 };
         setup(attributes);
-        const pageList: OdsPaginationPageList = controller.createPageList(component.totalPages, component.current);
+        const pageList: OdsPaginationPageList = controller.createPageList(component.total, component.current);
 
         expect(pageList).toHaveLength(9);
       });
 
       it('should display the correct page list following to the current page 5', async () => {
-        const attributes = { disabled: false, current: 5, totalPages: 12 };
+        const attributes = { disabled: false, current: 5, total: 12 };
         setup(attributes);
-        const pageList: OdsPaginationPageList = controller.createPageList(component.totalPages, component.current);
+        const pageList: OdsPaginationPageList = controller.createPageList(component.total, component.current);
 
         expect(pageList).toHaveLength(12);
         expect(pageList[0].active).toBeTruthy();
@@ -68,9 +68,9 @@ describe('spec:ods-pagination-controller', () => {
       });
 
       it('should display the correct page list following to the current page 2', async () => {
-        const attributes = { disabled: false, current: 2, totalPages: 9 };
+        const attributes = { disabled: false, current: 2, total: 9 };
         setup(attributes);
-        const pageList: OdsPaginationPageList = controller.createPageList(component.totalPages, component.current);
+        const pageList: OdsPaginationPageList = controller.createPageList(component.total, component.current);
 
         expect(pageList).toHaveLength(9);
         expect(pageList[0].active).toBeTruthy();
@@ -85,9 +85,9 @@ describe('spec:ods-pagination-controller', () => {
       });
 
       it('should display the correct page list following to the current page 3', async () => {
-        const attributes = { disabled: false, current: 3, totalPages: 9 };
+        const attributes = { disabled: false, current: 3, total: 9 };
         setup(attributes);
-        const pageList: OdsPaginationPageList = controller.createPageList(component.totalPages, component.current);
+        const pageList: OdsPaginationPageList = controller.createPageList(component.total, component.current);
 
         expect(pageList).toHaveLength(9);
         expect(pageList[0].active).toBeTruthy();
@@ -102,9 +102,9 @@ describe('spec:ods-pagination-controller', () => {
       });
 
       it('should display the correct page list following to the current page 4', async () => {
-        const attributes = { disabled: false, current: 4, totalPages: 9 };
+        const attributes = { disabled: false, current: 4, total: 9 };
         setup(attributes);
-        const pageList: OdsPaginationPageList = controller.createPageList(component.totalPages, component.current);
+        const pageList: OdsPaginationPageList = controller.createPageList(component.total, component.current);
 
         expect(pageList).toHaveLength(9);
         expect(pageList[0].active).toBeTruthy();
@@ -119,9 +119,9 @@ describe('spec:ods-pagination-controller', () => {
       });
 
       it('all pages should be active if there are 5 pages', async () => {
-        const attributes = { disabled: false, current: 4, totalPages: 5 };
+        const attributes = { disabled: false, current: 4, total: 5 };
         setup(attributes);
-        const pageList: OdsPaginationPageList = controller.createPageList(component.totalPages, component.current);
+        const pageList: OdsPaginationPageList = controller.createPageList(component.total, component.current);
 
         expect(pageList).toHaveLength(5);
         expect(pageList[0].active).toBeTruthy();
@@ -132,9 +132,9 @@ describe('spec:ods-pagination-controller', () => {
       });
 
       it('should display the last 5 pages if page 9 on 9 is selected', async () => {
-        const attributes = { disabled: false, current: 9, totalPages: 9 };
+        const attributes = { disabled: false, current: 9, total: 9 };
         setup(attributes);
-        const pageList: OdsPaginationPageList = controller.createPageList(component.totalPages, component.current);
+        const pageList: OdsPaginationPageList = controller.createPageList(component.total, component.current);
 
         expect(pageList).toHaveLength(9);
         expect(pageList[0].active).toBeTruthy();
@@ -149,7 +149,7 @@ describe('spec:ods-pagination-controller', () => {
       });
 
       it('set page to 5 with setPageIndex', async () => {
-        const attributes = { disabled: false, current: 10, totalPages: 12 };
+        const attributes = { disabled: false, current: 10, total: 12 };
         setup(attributes);
 
         expect(component.current).toBe(10);
@@ -158,7 +158,7 @@ describe('spec:ods-pagination-controller', () => {
       });
 
       it('handlePreviousKeyDown', async () => {
-        const attributes = { disabled: false, current: 10, totalPages: 12 };
+        const attributes = { disabled: false, current: 10, total: 12 };
         setup(attributes);
 
         expect(component.current).toBe(10);
@@ -168,9 +168,9 @@ describe('spec:ods-pagination-controller', () => {
       });
 
       it('handlePageKeyDown', async () => {
-        const attributes = { disabled: false, current: 10, totalPages: 12 };
+        const attributes = { disabled: false, current: 10, total: 12 };
         setup(attributes);
-        const pageList: OdsPaginationPageList = controller.createPageList(component.totalPages, component.current);
+        const pageList: OdsPaginationPageList = controller.createPageList(component.total, component.current);
 
         expect(component.current).toBe(10);
         const event = new KeyboardEvent('keyDown', { code: 'Space', keyCode: 32, bubbles: true });
@@ -179,7 +179,7 @@ describe('spec:ods-pagination-controller', () => {
       });
 
       it('handlePageKeyDown on page 5', async () => {
-        const attributes = { disabled: false, current: 10, totalPages: 12 };
+        const attributes = { disabled: false, current: 10, total: 12 };
         setup(attributes);
 
         expect(component.current).toBe(10);
@@ -198,6 +198,39 @@ describe('spec:ods-pagination-controller', () => {
         expect(component.current).toBe(11);
         controller.handlePageKeyDown(event, 12);
         expect(component.current).toBe(12);
+      });
+
+      it('handlePreviousClick', async () => {
+        const attributes = { disabled: false, current: 10, total: 12 };
+        setup(attributes);
+
+        expect(component.current).toBe(10);
+        controller.handlePreviousClick(component.current);
+        expect(component.current).toBe(9);
+        controller.handlePreviousClick(component.current);
+        expect(component.current).toBe(8);
+      });
+
+      it('handleNextClick', async () => {
+        const attributes = { disabled: false, current: 10, total: 12 };
+        setup(attributes);
+
+        expect(component.current).toBe(10);
+        controller.handleNextClick(component.current);
+        expect(component.current).toBe(11);
+        controller.handleNextClick(component.current);
+        expect(component.current).toBe(12);
+      });
+
+      it('handlePageClick', async () => {
+        const attributes = { disabled: false, current: 10, total: 12 };
+        setup(attributes);
+
+        expect(component.current).toBe(10);
+        controller.handlePageClick(1);
+        expect(component.current).toBe(1);
+        controller.handlePageClick(3);
+        expect(component.current).toBe(3);
       });
     });
   });

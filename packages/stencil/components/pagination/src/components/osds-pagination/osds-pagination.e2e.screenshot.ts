@@ -6,7 +6,7 @@ describe('e2e:osds-pagination', () => {
   let page: E2EPage;
   let el: E2EElement;
 
-  async function setup({ attributes = { totalPages: 21, current: 5 }, html = `` }: { attributes?: Partial<OdsPaginationAttributes>; html?: string } = {}) {
+  async function setup({ attributes = { total: 21, current: 5 }, html = `` }: { attributes?: Partial<OdsPaginationAttributes>; html?: string } = {}) {
     const minimalAttributes: OdsPaginationAttributes = OdsCreateAttributes(attributes, odsPaginationBaseAttributes);
     const stringAttributes = OdsComponentAttributes2StringAttributes<OdsPaginationAttributes>(minimalAttributes, odsPaginationDefaultAttributes);
 
@@ -20,7 +20,7 @@ describe('e2e:osds-pagination', () => {
     el = await page.find('osds-pagination');
   }
 
-  describe('screenshots of totalPages of 21', () => {
+  describe('screenshots of total of 21', () => {
     for (let current = 1; current <= 21; current++) {
       const screenshotActions = [
         {
@@ -33,7 +33,7 @@ describe('e2e:osds-pagination', () => {
           await setup({
             attributes: {
               current,
-              totalPages: 21,
+              total: 21,
             },
           });
           action();
@@ -51,7 +51,7 @@ describe('e2e:osds-pagination', () => {
     }
   });
 
-  describe('screenshots of totalPages of 21 and disabled', () => {
+  describe('screenshots of total of 21 and disabled', () => {
     for (let current = 1; current <= 21; current++) {
       const screenshotActions = [
         {
@@ -64,7 +64,7 @@ describe('e2e:osds-pagination', () => {
           await setup({
             attributes: {
               current,
-              totalPages: 21,
+              total: 21,
               disabled: true,
             },
           });

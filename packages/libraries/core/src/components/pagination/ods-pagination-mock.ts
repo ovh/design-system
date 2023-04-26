@@ -6,9 +6,8 @@ import { OdsPaginationChangedEventDetail } from './ods-pagination-current-change
 
 export class OdsPaginationMock implements OdsPagination<OdsPaginationMethods, OdsPaginationEvents> {
   disabled = false;
-  defaultCurrent?: number;
   current = 1;
-  totalPages = 1;
+  total = 1;
 
   odsPaginationChanged!: OdsPaginationChangedEventDetail;
 

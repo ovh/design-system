@@ -38,24 +38,19 @@ describe('spec:osds-pagination', () => {
 
   describe('attributes', () => {
     it('if the current of the pagination is 6, then page index should be 6', async () => {
-      await setup({ attributes: { current: 6, totalPages: 10 } });
+      await setup({ attributes: { current: 6, total: 10 } });
       expect(instance?.current).toEqual(6);
     });
 
-    it('if the defaultCurrent of the pagination is 6, then page index should be 6', async () => {
-      await setup({ attributes: { defaultCurrent: 6, totalPages: 10 } });
-      expect(instance?.current).toEqual(6);
-    });
-
-    it('if the totalPages of the pagination is 10, then totalPages should be 1O', async () => {
-      await setup({ attributes: { defaultCurrent: 6, totalPages: 10 } });
-      expect(instance?.totalPages).toEqual(10);
+    it('if the current of the pagination is 2, then page index should be 2', async () => {
+      await setup({ attributes: { current: 2, total: 10 } });
+      expect(instance?.current).toEqual(2);
     });
   });
 
   describe('methods', () => {
     it('should call setPageIndex function and the page index should be set to 4', async () => {
-      await setup({ attributes: { current: 2, totalPages: 10 } });
+      await setup({ attributes: { current: 2, total: 10 } });
       expect(instance).toBeTruthy();
       await instance.setPageIndex(4);
       expect(instance?.current).toBe(4);
@@ -64,19 +59,19 @@ describe('spec:osds-pagination', () => {
 
   describe('disabled', () => {
     it('should disabled attributes is falsy by default', async () => {
-      await setup({ attributes: { current: 2, totalPages: 10 } });
+      await setup({ attributes: { current: 2, total: 10 } });
       expect(page.root?.disabled).toBeFalsy();
     });
 
     it('should disabled attributes is true', async () => {
-      await setup({ attributes: { disabled: true, current: 2, totalPages: 10 } });
+      await setup({ attributes: { disabled: true, current: 2, total: 10 } });
       expect(page.root?.disabled).toBeDefined();
     });
   });
 
   describe('page list', () => {
     it('should set the correct page number', async () => {
-      await setup({ attributes: { disabled: false, current: 2, totalPages: 8 } });
+      await setup({ attributes: { disabled: false, current: 2, total: 8 } });
       instance.setPageIndex(3);
       expect(instance?.current).toBe(3);
     });

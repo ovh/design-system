@@ -10,7 +10,9 @@
     * [@ovhcloud/ods-theming](#odstheming)
       * [Component Size](#component-size)
   * [Web Component](#web-component)
-  * [Component stories](#component-stories)
+  * [Storybook](#storybook)
+    * [Component stories](#component-stories)
+    * [Overall stories](#overall-stories)
   * [Component documentation](#component-documentation)
     * [Design](#design)
     * [Specifications](#specifications)
@@ -257,7 +259,8 @@ bundles: [
 > You might consider either configure the same as it can be with sibling components, or copy/pasting a previously
 > finished component while being cautious about replacing code in it
 
-## Component stories
+## Storybook
+### Component stories
 
 A [Story](https://storybook.js.org/docs/react/get-started/whats-a-story) captures the rendered state of a UI component.
 You'll have to write stories for your new component that describe all states a component can support.
@@ -355,6 +358,49 @@ export const Default = TemplateDefault.bind({});
 Default.args = {
   ...extractStoryParams(storyParams)
 };
+```
+
+### Overall stories
+
+You should add your component in Introduction and All components pages.
+
+#### Introduction
+
+In `packages/tools/storybook/stories/components/1_Introduction.stories.ts`, you can add your component depending on its type (quark, atom, molecule, organism, layout or meta).
+
+For instance:
+```
+atoms: [
+  {
+    name: "%Component",
+    tag: 'osds-‰component%',
+    url: '/?path=/story/ui-components-%component%-atom-web-component--default',
+    attributes: {
+      color: OdsThemeColorIntent.primary,
+    },
+    slots: {
+      DEFAULT: `%Component%`,
+    },
+  }
+]
+```
+
+#### All components
+
+In `packages/tools/storybook/stories/components/2_All-components.web-components.stories.ts`, you can add your component in `allComponents` const.
+
+For instance:
+```
+{
+  tag: 'osds-%component%',
+  url: '/?path=/story/ui-components-%component%-atom-web-component--default',
+  attributes: {
+    color: OdsThemeColorIntent.primary,
+  },
+  slots: {
+    DEFAULT: `%Component%`,
+  },
+}
 ```
 
 ## Component documentation

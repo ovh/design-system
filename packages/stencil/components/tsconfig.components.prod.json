@@ -47,6 +47,7 @@
     "**/.stencil",
     "**/**/www.ts",
     "**/**/global.dev.ts",
+    "**/**/global.test.ts",
     "**/**/www.components.ts",
     "**/**/dist",
     "react"

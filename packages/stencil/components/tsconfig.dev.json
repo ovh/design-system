@@ -17,6 +17,7 @@
     "**/.stencil",
     "**/**/*.d.ts",
     "**/**/global.prod.ts",
+    "**/**/global.test.ts",
     "react"
   ]
 }

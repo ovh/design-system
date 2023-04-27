@@ -25,6 +25,14 @@ describe('spec:osds-pagination', () => {
       html: `<osds-pagination ${OdsStringAttributes2Str(stringAttributes)}></osds-pagination>`,
     });
 
+    // Define a spyable `focus` property
+    const focusSpy = jest.fn();
+    Object.defineProperty(HTMLElement.prototype, 'focus', {
+      get() {
+        return focusSpy;
+      },
+    });
+
     instance = page.rootInstance;
     htmlPagination = document.querySelector('osds-pagination') as HTMLElement;
     htmlPagination && (htmlPagination.focus = jest.fn());
@@ -75,5 +83,15 @@ describe('spec:osds-pagination', () => {
       instance.setPageIndex(3);
       expect(instance?.current).toBe(3);
     });
+  });
+
+  it('componentDidUpdate', async () => {
+    await setup({ attributes: { current: 2, total: 10 } });
+
+    const componentDidUpdateSpy = jest.spyOn(instance, 'componentDidUpdate');
+
+    instance.componentDidUpdate();
+
+    expect(componentDidUpdateSpy).toBeCalled();
   });
 });

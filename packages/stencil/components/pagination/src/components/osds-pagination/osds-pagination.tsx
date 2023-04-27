@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Host, Method, Prop, Watch, h, Fragment } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Host, Method, Prop, Watch, h, Fragment, State } from '@stencil/core';
 import {
   OdsLogger,
   OdsPagination,
@@ -29,6 +29,7 @@ import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPaginationMethods>, OdsStencilEvents<OdsPaginationEvents>> {
   private logger = new OdsLogger('OsdsPagination');
   controller: OdsPaginationController = new OdsPaginationController(this);
+  @State() pageList: OdsPaginationPageList = [];
 
   @Element() el!: HTMLStencilElement;
 
@@ -96,36 +97,62 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
     this.controller.handlePageKeyDown(event, page);
   }
 
+  renderArrows(direction: 'left' | 'right') {
+    const { disabled } = this;
+    const arrowIcon = direction === 'left' ? OdsIconName.CHEVRON_LEFT : OdsIconName.CHEVRON_RIGHT;
+
+    return (
+      <li class="arrows">
+        <osds-button
+          variant={OdsButtonVariant.ghost}
+          color={OdsThemeColorIntent.primary}
+          disabled={disabled || (direction === 'left' && this.current === 1) || (direction === 'right' && this.current >= this.pageList.length)}
+          onKeyDown={(event: KeyboardEvent) => {
+            if (direction === 'left') {
+              this.handlePreviousKeyDown(event, Number(this.current));
+            } else {
+              this.handleNextKeyDown(event, Number(this.current), this.pageList);
+            }
+          }}
+          onClick={() => {
+            if (direction === 'left') {
+              this.handlePreviousClick(Number(this.current));
+            } else {
+              this.handleNextClick(Number(this.current));
+            }
+          }}
+          size={OdsButtonSize.sm}
+        >
+          <osds-icon
+            size={OdsIconSize.sm}
+            name={arrowIcon}
+            color={OdsThemeColorIntent.primary}
+            class={(direction === 'left' && this.current === 1) || (direction === 'right' && this.current >= this.pageList.length) ? 'disabled' : ''}
+          ></osds-icon>
+        </osds-button>
+      </li>
+    );
+  }
+
   render() {
     const { total, disabled } = this;
 
-    const pageList: OdsPaginationPageList = this.controller.createPageList(total, this.current);
+    this.pageList = this.controller.createPageList(total, this.current);
 
     return (
       <Host>
         <ul>
-          <li class="arrows">
-            <osds-button
-              variant={OdsButtonVariant.ghost}
-              color={OdsThemeColorIntent.primary}
-              disabled={disabled || this.current == 1}
-              onKeyDown={(event: KeyboardEvent) => this.handlePreviousKeyDown(event, Number(this.current))}
-              onClick={() => this.handlePreviousClick(Number(this.current))}
-              size={OdsButtonSize.sm}
-            >
-              <osds-icon size={OdsIconSize.sm} name={OdsIconName.CHEVRON_LEFT} color={OdsThemeColorIntent.primary} class={this.current == 1 ? 'disabled' : ''}></osds-icon>
-            </osds-button>
-          </li>
-          {pageList
+          {this.renderArrows('left')}
+          {this.pageList
             .filter(page => page.active)
             .map(page => {
-              const pageId = pageList.indexOf(page) + 1;
+              const pageId = this.pageList.indexOf(page) + 1;
               return (
                 <>
-                  {pageList.length > 6 && pageList.length - this.current > 3 && pageId == pageList.length && (
+                  {this.pageList.length > 6 && this.pageList.length - this.current > 3 && pageId === this.pageList.length && (
                     <li>
-                      <osds-button disabled={true} variant={OdsButtonVariant.ghost}>
-                        <osds-text size={OdsTextSize._500} color={OdsThemeColorIntent.primary} class="disabled">
+                      <osds-button disabled={true} variant={OdsButtonVariant.ghost} color={OdsThemeColorIntent.primary}>
+                        <osds-text size={OdsTextSize._500} color={OdsThemeColorIntent.primary} class="ellipsis">
                           &#8230;
                         </osds-text>
                       </osds-button>
@@ -134,8 +161,8 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
                   <li>
                     <osds-button
                       key={pageId}
-                      class={`${this.current == pageId ? 'selectedpage' : ''}`}
-                      variant={this.current == pageId ? OdsButtonVariant.flat : OdsButtonVariant.ghost}
+                      class={`${this.current === pageId ? 'selectedpage' : ''}`}
+                      variant={this.current === pageId ? OdsButtonVariant.flat : OdsButtonVariant.ghost}
                       disabled={disabled}
                       color={OdsThemeColorIntent.primary}
                       size={OdsButtonSize.sm}
@@ -145,10 +172,10 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
                       {pageId}
                     </osds-button>
                   </li>
-                  {pageList.length > 6 && this.current > 4 && pageId == 1 && (
+                  {this.pageList.length > 6 && this.current > 4 && pageId === 1 && (
                     <li>
                       <osds-button disabled={true} variant={OdsButtonVariant.ghost}>
-                        <osds-text size={OdsTextSize._500} color={OdsThemeColorIntent.primary} class="disabled">
+                        <osds-text size={OdsTextSize._500} color={OdsThemeColorIntent.primary} class="ellipsis">
                           &#8230;
                         </osds-text>
                       </osds-button>
@@ -158,23 +185,7 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
               );
             })}
 
-          <li class="arrows">
-            <osds-button
-              variant={OdsButtonVariant.ghost}
-              color={OdsThemeColorIntent.primary}
-              disabled={disabled ? true : this.current >= pageList.length}
-              onKeyDown={(event: KeyboardEvent) => this.handleNextKeyDown(event, Number(this.current), pageList)}
-              onClick={() => this.handleNextClick(Number(this.current))}
-              size={OdsButtonSize.sm}
-            >
-              <osds-icon
-                size={OdsIconSize.sm}
-                name={OdsIconName.CHEVRON_RIGHT}
-                color={OdsThemeColorIntent.primary}
-                class={this.current >= pageList.length ? 'disabled' : ''}
-              ></osds-icon>
-            </osds-button>
-          </li>
+          {this.renderArrows('right')}
         </ul>
       </Host>
     );

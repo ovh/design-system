@@ -1,8 +1,7 @@
 // ###
 // global script file to include only in test mode.
-// it always has to include './components' and './global.ts'
+// it always has to include './global.ts'
 // ###
 
-import './components';
 import './global';
 

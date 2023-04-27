@@ -17,17 +17,13 @@ const storyParams = {
     category: 'General',
     defaultValue: 5,
   },
-  totalPages: {
+  total: {
     category: 'General',
     defaultValue: 21,
   },
   disabled: {
     category: 'Misc',
     defaultValue: odsPaginationDefaultAttributes.disabled,
-  },
-  defaultCurrent: {
-    category: 'Misc',
-    defaultValue: odsPaginationDefaultAttributes.defaultCurrent,
   },
 };
 
@@ -56,27 +52,27 @@ Default.args = {
 /* All */
 const TemplateAll = () => html`
   <div style="text-align:center">
-    <osds-pagination default-current="2" total-pages="4"></osds-pagination>
+    <osds-pagination current="2" total="4"></osds-pagination>
     <p id="select3-info" style="font-style: italic;">4 pages to display, current page 2</p>
   </div>
 
   <div style="text-align:center">
-    <osds-pagination current="5" total-pages="6"></osds-pagination>
+    <osds-pagination current="5" total="6"></osds-pagination>
     <p id="select3-info" style="font-style: italic;">6 pages to display, current page 5</p>
   </div>
 
   <div style="text-align:center">
-    <osds-pagination current="5" total-pages="7"></osds-pagination>
+    <osds-pagination current="5" total="7"></osds-pagination>
     <p id="select3-info" style="font-style: italic;">7 pages to display, current page 5</p>
   </div>
 
   <div style="text-align:center">
-    <osds-pagination current="5" total-pages="9"></osds-pagination>
+    <osds-pagination current="5" total="9"></osds-pagination>
     <p id="select4-info" style="font-style: italic;">9 pages to display, current page 5</p>
   </div>
 
   <div style="text-align:center">
-    <osds-pagination current="5" total-pages="9" disabled="true"></osds-pagination>
+    <osds-pagination current="5" total="9" disabled="true"></osds-pagination>
     <p id="select4-info" style="font-style: italic;">Disabled</p>
   </div>
 `;

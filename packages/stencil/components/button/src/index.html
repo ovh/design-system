@@ -50,7 +50,22 @@
 <osds-button square disabled>Square</osds-button>
 <osds-button square size='l' disabled>Square large</osds-button>
 
+<p>In Form</p>
+<form>
+  <div>
+    <label for="text">Enter text: </label>
+    <input type="text" name="text" id="text" required>
+  </div>
+
+  <osds-button type='submit' size='sm'>submit</osds-button>
+</form>
+
 <script>
+  document.querySelector('form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    console.log('form submitted');
+  })
+
   document.addEventListener('odsInitialized', ({detail}) => {
     const instance = detail.instance;
     instance.logging(true);

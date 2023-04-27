@@ -42,4 +42,38 @@ export class OdsButtonController extends OdsComponentController<OdsButton> {
       attribute: this.component.variant
     });
   }
+
+  /**
+   * Handle Click and KeyPress Event on the button
+   */
+  handleClick(event: MouseEvent): void {
+    this.logger.log('Click on osds-button');
+    this.submitForm(event);
+  }
+
+  handleKey(event: KeyboardEvent): void {
+    if(event.key === " " || event.key === "Enter") {
+      this.logger.log('Key on osds-button');
+      this.submitForm(event);
+    }
+  }
+
+  /**
+   * Checking if the button is in a form to add the form submit behaviour on it
+   */
+  private submitForm(event: MouseEvent | KeyboardEvent) {
+    if (this.component.type && this.component.type === "submit") {
+      const form = (event.target as HTMLElement).closest("form");
+      if (form) {
+        event.preventDefault();
+
+        const fakeButton = document.createElement('button');
+        fakeButton.type = 'submit';
+        fakeButton.style.display = 'none';
+        form.appendChild(fakeButton);
+        fakeButton.click();
+        fakeButton.remove();
+      }
+    }
+  }
 }

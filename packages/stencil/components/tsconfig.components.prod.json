@@ -33,6 +33,7 @@
     "range/src",
     "select/src",
     "skeleton/src",
+    "tabs/src",
     "text/src",
     "textarea/src",
     "tile/src",

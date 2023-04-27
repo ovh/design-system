@@ -67,6 +67,7 @@
   $skeleton,
   $textarea,
   $select,
+  $tabs,
   $tile,
   $toggle
 ) {
@@ -86,6 +87,7 @@
     skeleton: ods-create-component-size-config(skeleton, $skeleton),
     textarea: ods-create-component-size-config(textarea, $textarea),
     select: ods-create-component-size-config(select, $select),
+    tabs: ods-create-component-size-config(tabs, $tabs),
     tile: ods-create-component-size-config(tile, $tile),
     toggle: ods-create-component-size-config(toggle, $toggle),
   );

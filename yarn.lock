@@ -5508,6 +5508,7 @@ __metadata:
     "@vitejs/plugin-react": ^2.1.0
     react: ^18.2.0
     react-dom: ^18.2.0
+    react-router-dom: ^6.10.0
     tslib: "*"
     typescript: ^4.6.4
     vite: ^3.1.0
@@ -6553,6 +6554,45 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-stencil-tabs-react@workspace:packages/stencil/components/tabs/react":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-stencil-tabs-react@workspace:packages/stencil/components/tabs/react"
+  dependencies:
+    "@types/react": 17.0.37
+    "@types/react-dom": 17.0.11
+    react: 16.14.0
+    react-dom: 16.14.0
+    rimraf: ^3.0.2
+    tslib: "*"
+    typescript: 4.7.4
+  peerDependencies:
+    react: ">=16.8.6"
+    react-dom: ">=16.8.6"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-stencil-tabs-vue@workspace:packages/stencil/components/tabs/vue":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-stencil-tabs-vue@workspace:packages/stencil/components/tabs/vue"
+  dependencies:
+    "@ovhcloud/ods-stencil-tabs": ^11.0.1
+    rimraf: ^3.0.2
+    typescript: 4.7.4
+    vue: ^3.2.41
+  peerDependencies:
+    vue: ">=3"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-stencil-tabs@^11.0.1, @ovhcloud/ods-stencil-tabs@workspace:packages/stencil/components/tabs":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-stencil-tabs@workspace:packages/stencil/components/tabs"
+  dependencies:
+    "@ovhcloud/ods-stencil-component": ^11.0.1
+    "@ovhcloud/ods-stencil-component-dev": ^11.0.1
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-stencil-testing@^11.0.1, @ovhcloud/ods-stencil-testing@workspace:packages/stencil/libraries/stencil-testing":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-testing@workspace:packages/stencil/libraries/stencil-testing"
@@ -6841,6 +6881,13 @@ __metadata:
     react: 15.x || 16.x || 16.4.0-alpha.0911da3
     react-dom: 15.x || 16.x || 16.4.0-alpha.0911da3
   checksum: f64372497e0464a9fdfd79283fec3f4fd01ee093f1599d8a8035e0a41fbce22113bfa46dcea63aa8b7b4e0796e916f134aa8e3fccd3974be397e7c19468de3c4
+  languageName: node
+  linkType: hard
+
+"@remix-run/router@npm:1.5.0":
+  version: 1.5.0
+  resolution: "@remix-run/router@npm:1.5.0"
+  checksum: 9c510c174af1553edd1f039ba16e7e3d34e04d53b3bac18814660e31cd0c48297ea4291ff86d0736b560123ebc63ecb62fa525829181d16a8dad15270d6672d7
   languageName: node
   linkType: hard
 
@@ -9210,25 +9257,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*, @types/react@npm:17.0.37":
-  version: 17.0.37
-  resolution: "@types/react@npm:17.0.37"
+"@types/react@npm:^16.14.0":
+  version: 16.14.38
+  resolution: "@types/react@npm:16.14.38"
   dependencies:
     "@types/prop-types": "*"
     "@types/scheduler": "*"
     csstype: ^3.0.2
-  checksum: e68b0d59aa69577fc6a6d654b25d5d8408625498f4c483f160b557fac21e840f6e8807cbde93e9f039949b6d624a019b1990d18499c1d65aecf3605c25e30242
-  languageName: node
-  linkType: hard
-
-"@types/react@npm:^18.0.17":
-  version: 18.0.23
-  resolution: "@types/react@npm:18.0.23"
-  dependencies:
-    "@types/prop-types": "*"
-    "@types/scheduler": "*"
-    csstype: ^3.0.2
-  checksum: 8b915793b9d6d53c19d76aab35d50a407cac6f4fb1e349cf037196302e8a7661d6c75870dc2fcb0b029c6f0db89d23fee910b777d28dd0e26becf8b312ddb61b
+  checksum: b5e73bb51225c8d869bd6bd081a2b220f21e7f4038a3a06fd2cc49a1da859b12abce4dff14cd888de715b3647fecd26c30f3fc4f96ac9a3874a81922822d4b4e
   languageName: node
   linkType: hard
 
@@ -29914,6 +29950,19 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"react-router-dom@npm:^6.10.0":
+  version: 6.10.0
+  resolution: "react-router-dom@npm:6.10.0"
+  dependencies:
+    "@remix-run/router": 1.5.0
+    react-router: 6.10.0
+  peerDependencies:
+    react: ">=16.8"
+    react-dom: ">=16.8"
+  checksum: d048d8cc66e5aec782bd675097d6bf0e5f867f3f0539bff9acdc4a314b5e0e34093944762960ca0977a54c6255272edd262231242b18c4e260d68df6b5288464
+  languageName: node
+  linkType: hard
+
 "react-router@npm:6.0.2, react-router@npm:^6.0.0":
   version: 6.0.2
   resolution: "react-router@npm:6.0.2"
@@ -29922,6 +29971,17 @@ fsevents@^1.2.7:
   peerDependencies:
     react: ">=16.8"
   checksum: 9d4f3a8002a90f38be022c6740e11e9bb481e60ad04c5a0ce2d6dbe685059c09b3037c45414d6e7e40eb97308842380413cfb93c5cdcb992e7ee0c50b4f7fcaa
+  languageName: node
+  linkType: hard
+
+"react-router@npm:6.10.0":
+  version: 6.10.0
+  resolution: "react-router@npm:6.10.0"
+  dependencies:
+    "@remix-run/router": 1.5.0
+  peerDependencies:
+    react: ">=16.8"
+  checksum: c9fce46147c04257d7d6fa1f5bbfac96c5fdd0b15f26918bd12b2e5fe9143977c5a4452272f9b85795a22e29ec105a60d0bbe036118efc52b383d163cd8829ab
   languageName: node
   linkType: hard
 

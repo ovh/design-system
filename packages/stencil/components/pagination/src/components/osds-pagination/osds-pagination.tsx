@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, Host, Method, Prop, Watch, h, Fragment, State } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Host, Method, Prop, Watch, h, Fragment } from '@stencil/core';
 import {
   OdsLogger,
   OdsPagination,
@@ -29,7 +29,6 @@ import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPaginationMethods>, OdsStencilEvents<OdsPaginationEvents>> {
   private logger = new OdsLogger('OsdsPagination');
   controller: OdsPaginationController = new OdsPaginationController(this);
-  @State() pageList: OdsPaginationPageList = [];
 
   @Element() el!: HTMLStencilElement;
 
@@ -97,7 +96,7 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
     this.controller.handlePageKeyDown(event, page);
   }
 
-  renderArrows(direction: 'left' | 'right') {
+  renderArrows(direction: 'left' | 'right', pageList: OdsPaginationPageList) {
     const { disabled } = this;
     const arrowIcon = direction === 'left' ? OdsIconName.CHEVRON_LEFT : OdsIconName.CHEVRON_RIGHT;
 
@@ -106,12 +105,12 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
         <osds-button
           variant={OdsButtonVariant.ghost}
           color={OdsThemeColorIntent.primary}
-          disabled={disabled || (direction === 'left' && this.current === 1) || (direction === 'right' && this.current >= this.pageList.length)}
+          disabled={disabled || (direction === 'left' && this.current === 1) || (direction === 'right' && this.current >= pageList.length)}
           onKeyDown={(event: KeyboardEvent) => {
             if (direction === 'left') {
               this.handlePreviousKeyDown(event, Number(this.current));
             } else {
-              this.handleNextKeyDown(event, Number(this.current), this.pageList);
+              this.handleNextKeyDown(event, Number(this.current), pageList);
             }
           }}
           onClick={() => {
@@ -127,7 +126,7 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
             size={OdsIconSize.sm}
             name={arrowIcon}
             color={OdsThemeColorIntent.primary}
-            class={(direction === 'left' && this.current === 1) || (direction === 'right' && this.current >= this.pageList.length) ? 'disabled' : ''}
+            class={(direction === 'left' && this.current === 1) || (direction === 'right' && this.current >= pageList.length) ? 'disabled' : ''}
           ></osds-icon>
         </osds-button>
       </li>
@@ -149,19 +148,19 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
   render() {
     const { total, disabled } = this;
 
-    this.pageList = this.controller.createPageList(total, this.current);
+    const pageList = this.controller.createPageList(total, this.current);
 
     return (
       <Host>
         <ul>
-          {this.renderArrows('left')}
-          {this.pageList
+          {this.renderArrows('left', pageList)}
+          {pageList
             .filter(page => page.active)
             .map(page => {
-              const pageId = this.pageList.indexOf(page) + 1;
+              const pageId = pageList.indexOf(page) + 1;
               return (
                 <>
-                  {this.pageList.length > 6 && this.pageList.length - this.current > 3 && pageId === this.pageList.length && this.renderEllipsis()}
+                  {pageList.length > 6 && pageList.length - this.current > 3 && pageId === pageList.length && this.renderEllipsis()}
                   <li>
                     <osds-button
                       key={pageId}
@@ -176,12 +175,12 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
                       {pageId}
                     </osds-button>
                   </li>
-                  {this.pageList.length > 6 && this.current > 4 && pageId === 1 && this.renderEllipsis()}
+                  {pageList.length > 6 && this.current > 4 && pageId === 1 && this.renderEllipsis()}
                 </>
               );
             })}
 
-          {this.renderArrows('right')}
+          {this.renderArrows('right', pageList)}
         </ul>
       </Host>
     );

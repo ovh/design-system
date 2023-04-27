@@ -1,13 +1,16 @@
+//jest.mock('@ovhcloud/ods-core/src/components/pagination/ods-pagination-controller');
+
 import { newSpecPage, SpecPage } from '@stencil/core/testing';
 import { OsdsPagination } from './osds-pagination';
-import { OdsComponentAttributes2StringAttributes, OdsPaginationAttributes, odsPaginationDefaultAttributes } from '@ovhcloud/ods-core';
-
-import { OdsCreateAttributes, OdsMockNativeMethod, OdsStringAttributes2Str, odsPaginationBaseAttributes } from '@ovhcloud/ods-testing';
+import { OdsComponentAttributes2StringAttributes, OdsPaginationAttributes, OdsPaginationController, odsPaginationDefaultAttributes } from '@ovhcloud/ods-core';
+import { getAttributeContextOptions } from '@ovhcloud/ods-stencil/libraries/stencil-testing';
+import { OdsCreateAttributes, OdsMockNativeMethod, OdsStringAttributes2Str, odsPaginationBaseAttributes, odsUnitTestAttribute } from '@ovhcloud/ods-testing';
 
 describe('spec:osds-pagination', () => {
   let page: SpecPage;
   let instance: OsdsPagination;
   let htmlPagination: HTMLElement | null | undefined;
+  //let controller: OdsPaginationController;
 
   afterEach(() => {
     jest.clearAllMocks();
@@ -25,17 +28,10 @@ describe('spec:osds-pagination', () => {
       html: `<osds-pagination ${OdsStringAttributes2Str(stringAttributes)}></osds-pagination>`,
     });
 
-    // Define a spyable `focus` property
-    const focusSpy = jest.fn();
-    Object.defineProperty(HTMLElement.prototype, 'focus', {
-      get() {
-        return focusSpy;
-      },
-    });
-
     instance = page.rootInstance;
     htmlPagination = document.querySelector('osds-pagination') as HTMLElement;
     htmlPagination && (htmlPagination.focus = jest.fn());
+    //controller = (OdsPaginationController as unknown as jest.SpyInstance<OdsPaginationController, unknown[]>).mock.instances[0];
   }
 
   it('should render', async () => {
@@ -80,6 +76,7 @@ describe('spec:osds-pagination', () => {
   describe('page list', () => {
     it('should set the correct page number', async () => {
       await setup({ attributes: { disabled: false, current: 2, total: 8 } });
+
       instance.setPageIndex(3);
       expect(instance?.current).toBe(3);
     });
@@ -94,4 +91,67 @@ describe('spec:osds-pagination', () => {
 
     expect(componentDidUpdateSpy).toBeCalled();
   });
+
+  /**
+   * @see OdsPaginationAttributes
+   */
+  describe('attributes', () => {
+    const config = {
+      page: () => page,
+      instance: () => instance,
+      setup: async options => {
+        await setup({ attributes: { ...options.attributes } });
+      },
+    };
+
+    describe('total 1->100 with odsUnitTestAttribute', () => {
+      odsUnitTestAttribute<OdsPaginationAttributes, 'total'>({
+        ...getAttributeContextOptions<OdsPaginationAttributes, OsdsPagination, 'total'>({
+          name: 'total',
+          list: [...Array(100).keys()].map(i => i + 1),
+          defaultValue: odsPaginationDefaultAttributes.total,
+          ...config,
+        }),
+      });
+    });
+
+    describe('current 1->100 with odsUnitTestAttribute', () => {
+      odsUnitTestAttribute<OdsPaginationAttributes, 'current'>({
+        ...getAttributeContextOptions<OdsPaginationAttributes, OsdsPagination, 'current'>({
+          name: 'current',
+          list: [...Array(100).keys()].map(i => i + 1),
+          defaultValue: odsPaginationDefaultAttributes.current,
+          ...config,
+        }),
+      });
+    });
+
+    describe('disabled with odsUnitTestAttribute', () => {
+      odsUnitTestAttribute<OdsPaginationAttributes, 'disabled'>({
+        ...getAttributeContextOptions<OdsPaginationAttributes, OsdsPagination, 'disabled'>({
+          name: 'disabled',
+          list: [true, false],
+          defaultValue: odsPaginationDefaultAttributes.disabled,
+          ...config,
+        }),
+      });
+    });
+  });
+
+  /*
+  it('should call onKeyDown on keyup', async () => {
+    const event = new KeyboardEvent('');
+    const inputEl = document.createElement('input');
+    await setup({ attributes: { current: 2, total: 10 } });
+    //let arrows = htmlPagination.shadowRoot?.querySelector('.arrows') as HTMLElement;
+    //let arrowsButton = arrows.shadowRoot?.querySelector('osds-button');
+
+    instance.controller.onKeyDown(event, instance.current);
+
+    expect(controller.onKeyDown).toHaveBeenCalledTimes(1);
+    expect(controller.onKeyDown).toHaveBeenCalledWith(event, htmlPagination, false);
+  });
+
+
+  */
 });

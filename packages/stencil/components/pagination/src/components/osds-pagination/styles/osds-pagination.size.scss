@@ -3,16 +3,16 @@
 
 @mixin osds-pagination-theme-size() {
   osds-button::part(button) {
-    width: var(--ods-pagination-button-size);
-    height: var(--ods-pagination-button-size);
+    width: var(--ods-pagination-button-size); // 2.25rem
+    height: var(--ods-pagination-button-size); // 2.25rem
     border-radius: var(--ods-size-border-radius-01);  
     padding: 0;
   }
 
 
   .arrows {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+    padding-left: var(--ods-size-inline-04); // 0.5rem
+    padding-right: var(--ods-size-inline-04); // 0.5rem
 
     osds-icon {
       vertical-align: middle;

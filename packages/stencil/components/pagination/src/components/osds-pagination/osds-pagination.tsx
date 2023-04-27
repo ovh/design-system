@@ -134,6 +134,18 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
     );
   }
 
+  renderEllipsis() {
+    return (
+      <li>
+        <osds-button disabled={true} variant={OdsButtonVariant.ghost} color={OdsThemeColorIntent.primary}>
+          <osds-text size={OdsTextSize._500} color={OdsThemeColorIntent.primary} class="ellipsis">
+            &#8230;
+          </osds-text>
+        </osds-button>
+      </li>
+    );
+  }
+
   render() {
     const { total, disabled } = this;
 
@@ -149,15 +161,7 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
               const pageId = this.pageList.indexOf(page) + 1;
               return (
                 <>
-                  {this.pageList.length > 6 && this.pageList.length - this.current > 3 && pageId === this.pageList.length && (
-                    <li>
-                      <osds-button disabled={true} variant={OdsButtonVariant.ghost} color={OdsThemeColorIntent.primary}>
-                        <osds-text size={OdsTextSize._500} color={OdsThemeColorIntent.primary} class="ellipsis">
-                          &#8230;
-                        </osds-text>
-                      </osds-button>
-                    </li>
-                  )}
+                  {this.pageList.length > 6 && this.pageList.length - this.current > 3 && pageId === this.pageList.length && this.renderEllipsis()}
                   <li>
                     <osds-button
                       key={pageId}
@@ -172,15 +176,7 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
                       {pageId}
                     </osds-button>
                   </li>
-                  {this.pageList.length > 6 && this.current > 4 && pageId === 1 && (
-                    <li>
-                      <osds-button disabled={true} variant={OdsButtonVariant.ghost}>
-                        <osds-text size={OdsTextSize._500} color={OdsThemeColorIntent.primary} class="ellipsis">
-                          &#8230;
-                        </osds-text>
-                      </osds-button>
-                    </li>
-                  )}
+                  {this.pageList.length > 6 && this.current > 4 && pageId === 1 && this.renderEllipsis()}
                 </>
               );
             })}

@@ -1,4 +1,4 @@
-//jest.mock('@ovhcloud/ods-core/src/components/pagination/ods-pagination-controller');
+//jest.mock('@ovhcloud/ods-core/src/components/pagination/ods-pagination-controller'); // keep jest.mock before any
 
 import { newSpecPage, SpecPage } from '@stencil/core/testing';
 import { OsdsPagination } from './osds-pagination';
@@ -28,9 +28,9 @@ describe('spec:osds-pagination', () => {
       html: `<osds-pagination ${OdsStringAttributes2Str(stringAttributes)}></osds-pagination>`,
     });
 
-    instance = page.rootInstance;
     htmlPagination = document.querySelector('osds-pagination') as HTMLElement;
     htmlPagination && (htmlPagination.focus = jest.fn());
+    instance = page.rootInstance;
     //controller = (OdsPaginationController as unknown as jest.SpyInstance<OdsPaginationController, unknown[]>).mock.instances[0];
   }
 
@@ -138,20 +138,48 @@ describe('spec:osds-pagination', () => {
     });
   });
 
-  /*
-  it('should call onKeyDown on keyup', async () => {
-    const event = new KeyboardEvent('');
-    const inputEl = document.createElement('input');
+  /**
+   * @see OdsPaginationEvents
+   */
+
+  it('handlePreviousKeyDown', async () => {
     await setup({ attributes: { current: 2, total: 10 } });
-    //let arrows = htmlPagination.shadowRoot?.querySelector('.arrows') as HTMLElement;
-    //let arrowsButton = arrows.shadowRoot?.querySelector('osds-button');
-
-    instance.controller.onKeyDown(event, instance.current);
-
-    expect(controller.onKeyDown).toHaveBeenCalledTimes(1);
-    expect(controller.onKeyDown).toHaveBeenCalledWith(event, htmlPagination, false);
+    expect(instance.handlePreviousKeyDown).toBeTruthy();
+    const event = new KeyboardEvent('keyDown', { code: 'Space', keyCode: 32, bubbles: true });
+    instance.handlePreviousKeyDown(event, instance.current);
+    expect(instance.current).toBe(1);
   });
-
-
-  */
+  it('handlePreviousClick', async () => {
+    await setup({ attributes: { current: 2, total: 10 } });
+    expect(instance.handlePreviousClick).toBeTruthy();
+    instance.handlePreviousClick(instance.current);
+    expect(instance.current).toBe(1);
+  });
+  it('handlePageKeyDown', async () => {
+    await setup({ attributes: { current: 2, total: 10 } });
+    expect(instance.handlePageKeyDown).toBeTruthy();
+    const event = new KeyboardEvent('keyDown', { code: 'Space', keyCode: 32, bubbles: true });
+    instance.handlePageKeyDown(event, 5);
+    expect(instance.current).toBe(5);
+  });
+  it('handlePageClick', async () => {
+    await setup({ attributes: { current: 2, total: 10 } });
+    expect(instance.handlePageClick).toBeTruthy();
+    instance.handlePageClick(5);
+    expect(instance.current).toBe(5);
+  });
+  it('handleNextKeyDown', async () => {
+    await setup({ attributes: { current: 2, total: 10 } });
+    expect(instance.handleNextKeyDown).toBeTruthy();
+    const event = new KeyboardEvent('keyDown', { code: 'Space', keyCode: 32, bubbles: true });
+    const pageList = instance.controller.createPageList(instance.total, instance.current);
+    instance.handleNextKeyDown(event, instance.current, pageList);
+    expect(instance.current).toBe(3);
+  });
+  it('handleNextClick', async () => {
+    await setup({ attributes: { current: 2, total: 10 } });
+    expect(instance.handleNextClick).toBeTruthy();
+    instance.handleNextClick(instance.current);
+    expect(instance.current).toBe(3);
+  });
 });

@@ -1,0 +1,15 @@
+
+/// @access private
+@function ods-get-tabs-size-properties($size-name) {
+    @return (
+      height: var(--ods-size-tabs-#{$size-name}-height),
+      width: var(--ods-size-tabs-#{$size-name}-width),
+    )
+  }
+  
+  /// @access private
+  @function ods-get-tabs-component-size-definition() {
+    @return (
+      md: ods-get-tabs-size-properties(md)
+    );
+  }

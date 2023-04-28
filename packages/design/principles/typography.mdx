@@ -1,48 +1,63 @@
+<div style={{
+    position: 'absolute',
+    inset: '5em'
+}}>
+
 # Typography
 
-## Source Sans Pro
+## Font-family
 Source Sans Pro is the main font used in the OVHcloud universe. It can be used for headings as well as paragraphs.
 
 The related fallback fonts are :
 `"Source Sans Pro", "Trebuchet MS", Arial, "Segoe UI", sans-serif`
 
-### Hierarchy
+## Font sizes
+| ID    | Token                                           | EM                     | PX                  | Preview                                                                                                                                                                                                                         | Comments |
+|-------|-------------------------------------------------|------------------------|---------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|
+| `000` | <small>`--ods-blue-jeans-font-size-000`</small> | <small>`0`</small>     | <small>`0`</small>  | <div style={{color:'hsl(234.6, 100%, 30.6%)',fontFamily:'"Source Sans Pro", "Trebuchet MS", Arial, "Segoe UI", sans-serif',textAlign:'center',lineHeight:'1em',fontSize:'0em'}}>Sphinx of black quartz, judge my vow.</div>     |          |
+| `100` | <small>`--ods-blue-jeans-font-size-100`</small> | <small>`0.75`</small>  | <small>`12`</small> | <div style={{color:'hsl(234.6, 100%, 30.6%)',fontFamily:'"Source Sans Pro", "Trebuchet MS", Arial, "Segoe UI", sans-serif',textAlign:'center',lineHeight:'1em',fontSize:'0.75em'}}>Sphinx of black quartz, judge my vow.</div>  |          |
+| `200` | <small>`--ods-blue-jeans-font-size-200`</small> | <small>`0.875`</small> | <small>`14`</small> | <div style={{color:'hsl(234.6, 100%, 30.6%)',fontFamily:'"Source Sans Pro", "Trebuchet MS", Arial, "Segoe UI", sans-serif',textAlign:'center',lineHeight:'1em',fontSize:'0.875em'}}>Sphinx of black quartz, judge my vow.</div> |          |
+| `300` | <small>`--ods-blue-jeans-font-size-300`</small> | <small>`1`</small>     | <small>`16`</small> | <div style={{color:'hsl(234.6, 100%, 30.6%)',fontFamily:'"Source Sans Pro", "Trebuchet MS", Arial, "Segoe UI", sans-serif',textAlign:'center',lineHeight:'1em',fontSize:'1em'}}>Sphinx of black quartz, judge my vow.</div>     |          |
+| `400` | <small>`--ods-blue-jeans-font-size-400`</small> | <small>`1.125`</small> | <small>`18`</small> | <div style={{color:'hsl(234.6, 100%, 30.6%)',fontFamily:'"Source Sans Pro", "Trebuchet MS", Arial, "Segoe UI", sans-serif',textAlign:'center',lineHeight:'1em',fontSize:'1.125em'}}>Sphinx of black quartz, judge my vow.</div> |          |
+| `500` | <small>`--ods-blue-jeans-font-size-500`</small> | <small>`1.25`</small>  | <small>`20`</small> | <div style={{color:'hsl(234.6, 100%, 30.6%)',fontFamily:'"Source Sans Pro", "Trebuchet MS", Arial, "Segoe UI", sans-serif',textAlign:'center',lineHeight:'1em',fontSize:'1.25em'}}>Sphinx of black quartz, judge my vow.</div>  |          |
+| `600` | <small>`--ods-blue-jeans-font-size-600`</small> | <small>`1.5`</small>   | <small>`24`</small> | <div style={{color:'hsl(234.6, 100%, 30.6%)',fontFamily:'"Source Sans Pro", "Trebuchet MS", Arial, "Segoe UI", sans-serif',textAlign:'center',lineHeight:'1em',fontSize:'1.5em'}}>Sphinx of black quartz, judge my vow.</div>   |          |
+| `700` | <small>`--ods-blue-jeans-font-size-700`</small> | <small>`1.75`</small>  | <small>`28`</small> | <div style={{color:'hsl(234.6, 100%, 30.6%)',fontFamily:'"Source Sans Pro", "Trebuchet MS", Arial, "Segoe UI", sans-serif',textAlign:'center',lineHeight:'1em',fontSize:'1.75em'}}>Sphinx of black quartz, judge my vow.</div>  |          |
+| `800` | <small>`--ods-blue-jeans-font-size-800`</small> | <small>`2.25`</small>  | <small>`39`</small> | <div style={{color:'hsl(234.6, 100%, 30.6%)',fontFamily:'"Source Sans Pro", "Trebuchet MS", Arial, "Segoe UI", sans-serif',textAlign:'center',lineHeight:'1em',fontSize:'2.25em'}}>Sphinx of black quartz, judge my vow.</div>  |          |
+| `900` | <small>`--ods-blue-jeans-font-size-900`</small> | <small>`3.375`</small> | <small>`54`</small> | <div style={{color:'hsl(234.6, 100%, 30.6%)',fontFamily:'"Source Sans Pro", "Trebuchet MS", Arial, "Segoe UI", sans-serif',textAlign:'center',lineHeight:'1em',fontSize:'3.375em'}}>Sphinx of black quartz, judge my vow.</div> |
 
-_(All types below are initialized with the default font-family presented above in the variable : `--t-*-font-family`)_
+## Font weights
+| ID            | Token                                                     | Weight               | Preview                                                                                                                                                                                                        | Comments |
+|---------------|-----------------------------------------------------------|----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|
+| `extra-light` | <small>`--ods-blue-jeans-font-weight-extra-light`</small> | <small>`200`</small> | <div style={{color: 'hsl(234.6, 100%, 30.6%)',fontFamily:'"Source Sans Pro", "Trebuchet MS", Arial, "Segoe UI", sans-serif',textAlign:'center',fontWeight:'200 '}}>Sphinx of black quartz, judge my vow.</div> |          |
+| `light`       | <small>`--ods-blue-jeans-font-weight-light`</small>       | <small>`300`</small> | <div style={{color: 'hsl(234.6, 100%, 30.6%)',fontFamily:'"Source Sans Pro", "Trebuchet MS", Arial, "Segoe UI", sans-serif',textAlign:'center',fontWeight:'300 '}}>Sphinx of black quartz, judge my vow.</div> |          |
+| `regular`     | <small>`--ods-blue-jeans-font-weight-regular`</small>     | <small>`400`</small> | <div style={{color: 'hsl(234.6, 100%, 30.6%)',fontFamily:'"Source Sans Pro", "Trebuchet MS", Arial, "Segoe UI", sans-serif',textAlign:'center',fontWeight:'400 '}}>Sphinx of black quartz, judge my vow.</div> |          |
+| `semibold`    | <small>`--ods-blue-jeans-font-weight-semibold`</small>    | <small>`600`</small> | <div style={{color: 'hsl(234.6, 100%, 30.6%)',fontFamily:'"Source Sans Pro", "Trebuchet MS", Arial, "Segoe UI", sans-serif',textAlign:'center',fontWeight:'600 '}}>Sphinx of black quartz, judge my vow.</div> |          |
+| `bold`        | <small>`--ods-blue-jeans-font-weight-bold`</small>        | <small>`700`</small> | <div style={{color: 'hsl(234.6, 100%, 30.6%)',fontFamily:'"Source Sans Pro", "Trebuchet MS", Arial, "Segoe UI", sans-serif',textAlign:'center',fontWeight:'700 '}}>Sphinx of black quartz, judge my vow.</div> |          |
+| `black`       | <small>`--ods-blue-jeans-font-weight-black`</small>       | <small>`900`</small> | <div style={{color: 'hsl(234.6, 100%, 30.6%)',fontFamily:'"Source Sans Pro", "Trebuchet MS", Arial, "Segoe UI", sans-serif',textAlign:'center',fontWeight:'900 '}}>Sphinx of black quartz, judge my vow.</div> |
 
- | type           | size(rem)                               | line-height                              | font-weight                         |  preview |
- |----------------| --------------------------------------- | ---------------------------------------- | ----------------------------------- |  ------- |
- | **Headings**   |
- | h1             | `--ods-t-h1-font-size`<br/>3.375rem     | `--ods-t-h1-line-height`<br/>3.375rem    | `--ods-t-h1-font-weight`<br/>700    |  <div style={{fontFamily:'var(--ods-t-h1-font-family)',fontSize:'var(--ods-t-h1-font-size)',fontWeight:'var(--ods-t-h1-font-weight)',lineHeight:'var(--ods-t-h1-line-height)'}}>Sphinx of black quartz, judge my vow.</div> |
- | h2             | `--ods-t-h2-font-size`<br/>2.250rem     | `--ods-t-h2-line-height`<br/>2.250rem    | `--ods-t-h2-font-weight`<br/>700    |  <div style={{fontFamily:'var(--ods-t-h2-font-family)',fontSize:'var(--ods-t-h2-font-size)',fontWeight:'var(--ods-t-h2-font-weight)',lineHeight:'var(--ods-t-h2-line-height)'}}>Sphinx of black quartz, judge my vow.</div> |
- | h3             | `--ods-t-h3-font-size`<br/>1.750rem     | `--ods-t-h3-line-height`<br/>1.750rem    | `--ods-t-h3-font-weight`<br/>700    |  <div style={{fontFamily:'var(--ods-t-h3-font-family)',fontSize:'var(--ods-t-h3-font-size)',fontWeight:'var(--ods-t-h3-font-weight)',lineHeight:'var(--ods-t-h3-line-height)'}}>Sphinx of black quartz, judge my vow.</div> |
- | h4             | `--ods-t-h4-font-size`<br/>1.500rem     | `--ods-t-h4-line-height`<br/>1.500rem    | `--ods-t-h4-font-weight`<br/>700    |  <div style={{fontFamily:'var(--ods-t-h4-font-family)',fontSize:'var(--ods-t-h4-font-size)',fontWeight:'var(--ods-t-h4-font-weight)',lineHeight:'var(--ods-t-h4-line-height)'}}>Sphinx of black quartz, judge my vow.</div> |
- | h5             | `--ods-t-h5-font-size`<br/>1.250rem     | `--ods-t-h5-line-height`<br/>1.250rem    | `--ods-t-h5-font-weight`<br/>700    |  <div style={{fontFamily:'var(--ods-t-h5-font-family)',fontSize:'var(--ods-t-h5-font-size)',fontWeight:'var(--ods-t-h5-font-weight)',lineHeight:'var(--ods-t-h5-line-height)'}}>Sphinx of black quartz, judge my vow.</div> |
- | **Paragraphs** |
- | p              | `--ods-t-p-font-size`<br/>1rem          | `--ods-t-p-line-height`<br/>1rem         | `--ods-t-p-font-weight`<br/>400     |  <div style={{fontFamily:'var(--ods-t-p-font-family)',fontSize:'var(--ods-t-p-font-size)',fontWeight:'var(--ods-t-p-font-weight)',lineHeight:'var(--ods-t-p-line-height)'}}>Sphinx of black quartz, judge my vow.</div> |
- | small          | `--ods-t-small-font-size`<br/>0.875rem  | `--ods-t-small-line-height`<br/>0.875rem | `--ods-t-small-font-weight`<br/>600 |  <div style={{fontFamily:'var(--ods-t-small-font-family)',fontSize:'var(--ods-t-small-font-size)',fontWeight:'var(--ods-t-small-font-weight)',lineHeight:'var(--ods-t-small-line-height)'}}>Sphinx of black quartz, judge my vow.</div> |
- | **Captions**   |
- | cap            | `--ods-t-cap-font-size`<br/>0.750rem    | `--ods-t-cap-line-height`<br/>0.750rem   | `--ods-t-cap-font-weight`<br/>400   |  <div style={{fontFamily:'var(--ods-t-cap-font-family)',fontSize:'var(--ods-t-cap-font-size)',fontWeight:'var(--ods-t-cap-font-weight)',lineHeight:'var(--ods-t-cap-line-height)'}}>Sphinx of black quartz, judge my vow.</div> |
+## Line heights
+| Size  | Token                                             | EM                     | PX                  | Preview                                                                                                                                                                                                          | Comments |
+|-------|---------------------------------------------------|------------------------|---------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|
+| `000` | <small>`--ods-blue-jeans-line-height-000`</small> | <small>`0`</small>     | <small>`0`</small>  | <div style={{color:'hsl(234.6, 100%, 30.6%)',fontFamily:'"Source Sans Pro", "Trebuchet MS", Arial, "Segoe UI", sans-serif',textAlign:'center',lineHeight:'0em'}}>Sphinx of black quartz, judge my vow.</div>     |          |
+| `100` | <small>`--ods-blue-jeans-line-height-100`</small> | <small>`0.875`</small> | <small>`14`</small> | <div style={{color:'hsl(234.6, 100%, 30.6%)',fontFamily:'"Source Sans Pro", "Trebuchet MS", Arial, "Segoe UI", sans-serif',textAlign:'center',lineHeight:'0.875em'}}>Sphinx of black quartz, judge my vow.</div> |          |
+| `200` | <small>`--ods-blue-jeans-line-height-200`</small> | <small>`1.125`</small> | <small>`18`</small> | <div style={{color:'hsl(234.6, 100%, 30.6%)',fontFamily:'"Source Sans Pro", "Trebuchet MS", Arial, "Segoe UI", sans-serif',textAlign:'center',lineHeight:'1.125em'}}>Sphinx of black quartz, judge my vow.</div> |          |
+| `300` | <small>`--ods-blue-jeans-line-height-300`</small> | <small>`1.25`</small>  | <small>`20`</small> | <div style={{color:'hsl(234.6, 100%, 30.6%)',fontFamily:'"Source Sans Pro", "Trebuchet MS", Arial, "Segoe UI", sans-serif',textAlign:'center',lineHeight:'1.25em'}}>Sphinx of black quartz, judge my vow.</div>  |          |
+| `400` | <small>`--ods-blue-jeans-line-height-400`</small> | <small>`1.375`</small> | <small>`22`</small> | <div style={{color:'hsl(234.6, 100%, 30.6%)',fontFamily:'"Source Sans Pro", "Trebuchet MS", Arial, "Segoe UI", sans-serif',textAlign:'center',lineHeight:'1.375em'}}>Sphinx of black quartz, judge my vow.</div> |          |
+| `500` | <small>`--ods-blue-jeans-line-height-500`</small> | <small>`1.75`</small>  | <small>`28`</small> | <div style={{color:'hsl(234.6, 100%, 30.6%)',fontFamily:'"Source Sans Pro", "Trebuchet MS", Arial, "Segoe UI", sans-serif',textAlign:'center',lineHeight:'1.75em'}}>Sphinx of black quartz, judge my vow.</div>  |          |
+| `600` | <small>`--ods-blue-jeans-line-height-600`</small> | <small>`2`</small>     | <small>`32`</small> | <div style={{color:'hsl(234.6, 100%, 30.6%)',fontFamily:'"Source Sans Pro", "Trebuchet MS", Arial, "Segoe UI", sans-serif',textAlign:'center',lineHeight:'2em'}}>Sphinx of black quartz, judge my vow.</div>     |          |
+| `700` | <small>`--ods-blue-jeans-line-height-700`</small> | <small>`2.188`</small> | <small>`35`</small> | <div style={{color:'hsl(234.6, 100%, 30.6%)',fontFamily:'"Source Sans Pro", "Trebuchet MS", Arial, "Segoe UI", sans-serif',textAlign:'center',lineHeight:'2.188em'}}>Sphinx of black quartz, judge my vow.</div> |          |
+| `800` | <small>`--ods-blue-jeans-line-height-800`</small> | <small>`2.813`</small> | <small>`45`</small> | <div style={{color:'hsl(234.6, 100%, 30.6%)',fontFamily:'"Source Sans Pro", "Trebuchet MS", Arial, "Segoe UI", sans-serif',textAlign:'center',lineHeight:'2.813em'}}>Sphinx of black quartz, judge my vow.</div> |          |
+| `900` | <small>`--ods-blue-jeans-line-height-900`</small> | <small>`4.188`</small> | <small>`67`</small> | <div style={{color:'hsl(234.6, 100%, 30.6%)',fontFamily:'"Source Sans Pro", "Trebuchet MS", Arial, "Segoe UI", sans-serif',textAlign:'center',lineHeight:'4.188em'}}>Sphinx of black quartz, judge my vow.</div> |
 
-### Font weights
-
- | weight | style    | preview |
- |--------| -------- |-------- |
- | 200    | normal   | <div style={{fontFamily:'"Source Sans Pro"',fontWeight:'200'}}>Sphinx of black quartz, judge my vow.</div> |
- | 200    | _italic_ | <div style={{fontFamily:'"Source Sans Pro"',fontWeight:'200',fontStyle:'italic'}}>Sphinx of black quartz, judge my vow.</div> |
- | 300    | normal   | <div style={{fontFamily:'"Source Sans Pro"',fontWeight:'300'}}>Sphinx of black quartz, judge my vow.</div> |
- | 300    | _italic_ | <div style={{fontFamily:'"Source Sans Pro"',fontWeight:'300',fontStyle:'italic'}}>Sphinx of black quartz, judge my vow.</div> |
- | 400    | normal   | <div style={{fontFamily:'"Source Sans Pro"',fontWeight:'400'}}>Sphinx of black quartz, judge my vow.</div> |
- | 400    | _italic_ | <div style={{fontFamily:'"Source Sans Pro"',fontWeight:'400',fontStyle:'italic'}}>Sphinx of black quartz, judge my vow.</div> |
- | 600    | normal   | <div style={{fontFamily:'"Source Sans Pro"',fontWeight:'600'}}>Sphinx of black quartz, judge my vow.</div> |
- | 600    | _italic_ | <div style={{fontFamily:'"Source Sans Pro"',fontWeight:'600',fontStyle:'italic'}}>Sphinx of black quartz, judge my vow.</div> |
- | 700    | normal   | <div style={{fontFamily:'"Source Sans Pro"',fontWeight:'700'}}>Sphinx of black quartz, judge my vow.</div> |
- | 700    | _italic_ | <div style={{fontFamily:'"Source Sans Pro"',fontWeight:'700',fontStyle:'italic'}}>Sphinx of black quartz, judge my vow.</div> |
- | 900    | normal   | <div style={{fontFamily:'"Source Sans Pro"',fontWeight:'900'}}>Sphinx of black quartz, judge my vow.</div> |
- | 900    | _italic_ | <div style={{fontFamily:'"Source Sans Pro"',fontWeight:'900',fontStyle:'italic'}}>Sphinx of black quartz, judge my vow.</div> |
-
+## Letter spacing
+| Size   | Token                                                 | EM                      | PX                   | Preview                                                                                                                                                                                                              | Comments |
+|--------|-------------------------------------------------------|-------------------------|----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|
+| `n100` | <small>`--ods-blue-jeans-letter-spacing-n100`</small> | <small>`-0.019`</small> | <small>`-.3`</small> | <div style={{color:'hsl(234.6, 100%, 30.6%)',fontFamily:'"Source Sans Pro", "Trebuchet MS", Arial, "Segoe UI", sans-serif',textAlign:'center',letterSpacing:'-0.019em'}}>Sphinx of black quartz, judge my vow.</div> |          |
+| `000`  | <small>`--ods-blue-jeans-letter-spacing-000`</small>  | <small>`0`</small>      | <small>`0`</small>   | <div style={{color:'hsl(234.6, 100%, 30.6%)',fontFamily:'"Source Sans Pro", "Trebuchet MS", Arial, "Segoe UI", sans-serif',textAlign:'center',letterSpacing:'0em'}}>Sphinx of black quartz, judge my vow.</div>      |
 
 ## ODS Icons
 ODS Icons is is the icon font used in the OVHcloud universe. It contains all icons used in our interfaces.
 
-_WIP, please see the related [Icon component]()_
+_Please check out the related [Icon component](/story/ui-components-icon-atom-web-component--all)_
+
+</div>

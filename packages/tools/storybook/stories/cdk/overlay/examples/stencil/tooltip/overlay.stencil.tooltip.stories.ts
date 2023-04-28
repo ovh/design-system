@@ -40,7 +40,7 @@ const tooltipTsxFile = require(`!!raw-loader!@ovhcloud/ods-cdk-dev/src/component
 const tooltipScss = require(`!!raw-loader!@ovhcloud/ods-cdk-dev/src/components/surface/ocdk-surface-tooltip-example/ocdk-surface-tooltip-example.scss`).default;
 
 export default {
-  title: 'CDK/Overlay/examples/Stencil/Tooltip',
+  title: 'Libraries/CDK/Overlay/examples/Stencil/Tooltip',
   parameters: {
     docs: { page },
     controls: { expanded: true },

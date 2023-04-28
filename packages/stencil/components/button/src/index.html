@@ -50,6 +50,17 @@
 <osds-button square disabled>Square</osds-button>
 <osds-button square size='l' disabled>Square large</osds-button>
 
+<p>Flex</p>
+<osds-button flex>Default</osds-button>
+
+<p>Ellipsis</p>
+<osds-button flex size='lg'>
+  <span slot='start'>start</span>
+  Oles ipsum dolor sit amet, sem platform library data veeam vero quis scripta dicant te massa fuisset
+  signiferumque fringilla mus sodales diam eu mazim kpi mac sociis mi ls nullam cu information aperiri
+  <span slot='end'>end</span>
+</osds-button>
+
 <script>
   document.addEventListener('odsInitialized', ({detail}) => {
     const instance = detail.instance;

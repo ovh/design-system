@@ -1,7 +1,6 @@
-import { Component, Element, Host, h, State, Prop } from '@stencil/core';
+import { Component, Element, Host, h, State, Prop, Listen } from '@stencil/core';
 import { OdsBreadcrumb, OdsBreadcrumbController, odsBreadcrumbDefaultAttributes, OdsBreadcrumbEvents, OdsBreadcrumbMethods, OdsIconName, OdsIconSize } from '@ovhcloud/ods-core';
 import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libraries/stencil-core';
-
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 
 @Component({
@@ -33,8 +32,21 @@ export class OsdsBreadcrumb implements OdsBreadcrumb<OdsStencilMethods<OdsBreadc
   };
 
   private toggleCollapsed = () => {
-    this.collapsed = !this.collapsed;
+    this.controller.toggleCollapsed();
   };
+
+  @Listen('keydown')
+  handleKeyDown(event: KeyboardEvent) {
+    if (event.key === 'enter' || event.key === ' ') {
+      this.toggleCollapsed();
+    }
+  }
+
+  @Listen('click')
+  handleLinkClick(event: Event) {
+    event.preventDefault();
+    this.controller.toggleCollapsed();
+  }
 
   render() {
     return (
@@ -44,7 +56,7 @@ export class OsdsBreadcrumb implements OdsBreadcrumb<OdsStencilMethods<OdsBreadc
             <span>
               <span innerHTML={this.breadcrumbArray?.[0].innerHTML} />
               <span>
-                <osds-link onClick={this.toggleCollapsed}>
+                <osds-link onClick={this.handleLinkClick}>
                   <osds-icon
                     {...{
                       name: OdsIconName.ELLIPSIS,

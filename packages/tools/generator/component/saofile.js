@@ -63,6 +63,13 @@ module.exports = {
           return data + `export * from './${templateData.componentFolderName}/public-api';`
         }
       },
+      {
+        type: 'modify',
+        files: `${config.outDir}/${config.odsCorePath}/component-types.json`,
+        handler(data) {
+          return [...data, `Ods${templateData.componentName}`].sort();
+        }
+      },
 
       // Move Specifications files
       {
@@ -135,6 +142,24 @@ module.exports = {
           'stencil/vue/package.json': `${config.outDir}/${config.odsStencilPath}/${templateData.name}/vue/package.json`,
           'stencil/vue/tsconfig.cjs.json': `${config.outDir}/${config.odsStencilPath}/${templateData.name}/vue/tsconfig.cjs.json`,
           'stencil/vue/tsconfig.json': `${config.outDir}/${config.odsStencilPath}/${templateData.name}/vue/tsconfig.json`,
+        }
+      },
+      {
+        type: 'modify',
+        files: `${config.outDir}/${config.odsStencilPath}/tsconfig.components.dev.json`,
+        handler(data) {
+          data.include.push(`${templateData.name}/src`);
+          data.include = data.include.sort();
+          return data;
+        }
+      },
+      {
+        type: 'modify',
+        files: `${config.outDir}/${config.odsStencilPath}/tsconfig.components.prod.json`,
+        handler(data) {
+          data.include.push(`${templateData.name}/src`);
+          data.include = data.include.sort();
+          return data;
         }
       },
       {

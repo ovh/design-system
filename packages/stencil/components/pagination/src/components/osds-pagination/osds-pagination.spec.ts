@@ -1,5 +1,3 @@
-//jest.mock('@ovhcloud/ods-core/src/components/pagination/ods-pagination-controller'); // keep jest.mock before any
-
 import { newSpecPage, SpecPage } from '@stencil/core/testing';
 import { OsdsPagination } from './osds-pagination';
 import { OdsComponentAttributes2StringAttributes, OdsPaginationAttributes, OdsPaginationController, odsPaginationDefaultAttributes } from '@ovhcloud/ods-core';
@@ -10,7 +8,6 @@ describe('spec:osds-pagination', () => {
   let page: SpecPage;
   let instance: OsdsPagination;
   let htmlPagination: HTMLElement | null | undefined;
-  //let controller: OdsPaginationController;
 
   afterEach(() => {
     jest.clearAllMocks();
@@ -31,7 +28,6 @@ describe('spec:osds-pagination', () => {
     htmlPagination = document.querySelector('osds-pagination') as HTMLElement;
     htmlPagination && (htmlPagination.focus = jest.fn());
     instance = page.rootInstance;
-    //controller = (OdsPaginationController as unknown as jest.SpyInstance<OdsPaginationController, unknown[]>).mock.instances[0];
   }
 
   it('should render', async () => {
@@ -88,6 +84,8 @@ describe('spec:osds-pagination', () => {
     const componentDidUpdateSpy = jest.spyOn(instance, 'componentDidUpdate');
 
     instance.componentDidUpdate();
+
+    page.waitForChanges();
 
     expect(componentDidUpdateSpy).toBeCalled();
   });
@@ -181,5 +179,103 @@ describe('spec:osds-pagination', () => {
     expect(instance.handleNextClick).toBeTruthy();
     instance.handleNextClick(instance.current);
     expect(instance.current).toBe(3);
+  });
+  it('left arrow click', async () => {
+    await setup({ attributes: { current: 2, total: 10 } });
+    const buttons = htmlPagination?.shadowRoot?.querySelectorAll('osds-button');
+    const arrow = buttons?.[0] as HTMLElement;
+    arrow.click();
+    expect(buttons?.[0]).toBeDefined();
+
+    await page.waitForChanges();
+
+    expect(instance.current).toBe(1);
+  });
+  it('left arrow keyDown', async () => {
+    await setup({ attributes: { current: 2, total: 10 } });
+    const buttons = htmlPagination?.shadowRoot?.querySelectorAll('osds-button');
+
+    const pageButton = buttons?.[0] as HTMLElement;
+
+    expect(buttons?.[0]).toBeDefined();
+
+    const mockOnPageChange = jest.fn();
+    pageButton.addEventListener('keydown', event => {
+      if (event.key === 'space') {
+        mockOnPageChange();
+      }
+    });
+
+    pageButton.dispatchEvent(new KeyboardEvent('keydown', { key: 'space' }));
+
+    await page.waitForChanges();
+
+    expect(mockOnPageChange).toBeCalled();
+  });
+
+  it('right arrow click', async () => {
+    await setup({ attributes: { current: 2, total: 10 } });
+    const buttons = htmlPagination?.shadowRoot?.querySelectorAll('osds-button');
+    const arrow = buttons?.[8] as HTMLElement;
+    arrow.click();
+    expect(buttons?.[8]).toBeDefined();
+
+    await page.waitForChanges();
+
+    expect(instance.current).toBe(3);
+  });
+  it('right arrow keyDown', async () => {
+    await setup({ attributes: { current: 2, total: 10 } });
+    const buttons = htmlPagination?.shadowRoot?.querySelectorAll('osds-button');
+
+    const pageButton = buttons?.[8] as HTMLElement;
+
+    expect(buttons?.[8]).toBeDefined();
+
+    const mockOnPageChange = jest.fn();
+    pageButton.addEventListener('keydown', event => {
+      if (event.key === 'space') {
+        mockOnPageChange();
+      }
+    });
+
+    pageButton.dispatchEvent(new KeyboardEvent('keydown', { key: 'space' }));
+
+    await page.waitForChanges();
+
+    expect(mockOnPageChange).toBeCalled();
+  });
+
+  it('page click on 10', async () => {
+    await setup({ attributes: { current: 2, total: 10 } });
+    const buttons = htmlPagination?.shadowRoot?.querySelectorAll('osds-button');
+    const pageButton = buttons?.[7] as HTMLElement;
+    pageButton.click();
+    expect(buttons?.[7]).toBeDefined();
+
+    await page.waitForChanges();
+
+    expect(instance.current).toBe(10);
+  });
+  it('page keyDown', async () => {
+    await setup({ attributes: { current: 2, total: 10 } });
+    const buttons = htmlPagination?.shadowRoot?.querySelectorAll('osds-button');
+
+    const pageButton = buttons?.[7] as HTMLElement;
+
+    expect(buttons?.[7]).toBeDefined();
+
+    const mockOnPageChange = jest.fn();
+    pageButton.addEventListener('keydown', event => {
+      if (event.key === 'space') {
+        mockOnPageChange();
+      }
+    });
+
+    pageButton.dispatchEvent(new KeyboardEvent('keydown', { key: 'space' }));
+
+    await page.waitForChanges();
+
+    expect(mockOnPageChange).toBeCalled();
   });
 });

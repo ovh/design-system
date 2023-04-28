@@ -23,6 +23,7 @@
   "OdsLink",
   "OdsLocationTile",
   "OdsMessage",
+  "OdsPagination",
   "OdsQuantity",
   "OdsRadio",
   "OdsRadioButton",

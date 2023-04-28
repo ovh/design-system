@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-stencil-component",
-  "version": "12.0.4",
+  "version": "12.0.5",
   "private": true,
   "description": "ODS dependencies for ods Stencil components",
   "license": "Apache-2.0",
@@ -8,9 +8,9 @@
     "build:prod": "echo \"building build:prod dependencies\""
   },
   "dependencies": {
-    "@ovhcloud/ods-core": "^12.0.4",
-    "@ovhcloud/ods-stencil-core": "^12.0.4",
-    "@ovhcloud/ods-theming": "^12.0.4",
+    "@ovhcloud/ods-core": "^12.0.5",
+    "@ovhcloud/ods-stencil-core": "^12.0.5",
+    "@ovhcloud/ods-theming": "^12.0.5",
     "@stencil/core": "~2.18.1",
     "tslib": "^2.1.0"
   }

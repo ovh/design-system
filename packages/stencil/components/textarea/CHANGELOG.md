@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+[Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
+
+
+# [12.0.5](https://ovhcloud.design/v12.0.5/?path=/docs/design-system-changelog--page) (2023-04-28)
+[compare](https://github.com/ovh/design-system/compare/v12.0.4...v12.0.5)
+
+**Note:** Version bump only for package @ovhcloud/ods-stencil-textarea
+
+
+
+
+
 
 
 [Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)

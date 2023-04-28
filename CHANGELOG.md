@@ -8,6 +8,20 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
 
 
+# [12.0.5](https://ovhcloud.design/v12.0.5/?path=/docs/design-system-changelog--page) (2023-04-28)
+[compare](https://github.com/ovh/design-system/compare/v12.0.4...v12.0.5)
+
+### Bug Fixes
+
+* **global:** rm forbidden word artifactory ([#30](https://github.com/ovh/design-system/issues/30)) ([7402169](https://github.com/ovh/design-system/commit/740216971f6162820f5b6488251d92fc4caf4d2c))
+
+
+
+
+
+[Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
+
+
 # [12.0.4](https://ovhcloud.design/v12.0.4/?path=/docs/design-system-changelog--page) (2023-04-28)
 [compare](https://github.com/ovh/design-system/compare/v12.0.3...v12.0.4)
 

@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-core",
-  "version": "12.0.3",
+  "version": "12.0.4",
   "description": "ODS core",
   "author": "OVH SAS",
   "license": "Apache-2.0",
@@ -22,7 +22,7 @@
     "@ovhcloud/ods-theming": ">=2"
   },
   "devDependencies": {
-    "@ovhcloud/ods-library-dev": "^12.0.3",
-    "@ovhcloud/ods-theming": "^12.0.3"
+    "@ovhcloud/ods-library-dev": "^12.0.4",
+    "@ovhcloud/ods-theming": "^12.0.4"
   }
 }

@@ -52,14 +52,20 @@ const outDirName = 'docs';
     const command = `curl -sS "${tarball}" | tar -xzf - -C ${dir} --strip 1`;
     await $([command]);
 
-    // todo: remove these 3 lines when packages will be ok
+    // todo: remove these 3 lines when packages will be ok (simulate we have all dist)
     await $`mkdir -p ${dir}/dist`;
     await $`echo "doc version ${version}" > ${dir}/dist/index.html`;
     await $`cat ${dir}/dist/index.html`;
+    //
 
     await $`mv ${dir}/dist dist/v${version}`;
   }
   try {
+    // todo: remove this 2 lines when packages will be ok (simulate we have the current storybook dist)
+    await $`mkdir -p packages/tools/storybook/dist`;
+    await $`echo "doc version ${currentVersion}" > packages/tools/storybook/dist/index.html`;
+    //
+
     // add the current build (released just done)
     await $`cp -r packages/tools/storybook/dist dist/v${currentVersion}`;
     await $`ln -s v${currentVersion} dist/latest`;

@@ -1,6 +1,6 @@
 #!/usr/bin/env zx
 /**
- * generate doc based on available packages from artifactory
+ * generate doc based on available packages from artijfrog
  * execution from monorepo.
  * `npx zx scripts/generate-ods-doc.mjs https://path-to-registry username token`
  * OR

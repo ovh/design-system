@@ -18,7 +18,10 @@ export class OdsQuantityController extends OdsComponentController<OdsQuantity> {
   initInput(): void {
     const foundOsdsInput = this.component.el.querySelector('osds-input[type=number]') as (OdsInput & HTMLElement);
     this.clearEventListeners();
-    if (!foundOsdsInput) {
+    if (foundOsdsInput) {
+      this.component.input = foundOsdsInput;
+      this.component.input.addEventListener('odsInputBlur', this.onBlur.bind(this));
+    } else {
       const foundNativeInput = this.component.el.querySelector('input[type=number]') as (OdsInput & HTMLElement);
       if (foundNativeInput) {
         this.component.input = foundNativeInput;
@@ -27,39 +30,36 @@ export class OdsQuantityController extends OdsComponentController<OdsQuantity> {
       } else {
         this.logger.warn('An input of type number is mandatory.');
       }
-    } else {
-      this.component.input = foundOsdsInput;
-      this.component.input.addEventListener('odsInputBlur', this.onBlur.bind(this));
     }
   }
 
   private onBlur() {
-    if (this.component.input && this.component.input.max && this.component.input.min) {
+    if (this.component.input) {
       const valueAsNb = Number(this.component.input.value);
       const minNb = Number(this.component.input.min);
       const maxNb = Number(this.component.input.max);
 
-      if (!isNaN(valueAsNb)) {
-        this.component.input.value = `${Math.max(minNb, Math.min(maxNb, valueAsNb))}`;
+      if (this.component.input.min !== "" && valueAsNb < minNb) {
+        this.component.input.value = minNb;
+      } else if (this.component.input.max !== "" && valueAsNb > maxNb) {
+        this.component.input.value = maxNb;
       }
     }
   }
 
   processInputValueChange(): void {
     if (this.component.input && this.component.minus && this.component.plus) {
-      if (this.component.input.value && this.component.input.min && this.component.input.max) {
-        const valueAsNb = Number(this.component.input.value);
-        const minNb = Number(this.component.input.min);
-        const maxNb = Number(this.component.input.max);
+      const valueAsNb = Number(this.component.input.value);
+      const minNb = Number(this.component.input.min);
+      const maxNb = Number(this.component.input.max);
 
+      if (this.component.input.value !== "") {
         this.removeDisabled(this.component.minus, this.component.plus);
 
-        if (!isNaN(valueAsNb)) {
-          if (valueAsNb <= minNb) {
-            this.setDisabled(this.component.minus);
-          } else if (valueAsNb >= maxNb) {
-            this.setDisabled(this.component.plus);
-          }
+        if (this.component.input.min !== "" && valueAsNb <= minNb) {
+          this.setDisabled(this.component.minus);
+        } else if (this.component.input.max !== "" && valueAsNb >= maxNb) {
+          this.setDisabled(this.component.plus);
         }
       }
     }

@@ -5401,19 +5401,19 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-cdk-dev@workspace:packages/libraries/cdk/dev"
   dependencies:
-    "@ovhcloud/ods-cdk": ^11.0.1
-    "@ovhcloud/ods-stencil-component": ^11.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^11.0.1
+    "@ovhcloud/ods-cdk": ^12.0.5
+    "@ovhcloud/ods-stencil-component": ^12.0.5
+    "@ovhcloud/ods-stencil-component-dev": ^12.0.5
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-cdk@^11.0.1, @ovhcloud/ods-cdk@workspace:packages/libraries/cdk":
+"@ovhcloud/ods-cdk@^12.0.5, @ovhcloud/ods-cdk@workspace:packages/libraries/cdk":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-cdk@workspace:packages/libraries/cdk"
   dependencies:
-    "@ovhcloud/ods-library-dev": ^11.0.1
-    "@ovhcloud/ods-testing": ^11.0.1
-    "@ovhcloud/ods-theming": ^11.0.1
+    "@ovhcloud/ods-library-dev": ^12.0.5
+    "@ovhcloud/ods-testing": ^12.0.5
+    "@ovhcloud/ods-theming": ^12.0.5
     autoprefixer: ~10.3.7
     node-sass: ^6.0.1
     postcss: ^8.3.9
@@ -5432,18 +5432,18 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-core@^11.0.1, @ovhcloud/ods-core@workspace:packages/libraries/core":
+"@ovhcloud/ods-core@^12.0.5, @ovhcloud/ods-core@workspace:packages/libraries/core":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-core@workspace:packages/libraries/core"
   dependencies:
-    "@ovhcloud/ods-library-dev": ^11.0.1
-    "@ovhcloud/ods-theming": ^11.0.1
+    "@ovhcloud/ods-library-dev": ^12.0.5
+    "@ovhcloud/ods-theming": ^12.0.5
   peerDependencies:
     "@ovhcloud/ods-theming": ">=2"
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-design@^11.0.1, @ovhcloud/ods-design@workspace:packages/design":
+"@ovhcloud/ods-design@^12.0.5, @ovhcloud/ods-design@workspace:packages/design":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-design@workspace:packages/design"
   languageName: unknown
@@ -5465,13 +5465,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-guide@^11.0.1, @ovhcloud/ods-guide@workspace:packages/guide":
+"@ovhcloud/ods-guide@^12.0.5, @ovhcloud/ods-guide@workspace:packages/guide":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-guide@workspace:packages/guide"
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-library-dev@^11.0.1, @ovhcloud/ods-library-dev@workspace:packages/libraries/library-dev":
+"@ovhcloud/ods-library-dev@^12.0.5, @ovhcloud/ods-library-dev@workspace:packages/libraries/library-dev":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-library-dev@workspace:packages/libraries/library-dev"
   dependencies:
@@ -5486,23 +5486,23 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-specifications@^11.0.1, @ovhcloud/ods-specifications@workspace:packages/specifications":
+"@ovhcloud/ods-specifications@^12.0.5, @ovhcloud/ods-specifications@workspace:packages/specifications":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-specifications@workspace:packages/specifications"
   dependencies:
-    "@ovhcloud/ods-design": ^11.0.1
+    "@ovhcloud/ods-design": ^12.0.5
     typescript: 4.7.4
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-starter-react-vite@^11.0.1, @ovhcloud/ods-starter-react-vite@workspace:packages/starters/react-vite":
+"@ovhcloud/ods-starter-react-vite@^12.0.5, @ovhcloud/ods-starter-react-vite@workspace:packages/starters/react-vite":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-starter-react-vite@workspace:packages/starters/react-vite"
   dependencies:
-    "@ovhcloud/ods-core": ^11.0.1
-    "@ovhcloud/ods-stencil": ^11.0.1
-    "@ovhcloud/ods-theme-blue-jeans": ^11.0.1
-    "@ovhcloud/ods-theming": ^11.0.1
+    "@ovhcloud/ods-core": ^12.0.5
+    "@ovhcloud/ods-stencil": ^12.0.5
+    "@ovhcloud/ods-theme-blue-jeans": ^12.0.5
+    "@ovhcloud/ods-theming": ^12.0.5
     "@types/react": ^18.0.17
     "@types/react-dom": ^18.0.6
     "@vitejs/plugin-react": ^2.1.0
@@ -5516,14 +5516,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-starter-react@^11.0.1, @ovhcloud/ods-starter-react@workspace:packages/starters/react":
+"@ovhcloud/ods-starter-react@^12.0.5, @ovhcloud/ods-starter-react@workspace:packages/starters/react":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-starter-react@workspace:packages/starters/react"
   dependencies:
-    "@ovhcloud/ods-core": ^11.0.1
-    "@ovhcloud/ods-stencil": ^11.0.1
-    "@ovhcloud/ods-theme-blue-jeans": ^11.0.1
-    "@ovhcloud/ods-theming": ^11.0.1
+    "@ovhcloud/ods-core": ^12.0.5
+    "@ovhcloud/ods-stencil": ^12.0.5
+    "@ovhcloud/ods-theme-blue-jeans": ^12.0.5
+    "@ovhcloud/ods-theming": ^12.0.5
     "@types/react": 17.0.37
     "@types/react-dom": 17.0.11
     react: 16.14.0
@@ -5537,10 +5537,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-starter-vue-vite@workspace:packages/starters/vue-vite"
   dependencies:
-    "@ovhcloud/ods-core": ^11.0.1
-    "@ovhcloud/ods-stencil": ^11.0.1
-    "@ovhcloud/ods-theme-blue-jeans": ^11.0.1
-    "@ovhcloud/ods-theming": ^11.0.1
+    "@ovhcloud/ods-core": ^12.0.5
+    "@ovhcloud/ods-stencil": ^12.0.5
+    "@ovhcloud/ods-theme-blue-jeans": ^12.0.5
+    "@ovhcloud/ods-theming": ^12.0.5
     "@vitejs/plugin-vue": ^3.1.0
     "@vue/cli-service": ^5.0.8
     typescript: ^4.6.4
@@ -5554,7 +5554,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-accordion-react@workspace:packages/stencil/components/accordion/react"
   dependencies:
-    "@ovhcloud/ods-stencil-button": ^11.0.1
+    "@ovhcloud/ods-stencil-button": ^12.0.5
     "@types/react": 17.0.37
     "@types/react-dom": 17.0.11
     react: 16.14.0
@@ -5572,7 +5572,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-accordion-vue@workspace:packages/stencil/components/accordion/vue"
   dependencies:
-    "@ovhcloud/ods-stencil-accordion": ^11.0.1
+    "@ovhcloud/ods-stencil-accordion": ^12.0.5
     rimraf: ^3.0.2
     typescript: 4.7.4
     vue: ^3.2.41
@@ -5581,12 +5581,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-accordion@^11.0.1, @ovhcloud/ods-stencil-accordion@workspace:packages/stencil/components/accordion":
+"@ovhcloud/ods-stencil-accordion@^12.0.5, @ovhcloud/ods-stencil-accordion@workspace:packages/stencil/components/accordion":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-accordion@workspace:packages/stencil/components/accordion"
   dependencies:
-    "@ovhcloud/ods-stencil-component": ^11.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^11.0.1
+    "@ovhcloud/ods-stencil-component": ^12.0.5
+    "@ovhcloud/ods-stencil-component-dev": ^12.0.5
   peerDependencies:
     "@ovhcloud/ods-stencil-icon": ">=9.0"
   languageName: unknown
@@ -5596,7 +5596,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-button-react@workspace:packages/stencil/components/button/react"
   dependencies:
-    "@ovhcloud/ods-stencil-button": ^11.0.1
+    "@ovhcloud/ods-stencil-button": ^12.0.5
     "@types/react": 17.0.37
     "@types/react-dom": 17.0.11
     react: 16.14.0
@@ -5614,7 +5614,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-button-vue@workspace:packages/stencil/components/button/vue"
   dependencies:
-    "@ovhcloud/ods-stencil-button": ^11.0.1
+    "@ovhcloud/ods-stencil-button": ^12.0.5
     rimraf: ^3.0.2
     typescript: 4.7.4
     vue: ^3.2.41
@@ -5623,12 +5623,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-button@^11.0.1, @ovhcloud/ods-stencil-button@workspace:packages/stencil/components/button":
+"@ovhcloud/ods-stencil-button@^12.0.5, @ovhcloud/ods-stencil-button@workspace:packages/stencil/components/button":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-button@workspace:packages/stencil/components/button"
   dependencies:
-    "@ovhcloud/ods-stencil-component": ^11.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^11.0.1
+    "@ovhcloud/ods-stencil-component": ^12.0.5
+    "@ovhcloud/ods-stencil-component-dev": ^12.0.5
   languageName: unknown
   linkType: soft
 
@@ -5636,7 +5636,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-cart-react@workspace:packages/stencil/components/cart/react"
   dependencies:
-    "@ovhcloud/ods-stencil-cart": ^11.0.1
+    "@ovhcloud/ods-stencil-cart": ^12.0.5
     "@types/react": 17.0.37
     "@types/react-dom": 17.0.11
     react: 16.14.0
@@ -5654,7 +5654,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-cart-vue@workspace:packages/stencil/components/cart/vue"
   dependencies:
-    "@ovhcloud/ods-stencil-cart": ^11.0.1
+    "@ovhcloud/ods-stencil-cart": ^12.0.5
     rimraf: ^3.0.2
     typescript: 4.7.4
     vue: ^3.2.41
@@ -5663,12 +5663,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-cart@^11.0.1, @ovhcloud/ods-stencil-cart@workspace:packages/stencil/components/cart":
+"@ovhcloud/ods-stencil-cart@^12.0.5, @ovhcloud/ods-stencil-cart@workspace:packages/stencil/components/cart":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-cart@workspace:packages/stencil/components/cart"
   dependencies:
-    "@ovhcloud/ods-stencil-component": ^11.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^11.0.1
+    "@ovhcloud/ods-stencil-component": ^12.0.5
+    "@ovhcloud/ods-stencil-component-dev": ^12.0.5
   languageName: unknown
   linkType: soft
 
@@ -5676,7 +5676,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-checkbox-button-react@workspace:packages/stencil/components/checkbox-button/react"
   dependencies:
-    "@ovhcloud/ods-stencil-cart": ^11.0.1
+    "@ovhcloud/ods-stencil-cart": ^12.0.5
     "@types/react": 17.0.37
     "@types/react-dom": 17.0.11
     react: 16.14.0
@@ -5694,7 +5694,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-checkbox-button-vue@workspace:packages/stencil/components/checkbox-button/vue"
   dependencies:
-    "@ovhcloud/ods-stencil-checkbox-button": ^11.0.1
+    "@ovhcloud/ods-stencil-checkbox-button": ^12.0.5
     rimraf: ^3.0.2
     typescript: 4.7.4
     vue: ^3.2.41
@@ -5703,12 +5703,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-checkbox-button@^11.0.1, @ovhcloud/ods-stencil-checkbox-button@workspace:packages/stencil/components/checkbox-button":
+"@ovhcloud/ods-stencil-checkbox-button@^12.0.5, @ovhcloud/ods-stencil-checkbox-button@workspace:packages/stencil/components/checkbox-button":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-checkbox-button@workspace:packages/stencil/components/checkbox-button"
   dependencies:
-    "@ovhcloud/ods-stencil-component": ^11.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^11.0.1
+    "@ovhcloud/ods-stencil-component": ^12.0.5
+    "@ovhcloud/ods-stencil-component-dev": ^12.0.5
   languageName: unknown
   linkType: soft
 
@@ -5716,7 +5716,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-checkbox-react@workspace:packages/stencil/components/checkbox/react"
   dependencies:
-    "@ovhcloud/ods-stencil-cart": ^11.0.1
+    "@ovhcloud/ods-stencil-cart": ^12.0.5
     "@types/react": 17.0.37
     "@types/react-dom": 17.0.11
     react: 16.14.0
@@ -5734,7 +5734,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-checkbox-vue@workspace:packages/stencil/components/checkbox/vue"
   dependencies:
-    "@ovhcloud/ods-stencil-checkbox": ^11.0.1
+    "@ovhcloud/ods-stencil-checkbox": ^12.0.5
     rimraf: ^3.0.2
     typescript: 4.7.4
     vue: ^3.2.41
@@ -5743,12 +5743,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-checkbox@^11.0.1, @ovhcloud/ods-stencil-checkbox@workspace:packages/stencil/components/checkbox":
+"@ovhcloud/ods-stencil-checkbox@^12.0.5, @ovhcloud/ods-stencil-checkbox@workspace:packages/stencil/components/checkbox":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-checkbox@workspace:packages/stencil/components/checkbox"
   dependencies:
-    "@ovhcloud/ods-stencil-component": ^11.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^11.0.1
+    "@ovhcloud/ods-stencil-component": ^12.0.5
+    "@ovhcloud/ods-stencil-component-dev": ^12.0.5
   languageName: unknown
   linkType: soft
 
@@ -5756,7 +5756,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-chip-react@workspace:packages/stencil/components/chip/react"
   dependencies:
-    "@ovhcloud/ods-stencil-cart": ^11.0.1
+    "@ovhcloud/ods-stencil-cart": ^12.0.5
     "@types/react": 17.0.37
     "@types/react-dom": 17.0.11
     react: 16.14.0
@@ -5774,7 +5774,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-chip-vue@workspace:packages/stencil/components/chip/vue"
   dependencies:
-    "@ovhcloud/ods-stencil-chip": ^11.0.1
+    "@ovhcloud/ods-stencil-chip": ^12.0.5
     rimraf: ^3.0.2
     typescript: 4.7.4
     vue: ^3.2.41
@@ -5783,12 +5783,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-chip@^11.0.1, @ovhcloud/ods-stencil-chip@workspace:packages/stencil/components/chip":
+"@ovhcloud/ods-stencil-chip@^12.0.5, @ovhcloud/ods-stencil-chip@workspace:packages/stencil/components/chip":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-chip@workspace:packages/stencil/components/chip"
   dependencies:
-    "@ovhcloud/ods-stencil-component": ^11.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^11.0.1
+    "@ovhcloud/ods-stencil-component": ^12.0.5
+    "@ovhcloud/ods-stencil-component-dev": ^12.0.5
   languageName: unknown
   linkType: soft
 
@@ -5796,7 +5796,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-code-react@workspace:packages/stencil/components/code/react"
   dependencies:
-    "@ovhcloud/ods-stencil-icon": ^11.0.1
+    "@ovhcloud/ods-stencil-icon": ^12.0.5
     "@types/react": 17.0.37
     "@types/react-dom": 17.0.11
     react: 16.14.0
@@ -5814,7 +5814,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-code-vue@workspace:packages/stencil/components/code/vue"
   dependencies:
-    "@ovhcloud/ods-stencil-code": ^11.0.1
+    "@ovhcloud/ods-stencil-code": ^12.0.5
     rimraf: ^3.0.2
     typescript: 4.7.4
     vue: ^3.2.41
@@ -5823,29 +5823,29 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-code@^11.0.1, @ovhcloud/ods-stencil-code@workspace:packages/stencil/components/code":
+"@ovhcloud/ods-stencil-code@^12.0.5, @ovhcloud/ods-stencil-code@workspace:packages/stencil/components/code":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-code@workspace:packages/stencil/components/code"
   dependencies:
-    "@ovhcloud/ods-stencil-button": ^11.0.1
-    "@ovhcloud/ods-stencil-component": ^11.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^11.0.1
-    "@ovhcloud/ods-stencil-icon": ^11.0.1
+    "@ovhcloud/ods-stencil-button": ^12.0.5
+    "@ovhcloud/ods-stencil-component": ^12.0.5
+    "@ovhcloud/ods-stencil-component-dev": ^12.0.5
+    "@ovhcloud/ods-stencil-icon": ^12.0.5
   peerDependencies:
     "@ovhcloud/ods-stencil-button": ">=9.0"
     "@ovhcloud/ods-stencil-icon": ">=9.0"
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-component-dev@^11.0.1, @ovhcloud/ods-stencil-component-dev@workspace:packages/stencil/libraries/stencil-component-dev":
+"@ovhcloud/ods-stencil-component-dev@^12.0.5, @ovhcloud/ods-stencil-component-dev@workspace:packages/stencil/libraries/stencil-component-dev":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-component-dev@workspace:packages/stencil/libraries/stencil-component-dev"
   dependencies:
     "@jest/core": ^27.5.1
     "@jest/types": ^26.6.2
-    "@ovhcloud/ods-stencil-testing": ^11.0.1
-    "@ovhcloud/ods-testing": ^11.0.1
-    "@ovhcloud/ods-theme-blue-jeans": ^11.0.1
+    "@ovhcloud/ods-stencil-testing": ^12.0.5
+    "@ovhcloud/ods-testing": ^12.0.5
+    "@ovhcloud/ods-theme-blue-jeans": ^12.0.5
     "@stencil/postcss": ~2.1.0
     "@stencil/react-output-target": ~0.2.1
     "@stencil/sass": ~2.0.0
@@ -5859,13 +5859,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-component@^11.0.1, @ovhcloud/ods-stencil-component@workspace:packages/stencil/libraries/stencil-component":
+"@ovhcloud/ods-stencil-component@^12.0.5, @ovhcloud/ods-stencil-component@workspace:packages/stencil/libraries/stencil-component":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-component@workspace:packages/stencil/libraries/stencil-component"
   dependencies:
-    "@ovhcloud/ods-core": ^11.0.1
-    "@ovhcloud/ods-stencil-core": ^11.0.1
-    "@ovhcloud/ods-theming": ^11.0.1
+    "@ovhcloud/ods-core": ^12.0.5
+    "@ovhcloud/ods-stencil-core": ^12.0.5
+    "@ovhcloud/ods-theming": ^12.0.5
     "@stencil/core": ~2.18.1
     tslib: ^2.1.0
   languageName: unknown
@@ -5875,7 +5875,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-components-react@workspace:packages/stencil/components/react"
   dependencies:
-    "@ovhcloud/ods-stencil-components": ^11.0.1
+    "@ovhcloud/ods-stencil-components": ^12.0.5
     "@types/react": 17.0.37
     "@types/react-dom": 17.0.11
     react: 16.14.0
@@ -5893,7 +5893,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-components-vue@workspace:packages/stencil/components/vue"
   dependencies:
-    "@ovhcloud/ods-stencil-components": ^11.0.1
+    "@ovhcloud/ods-stencil-components": ^12.0.5
     rimraf: ^3.0.2
     typescript: 4.7.4
     vue: ^3.2.41
@@ -5902,19 +5902,19 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-components@^11.0.1, @ovhcloud/ods-stencil-components@workspace:packages/stencil/components":
+"@ovhcloud/ods-stencil-components@^12.0.5, @ovhcloud/ods-stencil-components@workspace:packages/stencil/components":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-components@workspace:packages/stencil/components"
   dependencies:
     "@jest/core": ^27.5.1
     "@jest/types": ^26.6.2
-    "@ovhcloud/ods-cdk": ^11.0.1
-    "@ovhcloud/ods-core": ^11.0.1
-    "@ovhcloud/ods-stencil-core": ^11.0.1
-    "@ovhcloud/ods-stencil-testing": ^11.0.1
-    "@ovhcloud/ods-testing": ^11.0.1
-    "@ovhcloud/ods-theme-blue-jeans": ^11.0.1
-    "@ovhcloud/ods-theming": ^11.0.1
+    "@ovhcloud/ods-cdk": ^12.0.5
+    "@ovhcloud/ods-core": ^12.0.5
+    "@ovhcloud/ods-stencil-core": ^12.0.5
+    "@ovhcloud/ods-stencil-testing": ^12.0.5
+    "@ovhcloud/ods-testing": ^12.0.5
+    "@ovhcloud/ods-theme-blue-jeans": ^12.0.5
+    "@ovhcloud/ods-theming": ^12.0.5
     "@stencil/core": ~2.18.1
     "@stencil/postcss": ~2.1.0
     "@stencil/react-output-target": ~0.2.1
@@ -5934,7 +5934,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-content-addon-react@workspace:packages/stencil/components/content-addon/react"
   dependencies:
-    "@ovhcloud/ods-stencil-cart": ^11.0.1
+    "@ovhcloud/ods-stencil-cart": ^12.0.5
     "@types/react": 17.0.37
     "@types/react-dom": 17.0.11
     react: 16.14.0
@@ -5952,7 +5952,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-content-addon-vue@workspace:packages/stencil/components/content-addon/vue"
   dependencies:
-    "@ovhcloud/ods-stencil-content-addon": ^11.0.1
+    "@ovhcloud/ods-stencil-content-addon": ^12.0.5
     rimraf: ^3.0.2
     typescript: 4.7.4
     vue: ^3.2.41
@@ -5961,20 +5961,20 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-content-addon@^11.0.1, @ovhcloud/ods-stencil-content-addon@workspace:packages/stencil/components/content-addon":
+"@ovhcloud/ods-stencil-content-addon@^12.0.5, @ovhcloud/ods-stencil-content-addon@workspace:packages/stencil/components/content-addon":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-content-addon@workspace:packages/stencil/components/content-addon"
   dependencies:
-    "@ovhcloud/ods-stencil-component": ^11.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^11.0.1
+    "@ovhcloud/ods-stencil-component": ^12.0.5
+    "@ovhcloud/ods-stencil-component-dev": ^12.0.5
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-core@^11.0.1, @ovhcloud/ods-stencil-core@workspace:packages/stencil/libraries/stencil-core":
+"@ovhcloud/ods-stencil-core@^12.0.5, @ovhcloud/ods-stencil-core@workspace:packages/stencil/libraries/stencil-core":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-core@workspace:packages/stencil/libraries/stencil-core"
   dependencies:
-    "@ovhcloud/ods-core": ^11.0.1
+    "@ovhcloud/ods-core": ^12.0.5
     "@stencil/core": ~2.18.1
     "@stencil/postcss": ~2.1.0
     "@stencil/react-output-target": ~0.2.1
@@ -5997,7 +5997,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-divider-react@workspace:packages/stencil/components/divider/react"
   dependencies:
-    "@ovhcloud/ods-stencil-cart": ^11.0.1
+    "@ovhcloud/ods-stencil-cart": ^12.0.5
     "@types/react": 17.0.37
     "@types/react-dom": 17.0.11
     react: 16.14.0
@@ -6015,7 +6015,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-divider-vue@workspace:packages/stencil/components/divider/vue"
   dependencies:
-    "@ovhcloud/ods-stencil-divider": ^11.0.1
+    "@ovhcloud/ods-stencil-divider": ^12.0.5
     rimraf: ^3.0.2
     typescript: 4.7.4
     vue: ^3.2.41
@@ -6024,12 +6024,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-divider@^11.0.1, @ovhcloud/ods-stencil-divider@workspace:packages/stencil/components/divider":
+"@ovhcloud/ods-stencil-divider@^12.0.5, @ovhcloud/ods-stencil-divider@workspace:packages/stencil/components/divider":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-divider@workspace:packages/stencil/components/divider"
   dependencies:
-    "@ovhcloud/ods-stencil-component": ^11.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^11.0.1
+    "@ovhcloud/ods-stencil-component": ^12.0.5
+    "@ovhcloud/ods-stencil-component-dev": ^12.0.5
   languageName: unknown
   linkType: soft
 
@@ -6054,7 +6054,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-flag-vue@workspace:packages/stencil/components/flag/vue"
   dependencies:
-    "@ovhcloud/ods-stencil-flag": ^11.0.1
+    "@ovhcloud/ods-stencil-flag": ^12.0.5
     rimraf: ^3.0.2
     typescript: 4.7.4
     vue: ^3.2.41
@@ -6063,12 +6063,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-flag@^11.0.1, @ovhcloud/ods-stencil-flag@workspace:packages/stencil/components/flag":
+"@ovhcloud/ods-stencil-flag@^12.0.5, @ovhcloud/ods-stencil-flag@workspace:packages/stencil/components/flag":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-flag@workspace:packages/stencil/components/flag"
   dependencies:
-    "@ovhcloud/ods-stencil-component": ^11.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^11.0.1
+    "@ovhcloud/ods-stencil-component": ^12.0.5
+    "@ovhcloud/ods-stencil-component-dev": ^12.0.5
     flag-icons: ^6.6.6
     workbox-build: 4.3.1
   languageName: unknown
@@ -6078,7 +6078,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-icon-react@workspace:packages/stencil/components/icon/react"
   dependencies:
-    "@ovhcloud/ods-stencil-cart": ^11.0.1
+    "@ovhcloud/ods-stencil-cart": ^12.0.5
     "@types/react": 17.0.37
     "@types/react-dom": 17.0.11
     react: 16.14.0
@@ -6096,7 +6096,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-icon-vue@workspace:packages/stencil/components/icon/vue"
   dependencies:
-    "@ovhcloud/ods-stencil-icon": ^11.0.1
+    "@ovhcloud/ods-stencil-icon": ^12.0.5
     rimraf: ^3.0.2
     typescript: 4.7.4
     vue: ^3.2.41
@@ -6105,12 +6105,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-icon@^11.0.1, @ovhcloud/ods-stencil-icon@workspace:packages/stencil/components/icon":
+"@ovhcloud/ods-stencil-icon@^12.0.5, @ovhcloud/ods-stencil-icon@workspace:packages/stencil/components/icon":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-icon@workspace:packages/stencil/components/icon"
   dependencies:
-    "@ovhcloud/ods-stencil-component": ^11.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^11.0.1
+    "@ovhcloud/ods-stencil-component": ^12.0.5
+    "@ovhcloud/ods-stencil-component-dev": ^12.0.5
   languageName: unknown
   linkType: soft
 
@@ -6118,7 +6118,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-input-react@workspace:packages/stencil/components/input/react"
   dependencies:
-    "@ovhcloud/ods-stencil-cart": ^11.0.1
+    "@ovhcloud/ods-stencil-cart": ^12.0.5
     "@types/react": 17.0.37
     "@types/react-dom": 17.0.11
     react: 16.14.0
@@ -6136,7 +6136,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-input-vue@workspace:packages/stencil/components/input/vue"
   dependencies:
-    "@ovhcloud/ods-stencil-input": ^11.0.1
+    "@ovhcloud/ods-stencil-input": ^12.0.5
     rimraf: ^3.0.2
     typescript: 4.7.4
     vue: ^3.2.41
@@ -6145,12 +6145,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-input@^11.0.1, @ovhcloud/ods-stencil-input@workspace:packages/stencil/components/input":
+"@ovhcloud/ods-stencil-input@^12.0.5, @ovhcloud/ods-stencil-input@workspace:packages/stencil/components/input":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-input@workspace:packages/stencil/components/input"
   dependencies:
-    "@ovhcloud/ods-stencil-component": ^11.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^11.0.1
+    "@ovhcloud/ods-stencil-component": ^12.0.5
+    "@ovhcloud/ods-stencil-component-dev": ^12.0.5
   languageName: unknown
   linkType: soft
 
@@ -6158,7 +6158,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-link-react@workspace:packages/stencil/components/link/react"
   dependencies:
-    "@ovhcloud/ods-stencil-cart": ^11.0.1
+    "@ovhcloud/ods-stencil-cart": ^12.0.5
     "@types/react": 17.0.37
     "@types/react-dom": 17.0.11
     react: 16.14.0
@@ -6176,7 +6176,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-link-vue@workspace:packages/stencil/components/link/vue"
   dependencies:
-    "@ovhcloud/ods-stencil-link": ^11.0.1
+    "@ovhcloud/ods-stencil-link": ^12.0.5
     rimraf: ^3.0.2
     typescript: 4.7.4
     vue: ^3.2.41
@@ -6185,12 +6185,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-link@^11.0.1, @ovhcloud/ods-stencil-link@workspace:packages/stencil/components/link":
+"@ovhcloud/ods-stencil-link@^12.0.5, @ovhcloud/ods-stencil-link@workspace:packages/stencil/components/link":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-link@workspace:packages/stencil/components/link"
   dependencies:
-    "@ovhcloud/ods-stencil-component": ^11.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^11.0.1
+    "@ovhcloud/ods-stencil-component": ^12.0.5
+    "@ovhcloud/ods-stencil-component-dev": ^12.0.5
   languageName: unknown
   linkType: soft
 
@@ -6198,7 +6198,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-location-tile-react@workspace:packages/stencil/components/location-tile/react"
   dependencies:
-    "@ovhcloud/ods-stencil-cart": ^11.0.1
+    "@ovhcloud/ods-stencil-cart": ^12.0.5
     "@types/react": 17.0.37
     "@types/react-dom": 17.0.11
     react: 16.14.0
@@ -6216,7 +6216,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-location-tile-vue@workspace:packages/stencil/components/location-tile/vue"
   dependencies:
-    "@ovhcloud/ods-stencil-location-tile": ^11.0.1
+    "@ovhcloud/ods-stencil-location-tile": ^12.0.5
     rimraf: ^3.0.2
     typescript: 4.7.4
     vue: ^3.2.41
@@ -6225,12 +6225,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-location-tile@^11.0.1, @ovhcloud/ods-stencil-location-tile@workspace:packages/stencil/components/location-tile":
+"@ovhcloud/ods-stencil-location-tile@^12.0.5, @ovhcloud/ods-stencil-location-tile@workspace:packages/stencil/components/location-tile":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-location-tile@workspace:packages/stencil/components/location-tile"
   dependencies:
-    "@ovhcloud/ods-stencil-component": ^11.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^11.0.1
+    "@ovhcloud/ods-stencil-component": ^12.0.5
+    "@ovhcloud/ods-stencil-component-dev": ^12.0.5
   languageName: unknown
   linkType: soft
 
@@ -6238,7 +6238,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-message-react@workspace:packages/stencil/components/message/react"
   dependencies:
-    "@ovhcloud/ods-stencil-cart": ^11.0.1
+    "@ovhcloud/ods-stencil-cart": ^12.0.5
     "@types/react": 17.0.37
     "@types/react-dom": 17.0.11
     react: 16.14.0
@@ -6256,7 +6256,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-message-vue@workspace:packages/stencil/components/message/vue"
   dependencies:
-    "@ovhcloud/ods-stencil-message": ^11.0.1
+    "@ovhcloud/ods-stencil-message": ^12.0.5
     rimraf: ^3.0.2
     typescript: 4.7.4
     vue: ^3.2.41
@@ -6265,12 +6265,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-message@^11.0.1, @ovhcloud/ods-stencil-message@workspace:packages/stencil/components/message":
+"@ovhcloud/ods-stencil-message@^12.0.5, @ovhcloud/ods-stencil-message@workspace:packages/stencil/components/message":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-message@workspace:packages/stencil/components/message"
   dependencies:
-    "@ovhcloud/ods-stencil-component": ^11.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^11.0.1
+    "@ovhcloud/ods-stencil-component": ^12.0.5
+    "@ovhcloud/ods-stencil-component-dev": ^12.0.5
   languageName: unknown
   linkType: soft
 
@@ -6278,7 +6278,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-quantity-react@workspace:packages/stencil/components/quantity/react"
   dependencies:
-    "@ovhcloud/ods-stencil-cart": ^11.0.1
+    "@ovhcloud/ods-stencil-cart": ^12.0.5
     "@types/react": 17.0.37
     "@types/react-dom": 17.0.11
     react: 16.14.0
@@ -6296,7 +6296,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-quantity-vue@workspace:packages/stencil/components/quantity/vue"
   dependencies:
-    "@ovhcloud/ods-stencil-quantity": ^11.0.1
+    "@ovhcloud/ods-stencil-quantity": ^12.0.5
     rimraf: ^3.0.2
     typescript: 4.7.4
     vue: ^3.2.41
@@ -6305,12 +6305,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-quantity@^11.0.1, @ovhcloud/ods-stencil-quantity@workspace:packages/stencil/components/quantity":
+"@ovhcloud/ods-stencil-quantity@^12.0.5, @ovhcloud/ods-stencil-quantity@workspace:packages/stencil/components/quantity":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-quantity@workspace:packages/stencil/components/quantity"
   dependencies:
-    "@ovhcloud/ods-stencil-component": ^11.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^11.0.1
+    "@ovhcloud/ods-stencil-component": ^12.0.5
+    "@ovhcloud/ods-stencil-component-dev": ^12.0.5
   languageName: unknown
   linkType: soft
 
@@ -6318,7 +6318,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-radio-button-react@workspace:packages/stencil/components/radio-button/react"
   dependencies:
-    "@ovhcloud/ods-stencil-cart": ^11.0.1
+    "@ovhcloud/ods-stencil-cart": ^12.0.5
     "@types/react": 17.0.37
     "@types/react-dom": 17.0.11
     react: 16.14.0
@@ -6336,7 +6336,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-radio-button-vue@workspace:packages/stencil/components/radio-button/vue"
   dependencies:
-    "@ovhcloud/ods-stencil-radio-button": ^11.0.1
+    "@ovhcloud/ods-stencil-radio-button": ^12.0.5
     rimraf: ^3.0.2
     typescript: 4.7.4
     vue: ^3.2.41
@@ -6345,12 +6345,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-radio-button@^11.0.1, @ovhcloud/ods-stencil-radio-button@workspace:packages/stencil/components/radio-button":
+"@ovhcloud/ods-stencil-radio-button@^12.0.5, @ovhcloud/ods-stencil-radio-button@workspace:packages/stencil/components/radio-button":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-radio-button@workspace:packages/stencil/components/radio-button"
   dependencies:
-    "@ovhcloud/ods-stencil-component": ^11.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^11.0.1
+    "@ovhcloud/ods-stencil-component": ^12.0.5
+    "@ovhcloud/ods-stencil-component-dev": ^12.0.5
   languageName: unknown
   linkType: soft
 
@@ -6358,7 +6358,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-radio-react@workspace:packages/stencil/components/radio/react"
   dependencies:
-    "@ovhcloud/ods-stencil-cart": ^11.0.1
+    "@ovhcloud/ods-stencil-cart": ^12.0.5
     "@types/react": 17.0.37
     "@types/react-dom": 17.0.11
     react: 16.14.0
@@ -6376,7 +6376,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-radio-vue@workspace:packages/stencil/components/radio/vue"
   dependencies:
-    "@ovhcloud/ods-stencil-radio": ^11.0.1
+    "@ovhcloud/ods-stencil-radio": ^12.0.5
     rimraf: ^3.0.2
     typescript: 4.7.4
     vue: ^3.2.41
@@ -6385,12 +6385,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-radio@^11.0.1, @ovhcloud/ods-stencil-radio@workspace:packages/stencil/components/radio":
+"@ovhcloud/ods-stencil-radio@^12.0.5, @ovhcloud/ods-stencil-radio@workspace:packages/stencil/components/radio":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-radio@workspace:packages/stencil/components/radio"
   dependencies:
-    "@ovhcloud/ods-stencil-component": ^11.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^11.0.1
+    "@ovhcloud/ods-stencil-component": ^12.0.5
+    "@ovhcloud/ods-stencil-component-dev": ^12.0.5
   languageName: unknown
   linkType: soft
 
@@ -6415,7 +6415,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-range-vue@workspace:packages/stencil/components/range/vue"
   dependencies:
-    "@ovhcloud/ods-stencil-range": ^11.0.1
+    "@ovhcloud/ods-stencil-range": ^12.0.5
     rimraf: ^3.0.2
     typescript: 4.7.4
     vue: ^3.2.41
@@ -6424,12 +6424,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-range@^11.0.1, @ovhcloud/ods-stencil-range@workspace:packages/stencil/components/range":
+"@ovhcloud/ods-stencil-range@^12.0.5, @ovhcloud/ods-stencil-range@workspace:packages/stencil/components/range":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-range@workspace:packages/stencil/components/range"
   dependencies:
-    "@ovhcloud/ods-stencil-component": ^11.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^11.0.1
+    "@ovhcloud/ods-stencil-component": ^12.0.5
+    "@ovhcloud/ods-stencil-component-dev": ^12.0.5
   languageName: unknown
   linkType: soft
 
@@ -6437,7 +6437,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-select-react@workspace:packages/stencil/components/select/react"
   dependencies:
-    "@ovhcloud/ods-stencil-select": ^11.0.1
+    "@ovhcloud/ods-stencil-select": ^12.0.5
     "@types/react": 17.0.37
     "@types/react-dom": 17.0.11
     react: 16.14.0
@@ -6455,7 +6455,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-select-vue@workspace:packages/stencil/components/select/vue"
   dependencies:
-    "@ovhcloud/ods-stencil-select": ^11.0.1
+    "@ovhcloud/ods-stencil-select": ^12.0.5
     rimraf: ^3.0.2
     typescript: 4.7.4
     vue: ^3.2.41
@@ -6464,12 +6464,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-select@^11.0.1, @ovhcloud/ods-stencil-select@workspace:packages/stencil/components/select":
+"@ovhcloud/ods-stencil-select@^12.0.5, @ovhcloud/ods-stencil-select@workspace:packages/stencil/components/select":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-select@workspace:packages/stencil/components/select"
   dependencies:
-    "@ovhcloud/ods-stencil-component": ^11.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^11.0.1
+    "@ovhcloud/ods-stencil-component": ^12.0.5
+    "@ovhcloud/ods-stencil-component-dev": ^12.0.5
   peerDependencies:
     "@ovhcloud/ods-stencil-icon": ">=10.0"
   languageName: unknown
@@ -6479,7 +6479,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-skeleton-react@workspace:packages/stencil/components/skeleton/react"
   dependencies:
-    "@ovhcloud/ods-stencil-cart": ^11.0.1
+    "@ovhcloud/ods-stencil-cart": ^12.0.5
     "@types/react": 17.0.37
     "@types/react-dom": 17.0.11
     react: 16.14.0
@@ -6497,7 +6497,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-skeleton-vue@workspace:packages/stencil/components/skeleton/vue"
   dependencies:
-    "@ovhcloud/ods-stencil-skeleton": ^11.0.1
+    "@ovhcloud/ods-stencil-skeleton": ^12.0.5
     rimraf: ^3.0.2
     typescript: 4.7.4
     vue: ^3.2.41
@@ -6506,12 +6506,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-skeleton@^11.0.1, @ovhcloud/ods-stencil-skeleton@workspace:packages/stencil/components/skeleton":
+"@ovhcloud/ods-stencil-skeleton@^12.0.5, @ovhcloud/ods-stencil-skeleton@workspace:packages/stencil/components/skeleton":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-skeleton@workspace:packages/stencil/components/skeleton"
   dependencies:
-    "@ovhcloud/ods-stencil-component": ^11.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^11.0.1
+    "@ovhcloud/ods-stencil-component": ^12.0.5
+    "@ovhcloud/ods-stencil-component-dev": ^12.0.5
   languageName: unknown
   linkType: soft
 
@@ -6536,7 +6536,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-tabs-vue@workspace:packages/stencil/components/tabs/vue"
   dependencies:
-    "@ovhcloud/ods-stencil-tabs": ^11.0.1
+    "@ovhcloud/ods-stencil-tabs": ^12.0.5
     rimraf: ^3.0.2
     typescript: 4.7.4
     vue: ^3.2.41
@@ -6545,21 +6545,21 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-tabs@^11.0.1, @ovhcloud/ods-stencil-tabs@workspace:packages/stencil/components/tabs":
+"@ovhcloud/ods-stencil-tabs@^12.0.5, @ovhcloud/ods-stencil-tabs@workspace:packages/stencil/components/tabs":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-tabs@workspace:packages/stencil/components/tabs"
   dependencies:
-    "@ovhcloud/ods-stencil-component": ^11.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^11.0.1
+    "@ovhcloud/ods-stencil-component": ^12.0.5
+    "@ovhcloud/ods-stencil-component-dev": ^12.0.5
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-testing@^11.0.1, @ovhcloud/ods-stencil-testing@workspace:packages/stencil/libraries/stencil-testing":
+"@ovhcloud/ods-stencil-testing@^12.0.5, @ovhcloud/ods-stencil-testing@workspace:packages/stencil/libraries/stencil-testing":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-testing@workspace:packages/stencil/libraries/stencil-testing"
   dependencies:
-    "@ovhcloud/ods-core": ^11.0.1
-    "@ovhcloud/ods-testing": ^11.0.1
+    "@ovhcloud/ods-core": ^12.0.5
+    "@ovhcloud/ods-testing": ^12.0.5
     "@stencil/core": ~2.18.1
     typescript: 4.7.4
   peerDependencies:
@@ -6573,7 +6573,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-text-react@workspace:packages/stencil/components/text/react"
   dependencies:
-    "@ovhcloud/ods-stencil-cart": ^11.0.1
+    "@ovhcloud/ods-stencil-cart": ^12.0.5
     "@types/react": 17.0.37
     "@types/react-dom": 17.0.11
     react: 16.14.0
@@ -6591,7 +6591,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-text-vue@workspace:packages/stencil/components/text/vue"
   dependencies:
-    "@ovhcloud/ods-stencil-text": ^11.0.1
+    "@ovhcloud/ods-stencil-text": ^12.0.5
     rimraf: ^3.0.2
     typescript: 4.7.4
     vue: ^3.2.41
@@ -6600,12 +6600,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-text@^11.0.1, @ovhcloud/ods-stencil-text@workspace:packages/stencil/components/text":
+"@ovhcloud/ods-stencil-text@^12.0.5, @ovhcloud/ods-stencil-text@workspace:packages/stencil/components/text":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-text@workspace:packages/stencil/components/text"
   dependencies:
-    "@ovhcloud/ods-stencil-component": ^11.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^11.0.1
+    "@ovhcloud/ods-stencil-component": ^12.0.5
+    "@ovhcloud/ods-stencil-component-dev": ^12.0.5
   languageName: unknown
   linkType: soft
 
@@ -6613,7 +6613,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-textarea-react@workspace:packages/stencil/components/textarea/react"
   dependencies:
-    "@ovhcloud/ods-stencil-cart": ^11.0.1
+    "@ovhcloud/ods-stencil-cart": ^12.0.5
     "@types/react": 17.0.37
     "@types/react-dom": 17.0.11
     react: 16.14.0
@@ -6631,7 +6631,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-textarea-vue@workspace:packages/stencil/components/textarea/vue"
   dependencies:
-    "@ovhcloud/ods-stencil-textarea": ^11.0.1
+    "@ovhcloud/ods-stencil-textarea": ^12.0.5
     rimraf: ^3.0.2
     typescript: 4.7.4
     vue: ^3.2.41
@@ -6640,12 +6640,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-textarea@^11.0.1, @ovhcloud/ods-stencil-textarea@workspace:packages/stencil/components/textarea":
+"@ovhcloud/ods-stencil-textarea@^12.0.5, @ovhcloud/ods-stencil-textarea@workspace:packages/stencil/components/textarea":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-textarea@workspace:packages/stencil/components/textarea"
   dependencies:
-    "@ovhcloud/ods-stencil-component": ^11.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^11.0.1
+    "@ovhcloud/ods-stencil-component": ^12.0.5
+    "@ovhcloud/ods-stencil-component-dev": ^12.0.5
   languageName: unknown
   linkType: soft
 
@@ -6653,7 +6653,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-tile-react@workspace:packages/stencil/components/tile/react"
   dependencies:
-    "@ovhcloud/ods-stencil-cart": ^11.0.1
+    "@ovhcloud/ods-stencil-cart": ^12.0.5
     "@types/react": 17.0.37
     "@types/react-dom": 17.0.11
     react: 16.14.0
@@ -6671,7 +6671,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-tile-vue@workspace:packages/stencil/components/tile/vue"
   dependencies:
-    "@ovhcloud/ods-stencil-tile": ^11.0.1
+    "@ovhcloud/ods-stencil-tile": ^12.0.5
     rimraf: ^3.0.2
     typescript: 4.7.4
     vue: ^3.2.41
@@ -6680,12 +6680,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-tile@^11.0.1, @ovhcloud/ods-stencil-tile@workspace:packages/stencil/components/tile":
+"@ovhcloud/ods-stencil-tile@^12.0.5, @ovhcloud/ods-stencil-tile@workspace:packages/stencil/components/tile":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-tile@workspace:packages/stencil/components/tile"
   dependencies:
-    "@ovhcloud/ods-stencil-component": ^11.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^11.0.1
+    "@ovhcloud/ods-stencil-component": ^12.0.5
+    "@ovhcloud/ods-stencil-component-dev": ^12.0.5
   languageName: unknown
   linkType: soft
 
@@ -6693,7 +6693,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-toggle-react@workspace:packages/stencil/components/toggle/react"
   dependencies:
-    "@ovhcloud/ods-stencil-cart": ^11.0.1
+    "@ovhcloud/ods-stencil-cart": ^12.0.5
     "@types/react": 17.0.37
     "@types/react-dom": 17.0.11
     react: 16.14.0
@@ -6711,7 +6711,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-toggle-vue@workspace:packages/stencil/components/toggle/vue"
   dependencies:
-    "@ovhcloud/ods-stencil-toggle": ^11.0.1
+    "@ovhcloud/ods-stencil-toggle": ^12.0.5
     rimraf: ^3.0.2
     typescript: 4.7.4
     vue: ^3.2.41
@@ -6720,21 +6720,21 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-toggle@^11.0.1, @ovhcloud/ods-stencil-toggle@workspace:packages/stencil/components/toggle":
+"@ovhcloud/ods-stencil-toggle@^12.0.5, @ovhcloud/ods-stencil-toggle@workspace:packages/stencil/components/toggle":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-toggle@workspace:packages/stencil/components/toggle"
   dependencies:
-    "@ovhcloud/ods-stencil-component": ^11.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^11.0.1
+    "@ovhcloud/ods-stencil-component": ^12.0.5
+    "@ovhcloud/ods-stencil-component-dev": ^12.0.5
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil@^11.0.1, @ovhcloud/ods-stencil@workspace:packages/stencil":
+"@ovhcloud/ods-stencil@^12.0.5, @ovhcloud/ods-stencil@workspace:packages/stencil":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil@workspace:packages/stencil"
   dependencies:
-    "@ovhcloud/ods-stencil-components": ^11.0.1
-    "@ovhcloud/ods-theme-blue-jeans": ^11.0.1
+    "@ovhcloud/ods-stencil-components": ^12.0.5
+    "@ovhcloud/ods-theme-blue-jeans": ^12.0.5
     "@stencil/core": ~2.18.1
     typescript: 4.7.4
   languageName: unknown
@@ -6745,15 +6745,15 @@ __metadata:
   resolution: "@ovhcloud/ods-storybook@workspace:packages/tools/storybook"
   dependencies:
     "@babel/core": ^7.12.10
-    "@ovhcloud/ods-core": ^11.0.1
-    "@ovhcloud/ods-design": ^11.0.1
-    "@ovhcloud/ods-guide": ^11.0.1
-    "@ovhcloud/ods-specifications": ^11.0.1
-    "@ovhcloud/ods-starter-react": ^11.0.1
-    "@ovhcloud/ods-starter-react-vite": ^11.0.1
-    "@ovhcloud/ods-stencil": ^11.0.1
-    "@ovhcloud/ods-theme-blue-jeans": ^11.0.1
-    "@ovhcloud/ods-theming": ^11.0.1
+    "@ovhcloud/ods-core": ^12.0.5
+    "@ovhcloud/ods-design": ^12.0.5
+    "@ovhcloud/ods-guide": ^12.0.5
+    "@ovhcloud/ods-specifications": ^12.0.5
+    "@ovhcloud/ods-starter-react": ^12.0.5
+    "@ovhcloud/ods-starter-react-vite": ^12.0.5
+    "@ovhcloud/ods-stencil": ^12.0.5
+    "@ovhcloud/ods-theme-blue-jeans": ^12.0.5
+    "@ovhcloud/ods-theming": ^12.0.5
     "@storybook/addon-a11y": ^6.4.19
     "@storybook/addon-actions": ^6.4.19
     "@storybook/addon-backgrounds": ^6.4.19
@@ -6780,13 +6780,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-testing@^11.0.1, @ovhcloud/ods-testing@workspace:packages/libraries/testing":
+"@ovhcloud/ods-testing@^12.0.5, @ovhcloud/ods-testing@workspace:packages/libraries/testing":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-testing@workspace:packages/libraries/testing"
   dependencies:
-    "@ovhcloud/ods-core": ^11.0.1
-    "@ovhcloud/ods-library-dev": ^11.0.1
-    "@ovhcloud/ods-theming": ^11.0.1
+    "@ovhcloud/ods-core": ^12.0.5
+    "@ovhcloud/ods-library-dev": ^12.0.5
+    "@ovhcloud/ods-theming": ^12.0.5
   peerDependencies:
     "@ovhcloud/ods-core": ">=2"
     "@ovhcloud/ods-theming": ">=2"
@@ -6794,11 +6794,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-theme-blue-jeans@^11.0.1, @ovhcloud/ods-theme-blue-jeans@workspace:packages/themes/blue-jeans":
+"@ovhcloud/ods-theme-blue-jeans@^12.0.5, @ovhcloud/ods-theme-blue-jeans@workspace:packages/themes/blue-jeans":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-theme-blue-jeans@workspace:packages/themes/blue-jeans"
   dependencies:
-    "@ovhcloud/ods-theming": ^11.0.1
+    "@ovhcloud/ods-theming": ^12.0.5
     autoprefixer: ~10.3.7
     node-sass: ^6.0.1
     postcss: ^8.3.9
@@ -6807,12 +6807,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-theming@^11.0.1, @ovhcloud/ods-theming@workspace:packages/libraries/theming":
+"@ovhcloud/ods-theming@^12.0.5, @ovhcloud/ods-theming@workspace:packages/libraries/theming":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-theming@workspace:packages/libraries/theming"
   dependencies:
     "@marsbased/svgpack": ^1.0.3
-    "@ovhcloud/ods-library-dev": ^11.0.1
+    "@ovhcloud/ods-library-dev": ^12.0.5
   languageName: unknown
   linkType: soft
 

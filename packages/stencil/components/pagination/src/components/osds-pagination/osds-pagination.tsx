@@ -18,9 +18,6 @@ import { HTMLStencilElement } from '@stencil/core/internal';
 import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libraries/stencil-core';
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 
-/**
- * @slot (placeholder) - Pagination placeholder
- */
 @Component({
   tag: 'osds-pagination',
   styleUrl: 'osds-pagination.scss',

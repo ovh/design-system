@@ -187,20 +187,41 @@ describe('e2e:osds-pagination', () => {
       expect(current).toEqual(5);
     });
 
-    it('current from 2 to 5 by pressing enter on keyboard', async () => {
+    it('should emit when the attribute changes', async () => {
       await setup({ attributes: { current: 2, total: 5 } });
 
-      const linkList = await page.findAll('osds-pagination >>> li');
+      const odsPaginationChanged = await el.spyOnEvent('odsPaginationChanged');
 
-      const indexBeforeClick = Number(el.getAttribute('current'));
-      expect(indexBeforeClick).toEqual(2);
-
-      await linkList[5].press('Enter');
+      el.setAttribute('current', 5);
 
       await page.waitForChanges();
 
-      const current = Number(el.getAttribute('current'));
-      expect(current).toEqual(5);
+      const expected: OdsPaginationChangedEventDetail = {
+        oldCurrent: 2,
+        current: 5,
+      };
+
+      expect(odsPaginationChanged).toHaveReceivedEventDetail(expected);
+      expect(odsPaginationChanged).toHaveReceivedEventTimes(1);
+    });
+
+    it('pressing enter on keyboard', async () => {
+      await setup({ attributes: { current: 2, total: 5 } });
+
+      const odsPaginationChanged = await el.spyOnEvent('odsPaginationChanged');
+      const linkList = await page.findAll('osds-pagination >>> li > osds-button');
+
+      await linkList[0].press('Enter');
+
+      await page.waitForChanges();
+
+      const expected: OdsPaginationChangedEventDetail = {
+        oldCurrent: 2,
+        current: 1,
+      };
+
+      expect(odsPaginationChanged).toHaveReceivedEventDetail(expected);
+      expect(odsPaginationChanged).toHaveReceivedEventTimes(1);
     });
   });
 });

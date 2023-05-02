@@ -90,6 +90,18 @@ describe('spec:osds-pagination', () => {
     expect(componentDidUpdateSpy).toBeCalled();
   });
 
+  it('onCurrentChange', async () => {
+    await setup({ attributes: { current: 2, total: 10 } });
+
+    const componentDidUpdateSpy = jest.spyOn(instance, 'onCurrentChange');
+
+    instance.handlePageClick(5);
+
+    page.waitForChanges();
+
+    expect(componentDidUpdateSpy).toBeCalled();
+  });
+
   /**
    * @see OdsPaginationAttributes
    */

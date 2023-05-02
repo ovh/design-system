@@ -12,7 +12,6 @@
   --ods-toggle-transition-slider: .3s;
   --ods-toggle-animation-checking-shadow: steam 3s linear infinite;
   --ods-accordion-animation-opening: toggle 0.3s;
-  --ods-pagination-button-size: 2.25rem;
 }
 
 // returns the config for the theme
@@ -164,8 +163,9 @@
       ),
       $pagination: (
         md: (
-          width: calc(2.25rem * var(--ods-size-ratio)),
-          height: calc(2.25rem * var(--ods-size-ratio)) 
+          height: calc(2.25rem * var(--ods-size-ratio)),
+          padding-y: 0,
+          padding-x: var(--ods-size-inline-04),
         ),
       ),
       $radio-button: (
@@ -204,7 +204,7 @@
       $tabs: (
         md: (
           height: var(--ods-size-08),
-          width: var(--ods-size-11)          
+          width: var(--ods-size-11)
         )
       ),
       $textarea: (

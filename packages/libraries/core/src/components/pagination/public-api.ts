@@ -7,3 +7,4 @@ export * from './ods-pagination-methods';
 export * from './ods-pagination-current-change-event';
 export * from './ods-pagination-current-change-event-detail';
 export * from './ods-pagination-page-list';
+export * from './ods-pagination-size';

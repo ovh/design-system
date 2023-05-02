@@ -3,7 +3,8 @@
 @function ods-get-pagination-size-properties($size-name) {
   @return (
     height: var(--ods-size-pagination-#{$size-name}-height),
-    width: var(--ods-size-pagination-#{$size-name}-width)
+    padding-y: var(--ods-size-pagination-#{$size-name}-padding-y),
+    padding-x: var(--ods-size-pagination-#{$size-name}-padding-x)
   )
 }
 

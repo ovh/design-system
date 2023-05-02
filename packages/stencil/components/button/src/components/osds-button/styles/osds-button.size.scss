@@ -13,11 +13,11 @@
 
   @include ods-foreach-theme-size(button) using ($sizes) {
     @include osds-button-on-selected-host() {
-      border-radius: ods-get-size-property($sizes, border-radius);
+      border-radius: var(--ods-size-button-border-radius, ods-get-size-property($sizes, border-radius));
       border-width: ods-get-size-property($sizes, border-width);
       font-size: ods-get-size-property($sizes, font-size);
-      height: ods-get-size-property($sizes, height);
-      padding: ods-get-size-property($sizes, padding-y) ods-get-size-property($sizes, padding-x);
+      height: var(--ods-size-button-height, ods-get-size-property($sizes, height));
+      padding: var(--ods-size-button-padding-y, ods-get-size-property($sizes, padding-y)) var(--ods-size-button-padding-x, ods-get-size-property($sizes, padding-x));
     }
   }
 }

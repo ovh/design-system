@@ -37,6 +37,9 @@ const config: Config = {
     },
     prod: {
       tsConfig: 'tsconfig.components.prod.json'
+    },
+    test: {
+      tsConfig: 'tsconfig.components.test.json'
     }
   }),
   bundles: [

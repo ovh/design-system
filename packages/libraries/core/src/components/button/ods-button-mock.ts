@@ -25,4 +25,6 @@ export class OdsButtonMock implements OdsButton<OdsButtonMethods, OdsButtonEvent
     controller: OdsButtonController = jest.fn() as unknown as OdsButtonController;
 
     beforeRender = jest.fn();
+    handleClick = jest.fn();
+    handleKey = jest.fn();
 }

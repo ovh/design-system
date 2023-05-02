@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-starter-vue-vite",
-  "version": "11.0.1",
+  "version": "12.0.5",
   "private": true,
   "description": "ODS vue vite application starter",
   "author": "OVH SAS",
@@ -13,10 +13,10 @@
     "build:prod": "npm run build"
   },
   "dependencies": {
-    "@ovhcloud/ods-core": "^11.0.1",
-    "@ovhcloud/ods-stencil": "^11.0.1",
-    "@ovhcloud/ods-theme-blue-jeans": "^11.0.1",
-    "@ovhcloud/ods-theming": "^11.0.1",
+    "@ovhcloud/ods-core": "^12.0.5",
+    "@ovhcloud/ods-stencil": "^12.0.5",
+    "@ovhcloud/ods-theme-blue-jeans": "^12.0.5",
+    "@ovhcloud/ods-theming": "^12.0.5",
     "@vue/cli-service": "^5.0.8",
     "vue": "^3.2.37"
   },
@@ -25,8 +25,5 @@
     "typescript": "^4.6.4",
     "vite": "^3.1.0",
     "vue-tsc": "^0.40.4"
-  },
-  "publishConfig": {
-    "registry": ""
   }
 }

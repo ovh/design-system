@@ -53,11 +53,6 @@ export class OsdsQuantity implements OdsQuantity<OdsStencilMethods<OdsQuantityMe
     this.controller.setDisabledOnChildren(disabled);
   }
 
-  /** @see OdsQuantityBehavior.beforeInit */
-  beforeInit(): void {
-    this.controller.initInput();
-  }
-
   /** @see OdsQuantityBehavior.afterInit */
   afterInit(): void {
     this.controller.processInputValueChange();
@@ -65,16 +60,13 @@ export class OsdsQuantity implements OdsQuantity<OdsStencilMethods<OdsQuantityMe
 
   /** @see OdsQuantityBehavior.afterRender */
   afterRender(): void {
+    this.controller.initInput();
     this.controller.initSlots();
   }
 
   /** @see OdsQuantityBehavior.onDestroy */
   onDestroy(): void {
     this.controller.clearEventListeners();
-  }
-
-  connectedCallback(): void {
-    this.beforeInit();
   }
 
   componentDidRender(): void {
@@ -90,8 +82,8 @@ export class OsdsQuantity implements OdsQuantity<OdsStencilMethods<OdsQuantityMe
   }
 
   @Listen('odsValueChange')
-  odsValueChangeHandler(event: CustomEvent<(OdsInput & HTMLElement)>) {
-    this.controller.processInputValueChange(event);
+  odsValueChangeHandler() {
+    this.controller.processInputValueChange();
   }
 
   render() {

@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-stencil-flag-react",
-  "version": "11.0.1",
+  "version": "12.0.5",
   "private": true,
   "description": "React specific wrapper for ods",
   "keywords": [],

@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-stencil-radio-button",
-  "version": "11.0.1",
+  "version": "12.0.5",
   "private": true,
   "description": "Radio button component",
   "author": "OVH SAS",
@@ -35,12 +35,9 @@
     "test:e2e:ci:screenshot:update": "stencil test --config stencil.config.ts --e2e --ci --screenshot --update-screenshot --passWithNoTests"
   },
   "dependencies": {
-    "@ovhcloud/ods-stencil-component": "^11.0.1"
+    "@ovhcloud/ods-stencil-component": "^12.0.5"
   },
   "devDependencies": {
-    "@ovhcloud/ods-stencil-component-dev": "^11.0.1"
-  },
-  "publishConfig": {
-    "registry": ""
+    "@ovhcloud/ods-stencil-component-dev": "^12.0.5"
   }
 }

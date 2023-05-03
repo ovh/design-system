@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
+
+
+# [12.1.0](https://ovhcloud.design/v12.1.0/?path=/docs/design-system-changelog--page) (2023-05-03)
+[compare](https://github.com/ovh/design-system/compare/v12.0.5...v12.1.0)
+
+### Bug Fixes
+
+* **button:** fix width issue, ellipsis when flex & typo for lg ([#16](https://github.com/ovh/design-system/issues/16)) ([bb32708](https://github.com/ovh/design-system/commit/bb32708531bdc3fc2eefe62237370ab106726c26))
+
+
+
 [Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
 
 

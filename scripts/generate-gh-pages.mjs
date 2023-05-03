@@ -25,29 +25,18 @@ const outDirName = 'docs';
 
 
   let versions = await $`npm view ${packageName} versions --json`;
-  // eslint-disable-next-line
-  console.info(
-    '%c[fe] versions', 'background:#fff;color:#000',
-    versions);
   versions = JSON.parse(versions);
-  // eslint-disable-next-line
-  console.info(
-    '%c[fe] versions', 'background:#fff;color:#000',
-    versions);
-
 
   for (let versionsKey in versions) {
     const version = versions[versionsKey];
     // create a dir for this version
     const dir = resolve(tmpOdsDir, `${version}`);
-    console.log('creating directory...', dir);
     await $`mkdir -p ${dir}`;
     await $`ls -l ${dir}`;
 
     // find the url and download
     let tarball = await $`npm view ${packageName}@${version} dist.tarball`;
     tarball = `${tarball.stdout.trim()}`;
-    console.log('downloading... ', tarball);
     const command = `curl -sS "${tarball}" | tar -xzf - -C ${dir} --strip 1`;
     await $([command]);
 
@@ -55,7 +44,7 @@ const outDirName = 'docs';
   }
   try {
     // add the current build (released just done)
-    await $`cp -r packages/tools/storybook/dist dist/v${currentVersion}`;
+    // await $`cp -r packages/tools/storybook dist/v${currentVersion}`;
     await $`ln -s v${currentVersion} dist/latest`;
   } catch (e) {
     console.error(`cannot add the current storybook build. ignore it`, e);

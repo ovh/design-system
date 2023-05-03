@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-stencil-tile",
-  "version": "12.0.5",
+  "version": "12.1.0",
   "private": true,
   "description": "Tile component",
   "license": "Apache-2.0",
@@ -34,9 +34,9 @@
     "test:e2e:ci:screenshot:update": "stencil test --config stencil.config.ts --e2e --ci --screenshot --update-screenshot --passWithNoTests"
   },
   "dependencies": {
-    "@ovhcloud/ods-stencil-component": "^12.0.5"
+    "@ovhcloud/ods-stencil-component": "^12.1.0"
   },
   "devDependencies": {
-    "@ovhcloud/ods-stencil-component-dev": "^12.0.5"
+    "@ovhcloud/ods-stencil-component-dev": "^12.1.0"
   }
 }

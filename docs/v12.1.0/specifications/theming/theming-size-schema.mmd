@@ -1,0 +1,17 @@
+graph TB
+
+    subgraph THEME CONFIG
+        tsizes(ThemeSizes)-- Each component like *button* <br/>is configured for the different size properties --> themeSizeProp((size properties))
+        themeSizeProp((size properties))-- Each size property like *height*<br/>is set with value --> value{CSS property}
+
+    end
+
+    subgraph THEMING SYSTEM
+        sdef(SizeDefinitions)-- Each component like *button* <br/>is defined in different size properties --> prop((size properties))
+        prop((size properties))-- Each size property like *height*<br/>is a CSS variables --> var{CSS variables}
+    end
+
+    classDef green fill:#9f6,stroke:#333,stroke-width:2px;
+    classDef blue fill:#16C2E5,stroke:#333,stroke-width:2px;
+    class var,value green
+    class prop,themeSizeProp blue

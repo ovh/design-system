@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
+
+
+# [12.1.0](https://ovhcloud.design/v12.1.0/?path=/docs/design-system-changelog--page) (2023-05-03)
+[compare](https://github.com/ovh/design-system/compare/v12.0.5...v12.1.0)
+
+### Features
+
+* **doc:** update what is new ([#33](https://github.com/ovh/design-system/issues/33)) ([b4b3404](https://github.com/ovh/design-system/commit/b4b3404bf659d13bac2c30a6953f2b5242559e20))
+
+
+
 [Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
 
 

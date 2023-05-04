@@ -77,6 +77,7 @@ import { OdsStencilConfigEnvOptions } from './ods-stencil-config-env-options';
  * @param vueOutput - config for vue proxies
  * @param dev - dev specific options to set
  * @param prod - production specific options to set
+ * @param test - testing specific options to set
  */
 export function getStencilConfig({
                                    namespace,
@@ -87,7 +88,8 @@ export function getStencilConfig({
                                    reactOutput,
                                    vueOutput,
                                    dev,
-                                   prod
+                                   prod,
+                                   test,
                                  }: {
   namespace: string,
   args: string[],
@@ -100,6 +102,7 @@ export function getStencilConfig({
   vueOutput?: Partial<OutputTargetVue>,
   dev?: OdsStencilConfigEnvOptions,
   prod?: OdsStencilConfigEnvOptions,
+  test?: OdsStencilConfigEnvOptions,
 }): StencilConfig {
   const isCi = args.some((arg) => arg.match(/(--|:)ci/g)),
     /**
@@ -203,6 +206,8 @@ export function getStencilConfig({
     globalScriptOption = { globalScript: dev.globalScript };
   } else if (isProd && prod?.globalScript) {
     globalScriptOption = { globalScript: prod.globalScript };
+  } else if (isTest && test?.globalScript) {
+    globalScriptOption = { globalScript: test.globalScript };
   }
   globalScriptOption?.globalScript && console.info(`ODS: integrates globalScript ${globalScriptOption.globalScript} into the Build`);
 
@@ -212,6 +217,10 @@ export function getStencilConfig({
     tsConfigOption = { tsconfig: dev?.tsConfig ? dev.tsConfig : 'tsconfig.dev.json' };
   } else if (isProd) {
     tsConfigOption = { tsconfig: prod?.tsConfig ? prod.tsConfig : 'tsconfig.prod.json' };
+  } else if (isTest) {
+    tsConfigOption = { tsconfig: test?.tsConfig ? test.tsConfig : 'tsconfig.test.json' };
+  } else {
+    tsConfigOption = { tsconfig: 'tsconfig.json' };
   }
   tsConfigOption?.tsconfig && console.info(`ODS: using ${tsConfigOption.tsconfig}`);
 

@@ -1,4 +1,4 @@
-import { Component, Element, Host, Prop, h } from '@stencil/core';
+import { Component, Element, Host, Prop, h, Listen } from '@stencil/core';
 import {
   OdsButton,
   OdsButtonController,
@@ -62,6 +62,16 @@ export class OsdsButton implements OdsButton<OdsStencilMethods<OdsButtonMethods>
 
   /** @see OdsButtonAttributes.variant */
   @Prop({ reflect: true }) public variant?: OdsButtonVariant = odsButtonDefaultAttributes.variant;
+
+  @Listen('keyup')
+  handleKey(event: KeyboardEvent) {
+    this.controller.handleKey(event);
+  }
+
+  @Listen('click')
+  handleClick(event: MouseEvent) {
+    this.controller.handleClick(event);
+  }
 
   /** @see OdsButtonBehavior.beforeRender */
   beforeRender(): void {

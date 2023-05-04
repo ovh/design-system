@@ -27,12 +27,10 @@ cd my-react-vite-ods-app
 ```
 > This clones the repo, copy the wanted starter and then clean up.
 
-**2. Enable access to artifactory**
+**2. Enable access (coming soon)**
 
 This starter application is using `ODS` as dependency.
 So you have to check if you have access to the registry with your credentials.
-
-[See Documentation](../?path=/story/code-stencil-components-how-to-install--page#artifactory-access)
 
 **3. Install dependencies**
 

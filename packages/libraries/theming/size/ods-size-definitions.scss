@@ -12,6 +12,7 @@
 @import './ods-theming-size.range';
 @import './ods-theming-size.skeleton';
 @import './ods-theming-size.select';
+@import './ods-theming-size.tabs';
 @import './ods-theming-size.text';
 @import './ods-theming-size.textarea';
 @import './ods-theming-size.tile';
@@ -33,6 +34,7 @@ $ods-size-definitions: (
   range: ods-get-range-component-size-definition(),
   skeleton: ods-get-skeleton-component-size-definition(),
   select: ods-get-select-component-size-definition(),
+  tabs: ods-get-tabs-component-size-definition(),
   text: ods-get-text-component-size-definition(),
   textarea: ods-get-textarea-component-size-definition(),
   tile: ods-get-tile-component-size-definition(),

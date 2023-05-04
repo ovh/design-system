@@ -10,7 +10,9 @@
     * [@ovhcloud/ods-theming](#odstheming)
       * [Component Size](#component-size)
   * [Web Component](#web-component)
-  * [Component stories](#component-stories)
+  * [Storybook](#storybook)
+    * [Component stories](#component-stories)
+    * [Overall stories](#overall-stories)
   * [Component documentation](#component-documentation)
     * [Design](#design)
     * [Specifications](#specifications)
@@ -237,11 +239,28 @@ In `packages/stencil/components/my-component`:
 └── typedoc.json                                            // Typedoc configuration (inherited)
 ```
 
+In order to enable your component to eventually be used in another component, add your component as below in `tsconfig.components.dev.json` and `tsconfig.components.prod.json`
+under `packages/stencil/components` directory:
+``` typescript
+ "include": [
+    "src",
+    "%component%/src",
+  ],
+```
+
+Then, in the same directory, add your component in `stencil.config.ts` as following:
+``` typescript
+bundles: [
+    { components: ['osds-%component%'] },
+  ],
+```
+
 > ℹ️ **Tip**<br />
 > You might consider either configure the same as it can be with sibling components, or copy/pasting a previously
 > finished component while being cautious about replacing code in it
 
-## Component stories
+## Storybook
+### Component stories
 
 A [Story](https://storybook.js.org/docs/react/get-started/whats-a-story) captures the rendered state of a UI component.
 You'll have to write stories for your new component that describe all states a component can support.
@@ -341,6 +360,49 @@ Default.args = {
 };
 ```
 
+### Overall stories
+
+You should add your component in Introduction and All components pages.
+
+#### Introduction
+
+In `packages/tools/storybook/stories/components/1_Introduction.stories.ts`, you can add your component depending on its type (quark, atom, molecule, organism, layout or meta).
+
+For instance:
+```
+atoms: [
+  {
+    name: "%Component",
+    tag: 'osds-‰component%',
+    url: '/?path=/story/ui-components-%component%-atom-web-component--default',
+    attributes: {
+      color: OdsThemeColorIntent.primary,
+    },
+    slots: {
+      DEFAULT: `%Component%`,
+    },
+  }
+]
+```
+
+#### All components
+
+In `packages/tools/storybook/stories/components/2_All-components.web-components.stories.ts`, you can add your component in `allComponents` const.
+
+For instance:
+```
+{
+  tag: 'osds-%component%',
+  url: '/?path=/story/ui-components-%component%-atom-web-component--default',
+  attributes: {
+    color: OdsThemeColorIntent.primary,
+  },
+  slots: {
+    DEFAULT: `%Component%`,
+  },
+}
+```
+
 ## Component documentation
 
 ### Design
@@ -387,6 +449,8 @@ import {Description} from '@storybook/addon-docs';
 <Description>{Specs}</Description>
 ```
 
+Then, run `yarn doc` in your terminal to generate this documentation.
+
 > ⚠️️ **Please note**<br />
 > It is important that you comment all attributes, events,
 > component and controller related methods in `packages/libraries/core/src/components/%name%`
@@ -396,7 +460,7 @@ import {Description} from '@storybook/addon-docs';
 
 You will describe the usage of the component here. It will be displayed in Storybook under `Docs` tab.
 
-The structure has been described [here](#web-component).
+You can check its [structure](#web-component).
 
 ## Testing
 
@@ -405,5 +469,5 @@ Unit, end-to-end and screenshots tests are required for each component:
 
 ## Theming
 
-Components use the theming system:
+Components use the theming system and style from theme can be customized when necessary:
 [Theming guidelines](?path=/story/contributing-how-to-s-use-theming-for-your-component--page)

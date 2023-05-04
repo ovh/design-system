@@ -15,6 +15,7 @@
   overflow: hidden;
   padding: calc(var(--ods-size-inset-02) + var(--ods-size-inset-02));
   width: var(--width);
+  min-width: 0;
 
   @include osds-button-on-main-element() {
     border-color: transparent;
@@ -28,7 +29,7 @@
     overflow: hidden;
     text-decoration: none;
     transition: all ease-in-out 100ms;
-    width: initial;
+    width: auto;
 
     @include osds-button-on-text-container() {
       align-items: center;
@@ -38,11 +39,8 @@
       grid-template: "start center end" / auto 1fr auto;
       height: 100%;
       justify-content: center;
-      overflow: hidden;
       position: relative;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      width: inherit;
+      max-width: inherit;
     }
   }
 }
@@ -73,12 +71,20 @@
   @include osds-button-on-main-element() {
     width: 100%;
   }
+  @include osds-button-on-text-container {
+    width: inherit;
+  }
+
+  .button__centered-text {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: break-all;
+  }
 }
 
 slot {
-  display: flex;
-  align-self: center;
-
   &[name="start"] {
     grid-area: start;
     justify-self: start;
@@ -110,10 +116,6 @@ slot {
 
 .button__centered-text {
   grid-area: center;
-  display: flex;
-  place-items: center;
-  justify-self: center;
-  line-height: normal;
 }
 
 // apply the theme template for the component

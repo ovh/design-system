@@ -31,7 +31,7 @@ export class OsdsBreadcrumb implements OdsBreadcrumb<OdsStencilMethods<OdsBreadc
     return Array.from(this.el.querySelectorAll('osds-breadcrumb-item'));
   };
 
-  private toggleCollapsed = () => {
+  toggleCollapsed = () => {
     this.controller.toggleCollapsed();
   };
 
@@ -41,11 +41,9 @@ export class OsdsBreadcrumb implements OdsBreadcrumb<OdsStencilMethods<OdsBreadc
       this.toggleCollapsed();
     }
   }
-
   @Listen('click')
-  handleLinkClick(event: Event) {
-    event.preventDefault();
-    this.controller.toggleCollapsed();
+  handleLinkClick() {
+    this.toggleCollapsed();
   }
 
   render() {

@@ -6,6 +6,18 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
 
 
+# [12.1.1](https://ovhcloud.design/v12.1.1/?path=/docs/design-system-changelog--page) (2023-05-05)
+[compare](https://github.com/ovh/design-system/compare/v12.1.0...v12.1.1)
+
+**Note:** Version bump only for package @ovhcloud/ods-stencil-toggle-vue
+
+
+
+
+
+[Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
+
+
 # [12.1.0](https://ovhcloud.design/v12.1.0/?path=/docs/design-system-changelog--page) (2023-05-03)
 [compare](https://github.com/ovh/design-system/compare/v12.0.5...v12.1.0)
 

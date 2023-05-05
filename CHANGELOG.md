@@ -8,6 +8,20 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
 
 
+# [12.1.1](https://ovhcloud.design/v12.1.1/?path=/docs/design-system-changelog--page) (2023-05-05)
+[compare](https://github.com/ovh/design-system/compare/v12.1.0...v12.1.1)
+
+### Bug Fixes
+
+* **storybook:** wrong links on home page ([#35](https://github.com/ovh/design-system/issues/35)) ([d582187](https://github.com/ovh/design-system/commit/d58218795fd7c243535fd6502ea32878d2eb4cc0))
+
+
+
+
+
+[Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
+
+
 # [12.1.0](https://ovhcloud.design/v12.1.0/?path=/docs/design-system-changelog--page) (2023-05-03)
 [compare](https://github.com/ovh/design-system/compare/v12.0.5...v12.1.0)
 

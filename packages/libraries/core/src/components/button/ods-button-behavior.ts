@@ -6,4 +6,14 @@ export interface OdsButtonBehavior {
    * @see OdsButtonController.validateAttributes
    */
   beforeRender(): void;
+  /**
+   * Called after a click is done on the component.
+   * @see OdsButtonController.handleClick
+   */
+  handleClick(event: MouseEvent): void;
+  /**
+   * Called after a keypress is done on the component.
+   * @see OdsButtonController.handleKey
+   */
+  handleKey(event: KeyboardEvent): void;
 }

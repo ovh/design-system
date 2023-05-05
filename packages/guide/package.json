@@ -1,13 +1,10 @@
 {
   "name": "@ovhcloud/ods-guide",
   "private": true,
-  "version": "11.0.1",
+  "version": "12.1.0",
   "description": "ODS Tutorials",
   "author": "OVH SAS",
   "license": "Apache-2.0",
   "main": "",
-  "module": "",
-  "publishConfig": {
-    "registry": ""
-  }
+  "module": ""
 }

@@ -7,15 +7,7 @@ import { OdsComponentController } from '../../ods-component-controller';
  */
 export class OdsPopoverContentController extends OdsComponentController<OdsPopoverContent> {
   // private readonly logger = new OdsLogger('OdsPopoverContentController');
-
   constructor(component: OdsPopoverContent) {
     super(component);
-  }
-
-  /**
-   * Attributes validation documentation
-   */
-  validateAttributes(): void {
-      return;
   }
 }

@@ -51,7 +51,7 @@ describe('e2e:osds-popover', () => {
     });
 
     it('should display a popover trigger as a ODS button with an Icon', async () => {
-      const icon = `<osds-button slot="popover-trigger" color="primary"><osds-icon slot="popover-trigger" name="home" size="xs"></osds-icon></osds-button>`;
+      const icon = `<osds-button slot="popover-trigger" color="primary"><osds-icon name="home" size="xs"></osds-icon></osds-button>`;
       await setup({ attributes: { }, html: icon });
       expect(popoverTriggerContent.outerHTML).toBe(icon);
     });

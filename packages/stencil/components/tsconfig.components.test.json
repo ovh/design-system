@@ -25,6 +25,7 @@
     "link/src",
     "location-tile/src",
     "message/src",
+    "popover/src",
     "quantity/src",
     "radio/src",
     "radio-button/src",

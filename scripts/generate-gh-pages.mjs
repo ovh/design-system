@@ -7,7 +7,6 @@ import { resolve } from 'path';
 import { tmpdir } from 'os';
 
 const currentVersion = require('../lerna.json').version;
-console.log('currentVersion=', currentVersion);
 
 const packageName = '@ovhcloud/ods-storybook';
 const tmpDirName = 'ods-gh-pages';
@@ -23,31 +22,19 @@ const outDirName = 'docs';
   const tmpOdsDir = resolve(tmpdir(), `${tmpDirName}`);
   await $`rm -rf ${tmpOdsDir}/*`;
 
-
   let versions = await $`npm view ${packageName} versions --json`;
-  // eslint-disable-next-line
-  console.info(
-    '%c[fe] versions', 'background:#fff;color:#000',
-    versions);
   versions = JSON.parse(versions);
-  // eslint-disable-next-line
-  console.info(
-    '%c[fe] versions', 'background:#fff;color:#000',
-    versions);
-
 
   for (let versionsKey in versions) {
     const version = versions[versionsKey];
     // create a dir for this version
     const dir = resolve(tmpOdsDir, `${version}`);
-    console.log('creating directory...', dir);
     await $`mkdir -p ${dir}`;
     await $`ls -l ${dir}`;
 
     // find the url and download
     let tarball = await $`npm view ${packageName}@${version} dist.tarball`;
     tarball = `${tarball.stdout.trim()}`;
-    console.log('downloading... ', tarball);
     const command = `curl -sS "${tarball}" | tar -xzf - -C ${dir} --strip 1`;
     await $([command]);
 

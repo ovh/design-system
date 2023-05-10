@@ -16,6 +16,7 @@
 @import './ods-theming-size.textarea';
 @import './ods-theming-size.tile';
 @import './ods-theming-size.toggle';
+@import './ods-theming-size.spinner';
 
 /// the typography definitions for each level and size.
 /// @access public
@@ -33,6 +34,7 @@ $ods-size-definitions: (
   range: ods-get-range-component-size-definition(),
   skeleton: ods-get-skeleton-component-size-definition(),
   select: ods-get-select-component-size-definition(),
+  spinner: ods-get-spinner-component-size-definition(),
   tabs: ods-get-tabs-component-size-definition(),
   text: ods-get-text-component-size-definition(),
   textarea: ods-get-textarea-component-size-definition(),

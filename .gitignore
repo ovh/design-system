@@ -136,5 +136,5 @@ Thumbs.db
 # remove generated definition files
 *.d.ts
 
-# used file storing the artifactory token, used when building docker image
+# used file storing the artijfrog token, used when building docker image
 /artitoken

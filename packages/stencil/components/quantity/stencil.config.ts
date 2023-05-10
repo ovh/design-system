@@ -23,6 +23,9 @@ export const config: Config = {
     },
     prod: {
       globalScript: 'src/global.prod.ts'
+    },
+    test: {
+      globalScript: 'src/global.test.ts',
     }
   })
 };

@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-testing",
-  "version": "11.0.1",
+  "version": "12.1.0",
   "description": "ODS testing stuff",
   "author": "OVH SAS",
   "license": "Apache-2.0",
@@ -27,11 +27,8 @@
     "@stencil/core": ">=2.6"
   },
   "devDependencies": {
-    "@ovhcloud/ods-core": "^11.0.1",
-    "@ovhcloud/ods-library-dev": "^11.0.1",
-    "@ovhcloud/ods-theming": "^11.0.1"
-  },
-  "publishConfig": {
-    "registry": ""
+    "@ovhcloud/ods-core": "^12.1.0",
+    "@ovhcloud/ods-library-dev": "^12.1.0",
+    "@ovhcloud/ods-theming": "^12.1.0"
   }
 }

@@ -6278,7 +6278,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-pagination-react@workspace:packages/stencil/components/pagination/react"
   dependencies:
-    "@ovhcloud/ods-stencil-cart": ^11.0.1
+    "@ovhcloud/ods-stencil-cart": ^12.1.0
     "@types/react": 17.0.37
     "@types/react-dom": 17.0.11
     react: 16.14.0
@@ -6308,8 +6308,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-pagination@workspace:packages/stencil/components/pagination"
   dependencies:
-    "@ovhcloud/ods-stencil-component": ^11.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^11.0.1
+    "@ovhcloud/ods-stencil-component": ^12.1.0
+    "@ovhcloud/ods-stencil-component-dev": ^12.1.0
   languageName: unknown
   linkType: soft
 

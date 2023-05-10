@@ -1,4 +1,3 @@
-// import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 import { OdsPaginationAttributes } from './ods-pagination-attributes';
 
 /**

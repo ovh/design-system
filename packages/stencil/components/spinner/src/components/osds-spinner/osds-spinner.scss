@@ -10,6 +10,7 @@
 // (i.e. packages/libraries/theming/...)
 :host {
   display: inline-block;
+  font-size: 0;
 }
 
 :host([flex]) {
@@ -24,23 +25,12 @@
   animation: rotate .8s infinite linear;
   animation-play-state: running;
   mask-image: conic-gradient(from 190deg, transparent 25%, black 65%);
+  font-size: initial;
 }
 
 .spinner[flex][flex] {
   max-height: 100%;
   max-width: 100%;  
-}
-
-.spinner[size="sm"] {
-  max-width: 1.25em;
-}
-
-.spinner[size="md"] {
-  max-width: 2.5em;
-}
-
-.spinner[size="lg"] {
-  max-width: 8.75em;
 }
 
 .spinner[paused] {

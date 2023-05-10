@@ -9,8 +9,8 @@
 /// @access private
 @function ods-get-spinner-component-size-definition() {
  @return (
-   sm: ods-get--size-properties(sm),
-   md: ods-get--size-properties(md),
-   lg: ods-get--size-properties(lg)
+   sm: ods-get-spinner-size-properties(sm),
+   md: ods-get-spinner-size-properties(md),
+   lg: ods-get-spinner-size-properties(lg)
  );
 }

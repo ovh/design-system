@@ -1,6 +1,13 @@
 @import './osds-spinner.mixins';
+@import '~@ovhcloud/ods-theming/size/ods-component-size';
 
 // Main CSS mixin for sizes
 @mixin osds-spinner-theme-size() {
-
+    @include ods-foreach-theme-size(spinner) using ($sizes) {
+        @include osds-spinner-on-selected-host() {
+            img {
+                width: ods-get-size-property($sizes, max-width);
+            };
+        }
+    }
 }

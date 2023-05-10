@@ -1,4 +1,5 @@
 @import './osds-<%= name %>.mixins';
+@import '~@ovhcloud/ods-theming/size/ods-component-size';
 
 // Main CSS mixin for sizes
 @mixin osds-<%= name %>-theme-size() {

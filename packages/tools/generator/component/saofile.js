@@ -166,7 +166,7 @@ module.exports = {
         type: 'modify',
         files: `${config.outDir}/${config.odsThemingPath}/ods-size-definitions.scss`,
         handler(data) {
-          return data + `@import './${config.corePrefix}-theming-size.${templateData.name}.scss';`
+          return `@import './${config.corePrefix}-theming-size.${templateData.name}';` + data;
         }
       },
 
@@ -191,13 +191,6 @@ module.exports = {
         type: 'move',
         patterns: {
           'theming/component-theming-size.scss': `${config.outDir}/${config.odsThemingPath}/${config.corePrefix}-theming-size.${templateData.name}.scss`,
-        }
-      },
-      {
-        type: 'modify',
-        files: `${config.outDir}/${config.odsThemingPath}/ods-size-definitions.scss`,
-        handler(data) {
-          return data + `@import './${config.corePrefix}-theming-size.${templateData.name}.scss';`
         }
       }
     ];

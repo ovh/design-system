@@ -110,6 +110,7 @@ module.exports = {
           'stencil/tsconfig.dev.json': `${config.outDir}/${config.odsStencilPath}/${templateData.name}/tsconfig.dev.json`,
           'stencil/tsconfig.json': `${config.outDir}/${config.odsStencilPath}/${templateData.name}/tsconfig.json`,
           'stencil/tsconfig.prod.json': `${config.outDir}/${config.odsStencilPath}/${templateData.name}/tsconfig.prod.json`,
+          'stencil/tsconfig.test.json': `${config.outDir}/${config.odsStencilPath}/${templateData.name}/tsconfig.test.json`,
           'stencil/typedoc.json': `${config.outDir}/${config.odsStencilPath}/${templateData.name}/typedoc.json`,
           // Sources
           'stencil/src/global.dev.ts': `${config.outDir}/${config.odsStencilPath}/${templateData.name}/src/global.dev.ts`,

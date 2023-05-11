@@ -23,9 +23,6 @@ export class OsdsSpinner implements OdsSpinner<OdsStencilMethods<OdsSpinnerMetho
   controller: OdsSpinnerController = new OdsSpinnerController(this);
   @Element() el!: HTMLElement;
 
-  // Component properties as @Prop
-  // ex: @Prop({ reflect: true }) public color?: OdsThemeColorIntent = odsSpinnerDefaultAttributes.color;
-
   @Prop({ reflect: true }) public size?: OdsSpinnerSize = odsSpinnerDefaultAttributes.size;
 
   @Prop({ reflect: true }) public flex?: boolean = odsSpinnerDefaultAttributes.flex;

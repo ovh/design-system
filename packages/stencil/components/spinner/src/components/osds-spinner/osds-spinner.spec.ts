@@ -5,6 +5,8 @@ import {
   OdsSpinnerController,
   OdsComponentAttributes2StringAttributes,
   odsSpinnerDefaultAttributes,
+  OdsSpinnerSizeList,
+  OdsSpinnerModeList,
 } from '@ovhcloud/ods-core';
 import {
   OdsCreateAttributes,
@@ -14,7 +16,6 @@ import {
 } from '@ovhcloud/ods-testing';
 import { SpecPage, newSpecPage } from '@stencil/core/testing';
 
-import { OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
 import { OsdsSpinner } from './osds-spinner';
 import { getAttributeContextOptions } from '@ovhcloud/ods-stencil/libraries/stencil-testing';
 
@@ -55,14 +56,68 @@ describe('spec:osds-spinner', () => {
       setup
     };
 
-    // Attributes Unit testing
-  });
+    describe('flex', () => {
+      odsUnitTestAttribute<OdsSpinnerAttributes, 'flex'>({
+        ...getAttributeContextOptions<OdsSpinnerAttributes, OsdsSpinner, 'flex'>({
+          name: 'flex',
+          list: [false, true],
+          defaultValue: odsSpinnerDefaultAttributes.flex,
+          ...config,
+        })
+      });
+      it('should be flex if attribute is added', async () => {
+        await setup({ attributes: { flex: true } });
+        expect(instance.flex).toBe(true);
+      });
+    });
 
-  describe('controller', () => {
-    it('should call controller.validateAttributes', async () => {
-      await setup();
-      expect(controller.validateAttributes).toHaveBeenCalledWith();
-      expect(controller.validateAttributes).toHaveBeenCalledTimes(1);
+    describe('contrasted', () => {
+      odsUnitTestAttribute<OdsSpinnerAttributes, 'contrasted'>({
+        ...getAttributeContextOptions<OdsSpinnerAttributes, OsdsSpinner, 'contrasted'>({
+          name: 'contrasted',
+          list: [false, true],
+          defaultValue: odsSpinnerDefaultAttributes.contrasted,
+          ...config,
+        })
+      });
+      
+      it('should be contrasted if attribute is added', async () => {
+        await setup({ attributes: { contrasted: true } });
+        expect(instance.contrasted).toBe(true);
+      });
+    });
+
+    describe('size', () => {
+      odsUnitTestAttribute<OdsSpinnerAttributes, 'size'>({
+        ...getAttributeContextOptions<OdsSpinnerAttributes, OsdsSpinner, 'size'>({
+          name: 'size',
+          list: OdsSpinnerSizeList,
+          defaultValue: odsSpinnerDefaultAttributes.size,
+          ...config,
+        })
+      });
+      it('should set a size if attribute is added', async () => {
+        const randomSize = OdsSpinnerSizeList[Math.floor(Math.random() * OdsSpinnerSizeList.length)];
+        await setup({ attributes: { size: randomSize } });
+        expect(instance.size).toBe(randomSize);
+      });
+    });
+
+    describe('mode', () => {
+      odsUnitTestAttribute<OdsSpinnerAttributes, 'mode'>({
+        ...getAttributeContextOptions<OdsSpinnerAttributes, OsdsSpinner, 'mode'>({
+          name: 'mode',
+          list: OdsSpinnerModeList,
+          defaultValue: odsSpinnerDefaultAttributes.mode,
+          ...config,
+        })
+      });
+      it('should set a mode if attribute is added', async () => {
+        const randomMode = OdsSpinnerModeList[Math.floor(Math.random() * OdsSpinnerModeList.length)];
+        await setup({ attributes: { mode: randomMode } });
+        expect(instance.mode).toBe(randomMode);
+      });
     });
   });
+
 });

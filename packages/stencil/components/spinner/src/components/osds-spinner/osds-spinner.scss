@@ -14,9 +14,15 @@
 }
 
 :host([flex]) {
+  display: block;
   height: 100%;
   width: 100%;
-  display: block;
+
+  .spinner {
+    width: 100%;
+    max-height: 100%;
+    max-width: 100%;
+  }
 }
 
 .spinner {
@@ -26,11 +32,6 @@
   animation-play-state: running;
   mask-image: conic-gradient(from 190deg, transparent 25%, black 65%);
   font-size: initial;
-}
-
-.spinner[flex][flex] {
-  max-height: 100%;
-  max-width: 100%;  
 }
 
 .spinner[paused] {

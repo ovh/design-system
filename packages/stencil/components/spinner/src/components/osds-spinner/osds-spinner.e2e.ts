@@ -17,34 +17,44 @@ describe('e2e:osds-spinner', () => {
     el = await page.find('osds-spinner');
   }
 
-
   it('should render', async () => {
     await setup({ attributes: {} });
     expect(el).not.toBeNull();
     expect(el).toHaveClass('hydrated');
   });
 
-  it('should have a default size', async () => {
-    expect(await el.getProperty('size')).toBe(odsSpinnerDefaultAttributes.size);
-  });
+  describe('flex', () => {
+    const parentHeight = 500
 
-  it('should have a default flex', async () => {
-    expect(await el.getProperty('flex')).toBe(odsSpinnerDefaultAttributes.flex);
-  });
+    async function flexSetup({ attributes }: { attributes: Partial<OdsSpinnerAttributes> }) {
+      const minimalAttributes: OdsSpinnerAttributes = OdsCreateAttributes(attributes, odsSpinnerBaseAttributes);
+      const stringAttributes = OdsComponentAttributes2StringAttributes<OdsSpinnerAttributes>(minimalAttributes, odsSpinnerDefaultAttributes);
 
-  it('should have a default contrasted', async () => {
-    expect(await el.getProperty('contrasted')).toBe(odsSpinnerDefaultAttributes.contrasted);
-  });
+      //const parentStyle = { style: { height: `${parentHeight}px` }}
 
-  it('should have a default mode', async () => {
-    expect(await el.getProperty('mode')).toBe(odsSpinnerDefaultAttributes.mode);
-  });
+      page = await newE2EPage();
+      await page.setContent(`<osds-spinner flex ${OdsStringAttributes2Str(stringAttributes)}></osds-spinner>`);
+      await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
+      await page.evaluate((height) => document.body.style.setProperty('height', `${height}px`), parentHeight);
+
+      el = await page.find('osds-spinner');
+    }
+
+    it('should expand to its parent size', async () => {
+      await flexSetup({ attributes: {} });
+
+      const spinnerStyle = await el.getComputedStyle();
+      const spinnerHeight = parseInt(spinnerStyle.getPropertyValue('height'), 10)
+
+      expect(spinnerHeight).toBe(parentHeight)
+    })
+  })
 
   describe('sizes', () => {
     const sizeSetup = async ({ attributes }: { attributes: Partial<OdsSpinnerAttributes> }) => {
       const minimalAttributes: OdsSpinnerAttributes = OdsCreateAttributes(attributes, odsSpinnerBaseAttributes);
       const stringAttributes = OdsComponentAttributes2StringAttributes<OdsSpinnerAttributes>(minimalAttributes, odsSpinnerDefaultAttributes);
-  
+
       const page = await newE2EPage();
       await page.setContent(`
         <osds-spinner size="${OdsSpinnerSize.sm}" ${OdsStringAttributes2Str(stringAttributes)}></osds-spinner>
@@ -52,7 +62,7 @@ describe('e2e:osds-spinner', () => {
         <osds-spinner size="${OdsSpinnerSize.lg}" ${OdsStringAttributes2Str(stringAttributes)}></osds-spinner>
       `);
       await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
-  
+
       const smSpinner = await page.find(`osds-spinner[size=${OdsSpinnerSize.sm}]`);
       const mdSpinner = await page.find(`osds-spinner[size=${OdsSpinnerSize.md}]`);
       const lgSpinner = await page.find(`osds-spinner[size=${OdsSpinnerSize.lg}]`);
@@ -63,23 +73,28 @@ describe('e2e:osds-spinner', () => {
         lgSpinner,
       };
     }
-    it.only('should have a small size', async () => {
+
+    it('should have a small size', async () => {
       const {
         smSpinner,
         mdSpinner,
         lgSpinner,
       } = await sizeSetup({ attributes: {} });
-      const smSpinnerWidth = await smSpinner.getComputedStyle('width');
-      console.log(smSpinnerWidth);
-      expect(smSpinnerWidth).toBeLessThan(OdsSpinnerSize.sm);
+      const smSpinnerStyle = await smSpinner.getComputedStyle();
+      const smSpinnerWidth = parseInt(smSpinnerStyle.getPropertyValue('width'), 10);
 
-    });
-  });
+      const mdSpinnerStyle = await mdSpinner.getComputedStyle();
+      const mdSpinnerWidth = parseInt(mdSpinnerStyle.getPropertyValue('width'), 10);
 
-  describe('modes', () => {
-    it('should have a indeterminate mode', async () => {
-      await setup({ attributes: { mode: OdsSpinnerMode.INDETERMINATE } });
-      expect(await el.getProperty('mode')).toBe(OdsSpinnerMode.INDETERMINATE);
+      const lgSpinnerStyle = await lgSpinner.getComputedStyle();
+      const lgSpinnerWidth = parseInt(lgSpinnerStyle.getPropertyValue('width'), 10);
+
+      expect(smSpinnerWidth).toBeLessThan(mdSpinnerWidth);
+      expect(smSpinnerWidth).toBeLessThan(lgSpinnerWidth);
+      expect(mdSpinnerWidth).toBeLessThan(lgSpinnerWidth);
+      expect(mdSpinnerWidth).toBeGreaterThan(smSpinnerWidth);
+      expect(lgSpinnerWidth).toBeGreaterThan(smSpinnerWidth);
+      expect(lgSpinnerWidth).toBeGreaterThan(mdSpinnerWidth);
     });
   });
 });

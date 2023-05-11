@@ -165,6 +165,15 @@ module.exports = {
       },
       {
         type: 'modify',
+        files: `${config.outDir}/${config.odsStencilPath}/tsconfig.components.test.json`,
+        handler(data) {
+          data.include.push(`${templateData.name}/src`);
+          data.include = data.include.sort();
+          return data;
+        }
+      },
+      {
+        type: 'modify',
         files: `${config.outDir}/${config.odsThemingPath}/ods-size-definitions.scss`,
         handler(data) {
           return `@import './${config.corePrefix}-theming-size.${templateData.name}';` + data;

@@ -1,30 +1,50 @@
-import { E2EElement, E2EPage, newE2EPage } from '@stencil/core/testing';
+import { E2EPage, newE2EPage } from '@stencil/core/testing';
 import {
   OdsSpinnerAttributes,
   OdsComponentAttributes2StringAttributes,
   odsSpinnerDefaultAttributes,
+  OdsSpinnerSize,
 } from '@ovhcloud/ods-core';
 import { OdsCreateAttributes, OdsStringAttributes2Str, odsSpinnerBaseAttributes } from '@ovhcloud/ods-testing';
 
 describe('e2e:osds-spinner', () => {
   let page: E2EPage;
-  let el: E2EElement;
 
-  async function setup({ attributes = {}, html = `` }: { attributes?: Partial<OdsSpinnerAttributes>, html?: string } = {}) {
+  async function setup({ attributes = {} }: { attributes?: Partial<OdsSpinnerAttributes> } = {}) {
     const minimalAttributes: OdsSpinnerAttributes = OdsCreateAttributes(attributes, odsSpinnerBaseAttributes);
     const stringAttributes = OdsComponentAttributes2StringAttributes<OdsSpinnerAttributes>(minimalAttributes, odsSpinnerDefaultAttributes);
 
     page = await newE2EPage();
-    await page.setContent(`
-      <osds-spinner ${OdsStringAttributes2Str(stringAttributes)}>
-        ${html}
-      </osds-spinner>
-    `);
+    await page.setContent(`<osds-spinner size=${attributes.size} ${OdsStringAttributes2Str(stringAttributes)} />`);
     await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
-    el = await page.find('osds-spinner');
+
+    await page.evaluate(() => {
+      const spinnerEl = document.querySelector('osds-spinner')?.shadowRoot?.querySelector('.spinner') as HTMLElement
+      spinnerEl.style.setProperty('animation', 'none');
+    });
+    await page.setViewport({ width: 600, height:600 });
   }
 
   describe('screenshots', () => {
-    // Screenshot testing
+    it('spinner small', async () => {
+      await setup({ attributes: { size: OdsSpinnerSize.sm } });
+
+      const results = await page.compareScreenshot('spinner', { fullPage: false, omitBackground: true });
+      expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
+    });
+
+    it('spinner medium', async () => {
+      await setup({ attributes: { size: OdsSpinnerSize.md } });
+
+      const results = await page.compareScreenshot('spinner', { fullPage: false, omitBackground: true });
+      expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
+    });
+
+    it('spinner large', async () => {
+      await setup({ attributes: { size: OdsSpinnerSize.lg } });
+
+      const results = await page.compareScreenshot('spinner', { fullPage: false, omitBackground: true });
+      expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
+    });
   });
 });

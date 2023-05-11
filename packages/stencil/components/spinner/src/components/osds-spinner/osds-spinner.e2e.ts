@@ -1,5 +1,5 @@
 import { E2EElement, E2EPage, newE2EPage } from '@stencil/core/testing';
-import { OdsSpinnerAttributes, OdsComponentAttributes2StringAttributes, odsSpinnerDefaultAttributes, OdsSpinnerSize, OdsSpinnerMode } from '@ovhcloud/ods-core';
+import { OdsSpinnerAttributes, OdsComponentAttributes2StringAttributes, odsSpinnerDefaultAttributes, OdsSpinnerSize } from '@ovhcloud/ods-core';
 import { OdsCreateAttributes, OdsStringAttributes2Str, odsSpinnerBaseAttributes } from '@ovhcloud/ods-testing';
 
 describe('e2e:osds-spinner', () => {

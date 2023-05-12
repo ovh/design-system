@@ -1,14 +1,14 @@
 
 /// @access private
-//@function ods-get-<% componentName %>-size-properties($size-name) {
+//@function ods-get-<%= name %>-size-properties($size-name) {
 //  @return (
 //
 //  )
 //}
 
 /// @access private
-//@function ods-get-<% componentName %>-component-size-definition() {
+//@function ods-get-<%= name %>-component-size-definition() {
 //  @return (
-//    md: ods-get-<% componentName %>-size-properties(md)
+//    md: ods-get-<%= name %>-size-properties(md)
 //  );
 //}

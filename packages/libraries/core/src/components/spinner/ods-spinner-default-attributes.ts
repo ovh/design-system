@@ -3,11 +3,11 @@ import { OdsSpinnerMode } from './ods-spinner-mode';
 import { OdsSpinnerSize } from './ods-spinner-size';
 
 export const odsSpinnerDefaultAttributesDoc  = {
-    // default attributes
-    size: OdsSpinnerSize.md,
-    flex: false,
-    contrasted: false,
-    mode: OdsSpinnerMode.INDETERMINATE
+  // default attributes
+  size: OdsSpinnerSize.md,
+  flex: false,
+  contrasted: false,
+  mode: OdsSpinnerMode.INDETERMINATE,
 } as const;
 
 export const odsSpinnerDefaultAttributes = odsSpinnerDefaultAttributesDoc as OdsSpinnerAttributes;

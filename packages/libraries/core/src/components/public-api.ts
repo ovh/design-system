@@ -30,7 +30,7 @@ export * from './range/public-api';
 export * from './skeleton/public-api';
 export * from './tabs/public-api';
 export * from './select/public-api';
-
+export * from './spinner/public-api';
 export * from './text/public-api';
 export * from './textarea/public-api';
 export * from './tile/public-api';
@@ -48,4 +48,3 @@ export * from './ods-component-generic-methods';
 export * from './ods-component-methods';
 export * from './ods-focus-change-event-detail';
 export * from './ods-string-attributes';
-export * from './spinner/public-api';

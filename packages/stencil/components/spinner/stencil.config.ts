@@ -4,7 +4,7 @@ import * as jestConfig from './jest.config';
 
 const args = process.argv.slice(2);
 
-export const config: Config = getStencilConfig({
+const config: Config = getStencilConfig({
   namespace: 'osds-spinner',
   args,
   jestConfig: jestConfig.default,
@@ -25,5 +25,7 @@ export const config: Config = getStencilConfig({
   },
   test: {
     globalScript: 'src/global.test.ts'
-  }
+  },
 });
+
+export { config };

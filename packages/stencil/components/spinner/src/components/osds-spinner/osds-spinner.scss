@@ -18,14 +18,14 @@
   height: 100%;
   width: 100%;
 
-  .spinner {
+  .spinner > svg {
     width: 100%;
     max-height: 100%;
     max-width: 100%;
   }
 }
 
-.spinner {
+.spinner > svg {
   position: relative;
   aspect-ratio: 1 / 1;
   animation: rotate .8s infinite linear;
@@ -36,10 +36,6 @@
 
 .spinner[paused] {
   animation-play-state: paused;
-}
-
-svg path, svg circle {
-  fill: var(--spinner-color);
 }
 
 @keyframes rotate {

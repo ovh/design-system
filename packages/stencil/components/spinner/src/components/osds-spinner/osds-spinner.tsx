@@ -9,7 +9,7 @@ import {
   odsSpinnerDefaultAttributes
 } from '@ovhcloud/ods-core';
 import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libraries/stencil-core';
-import spinner from '@ovhcloud/ods-theming/assets/spinner.svg';
+import SpinnerSVG from '../../assets/default.svg';
 
 /**
  * @slot (unnamed) - Spinner content
@@ -21,21 +21,26 @@ import spinner from '@ovhcloud/ods-theming/assets/spinner.svg';
 })
 export class OsdsSpinner implements OdsSpinner<OdsStencilMethods<OdsSpinnerMethods>, OdsStencilEvents<OdsSpinnerEvents>> {
   controller: OdsSpinnerController = new OdsSpinnerController(this);
-  @Element() el!: HTMLElement;
+  @Element() hostElement!: HTMLElement;
 
-  @Prop({ reflect: true }) public size?: OdsSpinnerSize = odsSpinnerDefaultAttributes.size;
-
-  @Prop({ reflect: true }) public flex?: boolean = odsSpinnerDefaultAttributes.flex;
-
+  /** @see OdsSpinnerAttributes.contrasted */
   @Prop({ reflect: true }) public contrasted?: boolean = odsSpinnerDefaultAttributes.contrasted;
 
+  /** @see OdsSpinnerAttributes.flex */
+  @Prop({ reflect: true }) public flex?: boolean = odsSpinnerDefaultAttributes.flex;
+
+  /** @see OdsSpinnerAttributes.mode */
   @Prop({ reflect: true }) public mode?: OdsSpinnerMode = odsSpinnerDefaultAttributes.mode;
 
-  render() {
+  /** @see OdsSpinnerAttributes.size */
+  @Prop({ reflect: true }) public size?: OdsSpinnerSize = odsSpinnerDefaultAttributes.size;
 
+  render() {
     return (
       <Host role="progressbar">
-        <img src={spinner} alt="loading" class="spinner" />
+        <div class="spinner"
+             innerHTML={ SpinnerSVG }>
+        </div>
       </Host>
     );
   }

@@ -3,11 +3,12 @@ import { OdsSpinnerMode } from './ods-spinner-mode';
 import { OdsSpinnerSize } from './ods-spinner-size';
 
 export interface OdsSpinnerAttributes extends OdsComponentAttributes {
-  /**
-   * Spinner attribute description
-   */
-  size?: OdsSpinnerSize;
-  flex?: boolean;
+  /** contrasted or not: see component principles */
   contrasted?: boolean;
-  mode?:  OdsSpinnerMode;
+  /** full width or not: see component principles */
+  flex?: boolean;
+  /** choose between infinite or progress spinner (infinite only for now) */
+  mode?: OdsSpinnerMode;
+  /** size: see component principles */
+  size?: OdsSpinnerSize;
 }

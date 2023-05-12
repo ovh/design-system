@@ -1,6 +1,6 @@
 import { html } from 'lit-html';
 import { iframe } from '../../../.storybook/iframe';
-
+import { odsSpinnerDefaultAttributes, OdsSpinnerSizeList } from '@ovhcloud/ods-core';
 import { defineCustomElements } from '@ovhcloud/ods-stencil-spinner/loader';
 import {
   extractArgTypes,
@@ -15,7 +15,20 @@ defineCustomElements();
 
 /* Default story parameters  */
 const storyParams = {
-
+  size: {
+    category: 'General',
+    defaultValue: odsSpinnerDefaultAttributes.size,
+    options: OdsSpinnerSizeList,
+    control: { type: 'select' },
+  },
+  contrasted: {
+    category: 'Misc',
+    defaultValue: odsSpinnerDefaultAttributes.contrasted,
+  },
+  flex: {
+    category: 'Misc',
+    defaultValue: odsSpinnerDefaultAttributes.flex,
+  },
 };
 
 export default {
@@ -32,12 +45,9 @@ export default {
 
 /* Default */
 const TemplateDefault = (args:any) => {
-  return html`
-    <osds-spinner ...=${getTagAttributes(args)}>
-      Spinner
-    </osds-spinner>
-  `;
+  return html`<osds-spinner ...=${getTagAttributes(args)}></osds-spinner>`;
 }
+
 export const Default = TemplateDefault.bind({});
 Default.args = {
   ...extractStoryParams(storyParams),

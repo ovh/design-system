@@ -15,7 +15,6 @@ import {
   odsUnitTestAttribute
 } from '@ovhcloud/ods-testing';
 import { SpecPage, newSpecPage } from '@stencil/core/testing';
-
 import { OsdsSpinner } from './osds-spinner';
 import { getAttributeContextOptions } from '@ovhcloud/ods-stencil/libraries/stencil-testing';
 
@@ -65,6 +64,7 @@ describe('spec:osds-spinner', () => {
           ...config,
         })
       });
+
       it('should be flex if attribute is added', async () => {
         await setup({ attributes: { flex: true } });
         expect(instance.flex).toBe(true);
@@ -80,7 +80,7 @@ describe('spec:osds-spinner', () => {
           ...config,
         })
       });
-      
+
       it('should be contrasted if attribute is added', async () => {
         await setup({ attributes: { contrasted: true } });
         expect(instance.contrasted).toBe(true);
@@ -96,6 +96,7 @@ describe('spec:osds-spinner', () => {
           ...config,
         })
       });
+
       it('should set a size if attribute is added', async () => {
         const randomSize = OdsSpinnerSizeList[Math.floor(Math.random() * OdsSpinnerSizeList.length)];
         await setup({ attributes: { size: randomSize } });
@@ -112,6 +113,7 @@ describe('spec:osds-spinner', () => {
           ...config,
         })
       });
+
       it('should set a mode if attribute is added', async () => {
         const randomMode = OdsSpinnerModeList[Math.floor(Math.random() * OdsSpinnerModeList.length)];
         await setup({ attributes: { mode: randomMode } });
@@ -119,5 +121,4 @@ describe('spec:osds-spinner', () => {
       });
     });
   });
-
 });

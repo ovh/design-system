@@ -1,7 +1,6 @@
 {
-    "extends": "../tsconfig.test.json",
-    "include": [
-      "src"
-    ]
-  }
-  
+  "extends": "../tsconfig.test.json",
+  "include": [
+    "src"
+  ]
+}

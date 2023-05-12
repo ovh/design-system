@@ -6010,6 +6010,7 @@ __metadata:
     "@types/autoprefixer": ~10.2.0
     autoprefixer: ~10.3.7
     postcss: ^8.3.9
+    stencil-inline-svg: ^1.1.0
     typescript: 4.7.4
   peerDependencies:
     "@ovhcloud/ods-core": ">=2"
@@ -32949,6 +32950,13 @@ fsevents@^1.2.7:
   version: 1.1.1
   resolution: "stealthy-require@npm:1.1.1"
   checksum: 6805b857a9f3a6a1079fc6652278038b81011f2a5b22cbd559f71a6c02087e6f1df941eb10163e3fdc5391ab5807aa46758d4258547c1f5ede31e6d9bfda8dd3
+  languageName: node
+  linkType: hard
+
+"stencil-inline-svg@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "stencil-inline-svg@npm:1.1.0"
+  checksum: 2c6732fabc74a61454834b877745f623722d670ce8351ab06bffbd1ad79ab5668bc1c888b242f0aef29f1f4353383d58a07cf3ac7bc0b46d789605f46a0b6904
   languageName: node
   linkType: hard
 

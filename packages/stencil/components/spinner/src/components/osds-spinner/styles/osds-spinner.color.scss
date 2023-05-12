@@ -1,18 +1,6 @@
 @import '~@ovhcloud/ods-theming/color/ods-component-color';
 @import './osds-spinner.mixins';
 
-@mixin osds-spinner-theme-color-variant-default() {
-  @include ods-and-all-hue-foreach-theme-color((
-          color: '800',
-          background-color: '100'
-  )) using($colors) {
-    @include osds-spinner-on-selected-host() {
-      //color: map_get($colors, color);
-      //background-color: map_get($colors, background-color);
-    }
-  }
-}
-
 // Main CSS color theme mixin
 @mixin osds-spinner-theme-color() {
   /** base colors */
@@ -20,8 +8,13 @@
     border-color: transparent;
   }
 
-  /** no variant specified: default variant colors */
-  :not([variant]) {
-    @include osds-spinner-theme-color-variant-default();
+  :not([contrasted]) {
+    @include osds-spinner-on-selected-host() {
+      fill: ods-get-color-variable($intent-name: 'primary', $hue: '500');
+    }
+  }
+
+  :host([contrasted]) {
+    fill: ods-get-color-variable($intent-name: 'primary', $hue: '500-contrasted');
   }
 }

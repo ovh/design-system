@@ -11,6 +11,7 @@ describe('e2e:osds-spinner', () => {
     const stringAttributes = OdsComponentAttributes2StringAttributes<OdsSpinnerAttributes>(minimalAttributes, odsSpinnerDefaultAttributes);
 
     page = await newE2EPage();
+
     await page.setContent(`<osds-spinner ${OdsStringAttributes2Str(stringAttributes)}></osds-spinner>`);
     await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
 
@@ -19,6 +20,7 @@ describe('e2e:osds-spinner', () => {
 
   it('should render', async () => {
     await setup({ attributes: {} });
+
     expect(el).not.toBeNull();
     expect(el).toHaveClass('hydrated');
   });
@@ -29,8 +31,6 @@ describe('e2e:osds-spinner', () => {
     async function flexSetup({ attributes }: { attributes: Partial<OdsSpinnerAttributes> }) {
       const minimalAttributes: OdsSpinnerAttributes = OdsCreateAttributes(attributes, odsSpinnerBaseAttributes);
       const stringAttributes = OdsComponentAttributes2StringAttributes<OdsSpinnerAttributes>(minimalAttributes, odsSpinnerDefaultAttributes);
-
-      //const parentStyle = { style: { height: `${parentHeight}px` }}
 
       page = await newE2EPage();
       await page.setContent(`<osds-spinner flex ${OdsStringAttributes2Str(stringAttributes)}></osds-spinner>`);

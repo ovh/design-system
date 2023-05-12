@@ -21,7 +21,7 @@ export function OdsGetJestConfig({
     screenshot = args.includes('--screenshot');
   console.log(`[OdsGetJestConfig] args=${args}`);
   console.log(`[OdsGetJestConfig] e2e=${e2e} screenshot=${screenshot}`);
-  console.log('stencil', stencil);
+
   return {
     ...(stencil ? {
       preset: "@stencil/core/testing"

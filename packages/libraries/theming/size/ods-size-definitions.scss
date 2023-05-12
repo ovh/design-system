@@ -9,14 +9,14 @@
 @import './ods-theming-size.input';
 @import './ods-theming-size.radio-button';
 @import './ods-theming-size.range';
-@import './ods-theming-size.skeleton';
 @import './ods-theming-size.select';
+@import './ods-theming-size.skeleton';
+@import './ods-theming-size.spinner';
 @import './ods-theming-size.tabs';
 @import './ods-theming-size.text';
 @import './ods-theming-size.textarea';
 @import './ods-theming-size.tile';
 @import './ods-theming-size.toggle';
-@import './ods-theming-size.spinner';
 
 /// the typography definitions for each level and size.
 /// @access public
@@ -32,8 +32,8 @@ $ods-size-definitions: (
   input: ods-get-input-component-size-definition(),
   radio-button: ods-get-radio-button-component-size-definition(),
   range: ods-get-range-component-size-definition(),
-  skeleton: ods-get-skeleton-component-size-definition(),
   select: ods-get-select-component-size-definition(),
+  skeleton: ods-get-skeleton-component-size-definition(),
   spinner: ods-get-spinner-component-size-definition(),
   tabs: ods-get-tabs-component-size-definition(),
   text: ods-get-text-component-size-definition(),

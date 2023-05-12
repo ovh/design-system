@@ -15,8 +15,12 @@ describe('e2e:osds-spinner', () => {
     const stringAttributes = OdsComponentAttributes2StringAttributes<OdsSpinnerAttributes>(minimalAttributes, odsSpinnerDefaultAttributes);
 
     page = await newE2EPage();
-    await page.setContent(`<osds-spinner size=${attributes.size} ${OdsStringAttributes2Str(stringAttributes)} />`);
+    await page.setContent(`<osds-spinner size=${attributes.size || odsSpinnerDefaultAttributes.size} ${OdsStringAttributes2Str(stringAttributes)} />`);
     await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
+
+    if (attributes.contrasted) {
+      await page.evaluate(() => document.body.style.setProperty('background', '#000'));
+    }
 
     await page.evaluate(() => {
       const spinnerEl = document.querySelector('osds-spinner')?.shadowRoot?.querySelector('.spinner') as HTMLElement
@@ -42,6 +46,13 @@ describe('e2e:osds-spinner', () => {
 
     it('spinner large', async () => {
       await setup({ attributes: { size: OdsSpinnerSize.lg } });
+
+      const results = await page.compareScreenshot('spinner', { fullPage: false, omitBackground: true });
+      expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
+    });
+
+    it('contrasted spinner', async () => {
+      await setup({ attributes: { contrasted: true } });
 
       const results = await page.compareScreenshot('spinner', { fullPage: false, omitBackground: true });
       expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });

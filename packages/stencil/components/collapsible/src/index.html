@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html dir='ltr' lang='en'>
+<head>
+  <meta charset='utf-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0' />
+  <title>Dev ods-collapsible</title>
+
+  <script type="module">
+    !window.ods && (window.ods = {config: {logging: {active:true}}});
+  </script>
+
+  <script type='module' src='/build/osds-collapsible.esm.js'></script>
+  <script nomodule src='/build/osds-collapsible.js'></script>
+  <link rel="stylesheet" href="/build/osds-collapsible.css">
+</head>
+<body>
+
+<osds-collapsible>Collapsible</osds-collapsible>
+
+<script>
+  document.querySelectorAll('ods-collapsible').forEach((elem) => {});
+</script>
+</body>
+</html>

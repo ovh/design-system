@@ -2,6 +2,7 @@ import { E2EElement, E2EPage, newE2EPage } from '@stencil/core/testing';
 import {
   OdsButtonAttributes,
   OdsButtonSize,
+  OdsIconSize,
   OdsButtonVariant,
   OdsComponentAttributes2StringAttributes,
   odsButtonDefaultAttributes,
@@ -22,7 +23,11 @@ describe('e2e:osds-button', () => {
     jest.clearAllMocks();
   });
 
-  async function setup({ attributes = {}, html = ``, inForm }: { attributes?: Partial<OdsButtonAttributes>, html?: string, inForm?: boolean } = {}) {
+  async function setup({ attributes = {}, html = ``, inForm }: {
+    attributes?: Partial<OdsButtonAttributes>,
+    html?: string,
+    inForm?: boolean
+  } = {}) {
     const minimalAttributes: OdsButtonAttributes = OdsCreateAttributes(attributes, odsButtonBaseAttributes);
     const stringAttributes = OdsComponentAttributes2StringAttributes<OdsButtonAttributes>(minimalAttributes, odsButtonDefaultAttributes);
 
@@ -35,7 +40,7 @@ describe('e2e:osds-button', () => {
 
     if (inForm) {
       content = `
-       <form onsubmit="onSubmit()">
+       <form onsubmit='onSubmit()'>
           ${button}
         </form>
       `
@@ -47,11 +52,6 @@ describe('e2e:osds-button', () => {
     await page.exposeFunction('onSubmit', checkSubmit);
 
     await page.setContent(content);
-    await page.setContent(`
-      <osds-button ${OdsStringAttributes2Str(stringAttributes)}>
-        ${html}
-      </osds-button>
-    `);
     await page.evaluate(() => document.body.style.setProperty('margin', '4px'));
     el = await page.find('osds-button');
 
@@ -101,6 +101,10 @@ describe('e2e:osds-button', () => {
 
     it('should have a default type', async () => {
       expect(await el.getProperty('type')).toBe(odsButtonDefaultAttributes.type);
+    });
+
+    it('should have a default circle', async () => {
+      expect(await el.getProperty('circle')).toBe(odsButtonDefaultAttributes.circle);
     });
   });
 
@@ -192,6 +196,35 @@ describe('e2e:osds-button', () => {
       await setup({ attributes: { size: OdsButtonSize.md } });
       expect(await el.getProperty('size')).toBe(OdsButtonSize.md);
     });
+  });
+
+  describe('circle', () => {
+    beforeEach(async () => {
+      await setup();
+    });
+
+    it('should render an ellipsis icon if circle attribute is true', async () => {
+      await setup({ attributes: { circle: true } });
+      expect(await buttonElement.find('osds-icon')).toBeTruthy();
+    })
+
+    it('should not render an ellipsis icon if circle attribute is false', async () => {
+      await setup({ attributes: { circle: false } });
+      expect(await buttonElement.find('osds-icon')).toBeFalsy();
+    })
+
+    it.each([
+      { buttonSize: OdsButtonSize.md, expectedIconSize: OdsIconSize.xs },
+      { buttonSize: OdsButtonSize.sm, expectedIconSize: OdsIconSize.xxs },
+    ])(`should set the icon size at %expectedIconSize if button size is %buttonSize`, async ({ buttonSize, expectedIconSize }) => {
+      await setup({ attributes: { circle: true, size: buttonSize } });
+      expect(await buttonElement.find('osds-icon')).toEqualAttribute('size', expectedIconSize);
+    })
+
+    it('should apply the ghost variant if circle attribute is true', async () => {
+      await setup({ attributes: { circle: true } });
+      expect(await el.getProperty('variant')).toBe(OdsButtonVariant.ghost);
+    })
   });
 
   describe('form', () => {

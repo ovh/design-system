@@ -44,6 +44,16 @@ export class OdsButtonController extends OdsComponentController<OdsButton> {
   }
 
   /**
+   * Mutate the component attributes depending on the button shape
+   */
+  mutateAttributes(): void {
+    if(this.component.circle) {
+      this.component.variant = OdsButtonVariant.ghost;
+      this.component.flex = false;
+    }
+  }
+
+  /**
    * Handle Click and KeyPress Event on the button
    */
   handleClick(event: MouseEvent): void {

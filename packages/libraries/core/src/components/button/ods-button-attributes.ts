@@ -29,4 +29,6 @@ export interface OdsButtonAttributes extends OdsComponentAttributes {
   type?: OdsButtonType;
   /** used design aspect */
   variant?: OdsButtonVariant;
+  /** use a circle shape */
+  circle?: boolean;
 }

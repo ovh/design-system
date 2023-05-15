@@ -80,5 +80,29 @@ describe('spec:ods-button-controller', () => {
         expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledTimes(1);
       });
     });
+    describe('methods:mutateAttributes', () => {
+      beforeEach(() => {
+        setup({
+          flex: true,
+          variant: OdsButtonVariant.flat
+        });
+      });
+
+      it('should not mutate attributes if circle attribute is false', () => {
+        controller.mutateAttributes();
+
+        expect(component.variant).toBe(OdsButtonVariant.flat);
+        expect(component.flex).toBe(true);
+      });
+
+      it('should mutate attributes if circle attribute is true', () => {
+        component.circle = true;
+
+        controller.mutateAttributes();
+
+        expect(component.variant).toBe(OdsButtonVariant.ghost);
+        expect(component.flex).toBe(false);
+      });
+    })
   });
 });

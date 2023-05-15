@@ -10,9 +10,11 @@ export const config: Config = getStencilConfig({
   jestConfig: jestConfig.default,
   reactOutput: {
     componentCorePackage: '@ovhcloud/ods-stencil/components/button',
+    excludeComponents: ['osds-icon']
   },
   vueOutput: {
     componentCorePackage: '@ovhcloud/ods-stencil/components/button',
+    excludeComponents: ['osds-icon']
   },
   dev: {
     globalScript: 'src/global.dev.ts',

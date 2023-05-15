@@ -35,26 +35,29 @@ describe('e2e:osds-button', () => {
         OdsThemeColorIntentList.forEach((color) => {
           OdsButtonSizeList.forEach((size) => {
             OdsButtonVariantList.forEach((variant) => {
-              it([color, variant, size, action, behaviour].join(', '), async () => {
-                await setup({
-                  attributes: {
-                    color,
-                    size,
-                    variant,
-                  },
-                  html: `Button`
-                });
-                action();
-                await behaviour();
-                await page.waitForChanges();
+              [false, true].forEach((circle) => {
+                it([color, variant, size, circle, action, behaviour].join(', '), async () => {
+                  await setup({
+                    attributes: {
+                      color,
+                      size,
+                      variant,
+                      circle,
+                    },
+                    html: `Button`
+                  });
+                  action();
+                  await behaviour();
+                  await page.waitForChanges();
 
-                await page.evaluate(() => {
-                  const element = document.querySelector('osds-button') as HTMLElement;
-                  return { width: element.clientWidth, height: element.clientHeight };
+                  await page.evaluate(() => {
+                    const element = document.querySelector('osds-button') as HTMLElement;
+                    return { width: element.clientWidth, height: element.clientHeight };
+                  });
+                  await page.setViewport({ width: 600, height: 600 });
+                  const results = await page.compareScreenshot('button', { fullPage: false, omitBackground: true });
+                  expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 })
                 });
-                await page.setViewport({ width: 600, height:600 });
-                const results = await page.compareScreenshot('button', { fullPage: false, omitBackground: true });
-                expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 })
               });
             });
 

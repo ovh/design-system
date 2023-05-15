@@ -20,4 +20,15 @@
       padding: ods-get-size-property($sizes, padding-y) ods-get-size-property($sizes, padding-x);
     }
   }
+
+  /** circle */
+  [circle] {
+    @include osds-button-on-selected-host() {
+      padding: 4px;
+      height: auto;
+      line-height: 0.4em;
+      border-radius: 50%;
+    }
+  }
+
 }

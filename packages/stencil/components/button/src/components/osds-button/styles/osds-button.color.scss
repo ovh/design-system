@@ -245,6 +245,11 @@
     @include osds-button-theme-color-variant-ghost();
   }
 
+  /** include stroked variant on circle focus */
+  [circle]:focus {
+    @include osds-button-theme-color-variant-stroked();
+  }
+
   :not([disabled]):focus {
     @include osds-button-on-selected-host() {
       outline-color: var(--ods-color-gray-500);

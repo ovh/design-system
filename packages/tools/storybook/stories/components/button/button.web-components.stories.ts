@@ -60,6 +60,10 @@ const storyParams = {
     category: 'Misc',
     defaultValue: false,
   },
+  circle: {
+      category: 'Misc',
+      defaultValue: false,
+  },
   href: {
     category: 'Misc',
     defaultValue: ''
@@ -145,6 +149,8 @@ const TemplateAll = () => html`
     <h1>Disabled and contrasted Variants & Colors</h1>
     ${unsafeHTML(createComponentTable(defaultTag, { variant: OdsButtonVariantList }, { color: OdsThemeColorIntentList }, defaultContent, { contrasted: true, disabled: true }))}
   </div>
+  <h1>Circle shape</h1>
+  ${unsafeHTML(createComponentTable(defaultTag, { size: OdsButtonSizeList, }, { color: OdsThemeColorIntentList }, defaultContent, { circle: true }))}
 `;
 export const All = TemplateAll.bind({});
 All.parameters = {

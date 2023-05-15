@@ -1,4 +1,4 @@
-import { OdsComponentAttributes } from '../ods-component-attributes';
+import { OdsComponentAttributes } from '../../ods-component-attributes';
 
 export interface OdsTooltipAttributes extends OdsComponentAttributes {
   /**

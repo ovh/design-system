@@ -1,5 +1,5 @@
 import { OdsTooltip } from './ods-tooltip';
-import { OdsComponentController } from '../ods-component-controller';
+import { OdsComponentController } from '../../ods-component-controller';
 
 /**
  * common controller logic for cmpnt component used by the different implementations.

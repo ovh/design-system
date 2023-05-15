@@ -1,13 +1,13 @@
 import { E2EElement, E2EPage, newE2EPage } from '@stencil/core/testing';
 import { OdsCollapsibleAttributes, OdsComponentAttributes2StringAttributes, odsCollapsibleDefaultAttributes } from '@ovhcloud/ods-core';
-import { OdsCreateAttributes, OdsStringAttributes2Str, odsCollapsibleBaseAttributes } from '@ovhcloud/ods-testing';
+import { OdsCreateAttributes, OdsStringAttributes2Str } from '@ovhcloud/ods-testing';
 
 describe('e2e:osds-collapsible', () => {
   let page: E2EPage;
   let el: E2EElement;
 
   async function setup({ attributes }: { attributes: Partial<OdsCollapsibleAttributes> }) {
-    const minimalAttributes: OdsCollapsibleAttributes = OdsCreateAttributes(attributes, odsCollapsibleBaseAttributes);
+    const minimalAttributes: OdsCollapsibleAttributes = OdsCreateAttributes(attributes, odsCollapsibleDefaultAttributes);
     const stringAttributes = OdsComponentAttributes2StringAttributes<OdsCollapsibleAttributes>(minimalAttributes, odsCollapsibleDefaultAttributes);
 
     page = await newE2EPage();
@@ -21,8 +21,6 @@ describe('e2e:osds-collapsible', () => {
     await setup({ attributes: {} });
     expect(el).not.toBeNull();
     expect(el).toHaveClass('hydrated');
-
-    // E2E testing
   });
 
 });

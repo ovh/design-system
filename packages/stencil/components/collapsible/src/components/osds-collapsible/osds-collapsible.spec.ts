@@ -9,12 +9,10 @@ import {
 import {
   OdsCreateAttributes,
   OdsStringAttributes2Str,
-  odsCollapsibleBaseAttributes,
   odsUnitTestAttribute
 } from '@ovhcloud/ods-testing';
 import { SpecPage, newSpecPage } from '@stencil/core/testing';
 
-import { OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
 import { OsdsCollapsible } from './osds-collapsible';
 import { getAttributeContextOptions } from '@ovhcloud/ods-stencil/libraries/stencil-testing';
 
@@ -29,7 +27,7 @@ describe('spec:osds-collapsible', () => {
   });
 
   async function setup({ attributes = {} }: { attributes?: Partial<OdsCollapsibleAttributes> } = {}) {
-    const minimalAttributes: OdsCollapsibleAttributes = OdsCreateAttributes(attributes, odsCollapsibleBaseAttributes);
+    const minimalAttributes: OdsCollapsibleAttributes = OdsCreateAttributes(attributes, odsCollapsibleDefaultAttributes);
     const stringAttributes = OdsComponentAttributes2StringAttributes<OdsCollapsibleAttributes>(minimalAttributes, odsCollapsibleDefaultAttributes);
 
     page = await newSpecPage({
@@ -55,14 +53,29 @@ describe('spec:osds-collapsible', () => {
       setup
     };
 
-    // Attributes Unit testing
+    describe('opened', () => {
+      odsUnitTestAttribute<OdsCollapsibleAttributes, 'opened'>({
+        ...getAttributeContextOptions<OdsCollapsibleAttributes, OsdsCollapsible, 'opened'>({
+          name: 'opened',
+          list: [false, true],
+          defaultValue: odsCollapsibleDefaultAttributes.opened,
+          ...config
+        })
+      });
+    });
   });
 
   describe('controller', () => {
-    it('should call controller.validateAttributes', async () => {
-      await setup();
-      expect(controller.validateAttributes).toHaveBeenCalledWith();
-      expect(controller.validateAttributes).toHaveBeenCalledTimes(1);
+    it('should not call controller.onToggle init component', async () => {
+      await setup({attributes: { opened: false }});
+      expect(controller.onToggle).not.toHaveBeenCalled();
+    });
+
+    it('should call controller.onToggle on open changes', async () => {
+      await setup({attributes: { opened: false }});
+      instance.opened = true;
+      expect(controller.onToggle).toHaveBeenCalledWith();
+      expect(controller.onToggle).toHaveBeenCalledTimes(1);
     });
   });
 });

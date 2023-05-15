@@ -6,16 +6,17 @@ import { OdsComponentController } from '../ods-component-controller';
  * it contains all the glue between framework implementation and the third party service.
  */
 export class OdsCollapsibleController extends OdsComponentController<OdsCollapsible> {
-  // private readonly logger = new OdsLogger('OdsCollapsibleController');
 
   constructor(component: OdsCollapsible) {
     super(component);
   }
 
   /**
-   * Attributes validation documentation
+   * handle on toggle the `details` vanilla tag by synchronizing its `open` status into our `opened` one.
+   * in case of no `details` already set, it won't change the `opened` status.
    */
-  validateAttributes(): void {
-      return;
+  onToggle(): void {
+    this.component.opened = !this.component.opened;
+    this.component.emitToggle(this.component.opened || false);
   }
 }

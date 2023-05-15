@@ -15,10 +15,27 @@
 </head>
 <body>
 
-<osds-collapsible>Collapsible</osds-collapsible>
+  <p>Closed</p>
+  <osds-collapsible>Collapsible</osds-collapsible>
 
-<script>
-  document.querySelectorAll('ods-collapsible').forEach((elem) => {});
-</script>
+  <p>Opened</p>
+  <osds-collapsible opened>Collapsible</osds-collapsible>
+
+  <p>Collapsible with button for change opened</p>
+  <button id="openButton">click on me for collapsible</button>
+  <osds-collapsible id="collapsibleWithButton">Collapsible</osds-collapsible>
+
+  <script type="module">
+    const elem = document.getElementById('collapsibleWithButton');
+    elem.addEventListener('odsCollapsibleToggle', event => {
+      console.log('(html) addEventListener odsCollapsibleToggle: ', event.detail);
+    });
+
+    const button = document.getElementById('openButton')
+    button.addEventListener('click', event => {
+      console.log('click');
+      elem.opened = !elem.opened;
+    });
+  </script>
 </body>
 </html>

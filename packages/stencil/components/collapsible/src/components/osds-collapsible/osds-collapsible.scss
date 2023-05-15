@@ -5,15 +5,12 @@
 @import '~@ovhcloud/ods-theming/color/ods-theming-color';
 @import '~@ovhcloud/ods-theming/ods-theme';
 
-// CSS targeted only for this component
-// /!\ for theming purposes, it has to be done in theming files
-// (i.e. packages/libraries/theming/...)
 :host {
-
+  display: none;
 }
 
-:host([attribute]) {
-
+:host([opened]) {
+  display: block;
 }
 
 // apply the theme template for the component

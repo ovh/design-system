@@ -1,7 +1,8 @@
-import { Component, Element, Host, h } from '@stencil/core';
+import { Component, Element, Host, h, Prop, Event, EventEmitter, Watch } from '@stencil/core';
 import {
   OdsCollapsible,
   OdsCollapsibleController,
+  odsCollapsibleDefaultAttributes,
   OdsCollapsibleEvents,
   OdsCollapsibleMethods,
   // odsCollapsibleDefaultAttributes
@@ -20,27 +21,32 @@ export class OsdsCollapsible implements OdsCollapsible<OdsStencilMethods<OdsColl
   controller: OdsCollapsibleController = new OdsCollapsibleController(this);
   @Element() el!: HTMLElement;
 
-  // Component properties as @Prop
-  // ex: @Prop({ reflect: true }) public color?: OdsThemeColorIntent = odsCollapsibleDefaultAttributes.color;
+  @Prop({ reflect: true }) public opened?: boolean = odsCollapsibleDefaultAttributes.opened;
+
+  /** @see OdsCollapsibleEvents.odsCollapsibleToggle */
+  @Event() odsCollapsibleToggle!: EventEmitter<boolean>;
+
 
   /**
-   * @see OdsCollapsibleBehavior.beforeRender
+   * on update of `opened` property by the user
    */
-  beforeRender(): void {
-
+  @Watch('opened')
+  onOpenedChanged(): void {
+    this.controller.onToggle();
   }
 
-  componentWillRender(): void {
-
+  /**
+   * @see OdsCollapsibleBehavior.emitToggle
+   */
+  emitToggle(opened: boolean): void {
+    this.odsCollapsibleToggle.emit(opened);
   }
 
   render() {
 
     return (
       <Host>
-
-        {/* UI template */}
-
+        <slot></slot>
       </Host>
     );
   }

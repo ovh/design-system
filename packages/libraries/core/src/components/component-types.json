@@ -30,12 +30,13 @@
   "OdsRange",
   "OdsSelect",
   "OdsSkeleton",
-  "OdsTabs",
   "OdsTabBar",
   "OdsTabBarItem",
   "OdsTabPanel",
+  "OdsTabs",
   "OdsText",
   "OdsTextarea",
   "OdsTile",
-  "OdsToggle"
+  "OdsToggle",
+  "OdsTooltip"
 ]

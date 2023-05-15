@@ -1,1 +1,2 @@
-export * from './ods-tooltip-base-attributes';
+export * from './tooltip/public-api';
+export * from './tooltip-content/public-api';

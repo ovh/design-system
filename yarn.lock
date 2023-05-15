@@ -5864,6 +5864,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+<<<<<<< HEAD
 "@ovhcloud/ods-stencil-collapsible-react@workspace:packages/stencil/components/collapsible/react":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-collapsible-react@workspace:packages/stencil/components/collapsible/react"
@@ -5904,6 +5905,8 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+=======
+>>>>>>> fd3dc10 (feat(tooltip): generate files from template)
 "@ovhcloud/ods-stencil-component-dev@^12.0.5, @ovhcloud/ods-stencil-component-dev@^12.1.0, @ovhcloud/ods-stencil-component-dev@workspace:packages/stencil/libraries/stencil-component-dev":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-component-dev@workspace:packages/stencil/libraries/stencil-component-dev"
@@ -6873,6 +6876,46 @@ __metadata:
   dependencies:
     "@ovhcloud/ods-stencil-component": ^12.1.0
     "@ovhcloud/ods-stencil-component-dev": ^12.1.0
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-stencil-tooltip-react@workspace:packages/stencil/components/tooltip/react":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-stencil-tooltip-react@workspace:packages/stencil/components/tooltip/react"
+  dependencies:
+    "@ovhcloud/ods-stencil-tooltip": ^12.0.5
+    "@types/react": 17.0.37
+    "@types/react-dom": 17.0.11
+    react: 16.14.0
+    react-dom: 16.14.0
+    rimraf: ^3.0.2
+    tslib: "*"
+    typescript: 4.7.4
+  peerDependencies:
+    react: ">=16.8.6"
+    react-dom: ">=16.8.6"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-stencil-tooltip-vue@workspace:packages/stencil/components/tooltip/vue":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-stencil-tooltip-vue@workspace:packages/stencil/components/tooltip/vue"
+  dependencies:
+    "@ovhcloud/ods-stencil-tooltip": ^12.0.5
+    rimraf: ^3.0.2
+    typescript: 4.7.4
+    vue: ^3.2.41
+  peerDependencies:
+    vue: ">=3"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-stencil-tooltip@^12.0.5, @ovhcloud/ods-stencil-tooltip@workspace:packages/stencil/components/tooltip":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-stencil-tooltip@workspace:packages/stencil/components/tooltip"
+  dependencies:
+    "@ovhcloud/ods-stencil-component": ^12.0.5
+    "@ovhcloud/ods-stencil-component-dev": ^12.0.5
   languageName: unknown
   linkType: soft
 

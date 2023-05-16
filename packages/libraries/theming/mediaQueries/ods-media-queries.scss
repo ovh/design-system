@@ -1,0 +1,20 @@
+@import './ods-breakpoint-definitions';
+
+/// @access public
+@function ods-get-breakpoint-value($breakpoint-size) {
+  @return map_get($ods-breakpoint-definitions, $breakpoint-size);
+}
+
+/// @access public
+@mixin ods-media-max-width($max) {
+  @media screen and (max-width: $max) {
+    @content;
+  }
+}
+
+/// @access public
+@mixin ods-media-min-width($min) {
+  @media screen and (min-width: $min) {
+    @content;
+  }
+}

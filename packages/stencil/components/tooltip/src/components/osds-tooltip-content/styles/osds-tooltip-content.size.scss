@@ -3,5 +3,11 @@
 
 // Main CSS mixin for sizes
 @mixin osds-tooltip-content-theme-size() {
+  $size-definitions: ods-get-size-definitions();
+  $component-size-definition: ods-get-component-size-definition($size-definitions, tooltip);
 
+  :host {
+    $size-properties: ods-get-size-properties($component-size-definition, md);
+    grid-column-gap: ods-get-size-property($size-properties, grid-column-gap);
+  }
 }

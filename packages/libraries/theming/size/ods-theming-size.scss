@@ -63,12 +63,13 @@
   $input,
   $radio-button,
   $range,
-  $skeleton,
-  $textarea,
   $select,
+  $skeleton,
   $tabs,
+  $textarea,
   $tile,
-  $toggle
+  $toggle,
+  $tooltip,
 ) {
   @return (
     accordion: ods-create-component-size-config(accordion, $accordion),
@@ -82,12 +83,13 @@
     input: ods-create-component-size-config(input, $input),
     radio-button: ods-create-component-size-config(radio-button, $radio-button),
     range: ods-create-component-size-config(range, $range),
-    skeleton: ods-create-component-size-config(skeleton, $skeleton),
-    textarea: ods-create-component-size-config(textarea, $textarea),
     select: ods-create-component-size-config(select, $select),
+    skeleton: ods-create-component-size-config(skeleton, $skeleton),
     tabs: ods-create-component-size-config(tabs, $tabs),
+    textarea: ods-create-component-size-config(textarea, $textarea),
     tile: ods-create-component-size-config(tile, $tile),
     toggle: ods-create-component-size-config(toggle, $toggle),
+    tooltip: ods-create-component-size-config(tooltip, $tooltip),
   );
 }
 

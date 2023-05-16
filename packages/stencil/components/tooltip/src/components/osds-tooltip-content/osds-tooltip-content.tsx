@@ -4,12 +4,11 @@ import {
   OdsTooltipContentController,
   OdsTooltipContentEvents,
   OdsTooltipContentMethods,
-  // odsTooltipContentDefaultAttributes
 } from '@ovhcloud/ods-core';
 import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libraries/stencil-core';
 
 /**
- * @slot (unnamed) - TooltipContent content
+ * @slot (tooltip-content) - The Tooltip content
  */
 @Component({
   tag: 'osds-tooltip-content',
@@ -20,24 +19,10 @@ export class OsdsTooltipContent implements OdsTooltipContent<OdsStencilMethods<O
   controller: OdsTooltipContentController = new OdsTooltipContentController(this);
   @Element() el!: HTMLElement;
 
-  // Component properties as @Prop
-  // ex: @Prop({ reflect: true }) public color?: OdsThemeColorIntent = odsTooltipContentDefaultAttributes.color;
-
-  /**
-   * @see OdsTooltipContentBehavior.beforeRender
-   */
-  beforeRender(): void {
-
-  }
-
-  componentWillRender(): void {
-
-  }
-
   render() {
     return (
       <Host>
-        <slot />
+        <slot></slot>
       </Host>
     );
   }

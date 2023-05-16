@@ -6,6 +6,18 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
 
 
+# [12.1.2](https://ovhcloud.design/v12.1.2/?path=/docs/design-system-changelog--page) (2023-05-16)
+[compare](https://github.com/ovh/design-system/compare/v12.1.1...v12.1.2)
+
+**Note:** Version bump only for package @ovhcloud/ods-stencil-testing
+
+
+
+
+
+[Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
+
+
 # [12.1.1](https://ovhcloud.design/v12.1.1/?path=/docs/design-system-changelog--page) (2023-05-05)
 [compare](https://github.com/ovh/design-system/compare/v12.1.0...v12.1.1)
 

@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-component-generator",
-  "version": "12.1.1",
+  "version": "12.1.2",
   "private": true,
   "description": "OVHcloud Design System UI Component generator",
   "author": "OVH SAS",

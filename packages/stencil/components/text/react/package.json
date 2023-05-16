@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-stencil-text-react",
-  "version": "12.1.1",
+  "version": "12.1.2",
   "private": true,
   "description": "React specific wrapper for ods",
   "keywords": [],
@@ -19,7 +19,7 @@
     "dist/"
   ],
   "dependencies": {
-    "@ovhcloud/ods-stencil-cart": "^12.1.1",
+    "@ovhcloud/ods-stencil-cart": "^12.1.2",
     "tslib": "*"
   },
   "peerDependencies": {

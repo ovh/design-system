@@ -1,19 +1,12 @@
-@import 'styles/osds-tooltip-content.mixins';
 @import 'styles/osds-tooltip-content.color';
 @import 'styles/osds-tooltip-content.size';
 @import 'styles/osds-tooltip-content.typography';
-@import '~@ovhcloud/ods-theming/color/ods-theming-color';
 @import '~@ovhcloud/ods-theming/ods-theme';
 
-// CSS targeted only for this component
-// /!\ for theming purposes, it has to be done in theming files
-// (i.e. packages/libraries/theming/...)
 :host {
-
-}
-
-:host([attribute]) {
-
+  display: flex;
+  flex-flow: row;
+  align-items: center;
 }
 
 // apply the theme template for the component

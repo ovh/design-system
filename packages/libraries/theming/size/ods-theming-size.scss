@@ -70,7 +70,8 @@
   $tabs,
   $textarea,
   $tile,
-  $toggle
+  $toggle,
+  $tooltip,
 ) {
   @return (
     accordion: ods-create-component-size-config(accordion, $accordion),
@@ -92,6 +93,7 @@
     textarea: ods-create-component-size-config(textarea, $textarea),
     tile: ods-create-component-size-config(tile, $tile),
     toggle: ods-create-component-size-config(toggle, $toggle),
+    tooltip: ods-create-component-size-config(tooltip, $tooltip),
   );
 }
 

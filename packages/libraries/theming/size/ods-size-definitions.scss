@@ -1,4 +1,4 @@
-@import './ods-theming-size.tooltip';@import './ods-theming-size.accordion';
+@import './ods-theming-size.accordion';
 @import './ods-theming-size.button';
 @import './ods-theming-size.cart';
 @import './ods-theming-size.checkbox-button';
@@ -19,6 +19,7 @@
 @import './ods-theming-size.textarea';
 @import './ods-theming-size.tile';
 @import './ods-theming-size.toggle';
+@import './ods-theming-size.tooltip';
 
 /// the typography definitions for each level and size.
 /// @access public
@@ -43,6 +44,7 @@ $ods-size-definitions: (
   textarea: ods-get-textarea-component-size-definition(),
   tile: ods-get-tile-component-size-definition(),
   toggle: ods-get-toggle-component-size-definition(),
+  tooltip: ods-get-tooltip-component-size-definition(),
 );
 
 @function ods-get-size-definitions() {

@@ -6,12 +6,12 @@ describe('e2e:osds-tooltip-content', () => {
   let page: E2EPage;
   let el: E2EElement;
 
-  async function setup({ attributes }: { attributes: Partial<OdsTooltipContentAttributes> }) {
+  async function setup({ attributes, html }: { attributes: Partial<OdsTooltipContentAttributes>, html?: string }) {
     const minimalAttributes: OdsTooltipContentAttributes = OdsCreateAttributes(attributes, odsTooltipContentBaseAttributes);
     const stringAttributes = OdsComponentAttributes2StringAttributes<OdsTooltipContentAttributes>(minimalAttributes, odsTooltipContentDefaultAttributes);
 
     page = await newE2EPage();
-    await page.setContent(`<osds-tooltip-content ${OdsStringAttributes2Str(stringAttributes)}></osds-tooltip-content>`);
+    await page.setContent(`<osds-tooltip-content ${OdsStringAttributes2Str(stringAttributes)}>${html}</osds-tooltip-content>`);
     await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
 
     el = await page.find('osds-tooltip-content');
@@ -21,8 +21,13 @@ describe('e2e:osds-tooltip-content', () => {
     await setup({ attributes: {} });
     expect(el).not.toBeNull();
     expect(el).toHaveClass('hydrated');
-
-    // E2E testing
   });
 
+  describe('default slot', () => {
+    it('should display a text', async () => {
+      const slot = '<span>Dummy text</span>'
+      await setup({ attributes: {}, html: slot });
+      expect(el.innerHTML).toBe(slot);
+    })
+  });
 });

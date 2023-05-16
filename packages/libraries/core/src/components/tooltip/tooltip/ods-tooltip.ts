@@ -1,4 +1,5 @@
 import { OdsTooltipAttributes } from './ods-tooltip-attributes';
+import { OdsTooltipBehavior } from './ods-tooltip-behavior';
 import { OdsTooltipController } from './ods-tooltip-controller';
 import { OdsTooltipEvents } from './ods-tooltip-events';
 import { OdsTooltipMethods } from './ods-tooltip-methods';
@@ -13,4 +14,4 @@ import { OdsComponentGenericMethods } from '../../ods-component-generic-methods'
  */
 export type OdsTooltip<ComponentMethods extends OdsComponentGenericMethods<OdsTooltipMethods> = OdsComponentGenericMethods<OdsTooltipMethods>,
   ComponentEvents extends OdsComponentGenericEvents<OdsTooltipEvents> = OdsComponentGenericEvents<OdsTooltipEvents>> =
-  OdsComponent<ComponentMethods, ComponentEvents, OdsTooltipAttributes, OdsTooltipController>;
+  OdsComponent<ComponentMethods, ComponentEvents, OdsTooltipAttributes, OdsTooltipController, OdsTooltipBehavior>;

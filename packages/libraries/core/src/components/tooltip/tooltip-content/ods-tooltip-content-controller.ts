@@ -6,16 +6,7 @@ import { OdsComponentController } from '../../ods-component-controller';
  * it contains all the glue between framework implementation and the third party service.
  */
 export class OdsTooltipContentController extends OdsComponentController<OdsTooltipContent> {
-  // private readonly logger = new OdsLogger('OdsTooltipContentController');
-
   constructor(component: OdsTooltipContent) {
     super(component);
-  }
-
-  /**
-   * Attributes validation documentation
-   */
-  validateAttributes(): void {
-      return;
   }
 }

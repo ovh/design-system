@@ -1,17 +1,17 @@
 {
   "name": "@ovhcloud/ods-stencil",
-  "version": "12.1.2",
+  "version": "12.1.3",
   "description": "Stencil components",
   "license": "Apache-2.0",
   "scripts": {
     "build:prod": "echo \"building @ovhcloud/ods-stencil\""
   },
   "dependencies": {
-    "@ovhcloud/ods-theme-blue-jeans": "^12.1.2",
+    "@ovhcloud/ods-theme-blue-jeans": "^12.1.3",
     "@stencil/core": "~2.18.1"
   },
   "devDependencies": {
-    "@ovhcloud/ods-stencil-components": "^12.1.2",
+    "@ovhcloud/ods-stencil-components": "^12.1.3",
     "typescript": "4.7.4"
   }
 }

@@ -12,7 +12,6 @@ $breakpoint-sizes: (
   "xl": 87.5 // 1400px
 );
 
-// TODO Those cannot be used in media Queries and may now be redundant with static breakpoint defined in theming lib
 :root {
   @each $size, $value in $breakpoint-sizes {
     --ods-breakpoint-#{$size}: #{$value}em;

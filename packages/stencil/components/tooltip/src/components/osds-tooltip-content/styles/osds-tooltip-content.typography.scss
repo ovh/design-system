@@ -1,29 +1,16 @@
-@import '~@ovhcloud/ods-theming/mediaQueries/ods-media-queries';
 @import '~@ovhcloud/ods-theming/typography/ods-theming-typography';
 @import '~@ovhcloud/ods-theming/typography/ods-component-typography';
 @import './osds-tooltip-content.mixins';
 
 // Main CSS mixin for typography
 @mixin osds-tooltip-content-theme-typography() {
-  $breakpoint-xs: ods-get-breakpoint-value(xs);
-
   :host {
-    $typography-xs-properties: ods-get-typography-properties(body, '200');
-    font-family: ods-get-typography-property($typography-xs-properties, font-family);
-    font-size: ods-get-typography-property($typography-xs-properties, font-size);
-    font-style: ods-get-typography-property($typography-xs-properties, font-style);
-    font-weight: ods-get-typography-property($typography-xs-properties, font-weight);
-    letter-spacing: ods-get-typography-property($typography-xs-properties, letter-spacing);
-    line-height: ods-get-typography-property($typography-xs-properties, line-height);
-
-    @include ods-media-min-width($breakpoint-xs) {
-      $typography-properties: ods-get-typography-properties(body, '400');
-      font-family: ods-get-typography-property($typography-properties, font-family);
-      font-size: ods-get-typography-property($typography-properties, font-size);
-      font-style: ods-get-typography-property($typography-properties, font-style);
-      font-weight: ods-get-typography-property($typography-properties, font-weight);
-      letter-spacing: ods-get-typography-property($typography-properties, letter-spacing);
-      line-height: ods-get-typography-property($typography-properties, line-height);
-    }
+    $typography-properties: ods-get-typography-properties(body, '400');
+    font-family: ods-get-typography-property($typography-properties, font-family);
+    font-size: ods-get-typography-property($typography-properties, font-size);
+    font-style: ods-get-typography-property($typography-properties, font-style);
+    font-weight: ods-get-typography-property($typography-properties, font-weight);
+    letter-spacing: ods-get-typography-property($typography-properties, letter-spacing);
+    line-height: ods-get-typography-property($typography-properties, line-height);
   }
 }

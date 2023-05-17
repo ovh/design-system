@@ -23,4 +23,20 @@ describe('e2e:osds-collapsible', () => {
     expect(el).toHaveClass('hydrated');
   });
 
+  describe('toggle', () => {
+    it('should sync opened property and details open attribute', async () => {
+      let componentOpened: boolean;
+      await setup({attributes: { opened: false }});
+
+      componentOpened = await el.getProperty('opened');
+      expect(componentOpened).toBe(false);
+
+      el.setProperty('opened', true);
+      await page.waitForChanges();
+
+      componentOpened = await el.getProperty('opened');
+      expect(componentOpened).toBe(true);
+    });
+  });
+
 });

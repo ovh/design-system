@@ -25,6 +25,24 @@ describe('e2e:osds-collapsible', () => {
   }
 
   describe('screenshots', () => {
-    // Screenshot testing
+    [false, true].forEach((opened) => {
+      it(opened.toString(), async () => {
+        await setup({
+          attributes: {
+            opened,
+          },
+          html: `<span>Collapsible</span>`
+        });
+        await page.waitForChanges();
+
+        await page.evaluate(() => {
+          const element = document.querySelector('osds-collapsible') as HTMLElement;
+          return { width: element.clientWidth, height: element.clientHeight };
+        });
+        await page.setViewport({ width: 600, height:600 });
+        const results = await page.compareScreenshot('collapsible', { fullPage: false, omitBackground: true });
+        expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 })
+      });
+    });
   });
 });

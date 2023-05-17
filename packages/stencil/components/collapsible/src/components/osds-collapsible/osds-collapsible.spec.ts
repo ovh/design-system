@@ -67,12 +67,12 @@ describe('spec:osds-collapsible', () => {
 
   describe('controller', () => {
     it('should not call controller.onToggle init component', async () => {
-      await setup({attributes: { opened: false }});
+      await setup({ attributes: { opened: false } });
       expect(controller.onToggle).not.toHaveBeenCalled();
     });
 
     it('should call controller.onToggle on open changes', async () => {
-      await setup({attributes: { opened: false }});
+      await setup({ attributes: { opened: false } });
       instance.opened = true;
       expect(controller.onToggle).toHaveBeenCalledWith();
       expect(controller.onToggle).toHaveBeenCalledTimes(1);

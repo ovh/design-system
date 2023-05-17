@@ -1,8 +1,6 @@
-import { OdsCollapsibleAttributes } from '@ovhcloud/ods-core';
+import { OdsCollapsibleAttributes, odsCollapsibleDefaultAttributes } from '@ovhcloud/ods-core';
 
 /**
  * Base attributes value
  */
-export const odsCollapsibleBaseAttributes: OdsCollapsibleAttributes = {
-
-};
+export const odsCollapsibleBaseAttributes: OdsCollapsibleAttributes = odsCollapsibleDefaultAttributes;

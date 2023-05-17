@@ -15,7 +15,10 @@ defineCustomElements();
 
 /* Default story parameters  */
 const storyParams = {
-
+  opened: {
+    category: 'Général',
+    defaultValue: false,
+  },
 };
 
 export default {

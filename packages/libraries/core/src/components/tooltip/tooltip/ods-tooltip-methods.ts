@@ -5,4 +5,9 @@ export interface OdsTooltipMethods extends OdsComponentMethods {
    * Close the surface
    */
   closeSurface() : void;
+
+  /**
+   * set tab index on the component
+   */
+  setTabindex(value: number): void;
 }

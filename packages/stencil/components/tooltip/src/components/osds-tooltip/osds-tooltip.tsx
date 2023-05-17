@@ -1,4 +1,4 @@
-import { Component, Element, Host, h, Listen } from '@stencil/core';
+import { Component, Element, Host, h, Listen, State } from '@stencil/core';
 import {
   odsDebounce,
   OdsTooltip,
@@ -30,12 +30,17 @@ export class OsdsTooltip implements OdsTooltip<OdsStencilMethods<OdsTooltipMetho
 
   @Element() el!: HTMLStencilElement;
 
+  /**
+   * The tabindex of the tooltip anchor.
+   * @internal
+   */
+  @State() tabindex = 0;
+
   /** @see OdsTooltipAttributes.variant */
   @Prop({ reflect: true }) public variant?: OdsTooltipVariant = odsTooltipDefaultAttributes.variant;
 
   private debouncedHandleMouseEnter = odsDebounce(this.handleMouseEnter)
   private debouncedHandleMouseLeave = odsDebounce(this.handleMouseLeave)
-  private debouncedHandleTriggerFocus = odsDebounce(this.handleTriggerFocus)
 
   @Listen('click', { target: 'window' })
   checkForClickOutside(event: any) {
@@ -51,16 +56,29 @@ export class OsdsTooltip implements OdsTooltip<OdsStencilMethods<OdsTooltipMetho
     this.controller.closeSurface();
   }
 
+  /**
+   * @internal
+   * @see OdsTooltipMethods.setTabindex
+   */
+  @Method()
+  async setTabindex(value: number) {
+    this.tabindex = value;
+  }
+
   componentWillRender(): void {
     this.controller.validateAttributes();
   }
 
   handleMouseEnter(): void {
-    this.controller.handleMouseEnter()
+    this.controller.handleMouseEnter();
   }
 
   handleMouseLeave(): void {
-    this.controller.handleMouseLeave()
+    this.controller.handleMouseLeave();
+  }
+
+  handleTriggerBlur(): void {
+    this.controller.handleTriggerBlur();
   }
 
   handleTriggerClick() {
@@ -77,18 +95,18 @@ export class OsdsTooltip implements OdsTooltip<OdsStencilMethods<OdsTooltipMetho
 
   render() {
     return (
-      <Host role="tooltip">
-        <div class="tooltip-trigger"
-             ref={(el?: HTMLElement) => {
-          this.anchor = el as HTMLDivElement;
-          this.syncReferences()
-        }}
-             onClick={ () => this.handleTriggerClick() }
-             onFocus={ () => this.debouncedHandleTriggerFocus() }
-             onMouseEnter={ () => this.debouncedHandleMouseEnter() }
-             onMouseLeave={ () => this.debouncedHandleMouseLeave() }>
-          <slot></slot>
-        </div>
+      <Host role="tooltip"
+            ref={(el: HTMLElement | null) => {
+              this.anchor = el as HTMLDivElement;
+              this.syncReferences()
+            }}
+            onBlur={ () => this.handleTriggerBlur() }
+            onClick={ () => this.handleTriggerClick() }
+            onFocus={ () => this.handleTriggerFocus() }
+            onMouseEnter={ () => this.debouncedHandleMouseEnter() }
+            onMouseLeave={ () => this.debouncedHandleMouseLeave() }
+            tabindex={ this.tabindex }>
+        <slot></slot>
 
         <ocdk-surface ref={(el: HTMLElement) => {
           if (ocdkIsSurface(el)) {
@@ -97,7 +115,7 @@ export class OsdsTooltip implements OdsTooltip<OdsStencilMethods<OdsTooltipMetho
           }
         }}>
           <div class="tooltip-content">
-            <slot name={'tooltip-content'}></slot>
+            <slot name="tooltip-content"></slot>
           </div>
         </ocdk-surface>
       </Host>

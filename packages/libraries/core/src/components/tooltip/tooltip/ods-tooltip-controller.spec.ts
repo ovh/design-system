@@ -156,6 +156,33 @@ describe('spec:ods-tooltip-controller', () => {
       });
     });
 
+    describe('handleTriggerBlur', () => {
+      it('should do nothing if there is no surface', () => {
+        expect(() => {
+          controller.handleTriggerBlur();
+        }).not.toThrow();
+        expect(component.surface).toBeUndefined();
+      });
+
+      it('should do nothing if surface is closed', () => {
+        component.surface = new OcdkSurfaceMock() as unknown as OcdkSurface;
+        component.surface!.opened = false;
+
+        controller.handleTriggerBlur()
+
+        expect(component.surface.close).toHaveBeenCalledTimes(0);
+      });
+
+      it('should close the surface', () => {
+        component.surface = new OcdkSurfaceMock() as unknown as OcdkSurface;
+        component.surface!.opened = true;
+
+        controller.handleTriggerBlur();
+
+        expect(component.surface.close).toHaveBeenCalledTimes(1);
+      });
+    });
+
     describe('handleTriggerClick', () => {
       it('should do nothing if there is no surface', () => {
         expect(() => {

@@ -50,6 +50,13 @@ export class OdsTooltipController extends OdsComponentController<OdsTooltip> {
   }
 
   /**
+   * Handle blur event on Trigger
+   */
+  handleTriggerBlur(): void {
+    this.closeSurface();
+  }
+
+  /**
    * Handle click event on Trigger
    */
   handleTriggerClick(): void {

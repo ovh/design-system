@@ -17,10 +17,12 @@ export class OdsTooltipMock implements OdsTooltip<OdsTooltipMethods, OdsTooltipE
 
   handleMouseEnter = jest.fn();
   handleMouseLeave = jest.fn();
+  handleTriggerBlur = jest.fn();
   handleTriggerClick = jest.fn();
   handleTriggerFocus = jest.fn();
   checkForClickOutside = jest.fn();
   syncReferences = jest.fn();
 
   closeSurface = jest.fn();
+  setTabindex = jest.fn();
 }

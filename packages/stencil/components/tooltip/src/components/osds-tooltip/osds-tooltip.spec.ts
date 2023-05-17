@@ -130,6 +130,16 @@ describe('spec:osds-tooltip', () => {
       });
     });
 
+    describe('setTabindex', () => {
+      it('should set tabindex', async () => {
+        const dummyTabindex = 42;
+
+        await instance.setTabindex(dummyTabindex);
+
+        expect(instance.tabindex).toBe(dummyTabindex);
+      });
+    });
+
     describe('handleMouseEnter', () => {
       it('should call handleMouseEnter of controller', async () => {
         await instance.handleMouseEnter();
@@ -143,6 +153,14 @@ describe('spec:osds-tooltip', () => {
         await instance.handleMouseLeave();
 
         expect(controller.handleMouseLeave).toHaveBeenCalledTimes(1);
+      });
+    });
+
+    describe('handleTriggerBlur', () => {
+      it('should call handleTriggerBlur of controller', async () => {
+        await instance.handleTriggerBlur();
+
+        expect(controller.handleTriggerBlur).toHaveBeenCalledTimes(1);
       });
     });
 

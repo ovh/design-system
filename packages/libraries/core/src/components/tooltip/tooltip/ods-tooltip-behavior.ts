@@ -8,6 +8,7 @@ export interface OdsTooltipBehavior {
 
   handleMouseEnter(): void;
   handleMouseLeave(): void;
+  handleTriggerBlur(): void;
   handleTriggerClick(): void;
   handleTriggerFocus(): void;
   checkForClickOutside(event: { target: HTMLElement }): void;

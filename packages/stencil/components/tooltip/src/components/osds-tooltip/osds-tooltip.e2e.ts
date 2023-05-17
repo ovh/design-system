@@ -6,10 +6,11 @@ describe('e2e:osds-tooltip', () => {
   let page: E2EPage;
   let el: E2EElement;
   let anchorElement: E2EElement;
-  let tooltipSurface: E2EElement;
 
-  function isTooltipVisible(): boolean {
-    return !!tooltipSurface && tooltipSurface.getAttribute('opened') !== null
+  async function isTooltipVisible(): Promise<boolean> {
+    return await page.evaluate(() => {
+      return !! document.querySelector('osds-tooltip')?.shadowRoot?.querySelector('.ocdk-surface--open');
+    });
   }
 
   async function setup({ attributes = {}, extraContent = '' }: { attributes?: Partial<OdsTooltipAttributes>, extraContent?: string } = {}) {
@@ -30,14 +31,13 @@ describe('e2e:osds-tooltip', () => {
 
     el = await page.find('osds-tooltip');
     anchorElement = await page.find('osds-tooltip >>> .tooltip-trigger');
-    tooltipSurface = await page.find('osds-tooltip >>> ocdk-surface');
   }
 
   it('should render with tooltip hidden', async () => {
     await setup();
     expect(el).not.toBeNull();
     expect(el).toHaveClass('hydrated');
-    expect(isTooltipVisible()).toBe(false);
+    expect(await isTooltipVisible()).toBe(false);
   });
 
   it('should display the tooltip on anchor click', async () => {
@@ -45,20 +45,19 @@ describe('e2e:osds-tooltip', () => {
 
     await anchorElement.click();
 
-    expect(isTooltipVisible()).toBe(true);
+    expect(await isTooltipVisible()).toBe(true);
   });
 
-  //FIXME
-  xit('should toggle the tooltip on mouse hover/leave', async () => {
+  it('should toggle the tooltip on mouse hover/leave', async () => {
     await setup();
 
     await page.mouse.move(5, 5);
     await page.waitForTimeout(500) // wait for debounce to resolve
-    expect(isTooltipVisible()).toBe(true);
+    expect(await isTooltipVisible()).toBe(true);
 
     await page.mouse.move(500, 500);
     await page.waitForTimeout(500) // wait for debounce to resolve
-    expect(isTooltipVisible()).toBe(false);
+    expect(await isTooltipVisible()).toBe(false);
   });
 
   // FIXME
@@ -68,7 +67,7 @@ describe('e2e:osds-tooltip', () => {
     await anchorElement.focus();
     await page.waitForTimeout(500) // wait for debounce to resolve
 
-    expect(isTooltipVisible()).toBe(true);
+    expect(await isTooltipVisible()).toBe(true);
   });
 
   it('should close the tooltip on outside click', async () => {
@@ -76,9 +75,9 @@ describe('e2e:osds-tooltip', () => {
     const outsideElement = await page.find('button');
 
     await anchorElement.click();
-    expect(isTooltipVisible()).toBe(true);
+    expect(await isTooltipVisible()).toBe(true);
 
     await outsideElement.click();
-    expect(isTooltipVisible()).toBe(false);
+    expect(await isTooltipVisible()).toBe(false);
   });
 });

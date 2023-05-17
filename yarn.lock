@@ -5463,6 +5463,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-core@workspace:packages/libraries/core"
   dependencies:
+    "@ovhcloud/ods-cdk": ^12.1.0
     "@ovhcloud/ods-library-dev": ^12.1.0
     "@ovhcloud/ods-theming": ^12.1.0
   peerDependencies:

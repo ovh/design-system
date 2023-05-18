@@ -83,11 +83,14 @@ describe('spec:osds-pagination', () => {
 
     const componentDidUpdateSpy = jest.spyOn(instance, 'componentDidUpdate');
 
-    instance.componentDidUpdate();
+    document.activeElement = document.body;
+
+    await instance.componentDidUpdate();
 
     page.waitForChanges();
 
     expect(componentDidUpdateSpy).toBeCalled();
+    expect(componentDidUpdateSpy).toHaveBeenCalledTimes(1);
   });
 
   it('onCurrentChange', async () => {
@@ -159,6 +162,13 @@ describe('spec:osds-pagination', () => {
     instance.handlePreviousKeyDown(event, instance.current);
     expect(instance.current).toBe(1);
   });
+  it('handlePreviousKeyDown controller', async () => {
+    await setup({ attributes: { current: 2, total: 10 } });
+    instance.controller.handlePreviousKeyDown = jest.fn();
+    instance.handlePreviousKeyDown(new KeyboardEvent('keydown', { key: 'Enter' }), instance.current);
+    expect(instance.controller.handlePreviousKeyDown).toHaveBeenCalledTimes(1);
+    expect(instance.controller.handlePreviousKeyDown).toHaveBeenCalled();
+  });
   it('handlePreviousClick', async () => {
     await setup({ attributes: { current: 2, total: 10 } });
     expect(instance.handlePreviousClick).toBeTruthy();
@@ -171,6 +181,13 @@ describe('spec:osds-pagination', () => {
     const event = new KeyboardEvent('keyDown', { code: 'Space', keyCode: 32, bubbles: true });
     instance.handlePageKeyDown(event, 5);
     expect(instance.current).toBe(5);
+  });
+  it('handlePageKeyDown controller', async () => {
+    await setup({ attributes: { current: 2, total: 10 } });
+    instance.controller.handlePageKeyDown = jest.fn();
+    instance.handlePageKeyDown(new KeyboardEvent('keydown', { key: 'Enter' }), 5);
+    expect(instance.controller.handlePageKeyDown).toHaveBeenCalledTimes(1);
+    expect(instance.controller.handlePageKeyDown).toHaveBeenCalled();
   });
   it('handlePageClick', async () => {
     await setup({ attributes: { current: 2, total: 10 } });
@@ -185,6 +202,13 @@ describe('spec:osds-pagination', () => {
     const pageList = instance.controller.createPageList(instance.total, instance.current);
     instance.handleNextKeyDown(event, instance.current, pageList);
     expect(instance.current).toBe(3);
+  });
+  it('handleNextKeyDown controller', async () => {
+    await setup({ attributes: { current: 2, total: 10 } });
+    instance.controller.handleNextKeyDown = jest.fn();
+    instance.handleNextKeyDown(new KeyboardEvent('keydown', { key: 'Enter' }), instance.current, instance.controller.createPageList(instance.total, instance.current));
+    expect(instance.controller.handleNextKeyDown).toHaveBeenCalledTimes(1);
+    expect(instance.controller.handleNextKeyDown).toHaveBeenCalled();
   });
   it('handleNextClick', async () => {
     await setup({ attributes: { current: 2, total: 10 } });

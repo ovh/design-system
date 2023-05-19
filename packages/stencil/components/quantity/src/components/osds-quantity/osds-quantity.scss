@@ -8,7 +8,9 @@
   display: flex;
   flex-direction: row;
   --ods-input-text-align: center;
+  --ods-input-padding: 0;
 }
+
 :host([disabled]) {
   cursor: not-allowed;
 }

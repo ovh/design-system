@@ -21,6 +21,7 @@ describe('spec:osds-collapsible', () => {
   let root: HTMLElement | undefined;
   let instance: OsdsCollapsible;
   let controller: OdsCollapsibleController;
+  let mainSlot: HTMLElement;
 
   afterEach(() => {
     jest.clearAllMocks();
@@ -38,12 +39,20 @@ describe('spec:osds-collapsible', () => {
     root = page.root;
     instance = page.rootInstance;
     controller = (OdsCollapsibleController as unknown as jest.SpyInstance<OdsCollapsibleController, unknown[]>).mock.instances[0];
+    mainSlot = page.root.shadowRoot.querySelector('slot:not([name])');
   }
 
   it('should render', async () => {
     await setup({});
     expect(root?.shadowRoot).toBeTruthy();
     expect(instance).toBeTruthy();
+  });
+
+  describe('contents', () => {
+    it('should have a main slot', async () => {
+      await setup({ attributes: {} });
+      expect(mainSlot).toBeTruthy();
+    });
   });
 
   describe('attributes', () => {

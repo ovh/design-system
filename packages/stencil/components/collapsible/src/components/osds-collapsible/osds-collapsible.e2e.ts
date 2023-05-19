@@ -6,12 +6,12 @@ describe('e2e:osds-collapsible', () => {
   let page: E2EPage;
   let el: E2EElement;
 
-  async function setup({ attributes }: { attributes: Partial<OdsCollapsibleAttributes> }) {
+  async function setup({ attributes, html = '' }: { attributes: Partial<OdsCollapsibleAttributes>, html?: string }) {
     const minimalAttributes: OdsCollapsibleAttributes = OdsCreateAttributes(attributes, odsCollapsibleDefaultAttributes);
     const stringAttributes = OdsComponentAttributes2StringAttributes<OdsCollapsibleAttributes>(minimalAttributes, odsCollapsibleDefaultAttributes);
 
     page = await newE2EPage();
-    await page.setContent(`<osds-collapsible ${OdsStringAttributes2Str(stringAttributes)}></osds-collapsible>`);
+    await page.setContent(`<osds-collapsible ${OdsStringAttributes2Str(stringAttributes)}>${html}</osds-collapsible>`);
     await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
 
     el = await page.find('osds-collapsible');
@@ -24,7 +24,7 @@ describe('e2e:osds-collapsible', () => {
   });
 
   describe('toggle', () => {
-    it('should sync opened property and details open attribute', async () => {
+    it('should sync opened property opened attribute', async () => {
       let componentOpened: boolean;
       await setup({attributes: { opened: false }});
 

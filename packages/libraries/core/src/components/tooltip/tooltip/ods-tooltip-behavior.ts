@@ -2,8 +2,8 @@ import { OcdkSurface } from '@ovhcloud/ods-cdk';
 import { HTMLStencilElement } from '@stencil/core/internal';
 
 export interface OdsTooltipBehavior {
-  el: HTMLStencilElement;
   anchor: HTMLDivElement;
+  el: HTMLStencilElement;
   surface: OcdkSurface | undefined;
 
   handleMouseEnter(): void;

@@ -5439,7 +5439,6 @@ __metadata:
   resolution: "@ovhcloud/ods-cdk@workspace:packages/libraries/cdk"
   dependencies:
     "@ovhcloud/ods-library-dev": ^12.1.0
-    "@ovhcloud/ods-testing": ^12.1.0
     "@ovhcloud/ods-theming": ^12.1.0
     autoprefixer: ~10.3.7
     node-sass: ^8.0.0

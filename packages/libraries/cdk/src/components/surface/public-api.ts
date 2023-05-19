@@ -8,5 +8,6 @@ export * from './ocdk-surface.mock';
 export * from './ocdk-surface.tag';
 export * from './ocdk-surface';
 export * from './ocdk-surface-adapter';
+export * from './ocdk-surface-behaviour';
 export * from './ocdk-surface-controller';
 export * from './ocdk-surface-default-config';

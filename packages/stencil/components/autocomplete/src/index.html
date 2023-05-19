@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html dir='ltr' lang='en'>
+<head>
+  <meta charset='utf-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0' />
+  <title>Dev ods-autocomplete</title>
+
+  <script type="module">
+    !window.ods && (window.ods = {config: {logging: {active:true}}});
+  </script>
+
+  <script type='module' src='/build/osds-autocomplete.esm.js'></script>
+  <script nomodule src='/build/osds-autocomplete.js'></script>
+  <link rel="stylesheet" href="/build/osds-autocomplete.css">
+</head>
+<body>
+
+<osds-autocomplete>
+  <input type="text" style="background: transparent; border: none; outline: none" placeholder="Search..." />
+</osds-autocomplete>
+
+<script>
+  document.querySelectorAll('ods-autocomplete').forEach((elem) => {});
+  const testArr = ['the', 'valid', 'strings', 'for', 'search', 'auto', 'complete', 'foo', 'bar'];
+  document.querySelector('osds-autocomplete').items = testArr;
+</script>
+</body>
+</html>

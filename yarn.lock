@@ -5619,6 +5619,46 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-stencil-autocomplete-react@workspace:packages/stencil/components/autocomplete/react":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-stencil-autocomplete-react@workspace:packages/stencil/components/autocomplete/react"
+  dependencies:
+    "@ovhcloud/ods-stencil-autocomplete": ^12.0.5
+    "@types/react": 17.0.37
+    "@types/react-dom": 17.0.11
+    react: 16.14.0
+    react-dom: 16.14.0
+    rimraf: ^3.0.2
+    tslib: "*"
+    typescript: 4.7.4
+  peerDependencies:
+    react: ">=16.8.6"
+    react-dom: ">=16.8.6"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-stencil-autocomplete-vue@workspace:packages/stencil/components/autocomplete/vue":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-stencil-autocomplete-vue@workspace:packages/stencil/components/autocomplete/vue"
+  dependencies:
+    "@ovhcloud/ods-stencil-autocomplete": ^12.0.5
+    rimraf: ^3.0.2
+    typescript: 4.7.4
+    vue: ^3.2.41
+  peerDependencies:
+    vue: ">=3"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-stencil-autocomplete@^12.0.5, @ovhcloud/ods-stencil-autocomplete@workspace:packages/stencil/components/autocomplete":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-stencil-autocomplete@workspace:packages/stencil/components/autocomplete"
+  dependencies:
+    "@ovhcloud/ods-stencil-component": ^12.0.5
+    "@ovhcloud/ods-stencil-component-dev": ^12.0.5
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-stencil-button-react@workspace:packages/stencil/components/button/react":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-button-react@workspace:packages/stencil/components/button/react"
@@ -5864,7 +5904,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-component-dev@^12.1.0, @ovhcloud/ods-stencil-component-dev@workspace:packages/stencil/libraries/stencil-component-dev":
+"@ovhcloud/ods-stencil-component-dev@^12.0.5, @ovhcloud/ods-stencil-component-dev@^12.1.0, @ovhcloud/ods-stencil-component-dev@workspace:packages/stencil/libraries/stencil-component-dev":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-component-dev@workspace:packages/stencil/libraries/stencil-component-dev"
   dependencies:
@@ -5886,7 +5926,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-component@^12.1.0, @ovhcloud/ods-stencil-component@workspace:packages/stencil/libraries/stencil-component":
+"@ovhcloud/ods-stencil-component@^12.0.5, @ovhcloud/ods-stencil-component@^12.1.0, @ovhcloud/ods-stencil-component@workspace:packages/stencil/libraries/stencil-component":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-component@workspace:packages/stencil/libraries/stencil-component"
   dependencies:

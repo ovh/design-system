@@ -5,10 +5,9 @@ import { OdsCreateAttributes, OdsStringAttributes2Str, odsTooltipBaseAttributes 
 describe('e2e:osds-tooltip', () => {
   let page: E2EPage;
   let el: E2EElement;
-  // let anchorElement: E2EElement;
 
   async function isTooltipVisible(): Promise<boolean> {
-    return await page.evaluate(() => {
+    return page.evaluate(() => {
       return !! document.querySelector('osds-tooltip')?.shadowRoot?.querySelector('.ocdk-surface--open');
     });
   }
@@ -30,7 +29,6 @@ describe('e2e:osds-tooltip', () => {
     await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
 
     el = await page.find('osds-tooltip');
-    // anchorElement = await page.find('osds-tooltip'); //TODO
   }
 
   it('should render with tooltip hidden', async () => {

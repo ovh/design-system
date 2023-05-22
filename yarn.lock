@@ -5864,7 +5864,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-<<<<<<< HEAD
 "@ovhcloud/ods-stencil-collapsible-react@workspace:packages/stencil/components/collapsible/react":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-collapsible-react@workspace:packages/stencil/components/collapsible/react"
@@ -5905,8 +5904,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-=======
->>>>>>> fd3dc10 (feat(tooltip): generate files from template)
 "@ovhcloud/ods-stencil-component-dev@^12.0.5, @ovhcloud/ods-stencil-component-dev@^12.1.0, @ovhcloud/ods-stencil-component-dev@workspace:packages/stencil/libraries/stencil-component-dev":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-component-dev@workspace:packages/stencil/libraries/stencil-component-dev"

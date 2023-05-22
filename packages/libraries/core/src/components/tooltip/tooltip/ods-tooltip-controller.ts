@@ -21,9 +21,9 @@ export class OdsTooltipController extends OdsComponentController<OdsTooltip> {
   checkForClickOutside(event: { target: HTMLElement }): void {
     if (this.component.surface === undefined || !this.component.surface.opened || this.component.el.contains(event.target)) {
       return;
-    } else {
-      this.component.surface.close();
     }
+
+    this.component.surface.close();
   }
 
   /**

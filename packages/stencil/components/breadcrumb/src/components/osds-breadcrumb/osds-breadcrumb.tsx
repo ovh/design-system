@@ -1,17 +1,8 @@
-import { Component, Element, Host, h, Prop, State, Event, Listen, Watch, EventEmitter } from '@stencil/core';
-import {
-  OdsBreadcrumb,
-  OdsBreadcrumbController,
-  OdsBreadcrumbEvents,
-  OdsBreadcrumbMethods,
-  odsBreadcrumbDefaultAttributes,
-  OdsBreadcrumbClickEventDetail,
-} from '@ovhcloud/ods-core';
+import { Component, Element, Host, h, State, Prop, Listen } from '@stencil/core';
+import { OdsBreadcrumb, OdsBreadcrumbController, odsBreadcrumbDefaultAttributes, OdsBreadcrumbEvents, OdsBreadcrumbMethods, OdsIconName, OdsIconSize } from '@ovhcloud/ods-core';
 import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libraries/stencil-core';
+import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 
-/**
- * @slot (unnamed) - Breadcrumb content
- */
 @Component({
   tag: 'osds-breadcrumb',
   styleUrl: 'osds-breadcrumb.scss',
@@ -21,82 +12,63 @@ export class OsdsBreadcrumb implements OdsBreadcrumb<OdsStencilMethods<OdsBreadc
   controller: OdsBreadcrumbController = new OdsBreadcrumbController(this);
   @Element() el!: HTMLElement;
 
-  /** @see odsBreadcrumbDefaultAttributes.maxItems */
-  @Prop({ reflect: true }) public maxItems = odsBreadcrumbDefaultAttributes.maxItems;
-  /** @see odsBreadcrumbDefaultAttributes.itemBeforeCollapse */
-  @Prop({ reflect: true }) public itemBeforeCollapse = odsBreadcrumbDefaultAttributes.itemBeforeCollapse;
-  /** @see odsBreadcrumbDefaultAttributes.itemAfterCollapse */
-  @Prop({ reflect: true }) public itemAfterCollapse = odsBreadcrumbDefaultAttributes.itemAfterCollapse;
+  /** @see odsBreadcrumbDefaultAttributes.collapsed */
+  @Prop({ reflect: true, mutable: true }) collapsed = odsBreadcrumbDefaultAttributes.collapsed;
 
-  @State() collapsed!: boolean;
-  @State() activeChanged!: boolean;
-
-  /** @see OdsSelectEvents.odsValueChange */
-  @Event() odsValueChange!: EventEmitter<OdsBreadcrumbClickEventDetail>;
-  @Event() collapsedClick!: EventEmitter<OdsBreadcrumbClickEventDetail>;
-
-  @Listen('collapsedClick')
-  /**
-   * @see OdsBreadcrumbBehavior.beforeRender
-   */
-  onCollapsedClick(ev: CustomEvent) {
-    const items = this.getBreadcrumbItems();
-    const collapsedBreadcrumbs = items.filter((item: any) => item?.collapsed);
-    this.collapsedClick.emit({ ...ev.detail, collapsedBreadcrumbs });
-  }
-  @Watch('maxItems')
-  @Watch('itemBeforeCollapse')
-  @Watch('itemAfterCollapse')
-  maxItemsChanged() {
-    this.resetActiveBreadcrumbItem();
-    this.breadcrumbInit();
-  }
+  @State() breadcrumbArray: Array<Element> = [];
 
   componentWillLoad() {
-    this.breadcrumbInit();
+    const items = this.getBreadcrumbItems();
+    this.breadcrumbInit(items);
   }
 
-  private breadcrumbInit = () => {
-    const items = this.getBreadcrumbItems();
-    this.setMaxItems(items);
+  private breadcrumbInit = (items: Array<Element>) => {
+    this.breadcrumbArray = items;
   };
 
-  private resetActiveBreadcrumbItem = () => {
-    //const breadcrumbItems = this.getBreadcrumbItems();
-    // Only reset the active breadcrumb-item if we were the ones to change it
-    // otherwise use the one set on the component
-    /*  const activeBreadcrumb = breadcrumbItems.find((breadcrumbItem: any) => breadcrumbItem.active);
-    if (activeBreadcrumb && this.activeChanged) {
-      activeBreadcrumb.active = false;
-    } */
-  };
-
-  private setMaxItems = (items: any) => {
-    if (items.length > 4) {
-      items[(items.length - 1) / 2].showCollapsedIndicator = true;
-      items.map((item: any, index: any) => {
-        if (index !== 0 && (index !== items.length - 1)) {
-            item.displayed = false;
-        }
-        return item;
-      });
-    }
-  };
-
+  // function to get the array of osds-breadcrumb-item
   private getBreadcrumbItems = () => {
     return Array.from(this.el.querySelectorAll('osds-breadcrumb-item'));
   };
 
-  private slotChanged = () => {
-    this.resetActiveBreadcrumbItem();
-    this.breadcrumbInit();
+  toggleCollapsed = () => {
+    this.controller.toggleCollapsed();
   };
+
+  @Listen('keydown')
+  handleKeyDown(event: KeyboardEvent) {
+    if (event.key === 'enter' || event.key === ' ') {
+      this.toggleCollapsed();
+    }
+  }
+  @Listen('click')
+  handleLinkClick() {
+    this.toggleCollapsed();
+  }
 
   render() {
     return (
       <Host role="navigation">
         <ul>
-          <slot onSlotchange={this.slotChanged}></slot>
+          {this.breadcrumbArray.length > 4 && !this.collapsed ? (
+            <span>
+              <span innerHTML={this.breadcrumbArray?.[0].innerHTML} />
+              <span>
+                <osds-link onClick={this.handleLinkClick}>
+                  <osds-icon
+                    {...{
+                      name: OdsIconName.ELLIPSIS,
+                      size: OdsIconSize.xxs,
+                      color: 'primary' as OdsThemeColorIntent,
+                    }}
+                  ></osds-icon>
+                </osds-link>
+              </span>
+              <span innerHTML={this.breadcrumbArray?.[this.breadcrumbArray.length - 1].innerHTML} />
+            </span>
+          ) : (
+            <slot></slot>
+          )}
         </ul>
       </Host>
     );

@@ -3,7 +3,17 @@ import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 import { createTag } from '../../core/componentHTMLUtils';
-import { ODS_COUNTRY_ISO_CODE, OdsCheckboxButtonSize, OdsDividerSize, OdsIconName, OdsRadioButtonSize, OdsTextLevel, OdsTextSize, olesIpsum, OlesIpsumGeneration } from '@ovhcloud/ods-core';
+import {
+  ODS_COUNTRY_ISO_CODE,
+  OdsCheckboxButtonSize,
+  OdsDividerSize,
+  OdsIconName,
+  OdsRadioButtonSize,
+  OdsTextLevel,
+  OdsTextSize,
+  olesIpsum,
+  OlesIpsumGeneration,
+} from '@ovhcloud/ods-core';
 
 /* AllComponents story parameters  */
 export default {
@@ -46,6 +56,23 @@ const allComponents = [
     },
     slots: {
       DEFAULT: `Button`,
+    },
+  },
+  {
+    tag: 'osds-breadcrumb',
+    url: '/?path=/story/ui-components-breadcrumb-atom-web-component--default',
+    attributes: {
+      color: OdsThemeColorIntent.primary,
+    },
+    slots: {
+      DEFAULT: `
+      <osds-breadcrumb>
+      <osds-breadcrumb-item>
+        <osds-link color="primary" href="home"> Home </osds-link>
+      </osds-breadcrumb-item>
+      <osds-breadcrumb-item><osds-link color="primary" href="item1">Item 1</osds-link></osds-breadcrumb-item>
+      <osds-breadcrumb-item><osds-text>Item active</osds-text></osds-breadcrumb-item>
+    </osds-breadcrumb>`,
     },
   },
   {

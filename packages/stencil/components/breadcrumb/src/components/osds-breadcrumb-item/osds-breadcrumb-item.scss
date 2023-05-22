@@ -8,39 +8,7 @@
 // CSS targeted only for this component
 // /!\ for theming purposes, it has to be done in theming files
 // (i.e. packages/libraries/theming/...)
-:host {
-}
-
-:host([attribute]) {
-}
-
-:host([displayed]) {
-  // background-color: pink !important;
-  display: inline-block;
-}
-:host([show-collapsed-indicator]) {
-  //background-color: yellow !important;
-  display: inline-block;
-}
-
-:host {
-  display: none;
-  overflow: hidden;
-}
-
-
-// apply the theme template for the component
-@include ods-theme-component() {
-  @include osds-breadcrumb-item-theme-color();
-  @include osds-breadcrumb-item-theme-size();
-  @include osds-breadcrumb-item-theme-typography();
-}
 
 li {
-  list-style: none;
   display: inline-block;
-}
-
-.ellipsis {
-  cursor: 'pointer';
 }

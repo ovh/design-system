@@ -104,19 +104,6 @@ const TemplateDefault = (args: any) => html`
     ${unsafeHTML(args.buttonContent || 'Button')}
     <span slot="end">${unsafeHTML(args.end)}</span>
   </osds-button>
-
-
-  <osds-button ...=${getTagAttributes(args)}>
-    <span slot="start"><osds-icon size="sm" name="plus" color="${args.color}" contrasted></osds-icon></span>
-    Button
-  </osds-button>
-
-
-  <osds-button ...=${getTagAttributes(args)}>
-    <span slot="start"></span>
-    Button
-    <span slot="end"><osds-icon size="sm" name="plus" color="${args.color}" contrasted></osds-icon></span>
-  </osds-button>
 `;
 export const Default = TemplateDefault.bind({});
 Default.args = {

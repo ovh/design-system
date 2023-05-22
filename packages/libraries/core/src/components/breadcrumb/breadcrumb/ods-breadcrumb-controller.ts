@@ -12,6 +12,9 @@ export class OdsBreadcrumbController extends OdsComponentController<OdsBreadcrum
     super(component);
   }
 
+  toggleCollapsed() {
+    this.component.collapsed = !this.component.collapsed;
+  }
   /**
    * Attributes validation documentation
    */

@@ -3627,6 +3627,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@gar/promisify@npm:^1.1.3":
+  version: 1.1.3
+  resolution: "@gar/promisify@npm:1.1.3"
+  checksum: 4059f790e2d07bf3c3ff3e0fec0daa8144fe35c1f6e0111c9921bd32106adaa97a4ab096ad7dab1e28ee6a9060083c4d1a4ada42a7f5f3f7a96b8812e2b757c1
+  languageName: node
+  linkType: hard
+
 "@hapi/address@npm:2.x.x":
   version: 2.1.4
   resolution: "@hapi/address@npm:2.1.4"
@@ -5247,6 +5254,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@npmcli/fs@npm:^2.1.0":
+  version: 2.1.2
+  resolution: "@npmcli/fs@npm:2.1.2"
+  dependencies:
+    "@gar/promisify": ^1.1.3
+    semver: ^7.3.5
+  checksum: 405074965e72d4c9d728931b64d2d38e6ea12066d4fad651ac253d175e413c06fe4350970c783db0d749181da8fe49c42d3880bd1cbc12cd68e3a7964d820225
+  languageName: node
+  linkType: hard
+
 "@npmcli/move-file@npm:^1.0.1":
   version: 1.1.2
   resolution: "@npmcli/move-file@npm:1.1.2"
@@ -5254,6 +5271,16 @@ __metadata:
     mkdirp: ^1.0.4
     rimraf: ^3.0.2
   checksum: c96381d4a37448ea280951e46233f7e541058cf57a57d4094dd4bdcaae43fa5872b5f2eb6bfb004591a68e29c5877abe3cdc210cb3588cbf20ab2877f31a7de7
+  languageName: node
+  linkType: hard
+
+"@npmcli/move-file@npm:^2.0.0":
+  version: 2.0.1
+  resolution: "@npmcli/move-file@npm:2.0.1"
+  dependencies:
+    mkdirp: ^1.0.4
+    rimraf: ^3.0.2
+  checksum: 52dc02259d98da517fae4cb3a0a3850227bdae4939dda1980b788a7670636ca2b4a01b58df03dd5f65c1e3cb70c50fa8ce5762b582b3f499ec30ee5ce1fd9380
   languageName: node
   linkType: hard
 
@@ -5401,21 +5428,21 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-cdk-dev@workspace:packages/libraries/cdk/dev"
   dependencies:
-    "@ovhcloud/ods-cdk": ^11.0.1
-    "@ovhcloud/ods-stencil-component": ^11.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^11.0.1
+    "@ovhcloud/ods-cdk": ^12.1.0
+    "@ovhcloud/ods-stencil-component": ^12.1.0
+    "@ovhcloud/ods-stencil-component-dev": ^12.1.0
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-cdk@^11.0.1, @ovhcloud/ods-cdk@workspace:packages/libraries/cdk":
+"@ovhcloud/ods-cdk@^12.1.0, @ovhcloud/ods-cdk@workspace:packages/libraries/cdk":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-cdk@workspace:packages/libraries/cdk"
   dependencies:
-    "@ovhcloud/ods-library-dev": ^11.0.1
-    "@ovhcloud/ods-testing": ^11.0.1
-    "@ovhcloud/ods-theming": ^11.0.1
+    "@ovhcloud/ods-library-dev": ^12.1.0
+    "@ovhcloud/ods-testing": ^12.1.0
+    "@ovhcloud/ods-theming": ^12.1.0
     autoprefixer: ~10.3.7
-    node-sass: ^6.0.1
+    node-sass: ^8.0.0
     postcss: ^8.3.9
     postcss-cli: ^9.0.1
     postcss-scss: ^4.0.1
@@ -5432,18 +5459,18 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-core@^11.0.1, @ovhcloud/ods-core@workspace:packages/libraries/core":
+"@ovhcloud/ods-core@^12.1.0, @ovhcloud/ods-core@workspace:packages/libraries/core":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-core@workspace:packages/libraries/core"
   dependencies:
-    "@ovhcloud/ods-library-dev": ^11.0.1
-    "@ovhcloud/ods-theming": ^11.0.1
+    "@ovhcloud/ods-library-dev": ^12.1.0
+    "@ovhcloud/ods-theming": ^12.1.0
   peerDependencies:
     "@ovhcloud/ods-theming": ">=2"
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-design@^11.0.1, @ovhcloud/ods-design@workspace:packages/design":
+"@ovhcloud/ods-design@^12.1.0, @ovhcloud/ods-design@workspace:packages/design":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-design@workspace:packages/design"
   languageName: unknown
@@ -5465,13 +5492,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-guide@^11.0.1, @ovhcloud/ods-guide@workspace:packages/guide":
+"@ovhcloud/ods-guide@^12.1.0, @ovhcloud/ods-guide@workspace:packages/guide":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-guide@workspace:packages/guide"
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-library-dev@^11.0.1, @ovhcloud/ods-library-dev@workspace:packages/libraries/library-dev":
+"@ovhcloud/ods-library-dev@^12.1.0, @ovhcloud/ods-library-dev@workspace:packages/libraries/library-dev":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-library-dev@workspace:packages/libraries/library-dev"
   dependencies:
@@ -5486,28 +5513,29 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-specifications@^11.0.1, @ovhcloud/ods-specifications@workspace:packages/specifications":
+"@ovhcloud/ods-specifications@^12.1.0, @ovhcloud/ods-specifications@workspace:packages/specifications":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-specifications@workspace:packages/specifications"
   dependencies:
-    "@ovhcloud/ods-design": ^11.0.1
+    "@ovhcloud/ods-design": ^12.1.0
     typescript: 4.7.4
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-starter-react-vite@^11.0.1, @ovhcloud/ods-starter-react-vite@workspace:packages/starters/react-vite":
+"@ovhcloud/ods-starter-react-vite@^12.1.0, @ovhcloud/ods-starter-react-vite@workspace:packages/starters/react-vite":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-starter-react-vite@workspace:packages/starters/react-vite"
   dependencies:
-    "@ovhcloud/ods-core": ^11.0.1
-    "@ovhcloud/ods-stencil": ^11.0.1
-    "@ovhcloud/ods-theme-blue-jeans": ^11.0.1
-    "@ovhcloud/ods-theming": ^11.0.1
+    "@ovhcloud/ods-core": ^12.1.0
+    "@ovhcloud/ods-stencil": ^12.1.0
+    "@ovhcloud/ods-theme-blue-jeans": ^12.1.0
+    "@ovhcloud/ods-theming": ^12.1.0
     "@types/react": ^18.0.17
     "@types/react-dom": ^18.0.6
     "@vitejs/plugin-react": ^2.1.0
     react: ^18.2.0
     react-dom: ^18.2.0
+    react-router-dom: ^6.10.0
     tslib: "*"
     typescript: ^4.6.4
     vite: ^3.1.0
@@ -5515,14 +5543,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-starter-react@^11.0.1, @ovhcloud/ods-starter-react@workspace:packages/starters/react":
+"@ovhcloud/ods-starter-react@^12.1.0, @ovhcloud/ods-starter-react@workspace:packages/starters/react":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-starter-react@workspace:packages/starters/react"
   dependencies:
-    "@ovhcloud/ods-core": ^11.0.1
-    "@ovhcloud/ods-stencil": ^11.0.1
-    "@ovhcloud/ods-theme-blue-jeans": ^11.0.1
-    "@ovhcloud/ods-theming": ^11.0.1
+    "@ovhcloud/ods-core": ^12.1.0
+    "@ovhcloud/ods-stencil": ^12.1.0
+    "@ovhcloud/ods-theme-blue-jeans": ^12.1.0
+    "@ovhcloud/ods-theming": ^12.1.0
     "@types/react": 17.0.37
     "@types/react-dom": 17.0.11
     react: 16.14.0
@@ -5536,10 +5564,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-starter-vue-vite@workspace:packages/starters/vue-vite"
   dependencies:
-    "@ovhcloud/ods-core": ^11.0.1
-    "@ovhcloud/ods-stencil": ^11.0.1
-    "@ovhcloud/ods-theme-blue-jeans": ^11.0.1
-    "@ovhcloud/ods-theming": ^11.0.1
+    "@ovhcloud/ods-core": ^12.1.0
+    "@ovhcloud/ods-stencil": ^12.1.0
+    "@ovhcloud/ods-theme-blue-jeans": ^12.1.0
+    "@ovhcloud/ods-theming": ^12.1.0
     "@vitejs/plugin-vue": ^3.1.0
     "@vue/cli-service": ^5.0.8
     typescript: ^4.6.4
@@ -5553,7 +5581,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-accordion-react@workspace:packages/stencil/components/accordion/react"
   dependencies:
-    "@ovhcloud/ods-stencil-button": ^11.0.1
+    "@ovhcloud/ods-stencil-button": ^12.1.0
     "@types/react": 17.0.37
     "@types/react-dom": 17.0.11
     react: 16.14.0
@@ -5571,7 +5599,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-accordion-vue@workspace:packages/stencil/components/accordion/vue"
   dependencies:
-    "@ovhcloud/ods-stencil-accordion": ^11.0.1
+    "@ovhcloud/ods-stencil-accordion": ^12.1.0
     rimraf: ^3.0.2
     typescript: 4.7.4
     vue: ^3.2.41
@@ -5580,12 +5608,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-accordion@^11.0.1, @ovhcloud/ods-stencil-accordion@workspace:packages/stencil/components/accordion":
+"@ovhcloud/ods-stencil-accordion@^12.1.0, @ovhcloud/ods-stencil-accordion@workspace:packages/stencil/components/accordion":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-accordion@workspace:packages/stencil/components/accordion"
   dependencies:
-    "@ovhcloud/ods-stencil-component": ^11.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^11.0.1
+    "@ovhcloud/ods-stencil-component": ^12.1.0
+    "@ovhcloud/ods-stencil-component-dev": ^12.1.0
   peerDependencies:
     "@ovhcloud/ods-stencil-icon": ">=9.0"
   languageName: unknown
@@ -5595,7 +5623,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-breadcrumb-react@workspace:packages/stencil/components/breadcrumb/react"
   dependencies:
-    "@ovhcloud/ods-stencil-breadcrumb": ^11.0.1
+    "@ovhcloud/ods-stencil-breadcrumb": ^12.1.0
     "@types/react": 17.0.37
     "@types/react-dom": 17.0.11
     react: 16.14.0
@@ -5613,7 +5641,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-breadcrumb-vue@workspace:packages/stencil/components/breadcrumb/vue"
   dependencies:
-    "@ovhcloud/ods-stencil-breadcrumb": ^11.0.1
+    "@ovhcloud/ods-stencil-breadcrumb": ^12.1.0
     rimraf: ^3.0.2
     typescript: 4.7.4
     vue: ^3.2.41
@@ -5622,12 +5650,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-breadcrumb@^11.0.1, @ovhcloud/ods-stencil-breadcrumb@workspace:packages/stencil/components/breadcrumb":
+"@ovhcloud/ods-stencil-breadcrumb@^12.1.0, @ovhcloud/ods-stencil-breadcrumb@workspace:packages/stencil/components/breadcrumb":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-breadcrumb@workspace:packages/stencil/components/breadcrumb"
   dependencies:
-    "@ovhcloud/ods-stencil-component": ^11.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^11.0.1
+    "@ovhcloud/ods-stencil-component": ^12.1.0
+    "@ovhcloud/ods-stencil-component-dev": ^12.1.0
   languageName: unknown
   linkType: soft
 
@@ -5635,7 +5663,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-button-react@workspace:packages/stencil/components/button/react"
   dependencies:
-    "@ovhcloud/ods-stencil-button": ^11.0.1
+    "@ovhcloud/ods-stencil-button": ^12.1.0
     "@types/react": 17.0.37
     "@types/react-dom": 17.0.11
     react: 16.14.0
@@ -5653,7 +5681,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-button-vue@workspace:packages/stencil/components/button/vue"
   dependencies:
-    "@ovhcloud/ods-stencil-button": ^11.0.1
+    "@ovhcloud/ods-stencil-button": ^12.1.0
     rimraf: ^3.0.2
     typescript: 4.7.4
     vue: ^3.2.41
@@ -5662,12 +5690,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-button@^11.0.1, @ovhcloud/ods-stencil-button@workspace:packages/stencil/components/button":
+"@ovhcloud/ods-stencil-button@^12.1.0, @ovhcloud/ods-stencil-button@workspace:packages/stencil/components/button":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-button@workspace:packages/stencil/components/button"
   dependencies:
-    "@ovhcloud/ods-stencil-component": ^11.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^11.0.1
+    "@ovhcloud/ods-stencil-component": ^12.1.0
+    "@ovhcloud/ods-stencil-component-dev": ^12.1.0
   languageName: unknown
   linkType: soft
 
@@ -5675,7 +5703,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-cart-react@workspace:packages/stencil/components/cart/react"
   dependencies:
-    "@ovhcloud/ods-stencil-cart": ^11.0.1
+    "@ovhcloud/ods-stencil-cart": ^12.1.0
     "@types/react": 17.0.37
     "@types/react-dom": 17.0.11
     react: 16.14.0
@@ -5693,7 +5721,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-cart-vue@workspace:packages/stencil/components/cart/vue"
   dependencies:
-    "@ovhcloud/ods-stencil-cart": ^11.0.1
+    "@ovhcloud/ods-stencil-cart": ^12.1.0
     rimraf: ^3.0.2
     typescript: 4.7.4
     vue: ^3.2.41
@@ -5702,12 +5730,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-cart@^11.0.1, @ovhcloud/ods-stencil-cart@workspace:packages/stencil/components/cart":
+"@ovhcloud/ods-stencil-cart@^12.1.0, @ovhcloud/ods-stencil-cart@workspace:packages/stencil/components/cart":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-cart@workspace:packages/stencil/components/cart"
   dependencies:
-    "@ovhcloud/ods-stencil-component": ^11.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^11.0.1
+    "@ovhcloud/ods-stencil-component": ^12.1.0
+    "@ovhcloud/ods-stencil-component-dev": ^12.1.0
   languageName: unknown
   linkType: soft
 
@@ -5715,7 +5743,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-checkbox-button-react@workspace:packages/stencil/components/checkbox-button/react"
   dependencies:
-    "@ovhcloud/ods-stencil-cart": ^11.0.1
+    "@ovhcloud/ods-stencil-cart": ^12.1.0
     "@types/react": 17.0.37
     "@types/react-dom": 17.0.11
     react: 16.14.0
@@ -5733,7 +5761,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-checkbox-button-vue@workspace:packages/stencil/components/checkbox-button/vue"
   dependencies:
-    "@ovhcloud/ods-stencil-checkbox-button": ^11.0.1
+    "@ovhcloud/ods-stencil-checkbox-button": ^12.1.0
     rimraf: ^3.0.2
     typescript: 4.7.4
     vue: ^3.2.41
@@ -5742,12 +5770,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-checkbox-button@^11.0.1, @ovhcloud/ods-stencil-checkbox-button@workspace:packages/stencil/components/checkbox-button":
+"@ovhcloud/ods-stencil-checkbox-button@^12.1.0, @ovhcloud/ods-stencil-checkbox-button@workspace:packages/stencil/components/checkbox-button":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-checkbox-button@workspace:packages/stencil/components/checkbox-button"
   dependencies:
-    "@ovhcloud/ods-stencil-component": ^11.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^11.0.1
+    "@ovhcloud/ods-stencil-component": ^12.1.0
+    "@ovhcloud/ods-stencil-component-dev": ^12.1.0
   languageName: unknown
   linkType: soft
 
@@ -5755,7 +5783,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-checkbox-react@workspace:packages/stencil/components/checkbox/react"
   dependencies:
-    "@ovhcloud/ods-stencil-cart": ^11.0.1
+    "@ovhcloud/ods-stencil-cart": ^12.1.0
     "@types/react": 17.0.37
     "@types/react-dom": 17.0.11
     react: 16.14.0
@@ -5773,7 +5801,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-checkbox-vue@workspace:packages/stencil/components/checkbox/vue"
   dependencies:
-    "@ovhcloud/ods-stencil-checkbox": ^11.0.1
+    "@ovhcloud/ods-stencil-checkbox": ^12.1.0
     rimraf: ^3.0.2
     typescript: 4.7.4
     vue: ^3.2.41
@@ -5782,12 +5810,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-checkbox@^11.0.1, @ovhcloud/ods-stencil-checkbox@workspace:packages/stencil/components/checkbox":
+"@ovhcloud/ods-stencil-checkbox@^12.1.0, @ovhcloud/ods-stencil-checkbox@workspace:packages/stencil/components/checkbox":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-checkbox@workspace:packages/stencil/components/checkbox"
   dependencies:
-    "@ovhcloud/ods-stencil-component": ^11.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^11.0.1
+    "@ovhcloud/ods-stencil-component": ^12.1.0
+    "@ovhcloud/ods-stencil-component-dev": ^12.1.0
   languageName: unknown
   linkType: soft
 
@@ -5795,7 +5823,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-chip-react@workspace:packages/stencil/components/chip/react"
   dependencies:
-    "@ovhcloud/ods-stencil-cart": ^11.0.1
+    "@ovhcloud/ods-stencil-cart": ^12.1.0
     "@types/react": 17.0.37
     "@types/react-dom": 17.0.11
     react: 16.14.0
@@ -5813,7 +5841,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-chip-vue@workspace:packages/stencil/components/chip/vue"
   dependencies:
-    "@ovhcloud/ods-stencil-chip": ^11.0.1
+    "@ovhcloud/ods-stencil-chip": ^12.1.0
     rimraf: ^3.0.2
     typescript: 4.7.4
     vue: ^3.2.41
@@ -5822,12 +5850,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-chip@^11.0.1, @ovhcloud/ods-stencil-chip@workspace:packages/stencil/components/chip":
+"@ovhcloud/ods-stencil-chip@^12.1.0, @ovhcloud/ods-stencil-chip@workspace:packages/stencil/components/chip":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-chip@workspace:packages/stencil/components/chip"
   dependencies:
-    "@ovhcloud/ods-stencil-component": ^11.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^11.0.1
+    "@ovhcloud/ods-stencil-component": ^12.1.0
+    "@ovhcloud/ods-stencil-component-dev": ^12.1.0
   languageName: unknown
   linkType: soft
 
@@ -5835,7 +5863,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-code-react@workspace:packages/stencil/components/code/react"
   dependencies:
-    "@ovhcloud/ods-stencil-icon": ^11.0.1
+    "@ovhcloud/ods-stencil-icon": ^12.1.0
     "@types/react": 17.0.37
     "@types/react-dom": 17.0.11
     react: 16.14.0
@@ -5853,7 +5881,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-code-vue@workspace:packages/stencil/components/code/vue"
   dependencies:
-    "@ovhcloud/ods-stencil-code": ^11.0.1
+    "@ovhcloud/ods-stencil-code": ^12.1.0
     rimraf: ^3.0.2
     typescript: 4.7.4
     vue: ^3.2.41
@@ -5862,29 +5890,29 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-code@^11.0.1, @ovhcloud/ods-stencil-code@workspace:packages/stencil/components/code":
+"@ovhcloud/ods-stencil-code@^12.1.0, @ovhcloud/ods-stencil-code@workspace:packages/stencil/components/code":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-code@workspace:packages/stencil/components/code"
   dependencies:
-    "@ovhcloud/ods-stencil-button": ^11.0.1
-    "@ovhcloud/ods-stencil-component": ^11.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^11.0.1
-    "@ovhcloud/ods-stencil-icon": ^11.0.1
+    "@ovhcloud/ods-stencil-button": ^12.1.0
+    "@ovhcloud/ods-stencil-component": ^12.1.0
+    "@ovhcloud/ods-stencil-component-dev": ^12.1.0
+    "@ovhcloud/ods-stencil-icon": ^12.1.0
   peerDependencies:
     "@ovhcloud/ods-stencil-button": ">=9.0"
     "@ovhcloud/ods-stencil-icon": ">=9.0"
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-component-dev@^11.0.1, @ovhcloud/ods-stencil-component-dev@workspace:packages/stencil/libraries/stencil-component-dev":
+"@ovhcloud/ods-stencil-component-dev@^12.1.0, @ovhcloud/ods-stencil-component-dev@workspace:packages/stencil/libraries/stencil-component-dev":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-component-dev@workspace:packages/stencil/libraries/stencil-component-dev"
   dependencies:
     "@jest/core": ^27.5.1
     "@jest/types": ^26.6.2
-    "@ovhcloud/ods-stencil-testing": ^11.0.1
-    "@ovhcloud/ods-testing": ^11.0.1
-    "@ovhcloud/ods-theme-blue-jeans": ^11.0.1
+    "@ovhcloud/ods-stencil-testing": ^12.1.0
+    "@ovhcloud/ods-testing": ^12.1.0
+    "@ovhcloud/ods-theme-blue-jeans": ^12.1.0
     "@stencil/postcss": ~2.1.0
     "@stencil/react-output-target": ~0.2.1
     "@stencil/sass": ~2.0.0
@@ -5898,13 +5926,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-component@^11.0.1, @ovhcloud/ods-stencil-component@workspace:packages/stencil/libraries/stencil-component":
+"@ovhcloud/ods-stencil-component@^12.1.0, @ovhcloud/ods-stencil-component@workspace:packages/stencil/libraries/stencil-component":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-component@workspace:packages/stencil/libraries/stencil-component"
   dependencies:
-    "@ovhcloud/ods-core": ^11.0.1
-    "@ovhcloud/ods-stencil-core": ^11.0.1
-    "@ovhcloud/ods-theming": ^11.0.1
+    "@ovhcloud/ods-core": ^12.1.0
+    "@ovhcloud/ods-stencil-core": ^12.1.0
+    "@ovhcloud/ods-theming": ^12.1.0
     "@stencil/core": ~2.18.1
     tslib: ^2.1.0
   languageName: unknown
@@ -5914,7 +5942,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-components-react@workspace:packages/stencil/components/react"
   dependencies:
-    "@ovhcloud/ods-stencil-components": ^11.0.1
+    "@ovhcloud/ods-stencil-components": ^12.1.0
     "@types/react": 17.0.37
     "@types/react-dom": 17.0.11
     react: 16.14.0
@@ -5932,7 +5960,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-components-vue@workspace:packages/stencil/components/vue"
   dependencies:
-    "@ovhcloud/ods-stencil-components": ^11.0.1
+    "@ovhcloud/ods-stencil-components": ^12.1.0
     rimraf: ^3.0.2
     typescript: 4.7.4
     vue: ^3.2.41
@@ -5941,19 +5969,19 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-components@^11.0.1, @ovhcloud/ods-stencil-components@workspace:packages/stencil/components":
+"@ovhcloud/ods-stencil-components@^12.1.0, @ovhcloud/ods-stencil-components@workspace:packages/stencil/components":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-components@workspace:packages/stencil/components"
   dependencies:
     "@jest/core": ^27.5.1
     "@jest/types": ^26.6.2
-    "@ovhcloud/ods-cdk": ^11.0.1
-    "@ovhcloud/ods-core": ^11.0.1
-    "@ovhcloud/ods-stencil-core": ^11.0.1
-    "@ovhcloud/ods-stencil-testing": ^11.0.1
-    "@ovhcloud/ods-testing": ^11.0.1
-    "@ovhcloud/ods-theme-blue-jeans": ^11.0.1
-    "@ovhcloud/ods-theming": ^11.0.1
+    "@ovhcloud/ods-cdk": ^12.1.0
+    "@ovhcloud/ods-core": ^12.1.0
+    "@ovhcloud/ods-stencil-core": ^12.1.0
+    "@ovhcloud/ods-stencil-testing": ^12.1.0
+    "@ovhcloud/ods-testing": ^12.1.0
+    "@ovhcloud/ods-theme-blue-jeans": ^12.1.0
+    "@ovhcloud/ods-theming": ^12.1.0
     "@stencil/core": ~2.18.1
     "@stencil/postcss": ~2.1.0
     "@stencil/react-output-target": ~0.2.1
@@ -5973,7 +6001,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-content-addon-react@workspace:packages/stencil/components/content-addon/react"
   dependencies:
-    "@ovhcloud/ods-stencil-cart": ^11.0.1
+    "@ovhcloud/ods-stencil-cart": ^12.1.0
     "@types/react": 17.0.37
     "@types/react-dom": 17.0.11
     react: 16.14.0
@@ -5991,7 +6019,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-content-addon-vue@workspace:packages/stencil/components/content-addon/vue"
   dependencies:
-    "@ovhcloud/ods-stencil-content-addon": ^11.0.1
+    "@ovhcloud/ods-stencil-content-addon": ^12.1.0
     rimraf: ^3.0.2
     typescript: 4.7.4
     vue: ^3.2.41
@@ -6000,20 +6028,20 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-content-addon@^11.0.1, @ovhcloud/ods-stencil-content-addon@workspace:packages/stencil/components/content-addon":
+"@ovhcloud/ods-stencil-content-addon@^12.1.0, @ovhcloud/ods-stencil-content-addon@workspace:packages/stencil/components/content-addon":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-content-addon@workspace:packages/stencil/components/content-addon"
   dependencies:
-    "@ovhcloud/ods-stencil-component": ^11.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^11.0.1
+    "@ovhcloud/ods-stencil-component": ^12.1.0
+    "@ovhcloud/ods-stencil-component-dev": ^12.1.0
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-core@^11.0.1, @ovhcloud/ods-stencil-core@workspace:packages/stencil/libraries/stencil-core":
+"@ovhcloud/ods-stencil-core@^12.1.0, @ovhcloud/ods-stencil-core@workspace:packages/stencil/libraries/stencil-core":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-core@workspace:packages/stencil/libraries/stencil-core"
   dependencies:
-    "@ovhcloud/ods-core": ^11.0.1
+    "@ovhcloud/ods-core": ^12.1.0
     "@stencil/core": ~2.18.1
     "@stencil/postcss": ~2.1.0
     "@stencil/react-output-target": ~0.2.1
@@ -6036,7 +6064,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-divider-react@workspace:packages/stencil/components/divider/react"
   dependencies:
-    "@ovhcloud/ods-stencil-cart": ^11.0.1
+    "@ovhcloud/ods-stencil-cart": ^12.1.0
     "@types/react": 17.0.37
     "@types/react-dom": 17.0.11
     react: 16.14.0
@@ -6054,7 +6082,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-divider-vue@workspace:packages/stencil/components/divider/vue"
   dependencies:
-    "@ovhcloud/ods-stencil-divider": ^11.0.1
+    "@ovhcloud/ods-stencil-divider": ^12.1.0
     rimraf: ^3.0.2
     typescript: 4.7.4
     vue: ^3.2.41
@@ -6063,12 +6091,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-divider@^11.0.1, @ovhcloud/ods-stencil-divider@workspace:packages/stencil/components/divider":
+"@ovhcloud/ods-stencil-divider@^12.1.0, @ovhcloud/ods-stencil-divider@workspace:packages/stencil/components/divider":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-divider@workspace:packages/stencil/components/divider"
   dependencies:
-    "@ovhcloud/ods-stencil-component": ^11.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^11.0.1
+    "@ovhcloud/ods-stencil-component": ^12.1.0
+    "@ovhcloud/ods-stencil-component-dev": ^12.1.0
   languageName: unknown
   linkType: soft
 
@@ -6093,7 +6121,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-flag-vue@workspace:packages/stencil/components/flag/vue"
   dependencies:
-    "@ovhcloud/ods-stencil-flag": ^11.0.1
+    "@ovhcloud/ods-stencil-flag": ^12.1.0
     rimraf: ^3.0.2
     typescript: 4.7.4
     vue: ^3.2.41
@@ -6102,12 +6130,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-flag@^11.0.1, @ovhcloud/ods-stencil-flag@workspace:packages/stencil/components/flag":
+"@ovhcloud/ods-stencil-flag@^12.1.0, @ovhcloud/ods-stencil-flag@workspace:packages/stencil/components/flag":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-flag@workspace:packages/stencil/components/flag"
   dependencies:
-    "@ovhcloud/ods-stencil-component": ^11.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^11.0.1
+    "@ovhcloud/ods-stencil-component": ^12.1.0
+    "@ovhcloud/ods-stencil-component-dev": ^12.1.0
     flag-icons: ^6.6.6
     workbox-build: 4.3.1
   languageName: unknown
@@ -6117,7 +6145,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-icon-react@workspace:packages/stencil/components/icon/react"
   dependencies:
-    "@ovhcloud/ods-stencil-cart": ^11.0.1
+    "@ovhcloud/ods-stencil-cart": ^12.1.0
     "@types/react": 17.0.37
     "@types/react-dom": 17.0.11
     react: 16.14.0
@@ -6135,7 +6163,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-icon-vue@workspace:packages/stencil/components/icon/vue"
   dependencies:
-    "@ovhcloud/ods-stencil-icon": ^11.0.1
+    "@ovhcloud/ods-stencil-icon": ^12.1.0
     rimraf: ^3.0.2
     typescript: 4.7.4
     vue: ^3.2.41
@@ -6144,12 +6172,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-icon@^11.0.1, @ovhcloud/ods-stencil-icon@workspace:packages/stencil/components/icon":
+"@ovhcloud/ods-stencil-icon@^12.1.0, @ovhcloud/ods-stencil-icon@workspace:packages/stencil/components/icon":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-icon@workspace:packages/stencil/components/icon"
   dependencies:
-    "@ovhcloud/ods-stencil-component": ^11.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^11.0.1
+    "@ovhcloud/ods-stencil-component": ^12.1.0
+    "@ovhcloud/ods-stencil-component-dev": ^12.1.0
   languageName: unknown
   linkType: soft
 
@@ -6157,7 +6185,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-input-react@workspace:packages/stencil/components/input/react"
   dependencies:
-    "@ovhcloud/ods-stencil-cart": ^11.0.1
+    "@ovhcloud/ods-stencil-cart": ^12.1.0
     "@types/react": 17.0.37
     "@types/react-dom": 17.0.11
     react: 16.14.0
@@ -6175,7 +6203,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-input-vue@workspace:packages/stencil/components/input/vue"
   dependencies:
-    "@ovhcloud/ods-stencil-input": ^11.0.1
+    "@ovhcloud/ods-stencil-input": ^12.1.0
     rimraf: ^3.0.2
     typescript: 4.7.4
     vue: ^3.2.41
@@ -6184,12 +6212,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-input@^11.0.1, @ovhcloud/ods-stencil-input@workspace:packages/stencil/components/input":
+"@ovhcloud/ods-stencil-input@^12.1.0, @ovhcloud/ods-stencil-input@workspace:packages/stencil/components/input":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-input@workspace:packages/stencil/components/input"
   dependencies:
-    "@ovhcloud/ods-stencil-component": ^11.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^11.0.1
+    "@ovhcloud/ods-stencil-component": ^12.1.0
+    "@ovhcloud/ods-stencil-component-dev": ^12.1.0
   languageName: unknown
   linkType: soft
 
@@ -6197,7 +6225,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-link-react@workspace:packages/stencil/components/link/react"
   dependencies:
-    "@ovhcloud/ods-stencil-cart": ^11.0.1
+    "@ovhcloud/ods-stencil-cart": ^12.1.0
     "@types/react": 17.0.37
     "@types/react-dom": 17.0.11
     react: 16.14.0
@@ -6215,7 +6243,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-link-vue@workspace:packages/stencil/components/link/vue"
   dependencies:
-    "@ovhcloud/ods-stencil-link": ^11.0.1
+    "@ovhcloud/ods-stencil-link": ^12.1.0
     rimraf: ^3.0.2
     typescript: 4.7.4
     vue: ^3.2.41
@@ -6224,12 +6252,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-link@^11.0.1, @ovhcloud/ods-stencil-link@workspace:packages/stencil/components/link":
+"@ovhcloud/ods-stencil-link@^12.1.0, @ovhcloud/ods-stencil-link@workspace:packages/stencil/components/link":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-link@workspace:packages/stencil/components/link"
   dependencies:
-    "@ovhcloud/ods-stencil-component": ^11.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^11.0.1
+    "@ovhcloud/ods-stencil-component": ^12.1.0
+    "@ovhcloud/ods-stencil-component-dev": ^12.1.0
   languageName: unknown
   linkType: soft
 
@@ -6237,7 +6265,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-location-tile-react@workspace:packages/stencil/components/location-tile/react"
   dependencies:
-    "@ovhcloud/ods-stencil-cart": ^11.0.1
+    "@ovhcloud/ods-stencil-cart": ^12.1.0
     "@types/react": 17.0.37
     "@types/react-dom": 17.0.11
     react: 16.14.0
@@ -6255,7 +6283,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-location-tile-vue@workspace:packages/stencil/components/location-tile/vue"
   dependencies:
-    "@ovhcloud/ods-stencil-location-tile": ^11.0.1
+    "@ovhcloud/ods-stencil-location-tile": ^12.1.0
     rimraf: ^3.0.2
     typescript: 4.7.4
     vue: ^3.2.41
@@ -6264,12 +6292,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-location-tile@^11.0.1, @ovhcloud/ods-stencil-location-tile@workspace:packages/stencil/components/location-tile":
+"@ovhcloud/ods-stencil-location-tile@^12.1.0, @ovhcloud/ods-stencil-location-tile@workspace:packages/stencil/components/location-tile":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-location-tile@workspace:packages/stencil/components/location-tile"
   dependencies:
-    "@ovhcloud/ods-stencil-component": ^11.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^11.0.1
+    "@ovhcloud/ods-stencil-component": ^12.1.0
+    "@ovhcloud/ods-stencil-component-dev": ^12.1.0
   languageName: unknown
   linkType: soft
 
@@ -6277,7 +6305,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-message-react@workspace:packages/stencil/components/message/react"
   dependencies:
-    "@ovhcloud/ods-stencil-cart": ^11.0.1
+    "@ovhcloud/ods-stencil-cart": ^12.1.0
     "@types/react": 17.0.37
     "@types/react-dom": 17.0.11
     react: 16.14.0
@@ -6295,7 +6323,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-message-vue@workspace:packages/stencil/components/message/vue"
   dependencies:
-    "@ovhcloud/ods-stencil-message": ^11.0.1
+    "@ovhcloud/ods-stencil-message": ^12.1.0
     rimraf: ^3.0.2
     typescript: 4.7.4
     vue: ^3.2.41
@@ -6304,12 +6332,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-message@^11.0.1, @ovhcloud/ods-stencil-message@workspace:packages/stencil/components/message":
+"@ovhcloud/ods-stencil-message@^12.1.0, @ovhcloud/ods-stencil-message@workspace:packages/stencil/components/message":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-message@workspace:packages/stencil/components/message"
   dependencies:
-    "@ovhcloud/ods-stencil-component": ^11.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^11.0.1
+    "@ovhcloud/ods-stencil-component": ^12.1.0
+    "@ovhcloud/ods-stencil-component-dev": ^12.1.0
   languageName: unknown
   linkType: soft
 
@@ -6317,7 +6345,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-quantity-react@workspace:packages/stencil/components/quantity/react"
   dependencies:
-    "@ovhcloud/ods-stencil-cart": ^11.0.1
+    "@ovhcloud/ods-stencil-cart": ^12.1.0
     "@types/react": 17.0.37
     "@types/react-dom": 17.0.11
     react: 16.14.0
@@ -6335,7 +6363,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-quantity-vue@workspace:packages/stencil/components/quantity/vue"
   dependencies:
-    "@ovhcloud/ods-stencil-quantity": ^11.0.1
+    "@ovhcloud/ods-stencil-quantity": ^12.1.0
     rimraf: ^3.0.2
     typescript: 4.7.4
     vue: ^3.2.41
@@ -6344,12 +6372,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-quantity@^11.0.1, @ovhcloud/ods-stencil-quantity@workspace:packages/stencil/components/quantity":
+"@ovhcloud/ods-stencil-quantity@^12.1.0, @ovhcloud/ods-stencil-quantity@workspace:packages/stencil/components/quantity":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-quantity@workspace:packages/stencil/components/quantity"
   dependencies:
-    "@ovhcloud/ods-stencil-component": ^11.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^11.0.1
+    "@ovhcloud/ods-stencil-component": ^12.1.0
+    "@ovhcloud/ods-stencil-component-dev": ^12.1.0
   languageName: unknown
   linkType: soft
 
@@ -6357,7 +6385,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-radio-button-react@workspace:packages/stencil/components/radio-button/react"
   dependencies:
-    "@ovhcloud/ods-stencil-cart": ^11.0.1
+    "@ovhcloud/ods-stencil-cart": ^12.1.0
     "@types/react": 17.0.37
     "@types/react-dom": 17.0.11
     react: 16.14.0
@@ -6375,7 +6403,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-radio-button-vue@workspace:packages/stencil/components/radio-button/vue"
   dependencies:
-    "@ovhcloud/ods-stencil-radio-button": ^11.0.1
+    "@ovhcloud/ods-stencil-radio-button": ^12.1.0
     rimraf: ^3.0.2
     typescript: 4.7.4
     vue: ^3.2.41
@@ -6384,12 +6412,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-radio-button@^11.0.1, @ovhcloud/ods-stencil-radio-button@workspace:packages/stencil/components/radio-button":
+"@ovhcloud/ods-stencil-radio-button@^12.1.0, @ovhcloud/ods-stencil-radio-button@workspace:packages/stencil/components/radio-button":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-radio-button@workspace:packages/stencil/components/radio-button"
   dependencies:
-    "@ovhcloud/ods-stencil-component": ^11.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^11.0.1
+    "@ovhcloud/ods-stencil-component": ^12.1.0
+    "@ovhcloud/ods-stencil-component-dev": ^12.1.0
   languageName: unknown
   linkType: soft
 
@@ -6397,7 +6425,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-radio-react@workspace:packages/stencil/components/radio/react"
   dependencies:
-    "@ovhcloud/ods-stencil-cart": ^11.0.1
+    "@ovhcloud/ods-stencil-cart": ^12.1.0
     "@types/react": 17.0.37
     "@types/react-dom": 17.0.11
     react: 16.14.0
@@ -6415,7 +6443,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-radio-vue@workspace:packages/stencil/components/radio/vue"
   dependencies:
-    "@ovhcloud/ods-stencil-radio": ^11.0.1
+    "@ovhcloud/ods-stencil-radio": ^12.1.0
     rimraf: ^3.0.2
     typescript: 4.7.4
     vue: ^3.2.41
@@ -6424,12 +6452,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-radio@^11.0.1, @ovhcloud/ods-stencil-radio@workspace:packages/stencil/components/radio":
+"@ovhcloud/ods-stencil-radio@^12.1.0, @ovhcloud/ods-stencil-radio@workspace:packages/stencil/components/radio":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-radio@workspace:packages/stencil/components/radio"
   dependencies:
-    "@ovhcloud/ods-stencil-component": ^11.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^11.0.1
+    "@ovhcloud/ods-stencil-component": ^12.1.0
+    "@ovhcloud/ods-stencil-component-dev": ^12.1.0
   languageName: unknown
   linkType: soft
 
@@ -6454,7 +6482,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-range-vue@workspace:packages/stencil/components/range/vue"
   dependencies:
-    "@ovhcloud/ods-stencil-range": ^11.0.1
+    "@ovhcloud/ods-stencil-range": ^12.1.0
     rimraf: ^3.0.2
     typescript: 4.7.4
     vue: ^3.2.41
@@ -6463,12 +6491,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-range@^11.0.1, @ovhcloud/ods-stencil-range@workspace:packages/stencil/components/range":
+"@ovhcloud/ods-stencil-range@^12.1.0, @ovhcloud/ods-stencil-range@workspace:packages/stencil/components/range":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-range@workspace:packages/stencil/components/range"
   dependencies:
-    "@ovhcloud/ods-stencil-component": ^11.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^11.0.1
+    "@ovhcloud/ods-stencil-component": ^12.1.0
+    "@ovhcloud/ods-stencil-component-dev": ^12.1.0
   languageName: unknown
   linkType: soft
 
@@ -6476,7 +6504,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-select-react@workspace:packages/stencil/components/select/react"
   dependencies:
-    "@ovhcloud/ods-stencil-select": ^11.0.1
+    "@ovhcloud/ods-stencil-select": ^12.1.0
     "@types/react": 17.0.37
     "@types/react-dom": 17.0.11
     react: 16.14.0
@@ -6494,7 +6522,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-select-vue@workspace:packages/stencil/components/select/vue"
   dependencies:
-    "@ovhcloud/ods-stencil-select": ^11.0.1
+    "@ovhcloud/ods-stencil-select": ^12.1.0
     rimraf: ^3.0.2
     typescript: 4.7.4
     vue: ^3.2.41
@@ -6503,12 +6531,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-select@^11.0.1, @ovhcloud/ods-stencil-select@workspace:packages/stencil/components/select":
+"@ovhcloud/ods-stencil-select@^12.1.0, @ovhcloud/ods-stencil-select@workspace:packages/stencil/components/select":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-select@workspace:packages/stencil/components/select"
   dependencies:
-    "@ovhcloud/ods-stencil-component": ^11.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^11.0.1
+    "@ovhcloud/ods-stencil-component": ^12.1.0
+    "@ovhcloud/ods-stencil-component-dev": ^12.1.0
   peerDependencies:
     "@ovhcloud/ods-stencil-icon": ">=10.0"
   languageName: unknown
@@ -6518,7 +6546,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-skeleton-react@workspace:packages/stencil/components/skeleton/react"
   dependencies:
-    "@ovhcloud/ods-stencil-cart": ^11.0.1
+    "@ovhcloud/ods-stencil-cart": ^12.1.0
     "@types/react": 17.0.37
     "@types/react-dom": 17.0.11
     react: 16.14.0
@@ -6536,7 +6564,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-skeleton-vue@workspace:packages/stencil/components/skeleton/vue"
   dependencies:
-    "@ovhcloud/ods-stencil-skeleton": ^11.0.1
+    "@ovhcloud/ods-stencil-skeleton": ^12.1.0
     rimraf: ^3.0.2
     typescript: 4.7.4
     vue: ^3.2.41
@@ -6545,21 +6573,60 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-skeleton@^11.0.1, @ovhcloud/ods-stencil-skeleton@workspace:packages/stencil/components/skeleton":
+"@ovhcloud/ods-stencil-skeleton@^12.1.0, @ovhcloud/ods-stencil-skeleton@workspace:packages/stencil/components/skeleton":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-skeleton@workspace:packages/stencil/components/skeleton"
   dependencies:
-    "@ovhcloud/ods-stencil-component": ^11.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^11.0.1
+    "@ovhcloud/ods-stencil-component": ^12.1.0
+    "@ovhcloud/ods-stencil-component-dev": ^12.1.0
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-testing@^11.0.1, @ovhcloud/ods-stencil-testing@workspace:packages/stencil/libraries/stencil-testing":
+"@ovhcloud/ods-stencil-tabs-react@workspace:packages/stencil/components/tabs/react":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-stencil-tabs-react@workspace:packages/stencil/components/tabs/react"
+  dependencies:
+    "@types/react": 17.0.37
+    "@types/react-dom": 17.0.11
+    react: 16.14.0
+    react-dom: 16.14.0
+    rimraf: ^3.0.2
+    tslib: "*"
+    typescript: 4.7.4
+  peerDependencies:
+    react: ">=16.8.6"
+    react-dom: ">=16.8.6"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-stencil-tabs-vue@workspace:packages/stencil/components/tabs/vue":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-stencil-tabs-vue@workspace:packages/stencil/components/tabs/vue"
+  dependencies:
+    "@ovhcloud/ods-stencil-tabs": ^12.1.0
+    rimraf: ^3.0.2
+    typescript: 4.7.4
+    vue: ^3.2.41
+  peerDependencies:
+    vue: ">=3"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-stencil-tabs@^12.1.0, @ovhcloud/ods-stencil-tabs@workspace:packages/stencil/components/tabs":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-stencil-tabs@workspace:packages/stencil/components/tabs"
+  dependencies:
+    "@ovhcloud/ods-stencil-component": ^12.1.0
+    "@ovhcloud/ods-stencil-component-dev": ^12.1.0
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-stencil-testing@^12.1.0, @ovhcloud/ods-stencil-testing@workspace:packages/stencil/libraries/stencil-testing":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-testing@workspace:packages/stencil/libraries/stencil-testing"
   dependencies:
-    "@ovhcloud/ods-core": ^11.0.1
-    "@ovhcloud/ods-testing": ^11.0.1
+    "@ovhcloud/ods-core": ^12.1.0
+    "@ovhcloud/ods-testing": ^12.1.0
     "@stencil/core": ~2.18.1
     typescript: 4.7.4
   peerDependencies:
@@ -6573,7 +6640,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-text-react@workspace:packages/stencil/components/text/react"
   dependencies:
-    "@ovhcloud/ods-stencil-cart": ^11.0.1
+    "@ovhcloud/ods-stencil-cart": ^12.1.0
     "@types/react": 17.0.37
     "@types/react-dom": 17.0.11
     react: 16.14.0
@@ -6591,7 +6658,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-text-vue@workspace:packages/stencil/components/text/vue"
   dependencies:
-    "@ovhcloud/ods-stencil-text": ^11.0.1
+    "@ovhcloud/ods-stencil-text": ^12.1.0
     rimraf: ^3.0.2
     typescript: 4.7.4
     vue: ^3.2.41
@@ -6600,12 +6667,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-text@^11.0.1, @ovhcloud/ods-stencil-text@workspace:packages/stencil/components/text":
+"@ovhcloud/ods-stencil-text@^12.1.0, @ovhcloud/ods-stencil-text@workspace:packages/stencil/components/text":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-text@workspace:packages/stencil/components/text"
   dependencies:
-    "@ovhcloud/ods-stencil-component": ^11.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^11.0.1
+    "@ovhcloud/ods-stencil-component": ^12.1.0
+    "@ovhcloud/ods-stencil-component-dev": ^12.1.0
   languageName: unknown
   linkType: soft
 
@@ -6613,7 +6680,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-textarea-react@workspace:packages/stencil/components/textarea/react"
   dependencies:
-    "@ovhcloud/ods-stencil-cart": ^11.0.1
+    "@ovhcloud/ods-stencil-cart": ^12.1.0
     "@types/react": 17.0.37
     "@types/react-dom": 17.0.11
     react: 16.14.0
@@ -6631,7 +6698,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-textarea-vue@workspace:packages/stencil/components/textarea/vue"
   dependencies:
-    "@ovhcloud/ods-stencil-textarea": ^11.0.1
+    "@ovhcloud/ods-stencil-textarea": ^12.1.0
     rimraf: ^3.0.2
     typescript: 4.7.4
     vue: ^3.2.41
@@ -6640,12 +6707,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-textarea@^11.0.1, @ovhcloud/ods-stencil-textarea@workspace:packages/stencil/components/textarea":
+"@ovhcloud/ods-stencil-textarea@^12.1.0, @ovhcloud/ods-stencil-textarea@workspace:packages/stencil/components/textarea":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-textarea@workspace:packages/stencil/components/textarea"
   dependencies:
-    "@ovhcloud/ods-stencil-component": ^11.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^11.0.1
+    "@ovhcloud/ods-stencil-component": ^12.1.0
+    "@ovhcloud/ods-stencil-component-dev": ^12.1.0
   languageName: unknown
   linkType: soft
 
@@ -6653,7 +6720,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-tile-react@workspace:packages/stencil/components/tile/react"
   dependencies:
-    "@ovhcloud/ods-stencil-cart": ^11.0.1
+    "@ovhcloud/ods-stencil-cart": ^12.1.0
     "@types/react": 17.0.37
     "@types/react-dom": 17.0.11
     react: 16.14.0
@@ -6671,7 +6738,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-tile-vue@workspace:packages/stencil/components/tile/vue"
   dependencies:
-    "@ovhcloud/ods-stencil-tile": ^11.0.1
+    "@ovhcloud/ods-stencil-tile": ^12.1.0
     rimraf: ^3.0.2
     typescript: 4.7.4
     vue: ^3.2.41
@@ -6680,12 +6747,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-tile@^11.0.1, @ovhcloud/ods-stencil-tile@workspace:packages/stencil/components/tile":
+"@ovhcloud/ods-stencil-tile@^12.1.0, @ovhcloud/ods-stencil-tile@workspace:packages/stencil/components/tile":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-tile@workspace:packages/stencil/components/tile"
   dependencies:
-    "@ovhcloud/ods-stencil-component": ^11.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^11.0.1
+    "@ovhcloud/ods-stencil-component": ^12.1.0
+    "@ovhcloud/ods-stencil-component-dev": ^12.1.0
   languageName: unknown
   linkType: soft
 
@@ -6693,7 +6760,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-toggle-react@workspace:packages/stencil/components/toggle/react"
   dependencies:
-    "@ovhcloud/ods-stencil-cart": ^11.0.1
+    "@ovhcloud/ods-stencil-cart": ^12.1.0
     "@types/react": 17.0.37
     "@types/react-dom": 17.0.11
     react: 16.14.0
@@ -6711,7 +6778,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-toggle-vue@workspace:packages/stencil/components/toggle/vue"
   dependencies:
-    "@ovhcloud/ods-stencil-toggle": ^11.0.1
+    "@ovhcloud/ods-stencil-toggle": ^12.1.0
     rimraf: ^3.0.2
     typescript: 4.7.4
     vue: ^3.2.41
@@ -6720,21 +6787,21 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-toggle@^11.0.1, @ovhcloud/ods-stencil-toggle@workspace:packages/stencil/components/toggle":
+"@ovhcloud/ods-stencil-toggle@^12.1.0, @ovhcloud/ods-stencil-toggle@workspace:packages/stencil/components/toggle":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-toggle@workspace:packages/stencil/components/toggle"
   dependencies:
-    "@ovhcloud/ods-stencil-component": ^11.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^11.0.1
+    "@ovhcloud/ods-stencil-component": ^12.1.0
+    "@ovhcloud/ods-stencil-component-dev": ^12.1.0
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil@^11.0.1, @ovhcloud/ods-stencil@workspace:packages/stencil":
+"@ovhcloud/ods-stencil@^12.1.0, @ovhcloud/ods-stencil@workspace:packages/stencil":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil@workspace:packages/stencil"
   dependencies:
-    "@ovhcloud/ods-stencil-components": ^11.0.1
-    "@ovhcloud/ods-theme-blue-jeans": ^11.0.1
+    "@ovhcloud/ods-stencil-components": ^12.1.0
+    "@ovhcloud/ods-theme-blue-jeans": ^12.1.0
     "@stencil/core": ~2.18.1
     typescript: 4.7.4
   languageName: unknown
@@ -6745,15 +6812,15 @@ __metadata:
   resolution: "@ovhcloud/ods-storybook@workspace:packages/tools/storybook"
   dependencies:
     "@babel/core": ^7.12.10
-    "@ovhcloud/ods-core": ^11.0.1
-    "@ovhcloud/ods-design": ^11.0.1
-    "@ovhcloud/ods-guide": ^11.0.1
-    "@ovhcloud/ods-specifications": ^11.0.1
-    "@ovhcloud/ods-starter-react": ^11.0.1
-    "@ovhcloud/ods-starter-react-vite": ^11.0.1
-    "@ovhcloud/ods-stencil": ^11.0.1
-    "@ovhcloud/ods-theme-blue-jeans": ^11.0.1
-    "@ovhcloud/ods-theming": ^11.0.1
+    "@ovhcloud/ods-core": ^12.1.0
+    "@ovhcloud/ods-design": ^12.1.0
+    "@ovhcloud/ods-guide": ^12.1.0
+    "@ovhcloud/ods-specifications": ^12.1.0
+    "@ovhcloud/ods-starter-react": ^12.1.0
+    "@ovhcloud/ods-starter-react-vite": ^12.1.0
+    "@ovhcloud/ods-stencil": ^12.1.0
+    "@ovhcloud/ods-theme-blue-jeans": ^12.1.0
+    "@ovhcloud/ods-theming": ^12.1.0
     "@storybook/addon-a11y": ^6.4.19
     "@storybook/addon-actions": ^6.4.19
     "@storybook/addon-backgrounds": ^6.4.19
@@ -6780,13 +6847,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-testing@^11.0.1, @ovhcloud/ods-testing@workspace:packages/libraries/testing":
+"@ovhcloud/ods-testing@^12.1.0, @ovhcloud/ods-testing@workspace:packages/libraries/testing":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-testing@workspace:packages/libraries/testing"
   dependencies:
-    "@ovhcloud/ods-core": ^11.0.1
-    "@ovhcloud/ods-library-dev": ^11.0.1
-    "@ovhcloud/ods-theming": ^11.0.1
+    "@ovhcloud/ods-core": ^12.1.0
+    "@ovhcloud/ods-library-dev": ^12.1.0
+    "@ovhcloud/ods-theming": ^12.1.0
   peerDependencies:
     "@ovhcloud/ods-core": ">=2"
     "@ovhcloud/ods-theming": ">=2"
@@ -6794,25 +6861,25 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-theme-blue-jeans@^11.0.1, @ovhcloud/ods-theme-blue-jeans@workspace:packages/themes/blue-jeans":
+"@ovhcloud/ods-theme-blue-jeans@^12.1.0, @ovhcloud/ods-theme-blue-jeans@workspace:packages/themes/blue-jeans":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-theme-blue-jeans@workspace:packages/themes/blue-jeans"
   dependencies:
-    "@ovhcloud/ods-theming": ^11.0.1
+    "@ovhcloud/ods-theming": ^12.1.0
     autoprefixer: ~10.3.7
-    node-sass: ^6.0.1
+    node-sass: ^8.0.0
     postcss: ^8.3.9
     postcss-cli: ^9.0.1
     postcss-scss: ^4.0.1
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-theming@^11.0.1, @ovhcloud/ods-theming@workspace:packages/libraries/theming":
+"@ovhcloud/ods-theming@^12.1.0, @ovhcloud/ods-theming@workspace:packages/libraries/theming":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-theming@workspace:packages/libraries/theming"
   dependencies:
     "@marsbased/svgpack": ^1.0.3
-    "@ovhcloud/ods-library-dev": ^11.0.1
+    "@ovhcloud/ods-library-dev": ^12.1.0
   languageName: unknown
   linkType: soft
 
@@ -6842,6 +6909,13 @@ __metadata:
     react: 15.x || 16.x || 16.4.0-alpha.0911da3
     react-dom: 15.x || 16.x || 16.4.0-alpha.0911da3
   checksum: f64372497e0464a9fdfd79283fec3f4fd01ee093f1599d8a8035e0a41fbce22113bfa46dcea63aa8b7b4e0796e916f134aa8e3fccd3974be397e7c19468de3c4
+  languageName: node
+  linkType: hard
+
+"@remix-run/router@npm:1.5.0":
+  version: 1.5.0
+  resolution: "@remix-run/router@npm:1.5.0"
+  checksum: 9c510c174af1553edd1f039ba16e7e3d34e04d53b3bac18814660e31cd0c48297ea4291ff86d0736b560123ebc63ecb62fa525829181d16a8dad15270d6672d7
   languageName: node
   linkType: hard
 
@@ -8668,6 +8742,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tootallnate/once@npm:2":
+  version: 2.0.0
+  resolution: "@tootallnate/once@npm:2.0.0"
+  checksum: ad87447820dd3f24825d2d947ebc03072b20a42bfc96cbafec16bff8bbda6c1a81fcb0be56d5b21968560c5359a0af4038a68ba150c3e1694fe4c109a063bed8
+  languageName: node
+  linkType: hard
+
 "@trysound/sax@npm:0.2.0":
   version: 0.2.0
   resolution: "@trysound/sax@npm:0.2.0"
@@ -9211,25 +9292,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*, @types/react@npm:17.0.37":
-  version: 17.0.37
-  resolution: "@types/react@npm:17.0.37"
+"@types/react@npm:^16.14.0":
+  version: 16.14.38
+  resolution: "@types/react@npm:16.14.38"
   dependencies:
     "@types/prop-types": "*"
     "@types/scheduler": "*"
     csstype: ^3.0.2
-  checksum: e68b0d59aa69577fc6a6d654b25d5d8408625498f4c483f160b557fac21e840f6e8807cbde93e9f039949b6d624a019b1990d18499c1d65aecf3605c25e30242
-  languageName: node
-  linkType: hard
-
-"@types/react@npm:^18.0.17":
-  version: 18.0.23
-  resolution: "@types/react@npm:18.0.23"
-  dependencies:
-    "@types/prop-types": "*"
-    "@types/scheduler": "*"
-    csstype: ^3.0.2
-  checksum: 8b915793b9d6d53c19d76aab35d50a407cac6f4fb1e349cf037196302e8a7661d6c75870dc2fcb0b029c6f0db89d23fee910b777d28dd0e26becf8b312ddb61b
+  checksum: b5e73bb51225c8d869bd6bd081a2b220f21e7f4038a3a06fd2cc49a1da859b12abce4dff14cd888de715b3647fecd26c30f3fc4f96ac9a3874a81922822d4b4e
   languageName: node
   linkType: hard
 
@@ -10788,6 +10858,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"agentkeepalive@npm:^4.2.1":
+  version: 4.3.0
+  resolution: "agentkeepalive@npm:4.3.0"
+  dependencies:
+    debug: ^4.1.0
+    depd: ^2.0.0
+    humanize-ms: ^1.2.1
+  checksum: 982453aa44c11a06826c836025e5162c846e1200adb56f2d075400da7d32d87021b3b0a58768d949d824811f5654223d5a8a3dad120921a2439625eb847c6260
+  languageName: node
+  linkType: hard
+
 "aggregate-error@npm:^3.0.0":
   version: 3.1.0
   resolution: "aggregate-error@npm:3.1.0"
@@ -10906,13 +10987,6 @@ __metadata:
   version: 1.0.2
   resolution: "alphanum-sort@npm:1.0.2"
   checksum: 5a32d0b3c0944e65d22ff3ae2f88d7a4f8d88a78a703033caeae33f2944915e053d283d02f630dc94823edc7757148ecdcf39fd687a5117bda5c10133a03a7d8
-  languageName: node
-  linkType: hard
-
-"amdefine@npm:>=0.0.4":
-  version: 1.0.1
-  resolution: "amdefine@npm:1.0.1"
-  checksum: 9d4e15b94641643a9385b2841b4cb2bcf4e8e2f741ea4bd475c93ad7bab261ad4ed827a32e9c549b38b98759c4526c173ae4e6dde8caeb75ee5cebedc9863762
   languageName: node
   linkType: hard
 
@@ -12777,6 +12851,32 @@ __metadata:
   languageName: node
   linkType: hard
 
+"cacache@npm:^16.1.0":
+  version: 16.1.3
+  resolution: "cacache@npm:16.1.3"
+  dependencies:
+    "@npmcli/fs": ^2.1.0
+    "@npmcli/move-file": ^2.0.0
+    chownr: ^2.0.0
+    fs-minipass: ^2.1.0
+    glob: ^8.0.1
+    infer-owner: ^1.0.4
+    lru-cache: ^7.7.1
+    minipass: ^3.1.6
+    minipass-collect: ^1.0.2
+    minipass-flush: ^1.0.5
+    minipass-pipeline: ^1.2.4
+    mkdirp: ^1.0.4
+    p-map: ^4.0.0
+    promise-inflight: ^1.0.1
+    rimraf: ^3.0.2
+    ssri: ^9.0.0
+    tar: ^6.1.11
+    unique-filename: ^2.0.0
+  checksum: d91409e6e57d7d9a3a25e5dcc589c84e75b178ae8ea7de05cbf6b783f77a5fae938f6e8fda6f5257ed70000be27a681e1e44829251bfffe4c10216002f8f14e6
+  languageName: node
+  linkType: hard
+
 "cacache@npm:^9.2.9":
   version: 9.3.0
   resolution: "cacache@npm:9.3.0"
@@ -13075,7 +13175,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chalk@npm:^1.1.1, chalk@npm:^1.1.3":
+"chalk@npm:^1.1.3":
   version: 1.1.3
   resolution: "chalk@npm:1.1.3"
   dependencies:
@@ -13474,6 +13574,17 @@ __metadata:
     strip-ansi: ^6.0.0
     wrap-ansi: ^7.0.0
   checksum: ce2e8f578a4813806788ac399b9e866297740eecd4ad1823c27fd344d78b22c5f8597d548adbcc46f0573e43e21e751f39446c5a5e804a12aace402b7a315d7f
+  languageName: node
+  linkType: hard
+
+"cliui@npm:^8.0.1":
+  version: 8.0.1
+  resolution: "cliui@npm:8.0.1"
+  dependencies:
+    string-width: ^4.2.0
+    strip-ansi: ^6.0.1
+    wrap-ansi: ^7.0.0
+  checksum: 79648b3b0045f2e285b76fb2e24e207c6db44323581e421c3acbd0e86454cba1b37aea976ab50195a49e7384b871e6dfb2247ad7dec53c02454ac6497394cb56
   languageName: node
   linkType: hard
 
@@ -15828,7 +15939,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"debug@npm:4.3.4, debug@npm:^4.3.4":
+"debug@npm:4.3.4, debug@npm:^4.3.3, debug@npm:^4.3.4":
   version: 4.3.4
   resolution: "debug@npm:4.3.4"
   dependencies:
@@ -16133,7 +16244,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"depd@npm:2.0.0":
+"depd@npm:2.0.0, depd@npm:^2.0.0":
   version: 2.0.0
   resolution: "depd@npm:2.0.0"
   checksum: abbe19c768c97ee2eed6282d8ce3031126662252c58d711f646921c9623f9052e3e1906443066beec1095832f534e57c523b7333f8e7e0d93051ab6baef5ab3a
@@ -16822,7 +16933,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"encoding@npm:^0.1.11, encoding@npm:^0.1.12":
+"encoding@npm:^0.1.11, encoding@npm:^0.1.12, encoding@npm:^0.1.13":
   version: 0.1.13
   resolution: "encoding@npm:0.1.13"
   dependencies:
@@ -19002,7 +19113,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fs-minipass@npm:^2.0.0":
+"fs-minipass@npm:^2.0.0, fs-minipass@npm:^2.1.0":
   version: 2.1.0
   resolution: "fs-minipass@npm:2.1.0"
   dependencies:
@@ -19070,7 +19181,7 @@ fsevents@^1.2.7:
 
 "fsevents@patch:fsevents@2.1.2#~builtin<compat/fsevents>":
   version: 2.1.2
-  resolution: "fsevents@patch:fsevents@npm%3A2.1.2#~builtin<compat/fsevents>::version=2.1.2&hash=31d12a"
+  resolution: "fsevents@patch:fsevents@npm%3A2.1.2#~builtin<compat/fsevents>::version=2.1.2&hash=18f3a7"
   dependencies:
     node-gyp: latest
   conditions: os=darwin
@@ -19079,7 +19190,7 @@ fsevents@^1.2.7:
 
 "fsevents@patch:fsevents@^1.2.7#~builtin<compat/fsevents>":
   version: 1.2.13
-  resolution: "fsevents@patch:fsevents@npm%3A1.2.13#~builtin<compat/fsevents>::version=1.2.13&hash=d11327"
+  resolution: "fsevents@patch:fsevents@npm%3A1.2.13#~builtin<compat/fsevents>::version=1.2.13&hash=18f3a7"
   dependencies:
     bindings: ^1.5.0
     nan: ^2.12.1
@@ -19089,7 +19200,7 @@ fsevents@^1.2.7:
 
 "fsevents@patch:fsevents@^2.1.2#~builtin<compat/fsevents>, fsevents@patch:fsevents@^2.3.2#~builtin<compat/fsevents>, fsevents@patch:fsevents@~2.3.2#~builtin<compat/fsevents>":
   version: 2.3.2
-  resolution: "fsevents@patch:fsevents@npm%3A2.3.2#~builtin<compat/fsevents>::version=2.3.2&hash=df0bf1"
+  resolution: "fsevents@patch:fsevents@npm%3A2.3.2#~builtin<compat/fsevents>::version=2.3.2&hash=18f3a7"
   dependencies:
     node-gyp: latest
   conditions: os=darwin
@@ -19581,7 +19692,21 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"glob@npm:^7.0.0, glob@npm:^7.0.3, glob@npm:^7.1.1, glob@npm:^7.1.2, glob@npm:^7.1.3, glob@npm:^7.1.4, glob@npm:^7.1.6":
+"glob@npm:^7.0.0":
+  version: 7.2.3
+  resolution: "glob@npm:7.2.3"
+  dependencies:
+    fs.realpath: ^1.0.0
+    inflight: ^1.0.4
+    inherits: 2
+    minimatch: ^3.1.1
+    once: ^1.3.0
+    path-is-absolute: ^1.0.0
+  checksum: 29452e97b38fa704dabb1d1045350fb2467cf0277e155aa9ff7077e90ad81d1ea9d53d3ee63bd37c05b09a065e90f16aec4a65f5b8de401d1dac40bc5605d133
+  languageName: node
+  linkType: hard
+
+"glob@npm:^7.0.3, glob@npm:^7.1.1, glob@npm:^7.1.2, glob@npm:^7.1.3, glob@npm:^7.1.4, glob@npm:^7.1.6":
   version: 7.2.0
   resolution: "glob@npm:7.2.0"
   dependencies:
@@ -19592,6 +19717,19 @@ fsevents@^1.2.7:
     once: ^1.3.0
     path-is-absolute: ^1.0.0
   checksum: 78a8ea942331f08ed2e055cb5b9e40fe6f46f579d7fd3d694f3412fe5db23223d29b7fee1575440202e9a7ff9a72ab106a39fee39934c7bedafe5e5f8ae20134
+  languageName: node
+  linkType: hard
+
+"glob@npm:^8.0.1":
+  version: 8.1.0
+  resolution: "glob@npm:8.1.0"
+  dependencies:
+    fs.realpath: ^1.0.0
+    inflight: ^1.0.4
+    inherits: 2
+    minimatch: ^5.0.1
+    once: ^1.3.0
+  checksum: 92fbea3221a7d12075f26f0227abac435de868dd0736a17170663783296d0dd8d3d532a5672b4488a439bf5d7fb85cdd07c11185d6cd39184f0385cbdfb86a47
   languageName: node
   linkType: hard
 
@@ -19828,13 +19966,13 @@ fsevents@^1.2.7:
   linkType: hard
 
 "globule@npm:^1.0.0":
-  version: 1.3.3
-  resolution: "globule@npm:1.3.3"
+  version: 1.3.4
+  resolution: "globule@npm:1.3.4"
   dependencies:
     glob: ~7.1.1
-    lodash: ~4.17.10
+    lodash: ^4.17.21
     minimatch: ~3.0.2
-  checksum: 424b0503791fcaec526aff9a68fd08b6360fd4ec6a406a624ba385d410f3f363e8a1ee7d7fb2ef6448b7f5cd6458256ea08f4b9ef32dbd222977956a6171fc6b
+  checksum: 258b6865c77d54fbd4c91dd6931d99baf81b1485fdf4bd2c053b1a10eab015163cb646e6c96812d5c8b027fb07adfc0b7c7fb13bbbb571f3c12ea60bd7fda2f5
   languageName: node
   linkType: hard
 
@@ -19873,7 +20011,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"graceful-fs@npm:^4.1.11, graceful-fs@npm:^4.1.15, graceful-fs@npm:^4.1.2, graceful-fs@npm:^4.1.6, graceful-fs@npm:^4.1.9, graceful-fs@npm:^4.2.0, graceful-fs@npm:^4.2.2, graceful-fs@npm:^4.2.3, graceful-fs@npm:^4.2.4, graceful-fs@npm:^4.2.6":
+"graceful-fs@npm:^4.1.11, graceful-fs@npm:^4.1.15, graceful-fs@npm:^4.1.2, graceful-fs@npm:^4.1.6, graceful-fs@npm:^4.1.9, graceful-fs@npm:^4.2.0, graceful-fs@npm:^4.2.2, graceful-fs@npm:^4.2.4, graceful-fs@npm:^4.2.6":
   version: 4.2.8
   resolution: "graceful-fs@npm:4.2.8"
   checksum: 5d224c8969ad0581d551dfabdb06882706b31af2561bd5e2034b4097e67cc27d05232849b8643866585fd0a41c7af152950f8776f4dd5579e9853733f31461c6
@@ -20672,6 +20810,17 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"http-proxy-agent@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "http-proxy-agent@npm:5.0.0"
+  dependencies:
+    "@tootallnate/once": 2
+    agent-base: 6
+    debug: 4
+  checksum: e2ee1ff1656a131953839b2a19cd1f3a52d97c25ba87bd2559af6ae87114abf60971e498021f9b73f9fd78aea8876d1fb0d4656aac8a03c6caa9fc175f22b786
+  languageName: node
+  linkType: hard
+
 "http-proxy-middleware@npm:0.19.1":
   version: 0.19.1
   resolution: "http-proxy-middleware@npm:0.19.1"
@@ -21236,6 +21385,13 @@ fsevents@^1.2.7:
   version: 1.1.8
   resolution: "ip@npm:1.1.8"
   checksum: a2ade53eb339fb0cbe9e69a44caab10d6e3784662285eb5d2677117ee4facc33a64679051c35e0dfdb1a3983a51ce2f5d2cb36446d52e10d01881789b76e28fb
+  languageName: node
+  linkType: hard
+
+"ip@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "ip@npm:2.0.0"
+  checksum: cfcfac6b873b701996d71ec82a7dd27ba92450afdb421e356f44044ed688df04567344c36cbacea7d01b1c39a4c732dc012570ebe9bebfb06f27314bca625349
   languageName: node
   linkType: hard
 
@@ -23341,7 +23497,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"js-base64@npm:^2.1.8":
+"js-base64@npm:^2.4.9":
   version: 2.6.4
   resolution: "js-base64@npm:2.6.4"
   checksum: 5f4084078d6c46f8529741d110df84b14fac3276b903760c21fa8cc8521370d607325dfe1c1a9fbbeaae1ff8e602665aaeef1362427d8fef704f9e3659472ce8
@@ -24334,7 +24490,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"lodash@npm:>=3.5 <5, lodash@npm:^4.0.0, lodash@npm:^4.17.11, lodash@npm:^4.17.12, lodash@npm:^4.17.13, lodash@npm:^4.17.14, lodash@npm:^4.17.15, lodash@npm:^4.17.19, lodash@npm:^4.17.20, lodash@npm:^4.17.21, lodash@npm:^4.17.5, lodash@npm:^4.2.1, lodash@npm:^4.7.0, lodash@npm:~4.17.10":
+"lodash@npm:>=3.5 <5, lodash@npm:^4.17.11, lodash@npm:^4.17.12, lodash@npm:^4.17.13, lodash@npm:^4.17.14, lodash@npm:^4.17.15, lodash@npm:^4.17.19, lodash@npm:^4.17.20, lodash@npm:^4.17.21, lodash@npm:^4.17.5, lodash@npm:^4.2.1, lodash@npm:^4.7.0":
   version: 4.17.21
   resolution: "lodash@npm:4.17.21"
   checksum: eb835a2e51d381e561e508ce932ea50a8e5a68f4ebdd771ea240d3048244a8d13658acbd502cd4829768c56f2e16bdd4340b9ea141297d472517b83868e677f7
@@ -24479,6 +24635,13 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"lru-cache@npm:^7.7.1":
+  version: 7.18.3
+  resolution: "lru-cache@npm:7.18.3"
+  checksum: e550d772384709deea3f141af34b6d4fa392e2e418c1498c078de0ee63670f1f46f5eee746e8ef7e69e1c895af0d4224e62ee33e66a543a14763b0f2e74c1356
+  languageName: node
+  linkType: hard
+
 "lunr@npm:^2.3.9":
   version: 2.3.9
   resolution: "lunr@npm:2.3.9"
@@ -24576,6 +24739,30 @@ fsevents@^1.2.7:
   version: 1.3.0
   resolution: "make-event-props@npm:1.3.0"
   checksum: 92b8845f63a25fc7da80ed2a5cc5055fba30066b83ad88e4f8c090cd99ae53a13297156df0bd0487d340507994362deaed5580266f73dfe142dc46163b5b8a6a
+  languageName: node
+  linkType: hard
+
+"make-fetch-happen@npm:^10.0.4":
+  version: 10.2.1
+  resolution: "make-fetch-happen@npm:10.2.1"
+  dependencies:
+    agentkeepalive: ^4.2.1
+    cacache: ^16.1.0
+    http-cache-semantics: ^4.1.0
+    http-proxy-agent: ^5.0.0
+    https-proxy-agent: ^5.0.0
+    is-lambda: ^1.0.1
+    lru-cache: ^7.7.1
+    minipass: ^3.1.6
+    minipass-collect: ^1.0.2
+    minipass-fetch: ^2.0.3
+    minipass-flush: ^1.0.5
+    minipass-pipeline: ^1.2.4
+    negotiator: ^0.6.3
+    promise-retry: ^2.0.1
+    socks-proxy-agent: ^7.0.0
+    ssri: ^9.0.0
+  checksum: 2332eb9a8ec96f1ffeeea56ccefabcb4193693597b132cd110734d50f2928842e22b84cfa1508e921b8385cdfd06dda9ad68645fed62b50fff629a580f5fb72c
   languageName: node
   linkType: hard
 
@@ -25203,7 +25390,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"minimatch@npm:3.0.4, minimatch@npm:^3.0.4, minimatch@npm:~3.0.2":
+"minimatch@npm:3.0.4, minimatch@npm:^3.0.4":
   version: 3.0.4
   resolution: "minimatch@npm:3.0.4"
   dependencies:
@@ -25212,7 +25399,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"minimatch@npm:^3.1.2":
+"minimatch@npm:^3.1.1, minimatch@npm:^3.1.2":
   version: 3.1.2
   resolution: "minimatch@npm:3.1.2"
   dependencies:
@@ -25227,6 +25414,15 @@ fsevents@^1.2.7:
   dependencies:
     brace-expansion: ^2.0.1
   checksum: 215edd0978320a3354188f84a537d45841f2449af4df4379f79b9b777e71aa4f5722cc9d1717eabd2a70d38ef76ab7b708d24d83ea6a6c909dfd8833de98b437
+  languageName: node
+  linkType: hard
+
+"minimatch@npm:~3.0.2":
+  version: 3.0.8
+  resolution: "minimatch@npm:3.0.8"
+  dependencies:
+    brace-expansion: ^1.1.7
+  checksum: 850cca179cad715133132693e6963b0db64ab0988c4d211415b087fc23a3e46321e2c5376a01bf5623d8782aba8bdf43c571e2e902e51fdce7175c7215c29f8b
   languageName: node
   linkType: hard
 
@@ -25289,6 +25485,21 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"minipass-fetch@npm:^2.0.3":
+  version: 2.1.2
+  resolution: "minipass-fetch@npm:2.1.2"
+  dependencies:
+    encoding: ^0.1.13
+    minipass: ^3.1.6
+    minipass-sized: ^1.0.3
+    minizlib: ^2.1.2
+  dependenciesMeta:
+    encoding:
+      optional: true
+  checksum: 3f216be79164e915fc91210cea1850e488793c740534985da017a4cbc7a5ff50506956d0f73bb0cb60e4fe91be08b6b61ef35101706d3ef5da2c8709b5f08f91
+  languageName: node
+  linkType: hard
+
 "minipass-flush@npm:^1.0.5":
   version: 1.0.5
   resolution: "minipass-flush@npm:1.0.5"
@@ -25335,6 +25546,22 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"minipass@npm:^3.1.6":
+  version: 3.3.6
+  resolution: "minipass@npm:3.3.6"
+  dependencies:
+    yallist: ^4.0.0
+  checksum: a30d083c8054cee83cdcdc97f97e4641a3f58ae743970457b1489ce38ee1167b3aaf7d815cd39ec7a99b9c40397fd4f686e83750e73e652b21cb516f6d845e48
+  languageName: node
+  linkType: hard
+
+"minipass@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "minipass@npm:5.0.0"
+  checksum: 425dab288738853fded43da3314a0b5c035844d6f3097a8e3b5b29b328da8f3c1af6fc70618b32c29ff906284cf6406b6841376f21caaadd0793c1d5a6a620ea
+  languageName: node
+  linkType: hard
+
 "minizlib@npm:^1.3.3":
   version: 1.3.3
   resolution: "minizlib@npm:1.3.3"
@@ -25344,7 +25571,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"minizlib@npm:^2.0.0, minizlib@npm:^2.1.1":
+"minizlib@npm:^2.0.0, minizlib@npm:^2.1.1, minizlib@npm:^2.1.2":
   version: 2.1.2
   resolution: "minizlib@npm:2.1.2"
   dependencies:
@@ -25613,12 +25840,21 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"nan@npm:^2.12.1, nan@npm:^2.13.2":
+"nan@npm:^2.12.1":
   version: 2.15.0
   resolution: "nan@npm:2.15.0"
   dependencies:
     node-gyp: latest
   checksum: 33e1bb4dfca447fe37d4bb5889be55de154828632c8d38646db67293a21afd61ed9909cdf1b886214a64707d935926c4e60e2b09de9edfc2ad58de31d6ce8f39
+  languageName: node
+  linkType: hard
+
+"nan@npm:^2.17.0":
+  version: 2.17.0
+  resolution: "nan@npm:2.17.0"
+  dependencies:
+    node-gyp: latest
+  checksum: ec609aeaf7e68b76592a3ba96b372aa7f5df5b056c1e37410b0f1deefbab5a57a922061e2c5b369bae9c7c6b5e6eecf4ad2dac8833a1a7d3a751e0a7c7f849ed
   languageName: node
   linkType: hard
 
@@ -25687,7 +25923,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"negotiator@npm:0.6.3":
+"negotiator@npm:0.6.3, negotiator@npm:^0.6.3":
   version: 0.6.3
   resolution: "negotiator@npm:0.6.3"
   checksum: b8ffeb1e262eff7968fc90a2b6767b04cfd9842582a9d0ece0af7049537266e7b2506dfb1d107a32f06dd849ab2aea834d5830f7f4d0e5cb7d36e1ae55d021d9
@@ -25817,27 +26053,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"node-gyp@npm:^7.1.0":
-  version: 7.1.2
-  resolution: "node-gyp@npm:7.1.2"
-  dependencies:
-    env-paths: ^2.2.0
-    glob: ^7.1.4
-    graceful-fs: ^4.2.3
-    nopt: ^5.0.0
-    npmlog: ^4.1.2
-    request: ^2.88.2
-    rimraf: ^3.0.2
-    semver: ^7.3.2
-    tar: ^6.0.2
-    which: ^2.0.2
-  bin:
-    node-gyp: bin/node-gyp.js
-  checksum: 08582720f28f9a9bb64bc9cbe2f58b159c0258326a9c898e4e95d2f2d8002f44602338111ebf980e5aa47a3421e071525b758923b76855d780fab8cc03279ae0
-  languageName: node
-  linkType: hard
-
-"node-gyp@npm:latest":
+"node-gyp@npm:^8.4.1, node-gyp@npm:latest":
   version: 8.4.1
   resolution: "node-gyp@npm:8.4.1"
   dependencies:
@@ -25953,28 +26169,27 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"node-sass@npm:^6.0.1":
-  version: 6.0.1
-  resolution: "node-sass@npm:6.0.1"
+"node-sass@npm:^8.0.0":
+  version: 8.0.0
+  resolution: "node-sass@npm:8.0.0"
   dependencies:
     async-foreach: ^0.1.3
-    chalk: ^1.1.1
+    chalk: ^4.1.2
     cross-spawn: ^7.0.3
     gaze: ^1.0.0
     get-stdin: ^4.0.1
     glob: ^7.0.3
     lodash: ^4.17.15
+    make-fetch-happen: ^10.0.4
     meow: ^9.0.0
-    nan: ^2.13.2
-    node-gyp: ^7.1.0
-    npmlog: ^4.0.0
-    request: ^2.88.0
-    sass-graph: 2.2.5
+    nan: ^2.17.0
+    node-gyp: ^8.4.1
+    sass-graph: ^4.0.1
     stdout-stream: ^1.4.0
-    true-case-path: ^1.0.2
+    true-case-path: ^2.2.1
   bin:
     node-sass: bin/node-sass
-  checksum: 930a147aeaa1d9e91e3453199125c5ed2cb13e94f8466f221bf3ee1501007f453ccb946e121731f945d88aa8ffc451716109f2aea3b2beac70b46af00397c55f
+  checksum: 92c1c78600a89b9cc03ce1fe1212e107163973dbdd2c548751cd3187c56713c944952a477aedcb8f2c332fba6e098fd992e25ee62552c1ba80f75e252f6ef3c3
   languageName: node
   linkType: hard
 
@@ -26190,7 +26405,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"npmlog@npm:^4.0.0, npmlog@npm:^4.1.2":
+"npmlog@npm:^4.1.2":
   version: 4.1.2
   resolution: "npmlog@npm:4.1.2"
   dependencies:
@@ -29915,6 +30130,19 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"react-router-dom@npm:^6.10.0":
+  version: 6.10.0
+  resolution: "react-router-dom@npm:6.10.0"
+  dependencies:
+    "@remix-run/router": 1.5.0
+    react-router: 6.10.0
+  peerDependencies:
+    react: ">=16.8"
+    react-dom: ">=16.8"
+  checksum: d048d8cc66e5aec782bd675097d6bf0e5f867f3f0539bff9acdc4a314b5e0e34093944762960ca0977a54c6255272edd262231242b18c4e260d68df6b5288464
+  languageName: node
+  linkType: hard
+
 "react-router@npm:6.0.2, react-router@npm:^6.0.0":
   version: 6.0.2
   resolution: "react-router@npm:6.0.2"
@@ -29923,6 +30151,17 @@ fsevents@^1.2.7:
   peerDependencies:
     react: ">=16.8"
   checksum: 9d4f3a8002a90f38be022c6740e11e9bb481e60ad04c5a0ce2d6dbe685059c09b3037c45414d6e7e40eb97308842380413cfb93c5cdcb992e7ee0c50b4f7fcaa
+  languageName: node
+  linkType: hard
+
+"react-router@npm:6.10.0":
+  version: 6.10.0
+  resolution: "react-router@npm:6.10.0"
+  dependencies:
+    "@remix-run/router": 1.5.0
+  peerDependencies:
+    react: ">=16.8"
+  checksum: c9fce46147c04257d7d6fa1f5bbfac96c5fdd0b15f26918bd12b2e5fe9143977c5a4452272f9b85795a22e29ec105a60d0bbe036118efc52b383d163cd8829ab
   languageName: node
   linkType: hard
 
@@ -30850,7 +31089,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"request@npm:^2.87.0, request@npm:^2.88.0, request@npm:^2.88.2":
+"request@npm:^2.87.0, request@npm:^2.88.0":
   version: 2.88.2
   resolution: "request@npm:2.88.2"
   dependencies:
@@ -31064,14 +31303,14 @@ fsevents@^1.2.7:
 
 "resolve@patch:resolve@1.1.7#~builtin<compat/resolve>":
   version: 1.1.7
-  resolution: "resolve@patch:resolve@npm%3A1.1.7#~builtin<compat/resolve>::version=1.1.7&hash=3bafbf"
+  resolution: "resolve@patch:resolve@npm%3A1.1.7#~builtin<compat/resolve>::version=1.1.7&hash=07638b"
   checksum: e9dbca78600ae56835c43a09f1276876c883e4b4bbd43e2683fa140671519d2bdebeb1c1576ca87c8c508ae2987b3ec481645ac5d3054b0f23254cfc1ce49942
   languageName: node
   linkType: hard
 
 "resolve@patch:resolve@1.15.0#~builtin<compat/resolve>":
   version: 1.15.0
-  resolution: "resolve@patch:resolve@npm%3A1.15.0#~builtin<compat/resolve>::version=1.15.0&hash=c3c19d"
+  resolution: "resolve@patch:resolve@npm%3A1.15.0#~builtin<compat/resolve>::version=1.15.0&hash=07638b"
   dependencies:
     path-parse: ^1.0.6
   checksum: fd308e2054e85f829a29e2a5f4634942272b9bfc2771f95fbd1c2068f47a7f4f0f5d4ccb11cb4522f9a8490edd036299f7a85e76327ed8b91bd1a41d314e2bf0
@@ -31080,7 +31319,7 @@ fsevents@^1.2.7:
 
 "resolve@patch:resolve@^1.10.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.12.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.14.2#~builtin<compat/resolve>, resolve@patch:resolve@^1.19.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.3.2#~builtin<compat/resolve>":
   version: 1.20.0
-  resolution: "resolve@patch:resolve@npm%3A1.20.0#~builtin<compat/resolve>::version=1.20.0&hash=c3c19d"
+  resolution: "resolve@patch:resolve@npm%3A1.20.0#~builtin<compat/resolve>::version=1.20.0&hash=07638b"
   dependencies:
     is-core-module: ^2.2.0
     path-parse: ^1.0.6
@@ -31090,7 +31329,7 @@ fsevents@^1.2.7:
 
 "resolve@patch:resolve@^1.10.1#~builtin<compat/resolve>, resolve@patch:resolve@^1.15.1#~builtin<compat/resolve>, resolve@patch:resolve@^1.20.0#~builtin<compat/resolve>, resolve@patch:resolve@^1.22.1#~builtin<compat/resolve>, resolve@patch:resolve@^1.8.1#~builtin<compat/resolve>":
   version: 1.22.1
-  resolution: "resolve@patch:resolve@npm%3A1.22.1#~builtin<compat/resolve>::version=1.22.1&hash=c3c19d"
+  resolution: "resolve@patch:resolve@npm%3A1.22.1#~builtin<compat/resolve>::version=1.22.1&hash=07638b"
   dependencies:
     is-core-module: ^2.9.0
     path-parse: ^1.0.7
@@ -31103,7 +31342,7 @@ fsevents@^1.2.7:
 
 "resolve@patch:resolve@~1.19.0#~builtin<compat/resolve>":
   version: 1.19.0
-  resolution: "resolve@patch:resolve@npm%3A1.19.0#~builtin<compat/resolve>::version=1.19.0&hash=c3c19d"
+  resolution: "resolve@patch:resolve@npm%3A1.19.0#~builtin<compat/resolve>::version=1.19.0&hash=07638b"
   dependencies:
     is-core-module: ^2.1.0
     path-parse: ^1.0.6
@@ -31414,17 +31653,17 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"sass-graph@npm:2.2.5":
-  version: 2.2.5
-  resolution: "sass-graph@npm:2.2.5"
+"sass-graph@npm:^4.0.1":
+  version: 4.0.1
+  resolution: "sass-graph@npm:4.0.1"
   dependencies:
     glob: ^7.0.0
-    lodash: ^4.0.0
-    scss-tokenizer: ^0.2.3
-    yargs: ^13.3.2
+    lodash: ^4.17.11
+    scss-tokenizer: ^0.4.3
+    yargs: ^17.2.1
   bin:
     sassgraph: bin/sassgraph
-  checksum: 283b6e5a38c8b4fca77cdc4fc1da9641679120dba80e89361c82b6a3975f90d01cc78129f9f8fd148822e5a648f540c58c9a38b8c2b11ca97abc4f381613c013
+  checksum: 896f99253bd77a429a95e483ebddee946e195b61d3f84b3e1ccf8ad843265ec0585fa40bf55fbf354c5f57eb9fd0349834a8b190cd2161ab1234cb9af10e3601
   languageName: node
   linkType: hard
 
@@ -31553,13 +31792,13 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"scss-tokenizer@npm:^0.2.3":
-  version: 0.2.3
-  resolution: "scss-tokenizer@npm:0.2.3"
+"scss-tokenizer@npm:^0.4.3":
+  version: 0.4.3
+  resolution: "scss-tokenizer@npm:0.4.3"
   dependencies:
-    js-base64: ^2.1.8
-    source-map: ^0.4.2
-  checksum: ad78bba4466ff7aa6449931a57a980479223c3cad9eccf2180251c2f6fce5b3d982a51f924709e0a0bb2d328dedbb2fad0ccb2a5fdc175513a27cb4e8cf8cfd2
+    js-base64: ^2.4.9
+    source-map: ^0.7.3
+  checksum: f3697bb155ae23d88c7cd0275988a73231fe675fbbd250b4e56849ba66319fc249a597f3799a92f9890b12007f00f8f6a7f441283e634679e2acdb2287a341d1
   languageName: node
   linkType: hard
 
@@ -32122,7 +32361,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"smart-buffer@npm:^4.1.0":
+"smart-buffer@npm:^4.1.0, smart-buffer@npm:^4.2.0":
   version: 4.2.0
   resolution: "smart-buffer@npm:4.2.0"
   checksum: b5167a7142c1da704c0e3af85c402002b597081dd9575031a90b4f229ca5678e9a36e8a374f1814c8156a725d17008ae3bde63b92f9cfd132526379e580bec8b
@@ -32241,6 +32480,17 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"socks-proxy-agent@npm:^7.0.0":
+  version: 7.0.0
+  resolution: "socks-proxy-agent@npm:7.0.0"
+  dependencies:
+    agent-base: ^6.0.2
+    debug: ^4.3.3
+    socks: ^2.6.2
+  checksum: 720554370154cbc979e2e9ce6a6ec6ced205d02757d8f5d93fe95adae454fc187a5cbfc6b022afab850a5ce9b4c7d73e0f98e381879cf45f66317a4895953846
+  languageName: node
+  linkType: hard
+
 "socks@npm:^1.1.10":
   version: 1.1.10
   resolution: "socks@npm:1.1.10"
@@ -32258,6 +32508,16 @@ fsevents@^1.2.7:
     ip: ^1.1.5
     smart-buffer: ^4.1.0
   checksum: 2ca9d616e424f645838ebaabb04f85d94ea999e0f8393dc07f86c435af22ed88cb83958feeabd1bb7bc537c635ed47454255635502c6808a6df61af1f41af750
+  languageName: node
+  linkType: hard
+
+"socks@npm:^2.6.2":
+  version: 2.7.1
+  resolution: "socks@npm:2.7.1"
+  dependencies:
+    ip: ^2.0.0
+    smart-buffer: ^4.2.0
+  checksum: 259d9e3e8e1c9809a7f5c32238c3d4d2a36b39b83851d0f573bfde5f21c4b1288417ce1af06af1452569cd1eb0841169afd4998f0e04ba04656f6b7f0e46d748
   languageName: node
   linkType: hard
 
@@ -32351,15 +32611,6 @@ fsevents@^1.2.7:
   version: 0.6.1
   resolution: "source-map@npm:0.6.1"
   checksum: 59ce8640cf3f3124f64ac289012c2b8bd377c238e316fb323ea22fbfe83da07d81e000071d7242cad7a23cd91c7de98e4df8830ec3f133cb6133a5f6e9f67bc2
-  languageName: node
-  linkType: hard
-
-"source-map@npm:^0.4.2":
-  version: 0.4.4
-  resolution: "source-map@npm:0.4.4"
-  dependencies:
-    amdefine: ">=0.0.4"
-  checksum: b31992fcb4a2a6c335617f187bd36f392896dfcc111830ebdb8b716923cf6554b665833b975fc998bdf3a63881b2c8b4c5c34fda0280357b8c18fe6aa5d148ea
   languageName: node
   linkType: hard
 
@@ -32602,6 +32853,15 @@ fsevents@^1.2.7:
   dependencies:
     minipass: ^3.1.1
   checksum: bc447f5af814fa9713aa201ec2522208ae0f4d8f3bda7a1f445a797c7b929a02720436ff7c478fb5edc4045adb02b1b88d2341b436a80798734e2494f1067b36
+  languageName: node
+  linkType: hard
+
+"ssri@npm:^9.0.0":
+  version: 9.0.1
+  resolution: "ssri@npm:9.0.1"
+  dependencies:
+    minipass: ^3.1.1
+  checksum: fb58f5e46b6923ae67b87ad5ef1c5ab6d427a17db0bead84570c2df3cd50b4ceb880ebdba2d60726588272890bae842a744e1ecce5bd2a2a582fccd5068309eb
   languageName: node
   linkType: hard
 
@@ -33471,6 +33731,20 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"tar@npm:^6.1.11":
+  version: 6.1.14
+  resolution: "tar@npm:6.1.14"
+  dependencies:
+    chownr: ^2.0.0
+    fs-minipass: ^2.0.0
+    minipass: ^5.0.0
+    minizlib: ^2.1.1
+    mkdirp: ^1.0.3
+    yallist: ^4.0.0
+  checksum: a1be0815a9bdc97dfca7c6c2d71d1b836f8ba9314684e2c412832f0f59cc226d4c13da303d6bc30925e82f634cc793f40da79ae72f3e96fb87c23d0f4efd5207
+  languageName: node
+  linkType: hard
+
 "telejson@npm:^3.2.0":
   version: 3.3.0
   resolution: "telejson@npm:3.3.0"
@@ -34156,12 +34430,10 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"true-case-path@npm:^1.0.2":
-  version: 1.0.3
-  resolution: "true-case-path@npm:1.0.3"
-  dependencies:
-    glob: ^7.1.2
-  checksum: 2e2e3bf37b4b05db2e2a1d60329960a4aa697ad7a89bd97c66f5f4da83977897c29c704276e62bca62d055d8078065bc08a1c7a01f409de11c6592af8b442cbe
+"true-case-path@npm:^2.2.1":
+  version: 2.2.1
+  resolution: "true-case-path@npm:2.2.1"
+  checksum: fd5f1c2a87a122a65ffb1f84b580366be08dac7f552ea0fa4b5a6ab0a013af950b0e752beddb1c6c1652e6d6a2b293b7b3fd86a5a1706242ad365b68f1b5c6f1
   languageName: node
   linkType: hard
 
@@ -34503,7 +34775,7 @@ fsevents@^1.2.7:
 
 "typescript@patch:typescript@4.7.4#~builtin<compat/typescript>, typescript@patch:typescript@~4.7.4#~builtin<compat/typescript>":
   version: 4.7.4
-  resolution: "typescript@patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=65a307"
+  resolution: "typescript@patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=701156"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
@@ -34513,11 +34785,11 @@ fsevents@^1.2.7:
 
 "typescript@patch:typescript@^4.6.4#~builtin<compat/typescript>":
   version: 4.8.4
-  resolution: "typescript@patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=1a91c8"
+  resolution: "typescript@patch:typescript@npm%3A4.8.4#~builtin<compat/typescript>::version=4.8.4&hash=701156"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: c981e82b77a5acdcc4e69af9c56cdecf5b934a87a08e7b52120596701e389a878b8e3f860e73ffb287bf649cc47a8c741262ce058148f71de4cdd88bb9c75153
+  checksum: 301459fc3eb3b1a38fe91bf96d98eb55da88a9cb17b4ef80b4d105d620f4d547ba776cc27b44cc2ef58b66eda23fe0a74142feb5e79a6fb99f54fc018a696afa
   languageName: node
   linkType: hard
 
@@ -34685,12 +34957,30 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"unique-filename@npm:^2.0.0":
+  version: 2.0.1
+  resolution: "unique-filename@npm:2.0.1"
+  dependencies:
+    unique-slug: ^3.0.0
+  checksum: 807acf3381aff319086b64dc7125a9a37c09c44af7620bd4f7f3247fcd5565660ac12d8b80534dcbfd067e6fe88a67e621386dd796a8af828d1337a8420a255f
+  languageName: node
+  linkType: hard
+
 "unique-slug@npm:^2.0.0":
   version: 2.0.2
   resolution: "unique-slug@npm:2.0.2"
   dependencies:
     imurmurhash: ^0.1.4
   checksum: 5b6876a645da08d505dedb970d1571f6cebdf87044cb6b740c8dbb24f0d6e1dc8bdbf46825fd09f994d7cf50760e6f6e063cfa197d51c5902c00a861702eb75a
+  languageName: node
+  linkType: hard
+
+"unique-slug@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "unique-slug@npm:3.0.0"
+  dependencies:
+    imurmurhash: ^0.1.4
+  checksum: 49f8d915ba7f0101801b922062ee46b7953256c93ceca74303bd8e6413ae10aa7e8216556b54dc5382895e8221d04f1efaf75f945c2e4a515b4139f77aa6640c
   languageName: node
   linkType: hard
 
@@ -36654,6 +36944,13 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"yargs-parser@npm:^21.1.1":
+  version: 21.1.1
+  resolution: "yargs-parser@npm:21.1.1"
+  checksum: ed2d96a616a9e3e1cc7d204c62ecc61f7aaab633dcbfab2c6df50f7f87b393993fe6640d017759fe112d0cb1e0119f2b4150a87305cc873fd90831c6a58ccf1c
+  languageName: node
+  linkType: hard
+
 "yargs@npm:^13.3.0, yargs@npm:^13.3.2":
   version: 13.3.2
   resolution: "yargs@npm:13.3.2"
@@ -36737,6 +37034,21 @@ fsevents@^1.2.7:
     y18n: ^5.0.5
     yargs-parser: ^21.0.0
   checksum: 2b687338684bf9645e9389ffdbe813fc5a2ddfede299d46fbe5ac80eb9a391e558b97861ba44d2256936ebe9d7f8135f6a38af1c76a5685eac4061008b2df57a
+  languageName: node
+  linkType: hard
+
+"yargs@npm:^17.2.1":
+  version: 17.7.2
+  resolution: "yargs@npm:17.7.2"
+  dependencies:
+    cliui: ^8.0.1
+    escalade: ^3.1.1
+    get-caller-file: ^2.0.5
+    require-directory: ^2.1.1
+    string-width: ^4.2.3
+    y18n: ^5.0.5
+    yargs-parser: ^21.1.1
+  checksum: 73b572e863aa4a8cbef323dd911d79d193b772defd5a51aab0aca2d446655216f5002c42c5306033968193bdbf892a7a4c110b0d77954a7fdf563e653967b56a
   languageName: node
   linkType: hard
 

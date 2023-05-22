@@ -63,6 +63,13 @@ module.exports = {
           return data + `export * from './${templateData.componentFolderName}/public-api';`
         }
       },
+      {
+        type: 'modify',
+        files: `${config.outDir}/${config.odsCorePath}/component-types.json`,
+        handler(data) {
+          return [...data, `Ods${templateData.componentName}`].sort();
+        }
+      },
 
       // Move Specifications files
       {
@@ -103,6 +110,7 @@ module.exports = {
           'stencil/tsconfig.dev.json': `${config.outDir}/${config.odsStencilPath}/${templateData.name}/tsconfig.dev.json`,
           'stencil/tsconfig.json': `${config.outDir}/${config.odsStencilPath}/${templateData.name}/tsconfig.json`,
           'stencil/tsconfig.prod.json': `${config.outDir}/${config.odsStencilPath}/${templateData.name}/tsconfig.prod.json`,
+          'stencil/tsconfig.test.json': `${config.outDir}/${config.odsStencilPath}/${templateData.name}/tsconfig.test.json`,
           'stencil/typedoc.json': `${config.outDir}/${config.odsStencilPath}/${templateData.name}/typedoc.json`,
           // Sources
           'stencil/src/global.dev.ts': `${config.outDir}/${config.odsStencilPath}/${templateData.name}/src/global.dev.ts`,
@@ -139,9 +147,36 @@ module.exports = {
       },
       {
         type: 'modify',
+        files: `${config.outDir}/${config.odsStencilPath}/tsconfig.components.dev.json`,
+        handler(data) {
+          data.include.push(`${templateData.name}/src`);
+          data.include = data.include.sort();
+          return data;
+        }
+      },
+      {
+        type: 'modify',
+        files: `${config.outDir}/${config.odsStencilPath}/tsconfig.components.prod.json`,
+        handler(data) {
+          data.include.push(`${templateData.name}/src`);
+          data.include = data.include.sort();
+          return data;
+        }
+      },
+      {
+        type: 'modify',
+        files: `${config.outDir}/${config.odsStencilPath}/tsconfig.components.test.json`,
+        handler(data) {
+          data.include.push(`${templateData.name}/src`);
+          data.include = data.include.sort();
+          return data;
+        }
+      },
+      {
+        type: 'modify',
         files: `${config.outDir}/${config.odsThemingPath}/ods-size-definitions.scss`,
         handler(data) {
-          return data + `@import './${config.corePrefix}-theming-size.${templateData.name}.scss';`
+          return `@import './${config.corePrefix}-theming-size.${templateData.name}';` + data;
         }
       },
 
@@ -166,13 +201,6 @@ module.exports = {
         type: 'move',
         patterns: {
           'theming/component-theming-size.scss': `${config.outDir}/${config.odsThemingPath}/${config.corePrefix}-theming-size.${templateData.name}.scss`,
-        }
-      },
-      {
-        type: 'modify',
-        files: `${config.outDir}/${config.odsThemingPath}/ods-size-definitions.scss`,
-        handler(data) {
-          return data + `@import './${config.corePrefix}-theming-size.${templateData.name}.scss';`
         }
       }
     ];

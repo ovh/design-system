@@ -36,6 +36,7 @@ In order to make a new release of the `ODS` packages, you must:
 - be sure that you are on a release branch like `release/next` or `release/X.Y`
 - no local changes to commit
 - your local branch is up-to-date
+- add a migration guide when there are breaking changes
 
 Then, to make a release, you have to execute the npm script `yarn ods:<VERSION_TYPE>`
 where `<VERSION_TYPE>` can be `patch`, `minor`, `major`, `premajor` `prerelase` or `graduate`.
@@ -69,27 +70,44 @@ yarn ods:patch
 ### Minor: add extra features
 
 You added one or several features **without any breaking changes** in the branch `release/next`.
-You have to release it from the `release/next` branch:
+Create a release branch from up-to-date `release/next` that corresponds to the version you are going to release like `release/X.Y`.
+
+Then, you have to generate a minor version from your branch.
 
 ```bash
 yarn ods:minor
 ```
 
-Then, create a release branch from the commit tag that correspond to the version like `release/X.Y`.
+The release branch will be used for bugfixes later (patch).
 It will be used for bug fixes later (patch).
 Once the support for the version has ended, the branch will be un-referenced.
 
 ### Major: breaking changes
 
-You added breaking changes in the `release/next` branch.
-You have to generate a major version from `release/next` branch.
+You added breaking changes in the `release/next` branch:
+
+Create a release branch from up-to-date `release/next` that corresponds to the version you are going to release like `release/X.Y`.
+In `docs/migration`, rename the migration guide previously created according to the version like `MIGRATION-x.y-to-next.mdx` to `MIGRATION-x.y-to-z.y.mdx`.
+Create a new empty migration guide for future release: `MIGRATION-x.y-to-next.mdx`.
+
+Then, in `packages/tools/storybook/stories/code/migration`, create a stories for the version you are going to release.
+And add the following imports and Meta title:
+```typescript
+import { Meta, Description } from '@storybook/addon-docs';
+import MigrationXxToYx from '../../../../../../packages/doc/src/migration/MIGRATION-X.x-to-Y.x.mdx';
+
+<Meta title="Code/Migration guide/X.x to Y.x" />
+
+<MigrationXxToYx />
+```
+
+Then, you have to generate a major version from your branch.
 
 ```bash
 yarn ods:major
 ```
 
-Then, create a release branch from the commit tag that corresponds to the version like `release/X.Y`.
-It will be used for bugfixes later (patch).
+The release branch will be used for bugfixes later (patch).
 Once the support for the version has ended, the branch will be unreferenced.
 
 ### PRE-patch: prepare a future patch release

@@ -32,6 +32,7 @@
     "range/src",
     "select/src",
     "skeleton/src",
+    "tabs/src",
     "text/src",
     "textarea/src",
     "tile/src",
@@ -47,6 +48,7 @@
     "**/.stencil",
     "**/**/www.ts",
     "**/**/global.dev.ts",
+    "**/**/global.test.ts",
     "**/**/www.components.ts",
     "**/**/dist",
     "react"

@@ -2,10 +2,13 @@
 @import './osds-breadcrumb.mixins';
 
 @mixin osds-breadcrumb-theme-color-variant-default() {
-  @include ods-and-all-hue-foreach-theme-color((
-          color: '800',
-          background-color: '100'
-  )) using($colors) {
+  @include ods-and-all-hue-foreach-theme-color(
+      (
+        color: '800',
+        background-color: '100',
+      )
+    )
+    using($colors) {
     @include osds-breadcrumb-on-selected-host() {
       //color: map_get($colors, color);
       //background-color: map_get($colors, background-color);

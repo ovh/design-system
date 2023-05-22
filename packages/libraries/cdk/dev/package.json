@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-cdk-dev",
-  "version": "11.0.1",
+  "version": "12.1.0",
   "description": "OvhCloud component development kit",
   "private": true,
   "author": "OVH SAS",
@@ -18,13 +18,10 @@
     "build:stencil": "stencil build --docs --prod --config stencil.config.ts"
   },
   "dependencies": {
-    "@ovhcloud/ods-cdk": "^11.0.1",
-    "@ovhcloud/ods-stencil-component": "^11.0.1"
+    "@ovhcloud/ods-cdk": "^12.1.0",
+    "@ovhcloud/ods-stencil-component": "^12.1.0"
   },
   "devDependencies": {
-    "@ovhcloud/ods-stencil-component-dev": "^11.0.1"
-  },
-  "publishConfig": {
-    "registry": ""
+    "@ovhcloud/ods-stencil-component-dev": "^12.1.0"
   }
 }

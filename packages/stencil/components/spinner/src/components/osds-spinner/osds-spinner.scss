@@ -1,7 +1,6 @@
 @import 'styles/osds-spinner.mixins';
 @import 'styles/osds-spinner.color';
 @import 'styles/osds-spinner.size';
-@import 'styles/osds-spinner.typography';
 @import '~@ovhcloud/ods-theming/color/ods-theming-color';
 @import '~@ovhcloud/ods-theming/ods-theme';
 
@@ -51,5 +50,4 @@
 @include ods-theme-component() {
   @include osds-spinner-theme-color();
   @include osds-spinner-theme-size();
-  @include osds-spinner-theme-typography();
 }

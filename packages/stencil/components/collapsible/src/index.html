@@ -18,8 +18,12 @@
   <p>Closed</p>
   <osds-collapsible>Collapsible</osds-collapsible>
 
+  <hr />
+
   <p>Opened</p>
   <osds-collapsible opened>Collapsible</osds-collapsible>
+
+  <hr />
 
   <p>Collapsible with button for change opened</p>
   <button id="openButton">click on me for collapsible</button>
@@ -33,7 +37,7 @@
 
     const button = document.getElementById('openButton')
     button.addEventListener('click', event => {
-      console.log('click');
+      console.log('click'); 
       elem.opened = !elem.opened;
     });
   </script>

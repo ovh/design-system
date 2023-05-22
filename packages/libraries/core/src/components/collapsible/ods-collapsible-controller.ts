@@ -11,10 +11,6 @@ export class OdsCollapsibleController extends OdsComponentController<OdsCollapsi
     super(component);
   }
 
-  /**
-   * handle on toggle the `details` vanilla tag by synchronizing its `open` status into our `opened` one.
-   * in case of no `details` already set, it won't change the `opened` status.
-   */
   onToggle(): void {
     this.component.emitToggle(this.component.opened || false);
   }

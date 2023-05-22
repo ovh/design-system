@@ -26,7 +26,6 @@ export class OsdsCollapsible implements OdsCollapsible<OdsStencilMethods<OdsColl
   /** @see OdsCollapsibleEvents.odsCollapsibleToggle */
   @Event() odsCollapsibleToggle!: EventEmitter<boolean>;
 
-
   /**
    * on update of `opened` property by the user
    */

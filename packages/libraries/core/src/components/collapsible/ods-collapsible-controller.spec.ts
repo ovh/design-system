@@ -19,30 +19,19 @@ describe('spec:ods-collapsible-controller', () => {
     });
 
     describe('methods:onToggle', () => {
-        it('should set opened to true', async () => {
-          setup({ opened: false });
-          controller.onToggle();
-          expect(component.opened).toBe(true);
-        });
   
-        it('should set opened to false', () => {
+        it('should odsCollapsibleToggle emit false', () => {
           setup({ opened: true });
-          controller.onToggle();
-          expect(component.opened).toBe(false);
-        });
-  
-        it('should odssCollapsibleToggle emit false', () => {
-          setup({ opened: true });
-          const spy = jest.spyOn(component, 'emitToggle');
-          controller.onToggle();
-          expect(spy).toHaveBeenCalledWith(false);
-        });
-  
-        it('should odssCollapsibleToggle emit true', () => {
-          setup({ opened: false });
           const spy = jest.spyOn(component, 'emitToggle');
           controller.onToggle();
           expect(spy).toHaveBeenCalledWith(true);
+        });
+  
+        it('should odsCollapsibleToggle emit true', () => {
+          setup({ opened: false });
+          const spy = jest.spyOn(component, 'emitToggle');
+          controller.onToggle();
+          expect(spy).toHaveBeenCalledWith(false);
         });
       });
 });

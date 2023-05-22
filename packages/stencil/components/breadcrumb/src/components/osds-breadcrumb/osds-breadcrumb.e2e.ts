@@ -1,28 +1,74 @@
-import { E2EElement, E2EPage, newE2EPage } from '@stencil/core/testing';
-import { OdsBreadcrumbAttributes, OdsComponentAttributes2StringAttributes, odsBreadcrumbDefaultAttributes } from '@ovhcloud/ods-core';
-import { OdsCreateAttributes, OdsStringAttributes2Str, odsBreadcrumbBaseAttributes } from '@ovhcloud/ods-testing';
+import { newE2EPage, E2EPage, E2EElement } from '@stencil/core/testing';
 
-describe('e2e:osds-breadcrumb', () => {
+describe('osds-breadcrumb', () => {
   let page: E2EPage;
   let el: E2EElement;
 
-  async function setup({ attributes }: { attributes: Partial<OdsBreadcrumbAttributes> }) {
-    const minimalAttributes: OdsBreadcrumbAttributes = OdsCreateAttributes(attributes, odsBreadcrumbBaseAttributes);
-    const stringAttributes = OdsComponentAttributes2StringAttributes<OdsBreadcrumbAttributes>(minimalAttributes, odsBreadcrumbDefaultAttributes);
-
+  async function setup({ html = '' }: { html?: string } = {}) {
     page = await newE2EPage();
-    await page.setContent(`<osds-breadcrumb ${OdsStringAttributes2Str(stringAttributes)}></osds-breadcrumb>`);
-    await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
-
+    await page.setContent(`
+    <osds-breadcrumb>
+    ${html}
+    </osds-breadcrumb>
+  `);
     el = await page.find('osds-breadcrumb');
   }
 
-  it('should render', async () => {
-    await setup({ attributes: {} });
-    expect(el).not.toBeNull();
-    expect(el).toHaveClass('hydrated');
+  describe('if we have 5 items', () => {
+    beforeEach(async () => {
+      await setup({
+        html: ` <osds-breadcrumb-item>Item 1</osds-breadcrumb-item>
+      <osds-breadcrumb-item>Item 2</osds-breadcrumb-item>
+      <osds-breadcrumb-item>Item 3</osds-breadcrumb-item>
+      <osds-breadcrumb-item>Item 4</osds-breadcrumb-item>
+      <osds-breadcrumb-item>Item 5</osds-breadcrumb-item>`,
+      });
+    });
 
-    // E2E testing
+    it('should render the breadcrumb without ellipsis when collapsed is true', async () => {
+      await page.waitForChanges(); // Wait for component to render
+
+      const breadcrumb = await page.find('osds-breadcrumb');
+      expect(breadcrumb).not.toBeNull();
+
+      breadcrumb.setProperty('collapsed', true);
+      await page.waitForChanges();
+
+      const ellipsis = await page.find('osds-icon[name="ellipsis"]');
+      expect(ellipsis).toBeNull();
+
+      const items = await page.findAll('osds-breadcrumb-item');
+      expect(items.length).toBe(5);
+      expect(items[0].innerText).toBe('Item 1');
+      expect(items[4].innerText).toBe('Item 5');
+    });
   });
 
+  describe('focus', () => {
+    beforeEach(async () => {
+      await setup({
+        html: ` <osds-breadcrumb-item>Item 1</osds-breadcrumb-item>
+      <osds-breadcrumb-item>Item 2</osds-breadcrumb-item>
+      <osds-breadcrumb-item>Item 3</osds-breadcrumb-item>`,
+      });
+    });
+
+    it('should render the breadcrumb without ellipsis when collapsed is true', async () => {
+      await page.waitForChanges(); // Wait for component to render
+
+      const breadcrumb = await page.find('osds-breadcrumb');
+      expect(breadcrumb).not.toBeNull();
+
+      breadcrumb.setProperty('collapsed', true);
+      await page.waitForChanges();
+
+      const ellipsis = await page.find('osds-icon[name="ellipsis"]');
+      expect(ellipsis).toBeNull();
+
+      const items = await page.findAll('osds-breadcrumb-item');
+      expect(items.length).toBe(3);
+      expect(items[0].innerText).toBe('Item 1');
+      expect(items[2].innerText).toBe('Item 3');
+    });
+  });
 });

@@ -108,5 +108,6 @@
   "resolutions": {
     "ua-parser-js": "0.7.18",
     "@types/react": "^16.14.0"
-  }
+  },
+  "packageManager": "yarn@1.22.19"
 }

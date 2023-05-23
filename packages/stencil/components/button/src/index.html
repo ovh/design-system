@@ -51,10 +51,26 @@
 <osds-button square size='l' disabled>Square large</osds-button>
 
 <p>Circle</p>
-<osds-button color="primary" circle="true" flex></osds-button>
-<osds-button color="primary" circle size='sm'></osds-button>
-<osds-button circle></osds-button>
-<osds-button circle size='sm'></osds-button>
+<osds-button   color="primary" circle="true" flex>
+  <osds-icon
+    name="plus"
+    size="xs"
+    color="primary"
+  />
+</osds-button>
+<osds-button color="primary" circle size='sm'>
+  <osds-icon
+    name="ellipsis-vertical"
+    size="xxs"
+    color="primary"
+  />
+</osds-button>
+<osds-button circle>
+  <span>Button</span>
+</osds-button>
+<osds-button circle>
+  <span>Button</span>
+</osds-button>
 
 <p>In Form</p>
 <form>

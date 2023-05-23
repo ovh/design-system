@@ -7,8 +7,6 @@ import {
   OdsButtonSize,
   OdsButtonType,
   OdsButtonVariant,
-  OdsIconName,
-  OdsIconSize,
   OdsHTMLAnchorElementRel,
   OdsHTMLAnchorElementTarget,
   odsButtonDefaultAttributes,
@@ -123,11 +121,7 @@ export class OsdsButton implements OdsButton<OdsStencilMethods<OdsButtonMethods>
           part: 'button',
           tabindex: -1,
         }}>
-          {this.circle ? <osds-icon
-           name={OdsIconName.ELLIPSIS_VERTICAL}
-           size={this.size === OdsButtonSize.sm ? OdsIconSize.xxs : OdsIconSize.xs}
-           color={this.color}
-           />: content}
+          {content}
         </button>
       );
     }

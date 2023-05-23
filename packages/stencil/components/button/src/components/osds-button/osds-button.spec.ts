@@ -89,16 +89,6 @@ describe('spec:osds-button', () => {
       await setup({ attributes: { href: 'test' } });
       expect(htmlLink).toBeTruthy();
     });
-
-    it('should have an ellipsis icon when circle attribute is set', async () => {
-      await setup({ attributes: { circle: true } });
-      expect(page.root.shadowRoot.querySelector('osds-icon')).toBeTruthy();
-    });
-
-    it('should not have an ellipsis icon when circle attribute is not set', async () => {
-      await setup({ attributes: { circle: false } });
-      expect(page.root.shadowRoot.querySelector('osds-icon')).toBeFalsy();
-    });
   });
 
   describe('attributes', () => {

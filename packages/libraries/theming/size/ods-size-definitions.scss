@@ -7,6 +7,7 @@
 @import './ods-theming-size.divider';
 @import './ods-theming-size.icon';
 @import './ods-theming-size.input';
+@import './ods-theming-size.pagination';
 @import './ods-theming-size.radio-button';
 @import './ods-theming-size.range';
 @import './ods-theming-size.skeleton';
@@ -29,6 +30,7 @@ $ods-size-definitions: (
   divider: ods-get-divider-component-size-definition(),
   icon: ods-get-icon-component-size-definition(),
   input: ods-get-input-component-size-definition(),
+  pagination: ods-get-pagination-component-size-definition(),
   radio-button: ods-get-radio-button-component-size-definition(),
   range: ods-get-range-component-size-definition(),
   skeleton: ods-get-skeleton-component-size-definition(),

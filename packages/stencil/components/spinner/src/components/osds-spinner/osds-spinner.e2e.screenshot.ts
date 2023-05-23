@@ -15,6 +15,8 @@ describe('e2e:osds-spinner', () => {
     const stringAttributes = OdsComponentAttributes2StringAttributes<OdsSpinnerAttributes>(minimalAttributes, odsSpinnerDefaultAttributes);
 
     page = await newE2EPage();
+
+    await page.setViewport({ width: 600, height:600 });
     await page.setContent(`<osds-spinner size=${attributes.size || odsSpinnerDefaultAttributes.size} ${OdsStringAttributes2Str(stringAttributes)} />`);
     await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
 
@@ -23,10 +25,9 @@ describe('e2e:osds-spinner', () => {
     }
 
     await page.evaluate(() => {
-      const spinnerEl = document.querySelector('osds-spinner')?.shadowRoot?.querySelector('.spinner') as HTMLElement
+      const spinnerEl = document.querySelector('osds-spinner')?.shadowRoot?.querySelector('.spinner > svg') as HTMLElement
       spinnerEl.style.setProperty('animation', 'none');
     });
-    await page.setViewport({ width: 600, height:600 });
   }
 
   describe('screenshots', () => {

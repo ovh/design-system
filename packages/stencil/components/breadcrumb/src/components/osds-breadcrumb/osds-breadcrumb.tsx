@@ -9,8 +9,9 @@ import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
   shadow: true,
 })
 export class OsdsBreadcrumb implements OdsBreadcrumb<OdsStencilMethods<OdsBreadcrumbMethods>, OdsStencilEvents<OdsBreadcrumbEvents>> {
-  controller: OdsBreadcrumbController = new OdsBreadcrumbController(this);
   @Element() el!: HTMLElement;
+
+  controller!: OdsBreadcrumbController;
 
   /** @see odsBreadcrumbDefaultAttributes.collapsed */
   @Prop({ reflect: true, mutable: true }) collapsed = odsBreadcrumbDefaultAttributes.collapsed;
@@ -20,6 +21,7 @@ export class OsdsBreadcrumb implements OdsBreadcrumb<OdsStencilMethods<OdsBreadc
   componentWillLoad() {
     const items = this.getBreadcrumbItems();
     this.breadcrumbInit(items);
+    this.controller = new OdsBreadcrumbController(this);
   }
 
   private breadcrumbInit = (items: Array<Element>) => {
@@ -37,15 +39,14 @@ export class OsdsBreadcrumb implements OdsBreadcrumb<OdsStencilMethods<OdsBreadc
 
   @Listen('keydown')
   handleKeyDown(event: KeyboardEvent) {
-    if (event.key === 'enter' || event.key === ' ') {
+    if (event.key === 'Enter' || event.key === ' ') {
       this.toggleCollapsed();
     }
   }
-  @Listen('click')
-  handleLinkClick() {
-    this.toggleCollapsed();
-  }
 
+  handleLinkClick = () => {
+    this.toggleCollapsed();
+  };
   render() {
     return (
       <Host role="navigation">

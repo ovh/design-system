@@ -24,10 +24,10 @@
   /** circle */
   [circle] {
     @include osds-button-on-selected-host() {
-      padding: 4px;
-      height: auto;
+      padding: var(--ods-size-03);
       line-height: 0.4em;
-      border-radius: 50%;
+      height: auto;
+      border-radius: var(--ods-size-border-radius-03);
     }
   }
 

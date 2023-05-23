@@ -206,7 +206,7 @@ describe('spec:osds-button', () => {
         })
       });
 
-      it('should display an ellipsis icon if circle attribute is added', async () => {
+      it('should bind the circle attribute correctly', async () => {
         await setup({ attributes: { circle: true } });
         expect(page.root.circle).toBeDefined();
       });

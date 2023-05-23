@@ -27,3 +27,5 @@ $RECYCLE.BIN/
 Thumbs.db
 UserInterfaceState.xcuserstate
 .env
+
+icons/_generated-icons.scss

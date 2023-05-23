@@ -10,6 +10,7 @@ import {
 
 import changelog from '@ovhcloud/ods-stencil-collapsible/CHANGELOG.md';
 import page from './collapsible.web-component.stories.page.mdx';
+import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 
 defineCustomElements();
 
@@ -18,6 +19,10 @@ const storyParams = {
   opened: {
     category: 'Général',
     defaultValue: false,
+  },
+  collapsibleContent: {
+    category: 'Slot',
+    defaultValue: 'Collapsible content'
   },
 };
 
@@ -34,10 +39,10 @@ export default {
 };
 
 /* Default */
-const TemplateDefault = (args:any) => {
+const TemplateDefault = (args: any) => {
   return html`
     <osds-collapsible ...=${getTagAttributes(args)}>
-      Collapsible
+      ${unsafeHTML(args.collapsibleContent)}
     </osds-collapsible>
   `;
 }

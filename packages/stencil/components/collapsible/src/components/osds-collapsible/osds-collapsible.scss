@@ -1,21 +1,7 @@
-@import 'styles/osds-collapsible.mixins';
-@import 'styles/osds-collapsible.color';
-@import 'styles/osds-collapsible.size';
-@import 'styles/osds-collapsible.typography';
-@import '~@ovhcloud/ods-theming/color/ods-theming-color';
-@import '~@ovhcloud/ods-theming/ods-theme';
-
 :host {
   display: none;
 }
 
 :host([opened]) {
   display: block;
-}
-
-// apply the theme template for the component
-@include ods-theme-component() {
-  @include osds-collapsible-theme-color();
-  @include osds-collapsible-theme-size();
-  @include osds-collapsible-theme-typography();
 }

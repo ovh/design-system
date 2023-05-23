@@ -74,7 +74,7 @@ describe('e2e:osds-spinner', () => {
       };
     }
 
-    it('should have a small size', async () => {
+    it('should respect increase order (sm < md < lg)', async () => {
       const {
         smSpinner,
         mdSpinner,

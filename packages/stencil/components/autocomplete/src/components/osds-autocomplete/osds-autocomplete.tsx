@@ -18,7 +18,7 @@ import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libra
 export class OsdsAutocomplete implements OdsAutocomplete<OdsStencilMethods<OdsAutocompleteMethods>, OdsStencilEvents<OdsAutocompleteEvents>> {
   controller: OdsAutocompleteController = new OdsAutocompleteController(this);
 
-  @Element() el!: HTMLElement; 
+  @Element() el!: HTMLElement;
   input: HTMLInputElement = null as unknown as HTMLInputElement;
 
   @Prop({ reflect: true }) items: string[] = [];
@@ -41,6 +41,22 @@ export class OsdsAutocomplete implements OdsAutocomplete<OdsStencilMethods<OdsAu
     }
   }
 
+  sanitizer(text: string): string {
+    return text
+      .normalize("NFD")
+      .replace(/\p{Diacritic}/gu, "")
+      .toLowerCase();
+  }
+
+  splitter(text: string, query: string): string[] {
+    const regexWithSanitizedQuery = new RegExp(`(${this.sanitizer(query)})`, 'gi');
+    const regexWithQuery = new RegExp(`(${query})`, 'gi');
+
+    return text.includes(query) ?
+      text.split(regexWithQuery).filter((value) => value) :
+      text.split(regexWithSanitizedQuery).filter((value) => value);
+  }
+
   initInput(): void {
     const foundNativeInput = this.el.querySelector('input');
     if (!foundNativeInput) {
@@ -48,7 +64,7 @@ export class OsdsAutocomplete implements OdsAutocomplete<OdsStencilMethods<OdsAu
     }
 
     this.input = foundNativeInput;
-    this.input.addEventListener('input', (e) => this.onInput(e));
+    this.input.addEventListener('input', () => this.onInput());
   }
 
   componentWillLoad() {
@@ -66,9 +82,8 @@ export class OsdsAutocomplete implements OdsAutocomplete<OdsStencilMethods<OdsAu
     });
   }
 
-  onInput = (e: Event) => {
+  onInput = () => {
     this.showSuggestions = true;
-    this.input.value = (e.target as HTMLInputElement).value;
     this.suggestions = this.findMatch(this.input.value);
   };
 
@@ -81,7 +96,12 @@ export class OsdsAutocomplete implements OdsAutocomplete<OdsStencilMethods<OdsAu
       <osds-select-option
         onClick={() => this.onSelect(suggestion)}
       >
-        {suggestion}
+        {this.splitter(suggestion, this.input.value).map((value) => {
+            return value.toLowerCase() === this.input.value.toLowerCase() ?
+                <strong>{value}</strong> :
+                <span>{value}</span>;
+            })
+        }
       </osds-select-option>
     );
   };

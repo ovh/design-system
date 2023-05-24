@@ -11,6 +11,7 @@
   "include": [
     "src",
     "accordion/src",
+    "breadcrumb/src",
     "button/src",
     "cart/src",
     "checkbox/src",

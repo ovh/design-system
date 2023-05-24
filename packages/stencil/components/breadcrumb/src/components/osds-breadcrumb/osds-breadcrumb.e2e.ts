@@ -3,6 +3,7 @@ import { newE2EPage, E2EPage, E2EElement } from '@stencil/core/testing';
 describe('osds-breadcrumb', () => {
   let page: E2EPage;
   let breadcrumb: E2EElement;
+  let ellipsis: E2EElement;
 
   async function setup({ html = '' }: { html?: string } = {}) {
     page = await newE2EPage();
@@ -13,6 +14,7 @@ describe('osds-breadcrumb', () => {
     `);
     await page.evaluate(() => document.body.style.setProperty('margin', '4px'));
     breadcrumb = await page.find('osds-breadcrumb');
+    ellipsis =  await page.find('osds-breadcrumb >>> osds-icon[name="ellipsis"]');
   }
 
   describe('if we have 5 items', () => {
@@ -32,11 +34,9 @@ describe('osds-breadcrumb', () => {
       const breadcrumb = await page.find('osds-breadcrumb');
       expect(breadcrumb).not.toBeNull();
 
-      // breadcrumb.setProperty('collapsed', true);
-      // await page.waitForChanges();
-
-      const ellipsis = await page.find('osds-icon[name="ellipsis"]');
-      expect(ellipsis).toBeNull();
+      expect(ellipsis).not.toBeNull();
+      ellipsis.click();
+      await page.waitForChanges(); // Wait for component to render
 
       const items = await page.findAll('osds-breadcrumb-item');
       expect(items.length).toBe(5);
@@ -63,13 +63,14 @@ describe('osds-breadcrumb', () => {
       const breadcrumb = await page.find('osds-breadcrumb');
       expect(breadcrumb).not.toBeNull();
 
-      // breadcrumb.setProperty('collapsed', true);
-      // await page.waitForChanges();
+      await page.waitForChanges(); // Wait for component to render
 
-      const ellipsis = await page.find('osds-icon[name="ellipsis"]');
-      expect(ellipsis).toBeNull();
+      expect(ellipsis).not.toBeNull();
+      ellipsis.click();
+      await page.waitForChanges(); // Wait for component to render
 
       const items = await page.findAll('osds-breadcrumb-item');
+      console.info('items.length : ', items.length)
       expect(items.length).toBe(5);
       expect(items[0].innerText).toBe('Item 1');
       expect(items[4].innerText).toBe('Item 5');

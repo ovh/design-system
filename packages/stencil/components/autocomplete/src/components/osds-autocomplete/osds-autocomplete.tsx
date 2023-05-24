@@ -3,7 +3,7 @@ import {
   OdsAutocomplete,
   OdsAutocompleteController,
   OdsAutocompleteEvents,
-  OdsAutocompleteMethods,
+  OdsAutocompleteMethods, OdsIconName,
 } from '@ovhcloud/ods-core';
 import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libraries/stencil-core';
 
@@ -113,6 +113,9 @@ export class OsdsAutocomplete implements OdsAutocomplete<OdsStencilMethods<OdsAu
         >
           <span slot="placeholder">
             <slot />
+          </span>
+          <span slot="append">
+            <osds-icon name={OdsIconName.SEARCH} />
           </span>
           {this.suggestions.map(suggestion => this.getSuggestionElement(suggestion))}
         </osds-select>

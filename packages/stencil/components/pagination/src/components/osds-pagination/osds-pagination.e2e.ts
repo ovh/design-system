@@ -33,6 +33,7 @@ describe('e2e:osds-pagination', () => {
       expect(el).not.toBeNull();
       expect(el).toHaveClass('hydrated');
     });
+
     it('should have arrows, right and left', async () => {
       // we list the buttons of arrows
       const allArrows = await page.findAll('osds-pagination >>> .arrows >>> osds-button');
@@ -40,10 +41,12 @@ describe('e2e:osds-pagination', () => {
       // we should have two arrows, right and left
       expect(allArrows.length).toBe(2);
     });
+
     it('should have page list with osds-buttons', async () => {
       osdsButtonPaginationPageButtonElement = await page.find('osds-pagination >>> ul > li > osds-button');
       expect(osdsButtonPaginationPageButtonElement).not.toBeNull();
     });
+
     it('arrows should have osds-icons', async () => {
       const icons = await page.find('osds-pagination >>> ul > li > osds-button >>> osds-icons');
       expect(icons).not.toBeNull();
@@ -51,11 +54,9 @@ describe('e2e:osds-pagination', () => {
   });
 
   describe('check the pagination structure', () => {
-    it('< 1 > should have 3 osds-button', async () => {
+    it('should not render if total pages is less than 2', async () => {
       await setup({ attributes: { current: 1, totalPages: 1 } });
-
-      const buttonList = await page.findAll('osds-pagination >>> li > osds-button');
-      expect(buttonList.length).toBe(3);
+      expect(el.shadowRoot.innerHTML).toBe('');
     });
 
     it('< 1 2 > should have 4 osds-button', async () => {

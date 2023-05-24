@@ -1,4 +1,3 @@
-import { Component, Element, Event, EventEmitter, Host, Method, Prop, Watch, h, Fragment } from '@stencil/core';
 import {
   OdsLogger,
   OdsPagination,
@@ -14,9 +13,10 @@ import {
   OdsTextSize,
   OdsPaginationPageList,
 } from '@ovhcloud/ods-core';
-import { HTMLStencilElement } from '@stencil/core/internal';
 import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libraries/stencil-core';
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { Component, Element, Event, EventEmitter, Fragment, Host, Method, Prop, Watch, h } from '@stencil/core';
+import { HTMLStencilElement } from '@stencil/core/internal';
 
 @Component({
   tag: 'osds-pagination',
@@ -144,6 +144,10 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
 
   render() {
     const { totalPages, disabled } = this;
+
+    if (totalPages < 2) {
+      return;
+    }
 
     const pageList = this.controller.createPageList(totalPages, this.current);
 

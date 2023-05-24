@@ -6,5 +6,5 @@ import { OdsPaginationAttributes } from '@ovhcloud/ods-core';
 export const odsPaginationBaseAttributes: OdsPaginationAttributes = {
   disabled: false,
   current: 1,
-  total: 1,
+  totalPages: 1,
 };

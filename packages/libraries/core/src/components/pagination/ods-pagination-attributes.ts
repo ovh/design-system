@@ -13,5 +13,5 @@ export interface OdsPaginationAttributes extends OdsComponentAttributes {
   /**
    * The total amount of pages
    */
-  total: number;
+  totalPages: number;
 }

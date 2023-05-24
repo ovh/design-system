@@ -32,8 +32,8 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
   /** @see OdsPaginationAttributes.current */
   @Prop({ reflect: true, mutable: true }) current: number = odsPaginationDefaultAttributes.current;
 
-  /** @see OdsPaginationAttributes.total */
-  @Prop({ reflect: true }) total: number = odsPaginationDefaultAttributes.total;
+  /** @see OdsPaginationAttributes.totalPages */
+  @Prop({ reflect: true }) totalPages: number = odsPaginationDefaultAttributes.totalPages;
 
   /** @see OdsPaginationAttributes.disabled */
   @Prop({ reflect: true, mutable: true }) disabled: boolean = odsPaginationDefaultAttributes.disabled;
@@ -143,9 +143,9 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
   }
 
   render() {
-    const { total, disabled } = this;
+    const { totalPages, disabled } = this;
 
-    const pageList = this.controller.createPageList(total, this.current);
+    const pageList = this.controller.createPageList(totalPages, this.current);
 
     return (
       <Host>

@@ -6,7 +6,7 @@ import { OdsPaginationAttributes } from './ods-pagination-attributes';
 export const odsPaginationDefaultAttributesDoc: OdsPaginationAttributes = {
   disabled: false,
   current: 1,
-  total: 1,
+  totalPages: 1,
 } as const;
 
 export const odsPaginationDefaultAttributes = odsPaginationDefaultAttributesDoc as unknown as OdsPaginationAttributes;

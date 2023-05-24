@@ -16,60 +16,94 @@
     h3 {
       font-family: 'Gill Sans', Georgia;
     }
+
+    .row {
+      display: grid;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .description {
+      font-style: italic;
+    }
   </style>
 </head>
 <body>
-
-<h3>3rd page and previous</h3>
-<div style="text-align:center">
-<osds-pagination current=3 total-pages=21 id="pagination1"></osds-pagination>
-<p id="pagination1-info" style="font-style: italic;">21 pages to display, current page 3</p>
-</div>
-
-<h3>Between 3rd and antepenultimate page</h3>
-<div style="text-align:center">
-  <osds-pagination current=2 total-pages=4 id="pagination2"></osds-pagination>
-  <p id="pagination2-info" style="font-style: italic;">4 pages to display, current page 1</p>
+  <h3>3rd page and previous</h3>
+  <div class="row">
+    <osds-pagination current=3 total-pages=21></osds-pagination>
+    <p class="description">21 pages to display, current page 3</p>
   </div>
 
-<div style="text-align:center">
-<osds-pagination current=5 total-pages=5 id="pagination3"></osds-pagination>
-<p id="pagination3-info" style="font-style: italic;">5 pages to display, current page 5</p>
-</div>
-
-<h3>Antepenultimate page and after</h3>
-<div style="text-align:center">
-  <osds-pagination current=5 total-pages=6 id="pagination4"></osds-pagination>
-  <p id="pagination4-info" style="font-style: italic;">6 pages to display, current page 5</p>
-  </div>
-
-  <div style="text-align:center">
-    <osds-pagination current=5 total-pages=7 id="pagination5"></osds-pagination>
-    <p id="pagination5-info" style="font-style: italic;">7 pages to display, current page 5</p>
+  <h3>Between 3rd and antepenultimate page</h3>
+  <div class="row">
+    <osds-pagination current=2 total-pages=4></osds-pagination>
+    <p class="description">4 pages to display, current page 1</p>
     </div>
 
-<div style="text-align:center">
-<osds-pagination current=5 total-pages=9 id="pagination6"></osds-pagination>
-<p id="pagination6-info" style="font-style: italic;">9 pages to display, current page 5</p>
-</div>
+  <div class="row">
+    <osds-pagination current=5 total-pages=5></osds-pagination>
+    <p class="description">5 pages to display, current page 5</p>
+  </div>
 
-<h3>disabled</h3>
-<div style="text-align:center">
-<osds-pagination current=1 total-pages=6 id="pagination7" disabled></osds-pagination>
-<p id="pagination7-info" style="font-style: italic;"></p>
-</div>
+  <h3>Antepenultimate page and after</h3>
+  <div class="row">
+    <osds-pagination current=5 total-pages=6></osds-pagination>
+    <p class="description">6 pages to display, current page 5</p>
+  </div>
 
-<h3>With background with over 9000 pages</h3>
-<div style="text-align:center; background: #ccc; padding: 25px;">
-<osds-pagination current=1 total-pages=9001 id="pagination8" ></osds-pagination>
-<p id="pagination8-info" style="font-style: italic;">It's over 9000</p>
-</div>
+  <div class="row">
+    <osds-pagination current=5 total-pages=7></osds-pagination>
+    <p class="description">7 pages to display, current page 5</p>
+  </div>
 
-<h3>Less than two pages</h3>
-<div style="text-align:center">
-  <osds-pagination current=1 total-pages=1 id="pagination9"></osds-pagination>
-  <p id="pagination9-info" style="font-style: italic;">Pagination should not appear</p>
-</div>
+  <div class="row">
+    <osds-pagination current=5 total-pages=9></osds-pagination>
+    <p class="description">9 pages to display, current page 5</p>
+  </div>
 
+  <h3>disabled</h3>
+  <div class="row">
+    <osds-pagination current=1 total-pages=6 disabled></osds-pagination>
+    <p class="description"></p>
+  </div>
+
+  <h3>With background with over 9000 pages</h3>
+  <div class="row">
+    <osds-pagination current=1 total-pages=9001 ></osds-pagination>
+    <p class="description">It's over 9000</p>
+  </div>
+
+  <h3>Less than two pages</h3>
+  <div class="row">
+    <osds-pagination current=1 total-pages=1></osds-pagination>
+    <p class="description">Pagination should not appear</p>
+  </div>
+
+  <h3>Total items < 10</h3>
+  <div class="row">
+    <osds-pagination current=1 total-items=5 total-pages=2>
+      <span slot="after-total-items">&nbsp;results</span>
+    </osds-pagination>
+    <p class="description">Select should not appear</p>
+  </div>
+
+  <h3>Total items between 10 and 300</h3>
+  <div class="row">
+    <osds-pagination current=1 total-items=60 total-pages=12>
+      <span slot="before-total-items">of&nbsp;</span>
+      <span slot="after-total-items">&nbsp;results</span>
+    </osds-pagination>
+    <p class="description">Select will have custom options</p>
+  </div>
+
+  <h3>Total items above 300</h3>
+  <div class="row">
+    <osds-pagination current=1 total-items=500 total-pages=21>
+      <span slot="before-total-items">of&nbsp;</span>
+      <span slot="after-total-items">&nbsp;results</span>
+    </osds-pagination>
+    <p class="description">Select will have default options</p>
+  </div>
 </body>
 </html>

@@ -1,6 +1,11 @@
 import { OdsComponentController } from '../ods-component-controller';
 import { OdsPagination } from './ods-pagination';
 import { OdsPaginationPageList } from './ods-pagination-page-list';
+import {
+  odsPaginationMinPerPageOptions,
+  odsPaginationPerPageMax,
+  odsPaginationPerPageMin
+} from './ods-pagination-per-page';
 
 /**
  * common controller logic for pagination component used by the different implementations.
@@ -9,6 +14,43 @@ import { OdsPaginationPageList } from './ods-pagination-page-list';
 export class OdsPaginationController extends OdsComponentController<OdsPagination> {
   constructor(component: OdsPagination) {
     super(component);
+  }
+
+  /**
+   * Compute the number of pages to display as it may vary if a total item to display is set.
+   * @param itemPerPage - Number of item per page.
+   * @returns The number of pages.
+   */
+  computeActualTotalPages(itemPerPage: number) {
+    if (!this.component.totalItems) {
+      return this.component.totalPages;
+    }
+
+    return Math.ceil(this.component.totalItems / (itemPerPage || 1));
+  }
+
+  /**
+   * Compute the list of "per page" choice enabled, given a total of items.
+   * @returns The numerical list of "per page" choice.
+   */
+  computePerPageOptions() {
+    if (!this.component.totalItems || this.component.totalItems < odsPaginationPerPageMin) {
+      return [];
+    }
+
+    if (this.component.totalItems >= odsPaginationPerPageMax) {
+      return [...odsPaginationMinPerPageOptions];
+    }
+
+    const options = odsPaginationMinPerPageOptions.filter((option) => {
+      return option <= this.component.totalItems!;
+    });
+
+    if (odsPaginationMinPerPageOptions.indexOf(this.component.totalItems) < 0) {
+      options.push(this.component.totalItems);
+    }
+
+    return options;
   }
 
   /**
@@ -80,20 +122,29 @@ export class OdsPaginationController extends OdsComponentController<OdsPaginatio
   // key events
 
   handlePreviousKeyDown(event: KeyboardEvent, page: number) {
-    if (this.component.current > 1) this.onKeyDown(event, page - 1);
+    if (this.component.current > 1) {
+      this.onKeyDown(event, page - 1);
+    }
   }
+
   handleNextKeyDown(event: KeyboardEvent, page: number, pageList: OdsPaginationPageList) {
-    if (this.component.current < pageList.length) this.onKeyDown(event, page + 1);
+    if (this.component.current < pageList.length) {
+      this.onKeyDown(event, page + 1);
+    }
   }
+
   handlePageKeyDown(event: KeyboardEvent, page: number) {
     this.onKeyDown(event, page);
   }
+
   onKeyDown(event: KeyboardEvent, page: number) {
-    if (event.keyCode === 13 || event.keyCode === 32) this.setPageIndex(page);
+    if (event.code === 'Enter' || event.code === 'Space') {
+      event.preventDefault();
+      this.setPageIndex(page);
+    }
   }
 
   // setPageIndex set the page
-
   setPageIndex(current: number) {
     this.component.current = current;
   }

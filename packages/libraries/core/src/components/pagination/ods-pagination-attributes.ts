@@ -11,7 +11,11 @@ export interface OdsPaginationAttributes extends OdsComponentAttributes {
    */
   current: number;
   /**
-   * The total amount of pages
+   * The total number of items.
+   */
+  totalItems?: number;
+  /**
+   * The total amount of pages.
    */
   totalPages: number;
 }

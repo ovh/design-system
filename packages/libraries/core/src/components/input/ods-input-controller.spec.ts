@@ -12,7 +12,7 @@ describe('spec:ods-input-controller', () => {
   let controller: OdsInputController;
   let component: OdsInput;
   let spyOnOnFormControlChange: jest.SpyInstance<void, jest.ArgsType<OdsInputController['onFormControlChange']>>;
-  let spyOnOnValueChange: jest.SpyInstance<void, jest.ArgsType<OdsInputController['onValueChange']>>;
+  let spyOnAssertValue: jest.SpyInstance<void, jest.ArgsType<OdsInputController['assertValue']>>;
   let spyOnOnDefaultValueChange: jest.SpyInstance<void, jest.ArgsType<OdsInputController['onDefaultValueChange']>>;
   let loggerSpyReferences: OdsLoggerSpyReferences;
 
@@ -73,14 +73,14 @@ describe('spec:ods-input-controller', () => {
         expect(spyOnOnFormControlChange).toHaveBeenCalledWith(formControl);
       });
 
-      it('should call onValueChange', () => {
+      it('should call assertValue', () => {
         const value = 'value';
         setup({ value });
-        spyOnOnValueChange = jest.spyOn(controller, 'onValueChange');
+        spyOnAssertValue = jest.spyOn(controller, 'assertValue');
         controller.beforeInit();
 
-        expect(spyOnOnValueChange).toHaveBeenCalledTimes(1);
-        expect(spyOnOnValueChange).toHaveBeenCalledWith(value);
+        expect(spyOnAssertValue).toHaveBeenCalledTimes(1);
+        expect(spyOnAssertValue).toHaveBeenCalledWith(value);
       });
 
       it('should call onDefaultValueChange', () => {

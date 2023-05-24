@@ -16,7 +16,7 @@ describe('e2e:osds-button', () => {
   let slotContent: E2EElement;
   let linkElement: E2EElement;
   let buttonElement: E2EElement;
-  let checkSubmit;
+  let checkSubmit: jest.Mock;
 
   afterEach(() => {
     jest.clearAllMocks();
@@ -47,11 +47,6 @@ describe('e2e:osds-button', () => {
     await page.exposeFunction('onSubmit', checkSubmit);
 
     await page.setContent(content);
-    await page.setContent(`
-      <osds-button ${OdsStringAttributes2Str(stringAttributes)}>
-        ${html}
-      </osds-button>
-    `);
     await page.evaluate(() => document.body.style.setProperty('margin', '4px'));
     el = await page.find('osds-button');
 
@@ -162,6 +157,14 @@ describe('e2e:osds-button', () => {
     it('should have a promotion color', async () => {
       await setup({ attributes: { color: OdsThemeColorIntent.promotion } });
       expect(await el.getProperty('color')).toBe(OdsThemeColorIntent.promotion);
+    });
+  });
+
+  describe('disabled', () => {
+    it('should not submit the form', async () => {
+      await setup({ attributes: { disabled: true, type: 'submit' }, html: `submit`, inForm: true });
+      await el.click();
+      expect(checkSubmit).not.toHaveBeenCalled();
     });
   });
 

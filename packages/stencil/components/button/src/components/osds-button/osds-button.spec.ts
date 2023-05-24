@@ -82,11 +82,13 @@ describe('spec:osds-button', () => {
     it('should have a button', async () => {
       await setup({});
       expect(htmlButton).toBeTruthy();
+      expect(htmlButton.getAttribute('role')).toBe('button');
     });
 
     it('should have a link when href attribute is set', async () => {
       await setup({ attributes: { href: 'test' } });
       expect(htmlLink).toBeTruthy();
+      expect(htmlLink.getAttribute('role')).toBe('link');
     });
   });
 

@@ -226,7 +226,8 @@ export class OsdsSelect implements OdsSelect<OdsStencilMethods<OdsSelectMethods>
   // Hide overlay when we click anywhere else in the window.
   @Listen('click', { target: 'window' })
   checkForClickOutside(ev: any) {
-    if (!this.dirty || this.el.contains(ev.target)) { // click on component, do nothing
+    // click on component, do nothing
+    if (!this.dirty || this.el.contains(ev.target) || this.el.shadowRoot?.contains(ev.originalTarget)) {
       return;
     }
     this.logger.log('[checkForClickOutside]', arguments, { validity: this.validityState });

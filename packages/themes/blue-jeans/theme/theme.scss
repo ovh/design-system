@@ -194,6 +194,17 @@
           width: calc(var(--ods-size-stack-08) * 11)
         ),
       ),
+      $spinner: (
+        sm: (
+          max-width: var(--ods-size-07)
+        ),
+        md: (
+          max-width: var(--ods-size-10)
+        ),
+        lg: (
+          max-width: calc(var(--ods-size-07) * 7)
+        ),
+      ),
       $skeleton: (
         xs: (width: calc(4.688rem * var(--ods-size-ratio))),
         sm: (width: calc(9.375rem * var(--ods-size-ratio))),

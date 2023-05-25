@@ -10,8 +10,9 @@
 @import './ods-theming-size.pagination';
 @import './ods-theming-size.radio-button';
 @import './ods-theming-size.range';
-@import './ods-theming-size.skeleton';
 @import './ods-theming-size.select';
+@import './ods-theming-size.skeleton';
+@import './ods-theming-size.spinner';
 @import './ods-theming-size.tabs';
 @import './ods-theming-size.text';
 @import './ods-theming-size.textarea';
@@ -33,8 +34,9 @@ $ods-size-definitions: (
   pagination: ods-get-pagination-component-size-definition(),
   radio-button: ods-get-radio-button-component-size-definition(),
   range: ods-get-range-component-size-definition(),
-  skeleton: ods-get-skeleton-component-size-definition(),
   select: ods-get-select-component-size-definition(),
+  skeleton: ods-get-skeleton-component-size-definition(),
+  spinner: ods-get-spinner-component-size-definition(),
   tabs: ods-get-tabs-component-size-definition(),
   text: ods-get-text-component-size-definition(),
   textarea: ods-get-textarea-component-size-definition(),

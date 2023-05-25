@@ -5864,7 +5864,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-component-dev@^12.1.0, @ovhcloud/ods-stencil-component-dev@workspace:packages/stencil/libraries/stencil-component-dev":
+"@ovhcloud/ods-stencil-component-dev@^12.0.5, @ovhcloud/ods-stencil-component-dev@^12.1.0, @ovhcloud/ods-stencil-component-dev@workspace:packages/stencil/libraries/stencil-component-dev":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-component-dev@workspace:packages/stencil/libraries/stencil-component-dev"
   dependencies:
@@ -5886,7 +5886,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-component@^12.1.0, @ovhcloud/ods-stencil-component@workspace:packages/stencil/libraries/stencil-component":
+"@ovhcloud/ods-stencil-component@^12.0.5, @ovhcloud/ods-stencil-component@^12.1.0, @ovhcloud/ods-stencil-component@workspace:packages/stencil/libraries/stencil-component":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-component@workspace:packages/stencil/libraries/stencil-component"
   dependencies:
@@ -6010,6 +6010,7 @@ __metadata:
     "@types/autoprefixer": ~10.2.0
     autoprefixer: ~10.3.7
     postcss: ^8.3.9
+    stencil-inline-svg: ^1.1.0
     typescript: 4.7.4
   peerDependencies:
     "@ovhcloud/ods-core": ">=2"
@@ -6581,6 +6582,46 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-stencil-spinner-react@workspace:packages/stencil/components/spinner/react":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-stencil-spinner-react@workspace:packages/stencil/components/spinner/react"
+  dependencies:
+    "@ovhcloud/ods-stencil-spinner": ^12.0.5
+    "@types/react": 17.0.37
+    "@types/react-dom": 17.0.11
+    react: 16.14.0
+    react-dom: 16.14.0
+    rimraf: ^3.0.2
+    tslib: "*"
+    typescript: 4.7.4
+  peerDependencies:
+    react: ">=16.8.6"
+    react-dom: ">=16.8.6"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-stencil-spinner-vue@workspace:packages/stencil/components/spinner/vue":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-stencil-spinner-vue@workspace:packages/stencil/components/spinner/vue"
+  dependencies:
+    "@ovhcloud/ods-stencil-spinner": ^12.0.5
+    rimraf: ^3.0.2
+    typescript: 4.7.4
+    vue: ^3.2.41
+  peerDependencies:
+    vue: ">=3"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-stencil-spinner@^12.0.5, @ovhcloud/ods-stencil-spinner@workspace:packages/stencil/components/spinner":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-stencil-spinner@workspace:packages/stencil/components/spinner"
+  dependencies:
+    "@ovhcloud/ods-stencil-component": ^12.0.5
+    "@ovhcloud/ods-stencil-component-dev": ^12.0.5
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-stencil-tabs-react@workspace:packages/stencil/components/tabs/react":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-tabs-react@workspace:packages/stencil/components/tabs/react"
@@ -6853,6 +6894,7 @@ __metadata:
     "@ovhcloud/ods-core": ^12.1.0
     "@ovhcloud/ods-library-dev": ^12.1.0
     "@ovhcloud/ods-theming": ^12.1.0
+    jest-transform-stub: ^2.0.0
   peerDependencies:
     "@ovhcloud/ods-core": ">=2"
     "@ovhcloud/ods-theming": ">=2"
@@ -23247,6 +23289,13 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"jest-transform-stub@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "jest-transform-stub@npm:2.0.0"
+  checksum: c46134257e5fb047f5952e4a4a1339925dd009da15aa8d3310ba1d3e4d22266ed6c675cd18e58c9d5ca2246718d6cc8ff00ea6a4b6f3b2a6b285b6426f6ae8fe
+  languageName: node
+  linkType: hard
+
 "jest-util@npm:^24.0.0, jest-util@npm:^24.9.0":
   version: 24.9.0
   resolution: "jest-util@npm:24.9.0"
@@ -32940,6 +32989,13 @@ fsevents@^1.2.7:
   version: 1.1.1
   resolution: "stealthy-require@npm:1.1.1"
   checksum: 6805b857a9f3a6a1079fc6652278038b81011f2a5b22cbd559f71a6c02087e6f1df941eb10163e3fdc5391ab5807aa46758d4258547c1f5ede31e6d9bfda8dd3
+  languageName: node
+  linkType: hard
+
+"stencil-inline-svg@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "stencil-inline-svg@npm:1.1.0"
+  checksum: 2c6732fabc74a61454834b877745f623722d670ce8351ab06bffbd1ad79ab5668bc1c888b242f0aef29f1f4353383d58a07cf3ac7bc0b46d789605f46a0b6904
   languageName: node
   linkType: hard
 

@@ -201,4 +201,63 @@ console.log('before clicks');
       });
     });
   });
+
+  describe('checkForClickOutside', () => {
+    let selectElement: E2EElement
+
+    async function isSelectOpen(): Promise<boolean> {
+      return page.evaluate(() => {
+        return !!document.querySelector('osds-content-addon osds-select.opened');
+      });
+    }
+
+    async function setupForClickOutside() {
+      const minimalAttributes: OdsSelectAttributes = OdsSelectCreateAttributes({});
+      const stringAttributes = OdsComponentAttributes2StringAttributes<OdsSelectAttributes>(minimalAttributes, odsSelectDefaultAttributes);
+
+      page = await newE2EPage();
+
+      await page.setContent(`
+        <div>
+          <osds-content-addon>
+            <span slot="main">
+              <osds-select ${OdsStringAttributes2Str(stringAttributes)}>
+                <osds-select-option value="42">value</osds-select-option>
+              </osds-select>
+            </span>
+
+            <span slot="bottom">
+              <p>Inside parent element</p>
+            </span>
+          </osds-content-addon>
+          <button>Outside element</button>
+        </div>
+      `);
+      await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
+
+      selectElement = await page.find('osds-content-addon osds-select')
+    }
+
+    it('should close the tooltip on outside click', async () => {
+      await setupForClickOutside();
+      const outsideElement = await page.find('button');
+
+      await selectElement.click();
+      expect(await isSelectOpen()).toBe(true);
+
+      await outsideElement.click();
+      expect(await isSelectOpen()).toBe(false);
+    });
+
+    it('should close the tooltip on outside click on same parent DOM', async () => {
+      await setupForClickOutside();
+      const outsideElement = await page.find('osds-content-addon p');
+
+      await selectElement.click();
+      expect(await isSelectOpen()).toBe(true);
+
+      await outsideElement.click();
+      expect(await isSelectOpen()).toBe(false);
+    });
+  });
 });

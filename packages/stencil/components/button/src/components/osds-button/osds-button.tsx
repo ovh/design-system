@@ -100,6 +100,7 @@ export class OsdsButton implements OdsButton<OdsStencilMethods<OdsButtonMethods>
           class: 'button',
           href: this.href,
           part: 'button',
+          role: 'link',
           tabindex: -1,
           target: this.target,
           rel: this.rel,
@@ -115,6 +116,7 @@ export class OsdsButton implements OdsButton<OdsStencilMethods<OdsButtonMethods>
           type: this.type,
           disabled: this.disabled,
           part: 'button',
+          role: 'button',
           tabindex: -1,
         }}>
           {content}

@@ -30,4 +30,23 @@ describe('spec:osds-breadcrumb-item', () => {
     expect(root?.shadowRoot).toBeTruthy();
     expect(instance).toBeTruthy();
   });
+
+  describe('attributes', () => {
+    const config = {
+      page: () => page,
+      instance: () => instance,
+      setup,
+    };
+
+    describe('active', () => {
+      odsUnitTestAttribute<OdsBreadcrumbItemAttributes, 'active'>({
+        ...getAttributeContextOptions<OdsBreadcrumbItemAttributes, OsdsBreadcrumbItem, 'active'>({
+          name: 'active',
+          list: [false, true],
+          defaultValue: odsBreadcrumbItemDefaultAttributes.active,
+          ...config,
+        }),
+      });
+    });
+  });
 });

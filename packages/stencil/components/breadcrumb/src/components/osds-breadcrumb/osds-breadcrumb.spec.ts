@@ -48,17 +48,72 @@ describe('spec:osds-breadcrumb', () => {
       instance: () => instance,
       setup,
     };
+
     it('should have a slot', async () => {
       await setup({ attributes: {}, html: `<slot></slot>` });
       expect(startSlot).toBeTruthy();
     });
+
     it('should have a breadcrumb-item', async () => {
       await setup();
       expect(ulElement).toBeTruthy();
       expect(await page.root?.shadowRoot.querySelectorAll('osds-breadcrumb-item')).toBeTruthy();
     });
 
-    // Attributes Unit testing
+    xit('should toggle collapsed on link click', async () => {
+      await setup();
+      const link = await page.root?.shadowRoot.querySelector('osds-link');
+      const toggleCollapsedSpy = jest.spyOn(instance, 'toggleCollapsed');
+
+      link?.click();
+      await page.waitForChanges();
+
+      expect(toggleCollapsedSpy).toHaveBeenCalled();
+    });
+
+    xit('should emit odsBreadcrumbItemSelection event on link click', async () => {
+      await setup();
+      const link = await page.root?.shadowRoot.querySelector('osds-link');
+      const odsBreadcrumbItemSelectionSpy = jest.spyOn(instance.odsBreadcrumbItemSelection, 'emit');
+
+      link?.click();
+      await page.waitForChanges();
+
+      expect(odsBreadcrumbItemSelectionSpy).toHaveBeenCalled();
+    });
+
+    xit('should toggle collapsed on Enter or Space key press', async () => {
+      await setup();
+      const keyUpEvent = new KeyboardEvent('keyup', { key: 'Enter' });
+      const toggleCollapsedSpy = jest.spyOn(instance, 'toggleCollapsed');
+
+      page.doc.dispatchEvent(keyUpEvent);
+      await page.waitForChanges();
+
+      expect(toggleCollapsedSpy).toHaveBeenCalled();
+    });
+
+    xit('should emit odsBreadcrumbItemSelection event on Enter or Space key press', async () => {
+      await setup();
+      const keyUpEvent = new KeyboardEvent('keyup', { key: 'Enter' });
+      const odsBreadcrumbItemSelectionSpy = jest.spyOn(instance.odsBreadcrumbItemSelection, 'emit');
+
+      page.doc.dispatchEvent(keyUpEvent);
+      await page.waitForChanges();
+
+      expect(odsBreadcrumbItemSelectionSpy).toHaveBeenCalled();
+    });
+
+    xit('should emit odsBreadcrumbItemSelection event on Tab key press', async () => {
+      await setup();
+      const keyUpEvent = new KeyboardEvent('keyup', { key: 'Tab' });
+      const odsBreadcrumbItemSelectionSpy = jest.spyOn(instance.odsBreadcrumbItemSelection, 'emit');
+
+      page.doc.dispatchEvent(keyUpEvent);
+      await page.waitForChanges();
+
+      expect(odsBreadcrumbItemSelectionSpy).toHaveBeenCalled();
+    });
   });
 
   describe('attributes', () => {

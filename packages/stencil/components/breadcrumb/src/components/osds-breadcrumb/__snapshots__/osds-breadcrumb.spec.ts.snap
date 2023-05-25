@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OsdsBreadcrumb should render 1`] = `
+<osds-breadcrumb role="navigation">
+  <mock:shadow-root>
+    <ul>
+      <slot></slot>
+    </ul>
+  </mock:shadow-root>
+  <osds-breadcrumb-item>
+    Home
+  </osds-breadcrumb-item>
+  <osds-breadcrumb-item>
+    Category 1
+  </osds-breadcrumb-item>
+  <osds-breadcrumb-item>
+    Category 2
+  </osds-breadcrumb-item>
+  <osds-breadcrumb-item>
+    Product
+  </osds-breadcrumb-item>
+</osds-breadcrumb>
+`;

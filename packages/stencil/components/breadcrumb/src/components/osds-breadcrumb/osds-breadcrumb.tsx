@@ -1,4 +1,4 @@
-import { Component, Element, Host, h, State, Prop, Listen } from '@stencil/core';
+import { Component, Element, Host, h, State, Prop, Listen, Event, EventEmitter } from '@stencil/core';
 import { OdsBreadcrumb, OdsBreadcrumbController, odsBreadcrumbDefaultAttributes, OdsBreadcrumbEvents, OdsBreadcrumbMethods, OdsIconName, OdsIconSize } from '@ovhcloud/ods-core';
 import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libraries/stencil-core';
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
@@ -10,13 +10,15 @@ import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 })
 export class OsdsBreadcrumb implements OdsBreadcrumb<OdsStencilMethods<OdsBreadcrumbMethods>, OdsStencilEvents<OdsBreadcrumbEvents>> {
   @Element() el!: HTMLElement;
-
   controller!: OdsBreadcrumbController;
 
   /** @see odsBreadcrumbDefaultAttributes.collapsed */
   @Prop({ reflect: true, mutable: true }) collapsed = odsBreadcrumbDefaultAttributes.collapsed;
 
   @State() breadcrumbArray: Array<Element> = [];
+
+  /** Emitted when the user clicks on a breadcrumb item */
+  @Event() odsBreadcrumbItemSelection!: EventEmitter<void>;
 
   componentWillLoad() {
     const items = this.getBreadcrumbItems();
@@ -37,16 +39,39 @@ export class OsdsBreadcrumb implements OdsBreadcrumb<OdsStencilMethods<OdsBreadc
     this.controller.toggleCollapsed();
   };
 
-  @Listen('keydown')
-  handleKeyDown(event: KeyboardEvent) {
+  @Listen('keyup')
+  handleKeyUp(event: KeyboardEvent) {
     if (event.key === 'Enter' || event.key === ' ') {
-      this.toggleCollapsed();
+      if (this.breadcrumbArray.length > 0) {
+        requestAnimationFrame(() => {
+          const activeElement = document.activeElement as HTMLElement;
+          const isLastBreadcrumbItem = activeElement === this.breadcrumbArray[this.breadcrumbArray.length - 1];
+
+          if (isLastBreadcrumbItem) {
+            event.preventDefault();
+            this.toggleCollapsed();
+            this.odsBreadcrumbItemSelection.emit();
+          }
+        });
+      }
+    } else if (event.key === 'Tab' && this.breadcrumbArray.length > 0) {
+      requestAnimationFrame(() => {
+        const activeElement = document.activeElement as HTMLElement;
+        const isLastBreadcrumbItem = activeElement === this.breadcrumbArray[this.breadcrumbArray.length - 1];
+
+        if (!isLastBreadcrumbItem) {
+          this.odsBreadcrumbItemSelection.emit();
+        }
+      });
     }
+    console.log('active element', document.activeElement);
   }
 
   handleLinkClick = () => {
     this.toggleCollapsed();
+    this.odsBreadcrumbItemSelection.emit();
   };
+
   render() {
     return (
       <Host role="navigation">

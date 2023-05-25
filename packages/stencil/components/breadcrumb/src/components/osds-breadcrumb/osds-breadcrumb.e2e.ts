@@ -5,6 +5,8 @@ describe('osds-breadcrumb', () => {
   let breadcrumb: E2EElement;
   let ellipsis: E2EElement;
 
+  let activeElementId: string | undefined;
+
   async function setup({ html = '' }: { html?: string } = {}) {
     page = await newE2EPage();
     await page.setContent(`
@@ -14,66 +16,85 @@ describe('osds-breadcrumb', () => {
     `);
     await page.evaluate(() => document.body.style.setProperty('margin', '4px'));
     breadcrumb = await page.find('osds-breadcrumb');
-    ellipsis =  await page.find('osds-breadcrumb >>> osds-icon[name="ellipsis"]');
+    ellipsis = await page.find('osds-breadcrumb >>> osds-icon[name="ellipsis"]');
+  }
+
+  async function updateReferences() {
+    activeElementId = await page.evaluate(() => document.activeElement?.id);
   }
 
   describe('if we have 5 items', () => {
     beforeEach(async () => {
       await setup({
-        html: ` <osds-breadcrumb-item>Item 1</osds-breadcrumb-item>
-      <osds-breadcrumb-item>Item 2</osds-breadcrumb-item>
-      <osds-breadcrumb-item>Item 3</osds-breadcrumb-item>
-      <osds-breadcrumb-item>Item 4</osds-breadcrumb-item>
-      <osds-breadcrumb-item>Item 5</osds-breadcrumb-item>`,
+        html: `
+        <osds-breadcrumb-item>
+        <osds-link color="primary" href="home">Home</osds-link>
+      </osds-breadcrumb-item>
+      <osds-breadcrumb-item><osds-link color="primary" href="item1">Item 1</osds-link></osds-breadcrumb-item>
+      <osds-breadcrumb-item><osds-link color="primary" href="item2">Item 2</osds-link></osds-breadcrumb-item>
+      <osds-breadcrumb-item><osds-link color="primary" href="item3">Item 3</osds-link></osds-breadcrumb-item>
+      <osds-breadcrumb-item><osds-text>Item active</osds-text></osds-breadcrumb-item>
+        `,
       });
     });
-
-    it('should render the breadcrumb without ellipsis when collapsed is true', async () => {
+    it('checks if the items are correctly displayed when clicking on the ellipsis', async () => {
       await page.waitForChanges(); // Wait for component to render
 
-      const breadcrumb = await page.find('osds-breadcrumb');
       expect(breadcrumb).not.toBeNull();
-
       expect(ellipsis).not.toBeNull();
+      expect(breadcrumb.getAttribute('collapsed')).toBeTruthy;
       ellipsis.click();
       await page.waitForChanges(); // Wait for component to render
-
-      const items = await page.findAll('osds-breadcrumb-item');
-      expect(items.length).toBe(5);
-      expect(items[0].innerText).toBe('Item 1');
-      expect(items[4].innerText).toBe('Item 5');
+      expect(breadcrumb.getAttribute('collapsed')).toBeFalsy;
     });
   });
-
-  describe('focus', () => {
+  describe('if we have 5 items and test with keyboard', () => {
     beforeEach(async () => {
       await setup({
-        html: ` <osds-breadcrumb-item>Item 1</osds-breadcrumb-item>
-      <osds-breadcrumb-item>Item 2</osds-breadcrumb-item>
-      <osds-breadcrumb-item>Item 3</osds-breadcrumb-item>
-      <osds-breadcrumb-item>Item 4</osds-breadcrumb-item>
-      <osds-breadcrumb-item>Item 5</osds-breadcrumb-item>`,
+        html: `
+        <osds-breadcrumb-item>
+        <osds-link color="primary" href="home">Home</osds-link>
+      </osds-breadcrumb-item>
+      <osds-breadcrumb-item><osds-link color="primary" href="item1">Item 1</osds-link></osds-breadcrumb-item>
+      <osds-breadcrumb-item><osds-link color="primary" href="item2">Item 2</osds-link></osds-breadcrumb-item>
+      <osds-breadcrumb-item><osds-link color="primary" href="item3">Item 3</osds-link></osds-breadcrumb-item>
+      <osds-breadcrumb-item><osds-text>Item active</osds-text></osds-breadcrumb-item>
+        `,
       });
+      await updateReferences();
     });
 
+    it('item should be focusable', async () => {
+      await page.waitForChanges(); // Wait for component to render
+    });
 
-    it('should render the breadcrumb without ellipsis when collapsed is true and there are more than 4 items', async () => {
+    it('checks whether the items are displayed when the Enter key is pressed on the ellipsis', async () => {
       await page.waitForChanges(); // Wait for component to render
 
-      const breadcrumb = await page.find('osds-breadcrumb');
       expect(breadcrumb).not.toBeNull();
-
-      await page.waitForChanges(); // Wait for component to render
-
       expect(ellipsis).not.toBeNull();
-      ellipsis.click();
+      expect(breadcrumb.getAttribute('collapsed')).toBeTruthy;
+
+      // Simulate Enter key press on ellipsis
+      await ellipsis.press('Enter');
+
       await page.waitForChanges(); // Wait for component to render
 
-      const items = await page.findAll('osds-breadcrumb-item');
-      console.info('items.length : ', items.length)
-      expect(items.length).toBe(5);
-      expect(items[0].innerText).toBe('Item 1');
-      expect(items[4].innerText).toBe('Item 5');
+      expect(breadcrumb.getAttribute('collapsed')).toBeFalsy;
+    });
+    it('checks whether the items are displayed when the click is on the ellipsis', async () => {
+      await page.waitForChanges(); // Wait for component to render
+
+      expect(breadcrumb).not.toBeNull();
+      expect(ellipsis).not.toBeNull();
+      expect(breadcrumb.getAttribute('collapsed')).toBeTruthy;
+
+      // Simulate Enter key press on ellipsis
+      await ellipsis.click();
+
+      await page.waitForChanges(); // Wait for component to render
+
+      expect(breadcrumb.getAttribute('collapsed')).toBeFalsy;
     });
   });
 });

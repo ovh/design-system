@@ -89,18 +89,22 @@ export class OdsInputController extends OdsComponentController<OdsInput> {
 
   beforeInit(): void {
     this.onFormControlChange(this.component.formControl);
-    this.onValueChange(this.component.value);
+    this.assertValue(this.component.value);
     this.onDefaultValueChange(/*this.defaultValue*/);
     if (!this.component.value && this.component.value !== 0) {
       this.component.value = this.component.defaultValue;
     }
   }
 
-  onValueChange(value: OdsInputValue, oldValue?: OdsInputValue) {
+  onValueChange(value: OdsInputValue, oldValue?: OdsInputValue): void {
     this.logger.debug(`[input=${this.component.value}]`, 'value changed', { value, oldValue });
+    this.assertValue(value);
+    this.component.emitChange(value, oldValue);
+  }
+
+  assertValue(value: OdsInputValue): void {
     this.validateValue(value as number);
     this.updateInputCustomValidation();
-    this.component.emitChange(value, oldValue);
   }
 
   onDefaultValueChange(defaultValue?: OdsInputValue) {

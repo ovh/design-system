@@ -30,19 +30,17 @@ describe('e2e:osds-button', () => {
 
   describe('screenshots', () => {
     // Todo : add active behaviour on top of hover and focus
-    [() => {}, () => el.setProperty('contrasted', true), () => el.setProperty('disabled', true), () => {el.setProperty('contrasted', true); el.setProperty('disabled', true)} ].forEach((action) => {
+    [() => {}, () => el.setProperty('contrasted', true), () => el.setProperty('disabled', true), () => {el.setProperty('contrasted', true); el.setProperty('disabled', true)},() => el.setProperty('circle', true)].forEach((action) => {
       [() => {}, () => el.hover(), () => el.focus()].forEach((behaviour) => {
         OdsThemeColorIntentList.forEach((color) => {
           OdsButtonSizeList.forEach((size) => {
             OdsButtonVariantList.forEach((variant) => {
-              [false, true].forEach((circle) => {
-                it([color, variant, size, circle, action, behaviour].join(', '), async () => {
+                it([color, variant, size, action, behaviour].join(', '), async () => {
                   await setup({
                     attributes: {
                       color,
                       size,
                       variant,
-                      circle,
                     },
                     html: `Button`
                   });
@@ -57,7 +55,6 @@ describe('e2e:osds-button', () => {
                   await page.setViewport({ width: 600, height: 600 });
                   const results = await page.compareScreenshot('button', { fullPage: false, omitBackground: true });
                   expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 })
-                });
               });
             });
 

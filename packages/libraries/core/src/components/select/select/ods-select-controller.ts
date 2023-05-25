@@ -29,6 +29,30 @@ export class OdsSelectController extends OdsComponentController<OdsSelect> {
     };
   }
 
+  syncReferences(): void {
+    if (this.component.surface && this.component.anchor) {
+      this.component.surface.setAnchorElement(this.component.anchor);
+    }
+  }
+
+  /**
+   * Method to close the surface
+   */
+  closeSurface(): void {
+    if (this.component.surface && this.component.surface.opened) {
+      this.component.surface.close();
+    }
+  }
+
+  /**
+   * Method to open the surface
+   */
+  openSurface(): void {
+    if (this.component.surface) {
+      this.component.surface.open();
+    }
+  }
+
   /**
    * if the value of the component is required:
    * it returns true if the value is undefined.

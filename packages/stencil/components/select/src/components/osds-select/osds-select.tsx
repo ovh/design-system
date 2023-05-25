@@ -19,6 +19,10 @@ import { OsdsSelectOption } from '../osds-select-option/osds-select-option';
 import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libraries/stencil-core';
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 import { OdsSelectOptionClickEventDetail } from '@ovhcloud/ods-core/src/components/select/select-option/ods-select-option-click-event-detail';
+import { ocdkDefineCustomElements, ocdkIsSurface, OcdkSurface } from '@ovhcloud/ods-cdk';
+
+// define custom elements from CDK
+ocdkDefineCustomElements()
 
 /**
  * @slot (placeholder) - Select placeholder
@@ -31,6 +35,8 @@ import { OdsSelectOptionClickEventDetail } from '@ovhcloud/ods-core/src/componen
 export class OsdsSelect implements OdsSelect<OdsStencilMethods<OdsSelectMethods>, OdsStencilEvents<OdsSelectEvents>> {
   private logger = new OdsLogger('OsdsSelect');
   controller: OdsSelectController = new OdsSelectController(this);
+  anchor!: HTMLDivElement;
+  surface: OcdkSurface | undefined = undefined;
 
   @Element() el!: HTMLStencilElement;
 
@@ -116,7 +122,17 @@ export class OsdsSelect implements OdsSelect<OdsStencilMethods<OdsSelectMethods>
    * in order to synchronize the already set value with the placeholder
    */
   async componentDidLoad() {
+    if (this.surface) {
+      this.surface.opened = this.opened;
+    }
     await this.updateSelectOptionStates(this.value);
+  }
+
+  @Watch('opened')
+  openedChanged(opened: boolean) {
+    if (this.surface) {
+      this.surface.opened = opened;
+    }
   }
 
   @Watch('value')
@@ -221,7 +237,7 @@ export class OsdsSelect implements OdsSelect<OdsStencilMethods<OdsSelectMethods>
     this.logger.log('[handleSelectClick]', arguments, { validity: this.validityState });
     if (!this.disabled) {
       this.dirty = true;
-      this.opened = !this.opened;
+      this.controller.openSurface();
     }
   }
 
@@ -234,7 +250,7 @@ export class OsdsSelect implements OdsSelect<OdsStencilMethods<OdsSelectMethods>
       return;
     }
     this.logger.log('[checkForClickOutside]', arguments, { validity: this.validityState });
-    this.opened = false;
+    this.controller.closeSurface();
     if (this.dirty) {
       this.validityState = this.controller.getValidity();
     }
@@ -245,14 +261,23 @@ export class OsdsSelect implements OdsSelect<OdsStencilMethods<OdsSelectMethods>
     this.logger.log(`[select=${this.value}]`, 'received odsSelectOptionClick event', { detail: event.detail });
     if (event.detail.value !== this.value) {
       this.changeValue(event.detail.value);
+      this.controller.closeSurface();
     }
   }
 
   @Watch('disabled')
   closeWhenDisabled(disabled?: boolean) {
     if (disabled) {
-      this.opened = false;
+      this.controller.closeSurface();
     }
+  }
+  
+  syncReferences() {
+    this.controller.syncReferences()
+  }
+
+  private get isSurfaceOpen() {
+    return this.surface?.opened;
   }
 
   private hasError(): boolean {
@@ -261,7 +286,7 @@ export class OsdsSelect implements OdsSelect<OdsStencilMethods<OdsSelectMethods>
 
   render() {
     const {
-      opened,
+      isSurfaceOpen,
       ariaLabel,
       ariaLabelledby,
       disabled,
@@ -272,7 +297,7 @@ export class OsdsSelect implements OdsSelect<OdsStencilMethods<OdsSelectMethods>
 
     return (
       <Host {...{
-        class: `${disabled ? 'disabled' : ''}${opened ? ' opened' : ''}${this.hasError() ? ' ods-error' : ''}`,
+        class: `${disabled ? 'disabled' : ''}${isSurfaceOpen ? ' opened' : ''}${this.hasError() ? ' ods-error' : ''}`,
         ariaLabel,
         'aria-labelledby': ariaLabelledby,
         flex,
@@ -283,21 +308,33 @@ export class OsdsSelect implements OdsSelect<OdsStencilMethods<OdsSelectMethods>
       }}
       >
         <div {...{
-          class: `select-trigger${opened ? ' opened' : ''}${this.hasError() ? ' error' : ''}`,
+          class: `select-trigger${isSurfaceOpen ? ' opened' : ''}${this.hasError() ? ' error' : ''}`,
+          ref: (el?: HTMLDivElement) => {
+            this.anchor = el as HTMLDivElement;
+            this.syncReferences()
+          },
         }}>
           <div class={'label'}>
             { (!value) ?
-            <slot name={'placeholder'}>&nbsp;</slot>
-              : this.selectedOptionLabel }
+              <slot name={'placeholder'}>&nbsp;</slot>
+              : this.selectedOptionLabel
+            }
           </div>
           <osds-icon size={OdsIconSize.sm} color={color} name={OdsIconName.CHEVRON_DOWN}></osds-icon>
         </div>
-
-        <div {...{
+        <ocdk-surface ref={(el: HTMLElement) => {
+          if (ocdkIsSurface(el)) {
+            this.surface = el as OcdkSurface;
+            this.syncReferences()
+          }
+        }}>
+          <slot></slot>
+        </ocdk-surface>
+        {/* <div {...{
           class: `overlay${opened ? ' opened' : ''}${this.hasError() ? ' error' : ''}`,
         }}>
           <slot></slot>
-        </div>
+        </div> */}
       </Host>
     );
   }

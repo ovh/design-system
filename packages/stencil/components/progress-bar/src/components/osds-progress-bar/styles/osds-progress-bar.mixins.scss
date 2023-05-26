@@ -1,0 +1,19 @@
+// general mixins and functions for the component
+
+@mixin osds-progress-bar-on-selected-host() {
+  :host(&) {
+    @content;
+  }
+}
+
+@mixin osds-progress-bar-on-main-element() {
+  .progress-bar__wrapper {
+    @content;
+  }
+}
+
+@mixin osds-progress-bar-on-progress() {
+  .progress-bar__progress {
+    @content;
+  }
+}

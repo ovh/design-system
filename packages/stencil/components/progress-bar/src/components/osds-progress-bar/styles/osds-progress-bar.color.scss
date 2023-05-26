@@ -1,0 +1,20 @@
+@import '~@ovhcloud/ods-theming/color/ods-component-color';
+@import './osds-progress-bar.mixins';
+
+// Main CSS color theme mixin
+@mixin osds-progress-bar-theme-color() {
+  /** base colors */
+  :host {
+    border-color: transparent;
+  }
+
+  @include osds-progress-bar-on-main-element() {
+    background-color: ods-get-color-variable($palette-name: 'blue', $hue: '100');
+    border-radius: var(--ods-size-03);
+    overflow: hidden;
+  }
+
+  @include osds-progress-bar-on-progress() {
+    background-color: ods-get-color-variable($palette-name: 'blue', $hue: '500');
+  }
+}

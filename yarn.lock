@@ -6421,6 +6421,46 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-stencil-progress-bar-react@workspace:packages/stencil/components/progress-bar/react":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-stencil-progress-bar-react@workspace:packages/stencil/components/progress-bar/react"
+  dependencies:
+    "@ovhcloud/ods-stencil-progress-bar": ^12.0.5
+    "@types/react": 17.0.37
+    "@types/react-dom": 17.0.11
+    react: 16.14.0
+    react-dom: 16.14.0
+    rimraf: ^3.0.2
+    tslib: "*"
+    typescript: 4.7.4
+  peerDependencies:
+    react: ">=16.8.6"
+    react-dom: ">=16.8.6"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-stencil-progress-bar-vue@workspace:packages/stencil/components/progress-bar/vue":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-stencil-progress-bar-vue@workspace:packages/stencil/components/progress-bar/vue"
+  dependencies:
+    "@ovhcloud/ods-stencil-progress-bar": ^12.0.5
+    rimraf: ^3.0.2
+    typescript: 4.7.4
+    vue: ^3.2.41
+  peerDependencies:
+    vue: ">=3"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-stencil-progress-bar@^12.0.5, @ovhcloud/ods-stencil-progress-bar@workspace:packages/stencil/components/progress-bar":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-stencil-progress-bar@workspace:packages/stencil/components/progress-bar"
+  dependencies:
+    "@ovhcloud/ods-stencil-component": ^12.0.5
+    "@ovhcloud/ods-stencil-component-dev": ^12.0.5
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-stencil-quantity-react@workspace:packages/stencil/components/quantity/react":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-quantity-react@workspace:packages/stencil/components/quantity/react"

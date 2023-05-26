@@ -1,10 +1,13 @@
-import { E2EElement, E2EPage, newE2EPage } from '@stencil/core/testing';
-import { OdsPaginationAttributes, odsPaginationDefaultAttributes, OdsComponentAttributes2StringAttributes } from '@ovhcloud/ods-core';
+import { E2EPage, newE2EPage } from '@stencil/core/testing';
+import {
+  OdsPaginationAttributes,
+  odsPaginationDefaultAttributes,
+  OdsComponentAttributes2StringAttributes,
+} from '@ovhcloud/ods-core';
 import { OdsCreateAttributes, OdsStringAttributes2Str, odsPaginationBaseAttributes } from '@ovhcloud/ods-testing';
 
 describe('e2e:osds-pagination', () => {
   let page: E2EPage;
-  let el: E2EElement;
 
   async function setup({ attributes = { totalPages: 21, current: 5 }, html = `` }: { attributes?: Partial<OdsPaginationAttributes>; html?: string } = {}) {
     const minimalAttributes: OdsPaginationAttributes = OdsCreateAttributes(attributes, odsPaginationBaseAttributes);
@@ -17,7 +20,6 @@ describe('e2e:osds-pagination', () => {
       </osds-pagination>
     `);
     await page.evaluate(() => document.body.style.setProperty('margin', '4px'));
-    el = await page.find('osds-pagination');
   }
 
   describe('screenshots of totalPages of 21', () => {
@@ -81,5 +83,21 @@ describe('e2e:osds-pagination', () => {
         });
       });
     }
+  });
+
+  describe('screenshots with total items', () => {
+    it('should not display the per-page select if less than 10 items', async () => {
+      await setup({ attributes: { current: 1, totalItems: 5 } });
+
+      const results = await page.compareScreenshot('pagination', { fullPage: false, omitBackground: true });
+      expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
+    });
+
+    it('should not the per-page select if more than 10 items', async () => {
+      await setup({ attributes: { current: 1, totalItems: 25 } });
+
+      const results = await page.compareScreenshot('pagination', { fullPage: false, omitBackground: true });
+      expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
+    });
   });
 });

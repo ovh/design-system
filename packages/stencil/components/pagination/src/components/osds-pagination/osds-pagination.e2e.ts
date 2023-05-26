@@ -1,6 +1,12 @@
 import { E2EElement, E2EPage, newE2EPage } from '@stencil/core/testing';
 
-import { OdsComponentAttributes2StringAttributes, OdsPaginationAttributes, odsPaginationDefaultAttributes, OdsPaginationChangedEventDetail } from '@ovhcloud/ods-core';
+import {
+  OdsComponentAttributes2StringAttributes,
+  OdsPaginationAttributes,
+  odsPaginationDefaultAttributes,
+  OdsPaginationChangedEventDetail,
+  odsPaginationMinPerPageOptions
+} from '@ovhcloud/ods-core';
 import { OdsStringAttributes2Str, OdsCreateAttributes, odsPaginationBaseAttributes } from '@ovhcloud/ods-testing';
 
 describe('e2e:osds-pagination', () => {
@@ -8,15 +14,15 @@ describe('e2e:osds-pagination', () => {
   let el: E2EElement;
   let osdsButtonPaginationPageButtonElement: E2EElement;
 
-  async function setup({ attributes = {}, onPage }: { attributes?: Partial<OdsPaginationAttributes>; html?: string; onPage?: ({ page }: { page: E2EPage }) => void } = {}) {
+  async function setup({ attributes = {}, html = '' }: { attributes?: Partial<OdsPaginationAttributes>, html?: string } = {}) {
     const minimalAttributes: OdsPaginationAttributes = OdsCreateAttributes(attributes, odsPaginationBaseAttributes);
     const stringAttributes = OdsComponentAttributes2StringAttributes<OdsPaginationAttributes>(minimalAttributes, odsPaginationDefaultAttributes);
 
     page = await newE2EPage();
-    onPage && onPage({ page });
 
     await page.setContent(`
       <osds-pagination ${OdsStringAttributes2Str(stringAttributes)}>
+        ${html}
       </osds-pagination>
     `);
     await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
@@ -204,6 +210,96 @@ describe('e2e:osds-pagination', () => {
 
       expect(odsPaginationChanged).toHaveReceivedEventDetail(expected);
       expect(odsPaginationChanged).toHaveReceivedEventTimes(1);
+    });
+  });
+
+  describe('render with totalItems set', () => {
+    let perPageSelectElement: E2EElement;
+
+    it('should not show the select if the totalItems < 10', async () => {
+      await setup({ attributes: { current: 1, totalItems: 5 } });
+
+      perPageSelectElement = await page.find('osds-pagination >>> osds-select');
+
+      expect(perPageSelectElement).toBe(null);
+    });
+
+    it('should show all the default step if totalItems >= 300', async () => {
+      await setup({ attributes: { current: 1, totalItems: 500 } });
+
+      perPageSelectElement = await page.find('osds-pagination >>> osds-select');
+      expect(perPageSelectElement).toBeDefined();
+      expect(perPageSelectElement.getAttribute('value')).toBe(odsPaginationMinPerPageOptions[0].toString());
+
+      const perPageSelectItemElements = await perPageSelectElement.findAll('osds-select-option');
+      expect(perPageSelectItemElements.length).toBe(odsPaginationMinPerPageOptions.length);
+
+      const selectValues = perPageSelectItemElements
+        .map((el) => el.getAttribute('value'))
+        .map((attr) => parseInt(attr, 10));
+      expect(selectValues).toEqual(odsPaginationMinPerPageOptions);
+    });
+
+    it('should show all default steps that are inferior to totalItems and totalItems as last step if totalItems > 10 and totalItems < 300', async () => {
+      const dummyTotalItems = 30
+      await setup({ attributes: { current: 1, totalItems: dummyTotalItems } });
+
+      perPageSelectElement = await page.find('osds-pagination >>> osds-select');
+      expect(perPageSelectElement).toBeDefined();
+      expect(perPageSelectElement.getAttribute('value')).toBe(odsPaginationMinPerPageOptions[0].toString());
+
+      const perPageSelectItemElements = await perPageSelectElement.findAll('osds-select-option');
+      expect(perPageSelectItemElements.length).toBe(3);
+
+      const selectValues = perPageSelectItemElements
+        .map((el) => el.getAttribute('value'))
+        .map((attr) => parseInt(attr, 10));
+      expect(selectValues).toEqual([
+        odsPaginationMinPerPageOptions[0],
+        odsPaginationMinPerPageOptions[1],
+        dummyTotalItems,
+      ]);
+    });
+  });
+
+  // FIXME seems like testing slot text content is not possible for now as assignedNodes function is not available
+  //  (see https://github.com/ionic-team/stencil/issues/2830)
+  describe('render with total items slots set', () => {
+    const dummyTotalItems = 5;
+
+    it('should show both slots and the totalItems number', async () => {
+      await setup({
+        attributes: { current: 1, totalItems: dummyTotalItems },
+        html: `
+          <span slot="before-total-items">of&nbsp;</span>
+          <span slot="after-total-items">&nbsp;results</span>
+        `
+      });
+
+      const totalItemsTextElement = await page.find('osds-pagination >>> osds-text');
+      expect(totalItemsTextElement).toBeDefined();
+      expect(totalItemsTextElement.innerText).toBe(dummyTotalItems.toString());
+
+      const textSlotElements = await totalItemsTextElement.findAll('slot');
+      expect(textSlotElements.length).toBe(2);
+    });
+  });
+
+  describe('per page change', () => {
+    let pageItemElements: E2EElement[];
+
+    it('should change the totalPages according to the selected step', async () => {
+      await setup({ attributes: { current: 1, totalItems: 20 } });
+
+      pageItemElements = await page.findAll('osds-pagination >>> ul > li:not([class="arrows"])');
+      expect(pageItemElements.length).toBe(2);
+
+      const selectElement = await page.find('osds-pagination >>> osds-select');
+      selectElement.setProperty('value', 20);
+      await page.waitForChanges();
+
+      pageItemElements = await page.findAll('osds-pagination >>> ul > li:not([class="arrows"])');
+      expect(pageItemElements.length).toBe(1);
     });
   });
 });

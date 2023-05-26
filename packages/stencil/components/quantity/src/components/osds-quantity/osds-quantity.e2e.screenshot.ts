@@ -39,7 +39,7 @@ describe('e2e:osds-quantity', () => {
         await setup({ attributes: {}, html: `
         <osds-quantity id="quantity-1">
           <osds-button slot="minus" color="primary" size="sm">-</osds-button>
-          <osds-input type="number" color="primary" min="1" max="3" step="1" value="2"></osds-input>
+          <osds-input type="number" color="primary" min="1" max="3" step="1" value="2" style="width: 45px"></osds-input>
           <osds-button slot="plus" color="primary" size="sm">+</osds-button>
         </osds-quantity>
         ` });
@@ -59,7 +59,7 @@ describe('e2e:osds-quantity', () => {
         await setup({ attributes: {}, html: `
         <osds-quantity id="quantity-1">
           <button slot="minus">-</button>
-          <input type="number"min="1" max="3" step="1" value="2"/>
+          <input type="number"min="1" max="3" step="1" value="2" style="width: 45px"/>
           <button slot="plus">+</button>
         </osds-quantity>
         ` });

@@ -139,7 +139,7 @@ export class OdsPaginationController extends OdsComponentController<OdsPaginatio
 
   onKeyDown(event: KeyboardEvent, page: number) {
     if (event.code === 'Enter' || event.code === 'Space') {
-      event.preventDefault();
+      event.preventDefault(); // to avoid space scrolling the page
       this.setPageIndex(page);
     }
   }

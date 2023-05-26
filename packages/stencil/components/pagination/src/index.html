@@ -82,7 +82,7 @@
 
   <h3>Total items < 10</h3>
   <div class="row">
-    <osds-pagination current=1 total-items=5 total-pages=2>
+    <osds-pagination current=1 total-items=5>
       <span slot="after-total-items">&nbsp;results</span>
     </osds-pagination>
     <p class="description">Select should not appear</p>
@@ -90,7 +90,7 @@
 
   <h3>Total items between 10 and 300</h3>
   <div class="row">
-    <osds-pagination current=1 total-items=60 total-pages=12>
+    <osds-pagination current=2 total-items=60>
       <span slot="before-total-items">of&nbsp;</span>
       <span slot="after-total-items">&nbsp;results</span>
     </osds-pagination>
@@ -99,11 +99,17 @@
 
   <h3>Total items above 300</h3>
   <div class="row">
-    <osds-pagination current=1 total-items=500 total-pages=21>
+    <osds-pagination current=2 total-items=500>
       <span slot="before-total-items">of&nbsp;</span>
       <span slot="after-total-items">&nbsp;results</span>
     </osds-pagination>
     <p class="description">Select will have default options</p>
+  </div>
+
+  <h3>Total items disabled</h3>
+  <div class="row">
+    <osds-pagination current=3 total-items=60 disabled></osds-pagination>
+    <p class="description">All disabled</p>
   </div>
 </body>
 </html>

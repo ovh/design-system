@@ -77,8 +77,8 @@ describe('e2e:osds-quantity', () => {
     });
   });
 
-  xdescribe('minus button', () => {
-    it('should disabled minus button if value and min are equals to 0', async () => {
+  describe('minus button', () => {
+    it('should disabled minus button if value equals min', async () => {
       const zeroTemplate = `
           <osds-button slot="minus" color="primary" size="sm">-</osds-button>
           <osds-input type="number" color="primary" min="0" max="3" step="1" value="0"></osds-input>
@@ -89,10 +89,24 @@ describe('e2e:osds-quantity', () => {
 
       expect(minusElement).toHaveAttribute('disabled');
     })
-  })
+  });
+
+  describe('plus button', () => {
+    it('should disabled plus button if value equals max', async () => {
+      const zeroTemplate = `
+          <osds-button slot="minus" color="primary" size="sm">-</osds-button>
+          <osds-input type="number" color="primary" min="0" max="5" step="1" value="5"></osds-input>
+          <osds-button slot="plus" color="primary" size="sm">+</osds-button>`;
+
+      await setup({ attributes: {}, html: zeroTemplate });
+      await page.waitForChanges();
+
+      expect(plusElement).toHaveAttribute('disabled');
+    })
+  });
 
   // todo this.component.input.stepDown() from controller is not a function error
-  xdescribe('step down', () => {
+  describe('step down', () => {
 
     it('should step down the input value', async () => {
       await setup({ attributes: {}, html: template });
@@ -111,7 +125,7 @@ describe('e2e:osds-quantity', () => {
   });
 
   // todo this.component.input.stepUp() from controller is not a function error
-  xdescribe('step up', () => {
+  describe('step up', () => {
 
     it('should step up the input value', async () => {
       await setup({ attributes: {}, html: template });

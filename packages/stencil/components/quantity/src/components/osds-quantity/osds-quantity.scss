@@ -1,4 +1,5 @@
 @import 'styles/osds-quantity.mixins';
+@import 'styles/osds-quantity.size';
 @import '~@ovhcloud/ods-theming/color/ods-theming-color';
 @import '~@ovhcloud/ods-theming/ods-theme';
 
@@ -26,4 +27,5 @@ slot {
 
 // apply the theme template for the component
 @include ods-theme-component() {
+  @include osds-quantity-theme-size();
 }

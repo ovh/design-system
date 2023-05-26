@@ -29,7 +29,7 @@
     overflow: hidden;
     text-decoration: none;
     transition: all ease-in-out 100ms;
-    width: auto;
+    width: var(--ods-button-width, auto);
 
     @include osds-button-on-text-container() {
       align-items: center;

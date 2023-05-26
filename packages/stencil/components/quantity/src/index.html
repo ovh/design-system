@@ -40,5 +40,16 @@
 " value="1"/>
   <button slot="plus" color="primary" size="sm">+</button>
 </osds-quantity>
+
+<p>Quantity using osds-icon</p>
+<osds-quantity onclick="globalMethod()" id="quantity-1">
+  <osds-button slot="minus" size="sm" color="primary">
+    <osds-icon size="sm" contrasted name="minus"></osds-icon>
+  </osds-button>
+  <osds-input style="max-width: 40px" type="number" color="primary" min="1" max="10" step="1" value="1"></osds-input>
+  <osds-button slot="plus" size="sm" color="primary">
+    <osds-icon size="sm" contrasted name="plus"></osds-icon>
+  </osds-button>
+</osds-quantity>
 </body>
 </html>

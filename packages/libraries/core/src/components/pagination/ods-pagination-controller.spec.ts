@@ -4,7 +4,6 @@ import { OdsLogger } from '../../logger/ods-logger';
 import { OdsPagination } from './ods-pagination';
 import { OdsPaginationController } from './ods-pagination-controller';
 import { OdsPaginationMock } from './ods-pagination-mock';
-import { odsPaginationMinPerPageOptions } from './ods-pagination-per-page';
 
 describe('spec:ods-pagination-controller', () => {
   let controller: OdsPaginationController;
@@ -51,42 +50,6 @@ describe('spec:ods-pagination-controller', () => {
 
         setup({ disabled: false, current: 2, totalItems: 9, totalPages: 1 });
         expect(controller.computeActualTotalPages(0)).toBe(9);
-      });
-    });
-
-    describe('computePerPageOptions', () => {
-      it('should return an empty array if totalItems is not defined', () => {
-        setup({ disabled: false, current: 1, totalPages: 1 });
-        expect(controller.computePerPageOptions()).toEqual([]);
-      });
-
-      it('should return an empty array if totalItems is less than minimal required', () => {
-        setup({ disabled: false, current: 1, totalItems: 5, totalPages: 1 });
-        expect(controller.computePerPageOptions()).toEqual([]);
-      });
-
-      it('should return default options if totalItems is more than the maximum defined', () => {
-        setup({ disabled: false, current: 1, totalItems: 500, totalPages: 1 });
-        expect(controller.computePerPageOptions()).toEqual(odsPaginationMinPerPageOptions);
-      });
-
-      it('should return partial default options if totalItems is equal to one of the defined value', () => {
-        setup({ disabled: false, current: 1, totalItems: odsPaginationMinPerPageOptions[2], totalPages: 1 });
-        expect(controller.computePerPageOptions()).toEqual([
-          odsPaginationMinPerPageOptions[0],
-          odsPaginationMinPerPageOptions[1],
-          odsPaginationMinPerPageOptions[2],
-        ]);
-      });
-
-      it('should return partial default options plus itself if totalItems is more than one of the defined value (except last)', () => {
-        setup({ disabled: false, current: 1, totalItems: odsPaginationMinPerPageOptions[2] + 10, totalPages: 1 });
-        expect(controller.computePerPageOptions()).toEqual([
-          odsPaginationMinPerPageOptions[0],
-          odsPaginationMinPerPageOptions[1],
-          odsPaginationMinPerPageOptions[2],
-          odsPaginationMinPerPageOptions[2] + 10,
-        ]);
       });
     });
 

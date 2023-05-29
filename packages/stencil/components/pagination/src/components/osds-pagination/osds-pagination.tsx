@@ -13,6 +13,8 @@ import {
   OdsTextSize,
   OdsPaginationPageList,
   OdsSelectOptionClickEventDetail,
+  odsPaginationPerPageMin,
+  odsPaginationMinPerPageOptions,
 } from '@ovhcloud/ods-core';
 import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libraries/stencil-core';
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
@@ -32,8 +34,6 @@ import {
 } from '@stencil/core';
 import { HTMLStencilElement } from '@stencil/core/internal';
 
-const INITIAL_ITEM_PER_PAGE = -1
-
 @Component({
   tag: 'osds-pagination',
   styleUrl: 'osds-pagination.scss',
@@ -42,12 +42,11 @@ const INITIAL_ITEM_PER_PAGE = -1
 export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPaginationMethods>, OdsStencilEvents<OdsPaginationEvents>> {
   private logger = new OdsLogger('OsdsPagination');
   private actualTotalPages = odsPaginationDefaultAttributes.totalPages;
-  private perPageOptions: number[] = [];
   controller: OdsPaginationController = new OdsPaginationController(this);
 
   @Element() el!: HTMLStencilElement;
 
-  @State() itemPerPage = INITIAL_ITEM_PER_PAGE;
+  @State() itemPerPage = odsPaginationPerPageMin;
   @State() pageList: OdsPaginationPageList = [];
 
   /** @see OdsPaginationAttributes.current */
@@ -67,8 +66,7 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
 
   componentWillLoad() {
     if (this.totalItems) {
-      this.perPageOptions = this.controller.computePerPageOptions();
-      this.itemPerPage = this.perPageOptions.length ? this.perPageOptions[ 0 ] : 1;
+      this.actualTotalPages = this.controller.computeActualTotalPages(this.itemPerPage);
     } else {
       this.actualTotalPages = this.totalPages;
     }
@@ -102,20 +100,13 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
   }
 
   @Watch('itemPerPage')
-  async onItemPerPageChange(itemPerPage: number, previousValue: number) {
-    this.actualTotalPages = this.controller.computeActualTotalPages(itemPerPage);
+  async onItemPerPageChange() {
+    await this.updatePagination();
+  }
 
-    // We don't want to change the "current" value on first rendering call
-    if (previousValue === INITIAL_ITEM_PER_PAGE) {
-      return
-    }
-
-    if (this.current === 1) {
-      // If current is already 1, @Watch will not be triggered and we don't want to emit a change event
-      this.updatePageList();
-    } else {
-      await this.setPageIndex(1)
-    }
+  @Watch('totalItems')
+  async onTotalItemsChange() {
+    await this.updatePagination();
   }
 
   /**
@@ -138,6 +129,17 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
 
   private updatePageList() {
     this.pageList = this.controller.createPageList(this.actualTotalPages, this.current);
+  }
+
+  private async updatePagination() {
+    this.actualTotalPages = this.controller.computeActualTotalPages(this.itemPerPage);
+
+    if (this.current === 1) {
+      // If current is already 1 we don't want to emit a change event
+      this.updatePageList();
+    } else {
+      await this.setPageIndex(1);
+    }
   }
 
   // clicks events
@@ -231,12 +233,12 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
           !!this.totalItems &&
           <>
             {
-              !!this.perPageOptions.length &&
+              this.totalItems >= odsPaginationPerPageMin &&
               <>
                 <osds-select disabled={this.disabled}
                              value={this.itemPerPage}>
                   {
-                    this.perPageOptions.map((option) => (
+                    odsPaginationMinPerPageOptions.map((option) => (
                       <osds-select-option key={option}
                                           value={option}>
                         {option}

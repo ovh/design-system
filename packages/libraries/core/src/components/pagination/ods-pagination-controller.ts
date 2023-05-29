@@ -1,11 +1,6 @@
 import { OdsComponentController } from '../ods-component-controller';
 import { OdsPagination } from './ods-pagination';
 import { OdsPaginationPageList } from './ods-pagination-page-list';
-import {
-  odsPaginationMinPerPageOptions,
-  odsPaginationPerPageMax,
-  odsPaginationPerPageMin
-} from './ods-pagination-per-page';
 
 /**
  * common controller logic for pagination component used by the different implementations.
@@ -27,30 +22,6 @@ export class OdsPaginationController extends OdsComponentController<OdsPaginatio
     }
 
     return Math.ceil(this.component.totalItems / (itemPerPage || 1));
-  }
-
-  /**
-   * Compute the list of "per page" choice enabled, given a total of items.
-   * @returns The numerical list of "per page" choice.
-   */
-  computePerPageOptions() {
-    if (!this.component.totalItems || this.component.totalItems < odsPaginationPerPageMin) {
-      return [];
-    }
-
-    if (this.component.totalItems >= odsPaginationPerPageMax) {
-      return [...odsPaginationMinPerPageOptions];
-    }
-
-    const options = odsPaginationMinPerPageOptions.filter((option) => {
-      return option <= this.component.totalItems!;
-    });
-
-    if (odsPaginationMinPerPageOptions.indexOf(this.component.totalItems) < 0) {
-      options.push(this.component.totalItems);
-    }
-
-    return options;
   }
 
   /**

@@ -1,6 +1,11 @@
 import { newSpecPage, SpecPage } from '@stencil/core/testing';
 import { OsdsPagination } from './osds-pagination';
-import { OdsComponentAttributes2StringAttributes, OdsPaginationAttributes, odsPaginationDefaultAttributes } from '@ovhcloud/ods-core';
+import {
+  OdsComponentAttributes2StringAttributes,
+  OdsPaginationAttributes,
+  odsPaginationDefaultAttributes,
+  odsPaginationPerPageMin,
+} from '@ovhcloud/ods-core';
 import { getAttributeContextOptions } from '@ovhcloud/ods-stencil/libraries/stencil-testing';
 import { OdsCreateAttributes, OdsMockNativeMethod, OdsStringAttributes2Str, odsPaginationBaseAttributes, odsUnitTestAttribute } from '@ovhcloud/ods-testing';
 
@@ -42,21 +47,21 @@ describe('spec:osds-pagination', () => {
       await setup({ attributes: { current: 6, totalPages: 10 } });
 
       expect(instance.current).toBe(6);
-      expect(instance.itemPerPage).toBe(-1);
+      expect(instance.itemPerPage).toBe(odsPaginationPerPageMin);
     });
 
     it('if the current of the pagination is 2, then page index should be 2', async () => {
       await setup({ attributes: { current: 2, totalPages: 10 } });
 
       expect(instance.current).toBe(2);
-      expect(instance.itemPerPage).toBe(-1);
+      expect(instance.itemPerPage).toBe(odsPaginationPerPageMin);
     });
 
     it('if the totalItems is defined itemPerPage should be also', async () => {
       await setup({ attributes: { current: 2, totalItems: 20 } });
 
       expect(instance?.current).toBe(2);
-      expect(instance.itemPerPage).toBe(10);
+      expect(instance.itemPerPage).toBe(odsPaginationPerPageMin);
     });
   });
 
@@ -139,25 +144,49 @@ describe('spec:osds-pagination', () => {
     });
   });
 
-  describe('onItemPerPageChange', () => {
-    it('should update page list and reset current to 1', async () => {
-      await setup({ attributes: { disabled: false, current: 2, totalItems: 200 } });
-      const initialPageList = [...instance.pageList];
+  describe('Watch', () => {
+    describe('onItemPerPageChange', () => {
+      it('should update page list and reset current to 1', async () => {
+        await setup({ attributes: { disabled: false, current: 2, totalItems: 200 } });
+        const initialPageList = [...instance.pageList];
 
-      await instance.onItemPerPageChange(20, 10);
+        instance.itemPerPage = 20;
 
-      expect(instance.current).toBe(1);
-      expect(instance.pageList).not.toEqual(initialPageList);
+        expect(instance.current).toBe(1);
+        expect(instance.pageList).not.toEqual(initialPageList);
+      });
+
+      it('should update page list without changing current if it is already 1', async () => {
+        await setup({ attributes: { disabled: false, current: 1, totalItems: 200 } });
+        const initialPageList = [...instance.pageList];
+
+        instance.itemPerPage = 20;
+
+        expect(instance.current).toBe(1);
+        expect(instance.pageList).not.toEqual(initialPageList);
+      });
     });
 
-    it('should update page list without changing current if it is already 1', async () => {
-      await setup({ attributes: { disabled: false, current: 1, totalItems: 200 } });
-      const initialPageList = [...instance.pageList];
+    describe('onTotalItemsChange', () => {
+      it('should update page list and reset current to 1', async () => {
+        await setup({ attributes: { disabled: false, current: 2, totalItems: 200 } });
+        const initialPageList = [...instance.pageList];
 
-      await instance.onItemPerPageChange(20, 10);
+        instance.totalItems = 100;
 
-      expect(instance.current).toBe(1);
-      expect(instance.pageList).not.toEqual(initialPageList);
+        expect(instance.current).toBe(1);
+        expect(instance.pageList).not.toEqual(initialPageList);
+      });
+
+      it('should update page list without changing current if it is already 1', async () => {
+        await setup({ attributes: { disabled: false, current: 1, totalItems: 200 } });
+        const initialPageList = [...instance.pageList];
+
+        instance.totalItems = 100;
+
+        expect(instance.current).toBe(1);
+        expect(instance.pageList).not.toEqual(initialPageList);
+      });
     });
   });
 

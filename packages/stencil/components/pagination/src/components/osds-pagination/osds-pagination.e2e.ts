@@ -224,7 +224,7 @@ describe('e2e:osds-pagination', () => {
       expect(perPageSelectElement).toBe(null);
     });
 
-    it('should show all the default step if totalItems >= 300', async () => {
+    it('should show all the default step', async () => {
       await setup({ attributes: { current: 1, totalItems: 500 } });
 
       perPageSelectElement = await page.find('osds-pagination >>> osds-select');
@@ -238,27 +238,6 @@ describe('e2e:osds-pagination', () => {
         .map((el) => el.getAttribute('value'))
         .map((attr) => parseInt(attr, 10));
       expect(selectValues).toEqual(odsPaginationMinPerPageOptions);
-    });
-
-    it('should show all default steps that are inferior to totalItems and totalItems as last step if totalItems > 10 and totalItems < 300', async () => {
-      const dummyTotalItems = 30
-      await setup({ attributes: { current: 1, totalItems: dummyTotalItems } });
-
-      perPageSelectElement = await page.find('osds-pagination >>> osds-select');
-      expect(perPageSelectElement).toBeDefined();
-      expect(perPageSelectElement.getAttribute('value')).toBe(odsPaginationMinPerPageOptions[0].toString());
-
-      const perPageSelectItemElements = await perPageSelectElement.findAll('osds-select-option');
-      expect(perPageSelectItemElements.length).toBe(3);
-
-      const selectValues = perPageSelectItemElements
-        .map((el) => el.getAttribute('value'))
-        .map((attr) => parseInt(attr, 10));
-      expect(selectValues).toEqual([
-        odsPaginationMinPerPageOptions[0],
-        odsPaginationMinPerPageOptions[1],
-        dummyTotalItems,
-      ]);
     });
   });
 

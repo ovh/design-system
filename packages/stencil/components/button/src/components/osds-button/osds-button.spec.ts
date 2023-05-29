@@ -3,20 +3,21 @@ jest.mock('@ovhcloud/ods-core/src/components/button/ods-button-controller'); // 
 import {
   OdsButtonAttributes,
   OdsButtonController,
+  odsButtonDefaultAttributes,
   OdsButtonSizeList,
+  OdsButtonVariant,
   OdsButtonVariantList,
   OdsComponentAttributes2StringAttributes,
-  odsButtonDefaultAttributes,
   OdsHTMLAnchorElementRelList,
-  OdsHTMLAnchorElementTargetList
+  OdsHTMLAnchorElementTargetList,
 } from '@ovhcloud/ods-core';
 import {
+  odsButtonBaseAttributes,
   OdsCreateAttributes,
   OdsStringAttributes2Str,
-  odsButtonBaseAttributes,
-  odsUnitTestAttribute
+  odsUnitTestAttribute,
 } from '@ovhcloud/ods-testing';
-import { SpecPage, newSpecPage } from '@stencil/core/testing';
+import { newSpecPage, SpecPage } from '@stencil/core/testing';
 
 import { OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
 import { OsdsButton } from './osds-button';
@@ -187,6 +188,22 @@ describe('spec:osds-button', () => {
       });
     });
 
+    describe('circle', () => {
+      odsUnitTestAttribute<OdsButtonAttributes, 'circle'>({
+        ...getAttributeContextOptions<OdsButtonAttributes, OsdsButton, 'circle'>({
+          name: 'circle',
+          list: [true,false],
+          defaultValue: odsButtonDefaultAttributes.circle,
+          ...config
+        })
+      });
+
+      it('should bind the circle attribute correctly', async () => {
+        await setup({ attributes: { circle: true } });
+        expect(page.root.circle).toBeDefined();
+      });
+    });
+
     describe('target', () => {
       odsUnitTestAttribute<OdsButtonAttributes, 'target'>({
         ...getAttributeContextOptions<OdsButtonAttributes, OsdsButton, 'target'>({
@@ -213,6 +230,7 @@ describe('spec:osds-button', () => {
         expect(page.root.variant).toBe(randomVariant);
       });
     });
+
   });
 
   describe('controller', () => {

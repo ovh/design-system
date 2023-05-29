@@ -187,11 +187,11 @@
       ),
       $select: (
         md: (
+          grid-column-gap: var(--ods-size-inline-04),
           height: calc(2.25rem * var(--ods-size-ratio)),
           border-width: var(--ods-size-inset-01),
           border-radius: var(--ods-size-border-radius-01),
           padding: 0 var(--ods-size-inline-04),
-          width: calc(var(--ods-size-stack-08) * 11)
         ),
       ),
       $spinner: (

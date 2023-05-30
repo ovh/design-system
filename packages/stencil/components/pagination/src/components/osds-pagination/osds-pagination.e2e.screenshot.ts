@@ -93,7 +93,7 @@ describe('e2e:osds-pagination', () => {
       expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
     });
 
-    it('should not the per-page select if more than 10 items', async () => {
+    it('should render the per-page select if more than 10 items', async () => {
       await setup({ attributes: { current: 1, totalItems: 25 } });
 
       const results = await page.compareScreenshot('pagination', { fullPage: false, omitBackground: true });

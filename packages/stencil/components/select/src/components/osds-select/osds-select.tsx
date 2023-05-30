@@ -19,7 +19,7 @@ import { OsdsSelectOption } from '../osds-select-option/osds-select-option';
 import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libraries/stencil-core';
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 import { OdsSelectOptionClickEventDetail } from '@ovhcloud/ods-core/src/components/select/select-option/ods-select-option-click-event-detail';
-import { ocdkAssertEventTargetIsNode, ocdkDefineCustomElements, ocdkIsSurface, OcdkSurface, OcdkSurfaceCorner } from '@ovhcloud/ods-cdk';
+import { ocdkAssertEventTargetIsNode, ocdkDefineCustomElements, ocdkIsSurface, OcdkSurface } from '@ovhcloud/ods-cdk';
 
 // define custom elements from CDK
 ocdkDefineCustomElements()
@@ -245,8 +245,7 @@ export class OsdsSelect implements OdsSelect<OdsStencilMethods<OdsSelectMethods>
   @Listen('click', { target: 'window' })
   checkForClickOutside(ev: any) {
     ocdkAssertEventTargetIsNode(ev.target);
-    const srcElement = ev.composedPath()[0];
-    if (!this.dirty || this.el.contains(ev.target) || this.el.shadowRoot?.contains(srcElement) ) {
+    if (!this.dirty || this.surface?.isClickOutsideSurface(ev)) {
       return;
     }
     this.logger.log('[checkForClickOutside]', arguments, { validity: this.validityState });

@@ -26,5 +26,4 @@ export interface OcdkSurfaceAdapter {
   autoDetectItemHeight(): number;
   setTransformOrigin(origin: string): void;
   getOwnerDocument?(): Document;
-
 }

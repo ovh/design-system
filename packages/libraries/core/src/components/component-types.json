@@ -1,6 +1,8 @@
 [
   "OdsAccordion",
   "OdsAccordionGroup",
+  "OdsBreadcrumb",
+  "OdsBreadcrumbItem",
   "OdsButton",
   "OdsCart",
   "OdsCartFooter",

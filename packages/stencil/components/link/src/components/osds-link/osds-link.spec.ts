@@ -9,7 +9,12 @@ import {
   OdsHTMLAnchorElementTargetList,
   odsLinkDefaultAttributes,
 } from '@ovhcloud/ods-core';
-import { OdsCreateAttributes, OdsStringAttributes2Str, odsLinkBaseAttributes, odsUnitTestAttribute } from '@ovhcloud/ods-testing';
+import {
+  OdsCreateAttributes,
+  OdsStringAttributes2Str,
+  odsLinkBaseAttributes,
+  odsUnitTestAttribute
+} from '@ovhcloud/ods-testing';
 import { SpecPage, newSpecPage } from '@stencil/core/testing';
 
 import { OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
@@ -28,7 +33,7 @@ describe('spec:osds-link', () => {
     jest.clearAllMocks();
   });
 
-  async function setup({ attributes = {}, html = `` }: { attributes?: Partial<OdsLinkAttributes>; html?: string } = {}) {
+  async function setup({ attributes = {}, html = `` }: { attributes?: Partial<OdsLinkAttributes>, html?: string } = {}) {
     const minimalAttributes: OdsLinkAttributes = OdsCreateAttributes(attributes, odsLinkBaseAttributes);
     const stringAttributes = OdsComponentAttributes2StringAttributes<OdsLinkAttributes>(minimalAttributes, odsLinkDefaultAttributes);
 
@@ -73,7 +78,7 @@ describe('spec:osds-link', () => {
     const config = {
       page: () => page,
       instance: () => instance,
-      setup,
+      setup
     };
 
     describe('color', () => {
@@ -82,8 +87,8 @@ describe('spec:osds-link', () => {
           name: 'color',
           list: OdsThemeColorIntentList,
           defaultValue: odsLinkDefaultAttributes.color,
-          ...config,
-        }),
+          ...config
+        })
       });
     });
 
@@ -93,8 +98,8 @@ describe('spec:osds-link', () => {
           name: 'contrasted',
           list: [false, true],
           defaultValue: odsLinkDefaultAttributes.contrasted,
-          ...config,
-        }),
+          ...config
+        })
       });
     });
 
@@ -104,8 +109,8 @@ describe('spec:osds-link', () => {
           name: 'disabled',
           list: [false, true],
           defaultValue: odsLinkDefaultAttributes.disabled,
-          ...config,
-        }),
+          ...config
+        })
       });
     });
 
@@ -115,8 +120,8 @@ describe('spec:osds-link', () => {
           name: 'href',
           list: ['oles', 'ipsum'],
           defaultValue: odsLinkDefaultAttributes.href,
-          ...config,
-        }),
+          ...config
+        })
       });
     });
 
@@ -126,8 +131,8 @@ describe('spec:osds-link', () => {
           name: 'referrerpolicy',
           list: OdsLinkReferrerpolicyList,
           defaultValue: odsLinkDefaultAttributes.referrerpolicy,
-          ...config,
-        }),
+          ...config
+        })
       });
     });
 
@@ -137,8 +142,8 @@ describe('spec:osds-link', () => {
           name: 'rel',
           list: OdsHTMLAnchorElementRelList,
           defaultValue: odsLinkDefaultAttributes.rel,
-          ...config,
-        }),
+          ...config
+        })
       });
     });
 
@@ -148,8 +153,8 @@ describe('spec:osds-link', () => {
           name: 'target',
           list: OdsHTMLAnchorElementTargetList,
           defaultValue: odsLinkDefaultAttributes.target,
-          ...config,
-        }),
+          ...config
+        })
       });
     });
   });

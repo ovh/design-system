@@ -1,6 +1,13 @@
 import { E2EElement, E2EPage, EventSpy, newE2EPage } from '@stencil/core/testing';
-import { OdsComponentAttributes2StringAttributes, OdsTabsAttributes, OdsTabsChangeEventDetail, odsTabsDefaultAttributes, OdsTabsEvents } from '@ovhcloud/ods-core';
+import {
+  OdsComponentAttributes2StringAttributes,
+  OdsTabsAttributes,
+  OdsTabsChangeEventDetail,
+  odsTabsDefaultAttributes,
+  OdsTabsEvents,
+} from '@ovhcloud/ods-core';
 import { OdsCreateAttributes, OdsStringAttributes2Str, odsTabsBaseAttributes } from '@ovhcloud/ods-testing';
+
 
 describe('e2e:osds-tabs', () => {
   let page: E2EPage;
@@ -18,22 +25,21 @@ describe('e2e:osds-tabs', () => {
   <osds-tab-bar-item panel='advance' id='item-advance'>Advance</osds-tab-bar-item>
 </osds-tab-bar>`;
 
-  const getTabsWithPanels = () =>
-    getTabsDom1() +
-    `
+  const getTabsWithPanels = () => getTabsDom1() + `
 <osds-tab-panel name='rise'>Les serveurs les plus abordables, adaptés à la plupart des usages.</osds-tab-panel>
 <osds-tab-panel name='advance'>Des serveurs polyvalents pour les petites et moyennes entreprises.</osds-tab-panel>`;
 
   const spyEvent = async (eventName: keyof OdsTabsEvents) => await el.spyOnEvent(eventName);
 
+
   async function setup({
-    attributes = {},
-    nativeAttributes = {},
-    html = ``,
-  }: {
-    attributes?: Partial<OdsTabsAttributes>;
-    nativeAttributes?: Partial<HTMLElement>;
-    html?: string;
+                         attributes = {},
+                         nativeAttributes = {},
+                         html = ``,
+                       }: {
+    attributes?: Partial<OdsTabsAttributes>,
+    nativeAttributes?: Partial<HTMLElement>,
+    html?: string
   } = {}) {
     const minimalAttributes: OdsTabsAttributes = OdsCreateAttributes(attributes, odsTabsBaseAttributes);
     const stringAttributes = OdsComponentAttributes2StringAttributes<OdsTabsAttributes>(minimalAttributes, odsTabsDefaultAttributes);
@@ -58,6 +64,7 @@ describe('e2e:osds-tabs', () => {
    */
   async function updateReferences() {
     activeElementId = await page.evaluate(() => document.activeElement?.id);
+
     itemRiseElement = await page.find('osds-tab-bar-item[panel=rise]');
     itemAdvanceElement = await page.find('osds-tab-bar-item[panel=advance]');
     panelRiseElement = await page.find('osds-tab-panel[name=rise]');
@@ -71,6 +78,7 @@ describe('e2e:osds-tabs', () => {
   });
 
   describe('focusing', () => {
+
     it('item should be focusable', async () => {
       await setup({ attributes: { panel: '' }, html: getTabsDom1() });
       await page.waitForChanges();
@@ -114,6 +122,7 @@ describe('e2e:osds-tabs', () => {
   });
 
   describe('keypress', () => {
+
     it('item should be enabled on Enter/space', async () => {
       await setup({ attributes: { panel: '' }, html: getTabsDom1() });
 
@@ -134,6 +143,7 @@ describe('e2e:osds-tabs', () => {
   });
 
   describe('tab-bar standalone', () => {
+
     it('should select the first panel by default', async () => {
       await setup({ attributes: { panel: '' }, html: getTabsDom1() });
 
@@ -176,7 +186,9 @@ describe('e2e:osds-tabs', () => {
     });
   });
 
+
   describe('with panel content', () => {
+
     it('should select the first panel by default', async () => {
       await setup({ attributes: { panel: '' }, html: getTabsWithPanels() });
 
@@ -191,9 +203,10 @@ describe('e2e:osds-tabs', () => {
     });
 
     describe('selected', () => {
+
       describe('click on item advance', () => {
         it('should select the advance panel', async () => {
-          await setup({ attributes: { panel: 'rise' }, html: getTabsWithPanels() });
+        await setup({ attributes: { panel: 'rise' }, html: getTabsWithPanels() });
           const expected: OdsTabsChangeEventDetail = { panel: 'advance' };
           const odsTabsChanged: EventSpy = await spyEvent('odsTabsChanged');
 
@@ -216,6 +229,10 @@ describe('e2e:osds-tabs', () => {
         expect(await panelAdvanceElement.getProperty('active')).toEqual(false);
         expect(odsTabsChanged).not.toHaveReceivedEvent();
       });
+
     });
+
   });
+
+
 });

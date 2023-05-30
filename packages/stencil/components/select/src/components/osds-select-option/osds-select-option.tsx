@@ -93,7 +93,8 @@ export class OsdsSelectOption implements OdsSelectOption<OdsStencilMethods<OdsSe
     this.odsSelectOptionClick.emit({ value });
   }
 
-  handleClick() {
+  handleClick(event: MouseEvent) {
+    event.stopPropagation();
     this.logger.log(`[select=${this.value}]`, 'option clicked.');
     this.emitClick(this.value);
   }

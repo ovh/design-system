@@ -4,7 +4,7 @@ import { HTMLStencilElement } from '@stencil/core/internal';
 export interface OdsSelectBehavior {
   el: HTMLStencilElement;
   surface: OcdkSurface | undefined;
-  anchor: HTMLDivElement;
+  anchor: HTMLElement;
 
   syncReferences(): void;
 }

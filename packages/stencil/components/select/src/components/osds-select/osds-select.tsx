@@ -19,7 +19,7 @@ import { OsdsSelectOption } from '../osds-select-option/osds-select-option';
 import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libraries/stencil-core';
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 import { OdsSelectOptionClickEventDetail } from '@ovhcloud/ods-core/src/components/select/select-option/ods-select-option-click-event-detail';
-import { ocdkDefineCustomElements, ocdkIsSurface, OcdkSurface } from '@ovhcloud/ods-cdk';
+import { ocdkAssertEventTargetIsNode, ocdkDefineCustomElements, ocdkIsSurface, OcdkSurface, OcdkSurfaceCorner } from '@ovhcloud/ods-cdk';
 
 // define custom elements from CDK
 ocdkDefineCustomElements()
@@ -35,7 +35,7 @@ ocdkDefineCustomElements()
 export class OsdsSelect implements OdsSelect<OdsStencilMethods<OdsSelectMethods>, OdsStencilEvents<OdsSelectEvents>> {
   private logger = new OdsLogger('OsdsSelect');
   controller: OdsSelectController = new OdsSelectController(this);
-  anchor!: HTMLDivElement;
+  anchor!: HTMLElement;
   surface: OcdkSurface | undefined = undefined;
 
   @Element() el!: HTMLStencilElement;
@@ -137,7 +137,7 @@ export class OsdsSelect implements OdsSelect<OdsStencilMethods<OdsSelectMethods>
 
   @Watch('value')
   async onValueChange(value: OdsInputValue, oldValue?: OdsInputValue) {
-    this.logger.log(`[select=${this.value}]`, 'value changed. emit new value', { value });
+    this.logger.log(`[onValueChange=${this.value}]`, 'value changed. emit new value', { value });
     this.emitChange(value, oldValue);
     await this.updateSelectOptionStates(value);
   }
@@ -228,7 +228,7 @@ export class OsdsSelect implements OdsSelect<OdsStencilMethods<OdsSelectMethods>
   }
 
   changeValue(value: OdsInputValue) {
-    this.logger.log(`[select=${this.value}]`, 'value changed', { value });
+    this.logger.log(`[changeValue=${this.value}]`, 'value changed', { value });
     this.value = value;
   }
 
@@ -244,9 +244,9 @@ export class OsdsSelect implements OdsSelect<OdsStencilMethods<OdsSelectMethods>
   // Hide overlay when we click anywhere else in the window.
   @Listen('click', { target: 'window' })
   checkForClickOutside(ev: any) {
-    const srcElement = ev.composedPath()[0]
-
-    if (!this.dirty || this.el.contains(ev.target) || this.el.shadowRoot?.contains(srcElement)) {
+    ocdkAssertEventTargetIsNode(ev.target);
+    const srcElement = ev.composedPath()[0];
+    if (!this.dirty || this.el.contains(ev.target) || this.el.shadowRoot?.contains(srcElement) ) {
       return;
     }
     this.logger.log('[checkForClickOutside]', arguments, { validity: this.validityState });
@@ -258,7 +258,7 @@ export class OsdsSelect implements OdsSelect<OdsStencilMethods<OdsSelectMethods>
 
   @Listen('odsSelectOptionClick')
   handleValueChange(event: CustomEvent<OdsSelectOptionClickEventDetail>) {
-    this.logger.log(`[select=${this.value}]`, 'received odsSelectOptionClick event', { detail: event.detail });
+    this.logger.log(`[odsSelectOptionClick=${this.value}]`, 'received odsSelectOptionClick event', { detail: event.detail });
     if (event.detail.value !== this.value) {
       this.changeValue(event.detail.value);
       this.controller.closeSurface();
@@ -305,14 +305,14 @@ export class OsdsSelect implements OdsSelect<OdsStencilMethods<OdsSelectMethods>
         onBlur: this.onBlur.bind(this),
         onClick: this.handleSelectClick.bind(this),
         tabindex: this.disabled ? -1 : this.tabindex,
+        ref: (el?: HTMLElement | null) => {
+          this.anchor = el as HTMLElement;
+          this.syncReferences();
+        },
       }}
       >
         <div {...{
           class: `select-trigger${isSurfaceOpen ? ' opened' : ''}${this.hasError() ? ' error' : ''}`,
-          ref: (el?: HTMLDivElement) => {
-            this.anchor = el as HTMLDivElement;
-            this.syncReferences()
-          },
         }}>
           <div class={'label'}>
             { (!value) ?
@@ -322,19 +322,16 @@ export class OsdsSelect implements OdsSelect<OdsStencilMethods<OdsSelectMethods>
           </div>
           <osds-icon size={OdsIconSize.sm} color={color} name={OdsIconName.CHEVRON_DOWN}></osds-icon>
         </div>
-        <ocdk-surface ref={(el: HTMLElement) => {
-          if (ocdkIsSurface(el)) {
-            this.surface = el as OcdkSurface;
-            this.syncReferences()
-          }
-        }}>
+        <ocdk-surface
+          class="overlay"
+          ref={(el: HTMLElement) => {
+            if (ocdkIsSurface(el)) {
+              this.surface = el as OcdkSurface;
+              this.syncReferences();
+            }
+          }}>
           <slot></slot>
         </ocdk-surface>
-        {/* <div {...{
-          class: `overlay${opened ? ' opened' : ''}${this.hasError() ? ' error' : ''}`,
-        }}>
-          <slot></slot>
-        </div> */}
       </Host>
     );
   }

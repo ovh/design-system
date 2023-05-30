@@ -32,6 +32,7 @@ export class OdsSelectController extends OdsComponentController<OdsSelect> {
   syncReferences(): void {
     if (this.component.surface && this.component.anchor) {
       this.component.surface.setAnchorElement(this.component.anchor);
+      this.component.surface.setAnchorMargin({ bottom: 0 });
     }
   }
 
@@ -39,7 +40,7 @@ export class OdsSelectController extends OdsComponentController<OdsSelect> {
    * Method to close the surface
    */
   closeSurface(): void {
-    if (this.component.surface && this.component.surface.opened) {
+    if (this.component.surface?.opened) {
       this.component.surface.close();
     }
   }

@@ -34,13 +34,6 @@
 
   .overlay {
     border-style: solid;
-    display: none;
-    position: absolute;
-    max-width: available;
-    max-width: -moz-available;
-    max-width: -webkit-available;
-    z-index: 2;
-    min-height: calc(2.25rem * var(--ods-size-ratio));
     max-height: calc(var(--ods-size-stack-11) * 7.5);
     overflow: auto;
 

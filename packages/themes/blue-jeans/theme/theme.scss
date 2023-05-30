@@ -161,6 +161,13 @@
           padding: 0 var(--ods-size-inline-04)
         ),
       ),
+      $pagination: (
+        md: (
+          height: calc(2.25rem * var(--ods-size-ratio)),
+          padding-y: 0,
+          padding-x: var(--ods-size-inline-04),
+        ),
+      ),
       $radio-button: (
         sm: (
           border-width: calc(0.2rem * var(--ods-size-ratio)),
@@ -187,6 +194,17 @@
           width: calc(var(--ods-size-stack-08) * 11)
         ),
       ),
+      $spinner: (
+        sm: (
+          max-width: var(--ods-size-07)
+        ),
+        md: (
+          max-width: var(--ods-size-10)
+        ),
+        lg: (
+          max-width: calc(var(--ods-size-07) * 7)
+        ),
+      ),
       $skeleton: (
         xs: (width: calc(4.688rem * var(--ods-size-ratio))),
         sm: (width: calc(9.375rem * var(--ods-size-ratio))),
@@ -197,7 +215,7 @@
       $tabs: (
         md: (
           height: var(--ods-size-08),
-          width: var(--ods-size-11)          
+          width: var(--ods-size-11)
         )
       ),
       $textarea: (

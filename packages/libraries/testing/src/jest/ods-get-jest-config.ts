@@ -50,10 +50,16 @@ export function OdsGetJestConfig({
         '^@ovhcloud/ods-stencil/(.*)$': `${basePath}/packages/stencil/$1`,
       }: {})
     },
-    ...(stencil ? {} : {
+    ...(stencil ? {
+      transform: {
+        "\\.svg$": "jest-transform-stub",
+      },
+    } : {
       // when using jest without stencil, we need to transform typescript files
       // and ignore dist directories that contains specs
-      transform: { "\\.(ts|tsx)$": "ts-jest" },
+      transform: {
+        "\\.(ts|tsx)$": "ts-jest",
+      },
       testPathIgnorePatterns: [
         "/node_modules/",
         "dist/"

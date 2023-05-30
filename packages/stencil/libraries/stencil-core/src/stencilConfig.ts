@@ -10,6 +10,7 @@ import {
 import { sass } from '@stencil/sass';
 import { postcss } from '@stencil/postcss';
 import * as nodeSassPackageImporter from 'node-sass-package-importer';
+import { inlineSvg } from 'stencil-inline-svg';
 import type { Config as JestConfig } from '@jest/types';
 import * as autoprefixer from 'autoprefixer';
 import { OutputTargetReact, reactOutputTarget } from '@stencil/react-output-target';
@@ -199,7 +200,6 @@ export function getStencilConfig({
     }
   }
 
-
   // globalScript
   let globalScriptOption: Pick<StencilConfig, 'globalScript'> = {};
   if (isDev && dev?.globalScript) {
@@ -235,13 +235,14 @@ export function getStencilConfig({
       globalStyle: require.resolve('@ovhcloud/ods-theme-blue-jeans/index.scss'),
     } : {}),
     plugins: [sass({
-      importer: nodeSassPackageImporter()
-      // example of injecting sass directly inside each component:
-      // injectGlobalPaths: [require.resolve('@ovhcloud/ods-xxx/file.scss')]
-    }),
+        importer: nodeSassPackageImporter()
+        // example of injecting sass directly inside each component:
+        // injectGlobalPaths: [require.resolve('@ovhcloud/ods-xxx/file.scss')]
+      }),
       postcss({
         plugins: [autoprefixer()]
-      })
+      }),
+      inlineSvg(),
     ],
     ...tsConfigOption,
     outputTargets: [

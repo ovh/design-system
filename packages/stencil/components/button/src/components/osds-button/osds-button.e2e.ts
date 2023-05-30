@@ -2,6 +2,7 @@ import { E2EElement, E2EPage, newE2EPage } from '@stencil/core/testing';
 import {
   OdsButtonAttributes,
   OdsButtonSize,
+  OdsIconSize,
   OdsButtonVariant,
   OdsComponentAttributes2StringAttributes,
   odsButtonDefaultAttributes,
@@ -16,13 +17,17 @@ describe('e2e:osds-button', () => {
   let slotContent: E2EElement;
   let linkElement: E2EElement;
   let buttonElement: E2EElement;
-  let checkSubmit;
+  let checkSubmit: jest.Mock;
 
   afterEach(() => {
     jest.clearAllMocks();
   });
 
-  async function setup({ attributes = {}, html = ``, inForm }: { attributes?: Partial<OdsButtonAttributes>, html?: string, inForm?: boolean } = {}) {
+  async function setup({ attributes = {}, html = ``, inForm }: {
+    attributes?: Partial<OdsButtonAttributes>,
+    html?: string,
+    inForm?: boolean
+  } = {}) {
     const minimalAttributes: OdsButtonAttributes = OdsCreateAttributes(attributes, odsButtonBaseAttributes);
     const stringAttributes = OdsComponentAttributes2StringAttributes<OdsButtonAttributes>(minimalAttributes, odsButtonDefaultAttributes);
 
@@ -35,7 +40,7 @@ describe('e2e:osds-button', () => {
 
     if (inForm) {
       content = `
-       <form onsubmit="onSubmit()">
+       <form onsubmit='onSubmit()'>
           ${button}
         </form>
       `
@@ -47,11 +52,6 @@ describe('e2e:osds-button', () => {
     await page.exposeFunction('onSubmit', checkSubmit);
 
     await page.setContent(content);
-    await page.setContent(`
-      <osds-button ${OdsStringAttributes2Str(stringAttributes)}>
-        ${html}
-      </osds-button>
-    `);
     await page.evaluate(() => document.body.style.setProperty('margin', '4px'));
     el = await page.find('osds-button');
 
@@ -101,6 +101,10 @@ describe('e2e:osds-button', () => {
 
     it('should have a default type', async () => {
       expect(await el.getProperty('type')).toBe(odsButtonDefaultAttributes.type);
+    });
+
+    it('should have a default circle', async () => {
+      expect(await el.getProperty('circle')).toBe(odsButtonDefaultAttributes.circle);
     });
   });
 
@@ -165,6 +169,14 @@ describe('e2e:osds-button', () => {
     });
   });
 
+  describe('disabled', () => {
+    it('should not submit the form', async () => {
+      await setup({ attributes: { disabled: true, type: 'submit' }, html: `submit`, inForm: true });
+      await el.click();
+      expect(checkSubmit).not.toHaveBeenCalled();
+    });
+  });
+
   describe('variants', () => {
     it('should have a flat variant', async () => {
       await setup({ attributes: { variant: OdsButtonVariant.flat } });
@@ -192,6 +204,17 @@ describe('e2e:osds-button', () => {
       await setup({ attributes: { size: OdsButtonSize.md } });
       expect(await el.getProperty('size')).toBe(OdsButtonSize.md);
     });
+  });
+
+  describe('circle', () => {
+    beforeEach(async () => {
+      await setup();
+    });
+
+    it('should apply the ghost variant if circle attribute is true', async () => {
+      await setup({ attributes: { circle: true } });
+      expect(await el.getProperty('variant')).toBe(OdsButtonVariant.ghost);
+    })
   });
 
   describe('form', () => {

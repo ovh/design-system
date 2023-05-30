@@ -7,5 +7,6 @@ import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 export const odsButtonBaseAttributes: OdsButtonAttributes = {
   color: OdsThemeColorIntent.default,
   size: OdsButtonSize.md,
-  variant: OdsButtonVariant.flat
+  variant: OdsButtonVariant.flat,
+  circle: false,
 };

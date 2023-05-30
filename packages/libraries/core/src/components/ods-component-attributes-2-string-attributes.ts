@@ -23,7 +23,7 @@ export function OdsComponentAttributes2StringAttributes<T>(attributes: OdsCompon
     .map(([name, value]) => {
       if (typeof value === "boolean") {
         if (value) {
-          parameters[name] = undefined;
+          parameters[name] = "true";
         } else if (!value && defaultValues[(name as keyof OdsComponentGenericAttributes<T>)]) {
           parameters[name] =  `${value}`;
         }

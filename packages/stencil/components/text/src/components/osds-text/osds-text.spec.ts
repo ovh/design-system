@@ -86,7 +86,7 @@ describe('spec:osds-text', () => {
       });
       it('should be contrasted if attribute is added', async () => {
         await setup({ attributes: { contrasted: true } });
-        expect(instance.contrasted).toBe('');
+        expect(instance.contrasted).toBe('true');
       });
     });
 

@@ -158,7 +158,7 @@ export class OsdsInput implements OdsInput<OdsStencilMethods<OdsInputMethods>, O
    * @see OdsInputBehavior.emitChange
    */
   emitChange(value: OdsInputValue, oldValue?: OdsInputValue) {
-    this.logger.debug('emit', { value, oldValue });
+    this.logger.debug('emitOdsValueChange', { value, oldValue });
     this.odsValueChange.emit({
       value: value == null ? value : `${value}`,
       oldValue: oldValue == null ? oldValue : `${oldValue}`,

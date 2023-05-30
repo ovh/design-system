@@ -21,6 +21,7 @@ export * from './icon/public-api';
 export * from './input/public-api';
 export * from './link/public-api';
 export * from './location-tile/public-api';
+export * from './pagination/public-api';
 export * from './message/public-api';
 export * from './quantity/public-api';
 export * from './radio/public-api';
@@ -30,7 +31,7 @@ export * from './range/public-api';
 export * from './skeleton/public-api';
 export * from './tabs/public-api';
 export * from './select/public-api';
-
+export * from './spinner/public-api';
 export * from './text/public-api';
 export * from './textarea/public-api';
 export * from './tile/public-api';

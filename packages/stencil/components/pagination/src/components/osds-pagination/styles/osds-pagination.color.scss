@@ -1,0 +1,16 @@
+@import '~@ovhcloud/ods-theming/color/ods-component-color';
+@import './osds-pagination.mixins';
+
+@mixin osds-pagination-theme-color() {
+  /** main colors */
+  :host {
+    osds-icon {
+      background-color: ods-get-color-variable($intent-name: primary, $hue: '800');
+    } 
+
+    osds-button.selectedpage::part(button) {
+      background-color: ods-get-color-variable($intent-name: primary, $hue: '800');
+      color: white;
+    }
+  }
+}

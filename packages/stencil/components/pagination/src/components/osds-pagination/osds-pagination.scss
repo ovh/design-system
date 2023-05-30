@@ -1,0 +1,52 @@
+@import 'styles/osds-pagination.color';
+@import 'styles/osds-pagination.size';
+@import '~@ovhcloud/ods-theming/color/ods-theming-color';
+@import '~@ovhcloud/ods-theming/ods-theme';
+
+// CSS for the component but not for theming
+
+:host {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  text-align: left;
+
+  ul {
+    list-style-type: none;
+  }
+
+  li {
+    display: inline;
+    list-style-type: none; 
+    white-space: nowrap;
+  }
+
+  .ellipsis, .disabled {
+    cursor: not-allowed;
+    pointer-events: auto;
+  }
+
+}
+
+:not([disabled]):focus-visible {
+  @include osds-pagination-on-selected-host() {
+    outline-style: dotted;
+    outline-width: var(--ods-size-inset-02);
+    outline-offset: var(--ods-size-inset-02);
+  }
+}
+
+:host([disabled]) {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+:host([disabled]) osds-button::part(button) {
+  cursor: not-allowed;
+}
+
+// apply the theme template for the component
+@include ods-theme-component() {
+  @include osds-pagination-theme-color();
+  @include osds-pagination-theme-size();
+}

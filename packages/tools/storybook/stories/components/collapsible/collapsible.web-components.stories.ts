@@ -54,14 +54,13 @@ Default.args = {
 
 const TemplateTrigger = (args: any) => html`
   <script>
-    const elem = document.getElementById('collapsible');
+    var elem = document.getElementById('collapsible');
     elem.addEventListener('odsCollapsibleToggle', event => {
       console.log('(html) addEventListener odsCollapsibleToggle: ', event.detail);
     });
 
-    const button = document.getElementById('buttonTriggerCollapsible')
+    var button = document.getElementById('buttonTriggerCollapsible')
     button.addEventListener('click', event => {
-      console.log('click');
       elem.opened = !elem.opened;
     });
   </script>

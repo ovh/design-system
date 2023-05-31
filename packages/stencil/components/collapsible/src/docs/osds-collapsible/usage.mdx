@@ -14,21 +14,21 @@ import GenericStyle from '@ovhcloud/ods-core/docs/generic-style.mdx';
 ### With a trigger
 
 export const buttonTrigger = () => {
-    window.addEventListener('load', () => {
-        const elem = document.getElementById('collapsible');
-        elem.addEventListener('odsCollapsibleToggle', event => {
+    setTimeout(() => {
+        const elemCollapsibleUsage = document.getElementById('collapsibleUsage');
+        elemCollapsibleUsage?.addEventListener('odsCollapsibleToggle', event => {
             console.log('(html) addEventListener odsCollapsibleToggle: ', event.detail);
         });
-        const button = document.getElementById('buttonTriggerCollapsible');
-        button.addEventListener('click', () => {
-            elem.opened = !elem.opened;
+        const buttonTriggerCollapsibleUsage = document.getElementById('buttonTriggerCollapsibleUsage');
+        buttonTriggerCollapsibleUsage?.addEventListener('click', () => {
+            elemCollapsibleUsage.opened = !elemCollapsibleUsage.opened;
         });
-    });
+    }, 0);
 };
 
-<osds-button id="buttonTriggerCollapsible">Trigger collapsible</osds-button>
+<osds-button id="buttonTriggerCollapsibleUsage">Trigger collapsible</osds-button>
 
-<osds-collapsible id="collapsible">
+<osds-collapsible id="collapsibleUsage">
     content to collapse
 </osds-collapsible>
 

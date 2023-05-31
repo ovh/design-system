@@ -122,9 +122,7 @@ export class OsdsSelect implements OdsSelect<OdsStencilMethods<OdsSelectMethods>
    * in order to synchronize the already set value with the placeholder
    */
   async componentDidLoad() {
-    if (this.surface) {
-      this.surface.opened = this.opened;
-    }
+    this.openedChanged(this.opened);
     await this.updateSelectOptionStates(this.value);
   }
 

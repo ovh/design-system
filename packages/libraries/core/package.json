@@ -18,6 +18,9 @@
     "test:spec": "jest --coverage",
     "test:spec:ci": "jest --ci  --coverage --detectOpenHandles"
   },
+  "dependencies": {
+    "@ovhcloud/ods-cdk": "12.1.0"
+  },
   "peerDependencies": {
     "@ovhcloud/ods-theming": ">=2"
   },

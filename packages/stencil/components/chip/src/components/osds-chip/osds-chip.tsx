@@ -66,12 +66,17 @@ export class OsdsChip implements OdsChip<OdsStencilMethods<OdsChipMethods>, OdsS
     const isSelectable = selectable || removable;
 
     return (
-      <Host {...{
-        tabindex: isSelectable ? '0' : '-1',
-      }}>
+      <Host tabindex={isSelectable ? '0' : '-1'}>
         <span class={'chip__wrapper'}>
           <slot></slot>
-          {removable ? <osds-icon {...{ name: OdsIconName.CLOSE, size: OdsIconSize.xxs, color, contrasted }}></osds-icon> : ''}
+          {
+            removable ?
+              <osds-icon color={color}
+                         contrasted={contrasted}
+                         name={OdsIconName.CLOSE}
+                         size={OdsIconSize.xxs}>
+              </osds-icon> : ''
+          }
         </span>
       </Host>
     );

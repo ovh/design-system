@@ -54,6 +54,14 @@
   }
 }
 
+:host:not([disabled]):focus-visible {
+  @include osds-chip-on-selected-host() {
+    outline-style: dotted;
+    outline-width: var(--ods-size-inset-02);
+    outline-offset: var(--ods-size-inset-02);
+  }
+}
+
 slot {
   display: inline-flex;
   flex: 1;

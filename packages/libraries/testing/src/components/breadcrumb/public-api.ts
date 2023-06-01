@@ -1,1 +1,1 @@
-export * from './ods-breadcrumb-base-attributes';
+export * from './breadcrumb/public-api';

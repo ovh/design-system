@@ -1,5 +1,6 @@
 export * from './accordion/public-api';
 export * from './accordion-group/public-api';
+export * from './breadcrumb/public-api';
 export * from './button/public-api';
 export * from './cart-footer-item/public-api';
 export * from './cart-footer/public-api';
@@ -50,4 +51,3 @@ export * from './ods-component-generic-methods';
 export * from './ods-component-methods';
 export * from './ods-focus-change-event-detail';
 export * from './ods-string-attributes';
-export * from './breadcrumb/public-api';

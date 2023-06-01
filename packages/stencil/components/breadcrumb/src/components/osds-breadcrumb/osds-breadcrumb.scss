@@ -9,11 +9,9 @@
 // /!\ for theming purposes, it has to be done in theming files
 // (i.e. packages/libraries/theming/...)
 :host {
-
-}
-
-:host([attribute]) {
-
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
 // apply the theme template for the component

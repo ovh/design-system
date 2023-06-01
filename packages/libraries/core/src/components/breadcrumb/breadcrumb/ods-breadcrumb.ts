@@ -2,9 +2,9 @@ import { OdsBreadcrumbAttributes } from './ods-breadcrumb-attributes';
 import { OdsBreadcrumbController } from './ods-breadcrumb-controller';
 import { OdsBreadcrumbEvents } from './ods-breadcrumb-events';
 import { OdsBreadcrumbMethods } from './ods-breadcrumb-methods';
-import { OdsComponent } from '../ods-component';
-import { OdsComponentGenericEvents } from '../ods-component-generic-events';
-import { OdsComponentGenericMethods } from '../ods-component-generic-methods';
+import { OdsComponent } from '../../ods-component';
+import { OdsComponentGenericEvents } from '../../ods-component-generic-events';
+import { OdsComponentGenericMethods } from '../../ods-component-generic-methods';
 
 /**
  * interface description of all implementation of `ods-breadcrumb`.

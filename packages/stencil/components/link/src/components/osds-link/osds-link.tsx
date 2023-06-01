@@ -38,7 +38,7 @@ export class OsdsLink implements OdsLink<OdsStencilMethods<OdsLinkMethods>, OdsS
   @Prop() public download?: HTMLAnchorElement['download'] = odsLinkDefaultAttributes.download;
 
   /** @see OdsLinkAttributes.href */
-  @Prop({ reflect: true }) public href: string = odsLinkDefaultAttributes.href;
+  @Prop({ reflect: true }) public href?: string = odsLinkDefaultAttributes.href;
 
   /** @see OdsLinkAttributes.referrerpolicy */
   @Prop({ reflect: true }) referrerpolicy?: OdsLinkReferrerpolicy = odsLinkDefaultAttributes.referrerpolicy;
@@ -47,13 +47,13 @@ export class OsdsLink implements OdsLink<OdsStencilMethods<OdsLinkMethods>, OdsS
   @Prop({ reflect: true }) public rel?: OdsHTMLAnchorElementRel = odsLinkDefaultAttributes.rel;
 
   /** @see OdsLinkAttributes.target */
-  @Prop({ reflect: true }) public target?: OdsHTMLAnchorElementTarget = odsLinkDefaultAttributes.target;
+  @Prop({ reflect: true, mutable: true }) public target?: OdsHTMLAnchorElementTarget = odsLinkDefaultAttributes.target;
 
   /** @see OdsLinkAttributes.type */
   @Prop({ reflect: true }) public type?: string = odsLinkDefaultAttributes.type;
 
   /**
-   * @see OdsChipBehavior.beforeRender
+   * @see OdsLinkBehavior.beforeRender
    */
   beforeRender(): void {
     this.controller.validateAttributes();

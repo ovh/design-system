@@ -1,0 +1,13 @@
+// general mixins and functions for the component
+
+@mixin osds-switch-on-selected-host() {
+  :host(&) {
+    @content;
+  }
+}
+
+@mixin osds-switch-on-main-element() {
+  .switch__wrapper {
+    @content;
+  }
+}

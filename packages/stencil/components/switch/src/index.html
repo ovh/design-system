@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html dir='ltr' lang='en'>
+<head>
+  <meta charset='utf-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0' />
+  <title>Dev ods-switch</title>
+
+  <script type="module">
+    !window.ods && (window.ods = {config: {logging: {active:true}}});
+  </script>
+
+  <script type='module' src='/build/osds-switch.esm.js'></script>
+  <script nomodule src='/build/osds-switch.js'></script>
+  <link rel="stylesheet" href="/build/osds-switch.css">
+</head>
+<body>
+
+<osds-switch>Switch</osds-switch>
+
+<script>
+  document.querySelectorAll('ods-switch').forEach((elem) => {});
+</script>
+</body>
+</html>

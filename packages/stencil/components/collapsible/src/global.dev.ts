@@ -7,9 +7,6 @@ import './components';
 import './global';
 import { OdsLogger } from '@ovhcloud/ods-core';
 
-import '@ovhcloud/ods-stencil/components/icon';
-import '@ovhcloud/ods-stencil/components/collapsible';
-
 const logger = new OdsLogger('global-dev');
 logger.log('init');
 
@@ -18,7 +15,5 @@ logger.log('init');
 };
 
 (async () => {
-  await customElements.whenDefined('osds-accordion-group');
-  await customElements.whenDefined('osds-accordion');
-
+  await customElements.whenDefined('osds-collapsible');
 })();

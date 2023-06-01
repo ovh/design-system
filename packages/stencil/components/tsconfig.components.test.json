@@ -5,7 +5,9 @@
     "jsxFactory": "h",
     "declaration": true,
     "paths": {
-      "@ovhcloud/ods-stencil/components/*": ["./packages/stencil/components/*"]
+      "@ovhcloud/ods-stencil/components/*": [
+        "./packages/stencil/components/*"
+      ]
     }
   },
   "include": [
@@ -13,10 +15,11 @@
     "accordion/src",
     "button/src",
     "cart/src",
-    "checkbox/src",
     "checkbox-button/src",
+    "checkbox/src",
     "chip/src",
     "code/src",
+    "collapsible/src",
     "content-addon/src",
     "divider/src",
     "flag/src",
@@ -27,8 +30,8 @@
     "message/src",
     "pagination/src",
     "quantity/src",
-    "radio/src",
     "radio-button/src",
+    "radio/src",
     "range/src",
     "select/src",
     "skeleton/src",

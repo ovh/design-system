@@ -16,65 +16,41 @@
 <body>
 
 <h3>Default</h3>
-<osds-breadcrumb>
-  <osds-breadcrumb-item>
-    <osds-link href="#home">Home</osds-link>
-  </osds-breadcrumb-item>
-  <osds-breadcrumb-item>
-    <osds-link href="#services">Services</osds-link>
-  </osds-breadcrumb-item>
-  <osds-breadcrumb-item>
-    <osds-link href="#products">Products</osds-link>
-  </osds-breadcrumb-item>
-  <osds-breadcrumb-item>
-    <osds-link href="#web">Web</osds-link>
-  </osds-breadcrumb-item>
-</osds-breadcrumb>
-
-<h3>Custom separator</h3>
-<osds-breadcrumb>
-  <osds-breadcrumb-item>
-    <osds-link href="#home">Home</osds-link>
-    <osds-icon name="arrow-right" slot="separator"></osds-icon>
-  </osds-breadcrumb-item>
-  <osds-breadcrumb-item>
-    <osds-link href="#services" color="primary">Services</osds-link>
-    <osds-icon name="arrow-right" slot="separator"></osds-icon>
-  </osds-breadcrumb-item>
-  <osds-breadcrumb-item>
-    <osds-link href="#products">Products</osds-link>
-    <osds-icon name="arrow-right" slot="separator"></osds-icon>
-  </osds-breadcrumb-item>
-  <osds-breadcrumb-item>
-    <osds-link href="#web">Web</osds-link>
-    <osds-icon name="arrow-right" slot="separator"></osds-icon>
-  </osds-breadcrumb-item>
+<osds-breadcrumb id="default-breadcrumb">
 </osds-breadcrumb>
 
 <h3>Collapsed</h3>
-<osds-breadcrumb>
-  <osds-breadcrumb-item>
-    <osds-link href="#home">Home</osds-link>
-  </osds-breadcrumb-item>
-  <osds-breadcrumb-item>
-    <osds-link href="#services">Services</osds-link>
-  </osds-breadcrumb-item>
-  <osds-breadcrumb-item>
-    <osds-link href="#products">Products</osds-link>
-  </osds-breadcrumb-item>
-  <osds-breadcrumb-item>
-    <osds-link href="#web">Web</osds-link>
-  </osds-breadcrumb-item>
-  <osds-breadcrumb-item>
-    <osds-link href="#domains">Domains</osds-link>
-  </osds-breadcrumb-item>
-  <osds-breadcrumb-item>
-    <osds-link href="#ovh">ovh.com</osds-link>
-  </osds-breadcrumb-item>
+<osds-breadcrumb id="collapsed-breadcrumb">
 </osds-breadcrumb>
 
+<h3>With icon</h3>
+<osds-breadcrumb id="icon-breadcrumb">
+</osds-breadcrumb>
+
+
 <script>
-  document.querySelectorAll('ods-breadcrumb').forEach((elem) => {});
+  document.querySelector('#default-breadcrumb').items = [
+    { href: "#home", label: "Home" },
+    { href: "#services", label: "Services" },
+    { href: "#products", label: "Products" },
+    { href: "#web", label: "Web" },
+  ];
+
+  document.querySelector('#collapsed-breadcrumb').items = [
+    { href: "#home", label: "Home" },
+    { href: "#services", label: "Services" },
+    { href: "#products", label: "Products" },
+    { href: "#web", label: "Web" },
+    { href: "#domains", label: "Domains" },
+    { href: "#ovh", label: "ovh.com" },
+  ];
+
+  document.querySelector('#icon-breadcrumb').items = [
+    { href: "#home", icon: "home" },
+    { href: "#services", label: "Services", icon: "book" },
+    { href: "#products", label: "Products" },
+    { href: "#web", label: "Web" },
+  ];
 </script>
 </body>
 </html>

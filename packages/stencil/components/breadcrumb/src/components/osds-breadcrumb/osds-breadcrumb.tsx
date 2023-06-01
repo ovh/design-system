@@ -1,14 +1,13 @@
-import { Component, Element, Host, h, Listen, State } from '@stencil/core';
+import { Component, Element, Host, h, Listen, Prop, State } from '@stencil/core';
 import {
   OdsBreadcrumb,
+  OdsBreadcrumbAttributes,
   OdsBreadcrumbController,
-  OdsBreadcrumbEvents, OdsBreadcrumbItem,
+  OdsBreadcrumbEvents,
+  OdsBreadcrumbItemAttributes,
   OdsBreadcrumbMethods,
-  // odsBreadcrumbDefaultAttributes
 } from '@ovhcloud/ods-core';
 import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libraries/stencil-core';
-
-const MAX_DISPLAYED_ITEMS = 4; // TODO move to core?
 
 /**
  * @slot (unnamed) - Breadcrumb content
@@ -19,59 +18,41 @@ const MAX_DISPLAYED_ITEMS = 4; // TODO move to core?
   shadow: true
 })
 export class OsdsBreadcrumb implements OdsBreadcrumb<OdsStencilMethods<OdsBreadcrumbMethods>, OdsStencilEvents<OdsBreadcrumbEvents>> {
+  private breadcrumbItems: OdsBreadcrumbItemAttributes[] = []
   controller: OdsBreadcrumbController = new OdsBreadcrumbController(this);
   @Element() el!: HTMLElement;
 
   @State() isCollapsed = true;
+
+  @Prop({ reflect: true }) items: OdsBreadcrumbAttributes['items'] = [];
 
   componentWillLoad() {
     this.updateBreadcrumb();
   }
 
   /**
-   * @see OdsBreadcrumbBehavior.onBreadcrumbItemCollapsedClick TODO
+   * @see OdsBreadcrumbBehavior.onBreadcrumbItemCollapsedClick
    */
   @Listen('odsBreadcrumbItemCollapsedClick')
-  onBreadcrumbItemCollapsedClick(_event: CustomEvent<void>) {//TODO _
-    console.log('RECEIVE odsBreadcrumbItemCollapsedClick')
-
+  onBreadcrumbItemCollapsedClick() {
     this.isCollapsed = false;
     this.updateBreadcrumb();
   }
 
-  // TODO controller?
   private updateBreadcrumb() {
-    const breadcrumbItems = this.getBreadcrumbItems();
-
-    if (!breadcrumbItems.length) {
-      return;
-    }
-
-    breadcrumbItems.forEach((breadcrumbItem) => {
-      breadcrumbItem.isCollapsed = false;
-      breadcrumbItem.isCollapsedItem = false;
-      breadcrumbItem.isLast = false;
-    })
-
-    if (this.isCollapsed && breadcrumbItems.length > MAX_DISPLAYED_ITEMS) {
-      breadcrumbItems.forEach((breadcrumbItem, index) => {
-        breadcrumbItem.isCollapsed = index >= 1 && index < (breadcrumbItems.length - 1);
-        breadcrumbItem.isCollapsedItem = index === 1;
-        breadcrumbItem.isLast = index === (breadcrumbItems.length - 1);
-      })
-    } else {
-      breadcrumbItems[breadcrumbItems.length - 1].isLast = true;
-    }
-  }
-
-  private getBreadcrumbItems() {
-    return Array.from(this.el.querySelectorAll<OdsBreadcrumbItem & HTMLElement>('osds-breadcrumb-item'));
+    this.breadcrumbItems = this.controller.getBreadcrumbItems(this.isCollapsed);
   }
 
   render() {
     return (
       <Host role="navigation">
-        <slot></slot>
+        {
+          this.breadcrumbItems.map((breadcrumbItem, index) => (
+            <osds-breadcrumb-item key={index}
+                                  {...breadcrumbItem}>
+            </osds-breadcrumb-item>
+          ))
+        }
       </Host>
     );
   }

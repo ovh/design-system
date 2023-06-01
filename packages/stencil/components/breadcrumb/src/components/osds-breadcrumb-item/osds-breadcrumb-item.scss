@@ -1,30 +1,21 @@
-//@import 'styles/osds-breadcrumb.mixins';
-//@import 'styles/osds-breadcrumb.color';
-//@import 'styles/osds-breadcrumb.size';
-//@import 'styles/osds-breadcrumb.typography';
+@import 'styles/osds-breadcrumb-item.mixins';
+@import 'styles/osds-breadcrumb-item.color';
+@import 'styles/osds-breadcrumb-item.size';
+@import 'styles/osds-breadcrumb-item.typography';
 @import '~@ovhcloud/ods-theming/color/ods-theming-color';
 @import '~@ovhcloud/ods-theming/ods-theme';
 
-// CSS targeted only for this component
-// /!\ for theming purposes, it has to be done in theming files
-// (i.e. packages/libraries/theming/...)
 :host {
   display: flex;
-  grid-template-columns: 1fr max-content;
   align-items: center;
-
-  .item {
-    padding: 0 4px;// TODO var
-  }
 }
 
 :host(.collapsed) .item {
   display: none;
 }
 
-// apply the theme template for the component
-//@include ods-theme-component() {
-//  @include osds-breadcrumb-theme-color();
-//  @include osds-breadcrumb-theme-size();
-//  @include osds-breadcrumb-theme-typography();
-//}
+@include ods-theme-component() {
+  @include osds-breadcrumb-item-theme-color();
+  @include osds-breadcrumb-item-theme-size();
+  @include osds-breadcrumb-item-theme-typography();
+}

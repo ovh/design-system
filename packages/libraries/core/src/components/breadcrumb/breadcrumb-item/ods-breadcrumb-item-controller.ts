@@ -6,16 +6,7 @@ import { OdsComponentController } from '../../ods-component-controller';
  * it contains all the glue between framework implementation and the third party service.
  */
 export class OdsBreadcrumbItemController extends OdsComponentController<OdsBreadcrumbItem> {
-  // private readonly logger = new OdsLogger('OdsBreadcrumbItemController');
-
   constructor(component: OdsBreadcrumbItem) {
     super(component);
-  }
-
-  /**
-   * Attributes validation documentation
-   */
-  validateAttributes(): void {
-      return;
   }
 }

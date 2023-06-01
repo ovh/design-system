@@ -1,16 +1,17 @@
-import { Component, Element, Event, EventEmitter, Host, h, Prop, Watch } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Host, h, Prop } from '@stencil/core';
 import {
   OdsBreadcrumbItem,
   OdsBreadcrumbItemController,
+  odsBreadcrumbItemDefaultAttributes,
   OdsBreadcrumbItemEvents,
   OdsBreadcrumbItemMethods,
   OdsButtonSize,
   OdsButtonVariant,
-  OdsLink,
-  // odsBreadcrumbItemDefaultAttributes
+  OdsIconName,
+  OdsIconSize,
 } from '@ovhcloud/ods-core';
 import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libraries/stencil-core';
-// import { OsdsLink } from '@ovhcloud/ods-stencil/components/link/src/components';
+import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 
 /**
  * @slot (unnamed) - Breadcrumb Item content
@@ -21,39 +22,30 @@ import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libra
   shadow: true
 })
 export class OsdsBreadcrumbItem implements OdsBreadcrumbItem<OdsStencilMethods<OdsBreadcrumbItemMethods>, OdsStencilEvents<OdsBreadcrumbItemEvents>> {
+  private defaultColorIntent = OdsThemeColorIntent.primary;
   controller: OdsBreadcrumbItemController = new OdsBreadcrumbItemController(this);
   @Element() el!: HTMLElement;
 
   /** @internal */
-  @Prop() isCollapsed = false;
+  @Prop() isCollapsed = odsBreadcrumbItemDefaultAttributes.isCollapsed;
 
   /** @internal */
-  @Prop() isCollapsedItem!: boolean;
+  @Prop() isCollapsedItem = odsBreadcrumbItemDefaultAttributes.isCollapsedItem;
 
   /** @internal */
-  @Prop() isLast!: boolean;
+  @Prop() isLast = odsBreadcrumbItemDefaultAttributes.isLast;
 
-  /** @see OdsBreadcrumbItem.odsBreadcrumbItemCollapsedClick */
+  /** Item link to redirect to */
+  @Prop({ reflect: true }) href = '';
+
+  /** Icon to display */
+  @Prop({ reflect: true }) icon?: OdsIconName;
+
+  /** Text to display */
+  @Prop({ reflect: true }) label?: string;
+
+  /** @see OdsBreadcrumbItemEvents.odsBreadcrumbItemCollapsedClick */
   @Event() odsBreadcrumbItemCollapsedClick!: EventEmitter<void>;
-
-  @Watch('isLast')
-  onIsLastChange() {
-    if (this.isLast) {
-      this.disableLink();
-    }
-  }
-
-  private disableLink() {
-    const linkElement = this.getLink();
-
-    if (linkElement) {
-      linkElement.disabled = true
-    }
-  }
-
-  private getLink() {
-    return this.el.querySelector<OdsLink & HTMLElement>('osds-link');
-  }
 
   private onCollapsedElementClick() {
     this.odsBreadcrumbItemCollapsedClick.emit();
@@ -65,26 +57,41 @@ export class OsdsBreadcrumbItem implements OdsBreadcrumbItem<OdsStencilMethods<O
     return (
       <Host class={{ 'collapsed': this.isCollapsed }}>
         <div class="item">
-          <slot></slot>
+          <osds-link color={this.defaultColorIntent}
+                     disabled={this.isLast}
+                     href={this.href}>
+            {
+              !!this.icon &&
+              <span slot="start">
+                <osds-icon name={this.icon}
+                           size={OdsIconSize.xs}
+                           color={this.defaultColorIntent}>
+                </osds-icon>
+              </span>
+            }
+            {this.label}
+          </osds-link>
         </div>
 
         {
           this.isCollapsedItem &&
-          <osds-button onClick={ () => this.onCollapsedElementClick() }
-                       size={ OdsButtonSize.sm }
-                       variant={ OdsButtonVariant.ghost }>
-            ...
+          <osds-button color={this.defaultColorIntent}
+                       onClick={() => this.onCollapsedElementClick()}
+                       size={OdsButtonSize.sm}
+                       variant={OdsButtonVariant.ghost}>
+            <osds-icon color={this.defaultColorIntent}
+                       name={OdsIconName.ELLIPSIS}>
+            </osds-icon>
           </osds-button>
         }
 
         {
           showSeparator &&
-          <slot name="separator">
-            <osds-text class="separator"
-                       aria-hidden="true">
-              |
-            </osds-text>
-          </slot>
+          <osds-text class="separator"
+                     color={this.defaultColorIntent}
+                     aria-hidden="true">
+            |
+          </osds-text>
         }
       </Host>
     );

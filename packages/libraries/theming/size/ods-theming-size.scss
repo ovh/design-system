@@ -53,6 +53,7 @@
 /// @access public
 @function ods-create-size-config(
   $accordion,
+  $breadcrumb,
   $button,
   $cart,
   $checkbox-button,
@@ -74,6 +75,7 @@
 ) {
   @return (
     accordion: ods-create-component-size-config(accordion, $accordion),
+    breadcrumb: ods-create-component-size-config(breadcrumb, $breadcrumb),
     button: ods-create-component-size-config(button, $button),
     cart: ods-create-component-size-config(cart, $cart),
     checkbox-button: ods-create-component-size-config(checkbox-button, $checkbox-button),

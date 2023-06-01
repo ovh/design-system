@@ -1,4 +1,5 @@
 import { OdsBreadcrumbAttributes } from './ods-breadcrumb-attributes';
+import { OdsBreadcrumbBehavior } from './ods-breadcrumb-behavior';
 import { OdsBreadcrumbController } from './ods-breadcrumb-controller';
 import { OdsBreadcrumbEvents } from './ods-breadcrumb-events';
 import { OdsBreadcrumbMethods } from './ods-breadcrumb-methods';
@@ -13,4 +14,4 @@ import { OdsComponentGenericMethods } from '../../ods-component-generic-methods'
  */
 export type OdsBreadcrumb<ComponentMethods extends OdsComponentGenericMethods<OdsBreadcrumbMethods> = OdsComponentGenericMethods<OdsBreadcrumbMethods>,
   ComponentEvents extends OdsComponentGenericEvents<OdsBreadcrumbEvents> = OdsComponentGenericEvents<OdsBreadcrumbEvents>> =
-  OdsComponent<ComponentMethods, ComponentEvents, OdsBreadcrumbAttributes, OdsBreadcrumbController>;
+  OdsComponent<ComponentMethods, ComponentEvents, OdsBreadcrumbAttributes, OdsBreadcrumbController, OdsBreadcrumbBehavior>;

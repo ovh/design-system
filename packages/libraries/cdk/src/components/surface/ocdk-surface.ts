@@ -322,6 +322,12 @@ export class OcdkSurface extends HTMLElement {
       setMinHeight: (height) => {
         this.style.minHeight = height;
       },
+      setMaxWidth: (width) => {
+        this.style.maxWidth = width;
+      },
+      setMinWidth: (width) => {
+        this.style.minWidth = width;
+      },
       autoDetectItemHeight: () => {
         const elements = this.querySelector('slot')?.assignedElements();
         const firstElement = elements && elements[ 0 ] as HTMLElement | undefined;
@@ -329,6 +335,7 @@ export class OcdkSurface extends HTMLElement {
         this.logger.log('[getDefaultAdapter].autoDetectItemHeight', { height });
         return height;
       }
+      // todo add autoDetectItemWidth?
     };
     return adapter;
   }

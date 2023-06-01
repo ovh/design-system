@@ -39,6 +39,7 @@ export function ocdkSurfaceSymmetryTrBr(): OcdkSurfaceOnePositionStrategy<OcdkSu
         },
         appliers: {
           maxHeight: (opt) => opt.inspections.comfort.availableTop - opt.config.anchorMargin.top,
+          maxWidth: (opt) => opt.measurements.surfaceSize.width,
           verticalOffset: (opt) => -opt.config.anchorMargin.top - opt.measurements.surfaceSize.height,
           verticalAlignment: 'top',
           horizontalOffset: () => 0,
@@ -56,6 +57,7 @@ export function ocdkSurfaceSymmetryTrBr(): OcdkSurfaceOnePositionStrategy<OcdkSu
         },
         appliers: {
           maxHeight: (opt) => helpers.symmetryFallbackMaxHeightTxBx(opt, opt.inspections.comfort.availableTop, opt.inspections.limit.availableTop),
+          maxWidth: (opt) => opt.measurements.surfaceSize.width,
           verticalOffset: (opt) => helpers.symmetryFallbackVerticalOffsetTxBx(opt, opt.inspections.comfort.availableTop, opt.inspections.limit.availableTop),
           verticalAlignment: 'top',
           horizontalOffset: () => 0,
@@ -70,6 +72,7 @@ export function ocdkSurfaceSymmetryTrBr(): OcdkSurfaceOnePositionStrategy<OcdkSu
           // already in a switch process and this new position isn't good enough, go to the fallback of the last strategy position
           if (opt.switchFrom && isOcdkSurfaceStrategyComputeResultPosition(opt.switchFrom) && opt.switchFrom.position) {
             loggerSymmetry.log('[COMPUTE] already switched off but no enough space: continue with the fallback', opt.switchFrom);
+            console.log('fallback from tr-br', opt.switchFrom.position.STRATEGIES.FALLBACK);
             return opt.switchFrom.position.STRATEGIES.FALLBACK;
           }
           return {

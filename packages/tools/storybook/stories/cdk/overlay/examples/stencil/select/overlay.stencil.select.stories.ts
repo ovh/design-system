@@ -4,6 +4,8 @@ import { defineCustomElements } from '@ovhcloud/ods-cdk/dev/loader';
 import page from './overlay.stencil.select.stories.page.mdx';
 import { play } from './overlay.stencil.select.stories.play';
 import { olesIpsum, OlesIpsumGeneration } from '@ovhcloud/ods-core/src';
+import { OcdkSurfaceSelectPosition } from '@ovhcloud/ods-cdk-dev';
+import { OcdkSurfaceSelectPositionList } from '@ovhcloud/ods-cdk-dev/src';
 
 defineCustomElements();
 
@@ -41,6 +43,7 @@ const selectItemScss = require(`!!raw-loader!@ovhcloud/ods-cdk-dev/src/component
 export default {
   title: 'Libraries/CDK/Overlay/examples/Stencil/Select',
   parameters: {
+    layout: 'centered',
     docs: { page },
     controls: { expanded: true },
     preview: [
@@ -80,7 +83,9 @@ const Template = (args: any) => {
 
   return html`
     <p>${args.applyContent ? olesIpsum(OlesIpsumGeneration.paragraphs, 2) : ''}</p>
-    <ocdk-surface-select-example dir="${args.applyDirection}" opened="${args.opened}">
+<!--    <div style='height: 500px;'></div>-->
+    <div style='width: 500px; height: 40px; /*padding-left: 150px;*/'>
+    <ocdk-surface-select-example dir="${args.applyDirection}" opened="${args.opened}" position="${args.position}">
       <div slot="trigger">My Select</div>
       <ocdk-surface-select-item-example value="item 1">item #1</ocdk-surface-select-item-example>
       <ocdk-surface-select-item-example value="item 2">item #2</ocdk-surface-select-item-example>
@@ -91,6 +96,7 @@ const Template = (args: any) => {
       <ocdk-surface-select-item-example value="item 7">item #7</ocdk-surface-select-item-example>
       <ocdk-surface-select-item-example value="item 8">item #8</ocdk-surface-select-item-example>
     </ocdk-surface-select-example>
+    </div>
     <p>${args.applyContent ? olesIpsum(OlesIpsumGeneration.paragraphs, 2) : ''}</p>
   `;
 };

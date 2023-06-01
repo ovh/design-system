@@ -68,9 +68,12 @@ const Template = (args: any) => {
 
   return html`
     <p>${args.applyContent ? olesIpsum(OlesIpsumGeneration.paragraphs, 2) : ''}</p>
-    <ocdk-surface-tooltip-example value="default positioning" dir="${args.applyDirection}" position="${args.position}">
-      <button>tooltip over me</button>
-    </ocdk-surface-tooltip-example>
+    <div style='padding-left: 150px;'>
+      <ocdk-surface-tooltip-example value="default positioning" dir="${args.applyDirection}" position="${args.position}">
+        <button>tooltip over me</button>
+      </ocdk-surface-tooltip-example>
+    </div>
+
     <p>${args.applyContent ? olesIpsum(OlesIpsumGeneration.paragraphs, 2) : ''}</p>
   `;
 };

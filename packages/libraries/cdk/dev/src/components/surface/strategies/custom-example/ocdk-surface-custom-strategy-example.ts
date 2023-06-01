@@ -49,6 +49,7 @@ export class OcdkSurfaceCustomStrategyExample implements OcdkSurfaceStrategyDefi
             // use analyzed spaces (limit and margin) and fill final values
             appliers: {
               maxHeight: (opt) => opt.measurements.surfaceSize.height,
+              maxWidth: (opt) => opt.measurements.surfaceSize.width,
               verticalOffset: () => 0,
               verticalAlignment: 'top',
               horizontalOffset: (opt) => -opt.measurements.surfaceSize.width,
@@ -76,6 +77,7 @@ export class OcdkSurfaceCustomStrategyExample implements OcdkSurfaceStrategyDefi
             // use analyzed spaces (limit and margin) and fill final values
             appliers: {
               maxHeight: () => 100,
+              maxWidth: () => 100,
               verticalOffset: () => 0,
               verticalAlignment: 'top',
               horizontalOffset: () => 0,

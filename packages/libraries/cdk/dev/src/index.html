@@ -90,6 +90,49 @@
     </div>
   </div>
 
+  <h3>toto example</h3>
+  <div class="my-form-field">
+    <style>
+      .basic-container {
+        /* overlay important properties */
+        position: relative; /* must be here to make the positioning working well */
+        text-align: initial; /* must be here to make the positioning working well for RTL alignment */
+        padding: 0; /* must be here to make the computing works. If you need padding, apply it on trigger or surface */
+        /* end overlay important properties */
+
+        display: inline-block; /* recommended */
+
+        color: white;
+      }
+
+      .basic-trigger {
+        background: #0d4aa9;
+        cursor: pointer;
+        padding: 5px;
+        border-radius: 4px;
+      }
+
+      .basic-surface {
+        background: #0e2231;
+        border-radius: 4px;
+        padding: 5px;
+      }
+
+    </style>
+    <div id="basic-container-toto" class="basic-container">
+      <div id="basic-trigger-toto" class="basic-trigger" onclick="basicTotoToggle()">my trigger</div>
+      <ocdk-surface id="basic-surface-toto" class="basic-surface" debug>My surface</ocdk-surface>
+    </div>
+  </div>
+
+<!--    <h3>example 1</h3>-->
+<!--    <div class="my-form-field">-->
+<!--      <div id="basic-container-1" class="basic-container">-->
+<!--        <div id="basic-trigger-1" class="basic-trigger" onclick="basic1Toggle()">my trigger</div>-->
+<!--        <ocdk-surface id="basic-surface-1" class="basic-surface" debug>My surface</ocdk-surface>-->
+<!--      </div>-->
+<!--    </div>-->
+
 
   <h3>custom strategy example</h3>
   <div class="my-form-field">
@@ -242,6 +285,12 @@
     </ocdk-surface-tooltip-example>
     <ocdk-surface-tooltip-example value="bottom positioning" position="bottom">
       <button>tooltip at bottom</button>
+    </ocdk-surface-tooltip-example>
+    <ocdk-surface-tooltip-example value="left positioning" position="left">
+      <button>tooltip at left</button>
+    </ocdk-surface-tooltip-example>
+    <ocdk-surface-tooltip-example value="right positioning" position="right">
+      <button>tooltip at right</button>
     </ocdk-surface-tooltip-example>
     <!--    <ocdk-surface-tooltip-example value="left positioning"><button>tooltip at left</button></ocdk-surface-tooltip-example>-->
 

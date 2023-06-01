@@ -5,6 +5,8 @@ import { OcdkSurfaceSymmetryConfig } from './ocdk-surface-symmetry-strategy';
 export class OcdkSurfaceSymmetryStrategyHelpers {
   private static loggerSymmetryBxTx = new OcdkLogger('SYMMETRY STRATEGY BxTx');
   private static loggerSymmetryTxBx = new OcdkLogger('SYMMETRY STRATEGY TxBx');
+  private static loggerSymmetryRxLx = new OcdkLogger('SYMMETRY STRATEGY RxLx');
+  private static loggerSymmetryLxRx = new OcdkLogger('SYMMETRY STRATEGY LxRx');
 
   /**
    * fallback height applicable for the corner points :
@@ -30,6 +32,14 @@ export class OcdkSurfaceSymmetryStrategyHelpers {
     return opt.inspections.comfort.availableBottom;
   }
 
+  /**
+   * fallback height applicable for the corner points :
+   * - anchor: TOP_LEFT origin: BOTTOM_LEFT
+   * - anchor: TOP_RIGHT origin: BOTTOM_RIGHT
+   * @param opt - options with computed spacings
+   * @param availableHeightComfort - total height available in comfort margin mode
+   * @param availableHeightLimit - total height available in limit margin mode
+   */
   static symmetryFallbackMaxHeightTxBx(opt: OcdkSurfaceMaxHeightOpt<OcdkSurfaceSymmetryConfig>, availableHeightComfort: number, availableHeightLimit: number) {
     if (opt.measurements.surfaceSize.height > availableHeightComfort) {
       this.loggerSymmetryTxBx.log('[maxHeight] vertical surface height is greater than viewport minus MARGIN_TO_EDGE');
@@ -44,6 +54,54 @@ export class OcdkSurfaceSymmetryStrategyHelpers {
 
     this.loggerSymmetryTxBx.log('[maxHeight] vertical surface height is less than or equal to viewport minus MARGIN_TO_EDGE');
     return opt.inspections.comfort.availableTop;
+  }
+
+  /**
+   * fallback width applicable for the corner points :
+   * - anchor: TOP_RIGHT origin: TOP_LEFT
+   * - anchor: BOTTOM_RIGHT origin: BOTTOM_LEFT
+   * @param opt - options with computed spacings
+   * @param availableWidthComfort - total width available in comfort margin mode
+   * @param availableWidthLimit - total width available in limit margin mode
+   */
+  static symmetryFallbackMaxWidthRxLx(opt: OcdkSurfaceMaxHeightOpt<OcdkSurfaceSymmetryConfig>, availableWidthComfort: number, availableWidthLimit: number) {
+    if (opt.measurements.surfaceSize.width > availableWidthComfort) {
+      this.loggerSymmetryRxLx.log('[maxWidth] horizontal surface width is greater than viewport minus MARGIN_TO_EDGE');
+      if (opt.measurements.surfaceSize.width > availableWidthLimit) {
+        this.loggerSymmetryRxLx.log('[maxWidth] horizontal surface width is greater than viewport minus MARGIN_TO_EDGE_LIMIT');
+        return opt.inspections.limit.availableRight;
+      } else {
+        this.loggerSymmetryRxLx.log('[maxWidth] horizontal surface width is less than or equal to viewport minus MARGIN_TO_EDGE_LIMIT');
+        return opt.measurements.surfaceSize.width;
+      }
+    }
+
+    this.loggerSymmetryRxLx.log('[maxWidth] horizontal surface width is less than or equal to viewport minus MARGIN_TO_EDGE');
+    return opt.inspections.comfort.availableRight;
+  }
+
+  /**
+   * fallback width applicable for the corner points :
+   * - anchor: TOP_LEFT origin: TOP_RIGHT
+   * - anchor: BOTTOM_LEFT origin: BOTTOM_RIGHT
+   * @param opt - options with computed spacings
+   * @param availableWidthComfort - total width available in comfort margin mode
+   * @param availableWidthLimit - total width available in limit margin mode
+   */
+  static symmetryFallbackMaxWidthLxRx(opt: OcdkSurfaceMaxHeightOpt<OcdkSurfaceSymmetryConfig>, availableWidthComfort: number, availableWidthLimit: number) {
+    if (opt.measurements.surfaceSize.width > availableWidthComfort) {
+      this.loggerSymmetryLxRx.log('[maxWidth] horizontal surface width is greater than viewport minus MARGIN_TO_EDGE');
+      if (opt.measurements.surfaceSize.width > availableWidthLimit) {
+        this.loggerSymmetryLxRx.log('[maxWidth] horizontal surface width is greater than viewport minus MARGIN_TO_EDGE_LIMIT');
+        return opt.inspections.limit.availableLeft;
+      } else {
+        this.loggerSymmetryLxRx.log('[maxWidth] horizontal surface width is less than or equal to viewport minus MARGIN_TO_EDGE_LIMIT');
+        return opt.measurements.surfaceSize.width;
+      }
+    }
+
+    this.loggerSymmetryLxRx.log('[maxWidth] horizontal surface width is less than or equal to viewport minus MARGIN_TO_EDGE');
+    return opt.inspections.comfort.availableLeft;
   }
 
   /**
@@ -91,5 +149,51 @@ export class OcdkSurfaceSymmetryStrategyHelpers {
     const verticalOffset = -( opt.measurements.viewportDistance.top - opt.config.MARGIN_TO_EDGE_COMFORT);
     this.loggerSymmetryTxBx.log('[verticalOffset] vertical surface height is less than or equal to viewport minus MARGIN_TO_EDGE');
     return verticalOffset;
+  }
+
+  /**
+   * fallback horizontal offset applicable for the corner points :
+   * - anchor: TOP_RIGHT origin: TOP_LEFT
+   * - anchor: BOTTOM_RIGHT origin: BOTTOM_LEFT
+   * @param opt - options with computed spacings
+   * @param availableWidthComfort - total width available in comfort margin mode
+   * @param availableWidthLimit - total width available in limit margin mode
+   */
+  static symmetryFallbackHorizontalOffsetRxLx(opt: OcdkSurfaceAvailableSpaceFct2<OcdkSurfaceSymmetryConfig>, availableWidthComfort: number, availableWidthLimit: number) {
+    if (opt.measurements.surfaceSize.width > availableWidthComfort) {
+      const maxHorizontalOffsetComfort = -opt.measurements.viewportDistance.right + opt.config.MARGIN_TO_EDGE_COMFORT;
+      const maxHorizontalOffsetLimit = -opt.measurements.viewportDistance.right + opt.config.MARGIN_TO_EDGE_LIMIT;
+      this.loggerSymmetryRxLx.log('[horizontalOffset] horizontal surface width is greater than viewport minus MARGIN_TO_EDGE');
+      if (opt.measurements.surfaceSize.width > availableWidthLimit) {
+        this.loggerSymmetryRxLx.log('[horizontalOffset] horizontal surface width is greater than viewport minus MARGIN_TO_EDGE_LIMIT');
+        return maxHorizontalOffsetLimit;
+      } else {
+        const comfortOverlapWidth = opt.measurements.surfaceSize.width - availableWidthComfort;
+        return maxHorizontalOffsetComfort - (comfortOverlapWidth / 2)
+      }
+    }
+
+    const horizontalOffset = /*opt.measurements.viewportDistance.right - opt.config.MARGIN_TO_EDGE_COMFORT*/opt.measurements.viewportDistance.right - opt.config.MARGIN_TO_EDGE_COMFORT - opt.measurements.surfaceSize.width + opt.measurements.anchorSize.width;;
+    this.loggerSymmetryRxLx.log('[horizontalOffset] horizontal surface width is less than or equal to viewport minus MARGIN_TO_EDGE');
+    return horizontalOffset;
+  }
+
+  static symmetryFallbackHorizontalOffsetLxRx(opt: OcdkSurfaceAvailableSpaceFct2<OcdkSurfaceSymmetryConfig>, availableWidthComfort: number, availableWidthLimit: number) {
+    if (opt.measurements.surfaceSize.width > availableWidthComfort) {
+      const maxHorizontalOffsetComfort = -opt.measurements.viewportDistance.left + opt.config.MARGIN_TO_EDGE_COMFORT;
+      const maxHorizontalOffsetLimit = -opt.measurements.viewportDistance.left + opt.config.MARGIN_TO_EDGE_LIMIT;
+      this.loggerSymmetryLxRx.log('[horizontalOffset] horizontal surface width is greater than viewport minus MARGIN_TO_EDGE');
+      if (opt.measurements.surfaceSize.width > availableWidthLimit) {
+        this.loggerSymmetryLxRx.log('[horizontalOffset] horizontal surface width is greater than viewport minus MARGIN_TO_EDGE_LIMIT');
+        return maxHorizontalOffsetLimit;
+      } else {
+        const comfortOverlapWidth = opt.measurements.surfaceSize.width - availableWidthComfort;
+        return maxHorizontalOffsetComfort - (comfortOverlapWidth / 2)
+      }
+    }
+
+    const horizontalOffset = -( opt.measurements.viewportDistance.left - opt.config.MARGIN_TO_EDGE_COMFORT);
+    this.loggerSymmetryLxRx.log('[horizontalOffset] horizontal surface width is less than or equal to viewport minus MARGIN_TO_EDGE');
+    return horizontalOffset;
   }
 }

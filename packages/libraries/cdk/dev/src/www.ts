@@ -1,5 +1,5 @@
 import { Ods } from '@ovhcloud/ods-core';
-import { OcdkSurface, ocdkDefineCustomElements } from '@ovhcloud/ods-cdk';
+import { OcdkSurface, ocdkDefineCustomElements, OcdkSurfaceCorner } from '@ovhcloud/ods-cdk';
 import {
   OcdkSurfaceCustomStrategyExample
 } from './components/surface/strategies/custom-example/ocdk-surface-custom-strategy-example';
@@ -19,6 +19,8 @@ logger.log('init');
 
   const basicTrigger1 = document.getElementById('basic-trigger-1');
   const basicSurface1 = document.getElementById('basic-surface-1') as OcdkSurface | null;
+  const basicTriggerToto = document.getElementById('basic-trigger-toto');
+  const basicSurfaceToto = document.getElementById('basic-surface-toto') as OcdkSurface | null;
   const basicTrigger2 = document.getElementById('basic-trigger-2');
   const basicSurface2 = document.getElementById('basic-surface-2') as OcdkSurface | null;
   const basicTrigger3 = document.getElementById('basic-trigger-3');
@@ -35,6 +37,15 @@ logger.log('init');
       basicSurface1.setAnchorElement(basicTrigger1);
       // toggle the open of the surface
       basicSurface1.opened = !basicSurface1.opened;
+    }
+  }
+
+  (window as any).basicTotoToggle = () => {
+    // synchronize the trigger element (anchor) with the surface when both are available
+    if (basicTriggerToto && basicSurfaceToto) {
+      basicSurfaceToto.setCornerPoints({ anchor: OcdkSurfaceCorner.TOP_LEFT, origin: OcdkSurfaceCorner.TOP_RIGHT });
+      // toggle the open of the surface
+      basicSurfaceToto.opened = !basicSurfaceToto.opened;
     }
   }
 

@@ -68,6 +68,7 @@ const htmlFile = require(`!!raw-loader!@ovhcloud/ods-cdk/doc/overlay/examples/ba
 export default {
   title: 'Libraries/CDK/Overlay/examples/Basic',
   parameters: {
+    layout: 'centered',
     docs: { page },
     controls: { expanded: true },
     preview: [
@@ -128,9 +129,11 @@ const Template = (args: any) => {
     <p>${args.applyContent ? olesIpsum(OlesIpsumGeneration.paragraphs, 2) : ''}</p>
     <div id="basic-container-1" dir="${args.direction}">
       <div id="basic-trigger-1" onclick="basic1Toggle()">my trigger</div>
-      <ocdk-surface id="basic-surface-1" ?opened=${args.opened} .animated=${args.animated} .corners=${corners} animation="${args.animation}" >My surface</ocdk-surface>
+      <ocdk-surface id="basic-surface-1" ?opened=${args.opened} .animated=${args.animated} .corners=${corners} animation="${args.animation}" >My surface</br>blabla blabla</ocdk-surface>
+    </div>
     </div>
     <p>${args.applyContent ? olesIpsum(OlesIpsumGeneration.paragraphs, 2) : ''}</p>
+    </div>
   `;
 };
 

@@ -2,11 +2,11 @@
 /// @access private
 @function ods-get-select-size-properties($size-name) {
   @return (
+    grid-column-gap: var(--ods-size-select-#{$size-name}-grid-column-gap),
     height: var(--ods-size-select-#{$size-name}-height),
     border-width: var(--ods-size-select-#{$size-name}-border-width),
     border-radius: var(--ods-size-select-#{$size-name}-border-radius),
     padding: var(--ods-size-select-#{$size-name}-padding),
-    width: var(--ods-size-select-#{$size-name}-width)
   )
 }
 

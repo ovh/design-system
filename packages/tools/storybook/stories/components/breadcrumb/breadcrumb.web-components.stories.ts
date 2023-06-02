@@ -15,11 +15,19 @@ defineCustomElements();
 
 /* Default story parameters  */
 const storyParams = {
-
+  items: {
+    category: 'General',
+    defaultValue: [
+      { href: "#home", label: "Home" },
+      { href: "#services", label: "Services" },
+      { href: "#products", label: "Products" },
+      { href: "#web", label: "Web" },
+    ],
+  },
 };
 
 export default {
-  title: 'UI Components/Breadcrumb [atom]/Web Component',
+  title: 'UI Components/Breadcrumb [molecule]/Web Component',
   parameters: {
     notes: {
       API: iframe('/stencil-breadcrumb/modules/index.html'),
@@ -33,9 +41,7 @@ export default {
 /* Default */
 const TemplateDefault = (args:any) => {
   return html`
-    <osds-breadcrumb ...=${getTagAttributes(args)}>
-      Breadcrumb
-    </osds-breadcrumb>
+    <osds-breadcrumb ...=${getTagAttributes(args)}></osds-breadcrumb>
   `;
 }
 export const Default = TemplateDefault.bind({});

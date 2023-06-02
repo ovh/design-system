@@ -18,7 +18,7 @@ export class OdsLinkController extends OdsComponentController<OdsLink> {
   }
 
   /**
-   * validating that the color, the referrerpolicy, the rel and the target have correct values
+   * validating that the color and the target have correct values
    * and warn the user if not
    */
   validateAttributes(): void {
@@ -29,11 +29,14 @@ export class OdsLinkController extends OdsComponentController<OdsLink> {
       attributeName: 'color',
       attribute: this.component.color
     });
-    OdsWarnComponentAttribute<OdsHTMLAnchorElementTarget, OdsLink>({
+    if (this.component.href && !this.component.target) {
+      this.component.target = OdsHTMLAnchorElementTarget._self;
+    }
+    this.component.href && OdsWarnComponentAttribute<OdsHTMLAnchorElementTarget, OdsLink>({
       logger,
       attributeValues: OdsHTMLAnchorElementTarget as Record<string, unknown>,
       attributeName: 'target',
-      attribute: this.component.target
+      attribute: this.component.target,
     });
   }
 }

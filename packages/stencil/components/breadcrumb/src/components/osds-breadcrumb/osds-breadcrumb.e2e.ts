@@ -1,28 +1,128 @@
 import { E2EElement, E2EPage, newE2EPage } from '@stencil/core/testing';
-import { OdsBreadcrumbAttributes, OdsComponentAttributes2StringAttributes, odsBreadcrumbDefaultAttributes } from '@ovhcloud/ods-core';
-import { OdsCreateAttributes, OdsStringAttributes2Str, odsBreadcrumbBaseAttributes } from '@ovhcloud/ods-testing';
+import { OdsBreadcrumbAttributeItem } from '@ovhcloud/ods-core';
 
 describe('e2e:osds-breadcrumb', () => {
+  const dummyItems = [
+    {href: 'href1', label: 'label1'},
+    {href: 'href2', label: 'label2'},
+    {href: 'href3', label: 'label3'},
+    {href: 'href4', label: 'label4'},
+  ];
   let page: E2EPage;
   let el: E2EElement;
+  let breadcrumbItemElements: E2EElement[];
 
-  async function setup({ attributes }: { attributes: Partial<OdsBreadcrumbAttributes> }) {
-    const minimalAttributes: OdsBreadcrumbAttributes = OdsCreateAttributes(attributes, odsBreadcrumbBaseAttributes);
-    const stringAttributes = OdsComponentAttributes2StringAttributes<OdsBreadcrumbAttributes>(minimalAttributes, odsBreadcrumbDefaultAttributes);
+  function isItemVisible(breadcrumbItemElement: E2EElement): boolean {
+    return !breadcrumbItemElement.classList.contains('collapsed');
+  }
 
+  function isCollapsedItem(breadcrumbItemElement: E2EElement): boolean {
+    return !!breadcrumbItemElement.shadowRoot.querySelector('osds-button');
+  }
+
+  async function setup(items: OdsBreadcrumbAttributeItem[] = []) {
     page = await newE2EPage();
-    await page.setContent(`<osds-breadcrumb ${OdsStringAttributes2Str(stringAttributes)}></osds-breadcrumb>`);
+
+    await page.setContent(`<osds-breadcrumb items=${JSON.stringify(items)}></osds-breadcrumb>`);
     await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
 
     el = await page.find('osds-breadcrumb');
+    breadcrumbItemElements = await page.findAll('osds-breadcrumb >>> osds-breadcrumb-item');
   }
 
   it('should render', async () => {
-    await setup({ attributes: {} });
+    await setup();
+
     expect(el).not.toBeNull();
     expect(el).toHaveClass('hydrated');
-
-    // E2E testing
   });
 
+  it('should render with 4 visible items', async () => {
+    await setup(dummyItems);
+
+    expect(breadcrumbItemElements.length).toBe(dummyItems.length);
+
+    expect(isItemVisible(breadcrumbItemElements[0])).toBe(true);
+    expect(isCollapsedItem(breadcrumbItemElements[0])).toBe(false);
+
+    expect(isItemVisible(breadcrumbItemElements[1])).toBe(true);
+    expect(isCollapsedItem(breadcrumbItemElements[1])).toBe(false);
+
+    expect(isItemVisible(breadcrumbItemElements[2])).toBe(true);
+    expect(isCollapsedItem(breadcrumbItemElements[2])).toBe(false);
+
+    expect(isItemVisible(breadcrumbItemElements[3])).toBe(true);
+    expect(isCollapsedItem(breadcrumbItemElements[3])).toBe(false);
+  });
+
+  it('should render first and last items and a collapsed one in the middle', async () => {
+    const moreDummyItems = [...dummyItems,
+      {href: 'href5', label: 'label5'},
+      {href: 'href6', label: 'label6'},
+    ];
+    await setup(moreDummyItems);
+
+    expect(breadcrumbItemElements.length).toBe(moreDummyItems.length);
+
+    expect(isItemVisible(breadcrumbItemElements[0])).toBe(true);
+    expect(isCollapsedItem(breadcrumbItemElements[0])).toBe(false);
+
+    expect(isItemVisible(breadcrumbItemElements[1])).toBe(false);
+    expect(isCollapsedItem(breadcrumbItemElements[1])).toBe(true);
+
+    expect(isItemVisible(breadcrumbItemElements[2])).toBe(false);
+    expect(isCollapsedItem(breadcrumbItemElements[2])).toBe(false);
+
+    expect(isItemVisible(breadcrumbItemElements[3])).toBe(false);
+    expect(isCollapsedItem(breadcrumbItemElements[3])).toBe(false);
+
+    expect(isItemVisible(breadcrumbItemElements[4])).toBe(false);
+    expect(isCollapsedItem(breadcrumbItemElements[4])).toBe(false);
+
+    expect(isItemVisible(breadcrumbItemElements[5])).toBe(true);
+    expect(isCollapsedItem(breadcrumbItemElements[5])).toBe(false);
+  });
+
+  it('should render all on collapsed item click', async () => {
+    const moreDummyItems = [...dummyItems,
+      { href: 'href5', label: 'label5' },
+      { href: 'href6', label: 'label6' },
+    ];
+    await setup(moreDummyItems);
+
+    expect(breadcrumbItemElements.length).toBe(moreDummyItems.length);
+
+    expect(isItemVisible(breadcrumbItemElements[1])).toBe(false);
+    expect(isCollapsedItem(breadcrumbItemElements[1])).toBe(true);
+
+    await page.evaluate((index) => {
+      const breadcrumbItemElements = document.querySelector('osds-breadcrumb')?.shadowRoot?.querySelectorAll('osds-breadcrumb-item');
+      if (breadcrumbItemElements && breadcrumbItemElements.length > index) {
+        const collapsedItem = breadcrumbItemElements[index].shadowRoot?.querySelector('osds-button') as HTMLButtonElement;
+
+        if (collapsedItem) {
+          collapsedItem.click();
+        }
+      }
+    }, 1);
+    await page.waitForChanges();
+
+    expect(isItemVisible(breadcrumbItemElements[0])).toBe(true);
+    expect(isCollapsedItem(breadcrumbItemElements[0])).toBe(false);
+
+    expect(isItemVisible(breadcrumbItemElements[1])).toBe(true);
+    expect(isCollapsedItem(breadcrumbItemElements[1])).toBe(false);
+
+    expect(isItemVisible(breadcrumbItemElements[2])).toBe(true);
+    expect(isCollapsedItem(breadcrumbItemElements[2])).toBe(false);
+
+    expect(isItemVisible(breadcrumbItemElements[3])).toBe(true);
+    expect(isCollapsedItem(breadcrumbItemElements[3])).toBe(false);
+
+    expect(isItemVisible(breadcrumbItemElements[4])).toBe(true);
+    expect(isCollapsedItem(breadcrumbItemElements[4])).toBe(false);
+
+    expect(isItemVisible(breadcrumbItemElements[5])).toBe(true);
+    expect(isCollapsedItem(breadcrumbItemElements[5])).toBe(false);
+  });
 });

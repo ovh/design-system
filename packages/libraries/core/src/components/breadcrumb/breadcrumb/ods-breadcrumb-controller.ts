@@ -1,6 +1,7 @@
 import { OdsBreadcrumb } from './ods-breadcrumb';
 import { OdsComponentController } from '../../ods-component-controller';
 import { OdsBreadcrumbItemAttributes } from '../breadcrumb-item/ods-breadcrumb-item-attributes';
+import { OdsBreadcrumbAttributeItem } from './ods-breadcrumb-attributes';
 
 const MAX_DISPLAYED_ITEMS = 4;
 
@@ -13,25 +14,25 @@ export class OdsBreadcrumbController extends OdsComponentController<OdsBreadcrum
     super(component);
   }
 
-  getBreadcrumbItems(isCollapsed: boolean): OdsBreadcrumbItemAttributes[] {
-    if (!this.component.items.length) {
+  getBreadcrumbItems(items: OdsBreadcrumbAttributeItem[], isCollapsed: boolean): OdsBreadcrumbItemAttributes[] {
+    if (!items.length) {
       return [];
     }
 
-    if (isCollapsed && this.component.items.length > MAX_DISPLAYED_ITEMS) {
-      return this.component.items.map((item, index) => ({
+    if (isCollapsed && items.length > MAX_DISPLAYED_ITEMS) {
+      return items.map((item, index) => ({
         ...item,
-        isCollapsed: index >= 1 && index < (this.component.items.length - 1),
+        isCollapsed: index >= 1 && index < (items.length - 1),
         isCollapsedItem: index === 1,
-        isLast: index === (this.component.items.length - 1),
+        isLast: index === (items.length - 1),
       } as OdsBreadcrumbItemAttributes));
     }
 
-    return this.component.items.map((item, index) => ({
+    return items.map((item, index) => ({
       ...item,
       isCollapsed: false,
       isCollapsedItem: false,
-      isLast: index === (this.component.items.length - 1),
+      isLast: index === (items.length - 1),
     } as OdsBreadcrumbItemAttributes));
   }
 }

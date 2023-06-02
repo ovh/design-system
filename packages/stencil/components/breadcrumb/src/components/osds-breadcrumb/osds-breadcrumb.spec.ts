@@ -1,22 +1,18 @@
-jest.mock('@ovhcloud/ods-core/src/components/breadcrumb/ods-breadcrumb-controller'); // keep jest.mock before any
+jest.mock('@ovhcloud/ods-core/src/components/breadcrumb/breadcrumb/ods-breadcrumb-controller'); // keep jest.mock before any
 
 import {
   OdsBreadcrumbAttributes,
   OdsBreadcrumbController,
-  OdsComponentAttributes2StringAttributes,
   odsBreadcrumbDefaultAttributes,
+  OdsComponentAttributes2StringAttributes
 } from '@ovhcloud/ods-core';
 import {
   OdsCreateAttributes,
   OdsStringAttributes2Str,
   odsBreadcrumbBaseAttributes,
-  odsUnitTestAttribute
 } from '@ovhcloud/ods-testing';
 import { SpecPage, newSpecPage } from '@stencil/core/testing';
-
-import { OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
 import { OsdsBreadcrumb } from './osds-breadcrumb';
-import { getAttributeContextOptions } from '@ovhcloud/ods-stencil/libraries/stencil-testing';
 
 describe('spec:osds-breadcrumb', () => {
   let page: SpecPage;
@@ -34,7 +30,7 @@ describe('spec:osds-breadcrumb', () => {
 
     page = await newSpecPage({
       components: [OsdsBreadcrumb],
-      html: `<osds-breadcrumb ${OdsStringAttributes2Str(stringAttributes)}>My Breadcrumb</osds-breadcrumb>`,
+      html: `<osds-breadcrumb ${OdsStringAttributes2Str(stringAttributes)}></osds-breadcrumb>`,
     });
 
     root = page.root;
@@ -46,23 +42,19 @@ describe('spec:osds-breadcrumb', () => {
     await setup({});
     expect(root?.shadowRoot).toBeTruthy();
     expect(instance).toBeTruthy();
+    expect(instance.isCollapsed).toBe(true);
   });
 
-  describe('attributes', () => {
-    const config = {
-      page: () => page,
-      instance: () => instance,
-      setup
-    };
+  describe('methods', () => {
+    describe('onBreadcrumbItemCollapsedClick', () => {
+      it('should set the isCollapsed on refresh displayed items', async () => {
+        await setup({});
 
-    // Attributes Unit testing
-  });
+        instance.onBreadcrumbItemCollapsedClick()
 
-  describe('controller', () => {
-    it('should call controller.validateAttributes', async () => {
-      await setup();
-      expect(controller.validateAttributes).toHaveBeenCalledWith();
-      expect(controller.validateAttributes).toHaveBeenCalledTimes(1);
+        expect(instance.isCollapsed).toBe(false);
+        expect(controller.getBreadcrumbItems).toHaveBeenCalledWith(false);
+      });
     });
   });
 });

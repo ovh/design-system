@@ -31,10 +31,12 @@ describe('spec:ods-breadcrumb-controller', () => {
 
   describe('methods', () => {
     describe('getBreadcrumbItems', () => {
-      it('should return an empty array if there are no items', () => {
-        setup({ items: [] });
+      beforeEach(() => {
+        setup();
+      });
 
-        expect(controller.getBreadcrumbItems(true)).toEqual([]);
+      it('should return an empty array if there are no items', () => {
+        expect(controller.getBreadcrumbItems([], true)).toEqual([]);
       });
 
       it('should return all items non collapsed with last set', () => {
@@ -42,9 +44,8 @@ describe('spec:ods-breadcrumb-controller', () => {
           { href: 'dummy href 1'},
           { href: 'dummy href 2'},
         ];
-        setup({ items: dummyItems });
 
-        expect(controller.getBreadcrumbItems(true)).toEqual([
+        expect(controller.getBreadcrumbItems(dummyItems, true)).toEqual([
           {
             ...dummyItems[0],
             isCollapsed: false,
@@ -69,9 +70,8 @@ describe('spec:ods-breadcrumb-controller', () => {
           { href: 'dummy href 5'},
           { href: 'dummy href 6'},
         ];
-        setup({ items: dummyItems });
 
-        expect(controller.getBreadcrumbItems(true)).toEqual([
+        expect(controller.getBreadcrumbItems(dummyItems, true)).toEqual([
           {
             ...dummyItems[0],
             isCollapsed: false,
@@ -120,9 +120,8 @@ describe('spec:ods-breadcrumb-controller', () => {
           { href: 'dummy href 5'},
           { href: 'dummy href 6'},
         ];
-        setup({ items: dummyItems });
 
-        expect(controller.getBreadcrumbItems(false)).toEqual([
+        expect(controller.getBreadcrumbItems(dummyItems, false)).toEqual([
           {
             ...dummyItems[0],
             isCollapsed: false,

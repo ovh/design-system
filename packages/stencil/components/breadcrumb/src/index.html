@@ -29,12 +29,12 @@
 
 
 <script>
-  document.querySelector('#default-breadcrumb').items = [
+  document.querySelector('#default-breadcrumb').items = JSON.stringify([
     { href: "#home", label: "Home" },
     { href: "#services", label: "Services" },
     { href: "#products", label: "Products" },
     { href: "#web", label: "Web" },
-  ];
+  ]);
 
   document.querySelector('#collapsed-breadcrumb').items = [
     { href: "#home", label: "Home" },

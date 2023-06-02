@@ -1,30 +1,56 @@
-import { E2EElement, E2EPage, newE2EPage } from '@stencil/core/testing';
-import {
-  OdsBreadcrumbAttributes,
-  OdsComponentAttributes2StringAttributes,
-  odsBreadcrumbDefaultAttributes,
-} from '@ovhcloud/ods-core';
-import { OdsCreateAttributes, OdsStringAttributes2Str, odsBreadcrumbBaseAttributes } from '@ovhcloud/ods-testing';
+import { E2EPage, newE2EPage } from '@stencil/core/testing';
+import { OdsBreadcrumbAttributeItem, OdsIconName } from '@ovhcloud/ods-core';
 
 describe('e2e:osds-breadcrumb', () => {
   let page: E2EPage;
-  let el: E2EElement;
 
-  async function setup({ attributes = {}, html = `` }: { attributes?: Partial<OdsBreadcrumbAttributes>, html?: string } = {}) {
-    const minimalAttributes: OdsBreadcrumbAttributes = OdsCreateAttributes(attributes, odsBreadcrumbBaseAttributes);
-    const stringAttributes = OdsComponentAttributes2StringAttributes<OdsBreadcrumbAttributes>(minimalAttributes, odsBreadcrumbDefaultAttributes);
-
+  async function setup(items: OdsBreadcrumbAttributeItem[] = []) {
     page = await newE2EPage();
-    await page.setContent(`
-      <osds-breadcrumb ${OdsStringAttributes2Str(stringAttributes)}>
-        ${html}
-      </osds-breadcrumb>
-    `);
+
+    await page.setContent(`<osds-breadcrumb items=${JSON.stringify(items)}></osds-breadcrumb>`);
     await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
-    el = await page.find('osds-breadcrumb');
   }
 
   describe('screenshots', () => {
-    // Screenshot testing
+    it('should render with 4 visible items', async () => {
+      const dummyItems = [
+        {href: 'href1', label: 'label1'},
+        {href: 'href2', label: 'label2'},
+        {href: 'href3', label: 'label3'},
+        {href: 'href4', label: 'label4'},
+      ];
+      await setup(dummyItems);
+
+      const results = await page.compareScreenshot('breadcrumb', { fullPage: false, omitBackground: true });
+      expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
+    });
+
+    it('should render with icons and text', async () => {
+      const dummyItems = [
+        {href: 'href1', icon: OdsIconName.HOME },
+        {href: 'href2', icon: OdsIconName.BOOK, label: 'label2'},
+        {href: 'href3', label: 'label3'},
+        {href: 'href4', label: 'label4'},
+      ];
+      await setup(dummyItems);
+
+      const results = await page.compareScreenshot('breadcrumb', { fullPage: false, omitBackground: true });
+      expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
+    });
+
+    it('should render first and last items and a collapsed one in the middle', async () => {
+      const dummyItems = [
+        {href: 'href1', label: 'label1'},
+        {href: 'href2', label: 'label2'},
+        {href: 'href3', label: 'label3'},
+        {href: 'href4', label: 'label4'},
+        {href: 'href5', label: 'label5'},
+        {href: 'href6', label: 'label6'},
+      ];
+      await setup(dummyItems);
+
+      const results = await page.compareScreenshot('breadcrumb', { fullPage: false, omitBackground: true });
+      expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
+    });
   });
 });

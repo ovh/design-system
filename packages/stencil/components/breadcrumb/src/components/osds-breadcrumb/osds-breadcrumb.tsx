@@ -1,11 +1,12 @@
-import { Component, Element, Host, h, Listen, Prop, State } from '@stencil/core';
+import { Component, Element, Host, h, Listen, Prop, State, Watch } from '@stencil/core';
 import {
   OdsBreadcrumb,
-  OdsBreadcrumbAttributes,
+  OdsBreadcrumbAttributeItem,
   OdsBreadcrumbController,
   OdsBreadcrumbEvents,
   OdsBreadcrumbItemAttributes,
   OdsBreadcrumbMethods,
+  OdsLogger,
 } from '@ovhcloud/ods-core';
 import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libraries/stencil-core';
 
@@ -18,15 +19,24 @@ import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libra
   shadow: true
 })
 export class OsdsBreadcrumb implements OdsBreadcrumb<OdsStencilMethods<OdsBreadcrumbMethods>, OdsStencilEvents<OdsBreadcrumbEvents>> {
-  private breadcrumbItems: OdsBreadcrumbItemAttributes[] = []
+  private logger = new OdsLogger('OsdsBreadcrumb');
+  private breadcrumbItems: OdsBreadcrumbItemAttributes[] = [];
+  private parsedItems: OdsBreadcrumbAttributeItem[] = [];
   controller: OdsBreadcrumbController = new OdsBreadcrumbController(this);
   @Element() el!: HTMLElement;
 
   @State() isCollapsed = true;
 
-  @Prop({ reflect: true }) items: OdsBreadcrumbAttributes['items'] = [];
+  @Prop({ reflect: true }) items: OdsBreadcrumbAttributeItem[] | string = [];
 
   componentWillLoad() {
+    this.parseItems();
+    this.updateBreadcrumb();
+  }
+
+  @Watch('items')
+  onItemsChange() {
+    this.parseItems();
     this.updateBreadcrumb();
   }
 
@@ -39,15 +49,28 @@ export class OsdsBreadcrumb implements OdsBreadcrumb<OdsStencilMethods<OdsBreadc
     this.updateBreadcrumb();
   }
 
+  private parseItems() {
+    if (typeof this.items === 'string') {
+      try {
+        this.parsedItems = JSON.parse(this.items);
+      } catch {
+        this.logger.warn('[OsdsBreadcrumb] items string could not be parsed.');
+        this.parsedItems = [];
+      }
+    } else {
+      this.parsedItems = [...this.items];
+    }
+  }
+
   private updateBreadcrumb() {
-    this.breadcrumbItems = this.controller.getBreadcrumbItems(this.isCollapsed);
+    this.breadcrumbItems = this.controller.getBreadcrumbItems(this.parsedItems, this.isCollapsed);
   }
 
   render() {
     return (
       <Host role="navigation">
         {
-          this.breadcrumbItems.map((breadcrumbItem, index) => (
+          (this.breadcrumbItems || []).map((breadcrumbItem, index) => (
             <osds-breadcrumb-item key={index}
                                   {...breadcrumbItem}>
             </osds-breadcrumb-item>

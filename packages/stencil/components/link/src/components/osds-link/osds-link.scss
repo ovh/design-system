@@ -1,6 +1,7 @@
 @import 'styles/osds-link.mixins';
 @import 'styles/osds-link.color';
 @import 'styles/osds-link.typography';
+@import 'styles/osds-link.size';
 @import '~@ovhcloud/ods-theming/color/ods-theming-color';
 @import '~@ovhcloud/ods-theming/ods-theme';
 
@@ -67,8 +68,14 @@
   }
 }
 
+::slotted([slot="start"]), ::slotted([slot="end"]) {
+  display: inline-flex;
+  align-self: center;
+}
+
 // apply the theme template for the component
 @include ods-theme-component() {
   @include osds-link-theme-color();
   @include osds-link-theme-typography();
+    @include osds-link-theme-size();
 }

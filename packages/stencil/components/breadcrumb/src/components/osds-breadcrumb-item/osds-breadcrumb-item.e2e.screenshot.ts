@@ -61,5 +61,12 @@ describe('e2e:osds-breadcrumb-item', () => {
       const results = await page.compareScreenshot('breadcrumb-item', { fullPage: false, omitBackground: true });
       expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
     });
+
+    it('should render contrasted', async () => {
+      await setup({ attributes: { contrasted: true, href: 'dummyHref', isCollapsed: false, label: 'dummyLabel' } });
+
+      const results = await page.compareScreenshot('breadcrumb-item', { fullPage: false, omitBackground: true });
+      expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
+    });
   });
 });

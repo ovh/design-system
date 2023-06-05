@@ -27,6 +27,12 @@
 <osds-breadcrumb id="icon-breadcrumb">
 </osds-breadcrumb>
 
+<h3>Contrasted</h3>
+<div style="background-color: #0050d7">
+  <osds-breadcrumb id="contrasted-breadcrumb" contrasted>
+  </osds-breadcrumb>
+</div>
+
 
 <script>
   document.querySelector('#default-breadcrumb').items = JSON.stringify([
@@ -46,6 +52,13 @@
   ];
 
   document.querySelector('#icon-breadcrumb').items = [
+    { href: "#home", icon: "home" },
+    { href: "#services", label: "Services", icon: "book" },
+    { href: "#products", label: "Products" },
+    { href: "#web", label: "Web" },
+  ];
+
+  document.querySelector('#contrasted-breadcrumb').items = [
     { href: "#home", icon: "home" },
     { href: "#services", label: "Services", icon: "book" },
     { href: "#products", label: "Products" },

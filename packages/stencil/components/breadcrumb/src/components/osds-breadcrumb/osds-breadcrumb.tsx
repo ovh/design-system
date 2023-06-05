@@ -3,6 +3,7 @@ import {
   OdsBreadcrumb,
   OdsBreadcrumbAttributeItem,
   OdsBreadcrumbController,
+  odsBreadcrumbDefaultAttributes,
   OdsBreadcrumbEvents,
   OdsBreadcrumbItemAttributes,
   OdsBreadcrumbMethods,
@@ -27,7 +28,11 @@ export class OsdsBreadcrumb implements OdsBreadcrumb<OdsStencilMethods<OdsBreadc
 
   @State() isCollapsed = true;
 
-  @Prop({ reflect: true }) items: OdsBreadcrumbAttributeItem[] | string = [];
+  /** @see OdsBreadcrumbAttributes.contrasted */
+  @Prop({ reflect: true }) public contrasted?: boolean = odsBreadcrumbDefaultAttributes.contrasted;
+
+  /** @see OdsBreadcrumbAttributes.items */
+  @Prop({ reflect: true }) public items: OdsBreadcrumbAttributeItem[] | string = [];
 
   componentWillLoad() {
     this.parseItems();
@@ -72,6 +77,7 @@ export class OsdsBreadcrumb implements OdsBreadcrumb<OdsStencilMethods<OdsBreadc
         {
           (this.breadcrumbItems || []).map((breadcrumbItem, index) => (
             <osds-breadcrumb-item key={index}
+                                  contrasted={this.contrasted}
                                   {...breadcrumbItem}>
             </osds-breadcrumb-item>
           ))

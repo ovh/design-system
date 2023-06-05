@@ -24,6 +24,10 @@ const storyParams = {
       { href: "#web", label: "Web" },
     ],
   },
+  contrasted: {
+    category: 'Misc',
+    defaultValue: false
+  },
 };
 
 export default {

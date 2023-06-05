@@ -26,6 +26,9 @@ export class OsdsBreadcrumbItem implements OdsBreadcrumbItem<OdsStencilMethods<O
   controller: OdsBreadcrumbItemController = new OdsBreadcrumbItemController(this);
   @Element() el!: HTMLElement;
 
+  /** @see OdsBreadcrumbItemAttributes.contrasted */
+  @Prop({ reflect: true }) public contrasted?: boolean = odsBreadcrumbItemDefaultAttributes.contrasted;
+
   /** @internal */
   @Prop() isCollapsed = odsBreadcrumbItemDefaultAttributes.isCollapsed;
 
@@ -35,13 +38,13 @@ export class OsdsBreadcrumbItem implements OdsBreadcrumbItem<OdsStencilMethods<O
   /** @internal */
   @Prop() isLast = odsBreadcrumbItemDefaultAttributes.isLast;
 
-  /** Item link to redirect to */
+  /** @see OdsBreadcrumbItemAttributes.href */
   @Prop({ reflect: true }) href = '';
 
-  /** Icon to display */
+  /** @see OdsBreadcrumbItemAttributes.icon */
   @Prop({ reflect: true }) icon?: OdsIconName;
 
-  /** Text to display */
+  /** @see OdsBreadcrumbItemAttributes.label */
   @Prop({ reflect: true }) label?: string;
 
   /** @see OdsBreadcrumbItemEvents.odsBreadcrumbItemCollapsedClick */
@@ -58,12 +61,14 @@ export class OsdsBreadcrumbItem implements OdsBreadcrumbItem<OdsStencilMethods<O
       <Host class={{ 'collapsed': this.isCollapsed }}>
         <div class="item">
           <osds-link color={this.defaultColorIntent}
+                     contrasted={this.contrasted}
                      disabled={this.isLast}
                      href={this.href}>
             {
               !!this.icon &&
               <span slot="start">
-                <osds-icon name={this.icon}
+                <osds-icon contrasted={this.contrasted}
+                           name={this.icon}
                            size={OdsIconSize.xs}
                            color={this.defaultColorIntent}>
                 </osds-icon>
@@ -76,10 +81,12 @@ export class OsdsBreadcrumbItem implements OdsBreadcrumbItem<OdsStencilMethods<O
         {
           this.isCollapsedItem &&
           <osds-button color={this.defaultColorIntent}
+                       contrasted={this.contrasted}
                        onClick={() => this.onCollapsedElementClick()}
                        size={OdsButtonSize.sm}
                        variant={OdsButtonVariant.ghost}>
             <osds-icon color={this.defaultColorIntent}
+                       contrasted={this.contrasted}
                        name={OdsIconName.ELLIPSIS}>
             </osds-icon>
           </osds-button>
@@ -89,6 +96,7 @@ export class OsdsBreadcrumbItem implements OdsBreadcrumbItem<OdsStencilMethods<O
           showSeparator &&
           <osds-text class="separator"
                      color={this.defaultColorIntent}
+                     contrasted={this.contrasted}
                      aria-hidden="true">
             |
           </osds-text>

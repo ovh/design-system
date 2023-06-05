@@ -5,6 +5,7 @@ import { OdsBreadcrumbMethods } from './ods-breadcrumb-methods';
 
 export class OdsBreadcrumbMock implements OdsBreadcrumb<OdsBreadcrumbMethods, OdsBreadcrumbEvents> {
   el!: HTMLElement;
+  contrasted?: boolean;
   controller: OdsBreadcrumbController = jest.fn() as unknown as OdsBreadcrumbController;
   items = [];
 

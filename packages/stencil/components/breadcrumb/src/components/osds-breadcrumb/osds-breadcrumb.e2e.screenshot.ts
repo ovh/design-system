@@ -1,14 +1,21 @@
 import { E2EPage, newE2EPage } from '@stencil/core/testing';
-import { OdsBreadcrumbAttributeItem, OdsIconName } from '@ovhcloud/ods-core';
+import {
+  OdsBreadcrumbAttributes,
+  odsBreadcrumbDefaultAttributes,
+  OdsComponentAttributes2StringAttributes,
+  OdsIconName
+} from '@ovhcloud/ods-core';
+import { OdsStringAttributes2Str } from '@ovhcloud/ods-testing';
 
 describe('e2e:osds-breadcrumb', () => {
   let page: E2EPage;
 
-  async function setup(items: OdsBreadcrumbAttributeItem[] = []) {
-    page = await newE2EPage();
+  async function setup({ attributes }: { attributes: OdsBreadcrumbAttributes }) {
+    const stringAttributes = OdsComponentAttributes2StringAttributes<Partial<OdsBreadcrumbAttributes>>({ contrasted: attributes.contrasted }, odsBreadcrumbDefaultAttributes);
 
-    await page.setContent(`<osds-breadcrumb items=${JSON.stringify(items)}></osds-breadcrumb>`);
-    await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
+    page = await newE2EPage();
+    await page.setContent(`<osds-breadcrumb ${OdsStringAttributes2Str(stringAttributes)} items=${JSON.stringify(attributes.items)}></osds-breadcrumb>`);
+    await page.evaluate(() => document.body.style.setProperty('margin', '0'));
   }
 
   describe('screenshots', () => {
@@ -19,7 +26,7 @@ describe('e2e:osds-breadcrumb', () => {
         {href: 'href3', label: 'label3'},
         {href: 'href4', label: 'label4'},
       ];
-      await setup(dummyItems);
+      await setup({ attributes: { items: dummyItems }});
 
       const results = await page.compareScreenshot('breadcrumb', { fullPage: false, omitBackground: true });
       expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
@@ -32,7 +39,7 @@ describe('e2e:osds-breadcrumb', () => {
         {href: 'href3', label: 'label3'},
         {href: 'href4', label: 'label4'},
       ];
-      await setup(dummyItems);
+      await setup({ attributes: { items: dummyItems }});
 
       const results = await page.compareScreenshot('breadcrumb', { fullPage: false, omitBackground: true });
       expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
@@ -47,7 +54,20 @@ describe('e2e:osds-breadcrumb', () => {
         {href: 'href5', label: 'label5'},
         {href: 'href6', label: 'label6'},
       ];
-      await setup(dummyItems);
+      await setup({ attributes: { items: dummyItems }});
+
+      const results = await page.compareScreenshot('breadcrumb', { fullPage: false, omitBackground: true });
+      expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
+    });
+
+    it('should render contrasted', async () => {
+      const dummyItems = [
+        {href: 'href1', label: 'label1'},
+        {href: 'href2', label: 'label2'},
+        {href: 'href3', label: 'label3'},
+        {href: 'href4', label: 'label4'},
+      ];
+      await setup({ attributes: { contrasted: true, items: dummyItems }});
 
       const results = await page.compareScreenshot('breadcrumb', { fullPage: false, omitBackground: true });
       expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });

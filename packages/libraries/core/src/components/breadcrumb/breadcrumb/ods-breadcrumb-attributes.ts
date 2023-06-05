@@ -11,6 +11,8 @@ export interface OdsBreadcrumbAttributeItem {
 }
 
 export interface OdsBreadcrumbAttributes extends OdsComponentAttributes {
+  /** contrasted or not: see component principles */
+  contrasted?: boolean,
   /**
    * List of breadcrumb items to display
    */

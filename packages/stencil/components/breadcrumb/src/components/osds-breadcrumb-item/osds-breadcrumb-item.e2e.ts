@@ -7,7 +7,7 @@ import {
 } from '@ovhcloud/ods-core';
 import { OdsCreateAttributes, OdsStringAttributes2Str, odsBreadcrumbItemBaseAttributes } from '@ovhcloud/ods-testing';
 
-xdescribe('e2e:osds-breadcrumb-item', () => {
+describe('e2e:osds-breadcrumb-item', () => {
   let page: E2EPage;
   let el: E2EElement;
 
@@ -88,6 +88,13 @@ xdescribe('e2e:osds-breadcrumb-item', () => {
       expect(itemLinkElement.getAttribute('href')).toBe(dummyHref);
       expect(itemLinkElement.getAttribute('disabled')).not.toBeNull();
     });
+
+    it('should render contrasted', async () => {
+      await setupItem({ contrasted: true, href: dummyHref, icon: dummyIcon, label: dummyLabel });
+
+      expect(itemLinkElement.getAttribute('contrasted')).not.toBeNull();
+      expect(iconElement.getAttribute('contrasted')).not.toBeNull();
+    });
   });
 
   describe('collapsed item', () => {
@@ -109,6 +116,12 @@ xdescribe('e2e:osds-breadcrumb-item', () => {
       await setupCollapsedItem({ isCollapsedItem: true });
 
       expect(collapsedItem).not.toBeNull();
+    });
+
+    it('should render contrasted', async () => {
+      await setupCollapsedItem({ contrasted: true, isCollapsedItem: true });
+
+      expect(collapsedItem.getAttribute('contrasted')).not.toBeNull();
     });
   });
 
@@ -143,6 +156,12 @@ xdescribe('e2e:osds-breadcrumb-item', () => {
       await setupSeparator({ isCollapsed: false });
 
       expect(separatorItem).not.toBeNull();
+    });
+
+    it('should render contrasted', async () => {
+      await setupSeparator({ contrasted: true, isCollapsed: false });
+
+      expect(separatorItem.getAttribute('contrasted')).not.toBeNull();
     });
   });
 });

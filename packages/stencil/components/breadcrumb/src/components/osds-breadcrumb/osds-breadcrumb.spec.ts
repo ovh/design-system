@@ -50,10 +50,13 @@ describe('spec:osds-breadcrumb', () => {
       it('should set the isCollapsed on refresh displayed items', async () => {
         await setup({});
 
+        expect(instance.isCollapsed).toBe(true);
+        expect(controller.getBreadcrumbItems).toHaveBeenCalledWith([], true);
+
         instance.onBreadcrumbItemCollapsedClick()
 
         expect(instance.isCollapsed).toBe(false);
-        expect(controller.getBreadcrumbItems).toHaveBeenCalledWith(false);
+        expect(controller.getBreadcrumbItems).toHaveBeenCalledWith([], false);
       });
     });
   });

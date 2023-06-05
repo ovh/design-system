@@ -31,7 +31,7 @@ export class OsdsProgressBar implements OdsProgressBar<OdsStencilMethods<OdsProg
   /**
    * @see OdsProgressBarBehavior.beforeRender
    */
-  componentDidLoad(): void {
+  componentWillLoad(): void {
     this.controller.validateAttributes();
     this.defineProgressCssValue(this.progress);
   }

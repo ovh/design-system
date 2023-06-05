@@ -28,10 +28,6 @@ describe('e2e:osds-progress-bar', () => {
     it('check progress value', async () => {
       await setup({ attributes: { progress: 50 } });
       await page.waitForChanges();
-      await page.evaluate(() => {
-        const element = document.querySelector('osds-progress-bar') as HTMLElement;
-        return { width: element.clientWidth, height: element.clientHeight };
-      });
       await page.setViewport({ width: 600, height:600 });
       const results = await page.compareScreenshot('default color separator', { fullPage: false });
       expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 })

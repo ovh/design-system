@@ -56,7 +56,7 @@ describe('e2e:osds-breadcrumb-item', () => {
     });
 
     it('should render as collapsed item', async () => {
-      await setup({ attributes: { href: 'dummyHref', isCollapsed: true, isCollapsedItem: true, label: 'dummyLabel' }});
+      await setup({ attributes: { href: 'dummyHref', isCollapsed: true, isExpandableItem: true, label: 'dummyLabel' }});
 
       const results = await page.compareScreenshot('breadcrumb-item', { fullPage: false, omitBackground: true });
       expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });

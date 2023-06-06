@@ -23,7 +23,7 @@ export class OdsBreadcrumbController extends OdsComponentController<OdsBreadcrum
       return items.map((item, index) => ({
         ...item,
         isCollapsed: index >= 1 && index < (items.length - 1),
-        isCollapsedItem: index === 1,
+        isExpandableItem: index === 1,
         isLast: index === (items.length - 1),
       } as OdsBreadcrumbItemAttributes));
     }
@@ -31,7 +31,7 @@ export class OdsBreadcrumbController extends OdsComponentController<OdsBreadcrum
     return items.map((item, index) => ({
       ...item,
       isCollapsed: false,
-      isCollapsedItem: false,
+      isExpandableItem: false,
       isLast: index === (items.length - 1),
     } as OdsBreadcrumbItemAttributes));
   }

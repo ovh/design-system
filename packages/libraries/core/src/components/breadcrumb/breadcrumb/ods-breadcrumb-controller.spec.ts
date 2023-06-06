@@ -49,13 +49,13 @@ describe('spec:ods-breadcrumb-controller', () => {
           {
             ...dummyItems[0],
             isCollapsed: false,
-            isCollapsedItem: false,
+            isExpandableItem: false,
             isLast: false,
           },
           {
             ...dummyItems[1],
             isCollapsed: false,
-            isCollapsedItem: false,
+            isExpandableItem: false,
             isLast: true,
           },
         ]);
@@ -75,37 +75,37 @@ describe('spec:ods-breadcrumb-controller', () => {
           {
             ...dummyItems[0],
             isCollapsed: false,
-            isCollapsedItem: false,
+            isExpandableItem: false,
             isLast: false,
           },
           {
             ...dummyItems[1],
             isCollapsed: true,
-            isCollapsedItem: true,
+            isExpandableItem: true,
             isLast: false,
           },
           {
             ...dummyItems[2],
             isCollapsed: true,
-            isCollapsedItem: false,
+            isExpandableItem: false,
             isLast: false,
           },
           {
             ...dummyItems[3],
             isCollapsed: true,
-            isCollapsedItem: false,
+            isExpandableItem: false,
             isLast: false,
           },
           {
             ...dummyItems[4],
             isCollapsed: true,
-            isCollapsedItem: false,
+            isExpandableItem: false,
             isLast: false,
           },
           {
             ...dummyItems[5],
             isCollapsed: false,
-            isCollapsedItem: false,
+            isExpandableItem: false,
             isLast: true,
           },
         ]);
@@ -125,37 +125,37 @@ describe('spec:ods-breadcrumb-controller', () => {
           {
             ...dummyItems[0],
             isCollapsed: false,
-            isCollapsedItem: false,
+            isExpandableItem: false,
             isLast: false,
           },
           {
             ...dummyItems[1],
             isCollapsed: false,
-            isCollapsedItem: false,
+            isExpandableItem: false,
             isLast: false,
           },
           {
             ...dummyItems[2],
             isCollapsed: false,
-            isCollapsedItem: false,
+            isExpandableItem: false,
             isLast: false,
           },
           {
             ...dummyItems[3],
             isCollapsed: false,
-            isCollapsedItem: false,
+            isExpandableItem: false,
             isLast: false,
           },
           {
             ...dummyItems[4],
             isCollapsed: false,
-            isCollapsedItem: false,
+            isExpandableItem: false,
             isLast: false,
           },
           {
             ...dummyItems[5],
             isCollapsed: false,
-            isCollapsedItem: false,
+            isExpandableItem: false,
             isLast: true,
           },
         ]);

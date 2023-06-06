@@ -33,7 +33,7 @@ export class OsdsBreadcrumbItem implements OdsBreadcrumbItem<OdsStencilMethods<O
   @Prop() isCollapsed = odsBreadcrumbItemDefaultAttributes.isCollapsed;
 
   /** @internal */
-  @Prop() isCollapsedItem = odsBreadcrumbItemDefaultAttributes.isCollapsedItem;
+  @Prop() isExpandableItem = odsBreadcrumbItemDefaultAttributes.isExpandableItem;
 
   /** @internal */
   @Prop() isLast = odsBreadcrumbItemDefaultAttributes.isLast;
@@ -55,7 +55,7 @@ export class OsdsBreadcrumbItem implements OdsBreadcrumbItem<OdsStencilMethods<O
   }
 
   render() {
-    const showSeparator = this.isLast ? false : this.isCollapsed ? this.isCollapsedItem : true;
+    const showSeparator = this.isLast ? false : this.isCollapsed ? this.isExpandableItem : true;
 
     return (
       <Host class={{ 'collapsed': this.isCollapsed }}>
@@ -79,7 +79,7 @@ export class OsdsBreadcrumbItem implements OdsBreadcrumbItem<OdsStencilMethods<O
         </div>
 
         {
-          this.isCollapsedItem &&
+          this.isExpandableItem &&
           <osds-button color={this.defaultColorIntent}
                        contrasted={this.contrasted}
                        onClick={() => this.onCollapsedElementClick()}

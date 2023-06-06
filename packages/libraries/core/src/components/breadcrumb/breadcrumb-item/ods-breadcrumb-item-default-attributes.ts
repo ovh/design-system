@@ -3,7 +3,7 @@ import { OdsBreadcrumbItemAttributes } from './ods-breadcrumb-item-attributes';
 export const odsBreadcrumbItemDefaultAttributesDoc  = {
   contrasted: false,
   isCollapsed: false,
-  isCollapsedItem: false,
+  isExpandableItem: false,
   isLast: false,
 } as const;
 

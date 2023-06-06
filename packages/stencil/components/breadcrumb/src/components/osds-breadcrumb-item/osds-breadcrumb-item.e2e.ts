@@ -106,20 +106,20 @@ describe('e2e:osds-breadcrumb-item', () => {
       collapsedItem = await page.find('osds-breadcrumb-item >>> osds-button');
     }
 
-    it('should not be rendered if not isCollapsedItem', async () => {
+    it('should not be rendered if not isExpandableItem', async () => {
       await setupCollapsedItem({});
 
       expect(collapsedItem).toBeNull();
     });
 
-    it('should be rendered if isCollapsedItem', async () => {
-      await setupCollapsedItem({ isCollapsedItem: true });
+    it('should be rendered if isExpandableItem', async () => {
+      await setupCollapsedItem({ isExpandableItem: true });
 
       expect(collapsedItem).not.toBeNull();
     });
 
     it('should render contrasted', async () => {
-      await setupCollapsedItem({ contrasted: true, isCollapsedItem: true });
+      await setupCollapsedItem({ contrasted: true, isExpandableItem: true });
 
       expect(collapsedItem.getAttribute('contrasted')).not.toBeNull();
     });
@@ -140,14 +140,14 @@ describe('e2e:osds-breadcrumb-item', () => {
       expect(separatorItem).toBeNull();
     });
 
-    it('should not be rendered if isCollapsed but not isCollapsedItem', async () => {
-      await setupSeparator({ isCollapsed: true, isCollapsedItem: false });
+    it('should not be rendered if isCollapsed but not isExpandableItem', async () => {
+      await setupSeparator({ isCollapsed: true, isExpandableItem: false });
 
       expect(separatorItem).toBeNull();
     });
 
-    it('should be rendered if isCollapsed and isCollapsedItem', async () => {
-      await setupSeparator({ isCollapsed: true, isCollapsedItem: true });
+    it('should be rendered if isCollapsed and isExpandableItem', async () => {
+      await setupSeparator({ isCollapsed: true, isExpandableItem: true });
 
       expect(separatorItem).not.toBeNull();
     });

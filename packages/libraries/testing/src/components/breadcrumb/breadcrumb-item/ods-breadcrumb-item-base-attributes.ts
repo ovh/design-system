@@ -6,6 +6,6 @@ import { OdsBreadcrumbItemAttributes } from '@ovhcloud/ods-core';
 export const odsBreadcrumbItemBaseAttributes: OdsBreadcrumbItemAttributes = {
   href: '',
   isCollapsed: false,
-  isCollapsedItem: false,
+  isExpandableItem: false,
   isLast: false,
 };

@@ -16,7 +16,7 @@ describe('e2e:osds-breadcrumb', () => {
     return !breadcrumbItemElement.classList.contains('collapsed');
   }
 
-  function isCollapsedItem(breadcrumbItemElement: E2EElement): boolean {
+  function isExpandableItem(breadcrumbItemElement: E2EElement): boolean {
     return !!breadcrumbItemElement.shadowRoot.querySelector('osds-button');
   }
 
@@ -43,16 +43,16 @@ describe('e2e:osds-breadcrumb', () => {
     expect(breadcrumbItemElements.length).toBe(dummyItems.length);
 
     expect(isItemVisible(breadcrumbItemElements[0])).toBe(true);
-    expect(isCollapsedItem(breadcrumbItemElements[0])).toBe(false);
+    expect(isExpandableItem(breadcrumbItemElements[0])).toBe(false);
 
     expect(isItemVisible(breadcrumbItemElements[1])).toBe(true);
-    expect(isCollapsedItem(breadcrumbItemElements[1])).toBe(false);
+    expect(isExpandableItem(breadcrumbItemElements[1])).toBe(false);
 
     expect(isItemVisible(breadcrumbItemElements[2])).toBe(true);
-    expect(isCollapsedItem(breadcrumbItemElements[2])).toBe(false);
+    expect(isExpandableItem(breadcrumbItemElements[2])).toBe(false);
 
     expect(isItemVisible(breadcrumbItemElements[3])).toBe(true);
-    expect(isCollapsedItem(breadcrumbItemElements[3])).toBe(false);
+    expect(isExpandableItem(breadcrumbItemElements[3])).toBe(false);
   });
 
   it('should render first and last items and a collapsed one in the middle', async () => {
@@ -65,22 +65,22 @@ describe('e2e:osds-breadcrumb', () => {
     expect(breadcrumbItemElements.length).toBe(moreDummyItems.length);
 
     expect(isItemVisible(breadcrumbItemElements[0])).toBe(true);
-    expect(isCollapsedItem(breadcrumbItemElements[0])).toBe(false);
+    expect(isExpandableItem(breadcrumbItemElements[0])).toBe(false);
 
     expect(isItemVisible(breadcrumbItemElements[1])).toBe(false);
-    expect(isCollapsedItem(breadcrumbItemElements[1])).toBe(true);
+    expect(isExpandableItem(breadcrumbItemElements[1])).toBe(true);
 
     expect(isItemVisible(breadcrumbItemElements[2])).toBe(false);
-    expect(isCollapsedItem(breadcrumbItemElements[2])).toBe(false);
+    expect(isExpandableItem(breadcrumbItemElements[2])).toBe(false);
 
     expect(isItemVisible(breadcrumbItemElements[3])).toBe(false);
-    expect(isCollapsedItem(breadcrumbItemElements[3])).toBe(false);
+    expect(isExpandableItem(breadcrumbItemElements[3])).toBe(false);
 
     expect(isItemVisible(breadcrumbItemElements[4])).toBe(false);
-    expect(isCollapsedItem(breadcrumbItemElements[4])).toBe(false);
+    expect(isExpandableItem(breadcrumbItemElements[4])).toBe(false);
 
     expect(isItemVisible(breadcrumbItemElements[5])).toBe(true);
-    expect(isCollapsedItem(breadcrumbItemElements[5])).toBe(false);
+    expect(isExpandableItem(breadcrumbItemElements[5])).toBe(false);
   });
 
   it('should render all on collapsed item click', async () => {
@@ -93,7 +93,7 @@ describe('e2e:osds-breadcrumb', () => {
     expect(breadcrumbItemElements.length).toBe(moreDummyItems.length);
 
     expect(isItemVisible(breadcrumbItemElements[1])).toBe(false);
-    expect(isCollapsedItem(breadcrumbItemElements[1])).toBe(true);
+    expect(isExpandableItem(breadcrumbItemElements[1])).toBe(true);
 
     await page.evaluate((index) => {
       const breadcrumbItemElements = document.querySelector('osds-breadcrumb')?.shadowRoot?.querySelectorAll('osds-breadcrumb-item');
@@ -108,21 +108,21 @@ describe('e2e:osds-breadcrumb', () => {
     await page.waitForChanges();
 
     expect(isItemVisible(breadcrumbItemElements[0])).toBe(true);
-    expect(isCollapsedItem(breadcrumbItemElements[0])).toBe(false);
+    expect(isExpandableItem(breadcrumbItemElements[0])).toBe(false);
 
     expect(isItemVisible(breadcrumbItemElements[1])).toBe(true);
-    expect(isCollapsedItem(breadcrumbItemElements[1])).toBe(false);
+    expect(isExpandableItem(breadcrumbItemElements[1])).toBe(false);
 
     expect(isItemVisible(breadcrumbItemElements[2])).toBe(true);
-    expect(isCollapsedItem(breadcrumbItemElements[2])).toBe(false);
+    expect(isExpandableItem(breadcrumbItemElements[2])).toBe(false);
 
     expect(isItemVisible(breadcrumbItemElements[3])).toBe(true);
-    expect(isCollapsedItem(breadcrumbItemElements[3])).toBe(false);
+    expect(isExpandableItem(breadcrumbItemElements[3])).toBe(false);
 
     expect(isItemVisible(breadcrumbItemElements[4])).toBe(true);
-    expect(isCollapsedItem(breadcrumbItemElements[4])).toBe(false);
+    expect(isExpandableItem(breadcrumbItemElements[4])).toBe(false);
 
     expect(isItemVisible(breadcrumbItemElements[5])).toBe(true);
-    expect(isCollapsedItem(breadcrumbItemElements[5])).toBe(false);
+    expect(isExpandableItem(breadcrumbItemElements[5])).toBe(false);
   });
 });

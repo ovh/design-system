@@ -11,7 +11,7 @@ export interface OdsBreadcrumbItemAttributes extends OdsComponentAttributes {
   /** @internal */
   isCollapsed: boolean;
   /** @internal */
-  isCollapsedItem: boolean;
+  isExpandableItem: boolean;
   /** @internal */
   isLast: boolean;
   /** Text to display */

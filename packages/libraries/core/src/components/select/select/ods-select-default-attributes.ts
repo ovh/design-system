@@ -18,7 +18,8 @@ export const odsSelectDefaultAttributesDoc: OdsSelectAttributes = {
   value: '',
   color: OdsThemeColorIntent.primary,
   size: OdsSelectSize.md,
-  flex: false
+  flex: false,
+  opened: false,
 } as const;
 
 export const odsSelectDefaultAttributes = odsSelectDefaultAttributesDoc as unknown as OdsSelectAttributes;

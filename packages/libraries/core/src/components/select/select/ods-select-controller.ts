@@ -42,6 +42,7 @@ export class OdsSelectController extends OdsComponentController<OdsSelect> {
   closeSurface(): void {
     if (this.component.surface?.opened) {
       this.component.surface.close();
+      this.component.opened = false;
     }
   }
 
@@ -51,6 +52,7 @@ export class OdsSelectController extends OdsComponentController<OdsSelect> {
   openSurface(): void {
     if (this.component.surface) {
       this.component.surface.open();
+      this.component.opened = true;
     }
   }
 

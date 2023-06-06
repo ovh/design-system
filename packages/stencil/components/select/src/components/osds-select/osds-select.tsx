@@ -115,6 +115,7 @@ export class OsdsSelect implements OdsSelect<OdsStencilMethods<OdsSelectMethods>
     if (this.value === '' && this.defaultValue !== undefined) {
       this.value = this.defaultValue;
     }
+    this.openedChanged(this.opened);
   }
 
   /**
@@ -122,7 +123,6 @@ export class OsdsSelect implements OdsSelect<OdsStencilMethods<OdsSelectMethods>
    * in order to synchronize the already set value with the placeholder
    */
   async componentDidLoad() {
-    this.openedChanged(this.opened);
     await this.updateSelectOptionStates(this.value);
   }
 
@@ -150,6 +150,65 @@ export class OsdsSelect implements OdsSelect<OdsStencilMethods<OdsSelectMethods>
     });
   }
 
+  handleKeyDown(ev: KeyboardEvent): void {
+    ev.stopPropagation();
+    const isEnter = ev.code.includes('Enter');
+    const isEscape = ev.code.includes('Escape');
+    const isArrowDownOrUp = ev.code === 'ArrowUp' || ev.code === 'ArrowDown';
+    if (!isEnter && !isArrowDownOrUp && !isEscape) {
+      return;
+    }
+    if (isEscape) {
+      this.controller.closeSurface();
+    }
+    const selectOptions = this.getSelectOptionList();
+    const selectedSelectOptionIndex = selectOptions.findIndex((select) => select.selected || document.activeElement === select);
+    if (isEnter) {
+      this.handlerKeyEnter(selectOptions, selectedSelectOptionIndex);
+    }
+
+    if (isArrowDownOrUp) {
+      this.handlerKeyArrow(ev, selectOptions, selectedSelectOptionIndex);    
+    }
+  }
+
+  handlerKeyArrow(ev: KeyboardEvent, selectOptions: (HTMLElement & OsdsSelectOption)[], selectedSelectOptionIndex: number): void {
+    const focusSelectOption = (index: number) => { 
+      selectOptions[index].focus();
+      selectOptions[index].setAttribute('selected', '');
+    }
+    const hasSelectedOption = selectedSelectOptionIndex !== -1;
+    if (hasSelectedOption) {
+      selectOptions[selectedSelectOptionIndex].removeAttribute('selected');
+      selectOptions[selectedSelectOptionIndex].blur();
+    }
+    if (ev.code === 'ArrowUp') {
+      const index = hasSelectedOption ? selectedSelectOptionIndex - 1 : 0;
+      if (index < 0) {
+       this.setFocus();
+       return;
+      }
+      focusSelectOption(index);
+    }
+    if (ev.code === 'ArrowDown') {
+      const index = hasSelectedOption ? selectedSelectOptionIndex + 1 : 0;
+      if (index >= selectOptions.length) {
+       return;
+      }
+      focusSelectOption(index);
+    }
+  }
+
+  handlerKeyEnter(selectOptions: OsdsSelectOption[], selectedSelectOptionIndex: number): void {
+    if (!this.opened) {
+      return this.handleSelectClick();
+    }
+    return this.handleValueChange(new CustomEvent<OdsSelectOptionClickEventDetail>('odsSelectOptionClick', {
+      detail: {
+        value: selectOptions[selectedSelectOptionIndex]?.value || null,
+      }
+    }));
+  }
   /**
    * @internal
    * @see OdsSelectMethods.clear
@@ -233,8 +292,13 @@ export class OsdsSelect implements OdsSelect<OdsStencilMethods<OdsSelectMethods>
   // Toggle overlay when we click on the Select.
   private handleSelectClick() {
     this.logger.log('[handleSelectClick]', arguments, { validity: this.validityState });
-    if (!this.disabled) {
-      this.dirty = true;
+    if (this.disabled) {
+      return;
+    }
+    this.dirty = true;
+    if (this.opened) {
+      this.controller.closeSurface();
+    } else { 
       this.controller.openSurface();
     }
   }
@@ -273,17 +337,12 @@ export class OsdsSelect implements OdsSelect<OdsStencilMethods<OdsSelectMethods>
     this.controller.syncReferences()
   }
 
-  private get isSurfaceOpen() {
-    return this.surface?.opened;
-  }
-
   private hasError(): boolean {
     return this.validityState.invalid;
   }
 
   render() {
     const {
-      isSurfaceOpen,
       ariaLabel,
       ariaLabelledby,
       disabled,
@@ -294,13 +353,14 @@ export class OsdsSelect implements OdsSelect<OdsStencilMethods<OdsSelectMethods>
 
     return (
       <Host {...{
-        class: `${disabled ? 'disabled' : ''}${isSurfaceOpen ? ' opened' : ''}${this.hasError() ? ' ods-error' : ''}`,
+        class: `${disabled ? 'disabled' : ''}${this.opened ? ' opened' : ''}${this.hasError() ? ' ods-error' : ''}`,
         ariaLabel,
         'aria-labelledby': ariaLabelledby,
         flex,
         onFocus: this.onFocus.bind(this),
         onBlur: this.onBlur.bind(this),
         onClick: this.handleSelectClick.bind(this),
+        onKeyDown: this.handleKeyDown.bind(this),
         tabindex: this.disabled ? -1 : this.tabindex,
         ref: (el?: HTMLElement | null) => {
           this.anchor = el as HTMLElement;
@@ -309,7 +369,7 @@ export class OsdsSelect implements OdsSelect<OdsStencilMethods<OdsSelectMethods>
       }}
       >
         <div {...{
-          class: `select-trigger${isSurfaceOpen ? ' opened' : ''}${this.hasError() ? ' error' : ''}`,
+          class: `select-trigger${this.opened ? ' opened' : ''}${this.hasError() ? ' error' : ''}`,
         }}>
           <div class={'label'}>
             { (!value) ?

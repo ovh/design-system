@@ -5,7 +5,7 @@ import { OdsSelectMethods } from './ods-select-methods';
 import { OdsSelectEvents } from './ods-select-events';
 import { OdsSelectAttributes } from './ods-select-attributes';
 import { OdsSelectController } from './ods-select-controller';
-import { OdsSelectBehavior } from './ods-select-bahavior';
+import { OdsSelectBehavior } from './ods-select-behavior';
 
 /**
  * interface description of all implementation of `ods-select-option`.

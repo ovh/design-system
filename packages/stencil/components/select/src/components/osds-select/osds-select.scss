@@ -30,6 +30,11 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     word-break: break-all;
+    
+    &.opened {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
   }
 
   .overlay {

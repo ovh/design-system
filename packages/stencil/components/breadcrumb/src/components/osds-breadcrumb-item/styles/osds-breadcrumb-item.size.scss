@@ -8,6 +8,7 @@
   $size-properties: ods-get-size-properties($component-size-definition, md);
 
   :host {
+    .expandable,
     .item {
       padding: ods-get-size-property($size-properties, padding);
     }

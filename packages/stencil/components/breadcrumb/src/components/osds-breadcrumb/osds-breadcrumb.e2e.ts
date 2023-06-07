@@ -17,7 +17,7 @@ describe('e2e:osds-breadcrumb', () => {
   }
 
   function isExpandableItem(breadcrumbItemElement: E2EElement): boolean {
-    return !!breadcrumbItemElement.shadowRoot.querySelector('osds-button');
+    return !!breadcrumbItemElement.shadowRoot.querySelector('osds-link.expandable');
   }
 
   async function setup(items: OdsBreadcrumbAttributeItem[] = []) {
@@ -98,7 +98,7 @@ describe('e2e:osds-breadcrumb', () => {
     await page.evaluate((index) => {
       const breadcrumbItemElements = document.querySelector('osds-breadcrumb')?.shadowRoot?.querySelectorAll('osds-breadcrumb-item');
       if (breadcrumbItemElements && breadcrumbItemElements.length > index) {
-        const collapsedItem = breadcrumbItemElements[index].shadowRoot?.querySelector('osds-button') as HTMLButtonElement;
+        const collapsedItem = breadcrumbItemElements[index].shadowRoot?.querySelector('osds-link.expandable') as HTMLButtonElement;
 
         if (collapsedItem) {
           collapsedItem.click();

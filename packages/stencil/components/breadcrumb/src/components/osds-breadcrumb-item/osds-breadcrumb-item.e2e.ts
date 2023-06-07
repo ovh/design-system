@@ -103,7 +103,7 @@ describe('e2e:osds-breadcrumb-item', () => {
     async function setupCollapsedItem(attributes: Partial<OdsBreadcrumbItemAttributes>) {
       await setup({ attributes });
 
-      collapsedItem = await page.find('osds-breadcrumb-item >>> osds-button');
+      collapsedItem = await page.find('osds-breadcrumb-item >>> osds-link.expandable');
     }
 
     it('should not be rendered if not isExpandableItem', async () => {

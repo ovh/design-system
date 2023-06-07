@@ -5,8 +5,6 @@ import {
   odsBreadcrumbItemDefaultAttributes,
   OdsBreadcrumbItemEvents,
   OdsBreadcrumbItemMethods,
-  OdsButtonSize,
-  OdsButtonVariant,
   OdsIconName,
   OdsIconSize,
 } from '@ovhcloud/ods-core';
@@ -80,16 +78,16 @@ export class OsdsBreadcrumbItem implements OdsBreadcrumbItem<OdsStencilMethods<O
 
         {
           this.isExpandableItem &&
-          <osds-button color={this.defaultColorIntent}
+          <osds-link class="expandable"
+                     color={this.defaultColorIntent}
+                     contrasted={this.contrasted}
+                     onClick={() => this.onCollapsedElementClick()}>
+            <osds-text color={this.defaultColorIntent}
                        contrasted={this.contrasted}
-                       onClick={() => this.onCollapsedElementClick()}
-                       size={OdsButtonSize.sm}
-                       variant={OdsButtonVariant.ghost}>
-            <osds-icon color={this.defaultColorIntent}
-                       contrasted={this.contrasted}
-                       name={OdsIconName.ELLIPSIS}>
-            </osds-icon>
-          </osds-button>
+                       aria-hidden="true">
+              &hellip;
+            </osds-text>
+          </osds-link>
         }
 
         {

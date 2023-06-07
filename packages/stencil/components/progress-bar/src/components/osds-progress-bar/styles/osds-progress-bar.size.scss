@@ -5,18 +5,25 @@
 @mixin osds-progress-bar-theme-size() {
   @include osds-progress-bar-on-progress() {
     height: var(--ods-size-03);
-    transition: width 0.3s ease-in-out;
-    width: var(--progress);
-    position: absolute;
-    top: 0;
+    border-radius: var(--ods-size-03);
+    width: 100%;
+    transition : width ease 0.3s;
+    appearance: none;
+
+    &::-moz-progress-bar {
+      border-radius: var(--ods-size-03);
+    }
+
+    &::-webkit-progress-bar {
+      border-radius: var(--ods-size-03);
+      overflow: hidden;
+    }
   }
 
-  @include osds-progress-bar-on-background() {
-    height: var(--ods-size-03);
-    width: var(--max);
-  }
+    @include osds-progress-bar-on-wrapper() {
+      transition: width ease-in-out 0.3s;
 
-  @include osds-progress-bar-on-wrapper() {
-    position: relative
-  }
+      display: flex;
+      align-items: center;
+    }
 }

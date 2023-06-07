@@ -4,7 +4,7 @@ import {
   OdsProgressBarAttributes,
   OdsProgressBarController,
   OdsComponentAttributes2StringAttributes,
-  odsProgressBarDefaultAttributes, OdsButtonAttributes, odsButtonDefaultAttributes, OdsProgressBar,
+  odsProgressBarDefaultAttributes, OdsProgressBar,
 } from '@ovhcloud/ods-core';
 import {
   OdsCreateAttributes,
@@ -14,7 +14,6 @@ import {
 } from '@ovhcloud/ods-testing';
 import { SpecPage, newSpecPage } from '@stencil/core/testing';
 
-import { OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
 import { OsdsProgressBar } from './osds-progress-bar';
 import { getAttributeContextOptions } from '@ovhcloud/ods-stencil/libraries/stencil-testing';
 
@@ -55,24 +54,6 @@ describe('spec:osds-progress-bar', () => {
       setup
     };
 
-    describe('min', () => {
-      odsUnitTestAttribute<OdsProgressBarAttributes, 'min'>({
-        ...getAttributeContextOptions<OdsProgressBarAttributes, OdsProgressBar, 'min'>({
-          name: 'min',
-          list: [0, 10, 100],
-          defaultValue: odsProgressBarDefaultAttributes.min,
-          ...config
-        })
-      });
-      it('should set a min if attribute is added', async () => {
-        await setup({ attributes: { min: 10 } });
-        if(!page.root) {
-          throw new Error('page.root is undefined');
-        }
-        expect(page.root.min).toBe("10");
-      });
-    });
-
     describe('max', () => {
       odsUnitTestAttribute<OdsProgressBarAttributes, 'max'>({
         ...getAttributeContextOptions<OdsProgressBarAttributes, OdsProgressBar, 'max'>({
@@ -91,21 +72,21 @@ describe('spec:osds-progress-bar', () => {
       });
     });
 
-    describe('progress', () => {
-      odsUnitTestAttribute<OdsProgressBarAttributes, 'progress'>({
-        ...getAttributeContextOptions<OdsProgressBarAttributes, OdsProgressBar, 'progress'>({
-          name: 'progress',
+    describe('value', () => {
+      odsUnitTestAttribute<OdsProgressBarAttributes, 'value'>({
+        ...getAttributeContextOptions<OdsProgressBarAttributes, OdsProgressBar, 'value'>({
+          name: 'value',
           list: [0, 10, 100],
-          defaultValue: odsProgressBarDefaultAttributes.progress,
+          defaultValue: odsProgressBarDefaultAttributes.value,
           ...config
         })
       });
-      it('should set a progress if attribute is added', async () => {
-        await setup({ attributes: { progress: 30 } });
+      it('should set a value if attribute is added', async () => {
+        await setup({ attributes: { value: 30 } });
         if(!page.root) {
           throw new Error('page.root is undefined');
         }
-        expect(page.root.progress).toBe("30");
+        expect(page.root.value).toBe("30");
       });
     })
   });
@@ -115,14 +96,6 @@ describe('spec:osds-progress-bar', () => {
       await setup();
       expect(controller.validateAttributes).toHaveBeenCalledWith();
       expect(controller.validateAttributes).toHaveBeenCalledTimes(1);
-    });
-
-    it('should call controller.defineProgressCssValue when progress attribute changes', async () => {
-      await setup({ attributes: { progress: 30 } });
-      expect(controller.defineProgressCssValue).toHaveBeenNthCalledWith(1, '30');
-      (root as any).progress = '40';
-      expect(controller.defineProgressCssValue).toHaveBeenNthCalledWith(2, '40');
-      expect(controller.defineProgressCssValue).toHaveBeenCalledTimes(2);
     });
   });
 });

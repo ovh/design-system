@@ -1,4 +1,4 @@
-import { Component, Element, Host, h, Prop, Watch } from '@stencil/core';
+import { Component, Element, Host, h, Prop } from '@stencil/core';
 import {
   OdsProgressBar,
   OdsProgressBarController, odsProgressBarDefaultAttributes,
@@ -22,24 +22,14 @@ export class OsdsProgressBar implements OdsProgressBar<OdsStencilMethods<OdsProg
   /** @see OdsProgressBarAttributes.max */
   @Prop({ reflect: true }) public max?: OdsProgressBar['max'] = odsProgressBarDefaultAttributes.max;
 
-  /** @see OdsProgressBarAttributes.min */
-  @Prop({ reflect: true }) public min?: OdsProgressBar['min'] = odsProgressBarDefaultAttributes.min;
-
-  /** @see OdsProgressBarAttributes.progress */
-  @Prop({ reflect: true }) public progress?: OdsProgressBar['progress'] = odsProgressBarDefaultAttributes.progress;
+  /** @see OdsProgressBarAttributes.value */
+  @Prop({ reflect: true }) public value?: OdsProgressBar['value'] = odsProgressBarDefaultAttributes.value;
 
   /**
    * @see OdsProgressBarBehavior.beforeRender
    */
   componentWillLoad(): void {
     this.controller.validateAttributes();
-    this.controller.defineProgressCssValue(this.progress);
-    this.controller.defineMaxCssValue(this.max);
-  }
-
-  @Watch('progress')
-  watchProgressHandler(newValue: OdsProgressBar['progress']) {
-    this.controller.defineProgressCssValue(newValue);
   }
 
   render() {
@@ -47,8 +37,7 @@ export class OsdsProgressBar implements OdsProgressBar<OdsStencilMethods<OdsProg
       <Host>
         <div class="progress-bar__wrapper">
           <slot name="before"/>
-          <div class="progress-bar__background" />
-          <div class="progress-bar__progress" />
+          <progress class="progress-bar" value={this.value} max={this.max} />
           <slot name="after"/>
         </div>
         <slot name="under"/>

@@ -6,11 +6,7 @@ export interface OdsProgressBarAttributes extends OdsComponentAttributes {
    */
   max?: string | number;
   /**
-   * Sets the minimum value the progress can reach
+   * The value of the progress bar
    */
-  min?: string | number;
-  /**
-   * The value of the progress bar. If set to indeterminate, the progress bar will animate indefinitely
-   */
-  progress?: string | number;
+  value?: string | number;
 }

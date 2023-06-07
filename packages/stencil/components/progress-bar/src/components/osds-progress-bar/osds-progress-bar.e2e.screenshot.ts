@@ -25,12 +25,23 @@ describe('e2e:osds-progress-bar', () => {
   }
 
   describe('screenshots', () => {
-    it('check progress value', async () => {
-      await setup({ attributes: { progress: 50 } });
+    it.each([0, 50, 100])('should display progress bar value', async (value) => {
+      await setup({ attributes: { value } });
       await page.waitForChanges();
       await page.setViewport({ width: 600, height:600 });
-      const results = await page.compareScreenshot('default color separator', { fullPage: false });
+      const results = await page.compareScreenshot(`progress bar value with ${value}`, { fullPage: false });
       expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 })
     });
+    it('should display the progress bar with slots filled', async () => {
+      await setup({ attributes: { value: 50 }, html: `
+        <span slot="before">0%</span>
+        <span slot="after">100%</span>
+        <span slot="under">Downloading...</span>
+        ` });
+      await page.waitForChanges();
+      await page.setViewport({ width: 600, height:600 });
+      const results = await page.compareScreenshot(`progress bar value with slots`, { fullPage: false });
+      expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 })
+    })
   });
 });

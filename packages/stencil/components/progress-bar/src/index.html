@@ -15,17 +15,11 @@
 </head>
 <body>
 
-<osds-progress-bar max="40">ProgressBar</osds-progress-bar>
+<osds-progress-bar max="60">ProgressBar</osds-progress-bar>
 
 <script>
   const progressBar = document.querySelector('osds-progress-bar');
-  setInterval(() => {
-    console.log(progressBar);
-    progressBar.progress = progressBar.progress + 5;
-    if (progressBar.progress >= 100) {
-      progressBar.progress = 0;
-    }
-  }, 1000);
+    progressBar.progress = 40
 </script>
 </body>
 </html>

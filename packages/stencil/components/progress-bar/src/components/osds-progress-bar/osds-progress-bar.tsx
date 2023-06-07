@@ -33,24 +33,25 @@ export class OsdsProgressBar implements OdsProgressBar<OdsStencilMethods<OdsProg
    */
   componentWillLoad(): void {
     this.controller.validateAttributes();
-    this.defineProgressCssValue(this.progress);
+    this.controller.defineProgressCssValue(this.progress);
+    this.controller.defineMaxCssValue(this.max);
   }
 
   @Watch('progress')
   watchProgressHandler(newValue: OdsProgressBar['progress']) {
-    this.defineProgressCssValue(newValue);
-  }
-
-  defineProgressCssValue(progress: OdsProgressBar['progress']): void {
-    this.controller.defineProgressCssValue(progress);
+    this.controller.defineProgressCssValue(newValue);
   }
 
   render() {
     return (
       <Host>
         <div class="progress-bar__wrapper">
-            <div class="progress-bar__progress"></div>
+          <slot name="before"/>
+          <div class="progress-bar__background" />
+          <div class="progress-bar__progress" />
+          <slot name="after"/>
         </div>
+        <slot name="under"/>
       </Host>
     );
   }

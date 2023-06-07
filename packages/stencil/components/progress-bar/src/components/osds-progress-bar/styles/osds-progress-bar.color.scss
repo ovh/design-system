@@ -8,10 +8,10 @@
     border-color: transparent;
   }
 
-  @include osds-progress-bar-on-main-element() {
-    background-color: ods-get-color-variable($palette-name: 'blue', $hue: '100');
+  @include osds-progress-bar-on-background() {
     border-radius: var(--ods-size-03);
     overflow: hidden;
+    background-color: ods-get-color-variable($palette-name: 'blue', $hue: '100');
   }
 
   @include osds-progress-bar-on-progress() {

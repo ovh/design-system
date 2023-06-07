@@ -1,16 +1,22 @@
 @import './osds-progress-bar.mixins';
 @import '~@ovhcloud/ods-theming/size/ods-component-size';
-@import '../../../../../../../../node_modules/@ovhcloud/ods-theming/color/ods-component-color';
 
 // Main CSS mixin for sizes
 @mixin osds-progress-bar-theme-size() {
-  @include osds-progress-bar-on-main-element() {
-    height: var(--ods-size-03);
-  }
-
   @include osds-progress-bar-on-progress() {
-    height: 100%;
+    height: var(--ods-size-03);
     transition: width 0.3s ease-in-out;
     width: var(--progress);
+    position: absolute;
+    top: 0;
+  }
+
+  @include osds-progress-bar-on-background() {
+    height: var(--ods-size-03);
+    width: var(--max);
+  }
+
+  @include osds-progress-bar-on-wrapper() {
+    position: relative
   }
 }

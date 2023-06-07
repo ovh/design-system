@@ -39,4 +39,8 @@ export class OdsProgressBarController extends OdsComponentController<OdsProgress
 
     (this.component.el as unknown as (HTMLElement)).style.setProperty("--progress", `${value}%`);
   }
+
+  defineMaxCssValue(value: OdsProgressBar['max']) {
+    (this.component.el as unknown as (HTMLElement)).style.setProperty("--max", `${value}%`);
+  }
 }

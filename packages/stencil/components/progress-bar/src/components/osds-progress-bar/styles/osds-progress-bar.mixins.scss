@@ -6,8 +6,14 @@
   }
 }
 
-@mixin osds-progress-bar-on-main-element() {
+@mixin osds-progress-bar-on-wrapper() {
   .progress-bar__wrapper {
+    @content;
+  }
+}
+
+@mixin osds-progress-bar-on-background() {
+  .progress-bar__background {
     @content;
   }
 }

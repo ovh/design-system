@@ -6,6 +6,7 @@ import { OdsInputType } from './ods-input-type';
 export const odsInputDefaultAttributesDoc = {
   ariaLabel: null,
   ariaLabelledby: undefined,
+  clearable: false,
   color: OdsThemeColorIntent.default,
   contrasted: false,
   defaultValue: '',
@@ -13,8 +14,11 @@ export const odsInputDefaultAttributesDoc = {
   error: false,
   flex: false,
   forbiddenValues: [],
+  hideable: false,
   icon: undefined,
   label: undefined,
+  loading: false,
+  masked: false,
   max: undefined,
   min: undefined,
   name: undefined,
@@ -23,7 +27,7 @@ export const odsInputDefaultAttributesDoc = {
   required: false,
   size: OdsInputSize.md,
   step: undefined,
-  type: OdsInputType.number,
+  type: OdsInputType.text,
   value: '',
 } as const;
 

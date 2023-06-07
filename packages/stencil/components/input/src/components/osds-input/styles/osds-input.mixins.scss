@@ -18,7 +18,6 @@
   }
 }
 
-
 @mixin osds-input-on-type-number-main-element() {
   input[type=number] {
     @content;

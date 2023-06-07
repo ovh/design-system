@@ -14,6 +14,11 @@ export interface OdsInputMethods extends OdsFormControlMethods<OdsInputValidityS
   clear(): void;
 
   /**
+   * hide or display the value
+   */
+  hide(): void;
+
+  /**
    * active the focus on the input in order to let the user write something
    */
   setFocus(): void;

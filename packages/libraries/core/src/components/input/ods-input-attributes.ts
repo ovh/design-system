@@ -15,6 +15,7 @@ export interface OdsInputAttributes extends OdsComponentAttributes {
    */
   ariaLabel: HTMLElement['ariaLabel'];
   ariaLabelledby?:string;
+  clearable?: boolean;
   color?: OdsThemeColorIntent;
   contrasted?: boolean;
   defaultValue: OdsInputValue;
@@ -24,8 +25,11 @@ export interface OdsInputAttributes extends OdsComponentAttributes {
   flex?: boolean;
   forbiddenValues: OdsFormForbiddenValues;
   formControl?: OdsFormControl<OdsInputValidityState>;
+  hideable?: boolean;
   icon?: OdsIconName;
   label?:string;
+  loading?: boolean;
+  masked?: boolean;
   max?: number;
   min?: number;
   name?: string;

@@ -74,7 +74,11 @@ export class OdsInputController extends OdsComponentController<OdsInput> {
         return `${forbiddenValue}` === `${this.component.value}`;
       }
       if (this.component.value) {
-        return this.component.value >= forbiddenValue.min && this.component.value <= forbiddenValue.max;
+        if (typeof this.component.value === 'number') {
+          return this.component.value >= forbiddenValue.min && this.component.value <= forbiddenValue.max;
+        } else {
+          return true;
+        }
       }
       return false;
     })
@@ -189,6 +193,11 @@ export class OdsInputController extends OdsComponentController<OdsInput> {
   }
 
   clear() {
+    this.logger.debug('clear', this.component.inputEl?.value);
     this.component.value = '';
+  }
+
+  hide() {
+    this.component.masked = !this.component.masked;
   }
 }

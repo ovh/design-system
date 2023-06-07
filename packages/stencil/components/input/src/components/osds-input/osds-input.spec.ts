@@ -34,6 +34,7 @@ OdsMockPropertyDescriptor(HTMLInputElement.prototype, 'validity', () => OdsCreat
 
 describe('spec:osds-input', () => {
   logger.log('init');
+  
   let page: SpecPage;
   let htmlInput: HTMLInputElement | null | undefined;
   let anotherInput: HTMLInputElement | null | undefined;
@@ -86,6 +87,17 @@ describe('spec:osds-input', () => {
       setup
     };
 
+    describe('clearable', () => {
+      odsUnitTestAttribute<OdsInputAttributes, 'clearable'>({
+        ...getAttributeContextOptions<OdsInputAttributes, OsdsInput, 'clearable'>({
+          name: 'clearable',
+          list: [false, true],
+          defaultValue: odsInputDefaultAttributes.clearable,
+          ...config
+        })
+      });
+    });
+
     describe('color', () => {
       odsUnitTestAttribute<OdsInputAttributes, 'color'>({
         ...getAttributeContextOptions<OdsInputAttributes, OsdsInput, 'color'>({
@@ -130,14 +142,37 @@ describe('spec:osds-input', () => {
       });
     });
 
-    describe('size', () => {
-      odsUnitTestAttribute<OdsInputAttributes, 'size'>({
-        ...getAttributeContextOptions<OdsInputAttributes, OsdsInput, 'size'>({
-          name: 'size',
-          list: OdsInputSizeList,
-          defaultValue: odsInputDefaultAttributes.size,
+    describe('hideable', () => {
+      odsUnitTestAttribute<OdsInputAttributes, 'hideable'>({
+        ...getAttributeContextOptions<OdsInputAttributes, OsdsInput, 'hideable'>({
+          name: 'hideable',
+          list: [false, true],
+          defaultValue: odsInputDefaultAttributes.hideable,
           ...config
         })
+      });
+    });
+
+    describe('loading', () => {
+      odsUnitTestAttribute<OdsInputAttributes, 'loading'>({
+        ...getAttributeContextOptions<OdsInputAttributes, OsdsInput, 'loading'>({
+          name: 'loading',
+          list: [false, true],
+          defaultValue: odsInputDefaultAttributes.loading,
+          ...config
+        })
+      });
+    });
+
+    describe('masked', () => {
+      odsUnitTestAttribute<OdsInputAttributes, 'masked'>({
+        ...getAttributeContextOptions<OdsInputAttributes, OsdsInput, 'masked'>({
+          name: 'masked',
+          list: [false, true],
+          defaultValue: odsInputDefaultAttributes.masked,
+          ...config
+        }),
+        include: [OdsUnitTestAttributeType.MUTABLE]
       });
     });
 
@@ -163,24 +198,34 @@ describe('spec:osds-input', () => {
       });
     });
 
-    describe('step', () => {
-      odsUnitTestAttribute<OdsInputAttributes, 'step'>({
-        ...getAttributeContextOptions<OdsInputAttributes, OsdsInput, 'step'>({
-          name: 'step',
-          list: [1, 2],
-          defaultValue: odsInputDefaultAttributes.step,
-          ...config
-        })
-      });
-    });
-
-
     describe('placeholder', () => {
       odsUnitTestAttribute<OdsInputAttributes, 'placeholder'>({
         ...getAttributeContextOptions<OdsInputAttributes, OsdsInput, 'placeholder'>({
           name: 'placeholder',
           list: ['oles', 'ipsum'],
           defaultValue: odsInputDefaultAttributes.placeholder,
+          ...config
+        })
+      });
+    });
+
+    describe('size', () => {
+      odsUnitTestAttribute<OdsInputAttributes, 'size'>({
+        ...getAttributeContextOptions<OdsInputAttributes, OsdsInput, 'size'>({
+          name: 'size',
+          list: OdsInputSizeList,
+          defaultValue: odsInputDefaultAttributes.size,
+          ...config
+        })
+      });
+    });
+
+    describe('step', () => {
+      odsUnitTestAttribute<OdsInputAttributes, 'step'>({
+        ...getAttributeContextOptions<OdsInputAttributes, OsdsInput, 'step'>({
+          name: 'step',
+          list: [1, 2],
+          defaultValue: odsInputDefaultAttributes.step,
           ...config
         })
       });
@@ -281,6 +326,14 @@ describe('spec:osds-input', () => {
 
         expect(controller.clear).toHaveBeenCalledTimes(1);
         expect(controller.clear).toHaveBeenCalledWith();
+      });
+
+      it('should call hide from hide method', async () => {
+        await setup({});
+        await instance.hide();
+
+        expect(controller.hide).toHaveBeenCalledTimes(1);
+        expect(controller.hide).toHaveBeenCalledWith();
       });
 
       it('should call reset from reset method', async () => {

@@ -10,6 +10,9 @@ describe('spec:ods-input-default-attributes', () => {
   it('ariaLabelledby should not be defined', () => {
     expect(odsInputDefaultAttributes.ariaLabelledby).toBe(undefined);
   });
+  it('clearable should be false', () => {
+    expect(odsInputDefaultAttributes.clearable).toBe(false);
+  });
   it('color should be default', () => {
     expect(odsInputDefaultAttributes.color).toBe(OdsThemeColorIntent.default);
   });
@@ -25,8 +28,17 @@ describe('spec:ods-input-default-attributes', () => {
   it('flex should be false', () => {
     expect(odsInputDefaultAttributes.flex).toBe(false);
   });
+  it('hideable should be false', () => {
+    expect(odsInputDefaultAttributes.hideable).toBe(false);
+  });
   it('label should not be defined', () => {
     expect(odsInputDefaultAttributes.label).toBe(undefined);
+  });
+  it('loading should be false', () => {
+    expect(odsInputDefaultAttributes.loading).toBe(false);
+  });
+  it('masked should be false', () => {
+    expect(odsInputDefaultAttributes.masked).toBe(false);
   });
   it('max should not be defined', () => {
     expect(odsInputDefaultAttributes.max).toBe(undefined);
@@ -53,7 +65,7 @@ describe('spec:ods-input-default-attributes', () => {
     expect(odsInputDefaultAttributes.step).toBe(undefined);
   });
   it('type should be number', () => {
-    expect(odsInputDefaultAttributes.type).toBe(OdsInputType.number);
+    expect(odsInputDefaultAttributes.type).toBe(OdsInputType.text);
   });
   it('value should not be defined', () => {
     expect(odsInputDefaultAttributes.value).toBe('');

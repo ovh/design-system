@@ -12,7 +12,14 @@
       padding: ods-get-size-property($sizes, padding);
 
       osds-icon {
-        width: ods-get-size-property($sizes, icon-width);
+        min-width: ods-get-size-property($sizes, icon-width);
+        min-height: ods-get-size-property($sizes, icon-height);
+        max-width: ods-get-size-property($sizes, icon-width);
+        max-height: ods-get-size-property($sizes, icon-height);
+      }
+
+      osds-icon:not(:first-of-type) {
+        margin-left: var(--ods-size-03);
       }
     }
   }

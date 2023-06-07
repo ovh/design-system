@@ -7,6 +7,7 @@ import {
   OdsIconSize,
   OdsInput,
   OdsInputController,
+  odsInputDefaultAttributes,
   OdsInputEvents,
   OdsInputMethods,
   OdsInputSize,
@@ -15,7 +16,7 @@ import {
   OdsInputValue,
   OdsInputValueChangeEventDetail,
   OdsLogger,
-  odsInputDefaultAttributes
+  OdsSpinnerSize
 } from '@ovhcloud/ods-core';
 import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libraries/stencil-core';
 
@@ -45,29 +46,58 @@ export class OsdsInput implements OdsInput<OdsStencilMethods<OdsInputMethods>, O
   @State() inputTabindex = 0;
   @State() hasFocus = false;
 
+  /** Props */
+
   /** @see OdsInputAttributes.ariaLabel */
   @Prop() ariaLabel: HTMLElement['ariaLabel'] = odsInputDefaultAttributes.ariaLabel;
 
   /** @see OdsInputAttributes.ariaLabelledby */
   @Prop() ariaLabelledby?: string = odsInputDefaultAttributes.ariaLabelledby;
 
-  /** @see OdsInputAttributes.type */
-  @Prop({ reflect: true }) type: OdsInputType = odsInputDefaultAttributes.type;
-
-  /** @see OdsInputAttributes.disabled */
-  @Prop({ reflect: true }) disabled?: boolean = odsInputDefaultAttributes.disabled;
-
-  /** @see OdsInputAttributes.contrasted */
-  @Prop({ reflect: true }) contrasted?: boolean = odsInputDefaultAttributes.contrasted;
+  /** @see OdsInputAttributes.clearable */
+  @Prop({ reflect: true }) clearable?: boolean = odsInputDefaultAttributes.clearable;
 
   /** @see OdsInputAttributes.color */
   @Prop({ reflect: true }) color?: OdsThemeColorIntent = odsInputDefaultAttributes.color;
 
+  /** @see OdsInputAttributes.contrasted */
+  @Prop({ reflect: true }) contrasted?: boolean = odsInputDefaultAttributes.contrasted;
+
+  /** @see OdsInputAttributes.defaultValue */
+  @Prop({ reflect: true }) defaultValue: OdsInputValue = odsInputDefaultAttributes.defaultValue;
+
+  /** @see OdsInputAttributes.disabled */
+  @Prop({ reflect: true }) disabled?: boolean = odsInputDefaultAttributes.disabled;
+
+  /** @see OdsInputAttributes.error */
+  @Prop({ reflect: true }) error?: boolean = odsInputDefaultAttributes.error;
+
+  /** @see OdsInputAttributes.errorStateControl */
+  @Prop({ reflect: true }) errorStateControl?: OdsErrorStateControl = odsInputDefaultAttributes.errorStateControl;
+
   /** @see OdsInputAttributes.flex */
   @Prop({ reflect: true }) flex?: boolean = odsInputDefaultAttributes.flex;
 
-  /** @see OdsInputAttributes.size */
-  @Prop({ reflect: true }) size?: OdsInputSize = odsInputDefaultAttributes.size;
+  /** @see OdsInputAttributes.forbiddenValues */
+  @Prop({ reflect: true }) forbiddenValues: OdsFormForbiddenValues<number> = odsInputDefaultAttributes.forbiddenValues;
+
+  /** @see OdsInputAttributes.formControl */
+  @Prop({ reflect: true }) formControl?: OdsFormControl<OdsInputValidityState> = odsInputDefaultAttributes.formControl;
+
+  /** @see OdsInputAttributes.hideable */
+  @Prop({ reflect: true }) hideable?: boolean = odsInputDefaultAttributes.hideable;
+
+  /** @see OdsInputAttributes.icon */
+  @Prop({ reflect: true }) icon?: OdsIconName = odsInputDefaultAttributes.icon;
+
+  /** @see OdsInputAttributes.label */
+  @Prop({ reflect: true }) label?: string = odsInputDefaultAttributes.label;
+
+  /** @see OdsInputAttributes.loading */
+  @Prop({ reflect: true }) loading?: boolean = odsInputDefaultAttributes.loading;
+
+  /** @see OdsInputAttributes.masked */
+  @Prop({ reflect: true, mutable: true }) masked?: boolean = odsInputDefaultAttributes.masked;
 
   /** @see OdsInputAttributes.max */
   @Prop({ reflect: true }) max?: number = odsInputDefaultAttributes.max;
@@ -75,44 +105,31 @@ export class OsdsInput implements OdsInput<OdsStencilMethods<OdsInputMethods>, O
   /** @see OdsInputAttributes.min */
   @Prop({ reflect: true }) min?: number = odsInputDefaultAttributes.min;
 
-  /** @see OdsInputAttributes.step */
-  @Prop({ reflect: true }) step?: number = odsInputDefaultAttributes.step;
+  /** @see OdsInputAttributes.name */
+  @Prop({ reflect: true }) name?: string = odsInputDefaultAttributes.name;
 
   /** @see OdsInputAttributes.placeholder */
   @Prop({ reflect: true }) placeholder?: string = odsInputDefaultAttributes.placeholder;
 
-  /** @see OdsInputAttributes.label */
-  @Prop({ reflect: true }) label?: string = odsInputDefaultAttributes.label;
-
-  /** @see OdsInputAttributes.name */
-  @Prop({ reflect: true }) name?: string = odsInputDefaultAttributes.name;
+  /** @see OdsInputAttributes.readOnly */
+  @Prop({ reflect: true }) readOnly?: boolean = odsInputDefaultAttributes.readOnly;
 
   /** @see OdsInputAttributes.required */
   @Prop({ reflect: true }) required?: boolean = odsInputDefaultAttributes.required;
 
-  /** @see OdsInputAttributes.readOnly */
-  @Prop({ reflect: true }) readOnly?: boolean = odsInputDefaultAttributes.readOnly;
+  /** @see OdsInputAttributes.size */
+  @Prop({ reflect: true }) size?: OdsInputSize = odsInputDefaultAttributes.size;
+
+  /** @see OdsInputAttributes.step */
+  @Prop({ reflect: true }) step?: number = odsInputDefaultAttributes.step;
+
+  /** @see OdsInputAttributes.type */
+  @Prop({ reflect: true }) type: OdsInputType = odsInputDefaultAttributes.type;
 
   /** @see OdsInputAttributes.value */
   @Prop({ reflect: true, mutable: true }) value: OdsInputValue = odsInputDefaultAttributes.value;
 
-  /** @see OdsInputAttributes.defaultValue */
-  @Prop({ reflect: true }) defaultValue: OdsInputValue = odsInputDefaultAttributes.defaultValue;
-
-  /** @see OdsInputAttributes.icon */
-  @Prop({ reflect: true }) icon?: OdsIconName = odsInputDefaultAttributes.icon;
-
-  /** @see OdsInputAttributes.formControl */
-  @Prop({ reflect: true }) formControl?: OdsFormControl<OdsInputValidityState> = odsInputDefaultAttributes.formControl;
-
-  /** @see OdsInputAttributes.errorStateControl */
-  @Prop({ reflect: true }) errorStateControl?: OdsErrorStateControl = odsInputDefaultAttributes.errorStateControl;
-
-  /** @see OdsInputAttributes.error */
-  @Prop({ reflect: true }) error?: boolean = odsInputDefaultAttributes.error;
-
-  /** @see OdsInputAttributes.forbiddenValues */
-  @Prop({ reflect: true }) forbiddenValues: OdsFormForbiddenValues<number> = odsInputDefaultAttributes.forbiddenValues;
+  /** Events */
 
   /** @see OdsInputEvents.odsValueChange */
   @Event() odsValueChange!: EventEmitter<OdsInputValueChangeEventDetail>;
@@ -122,6 +139,8 @@ export class OsdsInput implements OdsInput<OdsStencilMethods<OdsInputMethods>, O
 
   /** @see OdsInputEvents.odsInputFocus */
   @Event() odsInputFocus!: EventEmitter<void>;
+
+  /** Watch */
 
   @Watch('formControl')
   onFormControlChange(formControl?: OdsFormControl<OdsInputValidityState>) {
@@ -137,6 +156,8 @@ export class OsdsInput implements OdsInput<OdsStencilMethods<OdsInputMethods>, O
   onValueChange(value: OdsInputValue, oldValue?: OdsInputValue) {
     this.controller.onValueChange(value, oldValue);
   }
+
+  /** Listen */
 
   @Listen('focus')
   focus() {
@@ -158,7 +179,7 @@ export class OsdsInput implements OdsInput<OdsStencilMethods<OdsInputMethods>, O
    * @see OdsInputBehavior.emitChange
    */
   emitChange(value: OdsInputValue, oldValue?: OdsInputValue) {
-    this.logger.debug('emitOdsValueChange', { value, oldValue });
+    this.logger.debug('emit', { value, oldValue });
     this.odsValueChange.emit({
       value: value == null ? value : `${value}`,
       oldValue: oldValue == null ? oldValue : `${oldValue}`,
@@ -205,6 +226,14 @@ export class OsdsInput implements OdsInput<OdsStencilMethods<OdsInputMethods>, O
   }
 
   /**
+   * @see OdsInputMethods.hide
+   */
+  @Method()
+  async hide() {
+    this.controller.hide();
+  }
+
+  /**
    * @see OdsInputMethods.reset
    */
   @Method()
@@ -213,7 +242,7 @@ export class OsdsInput implements OdsInput<OdsStencilMethods<OdsInputMethods>, O
   }
 
   /**
-   * @see OdsInputMethods.setFocus
+   * @see OdsInputMethods.stepUp
    */
   @Method()
   async stepUp() {
@@ -272,13 +301,18 @@ export class OsdsInput implements OdsInput<OdsStencilMethods<OdsInputMethods>, O
     const {
       ariaLabel,
       ariaLabelledby,
+      clearable,
       color,
+      contrasted,
       disabled,
       hasError,
       hasFocus,
+      hideable,
       icon,
       inputId,
       inputTabindex,
+      loading,
+      masked,
       max,
       min,
       name,
@@ -290,9 +324,11 @@ export class OsdsInput implements OdsInput<OdsStencilMethods<OdsInputMethods>, O
       value,
     } = this;
 
+    /** Using `ariaLabelledby` if it's defined, else create a new ID based on `inputId` */
     const labelId = ariaLabelledby ? ariaLabelledby : `${inputId}-label`;
 
     return (
+      /** Main styling is applied to Host, so that the icons are integrated inside the component */
       <Host {...{
         class: {
           'ods-error': Boolean(hasError.bind(this)()),
@@ -301,12 +337,16 @@ export class OsdsInput implements OdsInput<OdsStencilMethods<OdsInputMethods>, O
         hasFocus,
       }}
       >
+        {/** Input field with attributes */}
         <input
           {...{
             ariaLabel,
             ariaLabelledby: labelId || null,
             disabled,
+            contrasted,
+            hideable,
             id: inputId,
+            masked,
             max,
             min,
             name,
@@ -320,21 +360,72 @@ export class OsdsInput implements OdsInput<OdsStencilMethods<OdsInputMethods>, O
             required,
             step,
             tabindex: '-1',
-            type,
+            /** Handling password masking options */
+            type: type === 'password' && masked ? 
+              'text' 
+              : masked ? 
+              'password' 
+              : type,
             value: value?.toString() || '',
           }}
         >
         </input>
-        {
-          icon && (
+
+        {/** Displaying Spinner if Loading is true */
+          loading && (
+            <osds-spinner
+              {...{
+                contrasted: false,
+                size: OdsSpinnerSize.sm,
+            }}>
+            </osds-spinner>
+          )
+        }
+
+        {/** If Component isn't loading & hideable, display eye icon to hide input content */
+          hideable && !loading && (
+            <osds-icon
+              {...{
+                ariaName: `${
+                  type === 'password' ? 
+                  (masked ? OdsIconName.EYE_CLOSED : OdsIconName.EYE_OPEN) 
+                  : (masked ? OdsIconName.EYE_OPEN : OdsIconName.EYE_CLOSED)
+                } icon`,
+                name: type === 'password' ? 
+                  (masked ? OdsIconName.EYE_CLOSED : OdsIconName.EYE_OPEN) 
+                  : (masked ? OdsIconName.EYE_OPEN : OdsIconName.EYE_CLOSED),
+                size: OdsIconSize.sm,
+                color,
+                /** Toggles hide(), which will either hide or display the inputs content by switching masked attribute */
+                onClick: () => this.hide(),
+            }}></osds-icon>
+          )
+        }
+
+        {/** If Component isn't loading & clearable, display clear icon to clear input content */
+          clearable && !loading && (
+            <osds-icon
+              {...{
+                ariaName: `${OdsIconName.CLOSE} icon`,
+                name: OdsIconName.CLOSE,
+                size: OdsIconSize.sm,
+                color,
+                /** Toggles clear(), which will clear the inputs content */
+                onClick: () => this.clear(),
+            }}></osds-icon>
+          )
+        } 
+
+        {/** If Component isn't loading & icon, display desired icon */
+          icon && !loading && (
             <osds-icon
               {...{
                 ariaName: `${icon} icon`,
                 name: icon,
-                size: OdsIconSize.xs,
-                color
-              }}></osds-icon>
-          ) || ''
+                size: OdsIconSize.sm,
+                color,
+            }}></osds-icon>
+          )
         }
       </Host>
     );

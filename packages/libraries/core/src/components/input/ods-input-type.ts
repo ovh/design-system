@@ -1,7 +1,13 @@
 import { OdsInput } from "./ods-input";
 
 export enum OdsInputType {
-  number = 'number'
+  email = 'email',
+  number = 'number',
+  password = 'password',
+  search = 'search',
+  tel = 'tel',
+  text = 'text',
+  url = 'url',
 }
 
 export type OdsInputTypeUnion = `${OdsInputType}`;

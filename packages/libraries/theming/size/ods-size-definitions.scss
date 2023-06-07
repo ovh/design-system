@@ -1,4 +1,5 @@
 @import './ods-theming-size.accordion';
+@import './ods-theming-size.breadcrumb';
 @import './ods-theming-size.button';
 @import './ods-theming-size.cart';
 @import './ods-theming-size.checkbox-button';
@@ -24,6 +25,7 @@
 /// @access public
 $ods-size-definitions: (
   accordion: ods-get-accordion-component-size-definition(),
+  breadcrumb: ods-get-breadcrumb-component-size-definition(),
   button: ods-get-button-component-size-definition(),
   cart: ods-get-cart-component-size-definition(),
   checkbox-button: ods-get-checkbox-button-component-size-definition(),

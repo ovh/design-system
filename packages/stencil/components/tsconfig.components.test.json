@@ -11,8 +11,8 @@
     }
   },
   "include": [
-    "src",
     "accordion/src",
+    "breadcrumb/src",
     "button/src",
     "cart/src",
     "checkbox-button/src",
@@ -36,6 +36,7 @@
     "select/src",
     "skeleton/src",
     "spinner/src",
+    "src",
     "tabs/src",
     "text/src",
     "textarea/src",

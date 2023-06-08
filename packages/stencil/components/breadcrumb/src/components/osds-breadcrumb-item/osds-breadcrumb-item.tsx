@@ -72,7 +72,8 @@ export class OsdsBreadcrumbItem implements OdsBreadcrumbItem<OdsStencilMethods<O
                 </osds-icon>
               </span>
             }
-            {this.label}
+            {/* wbr enfore baseline alignement if there are no text */}
+            {this.label || <wbr />}
           </osds-link>
         </div>
 

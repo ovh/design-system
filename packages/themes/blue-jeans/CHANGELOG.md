@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
+
+
+# [13.0.0](https://ovhcloud.design/v13.0.0/?path=/docs/design-system-changelog--page) (2023-06-08)
+[compare](https://github.com/ovh/design-system/compare/v12.1.3...v13.0.0)
+
+### Bug Fixes
+
+* **ods:** set node-sass to v8 to avoid install issue with M1 mac ([#39](https://github.com/ovh/design-system/issues/39)) ([31c5c3e](https://github.com/ovh/design-system/commit/31c5c3e5ddee6564b3836eb5b6d86f09ae4336d5))
+
+
+### Features
+
+* **component.pagination:** Add new component pagination ([#10](https://github.com/ovh/design-system/issues/10)) ([3b4c767](https://github.com/ovh/design-system/commit/3b4c767b5fb2c7d90b8acf2e787d69aa5a048c0f))
+
+
+
 [Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
 
 

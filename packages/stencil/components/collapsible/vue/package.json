@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-stencil-collapsible-vue",
-  "version": "12.0.5",
+  "version": "13.0.0",
   "private": true,
   "description": "Vue specific wrapper for ods",
   "keywords": [],
@@ -20,7 +20,7 @@
     "dist/"
   ],
   "dependencies": {
-    "@ovhcloud/ods-stencil-collapsible": "^12.0.5"
+    "@ovhcloud/ods-stencil-collapsible": "^13.0.0"
   },
   "peerDependencies": {
     "vue": ">=3"

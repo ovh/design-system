@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
+
+
+# [13.0.0](https://ovhcloud.design/v13.0.0/?path=/docs/design-system-changelog--page) (2023-06-08)
+[compare](https://github.com/ovh/design-system/compare/v12.1.3...v13.0.0)
+
+### Bug Fixes
+
+* **input:** not emit odsValueChange on init component ([#48](https://github.com/ovh/design-system/issues/48)) ([f789285](https://github.com/ovh/design-system/commit/f78928508ce82a0b6e61e2f4e34009890bc0c240))
+
+
+
 [Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
 
 

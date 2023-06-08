@@ -1,14 +1,14 @@
 {
   "name": "@ovhcloud/ods-specifications",
   "private": true,
-  "version": "12.1.3",
+  "version": "13.0.0",
   "description": "ODS design specifications",
   "author": "OVH SAS",
   "license": "Apache-2.0",
   "main": "",
   "module": "",
   "dependencies": {
-    "@ovhcloud/ods-design": "^12.1.3"
+    "@ovhcloud/ods-design": "^13.0.0"
   },
   "devDependencies": {
     "typescript": "4.7.4"

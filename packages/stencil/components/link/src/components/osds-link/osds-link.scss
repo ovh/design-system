@@ -26,7 +26,8 @@
 
 ::slotted([slot="start"]),
 ::slotted([slot="end"]) {
-  vertical-align: top;
+  display: inline-flex;
+  align-self: center;
 }
 
 :host(:not([href])),
@@ -66,11 +67,6 @@
   @include osds-link-on-link-container() {
     pointer-events: none;
   }
-}
-
-::slotted([slot="start"]), ::slotted([slot="end"]) {
-  display: inline-flex;
-  align-self: center;
 }
 
 // apply the theme template for the component

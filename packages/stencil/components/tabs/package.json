@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-stencil-tabs",
-  "version": "12.1.0",
+  "version": "12.1.3",
   "private": true,
   "description": "tabs component",
   "license": "Apache-2.0",
@@ -34,10 +34,10 @@
     "test:e2e:ci:screenshot:update": "stencil test --config stencil.config.ts --e2e --ci --screenshot --update-screenshot --passWithNoTests"
   },
   "dependencies": {
-    "@ovhcloud/ods-stencil-component": "^12.1.0"
+    "@ovhcloud/ods-stencil-component": "^12.1.3"
   },
   "devDependencies": {
-    "@ovhcloud/ods-stencil-component-dev": "^12.1.0"
+    "@ovhcloud/ods-stencil-component-dev": "^12.1.3"
   },
   "publishConfig": {
     "registry": ""

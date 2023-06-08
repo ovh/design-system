@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-library-dev",
-  "version": "12.1.0",
+  "version": "12.1.3",
   "private": true,
   "description": "ODS dev building & testing tools for ods generic libraries",
   "author": "OVH SAS",

@@ -3,6 +3,44 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+[Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
+
+
+# [12.1.3](https://ovhcloud.design/v12.1.3/?path=/docs/design-system-changelog--page) (2023-05-16)
+[compare](https://github.com/ovh/design-system/compare/v12.1.2...v12.1.3)
+
+**Note:** Version bump only for package @ovhcloud/ods-storybook
+
+
+
+
+
+[Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
+
+
+# [12.1.2](https://ovhcloud.design/v12.1.2/?path=/docs/design-system-changelog--page) (2023-05-16)
+[compare](https://github.com/ovh/design-system/compare/v12.1.1...v12.1.2)
+
+**Note:** Version bump only for package @ovhcloud/ods-storybook
+
+
+
+
+
+
+
+[Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
+
+
+# [12.1.1](https://ovhcloud.design/v12.1.1/?path=/docs/design-system-changelog--page) (2023-05-05)
+[compare](https://github.com/ovh/design-system/compare/v12.1.0...v12.1.1)
+
+### Bug Fixes
+
+* **storybook:** wrong links on home page ([#35](https://github.com/ovh/design-system/issues/35)) ([d582187](https://github.com/ovh/design-system/commit/d58218795fd7c243535fd6502ea32878d2eb4cc0))
+
+
+
 
 
 [Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)

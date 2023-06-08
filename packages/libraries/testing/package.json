@@ -29,6 +29,7 @@
   "devDependencies": {
     "@ovhcloud/ods-core": "^13.0.0",
     "@ovhcloud/ods-library-dev": "^13.0.0",
-    "@ovhcloud/ods-theming": "^13.0.0"
+    "@ovhcloud/ods-theming": "^13.0.0",
+    "jest-transform-stub": "^2.0.0"
   }
 }

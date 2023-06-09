@@ -5,8 +5,30 @@ import GenericStyle from '@ovhcloud/ods-core/docs/generic-style.mdx';
 ## Usage
 
 ### Default
-<osds-progress-bar progress="50">ProgressBar</osds-progress-bar>
+<osds-progress-bar value="50"></osds-progress-bar>
 
 ```html
-<osds-progress-bar>ProgressBar</osds-progress-bar>
+<osds-progress-bar value="50"></osds-progress-bar>
+```
+
+### With slots
+<osds-progress-bar value="50">
+  <span slot="before">0%</span>
+  <span slot="after">100%</span>
+  <span slot="under">Downloading...</span>
+</osds-progress-bar>
+
+```html
+<osds-progress-bar value="50">
+  <span slot="before">0%</span>
+  <span slot="after">100%</span>
+  <span slot="under">Downloading...</span>
+</osds-progress-bar>
+```
+
+### With max value
+<osds-progress-bar value="50" max="60"></osds-progress-bar>
+
+```html
+<osds-progress-bar value="50" max="60"></osds-progress-bar>
 ```

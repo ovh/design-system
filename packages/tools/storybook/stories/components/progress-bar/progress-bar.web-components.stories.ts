@@ -1,4 +1,5 @@
 import { html } from 'lit-html';
+import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 import { iframe } from '../../../.storybook/iframe';
 
 import { defineCustomElements } from '@ovhcloud/ods-stencil-progress-bar/loader';
@@ -15,7 +16,7 @@ defineCustomElements();
 
 /* Default story parameters  */
 const storyParams = {
-  progress: {
+  value: {
     category: 'Misc',
     control: { type: 'number' },
     defaultValue: 27
@@ -24,7 +25,19 @@ const storyParams = {
     category: 'Misc',
     control: { type: 'number' },
     defaultValue: 100
-  }
+  },
+  before: {
+    category: 'Slot',
+    defaultValue: '',
+  },
+  after: {
+    category: 'Slot',
+    defaultValue: '',
+  },
+  under: {
+    category: 'Slot',
+    defaultValue: '',
+  },
 };
 
 export default {
@@ -43,7 +56,9 @@ export default {
 const TemplateDefault = (args:any) => {
   return html`
     <osds-progress-bar ...=${getTagAttributes(args)}>
-      ProgressBar
+      <span slot="before">${unsafeHTML(args.before)}</span>
+      <span slot="after">${unsafeHTML(args.after)}</span>
+      <span slot="under">${unsafeHTML(args.under)}</span>
     </osds-progress-bar>
   `;
 }

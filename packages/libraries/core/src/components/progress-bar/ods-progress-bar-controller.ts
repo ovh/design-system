@@ -19,7 +19,9 @@ export class OdsProgressBarController extends OdsComponentController<OdsProgress
   validateAttributes(): void {
       if (this.component.max && (this.component.max < 0 || this.component.max > 100)) {
         this.logger.warn(`max must be between 0 and 100`);
-      } else if (this.component.value && (this.component.value < 0 || this.component.value > 100)) {
+      }
+
+      if (this.component.value && (this.component.value < 0 || this.component.value > 100)) {
         this.logger.warn(`progress must be between 0 and 100`);
       }
   }

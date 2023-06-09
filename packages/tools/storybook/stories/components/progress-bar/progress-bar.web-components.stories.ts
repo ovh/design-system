@@ -20,11 +20,6 @@ const storyParams = {
     control: { type: 'number' },
     defaultValue: 27
   },
-  min: {
-    category: 'Misc',
-    control: { type: 'number' },
-    defaultValue: 0
-  },
   max: {
     category: 'Misc',
     control: { type: 'number' },

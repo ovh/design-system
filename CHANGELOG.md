@@ -8,6 +8,21 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
 
 
+# [13.0.1](https://ovhcloud.design/v13.0.1/?path=/docs/design-system-changelog--page) (2023-06-09)
+[compare](https://github.com/ovh/design-system/compare/v13.0.0...v13.0.1)
+
+### Bug Fixes
+
+* **testing:** re add jest-transform-stub into dep ([2b3a287](https://github.com/ovh/design-system/commit/2b3a287d58c8ca453d31f2c8002f820aa8d6cef1))
+* **testing:** re add jest-transform-stub into dep ([db98801](https://github.com/ovh/design-system/commit/db9880163a7bdaceecbf054f39b6ebad01c2f13a))
+
+
+
+
+
+[Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
+
+
 # [13.0.0](https://ovhcloud.design/v13.0.0/?path=/docs/design-system-changelog--page) (2023-06-08)
 [compare](https://github.com/ovh/design-system/compare/v12.1.3...v13.0.0)
 

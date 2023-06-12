@@ -65,7 +65,7 @@ describe('spec:ods-input-default-attributes', () => {
     expect(odsInputDefaultAttributes.step).toBe(undefined);
   });
   it('type should be number', () => {
-    expect(odsInputDefaultAttributes.type).toBe(OdsInputType.text);
+    expect(odsInputDefaultAttributes.type).toBe(OdsInputType.number);
   });
   it('value should not be defined', () => {
     expect(odsInputDefaultAttributes.value).toBe('');

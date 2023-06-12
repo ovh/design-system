@@ -27,7 +27,7 @@ export const odsInputDefaultAttributesDoc = {
   required: false,
   size: OdsInputSize.md,
   step: undefined,
-  type: OdsInputType.text,
+  type: OdsInputType.number,
   value: '',
 } as const;
 

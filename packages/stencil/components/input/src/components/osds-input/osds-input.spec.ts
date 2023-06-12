@@ -229,7 +229,7 @@ describe('spec:osds-input', () => {
           ...config
         })
       });
-    });
+    });  
 
     describe('value', () => {
       odsUnitTestAttribute<OdsInputAttributes, 'value'>({

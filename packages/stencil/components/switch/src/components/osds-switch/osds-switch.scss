@@ -9,11 +9,18 @@
 // /!\ for theming purposes, it has to be done in theming files
 // (i.e. packages/libraries/theming/...)
 :host {
-
+  display: inline-flex;
+  flex-flow: row;
+  overflow: hidden;
+  border-radius: 1.375em;
 }
 
-:host([attribute]) {
-
+:host([disabled]) {
+  opacity: .5;
+  cursor: not-allowed !important;
+  & > * {
+    pointer-events: none;
+  }
 }
 
 // apply the theme template for the component

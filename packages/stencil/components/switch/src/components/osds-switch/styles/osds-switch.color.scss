@@ -3,12 +3,27 @@
 
 @mixin osds-switch-theme-color-variant-default() {
   @include ods-and-all-hue-foreach-theme-color((
-          color: '800',
-          background-color: '100'
+    color: '500',
+    background-color: '500',
+    background-color-checked: '600',
+    background-color-hover: '100',
   )) using($colors) {
     @include osds-switch-on-selected-host() {
-      //color: map_get($colors, color);
-      //background-color: map_get($colors, background-color);
+      ::slotted(osds-switch-item) {
+        color: map_get($colors, color);
+      }
+    }
+
+    @include osds-switch-on-selected-host() {
+      ::slotted(osds-switch-item:hover) {
+        background-color: map_get($colors, background-color-hover);
+      }
+    }
+    @include osds-switch-on-selected-host() {
+      ::slotted(osds-switch-item[checked]) {
+        color: var(--ods-color-default-000);
+        background-color: map_get($colors, background-color-checked);
+      }
     }
   }
 }
@@ -17,7 +32,7 @@
 @mixin osds-switch-theme-color() {
   /** base colors */
   :host {
-    border-color: transparent;
+    background-color: transparent;
   }
 
   /** no variant specified: default variant colors */

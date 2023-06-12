@@ -5,6 +5,7 @@ import { OdsSwitchMethods } from './ods-switch-methods';
 import { OdsComponent } from '../ods-component';
 import { OdsComponentGenericEvents } from '../ods-component-generic-events';
 import { OdsComponentGenericMethods } from '../ods-component-generic-methods';
+import { OdsSwitchBehavior } from './ods-switch-behavior';
 
 /**
  * interface description of all implementation of `ods-switch`.
@@ -13,4 +14,4 @@ import { OdsComponentGenericMethods } from '../ods-component-generic-methods';
  */
 export type OdsSwitch<ComponentMethods extends OdsComponentGenericMethods<OdsSwitchMethods> = OdsComponentGenericMethods<OdsSwitchMethods>,
   ComponentEvents extends OdsComponentGenericEvents<OdsSwitchEvents> = OdsComponentGenericEvents<OdsSwitchEvents>> =
-  OdsComponent<ComponentMethods, ComponentEvents, OdsSwitchAttributes, OdsSwitchController>;
+  OdsComponent<ComponentMethods, ComponentEvents, OdsSwitchAttributes, OdsSwitchController, OdsSwitchBehavior>;

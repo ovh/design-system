@@ -1,14 +1,16 @@
 
 /// @access private
-//@function ods-get-switch-size-properties($size-name) {
-//  @return (
-//
-//  )
-//}
+@function ods-get-switch-size-properties($size-name) {
+ @return (
+    height: var(--ods-size-switch-#{$size-name}-height),
+    line-height: var(--ods-size-switch-#{$size-name}-line-height),
+ )
+}
 
 /// @access private
-//@function ods-get-switch-component-size-definition() {
-//  @return (
-//    md: ods-get-switch-size-properties(md)
-//  );
-//}
+@function ods-get-switch-component-size-definition() {
+  @return (
+    sm: ods-get-switch-size-properties(sm),
+    md: ods-get-switch-size-properties(md)
+  );
+}

@@ -26,15 +26,7 @@ const storyParams = {
     control: { type: 'number' },
     defaultValue: 100
   },
-  before: {
-    category: 'Slot',
-    defaultValue: '',
-  },
-  after: {
-    category: 'Slot',
-    defaultValue: '',
-  },
-  under: {
+  end: {
     category: 'Slot',
     defaultValue: '',
   },
@@ -56,9 +48,7 @@ export default {
 const TemplateDefault = (args:any) => {
   return html`
     <osds-progress-bar ...=${getTagAttributes(args)}>
-      <span slot="before">${unsafeHTML(args.before)}</span>
-      <span slot="after">${unsafeHTML(args.after)}</span>
-      <span slot="under">${unsafeHTML(args.under)}</span>
+      <span slot="end">${unsafeHTML(args.end)}</span>
     </osds-progress-bar>
   `;
 }

@@ -34,9 +34,7 @@ describe('e2e:osds-progress-bar', () => {
     });
     it('should display the progress bar with slots filled', async () => {
       await setup({ attributes: { value: 50 }, html: `
-        <span slot="before">0%</span>
-        <span slot="after">100%</span>
-        <span slot="under">Downloading...</span>
+        <span slot="end">19%</span>
         ` });
       await page.waitForChanges();
       await page.setViewport({ width: 600, height:600 });

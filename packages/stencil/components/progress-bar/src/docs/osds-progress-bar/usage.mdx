@@ -13,22 +13,18 @@ import GenericStyle from '@ovhcloud/ods-core/docs/generic-style.mdx';
 
 ### With slots
 <osds-progress-bar value="50">
-  <span slot="before">0%</span>
-  <span slot="after">100%</span>
-  <span slot="under">Downloading...</span>
+  <span slot="end">50%</span>
 </osds-progress-bar>
 
 ```html
 <osds-progress-bar value="50">
-  <span slot="before">0%</span>
-  <span slot="after">100%</span>
-  <span slot="under">Downloading...</span>
+  <span slot="end">50%</span>
 </osds-progress-bar>
 ```
 
 ### With max value
-<osds-progress-bar value="50" max="60"></osds-progress-bar>
+<osds-progress-bar value="27" max="40"></osds-progress-bar>
 
 ```html
-<osds-progress-bar value="50" max="60"></osds-progress-bar>
+<osds-progress-bar value="27" max="40"></osds-progress-bar>
 ```

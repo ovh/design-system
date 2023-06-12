@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html dir='ltr' lang='en'>
+<head>
+  <meta charset='utf-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0' />
+  <title>Dev ods-file</title>
+
+  <script type="module">
+    !window.ods && (window.ods = {config: {logging: {active:true}}});
+  </script>
+
+  <script type='module' src='/build/osds-file.esm.js'></script>
+  <script nomodule src='/build/osds-file.js'></script>
+  <link rel="stylesheet" href="/build/osds-file.css">
+</head>
+<body>
+
+<div>
+  <osds-file
+    header-title='Glisser-déposer une pièce jointe'
+    divider-label='ou'
+    select-files-label='sélectionner un fichier'
+    accepted-types='image/png'
+    error-message='Une erreur est survenue'
+    success-message='Tous les fichiers ont été téléchargés'
+  />
+</div>
+
+<script>
+  const odsUpload = document.querySelector('osds-file');
+
+  let requests = {};
+
+  const updateFile = (file, { propertyName, value }) => {
+    const files = [...odsUpload.files]
+    const fileToUpdate = files.find((f) => f.id === file.id)
+    if(!fileToUpdate) return
+
+    fileToUpdate[propertyName] = value;
+    // Need reassign to trigger change, we cant use odsUpload.files.find directly
+    odsUpload.files = files;
+  }
+
+  odsUpload.addEventListener('odsRejectedFile', (event) => {
+    alert(`File ${event.detail.name} rejected`)
+  })
+
+  odsUpload.addEventListener('odsMaxFilesReached', () => {
+    alert('Max files reached')
+  })
+
+  odsUpload.addEventListener('odsFilesChange', (event) => {
+    odsUpload.files = [...odsUpload.files, ...event.detail]
+
+    event.detail.forEach((file, index) => {
+      // Generate a unique id for each file
+      file.id = Math.random().toString(36).substr(2, 9);
+
+      if(!file.progress) {
+        file.progress = 0
+      }
+
+      let data = new FormData();
+      data.append('file', file);
+
+      let request = new XMLHttpRequest();
+      requests[file.name] = request;
+      request.open('POST', 'http://httpbin.org/post');
+
+      request.onprogress = function(e) {
+        const progress = Math.round((e.loaded / e.total) * 100);
+          updateFile(file, { propertyName: 'progress', value: progress })
+      }
+
+      request.onerror = function() {
+        updateFile(file, { propertyName: 'progress', value: undefined })
+        updateFile(file, { propertyName: 'error', value: true })
+      }
+
+      request.onload = function() {
+        updateFile(file, { propertyName: 'progress', value: 100 })
+      }
+
+      request.send(data)
+    })
+  })
+
+  odsUpload.addEventListener('odsCancel',(event) => {
+    const request = requests[event.detail.name];
+    if (request.status === 200) { // 200 is the default status for a request done
+      request.open('DELETE', 'http://httpbin.org/delete');
+      request.send(event.detail);
+    } else {
+      request.abort();
+    }
+    odsUpload.files = odsUpload.files.filter((file) => file.id !== event.detail.id);
+  })
+</script>
+</body>
+</html>

@@ -1,0 +1,178 @@
+@import '~@ovhcloud/ods-theming/color/ods-theming-color';
+@import '~@ovhcloud/ods-theming/ods-theme';
+@import 'styles/osds-file.mixins';
+@import 'styles/osds-file.color';
+@import 'styles/osds-file.size';
+@import 'styles/osds-file.typography';
+
+// CSS targeted only for this component
+// /!\ for theming purposes, it has to be done in theming files
+// (i.e. packages/libraries/theming/...)
+:host {
+
+}
+
+:host([attribute]) {
+
+}
+
+.ods-file {
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: var(--ods-size-05);
+
+    &__progress-bar {
+      flex-grow: 1;
+      width: 100%;
+    }
+
+    &__label {
+      color: var(--ods-color-text-500);
+
+      &--errored {
+        color: var(--ods-color-error-600);
+      }
+    }
+  }
+
+  &__dropzone {
+    $baseClass: &;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--ods-size-06);
+    border: 1px dashed var(--ods-color-primary-200);
+    border-radius: var(--ods-size-03);
+    padding: var(--ods-size-08);
+    cursor: pointer;
+    transition: all 10ms ease-in-out;
+    background-color: var(--ods-color-gray-000);
+    text-align: center;
+    width: fit-content;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+
+    &--disabled {
+      cursor: not-allowed;
+      border-style: dashed;
+      opacity: 0.5;
+    }
+
+    &--success {
+      &__header {
+          display: flex;
+          align-items: center;
+            justify-content: center;
+        flex-direction: column;
+          gap: var(--ods-size-07);
+
+        &__message {
+          display: flex;
+          align-items: center;
+          gap: var(--ods-size-03);
+        }
+
+        &__icon-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: var(--ods-size-02) solid var(--ods-color-success-500);
+            border-radius: 50%;
+            padding: var(--ods-size-01);
+          }
+      }
+    }
+
+    &--errored {
+      border-color: var(--ods-color-error-500);
+      border-style: dashed;
+
+      &__header {
+        color: var(--ods-color-error-500);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: var(--ods-size-07);
+
+        &__message {
+          display: flex;
+          align-items: center;
+          gap: var(--ods-size-03);
+        }
+
+        &__icon-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: var(--ods-size-02) solid var(--ods-color-error-500);
+            border-radius: 50%;
+            padding: var(--ods-size-01);
+          }
+      }
+    }
+
+    &__header {
+      display: flex;
+      flex-direction: column;
+      gap: var(--ods-size-06);
+      align-items: center;
+
+      &__title {
+        $typography-properties: ods-get-typography-properties(subheading, '100');
+        font-family: ods-get-typography-property($typography-properties, font-family);
+        font-size: ods-get-typography-property($typography-properties, font-size);
+        font-style: ods-get-typography-property($typography-properties, font-style);
+        font-weight: ods-get-typography-property($typography-properties, font-weight);
+        letter-spacing: ods-get-typography-property($typography-properties, letter-spacing);
+        line-height: ods-get-typography-property($typography-properties, line-height);
+        color: var(--ods-color-gray-blue-500);
+        margin-bottom: var(--ods-size-04);
+
+        &__types {
+          $typography-properties: ods-get-typography-properties(body, '400');
+          font-family: ods-get-typography-property($typography-properties, font-family);
+          font-size: ods-get-typography-property($typography-properties, font-size);
+          font-style: ods-get-typography-property($typography-properties, font-style);
+          font-weight: ods-get-typography-property($typography-properties, font-weight);
+          letter-spacing: ods-get-typography-property($typography-properties, letter-spacing);
+          line-height: ods-get-typography-property($typography-properties, line-height);
+          margin-left: var(--ods-size-03);
+        }
+      }
+
+      &__or {
+        color: var(--ods-color-gray-blue-500);
+        font-size: var(--ods-size-06);
+        margin-right: var(--ods-size-03);
+      }
+
+      &__link {
+        label {
+          cursor: pointer;
+        }
+        &__icon {
+          margin-left: var(--ods-size-04);
+        }
+      }
+    }
+
+    &__files {
+      width: 100%;
+    }
+
+    &--drag-over {
+      background-color: var(--ods-color-primary-100);
+    }
+  }
+}
+
+// apply the theme template for the component
+@include ods-theme-component() {
+  @include osds-file-theme-color();
+  @include osds-file-theme-size();
+  @include osds-file-theme-typography();
+}

@@ -116,5 +116,8 @@
     "ua-parser-js": "0.7.18",
     "@types/react": "^16.14.0",
     "@types/ws": "8.5.4"
+  },
+  "dependencies": {
+    "storybook-addon-mock": "^4.1.0"
   }
 }

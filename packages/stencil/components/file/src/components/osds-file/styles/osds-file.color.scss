@@ -1,0 +1,9 @@
+@import '~@ovhcloud/ods-theming/color/ods-component-color';
+@import './osds-file.mixins';
+
+// Main CSS color theme mixin
+@mixin osds-file-theme-color() {
+  /** base colors */
+  :host {
+  }
+}

@@ -159,16 +159,16 @@ export class OsdsSelect implements OdsSelect<OdsStencilMethods<OdsSelectMethods>
       return;
     }
     if (isEscape) {
-      this.controller.closeSurface();
+      return this.controller.closeSurface();
     }
     const selectOptions = this.getSelectOptionList();
     const selectedSelectOptionIndex = selectOptions.findIndex((select) => select.selected || document.activeElement === select);
     if (isEnter) {
-      this.handlerKeyEnter(selectOptions, selectedSelectOptionIndex);
+      return this.handlerKeyEnter(selectOptions, selectedSelectOptionIndex);
     }
 
     if (isArrowDownOrUp) {
-      this.handlerKeyArrow(ev, selectOptions, selectedSelectOptionIndex);    
+      return this.handlerKeyArrow(ev, selectOptions, selectedSelectOptionIndex);    
     }
   }
 

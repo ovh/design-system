@@ -268,7 +268,7 @@ console.log('before clicks');
       await page.waitForChanges();
       await el.focus();
       await page.keyboard.press('Enter');
-      expect(await el.getProperty('opened')).toBeTruthy();
+      expect(await el.getProperty('opened')).toBe(true);
     });
 
     it('should close select when Escape', async () => {
@@ -277,7 +277,7 @@ console.log('before clicks');
       await el.focus();
       await page.keyboard.press('Enter');
       await page.keyboard.press('Escape');
-      expect(await el.getProperty('opened')).toBeFalsy();
+      expect(await el.getProperty('opened')).toBe(false);
     });
 
     it('should close select after focus was on option', async () => {
@@ -288,7 +288,7 @@ console.log('before clicks');
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('ArrowUp');
       await page.keyboard.press('Enter');
-      expect(await el.getProperty('opened')).toBeFalsy();
+      expect(await el.getProperty('opened')).toBe(false);
     });
 
     it('should open select when Enter & focus on first option', async () => {
@@ -297,7 +297,7 @@ console.log('before clicks');
       await el.focus();
       await page.keyboard.press('Enter');
       await page.keyboard.press('ArrowDown');
-      expect(await optionElement.getProperty('selected')).toBeTruthy();
+      expect(await optionElement.getProperty('selected')).toBe(true);
     });
 
     it('should open select when Enter & select option', async () => {

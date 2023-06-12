@@ -5434,12 +5434,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-cdk@^13.0.1, @ovhcloud/ods-cdk@workspace:packages/libraries/cdk":
+"@ovhcloud/ods-cdk@13.0.1, @ovhcloud/ods-cdk@^13.0.1, @ovhcloud/ods-cdk@workspace:packages/libraries/cdk":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-cdk@workspace:packages/libraries/cdk"
   dependencies:
     "@ovhcloud/ods-library-dev": ^13.0.1
-    "@ovhcloud/ods-testing": ^13.0.1
     "@ovhcloud/ods-theming": ^13.0.1
     autoprefixer: ~10.3.7
     node-sass: ^8.0.0

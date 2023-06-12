@@ -1,0 +1,9 @@
+@import '~@ovhcloud/ods-theming/color/ods-component-color';
+@import './osds-dropzone.mixins';
+
+// Main CSS color theme mixin
+@mixin osds-dropzone-theme-color() {
+  /** base colors */
+  :host {
+  }
+}

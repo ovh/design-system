@@ -20,7 +20,7 @@
     "dist/"
   ],
   "dependencies": {
-    "@ovhcloud/ods-stencil-progress-bar": "^12.0.5"
+    "@ovhcloud/ods-stencil-progress-bar": "^13.0.1"
   },
   "peerDependencies": {
     "vue": ">=3"

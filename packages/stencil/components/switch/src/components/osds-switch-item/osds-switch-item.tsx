@@ -1,4 +1,4 @@
-import { Component, Element, Host, h, Prop, State, Event, EventEmitter } from '@stencil/core';
+import { Component, Element, Host, h, Prop, State, Event, EventEmitter, Method } from '@stencil/core';
 import {
   OdsSwitchItem,
   OdsSwitchItemController,
@@ -20,11 +20,8 @@ export class OsdsSwitchItem implements OdsSwitchItem<OdsStencilMethods<OdsSwitch
   controller: OdsSwitchItemController = new OdsSwitchItemController(this);
   @Element() el!: HTMLElement;
 
-  /**
-   * The tabindex of the input.
-   * @internal
-   */
   @State() id = odsSwitchItemDefaultAttributes.id;
+  @State() tabindex = 0;
 
   @Prop({ reflect: true }) public value: HTMLInputElement['value'] = odsSwitchItemDefaultAttributes.value;
 
@@ -37,11 +34,28 @@ export class OsdsSwitchItem implements OdsSwitchItem<OdsStencilMethods<OdsSwitch
     this.odsSwitchItemClick.emit({ value: this.value});
   }
 
+  handlerOnKeyDown(event: KeyboardEvent): void {
+    const isEnter = event.code.includes('Enter');
+    const isSpace = event.code === 'Space';
+    if (isEnter || isSpace) {
+      this.handlerOnClick();
+    }
+  }
+
+  @Method()
+  setFocus(): void {
+    this.el.focus();
+  }
+
   render() {
-    const { checked, id, value } = this;
+    const { checked, id, value, tabindex } = this;
 
     return (
-      <Host onClick={() => this.handlerOnClick()}>
+      <Host {...{
+          tabindex,
+        }}
+        onClick={() => this.handlerOnClick()}
+        onKeyDown={(event: KeyboardEvent) => this.handlerOnKeyDown(event)}>
         <label>
           <input 
             type="radio"
@@ -57,3 +71,4 @@ export class OsdsSwitchItem implements OdsSwitchItem<OdsStencilMethods<OdsSwitch
     );
   }
 }
+ 

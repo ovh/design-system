@@ -1,6 +1,7 @@
 // general mixins and functions for the component
 
 @mixin osds-switch-on-selected-host() {
+  @debug &;
   :host(&) {
     @content;
   }
@@ -11,3 +12,10 @@
     @content;
   }
 }
+
+@mixin osds-switch-on-switch-items-child($property: '') {
+  ::slotted(osds-switch-item#{$property}) {
+    @content;
+  }
+}
+

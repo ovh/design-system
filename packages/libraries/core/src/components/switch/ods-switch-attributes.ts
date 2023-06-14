@@ -1,6 +1,7 @@
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 import { OdsComponentAttributes } from '../ods-component-attributes';
 import { OdsSwitchSize } from './ods-switch-size';
+import { OdsSwitchVariant } from './ods-switch-variant';
 
 export interface OdsSwitchAttributes extends OdsComponentAttributes {
   /** disabled: see component principles */
@@ -10,7 +11,7 @@ export interface OdsSwitchAttributes extends OdsComponentAttributes {
   /** main color: see component principles */
   color?: OdsThemeColorIntent;
   /** used design aspect */
-  variant?: string;
+  variant?: OdsSwitchVariant;
   /** size: see component principles */
   size?: OdsSwitchSize;
 }

@@ -1,4 +1,4 @@
-jest.mock('@ovhcloud/ods-core/src/components/switch/ods-switch-controller'); // keep jest.mock before any
+jest.mock('@ovhcloud/ods-core/src/components/switch/ods-switch-item-controller'); // keep jest.mock before any
 
 import {
   OdsSwitchItemAttributes,
@@ -9,13 +9,13 @@ import {
 import {
   OdsCreateAttributes,
   OdsStringAttributes2Str,
-  odsSwitchItemBaseAttributes,
+  odsUnitTestAttribute,
 } from '@ovhcloud/ods-testing';
 import { SpecPage, newSpecPage } from '@stencil/core/testing';
-
 import { OsdsSwitchItem } from './osds-switch-item';
+import { getAttributeContextOptions } from '@ovhcloud/ods-stencil/libraries/stencil-testing';
 
-describe('spec:osds-switch', () => {
+describe('spec:osds-switch_item', () => {
   let page: SpecPage;
   let root: HTMLElement | undefined;
   let instance: OsdsSwitchItem;
@@ -26,12 +26,12 @@ describe('spec:osds-switch', () => {
   });
 
   async function setup({ attributes = {} }: { attributes?: Partial<OdsSwitchItemAttributes> } = {}) {
-    const minimalAttributes: OdsSwitchItemAttributes = OdsCreateAttributes(attributes, odsSwitchItemBaseAttributes);
+    const minimalAttributes: OdsSwitchItemAttributes = OdsCreateAttributes(attributes, odsSwitchItemDefaultAttributes);
     const stringAttributes = OdsComponentAttributes2StringAttributes<OdsSwitchItemAttributes>(minimalAttributes, odsSwitchItemDefaultAttributes);
 
     page = await newSpecPage({
       components: [OsdsSwitchItem],
-      html: `<osds-switch ${OdsStringAttributes2Str(stringAttributes)}>My Switch</osds-switch>`,
+      html: `<osds-switch-item ${OdsStringAttributes2Str(stringAttributes)}>My Switch Item</osds-switch-item>`,
     });
 
     root = page.root;
@@ -52,6 +52,15 @@ describe('spec:osds-switch', () => {
       setup
     };
 
-    // Attributes Unit testing
+    describe('checked', () => {
+      odsUnitTestAttribute<OdsSwitchItemAttributes, 'checked'>({
+        ...getAttributeContextOptions<OdsSwitchItemAttributes, OsdsSwitchItem, 'checked'>({
+          name: 'checked',
+          list: [true, false],
+          defaultValue: odsSwitchItemDefaultAttributes.checked,
+          ...config
+        })
+      });
+    });
   });
 });

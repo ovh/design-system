@@ -6,23 +6,79 @@
     color: '500',
     background-color: '500',
     background-color-checked: '600',
-    background-color-hover: '100',
+    background-color-checked-hover: '700',
+    background-color-hover: '200',
   )) using($colors) {
     @include osds-switch-on-selected-host() {
-      ::slotted(osds-switch-item) {
+      background-color: var(--ods-color-gray-100);
+      @include osds-switch-on-switch-items-child() {
         color: map_get($colors, color);
       }
-    }
-
-    @include osds-switch-on-selected-host() {
-      ::slotted(osds-switch-item:hover) {
-        background-color: map_get($colors, background-color-hover);
+  
+      @include osds-switch-on-switch-items-child(':hover') {
+        &::before {
+          background-color: map_get($colors, background-color-hover);
+        }
+      }
+       
+      @include osds-switch-on-switch-items-child('[checked]') {
+        color: var(--ods-color-default-000);
+        &::before{
+          background-color: map_get($colors, background-color-checked);
+        }
+      }
+      
+      @include osds-switch-on-switch-items-child('[checked]:hover') {
+        color: var(--ods-color-default-000);
+        &::before {
+          color: var(--ods-color-default-000);
+          background-color: map_get($colors, background-color-checked-hover);
+        }
+      }
+      [color="text"] {
+        @include osds-switch-on-switch-items-child('[checked]') {
+          color: map_get($colors, background-color-checked);
+        }
       }
     }
+  }
+}
+
+@mixin osds-switch-theme-color-variant-default__contrasted() {
+  @include ods-and-all-hue-foreach-theme-color((
+    color: '500-contrasted',
+    background-color: '500-contrasted',
+    background-color-checked: '600-contrasted',
+    background-color-checked-hover: '700-contrasted',
+    background-color-hover: '100-contrasted',
+  )) using($colors) {
     @include osds-switch-on-selected-host() {
-      ::slotted(osds-switch-item[checked]) {
-        color: var(--ods-color-default-000);
-        background-color: map_get($colors, background-color-checked);
+      
+      @include osds-switch-on-switch-items-child() {
+        color: map_get($colors, color);
+        background-color: map_get($colors, background-color);
+      }
+  
+      @include osds-switch-on-switch-items-child(':hover') {
+        &::before {
+          color: map_get($colors, background-color-hover);
+        }
+      }
+      // &[color="text"] {
+      //   @include osds-switch-on-switch-items-child('[checked]') {
+      //     color: map_get($colors, background-color-checked);
+      //   }
+      // }
+      @include osds-switch-on-switch-items-child('[checked]') {
+        &::before{
+          color: map_get($colors, color);
+          background-color: map_get($colors, background-color-checked);
+        }
+      }
+      @include osds-switch-on-switch-items-child('[checked]:hover') {
+        &::before {
+          color: map_get($colors, background-color-checked-hover);
+        }
       }
     }
   }
@@ -34,9 +90,13 @@
   :host {
     background-color: transparent;
   }
-
   /** no variant specified: default variant colors */
   :not([variant]) {
     @include osds-switch-theme-color-variant-default();
+  }
+  :not([variant]) {
+    &[contrasted] {
+      @include osds-switch-theme-color-variant-default__contrasted();
+    }
   }
 }

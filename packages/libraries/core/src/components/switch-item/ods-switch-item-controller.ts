@@ -6,16 +6,8 @@ import { OdsComponentController } from '../ods-component-controller';
  * it contains all the glue between framework implementation and the third party service.
  */
 export class OdsSwitchItemController extends OdsComponentController<OdsSwitchItem> {
-  // private readonly logger = new OdsLogger('OdsSwitchController');
 
   constructor(component: OdsSwitchItem) {
     super(component);
-  }
-
-  /**
-   * Attributes validation documentation
-   */
-  validateAttributes(): void {
-      return;
   }
 }

@@ -21,8 +21,6 @@ describe('e2e:osds-switch', () => {
     await setup({ attributes: {} });
     expect(el).not.toBeNull();
     expect(el).toHaveClass('hydrated');
-
-    // E2E testing
   });
 
 });

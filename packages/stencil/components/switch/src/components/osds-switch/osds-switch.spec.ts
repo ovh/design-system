@@ -5,6 +5,8 @@ import {
   OdsSwitchController,
   OdsComponentAttributes2StringAttributes,
   odsSwitchDefaultAttributes,
+  OdsSwitchSizeList,
+  OdsSwitchVariantList,
 } from '@ovhcloud/ods-core';
 import {
   OdsCreateAttributes,
@@ -55,7 +57,60 @@ describe('spec:osds-switch', () => {
       setup
     };
 
-    // Attributes Unit testing
+    describe('color', () => {
+      odsUnitTestAttribute<OdsSwitchAttributes, 'color'>({
+        ...getAttributeContextOptions<OdsSwitchAttributes, OsdsSwitch, 'color'>({
+          name: 'color',
+          list: OdsThemeColorIntentList,
+          defaultValue: odsSwitchDefaultAttributes.color,
+          ...config
+        })
+      });
+    });
+
+    describe('contrasted', () => {
+      odsUnitTestAttribute<OdsSwitchAttributes, 'contrasted'>({
+        ...getAttributeContextOptions<OdsSwitchAttributes, OsdsSwitch, 'contrasted'>({
+          name: 'contrasted',
+          list: [true, false],
+          defaultValue: odsSwitchDefaultAttributes.contrasted,
+          ...config
+        })
+      });
+    });
+
+    describe('disabled', () => {
+      odsUnitTestAttribute<OdsSwitchAttributes, 'disabled'>({
+        ...getAttributeContextOptions<OdsSwitchAttributes, OsdsSwitch, 'disabled'>({
+          name: 'disabled',
+          list: [true, false],
+          defaultValue: odsSwitchDefaultAttributes.disabled,
+          ...config
+        })
+      });
+    });
+
+    describe('size', () => {
+      odsUnitTestAttribute<OdsSwitchAttributes, 'size'>({
+        ...getAttributeContextOptions<OdsSwitchAttributes, OsdsSwitch, 'size'>({
+          name: 'size',
+          list: OdsSwitchSizeList,
+          defaultValue: odsSwitchDefaultAttributes.size,
+          ...config
+        })
+      });
+    });
+
+    describe('variant', () => {
+      odsUnitTestAttribute<OdsSwitchAttributes, 'variant'>({
+        ...getAttributeContextOptions<OdsSwitchAttributes, OsdsSwitch, 'variant'>({
+          name: 'variant',
+          list: OdsSwitchVariantList,
+          defaultValue: odsSwitchDefaultAttributes.variant,
+          ...config
+        })
+      });
+    });
   });
 
   describe('controller', () => {

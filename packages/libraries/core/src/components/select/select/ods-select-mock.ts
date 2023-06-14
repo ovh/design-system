@@ -40,4 +40,6 @@ export class OdsSelectMock implements OdsSelect<OdsSelectMethods, OdsSelectEvent
     setFocus = jest.fn();
     setInputTabindex = jest.fn();
     getValidity = jest.fn();
+    handleSelectClick = jest.fn();
+    handleValueChange = jest.fn();
 }

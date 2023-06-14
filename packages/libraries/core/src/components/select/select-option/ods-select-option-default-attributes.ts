@@ -5,4 +5,5 @@ import { OdsSelectOptionAttributes } from './ods-select-option-attributes';
  */
 export const odsSelectOptionDefaultAttributes: OdsSelectOptionAttributes = {
   value: '',
+  selected: false,
 };

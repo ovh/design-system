@@ -1,6 +1,7 @@
 import { OdsComponentController } from '../../ods-component-controller';
 import { OdsSelectValidityState } from './ods-select-validity-state';
 import { OdsSelect } from './ods-select';
+import { OdsSelectOption, OdsSelectOptionClickEventDetail } from '../public-api';
 
 /**
  * common controller logic for select component used by the different implementations.
@@ -66,5 +67,68 @@ export class OdsSelectController extends OdsComponentController<OdsSelect> {
       return !this.component.value;
     }
     return false;
+  }
+
+  handlerKeyDown(event: KeyboardEvent): void {
+    const isEnter = event.code.includes('Enter');
+    const isEscape = event.code.includes('Escape');
+    const isArrowDownOrUp = event.code === 'ArrowUp' || event.code === 'ArrowDown';
+    if (!isEnter && !isArrowDownOrUp && !isEscape) {
+      return;
+    }
+    if (isEscape) {
+      return this.closeSurface();
+    }
+    const selectOptions = this.getSelectOptionList();
+    const selectedSelectOptionIndex = selectOptions.findIndex((select) => select.selected || document.activeElement === select);
+    if (isEnter) {
+      return this.handlerKeyEnter(selectOptions[selectedSelectOptionIndex]);
+    }
+
+    if (isArrowDownOrUp) {
+      return this.handlerKeyArrow(event, selectOptions, selectedSelectOptionIndex);    
+    }
+  }
+
+  private handlerKeyArrow(event: KeyboardEvent, selectOptions: (HTMLElement & OdsSelectOption)[], selectedSelectOptionIndex: number): void {
+    const focusSelectOption = (index: number) => {
+      selectOptions[index].focus();
+      selectOptions[index].setAttribute('selected', '');
+    }
+    const hasSelectedOption = selectedSelectOptionIndex !== -1;
+    if (hasSelectedOption) {
+      selectOptions[selectedSelectOptionIndex].removeAttribute('selected');
+      selectOptions[selectedSelectOptionIndex].blur();
+    }
+    if (event.code === 'ArrowUp') {
+      const index = hasSelectedOption ? selectedSelectOptionIndex - 1 : 0;
+      if (index < 0) {
+        this.component.setFocus();
+        return;
+      }
+      return focusSelectOption(index);
+    }
+    if (event.code === 'ArrowDown') {
+      const index = hasSelectedOption ? selectedSelectOptionIndex + 1 : 0;
+      if (index >= selectOptions.length) {
+        return;
+      }
+      return focusSelectOption(index);
+    }
+  }
+
+  private handlerKeyEnter(selectOption: OdsSelectOption): void {
+    if (!this.component.opened) {
+      return this.component.handleSelectClick();
+    }
+    return this.component.handleValueChange(new CustomEvent<OdsSelectOptionClickEventDetail>('odsSelectOptionClick', {
+      detail: {
+        value: selectOption?.value || null,
+      }
+    }));
+  }
+  
+  getSelectOptionList(): (HTMLElement & OdsSelectOption)[] {
+    return Array.from(this.component.el.querySelectorAll<OdsSelectOption & HTMLElement>('osds-select-option'));
   }
 }

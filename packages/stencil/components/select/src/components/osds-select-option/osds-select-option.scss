@@ -25,6 +25,12 @@
   }
 }
 
+:host(:focus-visible) {
+  outline-style: dotted;
+  outline-width: var(--ods-size-inset-02);
+  outline-offset: var(--ods-size-inset-02);
+}
+
 // apply the theme template for the component
 @include ods-theme-component() {
   @include osds-select-option-theme-color();

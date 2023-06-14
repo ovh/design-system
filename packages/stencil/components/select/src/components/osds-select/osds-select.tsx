@@ -15,7 +15,6 @@ import {
   OdsSelectOption, OdsSelectCreateDefaultOdsValidityState
 } from '@ovhcloud/ods-core';
 import { HTMLStencilElement } from '@stencil/core/internal';
-import { OsdsSelectOption } from '../osds-select-option/osds-select-option';
 import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libraries/stencil-core';
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 import { OdsSelectOptionClickEventDetail } from '@ovhcloud/ods-core/src/components/select/select-option/ods-select-option-click-event-detail';
@@ -150,65 +149,11 @@ export class OsdsSelect implements OdsSelect<OdsStencilMethods<OdsSelectMethods>
     });
   }
 
-  handleKeyDown(ev: KeyboardEvent): void {
-    ev.stopPropagation();
-    const isEnter = ev.code.includes('Enter');
-    const isEscape = ev.code.includes('Escape');
-    const isArrowDownOrUp = ev.code === 'ArrowUp' || ev.code === 'ArrowDown';
-    if (!isEnter && !isArrowDownOrUp && !isEscape) {
-      return;
-    }
-    if (isEscape) {
-      return this.controller.closeSurface();
-    }
-    const selectOptions = this.getSelectOptionList();
-    const selectedSelectOptionIndex = selectOptions.findIndex((select) => select.selected || document.activeElement === select);
-    if (isEnter) {
-      return this.handlerKeyEnter(selectOptions, selectedSelectOptionIndex);
-    }
-
-    if (isArrowDownOrUp) {
-      return this.handlerKeyArrow(ev, selectOptions, selectedSelectOptionIndex);    
-    }
+  handleKeyDown(event: KeyboardEvent): void {
+    event.stopPropagation();
+    this.controller.handlerKeyDown(event);
   }
 
-  handlerKeyArrow(ev: KeyboardEvent, selectOptions: (HTMLElement & OsdsSelectOption)[], selectedSelectOptionIndex: number): void {
-    const focusSelectOption = (index: number) => { 
-      selectOptions[index].focus();
-      selectOptions[index].setAttribute('selected', '');
-    }
-    const hasSelectedOption = selectedSelectOptionIndex !== -1;
-    if (hasSelectedOption) {
-      selectOptions[selectedSelectOptionIndex].removeAttribute('selected');
-      selectOptions[selectedSelectOptionIndex].blur();
-    }
-    if (ev.code === 'ArrowUp') {
-      const index = hasSelectedOption ? selectedSelectOptionIndex - 1 : 0;
-      if (index < 0) {
-       this.setFocus();
-       return;
-      }
-      focusSelectOption(index);
-    }
-    if (ev.code === 'ArrowDown') {
-      const index = hasSelectedOption ? selectedSelectOptionIndex + 1 : 0;
-      if (index >= selectOptions.length) {
-       return;
-      }
-      focusSelectOption(index);
-    }
-  }
-
-  handlerKeyEnter(selectOptions: OsdsSelectOption[], selectedSelectOptionIndex: number): void {
-    if (!this.opened) {
-      return this.handleSelectClick();
-    }
-    return this.handleValueChange(new CustomEvent<OdsSelectOptionClickEventDetail>('odsSelectOptionClick', {
-      detail: {
-        value: selectOptions[selectedSelectOptionIndex]?.value || null,
-      }
-    }));
-  }
   /**
    * @internal
    * @see OdsSelectMethods.clear
@@ -268,7 +213,7 @@ export class OsdsSelect implements OdsSelect<OdsStencilMethods<OdsSelectMethods>
   }
 
   private async updateSelectOptionStates(value?: OdsInputValue) {
-    const selectOptions = this.getSelectOptionList();
+    const selectOptions = this.controller.getSelectOptionList();
     let nbSelected = 0;
     for (const selectOption of selectOptions) {
       selectOption.selected = (value === selectOption.value) && !nbSelected ;
@@ -280,17 +225,13 @@ export class OsdsSelect implements OdsSelect<OdsStencilMethods<OdsSelectMethods>
     }
   }
 
-  private getSelectOptionList(): (HTMLElement & OsdsSelectOption)[] {
-    return Array.from(this.el.querySelectorAll<OsdsSelectOption & HTMLElement>('osds-select-option'));
-  }
-
   changeValue(value: OdsInputValue) {
     this.logger.log(`[changeValue=${this.value}]`, 'value changed', { value });
     this.value = value;
   }
 
   // Toggle overlay when we click on the Select.
-  private handleSelectClick() {
+  handleSelectClick(): void {
     this.logger.log('[handleSelectClick]', arguments, { validity: this.validityState });
     if (this.disabled) {
       return;
@@ -318,7 +259,7 @@ export class OsdsSelect implements OdsSelect<OdsStencilMethods<OdsSelectMethods>
   }
 
   @Listen('odsSelectOptionClick')
-  handleValueChange(event: CustomEvent<OdsSelectOptionClickEventDetail>) {
+  handleValueChange(event: CustomEvent<OdsSelectOptionClickEventDetail>): void {
     this.logger.log(`[odsSelectOptionClick=${this.value}]`, 'received odsSelectOptionClick event', { detail: event.detail });
     if (event.detail.value !== this.value) {
       this.changeValue(event.detail.value);

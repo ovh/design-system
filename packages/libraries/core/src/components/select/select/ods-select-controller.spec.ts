@@ -25,27 +25,27 @@ describe('spec:ods-select-controller', () => {
 
   describe('methods', () => {
     describe('methods:openSurface', () => {
-        it('should open surface with default value', () => {
-            setup();
-            controller.openSurface();
-            expect(component.opened).toBe(true);
-        });
+      it('should open surface with default value', () => {
+          setup();
+          controller.openSurface();
+          expect(component.opened).toBe(true);
+      });
 
-        it('should open surface', () => {
-            setup({
-                opened: false,
-            });
-            controller.openSurface();
-            expect(component.opened).toBe(true);
-        });
+      it('should open surface', () => {
+          setup({
+            opened: false,
+          });
+          controller.openSurface();
+          expect(component.opened).toBe(true);
+      });
 
-        it('should close surface', () => {
-            setup({
-                opened: true,
-            });
-            controller.closeSurface();
-            expect(component.opened).toBe(false);
-        });
+      it('should close surface', () => {
+          setup({
+            opened: true,
+          });
+          controller.closeSurface();
+          expect(component.opened).toBe(false);
+      });
     });
   });
 });

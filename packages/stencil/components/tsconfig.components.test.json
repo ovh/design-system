@@ -21,6 +21,7 @@
     "code/src",
     "collapsible/src",
     "content-addon/src",
+    "date-picker/src",
     "divider/src",
     "flag/src",
     "icon/src",

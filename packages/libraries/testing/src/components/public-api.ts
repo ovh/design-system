@@ -29,3 +29,4 @@ export * from './toggle/public-api';
 export * from './spinner/public-api';
 export * from './progress-bar/public-api';
 export * from './breadcrumb/public-api';
+export * from './date-picker/public-api';

@@ -1,0 +1,27 @@
+@import 'styles/osds-date-picker.mixins';
+@import 'styles/osds-date-picker.color';
+@import 'styles/osds-date-picker.size';
+@import 'styles/osds-date-picker.typography';
+@import '~@ovhcloud/ods-theming/color/ods-theming-color';
+@import '~@ovhcloud/ods-theming/ods-theme';
+@import '../../../../../../../node_modules/vanillajs-datepicker/dist/css/datepicker.min.css';
+
+// CSS targeted only for this component
+// /!\ for theming purposes, it has to be done in theming files
+// (i.e. packages/libraries/theming/...)
+:host {
+
+}
+
+.js-datepicker {
+  padding: 0.5em;
+  border: none;
+  border-radius: 0.25em;
+}
+
+// apply the theme template for the component
+@include ods-theme-component() {
+  @include osds-date-picker-theme-color();
+  @include osds-date-picker-theme-size();
+  @include osds-date-picker-theme-typography();
+}

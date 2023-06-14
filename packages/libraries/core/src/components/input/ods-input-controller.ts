@@ -195,6 +195,9 @@ export class OdsInputController extends OdsComponentController<OdsInput> {
   clear() {
     this.logger.debug('clear', this.component.inputEl?.value);
     this.component.value = '';
+    if (this.component.inputEl) {
+      this.component.inputEl.value = '';
+    }
   }
 
   hide() {

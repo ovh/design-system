@@ -130,7 +130,7 @@ describe('e2e:osds-input', () => {
 
   describe('attribute:masked', () => {
 
-    it('should hide input field content', async () => {
+    it('should change input type to password when masked is set', async () => {
       await setup({ attributes: { type: OdsInputType.text, value: 'Just ODS being ahead', masked: true } });
       
       // Verify eye icon/button is visible
@@ -138,10 +138,9 @@ describe('e2e:osds-input', () => {
       expect(type).toBe(OdsInputType.password);
     });
 
-    it('should display input field content', async () => {
+    it('should change input type to text when masked is set', async () => {
       await setup({ attributes: { type: OdsInputType.password, value: 'Just ODS being ahead', masked: true } });
       
-      // Verify eye icon/button is visible
       const type = await inputElement.getProperty('type');
       expect(type).toBe(OdsInputType.text);
     });
@@ -149,7 +148,6 @@ describe('e2e:osds-input', () => {
     it('should display hideable icon/button (eye open)', async () => {
       await setup({ attributes: { type: OdsInputType.password, value: 'Just ODS being ahead', hideable: true } });
       
-      // Verify eye icon/button is visible
       const eyeIcon = await page.find('osds-input >>> osds-icon[name="eye-open"]');
       expect(eyeIcon).not.toBeNull();
     });

@@ -34,7 +34,7 @@ describe('spec:ods-input-default-attributes', () => {
   it('loading should be false', () => {
     expect(odsInputDefaultAttributes.loading).toBe(false);
   });
-  it('masked should be false', () => {
+  it('masked should be true', () => {
     expect(odsInputDefaultAttributes.masked).toBe(true);
   });
   it('max should not be defined', () => {

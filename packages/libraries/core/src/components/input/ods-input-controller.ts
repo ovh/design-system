@@ -79,9 +79,8 @@ export class OdsInputController extends OdsComponentController<OdsInput> {
       if (this.component.value) {
         if (typeof this.component.value === 'number') {
           return this.component.value >= forbiddenValue.min && this.component.value <= forbiddenValue.max;
-        } else {
-          return true;
         }
+        return true;
       }
       return false;
     })

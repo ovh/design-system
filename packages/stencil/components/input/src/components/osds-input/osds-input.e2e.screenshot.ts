@@ -36,6 +36,13 @@ describe('e2e:osds-input', () => {
     el = await page.find('osds-input');
   }
 
+  const stopSpinnerAnimation = async (page: E2EPage) => {
+    await page.evaluate(() => {
+      const spinnerEl = document.querySelector('osds-input')?.shadowRoot?.querySelector('osds-spinner')?.shadowRoot?.querySelector('.spinner > svg') as HTMLElement;
+      spinnerEl.style.setProperty('animation', 'none');
+    });
+  }
+
   const screenshotActions = [
     {
       // Will display the default input
@@ -120,7 +127,7 @@ describe('e2e:osds-input', () => {
         el.setProperty('masked', true);
       },
     }, {
-      // Will display the input with its type password and masked being true (so passord should be visible)
+      // Will display the input with its type password and masked being true (so password should be visible)
       actionDescription: 'password & masked',
       action: () => {
         el.setProperty('type', OdsInputType.password);
@@ -128,7 +135,7 @@ describe('e2e:osds-input', () => {
         el.setProperty('masked', true);
       },
     }, {
-      // Will display the input with its type password and clearable being true (so passord should be visible)
+      // Will display the input with its type password and clearable being true (so password should be visible)
       actionDescription: 'password & clearable',
       action: () => {
         el.setProperty('type', OdsInputType.password);
@@ -144,11 +151,7 @@ describe('e2e:osds-input', () => {
           page.waitForChanges()
         ]);
 
-        await page.evaluate(() => {
-          // Stop the animation to have a stable screenshot
-          const spinnerEl = document.querySelector('osds-input')?.shadowRoot?.querySelector('osds-spinner')?.shadowRoot?.querySelector('.spinner > svg') as HTMLElement;
-          spinnerEl.style.setProperty('animation', 'none');
-        });
+        await stopSpinnerAnimation(page);
       },
     }, {
       // Will display the input with an icon and a spinner
@@ -160,11 +163,7 @@ describe('e2e:osds-input', () => {
           page.waitForChanges()
         ]);
 
-        await page.evaluate(() => {
-          // Stop the animation to have a stable screenshot
-          const spinnerEl = document.querySelector('osds-input')?.shadowRoot?.querySelector('osds-spinner')?.shadowRoot?.querySelector('.spinner > svg') as HTMLElement;
-          spinnerEl.style.setProperty('animation', 'none');
-        });
+        await stopSpinnerAnimation(page);
       },
     }, {
       // Will display a disabled input with contrasted colors
@@ -182,11 +181,7 @@ describe('e2e:osds-input', () => {
           page.waitForChanges()
         ]);
 
-        await page.evaluate(() => {
-          // Stop the animation to have a stable screenshot
-          const spinnerEl = document.querySelector('osds-input')?.shadowRoot?.querySelector('osds-spinner')?.shadowRoot?.querySelector('.spinner > svg') as HTMLElement;
-          spinnerEl.style.setProperty('animation', 'none');
-        });
+        await stopSpinnerAnimation(page);
       },
     }, {
       // Will display a disabled input with contrasted colors

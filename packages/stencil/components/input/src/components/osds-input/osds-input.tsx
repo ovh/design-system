@@ -323,6 +323,8 @@ export class OsdsInput implements OdsInput<OdsStencilMethods<OdsInputMethods>, O
     /** Using `ariaLabelledby` if it's defined, else create a new ID based on `inputId` */
     const labelId = ariaLabelledby ? ariaLabelledby : `${inputId}-label`;
 
+    const isPassword = type === 'password';
+
     return (
       /** Main styling is applied to Host, so that the icons are integrated inside the component */
       <Host {...{
@@ -356,7 +358,7 @@ export class OsdsInput implements OdsInput<OdsStencilMethods<OdsInputMethods>, O
             step,
             tabindex: '-1',
             /** Handling password masking options */
-            type: type === 'password' && !masked 
+            type: isPassword && !masked 
               ? 'text' 
               : type,
             value: value?.toString() || '',
@@ -376,7 +378,7 @@ export class OsdsInput implements OdsInput<OdsStencilMethods<OdsInputMethods>, O
         }
 
         {/** If Component isn't loading & hideable, display eye icon to hide input content */
-          type === 'password' && !loading && (
+          isPassword && !loading && (
             <osds-icon
               {...{
                 ariaName: `${masked ? OdsIconName.EYE_OPEN : OdsIconName.EYE_CLOSED} icon`,

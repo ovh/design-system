@@ -24,7 +24,6 @@ export class OdsInputController extends OdsComponentController<OdsInput> {
    * @param newValue - value of the HTML input
    */
   private handleInputValue(newValue: HTMLInputElement['value']): void {
-    this.logger.debug('handleInputValue', this.component.value);
     if(!this.component.disabled) {
       if (newValue === '') {
         this.component.value = newValue;
@@ -47,7 +46,6 @@ export class OdsInputController extends OdsComponentController<OdsInput> {
    * @param inputEl - vanilla input to analyze (may undefined if not already in the DOM during initialization)
    */
   getInputValidity(inputEl?: HTMLInputElement): OdsInputValidityState {
-    this.logger.debug('getInputValidity', this.component.value);
     const forbiddenValue = this.hasForbiddenValue();
     return {
       ...(inputEl ? {
@@ -71,7 +69,6 @@ export class OdsInputController extends OdsComponentController<OdsInput> {
    * it returns true if the value is between a min/max from the forbidden values.
    */
   private hasForbiddenValue(): boolean {
-    this.logger.debug('hasForbiddenValue', this.component.value);
     return this.component.forbiddenValues.some(forbiddenValue => {
       if (typeof forbiddenValue === 'number') {
         return `${forbiddenValue}` === `${this.component.value}`;
@@ -87,7 +84,6 @@ export class OdsInputController extends OdsComponentController<OdsInput> {
   }
 
   onFormControlChange(formControl?: OdsFormControl<OdsInputValidityState>) {
-    this.logger.debug('onFormControlChange', this.component.value);
     this.logger.log(`[input=${this.component.value}]`, 'onFormControlChange', formControl, formControl && formControl.id);
     if (formControl) {
       formControl.register(this.component);
@@ -95,36 +91,30 @@ export class OdsInputController extends OdsComponentController<OdsInput> {
   }
 
   beforeInit(): void {
-    this.logger.debug('beforeInit', this.component.value);
     this.onFormControlChange(this.component.formControl);
     this.assertValue(this.component.value);
     this.onDefaultValueChange(/*this.defaultValue*/);
     if (!this.component.value && this.component.value !== 0) {
       this.component.value = this.component.defaultValue;
     }
-    this.logger.debug('beforeInit 2', this.component.value);
   }
 
   onValueChange(value: OdsInputValue, oldValue?: OdsInputValue): void {
-    this.logger.debug('onValueChange', this.component.value);
     this.logger.debug(`[input=${this.component.value}]`, 'value changed', { value, oldValue });
     this.assertValue(value);
     this.component.emitChange(value, oldValue);
   }
 
   assertValue(value: OdsInputValue): void {
-    this.logger.debug('assertValue', this.component.value);
     this.validateValue(value as number);
     this.updateInputCustomValidation();
   }
 
   onDefaultValueChange(defaultValue?: OdsInputValue) {
-    this.logger.debug('onDefaultValueChange', this.component.value);
     this.logger.debug(`[input=${this.component.value}]`, 'defaultValue', defaultValue);
   }
 
   private validateValue(value?: number) {
-    this.logger.debug('validateValue', this.component.value);
     if (!value && value !== 0) {
       this.logger.warn('[OsdsInput] The value attribute must be a correct number');
     }
@@ -145,7 +135,6 @@ export class OdsInputController extends OdsComponentController<OdsInput> {
   }
 
   private updateInputCustomValidation() {
-    this.logger.debug('updateInputCustomValidation', this.component.value);
     if (this.hasForbiddenValue()) {
       this.component.inputEl?.setCustomValidity('forbiddenValue')
     } else {

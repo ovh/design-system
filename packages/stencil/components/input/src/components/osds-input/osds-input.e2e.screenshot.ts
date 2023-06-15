@@ -44,10 +44,6 @@ describe('e2e:osds-input', () => {
         // nothing
       },
     }, {
-      // Will display the input with an eye icon to show/hide the value
-      actionDescription: 'hideable',
-      action: () => el.setProperty('hideable', true),
-    }, {
       // Will display the input with a cross icon to clear the input
       actionDescription: 'clearable',
       action: () => el.setProperty('clearable', true),
@@ -60,25 +56,10 @@ describe('e2e:osds-input', () => {
       actionDescription: 'icon',
       action: () => el.setProperty('icon', 'ovh'),
     }, {
-      // Will display the input with an eye icon to show/hide the value and a cross icon to clear the input
-      actionDescription: 'clearable & hideable',
-      action: () => {
-        el.setProperty('clearable', true);
-        el.setProperty('hideable', true);
-      },
-    }, {
       // Will display the input with an eye icon to show/hide the value and an icon
-      actionDescription: 'hideable & icon',
-      action: () => {
-        el.setProperty('hideable', true);
-        el.setProperty('icon', 'ovh');
-      },
-    }, {
-      // Will display the input with an eye icon to show/hide the value, a cross icon to clear the input and an icon
-      actionDescription: 'clearable & hideable & icon',
+      actionDescription: 'clearable & icon',
       action: () => {
         el.setProperty('clearable', true);
-        el.setProperty('hideable', true);
         el.setProperty('icon', 'ovh');
       },
     }, {
@@ -147,19 +128,12 @@ describe('e2e:osds-input', () => {
         el.setProperty('masked', true);
       },
     }, {
-      // Will display the input with its type password and an eye icon to show/hide the value
-      actionDescription: 'password & hideable',
+      // Will display the input with its type password and clearable being true (so passord should be visible)
+      actionDescription: 'password & clearable',
       action: () => {
         el.setProperty('type', OdsInputType.password);
-        el.setProperty('hideable', true);
-      },
-    }, {
-      // Will display the input with its type password, an eye icon to show/hide the value and masked being true (so passord should be visible)
-      actionDescription: 'password & hideable & masked',
-      action: () => {
-        el.setProperty('type', OdsInputType.password);
-        el.setProperty('hideable', true);
-        el.setProperty('masked', true);
+        el.setProperty('value', 'ods!!!');
+        el.setProperty('clearable', true);
       },
     }, {
       // Will display the input with a spinner
@@ -193,6 +167,12 @@ describe('e2e:osds-input', () => {
         });
       },
     }, {
+      // Will display a disabled input with contrasted colors
+      actionDescription: 'disabled',
+      action: () => {
+        el.setProperty('disabled', true);
+      },
+    }, {
       // Will display a disabled input with a spinner
       actionDescription: 'loading & disabled',
       action: async () => {
@@ -214,6 +194,28 @@ describe('e2e:osds-input', () => {
       action: () => {
         el.setProperty('contrasted', true);
         el.setProperty('disabled', true);
+      },
+    }, {
+      // Will display a disabled input with contrasted colors
+      actionDescription: 'disabled & icon',
+      action: () => {
+        el.setProperty('disabled', true);
+        el.setProperty('icon', 'ovh');
+      },
+    }, {
+      // Will display a disabled input with contrasted colors
+      actionDescription: 'disabled & clearable',
+      action: () => {
+        el.setProperty('disabled', true);
+        el.setProperty('clearable', true);
+      },
+    }, {
+      // Will display a disabled input with contrasted colors
+      actionDescription: 'disabled & value (type text)',
+      action: () => {
+        el.setProperty('disabled', true);
+        el.setProperty('type', OdsInputType.text);
+        el.setProperty('value', 'Just ODS being ahead');
       },
     }, {
       // Will display an input with an error

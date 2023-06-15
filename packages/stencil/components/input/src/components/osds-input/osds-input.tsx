@@ -84,9 +84,6 @@ export class OsdsInput implements OdsInput<OdsStencilMethods<OdsInputMethods>, O
   /** @see OdsInputAttributes.formControl */
   @Prop({ reflect: true }) formControl?: OdsFormControl<OdsInputValidityState> = odsInputDefaultAttributes.formControl;
 
-  /** @see OdsInputAttributes.hideable */
-  @Prop({ reflect: true }) hideable?: boolean = odsInputDefaultAttributes.hideable;
-
   /** @see OdsInputAttributes.icon */
   @Prop({ reflect: true }) icon?: OdsIconName = odsInputDefaultAttributes.icon;
 
@@ -307,7 +304,6 @@ export class OsdsInput implements OdsInput<OdsStencilMethods<OdsInputMethods>, O
       disabled,
       hasError,
       hasFocus,
-      hideable,
       icon,
       inputId,
       inputTabindex,
@@ -344,7 +340,6 @@ export class OsdsInput implements OdsInput<OdsStencilMethods<OdsInputMethods>, O
             ariaLabelledby: labelId || null,
             disabled,
             contrasted,
-            hideable,
             id: inputId,
             masked,
             max,
@@ -361,10 +356,8 @@ export class OsdsInput implements OdsInput<OdsStencilMethods<OdsInputMethods>, O
             step,
             tabindex: '-1',
             /** Handling password masking options */
-            type: type === 'password' && masked ? 
-              'text' 
-              : masked ? 
-              'password' 
+            type: type === 'password' && !masked 
+              ? 'text' 
               : type,
             value: value?.toString() || '',
           }}
@@ -383,17 +376,11 @@ export class OsdsInput implements OdsInput<OdsStencilMethods<OdsInputMethods>, O
         }
 
         {/** If Component isn't loading & hideable, display eye icon to hide input content */
-          hideable && !loading && (
+          type === 'password' && !loading && (
             <osds-icon
               {...{
-                ariaName: `${
-                  type === 'password' ? 
-                  (masked ? OdsIconName.EYE_CLOSED : OdsIconName.EYE_OPEN) 
-                  : (masked ? OdsIconName.EYE_OPEN : OdsIconName.EYE_CLOSED)
-                } icon`,
-                name: type === 'password' ? 
-                  (masked ? OdsIconName.EYE_CLOSED : OdsIconName.EYE_OPEN) 
-                  : (masked ? OdsIconName.EYE_OPEN : OdsIconName.EYE_CLOSED),
+                ariaName: `${masked ? OdsIconName.EYE_OPEN : OdsIconName.EYE_CLOSED} icon`,
+                name: masked ? OdsIconName.EYE_OPEN : OdsIconName.EYE_CLOSED,
                 size: OdsIconSize.sm,
                 color,
                 /** Toggles hide(), which will either hide or display the inputs content by switching masked attribute */

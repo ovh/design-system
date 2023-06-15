@@ -50,17 +50,13 @@ const storyParams = {
     category: 'Misc',
     defaultValue: false,
   },
-  hideable: {
-    category: 'Misc',
-    defaultValue: false,
-  },
   loading: {
     category: 'Misc',
     defaultValue: false,
   },
   masked: {
     category: 'Misc',
-    defaultValue: false,
+    defaultValue: true,
   },
   contrasted: {
     category: 'Misc',
@@ -170,12 +166,12 @@ type ValidationProps = {
 
 /* All Inputs */
 
-type Attributes = 'default' | 'hideable' | 'clearable' | 'icon="ovh"' | 'clearable hideable' | 'hideable icon="ovh"' | 'clearable icon="ovh"' | 'clearable hideable icon="ovh"' | 'value="ODS ahead"' | 'value="ODS ahead" masked' | 'hideable value="ODS ahead"' | 'hideable value="ODS ahead" masked' | 'loading' | 'loading icon="ovh"' | 'loading disabled' | 'loading disabled icon="ovh"';
+type Attributes = 'default' | 'clearable' | 'icon="ovh"' | 'clearable icon="ovh"' | 'value="ODS ahead"' | 'value="ODS ahead" masked' | 'loading' | 'loading icon="ovh"' | 'loading disabled' | 'loading disabled icon="ovh"';
 
 const attributeList: Attributes[] = [
-  'default', 'hideable', 'clearable', 'icon="ovh"', 'clearable hideable', 'hideable icon="ovh"', 'clearable icon="ovh"', 
-  'clearable hideable icon="ovh"', 'value="ODS ahead"', 'value="ODS ahead" masked', 'hideable value="ODS ahead"', 
-  'hideable value="ODS ahead" masked', 'loading', 'loading icon="ovh"', 'loading disabled', 'loading disabled icon="ovh"'
+  'default', 'clearable', 'icon="ovh"', 'clearable icon="ovh"', 'value="ODS ahead"', 
+  'value="ODS ahead" masked', 'loading', 'loading icon="ovh"', 'loading disabled', 
+  'loading disabled icon="ovh"'
 ];
 
 const createTable = (contrasted: boolean, headerList: string[], itemMapper: (attribute: string) => string) => `

@@ -79,59 +79,10 @@ describe('e2e:osds-input', () => {
     });
   });
 
-  describe('attribute:hideable', () => {
-
-    it('should display hideable icon/button (eye closed)', async () => {
-      await setup({ attributes: { type: OdsInputType.text, value: 'Just ODS being ahead', hideable: true } });
-      
-      // Verify eye icon/button is visible
-      const eyeIcon = await page.find('osds-input >>> osds-icon[name="eye-closed"]');
-      expect(eyeIcon).not.toBeNull();
-    });
-
-    it('should display hideable icon/button (eye open)', async () => {
-      await setup({ attributes: { type: OdsInputType.password, value: 'Just ODS being ahead', hideable: true } });
-      
-      // Verify eye icon/button is visible
-      const eyeIcon = await page.find('osds-input >>> osds-icon[name="eye-open"]');
-      expect(eyeIcon).not.toBeNull();
-    });
-
-    it('should hide the input value when clicked', async () => {
-      // Setup component with clearable attribute and some initial value
-      await setup({ attributes: { type: OdsInputType.text, value: 'Just ODS being ahead', hideable: true } });
-  
-      // Click cross icon/button
-      const eyeIcon = await page.find('osds-input >>> osds-icon[name="eye-closed"]');
-      expect(eyeIcon).not.toBeNull();
-      await eyeIcon.click();
-      await page.waitForChanges();
-  
-      // Verify input value is cleared
-      const type = await inputElement.getProperty('type');
-      expect(type).toBe(OdsInputType.password);
-    });
-
-    it('should display the input value when clicked', async () => {
-      // Setup component with clearable attribute and some initial value
-      await setup({ attributes: { type: OdsInputType.text, value: 'Just ODS being ahead', hideable: true, masked: true } });
-  
-      // Click cross icon/button
-      const eyeIcon = await page.find('osds-input >>> osds-icon[name="eye-open"]');
-      expect(eyeIcon).not.toBeNull();
-      await eyeIcon.click();
-      await page.waitForChanges();
-  
-      // Verify input value is cleared
-      const type = await inputElement.getProperty('type');
-      expect(type).toBe(OdsInputType.text);
-    });
-  });
-
   describe('attribute:masked', () => {
 
     it('should change input type to password when masked is set', async () => {
-      await setup({ attributes: { type: OdsInputType.text, value: 'Just ODS being ahead', masked: true } });
+      await setup({ attributes: { type: OdsInputType.password, value: 'Just ODS being ahead' } });
       
       // Verify eye icon/button is visible
       const type = await inputElement.getProperty('type');
@@ -139,14 +90,14 @@ describe('e2e:osds-input', () => {
     });
 
     it('should change input type to text when masked is set', async () => {
-      await setup({ attributes: { type: OdsInputType.password, value: 'Just ODS being ahead', masked: true } });
+      await setup({ attributes: { type: OdsInputType.password, value: 'Just ODS being ahead', masked: false } });
       
       const type = await inputElement.getProperty('type');
       expect(type).toBe(OdsInputType.text);
     });
 
-    it('should display hideable icon/button (eye open)', async () => {
-      await setup({ attributes: { type: OdsInputType.password, value: 'Just ODS being ahead', hideable: true } });
+    it('should display masked icon/button (eye open)', async () => {
+      await setup({ attributes: { type: OdsInputType.password, value: 'Just ODS being ahead' } });
       
       const eyeIcon = await page.find('osds-input >>> osds-icon[name="eye-open"]');
       expect(eyeIcon).not.toBeNull();
@@ -287,23 +238,8 @@ describe('e2e:osds-input', () => {
 
   describe('method:hide', () => {
 
-    it('should change input type to password', async () => {
-      await setup({ attributes: { type: OdsInputType.number, value: 3 } });
-      
-      // Check initial type of the input
-      let type = await inputElement.getProperty('type');
-      expect(type).not.toBe('password');
-  
-      // Call hide method and check the type
-      await el.callMethod('hide');
-      await page.waitForChanges();
-  
-      type = await inputElement.getProperty('type');
-      expect(type).toBe('password');
-    });
-
-    it('should change hidden input type to its normal type', async () => {
-      await setup({ attributes: { type: OdsInputType.text, value: 'Just ODS being ahead', masked: true } });
+    it('should switch input type between password and text', async () => {
+      await setup({ attributes: { type: OdsInputType.password, value: 'why-is-ods-so-awesome17' } });
       
       // Check initial type of the input
       let type = await inputElement.getProperty('type');
@@ -315,6 +251,12 @@ describe('e2e:osds-input', () => {
   
       type = await inputElement.getProperty('type');
       expect(type).toBe('text');
+
+      await el.callMethod('hide');
+      await page.waitForChanges();
+
+      type = await inputElement.getProperty('type');
+      expect(type).toBe('password');
     });
   });
 

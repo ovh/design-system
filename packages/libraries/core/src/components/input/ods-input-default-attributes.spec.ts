@@ -28,9 +28,6 @@ describe('spec:ods-input-default-attributes', () => {
   it('flex should be false', () => {
     expect(odsInputDefaultAttributes.flex).toBe(false);
   });
-  it('hideable should be false', () => {
-    expect(odsInputDefaultAttributes.hideable).toBe(false);
-  });
   it('label should not be defined', () => {
     expect(odsInputDefaultAttributes.label).toBe(undefined);
   });
@@ -38,7 +35,7 @@ describe('spec:ods-input-default-attributes', () => {
     expect(odsInputDefaultAttributes.loading).toBe(false);
   });
   it('masked should be false', () => {
-    expect(odsInputDefaultAttributes.masked).toBe(false);
+    expect(odsInputDefaultAttributes.masked).toBe(true);
   });
   it('max should not be defined', () => {
     expect(odsInputDefaultAttributes.max).toBe(undefined);

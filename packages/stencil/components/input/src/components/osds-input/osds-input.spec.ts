@@ -142,17 +142,6 @@ describe('spec:osds-input', () => {
       });
     });
 
-    describe('hideable', () => {
-      odsUnitTestAttribute<OdsInputAttributes, 'hideable'>({
-        ...getAttributeContextOptions<OdsInputAttributes, OsdsInput, 'hideable'>({
-          name: 'hideable',
-          list: [false, true],
-          defaultValue: odsInputDefaultAttributes.hideable,
-          ...config
-        })
-      });
-    });
-
     describe('loading', () => {
       odsUnitTestAttribute<OdsInputAttributes, 'loading'>({
         ...getAttributeContextOptions<OdsInputAttributes, OsdsInput, 'loading'>({

@@ -172,6 +172,7 @@ export class OcdkSurfaceController<StrategyConfig = any> {
         this.dimensions = this.adapter.getInnerDimensions();
         this.maxDimensions = this.adapter.getMaxDimensions();
         this.itemHeight = this.adapter.autoDetectItemHeight();
+        this.itemWidth = this.adapter.autoDetectItemWidth();
         this.autoPosition();
         this.adapter.addClass(ocdkSurfaceCssClasses.OPEN);
         const duration = this.config.ANIMATIONS[ this.animation ].TRANSITION_CLOSE_DURATION;
@@ -298,7 +299,6 @@ export class OcdkSurfaceController<StrategyConfig = any> {
       }
     }
 
-
     const originCorner = positionComputed.cornerPoints.anchor;
     this.logger.log('[autoposition]', { computedOriginCorner: originCorner });
 
@@ -315,7 +315,7 @@ export class OcdkSurfaceController<StrategyConfig = any> {
 
     if (this.maxDimensions.maxWidth !== null && maxSurfaceWidth >= this.maxDimensions.maxWidth) {
       maxSurfaceWidth = this.maxDimensions.maxWidth;
-      this.logger.info('[autoposition]', 'computed maxWidth oversize the css max-height of the surface. set to the max to the css value', { maxSurfaceWidth });
+      this.logger.info('[autoposition]', 'computed maxWidth oversize the css max-width of the surface. set to the max to the css value', { maxSurfaceWidth });
     }
 
     const verticalAlignment = this.getVerticalAlignment(appliers);
@@ -452,7 +452,6 @@ export class OcdkSurfaceController<StrategyConfig = any> {
     const foundPositionStrategy = this.strategy.getPositions()
       .find(pos => pos.cornerPoints.anchor === normalizedCornerPoints.anchor && pos.cornerPoints.origin === normalizedCornerPoints.origin);
     const defaultPositionStrategy = this.strategy.getPositions()[ 0 ];
-    console.log("foundPositionStrategy", foundPositionStrategy);
 
     if (foundPositionStrategy) {
       return foundPositionStrategy;

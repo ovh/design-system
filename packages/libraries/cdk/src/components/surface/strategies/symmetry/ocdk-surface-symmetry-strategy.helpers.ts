@@ -32,14 +32,6 @@ export class OcdkSurfaceSymmetryStrategyHelpers {
     return opt.inspections.comfort.availableBottom;
   }
 
-  /**
-   * fallback height applicable for the corner points :
-   * - anchor: TOP_LEFT origin: BOTTOM_LEFT
-   * - anchor: TOP_RIGHT origin: BOTTOM_RIGHT
-   * @param opt - options with computed spacings
-   * @param availableHeightComfort - total height available in comfort margin mode
-   * @param availableHeightLimit - total height available in limit margin mode
-   */
   static symmetryFallbackMaxHeightTxBx(opt: OcdkSurfaceMaxHeightOpt<OcdkSurfaceSymmetryConfig>, availableHeightComfort: number, availableHeightLimit: number) {
     if (opt.measurements.surfaceSize.height > availableHeightComfort) {
       this.loggerSymmetryTxBx.log('[maxHeight] vertical surface height is greater than viewport minus MARGIN_TO_EDGE');
@@ -80,14 +72,6 @@ export class OcdkSurfaceSymmetryStrategyHelpers {
     return opt.inspections.comfort.availableRight;
   }
 
-  /**
-   * fallback width applicable for the corner points :
-   * - anchor: TOP_LEFT origin: TOP_RIGHT
-   * - anchor: BOTTOM_LEFT origin: BOTTOM_RIGHT
-   * @param opt - options with computed spacings
-   * @param availableWidthComfort - total width available in comfort margin mode
-   * @param availableWidthLimit - total width available in limit margin mode
-   */
   static symmetryFallbackMaxWidthLxRx(opt: OcdkSurfaceMaxHeightOpt<OcdkSurfaceSymmetryConfig>, availableWidthComfort: number, availableWidthLimit: number) {
     if (opt.measurements.surfaceSize.width > availableWidthComfort) {
       this.loggerSymmetryLxRx.log('[maxWidth] horizontal surface width is greater than viewport minus MARGIN_TO_EDGE');
@@ -130,7 +114,6 @@ export class OcdkSurfaceSymmetryStrategyHelpers {
     this.loggerSymmetryBxTx.log('[verticalOffset] vertical surface height is less than or equal to viewport minus MARGIN_TO_EDGE');
     return verticalOffset;
   }
-
 
   static symmetryFallbackVerticalOffsetTxBx(opt: OcdkSurfaceAvailableSpaceFct2<OcdkSurfaceSymmetryConfig>, availableHeightComfort: number, availableHeightLimit: number) {
     if (opt.measurements.surfaceSize.height > availableHeightComfort) {

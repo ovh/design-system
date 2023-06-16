@@ -17,7 +17,6 @@ import { OcdkSurfaceOnePositionStrategy } from '../../core/ocdk-surface-one-posi
  * ```
  */
 export function ocdkSurfaceSymmetryBrBl(): OcdkSurfaceOnePositionStrategy<OcdkSurfaceSymmetryConfig> {
-  console.log('ocdkSurfaceSymmetryBrBl is called');
   const loggerSymmetry = new OcdkLogger('ocdkSurfaceSymmetryBrBl');
   const helpers = OcdkSurfaceSymmetryStrategyHelpers;
 
@@ -58,7 +57,7 @@ export function ocdkSurfaceSymmetryBrBl(): OcdkSurfaceOnePositionStrategy<OcdkSu
           maxHeight: (opt) => opt.measurements.surfaceSize.height,
           maxWidth: (opt) => helpers.symmetryFallbackMaxWidthRxLx(opt, opt.inspections.comfort.availableRight, opt.inspections.limit.availableRight),
           verticalOffset: () => 0,
-          verticalAlignment: 'top',
+          verticalAlignment: 'bottom',
           horizontalOffset: (opt) => helpers.symmetryFallbackHorizontalOffsetRxLx(opt, opt.inspections.comfort.availableRight, opt.inspections.limit.availableRight),
           horizontalAlignment: 'left'
         }
@@ -67,11 +66,9 @@ export function ocdkSurfaceSymmetryBrBl(): OcdkSurfaceOnePositionStrategy<OcdkSu
         loggerSymmetry.log('[COMPUTE] position BOTTOM_RIGHT BOTTOM_LEFT');
         // no enough available space on right, trigger a position change to left instead
         if (opt.measurements.surfaceSize.width > opt.inspections.comfort.availableRight) {
-          console.log('opt.measurements.surfaceSize.width > opt.inspections.comfort.availableRight');
           // already in a switch process and this new position isn't good enough, go to the fallback of the last strategy position
           if (opt.switchFrom && isOcdkSurfaceStrategyComputeResultPosition(opt.switchFrom) && opt.switchFrom.position) {
             loggerSymmetry.log('[COMPUTE] already switched off but no enough space: continue with the fallback of br-bl', opt.switchFrom);
-            console.log('fallback from br-bl', opt.switchFrom.position.STRATEGIES.FALLBACK);
             return opt.switchFrom.position.STRATEGIES.FALLBACK;
           }
           return {

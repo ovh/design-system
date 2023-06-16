@@ -26,6 +26,7 @@ export interface OcdkSurfaceAdapter {
   setMaxWidth(width: string): void;
   setMinWidth(width: string): void;
   autoDetectItemHeight(): number;
+  autoDetectItemWidth(): number;
   setTransformOrigin(origin: string): void;
   getOwnerDocument?(): Document;
 

@@ -53,7 +53,6 @@ export class OcdkSurfaceSelectExample {
     this.syncPosition();
   }
 
-
   // Hide overlay when we click anywhere else in the window.
   @Listen('click', { target: 'window' })
   checkForClickOutside(ev: PointerEvent) {
@@ -97,7 +96,7 @@ export class OcdkSurfaceSelectExample {
         <ocdk-surface
           animation={this.animation ?? 'slipping'}
           animated={this.animation !== 'none'}
-          /*corners={[OcdkSurfaceCorner.BOTTOM_START, OcdkSurfaceCorner.TOP_START]}*/
+          corners={[OcdkSurfaceCorner.BOTTOM_START, OcdkSurfaceCorner.TOP_START]}
           ref={(el: HTMLElement) => {
             if (ocdkIsSurface(el)) {
               this.surface = el as OcdkSurface;
@@ -140,6 +139,7 @@ export class OcdkSurfaceSelectExample {
     }
 
     switch (this.position.toUpperCase()) {
+      // two methods exist to set corners
       case OcdkSurfaceSelectPosition.TOP:
         this.surface.setAnchorCorner(OcdkSurfaceCorner.TOP_LEFT);
         this.surface.setOriginCorner(OcdkSurfaceCorner.BOTTOM_LEFT);

@@ -65,11 +65,9 @@ export function ocdkSurfaceSymmetryTlTr(): OcdkSurfaceOnePositionStrategy<OcdkSu
         loggerSymmetry.log('[COMPUTE] position TOP_LEFT TOP_RIGHT');
         // no enough available space on left, trigger a position change to right instead
         if (opt.measurements.surfaceSize.width > opt.inspections.comfort.availableLeft) {
-          console.log('opt.measurements.surfaceSize.width > opt.inspections.comfort.availableLeft');
           // already in a switch process and this new position isn't good enough, go to the fallback of the last strategy position
           if (opt.switchFrom && isOcdkSurfaceStrategyComputeResultPosition(opt.switchFrom) && opt.switchFrom.position) {
             loggerSymmetry.log('[COMPUTE] already switched off but no enough space: continue with the fallback of tl-tr', opt.switchFrom);
-            console.log('fallback from tl-tr', opt.switchFrom.position.STRATEGIES.FALLBACK);
             return opt.switchFrom.position.STRATEGIES.FALLBACK;
           }
           return {

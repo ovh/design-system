@@ -70,11 +70,9 @@ export function ocdkSurfaceSymmetryBrTr(): OcdkSurfaceOnePositionStrategy<OcdkSu
         loggerSymmetry.log('[COMPUTE] position BOTTOM_RIGHT TOP_RIGHT');
         // no enough available space on bottom, trigger a position change to top instead
         if (opt.measurements.surfaceSize.height > opt.inspections.comfort.availableBottom) {
-
           // already in a switch process and this new position isn't good enough, go to the fallback of the last strategy position
           if (opt.switchFrom && isOcdkSurfaceStrategyComputeResultPosition(opt.switchFrom) && opt.switchFrom.position) {
-            loggerSymmetry.log('[COMPUTE] already switched off but no enough space: continue with the fallback', opt.switchFrom);
-            console.log('fallback from br-tr', opt.switchFrom.position.STRATEGIES.FALLBACK);
+            loggerSymmetry.log('[COMPUTE] already switched off but no enough space: continue with the fallback of br-tr', opt.switchFrom);
             return opt.switchFrom.position.STRATEGIES.FALLBACK;
           }
           return {

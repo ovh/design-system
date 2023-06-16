@@ -77,7 +77,7 @@ export class OcdkSurfaceCustomStrategyExample implements OcdkSurfaceStrategyDefi
             // use analyzed spaces (limit and margin) and fill final values
             appliers: {
               maxHeight: () => 100,
-              maxWidth: () => 100,
+              maxWidth: () => 200,
               verticalOffset: () => 0,
               verticalAlignment: 'top',
               horizontalOffset: () => 0,

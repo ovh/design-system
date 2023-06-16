@@ -16,7 +16,6 @@ import { OcdkSurfaceOnePositionStrategy } from '../../core/ocdk-surface-one-posi
  * ```
  */
 export function ocdkSurfaceSymmetryTrTl(): OcdkSurfaceOnePositionStrategy<OcdkSurfaceSymmetryConfig> {
-  console.log('ocdkSurfaceSymmetryTrTl is called');
   const loggerSymmetry = new OcdkLogger('ocdkSurfaceSymmetryTrTl');
   const helpers = OcdkSurfaceSymmetryStrategyHelpers;
 
@@ -66,11 +65,9 @@ export function ocdkSurfaceSymmetryTrTl(): OcdkSurfaceOnePositionStrategy<OcdkSu
         loggerSymmetry.log('[COMPUTE] position TOP_RIGHT TOP_LEFT');
         // no enough available space on right, trigger a position change to left instead
         if (opt.measurements.surfaceSize.width > opt.inspections.comfort.availableRight) {
-          console.log('opt.measurements.surfaceSize.width > opt.inspections.comfort.availableRight');
           // already in a switch process and this new position isn't good enough, go to the fallback of the last strategy position
           if (opt.switchFrom && isOcdkSurfaceStrategyComputeResultPosition(opt.switchFrom) && opt.switchFrom.position) {
             loggerSymmetry.log('[COMPUTE] already switched off but no enough space: continue with the fallback of tr-tl', opt.switchFrom);
-            console.log('fallback from tr-tl', opt.switchFrom.position.STRATEGIES.FALLBACK);
             return opt.switchFrom.position.STRATEGIES.FALLBACK;
           }
           return {

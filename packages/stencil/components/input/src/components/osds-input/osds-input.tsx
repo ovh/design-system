@@ -377,7 +377,7 @@ export class OsdsInput implements OdsInput<OdsStencilMethods<OdsInputMethods>, O
           )
         }
 
-        {/** If Component isn't loading & hideable, display eye icon to hide input content */
+        {/** If input type is password, display eye icon to hide input content */
           isPassword && !loading && (
             <osds-icon
               {...{

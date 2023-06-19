@@ -6,12 +6,6 @@
   }
 }
 
-@mixin osds-switch-on-main-element() {
-  .switch__wrapper {
-    @content;
-  }
-}
-
 @mixin osds-switch-on-switch-items-child($property: '') {
   ::slotted(osds-switch-item#{$property}) {
     @content;

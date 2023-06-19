@@ -8,14 +8,15 @@ type HtmlSwitchItem = OdsSwitchItem & HTMLElement;
  * it contains all the glue between framework implementation and the third party service.
  */
 export class OdsSwitchController extends OdsComponentController<OdsSwitch> {
-  // private readonly logger = new OdsLogger('OdsSwitchController');
+
+  private readonly SWITCH_ITEM_TAG = 'osds-switch-item';
 
   constructor(component: OdsSwitch) {
     super(component);
   }
 
   changeCheckedSwitchItem(value: string): { current: HtmlSwitchItem, old: HtmlSwitchItem } {
-    const switchItems = this.getSwitchItems();
+    const switchItems = this.getSwitchItems(); 
     this.setClassSwitchItems(switchItems);
     const index = switchItems.findIndex(switchItem => switchItem.checked);
     const selectedSwitchItem = switchItems[index];
@@ -25,11 +26,11 @@ export class OdsSwitchController extends OdsComponentController<OdsSwitch> {
     newCheckedSwitchItem?.setAttribute('checked', '');
 
     if (index > newIndex) {
-      selectedSwitchItem?.classList.add('fadeout-from-right');
-      newCheckedSwitchItem?.classList.add('fadein-from-left');
-    } else {
       selectedSwitchItem?.classList.add('fadeout-from-left');
       newCheckedSwitchItem?.classList.add('fadein-from-right');
+    } else {
+      selectedSwitchItem?.classList.add('fadeout-from-right');
+      newCheckedSwitchItem?.classList.add('fadein-from-left');
     }
     return { current: newCheckedSwitchItem, old: selectedSwitchItem };
   }
@@ -44,7 +45,7 @@ export class OdsSwitchController extends OdsComponentController<OdsSwitch> {
 
   private getActiveSwitchItemIndex(switchItems: HtmlSwitchItem[]): number | undefined {
     const activeElement = document.activeElement;
-    if (activeElement?.localName !== 'osds-switch-item') {
+    if (activeElement?.localName !== this.SWITCH_ITEM_TAG) {
       return undefined;
     }
     return switchItems.findIndex(switchItem => switchItem.id === activeElement?.id);
@@ -69,7 +70,7 @@ export class OdsSwitchController extends OdsComponentController<OdsSwitch> {
   }
 
   getSwitchItems(): HtmlSwitchItem[] {
-    return Array.from(this.component.el.querySelectorAll<HtmlSwitchItem>('osds-switch-item'));
+    return Array.from(this.component.el.querySelectorAll<HtmlSwitchItem>(this.SWITCH_ITEM_TAG));
   }
 }
  

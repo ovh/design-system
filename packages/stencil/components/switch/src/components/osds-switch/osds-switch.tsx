@@ -39,18 +39,18 @@ export class OsdsSwitch implements OdsSwitch<OdsStencilMethods<OdsSwitchMethods>
   @Event() odsSwitchChanged!: EventEmitter<OdsSwitchChangedEventDetail>;
 
   @Listen('odsSwitchItemClick')
-  hanlderSwitchItemClick(value: CustomEvent<{ value: string }>) {
+  hanlderSwitchItemClick(event: CustomEvent<{ value: string }>) {
     if (this.disabled) {
       return;
     }
-    const { current, old } = this.controller.changeCheckedSwitchItem(value.detail.value);
+    const { current, old } = this.controller.changeCheckedSwitchItem(event.detail.value);
     this.handlerFocus();
-    this.emitChanged(current.value, old.value);
+    this.emitChanged(current.value, old?.value);
   }
 
-  handlerFocus(): void {
+  async handlerFocus(): Promise<void> {
     const selectedSwitchItem = this.controller.findSelectedSwitchItem();
-    selectedSwitchItem?.setFocus();
+    await selectedSwitchItem?.setFocus();
   }
 
   handlerOnKeyDown(event: KeyboardEvent): void {

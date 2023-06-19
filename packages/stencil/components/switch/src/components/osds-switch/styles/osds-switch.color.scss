@@ -46,38 +46,15 @@
 
 @mixin osds-switch-theme-color-variant-default__contrasted() {
   @include ods-and-all-hue-foreach-theme-color((
-    color: '500-contrasted',
+    color: '700',
     background-color: '500-contrasted',
     background-color-checked: '600-contrasted',
-    background-color-checked-hover: '700-contrasted',
-    background-color-hover: '100-contrasted',
   )) using($colors) {
     @include osds-switch-on-selected-host() {
-      
-      @include osds-switch-on-switch-items-child() {
-        color: map_get($colors, color);
-        background-color: map_get($colors, background-color);
-      }
-  
-      @include osds-switch-on-switch-items-child(':hover') {
-        &::before {
-          color: map_get($colors, background-color-hover);
-        }
-      }
-      // &[color="text"] {
-      //   @include osds-switch-on-switch-items-child('[checked]') {
-      //     color: map_get($colors, background-color-checked);
-      //   }
-      // }
       @include osds-switch-on-switch-items-child('[checked]') {
+        color: map_get($colors, color);
         &::before{
-          color: map_get($colors, color);
           background-color: map_get($colors, background-color-checked);
-        }
-      }
-      @include osds-switch-on-switch-items-child('[checked]:hover') {
-        &::before {
-          color: map_get($colors, background-color-checked-hover);
         }
       }
     }

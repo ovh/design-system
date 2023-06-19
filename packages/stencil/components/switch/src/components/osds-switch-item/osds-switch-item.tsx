@@ -30,7 +30,8 @@ export class OsdsSwitchItem implements OdsSwitchItem<OdsStencilMethods<OdsSwitch
   /** @see odsSwitchItemClick */
   @Event() odsSwitchItemClick!: EventEmitter<{ value: string }>;
 
-  handlerOnClick(): void {
+  handlerOnClick(event?: MouseEvent): void {
+    event?.preventDefault();
     this.odsSwitchItemClick.emit({ value: this.value});
   }
 
@@ -53,9 +54,9 @@ export class OsdsSwitchItem implements OdsSwitchItem<OdsStencilMethods<OdsSwitch
     return (
       <Host {...{
           tabindex,
-        }}
-        onClick={() => this.handlerOnClick()}
-        onKeyDown={(event: KeyboardEvent) => this.handlerOnKeyDown(event)}>
+          onClick: (event: MouseEvent) => this.handlerOnClick(event),
+          onKeyDown: (event: KeyboardEvent) => this.handlerOnKeyDown(event)
+        }}>
         <label>
           <input 
             type="radio"

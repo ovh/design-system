@@ -10,12 +10,38 @@ import {
 
 import changelog from '@ovhcloud/ods-stencil-switch/CHANGELOG.md';
 import page from './switch.web-component.stories.page.mdx';
+import { odsSwitchDefaultAttributes, OdsSwitchSizeList } from '@ovhcloud/ods-core';
+import { OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
 
 defineCustomElements();
 
 /* Default story parameters  */
 const storyParams = {
-
+  color: {
+    category: 'General',
+    defaultValue: odsSwitchDefaultAttributes.color,
+    options: OdsThemeColorIntentList,
+    control: { type: 'select' },
+  },
+  size: {
+    category: 'General',
+    defaultValue: odsSwitchDefaultAttributes.size,
+    options: OdsSwitchSizeList,
+    control: { type: 'select' },
+  },
+  default: {
+    category: 'Slot',
+    defaultValue: '',
+  },
+  contrasted: {
+    category: 'Misc',
+    defaultValue: odsSwitchDefaultAttributes.contrasted
+  },
+  disabled: {
+    category: 'Misc',
+    defaultValue: odsSwitchDefaultAttributes.disabled
+  },
+  
 };
 
 export default {
@@ -34,7 +60,9 @@ export default {
 const TemplateDefault = (args:any) => {
   return html`
     <osds-switch ...=${getTagAttributes(args)}>
-      Switch
+      <osds-switch-item value="1" id="1" checked>Item 1</osds-switch-item>
+      <osds-switch-item value="2" id="2">Item 2</osds-switch-item>
+      <osds-switch-item value="3" id="3">Item 3</osds-switch-item>
     </osds-switch>
   `;
 }

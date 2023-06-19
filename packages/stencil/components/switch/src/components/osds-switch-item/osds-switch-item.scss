@@ -33,36 +33,25 @@
         border-radius: 3em;
         z-index: -1;
     }
+    
 }
-// :host(:hover)::before {
-//     background: #0050D733;
-// }
-
-// :host([checked]) {
-//     color: #FFFFFF;
-//     &::before {
-//         background: #0050D7;
-//         transition: color ease-out .1s .1s;
-//     }
-// }
-// :host([checked]:hover)::before {
-//     background: #002DBE;
-// }
-
-.fadein-from-right::before {
+:host(.fadein-from-right)::before {  
     animation: fadeinfromright ease-out .3s;
 }
-
-.fadein-from-left::before {
+:host(.fadein-from-left)::before {
     animation: fadeinfromleft ease-out .3s;
 }
 
-.fadeout-from-right::before {
+:host(.fadeout-from-right)::before {
     animation: fadeoutfromright ease-in .3s;
 }
 
-.fadeout-from-left::before {
+:host(.fadeout-from-left)::before {
     animation: fadeoutfromleft ease-in .3s;
+}
+
+:host(:focus-visible) {
+    outline: 2px gray dotted;
 }
 
 @keyframes fadeinfromleft {

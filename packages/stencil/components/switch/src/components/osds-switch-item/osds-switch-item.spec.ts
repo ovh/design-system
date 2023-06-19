@@ -1,4 +1,4 @@
-jest.mock('@ovhcloud/ods-core/src/components/switch/ods-switch-item-controller'); // keep jest.mock before any
+jest.mock('@ovhcloud/ods-core/src/components/switch-item/ods-switch-item-controller'); // keep jest.mock before any
 
 import {
   OdsSwitchItemAttributes,

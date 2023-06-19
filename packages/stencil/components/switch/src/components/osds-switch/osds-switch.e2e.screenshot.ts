@@ -32,7 +32,7 @@ describe('e2e:osds-switch', () => {
     [() => { }, () => el.setProperty('disabled', true)].forEach((setDisabled) => {
       [() => { }, () => el.setProperty('contrasted', true)].forEach((setContrasted) => {
         [undefined, OdsThemeColorIntent.primary].forEach((color) => {
-          [undefined, 'Accordion content'].forEach((content) => {
+          [undefined, 'Switch content'].forEach((content) => {
             OdsSwitchSizeList.forEach((size) => {
               it([color, content, size, setDisabled, setContrasted].join(', '), async () => {
                 await setup({

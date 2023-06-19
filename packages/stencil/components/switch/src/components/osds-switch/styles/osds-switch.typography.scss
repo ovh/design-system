@@ -4,13 +4,11 @@
 
 // Main CSS mixin for typography
 @mixin osds-switch-theme-typography() {
-  :host([size='md']) .switch__wrapper {
-    //$typography-properties: ods-get-typography-properties(body, '400');
-    //font-family: ods-get-typography-property($typography-properties, font-family);
-    //font-size: ods-get-typography-property($typography-properties, font-size);
-    //font-style: ods-get-typography-property($typography-properties, font-style);
-    //font-weight: ods-get-typography-property($typography-properties, font-weight);
-    //letter-spacing: ods-get-typography-property($typography-properties, letter-spacing);
-    //line-height: ods-get-typography-property($typography-properties, line-height);
+  :host {
+    $typography-properties: ods-get-typography-properties(body, '400');
+    font-family: ods-get-typography-property($typography-properties, font-family);
+    font-style: ods-get-typography-property($typography-properties, font-style);
+    font-weight: ods-get-typography-property($typography-properties, font-weight);
+    letter-spacing: ods-get-typography-property($typography-properties, letter-spacing);
   }
 }

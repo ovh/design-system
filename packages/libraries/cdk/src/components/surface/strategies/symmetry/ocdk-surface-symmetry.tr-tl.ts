@@ -39,7 +39,7 @@ export function ocdkSurfaceSymmetryTrTl(): OcdkSurfaceOnePositionStrategy<OcdkSu
           maxWidth: (opt) => opt.inspections.comfort.availableRight,
           verticalOffset: () => 0,
           verticalAlignment: 'top',
-          horizontalOffset: (opt) => /*-opt.config.anchorMargin.left - */-opt.config.anchorMargin.right - opt.measurements.surfaceSize.width,
+          horizontalOffset: (opt) => -opt.config.anchorMargin.right - opt.measurements.surfaceSize.width,
           horizontalAlignment: 'right'
         }
       },

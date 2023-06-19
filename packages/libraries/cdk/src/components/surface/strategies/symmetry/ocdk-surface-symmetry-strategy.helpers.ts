@@ -156,7 +156,7 @@ export class OcdkSurfaceSymmetryStrategyHelpers {
       }
     }
 
-    const horizontalOffset = /*opt.measurements.viewportDistance.right - opt.config.MARGIN_TO_EDGE_COMFORT*/opt.measurements.viewportDistance.right - opt.config.MARGIN_TO_EDGE_COMFORT - opt.measurements.surfaceSize.width + opt.measurements.anchorSize.width;;
+    const horizontalOffset = opt.measurements.viewportDistance.right - opt.config.MARGIN_TO_EDGE_COMFORT - opt.measurements.surfaceSize.width + opt.measurements.anchorSize.width;;
     this.loggerSymmetryRxLx.log('[horizontalOffset] horizontal surface width is less than or equal to viewport minus MARGIN_TO_EDGE');
     return horizontalOffset;
   }

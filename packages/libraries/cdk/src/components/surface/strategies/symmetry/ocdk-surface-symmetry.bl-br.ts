@@ -37,11 +37,11 @@ export function ocdkSurfaceSymmetryBlBr(): OcdkSurfaceOnePositionStrategy<OcdkSu
             }
           },
           appliers: {
-            maxHeight: (opt) => opt.inspections.comfort.availableBottom /*- opt.config.anchorMargin.top*/,
+            maxHeight: (opt) => opt.inspections.comfort.availableBottom,
             maxWidth: (opt) => opt.inspections.comfort.availableLeft,
             verticalOffset: () => 0,
             verticalAlignment: 'bottom',
-            horizontalOffset: (opt) => /*opt.measurements.anchorSize.width + opt.config.anchorMargin.right*/ -opt.config.anchorMargin.left - opt.measurements.surfaceSize.width,
+            horizontalOffset: (opt) => -opt.config.anchorMargin.left - opt.measurements.surfaceSize.width,
             horizontalAlignment: 'left'
           }
       },

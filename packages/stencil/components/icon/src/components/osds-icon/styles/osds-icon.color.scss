@@ -15,4 +15,22 @@
       }
     }
   }
+
+  [hoverable] {
+    :host(&[color='default']) {
+      @include osds-icon-on-selected-host() {
+        background-color: currentColor;
+      }
+    }
+
+    :host(&:not([color='default'])){
+      @include ods-and-one-hue-foreach-theme-color('700') using($color) {
+        :host(&:hover) {
+          @include osds-icon-on-selected-host() {
+            background-color: $color;
+          }
+        }
+      }
+    }
+  }
 }

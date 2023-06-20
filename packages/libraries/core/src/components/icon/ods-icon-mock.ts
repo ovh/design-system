@@ -10,6 +10,7 @@ export class OdsIconMock implements OdsIcon<OdsIconMethods, OdsIconEvents> {
     ariaName = '';
     color?: OdsThemeColorIntent;
     contrasted?: boolean;
+    hoverable?: boolean;
     name?: OdsIconName;
     size?: OdsIconSize;
 

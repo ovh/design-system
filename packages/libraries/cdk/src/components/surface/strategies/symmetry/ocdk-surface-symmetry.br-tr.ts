@@ -58,9 +58,9 @@ export function ocdkSurfaceSymmetryBrTr(): OcdkSurfaceOnePositionStrategy<OcdkSu
           },
         },
         appliers: {
-          maxHeight: (opt) => helpers.symmetryFallbackMaxHeightBxTx(opt, opt.inspections.comfort.availableBottom, opt.inspections.limit.availableBottom),
+          maxHeight: (opt) => helpers.symmetryFallbackMaxHeight(opt, opt.inspections.comfort.availableBottom, opt.inspections.limit.availableBottom, true),
           maxWidth: (opt) => opt.measurements.surfaceSize.width,
-          verticalOffset: (opt) => helpers.symmetryFallbackVerticalOffsetBxTx(opt, opt.inspections.comfort.availableBottom, opt.inspections.limit.availableBottom),
+          verticalOffset: (opt) => helpers.symmetryFallbackVerticalOffset(opt, opt.inspections.comfort.availableBottom, opt.inspections.limit.availableBottom, true),
           verticalAlignment: 'top',
           horizontalOffset: () => 0,
           horizontalAlignment: 'right'

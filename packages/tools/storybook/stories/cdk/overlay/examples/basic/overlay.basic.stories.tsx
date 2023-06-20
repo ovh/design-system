@@ -52,13 +52,13 @@ const storyParams = {
     control: { type: 'select' },
     table: { defaultValue: { summary: 'ltr' } }
   },
-  changePosition: {
+  changeAlignment: {
     category: 'General',
     description: 'position component on the page',
-    defaultValue: 'center',
-    options: ['left', 'right', 'center'],
-    control: { type: 'radio' },
-    table: { defaultValue: { summary: 'center' } }
+    defaultValue: 'start center',
+    options: ['start start', 'start center', 'start end', 'center start', 'center', 'center end', 'end start', 'end center', 'end end'],
+    control: { type: 'select' },
+    table: { defaultValue: { summary: 'start center' } }
   },
   applyContent: {
     category: 'General',
@@ -106,6 +106,13 @@ const Template = (args: any) => {
 
   return html`
     <style>
+
+      #alignment {
+        display: flex;
+        height: 100vh;
+        flex-wrap: wrap;
+      }
+
       #basic-container-1 {
         /* overlay important properties */
         position: relative; /* must be here to make the positioning working well */
@@ -131,7 +138,7 @@ const Template = (args: any) => {
       }
 
     </style>
-    <div id="position" style=${ styleMap({ textAlign: args.changePosition }) }>
+    <div id='alignment' style=${ styleMap({ placeContent: args.changeAlignment }) }>
       <p>${args.applyContent ? olesIpsum(OlesIpsumGeneration.paragraphs, 2) : ''}</p>
       <div id="basic-container-1" dir="${args.applyDirection}">
         <div id="basic-trigger-1" onclick="basic1Toggle()">my trigger</div>

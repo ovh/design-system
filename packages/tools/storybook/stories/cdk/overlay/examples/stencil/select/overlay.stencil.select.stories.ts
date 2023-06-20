@@ -35,13 +35,13 @@ const storyParams = {
     control: { type: 'select' },
     table: { defaultValue: { summary: 'ltr' } }
   },
-  changePosition: {
+  changeAlignment: {
     category: 'General',
     description: 'position component on the page',
-    defaultValue: 'center',
-    options: ['left', 'right', 'center'],
-    control: { type: 'radio' },
-    table: { defaultValue: { summary: 'center' } }
+    defaultValue: 'start center',
+    options: ['start start', 'start center', 'start end', 'center start', 'center', 'center end', 'end start', 'end center', 'end end'],
+    control: { type: 'select' },
+    table: { defaultValue: { summary: 'start center' } }
   },
   applyContent: {
     category: 'General',
@@ -97,7 +97,15 @@ export default {
 /* Default */
 const Template = (args: any) => {
   return html`
-    <div id='position' style=${ styleMap({ textAlign: args.changePosition }) }>
+    <style>
+      #alignment {
+        display: flex;
+        height: 100vh;
+        flex-wrap: wrap;
+      }
+    </style>
+
+    <div id='alignment' style=${ styleMap({ placeContent: args.changeAlignment }) }>
       <p>${args.applyContent ? olesIpsum(OlesIpsumGeneration.paragraphs, 2) : ''}</p>
       <ocdk-surface-select-example dir="${args.applyDirection}" opened="${args.opened}" position="${args.position}">
         <div slot="trigger">My Select</div>

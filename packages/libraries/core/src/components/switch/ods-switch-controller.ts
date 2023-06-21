@@ -15,26 +15,26 @@ export class OdsSwitchController extends OdsComponentController<OdsSwitch> {
     super(component);
   }
 
-  changeCheckedSwitchItem(value: string): { current: HtmlSwitchItem, old: HtmlSwitchItem } {
+  changeCheckedSwitchItem(value: string): { current: HtmlSwitchItem, previous: HtmlSwitchItem } {
     const switchItems = this.getSwitchItems();
     const index = switchItems.findIndex(switchItem => switchItem.getAttribute('checked') !== null);
-    const selectedSwitchItem = switchItems[index];
+    const checkedSwitchItem = switchItems[index];
     switchItems[index]?.removeAttribute('checked');
     const newIndex = switchItems.findIndex(switchItem => switchItem.value === value);
     const newCheckedSwitchItem = switchItems[newIndex];
     newCheckedSwitchItem?.setAttribute('checked', '');
 
     if (index > newIndex) {
-      selectedSwitchItem?.classList.add('fadeout-from-left');
+      checkedSwitchItem?.classList.add('fadeout-from-left');
       newCheckedSwitchItem?.classList.add('fadein-from-right');
     } else {
-      selectedSwitchItem?.classList.add('fadeout-from-right');
+      checkedSwitchItem?.classList.add('fadeout-from-right');
       newCheckedSwitchItem?.classList.add('fadein-from-left');
     }
-    return { current: newCheckedSwitchItem, old: selectedSwitchItem };
+    return { current: newCheckedSwitchItem, previous: checkedSwitchItem };
   }
 
-  findSelectedSwitchItem(): HtmlSwitchItem | undefined {
+  finCheckedSwitchItem(): HtmlSwitchItem | undefined {
     return this.getSwitchItems().find(switchItem => switchItem.checked);
   }
 

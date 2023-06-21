@@ -1,5 +1,5 @@
 export interface OdsSwitchChangedEventDetail {
     current: string;
-    oldCurrent?: string;
+    previous?: string;
   }
   

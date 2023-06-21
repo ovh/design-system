@@ -54,30 +54,30 @@ describe('spec:ods-switch-controller', () => {
   describe('methods', () => {
     it('should changeCheckedSwitchItem', () => {
       setup(component);
-      const { current, old } = controller.changeCheckedSwitchItem('2');
+      const { current, previous } = controller.changeCheckedSwitchItem('2');
       expect(current).toBe(item2);
       expect(current.className).toContain('fadein-from-left');
-      expect(old).toBe(undefined);
+      expect(previous).toBe(undefined);
     });
 
     it('should changeCheckedSwitchItem with old value', () => {
       setup(component);
       controller.changeCheckedSwitchItem('1');
-      const { current, old } = controller.changeCheckedSwitchItem('2');
+      const { current, previous } = controller.changeCheckedSwitchItem('2');
       expect(current).toBe(item2);
       expect(current.className).toContain('fadein-from-left');
-      expect(old).toBe(item1);
-      expect(old.className).toContain('fadeout-from-right');
+      expect(previous).toBe(item1);
+      expect(previous.className).toContain('fadeout-from-right');
     });
 
     it('should changeCheckedSwitchItem with class', () => {
       setup(component);
       controller.changeCheckedSwitchItem('2');
-      const { current, old } = controller.changeCheckedSwitchItem('1');
+      const { current, previous } = controller.changeCheckedSwitchItem('1');
       expect(current).toBe(item1);
       expect(current.className).toContain('fadein-from-right');
-      expect(old).toBe(item2);
-      expect(old.className).toContain('fadeout-from-left');
+      expect(previous).toBe(item2);
+      expect(previous.className).toContain('fadeout-from-left');
     });
 
     it('should findPreviousSwitchItem', () => {
@@ -108,16 +108,16 @@ describe('spec:ods-switch-controller', () => {
       expect(nextSwitchItem).toBe(undefined);
     });
 
-    it('should not findSelectedSwitchItem', () => {
+    it('should not finCheckedSwitchItem', () => {
       setup(component);
-      const selectedSwitchItem = controller.findSelectedSwitchItem();
+      const selectedSwitchItem = controller.finCheckedSwitchItem();
       expect(selectedSwitchItem).toBe(undefined);
     });
 
-    it('should findSelectedSwitchItem', () => {
+    it('should finCheckedSwitchItem', () => {
       setup(component);
       item1.checked = true;
-      const selectedSwitchItem = controller.findSelectedSwitchItem();
+      const selectedSwitchItem = controller.finCheckedSwitchItem();
       expect(selectedSwitchItem).toBe(item1);
     });
     

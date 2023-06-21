@@ -43,13 +43,13 @@ export class OsdsSwitch implements OdsSwitch<OdsStencilMethods<OdsSwitchMethods>
     if (this.disabled) {
       return;
     }
-    const { current, old } = this.controller.changeCheckedSwitchItem(event.detail.value);
+    const { current, previous } = this.controller.changeCheckedSwitchItem(event.detail.value);
     this.handlerFocus();
-    this.emitChanged(current.value, old?.value);
+    this.emitChanged(current.value, previous?.value);
   }
 
   async handlerFocus(): Promise<void> {
-    const selectedSwitchItem = this.controller.findSelectedSwitchItem();
+    const selectedSwitchItem = this.controller.finCheckedSwitchItem();
     await selectedSwitchItem?.setFocus();
   }
 
@@ -68,8 +68,8 @@ export class OsdsSwitch implements OdsSwitch<OdsStencilMethods<OdsSwitchMethods>
     }
   }
 
-  emitChanged(current: string, oldCurrent?: string): void {
-    this.odsSwitchChanged.emit({ current, oldCurrent });
+  emitChanged(current: string, previous?: string): void {
+    this.odsSwitchChanged.emit({ current, previous });
   }
 
   render() {

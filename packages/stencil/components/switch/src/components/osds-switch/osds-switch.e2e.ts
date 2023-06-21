@@ -71,7 +71,7 @@ describe('e2e:osds-switch', () => {
         await switchItems[1].click();
         await page.waitForChanges();
         
-        expect(odsValueChange).toHaveReceivedEventDetail({ current: '2', oldCurrent: '1' });
+        expect(odsValueChange).toHaveReceivedEventDetail({ current: '2', previous: '1' });
         expect(odsValueChange).toHaveReceivedEventTimes(2);
       });
     })

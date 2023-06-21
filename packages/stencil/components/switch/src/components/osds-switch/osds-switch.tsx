@@ -39,7 +39,7 @@ export class OsdsSwitch implements OdsSwitch<OdsStencilMethods<OdsSwitchMethods>
   @Event() odsSwitchChanged!: EventEmitter<OdsSwitchChangedEventDetail>;
 
   @Listen('odsSwitchItemClick')
-  hanlderSwitchItemClick(event: CustomEvent<{ value: string }>) {
+  handlerSwitchItemClick(event: CustomEvent<{ value: string }>) {
     if (this.disabled) {
       return;
     }
@@ -54,18 +54,17 @@ export class OsdsSwitch implements OdsSwitch<OdsStencilMethods<OdsSwitchMethods>
   }
 
   handlerOnKeyDown(event: KeyboardEvent): void {
-    const isArrowLeft = event.code === 'ArrowLeft';
-    const isArrowRight = event.code === 'ArrowRight';
-    if (isArrowRight || isArrowLeft) {
-      if (isArrowLeft) {
+    switch (event.code) {
+      case 'ArrowLeft':
         const previosSwitchItem = this.controller.findPreviousSwitchItem();
         previosSwitchItem?.setFocus();
-      }
-
-      if (isArrowRight) {
+        break;
+      case 'ArrowRight':
         const nextSwitchItem = this.controller.findNextSwitchItem();
         nextSwitchItem?.setFocus();
-      }
+        break;
+      default:
+        break;
     }
   }
 

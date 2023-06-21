@@ -133,7 +133,7 @@ describe('spec:osds-switch', () => {
       const spyFocus = jest.spyOn(instance, 'handlerFocus');
       const current = { value: '1' }
       controller.changeCheckedSwitchItem = jest.fn().mockImplementation(() => ({ current , old: undefined }));
-      instance.hanlderSwitchItemClick(new CustomEvent('odsSwitchItemClick', { detail: current }));
+      instance.handlerSwitchItemClick(new CustomEvent('odsSwitchItemClick', { detail: current }));
       expect(controller.changeCheckedSwitchItem).toHaveBeenCalledTimes(1);
       expect(spyEmit).toHaveBeenNthCalledWith(1, current.value, undefined);
       expect(spyFocus).toHaveBeenCalledTimes(1);
@@ -143,7 +143,7 @@ describe('spec:osds-switch', () => {
       await setup({ attributes: { disabled: true } });
       const spyEmit = jest.spyOn(instance, 'emitChanged');
       const spyFocus = jest.spyOn(instance, 'handlerFocus');
-      instance.hanlderSwitchItemClick(new CustomEvent('odsSwitchItemClick', { detail: { value: '1'} }));
+      instance.handlerSwitchItemClick(new CustomEvent('odsSwitchItemClick', { detail: { value: '1'} }));
       expect(controller.changeCheckedSwitchItem).not.toHaveBeenCalled();
       expect(spyEmit).not.toHaveBeenCalled();
       expect(spyFocus).not.toHaveBeenCalled();
@@ -151,22 +151,34 @@ describe('spec:osds-switch', () => {
 
     it('should call controller.findPreviousSwitchItem on navigate with arrow left', async () => {
       await setup();
-      instance.handlerOnKeyDown(new KeyboardEvent('keydown', { code: 'ArrowLeft' }));
-      expect(controller.findPreviousSwitchItem).toHaveBeenCalledTimes(1);
+      const keyArraowLeft = new KeyboardEvent('keydown', { code: 'ArrowLeft' });
+      instance.handlerOnKeyDown(keyArraowLeft);
+      root.dispatchEvent(keyArraowLeft);
+      expect(controller.findPreviousSwitchItem).toHaveBeenCalledTimes(2);
     });
 
     it('should call controller.findNextSwitchItem on navigate with arrow right', async () => {
       await setup();
-      instance.handlerOnKeyDown(new KeyboardEvent('keydown', { code: 'ArrowRight' }));
-      expect(controller.findNextSwitchItem).toHaveBeenCalledTimes(1);
+      const keyArrawRight = new KeyboardEvent('keydown', { code: 'ArrowRight' });
+      instance.handlerOnKeyDown(keyArrawRight);
+      root.dispatchEvent(keyArrawRight);
+      expect(controller.findNextSwitchItem).toHaveBeenCalledTimes(2);
     });
 
     it('should do nothing because of unsupport key', async () => {
       await setup();
-      instance.handlerOnKeyDown(new KeyboardEvent('keydown', { code: 'Space' }));
-      instance.handlerOnKeyDown(new KeyboardEvent('keydown', { code: 'Enter' }));
-      instance.handlerOnKeyDown(new KeyboardEvent('keydown', { code: 'Escape' }));
-      instance.handlerOnKeyDown(new KeyboardEvent('keydown', { code: 'A' }));
+      const keySpace = new KeyboardEvent('keydown', { code: 'Space' });
+      instance.handlerOnKeyDown(keySpace);
+      root.dispatchEvent(keySpace);
+      const keyEnter = new KeyboardEvent('keydown', { code: 'Enter' });
+      instance.handlerOnKeyDown(keyEnter);
+      root.dispatchEvent(keyEnter);
+      const keyEscape = new KeyboardEvent('keydown', { code: 'Escape' });
+      instance.handlerOnKeyDown(keyEscape);
+      root.dispatchEvent(keyEscape);
+      const keyA = new KeyboardEvent('keydown', { code: 'A' });
+      instance.handlerOnKeyDown(keyA);
+
       expect(controller.findNextSwitchItem).not.toHaveBeenCalled();
     });
   })

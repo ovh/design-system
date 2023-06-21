@@ -16,9 +16,8 @@ export class OdsSwitchController extends OdsComponentController<OdsSwitch> {
   }
 
   changeCheckedSwitchItem(value: string): { current: HtmlSwitchItem, old: HtmlSwitchItem } {
-    const switchItems = this.getSwitchItems(); 
-    this.setClassSwitchItems(switchItems);
-    const index = switchItems.findIndex(switchItem => switchItem.checked);
+    const switchItems = this.getSwitchItems();
+    const index = switchItems.findIndex(switchItem => switchItem.getAttribute('checked') !== null);
     const selectedSwitchItem = switchItems[index];
     switchItems[index]?.removeAttribute('checked');
     const newIndex = switchItems.findIndex(switchItem => switchItem.value === value);
@@ -35,15 +34,11 @@ export class OdsSwitchController extends OdsComponentController<OdsSwitch> {
     return { current: newCheckedSwitchItem, old: selectedSwitchItem };
   }
 
-  private setClassSwitchItems(switchItems: HtmlSwitchItem[]) {
-    switchItems.forEach(switchItem => switchItem.setAttribute('class', 'hydrated'));
-  }
-
   findSelectedSwitchItem(): HtmlSwitchItem | undefined {
     return this.getSwitchItems().find(switchItem => switchItem.checked);
   }
 
-  private getActiveSwitchItemIndex(switchItems: HtmlSwitchItem[]): number | undefined {
+  getActiveSwitchItemIndex(switchItems: HtmlSwitchItem[]): number | undefined {
     const activeElement = document.activeElement;
     if (activeElement?.localName !== this.SWITCH_ITEM_TAG) {
       return undefined;
@@ -57,7 +52,7 @@ export class OdsSwitchController extends OdsComponentController<OdsSwitch> {
     if (currentIndex === undefined || (currentIndex - 1) < 0) {
       return undefined;
     }
-    return switchItems.find((_, i) => i === currentIndex - 1);
+    return switchItems[currentIndex - 1];
   }
 
   findNextSwitchItem(): HtmlSwitchItem | undefined {
@@ -66,7 +61,7 @@ export class OdsSwitchController extends OdsComponentController<OdsSwitch> {
     if (currentIndex === undefined || (currentIndex + 1) >= switchItems.length) {
       return undefined;
     }
-    return switchItems.find((_, i) => i === currentIndex + 1);
+    return switchItems[currentIndex + 1];
   }
 
   getSwitchItems(): HtmlSwitchItem[] {

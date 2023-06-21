@@ -17,7 +17,7 @@
 
 :host([disabled]) {
   opacity: .5;
-  cursor: not-allowed !important;
+  cursor: not-allowed;
   & > * {
     pointer-events: none;
   }

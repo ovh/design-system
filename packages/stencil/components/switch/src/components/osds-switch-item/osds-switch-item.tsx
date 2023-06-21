@@ -32,7 +32,7 @@ export class OsdsSwitchItem implements OdsSwitchItem<OdsStencilMethods<OdsSwitch
 
   handlerOnClick(event?: MouseEvent): void {
     event?.preventDefault();
-    this.odsSwitchItemClick.emit({ value: this.value});
+    this.odsSwitchItemClick.emit({ value: this.value });
   }
 
   handlerOnKeyDown(event: KeyboardEvent): void {

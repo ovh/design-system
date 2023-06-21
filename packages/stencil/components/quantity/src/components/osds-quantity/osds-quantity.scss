@@ -9,6 +9,7 @@
   display: flex;
   flex-direction: row;
   --ods-input-text-align: center;
+  --ods-input-width: calc(2.813rem * var(--ods-size-ratio));
   --ods-icon-vertical-align: middle;
 }
 
@@ -17,8 +18,8 @@
 }
 
 slot:not([name]) {
-  margin-left: .25em;
-  margin-right: .25em;
+  margin-left: var(--ods-size-03);
+  margin-right: var(--ods-size-03);
 }
 
 slot {

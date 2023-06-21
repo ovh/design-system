@@ -3,6 +3,9 @@
 
 @mixin osds-input-theme-size() {
   /** sizes */
+  :host {
+    width: var(--ods-input-width, auto);
+  }
 
   @include ods-foreach-theme-size(input) using ($sizes) {
     @include osds-input-on-selected-host() {

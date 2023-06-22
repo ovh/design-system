@@ -9,7 +9,7 @@ export const odsTileDefaultAttributesDoc = {
   color: OdsThemeColorIntent.default,
   disabled: false,
   flex: false,
-  interactive: false,
+  hoverable: false,
   hasFocus: false,
   loading: false,
   rounded: true,

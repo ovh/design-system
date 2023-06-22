@@ -9,6 +9,7 @@ import {
   OcdkSurfaceCorner,
 } from '@ovhcloud/ods-cdk';
 import { OcdkSurfaceSelectItemExample } from './ocdk-surface-select-item-example';
+import { OcdkSurfaceSelectPosition } from './ocdk-surface-select-position';
 
 // define custom elements from CDK
 ocdkDefineCustomElements()
@@ -22,6 +23,7 @@ export class OcdkSurfaceSelectExample {
   static totalIds = 0;
   @Element() el!: HTMLStencilElement;
   @Prop({ reflect: true }) value = '';
+  @Prop({ reflect: true }) position: OcdkSurfaceSelectPosition = OcdkSurfaceSelectPosition.BOTTOM;
   @Prop({ reflect: true }) opened = false;
   @Prop({ reflect: true }) animation: null | 'none' = null;
   @Prop({ reflect: false }) debug = false;
@@ -46,6 +48,10 @@ export class OcdkSurfaceSelectExample {
     this.surface?.close();
   }
 
+  @Listen('position')
+  onPositionChange() {
+    this.syncPosition();
+  }
 
   // Hide overlay when we click anywhere else in the window.
   @Listen('click', { target: 'window' })
@@ -123,5 +129,33 @@ export class OcdkSurfaceSelectExample {
     if (this.surface && this.anchor) {
       this.surface.setAnchorElement(this.anchor);
     }
+    this.syncPosition();
+  }
+
+  private syncPosition() {
+    this.logger.log('[syncPosition]', { position: this.position.toUpperCase() });
+    if (!this.surface) {
+      return;
+    }
+
+    switch (this.position.toUpperCase()) {
+      // two methods exist to set corners
+      case OcdkSurfaceSelectPosition.TOP:
+        this.surface.setAnchorCorner(OcdkSurfaceCorner.TOP_LEFT);
+        this.surface.setOriginCorner(OcdkSurfaceCorner.BOTTOM_LEFT);
+        break;
+      case OcdkSurfaceSelectPosition.BOTTOM:
+        this.surface.setCornerPoints({ anchor: OcdkSurfaceCorner.BOTTOM_LEFT, origin: OcdkSurfaceCorner.TOP_LEFT });
+        break;
+      default:
+        break;
+      case OcdkSurfaceSelectPosition.LEFT:
+        this.surface.setCornerPoints({ anchor: OcdkSurfaceCorner.TOP_LEFT, origin: OcdkSurfaceCorner.TOP_RIGHT });
+        break;
+      case OcdkSurfaceSelectPosition.RIGHT:
+        this.surface.setCornerPoints({ anchor: OcdkSurfaceCorner.TOP_RIGHT, origin: OcdkSurfaceCorner.TOP_LEFT });
+        break;
+    }
+
   }
 }

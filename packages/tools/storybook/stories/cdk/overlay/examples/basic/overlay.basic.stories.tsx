@@ -4,13 +4,11 @@ import { ocdkDefineCustomElements, OcdkSurfaceAnimation, OcdkSurfaceAnimationLis
 import page from './overlay.basic.stories.page.mdx';
 import { play } from './overlay.basic.stories.play';
 import {
-  OcdkEnumObject,
-  ocdkGetEnumNames,
   OcdkSurfaceCorner,
-  OcdkSurfaceCornerPointList,
   OcdkSurfaceCornerPointNameList,
 } from '@ovhcloud/ods-cdk/src';
 import { olesIpsum, OlesIpsumGeneration } from '@ovhcloud/ods-core/src';
+import { styleMap } from 'lit-html/directives/style-map';
 
 ocdkDefineCustomElements();
 
@@ -53,6 +51,14 @@ const storyParams = {
     options: ['ltr', 'rtl'],
     control: { type: 'select' },
     table: { defaultValue: { summary: 'ltr' } }
+  },
+  changeAlignment: {
+    category: 'General',
+    description: 'position component on the page',
+    defaultValue: 'start center',
+    options: ['start start', 'start center', 'start end', 'center start', 'center', 'center end', 'end start', 'end center', 'end end'],
+    control: { type: 'select' },
+    table: { defaultValue: { summary: 'start center' } }
   },
   applyContent: {
     category: 'General',
@@ -100,6 +106,13 @@ const Template = (args: any) => {
 
   return html`
     <style>
+
+      #alignment {
+        display: flex;
+        height: 100vh;
+        flex-wrap: wrap;
+      }
+
       #basic-container-1 {
         /* overlay important properties */
         position: relative; /* must be here to make the positioning working well */
@@ -125,12 +138,14 @@ const Template = (args: any) => {
       }
 
     </style>
-    <p>${args.applyContent ? olesIpsum(OlesIpsumGeneration.paragraphs, 2) : ''}</p>
-    <div id="basic-container-1" dir="${args.direction}">
-      <div id="basic-trigger-1" onclick="basic1Toggle()">my trigger</div>
-      <ocdk-surface id="basic-surface-1" ?opened=${args.opened} .animated=${args.animated} .corners=${corners} animation="${args.animation}" >My surface</ocdk-surface>
+    <div id='alignment' style=${ styleMap({ placeContent: args.changeAlignment }) }>
+      <p>${args.applyContent ? olesIpsum(OlesIpsumGeneration.paragraphs, 2) : ''}</p>
+      <div id="basic-container-1" dir="${args.applyDirection}">
+        <div id="basic-trigger-1" onclick="basic1Toggle()">my trigger</div>
+        <ocdk-surface id="basic-surface-1" ?opened=${args.opened} .animated=${args.animated} .corners=${corners} animation="${args.animation}">My surface</ocdk-surface>
+      </div>
+      <p>${args.applyContent ? olesIpsum(OlesIpsumGeneration.paragraphs, 2) : ''}</p>
     </div>
-    <p>${args.applyContent ? olesIpsum(OlesIpsumGeneration.paragraphs, 2) : ''}</p>
   `;
 };
 

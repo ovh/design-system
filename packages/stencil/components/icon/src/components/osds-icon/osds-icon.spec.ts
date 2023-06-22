@@ -130,6 +130,17 @@ describe('spec:osds-icon', () => {
         expect(instance.size).toBe(randomSize);
       });
     });
+
+    describe('hoverable', () => {
+      odsUnitTestAttribute<OdsIconAttributes, 'hoverable'>({
+        ...getAttributeContextOptions<OdsIconAttributes, OsdsIcon, 'hoverable'>({
+          name: 'hoverable',
+          list: [false, true],
+          defaultValue: odsIconDefaultAttributes.hoverable,
+          ...config
+        })
+      });
+    });
   });
 
   describe('controller', () => {

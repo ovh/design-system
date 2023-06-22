@@ -65,7 +65,7 @@ const storyParams = {
   linkContentSlot: 'Oles ipsum dolor sit amet, Ocurreret at animal armor nec, constituam platonem network integer',
   startSlot: '',
   rel: '',
-  target: OdsHTMLAnchorElementTarget._self,g
+  target: OdsHTMLAnchorElementTarget._self,
   download: 'filename'
 };
 

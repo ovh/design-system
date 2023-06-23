@@ -7,8 +7,8 @@ import { OdsSelectEvents } from './ods-select-events';
 import { OdsSelectMethods } from './ods-select-methods';
 import { OdsSelectSize } from './ods-select-size';
 import { OdsSelectValueChangeEventDetail } from './ods-select-value-change-event-detail';
-import { HTMLStencilElement } from '@stencil/core/internal';
 import { OcdkSurface, OcdkSurfaceMock } from '@ovhcloud/ods-cdk';
+import { HTMLStencilElement } from '@stencil/core/internal';
 
 export class OdsSelectMock implements OdsSelect<OdsSelectMethods, OdsSelectEvents> {
     ariaLabel: HTMLElement['ariaLabel'] = odsSelectDefaultAttributes.ariaLabel;

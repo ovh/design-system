@@ -156,5 +156,29 @@
 </osds-select>
 <p id="select11-info"></p>
 
+<h3>Add option with js</h3>
+<osds-select class="w-20" id="select12" value="2">
+  <span slot="placeholder"><i>Select</i> Country</span>
+  <osds-select-group>Group title</osds-select-group>
+  <osds-select-option value="1">hezh <strong>Value 1</strong></osds-select-option>
+  <osds-select-option value="2">Value 2</osds-select-option>
+  <osds-select-option value="3">Value 3</osds-select-option>
+</osds-select>
+
+<button id="add-option">Add option</button>
+
+<script>
+  const button = document.getElementById('add-option');
+  const select = document.getElementById('select12');
+  button.addEventListener('click', () => {
+    const lastSelectOptions = select.querySelector('osds-select-option:last-child');
+    const nextValue = lastSelectOptions ? Number(lastSelectOptions.value) + 1 : 1;
+    const option = document.createElement('osds-select-option');
+    option.innerText = `Value ${nextValue}`;
+    option.value = nextValue;
+    select.appendChild(option);
+  });
+</script>
+
 </body>
 </html>

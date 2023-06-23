@@ -104,11 +104,6 @@ export class OsdsSelect implements OdsSelect<OdsStencilMethods<OdsSelectMethods>
     this.odsBlur.emit();
   }
 
-  @Watch('defaultValue')
-  onDefaultValueChange(defaultValue?: OdsInputValue) {
-    this.logger.debug(`[input=${this.value}]`, 'defaultValue', defaultValue);
-  }
-
   componentWillLoad() {
     this.onDefaultValueChange();
     if (this.value === '' && this.defaultValue !== undefined) {
@@ -122,7 +117,13 @@ export class OsdsSelect implements OdsSelect<OdsStencilMethods<OdsSelectMethods>
    * in order to synchronize the already set value with the placeholder
    */
   async componentDidLoad() {
+    this.setSelectOptions();
     await this.updateSelectOptionStates(this.value);
+  }
+
+  @Watch('defaultValue')
+  onDefaultValueChange(defaultValue?: OdsInputValue) {
+    this.logger.debug(`[input=${this.value}]`, 'defaultValue', defaultValue);
   }
 
   @Watch('opened')
@@ -213,9 +214,8 @@ export class OsdsSelect implements OdsSelect<OdsStencilMethods<OdsSelectMethods>
   }
 
   private async updateSelectOptionStates(value?: OdsInputValue) {
-    const selectOptions = this.controller.getSelectOptionList();
     let nbSelected = 0;
-    for (const selectOption of selectOptions) {
+    for (const selectOption of this.controller.selectOptions) {
       selectOption.selected = (value === selectOption.value) && !nbSelected ;
       if (selectOption.selected) {
         this.optionSelected = selectOption;
@@ -278,6 +278,18 @@ export class OsdsSelect implements OdsSelect<OdsStencilMethods<OdsSelectMethods>
     this.controller.syncReferences()
   }
 
+  handleSlotChange() {
+    this.setSelectOptions();
+  }
+
+  setSelectOptions() {
+    this.controller.selectOptions = this.getSelectOptionList();
+  }
+
+  getSelectOptionList(): (HTMLElement & OdsSelectOption)[] {
+    return Array.from(this.el.querySelectorAll<OdsSelectOption & HTMLElement>('osds-select-option'));
+  }
+
   private hasError(): boolean {
     return this.validityState.invalid;
   }
@@ -328,7 +340,7 @@ export class OsdsSelect implements OdsSelect<OdsStencilMethods<OdsSelectMethods>
               this.syncReferences();
             }
           }}>
-          <slot></slot>
+          <slot onSlotchange={() => this.handleSlotChange()}></slot>
         </ocdk-surface>
       </Host>
     );

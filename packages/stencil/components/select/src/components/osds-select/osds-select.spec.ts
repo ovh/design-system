@@ -65,6 +65,15 @@ describe('spec:osds-select', () => {
     });
   });
 
+  describe('Life cycle', () => {
+    it('should call setSelectOptions', async () => {
+      await setup({ attributes: { } });
+      const spySetSelectOptions = jest.spyOn(instance, 'setSelectOptions');
+      await instance.componentDidLoad();
+      expect(spySetSelectOptions).toHaveBeenCalled();
+    });
+  })
+
   describe('attributes', () => {
 
     function getAttributeContextOptions<Name extends keyof OdsSelectAttributes = keyof OdsSelectAttributes>({
@@ -202,6 +211,13 @@ describe('spec:osds-select', () => {
       const validity = await instance.getValidity();
       expect(instance.getValidity).toHaveBeenCalledTimes(1);
       expect(validity?.invalid).toBe(false);
+    });
+
+    it('should handle slot change', async () => {
+      await setup({ attributes: { } });
+      const spySetSelectOptions = jest.spyOn(instance, 'setSelectOptions');
+      instance.handleSlotChange();
+      expect(spySetSelectOptions).toHaveBeenCalled();
     });
   });
 

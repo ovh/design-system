@@ -8,6 +8,14 @@ import { OdsSelectOption, OdsSelectOptionClickEventDetail } from '../public-api'
  * it contains all the glue between framework implementation and the third party service.
  */
 export class OdsSelectController extends OdsComponentController<OdsSelect> {
+  private _selectOptions: (HTMLElement & OdsSelectOption)[] = [];
+
+  public get selectOptions(): (HTMLElement & OdsSelectOption)[] {
+    return this._selectOptions;
+  }
+  public set selectOptions(value: (HTMLElement & OdsSelectOption)[]) {
+    this._selectOptions = value;
+  }
 
   constructor(component: OdsSelect) {
     super(component);
@@ -70,35 +78,30 @@ export class OdsSelectController extends OdsComponentController<OdsSelect> {
   }
 
   handlerKeyDown(event: KeyboardEvent): void {
-    const isEnter = event.code.includes('Enter');
-    const isEscape = event.code.includes('Escape');
-    const isArrowDownOrUp = event.code === 'ArrowUp' || event.code === 'ArrowDown';
-    if (!isEnter && !isArrowDownOrUp && !isEscape) {
-      return;
-    }
-    if (isEscape) {
-      return this.closeSurface();
-    }
-    const selectOptions = this.getSelectOptionList();
-    const selectedSelectOptionIndex = selectOptions.findIndex((select) => select.selected || document.activeElement === select);
-    if (isEnter) {
-      return this.handlerKeyEnter(selectOptions[selectedSelectOptionIndex]);
-    }
-
-    if (isArrowDownOrUp) {
-      return this.handlerKeyArrow(event, selectOptions, selectedSelectOptionIndex);    
+    const selectedSelectOptionIndex = this.selectOptions.findIndex((select) => select.getAttribute('selected') !== null || document.activeElement === select);
+    switch (event.code) {
+      case 'Escape':
+        return this.closeSurface();
+      case 'ArrowUp':
+      case 'ArrowDown':
+        return this.handlerKeyArrow(event, selectedSelectOptionIndex);    
+      case 'Enter':
+      case 'NumpadEnter':
+        return this.handlerKeyEnter(this.selectOptions[selectedSelectOptionIndex]);
+      default:
+        break;
     }
   }
 
-  private handlerKeyArrow(event: KeyboardEvent, selectOptions: (HTMLElement & OdsSelectOption)[], selectedSelectOptionIndex: number): void {
+  private handlerKeyArrow(event: KeyboardEvent, selectedSelectOptionIndex: number): void {
     const focusSelectOption = (index: number) => {
-      selectOptions[index].focus();
-      selectOptions[index].setAttribute('selected', '');
+      this.selectOptions[index].focus();
+      this.selectOptions[index].setAttribute('selected', '');
     }
     const hasSelectedOption = selectedSelectOptionIndex !== -1;
     if (hasSelectedOption) {
-      selectOptions[selectedSelectOptionIndex].removeAttribute('selected');
-      selectOptions[selectedSelectOptionIndex].blur();
+      this.selectOptions[selectedSelectOptionIndex].removeAttribute('selected');
+      this.selectOptions[selectedSelectOptionIndex].blur();
     }
     if (event.code === 'ArrowUp') {
       const index = hasSelectedOption ? selectedSelectOptionIndex - 1 : 0;
@@ -110,7 +113,7 @@ export class OdsSelectController extends OdsComponentController<OdsSelect> {
     }
     if (event.code === 'ArrowDown') {
       const index = hasSelectedOption ? selectedSelectOptionIndex + 1 : 0;
-      if (index >= selectOptions.length) {
+      if (index >= this.selectOptions.length) {
         return;
       }
       return focusSelectOption(index);
@@ -126,9 +129,5 @@ export class OdsSelectController extends OdsComponentController<OdsSelect> {
         value: selectOption?.value || null,
       }
     }));
-  }
-  
-  getSelectOptionList(): (HTMLElement & OdsSelectOption)[] {
-    return Array.from(this.component.el.querySelectorAll<OdsSelectOption & HTMLElement>('osds-select-option'));
   }
 }

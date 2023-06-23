@@ -1,0 +1,12 @@
+@import '~@ovhcloud/ods-theming/color/ods-component-color';
+@import 'osds-link.mixins';
+
+@mixin osds-link-theme-size() {
+  :host {
+    @include osds-link-on-text-container() {
+      display: inline-flex;
+      align-items: baseline;
+    }
+  }
+}
+

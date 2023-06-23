@@ -111,7 +111,9 @@ export class OsdsAccordion implements OdsAccordion<OdsStencilMethods<OdsAccordio
               contrasted
             }}></osds-icon>
           </summary>
-          <slot></slot>
+            <osds-collapsible opened={opened}>
+              <slot></slot>
+            </osds-collapsible>
         </details>
       </Host>
     );

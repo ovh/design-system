@@ -1,17 +1,21 @@
 @import './ods-theming-size.accordion';
+@import './ods-theming-size.breadcrumb';
 @import './ods-theming-size.button';
 @import './ods-theming-size.cart';
 @import './ods-theming-size.checkbox-button';
 @import './ods-theming-size.chip';
 @import './ods-theming-size.code';
+@import './ods-theming-size.collapsible';
 @import './ods-theming-size.divider';
 @import './ods-theming-size.icon';
 @import './ods-theming-size.input';
+@import './ods-theming-size.pagination';
 @import './ods-theming-size.popover.scss';
 @import './ods-theming-size.radio-button';
 @import './ods-theming-size.range';
-@import './ods-theming-size.skeleton';
 @import './ods-theming-size.select';
+@import './ods-theming-size.skeleton';
+@import './ods-theming-size.spinner';
 @import './ods-theming-size.tabs';
 @import './ods-theming-size.text';
 @import './ods-theming-size.textarea';
@@ -22,6 +26,7 @@
 /// @access public
 $ods-size-definitions: (
   accordion: ods-get-accordion-component-size-definition(),
+  breadcrumb: ods-get-breadcrumb-component-size-definition(),
   button: ods-get-button-component-size-definition(),
   cart: ods-get-cart-component-size-definition(),
   checkbox-button: ods-get-checkbox-button-component-size-definition(),
@@ -30,10 +35,12 @@ $ods-size-definitions: (
   divider: ods-get-divider-component-size-definition(),
   icon: ods-get-icon-component-size-definition(),
   input: ods-get-input-component-size-definition(),
+  pagination: ods-get-pagination-component-size-definition(),
   radio-button: ods-get-radio-button-component-size-definition(),
   range: ods-get-range-component-size-definition(),
-  skeleton: ods-get-skeleton-component-size-definition(),
   select: ods-get-select-component-size-definition(),
+  skeleton: ods-get-skeleton-component-size-definition(),
+  spinner: ods-get-spinner-component-size-definition(),
   tabs: ods-get-tabs-component-size-definition(),
   text: ods-get-text-component-size-definition(),
   textarea: ods-get-textarea-component-size-definition(),

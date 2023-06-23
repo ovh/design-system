@@ -1,6 +1,3 @@
-import DesignButtonVariants from '../components/button/design-button-variants.mdx';
-
-
 # Components principles
 _All components have to follow some rules about color,
 size, variant and contrast_
@@ -10,16 +7,18 @@ Each component take as input the color.
 If no color is specified, the default one is applied.
 
 the color can be:
+| color         | example                                                        | description                                   |
+| ------------- | -------------------------------------------------------------- | --------------------------------------------- |
+| **default**   | <img alt="Preview of default" src={props.links.default} />     | The default color, regardless of brand colors |
+| **primary**   | <img alt="Preview of primary" src={props.links.primary} />     | Referring to the brand color                  |
+| **text**      | <img alt="Preview of text" src={props.links.text} />           | Referring to the brand text color             |
+| **accent**    | <img alt="Preview of accent" src={props.links.accent} />       | Referring to the accent brand color           |
+| **error**     | <img alt="Preview of error" src={props.links.error} />         | Referring to the error color                  |
+| **warning**   | <img alt="Preview of warning" src={props.links.warning} />     | Referring to the warning color                |
+| **success**   | <img alt="Preview of success" src={props.links.success} />     | Referring to the success color                |
+| **info**      | <img alt="Preview of info" src={props.links.info} />           | Referring to the info color                   |
+| **promotion** | <img alt="Preview of promotion" src={props.links.promotion} /> | Referring to the promotion color              |
 
-| size    | description |
-|---------|-------------|
-| default<br />`by default` | mainly no color            |
-| primary | the most used color |
-| accent  | used to render visible a specific component, like CTAs buttons|
-| error   | the component is in error state |
-| warning | the component have a warning to notice |
-| info    | the component have a info to notice |
-| success | the component is in a done success |
 
 ## Size
 Each component can have different sizes.
@@ -39,7 +38,6 @@ They are specific for each component.
 A variant is an alternative design for the same component.
 
 For instance, the `button` component have some variants:
-<DesignButtonVariants />
 
 The `variant` attribute is an `enum` and set by default to the default variant.
 

@@ -14,12 +14,15 @@ export interface OdsLinkAttributes extends OdsComponentAttributes {
   /**  Link as download source */
   download?: HTMLAnchorElement['download']
   /** Link URL */
-  href: string
+  href?: string
   /** Link referrer policy */
   referrerpolicy?: OdsLinkReferrerpolicy
   /**  Link relationship */
   rel?: OdsHTMLAnchorElementRel
-  /** Link target type */
+  /** 
+   * Link target type
+   * If href is set the default value `_self` is set
+   */
   target?: OdsHTMLAnchorElementTarget
   /** Link type (for download source) */
   type?: string

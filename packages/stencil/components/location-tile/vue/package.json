@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-stencil-location-tile-vue",
-  "version": "12.1.0",
+  "version": "13.0.1",
   "private": true,
   "description": "Vue specific wrapper for ods",
   "keywords": [],
@@ -20,7 +20,7 @@
     "dist/"
   ],
   "dependencies": {
-    "@ovhcloud/ods-stencil-location-tile": "^12.1.0"
+    "@ovhcloud/ods-stencil-location-tile": "^13.0.1"
   },
   "peerDependencies": {
     "vue": ">=3"

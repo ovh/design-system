@@ -261,6 +261,20 @@ describe('e2e:osds-input', () => {
         };
       });
 
+      it('should not emit odsValueChange on init', async () => {
+        let odsValueChange;
+        await setup({
+          onPage: ({ page }) => {
+            page.on('load', async() => {
+              odsValueChange = await page.spyOnEvent('odsValueChange');
+            })
+          }
+        });
+        await page.waitForChanges();
+
+        expect(odsValueChange).not.toHaveReceivedEvent();
+      });
+
       it('should emit when user change the value', async () => {
         await setup({});
         const odsValueChange = await el.spyOnEvent('odsValueChange');

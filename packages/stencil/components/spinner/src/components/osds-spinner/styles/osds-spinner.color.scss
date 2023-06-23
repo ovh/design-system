@@ -1,0 +1,20 @@
+@import '~@ovhcloud/ods-theming/color/ods-component-color';
+@import './osds-spinner.mixins';
+
+// Main CSS color theme mixin
+@mixin osds-spinner-theme-color() {
+  /** base colors */
+  :host {
+    border-color: transparent;
+  }
+
+  :not([contrasted]) {
+    @include osds-spinner-on-selected-host() {
+      fill: ods-get-color-variable($intent-name: 'primary', $hue: '500');
+    }
+  }
+
+  :host([contrasted]) {
+    fill: ods-get-color-variable($intent-name: 'primary', $hue: '500-contrasted');
+  }
+}

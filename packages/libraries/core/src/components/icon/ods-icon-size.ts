@@ -36,6 +36,7 @@ export enum OdsIconName {
    CLOCK_WAIT = 'clock-wait',
    CLOSE = 'close',
    COPY = 'copy',
+   DOWNLOAD = 'download',
    ELLIPSIS_VERTICAL = 'ellipsis-vertical',
    ELLIPSIS = 'ellipsis',
    EMAIL = 'email',

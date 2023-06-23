@@ -30,8 +30,17 @@ describe('e2e:osds-chip', () => {
 
   describe('screenshots', () => {
     // Todo : add active behaviour on top of hover and focus
-    [() => {}, () => el.setProperty('contrasted', true), () => el.setProperty('disabled', true), () => {el.setProperty('contrasted', true); el.setProperty('disabled', true)} ].forEach((action) => {
-      [() => {}, () => {el.setProperty('selectable', true); el.hover()}, () => {el.setProperty('selectable', true); el.focus()}].forEach((behaviour) => {
+    [
+      () => {},
+      () => el.setProperty('contrasted', true),
+      () => el.setProperty('disabled', true),
+      () => {el.setProperty('contrasted', true); el.setProperty('disabled', true)}
+    ].forEach((action) => {
+      [
+        () => {},
+        () => {el.setProperty('selectable', true); el.hover()},
+        () => {el.setProperty('selectable', true); el.focus()}
+      ].forEach((behaviour) => {
         OdsThemeColorIntentList.forEach((color) => {
           OdsChipSizeList.forEach((size) => {
             OdsChipVariantList.forEach((variant) => {

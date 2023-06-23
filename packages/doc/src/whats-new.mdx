@@ -8,6 +8,39 @@
 
 # What's new ?
 
+As it is a major version, you have to do the [migration guide 12.x to 13.x](/story/ovhcloud-design-system-what-s-new-migration-guide-12-x-to-13-x--page)
+
+## v13.0.0
+### New features:
+We added the following components:
+* Breadcrumb: [See Breadcrumb Documentation](/story/ui-components-breadcrumb-molecule-web-component--default)
+* Collapsible: [See Collapsible Documentation](/story/ui-components-collapsible-meta-web-component--default)
+* Pagination: [See Pagination Documentation](/story/ui-components-pagination-molecule-web-component--default)
+* Spinner: [See Spinner Documentation](/story/ui-components-spinner-atom-web-component--default)
+
+[Circle-shaped button](/story/ui-components-button%EF%B8%8F-atom-web-component--default) has been added to Button Component (circle attribute)
+
+### Bug fixes:
+* Button: `button' and `link` roles have been added (switching to `link` role when Button has a href property)
+
+* Chip: expected style on Chip focus has been applied
+
+* Icon: missing download icon has been added
+
+* Input: odsValueChange event won't emit on component init
+
+* Link:
+  * all content in Link is now aligned as expected
+  * href and target attributes are optional
+
+* Select :
+  * check for outside click target inside its DOM
+  * fixed width on non flex Select has been removed
+  > ⚠️️ **Breaking change**<br />
+  > For more information, check our migration guide
+
+
+
 ## v12.1.0
 
 ### New features:

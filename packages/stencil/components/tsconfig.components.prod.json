@@ -6,18 +6,21 @@
     "declaration": true,
     "allowJs": true,
     "paths": {
-      "@ovhcloud/ods-stencil/components/*": ["./packages/stencil/components/*"]
+      "@ovhcloud/ods-stencil/components/*": [
+        "./packages/stencil/components/*"
+      ]
     }
   },
   "include": [
-    "src",
     "accordion/src",
+    "breadcrumb/src",
     "button/src",
     "cart/src",
-    "checkbox/src",
     "checkbox-button/src",
+    "checkbox/src",
     "chip/src",
     "code/src",
+    "collapsible/src",
     "content-addon/src",
     "divider/src",
     "flag/src",
@@ -26,13 +29,17 @@
     "link/src",
     "location-tile/src",
     "message/src",
+    "pagination/src",
     "popover/src",
+    "progress-bar/src",
     "quantity/src",
-    "radio/src",
     "radio-button/src",
+    "radio/src",
     "range/src",
     "select/src",
     "skeleton/src",
+    "spinner/src",
+    "src",
     "tabs/src",
     "text/src",
     "textarea/src",

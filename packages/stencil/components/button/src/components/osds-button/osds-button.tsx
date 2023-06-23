@@ -43,7 +43,7 @@ export class OsdsButton implements OdsButton<OdsStencilMethods<OdsButtonMethods>
   @Prop() public download?: HTMLAnchorElement['download'] = odsButtonDefaultAttributes.download;
 
   /** @see OdsButtonAttributes.flex */
-  @Prop({ reflect: true }) public flex? = odsButtonDefaultAttributes.flex;
+  @Prop({ reflect: true, mutable: true }) public flex? = odsButtonDefaultAttributes.flex;
 
   /** @see OdsButtonAttributes.href */
   @Prop({ reflect: true }) public href?: string;
@@ -61,7 +61,10 @@ export class OsdsButton implements OdsButton<OdsStencilMethods<OdsButtonMethods>
   @Prop({ reflect: true }) type?: OdsButtonType = odsButtonDefaultAttributes.type;
 
   /** @see OdsButtonAttributes.variant */
-  @Prop({ reflect: true }) public variant?: OdsButtonVariant = odsButtonDefaultAttributes.variant;
+  @Prop({ reflect: true, mutable: true }) public variant?: OdsButtonVariant = odsButtonDefaultAttributes.variant;
+
+  /** @see OdsButtonAttributes.circle */
+  @Prop({ reflect: true }) public circle? = odsButtonDefaultAttributes.circle;
 
   @Listen('keyup')
   handleKey(event: KeyboardEvent) {
@@ -76,6 +79,7 @@ export class OsdsButton implements OdsButton<OdsStencilMethods<OdsButtonMethods>
   /** @see OdsButtonBehavior.beforeRender */
   beforeRender(): void {
     this.controller.validateAttributes();
+    this.controller.mutateAttributes();
   }
 
   componentWillRender(): void {
@@ -100,6 +104,7 @@ export class OsdsButton implements OdsButton<OdsStencilMethods<OdsButtonMethods>
           class: 'button',
           href: this.href,
           part: 'button',
+          role: 'link',
           tabindex: -1,
           target: this.target,
           rel: this.rel,
@@ -115,6 +120,7 @@ export class OsdsButton implements OdsButton<OdsStencilMethods<OdsButtonMethods>
           type: this.type,
           disabled: this.disabled,
           part: 'button',
+          role: 'button',
           tabindex: -1,
         }}>
           {content}

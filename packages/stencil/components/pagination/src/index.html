@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html dir='ltr' lang='en'>
+<head>
+  <meta charset='utf-8'/>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0'/>
+  <title>Dev osds-pagination</title>
+
+  <script type="module">
+    !window.ods && (window.ods = {config: {logging: {active: true}}});
+  </script>
+
+  <script type='module' src='/build/osds-pagination.esm.js'></script>
+  <script nomodule src='/build/osds-pagination.js'></script>
+  <link rel="stylesheet" href="/build/osds-pagination.css">
+  <style>
+    h3 {
+      font-family: 'Gill Sans', Georgia;
+    }
+  </style>
+</head>
+<body>
+
+<h3>3rd page and previous</h3>
+<div style="text-align:center">
+<osds-pagination current=3 total=21 id="pagination1"></osds-pagination>
+<p id="pagination1-info" style="font-style: italic;">21 pages to display, current page 3</p>
+</div>
+
+<h3>Between 3rd and antepenultimate page</h3>
+<div style="text-align:center">
+  <osds-pagination current=2 total=4 id="pagination2"></osds-pagination>
+  <p id="pagination2-info" style="font-style: italic;">4 pages to display, current page 1</p>
+  </div>
+
+<div style="text-align:center">
+<osds-pagination current=5 total=5 id="pagination3"></osds-pagination>
+<p id="pagination3-info" style="font-style: italic;">5 pages to display, current page 5</p>
+</div>
+
+<h3>Antepenultimate page and after</h3>
+<div style="text-align:center">
+  <osds-pagination current=5 total=6 id="pagination4"></osds-pagination>
+  <p id="pagination4-info" style="font-style: italic;">6 pages to display, current page 5</p>
+  </div>
+
+  <div style="text-align:center">
+    <osds-pagination current=5 total=7 id="pagination5"></osds-pagination>
+    <p id="pagination5-info" style="font-style: italic;">7 pages to display, current page 5</p>
+    </div>
+
+<div style="text-align:center">
+<osds-pagination current=5 total=9 id="pagination6"></osds-pagination>
+<p id="pagination6-info" style="font-style: italic;">9 pages to display, current page 5</p>
+</div>
+
+<h3>disabled</h3>
+<div style="text-align:center">
+<osds-pagination current=1 total=6 id="pagination7" disabled></osds-pagination>
+<p id="pagination7-info" style="font-style: italic;"></p>
+</div>
+
+<h3>With background with over 9000 pages</h3>
+<div style="text-align:center; background: #ccc; padding: 25px;">
+<osds-pagination current=1 total=9001 id="pagination8" ></osds-pagination>
+<p id="pagination8-info" style="font-style: italic;">It's over 9000</p>
+</div>
+
+</body>
+</html>

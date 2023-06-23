@@ -1,0 +1,18 @@
+@import 'styles/osds-breadcrumb.mixins';
+@import 'styles/osds-breadcrumb.color';
+@import 'styles/osds-breadcrumb.size';
+@import 'styles/osds-breadcrumb.typography';
+@import '~@ovhcloud/ods-theming/color/ods-theming-color';
+@import '~@ovhcloud/ods-theming/ods-theme';
+
+:host {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+@include ods-theme-component() {
+  @include osds-breadcrumb-theme-color();
+  @include osds-breadcrumb-theme-size();
+  @include osds-breadcrumb-theme-typography();
+}

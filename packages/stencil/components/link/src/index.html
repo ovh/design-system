@@ -20,12 +20,24 @@
 <osds-link color="primary">primary</osds-link>
 <osds-link color="success">success</osds-link>
 
+<p>Slots</p>
+<osds-link>
+  with-prefix-icon
+  <span slot='start'><osds-icon name="arrow-left" size="xs" color="primary"></osds-icon></span>
+</osds-link>
+<osds-link>
+  with-suffix-icon
+  <span slot='end'><osds-icon name="arrow-right" size="xs" color="primary"></osds-icon></span>
+</osds-link>
+
 <p>Disabled</p>
 <osds-link disabled>Default</osds-link>
 
 <p>Contrasted</p>
 <osds-link contrasted>Default</osds-link>
 
+<p>Link with href</p>
+<osds-link href="https://www.ovhcloud.com">Go to OVH</osds-link>
 <script>
 
   let logger;

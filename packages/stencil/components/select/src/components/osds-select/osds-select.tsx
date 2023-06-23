@@ -219,14 +219,18 @@ export class OsdsSelect implements OdsSelect<OdsStencilMethods<OdsSelectMethods>
   // Toggle overlay when we click on the Select.
   private handleSelectClick() {
     this.logger.log('[handleSelectClick]', arguments, { validity: this.validityState });
-    this.dirty = true;
-    this.opened = !this.opened;
+    if (!this.disabled) {
+      this.dirty = true;
+      this.opened = !this.opened;
+    }
   }
 
   // Hide overlay when we click anywhere else in the window.
   @Listen('click', { target: 'window' })
   checkForClickOutside(ev: any) {
-    if (!this.dirty || this.el.contains(ev.target)) { // click on component, do nothing
+    const srcElement = ev.composedPath()[0]
+
+    if (!this.dirty || this.el.contains(ev.target) || this.el.shadowRoot?.contains(srcElement)) {
       return;
     }
     this.logger.log('[checkForClickOutside]', arguments, { validity: this.validityState });

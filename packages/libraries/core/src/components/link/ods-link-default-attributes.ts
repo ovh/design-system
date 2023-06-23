@@ -1,6 +1,5 @@
 import { OdsLinkAttributes } from './ods-link-attributes';
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
-import { OdsHTMLAnchorElementTarget } from '../../types/ods-html-anchor-element-target';
 
 /**
  * default attribute values of link
@@ -10,10 +9,10 @@ export const odsLinkDefaultAttributesDoc = {
   contrasted: false,
   disabled: false,
   download: undefined,
-  href: '',
+  href: undefined,
   referrerpolicy: undefined,
   rel: undefined,
-  target: OdsHTMLAnchorElementTarget._self,
+  target: undefined,
   type: undefined,
 } as const;
 

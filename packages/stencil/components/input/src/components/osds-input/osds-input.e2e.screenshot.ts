@@ -70,6 +70,13 @@ describe('e2e:osds-input', () => {
         el.setProperty('icon', 'ovh');
       },
     }, {
+      // Will display the input with its type date and a value
+      actionDescription: 'type date & value',
+      action: () => {
+        el.setProperty('type', OdsInputType.date);
+        el.setProperty('value', '1999-11-02');
+      },
+    }, {
       // Will display the input with its type email and a value
       actionDescription: 'type email & value',
       action: () => {
@@ -109,7 +116,14 @@ describe('e2e:osds-input', () => {
       actionDescription: 'type text & value',
       action: () => {
         el.setProperty('type', OdsInputType.text);
-        el.setProperty('value', 'Just ODS being ahead');
+        el.setProperty('value', 'On Vous Héberge ?');
+      },
+    }, {
+      // Will display the input with its type time and a value
+      actionDescription: 'type time & value',
+      action: () => {
+        el.setProperty('type', OdsInputType.time);
+        el.setProperty('value', '09:00');
       },
     }, {
       // Will display the input with its type url and a value

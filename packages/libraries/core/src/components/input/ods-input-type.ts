@@ -1,12 +1,14 @@
 import { OdsInput } from "./ods-input";
 
 export enum OdsInputType {
+  date = 'date',
   email = 'email',
   number = 'number',
   password = 'password',
   search = 'search',
   tel = 'tel',
   text = 'text',
+  time = 'time',
   url = 'url',
 }
 

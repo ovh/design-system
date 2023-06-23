@@ -5449,13 +5449,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-cdk@npm:^12.1.0":
-  version: 12.1.3
-  resolution: "@ovhcloud/ods-cdk@npm:12.1.3"
-  checksum: 3b9ec3ec6bc2a3240d8b1e4593a676adc326e515ab7945bb592ca40b03d07fdab5ceda8bcb301a7f4fe73e9f16fc22e2157c60d5d7e264503a676290088bfa53
-  languageName: node
-  linkType: hard
-
 "@ovhcloud/ods-component-generator@workspace:packages/tools/generator/component":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-generator@workspace:packages/tools/generator/component"
@@ -5470,7 +5463,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-core@workspace:packages/libraries/core"
   dependencies:
-    "@ovhcloud/ods-cdk": ^12.1.0
+    "@ovhcloud/ods-cdk": ^13.0.1
     "@ovhcloud/ods-library-dev": ^13.0.1
     "@ovhcloud/ods-theming": ^13.0.1
   peerDependencies:
@@ -6433,7 +6426,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-popover-react@workspace:packages/stencil/components/popover/react"
   dependencies:
-    "@ovhcloud/ods-stencil-popover": ^12.1.0
+    "@ovhcloud/ods-stencil-popover": ^13.0.1
     "@types/react": 17.0.37
     "@types/react-dom": 17.0.11
     react: 16.14.0
@@ -6451,7 +6444,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-popover-vue@workspace:packages/stencil/components/popover/vue"
   dependencies:
-    "@ovhcloud/ods-stencil-popover": ^12.1.0
+    "@ovhcloud/ods-stencil-popover": ^13.0.1
     rimraf: ^3.0.2
     typescript: 4.7.4
     vue: ^3.2.41
@@ -6460,7 +6453,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-popover@^12.1.0, @ovhcloud/ods-stencil-popover@workspace:packages/stencil/components/popover":
+"@ovhcloud/ods-stencil-popover@^13.0.1, @ovhcloud/ods-stencil-popover@workspace:packages/stencil/components/popover":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-popover@workspace:packages/stencil/components/popover"
   dependencies:

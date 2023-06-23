@@ -20,7 +20,7 @@
     "dist/"
   ],
   "dependencies": {
-    "@ovhcloud/ods-stencil-popover": "^12.1.0",
+    "@ovhcloud/ods-stencil-popover": "^13.0.1",
     "tslib": "*"
   },
   "peerDependencies": {

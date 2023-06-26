@@ -6,6 +6,7 @@ export const odsIconDefaultAttributesDoc  = {
   ariaName: '',
   color: OdsThemeColorIntent.default,
   contrasted: false,
+  hoverable: false,
   name: undefined,
   size: OdsIconSize.md
 } as const;

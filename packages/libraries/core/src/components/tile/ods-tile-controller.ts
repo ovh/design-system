@@ -43,13 +43,6 @@ export class OdsTileController extends OdsComponentController<OdsTile> {
     });
   }
 
-  getTabIndex(): number {
-    if (!this.component.disabled && this.component.interactive) {
-      return 0;
-    }
-    return -1;
-  }
-
   handleClick(): void {
     // todo make a animation onclick
     this.logger.log('[tile]', 'clicked');

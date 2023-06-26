@@ -9,45 +9,48 @@
     !window.ods && (window.ods = {config: {logging: {active:true}}});
   </script>
 
-  <script type='module' src='/build/ods-tile.esm.js'></script>
-  <script nomodule src='/build/ods-tile.js'></script>
-  <link rel="stylesheet" href="/build/ods-tile.css">
+  <script type='module' src='/build/osds-tile.esm.js'></script>
+  <script nomodule src='/build/osds-tile.js'></script>
+  <link rel="stylesheet" href="/build/osds-tile.css">
 </head>
 <body>
 
 <p>Size</p>
-<osds-tile size='s'>Small</osds-tile>
-<osds-tile>Default</osds-tile>
-<osds-tile size='l'>Large</osds-tile>
+<osds-tile size='sm'>Small</osds-tile>
+<osds-tile size='md'>Medium</osds-tile>
 
 <p>Variant</p>
+<osds-tile variant='flat'>Flat</osds-tile>
+<osds-tile variant='stroked'>Stroked</osds-tile>
 <osds-tile variant='ghost'>Ghost</osds-tile>
-<osds-tile variant='primary'>Primary</osds-tile>
-<osds-tile variant='secondary'>Secondary</osds-tile>
+<osds-tile variant='hollow'>Hollow</osds-tile>
 
-<p>Block</p>
-<osds-tile block size='s'>Block small</osds-tile>
-<osds-tile block>Block</osds-tile>
-<osds-tile block size='l'>Block large</osds-tile>
+<p>Attributes</p>
+<osds-tile size='md' contrasted=''>Contrasted</osds-tile><br/>
+<osds-tile size='md' disabled=''>Disabled</osds-tile><br/>
+<osds-tile size='md' flex=''>Flex</osds-tile><br/>
+<osds-tile size='md' rounded=''>Rounded</osds-tile><br/>
+<osds-tile size='md' hoverable=''>Hoverable</osds-tile><br/>
+<osds-tile size='md' checked=''>Checked</osds-tile><br/>
+<osds-tile size='md' checking=''>Checking</osds-tile>
 
-<p>Square</p>
-<osds-tile square size='s'>Square small</osds-tile>
-<osds-tile square>Square</osds-tile>
-<osds-tile square size='l'>Square large</osds-tile>
+<p>Slot</p>
+<osds-tile size='md'>
+  <span slot="start">Start-</span>
+  <span>tileContent</span>
+  <span slot="end">-End</span>
+</osds-tile>
 
-<p>Disabled</p>
-<osds-tile size='s' disabled>Small</osds-tile>
-<osds-tile disabled>Default</osds-tile>
-<osds-tile size='l' disabled>Large</osds-tile>
-<osds-tile variant='ghost' disabled>Ghost</osds-tile>
-<osds-tile variant='primary' disabled>Primary</osds-tile>
-<osds-tile variant='secondary' disabled>Secondary</osds-tile>
-<osds-tile block size='s' disabled>Block small</osds-tile>
-<osds-tile block disabled>Block</osds-tile>
-<osds-tile block size='l' disabled>Block large</osds-tile>
-<osds-tile square size='s' disabled>Square small</osds-tile>
-<osds-tile square disabled>Square</osds-tile>
-<osds-tile square size='l' disabled>Square large</osds-tile>
+<p>Color</p>
+<osds-tile size='md' color='primary'>Primary</osds-tile>
+<osds-tile size='md' color='text'>Text</osds-tile>
+<osds-tile size='md' color='accent'>Accent</osds-tile>
+<osds-tile size='md' color='error'>Error</osds-tile>
+<osds-tile size='md' color='warning'>Warning</osds-tile>
+<osds-tile size='md' color='success'>Success</osds-tile>
+<osds-tile size='md' color='info'>Info</osds-tile>
+<osds-tile size='md' color='promotion'>Promotion</osds-tile>
+
 
 <script>
   document.querySelectorAll('ods-tile').forEach((elem) => {});

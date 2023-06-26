@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-starter-react-vite",
-  "version": "12.1.0",
+  "version": "13.0.1",
   "private": true,
   "description": "ODS react vite application starter",
   "author": "OVH SAS",
@@ -13,10 +13,10 @@
     "build:prod": "npm run build"
   },
   "dependencies": {
-    "@ovhcloud/ods-core": "^12.1.0",
-    "@ovhcloud/ods-stencil": "^12.1.0",
-    "@ovhcloud/ods-theme-blue-jeans": "^12.1.0",
-    "@ovhcloud/ods-theming": "^12.1.0",
+    "@ovhcloud/ods-core": "^13.0.1",
+    "@ovhcloud/ods-stencil": "^13.0.1",
+    "@ovhcloud/ods-theme-blue-jeans": "^13.0.1",
+    "@ovhcloud/ods-theming": "^13.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.10.0",

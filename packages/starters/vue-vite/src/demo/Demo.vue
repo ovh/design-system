@@ -58,10 +58,10 @@ function handleMyButtonClick() {
     <h5>Ods Tile in radio group</h5>
     <OsdsRadioGroup>
       <OsdsRadio value="A">
-        <OsdsTile interactive>Radio-group with Radio & Tile in it (option A)</OsdsTile>
+        <OsdsTile hoverable>Radio-group with Radio & Tile in it (option A)</OsdsTile>
       </OsdsRadio>
       <OsdsRadio value="B">
-        <OsdsTile interactive>Radio-group with Radio & Tile in it (option B)</OsdsTile>
+        <OsdsTile hoverable>Radio-group with Radio & Tile in it (option B)</OsdsTile>
       </OsdsRadio>
     </OsdsRadioGroup>
 

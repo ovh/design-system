@@ -1,0 +1,13 @@
+// general mixins and functions for the component
+
+@mixin osds-progress-bar-on-progress() {
+  .progress-bar {
+    @content;
+  }
+}
+
+@mixin osds-progress-bar-on-wrapper() {
+  .progress-bar__wrapper {
+    @content;
+  }
+}

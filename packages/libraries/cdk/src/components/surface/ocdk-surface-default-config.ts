@@ -20,10 +20,18 @@ export type OcdkSurfaceAvailableSpaceFct2<StrategyConfig> = {
   measurements: OcdkAutoLayoutMeasurements,
   inspections: OcdkSurfaceInspections,
   maxHeight: number;
+  maxWidth: number;
 }
 
 
 export type OcdkSurfaceMaxHeightOpt<StrategyConfig> = {
+  config: OcdkSurfaceConfig;
+  strategyConfig: StrategyConfig;
+  measurements: OcdkAutoLayoutMeasurements,
+  inspections: OcdkSurfaceInspections
+}
+
+export type OcdkSurfaceMaxWidthOpt<StrategyConfig> = {
   config: OcdkSurfaceConfig;
   strategyConfig: StrategyConfig;
   measurements: OcdkAutoLayoutMeasurements,

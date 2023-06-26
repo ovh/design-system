@@ -42,8 +42,8 @@ export class OsdsTile implements OdsTile<OdsStencilMethods<OdsTileMethods>, OdsS
   /** @see OdsTileAttributes.rounded */
   @Prop({ reflect: true }) public rounded?: boolean = odsTileDefaultAttributes.rounded;
 
-  /** @see OdsTileAttributes.interactive */
-  @Prop({ reflect: true }) public interactive?: boolean = odsTileDefaultAttributes.interactive;
+  /** @see OdsTileAttributes.hoverable */
+  @Prop({ reflect: true }) public hoverable?: boolean = odsTileDefaultAttributes.hoverable;
 
   /** @see OdsTileAttributes.loading */
   @Prop({ reflect: true }) public loading: boolean = odsTileDefaultAttributes.loading;
@@ -73,7 +73,6 @@ export class OsdsTile implements OdsTile<OdsStencilMethods<OdsTileMethods>, OdsS
     return (
       <Host {...{
         onClick: () => this.controller.handleClick(),
-        tabindex: this.controller.getTabIndex(),
       }}>
         <slot name={'start'}></slot>
         <span class={'tile__centered-text'}>

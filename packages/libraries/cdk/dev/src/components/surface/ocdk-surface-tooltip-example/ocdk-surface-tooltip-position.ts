@@ -1,6 +1,8 @@
 export enum OcdkSurfaceTooltipPosition {
   TOP = 'TOP',
-  BOTTOM = 'BOTTOM'
+  BOTTOM = 'BOTTOM',
+  LEFT = 'LEFT',
+  RIGHT = 'RIGHT'
 }
 
 export type OcdkSurfaceTooltipPositionUnion = `${OcdkSurfaceTooltipPosition}`;

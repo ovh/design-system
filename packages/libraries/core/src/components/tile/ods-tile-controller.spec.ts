@@ -80,26 +80,6 @@ describe('spec:ods-tile-controller', () => {
       });
     });
 
-    describe('methods:getTabIndex', () => {
-      [false, true].forEach(disabled => {
-        [false, true].forEach(interactive => {
-          if (!disabled && interactive) {
-            it('should return 0 [false, true]', () => {
-              setup({disabled, interactive: interactive});
-              const index = controller.getTabIndex();
-              expect(index).toBe(0);
-            });
-          } else {
-            it(`should return -1 [${disabled}, ${interactive}]`, () => {
-              setup({disabled, interactive: interactive});
-              const index = controller.getTabIndex();
-              expect(index).toBe(-1);
-            });
-          }
-        });
-      });
-    });
-
     describe('methods:handleClick', () => {
       it('should call console.log', () => {
         setup();

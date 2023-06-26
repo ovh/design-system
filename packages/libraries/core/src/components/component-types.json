@@ -1,6 +1,7 @@
 [
   "OdsAccordion",
   "OdsAccordionGroup",
+  "OdsBreadcrumb",
   "OdsButton",
   "OdsCart",
   "OdsCartFooter",
@@ -25,6 +26,7 @@
   "OdsLocationTile",
   "OdsMessage",
   "OdsPagination",
+  "OdsProgressBar",
   "OdsQuantity",
   "OdsRadio",
   "OdsRadioButton",

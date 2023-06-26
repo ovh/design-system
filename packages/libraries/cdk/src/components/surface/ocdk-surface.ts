@@ -302,8 +302,7 @@ export class OcdkSurface extends HTMLElement implements OcdkSurfaceBehaviour {
         this.style.left = 'left' in position ? `${position.left}px` : '';
         this.style.right = 'right' in position ? `${position.right}px` : '';
         this.style.top = 'top' in position ? `${position.top}px` : '';
-        this.style.bottom =
-          'bottom' in position ? `${position.bottom}px` : '';
+        this.style.bottom = 'bottom' in position ? `${position.bottom}px` : '';
       },
       cleanUpStyles: () => {
         const propertyName =
@@ -323,12 +322,25 @@ export class OcdkSurface extends HTMLElement implements OcdkSurfaceBehaviour {
       setMinHeight: (height) => {
         this.style.minHeight = height;
       },
+      setMaxWidth: (width) => {
+        this.style.maxWidth = width;
+      },
+      setMinWidth: (width) => {
+        this.style.minWidth = width;
+      },
       autoDetectItemHeight: () => {
         const elements = this.querySelector('slot')?.assignedElements();
         const firstElement = elements && elements[ 0 ] as HTMLElement | undefined;
         const height = firstElement ? firstElement.offsetHeight : 0;
         this.logger.log('[getDefaultAdapter].autoDetectItemHeight', { height });
         return height;
+      },
+      autoDetectItemWidth: () => {
+        const elements = this.querySelector('slot')?.assignedElements();
+        const firstElement = elements && elements[ 0 ] as HTMLElement | undefined;
+        const width = firstElement ? firstElement.offsetWidth : 0;
+        this.logger.log('[getDefaultAdapter].autoDetectItemWidth', { width });
+        return width;
       }
     };
     return adapter;

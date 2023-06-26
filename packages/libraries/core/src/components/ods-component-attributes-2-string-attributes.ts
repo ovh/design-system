@@ -31,6 +31,8 @@ export function OdsComponentAttributes2StringAttributes<T>(attributes: OdsCompon
         parameters[name] =  `${value}`;
       } else if (typeof value === "string") {
         parameters[name] =  `${value}`;
+      } else if (typeof value === "object") {
+        parameters[name] =  JSON.stringify(value);
       } else if(value) {
         console.warn(`your attribute ${name}=${value} cannot be set as DOM attribute. use setProperty instead`);
       }

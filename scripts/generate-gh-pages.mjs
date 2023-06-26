@@ -7,7 +7,6 @@ import { resolve } from 'path';
 import { tmpdir } from 'os';
 
 const currentVersion = require('../lerna.json').version;
-console.log('currentVersion=', currentVersion);
 
 const packageName = '@ovhcloud/ods-storybook';
 const tmpDirName = 'ods-gh-pages';
@@ -22,7 +21,6 @@ const outDirName = 'docs';
   // clean tmp specific dir
   const tmpOdsDir = resolve(tmpdir(), `${tmpDirName}`);
   await $`rm -rf ${tmpOdsDir}/*`;
-
 
   let versions = await $`npm view ${packageName} versions --json`;
   versions = JSON.parse(versions);
@@ -44,7 +42,7 @@ const outDirName = 'docs';
   }
   try {
     // add the current build (released just done)
-    // await $`cp -r packages/tools/storybook dist/v${currentVersion}`;
+    await $`cp -r packages/tools/storybook/dist dist/v${currentVersion}`;
     await $`ln -s v${currentVersion} dist/latest`;
   } catch (e) {
     console.error(`cannot add the current storybook build. ignore it`, e);

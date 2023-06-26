@@ -1,10 +1,14 @@
 import { OcdkSurfaceStrategyDefiner } from '../../core/system/ocdk-surface-strategy-definer';
 import { OcdkSurfaceStrategyDefinerConfig } from '../../core/system/ocdk-surface-strategy-definer-config';
+import { OcdkSurfaceOnePositionStrategy } from '../../core/ocdk-surface-one-position-strategy';
+import { ocdkSurfaceSymmetryBlBr } from './ocdk-surface-symmetry.bl-br';
 import { ocdkSurfaceSymmetryBlTl } from './ocdk-surface-symmetry.bl-tl';
+import { ocdkSurfaceSymmetryBrBl } from './ocdk-surface-symmetry.br-bl';
 import { ocdkSurfaceSymmetryBrTr } from './ocdk-surface-symmetry.br-tr';
 import { ocdkSurfaceSymmetryTlBl } from './ocdk-surface-symmetry.tl-bl';
 import { ocdkSurfaceSymmetryTrBr } from './ocdk-surface-symmetry.tr-br';
-import { OcdkSurfaceOnePositionStrategy } from '../../core/ocdk-surface-one-position-strategy';
+import { ocdkSurfaceSymmetryTlTr } from './ocdk-surface-symmetry.tl-tr';
+import { ocdkSurfaceSymmetryTrTl } from './ocdk-surface-symmetry.tr-tl';
 
 /**
  * global config to implement for the `symmetry` strategy
@@ -26,14 +30,14 @@ export class OcdkSurfaceSymmetryStrategy implements OcdkSurfaceStrategyDefiner<O
       // ### anchored at bottom
       ocdkSurfaceSymmetryBlTl(), // BottomLeft and TopLeft
       ocdkSurfaceSymmetryBrTr(), // BottomRight and TopRight
-      // todo: BottomRight and BottomLeft
-      // todo: BottomLeft and BottomRight
+      ocdkSurfaceSymmetryBrBl(), // BottomRight and BottomLeft
+      ocdkSurfaceSymmetryBlBr(), // BottomLeft and BottomRight
 
       // ### anchored at top
       ocdkSurfaceSymmetryTlBl(), // TopLeft and BottomLeft
-      ocdkSurfaceSymmetryTrBr()  // TopRight and BottomRight
-      // todo: TopRight and TopLeft
-      // todo: TopLeft and TopRight
+      ocdkSurfaceSymmetryTrBr(), // TopRight and BottomRight
+      ocdkSurfaceSymmetryTrTl(), // TopRight and TopLeft
+      ocdkSurfaceSymmetryTlTr()  // TopLeft and TopRight
     ];
   }
 

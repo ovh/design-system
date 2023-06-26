@@ -1,5 +1,5 @@
 import { Ods } from '@ovhcloud/ods-core';
-import { OcdkSurface, ocdkDefineCustomElements } from '@ovhcloud/ods-cdk';
+import { OcdkSurface, ocdkDefineCustomElements, OcdkSurfaceCorner } from '@ovhcloud/ods-cdk';
 import {
   OcdkSurfaceCustomStrategyExample
 } from './components/surface/strategies/custom-example/ocdk-surface-custom-strategy-example';
@@ -16,18 +16,19 @@ logger.log('init');
   const overlayPostContent1 = document.getElementById('overlay-post-content-1') as HTMLElement | null;
   const overlayTrigger1 = document.getElementById('overlay-trigger-1') as HTMLElement | null;
 
-
   const basicTrigger1 = document.getElementById('basic-trigger-1');
   const basicSurface1 = document.getElementById('basic-surface-1') as OcdkSurface | null;
   const basicTrigger2 = document.getElementById('basic-trigger-2');
   const basicSurface2 = document.getElementById('basic-surface-2') as OcdkSurface | null;
   const basicTrigger3 = document.getElementById('basic-trigger-3');
   const basicSurface3 = document.getElementById('basic-surface-3') as OcdkSurface | null;
-  basicSurface3 && (basicSurface3.animated = false);
   const basicTrigger4 = document.getElementById('basic-trigger-4');
   const basicSurface4 = document.getElementById('basic-surface-4') as OcdkSurface | null;
   const basicTrigger5 = document.getElementById('basic-trigger-5');
   const basicSurface5 = document.getElementById('basic-surface-5') as OcdkSurface | null;
+  basicSurface5 && (basicSurface5.animated = false);
+  const basicTrigger6 = document.getElementById('basic-trigger-6');
+  const basicSurface6 = document.getElementById('basic-surface-6') as OcdkSurface | null;
 
   (window as any).basic1Toggle = () => {
     // synchronize the trigger element (anchor) with the surface when both are available
@@ -49,10 +50,11 @@ logger.log('init');
     }
   }
 
+
   (window as any).basic3Toggle = () => {
     // synchronize the trigger element (anchor) with the surface when both are available
     if (basicTrigger3 && basicSurface3) {
-      basicSurface3.setAnchorElement(basicTrigger3);
+      basicSurface3.setCornerPoints({ anchor: OcdkSurfaceCorner.TOP_LEFT, origin: OcdkSurfaceCorner.TOP_RIGHT });
       // toggle the open of the surface
       basicSurface3.opened = !basicSurface3.opened;
     }
@@ -73,6 +75,15 @@ logger.log('init');
       basicSurface5.setAnchorElement(basicTrigger5);
       // toggle the open of the surface
       basicSurface5.opened = !basicSurface5.opened;
+    }
+  }
+
+  (window as any).basic6Toggle = () => {
+    // synchronize the trigger element (anchor) with the surface when both are available
+    if (basicTrigger6 && basicSurface6) {
+      basicSurface6.setAnchorElement(basicTrigger6);
+      // toggle the open of the surface
+      basicSurface6.opened = !basicSurface6.opened;
     }
   }
 

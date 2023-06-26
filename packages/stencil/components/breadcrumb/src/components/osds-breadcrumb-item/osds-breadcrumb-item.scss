@@ -1,0 +1,21 @@
+@import 'styles/osds-breadcrumb-item.mixins';
+@import 'styles/osds-breadcrumb-item.color';
+@import 'styles/osds-breadcrumb-item.size';
+@import 'styles/osds-breadcrumb-item.typography';
+@import '~@ovhcloud/ods-theming/color/ods-theming-color';
+@import '~@ovhcloud/ods-theming/ods-theme';
+
+:host {
+  display: flex;
+  align-items: center;
+}
+
+:host(.collapsed) .item {
+  display: none;
+}
+
+@include ods-theme-component() {
+  @include osds-breadcrumb-item-theme-color();
+  @include osds-breadcrumb-item-theme-size();
+  @include osds-breadcrumb-item-theme-typography();
+}

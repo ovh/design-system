@@ -12,9 +12,9 @@
     }
   }
 
-  &[interactive]:not([disabled]) {
+  &[hoverable]:not([disabled]) {
     @include ods-and-one-hue-foreach-theme-color('100') using($color) {
-      :host(&:focus), :host(&:hover), :host(&[has-focus]) {
+      :host(&:hover) {
         border-color: $color;
         background-color: $color;
       }
@@ -54,9 +54,9 @@
     }
   }
 
-  &[interactive]:not([disabled]) {
+  &[hoverable]:not([disabled]) {
     @include ods-and-one-hue-foreach-theme-color('100') using($color) {
-      :host(&:focus), :host(&:hover), :host(&[has-focus]) {
+      :host(&:hover) {
         background-color: $color;
       }
     }
@@ -69,7 +69,7 @@
 
   &[checked] {
     @include ods-and-one-hue-foreach-theme-color('500') using($color) {
-      :host(&), :host(&:focus), :host(&:hover), :host(&[has-focus]) {
+      :host(&), :host(&:hover) {
         border-color: $color;
       }
     }
@@ -99,9 +99,9 @@
     }
   }
 
-  &[interactive]:not([disabled]) {
+  &[hoverable]:not([disabled]) {
     @include ods-and-one-hue-foreach-theme-color('100') using($color) {
-      :host(&:focus), :host(&:hover), :host(&[has-focus]) {
+      :host(&:hover) {
         border-color: $color;
         background-color: $color;
       }
@@ -116,7 +116,7 @@
 
   &[checked] {
     @include ods-and-one-hue-foreach-theme-color('500') using($color) {
-      :host(&), :host(&:focus), :host(&:hover), :host(&[has-focus]) {
+      :host(&), :host(&:hover) {
         border-color: $color;
       }
     }
@@ -148,9 +148,9 @@
     }
   }
 
-  &[interactive]:not([disabled]) {
+  &[hoverable]:not([disabled]) {
     @include ods-and-one-hue-foreach-theme-color('100') using($color) {
-      :host(&:focus), :host(&:hover), :host(&[has-focus]){
+      :host(&:hover){
         background-color: transparent;
         border-color: $color;
       }
@@ -165,7 +165,7 @@
 
   &[checked] {
     @include ods-and-one-hue-foreach-theme-color('500') using($color) {
-      :host(&), :host(&:focus), :host(&:hover), :host(&[has-focus]) {
+      :host(&), :host(&:hover) {
         border-color: $color;
       }
     }
@@ -225,25 +225,5 @@
   /** ghost variant colors */
   [variant='hollow'] {
     @include osds-tile-theme-color-variant-hollow();
-  }
-
-  :not([disabled]):focus,:not([disabled])[has-focus]  {
-    @include osds-tile-on-selected-host() {
-      outline-color: var(--ods-color-gray-500);
-    }
-  }
-
-  :not([disabled])[contrasted]:focus,:not([disabled])[contrasted][has-focus] {
-    @include osds-tile-on-selected-host() {
-      outline-color: var(--ods-color-gray-000);
-    }
-  }
-
-  [interactive] {
-    @include ods-and-one-hue-foreach-theme-color('500') using($color) {
-      :host(&:focus-visible) {
-        outline-color: $color;
-      }
-    }
   }
 }

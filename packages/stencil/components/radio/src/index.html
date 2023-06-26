@@ -27,6 +27,18 @@
 </osds-radio-group>
 <p id="radio-group-a-info"></p>
 
+
+<p>radio with interactive or hoverable component inside</p>
+<osds-radio-group id="radio-group-b">
+  <osds-radio value="val-tile1">
+    <osds-tile hoverable="true">myTile1</osds-tile>
+  </osds-radio>
+  <osds-radio value="val-tile2">
+    <osds-tile interactive="true">myTile2</osds-tile>
+  </osds-radio>
+</osds-radio-group>
+
+
 <script type="module">
   document.addEventListener('odsInitialized', ({detail}) => {
     const instance = detail.instance;

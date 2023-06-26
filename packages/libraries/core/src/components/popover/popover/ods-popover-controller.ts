@@ -47,9 +47,7 @@ export class OdsPopoverController extends OdsComponentController<OdsPopover> {
 
     if(event.key === "Escape") {
       this.logger.log('EscapeKey on trigger');
-      if(this.component.surface) {
-        this.component.surface.opened = false;
-      }
+      this.closeSurface();
     }
   }
 
@@ -59,9 +57,7 @@ export class OdsPopoverController extends OdsComponentController<OdsPopover> {
   handleSurfaceKey(event: KeyboardEvent): void {
     if (event.key === "Escape") {
       this.logger.log('EscapeKey in surface');
-      if(this.component.surface) {
-        this.component.surface.opened = false;
-      }
+      this.closeSurface();
     }
   }
 
@@ -73,7 +69,7 @@ export class OdsPopoverController extends OdsComponentController<OdsPopover> {
       return;
     } else {
       this.logger.log('Click outside component while it is opened');
-      this.component.surface.opened = false;
+      this.closeSurface();
     }
   }
 
@@ -82,7 +78,7 @@ export class OdsPopoverController extends OdsComponentController<OdsPopover> {
    */
   closeSurface(): void {
     if (this.component.surface && this.component.surface.opened) {
-      this.component.surface.opened = false;
+      this.component.surface.close();
     }
   }
 

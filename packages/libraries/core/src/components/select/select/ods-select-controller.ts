@@ -120,14 +120,15 @@ export class OdsSelectController extends OdsComponentController<OdsSelect> {
     }
   }
 
-  private handlerKeyEnter(selectOption: OdsSelectOption): void {
-    if (!this.component.opened) {
+  private handlerKeyEnter(selectOption?: OdsSelectOption): void {
+    if (!this.component.opened || !selectOption) {
       return this.component.handleSelectClick();
     }
-    return this.component.handleValueChange(new CustomEvent<OdsSelectOptionClickEventDetail>('odsSelectOptionClick', {
+    this.component.handleValueChange(new CustomEvent<OdsSelectOptionClickEventDetail>('odsSelectOptionClick', {
       detail: {
-        value: selectOption?.value || null,
+        value: selectOption.value,
       }
     }));
+    this.component.setFocus();
   }
 }

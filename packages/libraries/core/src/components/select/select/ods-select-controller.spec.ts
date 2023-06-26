@@ -69,10 +69,11 @@ describe('spec:ods-select-controller', () => {
 
       it('should select option with enter key', () => {
         setup({ opened: true });
-        item1.selected = true;
+        item1.setAttribute('selected', '');
         const keyEnter = new KeyboardEvent("keydown", { code : "Enter" });
         controller.handlerKeyDown(keyEnter);
         expect(component.handleValueChange).toHaveBeenCalled();
+        expect(component.setFocus).toHaveBeenCalled();
       });
 
       it('should close select with escape key', () => {
@@ -117,6 +118,13 @@ describe('spec:ods-select-controller', () => {
         const keyArrowUp = new KeyboardEvent("keydown", { code : "ArrowUp" });
         controller.handlerKeyDown(keyArrowUp);
         expect(component.setFocus).toHaveBeenCalledTimes(1);
+      });
+
+      it('should close select after if open and not any option selected', () => {
+        setup({ opened: true });
+        const keyArrowDown = new KeyboardEvent("keydown", { code : "Enter" });
+        controller.handlerKeyDown(keyArrowDown);
+        expect(component.handleSelectClick).toHaveBeenCalledTimes(1);
       });
 
       it('should don\'t do anything', () => {

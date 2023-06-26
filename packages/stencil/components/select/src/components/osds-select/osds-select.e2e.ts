@@ -291,6 +291,20 @@ console.log('before clicks');
       expect(await el.getProperty('opened')).toBe(false);
     });
 
+    it('should close select after focus was on option and has an selected option', async () => {
+      await setup({ });
+      await page.waitForChanges();
+      await el.focus();
+      await page.keyboard.press('Enter');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('Enter');
+      await page.keyboard.press('Enter');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowUp');
+      await page.keyboard.press('Enter');
+      expect(await el.getProperty('opened')).toBe(false);
+    });
+
     it('should open select when Enter & focus on first option', async () => {
       await setup({ });
       await page.waitForChanges();
@@ -309,6 +323,24 @@ console.log('before clicks');
       await page.keyboard.press('Enter');
       expect(await el.getProperty('value')).toBe("42");
     });
+
+    it('should open select when Enter & select option already selected', async () => {
+      await setup({ });
+      await page.waitForChanges();
+      await el.focus();
+      await page.keyboard.press('Enter');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('Enter');
+      expect(await el.getProperty('opened')).toBe(false);
+      expect(await el.getProperty('value')).toBe("42");
+      await page.keyboard.press('Enter');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowUp');
+      await page.keyboard.press('Enter');
+      expect(await el.getProperty('opened')).toBe(false);
+      expect(await el.getProperty('value')).toBe("42");
+    });
+
     it('should open select when Enter & focus on first option with arrow up', async () => {
       await setup({ });
       await page.waitForChanges();

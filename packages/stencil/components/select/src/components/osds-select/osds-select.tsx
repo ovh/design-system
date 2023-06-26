@@ -261,10 +261,8 @@ export class OsdsSelect implements OdsSelect<OdsStencilMethods<OdsSelectMethods>
   @Listen('odsSelectOptionClick')
   handleValueChange(event: CustomEvent<OdsSelectOptionClickEventDetail>): void {
     this.logger.log(`[odsSelectOptionClick=${this.value}]`, 'received odsSelectOptionClick event', { detail: event.detail });
-    if (event.detail.value !== this.value) {
-      this.changeValue(event.detail.value);
-      this.controller.closeSurface();
-    }
+    this.changeValue(event.detail.value);
+    this.controller.closeSurface();
   }
 
   @Watch('disabled')

@@ -58,7 +58,7 @@ export default {
 
 /* Default */
 const TemplateDefault = (args: any) => html`
-  <osds-select style="width:20%" ...=${getTagAttributes(args)}>
+  <osds-select ...=${getTagAttributes(args)}>
     <span slot="placeholder">Select Country</span>
     <osds-select-group>Group title</osds-select-group>
     <osds-select-option value="1">Value 1</osds-select-option>
@@ -73,7 +73,7 @@ Default.args = {
 
 /* Multi group */
 const TemplateMultiGroup = (args: any) => html`
-  <osds-select style="width:20%" ...=${getTagAttributes(args)}>
+  <osds-select ...=${getTagAttributes(args)}>
     <span slot="placeholder">Select Country</span>
     <osds-select-group>Europa</osds-select-group>
     <osds-select-option value="1">Value 1</osds-select-option>

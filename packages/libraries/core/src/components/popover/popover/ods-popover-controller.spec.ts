@@ -54,7 +54,7 @@ describe('spec:ods-popover-controller', () => {
     });
     it('should change the value of opened attribute on click', async () => {
       setup(component);
-      component.surface = new OcdkSurfaceMock() as OcdkSurface;
+      component.surface = new OcdkSurfaceMock() as unknown as OcdkSurface;
       component.surface!.opened = false;
 
       await controller.handleTriggerClick();
@@ -65,7 +65,7 @@ describe('spec:ods-popover-controller', () => {
   describe('method: handleTriggerKey', () => {
     it('should do nothing if key is not ENTER or SPACE or ESCAPE', async () => {
       setup(component);
-      component.surface = new OcdkSurfaceMock() as OcdkSurface;
+      component.surface = new OcdkSurfaceMock() as unknown as OcdkSurface;
       component.surface!.opened = false;
 
       const event = new KeyboardEvent("keypress", {
@@ -101,7 +101,7 @@ describe('spec:ods-popover-controller', () => {
 
     it('should change the value of opened attribute on ENTER or SPACE press', async () => {
       setup(component);
-      component.surface = new OcdkSurfaceMock() as OcdkSurface;
+      component.surface = new OcdkSurfaceMock() as unknown as OcdkSurface;
       component.surface!.opened = false;
 
       const event = new KeyboardEvent("keypress", {
@@ -120,7 +120,7 @@ describe('spec:ods-popover-controller', () => {
 
     it('should close the surface on ESCAPE press', async () => {
       setup(component);
-      component.surface = new OcdkSurfaceMock() as OcdkSurface;
+      component.surface = new OcdkSurfaceMock() as unknown as OcdkSurface;
       component.surface!.opened = true;
 
       const event = new KeyboardEvent("keypress", {
@@ -142,7 +142,7 @@ describe('spec:ods-popover-controller', () => {
     it('should do nothing if key is not ESCAPE', async () => {
       setup(component);
 
-      component.surface = new OcdkSurfaceMock() as OcdkSurface;
+      component.surface = new OcdkSurfaceMock() as unknown as OcdkSurface;
       component.surface!.opened = true;
 
       const event = new KeyboardEvent("keypress", {
@@ -159,7 +159,7 @@ describe('spec:ods-popover-controller', () => {
     it('should close the surface on ESCAPE press', async () => {
       setup(component);
 
-      component.surface = new OcdkSurfaceMock() as OcdkSurface;
+      component.surface = new OcdkSurfaceMock() as unknown as OcdkSurface;
       component.surface!.opened = true;
 
       const event = new KeyboardEvent("keypress", {
@@ -196,7 +196,7 @@ describe('spec:ods-popover-controller', () => {
     it('should do nothing if surface is not opened', async () => {
       setup(component);
 
-      component.surface = new OcdkSurfaceMock() as OcdkSurface;
+      component.surface = new OcdkSurfaceMock() as unknown as OcdkSurface;
       component.surface!.opened = false;
 
       const event = new MouseEvent("click", {
@@ -214,7 +214,7 @@ describe('spec:ods-popover-controller', () => {
 
     it('should do nothing if event target is in the component', async () => {
       setup(component);
-      component.surface = new OcdkSurfaceMock() as OcdkSurface;
+      component.surface = new OcdkSurfaceMock() as unknown as OcdkSurface;
       component.surface!.opened = true;
 
       const event = new MouseEvent("click", {
@@ -234,7 +234,7 @@ describe('spec:ods-popover-controller', () => {
 
     it('should close the surface when click outside of the component', async () => {
       setup(component);
-      component.surface = new OcdkSurfaceMock() as OcdkSurface;
+      component.surface = new OcdkSurfaceMock() as unknown as OcdkSurface;
       component.surface!.opened = true;
 
       const event = new MouseEvent("click", {
@@ -260,7 +260,7 @@ describe('spec:ods-popover-controller', () => {
     });
     it('should do nothing if surface is closed', async () => {
       setup(component);
-      component.surface = new OcdkSurfaceMock() as OcdkSurface;
+      component.surface = new OcdkSurfaceMock() as unknown as OcdkSurface;
       component.surface!.opened = false;
 
       expect(() => { controller.closeSurface() }).not.toThrow();
@@ -269,7 +269,7 @@ describe('spec:ods-popover-controller', () => {
     });
     it('should close the surface', async () => {
       setup(component);
-      component.surface = new OcdkSurfaceMock() as OcdkSurface;
+      component.surface = new OcdkSurfaceMock() as unknown as OcdkSurface;
       component.surface!.opened = true;
 
       await controller.closeSurface();

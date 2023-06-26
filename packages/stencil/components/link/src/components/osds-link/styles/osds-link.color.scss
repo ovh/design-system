@@ -38,6 +38,17 @@
     }
   }
 
+  @include ods-all-hue-foreach-theme-color((
+    color: '800',
+    border-color: '800',
+  )) using($colors) {
+    :host(&:active) {
+      @include osds-link-on-link-container() {
+        color: map_get($colors, color);
+      }
+    }
+  }
+
   [contrasted] {
     @include ods-and-all-hue-foreach-theme-color((
             color: '500-contrasted'

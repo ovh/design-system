@@ -75,7 +75,7 @@ describe('spec:osds-popover', () => {
     it('should not have yet the ref to surface', async () => {
       ocdkIsSurface.mockImplementation(() => false);
       await setup({ attributes: {}, html: `` });
-      expect(instance.surface).toBeFalsy();
+      expect(instance.surface).toBe(undefined);
     })
   });
 

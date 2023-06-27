@@ -244,6 +244,13 @@
           height: var(--ods-size-08),
           width: var(--ods-size-11)
         )
+      ),
+      $tooltip: (
+        md: (
+          grid-column-gap: var(--ods-size-inset-05),
+          border-radius: var(--ods-size-03),
+          padding: var(--ods-size-04)
+        )
       )
     )
   )

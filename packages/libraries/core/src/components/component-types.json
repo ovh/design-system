@@ -43,5 +43,6 @@
   "OdsText",
   "OdsTextarea",
   "OdsTile",
-  "OdsToggle"
+  "OdsToggle",
+  "OdsTooltip"
 ]

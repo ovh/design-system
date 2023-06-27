@@ -43,7 +43,8 @@
     "text/src",
     "textarea/src",
     "tile/src",
-    "toggle/src"
+    "toggle/src",
+    "tooltip/src",
   ],
   "exclude": [
     "node_modules",

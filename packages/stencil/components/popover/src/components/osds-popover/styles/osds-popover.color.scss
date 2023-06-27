@@ -1,0 +1,30 @@
+@import '~@ovhcloud/ods-theming/color/ods-component-color';
+@import './osds-popover.mixins';
+
+@mixin osds-popover-theme-color-variant-default() {
+  @include ods-and-all-hue-foreach-theme-color((
+          color: '800',
+          background-color: '100'
+  )) using($colors) {
+    @include osds-popover-on-selected-host() { }
+  }
+}
+
+// Main CSS color theme mixin
+@mixin osds-popover-theme-color() {
+  /** base colors */
+  :host {
+    border-color: transparent;
+  }
+
+  ocdk-surface {
+    background: var(--white) 0% 0% no-repeat padding-box;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 0px 6px #00000026;
+  }
+
+  /** no variant specified: default variant colors */
+  :not([variant]) {
+    @include osds-popover-theme-color-variant-default();
+  }
+}

@@ -1,0 +1,11 @@
+@import '~@ovhcloud/ods-theming/color/ods-component-color';
+@import './osds-popover-content.mixins';
+
+
+// Main CSS color theme mixin
+@mixin osds-popover-content-theme-color() {
+  /** base colors */
+  :host {
+    color: ods-get-color-variable($intent-name: primary, $hue: '800');
+  }
+}

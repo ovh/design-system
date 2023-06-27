@@ -1,4 +1,4 @@
-import { Component, Element, Host, h, Prop } from '@stencil/core';
+import { Component, Element, Host, h, Prop, Watch } from '@stencil/core';
 import {
   OdsDatePicker,
   OdsDatePickerController,
@@ -27,7 +27,7 @@ export class OsdsDatePicker implements OdsDatePicker<OdsStencilMethods<OdsDatePi
     if(!this?.el?.shadowRoot) return;
 
     if(this.range) {
-        new DateRangePicker(this.el.shadowRoot.querySelector('.js-datepicker') as HTMLElement, {
+        new DateRangePicker(this.el.shadowRoot.querySelector('.wrapper') as HTMLElement, {
             format: 'dd/mm/yyyy',
         })
     } else {
@@ -37,10 +37,30 @@ export class OsdsDatePicker implements OdsDatePicker<OdsStencilMethods<OdsDatePi
     }
   }
 
+  @Watch('range')
+  rangeChanged() {
+    this.componentDidLoad();
+  }
+
+  getContent() {
+    if(this.range) {
+      return (
+        <div class="wrapper">
+          <input class="js-datepicker-2" />
+          <input class="js-datepicker-1" />
+        </div>
+      )
+    } else {
+      return (
+        <input class="js-datepicker" />
+      )
+    }
+  }
+
   render() {
     return (
       <Host>
-        <input class="js-datepicker" />
+        { this.getContent() }
       </Host>
     );
   }

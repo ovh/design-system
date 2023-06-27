@@ -10,13 +10,13 @@
 // /!\ for theming purposes, it has to be done in theming files
 // (i.e. packages/libraries/theming/...)
 :host {
-
+  border: 1px solid black
 }
 
 .js-datepicker {
   padding: 0.5em;
-  border: none;
   border-radius: 0.25em;
+  border: 1px solid black;
 }
 
 // apply the theme template for the component

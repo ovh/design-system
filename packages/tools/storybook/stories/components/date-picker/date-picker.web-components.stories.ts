@@ -15,7 +15,10 @@ defineCustomElements();
 
 /* Default story parameters  */
 const storyParams = {
-
+  range: {
+    type: 'Misc',
+    defaultValue: false
+  }
 };
 
 export default {

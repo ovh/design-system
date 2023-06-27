@@ -80,10 +80,14 @@ export class OdsSelectController extends OdsComponentController<OdsSelect> {
   handlerKeyDown(event: KeyboardEvent): void {
     const selectedSelectOptionIndex = this.selectOptions.findIndex((select) => select.getAttribute('selected') !== null || document.activeElement === select);
     switch (event.code) {
-      case 'Escape':
+      case 'Escape': {
+        this.selectOptions.forEach(s => s.removeAttribute('selected'))
+        this.selectOptions.find(s => s.value === this.component.value)?.setAttribute('selected', '');
         return this.closeSurface();
+      }
       case 'ArrowUp':
       case 'ArrowDown':
+      case 'Tab':
         return this.handlerKeyArrow(event, selectedSelectOptionIndex);    
       case 'Enter':
       case 'NumpadEnter':
@@ -94,16 +98,20 @@ export class OdsSelectController extends OdsComponentController<OdsSelect> {
   }
 
   private handlerKeyArrow(event: KeyboardEvent, selectedSelectOptionIndex: number): void {
+    if (!this.component.opened) {
+      return;
+    }
     const focusSelectOption = (index: number) => {
       this.selectOptions[index].focus();
       this.selectOptions[index].setAttribute('selected', '');
+      event.preventDefault();
     }
     const hasSelectedOption = selectedSelectOptionIndex !== -1;
     if (hasSelectedOption) {
       this.selectOptions[selectedSelectOptionIndex].removeAttribute('selected');
       this.selectOptions[selectedSelectOptionIndex].blur();
     }
-    if (event.code === 'ArrowUp') {
+    if (event.code === 'ArrowUp' || (event.code === 'Tab' && event.shiftKey)) {
       const index = hasSelectedOption ? selectedSelectOptionIndex - 1 : 0;
       if (index < 0) {
         this.component.setFocus();
@@ -111,7 +119,7 @@ export class OdsSelectController extends OdsComponentController<OdsSelect> {
       }
       return focusSelectOption(index);
     }
-    if (event.code === 'ArrowDown') {
+    if (event.code === 'ArrowDown' || event.code === 'Tab') {
       const index = hasSelectedOption ? selectedSelectOptionIndex + 1 : 0;
       if (index >= this.selectOptions.length) {
         return;

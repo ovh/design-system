@@ -213,7 +213,7 @@ export class OsdsSelect implements OdsSelect<OdsStencilMethods<OdsSelectMethods>
     return this.validityState;
   }
 
-  private async updateSelectOptionStates(value?: OdsInputValue) {
+  private async updateSelectOptionStates(value?: OdsInputValue): Promise<void> {
     let nbSelected = 0;
     for (const selectOption of this.controller.selectOptions) {
       selectOption.selected = (value === selectOption.value) && !nbSelected ;

@@ -84,15 +84,51 @@ describe('spec:ods-select-controller', () => {
         expect(spyCloseSurface).toHaveBeenCalledTimes(1);
       });
 
+      it('should close select with escape key and select after navigation', () => {
+        setup({ opened: true, value: '2' });
+        const spyCloseSurface = jest.spyOn(controller, 'closeSurface');
+        const keyArraowDown = new KeyboardEvent("keydown", { code : "ArrowDown" });
+        controller.handlerKeyDown(keyArraowDown);
+        const keySpace = new KeyboardEvent("keydown", { code : "Escape" });
+        controller.handlerKeyDown(keySpace);
+        const selectedOption = controller.selectOptions.filter(s => s.getAttribute('selected') === '');
+        expect(selectedOption).toHaveLength(1);
+        expect(spyCloseSurface).toHaveBeenCalledTimes(1);
+      });
+
       it('should select option with arrow down', () => {
-        setup();
+        setup({ opened: true });
         const keyArrowDown = new KeyboardEvent("keydown", { code : "ArrowDown" });
         controller.handlerKeyDown(keyArrowDown);
         expect(item1.getAttribute('selected')).toBe("");
       });
 
+      it('should not select option with tab because of close select', () => {
+        setup({ opened: false });
+        const keyTab = new KeyboardEvent("keydown", { code : "Tab" });
+        controller.handlerKeyDown(keyTab);
+        expect(item1.getAttribute('selected')).toBe(null);
+      });
+
+      it('should select option with tab', () => {
+        setup({ opened: true });
+        const keyTab = new KeyboardEvent("keydown", { code : "Tab" });
+        controller.handlerKeyDown(keyTab);
+        expect(item1.getAttribute('selected')).toBe("");
+      });
+
+      it('should select option with tab + shift', () => {
+        setup({ opened: true });
+        const keyTab = new KeyboardEvent("keydown", { code : "Tab" });
+        controller.handlerKeyDown(keyTab);
+        controller.handlerKeyDown(keyTab);
+        const keyTabShift = new KeyboardEvent("keydown", { code : "Tab", shiftKey: true });
+        controller.handlerKeyDown(keyTabShift);
+        expect(item1.getAttribute('selected')).toBe("");
+      });
+
       it('should select last option with many arrow down', () => {
-        setup();
+        setup({ opened: true });
         const keyArrowDown = new KeyboardEvent("keydown", { code : "ArrowDown" });
         controller.handlerKeyDown(keyArrowDown);
         controller.handlerKeyDown(keyArrowDown);
@@ -103,7 +139,7 @@ describe('spec:ods-select-controller', () => {
       });
 
       it('should select option with arrow up', () => {
-        setup();
+        setup({ opened: true });
         item2.setAttribute('selected', '');
         const keyArrowUp = new KeyboardEvent("keydown", { code : "ArrowUp" });
         controller.handlerKeyDown(keyArrowUp);
@@ -112,7 +148,7 @@ describe('spec:ods-select-controller', () => {
       });
 
       it('should focus on select with arrow up', () => {
-        setup();
+        setup({ opened: true });
         const keyArrowDown = new KeyboardEvent("keydown", { code : "ArrowDown" });
         controller.handlerKeyDown(keyArrowDown);
         const keyArrowUp = new KeyboardEvent("keydown", { code : "ArrowUp" });

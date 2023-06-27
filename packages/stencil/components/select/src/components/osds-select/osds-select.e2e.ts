@@ -314,6 +314,15 @@ console.log('before clicks');
       expect(await optionElement.getProperty('selected')).toBe(true);
     });
 
+    it('should open select when Enter & focus on first option with Tab', async () => {
+      await setup({ });
+      await page.waitForChanges();
+      await el.focus();
+      await page.keyboard.press('Enter');
+      await page.keyboard.press('Tab');
+      expect(await optionElement.getProperty('selected')).toBe(true);
+    });
+
     it('should open select when Enter & select option', async () => {
       await setup({ });
       await page.waitForChanges();
@@ -349,6 +358,19 @@ console.log('before clicks');
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('ArrowUp');
+      await page.keyboard.press('Enter');
+      expect(await el.getProperty('value')).toBe("42");
+    });
+
+    it('should open select when Enter & focus on first option with shift + Tab', async () => {
+      await setup({ });
+      await page.waitForChanges();
+      await el.focus();
+      await page.keyboard.press('Enter');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await page.keyboard.down('Shift');
+      await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
       expect(await el.getProperty('value')).toBe("42");
     });

@@ -79,7 +79,7 @@ describe('spec:ods-popover-controller', () => {
       Object.defineProperty(event, 'target', { value: target })
 
       await controller.handleTriggerKey(event);
-      expect(component.surface.opened).toBeFalsy();
+      expect(component.surface.opened).toBe(false);
       expect(component.surface.close).toHaveBeenCalledTimes(0);
     });
 
@@ -211,7 +211,7 @@ describe('spec:ods-popover-controller', () => {
       Object.defineProperty(event, 'target', { value: target })
 
       await controller.checkForClickOutside(event);
-      expect(component.surface.opened).toBeFalsy();
+      expect(component.surface.opened).toBe(false);
     });
 
     it('should do nothing if event target is in the component', async () => {
@@ -267,7 +267,7 @@ describe('spec:ods-popover-controller', () => {
       component.surface!.opened = false;
 
       expect(() => { controller.closeSurface() }).not.toThrow();
-      expect(component.surface.opened).toBeFalsy();
+      expect(component.surface.opened).toBe(false);
       expect(component.surface.close).toHaveBeenCalledTimes(0);
 
     });

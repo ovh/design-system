@@ -122,6 +122,8 @@ export class OsdsTextArea implements OdsTextArea<OdsStencilMethods<OdsTextAreaMe
   onFlexChange(flex: boolean) {
     if (flex && this.textInputEl?.style?.width) {
       this.textInputEl.style.width = '100%';
+    } else {
+      this.textInputEl?.style.removeProperty('width');
     }
   }
 

@@ -26,6 +26,7 @@
   "OdsLocationTile",
   "OdsMessage",
   "OdsPagination",
+  "OdsPopover",
   "OdsProgressBar",
   "OdsQuantity",
   "OdsRadio",

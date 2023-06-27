@@ -13,6 +13,9 @@ import {
 } from '@ovhcloud/ods-core';
 import { OsdsInput } from '@ovhcloud/ods-stencil/components/input/src/components/osds-input/osds-input';
 
+import '@ovhcloud/ods-stencil/components/icon';
+import '@ovhcloud/ods-stencil/components/spinner';
+
 const input3: (HTMLElement & OsdsInput) | null = document.getElementById('input-3') as (HTMLElement & OsdsInput);
 const input3ErrorForbiddenValue: HTMLElement | null = document.querySelector('#example-3 .forbidden-value');
 const input3ErrorValueMissing: HTMLElement | null = document.querySelector('#example-3 .value-missing');

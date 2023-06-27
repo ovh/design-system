@@ -19,20 +19,113 @@
     }
   </style>
 </head>
-<body>
+<body style="margin: 0;">
 
-<section>
+  <osds-input type="date" value="2002-09-11" min="2000-01-01" flex></osds-input>
+  <osds-input type="text"></osds-input>
+  <osds-input type="email"></osds-input>
+  <osds-input type="time"></osds-input>
 
-  <article>
-    <h2>[number disabled]</h2>
-    <osds-input
-      type="number"
-      placeholder="Here is a number"
-      disabled
-    >
-    </osds-input>
-  </article>
+  <section style="background: none; padding: 1em;">
+    <h2>[types]</h2>
+    <table style="width: 100%;" id="input-table"></table>
+  </section>
+  <section style="background: none; padding: 1em;">
+    <h2>[colors]</h2>
+    <table style="width: 100%;" id="input-table-color"></table>
+  </section>
+  <section style="background: #000e9c; padding: 1em;">
+    <h2 style="color: #fff;">[contrasted]</h2>
+    <table style="width: 100%;" id="input-table-contrasted"></table>
+  </section>
+  <section style="background: none; padding: 1em;">
+    <h2>[flex]</h2>
+    <table style="width: 100%;" id="input-table-flex"></table>
+  </section>
 
+  <script>
+    const types = [
+      'date',
+      'email', 
+      'number', 
+      'password', 
+      'search', 
+      'tel', 
+      'text', 
+      'time',
+      'url'
+    ];
+
+    const attributes = [
+      `default`,
+      `clearable`,
+      `icon="ovh"`,
+      `clearable icon="ovh"`,
+      `value="ODS ahead"`,
+      `value="ODS ahead" masked`,
+      `loading`,
+      `loading icon="ovh"`,
+      `loading disabled`,
+      `loading disabled icon="ovh"`,
+    ];
+
+    const colors = [
+      'default', 
+      'primary', 
+      'text', 
+      'accent', 
+      'error', 
+      'warning', 
+      'success', 
+      'info', 
+      'promotion'
+    ];
+
+    const placeholder = (type) => `Enter ${type}...`;
+
+    const rows = attributes.map(attribute => 
+      `<tr>
+        <td>${attribute}</td>
+        ${types.map(type => 
+          `<td><osds-input type="${type}" placeholder="${placeholder(type)}" ${attribute}></osds-input></td>`).join('')
+        }
+      </tr>`
+    ).join('');
+
+    document.getElementById('input-table').innerHTML = `<thead><tr><td></td>${types.map(type => `<td>${type}</td>`).join('')}</tr></thead><tbody>${rows}</tbody>`;
+
+    const colorRows = attributes.map(attribute => 
+      `<tr>
+        <td>${attribute}</td>
+        ${colors.map(color => 
+          `<td><osds-input color="${color}" type="text" placeholder="${placeholder('text')}" ${attribute}></osds-input></td>`).join('')
+        }
+      </tr>`
+    ).join('');
+
+    document.getElementById('input-table-color').innerHTML = `<thead><tr><td></td>${colors.map(color => `<td>${color}</td>`).join('')}</tr></thead><tbody>${colorRows}</tbody>`;
+
+    const contrastedRows = attributes.map(attribute => 
+      `<tr>
+        <td style="color: #fff;">${attribute}</td>
+        ${colors.map(color => 
+          `<td><osds-input color="${color}" type="text" contrasted placeholder="${placeholder('text')}" ${attribute}></osds-input></td>`).join('')
+        }
+      </tr>`
+    ).join('');
+
+    document.getElementById('input-table-contrasted').innerHTML = `<thead><tr><td></td>${colors.map(color => `<td style="color: #fff;">${color}</td>`).join('')}</tr></thead><tbody>${contrastedRows}</tbody>`;
+
+    const flexRows = attributes.map(attribute => 
+      `<tr>
+        <td>${attribute}</td>
+        <td style="width: 80%;"><osds-input flex type="text" placeholder="${placeholder('text')}" ${attribute}></osds-input></td>
+      </tr>`
+    ).join('');
+
+    document.getElementById('input-table-flex').innerHTML = `<thead><tr><td></td><td>flex</td></tr></thead><tbody>${flexRows}</tbody>`;
+  </script>
+  
   <article>
     <h2>[number odsInput-1]</h2>
     <osds-input
@@ -43,6 +136,7 @@
       max="4"
       step="2"
       color="primary"
+      clearable
     >
     </osds-input>
   </article>
@@ -58,36 +152,6 @@
     >
     </osds-input>
   </article>
-</section>
-
-<section>
-  <h2>[number color]</h2>
-  <article style="padding: 1em;">
-    <osds-input type="number" color="default" placeholder="default"></osds-input>
-    <osds-input type="number" color="primary" placeholder="primary"></osds-input>
-    <osds-input type="number" color="text" placeholder="text"></osds-input>
-    <osds-input type="number" color="accent" placeholder="accent"></osds-input>
-    <osds-input type="number" color="error" placeholder="error"></osds-input>
-    <osds-input type="number" color="warning" placeholder="warning"></osds-input>
-    <osds-input type="number" color="success" placeholder="success"></osds-input>
-    <osds-input type="number" color="info" placeholder="info"></osds-input>
-    <osds-input type="number" color="promotion" placeholder="promotion"></osds-input>
-  </article>
-
-  <h2>[number color contrasted]</h2>
-  <article style=" background: #000e9c; padding: 1em;">
-    <osds-input type="number" contrasted color="default" placeholder="default"></osds-input>
-    <osds-input type="number" contrasted color="primary" placeholder="primary"></osds-input>
-    <osds-input type="number" contrasted color="text" placeholder="text"></osds-input>
-    <osds-input type="number" contrasted color="accent" placeholder="accent"></osds-input>
-    <osds-input type="number" contrasted color="error" placeholder="error"></osds-input>
-    <osds-input type="number" contrasted color="warning" placeholder="warning"></osds-input>
-    <osds-input type="number" contrasted color="success" placeholder="success"></osds-input>
-    <osds-input type="number" contrasted color="info" placeholder="info"></osds-input>
-    <osds-input type="number" contrasted color="promotion" placeholder="promotion"></osds-input>
-  </article>
-
-
 </section>
 
 <article id="example-3">

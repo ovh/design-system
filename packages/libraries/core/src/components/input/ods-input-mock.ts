@@ -19,6 +19,7 @@ export class OdsInputMock implements OdsInput<OdsInputMethods, OdsInputEvents> {
 
   ariaLabel: HTMLElement['ariaLabel'] = null;
   ariaLabelledby?: string;
+  clearable?: boolean;
   color?: OdsThemeColorIntent;
   contrasted?: boolean;
   defaultValue: OdsInputValue = odsInputDefaultAttributes.defaultValue;
@@ -28,8 +29,11 @@ export class OdsInputMock implements OdsInput<OdsInputMethods, OdsInputEvents> {
   flex?: boolean;
   forbiddenValues: OdsFormForbiddenValues<number> = odsInputDefaultAttributes.forbiddenValues;
   formControl?: OdsFormControl<OdsInputValidityState>;
+  hideable?: boolean;
   icon?: OdsIconName;
   label?: string;
+  loading?: boolean;
+  masked?: boolean;
   max?: number;
   min?: number;
   name?: string;
@@ -50,6 +54,7 @@ export class OdsInputMock implements OdsInput<OdsInputMethods, OdsInputEvents> {
 
   reset = jest.fn();
   clear = jest.fn();
+  hide = jest.fn();
   setFocus = jest.fn();
   setInputTabindex = jest.fn();
   stepUp = jest.fn();

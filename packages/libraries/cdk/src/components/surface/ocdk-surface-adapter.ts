@@ -29,5 +29,4 @@ export interface OcdkSurfaceAdapter {
   autoDetectItemWidth(): number;
   setTransformOrigin(origin: string): void;
   getOwnerDocument?(): Document;
-
 }

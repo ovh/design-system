@@ -35,15 +35,15 @@ const TemplateDefault = (args:any) => {
   return html`
     <osds-popover ...=${getTagAttributes(args)}>
       <span slot="popover-trigger">
-            <osds-text>[Trigger Text]</osds-text>
+            <osds-button variant='ghost' size='sm'><osds-icon name='home' size='xs'></osds-icon></osds-button>
           </span>
       <osds-popover-content>
         <span slot="popover-header">My popover title</span>
         <osds-text color='text'>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam</osds-text>
         <span slot="popover-footer">
-              <osds-button color='primary' variant='ghost'>Dismiss</osds-button>
-              <osds-button color='primary'>Action</osds-button>
-            </span>
+          <osds-button color='primary' variant='ghost'>Dismiss</osds-button>
+          <osds-button color='primary'>Action</osds-button>
+        </span>
       </osds-popover-content>
     </osds-popover>
   `;

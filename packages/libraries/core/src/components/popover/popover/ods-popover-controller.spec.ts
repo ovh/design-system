@@ -79,7 +79,8 @@ describe('spec:ods-popover-controller', () => {
       Object.defineProperty(event, 'target', { value: target })
 
       await controller.handleTriggerKey(event);
-      expect(component.surface.opened).toBeFalsy()
+      expect(component.surface.opened).toBeFalsy();
+      expect(component.surface.close).toHaveBeenCalledTimes(0);
     });
 
     it('should do nothing if there is no surface', async () => {
@@ -134,7 +135,7 @@ describe('spec:ods-popover-controller', () => {
       Object.defineProperty(event, 'target', { value: target })
 
       await controller.handleTriggerKey(event);
-      expect(component.surface.opened).toBeFalsy();
+      expect(component.surface.close).toHaveBeenCalledTimes(1);
     });
   });
 
@@ -154,6 +155,7 @@ describe('spec:ods-popover-controller', () => {
 
       await controller.handleSurfaceKey(event);
       expect(component.surface.opened).toBeTruthy();
+      expect(component.surface.close).toHaveBeenCalledTimes(0);
     });
 
     it('should close the surface on ESCAPE press', async () => {
@@ -170,7 +172,7 @@ describe('spec:ods-popover-controller', () => {
       Object.defineProperty(event, 'key', { value: "Escape" })
 
       await controller.handleSurfaceKey(event);
-      expect(component.surface.opened).toBeFalsy();
+      expect(component.surface.close).toHaveBeenCalledTimes(1);
 
     });
   });
@@ -230,6 +232,7 @@ describe('spec:ods-popover-controller', () => {
 
       await controller.checkForClickOutside(event);
       expect(component.surface.opened).toBeTruthy();
+      expect(component.surface.close).toHaveBeenCalledTimes(0);
     });
 
     it('should close the surface when click outside of the component', async () => {
@@ -247,7 +250,7 @@ describe('spec:ods-popover-controller', () => {
       Object.defineProperty(event, 'target', { value: target })
 
       await controller.checkForClickOutside(event);
-      expect(component.surface.opened).toBeFalsy();
+      expect(component.surface.close).toHaveBeenCalledTimes(1);
     });
   });
 
@@ -265,6 +268,7 @@ describe('spec:ods-popover-controller', () => {
 
       expect(() => { controller.closeSurface() }).not.toThrow();
       expect(component.surface.opened).toBeFalsy();
+      expect(component.surface.close).toHaveBeenCalledTimes(0);
 
     });
     it('should close the surface', async () => {
@@ -273,7 +277,7 @@ describe('spec:ods-popover-controller', () => {
       component.surface!.opened = true;
 
       await controller.closeSurface();
-      expect(component.surface.opened).toBeFalsy();
+      expect(component.surface.close).toHaveBeenCalledTimes(1);
     });
   });
 });

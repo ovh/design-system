@@ -9,7 +9,7 @@ import { OdsCartSize } from "./ods-cart-size";
 export class OdsCartMock implements OdsCart<OdsCartMethods, OdsCartEvents> {
     collapsed?: boolean;
     collapsible?: boolean;
-    flex?: boolean;
+    inline?: boolean;
     rounded?: OdsCartRounded;
     size?: OdsCartSize;
 

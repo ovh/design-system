@@ -56,7 +56,7 @@ const storyParams = {
     category: 'Misc',
     defaultValue: false,
   },
-  flex: {
+  inline: {
     category: 'Misc',
     defaultValue: false,
   },

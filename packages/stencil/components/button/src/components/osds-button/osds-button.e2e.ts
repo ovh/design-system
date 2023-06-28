@@ -91,8 +91,8 @@ describe('e2e:osds-button', () => {
       expect(await el.getProperty('disabled')).toBe(odsButtonDefaultAttributes.disabled);
     });
 
-    it('should have a default flex', async () => {
-      expect(await el.getProperty('flex')).toBe(odsButtonDefaultAttributes.flex);
+    it('should have a default inline', async () => {
+      expect(await el.getProperty('inline')).toBe(odsButtonDefaultAttributes.inline);
     });
 
     it('should have a default size', async () => {

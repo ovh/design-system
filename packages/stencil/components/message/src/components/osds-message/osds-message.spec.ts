@@ -70,12 +70,12 @@ describe('spec:osds-message', () => {
       });
     });
 
-    describe('flex', () => {
-      odsUnitTestAttribute<OdsMessageAttributes, 'flex'>({
-        ...getAttributeContextOptions<OdsMessageAttributes, OsdsMessage, 'flex'>({
-          name: 'flex',
+    describe('inline', () => {
+      odsUnitTestAttribute<OdsMessageAttributes, 'inline'>({
+        ...getAttributeContextOptions<OdsMessageAttributes, OsdsMessage, 'inline'>({
+          name: 'inline',
           list: [false, true],
-          defaultValue: odsMessageDefaultAttributes.flex,
+          defaultValue: odsMessageDefaultAttributes.inline,
           ...config
         })
       });

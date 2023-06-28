@@ -5,7 +5,7 @@ export interface OdsSkeletonAttributes extends OdsComponentAttributes {
   /**
    * Wether or not skeleton size fill its parent
    */
-  flex?: boolean
+  inline?: boolean
   /**
    * Wether or not skeleton size is randomized
    */

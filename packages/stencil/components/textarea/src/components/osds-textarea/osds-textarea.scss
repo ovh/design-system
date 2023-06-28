@@ -8,15 +8,6 @@
 
 :host {
   outline: none;
-}
-
-@include osds-textarea-on-main-element() {
-  border-style: solid;
-  position: relative;
-  text-align: var(--ods-textarea-text-align, left);
-}
-
-[flex] {
   @include osds-textarea-on-selected-host() {
     display: flex;
 
@@ -24,6 +15,17 @@
       width: 100%;
     }
   }
+}
+
+:host([inline]) {
+  display: inline-flex;
+  width: var(--width);
+}
+
+@include osds-textarea-on-main-element() {
+  border-style: solid;
+  position: relative;
+  text-align: var(--ods-textarea-text-align, left);
 }
 
 :not([resizable]) {

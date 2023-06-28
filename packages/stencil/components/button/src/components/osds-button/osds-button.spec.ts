@@ -146,27 +146,23 @@ describe('spec:osds-button', () => {
       });
     });
 
-    describe('flex', () => {
-      odsUnitTestAttribute<OdsButtonAttributes, 'flex'>({
-        ...getAttributeContextOptions<OdsButtonAttributes, OsdsButton, 'flex'>({
-          name: 'flex',
-          list: [true,false],
-          defaultValue: odsButtonDefaultAttributes.flex,
-          ...config
-        })
-      });
-      it('should be flex if attribute is added', async () => {
-        await setup({ attributes: { flex: true } });
-        expect(page.root.flex).toBeDefined();
-      });
-    });
-
     describe('rel', () => {
       odsUnitTestAttribute<OdsButtonAttributes, 'rel'>({
         ...getAttributeContextOptions<OdsButtonAttributes, OsdsButton, 'rel'>({
           name: 'rel',
           list: OdsHTMLAnchorElementRelList,
           defaultValue: odsButtonDefaultAttributes.rel,
+          ...config
+        })
+      });
+    });
+
+    describe('inline', () => {
+      odsUnitTestAttribute<OdsButtonAttributes, 'inline'>({
+        ...getAttributeContextOptions<OdsButtonAttributes, OsdsButton, 'inline'>({
+          name: 'inline',
+          list: [true,false],
+          defaultValue: odsButtonDefaultAttributes.inline,
           ...config
         })
       });

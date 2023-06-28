@@ -5,7 +5,7 @@ import { OdsSpinnerSize } from './ods-spinner-size';
 export const odsSpinnerDefaultAttributesDoc  = {
   // default attributes
   size: OdsSpinnerSize.md,
-  flex: false,
+  inline: false,
   contrasted: false,
   mode: OdsSpinnerMode.INDETERMINATE,
 } as const;

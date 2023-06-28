@@ -12,7 +12,7 @@ export const odsInputDefaultAttributesDoc = {
   defaultValue: '',
   disabled: false,
   error: false,
-  flex: false,
+  inline: false,
   forbiddenValues: [],
   icon: undefined,
   label: undefined,

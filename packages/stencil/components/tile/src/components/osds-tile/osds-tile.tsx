@@ -36,8 +36,8 @@ export class OsdsTile implements OdsTile<OdsStencilMethods<OdsTileMethods>, OdsS
   /** @see OdsTileAttributes.disabled */
   @Prop({ reflect: true }) public disabled: boolean = odsTileDefaultAttributes.disabled;
 
-  /** @see OdsTileAttributes.flex */
-  @Prop({ reflect: true }) public flex?: boolean = odsTileDefaultAttributes.flex;
+  /** @see OdsTileAttributes.inline */
+  @Prop({ reflect: true }) public inline?: boolean = odsTileDefaultAttributes.inline;
 
   /** @see OdsTileAttributes.rounded */
   @Prop({ reflect: true }) public rounded?: boolean = odsTileDefaultAttributes.rounded;

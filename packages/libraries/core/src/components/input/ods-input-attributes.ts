@@ -30,9 +30,9 @@ export interface OdsInputAttributes extends OdsComponentAttributes {
   error?: boolean;
   /** Controls the error state of the input */
   errorStateControl?: OdsErrorStateControl;
-  /** Indicates if the input is full width or not: see component principles */
-  flex?: boolean;
-  /** List of forbidden values for the input */ 
+  /** Indicates if the input is inline or not: see component principles */
+  inline?: boolean;
+  /** List of forbidden values for the input */
   forbiddenValues: OdsFormForbiddenValues;
   /** Control object of the form the input belongs to */
   formControl?: OdsFormControl<OdsInputValidityState>;

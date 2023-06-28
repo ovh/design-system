@@ -41,8 +41,8 @@ export class OsdsCartManager implements OdsCartManager<OdsStencilMethods<OdsCart
   /** @see OdsCartManagerAttributes.size */
   @Prop({ reflect: true }) public size?: OdsCartSize = odsCartManagerDefaultAttributes.size;
 
-  /** @see OdsCartManagerAttributes.flex */
-  @Prop({ reflect: true }) public flex?: boolean = odsCartManagerDefaultAttributes.flex;
+  /** @see OdsCartManagerAttributes.inline */
+  @Prop({ reflect: true }) public inline?: boolean = odsCartManagerDefaultAttributes.inline;
 
   /** @see OdsCartManagerAttributes.sections */
   @Prop({ reflect: true }) public sections: OdsCartManagerSection[] = odsCartManagerDefaultAttributes.sections;
@@ -217,11 +217,11 @@ export class OsdsCartManager implements OdsCartManager<OdsStencilMethods<OdsCart
   }
 
   render() {
-    const { flex } = this;
+    const { inline } = this;
 
     return (
       <Host>
-        <osds-cart flex={flex}>
+        <osds-cart inline={inline}>
           <slot name={'header'} slot={'header'}></slot>
           {this.renderSections()}
           <slot name={'empty'} slot={'empty'}></slot>

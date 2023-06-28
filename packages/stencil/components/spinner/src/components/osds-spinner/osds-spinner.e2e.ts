@@ -25,31 +25,6 @@ describe('e2e:osds-spinner', () => {
     expect(el).toHaveClass('hydrated');
   });
 
-  describe('flex', () => {
-    const parentHeight = 500
-
-    async function flexSetup({ attributes }: { attributes: Partial<OdsSpinnerAttributes> }) {
-      const minimalAttributes: OdsSpinnerAttributes = OdsCreateAttributes(attributes, odsSpinnerBaseAttributes);
-      const stringAttributes = OdsComponentAttributes2StringAttributes<OdsSpinnerAttributes>(minimalAttributes, odsSpinnerDefaultAttributes);
-
-      page = await newE2EPage();
-      await page.setContent(`<osds-spinner flex ${OdsStringAttributes2Str(stringAttributes)}></osds-spinner>`);
-      await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
-      await page.evaluate((height) => document.body.style.setProperty('height', `${height}px`), parentHeight);
-
-      el = await page.find('osds-spinner');
-    }
-
-    it('should expand to its parent size', async () => {
-      await flexSetup({ attributes: {} });
-
-      const spinnerStyle = await el.getComputedStyle();
-      const spinnerHeight = parseInt(spinnerStyle.getPropertyValue('height'), 10)
-
-      expect(spinnerHeight).toBe(parentHeight)
-    })
-  })
-
   describe('sizes', () => {
     const sizeSetup = async ({ attributes }: { attributes: Partial<OdsSpinnerAttributes> }) => {
       const minimalAttributes: OdsSpinnerAttributes = OdsCreateAttributes(attributes, odsSpinnerBaseAttributes);

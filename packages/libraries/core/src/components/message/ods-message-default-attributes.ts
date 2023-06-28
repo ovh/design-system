@@ -3,7 +3,7 @@ import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 
 export const odsMessageDefaultAttributes: OdsMessageAttributes = {
   color: OdsThemeColorIntent.default,
-  flex: false,
+  inline: false,
   icon: undefined,
   removable: false,
   type: undefined,

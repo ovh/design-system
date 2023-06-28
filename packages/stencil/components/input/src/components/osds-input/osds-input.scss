@@ -10,11 +10,14 @@
   align-items: center;
   border-style: solid;
   box-sizing: border-box;
-  display: inline-flex;
   flex-direction: row;
   outline: none;
   overflow: hidden;
   cursor: text;
+
+  @include osds-input-on-selected-host() {
+    display: flex;
+  }
 }
 
 :host osds-icon {
@@ -33,13 +36,6 @@ input {
   width: 100%;
 }
 
-[flex] {
-  @include osds-input-on-selected-host() {
-    display: flex;
-    width: 100%;
-  }
-}
-
 /* Chrome, Safari, Edge, Opera */
 input[type=number],
 input[type=number]::-webkit-outer-spin-button,
@@ -55,6 +51,11 @@ input[type=number]::-webkit-inner-spin-button {
     cursor: not-allowed;
     pointer-events: none;
   }
+}
+
+:host([inline]) {
+  display: inline-flex;
+  width: var(--width);
 }
 
 // apply the theme template for the component

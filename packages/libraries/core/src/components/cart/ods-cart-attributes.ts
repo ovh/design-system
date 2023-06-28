@@ -7,8 +7,8 @@ export interface OdsCartAttributes extends OdsComponentAttributes {
   collapsed?: boolean
   /** is the cart can be collapsed in a smaller view */
   collapsible?: boolean
-  /** full width or not: see component principles */
-  flex?: boolean
+  /** inline or not: see component principles */
+  inline?: boolean
   /** rounds corners of cart's outer border edge */
   rounded?: OdsCartRounded
   /** size: see component principles */

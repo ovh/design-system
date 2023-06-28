@@ -90,12 +90,12 @@ describe('spec:osds-chip', () => {
       });
     });
 
-    describe('flex', () => {
-      odsUnitTestAttribute<OdsChipAttributes, 'flex'>({
-        ...getAttributeContextOptions<OdsChipAttributes, OsdsChip, 'flex'>({
-          name: 'flex',
+    describe('inline', () => {
+      odsUnitTestAttribute<OdsChipAttributes, 'inline'>({
+        ...getAttributeContextOptions<OdsChipAttributes, OsdsChip, 'inline'>({
+          name: 'inline',
           list: [false, true],
-          defaultValue: odsChipDefaultAttributes.flex,
+          defaultValue: odsChipDefaultAttributes.inline,
           ...config
         })
       });

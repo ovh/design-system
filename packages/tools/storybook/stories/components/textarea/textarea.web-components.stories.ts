@@ -36,9 +36,9 @@ const storyParams = {
     category: 'General',
     defaultValue: odsTextAreaDefaultAttributes.value,
   },
-  flex: {
+  inline: {
     category: 'Misc',
-    defaultValue: odsTextAreaDefaultAttributes.flex,
+    defaultValue: odsTextAreaDefaultAttributes.inline,
   },
   contrasted: {
     category: 'Misc',

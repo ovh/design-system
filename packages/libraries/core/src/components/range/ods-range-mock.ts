@@ -14,7 +14,7 @@ export class OdsRangeMock implements OdsRange<OdsRangeMethods, OdsRangeEvents> {
   disabled?: boolean;
   error?: boolean;
   errorStateControl?: OdsErrorStateControl;
-  flex?: boolean;
+  inline?: boolean;
   id?: string;
   max?: number;
   min?: number;

@@ -29,8 +29,8 @@ export class OsdsCart implements OdsCart<OdsStencilMethods<OdsCartMethods>, OdsS
   /** @see OdsCartAttributes.size */
   @Prop({ reflect: true }) public size?: OdsCartSize = odsCartDefaultAttributes.size;
 
-  /** @see OdsCartAttributes.flex */
-  @Prop({ reflect: true }) public flex?: boolean = odsCartDefaultAttributes.flex;
+  /** @see OdsCartAttributes.inline */
+  @Prop({ reflect: true }) public inline?: boolean = odsCartDefaultAttributes.inline;
 
   /** @see OdsCartAttributes.rounded */
   @Prop({ reflect: true }) public rounded?: OdsCartRounded = odsCartDefaultAttributes.rounded;

@@ -8,12 +8,13 @@
   $size-properties: ods-get-size-properties($component-size-definition, sm);
 
   :host {
-    width: ods-get-size-property($size-properties, width);
     padding: ods-get-size-property($size-properties, padding);
+    width: 100%;
   }
 
-  :host([flex]) {
-    width: 100%;
+  :host([inline]) {
+    width: ods-get-size-property($size-properties, width);
+
   }
 
   :host([rounded='all']) {

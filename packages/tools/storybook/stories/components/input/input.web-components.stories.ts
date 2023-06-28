@@ -42,7 +42,7 @@ const storyParams = {
     options: OdsInputSizeList,
     control: { type: 'select' },
   },
-  flex: {
+  inline: {
     category: 'Misc',
     defaultValue: false,
   },

@@ -6,7 +6,7 @@ export interface OdsSpinnerAttributes extends OdsComponentAttributes {
   /** contrasted or not: see component principles */
   contrasted?: boolean;
   /** full width or not: see component principles */
-  flex?: boolean;
+  inline?: boolean;
   /** choose between infinite or progress spinner (infinite only for now) */
   mode?: OdsSpinnerMode;
   /** size: see component principles */

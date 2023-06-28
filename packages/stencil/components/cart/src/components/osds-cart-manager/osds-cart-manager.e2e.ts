@@ -137,7 +137,6 @@ describe('e2e:osds-cart-manager', () => {
           { item: { ...odsCartItemA, title: 'a', price: 3000, product: true }, options: [] },
           { item: { ...odsCartItemA, title: 'b', price: 3000 }, options: [{ title: 'c', price: 600, product: true }] },
         ];
-        el.setProperty('flex', true);
         el.setProperty('sections', sections);
 
         await page.waitForChanges();

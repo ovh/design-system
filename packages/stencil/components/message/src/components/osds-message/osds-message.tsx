@@ -27,8 +27,8 @@ export class OsdsMessage implements OdsMessage<OdsStencilMethods<OdsMessageMetho
   /** @see OdsMessageAttributes.color */
   @Prop({ reflect: true, mutable: true }) public color?: OdsThemeColorIntent = odsMessageDefaultAttributes.color;
 
-  /** @see OdsMessageAttributes.flex */
-  @Prop({ reflect: true }) public flex? = odsMessageDefaultAttributes.flex;
+  /** @see OdsMessageAttributes.inline */
+  @Prop({ reflect: true }) public inline? = odsMessageDefaultAttributes.inline;
 
   /** @see OdsMessageAttributes.icon */
   @Prop({ reflect: true, mutable: true }) public icon?: OdsIconName = odsMessageDefaultAttributes.icon;

@@ -6,8 +6,8 @@ import { ODS_PERIOD_ISO_CODE } from '../../utils/time/ods-period-iso-code';
 import { OdsComponentAttributes } from '../ods-component-attributes';
 
 export interface OdsCartManagerAttributes extends OdsComponentAttributes {
-  /** full width or not: see component principles */
-  flex?: boolean;
+  /** inline or not: see component principles */
+  inline?: boolean;
   /** describe what the footer is made of */
   footer?: OdsCartManagerFooter;
   /** internationalisation system connector */

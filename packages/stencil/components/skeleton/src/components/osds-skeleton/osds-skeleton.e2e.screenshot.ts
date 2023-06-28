@@ -92,15 +92,15 @@ describe('e2e:osds-skeleton', () => {
     });
   })
 
-  it('check flex attribute', async () => {
-    await setup({ attributes: { flex: true } });
+  it('check inline attribute', async () => {
+    await setup({ attributes: { inline: true } });
     await page.waitForChanges();
     await page.evaluate(() => {
       const element = document.querySelector('.container') as HTMLElement;
       return { width: element.clientWidth, height: element.clientHeight };
     });
     await page.setViewport({ width: 600, height:600 });
-    const results = await page.compareScreenshot('flex', { fullPage: false });
+    const results = await page.compareScreenshot('inline', { fullPage: false });
     expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 })
   });
 });

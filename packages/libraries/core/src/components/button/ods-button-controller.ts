@@ -49,7 +49,7 @@ export class OdsButtonController extends OdsComponentController<OdsButton> {
   mutateAttributes(): void {
     if(this.component.circle) {
       this.component.variant = OdsButtonVariant.ghost;
-      this.component.flex = false;
+      this.component.inline = true;
     }
   }
 

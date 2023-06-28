@@ -8,11 +8,7 @@
 // /!\ for theming purposes, it has to be done in theming files
 // (i.e. packages/libraries/theming/...)
 :host {
-  display: inline-block;
   font-size: 0;
-}
-
-:host([flex]) {
   display: block;
   height: 100%;
   width: 100%;
@@ -22,6 +18,11 @@
     max-height: 100%;
     max-width: 100%;
   }
+}
+
+:host([inline]) {
+  display: inline-block;
+  width: var(--width);
 }
 
 .spinner > svg {

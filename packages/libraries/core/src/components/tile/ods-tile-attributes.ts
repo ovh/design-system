@@ -19,7 +19,7 @@ export interface OdsTileAttributes extends OdsRadioizable, OdsCheckboxable, OdsC
    */
   color?: OdsThemeColorIntent;
   disabled: boolean;
-  flex?: boolean;
+  inline?: boolean;
   /**
    * If the tile can have hoverable pseudo-classes or not
    */

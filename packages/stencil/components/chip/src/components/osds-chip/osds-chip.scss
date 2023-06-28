@@ -13,11 +13,11 @@
   border-style: solid;
   box-shadow: none;
   box-sizing: border-box;
-  display: inline-flex;
   line-height: 1;
   margin: 0;
   opacity: 1;
   overflow: hidden;
+  display: flex;
 
   @include osds-chip-on-main-element() {
     display: flex;
@@ -44,14 +44,9 @@
   }
 }
 
-:host([flex]) {
-  display: flex;
-  width: 100%;
-
-  @include osds-chip-on-main-element() {
-    display: flex;
-    width: 100%;
-  }
+:host([inline]) {
+  display: inline-flex;
+  width: var(--width);
 }
 
 :host:not([disabled]):focus-visible {

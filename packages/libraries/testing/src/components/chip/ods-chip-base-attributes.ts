@@ -8,7 +8,7 @@ export const odsChipBaseAttributes: OdsChipAttributes = {
     color: OdsThemeColorIntent.default,
     contrasted: false,
     disabled: false,
-    flex: undefined,
+    inline: undefined,
     removable: false,
     selectable: false,
     size: OdsChipSize.md,

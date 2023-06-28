@@ -99,12 +99,12 @@ describe('spec:osds-cart', () => {
         })
       });
     });
-    describe('flex', () => {
-      odsUnitTestAttribute<OdsCartAttributes, 'flex'>({
-        ...getAttributeContextOptions<OdsCartAttributes, OsdsCart, 'flex'>({
-          name: 'flex',
+    describe('inline', () => {
+      odsUnitTestAttribute<OdsCartAttributes, 'inline'>({
+        ...getAttributeContextOptions<OdsCartAttributes, OsdsCart, 'inline'>({
+          name: 'inline',
           list: [false, true],
-          defaultValue: odsCartDefaultAttributes.flex,
+          defaultValue: odsCartDefaultAttributes.inline,
           ...config
         })
       });

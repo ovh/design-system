@@ -31,9 +31,9 @@ const storyParams = {
     category: 'Misc',
     defaultValue: odsSelectDefaultAttributes.disabled,
   },
-  flex: {
+  inline: {
     category: 'Misc',
-    defaultValue: odsSelectDefaultAttributes.flex,
+    defaultValue: odsSelectDefaultAttributes.inline,
   },
   required: {
     category: 'Misc',

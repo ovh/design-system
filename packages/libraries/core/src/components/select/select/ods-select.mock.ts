@@ -17,7 +17,7 @@ export class OdsSelectMock implements OdsSelect<OdsSelectMethods, OdsSelectEvent
     disabled: boolean = odsSelectDefaultAttributes.disabled;
     defaultValue: OdsInputValue = odsSelectDefaultAttributes.defaultValue;
     value: OdsInputValue = odsSelectDefaultAttributes.value;
-    flex: boolean = odsSelectDefaultAttributes.flex;
+    inline?: boolean = odsSelectDefaultAttributes.inline;
     size: OdsSelectSize = odsSelectDefaultAttributes.size;
     color: OdsThemeColorIntent.primary = odsSelectDefaultAttributes.color;
     opened?: boolean = false;

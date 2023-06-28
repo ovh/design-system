@@ -12,11 +12,11 @@
   align-items: center;
   box-shadow: none;
   box-sizing: border-box;
-  display: inline-flex;
   margin: 0;
   opacity: 1;
   overflow: hidden;
   position: relative;
+  display: flex;
 
   @include osds-message-on-main-element() {
     display: flex;
@@ -44,19 +44,14 @@
     position: absolute;
     top: 0;
     right: 0;
-    margin: -var(--ods-size-inset-03);
+    margin: var(--ods-size-inset-03);
     padding: var(--ods-size-inset-03);
   }
 }
 
-:host([flex]) {
-  display: flex;
-  width: 100%;
-
-  @include osds-message-on-main-element() {
-    display: flex;
-    width: 100%;
-  }
+:host([inline]) {
+  display: inline-flex;
+  width: var(--width);
 }
 
 slot {

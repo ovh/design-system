@@ -87,12 +87,12 @@ describe('spec:osds-range', () => {
         })
       });
     });
-    describe('flex', () => {
-      odsUnitTestAttribute<OdsRangeAttributes, 'flex'>({
-        ...getAttributeContextOptions<OdsRangeAttributes, OsdsRange, 'flex'>({
-          name: 'flex',
+    describe('inline', () => {
+      odsUnitTestAttribute<OdsRangeAttributes, 'inline'>({
+        ...getAttributeContextOptions<OdsRangeAttributes, OsdsRange, 'inline'>({
+          name: 'inline',
           list: [false, true],
-          defaultValue: odsRangeDefaultAttributes.flex,
+          defaultValue: odsRangeDefaultAttributes.inline,
           ...config
         })
       });

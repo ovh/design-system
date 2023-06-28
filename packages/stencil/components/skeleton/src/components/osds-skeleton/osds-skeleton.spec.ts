@@ -50,18 +50,18 @@ describe('spec:osds-skeleton', () => {
       setup
     };
 
-    describe('flex', () => {
-      odsUnitTestAttribute<OdsSkeletonAttributes, 'flex'>({
-        ...getAttributeContextOptions<OdsSkeletonAttributes, OsdsSkeleton, 'flex'>({
-          name: 'flex',
+    describe('inline', () => {
+      odsUnitTestAttribute<OdsSkeletonAttributes, 'inline'>({
+        ...getAttributeContextOptions<OdsSkeletonAttributes, OsdsSkeleton, 'inline'>({
+          name: 'inline',
           list: [false, true],
-          defaultValue: odsSkeletonDefaultAttributes.flex,
+          defaultValue: odsSkeletonDefaultAttributes.inline,
           ...config,
         })
       });
-      it('should be flex if attribute is added', async () => {
-        await setup({ attributes: { flex: true } });
-        expect(instance.flex).toBe(true);
+      it('should be inline if attribute is added', async () => {
+        await setup({ attributes: { inline: true } });
+        expect(instance.inline).toBe(true);
       });
     });
 

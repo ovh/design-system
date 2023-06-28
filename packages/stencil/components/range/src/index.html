@@ -26,10 +26,8 @@
 <osds-range max="100"  color="success"></osds-range>
 <osds-range max="100"  color="info"></osds-range>
 
-<p>Flex</p>
-<osds-range></osds-range>
-<p></p>
-<osds-range flex></osds-range>
+<p>inline</p>
+<osds-range inline></osds-range>
 
 <p>Disabled</p>
 <osds-range disabled>Default</osds-range>
@@ -37,7 +35,7 @@
 
 <p>Validation (<i>forbidden: 4, { min: 7, max: 20 }</i>)</p>
 <article id="example-1">
-  <osds-range id="range-1" min="0" max="60" step="2" value="3" flex color="primary">
+  <osds-range id="range-1" min="0" max="60" step="2" value="3" color="primary">
   </osds-range>
   <span class="error-msg forbidden-value">Forbidden value</span>
   <span class="error-msg value-missing">Value required please</span>
@@ -48,7 +46,7 @@
 <p>Validation with multi (<i>forbidden: {min: 50, max: 55}</i>)</p>
 
 <article id="example-2">
-  <osds-range id="range-valid-multi" min="0" max="60" step="2" flex color="primary">
+  <osds-range id="range-valid-multi" min="0" max="60" step="2" color="primary">
   </osds-range>
   <span class="error-msg forbidden-value">Forbidden value</span>
   <span class="error-msg value-missing">Value required please</span>
@@ -57,22 +55,22 @@
 </article>
 
 <p>Multi</p>
-<osds-range id="range-2" min="0" max="60" step="2" flex color="primary"></osds-range>
+<osds-range id="range-2" min="0" max="60" step="2"  color="primary"></osds-range>
 <p></p>
-<osds-range id="range-3" min="0" max="60" step="2" flex color="primary"></osds-range>
+<osds-range id="range-3" min="0" max="60" step="2" color="primary"></osds-range>
 <p></p>
-<osds-range id="range-4" min="0" max="60" step="2" flex color="primary" disabled></osds-range>
+<osds-range id="range-4" min="0" max="60" step="2" color="primary" disabled></osds-range>
 
 <p>Bounds</p>
-<osds-range id="range-5" min="0" max="60" step="2" flex color="primary">
+<osds-range id="range-5" min="0" max="60" step="2" color="primary">
   <div slot="start-bound">start</div>
 </osds-range>
 <p></p>
-<osds-range id="range-6" min="0" max="60" step="2" flex color="primary">
+<osds-range id="range-6" min="0" max="60" step="2" color="primary">
   <div slot="end-bound">end</div>
 </osds-range>
 <p></p>
-<osds-range id="range-7" min="0" max="60" step="2" flex color="primary">
+<osds-range id="range-7" min="0" max="60" step="2" color="primary">
   <div slot="start-bound">start</div>
   <div slot="end-bound">end</div>
 </osds-range>

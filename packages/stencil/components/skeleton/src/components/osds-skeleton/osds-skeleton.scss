@@ -4,9 +4,12 @@
 @import '~@ovhcloud/ods-theming/ods-theme';
 
 :host {
-  display: block;
   min-height: .5rem;
   position: relative;
+
+  @include osds-skeleton-on-selected-host() {
+    display: flex;
+  }
 
   &::before {
     content: "\00a0";
@@ -38,11 +41,9 @@
   }
 }
 
-[flex] {
-  @include osds-skeleton-on-selected-host() {
-    display: flex;
-    width: 100%;
-  }
+:host([inline]) {
+  display: inline-block;
+  width: var(--width);
 }
 
 // apply the theme template for the component

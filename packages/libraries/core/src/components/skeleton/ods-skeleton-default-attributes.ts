@@ -7,7 +7,7 @@ import { OdsSkeletonSize } from './ods-skeleton-size';
  * @enum
  */
 export const odsSkeletonDefaultAttributesDoc = {
-  flex: false,
+  inline: false,
   randomized: false,
   size: OdsSkeletonSize.md,
 } as const;

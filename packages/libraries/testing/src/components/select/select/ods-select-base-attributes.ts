@@ -14,7 +14,7 @@ export const odsSelectBaseAttributes: OdsSelectAttributes = {
   defaultValue: '',
   value: '',
 
-  flex: false,
+  inline: false,
   size: OdsSelectSize.md,
   color: OdsThemeColorIntent.primary,
 };

@@ -42,8 +42,8 @@ export class OsdsButton implements OdsButton<OdsStencilMethods<OdsButtonMethods>
   /** @see OdsButtonAttributes.rel */
   @Prop() public download?: HTMLAnchorElement['download'] = odsButtonDefaultAttributes.download;
 
-  /** @see OdsButtonAttributes.flex */
-  @Prop({ reflect: true, mutable: true }) public flex? = odsButtonDefaultAttributes.flex;
+  /** @see OdsButtonAttributes.inline */
+  @Prop({ reflect: true, mutable: true }) public inline?: boolean = odsButtonDefaultAttributes.inline;
 
   /** @see OdsButtonAttributes.href */
   @Prop({ reflect: true }) public href?: string;

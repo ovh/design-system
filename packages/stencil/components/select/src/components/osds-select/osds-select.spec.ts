@@ -116,12 +116,12 @@ describe('spec:osds-select', () => {
       });
     });
 
-    describe('flex', () => {
-      odsUnitTestAttribute<OdsSelectAttributes, 'flex'>({
+    describe('inline', () => {
+      odsUnitTestAttribute<OdsSelectAttributes, 'inline'>({
         ...getAttributeContextOptions({
-          name: 'flex',
+          name: 'inline',
           list: [false, true],
-          defaultValue: odsSelectDefaultAttributes.flex,
+          defaultValue: odsSelectDefaultAttributes.inline,
         })
       });
     });

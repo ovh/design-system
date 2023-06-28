@@ -9,8 +9,19 @@
 :host {
   border: solid var(--ods-size-inset-02);
   box-sizing: border-box;
-  display: inline-flex;
   flex-direction: row;
+}
+
+:host(:not([inline])) {
+  @include osds-tile-on-selected-host() {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+  }
+}
+
+:host([inline]){
+  display: inline-flex;
   width: var(--width);
 }
 
@@ -39,14 +50,6 @@
 [rounded] {
   @include osds-tile-on-selected-host() {
     border-radius: var(--ods-size-border-radius-02);
-  }
-}
-
-[flex] {
-  @include osds-tile-on-selected-host() {
-    width: 100%;
-    display: grid;
-    grid-template-columns: auto 1fr auto;
   }
 }
 

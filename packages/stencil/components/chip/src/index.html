@@ -16,27 +16,30 @@
 <body>
 
 <p>Size</p>
-<osds-chip size='sm'>Small</osds-chip>
-<osds-chip>Default</osds-chip>
+<osds-chip inline size='sm'>Small</osds-chip>
+<osds-chip inline>Default</osds-chip>
 
 <p>Variant</p>
-<osds-chip variant='flat'>Flat</osds-chip>
-<osds-chip variant='stroked'>Stroked</osds-chip>
+<osds-chip inline variant='flat'>Flat</osds-chip>
+<osds-chip inline variant='stroked'>Stroked</osds-chip>
 
 <p>Color</p>
-<osds-chip color='primary'>Primary</osds-chip>
-<osds-chip color='error'>Error</osds-chip>
-<osds-chip color='warning'>Warning</osds-chip>
-<osds-chip color='promotion'>Promotion</osds-chip>
+<osds-chip inline color='primary'>Primary</osds-chip>
+<osds-chip inline color='error'>Error</osds-chip>
+<osds-chip inline color='warning'>Warning</osds-chip>
+<osds-chip inline color='promotion'>Promotion</osds-chip>
 
 <p>Removable</p>
-<osds-chip selectable removable>Removable</osds-chip>
+<osds-chip inline selectable removable>Removable</osds-chip>
 
 <p>Disabled</p>
-<osds-chip size='sm' disabled>Small</osds-chip>
-<osds-chip disabled>Default</osds-chip>
-<osds-chip variant='flat' disabled>Flat</osds-chip>
-<osds-chip variant='stroked' disabled>Stroked</osds-chip>
+<osds-chip inline size='sm' disabled>Small</osds-chip>
+<osds-chip inline disabled>Default</osds-chip>
+<osds-chip inline variant='flat' disabled>Flat</osds-chip>
+<osds-chip inline variant='stroked' disabled>Stroked</osds-chip>
+
+<p>without Inline</p>
+<osds-chip>Without Inline</osds-chip>
 
 <script>
   document.querySelectorAll('ods-chip').forEach((elem) => {});

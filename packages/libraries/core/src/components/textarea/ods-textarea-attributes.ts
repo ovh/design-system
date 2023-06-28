@@ -25,8 +25,8 @@ export interface OdsTextAreaAttributes extends OdsComponentAttributes {
   /** on error or not */
   error?: boolean;
   errorStateControl?: OdsErrorStateControl;
-  /** full width or not: see component principles */
-  flex?: boolean;
+  /** inline or not: see component principles */
+  inline?: boolean;
   /** textarea form control */
   formControl?: OdsFormControl<OdsTextAreaValidityState>;
   /** name : see component principles */

@@ -66,8 +66,8 @@ export class OsdsTextArea implements OdsTextArea<OdsStencilMethods<OdsTextAreaMe
   /** @see OdsTextAreaAttributes.errorStateControl */
   @Prop({ reflect: true }) errorStateControl?: OdsErrorStateControl = odsTextAreaDefaultAttributes.errorStateControl;
 
-  /** @see OdsTextAreaAttributes.flex */
-  @Prop({ reflect: true }) flex?: boolean = odsTextAreaDefaultAttributes.flex;
+  /** @see OdsTextAreaAttributes.inline */
+  @Prop({ reflect: true }) inline?: boolean = odsTextAreaDefaultAttributes.inline;
 
   /** @see OdsTextAreaAttributes.formControl */
   @Prop({ reflect: true }) formControl?: OdsFormControl<OdsTextAreaValidityState> = odsTextAreaDefaultAttributes.formControl;
@@ -118,11 +118,9 @@ export class OsdsTextArea implements OdsTextArea<OdsStencilMethods<OdsTextAreaMe
     this.controller.onDefaultValueChange(defaultValue);
   }
 
-  @Watch('flex')
-  onFlexChange(flex: boolean) {
-    if (flex && this.textInputEl?.style?.width) {
-      this.textInputEl.style.width = '100%';
-    } else {
+  @Watch('inline')
+  onInlineChange(inline: boolean) {
+    if (!inline) {
       this.textInputEl?.style.removeProperty('width');
     }
   }

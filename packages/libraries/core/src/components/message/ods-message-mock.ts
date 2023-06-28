@@ -12,7 +12,7 @@ import { OdsThemeColorIntent } from "@ovhcloud/ods-theming";
  */
 export class OdsMessageMock implements OdsMessage<OdsMessageMethods, OdsMessageEvents> {
   color?: OdsThemeColorIntent;
-  flex?: boolean;
+  inline?: boolean;
   icon?: OdsIconName;
   removable?: boolean;
   type?: OdsMessageType;

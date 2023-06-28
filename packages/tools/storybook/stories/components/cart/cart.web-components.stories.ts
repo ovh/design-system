@@ -18,7 +18,7 @@ defineCustomElements();
 
 /* Default story parameters  */
 const storyParams = {
-  flex: {
+  inmine: {
     category: 'General',
     defaultValue: false,
     control: { type: 'boolean' },
@@ -186,7 +186,7 @@ Default.parameters = parametersSmallCartViewport;
 Default.args = {
   ...extractStoryParams(storyParams),
   button: '<osds-button \n' +
-    '         flex \n' +
+    '         inline \n' +
     '         color="primary"\n' +
     '         contrasted="true"\n' +
     '         variant="stroked">\n' +
@@ -233,7 +233,6 @@ CartManager.args = {
   ...extractStoryParams(storyParams),
   vatMode: false,
   button: '<osds-button \n' +
-    '         flex \n' +
     '         color="primary"\n' +
     '         contrasted="true"\n' +
     '         variant="stroked">\n' +
@@ -380,7 +379,6 @@ const TemplateResponsive = (args) => html`
 export const Responsive = TemplateResponsive.bind({});
 Responsive.parameters = parametersResponsiveCartViewport;
 Responsive.args = {
-  flex: true,
   rounded: 'top',
   collapsed: true,
   collapsible: true,

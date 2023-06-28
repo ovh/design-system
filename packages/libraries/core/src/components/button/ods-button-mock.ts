@@ -13,7 +13,7 @@ export class OdsButtonMock implements OdsButton<OdsButtonMethods, OdsButtonEvent
     color?: OdsThemeColorIntent;
     contrasted?: boolean;
     disabled?: boolean;
-    flex?: boolean;
+    inline?: boolean;
     href?: string;
     size?: OdsButtonSize;
     target?: OdsHTMLAnchorElementTarget;

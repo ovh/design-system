@@ -179,7 +179,7 @@ describe('e2e:osds-cart', () => {
     describe('screenshots when cart is collapsible', () => {
       beforeEach(async () => {
         await setup({
-          attributes: { collapsed: false, collapsible: true, flex: true }, html: ``,
+          attributes: { collapsed: false, collapsible: true }, html: ``,
         });
 
         el.innerHTML = sectionItems;

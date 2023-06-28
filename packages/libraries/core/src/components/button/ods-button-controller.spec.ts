@@ -83,7 +83,6 @@ describe('spec:ods-button-controller', () => {
     describe('methods:mutateAttributes', () => {
       beforeEach(() => {
         setup({
-          flex: true,
           variant: OdsButtonVariant.flat
         });
       });
@@ -92,16 +91,14 @@ describe('spec:ods-button-controller', () => {
         controller.mutateAttributes();
 
         expect(component.variant).toBe(OdsButtonVariant.flat);
-        expect(component.flex).toBe(true);
+        expect(component.inline).toBe(undefined);
       });
 
       it('should mutate attributes if circle attribute is true', () => {
         component.circle = true;
 
         controller.mutateAttributes();
-
         expect(component.variant).toBe(OdsButtonVariant.ghost);
-        expect(component.flex).toBe(false);
       });
     })
   });

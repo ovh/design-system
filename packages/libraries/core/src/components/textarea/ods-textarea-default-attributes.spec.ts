@@ -33,8 +33,8 @@ describe('spec:ods-textarea-default-attributes', () => {
   it('errorStateControl should not be defined', () => {
     expect(odsTextAreaDefaultAttributes.errorStateControl).toBe(undefined);
   });
-  it('flex should be false', () => {
-    expect(odsTextAreaDefaultAttributes.flex).toBe(false);
+  it('inline should be false', () => {
+    expect(odsTextAreaDefaultAttributes.inline).toBe(false);
   });
   it('formControl should not be defined', () => {
     expect(odsTextAreaDefaultAttributes.formControl).toBe(undefined);

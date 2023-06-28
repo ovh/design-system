@@ -25,9 +25,9 @@ const storyParams = {
     category: 'Misc',
     defaultValue: odsSpinnerDefaultAttributes.contrasted,
   },
-  flex: {
+  inline: {
     category: 'Misc',
-    defaultValue: odsSpinnerDefaultAttributes.flex,
+    defaultValue: odsSpinnerDefaultAttributes.inline,
   },
 };
 

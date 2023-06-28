@@ -25,9 +25,9 @@ export interface OdsRangeAttributes extends OdsComponentAttributes {
    */
   errorStateControl?: OdsErrorStateControl;
   /**
-   * Flex unit for range width
+   * inline or not
    */
-  flex?: boolean;
+  inline?: boolean;
   /**
    * The range id
    */

@@ -12,9 +12,9 @@ defineCustomElements();
 
 /* Default story parameters  */
 const storyParams = {
-  flex: {
+  inline: {
     category: 'Misc',
-    defaultValue: odsSkeletonDefaultAttributes.flex,
+    defaultValue: odsSkeletonDefaultAttributes.inline,
   },
   randomized: {
     category: 'Misc',

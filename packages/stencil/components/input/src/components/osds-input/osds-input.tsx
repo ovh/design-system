@@ -75,8 +75,8 @@ export class OsdsInput implements OdsInput<OdsStencilMethods<OdsInputMethods>, O
   /** @see OdsInputAttributes.errorStateControl */
   @Prop({ reflect: true }) errorStateControl?: OdsErrorStateControl = odsInputDefaultAttributes.errorStateControl;
 
-  /** @see OdsInputAttributes.flex */
-  @Prop({ reflect: true }) flex?: boolean = odsInputDefaultAttributes.flex;
+  /** @see OdsInputAttributes.inline */
+  @Prop({ reflect: true }) inline?: boolean = odsInputDefaultAttributes.inline;
 
   /** @see OdsInputAttributes.forbiddenValues */
   @Prop({ reflect: true }) forbiddenValues: OdsFormForbiddenValues<number> = odsInputDefaultAttributes.forbiddenValues;
@@ -358,8 +358,8 @@ export class OsdsInput implements OdsInput<OdsStencilMethods<OdsInputMethods>, O
             step,
             tabindex: '-1',
             /** Handling password masking options */
-            type: isPassword && !masked 
-              ? 'text' 
+            type: isPassword && !masked
+              ? 'text'
               : type,
             value: value?.toString() || '',
           }}
@@ -403,7 +403,7 @@ export class OsdsInput implements OdsInput<OdsStencilMethods<OdsInputMethods>, O
                 onClick: () => this.clear(),
             }}></osds-icon>
           )
-        } 
+        }
 
         {/** If Component isn't loading & icon, display desired icon */
           icon && !loading && (

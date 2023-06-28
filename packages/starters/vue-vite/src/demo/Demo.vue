@@ -43,8 +43,8 @@ function handleMyButtonClick() {
     <h3 class="ods-subheading-200">ODS React components</h3>
     <h5>Ods Button</h5>
     <div>
-      <OsdsButton :color="OdsThemeColorIntent.primary" @click="handleOdsButtonClick" flex>ODS button</OsdsButton>
-      <MyButton :flex="true" @click="handleMyButtonClick" id="my-button">My Vue Button based on ODS</MyButton>
+      <OsdsButton :color="OdsThemeColorIntent.primary" @click="handleOdsButtonClick">ODS button</OsdsButton>
+      <MyButton @click="handleMyButtonClick" id="my-button">My Vue Button based on ODS</MyButton>
     </div>
 
     <h5>Ods Flag</h5>

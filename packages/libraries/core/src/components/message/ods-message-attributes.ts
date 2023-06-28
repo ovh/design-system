@@ -9,9 +9,9 @@ export interface OdsMessageAttributes extends OdsComponentAttributes {
    */
   color?: OdsThemeColorIntent
   /**
-   * Message as flex
+   * Message as inline
    */
-  flex?: boolean
+  inline?: boolean
   /**
    * The icon prefix
    */

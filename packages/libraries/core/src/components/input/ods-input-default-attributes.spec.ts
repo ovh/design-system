@@ -25,8 +25,8 @@ describe('spec:ods-input-default-attributes', () => {
   it('disabled should be false', () => {
     expect(odsInputDefaultAttributes.disabled).toBe(false);
   });
-  it('flex should be false', () => {
-    expect(odsInputDefaultAttributes.flex).toBe(false);
+  it('inline should be false', () => {
+    expect(odsInputDefaultAttributes.inline).toBe(false);
   });
   it('label should not be defined', () => {
     expect(odsInputDefaultAttributes.label).toBe(undefined);

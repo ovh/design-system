@@ -9,7 +9,7 @@ import { OdsSkeletonController } from './ods-skeleton-controller';
  * it allows to test the controller with a stub implementation.
  */
 export class OdsSkeletonMock implements OdsSkeleton<OdsSkeletonMethods, OdsSkeletonEvents> {
-  flex = false;
+  inline = false;
   randomized = false;
   size = undefined;
   controller: OdsSkeletonController = jest.fn() as unknown as OdsSkeletonController;

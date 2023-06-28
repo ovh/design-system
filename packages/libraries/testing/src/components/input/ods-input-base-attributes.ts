@@ -11,7 +11,7 @@ export const odsInputBaseAttributes: OdsInputAttributes = {
   defaultValue: '',
   disabled: false,
   error: false,
-  flex: false,
+  inline: false,
   forbiddenValues: [],
   max: undefined,
   min: undefined,

@@ -10,7 +10,7 @@ export class OdsChipMock implements OdsChip<OdsChipMethods, OdsChipEvents> {
     color?: OdsThemeColorIntent;
     contrasted?: boolean;
     disabled?: boolean;
-    flex?: boolean;
+    inline?: boolean;
     removable?: boolean;
     selectable?: boolean;
     size?: OdsChipSize;

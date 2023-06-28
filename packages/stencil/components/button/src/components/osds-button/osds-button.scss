@@ -9,12 +9,10 @@
 // CSS for the component but not for theming
 
 :host {
-  display: inline-block;
   margin: calc(var(--ods-size-inset-n-02) + var(--ods-size-inset-n-02));
   outline: none;
   overflow: hidden;
   padding: calc(var(--ods-size-inset-02) + var(--ods-size-inset-02));
-  width: var(--width);
   min-width: 0;
 
   @include osds-button-on-main-element() {
@@ -43,6 +41,23 @@
       max-width: inherit;
     }
   }
+
+  display: flex;
+
+  @include osds-button-on-main-element() {
+    width: 100%;
+  }
+  @include osds-button-on-text-container {
+    width: inherit;
+  }
+
+  .button__centered-text {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: break-all;
+  }
 }
 
 :not([disabled]):focus-visible {
@@ -64,24 +79,9 @@
   pointer-events: none;
 }
 
-:host([flex]) {
-  display: flex;
-  width: 100%;
-
-  @include osds-button-on-main-element() {
-    width: 100%;
-  }
-  @include osds-button-on-text-container {
-    width: inherit;
-  }
-
-  .button__centered-text {
-    min-width: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    word-break: break-all;
-  }
+:host([inline]) {
+  width: var(--width);
+  display: inline-flex
 }
 
 slot {

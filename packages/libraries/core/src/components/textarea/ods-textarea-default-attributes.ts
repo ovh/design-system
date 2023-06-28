@@ -13,7 +13,7 @@ export const odsTextAreaDefaultAttributesDoc: OdsTextAreaAttributes = {
   disabled: false,
   error: false,
   errorStateControl: undefined,
-  flex: false,
+  inline: false,
   formControl: undefined,
   name: undefined,
   placeholder: undefined,

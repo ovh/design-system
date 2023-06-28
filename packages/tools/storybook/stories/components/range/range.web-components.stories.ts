@@ -51,7 +51,7 @@ const storyParams = {
     category: 'Misc',
     defaultValue: false
   },
-  flex: {
+  inline: {
     category: 'Misc',
     defaultValue: false
   },
@@ -75,8 +75,8 @@ export default {
 
 // A range example
 const TemplateDefault = (args: any) => {
-  if (args.flex === 0) {
-    delete args.flex;
+  if (args.inline === 0) {
+    delete args.inline;
   }
   return html`
     <div class='range-container'>

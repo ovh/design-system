@@ -65,8 +65,8 @@ export class OsdsSelect implements OdsSelect<OdsStencilMethods<OdsSelectMethods>
   /** @see OdsSelectAttributes.disabled */
   @Prop({ reflect: true, mutable: true }) disabled = odsSelectDefaultAttributes.disabled;
 
-  /** @see OdsSelectAttributes.flex */
-  @Prop({ reflect: true }) flex = odsSelectDefaultAttributes.flex;
+  /** @see OdsSelectAttributes.inline */
+  @Prop({ reflect: true }) inline = odsSelectDefaultAttributes.inline;
 
   /** @see OdsSelectAttributes.required */
   @Prop({ reflect: true, mutable: true }) required = odsSelectDefaultAttributes.required;
@@ -239,7 +239,7 @@ export class OsdsSelect implements OdsSelect<OdsStencilMethods<OdsSelectMethods>
     this.dirty = true;
     if (this.opened) {
       this.controller.closeSurface();
-    } else { 
+    } else {
       this.controller.openSurface();
     }
   }
@@ -271,7 +271,7 @@ export class OsdsSelect implements OdsSelect<OdsStencilMethods<OdsSelectMethods>
       this.controller.closeSurface();
     }
   }
-  
+
   syncReferences() {
     this.controller.syncReferences()
   }
@@ -297,7 +297,7 @@ export class OsdsSelect implements OdsSelect<OdsStencilMethods<OdsSelectMethods>
       ariaLabel,
       ariaLabelledby,
       disabled,
-      flex,
+      inline,
       value,
       color
     } = this;
@@ -307,7 +307,7 @@ export class OsdsSelect implements OdsSelect<OdsStencilMethods<OdsSelectMethods>
         class: `${disabled ? 'disabled' : ''}${this.opened ? ' opened' : ''}${this.hasError() ? ' ods-error' : ''}`,
         ariaLabel,
         'aria-labelledby': ariaLabelledby,
-        flex,
+        inline,
         onFocus: this.onFocus.bind(this),
         onBlur: this.onBlur.bind(this),
         onClick: this.handleSelectClick.bind(this),

@@ -46,8 +46,8 @@ export class OsdsRange implements OdsRange<OdsStencilMethods<OdsRangeMethods>, O
   /** @see OdsRangeAttributes.disabled */
   @Prop({ reflect: true }) public disabled?: boolean = odsRangeDefaultAttributes.disabled;
 
-  /** @see OdsRangeAttributes.flex */
-  @Prop({ reflect: true }) public flex?: boolean = odsRangeDefaultAttributes.flex;
+  /** @see OdsRangeAttributes.inline */
+  @Prop({ reflect: true }) public inline?: boolean = odsRangeDefaultAttributes.inline;
 
   /** @see OdsRangeAttributes.max */
   @Prop({ reflect: true }) public max?: number = odsRangeDefaultAttributes.max;

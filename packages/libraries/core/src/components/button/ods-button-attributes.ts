@@ -15,8 +15,8 @@ export interface OdsButtonAttributes extends OdsComponentAttributes {
   disabled?: boolean;
   /** Button with href as download source */
   download?: HTMLAnchorElement['download'];
-  /** full width or not: see component principles */
-  flex?: boolean;
+  /** inline or not: see component principles */
+  inline?: boolean;
   /** use a button as a link with `<a>` element */
   href?: string;
   /** Button with href relationship */

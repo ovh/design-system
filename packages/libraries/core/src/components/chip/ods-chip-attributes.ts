@@ -17,9 +17,9 @@ export interface OdsChipAttributes extends OdsComponentAttributes {
    */
   disabled?: boolean
   /**
-   * Chip as flex
+   * Chip as inline
    */
-  flex?: boolean
+  inline?: boolean
   /**
    * If the chip can be removed or not
    */

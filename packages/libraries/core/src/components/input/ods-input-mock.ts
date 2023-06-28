@@ -26,7 +26,7 @@ export class OdsInputMock implements OdsInput<OdsInputMethods, OdsInputEvents> {
   disabled?: boolean;
   error?: boolean;
   errorStateControl?: OdsErrorStateControl;
-  flex?: boolean;
+  inline?: boolean;
   forbiddenValues: OdsFormForbiddenValues<number> = odsInputDefaultAttributes.forbiddenValues;
   formControl?: OdsFormControl<OdsInputValidityState>;
   hideable?: boolean;

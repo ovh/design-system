@@ -34,7 +34,7 @@ OdsMockPropertyDescriptor(HTMLInputElement.prototype, 'validity', () => OdsCreat
 
 describe('spec:osds-input', () => {
   logger.log('init');
-  
+
   let page: SpecPage;
   let htmlInput: HTMLInputElement | null | undefined;
   let anotherInput: HTMLInputElement | null | undefined;
@@ -131,12 +131,12 @@ describe('spec:osds-input', () => {
       });
     });
 
-    describe('flex', () => {
-      odsUnitTestAttribute<OdsInputAttributes, 'flex'>({
-        ...getAttributeContextOptions<OdsInputAttributes, OsdsInput, 'flex'>({
-          name: 'flex',
+    describe('inline', () => {
+      odsUnitTestAttribute<OdsInputAttributes, 'inline'>({
+        ...getAttributeContextOptions<OdsInputAttributes, OsdsInput, 'inline'>({
+          name: 'inline',
           list: [false, true],
-          defaultValue: odsInputDefaultAttributes.flex,
+          defaultValue: odsInputDefaultAttributes.inline,
           ...config
         })
       });
@@ -218,7 +218,7 @@ describe('spec:osds-input', () => {
           ...config
         })
       });
-    });  
+    });
 
     describe('value', () => {
       odsUnitTestAttribute<OdsInputAttributes, 'value'>({

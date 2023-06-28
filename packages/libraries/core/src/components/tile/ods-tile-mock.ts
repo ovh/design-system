@@ -11,7 +11,7 @@ export class OdsTileMock implements OdsTile<OdsTileMethods, OdsTileEvents> {
   checking = false;
   color?: OdsThemeColorIntent;
   disabled = false;
-  flex?: boolean;
+  inline?: boolean;
   hoverable?: boolean;
   hasFocus = false;
   loading = false;

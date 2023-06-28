@@ -20,7 +20,7 @@ export class OdsTextAreaMock implements OdsTextArea<OdsTextAreaMethods, OdsTextA
   disabled?: boolean;
   error?: boolean;
   errorStateControl?: OdsErrorStateControl;
-  flex?: boolean;
+  inline?: boolean;
   formControl?: OdsFormControl<OdsTextAreaValidityState>;
   name?: string;
   placeholder?: string;

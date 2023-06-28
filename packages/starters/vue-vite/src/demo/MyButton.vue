@@ -16,7 +16,7 @@ type OsdsButtonProps = OdsJSX.IntrinsicElements['osds-button'];
  * default custom properties values for the custom button
  */
 const DEFAULT_BUTTON_PROPS: Partial<OsdsButtonProps> = {
-  flex: true,
+  inline: false,
   color: OdsThemeColorIntent.accent
 };
 

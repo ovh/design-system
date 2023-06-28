@@ -14,7 +14,7 @@ export const odsButtonDefaultAttributesDoc  = {
   contrasted: false,
   disabled: false,
   download: undefined,
-  flex: false,
+  inline: false,
   href: undefined,
   rel: undefined,
   size: OdsButtonSize.md,

@@ -7,11 +7,20 @@
 @import '~@ovhcloud/ods-theming/ods-theme';
 
 :host {
-  display: inline-flex;
   flex-flow: column;
-  width: var(--width);
   position: relative;
+
+  @include osds-range-on-selected-host() {
+    width: 100%;
+    display: flex;
+  }
 }
+
+:host([inline]) {
+  display: inline-flex;
+  width: var(--width);
+}
+
 
 [disabled] {
   @include osds-range-on-selected-host() {
@@ -21,13 +30,6 @@
     * {
       pointer-events: none;
     }
-  }
-}
-
-[flex] {
-  @include osds-range-on-selected-host() {
-    width: 100%;
-    display: flex;
   }
 }
 

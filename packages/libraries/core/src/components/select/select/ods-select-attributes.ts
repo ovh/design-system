@@ -29,8 +29,8 @@ export interface OdsSelectAttributes extends OdsComponentAttributes {
    * Its corresponding value. It needs to correspond to the value of the option
    */
   value: OdsInputValue;
-  /** full width or not: see component principles */
-  flex: boolean;
+  /** inline or not: see component principles */
+  inline?: boolean;
   /** size: see component principles */
   size: OdsSelectSize;
   /*

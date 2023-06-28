@@ -26,8 +26,8 @@ export class OsdsSpinner implements OdsSpinner<OdsStencilMethods<OdsSpinnerMetho
   /** @see OdsSpinnerAttributes.contrasted */
   @Prop({ reflect: true }) public contrasted?: boolean = odsSpinnerDefaultAttributes.contrasted;
 
-  /** @see OdsSpinnerAttributes.flex */
-  @Prop({ reflect: true }) public flex?: boolean = odsSpinnerDefaultAttributes.flex;
+  /** @see OdsSpinnerAttributes.inline */
+  @Prop({ reflect: true }) public inline?: boolean = odsSpinnerDefaultAttributes.inline;
 
   /** @see OdsSpinnerAttributes.mode */
   @Prop({ reflect: true }) public mode?: OdsSpinnerMode = odsSpinnerDefaultAttributes.mode;

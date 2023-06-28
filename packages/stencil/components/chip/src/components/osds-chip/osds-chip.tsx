@@ -35,8 +35,8 @@ export class OsdsChip implements OdsChip<OdsStencilMethods<OdsChipMethods>, OdsS
   /** @see OdsChipAttributes.disabled */
   @Prop({ reflect: true }) public disabled?: boolean = odsChipDefaultAttributes.disabled;
 
-  /** @see OdsChipAttributes.flex */
-  @Prop({ reflect: true }) public flex?: boolean = odsChipDefaultAttributes.flex;
+  /** @see OdsChipAttributes.inline */
+  @Prop({ reflect: true }) public inline?: boolean = odsChipDefaultAttributes.inline;
 
   /** @see OdsChipAttributes.removable */
   @Prop({ reflect: true }) public removable?: boolean = odsChipDefaultAttributes.removable;

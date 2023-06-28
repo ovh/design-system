@@ -99,12 +99,12 @@ describe('spec:osds-textarea', () => {
       });
     });
 
-    describe('flex', () => {
-      odsUnitTestAttribute<OdsTextAreaAttributes, 'flex'>({
-        ...getAttributeContextOptions<OdsTextAreaAttributes, OsdsTextArea, 'flex'>({
-          name: 'flex',
+    describe('inline', () => {
+      odsUnitTestAttribute<OdsTextAreaAttributes, 'inline'>({
+        ...getAttributeContextOptions<OdsTextAreaAttributes, OsdsTextArea, 'inline'>({
+          name: 'inline',
           list: [false, true],
-          defaultValue: odsTextAreaDefaultAttributes.flex,
+          defaultValue: odsTextAreaDefaultAttributes.inline,
           ...config
         })
       });

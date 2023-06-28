@@ -5,7 +5,7 @@ import { OdsCartRounded } from './ods-cart-rounded';
 export const odsCartDefaultAttributesDoc = {
   collapsed: false,
   collapsible: false,
-  flex: false,
+  inline: false,
   rounded: OdsCartRounded.all,
   size: OdsCartSize.sm
 } as const;

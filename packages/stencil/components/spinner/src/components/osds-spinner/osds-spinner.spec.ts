@@ -55,19 +55,19 @@ describe('spec:osds-spinner', () => {
       setup
     };
 
-    describe('flex', () => {
-      odsUnitTestAttribute<OdsSpinnerAttributes, 'flex'>({
-        ...getAttributeContextOptions<OdsSpinnerAttributes, OsdsSpinner, 'flex'>({
-          name: 'flex',
+    describe('inline', () => {
+      odsUnitTestAttribute<OdsSpinnerAttributes, 'inline'>({
+        ...getAttributeContextOptions<OdsSpinnerAttributes, OsdsSpinner, 'inline'>({
+          name: 'inline',
           list: [false, true],
-          defaultValue: odsSpinnerDefaultAttributes.flex,
+          defaultValue: odsSpinnerDefaultAttributes.inline,
           ...config,
         })
       });
 
-      it('should be flex if attribute is added', async () => {
-        await setup({ attributes: { flex: true } });
-        expect(instance.flex).toBe(true);
+      it('should be inline if attribute is added', async () => {
+        await setup({ attributes: { inline: true } });
+        expect(instance.inline).toBe(true);
       });
     });
 

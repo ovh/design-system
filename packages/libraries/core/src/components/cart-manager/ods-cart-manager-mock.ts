@@ -11,7 +11,7 @@ import { OdsI18nHook } from '../../i18n/ods-i18n-hook';
 
 export class OdsCartManagerMock implements OdsCartManager<OdsCartManagerMethods, OdsCartManagerEvents> {
   odsI18n: OdsI18n = new OdsI18n();
-  flex?: boolean;
+  inline?: boolean;
   footer?: OdsCartManagerFooter;
   i18n?: OdsI18nHook;
   period?: ODS_PERIOD_ISO_CODE;

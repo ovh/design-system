@@ -101,12 +101,12 @@ describe('spec:osds-tile', () => {
       });
     });
 
-    describe('flex', () => {
-      odsUnitTestAttribute<OdsTileAttributes, 'flex'>({
-        ...getAttributeContextOptions<OdsTileAttributes, OsdsTile, 'flex'>({
-          name: 'flex',
+    describe('inline', () => {
+      odsUnitTestAttribute<OdsTileAttributes, 'inline'>({
+        ...getAttributeContextOptions<OdsTileAttributes, OsdsTile, 'inline'>({
+          name: 'inline',
           list: [false, true],
-          defaultValue: odsTileDefaultAttributes.flex,
+          defaultValue: odsTileDefaultAttributes.inline,
           ...config
         })
       });

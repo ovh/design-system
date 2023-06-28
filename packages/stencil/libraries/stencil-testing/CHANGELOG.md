@@ -8,6 +8,20 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
 
 
+# [14.0.1](https://ovhcloud.design/v14.0.1/?path=/docs/design-system-changelog--page) (2023-06-28)
+[compare](https://github.com/ovh/design-system/compare/v14.0.0...v14.0.1)
+
+### Bug Fixes
+
+* **dependencies:** rm multi dep since version tags wont update ([#88](https://github.com/ovh/design-system/issues/88)) ([9e3f2c8](https://github.com/ovh/design-system/commit/9e3f2c8af4afb7bad17985ca1cdc000533b23c2f))
+
+
+
+
+
+[Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
+
+
 # [14.0.0](https://ovhcloud.design/v14.0.0/?path=/docs/design-system-changelog--page) (2023-06-28)
 [compare](https://github.com/ovh/design-system/compare/v13.0.1...v14.0.0)
 

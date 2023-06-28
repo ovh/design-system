@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-theme-blue-jeans",
-  "version": "14.0.0",
+  "version": "14.0.1",
   "description": "Blue Jeans theme, containing color variables & fonts",
   "license": "Apache-2.0",
   "style": "index.css",
@@ -13,7 +13,7 @@
     "build:sass:prefix": "yarn run generate:theme && yarn run generate:prefix"
   },
   "dependencies": {
-    "@ovhcloud/ods-theming": "^14.0.0"
+    "@ovhcloud/ods-theming": "^14.0.1"
   },
   "devDependencies": {
     "autoprefixer": "~10.3.7",

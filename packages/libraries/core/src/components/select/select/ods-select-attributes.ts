@@ -41,4 +41,6 @@ export interface OdsSelectAttributes extends OdsComponentAttributes {
    */
   /** the primary color of the theme */
   color: OdsThemeColorIntent.primary;
+  /** opened or not */
+  opened?: boolean;
 }

@@ -33,6 +33,7 @@ describe('e2e:osds-select', () => {
     await page.setContent(`
       <osds-select ${OdsStringAttributes2Str(stringAttributes)}>
         <osds-select-option value="42">value</osds-select-option>
+        <osds-select-option value="43">value2</osds-select-option>
       </osds-select>
     `);
     await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
@@ -107,7 +108,7 @@ describe('e2e:osds-select', () => {
 
 // it should change the selection and value by clicking on a select-option
 // it should change the selection if the value property changed
-//it should remove the selection if the value property changed for an nonexistent option's value
+// it should remove the selection if the value property changed for an nonexistent option's value
 
   describe('events', () => {
     describe('odsValueChange', () => {
@@ -199,6 +200,179 @@ console.log('before clicks');
         expect(odsValueChange).toHaveReceivedEventDetail(expected);
         expect(odsValueChange).toHaveReceivedEventTimes(1);
       });
+    });
+  });
+
+  describe('checkForClickOutside', () => {
+    let selectElement: E2EElement
+
+    async function isSelectOpen(): Promise<boolean> {
+      return page.evaluate(() => {
+        return !!document.querySelector('osds-content-addon osds-select.opened');
+      });
+    }
+
+    async function setupForClickOutside() {
+      const minimalAttributes: OdsSelectAttributes = OdsSelectCreateAttributes({});
+      const stringAttributes = OdsComponentAttributes2StringAttributes<OdsSelectAttributes>(minimalAttributes, odsSelectDefaultAttributes);
+
+      page = await newE2EPage();
+
+      await page.setContent(`
+        <div>
+          <osds-content-addon>
+            <span slot="main">
+              <osds-select ${OdsStringAttributes2Str(stringAttributes)}>
+                <osds-select-option value="42">value</osds-select-option>
+              </osds-select>
+            </span>
+
+            <span slot="bottom">
+              <p>Inside parent element</p>
+            </span>
+          </osds-content-addon>
+          <button>Outside element</button>
+        </div>
+      `);
+      await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
+
+      selectElement = await page.find('osds-content-addon osds-select')
+    }
+
+    it('should close the tooltip on outside click', async () => {
+      await setupForClickOutside();
+      const outsideElement = await page.find('button');
+
+      await selectElement.click();
+      expect(await isSelectOpen()).toBe(true);
+
+      await outsideElement.click();
+      expect(await isSelectOpen()).toBe(false);
+    });
+
+    it('should close the tooltip on outside click on same parent DOM', async () => {
+      await setupForClickOutside();
+      const outsideElement = await page.find('osds-content-addon p');
+
+      await selectElement.click();
+      expect(await isSelectOpen()).toBe(true);
+
+      await outsideElement.click();
+      expect(await isSelectOpen()).toBe(false);
+    });
+  });
+
+  describe('method:handlerKeyPress', () => {
+    it('should open select when Enter', async () => {
+      await setup({ });
+      await page.waitForChanges();
+      await el.focus();
+      await page.keyboard.press('Enter');
+      expect(await el.getProperty('opened')).toBe(true);
+    });
+
+    it('should close select when Escape', async () => {
+      await setup({ });
+      await page.waitForChanges();
+      await el.focus();
+      await page.keyboard.press('Enter');
+      await page.keyboard.press('Escape');
+      expect(await el.getProperty('opened')).toBe(false);
+    });
+
+    it('should close select after focus was on option', async () => {
+      await setup({ });
+      await page.waitForChanges();
+      await el.focus();
+      await page.keyboard.press('Enter');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowUp');
+      await page.keyboard.press('Enter');
+      expect(await el.getProperty('opened')).toBe(false);
+    });
+
+    it('should close select after focus was on option and has an selected option', async () => {
+      await setup({ });
+      await page.waitForChanges();
+      await el.focus();
+      await page.keyboard.press('Enter');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('Enter');
+      await page.keyboard.press('Enter');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowUp');
+      await page.keyboard.press('Enter');
+      expect(await el.getProperty('opened')).toBe(false);
+    });
+
+    it('should open select when Enter & focus on first option', async () => {
+      await setup({ });
+      await page.waitForChanges();
+      await el.focus();
+      await page.keyboard.press('Enter');
+      await page.keyboard.press('ArrowDown');
+      expect(await optionElement.getProperty('selected')).toBe(true);
+    });
+
+    it('should open select when Enter & focus on first option with Tab', async () => {
+      await setup({ });
+      await page.waitForChanges();
+      await el.focus();
+      await page.keyboard.press('Enter');
+      await page.keyboard.press('Tab');
+      expect(await optionElement.getProperty('selected')).toBe(true);
+    });
+
+    it('should open select when Enter & select option', async () => {
+      await setup({ });
+      await page.waitForChanges();
+      await el.focus();
+      await page.keyboard.press('Enter');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('Enter');
+      expect(await el.getProperty('value')).toBe("42");
+    });
+
+    it('should open select when Enter & select option already selected', async () => {
+      await setup({ });
+      await page.waitForChanges();
+      await el.focus();
+      await page.keyboard.press('Enter');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('Enter');
+      expect(await el.getProperty('opened')).toBe(false);
+      expect(await el.getProperty('value')).toBe("42");
+      await page.keyboard.press('Enter');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowUp');
+      await page.keyboard.press('Enter');
+      expect(await el.getProperty('opened')).toBe(false);
+      expect(await el.getProperty('value')).toBe("42");
+    });
+
+    it('should open select when Enter & focus on first option with arrow up', async () => {
+      await setup({ });
+      await page.waitForChanges();
+      await el.focus();
+      await page.keyboard.press('Enter');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowUp');
+      await page.keyboard.press('Enter');
+      expect(await el.getProperty('value')).toBe("42");
+    });
+
+    it('should open select when Enter & focus on first option with shift + Tab', async () => {
+      await setup({ });
+      await page.waitForChanges();
+      await el.focus();
+      await page.keyboard.press('Enter');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await page.keyboard.down('Shift');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+      expect(await el.getProperty('value')).toBe("42");
     });
   });
 });

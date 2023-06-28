@@ -1,0 +1,17 @@
+@import 'styles/osds-tooltip-content.color';
+@import 'styles/osds-tooltip-content.size';
+@import 'styles/osds-tooltip-content.typography';
+@import '~@ovhcloud/ods-theming/ods-theme';
+
+:host {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+}
+
+// apply the theme template for the component
+@include ods-theme-component() {
+  @include osds-tooltip-content-theme-color();
+  @include osds-tooltip-content-theme-size();
+  @include osds-tooltip-content-theme-typography();
+}

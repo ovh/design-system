@@ -12,17 +12,26 @@ export const config: Config = {
     reactOutput: {
       componentCorePackage: '@ovhcloud/ods-stencil/components/input',
       // exclude peer dependencies that corresponds to www usage
-      excludeComponents: []
+      excludeComponents: [
+        'osds-icon',
+        'osds-spinner',
+      ]
     },
     vueOutput: {
       componentCorePackage: '@ovhcloud/ods-stencil/components/input',
-      excludeComponents: []
+      excludeComponents: [
+        'osds-icon',
+        'osds-spinner',
+      ]
     },
     dev: {
       globalScript: 'src/global.dev.ts',
     },
     prod: {
       globalScript: 'src/global.prod.ts'
+    },
+    test: {
+      globalScript: 'src/global.test.ts',
     }
   })
 };

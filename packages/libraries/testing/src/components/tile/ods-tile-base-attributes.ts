@@ -9,7 +9,7 @@ export const odsTileBaseAttributes: OdsTileAttributes = {
   checking: false,
   color: OdsThemeColorIntent.default,
   disabled: false,
-  interactive: false,
+  hoverable: false,
   loading: false,
   rounded: true,
   size: OdsTileSize.md,

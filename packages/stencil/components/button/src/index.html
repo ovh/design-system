@@ -36,6 +36,9 @@
 <osds-button square>Square</osds-button>
 <osds-button square size='l'>Square large</osds-button>
 
+<p>Link</p>
+<osds-button href="#">Link</osds-button>
+
 <p>Disabled</p>
 <osds-button size='s' disabled>Small</osds-button>
 <osds-button disabled>Default</osds-button>
@@ -50,6 +53,38 @@
 <osds-button square disabled>Square</osds-button>
 <osds-button square size='l' disabled>Square large</osds-button>
 
+<p>Circle</p>
+<osds-button   color="primary" circle="true" flex>
+  <osds-icon
+    name="plus"
+    size="xs"
+    color="primary"
+  />
+</osds-button>
+<osds-button color="primary" circle size='sm'>
+  <osds-icon
+    name="ellipsis-vertical"
+    size="xxs"
+    color="primary"
+  />
+</osds-button>
+<osds-button circle>
+  <span>Button</span>
+</osds-button>
+<osds-button circle>
+  <span>Button</span>
+</osds-button>
+
+<p>In Form</p>
+<form>
+  <div>
+    <label for="text">Enter text: </label>
+    <input type="text" name="text" id="text" required>
+  </div>
+
+  <osds-button type='submit' size='sm'>submit</osds-button>
+</form>
+
 <p>Flex</p>
 <osds-button flex>Default</osds-button>
 
@@ -62,6 +97,11 @@
 </osds-button>
 
 <script>
+  document.querySelector('form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    console.log('form submitted');
+  })
+
   document.addEventListener('odsInitialized', ({detail}) => {
     const instance = detail.instance;
     instance.logging(true);

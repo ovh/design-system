@@ -31,6 +31,9 @@ export class OsdsIcon implements OdsIcon<OdsStencilMethods<OdsIconMethods>, OdsS
   /** @see OdsIconAttributes.contrasted */
   @Prop({ reflect: true }) public contrasted?: boolean = odsIconDefaultAttributes.contrasted;
 
+  /** @see OdsIconAttributes.hoverable */
+  @Prop({ reflect: true }) public hoverable?: boolean = odsIconDefaultAttributes.hoverable;
+
   /** @see OdsIconAttributes.name */
   @Prop({ reflect: true }) public name?: OdsIconName = odsIconDefaultAttributes.name;
 

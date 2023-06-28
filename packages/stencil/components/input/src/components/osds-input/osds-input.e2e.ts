@@ -53,6 +53,56 @@ describe('e2e:osds-input', () => {
     });
   });
 
+  describe('attribute:clearable', () => {
+
+    it('should display cross icon/button', async () => {
+      await setup({ attributes: { type: OdsInputType.text, value: 'Just ODS being ahead', clearable: true } });
+
+      // Verify eye icon/button is visible
+      const crossIcon = await page.find('osds-input >>> osds-icon[name="close"]');
+      expect(crossIcon).not.toBeNull();
+    });
+
+    it('should clear the input value when clicked', async () => {
+      // Setup component with clearable attribute and some initial value
+      await setup({ attributes: { type: OdsInputType.text, value: 'Just ODS being ahead', clearable: true } });
+
+      // Click cross icon/button
+      const crossIcon = await page.find('osds-input >>> osds-icon[name="close"]');
+      expect(crossIcon).not.toBeNull();
+      await crossIcon.click();
+      await page.waitForChanges();
+
+      // Verify input value is cleared
+      const value = await inputElement.getProperty('value');
+      expect(value).toBe('');
+    });
+  });
+
+  describe('attribute:masked', () => {
+
+    it('should change input type to password when masked is set', async () => {
+      await setup({ attributes: { type: OdsInputType.password, value: 'Just ODS being ahead' } });
+
+      const type = await inputElement.getProperty('type');
+      expect(type).toBe(OdsInputType.password);
+    });
+
+    it('should change input type to text when masked is set', async () => {
+      await setup({ attributes: { type: OdsInputType.password, value: 'Just ODS being ahead', masked: false } });
+
+      const type = await inputElement.getProperty('type');
+      expect(type).toBe(OdsInputType.text);
+    });
+
+    it('should display masked icon/button (eye open)', async () => {
+      await setup({ attributes: { type: OdsInputType.password, value: 'Just ODS being ahead' } });
+
+      const eyeIcon = await page.find('osds-input >>> osds-icon[name="eye-open"]');
+      expect(eyeIcon).not.toBeNull();
+    });
+  });
+
   describe('method:stepUp', () => {
 
     it('should stepUp by 1 by default', async () => {
@@ -185,6 +235,30 @@ describe('e2e:osds-input', () => {
     });
   });
 
+  describe('method:hide', () => {
+
+    it('should switch input type between password and text', async () => {
+      await setup({ attributes: { type: OdsInputType.password, value: 'why-is-ods-so-awesome17' } });
+
+      // Check initial type of the input
+      let type = await inputElement.getProperty('type');
+      expect(type).toBe('password');
+
+      // Call hide method and check the type
+      await el.callMethod('hide');
+      await page.waitForChanges();
+
+      type = await inputElement.getProperty('type');
+      expect(type).toBe('text');
+
+      await el.callMethod('hide');
+      await page.waitForChanges();
+
+      type = await inputElement.getProperty('type');
+      expect(type).toBe('password');
+    });
+  });
+
   describe('method:reset', () => {
 
     it('should not reset the value because defaultValue is missing', async () => {
@@ -223,16 +297,51 @@ describe('e2e:osds-input', () => {
 
   describe('method:setFocus', () => {
 
-    it('should set setFocus', async () => {
+    it('should be focusable', async () => {
       await setup({ attributes: { type: OdsInputType.number } });
       await page.waitForChanges();
-      let value = el.getAttribute('hasFocus');
-      expect(value).toBeNull();
 
       await el.callMethod('setFocus');
       await page.waitForChanges();
-      value = el.getAttribute('hasFocus');
-      expect(value).toEqual('');
+
+      const isFocused = await page.evaluate(() => {
+        const element = document.querySelector('osds-input');
+        return document.activeElement === element;
+      });
+      expect(isFocused).toBe(true);
+    });
+
+    it('should be focusable with tab', async () => {
+      await setup({ attributes: { type: OdsInputType.number } });
+      await page.waitForChanges();
+
+      // First, we set the focus to another element
+      await page.focus('#anotherInput');
+
+      // Then we simulate pressing 'Tab' to move focus to the next focusable element
+      await page.keyboard.press('Tab');
+
+      // We can now check if the input is focused
+      const isFocused = await page.evaluate(() => {
+        const element = document.querySelector('osds-input');
+        return document.activeElement === element;
+      });
+
+      expect(isFocused).toBe(true);
+    });
+
+    it('should not be focusable when disabled', async () => {
+      await setup({ attributes: { type: OdsInputType.number, disabled: true } });
+      await page.waitForChanges();
+
+      await el.callMethod('setFocus');
+      await page.waitForChanges();
+
+      const isFocused = await page.evaluate(() => {
+        const element = document.querySelector('osds-input');
+        return document.activeElement === element;
+      });
+      expect(isFocused).toBe(false);
     });
   });
 

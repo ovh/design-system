@@ -4,55 +4,14 @@ const typedocJson = require(path.resolve('typedoc/typedoc.json'));
 
 const { convertJsonToMarkdown } = require(path.resolve('src/utils/typedoc/typedoc-json-to-md'));
 
-const components = [
-  'OdsAccordion',
-  'OdsAccordionGroup',
-  'OdsButton',
-  'OdsCart',
-  'OdsCartFooter',
-  'OdsCartFooterItem',
-  'OdsCartHeader',
-  'OdsCartItem',
-  'OdsCartItemOption',
-  'OdsCartManager',
-  'OdsCartSection',
-  'OdsCartTotal',
-  'OdsCheckbox',
-  'OdsCheckboxButton',
-  'OdsChip',
-  'OdsCode',
-  'OdsContentAddon',
-  'OdsDivider',
-  'OdsFlag',
-  'OdsIcon',
-  'OdsInput',
-  'OdsLink',
-  'OdsLocationTile',
-  'OdsMenu',
-  'OdsMessage',
-  'OdsQuantity',
-  'OdsRadio',
-  'OdsRadioButton',
-  'OdsRadioGroup',
-  'OdsRange',
-  'OdsSelect',
-  'OdsSkeleton',
-  'OdsTabs',
-  'OdsTabBar',
-  'OdsTabBarItem',
-  'OdsTabPanel',
-  'OdsText',
-  'OdsTextarea',
-  'OdsTile',
-  'OdsToggle',
-];
+const componentTypes = require('../src/components/component-types.json');
 
 const createComponentDetailedList = (list) => list.map((item) => ({
   pathName: item.replace(/ods/gmi, '').replace(/([a-z])([A-Z])/gm, '$1-$2').toLowerCase(),
   regex: new RegExp(item, 'gmi'),
 }));
 
-createComponentDetailedList(components).forEach(({ pathName, regex }) => {
+createComponentDetailedList(componentTypes).forEach(({ pathName, regex }) => {
   const dir = path.resolve('src/components', pathName, 'docs');
   fs.mkdirSync(dir, { recursive: true });
 

@@ -7,9 +7,13 @@
 // CSS for the component but not for theming
 
 :host {
+  /* overlay important properties */
+  display: inline-block; /* best practice for web component */
+  position: relative; /* must be here to make the positioning working well */
+  text-align: initial; /* must be here to make the positioning working well for RTL alignment */
+  padding: 0; /* must be here to make the computing works. If you need padding, apply it on trigger or surface */
+  /* end overlay important properties */
   cursor: pointer;
-  display: inline-block;
-  position: relative;
   text-align: left;
 
   &[disabled] {
@@ -26,17 +30,15 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     word-break: break-all;
+    
+    &.opened {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
   }
 
   .overlay {
     border-style: solid;
-    display: none;
-    position: absolute;
-    max-width: available;
-    max-width: -moz-available;
-    max-width: -webkit-available;
-    z-index: 2;
-    min-height: calc(2.25rem * var(--ods-size-ratio));
     max-height: calc(var(--ods-size-stack-11) * 7.5);
     overflow: auto;
 
@@ -45,7 +47,7 @@
     }
   }
 
-  .select-trigger>.label {
+  .select-trigger > .label {
     flex: 1;
     max-width: calc(100% - 24px);
     overflow: hidden;

@@ -1,9 +1,10 @@
 #!/usr/bin/env zx
 /**
- * execution from monorepo
- * `npx zx scripts/generate-ods-doc.mjs username token`
+ * generate doc based on available packages from artijfrog
+ * execution from monorepo.
+ * `npx zx scripts/generate-ods-doc.mjs https://path-to-registry username token`
  * OR
- * `npx zx scripts/generate-ods-doc.mjs userToken`
+ * `npx zx scripts/generate-ods-doc.mjs https://path-to-registry userToken`
  *
  * where `userToken` can be a docker secret like `/run/secrets/my-secret` or `artitoken`
  */
@@ -14,16 +15,21 @@ import btoa from 'btoa';
 import fs from 'fs-extra';
 
 const args = process.argv.slice(2);
+let registry;
 let userToken;
 let username;
 let token;
 
-if (args[1] && args[2]) {
-  username = args[1];
-  token = args[2];
+registry = args[1];
+
+if (args[2] && args[3]) {
+  username = args[2];
+  token = args[3];
 } else {
-  userToken = args[1];
+  userToken = args[2];
 }
+
+console.log('using registry:', registry);
 
 if (/^\/run\/secrets/.test(userToken) || /^artitoken/.test(userToken)) {
   console.log('using secrets from docker in', userToken);
@@ -34,7 +40,7 @@ const currentVersion = require('../lerna.json').version;
 console.log('currentVersion=', currentVersion);
 
 if (!userToken && (!username || !token)) {
-  console.error(`you must call the script with credentials like: npx zx scripts/generate-ods-doc.mjs [userToken] OR xx.mjs [user@domain] [<token>]`);
+  console.error(`you must call the script with credentials like: npx zx scripts/generate-ods-doc.mjs [https://path-to-registry] [userToken] OR xx.mjs [https://path-to-registry] [user@domain] [<token>]`);
   process.exit(1);
 }
 
@@ -52,12 +58,11 @@ if (!userToken && (!username || !token)) {
   }
   authorizationHeader = `Authorization: ${authorizationHeaderValue}`;
   headers.append('Authorization', authorizationHeaderValue);
-  const data = await fetch(``, {headers: headers})
+  const data = await fetch(registry, {headers: headers})
     .then(r => {
+      console.log('data before converted to json:', r);
       return r.json()
     });
-
-  console.log(JSON.stringify({detectedVersions: Object.keys(data.versions)}, undefined, 2));
 
   await $`rm -rf dist`;
   await $`mkdir -p dist`;
@@ -65,6 +70,7 @@ if (!userToken && (!username || !token)) {
   if (!data || data.error || data.error || !data.versions) {
     console.error(`something went wrong with the response. it will consider only the current storybook build to integrate`, {response: data});
   } else {
+    console.log(JSON.stringify({detectedVersions: Object.keys(data.versions)}, undefined, 2));
     for (const version in data.versions) {
       const versionMeta = data.versions[version];
 

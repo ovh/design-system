@@ -37,6 +37,9 @@ const config: Config = {
     },
     prod: {
       tsConfig: 'tsconfig.components.prod.json'
+    },
+    test: {
+      tsConfig: 'tsconfig.components.test.json'
     }
   }),
   bundles: [
@@ -66,6 +69,7 @@ const config: Config = {
     { components: ['osds-link'] },
     { components: ['osds-location-tile'] },
     { components: ['osds-message'] },
+    { components: ['osds-popover'] },
     { components: ['osds-quantity'] },
     { components: ['osds-radio', 'osds-radio-group'] },
     { components: ['osds-radio-button'] },

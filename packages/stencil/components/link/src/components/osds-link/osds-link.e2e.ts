@@ -31,12 +31,25 @@ describe('e2e:osds-link', () => {
     expect(el).not.toBeNull();
   });
 
-  // todo: to activate once link ok
-  xit('should display a text in the link', async () => {
+  it('should display a text in the link', async () => {
     const text = `Text`;
     await setup({ attributes: { color: OdsThemeColorIntent.primary,  contrasted: false }, html: text });
 
-    expect(linkElement.innerText).toBe(text);
+    expect(el.innerText).toContain(text);
+    expect(el.getAttribute('href')).toBeFalsy();
+  });
+
+  it('should display a text in the link with href', async () => {
+    const href = 'https://www.ovhcloud.com';
+    const text = `Text`;
+    await setup({ attributes: {
+      color: OdsThemeColorIntent.primary,
+      contrasted: false,
+      href,
+    }, html: text });
+
+    expect(el.innerText).toContain(text);
+    expect(el.getAttribute('href')).toBe(href);
   });
 
   // it('should display a small size', async () => {

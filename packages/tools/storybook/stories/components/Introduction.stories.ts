@@ -250,6 +250,19 @@ const uiComponents = {
       },
     },
     {
+      name: '️Breadcrumb',
+      tag: 'osds-breadcrumb',
+      url: '/?path=/story/ui-components-breadcrumb-molecule-web-component--default',
+      attributes: {
+        items: [
+          { href: "#home", label: "Home" },
+          { href: "#services", label: "Services" },
+          { href: "#products", label: "Products" },
+          { href: "#web", label: "Web" },
+        ],
+      },
+    },
+    {
       name: "Radio Group",
       tag: 'osds-radio-group',
       url: '/?path=/story/ui-components-radio-radio-group-molecule-web-component--default',
@@ -267,7 +280,7 @@ const uiComponents = {
             <span slot="end">Radio Button A</span>
           </osds-radio-button>
         </osds-radio>
-      
+
         <osds-radio
           id="radio-B"
           value="val-tile-B"
@@ -439,7 +452,7 @@ const TemplateIntroduction = () => html`
                             text-align: center;
             ">
             Atomic Design paradigm
-            </osds-text> 
+            </osds-text>
         </osds-link>.
     </osds-text>
   </span>
@@ -461,7 +474,7 @@ const TemplateIntroduction = () => html`
             uiComponents[section].map(
                 ({ name, tag, url, attributes, slots }) =>
             html`<a class="cardLink"
-                           href=${url} 
+                           href=${url}
                            key=${name}>
                 <osds-tile color="primary"
                            interactive="true"

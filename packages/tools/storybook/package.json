@@ -1,18 +1,18 @@
 {
   "name": "@ovhcloud/ods-storybook",
-  "version": "11.0.1",
+  "version": "13.0.1",
   "main": "index.js",
   "license": "Apache-2.0",
   "dependencies": {
-    "@ovhcloud/ods-core": "^11.0.1",
-    "@ovhcloud/ods-design": "^11.0.1",
-    "@ovhcloud/ods-guide": "^11.0.1",
-    "@ovhcloud/ods-specifications": "^11.0.1",
-    "@ovhcloud/ods-starter-react": "^11.0.1",
-    "@ovhcloud/ods-starter-react-vite": "^11.0.1",
-    "@ovhcloud/ods-stencil": "^11.0.1",
-    "@ovhcloud/ods-theme-blue-jeans": "^11.0.1",
-    "@ovhcloud/ods-theming": "^11.0.1",
+    "@ovhcloud/ods-core": "^13.0.1",
+    "@ovhcloud/ods-design": "^13.0.1",
+    "@ovhcloud/ods-guide": "^13.0.1",
+    "@ovhcloud/ods-specifications": "^13.0.1",
+    "@ovhcloud/ods-starter-react": "^13.0.1",
+    "@ovhcloud/ods-starter-react-vite": "^13.0.1",
+    "@ovhcloud/ods-stencil": "^13.0.1",
+    "@ovhcloud/ods-theme-blue-jeans": "^13.0.1",
+    "@ovhcloud/ods-theming": "^13.0.1",
     "react": "^16.8.0"
   },
   "devDependencies": {
@@ -48,8 +48,5 @@
     "start": "start-storybook -p 6006 $(yarn node ./.storybook/static-dirs.js)",
     "start:nocache": "start-storybook -p 6006 $(yarn node ./.storybook/static-dirs.js) --no-manager-cache",
     "start:quiet": "start-storybook -p 6006 --quiet $(yarn node ./.storybook/static-dirs.js)"
-  },
-  "publishConfig": {
-    "registry": ""
   }
 }

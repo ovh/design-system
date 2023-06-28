@@ -1,0 +1,55 @@
+import GenericStyle from '@ovhcloud/ods-core/docs/generic-style.mdx';
+
+<GenericStyle />
+
+## Usage
+
+### Default
+<osds-collapsible opened>Collapsible</osds-collapsible>
+
+```html
+<osds-collapsible opened>Collapsible</osds-collapsible>
+```
+
+### With a trigger
+
+export const buttonTrigger = () => {
+    setTimeout(() => {
+        const elemCollapsibleUsage = document.getElementById('collapsibleUsage');
+        elemCollapsibleUsage?.addEventListener('odsCollapsibleToggle', event => {
+            console.log('(html) addEventListener odsCollapsibleToggle: ', event.detail);
+        });
+        const buttonTriggerCollapsibleUsage = document.getElementById('buttonTriggerCollapsibleUsage');
+        buttonTriggerCollapsibleUsage?.addEventListener('click', () => {
+            elemCollapsibleUsage.opened = !elemCollapsibleUsage.opened;
+        });
+    }, 0);
+};
+
+<osds-button id="buttonTriggerCollapsibleUsage">Trigger collapsible</osds-button>
+
+<osds-collapsible id="collapsibleUsage">
+    content to collapse
+</osds-collapsible>
+
+<>{ buttonTrigger() }</>
+
+```html
+<script>
+    const elem = document.getElementById('collapsible');
+    elem.addEventListener('odsCollapsibleToggle', event => {
+        console.log('(html) addEventListener odsCollapsibleToggle: ', event.detail);
+    });
+
+    const button = document.getElementById('buttonTriggerCollapsible')
+    button.addEventListener('click', event => {
+        elem.opened = !elem.opened;
+    });
+</script>
+
+<osds-button id="buttonTriggerCollapsible">Trigger collapsible</osds-button>
+
+<osds-collapsible id="collapsible">
+    content to collapsible
+</osds-collapsible>
+```

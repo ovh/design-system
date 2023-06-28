@@ -36,5 +36,20 @@
 <p>interactive disabled checked indeterminate</p>
 <osds-checkbox-button  interactive disabled checked indeterminate></osds-checkbox-button>
 
+
+<p>with slot</p>
+<osds-checkbox-button color="default" size="md" class="hydrated">
+  <span slot="start">Left input</span>
+  <span slot="end">Right input</span>
+</osds-checkbox-button>
+
+<p>with long text slot</p>
+<div style='width: 200px'>
+  <osds-checkbox>
+    <osds-checkbox-button interactive="" color="primary" size="md">
+      <span slot="end">Oles ipsum dolor sit amet, oratio hinc ius impetus persius</span>
+    </osds-checkbox-button>
+  </osds-checkbox>
+</div>
 </body>
 </html>

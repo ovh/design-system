@@ -62,6 +62,7 @@ export class OcdkSurfaceController<StrategyConfig = any> {
   private dimensions!: OcdkSurfaceDimensions;
   private isSurfaceOpen = false;
   private itemHeight = 0;
+  private itemWidth = 0;
   private maxDimensions!: OcdkSurfaceMaxDimensions;
   private minVisibleItem = 1;
   // private measurements?: OcdkAutoLayoutMeasurements;
@@ -171,6 +172,7 @@ export class OcdkSurfaceController<StrategyConfig = any> {
         this.dimensions = this.adapter.getInnerDimensions();
         this.maxDimensions = this.adapter.getMaxDimensions();
         this.itemHeight = this.adapter.autoDetectItemHeight();
+        this.itemWidth = this.adapter.autoDetectItemWidth();
         this.autoPosition();
         this.adapter.addClass(ocdkSurfaceCssClasses.OPEN);
         const duration = this.config.ANIMATIONS[ this.animation ].TRANSITION_CLOSE_DURATION;
@@ -297,7 +299,6 @@ export class OcdkSurfaceController<StrategyConfig = any> {
       }
     }
 
-
     const originCorner = positionComputed.cornerPoints.anchor;
     this.logger.log('[autoposition]', { computedOriginCorner: originCorner });
 
@@ -309,15 +310,23 @@ export class OcdkSurfaceController<StrategyConfig = any> {
       this.logger.info('[autoposition]', 'computed maxHeight oversize the css max-height of the surface. set to the max to the css value', { maxSurfaceHeight });
     }
 
+    let maxSurfaceWidth = this.getMaxWidth(appliers, inspections, measurements);
+    this.logger.log('[autoposition]', { maxMenuSurfaceWidth: maxSurfaceWidth });
+
+    if (this.maxDimensions.maxWidth !== null && maxSurfaceWidth >= this.maxDimensions.maxWidth) {
+      maxSurfaceWidth = this.maxDimensions.maxWidth;
+      this.logger.info('[autoposition]', 'computed maxWidth oversize the css max-width of the surface. set to the max to the css value', { maxSurfaceWidth });
+    }
+
     const verticalAlignment = this.getVerticalAlignment(appliers);
 
     const horizontalAlignment = this.getHorizontalAlignment(appliers);
     this.logger.log('[autoposition]', { verticalAlignment, horizontalAlignment });
 
-    const horizontalOffset = this.getHorizontalOffset(appliers, inspections, measurements, maxSurfaceHeight);
+    const horizontalOffset = this.getHorizontalOffset(appliers, inspections, measurements, maxSurfaceHeight, maxSurfaceWidth);
     this.logger.log('[autoposition]', { horizontalOffset });
 
-    const verticalOffset = this.getVerticalOffset(appliers, inspections, measurements, maxSurfaceHeight);
+    const verticalOffset = this.getVerticalOffset(appliers, inspections, measurements, maxSurfaceHeight, maxSurfaceWidth);
     this.logger.log('[autoposition]', { verticalOffset });
 
     const position: Partial<OcdkSurfaceDistance> = {
@@ -332,6 +341,8 @@ export class OcdkSurfaceController<StrategyConfig = any> {
     this.adapter.setPosition(position);
     this.adapter.setMaxHeight(maxSurfaceHeight ? maxSurfaceHeight + 'px' : '');
     this.adapter.setMinHeight(this.itemHeight ? (this.itemHeight * this.minVisibleItem) + 'px' : '');
+    this.adapter.setMaxWidth(maxSurfaceWidth ? maxSurfaceWidth + 'px' : '');
+    this.adapter.setMinWidth(this.itemWidth ? (this.itemWidth * this.minVisibleItem) + 'px' : '');
 
     // If it is opened from the top then add is-open-below class
     if (!this.hasBit(originCorner, OcdkSurfaceCornerBit.BOTTOM)) {
@@ -524,13 +535,15 @@ export class OcdkSurfaceController<StrategyConfig = any> {
   private getHorizontalOffset(
     appliers: OcdkSurfaceStrategyAppliers<StrategyConfig>, inspections: OcdkSurfaceInspections,
     measurements: OcdkAutoLayoutMeasurements,
-    maxHeight: number) {
+    maxHeight: number,
+    maxWidth: number) {
     return appliers.horizontalOffset({
       config: this.getOverriddenConfig(),
       strategyConfig: this.strategy.getConfig(),
       measurements,
       inspections,
-      maxHeight
+      maxHeight,
+      maxWidth
     });
   }
 
@@ -550,6 +563,16 @@ export class OcdkSurfaceController<StrategyConfig = any> {
       strategyConfig: this.strategy.getConfig()
     };
     return appliers.maxHeight(opt);
+  }
+
+  private getMaxWidth(appliers: OcdkSurfaceStrategyAppliers<StrategyConfig>, inspections: OcdkSurfaceInspections, measurements: OcdkAutoLayoutMeasurements) {
+    const opt = {
+      config: this.getOverriddenConfig(),
+      inspections,
+      measurements,
+      strategyConfig: this.strategy.getConfig()
+    };
+    return appliers.maxWidth(opt);
   }
 
   private getNormalizedCorners(): OcdkSurfaceCornerPointsNormalized {
@@ -597,13 +620,15 @@ export class OcdkSurfaceController<StrategyConfig = any> {
   private getVerticalOffset(
     appliers: OcdkSurfaceStrategyAppliers<StrategyConfig>, inspections: OcdkSurfaceInspections,
     measurements: OcdkAutoLayoutMeasurements,
-    maxHeight: number) {
+    maxHeight: number,
+    maxWidth: number) {
     return appliers.verticalOffset({
       config: this.getOverriddenConfig(),
       strategyConfig: this.strategy.getConfig(),
       measurements,
       inspections,
-      maxHeight
+      maxHeight,
+      maxWidth
     });
   }
 

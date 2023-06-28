@@ -5,6 +5,7 @@ import { OdsSelectMethods } from './ods-select-methods';
 import { OdsSelectEvents } from './ods-select-events';
 import { OdsSelectAttributes } from './ods-select-attributes';
 import { OdsSelectController } from './ods-select-controller';
+import { OdsSelectBehavior } from './ods-select-behavior';
 
 /**
  * interface description of all implementation of `ods-select-option`.
@@ -13,4 +14,4 @@ import { OdsSelectController } from './ods-select-controller';
  */
 export type OdsSelect<ComponentMethods extends OdsComponentGenericMethods<OdsSelectMethods> = OdsComponentGenericMethods<OdsSelectMethods>,
   ComponentEvents extends OdsComponentGenericEvents<OdsSelectEvents> = OdsComponentGenericEvents<OdsSelectEvents>> =
-  OdsComponent<ComponentMethods, ComponentEvents, OdsSelectAttributes, OdsSelectController>;
+  OdsComponent<ComponentMethods, ComponentEvents, OdsSelectAttributes, OdsSelectController, OdsSelectBehavior>;

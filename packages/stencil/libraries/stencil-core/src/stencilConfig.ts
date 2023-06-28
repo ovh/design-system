@@ -10,6 +10,7 @@ import {
 import { sass } from '@stencil/sass';
 import { postcss } from '@stencil/postcss';
 import * as nodeSassPackageImporter from 'node-sass-package-importer';
+import { inlineSvg } from 'stencil-inline-svg';
 import type { Config as JestConfig } from '@jest/types';
 import * as autoprefixer from 'autoprefixer';
 import { OutputTargetReact, reactOutputTarget } from '@stencil/react-output-target';
@@ -77,6 +78,7 @@ import { OdsStencilConfigEnvOptions } from './ods-stencil-config-env-options';
  * @param vueOutput - config for vue proxies
  * @param dev - dev specific options to set
  * @param prod - production specific options to set
+ * @param test - testing specific options to set
  */
 export function getStencilConfig({
                                    namespace,
@@ -87,7 +89,8 @@ export function getStencilConfig({
                                    reactOutput,
                                    vueOutput,
                                    dev,
-                                   prod
+                                   prod,
+                                   test,
                                  }: {
   namespace: string,
   args: string[],
@@ -100,6 +103,7 @@ export function getStencilConfig({
   vueOutput?: Partial<OutputTargetVue>,
   dev?: OdsStencilConfigEnvOptions,
   prod?: OdsStencilConfigEnvOptions,
+  test?: OdsStencilConfigEnvOptions,
 }): StencilConfig {
   const isCi = args.some((arg) => arg.match(/(--|:)ci/g)),
     /**
@@ -196,13 +200,14 @@ export function getStencilConfig({
     }
   }
 
-
   // globalScript
   let globalScriptOption: Pick<StencilConfig, 'globalScript'> = {};
   if (isDev && dev?.globalScript) {
     globalScriptOption = { globalScript: dev.globalScript };
   } else if (isProd && prod?.globalScript) {
     globalScriptOption = { globalScript: prod.globalScript };
+  } else if (isTest && test?.globalScript) {
+    globalScriptOption = { globalScript: test.globalScript };
   }
   globalScriptOption?.globalScript && console.info(`ODS: integrates globalScript ${globalScriptOption.globalScript} into the Build`);
 
@@ -212,6 +217,10 @@ export function getStencilConfig({
     tsConfigOption = { tsconfig: dev?.tsConfig ? dev.tsConfig : 'tsconfig.dev.json' };
   } else if (isProd) {
     tsConfigOption = { tsconfig: prod?.tsConfig ? prod.tsConfig : 'tsconfig.prod.json' };
+  } else if (isTest) {
+    tsConfigOption = { tsconfig: test?.tsConfig ? test.tsConfig : 'tsconfig.test.json' };
+  } else {
+    tsConfigOption = { tsconfig: 'tsconfig.json' };
   }
   tsConfigOption?.tsconfig && console.info(`ODS: using ${tsConfigOption.tsconfig}`);
 
@@ -226,13 +235,14 @@ export function getStencilConfig({
       globalStyle: require.resolve('@ovhcloud/ods-theme-blue-jeans/index.scss'),
     } : {}),
     plugins: [sass({
-      importer: nodeSassPackageImporter()
-      // example of injecting sass directly inside each component:
-      // injectGlobalPaths: [require.resolve('@ovhcloud/ods-xxx/file.scss')]
-    }),
+        importer: nodeSassPackageImporter()
+        // example of injecting sass directly inside each component:
+        // injectGlobalPaths: [require.resolve('@ovhcloud/ods-xxx/file.scss')]
+      }),
       postcss({
         plugins: [autoprefixer()]
-      })
+      }),
+      inlineSvg(),
     ],
     ...tsConfigOption,
     outputTargets: [

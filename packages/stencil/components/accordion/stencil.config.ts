@@ -12,17 +12,20 @@ export const config: Config = {
     reactOutput: {
       componentCorePackage: '@ovhcloud/ods-stencil/components/accordion',
       // exclude peer dependencies that corresponds to www usage
-      excludeComponents: ['osds-icon', 'osds-text']
+      excludeComponents: ['osds-icon', 'osds-collapsible']
     },
     vueOutput: {
       componentCorePackage: '@ovhcloud/ods-stencil/components/accordion',
-      excludeComponents: ['osds-icon', 'osds-text']
+      excludeComponents: ['osds-icon', 'osds-collapsible']
     },
     dev: {
       globalScript: 'src/global.dev.ts',
     },
     prod: {
       globalScript: 'src/global.prod.ts'
+    },
+    test: {
+      globalScript: 'src/global.test.ts',
     }
   })
 };

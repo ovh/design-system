@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-stencil-select-vue",
-  "version": "11.0.1",
+  "version": "13.0.1",
   "private": true,
   "description": "Vue specific wrapper for ods",
   "keywords": [],
@@ -19,7 +19,7 @@
     "dist/"
   ],
   "dependencies": {
-    "@ovhcloud/ods-stencil-select": "^11.0.1"
+    "@ovhcloud/ods-stencil-select": "^13.0.1"
   },
   "peerDependencies": {
     "vue": ">=3"

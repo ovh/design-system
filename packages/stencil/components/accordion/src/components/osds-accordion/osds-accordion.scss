@@ -31,7 +31,7 @@
   }
 }
 
-details[open] > slot {
+details[open] > osds-collapsible {
   animation: var(--ods-accordion-animation-opening, none);
 }
 

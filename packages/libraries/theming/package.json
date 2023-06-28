@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-theming",
-  "version": "11.0.1",
+  "version": "13.0.1",
   "description": "ODS core",
   "author": "OVH SAS",
   "license": "Apache-2.0",
@@ -22,9 +22,6 @@
   },
   "devDependencies": {
     "@marsbased/svgpack": "^1.0.3",
-    "@ovhcloud/ods-library-dev": "^11.0.1"
-  },
-  "publishConfig": {
-    "registry": ""
+    "@ovhcloud/ods-library-dev": "^13.0.1"
   }
 }

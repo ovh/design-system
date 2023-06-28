@@ -21,9 +21,9 @@ export interface OdsTileAttributes extends OdsRadioizable, OdsCheckboxable, OdsC
   disabled: boolean;
   flex?: boolean;
   /**
-   * If the tile can be have interactive pseudo-classes or not
+   * If the tile can have hoverable pseudo-classes or not
    */
-  interactive?: boolean;
+  hoverable?: boolean;
   /**
    * indicate if the tile has to be displayed in focused state
    */

@@ -43,6 +43,7 @@ export function OdsGetJestConfig({
     moduleNameMapper: {
       ...(!e2e ? {
         '^@ovhcloud/ods-core$': `${basePath}/packages/libraries/core/src/index`,
+        '^@ovhcloud/ods-cdk$': `${basePath}/packages/libraries/cdk/src/index`,
         '^@ovhcloud/ods-testing$': `${basePath}/packages/libraries/testing/src/index`,
         '^@ovhcloud/ods-theming$': `${basePath}/packages/libraries/theming/src/index`,
         '^@ovhcloud/ods-stencil/libraries/stencil-core$': `${basePath}/packages/stencil/libraries/stencil-core/src/index`,
@@ -51,10 +52,16 @@ export function OdsGetJestConfig({
         '^@ovhcloud/ods-stencil/(.*)$': `${basePath}/packages/stencil/$1`,
       }: {})
     },
-    ...(stencil ? {} : {
+    ...(stencil ? {
+      transform: {
+        "\\.svg$": "jest-transform-stub",
+      },
+    } : {
       // when using jest without stencil, we need to transform typescript files
       // and ignore dist directories that contains specs
-      transform: { "\\.(ts|tsx)$": "ts-jest" },
+      transform: {
+        "\\.(ts|tsx)$": "ts-jest",
+      },
       testPathIgnorePatterns: [
         "/node_modules/",
         "dist/"

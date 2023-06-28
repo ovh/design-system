@@ -4,11 +4,11 @@
 @mixin osds-select-theme-size() {
   @include ods-foreach-theme-size(select) using ($sizes) {
     @include osds-select-on-select-element() {
+      grid-column-gap: ods-get-size-property($sizes, grid-column-gap);
       height: ods-get-size-property($sizes, height);
       border-width: ods-get-size-property($sizes, border-width);
       border-radius: ods-get-size-property($sizes, border-radius);
       padding: ods-get-size-property($sizes, padding);
-      width: ods-get-size-property($sizes, width);
 
       &.opened {
         border-bottom-right-radius: 0;
@@ -21,7 +21,7 @@
     }
 
     @include osds-select-on-overlay-element() {
-      border-width: 0 ods-get-size-property($sizes, border-width) ods-get-size-property($sizes, border-width) ods-get-size-property($sizes, border-width);
+      border-width: ods-get-size-property($sizes, border-width) ods-get-size-property($sizes, border-width) ods-get-size-property($sizes, border-width) ods-get-size-property($sizes, border-width);
       top: ods-get-size-property($sizes, height);
       width: calc(100% - var(--ods-size-inline-02));
     }

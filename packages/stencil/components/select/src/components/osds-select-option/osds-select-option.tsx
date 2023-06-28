@@ -34,7 +34,7 @@ export class OsdsSelectOption implements OdsSelectOption<OdsStencilMethods<OdsSe
    * UI only purpose
    * @internal
    */
-  @Prop({reflect: true}) selected?: boolean = false;
+  @Prop({ reflect: true }) selected?: boolean = false;
 
   /**
    * The size of the select option
@@ -93,7 +93,8 @@ export class OsdsSelectOption implements OdsSelectOption<OdsStencilMethods<OdsSe
     this.odsSelectOptionClick.emit({ value });
   }
 
-  handleClick() {
+  handleClick(event: MouseEvent) {
+    event.stopPropagation();
     this.logger.log(`[select=${this.value}]`, 'option clicked.');
     this.emitClick(this.value);
   }
@@ -111,7 +112,6 @@ export class OsdsSelectOption implements OdsSelectOption<OdsStencilMethods<OdsSe
         tabindex,
         onClick: this.handleClick.bind(this),
         size,
-        //onKeyPress: this.handleLabelKeyEvent.bind(this)
       }}
       >
         <div {...{

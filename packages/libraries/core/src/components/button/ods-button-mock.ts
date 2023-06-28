@@ -21,8 +21,11 @@ export class OdsButtonMock implements OdsButton<OdsButtonMethods, OdsButtonEvent
     download?: HTMLAnchorElement['download'];
     type?: OdsButtonType;
     variant?: OdsButtonVariant;
+    circle?: boolean;
 
     controller: OdsButtonController = jest.fn() as unknown as OdsButtonController;
 
     beforeRender = jest.fn();
+    handleClick = jest.fn();
+    handleKey = jest.fn();
 }

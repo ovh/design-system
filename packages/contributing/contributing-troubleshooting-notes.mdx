@@ -3,6 +3,7 @@
 <!-- TOC -->
 
 * [Troubleshooting notes](#troubleshooting-notes)
+  * [Yarn version](#yarn.lock-updates)
   * [dependency notes](#dependency-notes)
   * [Typescript notes](#typescript-notes)
     * [keep same typescript version](#keep-same-typescript-version)
@@ -12,7 +13,12 @@
 
 <!-- TOC -->
 
-## dependency notes
+## yarn.lock updates
+
+If yarn.lock file keeps updating itself on yarn install, though you did not change anything in a package, check your version of yarn and OVHcloud Design System project yarn version.
+If your version of yarn is different from OVHcloud Design System project yarn version, please set same version than OVHcloud Design System project one to your version.
+
+## Dependency notes
 
 If you have an issue on different dependencies, try to display which package depends on what version like:
 

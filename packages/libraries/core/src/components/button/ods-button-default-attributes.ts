@@ -21,6 +21,7 @@ export const odsButtonDefaultAttributesDoc  = {
   target: undefined,
   type: OdsButtonType.button,
   variant: OdsButtonVariant.flat,
+  circle: false,
 } as const;
 
 export const odsButtonDefaultAttributes = odsButtonDefaultAttributesDoc as OdsButtonAttributes;

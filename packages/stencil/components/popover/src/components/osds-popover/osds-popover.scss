@@ -1,0 +1,30 @@
+@import 'styles/osds-popover.mixins';
+@import 'styles/osds-popover.color';
+@import 'styles/osds-popover.size';
+@import 'styles/osds-popover.typography';
+@import '~@ovhcloud/ods-theming/color/ods-theming-color';
+@import '~@ovhcloud/ods-theming/ods-theme';
+
+// CSS targeted only for this component
+// /!\ for theming purposes, it has to be done in theming files
+// (i.e. packages/libraries/theming/...)
+:host {
+  /* overlay important properties */
+  display: inline-block; /* best practice for web component */
+  position: relative; /* must be here to make the positioning working well */
+  text-align: initial; /* must be here to make the positioning working well for RTL alignment */
+  padding: 0; /* must be here to make the computing works. If you need padding, apply it on trigger or surface */
+  /* end overlay important properties */
+
+}
+
+:host([attribute]) {
+
+}
+
+// apply the theme template for the component
+@include ods-theme-component() {
+  @include osds-popover-theme-color();
+  @include osds-popover-theme-size();
+  @include osds-popover-theme-typography();
+}

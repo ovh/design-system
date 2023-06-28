@@ -3,20 +3,21 @@ jest.mock('@ovhcloud/ods-core/src/components/button/ods-button-controller'); // 
 import {
   OdsButtonAttributes,
   OdsButtonController,
+  odsButtonDefaultAttributes,
   OdsButtonSizeList,
+  OdsButtonVariant,
   OdsButtonVariantList,
   OdsComponentAttributes2StringAttributes,
-  odsButtonDefaultAttributes,
   OdsHTMLAnchorElementRelList,
-  OdsHTMLAnchorElementTargetList
+  OdsHTMLAnchorElementTargetList,
 } from '@ovhcloud/ods-core';
 import {
+  odsButtonBaseAttributes,
   OdsCreateAttributes,
   OdsStringAttributes2Str,
-  odsButtonBaseAttributes,
-  odsUnitTestAttribute
+  odsUnitTestAttribute,
 } from '@ovhcloud/ods-testing';
-import { SpecPage, newSpecPage } from '@stencil/core/testing';
+import { newSpecPage, SpecPage } from '@stencil/core/testing';
 
 import { OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
 import { OsdsButton } from './osds-button';
@@ -31,6 +32,10 @@ describe('spec:osds-button', () => {
   let endSlot: HTMLElement;
   let instance: OsdsButton;
   let controller: OdsButtonController;
+
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
 
   async function setup({ attributes= {} , html = `` }: { attributes?: Partial<OdsButtonAttributes>, html?: string } = {}) {
     const minimalAttributes: OdsButtonAttributes = OdsCreateAttributes(attributes, odsButtonBaseAttributes);
@@ -78,11 +83,13 @@ describe('spec:osds-button', () => {
     it('should have a button', async () => {
       await setup({});
       expect(htmlButton).toBeTruthy();
+      expect(htmlButton.getAttribute('role')).toBe('button');
     });
 
     it('should have a link when href attribute is set', async () => {
       await setup({ attributes: { href: 'test' } });
       expect(htmlLink).toBeTruthy();
+      expect(htmlLink.getAttribute('role')).toBe('link');
     });
   });
 
@@ -181,6 +188,22 @@ describe('spec:osds-button', () => {
       });
     });
 
+    describe('circle', () => {
+      odsUnitTestAttribute<OdsButtonAttributes, 'circle'>({
+        ...getAttributeContextOptions<OdsButtonAttributes, OsdsButton, 'circle'>({
+          name: 'circle',
+          list: [true,false],
+          defaultValue: odsButtonDefaultAttributes.circle,
+          ...config
+        })
+      });
+
+      it('should bind the circle attribute correctly', async () => {
+        await setup({ attributes: { circle: true } });
+        expect(page.root.circle).toBeDefined();
+      });
+    });
+
     describe('target', () => {
       odsUnitTestAttribute<OdsButtonAttributes, 'target'>({
         ...getAttributeContextOptions<OdsButtonAttributes, OsdsButton, 'target'>({
@@ -207,6 +230,7 @@ describe('spec:osds-button', () => {
         expect(page.root.variant).toBe(randomVariant);
       });
     });
+
   });
 
   describe('controller', () => {
@@ -214,6 +238,29 @@ describe('spec:osds-button', () => {
       await setup();
       expect(controller.validateAttributes).toHaveBeenCalledWith();
       expect(controller.validateAttributes).toHaveBeenCalledTimes(1);
+    });
+
+    it('should call handleClick of controller', async () => {
+      const click = new MouseEvent('click');
+      await setup({});
+      instance.handleClick(click);
+
+      page.root.click()
+
+      expect(controller.handleClick).toHaveBeenCalledTimes(2);
+      expect(controller.handleClick).toHaveBeenCalledWith(click);
+    });
+
+    it('should call handleKey of controller', async () => {
+      await setup({});
+      const key = new KeyboardEvent("keyup", { key : "Enter" });
+      instance.handleKey(key);
+
+      page.root.dispatchEvent(key);
+      await page.waitForChanges();
+
+      expect(controller.handleKey).toHaveBeenCalledTimes(2);
+      expect(controller.handleKey).toHaveBeenCalledWith(key);
     });
   });
 });

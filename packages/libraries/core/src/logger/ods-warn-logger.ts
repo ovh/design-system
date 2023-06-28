@@ -38,7 +38,7 @@ export function OdsWarnComponentAttribute<T, Component>(params: OdsWarnType<T, C
   }
   if (typeof params.attribute === 'number') {
     return OdsWarnComponentRangeAttribute<Component>(<OdsWarnRangeComponent<Component>>params);
-  } else {
-    return OdsWarnComponentEnumAttribute<T, Component>(<OdsWarnEnumComponent<T, Component>>params);
   }
+  return OdsWarnComponentEnumAttribute<T, Component>(<OdsWarnEnumComponent<T, Component>>params);
 }
+ 

@@ -41,8 +41,8 @@ describe('e2e:osds-tile', () => {
       actionDescription: "disabled",
       action: () => el.setProperty("disabled", true)
     }, {
-      actionDescription: "interactive",
-      action: () => el.setProperty("interactive", true)
+      actionDescription: "hoverable",
+      action: () => el.setProperty("hoverable", true)
     },
     // TODO: don't test screenshot animated screen without freeze it
     // {

@@ -36,36 +36,204 @@ describe('e2e:osds-input', () => {
     el = await page.find('osds-input');
   }
 
+  const stopSpinnerAnimation = async (page: E2EPage) => {
+    await page.evaluate(() => {
+      const spinnerEl = document.querySelector('osds-input')?.shadowRoot?.querySelector('osds-spinner')?.shadowRoot?.querySelector('.spinner > svg') as HTMLElement;
+      spinnerEl.style.setProperty('animation', 'none');
+    });
+  }
+
   const screenshotActions = [
     {
+      // Will display the default input
       actionDescription: 'no action',
       action: () => {
-        // noop
+        // nothing
       },
     }, {
+      // Will display the input with a cross icon to clear the input
+      actionDescription: 'clearable',
+      action: () => el.setProperty('clearable', true),
+    }, {
+      // Will contrast the colors of the input
       actionDescription: 'contrasted',
       action: () => el.setProperty('contrasted', true),
     }, {
-      actionDescription: 'disabled',
-      action: () => el.setProperty('disabled', true),
+      // Will display the input with an icon
+      actionDescription: 'icon',
+      action: () => el.setProperty('icon', 'ovh'),
     }, {
-      actionDescription: 'contrasted and disabled',
+      // Will display the input with an eye icon to show/hide the value and an icon
+      actionDescription: 'clearable & icon',
+      action: () => {
+        el.setProperty('clearable', true);
+        el.setProperty('icon', 'ovh');
+      },
+    }, {
+      // Will display the input with its type date and a value
+      actionDescription: 'type date & value',
+      action: () => {
+        el.setProperty('type', OdsInputType.date);
+        el.setProperty('value', '1999-11-02');
+      },
+    }, {
+      // Will display the input with its type email and a value
+      actionDescription: 'type email & value',
+      action: () => {
+        el.setProperty('type', OdsInputType.email);
+        el.setProperty('value', 'ods@ovhcloud.com');
+      },
+    }, {
+      // Will display the input with its type number and a value
+      actionDescription: 'type number & value',
+      action: () => {
+        el.setProperty('type', OdsInputType.number);
+        el.setProperty('value', 42);
+      },
+    }, {
+      // Will display the input with its type password and a value
+      actionDescription: 'type password & value',
+      action: () => {
+        el.setProperty('type', OdsInputType.password);
+        el.setProperty('value', 'ods!!!');
+      },
+    }, {
+      // Will display the input with its type search and a value
+      actionDescription: 'type search & value',
+      action: () => {
+        el.setProperty('type', OdsInputType.search);
+        el.setProperty('value', 'Why is ODS so awesome?');
+      },
+    }, {
+      // Will display the input with its type tel and a value
+      actionDescription: 'type tel & value',
+      action: () => {
+        el.setProperty('type', OdsInputType.tel);
+        el.setProperty('value', '0600000000');
+      },
+    }, {
+      // Will display the input with its type text and a value
+      actionDescription: 'type text & value',
+      action: () => {
+        el.setProperty('type', OdsInputType.text);
+        el.setProperty('value', 'On Vous Héberge ?');
+      },
+    }, {
+      // Will display the input with its type time and a value
+      actionDescription: 'type time & value',
+      action: () => {
+        el.setProperty('type', OdsInputType.time);
+        el.setProperty('value', '09:00');
+      },
+    }, {
+      // Will display the input with its type url and a value
+      actionDescription: 'type url & value',
+      action: () => {
+        el.setProperty('type', OdsInputType.url);
+        el.setProperty('value', 'go/ods/');
+      },
+    }, {
+      // Will display the input with its type text and a value
+      actionDescription: 'value & masked',
+      action: () => {
+        el.setProperty('type', OdsInputType.text);
+        el.setProperty('value', 'Just ODS being ahead');
+        el.setProperty('masked', true);
+      },
+    }, {
+      // Will display the input with its type password and masked being true (so password should be visible)
+      actionDescription: 'password & masked',
+      action: () => {
+        el.setProperty('type', OdsInputType.password);
+        el.setProperty('value', 'ods!!!');
+        el.setProperty('masked', true);
+      },
+    }, {
+      // Will display the input with its type password and clearable being true (so password should be visible)
+      actionDescription: 'password & clearable',
+      action: () => {
+        el.setProperty('type', OdsInputType.password);
+        el.setProperty('value', 'ods!!!');
+        el.setProperty('clearable', true);
+      },
+    }, {
+      // Will display the input with a spinner
+      actionDescription: 'loading',
+      action: async () => {
+        await Promise.all([
+          el.setProperty('loading', true),
+          page.waitForChanges()
+        ]);
+
+        await stopSpinnerAnimation(page);
+      },
+    }, {
+      // Will display the input with an icon and a spinner
+      actionDescription: 'loading & icon',
+      action: async () => {
+        await Promise.all([
+          el.setProperty('icon', 'ovh'),
+          el.setProperty('loading', true),
+          page.waitForChanges()
+        ]);
+
+        await stopSpinnerAnimation(page);
+      },
+    }, {
+      // Will display a disabled input with contrasted colors
+      actionDescription: 'disabled',
+      action: () => {
+        el.setProperty('disabled', true);
+      },
+    }, {
+      // Will display a disabled input with a spinner
+      actionDescription: 'loading & disabled',
+      action: async () => {
+        await Promise.all([
+          el.setProperty('disabled', true),
+          el.setProperty('loading', true),
+          page.waitForChanges()
+        ]);
+
+        await stopSpinnerAnimation(page);
+      },
+    }, {
+      // Will display a disabled input with contrasted colors
+      actionDescription: 'contrasted & disabled',
       action: () => {
         el.setProperty('contrasted', true);
         el.setProperty('disabled', true);
       },
     }, {
+      // Will display a disabled input with contrasted colors
+      actionDescription: 'disabled & icon',
+      action: () => {
+        el.setProperty('disabled', true);
+        el.setProperty('icon', 'ovh');
+      },
+    }, {
+      // Will display a disabled input with contrasted colors
+      actionDescription: 'disabled & clearable',
+      action: () => {
+        el.setProperty('disabled', true);
+        el.setProperty('clearable', true);
+      },
+    }, {
+      // Will display a disabled input with contrasted colors
+      actionDescription: 'disabled & value (type text)',
+      action: () => {
+        el.setProperty('disabled', true);
+        el.setProperty('type', OdsInputType.text);
+        el.setProperty('value', 'Just ODS being ahead');
+      },
+    }, {
+      // Will display an input with an error
       actionDescription: 'error',
       action: () => el.setProperty('error', true),
     }, {
+      // Will display an input with an error and an icon
       actionDescription: 'placeholder',
       action: () => el.setProperty('placeholder', 'placeholder'),
-    }, {
-      actionDescription: 'type number and value',
-      action: () => {
-        el.setProperty('type', OdsInputType.number);
-        el.setProperty('value', 42);
-      },
     },
   ];
 
@@ -73,13 +241,10 @@ describe('e2e:osds-input', () => {
     {
       behaviourDescription: 'no behaviour',
       behaviour: () => new Promise(resolve => resolve('')),
-    }/*, {
-      behaviourDescription: 'hover',
-      behaviour: () => el.hover(),
     }, {
       behaviourDescription: 'focus',
       behaviour: () => el.focus(),
-    },*/
+    }
   ];
 
   describe('screenshots', () => {

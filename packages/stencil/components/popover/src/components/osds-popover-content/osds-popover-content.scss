@@ -1,0 +1,13 @@
+@import 'styles/osds-popover-content.mixins';
+@import 'styles/osds-popover-content.color';
+@import 'styles/osds-popover-content.size';
+@import 'styles/osds-popover-content.typography';
+@import '~@ovhcloud/ods-theming/color/ods-theming-color';
+@import '~@ovhcloud/ods-theming/ods-theme';
+
+// apply the theme template for the component
+@include ods-theme-component() {
+  @include osds-popover-content-theme-color();
+  @include osds-popover-content-theme-size();
+  @include osds-popover-content-theme-typography();
+}

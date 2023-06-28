@@ -8,9 +8,49 @@
 
 # What's new ?
 
-As it is a major version, you have to do the [migration guide 12.x to 13.x](/story/ovhcloud-design-system-what-s-new-migration-guide-12-x-to-13-x--page)
+As it is a major version, you have to do the [migration guide 13.x to 14.x](/story/ovhcloud-design-system-what-s-new-migration-guide-13-x-to-14-x--page)
+
+## v14.0.0
+### New features:
+We added the following components:
+* **Progress Bar**: [See Progress Bar Documentation](/story/ui-components-progressbar-atom-web-component--default)
+* **Popover**: [See Popover Documentation](/story/ui-components-popover-atom-web-component--default)
+* **Tooltip**: [See Popover Documentation](/story/ui-components-tooltip-atom-web-component--default)
+
+Components version 2:
+* **Input V2**: [See Input Documentation](/story/ui-components-input%EF%B8%8F-atom-web-component--default)
+  * new properties have been added
+    * `loading`: it displays a Spinner
+    * `clearable`: it clears the input value on click
+    * `masked`: it indicates if the input value is hidden or not (to be used with password type)
+  * new types have been added: `date`, `email`, `password`, `search`, `tel`, `text`, `time` and `url`
+* **Select V2**: it is now connected to our CDK and keyboard navigation has been added [See Select Documentation](/story/ui-components-select-atom-web-component--default)
+
+**Quantity** component accepts four digits in the input field:
+[See Quantity Documentation](/story/ui-components-quantity-molecule-web-component--default)
+
+**CDK** (Component Development Kit): new symmetry strategies have been added (left and right):
+[See CDK Documentation](/story/libraries-cdk-overlay-introduction--page)
+
+### Bug fixes:
+* **Tile**:
+  * `hoverable` attribute has been added to avoid double focus
+  * `interactive` attribute has been removed
+  > ⚠️️ **Breaking change**<br />
+  > For more information, check our migration guide
+* **Link**:
+  * add missing color for active state
+  * fix Link host container size to match its content
+* **Icon**: add `hoverable` attribute so component color can change when in selectable parent
+* **Checkbox Button**: aspect ratio has been added
+* **Quantity**: icons alignment has been fixed
+* **Textarea**: when component is resized and `flex` attribute is set to `true` and then, set back to `false`, Textarea width is no more blocked to 100%
+
 
 ## v13.0.0
+
+As it is a major version, you have to do the [migration guide 12.x to 13.x](/story/ovhcloud-design-system-what-s-new-migration-guide-12-x-to-13-x--page)
+
 ### New features:
 We added the following components:
 * Breadcrumb: [See Breadcrumb Documentation](/story/ui-components-breadcrumb-molecule-web-component--default)

@@ -131,11 +131,11 @@ describe('spec:osds-switch', () => {
       await setup();
       const spyEmit = jest.spyOn(instance, 'emitChanged');
       const spyFocus = jest.spyOn(instance, 'handlerFocus');
-      const current = { value: '1' }
-      controller.changeCheckedSwitchItem = jest.fn().mockImplementation(() => ({ current , old: undefined }));
-      instance.handlerSwitchItemClick(new CustomEvent('odsSwitchItemClick', { detail: current }));
+      const detail = { newValue: '1', previousValue: '' }
+      controller.changeCheckedSwitchItem = jest.fn().mockImplementation(() => ({ current: { value: detail.newValue } , old: undefined }));
+      instance.handlerSwitchItemClick(new CustomEvent('odsValueChange', { detail }));
       expect(controller.changeCheckedSwitchItem).toHaveBeenCalledTimes(1);
-      expect(spyEmit).toHaveBeenNthCalledWith(1, current.value, undefined);
+      expect(spyEmit).toHaveBeenNthCalledWith(1, detail.newValue, undefined);
       expect(spyFocus).toHaveBeenCalledTimes(1);
     });
 
@@ -143,7 +143,7 @@ describe('spec:osds-switch', () => {
       await setup({ attributes: { disabled: true } });
       const spyEmit = jest.spyOn(instance, 'emitChanged');
       const spyFocus = jest.spyOn(instance, 'handlerFocus');
-      instance.handlerSwitchItemClick(new CustomEvent('odsSwitchItemClick', { detail: { value: '1'} }));
+      instance.handlerSwitchItemClick(new CustomEvent('odsValueChange', { detail: { newValue: '1', previousValue: '' } }));
       expect(controller.changeCheckedSwitchItem).not.toHaveBeenCalled();
       expect(spyEmit).not.toHaveBeenCalled();
       expect(spyFocus).not.toHaveBeenCalled();

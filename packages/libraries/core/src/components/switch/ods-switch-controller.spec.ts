@@ -108,13 +108,13 @@ describe('spec:ods-switch-controller', () => {
       expect(nextSwitchItem).toBe(undefined);
     });
 
-    it('should not finCheckedSwitchItem', () => {
+    it('should not findCheckedSwitchItem', () => {
       setup(component);
       const selectedSwitchItem = controller.finCheckedSwitchItem();
       expect(selectedSwitchItem).toBe(undefined);
     });
 
-    it('should finCheckedSwitchItem', () => {
+    it('should findCheckedSwitchItem', () => {
       setup(component);
       item1.checked = true;
       const selectedSwitchItem = controller.finCheckedSwitchItem();

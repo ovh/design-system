@@ -17,6 +17,7 @@ export class OdsSwitchController extends OdsComponentController<OdsSwitch> {
 
   changeCheckedSwitchItem(value: string): { current: HtmlSwitchItem, previous: HtmlSwitchItem } {
     const switchItems = this.getSwitchItems();
+    switchItems.forEach(switchItem => switchItem.className = 'hydrated');
     const index = switchItems.findIndex(switchItem => switchItem.getAttribute('checked') !== null);
     const checkedSwitchItem = switchItems[index];
     switchItems[index]?.removeAttribute('checked');

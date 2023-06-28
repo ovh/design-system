@@ -2,7 +2,6 @@ jest.mock('@ovhcloud/ods-core/src/components/switch-item/ods-switch-item-control
 
 import {
   OdsSwitchItemAttributes,
-  OdsSwitchItemController,
   OdsComponentAttributes2StringAttributes,
   odsSwitchItemDefaultAttributes,
 } from '@ovhcloud/ods-core';
@@ -15,7 +14,7 @@ import { SpecPage, newSpecPage } from '@stencil/core/testing';
 import { OsdsSwitchItem } from './osds-switch-item';
 import { getAttributeContextOptions } from '@ovhcloud/ods-stencil/libraries/stencil-testing';
 
-describe('spec:osds-switch_item', () => {
+describe('spec:osds-switch-item', () => {
   let page: SpecPage;
   let root: HTMLElement | undefined;
   let instance: OsdsSwitchItem;
@@ -63,19 +62,10 @@ describe('spec:osds-switch_item', () => {
   });
 
   describe('event', () => {
-    it('should call handlerOnClick', async () => {
-      await setup({});
-      const spyHandlerOnClick = jest.spyOn(instance, 'handlerOnClick');
-
-      root?.click();
-
-      expect(spyHandlerOnClick).toHaveBeenCalledTimes(1);
-    });
-
     it('should call handlerOnKeyDown', async () => {
       await setup({});
       const spyHandlerOnKeyDown = jest.spyOn(instance, 'handlerOnKeyDown');
-      const spyHandlerOnClick = jest.spyOn(instance, 'handlerOnClick');
+      const spyOdsSwitchItemClickEmit = jest.spyOn(instance, 'odsSwitchItemClickEmit');
 
       const keyEnter = new KeyboardEvent("keydown", { code : "Enter" });
       root?.dispatchEvent(keyEnter);
@@ -86,13 +76,13 @@ describe('spec:osds-switch_item', () => {
       await page.waitForChanges();
 
       expect(spyHandlerOnKeyDown).toHaveBeenCalledTimes(2);
-      expect(spyHandlerOnClick).toHaveBeenCalledTimes(2);
+      expect(spyOdsSwitchItemClickEmit).toHaveBeenCalledTimes(2);
     });
 
     it('should not call handlerOnClick because of unsupported key', async () => {
       await setup({});
       const spyHandlerOnKeyDown = jest.spyOn(instance, 'handlerOnKeyDown');
-      const spyHandlerOnClick = jest.spyOn(instance, 'handlerOnClick');
+      const spyOdsSwitchItemClickEmit = jest.spyOn(instance, 'odsSwitchItemClickEmit');
 
       const keyA = new KeyboardEvent("keydown", { code : "A" });
       root.dispatchEvent(keyA);
@@ -103,7 +93,7 @@ describe('spec:osds-switch_item', () => {
       await page.waitForChanges();
 
       expect(spyHandlerOnKeyDown).toHaveBeenCalledTimes(2);
-      expect(spyHandlerOnClick).not.toHaveBeenCalled();
+      expect(spyOdsSwitchItemClickEmit).not.toHaveBeenCalled();
     });
   });
 
@@ -113,8 +103,10 @@ describe('spec:osds-switch_item', () => {
       await page.waitForChanges();
       const spyOdsSwitchItem = jest.spyOn(instance.odsSwitchItemClick, 'emit');
 
-      instance.handlerOnClick();
-      root?.click();
+      instance.odsSwitchItemClickEmit();
+      const keyEnter = new KeyboardEvent("keydown", { code : "Enter" });
+      root?.dispatchEvent(keyEnter);
+      await page.waitForChanges();
 
       expect(spyOdsSwitchItem).toHaveBeenCalledTimes(2);
     })

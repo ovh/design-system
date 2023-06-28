@@ -8,6 +8,7 @@ import {
   OdsSwitchChangedEventDetail,
   OdsSwitchSize,
   OdsSwitchVariant,
+  OdsRadioGroupValueChangeEvent,
 } from '@ovhcloud/ods-core';
 import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libraries/stencil-core';
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
@@ -39,11 +40,13 @@ export class OsdsSwitch implements OdsSwitch<OdsStencilMethods<OdsSwitchMethods>
   @Event() odsSwitchChanged!: EventEmitter<OdsSwitchChangedEventDetail>;
 
   @Listen('odsSwitchItemClick')
-  handlerSwitchItemClick(event: CustomEvent<{ value: string }>) {
+  @Listen('odsValueChange')
+  handlerSwitchItemClick(event: OdsRadioGroupValueChangeEvent | CustomEvent<{ value: string }>) {
     if (this.disabled) {
       return;
     }
-    const { current, previous } = this.controller.changeCheckedSwitchItem(event.detail.value);
+    const value = 'newValue' in event.detail ? event.detail.newValue : event.detail.value;
+    const { current, previous } = this.controller.changeCheckedSwitchItem(value);
     this.handlerFocus();
     this.emitChanged(current.value, previous?.value);
   }
@@ -86,7 +89,9 @@ export class OsdsSwitch implements OdsSwitch<OdsStencilMethods<OdsSwitchMethods>
         onFocus: () => this.handlerFocus(),
         onKeyDown: (event: KeyboardEvent) => this.handlerOnKeyDown(event),
       }}>
-        <slot></slot>
+        <osds-radio-group>
+          <slot></slot>
+        </osds-radio-group>
       </Host>
     );
   }

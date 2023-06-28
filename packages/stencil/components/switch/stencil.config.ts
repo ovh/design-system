@@ -11,11 +11,11 @@ export const config: Config = getStencilConfig({
   reactOutput: {
     componentCorePackage: '@ovhcloud/ods-stencil/components/switch',
     // exclude peer dependencies that corresponds to www usage
-    excludeComponents: []
+    excludeComponents: ['osds-radio', 'osds-radio-group']
   },
   vueOutput: {
     componentCorePackage: '@ovhcloud/ods-stencil/components/switch',
-    excludeComponents: []
+    excludeComponents: ['osds-radio', 'osds-radio-group']
   },
   dev: {
     globalScript: 'src/global.dev.ts',

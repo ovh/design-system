@@ -17,10 +17,7 @@
     z-index: 0;
     cursor: pointer;
 
-    input {
-        display: none;
-    }
-    label {
+    & osds-radio > * {
         cursor: pointer;
     }
 

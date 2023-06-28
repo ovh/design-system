@@ -18,6 +18,7 @@ import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libra
 })
 export class OsdsSwitchItem implements OdsSwitchItem<OdsStencilMethods<OdsSwitchItemMethods>, OdsStencilEvents<OdsSwitchItemEvents>> {
   controller: OdsSwitchItemController = new OdsSwitchItemController(this);
+
   @Element() el!: HTMLElement;
 
   @State() id = odsSwitchItemDefaultAttributes.id;
@@ -30,21 +31,20 @@ export class OsdsSwitchItem implements OdsSwitchItem<OdsStencilMethods<OdsSwitch
   /** @see odsSwitchItemClick */
   @Event() odsSwitchItemClick!: EventEmitter<{ value: string }>;
 
-  handlerOnClick(event?: MouseEvent): void {
-    event?.preventDefault();
-    this.odsSwitchItemClick.emit({ value: this.value });
-  }
-
   handlerOnKeyDown(event: KeyboardEvent): void {
     const isEnter = event.code.includes('Enter');
     const isSpace = event.code === 'Space';
     if (isEnter || isSpace) {
-      this.handlerOnClick();
+      this.odsSwitchItemClickEmit();
     }
   }
 
+  odsSwitchItemClickEmit(): void {
+    this.odsSwitchItemClick.emit({ value: this.value });
+  }
+
   @Method()
-  setFocus(): void {
+  async setFocus(): Promise<void> {
     this.el.focus();
   }
 
@@ -54,20 +54,16 @@ export class OsdsSwitchItem implements OdsSwitchItem<OdsStencilMethods<OdsSwitch
     return (
       <Host {...{
           tabindex,
-          onClick: (event: MouseEvent) => this.handlerOnClick(event),
           onKeyDown: (event: KeyboardEvent) => this.handlerOnKeyDown(event)
         }}>
-        <label>
-          <input 
-            type="radio"
-            name="switch"
-          {...{
-            checked,
-            id,
-            value,
-          }} />
+        <osds-radio {...{
+          checked,
+          id,
+          value,
+          tabindex: "-1",
+        }}>
           <slot></slot>
-        </label>
+        </osds-radio>
       </Host>
     );
   }

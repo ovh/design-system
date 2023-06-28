@@ -16,6 +16,10 @@ export interface OdsIconAttributes extends OdsComponentAttributes {
    */
   contrasted?: boolean
   /**
+   * Icon if hoverabled or not
+   */
+  hoverable?: boolean
+  /**
    * Icon name
    */
   name?: OdsIconName

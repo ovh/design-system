@@ -26,6 +26,8 @@
   "OdsLocationTile",
   "OdsMessage",
   "OdsPagination",
+  "OdsPopover",
+  "OdsProgressBar",
   "OdsQuantity",
   "OdsRadio",
   "OdsRadioButton",
@@ -41,5 +43,6 @@
   "OdsText",
   "OdsTextarea",
   "OdsTile",
-  "OdsToggle"
+  "OdsToggle",
+  "OdsTooltip"
 ]

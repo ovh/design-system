@@ -167,12 +167,12 @@ describe('spec:osds-tile', () => {
       });
     });
 
-    describe('interactive', () => {
-      odsUnitTestAttribute<OdsTileAttributes, 'interactive'>({
-        ...getAttributeContextOptions<OdsTileAttributes, OsdsTile, 'interactive'>({
-          name: 'interactive',
+    describe('hoverable', () => {
+      odsUnitTestAttribute<OdsTileAttributes, 'hoverable'>({
+        ...getAttributeContextOptions<OdsTileAttributes, OsdsTile, 'hoverable'>({
+          name: 'hoverable',
           list: [false, true],
-          defaultValue: odsTileDefaultAttributes.interactive,
+          defaultValue: odsTileDefaultAttributes.hoverable,
           ...config
         })
       });
@@ -184,12 +184,6 @@ describe('spec:osds-tile', () => {
       await setup();
       expect(controller.validateAttributes).toHaveBeenCalledWith();
       expect(controller.validateAttributes).toHaveBeenCalledTimes(1);
-    });
-
-    it('should call controller.getTabIndex', async () => {
-      await setup();
-      expect(controller.getTabIndex).toHaveBeenCalledWith();
-      expect(controller.getTabIndex).toHaveBeenCalledTimes(1);
     });
 
     it('should call controller.handleClick on component click', async () => {

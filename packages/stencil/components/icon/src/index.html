@@ -9,45 +9,37 @@
     !window.ods && (window.ods = {config: {logging: {active:true}}});
   </script>
 
-  <script type='module' src='/build/ods-icon.esm.js'></script>
-  <script nomodule src='/build/ods-icon.js'></script>
-  <link rel="stylesheet" href="/build/ods-icon.css">
+  <script type='module' src='/build/osds-icon.esm.js'></script>
+  <script nomodule src='/build/osds-icon.js'></script>
+  <link rel="stylesheet" href="/build/osds-icon.css">
 </head>
 <body>
 
 <p>Size</p>
-<osds-icon size='s'>Small</osds-icon>
-<osds-icon>Default</osds-icon>
-<osds-icon size='l'>Large</osds-icon>
+<osds-icon name="home" size="xxs"></osds-icon>
+<osds-icon name="home" size="xs"></osds-icon>
+<osds-icon name="home" size="sm"></osds-icon>
+<osds-icon name="home" size="md"></osds-icon>
+<osds-icon name="home" size="lg"></osds-icon>
+<osds-icon name="home" size="xl"></osds-icon>
 
-<p>Variant</p>
-<osds-icon variant='ghost'>Ghost</osds-icon>
-<osds-icon variant='primary'>Primary</osds-icon>
-<osds-icon variant='secondary'>Secondary</osds-icon>
+<p>contrasted</p>
+<div style='background: #0e2231; padding: 3px;'>
+  <osds-icon name="home" size="md" contrasted='true'></osds-icon>
+</div>
 
-<p>Block</p>
-<osds-icon block size='s'>Block small</osds-icon>
-<osds-icon block>Block</osds-icon>
-<osds-icon block size='l'>Block large</osds-icon>
+<p>color</p>
+<osds-icon name="home" size="md" color="primary"></osds-icon>
+<osds-icon name="home" size="md" color="text"></osds-icon>
+<osds-icon name="home" size="md" color="accent"></osds-icon>
+<osds-icon name="home" size="md" color="error"></osds-icon>
+<osds-icon name="home" size="md" color="warning"></osds-icon>
+<osds-icon name="home" size="md" color="success"></osds-icon>
+<osds-icon name="home" size="md" color="info"></osds-icon>
+<osds-icon name="home" size="md" color="promotion"></osds-icon>
 
-<p>Square</p>
-<osds-icon square size='s'>Square small</osds-icon>
-<osds-icon square>Square</osds-icon>
-<osds-icon square size='l'>Square large</osds-icon>
-
-<p>Disabled</p>
-<osds-icon size='s' disabled>Small</osds-icon>
-<osds-icon disabled>Default</osds-icon>
-<osds-icon size='l' disabled>Large</osds-icon>
-<osds-icon variant='ghost' disabled>Ghost</osds-icon>
-<osds-icon variant='primary' disabled>Primary</osds-icon>
-<osds-icon variant='secondary' disabled>Secondary</osds-icon>
-<osds-icon block size='s' disabled>Block small</osds-icon>
-<osds-icon block disabled>Block</osds-icon>
-<osds-icon block size='l' disabled>Block large</osds-icon>
-<osds-icon square size='s' disabled>Square small</osds-icon>
-<osds-icon square disabled>Square</osds-icon>
-<osds-icon square size='l' disabled>Square large</osds-icon>
+<p>hoverable</p>
+<osds-icon name="home" size="md" hoverable='true' color="primary"></osds-icon>
 
 <script>
   document.querySelectorAll('ods-icon').forEach((elem) => {});

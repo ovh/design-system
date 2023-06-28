@@ -1,4 +1,5 @@
 @import 'styles/osds-quantity.mixins';
+@import 'styles/osds-quantity.size';
 @import '~@ovhcloud/ods-theming/color/ods-theming-color';
 @import '~@ovhcloud/ods-theming/ods-theme';
 
@@ -8,14 +9,17 @@
   display: flex;
   flex-direction: row;
   --ods-input-text-align: center;
+  --ods-input-width: calc(2.813rem * var(--ods-size-ratio));
+  --ods-icon-vertical-align: middle;
 }
+
 :host([disabled]) {
   cursor: not-allowed;
 }
 
 slot:not([name]) {
-  margin-left: .25em;
-  margin-right: .25em;
+  margin-left: var(--ods-size-03);
+  margin-right: var(--ods-size-03);
 }
 
 slot {
@@ -24,4 +28,5 @@ slot {
 
 // apply the theme template for the component
 @include ods-theme-component() {
+  @include osds-quantity-theme-size();
 }

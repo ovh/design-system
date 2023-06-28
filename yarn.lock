@@ -6421,6 +6421,86 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-stencil-popover-react@workspace:packages/stencil/components/popover/react":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-stencil-popover-react@workspace:packages/stencil/components/popover/react"
+  dependencies:
+    "@ovhcloud/ods-stencil-popover": ^13.0.1
+    "@types/react": 17.0.37
+    "@types/react-dom": 17.0.11
+    react: 16.14.0
+    react-dom: 16.14.0
+    rimraf: ^3.0.2
+    tslib: "*"
+    typescript: 4.7.4
+  peerDependencies:
+    react: ">=16.8.6"
+    react-dom: ">=16.8.6"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-stencil-popover-vue@workspace:packages/stencil/components/popover/vue":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-stencil-popover-vue@workspace:packages/stencil/components/popover/vue"
+  dependencies:
+    "@ovhcloud/ods-stencil-popover": ^13.0.1
+    rimraf: ^3.0.2
+    typescript: 4.7.4
+    vue: ^3.2.41
+  peerDependencies:
+    vue: ">=3"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-stencil-popover@^13.0.1, @ovhcloud/ods-stencil-popover@workspace:packages/stencil/components/popover":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-stencil-popover@workspace:packages/stencil/components/popover"
+  dependencies:
+    "@ovhcloud/ods-stencil-component": ^13.0.1
+    "@ovhcloud/ods-stencil-component-dev": ^13.0.1
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-stencil-progress-bar-react@workspace:packages/stencil/components/progress-bar/react":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-stencil-progress-bar-react@workspace:packages/stencil/components/progress-bar/react"
+  dependencies:
+    "@ovhcloud/ods-stencil-progress-bar": ^13.0.1
+    "@types/react": 17.0.37
+    "@types/react-dom": 17.0.11
+    react: 16.14.0
+    react-dom: 16.14.0
+    rimraf: ^3.0.2
+    tslib: "*"
+    typescript: 4.7.4
+  peerDependencies:
+    react: ">=16.8.6"
+    react-dom: ">=16.8.6"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-stencil-progress-bar-vue@workspace:packages/stencil/components/progress-bar/vue":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-stencil-progress-bar-vue@workspace:packages/stencil/components/progress-bar/vue"
+  dependencies:
+    "@ovhcloud/ods-stencil-progress-bar": ^13.0.1
+    rimraf: ^3.0.2
+    typescript: 4.7.4
+    vue: ^3.2.41
+  peerDependencies:
+    vue: ">=3"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-stencil-progress-bar@^13.0.1, @ovhcloud/ods-stencil-progress-bar@workspace:packages/stencil/components/progress-bar":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-stencil-progress-bar@workspace:packages/stencil/components/progress-bar"
+  dependencies:
+    "@ovhcloud/ods-stencil-component": ^13.0.1
+    "@ovhcloud/ods-stencil-component-dev": ^13.0.1
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-stencil-quantity-react@workspace:packages/stencil/components/quantity/react":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-quantity-react@workspace:packages/stencil/components/quantity/react"
@@ -6910,6 +6990,46 @@ __metadata:
 "@ovhcloud/ods-stencil-toggle@^13.0.1, @ovhcloud/ods-stencil-toggle@workspace:packages/stencil/components/toggle":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-toggle@workspace:packages/stencil/components/toggle"
+  dependencies:
+    "@ovhcloud/ods-stencil-component": ^13.0.1
+    "@ovhcloud/ods-stencil-component-dev": ^13.0.1
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-stencil-tooltip-react@workspace:packages/stencil/components/tooltip/react":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-stencil-tooltip-react@workspace:packages/stencil/components/tooltip/react"
+  dependencies:
+    "@ovhcloud/ods-stencil-tooltip": ^13.0.1
+    "@types/react": 17.0.37
+    "@types/react-dom": 17.0.11
+    react: 16.14.0
+    react-dom: 16.14.0
+    rimraf: ^3.0.2
+    tslib: "*"
+    typescript: 4.7.4
+  peerDependencies:
+    react: ">=16.8.6"
+    react-dom: ">=16.8.6"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-stencil-tooltip-vue@workspace:packages/stencil/components/tooltip/vue":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-stencil-tooltip-vue@workspace:packages/stencil/components/tooltip/vue"
+  dependencies:
+    "@ovhcloud/ods-stencil-tooltip": ^13.0.1
+    rimraf: ^3.0.2
+    typescript: 4.7.4
+    vue: ^3.2.41
+  peerDependencies:
+    vue: ">=3"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-stencil-tooltip@^13.0.1, @ovhcloud/ods-stencil-tooltip@workspace:packages/stencil/components/tooltip":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-stencil-tooltip@workspace:packages/stencil/components/tooltip"
   dependencies:
     "@ovhcloud/ods-stencil-component": ^13.0.1
     "@ovhcloud/ods-stencil-component-dev": ^13.0.1
@@ -9558,12 +9678,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/ws@npm:^8.5.1":
-  version: 8.5.3
-  resolution: "@types/ws@npm:8.5.3"
+"@types/ws@npm:8.5.4":
+  version: 8.5.4
+  resolution: "@types/ws@npm:8.5.4"
   dependencies:
     "@types/node": "*"
-  checksum: 0ce46f850d41383fcdc2149bcacc86d7232fa7a233f903d2246dff86e31701a02f8566f40af5f8b56d1834779255c04ec6ec78660fe0f9b2a69cf3d71937e4ae
+  checksum: fefbad20d211929bb996285c4e6f699b12192548afedbe4930ab4384f8a94577c9cd421acaad163cacd36b88649509970a05a0b8f20615b30c501ed5269038d1
   languageName: node
   linkType: hard
 

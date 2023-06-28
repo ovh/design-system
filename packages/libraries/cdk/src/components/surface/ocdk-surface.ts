@@ -11,8 +11,10 @@ import { OcdkSurfaceMaxDimensions } from './core/ocdk-surface-max-dimensions';
 import { OcdkSurfaceStrategyDefiner } from './core/system/ocdk-surface-strategy-definer';
 import { OcdkSurfaceStrategyDefinerConfig } from './core/system/ocdk-surface-strategy-definer-config';
 import { ocdkGetCorrectPropertyName } from '../../utils/css/ocdk-get-correct-property-name';
+import { OcdkSurfaceBehaviour } from './ocdk-surface-behaviour'
 
-export class OcdkSurface extends HTMLElement {
+
+export class OcdkSurface extends HTMLElement implements OcdkSurfaceBehaviour {
   static totalIds = 0;
   adapter: OcdkSurfaceAdapter;
   private anchorElement!: Element | null;
@@ -310,8 +312,7 @@ export class OcdkSurface extends HTMLElement {
         this.style.left = 'left' in position ? `${position.left}px` : '';
         this.style.right = 'right' in position ? `${position.right}px` : '';
         this.style.top = 'top' in position ? `${position.top}px` : '';
-        this.style.bottom =
-          'bottom' in position ? `${position.bottom}px` : '';
+        this.style.bottom = 'bottom' in position ? `${position.bottom}px` : '';
       },
       cleanUpStyles: () => {
         const propertyName =
@@ -331,12 +332,25 @@ export class OcdkSurface extends HTMLElement {
       setMinHeight: (height) => {
         this.style.minHeight = height;
       },
+      setMaxWidth: (width) => {
+        this.style.maxWidth = width;
+      },
+      setMinWidth: (width) => {
+        this.style.minWidth = width;
+      },
       autoDetectItemHeight: () => {
         const elements = this.querySelector('slot')?.assignedElements();
         const firstElement = elements && elements[ 0 ] as HTMLElement | undefined;
         const height = firstElement ? firstElement.offsetHeight : 0;
         this.logger.log('[getDefaultAdapter].autoDetectItemHeight', { height });
         return height;
+      },
+      autoDetectItemWidth: () => {
+        const elements = this.querySelector('slot')?.assignedElements();
+        const firstElement = elements && elements[ 0 ] as HTMLElement | undefined;
+        const width = firstElement ? firstElement.offsetWidth : 0;
+        this.logger.log('[getDefaultAdapter].autoDetectItemWidth', { width });
+        return width;
       }
     };
     return adapter;

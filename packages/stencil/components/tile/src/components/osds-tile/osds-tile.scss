@@ -30,7 +30,7 @@
   }
 }
 
-[interactive]:not([disabled]) {
+[hoverable]:not([disabled]) {
   @include osds-tile-on-selected-host() {
     cursor: pointer;
   }
@@ -109,9 +109,7 @@ slot[name="end"] {
         background-position: 0 0;
       }
     }
-
   }
-
 }
 
 // apply the theme template for the component
@@ -119,9 +117,4 @@ slot[name="end"] {
   @include osds-tile-theme-color();
   @include osds-tile-theme-size();
   @include osds-tile-theme-typography();
-
-  :host([interactive]:focus-visible) {
-    outline-style: dashed;
-    outline-width: 2px;
-  }
 }

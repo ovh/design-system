@@ -1,4 +1,5 @@
 import { html } from 'lit-html';
+import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 import { iframe } from '../../../.storybook/iframe';
 
 // import { config } from 'storybook-addon-xd-designs';
@@ -16,6 +17,7 @@ import {
   extractArgTypes,
   extractStoryParams,
   getTagAttributes,
+  createComponentTable
 } from '../../../core/componentHTMLUtils';
 
 defineCustomElements();
@@ -43,6 +45,18 @@ const storyParams = {
   flex: {
     category: 'Misc',
     defaultValue: false,
+  },
+  clearable: {
+    category: 'Misc',
+    defaultValue: false,
+  },
+  loading: {
+    category: 'Misc',
+    defaultValue: false,
+  },
+  masked: {
+    category: 'Misc',
+    defaultValue: true,
   },
   contrasted: {
     category: 'Misc',
@@ -115,18 +129,21 @@ export default {
 };
 
 /* Default */
-const OsdsInputDefault = (args) => html`
+const OsdsInputDefault = (args: Record<string, unknown>) => html`
   <osds-input ...=${getTagAttributes(args)}>
   </osds-input>
 `;
-const TemplateDefault = (args) => OsdsInputDefault(args);
+const TemplateDefault = (args: Record<string, unknown>) => OsdsInputDefault(args);
 export const Default = TemplateDefault.bind({});
-Default.args = {
-  ...extractStoryParams(storyParams),
+type DefaultProps = {
+  args: Record<string, unknown>;
+};
+(Default as unknown as DefaultProps).args = {
+  ...(extractStoryParams(storyParams) as Record<string, unknown>),
 };
 
 /* Input Validation */
-const OsdsInputValidation = (args) => html`
+const OsdsInputValidation = (args: Record<string, unknown>) => html`
   <article id="example-1">
     <osds-input id="input"  ...=${getTagAttributes(args)}>
     </osds-input>
@@ -136,11 +153,74 @@ const OsdsInputValidation = (args) => html`
     <span class="error-msg valid">Not valid</span>
   </article>
 `;
-const TemplateValidation = (args) => OsdsInputValidation(args);
+const TemplateValidation = (args: Record<string, unknown>) => OsdsInputValidation(args);
 export const Validation = TemplateValidation.bind({});
-Validation.args = {
-  ...extractStoryParams(storyParams),
+type ValidationProps = {
+  args: Record<string, unknown>;
+  play: () => Promise<void>;
 };
-Validation.play = InputPlay;
+(Validation as unknown as ValidationProps).args = {
+  ...(extractStoryParams(storyParams) as Record<string, unknown>),
+};
+(Validation as unknown as ValidationProps).play = InputPlay;
 
+/* All Inputs */
 
+type Attributes = 'default' | 'clearable' | 'icon="ovh"' | 'clearable icon="ovh"' | 'value="ODS ahead"' | 'value="ODS ahead" masked' | 'loading' | 'loading icon="ovh"' | 'loading disabled' | 'loading disabled icon="ovh"';
+
+const attributeList: Attributes[] = [
+  'default', 'clearable', 'icon="ovh"', 'clearable icon="ovh"', 'value="ODS ahead"', 
+  'value="ODS ahead" masked', 'loading', 'loading icon="ovh"', 'loading disabled', 
+  'loading disabled icon="ovh"'
+];
+
+const createTable = (contrasted: boolean, headerList: string[], itemMapper: (attribute: string) => string) => `
+  <table>
+    <thead>
+      <tr>
+        <td></td>
+        ${headerList.map(header => `<td style="padding:0.1em; ${contrasted && "color: #ffffff;"}">${header}</td>`).join('')}
+      </tr>
+    </thead>
+    <tbody>
+      ${attributeList.map(attribute => 
+        `<tr>
+          <td style="padding:0.1em;  ${contrasted && 'color: #ffffff;'}">${attribute}</td>
+          ${itemMapper(attribute)}
+        </tr>`
+      ).join('')}
+    </tbody>
+  </table>`;
+
+const TemplateAll = () => html`
+  <section style="margin-bottom: 3em; padding: 1em;">
+    <h2>[types]</h2>
+    ${unsafeHTML(createTable(false, OdsInputTypeList, (attribute) => OdsInputTypeList.map(type => 
+      `<td style="padding:0.1em">
+        <osds-input type="${type}" placeholder="Enter ${type}..." ${attribute}></osds-input>
+      </td>`).join('')
+    ))}
+  </section>
+  <section style="margin-bottom: 3em; padding: 1em;">
+    <h2>[colors]</h2>
+    ${unsafeHTML(createTable(false, OdsThemeColorIntentList, (attribute) => OdsThemeColorIntentList.map(color => 
+      `<td style="padding:0.1em;">
+        <osds-input type="text" color="${color}" placeholder="Enter text..." ${attribute}></osds-input>
+      </td>`).join('')
+    ))}
+  </section>
+  <section style="margin-bottom: 3em; background: #000e9c; padding: 1em;">
+    <h2 style="color: #ffffff;">[contrasted]</h2>
+    ${unsafeHTML(createTable(true, OdsThemeColorIntentList, (attribute) => OdsThemeColorIntentList.map(color => 
+      `<td style="padding:0.1em">
+        <osds-input type="text" color="${color}" placeholder="Enter text..." ${attribute}></osds-input>
+      </td>`).join('')
+    ))}
+  </section>
+`;
+
+export const All = TemplateAll.bind({});
+All.parameters = {
+  controls: { hideNoControlsWarning: true },
+  options: { showPanel: false },
+};

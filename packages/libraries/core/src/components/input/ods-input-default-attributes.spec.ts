@@ -10,6 +10,9 @@ describe('spec:ods-input-default-attributes', () => {
   it('ariaLabelledby should not be defined', () => {
     expect(odsInputDefaultAttributes.ariaLabelledby).toBe(undefined);
   });
+  it('clearable should be false', () => {
+    expect(odsInputDefaultAttributes.clearable).toBe(false);
+  });
   it('color should be default', () => {
     expect(odsInputDefaultAttributes.color).toBe(OdsThemeColorIntent.default);
   });
@@ -27,6 +30,12 @@ describe('spec:ods-input-default-attributes', () => {
   });
   it('label should not be defined', () => {
     expect(odsInputDefaultAttributes.label).toBe(undefined);
+  });
+  it('loading should be false', () => {
+    expect(odsInputDefaultAttributes.loading).toBe(false);
+  });
+  it('masked should be true', () => {
+    expect(odsInputDefaultAttributes.masked).toBe(true);
   });
   it('max should not be defined', () => {
     expect(odsInputDefaultAttributes.max).toBe(undefined);

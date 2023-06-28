@@ -37,7 +37,7 @@ export class OdsInputController extends OdsComponentController<OdsInput> {
         }
       }
     }
-  }
+  }  
 
   /**
    * get the validity object properties of the component.
@@ -69,16 +69,26 @@ export class OdsInputController extends OdsComponentController<OdsInput> {
    * it returns true if the value is between a min/max from the forbidden values.
    */
   private hasForbiddenValue(): boolean {
-    return this.component.forbiddenValues.some(forbiddenValue => {
-      if (typeof forbiddenValue === 'number') {
-        return `${forbiddenValue}` === `${this.component.value}`;
-      }
-      if (this.component.value) {
-        return this.component.value >= forbiddenValue.min && this.component.value <= forbiddenValue.max;
-      }
-      return false;
-    })
-  }
+    switch (this.component.type) {
+      case 'number':
+        return this.component.forbiddenValues.some(forbiddenValue => {
+          if (typeof forbiddenValue === 'number') {
+            return `${forbiddenValue}` === `${this.component.value}`;
+          }
+          if (this.component.value && typeof this.component.value === 'number') {
+            return this.component.value >= forbiddenValue.min && this.component.value <= forbiddenValue.max;
+          }
+          return false;
+        })
+      default:
+        return this.component.forbiddenValues.some(forbiddenValue => {
+          if (typeof forbiddenValue === 'string') {
+            return forbiddenValue === this.component.value;
+          }
+          return false;
+        });
+    }
+  }  
 
   onFormControlChange(formControl?: OdsFormControl<OdsInputValidityState>) {
     this.logger.log(`[input=${this.component.value}]`, 'onFormControlChange', formControl, formControl && formControl.id);
@@ -189,6 +199,14 @@ export class OdsInputController extends OdsComponentController<OdsInput> {
   }
 
   clear() {
+    this.logger.debug('clear', this.component.inputEl?.value);
     this.component.value = '';
+    if (this.component.inputEl) {
+      this.component.inputEl.value = '';
+    }
+  }
+
+  hide() {
+    this.component.masked = !this.component.masked;
   }
 }

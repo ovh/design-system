@@ -60,7 +60,7 @@ const storyParams = {
   color: OdsThemeColorIntent.default,
   contrasted: false,
   disabled: false,
-  endSlot: '<osds-icon name="arrow-right" size="xs" color="primary"></osds-icon>',
+  endSlot: '<osds-icon name="arrow-right" size="xs" hoverable=""></osds-icon>',
   href: '',
   linkContentSlot: 'Oles ipsum dolor sit amet, Ocurreret at animal armor nec, constituam platonem network integer',
   startSlot: '',

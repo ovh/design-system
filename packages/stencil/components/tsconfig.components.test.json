@@ -29,6 +29,8 @@
     "location-tile/src",
     "message/src",
     "pagination/src",
+    "popover/src",
+    "progress-bar/src",
     "quantity/src",
     "radio-button/src",
     "radio/src",
@@ -41,7 +43,8 @@
     "text/src",
     "textarea/src",
     "tile/src",
-    "toggle/src"
+    "toggle/src",
+    "tooltip/src",
   ],
   "exclude": [
     "node_modules",

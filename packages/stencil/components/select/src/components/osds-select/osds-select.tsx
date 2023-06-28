@@ -15,10 +15,13 @@ import {
   OdsSelectOption, OdsSelectCreateDefaultOdsValidityState
 } from '@ovhcloud/ods-core';
 import { HTMLStencilElement } from '@stencil/core/internal';
-import { OsdsSelectOption } from '../osds-select-option/osds-select-option';
 import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libraries/stencil-core';
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 import { OdsSelectOptionClickEventDetail } from '@ovhcloud/ods-core/src/components/select/select-option/ods-select-option-click-event-detail';
+import { ocdkAssertEventTargetIsNode, ocdkDefineCustomElements, ocdkIsSurface, OcdkSurface } from '@ovhcloud/ods-cdk';
+
+// define custom elements from CDK
+ocdkDefineCustomElements()
 
 /**
  * @slot (placeholder) - Select placeholder
@@ -31,6 +34,8 @@ import { OdsSelectOptionClickEventDetail } from '@ovhcloud/ods-core/src/componen
 export class OsdsSelect implements OdsSelect<OdsStencilMethods<OdsSelectMethods>, OdsStencilEvents<OdsSelectEvents>> {
   private logger = new OdsLogger('OsdsSelect');
   controller: OdsSelectController = new OdsSelectController(this);
+  anchor!: HTMLElement;
+  surface: OcdkSurface | undefined = undefined;
 
   @Element() el!: HTMLStencilElement;
 
@@ -99,16 +104,12 @@ export class OsdsSelect implements OdsSelect<OdsStencilMethods<OdsSelectMethods>
     this.odsBlur.emit();
   }
 
-  @Watch('defaultValue')
-  onDefaultValueChange(defaultValue?: OdsInputValue) {
-    this.logger.debug(`[input=${this.value}]`, 'defaultValue', defaultValue);
-  }
-
   componentWillLoad() {
     this.onDefaultValueChange();
     if (this.value === '' && this.defaultValue !== undefined) {
       this.value = this.defaultValue;
     }
+    this.openedChanged(this.opened);
   }
 
   /**
@@ -116,12 +117,25 @@ export class OsdsSelect implements OdsSelect<OdsStencilMethods<OdsSelectMethods>
    * in order to synchronize the already set value with the placeholder
    */
   async componentDidLoad() {
+    this.setSelectOptions();
     await this.updateSelectOptionStates(this.value);
+  }
+
+  @Watch('defaultValue')
+  onDefaultValueChange(defaultValue?: OdsInputValue) {
+    this.logger.debug(`[input=${this.value}]`, 'defaultValue', defaultValue);
+  }
+
+  @Watch('opened')
+  openedChanged(opened: boolean) {
+    if (this.surface) {
+      this.surface.opened = opened;
+    }
   }
 
   @Watch('value')
   async onValueChange(value: OdsInputValue, oldValue?: OdsInputValue) {
-    this.logger.log(`[select=${this.value}]`, 'value changed. emit new value', { value });
+    this.logger.log(`[onValueChange=${this.value}]`, 'value changed. emit new value', { value });
     this.emitChange(value, oldValue);
     await this.updateSelectOptionStates(value);
   }
@@ -134,6 +148,11 @@ export class OsdsSelect implements OdsSelect<OdsStencilMethods<OdsSelectMethods>
       selection: this.optionSelected,
       validity: this.validityState,
     });
+  }
+
+  handleKeyDown(event: KeyboardEvent): void {
+    event.stopPropagation();
+    this.controller.handlerKeyDown(event);
   }
 
   /**
@@ -194,10 +213,9 @@ export class OsdsSelect implements OdsSelect<OdsStencilMethods<OdsSelectMethods>
     return this.validityState;
   }
 
-  private async updateSelectOptionStates(value?: OdsInputValue) {
-    const selectOptions = this.getSelectOptionList();
+  private async updateSelectOptionStates(value?: OdsInputValue): Promise<void> {
     let nbSelected = 0;
-    for (const selectOption of selectOptions) {
+    for (const selectOption of this.controller.selectOptions) {
       selectOption.selected = (value === selectOption.value) && !nbSelected ;
       if (selectOption.selected) {
         this.optionSelected = selectOption;
@@ -207,52 +225,67 @@ export class OsdsSelect implements OdsSelect<OdsStencilMethods<OdsSelectMethods>
     }
   }
 
-  private getSelectOptionList(): (HTMLElement & OsdsSelectOption)[] {
-    return Array.from(this.el.querySelectorAll<OsdsSelectOption & HTMLElement>('osds-select-option'));
-  }
-
   changeValue(value: OdsInputValue) {
-    this.logger.log(`[select=${this.value}]`, 'value changed', { value });
+    this.logger.log(`[changeValue=${this.value}]`, 'value changed', { value });
     this.value = value;
   }
 
   // Toggle overlay when we click on the Select.
-  private handleSelectClick() {
+  handleSelectClick(): void {
     this.logger.log('[handleSelectClick]', arguments, { validity: this.validityState });
-    if (!this.disabled) {
-      this.dirty = true;
-      this.opened = !this.opened;
+    if (this.disabled) {
+      return;
+    }
+    this.dirty = true;
+    if (this.opened) {
+      this.controller.closeSurface();
+    } else { 
+      this.controller.openSurface();
     }
   }
 
   // Hide overlay when we click anywhere else in the window.
   @Listen('click', { target: 'window' })
   checkForClickOutside(ev: any) {
-    const srcElement = ev.composedPath()[0]
-
-    if (!this.dirty || this.el.contains(ev.target) || this.el.shadowRoot?.contains(srcElement)) {
+    ocdkAssertEventTargetIsNode(ev.target);
+    if (!this.dirty || this.surface?.isClickOutsideSurface(ev)) {
       return;
     }
     this.logger.log('[checkForClickOutside]', arguments, { validity: this.validityState });
-    this.opened = false;
+    this.controller.closeSurface();
     if (this.dirty) {
       this.validityState = this.controller.getValidity();
     }
   }
 
   @Listen('odsSelectOptionClick')
-  handleValueChange(event: CustomEvent<OdsSelectOptionClickEventDetail>) {
-    this.logger.log(`[select=${this.value}]`, 'received odsSelectOptionClick event', { detail: event.detail });
-    if (event.detail.value !== this.value) {
-      this.changeValue(event.detail.value);
-    }
+  handleValueChange(event: CustomEvent<OdsSelectOptionClickEventDetail>): void {
+    this.logger.log(`[odsSelectOptionClick=${this.value}]`, 'received odsSelectOptionClick event', { detail: event.detail });
+    this.changeValue(event.detail.value);
+    this.controller.closeSurface();
   }
 
   @Watch('disabled')
   closeWhenDisabled(disabled?: boolean) {
     if (disabled) {
-      this.opened = false;
+      this.controller.closeSurface();
     }
+  }
+  
+  syncReferences() {
+    this.controller.syncReferences()
+  }
+
+  handleSlotChange() {
+    this.setSelectOptions();
+  }
+
+  setSelectOptions() {
+    this.controller.selectOptions = this.getSelectOptionList();
+  }
+
+  getSelectOptionList(): (HTMLElement & OdsSelectOption)[] {
+    return Array.from(this.el.querySelectorAll<OdsSelectOption & HTMLElement>('osds-select-option'));
   }
 
   private hasError(): boolean {
@@ -261,7 +294,6 @@ export class OsdsSelect implements OdsSelect<OdsStencilMethods<OdsSelectMethods>
 
   render() {
     const {
-      opened,
       ariaLabel,
       ariaLabelledby,
       disabled,
@@ -272,32 +304,42 @@ export class OsdsSelect implements OdsSelect<OdsStencilMethods<OdsSelectMethods>
 
     return (
       <Host {...{
-        class: `${disabled ? 'disabled' : ''}${opened ? ' opened' : ''}${this.hasError() ? ' ods-error' : ''}`,
+        class: `${disabled ? 'disabled' : ''}${this.opened ? ' opened' : ''}${this.hasError() ? ' ods-error' : ''}`,
         ariaLabel,
         'aria-labelledby': ariaLabelledby,
         flex,
         onFocus: this.onFocus.bind(this),
         onBlur: this.onBlur.bind(this),
         onClick: this.handleSelectClick.bind(this),
+        onKeyDown: this.handleKeyDown.bind(this),
         tabindex: this.disabled ? -1 : this.tabindex,
+        ref: (el?: HTMLElement | null) => {
+          this.anchor = el as HTMLElement;
+          this.syncReferences();
+        },
       }}
       >
         <div {...{
-          class: `select-trigger${opened ? ' opened' : ''}${this.hasError() ? ' error' : ''}`,
+          class: `select-trigger${this.opened ? ' opened' : ''}${this.hasError() ? ' error' : ''}`,
         }}>
           <div class={'label'}>
             { (!value) ?
-            <slot name={'placeholder'}>&nbsp;</slot>
-              : this.selectedOptionLabel }
+              <slot name={'placeholder'}>&nbsp;</slot>
+              : this.selectedOptionLabel
+            }
           </div>
           <osds-icon size={OdsIconSize.sm} color={color} name={OdsIconName.CHEVRON_DOWN}></osds-icon>
         </div>
-
-        <div {...{
-          class: `overlay${opened ? ' opened' : ''}${this.hasError() ? ' error' : ''}`,
-        }}>
-          <slot></slot>
-        </div>
+        <ocdk-surface
+          class="overlay"
+          ref={(el: HTMLElement) => {
+            if (ocdkIsSurface(el)) {
+              this.surface = el as OcdkSurface;
+              this.syncReferences();
+            }
+          }}>
+          <slot onSlotchange={() => this.handleSlotChange()}></slot>
+        </ocdk-surface>
       </Host>
     );
   }

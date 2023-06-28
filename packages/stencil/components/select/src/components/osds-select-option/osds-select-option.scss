@@ -16,13 +16,19 @@
     display: flex;
   }
 
-  .option>.truncated {
+  .option > .truncated {
     min-width: 0;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     word-break: break-all;
   }
+}
+
+:host(:focus-visible) {
+  outline-style: dotted;
+  outline-width: var(--ods-size-inset-02);
+  outline-offset: var(--ods-size-inset-02);
 }
 
 // apply the theme template for the component

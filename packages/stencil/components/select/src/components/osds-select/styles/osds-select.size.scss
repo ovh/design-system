@@ -21,7 +21,7 @@
     }
 
     @include osds-select-on-overlay-element() {
-      border-width: 0 ods-get-size-property($sizes, border-width) ods-get-size-property($sizes, border-width) ods-get-size-property($sizes, border-width);
+      border-width: ods-get-size-property($sizes, border-width) ods-get-size-property($sizes, border-width) ods-get-size-property($sizes, border-width) ods-get-size-property($sizes, border-width);
       top: ods-get-size-property($sizes, height);
       width: calc(100% - var(--ods-size-inline-02));
     }

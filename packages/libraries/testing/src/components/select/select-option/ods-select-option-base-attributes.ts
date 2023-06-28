@@ -5,4 +5,5 @@ import { OdsSelectOptionAttributes } from '@ovhcloud/ods-core';
  */
 export const odsSelectOptionBaseAttributes: OdsSelectOptionAttributes = {
   value: '',
+  selected: false,
 };

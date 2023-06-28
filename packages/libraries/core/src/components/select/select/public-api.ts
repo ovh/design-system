@@ -1,5 +1,6 @@
 export * from './ods-select';
 export * from './ods-select-attributes';
+export * from './ods-select-behavior';
 export * from './ods-select-controller';
 export * from './ods-select-create-default-ods-validity-state';
 export * from './ods-select-default-attributes';

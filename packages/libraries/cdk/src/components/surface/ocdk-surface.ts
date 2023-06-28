@@ -248,6 +248,15 @@ export class OcdkSurface extends HTMLElement implements OcdkSurfaceBehaviour {
     this.controller.setOriginCorner(originCorner);
   }
 
+  /**
+   * Check if a click is outside of the surface
+   * @param event - event reference
+   */
+  isClickOutsideSurface(event: Event): boolean {
+    const srcElement = event.composedPath()[0];
+    return this.anchorElement?.contains(event.target as Node) || this.anchorElement?.shadowRoot?.contains(srcElement as Node) || false;
+  }
+
   private getDefaultAdapter() {
     const adapter: OcdkSurfaceAdapter = {
       addClass: (className) => this.classList.add(className),

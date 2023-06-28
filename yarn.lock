@@ -5470,15 +5470,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-core@npm:^13.0.1":
-  version: 13.0.1
-  resolution: "@ovhcloud/ods-core@npm:13.0.1"
-  peerDependencies:
-    "@ovhcloud/ods-theming": ">=2"
-  checksum: 9a95d26fddde8659bec98b01c79e26df4d18f714a1077eb6d8a2ea91498fab08fc76b1da8ef0759f0590465f30bf1818bd9c99c958a2b142570bd43cdadea92e
-  languageName: node
-  linkType: hard
-
 "@ovhcloud/ods-design@^14.0.0, @ovhcloud/ods-design@workspace:packages/design":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-design@workspace:packages/design"
@@ -6834,8 +6825,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-testing@workspace:packages/stencil/libraries/stencil-testing"
   dependencies:
-    "@ovhcloud/ods-core": ^13.0.1
-    "@ovhcloud/ods-testing": ^13.0.1
+    "@ovhcloud/ods-core": ^14.0.0
+    "@ovhcloud/ods-testing": ^14.0.0
     "@stencil/core": ~2.18.1
     typescript: 4.7.4
   peerDependencies:
@@ -7110,17 +7101,6 @@ __metadata:
     "@stencil/core": ">=2.6"
   languageName: unknown
   linkType: soft
-
-"@ovhcloud/ods-testing@npm:^13.0.1":
-  version: 13.0.1
-  resolution: "@ovhcloud/ods-testing@npm:13.0.1"
-  peerDependencies:
-    "@ovhcloud/ods-core": ">=2"
-    "@ovhcloud/ods-theming": ">=2"
-    "@stencil/core": ">=2.6"
-  checksum: d72833273dbdea04254e44cf31f830334eed4466d045d2c2ab61cfbe36076d5a602d19b1ea6fb8e050e1d6e5a8d1ea8ada525a9f09bab2c86188df53294c75df
-  languageName: node
-  linkType: hard
 
 "@ovhcloud/ods-theme-blue-jeans@^14.0.0, @ovhcloud/ods-theme-blue-jeans@workspace:packages/themes/blue-jeans":
   version: 0.0.0-use.local

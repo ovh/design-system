@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
+
+
+# [14.0.0](https://ovhcloud.design/v14.0.0/?path=/docs/design-system-changelog--page) (2023-06-28)
+[compare](https://github.com/ovh/design-system/compare/v13.0.1...v14.0.0)
+
+### Features
+
+* **icon:** add hover style ([#77](https://github.com/ovh/design-system/issues/77)) ([d4b221f](https://github.com/ovh/design-system/commit/d4b221ff82a67b63b2eba89022bb9dff9b0d12ec))
+* **input-v1:** upgrading component ([#71](https://github.com/ovh/design-system/issues/71)) ([5609893](https://github.com/ovh/design-system/commit/56098935d29be39dbc9a763fb0b92396544f4d44))
+* **popover:** add new component popover ([#14](https://github.com/ovh/design-system/issues/14)) ([507155c](https://github.com/ovh/design-system/commit/507155c4961c69adc5f98fd7c7c85518c483893f))
+* add progress bar component ([#62](https://github.com/ovh/design-system/issues/62)) ([9d35e79](https://github.com/ovh/design-system/commit/9d35e79edf6a9680775d20ab8e44884ff7d8d381))
+
+
+
 [Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
 
 

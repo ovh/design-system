@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-stencil-popover-vue",
-  "version": "12.1.0",
+  "version": "14.0.0",
   "private": true,
   "description": "Vue specific wrapper for ods",
   "keywords": [],
@@ -20,7 +20,7 @@
     "dist/"
   ],
   "dependencies": {
-    "@ovhcloud/ods-stencil-popover": "^13.0.1"
+    "@ovhcloud/ods-stencil-popover": "^14.0.0"
   },
   "peerDependencies": {
     "vue": ">=3"

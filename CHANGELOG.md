@@ -8,6 +8,35 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
 
 
+# [14.0.0](https://ovhcloud.design/v14.0.0/?path=/docs/design-system-changelog--page) (2023-06-28)
+[compare](https://github.com/ovh/design-system/compare/v13.0.1...v14.0.0)
+
+### Bug Fixes
+
+* **checkbox-button:** add aspect ratio to 1 ([#79](https://github.com/ovh/design-system/issues/79)) ([cc72649](https://github.com/ovh/design-system/commit/cc726492ed0180456c39207ad4bcd31f72094908))
+* **generator:** generate good version ([27207e6](https://github.com/ovh/design-system/commit/27207e681649827b3e69500b1473e266aad6f3d8))
+* **link:** add missing color for active state ([#81](https://github.com/ovh/design-system/issues/81)) ([0ed10dc](https://github.com/ovh/design-system/commit/0ed10dc8a3d5b7875bacfe20bacd9d0333b6d6e6))
+* **link:** fix link host container size to match its content ([#82](https://github.com/ovh/design-system/issues/82)) ([d9b3900](https://github.com/ovh/design-system/commit/d9b390035b07f1b88d83bb0d007398b469f8ecc1))
+* **popover:** change toBeFalse to toBe false in testing ([#86](https://github.com/ovh/design-system/issues/86)) ([b2e74b7](https://github.com/ovh/design-system/commit/b2e74b7648b7b6e0ecae89493c0c4832962f6abe))
+* **textarea:** remove 100% width when flex is removed ([#83](https://github.com/ovh/design-system/issues/83)) ([5a4563e](https://github.com/ovh/design-system/commit/5a4563ebf5f4df54dfab4d9c88ae3801c84e82bd))
+* **tile:** add hoverable attribute to avoid double focus in radio when interactive ([#80](https://github.com/ovh/design-system/issues/80)) ([9429178](https://github.com/ovh/design-system/commit/942917827474b7a0524ea4d26fbaade95baee55f))
+* force @types/ws version ([#76](https://github.com/ovh/design-system/issues/76)) ([30ad527](https://github.com/ovh/design-system/commit/30ad527cdae4718e08cd11bc82a5ac79646a81f0))
+
+
+### Features
+
+* **icon:** add hover style ([#77](https://github.com/ovh/design-system/issues/77)) ([d4b221f](https://github.com/ovh/design-system/commit/d4b221ff82a67b63b2eba89022bb9dff9b0d12ec))
+* **input-v1:** upgrading component ([#71](https://github.com/ovh/design-system/issues/71)) ([5609893](https://github.com/ovh/design-system/commit/56098935d29be39dbc9a763fb0b92396544f4d44))
+* **popover:** add new component popover ([#14](https://github.com/ovh/design-system/issues/14)) ([507155c](https://github.com/ovh/design-system/commit/507155c4961c69adc5f98fd7c7c85518c483893f))
+* add progress bar component ([#62](https://github.com/ovh/design-system/issues/62)) ([9d35e79](https://github.com/ovh/design-system/commit/9d35e79edf6a9680775d20ab8e44884ff7d8d381))
+
+
+
+
+
+[Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
+
+
 # [13.0.1](https://ovhcloud.design/v13.0.1/?path=/docs/design-system-changelog--page) (2023-06-09)
 [compare](https://github.com/ovh/design-system/compare/v13.0.0...v13.0.1)
 

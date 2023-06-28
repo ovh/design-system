@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
+
+
+# [14.0.0](https://ovhcloud.design/v14.0.0/?path=/docs/design-system-changelog--page) (2023-06-28)
+[compare](https://github.com/ovh/design-system/compare/v13.0.1...v14.0.0)
+
+### Features
+
+* **input-v1:** upgrading component ([#71](https://github.com/ovh/design-system/issues/71)) ([5609893](https://github.com/ovh/design-system/commit/56098935d29be39dbc9a763fb0b92396544f4d44))
+
+
+
 [Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
 
 

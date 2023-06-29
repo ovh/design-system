@@ -1,8 +1,9 @@
-import { Component, Prop, h, Host, Watch, Element, Listen } from '@stencil/core';
+import { Component, Prop, h, Host, Watch, Element, Listen, State } from '@stencil/core';
 import {
   OdsMenu,
   OdsMenuController,
   OdsMenuEvents,
+  OdsMenuItem,
   OdsMenuMethods,
   odsMenuDefaultAttributes,
 } from '@ovhcloud/ods-core';
@@ -27,6 +28,8 @@ export class OsdsMenu implements OdsMenu<OdsStencilMethods<OdsMenuMethods>, OdsS
 
   @Prop({ reflect: true }) public disabled: boolean | undefined = odsMenuDefaultAttributes.disabled;
 
+  @State() tabindex = 0;
+
   @Watch('disabled')
   propagateDisabledToChild(disabled: boolean | undefined): void {
     this.controller.propagateDisabledToChild(disabled);
@@ -37,20 +40,17 @@ export class OsdsMenu implements OdsMenu<OdsStencilMethods<OdsMenuMethods>, OdsS
     this.controller.checkForClickOutside(event);
   }
 
+  handleKeyDown(event: KeyboardEvent): void {
+    event.stopPropagation();
+    this.controller.handleKeyDown(event);
+  }
+
   componentDidRender() {
     this.title = this.el.querySelector('[slot=menu-title]');
   }
 
   handleTriggerClick() {
     this.controller.handleTriggerClick();
-  }
-
-  handleTriggerKey(event: KeyboardEvent) {
-    this.controller.handleTriggerKey(event);
-  }
-
-  handleSurfaceKey(event: KeyboardEvent) {
-    this.controller.handleSurfaceKey(event);
   }
 
   syncReferences() {
@@ -61,8 +61,17 @@ export class OsdsMenu implements OdsMenu<OdsStencilMethods<OdsMenuMethods>, OdsS
     this.controller.afterInit();
   }
 
-  componentDidLoad() {
+  async componentDidLoad() {
+    this.setMenuItemsButtons();
     this.afterInit();
+  }
+
+  setMenuItemsButtons() {
+    this.controller.menuItems = this.getMenuItemButtonList();
+  }
+
+  getMenuItemButtonList(): (HTMLElement & OdsMenuItem)[] {
+    return Array.from(this.el.querySelectorAll<OdsMenuItem & HTMLElement>('osds-menu-item > osds-button'));
   }
 
   render() {
@@ -70,7 +79,7 @@ export class OsdsMenu implements OdsMenu<OdsStencilMethods<OdsMenuMethods>, OdsS
       <Host>
         <div class="trigger"
              onClick={this.handleTriggerClick.bind(this)}
-             onKeyUp={this.handleTriggerKey.bind(this)}
+             onKeyDown={this.handleKeyDown.bind(this)}
              ref={(el?: HTMLElement | null) => {
           this.anchor = el as HTMLDivElement;
           this.syncReferences()
@@ -78,7 +87,7 @@ export class OsdsMenu implements OdsMenu<OdsStencilMethods<OdsMenuMethods>, OdsS
             <slot name={'menu-title'} />
         </div>
         <ocdk-surface
-          onKeyUp={this.handleSurfaceKey.bind(this)}
+          onKeyDown={this.handleKeyDown.bind(this)}
           ref={(el: HTMLElement) => {
           if (ocdkIsSurface(el)) {
             this.surface = el as OcdkSurface;

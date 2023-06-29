@@ -78,7 +78,9 @@ export class OdsSelectController extends OdsComponentController<OdsSelect> {
   }
 
   handlerKeyDown(event: KeyboardEvent): void {
+    console.log('selectOptions', this.selectOptions);
     const selectedSelectOptionIndex = this.selectOptions.findIndex((select) => select.getAttribute('selected') !== null || document.activeElement === select);
+    console.log('selectedSelectOptionIndex', selectedSelectOptionIndex);
     switch (event.code) {
       case 'Escape': {
         this.selectOptions.forEach(s => s.removeAttribute('selected'))
@@ -88,7 +90,7 @@ export class OdsSelectController extends OdsComponentController<OdsSelect> {
       case 'ArrowUp':
       case 'ArrowDown':
       case 'Tab':
-        return this.handlerKeyArrow(event, selectedSelectOptionIndex);    
+        return this.handlerKeyArrow(event, selectedSelectOptionIndex);
       case 'Enter':
       case 'NumpadEnter':
         return this.handlerKeyEnter(this.selectOptions[selectedSelectOptionIndex]);

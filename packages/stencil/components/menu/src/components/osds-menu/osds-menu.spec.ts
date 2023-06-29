@@ -76,6 +76,15 @@ describe('spec:osds-menu', () => {
     });
   });
 
+  describe('Life cycle', () => {
+    it('should call setSelectOptions', async () => {
+      await setup({ attributes: { } });
+      const spySetMenuItemsButtons = jest.spyOn(instance, 'setMenuItemsButtons');
+      await instance.componentDidLoad();
+      expect(spySetMenuItemsButtons).toHaveBeenCalled();
+    });
+  })
+
   describe('cdk not initialized', () => {
     it('should not have yet the ref to surface', async () => {
       ocdkIsSurface.mockImplementation(() => false);
@@ -110,20 +119,12 @@ describe('spec:osds-menu', () => {
       expect(controller.handleTriggerClick).toHaveBeenCalledWith();
     });
 
-    it('should call handleTriggerKey of controller', async () => {
+    it('should call handlerKeyDown of controller', async () => {
       await setup({});
       const key = new KeyboardEvent("keyup", { key : "Enter" });
-      instance.handleTriggerKey(key);
-      expect(controller.handleTriggerKey).toHaveBeenCalledTimes(1);
-      expect(controller.handleTriggerKey).toHaveBeenCalledWith(key);
-    });
-
-    it('should call handleSurfaceKey of controller', async () => {
-      await setup({});
-      const key = new KeyboardEvent("keyup", { key : "ArrowUp" });
-      instance.handleSurfaceKey(key);
-      expect(controller.handleSurfaceKey).toHaveBeenCalledTimes(1);
-      expect(controller.handleSurfaceKey).toHaveBeenCalledWith(key);
+      instance.handleKeyDown(key);
+      expect(controller.handleKeyDown).toHaveBeenCalledTimes(1);
+      expect(controller.handleKeyDown).toHaveBeenCalledWith(key);
     });
   })
 

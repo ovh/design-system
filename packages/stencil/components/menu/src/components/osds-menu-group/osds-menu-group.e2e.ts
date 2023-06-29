@@ -9,7 +9,7 @@ import {
   OdsMenuGroupCreateAttributes
 } from '@ovhcloud/ods-testing';
 
-xdescribe('e2e:osds-menu-group', () => {
+describe('e2e:osds-menu-group', () => {
   let page: E2EPage;
   let el: E2EElement;
   let menuGroupSlot: E2EElement

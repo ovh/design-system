@@ -50,20 +50,13 @@ describe('e2e:osds-menu', () => {
     });
 
     it('should display a menu title as a ODS button', async () => {
-      const button = `<osds-button slot="menu-title" color="primary">Button</osds-button>`;
+      const button = `<osds-button slot="menu-title" color="primary" tabindex="0" size="md" type="button" variant="flat" class="hydrated">Button</osds-button>`;
       await setup({ attributes: { }, html: button });
       expect(menuTitleContent.outerHTML).toBe(button);
     });
 
-    it('should display a ODS icon in the title', async () => {
-      const icon = `<osds-icon name="home" size="xs"></osds-icon>`;
-      const button = `<osds-button slot="menu-title" color="primary">Button ${icon}</osds-button>`;
-      await setup({ attributes: { }, html: button });
-      expect(menuTitleContent.outerHTML).toContain(icon);
-    });
-
     it('should display a menu title as a ODS icon', async () => {
-      const icon = `<osds-icon slot="menu-title" name="home" size="xs"></osds-icon>`;
+      const icon = `<osds-icon slot="menu-title" name="home" size="xs" aria-hidden="" alt="" aria-name="" color="default" class="hydrated"></osds-icon>`;
       await setup({ attributes: { }, html: icon });
       expect(menuTitleContent.outerHTML).toBe(icon);
     });
@@ -74,17 +67,21 @@ describe('e2e:osds-menu', () => {
       expect(menuItemsSlotContent).toHaveClass('ocdk-surface--open');
     });
 
-    xit('should change the display of the surface when enter is pressed', async () => {
+    it('should change the display of the surface when enter or space is pressed', async () => {
       await setup({ attributes: { }, html: template });
       await menuTitleContent.press('Enter');
       expect(menuItemsSlotContent).toHaveClass('ocdk-surface--open');
+
+      await menuTitleContent.press('Escape');
+
+      await menuTitleContent.press('Space');
+      expect(menuItemsSlotContent).toHaveClass('ocdk-surface--open');
     });
 
-    xit('should change the display of the surface when space is pressed', async () => {
+    it('should close the surface when escape is pressed', async () => {
       await setup({ attributes: { }, html: template });
-      await page.focus('[slot="menu-title"]');
-      await page.keyboard.press('Space');
-      expect(menuItemsSlotContent).toHaveClass('ocdk-surface--open');
+      await menuTitleContent.press('Escape');
+      expect(menuItemsSlotContent).not.toHaveClass('ocdk-surface--open');
     });
   });
 

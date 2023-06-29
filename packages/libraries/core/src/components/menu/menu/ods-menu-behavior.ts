@@ -9,8 +9,6 @@ export interface OdsMenuBehavior {
 
   propagateDisabledToChild(disabled: boolean | undefined): void;
   handleTriggerClick(): void;
-  handleTriggerKey(event: KeyboardEvent): void;
-  handleSurfaceKey(event: KeyboardEvent): void;
   checkForClickOutside(event:any): void;
   syncReferences(): void;
   afterInit(): void;

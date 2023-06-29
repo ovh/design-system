@@ -24,6 +24,7 @@
   "OdsInput",
   "OdsLink",
   "OdsLocationTile",
+  "OdsMenu",
   "OdsMessage",
   "OdsPagination",
   "OdsPopover",

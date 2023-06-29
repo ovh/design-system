@@ -9,7 +9,7 @@ import {
   OdsMenuItemCreateAttributes
 } from '@ovhcloud/ods-testing';
 
-xdescribe('e2e:osds-menu-item', () => {
+describe('e2e:osds-menu-item', () => {
   let page: E2EPage;
   let el: E2EElement;
   let menuItemSlot: E2EElement
@@ -39,7 +39,7 @@ xdescribe('e2e:osds-menu-item', () => {
     });
 
     it('should display a menu item as a ODS button', async () => {
-      const button = `<osds-button color="primary">Button</osds-button>`;
+      const button = `<osds-button color="primary" tabindex="0" size="md" type="button" variant="flat" class="hydrated">Button</osds-button>`;
       await setup({ attributes: { }, html: button });
       expect(el.innerHTML).toBe(button);
     });

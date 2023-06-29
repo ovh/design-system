@@ -18,11 +18,14 @@ export class OdsMenuMock implements OdsMenu<OdsMenuMethods, OdsMenuEvents> {
   surface: OcdkSurface | undefined = undefined;
   disabled = false;
 
+  odsFocus!: void;
+
   afterInit = jest.fn();
   propagateDisabledToChild = jest.fn();
   handleTriggerClick = jest.fn();
   handleTriggerKey = jest.fn();
   handleSurfaceKey = jest.fn();
   checkForClickOutside = jest.fn();
+  setFocus = jest.fn();
   syncReferences = jest.fn();
 }

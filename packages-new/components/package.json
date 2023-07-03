@@ -1,0 +1,11 @@
+{
+  "name": "@ovhcloud/ods-components",
+  "version": "14.0.1",
+  "description": "ODS Components",
+  "author": "OVH SAS",
+  "license": "Apache-2.0",
+  "dependencies": {},
+  "devDependencies": {
+    "@ovhcloud/ods-dev": "^14.0.1"
+  }
+}

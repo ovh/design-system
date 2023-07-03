@@ -1,29 +1,15 @@
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-import { iframe } from '../../../.storybook/iframe';
-
-
-import { OdsThemeColorIntent, OdsThemeColorHue, OdsThemeColorHueList, OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
-import { defineCustomElements } from '@ovhcloud/ods-stencil-text/loader';
-import {
-  OdsTextSize,
-  OdsTextSizeList,
-  OdsTextLevel,
-  OdsTextLevelList,
-  odsTextDefaultAttributes,
-  olesIpsum,
-  OlesIpsumGeneration,
-} from '@ovhcloud/ods-core';
-import {
-  createComponentTable,
-  extractArgTypes,
-  extractStoryParams,
-  getTagAttributes,
-} from '../../../core/componentHTMLUtils';
-
-import changelog from '@ovhcloud/ods-stencil-text/CHANGELOG.md';
+import { olesIpsum, OlesIpsumGeneration } from '@ovhcloud/ods-common-core';
+import { OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
+import { createComponentTable, extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
+import { defineCustomElements } from '@ovhcloud/ods-component-text/loader'
+import { ODS_TEXT_LEVELS, ODS_TEXT_SIZES } from '@ovhcloud/ods-component-text';
+import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-component-text/src/components/osds-text/constants/default-attributes';
+// @ts-ignore
+import changelog from '@ovhcloud/ods-component-text/CHANGELOG.md';
+// @ts-ignore
 import page from './text.web-component.stories.page.mdx';
-import {  } from '@ovhcloud/ods-core/src';
 
 defineCustomElements();
 
@@ -31,20 +17,20 @@ defineCustomElements();
 const storyParams = {
   color: {
     category: 'General',
-    defaultValue: odsTextDefaultAttributes.color,
+    defaultValue: DEFAULT_ATTRIBUTE.color,
     options: OdsThemeColorIntentList,
     control: { type: 'select' },
   },
   size: {
     category: 'General',
-    defaultValue: odsTextDefaultAttributes.size,
-    options: OdsTextSizeList,
+    defaultValue: DEFAULT_ATTRIBUTE.size,
+    options: ODS_TEXT_SIZES,
     control: { type: 'select' },
   },
   level: {
     category: 'General',
-    defaultValue: odsTextDefaultAttributes.level,
-    options: OdsTextLevelList,
+    defaultValue: DEFAULT_ATTRIBUTE.level,
+    options: ODS_TEXT_LEVELS,
     control: { type: 'select' },
   },
   textContent: {
@@ -53,11 +39,11 @@ const storyParams = {
   },
   contrasted: {
     category: 'Misc',
-    defaultValue: odsTextDefaultAttributes.contrasted
+    defaultValue: DEFAULT_ATTRIBUTE.contrasted
   },
   breakSpaces: {
     category: 'Misc',
-    defaultValue: odsTextDefaultAttributes.breakSpaces
+    defaultValue: DEFAULT_ATTRIBUTE.breakSpaces
   },
 };
 
@@ -65,7 +51,6 @@ export default {
   title: 'UI Components/Text [quark]/Web Component',
   parameters: {
     notes: {
-      API: iframe('stencil-components-text/modules/index.html'),
       changelog,
     },
     docs: { page },
@@ -80,6 +65,7 @@ const TemplateDefault = (args:any) => html`
   </osds-text>
 `;
 export const Default = TemplateDefault.bind({});
+// @ts-ignore
 Default.args = {
   ...extractStoryParams(storyParams),
 };
@@ -113,14 +99,14 @@ const TemplateAll = () => html`
 <h1>Sizes & Levels</h1>
 ${unsafeHTML(createComponentTable(
   defaultTag,
-  { size: OdsTextSizeList },
-  { level: OdsTextLevelList },
+  { size: ODS_TEXT_SIZES },
+  { level: ODS_TEXT_LEVELS },
   defaultContent
 ))}
 <h1>Levels & Colors</h1>
 ${unsafeHTML(createComponentTable(
   defaultTag,
-  { level: OdsTextLevelList },
+  { level: ODS_TEXT_LEVELS },
   { color: OdsThemeColorIntentList },
   defaultContent
 ))}
@@ -129,14 +115,15 @@ ${unsafeHTML(createComponentTable(
   <h1>Size & Contrasted Levels</h1>
   ${unsafeHTML(createComponentTable(
     defaultTag,
-    { size: OdsTextSizeList },
-    { level: OdsTextLevelList },
+    { size: ODS_TEXT_SIZES },
+    { level: ODS_TEXT_LEVELS },
     defaultContent,
     { contrasted: true }
   ))}
 </div>
 `;
 export const All = TemplateAll.bind({});
+// @ts-ignore
 All.parameters = {
   controls: { hideNoControlsWarning: true },
   options: { showPanel: false }

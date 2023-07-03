@@ -1,0 +1,12 @@
+{
+  "name": "@ovhcloud/ods-dev",
+  "version": "14.1.1",
+  "private": true,
+  "description": "ODS common dev dependencies",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "cpy-cli": "4.2.0",
+    "rimraf": "^3.0.2",
+    "typescript": "4.7.4"
+  }
+}

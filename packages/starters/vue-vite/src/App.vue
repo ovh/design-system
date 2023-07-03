@@ -6,14 +6,15 @@ import odsLogo from './assets/ods.svg'
 import viteLogo from './assets/vite.svg'
 import vueLogo from './assets/vue.svg'
 
-import Demo from './demo/Demo.vue';
+// for each component's type you use from ODS, you will need to import the core or theming:
+import { Ods, odsSetup } from '@ovhcloud/ods-core'
+import { OdsThemeColorHue, OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 
 // for each react component you use from `ODS`, use this import:
-import { OsdsText } from '@ovhcloud/ods-stencil/components/vue';
+import { OsdsText } from '@ovhcloud/ods-component-text-vue';
+import { ODS_TEXT_SIZE } from '@ovhcloud/ods-component-text';
 
-// for each component's type you use from ODS, you will need to import the core or theming:
-import { OdsTextSize, odsSetup, Ods } from '@ovhcloud/ods-core';
-import { OdsThemeColorHue, OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import Demo from './demo/Demo.vue';
 
 // you can directly import the generated ods theme here, or through the application css (app.css)
 import '@ovhcloud/ods-theme-blue-jeans/index.css';
@@ -43,13 +44,13 @@ Ods.instance().assetPath('flags/flags-4x3/');
     <h1 class="ods-heading-800">ODS + Vite + Vue</h1>
     <div class="ods-caption-200">
       <p>
-        <OsdsText :color="OdsThemeColorIntent.info" :size="OdsTextSize._100">
+        <OsdsText :color="OdsThemeColorIntent.info" :size="ODS_TEXT_SIZE._100">
           Edit <code>src/App.tsx</code> and save to test HMR
         </OsdsText>
       </p>
     </div>
     <p>
-      <OsdsText :color="OdsThemeColorIntent.default" :size="OdsTextSize._200" :hue="OdsThemeColorHue._600">
+      <OsdsText :color="OdsThemeColorIntent.default" :size="ODS_TEXT_SIZE._200" :hue="OdsThemeColorHue._600">
         Click on the ODS, Vite or React logos to learn more
       </OsdsText>
     </p>

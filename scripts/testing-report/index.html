@@ -127,8 +127,8 @@
     {name: 'osds-switch', id: 'switch'},
     {name: 'osds-switch-item', id: 'switch-item'},
     {name: 'osds-tabs', id: 'tabs'},
-    {name: 'osds-text', id: 'text'},
-    {name: 'osds-textarea', id: 'textarea'},
+    {name: 'osds-text', id: 'text', newArch: true},
+    {name: 'osds-textarea', id: 'textarea', newArch: true},
     {name: 'osds-tile', id: 'tile'},
     {name: 'osds-toggle', id: 'toggle'},
     {name: 'osds-tooltip', id: 'tooltip'},
@@ -138,14 +138,14 @@
 
             <a class="mdc-list-item__text">${componentDef.name}</a>
 
-            <a class="mdc-button mdc-button--raised" href="packages/stencil/components/${componentDef.id}/screenshot/compare.html">
+            <a class="mdc-button mdc-button--raised" href="${componentDef.newArch ? 'packages-new' : 'packages/stencil'}/components/${componentDef.id}/screenshot/compare.html">
               <span class="mdc-button__ripple"></span>
               <i class="material-icons mdc-button__icon" aria-hidden="true">screenshot</i>
               <span class="mdc-button__label">screenshots</span>
             </a>
 
             <a class="mdc-button mdc-button--raised"
-                    href="packages/stencil/components/${componentDef.id}/coverage/lcov-report/index.html">
+                    href="${componentDef.newArch ? 'packages-new' : 'packages/stencil'}/components/${componentDef.id}/coverage/lcov-report/index.html">
               <span class="mdc-button__ripple"></span>
               <i class="material-icons mdc-button__icon" aria-hidden="true">grading</i>
               <span class="mdc-button__label">coverage</span>

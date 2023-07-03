@@ -10,12 +10,12 @@ import {
   OdsIconName,
   OdsButtonSize,
   OdsButtonVariant,
-  OdsTextSize,
   OdsPaginationPageList,
   OdsSelectOptionClickEventDetail,
   odsPaginationPerPageMin,
   odsPaginationMinPerPageOptions,
 } from '@ovhcloud/ods-core';
+import { ODS_TEXT_SIZE } from '@ovhcloud/ods-component-text';
 import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libraries/stencil-core';
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 import {
@@ -183,13 +183,13 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
     return (
       <li class="arrows">
         <osds-tooltip>
-          { isLeft ? 
+          { isLeft ?
             this.labelTooltipPrevious && <osds-tooltip-content slot="tooltip-content">
               { this.labelTooltipPrevious }
-            </osds-tooltip-content> 
-            : this.labelTooltipNext && <osds-tooltip-content slot="tooltip-content">
-              { this.labelTooltipNext }
             </osds-tooltip-content>
+            : this.labelTooltipNext && <osds-tooltip-content slot="tooltip-content">
+            { this.labelTooltipNext }
+          </osds-tooltip-content>
           }
           <osds-button
             variant={OdsButtonVariant.ghost}
@@ -231,7 +231,7 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
                      variant={OdsButtonVariant.ghost}>
           <osds-text class="ellipsis"
                      color={OdsThemeColorIntent.primary}
-                     size={OdsTextSize._500}>
+                     size={ODS_TEXT_SIZE._500}>
             &#8230;
           </osds-text>
         </osds-button>
@@ -267,7 +267,7 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
               </>
             }
             <osds-text color={OdsThemeColorIntent.primary}
-                       size={OdsTextSize._500}>
+                       size={ODS_TEXT_SIZE._500}>
               <slot name="before-total-items"></slot>
               {this.totalItems}
               <slot name="after-total-items"></slot>

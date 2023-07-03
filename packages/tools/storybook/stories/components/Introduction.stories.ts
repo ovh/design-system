@@ -1,9 +1,9 @@
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 
-import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { OdsThemeColorIntent, OdsThemeTypographyLevel, OdsThemeTypographySize } from '@ovhcloud/ods-theming';
 import { createTag } from '../../core/componentHTMLUtils';
-import { ODS_COUNTRY_ISO_CODE, OdsCheckboxButtonSize, OdsDividerSize, OdsIconName, OdsRadioButtonSize, OdsTextLevel, OdsTextSize, olesIpsum, OlesIpsumGeneration } from '@ovhcloud/ods-core';
+import { ODS_COUNTRY_ISO_CODE, OdsCheckboxButtonSize, OdsDividerSize, OdsIconName, OdsRadioButtonSize, olesIpsum, OlesIpsumGeneration } from '@ovhcloud/ods-core';
 
 export default {
   title: 'UI Components/Introduction',
@@ -39,8 +39,8 @@ const uiComponents = {
       url: '/?path=/story/ui-components-text-quark-web-component--default',
       attributes: {
         color: OdsThemeColorIntent.text,
-        level: OdsTextLevel.heading,
-        size: OdsTextSize._700,
+        level: OdsThemeTypographyLevel.heading,
+        size: OdsThemeTypographySize._700,
       },
       slots: {
         DEFAULT: `Text`,

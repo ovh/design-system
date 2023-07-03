@@ -1,0 +1,34 @@
+import { OdsThemeColorIntent, OdsThemeColorHue } from '@ovhcloud/ods-theming';
+import type { ODS_TEXT_LEVEL } from '../constants/text-level';
+import type { ODS_TEXT_SIZE } from '../constants/text-size';
+
+interface OdsTextAttribute {
+  /**
+   * If text handles break spaces or not
+   */
+  breakSpaces?: boolean
+  /**
+   * Text contrasted theme
+   */
+  color?: OdsThemeColorIntent
+  /**
+   * Text design as contrasted version
+   */
+  contrasted?: boolean
+  /**
+   * Text level
+   */
+  level?: ODS_TEXT_LEVEL
+  /**
+   * Text size
+   */
+  size?: ODS_TEXT_SIZE
+  /**
+   * Text hue
+   */
+  hue?: OdsThemeColorHue
+}
+
+export {
+  OdsTextAttribute,
+};

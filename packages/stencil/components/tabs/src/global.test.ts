@@ -7,5 +7,3 @@ import './global';
 
 import '@ovhcloud/ods-stencil/components/link';
 import '@ovhcloud/ods-stencil/components/icon';
-import '@ovhcloud/ods-stencil/components/text';
-

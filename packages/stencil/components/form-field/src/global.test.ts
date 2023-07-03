@@ -9,11 +9,11 @@ import './global';
 import '@ovhcloud/ods-stencil/components/input';
 import '@ovhcloud/ods-stencil/components/icon';
 import '@ovhcloud/ods-stencil/components/spinner';
-import '@ovhcloud/ods-stencil/components/textarea';
+import '@ovhcloud/ods-component-textarea';
 
 // Top right slot dependencies
 import '@ovhcloud/ods-stencil/components/link';
 import '@ovhcloud/ods-stencil/components/tooltip';
 
 // Other dependencies
-import '@ovhcloud/ods-stencil/components/text';
+import '@ovhcloud/ods-component-text';

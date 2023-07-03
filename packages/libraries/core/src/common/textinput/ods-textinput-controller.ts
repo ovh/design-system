@@ -1,30 +1,31 @@
-import { OdsComponentController } from '../../components/ods-component-controller';
-import { OdsTextArea } from '../../components/textarea/public-api';
-import { OdsTextInput } from './ods-textinput-controller-type';
+// import { OdsComponentController } from '../../components/ods-component-controller';
+// import { OdsTextArea } from '../../components/textarea/public-api';
+// import { OdsTextInput } from './ods-textinput-controller-type';
 
-// TODO : Replace `(this.component as OdsTextArea)` 
-//        with `this.component` when osds-input ready
+// Not used anymore after textarea move to new architecture
+// Kept only for historic purpose until removed
 
-export class OdsTextInputController<T extends OdsTextInput> extends OdsComponentController<T> {
+export class OdsTextInputController {
+  private component: any;
 
-	constructor(component: T) {
-		super(component);
+	constructor(component: any) {
+    this.component = component
 	}
 
 	onFocus(): void {
-		(this.component as OdsTextArea).hasFocus = true;
-		(this.component as OdsTextArea).emitFocus();
+		this.component.hasFocus = true;
+		this.component.emitFocus();
 	}
 
 	onBlur(): void {
 		if (!this.component.disabled) {
-			(this.component as OdsTextArea).hasFocus = false;
-			(this.component as OdsTextArea).emitBlur();
+			this.component.hasFocus = false;
+			this.component.emitBlur();
 		}
 	}
 
 	setFocus(): void {
-		const el = (this.component as OdsTextArea).textInputEl;
+		const el = this.component.textInputEl;
 
 		if (el && !this.component.disabled) {
 			el.focus();

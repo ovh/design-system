@@ -41,8 +41,6 @@
     "src",
     "switch/src",
     "tabs/src",
-    "text/src",
-    "textarea/src",
     "tile/src",
     "toggle/src",
     "tooltip/src",

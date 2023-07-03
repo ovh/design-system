@@ -1,15 +1,11 @@
-import {
-  extractArgTypes,
-  extractStoryParams,
-  getTagAttributes
-} from '../../../core/componentHTMLUtils';
-
-import { OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
-import changelog from '@ovhcloud/ods-stencil-textarea/CHANGELOG.md';
-import { defineCustomElements } from '@ovhcloud/ods-stencil-textarea/loader';
 import { html } from 'lit-html';
-import { iframe } from '../../../.storybook/iframe';
-import { odsTextAreaDefaultAttributes } from '@ovhcloud/ods-core';
+import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
+import { OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
+import { defineCustomElements } from '@ovhcloud/ods-component-textarea/loader';
+import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-component-textarea/src/components/osds-textarea/constants/default-attributes';
+// @ts-ignore
+import changelog from '@ovhcloud/ods-component-textarea/CHANGELOG.md';
+// @ts-ignore
 import page from './textarea.web-component.stories.page.mdx';
 
 defineCustomElements();
@@ -18,7 +14,7 @@ defineCustomElements();
 const storyParams = {
   color: {
     category: 'General',
-    defaultValue: odsTextAreaDefaultAttributes.color,
+    defaultValue: DEFAULT_ATTRIBUTE.color,
     options: OdsThemeColorIntentList,
     control: { type: 'select' },
   },
@@ -28,19 +24,19 @@ const storyParams = {
   },
   value: {
     category: 'General',
-    defaultValue: odsTextAreaDefaultAttributes.value,
+    defaultValue: DEFAULT_ATTRIBUTE.value,
   },
-  flex: {
+  inline: {
     category: 'Misc',
-    defaultValue: odsTextAreaDefaultAttributes.flex,
+    defaultValue: DEFAULT_ATTRIBUTE.inline,
   },
   contrasted: {
     category: 'Misc',
-    defaultValue: odsTextAreaDefaultAttributes.contrasted
+    defaultValue: DEFAULT_ATTRIBUTE.contrasted
   },
   disabled: {
     category: 'Misc',
-    defaultValue: odsTextAreaDefaultAttributes.disabled,
+    defaultValue: DEFAULT_ATTRIBUTE.disabled,
   },
   name: {
     category: 'Misc',
@@ -52,20 +48,20 @@ const storyParams = {
   },
   error: {
     category: 'Misc',
-    defaultValue: odsTextAreaDefaultAttributes.error,
+    defaultValue: DEFAULT_ATTRIBUTE.error,
   },
   resizable: {
     category: 'Misc',
-    defaultValue: odsTextAreaDefaultAttributes.resizable,
+    defaultValue: DEFAULT_ATTRIBUTE.resizable,
   },
   cols: {
     category: 'Misc',
-    defaultValue: odsTextAreaDefaultAttributes.cols,
+    defaultValue: DEFAULT_ATTRIBUTE.cols,
     control: { type: 'number' }
   },
   rows: {
     category: 'Misc',
-    defaultValue: odsTextAreaDefaultAttributes.rows,
+    defaultValue: DEFAULT_ATTRIBUTE.rows,
     control: { type: 'number' }
   },
 };
@@ -74,7 +70,6 @@ export default {
   title: 'UI Components/TextArea [atom]/Web Component',
   parameters: {
     notes: {
-      API: iframe('/stencil-textarea/modules/index.html'),
       changelog,
     },
     docs: { page },
@@ -83,32 +78,12 @@ export default {
 };
 
 /* Default */
-const OsdsTextAreaDefault = (args: any) => html`
+const TemplateDefault = (args: any) => html`
   <osds-textarea ...=${getTagAttributes(args)}>
   </osds-textarea>
 `;
-const TemplateDefault = (args: any) => OsdsTextAreaDefault(args);
 export const Default = TemplateDefault.bind({});
+// @ts-ignore
 Default.args = {
   ...extractStoryParams(storyParams),
 };
-
-/* TextArea Validation */
-// const OsdsTextAreaValidation = (args) => html`
-//   <article id="example-1">
-//     <osds-textarea id="textarea"  ...=${getTagAttributes(args)}>
-//     </osds-textarea>
-//     <span class="error-msg forbidden-value">Forbidden value</span>
-//     <span class="error-msg value-missing">Value required please</span>
-//     <span class="error-msg step-mismatch">Please insert a value by step 2, starting from 1</span>
-//     <span class="error-msg valid">Not valid</span>
-//   </article>
-// `;
-// const TemplateValidation = (args) => OsdsTextAreaValidation(args);
-// export const Validation = TemplateValidation.bind({});
-// Validation.args = {
-//   ...extractStoryParams(storyParams),
-// };
-// Validation.play = TextAreaPlay;
-
-

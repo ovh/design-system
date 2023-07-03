@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "Apache-2.0",
   "dependencies": {
+    "@ovhcloud/ods-components": "^14.1.1",
     "@ovhcloud/ods-core": "^14.1.1",
     "@ovhcloud/ods-design": "^14.1.1",
     "@ovhcloud/ods-guide": "^14.1.1",

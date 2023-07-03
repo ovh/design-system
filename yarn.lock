@@ -5457,6 +5457,17 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-common-stencil@workspace:packages-new/common/stencil":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-common-stencil@workspace:packages-new/common/stencil"
+  dependencies:
+    "@ovhcloud/ods-common-testing": ^14.0.1
+    "@ovhcloud/ods-dev": ^14.0.1
+    "@ovhcloud/ods-theme-blue-jeans": ^14.0.1
+    "@stencil/core": ~2.18.1
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-common-testing@^14.0.1, @ovhcloud/ods-common-testing@workspace:packages-new/common/testing":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-common-testing@workspace:packages-new/common/testing"

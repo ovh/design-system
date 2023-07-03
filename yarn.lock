@@ -5448,7 +5448,16 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-common-testing@workspace:packages-new/common/testing":
+"@ovhcloud/ods-common-core@workspace:packages-new/common/core":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-common-core@workspace:packages-new/common/core"
+  dependencies:
+    "@ovhcloud/ods-common-testing": ^14.0.1
+    "@ovhcloud/ods-dev": ^14.0.1
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-common-testing@^14.0.1, @ovhcloud/ods-common-testing@workspace:packages-new/common/testing":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-common-testing@workspace:packages-new/common/testing"
   dependencies:

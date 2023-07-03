@@ -1,0 +1,14 @@
+{
+  "name": "@ovhcloud/ods-react-dev",
+  "version": "14.0.1",
+  "private": true,
+  "description": "ODS common React dev dependencies",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@ovhcloud/ods-dev": "^14.0.1",
+    "@types/react": "17.0.37",
+    "@types/react-dom": "17.0.11",
+    "react": "16.14.0",
+    "react-dom": "16.14.0"
+  }
+}

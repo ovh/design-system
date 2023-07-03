@@ -1,0 +1,32 @@
+{
+  "name": "@ovhcloud/ods-common-testing",
+  "version": "14.0.1",
+  "description": "ODS common testing helpers",
+  "author": "OVH SAS",
+  "license": "Apache-2.0",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "scripts": {
+    "ignore:rm": "git clean -Xdf",
+    "build:esm": "tsc -p tsconfig.esm.json",
+    "build:cjs": "tsc -p tsconfig.cjs.json",
+    "build": "npm run build:esm && npm run build:cjs",
+    "build:prod": "npm run build",
+    "watch": "tsc -w -p tsconfig.esm.json",
+    "generate:licence": "npx generate-license-file --input package.json --output THIRD-PARTY-LICENCES --overwrite",
+    "doc": "typedoc --plugin typedoc-plugin-markdown --hideBreadcrumbs true --hideInPageTOC true",
+    "doc:api": "typedoc --plugin none src/*",
+    "test:spec": "jest",
+    "test:spec:ci": "jest --ci"
+  },
+  "dependencies": {
+    "@jest/types": "~27.1.1",
+    "jest": "^27.5.1",
+    "jest-transform-stub": "^2.0.0",
+    "puppeteer": "^10.4.0",
+    "ts-jest": "~27.1.5"
+  },
+  "devDependencies": {
+    "@ovhcloud/ods-dev": "^14.0.1"
+  }
+}

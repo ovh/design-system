@@ -21,7 +21,9 @@
     "packages/stencil",
     "packages/starters/*",
     "packages/tools/*",
-    "packages/tools/generator/component"
+    "packages/tools/generator/component",
+    "packages-new/common/*",
+    "packages-new/sharedDependencies/*"
   ],
   "scripts": {
     "build": "lerna run build",

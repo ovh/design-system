@@ -1,7 +1,7 @@
 {
   "name": "@ovhcloud/ods-doc",
   "private": true,
-  "version": "13.0.1",
+  "version": "14.0.1",
   "description": "ODS Documentation",
   "author": "OVH SAS",
   "license": "Apache-2.0",

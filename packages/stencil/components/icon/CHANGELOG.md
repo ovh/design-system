@@ -6,6 +6,32 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
 
 
+# [14.0.1](https://ovhcloud.design/v14.0.1/?path=/docs/design-system-changelog--page) (2023-06-28)
+[compare](https://github.com/ovh/design-system/compare/v14.0.0...v14.0.1)
+
+**Note:** Version bump only for package @ovhcloud/ods-stencil-icon
+
+
+
+
+
+
+
+[Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
+
+
+# [14.0.0](https://ovhcloud.design/v14.0.0/?path=/docs/design-system-changelog--page) (2023-06-28)
+[compare](https://github.com/ovh/design-system/compare/v13.0.1...v14.0.0)
+
+### Features
+
+* **icon:** add hover style ([#77](https://github.com/ovh/design-system/issues/77)) ([d4b221f](https://github.com/ovh/design-system/commit/d4b221ff82a67b63b2eba89022bb9dff9b0d12ec))
+
+
+
+[Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
+
+
 # [13.0.1](https://ovhcloud.design/v13.0.1/?path=/docs/design-system-changelog--page) (2023-06-09)
 [compare](https://github.com/ovh/design-system/compare/v13.0.0...v13.0.1)
 

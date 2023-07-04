@@ -172,36 +172,43 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
 
   renderArrows(direction: 'left' | 'right') {
     const { disabled } = this;
-    const arrowIcon = direction === 'left' ? OdsIconName.CHEVRON_LEFT : OdsIconName.CHEVRON_RIGHT;
+    const isLeft = direction === 'left';
+    const arrowIcon = isLeft ? OdsIconName.CHEVRON_LEFT : OdsIconName.CHEVRON_RIGHT;
 
     return (
       <li class="arrows">
-        <osds-button
-          variant={OdsButtonVariant.ghost}
-          color={OdsThemeColorIntent.primary}
-          disabled={disabled || (direction === 'left' && this.current === 1) || (direction === 'right' && this.current >= this.pageList.length)}
-          onKeyDown={(event: KeyboardEvent) => {
-            if (direction === 'left') {
-              this.handlePreviousKeyDown(event, Number(this.current));
-            } else {
-              this.handleNextKeyDown(event, Number(this.current));
-            }
-          }}
-          onClick={() => {
-            if (direction === 'left') {
-              this.handlePreviousClick(Number(this.current));
-            } else {
-              this.handleNextClick(Number(this.current));
-            }
-          }}
-          size={OdsButtonSize.sm}>
-          <osds-icon
-            size={OdsIconSize.sm}
-            name={arrowIcon}
+        <osds-tooltip>
+          <osds-tooltip-content slot="tooltip-content">
+            {isLeft ? 'Previous' : 'Next'}
+          </osds-tooltip-content>
+          <osds-button
+            variant={OdsButtonVariant.ghost}
             color={OdsThemeColorIntent.primary}
-            class={(direction === 'left' && this.current === 1) || (direction === 'right' && this.current >= this.pageList.length) ? 'disabled' : ''}
-          ></osds-icon>
-        </osds-button>
+            disabled={disabled || (isLeft && this.current === 1) || (direction === 'right' && this.current >= this.pageList.length)}
+            onKeyDown={(event: KeyboardEvent) => {
+              if (isLeft) {
+                this.handlePreviousKeyDown(event, Number(this.current));
+              } else {
+                this.handleNextKeyDown(event, Number(this.current));
+              }
+            }}
+            onClick={() => {
+              if (isLeft) {
+                this.handlePreviousClick(Number(this.current));
+              } else {
+                this.handleNextClick(Number(this.current));
+              }
+            }}
+            size={OdsButtonSize.sm}
+          >
+            <osds-icon
+              size={OdsIconSize.sm}
+              name={arrowIcon}
+              color={OdsThemeColorIntent.primary}
+              class={(isLeft && this.current === 1) || (direction === 'right' && this.current >= this.pageList.length) ? 'disabled' : ''}
+            ></osds-icon>
+          </osds-button>
+        </osds-tooltip>
       </li>
     );
   }

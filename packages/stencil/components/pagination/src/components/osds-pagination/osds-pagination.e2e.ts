@@ -68,63 +68,63 @@ describe('e2e:osds-pagination', () => {
     it('< 1 2 > should have 4 osds-button', async () => {
       await setup({ attributes: { current: 1, totalPages: 2 } });
 
-      const buttonList = await page.findAll('osds-pagination >>> li > osds-button');
+      const buttonList = await page.findAll('osds-pagination >>> li >>> osds-button');
       expect(buttonList.length).toBe(4);
     });
 
     it('< 1 2 3 > should have 5 osds-button', async () => {
       await setup({ attributes: { current: 1, totalPages: 3 } });
 
-      const buttonList = await page.findAll('osds-pagination >>> li > osds-button');
+      const buttonList = await page.findAll('osds-pagination >>> li >>> osds-button');
       expect(buttonList.length).toBe(5);
     });
 
     it('< 1 2 3 4 > should have 6 osds-button', async () => {
       await setup({ attributes: { current: 1, totalPages: 4 } });
 
-      const buttonList = await page.findAll('osds-pagination >>> li > osds-button');
+      const buttonList = await page.findAll('osds-pagination >>> li >>> osds-button');
       expect(buttonList.length).toBe(6);
     });
 
     it('< 1 2 3 4 5 > should have 7 osds-button', async () => {
       await setup({ attributes: { current: 1, totalPages: 5 } });
 
-      const buttonList = await page.findAll('osds-pagination >>> li > osds-button');
+      const buttonList = await page.findAll('osds-pagination >>> li >>> osds-button');
       expect(buttonList.length).toBe(7);
     });
 
     it('< 1 2 3 4 5 6 > should have 8 osds-button', async () => {
       await setup({ attributes: { current: 1, totalPages: 6 } });
 
-      const buttonList = await page.findAll('osds-pagination >>> li > osds-button');
+      const buttonList = await page.findAll('osds-pagination >>> li >>> osds-button');
       expect(buttonList.length).toBe(8);
     });
 
     it('< 1 2 3 4 5 … 7 > should have 9 osds-button', async () => {
       await setup({ attributes: { current: 1, totalPages: 7 } });
 
-      const buttonList = await page.findAll('osds-pagination >>> li > osds-button');
+      const buttonList = await page.findAll('osds-pagination >>> li >>> osds-button');
       expect(buttonList.length).toBe(9);
     });
 
     it('< 1 2 3 4 5 … 8 > should have 9 osds-button', async () => {
       await setup({ attributes: { current: 1, totalPages: 8 } });
 
-      const buttonList = await page.findAll('osds-pagination >>> li > osds-button');
+      const buttonList = await page.findAll('osds-pagination >>> li >>> osds-button');
       expect(buttonList.length).toBe(9);
     });
 
     it('< 1 … 4 5 6 … 21 > should have 9 osds-button', async () => {
       await setup({ attributes: { current: 5, totalPages: 21 } });
 
-      const buttonList = await page.findAll('osds-pagination >>> li > osds-button');
+      const buttonList = await page.findAll('osds-pagination >>> li >>> osds-button');
       expect(buttonList.length).toBe(9);
     });
 
     it('< 1 … 4 5 6 … 9000 > should have 9 osds-button', async () => {
       await setup({ attributes: { current: 5, totalPages: 9000 } });
 
-      const buttonList = await page.findAll('osds-pagination >>> li > osds-button');
+      const buttonList = await page.findAll('osds-pagination >>> li >>> osds-button');
       expect(buttonList.length).toBe(9);
     });
   });
@@ -133,7 +133,7 @@ describe('e2e:osds-pagination', () => {
     it('current from 2 to 1 by button click', async () => {
       await setup({ attributes: { current: 2, totalPages: 5 } });
 
-      const buttonList = await page.findAll('osds-pagination >>> li > osds-button');
+      const buttonList = await page.findAll('osds-pagination >>> li >>> osds-button');
 
       const indexBeforeClick = Number(el.getAttribute('current'));
       expect(indexBeforeClick).toEqual(2);
@@ -149,7 +149,7 @@ describe('e2e:osds-pagination', () => {
     it('current from 2 to 3 by button click', async () => {
       await setup({ attributes: { current: 2, totalPages: 5 } });
 
-      const buttonList = await page.findAll('osds-pagination >>> li > osds-button');
+      const buttonList = await page.findAll('osds-pagination >>> li >>> osds-button');
 
       const indexBeforeClick = Number(el.getAttribute('current'));
       expect(indexBeforeClick).toEqual(2);
@@ -165,7 +165,7 @@ describe('e2e:osds-pagination', () => {
     it('current from 2 to 4 by button click', async () => {
       await setup({ attributes: { current: 2, totalPages: 5 } });
 
-      const buttonList = await page.findAll('osds-pagination >>> li > osds-button');
+      const buttonList = await page.findAll('osds-pagination >>> li >>> osds-button');
 
       const indexBeforeClick = Number(el.getAttribute('current'));
       expect(indexBeforeClick).toEqual(2);
@@ -181,7 +181,7 @@ describe('e2e:osds-pagination', () => {
     it('current from 2 to 5 by button click', async () => {
       await setup({ attributes: { current: 2, totalPages: 5 } });
 
-      const buttonList = await page.findAll('osds-pagination >>> li > osds-button');
+      const buttonList = await page.findAll('osds-pagination >>> li >>> osds-button');
 
       const indexBeforeClick = Number(el.getAttribute('current'));
       expect(indexBeforeClick).toEqual(2);

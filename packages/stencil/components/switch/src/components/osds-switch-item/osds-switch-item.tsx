@@ -1,4 +1,4 @@
-import { Component, Element, Host, h, Prop, State, Event, EventEmitter, Method } from '@stencil/core';
+import { Component, Element, Host, h, Prop, State, Method } from '@stencil/core';
 import {
   OdsSwitchItem,
   OdsSwitchItemController,
@@ -7,10 +7,8 @@ import {
   odsSwitchItemDefaultAttributes,
 } from '@ovhcloud/ods-core';
 import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libraries/stencil-core';
+import { Components } from '@ovhcloud/ods-stencil/components/radio';
 
-/**
- * @slot (unnamed) - Switch content
- */
 @Component({
   tag: 'osds-switch-item',
   styleUrl: 'osds-switch-item.scss',
@@ -18,6 +16,8 @@ import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libra
 })
 export class OsdsSwitchItem implements OdsSwitchItem<OdsStencilMethods<OdsSwitchItemMethods>, OdsStencilEvents<OdsSwitchItemEvents>> {
   controller: OdsSwitchItemController = new OdsSwitchItemController(this);
+
+  private radio?: Components.OsdsRadio;
 
   @Element() el!: HTMLElement;
 
@@ -28,39 +28,25 @@ export class OsdsSwitchItem implements OdsSwitchItem<OdsStencilMethods<OdsSwitch
 
   @Prop({ reflect: true }) public checked: boolean = odsSwitchItemDefaultAttributes.checked;
 
-  /** @see odsSwitchItemClick */
-  @Event() odsSwitchItemClick!: EventEmitter<{ value: string }>;
-
-  handlerOnKeyDown(event: KeyboardEvent): void {
-    const isEnter = event.code.includes('Enter');
-    const isSpace = event.code === 'Space';
-    if (isEnter || isSpace) {
-      this.odsSwitchItemClickEmit();
-    }
-  }
-
-  odsSwitchItemClickEmit(): void {
-    this.odsSwitchItemClick.emit({ value: this.value });
-  }
-
   @Method()
   async setFocus(): Promise<void> {
-    this.el.focus();
+    this.radio?.setFocus();
+  }
+
+  componentWillLoad() {
+    this.radio?.setButtonTabindex(this.tabindex);
   }
 
   render() {
-    const { checked, id, value, tabindex } = this;
+    const { checked, id, value } = this;
 
     return (
-      <Host {...{
-          tabindex,
-          onKeyDown: (event: KeyboardEvent) => this.handlerOnKeyDown(event)
-        }}>
+      <Host>
         <osds-radio {...{
           checked,
           id,
           value,
-          tabindex: "-1",
+          ref: (el: unknown) => this.radio = el as Components.OsdsRadio,
         }}>
           <slot></slot>
         </osds-radio>

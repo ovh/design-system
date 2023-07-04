@@ -39,7 +39,6 @@ export class OsdsSwitch implements OdsSwitch<OdsStencilMethods<OdsSwitchMethods>
 
   @Event() odsSwitchChanged!: EventEmitter<OdsSwitchChangedEventDetail>;
 
-  @Listen('odsSwitchItemClick')
   @Listen('odsValueChange')
   handlerSwitchItemClick(event: OdsRadioGroupValueChangeEvent | CustomEvent<{ value: string }>) {
     if (this.disabled) {

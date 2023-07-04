@@ -17,9 +17,14 @@
     z-index: 0;
     cursor: pointer;
 
-    & osds-radio > * {
-        cursor: pointer;
-    }
+    & osds-radio {
+        & > * {
+            cursor: pointer;
+        }
+        &:focus-visible {
+            outline-color: var(--ods-color-gray-500);
+        }
+    } 
 
     &::before {
         content: '';
@@ -30,8 +35,8 @@
         border-radius: 3em;
         z-index: -1;
     }
-    
 }
+
 :host(.fadein-from-right)::before {  
     animation: fadeinfromright ease-out .3s;
 }
@@ -45,10 +50,6 @@
 
 :host(.fadeout-from-left)::before {
     animation: fadeoutfromleft ease-in .3s;
-}
-
-:host(:focus-visible) {
-    outline: 2px gray dotted;
 }
 
 @keyframes fadeinfromleft {

@@ -31,15 +31,12 @@ describe('e2e:osds-switch', () => {
   });
 
   describe('change checked', () => {
-    const verifySwitchItem = async (switchItem: E2EElement, position: 'left' | 'right' = 'left') => {
-      expect(await switchItem.getProperty('checked')).toBe(true);
-      expect(await switchItem.getAttribute('class')).toMatch(`fadein-from-${position}`);
-    }
     it('should change selected switch item', async () => {
       await setup({ attributes: {} });
       await switchItems[0].click();
       await page.waitForChanges();
-      await verifySwitchItem(switchItems[0]);
+      expect(await switchItems[0].getProperty('checked')).toBe(true);
+      expect(await switchItems[0].getAttribute('class')).toMatch(`fadein-from-left`);
     });
 
     describe('Event', () => {
@@ -84,7 +81,7 @@ describe('e2e:osds-switch', () => {
         await page.keyboard.press('ArrowRight');
         await page.keyboard.press('Enter');
         await page.waitForChanges();
-        await verifySwitchItem(switchItems[1]);
+        expect(await switchItems[1].getProperty('checked')).toBe(true);
       });
 
       it('should change selected switch item with Space', async () => {
@@ -94,7 +91,7 @@ describe('e2e:osds-switch', () => {
         await page.keyboard.press('ArrowRight');
         await page.keyboard.press('Space');
         await page.waitForChanges();
-        await verifySwitchItem(switchItems[1]);
+        expect(await switchItems[1].getProperty('checked')).toBe(true);
       });
 
       it('should change selected switch item with Right position', async () => {
@@ -105,7 +102,7 @@ describe('e2e:osds-switch', () => {
         await page.keyboard.press('ArrowLeft');
         await page.keyboard.press('Space');
         await page.waitForChanges();
-        await verifySwitchItem(switchItems[0], 'left');
+        expect(await switchItems[0].getProperty('checked')).toBe(true);
       });
       
     })

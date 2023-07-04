@@ -28,7 +28,8 @@ export class OdsSwitchController extends OdsComponentController<OdsSwitch> {
     if (index > newIndex) {
       checkedSwitchItem?.classList.add('fadeout-from-left');
       newCheckedSwitchItem?.classList.add('fadein-from-right');
-    } else {
+    } 
+    if (index < newIndex) {
       checkedSwitchItem?.classList.add('fadeout-from-right');
       newCheckedSwitchItem?.classList.add('fadein-from-left');
     }

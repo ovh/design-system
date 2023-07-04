@@ -195,9 +195,10 @@ describe('spec:osds-radio', () => {
       it('should call controller.handleLabelClick on click', async () => {
         const event = new Event('click');
         await setup({});
-        label?.dispatchEvent(event);
+        instance.el.dispatchEvent(event);
+        instance.el.click();
 
-        expect(controller.handleLabelClick).toHaveBeenCalledTimes(1);
+        expect(controller.handleLabelClick).toHaveBeenCalledTimes(2);
         expect(controller.handleLabelClick).toHaveBeenCalledWith(event);
       });
     });

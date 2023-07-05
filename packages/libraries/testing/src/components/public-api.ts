@@ -27,7 +27,6 @@ export * from './skeleton/public-api';
 export * from './spinner/public-api';
 export * from './switch/public-api';
 export * from './tabs/public-api';
-export * from './text/public-api';
 export * from './textarea/public-api';
 export * from './tile/public-api';
 export * from './toggle/public-api';

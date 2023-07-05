@@ -27,7 +27,7 @@
     "packages-new/components/!(loader|custom-elements|custom-elements-bundle)*",
     "packages-new/components/!(loader|custom-elements|custom-elements-bundle)*/react",
     "packages-new/components/!(loader|custom-elements|custom-elements-bundle)*/vue",
-    "packages-new/sharedDependencies/*"
+    "packages-new/shared-dependencies/*"
   ],
   "scripts": {
     "build": "lerna run build",

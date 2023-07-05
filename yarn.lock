@@ -5563,9 +5563,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-dev@^14.0.1, @ovhcloud/ods-dev@workspace:packages-new/sharedDependencies/odsDev":
+"@ovhcloud/ods-dev@^14.0.1, @ovhcloud/ods-dev@workspace:packages-new/shared-dependencies/odsDev":
   version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-dev@workspace:packages-new/sharedDependencies/odsDev"
+  resolution: "@ovhcloud/ods-dev@workspace:packages-new/shared-dependencies/odsDev"
   dependencies:
     cpy-cli: 4.2.0
     rimraf: ^3.0.2
@@ -5600,9 +5600,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-react-dev@^14.0.1, @ovhcloud/ods-react-dev@workspace:packages-new/sharedDependencies/odsReactDev":
+"@ovhcloud/ods-react-dev@^14.0.1, @ovhcloud/ods-react-dev@workspace:packages-new/shared-dependencies/odsReactDev":
   version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-react-dev@workspace:packages-new/sharedDependencies/odsReactDev"
+  resolution: "@ovhcloud/ods-react-dev@workspace:packages-new/shared-dependencies/odsReactDev"
   dependencies:
     "@ovhcloud/ods-dev": ^14.0.1
     "@types/react": 17.0.37
@@ -6199,9 +6199,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-dev@^14.0.1, @ovhcloud/ods-stencil-dev@workspace:packages-new/sharedDependencies/odsStencilDev":
+"@ovhcloud/ods-stencil-dev@^14.0.1, @ovhcloud/ods-stencil-dev@workspace:packages-new/shared-dependencies/odsStencilDev":
   version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-stencil-dev@workspace:packages-new/sharedDependencies/odsStencilDev"
+  resolution: "@ovhcloud/ods-stencil-dev@workspace:packages-new/shared-dependencies/odsStencilDev"
   dependencies:
     "@ovhcloud/ods-dev": ^14.0.1
     "@ovhcloud/ods-style-dev": ^14.0.1
@@ -7244,9 +7244,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-style-dev@^14.0.1, @ovhcloud/ods-style-dev@workspace:packages-new/sharedDependencies/odsStyleDev":
+"@ovhcloud/ods-style-dev@^14.0.1, @ovhcloud/ods-style-dev@workspace:packages-new/shared-dependencies/odsStyleDev":
   version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-style-dev@workspace:packages-new/sharedDependencies/odsStyleDev"
+  resolution: "@ovhcloud/ods-style-dev@workspace:packages-new/shared-dependencies/odsStyleDev"
   dependencies:
     autoprefixer: ~10.3.7
     node-sass: ^8.0.0
@@ -7294,9 +7294,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-vue-dev@^14.0.1, @ovhcloud/ods-vue-dev@workspace:packages-new/sharedDependencies/odsVueDev":
+"@ovhcloud/ods-vue-dev@^14.0.1, @ovhcloud/ods-vue-dev@workspace:packages-new/shared-dependencies/odsVueDev":
   version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-vue-dev@workspace:packages-new/sharedDependencies/odsVueDev"
+  resolution: "@ovhcloud/ods-vue-dev@workspace:packages-new/shared-dependencies/odsVueDev"
   dependencies:
     "@ovhcloud/ods-dev": ^14.0.1
     vue: ^3.2.41

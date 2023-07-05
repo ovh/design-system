@@ -6,7 +6,9 @@ import { defineCustomElements } from '../../loader'
 import { ODS_TEXT_LEVELS } from '../../src/components/osds-text/constants/text-level';
 import { ODS_TEXT_SIZES } from '../../src/components/osds-text/constants/text-size';
 import { DEFAULT_ATTRIBUTE } from '../../src/components/osds-text/constants/default-attributes';
+// @ts-ignore
 import changelog from '../../CHANGELOG.md';
+// @ts-ignore
 import page from './text.web-component.stories.page.mdx';
 
 defineCustomElements();

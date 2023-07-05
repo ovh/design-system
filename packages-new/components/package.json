@@ -4,7 +4,9 @@
   "description": "ODS Components",
   "author": "OVH SAS",
   "license": "Apache-2.0",
-  "dependencies": {},
+  "dependencies": {
+    "@ovhcloud/ods-component-text": "^14.0.1"
+  },
   "devDependencies": {
     "@ovhcloud/ods-dev": "^14.0.1"
   }

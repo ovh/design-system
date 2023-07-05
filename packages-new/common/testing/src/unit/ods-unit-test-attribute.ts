@@ -68,7 +68,7 @@ export function odsUnitTestAttribute<InstanceAttribute,
                                                                                                                  root,
                                                                                                                  wait,
                                                                                                                  instance,
-                                                                                                                 exclude = [],
+                                                                                                                 exclude = [OdsUnitTestAttributeType.MUTABLE],
                                                                                                                  include = []
                                                                                                                }: OdsUnitTestAttributeOptions<InstanceAttribute, Name, InstanceType>): void {
   const isBoolean = typeof value === 'boolean';

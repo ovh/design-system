@@ -78,7 +78,6 @@ const config: Config = {
     { components: ['osds-skeleton'] },
     { components: ['osds-switch'] },
     { components: ['osds-switch-item'] },
-    { components: ['osds-text'] },
     { components: ['osds-tile'] },
     { components: ['osds-toggle'] },
   ],

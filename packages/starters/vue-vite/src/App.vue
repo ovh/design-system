@@ -9,7 +9,7 @@ import vueLogo from './assets/vue.svg'
 import Demo from './demo/Demo.vue';
 
 // for each react component you use from `ODS`, use this import:
-import { OsdsText } from '@ovhcloud/ods-stencil/components/vue';
+import { OsdsText } from '@ovhcloud/ods-component-text-vue';
 
 // for each component's type you use from ODS, you will need to import the core or theming:
 import { OdsTextSize, odsSetup, Ods } from '@ovhcloud/ods-core';

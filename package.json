@@ -23,6 +23,10 @@
     "packages/tools/*",
     "packages/tools/generator/component",
     "packages-new/common/*",
+    "packages-new/components",
+    "packages-new/components/!(loader|custom-elements|custom-elements-bundle)*",
+    "packages-new/components/!(loader|custom-elements|custom-elements-bundle)*/react",
+    "packages-new/components/!(loader|custom-elements|custom-elements-bundle)*/vue",
     "packages-new/sharedDependencies/*"
   ],
   "scripts": {

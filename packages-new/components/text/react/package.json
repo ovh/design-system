@@ -1,5 +1,5 @@
 {
-  "name": "@ovhcloud/ods-stencil-text-react",
+  "name": "@ovhcloud/ods-component-text-react",
   "version": "14.0.1",
   "private": true,
   "description": "React specific wrapper for ods",
@@ -19,19 +19,13 @@
     "dist/"
   ],
   "dependencies": {
-    "@ovhcloud/ods-stencil-cart": "^14.0.1",
-    "tslib": "*"
+    "@ovhcloud/ods-component-text": "^14.0.1"
   },
   "peerDependencies": {
     "react": ">=16.8.6",
     "react-dom": ">=16.8.6"
   },
   "devDependencies": {
-    "@types/react": "17.0.37",
-    "@types/react-dom": "17.0.11",
-    "react": "16.14.0",
-    "react-dom": "16.14.0",
-    "rimraf": "^3.0.2",
-    "typescript": "4.7.4"
+    "@ovhcloud/ods-react-dev": "^14.0.1"
   }
 }

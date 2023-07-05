@@ -163,7 +163,7 @@ export function getStencilConfig({
       preset: undefined,
 
       // cacheDirectory: 'build/.stencil',
-      coverageDirectory: 'build/coverage',
+      // coverageDirectory: 'build/coverage',
     };
     // warning incompatible props
     (Object.keys(jestConfig) as Array<keyof JestConfig.InitialOptions>)
@@ -189,7 +189,7 @@ export function getStencilConfig({
       distCustomElementsCopy = [{
         //src: '../../../scripts/custom-elements',
         src: '../../../common/stencil/src/scripts/custom-elements', // TODO get rid of this indirect module reference
-        dest: 'build/custom-elements',
+        dest: 'custom-elements',
         warn: true,
       }]
     }
@@ -205,7 +205,7 @@ export function getStencilConfig({
       distCustomElementsBundleCopy = [{
         // src: '../../../scripts/custom-elements-bundle',
         src: '../../../common/stencil/src/scripts/custom-elements-bundle', // TODO get rid of this indirect module reference
-        dest: 'build/custom-elements-bundle',
+        dest: 'custom-elements-bundle',
         warn: true,
       }]
     }
@@ -243,7 +243,7 @@ export function getStencilConfig({
     } : {}),
     // in case of testing, injecting the blue-jeans theme in order to have nominal UI
     ...((isTest || isDev) ? {
-      globalStyle: require.resolve('@ovhcloud/ods-theme-blue-jeans2/index.scss'),
+      globalStyle: require.resolve('@ovhcloud/ods-theme-blue-jeans/index.scss'),
     } : {}),
     plugins: [sass({
         importer: nodeSassPackageImporter()
@@ -262,7 +262,7 @@ export function getStencilConfig({
           reactOutputTarget({
             // componentCorePackage: '@ovhcloud/ods-stencil/components',
             proxiesFile: './react/src/components/stencil-generated/index.ts',
-            customElementsDir: 'build/custom-elements',
+            customElementsDir: 'custom-elements',
             includeDefineCustomElements: false,
             includeImportCustomElements: true,
             includePolyfills: false,
@@ -271,7 +271,7 @@ export function getStencilConfig({
           vueOutputTarget({
             // componentCorePackage: '@ovhcloud/ods-stencil/components',
             proxiesFile: './vue/src/components/stencil-generated/index.ts',
-            customElementsDir: 'build/custom-elements',
+            customElementsDir: 'custom-elements',
             includeDefineCustomElements: false,
             includeImportCustomElements: true,
             includePolyfills: false,
@@ -281,33 +281,33 @@ export function getStencilConfig({
       ),
       {
         type: 'dist',
-        dir: 'build/dist',
+        dir: 'dist',
         esmLoaderPath: '../loader',
       },
       {
         type: 'dist-custom-elements',
-        dir: 'build/custom-elements',
+        dir: 'custom-elements',
         includeGlobalScripts: false,
         ...(distCustomElements ? distCustomElements : {}),
         copy: distCustomElementsCopy,
       },
       {
         type: 'dist-custom-elements-bundle',
-        dir: 'build/custom-elements-bundle',
+        dir: 'custom-elements-bundle',
         includeGlobalScripts: false,
         ...(distCustomElementsBundle ? distCustomElementsBundle : {}),
         copy: distCustomElementsBundleCopy
       },
       {
         type: 'docs-readme',
-        dir: 'build/docs',
+        dir: 'dist/docs',
       },
       // generate www app only when we are in dev mode (serve): gain build time
       ...(isDev ? (() => {
         console.info('ODS: generate www');
         const output: OutputTargetWww = {
           type: 'www',
-          dir: 'build/www',
+          // dir: 'build/www',
           serviceWorker: null, // disable service workers
         }
         return [output]

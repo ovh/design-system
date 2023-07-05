@@ -66,7 +66,7 @@ describe('spec:ods-menu-controller', () => {
       });
     });
 
-    describe('method: handleTriggerKey', () => {
+    describe('method: handleKeyDown', () => {
       it('should do nothing if key is not ENTER or SPACE or ESCAPE', async () => {
         setup(component);
         component.surface = new OcdkSurfaceMock() as unknown as OcdkSurface;
@@ -82,8 +82,8 @@ describe('spec:ods-menu-controller', () => {
         const target = document.createElement("OSDS-BUTTON");
         Object.defineProperty(event, 'target', { value: target })
 
-        await controller.handleTriggerKey(event);
-        expect(component.surface.opened).toBeFalsy()
+        await controller.handleKeyDown(event);
+        expect(component.surface.opened).toBe(false)
       });
 
       it('should do nothing if there is no surface', async () => {
@@ -99,7 +99,7 @@ describe('spec:ods-menu-controller', () => {
         const target = document.createElement("OSDS-BUTTON");
         Object.defineProperty(event, 'target', { value: target })
 
-        expect(() => { controller.handleTriggerKey(event) }).not.toThrow();
+        expect(() => { controller.handleKeyDown(event) }).not.toThrow();
         expect(component.surface).toBeUndefined();
       });
 
@@ -107,18 +107,10 @@ describe('spec:ods-menu-controller', () => {
         setup(component);
         component.surface = new OcdkSurfaceMock() as unknown as OcdkSurface;
         component.surface!.opened = false;
+        const keyEnter = new KeyboardEvent("keydown", { code : "Enter" });
+        controller.handleKeyDown(keyEnter);
 
-        const event = new KeyboardEvent("keypress", {
-          bubbles: true,
-          cancelable: true,
-          composed: true
-        });
-        Object.defineProperty(event, 'key', { value: "Enter" })
-
-        const target = document.createElement("OSDS-BUTTON");
-        Object.defineProperty(event, 'target', { value: target })
-
-        await controller.handleTriggerKey(event);
+        // await controller.handleKeyDown(event);
         expect(component.surface.opened).toBeTruthy();
       });
 
@@ -127,55 +119,10 @@ describe('spec:ods-menu-controller', () => {
         component.surface = new OcdkSurfaceMock() as unknown as OcdkSurface;
         component.surface!.opened = true;
 
-        const event = new KeyboardEvent("keypress", {
-          bubbles: true,
-          cancelable: true,
-          composed: true
-        });
-        Object.defineProperty(event, 'key', { value: "Escape" })
-
-        const target = document.createElement("OSDS-BUTTON");
-        Object.defineProperty(event, 'target', { value: target })
-
-        await controller.handleTriggerKey(event);
-        expect(component.surface.opened).toBeFalsy();
-      });
-    });
-
-    describe('method: handleSurfaceKey', () => {
-      it('should do nothing if key is not ESCAPE', async () => {
-        setup(component);
-
-        component.surface = new OcdkSurfaceMock() as unknown as OcdkSurface;
-        component.surface!.opened = true;
-
-        const event = new KeyboardEvent("keypress", {
-          bubbles: true,
-          cancelable: true,
-          composed: true
-        });
-        Object.defineProperty(event, 'key', { value: "A" })
-
-        await controller.handleSurfaceKey(event);
-        expect(component.surface.opened).toBeTruthy();
-      });
-
-      it('should close the surface on ESCAPE press', async () => {
-        setup(component);
-
-        component.surface = new OcdkSurfaceMock() as unknown as OcdkSurface;
-        component.surface!.opened = true;
-
-        const event = new KeyboardEvent("keypress", {
-          bubbles: true,
-          cancelable: true,
-          composed: true
-        });
-        Object.defineProperty(event, 'key', { value: "Escape" })
-
-        await controller.handleSurfaceKey(event);
-        expect(component.surface.opened).toBeFalsy();
-
+        const spyCloseSurface = jest.spyOn(controller, 'closeSurface');
+        const keySpace = new KeyboardEvent("keydown", { code : "Escape" });
+        controller.handleKeyDown(keySpace);
+        expect(spyCloseSurface).toHaveBeenCalledTimes(1);
       });
     });
 
@@ -213,7 +160,7 @@ describe('spec:ods-menu-controller', () => {
         Object.defineProperty(event, 'target', { value: target })
 
         await controller.checkForClickOutside(event);
-        expect(component.surface.opened).toBeFalsy();
+        expect(component.surface.opened).toBe(false);
       });
 
       it('should do nothing if event target is in the component', async () => {
@@ -241,6 +188,8 @@ describe('spec:ods-menu-controller', () => {
         component.surface = new OcdkSurfaceMock() as unknown as OcdkSurface;
         component.surface!.opened = true;
 
+        const spyCloseSurface = jest.spyOn(controller, 'closeSurface');
+
         const event = new MouseEvent("click", {
           bubbles: true,
           cancelable: true,
@@ -251,7 +200,7 @@ describe('spec:ods-menu-controller', () => {
         Object.defineProperty(event, 'target', { value: target })
 
         await controller.checkForClickOutside(event);
-        expect(component.surface.opened).toBeFalsy();
+        expect(spyCloseSurface).toHaveBeenCalledTimes(1);
       });
     });
 

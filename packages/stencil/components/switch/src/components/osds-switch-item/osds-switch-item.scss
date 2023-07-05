@@ -10,7 +10,6 @@
     display: inline-block;
     appearance: none;
     font-weight: 600;
-    padding: 0 .75em;
     margin: 0;
     text-align: center;
     border-radius: 1.375em;
@@ -18,11 +17,9 @@
     cursor: pointer;
 
     & osds-radio {
+        padding: 0 .75em;
         & > * {
             cursor: pointer;
-        }
-        &:focus-visible {
-            outline-color: var(--ods-color-gray-500);
         }
     } 
 

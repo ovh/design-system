@@ -7,4 +7,6 @@ export const odsPaginationBaseAttributes: OdsPaginationAttributes = {
   disabled: false,
   current: 1,
   totalPages: 1,
+  labelTooltipNext: 'Next',
+  labelTooltipPrevious: 'Previous',
 };

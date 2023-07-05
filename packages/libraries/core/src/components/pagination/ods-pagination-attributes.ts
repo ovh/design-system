@@ -18,4 +18,12 @@ export interface OdsPaginationAttributes extends OdsComponentAttributes {
    * The total amount of pages.
    */
   totalPages: number;
+  /**
+   * The label of the tooltip on the arrow previous
+   */
+  labelTooltipPrevious: string;
+  /**
+   * The label of the tooltip on the arrow next
+   */
+   labelTooltipNext: string;
 }

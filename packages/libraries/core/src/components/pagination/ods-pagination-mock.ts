@@ -8,6 +8,8 @@ export class OdsPaginationMock implements OdsPagination<OdsPaginationMethods, Od
   disabled = false;
   current = 1;
   totalPages = 1;
+  labelTooltipPrevious = 'Previous';
+  labelTooltipNext = 'Next';
 
   odsPaginationChanged!: OdsPaginationChangedEventDetail;
 

@@ -61,6 +61,12 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
   /** @see OdsPaginationAttributes.disabled */
   @Prop({ reflect: true, mutable: true }) disabled: boolean = odsPaginationDefaultAttributes.disabled;
 
+  /** @see OdsPaginationAttributes.labelTooltipPrevious */
+  @Prop({ reflect: true }) labelTooltipPrevious: string = odsPaginationDefaultAttributes.labelTooltipPrevious;
+
+  /** @see OdsPaginationAttributes.labelTooltipNext */
+  @Prop({ reflect: true }) labelTooltipNext: string = odsPaginationDefaultAttributes.labelTooltipNext;
+
   /** @see OdsPaginationEvents.odsPaginationChanged */
   @Event() odsPaginationChanged!: EventEmitter<OdsPaginationChangedEventDetail>;
 
@@ -179,7 +185,7 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
       <li class="arrows">
         <osds-tooltip>
           <osds-tooltip-content slot="tooltip-content">
-            {isLeft ? 'Previous' : 'Next'}
+            { isLeft ? this.labelTooltipPrevious : this.labelTooltipNext }
           </osds-tooltip-content>
           <osds-button
             variant={OdsButtonVariant.ghost}

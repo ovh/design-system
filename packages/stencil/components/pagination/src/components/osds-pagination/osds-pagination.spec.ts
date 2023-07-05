@@ -245,6 +245,28 @@ describe('spec:osds-pagination', () => {
         }),
       });
     });
+    
+    describe('labelTooltipPrevious with odsUnitTestAttribute', () => {
+      odsUnitTestAttribute<OdsPaginationAttributes, 'labelTooltipPrevious'>({
+        ...getAttributeContextOptions<OdsPaginationAttributes, OsdsPagination, 'labelTooltipPrevious'>({
+          name: 'labelTooltipPrevious',
+          list: ['Previous', 'Précédent'],
+          defaultValue: odsPaginationDefaultAttributes.labelTooltipPrevious,
+          ...config,
+        }),
+      });
+    });
+
+    describe('labelTooltipNext with odsUnitTestAttribute', () => {
+      odsUnitTestAttribute<OdsPaginationAttributes, 'labelTooltipNext'>({
+        ...getAttributeContextOptions<OdsPaginationAttributes, OsdsPagination, 'labelTooltipNext'>({
+          name: 'labelTooltipNext',
+          list: ['Next', 'Suivant'],
+          defaultValue: odsPaginationDefaultAttributes.labelTooltipNext,
+          ...config,
+        }),
+      });
+    });
   });
 
   /**

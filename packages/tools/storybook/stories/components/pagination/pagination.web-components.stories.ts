@@ -19,6 +19,14 @@ const sharedStoryParam = {
     category: 'Misc',
     defaultValue: odsPaginationDefaultAttributes.disabled,
   },
+  labelTooltipPrevious: {
+    category: 'Misc',
+    defaultValue: odsPaginationDefaultAttributes.labelTooltipPrevious,
+  },
+  labelTooltipNext: {
+    category: 'Misc',
+    defaultValue: odsPaginationDefaultAttributes.labelTooltipNext,
+  }
 }
 
 const totalItemsParam = {

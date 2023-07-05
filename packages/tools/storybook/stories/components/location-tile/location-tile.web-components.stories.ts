@@ -84,7 +84,7 @@ const storyParams = {
 };
 
 export default {
-  title: 'UI Components/Tile/Location Tile Deprecated [atom]/Web Component',
+  title: 'UI Components/Tile/Location Tile [deprecated]/Web Component',
   parameters: {
     notes: {
       API: iframe('/stencil-location-tile/modules/index.html'),

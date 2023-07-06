@@ -84,7 +84,7 @@ const storyParams = {
 };
 
 export default {
-  title: 'UI Components/Tile/Location Tile [atom]/Web Component',
+  title: 'UI Components/Tile/Location Tile [deprecated]/Web Component',
   parameters: {
     notes: {
       API: iframe('/stencil-location-tile/modules/index.html'),
@@ -104,6 +104,9 @@ const TemplateDefault = (args: any) => {
     delete args.flex;
   }
   return html`
+    <h2 style='color:red'>
+      ⚠ Warning this component is deprecated and will be remove soon
+    </h2>
     <div class='tile-container'>
       <osds-location-tile ...=${getTagAttributes(args)}>
         <span slot='country'>${unsafeHTML(args.country || 'Country')}</span>

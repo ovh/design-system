@@ -31,6 +31,14 @@ const config: Config = {
       ],
       includeGlobalScripts: false,
     },
+    reactOutput: {
+      // exclude components that have been moved to the new repo
+      excludeComponents: ['osds-text'],
+    },
+    vueOutput: {
+      // exclude components that have been moved to the new repo
+      excludeComponents: ['osds-text'],
+    },
     dev: {
       tsConfig: 'tsconfig.components.dev.json',
       globalScript: 'src/www.components.ts'

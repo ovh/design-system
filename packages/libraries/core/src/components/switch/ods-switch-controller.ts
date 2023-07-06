@@ -2,7 +2,7 @@ import { OdsSwitch } from './ods-switch';
 import { OdsComponentController } from '../ods-component-controller';
 import { OdsSwitchItem } from '../public-api';
 
-type HtmlSwitchItem = OdsSwitchItem & HTMLElement;
+type HtmlSwitchItem = (OdsSwitchItem & HTMLElement);
 /**
  * common controller logic for cmpnt component used by the different implementations.
  * it contains all the glue between framework implementation and the third party service.
@@ -17,7 +17,7 @@ export class OdsSwitchController extends OdsComponentController<OdsSwitch> {
 
   changeCheckedSwitchItem(value: string): { current: HtmlSwitchItem, previous: HtmlSwitchItem } {
     const switchItems = this.getSwitchItems();
-    switchItems.forEach(switchItem => switchItem.className = 'hydrated');
+    switchItems.forEach(switchItem => switchItem.classList.remove('fadeout-from-left', 'fadein-from-right', 'fadeout-from-right', 'fadein-from-left'));
     const index = switchItems.findIndex(switchItem => switchItem.getAttribute('checked') !== null);
     const checkedSwitchItem = switchItems[index];
     switchItems[index]?.removeAttribute('checked');

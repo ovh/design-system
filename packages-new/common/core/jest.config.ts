@@ -17,5 +17,5 @@ const args = process.argv.slice(2);
  * ```
  */
 // @ts-ignore until dependencies are fixed to one unique version of @jest/types
-const config: Config.InitialOptions = OdsGetJestConfig({ basePath: '<rootDir>/../../..', stencil: false, args });
+const config: Config.InitialOptions = OdsGetJestConfig({ basePath: '<rootDir>/../..', stencil: false, args });
 export default config;

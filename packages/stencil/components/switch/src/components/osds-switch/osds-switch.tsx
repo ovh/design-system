@@ -88,7 +88,7 @@ export class OsdsSwitch implements OdsSwitch<OdsStencilMethods<OdsSwitchMethods>
         onFocus: () => this.handlerFocus(),
         onKeyDown: (event: KeyboardEvent) => this.handlerOnKeyDown(event),
       }}>
-        <osds-radio-group>
+        <osds-radio-group disabled={disabled}>
           <slot></slot>
         </osds-radio-group>
       </Host>

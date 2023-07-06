@@ -5627,10 +5627,12 @@ __metadata:
   dependencies:
     "@ovhcloud/ods-component-text": ^14.0.1
     "@ovhcloud/ods-core": ^14.0.1
-    "@ovhcloud/ods-react-dev": ^14.0.1
+    "@ovhcloud/ods-dev": ^14.0.1
     "@ovhcloud/ods-stencil": ^14.0.1
     "@ovhcloud/ods-theme-blue-jeans": ^14.0.1
     "@ovhcloud/ods-theming": ^14.0.1
+    "@types/react": ^18.2.0
+    "@types/react-dom": ^18.2.0
     "@vitejs/plugin-react": ^2.1.0
     react: ^18.2.0
     react-dom: ^18.2.0
@@ -9664,6 +9666,15 @@ __metadata:
   dependencies:
     "@types/react": "*"
   checksum: 4d5730dffbef86c887cecad7e3cecda424ce6a64d0b5441c63b5b015d48219868660a2bb1aa15e897e565ad8867fa6b885d4358b04e1c4e589ba4c07c3fda55c
+  languageName: node
+  linkType: hard
+
+"@types/react-dom@npm:^18.2.0":
+  version: 18.2.6
+  resolution: "@types/react-dom@npm:18.2.6"
+  dependencies:
+    "@types/react": "*"
+  checksum: b56e42efab121a3a8013d2eb8c1688e6028a25ea6d33c4362d2846f0af3760b164b4d7c34846614024cfb8956cca70dd1743487f152e32ff89a00fe6fbd2be54
   languageName: node
   linkType: hard
 

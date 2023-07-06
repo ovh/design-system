@@ -2,7 +2,7 @@ import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 import { OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
 import { createComponentTable, extractArgTypes, extractStoryParams, getTagAttributes, olesIpsum, OlesIpsumGeneration } from '@ovhcloud/ods-common-core';
-import { defineCustomElements } from '../../loader'
+import { defineCustomElements } from '@ovhcloud/ods-component-text/loader'
 import { ODS_TEXT_LEVELS } from '../../src/components/osds-text/constants/text-level';
 import { ODS_TEXT_SIZES } from '../../src/components/osds-text/constants/text-size';
 import { DEFAULT_ATTRIBUTE } from '../../src/components/osds-text/constants/default-attributes';

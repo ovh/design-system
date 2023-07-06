@@ -1,7 +1,6 @@
 import type { Config } from '@jest/types';
 import { OdsGetJestConfig } from '@ovhcloud/ods-common-testing';
 
-
 const args = process.argv.slice(2);
 
 /**

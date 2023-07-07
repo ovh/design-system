@@ -80,14 +80,6 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
     this.updatePageList();
   }
 
-  async componentDidUpdate() {
-    const selectedPage = this.el.shadowRoot?.querySelector('.selected-page') as HTMLStencilElement;
-
-    if (selectedPage && document.activeElement === document.body) {
-      selectedPage.focus();
-    }
-  }
-
   @Listen('odsValueChange')
   odsValueChangeHandler(event: CustomEvent<OdsSelectOptionClickEventDetail>) {
     const { value } = event.detail;

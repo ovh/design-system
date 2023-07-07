@@ -5,7 +5,7 @@ import type { Config } from '@jest/types';
 const config: Config.InitialOptions = {
   testPathIgnorePatterns: [
     "/node_modules/",
-    "dist/"
+    "dist/",
   ],
   testRegex: "(/__tests__/.*|\\.?(spec))\\.(tsx?|ts?|jsx?|js?)$",
   transform: {

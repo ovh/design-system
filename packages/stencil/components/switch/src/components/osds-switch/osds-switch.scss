@@ -12,6 +12,7 @@
   display: inline-flex;
   flex-flow: row;
   border-radius: 1.375em;
+  white-space: nowrap;
 }
 
 :host([disabled]) {

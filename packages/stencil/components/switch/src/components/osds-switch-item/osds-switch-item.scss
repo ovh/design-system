@@ -5,6 +5,8 @@
 // /!\ for theming purposes, it has to be done in theming files
 // (i.e. packages/libraries/theming/...)
 
+$switch-item-border-radius: 3em;
+
 :host {
     position: relative;
     display: inline-block;
@@ -21,6 +23,9 @@
         & > * {
             cursor: pointer;
         }
+        &:focus-visible {
+            border-radius: $switch-item-border-radius;
+        }
     } 
 
     &::before {
@@ -29,7 +34,7 @@
         inset: 0;
         overflow: hidden;
         transition: background ease-in-out .1s;
-        border-radius: 3em;
+        border-radius: $switch-item-border-radius;
         z-index: -1;
     }
 }

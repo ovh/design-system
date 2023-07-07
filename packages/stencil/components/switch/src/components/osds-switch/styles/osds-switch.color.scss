@@ -7,7 +7,7 @@
     background-color: '500',
     background-color-checked: '600',
     background-color-checked-hover: '700',
-    background-color-hover: '200',
+    background-color-hover: '100',
   )) using($colors) {
     @include osds-switch-on-selected-host() {
       background-color: var(--ods-color-gray-100);

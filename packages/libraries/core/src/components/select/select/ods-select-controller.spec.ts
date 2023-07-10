@@ -12,7 +12,7 @@ describe('spec:ods-select-controller', () => {
   function setup(attributes: Partial<OdsSelect> = {}) {
     component = { ...component, ...attributes };
     if (component.surface) {
-        component.surface.opened = attributes?.opened ?? false;
+      component.surface.opened = attributes?.opened ?? false;
     }
     controller = new OdsSelectController(component);
     controller.selectOptions = [item1, item2];
@@ -37,34 +37,34 @@ describe('spec:ods-select-controller', () => {
   describe('methods', () => {
     describe('methods:openSurface', () => {
       it('should open surface with default value', () => {
-          setup();
-          controller.openSurface();
-          expect(component.opened).toBe(true);
+        setup();
+        controller.openSurface();
+        expect(component.opened).toBe(true);
       });
 
       it('should open surface', () => {
-          setup({
-            opened: false,
-          });
-          controller.openSurface();
-          expect(component.opened).toBe(true);
+        setup({
+          opened: false,
+        });
+        controller.openSurface();
+        expect(component.opened).toBe(true);
       });
 
       it('should close surface', () => {
-          setup({
-            opened: true,
-          });
-          controller.closeSurface();
-          expect(component.opened).toBe(false);
+        setup({
+          opened: true,
+        });
+        controller.closeSurface();
+        expect(component.opened).toBe(false);
       });
     });
 
     describe('methods:handlerKeyDown', () => {
       it('should open select with enter key', () => {
-          setup();
-          const keyEnter = new KeyboardEvent("keydown", { code : "Enter" });
-          controller.handlerKeyDown(keyEnter);
-          expect(component.handleSelectClick).toHaveBeenCalled();
+        setup();
+        const keyEnter = new KeyboardEvent("keydown", { code : "Enter" });
+        controller.handlerKeyDown(keyEnter);
+        expect(component.handleSelectClick).toHaveBeenCalled();
       });
 
       it('should select option with enter key', () => {
@@ -72,6 +72,14 @@ describe('spec:ods-select-controller', () => {
         item1.setAttribute('selected', '');
         const keyEnter = new KeyboardEvent("keydown", { code : "Enter" });
         controller.handlerKeyDown(keyEnter);
+        expect(component.handleValueChange).toHaveBeenCalled();
+        expect(component.setFocus).toHaveBeenCalled();
+      });
+      it('should select option with tab key', () => {
+        setup({ opened: true });
+        item1.setAttribute('selected', '');
+        const keyTab = new KeyboardEvent("keydown", { code : "Tab" });
+        controller.handlerKeyDown(keyTab);
         expect(component.handleValueChange).toHaveBeenCalled();
         expect(component.setFocus).toHaveBeenCalled();
       });
@@ -110,32 +118,13 @@ describe('spec:ods-select-controller', () => {
         expect(item1.getAttribute('selected')).toBe(null);
       });
 
-      it('should select option with tab', () => {
-        setup({ opened: true });
-        const keyTab = new KeyboardEvent("keydown", { code : "Tab" });
-        controller.handlerKeyDown(keyTab);
-        expect(item1.getAttribute('selected')).toBe("");
-      });
-
-      it('should select option with tab + shift', () => {
-        setup({ opened: true });
-        const keyTab = new KeyboardEvent("keydown", { code : "Tab" });
-        controller.handlerKeyDown(keyTab);
-        controller.handlerKeyDown(keyTab);
-        const keyTabShift = new KeyboardEvent("keydown", { code : "Tab", shiftKey: true });
-        controller.handlerKeyDown(keyTabShift);
-        expect(item1.getAttribute('selected')).toBe("");
-      });
-
-      it('should select last option with many arrow down', () => {
+      it('should go back to first option when focus change after the last option', () => {
         setup({ opened: true });
         const keyArrowDown = new KeyboardEvent("keydown", { code : "ArrowDown" });
+        item1.setAttribute('selected', '');
         controller.handlerKeyDown(keyArrowDown);
         controller.handlerKeyDown(keyArrowDown);
-        controller.handlerKeyDown(keyArrowDown);
-        controller.handlerKeyDown(keyArrowDown);
-        controller.handlerKeyDown(keyArrowDown);
-        expect(item2.getAttribute('selected')).toBe("");
+        expect(item1.getAttribute('selected')).toBe("");
       });
 
       it('should select option with arrow up', () => {

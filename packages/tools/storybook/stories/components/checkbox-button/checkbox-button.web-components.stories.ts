@@ -70,7 +70,7 @@ const storyParams = {
 };
 
 export default {
-  title: 'UI Components/Checkbox/Checkbox Button [atom]/Web Component',
+  title: 'UI Components/Checkbox Button [atom]/Web Component',
   parameters: {
     notes: {
       API: iframe('/stencil-checkbox-button/modules/index.html'),

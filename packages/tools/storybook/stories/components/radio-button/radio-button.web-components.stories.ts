@@ -66,7 +66,7 @@ const storyParams = {
 };
 
 export default {
-  title: 'UI Components/Radio/Radio Button [atom]/Web Component',
+  title: 'UI Components/Radio Button [atom]/Web Component',
   parameters: {
     notes: {
       API: iframe('/stencil-radio-button/modules/index.html'),

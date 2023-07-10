@@ -23,7 +23,7 @@ const storyParams = {
 };
 
 export default {
-  title: 'UI Components/Radio/Radio [meta]/Web Component',
+  title: 'Meta Components/Radio [meta]/Web Component',
   parameters: {
     notes: {
       API: iframe('stencil-components-radio/modules/index.html'),

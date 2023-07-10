@@ -90,6 +90,7 @@ export class OsdsRadio implements OdsRadio<OdsStencilMethods<OdsRadioMethods>, O
   @Watch('disabled')
   updateDisabledOnChild(disabled: boolean): void {
     this.controller.updateDisabledOnChild(disabled);
+    this.buttonTabindex = disabled ? -1 : 0;
   }
 
   @Watch('checking')

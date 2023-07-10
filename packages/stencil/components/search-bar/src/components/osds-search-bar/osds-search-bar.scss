@@ -1,0 +1,24 @@
+@import 'styles/osds-search-bar.mixins';
+@import 'styles/osds-search-bar.color';
+@import 'styles/osds-search-bar.size';
+@import 'styles/osds-search-bar.typography';
+@import '~@ovhcloud/ods-theming/color/ods-theming-color';
+@import '~@ovhcloud/ods-theming/ods-theme';
+
+// CSS targeted only for this component
+// /!\ for theming purposes, it has to be done in theming files
+// (i.e. packages/libraries/theming/...)
+:host {
+
+}
+
+:host([attribute]) {
+
+}
+
+// apply the theme template for the component
+@include ods-theme-component() {
+  @include osds-search-bar-theme-color();
+  @include osds-search-bar-theme-size();
+  @include osds-search-bar-theme-typography();
+}

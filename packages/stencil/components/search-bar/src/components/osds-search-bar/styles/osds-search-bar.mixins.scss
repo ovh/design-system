@@ -1,0 +1,13 @@
+// general mixins and functions for the component
+
+@mixin osds-search-bar-on-selected-host() {
+  :host(&) {
+    @content;
+  }
+}
+
+@mixin osds-search-bar-on-main-element() {
+  .search-bar__wrapper {
+    @content;
+  }
+}

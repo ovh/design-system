@@ -30,7 +30,8 @@ import {
   State,
   Watch,
   h,
-  Listen
+  Listen,
+  forceUpdate
 } from '@stencil/core';
 import { HTMLStencilElement } from '@stencil/core/internal';
 
@@ -87,6 +88,12 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
     if (value) {
       this.itemPerPage = typeof value === 'number' ? value : parseInt(value, 10);
     }
+  }
+
+  @Watch('labelTooltipNext')
+  @Watch('labelTooltipPrevious')
+  updateLabelTooltip() {
+    forceUpdate(this.el);
   }
 
   @Watch('current')

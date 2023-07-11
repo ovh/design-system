@@ -1,15 +1,11 @@
-jest.mock('@ovhcloud/ods-core/src/components/search-bar/ods-search-bar-controller'); // keep jest.mock before any
-
 import {
   OdsSearchBarAttributes,
-  OdsSearchBarController,
   OdsComponentAttributes2StringAttributes,
   odsSearchBarDefaultAttributes,
 } from '@ovhcloud/ods-core';
 import {
   OdsCreateAttributes,
   OdsStringAttributes2Str,
-  odsSearchBarBaseAttributes,
   odsUnitTestAttribute
 } from '@ovhcloud/ods-testing';
 import { SpecPage, newSpecPage } from '@stencil/core/testing';
@@ -22,14 +18,13 @@ describe('spec:osds-search-bar', () => {
   let page: SpecPage;
   let root: HTMLElement | undefined;
   let instance: OsdsSearchBar;
-  let controller: OdsSearchBarController;
 
   afterEach(() => {
     jest.clearAllMocks();
   });
 
   async function setup({ attributes = {} }: { attributes?: Partial<OdsSearchBarAttributes> } = {}) {
-    const minimalAttributes: OdsSearchBarAttributes = OdsCreateAttributes(attributes, odsSearchBarBaseAttributes);
+    const minimalAttributes: OdsSearchBarAttributes = OdsCreateAttributes(attributes, odsSearchBarDefaultAttributes);
     const stringAttributes = OdsComponentAttributes2StringAttributes<OdsSearchBarAttributes>(minimalAttributes, odsSearchBarDefaultAttributes);
 
     page = await newSpecPage({
@@ -39,7 +34,6 @@ describe('spec:osds-search-bar', () => {
 
     root = page.root;
     instance = page.rootInstance;
-    controller = (OdsSearchBarController as unknown as jest.SpyInstance<OdsSearchBarController, unknown[]>).mock.instances[0];
   }
 
   it('should render', async () => {
@@ -55,14 +49,61 @@ describe('spec:osds-search-bar', () => {
       setup
     };
 
-    // Attributes Unit testing
-  });
+    describe('contrasted', () => {
+      odsUnitTestAttribute<OdsSearchBarAttributes, 'contrasted'>({
+        ...getAttributeContextOptions<OdsSearchBarAttributes, OsdsSearchBar, 'contrasted'>({
+          name: 'contrasted',
+          list: [true, false],
+          defaultValue: odsSearchBarDefaultAttributes.contrasted,
+          ...config
+        })
+      });
+    });
 
-  describe('controller', () => {
-    it('should call controller.validateAttributes', async () => {
-      await setup();
-      expect(controller.validateAttributes).toHaveBeenCalledWith();
-      expect(controller.validateAttributes).toHaveBeenCalledTimes(1);
+    describe('disabled', () => {
+      odsUnitTestAttribute<OdsSearchBarAttributes, 'disabled'>({
+        ...getAttributeContextOptions<OdsSearchBarAttributes, OsdsSearchBar, 'disabled'>({
+          name: 'disabled',
+          list: [true, false],
+          defaultValue: odsSearchBarDefaultAttributes.disabled,
+          ...config
+        })
+      });
+    });
+
+    describe('loading', () => {
+      odsUnitTestAttribute<OdsSearchBarAttributes, 'loading'>({
+        ...getAttributeContextOptions<OdsSearchBarAttributes, OsdsSearchBar, 'loading'>({
+          name: 'loading',
+          list: [true, false],
+          defaultValue: odsSearchBarDefaultAttributes.loading,
+          ...config
+        })
+      });
+    });
+
+    describe('placeholder', () => {
+      odsUnitTestAttribute<OdsSearchBarAttributes, 'placeholder'>({
+        ...getAttributeContextOptions<OdsSearchBarAttributes, OsdsSearchBar, 'placeholder'>({
+          name: 'placeholder',
+          list: ['', 'some placeholder'],
+          defaultValue: odsSearchBarDefaultAttributes.placeholder,
+          ...config
+        })
+      });
+    });
+
+    describe('value', () => {
+      odsUnitTestAttribute<OdsSearchBarAttributes, 'value'>({
+        ...getAttributeContextOptions<OdsSearchBarAttributes, OsdsSearchBar, 'value'>({
+          name: 'value',
+          list: ['', 'some value'],
+          defaultValue: odsSearchBarDefaultAttributes.value,
+          ...config
+        })
+      });
     });
   });
+
+  
 });

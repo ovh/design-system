@@ -5,15 +5,26 @@
 @import '~@ovhcloud/ods-theming/color/ods-theming-color';
 @import '~@ovhcloud/ods-theming/ods-theme';
 
-// CSS targeted only for this component
-// /!\ for theming purposes, it has to be done in theming files
-// (i.e. packages/libraries/theming/...)
 :host {
-
+  display: inline-flex;
+  osds-select::part(section), .first {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+  }
+  osds-input {
+    flex: auto;
+  }
+  osds-input:not(.first) {
+    border-radius: 0;
+  }
+  osds-button::part(button) {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+  }
 }
 
-:host([attribute]) {
-
+:host([disabled]) {
+  cursor: not-allowed;
 }
 
 // apply the theme template for the component

@@ -70,10 +70,25 @@ export function ocdkSurfaceSymmetryTlBl(): OcdkSurfaceOnePositionStrategy<OcdkSu
             loggerSymmetry.log('[COMPUTE] already switched off but no enough space: continue with the fallback of tl-bl', opt.switchFrom);
             return opt.switchFrom.position.STRATEGIES.FALLBACK;
           }
+          if (opt.measurements.surfaceSize.width > opt.inspections.comfort.availableRight) {
+            return {
+              cornerPoints: {
+                anchor: OcdkSurfaceNormalizedCorner.BOTTOM_RIGHT,
+                origin: OcdkSurfaceNormalizedCorner.TOP_RIGHT
+              }
+            };
+          }
           return {
             cornerPoints: {
               anchor: OcdkSurfaceNormalizedCorner.BOTTOM_LEFT,
               origin: OcdkSurfaceNormalizedCorner.TOP_LEFT
+            }
+          };
+        } else if (opt.measurements.surfaceSize.width > opt.inspections.comfort.availableRight) {
+          return {
+            cornerPoints: {
+              anchor: OcdkSurfaceNormalizedCorner.TOP_RIGHT,
+              origin: OcdkSurfaceNormalizedCorner.BOTTOM_RIGHT
             }
           };
         }

@@ -70,10 +70,25 @@ export function ocdkSurfaceSymmetryTrTl(): OcdkSurfaceOnePositionStrategy<OcdkSu
             loggerSymmetry.log('[COMPUTE] already switched off but no enough space: continue with the fallback of tr-tl', opt.switchFrom);
             return opt.switchFrom.position.STRATEGIES.FALLBACK;
           }
+          if (opt.measurements.surfaceSize.height > opt.inspections.comfort.availableBottom) {
+            return {
+              cornerPoints: {
+                anchor: OcdkSurfaceNormalizedCorner.BOTTOM_LEFT,
+                origin: OcdkSurfaceNormalizedCorner.BOTTOM_RIGHT
+              }
+            };
+          }
           return {
             cornerPoints: {
               anchor: OcdkSurfaceNormalizedCorner.TOP_LEFT,
               origin: OcdkSurfaceNormalizedCorner.TOP_RIGHT
+            }
+          };
+        } else if (opt.measurements.surfaceSize.height > opt.inspections.comfort.availableBottom) {
+          return {
+            cornerPoints: {
+              anchor: OcdkSurfaceNormalizedCorner.BOTTOM_RIGHT,
+              origin: OcdkSurfaceNormalizedCorner.BOTTOM_LEFT
             }
           };
         }

@@ -1,5 +1,6 @@
 import { Component, Host, h, Prop, Event, EventEmitter } from '@stencil/core';
 import {
+  odsFileItemDefaultAttributes,
   OdsIconName, OdsIconSize, OdsFileItem, OdsFileItemController
 } from '@ovhcloud/ods-core';
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
@@ -12,10 +13,10 @@ import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 export class OsdsFileItem implements OdsFileItem {
   controller: OdsFileItemController = new OdsFileItemController(this);
 
-  @Prop({ reflect: true }) public error = false;
+  @Prop({ reflect: true }) public error = odsFileItemDefaultAttributes.error;
   @Prop({ reflect: true }) public name!: string;
   @Prop({ reflect: true }) public size!: number;
-  @Prop({ reflect: true }) public progress?: number = undefined;
+  @Prop({ reflect: true }) public progress = odsFileItemDefaultAttributes.progress;
 
   @Event() cancel!: EventEmitter<void>;
   componentWillRender(): void {
@@ -32,7 +33,7 @@ export class OsdsFileItem implements OdsFileItem {
     <osds-icon color={OdsThemeColorIntent.primary} name={OdsIconName.FILE} size={OdsIconSize.sm}></osds-icon>
       <div class={{
         'ods-file__item__label': true,
-        'ods-file__item__label--errored': this.error,
+        'ods-file__item__label--errored': this.error ?? false,
       }}>
         <span>{this.name}</span>
         <span> ({this.getSizeInKiloBytes(this.size)} Ko)</span>

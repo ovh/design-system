@@ -17,3 +17,4 @@ type ExtractKeys<T, TKeyValue> = NonNullable<
 type ExcludeKeys<T, TKeyValue> = Exclude<keyof T, ExtractKeys<T, TKeyValue>>;
 
 export type RequiredAttributes<T> = Pick<T, ExcludeKeys<T, undefined>>;
+export type OptionalAttributes<T> = Omit<T, keyof RequiredAttributes<T>>;

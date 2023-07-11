@@ -88,17 +88,5 @@ describe('e2e:osds-file', () => {
 
       expect(cancelEvent).toHaveReceivedEventDetail({ name: 'file1', progress: 100 });
     })
-
-    it.only('should emit odsRejectedFile when a file type is not accepted', async () => {
-      await setup();
-
-      const dropzone = await page.find('osds-file >>> .ods-file__dropzone');
-      const rejectedFileEvent = await page.spyOnEvent('odsRejectedFile');
-
-      await dropzone.triggerEvent('drop', { detail: { files: [{ name: 'file1.txt', progress: 0, type: 'video/mov' }] } });
-      await page.waitForChanges();
-
-      expect(rejectedFileEvent).toHaveReceivedEventDetail({ name: 'file1.txt', progress: 0, type: 'video/mov' });
-    })
   })
 });

@@ -37,7 +37,7 @@ export class OsdsFormField implements OdsFormField<OdsStencilMethods<OdsFormFiel
 
     return (
       <Host>
-        <div>
+        <div class="top-bar">
           <slot name="label"></slot>
           <slot name="visual-hint"></slot>
         </div>

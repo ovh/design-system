@@ -14,17 +14,17 @@
   flex-direction: column;
 }
 
-:host > div:first-of-type {
+:host([flex]) {
+  width: 100%;
+}
+
+:host .top-bar {
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-end;
   margin-bottom: var(--ods-size-03);
-}
-
-:host([flex]) {
-  width: 100%;
 }
 
 // apply the theme template for the component

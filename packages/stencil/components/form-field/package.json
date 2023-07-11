@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-stencil-form-field",
-  "version": "13.0.1",
+  "version": "14.0.1",
   "private": true,
   "description": "FormField component",
   "author": "OVH SAS",

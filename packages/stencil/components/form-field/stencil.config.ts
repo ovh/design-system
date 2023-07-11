@@ -11,11 +11,23 @@ export const config: Config = getStencilConfig({
   reactOutput: {
     componentCorePackage: '@ovhcloud/ods-stencil/components/form-field',
     // exclude peer dependencies that corresponds to www usage
-    excludeComponents: []
+    excludeComponents: [
+      'osds-input',
+      'osds-textarea',
+      'osds-link',
+      'osds-tooltip',
+      'osds-text',
+    ]
   },
   vueOutput: {
     componentCorePackage: '@ovhcloud/ods-stencil/components/form-field',
-    excludeComponents: []
+    excludeComponents: [
+      'osds-input',
+      'osds-textarea',
+      'osds-link',
+      'osds-tooltip',
+      'osds-text',
+    ]
   },
   dev: {
     globalScript: 'src/global.dev.ts',

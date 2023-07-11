@@ -48,14 +48,6 @@ describe('OdsFileItemController', () => {
       const { controller } = setup({ size: undefined as any });
       expect(() => controller.validateAttributes()).toThrowError('ods-file-item: size attribute is required');
     });
-    it('should throw an error if progress is not a number', () => {
-      const { controller } = setup({ progress: 'not a number' as any });
-      expect(() => controller.validateAttributes()).toThrowError('ods-file-item: progress attribute must be a number');
-    });
-    it('should throw an error if error is not a boolean', () => {
-      const { controller } = setup({ error: 'not a boolean' as any });
-      expect(() => controller.validateAttributes()).toThrowError('ods-file-item: error attribute must be a boolean');
-    });
   });
 
   describe('methods', () => {

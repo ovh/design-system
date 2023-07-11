@@ -31,7 +31,6 @@ export class OsdsFileHeader implements OdsFileHeader {
   }
 
   handleFilesSelected = (e: Event) => {
-    console.log(e)
     this.controller.getFilesFromSelection(e)
   }
   render() {

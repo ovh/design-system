@@ -1,7 +1,11 @@
 import { OsdsFileItem } from './osds-file-item';
 import { newSpecPage } from '@stencil/core/testing';
-import { OdsFileItemAttributes } from '@ovhcloud/ods-core/src';
+import {
+  OdsComponentAttributes2StringAttributes,
+  OdsFileItemAttributes,
+} from '@ovhcloud/ods-core/src';
 import { RequiredAttributes } from '@ovhcloud/ods-core/src/utils/properties/ods-extract-attributes-type';
+import { OdsCreateAttributes, OdsStringAttributes2Str } from '@ovhcloud/ods-testing/src';
 
 const requiredAttributes: RequiredAttributes<OdsFileItemAttributes> = {
   name: 'test.jpg',
@@ -10,21 +14,16 @@ const requiredAttributes: RequiredAttributes<OdsFileItemAttributes> = {
 
 describe('spec:osds-file-item', () => {
   async function setup({ attributes = requiredAttributes as Partial<OdsFileItemAttributes> }  = {}) {
-    const allAttributes = {
-      ...requiredAttributes,
-      ...attributes,
-    }
+    const minimalAttributes: OdsFileItemAttributes = OdsCreateAttributes(attributes, requiredAttributes);
+    const stringAttributes = OdsComponentAttributes2StringAttributes<OdsFileItemAttributes>(minimalAttributes, requiredAttributes);
+
     const page = await newSpecPage({
       components: [OsdsFileItem],
-      html: `<osds-file-item name=${allAttributes.name} size=${allAttributes.size} />`,
+      html: `<osds-file-item ${OdsStringAttributes2Str(stringAttributes)}/>`,
     });
 
     if(!page.root) {
       throw new Error('root is null');
-    }
-
-    for(const [key, value] of Object.entries(allAttributes)) {
-      page.root[key] = value;
     }
 
     await page.waitForChanges();
@@ -78,7 +77,6 @@ describe('spec:osds-file-item', () => {
       const mockEvent = jest.fn();
       root?.addEventListener('cancel', mockEvent);
       root?.shadowRoot?.querySelector('.ods-file__item osds-button')?.dispatchEvent(new MouseEvent('click'));
-      console.log(root?.shadowRoot?.innerHTML);
 
       await waitForChanges();
       expect(mockEvent).toHaveBeenCalled();

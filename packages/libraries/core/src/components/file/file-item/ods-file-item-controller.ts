@@ -18,12 +18,6 @@ export class OdsFileItemController extends OdsComponentController<OdsFileItem> {
     if (!this.component.size) {
       throw new Error('ods-file-item: size attribute is required');
     }
-    if (this.component.progress && typeof this.component.progress !== 'number') {
-      throw new Error('ods-file-item: progress attribute must be a number');
-    }
-    if (this.component.error && typeof this.component.error !== 'boolean') {
-      throw new Error('ods-file-item: error attribute must be a boolean');
-    }
   }
   getSizeInKiloBytes(size: number) {
     return Math.round(size / 1000);

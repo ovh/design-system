@@ -1,9 +1,9 @@
 @import '~@ovhcloud/ods-theming/typography/ods-theming-typography';
 @import '~@ovhcloud/ods-theming/typography/ods-component-typography';
-@import './osds-dropzone.mixins';
+@import './osds-file.mixins';
 
 // Main CSS mixin for typography
-@mixin osds-dropzone-theme-typography() {
+@mixin osds-file-theme-typography() {
   :host .ods-file__dropzone {
     $typography-properties: ods-get-typography-properties(body, '400');
     font-family: ods-get-typography-property($typography-properties, font-family);

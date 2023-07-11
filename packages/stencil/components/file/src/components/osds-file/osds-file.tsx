@@ -7,7 +7,7 @@ import {
 
 @Component({
   tag: 'osds-file',
-  styleUrl: 'osds-dropzone.scss',
+  styleUrl: 'osds-file.scss',
   shadow: true
 })
   export class OsdsFile implements OdsFile {
@@ -48,7 +48,6 @@ import {
       this.controller.onDragLeave(e);
     }
     onDrop = (e: DragEvent) => {
-      console.log('onDrop');
       this.controller.onDrop(e);
     }
     @Listen('filesSelected')

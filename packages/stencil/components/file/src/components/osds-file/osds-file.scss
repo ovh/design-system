@@ -1,9 +1,9 @@
 @import '~@ovhcloud/ods-theming/color/ods-theming-color';
 @import '~@ovhcloud/ods-theming/ods-theme';
-@import 'styles/osds-dropzone.mixins';
-@import 'styles/osds-dropzone.color';
-@import 'styles/osds-dropzone.size';
-@import 'styles/osds-dropzone.typography';
+@import 'styles/osds-file.mixins';
+@import 'styles/osds-file.color';
+@import 'styles/osds-file.size';
+@import 'styles/osds-file.typography';
 
 // CSS targeted only for this component
 // /!\ for theming purposes, it has to be done in theming files
@@ -161,7 +161,7 @@
 
 // apply the theme template for the component
 @include ods-theme-component() {
-  @include osds-dropzone-theme-color();
-  @include osds-dropzone-theme-size();
-  @include osds-dropzone-theme-typography();
+  @include osds-file-theme-color();
+  @include osds-file-theme-size();
+  @include osds-file-theme-typography();
 }

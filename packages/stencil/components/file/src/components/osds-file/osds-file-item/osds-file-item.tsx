@@ -7,7 +7,7 @@ import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 
 @Component({
   tag: 'osds-file-item',
-  styleUrl: '../osds-dropzone.scss',
+  styleUrl: '../osds-file.scss',
   shadow: true
 })
 export class OsdsFileItem implements OdsFileItem {

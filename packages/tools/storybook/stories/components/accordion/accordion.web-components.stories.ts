@@ -40,7 +40,7 @@ const storyParams = {
 };
 
 export default {
-  title: 'UI Components/Accordion/Accordion [atom]/Web Component',
+  title: 'UI Components/Accordion [atom]/Web Component',
   parameters: {
     notes: {
       API: iframe('/stencil-accordion/modules/index.html'),

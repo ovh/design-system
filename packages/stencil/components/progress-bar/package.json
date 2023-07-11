@@ -2,7 +2,7 @@
   "name": "@ovhcloud/ods-stencil-progress-bar",
   "version": "14.0.1",
   "private": true,
-  "description": "ProgressBar component",
+  "description": "Progress Bar component",
   "author": "OVH SAS",
   "license": "Apache-2.0",
   "main": "dist/index.cjs.js",

@@ -51,6 +51,8 @@ export const parameters = {
         ],
         'UI Components',
         ['Introduction'],
+        'Meta Components',
+        ['Introduction'],
         'Contributing',
         ['Get Started', 'Deployment and Versioning', 'Repository Strategy', 'Troubleshooting Notes'],
         'Libraries',

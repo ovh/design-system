@@ -27,7 +27,7 @@ const storyParams = {
 };
 
 export default {
-  title: 'UI Components/Collapsible [meta]/Web Component',
+  title: 'Meta Components/Collapsible [meta]/Web Component',
   parameters: {
     notes: {
       API: iframe('/stencil-collapsible/modules/index.html'),

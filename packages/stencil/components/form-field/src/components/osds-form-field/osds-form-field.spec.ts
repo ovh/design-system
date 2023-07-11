@@ -77,12 +77,4 @@ describe('spec:osds-form-field', () => {
       });
     });
   });
-
-  // describe('controller', () => {
-  //   it('should call controller.validateAttributes', async () => {
-  //     await setup();
-  //     expect(controller.validateAttributes).toHaveBeenCalledWith();
-  //     expect(controller.validateAttributes).toHaveBeenCalledTimes(1);
-  //   });
-  // });
 });

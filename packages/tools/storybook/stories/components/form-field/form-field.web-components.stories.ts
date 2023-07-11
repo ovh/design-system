@@ -1,5 +1,6 @@
 import { html } from 'lit-html';
 import { iframe } from '../../../.storybook/iframe';
+import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 import { odsFormFieldDefaultAttributes } from '@ovhcloud/ods-core';
 import { defineCustomElements } from '@ovhcloud/ods-stencil-form-field/loader';
 import {
@@ -24,32 +25,26 @@ const storyParams = {
     defaultValue: odsFormFieldDefaultAttributes.error,
   },
   label: {
-    category: 'Misc',
-    defaultValue: true,
-    control: {
-      type: 'boolean',
-    },
+    category: 'Slot',
+    defaultValue: `<osds-text level='heading' color="primary">
+  Description
+</osds-text>`,
   },
   visualHint: {
-    category: 'Misc',
-    defaultValue: true,
-    control: {
-      type: 'boolean',
-    },
+    category: 'Slot',
+    defaultValue: `<osds-text>
+  150/200
+</osds-text>`,
   },
   input: {
-    category: 'Misc',
-    defaultValue: true,
-    control: {
-      type: 'boolean',
-    },
+    category: 'Slot',
+    defaultValue: `<osds-input type="text" id="input" value="Just ODS being ahead"></osds-input>`,
   },
   helper: {
-    category: 'Misc',
-    defaultValue: true,
-    control: {
-      type: 'boolean',
-    },
+    category: 'Slot',
+    defaultValue: `<osds-text>
+  Write a few sentences about you
+</osds-text>`,
   },
 };
 
@@ -68,19 +63,10 @@ export default {
 /* Default */
 const TemplateDefault = (args:any) => {
   return html`<osds-form-field ...=${getTagAttributes(args)}>
-    ${args.label ? html`<osds-text slot="label" level='heading' color="primary">
-      Description
-    </osds-text>` : ''}
-
-    ${args.visualHint ? html`<osds-text slot="visual-hint">
-      150/200
-    </osds-text>` : ''}
-
-    ${args.input ? html`<osds-input type="text" id="input" value="Just ODS being ahead"></osds-input>` : ''}
-
-    ${args.helper ? html`<osds-text slot="helper">
-      Write a few sentences about you
-    </osds-text>` : ''}
+    <div slot="label">${unsafeHTML(args.label)}</div>
+    <div slot="visual-hint">${unsafeHTML(args.visualHint)}</div>
+    ${unsafeHTML(args.input)}
+    <div slot="helper">${unsafeHTML(args.helper)}</div>
   </osds-form-field>`;
 }
 

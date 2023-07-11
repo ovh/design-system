@@ -15,10 +15,28 @@
 </head>
 <body>
 
-<osds-search-bar>SearchBar</osds-search-bar>
+<p>SearchBar</p>
+<osds-search-bar></osds-search-bar>
+
+<p>SearchBar with value</p>
+<osds-search-bar value="with value"></osds-search-bar>
+
+<p>SearchBar with loading</p>
+<osds-search-bar value="with value" loading></osds-search-bar>
+
+<p>SearchBar with options</p>
+<osds-search-bar id="search-bar-options" value="with value"></osds-search-bar>
+
+<p>SearchBar disabled</p>
+<osds-search-bar disabled></osds-search-bar>
 
 <script>
-  document.querySelectorAll('ods-search-bar').forEach((elem) => {});
+  const searchBarOptions = document.querySelector('#search-bar-options');
+  searchBarOptions.options = [{
+    label: "options1",
+    value: "1"
+  }];
+  searchBarOptions.addEventListener('odsSearchSubmit', () => console.log('odsSearchSubmit trigger'))
 </script>
 </body>
 </html>

@@ -54,9 +54,9 @@ describe('OdsFileItemController', () => {
     describe('getSizeInKiloBytes', () => {
       it('should return the size in kilo bytes', () => {
         const { controller } = setup();
-        expect(controller.getSizeInKiloBytes(1000)).toEqual(1);
-        expect(controller.getSizeInKiloBytes(1500)).toEqual(2);
-        expect(controller.getSizeInKiloBytes(2000)).toEqual(2);
+        expect(controller.getSizeInKiloBytes(1000)).toBe(1);
+        expect(controller.getSizeInKiloBytes(1500)).toBe(2);
+        expect(controller.getSizeInKiloBytes(2000)).toBe(2);
       });
     });
   })

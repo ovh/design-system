@@ -20,6 +20,8 @@ export class OdsFileItemController extends OdsComponentController<OdsFileItem> {
     }
   }
   getSizeInKiloBytes(size: number) {
-    return Math.round(size / 1000);
+    const result = Math.round(size / 1000);
+
+    return isNaN(result) ? 0 : result;
   }
 }

@@ -27,4 +27,16 @@ export interface OdsFileAttributes extends OdsComponentAttributes {
    * max file number
    */
   maxFiles?: number;
+  /**
+   * title
+   */
+  headerTitle?: string;
+  /**
+   * divider label
+   */
+  dividerLabel?: string;
+  /**
+   * select files label link
+   */
+  selectFilesLabel?: string;
 }

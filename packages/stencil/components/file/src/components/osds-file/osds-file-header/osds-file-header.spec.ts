@@ -1,7 +1,11 @@
 import { newSpecPage } from '@stencil/core/testing';
 import { OsdsFileHeader } from './osds-file-header';
-import { OdsFileHeaderAttributes } from '@ovhcloud/ods-core/src';
+import {
+  OdsComponentAttributes2StringAttributes,
+  OdsFileHeaderAttributes,
+} from '@ovhcloud/ods-core/src';
 import { RequiredAttributes } from '@ovhcloud/ods-core/src/utils/properties/ods-extract-attributes-type';
+import { OdsCreateAttributes, OdsStringAttributes2Str } from '@ovhcloud/ods-testing/src';
 
 const requiredAttributes: RequiredAttributes<OdsFileHeaderAttributes> = {
   isSuccessful: false,
@@ -9,21 +13,20 @@ const requiredAttributes: RequiredAttributes<OdsFileHeaderAttributes> = {
 
 describe('spec:osds-file-header', () => {
   async function setup({ attributes = requiredAttributes as Partial<OdsFileHeaderAttributes> }  = {}) {
-    const allAttributes = {
-      ...requiredAttributes,
-      ...attributes,
-    }
+    const minimalAttributes: OdsFileHeaderAttributes = OdsCreateAttributes(attributes, requiredAttributes);
+    const stringAttributes = OdsComponentAttributes2StringAttributes<OdsFileHeaderAttributes>(minimalAttributes, requiredAttributes);
+
+    console.log('stringAttributes', stringAttributes)
+
+    console.log('OdsStringAttributes2Str(stringAttributes)', OdsStringAttributes2Str(stringAttributes))
+
     const page = await newSpecPage({
       components: [OsdsFileHeader],
-      html: `<osds-file-header is-successful=${attributes.isSuccessful} />`,
+      html: `<osds-file-header - ${OdsStringAttributes2Str(stringAttributes)} />`,
     });
 
     if(!page.root) {
       throw new Error('root is null');
-    }
-
-    for(const [key, value] of Object.entries(allAttributes)) {
-      page.root[key] = value;
     }
 
     await page.waitForChanges();
@@ -66,6 +69,21 @@ describe('spec:osds-file-header', () => {
     it('should display extensions of accepted types', async () => {
       const { root } = await setup({ attributes: { acceptedTypes: 'image/jpg, image/png, application/pdf' } });
       expect(root?.shadowRoot?.querySelector('.ods-file__dropzone__header__title__types')?.textContent).toBe('(jpg, png, pdf)');
+    })
+
+    it('should display title', async () => {
+      const { root } = await setup({ attributes: { title: 'Glisser-déposer' } });
+      expect(root?.shadowRoot?.querySelector('.ods-file__dropzone__header__title__label')?.textContent).toBe('Glisser-déposer');
+    })
+
+    it('should display divider label', async () => {
+      const { root } = await setup({ attributes: { dividerLabel: 'or' } });
+      expect(root?.shadowRoot?.querySelector('.ods-file__dropzone__header__or')?.textContent).toBe('or');
+    })
+
+    it('should display select files label', async () => {
+      const { root } = await setup({ attributes: { selectFilesLabel: 'Select files' } });
+      expect(root?.shadowRoot?.querySelector('.ods-file__dropzone__header__link label')?.textContent).toBe('Select files');
     })
   })
 

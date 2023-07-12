@@ -69,6 +69,16 @@ describe('spec:osds-file', () => {
       expect(instance.acceptedTypes).toBe('image/jpg, image/png');
     })
 
+    it.each([
+      ['dividerLabel', 'ou'],
+      ['selectFilesLabel', 'sélectionner un fichier'],
+      ['title', 'Glisser-déposer une pièce jointe'],
+    ])('should bind %p attribute with osds-file-header', async (attribute, value) => {
+      await setup({ attributes: { [attribute]: value } });
+      const header = root?.shadowRoot?.querySelector('osds-file-header');
+      expect(header?.getAttribute(attribute)).toBe(value);
+    })
+
     it('should add disabled class if disabled prop is true', async () => {
       await setup({ attributes: { disabled: true } });
       expect(dropzoneDiv.classList.contains('ods-file__dropzone--disabled')).toBeTruthy();

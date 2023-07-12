@@ -15,6 +15,9 @@ export class OsdsFileHeader implements OdsFileHeader {
   @Prop({ reflect: true }) public disabled = odsFileDefaultAttributes.disabled;
   @Prop({ reflect: true }) public errorMessage = odsFileDefaultAttributes.errorMessage;
   @Prop({ reflect: true }) public acceptedTypes = odsFileDefaultAttributes.acceptedTypes;
+  @Prop({ reflect: true }) public headerTitle = odsFileDefaultAttributes.headerTitle;
+  @Prop({ reflect: true }) public dividerLabel = odsFileDefaultAttributes.dividerLabel;
+  @Prop({ reflect: true }) public selectFilesLabel = odsFileDefaultAttributes.selectFilesLabel;
 
   @Event() filesSelected!: EventEmitter<File[]>;
 
@@ -27,13 +30,32 @@ export class OsdsFileHeader implements OdsFileHeader {
   }
 
   acceptedExtensions = () => {
-    return this.controller.getAcceptedTypes()
+    return this.controller.acceptedExtensions()
   }
 
   handleFilesSelected = (e: Event) => {
     this.controller.getFilesFromSelection(e)
   }
   render() {
+      const normalContent =
+        <div>
+          <div class='ods-file__dropzone__header__title'>
+            <span class='ods-file__dropzone__header__title__label '>{this.headerTitle}</span>
+            <span class='ods-file__dropzone__header__title__types'>({this.acceptedExtensions()})</span>
+          </div>
+        <span class='ods-file__dropzone__header__or'>{this.dividerLabel}</span>
+        <osds-link class='ods-file__dropzone__header__link' type="button" disabled={this.disabled}>
+          <label htmlFor="file">{this.selectFilesLabel}</label>
+          <span slot='end'><osds-icon name={OdsIconName.ARROW_RIGHT} size={OdsIconSize.xs}
+                                      color={OdsThemeColorIntent.primary} /></span>
+        </osds-link>
+        <input type="file" id="file" name="file" style={{ display: 'none' }}
+               onChange={this.handleFilesSelected}
+               multiple
+               accept={this.acceptedTypes}
+        />
+      </div>
+
       if(this.errorMessage) {
         return <div class='ods-file__dropzone--errored__header'>
           <div class='ods-file__dropzone--errored__header__message'>
@@ -46,23 +68,7 @@ export class OsdsFileHeader implements OdsFileHeader {
             <span class='ods-file__dropzone__header__title__label'>{this.errorMessage}</span>
           </div>
           <section>
-            <div class='ods-file__dropzone__header__title'>
-              <span class='ods-file__dropzone__header__title__label '>Glisser-déposer une pièce jointe</span>
-              <span class='ods-file__dropzone__header__title__types'>({this.acceptedExtensions()})</span>
-            </div>
-            <div>
-              <span class='ods-file__dropzone__header__or'>ou</span>
-              <osds-link class='ods-file__dropzone__header__link' type="button" disabled={this.disabled}>
-                <label htmlFor="file">sélectionner un fichier</label>
-                <span slot='end'><osds-icon name={OdsIconName.ARROW_RIGHT} size={OdsIconSize.xs}
-                                            color={OdsThemeColorIntent.primary} /></span>
-              </osds-link>
-              <input type="file" id="file" name="file" style={{ display: 'none' }}
-                     onChange={this.handleFilesSelected}
-                     multiple
-                     accept={this.acceptedTypes}
-              />
-            </div>
+            {normalContent}
           </section>
         </div>
       } else if(this.isSuccessful) {
@@ -83,34 +89,7 @@ export class OsdsFileHeader implements OdsFileHeader {
       return <div class='ods-file__dropzone__header'>
         <osds-icon name={OdsIconName.PAGE_CONCEPT} color={OdsThemeColorIntent.primary} size={OdsIconSize.xl} />
         <section>
-
-          <div class='ods-file__dropzone__header__title'>
-            <span class='ods-file__dropzone__header__title__label '>Glisser-déposer une pièce jointe</span>
-            <span class='ods-file__dropzone__header__title__types'>({this.acceptedExtensions()})</span>
-          </div>
-
-          <div>
-            <span class='ods-file__dropzone__header__or'>ou</span>
-
-            <osds-link class='ods-file__dropzone__header__link' type="button" disabled={this.disabled}>
-              <label htmlFor="file">sélectionner un fichier</label>
-
-              <span slot='end'>
-                <osds-icon
-                  name={OdsIconName.ARROW_RIGHT}
-                  size={OdsIconSize.xs}
-                  color={OdsThemeColorIntent.primary}
-                />
-              </span>
-            </osds-link>
-
-            <input type="file" id="file" name="file" style={{ display: 'none' }}
-                   onChange={this.handleFilesSelected}
-                   multiple
-                   accept={this.acceptedTypes}
-            />
-          </div>
-
+          {normalContent}
         </section>
       </div>
     }

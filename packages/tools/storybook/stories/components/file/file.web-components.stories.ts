@@ -34,6 +34,18 @@ const storyParams = {
   maxFiles: {
     category: 'Misc',
     defaultValue: 5,
+  },
+  title: {
+    category: 'Misc',
+    defaultValue: 'Glisser-déposer une pièce jointe',
+  },
+  dividerLabel: {
+    category: 'Misc',
+    defaultValue: 'ou',
+  },
+  selectFilesLabel: {
+    category: 'Misc',
+    defaultValue: 'sélectionner un fichier',
   }
 };
 

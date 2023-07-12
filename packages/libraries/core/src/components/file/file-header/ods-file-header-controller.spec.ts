@@ -58,16 +58,16 @@ describe('OdsFileHeaderController', () => {
       });
     });
 
-    describe('getAcceptedTypes', () => {
-      it('should return accepted types', () => {
-        const { controller } = setup({ acceptedTypes: 'image/png,image/jpeg' });
-        expect(controller.getAcceptedTypes()).toBe('png, jpeg');
+    describe('acceptedExtensions', () => {
+      it.each([
+        [undefined, ''],
+        ['image/png,image/jpeg,.docx', 'png, jpeg, docx'],
+        ['image/png, image/jpeg, .docx', 'png, jpeg, docx'],
+        ['image/png, image/jpeg, .docx, .doc, application/pdf', 'png, jpeg, docx, doc, pdf'],
+      ])('should return accepted extensions', (acceptedTypes, extension) => {
+        const { controller } = setup({ acceptedTypes });
+        expect(controller.acceptedExtensions()).toBe(extension);
       });
-
-      it('should return empty string if accepted types is not defined', () => {
-        const { controller } = setup();
-        expect(controller.getAcceptedTypes()).toBe('');
-      })
     })
   })
 });

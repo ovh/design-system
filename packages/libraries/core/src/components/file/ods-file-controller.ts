@@ -14,7 +14,7 @@ export class OdsFileController extends OdsComponentController<OdsFile> {
   }
 
   isDropzoneDisabled = () => {
-    return this.component.disabled || (this.component.files && this.component.files.length >= (this.component.maxFiles as number));
+    return this.component.disabled || (this.component.maxFiles && this.component.files && this.component.files.length >= this.component.maxFiles);
   }
 
   /**
@@ -67,10 +67,7 @@ export class OdsFileController extends OdsComponentController<OdsFile> {
   isFileAccepted(file: File): boolean {
     if(!this.component.acceptedTypes) return true;
 
-    const acceptedTypes = this.component.acceptedTypes.split(',');
-    acceptedTypes.forEach((type, index) => {
-      acceptedTypes[index] = type.trim();
-    });
+    const acceptedTypes = this.component.acceptedTypes.split(',').map((type) => type.trim());
     const fileExtension = file.type;
 
     return acceptedTypes.includes(fileExtension)
@@ -95,12 +92,10 @@ export class OdsFileController extends OdsComponentController<OdsFile> {
     }
 
     // We need to check if we can add all the new files. If not, we need to slice the array to be sure to not exceed the max files
-    if(this.component.maxFiles && this.component.files && (this.component?.files?.length + files.length) >= this.component.maxFiles) {
+    if(this.component.maxFiles && this.component.files && (this.component.files?.length + files.length) >= this.component.maxFiles) {
       const availableLength = this.component.maxFiles - this.component.files.length;
       files = files.slice(0, availableLength);
     }
-
-    console.log('files', files)
 
     const newFiles = files.filter((file) => {
       if(this.isFileAccepted(file)) {

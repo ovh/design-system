@@ -5,4 +5,7 @@ export interface OdsFileHeaderAttributes extends OdsComponentAttributes {
   errorMessage?: string;
   acceptedTypes?: string;
   disabled?: boolean;
+  title?: string;
+  dividerLabel?: string;
+  selectFilesLabel?: string;
 }

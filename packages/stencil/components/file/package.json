@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-stencil-file",
-  "version": "13.0.1",
+  "version": "14.0.1",
   "private": true,
   "description": "File component",
   "author": "OVH SAS",

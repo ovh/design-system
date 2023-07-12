@@ -34,11 +34,13 @@ export class OdsFileHeaderController extends OdsComponentController<OdsFileHeade
     }
   }
 
-  getAcceptedTypes() {
+  // acceptedExtensions must return a string like 'png, jpeg, pdf' it can be 'image/png, image/jpeg, application/pdf, .docx, .doc...'
+  acceptedExtensions() {
     if (!this.component.acceptedTypes) {
       return '';
     }
 
-    return this.component.acceptedTypes?.split(',').map((type) => type.split('/')[1].replace(';', '')).join(', ');
+    return this.component.acceptedTypes
+      .replace(/(image\/)|(application\/)|(\.)/g, '')
   }
 }

@@ -18,6 +18,9 @@ import {
     @Prop({ reflect: true }) public acceptedTypes = odsFileDefaultAttributes.acceptedTypes;
     @Prop({ reflect: true }) public files: OdsFileI[] | undefined = odsFileDefaultAttributes.files;
     @Prop({ reflect: true }) public maxFiles = odsFileDefaultAttributes.maxFiles;
+    @Prop({ reflect: true }) public headerTitle = odsFileDefaultAttributes.headerTitle;
+    @Prop({ reflect: true }) public dividerLabel = odsFileDefaultAttributes.dividerLabel;
+    @Prop({ reflect: true }) public selectFilesLabel = odsFileDefaultAttributes.selectFilesLabel;
 
     @State() dragOver = false;
 
@@ -76,6 +79,9 @@ import {
             onDrop={this.onDrop}
           >
               <osds-file-header
+                header-title={this.headerTitle}
+                dividerLabel={this.dividerLabel}
+                selectFilesLabel={this.selectFilesLabel}
                 errorMessage={this.errorMessage}
                 acceptedTypes={this.acceptedTypes}
                 isSuccessful={this.isSuccessful()}

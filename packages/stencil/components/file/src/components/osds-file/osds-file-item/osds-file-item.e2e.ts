@@ -30,7 +30,7 @@ describe('e2e:osds-file-item', () => {
   }
 
   it('should render', async () => {
-    const page = await setup({ attributes: {} });
+    const page = await setup();
     const el = await page.find('osds-file-item');
     expect(el).not.toBeNull();
     expect(el).toHaveClass('hydrated');

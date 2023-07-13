@@ -16,10 +16,6 @@ describe('spec:osds-file-header', () => {
     const minimalAttributes: OdsFileHeaderAttributes = OdsCreateAttributes(attributes, requiredAttributes);
     const stringAttributes = OdsComponentAttributes2StringAttributes<OdsFileHeaderAttributes>(minimalAttributes, requiredAttributes);
 
-    console.log('stringAttributes', stringAttributes)
-
-    console.log('OdsStringAttributes2Str(stringAttributes)', OdsStringAttributes2Str(stringAttributes))
-
     const page = await newSpecPage({
       components: [OsdsFileHeader],
       html: `<osds-file-header - ${OdsStringAttributes2Str(stringAttributes)} />`,
@@ -66,13 +62,18 @@ describe('spec:osds-file-header', () => {
       expect(!!root?.shadowRoot?.querySelector('.ods-file__dropzone__header')).toBe(normalHeaderExists);
     })
 
-    it('should display extensions of accepted types', async () => {
-      const { root } = await setup({ attributes: { acceptedTypes: 'image/jpg, image/png, application/pdf' } });
-      expect(root?.shadowRoot?.querySelector('.ods-file__dropzone__header__title__types')?.textContent).toBe('(jpg, png, pdf)');
+    it.each([
+      ['', undefined],
+      ['image/jpg', '(jpg)'],
+      ['image/jpg, image/png', '(jpg, png)'],
+      ['image/jpg, image/png, image/gif', '(jpg, png, gif)'],
+    ])('should display %p types as %p extensions', async (acceptedTypes, extensions) => {
+      const { root } = await setup({ attributes: { acceptedTypes } });
+      expect(root?.shadowRoot?.querySelector('.ods-file__dropzone__header__title__types')?.textContent).toBe(extensions);
     })
 
     it('should display title', async () => {
-      const { root } = await setup({ attributes: { title: 'Glisser-déposer' } });
+      const { root } = await setup({ attributes: { headerTitle: 'Glisser-déposer' } });
       expect(root?.shadowRoot?.querySelector('.ods-file__dropzone__header__title__label')?.textContent).toBe('Glisser-déposer');
     })
 

@@ -41,7 +41,7 @@ export class OsdsFileHeader implements OdsFileHeader {
         <div>
           <div class='ods-file__dropzone__header__title'>
             <span class='ods-file__dropzone__header__title__label '>{this.headerTitle}</span>
-            <span class='ods-file__dropzone__header__title__types'>({this.acceptedExtensions()})</span>
+            { this.acceptedTypes && <span class='ods-file__dropzone__header__title__types'>({this.acceptedExtensions()})</span> }
           </div>
         <span class='ods-file__dropzone__header__or'>{this.dividerLabel}</span>
         <osds-link class='ods-file__dropzone__header__link' type="button" disabled={this.disabled}>

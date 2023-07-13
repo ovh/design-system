@@ -17,6 +17,7 @@
 
 <div>
   <osds-file max-files='2'/>
+  <osds-file disabled/>
 </div>
 
 <script>
@@ -44,8 +45,6 @@
     event.detail.forEach((file, index) => {
       // Generate a unique id for each file
       file.id = Math.random().toString(36).substr(2, 9);
-
-      console.log(file)
 
       if(!file.progress) {
         file.progress = 0

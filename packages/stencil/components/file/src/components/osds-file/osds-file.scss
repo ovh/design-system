@@ -58,10 +58,7 @@
     &--disabled {
       cursor: not-allowed;
       border-style: solid;
-
-      #{$baseClass}__header, #{$baseClass}__files {
-        opacity: 0.5;
-      }
+      opacity: 0.5;
     }
 
     &--success {

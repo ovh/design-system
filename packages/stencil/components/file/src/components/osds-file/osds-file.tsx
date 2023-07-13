@@ -55,7 +55,7 @@ import {
     }
     @Listen('filesSelected')
     filesSelectedHandler(event: CustomEvent<File[]>) {
-      this.emitFiles(event.detail);
+      this.controller.emitSelectedFiles(event.detail);
     }
 
     isSuccessful = () => {
@@ -79,7 +79,7 @@ import {
             onDrop={this.onDrop}
           >
               <osds-file-header
-                header-title={this.headerTitle}
+                headerTitle={this.headerTitle}
                 dividerLabel={this.dividerLabel}
                 selectFilesLabel={this.selectFilesLabel}
                 errorMessage={this.errorMessage}

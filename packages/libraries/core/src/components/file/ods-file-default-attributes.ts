@@ -3,7 +3,7 @@ import { OdsFileAttributes, OdsFileI } from './ods-file-attributes';
 export const odsFileDefaultAttributesDoc  = {
   disabled: false,
   errorMessage: '',
-  acceptedTypes: 'image/jpg, image/png, application/pdf',
+  acceptedTypes: '',
   files: [] as OdsFileI[],
   maxFiles: 10,
   headerTitle: 'Glisser-déposer une pièce jointe',

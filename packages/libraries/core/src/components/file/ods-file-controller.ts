@@ -141,4 +141,12 @@ export class OdsFileController extends OdsComponentController<OdsFile> {
       && this.component.files.length > 0
       && this.component.files.every((file) => file.progress === 100);
   }
+
+  emitSelectedFiles(files: File[]): void {
+    if (this.component.maxFiles && files.length > this.component.maxFiles) {
+      alert(`ods-file: too many files selected. Max files is ${this.component.maxFiles}`);
+      return;
+    }
+
+    this.component.emitFiles(files);  }
 }

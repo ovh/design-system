@@ -72,7 +72,7 @@ describe('spec:osds-file', () => {
     it.each([
       ['dividerLabel', 'ou'],
       ['selectFilesLabel', 'sélectionner un fichier'],
-      ['title', 'Glisser-déposer une pièce jointe'],
+      ['headerTitle', 'Glisser-déposer une pièce jointe'],
     ])('should bind %p attribute with osds-file-header', async (attribute, value) => {
       await setup({ attributes: { [attribute]: value } });
       const header = root?.shadowRoot?.querySelector('osds-file-header');
@@ -183,7 +183,7 @@ describe('spec:osds-file', () => {
     })
 
     it('should emit odsRejectedFile when a file is reject because of type', async () => {
-      const page = await setup();
+      const page = await setup({ attributes: { acceptedTypes: 'image/png' } });
       if(!page.root) throw new Error('root is undefined');
 
       const mockEventListener = jest.fn();
@@ -200,9 +200,8 @@ describe('spec:osds-file', () => {
       instance.onDrop(mockDropEvent as any);
       await page.waitForChanges();
 
-      // test that the event is emitted with the file
       expect(mockEventListener).toHaveBeenCalledTimes(1);
-      expect(mockEventListener).toHaveBeenCalledWith(expect.objectContaining({ detail: { ...file } }));
+      expect(mockEventListener).toHaveBeenCalledWith(expect.objectContaining({ detail: file }));
     })
   })
 })

@@ -18,20 +18,16 @@ describe('e2e:osds-file', () => {
     page = await newE2EPage();
     await page.setContent(`<osds-file ${OdsStringAttributes2Str(stringAttributes)}></osds-file>`);
     await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
-    await page.evaluate(() => {
-      const files = [{ name: 'file1', progress: 100 }, { name: 'file1', progress: 100 }] as OdsFileI[]
-      const component = document.querySelector('osds-file') as any;
-      if(!component) throw new Error('osds-file not found');
-      component.files = files
-    });
-
     await page.waitForChanges();
 
     el = await page.find('osds-file');
+    el.setProperty('files', attributes.files);
+
+    await page.waitForChanges();
   }
 
   it('should render', async () => {
-    await setup({ attributes: {} });
+    await setup();
     expect(el).not.toBeNull();
     expect(el).toHaveClass('hydrated');
   });
@@ -50,15 +46,22 @@ describe('e2e:osds-file', () => {
     })
 
     it('should display success class if files have been uploaded', async () => {
-      await setup();
+      await setup({
+        attributes: {
+          files: [{ name: 'file1.txt', progress: 100, size: 1000 }, { name: 'file2.txt', progress: 100, size: 1000 }] as OdsFileI[],
+        }
+      });
 
       const dropzoneDiv = await page.find('osds-file >>> .ods-file__dropzone');
       expect(dropzoneDiv.classList.contains('ods-file__dropzone--success')).toBeTruthy();
     })
 
     it('should render files item', async () => {
-      await setup();
-
+      await setup({
+        attributes: {
+          files: [{ name: 'file1.txt', progress: 100, size: 1000 }, { name: 'file2.txt', progress: 100, size: 1000 }] as OdsFileI[],
+        }
+      });
       const fileItems = await page.findAll('osds-file >>> osds-file-item');
 
       expect(fileItems.length).toBe(2);
@@ -78,7 +81,11 @@ describe('e2e:osds-file', () => {
     })
 
     it('should emit odsCancel when a file item emit cancel event', async () => {
-      await setup();
+      await setup({
+        attributes: {
+          files: [{ name: 'file1.txt', progress: 100, size: 1000 }] as OdsFileI[],
+        }
+      });
 
       const fileItem = await page.find('osds-file >>> osds-file-item');
       const cancelEvent = await page.spyOnEvent('odsCancel');
@@ -86,7 +93,7 @@ describe('e2e:osds-file', () => {
       await fileItem.triggerEvent('cancel');
       await page.waitForChanges();
 
-      expect(cancelEvent).toHaveReceivedEventDetail({ name: 'file1', progress: 100 });
+      expect(cancelEvent).toHaveReceivedEventDetail({ name: 'file1.txt', progress: 100, size: 1000 });
     })
   })
 });

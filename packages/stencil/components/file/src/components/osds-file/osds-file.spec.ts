@@ -203,5 +203,19 @@ describe('spec:osds-file', () => {
       expect(mockEventListener).toHaveBeenCalledTimes(1);
       expect(mockEventListener).toHaveBeenCalledWith(expect.objectContaining({ detail: file }));
     })
+
+    it('should call preventDefault function on dragover event', async () => {
+      const page = await setup();
+
+      // drag over must be called from the dropzone
+      const dropzoneDiv = root?.shadowRoot?.querySelector<HTMLDivElement>('.ods-file__dropzone') as HTMLDivElement;
+      const event = new Event('dragover') as DragEvent;
+      event.preventDefault = jest.fn();
+      dropzoneDiv.dispatchEvent(event);
+
+      await page.waitForChanges();
+
+      expect(event.preventDefault).toHaveBeenCalledTimes(1);
+    })
   })
 })

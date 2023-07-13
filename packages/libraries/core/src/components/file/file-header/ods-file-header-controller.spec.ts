@@ -61,7 +61,7 @@ describe('OdsFileHeaderController', () => {
     describe('acceptedExtensions', () => {
       it.each([
         [undefined, ''],
-        ['image/png,image/jpeg,.docx', 'png, jpeg, docx'],
+        ['image/png,image/jpeg,.docx', 'png,jpeg,docx'],
         ['image/png, image/jpeg, .docx', 'png, jpeg, docx'],
         ['image/png, image/jpeg, .docx, .doc, application/pdf', 'png, jpeg, docx, doc, pdf'],
       ])('should return accepted extensions', (acceptedTypes, extension) => {

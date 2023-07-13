@@ -5,17 +5,22 @@ import GenericStyle from '@ovhcloud/ods-core/docs/generic-style.mdx';
 ## Usage
 
 ### Default
-<osds-file />
+<div>
+  <osds-file />
+</div>
 
 ```html
-<osds-file />
+<div>
+  <osds-file />
+</div>
 
-to manage the files, you can listen to the following event:
+to manage the files, you can listen to the following events:
 odsFilesChange: triggered when the files change (on drop or on select)
 odsRejectedFile: triggered when a file is rejected (on drop or on select and the file type is not allowed)
 odsCancel: triggered when a file is canceled (on click on red cross)
 
-this is a script example of how to use it:
+this is a script example of how to use the events:
+
 <script>
    const odsUpload = document.querySelector('osds-file');
 

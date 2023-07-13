@@ -34,7 +34,6 @@ export class OdsFileHeaderController extends OdsComponentController<OdsFileHeade
     }
   }
 
-  // acceptedExtensions must return a string like 'png, jpeg, pdf' it can be 'image/png, image/jpeg, application/pdf, .docx, .doc...'
   acceptedExtensions() {
     if (!this.component.acceptedTypes) {
       return '';

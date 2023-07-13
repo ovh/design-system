@@ -27,6 +27,7 @@
   "OdsLocationTile",
   "OdsMessage",
   "OdsPagination",
+  "OdsPassword",
   "OdsPopover",
   "OdsProgressBar",
   "OdsQuantity",

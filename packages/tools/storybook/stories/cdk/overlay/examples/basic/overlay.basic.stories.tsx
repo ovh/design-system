@@ -142,7 +142,7 @@ const Template = (args: any) => {
       <p>${args.applyContent ? olesIpsum(OlesIpsumGeneration.paragraphs, 2) : ''}</p>
       <div id="basic-container-1" dir="${args.applyDirection}">
         <div id="basic-trigger-1" onclick="basic1Toggle()">my trigger</div>
-        <ocdk-surface id="basic-surface-1" ?opened=${args.opened} .animated=${args.animated} .corners=${corners} animation="${args.animation}">My surface</ocdk-surface>
+        <ocdk-surface id="basic-surface-1" ?opened=${args.opened} .animated=${args.animated} .corners=${corners} animation="${args.animation}">My surface Content</ocdk-surface>
       </div>
       <p>${args.applyContent ? olesIpsum(OlesIpsumGeneration.paragraphs, 2) : ''}</p>
     </div>

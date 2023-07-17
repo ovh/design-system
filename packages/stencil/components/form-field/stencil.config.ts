@@ -13,6 +13,8 @@ export const config: Config = getStencilConfig({
     // exclude peer dependencies that corresponds to www usage
     excludeComponents: [
       'osds-input',
+      'osds-icon',
+      'osds-spinner',
       'osds-textarea',
       'osds-link',
       'osds-tooltip',
@@ -23,6 +25,8 @@ export const config: Config = getStencilConfig({
     componentCorePackage: '@ovhcloud/ods-stencil/components/form-field',
     excludeComponents: [
       'osds-input',
+      'osds-icon',
+      'osds-spinner',
       'osds-textarea',
       'osds-link',
       'osds-tooltip',

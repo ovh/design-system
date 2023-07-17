@@ -1,4 +1,4 @@
-import { Component, Element, Host, h, Prop } from '@stencil/core';
+import { Component, Host, h, Prop } from '@stencil/core';
 import {
   OdsFormField,
   OdsFormFieldController,
@@ -19,10 +19,6 @@ import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 })
 export class OsdsFormField implements OdsFormField<OdsStencilMethods<OdsFormFieldMethods>, OdsStencilEvents<OdsFormFieldEvents>> {
   controller: OdsFormFieldController = new OdsFormFieldController(this);
-  @Element() el!: HTMLElement;
-
-  // Component properties as @Prop
-  // ex: @Prop({ reflect: true }) public color?: OdsThemeColorIntent = odsFormFieldDefaultAttributes.color;
 
   /** @see OdsFormFieldAttributes.error */
   @Prop({ reflect: true }) error?: string = odsFormFieldDefaultAttributes.error;

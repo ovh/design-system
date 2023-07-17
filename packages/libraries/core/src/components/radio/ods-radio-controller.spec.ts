@@ -80,6 +80,13 @@ describe('spec:ods-radio-controller', () => {
         controller.setButtonTabindex(n);
         expect(component.buttonTabindex).toBe(n);
       });
+
+      it('should set buttonTabindex value to minus one if disabled', () => {
+        const n = 1 + Math.round(Math.random() * 5);
+        setup({ buttonTabindex: 0, disabled: true });
+        controller.setButtonTabindex(n);
+        expect(component.buttonTabindex).toBe(-1);
+      });
     });
 
     describe('methods:updateDisabledOnChild', () => {

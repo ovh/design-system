@@ -22,7 +22,7 @@ export class OdsRadioController extends OdsComponentController<OdsRadio> {
   }
 
   setButtonTabindex(value: number): void {
-    this.component.buttonTabindex = value;
+    this.component.buttonTabindex = this.component.disabled ? -1 : value;
   }
 
   updateDisabledOnChild(disabled: boolean): void {
@@ -59,15 +59,15 @@ export class OdsRadioController extends OdsComponentController<OdsRadio> {
   }
 
   /**
-   * 
-   * @param value 
+   *
+   * @param value
    */
   watchValue(value: string): void {
     this.logger.log(`[radio=${this.component.value}]`, 'value changed', { value });
   }
 
   /**
-   * 
+   *
    */
   beforeInit(): void {
     this.logger.log(`[radio=${this.component.value}]`, 'connectedCallback');
@@ -83,7 +83,7 @@ export class OdsRadioController extends OdsComponentController<OdsRadio> {
   }
 
   /**
-   * 
+   *
    */
   afterInit(): void {
     this.component.radioizedComponent = (this.component.el.firstElementChild as unknown) as (HTMLElement & OdsRadioizable);
@@ -96,7 +96,7 @@ export class OdsRadioController extends OdsComponentController<OdsRadio> {
   }
 
   /**
-   * 
+   *
    */
   onDestroy(): void {
     const radioGroup = this.component.radioGroup;
@@ -109,8 +109,8 @@ export class OdsRadioController extends OdsComponentController<OdsRadio> {
   }
 
   /**
-   * 
-   * @param checking 
+   *
+   * @param checking
    */
   updateState(checking?: boolean): void {
     if (this.component.radioGroup) {
@@ -127,8 +127,8 @@ export class OdsRadioController extends OdsComponentController<OdsRadio> {
   }
 
   /**
-   * 
-   * @param event 
+   *
+   * @param event
    */
   async handleLabelClick(event: MouseEvent) {
     this.logger.log(`[radio=${this.component.value}]`, 'click');
@@ -137,8 +137,8 @@ export class OdsRadioController extends OdsComponentController<OdsRadio> {
   }
 
   /**
-   * 
-   * @param event 
+   *
+   * @param event
    */
   async handleLabelKeyEvent(event: KeyboardEvent) {
     this.logger.log(`[radio=${this.component.value}]`, 'key event', { event });

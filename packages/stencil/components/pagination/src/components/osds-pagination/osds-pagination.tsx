@@ -183,9 +183,14 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
     return (
       <li class="arrows">
         <osds-tooltip>
-          <osds-tooltip-content slot="tooltip-content">
-            { isLeft ? this.labelTooltipPrevious : this.labelTooltipNext }
-          </osds-tooltip-content>
+          { isLeft ? 
+            this.labelTooltipPrevious && <osds-tooltip-content slot="tooltip-content">
+              { this.labelTooltipPrevious }
+            </osds-tooltip-content> 
+            : this.labelTooltipNext && <osds-tooltip-content slot="tooltip-content">
+              { this.labelTooltipNext }
+            </osds-tooltip-content>
+          }
           <osds-button
             variant={OdsButtonVariant.ghost}
             color={OdsThemeColorIntent.primary}

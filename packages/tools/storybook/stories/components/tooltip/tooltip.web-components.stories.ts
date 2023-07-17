@@ -20,6 +20,10 @@ const storyParams = {
     defaultValue: OdsTooltipVariant.standard,
     options: OdsTooltipVariantList,
   },
+  content: {
+    category: 'General',
+    defaultValue: 'Tooltip content',
+  },
 };
 
 export default {
@@ -39,7 +43,7 @@ const TemplateDefault = (args:any) => {
   return html`
     <osds-tooltip ...=${getTagAttributes(args)}>
       <osds-tooltip-content slot="tooltip-content">
-        Tooltip content
+        ${args.content}
       </osds-tooltip-content>
       Hover me
     </osds-tooltip>

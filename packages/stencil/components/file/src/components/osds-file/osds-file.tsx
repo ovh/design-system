@@ -27,6 +27,7 @@ import {
     @Event() odsFilesChange!: EventEmitter<File[]>;
     @Event() odsCancel!: EventEmitter<File>;
     @Event() odsRejectedFile!: EventEmitter<File>;
+    @Event() odsMaxFilesReached!: EventEmitter<void>;
 
     dropzoneRef!: HTMLDivElement;
 
@@ -41,6 +42,11 @@ import {
 
       this.odsFilesChange.emit(files);
     }
+
+    emitMaxFilesReached = () => {
+      this.odsMaxFilesReached.emit();
+    }
+
     emitCancel = (file: File) => {
       this.odsCancel.emit(file);
     }

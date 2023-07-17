@@ -35,17 +35,17 @@ const storyParams = {
     category: 'Misc',
     defaultValue: 5,
   },
-  title: {
+  headerTitle: {
     category: 'Misc',
-    defaultValue: 'Glisser-déposer une pièce jointe',
+    defaultValue: 'Drag and drop a file',
   },
   dividerLabel: {
     category: 'Misc',
-    defaultValue: 'ou',
+    defaultValue: 'or',
   },
   selectFilesLabel: {
     category: 'Misc',
-    defaultValue: 'sélectionner un fichier',
+    defaultValue: 'select files',
   }
 };
 

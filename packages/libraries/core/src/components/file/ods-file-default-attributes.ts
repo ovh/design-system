@@ -6,9 +6,9 @@ export const odsFileDefaultAttributesDoc  = {
   acceptedTypes: '',
   files: [] as OdsFileI[],
   maxFiles: 10,
-  headerTitle: 'Glisser-déposer une pièce jointe',
-  dividerLabel: 'ou',
-  selectFilesLabel: 'sélectionner un fichier'
+  headerTitle: '',
+  dividerLabel: '',
+  selectFilesLabel: ''
 } as const;
 
 export const odsFileDefaultAttributes = odsFileDefaultAttributesDoc as OdsFileAttributes;

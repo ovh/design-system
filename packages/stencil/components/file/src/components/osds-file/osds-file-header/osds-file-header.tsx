@@ -1,5 +1,5 @@
 import { Component, Event, EventEmitter, h, Prop } from '@stencil/core';
-import { odsFileDefaultAttributes, OdsIconName, OdsIconSize,
+import { OdsIconName, OdsIconSize, odsFileHeaderDefaultAttributes,
   OdsFileHeader, OdsFileHeaderController } from '@ovhcloud/ods-core';
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 
@@ -11,13 +11,13 @@ import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 export class OsdsFileHeader implements OdsFileHeader {
   controller: OdsFileHeaderController = new OdsFileHeaderController(this);
 
-  @Prop({ reflect: true }) public isSuccessful = false;
-  @Prop({ reflect: true }) public disabled = odsFileDefaultAttributes.disabled;
-  @Prop({ reflect: true }) public errorMessage = odsFileDefaultAttributes.errorMessage;
-  @Prop({ reflect: true }) public acceptedTypes = odsFileDefaultAttributes.acceptedTypes;
-  @Prop({ reflect: true }) public headerTitle = odsFileDefaultAttributes.headerTitle;
-  @Prop({ reflect: true }) public dividerLabel = odsFileDefaultAttributes.dividerLabel;
-  @Prop({ reflect: true }) public selectFilesLabel = odsFileDefaultAttributes.selectFilesLabel;
+  @Prop({ reflect: true }) public isSuccessful = odsFileHeaderDefaultAttributes.isSuccessful;
+  @Prop({ reflect: true }) public disabled = odsFileHeaderDefaultAttributes.disabled;
+  @Prop({ reflect: true }) public errorMessage = odsFileHeaderDefaultAttributes.errorMessage;
+  @Prop({ reflect: true }) public acceptedTypes = odsFileHeaderDefaultAttributes.acceptedTypes;
+  @Prop({ reflect: true }) public headerTitle = odsFileHeaderDefaultAttributes.headerTitle;
+  @Prop({ reflect: true }) public dividerLabel = odsFileHeaderDefaultAttributes.dividerLabel;
+  @Prop({ reflect: true }) public selectFilesLabel = odsFileHeaderDefaultAttributes.selectFilesLabel;
 
   @Event() filesSelected!: EventEmitter<File[]>;
 

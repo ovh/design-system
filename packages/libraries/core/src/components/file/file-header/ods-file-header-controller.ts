@@ -12,10 +12,6 @@ export class OdsFileHeaderController extends OdsComponentController<OdsFileHeade
    * Attributes validation documentation
    */
   validateAttributes(): void {
-    if (typeof this.component.isSuccessful !== 'boolean') {
-      throw new Error('ods-file-header: isSuccessful attribute must be a boolean');
-    }
-
     if (typeof this.component.errorMessage !== 'string') {
       throw new Error('ods-file-header: errorMessage attribute must be a string');
     }

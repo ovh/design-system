@@ -27,11 +27,6 @@ describe('OdsFileHeaderController', () => {
   }
 
   describe('validateAttributes', () => {
-    it('should throw an error if isSuccessful is not a boolean', () => {
-      const { controller } = setup({ isSuccessful: 'true' as any });
-      expect(() => controller.validateAttributes()).toThrowError('ods-file-header: isSuccessful attribute must be a boolean');
-    });
-
     it('should throw an error if errorMessage is not a string', () => {
       const { controller } = setup({ errorMessage: true as any });
       expect(() => controller.validateAttributes()).toThrowError('ods-file-header: errorMessage attribute must be a string');

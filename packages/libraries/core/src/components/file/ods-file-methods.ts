@@ -9,4 +9,5 @@ export interface OdsFileMethods extends OdsComponentMethods {
     emitFiles(files: File[]): void;
     emitCancel(file: File): void;
     emitRejectedFile(file: File): void;
+    emitMaxFilesReached(): void;
 }

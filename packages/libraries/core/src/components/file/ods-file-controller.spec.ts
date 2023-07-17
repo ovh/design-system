@@ -12,6 +12,7 @@ export class OdsFileMock implements Partial<OdsFile> {
   maxFiles = 10
   emitRejectedFile = jest.fn()
   emitFiles = jest.fn()
+  emitMaxFilesReached = jest.fn()
   onDragEnter = jest.fn()
   onDragLeave = jest.fn()
   onDrop = jest.fn()
@@ -209,6 +210,17 @@ describe('OdsFileController', () => {
       expect(event.preventDefault).toHaveBeenCalled();
       expect(component.dragOver).toBe(false);
       expect(component.emitFiles).not.toHaveBeenCalled();
+    })
+    it('should emit odsMaxFilesReached if maxFiles is reached', () => {
+      component = new OdsFileMock({ maxFiles: 1 });
+      controller = new OdsFileController(component);
+
+      controller.emitSelectedFiles([
+        { size: 1000, name: 'test', type: 'image/png' },
+        { size: 1000, name: 'test2', type: 'image/png' }
+      ] as File[]);
+
+      expect(component.emitMaxFilesReached).toHaveBeenCalled();
     })
     it('should throw an error if dataTransfer is not defined', () => {
       const event = {

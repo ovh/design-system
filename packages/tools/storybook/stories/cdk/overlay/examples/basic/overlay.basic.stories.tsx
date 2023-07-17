@@ -5,8 +5,8 @@ import page from './overlay.basic.stories.page.mdx';
 import { play } from './overlay.basic.stories.play';
 import {
   OcdkSurfaceCorner,
-  OcdkSurfaceCornerPointNameList,
 } from '@ovhcloud/ods-cdk/src';
+import { OcdkSurfaceBasicPositionList } from '@ovhcloud/ods-cdk-dev/src';
 import { olesIpsum, OlesIpsumGeneration } from '@ovhcloud/ods-core/src';
 import { styleMap } from 'lit-html/directives/style-map';
 
@@ -24,10 +24,10 @@ const storyParams = {
   corners: {
     category: 'General',
     description: 'choose the anchor and surface position reference',
-    defaultValue: 'BOTTOM_START TOP_START',
-    options: OcdkSurfaceCornerPointNameList,
+    defaultValue: 'BOTTOM_LEFT TOP_LEFT',
+    options: OcdkSurfaceBasicPositionList,
     control: { type: 'select' },
-    table: { defaultValue: { summary: 'BOTTOM_START TOP_START' } }
+    table: { defaultValue: { summary: 'BOTTOM_LEFT TOP_LEFT' } }
   },
   animated: {
     category: 'General',
@@ -96,7 +96,7 @@ export default {
 
 /* Default */
 const Template = (args: any) => {
-  let corners = [OcdkSurfaceCorner.BOTTOM_START, OcdkSurfaceCorner.TOP_START];
+  let corners = [OcdkSurfaceCorner.BOTTOM_LEFT, OcdkSurfaceCorner.TOP_LEFT];
   if(args.corners) {
     const cornersFromArgs = args.corners.split(' ');
     if(cornersFromArgs && cornersFromArgs[0] && cornersFromArgs[1]) {

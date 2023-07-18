@@ -27,6 +27,8 @@ export class OsdsTooltip implements OdsTooltip<OdsStencilMethods<OdsTooltipMetho
   anchor!: HTMLDivElement;
   controller: OdsTooltipController = new OdsTooltipController(this);
   surface: OcdkSurface | undefined = undefined;
+  
+  @State() hasSlotTooltipContent: boolean = false;
 
   @Element() el!: HTMLStencilElement;
 
@@ -69,6 +71,14 @@ export class OsdsTooltip implements OdsTooltip<OdsStencilMethods<OdsTooltipMetho
     this.controller.validateAttributes();
   }
 
+  componentWillLoad() {
+    this.setSlotTooltipContent()
+  }
+
+  setSlotTooltipContent() {
+    this.hasSlotTooltipContent = Boolean(this.el.querySelector('osds-tooltip-content'));
+  }
+
   handleMouseEnter(): void {
     this.controller.handleMouseEnter();
   }
@@ -108,16 +118,19 @@ export class OsdsTooltip implements OdsTooltip<OdsStencilMethods<OdsTooltipMetho
             tabindex={ this.tabindex }>
         <slot></slot>
 
-        <ocdk-surface ref={(el: HTMLElement) => {
-          if (ocdkIsSurface(el)) {
-            this.surface = el as OcdkSurface;
-            this.syncReferences()
-          }
-        }}>
-          <div class="tooltip-content">
-            <slot name="tooltip-content"></slot>
-          </div>
-        </ocdk-surface>
+        { this.hasSlotTooltipContent && 
+          <ocdk-surface ref={(el: HTMLElement) => {
+            if (ocdkIsSurface(el)) {
+              this.surface = el as OcdkSurface;
+              this.syncReferences()
+            }
+          }}>
+            <div class="tooltip-content">
+              <slot onSlotchange={ () => this.setSlotTooltipContent() } name="tooltip-content"></slot>
+            </div>
+          </ocdk-surface>
+          // here for trigger the event slotchange
+          || <slot onSlotchange={ () => this.setSlotTooltipContent() } name="tooltip-content"></slot> }
       </Host>
     );
   }

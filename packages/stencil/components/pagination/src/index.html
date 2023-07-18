@@ -99,7 +99,7 @@
 
   <h3>Total items above 300</h3>
   <div class="row">
-    <osds-pagination current=2 total-items=500>
+    <osds-pagination id="paginationAddLabel" current=2 total-items=500>
       <span slot="before-total-items">of&nbsp;</span>
       <span slot="after-total-items">&nbsp;results</span>
     </osds-pagination>
@@ -111,5 +111,26 @@
     <osds-pagination current=3 total-items=60 disabled></osds-pagination>
     <p class="description">All disabled</p>
   </div>
+
+  <h3>Change label tooltip</h3>
+  <div class="row">
+    <osds-pagination id="paginationEditLabel" current=3 total-pages=21 label-tooltip-previous="Précédent" label-tooltip-next="Suivant"></osds-pagination>
+    <p class="description">labelTooltipPrevious & labelTooltipNext will change after 5 secondes</p>
+  </div>
+  <script>
+     const changeLabelTooltip = (p) => {
+      setTimeout(() => {
+        console.log('changeLabelTooltip for', p.id);
+        p.labelTooltipPrevious = 'Previous';
+        p.labelTooltipNext = 'NextNextNextNextNextNextNextNext';
+      }, 5000); 
+    }
+    const paginationEditLabel = document.querySelector('#paginationEditLabel');
+    changeLabelTooltip(paginationEditLabel);
+
+    const paginationAddLabel = document.querySelector('#paginationAddLabel');
+    changeLabelTooltip(paginationAddLabel);
+   
+  </script>
 </body>
 </html>

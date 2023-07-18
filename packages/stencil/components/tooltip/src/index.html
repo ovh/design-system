@@ -51,8 +51,27 @@
   </osds-tooltip>
 </div>
 
+<div>
+  <p>No Slot</p>
+
+  <osds-tooltip id="tooltip-slot">
+     not slot
+  </osds-tooltip>
+  <button id="add-slot">click to add slot</button>
+
+</div>
+
+
 <script>
-  document.querySelectorAll('ods-tooltip').forEach((elem) => {});
+  const button = document.querySelector('#add-slot');
+  const tooltip = document.querySelector('#tooltip-slot');
+
+  button.addEventListener('click', () => {
+    const slot = document.createElement('osds-tooltip-content');
+    slot.slot = "tooltip-content"
+    slot.innerText = 'test';
+    tooltip.append(slot);
+  });
 </script>
 </body>
 </html>

@@ -97,18 +97,6 @@ describe('spec:osds-pagination', () => {
     });
   });
 
-  it('componentDidUpdate', async () => {
-    await setup({ attributes: { current: 2, totalPages: 10 } });
-    const componentDidUpdateSpy = jest.spyOn(instance, 'componentDidUpdate');
-
-    document.activeElement = document.body;
-
-    await instance.componentDidUpdate();
-
-    expect(componentDidUpdateSpy).toBeCalled();
-    expect(componentDidUpdateSpy).toHaveBeenCalledTimes(1);
-  });
-
   it('onCurrentChange', async () => {
     await setup({ attributes: { current: 2, totalPages: 10 } });
 
@@ -241,6 +229,28 @@ describe('spec:osds-pagination', () => {
           name: 'totalItems',
           list: [1, 2, 3],
           defaultValue: undefined,
+          ...config,
+        }),
+      });
+    });
+    
+    describe('labelTooltipPrevious with odsUnitTestAttribute', () => {
+      odsUnitTestAttribute<OdsPaginationAttributes, 'labelTooltipPrevious'>({
+        ...getAttributeContextOptions<OdsPaginationAttributes, OsdsPagination, 'labelTooltipPrevious'>({
+          name: 'labelTooltipPrevious',
+          list: ['Previous', 'Précédent'],
+          defaultValue: odsPaginationDefaultAttributes.labelTooltipPrevious,
+          ...config,
+        }),
+      });
+    });
+
+    describe('labelTooltipNext with odsUnitTestAttribute', () => {
+      odsUnitTestAttribute<OdsPaginationAttributes, 'labelTooltipNext'>({
+        ...getAttributeContextOptions<OdsPaginationAttributes, OsdsPagination, 'labelTooltipNext'>({
+          name: 'labelTooltipNext',
+          list: ['Next', 'Suivant'],
+          defaultValue: odsPaginationDefaultAttributes.labelTooltipNext,
           ...config,
         }),
       });

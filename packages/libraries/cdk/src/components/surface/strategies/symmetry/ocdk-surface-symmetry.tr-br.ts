@@ -39,7 +39,7 @@ export function ocdkSurfaceSymmetryTrBr(): OcdkSurfaceOnePositionStrategy<OcdkSu
         },
         appliers: {
           maxHeight: (opt) => opt.inspections.comfort.availableTop - opt.config.anchorMargin.top,
-          maxWidth: (opt) => opt.measurements.surfaceSize.width,
+          maxWidth: (opt) => opt.inspections.comfort.availableLeft,
           verticalOffset: (opt) => -opt.config.anchorMargin.top - opt.measurements.surfaceSize.height,
           verticalAlignment: 'top',
           horizontalOffset: () => 0,

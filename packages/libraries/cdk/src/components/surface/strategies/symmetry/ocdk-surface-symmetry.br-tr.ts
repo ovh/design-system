@@ -41,7 +41,7 @@ export function ocdkSurfaceSymmetryBrTr(): OcdkSurfaceOnePositionStrategy<OcdkSu
         },
         appliers: {
           maxHeight: (opt) => opt.inspections.comfort.availableBottom - opt.config.anchorMargin.bottom,
-          maxWidth: (opt) => opt.measurements.surfaceSize.width,
+          maxWidth: (opt) => opt.inspections.comfort.availableLeft,
           verticalOffset: (opt) => opt.measurements.anchorSize.height + opt.config.anchorMargin.bottom,
           verticalAlignment: 'top',
           horizontalOffset: () => 0,

@@ -6,18 +6,18 @@
 // CSS for the component but not for theming
 
 :host {
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  text-align: left;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 
   ul {
+    padding: 0;
     list-style-type: none;
   }
 
   li {
     display: inline;
-    list-style-type: none; 
+    list-style-type: none;
     white-space: nowrap;
   }
 
@@ -25,7 +25,6 @@
     cursor: not-allowed;
     pointer-events: auto;
   }
-
 }
 
 :not([disabled]):focus-visible {

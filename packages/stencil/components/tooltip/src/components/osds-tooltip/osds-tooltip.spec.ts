@@ -25,6 +25,8 @@ describe('spec:osds-tooltip', () => {
   let instance: OsdsTooltip;
   let controller: OdsTooltipController;
 
+  const htmlTooltipContent = '<osds-tooltip-content slot="tooltip-content">Tooltip content</osds-tooltip-content>'
+
   afterEach(() => {
     jest.clearAllMocks();
   });
@@ -68,7 +70,7 @@ describe('spec:osds-tooltip', () => {
   describe('cdk initialized', () => {
     beforeEach(async () => {
       (ocdkIsSurface as unknown as jest.Mock).mockImplementation(() => true);
-      await setup();
+      await setup({ html: htmlTooltipContent });
     })
 
     it('should have a ref to the anchor and the surface', () => {
@@ -187,6 +189,21 @@ describe('spec:osds-tooltip', () => {
         await instance.syncReferences();
 
         expect(controller.syncReferences).toHaveBeenCalledTimes(1);
+      });
+    });
+
+    describe('setSlotTooltipContent', () => {
+      it('should call setSlotTooltipContent with tooltip-content', async () => {
+        await setup({ html: htmlTooltipContent });
+        await instance.setSlotTooltipContent();
+
+        expect(instance.hasSlotTooltipContent).toBe(true);
+      });
+
+      it('should call setSlotTooltipContent without tooltip-content', async () => {
+        await instance.setSlotTooltipContent();
+
+        expect(instance.hasSlotTooltipContent).toBe(false);
       });
     });
   });

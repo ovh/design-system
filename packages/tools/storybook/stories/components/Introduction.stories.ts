@@ -199,6 +199,11 @@ const uiComponents = {
       },
     },
     {
+      name: "Spinner",
+      tag: 'osds-spinner',
+      url: '/?path=/story/ui-components-spinner-atom-web-component--default',
+    },
+    {
       name: "Textarea",
       tag: 'osds-textarea',
       url: '/?path=/story/ui-components-textarea-atom-web-component--default',
@@ -260,6 +265,15 @@ const uiComponents = {
           { href: "#products", label: "Products" },
           { href: "#web", label: "Web" },
         ],
+      },
+    },
+    {
+      name: "Pagination",
+      tag: 'osds-pagination',
+      url: '/?path=/story/ui-components-pagination-molecule-web-component--default',
+      attributes: {
+        current: 2,
+        'total-pages': 2,
       },
     },
     {

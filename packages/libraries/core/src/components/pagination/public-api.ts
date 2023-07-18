@@ -8,4 +8,5 @@ export * from './ods-pagination-events';
 export * from './ods-pagination-methods';
 export * from './ods-pagination-mock';
 export * from './ods-pagination-page-list';
+export * from './ods-pagination-per-page';
 export * from './ods-pagination-size';

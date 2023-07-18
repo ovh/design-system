@@ -54,7 +54,6 @@ export class OcdkSurfaceController<StrategyConfig = any> {
   private animation = OcdkSurfaceDefaultConfig.DEFAULT_ANIMATION;
   private animationRequestId = 0;
   private closeAnimationEndTimerId = 0;
-  private component: OcdkSurface;
   /** config of the surface */
   private config: OcdkSurfaceConfig = OcdkSurfaceDefaultConfig
   private customAnchorMargin?: OcdkSurfaceDistance;
@@ -62,9 +61,8 @@ export class OcdkSurfaceController<StrategyConfig = any> {
   private dimensions!: OcdkSurfaceDimensions;
   private isSurfaceOpen = false;
   private itemHeight = 0;
-  private itemWidth = 0;
   private maxDimensions!: OcdkSurfaceMaxDimensions;
-  private minVisibleItem = 1;
+  private MIN_VISIBLE_ITEM = 1;
   // private measurements?: OcdkAutoLayoutMeasurements;
   private openAnimationEndTimerId = 0;
   private strategy: OcdkSurfaceStrategyDefiner<StrategyConfig> = OcdkSurfaceDefaultConfig.POSITION_STRATEGY.strategy;
@@ -75,7 +73,6 @@ export class OcdkSurfaceController<StrategyConfig = any> {
   private logger = new OcdkLogger(`OcdkSurface #${this.uniqueId}`);
 
   constructor(component: OcdkSurface) {
-    this.component = component;
     this.adapter = component.adapter;
     this.init();
   }
@@ -157,7 +154,7 @@ export class OcdkSurfaceController<StrategyConfig = any> {
   }
 
   open(): void {
-    this.logger.log('[open]', { opened: this.component.opened });
+    this.logger.log('[open]', { opened: this.isSurfaceOpen });
     if (this.isSurfaceOpen) {
       return;
     }
@@ -172,9 +169,9 @@ export class OcdkSurfaceController<StrategyConfig = any> {
         this.dimensions = this.adapter.getInnerDimensions();
         this.maxDimensions = this.adapter.getMaxDimensions();
         this.itemHeight = this.adapter.autoDetectItemHeight();
-        this.itemWidth = this.adapter.autoDetectItemWidth();
         this.autoPosition();
         this.adapter.addClass(ocdkSurfaceCssClasses.OPEN);
+        this.logger.log('[open]', { dimensions: this.dimensions });
         const duration = this.config.ANIMATIONS[ this.animation ].TRANSITION_CLOSE_DURATION;
         this.logger.log('[open]', 'remove css in', duration);
         this.openAnimationEndTimerId = window.setTimeout(
@@ -242,12 +239,6 @@ export class OcdkSurfaceController<StrategyConfig = any> {
   }
 
   private autoPosition() {
-    this.logger.log('[autoposition]');
-    const cornerPoints = this.getCornerPoints();
-    const wantedAnchorCorner = cornerPoints.anchor;
-    const wantedOriginCorner = cornerPoints.origin;
-    this.logger.log('[autoposition]', { wantedAnchorCorner });
-    this.logger.log('[autoposition]', { wantedOriginCorner });
 
     const normalizedCornerPoints = this.getNormalizedCorners();
 
@@ -340,9 +331,8 @@ export class OcdkSurfaceController<StrategyConfig = any> {
     this.logger.log('[autoposition]', 'setPosition', { position });
     this.adapter.setPosition(position);
     this.adapter.setMaxHeight(maxSurfaceHeight ? maxSurfaceHeight + 'px' : '');
-    this.adapter.setMinHeight(this.itemHeight ? (this.itemHeight * this.minVisibleItem) + 'px' : '');
-    this.adapter.setMaxWidth(maxSurfaceWidth ? maxSurfaceWidth + 'px' : '');
-    this.adapter.setMinWidth(this.itemWidth ? (this.itemWidth * this.minVisibleItem) + 'px' : '');
+    this.adapter.setMinHeight(this.itemHeight ? (this.itemHeight * this.MIN_VISIBLE_ITEM) + 'px' : '');
+    // this.adapter.setMaxWidth(maxSurfaceWidth ? maxSurfaceWidth + 'px' : '');
 
     // If it is opened from the top then add is-open-below class
     if (!this.hasBit(originCorner, OcdkSurfaceCornerBit.BOTTOM)) {

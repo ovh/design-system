@@ -12,11 +12,11 @@ export const config: Config = {
     reactOutput: {
       componentCorePackage: '@ovhcloud/ods-stencil/components/pagination',
       // exclude peer dependencies that corresponds to www usage
-      excludeComponents: ['osds-icon', 'osds-button', 'osds-text'],
+      excludeComponents: ['osds-icon', 'osds-button', 'osds-select', 'osds-text', 'osds-tootip'],
     },
     vueOutput: {
       componentCorePackage: '@ovhcloud/ods-stencil/components/pagination',
-      excludeComponents: ['osds-icon', 'osds-button', 'osds-text'],
+      excludeComponents: ['osds-icon', 'osds-button', 'osds-select', 'osds-text', 'osds-tootip'],
     },
     dev: {
       globalScript: 'src/global.dev.ts',

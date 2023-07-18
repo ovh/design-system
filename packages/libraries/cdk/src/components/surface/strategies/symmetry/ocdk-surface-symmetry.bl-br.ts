@@ -37,7 +37,7 @@ export function ocdkSurfaceSymmetryBlBr(): OcdkSurfaceOnePositionStrategy<OcdkSu
             }
           },
           appliers: {
-            maxHeight: (opt) => opt.inspections.comfort.availableBottom,
+            maxHeight: (opt) => opt.inspections.comfort.availableTop,
             maxWidth: (opt) => opt.inspections.comfort.availableLeft,
             verticalOffset: () => 0,
             verticalAlignment: 'bottom',
@@ -72,10 +72,25 @@ export function ocdkSurfaceSymmetryBlBr(): OcdkSurfaceOnePositionStrategy<OcdkSu
             loggerSymmetry.log('[COMPUTE] already switched off but no enough space: continue with the fallback of bl-br', opt.switchFrom);
             return opt.switchFrom.position.STRATEGIES.FALLBACK;
           }
+          if (opt.measurements.surfaceSize.height > opt.inspections.comfort.availableTop) {
+            return {
+              cornerPoints: {
+                anchor: OcdkSurfaceNormalizedCorner.TOP_RIGHT,
+                origin: OcdkSurfaceNormalizedCorner.TOP_LEFT
+              }
+            };
+          }
           return {
             cornerPoints: {
               anchor: OcdkSurfaceNormalizedCorner.BOTTOM_RIGHT,
               origin: OcdkSurfaceNormalizedCorner.BOTTOM_LEFT
+            }
+          };
+        } else if (opt.measurements.surfaceSize.height > opt.inspections.comfort.availableTop) {
+          return {
+            cornerPoints: {
+              anchor: OcdkSurfaceNormalizedCorner.TOP_LEFT,
+              origin: OcdkSurfaceNormalizedCorner.TOP_RIGHT
             }
           };
         }

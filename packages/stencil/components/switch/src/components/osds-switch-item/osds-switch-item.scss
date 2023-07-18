@@ -1,0 +1,98 @@
+@import '~@ovhcloud/ods-theming/color/ods-theming-color';
+@import '~@ovhcloud/ods-theming/ods-theme';
+
+// CSS targeted only for this component
+// /!\ for theming purposes, it has to be done in theming files
+// (i.e. packages/libraries/theming/...)
+
+$switch-item-border-radius: 3em;
+
+:host {
+    position: relative;
+    display: inline-block;
+    appearance: none;
+    font-weight: 600;
+    margin: 0;
+    text-align: center;
+    border-radius: 1.375em;
+    z-index: 0;
+    cursor: pointer;
+
+    & osds-radio {
+        padding: 0 .75em;
+        & > * {
+            cursor: pointer;
+        }
+        &:focus-visible {
+            border-radius: $switch-item-border-radius;
+        }
+    } 
+
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+        transition: background ease-in-out .1s;
+        border-radius: $switch-item-border-radius;
+        z-index: -1;
+    }
+}
+
+:host(.fadein-from-right)::before {  
+    animation: fadeinfromright ease-out .3s;
+}
+:host(.fadein-from-left)::before {
+    animation: fadeinfromleft ease-out .3s;
+}
+
+:host(.fadeout-from-right)::before {
+    animation: fadeoutfromright ease-in .3s;
+}
+
+:host(.fadeout-from-left)::before {
+    animation: fadeoutfromleft ease-in .3s;
+}
+
+@keyframes fadeinfromleft {
+    from {
+        opacity: 0;
+        transform: translateX(-3em);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+@keyframes fadeinfromright {
+    from {
+        opacity: 0;
+        transform: translateX(3em);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+@keyframes fadeoutfromleft {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {  
+        opacity: 0;
+        transform: translateX(-3em);
+    }
+}
+
+@keyframes fadeoutfromright {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(3em);
+    }
+}

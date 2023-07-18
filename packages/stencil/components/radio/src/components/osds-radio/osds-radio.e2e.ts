@@ -16,7 +16,6 @@ describe('e2e:osds-radio', () => {
   let page: E2EPage;
   let el: E2EElement;
   const logger = new OdsLogger('e2e:osds-radio');
-  const spyEvent = async (eventName: keyof OdsRadioEvents) => await el.spyOnEvent(eventName);
 
   async function setup({ attributes = {}, html = ``, htmlOutside = '' }: { attributes?: Partial<OdsRadioAttributes>, html?: string, htmlOutside?: string }) {
     const minimalAttributes: OdsRadioAttributes = OdsCreateAttributes(attributes, odsRadioBaseAttributes);
@@ -24,8 +23,8 @@ describe('e2e:osds-radio', () => {
 
     page = await newE2EPage();
     await page.setContent(`
-    <osds-radio ${OdsStringAttributes2Str(stringAttributes)}>
-    ${html}
+    <osds-radio ${OdsStringAttributes2Str(stringAttributes)} tabIndex="0">
+      ${html}
     </osds-radio>
     ${htmlOutside}
     `);
@@ -33,17 +32,16 @@ describe('e2e:osds-radio', () => {
 
     el = await page.find('osds-radio');
   }
-
-  /**
+    /**
    * trigger a toggle with a click and wait for changes
    */
-  async function toggleByClick() {
-    // toggle it
-    await page.evaluate(() => {
-      (document.querySelector('osds-radio'))?.shadowRoot?.querySelector('label')?.click();
-    });
-    await page.waitForChanges();
-  }
+     async function toggleByClick() {
+      // toggle it
+      await page.evaluate(() => {
+        (document.querySelector('osds-radio') as HTMLElement)?.click();
+      });
+      await page.waitForChanges();
+    }
 
   /**
    * create a save callback with simulated time response
@@ -71,7 +69,7 @@ describe('e2e:osds-radio', () => {
           value: '42'
         };
         await setup({ attributes: { checked: false, value: '42' } });
-        const odsCheckedChange: EventSpy = await spyEvent('odsCheckedChange');
+        const odsCheckedChange = await el.spyOnEvent('odsCheckedChange');
         await toggleByClick();
 
         expect(odsCheckedChange).toHaveReceivedEventDetail(expected);
@@ -85,7 +83,7 @@ describe('e2e:osds-radio', () => {
           value: '42'
         };
         await setup({ attributes: { checking: false, value: '42' } });
-        const odsCheckingChange: EventSpy = await spyEvent('odsCheckingChange');
+        const odsCheckingChange = await el.spyOnEvent('odsCheckingChange');
         await osdsSetPropertyFunction<OdsRadioAttributes>(page, 'osds-radio', 'save', getSaveCbk(false));
         await toggleByClick();
 
@@ -97,12 +95,12 @@ describe('e2e:osds-radio', () => {
 
     describe('odsFocus', () => {
       it('should emit on focus', async () => {
-        await setup({ attributes: { disabled: false } });
-        const odsFocus: EventSpy = await spyEvent('odsFocus');
+        await setup({ attributes: { disabled: false }, html: 'test focus' });
+        const odsFocus = await el.spyOnEvent('odsFocus');
         await el.focus();
+        await page.keyboard.press('Tab');
         await page.waitForChanges();
-
-        expect(odsFocus).toHaveReceivedEventDetail(null);
+        expect(odsFocus).toHaveReceivedEventTimes(1);
       });
     });
 
@@ -112,14 +110,15 @@ describe('e2e:osds-radio', () => {
           attributes: { disabled: false },
           htmlOutside: `<input type="text" id="another" value="another thing to focus"/>`
         });
-        const odsBlur: EventSpy = await spyEvent('odsBlur');
+        const odsBlur = await el.spyOnEvent('odsBlur');
         await el.focus();
+        await page.keyboard.press('Tab');
         await page.waitForChanges();
         const another = await page.find('#another');
         await another?.focus();
         await page.waitForChanges();
 
-        expect(odsBlur).toHaveReceivedEventDetail(null);
+        expect(odsBlur).toHaveReceivedEvent();
       });
     });
   });

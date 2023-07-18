@@ -3,14 +3,11 @@
 
 // CSS for the component but not for theming
 
-:host(:focus-visible) {
+:host(:not([disabled]):focus-visible) {
   outline-style: dotted;
   outline-width: var(--ods-size-inset-02);
   outline-offset: var(--ods-size-inset-02);
-
-  :not([disabled]):focus {
-    outline-color: var(--ods-color-gray-500);
-  }
+  outline-color: var(--ods-color-gray-500);
 }
 
 :host(:not([debug])) {

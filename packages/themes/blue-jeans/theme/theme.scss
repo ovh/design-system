@@ -217,6 +217,16 @@
         lg: (width: calc(21.875rem * var(--ods-size-ratio))),
         xl: (width: calc(31.25rem * var(--ods-size-ratio))),
       ),
+      $switch: (
+        sm: (
+          height: calc(var(--ods-size-08) * var(--ods-size-ratio)),
+          line-height: var(--ods-size-08),
+        ),
+        md: (
+          height: calc(2.25rem * var(--ods-size-ratio)),
+          line-height: calc(2.25rem * var(--ods-size-ratio)),
+        ),
+      ),
       $tabs: (
         md: (
           height: var(--ods-size-08),

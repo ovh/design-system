@@ -18,6 +18,8 @@ export interface OdsPasswordAttributes extends OdsComponentAttributes {
   /** Indicates if the password is disabled or not: see component principles */
   disabled?: boolean;
   /** Indicates if the password shows error or not */
+  error?: boolean;
+  /** Indicates if the password shows error or not */
   flex?: boolean;
   /** List of forbidden values for the password */
   forbiddenValues: OdsFormForbiddenValues;

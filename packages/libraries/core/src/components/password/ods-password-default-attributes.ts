@@ -9,6 +9,7 @@ export const odsPasswordDefaultAttributesDoc = {
     color: OdsThemeColorIntent.default,
     contrasted: false,
     disabled: false,
+    error: false,
     flex: false,
     forbiddenValues: [],
     label: undefined,

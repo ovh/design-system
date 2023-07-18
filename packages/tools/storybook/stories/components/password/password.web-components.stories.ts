@@ -58,6 +58,10 @@ const storyParams = {
     category: 'Misc',
     defaultValue: false,
   },
+  error: {
+    category: 'Misc',
+    defaultValue: false,
+  },
   name: {
     category: 'Misc',
     defaultValue: 'my-password'
@@ -91,7 +95,7 @@ export default {
 
 /* Default */
 const OsdsPasswordDefault = (args: Record<string, unknown>) => html`
-  <osds-password ...=${getTagAttributes(args)}>
+  <osds-password ...=${getTagAttributes(args)} @keydown=${(e: KeyboardEvent) => e.stopPropagation()}>
   </osds-password>
 `;
 const TemplateDefault = (args: Record<string, unknown>) => OsdsPasswordDefault(args);
@@ -101,4 +105,48 @@ type DefaultProps = {
 };
 (Default as unknown as DefaultProps).args = {
   ...(extractStoryParams(storyParams) as Record<string, unknown>),
+};
+
+/* All table */
+
+type Attributes = 'default' | 'clearable' | 'value="ODS ahead"' | 'value="ODS ahead" masked="false"' | 'loading'| 'loading disabled';
+
+const attributeList: Attributes[] = [
+  'default', 'clearable', 'value="ODS ahead"',
+  'value="ODS ahead" masked="false"', 'loading', 'loading disabled'
+];
+
+const createTable = (contrasted: boolean, headerList: string[], itemMapper: (attribute: string) => string) => `
+  <table>
+    <thead>
+      <tr>
+        <td></td>
+        ${headerList.map(header => `<td style="padding:0.1em; ${contrasted && "color: #ffffff;"}">${header}</td>`).join('')}
+      </tr>
+    </thead>
+    <tbody>
+      ${attributeList.map(attribute =>
+        `<tr>
+          <td style="padding:0.1em;  ${contrasted && 'color: #ffffff;'}">${attribute}</td>
+          ${itemMapper(attribute)}
+        </tr>`
+      ).join('')}
+    </tbody>
+  </table>`;
+
+const TemplateAll = () => html`
+  <section style="margin-bottom: 3em; padding: 1em;" @keydown=${(e: KeyboardEvent) => e.stopPropagation()}>
+    <h2>[colors]</h2>
+    ${unsafeHTML(createTable(false, OdsThemeColorIntentList, (attribute) => OdsThemeColorIntentList.map(color =>
+      `<td style="padding:0.1em;">
+        <osds-password color="${color}" placeholder="Enter text..." ${attribute}></osds-password>
+      </td>`).join('')
+    ))}
+  </section>
+`;
+
+export const All = TemplateAll.bind({});
+All.parameters = {
+  controls: { hideNoControlsWarning: true },
+  options: { showPanel: false },
 };

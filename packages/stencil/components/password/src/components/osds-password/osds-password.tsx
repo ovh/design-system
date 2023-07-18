@@ -43,6 +43,9 @@ export class OsdsPassword implements OdsPassword<OdsStencilMethods<OdsPasswordMe
   /** @see OdsPasswordAttributes.disabled */
   @Prop({ reflect: true }) disabled?: boolean = odsPasswordDefaultAttributes.disabled;
 
+  /** @see OdsPasswordAttributes.error */
+  @Prop({ reflect: true }) error?: boolean = odsPasswordDefaultAttributes.error;
+
   /** @see OdsPasswordAttributes.flex */
   @Prop({ reflect: true }) flex?: boolean = odsPasswordDefaultAttributes.flex;
 
@@ -88,6 +91,7 @@ export class OsdsPassword implements OdsPassword<OdsStencilMethods<OdsPasswordMe
           color={this.color}
           contrasted={this.contrasted}
           disabled={this.disabled}
+          error={this.error}
           flex={this.flex}
           forbiddenValues={this.forbiddenValues}
           label={this.label}

@@ -21,6 +21,9 @@ describe('spec:ods-input-default-attributes', () => {
   it('disabled should be false', () => {
     expect(odsPasswordDefaultAttributes.disabled).toBe(false);
   });
+  it('error should be false', () => {
+    expect(odsPasswordDefaultAttributes.error).toBe(false);
+  });
   it('flex should be false', () => {
     expect(odsPasswordDefaultAttributes.flex).toBe(false);
   });

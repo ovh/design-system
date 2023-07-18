@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
+
+
+# [14.1.0](https://ovhcloud.design/v14.1.0/?path=/docs/design-system-changelog--page) (2023-07-18)
+[compare](https://github.com/ovh/design-system/compare/v13.0.1...v14.1.0)
+
+### Bug Fixes
+
+* **popover:** change toBeFalse to toBe false in testing ([#86](https://github.com/ovh/design-system/issues/86)) ([b2e74b7](https://github.com/ovh/design-system/commit/b2e74b7648b7b6e0ecae89493c0c4832962f6abe))
+* **radio:** disable tabindex on disabled radio ([#95](https://github.com/ovh/design-system/issues/95)) ([cfb31b6](https://github.com/ovh/design-system/commit/cfb31b696b0c75e7f0256ca87c74995267df348a))
+* **tile:** add hoverable attribute to avoid double focus in radio when interactive ([#80](https://github.com/ovh/design-system/issues/80)) ([9429178](https://github.com/ovh/design-system/commit/942917827474b7a0524ea4d26fbaade95baee55f))
+
+
+### Features
+
+* **form-field:** rendering, styling, testing and documenting ([#97](https://github.com/ovh/design-system/issues/97)) ([d249998](https://github.com/ovh/design-system/commit/d249998b90e08280d2e37c04606f3a9419b026ec))
+* **icon:** add hover style ([#77](https://github.com/ovh/design-system/issues/77)) ([d4b221f](https://github.com/ovh/design-system/commit/d4b221ff82a67b63b2eba89022bb9dff9b0d12ec))
+* **input-v1:** upgrading component ([#71](https://github.com/ovh/design-system/issues/71)) ([5609893](https://github.com/ovh/design-system/commit/56098935d29be39dbc9a763fb0b92396544f4d44))
+* **popover:** add new component popover ([#14](https://github.com/ovh/design-system/issues/14)) ([507155c](https://github.com/ovh/design-system/commit/507155c4961c69adc5f98fd7c7c85518c483893f))
+* add progress bar component ([#62](https://github.com/ovh/design-system/issues/62)) ([9d35e79](https://github.com/ovh/design-system/commit/9d35e79edf6a9680775d20ab8e44884ff7d8d381))
+
+
+
 [Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
 
 

@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
+
+
+# [14.1.0](https://ovhcloud.design/v14.1.0/?path=/docs/design-system-changelog--page) (2023-07-18)
+[compare](https://github.com/ovh/design-system/compare/v13.0.1...v14.1.0)
+
+### Features
+
+* **cdk:** manage edge cases ([#99](https://github.com/ovh/design-system/issues/99)) ([fa88aee](https://github.com/ovh/design-system/commit/fa88aeeff3639013c36b3c9af7181a3654f26c32))
+
+
+
 [Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
 
 

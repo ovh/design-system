@@ -8,6 +8,40 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
 
 
+# [14.1.0](https://ovhcloud.design/v14.1.0/?path=/docs/design-system-changelog--page) (2023-07-18)
+[compare](https://github.com/ovh/design-system/compare/v13.0.1...v14.1.0)
+
+### Bug Fixes
+
+* **checkbox-button:** add aspect ratio to 1 ([#79](https://github.com/ovh/design-system/issues/79)) ([cc72649](https://github.com/ovh/design-system/commit/cc726492ed0180456c39207ad4bcd31f72094908))
+* **generator:** generate good version ([27207e6](https://github.com/ovh/design-system/commit/27207e681649827b3e69500b1473e266aad6f3d8))
+* **link:** add missing color for active state ([#81](https://github.com/ovh/design-system/issues/81)) ([0ed10dc](https://github.com/ovh/design-system/commit/0ed10dc8a3d5b7875bacfe20bacd9d0333b6d6e6))
+* **link:** fix link host container size to match its content ([#82](https://github.com/ovh/design-system/issues/82)) ([d9b3900](https://github.com/ovh/design-system/commit/d9b390035b07f1b88d83bb0d007398b469f8ecc1))
+* **popover:** change toBeFalse to toBe false in testing ([#86](https://github.com/ovh/design-system/issues/86)) ([b2e74b7](https://github.com/ovh/design-system/commit/b2e74b7648b7b6e0ecae89493c0c4832962f6abe))
+* **radio:** disable tabindex on disabled radio ([#95](https://github.com/ovh/design-system/issues/95)) ([cfb31b6](https://github.com/ovh/design-system/commit/cfb31b696b0c75e7f0256ca87c74995267df348a))
+* **textarea:** remove 100% width when flex is removed ([#83](https://github.com/ovh/design-system/issues/83)) ([5a4563e](https://github.com/ovh/design-system/commit/5a4563ebf5f4df54dfab4d9c88ae3801c84e82bd))
+* **tile:** add hoverable attribute to avoid double focus in radio when interactive ([#80](https://github.com/ovh/design-system/issues/80)) ([9429178](https://github.com/ovh/design-system/commit/942917827474b7a0524ea4d26fbaade95baee55f))
+* force @types/ws version ([#76](https://github.com/ovh/design-system/issues/76)) ([30ad527](https://github.com/ovh/design-system/commit/30ad527cdae4718e08cd11bc82a5ac79646a81f0))
+
+
+### Features
+
+* **cdk:** manage edge cases ([#99](https://github.com/ovh/design-system/issues/99)) ([fa88aee](https://github.com/ovh/design-system/commit/fa88aeeff3639013c36b3c9af7181a3654f26c32))
+* **form-field:** rendering, styling, testing and documenting ([#97](https://github.com/ovh/design-system/issues/97)) ([d249998](https://github.com/ovh/design-system/commit/d249998b90e08280d2e37c04606f3a9419b026ec))
+* **icon:** add hover style ([#77](https://github.com/ovh/design-system/issues/77)) ([d4b221f](https://github.com/ovh/design-system/commit/d4b221ff82a67b63b2eba89022bb9dff9b0d12ec))
+* **input-v1:** upgrading component ([#71](https://github.com/ovh/design-system/issues/71)) ([5609893](https://github.com/ovh/design-system/commit/56098935d29be39dbc9a763fb0b92396544f4d44))
+* **location-tile:** deprecated component ([#92](https://github.com/ovh/design-system/issues/92)) ([d7d653e](https://github.com/ovh/design-system/commit/d7d653e4f6527808def180f848d9aee0c8112208))
+* **popover:** add new component popover ([#14](https://github.com/ovh/design-system/issues/14)) ([507155c](https://github.com/ovh/design-system/commit/507155c4961c69adc5f98fd7c7c85518c483893f))
+* **storybook:** add deprecated and new badge ([#91](https://github.com/ovh/design-system/issues/91)) ([e6c82fb](https://github.com/ovh/design-system/commit/e6c82fb325de45fbbaf32d281e8826f2d4ca5478))
+* add progress bar component ([#62](https://github.com/ovh/design-system/issues/62)) ([9d35e79](https://github.com/ovh/design-system/commit/9d35e79edf6a9680775d20ab8e44884ff7d8d381))
+
+
+
+
+
+[Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
+
+
 # [14.0.1](https://ovhcloud.design/v14.0.1/?path=/docs/design-system-changelog--page) (2023-06-28)
 [compare](https://github.com/ovh/design-system/compare/v14.0.0...v14.0.1)
 

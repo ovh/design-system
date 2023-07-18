@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
+
+
+# [14.1.0](https://ovhcloud.design/v14.1.0/?path=/docs/design-system-changelog--page) (2023-07-18)
+[compare](https://github.com/ovh/design-system/compare/v13.0.1...v14.1.0)
+
+### Bug Fixes
+
+* **checkbox-button:** add aspect ratio to 1 ([#79](https://github.com/ovh/design-system/issues/79)) ([cc72649](https://github.com/ovh/design-system/commit/cc726492ed0180456c39207ad4bcd31f72094908))
+
+
+
 [Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-stencil-icon",
-  "version": "14.0.1",
+  "version": "14.1.0",
   "private": true,
   "description": "Icon component",
   "author": "OVH SAS",
@@ -35,9 +35,9 @@
     "test:e2e:ci:screenshot:update": "stencil test --config stencil.config.ts --e2e --ci --screenshot --update-screenshot --passWithNoTests"
   },
   "dependencies": {
-    "@ovhcloud/ods-stencil-component": "^14.0.1"
+    "@ovhcloud/ods-stencil-component": "^14.1.0"
   },
   "devDependencies": {
-    "@ovhcloud/ods-stencil-component-dev": "^14.0.1"
+    "@ovhcloud/ods-stencil-component-dev": "^14.1.0"
   }
 }

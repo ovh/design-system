@@ -358,8 +358,8 @@ export class OsdsInput implements OdsInput<OdsStencilMethods<OdsInputMethods>, O
             step,
             tabindex: '-1',
             /** Handling password masking options */
-            type: isPassword && !masked 
-              ? 'text' 
+            type: isPassword && !masked
+              ? 'text'
               : type,
             value: value?.toString() || '',
           }}
@@ -403,7 +403,7 @@ export class OsdsInput implements OdsInput<OdsStencilMethods<OdsInputMethods>, O
                 onClick: () => this.clear(),
             }}></osds-icon>
           )
-        } 
+        }
 
         {/** If Component isn't loading & icon, display desired icon */
           icon && !loading && (

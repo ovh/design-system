@@ -8,7 +8,6 @@ import {
   odsDividerDefaultAttributes
 } from '@ovhcloud/ods-core';
 import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libraries/stencil-core';
-
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 
 @Component({

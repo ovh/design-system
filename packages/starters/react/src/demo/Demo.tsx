@@ -1,10 +1,8 @@
 import React from 'react';
 
-// you can import react proxy from the independent package
-import { OsdsButton } from '@ovhcloud/ods-stencil/components/button/react';
-
 // you can import multiple react proxies from the grouped package
 import {
+  OsdsButton,
   OsdsCheckbox,
   OsdsCheckboxButton,
   OsdsMessage,
@@ -51,7 +49,7 @@ const Demo: React.FC = () => (
     </div>
 
     <h5>Ods Flag</h5>
-    <div style={{height: 20, width: 30, margin: 'auto'}}>
+    <div style={{ height: 20, width: 30, margin: 'auto' }}>
       <OsdsFlag iso={ODS_COUNTRY_ISO_CODE.PL} />
     </div>
 

@@ -1,9 +1,8 @@
 <script setup lang="ts">
-// you can import react proxy from the independent package
-import { OsdsButton } from '@ovhcloud/ods-stencil/components/button/vue'
 
 // you can import multiple react proxies from the grouped package
 import {
+  OsdsButton,
   OsdsCheckbox,
   OsdsCheckboxButton,
   OsdsMessage,

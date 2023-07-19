@@ -27,7 +27,7 @@
     "build": "lerna run build",
     "build:all:prod": "yarn build:prod && yarn doc && yarn doc:api && yarn build:storybook",
     "build:all:prod:slow": "yarn build:prod:slow && yarn doc && yarn doc:api:slow && yarn build:storybook",
-    "build:prod": "lerna run --stream build:prod",
+    "build:prod": "yarn && lerna run --stream build:prod --since HEAD~1",
     "build:prod:slow": "lerna run --stream --concurrency 1 build:prod",
     "build:slow": "lerna run --concurrency 1 build",
     "build:storybook": "lerna run --stream build:storybook",

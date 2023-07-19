@@ -15,8 +15,38 @@ defineCustomElements();
 
 /* Default story parameters  */
 const storyParams = {
-
+  value: {
+    category: 'Général',
+    defaultValue: ''
+  },
+  placeholder: {
+    category: 'Général',
+    defaultValue: ''
+  },
+  contrasted: {
+    category: 'Misc',
+    defaultValue: false
+  },
+  disabled: {
+    category: 'Misc',
+    defaultValue: false
+  },
+  loading: {
+    category: 'Misc',
+    defaultValue: false
+  },
 };
+
+const selectParams = {
+  options: {
+    category: 'Général',
+    defaultValue: [
+      { label: 'option1', value: '1' },
+      { label: 'option2', value: '2' },
+      { label: 'option3', value: '3' }
+    ]
+  },
+}
 
 export default {
   title: 'UI Components/SearchBar [atom]/Web Component',
@@ -27,7 +57,7 @@ export default {
     },
     docs: { page }
   },
-  argTypes: extractArgTypes(storyParams)
+  argTypes: extractArgTypes({ ...storyParams, ...selectParams })
 };
 
 /* Default */
@@ -41,4 +71,17 @@ const TemplateDefault = (args:any) => {
 export const Default = TemplateDefault.bind({});
 Default.args = {
   ...extractStoryParams(storyParams),
+};
+
+/* Default */
+const SelectTemplate = (args:any) => {
+  return html`
+    <osds-search-bar ...=${getTagAttributes(args)}>
+      SearchBar
+    </osds-search-bar>
+  `;
+}
+export const Select = SelectTemplate.bind({});
+Select.args = {
+  ...extractStoryParams({ ...storyParams, ...selectParams }),
 };

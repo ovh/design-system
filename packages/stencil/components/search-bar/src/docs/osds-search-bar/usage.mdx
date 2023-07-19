@@ -10,3 +10,21 @@ import GenericStyle from '@ovhcloud/ods-core/docs/generic-style.mdx';
 ```html
 <osds-search-bar>SearchBar</osds-search-bar>
 ```
+
+
+### With Select
+
+export const fillOptions = () => {
+    setTimeout(() => {
+        const searchbarWithOptions = document.getElementById('searchbarWithOptions');
+        searchbarWithOptions.options = [{ label: 'option1', value: '1' }]
+    }, 0);
+};
+
+<osds-search-bar id="searchbarWithOptions">SearchBar</osds-search-bar>
+
+<>{ fillOptions() }</>
+
+```html
+<osds-search-bar options="[{ label: 'option1', value: '1' }]">SearchBar</osds-search-bar>
+```

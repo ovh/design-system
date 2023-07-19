@@ -10,7 +10,6 @@ import {
 } from '@ovhcloud/ods-testing';
 import { SpecPage, newSpecPage } from '@stencil/core/testing';
 
-import { OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
 import { OsdsSearchBar } from './osds-search-bar';
 import { getAttributeContextOptions } from '@ovhcloud/ods-stencil/libraries/stencil-testing';
 
@@ -18,6 +17,7 @@ describe('spec:osds-search-bar', () => {
   let page: SpecPage;
   let root: HTMLElement | undefined;
   let instance: OsdsSearchBar;
+  let buttonSearch: HTMLElement;
 
   afterEach(() => {
     jest.clearAllMocks();
@@ -34,6 +34,7 @@ describe('spec:osds-search-bar', () => {
 
     root = page.root;
     instance = page.rootInstance;
+    buttonSearch = root.shadowRoot.querySelector('osds-button');
   }
 
   it('should render', async () => {
@@ -105,5 +106,14 @@ describe('spec:osds-search-bar', () => {
     });
   });
 
-  
+  describe('methods', () => {
+    it('should call emit odsSearchSubmit', async () => {
+      await setup({});
+      const spyEmitOdsSearchSubmit = jest.spyOn(instance.odsSearchSubmit, 'emit');
+      buttonSearch.click();
+      instance.handlerOnClickSearchButton();
+      expect(spyEmitOdsSearchSubmit).toHaveBeenCalledTimes(2);
+      expect(spyEmitOdsSearchSubmit).toHaveBeenCalledWith({ optionValue: '', inputValue: '' });
+    })
+  });
 });

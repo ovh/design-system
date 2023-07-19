@@ -1,0 +1,27 @@
+@import '~@ovhcloud/ods-theming/color/ods-component-color';
+@import './osds-clipboard.mixins';
+
+@mixin osds-clipboard-theme-color-variant-default() {
+  @include ods-and-all-hue-foreach-theme-color((
+          color: '800',
+          background-color: '100'
+  )) using($colors) {
+    @include osds-clipboard-on-selected-host() {
+      //color: map_get($colors, color);
+      //background-color: map_get($colors, background-color);
+    }
+  }
+}
+
+// Main CSS color theme mixin
+@mixin osds-clipboard-theme-color() {
+  /** base colors */
+  :host {
+    border-color: transparent;
+  }
+
+  /** no variant specified: default variant colors */
+  :not([variant]) {
+    @include osds-clipboard-theme-color-variant-default();
+  }
+}

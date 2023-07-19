@@ -4,14 +4,7 @@
 // Main CSS mixin for sizes
 @mixin osds-search-bar-theme-size() {
     :host {
-        height: 42px;
         width: 654px;
-        > * {
-            height: 100%;
-        }
-        osds-button::part(button) {   
-            height: 42px;
-        }
         osds-select {
             width: 30%;
         }

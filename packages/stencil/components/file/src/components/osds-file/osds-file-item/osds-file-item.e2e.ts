@@ -16,12 +16,12 @@ describe('e2e:osds-file-item', () => {
     const page = await newE2EPage();
     await page.setContent(`
       <osds-file-item
-          name='${allAttributes.name}'
-          size='${allAttributes.size}'
+          name=${allAttributes.name}
+          size=${allAttributes.size}
           progress=${allAttributes.progress}
           error=${allAttributes.error}
       />
-    `);
+    `, { timeout: 10000 });
     await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
 
     await page.waitForChanges();

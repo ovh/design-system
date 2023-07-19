@@ -15,9 +15,7 @@ describe('e2e:osds-file-header', () => {
     const stringAttributes = OdsComponentAttributes2StringAttributes<OdsFileHeaderAttributes>(minimalAttributes, odsFileHeaderDefaultAttributes);
 
     const page = await newE2EPage();
-    await page.setContent(`<osds-file-header
-      ${OdsStringAttributes2Str(stringAttributes)}
- />`);
+    await page.setContent(`<osds-file-header ${OdsStringAttributes2Str(stringAttributes)} />`, { timeout: 10000 });
     await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
 
     await page.waitForChanges();

@@ -6107,6 +6107,46 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-stencil-clipboard-react@workspace:packages/stencil/components/clipboard/react":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-stencil-clipboard-react@workspace:packages/stencil/components/clipboard/react"
+  dependencies:
+    "@ovhcloud/ods-stencil-clipboard": ^14.0.1
+    "@types/react": 17.0.37
+    "@types/react-dom": 17.0.11
+    react: 16.14.0
+    react-dom: 16.14.0
+    rimraf: ^3.0.2
+    tslib: "*"
+    typescript: 4.7.4
+  peerDependencies:
+    react: ">=16.8.6"
+    react-dom: ">=16.8.6"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-stencil-clipboard-vue@workspace:packages/stencil/components/clipboard/vue":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-stencil-clipboard-vue@workspace:packages/stencil/components/clipboard/vue"
+  dependencies:
+    "@ovhcloud/ods-stencil-clipboard": ^14.0.1
+    rimraf: ^3.0.2
+    typescript: 4.7.4
+    vue: ^3.2.41
+  peerDependencies:
+    vue: ">=3"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-stencil-clipboard@^14.0.1, @ovhcloud/ods-stencil-clipboard@workspace:packages/stencil/components/clipboard":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-stencil-clipboard@workspace:packages/stencil/components/clipboard"
+  dependencies:
+    "@ovhcloud/ods-stencil-component": ^14.0.1
+    "@ovhcloud/ods-stencil-component-dev": ^14.0.1
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-stencil-code-react@workspace:packages/stencil/components/code/react":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-code-react@workspace:packages/stencil/components/code/react"

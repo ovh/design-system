@@ -1,13 +1,15 @@
-import { Component, Element, Host, h, Prop, Event, EventEmitter } from '@stencil/core';
+import { Component, Element, Host, h, Prop, Event, EventEmitter, Listen } from '@stencil/core';
 import {
   OdsButtonSize,
   OdsIconName,
   OdsInputType,
+  OdsInputValueChangeEvent,
   OdsSearchBar,
   OdsSearchBarController,
   odsSearchBarDefaultAttributes,
   OdsSearchBarEvents,
   OdsSearchBarMethods,
+  OdsSelectValueChangeEvent,
   // odsSearchBarDefaultAttributes
 } from '@ovhcloud/ods-core';
 import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libraries/stencil-core';
@@ -23,6 +25,8 @@ import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 })
 export class OsdsSearchBar implements OdsSearchBar<OdsStencilMethods<OdsSearchBarMethods>, OdsStencilEvents<OdsSearchBarEvents>> {
   controller: OdsSearchBarController = new OdsSearchBarController(this);
+  private optionValue: string = '';
+
   @Element() el!: HTMLElement;
 
   /** @see OdsSearchBarAttributes.contrasted */
@@ -41,38 +45,50 @@ export class OsdsSearchBar implements OdsSearchBar<OdsStencilMethods<OdsSearchBa
   @Prop({ reflect: true }) public options?: { label: string; value: string; }[] = odsSearchBarDefaultAttributes.options;
 
   /** @see OdsSearchBarAttributes.value */
-  @Prop({ reflect: true }) public value: string = odsSearchBarDefaultAttributes.value;
+  @Prop({ reflect: true, mutable: true }) public value: string = odsSearchBarDefaultAttributes.value;
 
   /** @see OdsSearchBarEvents.odsSearchSubmit */
-  @Event() odsSearchSubmit!: EventEmitter<string>;
+  @Event() odsSearchSubmit!: EventEmitter<{ optionValue: string; inputValue: string }>;
+
+  @Listen('odsValueChange')
+  onValueChange(event: OdsInputValueChangeEvent | OdsSelectValueChangeEvent): void {
+    const isOdsSelectValueChange = 'selection' in event.detail;
+    if (isOdsSelectValueChange) {
+      this.optionValue = event.detail.value?.toString() ?? '';
+      return;
+    }
+    this.value = event.detail.value?.toString() ?? '';
+  }
 
   handlerOnClickSearchButton(): void {
     this.emitSearchSubmit();
   }
 
   emitSearchSubmit(): void {
-    this.odsSearchSubmit.emit(this.value);
+    this.odsSearchSubmit.emit({ optionValue: this.optionValue, inputValue: this.value });
   }
 
   render() {
     const hasSelect = this.options?.length;
+    
     return (
       <Host>
         {
           hasSelect && 
-          <osds-select class="search-bar__child" tabindex="0" disabled={ this.disabled }>
-            { this.options?.map((option) => {
-              return (
-                <osds-select-option value={ option.value }>{ option.label }</osds-select-option>)
-            })}
+          <osds-select
+            tabindex="0"
+            disabled={ this.disabled }>
+            { this.options?.map((option) => <osds-select-option value={ option.value }>{ option.label }</osds-select-option>) }
           </osds-select>
           || ''
         }
 
-        <osds-input tabindex="1"
+        <osds-input 
+          tabindex="1"
           color={ OdsThemeColorIntent.primary }
           type={ OdsInputType.text } 
           clearable
+          contrasted={ this.contrasted }
           value={ this.value }
           loading={ this.loading }
           disabled={ this.disabled }  
@@ -80,7 +96,8 @@ export class OsdsSearchBar implements OdsSearchBar<OdsStencilMethods<OdsSearchBa
           class={{ 'first': !hasSelect }}>
         </osds-input>
 
-        <osds-button tabindex="2"
+        <osds-button 
+          tabindex="2"
           onClick={ () => this.handlerOnClickSearchButton() }
           onKeyDown={ (event: KeyboardEvent) => {
             const isEnter = event.code.includes('Enter');
@@ -92,7 +109,7 @@ export class OsdsSearchBar implements OdsSearchBar<OdsStencilMethods<OdsSearchBa
           size={ OdsButtonSize.sm }
           color={ OdsThemeColorIntent.primary }
           disabled={ this.disabled }
-          class="search-bar__child">
+          contrasted={ this.contrasted }>
           <osds-icon contrasted name={ OdsIconName.SEARCH } />
         </osds-button>
       </Host>

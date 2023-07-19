@@ -35,8 +35,13 @@
   searchBarOptions.options = [{
     label: "options1",
     value: "1"
+  },{
+    label: "options2",
+    value: "2"
   }];
-  searchBarOptions.addEventListener('odsSearchSubmit', () => console.log('odsSearchSubmit trigger'))
+  searchBarOptions.addEventListener('odsSearchSubmit', (event) => console.log('odsSearchSubmit trigger', event));
+  searchBarOptions.addEventListener('odsValueChange', () => console.log('odsValueChange trigger'))
+
 </script>
 </body>
 </html>

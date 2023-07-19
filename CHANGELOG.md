@@ -8,6 +8,25 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
 
 
+# [14.1.1](https://ovhcloud.design/v14.1.1/?path=/docs/design-system-changelog--page) (2023-07-19)
+[compare](https://github.com/ovh/design-system/compare/v14.1.0...v14.1.1)
+
+### Bug Fixes
+
+* **input:** set cursor to not-allowed when disabled ([#101](https://github.com/ovh/design-system/issues/101)) ([43ee887](https://github.com/ovh/design-system/commit/43ee88707f82557c1a1cd78e207870cf5780e5c0))
+
+
+### Features
+
+* update whats new page ([#102](https://github.com/ovh/design-system/issues/102)) ([a3a5fb7](https://github.com/ovh/design-system/commit/a3a5fb734815e21050de820a1964b4781323fe6b))
+
+
+
+
+
+[Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
+
+
 # [14.1.0](https://ovhcloud.design/v14.1.0/?path=/docs/design-system-changelog--page) (2023-07-18)
 [compare](https://github.com/ovh/design-system/compare/v13.0.1...v14.1.0)
 

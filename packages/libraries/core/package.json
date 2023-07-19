@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-core",
-  "version": "14.1.0",
+  "version": "14.1.1",
   "description": "ODS core",
   "author": "OVH SAS",
   "license": "Apache-2.0",
@@ -19,13 +19,13 @@
     "test:spec:ci": "jest --ci  --coverage --detectOpenHandles"
   },
   "dependencies": {
-    "@ovhcloud/ods-cdk": "^14.1.0"
+    "@ovhcloud/ods-cdk": "^14.1.1"
   },
   "peerDependencies": {
     "@ovhcloud/ods-theming": ">=2"
   },
   "devDependencies": {
-    "@ovhcloud/ods-library-dev": "^14.1.0",
-    "@ovhcloud/ods-theming": "^14.1.0"
+    "@ovhcloud/ods-library-dev": "^14.1.1",
+    "@ovhcloud/ods-theming": "^14.1.1"
   }
 }

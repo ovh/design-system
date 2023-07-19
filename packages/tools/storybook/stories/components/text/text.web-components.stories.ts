@@ -1,13 +1,13 @@
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
+import { olesIpsum, OlesIpsumGeneration } from '@ovhcloud/ods-common-core';
 import { OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
-import { createComponentTable, extractArgTypes, extractStoryParams, getTagAttributes, olesIpsum, OlesIpsumGeneration } from '@ovhcloud/ods-common-core';
+import { createComponentTable, extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 import { defineCustomElements } from '@ovhcloud/ods-component-text/loader'
-import { ODS_TEXT_LEVELS } from '../../src/components/osds-text/constants/text-level';
-import { ODS_TEXT_SIZES } from '../../src/components/osds-text/constants/text-size';
-import { DEFAULT_ATTRIBUTE } from '../../src/components/osds-text/constants/default-attributes';
+import { ODS_TEXT_LEVELS, ODS_TEXT_SIZES } from '@ovhcloud/ods-component-text';
+import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-component-text/src/components/osds-text/constants/default-attributes';
 // @ts-ignore
-import changelog from '../../CHANGELOG.md';
+import changelog from '@ovhcloud/ods-component-text/CHANGELOG.md';
 // @ts-ignore
 import page from './text.web-component.stories.page.mdx';
 

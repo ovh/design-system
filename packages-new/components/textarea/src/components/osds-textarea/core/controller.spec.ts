@@ -47,9 +47,6 @@ describe('ods-textarea-controller', () => {
   }
 
   beforeEach(() => {
-    // component = new OdsTextAreaMock();
-    // component.el = document.createElement('osds-textarea') as HTMLElement;
-
     const loggerMocked = new OdsLogger('myLoggerMocked');
     loggerSpyReferences = OdsInitializeLoggerSpy({
       loggerMocked: loggerMocked as never,

@@ -1,10 +1,10 @@
 import { html } from 'lit-html';
-import { extractArgTypes, extractStoryParams, getTagAttributes } from '@ovhcloud/ods-common-core';
+import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 import { OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
 import { defineCustomElements } from '@ovhcloud/ods-component-textarea/loader';
-import { DEFAULT_ATTRIBUTE } from '../../src/components/osds-textarea/constants/default-attributes';
+import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-component-textarea/src/components/osds-textarea/constants/default-attributes';
 // @ts-ignore
-import changelog from '../../CHANGELOG.md';
+import changelog from '@ovhcloud/ods-component-textarea/CHANGELOG.md';
 // @ts-ignore
 import page from './textarea.web-component.stories.page.mdx';
 

@@ -2,13 +2,12 @@ import { E2EElement, E2EPage, newE2EPage } from '@stencil/core/testing';
 import {
   OdsButtonAttributes,
   OdsButtonSize,
-  OdsIconSize,
+  OdsButtonType,
   OdsButtonVariant,
   OdsComponentAttributes2StringAttributes,
   odsButtonDefaultAttributes,
 } from '@ovhcloud/ods-core';
 import { OdsCreateAttributes, OdsStringAttributes2Str, odsButtonBaseAttributes } from '@ovhcloud/ods-testing';
-
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 
 describe('e2e:osds-button', () => {
@@ -171,7 +170,7 @@ describe('e2e:osds-button', () => {
 
   describe('disabled', () => {
     it('should not submit the form', async () => {
-      await setup({ attributes: { disabled: true, type: 'submit' }, html: `submit`, inForm: true });
+      await setup({ attributes: { disabled: true, type: OdsButtonType.submit }, html: `submit`, inForm: true });
       await el.click();
       expect(checkSubmit).not.toHaveBeenCalled();
     });
@@ -219,7 +218,7 @@ describe('e2e:osds-button', () => {
 
   describe('form', () => {
     beforeEach(async () => {
-      await setup({ attributes: { type: 'submit' }, html: `submit`, inForm: true });
+      await setup({ attributes: { type: OdsButtonType.submit }, html: `submit`, inForm: true });
     });
 
     it('should submit a form with click when type is submit', async () => {

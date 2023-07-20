@@ -13,7 +13,7 @@ import {
 } from '@ovhcloud/ods-core';
 import { OsdsInput } from '@ovhcloud/ods-stencil/components/input/src/components/osds-input/osds-input';
 
-import '@ovhcloud/ods-stencil/components/icon';
+import '@ovhcloud/ods-component-icon';
 import '@ovhcloud/ods-stencil/components/spinner';
 
 const input3: (HTMLElement & OsdsInput) | null = document.getElementById('input-3') as (HTMLElement & OsdsInput);

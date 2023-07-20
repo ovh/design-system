@@ -1,3 +1,4 @@
+import type { ODS_ICON_NAME } from '@ovhcloud/ods-component-icon';
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 import { OdsInputSize } from './ods-input-size';
 import { OdsInputType } from './ods-input-type';
@@ -7,7 +8,6 @@ import { OdsErrorStateControl } from '../../form/error/ods-error-state-control';
 import { OdsInputValidityState } from './ods-input-validity-state';
 import { OdsFormForbiddenValues } from '../../form/validation/ods-form-forbidden-values';
 import { OdsComponentAttributes } from '../ods-component-attributes';
-import { OdsIconName } from '../icon/ods-icon-size';
 
 export interface OdsInputAttributes extends OdsComponentAttributes {
   /**
@@ -32,12 +32,12 @@ export interface OdsInputAttributes extends OdsComponentAttributes {
   errorStateControl?: OdsErrorStateControl;
   /** Indicates if the input is full width or not: see component principles */
   flex?: boolean;
-  /** List of forbidden values for the input */ 
+  /** List of forbidden values for the input */
   forbiddenValues: OdsFormForbiddenValues;
   /** Control object of the form the input belongs to */
   formControl?: OdsFormControl<OdsInputValidityState>;
   /** Icon to be used in the input field */
-  icon?: OdsIconName;
+  icon?: ODS_ICON_NAME;
   /** Label of the input field */
   label?:string;
   /** Indicates if the input is in loading state or not */

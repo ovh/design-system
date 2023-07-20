@@ -33,11 +33,11 @@ const config: Config = {
     },
     reactOutput: {
       // exclude components that have been moved to the new repo
-      excludeComponents: ['osds-text', 'osds-textarea'],
+      excludeComponents: ['osds-icon', 'osds-text', 'osds-textarea'],
     },
     vueOutput: {
       // exclude components that have been moved to the new repo
-      excludeComponents: ['osds-text', 'osds-textarea'],
+      excludeComponents: ['osds-icon', 'osds-text', 'osds-textarea'],
     },
     dev: {
       tsConfig: 'tsconfig.components.dev.json',
@@ -72,7 +72,6 @@ const config: Config = {
     { components: ['osds-content-addon'] },
     { components: ['osds-divider'] },
     { components: ['osds-flag'] },
-    { components: ['osds-icon'] },
     { components: ['osds-input'] },
     { components: ['osds-link'] },
     { components: ['osds-location-tile'] },

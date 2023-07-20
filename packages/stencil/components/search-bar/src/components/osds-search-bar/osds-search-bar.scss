@@ -11,7 +11,7 @@
   osds-select {
     --ods-size-select-border-radius-bottom-right: 0;
     --ods-size-select-border-radius-top-right: 0;
-    --ods-size-select-border-right: none;
+    --ods-size-select-border-right-width: 0;
   }
 
   .first {
@@ -27,9 +27,12 @@
     border-radius: 0;
   }
 
-  osds-button::part(button) {
-    border-bottom-left-radius: 0;
-    border-top-left-radius: 0;
+  osds-button {
+    flex-shrink: 0;
+    &::part(button) {
+      border-bottom-left-radius: 0;
+      border-top-left-radius: 0;
+    }  
   }
 }
 

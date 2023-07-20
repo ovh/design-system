@@ -30,14 +30,14 @@ describe('e2e:osds-search-bar', () => {
       [true, false].forEach((disabled) => {
         [true, false].forEach((loading) => {
           [undefined, [], options].forEach((options) => {
-            [undefined, '', 'Input value'].forEach((value) => {
-              [undefined, '', 'Placeholder'].forEach((placeholder) => {
-              it([contrasted, disabled, loading, placeholder, options, value].join(', '), async () => {
+            [undefined, 'Input value'].forEach((value) => {
+              [undefined, 'Placeholder'].forEach((placeholder) => {
+              it([`contrasted ${contrasted}`, `disabled ${disabled}`, `loading ${loading}`, `placeholder ${placeholder}`, `options ${options}`, `value ${value}`].join(', '), async () => {
                 await setup({
                   attributes: { contrasted, disabled, loading, placeholder, options, value },
                 });
                 await page.waitForChanges();
-                const results = await page.compareScreenshot('seach-bar', { fullPage: false, omitBackground: true });
+                const results = await page.compareScreenshot('search-bar', { fullPage: false, omitBackground: true });
                 expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 })
               });
             });

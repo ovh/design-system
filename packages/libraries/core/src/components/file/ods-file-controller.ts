@@ -143,7 +143,7 @@ export class OdsFileController extends OdsComponentController<OdsFile> {
   }
 
   emitSelectedFiles(files: File[]): void {
-    if (this.component.maxFiles && files.length > this.component.maxFiles) {
+    if (this.component.maxFiles && this.component.files && (this.component.files.length + files.length) > this.component.maxFiles) {
       this.component.emitMaxFilesReached();
       return;
     }

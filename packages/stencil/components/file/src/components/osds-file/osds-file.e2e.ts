@@ -80,6 +80,22 @@ describe('e2e:osds-file', () => {
       expect(fileChangeEvent).toHaveReceivedEventDetail({ files: [{ name: 'file1.txt', progress: 0 }] });
     })
 
+    it('should emit odsMaxFilesReached when header emit filesSelected and maxFiles is reached', async () => {
+      await setup({
+        attributes: {
+          maxFiles: 1,
+          files: [{ name: 'file1.txt', progress: 0, size: 1000 }] as OdsFileI[],
+        }
+      });
+      const header = await page.find('osds-file >>> osds-file-header');
+      const maxFilesReachedEvent = await page.spyOnEvent('odsMaxFilesReached');
+
+      await header.triggerEvent('filesSelected', { detail: [{ name: 'file2.txt', progress: 0 }] });
+      await page.waitForChanges();
+
+      expect(maxFilesReachedEvent).toHaveReceivedEvent();
+    })
+
     it('should emit odsCancel when a file item emit cancel event', async () => {
       await setup({
         attributes: {

@@ -83,6 +83,10 @@ const TemplateDefault = (args:any) => {
         alert(\`File ${event?.detail?.name} rejected\`)
       })
 
+      odsUpload.addEventListener('odsMaxFilesReached', () => {
+        alert('Max files reached')
+      })
+
       odsUpload.addEventListener('odsFilesChange', (event) => {
         if(!event) return;
 

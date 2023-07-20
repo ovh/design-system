@@ -211,8 +211,11 @@ describe('OdsFileController', () => {
       expect(component.dragOver).toBe(false);
       expect(component.emitFiles).not.toHaveBeenCalled();
     })
-    it('should emit odsMaxFilesReached if maxFiles is reached', () => {
-      component = new OdsFileMock({ maxFiles: 1 });
+    it.each([
+      { files: [], maxFiles: 1 },
+      { files: [{ name: 'ExistingFile.png' }] as OdsFileI[], maxFiles: 2 },
+    ])('should emit odsMaxFilesReached if maxFiles is reached', ({ maxFiles, files }) => {
+      component = new OdsFileMock({ maxFiles, files });
       controller = new OdsFileController(component);
 
       controller.emitSelectedFiles([

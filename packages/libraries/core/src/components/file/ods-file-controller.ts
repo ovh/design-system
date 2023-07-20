@@ -73,6 +73,10 @@ export class OdsFileController extends OdsComponentController<OdsFile> {
     return acceptedTypes.includes(fileExtension)
   }
 
+  isMaxFilesReached(files: File[]) {
+    return !!this.component.maxFiles && !!this.component.files && (this.component.files.length + files.length) > this.component.maxFiles;
+  }
+
   onDrop(e: DragEvent): void {
     e.preventDefault();
 
@@ -92,9 +96,11 @@ export class OdsFileController extends OdsComponentController<OdsFile> {
     }
 
     // We need to check if we can add all the new files. If not, we need to slice the array to be sure to not exceed the max files
-    if(this.component.maxFiles && this.component.files && (this.component.files?.length + files.length) >= this.component.maxFiles) {
-      const availableLength = this.component.maxFiles - this.component.files.length;
+    if(this.component.maxFiles && this.isMaxFilesReached(files)) {
+      const existingFilesLength = this.component?.files?.length ?? 0;
+      const availableLength = this.component.maxFiles - existingFilesLength;
       files = files.slice(0, availableLength);
+      this.component.emitMaxFilesReached();
     }
 
     const newFiles = files.filter((file) => {
@@ -143,7 +149,7 @@ export class OdsFileController extends OdsComponentController<OdsFile> {
   }
 
   emitSelectedFiles(files: File[]): void {
-    if (this.component.maxFiles && this.component.files && (this.component.files.length + files.length) > this.component.maxFiles) {
+    if (this.isMaxFilesReached(files)) {
       this.component.emitMaxFilesReached();
       return;
     }

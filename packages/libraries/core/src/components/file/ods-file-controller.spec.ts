@@ -211,10 +211,31 @@ describe('OdsFileController', () => {
       expect(component.dragOver).toBe(false);
       expect(component.emitFiles).not.toHaveBeenCalled();
     })
+    it('should emit sliced files if maxFiles is reached and emit odsMaxFilesReached', () => {
+      component = new OdsFileMock({ files: [{ progress: 100 }] as OdsFileI[], maxFiles: 2 });
+      controller = new OdsFileController(component);
+      const file1 = new File([''], 'file1', { type: 'image/png' });
+      const file2 = new File([''], 'file2', {  type: 'image/mov' });
+      const files = [file1, file2];
+      const dataTransfer = {
+        files
+      };
+      const event = {
+        dataTransfer,
+        preventDefault: jest.fn(),
+      } as any;
+
+      controller.onDrop(event);
+
+      expect(event.preventDefault).toHaveBeenCalled();
+      expect(component.dragOver).toBe(false);
+      expect(component.emitFiles).toHaveBeenCalledWith([file1]);
+      expect(component.emitMaxFilesReached).toHaveBeenCalled();
+    })
     it.each([
       { files: [], maxFiles: 1 },
       { files: [{ name: 'ExistingFile.png' }] as OdsFileI[], maxFiles: 2 },
-    ])('should emit odsMaxFilesReached if maxFiles is reached', ({ maxFiles, files }) => {
+    ])('should emit odsMaxFilesReached if maxFiles is reached and we select files', ({ maxFiles, files }) => {
       component = new OdsFileMock({ maxFiles, files });
       controller = new OdsFileController(component);
 

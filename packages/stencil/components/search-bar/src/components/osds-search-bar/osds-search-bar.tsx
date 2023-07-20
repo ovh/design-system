@@ -10,7 +10,6 @@ import {
   OdsSearchBarEvents,
   OdsSearchBarMethods,
   OdsSelectValueChangeEvent,
-  // odsSearchBarDefaultAttributes
 } from '@ovhcloud/ods-core';
 import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libraries/stencil-core';
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
@@ -60,6 +59,14 @@ export class OsdsSearchBar implements OdsSearchBar<OdsStencilMethods<OdsSearchBa
     this.value = event.detail.value?.toString() ?? '';
   }
 
+  handlerOnKeydownInput(event: KeyboardEvent): void {
+    const isEnter = event.code.includes('Enter');
+    const isSpace = event.code.includes('Space');
+    if (isEnter || isSpace) {
+      this.handlerOnClickSearchButton();
+    }
+  }
+
   handlerOnClickSearchButton(): void {
     this.emitSearchSubmit();
   }
@@ -69,7 +76,7 @@ export class OsdsSearchBar implements OdsSearchBar<OdsStencilMethods<OdsSearchBa
   }
 
   render() {
-    const hasSelect = this.options?.length;
+    const hasSelect = Boolean(this.options?.length);
     
     return (
       <Host>
@@ -80,7 +87,6 @@ export class OsdsSearchBar implements OdsSearchBar<OdsStencilMethods<OdsSearchBa
             disabled={ this.disabled }>
             { this.options?.map((option) => <osds-select-option value={ option.value }>{ option.label }</osds-select-option>) }
           </osds-select>
-          || ''
         }
 
         <osds-input 
@@ -99,13 +105,7 @@ export class OsdsSearchBar implements OdsSearchBar<OdsStencilMethods<OdsSearchBa
         <osds-button 
           tabindex="2"
           onClick={ () => this.handlerOnClickSearchButton() }
-          onKeyDown={ (event: KeyboardEvent) => {
-            const isEnter = event.code.includes('Enter');
-            const isSpace = event.code.includes('Space');
-            if (isEnter || isSpace) {
-              this.handlerOnClickSearchButton();
-            }
-          }}
+          onKeyDown={ (event: KeyboardEvent) => this.handlerOnKeydownInput(event) }
           size={ OdsButtonSize.sm }
           color={ OdsThemeColorIntent.primary }
           disabled={ this.disabled }

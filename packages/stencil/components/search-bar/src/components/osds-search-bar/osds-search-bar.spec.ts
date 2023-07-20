@@ -114,6 +114,29 @@ describe('spec:osds-search-bar', () => {
       instance.handlerOnClickSearchButton();
       expect(spyEmitOdsSearchSubmit).toHaveBeenCalledTimes(2);
       expect(spyEmitOdsSearchSubmit).toHaveBeenCalledWith({ optionValue: '', inputValue: '' });
+    });
+
+    it('should call emit odsSearchSubmit with keyboard navigation', async () => {
+      await setup({});
+      const spyEmitOdsSearchSubmit = jest.spyOn(instance.odsSearchSubmit, 'emit');
+      const enterKey = new KeyboardEvent('keydown', { code: 'Enter'});
+      instance.handlerOnKeydownInput(enterKey);
+      const spaceKey = new KeyboardEvent('keydown', { code: 'Space'});
+      instance.handlerOnKeydownInput(spaceKey);
+
+      expect(spyEmitOdsSearchSubmit).toHaveBeenCalledTimes(2);
+      expect(spyEmitOdsSearchSubmit).toHaveBeenCalledWith({ optionValue: '', inputValue: '' });
+    });
+
+    it('should not call emit odsSearchSubmit with keyboard navigation because of wrong key', async () => {
+      await setup({});
+      const spyEmitOdsSearchSubmit = jest.spyOn(instance.odsSearchSubmit, 'emit');
+      const enterKey = new KeyboardEvent('keydown', { code: 'A'});
+      instance.handlerOnKeydownInput(enterKey);
+      const spaceKey = new KeyboardEvent('keydown', { code: '0'});
+      instance.handlerOnKeydownInput(spaceKey);
+
+      expect(spyEmitOdsSearchSubmit).not.toHaveBeenCalled();
     })
   });
 });

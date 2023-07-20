@@ -6,8 +6,6 @@ import {
   OdsPaginationEvents,
   OdsPaginationMethods,
   OdsPaginationChangedEventDetail,
-  OdsIconSize,
-  OdsIconName,
   OdsButtonSize,
   OdsButtonVariant,
   OdsPaginationPageList,
@@ -18,6 +16,7 @@ import {
 import { ODS_TEXT_SIZE } from '@ovhcloud/ods-component-text';
 import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libraries/stencil-core';
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
 import {
   Component,
   Element,
@@ -178,7 +177,7 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
   renderArrows(direction: 'left' | 'right') {
     const { disabled } = this;
     const isLeft = direction === 'left';
-    const arrowIcon = isLeft ? OdsIconName.CHEVRON_LEFT : OdsIconName.CHEVRON_RIGHT;
+    const arrowIcon = isLeft ? ODS_ICON_NAME.CHEVRON_LEFT : ODS_ICON_NAME.CHEVRON_RIGHT;
 
     return (
       <li class="arrows">
@@ -212,7 +211,7 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
             size={OdsButtonSize.sm}
           >
             <osds-icon
-              size={OdsIconSize.sm}
+              size={ODS_ICON_SIZE.sm}
               name={arrowIcon}
               color={OdsThemeColorIntent.primary}
               class={(isLeft && this.current === 1) || (direction === 'right' && this.current >= this.pageList.length) ? 'disabled' : ''}

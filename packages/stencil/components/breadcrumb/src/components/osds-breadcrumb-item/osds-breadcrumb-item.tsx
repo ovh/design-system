@@ -5,11 +5,10 @@ import {
   odsBreadcrumbItemDefaultAttributes,
   OdsBreadcrumbItemEvents,
   OdsBreadcrumbItemMethods,
-  OdsIconName,
-  OdsIconSize,
 } from '@ovhcloud/ods-core';
 import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libraries/stencil-core';
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
 
 /**
  * @slot (unnamed) - Breadcrumb Item content
@@ -40,7 +39,7 @@ export class OsdsBreadcrumbItem implements OdsBreadcrumbItem<OdsStencilMethods<O
   @Prop({ reflect: true }) href = '';
 
   /** @see OdsBreadcrumbItemAttributes.icon */
-  @Prop({ reflect: true }) icon?: OdsIconName;
+  @Prop({ reflect: true }) icon?: ODS_ICON_NAME;
 
   /** @see OdsBreadcrumbItemAttributes.label */
   @Prop({ reflect: true }) label?: string;
@@ -67,7 +66,7 @@ export class OsdsBreadcrumbItem implements OdsBreadcrumbItem<OdsStencilMethods<O
               <span slot="start">
                 <osds-icon contrasted={this.contrasted}
                            name={this.icon}
-                           size={OdsIconSize.xs}
+                           size={ODS_ICON_SIZE.xs}
                            color={this.defaultColorIntent}>
                 </osds-icon>
               </span>

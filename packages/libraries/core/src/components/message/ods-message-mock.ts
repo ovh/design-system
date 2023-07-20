@@ -1,4 +1,4 @@
-import { OdsIconName } from "../icon/ods-icon-size";
+import type { ODS_ICON_NAME } from "@ovhcloud/ods-component-icon";
 import { OdsMessage } from "./ods-message";
 import { OdsMessageController } from "./ods-message-controller";
 import { OdsMessageEvents } from "./ods-message-events";
@@ -13,7 +13,7 @@ import { OdsThemeColorIntent } from "@ovhcloud/ods-theming";
 export class OdsMessageMock implements OdsMessage<OdsMessageMethods, OdsMessageEvents> {
   color?: OdsThemeColorIntent;
   flex?: boolean;
-  icon?: OdsIconName;
+  icon?: ODS_ICON_NAME;
   removable?: boolean;
   type?: OdsMessageType;
   contrasted?: boolean;

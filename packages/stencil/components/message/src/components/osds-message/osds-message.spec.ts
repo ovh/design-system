@@ -2,12 +2,11 @@ jest.mock('@ovhcloud/ods-core/src/components/message/ods-message-controller'); /
 
 import {
   OdsComponentAttributes2StringAttributes,
-  OdsIconName,
   OdsMessageAttributes,
   OdsMessageController,
   OdsMessageType,
   OdsMessageTypeList,
-  odsMessageDefaultAttributes
+  odsMessageDefaultAttributes,
 } from '@ovhcloud/ods-core';
 import {
   OdsCreateAttributes,
@@ -16,8 +15,8 @@ import {
   odsUnitTestAttribute,
 } from '@ovhcloud/ods-testing';
 import { OdsThemeColorIntent, OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
+import { ODS_ICON_NAMES } from '@ovhcloud/ods-component-icon';
 import { SpecPage, newSpecPage } from '@stencil/core/testing';
-
 import { OsdsMessage } from './osds-message';
 import { getAttributeContextOptions } from '@ovhcloud/ods-stencil/libraries/stencil-testing';
 
@@ -85,7 +84,7 @@ describe('spec:osds-message', () => {
       odsUnitTestAttribute<OdsMessageAttributes, 'icon'>({
         ...getAttributeContextOptions<OdsMessageAttributes, OsdsMessage, 'icon'>({
           name: 'icon',
-          list: Object.values(OdsIconName),
+          list: ODS_ICON_NAMES,
           defaultValue: odsMessageDefaultAttributes.icon,
           ...config
         })

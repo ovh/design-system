@@ -1,7 +1,7 @@
+import { ODS_ICON_NAME } from '@ovhcloud/ods-component-icon';
 import { OdsCheckboxButton } from './ods-checkbox-button';
 import { OdsCheckboxButtonController } from './ods-checkbox-button-controller';
 import { OdsCheckboxButtonMock } from './ods-checkbox-button-mock';
-import { OdsIconName } from '../icon/ods-icon-size';
 
 describe('spec:ods-checkbox-button-controller', () => {
   let controller: OdsCheckboxButtonController;
@@ -36,13 +36,13 @@ describe('spec:ods-checkbox-button-controller', () => {
       it('should return minus icon (indeterminate case)', () => {
         setup();
         const icon = controller.computeIconName(false, true);
-        expect(icon).toEqual(OdsIconName.MINUS);
+        expect(icon).toEqual(ODS_ICON_NAME.MINUS);
       });
 
       it('should return ok icon (checked case)', () => {
         setup();
         const icon = controller.computeIconName(true, false);
-        expect(icon).toEqual(OdsIconName.OK);
+        expect(icon).toEqual(ODS_ICON_NAME.OK);
       });
     });
   });

@@ -12,11 +12,11 @@ export const config: Config = {
     reactOutput: {
       componentCorePackage: '@ovhcloud/ods-stencil/components/checkbox-button',
       // exclude peer dependencies that corresponds to www usage
-      excludeComponents: []
+      excludeComponents: ['osds-icon']
     },
     vueOutput: {
       componentCorePackage: '@ovhcloud/ods-stencil/components/checkbox-button',
-      excludeComponents: []
+      excludeComponents: ['osds-icon']
     },
     dev: {
       globalScript: 'src/global.dev.ts',

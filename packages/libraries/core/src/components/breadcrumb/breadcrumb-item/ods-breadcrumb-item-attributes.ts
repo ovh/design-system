@@ -1,5 +1,5 @@
+import type { ODS_ICON_NAME } from '@ovhcloud/ods-component-icon';
 import { OdsComponentAttributes } from '../../ods-component-attributes';
-import { OdsIconName } from '../../icon/ods-icon-size';
 
 export interface OdsBreadcrumbItemAttributes extends OdsComponentAttributes {
   /** contrasted or not: see component principles */
@@ -7,7 +7,7 @@ export interface OdsBreadcrumbItemAttributes extends OdsComponentAttributes {
   /** Item link to redirect to */
   href: string;
   /** Icon to display */
-  icon?: OdsIconName;
+  icon?: ODS_ICON_NAME;
   /** @internal */
   isCollapsed: boolean;
   /** @internal */

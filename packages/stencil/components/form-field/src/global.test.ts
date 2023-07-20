@@ -7,7 +7,7 @@ import './global';
 
 // Input slot dependencies
 import '@ovhcloud/ods-stencil/components/input';
-import '@ovhcloud/ods-stencil/components/icon';
+import '@ovhcloud/ods-component-icon';
 import '@ovhcloud/ods-stencil/components/spinner';
 import '@ovhcloud/ods-component-textarea';
 

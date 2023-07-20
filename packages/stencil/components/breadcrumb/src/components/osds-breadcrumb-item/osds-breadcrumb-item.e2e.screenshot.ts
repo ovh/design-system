@@ -3,9 +3,9 @@ import {
   OdsBreadcrumbItemAttributes,
   odsBreadcrumbItemDefaultAttributes,
   OdsComponentAttributes2StringAttributes,
-  OdsIconName
 } from '@ovhcloud/ods-core';
 import { odsBreadcrumbItemBaseAttributes, OdsCreateAttributes, OdsStringAttributes2Str } from '@ovhcloud/ods-testing';
+import { ODS_ICON_NAME } from '@ovhcloud/ods-component-icon';
 
 describe('e2e:osds-breadcrumb-item', () => {
   let page: E2EPage;
@@ -35,14 +35,14 @@ describe('e2e:osds-breadcrumb-item', () => {
     });
 
     it('should render link with icon only', async () => {
-      await setup({ attributes: { href: 'dummyHref', icon: OdsIconName.HOME }});
+      await setup({ attributes: { href: 'dummyHref', icon: ODS_ICON_NAME.HOME }});
 
       const results = await page.compareScreenshot('breadcrumb-item', { fullPage: false, omitBackground: true });
       expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
     });
 
     it('should render link with text and icon', async () => {
-      await setup({ attributes: { href: 'dummyHref', icon: OdsIconName.HOME, label: 'dummyLabel' }});
+      await setup({ attributes: { href: 'dummyHref', icon: ODS_ICON_NAME.HOME, label: 'dummyLabel' }});
 
       const results = await page.compareScreenshot('breadcrumb-item', { fullPage: false, omitBackground: true });
       expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });

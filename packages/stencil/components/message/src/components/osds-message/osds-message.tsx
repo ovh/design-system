@@ -1,17 +1,15 @@
 import { Component, Event, EventEmitter, Host, Prop, Watch, h } from '@stencil/core';
 import {
-  OdsIconName,
-  OdsIconSize,
   OdsMessage,
   OdsMessageController,
   OdsMessageEvents,
   OdsMessageMethods,
   OdsMessageType,
-  odsMessageDefaultAttributes
+  odsMessageDefaultAttributes,
 } from '@ovhcloud/ods-core';
 import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libraries/stencil-core';
-
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
 
 /**
  * @slot (unnamed) - Message content
@@ -31,7 +29,7 @@ export class OsdsMessage implements OdsMessage<OdsStencilMethods<OdsMessageMetho
   @Prop({ reflect: true }) public flex? = odsMessageDefaultAttributes.flex;
 
   /** @see OdsMessageAttributes.icon */
-  @Prop({ reflect: true, mutable: true }) public icon?: OdsIconName = odsMessageDefaultAttributes.icon;
+  @Prop({ reflect: true, mutable: true }) public icon?: ODS_ICON_NAME = odsMessageDefaultAttributes.icon;
 
   /** @see OdsMessageAttributes.removable */
   @Prop({ reflect: true }) public removable? = odsMessageDefaultAttributes.removable;
@@ -80,8 +78,8 @@ export class OsdsMessage implements OdsMessage<OdsStencilMethods<OdsMessageMetho
         <span class={'message__wrapper'}>
           <span class={'message_content'}>
             {icon || type ? <osds-icon {...{
-              name: (icon || `${type}-circle`) as OdsIconName,
-              size: OdsIconSize.sm,
+              name: (icon || `${type}-circle`) as ODS_ICON_NAME,
+              size: ODS_ICON_SIZE.sm,
               color: color as OdsThemeColorIntent
             }}></osds-icon>
             : ''}
@@ -92,8 +90,8 @@ export class OsdsMessage implements OdsMessage<OdsStencilMethods<OdsMessageMetho
             onClick={() => this.controller.onRemoveClicked()}
             >
             <osds-icon {...{
-              name: OdsIconName.CLOSE,
-              size: OdsIconSize.xs,
+              name: ODS_ICON_NAME.CLOSE,
+              size: ODS_ICON_SIZE.xs,
               color: color as OdsThemeColorIntent
             }}></osds-icon>
           </span> : ''}

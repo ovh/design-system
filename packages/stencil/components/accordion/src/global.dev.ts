@@ -7,7 +7,7 @@ import './components';
 import './global';
 import { OdsLogger } from '@ovhcloud/ods-core';
 
-import '@ovhcloud/ods-stencil/components/icon';
+import '@ovhcloud/ods-component-icon';
 import '@ovhcloud/ods-stencil/components/collapsible';
 
 const logger = new OdsLogger('global-dev');

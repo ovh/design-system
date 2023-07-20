@@ -3,9 +3,9 @@ import {
   OdsBreadcrumbItemAttributes,
   OdsComponentAttributes2StringAttributes,
   odsBreadcrumbItemDefaultAttributes,
-  OdsIconName
 } from '@ovhcloud/ods-core';
 import { OdsCreateAttributes, OdsStringAttributes2Str, odsBreadcrumbItemBaseAttributes } from '@ovhcloud/ods-testing';
+import { ODS_ICON_NAME } from '@ovhcloud/ods-component-icon';
 
 describe('e2e:osds-breadcrumb-item', () => {
   let page: E2EPage;
@@ -43,7 +43,7 @@ describe('e2e:osds-breadcrumb-item', () => {
 
   describe('item', () => {
     const dummyHref = '#dummy-href';
-    const dummyIcon = OdsIconName.HOME;
+    const dummyIcon = ODS_ICON_NAME.HOME;
     const dummyLabel = 'dummy label';
     let itemLinkElement: E2EElement;
     let iconElement: E2EElement;

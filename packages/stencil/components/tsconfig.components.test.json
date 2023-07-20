@@ -23,7 +23,6 @@
     "content-addon/src",
     "divider/src",
     "flag/src",
-    "icon/src",
     "input/src",
     "link/src",
     "location-tile/src",

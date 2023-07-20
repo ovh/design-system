@@ -11,7 +11,7 @@ import {
   OdsInitializedEventName,
   OdsSelectValueChangeEvent
 } from '@ovhcloud/ods-core';
-import '@ovhcloud/ods-stencil/components/icon';
+import '@ovhcloud/ods-component-icon';
 
 const logger = new OdsLogger('global-dev');
 logger.log('init');

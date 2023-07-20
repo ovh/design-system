@@ -5,10 +5,9 @@ import {
   odsCodeDefaultAttributes,
   OdsComponentAttributes2StringAttributes,
   OdsDeepPartial,
-  OdsIconName,
-  OdsIconSize,
 } from '@ovhcloud/ods-core';
 import { odsCodeBaseAttributes, OdsCreateAttributes, OdsStringAttributes2Str } from '@ovhcloud/ods-testing';
+import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
 
 describe('e2e:osds-code', () => {
   let page: E2EPage;
@@ -60,8 +59,8 @@ describe('e2e:osds-code', () => {
     const icon = await page.find('osds-button > osds-icon');
 
     expect(icon).not.toBeNull();
-    expect(icon.getAttribute('name')).toBe(OdsIconName.COPY);
-    expect(icon.getAttribute('size')).toBe(OdsIconSize.xs);
+    expect(icon.getAttribute('name')).toBe(ODS_ICON_NAME.COPY);
+    expect(icon.getAttribute('size')).toBe(ODS_ICON_SIZE.xs);
   });
 
   it('should set ods-button default attributes', async () => {
@@ -72,7 +71,7 @@ describe('e2e:osds-code', () => {
 
     expect(button).not.toBeNull();
     expect(button.getAttribute('variant')).toBe(OdsButtonVariant.ghost);
-    expect(button.getAttribute('size')).toBe(OdsIconSize.sm);
+    expect(button.getAttribute('size')).toBe(ODS_ICON_SIZE.sm);
   });
 
   it('should set ods-button variant', async () => {

@@ -10,12 +10,12 @@ import {
   OdsSelectSize,
   OdsSelectValidityState,
   OdsSelectValueChangeEventDetail,
-  OdsIconSize,
-  OdsIconName,
-  OdsSelectOption, OdsSelectCreateDefaultOdsValidityState
+  OdsSelectOption,
+  OdsSelectCreateDefaultOdsValidityState
 } from '@ovhcloud/ods-core';
 import { HTMLStencilElement } from '@stencil/core/internal';
 import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libraries/stencil-core';
+import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 import { OdsSelectOptionClickEventDetail } from '@ovhcloud/ods-core/src/components/select/select-option/ods-select-option-click-event-detail';
 import { ocdkAssertEventTargetIsNode, ocdkDefineCustomElements, ocdkIsSurface, OcdkSurface } from '@ovhcloud/ods-cdk';
@@ -239,7 +239,7 @@ export class OsdsSelect implements OdsSelect<OdsStencilMethods<OdsSelectMethods>
     this.dirty = true;
     if (this.opened) {
       this.controller.closeSurface();
-    } else { 
+    } else {
       this.controller.openSurface();
     }
   }
@@ -271,7 +271,7 @@ export class OsdsSelect implements OdsSelect<OdsStencilMethods<OdsSelectMethods>
       this.controller.closeSurface();
     }
   }
-  
+
   syncReferences() {
     this.controller.syncReferences()
   }
@@ -328,7 +328,7 @@ export class OsdsSelect implements OdsSelect<OdsStencilMethods<OdsSelectMethods>
               : this.selectedOptionLabel
             }
           </div>
-          <osds-icon size={OdsIconSize.sm} color={color} name={OdsIconName.CHEVRON_DOWN}></osds-icon>
+          <osds-icon size={ODS_ICON_SIZE.sm} color={color} name={ODS_ICON_NAME.CHEVRON_DOWN}></osds-icon>
         </div>
         <ocdk-surface
           class="overlay"

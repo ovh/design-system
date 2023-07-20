@@ -3,9 +3,9 @@ import {
   OdsBreadcrumbAttributes,
   odsBreadcrumbDefaultAttributes,
   OdsComponentAttributes2StringAttributes,
-  OdsIconName
 } from '@ovhcloud/ods-core';
 import { OdsStringAttributes2Str } from '@ovhcloud/ods-testing';
+import { ODS_ICON_NAME } from '@ovhcloud/ods-component-icon';
 
 describe('e2e:osds-breadcrumb', () => {
   let page: E2EPage;
@@ -34,8 +34,8 @@ describe('e2e:osds-breadcrumb', () => {
 
     it('should render with icons and text', async () => {
       const dummyItems = [
-        {href: 'href1', icon: OdsIconName.HOME },
-        {href: 'href2', icon: OdsIconName.BOOK, label: 'label2'},
+        {href: 'href1', icon: ODS_ICON_NAME.HOME },
+        {href: 'href2', icon: ODS_ICON_NAME.BOOK, label: 'label2'},
         {href: 'href3', label: 'label3'},
         {href: 'href4', label: 'label4'},
       ];

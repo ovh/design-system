@@ -1,14 +1,13 @@
 import { E2EElement, E2EPage, newE2EPage } from '@stencil/core/testing';
 import {
   OdsComponentAttributes2StringAttributes,
-  OdsIconName,
   OdsMessageAttributes,
   OdsMessageTypeList,
   odsMessageDefaultAttributes,
 } from '@ovhcloud/ods-core';
 import { OdsCreateAttributes, OdsStringAttributes2Str, odsMessageBaseAttributes } from '@ovhcloud/ods-testing';
-
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_ICON_NAME } from '@ovhcloud/ods-component-icon';
 
 describe('e2e:osds-message', () => {
   let page: E2EPage;
@@ -33,7 +32,7 @@ describe('e2e:osds-message', () => {
       [() => {}, () => el.setProperty('removable', true)].forEach((remove) => {
         [undefined, OdsThemeColorIntent.primary].forEach((color) => {
           OdsMessageTypeList.forEach((type) => {
-            [undefined, OdsIconName.CHECK].forEach((icon) => {
+            [undefined, ODS_ICON_NAME.CHECK].forEach((icon) => {
               it([color, type, icon, contrast, remove].join(', '), async () => {
                 await setup({
                   attributes: {

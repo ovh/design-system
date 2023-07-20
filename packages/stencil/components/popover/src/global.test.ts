@@ -5,5 +5,5 @@
 
 import './global';
 import '@ovhcloud/ods-stencil/components/button';
-import '@ovhcloud/ods-stencil/components/icon';
+import '@ovhcloud/ods-component-icon';
 import '@ovhcloud/ods-component-text';

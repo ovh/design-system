@@ -59,6 +59,7 @@ export class OsdsSearchBar implements OdsSearchBar<OdsStencilMethods<OdsSearchBa
     this.value = event.detail.value?.toString() ?? '';
   }
 
+  // should by handler by the button and just listen the click event
   handlerOnKeydownInput(event: KeyboardEvent): void {
     const isEnter = event.code.includes('Enter');
     const isSpace = event.code.includes('Space');

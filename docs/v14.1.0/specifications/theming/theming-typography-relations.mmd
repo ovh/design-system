@@ -1,0 +1,50 @@
+erDiagram
+    ThemeTypographyProperties ||--o{ ThemeTypographyLevel : "set the typography properties"
+    ThemeTypographyProperties {
+        string font-family
+        number font-size
+        etc etc
+    }
+
+    ThemeTypographyLevel ||--o{ ThemeTypography : "set the typography for each level"
+    ThemeTypographyLevel {
+        ThemeSizeProperties sm
+        ThemeSizeProperties md
+        etc etc
+    }
+    ThemeTypography ||--|| TypographyConfig : "configure each typography level"
+    ThemeTypography {
+        ThemeTypographyLevel title
+        ThemeTypographyLevel caption
+        etc etc
+    }
+
+    TypographyConfig ||--|| THEME-CONFIG : "theme defines a SizeConfig"
+
+
+    TypographyProperties ||--o{ LevelDefinition : "is composed of"
+    TypographyProperties {
+        variable--ods-LEVEL-SIZE-font-family font-family
+        variable--ods-LEVEL-SIZE-font-size font-size
+        etc etc
+    }
+    LevelDefinition ||--o{ TypographyDefinitions : "is composed of"
+    LevelDefinition {
+        TypographyProperties sm
+        TypographyProperties md
+        etc etc
+    }
+    TypographyDefinitions ||--|| THEMING-SYSTEM : "system is made of TypographyDefinitions"
+    TypographyDefinitions {
+        LevelDefinition button
+        LevelDefinition tile
+        etc etc
+    }
+
+
+    TypographyLevel ||--o{ THEMING-SYSTEM : "define"
+    TypographyLevel {
+        string title
+        string caption
+        etc etc
+    }

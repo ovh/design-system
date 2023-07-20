@@ -1,0 +1,40 @@
+erDiagram
+    ThemeColorPalette ||--o{ ThemePalettes : "is composed of all color palette"
+        ThemeColorPalette {
+        hsla-color hue-100
+        hsla-color hue-100-contrasted
+        etc etc
+    }
+    ThemePalettes ||--|| ColorConfig : "configure"
+    ThemePalettes {
+        ThemeColorPalette gray
+        ThemeColorPalette blue
+        etc etc
+    }
+    ThemeColorIntents ||--|| ColorConfig : "define"
+    ThemeColorIntents {
+        default gray
+        primary blue
+        etc etc
+    }
+    ColorConfig ||--|| THEME-CONFIG : "theme defines a ColorConfig"
+
+    PaletteColorDefinition ||--o{ PaletteDefinitions : "is composed of"
+    PaletteColorDefinition {
+        variable--ods-blue-100 hue-100
+        variable--ods-blue-100-contrasted hue-100-contrasted
+        etc etc
+    }
+    PaletteDefinitions ||--|| THEMING-SYSTEM : "system is made of PaletteDefinitions"
+    PaletteDefinitions {
+        PaletteColorDefinition gray
+        PaletteColorDefinition blue
+        etc etc
+    }
+
+    ColorIntents ||--|| THEMING-SYSTEM : "made of a list of intent"
+    ColorIntents {
+        variable--ods-theme-color-palette-default default
+        variable--ods-theme-color-palette-primary primary
+        etc etc
+    }

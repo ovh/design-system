@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, h, Prop } from '@stencil/core';
+import { Component, Event, EventEmitter, h, Prop, State, Watch } from '@stencil/core';
 import { OdsIconName, OdsIconSize, odsFileHeaderDefaultAttributes,
   OdsFileHeader, OdsFileHeaderController } from '@ovhcloud/ods-core';
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
@@ -20,6 +20,7 @@ export class OsdsFileHeader implements OdsFileHeader {
   @Prop({ reflect: true }) public selectFilesLabel = odsFileHeaderDefaultAttributes.selectFilesLabel;
 
   @Event() filesSelected!: EventEmitter<File[]>;
+  @State() isSuccessMessageDisplayed = false;
 
   componentWillRender(): void {
     this.controller.validateAttributes();
@@ -36,6 +37,21 @@ export class OsdsFileHeader implements OdsFileHeader {
   handleFilesSelected = (e: Event) => {
     this.controller.getFilesFromSelection(e)
   }
+
+  displaySuccessMesssage = () => {
+    this.isSuccessMessageDisplayed = true;
+    setTimeout(() => {
+      this.isSuccessMessageDisplayed = false;
+    }, 3000)
+  }
+
+  @Watch('isSuccessful')
+    handleIsSuccessfulChange(newValue: boolean) {
+        if(newValue) {
+            this.displaySuccessMesssage();
+        }
+    }
+
   render() {
       const normalContent =
         <div>
@@ -44,10 +60,16 @@ export class OsdsFileHeader implements OdsFileHeader {
             { this.acceptedTypes && <span class='ods-file__dropzone__header__title__types'>({this.acceptedExtensions()})</span> }
           </div>
         <span class='ods-file__dropzone__header__or'>{this.dividerLabel}</span>
-        <osds-link class='ods-file__dropzone__header__link' type="button" disabled={this.disabled}>
+        <osds-link class='ods-file__dropzone__header__link' color={OdsThemeColorIntent.primary} disabled={this.disabled}>
           <label htmlFor="file">{this.selectFilesLabel}</label>
-          <span slot='end'><osds-icon name={OdsIconName.ARROW_RIGHT} size={OdsIconSize.xs}
-                                      color={OdsThemeColorIntent.primary} /></span>
+          <span slot='end'>
+            <osds-icon
+              class="ods-file__dropzone__header__link__icon"
+              hoverable={true}
+              name={OdsIconName.ARROW_RIGHT}
+              size={OdsIconSize.xs}
+            />
+          </span>
         </osds-link>
         <input type="file" id="file" name="file" style={{ display: 'none' }}
                onChange={this.handleFilesSelected}
@@ -71,7 +93,7 @@ export class OsdsFileHeader implements OdsFileHeader {
             {normalContent}
           </section>
         </div>
-      } else if(this.isSuccessful) {
+      } else if(this.isSuccessMessageDisplayed) {
         return <div class='ods-file__dropzone--success__header'>
           <div class='ods-file__dropzone--success__header__message'>
             <div class='ods-file__dropzone--success__header__icon-wrapper'>

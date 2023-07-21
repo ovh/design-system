@@ -88,15 +88,15 @@
 
     &--errored {
       border-color: var(--ods-color-error-500);
-      border-style: solid;
+      border-style: dashed;
 
       &__header {
         color: var(--ods-color-error-500);
-          display: flex;
-          align-items: center;
-            justify-content: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         flex-direction: column;
-          gap: var(--ods-size-07);
+        gap: var(--ods-size-07);
 
         &__message {
           display: flex;
@@ -122,12 +122,24 @@
       align-items: center;
 
       &__title {
-        font-size: var(--ods-size-07);
+        $typography-properties: ods-get-typography-properties(subheading, '100');
+        font-family: ods-get-typography-property($typography-properties, font-family);
+        font-size: ods-get-typography-property($typography-properties, font-size);
+        font-style: ods-get-typography-property($typography-properties, font-style);
+        font-weight: ods-get-typography-property($typography-properties, font-weight);
+        letter-spacing: ods-get-typography-property($typography-properties, letter-spacing);
+        line-height: ods-get-typography-property($typography-properties, line-height);
         color: var(--ods-color-gray-blue-500);
         margin-bottom: var(--ods-size-04);
 
         &__types {
-          font-weight: lighter;
+          $typography-properties: ods-get-typography-properties(body, '400');
+          font-family: ods-get-typography-property($typography-properties, font-family);
+          font-size: ods-get-typography-property($typography-properties, font-size);
+          font-style: ods-get-typography-property($typography-properties, font-style);
+          font-weight: ods-get-typography-property($typography-properties, font-weight);
+          letter-spacing: ods-get-typography-property($typography-properties, letter-spacing);
+          line-height: ods-get-typography-property($typography-properties, line-height);
           margin-left: var(--ods-size-03);
         }
       }
@@ -140,8 +152,10 @@
 
       &__link {
         label {
-          color: var(--ods-color-primary-500);
           cursor: pointer;
+        }
+        &__icon {
+          margin-left: var(--ods-size-01);
         }
       }
     }

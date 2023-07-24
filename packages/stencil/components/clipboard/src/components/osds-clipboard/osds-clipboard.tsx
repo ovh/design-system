@@ -1,12 +1,16 @@
-import { Component, Element, Host, h } from '@stencil/core';
+import { Component, Element, Host, h, Prop, Event, EventEmitter } from '@stencil/core';
 import {
   OdsClipboard,
   OdsClipboardController,
+  odsClipboardDefaultAttributes,
   OdsClipboardEvents,
   OdsClipboardMethods,
+  OdsIconName,
+  OdsInputType,
   // odsClipboardDefaultAttributes
 } from '@ovhcloud/ods-core';
 import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libraries/stencil-core';
+import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 
 /**
  * @slot (unnamed) - Clipboard content
@@ -20,18 +24,23 @@ export class OsdsClipboard implements OdsClipboard<OdsStencilMethods<OdsClipboar
   controller: OdsClipboardController = new OdsClipboardController(this);
   @Element() el!: HTMLElement;
 
-  // Component properties as @Prop
-  // ex: @Prop({ reflect: true }) public color?: OdsThemeColorIntent = odsClipboardDefaultAttributes.color;
+  /** @see OdsClipboardAttributes.flex */ 
+  @Prop({ reflect: true }) public flex?: boolean = odsClipboardDefaultAttributes.flex;
 
-  /**
-   * @see OdsClipboardBehavior.beforeRender
-   */
-  beforeRender(): void {
+  /** @see OdsClipboardAttributes.value */
+  @Prop({ reflect: true }) public value: string = odsClipboardDefaultAttributes.value;
+  
+  /** @see OdsClipboardAttributes.disabled */
+  @Prop({ reflect: true }) public disabled?: boolean = odsClipboardDefaultAttributes.disabled;
 
-  }
+  /** @see OdsClipboardEvents.odsClipboardCopied */
+  @Event() odsClipboardCopied!: EventEmitter<string>;
 
-  componentWillRender(): void {
-
+  handlerClick(): void {
+    if (this.disabled) {
+      return;
+    }
+    this.controller.handlerClick(this.value);
   }
 
   render() {
@@ -39,7 +48,15 @@ export class OsdsClipboard implements OdsClipboard<OdsStencilMethods<OdsClipboar
     return (
       <Host>
 
-        {/* UI template */}
+        <osds-input read-only
+                    color={ OdsThemeColorIntent.primary }
+                    disabled={ this.disabled }
+                    flex={ this.flex }
+                    icon={ OdsIconName.COPY }
+                    type={ OdsInputType.text }
+                    value={ this.value }
+                    onClick={ () => this.handlerClick() }>
+        </osds-input>
 
       </Host>
     );

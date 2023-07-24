@@ -15,7 +15,18 @@ defineCustomElements();
 
 /* Default story parameters  */
 const storyParams = {
-
+  flex: {
+    category: 'General',
+    defaultValue: false,
+  },
+  disabled: {
+    category: 'General',
+    defaultValue: false,
+  },
+  value: {
+    category: 'General',
+    defaultValue: '',
+  },
 };
 
 export default {

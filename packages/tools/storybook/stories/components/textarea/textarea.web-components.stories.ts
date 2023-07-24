@@ -12,12 +12,6 @@ import { iframe } from '../../../.storybook/iframe';
 import { odsTextAreaDefaultAttributes } from '@ovhcloud/ods-core';
 import page from './textarea.web-component.stories.page.mdx';
 
-// import { config } from 'storybook-addon-xd-designs';
-// import { XDConfig } from 'storybook-addon-xd-designs/lib/config';
-
-
-// import { TextAreaPlay } from './textarea.web-components.validation.stories';
-
 defineCustomElements();
 
 /* Default story parameters  */

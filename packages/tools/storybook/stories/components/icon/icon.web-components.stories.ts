@@ -3,10 +3,6 @@ import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 import { repeat } from 'lit-html/directives/repeat';
 import { iframe } from '../../../.storybook/iframe';
 
-// import { config } from 'storybook-addon-xd-designs';
-// import { XDConfig } from 'storybook-addon-xd-designs/lib/config';
-
-
 import { OdsThemeColorIntent, OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
 import { defineCustomElements } from '@ovhcloud/ods-stencil-icon/loader';
 import { OdsIconSize, OdsIconSizeList } from '@ovhcloud/ods-core';
@@ -58,10 +54,7 @@ export default {
       API: iframe('/stencil-icon/modules/index.html'),
       changelog,
     },
-    docs: { page },
-    /* design: config({
-      artboardUrl: 'https://xd.adobe.com/view/9bb1ccc1-e850-428c-9fd2-d4a60718a440-cee2/screen/f8c9346c-fc1d-4a67-b270-9b15b0e3ec20/Desktop',
-    {  as XDConfig), */
+    docs: { page }
   },
   argTypes: extractArgTypes(storyParams)
 };

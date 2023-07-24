@@ -2,10 +2,6 @@ import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 import { iframe } from '../../../.storybook/iframe';
 
-// import { config } from 'storybook-addon-xd-designs';
-// import { XDConfig } from 'storybook-addon-xd-designs/lib/config';
-
-
 import { defineCustomElements } from '@ovhcloud/ods-stencil-input/loader';
 import changelog from '@ovhcloud/ods-stencil-input/CHANGELOG.md';
 import page from './input.web-component.stories.page.mdx';
@@ -120,10 +116,7 @@ export default {
       API: iframe('/stencil-input/modules/index.html'),
       changelog,
     },
-    docs: { page },
-    /* design: config({
-      artboardUrl: 'https://xd.adobe.com/view/9bb1ccc1-e850-428c-9fd2-d4a60718a440-cee2/screen/db14523c-c3d7-4eb6-a584-3f8df444ecfa/Desktop',
-    {  as XDConfig), */
+    docs: { page }
   },
   argTypes: extractArgTypes(storyParams)
 };
@@ -169,8 +162,8 @@ type ValidationProps = {
 type Attributes = 'default' | 'clearable' | 'icon="ovh"' | 'clearable icon="ovh"' | 'value="ODS ahead"' | 'value="ODS ahead" masked' | 'loading' | 'loading icon="ovh"' | 'loading disabled' | 'loading disabled icon="ovh"';
 
 const attributeList: Attributes[] = [
-  'default', 'clearable', 'icon="ovh"', 'clearable icon="ovh"', 'value="ODS ahead"', 
-  'value="ODS ahead" masked', 'loading', 'loading icon="ovh"', 'loading disabled', 
+  'default', 'clearable', 'icon="ovh"', 'clearable icon="ovh"', 'value="ODS ahead"',
+  'value="ODS ahead" masked', 'loading', 'loading icon="ovh"', 'loading disabled',
   'loading disabled icon="ovh"'
 ];
 

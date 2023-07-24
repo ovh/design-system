@@ -60,10 +60,10 @@ export default {
   argTypes: extractArgTypes({ ...storyParams, ...selectParams })
 };
 
-/* Default */
+
 const TemplateDefault = (args:any) => {
   return html`
-    <osds-search-bar ...=${getTagAttributes(args)}>
+    <osds-search-bar ...=${getTagAttributes(args)} @keydown=${(e: KeyboardEvent) => e.stopPropagation()}>
       SearchBar
     </osds-search-bar>
   `;
@@ -73,10 +73,10 @@ Default.args = {
   ...extractStoryParams(storyParams),
 };
 
-/* Default */
+
 const SelectTemplate = (args:any) => {
   return html`
-    <osds-search-bar ...=${getTagAttributes(args)}>
+    <osds-search-bar ...=${getTagAttributes(args)} @keydown=${(e: KeyboardEvent) => e.stopPropagation()}>
       SearchBar
     </osds-search-bar>
   `;

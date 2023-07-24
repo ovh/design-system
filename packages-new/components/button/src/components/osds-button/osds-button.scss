@@ -74,8 +74,9 @@
 }
 
 :host([disabled]) {
-  cursor: not-allowed;
-  pointer-events: none;
+  @include osds-button-on-main-element() {
+    cursor: not-allowed;
+  }
 }
 
 :host([inline]) {

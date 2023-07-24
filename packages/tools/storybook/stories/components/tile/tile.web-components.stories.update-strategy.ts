@@ -50,7 +50,7 @@ const TemplateUpdateStrategy = (args: any) => html`
   ${unsafeHTML(args.slotJs)}
   <div>
     <h3>Tile with external click behaviour</h3>
-    <osds-tile interactive
+    <osds-tile hoverable
                id="tile-3"
                onclick="handleTile3Click()"
                ...=${getTagAttributes(args)}>

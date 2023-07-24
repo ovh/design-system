@@ -108,7 +108,7 @@ export const tileArgs = {
   template: `
   <div class="radio-container">
     <osds-radio id="radio" value="5">
-        <osds-tile id="tile" class="range-tile__tile" color="primary" interactive flex>
+        <osds-tile id="tile" class="range-tile__tile" color="primary" hoverable flex>
 
           <osds-range id="range" color="primary" flex min="1" max="58" step="1">
             <osds-text slot="start-bound" level="subtitle" size="sm" color="primary">1tb</osds-text>

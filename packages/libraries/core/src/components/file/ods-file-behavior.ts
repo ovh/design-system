@@ -5,6 +5,16 @@ export interface OdsFileBehavior {
   dragOver: boolean;
 
   /**
+   * state to indicate is a file is errored
+   */
+  isErrored: boolean;
+
+  /**
+   * state to indicate if all files are uploaded successfully
+   */
+  isSuccessful: boolean;
+
+  /**
    * reference to the dropzone element
    */
   dropzoneRef: HTMLElement;

@@ -16,6 +16,10 @@ export interface OdsFileAttributes extends OdsComponentAttributes {
    */
   errorMessage?: string;
   /**
+   * Success message
+   */
+  successMessage?: string;
+  /**
    * Accepted types
    */
   acceptedTypes?: string

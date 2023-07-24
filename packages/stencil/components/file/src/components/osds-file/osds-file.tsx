@@ -1,4 +1,4 @@
-import { Component, Host, h, State, Prop, Event, EventEmitter, Listen } from '@stencil/core';
+import { Component, Host, h, State, Prop, Event, EventEmitter, Listen, Watch } from '@stencil/core';
 import {
   OdsFile,
   OdsFileController, odsFileDefaultAttributes,
@@ -23,6 +23,9 @@ import {
     @Prop({ reflect: true }) public selectFilesLabel = odsFileDefaultAttributes.selectFilesLabel;
 
     @State() dragOver = false;
+    @State() isErrored = false;
+    @State() isSuccessful = false;
+    @State() newFiles: OdsFileI[] = [];
 
     @Event() odsFilesChange!: EventEmitter<File[]>;
     @Event() odsCancel!: EventEmitter<File>;
@@ -64,19 +67,29 @@ import {
       this.controller.emitSelectedFiles(event.detail);
     }
 
-    isSuccessful = () => {
-      return this.controller.isSuccessful();
+    @Watch('files')
+    filesChangedHandler(newValue: OdsFileI[], oldValue: OdsFileI[]) {
+      const newFiles = newValue.filter(file => !oldValue.some(oldFile => oldFile.id === file.id));
+      if(newFiles.length === 0) {
+        this.isErrored = this.newFiles.some(file => file.error);
+        this.isSuccessful = this.newFiles.every(file => file.progress === 100);
+      } else {
+        this.newFiles = newFiles;
+        this.isErrored = false;
+        this.isSuccessful = false;
+      }
     }
+
     render() {
       return (
         <Host>
           <div
             class={{
               'ods-file__dropzone': true,
-              'ods-file__dropzone--success': this.isSuccessful(),
+              'ods-file__dropzone--success': this.isSuccessful,
               'ods-file__dropzone--disabled': this.disabled ?? false,
               'ods-file__dropzone--drag-over': this.dragOver,
-              'ods-file__dropzone--errored': !!this.errorMessage
+              'ods-file__dropzone--errored': this.isErrored
             }}
             ref={(el) => this.dropzoneRef = el as HTMLDivElement}
             onDragEnter={this.onDragEnter}
@@ -90,7 +103,8 @@ import {
                 selectFilesLabel={this.selectFilesLabel}
                 errorMessage={this.errorMessage}
                 acceptedTypes={this.acceptedTypes}
-                isSuccessful={this.isSuccessful()}
+                isSuccessful={this.isSuccessful}
+                isErrored={this.isErrored}
                 disabled={this.disabled}
               />
             { this.files && this.files.length > 0 && <div class='ods-file__dropzone__files'>

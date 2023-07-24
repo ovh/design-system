@@ -5,7 +5,6 @@ export interface OdsFileMethods extends OdsComponentMethods {
     onDragLeave(event: DragEvent): void;
     onDrop(e: DragEvent): void;
     filesSelectedHandler(event: CustomEvent<File[]>): void;
-    isSuccessful(): boolean;
     emitFiles(files: File[]): void;
     emitCancel(file: File): void;
     emitRejectedFile(file: File): void;

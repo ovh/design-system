@@ -12,8 +12,10 @@ export class OsdsFileHeader implements OdsFileHeader {
   controller: OdsFileHeaderController = new OdsFileHeaderController(this);
 
   @Prop({ reflect: true }) public isSuccessful = odsFileHeaderDefaultAttributes.isSuccessful;
+  @Prop({ reflect: true }) public isErrored = odsFileHeaderDefaultAttributes.isErrored;
   @Prop({ reflect: true }) public disabled = odsFileHeaderDefaultAttributes.disabled;
   @Prop({ reflect: true }) public errorMessage = odsFileHeaderDefaultAttributes.errorMessage;
+  @Prop({ reflect: true }) public successMessage = odsFileHeaderDefaultAttributes.successMessage;
   @Prop({ reflect: true }) public acceptedTypes = odsFileHeaderDefaultAttributes.acceptedTypes;
   @Prop({ reflect: true }) public headerTitle = odsFileHeaderDefaultAttributes.headerTitle;
   @Prop({ reflect: true }) public dividerLabel = odsFileHeaderDefaultAttributes.dividerLabel;
@@ -38,17 +40,17 @@ export class OsdsFileHeader implements OdsFileHeader {
     this.controller.getFilesFromSelection(e)
   }
 
-  displaySuccessMesssage = () => {
+  displaySuccessMessage = () => {
     this.isSuccessMessageDisplayed = true;
     setTimeout(() => {
       this.isSuccessMessageDisplayed = false;
-    }, 3000)
+    }, 2000)
   }
 
   @Watch('isSuccessful')
     handleIsSuccessfulChange(newValue: boolean) {
         if(newValue) {
-            this.displaySuccessMesssage();
+            this.displaySuccessMessage();
         }
     }
 
@@ -78,7 +80,7 @@ export class OsdsFileHeader implements OdsFileHeader {
         />
       </div>
 
-      if(this.errorMessage) {
+      if(this.isErrored) {
         return <div class='ods-file__dropzone--errored__header'>
           <div class='ods-file__dropzone--errored__header__message'>
             <div class='ods-file__dropzone--errored__header__icon-wrapper'>
@@ -103,7 +105,7 @@ export class OsdsFileHeader implements OdsFileHeader {
               />
             </div>
 
-            <span class='ods-file__dropzone__header__title__label'>Tous les fichiers ont été téléchargés</span>
+            <span class='ods-file__dropzone__header__title__label'>{this.successMessage}</span>
           </div>
         </div>
       }

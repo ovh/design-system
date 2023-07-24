@@ -36,8 +36,13 @@
   }
 }
 
-:host([disabled]) {
-  cursor: not-allowed;
+:host([contrasted]) {
+  osds-button {
+    &::part(button) {
+      border: solid var(--ods-size-01) var(--ods-color-primary-200);
+      border-left: 0;
+    }  
+  }
 }
 
 // apply the theme template for the component

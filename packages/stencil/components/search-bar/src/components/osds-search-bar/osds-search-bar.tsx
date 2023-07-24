@@ -2,6 +2,7 @@ import { Component, Element, Host, h, Prop, Event, EventEmitter, Listen } from '
 import {
   OdsButtonSize,
   OdsIconName,
+  OdsIconSize,
   OdsInputType,
   OdsInputValueChangeEvent,
   OdsSearchBar,
@@ -111,7 +112,10 @@ export class OsdsSearchBar implements OdsSearchBar<OdsStencilMethods<OdsSearchBa
           color={ OdsThemeColorIntent.primary }
           disabled={ this.disabled }
           contrasted={ this.contrasted }>
-          <osds-icon contrasted name={ OdsIconName.SEARCH } />
+          <osds-icon
+            size={ OdsIconSize.sm } 
+            contrasted={ !this.contrasted }
+            name={ OdsIconName.SEARCH } />
         </osds-button>
       </Host>
     );

@@ -7,9 +7,6 @@ import {
 } from '../../../core/componentHTMLUtils';
 
 import { OdsMessageTypeList } from '@ovhcloud/ods-core/src';
-import { XDConfig } from 'storybook-addon-xd-designs/lib/config';
-// import changelog from '@ovhcloud/ods-stencil-message/CHANGELOG.md';
-import { config } from 'storybook-addon-xd-designs';
 import { defineCustomElements } from '@ovhcloud/ods-stencil-message/loader';
 import { html } from 'lit-html';
 import { iframe } from '../../../.storybook/iframe';
@@ -59,10 +56,7 @@ export default {
     notes: {
       API: iframe('/stencil-message/modules/index.html'),
     },
-    docs: { page },
-    design: config({
-      artboardUrl: 'https://xd.adobe.com/view/9bb1ccc1-e850-428c-9fd2-d4a60718a440-cee2/screen/de3e2df7-15a7-4d3b-a452-b3bdfdc28911/Desktop',
-    } as XDConfig),
+    docs: { page }
   },
   argTypes: extractArgTypes(storyParams),
 };

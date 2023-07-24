@@ -1,8 +1,6 @@
 import { html } from 'lit-html';
 import { iframe } from '../../../.storybook/iframe';
 import { defineCustomElements } from '@ovhcloud/ods-stencil-pagination/loader';
-import { XDConfig } from 'storybook-addon-xd-designs/lib/config';
-import { config } from 'storybook-addon-xd-designs';
 import changelog from '@ovhcloud/ods-stencil-pagination/CHANGELOG.md';
 import page from './pagination.web-component.stories.page.mdx';
 import { getTagAttributes, extractArgTypes, extractStoryParams } from '../../../core/componentHTMLUtils';
@@ -50,10 +48,7 @@ export default {
       API: iframe('stencil-pagination/modules/index.html'),
       changelog,
     },
-    docs: { page },
-    design: config({
-      artboardUrl: 'https://xd.adobe.com/view/0837f929-5752-4f29-9c31-be930bfe7f17-5d64/screen/be25b614-ad37-45fd-9e7d-6796b5c2e405/',
-    } as XDConfig),
+    docs: { page }
   },
   argTypes: extractArgTypes({ ...sharedStoryParam, ...totalPagesParam, ...totalItemsParam }),
 };

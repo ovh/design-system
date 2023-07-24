@@ -61,10 +61,7 @@ export default {
       API: iframe('/stencil-toggle/modules/index.html'),
       changelog,
     },
-    docs: { page },
-    /* design: config({
-      artboardUrl: 'https://xd.adobe.com/view/9bb1ccc1-e850-428c-9fd2-d4a60718a440-cee2/screen/9f1bf787-e868-4952-988e-2d375b009331/Desktop',
-    {  as XDConfig), */
+    docs: { page }
   }
 };
 

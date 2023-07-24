@@ -179,7 +179,7 @@ export const RadioGroupPlay = async () => {
     return `
       <div class="radio-container">
           <osds-radio id="radio${index}" value="${item.value}">
-            <osds-tile id="tile${index}" class="range-tile__tile" color="primary" interactive flex>
+            <osds-tile id="tile${index}" class="range-tile__tile" color="primary" hoverable flex>
               <osds-range id="range${index}" color="primary" flex min="${item.min}" max="${item.max}"  step="${item.step}">
                 <osds-text slot="start-bound" level="subtitle" size="sm" color="primary">${item.min}tb</osds-text>
                 <osds-text slot="end-bound" level="subtitle" size="sm" color="primary">${item.max}tb</osds-text>

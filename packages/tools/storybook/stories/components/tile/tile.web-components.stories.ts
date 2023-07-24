@@ -69,7 +69,7 @@ const storyParams = {
     category: 'Misc',
     defaultValue: true
   },
-  interactive: {
+  hoverable: {
     category: 'Misc',
     defaultValue: false
   },
@@ -149,13 +149,13 @@ const TemplateAll = (args: any) => html`
     defaultContent,
     { ...(args.checking ? { checking: args.checking } : {}) }
   ))}
-  <h1>interactive Sizes & Colors</h1>
+  <h1>hoverable Sizes & Colors</h1>
   ${unsafeHTML(createComponentTable(
     defaultTag,
     { size: OdsTileSizeList },
     { color: OdsThemeColorIntentList },
     defaultContent,
-    { interactive: true, ...(args.checking ? { checking: args.checking } : {}) }
+    { hoverable: true, ...(args.checking ? { checking: args.checking } : {}) }
   ))}
   <h1>checked Sizes & Colors</h1>
   ${unsafeHTML(createComponentTable(
@@ -163,7 +163,7 @@ const TemplateAll = (args: any) => html`
     { size: OdsTileSizeList },
     { color: OdsThemeColorIntentList },
     defaultContent,
-    { interactive: true, checked: true, ...(args.checking ? { checking: args.checking } : {}) }
+    { hoverable: true, checked: true, ...(args.checking ? { checking: args.checking } : {}) }
   ))}
   <h1>Disabled Sizes & Colors</h1>
   ${unsafeHTML(createComponentTable(

@@ -33,7 +33,7 @@ describe('e2e:osds-clipboard', () => {
     expect(input).toHaveClass('hydrated');
   });
 
-  it.only('should copy the input value', async () => {
+  it('should copy the input value', async () => {
     const value = 'text to copy';
     
     await setup({ attributes: { value } });

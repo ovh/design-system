@@ -41,6 +41,10 @@
       position: relative;
       max-width: inherit;
     }
+
+    .button__centered-text {
+      display: inline-flex;
+    }
   }
 
   @include osds-button-on-main-element() {

@@ -7,14 +7,10 @@ import {
   OdsClipboardMethods,
   OdsIconName,
   OdsInputType,
-  // odsClipboardDefaultAttributes
 } from '@ovhcloud/ods-core';
 import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libraries/stencil-core';
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 
-/**
- * @slot (unnamed) - Clipboard content
- */
 @Component({
   tag: 'osds-clipboard',
   styleUrl: 'osds-clipboard.scss',

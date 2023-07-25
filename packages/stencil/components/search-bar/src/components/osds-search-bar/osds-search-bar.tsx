@@ -113,6 +113,7 @@ export class OsdsSearchBar implements OdsSearchBar<OdsStencilMethods<OdsSearchBa
           disabled={ this.disabled }
           contrasted={ this.contrasted }>
           <osds-icon
+            color={ OdsThemeColorIntent.primary }
             size={ OdsIconSize.sm } 
             contrasted={ !this.contrasted }
             name={ OdsIconName.SEARCH } />

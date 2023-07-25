@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-component-text",
-  "version": "14.1.1",
+  "version": "15.0.0",
   "private": true,
   "description": "ODS Text component",
   "license": "Apache-2.0",
@@ -34,12 +34,12 @@
     "test:e2e:ci:screenshot:update": "stencil test --config stencil.config.ts --e2e --ci --screenshot --update-screenshot --passWithNoTests"
   },
   "dependencies": {
-    "@ovhcloud/ods-common-core": "^14.1.1",
-    "@ovhcloud/ods-common-stencil": "^14.1.1",
-    "@ovhcloud/ods-theming": "^14.1.1"
+    "@ovhcloud/ods-common-core": "^15.0.0",
+    "@ovhcloud/ods-common-stencil": "^15.0.0",
+    "@ovhcloud/ods-theming": "^15.0.0"
   },
   "devDependencies": {
-    "@ovhcloud/ods-common-testing": "^14.1.1",
-    "@ovhcloud/ods-stencil-dev": "^14.1.1"
+    "@ovhcloud/ods-common-testing": "^15.0.0",
+    "@ovhcloud/ods-stencil-dev": "^15.0.0"
   }
 }

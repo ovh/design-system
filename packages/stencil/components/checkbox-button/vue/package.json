@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-stencil-checkbox-button-vue",
-  "version": "14.1.1",
+  "version": "15.0.0",
   "private": true,
   "description": "Vue specific wrapper for ods",
   "keywords": [],
@@ -20,7 +20,7 @@
     "dist/"
   ],
   "dependencies": {
-    "@ovhcloud/ods-stencil-checkbox-button": "^14.1.1"
+    "@ovhcloud/ods-stencil-checkbox-button": "^15.0.0"
   },
   "peerDependencies": {
     "vue": ">=3"

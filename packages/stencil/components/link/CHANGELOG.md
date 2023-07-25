@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
+
+
+# [15.0.0](https://ovhcloud.design/v15.0.0/?path=/docs/design-system-changelog--page) (2023-07-25)
+[compare](https://github.com/ovh/design-system/compare/v13.0.1...v15.0.0)
+
+### Bug Fixes
+
+* **link:** add missing color for active state ([#81](https://github.com/ovh/design-system/issues/81)) ([0ed10dc](https://github.com/ovh/design-system/commit/0ed10dc8a3d5b7875bacfe20bacd9d0333b6d6e6))
+* **link:** fix link host container size to match its content ([#82](https://github.com/ovh/design-system/issues/82)) ([d9b3900](https://github.com/ovh/design-system/commit/d9b390035b07f1b88d83bb0d007398b469f8ecc1))
+
+
+### Features
+
+* **icon:** add hover style ([#77](https://github.com/ovh/design-system/issues/77)) ([d4b221f](https://github.com/ovh/design-system/commit/d4b221ff82a67b63b2eba89022bb9dff9b0d12ec))
+
+
+
 [Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
 
 

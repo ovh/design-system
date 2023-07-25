@@ -7,18 +7,32 @@ describe('e2e:osds-clipboard', () => {
   let el: E2EElement;
   let input: E2EElement;
 
+  async function mockClipboard(page: E2EPage): Promise<void> {
+    await page.evaluate(() => {
+      let clipboardText = null;
+      const clipboard = {
+        writeText: text => new Promise(resolve => resolve(clipboardText = text)),
+        readText: () => new Promise(resolve => resolve(clipboardText)),
+      }; 
+      (window["navigator"] as any)["clipboard"] = clipboard;
+      Object.defineProperty(navigator, 'clipboard', { value: clipboard });
+    });
+  } 
+
   async function setup({ attributes }: { attributes: Partial<OdsClipboardAttributes> }) {
     const minimalAttributes: OdsClipboardAttributes = OdsCreateAttributes(attributes, odsClipboardDefaultAttributes);
     const stringAttributes = OdsComponentAttributes2StringAttributes<OdsClipboardAttributes>(minimalAttributes, odsClipboardDefaultAttributes);
 
     page = await newE2EPage();
-    const origin = await page.evaluate(() => window.origin);
+    await page.setContent(`<osds-clipboard ${OdsStringAttributes2Str(stringAttributes)}></osds-clipboard>`);
 
+    const origin = await page.evaluate(() => window.origin);
     const browserContext = page.browserContext();
     await browserContext.overridePermissions(origin, ['clipboard-write', 'clipboard-read']);
-    await page.setContent(`<osds-clipboard ${OdsStringAttributes2Str(stringAttributes)}></osds-clipboard>`);
+
     await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
-  
+    await mockClipboard(page);
+    
     el = await page.find('osds-clipboard');
     input = await page.find('osds-clipboard >>> osds-input');
     await page.waitForChanges();
@@ -43,14 +57,14 @@ describe('e2e:osds-clipboard', () => {
     expect(await page.evaluate(() => navigator.clipboard.readText())).toBe(value);
   });
 
-  // it('should not copy the input value because of disabled', async () => {
-  //   const value = 'text to copy';
-  //   await setup({ attributes: { value, disabled: true } });
-  //   await page.evaluate(() => navigator.clipboard.writeText(''));
+  it('should not copy the input value because of disabled', async () => {
+    const value = 'text to copy';
+    await setup({ attributes: { value, disabled: true } });
+    await page.evaluate(() => navigator.clipboard.writeText(''));
 
-  //   await input.click();
+    await input.click();
 
-  //   expect(await page.evaluate(() => navigator.clipboard.readText())).toBe('');
-  // });
+    expect(await page.evaluate(() => navigator.clipboard.readText())).toBe('');
+  });
 
 });

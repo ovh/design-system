@@ -491,7 +491,7 @@ const TemplateIntroduction = () => html`
                            href=${url}
                            key=${name}>
                 <osds-tile color="primary"
-                           interactive="true"
+                           hoverable
                            class="card"
                            flex>
                   <span class="cardInner">

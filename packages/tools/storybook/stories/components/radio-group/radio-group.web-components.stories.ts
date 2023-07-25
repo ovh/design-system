@@ -40,10 +40,10 @@ const TemplateDefault = (args: any) => html`
   </style>
   <osds-radio-group id="radio-group-a" ...=${getTagAttributes(args)}>
     <osds-radio id="radio-A" value="val-tile-A">
-      <osds-tile interactive="true" id="tile-A">${olesIpsum(OlesIpsumGeneration.words, 5)}</osds-tile>
+      <osds-tile hoverable id="tile-A">${olesIpsum(OlesIpsumGeneration.words, 5)}</osds-tile>
     </osds-radio>
     <osds-radio id="radio-B" value="val-tile-B">
-      <osds-tile interactive="true" id="tile-B">${olesIpsum(OlesIpsumGeneration.words, 5)}</osds-tile>
+      <osds-tile hoverable id="tile-B">${olesIpsum(OlesIpsumGeneration.words, 5)}</osds-tile>
     </osds-radio>
   </osds-radio-group>
 `;

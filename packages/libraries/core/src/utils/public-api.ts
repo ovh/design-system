@@ -9,3 +9,4 @@ export * from './string/public-api';
 export * from './time/public-api';
 export * from './case/public-api';
 export * from './computed/public-api';
+export * from './clipboard/public-api';

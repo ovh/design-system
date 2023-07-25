@@ -5,6 +5,7 @@
 export * from './a11y/public-api';
 export * from './components/public-api';
 export * from './configure/public-api';
+export * from './content/public-api';
 export * from './element/public-api';
 export * from './form/public-api';
 export * from './i18n/public-api';

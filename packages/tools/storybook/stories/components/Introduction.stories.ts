@@ -3,8 +3,9 @@ import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 
 import { OdsThemeColorIntent, OdsThemeTypographyLevel, OdsThemeTypographySize } from '@ovhcloud/ods-theming';
 import { createTag } from '../../core/componentHTMLUtils';
-import { ODS_COUNTRY_ISO_CODE, OdsCheckboxButtonSize, OdsDividerSize, OdsRadioButtonSize, olesIpsum, OlesIpsumGeneration } from '@ovhcloud/ods-core';
+import { OdsCheckboxButtonSize, OdsDividerSize, OdsRadioButtonSize, olesIpsum, OlesIpsumGeneration } from '@ovhcloud/ods-core';
 import { ODS_ICON_NAME } from '@ovhcloud/ods-component-icon';
+import { ODS_COUNTRY_ISO_CODE } from '@ovhcloud/ods-common-core';
 
 export default {
   title: 'UI Components/Introduction',

@@ -17,7 +17,7 @@
   cursor: text;
 }
 
-:host osds-icon {
+:host(:not([disabled])) osds-icon {
   cursor: default;
 }
 

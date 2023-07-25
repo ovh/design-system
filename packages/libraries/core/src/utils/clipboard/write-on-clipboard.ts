@@ -1,4 +1,8 @@
 export function writeOnClipboard(textToWrite: string): Promise<void> {
-    console.log('test', textToWrite);
-    return navigator.clipboard.writeText(textToWrite);
+    try {
+        return navigator.clipboard.writeText(textToWrite);        
+    } catch (error) {
+        console.error(error);
+        return Promise.resolve();
+    }
 }

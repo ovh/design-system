@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-common-stencil",
-  "version": "14.1.1",
+  "version": "15.0.0",
   "private": true,
   "description": "ODS common stencil helpers",
   "license": "Apache-2.0",
@@ -17,11 +17,11 @@
     "doc:api": "typedoc --plugin none src/*"
   },
   "dependencies": {
-    "@ovhcloud/ods-theme-blue-jeans": "^14.1.1",
+    "@ovhcloud/ods-theme-blue-jeans": "^15.0.0",
     "@stencil/core": "~2.18.1"
   },
   "devDependencies": {
-    "@ovhcloud/ods-common-testing": "^14.1.1",
-    "@ovhcloud/ods-dev": "^14.1.1"
+    "@ovhcloud/ods-common-testing": "^15.0.0",
+    "@ovhcloud/ods-dev": "^15.0.0"
   }
 }

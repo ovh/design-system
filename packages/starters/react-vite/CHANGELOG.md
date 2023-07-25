@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
+
+
+# [15.0.0](https://ovhcloud.design/v15.0.0/?path=/docs/design-system-changelog--page) (2023-07-25)
+[compare](https://github.com/ovh/design-system/compare/v13.0.1...v15.0.0)
+
+### Bug Fixes
+
+* **tile:** add hoverable attribute to avoid double focus in radio when interactive ([#80](https://github.com/ovh/design-system/issues/80)) ([9429178](https://github.com/ovh/design-system/commit/942917827474b7a0524ea4d26fbaade95baee55f))
+
+
+
 [Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
 
 

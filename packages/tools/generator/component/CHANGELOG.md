@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
+
+
+# [15.0.0](https://ovhcloud.design/v15.0.0/?path=/docs/design-system-changelog--page) (2023-07-25)
+[compare](https://github.com/ovh/design-system/compare/v13.0.1...v15.0.0)
+
+### Bug Fixes
+
+* **generator:** generate good version ([27207e6](https://github.com/ovh/design-system/commit/27207e681649827b3e69500b1473e266aad6f3d8))
+
+
+
 [Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
 
 

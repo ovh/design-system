@@ -49,7 +49,7 @@ const selectParams = {
 }
 
 export default {
-  title: 'UI Components/SearchBar [atom]/Web Component',
+  title: 'UI Components/Search Bar [atom]/Web Component',
   parameters: {
     notes: {
       API: iframe('/stencil-search-bar/modules/index.html'),

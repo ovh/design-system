@@ -56,7 +56,17 @@ export default {
       API: iframe('/stencil-file/modules/index.html'),
       changelog,
     },
-    docs: { page }
+    docs: { page },
+    mockData: [
+      {
+        url: 'http://httpbin.org/post',
+        method: 'GET',
+        status: 200,
+        response: {
+          data: 'Hello storybook-addon-mock!',
+        },
+      },
+    ],
   },
   argTypes: extractArgTypes(storyParams)
 };

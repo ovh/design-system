@@ -3005,6 +3005,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/runtime@npm:^7.17.8":
+  version: 7.22.6
+  resolution: "@babel/runtime@npm:7.22.6"
+  dependencies:
+    regenerator-runtime: ^0.13.11
+  checksum: e585338287c4514a713babf4fdb8fc2a67adcebab3e7723a739fc62c79cfda875b314c90fd25f827afb150d781af97bc16c85bfdbfa2889f06053879a1ddb597
+  languageName: node
+  linkType: hard
+
 "@babel/runtime@npm:^7.3.4, @babel/runtime@npm:^7.4.5":
   version: 7.19.4
   resolution: "@babel/runtime@npm:7.19.4"
@@ -25782,6 +25791,13 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"mock-xmlhttprequest@npm:^8.1.0":
+  version: 8.2.0
+  resolution: "mock-xmlhttprequest@npm:8.2.0"
+  checksum: 9ec5c03be967dc7671110178ee876fc72efb849313877ddc540f102777be93f91066204c51bac4044a17fc7669920f8e8a6dfd161fb3c1187fb738096463b9bb
+  languageName: node
+  linkType: hard
+
 "modify-values@npm:^1.0.0":
   version: 1.0.1
   resolution: "modify-values@npm:1.0.1"
@@ -26740,6 +26756,7 @@ fsevents@^1.2.7:
     husky: ^4.3.7
     lerna: ^3.22.1
     node-fetch: ~2.6.7
+    storybook-addon-mock: ^4.1.0
     ts-node: ~10.7.0
   languageName: unknown
   linkType: soft
@@ -27529,6 +27546,13 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"path-to-regexp@npm:^6.2.1":
+  version: 6.2.1
+  resolution: "path-to-regexp@npm:6.2.1"
+  checksum: f0227af8284ea13300f4293ba111e3635142f976d4197f14d5ad1f124aebd9118783dd2e5f1fe16f7273743cc3dbeddfb7493f237bb27c10fdae07020cc9b698
+  languageName: node
+  linkType: hard
+
 "path-type@npm:^1.0.0":
   version: 1.1.0
   resolution: "path-type@npm:1.1.0"
@@ -27758,6 +27782,15 @@ fsevents@^1.2.7:
   dependencies:
     "@babel/runtime": ^7.14.0
   checksum: 3865f569f1ee0beb2959eb4ab8e2baa58c5c662fe9a333de71811e52a2f187ade769d1a87d275370721be64907f9e6bfd8a6158380dd87cd34d0dbf498f302e0
+  languageName: node
+  linkType: hard
+
+"polished@npm:^4.2.2":
+  version: 4.2.2
+  resolution: "polished@npm:4.2.2"
+  dependencies:
+    "@babel/runtime": ^7.17.8
+  checksum: 97fb927dc55cd34aeb11b31ae2a3332463f114351c86e8aa6580d7755864a0120164fdc3770e6160c8b1775052f0eda14db9a6e34402cd4b08ab2d658a593725
   languageName: node
   linkType: hard
 

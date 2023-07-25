@@ -57,7 +57,7 @@
 
     &--disabled {
       cursor: not-allowed;
-      border-style: solid;
+      border-style: dashed;
       opacity: 0.5;
     }
 
@@ -155,7 +155,7 @@
           cursor: pointer;
         }
         &__icon {
-          margin-left: var(--ods-size-01);
+          margin-left: var(--ods-size-04);
         }
       }
     }

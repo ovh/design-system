@@ -27,6 +27,10 @@
   cursor: pointer;
 }
 
+:host([disabled]) osds-icon {
+  cursor: not-allowed;
+}
+
 input {
   box-sizing: border-box;
   text-align: var(--ods-input-text-align, left);

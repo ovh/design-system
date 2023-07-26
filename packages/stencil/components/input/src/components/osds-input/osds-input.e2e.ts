@@ -77,6 +77,21 @@ describe('e2e:osds-input', () => {
       const value = await inputElement.getProperty('value');
       expect(value).toBe('');
     });
+
+    it('should not clear the input value when clicked if the input is disabled', async () => {
+      // Setup component with clearable attribute and some initial value
+      await setup({ attributes: { type: OdsInputType.text, value: 'Just ODS being ahead', clearable: true, disabled: true } });
+
+      // Click cross icon/button
+      const crossIcon = await page.find('osds-input >>> osds-icon[name="close"]');
+      expect(crossIcon).not.toBeNull();
+      await crossIcon.click();
+      await page.waitForChanges();
+
+      // Verify input value is cleared
+      const value = await inputElement.getProperty('value');
+      expect(value).toBe('Just ODS being ahead');
+    });
   });
 
   describe('attribute:masked', () => {
@@ -88,7 +103,7 @@ describe('e2e:osds-input', () => {
       expect(type).toBe(OdsInputType.password);
     });
 
-    it('should change input type to text when masked is set', async () => {
+    it('should change input type to text when masked is set to false', async () => {
       await setup({ attributes: { type: OdsInputType.password, value: 'Just ODS being ahead', masked: false } });
 
       const type = await inputElement.getProperty('type');

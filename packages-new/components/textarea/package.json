@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-component-textarea",
-  "version": "15.0.0",
+  "version": "15.0.1",
   "description": "ODS Textarea component",
   "license": "Apache-2.0",
   "main": "dist/index.cjs.js",
@@ -33,12 +33,12 @@
     "test:e2e:ci:screenshot:update": "stencil test --config stencil.config.ts --e2e --ci --screenshot --update-screenshot --passWithNoTests"
   },
   "dependencies": {
-    "@ovhcloud/ods-common-core": "^15.0.0",
-    "@ovhcloud/ods-common-stencil": "^15.0.0",
-    "@ovhcloud/ods-theming": "^15.0.0"
+    "@ovhcloud/ods-common-core": "^15.0.1",
+    "@ovhcloud/ods-common-stencil": "^15.0.1",
+    "@ovhcloud/ods-theming": "^15.0.1"
   },
   "devDependencies": {
-    "@ovhcloud/ods-common-testing": "^15.0.0",
-    "@ovhcloud/ods-stencil-dev": "^15.0.0"
+    "@ovhcloud/ods-common-testing": "^15.0.1",
+    "@ovhcloud/ods-stencil-dev": "^15.0.1"
   }
 }

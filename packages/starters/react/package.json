@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-starter-react",
-  "version": "15.0.0",
+  "version": "15.0.1",
   "private": true,
   "description": "ODS react application starter",
   "author": "OVH SAS",
@@ -12,17 +12,17 @@
     "build:prod": "npm run build"
   },
   "dependencies": {
-    "@ovhcloud/ods-component-text": "^15.0.0",
-    "@ovhcloud/ods-core": "^15.0.0",
-    "@ovhcloud/ods-stencil": "^15.0.0",
-    "@ovhcloud/ods-theme-blue-jeans": "^15.0.0",
-    "@ovhcloud/ods-theming": "^15.0.0",
+    "@ovhcloud/ods-component-text": "^15.0.1",
+    "@ovhcloud/ods-core": "^15.0.1",
+    "@ovhcloud/ods-stencil": "^15.0.1",
+    "@ovhcloud/ods-theme-blue-jeans": "^15.0.1",
+    "@ovhcloud/ods-theming": "^15.0.1",
     "react": "16.14.0",
     "react-dom": "16.14.0",
     "react-scripts": "3.4.4"
   },
   "devDependencies": {
-    "@ovhcloud/ods-react-dev": "^15.0.0"
+    "@ovhcloud/ods-react-dev": "^15.0.1"
   },
   "browserslist": {
     "production": [

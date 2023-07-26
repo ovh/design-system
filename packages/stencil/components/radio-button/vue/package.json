@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-stencil-radio-button-vue",
-  "version": "15.0.0",
+  "version": "15.0.1",
   "private": true,
   "description": "Vue specific wrapper for ods",
   "keywords": [],
@@ -19,7 +19,7 @@
     "dist/"
   ],
   "dependencies": {
-    "@ovhcloud/ods-stencil-radio-button": "^15.0.0"
+    "@ovhcloud/ods-stencil-radio-button": "^15.0.1"
   },
   "peerDependencies": {
     "vue": ">=3"

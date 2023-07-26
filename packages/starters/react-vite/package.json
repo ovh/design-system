@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-starter-react-vite",
-  "version": "15.0.0",
+  "version": "15.0.1",
   "private": true,
   "description": "ODS react vite application starter",
   "author": "OVH SAS",
@@ -13,18 +13,18 @@
     "build:prod": "npm run build"
   },
   "dependencies": {
-    "@ovhcloud/ods-component-text": "^15.0.0",
-    "@ovhcloud/ods-core": "^15.0.0",
-    "@ovhcloud/ods-stencil": "^15.0.0",
-    "@ovhcloud/ods-theme-blue-jeans": "^15.0.0",
-    "@ovhcloud/ods-theming": "^15.0.0",
+    "@ovhcloud/ods-component-text": "^15.0.1",
+    "@ovhcloud/ods-core": "^15.0.1",
+    "@ovhcloud/ods-stencil": "^15.0.1",
+    "@ovhcloud/ods-theme-blue-jeans": "^15.0.1",
+    "@ovhcloud/ods-theming": "^15.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.10.0",
     "vite-plugin-static-copy": "~0.13.0"
   },
   "devDependencies": {
-    "@ovhcloud/ods-dev": "^15.0.0",
+    "@ovhcloud/ods-dev": "^15.0.1",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
     "@vitejs/plugin-react": "^2.1.0",

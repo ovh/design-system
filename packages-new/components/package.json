@@ -5,7 +5,8 @@
   "author": "OVH SAS",
   "license": "Apache-2.0",
   "dependencies": {
-    "@ovhcloud/ods-component-text": "^15.0.0"
+    "@ovhcloud/ods-component-text": "^15.0.0",
+    "@ovhcloud/ods-component-textarea": "^15.0.0"
   },
   "devDependencies": {
     "@ovhcloud/ods-dev": "^15.0.0"

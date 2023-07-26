@@ -5566,6 +5566,7 @@ __metadata:
   resolution: "@ovhcloud/ods-components@workspace:packages-new/components"
   dependencies:
     "@ovhcloud/ods-component-text": ^15.0.0
+    "@ovhcloud/ods-component-textarea": ^15.0.0
     "@ovhcloud/ods-dev": ^15.0.0
   languageName: unknown
   linkType: soft

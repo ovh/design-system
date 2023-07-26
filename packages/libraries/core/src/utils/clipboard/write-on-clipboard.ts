@@ -3,6 +3,6 @@ export function writeOnClipboard(textToWrite: string): Promise<void> {
         return navigator.clipboard.writeText(textToWrite);        
     } catch (error) {
         console.error(error);
-        return Promise.resolve();
+        return Promise.reject(error);
     }
 }

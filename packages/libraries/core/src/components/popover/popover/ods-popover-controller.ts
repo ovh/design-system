@@ -85,12 +85,6 @@ export class OdsPopoverController extends OdsComponentController<OdsPopover> {
   syncReferences(): void {
     if (this.component.surface && this.component.anchor) {
       this.component.surface.setAnchorElement(this.component.anchor);
-      this.component.surface.setAnchorMargin( {
-        top: 0,
-        right: 0,
-        bottom: 0,
-        left: 0
-      });
     }
   }
 }

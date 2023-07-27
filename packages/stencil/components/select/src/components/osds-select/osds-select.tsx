@@ -253,6 +253,15 @@ export class OsdsSelect implements OdsSelect<OdsStencilMethods<OdsSelectMethods>
     }
     this.logger.log('[checkForClickOutside]', arguments, { validity: this.validityState });
     this.controller.closeSurface();
+
+    this.controller.selectOptions.forEach((option) => {
+      if (this.value && option.getAttribute('value') === this.value) {
+        option.setAttribute('selected', 'true');
+      } else {
+        option.removeAttribute('selected');
+      }
+    })
+
     if (this.dirty) {
       this.validityState = this.controller.getValidity();
     }

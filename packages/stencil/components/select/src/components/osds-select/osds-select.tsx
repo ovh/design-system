@@ -239,7 +239,7 @@ export class OsdsSelect implements OdsSelect<OdsStencilMethods<OdsSelectMethods>
     this.dirty = true;
     if (this.opened) {
       this.controller.closeSurface();
-    } else { 
+    } else {
       this.controller.openSurface();
     }
   }
@@ -253,6 +253,15 @@ export class OsdsSelect implements OdsSelect<OdsStencilMethods<OdsSelectMethods>
     }
     this.logger.log('[checkForClickOutside]', arguments, { validity: this.validityState });
     this.controller.closeSurface();
+
+    this.controller.selectOptions.forEach((option) => {
+      if (this.value && option.getAttribute('value') === this.value) {
+        option.setAttribute('selected', 'true');
+      } else {
+        option.removeAttribute('selected');
+      }
+    })
+
     if (this.dirty) {
       this.validityState = this.controller.getValidity();
     }
@@ -271,7 +280,7 @@ export class OsdsSelect implements OdsSelect<OdsStencilMethods<OdsSelectMethods>
       this.controller.closeSurface();
     }
   }
-  
+
   syncReferences() {
     this.controller.syncReferences()
   }

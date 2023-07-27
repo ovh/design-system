@@ -116,6 +116,34 @@ describe('e2e:osds-input', () => {
       const eyeIcon = await page.find('osds-input >>> osds-icon[name="eye-open"]');
       expect(eyeIcon).not.toBeNull();
     });
+
+    it('should hide the input value when clicked', async () => {
+      // Setup component with password type and some initial value
+      await setup({ attributes: { type: OdsInputType.password, value: 'Just ODS being ahead', masked: false } });
+
+      // Click eye icon/button
+      const eyeIcon = await page.find('osds-input >>> osds-icon[name="eye-closed"]');
+      expect(eyeIcon).not.toBeNull();
+      await eyeIcon.click();
+      await page.waitForChanges();
+
+      const type = await inputElement.getProperty('type');
+      expect(type).toBe(OdsInputType.password);
+    });
+
+    it('should not hide the input value when clicked if the input is disabled', async () => {
+      // Setup component with password type and some initial value
+      await setup({ attributes: { type: OdsInputType.password, value: 'Just ODS being ahead', disabled: true, masked: false } });
+
+      // Click eye icon/button
+      const eyeIcon = await page.find('osds-input >>> osds-icon[name="eye-closed"]');
+      expect(eyeIcon).not.toBeNull();
+      await eyeIcon.click();
+      await page.waitForChanges();
+
+      const type = await inputElement.getProperty('type');
+      expect(type).toBe(OdsInputType.text);
+    });
   });
 
   describe('method:stepUp', () => {

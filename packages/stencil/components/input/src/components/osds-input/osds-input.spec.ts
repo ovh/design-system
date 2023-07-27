@@ -34,7 +34,7 @@ OdsMockPropertyDescriptor(HTMLInputElement.prototype, 'validity', () => OdsCreat
 
 describe('spec:osds-input', () => {
   logger.log('init');
-  
+
   let page: SpecPage;
   let htmlInput: HTMLInputElement | null | undefined;
   let anotherInput: HTMLInputElement | null | undefined;
@@ -218,7 +218,7 @@ describe('spec:osds-input', () => {
           ...config
         })
       });
-    });  
+    });
 
     describe('value', () => {
       odsUnitTestAttribute<OdsInputAttributes, 'value'>({
@@ -317,12 +317,34 @@ describe('spec:osds-input', () => {
         expect(controller.clear).toHaveBeenCalledWith();
       });
 
+      it('should call clear from clear method but should not change the value if disabled', async () => {
+        await setup({ attributes: { type: OdsInputType.password, value: 'Just ODS being ahead', masked: false, disabled: true } });
+        await instance.clear();
+
+        expect(controller.clear).toHaveBeenCalledTimes(1);
+        expect(controller.clear).toHaveBeenCalledWith();
+
+        const value = instance.value;
+        expect(value).toBe('Just ODS being ahead');
+      });
+
       it('should call hide from hide method', async () => {
         await setup({});
         await instance.hide();
 
         expect(controller.hide).toHaveBeenCalledTimes(1);
         expect(controller.hide).toHaveBeenCalledWith();
+      });
+
+      it('should call hide from hide method but should not display the value if disabled', async () => {
+        await setup({ attributes: { type: OdsInputType.password, value: 'Just ODS being ahead', masked: true, disabled: true } });
+        await instance.hide();
+
+        expect(controller.hide).toHaveBeenCalledTimes(1);
+        expect(controller.hide).toHaveBeenCalledWith();
+
+        const type = instance.type;
+        expect(type).toBe(OdsInputType.password);
       });
 
       it('should call reset from reset method', async () => {

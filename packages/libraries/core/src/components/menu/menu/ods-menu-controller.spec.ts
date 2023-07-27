@@ -11,11 +11,15 @@ import { OdsMenu } from './ods-menu';
 import { OdsMenuController } from './ods-menu-controller';
 import { OdsMenuMock } from './ods-menu-mock';
 import { OcdkSurface, OcdkSurfaceMock } from '@ovhcloud/ods-cdk';
+import { OdsMenuItem } from '../menu-item/ods-menu-item';
 
 
 describe('spec:ods-menu-controller', () => {
   let controller: OdsMenuController;
   let component: OdsMenu;
+  let item1: OdsMenuItem & HTMLElement;
+  let item2: OdsMenuItem & HTMLElement;
+
   let loggerSpyReferences: OdsLoggerSpyReferences;
   let spyOnPropagateDisabledToChild: jest.SpyInstance<void, jest.ArgsType<OdsMenu['propagateDisabledToChild']>>;
 
@@ -26,11 +30,19 @@ describe('spec:ods-menu-controller', () => {
   function setup(attributes: Partial<OdsMenu> = {}) {
     component = { ...component, ...attributes };
     controller = new OdsMenuController(component);
+    controller.menuItems = [item1, item2];
   }
 
   beforeEach(() => {
     component = new OdsMenuMock();
     component.el = document.createElement('osds-menu') as HTMLStencilElement;
+
+    item1 = document.createElement('osds-menu-item') as OdsMenuItem & HTMLElement;
+    item1.innerHTML = `<osds-button><span slot="start">Action 1</span></osds-button>`;
+    item2 = document.createElement('osds-menu-item') as OdsMenuItem & HTMLElement;
+    item2.innerHTML = `<osds-button><span slot="start">Action 2</span></osds-button>`;
+    component.el.appendChild(item1);
+    component.el.appendChild(item2);
 
     const loggerMocked = new OdsLogger('myLoggerMocked');
     loggerSpyReferences = OdsInitializeLoggerSpy({
@@ -62,7 +74,7 @@ describe('spec:ods-menu-controller', () => {
         component.surface!.opened = false;
 
         await controller.handleTriggerClick();
-        expect(component.surface.opened).toBeTruthy();
+        expect(component.surface.opened).toBe(true);
       });
     });
 
@@ -110,8 +122,7 @@ describe('spec:ods-menu-controller', () => {
         const keyEnter = new KeyboardEvent("keydown", { code : "Enter" });
         controller.handleKeyDown(keyEnter);
 
-        // await controller.handleKeyDown(event);
-        expect(component.surface.opened).toBeTruthy();
+        expect(component.surface.opened).toBe(true);
       });
 
       it('should close the surface on ESCAPE press', async () => {
@@ -120,10 +131,74 @@ describe('spec:ods-menu-controller', () => {
         component.surface!.opened = true;
 
         const spyCloseSurface = jest.spyOn(controller, 'closeSurface');
-        const keySpace = new KeyboardEvent("keydown", { code : "Escape" });
-        controller.handleKeyDown(keySpace);
+        const keyEscape = new KeyboardEvent("keydown", { code : "Escape" });
+        controller.handleKeyDown(keyEscape);
         expect(spyCloseSurface).toHaveBeenCalledTimes(1);
       });
+
+      it('should select an option with arrow down', () => {
+        setup(component);
+        component.surface = new OcdkSurfaceMock() as unknown as OcdkSurface;
+        component.surface!.opened = true;
+
+        const keyDown = new KeyboardEvent("keydown", { code : "ArrowDown" });
+        controller.handleKeyDown(keyDown);
+
+        expect(item1.getAttribute('selected')).toBe("");
+      });
+
+      it('should select next option with arrow down', () => {
+        setup(component);
+        component.surface = new OcdkSurfaceMock() as unknown as OcdkSurface;
+        component.surface!.opened = true;
+        item1.focus();
+        item1.setAttribute('selected', '');
+
+        const keyDown = new KeyboardEvent("keydown", { code : "ArrowDown" });
+        controller.handleKeyDown(keyDown);
+
+        expect(item2.getAttribute('selected')).toBe("");
+      });
+
+      it('should go back to first option with arrow down when on the last one', () => {
+        setup(component);
+        component.surface = new OcdkSurfaceMock() as unknown as OcdkSurface;
+        component.surface!.opened = true;
+        item2.focus();
+        item2.setAttribute('selected', '');
+
+        const keyDown = new KeyboardEvent("keydown", { code : "ArrowDown" });
+        controller.handleKeyDown(keyDown);
+
+        expect(item1.getAttribute('selected')).toBe("");
+      });
+
+      it('should select previous option with arrow up', () => {
+        setup(component);
+        component.surface = new OcdkSurfaceMock() as unknown as OcdkSurface;
+        component.surface!.opened = true;
+        item2.focus();
+        item2.setAttribute('selected', '');
+
+        const keyUp = new KeyboardEvent("keydown", { code : "ArrowUp" });
+        controller.handleKeyDown(keyUp);
+
+        expect(item1.getAttribute('selected')).toBe("");
+      });
+
+      it('should go back to last option with arrow up when on the first one', () => {
+        setup(component);
+        component.surface = new OcdkSurfaceMock() as unknown as OcdkSurface;
+        component.surface!.opened = true;
+        item1.focus();
+        item1.setAttribute('selected', '');
+
+        const keyUp = new KeyboardEvent("keydown", { code : "ArrowUp" });
+        controller.handleKeyDown(keyUp);
+
+        expect(item2.getAttribute('selected')).toBe("");
+      });
+
     });
 
     describe('method: checkForClickOutside', () => {
@@ -180,7 +255,7 @@ describe('spec:ods-menu-controller', () => {
         component.el.appendChild(target);
 
         await controller.checkForClickOutside(event);
-        expect(component.surface.opened).toBeTruthy();
+        expect(component.surface.opened).toBe(true);
       });
 
       it('should close the surface when click outside of the component', async () => {

@@ -87,24 +87,40 @@ export class OdsMenuController extends OdsComponentController<OdsMenu> {
       this.menuItems[index].focus();
       this.menuItems[index].setAttribute('selected', '');
       event.preventDefault();
-
     }
+
+    const firstEnabled = (index: number, direction: string) => {
+      const i = direction === 'previous' ? -1 : 1;
+      do {
+        index = index + i;
+      }
+      while (this.menuItems[index] && this.menuItems[index].getAttribute('disabled') === "")
+      return index;
+    }
+
     const hasSelectedItem = selectedMenuItemIndex !== -1;
     if (hasSelectedItem) {
       this.menuItems[selectedMenuItemIndex].removeAttribute('selected');
       this.menuItems[selectedMenuItemIndex].blur();
     }
     if (event.code === 'ArrowUp' || (event.code === 'Tab' && event.shiftKey)) {
-      const index = hasSelectedItem ? selectedMenuItemIndex - 1 : 0;
-      if (index < 0) {
+      let index = hasSelectedItem ? firstEnabled(selectedMenuItemIndex, "previous") : firstEnabled(-1, "next");
+      if (index < 0 && (event.code === 'Tab' && event.shiftKey)) {
         return;
+      } else if (index < 0) {
+        index = this.menuItems.length;
+        return focusMenuItem(firstEnabled(index, "previous"));
       }
       return focusMenuItem(index);
     }
     if (event.code === 'ArrowDown' || event.code === 'Tab') {
-      const index = hasSelectedItem ? selectedMenuItemIndex + 1 : 0;
-      if (index >= this.menuItems.length -1) {
-        return;
+      let index = hasSelectedItem ? firstEnabled(selectedMenuItemIndex, "next") : firstEnabled(-1, "next");
+      if (index > this.menuItems.length - 1 && event.code === 'Tab') {
+        this.menuItems.forEach(s => s.removeAttribute('selected'));
+        return this.closeSurface();
+      } else if (index > this.menuItems.length - 1) {
+        index = -1;
+        return focusMenuItem(firstEnabled(index, "next"));
       }
       return focusMenuItem(index);
     }

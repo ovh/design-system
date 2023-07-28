@@ -48,7 +48,7 @@ const storyParams = {
 };
 
 export default {
-  title: 'UI Components/Icon [atom]/Web Component',
+  title: 'UI Components/Icon [quark]/Web Component',
   parameters: {
     notes: {
       API: iframe('/stencil-icon/modules/index.html'),

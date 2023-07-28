@@ -35,6 +35,7 @@ input {
   box-sizing: border-box;
   text-align: var(--ods-input-text-align, left);
   width: 100%;
+  cursor: var(--ods-input-cursor, text);
 }
 
 [flex] {

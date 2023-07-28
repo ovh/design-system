@@ -44,7 +44,7 @@ export default {
 /* Default */
 const TemplateDefault = (args:any) => {
   return html`
-    <osds-clipboard ...=${getTagAttributes(args)}>
+    <osds-clipboard ...=${getTagAttributes(args)} @keydown=${(e: KeyboardEvent) => e.stopPropagation()}>
       Clipboard
     </osds-clipboard>
   `;

@@ -30,8 +30,12 @@
   osds-button {
     flex-shrink: 0;
     &::part(button) {
+      --ods-size-button-sm-border-width: var(--ods-size-01);
+      border-left: 0;
       border-bottom-left-radius: 0;
       border-top-left-radius: 0;
+      border-top-right-radius: var(--ods-size-border-radius-01);
+      border-bottom-right-radius:  var(--ods-size-border-radius-01);
     }  
   }
 }
@@ -39,8 +43,7 @@
 :host([contrasted]) {
   osds-button {
     &::part(button) {
-      border: solid var(--ods-size-01) var(--ods-color-primary-200);
-      border-left: 0;
+      border-color: var(--ods-color-primary-200);
     }  
   }
 }

@@ -5,10 +5,10 @@
 @mixin osds-search-bar-theme-size() {
     :host {
         osds-select {
-            width: 30%;
+            width: 33%;
         }
     }
-    :host([flex]) {
+    :host {
         width: 100%;
     }     
 }

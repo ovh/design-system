@@ -15,10 +15,6 @@ defineCustomElements();
 
 /* Default story parameters  */
 const storyParams = {
-  value: {
-    category: 'Général',
-    defaultValue: ''
-  },
   placeholder: {
     category: 'Général',
     defaultValue: ''

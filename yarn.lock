@@ -4135,19 +4135,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jest/types@npm:^27.4.2":
-  version: 27.4.2
-  resolution: "@jest/types@npm:27.4.2"
-  dependencies:
-    "@types/istanbul-lib-coverage": ^2.0.0
-    "@types/istanbul-reports": ^3.0.0
-    "@types/node": "*"
-    "@types/yargs": ^16.0.0
-    chalk: ^4.0.0
-  checksum: 1191022023e32763063cc1c8b1143fa316fb05db2f9698280a7bdbafcabd989e5fd64f8eb875b8a2e54c53f25dba45ed2eea8ced394d9e484da0fda674cd17a5
-  languageName: node
-  linkType: hard
-
 "@jest/types@npm:^27.5.1":
   version: 27.5.1
   resolution: "@jest/types@npm:27.5.1"
@@ -7264,7 +7251,6 @@ __metadata:
     "@storybook/addon-controls": ^6.4.19
     "@storybook/addon-docs": ^6.4.19
     "@storybook/addon-essentials": ^6.4.19
-    "@storybook/addon-interactions": ^6.4.19
     "@storybook/addon-links": ^6.4.19
     "@storybook/addon-notes": ^5.3.21
     "@storybook/addon-storysource": ^6.4.19
@@ -7279,7 +7265,7 @@ __metadata:
     raw-loader: ^4.0.2
     react: ^16.8.0
     storybook-addon-preview: ^2.3.0
-    storybook-addon-xd-designs: ^6.0.0
+    storybook-version: ^0.1.1
   languageName: unknown
   linkType: soft
 
@@ -7761,34 +7747,6 @@ __metadata:
     webpack:
       optional: true
   checksum: ad5b41e82ccbc564230ace6c17c1d7f9f8056d9846f123379b0a42d70c6ed5e7fa3ff57fee7aaaa65557dad59e90573faacf5a08d9a64ac4fd10772dcba5be2b
-  languageName: node
-  linkType: hard
-
-"@storybook/addon-interactions@npm:^6.4.19":
-  version: 6.4.19
-  resolution: "@storybook/addon-interactions@npm:6.4.19"
-  dependencies:
-    "@storybook/addons": 6.4.19
-    "@storybook/api": 6.4.19
-    "@storybook/components": 6.4.19
-    "@storybook/core-common": 6.4.19
-    "@storybook/core-events": 6.4.19
-    "@storybook/csf": 0.0.2--canary.87bc651.0
-    "@storybook/instrumenter": 6.4.19
-    "@storybook/theming": 6.4.19
-    global: ^4.4.0
-    jest-mock: ^27.0.6
-    polished: ^4.0.5
-    ts-dedent: ^2.2.0
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0
-    react-dom: ^16.8.0 || ^17.0.0
-  peerDependenciesMeta:
-    react:
-      optional: true
-    react-dom:
-      optional: true
-  checksum: 101659fce68666d29802653b58bcd4bfc462244a205e1e68a21a0ebc3c2fad3738d0045ac8b46c9a696c245d358ae7a84823d66e610254674c28f25e035a1e5d
   languageName: node
   linkType: hard
 
@@ -8702,18 +8660,6 @@ __metadata:
     start-storybook: bin/index.js
     storybook-server: bin/index.js
   checksum: d976a22b394bb9a53098d5b91420f03410af9d9a19fff9a8898360004a6ca4150b3558c561699fa89a0717c43ddb86a328ea7111be9d111f844fb964fd8d6b27
-  languageName: node
-  linkType: hard
-
-"@storybook/instrumenter@npm:6.4.19":
-  version: 6.4.19
-  resolution: "@storybook/instrumenter@npm:6.4.19"
-  dependencies:
-    "@storybook/addons": 6.4.19
-    "@storybook/client-logger": 6.4.19
-    "@storybook/core-events": 6.4.19
-    global: ^4.4.0
-  checksum: 7cd253e4b34f12a6652e5844f96cc6f72fb2d67f0725f00c010850aed0da9801fb3794adf6e6c2513d05fb97c94fe19142ccbe11caccd774ee6f2aef3a96b85e
   languageName: node
   linkType: hard
 
@@ -19030,7 +18976,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"file-loader@npm:^6.0.0, file-loader@npm:^6.2.0":
+"file-loader@npm:^6.2.0":
   version: 6.2.0
   resolution: "file-loader@npm:6.2.0"
   dependencies:
@@ -23543,16 +23489,6 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"jest-mock@npm:^27.0.6":
-  version: 27.4.2
-  resolution: "jest-mock@npm:27.4.2"
-  dependencies:
-    "@jest/types": ^27.4.2
-    "@types/node": "*"
-  checksum: 4ad4a870ec771410b708e955ef2526e7becb91a1d19c4699dcf8fe43a9f6d1231e0c47b87d6b80ee9ad3194ad54dc9abf158588a4a542ad9f9ce8c23eda6048e
-  languageName: node
-  linkType: hard
-
 "jest-mock@npm:^27.5.1":
   version: 27.5.1
   resolution: "jest-mock@npm:27.5.1"
@@ -25294,13 +25230,6 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"make-cancellable-promise@npm:^1.0.0":
-  version: 1.1.0
-  resolution: "make-cancellable-promise@npm:1.1.0"
-  checksum: e036fa6164acb52b0e6298c4d5f4e0ba887e4c96de15ef1e316fcc8374995c29543e8a3ea48d38e1c2c767e985c8869c744774af5881700a90d21128b7535a68
-  languageName: node
-  linkType: hard
-
 "make-dir@npm:^1.0.0":
   version: 1.3.0
   resolution: "make-dir@npm:1.3.0"
@@ -25333,13 +25262,6 @@ fsevents@^1.2.7:
   version: 1.3.6
   resolution: "make-error@npm:1.3.6"
   checksum: b86e5e0e25f7f777b77fabd8e2cbf15737972869d852a22b7e73c17623928fccb826d8e46b9951501d3f20e51ad74ba8c59ed584f610526a48f8ccf88aaec402
-  languageName: node
-  linkType: hard
-
-"make-event-props@npm:^1.1.0":
-  version: 1.3.0
-  resolution: "make-event-props@npm:1.3.0"
-  checksum: 92b8845f63a25fc7da80ed2a5cc5055fba30066b83ad88e4f8c090cd99ae53a13297156df0bd0487d340507994362deaed5580266f73dfe142dc46163b5b8a6a
   languageName: node
   linkType: hard
 
@@ -25754,13 +25676,6 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"merge-class-names@npm:^1.1.1":
-  version: 1.4.2
-  resolution: "merge-class-names@npm:1.4.2"
-  checksum: 569c333ab0d7fa1e06ae6e637d58e0d4623d7b165ea78d085c1bbd042568d8793bb7ce54ec55580679416046b11fc6eaf4956d68d19964cb320edc034e182c1d
-  languageName: node
-  linkType: hard
-
 "merge-deep@npm:^3.0.2":
   version: 3.0.3
   resolution: "merge-deep@npm:3.0.3"
@@ -25776,13 +25691,6 @@ fsevents@^1.2.7:
   version: 1.0.1
   resolution: "merge-descriptors@npm:1.0.1"
   checksum: 5abc259d2ae25bb06d19ce2b94a21632583c74e2a9109ee1ba7fd147aa7362b380d971e0251069f8b3eb7d48c21ac839e21fa177b335e82c76ec172e30c31a26
-  languageName: node
-  linkType: hard
-
-"merge-refs@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "merge-refs@npm:1.0.0"
-  checksum: 3b4ea1a178c52349a0e725281aa34b130fb6819d22f8e616ae30da6f4da223d9c3a53f6e1a427c5ba56bf6b162c98de95a53f76e01a343e10162823fee33f64a
   languageName: node
   linkType: hard
 
@@ -28209,18 +28117,6 @@ fsevents@^1.2.7:
     safe-buffer: ^5.0.1
     sha.js: ^2.4.8
   checksum: 2c950a100b1da72123449208e231afc188d980177d021d7121e96a2de7f2abbc96ead2b87d03d8fe5c318face097f203270d7e27908af9f471c165a4e8e69c92
-  languageName: node
-  linkType: hard
-
-"pdfjs-dist@npm:2.12.313":
-  version: 2.12.313
-  resolution: "pdfjs-dist@npm:2.12.313"
-  peerDependencies:
-    worker-loader: ^3.0.8
-  peerDependenciesMeta:
-    worker-loader:
-      optional: true
-  checksum: 0571ff3653d75e7eaf86c840c6fe83a92456c20b6f40c2de666df2e3c30de1e05a4920f18799a3d59005c73dcea1a6f45728845a20fdae9b08a3a774d13aee1b
   languageName: node
   linkType: hard
 
@@ -30659,27 +30555,6 @@ fsevents@^1.2.7:
   version: 3.0.4
   resolution: "react-lifecycles-compat@npm:3.0.4"
   checksum: a904b0fc0a8eeb15a148c9feb7bc17cec7ef96e71188280061fc340043fd6d8ee3ff233381f0e8f95c1cf926210b2c4a31f38182c8f35ac55057e453d6df204f
-  languageName: node
-  linkType: hard
-
-"react-pdf@npm:^5.3.2":
-  version: 5.7.2
-  resolution: "react-pdf@npm:5.7.2"
-  dependencies:
-    "@babel/runtime": ^7.0.0
-    file-loader: ^6.0.0
-    make-cancellable-promise: ^1.0.0
-    make-event-props: ^1.1.0
-    merge-class-names: ^1.1.1
-    merge-refs: ^1.0.0
-    pdfjs-dist: 2.12.313
-    prop-types: ^15.6.2
-    tiny-invariant: ^1.0.0
-    tiny-warning: ^1.0.0
-  peerDependencies:
-    react: ^16.3.0 || ^17.0.0 || ^18.0.0
-    react-dom: ^16.3.0 || ^17.0.0 || ^18.0.0
-  checksum: 6c85c1abb1e0f11746e80c8363cf007920d170c6de173b4f08c68b6a2dabfd8f7b9eac392b8035800cad5f1bfbce2ebaff37c63580164430f2bba1f06e0b7547
   languageName: node
   linkType: hard
 
@@ -33633,19 +33508,23 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"storybook-addon-xd-designs@npm:^6.0.0":
-  version: 6.0.0
-  resolution: "storybook-addon-xd-designs@npm:6.0.0"
-  dependencies:
-    lodash: ^4.17.21
-    react-pdf: ^5.3.2
+"storybook-version@npm:^0.1.1":
+  version: 0.1.1
+  resolution: "storybook-version@npm:0.1.1"
   peerDependencies:
-    "@storybook/addons": ^6.3.7
-    "@storybook/components": ^6.3.7
-    "@storybook/theming": ^6.3.7
-    react: ">=16.8.0"
-    react-dom: ">=16.8.0"
-  checksum: 91714aba1407cce47185bf59c217f42a4a33da6e46c90945e1edab3c175927b90db1b23d13473568c77afa0a7f05a11c725f2825856dc4b5f8d490130b3a283b
+    "@storybook/addons": ^6.4.0
+    "@storybook/api": ^6.4.0
+    "@storybook/components": ^6.4.0
+    "@storybook/core-events": ^6.4.0
+    "@storybook/theming": ^6.4.0
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+  peerDependenciesMeta:
+    react:
+      optional: true
+    react-dom:
+      optional: true
+  checksum: 3c98bf4d5c73fb8ada17f5ce1dcf86688b8c69799294b4a134cdd3e98b1894d819c3c3ca8e3fbcaaceb24a1d97d8260de757999b019c2830a7da99ac03c3d8e8
   languageName: node
   linkType: hard
 
@@ -34811,20 +34690,6 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"tiny-invariant@npm:^1.0.0":
-  version: 1.2.0
-  resolution: "tiny-invariant@npm:1.2.0"
-  checksum: e09a718a7c4a499ba592cdac61f015d87427a0867ca07f50c11fd9b623f90cdba18937b515d4a5e4f43dac92370498d7bdaee0d0e7a377a61095e02c4a92eade
-  languageName: node
-  linkType: hard
-
-"tiny-warning@npm:^1.0.0":
-  version: 1.0.3
-  resolution: "tiny-warning@npm:1.0.3"
-  checksum: da62c4acac565902f0624b123eed6dd3509bc9a8d30c06e017104bedcf5d35810da8ff72864400ad19c5c7806fc0a8323c68baf3e326af7cb7d969f846100d71
-  languageName: node
-  linkType: hard
-
 "title-case@npm:^2.1.0":
   version: 2.1.1
   resolution: "title-case@npm:2.1.1"
@@ -35099,7 +34964,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"ts-dedent@npm:^2.0.0, ts-dedent@npm:^2.2.0":
+"ts-dedent@npm:^2.0.0":
   version: 2.2.0
   resolution: "ts-dedent@npm:2.2.0"
   checksum: 93ed8f7878b6d5ed3c08d99b740010eede6bccfe64bce61c5a4da06a2c17d6ddbb80a8c49c2d15251de7594a4f93ffa21dd10e7be75ef66a4dc9951b4a94e2af

@@ -15,7 +15,6 @@ module.exports = {
     },
   ],
   addons: [
-    // contains actions, backgrounds, controls, docs, viewport and toolbars addons
     {
       name: '@storybook/addon-essentials',
       options: {
@@ -30,12 +29,10 @@ module.exports = {
       },
     },
     '@whitespace/storybook-addon-html',
+    '@storybook/addon-actions/register',
     '@storybook/addon-a11y',
     '@storybook/addon-links',
     '@storybook/addon-notes', // to charge the documentation generated automatically by stencil
-    //'storybook-addon-xd-designs/register', // Adobe XD tab
-    '@storybook/addon-interactions', // Interactions tab
-    'storybook-addon-preview/register',
   ],
   webpack: async config => {
     return config;

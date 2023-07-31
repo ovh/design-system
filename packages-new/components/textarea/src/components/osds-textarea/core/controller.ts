@@ -11,7 +11,7 @@ class OdsTextAreaController {
   protected component: OsdsTextArea;
 
   constructor(component: OsdsTextArea) {
-    this.component = component
+    this.component = component;
   }
 
   /**

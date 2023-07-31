@@ -4,6 +4,5 @@
 // ###
 
 import './global';
-
+import '@ovhcloud/ods-component-collapsible';
 import '@ovhcloud/ods-component-icon';
-import '@ovhcloud/ods-stencil/components/collapsible';

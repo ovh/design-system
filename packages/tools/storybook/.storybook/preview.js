@@ -2,6 +2,7 @@ import { DocsPage, DocsContainer } from '@storybook/addon-docs';
 import { html } from 'lit-html';
 
 import '@ovhcloud/ods-theme-blue-jeans/index.css';
+import { addCopyCodeButton } from './copy-code-button';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -68,9 +69,9 @@ export const parameters = {
 };
 
 export const decorators = [
-  story => {
+  (story, context) => {
     if (typeof story() === 'string') return `<div class="ods-theme">${story()}</div>`;
 
-    return html` <div class="ods-theme">${story()}</div> `;
+    return html` <div class="ods-theme">${story()}</div>${context?.parameters?.options?.showPanel ? addCopyCodeButton() : ""}`;
   },
 ];

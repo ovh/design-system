@@ -12,7 +12,7 @@ import '@ovhcloud/ods-stencil/components/spinner';
 import '@ovhcloud/ods-component-textarea';
 
 // Top right slot dependencies
-import '@ovhcloud/ods-stencil/components/link';
+import '@ovhcloud/ods-component-link';
 import '@ovhcloud/ods-stencil/components/tooltip';
 
 // Other dependencies

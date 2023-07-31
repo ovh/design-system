@@ -5,5 +5,5 @@
 
 import './global';
 
-import '@ovhcloud/ods-stencil/components/link';
+import '@ovhcloud/ods-component-link';
 import '@ovhcloud/ods-component-icon';

@@ -8,8 +8,8 @@ import './global';
 import { OdsLogger } from '@ovhcloud/ods-core';
 
 
-import '@ovhcloud/ods-stencil/components/link';
 import '@ovhcloud/ods-component-icon';
+import '@ovhcloud/ods-component-link';
 
 const logger = new OdsLogger('global-dev');
 logger.log('init');

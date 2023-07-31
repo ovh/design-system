@@ -22,6 +22,9 @@ export const parameters = {
       showLineNumbers: true,
       wrapLines: false,
     },
+    transform: (code) => {
+      return code.replace(/\sclass="hydrated"/g, "");
+    }
   },
   previewTabs: {
     'storybook/docs/panel': {

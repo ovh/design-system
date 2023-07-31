@@ -1,16 +1,11 @@
 import { html } from 'lit-html';
-import { iframe } from '../../../.storybook/iframe';
-
-import { defineCustomElements } from '@ovhcloud/ods-stencil-collapsible/loader';
-import {
-  extractArgTypes,
-  extractStoryParams,
-  getTagAttributes,
-} from '../../../core/componentHTMLUtils';
-
-import changelog from '@ovhcloud/ods-stencil-collapsible/CHANGELOG.md';
-import page from './collapsible.web-component.stories.page.mdx';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
+import { defineCustomElements } from '@ovhcloud/ods-component-collapsible/loader';
+import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
+// @ts-ignore
+import changelog from '@ovhcloud/ods-component-collapsible/CHANGELOG.md';
+// @ts-ignore
+import page from './collapsible.web-component.stories.page.mdx';
 
 defineCustomElements();
 
@@ -30,7 +25,6 @@ export default {
   title: 'Meta Components/Collapsible [meta]/Web Component',
   parameters: {
     notes: {
-      API: iframe('/stencil-collapsible/modules/index.html'),
       changelog,
     },
     docs: { page }
@@ -47,6 +41,7 @@ const TemplateDefault = (args: any) => {
   `;
 }
 export const Default = TemplateDefault.bind({});
+// @ts-ignore
 Default.args = {
   ...extractStoryParams(storyParams),
 };
@@ -72,6 +67,7 @@ const TemplateTrigger = (args: any) => html`
   </osds-collapsible>
 `;
 export const Trigger = TemplateTrigger.bind({});
+// @ts-ignore
 Trigger.args = {
 ...extractStoryParams(storyParams),
 };

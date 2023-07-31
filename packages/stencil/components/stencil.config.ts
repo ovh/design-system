@@ -33,11 +33,11 @@ const config: Config = {
     },
     reactOutput: {
       // exclude components that have been moved to the new repo
-      excludeComponents: ['osds-icon', 'osds-link', 'osds-text', 'osds-textarea'],
+      excludeComponents: ['osds-collapsible', 'osds-icon', 'osds-link', 'osds-text', 'osds-textarea'],
     },
     vueOutput: {
       // exclude components that have been moved to the new repo
-      excludeComponents: ['osds-icon', 'osds-link', 'osds-text', 'osds-textarea'],
+      excludeComponents: ['osds-collapsible', 'osds-icon', 'osds-link', 'osds-text', 'osds-textarea'],
     },
     dev: {
       tsConfig: 'tsconfig.components.dev.json',

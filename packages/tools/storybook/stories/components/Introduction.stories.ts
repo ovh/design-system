@@ -25,7 +25,7 @@ const uiComponents = {
     {
       name: "Icon",
       tag: 'osds-icon',
-      url: parent.location.href.replace(parent.location.search, "?path=/story/ui-components-icon-atom-web-component--default"),
+      url: parent.location.href.replace(parent.location.search, "?path=/story/ui-components-icon-quark-web-component--default"),
       attributes: {
         color: OdsThemeColorIntent.primary,
         name: OdsIconName.HOME,
@@ -49,7 +49,7 @@ const uiComponents = {
     {
       name: "Accordion",
       tag: 'osds-accordion',
-      url: parent.location.href.replace(parent.location.search, "?path=/story/ui-components-accordion-accordion-atom-web-component--web-component"),
+      url: parent.location.href.replace(parent.location.search, "?path=/story/ui-components-accordion-atom-web-component--web-component"),
       attributes: {
         color: OdsThemeColorIntent.primary,
         style: `display: block; min-width: 12em`,
@@ -73,7 +73,7 @@ const uiComponents = {
     {
       name: "Checkbox Button",
       tag: 'osds-checkbox-button',
-      url: parent.location.href.replace(parent.location.search, "?path=/story/ui-components-checkbox-checkbox-button-atom-web-component--default"),
+      url: parent.location.href.replace(parent.location.search, "?path=/story/ui-components-checkbox-button-atom-web-component--default"),
       attributes: {
         color: OdsThemeColorIntent.primary,
         checked: '',
@@ -118,7 +118,7 @@ const uiComponents = {
     {
       name: "Input",
       tag: 'osds-input',
-      url: parent.location.href.replace(parent.location.search, "?path=/story/ui-components-input%EF%B8%8F-atom-web-component--default"),
+      url: parent.location.href.replace(parent.location.search, "?path=/story/ui-components-input-atom-web-component--default"),
       attributes: {
         color: OdsThemeColorIntent.primary,
         flex: '',
@@ -128,7 +128,7 @@ const uiComponents = {
     {
       name: "Link",
       tag: 'osds-link',
-      url: parent.location.href.replace(parent.location.search, "?path=/story/ui-components-link-quark-web-component--default"),
+      url: parent.location.href.replace(parent.location.search, "?path=/story/ui-components-link-atom-web-component--default"),
       attributes: {
         color: OdsThemeColorIntent.primary,
       },
@@ -146,7 +146,7 @@ const uiComponents = {
         removable: '',
       },
       slots: {
-        DEFAULT: `Message<br>${olesIpsum(OlesIpsumGeneration.words, 5)}`,
+        DEFAULT: `${olesIpsum(OlesIpsumGeneration.words, 5)}`,
       },
     },
     {
@@ -168,7 +168,7 @@ const uiComponents = {
     {
       name: "Radio Button",
       tag: 'osds-radio-button',
-      url: parent.location.href.replace(parent.location.search, "?path=/story/ui-components-radio-radio-button-atom-web-component--default"),
+      url: parent.location.href.replace(parent.location.search, "?path=/story/ui-components-radio-button-atom-web-component--default"),
       attributes: {
         color: OdsThemeColorIntent.primary,
         checked: '',
@@ -231,7 +231,7 @@ const uiComponents = {
     {
       name: "Tile",
       tag: 'osds-tile',
-      url: parent.location.href.replace(parent.location.search, "?path=/story/ui-components-tile-tile-atom-web-component--default"),
+      url: parent.location.href.replace(parent.location.search, "?path=/story/ui-components-tile-atom-web-component--default"),
       attributes: {
         color: OdsThemeColorIntent.primary,
         flex: '',
@@ -244,7 +244,7 @@ const uiComponents = {
     {
       name: "Toggle",
       tag: 'osds-toggle',
-      url: parent.location.href.replace(parent.location.search, "?path=/story/ui-components-%EF%B8%8Ftoggle-atom-web-component--default"),
+      url: parent.location.href.replace(parent.location.search, "?path=/story/ui-components-toggle-atom-web-component--default"),
       attributes: {
         color: OdsThemeColorIntent.primary,
         interactive: '',
@@ -253,7 +253,7 @@ const uiComponents = {
     },
     {
       name: "Tooltip",
-      url: parent.location.href.replace(parent.location.search, "?path=/story/ui-components-%EF%B8%8Ftooltip-atom-web-component--default"),
+      url: parent.location.href.replace(parent.location.search, "?path=/story/ui-components-tooltip-atom-web-component--default"),
       template: `<img width="100%" src=" data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIwAAAA4CAIAAACg+YcKAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAIyklEQVR4nO2cf1QU1xXH78wOsC4grlqEBBUQkWOoaA0c0SS0QjyoMUURUqMpiWKEVhMVFE6IJDTkCCoKJphEIsaaWjVJjQat1BJbqQY1mGgN/kTggFJQaQBdFhlm+sfgMLz3ZphdlvU0zPd4cOb9uPO4n733vV3eW4rnecBELFQo16ReFEVZVA4AFOJ3HINFFDXJicgALyQ3E92tQEslOU0KUuaB1KK3REh4oRxLTRZJ9L7CBRAhEWNI+hO/BY2WJcIBIGyQQqQXCgkhhAPTQsoKKSChKEqOk3jNEAkRL3qFpGETpDD9IGDwZjzPi1XiNSO2kAMjFchElSYFyUWPFJWABzBOgrogyRHiOI7ISUt6KiXFgBOiKIqmabEBzkm4QCMJHjIQ8eCclCENZGzKiQ4XTdMcx4mopGCkRhjA8EjFcZwASS6kREMDmQ0u4nIOwSOUC3ik3kNQ8Tzfne4QNiIhhmH0er0YlZpsIo7jzGYzy7IAIMQT4mEpZpqYr6SEDAaDRsjmomnaYDAwDCPmKoWJo0es4elOr9fbc+gDTXq9Xs1kT4tFPGnlrcVQv4qmaeJMj0RVDwb4zGTXIQ9IEVdkiLohIUs1uQ6abCvc1fg1OZKAFHSa+kP4RIO36Z6T8J4aJDuI6Gp0TiK20CDZTXLelpbQeGu7jlGTRHIICCtsnrRU19RPUuNt8tsgLaTsqV69rb1X/T+QlZCSM/ZSnnH4v+raO1ZYGzIu8ZN9pcSq7PcP+4QkNbe0WTfOn4aUICnEYNrKOVVncqrO5GSlxRoGOQrXVWdyvDyNfRzQ0eP/9gtdI95O+vno2RETDYMc+2jWCqW+uz8+qbC/LaiZVhjkXuVUZHRzNro5A8AwowtFUd4jh6vppUa377ZIb2eEBc4IC7SVcQtH0qqwq7Q/LMg53/Zz0qVrtyIXbDL4LHUPXL7qrT3m9g6xqujY9xMj1jmNXuIXuuaj3cfxvvFJhb9dsb2yupHyjHMZ8yoA5BYUewcnCbW5BcXT52et31o0dupaZ9+lkQs21Tf8iBu5UXN77uKtrn7LjAGJK9P/1GZ+oPDoqFfyst4rysj50mvSSmNA4oq03YKn/ELXFP75xI49/6Q84557aTMA8Dy/If/IyF+scvNPmPlizvWqBkstWC0bQ2ppbQuPyXZ10ZcdTv80P+HLv5b/LnWXUHX6XGXUK3nRs588X5KZsnz2qvQ9f/zsJNL9w+y4d1KifUe7t1V/fPfSNtz+P05dbm41nS/JvPl9nk5Hz1uyFWlw7755+vyse/fNJZ+lHNu31oHR6XS08qP/sPngMKNL9dmcot2r83eWHDvxAwBUnFj/bFjgyy883Vb98YHC1wFgy/bi3Z+f3L/995dLs0Im+T4fl8uynRZZsFpouuujNn90lKaoT/MTnByZCTByx+Yl4THZq5dFBgZ4pWTunztz8rpVvwaAAD/P2ptNa9/Ztyh6Kk13JwSG0TE6mqJA7+RAtD/q8WFZabEAYBjkuP6NmKDwNyuu3hzv/7jYIOfDo6a29gOFr7k46wHgySAfAFB+9LxZk5cvjgCAacFjx43xOHehekZYoKMDQ1OUTkcLIzG1PXhr44HjX6QKBt9OjvpgV8n5itrJE7xVWuiLbBxJZeWV00LGOjl2sX9myjiG0ZWVVwJAWfn16U+NF1uGPz2+4XbzjZpGq5/lP8YDAK5X9bDwzbfXn5kyTiAkGZXSoxlGJ1a5DTY0txJWkhcqau/dN8+Pf987OMk7OMknJLmzk2u806LeQl9k40jigUf2YFAU8MADAA8gnUS7dln04Vk/NpvwQo7ndTr0lWfRo4mzt/Cnta8/T/Ud/bNeB2bzzwHQ36eP65ngIN9TZ6896GCF29LTVzs6OoMn+gJAcJDP8ZOXxJZf/6timNHFdxT6Ozs46FhW1R8b/176A8PohPwjavIE79LTV4XFgmRUqh5NGknXrBMY4KV3cjhYfE7NwIgW1EjO+UrpzgpgSYmR7Q/YuNcKLl6uKymtiE/asXBe6MQnRgFA1puxXxz+dv3Woqs3/rNzb+nGbUey0mKFV72TI1NX/1/hBejv61F7625JacWVynrcfl1909ubDly8XHeo+LvkjL3LXvrVYx5DegwgIbK9vSP21fzvLtaUX6hemlxYU3dH4dEK8vf1OFF25Upl/Y2a24NdB6Wvjkrf8Jede0vr6ptOnb22If9Ir96QWpBro8bJNp6TjG7Op75a19xiCpmZsSBxW8yckB1b4oWqp0L8j+5J3nfodOAv33g379AH2S/HLwwTqn4TNSVzy8HaW00AMCs8aFH01LmL8yJiNtxpakXsj3xsKE1TsxbmxL2+fVH01C0ZLyINhg91/eZwOsty0+ZkRi7YNGSwYfhQV4VHK2h1QqSXp3FSRHpCyicAkLpi9sb0FzJzD40NXZuYuothencdYsFqUSzLCh/wcQ/VKdGIESP6Yt22yi0oziv4W9WZnEc9EFuqoaFBJxH9UD12UhJ7ym37f+T6SX4036u3CZCQcxqa+lVqvN2d7sSMJ0137u7u9hrtAFVjYyOe7tCN43isSasf1dAHjuS8LS3pPhxD7GmfgQ5kyRGS3qI7+cUOGiT7CHE40ee0tDXSU4NkB+Guxq/JkdQ1X2m79ftf+DKB0Eb4Dw86Qdqe/X6VcBYTIYSj6j6qCRghiqLMZrP9hz5wZDabcZ8LVVJONB5fYq6jaZplWZPJpMWTzcVxnMlkYllW+sYIadMNTDgfA4rHZnntYLOFwid/fL4XI0G8xfOeYIGBnt8ggJgWz0YLbfDd5TibgUxLKRpIwtng6Y6Sfo8Dgko4KSicisYDSNsvrlIIJJAJKbnZSBAjVvA9v4VDKCcSQn5qUpY0dxE5IfygJ1qQ7nGQ4yRNdKB9AZQKKSc9kPlkByckihGzHMh8+5C0CrSDMVYJhwQ9gSGFaC/83AUxoWnLub4Id70CNryX9vWedhVx8YZcAE5LzvvKQaOhslQKExVei9z+D08Gnt2uJB2pAAAAAElFTkSuQmCC" />`
     }
   ],
@@ -261,7 +261,7 @@ const uiComponents = {
     {
       name: "Accordion Group",
       tag: 'osds-accordion-group',
-      url: parent.location.href.replace(parent.location.search, "?path=/story/ui-components-accordion-accordion-group-molecule-web-component--web-component"),
+      url: parent.location.href.replace(parent.location.search, "?path=/story/ui-components-accordion-group-molecule-web-component--web-component"),
       slots: {
         DEFAULT: `
       <osds-accordion opened>
@@ -287,19 +287,6 @@ const uiComponents = {
       },
     },
     {
-      name: "Message",
-      tag: 'osds-message',
-      url: parent.location.href.replace(parent.location.search, "?path=/story/ui-components-message-atom-web-component--default"),
-      attributes: {
-        color: OdsThemeColorIntent.primary,
-        removable: '',
-        flex: ''
-      },
-      slots: {
-        DEFAULT: `${olesIpsum(OlesIpsumGeneration.words, 5)}`,
-      },
-    },
-    {
       name: "Pagination",
       tag: 'osds-pagination',
       url: parent.location.href.replace(parent.location.search, "?path=/story/ui-components-pagination-molecule-web-component--default"),
@@ -311,11 +298,11 @@ const uiComponents = {
     {
       name: "Password",
       tag: 'osds-password',
-      url: parent.location.href.replace(parent.location.search, "?path=/story/ui-components-form-field-organism-web-component--default"),
+      url: parent.location.href.replace(parent.location.search, "?path=/story/ui-components-password-molecule-web-component--default"),
       attributes: {
         color: OdsThemeColorIntent.primary,
         flex: '',
-        value: 'totototo',
+        value: 'Password',
         masked: ''
       }
     },
@@ -409,9 +396,13 @@ const TemplateIntroduction = () => html`
 <style>
 .cardLink {
     display: flex;
-    width: clamp(16em, 20%, 32em);
+    width: clamp(16em, 23%, 32em);
     text-decoration: none;
     color: inherit;
+}
+
+.cardLink.wideCard {
+    width: clamp(23em, 31%, 32em);
 }
 
 .cardSection {
@@ -487,12 +478,12 @@ const TemplateIntroduction = () => html`
           ${
             uiComponents[section].map(
                 ({ name, tag, url, attributes, slots, template }) =>
-            html`<a class="cardLink"
-                           href=${url}
-                           key=${name}>
-                <osds-tile color="primary"
-                           interactive="true"
-                           class="card"
+            html`<a class="${section.match(/quarks|organisms|layouts/g) ? "cardLink wideCard" : "cardLink"}"
+                    href=${url}
+                    key=${name}>
+                <osds-tile class="card"
+                           color="primary"
+                           hoverable
                            flex>
                   <span class="cardInner">
                     <osds-text class="cardTitle"

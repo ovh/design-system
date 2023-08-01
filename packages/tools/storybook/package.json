@@ -42,12 +42,12 @@
     "storybook-addon-xd-designs": "^6.0.0"
   },
   "scripts": {
-    "build:storybook": "build-storybook -o dist $(yarn node ./.storybook/static-dirs.js)",
-    "list:docs:api": "yarn node .storybook/docs-api-dir.js",
-    "list:releases": "yarn node .storybook/get-repo-releases.js $1 $2",
+    "build:storybook": "yarn list:releases && build-storybook -o dist $(yarn node ./.storybook/utils/static-dirs.js)",
+    "list:docs:api": "yarn node .storybook/utils/docs-api-dir.js",
+    "list:releases": "yarn node .storybook/utils/get-repo-releases.js",
     "prepare": "npm run build:storybook",
-    "start": "start-storybook -p 6006 $(yarn node ./.storybook/static-dirs.js)",
-    "start:nocache": "start-storybook -p 6006 $(yarn node ./.storybook/static-dirs.js) --no-manager-cache",
-    "start:quiet": "start-storybook -p 6006 --quiet $(yarn node ./.storybook/static-dirs.js)"
+    "start": "start-storybook -p 6006 $(yarn node ./.storybook/utils/static-dirs.js)",
+    "start:nocache": "start-storybook -p 6006 $(yarn node ./.storybook/utils/static-dirs.js) --no-manager-cache",
+    "start:quiet": "start-storybook -p 6006 --quiet $(yarn node ./.storybook/utils/static-dirs.js)"
   }
 }

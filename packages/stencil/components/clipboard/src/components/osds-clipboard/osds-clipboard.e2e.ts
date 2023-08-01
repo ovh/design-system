@@ -9,7 +9,7 @@ describe('e2e:osds-clipboard', () => {
 
   async function mockClipboard(page: E2EPage): Promise<void> {
     await page.evaluate(() => {
-      let clipboardText = null;
+      let clipboardText = '';
       const clipboard = {
         writeText: text => new Promise(resolve => resolve(clipboardText = text)),
         readText: () => new Promise(resolve => resolve(clipboardText)),
@@ -57,12 +57,34 @@ describe('e2e:osds-clipboard', () => {
     expect(await page.evaluate(() => navigator.clipboard.readText())).toBe(value);
   });
 
+  it('should copy the input value with keyboard', async () => {
+    const value = 'text to copy';
+    
+    await setup({ attributes: { value } });
+    
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+
+    expect(await page.evaluate(() => navigator.clipboard.readText())).toBe(value);
+  });
+
   it('should not copy the input value because of disabled', async () => {
     const value = 'text to copy';
     await setup({ attributes: { value, disabled: true } });
     await page.evaluate(() => navigator.clipboard.writeText(''));
 
     await input.click();
+
+    expect(await page.evaluate(() => navigator.clipboard.readText())).toBe('');
+  });
+
+  it('should noy copy the input value with keyboard', async () => {
+    const value = 'text to copy';
+    
+    await setup({ attributes: { value, disabled: true } });
+    
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
 
     expect(await page.evaluate(() => navigator.clipboard.readText())).toBe('');
   });

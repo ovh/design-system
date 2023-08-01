@@ -4,7 +4,6 @@
 // ###
 
 import './global';
-
+import '@ovhcloud/ods-component-button';
 import '@ovhcloud/ods-component-icon';
-import '@ovhcloud/ods-stencil/components/button';
 

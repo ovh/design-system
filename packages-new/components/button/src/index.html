@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html dir='ltr' lang='en'>
+<head>
+  <meta charset='utf-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0' />
+  <title>Dev osds-button</title>
+
+  <script type="module">
+    !window.ods && (window.ods = {config: {logging: {active:true}}});
+  </script>
+
+  <script type='module' src='/build/osds-button.esm.js'></script>
+  <script nomodule src='/build/osds-button.js'></script>
+<!--  <script type="text/javascript">ods.instance().logging(true)</script>-->
+  <link rel="stylesheet" href="/build/osds-button.css">
+</head>
+<body>
+
+<p>Size</p>
+<osds-button size='sm'>Small</osds-button>
+<osds-button>Default</osds-button>
+<osds-button size='lg'>Large</osds-button>
+
+<p>Variant</p>
+<osds-button variant='ghost'>Ghost</osds-button>
+<osds-button variant='stroked'>Primary</osds-button>
+<osds-button variant='flat'>Secondary</osds-button>
+
+<p>Color</p>
+<osds-button color="default">default</osds-button>
+<osds-button color="primary">primary</osds-button>
+<osds-button color="success">success</osds-button>
+
+<p>Square</p>
+<osds-button square size='s'>Square small</osds-button>
+<osds-button square>Square</osds-button>
+<osds-button square size='l'>Square large</osds-button>
+
+<p>Link</p>
+<osds-button href="#">Link</osds-button>
+
+<p>Disabled</p>
+<osds-button size='s' disabled>Small</osds-button>
+<osds-button disabled>Default</osds-button>
+<osds-button size='l' disabled>Large</osds-button>
+<osds-button variant='ghost' disabled>Ghost</osds-button>
+<osds-button variant='primary' disabled>Primary</osds-button>
+<osds-button variant='secondary' disabled>Secondary</osds-button>
+<osds-button block size='s' disabled>Block small</osds-button>
+<osds-button block disabled>Block</osds-button>
+<osds-button block size='l' disabled>Block large</osds-button>
+<osds-button square size='s' disabled>Square small</osds-button>
+<osds-button square disabled>Square</osds-button>
+<osds-button square size='l' disabled>Square large</osds-button>
+
+<p>Circle</p>
+<osds-button   color="primary" circle="true">
+  <osds-icon
+    name="plus"
+    size="xs"
+    color="primary"
+  />
+</osds-button>
+<osds-button color="primary" circle size='sm'>
+  <osds-icon
+    name="ellipsis-vertical"
+    size="xxs"
+    color="primary"
+  />
+</osds-button>
+<osds-button circle>
+  <span>Button</span>
+</osds-button>
+<osds-button circle>
+  <span>Button</span>
+</osds-button>
+
+<p>In Form</p>
+<form>
+  <div>
+    <label for="text">Enter text: </label>
+    <input type="text" name="text" id="text" required>
+  </div>
+
+  <osds-button type='submit' size='sm'>submit</osds-button>
+</form>
+
+<p>Inline</p>
+<osds-button inline>Default</osds-button>
+
+<p>Ellipsis</p>
+<osds-button size='lg'>
+  <span slot='start'>start</span>
+  Oles ipsum dolor sit amet, sem platform library data veeam vero quis scripta dicant te massa fuisset
+  signiferumque fringilla mus sodales diam eu mazim kpi mac sociis mi ls nullam cu information aperiri
+  <span slot='end'>end</span>
+</osds-button>
+
+<script>
+  document.querySelector('form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    console.log('form submitted');
+  })
+
+  document.addEventListener('odsInitialized', ({detail}) => {
+    const instance = detail.instance;
+    instance.logging(true);
+    const logger = new instance.logger('www');
+    logger.log('odsInitialized received');
+
+    document.querySelectorAll('osds-button').forEach((elem) => {
+      elem.addEventListener('osdsButtonClick', function(event) {
+        logger.log('(html) addEventListener odsButtonClick: %o', event);
+      });
+    });
+  })
+</script>
+</body>
+</html>

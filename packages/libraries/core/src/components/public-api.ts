@@ -16,7 +16,6 @@ export * from './chip/public-api';
 export * from './clipboard/public-api';
 export * from './code/public-api';
 export * from './content-addon/public-api';
-export * from './divider/public-api';
 export * from './flag/public-api';
 export * from './input/public-api';
 export * from './location-tile/public-api';

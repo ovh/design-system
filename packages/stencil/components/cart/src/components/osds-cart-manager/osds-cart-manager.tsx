@@ -11,7 +11,6 @@ import {
   OdsCartManagerSection,
   OdsCartManagerTotal,
   OdsCartSize,
-  OdsDividerSize,
   OdsI18n,
   OdsI18nHook,
   OdsLogger,
@@ -23,6 +22,7 @@ import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libra
 
 import { HTMLStencilElement } from '@stencil/core/internal';
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_DIVIDER_SIZE } from '@ovhcloud/ods-component-divider';
 
 /**
  *
@@ -119,11 +119,11 @@ export class OsdsCartManager implements OdsCartManager<OdsStencilMethods<OdsCart
         // divider between each option
         (array.length - 1 !== i ?
           r.concat(a,
-            (<osds-divider color={OdsThemeColorIntent.primary} size={OdsDividerSize.zero}
+            (<osds-divider color={OdsThemeColorIntent.primary} size={ODS_DIVIDER_SIZE.zero}
               separator={true}></osds-divider>))
           : r.concat(a)),
         // first divider before options
-        [(<osds-divider color={OdsThemeColorIntent.primary} size={OdsDividerSize.zero}
+        [(<osds-divider color={OdsThemeColorIntent.primary} size={ODS_DIVIDER_SIZE.zero}
           separator={true}></osds-divider>)]
       );
   }

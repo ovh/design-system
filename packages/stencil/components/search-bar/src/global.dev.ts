@@ -6,7 +6,7 @@
 import './components';
 import './global';
 import { OdsLogger } from '@ovhcloud/ods-core';
-import '@ovhcloud/ods-stencil/components/icon';
+import '@ovhcloud/ods-component-icon';
 import '@ovhcloud/ods-stencil/components/button';
 import '@ovhcloud/ods-stencil/components/select';
 import '@ovhcloud/ods-stencil/components/input';

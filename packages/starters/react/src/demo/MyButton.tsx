@@ -1,19 +1,14 @@
+import type { OdsButtonAttribute } from '@ovhcloud/ods-components/button';
 import React, { PropsWithChildren } from 'react';
-import { OsdsButton } from '@ovhcloud/ods-stencil/components/react';
-import { JSX as OdsJSX } from '@ovhcloud/ods-stencil/components';
+import { OsdsButton } from '@ovhcloud/ods-components/button/react';
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 import { odsFilterTransientProps } from '@ovhcloud/ods-core';
 
 /**
- * define an alias to get the properties definition of the `ODS` button
- */
-type OsdsButtonProps = OdsJSX.IntrinsicElements['osds-button'];
-
-/**
  * default custom properties values for the custom button
  */
-const DEFAULT_BUTTON_PROPS: Partial<OsdsButtonProps> = {
-  flex: true,
+const DEFAULT_BUTTON_PROPS: Partial<OdsButtonAttribute> = {
+  inline: false,
   color: OdsThemeColorIntent.accent
 };
 
@@ -21,7 +16,7 @@ const DEFAULT_BUTTON_PROPS: Partial<OsdsButtonProps> = {
  * my custom button has the same properties as `ODS`.
  * it has also onClick, in order to allow the use of onCLick on this custom react component.
  */
-type MyButtonProps = PropsWithChildren<OsdsButtonProps> & { onClick: () => void };
+type MyButtonProps = PropsWithChildren<OdsButtonAttribute> & { onClick: () => void };
 
 /**
  * Custom button component base on the `ODS` one.

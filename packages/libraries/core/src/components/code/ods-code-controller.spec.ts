@@ -1,8 +1,7 @@
+import type { OsdsButton } from '@ovhcloud/ods-component-button';
 import type { OsdsIcon } from '@ovhcloud/ods-component-icon';
+import { ODS_BUTTON_SIZE, ODS_BUTTON_VARIANT } from '@ovhcloud/ods-component-button';
 import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
-import { OdsButton } from '../button/ods-button';
-import { OdsButtonSize } from '../button/ods-button-size';
-import { OdsButtonVariant } from '../button/ods-button-variant';
 import { OdsCode } from './ods-code';
 import { OdsCodeController } from './ods-code-controller';
 import { OdsCodeMock } from './ods-code-mock';
@@ -81,12 +80,12 @@ describe('spec:ods-code-controller', () => {
     describe('methods:autocompleteCopySlot', () => {
       it('should warn if ods-button size is different than sm', () => {
         setup();
-        const button = document.createElement('osds-button') as (HTMLSlotElement & OdsButton);
-        button.setAttribute('size', OdsButtonSize.sm);
+        const button = document.createElement('osds-button') as (HTMLSlotElement & OsdsButton);
+        button.setAttribute('size', ODS_BUTTON_SIZE.sm);
         controller.autocompleteCopySlot(button, null);
         expect(loggerSpyReferences.methodSpies.warn).toBeCalledTimes(0);
 
-        button.setAttribute('size', OdsButtonSize.md);
+        button.setAttribute('size', ODS_BUTTON_SIZE.md);
         controller.autocompleteCopySlot(button, null);
         expect(loggerSpyReferences.methodSpies.warn).toBeCalledWith('size on copy slot will be overridden with sm');
         expect(loggerSpyReferences.methodSpies.warn).toBeCalledTimes(1);
@@ -94,7 +93,7 @@ describe('spec:ods-code-controller', () => {
 
       it('should warn if ods-icon size is different than xs', () => {
         setup();
-        const button = document.createElement('osds-button') as (HTMLSlotElement & OdsButton);
+        const button = document.createElement('osds-button') as (HTMLSlotElement & OsdsButton);
         const icon = document.createElement('osds-icon') as (HTMLSlotElement & OsdsIcon);
         button.appendChild(icon);
 
@@ -110,16 +109,16 @@ describe('spec:ods-code-controller', () => {
 
       it('should set ods-button attributes', () => {
         setup();
-        const button = document.createElement('osds-button') as (HTMLSlotElement & OdsButton);
+        const button = document.createElement('osds-button') as (HTMLSlotElement & OsdsButton);
         controller.autocompleteCopySlot(button, null);
-        expect(button.size).toBe(OdsButtonSize.sm);
-        expect(button.variant).toBe(OdsButtonVariant.ghost);
+        expect(button.size).toBe(ODS_BUTTON_SIZE.sm);
+        expect(button.variant).toBe(ODS_BUTTON_VARIANT.ghost);
         expect(button.contrasted).toBe(true);
       });
 
       it('should create default ods-icon in ods-button', () => {
         setup();
-        const button = document.createElement('osds-button') as (HTMLSlotElement & OdsButton);
+        const button = document.createElement('osds-button') as (HTMLSlotElement & OsdsButton);
         controller.autocompleteCopySlot(button, null);
         const icon = button.querySelector('osds-icon') as (HTMLSlotElement & OsdsIcon);
         expect(icon.size).toBe(ODS_ICON_SIZE.xs);
@@ -129,7 +128,7 @@ describe('spec:ods-code-controller', () => {
 
       it('should set attributes on custom ods-icon', () => {
         setup();
-        const button = document.createElement('osds-button') as (HTMLSlotElement & OdsButton);
+        const button = document.createElement('osds-button') as (HTMLSlotElement & OsdsButton);
         const icon = document.createElement('osds-icon') as (HTMLSlotElement & OsdsIcon);
         icon.name = ODS_ICON_NAME.FILE;
         button.appendChild(icon);

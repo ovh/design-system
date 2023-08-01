@@ -1,24 +1,14 @@
 /**
- * execution from directory: `npm list:releases username token`
- * execution from directory: `yarn list:releases -- username token`
- * execution from monorepo with lerna `lerna run list:releases -- -- username token`
+ * execution from directory: `npm list:releases`
+ * execution from directory: `yarn list:releases`
+ * execution from monorepo with lerna `lerna run list:releases`
  */
 const fetch = require('node-fetch');
 const fs = require('fs');
-const args = process.argv.slice(2);
-const username = args[0];
-const token = args[1];
 const file = './public/releases.js';
 
-if (!username || !token) {
-  console.error(`you must call the script with credentials like: npx zx ${process.argv[1]} user@domain <token>`);
-  process.exit(1);
-}
-
 (async () => {
-
-  const data = await fetch(``).then(r => r.json());
-  // console.log(JSON.stringify(data, undefined ,2));
+  const data = await fetch(`https://registry.npmjs.org/@ovhcloud/ods-storybook`).then(r => r.json());
 
   const availableVersions = {};
   let withErrors = false;

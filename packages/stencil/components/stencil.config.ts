@@ -33,11 +33,11 @@ const config: Config = {
     },
     reactOutput: {
       // exclude components that have been moved to the new repo
-      excludeComponents: ['osds-button', 'osds-collapsible', 'osds-icon', 'osds-link', 'osds-text', 'osds-textarea'],
+      excludeComponents: ['osds-button', 'osds-collapsible', 'osds-divider', 'osds-icon', 'osds-link', 'osds-text', 'osds-textarea'],
     },
     vueOutput: {
       // exclude components that have been moved to the new repo
-      excludeComponents: ['osds-button', 'osds-collapsible', 'osds-icon', 'osds-link', 'osds-text', 'osds-textarea'],
+      excludeComponents: ['osds-button', 'osds-collapsible', 'osds-divider', 'osds-icon', 'osds-link', 'osds-text', 'osds-textarea'],
     },
     dev: {
       tsConfig: 'tsconfig.components.dev.json',
@@ -69,7 +69,6 @@ const config: Config = {
     { components: ['osds-checkbox-button'] },
     { components: ['osds-chip'] },
     { components: ['osds-content-addon'] },
-    { components: ['osds-divider'] },
     { components: ['osds-flag'] },
     { components: ['osds-input'] },
     { components: ['osds-location-tile'] },

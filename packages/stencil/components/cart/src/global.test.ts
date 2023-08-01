@@ -5,3 +5,5 @@
 
 import './global';
 
+import '@ovhcloud/ods-component-divider';
+

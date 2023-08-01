@@ -12,11 +12,11 @@ const config: Config = {
     reactOutput: {
       componentCorePackage: '@ovhcloud/ods-stencil/components/cart',
       // exclude peer dependencies that corresponds to www usage
-      excludeComponents: []
+      excludeComponents: ['osds-divider']
     },
     vueOutput: {
       componentCorePackage: '@ovhcloud/ods-stencil/components/cart',
-      excludeComponents: []
+      excludeComponents: ['osds-divider']
     },
     dev: {
       globalScript: 'src/global.dev.ts',

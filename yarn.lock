@@ -5481,6 +5481,42 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-component-button-react@workspace:packages-new/components/button/react":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-button-react@workspace:packages-new/components/button/react"
+  dependencies:
+    "@ovhcloud/ods-component-button": ^15.0.1
+    "@ovhcloud/ods-react-dev": ^15.0.1
+  peerDependencies:
+    react: ">=16.8.6"
+    react-dom: ">=16.8.6"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-component-button-vue@workspace:packages-new/components/button/vue":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-button-vue@workspace:packages-new/components/button/vue"
+  dependencies:
+    "@ovhcloud/ods-component-button": ^15.0.1
+    "@ovhcloud/ods-vue-dev": ^15.0.1
+  peerDependencies:
+    vue: ">=3"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-component-button@^15.0.1, @ovhcloud/ods-component-button@workspace:packages-new/components/button":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-button@workspace:packages-new/components/button"
+  dependencies:
+    "@ovhcloud/ods-common-core": ^15.0.1
+    "@ovhcloud/ods-common-stencil": ^15.0.1
+    "@ovhcloud/ods-common-testing": ^15.0.1
+    "@ovhcloud/ods-component-icon": ^15.0.1
+    "@ovhcloud/ods-stencil-dev": ^15.0.1
+    "@ovhcloud/ods-theming": ^15.0.1
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-component-collapsible-react@workspace:packages-new/components/collapsible/react":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-collapsible-react@workspace:packages-new/components/collapsible/react"
@@ -5671,6 +5707,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-components@workspace:packages-new/components"
   dependencies:
+    "@ovhcloud/ods-component-button": ^15.0.1
     "@ovhcloud/ods-component-collapsible": ^15.0.1
     "@ovhcloud/ods-component-icon": ^15.0.1
     "@ovhcloud/ods-component-link": ^15.0.1
@@ -5685,6 +5722,7 @@ __metadata:
   resolution: "@ovhcloud/ods-core@workspace:packages/libraries/core"
   dependencies:
     "@ovhcloud/ods-cdk": ^15.0.1
+    "@ovhcloud/ods-component-button": ^15.0.1
     "@ovhcloud/ods-component-icon": ^15.0.1
     "@ovhcloud/ods-library-dev": ^15.0.1
     "@ovhcloud/ods-theming": ^15.0.1
@@ -5771,7 +5809,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-starter-react-vite@workspace:packages/starters/react-vite"
   dependencies:
-    "@ovhcloud/ods-component-text": ^15.0.1
+    "@ovhcloud/ods-components": ^15.0.1
     "@ovhcloud/ods-core": ^15.0.1
     "@ovhcloud/ods-dev": ^15.0.1
     "@ovhcloud/ods-stencil": ^15.0.1
@@ -5792,7 +5830,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-starter-react@workspace:packages/starters/react"
   dependencies:
-    "@ovhcloud/ods-component-text": ^15.0.1
+    "@ovhcloud/ods-components": ^15.0.1
     "@ovhcloud/ods-core": ^15.0.1
     "@ovhcloud/ods-react-dev": ^15.0.1
     "@ovhcloud/ods-stencil": ^15.0.1
@@ -5808,7 +5846,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-starter-vue-vite@workspace:packages/starters/vue-vite"
   dependencies:
-    "@ovhcloud/ods-component-text": ^15.0.1
+    "@ovhcloud/ods-components": ^15.0.1
     "@ovhcloud/ods-core": ^15.0.1
     "@ovhcloud/ods-stencil": ^15.0.1
     "@ovhcloud/ods-theme-blue-jeans": ^15.0.1
@@ -5826,7 +5864,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-accordion-react@workspace:packages/stencil/components/accordion/react"
   dependencies:
-    "@ovhcloud/ods-stencil-button": ^15.0.1
+    "@ovhcloud/ods-stencil-accordion": ^15.0.1
     "@types/react": 17.0.37
     "@types/react-dom": 17.0.11
     react: 16.14.0
@@ -5902,46 +5940,6 @@ __metadata:
     "@ovhcloud/ods-component-icon": ^15.0.1
     "@ovhcloud/ods-component-link": ^15.0.1
     "@ovhcloud/ods-component-text": ^15.0.1
-    "@ovhcloud/ods-stencil-component": ^15.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^15.0.1
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-stencil-button-react@workspace:packages/stencil/components/button/react":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-stencil-button-react@workspace:packages/stencil/components/button/react"
-  dependencies:
-    "@ovhcloud/ods-stencil-button": ^15.0.1
-    "@types/react": 17.0.37
-    "@types/react-dom": 17.0.11
-    react: 16.14.0
-    react-dom: 16.14.0
-    rimraf: ^3.0.2
-    tslib: "*"
-    typescript: 4.7.4
-  peerDependencies:
-    react: ">=16.8.6"
-    react-dom: ">=16.8.6"
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-stencil-button-vue@workspace:packages/stencil/components/button/vue":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-stencil-button-vue@workspace:packages/stencil/components/button/vue"
-  dependencies:
-    "@ovhcloud/ods-stencil-button": ^15.0.1
-    rimraf: ^3.0.2
-    typescript: 4.7.4
-    vue: ^3.2.41
-  peerDependencies:
-    vue: ">=3"
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-stencil-button@^15.0.1, @ovhcloud/ods-stencil-button@workspace:packages/stencil/components/button":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-stencil-button@workspace:packages/stencil/components/button"
-  dependencies:
     "@ovhcloud/ods-stencil-component": ^15.0.1
     "@ovhcloud/ods-stencil-component-dev": ^15.0.1
   languageName: unknown
@@ -6144,12 +6142,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-code@workspace:packages/stencil/components/code"
   dependencies:
+    "@ovhcloud/ods-component-button": ^15.0.1
     "@ovhcloud/ods-component-icon": ^15.0.1
-    "@ovhcloud/ods-stencil-button": ^15.0.1
     "@ovhcloud/ods-stencil-component": ^15.0.1
     "@ovhcloud/ods-stencil-component-dev": ^15.0.1
-  peerDependencies:
-    "@ovhcloud/ods-stencil-button": ">=9.0"
   languageName: unknown
   linkType: soft
 
@@ -6604,6 +6600,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-pagination@workspace:packages/stencil/components/pagination"
   dependencies:
+    "@ovhcloud/ods-component-button": ^15.0.1
     "@ovhcloud/ods-component-icon": ^15.0.1
     "@ovhcloud/ods-component-text": ^15.0.1
     "@ovhcloud/ods-stencil-component": ^15.0.1
@@ -6686,6 +6683,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-popover@workspace:packages/stencil/components/popover"
   dependencies:
+    "@ovhcloud/ods-component-button": ^15.0.1
     "@ovhcloud/ods-component-text": ^15.0.1
     "@ovhcloud/ods-stencil-component": ^15.0.1
     "@ovhcloud/ods-stencil-component-dev": ^15.0.1
@@ -6767,6 +6765,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-quantity@workspace:packages/stencil/components/quantity"
   dependencies:
+    "@ovhcloud/ods-component-button": ^15.0.1
     "@ovhcloud/ods-stencil-component": ^15.0.1
     "@ovhcloud/ods-stencil-component-dev": ^15.0.1
   languageName: unknown

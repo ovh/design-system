@@ -6,8 +6,8 @@
 import './components';
 import './global';
 import { OdsLogger } from '@ovhcloud/ods-core';
+import '@ovhcloud/ods-component-button';
 import '@ovhcloud/ods-component-icon';
-import '@ovhcloud/ods-stencil/components/button';
 import { OsdsCode } from '@ovhcloud/ods-stencil/components/code/src/components/osds-code/osds-code';
 
 const code1: (HTMLElement & OsdsCode) | null = document.getElementById('code-1') as (HTMLElement & OsdsCode) | null;

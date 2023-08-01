@@ -1,5 +1,4 @@
 export * from './accordion/public-api';
-export * from './button/public-api';
 export * from './breadcrumb/public-api';
 export * from './cart/public-api';
 export * from './checkbox/public-api';

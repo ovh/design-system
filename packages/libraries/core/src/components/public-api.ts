@@ -1,7 +1,6 @@
 export * from './accordion/public-api';
 export * from './accordion-group/public-api';
 export * from './breadcrumb/public-api';
-export * from './button/public-api';
 export * from './cart-footer-item/public-api';
 export * from './cart-footer/public-api';
 export * from './cart-header/public-api';

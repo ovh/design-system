@@ -1,8 +1,6 @@
 import { Component, Element, Host, h, Prop, Event, EventEmitter, Listen } from '@stencil/core';
 import {
   OdsButtonSize,
-  OdsIconName,
-  OdsIconSize,
   OdsInputType,
   OdsInputValueChangeEvent,
   OdsSearchBar,
@@ -14,6 +12,7 @@ import {
 } from '@ovhcloud/ods-core';
 import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libraries/stencil-core';
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
 
 /**
  * @slot (unnamed) - SearchBar content
@@ -114,9 +113,9 @@ export class OsdsSearchBar implements OdsSearchBar<OdsStencilMethods<OdsSearchBa
           contrasted={ this.contrasted }>
           <osds-icon
             color={ OdsThemeColorIntent.primary }
-            size={ OdsIconSize.sm } 
+            size={ ODS_ICON_SIZE.sm } 
             contrasted={ !this.contrasted }
-            name={ OdsIconName.SEARCH } />
+            name={ ODS_ICON_NAME.SEARCH } />
         </osds-button>
       </Host>
     );

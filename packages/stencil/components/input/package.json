@@ -36,6 +36,7 @@
   },
   "dependencies": {
     "@ovhcloud/ods-component-icon": "^15.0.1",
+    "@ovhcloud/ods-component-spinner": "^15.0.1",
     "@ovhcloud/ods-stencil-component": "^15.0.1"
   },
   "devDependencies": {

@@ -1,14 +1,11 @@
 import { html } from 'lit-html';
-import { iframe } from '../../../.storybook/iframe';
-import { odsSpinnerDefaultAttributes, OdsSpinnerSizeList } from '@ovhcloud/ods-core';
-import { defineCustomElements } from '@ovhcloud/ods-stencil-spinner/loader';
-import {
-  extractArgTypes,
-  extractStoryParams,
-  getTagAttributes,
-} from '../../../core/componentHTMLUtils';
-
-import changelog from '@ovhcloud/ods-stencil-spinner/CHANGELOG.md';
+import { ODS_SPINNER_SIZES } from '@ovhcloud/ods-component-spinner';
+import { defineCustomElements } from '@ovhcloud/ods-component-spinner/loader';
+import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-component-spinner/src/components/osds-spinner/constants/default-attributes';
+import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
+// @ts-ignore
+import changelog from '@ovhcloud/ods-component-spinner/CHANGELOG.md';
+// @ts-ignore
 import page from './spinner.web-component.stories.page.mdx';
 
 defineCustomElements();
@@ -17,17 +14,17 @@ defineCustomElements();
 const storyParams = {
   size: {
     category: 'General',
-    defaultValue: odsSpinnerDefaultAttributes.size,
-    options: OdsSpinnerSizeList,
+    defaultValue: DEFAULT_ATTRIBUTE.size,
+    options: ODS_SPINNER_SIZES,
     control: { type: 'select' },
   },
   contrasted: {
     category: 'Misc',
-    defaultValue: odsSpinnerDefaultAttributes.contrasted,
+    defaultValue: DEFAULT_ATTRIBUTE.contrasted,
   },
-  flex: {
+  inline: {
     category: 'Misc',
-    defaultValue: odsSpinnerDefaultAttributes.flex,
+    defaultValue: DEFAULT_ATTRIBUTE.inline,
   },
 };
 
@@ -36,7 +33,6 @@ export default {
   id: 'spinner',
   parameters: {
     notes: {
-      API: iframe('/stencil-spinner/modules/index.html'),
       changelog,
     },
     docs: { page }
@@ -50,6 +46,7 @@ const TemplateDefault = (args:any) => {
 }
 
 export const Default = TemplateDefault.bind({});
+// @ts-ignore
 Default.args = {
   ...extractStoryParams(storyParams),
 };

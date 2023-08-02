@@ -19,7 +19,6 @@ export * from './radio-button/public-api';
 export * from './range/public-api';
 export * from './select/public-api';
 export * from './skeleton/public-api';
-export * from './spinner/public-api';
 export * from './switch/public-api';
 export * from './tabs/public-api';
 export * from './tile/public-api';

@@ -23,6 +23,7 @@ const storyParams = {
 
 export default {
   title: 'Meta Components/Collapsible [meta]/Web Component',
+  id: 'collapsible',
   parameters: {
     notes: {
       changelog,

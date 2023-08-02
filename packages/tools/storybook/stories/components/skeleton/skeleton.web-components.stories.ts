@@ -30,6 +30,7 @@ const storyParams = {
 
 export default {
   title: 'UI Components/Skeleton [atom]/Web Component',
+  id: 'skeleton',
   parameters: {
     notes: {
       API: iframe('/stencil-skeleton/modules/index.html'),

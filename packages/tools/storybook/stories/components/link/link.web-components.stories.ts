@@ -35,6 +35,7 @@ const argTypes = {
 
 export default {
   title: 'UI Components/Link [atom]/Web Component',
+  id: 'link',
   parameters: {
     notes: {
       changelog,

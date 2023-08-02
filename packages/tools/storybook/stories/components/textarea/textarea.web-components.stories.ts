@@ -67,7 +67,8 @@ const storyParams = {
 };
 
 export default {
-  title: 'UI Components/TextArea [atom]/Web Component',
+  title: 'UI Components/Textarea [atom]/Web Component',
+  id: 'textarea',
   parameters: {
     notes: {
       changelog,

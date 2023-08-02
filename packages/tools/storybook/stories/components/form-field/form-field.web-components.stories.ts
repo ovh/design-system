@@ -50,6 +50,7 @@ const storyParams = {
 
 export default {
   title: 'UI Components/Form Field [organism]/Web Component',
+  id: 'form-field',
   parameters: {
     notes: {
       API: iframe('/stencil-form-field/modules/index.html'),

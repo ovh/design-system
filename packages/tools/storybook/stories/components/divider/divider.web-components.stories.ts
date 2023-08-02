@@ -38,6 +38,7 @@ const storyParams = {
 
 export default {
   title: 'UI Components/Divider [quark]/Web Component',
+  id: 'divider',
   parameters: {
     notes: {
       API: iframe('/stencil-divider/modules/index.html'),

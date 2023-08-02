@@ -30,6 +30,7 @@ const storyParams = {
 
 export default {
   title: 'UI Components/Cart [organism]/Web Component',
+  id: 'cart',
   parameters: {
     notes: {
       API: iframe('/stencil-components-cart/modules/index.html'),

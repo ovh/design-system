@@ -8,6 +8,7 @@ import { ODS_ICON_NAME } from '@ovhcloud/ods-component-icon';
 
 export default {
   title: 'UI Components/Introduction',
+  id: 'ui-components',
 };
 
 const uiComponents = {
@@ -15,7 +16,7 @@ const uiComponents = {
     {
         tag: 'osds-divider',
         name: 'Divider',
-        url: parent.location.href.replace(parent.location.search, "?path=/story/ui-components-divider-quark-web-component--default"),
+        url: parent.location.href.replace(parent.location.search, "?path=/story/divider--default'"),
         attributes: {
             color: OdsThemeColorIntent.primary,
             size: OdsDividerSize.ten,
@@ -26,16 +27,16 @@ const uiComponents = {
     {
       name: "Icon",
       tag: 'osds-icon',
-      url: parent.location.href.replace(parent.location.search, "?path=/story/ui-components-icon-quark-web-component--default"),
+      url: parent.location.href.replace(parent.location.search, "?path=/story/icon--default"),
       attributes: {
         color: OdsThemeColorIntent.primary,
-        name: OdsIconName.HOME,
+        name: ODS_ICON_NAME.HOME,
       },
     },
     {
       name: "Text",
       tag: 'osds-text',
-      url: parent.location.href.replace(parent.location.search, "?path=/story/ui-components-text-quark-web-component--default"),
+      url: parent.location.href.replace(parent.location.search, "?path=/story/text--default"),
       attributes: {
         color: OdsThemeColorIntent.text,
         level: OdsThemeTypographyLevel.heading,
@@ -50,7 +51,7 @@ const uiComponents = {
     {
       name: "Accordion",
       tag: 'osds-accordion',
-      url: parent.location.href.replace(parent.location.search, "?path=/story/ui-components-accordion-atom-web-component--web-component"),
+      url: parent.location.href.replace(parent.location.search, "?path=/story/accordion--web-component"),
       attributes: {
         color: OdsThemeColorIntent.primary,
         style: `display: block; min-width: 12em`,
@@ -63,7 +64,7 @@ const uiComponents = {
     {
       name: "Button",
       tag: 'osds-button',
-      url: parent.location.href.replace(parent.location.search, "?path=/story/ui-components-button%EF%B8%8F-atom-web-component--default"),
+      url: parent.location.href.replace(parent.location.search, "?path=/story/button--default"),
       attributes: {
         color: OdsThemeColorIntent.primary,
       },
@@ -74,7 +75,7 @@ const uiComponents = {
     {
       name: "Checkbox Button",
       tag: 'osds-checkbox-button',
-      url: parent.location.href.replace(parent.location.search, "?path=/story/ui-components-checkbox-button-atom-web-component--default"),
+      url: parent.location.href.replace(parent.location.search, "?path=/story/checkbox-button--default"),
       attributes: {
         color: OdsThemeColorIntent.primary,
         checked: '',
@@ -87,7 +88,7 @@ const uiComponents = {
     {
       name: "Chip",
       tag: 'osds-chip',
-      url: parent.location.href.replace(parent.location.search, "?path=/story/ui-components-chip-atom-web-component--default"),
+      url: parent.location.href.replace(parent.location.search, "?path=/story/chip--default"),
       attributes: {
         color: OdsThemeColorIntent.primary,
         selectable: '',
@@ -99,7 +100,7 @@ const uiComponents = {
     {
       name: "Code",
       tag: 'osds-code',
-      url: parent.location.href.replace(parent.location.search, "?path=/story/ui-components-code-atom-web-component--default"),
+      url: parent.location.href.replace(parent.location.search, "?path=/story/code--default"),
       attributes: {
         style: `display: block; min-width: 12em`,
       },
@@ -110,7 +111,7 @@ const uiComponents = {
     {
       name: "Flag",
       tag: 'osds-flag',
-      url: parent.location.href.replace(parent.location.search, "?path=/story/ui-components-flag-atom-web-component--default"),
+      url: parent.location.href.replace(parent.location.search, "?path=/story/flag--default"),
       attributes: {
         iso: ODS_COUNTRY_ISO_CODE.FR,
         style: `width: 3em`,
@@ -119,7 +120,7 @@ const uiComponents = {
     {
       name: "Input",
       tag: 'osds-input',
-      url: parent.location.href.replace(parent.location.search, "?path=/story/ui-components-input-atom-web-component--default"),
+      url: parent.location.href.replace(parent.location.search, "?path=/story/input--default"),
       attributes: {
         color: OdsThemeColorIntent.primary,
         flex: '',
@@ -141,7 +142,7 @@ const uiComponents = {
     {
       name: "Message",
       tag: 'osds-message',
-      url: parent.location.href.replace(parent.location.search, "?path=/story/ui-components-message-atom-web-component--default"),
+      url: parent.location.href.replace(parent.location.search, "?path=/story/message--default"),
       attributes: {
         color: OdsThemeColorIntent.info,
         flex: '',
@@ -170,7 +171,7 @@ const uiComponents = {
     {
       name: "Radio Button",
       tag: 'osds-radio-button',
-      url: parent.location.href.replace(parent.location.search, "?path=/story/ui-components-radio-button-atom-web-component--default"),
+      url: parent.location.href.replace(parent.location.search, "?path=/story/radio-button--default"),
       attributes: {
         color: OdsThemeColorIntent.primary,
         checked: '',
@@ -183,7 +184,7 @@ const uiComponents = {
     {
       name: "Range",
       tag: 'osds-range',
-      url: parent.location.href.replace(parent.location.search, "?path=/story/ui-components-range-atom-web-component--default"),
+      url: parent.location.href.replace(parent.location.search, "?path=/story/range--default"),
       attributes: {
         color: OdsThemeColorIntent.primary,
         flex: '',
@@ -198,7 +199,7 @@ const uiComponents = {
     {
       name: "Skeleton",
       tag: 'osds-skeleton',
-      url: parent.location.href.replace(parent.location.search, "?path=/story/ui-components-skeleton-atom-web-component--default"),
+      url: parent.location.href.replace(parent.location.search, "?path=/story/skeleton--default"),
       attributes: {
         style: `max-width: 12em;`
       },
@@ -206,12 +207,12 @@ const uiComponents = {
     {
       name: "Spinner",
       tag: 'osds-spinner',
-      url: parent.location.href.replace(parent.location.search, "?path=/story/ui-components-spinner-atom-web-component--default"),
+      url: parent.location.href.replace(parent.location.search, "?path=/story/spinner--default"),
     },
     {
       name: "Switch",
       tag: 'osds-switch',
-      url: parent.location.href.replace(parent.location.search, "?path=/story/ui-components-switch-atom-web-component--default"),
+      url: parent.location.href.replace(parent.location.search, "?path=/story/switch--default"),
       attributes: {
         color: OdsThemeColorIntent.primary
       },
@@ -223,7 +224,7 @@ const uiComponents = {
     {
       name: "Textarea",
       tag: 'osds-textarea',
-      url: parent.location.href.replace(parent.location.search, "?path=/story/ui-components-textarea-atom-web-component--default"),
+      url: parent.location.href.replace(parent.location.search, "?path=/story/textarea--default"),
       attributes: {
         color: OdsThemeColorIntent.primary,
         placeholder: 'Textarea',
@@ -233,7 +234,7 @@ const uiComponents = {
     {
       name: "Tile",
       tag: 'osds-tile',
-      url: parent.location.href.replace(parent.location.search, "?path=/story/ui-components-tile-atom-web-component--default"),
+      url: parent.location.href.replace(parent.location.search, "?path=/story/tile--default"),
       attributes: {
         color: OdsThemeColorIntent.primary,
         flex: '',
@@ -246,7 +247,7 @@ const uiComponents = {
     {
       name: "Toggle",
       tag: 'osds-toggle',
-      url: parent.location.href.replace(parent.location.search, "?path=/story/ui-components-toggle-atom-web-component--default"),
+      url: parent.location.href.replace(parent.location.search, "?path=/story/toggle--default"),
       attributes: {
         color: OdsThemeColorIntent.primary,
         interactive: '',
@@ -255,7 +256,7 @@ const uiComponents = {
     },
     {
       name: "Tooltip",
-      url: parent.location.href.replace(parent.location.search, "?path=/story/ui-components-tooltip-atom-web-component--default"),
+      url: parent.location.href.replace(parent.location.search, "?path=/story/tooltip--default"),
       template: `<img width="100%" src=" data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIwAAAA4CAIAAACg+YcKAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAIyklEQVR4nO2cf1QU1xXH78wOsC4grlqEBBUQkWOoaA0c0SS0QjyoMUURUqMpiWKEVhMVFE6IJDTkCCoKJphEIsaaWjVJjQat1BJbqQY1mGgN/kTggFJQaQBdFhlm+sfgMLz3ZphdlvU0zPd4cOb9uPO4n733vV3eW4rnecBELFQo16ReFEVZVA4AFOJ3HINFFDXJicgALyQ3E92tQEslOU0KUuaB1KK3REh4oRxLTRZJ9L7CBRAhEWNI+hO/BY2WJcIBIGyQQqQXCgkhhAPTQsoKKSChKEqOk3jNEAkRL3qFpGETpDD9IGDwZjzPi1XiNSO2kAMjFchElSYFyUWPFJWABzBOgrogyRHiOI7ISUt6KiXFgBOiKIqmabEBzkm4QCMJHjIQ8eCclCENZGzKiQ4XTdMcx4mopGCkRhjA8EjFcZwASS6kREMDmQ0u4nIOwSOUC3ik3kNQ8Tzfne4QNiIhhmH0er0YlZpsIo7jzGYzy7IAIMQT4mEpZpqYr6SEDAaDRsjmomnaYDAwDCPmKoWJo0es4elOr9fbc+gDTXq9Xs1kT4tFPGnlrcVQv4qmaeJMj0RVDwb4zGTXIQ9IEVdkiLohIUs1uQ6abCvc1fg1OZKAFHSa+kP4RIO36Z6T8J4aJDuI6Gp0TiK20CDZTXLelpbQeGu7jlGTRHIICCtsnrRU19RPUuNt8tsgLaTsqV69rb1X/T+QlZCSM/ZSnnH4v+raO1ZYGzIu8ZN9pcSq7PcP+4QkNbe0WTfOn4aUICnEYNrKOVVncqrO5GSlxRoGOQrXVWdyvDyNfRzQ0eP/9gtdI95O+vno2RETDYMc+2jWCqW+uz8+qbC/LaiZVhjkXuVUZHRzNro5A8AwowtFUd4jh6vppUa377ZIb2eEBc4IC7SVcQtH0qqwq7Q/LMg53/Zz0qVrtyIXbDL4LHUPXL7qrT3m9g6xqujY9xMj1jmNXuIXuuaj3cfxvvFJhb9dsb2yupHyjHMZ8yoA5BYUewcnCbW5BcXT52et31o0dupaZ9+lkQs21Tf8iBu5UXN77uKtrn7LjAGJK9P/1GZ+oPDoqFfyst4rysj50mvSSmNA4oq03YKn/ELXFP75xI49/6Q84557aTMA8Dy/If/IyF+scvNPmPlizvWqBkstWC0bQ2ppbQuPyXZ10ZcdTv80P+HLv5b/LnWXUHX6XGXUK3nRs588X5KZsnz2qvQ9f/zsJNL9w+y4d1KifUe7t1V/fPfSNtz+P05dbm41nS/JvPl9nk5Hz1uyFWlw7755+vyse/fNJZ+lHNu31oHR6XS08qP/sPngMKNL9dmcot2r83eWHDvxAwBUnFj/bFjgyy883Vb98YHC1wFgy/bi3Z+f3L/995dLs0Im+T4fl8uynRZZsFpouuujNn90lKaoT/MTnByZCTByx+Yl4THZq5dFBgZ4pWTunztz8rpVvwaAAD/P2ptNa9/Ztyh6Kk13JwSG0TE6mqJA7+RAtD/q8WFZabEAYBjkuP6NmKDwNyuu3hzv/7jYIOfDo6a29gOFr7k46wHgySAfAFB+9LxZk5cvjgCAacFjx43xOHehekZYoKMDQ1OUTkcLIzG1PXhr44HjX6QKBt9OjvpgV8n5itrJE7xVWuiLbBxJZeWV00LGOjl2sX9myjiG0ZWVVwJAWfn16U+NF1uGPz2+4XbzjZpGq5/lP8YDAK5X9bDwzbfXn5kyTiAkGZXSoxlGJ1a5DTY0txJWkhcqau/dN8+Pf987OMk7OMknJLmzk2u806LeQl9k40jigUf2YFAU8MADAA8gnUS7dln04Vk/NpvwQo7ndTr0lWfRo4mzt/Cnta8/T/Ud/bNeB2bzzwHQ36eP65ngIN9TZ6896GCF29LTVzs6OoMn+gJAcJDP8ZOXxJZf/6timNHFdxT6Ozs46FhW1R8b/176A8PohPwjavIE79LTV4XFgmRUqh5NGknXrBMY4KV3cjhYfE7NwIgW1EjO+UrpzgpgSYmR7Q/YuNcKLl6uKymtiE/asXBe6MQnRgFA1puxXxz+dv3Woqs3/rNzb+nGbUey0mKFV72TI1NX/1/hBejv61F7625JacWVynrcfl1909ubDly8XHeo+LvkjL3LXvrVYx5DegwgIbK9vSP21fzvLtaUX6hemlxYU3dH4dEK8vf1OFF25Upl/Y2a24NdB6Wvjkrf8Jede0vr6ptOnb22If9Ir96QWpBro8bJNp6TjG7Op75a19xiCpmZsSBxW8yckB1b4oWqp0L8j+5J3nfodOAv33g379AH2S/HLwwTqn4TNSVzy8HaW00AMCs8aFH01LmL8yJiNtxpakXsj3xsKE1TsxbmxL2+fVH01C0ZLyINhg91/eZwOsty0+ZkRi7YNGSwYfhQV4VHK2h1QqSXp3FSRHpCyicAkLpi9sb0FzJzD40NXZuYuothencdYsFqUSzLCh/wcQ/VKdGIESP6Yt22yi0oziv4W9WZnEc9EFuqoaFBJxH9UD12UhJ7ym37f+T6SX4036u3CZCQcxqa+lVqvN2d7sSMJ0137u7u9hrtAFVjYyOe7tCN43isSasf1dAHjuS8LS3pPhxD7GmfgQ5kyRGS3qI7+cUOGiT7CHE40ee0tDXSU4NkB+Guxq/JkdQ1X2m79ftf+DKB0Eb4Dw86Qdqe/X6VcBYTIYSj6j6qCRghiqLMZrP9hz5wZDabcZ8LVVJONB5fYq6jaZplWZPJpMWTzcVxnMlkYllW+sYIadMNTDgfA4rHZnntYLOFwid/fL4XI0G8xfOeYIGBnt8ggJgWz0YLbfDd5TibgUxLKRpIwtng6Y6Sfo8Dgko4KSicisYDSNsvrlIIJJAJKbnZSBAjVvA9v4VDKCcSQn5qUpY0dxE5IfygJ1qQ7nGQ4yRNdKB9AZQKKSc9kPlkByckihGzHMh8+5C0CrSDMVYJhwQ9gSGFaC/83AUxoWnLub4Id70CNryX9vWedhVx8YZcAE5LzvvKQaOhslQKExVei9z+D08Gnt2uJB2pAAAAAElFTkSuQmCC" />`
     }
   ],
@@ -263,7 +264,7 @@ const uiComponents = {
     {
       name: "Accordion Group",
       tag: 'osds-accordion-group',
-      url: parent.location.href.replace(parent.location.search, "?path=/story/ui-components-accordion-group-molecule-web-component--web-component"),
+      url: parent.location.href.replace(parent.location.search, "?path=/story/accordion-group--web-component"),
       slots: {
         DEFAULT: `
       <osds-accordion opened>
@@ -279,7 +280,7 @@ const uiComponents = {
     {
       name: '️Breadcrumb',
       tag: 'osds-breadcrumb',
-      url: parent.location.href.replace(parent.location.search, "?path=/story/ui-components-breadcrumb-molecule-web-component--default"),
+      url: parent.location.href.replace(parent.location.search, "?path=/story/breadcrumb--default"),
       attributes: {
         items: JSON.stringify([
           { href: "#", label: "Home" },
@@ -291,7 +292,7 @@ const uiComponents = {
     {
       name: "Pagination",
       tag: 'osds-pagination',
-      url: parent.location.href.replace(parent.location.search, "?path=/story/ui-components-pagination-molecule-web-component--default"),
+      url: parent.location.href.replace(parent.location.search, "?path=/story/pagination--default"),
       attributes: {
         current: 2,
         'total-pages': 2,
@@ -300,7 +301,18 @@ const uiComponents = {
     {
       name: "Password",
       tag: 'osds-password',
-      url: parent.location.href.replace(parent.location.search, "?path=/story/ui-components-password-molecule-web-component--default"),
+      url: parent.location.href.replace(parent.location.search, "?path=/story/password--default"),
+      attributes: {
+        color: OdsThemeColorIntent.primary,
+        flex: '',
+        value: 'Password',
+        masked: ''
+      }
+    },
+    {
+      name: "Radio Group",
+      tag: 'osds-radio-group',
+      url: '/?path=/story/ui-components-radio-radio-group-molecule-web-component--default',
       attributes: {
         color: OdsThemeColorIntent.primary,
         flex: '',
@@ -311,7 +323,7 @@ const uiComponents = {
     {
       name: "Quantity",
       tag: 'osds-quantity',
-      url: parent.location.href.replace(parent.location.search, "?path=/story/ui-components-quantity-molecule-web-component--default"),
+      url: parent.location.href.replace(parent.location.search, "?path=/story/quantity--default"),
       slots: {
         minus: `<osds-button size="sm" color="primary" tabindex="0" type="button" variant="flat"disabled="" > <osds-icon size="xxs" contrasted="" name="minus" aria-hidden="" alt="" style="--test: minus; --icon-mask-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='%23000000' fill-rule='evenodd' d='M20 11a1 1 0 010 2H4a1 1 0 010-2h16z'/%3E%3C/svg%3E&quot;);" aria-name="" color="default"></osds-icon> </osds-button>`,
         plus: `<osds-button size="sm" color="primary" tabindex="0" type="button" variant="flat"> <osds-icon size="xxs" contrasted="" name="plus" aria-hidden="" alt="" style="--test: plus; --icon-mask-image: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='%23000000' fill-rule='evenodd' d='M12 3a1 1 0 011 1v7h7a1 1 0 010 2h-7v7a1 1 0 01-2 0v-7H4a1 1 0 010-2h7V4a1 1 0 011-1z'/%3E%3C/svg%3E&quot;);" aria-name="" color="default"></osds-icon> </osds-button>`,
@@ -321,7 +333,7 @@ const uiComponents = {
     {
       name: "Select",
       tag: 'osds-select',
-      url: parent.location.href.replace(parent.location.search, "?path=/story/ui-components-select-atom-web-component--default"),
+      url: parent.location.href.replace(parent.location.search, "?path=/story/select--default"),
       attributes: {
         color: OdsThemeColorIntent.primary,
         flex: '',
@@ -334,7 +346,7 @@ const uiComponents = {
     {
       name: "Tabs",
       tag: 'osds-tabs',
-      url: parent.location.href.replace(parent.location.search, "?path=/story/ui-components-tabs-atom-web-component--web-component"),
+      url: parent.location.href.replace(parent.location.search, "?path=/story/tabs--web-component"),
       attributes: {
         panel: 'tab1'
       },
@@ -358,7 +370,7 @@ const uiComponents = {
     {
       name: "Cart",
       tag: 'osds-cart',
-      url: parent.location.href.replace(parent.location.search, "?path=/story/ui-components-cart-organism-web-component--default"),
+      url: parent.location.href.replace(parent.location.search, "?path=/story/cart--default"),
       slots: {
         DEFAULT: `<osds-cart-header slot="header"> Your selection </osds-cart-header> <osds-cart-section> <osds-cart-item> <span slot="subhead">Main product subhead</span> <span slot="title">Main product title</span> <span slot="price">3,000.00 ¤</span> <span slot="extra">ex.VAT / month</span> </osds-cart-item> <osds-divider color="primary" size="0" separator=""></osds-divider> <osds-cart-item-option> <span slot="subhead">Another option subhead</span> <span slot="title">Another option title</span> <span slot="price">-450.00 ¤</span> <span slot="extra">ex.VAT / month</span> </osds-cart-item-option> </osds-cart-section> <osds-cart-footer slot="footer"> <osds-cart-total> <span slot="total">Total</span> <span slot="info">X products</span> <span slot="price">5,550.00 ¤</span> <span slot="extra">ex.VAT / month</span> </osds-cart-total></osds-cart-footer>`,
       },
@@ -366,7 +378,7 @@ const uiComponents = {
     {
       name: "Form Field",
       tag: 'osds-form-field',
-      url: parent.location.href.replace(parent.location.search, "?path=/story/ui-components-form-field-organism-web-component--default"),
+      url: parent.location.href.replace(parent.location.search, "?path=/story/form-field--default"),
       attributes: {
         flex: ''
       },
@@ -382,7 +394,7 @@ const uiComponents = {
     {
       name: "Content Addon",
       tag: 'osds-content-addon',
-      url: parent.location.href.replace(parent.location.search, "?path=/story/ui-components-content-addon-layout-web-component--default"),
+      url: parent.location.href.replace(parent.location.search, "?path=/story/content--default"),
       slots: {
         start: `<osds-text color="default">start</osds-text>`,
         main: `<osds-text color="primary" level="heading" size="500">Content</osds-text>`,

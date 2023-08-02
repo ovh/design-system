@@ -56,6 +56,7 @@ const storyParams = {
 
 export default {
   title: 'UI Components/Toggle [atom]/Web Component',
+  id: 'toggle',
   parameters: {
     notes: {
       API: iframe('/stencil-toggle/modules/index.html'),

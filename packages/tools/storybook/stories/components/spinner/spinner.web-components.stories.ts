@@ -33,6 +33,7 @@ const storyParams = {
 
 export default {
   title: 'UI Components/Spinner [atom]/Web Component',
+  id: 'spinner',
   parameters: {
     notes: {
       API: iframe('/stencil-spinner/modules/index.html'),

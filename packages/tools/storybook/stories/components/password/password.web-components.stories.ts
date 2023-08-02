@@ -83,6 +83,7 @@ const storyParams = {
 
 export default {
   title: 'UI Components/Password [molecule]/Web Component',
+  id: 'password',
   parameters: {
     notes: {
       API: iframe('/stencil-password/modules/index.html'),

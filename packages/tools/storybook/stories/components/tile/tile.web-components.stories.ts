@@ -81,6 +81,7 @@ const storyParams = {
 
 export default {
   title: 'UI Components/Tile [atom]/Web Component',
+  id: 'tile',
   parameters: {
     notes: {
       API: iframe('/stencil-tile/modules/index.html'),

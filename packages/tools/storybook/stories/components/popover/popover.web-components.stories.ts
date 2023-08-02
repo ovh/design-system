@@ -20,6 +20,7 @@ const storyParams = {
 
 export default {
   title: 'UI Components/Popover [atom]/Web Component',
+  id: 'popover',
   parameters: {
     notes: {
       API: iframe('/stencil-popover/modules/index.html'),

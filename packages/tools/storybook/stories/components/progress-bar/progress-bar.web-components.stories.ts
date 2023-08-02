@@ -34,6 +34,7 @@ const storyParams = {
 
 export default {
   title: 'UI Components/Progress Bar [atom]/Web Component',
+  id: 'progress-bar',
   parameters: {
     notes: {
       API: iframe('/stencil-progress-bar/modules/index.html'),

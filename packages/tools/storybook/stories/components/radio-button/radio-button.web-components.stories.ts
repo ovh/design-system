@@ -63,6 +63,7 @@ const storyParams = {
 
 export default {
   title: 'UI Components/Radio Button [atom]/Web Component',
+  id: 'radio-button',
   parameters: {
     notes: {
       API: iframe('/stencil-radio-button/modules/index.html'),
@@ -89,7 +90,7 @@ Default.args = {
 /* RadioWrapper */
 const OsdsRadioButtonRadioWrapper = (args) => html`  
   <h1 style='font-size: 1.3rem; font-family: "Source Sans Pro"; font-style: italic'>
-    <a href=${parent.location.href.replace(parent.location.search, "?path=/story/meta-components-radio-meta-web-component--default")}>Radio</a> Meta component adds behavior to this Radio Button
+    <a href=${parent.location.href.replace(parent.location.search, "?path=/story/radio--default")}>Radio</a> Meta component adds behavior to this Radio Button
   </h1>
   <osds-radio value="radio-a">
     <osds-radio-button ...=${getTagAttributes(args)}>
@@ -106,7 +107,7 @@ RadioWrapper.args = {
 /* RadioWrapper */
 const OsdsRadioButtonRadioGroupWrapper = (args) => html`  
   <h1 style='font-size: 1.3rem; font-family: "Source Sans Pro"; font-style: italic'>
-    <a href=${parent.location.href.replace(parent.location.search, "?path=/story/meta-components-radio-meta-web-component--default")}>Radio</a> and <a href=${parent.location.href.replace(parent.location.search, "?path=/story/meta-components-radio-group-meta-web-component--default")}>Radio Group</a> Meta components adds behavior to these Radio Buttons
+    <a href=${parent.location.href.replace(parent.location.search, "?path=/story/radio--default")}>Radio</a> and <a href=${parent.location.href.replace(parent.location.search, "?path=/story/radio-group--default")}>Radio Group</a> Meta components adds behavior to these Radio Buttons
   </h1>
   <osds-radio-group id="radio-group-a">
     <osds-radio id="radio-A" value="val-tile-A" checked>

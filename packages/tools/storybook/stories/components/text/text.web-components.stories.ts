@@ -49,6 +49,7 @@ const storyParams = {
 
 export default {
   title: 'UI Components/Text [quark]/Web Component',
+  id: 'text',
   parameters: {
     notes: {
       changelog,

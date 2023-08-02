@@ -52,6 +52,7 @@ const storyParams = {
 
 export default {
   title: 'UI Components/Message [atom]/Web Component',
+  id: 'message',
   parameters: {
     notes: {
       API: iframe('/stencil-message/modules/index.html'),

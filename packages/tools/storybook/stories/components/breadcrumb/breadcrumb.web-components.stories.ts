@@ -32,6 +32,7 @@ const storyParams = {
 
 export default {
   title: 'UI Components/Breadcrumb [molecule]/Web Component',
+  id: 'breadcrumb',
   parameters: {
     notes: {
       API: iframe('/stencil-breadcrumb/modules/index.html'),

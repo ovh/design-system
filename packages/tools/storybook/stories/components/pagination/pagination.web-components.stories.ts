@@ -43,6 +43,7 @@ const totalPagesParam = {
 
 export default {
   title: 'UI Components/Pagination [molecule]/Web Component',
+  id: 'pagination',
   parameters: {
     notes: {
       API: iframe('stencil-pagination/modules/index.html'),

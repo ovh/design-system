@@ -65,6 +65,7 @@ const storyParams = {
 
 export default {
   title: 'UI Components/Chip [atom]/Web Component',
+  id: 'chip',
   parameters: {
     notes: {
       API: iframe('/stencil-chip/modules/index.html'),

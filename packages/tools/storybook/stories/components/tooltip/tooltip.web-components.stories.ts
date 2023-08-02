@@ -28,6 +28,7 @@ const storyParams = {
 
 export default {
   title: 'UI Components/Tooltip [atom]/Web Component',
+  id: 'tooltip',
   parameters: {
     notes: {
       API: iframe('/stencil-tooltip/modules/index.html'),

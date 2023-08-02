@@ -42,6 +42,7 @@ const storyParams = {
 
 export default {
   title: 'UI Components/Icon [quark]/Web Component',
+  id: 'icon',
   parameters: {
     notes: {
       changelog,

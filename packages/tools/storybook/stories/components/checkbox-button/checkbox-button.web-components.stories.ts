@@ -67,6 +67,7 @@ const storyParams = {
 
 export default {
   title: 'UI Components/Checkbox Button [atom]/Web Component',
+  id: 'checkbox-button',
   parameters: {
     notes: {
       API: iframe('/stencil-checkbox-button/modules/index.html'),
@@ -93,7 +94,7 @@ Default.args = {
 /*  Checkbox */
 const OsdsCheckboxButtonCheckboxWrapper = (args) => html`
   <h1 style='font-size: 1.3rem; font-family: "Source Sans Pro"; font-style: italic'>
-    <a href=${parent.location.href.replace(parent.location.search, "?path=/story/meta-components-checkbox-meta-web-component--web-component")}>Checkbox</a> Meta component adds behavior to this Checkbox Button
+    <a href=${parent.location.href.replace(parent.location.search, "?path=/story/checkbox--web-component")}>Checkbox</a> Meta component adds behavior to this Checkbox Button
   </h1>
   <osds-checkbox>
       <osds-checkbox-button ...=${getTagAttributes(args)}>

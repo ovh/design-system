@@ -20,6 +20,7 @@ const storyParams = {
 
 export default {
   title: 'Meta Components/Radio Group [meta]/Web Component',
+  id: 'radio-group',
   parameters: {
     notes: {
       API: iframe('stencil-components-radio-group/modules/index.html'),

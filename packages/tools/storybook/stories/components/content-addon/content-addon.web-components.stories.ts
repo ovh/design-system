@@ -63,6 +63,7 @@ const pricingStoryParams = {
 
 export default {
   title: 'UI Components/Content Addon [layout]/Web Component',
+  id: 'content-addon',
   parameters: {
     notes: {
       API: iframe('/stencil-content-addon/modules/index.html'),

@@ -35,6 +35,7 @@ const storyParams = {
 
 export default {
   title: 'Meta Components/Checkbox [meta]/Web Component',
+  id: 'checkbox',
   parameters: {
     notes: {
       API: iframe('/stencil-components-checkbox/modules/index.html'),

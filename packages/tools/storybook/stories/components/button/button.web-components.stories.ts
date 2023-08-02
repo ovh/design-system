@@ -82,6 +82,7 @@ const storyParams = {
 
 export default {
   title: 'UI Components/Button️ [atom]/Web Component',
+  id: 'button',
   parameters: {
     notes: {
       changelog,

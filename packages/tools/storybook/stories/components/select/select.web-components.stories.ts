@@ -41,6 +41,7 @@ const storyParams = {
 
 export default {
   title: 'UI Components/Select [atom]/Web Component',
+  id: 'select',
   parameters: {
     notes: {
       API: iframe('stencil-select/modules/index.html'),

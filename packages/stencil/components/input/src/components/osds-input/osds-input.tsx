@@ -14,11 +14,11 @@ import {
   OdsInputValue,
   OdsInputValueChangeEventDetail,
   OdsLogger,
-  OdsSpinnerSize
 } from '@ovhcloud/ods-core';
 import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libraries/stencil-core';
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
+import { ODS_SPINNER_SIZE } from '@ovhcloud/ods-component-spinner';
 
 /**
  *
@@ -369,7 +369,7 @@ export class OsdsInput implements OdsInput<OdsStencilMethods<OdsInputMethods>, O
             <osds-spinner
               {...{
                 contrasted: false,
-                size: OdsSpinnerSize.sm,
+                size: ODS_SPINNER_SIZE.sm,
             }}>
             </osds-spinner>
           )

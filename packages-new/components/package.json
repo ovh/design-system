@@ -9,6 +9,7 @@
     "@ovhcloud/ods-component-collapsible": "^15.0.1",
     "@ovhcloud/ods-component-icon": "^15.0.1",
     "@ovhcloud/ods-component-link": "^15.0.1",
+    "@ovhcloud/ods-component-spinner": "^15.0.1",
     "@ovhcloud/ods-component-text": "^15.0.1",
     "@ovhcloud/ods-component-textarea": "^15.0.1"
   },

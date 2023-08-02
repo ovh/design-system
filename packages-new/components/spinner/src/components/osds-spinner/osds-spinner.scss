@@ -1,0 +1,57 @@
+@import 'styles/osds-spinner.mixins';
+@import 'styles/osds-spinner.color';
+@import 'styles/osds-spinner.size';
+@import '~@ovhcloud/ods-theming/color/ods-theming-color';
+@import '~@ovhcloud/ods-theming/ods-theme';
+
+// CSS targeted only for this component
+// /!\ for theming purposes, it has to be done in theming files
+// (i.e. packages/libraries/theming/...)
+:host {
+  display: block;
+  height: 100%;
+  width: 100%;
+  font-size: 0;
+}
+
+:host(:not([inline])) {
+  .spinner > svg {
+    width: 100%;
+    max-height: 100%;
+    max-width: 100%;
+  }
+}
+
+:host([inline]) {
+  display: inline-block;
+  height: auto;
+  width: auto;
+}
+
+.spinner > svg {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  animation: rotate .8s infinite linear;
+  animation-play-state: running;
+  mask-image: conic-gradient(from 190deg, transparent 25%, black 65%);
+  font-size: initial;
+}
+
+.spinner[paused] {
+  animation-play-state: paused;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// apply the theme template for the component
+@include ods-theme-component() {
+  @include osds-spinner-theme-color();
+  @include osds-spinner-theme-size();
+}

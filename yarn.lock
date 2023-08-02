@@ -5669,6 +5669,41 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-component-spinner-react@workspace:packages-new/components/spinner/react":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-spinner-react@workspace:packages-new/components/spinner/react"
+  dependencies:
+    "@ovhcloud/ods-component-spinner": ^15.0.1
+    "@ovhcloud/ods-react-dev": ^15.0.1
+  peerDependencies:
+    react: ">=16.8.6"
+    react-dom: ">=16.8.6"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-component-spinner-vue@workspace:packages-new/components/spinner/vue":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-spinner-vue@workspace:packages-new/components/spinner/vue"
+  dependencies:
+    "@ovhcloud/ods-component-spinner": ^15.0.1
+    "@ovhcloud/ods-vue-dev": ^15.0.1
+  peerDependencies:
+    vue: ">=3"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-component-spinner@^15.0.1, @ovhcloud/ods-component-spinner@workspace:packages-new/components/spinner":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-spinner@workspace:packages-new/components/spinner"
+  dependencies:
+    "@ovhcloud/ods-common-core": ^15.0.1
+    "@ovhcloud/ods-common-stencil": ^15.0.1
+    "@ovhcloud/ods-common-testing": ^15.0.1
+    "@ovhcloud/ods-stencil-dev": ^15.0.1
+    "@ovhcloud/ods-theming": ^15.0.1
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-component-text-react@workspace:packages-new/components/text/react":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-text-react@workspace:packages-new/components/text/react"
@@ -5747,6 +5782,7 @@ __metadata:
     "@ovhcloud/ods-component-collapsible": ^15.0.1
     "@ovhcloud/ods-component-icon": ^15.0.1
     "@ovhcloud/ods-component-link": ^15.0.1
+    "@ovhcloud/ods-component-spinner": ^15.0.1
     "@ovhcloud/ods-component-text": ^15.0.1
     "@ovhcloud/ods-component-textarea": ^15.0.1
     "@ovhcloud/ods-dev": ^15.0.1
@@ -6518,6 +6554,7 @@ __metadata:
   resolution: "@ovhcloud/ods-stencil-input@workspace:packages/stencil/components/input"
   dependencies:
     "@ovhcloud/ods-component-icon": ^15.0.1
+    "@ovhcloud/ods-component-spinner": ^15.0.1
     "@ovhcloud/ods-stencil-component": ^15.0.1
     "@ovhcloud/ods-stencil-component-dev": ^15.0.1
   languageName: unknown
@@ -7045,46 +7082,6 @@ __metadata:
 "@ovhcloud/ods-stencil-skeleton@^15.0.1, @ovhcloud/ods-stencil-skeleton@workspace:packages/stencil/components/skeleton":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-skeleton@workspace:packages/stencil/components/skeleton"
-  dependencies:
-    "@ovhcloud/ods-stencil-component": ^15.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^15.0.1
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-stencil-spinner-react@workspace:packages/stencil/components/spinner/react":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-stencil-spinner-react@workspace:packages/stencil/components/spinner/react"
-  dependencies:
-    "@ovhcloud/ods-stencil-spinner": ^15.0.1
-    "@types/react": 17.0.37
-    "@types/react-dom": 17.0.11
-    react: 16.14.0
-    react-dom: 16.14.0
-    rimraf: ^3.0.2
-    tslib: "*"
-    typescript: 4.7.4
-  peerDependencies:
-    react: ">=16.8.6"
-    react-dom: ">=16.8.6"
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-stencil-spinner-vue@workspace:packages/stencil/components/spinner/vue":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-stencil-spinner-vue@workspace:packages/stencil/components/spinner/vue"
-  dependencies:
-    "@ovhcloud/ods-stencil-spinner": ^15.0.1
-    rimraf: ^3.0.2
-    typescript: 4.7.4
-    vue: ^3.2.41
-  peerDependencies:
-    vue: ">=3"
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-stencil-spinner@^15.0.1, @ovhcloud/ods-stencil-spinner@workspace:packages/stencil/components/spinner":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-stencil-spinner@workspace:packages/stencil/components/spinner"
   dependencies:
     "@ovhcloud/ods-stencil-component": ^15.0.1
     "@ovhcloud/ods-stencil-component-dev": ^15.0.1

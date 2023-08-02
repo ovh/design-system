@@ -14,7 +14,7 @@ import {
 import { OsdsInput } from '@ovhcloud/ods-stencil/components/input/src/components/osds-input/osds-input';
 
 import '@ovhcloud/ods-component-icon';
-import '@ovhcloud/ods-stencil/components/spinner';
+import '@ovhcloud/ods-component-spinner';
 
 const input3: (HTMLElement & OsdsInput) | null = document.getElementById('input-3') as (HTMLElement & OsdsInput);
 const input3ErrorForbiddenValue: HTMLElement | null = document.querySelector('#example-3 .forbidden-value');

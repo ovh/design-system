@@ -1,0 +1,94 @@
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const HtmlWebPackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const path = require('path')
+
+module.exports = (env, options) => {
+    return {
+        devtool: options.mode === 'development' ? 'eval-source-map' : false,
+        devServer: {
+            historyApiFallback: true,
+            port: 8080,
+        },
+        entry: './src/index.ts',
+        module: {
+            rules: [
+                {
+                    test: /\.(ts|tsx)$/,
+                    exclude: /node_modules/,
+                    use: ['babel-loader'],
+                },
+                {
+                    test: /\.scss$/,
+                    use: [
+                        process.env.NODE_ENV !== "production"
+                            ? "style-loader"
+                            : MiniCssExtractPlugin.loader,
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                // modules: {
+                                //     localIdentName: '[name]__[local]--[contenthash:base64:5]'
+                                // }
+                            }
+                        },
+                        {
+                            loader: 'postcss-loader',
+                            options: {
+                                sourceMap: true,
+                            },
+                        },
+                        {
+                            loader: 'resolve-url-loader',
+                            options: {
+                                sourceMap: true,
+                            },
+                        },
+                        {
+                            loader: 'sass-loader',
+                            options: {
+                                sourceMap: true,
+                            },
+                        },
+                        
+                    ]
+                },
+                {
+                    test: /\.css$/,
+                    use: [
+                        MiniCssExtractPlugin.loader,
+                        'css-loader'
+                    ]
+                },
+                {
+                    test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
+                    type: 'asset/resource',
+                }
+            ]
+        },
+        output: {
+            filename: process.env.WEBPACK_SERVE ? '[name].js' : '[name].[contenthash].js',
+            path: path.resolve(__dirname, 'dist'),
+        },
+        plugins: [
+            new CleanWebpackPlugin(),
+            new HtmlWebPackPlugin({
+                base: '/',
+                filename: './index.html',
+                template: './src/index.html',
+                title: 'Test App Terminator',
+            }),
+            new MiniCssExtractPlugin({
+                filename: '[name].css',
+                chunkFilename: '[id].[contenthash].css',
+            })
+        ],
+        resolve: {
+            alias: {
+                app: path.resolve(__dirname, 'src/app/'),
+            },
+            extensions: ['.js', '.jsx', '.ts', '.tsx']
+        },
+        target: 'web',
+    }
+}

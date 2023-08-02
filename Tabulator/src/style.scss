@@ -1,0 +1,35 @@
+#myGrid {
+    border: none;
+    border-radius: 10px;
+    background-color: #FFF;
+    border: solid 2px hsl(198, 96.8%, 75.7%);
+
+    .tabulator-header{
+        background-color: #FFF;
+        border-bottom: solid 1px hsl(198, 96.8%, 75.7%);
+    }
+    .tabulator-arrow {
+        border-bottom-color: hsl(210.4, 83.5%, 50%);
+    }
+
+    .tabulator-col {
+        background-color: #FFF;
+        border: none;
+    }
+    
+    .tabulator-row {
+        border-top: solid 1px hsl(198, 96.8%, 75.7%);
+        border-bottom: solid 1px hsl(198, 96.8%, 75.7%);
+        background-color: #FFF;
+        &:hover {
+            background-color: hsl(198, 96.8%, 75.7%);
+        }
+    }
+    .tabulator-cell {
+        border-right: none;
+    }
+
+    .tabulator-footer {
+        background-color: #FFF;
+    }
+}

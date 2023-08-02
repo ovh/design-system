@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+</head>
+
+<body>
+    <button id="selectColumnButton">select column</button>
+    <ul id="listColumn" class="list-column"></ul>
+    <div id="myGrid"></div>
+
+    <style>
+        .list-column {
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</body>
+</html>

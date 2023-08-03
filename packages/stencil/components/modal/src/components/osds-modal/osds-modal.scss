@@ -1,0 +1,68 @@
+@import 'styles/osds-modal.mixins';
+@import 'styles/osds-modal.color';
+@import 'styles/osds-modal.size';
+@import 'styles/osds-modal.typography';
+@import '~@ovhcloud/ods-theming/color/ods-theming-color';
+@import '~@ovhcloud/ods-theming/ods-theme';
+
+// CSS targeted only for this component
+// /!\ for theming purposes, it has to be done in theming files
+// (i.e. packages/libraries/theming/...)
+@keyframes modal-appear {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+:host {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+:host([masked]) {
+  display: none;
+}
+
+:host .backdrop {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+:host .wrapper {
+  z-index: 1;
+  overflow: hidden;
+  animation: modal-appear 0.2s ease-in-out;
+}
+
+:host .wrapper .header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+:host .wrapper .header osds-icon {
+  cursor: pointer;
+}
+
+:host .wrapper .actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+// apply the theme template for the component
+@include ods-theme-component() {
+  @include osds-modal-theme-color();
+  @include osds-modal-theme-size();
+  @include osds-modal-theme-typography();
+}

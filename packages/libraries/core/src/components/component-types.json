@@ -27,6 +27,7 @@
   "OdsLink",
   "OdsLocationTile",
   "OdsMessage",
+  "OdsModal",
   "OdsPagination",
   "OdsPassword",
   "OdsPopover",

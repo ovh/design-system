@@ -41,6 +41,7 @@
   "devDependencies": {
     "@ovhcloud/ods-component-link": "^15.0.1",
     "@ovhcloud/ods-component-textarea": "^15.0.1",
+    "@ovhcloud/ods-component-tooltip": "^15.0.1",
     "@ovhcloud/ods-stencil-component-dev": "^15.0.1"
   },
   "publishConfig": {

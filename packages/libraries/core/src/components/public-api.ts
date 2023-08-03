@@ -36,7 +36,6 @@ export * from './switch/public-api';
 export * from './switch-item/public-api';
 export * from './tabs/public-api';
 export * from './toggle/public-api';
-export * from './tooltip/public-api';
 
 export * from './ods-component';
 export * from './ods-component-generic-attributes';

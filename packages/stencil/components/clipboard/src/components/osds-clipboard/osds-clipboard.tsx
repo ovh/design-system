@@ -5,11 +5,11 @@ import {
   odsClipboardDefaultAttributes,
   OdsClipboardEvents,
   OdsClipboardMethods,
-  OdsIconName,
   OdsInputType,
 } from '@ovhcloud/ods-core';
 import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libraries/stencil-core';
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_ICON_NAME } from '@ovhcloud/ods-component-icon';
 
 @Component({
   tag: 'osds-clipboard',
@@ -58,7 +58,7 @@ export class OsdsClipboard implements OdsClipboard<OdsStencilMethods<OdsClipboar
                     color={ OdsThemeColorIntent.primary }
                     disabled={ this.disabled }
                     flex={ this.flex }
-                    icon={ OdsIconName.COPY }
+                    icon={ ODS_ICON_NAME.COPY }
                     type={ OdsInputType.text }
                     value={ this.value }
                     onClick={ () => this.handlerClick() }

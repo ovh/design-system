@@ -8,3 +8,12 @@
         --ods-input-icon-cursor: pointer;
     }
 }
+
+:host([disabled]) {
+    cursor: not-allowed;
+    osds-input {
+        cursor: not-allowed;
+        --ods-input-cursor: not-allowed;
+        --ods-input-icon-cursor: not-allowed;
+    }
+}

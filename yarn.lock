@@ -6142,6 +6142,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-clipboard@workspace:packages/stencil/components/clipboard"
   dependencies:
+    "@ovhcloud/ods-component-icon": ^15.0.1
     "@ovhcloud/ods-stencil-component": ^15.0.1
     "@ovhcloud/ods-stencil-component-dev": ^15.0.1
   languageName: unknown

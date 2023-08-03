@@ -1,7 +1,7 @@
 import { ODS_COUNTRY_ISO_CODE } from '../../i18n/ods-country-iso-codes.types';
 import { OdsLocationTileVariant } from './ods-location-tile-variant';
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
-import { OdsTileSize } from '../tile/ods-tile-size';
+import { ODS_TILE_SIZE } from '@ovhcloud/ods-component-tile';
 import { OdsRadioizable } from '../../utils/radio/ods-radioizable';
 import { OdsCheckboxable } from '../../utils/checkbox/ods-checkboxable';
 import { OdsComponentAttributes } from '../ods-component-attributes';
@@ -42,7 +42,7 @@ export interface OdsLocationTileAttributes extends OdsRadioizable, OdsCheckboxab
   /**
    * Tile size
    */
-  size?: OdsTileSize;
+  size?: ODS_TILE_SIZE;
   /**
    * Tile variant
    */

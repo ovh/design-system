@@ -1,6 +1,6 @@
 import { html } from 'lit-html';
 import { defineCustomElements } from '@ovhcloud/ods-stencil-content-addon/loader';
-import { defineCustomElements as tileCustomElements } from '@ovhcloud/ods-stencil-tile/loader';
+import { defineCustomElements as tileCustomElements } from '@ovhcloud/ods-component-tile/loader';
 import { OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
 
 defineCustomElements();
@@ -57,7 +57,7 @@ const Template = (args: any) => html`
 
   .location__content-horizontal {
       display: grid;
-      gap: 0 1em;    
+      gap: 0 1em;
       grid-auto-flow: row;
       grid-auto-rows: 1fr;
       grid-template-areas:
@@ -92,7 +92,7 @@ const Template = (args: any) => html`
       grid-template-columns: 1fr;
       grid-template-rows: auto;
       place-content: center;
-      
+
   }
 
   .location__text-country, .location__text-city {

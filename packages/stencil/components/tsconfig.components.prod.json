@@ -36,7 +36,6 @@
     "src",
     "switch/src",
     "tabs/src",
-    "tile/src",
     "toggle/src",
     "tooltip/src",
   ],

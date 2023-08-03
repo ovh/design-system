@@ -5,5 +5,5 @@
 
 import './global';
 
-import '@ovhcloud/ods-stencil/components/tile';
+import '@ovhcloud/ods-component-tile';
 

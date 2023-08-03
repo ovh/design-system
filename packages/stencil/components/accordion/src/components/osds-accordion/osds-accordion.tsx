@@ -6,14 +6,12 @@ import {
   OdsAccordionGroup,
   OdsAccordionMethods,
   OdsAccordionSize,
-  OdsIconName,
-  OdsIconSize,
   odsAccordionDefaultAttributes
 } from '@ovhcloud/ods-core';
 import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libraries/stencil-core';
-
 import { HTMLStencilElement } from '@stencil/core/internal';
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
 
 /**
  * @slot (summary) - Accordion summary
@@ -105,8 +103,8 @@ export class OsdsAccordion implements OdsAccordion<OdsStencilMethods<OdsAccordio
           <summary class={'accordion_summary'}>
             <slot name="summary"></slot>
             <osds-icon {...{
-              name: opened ? OdsIconName.CHEVRON_UP : OdsIconName.CHEVRON_DOWN,
-              size: OdsIconSize.sm,
+              name: opened ? ODS_ICON_NAME.CHEVRON_UP : ODS_ICON_NAME.CHEVRON_DOWN,
+              size: ODS_ICON_SIZE.sm,
               color,
               contrasted
             }}></osds-icon>

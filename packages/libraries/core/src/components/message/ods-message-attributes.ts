@@ -1,5 +1,5 @@
+import type { ODS_ICON_NAME } from '@ovhcloud/ods-component-icon';
 import { OdsComponentAttributes } from '../ods-component-attributes';
-import { OdsIconName } from '../icon/ods-icon-size';
 import { OdsMessageType } from './ods-message-type';
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 
@@ -15,7 +15,7 @@ export interface OdsMessageAttributes extends OdsComponentAttributes {
   /**
    * The icon prefix
    */
-  icon?: OdsIconName
+  icon?: ODS_ICON_NAME
   /**
    * If the message can be removed or not
    */

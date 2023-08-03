@@ -3,8 +3,6 @@ import {
   OdsErrorStateControl,
   OdsFormControl,
   OdsFormForbiddenValues,
-  OdsIconName,
-  OdsIconSize,
   OdsInput,
   OdsInputController,
   odsInputDefaultAttributes,
@@ -19,8 +17,8 @@ import {
   OdsSpinnerSize
 } from '@ovhcloud/ods-core';
 import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libraries/stencil-core';
-
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
 
 /**
  *
@@ -85,7 +83,7 @@ export class OsdsInput implements OdsInput<OdsStencilMethods<OdsInputMethods>, O
   @Prop({ reflect: true }) formControl?: OdsFormControl<OdsInputValidityState> = odsInputDefaultAttributes.formControl;
 
   /** @see OdsInputAttributes.icon */
-  @Prop({ reflect: true }) icon?: OdsIconName = odsInputDefaultAttributes.icon;
+  @Prop({ reflect: true }) icon?: ODS_ICON_NAME = odsInputDefaultAttributes.icon;
 
   /** @see OdsInputAttributes.label */
   @Prop({ reflect: true }) label?: string = odsInputDefaultAttributes.label;
@@ -381,9 +379,9 @@ export class OsdsInput implements OdsInput<OdsStencilMethods<OdsInputMethods>, O
           isPassword && !loading && (
             <osds-icon
               {...{
-                ariaName: `${masked ? OdsIconName.EYE_OPEN : OdsIconName.EYE_CLOSED} icon`,
-                name: masked ? OdsIconName.EYE_OPEN : OdsIconName.EYE_CLOSED,
-                size: OdsIconSize.sm,
+                ariaName: `${masked ? ODS_ICON_NAME.EYE_OPEN : ODS_ICON_NAME.EYE_CLOSED} icon`,
+                name: masked ? ODS_ICON_NAME.EYE_OPEN : ODS_ICON_NAME.EYE_CLOSED,
+                size: ODS_ICON_SIZE.sm,
                 color,
                 /** Toggles hide(), which will either hide or display the inputs content by switching masked attribute */
                 onClick: () => this.hide(),
@@ -395,9 +393,9 @@ export class OsdsInput implements OdsInput<OdsStencilMethods<OdsInputMethods>, O
           clearable && !loading && (
             <osds-icon
               {...{
-                ariaName: `${OdsIconName.CLOSE} icon`,
-                name: OdsIconName.CLOSE,
-                size: OdsIconSize.sm,
+                ariaName: `${ODS_ICON_NAME.CLOSE} icon`,
+                name: ODS_ICON_NAME.CLOSE,
+                size: ODS_ICON_SIZE.sm,
                 color,
                 /** Toggles clear(), which will clear the inputs content */
                 onClick: () => this.clear(),
@@ -411,7 +409,7 @@ export class OsdsInput implements OdsInput<OdsStencilMethods<OdsInputMethods>, O
               {...{
                 ariaName: `${icon} icon`,
                 name: icon,
-                size: OdsIconSize.sm,
+                size: ODS_ICON_SIZE.sm,
                 color,
             }}></osds-icon>
           )

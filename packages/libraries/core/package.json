@@ -19,7 +19,9 @@
     "test:spec:ci": "jest --ci  --coverage --detectOpenHandles"
   },
   "dependencies": {
-    "@ovhcloud/ods-cdk": "^15.0.1"
+    "@ovhcloud/ods-cdk": "^15.0.1",
+    "@ovhcloud/ods-component-button": "^15.0.1",
+    "@ovhcloud/ods-component-icon": "^15.0.1"
   },
   "peerDependencies": {
     "@ovhcloud/ods-theming": ">=2"

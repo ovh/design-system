@@ -7,8 +7,8 @@ import { Ods, odsSetup } from '@ovhcloud/ods-core'
 import { OdsThemeColorHue, OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 
 // for each react component you use from `ODS`, use this import:
-import { OsdsText } from '@ovhcloud/ods-component-text-react';
-import { ODS_TEXT_SIZE } from '@ovhcloud/ods-component-text';
+import { OsdsText } from '@ovhcloud/ods-components/text/react';
+import { ODS_TEXT_SIZE } from '@ovhcloud/ods-components/text';
 
 // you can directly import the generated ods theme here, or through the application css (app.css)
 import '@ovhcloud/ods-theme-blue-jeans/index.css';

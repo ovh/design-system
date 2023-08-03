@@ -1,7 +1,7 @@
+import type { ODS_ICON_NAME } from '@ovhcloud/ods-component-icon';
 import { OdsErrorStateControl } from '../../form/error/ods-error-state-control';
 import { OdsFormControl } from '../../form/control/ods-form-control';
 import { OdsFormForbiddenValues } from '../../form/validation/ods-form-forbidden-values';
-import { OdsIconName } from '../icon/ods-icon-size';
 import { OdsInput } from './ods-input';
 import { OdsInputController } from './ods-input-controller';
 import { OdsInputEvents } from './ods-input-events';
@@ -30,7 +30,7 @@ export class OdsInputMock implements OdsInput<OdsInputMethods, OdsInputEvents> {
   forbiddenValues: OdsFormForbiddenValues<number> = odsInputDefaultAttributes.forbiddenValues;
   formControl?: OdsFormControl<OdsInputValidityState>;
   hideable?: boolean;
-  icon?: OdsIconName;
+  icon?: ODS_ICON_NAME;
   label?: string;
   loading?: boolean;
   masked?: boolean;

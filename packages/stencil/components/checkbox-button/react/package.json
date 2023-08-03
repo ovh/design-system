@@ -20,7 +20,7 @@
     "dist/"
   ],
   "dependencies": {
-    "@ovhcloud/ods-stencil-cart": "^15.0.1",
+    "@ovhcloud/ods-stencil-checkbox-button": "^15.0.1",
     "tslib": "*"
   },
   "peerDependencies": {

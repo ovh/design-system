@@ -1,14 +1,13 @@
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-import { iframe } from '../../../.storybook/iframe';
-
+import { defineCustomElements } from '@ovhcloud/ods-component-link/loader';
+import { OdsHTMLAnchorElementRelList, OdsHTMLAnchorElementTarget, OdsHTMLAnchorElementTargetList } from '@ovhcloud/ods-common-core';
 import { OdsThemeColorIntent, OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
-import { OdsHTMLAnchorElementRelList, OdsHTMLAnchorElementTarget, OdsHTMLAnchorElementTargetList } from '@ovhcloud/ods-core';
-
-import { defineCustomElements } from '@ovhcloud/ods-stencil-link/loader';
 import { createComponentTable, getTagAttributes } from '../../../core/componentHTMLUtils';
 
-import changelog from '@ovhcloud/ods-stencil-link/CHANGELOG.md';
+// @ts-ignore
+import changelog from '@ovhcloud/ods-component-link/CHANGELOG.md';
+// @ts-ignore
 import page from './link.web-component.stories.page.mdx';
 
 defineCustomElements();
@@ -38,7 +37,6 @@ export default {
   title: 'UI Components/Link [atom]/Web Component',
   parameters: {
     notes: {
-      API: iframe('stencil-components-link/modules/index.html'),
       changelog,
     },
     docs: { page }
@@ -71,6 +69,7 @@ const TemplateDefault = (args:any) => html`
   </osds-link>
 `;
 export const Default = TemplateDefault.bind({});
+// @ts-ignore
 Default.args = {
   ...storyParams,
 };
@@ -131,6 +130,7 @@ ${unsafeHTML(createComponentTable(
 </div>
 `;
 export const All = TemplateAll.bind({});
+// @ts-ignore
 All.parameters = {
   controls: { hideNoControlsWarning: true }
 };

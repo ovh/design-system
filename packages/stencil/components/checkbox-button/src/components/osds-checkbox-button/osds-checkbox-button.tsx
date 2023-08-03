@@ -4,12 +4,11 @@ import {
   OdsCheckboxButtonController,
   OdsCheckboxButtonMethods,
   OdsCheckboxButtonSize,
-  OdsIconSize,
   odsCheckboxButtonDefaultAttributes,
 } from '@ovhcloud/ods-core';
-
 import { OdsStencilMethods } from '@ovhcloud/ods-stencil/libraries/stencil-core';
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
 
 /**
  * @slot start - Fixed start checkbox button content
@@ -61,13 +60,13 @@ export class OsdsCheckboxButton implements OdsCheckboxButton<OdsStencilMethods<O
     // make corresponding between button size and icon size
     switch (size) {
       case OdsCheckboxButtonSize.sm:
-        iconSize = OdsIconSize.sm;
+        iconSize = ODS_ICON_SIZE.sm;
         break;
       case OdsCheckboxButtonSize.md:
-        iconSize = OdsIconSize.md;
+        iconSize = ODS_ICON_SIZE.md;
         break;
       default:
-        iconSize = OdsIconSize.sm;
+        iconSize = ODS_ICON_SIZE.sm;
         break;
     }
     return (

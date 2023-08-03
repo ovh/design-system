@@ -21,10 +21,10 @@
 </head>
 <body style="margin: 0;">
 
-  <osds-input type="date" value="2002-09-11" min="2000-01-01" flex></osds-input>
-  <osds-input type="text"></osds-input>
-  <osds-input type="email"></osds-input>
-  <osds-input type="time"></osds-input>
+  <osds-input type="text" value="On Vous Héberge ?" disabled clearable></osds-input>
+  <osds-input type="password" value="On Vous Héberge ?" disabled clearable></osds-input>
+  <osds-input type="text" value="On Vous Héberge ?" clearable></osds-input>
+  <osds-input type="password" value="On Vous Héberge ?" clearable></osds-input>
 
   <section style="background: none; padding: 1em;">
     <h2>[types]</h2>
@@ -46,12 +46,12 @@
   <script>
     const types = [
       'date',
-      'email', 
-      'number', 
-      'password', 
-      'search', 
-      'tel', 
-      'text', 
+      'email',
+      'number',
+      'password',
+      'search',
+      'tel',
+      'text',
       'time',
       'url'
     ];
@@ -70,23 +70,23 @@
     ];
 
     const colors = [
-      'default', 
-      'primary', 
-      'text', 
-      'accent', 
-      'error', 
-      'warning', 
-      'success', 
-      'info', 
+      'default',
+      'primary',
+      'text',
+      'accent',
+      'error',
+      'warning',
+      'success',
+      'info',
       'promotion'
     ];
 
     const placeholder = (type) => `Enter ${type}...`;
 
-    const rows = attributes.map(attribute => 
+    const rows = attributes.map(attribute =>
       `<tr>
         <td>${attribute}</td>
-        ${types.map(type => 
+        ${types.map(type =>
           `<td><osds-input type="${type}" placeholder="${placeholder(type)}" ${attribute}></osds-input></td>`).join('')
         }
       </tr>`
@@ -94,10 +94,10 @@
 
     document.getElementById('input-table').innerHTML = `<thead><tr><td></td>${types.map(type => `<td>${type}</td>`).join('')}</tr></thead><tbody>${rows}</tbody>`;
 
-    const colorRows = attributes.map(attribute => 
+    const colorRows = attributes.map(attribute =>
       `<tr>
         <td>${attribute}</td>
-        ${colors.map(color => 
+        ${colors.map(color =>
           `<td><osds-input color="${color}" type="text" placeholder="${placeholder('text')}" ${attribute}></osds-input></td>`).join('')
         }
       </tr>`
@@ -105,10 +105,10 @@
 
     document.getElementById('input-table-color').innerHTML = `<thead><tr><td></td>${colors.map(color => `<td>${color}</td>`).join('')}</tr></thead><tbody>${colorRows}</tbody>`;
 
-    const contrastedRows = attributes.map(attribute => 
+    const contrastedRows = attributes.map(attribute =>
       `<tr>
         <td style="color: #fff;">${attribute}</td>
-        ${colors.map(color => 
+        ${colors.map(color =>
           `<td><osds-input color="${color}" type="text" contrasted placeholder="${placeholder('text')}" ${attribute}></osds-input></td>`).join('')
         }
       </tr>`
@@ -116,7 +116,7 @@
 
     document.getElementById('input-table-contrasted').innerHTML = `<thead><tr><td></td>${colors.map(color => `<td style="color: #fff;">${color}</td>`).join('')}</tr></thead><tbody>${contrastedRows}</tbody>`;
 
-    const flexRows = attributes.map(attribute => 
+    const flexRows = attributes.map(attribute =>
       `<tr>
         <td>${attribute}</td>
         <td style="width: 80%;"><osds-input flex type="text" placeholder="${placeholder('text')}" ${attribute}></osds-input></td>
@@ -125,7 +125,7 @@
 
     document.getElementById('input-table-flex').innerHTML = `<thead><tr><td></td><td>flex</td></tr></thead><tbody>${flexRows}</tbody>`;
   </script>
-  
+
   <article>
     <h2>[number odsInput-1]</h2>
     <osds-input

@@ -6,7 +6,7 @@
 import './components';
 import './global';
 import { OdsLogger } from '@ovhcloud/ods-core';
-import '@ovhcloud/ods-stencil/components/icon';
+import '@ovhcloud/ods-component-icon';
 
 const message = document.querySelector('osds-message');
 

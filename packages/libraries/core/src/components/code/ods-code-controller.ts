@@ -1,10 +1,9 @@
-import { OdsIconName, OdsIconSize } from '../icon/ods-icon-size';
-import { OdsButton } from '../button/ods-button';
-import { OdsButtonSize } from '../button/ods-button-size';
-import { OdsButtonVariant } from '../button/ods-button-variant';
+import type { OsdsButton } from '@ovhcloud/ods-component-button';
+import type { OsdsIcon } from '@ovhcloud/ods-component-icon';
+import { ODS_BUTTON_SIZE, ODS_BUTTON_VARIANT } from '@ovhcloud/ods-component-button';
+import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
 import { OdsCode } from './ods-code';
 import { OdsComponentController } from '../ods-component-controller';
-import { OdsIcon } from '../icon/ods-icon';
 import { OdsLogger } from '../../logger/ods-logger';
 
 /**
@@ -13,8 +12,8 @@ import { OdsLogger } from '../../logger/ods-logger';
  */
 export class OdsCodeController extends OdsComponentController<OdsCode> {
   private readonly logger = new OdsLogger('OdsCodeController');
-  protected buttonSize = OdsButtonSize.sm;
-  protected iconSize = OdsIconSize.xs;
+  protected buttonSize = ODS_BUTTON_SIZE.sm;
+  protected iconSize = ODS_ICON_SIZE.xs;
 
   constructor(component: OdsCode) {
     super(component);
@@ -30,7 +29,7 @@ export class OdsCodeController extends OdsComponentController<OdsCode> {
    * @param button
    * @param icon
    */
-  autocompleteCopySlot(button: (HTMLSlotElement & OdsButton), icon: (HTMLElement & OdsIcon) | null): void {
+  autocompleteCopySlot(button: (HTMLSlotElement & OsdsButton), icon: (HTMLElement & OsdsIcon) | null): void {
     const buttonSize = button.getAttribute('size');
     if (buttonSize && buttonSize !== this.buttonSize) {
       this.logger.warn('size on copy slot will be overridden with sm');
@@ -60,20 +59,20 @@ export class OdsCodeController extends OdsComponentController<OdsCode> {
     this.logger.log('Code has been copied into clipboard');
   }
 
-  private createCopyIcon(button: (HTMLSlotElement & OdsButton)) {
-    const icon = this.component.createCopyIconElement() as (HTMLElement & OdsIcon);
-    icon[ 'name' ] = OdsIconName.COPY;
+  private createCopyIcon(button: (HTMLSlotElement & OsdsButton)) {
+    const icon = this.component.createCopyIconElement() as (HTMLElement & OsdsIcon);
+    icon[ 'name' ] = ODS_ICON_NAME.COPY;
     this.setCopyIconAttributes(icon);
     button.appendChild(icon);
   }
 
-  private setCopyButtonAttributes(button: (HTMLSlotElement & OdsButton)) {
+  private setCopyButtonAttributes(button: (HTMLSlotElement & OsdsButton)) {
     button[ 'size' ] = this.buttonSize;
-    button[ 'variant' ] = button.getAttribute('variant') as OdsButtonVariant || OdsButtonVariant.ghost;
+    button[ 'variant' ] = button.getAttribute('variant') as ODS_BUTTON_VARIANT || ODS_BUTTON_VARIANT.ghost;
     button[ 'contrasted' ] = !this.component.contrasted;
   }
 
-  private setCopyIconAttributes(icon: (HTMLElement & OdsIcon)) {
+  private setCopyIconAttributes(icon: (HTMLElement & OsdsIcon)) {
     icon[ 'size' ] = this.iconSize;
     icon[ 'contrasted' ] = !this.component.contrasted;
   }

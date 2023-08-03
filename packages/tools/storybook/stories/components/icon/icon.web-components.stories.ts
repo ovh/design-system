@@ -1,21 +1,14 @@
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 import { repeat } from 'lit-html/directives/repeat';
-import { iframe } from '../../../.storybook/iframe';
-
 import { OdsThemeColorIntent, OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
-import { defineCustomElements } from '@ovhcloud/ods-stencil-icon/loader';
-import { OdsIconSize, OdsIconSizeList } from '@ovhcloud/ods-core';
-import {
-  createComponentTable,
-  extractArgTypes,
-  extractStoryParams,
-  getTagAttributes,
-} from '../../../core/componentHTMLUtils';
-
-import changelog from '@ovhcloud/ods-stencil-icon/CHANGELOG.md';
+import { defineCustomElements } from '@ovhcloud/ods-component-icon/loader';
+import { ODS_ICON_NAMES, ODS_ICON_SIZE, ODS_ICON_SIZES } from '@ovhcloud/ods-component-icon';
+import { createComponentTable, extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
+// @ts-ignore
+import changelog from '@ovhcloud/ods-component-icon/CHANGELOG.md';
+// @ts-ignore
 import page from './icon.web-component.stories.page.mdx';
-import { OdsIconNameList } from '../../../../../libraries/core/src';
 
 defineCustomElements();
 
@@ -29,8 +22,8 @@ const storyParams = {
   },
   size: {
     category: 'General',
-    defaultValue: OdsIconSize.md,
-    options: OdsIconSizeList,
+    defaultValue: ODS_ICON_SIZE.md,
+    options: ODS_ICON_SIZES,
     control: { type: 'select' },
   },
   ariaName: {
@@ -51,7 +44,6 @@ export default {
   title: 'UI Components/Icon [quark]/Web Component',
   parameters: {
     notes: {
-      API: iframe('/stencil-icon/modules/index.html'),
       changelog,
     },
     docs: { page }
@@ -67,6 +59,7 @@ const TemplateDefault = (args: any) => html`
 </div>
 `;
 export const Default = TemplateDefault.bind({});
+// @ts-ignore
 Default.args = {
   ...extractStoryParams(storyParams),
 };
@@ -99,13 +92,13 @@ const TemplateAll = () => html`
 </style>
 
 <span class='table'>
-${repeat(OdsIconNameList, (i) => iconTemplate(i))}
+${repeat(ODS_ICON_NAMES, (i) => iconTemplate(i))}
 </span>
 
 <h3>Sizes & Colors</h1>
 ${unsafeHTML(createComponentTable(
   defaultTag,
-  { size: OdsIconSizeList },
+  { size: ODS_ICON_SIZES },
   { color: OdsThemeColorIntentList },
   '',
   { name: 'home' }
@@ -113,6 +106,7 @@ ${unsafeHTML(createComponentTable(
 </div>
 `;
 export const All = TemplateAll.bind({});
+// @ts-ignore
 All.parameters = {
   controls: { hideNoControlsWarning: true },
   options: { showPanel: false }

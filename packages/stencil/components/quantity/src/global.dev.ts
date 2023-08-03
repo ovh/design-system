@@ -7,9 +7,9 @@ import './components';
 import './global';
 import { OdsLogger } from '@ovhcloud/ods-core';
 
-import '@ovhcloud/ods-stencil/components/button';
+import '@ovhcloud/ods-component-button';
+import '@ovhcloud/ods-component-icon';
 import '@ovhcloud/ods-stencil/components/input';
-import '@ovhcloud/ods-stencil/components/icon';
 import { OsdsQuantity } from '@ovhcloud/ods-stencil/components/quantity/src/components/osds-quantity/osds-quantity';
 
 const quantity: (HTMLElement & OsdsQuantity) | null = document.getElementById('quantity-1') as (HTMLElement & OsdsQuantity) | null;

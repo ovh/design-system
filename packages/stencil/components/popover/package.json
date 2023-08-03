@@ -38,6 +38,7 @@
     "@ovhcloud/ods-stencil-component": "^15.0.1"
   },
   "devDependencies": {
+    "@ovhcloud/ods-component-button": "^15.0.1",
     "@ovhcloud/ods-component-text": "^15.0.1",
     "@ovhcloud/ods-stencil-component-dev": "^15.0.1"
   },

@@ -1,14 +1,13 @@
 import { E2EElement, E2EPage, newE2EPage } from '@stencil/core/testing';
 import {
   OdsComponentAttributes2StringAttributes,
-  OdsIconName,
   OdsMessageAttributes,
   OdsMessageType,
-  odsMessageDefaultAttributes
+  odsMessageDefaultAttributes,
 } from '@ovhcloud/ods-core';
 import { OdsCreateAttributes, OdsStringAttributes2Str, odsMessageBaseAttributes } from '@ovhcloud/ods-testing';
-
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_ICON_NAME } from '@ovhcloud/ods-component-icon';
 
 describe('e2e:osds-message', () => {
   let page: E2EPage;
@@ -43,7 +42,7 @@ describe('e2e:osds-message', () => {
       expect(await el.getProperty('color')).toBe(OdsThemeColorIntent.success);
 
       const icon = await (await page.find('osds-message >>> .message__wrapper')).find('osds-icon');
-      expect(icon.getAttribute('name')).toBe(OdsIconName.SUCCESS_CIRCLE);
+      expect(icon.getAttribute('name')).toBe(ODS_ICON_NAME.SUCCESS_CIRCLE);
     });
 
     it('should have a info type', async () => {
@@ -52,7 +51,7 @@ describe('e2e:osds-message', () => {
       expect(await el.getProperty('color')).toBe(OdsThemeColorIntent.info);
 
       const icon = await (await page.find('osds-message >>> .message__wrapper')).find('osds-icon');
-      expect(icon.getAttribute('name')).toBe(OdsIconName.INFO_CIRCLE);
+      expect(icon.getAttribute('name')).toBe(ODS_ICON_NAME.INFO_CIRCLE);
     });
 
     it('should have a warning type', async () => {
@@ -61,7 +60,7 @@ describe('e2e:osds-message', () => {
       expect(await el.getProperty('color')).toBe(OdsThemeColorIntent.warning);
 
       const icon = await (await page.find('osds-message >>> .message__wrapper')).find('osds-icon');
-      expect(icon.getAttribute('name')).toBe(OdsIconName.WARNING_CIRCLE);
+      expect(icon.getAttribute('name')).toBe(ODS_ICON_NAME.WARNING_CIRCLE);
     });
 
     it('should have a error type', async () => {
@@ -70,7 +69,7 @@ describe('e2e:osds-message', () => {
       expect(await el.getProperty('color')).toBe(OdsThemeColorIntent.error);
 
       const icon = await (await page.find('osds-message >>> .message__wrapper')).find('osds-icon');
-      expect(icon.getAttribute('name')).toBe(OdsIconName.ERROR_CIRCLE);
+      expect(icon.getAttribute('name')).toBe(ODS_ICON_NAME.ERROR_CIRCLE);
     });
   });
 
@@ -80,7 +79,7 @@ describe('e2e:osds-message', () => {
       expect(await el.getProperty('removable')).toBe(true);
 
       const icon = await (await page.find('osds-message >>> .message__close-wrapper')).find('osds-icon');
-      expect(icon.getAttribute('name')).toBe(OdsIconName.CLOSE);
+      expect(icon.getAttribute('name')).toBe(ODS_ICON_NAME.CLOSE);
     });
   });
 });

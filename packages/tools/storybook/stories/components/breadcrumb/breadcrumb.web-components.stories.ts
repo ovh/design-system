@@ -1,14 +1,9 @@
 import { html } from 'lit-html';
-import { iframe } from '../../../.storybook/iframe';
-
-import { defineCustomElements } from '@ovhcloud/ods-stencil-breadcrumb/loader';
-import {
-  extractArgTypes,
-  extractStoryParams,
-  getTagAttributes,
-} from '../../../core/componentHTMLUtils';
-
-import changelog from '@ovhcloud/ods-stencil-breadcrumb/CHANGELOG.md';
+import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
+import { defineCustomElements } from '@ovhcloud/ods-component-breadcrumb/loader';
+// @ts-ignore
+import changelog from '@ovhcloud/ods-component-breadcrumb/CHANGELOG.md';
+// @ts-ignore
 import page from './breadcrumb.web-component.stories.page.mdx';
 
 defineCustomElements();
@@ -35,7 +30,6 @@ export default {
   id: 'breadcrumb',
   parameters: {
     notes: {
-      API: iframe('/stencil-breadcrumb/modules/index.html'),
       changelog,
     },
     docs: { page }
@@ -50,6 +44,7 @@ const TemplateDefault = (args:any) => {
   `;
 }
 export const Default = TemplateDefault.bind({});
+// @ts-ignore
 Default.args = {
   ...extractStoryParams(storyParams),
 };

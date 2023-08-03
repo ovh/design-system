@@ -110,7 +110,7 @@ const storyParams = {
 };
 
 export default {
-  title: 'UI Components/Input️ [atom]/Web Component',
+  title: 'UI Components/Input [atom]/Web Component',
   parameters: {
     notes: {
       API: iframe('/stencil-input/modules/index.html'),

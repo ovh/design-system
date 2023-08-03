@@ -34,7 +34,7 @@ const argTypes = {
 };
 
 export default {
-  title: 'UI Components/Link [quark]/Web Component',
+  title: 'UI Components/Link [atom]/Web Component',
   parameters: {
     notes: {
       changelog,

@@ -1,0 +1,19 @@
+@import '~@ovhcloud/ods-theming/color/ods-theming-color';
+@import '~@ovhcloud/ods-theming/ods-theme';
+
+:host {
+    osds-input {
+        cursor: pointer;
+        --ods-input-cursor: pointer;
+        --ods-input-icon-cursor: pointer;
+    }
+}
+
+:host([disabled]) {
+    cursor: not-allowed;
+    osds-input {
+        cursor: not-allowed;
+        --ods-input-cursor: not-allowed;
+        --ods-input-icon-cursor: not-allowed;
+    }
+}

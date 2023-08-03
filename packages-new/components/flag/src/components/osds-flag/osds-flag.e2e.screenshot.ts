@@ -24,7 +24,7 @@ describe('e2e:osds-flag', () => {
     OdsCountryIsoCodeList.forEach((iso) => {
       it(`The flag ${iso} is displaying correctly`, async () => {
         await setup({
-          attributes: { iso },
+          attributes: { iso, assetPath: `./dist/flags/flags-4x3/` },
         });
         await page.waitForChanges();
         await page.evaluate(() => {

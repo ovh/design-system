@@ -1,8 +1,8 @@
+import type { OsdsButton } from '@ovhcloud/ods-component-button';
 import type { OsdsIcon } from '@ovhcloud/ods-component-icon';
 import { Component, Element, Event, h, Host, Prop } from '@stencil/core';
 import { EventEmitter, HTMLStencilElement } from '@stencil/core/internal';
 import {
-  OdsButton,
   OdsCode,
   OdsCodeController,
   odsCodeDefaultAttributes,
@@ -45,7 +45,7 @@ export class OsdsCode implements OdsCode<OdsStencilMethods<OdsCodeMethods>, OdsS
     const copyButton = this.el.querySelector('[slot="copy"]');
     if (copyButton && copyButton.tagName.toLowerCase() === 'osds-button') {
       const iconFound = copyButton.querySelector('osds-icon') as (HTMLElement & OsdsIcon) | null;
-      this.controller.autocompleteCopySlot(copyButton as (HTMLSlotElement & OdsButton), iconFound);
+      this.controller.autocompleteCopySlot(copyButton as (HTMLSlotElement & OsdsButton), iconFound);
     }
   }
 

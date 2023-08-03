@@ -44,6 +44,7 @@ const config: Config = {
         'osds-text',
         'osds-textarea',
         'osds-tile',
+        'osds-tooltip',
       ],
     },
     vueOutput: {
@@ -59,6 +60,7 @@ const config: Config = {
         'osds-text',
         'osds-textarea',
         'osds-tile',
+        'osds-tooltip',
       ],
     },
     dev: {

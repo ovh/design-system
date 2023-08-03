@@ -36,7 +36,6 @@
     "switch/src",
     "tabs/src",
     "toggle/src",
-    "tooltip/src",
   ],
   "exclude": [
     "node_modules",

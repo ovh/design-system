@@ -5847,6 +5847,43 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-component-tooltip-react@workspace:packages-new/components/tooltip/react":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-tooltip-react@workspace:packages-new/components/tooltip/react"
+  dependencies:
+    "@ovhcloud/ods-component-tooltip": ^15.0.1
+    "@ovhcloud/ods-react-dev": ^15.0.1
+  peerDependencies:
+    react: ">=16.8.6"
+    react-dom: ">=16.8.6"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-component-tooltip-vue@workspace:packages-new/components/tooltip/vue":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-tooltip-vue@workspace:packages-new/components/tooltip/vue"
+  dependencies:
+    "@ovhcloud/ods-component-tooltip": ^15.0.1
+    "@ovhcloud/ods-vue-dev": ^15.0.1
+  peerDependencies:
+    vue: ">=3"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-component-tooltip@^15.0.1, @ovhcloud/ods-component-tooltip@workspace:packages-new/components/tooltip":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-tooltip@workspace:packages-new/components/tooltip"
+  dependencies:
+    "@ovhcloud/ods-common-core": ^15.0.1
+    "@ovhcloud/ods-common-stencil": ^15.0.1
+    "@ovhcloud/ods-common-testing": ^15.0.1
+    "@ovhcloud/ods-component-icon": ^15.0.1
+    "@ovhcloud/ods-component-text": ^15.0.1
+    "@ovhcloud/ods-stencil-dev": ^15.0.1
+    "@ovhcloud/ods-theming": ^15.0.1
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-components@^15.0.1, @ovhcloud/ods-components@workspace:packages-new/components":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-components@workspace:packages-new/components"
@@ -5860,6 +5897,7 @@ __metadata:
     "@ovhcloud/ods-component-text": ^15.0.1
     "@ovhcloud/ods-component-textarea": ^15.0.1
     "@ovhcloud/ods-component-tile": ^15.0.1
+    "@ovhcloud/ods-component-tooltip": ^15.0.1
     "@ovhcloud/ods-dev": ^15.0.1
   languageName: unknown
   linkType: soft
@@ -6545,6 +6583,7 @@ __metadata:
     "@ovhcloud/ods-component-link": ^15.0.1
     "@ovhcloud/ods-component-text": ^15.0.1
     "@ovhcloud/ods-component-textarea": ^15.0.1
+    "@ovhcloud/ods-component-tooltip": ^15.0.1
     "@ovhcloud/ods-stencil-component": ^15.0.1
     "@ovhcloud/ods-stencil-component-dev": ^15.0.1
   languageName: unknown
@@ -6711,6 +6750,7 @@ __metadata:
     "@ovhcloud/ods-component-button": ^15.0.1
     "@ovhcloud/ods-component-icon": ^15.0.1
     "@ovhcloud/ods-component-text": ^15.0.1
+    "@ovhcloud/ods-component-tooltip": ^15.0.1
     "@ovhcloud/ods-stencil-component": ^15.0.1
     "@ovhcloud/ods-stencil-component-dev": ^15.0.1
   languageName: unknown
@@ -7251,47 +7291,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-toggle@workspace:packages/stencil/components/toggle"
   dependencies:
-    "@ovhcloud/ods-stencil-component": ^15.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^15.0.1
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-stencil-tooltip-react@workspace:packages/stencil/components/tooltip/react":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-stencil-tooltip-react@workspace:packages/stencil/components/tooltip/react"
-  dependencies:
-    "@ovhcloud/ods-stencil-tooltip": ^15.0.1
-    "@types/react": 17.0.37
-    "@types/react-dom": 17.0.11
-    react: 16.14.0
-    react-dom: 16.14.0
-    rimraf: ^3.0.2
-    tslib: "*"
-    typescript: 4.7.4
-  peerDependencies:
-    react: ">=16.8.6"
-    react-dom: ">=16.8.6"
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-stencil-tooltip-vue@workspace:packages/stencil/components/tooltip/vue":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-stencil-tooltip-vue@workspace:packages/stencil/components/tooltip/vue"
-  dependencies:
-    "@ovhcloud/ods-stencil-tooltip": ^15.0.1
-    rimraf: ^3.0.2
-    typescript: 4.7.4
-    vue: ^3.2.41
-  peerDependencies:
-    vue: ">=3"
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-stencil-tooltip@^15.0.1, @ovhcloud/ods-stencil-tooltip@workspace:packages/stencil/components/tooltip":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-stencil-tooltip@workspace:packages/stencil/components/tooltip"
-  dependencies:
-    "@ovhcloud/ods-component-text": ^15.0.1
     "@ovhcloud/ods-stencil-component": ^15.0.1
     "@ovhcloud/ods-stencil-component-dev": ^15.0.1
   languageName: unknown

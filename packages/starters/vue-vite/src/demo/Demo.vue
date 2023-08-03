@@ -1,6 +1,7 @@
 <script setup lang="ts">
 // you can import react proxy from the independent package
 import { OsdsButton } from '@ovhcloud/ods-components/button/vue'
+import { OsdsTile } from '@ovhcloud/ods-components/tile/vue';
 
 // you can import multiple react proxies from the grouped package
 import {
@@ -9,7 +10,6 @@ import {
   OsdsMessage,
   OsdsRadio,
   OsdsRadioGroup,
-  OsdsTile,
   OsdsToggle,
   OsdsFlag
 } from '@ovhcloud/ods-stencil/components/vue';

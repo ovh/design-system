@@ -42,6 +42,7 @@ const config: Config = {
         'osds-spinner',
         'osds-text',
         'osds-textarea',
+        'osds-tile',
       ],
     },
     vueOutput: {
@@ -55,6 +56,7 @@ const config: Config = {
         'osds-spinner',
         'osds-text',
         'osds-textarea',
+        'osds-tile',
       ],
     },
     dev: {
@@ -100,7 +102,6 @@ const config: Config = {
     { components: ['osds-skeleton'] },
     { components: ['osds-switch'] },
     { components: ['osds-switch-item'] },
-    { components: ['osds-tile'] },
     { components: ['osds-toggle'] },
   ],
   buildEs5: 'prod',

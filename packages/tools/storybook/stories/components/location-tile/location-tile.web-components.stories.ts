@@ -4,7 +4,8 @@ import { iframe } from '../../../.storybook/iframe';
 
 import { OdsThemeColorIntent, OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
 import { defineCustomElements } from '@ovhcloud/ods-stencil-location-tile/loader';
-import { OdsTileSize, OdsTileSizeList, OdsLocationTileVariant, OdsLocationTileVariantList, ODS_COUNTRY_ISO_CODE } from '@ovhcloud/ods-core';
+import { OdsLocationTileVariant, OdsLocationTileVariantList, ODS_COUNTRY_ISO_CODE } from '@ovhcloud/ods-core';
+import { ODS_TILE_SIZE, ODS_TILE_SIZES } from '@ovhcloud/ods-component-tile';
 import {
   createComponentTable,
   extractArgTypes,
@@ -27,8 +28,8 @@ const storyParams = {
   },
   size: {
     category: 'General',
-    defaultValue: OdsTileSize.md,
-    options: OdsTileSizeList,
+    defaultValue: ODS_TILE_SIZE.md,
+    options: ODS_TILE_SIZES,
     control: { type: 'select' },
   },
   variant: {
@@ -147,7 +148,7 @@ const TemplateAll = () => html`
 <h3>Sizes & Colors</h3>
 ${unsafeHTML(createComponentTable(
   defaultTag,
-  { size: OdsTileSizeList },
+  { size: ODS_TILE_SIZES },
   { color: OdsThemeColorIntentList },
   defaultContent,
   { iso: 'fr' }
@@ -157,14 +158,14 @@ ${unsafeHTML(createComponentTable(
 ${unsafeHTML(createComponentTable(
   defaultTag,
   { variant: OdsLocationTileVariantList },
-  { size: OdsTileSizeList },
+  { size: ODS_TILE_SIZES },
   defaultContent,
   { iso: 'fr' }
 ))}
 <h3>Interactive Sizes & Colors</h3>
 ${unsafeHTML(createComponentTable(
   defaultTag,
-  { size: OdsTileSizeList },
+  { size: ODS_TILE_SIZES },
   { color: OdsThemeColorIntentList },
   defaultContent,
   { iso: 'fr', interactive: true }
@@ -188,7 +189,7 @@ ${unsafeHTML(createComponentTable(
 <h3>Selected Sizes & Colors</h3>
 ${unsafeHTML(createComponentTable(
   defaultTag,
-  { size: OdsTileSizeList },
+  { size: ODS_TILE_SIZES },
   { color: OdsThemeColorIntentList },
   defaultContent,
   { iso: 'fr', interactive: true, checked: true }
@@ -204,7 +205,7 @@ ${unsafeHTML(createComponentTable(
 <h3>Disabled Sizes & Colors</h3>
 ${unsafeHTML(createComponentTable(
   defaultTag,
-  { size: OdsTileSizeList },
+  { size: ODS_TILE_SIZES },
   { color: OdsThemeColorIntentList },
   defaultContent,
   { iso: 'fr', disabled: true }

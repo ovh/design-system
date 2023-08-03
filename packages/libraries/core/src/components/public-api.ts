@@ -36,7 +36,6 @@ export * from './skeleton/public-api';
 export * from './switch/public-api';
 export * from './switch-item/public-api';
 export * from './tabs/public-api';
-export * from './tile/public-api';
 export * from './toggle/public-api';
 export * from './tooltip/public-api';
 

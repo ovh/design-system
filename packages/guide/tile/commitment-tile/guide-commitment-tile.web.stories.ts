@@ -1,7 +1,7 @@
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 import { defineCustomElements } from '@ovhcloud/ods-stencil-content-addon/loader';
-import { defineCustomElements as tileCustomElements } from '@ovhcloud/ods-stencil-tile/loader';
+import { defineCustomElements as tileCustomElements } from '@ovhcloud/ods-component-tile/loader';
 import { olesIpsum, OlesIpsumGeneration } from '@ovhcloud/ods-core';
 
 defineCustomElements();
@@ -27,7 +27,7 @@ const Template = (args: any) => html`
     }
   </style>
 
-  <osds-tile class="tile_container" size="sm" flex>
+  <osds-tile class="tile_container" size="sm">
     <span slot='start'><osds-text level="subtitle" size="xs" color="primary">${unsafeHTML(args.tileContent || olesIpsum(OlesIpsumGeneration.words, 2))}</osds-text></span>
     <span slot='end'>${unsafeHTML(args.contentAddon)}</span>
   </osds-tile>

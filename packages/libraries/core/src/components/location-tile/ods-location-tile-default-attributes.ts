@@ -1,7 +1,7 @@
 import { OdsLocationTileAttributes } from './ods-location-tile-attributes';
 import { OdsLocationTileVariant } from './ods-location-tile-variant';
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
-import { OdsTileSize } from '../tile/ods-tile-size';
+import { ODS_TILE_SIZE } from '@ovhcloud/ods-component-tile';
 
 export const odsLocationTileDefaultAttributesDoc = {
   checked: false,
@@ -11,7 +11,7 @@ export const odsLocationTileDefaultAttributesDoc = {
   flex: false,
   interactive: false,
   iso: undefined,
-  size: OdsTileSize.md,
+  size: ODS_TILE_SIZE.md,
   variant: OdsLocationTileVariant.vertical,
   hasFocus: false
 } as const;

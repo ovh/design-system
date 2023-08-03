@@ -18,7 +18,7 @@
 }
 
 :host(:not([disabled])) osds-icon {
-  cursor: default;
+  cursor: var(--ods-input-icon-cursor, default);
 }
 
 :host osds-icon[name=close],

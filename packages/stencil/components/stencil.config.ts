@@ -34,6 +34,7 @@ const config: Config = {
     reactOutput: {
       // exclude components that have been moved to the new repo
       excludeComponents: [
+        'osds-breadcrumb',
         'osds-button',
         'osds-collapsible',
         'osds-divider',
@@ -48,6 +49,7 @@ const config: Config = {
     vueOutput: {
       // exclude components that have been moved to the new repo
       excludeComponents: [
+        'osds-breadcrumb',
         'osds-button',
         'osds-collapsible',
         'osds-divider',

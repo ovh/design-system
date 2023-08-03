@@ -39,7 +39,7 @@ export class OsdsClipboard implements OdsClipboard<OdsStencilMethods<OdsClipboar
     this.controller.handlerClick(this.value);
   }
 
-  handlerKeydown(event: KeyboardEvent): void {
+  handlerKeyDown(event: KeyboardEvent): void {
     switch (event.code) {
       case 'Space':
       case 'Enter':
@@ -62,7 +62,7 @@ export class OsdsClipboard implements OdsClipboard<OdsStencilMethods<OdsClipboar
                     type={ OdsInputType.text }
                     value={ this.value }
                     onClick={ () => this.handlerClick() }
-                    onKeydown={ (event: KeyboardEvent) => this.handlerKeydown(event) }
+                    onKeyDown={ (event: KeyboardEvent) => this.handlerKeyDown(event) }
                     >
         </osds-input>
 

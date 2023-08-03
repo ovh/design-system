@@ -1,0 +1,123 @@
+@import 'styles/osds-tile.color.scss';
+@import 'styles/osds-tile.mixins.scss';
+@import 'styles/osds-tile.size.scss';
+@import 'styles/osds-tile.typography.scss';
+
+@import '~@ovhcloud/ods-theming/color/ods-theming-color';
+@import '~@ovhcloud/ods-theming/ods-theme';
+
+:host {
+  border: solid var(--ods-size-inset-02);
+  box-sizing: border-box;
+  flex-direction: row;
+}
+
+:host(:not([inline])) {
+  @include osds-tile-on-selected-host() {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+  }
+}
+
+:host([inline]){
+  display: inline-flex;
+  width: var(--width);
+}
+
+:not([checking])[disabled] {
+  @include osds-tile-on-selected-host() {
+    opacity: .5;
+  }
+}
+
+[disabled] {
+  @include osds-tile-on-selected-host() {
+    cursor: not-allowed;
+
+    * {
+      pointer-events: none;
+    }
+  }
+}
+
+[hoverable]:not([disabled]) {
+  @include osds-tile-on-selected-host() {
+    cursor: pointer;
+  }
+}
+
+[rounded] {
+  @include osds-tile-on-selected-host() {
+    border-radius: var(--ods-size-border-radius-02);
+  }
+}
+
+slot[name="start"],
+slot[name="end"],
+.tile__centered-text {
+  display: inline-flex;
+}
+
+::slotted([slot="start"]),
+::slotted([slot="end"])  {
+  display: inherit;
+  &:empty {
+    display: none;
+  }
+}
+
+slot[name="start"] {
+  justify-content: flex-start;
+}
+
+slot[name="end"] {
+  justify-content: flex-end;
+}
+
+.tile__centered-text {
+  justify-content: center;
+}
+
+[checking] {
+
+  @include osds-tile-on-selected-host() {
+    overflow: visible;
+    position: relative;
+
+    &:after {
+      content: '';
+      position: absolute;
+      left: -2px;
+      top: -2px;
+      background-size: 400%;
+      width: calc(100% + 4px);
+      height: calc(100% + 4px);
+      z-index: -1;
+      animation: steam 3s linear infinite;
+    }
+
+    &:after {
+      filter: blur(5px);
+    }
+
+    @keyframes steam {
+      0% {
+        background-position: 0 0;
+      }
+      50% {
+        background-position: 100% 0;
+      }
+      100% {
+        background-position: 0 0;
+      }
+    }
+  }
+}
+
+// apply the theme template for the component
+@include ods-theme-component() {
+  @include osds-tile-theme-color();
+  @include osds-tile-theme-size();
+  @include osds-tile-theme-typography();
+}

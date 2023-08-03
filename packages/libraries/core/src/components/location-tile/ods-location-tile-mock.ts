@@ -5,7 +5,7 @@ import { OdsLocationTileEvents } from "./ods-location-tile-events";
 import { OdsLocationTileMethods } from "./ods-location-tile-methods";
 import { OdsLocationTileVariant } from "./ods-location-tile-variant";
 import { OdsThemeColorIntent } from "@ovhcloud/ods-theming";
-import { OdsTileSize } from "../tile/ods-tile-size";
+import { ODS_TILE_SIZE } from "@ovhcloud/ods-component-tile";
 
 export class OdsLocationTileMock implements OdsLocationTile<OdsLocationTileMethods, OdsLocationTileEvents> {
     checked = false;
@@ -16,7 +16,7 @@ export class OdsLocationTileMock implements OdsLocationTile<OdsLocationTileMetho
     interactive?: boolean;
     hasFocus = false;
     iso?: ODS_COUNTRY_ISO_CODE;
-    size?: OdsTileSize;
+    size?: ODS_TILE_SIZE;
     variant?: OdsLocationTileVariant;
 
     controller: OdsLocationTileController = jest.fn() as unknown as OdsLocationTileController;

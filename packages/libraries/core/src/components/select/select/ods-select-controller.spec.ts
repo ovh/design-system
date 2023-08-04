@@ -127,17 +127,6 @@ describe('spec:ods-select-controller', () => {
         expect(item1.getAttribute('selected')).toBe("");
       });
 
-      it('should select last option with many arrow down', () => {
-        setup({ opened: true });
-        const keyArrowDown = new KeyboardEvent("keydown", { code : "ArrowDown" });
-        controller.handlerKeyDown(keyArrowDown);
-        controller.handlerKeyDown(keyArrowDown);
-        controller.handlerKeyDown(keyArrowDown);
-        controller.handlerKeyDown(keyArrowDown);
-        controller.handlerKeyDown(keyArrowDown);
-        expect(item2.getAttribute('selected')).toBe("");
-      });
-
       it('should select option with arrow up', () => {
         setup({ opened: true });
         item2.setAttribute('selected', '');
@@ -147,20 +136,33 @@ describe('spec:ods-select-controller', () => {
         expect(item2.getAttribute('selected')).toBe(null);
       });
 
-      it('should focus on select with arrow up', () => {
-        setup({ opened: true });
-        const keyArrowDown = new KeyboardEvent("keydown", { code : "ArrowDown" });
-        controller.handlerKeyDown(keyArrowDown);
-        const keyArrowUp = new KeyboardEvent("keydown", { code : "ArrowUp" });
-        controller.handlerKeyDown(keyArrowUp);
-        expect(component.setFocus).toHaveBeenCalledTimes(1);
-      });
-
       it('should close select after if open and not any option selected', () => {
         setup({ opened: true });
         const keyArrowDown = new KeyboardEvent("keydown", { code : "Enter" });
         controller.handlerKeyDown(keyArrowDown);
         expect(component.handleSelectClick).toHaveBeenCalledTimes(1);
+      });
+
+      it('should go back to first option with arrow down when on the last one', () => {
+        setup({ opened: true });
+        item2.focus();
+        item2.setAttribute('selected', '');
+
+        const keyDown = new KeyboardEvent("keydown", { code : "ArrowDown" });
+        controller.handlerKeyDown(keyDown);
+
+        expect(item1.getAttribute('selected')).toBe("");
+      });
+
+      it('should go back to last option with arrow up when on the first one', () => {
+        setup({ opened: true });
+        item1.focus();
+        item1.setAttribute('selected', '');
+
+        const keyUp = new KeyboardEvent("keydown", { code : "ArrowUp" });
+        controller.handlerKeyDown(keyUp);
+
+        expect(item2.getAttribute('selected')).toBe("");
       });
 
       it('should don\'t do anything', () => {

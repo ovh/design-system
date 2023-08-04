@@ -4,9 +4,14 @@ import "./style.scss";
 import '@ovhcloud/ods-theme-blue-jeans/index.css'
 import { defineCustomElements as defineCustomElementsOsdsButton } from '@ovhcloud/ods-stencil/components/button/custom-elements-bundle'
 import { defineCustomElements as defineCustomElementsOsdsIcon } from '@ovhcloud/ods-stencil/components/icon/custom-elements-bundle'
+import { defineCustomElements as defineCustomElementsOsdsPagination, OsdsPagination } from '@ovhcloud/ods-stencil/components/pagination/custom-elements-bundle'
+import { defineCustomElements as defineCustomElementsOsdsSelect } from '@ovhcloud/ods-stencil/components/select/custom-elements-bundle'
+import { data } from './data';
 
 defineCustomElementsOsdsButton();
 defineCustomElementsOsdsIcon();
+defineCustomElementsOsdsPagination();
+defineCustomElementsOsdsSelect();
 
 function registerButtonSelectColumn(table: Tabulator) {
     const list = document.getElementById("listColumn")
@@ -42,19 +47,8 @@ function registerButtonSelectColumn(table: Tabulator) {
 }
 
 function renderGrid() {
-    const data = [
-        { author: 'Guillaume Meurice', title: 'Le roi n\'avait pas ri', price: '6€'},
-        { author: 'Maupassant', title: 'Bel ami', price: '9€'},
-        { author: 'Maupassant', title: 'Le horla', price: '15€'},
-        { author: 'Gustave Flaubert', title: 'Madame de bovary', price: '12€'},
-        { author: 'Émile Zola', title: 'Germinal', price: '5€'},
-        { author: 'Stendhal', title: 'Germinal', price: '20€',
-        serviceHistory:[
-            {date:"22/05/2017", engineer:"Jimmy Brown", actions:"Aligned wheels"},
-            {date:"11/02/2018", engineer:"Lotty Ferberson", actions:"Changed Oil"},
-            {date:"04/04/2018", engineer:"Franco Martinez", actions:"Fixed Tracking"},
-        ]},
-    ];
+    const pagination = document.createElement('osds-pagination') as OsdsPagination;
+    pagination.current = 1;
     const table = new Tabulator("#myGrid", {
         data,
         layout: "fitColumns",
@@ -118,10 +112,11 @@ function renderGrid() {
         ],
         // groupBy:["author"],
         pagination: true,
-        paginationSize: 6,
-        paginationSizeSelector: [3, 6, 8, 10],
+        // paginationSize: 6,
+        // paginationSizeSelector: [3, 6, 8, 10],
         movableColumns: true,
         paginationCounter: "rows",
+        footerElement: pagination,
         rowFormatter: (row) => {
            
             //create and style holder elements
@@ -156,7 +151,19 @@ function renderGrid() {
            })
         },
     });
-    setTimeout(() => registerButtonSelectColumn(table), 0);
+    setTimeout(() => {
+        registerButtonSelectColumn(table);
+        table.setPageSize(10);
+        pagination.totalItems = data.length;
+        pagination.totalPages = table.getPageMax();
+        pagination.addEventListener('odsPaginationChanged', (event) => {
+            table.setPage(event.detail.current);
+        });
+        pagination.addEventListener('odsValueChange', (event) => {
+            console.log('event', event)
+            table.setPageSize(event.detail.value);
+        });
+    }, 0);
 }
 
 function editPrice(cell, onRendered, success, cancel, editorParams){

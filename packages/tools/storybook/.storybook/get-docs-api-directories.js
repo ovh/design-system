@@ -18,7 +18,6 @@ module.exports = function getDocsApiDirectories() {
     "libraries/*",
     "stencil/components/flag/dist/flags",
     "tools/storybook/public",
-    "components/*"
   ]
 
   try {

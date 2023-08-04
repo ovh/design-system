@@ -1,7 +1,7 @@
 import { html } from 'lit-html';
 import { OdsThemeColorIntent, OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
 import { defineCustomElements } from '@ovhcloud/ods-component-divider/loader';
-import { /*OdsDividerSize, OdsDividerSizeList, */OlesIpsumGeneration } from '@ovhcloud/ods-core/src';
+import { OlesIpsumGeneration } from '@ovhcloud/ods-core/src';
 import { ODS_DIVIDER_SIZE, ODS_DIVIDER_SIZES } from '@ovhcloud/ods-component-divider';
 import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 import { olesIpsum } from '@ovhcloud/ods-core';

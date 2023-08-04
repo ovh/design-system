@@ -1,4 +1,4 @@
-import { OdsDividerAttribute } from '../interfaces/attributes';
+import type { OdsDividerAttribute } from '../interfaces/attributes';
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 import { ODS_DIVIDER_SIZE } from './divider-size';
 

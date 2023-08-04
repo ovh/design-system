@@ -7,13 +7,7 @@ module.exports = {
     buildStoriesJson: true
   },
   framework: '@storybook/react',
-  stories: [
-    '../**/*.stories.@(md|mdx|ts|tsx)',
-    {
-      directory: '../../../../packages-new/components',
-      files: '**/*.stories.@(md|mdx|ts|tsx)',
-    },
-  ],
+  stories: ['../**/*.stories.@(md|mdx|ts|tsx)'],
   addons: [
     // contains actions, backgrounds, controls, docs, viewport and toolbars addons
     {

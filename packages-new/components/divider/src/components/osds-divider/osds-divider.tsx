@@ -1,8 +1,8 @@
 import type { OdsDividerAttribute } from './interfaces/attributes';
+import type { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import type { ODS_DIVIDER_SIZE } from './constants/divider-size';
 import { Component, Element, Host, Prop, h } from '@stencil/core';
-import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { ODS_DIVIDER_SIZE } from './constants/divider-size';
 
 @Component({
   tag: 'osds-divider',

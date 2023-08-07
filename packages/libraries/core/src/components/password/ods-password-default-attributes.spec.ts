@@ -1,6 +1,6 @@
 import { odsPasswordDefaultAttributes } from './ods-password-default-attributes';
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
-import { OdsInputSize } from '../input/ods-input-size';
+import { ODS_INPUT_SIZE } from '@ovhcloud/ods-component-input';
 
 describe('spec:ods-input-default-attributes', () => {
   it('ariaLabel should not be defined', () => {
@@ -49,7 +49,7 @@ describe('spec:ods-input-default-attributes', () => {
     expect(odsPasswordDefaultAttributes.required).toBe(false);
   });
   it('size should be md', () => {
-    expect(odsPasswordDefaultAttributes.size).toBe(OdsInputSize.md);
+    expect(odsPasswordDefaultAttributes.size).toBe(ODS_INPUT_SIZE.md);
   });
   it('value should not be defined', () => {
     expect(odsPasswordDefaultAttributes.value).toBe('');

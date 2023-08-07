@@ -1,5 +1,5 @@
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
-import { OdsInputValue } from '../../public-api';
+import { OdsInputValue } from '../../../form/ods-input-value';
 import { OdsSelect } from './ods-select';
 import { OdsSelectController } from './ods-select-controller';
 import { odsSelectDefaultAttributes } from './ods-select-default-attributes';

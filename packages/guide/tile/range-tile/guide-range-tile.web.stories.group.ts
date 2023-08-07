@@ -1,16 +1,16 @@
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 import { Components as ComponentsRadio } from '@ovhcloud/ods-stencil-radio/loader';
-import { Components as ComponentsInput } from '@ovhcloud/ods-stencil-input/loader';
+import { Components as ComponentsInput } from '@ovhcloud/ods-component-input/loader';
 import { Components as ComponentsRange } from '@ovhcloud/ods-stencil-range/loader';
 import { Components as ComponentsTile } from '@ovhcloud/ods-component-tile/loader';
 import {
   OdsErrorStateControl,
   OdsFormControl,
-  OdsInputValueChangeEventDetail,
   OdsRangeValueChangeEventDetail,
   OdsValidityState
 } from '@ovhcloud/ods-core';
+import { OdsInputValueChangeEventDetail } from '@ovhcloud/ods-component-input';
 
 export const RadioGroupTemplate = (args: any) => html`
   <style>

@@ -1,5 +1,5 @@
+import type { OsdsInput } from '@ovhcloud/ods-component-input';
 import { OdsComponentController } from '../ods-component-controller';
-import { OdsInput } from '../input/ods-input';
 import { OdsLogger } from '../../logger/ods-logger';
 import { OdsQuantity } from './ods-quantity';
 
@@ -16,13 +16,13 @@ export class OdsQuantityController extends OdsComponentController<OdsQuantity> {
   }
 
   initInput(): void {
-    const foundOsdsInput = this.component.el.querySelector('osds-input[type=number]') as (OdsInput & HTMLElement);
+    const foundOsdsInput = this.component.el.querySelector('osds-input[type=number]') as (OsdsInput & HTMLElement);
     this.clearEventListeners();
     if (foundOsdsInput) {
       this.component.input = foundOsdsInput;
       this.component.input.addEventListener('odsInputBlur', this.onBlur.bind(this));
     } else {
-      const foundNativeInput = this.component.el.querySelector('input[type=number]') as (OdsInput & HTMLElement);
+      const foundNativeInput = this.component.el.querySelector('input[type=number]') as (OsdsInput & HTMLElement);
       if (foundNativeInput) {
         this.component.input = foundNativeInput;
         this.component.input.addEventListener('change', this.processInputValueChange.bind(this));

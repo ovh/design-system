@@ -19,7 +19,6 @@
     "code/src",
     "content-addon/src",
     "flag/src",
-    "input/src",
     "location-tile/src",
     "message/src",
     "pagination/src",

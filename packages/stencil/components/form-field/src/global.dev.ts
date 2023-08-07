@@ -8,8 +8,8 @@ import './global';
 import { OdsLogger } from '@ovhcloud/ods-core';
 
 // Input slot dependencies
-import '@ovhcloud/ods-stencil/components/input';
 import '@ovhcloud/ods-component-icon';
+import '@ovhcloud/ods-component-input';
 import '@ovhcloud/ods-component-spinner';
 import '@ovhcloud/ods-component-textarea';
 

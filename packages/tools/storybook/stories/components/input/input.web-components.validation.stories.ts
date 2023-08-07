@@ -1,10 +1,6 @@
-import {
-  OdsErrorStateControl,
-  OdsFormControl, OdsInputValidityState,
-  OdsInputValueChangeEventDetail,
-  OdsLogger
-} from '@ovhcloud/ods-core';
-import { Components as ComponentsInput } from '@ovhcloud/ods-stencil-input';
+import type { OdsInputValidityState, OdsInputValueChangeEvent } from '@ovhcloud/ods-component-input';
+import { OdsErrorStateControl, OdsFormControl, OdsLogger } from '@ovhcloud/ods-common-core';
+import { OsdsInput } from '@ovhcloud/ods-component-input';
 
 interface WindowWithInputMethods extends Window {
   inputClear?: () => Promise<void>;
@@ -22,7 +18,7 @@ interface FoundErrorMessagesConnexion extends ErrorMessagesConnexion {
 
 export const InputPlay = async () => {
   const logger = new OdsLogger('InputPlay');
-  const input = document.getElementById('input') as (HTMLElement & ComponentsInput.OsdsInput) | null;
+  const input = document.getElementById('input') as (HTMLElement & OsdsInput) | null;
 
   const getHTMLElement = (selector: string): HTMLElement | null => document.querySelector(selector);
 
@@ -56,7 +52,7 @@ export const InputPlay = async () => {
     input.errorStateControl = inputErrorStateControl;
 
     input.addEventListener('odsValueChange', (event: Event) => {
-      const evt = event as CustomEvent<OdsInputValueChangeEventDetail>;
+      const evt = event as CustomEvent<OdsInputValueChangeEvent>;
       logger.log("odsValueChange event", evt.detail);
 
       const errorMessagesConnexions: ErrorMessagesConnexion[] = [

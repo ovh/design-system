@@ -3,7 +3,6 @@ jest.mock('@ovhcloud/ods-core/src/components/password/ods-password-controller');
 import {
   OdsPasswordAttributes,
   OdsPasswordController,
-  OdsInputSizeList,
   OdsComponentAttributes2StringAttributes,
   odsPasswordDefaultAttributes,
 } from '@ovhcloud/ods-core';
@@ -15,10 +14,10 @@ import {
   OdsUnitTestAttributeType,
 } from '@ovhcloud/ods-testing';
 import { SpecPage, newSpecPage } from '@stencil/core/testing';
-
 import { OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
 import { OsdsPassword } from './osds-password';
 import { getAttributeContextOptions } from '@ovhcloud/ods-stencil/libraries/stencil-testing';
+import { ODS_INPUT_SIZES } from '@ovhcloud/ods-component-input';
 
 describe('spec:osds-password', () => {
   let page: SpecPage;
@@ -150,7 +149,7 @@ describe('spec:osds-password', () => {
       odsUnitTestAttribute<OdsPasswordAttributes, 'size'>({
         ...getAttributeContextOptions<OdsPasswordAttributes, OsdsPassword, 'size'>({
           name: 'size',
-          list: OdsInputSizeList,
+          list: ODS_INPUT_SIZES,
           defaultValue: odsPasswordDefaultAttributes.size,
           ...config
         })

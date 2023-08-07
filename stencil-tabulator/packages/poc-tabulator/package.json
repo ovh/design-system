@@ -1,0 +1,45 @@
+{
+  "name": "poc-tabulator",
+  "version": "0.0.1",
+  "description": "Stencil Component Starter",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.js",
+  "es2015": "dist/esm/index.mjs",
+  "es2017": "dist/esm/index.mjs",
+  "types": "dist/types/index.d.ts",
+  "collection": "dist/collection/collection-manifest.json",
+  "collection:main": "dist/collection/index.js",
+  "unpkg": "dist/poc-tabulator/poc-tabulator.esm.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ionic-team/stencil-component-starter.git"
+  },
+  "files": [
+    "dist/",
+    "loader/"
+  ],
+  "scripts": {
+    "build": "stencil build --docs",
+    "start": "stencil build --dev --watch --serve",
+    "test": "stencil test --spec --e2e",
+    "test.watch": "stencil test --spec --e2e --watchAll",
+    "generate": "stencil generate"
+  },
+  "dependencies": {
+    "@ovhcloud/ods-components": "^15.0.0",
+    "@ovhcloud/ods-stencil": "^15.0.0",
+    "@stencil/core": "^4.0.0",
+    "@stencil/sass": "^3.0.5",
+    "tabulator-tables": "^5.5.1"
+  },
+  "devDependencies": {
+    "@stencil/react-output-target": "^0.5.3",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.18.11",
+    "@types/tabulator-tables": "^5.4.10",
+    "jest": "^27.5.1",
+    "jest-cli": "^27.5.1",
+    "puppeteer": "^20.7.3"
+  },
+  "license": "MIT"
+}

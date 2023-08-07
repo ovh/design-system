@@ -12,7 +12,7 @@ import { OdsTextAreaController } from './core/controller';
 import { OsdsTextArea } from './osds-textarea';
 
 describe('spec:osds-textarea', () => {
-  const baseAttribute = { ariaLabel: null, hasFocus: false, spellcheck: false, value: '' }
+  const baseAttribute = { ariaLabel: null, hasFocus: false, spellcheck: false, value: '' };
   let page: SpecPage;
   let htmlTextArea: HTMLTextAreaElement | null | undefined;
   let instance: OsdsTextArea;

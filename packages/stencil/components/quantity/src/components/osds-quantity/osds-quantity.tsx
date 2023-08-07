@@ -1,6 +1,6 @@
+import type { OsdsInput } from '@ovhcloud/ods-component-input';
 import { Component, Element, Host, Listen, Prop, Watch, h } from '@stencil/core';
 import {
-  OdsInput,
   OdsQuantity,
   OdsQuantityController,
   OdsQuantityMethods,
@@ -40,7 +40,7 @@ export class OsdsQuantity implements OdsQuantity<OdsStencilMethods<OdsQuantityMe
 
   controller: OdsQuantityController = new OdsQuantityController(this);
 
-  input: (OdsInput & HTMLElement) | HTMLInputElement | null = null;
+  input: (OsdsInput & HTMLElement) | HTMLInputElement | null = null;
   minus: HTMLSlotElement | null = null;
   plus: HTMLSlotElement | null = null;
 

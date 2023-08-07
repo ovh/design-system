@@ -1,6 +1,6 @@
 import { OdsPasswordAttributes } from './ods-password-attributes';
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
-import { OdsInputSize } from '../input/ods-input-size';
+import { ODS_INPUT_SIZE } from '@ovhcloud/ods-component-input';
 
 export const odsPasswordDefaultAttributesDoc = {
     ariaLabel: null,
@@ -19,7 +19,7 @@ export const odsPasswordDefaultAttributesDoc = {
     placeholder: undefined,
     readOnly: false,
     required: false,
-    size: OdsInputSize.md,
+    size: ODS_INPUT_SIZE.md,
     value: '',
 } as const;
 

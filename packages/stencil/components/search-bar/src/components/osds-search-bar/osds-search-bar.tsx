@@ -1,7 +1,6 @@
+import type { OdsInputValueChangeEvent } from '@ovhcloud/ods-component-input';
 import { Component, Element, Host, h, Prop, Event, EventEmitter, Listen } from '@stencil/core';
 import {
-  OdsInputType,
-  OdsInputValueChangeEvent,
   OdsSearchBar,
   OdsSearchBarController,
   odsSearchBarDefaultAttributes,
@@ -13,6 +12,7 @@ import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libra
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
 import { ODS_BUTTON_SIZE } from '@ovhcloud/ods-component-button';
+import { ODS_INPUT_TYPE } from '@ovhcloud/ods-component-input';
 
 /**
  * @slot (unnamed) - SearchBar content
@@ -78,11 +78,11 @@ export class OsdsSearchBar implements OdsSearchBar<OdsStencilMethods<OdsSearchBa
 
   render() {
     const hasSelect = Boolean(this.options?.length);
-    
+
     return (
       <Host>
         {
-          hasSelect && 
+          hasSelect &&
           <osds-select
             tabindex="0"
             disabled={ this.disabled }>
@@ -90,20 +90,20 @@ export class OsdsSearchBar implements OdsSearchBar<OdsStencilMethods<OdsSearchBa
           </osds-select>
         }
 
-        <osds-input 
+        <osds-input
           tabindex="1"
           color={ OdsThemeColorIntent.primary }
-          type={ OdsInputType.text } 
+          type={ ODS_INPUT_TYPE.text }
           clearable
           contrasted={ this.contrasted }
           value={ this.value }
           loading={ this.loading }
-          disabled={ this.disabled }  
+          disabled={ this.disabled }
           placeholder={ this.placeholder }
           class={{ 'first': !hasSelect }}>
         </osds-input>
 
-        <osds-button 
+        <osds-button
           tabindex="2"
           onClick={ () => this.handlerOnClickSearchButton() }
           onKeyDown={ (event: KeyboardEvent) => this.handlerOnKeydownInput(event) }
@@ -113,7 +113,7 @@ export class OsdsSearchBar implements OdsSearchBar<OdsStencilMethods<OdsSearchBa
           contrasted={ this.contrasted }>
           <osds-icon
             color={ OdsThemeColorIntent.primary }
-            size={ ODS_ICON_SIZE.sm } 
+            size={ ODS_ICON_SIZE.sm }
             contrasted={ !this.contrasted }
             name={ ODS_ICON_NAME.SEARCH } />
         </osds-button>

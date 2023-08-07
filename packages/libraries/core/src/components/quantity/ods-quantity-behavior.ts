@@ -1,4 +1,4 @@
-import { HTMLOdsInputElement } from "../input/ods-input-type";
+import type { OsdsInput } from '@ovhcloud/ods-component-input';
 
 export interface OdsQuantityBehavior {
   /**
@@ -10,7 +10,7 @@ export interface OdsQuantityBehavior {
   * reference to the osds-input or native input element inside the component.
   * could be null if the reference is not yet filled.
   */
-  input: HTMLOdsInputElement | HTMLInputElement | null;
+  input: (OsdsInput & HTMLElement) | HTMLInputElement | null;
 
   /**
   * reference to the minus slot inside the component.

@@ -1,6 +1,7 @@
 import { E2EElement, E2EPage, newE2EPage } from '@stencil/core/testing';
-import { OdsPasswordAttributes, OdsComponentAttributes2StringAttributes, odsPasswordDefaultAttributes, OdsInputType } from '@ovhcloud/ods-core';
+import { OdsPasswordAttributes, OdsComponentAttributes2StringAttributes, odsPasswordDefaultAttributes } from '@ovhcloud/ods-core';
 import { OdsCreateAttributes, OdsStringAttributes2Str, odsPasswordBaseAttributes } from '@ovhcloud/ods-testing';
+import { ODS_INPUT_TYPE } from '@ovhcloud/ods-component-input';
 
 describe('e2e:osds-password', () => {
   let page: E2EPage;
@@ -31,7 +32,7 @@ describe('e2e:osds-password', () => {
       const osdsInput = await page.find('osds-password >>> osds-input');
       const input = osdsInput.shadowRoot?.querySelector('input') as HTMLInputElement;
       const type = await input.getAttribute('type');
-      expect(type).toBe(OdsInputType.password);
+      expect(type).toBe(ODS_INPUT_TYPE.password);
     });
 
     it('should change input type to text when masked is false', async () => {
@@ -40,7 +41,7 @@ describe('e2e:osds-password', () => {
       const osdsInput = await page.find('osds-password >>> osds-input');
       const input = osdsInput.shadowRoot?.querySelector('input') as HTMLInputElement;
       const type = await input.getAttribute('type');
-      expect(type).toBe(OdsInputType.text);
+      expect(type).toBe(ODS_INPUT_TYPE.text);
     });
 
     it('should display eye open icon when masked is true', async () => {
@@ -57,5 +58,4 @@ describe('e2e:osds-password', () => {
       expect(eyeIcon).not.toBeNull();
     });
   });
-
 });

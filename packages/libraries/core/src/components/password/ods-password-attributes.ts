@@ -1,8 +1,7 @@
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
-import { OdsInputSize } from '../input/ods-input-size';
+import type { ODS_INPUT_SIZE } from '@ovhcloud/ods-component-input';
 import { OdsFormForbiddenValues } from '../../form/validation/ods-form-forbidden-values';
 import { OdsComponentAttributes } from '../ods-component-attributes';
-import { OdsInputValue } from '../input/ods-input-value';
 
 export interface OdsPasswordAttributes extends OdsComponentAttributes {
   /** ariaLabel of the password */
@@ -38,7 +37,7 @@ export interface OdsPasswordAttributes extends OdsComponentAttributes {
   /** Indicates if the password is required or not */
   required?: boolean;
   /** Size of the password: see component principles */
-  size?: OdsInputSize;
+  size?: ODS_INPUT_SIZE;
   /** Current value of the password */
-  value: OdsInputValue;
+  value: string;
 }

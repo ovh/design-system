@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
               element = version;
             }
             selector.parentNode.insertBefore(element, selector.nextSibling);
-
+            observer.disconnect();
           }
         break;
       }
@@ -45,9 +45,6 @@ document.addEventListener('DOMContentLoaded', function() {
   const observer = new MutationObserver(callback);
   observer.observe(document.body, { childList: true, subtree: false });
 }, false);
-
-
-
 
 addons.setConfig({
   theme,

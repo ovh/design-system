@@ -1,14 +1,12 @@
 import { OdsThemeColorIntent, OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
 import {
-  createComponentTable,
   extractArgTypes,
   extractStoryParams,
   getTagAttributes,
 } from '../../../core/componentHTMLUtils';
 
-import { defineCustomElements } from '@ovhcloud/ods-stencil-accordion/loader';
+import { defineCustomElements } from '@ovhcloud/ods-component-accordion/loader';
 import { html } from 'lit-html';
-import { iframe } from '../../../.storybook/iframe';
 import page from './accordion.web-component.stories.page.mdx';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 
@@ -40,9 +38,6 @@ export default {
   title: 'UI Components/Accordion [atom]/Web Component',
   id: 'accordion',
   parameters: {
-    notes: {
-      API: iframe('/stencil-accordion/modules/index.html'),
-    },
     docs: { page }
   },
   argTypes: extractArgTypes(storyParams),

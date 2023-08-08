@@ -3,7 +3,7 @@ import { OdsSwitchChangedEventDetail } from './ods-switch-change-event-detail';
 
 export interface OdsSwitchEvents extends OdsComponentEvents {
     /**
-     * Event triggered on accordion toggle
+     * Event triggered on switch toggle
      */
     odsSwitchChanged: OdsSwitchChangedEventDetail;
 }

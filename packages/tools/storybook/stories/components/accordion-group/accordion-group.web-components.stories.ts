@@ -4,9 +4,8 @@ import {
   getTagAttributes,
 } from '../../../core/componentHTMLUtils';
 
-import { defineCustomElements } from '@ovhcloud/ods-stencil-accordion/loader';
+import { defineCustomElements } from '@ovhcloud/ods-component-accordion/loader';
 import { html } from 'lit-html';
-import { iframe } from '../../../.storybook/iframe';
 import page from './accordion-group.web-component.stories.page.mdx';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 
@@ -41,9 +40,6 @@ export default {
   title: 'UI Components/Accordion Group [molecule]/Web Component',
   id: 'accordion-group',
   parameters: {
-    notes: {
-      API: iframe('/stencil-accordion/modules/index.html'),
-    },
     docs: { page }
   },
   argTypes: extractArgTypes(storyParams),

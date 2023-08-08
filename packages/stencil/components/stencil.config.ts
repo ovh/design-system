@@ -34,6 +34,8 @@ const config: Config = {
     reactOutput: {
       // exclude components that have been moved to the new repo
       excludeComponents: [
+        'osds-accordion',
+        'osds-accordion-group',
         'osds-breadcrumb',
         'osds-button',
         'osds-collapsible',
@@ -52,6 +54,8 @@ const config: Config = {
     vueOutput: {
       // exclude components that have been moved to the new repo
       excludeComponents: [
+        'osds-accordion',
+        'osds-accordion-group',
         'osds-breadcrumb',
         'osds-button',
         'osds-collapsible',
@@ -79,7 +83,6 @@ const config: Config = {
     }
   }),
   bundles: [
-    { components: ['osds-accordion', 'osds-accordion-group'] },
     {
       components: [
         'osds-cart',

@@ -5,6 +5,7 @@
   "author": "OVH SAS",
   "license": "Apache-2.0",
   "dependencies": {
+    "@ovhcloud/ods-component-accordion": "^15.0.1",
     "@ovhcloud/ods-component-breadcrumb": "^15.0.1",
     "@ovhcloud/ods-component-button": "^15.0.1",
     "@ovhcloud/ods-component-collapsible": "^15.0.1",

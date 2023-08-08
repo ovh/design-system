@@ -1,8 +1,6 @@
 import { extractArgTypes, extractStoryParams, getTagAttributes, } from '../../../core/componentHTMLUtils';
 
-import { XDConfig } from 'storybook-addon-xd-designs/lib/config';
 import changelog from '@ovhcloud/ods-stencil/components/checkbox/CHANGELOG.md';
-import { config } from 'storybook-addon-xd-designs';
 import { defineCustomElements } from '@ovhcloud/ods-stencil/components/checkbox/loader';
 import { html } from 'lit-html';
 import { iframe } from '../../../.storybook/iframe';
@@ -36,16 +34,14 @@ const storyParams = {
 };
 
 export default {
-  title: 'UI Components/Checkbox/Checkbox [meta]/Web Component',
+  title: 'Meta Components/Checkbox [meta]/Web Component',
+  id: 'checkbox',
   parameters: {
     notes: {
       API: iframe('/stencil-components-checkbox/modules/index.html'),
       changelog,
     },
-    docs: { page },
-    design: config({
-      artboardUrl: '',
-    } as XDConfig),
+    docs: { page }
   },
   argTypes: extractArgTypes(storyParams)
 };

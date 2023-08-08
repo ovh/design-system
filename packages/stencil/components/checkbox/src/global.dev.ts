@@ -7,7 +7,7 @@ import { OdsLogger } from '@ovhcloud/ods-core';
 import { OsdsCheckbox } from '@ovhcloud/ods-stencil/components/checkbox/src/components/osds-checkbox/osds-checkbox';
 import './components';
 import './global';
-import '@ovhcloud/ods-stencil/components/tile';
+import '@ovhcloud/ods-component-tile';
 
 const logger = new OdsLogger('global-dev');
 logger.log('init');

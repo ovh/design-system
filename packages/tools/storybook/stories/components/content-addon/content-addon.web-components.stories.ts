@@ -4,7 +4,7 @@ import { iframe } from '../../../.storybook/iframe';
 
 
 import { defineCustomElements } from '@ovhcloud/ods-stencil-content-addon/loader';
-import { defineCustomElements as tileCustomElements } from '@ovhcloud/ods-stencil-tile/loader';
+import { defineCustomElements as tileCustomElements } from '@ovhcloud/ods-component-tile/loader';
 import { extractArgTypes, extractStoryParams, getTagAttributes, } from '../../../core/componentHTMLUtils';
 
 import changelog from '@ovhcloud/ods-stencil-content-addon/CHANGELOG.md';
@@ -63,6 +63,7 @@ const pricingStoryParams = {
 
 export default {
   title: 'UI Components/Content Addon [layout]/Web Component',
+  id: 'content-addon',
   parameters: {
     notes: {
       API: iframe('/stencil-content-addon/modules/index.html'),

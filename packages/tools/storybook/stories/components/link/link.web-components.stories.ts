@@ -1,18 +1,13 @@
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-import { iframe } from '../../../.storybook/iframe';
-
-// import { config } from 'storybook-addon-xd-designs';
-// import { XDConfig } from 'storybook-addon-xd-designs/lib/config';
-
-
+import { defineCustomElements } from '@ovhcloud/ods-component-link/loader';
+import { OdsHTMLAnchorElementRelList, OdsHTMLAnchorElementTarget, OdsHTMLAnchorElementTargetList } from '@ovhcloud/ods-common-core';
 import { OdsThemeColorIntent, OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
-import { OdsHTMLAnchorElementRelList, OdsHTMLAnchorElementTarget, OdsHTMLAnchorElementTargetList } from '@ovhcloud/ods-core';
-
-import { defineCustomElements } from '@ovhcloud/ods-stencil-link/loader';
 import { createComponentTable, getTagAttributes } from '../../../core/componentHTMLUtils';
 
-import changelog from '@ovhcloud/ods-stencil-link/CHANGELOG.md';
+// @ts-ignore
+import changelog from '@ovhcloud/ods-component-link/CHANGELOG.md';
+// @ts-ignore
 import page from './link.web-component.stories.page.mdx';
 
 defineCustomElements();
@@ -39,16 +34,13 @@ const argTypes = {
 };
 
 export default {
-  title: 'UI Components/Link [quark]/Web Component',
+  title: 'UI Components/Link [atom]/Web Component',
+  id: 'link',
   parameters: {
     notes: {
-      API: iframe('stencil-components-link/modules/index.html'),
       changelog,
     },
-    docs: { page },
-    /* design: config({
-      artboardUrl: 'https://xd.adobe.com/view/040c7684-d702-451e-98d9-23320eacd292-515f/screen/0c4d4f2c-9a40-44b2-b3f9-3fa01eed0911/Desktop',
-    {  as XDConfig), */
+    docs: { page }
   },
   argTypes
 };
@@ -78,6 +70,7 @@ const TemplateDefault = (args:any) => html`
   </osds-link>
 `;
 export const Default = TemplateDefault.bind({});
+// @ts-ignore
 Default.args = {
   ...storyParams,
 };
@@ -138,6 +131,7 @@ ${unsafeHTML(createComponentTable(
 </div>
 `;
 export const All = TemplateAll.bind({});
+// @ts-ignore
 All.parameters = {
   controls: { hideNoControlsWarning: true }
 };

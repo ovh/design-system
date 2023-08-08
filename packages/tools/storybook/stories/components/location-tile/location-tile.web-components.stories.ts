@@ -2,13 +2,10 @@ import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 import { iframe } from '../../../.storybook/iframe';
 
-// import { config } from 'storybook-addon-xd-designs';
-// import { XDConfig } from 'storybook-addon-xd-designs/lib/config';
-
-
 import { OdsThemeColorIntent, OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
 import { defineCustomElements } from '@ovhcloud/ods-stencil-location-tile/loader';
-import { OdsTileSize, OdsTileSizeList, OdsLocationTileVariant, OdsLocationTileVariantList, ODS_COUNTRY_ISO_CODE } from '@ovhcloud/ods-core';
+import { OdsLocationTileVariant, OdsLocationTileVariantList, ODS_COUNTRY_ISO_CODE } from '@ovhcloud/ods-core';
+import { ODS_TILE_SIZE, ODS_TILE_SIZES } from '@ovhcloud/ods-component-tile';
 import {
   createComponentTable,
   extractArgTypes,
@@ -31,8 +28,8 @@ const storyParams = {
   },
   size: {
     category: 'General',
-    defaultValue: OdsTileSize.md,
-    options: OdsTileSizeList,
+    defaultValue: ODS_TILE_SIZE.md,
+    options: ODS_TILE_SIZES,
     control: { type: 'select' },
   },
   variant: {
@@ -84,16 +81,13 @@ const storyParams = {
 };
 
 export default {
-  title: 'UI Components/Tile/Location Tile [atom]/Web Component',
+  title: 'UI Components/Location Tile [deprecated]/Web Component',
   parameters: {
     notes: {
       API: iframe('/stencil-location-tile/modules/index.html'),
       changelog,
     },
-    docs: { page },
-    /* design: config({
-      artboardUrl: 'https://xd.adobe.com/view/9bb1ccc1-e850-428c-9fd2-d4a60718a440-cee2/screen/9f1bf787-e868-4952-988e-2d375b009331/Desktop',
-    {  as XDConfig), */
+    docs: { page }
   },
   argTypes: extractArgTypes(storyParams)
 };
@@ -104,6 +98,9 @@ const TemplateDefault = (args: any) => {
     delete args.flex;
   }
   return html`
+    <h2 style='color:red'>
+      ⚠ Warning this component is deprecated and will be remove soon
+    </h2>
     <div class='tile-container'>
       <osds-location-tile ...=${getTagAttributes(args)}>
         <span slot='country'>${unsafeHTML(args.country || 'Country')}</span>
@@ -151,7 +148,7 @@ const TemplateAll = () => html`
 <h3>Sizes & Colors</h3>
 ${unsafeHTML(createComponentTable(
   defaultTag,
-  { size: OdsTileSizeList },
+  { size: ODS_TILE_SIZES },
   { color: OdsThemeColorIntentList },
   defaultContent,
   { iso: 'fr' }
@@ -161,14 +158,14 @@ ${unsafeHTML(createComponentTable(
 ${unsafeHTML(createComponentTable(
   defaultTag,
   { variant: OdsLocationTileVariantList },
-  { size: OdsTileSizeList },
+  { size: ODS_TILE_SIZES },
   defaultContent,
   { iso: 'fr' }
 ))}
 <h3>Interactive Sizes & Colors</h3>
 ${unsafeHTML(createComponentTable(
   defaultTag,
-  { size: OdsTileSizeList },
+  { size: ODS_TILE_SIZES },
   { color: OdsThemeColorIntentList },
   defaultContent,
   { iso: 'fr', interactive: true }
@@ -192,7 +189,7 @@ ${unsafeHTML(createComponentTable(
 <h3>Selected Sizes & Colors</h3>
 ${unsafeHTML(createComponentTable(
   defaultTag,
-  { size: OdsTileSizeList },
+  { size: ODS_TILE_SIZES },
   { color: OdsThemeColorIntentList },
   defaultContent,
   { iso: 'fr', interactive: true, checked: true }
@@ -208,7 +205,7 @@ ${unsafeHTML(createComponentTable(
 <h3>Disabled Sizes & Colors</h3>
 ${unsafeHTML(createComponentTable(
   defaultTag,
-  { size: OdsTileSizeList },
+  { size: ODS_TILE_SIZES },
   { color: OdsThemeColorIntentList },
   defaultContent,
   { iso: 'fr', disabled: true }

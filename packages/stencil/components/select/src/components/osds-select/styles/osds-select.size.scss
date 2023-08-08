@@ -7,8 +7,12 @@
       grid-column-gap: ods-get-size-property($sizes, grid-column-gap);
       height: ods-get-size-property($sizes, height);
       border-width: ods-get-size-property($sizes, border-width);
-      border-radius: ods-get-size-property($sizes, border-radius);
+      border-right-width: var(--ods-size-select-border-right-width, ods-get-size-property($sizes, border-width));
       padding: ods-get-size-property($sizes, padding);
+      border-top-left-radius: var(--ods-size-select-border-radius-top-left, ods-get-size-property($sizes, border-radius));
+      border-bottom-left-radius: var(--ods-size-select-border-radius-bottom-left, ods-get-size-property($sizes, border-radius));
+      border-top-right-radius: var(--ods-size-select-border-radius-top-right, ods-get-size-property($sizes, border-radius));
+      border-bottom-right-radius: var(--ods-size-select-border-radius-bottom-right, ods-get-size-property($sizes, border-radius));
 
       &.opened {
         border-bottom-right-radius: 0;

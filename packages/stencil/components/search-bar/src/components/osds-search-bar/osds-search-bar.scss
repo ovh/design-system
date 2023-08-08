@@ -1,0 +1,56 @@
+@import 'styles/osds-search-bar.mixins';
+@import 'styles/osds-search-bar.color';
+@import 'styles/osds-search-bar.size';
+@import 'styles/osds-search-bar.typography';
+@import '~@ovhcloud/ods-theming/color/ods-theming-color';
+@import '~@ovhcloud/ods-theming/ods-theme';
+
+:host {
+  display: inline-flex;
+
+  osds-select {
+    --ods-size-select-border-radius-bottom-right: 0;
+    --ods-size-select-border-radius-top-right: 0;
+  }
+
+  .first {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+  }
+  
+  osds-input {
+    flex: auto;
+  }
+
+  osds-input:not(.first) {
+    border-radius: 0;
+    border-left-width: 0;
+  }
+
+  osds-button {
+    flex-shrink: 0;
+    &::part(button) {
+      --ods-size-button-sm-border-width: var(--ods-size-01);
+      border-left: 0;
+      border-bottom-left-radius: 0;
+      border-top-left-radius: 0;
+      border-top-right-radius: var(--ods-size-border-radius-01);
+      border-bottom-right-radius:  var(--ods-size-border-radius-01);
+    }  
+  }
+}
+
+:host([contrasted]) {
+  osds-button {
+    &::part(button) {
+      border-color: var(--ods-color-primary-200);
+    }  
+  }
+}
+
+// apply the theme template for the component
+@include ods-theme-component() {
+  @include osds-search-bar-theme-color();
+  @include osds-search-bar-theme-size();
+  @include osds-search-bar-theme-typography();
+}

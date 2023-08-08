@@ -1,6 +1,6 @@
 import { OdsCheckboxButton } from './ods-checkbox-button';
 import { OdsComponentController } from '../ods-component-controller';
-import { OdsIconName } from '../icon/ods-icon-size';
+import { ODS_ICON_NAME } from '@ovhcloud/ods-component-icon';
 
 /**
  * common controller logic for checkbox button component used by the different implementations.
@@ -12,11 +12,11 @@ export class OdsCheckboxButtonController extends OdsComponentController<OdsCheck
     super(component);
   }
 
-  computeIconName(checked = false, indeterminate = false): OdsIconName | undefined {
+  computeIconName(checked = false, indeterminate = false): ODS_ICON_NAME | undefined {
     if (indeterminate) {
-      return OdsIconName.MINUS;
+      return ODS_ICON_NAME.MINUS;
     } else if (checked) {
-      return OdsIconName.OK;
+      return ODS_ICON_NAME.OK;
     }
     return undefined;
   }

@@ -1,12 +1,15 @@
-import { E2EElement, E2EPage, newE2EPage } from '@stencil/core/testing';
-import { OdsPaginationAttributes, odsPaginationDefaultAttributes, OdsComponentAttributes2StringAttributes } from '@ovhcloud/ods-core';
+import { E2EPage, newE2EPage } from '@stencil/core/testing';
+import {
+  OdsPaginationAttributes,
+  odsPaginationDefaultAttributes,
+  OdsComponentAttributes2StringAttributes,
+} from '@ovhcloud/ods-core';
 import { OdsCreateAttributes, OdsStringAttributes2Str, odsPaginationBaseAttributes } from '@ovhcloud/ods-testing';
 
 describe('e2e:osds-pagination', () => {
   let page: E2EPage;
-  let el: E2EElement;
 
-  async function setup({ attributes = { total: 21, current: 5 }, html = `` }: { attributes?: Partial<OdsPaginationAttributes>; html?: string } = {}) {
+  async function setup({ attributes = { totalPages: 21, current: 5 }, html = `` }: { attributes?: Partial<OdsPaginationAttributes>; html?: string } = {}) {
     const minimalAttributes: OdsPaginationAttributes = OdsCreateAttributes(attributes, odsPaginationBaseAttributes);
     const stringAttributes = OdsComponentAttributes2StringAttributes<OdsPaginationAttributes>(minimalAttributes, odsPaginationDefaultAttributes);
 
@@ -17,10 +20,9 @@ describe('e2e:osds-pagination', () => {
       </osds-pagination>
     `);
     await page.evaluate(() => document.body.style.setProperty('margin', '4px'));
-    el = await page.find('osds-pagination');
   }
 
-  describe('screenshots of total of 21', () => {
+  describe('screenshots of totalPages of 21', () => {
     for (let current = 1; current <= 21; current++) {
       const screenshotActions = [
         {
@@ -33,7 +35,7 @@ describe('e2e:osds-pagination', () => {
           await setup({
             attributes: {
               current,
-              total: 21,
+              totalPages: 21,
             },
           });
           action();
@@ -51,7 +53,7 @@ describe('e2e:osds-pagination', () => {
     }
   });
 
-  describe('screenshots of total of 21 and disabled', () => {
+  describe('screenshots of totalPages of 21 and disabled', () => {
     for (let current = 1; current <= 21; current++) {
       const screenshotActions = [
         {
@@ -64,7 +66,7 @@ describe('e2e:osds-pagination', () => {
           await setup({
             attributes: {
               current,
-              total: 21,
+              totalPages: 21,
               disabled: true,
             },
           });
@@ -81,5 +83,21 @@ describe('e2e:osds-pagination', () => {
         });
       });
     }
+  });
+
+  describe('screenshots with total items', () => {
+    it('should not display the per-page select if less than 10 items', async () => {
+      await setup({ attributes: { current: 1, totalItems: 5 } });
+
+      const results = await page.compareScreenshot('pagination', { fullPage: false, omitBackground: true });
+      expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
+    });
+
+    it('should render the per-page select if more than 10 items', async () => {
+      await setup({ attributes: { current: 1, totalItems: 25 } });
+
+      const results = await page.compareScreenshot('pagination', { fullPage: false, omitBackground: true });
+      expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
+    });
   });
 });

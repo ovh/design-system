@@ -3,6 +3,84 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
+
+
+# [15.0.1](https://ovhcloud.design/v15.0.1/?path=/docs/design-system-changelog--page) (2023-07-26)
+[compare](https://github.com/ovh/design-system/compare/v15.0.0...v15.0.1)
+
+### Bug Fixes
+
+* **release:** remove private on new packages to publish ([0cd6ed9](https://github.com/ovh/design-system/commit/0cd6ed9049498d7697a51829b58d7620f946c94f))
+
+
+
+
+
+[Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
+
+
+# [15.0.0](https://ovhcloud.design/v15.0.0/?path=/docs/design-system-changelog--page) (2023-07-25)
+[compare](https://github.com/ovh/design-system/compare/v13.0.1...v15.0.0)
+
+### Features
+
+* update whats new page ([#102](https://github.com/ovh/design-system/issues/102)) ([27aba78](https://github.com/ovh/design-system/commit/27aba78e296f7ba3d450595b31a4c3e5406a20b3))
+
+
+
+
+
+[Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
+
+
+# [14.1.1](https://ovhcloud.design/v14.1.1/?path=/docs/design-system-changelog--page) (2023-07-19)
+[compare](https://github.com/ovh/design-system/compare/v14.1.0...v14.1.1)
+
+### Features
+
+* update whats new page ([#102](https://github.com/ovh/design-system/issues/102)) ([a3a5fb7](https://github.com/ovh/design-system/commit/a3a5fb734815e21050de820a1964b4781323fe6b))
+
+
+
+[Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
+
+
+# [14.1.0](https://ovhcloud.design/v14.1.0/?path=/docs/design-system-changelog--page) (2023-07-18)
+[compare](https://github.com/ovh/design-system/compare/v13.0.1...v14.1.0)
+
+**Note:** Version bump only for package @ovhcloud/ods-doc
+
+
+
+
+
+[Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
+
+
+# [14.0.1](https://ovhcloud.design/v14.0.1/?path=/docs/design-system-changelog--page) (2023-06-28)
+[compare](https://github.com/ovh/design-system/compare/v14.0.0...v14.0.1)
+
+**Note:** Version bump only for package @ovhcloud/ods-doc
+
+
+
+
+
+[Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
+
+
+# [14.0.0](https://ovhcloud.design/v14.0.0/?path=/docs/design-system-changelog--page) (2023-06-28)
+[compare](https://github.com/ovh/design-system/compare/v13.0.1...v14.0.0)
+
+**Note:** Version bump only for package @ovhcloud/ods-doc
+
+
+
+
+
 [Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
 
 

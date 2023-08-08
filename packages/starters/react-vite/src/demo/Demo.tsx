@@ -1,7 +1,8 @@
 import React from 'react';
 
 // you can import react proxy from the independent package
-import { OsdsButton } from '@ovhcloud/ods-stencil/components/button/react';
+import { OsdsButton } from '@ovhcloud/ods-components/button/react';
+import { OsdsTile } from '@ovhcloud/ods-components/tile/react';
 
 // you can import multiple react proxies from the grouped package
 import {
@@ -10,7 +11,6 @@ import {
   OsdsMessage,
   OsdsRadio,
   OsdsRadioGroup,
-  OsdsTile,
   OsdsToggle,
   OsdsFlag
 } from '@ovhcloud/ods-stencil/components/react';
@@ -46,8 +46,8 @@ const Demo: React.FC = () => (
     <h3 className={'ods-subheading-200'}>ODS React components</h3>
     <h5>Ods Button</h5>
     <div>
-      <OsdsButton color={OdsThemeColorIntent.primary} onClick={handleOdsButtonClick} flex>ODS button</OsdsButton>
-      <MyButton flex={true} onClick={handleMyButtonClick}>My React Button based on ODS</MyButton>
+      <OsdsButton color={OdsThemeColorIntent.primary} onClick={handleOdsButtonClick}>ODS button</OsdsButton>
+      <MyButton onClick={handleMyButtonClick}>My React Button based on ODS</MyButton>
     </div>
 
     <h5>Ods Flag</h5>

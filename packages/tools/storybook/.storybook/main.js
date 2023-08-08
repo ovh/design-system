@@ -1,9 +1,13 @@
 module.exports = {
+  core: {
+    builder: '@storybook/builder-webpack4',
+  },
   features: {
     postcss: false,
     buildStoriesJson: true
   },
-  stories: ['../**/*.stories.@(md|mdx)', '../**/*.stories.@(js|jsx|ts|tsx)'],
+  framework: '@storybook/react',
+  stories: ['../**/*.stories.@(md|mdx|ts|tsx)'],
   addons: [
     // contains actions, backgrounds, controls, docs, viewport and toolbars addons
     {
@@ -25,12 +29,8 @@ module.exports = {
     '@storybook/addon-notes', // to charge the documentation generated automatically by stencil
     //'storybook-addon-xd-designs/register', // Adobe XD tab
     '@storybook/addon-interactions', // Interactions tab
-    "storybook-addon-preview/register"
+    'storybook-addon-preview/register',
   ],
-  "framework": "@storybook/react",
-  "core": {
-    "builder": "@storybook/builder-webpack4"
-  },
   webpack: async config => {
     return config;
   },

@@ -6,7 +6,6 @@ import {
   OdsLocationTileAttributes,
   OdsLocationTileController,
   OdsLocationTileVariantList,
-  OdsTileSizeList,
   odsLocationTileDefaultAttributes
 } from '@ovhcloud/ods-core';
 import {
@@ -19,6 +18,7 @@ import { SpecPage, newSpecPage } from '@stencil/core/testing';
 
 import { OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
 import { OsdsLocationTile } from './osds-location-tile';
+import { ODS_TILE_SIZES } from '@ovhcloud/ods-component-tile';
 import { getAttributeContextOptions } from '@ovhcloud/ods-stencil/libraries/stencil-testing';
 
 describe('spec:osds-location-tile', () => {
@@ -94,7 +94,7 @@ describe('spec:osds-location-tile', () => {
       odsUnitTestAttribute<OdsLocationTileAttributes, 'size'>({
         ...getAttributeContextOptions<OdsLocationTileAttributes, OsdsLocationTile, 'size'>({
           name: 'size',
-          list: OdsTileSizeList,
+          list: ODS_TILE_SIZES,
           defaultValue: odsLocationTileDefaultAttributes.size,
           ...config
         })

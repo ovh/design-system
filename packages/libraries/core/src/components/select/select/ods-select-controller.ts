@@ -78,9 +78,7 @@ export class OdsSelectController extends OdsComponentController<OdsSelect> {
   }
 
   handlerKeyDown(event: KeyboardEvent): void {
-    console.log('selectOptions', this.selectOptions);
     const selectedSelectOptionIndex = this.selectOptions.findIndex((select) => select.getAttribute('selected') !== null || document.activeElement === select);
-    console.log('selectedSelectOptionIndex', selectedSelectOptionIndex);
     switch (event.code) {
       case 'Escape': {
         this.selectOptions.forEach(s => s.removeAttribute('selected'))
@@ -115,16 +113,21 @@ export class OdsSelectController extends OdsComponentController<OdsSelect> {
     }
     if (event.code === 'ArrowUp' || (event.code === 'Tab' && event.shiftKey)) {
       const index = hasSelectedOption ? selectedSelectOptionIndex - 1 : 0;
-      if (index < 0) {
-        this.component.setFocus();
+      if (index < 0 && (event.code === 'Tab' && event.shiftKey)) {
         return;
+      } else if (index < 0) {
+        return focusSelectOption(this.selectOptions.length -1)
       }
       return focusSelectOption(index);
     }
     if (event.code === 'ArrowDown' || event.code === 'Tab') {
       const index = hasSelectedOption ? selectedSelectOptionIndex + 1 : 0;
-      if (index >= this.selectOptions.length) {
-        return;
+      if (index >= this.selectOptions.length && event.code === 'Tab') {
+        this.selectOptions.forEach(s => s.removeAttribute('selected'))
+        this.selectOptions.find(s => s.value === this.component.value)?.setAttribute('selected', '');
+        return this.closeSurface();
+      } else if (index >= this.selectOptions.length) {
+        return focusSelectOption(0);
       }
       return focusSelectOption(index);
     }

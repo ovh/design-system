@@ -32,7 +32,7 @@
         display: none;
     }
 
-    .sidebar-item[id*="components-"][data-nodetype="group"]:not([id*="quark"]):not([id*="atom"]):not([id*="molecule"]):not([id*="organism"]):not([id*="layout"]):not([id*="template"]):not([id*="meta"]) > svg {
+    .sidebar-item[id*="components-"][data-nodetype="group"]:not([id*="quark"]):not([id*="atom"]):not([id*="molecule"]):not([id*="organism"]):not([id*="layout"]):not([id*="template"]):not([id*="meta"]):not([id*="deprecated"]):not([id*="new"]) > svg {
         display: initial;
     }
 
@@ -87,6 +87,16 @@
         background-color: #000D1F;
         color: #FFF;
         font-style: italic;
+    }
+
+    .sidebar-item > .badge-deprecated::before {
+      background-color: #C11B1B;
+      color: #FFF;
+    }
+
+    .sidebar-item > .badge-new::before {
+      background-color: #268403;
+      color: #FFF;
     }
 
     /*

@@ -1,15 +1,11 @@
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 
-
 import { defineCustomElements } from '@ovhcloud/ods-stencil-radio/loader';
 
 import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
-import { OdsLogger } from '@ovhcloud/ods-core/src';
 
 defineCustomElements();
-
-const logger = new OdsLogger('OsdsTile-stories-update-strategy');
 
 const storyParams = {
   disabled: {
@@ -50,7 +46,7 @@ const TemplateUpdateStrategy = (args: any) => html`
   ${unsafeHTML(args.slotJs)}
   <div>
     <h3>Tile with external click behaviour</h3>
-    <osds-tile interactive
+    <osds-tile hoverable
                id="tile-3"
                onclick="handleTile3Click()"
                ...=${getTagAttributes(args)}>

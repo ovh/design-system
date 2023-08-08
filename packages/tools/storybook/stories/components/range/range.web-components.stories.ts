@@ -64,6 +64,7 @@ const storyParams = {
 
 export default {
   title: 'UI Components/Range [atom]/Web Component',
+  id: 'range',
   parameters: {
     notes: {
       API: iframe('/stencil-range/modules/index.html'),

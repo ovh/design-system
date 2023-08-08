@@ -80,6 +80,13 @@ describe('spec:ods-radio-controller', () => {
         controller.setButtonTabindex(n);
         expect(component.buttonTabindex).toBe(n);
       });
+
+      it('should set buttonTabindex value to minus one if disabled', () => {
+        const n = 1 + Math.round(Math.random() * 5);
+        setup({ buttonTabindex: 0, disabled: true });
+        controller.setButtonTabindex(n);
+        expect(component.buttonTabindex).toBe(-1);
+      });
     });
 
     describe('methods:updateDisabledOnChild', () => {
@@ -184,7 +191,6 @@ describe('spec:ods-radio-controller', () => {
 
       beforeEach(() => {
         radioGroup.addEventListener = jest.fn();
-        el.closest = jest.fn(() => radioGroup);
       });
 
       it('should call updateCheckOnChild with component checked attribute', () => {
@@ -209,6 +215,8 @@ describe('spec:ods-radio-controller', () => {
 
       it('should call radioGroup.registerRadio', () => {
         setup({ el });
+        jest.spyOn(controller, 'closestPassShadow').mockReturnValue(radioGroup);
+
         controller.beforeInit();
 
         expect(radioGroup.registerRadio).toHaveBeenCalledTimes(1);
@@ -217,12 +225,14 @@ describe('spec:ods-radio-controller', () => {
 
       it('should call radioGroup.addEventListener with odsDisabledChange', () => {
         setup({ el });
+        jest.spyOn(controller, 'closestPassShadow').mockReturnValue(radioGroup);
         controller.beforeInit();
         expect(radioGroup.addEventListener).toHaveBeenCalledWith('odsDisabledChange', expect.any(Function));
       });
 
       it('should call radioGroup.addEventListener with odsValueChange', () => {
         setup({ el });
+        jest.spyOn(controller, 'closestPassShadow').mockReturnValue(radioGroup);
         controller.beforeInit();
         expect(radioGroup.addEventListener).toHaveBeenCalledWith('odsValueChange', expect.any(Function));
       });
@@ -230,6 +240,7 @@ describe('spec:ods-radio-controller', () => {
       it('should call updateState', () => {
         setup({ el });
         spyOnUpdateState = jest.spyOn(controller, 'updateState');
+        jest.spyOn(controller, 'closestPassShadow').mockReturnValue(radioGroup);
         controller.beforeInit();
 
         expect(spyOnUpdateState).toHaveBeenCalledTimes(1);

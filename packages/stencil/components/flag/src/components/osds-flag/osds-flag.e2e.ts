@@ -92,7 +92,7 @@ ${spaceBefore}
   describe('path', () => {
     it('should load default path', async () => {
       await setup({ attributes: {}, cbkInterceptorRequest: myCbk });
-      const pattern = /^https?:\/\/localhost(:\d+)?\/.*?\/fr\.svg$/;
+      const pattern = /^https?:\/\/localhost(:\d+)?(\/.*)?\/fr\.svg$/;
       expect(url).toMatch(pattern);
     });
 
@@ -114,7 +114,7 @@ ${spaceBefore}
 
     it('should load with custom path', async () => {
       await setup({ attributes: {iso: ODS_COUNTRY_ISO_CODE.FR ,assetPath: '../flags-custom-path/'}, cbkInterceptorRequest: myCbk});
-      const pattern = /^https?:\/\/localhost(:\d+)?\/[\w\/]+flags-custom-path\/fr\.svg/;
+      const pattern = /^https?:\/\/localhost(:\d+)?\/[\w\/]*flags-custom-path\/fr\.svg/;
       expect(url).toMatch(pattern);
     });
 
@@ -139,7 +139,7 @@ ${spaceBefore}
   describe('lazy', () => {
     it('should load if visible', async () => {
       await setup({ attributes: {iso: ODS_COUNTRY_ISO_CODE.FR, lazy: true}, cbkInterceptorRequest: myCbk });
-      const pattern = /^https?:\/\/localhost(:\d+)?\/.*?\/fr\.svg$/;
+      const pattern = /^https?:\/\/localhost(:\d+)?(\/.*)?\/fr\.svg$/;
       expect(url).toMatch(pattern);
     });
     it('should not load if hidden', async () => {

@@ -33,7 +33,7 @@ describe('spec:osds-progress-bar', () => {
 
     page = await newSpecPage({
       components: [OsdsProgressBar],
-      html: `<osds-progress-bar ${OdsStringAttributes2Str(stringAttributes)}>My ProgressBar</osds-progress-bar>`,
+      html: `<osds-progress-bar ${OdsStringAttributes2Str(stringAttributes)}>My Progress Bar</osds-progress-bar>`,
     });
 
     root = page.root;

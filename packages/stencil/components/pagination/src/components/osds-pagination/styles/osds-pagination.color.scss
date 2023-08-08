@@ -5,10 +5,10 @@
   /** main colors */
   :host {
     osds-icon {
-      background-color: ods-get-color-variable($intent-name: primary, $hue: '800');
-    } 
+      background-color: ods-get-color-variable($intent-name: primary, $hue: '500');
+    }
 
-    osds-button.selectedpage::part(button) {
+    osds-button.selected-page::part(button) {
       background-color: ods-get-color-variable($intent-name: primary, $hue: '800');
       color: white;
     }

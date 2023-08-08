@@ -5,7 +5,6 @@ import {
   OdsLocationTileAttributes,
   OdsLocationTileVariantList,
   OdsLogger,
-  OdsTileSizeList,
   odsLocationTileDefaultAttributes
 } from '@ovhcloud/ods-core';
 import {
@@ -15,6 +14,7 @@ import {
 } from '@ovhcloud/ods-testing';
 
 import { OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
+import { ODS_TILE_SIZES } from '@ovhcloud/ods-component-tile';
 
 const logger = new OdsLogger('osds-location-tile-e2e');
 
@@ -94,7 +94,7 @@ describe('e2e:osds-location-tile', () => {
   describe('screenshots', () => {
     screenshotActions.forEach(({ actionDescription, action }) => {
         OdsThemeColorIntentList.forEach((color) => {
-          OdsTileSizeList.forEach((size) => {
+          ODS_TILE_SIZES.forEach((size) => {
             OdsLocationTileVariantList.forEach((variant) => {
 
                 it([color, size, variant, actionDescription].join(', '), async () => {

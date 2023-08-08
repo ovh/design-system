@@ -3,20 +3,15 @@ export default {}
 </script>
 
 <script setup lang="ts">
-import { JSX as OdsJSX } from '@ovhcloud/ods-stencil/components';
-import { OsdsButton } from '@ovhcloud/ods-stencil/components/vue';
+import type { OdsButtonAttribute } from '@ovhcloud/ods-components/button';
+import { OsdsButton } from '@ovhcloud/ods-components/button/vue';
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
-
-/**
- * define an alias to get the properties definition of the `ODS` button
- */
-type OsdsButtonProps = OdsJSX.IntrinsicElements['osds-button'];
 
 /**
  * default custom properties values for the custom button
  */
-const DEFAULT_BUTTON_PROPS: Partial<OsdsButtonProps> = {
-  flex: true,
+const DEFAULT_BUTTON_PROPS: Partial<OdsButtonAttribute> = {
+  inline: false,
   color: OdsThemeColorIntent.accent
 };
 

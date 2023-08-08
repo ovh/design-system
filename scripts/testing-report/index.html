@@ -98,20 +98,21 @@
 
   const elements = [
     {name: 'osds-accordion', id: 'accordion'},
-    {name: 'osds-breadcrumb', id: 'breadcrumb'},
-    {name: 'osds-button', id: 'button'},
+    {name: 'osds-breadcrumb', id: 'breadcrumb', newArch: true},
+    {name: 'osds-button', id: 'button', newArch: true},
     {name: 'osds-cart', id: 'cart'},
     {name: 'osds-checkbox', id: 'checkbox'},
     {name: 'osds-checkbox-button', id: 'checkbox-button'},
     {name: 'osds-chip', id: 'chip'},
+    {name: 'osds-clipboard', id: 'clipboard'},
     {name: 'osds-code', id: 'code'},
-    {name: 'osds-collapsible', id: 'collapsible'},
+    {name: 'osds-collapsible', id: 'collapsible', newArch: true},
     {name: 'osds-content-addon', id: 'content-addon'},
-    {name: 'osds-divider', id: 'divider'},
+    {name: 'osds-divider', id: 'divider', newArch: true},
     {name: 'osds-flag', id: 'flag'},
-    {name: 'osds-icon', id: 'icon'},
-    {name: 'osds-input', id: 'input'},
-    {name: 'osds-link', id: 'link'},
+    {name: 'osds-icon', id: 'icon', newArch: true},
+    {name: 'osds-input', id: 'input', newArch: true},
+    {name: 'osds-link', id: 'link', newArch: true},
     {name: 'osds-location-tile', id: 'location-tile'},
     {name: 'osds-menu', id: 'menu'},
     {name: 'osds-message', id: 'message'},
@@ -122,29 +123,32 @@
     {name: 'osds-radio', id: 'radio'},
     {name: 'osds-radio-button', id: 'radio-button'},
     {name: 'osds-range', id: 'range'},
+    {name: 'osds-search-bar', id: 'search-bar'},
     {name: 'osds-select', id: 'select'},
     {name: 'osds-skeleton', id: 'skeleton'},
-    {name: 'osds-spinner', id: 'spinner'},
+    {name: 'osds-spinner', id: 'spinner', newArch: true},
+    {name: 'osds-switch', id: 'switch'},
+    {name: 'osds-switch-item', id: 'switch-item'},
     {name: 'osds-tabs', id: 'tabs'},
-    {name: 'osds-text', id: 'text'},
-    {name: 'osds-textarea', id: 'textarea'},
-    {name: 'osds-tile', id: 'tile'},
+    {name: 'osds-text', id: 'text', newArch: true},
+    {name: 'osds-textarea', id: 'textarea', newArch: true},
+    {name: 'osds-tile', id: 'tile', newArch: true},
     {name: 'osds-toggle', id: 'toggle'},
-    {name: 'osds-tooltip', id: 'tooltip'},
+    {name: 'osds-tooltip', id: 'tooltip', newArch: true},
   ].map((componentDef) => {
     return `
           <li class="mdc-list-item" tabindex="0">
 
             <a class="mdc-list-item__text">${componentDef.name}</a>
 
-            <a class="mdc-button mdc-button--raised" href="packages/stencil/components/${componentDef.id}/screenshot/compare.html">
+            <a class="mdc-button mdc-button--raised" href="${componentDef.newArch ? 'packages-new' : 'packages/stencil'}/components/${componentDef.id}/screenshot/compare.html">
               <span class="mdc-button__ripple"></span>
               <i class="material-icons mdc-button__icon" aria-hidden="true">screenshot</i>
               <span class="mdc-button__label">screenshots</span>
             </a>
 
             <a class="mdc-button mdc-button--raised"
-                    href="packages/stencil/components/${componentDef.id}/coverage/lcov-report/index.html">
+                    href="${componentDef.newArch ? 'packages-new' : 'packages/stencil'}/components/${componentDef.id}/coverage/lcov-report/index.html">
               <span class="mdc-button__ripple"></span>
               <i class="material-icons mdc-button__icon" aria-hidden="true">grading</i>
               <span class="mdc-button__label">coverage</span>

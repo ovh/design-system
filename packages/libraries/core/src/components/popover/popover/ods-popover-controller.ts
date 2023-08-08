@@ -3,7 +3,7 @@ import { OdsComponentController } from '../../ods-component-controller';
 import { OdsLogger } from '../../../logger/ods-logger';
 
 /**
- * common controller logic for Popover component used by the different implementations.
+ * common controller logic for cmpnt component used by the different implementations.
  * it contains all the glue between framework implementation and the third party service.
  */
 export class OdsPopoverController extends OdsComponentController<OdsPopover> {
@@ -85,12 +85,6 @@ export class OdsPopoverController extends OdsComponentController<OdsPopover> {
   syncReferences(): void {
     if (this.component.surface && this.component.anchor) {
       this.component.surface.setAnchorElement(this.component.anchor);
-      this.component.surface.setAnchorMargin( {
-        top: 0,
-        right: 0,
-        bottom: 0,
-        left: 0
-      });
     }
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-stencil-popover-react",
-  "version": "12.1.0",
+  "version": "15.0.1",
   "private": true,
   "description": "React specific wrapper for ods",
   "keywords": [],
@@ -20,7 +20,7 @@
     "dist/"
   ],
   "dependencies": {
-    "@ovhcloud/ods-stencil-popover": "^13.0.1",
+    "@ovhcloud/ods-stencil-popover": "^15.0.1",
     "tslib": "*"
   },
   "peerDependencies": {

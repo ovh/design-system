@@ -2,10 +2,6 @@ import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 import { iframe } from '../../../.storybook/iframe';
 
-// import { config } from 'storybook-addon-xd-designs';
-// import { XDConfig } from 'storybook-addon-xd-designs/lib/config';
-
-
 import { defineCustomElements } from '@ovhcloud/ods-stencil/components/checkbox-button/loader';
 import changelog from '@ovhcloud/ods-stencil/components/checkbox-button/CHANGELOG.md';
 import page from './checkbox-button.web-component.stories.page.mdx';
@@ -70,16 +66,14 @@ const storyParams = {
 };
 
 export default {
-  title: 'UI Components/Checkbox/Checkbox Button [atom]/Web Component',
+  title: 'UI Components/Checkbox Button [atom]/Web Component',
+  id: 'checkbox-button',
   parameters: {
     notes: {
       API: iframe('/stencil-checkbox-button/modules/index.html'),
       changelog,
     },
-    docs: { page },
-    /* design: config({
-      artboardUrl: 'https://xd.adobe.com/view/9bb1ccc1-e850-428c-9fd2-d4a60718a440-cee2/screen/db14523c-c3d7-4eb6-a584-3f8df444ecfa/Desktop',
-    {  as XDConfig), */
+    docs: { page }
   },
   argTypes: extractArgTypes(storyParams)
 };
@@ -94,6 +88,24 @@ const OsdsCheckboxButtonDefault = (args) => html`
 const TemplateDefault = (args) => OsdsCheckboxButtonDefault(args);
 export const Default = TemplateDefault.bind({});
 Default.args = {
+  ...extractStoryParams(storyParams),
+};
+
+/*  Checkbox */
+const OsdsCheckboxButtonCheckboxWrapper = (args) => html`
+  <h1 style='font-size: 1.3rem; font-family: "Source Sans Pro"; font-style: italic'>
+    <a href=${parent.location.href.replace(parent.location.search, "?path=/story/checkbox--web-component")}>Checkbox</a> Meta component adds behavior to this Checkbox Button
+  </h1>
+  <osds-checkbox>
+      <osds-checkbox-button ...=${getTagAttributes(args)}>
+        <span slot='start'>${unsafeHTML(args.start)}</span>
+        <span slot='end'>${unsafeHTML(args.end)}</span>
+      </osds-checkbox-button>
+    </osds-checkbox>  
+`;
+const TemplateCheckboxWrapper = (args) => OsdsCheckboxButtonCheckboxWrapper(args);
+export const CheckboxWrapper = TemplateCheckboxWrapper.bind({});
+CheckboxWrapper.args = {
   ...extractStoryParams(storyParams),
 };
 

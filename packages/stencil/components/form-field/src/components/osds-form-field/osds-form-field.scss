@@ -1,0 +1,35 @@
+@import 'styles/osds-form-field.mixins';
+@import 'styles/osds-form-field.color';
+@import 'styles/osds-form-field.size';
+@import 'styles/osds-form-field.typography';
+@import '~@ovhcloud/ods-theming/color/ods-theming-color';
+@import '~@ovhcloud/ods-theming/ods-theme';
+
+// CSS targeted only for this component
+// /!\ for theming purposes, it has to be done in theming files
+// (i.e. packages/libraries/theming/...)
+:host {
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+}
+
+:host([flex]) {
+  width: 100%;
+}
+
+:host .top-bar {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: var(--ods-size-03);
+}
+
+// apply the theme template for the component
+@include ods-theme-component() {
+  @include osds-form-field-theme-color();
+  @include osds-form-field-theme-size();
+  @include osds-form-field-theme-typography();
+}

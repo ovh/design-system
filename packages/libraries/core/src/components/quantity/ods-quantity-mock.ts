@@ -1,4 +1,4 @@
-import { HTMLOdsInputElement } from './../input/ods-input-type';
+import type { OsdsInput } from '@ovhcloud/ods-component-input';
 import { OdsQuantity } from './ods-quantity';
 import { OdsQuantityController } from './ods-quantity-controller';
 import { OdsQuantityEvents } from './ods-quantity-events';
@@ -12,7 +12,7 @@ export class OdsQuantityMock implements OdsQuantity<OdsQuantityMethods, OdsQuant
   controller: OdsQuantityController = jest.fn() as unknown as OdsQuantityController;
   el!: HTMLElement;
 
-  input: HTMLOdsInputElement | null = null;
+  input: (OsdsInput & HTMLElement) | null = null;
   plus: HTMLSlotElement | null = null;
   minus: HTMLSlotElement | null = null;
 

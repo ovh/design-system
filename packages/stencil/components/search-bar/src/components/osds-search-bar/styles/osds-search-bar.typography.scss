@@ -1,0 +1,7 @@
+@import '~@ovhcloud/ods-theming/typography/ods-theming-typography';
+@import '~@ovhcloud/ods-theming/typography/ods-component-typography';
+@import './osds-search-bar.mixins';
+
+// Main CSS mixin for typography
+@mixin osds-search-bar-theme-typography() {
+}

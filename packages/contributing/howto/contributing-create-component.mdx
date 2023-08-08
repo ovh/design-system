@@ -366,7 +366,7 @@ You should add your component in Introduction and All components pages.
 
 #### Introduction
 
-In `packages/tools/storybook/stories/components/1_Introduction.stories.ts`, you can add your component depending on its type (quark, atom, molecule, organism, layout or meta).
+In `packages/tools/storybook/stories/components/1_Introduction.stories.ts`, you can add your component depending on its type (deprecated, new, quark, atom, molecule, organism, layout or meta).
 
 For instance:
 ```
@@ -374,7 +374,7 @@ atoms: [
   {
     name: "%Component",
     tag: 'osds-‰component%',
-    url: '/?path=/story/ui-components-%component%-atom-web-component--default',
+    url: '/?path=/story/%component%--default',
     attributes: {
       color: OdsThemeColorIntent.primary,
     },
@@ -393,7 +393,7 @@ For instance:
 ```
 {
   tag: 'osds-%component%',
-  url: '/?path=/story/ui-components-%component%-atom-web-component--default',
+  url: '/?path=/story/%component%--default',
   attributes: {
     color: OdsThemeColorIntent.primary,
   },

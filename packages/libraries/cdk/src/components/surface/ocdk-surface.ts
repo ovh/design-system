@@ -25,7 +25,6 @@ export class OcdkSurface extends HTMLElement implements OcdkSurfaceBehaviour {
 
   constructor() {
     super();
-    this.logger.log('constructor');
     this.adapter = this.getDefaultAdapter();
 
     this.controller = new OcdkSurfaceController(this);
@@ -73,7 +72,6 @@ export class OcdkSurface extends HTMLElement implements OcdkSurfaceBehaviour {
    * @param animated - have to animated or not
    */
   set animated(animated: boolean) {
-    this.logger.log('animated', animated);
     this.processAnimated(animated, true);
   }
 
@@ -92,7 +90,6 @@ export class OcdkSurface extends HTMLElement implements OcdkSurfaceBehaviour {
    * @param name - name of the wanted animation
    */
   set animation(name: OcdkSurfaceAnimation | 'none' | undefined) {
-    this.logger.log('animation', name);
     this.processAnimation(name, true);
   }
 
@@ -106,7 +103,6 @@ export class OcdkSurface extends HTMLElement implements OcdkSurfaceBehaviour {
    * @param corners - tuple of corner references (anchor, origin)
    */
   set corners(corners: [OcdkSurfaceCorner, OcdkSurfaceCorner]) {
-    this.logger.log('corners', corners);
     this.controller.setCornerPoints({ anchor: corners[ 0 ], origin: corners[ 1 ] });
   }
 
@@ -119,7 +115,6 @@ export class OcdkSurface extends HTMLElement implements OcdkSurfaceBehaviour {
    * @param opened - is opened or not
    */
   set opened(opened: boolean) {
-    this.logger.log('opened', opened);
     if (opened) {
       this.setAttribute('opened', '');
       this.controller.open();
@@ -135,8 +130,7 @@ export class OcdkSurface extends HTMLElement implements OcdkSurfaceBehaviour {
    * @param oldValue - previous value
    * @param newValue - current value
    */
-  attributeChangedCallback(name: any, oldValue: any, newValue: any | null) {
-    this.logger.log('oldValue', { name, oldValue, newValue });
+  attributeChangedCallback(name: any, _oldValue: any, newValue: any | null) {
     switch (name) {
       case 'animation':
         this.processAnimation(newValue);
@@ -158,7 +152,6 @@ export class OcdkSurface extends HTMLElement implements OcdkSurfaceBehaviour {
    * Hide the `surface` overlay.
    */
   close() {
-    this.logger.log('close');
     this.opened = false;
   }
 
@@ -171,10 +164,6 @@ export class OcdkSurface extends HTMLElement implements OcdkSurfaceBehaviour {
       this.logger.log('[connectedCallback]', 'set anchor', { anchorElement: this.anchorElement });
     }
 
-    const slot = this.shadowRoot?.querySelector('slot')
-    if (slot) {
-      this.logger.log(slot.assignedElements());
-    }
 
     this.animated = this.animation.toLowerCase() === 'none' ? false : true;
     this.animation = this.animation.toLowerCase() as OcdkSurfaceAnimation;
@@ -189,7 +178,6 @@ export class OcdkSurface extends HTMLElement implements OcdkSurfaceBehaviour {
    * Display the `surface` overlay and display it with the selected position strategy.
    */
   open(): void {
-    this.logger.log('open');
     this.opened = true;
   }
 
@@ -207,7 +195,6 @@ export class OcdkSurface extends HTMLElement implements OcdkSurfaceBehaviour {
    * @param element - html element to set as the anchor
    */
   setAnchorElement(element: Element): void {
-    this.logger.log('[setAnchorElement]', { element });
     this.anchorElement = element;
   }
 

@@ -42,11 +42,12 @@
     }
   }
 
-  /** disabled colors */
-  [disabled],
-  [disabled]:focus {
-    @include osds-select-on-selected-host() {
-      opacity: .5;
+  :host([disabled]),
+  :host([disabled]:focus) {
+    .select-trigger {
+      &:hover {
+        background-color: inherit;
+      }
     }
   }
 

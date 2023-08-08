@@ -6,13 +6,11 @@ import {
   OdsChipMethods,
   OdsChipSize,
   OdsChipVariant,
-  OdsIconName,
-  OdsIconSize,
   odsChipDefaultAttributes
 } from '@ovhcloud/ods-core';
 import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libraries/stencil-core';
-
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
 
 /**
  * @slot (unnamed) - Chip content
@@ -73,8 +71,8 @@ export class OsdsChip implements OdsChip<OdsStencilMethods<OdsChipMethods>, OdsS
             removable ?
               <osds-icon color={color}
                          contrasted={contrasted}
-                         name={OdsIconName.CLOSE}
-                         size={OdsIconSize.xxs}>
+                         name={ODS_ICON_NAME.CLOSE}
+                         size={ODS_ICON_SIZE.xxs}>
               </osds-icon> : ''
           }
         </span>

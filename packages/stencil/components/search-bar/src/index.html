@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html dir='ltr' lang='en'>
+<head>
+  <meta charset='utf-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0' />
+  <title>Dev ods-search-bar</title>
+
+  <script type="module">
+    !window.ods && (window.ods = {config: {logging: {active:true}}});
+  </script>
+
+  <script type='module' src='/build/osds-search-bar.esm.js'></script>
+  <script nomodule src='/build/osds-search-bar.js'></script>
+  <link rel="stylesheet" href="/build/osds-search-bar.css">
+</head>
+<body>
+
+<p>SearchBar</p>
+<osds-search-bar></osds-search-bar>
+
+<p>SearchBar Flex</p>
+<osds-search-bar flex></osds-search-bar>
+
+<p>SearchBar with value</p>
+<osds-search-bar value="with value"></osds-search-bar>
+
+<p>SearchBar with loading</p>
+<osds-search-bar value="with value" loading></osds-search-bar>
+
+<p>SearchBar with options</p>
+<osds-search-bar disabled id="search-bar-options" value="with value"></osds-search-bar>
+
+<p>SearchBar disabled</p>
+<osds-search-bar disabled></osds-search-bar>
+
+<p>SearchBar contrasted</p>
+<osds-search-bar contrasted></osds-search-bar>
+
+<script>
+  const searchBarOptions = document.querySelector('#search-bar-options');
+  searchBarOptions.options = [{
+    label: "options1",
+    value: "1"
+  },{
+    label: "options2",
+    value: "2"
+  }];
+  searchBarOptions.addEventListener('odsSearchSubmit', (event) => console.log('odsSearchSubmit trigger', event));
+  searchBarOptions.addEventListener('odsValueChange', () => console.log('odsValueChange trigger'))
+
+</script>
+</body>
+</html>

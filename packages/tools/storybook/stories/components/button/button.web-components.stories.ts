@@ -1,17 +1,13 @@
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-import { iframe } from '../../../.storybook/iframe';
-
-// import { config } from 'storybook-addon-xd-designs';
-// import { XDConfig } from 'storybook-addon-xd-designs/lib/config';
-
+import { OdsHTMLAnchorElementRelList, OdsHTMLAnchorElementTargetList } from '@ovhcloud/ods-common-core';
+import { ODS_BUTTON_SIZE, ODS_BUTTON_SIZES, ODS_BUTTON_VARIANT, ODS_BUTTON_VARIANTS } from '@ovhcloud/ods-component-button';
+import { defineCustomElements } from '@ovhcloud/ods-component-button/loader';
 import { OdsThemeColorIntent, OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
-import { OdsHTMLAnchorElementRelList, OdsHTMLAnchorElementTargetList } from '@ovhcloud/ods-core';
-import { defineCustomElements } from '@ovhcloud/ods-stencil-button/loader';
-import { OdsButtonSize, OdsButtonSizeList, OdsButtonVariant, OdsButtonVariantList } from '@ovhcloud/ods-core';
 import { createComponentTable, getTagAttributes, extractArgTypes, extractStoryParams } from '../../../core/componentHTMLUtils';
-
-import changelog from '@ovhcloud/ods-stencil-button/CHANGELOG.md';
+// @ts-ignore
+import changelog from '@ovhcloud/ods-component-button/CHANGELOG.md';
+// @ts-ignore
 import page from './button.web-component.stories.page.mdx';
 
 defineCustomElements();
@@ -26,14 +22,14 @@ const storyParams = {
   },
   size: {
     category: 'General',
-    defaultValue: OdsButtonSize.md,
-    options: OdsButtonSizeList,
+    defaultValue: ODS_BUTTON_SIZE.md,
+    options: ODS_BUTTON_SIZES,
     control: { type: 'select' },
   },
   variant: {
     category: 'General',
-    defaultValue: OdsButtonVariant.flat,
-    options: OdsButtonVariantList,
+    defaultValue: ODS_BUTTON_VARIANT.flat,
+    options: ODS_BUTTON_VARIANTS,
     control: { type: 'select' },
   },
   start: {
@@ -56,7 +52,7 @@ const storyParams = {
     category: 'Misc',
     defaultValue: false,
   },
-  flex: {
+  inline: {
     category: 'Misc',
     defaultValue: false,
   },
@@ -86,15 +82,12 @@ const storyParams = {
 
 export default {
   title: 'UI Components/Button️ [atom]/Web Component',
+  id: 'button',
   parameters: {
     notes: {
-      API: iframe('stencil-components-button/modules/index.html'),
       changelog,
     },
-    docs: { page },
-    /* design: config({
-      artboardUrl: 'https://xd.adobe.com/view/040c7684-d702-451e-98d9-23320eacd292-515f/screen/0c4d4f2c-9a40-44b2-b3f9-3fa01eed0911/Desktop',
-    {  as XDConfig), */
+    docs: { page }
   },
   argTypes: extractArgTypes(storyParams),
 };
@@ -110,6 +103,7 @@ const TemplateDefault = (args: any) => html`
   </osds-button>
 `;
 export const Default = TemplateDefault.bind({});
+// @ts-ignore
 Default.args = {
   ...extractStoryParams(storyParams),
 };
@@ -136,27 +130,28 @@ const TemplateAll = () => html`
   </style>
 
   <h1>Variants & Colors</h1>
-  ${unsafeHTML(createComponentTable(defaultTag, { variant: OdsButtonVariantList }, { color: OdsThemeColorIntentList }, defaultContent))}
+  ${unsafeHTML(createComponentTable(defaultTag, { variant: ODS_BUTTON_VARIANTS }, { color: OdsThemeColorIntentList }, defaultContent))}
   <h1>Sizes & Colors</h1>
-  ${unsafeHTML(createComponentTable(defaultTag, { size: OdsButtonSizeList }, { color: OdsThemeColorIntentList }, defaultContent))}
+  ${unsafeHTML(createComponentTable(defaultTag, { size: ODS_BUTTON_SIZES }, { color: OdsThemeColorIntentList }, defaultContent))}
   <h1>Sizes & Variants</h1>
-  ${unsafeHTML(createComponentTable(defaultTag, { size: OdsButtonSizeList }, { variant: OdsButtonVariantList }, defaultContent))}
+  ${unsafeHTML(createComponentTable(defaultTag, { size: ODS_BUTTON_SIZES }, { variant: ODS_BUTTON_VARIANTS }, defaultContent))}
   <h1>Disabled Variants & Colors</h1>
-  ${unsafeHTML(createComponentTable(defaultTag, { variant: OdsButtonVariantList }, { color: OdsThemeColorIntentList }, defaultContent, { disabled: true }))}
+  ${unsafeHTML(createComponentTable(defaultTag, { variant: ODS_BUTTON_VARIANTS }, { color: OdsThemeColorIntentList }, defaultContent, { disabled: true }))}
   <div style="background: #666; padding: 1em; margin: -0.3em -0.8em; color: white">
     <h1>Contrasted Variants & Colors</h1>
-    ${unsafeHTML(createComponentTable(defaultTag, { variant: OdsButtonVariantList }, { color: OdsThemeColorIntentList }, defaultContent, { contrasted: true }))}
+    ${unsafeHTML(createComponentTable(defaultTag, { variant: ODS_BUTTON_VARIANTS }, { color: OdsThemeColorIntentList }, defaultContent, { contrasted: true }))}
     <h1>Disabled and contrasted Variants & Colors</h1>
-    ${unsafeHTML(createComponentTable(defaultTag, { variant: OdsButtonVariantList }, { color: OdsThemeColorIntentList }, defaultContent, { contrasted: true, disabled: true }))}
+    ${unsafeHTML(createComponentTable(defaultTag, { variant: ODS_BUTTON_VARIANTS }, { color: OdsThemeColorIntentList }, defaultContent, { contrasted: true, disabled: true }))}
   </div>
   <h1>Circle shape with little icon</h1>
-  ${unsafeHTML(createComponentTable(defaultTag, { variant: [OdsButtonVariantList[2]] }, { color: OdsThemeColorIntentList }, `<osds-icon size='xxs' name="ellipsis-vertical" />`, { circle: true }))}
+  ${unsafeHTML(createComponentTable(defaultTag, { variant: [ODS_BUTTON_VARIANTS[2]] }, { color: OdsThemeColorIntentList }, `<osds-icon size='xxs' name="ellipsis-vertical" />`, { circle: true }))}
   <h1>Circle shape with bigger icon</h1>
-  ${unsafeHTML(createComponentTable(defaultTag, { variant: [OdsButtonVariantList[2]] }, { color: OdsThemeColorIntentList }, `<osds-icon size='sm' name="plus" />`, { circle: true }))}
+  ${unsafeHTML(createComponentTable(defaultTag, { variant: [ODS_BUTTON_VARIANTS[2]] }, { color: OdsThemeColorIntentList }, `<osds-icon size='sm' name="plus" />`, { circle: true }))}
   <h1>Circle shape with text</h1>
-  ${unsafeHTML(createComponentTable(defaultTag, { variant: [OdsButtonVariantList[2]] }, { color: OdsThemeColorIntentList }, `<span>Text</span>`, { circle: true }))}
+  ${unsafeHTML(createComponentTable(defaultTag, { variant: [ODS_BUTTON_VARIANTS[2]] }, { color: OdsThemeColorIntentList }, `<span>Text</span>`, { circle: true }))}
 `;
 export const All = TemplateAll.bind({});
+// @ts-ignore
 All.parameters = {
   controls: { hideNoControlsWarning: true },
   options: { showPanel: false },

@@ -1,9 +1,6 @@
 import { html } from 'lit-html';
 import { iframe } from '../../../.storybook/iframe';
 
-// import { config } from 'storybook-addon-xd-designs';
-// import { XDConfig } from 'storybook-addon-xd-designs/lib/config';
-
 
 import { defineCustomElements } from '@ovhcloud/ods-stencil-cart/loader';
 import changelog from '@ovhcloud/ods-stencil-cart/CHANGELOG.md';
@@ -33,15 +30,13 @@ const storyParams = {
 
 export default {
   title: 'UI Components/Cart [organism]/Web Component',
+  id: 'cart',
   parameters: {
     notes: {
       API: iframe('/stencil-components-cart/modules/index.html'),
       changelog,
     },
     docs: { page },
-    /* design: config({
-      artboardUrl: 'https://xd.adobe.com/view/9bb1ccc1-e850-428c-9fd2-d4a60718a440-cee2/screen/c9b3d278-50d0-4e22-ba16-8951422cf7d1/Desktop',
-    {  as XDConfig), */
     layout: 'fullscreen',
     actions: {
       handles: ['click'],

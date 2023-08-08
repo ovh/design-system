@@ -1,24 +1,15 @@
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-import { iframe } from '../../../.storybook/iframe';
-
-// import { config } from 'storybook-addon-xd-designs';
-// import { XDConfig } from 'storybook-addon-xd-designs/lib/config';
-
-
-import { defineCustomElements } from '@ovhcloud/ods-stencil-input/loader';
-import changelog from '@ovhcloud/ods-stencil-input/CHANGELOG.md';
-import page from './input.web-component.stories.page.mdx';
-import { OdsInputSizeList, OdsInputTypeList, odsInputDefaultAttributes } from '@ovhcloud/ods-core';
+import { ODS_INPUT_SIZES, ODS_INPUT_TYPES } from '@ovhcloud/ods-component-input';
+import { defineCustomElements } from '@ovhcloud/ods-component-input/loader';
+import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-component-input/src/components/osds-input/constants/default-attributes';
 import { OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
+import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 import { InputPlay } from './input.web-components.validation.stories';
-
-import {
-  extractArgTypes,
-  extractStoryParams,
-  getTagAttributes,
-  createComponentTable
-} from '../../../core/componentHTMLUtils';
+// @ts-ignore
+import changelog from '@ovhcloud/ods-component-input/CHANGELOG.md';
+// @ts-ignore
+import page from './input.web-component.stories.page.mdx';
 
 defineCustomElements();
 
@@ -26,23 +17,23 @@ defineCustomElements();
 const storyParams = {
   type: {
     category: 'General',
-    defaultValue: odsInputDefaultAttributes.type,
-    options: OdsInputTypeList,
+    defaultValue: DEFAULT_ATTRIBUTE.type,
+    options: ODS_INPUT_TYPES,
     control: { type: 'select' },
   },
   color: {
     category: 'General',
-    defaultValue: odsInputDefaultAttributes.color,
+    defaultValue: DEFAULT_ATTRIBUTE.color,
     options: OdsThemeColorIntentList,
     control: { type: 'select' },
   },
   size: {
     category: 'General',
-    defaultValue: odsInputDefaultAttributes.size,
-    options: OdsInputSizeList,
+    defaultValue: DEFAULT_ATTRIBUTE.size,
+    options: ODS_INPUT_SIZES,
     control: { type: 'select' },
   },
-  flex: {
+  inline: {
     category: 'Misc',
     defaultValue: false,
   },
@@ -114,16 +105,13 @@ const storyParams = {
 };
 
 export default {
-  title: 'UI Components/Input️ [atom]/Web Component',
+  title: 'UI Components/Input [atom]/Web Component',
+  id: 'input',
   parameters: {
     notes: {
-      API: iframe('/stencil-input/modules/index.html'),
       changelog,
     },
-    docs: { page },
-    /* design: config({
-      artboardUrl: 'https://xd.adobe.com/view/9bb1ccc1-e850-428c-9fd2-d4a60718a440-cee2/screen/db14523c-c3d7-4eb6-a584-3f8df444ecfa/Desktop',
-    {  as XDConfig), */
+    docs: { page }
   },
   argTypes: extractArgTypes(storyParams)
 };
@@ -169,12 +157,12 @@ type ValidationProps = {
 type Attributes = 'default' | 'clearable' | 'icon="ovh"' | 'clearable icon="ovh"' | 'value="ODS ahead"' | 'value="ODS ahead" masked' | 'loading' | 'loading icon="ovh"' | 'loading disabled' | 'loading disabled icon="ovh"';
 
 const attributeList: Attributes[] = [
-  'default', 'clearable', 'icon="ovh"', 'clearable icon="ovh"', 'value="ODS ahead"', 
-  'value="ODS ahead" masked', 'loading', 'loading icon="ovh"', 'loading disabled', 
+  'default', 'clearable', 'icon="ovh"', 'clearable icon="ovh"', 'value="ODS ahead"',
+  'value="ODS ahead" masked', 'loading', 'loading icon="ovh"', 'loading disabled',
   'loading disabled icon="ovh"'
 ];
 
-const createTable = (contrasted: boolean, headerList: string[], itemMapper: (attribute: string) => string) => `
+const createTable = (contrasted: boolean, headerList: readonly string[], itemMapper: (attribute: string) => string) => `
   <table>
     <thead>
       <tr>
@@ -183,7 +171,7 @@ const createTable = (contrasted: boolean, headerList: string[], itemMapper: (att
       </tr>
     </thead>
     <tbody>
-      ${attributeList.map(attribute => 
+      ${attributeList.map(attribute =>
         `<tr>
           <td style="padding:0.1em;  ${contrasted && 'color: #ffffff;'}">${attribute}</td>
           ${itemMapper(attribute)}
@@ -195,7 +183,7 @@ const createTable = (contrasted: boolean, headerList: string[], itemMapper: (att
 const TemplateAll = () => html`
   <section style="margin-bottom: 3em; padding: 1em;">
     <h2>[types]</h2>
-    ${unsafeHTML(createTable(false, OdsInputTypeList, (attribute) => OdsInputTypeList.map(type => 
+    ${unsafeHTML(createTable(false, ODS_INPUT_TYPES, (attribute) => ODS_INPUT_TYPES.map(type =>
       `<td style="padding:0.1em">
         <osds-input type="${type}" placeholder="Enter ${type}..." ${attribute}></osds-input>
       </td>`).join('')
@@ -203,7 +191,7 @@ const TemplateAll = () => html`
   </section>
   <section style="margin-bottom: 3em; padding: 1em;">
     <h2>[colors]</h2>
-    ${unsafeHTML(createTable(false, OdsThemeColorIntentList, (attribute) => OdsThemeColorIntentList.map(color => 
+    ${unsafeHTML(createTable(false, OdsThemeColorIntentList, (attribute) => OdsThemeColorIntentList.map(color =>
       `<td style="padding:0.1em;">
         <osds-input type="text" color="${color}" placeholder="Enter text..." ${attribute}></osds-input>
       </td>`).join('')
@@ -211,7 +199,7 @@ const TemplateAll = () => html`
   </section>
   <section style="margin-bottom: 3em; background: #000e9c; padding: 1em;">
     <h2 style="color: #ffffff;">[contrasted]</h2>
-    ${unsafeHTML(createTable(true, OdsThemeColorIntentList, (attribute) => OdsThemeColorIntentList.map(color => 
+    ${unsafeHTML(createTable(true, OdsThemeColorIntentList, (attribute) => OdsThemeColorIntentList.map(color =>
       `<td style="padding:0.1em">
         <osds-input type="text" color="${color}" placeholder="Enter text..." ${attribute}></osds-input>
       </td>`).join('')
@@ -220,6 +208,7 @@ const TemplateAll = () => html`
 `;
 
 export const All = TemplateAll.bind({});
+// @ts-ignore
 All.parameters = {
   controls: { hideNoControlsWarning: true },
   options: { showPanel: false },

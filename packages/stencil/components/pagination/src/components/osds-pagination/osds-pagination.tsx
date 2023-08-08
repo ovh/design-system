@@ -1,4 +1,3 @@
-import { Component, Element, Event, EventEmitter, Host, Method, Prop, Watch, h, Fragment } from '@stencil/core';
 import {
   OdsLogger,
   OdsPagination,
@@ -7,16 +6,32 @@ import {
   OdsPaginationEvents,
   OdsPaginationMethods,
   OdsPaginationChangedEventDetail,
-  OdsIconSize,
-  OdsIconName,
-  OdsButtonSize,
-  OdsButtonVariant,
-  OdsTextSize,
   OdsPaginationPageList,
+  OdsSelectOptionClickEventDetail,
+  odsPaginationPerPageMin,
+  odsPaginationMinPerPageOptions,
 } from '@ovhcloud/ods-core';
-import { HTMLStencilElement } from '@stencil/core/internal';
+import { ODS_BUTTON_SIZE, ODS_BUTTON_VARIANT } from '@ovhcloud/ods-component-button';
+import { ODS_TEXT_SIZE } from '@ovhcloud/ods-component-text';
 import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libraries/stencil-core';
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
+import {
+  Component,
+  Element,
+  Event,
+  EventEmitter,
+  Fragment,
+  Host,
+  Method,
+  Prop,
+  State,
+  Watch,
+  h,
+  Listen,
+  forceUpdate
+} from '@stencil/core';
+import { HTMLStencilElement } from '@stencil/core/internal';
 
 @Component({
   tag: 'osds-pagination',
@@ -25,39 +40,76 @@ import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 })
 export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPaginationMethods>, OdsStencilEvents<OdsPaginationEvents>> {
   private logger = new OdsLogger('OsdsPagination');
+  private actualTotalPages = odsPaginationDefaultAttributes.totalPages;
   controller: OdsPaginationController = new OdsPaginationController(this);
 
   @Element() el!: HTMLStencilElement;
 
+  @State() itemPerPage = odsPaginationPerPageMin;
+  @State() pageList: OdsPaginationPageList = [];
+
   /** @see OdsPaginationAttributes.current */
   @Prop({ reflect: true, mutable: true }) current: number = odsPaginationDefaultAttributes.current;
 
-  /** @see OdsPaginationAttributes.total */
-  @Prop({ reflect: true }) total: number = odsPaginationDefaultAttributes.total;
+  /** @see OdsPaginationAttributes.totalItems */
+  @Prop({ reflect: true }) totalItems?: number;
+
+  /** @see OdsPaginationAttributes.totalPages */
+  @Prop({ reflect: true }) totalPages: number = odsPaginationDefaultAttributes.totalPages;
 
   /** @see OdsPaginationAttributes.disabled */
   @Prop({ reflect: true, mutable: true }) disabled: boolean = odsPaginationDefaultAttributes.disabled;
 
+  /** @see OdsPaginationAttributes.labelTooltipPrevious */
+  @Prop({ reflect: true }) labelTooltipPrevious: string = odsPaginationDefaultAttributes.labelTooltipPrevious;
+
+  /** @see OdsPaginationAttributes.labelTooltipNext */
+  @Prop({ reflect: true }) labelTooltipNext: string = odsPaginationDefaultAttributes.labelTooltipNext;
+
   /** @see OdsPaginationEvents.odsPaginationChanged */
   @Event() odsPaginationChanged!: EventEmitter<OdsPaginationChangedEventDetail>;
 
-  async componentDidUpdate() {
-    const selectedPage = this.el.shadowRoot?.querySelector('.selectedpage') as HTMLStencilElement;
-    if (document.activeElement === document.body && selectedPage) selectedPage.focus();
+  componentWillLoad() {
+    if (this.totalItems) {
+      this.actualTotalPages = this.controller.computeActualTotalPages(this.itemPerPage);
+    } else {
+      this.actualTotalPages = this.totalPages;
+    }
+
+    this.updatePageList();
+  }
+
+  @Listen('odsValueChange')
+  odsValueChangeHandler(event: CustomEvent<OdsSelectOptionClickEventDetail>) {
+    const { value } = event.detail;
+
+    if (value) {
+      this.itemPerPage = typeof value === 'number' ? value : parseInt(value, 10);
+    }
+  }
+
+  @Watch('labelTooltipNext')
+  @Watch('labelTooltipPrevious')
+  updateLabelTooltip() {
+    forceUpdate(this.el);
   }
 
   @Watch('current')
   async onCurrentChange(current: number, oldCurrent?: number) {
     this.logger.log(`current: ${this.current}]`, 'current changed. emit new current', { current });
+
+    this.updatePageList();
     this.emitChange(current, oldCurrent);
   }
 
-  private emitChange(current: number, oldCurrent?: number) {
-    this.logger.debug('emit', { current, oldCurrent });
-    this.odsPaginationChanged.emit({
-      current: current,
-      oldCurrent: oldCurrent,
-    });
+  @Watch('itemPerPage')
+  async onItemPerPageChange() {
+    await this.updatePagination();
+  }
+
+  @Watch('totalItems')
+  async onTotalItemsChange() {
+    await this.updatePagination();
   }
 
   /**
@@ -69,14 +121,40 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
     this.controller.setPageIndex(current);
   }
 
+  private emitChange(current: number, oldCurrent?: number) {
+    this.logger.debug('emit', { current, oldCurrent });
+
+    this.odsPaginationChanged.emit({
+      current: current,
+      oldCurrent: oldCurrent,
+    });
+  }
+
+  private updatePageList() {
+    this.pageList = this.controller.createPageList(this.actualTotalPages, this.current);
+  }
+
+  private async updatePagination() {
+    this.actualTotalPages = this.controller.computeActualTotalPages(this.itemPerPage);
+
+    if (this.current === 1) {
+      // If current is already 1 we don't want to emit a change event
+      this.updatePageList();
+    } else {
+      await this.setPageIndex(1);
+    }
+  }
+
   // clicks events
 
   handlePreviousClick(page: number) {
     this.controller.handlePreviousClick(page);
   }
+
   handleNextClick(page: number) {
     this.controller.handleNextClick(page);
   }
+
   handlePageClick(page: number) {
     this.controller.handlePageClick(page);
   }
@@ -86,46 +164,59 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
   handlePreviousKeyDown(event: KeyboardEvent, page: number) {
     this.controller.handlePreviousKeyDown(event, page);
   }
-  handleNextKeyDown(event: KeyboardEvent, page: number, pageList: OdsPaginationPageList) {
-    this.controller.handleNextKeyDown(event, page, pageList);
+
+  handleNextKeyDown(event: KeyboardEvent, page: number) {
+    this.controller.handleNextKeyDown(event, page, this.pageList);
   }
+
   handlePageKeyDown(event: KeyboardEvent, page: number) {
     this.controller.handlePageKeyDown(event, page);
   }
 
-  renderArrows(direction: 'left' | 'right', pageList: OdsPaginationPageList) {
+  renderArrows(direction: 'left' | 'right') {
     const { disabled } = this;
-    const arrowIcon = direction === 'left' ? OdsIconName.CHEVRON_LEFT : OdsIconName.CHEVRON_RIGHT;
+    const isLeft = direction === 'left';
+    const arrowIcon = isLeft ? ODS_ICON_NAME.CHEVRON_LEFT : ODS_ICON_NAME.CHEVRON_RIGHT;
 
     return (
       <li class="arrows">
-        <osds-button
-          variant={OdsButtonVariant.ghost}
-          color={OdsThemeColorIntent.primary}
-          disabled={disabled || (direction === 'left' && this.current === 1) || (direction === 'right' && this.current >= pageList.length)}
-          onKeyDown={(event: KeyboardEvent) => {
-            if (direction === 'left') {
-              this.handlePreviousKeyDown(event, Number(this.current));
-            } else {
-              this.handleNextKeyDown(event, Number(this.current), pageList);
-            }
-          }}
-          onClick={() => {
-            if (direction === 'left') {
-              this.handlePreviousClick(Number(this.current));
-            } else {
-              this.handleNextClick(Number(this.current));
-            }
-          }}
-          size={OdsButtonSize.sm}
-        >
-          <osds-icon
-            size={OdsIconSize.sm}
-            name={arrowIcon}
+        <osds-tooltip>
+          { isLeft ?
+            this.labelTooltipPrevious && <osds-tooltip-content slot="tooltip-content">
+              { this.labelTooltipPrevious }
+            </osds-tooltip-content>
+            : this.labelTooltipNext && <osds-tooltip-content slot="tooltip-content">
+            { this.labelTooltipNext }
+          </osds-tooltip-content>
+          }
+          <osds-button
+            variant={ODS_BUTTON_VARIANT.ghost}
             color={OdsThemeColorIntent.primary}
-            class={(direction === 'left' && this.current === 1) || (direction === 'right' && this.current >= pageList.length) ? 'disabled' : ''}
-          ></osds-icon>
-        </osds-button>
+            disabled={disabled || (isLeft && this.current === 1) || (direction === 'right' && this.current >= this.pageList.length)}
+            onKeyDown={(event: KeyboardEvent) => {
+              if (isLeft) {
+                this.handlePreviousKeyDown(event, Number(this.current));
+              } else {
+                this.handleNextKeyDown(event, Number(this.current));
+              }
+            }}
+            onClick={() => {
+              if (isLeft) {
+                this.handlePreviousClick(Number(this.current));
+              } else {
+                this.handleNextClick(Number(this.current));
+              }
+            }}
+            size={ODS_BUTTON_SIZE.sm}
+          >
+            <osds-icon
+              size={ODS_ICON_SIZE.sm}
+              name={arrowIcon}
+              color={OdsThemeColorIntent.primary}
+              class={(isLeft && this.current === 1) || (direction === 'right' && this.current >= this.pageList.length) ? 'disabled' : ''}
+            ></osds-icon>
+          </osds-button>
+        </osds-tooltip>
       </li>
     );
   }
@@ -133,8 +224,12 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
   renderEllipsis() {
     return (
       <li>
-        <osds-button disabled={true} variant={OdsButtonVariant.ghost} color={OdsThemeColorIntent.primary}>
-          <osds-text size={OdsTextSize._500} color={OdsThemeColorIntent.primary} class="ellipsis">
+        <osds-button color={OdsThemeColorIntent.primary}
+                     disabled={true}
+                     variant={ODS_BUTTON_VARIANT.ghost}>
+          <osds-text class="ellipsis"
+                     color={OdsThemeColorIntent.primary}
+                     size={ODS_TEXT_SIZE._500}>
             &#8230;
           </osds-text>
         </osds-button>
@@ -143,41 +238,75 @@ export class OsdsPagination implements OdsPagination<OdsStencilMethods<OdsPagina
   }
 
   render() {
-    const { total, disabled } = this;
-
-    const pageList = this.controller.createPageList(total, this.current);
+    if (!this.totalItems && this.actualTotalPages < 2) {
+      return;
+    }
 
     return (
       <Host>
-        <ul>
-          {this.renderArrows('left', pageList)}
-          {pageList
-            .filter(page => page.active)
-            .map(page => {
-              const pageId = pageList.indexOf(page) + 1;
-              return (
-                <>
-                  {pageList.length > 6 && pageList.length - this.current > 3 && pageId === pageList.length && this.renderEllipsis()}
-                  <li>
-                    <osds-button
-                      key={pageId}
-                      class={`${this.current === pageId ? 'selectedpage' : ''}`}
-                      variant={this.current === pageId ? OdsButtonVariant.flat : OdsButtonVariant.ghost}
-                      disabled={disabled}
-                      color={OdsThemeColorIntent.primary}
-                      size={OdsButtonSize.sm}
-                      onKeyDown={(event: KeyboardEvent) => this.handlePageKeyDown(event, Number(pageId))}
-                      onClick={() => this.handlePageClick(Number(pageId))}
-                    >
-                      {pageId}
-                    </osds-button>
-                  </li>
-                  {pageList.length > 6 && this.current > 4 && pageId === 1 && this.renderEllipsis()}
-                </>
-              );
-            })}
+        {
+          !!this.totalItems &&
+          <>
+            {
+              this.totalItems >= odsPaginationPerPageMin &&
+              <>
+                <osds-select disabled={this.disabled}
+                             value={this.itemPerPage}>
+                  {
+                    odsPaginationMinPerPageOptions.map((option) => (
+                      <osds-select-option key={option}
+                                          value={option}>
+                        {option}
+                      </osds-select-option>
+                    ))
+                  }
+                </osds-select>
+                &nbsp;
+              </>
+            }
+            <osds-text color={OdsThemeColorIntent.primary}
+                       size={ODS_TEXT_SIZE._500}>
+              <slot name="before-total-items"></slot>
+              {this.totalItems}
+              <slot name="after-total-items"></slot>
+            </osds-text>
+          </>
+        }
 
-          {this.renderArrows('right', pageList)}
+        <ul>
+          {this.renderArrows('left')}
+
+          {
+            this.pageList
+              .filter(page => page.active)
+              .map(page => {
+                const pageId = this.pageList.indexOf(page) + 1;
+
+                return (
+                  <>
+                    {this.pageList.length > 6 && this.pageList.length - this.current > 3 && pageId === this.pageList.length && this.renderEllipsis()}
+
+                    <li>
+                      <osds-button
+                        key={pageId}
+                        class={`${this.current === pageId ? 'selected-page' : ''}`}
+                        variant={this.current === pageId ? ODS_BUTTON_VARIANT.flat : ODS_BUTTON_VARIANT.ghost}
+                        disabled={this.disabled}
+                        color={OdsThemeColorIntent.primary}
+                        size={ODS_BUTTON_SIZE.sm}
+                        onKeyDown={(event: KeyboardEvent) => this.handlePageKeyDown(event, Number(pageId))}
+                        onClick={() => this.handlePageClick(Number(pageId))}>
+                        {pageId}
+                      </osds-button>
+                    </li>
+
+                    {this.pageList.length > 6 && this.current > 4 && pageId === 1 && this.renderEllipsis()}
+                  </>
+                );
+              })
+          }
+
+          {this.renderArrows('right')}
         </ul>
       </Host>
     );

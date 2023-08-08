@@ -5,7 +5,7 @@
 
 import './global';
 
-import '@ovhcloud/ods-stencil/components/button';
-import '@ovhcloud/ods-stencil/components/input';
-import '@ovhcloud/ods-stencil/components/icon';
+import '@ovhcloud/ods-component-button';
+import '@ovhcloud/ods-component-icon';
+import '@ovhcloud/ods-component-input';
 

@@ -8,17 +8,139 @@
 
 # What's new ?
 
-As it is a major version, you have to do the [migration guide 12.x to 13.x](/story/ovhcloud-design-system-what-s-new-migration-guide-12-x-to-13-x--page)
+## v15.0.1
 
-## v13.0.0
+  * Fix new packages release process.
+  * Update documentation.
+
+## v15.0.0
+
+As it is a major version, you have to do the [migration guide 14.x to 15.x](/story/ovhcloud-design-system-what-s-new-migration-guide-14-x-to-15-x--page)
+
+### Project changes:
+
+This version is the first step towards the new ODS internal architecture.
+The goal of this refactoring is to simplify and improve the whole project to:
+- provide a better developer experience and thus reduce development time
+- normalize all components behavior / design / attributes
+- have better control on dependencies and lib version upgrade
+- have better control on what ODS expose (through component or CDK)
+- ...
+
+This first step only impact two components `osds-text` and `osds-textarea`.
+
+All other components will follow on next version.
+
+Then common ODS lib and theming will be refactored on next version.
+
+### Features changes:
+* **Text**
+  * `OsdsText` is no longer part of `@ovhcloud/ods-stencil` package.
+  * `OsdsText` is now accessible by adding either `@ovhcloud/ods-component-text` or `@ovhcloud/ods-components` dependency.
+  * `@ovhcloud/ods-stencil-text` lib has been replaced by `@ovhcloud/ods-component-text`.
+  * `@ovhcloud/ods-stencil-text-react` lib has been replaced by `@ovhcloud/ods-component-text-react`.
+  * `@ovhcloud/ods-stencil-text-vue` lib has been replaced by `@ovhcloud/ods-component-text- vue`.
+  * `OdsTextSize` has been removed from `@ovhcloud/ods-core` and has been replaced by `ODS_TEXT_SIZE` from `@ovhcloud/ods-component-text`.
+  * `OdsTextSizeList` has been removed from `@ovhcloud/ods-core` and is replaced by `ODS_TEXT_SIZES` from `@ovhcloud/ods-component-text`.
+  * `OdsTextSizeUnion` has been removed from `@ovhcloud/ods-core`.
+  * `OdsTextLevel` has been removed from `@ovhcloud/ods-core` and has been replaced by `ODS_TEXT_LEVEL` from `@ovhcloud/ods-component-text`.
+  * `OdsTextLevelList` has been removed from `@ovhcloud/ods-core` and is replaced by `ODS_TEXT_LEVELS` from `@ovhcloud/ods-component-text`.
+  * `OdsTextLevelUnion` has been removed from `@ovhcloud/ods-core`.
+  * `@ovhcloud/ods-component-text` exports only `OdsTextAttribute` as component interface.
+
+* **Textarea**
+  * `OsdsTextarea` is no longer part of `@ovhcloud/ods-stencil` package.
+  * `OsdsTextarea` is now accessible by adding either `@ovhcloud/ods-component-textarea` or `@ovhcloud/ods-components` dependency.
+  * `@ovhcloud/ods-stencil-textarea` lib has been replaced by `@ovhcloud/ods-component-textarea`.
+  * `@ovhcloud/ods-stencil-textarea-react` lib has been replaced by `@ovhcloud/ods-component-textarea-react`.
+  * `@ovhcloud/ods-stencil-textarea-vue` lib has been replaced by `@ovhcloud/ods-component-textarea- vue`.
+  * `OdsTextAreaSize` has been removed from `@ovhcloud/ods-core` and is replaced by `ODS_TEXTAREA_SIZE` from `@ovhcloud/ods-component-textarea`.
+  * `OdsTextAreaSizeList` has been removed from `@ovhcloud/ods-core` and is replaced by `ODS_TEXTAREA_SIZES` from `@ovhcloud/ods-component-textarea`.
+  * `OdsTextAreaSizeUnion` has been removed from `@ovhcloud/ods-core`.
+  * `@ovhcloud/ods-component-textarea` exports only `OdsTextAttribute`, `OdsTextAreaEvent` and `OdsTextAreaValueChangeEvent` as component interfaces.
+  * `OsdsTextarea` is now displayed as flex by default.
+  * `OsdsTextarea` `flex` attribute has been removed.
+  * `OsdsTextarea` `inline` attribute has been added.
+
+
+## v14.1.0
+### New features:
+* **CDK**
+  * Manage surface position when located on the edge.
+  * The surface can now be centered at the top or bottom of the trigger. [See CDK Documentation](/story/libraries-cdk-overlay-strategies-symmetry--page)
+
+We added the following components:
+* **Form Field**: [See Form Field Documentation](/story/form-field--default)
+* **Switch**: [See Form Field Documentation](/story/switch--default)
+
+### Features changes:
+* **Pagination**
+  * Add tooltip to the arrows.
+  * Can now show pages according to a numbers of items shown by page.
+    > For more information, check our documentation [See Pagination Documentation](/story/ui-components-pagination-molecule-specifications--page)
+
+* **Location-tile**
+  * Component is now deprecated and won't be supported anymore. It will be deleted in a future release.
+    > For more information, check our replacement guide [See Location Tile Documentation](/story/ui-components-location-tile-deprecated-remplacement--page)
+
+### Bug fixes:
+* **Radio**:
+  * Radio button is now unfocusable when disabled
+
+* **Input**:
+  * cursor is set to not-allowed when disabled
+
+## v14.0.0
+As it is a major version, you have to do the [migration guide 13.x to 14.x](/story/ovhcloud-design-system-what-s-new-migration-guide-13-x-to-14-x--page)
+
 ### New features:
 We added the following components:
-* Breadcrumb: [See Breadcrumb Documentation](/story/ui-components-breadcrumb-molecule-web-component--default)
-* Collapsible: [See Collapsible Documentation](/story/ui-components-collapsible-meta-web-component--default)
-* Pagination: [See Pagination Documentation](/story/ui-components-pagination-molecule-web-component--default)
-* Spinner: [See Spinner Documentation](/story/ui-components-spinner-atom-web-component--default)
+* **Progress Bar**: [See Progress Bar Documentation](/story/progress-bar--default)
+* **Popover**: [See Popover Documentation](/story/popover--default)
+* **Tooltip**: [See Popover Documentation](/story/tooltip--default)
 
-[Circle-shaped button](/story/ui-components-button%EF%B8%8F-atom-web-component--default) has been added to Button Component (circle attribute)
+Components version 2:
+* **Input V2**: [See Input Documentation](/story/input--default)
+  * new properties have been added
+    * `loading`: it displays a Spinner
+    * `clearable`: it clears the input value on click
+    * `masked`: it indicates if the input value is hidden or not (to be used with password type)
+  * new types have been added: `date`, `email`, `password`, `search`, `tel`, `text`, `time` and `url`
+* **Select V2**: it is now connected to our CDK and keyboard navigation has been added [See Select Documentation](/story/select--default)
+
+**Quantity** component accepts four digits in the input field:
+[See Quantity Documentation](/story/quantity--default)
+
+**CDK** (Component Development Kit): new symmetry strategies have been added (left and right):
+[See CDK Documentation](/story/libraries-cdk-overlay-introduction--page)
+
+### Bug fixes:
+* **Tile**:
+  * `hoverable` attribute has been added to avoid double focus
+  * `interactive` attribute has been removed
+  > ⚠️️ **Breaking change**<br />
+  > For more information, check our migration guide
+* **Link**:
+  * add missing color for active state
+  * fix Link host container size to match its content
+* **Icon**: add `hoverable` attribute so component color can change when in selectable parent
+* **Checkbox Button**: aspect ratio has been added
+* **Quantity**: icons alignment has been fixed
+* **Textarea**: when component is resized and `flex` attribute is set to `true` and then, set back to `false`, Textarea width is no more blocked to 100%
+
+
+## v13.0.0
+
+As it is a major version, you have to do the [migration guide 12.x to 13.x](/story/ovhcloud-design-system-what-s-new-migration-guide-12-x-to-13-x--page)
+
+### New features:
+We added the following components:
+* Breadcrumb: [See Breadcrumb Documentation](/story/breadcrumb--default)
+* Collapsible: [See Collapsible Documentation](/story/collapsible--default)
+* Pagination: [See Pagination Documentation](/story/pagination--default)
+* Spinner: [See Spinner Documentation](/story/spinner--default)
+
+[Circle-shaped button](/story/button--default) has been added to Button Component (circle attribute)
 
 ### Bug fixes:
 * Button: `button' and `link` roles have been added (switching to `link` role when Button has a href property)
@@ -45,7 +167,7 @@ We added the following components:
 
 ### New features:
 We added the Tabs component.<br />
-[See Tabs Documentation](/story/ui-components-tabs-atom-overview--page)
+[See Tabs Documentation](/story/ui-components-tabs-atom-specifications--page)
 
 A component generator has been added. Now, you can use that tool to generate a new component easily.<br />
 [See Component Generator in Contributing Documentation](/story/contributing-how-to-s-create-a-component--page)
@@ -83,7 +205,7 @@ New attributes are available on this component: `lazy`, `assetPath` and `src`.
 
 Before importing any component you now have to setup ods, for more details see [migration guide 10.x to 11.x](/story/code-migration-guide-10-x-to-11-x--page).
 
-[Dual range](/story/ui-components-range-atom-web-component--dual) is now available for Range component; It offers two handles to set a min and max value.
+[Dual range](/story/range--dual) is now available for Range component; It offers two handles to set a min and max value.
 
 To build resilient infrastructure and promote sustainable industrialization, we moved code that could be agnostic.
 Now, ODS components logic has been moved into controllers.
@@ -120,7 +242,7 @@ We fixed some issue about automated screenshot testing with some timeout.
 ## v10.1.0
 
 We added the select component (version 1).
-[See Select Documentation](/story/ui-components-select-atom-overview--page)
+[See Select Documentation](/story/ui-components-select-atom-specifications--page)
 
 [Technical Changelog](/story/code-changelog--page)
 

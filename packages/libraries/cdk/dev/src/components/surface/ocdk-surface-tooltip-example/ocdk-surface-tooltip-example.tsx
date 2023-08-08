@@ -109,6 +109,12 @@ export class OcdkSurfaceTooltipExample {
       case OcdkSurfaceTooltipPosition.RIGHT:
         this.surface.setCornerPoints({ anchor: OcdkSurfaceCorner.TOP_RIGHT, origin: OcdkSurfaceCorner.TOP_LEFT });
         break;
+      case OcdkSurfaceTooltipPosition.BOTTOM_CENTER:
+        this.surface.setCornerPoints({ anchor: OcdkSurfaceCorner.BOTTOM_CENTER, origin: OcdkSurfaceCorner.TOP_CENTER });
+        break;
+      case OcdkSurfaceTooltipPosition.TOP_CENTER:
+        this.surface.setCornerPoints({ anchor: OcdkSurfaceCorner.TOP_CENTER, origin: OcdkSurfaceCorner.BOTTOM_CENTER });
+        break;
     }
 
   }

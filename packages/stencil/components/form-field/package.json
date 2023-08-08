@@ -1,0 +1,51 @@
+{
+  "name": "@ovhcloud/ods-stencil-form-field",
+  "version": "15.0.1",
+  "private": true,
+  "description": "FormField component",
+  "author": "OVH SAS",
+  "license": "Apache-2.0",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.js",
+  "es2015": "dist/esm/index.js",
+  "es2017": "dist/esm/index.js",
+  "types": "dist/types/components.d.ts",
+  "collection": "dist/collection/collection-manifest.json",
+  "collection:main": "dist/collection/index.js",
+  "scripts": {
+    "build:prod": "npm run build:stencil --if-present && npm run build:react --if-present && npm run build:vue --if-present",
+    "build": "echo \"use build:prod\"",
+    "build:stencil": "stencil build --docs --prod --config stencil.config.ts",
+    "build:react": "npm --prefix react run build",
+    "build:vue": "npm --prefix vue run build",
+    "watch": "stencil build --docs --watch --dev --config stencil.config.ts",
+    "start": "stencil build --docs --dev --watch --serve",
+    "ignore:rm": "git clean -Xdf",
+    "generate": "stencil generate",
+    "doc:api": "typedoc",
+    "generate:licence": "npx generate-license-file --input package.json --output THIRD-PARTY-LICENCES --overwrite",
+    "test": "yarn run test:spec && yarn run test:e2e",
+    "test:spec": "stencil test --spec --config stencil.config.ts --coverage",
+    "test:spec:ci": "stencil test --config stencil.config.ts  --spec --ci --coverage",
+    "test:e2e": "stencil test --e2e --config stencil.config.ts",
+    "test:e2e:screenshot": "stencil test --e2e --screenshot --config stencil.config.ts --passWithNoTests",
+    "test:e2e:screenshot:update": "stencil test --e2e --screenshot --config stencil.config.ts --update-screenshot --passWithNoTests",
+    "test:e2e:ci": "stencil test --config stencil.config.ts --e2e --ci",
+    "test:e2e:ci:screenshot": "stencil test --config stencil.config.ts --e2e --ci --screenshot --passWithNoTests",
+    "test:e2e:ci:screenshot:update": "stencil test --config stencil.config.ts --e2e --ci --screenshot --update-screenshot --passWithNoTests"
+  },
+  "dependencies": {
+    "@ovhcloud/ods-component-text": "^15.0.1",
+    "@ovhcloud/ods-stencil-component": "^15.0.1"
+  },
+  "devDependencies": {
+    "@ovhcloud/ods-component-input": "^15.0.1",
+    "@ovhcloud/ods-component-link": "^15.0.1",
+    "@ovhcloud/ods-component-textarea": "^15.0.1",
+    "@ovhcloud/ods-component-tooltip": "^15.0.1",
+    "@ovhcloud/ods-stencil-component-dev": "^15.0.1"
+  },
+  "publishConfig": {
+    "registry": ""
+  }
+}

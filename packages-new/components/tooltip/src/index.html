@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html dir='ltr' lang='en'>
+<head>
+  <meta charset='utf-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0' />
+  <title>Dev ods-tooltip</title>
+
+  <script type="module">
+    !window.ods && (window.ods = {config: {logging: {active:true}}});
+  </script>
+
+  <script type='module' src='/build/osds-tooltip.esm.js'></script>
+  <script nomodule src='/build/osds-tooltip.js'></script>
+  <link rel="stylesheet" href="/build/osds-tooltip.css">
+</head>
+<body>
+
+<div>
+  <p>Default</p>
+
+  <osds-tooltip>
+    <osds-tooltip-content slot="tooltip-content">
+      Lorem ispum...
+    </osds-tooltip-content>
+
+    Hover me
+  </osds-tooltip>
+</div>
+
+<div>
+  <p>osds-text and osds-icon</p>
+  <osds-tooltip>
+    <osds-tooltip-content slot="tooltip-content">
+      <osds-text color="text" size="400">Lorem ispum...</osds-text>
+      <osds-icon name="check" size="xs"></osds-icon>
+    </osds-tooltip-content>
+
+    Hover me
+  </osds-tooltip>
+</div>
+
+<div>
+  <p>Variant tip</p>
+
+  <osds-tooltip variant="tip">
+    <osds-tooltip-content slot="tooltip-content">
+      Lorem ispum...
+    </osds-tooltip-content>
+
+    Hover me
+  </osds-tooltip>
+</div>
+
+<div>
+  <p>No Slot</p>
+
+  <osds-tooltip id="tooltip-slot">
+     not slot
+  </osds-tooltip>
+  <button id="add-slot">click to add slot</button>
+
+</div>
+
+
+<script>
+  const button = document.querySelector('#add-slot');
+  const tooltip = document.querySelector('#tooltip-slot');
+
+  button.addEventListener('click', () => {
+    const slot = document.createElement('osds-tooltip-content');
+    slot.slot = "tooltip-content"
+    slot.innerText = 'test';
+    tooltip.append(slot);
+  });
+</script>
+</body>
+</html>

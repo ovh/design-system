@@ -6,9 +6,6 @@ import {
   getTagAttributes,
 } from '../../../core/componentHTMLUtils';
 
-import { XDConfig } from 'storybook-addon-xd-designs/lib/config';
-import changelog from '@ovhcloud/ods-stencil-accordion/CHANGELOG.md';
-import { config } from 'storybook-addon-xd-designs';
 import { defineCustomElements } from '@ovhcloud/ods-stencil-accordion/loader';
 import { html } from 'lit-html';
 import { iframe } from '../../../.storybook/iframe';
@@ -40,15 +37,13 @@ const storyParams = {
 };
 
 export default {
-  title: 'UI Components/Accordion/Accordion [atom]/Web Component',
+  title: 'UI Components/Accordion [atom]/Web Component',
+  id: 'accordion',
   parameters: {
     notes: {
       API: iframe('/stencil-accordion/modules/index.html'),
     },
-    docs: { page },
-    design: config({
-      artboardUrl: 'https://xd.adobe.com/view/9bb1ccc1-e850-428c-9fd2-d4a60718a440-cee2/screen/de3e2df7-15a7-4d3b-a452-b3bdfdc28911/Desktop',
-    } as XDConfig),
+    docs: { page }
   },
   argTypes: extractArgTypes(storyParams),
 };

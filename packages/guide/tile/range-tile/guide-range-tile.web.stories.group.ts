@@ -1,16 +1,16 @@
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 import { Components as ComponentsRadio } from '@ovhcloud/ods-stencil-radio/loader';
-import { Components as ComponentsInput } from '@ovhcloud/ods-stencil-input/loader';
+import { Components as ComponentsInput } from '@ovhcloud/ods-component-input/loader';
 import { Components as ComponentsRange } from '@ovhcloud/ods-stencil-range/loader';
-import { Components as ComponentsTile } from '@ovhcloud/ods-stencil-tile/loader';
+import { Components as ComponentsTile } from '@ovhcloud/ods-component-tile/loader';
 import {
   OdsErrorStateControl,
   OdsFormControl,
-  OdsInputValueChangeEventDetail,
   OdsRangeValueChangeEventDetail,
   OdsValidityState
 } from '@ovhcloud/ods-core';
+import { OdsInputValueChangeEventDetail } from '@ovhcloud/ods-component-input';
 
 export const RadioGroupTemplate = (args: any) => html`
   <style>
@@ -179,7 +179,7 @@ export const RadioGroupPlay = async () => {
     return `
       <div class="radio-container">
           <osds-radio id="radio${index}" value="${item.value}">
-            <osds-tile id="tile${index}" class="range-tile__tile" color="primary" interactive flex>
+            <osds-tile id="tile${index}" class="range-tile__tile" color="primary" hoverable>
               <osds-range id="range${index}" color="primary" flex min="${item.min}" max="${item.max}"  step="${item.step}">
                 <osds-text slot="start-bound" level="subtitle" size="sm" color="primary">${item.min}tb</osds-text>
                 <osds-text slot="end-bound" level="subtitle" size="sm" color="primary">${item.max}tb</osds-text>

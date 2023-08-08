@@ -1,0 +1,130 @@
+@import 'styles/osds-button.mixins';
+@import 'styles/osds-button.color';
+@import 'styles/osds-button.size';
+@import 'styles/osds-button.typography';
+@import '~@ovhcloud/ods-theming/color/ods-theming-color';
+@import '~@ovhcloud/ods-theming/reset/ods-theming-reset.button';
+@import '~@ovhcloud/ods-theming/ods-theme';
+
+// CSS for the component but not for theming
+
+:host {
+  display: flex;
+  margin: calc(var(--ods-size-inset-n-02) + var(--ods-size-inset-n-02));
+  outline: none;
+  overflow: hidden;
+  padding: calc(var(--ods-size-inset-02) + var(--ods-size-inset-02));
+  min-width: 0;
+
+  @include osds-button-on-main-element() {
+    border-color: transparent;
+    border-style: solid;
+    box-shadow: none;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inherit;
+    margin: 0;
+    opacity: 1;
+    overflow: hidden;
+    text-decoration: none;
+    transition: all ease-in-out 100ms;
+    width: var(--ods-button-width, auto);
+
+    @include osds-button-on-text-container() {
+      align-items: center;
+      display: inline-grid;
+      grid-auto-columns: 1fr;
+      grid-auto-rows: 1fr;
+      grid-template: "start center end" / auto 1fr auto;
+      height: 100%;
+      justify-content: center;
+      position: relative;
+      max-width: inherit;
+    }
+
+    .button__centered-text {
+      display: inline-flex;
+    }
+  }
+
+  @include osds-button-on-main-element() {
+    width: 100%;
+  }
+  @include osds-button-on-text-container {
+    width: inherit;
+  }
+
+  .button__centered-text {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: break-all;
+  }
+}
+
+:not([disabled]):focus-visible {
+  @include osds-button-on-selected-host() {
+    outline-style: dotted;
+    outline-width: var(--ods-size-inset-02);
+    outline-offset: var(--ods-size-inset-02);
+  }
+}
+
+:active {
+  @include osds-button-on-selected-host() {
+    transition: background-color ease-in-out 0s;
+  }
+}
+
+:host([disabled]) {
+  @include osds-button-on-main-element() {
+    cursor: not-allowed;
+  }
+}
+
+:host([inline]) {
+  width: var(--width);
+  display: inline-flex;
+}
+
+slot {
+  &[name="start"] {
+    grid-area: start;
+    justify-self: start;
+  }
+
+  &[name="end"] {
+    grid-area: end;
+    justify-self: end;
+  }
+}
+
+::slotted([slot="start"]),
+::slotted([slot="end"]) {
+  display: flex;
+}
+
+::slotted([slot="start"]) {
+  margin-right: var(--ods-size-inline-04);
+}
+
+::slotted([slot="end"]) {
+  margin-left: var(--ods-size-inline-04);
+}
+
+::slotted([slot="start"]:empty),
+::slotted([slot="end"]:empty) {
+  display: none;
+}
+
+.button__centered-text {
+  grid-area: center;
+}
+
+// apply the theme template for the component
+@include ods-theme-component() {
+  @include osds-button-theme-color();
+  @include osds-button-theme-size();
+  @include osds-button-theme-typography();
+}

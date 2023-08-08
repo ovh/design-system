@@ -38,7 +38,7 @@ export function ocdkSurfaceSymmetryBlTl(): OcdkSurfaceOnePositionStrategy<OcdkSu
         },
         appliers: {
           maxHeight: (opt) => opt.inspections.comfort.availableBottom,
-          maxWidth: (opt) => opt.measurements.surfaceSize.width,
+          maxWidth: (opt) => opt.inspections.comfort.availableRight,
           verticalOffset: (opt) => opt.measurements.anchorSize.height + opt.config.anchorMargin.bottom,
           verticalAlignment: 'top',
           horizontalOffset: () => 0,
@@ -121,17 +121,31 @@ export function ocdkSurfaceSymmetryBlTl(): OcdkSurfaceOnePositionStrategy<OcdkSu
       },
       COMPUTE: (opt) => {
         loggerSymmetry.log('[COMPUTE] position BOTTOM_LEFT TOP_LEFT');
-        // no enough available space on bottom, trigger a position change to top instead
         if (opt.measurements.surfaceSize.height > opt.inspections.comfort.availableBottom) {
           // already in a switch process and this new position isn't good enough, go to the fallback of the last strategy position
           if (opt.switchFrom && isOcdkSurfaceStrategyComputeResultPosition(opt.switchFrom) && opt.switchFrom.position) {
             loggerSymmetry.log('[COMPUTE] already switched off but no enough space: continue with the fallback of bl-tl', opt.switchFrom);
             return opt.switchFrom.position.STRATEGIES.FALLBACK;
           }
+          if (opt.measurements.surfaceSize.width > opt.inspections.comfort.availableRight) {
+            return {
+              cornerPoints: {
+                anchor: OcdkSurfaceNormalizedCorner.TOP_RIGHT,
+                origin: OcdkSurfaceNormalizedCorner.BOTTOM_RIGHT
+              }
+            };
+          }
           return {
             cornerPoints: {
               anchor: OcdkSurfaceNormalizedCorner.TOP_LEFT,
               origin: OcdkSurfaceNormalizedCorner.BOTTOM_LEFT
+            }
+          };
+        } else if (opt.measurements.surfaceSize.width > opt.inspections.comfort.availableRight) {
+          return {
+            cornerPoints: {
+              anchor: OcdkSurfaceNormalizedCorner.BOTTOM_RIGHT,
+              origin: OcdkSurfaceNormalizedCorner.TOP_RIGHT
             }
           };
         }

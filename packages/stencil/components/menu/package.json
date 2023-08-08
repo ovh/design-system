@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-stencil-menu",
-  "version": "13.0.1",
+  "version": "15.0.1",
   "private": true,
   "description": "Custom menu HTML component",
   "license": "BSD-3-Clause",
@@ -33,12 +33,12 @@
     "test:e2e:ci:screenshot:update": "stencil test --config stencil.config.ts --e2e --ci --screenshot --update-screenshot --passWithNoTests"
   },
   "dependencies": {
-    "@ovhcloud/ods-stencil-component": "^13.0.1"
+    "@ovhcloud/ods-stencil-component": "^15.0.1"
   },
   "devDependencies": {
-    "@ovhcloud/ods-stencil-button": "^13.0.1",
-    "@ovhcloud/ods-stencil-component-dev": "^13.0.1",
-    "@ovhcloud/ods-stencil-divider": "^13.0.1"
+    "@ovhcloud/ods-component-button": "^15.0.1",
+    "@ovhcloud/ods-component-divider": "^15.0.1",
+    "@ovhcloud/ods-stencil-component-dev": "^15.0.1"
   },
   "peerDependencies": {
     "@ovhcloud/ods-stencil-icon": ">=11.0"

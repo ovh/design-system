@@ -90,6 +90,7 @@ export class OsdsRadio implements OdsRadio<OdsStencilMethods<OdsRadioMethods>, O
   @Watch('disabled')
   updateDisabledOnChild(disabled: boolean): void {
     this.controller.updateDisabledOnChild(disabled);
+    this.buttonTabindex = disabled ? -1 : 0;
   }
 
   @Watch('checking')
@@ -242,12 +243,13 @@ export class OsdsRadio implements OdsRadio<OdsStencilMethods<OdsRadioMethods>, O
       <Host {...{
         'aria-labelledby': label ? ariaLabelledby : null,
         tabindex: buttonTabindex,
-        onFocus: () => this.onFocus(),
-        onBlur: () => this.onBlur(),
-        onKeyPress: this.handleLabelKeyEvent.bind(this)
+        onFocus: this.onFocus.bind(this),
+        onBlur: this.onBlur.bind(this),
+        onKeyPress: this.handleLabelKeyEvent.bind(this),
+        onClick: this.handleLabelClick.bind(this),
       }}
       >
-        <label onClick={this.handleLabelClick.bind(this)}>
+        <label>
           <input {...{
             'aria-checked': `${checked}`,
             class: 'radio__input',

@@ -2,6 +2,7 @@ import { OdsComponentController } from '../ods-component-controller';
 import { OdsLogger } from '../../logger/ods-logger';
 import { OdsRadio } from './ods-radio';
 import { OdsRadioizable } from '../../utils/radio/ods-radioizable';
+import { OdsRadioGroup } from '../public-api';
 
 /**
  * common controller logic for radio component used by the different implementations.
@@ -22,7 +23,7 @@ export class OdsRadioController extends OdsComponentController<OdsRadio> {
   }
 
   setButtonTabindex(value: number): void {
-    this.component.buttonTabindex = value;
+    this.component.buttonTabindex = this.component.disabled ? -1 : value;
   }
 
   updateDisabledOnChild(disabled: boolean): void {
@@ -59,21 +60,21 @@ export class OdsRadioController extends OdsComponentController<OdsRadio> {
   }
 
   /**
-   * 
-   * @param value 
+   *
+   * @param value
    */
   watchValue(value: string): void {
     this.logger.log(`[radio=${this.component.value}]`, 'value changed', { value });
   }
 
   /**
-   * 
+   *
    */
   beforeInit(): void {
     this.logger.log(`[radio=${this.component.value}]`, 'connectedCallback');
     this.updateCheckOnChild(this.component.checked);
     this.updateDisabledOnChild(this.component.disabled);
-    const radioGroup = this.component.radioGroup = this.component.el.closest('osds-radio-group');
+    const radioGroup = this.component.radioGroup = this.closestPassShadow(this.component.el, 'osds-radio-group');
     if (radioGroup) {
       radioGroup.registerRadio((this.component.el as unknown as (HTMLElement & OdsRadio)));
       this.updateState();
@@ -82,8 +83,29 @@ export class OdsRadioController extends OdsComponentController<OdsRadio> {
     }
   }
 
+  closestPassShadow(node: Node | ParentNode | null, selector: string): HTMLElement & OdsRadioGroup | null {
+    if (!node) {
+        return null;
+    }
+
+    if (node instanceof ShadowRoot) {
+        return this.closestPassShadow(node.host, selector);
+    }
+
+    if (node instanceof HTMLElement) {
+        if (node.matches(selector)) {
+            return node as HTMLElement & OdsRadioGroup;
+        }
+        if (node.assignedSlot) {
+          return this.closestPassShadow(node.assignedSlot.parentElement, selector);
+        }
+        return this.closestPassShadow(node.parentNode, selector);
+    }
+    return this.closestPassShadow(node.parentNode, selector);
+}
+
   /**
-   * 
+   *
    */
   afterInit(): void {
     this.component.radioizedComponent = (this.component.el.firstElementChild as unknown) as (HTMLElement & OdsRadioizable);
@@ -96,7 +118,7 @@ export class OdsRadioController extends OdsComponentController<OdsRadio> {
   }
 
   /**
-   * 
+   *
    */
   onDestroy(): void {
     const radioGroup = this.component.radioGroup;
@@ -109,8 +131,8 @@ export class OdsRadioController extends OdsComponentController<OdsRadio> {
   }
 
   /**
-   * 
-   * @param checking 
+   *
+   * @param checking
    */
   updateState(checking?: boolean): void {
     if (this.component.radioGroup) {
@@ -127,8 +149,8 @@ export class OdsRadioController extends OdsComponentController<OdsRadio> {
   }
 
   /**
-   * 
-   * @param event 
+   *
+   * @param event
    */
   async handleLabelClick(event: MouseEvent) {
     this.logger.log(`[radio=${this.component.value}]`, 'click');
@@ -137,8 +159,8 @@ export class OdsRadioController extends OdsComponentController<OdsRadio> {
   }
 
   /**
-   * 
-   * @param event 
+   *
+   * @param event
    */
   async handleLabelKeyEvent(event: KeyboardEvent) {
     this.logger.log(`[radio=${this.component.value}]`, 'key event', { event });

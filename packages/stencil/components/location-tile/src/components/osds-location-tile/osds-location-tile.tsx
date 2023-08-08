@@ -6,10 +6,10 @@ import {
   OdsLocationTileEvents,
   OdsLocationTileMethods,
   OdsLocationTileVariant,
-  OdsTileSize,
   odsLocationTileDefaultAttributes
 } from '@ovhcloud/ods-core';
 import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libraries/stencil-core';
+import { ODS_TILE_SIZE } from '@ovhcloud/ods-component-tile';
 
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 
@@ -47,7 +47,7 @@ export class OsdsLocationTile implements OdsLocationTile<OdsStencilMethods<OdsLo
   @Prop({ reflect: true }) public checked = odsLocationTileDefaultAttributes.checked;
 
   /** @see OdsLocationTileAttributes.size */
-  @Prop({ reflect: true }) public size?: OdsTileSize = odsLocationTileDefaultAttributes.size;
+  @Prop({ reflect: true }) public size?: ODS_TILE_SIZE = odsLocationTileDefaultAttributes.size;
 
   /** @see OdsLocationTileAttributes.variant */
   @Prop({ reflect: true }) public variant?: OdsLocationTileVariant = odsLocationTileDefaultAttributes.variant;

@@ -4,9 +4,7 @@ import {
   getTagAttributes,
 } from '../../../core/componentHTMLUtils';
 
-import { XDConfig } from 'storybook-addon-xd-designs/lib/config';
 import changelog from '@ovhcloud/ods-stencil-quantity/CHANGELOG.md';
-import { config } from 'storybook-addon-xd-designs';
 import { defineCustomElements } from '@ovhcloud/ods-stencil-quantity/loader';
 import { html } from 'lit-html';
 import { iframe } from '../../../.storybook/iframe';
@@ -24,15 +22,13 @@ const storyParams = {
 
 export default {
   title: 'UI Components/Quantity [molecule]/Web Component',
+  id: 'quantity',
   parameters: {
     notes: {
       API: iframe('/stencil-components-quantity/modules/index.html'),
       changelog,
     },
-    docs: { page },
-    design: config({
-      artboardUrl: 'https://xd.adobe.com/view/9bb1ccc1-e850-428c-9fd2-d4a60718a440-cee2/screen/974f5530-2bd5-4129-827c-7b2de248dbd5/Desktop',
-    } as XDConfig),
+    docs: { page }
   },
   argTypes: extractArgTypes(storyParams)
 };

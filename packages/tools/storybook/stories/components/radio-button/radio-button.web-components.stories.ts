@@ -2,10 +2,6 @@ import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 import { iframe } from '../../../.storybook/iframe';
 
-// import { config } from 'storybook-addon-xd-designs';
-// import { XDConfig } from 'storybook-addon-xd-designs/lib/config';
-
-
 import { defineCustomElements } from '@ovhcloud/ods-stencil/components/radio-button/loader';
 import changelog from '@ovhcloud/ods-stencil/components/radio-button/CHANGELOG.md';
 import page from './radio-button.web-component.stories.page.mdx';
@@ -66,16 +62,14 @@ const storyParams = {
 };
 
 export default {
-  title: 'UI Components/Radio/Radio Button [atom]/Web Component',
+  title: 'UI Components/Radio Button [atom]/Web Component',
+  id: 'radio-button',
   parameters: {
     notes: {
       API: iframe('/stencil-radio-button/modules/index.html'),
       changelog,
     },
-    docs: { page },
-    /* design: config({
-      artboardUrl: 'https://xd.adobe.com/view/9bb1ccc1-e850-428c-9fd2-d4a60718a440-cee2/screen/db14523c-c3d7-4eb6-a584-3f8df444ecfa/Desktop',
-    {  as XDConfig), */
+    docs: { page }
   },
   argTypes: extractArgTypes(storyParams)
 };
@@ -90,6 +84,49 @@ const OsdsRadioButtonDefault = (args) => html`
 const TemplateDefault = (args) => OsdsRadioButtonDefault(args);
 export const Default = TemplateDefault.bind({});
 Default.args = {
+  ...extractStoryParams(storyParams),
+};
+
+/* RadioWrapper */
+const OsdsRadioButtonRadioWrapper = (args) => html`  
+  <h1 style='font-size: 1.3rem; font-family: "Source Sans Pro"; font-style: italic'>
+    <a href=${parent.location.href.replace(parent.location.search, "?path=/story/radio--default")}>Radio</a> Meta component adds behavior to this Radio Button
+  </h1>
+  <osds-radio value="radio-a">
+    <osds-radio-button ...=${getTagAttributes(args)}>
+      <span slot='start'>${unsafeHTML(args.start)}</span>
+      <span slot='end'>${unsafeHTML(args.end)}</span>
+    </osds-radio-button>
+  </osds-radio>
+`;
+const TemplateRadioWrapper = (args) => OsdsRadioButtonRadioWrapper(args);
+export const RadioWrapper = TemplateRadioWrapper.bind({});
+RadioWrapper.args = {
+  ...extractStoryParams(storyParams),
+};
+/* RadioWrapper */
+const OsdsRadioButtonRadioGroupWrapper = (args) => html`  
+  <h1 style='font-size: 1.3rem; font-family: "Source Sans Pro"; font-style: italic'>
+    <a href=${parent.location.href.replace(parent.location.search, "?path=/story/radio--default")}>Radio</a> and <a href=${parent.location.href.replace(parent.location.search, "?path=/story/radio-group--default")}>Radio Group</a> Meta components adds behavior to these Radio Buttons
+  </h1>
+  <osds-radio-group id="radio-group-a">
+    <osds-radio id="radio-A" value="val-tile-A" checked>
+      <osds-radio-button ...=${getTagAttributes(args)}>
+        <span slot='start'>${unsafeHTML(args.start)}</span>
+        <span slot='end'>${unsafeHTML(args.end)}</span>
+      </osds-radio-button>
+    </osds-radio>
+    <osds-radio id="radio-B" value="val-tile-B">
+      <osds-radio-button ...=${getTagAttributes(args)}>
+        <span slot='start'>${unsafeHTML(args.start)}</span>
+        <span slot='end'>${unsafeHTML(args.end)}</span>
+      </osds-radio-button>
+    </osds-radio>
+  </osds-radio-group>
+`;
+const TemplateRadioGroupWrapper = (args) => OsdsRadioButtonRadioGroupWrapper(args);
+export const RadioGroupWrapper = TemplateRadioGroupWrapper.bind({});
+RadioGroupWrapper.args = {
   ...extractStoryParams(storyParams),
 };
 

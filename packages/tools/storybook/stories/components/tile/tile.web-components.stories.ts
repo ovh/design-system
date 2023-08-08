@@ -1,22 +1,19 @@
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-import { iframe } from '../../../.storybook/iframe';
-
-// import { config } from 'storybook-addon-xd-designs';
-// import { XDConfig } from 'storybook-addon-xd-designs/lib/config';
-
 
 import { OdsThemeColorIntent, OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
-import { defineCustomElements } from '@ovhcloud/ods-stencil-tile/loader';
-import { OdsTileSize, OdsTileSizeList, OdsTileVariant, OdsTileVariantList, olesIpsum, OlesIpsumGeneration } from '@ovhcloud/ods-core';
+import { defineCustomElements } from '@ovhcloud/ods-component-tile/loader';
+import { ODS_TILE_SIZE, ODS_TILE_SIZES, ODS_TILE_VARIANT, ODS_TILE_VARIANTS } from '@ovhcloud/ods-component-tile';
+import { olesIpsum, OlesIpsumGeneration } from '@ovhcloud/ods-core';
 import {
   createComponentTable,
   extractArgTypes,
   extractStoryParams,
   getTagAttributes,
 } from '../../../core/componentHTMLUtils';
-
-import changelog from '@ovhcloud/ods-stencil-tile/CHANGELOG.md';
+// @ts-ignore
+import changelog from '@ovhcloud/ods-component-tile/CHANGELOG.md';
+// @ts-ignore
 import page from './tile.web-component.stories.page.mdx';
 
 defineCustomElements();
@@ -31,14 +28,14 @@ const storyParams = {
   },
   size: {
     category: 'General',
-    defaultValue: OdsTileSize.md,
-    options: OdsTileSizeList,
+    defaultValue: ODS_TILE_SIZE.md,
+    options: ODS_TILE_SIZES,
     control: { type: 'select' },
   },
   variant: {
     category: 'General',
-    defaultValue: OdsTileVariant.stroked,
-    options: OdsTileVariantList,
+    defaultValue: ODS_TILE_VARIANT.stroked,
+    options: ODS_TILE_VARIANTS,
     control: { type: 'select' },
   },
   start: {
@@ -61,7 +58,7 @@ const storyParams = {
     category: 'Misc',
     defaultValue: false
   },
-  flex: {
+  inline: {
     category: 'Misc',
     defaultValue: false
   },
@@ -69,7 +66,7 @@ const storyParams = {
     category: 'Misc',
     defaultValue: true
   },
-  interactive: {
+  hoverable: {
     category: 'Misc',
     defaultValue: false
   },
@@ -84,16 +81,13 @@ const storyParams = {
 };
 
 export default {
-  title: 'UI Components/Tile/Tile [atom]/Web Component',
+  title: 'UI Components/Tile [atom]/Web Component',
+  id: 'tile',
   parameters: {
     notes: {
-      API: iframe('/stencil-tile/modules/index.html'),
       changelog,
     },
-    docs: { page },
-    /* design: config({
-      artboardUrl: 'https://xd.adobe.com/view/9bb1ccc1-e850-428c-9fd2-d4a60718a440-cee2/screen/9f1bf787-e868-4952-988e-2d375b009331/Desktop',
-    {  as XDConfig), */
+    docs: { page }
   }
 };
 
@@ -144,31 +138,31 @@ const TemplateAll = (args: any) => html`
   <h1>Sizes & Colors</h1>
   ${unsafeHTML(createComponentTable(
     defaultTag,
-    { size: OdsTileSizeList },
+    { size: ODS_TILE_VARIANTS },
     { color: OdsThemeColorIntentList },
     defaultContent,
     { ...(args.checking ? { checking: args.checking } : {}) }
   ))}
-  <h1>interactive Sizes & Colors</h1>
+  <h1>hoverable Sizes & Colors</h1>
   ${unsafeHTML(createComponentTable(
     defaultTag,
-    { size: OdsTileSizeList },
+    { size: ODS_TILE_SIZES },
     { color: OdsThemeColorIntentList },
     defaultContent,
-    { interactive: true, ...(args.checking ? { checking: args.checking } : {}) }
+    { hoverable: true, ...(args.checking ? { checking: args.checking } : {}) }
   ))}
   <h1>checked Sizes & Colors</h1>
   ${unsafeHTML(createComponentTable(
     defaultTag,
-    { size: OdsTileSizeList },
+    { size: ODS_TILE_SIZES },
     { color: OdsThemeColorIntentList },
     defaultContent,
-    { interactive: true, checked: true, ...(args.checking ? { checking: args.checking } : {}) }
+    { hoverable: true, checked: true, ...(args.checking ? { checking: args.checking } : {}) }
   ))}
   <h1>Disabled Sizes & Colors</h1>
   ${unsafeHTML(createComponentTable(
     defaultTag,
-    { size: OdsTileSizeList },
+    { size: ODS_TILE_SIZES },
     { color: OdsThemeColorIntentList },
     defaultContent,
     { disabled: true, ...(args.checking ? { checking: args.checking } : {}) }

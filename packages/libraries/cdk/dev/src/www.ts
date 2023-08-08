@@ -50,7 +50,6 @@ logger.log('init');
     }
   }
 
-
   (window as any).basic3Toggle = () => {
     // synchronize the trigger element (anchor) with the surface when both are available
     if (basicTrigger3 && basicSurface3) {

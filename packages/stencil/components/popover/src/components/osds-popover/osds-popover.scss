@@ -18,8 +18,8 @@
 
 }
 
-:host([attribute]) {
-
+::slotted([slot="popover-trigger"]) {
+  display: inline-flex;
 }
 
 // apply the theme template for the component

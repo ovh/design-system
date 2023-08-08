@@ -31,6 +31,40 @@ const config: Config = {
       ],
       includeGlobalScripts: false,
     },
+    reactOutput: {
+      // exclude components that have been moved to the new repo
+      excludeComponents: [
+        'osds-breadcrumb',
+        'osds-button',
+        'osds-collapsible',
+        'osds-divider',
+        'osds-icon',
+        'osds-input',
+        'osds-link',
+        'osds-spinner',
+        'osds-text',
+        'osds-textarea',
+        'osds-tile',
+        'osds-tooltip',
+      ],
+    },
+    vueOutput: {
+      // exclude components that have been moved to the new repo
+      excludeComponents: [
+        'osds-breadcrumb',
+        'osds-button',
+        'osds-collapsible',
+        'osds-divider',
+        'osds-icon',
+        'osds-input',
+        'osds-link',
+        'osds-spinner',
+        'osds-text',
+        'osds-textarea',
+        'osds-tile',
+        'osds-tooltip',
+      ],
+    },
     dev: {
       tsConfig: 'tsconfig.components.dev.json',
       globalScript: 'src/www.components.ts'
@@ -44,7 +78,6 @@ const config: Config = {
   }),
   bundles: [
     { components: ['osds-accordion', 'osds-accordion-group'] },
-    { components: ['osds-button'] },
     {
       components: [
         'osds-cart',
@@ -62,11 +95,7 @@ const config: Config = {
     { components: ['osds-checkbox-button'] },
     { components: ['osds-chip'] },
     { components: ['osds-content-addon'] },
-    { components: ['osds-divider'] },
     { components: ['osds-flag'] },
-    { components: ['osds-icon'] },
-    { components: ['osds-input'] },
-    { components: ['osds-link'] },
     { components: ['osds-location-tile'] },
     { components: ['osds-message'] },
     { components: ['osds-popover'] },
@@ -76,8 +105,8 @@ const config: Config = {
     { components: ['osds-range'] },
     { components: ['osds-select'] },
     { components: ['osds-skeleton'] },
-    { components: ['osds-text'] },
-    { components: ['osds-tile'] },
+    { components: ['osds-switch'] },
+    { components: ['osds-switch-item'] },
     { components: ['osds-toggle'] },
   ],
   buildEs5: 'prod',

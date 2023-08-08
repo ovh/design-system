@@ -16,12 +16,6 @@
   cursor: pointer;
   text-align: left;
 
-  &[disabled] {
-    .select-trigger {
-      opacity: 0.5;
-    }
-  }
-
   .select-trigger {
     align-items: center;
     border-style: solid;
@@ -30,11 +24,7 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     word-break: break-all;
-    
-    &.opened {
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-    }
+    box-sizing: border-box;
   }
 
   .overlay {
@@ -67,7 +57,6 @@
   @include osds-select-on-selected-host() {
     opacity: .5;
     cursor: not-allowed;
-    pointer-events: none;
   }
 }
 

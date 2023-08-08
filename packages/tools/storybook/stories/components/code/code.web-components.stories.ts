@@ -30,6 +30,7 @@ const storyParams = {
 
 export default {
   title: 'UI Components/Code [atom]/Web Component',
+  id: 'code',
   parameters: {
     notes: {
       API: iframe('stencil-components-code/modules/index.html'),

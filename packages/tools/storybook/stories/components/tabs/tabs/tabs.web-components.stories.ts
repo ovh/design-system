@@ -37,6 +37,7 @@ const storyParams = {
 
 export default {
   title: 'UI Components/Tabs [atom]/Web Component',
+  id: 'tabs',
   parameters: {
     notes: {
       API: iframe('stencil-components-tabs/modules/index.html'),

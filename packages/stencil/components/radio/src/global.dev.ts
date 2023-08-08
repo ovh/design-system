@@ -8,7 +8,7 @@ import './global';
 import { OdsLogger, OdsRadioGroupValueChangeEvent, OdsRadioGroupValueChangeEventDetail } from '@ovhcloud/ods-core';
 import { OsdsRadioGroup } from '@ovhcloud/ods-stencil/components/radio/src/components/osds-radio-group/osds-radio-group';
 import { OsdsRadio } from '@ovhcloud/ods-stencil/components/radio/src/components/osds-radio/osds-radio';
-import '@ovhcloud/ods-stencil/components/tile';
+import '@ovhcloud/ods-component-tile';
 
 const logger = new OdsLogger('global-dev');
 logger.log('init');

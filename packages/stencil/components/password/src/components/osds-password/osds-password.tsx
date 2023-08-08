@@ -1,3 +1,4 @@
+import type { ODS_INPUT_SIZE } from '@ovhcloud/ods-component-input';
 import { Component, Element, Host, h, Prop } from '@stencil/core';
 import {
   OdsPassword,
@@ -5,13 +6,11 @@ import {
   OdsPasswordEvents,
   OdsPasswordMethods,
   odsPasswordDefaultAttributes,
-  OdsInputType,
   OdsFormForbiddenValues,
-  OdsInputSize,
-  OdsInputValue,
 } from '@ovhcloud/ods-core';
 import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libraries/stencil-core';
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_INPUT_TYPE } from '@ovhcloud/ods-component-input';
 
 /**
  * @slot (unnamed) - Password content
@@ -74,17 +73,17 @@ export class OsdsPassword implements OdsPassword<OdsStencilMethods<OdsPasswordMe
   @Prop({ reflect: true }) required?: boolean = odsPasswordDefaultAttributes.required;
 
   /** @see OdsPasswordAttributes.size */
-  @Prop({ reflect: true }) size?: OdsInputSize = odsPasswordDefaultAttributes.size;
+  @Prop({ reflect: true }) size?: ODS_INPUT_SIZE = odsPasswordDefaultAttributes.size;
 
   /** @see OdsInputAttributes.value */
-  @Prop({ reflect: true, mutable: true }) value: OdsInputValue = odsPasswordDefaultAttributes.value;
+  @Prop({ reflect: true, mutable: true }) value = odsPasswordDefaultAttributes.value;
 
   render() {
 
     return (
       <Host>
         <osds-input
-          type={OdsInputType.password}
+          type={ODS_INPUT_TYPE.password}
           ariaLabel={this.ariaLabel}
           ariaLabelledby={this.ariaLabelledby}
           clearable={this.clearable}

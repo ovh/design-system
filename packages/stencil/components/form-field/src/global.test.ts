@@ -6,14 +6,14 @@
 import './global';
 
 // Input slot dependencies
-import '@ovhcloud/ods-stencil/components/input';
 import '@ovhcloud/ods-component-icon';
-import '@ovhcloud/ods-stencil/components/spinner';
+import '@ovhcloud/ods-component-input';
+import '@ovhcloud/ods-component-spinner';
 import '@ovhcloud/ods-component-textarea';
 
 // Top right slot dependencies
 import '@ovhcloud/ods-component-link';
-import '@ovhcloud/ods-stencil/components/tooltip';
+import '@ovhcloud/ods-component-tooltip';
 
 // Other dependencies
 import '@ovhcloud/ods-component-text';

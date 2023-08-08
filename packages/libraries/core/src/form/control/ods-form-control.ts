@@ -2,6 +2,7 @@ import { isPromise } from '../../types/guard/ods-is-promise';
 import { OdsFormControlMethods } from './ods-form-control-methods';
 import { OdsComponentGenericMethods } from '../../components/ods-component-generic-methods';
 import { OdsValidityStateUnion } from './ods-form-control-type';
+
 export class OdsFormControl<ValidityState extends OdsValidityStateUnion> {
   valid = true;
   private formControl?: OdsComponentGenericMethods<OdsFormControlMethods<ValidityState>>;

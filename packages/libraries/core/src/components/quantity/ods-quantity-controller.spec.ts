@@ -1,11 +1,11 @@
+import type { OsdsInput } from '@ovhcloud/ods-component-input';
 import { OdsClearLoggerSpy, OdsInitializeLoggerSpy, OdsLoggerSpyReferences } from '@ovhcloud/ods-testing/src';
-
 import { Ods } from '../../configure/ods';
 import { OdsLogger } from '../../logger/ods-logger';
 import { OdsQuantity } from './ods-quantity';
 import { OdsQuantityController } from './ods-quantity-controller';
 import { OdsQuantityMock } from './ods-quantity-mock';
-import { HTMLOdsInputElement, OdsInputType } from '../input/ods-input-type';
+import { ODS_INPUT_TYPE } from '@ovhcloud/ods-component-input';
 
 describe('spec:ods-quantity-controller', () => {
   let controller: OdsQuantityController;
@@ -123,8 +123,8 @@ describe('spec:ods-quantity-controller', () => {
         })
 
         it('should change value of osds-input if inferior to min on Blur',  () => {
-          const input = document.createElement('osds-input') as HTMLOdsInputElement;
-          input.type = OdsInputType.number;
+          const input = document.createElement('osds-input') as (OsdsInput & HTMLElement);
+          input.type = ODS_INPUT_TYPE.number;
           input.setAttribute('type', 'number');
           input.tabIndex = 0;
           input.setAttribute('tabindex', '0');
@@ -145,8 +145,8 @@ describe('spec:ods-quantity-controller', () => {
         })
 
         it('should change value of osds-input if superior to max on Blur',  () => {
-          const input = document.createElement('osds-input') as HTMLOdsInputElement;
-          input.type = OdsInputType.number;
+          const input = document.createElement('osds-input') as (OsdsInput & HTMLElement);
+          input.type = ODS_INPUT_TYPE.number;
           input.setAttribute('type', 'number');
           input.tabIndex = 0;
           input.setAttribute('tabindex', '0');

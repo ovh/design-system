@@ -14,6 +14,7 @@ defineCustomElements();
 
 export default {
   title: 'UI Components/Flag [atom]/Web Component',
+  id: 'flag',
   parameters: {
     notes: {
       changelog,

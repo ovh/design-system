@@ -88,7 +88,7 @@ export class OdsSelectController extends OdsComponentController<OdsSelect> {
       case 'ArrowUp':
       case 'ArrowDown':
       case 'Tab':
-        return this.handlerKeyArrow(event, selectedSelectOptionIndex);    
+        return this.handlerKeyArrow(event, selectedSelectOptionIndex);
       case 'Enter':
       case 'NumpadEnter':
         return this.handlerKeyEnter(this.selectOptions[selectedSelectOptionIndex]);
@@ -113,16 +113,21 @@ export class OdsSelectController extends OdsComponentController<OdsSelect> {
     }
     if (event.code === 'ArrowUp' || (event.code === 'Tab' && event.shiftKey)) {
       const index = hasSelectedOption ? selectedSelectOptionIndex - 1 : 0;
-      if (index < 0) {
-        this.component.setFocus();
+      if (index < 0 && (event.code === 'Tab' && event.shiftKey)) {
         return;
+      } else if (index < 0) {
+        return focusSelectOption(this.selectOptions.length -1)
       }
       return focusSelectOption(index);
     }
     if (event.code === 'ArrowDown' || event.code === 'Tab') {
       const index = hasSelectedOption ? selectedSelectOptionIndex + 1 : 0;
-      if (index >= this.selectOptions.length) {
-        return;
+      if (index >= this.selectOptions.length && event.code === 'Tab') {
+        this.selectOptions.forEach(s => s.removeAttribute('selected'))
+        this.selectOptions.find(s => s.value === this.component.value)?.setAttribute('selected', '');
+        return this.closeSurface();
+      } else if (index >= this.selectOptions.length) {
+        return focusSelectOption(0);
       }
       return focusSelectOption(index);
     }

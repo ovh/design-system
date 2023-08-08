@@ -35,6 +35,7 @@
     "test:e2e:ci:screenshot:update": "stencil test --config stencil.config.ts --e2e --ci --screenshot --update-screenshot --passWithNoTests"
   },
   "dependencies": {
+    "@ovhcloud/ods-component-divider": "^15.0.1",
     "@ovhcloud/ods-stencil-component": "^15.0.1"
   },
   "devDependencies": {

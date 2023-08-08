@@ -41,11 +41,12 @@ const storyParams = {
     category: 'Misc',
     defaultValue: odsSwitchDefaultAttributes.disabled
   },
-  
+
 };
 
 export default {
   title: 'UI Components/Switch [atom]/Web Component',
+  id: 'switch',
   parameters: {
     notes: {
       API: iframe('/stencil-switch/modules/index.html'),

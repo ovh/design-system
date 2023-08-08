@@ -4,5 +4,5 @@
 // ###
 import './global';
 import '@ovhcloud/ods-component-icon';
-import '@ovhcloud/ods-stencil/components/input';
-import '@ovhcloud/ods-stencil/components/spinner';
+import '@ovhcloud/ods-component-input';
+import '@ovhcloud/ods-component-spinner';

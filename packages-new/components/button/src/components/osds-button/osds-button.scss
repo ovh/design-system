@@ -41,6 +41,10 @@
       position: relative;
       max-width: inherit;
     }
+
+    .button__centered-text {
+      display: inline-flex;
+    }
   }
 
   @include osds-button-on-main-element() {
@@ -74,8 +78,9 @@
 }
 
 :host([disabled]) {
-  cursor: not-allowed;
-  pointer-events: none;
+  @include osds-button-on-main-element() {
+    cursor: not-allowed;
+  }
 }
 
 :host([inline]) {

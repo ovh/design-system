@@ -1,4 +1,4 @@
 // import { OdsTextArea } from '../../components/textarea/ods-textarea';
-import { OdsInput } from '../../components/input/ods-input';
+import { OsdsInput } from '@ovhcloud/ods-component-input';
 
-export type OdsTextInput = OdsInput;// | OdsTextArea;
+export type OdsTextInput = OsdsInput;// | OdsTextArea;

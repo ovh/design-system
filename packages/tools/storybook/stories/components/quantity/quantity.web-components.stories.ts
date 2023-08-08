@@ -22,6 +22,7 @@ const storyParams = {
 
 export default {
   title: 'UI Components/Quantity [molecule]/Web Component',
+  id: 'quantity',
   parameters: {
     notes: {
       API: iframe('/stencil-components-quantity/modules/index.html'),

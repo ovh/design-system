@@ -1,8 +1,8 @@
 // TODO fix those import
-import { defineCustomElements as tileCustomElements } from '@ovhcloud/ods-stencil-tile/loader';
+import { defineCustomElements as tileCustomElements } from '@ovhcloud/ods-component-tile/loader';
 import { defineCustomElements as radioCustomElements } from '@ovhcloud/ods-stencil-radio/loader';
 import { defineCustomElements as rangeCustomElements } from '@ovhcloud/ods-stencil-range/loader';
-import { defineCustomElements as inputCustomElements } from '@ovhcloud/ods-stencil-input/loader';
+import { defineCustomElements as inputCustomElements } from '@ovhcloud/ods-component-input/loader';
 import { defineCustomElements as textCustomElements } from '@ovhcloud/ods-component-text/loader';
 import { defineCustomElements as contentAddonCustomElements } from '@ovhcloud/ods-stencil-content-addon/loader';
 import { radioGroupArgs, RadioGroupPlay, RadioGroupTemplate } from './guide-range-tile.web.stories.group';
@@ -47,17 +47,21 @@ export const storyParams = {
 
 // story with only a radio
 export const RangeTileStory = TileTemplate.bind({});
+// @ts-ignore
 RangeTileStory.args = {
   ...storyParams,
   ...tileArgs
 };
+// @ts-ignore
 RangeTileStory.play = TilePlay;
 
 
 // story with a radio group
 export const RangeTileGroupStory = RadioGroupTemplate.bind({});
+// @ts-ignore
 RangeTileGroupStory.args = {
   ...storyParams,
   ...radioGroupArgs
 };
+// @ts-ignore
 RangeTileGroupStory.play = RadioGroupPlay;

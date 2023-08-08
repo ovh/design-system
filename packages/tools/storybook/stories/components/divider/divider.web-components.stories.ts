@@ -1,14 +1,14 @@
 import { html } from 'lit-html';
-import { iframe } from '../../../.storybook/iframe';
-
-
-import { defineCustomElements } from '@ovhcloud/ods-stencil-divider/loader';
-import changelog from '@ovhcloud/ods-stencil-divider/CHANGELOG.md';
-import page from './divider.web-component.stories.page.mdx';
 import { OdsThemeColorIntent, OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
-import { OdsDividerSize, OdsDividerSizeList, OlesIpsumGeneration } from '@ovhcloud/ods-core/src';
+import { defineCustomElements } from '@ovhcloud/ods-component-divider/loader';
+import { OlesIpsumGeneration } from '@ovhcloud/ods-core/src';
+import { ODS_DIVIDER_SIZE, ODS_DIVIDER_SIZES } from '@ovhcloud/ods-component-divider';
 import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 import { olesIpsum } from '@ovhcloud/ods-core';
+// @ts-ignore
+import changelog from '@ovhcloud/ods-component-divider/CHANGELOG.md';
+// @ts-ignore
+import page from './divider.web-component.stories.page.mdx';
 
 defineCustomElements();
 
@@ -22,8 +22,8 @@ const storyParams = {
   },
   size: {
     category: 'General',
-    defaultValue: OdsDividerSize.six,
-    options: OdsDividerSizeList,
+    defaultValue: ODS_DIVIDER_SIZE.six,
+    options: ODS_DIVIDER_SIZES,
     control: { type: 'select' },
   },
   contrasted: {
@@ -38,9 +38,9 @@ const storyParams = {
 
 export default {
   title: 'UI Components/Divider [quark]/Web Component',
+  id: 'divider',
   parameters: {
     notes: {
-      API: iframe('/stencil-divider/modules/index.html'),
       changelog,
     },
     docs: { page },
@@ -51,13 +51,14 @@ export default {
 const example = olesIpsum(OlesIpsumGeneration.sentences, 3);
 
 // A divider example
-const TemplateDefault = (args) => html`
+const TemplateDefault = (args: any) => html`
   <div style='color: #ccc'>${example}</div>
   <osds-divider ...=${getTagAttributes(args)}>
   </osds-divider>
   <div style='color: #ccc'>${example}</div>
 `;
 export const Default = TemplateDefault.bind({});
+// @ts-ignore
 Default.args = {
   ...extractStoryParams(storyParams)
 };

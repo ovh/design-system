@@ -5,11 +5,11 @@ import {
   odsClipboardDefaultAttributes,
   OdsClipboardEvents,
   OdsClipboardMethods,
-  OdsInputType,
 } from '@ovhcloud/ods-core';
 import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libraries/stencil-core';
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 import { ODS_ICON_NAME } from '@ovhcloud/ods-component-icon';
+import { ODS_INPUT_TYPE } from '@ovhcloud/ods-component-input';
 
 @Component({
   tag: 'osds-clipboard',
@@ -20,12 +20,12 @@ export class OsdsClipboard implements OdsClipboard<OdsStencilMethods<OdsClipboar
   controller: OdsClipboardController = new OdsClipboardController(this);
   @Element() el!: HTMLElement;
 
-  /** @see OdsClipboardAttributes.flex */ 
+  /** @see OdsClipboardAttributes.flex */
   @Prop({ reflect: true }) public flex?: boolean = odsClipboardDefaultAttributes.flex;
 
   /** @see OdsClipboardAttributes.value */
   @Prop({ reflect: true }) public value: string = odsClipboardDefaultAttributes.value;
-  
+
   /** @see OdsClipboardAttributes.disabled */
   @Prop({ reflect: true }) public disabled?: boolean = odsClipboardDefaultAttributes.disabled;
 
@@ -59,7 +59,7 @@ export class OsdsClipboard implements OdsClipboard<OdsStencilMethods<OdsClipboar
                     disabled={ this.disabled }
                     flex={ this.flex }
                     icon={ ODS_ICON_NAME.COPY }
-                    type={ OdsInputType.text }
+                    type={ ODS_INPUT_TYPE.text }
                     value={ this.value }
                     onClick={ () => this.handlerClick() }
                     onKeyDown={ (event: KeyboardEvent) => this.handlerKeyDown(event) }

@@ -3,11 +3,10 @@ import {
   OdsPasswordAttributes,
   OdsComponentAttributes2StringAttributes,
   odsPasswordDefaultAttributes,
-  OdsInputSizeList,
 } from '@ovhcloud/ods-core';
 import { OdsCreateAttributes, OdsStringAttributes2Str, odsPasswordBaseAttributes } from '@ovhcloud/ods-testing';
-
 import { OdsThemeColorIntentList } from '@ovhcloud/ods-theming/src';
+import { ODS_INPUT_SIZES } from '@ovhcloud/ods-component-input';
 
 describe('e2e:osds-password', () => {
   let page: E2EPage;
@@ -114,7 +113,7 @@ describe('e2e:osds-password', () => {
   describe('screenshots', () => {
     screenshotActions.forEach(({ actionDescription, action }) => {
       OdsThemeColorIntentList.forEach((color) => {
-        OdsInputSizeList.forEach((size) => {
+        ODS_INPUT_SIZES.forEach((size) => {
           const name = [color, size, actionDescription].join(', ');
           it(name, async () => {
             await setup({

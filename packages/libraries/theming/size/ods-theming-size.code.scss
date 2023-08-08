@@ -4,8 +4,8 @@
     @return (
       border-radius: var(--ods-size-code-#{$size-name}-border-radius),
       min-height: var(--ods-size-code-#{$size-name}-min-height),
-      padding-y: var(--ods-size-code-#{$size-name}-padding-y),
-      padding-x: var(--ods-size-code-#{$size-name}-padding-x)
+      global-padding: var(--ods-size-code-#{$size-name}-global-padding),
+      code-padding: var(--ods-size-code-#{$size-name}-code-padding)
     )
   }
 

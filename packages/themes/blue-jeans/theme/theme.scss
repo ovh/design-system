@@ -131,9 +131,9 @@
       $code: (
         md: (
           border-radius: var(--ods-size-border-radius-01),
-          min-height: calc(2.75rem * var(--ods-size-ratio)),
-          padding-y: var(--ods-size-inline-05),
-          padding-x: var(--ods-size-inline-05)
+          min-height: var(--ods-size-09),
+          global-padding: var(--ods-size-inset-03),
+          code-padding: var(--ods-size-inset-04)
         ),
       ),
       $divider: (

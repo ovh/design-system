@@ -9,34 +9,17 @@
 // CSS for the component but not for theming
 :host {
   @include osds-code-on-main-element() {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    grid-template-rows: 1fr;
-    gap: 0;
-    grid-template-areas:
-    ". .";
-    justify-content: start;
-    align-content: start;
-    grid-auto-columns: 100%;
-
+    display: flex;
 
     @include osds-code-on-container-element() {
-      align-self: start;
-      box-sizing: border-box;
-      justify-self: start;
-      white-space: break-spaces;
-      width: 100%;
+      flex-grow: 1;
+      white-space: pre-line;
     }
   }
-}
 
-slot[name='copy'] {
-  align-self: start;
-  box-sizing: border-box;
-  display: inline-flex;
-  justify-self: end;
-  padding: var(--ods-size-03);
-  width: 100%;
+  ::slotted([slot="copy"]) {
+    flex-shrink: 0;
+  }
 }
 
 // apply the theme template for the component

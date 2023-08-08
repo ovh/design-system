@@ -5,7 +5,7 @@
 
 import './components';
 import './global';
-import { OdsLogger } from '@ovhcloud/ods-core';
+import { OdsLogger } from '@ovhcloud/ods-common-core';
 
 const logger = new OdsLogger('global-dev');
 logger.log('init');

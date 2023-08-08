@@ -1,6 +1,6 @@
 {
   "entryPoints": ["src"],
-  "out": "docs-api/stencil-components-content-addon",
+  "out": "docs-api/ods-component-content-addon",
   "tsconfig":"tsconfig.prod.json",
   "exclude": "**/*+(index|.spec|.e2e|.d).ts",
   "plugin": "none"

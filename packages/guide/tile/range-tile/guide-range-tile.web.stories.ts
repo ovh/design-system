@@ -4,7 +4,7 @@ import { defineCustomElements as radioCustomElements } from '@ovhcloud/ods-stenc
 import { defineCustomElements as rangeCustomElements } from '@ovhcloud/ods-stencil-range/loader';
 import { defineCustomElements as inputCustomElements } from '@ovhcloud/ods-component-input/loader';
 import { defineCustomElements as textCustomElements } from '@ovhcloud/ods-component-text/loader';
-import { defineCustomElements as contentAddonCustomElements } from '@ovhcloud/ods-stencil-content-addon/loader';
+import { defineCustomElements as contentAddonCustomElements } from '@ovhcloud/ods-component-content-addon/loader';
 import { radioGroupArgs, RadioGroupPlay, RadioGroupTemplate } from './guide-range-tile.web.stories.group';
 import { tileArgs, TilePlay, TileTemplate } from './guide-range-tile.web.stories.tile';
 

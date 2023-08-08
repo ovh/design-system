@@ -9,24 +9,34 @@
 // CSS for the component but not for theming
 :host {
   @include osds-code-on-main-element() {
-    position: relative;
-    margin: 0;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: 1fr;
+    gap: 0;
+    grid-template-areas:
+    ". .";
+    justify-content: start;
+    align-content: start;
+    grid-auto-columns: 100%;
+
 
     @include osds-code-on-container-element() {
-      flex: 1 1 auto;
-      display: flex;
-      justify-content: flex-start;
-      align-items: flex-start;
-      white-space: pre-line;
+      align-self: start;
+      box-sizing: border-box;
+      justify-self: start;
+      white-space: break-spaces;
+      width: 100%;
     }
   }
 }
 
 slot[name='copy'] {
-  display: flex;
-  margin: var(--ods-size-03);
+  align-self: start;
+  box-sizing: border-box;
+  display: inline-flex;
+  justify-self: end;
+  padding: var(--ods-size-03);
+  width: 100%;
 }
 
 // apply the theme template for the component

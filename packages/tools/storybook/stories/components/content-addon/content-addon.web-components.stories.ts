@@ -1,13 +1,11 @@
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-import { iframe } from '../../../.storybook/iframe';
-
-
-import { defineCustomElements } from '@ovhcloud/ods-stencil-content-addon/loader';
+import { defineCustomElements } from '@ovhcloud/ods-component-content-addon/loader';
 import { defineCustomElements as tileCustomElements } from '@ovhcloud/ods-component-tile/loader';
-import { extractArgTypes, extractStoryParams, getTagAttributes, } from '../../../core/componentHTMLUtils';
-
-import changelog from '@ovhcloud/ods-stencil-content-addon/CHANGELOG.md';
+import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
+// @ts-ignore
+import changelog from '@ovhcloud/ods-component-content-addon/CHANGELOG.md';
+// @ts-ignore
 import page from './content-addon.web-component.stories.page.mdx';
 
 defineCustomElements();
@@ -66,7 +64,6 @@ export default {
   id: 'content-addon',
   parameters: {
     notes: {
-      API: iframe('/stencil-content-addon/modules/index.html'),
       changelog,
     },
     docs: { page },
@@ -85,13 +82,17 @@ const TemplateDefault = (args: any) => html`
 `;
 
 export const Default = TemplateDefault.bind({});
+// @ts-ignore
 Default.args = {
   ...extractStoryParams(defaultStoryParams),
 };
+// @ts-ignore
 Default.argTypes = extractArgTypes(defaultStoryParams);
 
 export const Pricing = TemplateDefault.bind({});
+// @ts-ignore
 Pricing.args = {
   ...extractStoryParams(pricingStoryParams),
 };
+// @ts-ignore
 Pricing.argTypes = extractArgTypes(pricingStoryParams);

@@ -1,5 +1,5 @@
 import type { Config } from '@jest/types';
-import { OdsGetJestConfig } from '@ovhcloud/ods-testing';
+import { OdsGetJestConfig } from '@ovhcloud/ods-common-testing';
 
 const args = process.argv.slice(2);
 
@@ -15,8 +15,9 @@ const args = process.argv.slice(2);
  * };
  * ```
  */
+// @ts-ignore until dependencies are fixed to one unique version of @jest/types
 const config: Config.InitialOptions = OdsGetJestConfig({
-  basePath: '<rootDir>/../../../..',
+  basePath: '<rootDir>/../../..',
   args
 });
 export default config;

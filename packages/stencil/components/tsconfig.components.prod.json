@@ -12,7 +12,6 @@
     }
   },
   "include": [
-    "accordion/src",
     "cart/src",
     "checkbox-button/src",
     "checkbox/src",

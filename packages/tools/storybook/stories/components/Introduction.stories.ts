@@ -3,8 +3,9 @@ import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 
 import { OdsThemeColorIntent, OdsThemeTypographyLevel, OdsThemeTypographySize } from '@ovhcloud/ods-theming';
 import { createTag } from '../../core/componentHTMLUtils';
-import { ODS_COUNTRY_ISO_CODE, OdsCheckboxButtonSize, OdsDividerSize, OdsRadioButtonSize, olesIpsum, OlesIpsumGeneration } from '@ovhcloud/ods-core';
+import { ODS_COUNTRY_ISO_CODE, OdsCheckboxButtonSize, OdsRadioButtonSize, olesIpsum, OlesIpsumGeneration } from '@ovhcloud/ods-core';
 import { ODS_ICON_NAME } from '@ovhcloud/ods-component-icon';
+import { ODS_DIVIDER_SIZE } from 'packages-new/components/divider/dist/types';
 
 export default {
   title: 'UI Components/Introduction',
@@ -19,7 +20,7 @@ const uiComponents = {
         url: parent.location.href.replace(parent.location.search, "?path=/story/divider--default'"),
         attributes: {
             color: OdsThemeColorIntent.primary,
-            size: OdsDividerSize.ten,
+            size: ODS_DIVIDER_SIZE.ten,
             separator: '',
             style: `min-width: 12em;`,
         },

@@ -5481,6 +5481,43 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-component-accordion-react@workspace:packages-new/components/accordion/react":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-accordion-react@workspace:packages-new/components/accordion/react"
+  dependencies:
+    "@ovhcloud/ods-component-accordion": ^15.0.1
+    "@ovhcloud/ods-react-dev": ^15.0.1
+  peerDependencies:
+    react: ">=16.8.6"
+    react-dom: ">=16.8.6"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-component-accordion-vue@workspace:packages-new/components/accordion/vue":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-accordion-vue@workspace:packages-new/components/accordion/vue"
+  dependencies:
+    "@ovhcloud/ods-component-accordion": ^15.0.1
+    "@ovhcloud/ods-vue-dev": ^15.0.1
+  peerDependencies:
+    vue: ">=3"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-component-accordion@^15.0.1, @ovhcloud/ods-component-accordion@workspace:packages-new/components/accordion":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-accordion@workspace:packages-new/components/accordion"
+  dependencies:
+    "@ovhcloud/ods-common-core": ^15.0.1
+    "@ovhcloud/ods-common-stencil": ^15.0.1
+    "@ovhcloud/ods-common-testing": ^15.0.1
+    "@ovhcloud/ods-component-collapsible": ^15.0.1
+    "@ovhcloud/ods-component-icon": ^15.0.1
+    "@ovhcloud/ods-stencil-dev": ^15.0.1
+    "@ovhcloud/ods-theming": ^15.0.1
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-component-breadcrumb-react@workspace:packages-new/components/breadcrumb/react":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-breadcrumb-react@workspace:packages-new/components/breadcrumb/react"
@@ -5888,6 +5925,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-components@workspace:packages-new/components"
   dependencies:
+    "@ovhcloud/ods-component-accordion": ^15.0.1
     "@ovhcloud/ods-component-breadcrumb": ^15.0.1
     "@ovhcloud/ods-component-button": ^15.0.1
     "@ovhcloud/ods-component-collapsible": ^15.0.1
@@ -6042,48 +6080,6 @@ __metadata:
     vite: ^3.1.0
     vue: ^3.2.37
     vue-tsc: ^0.40.4
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-stencil-accordion-react@workspace:packages/stencil/components/accordion/react":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-stencil-accordion-react@workspace:packages/stencil/components/accordion/react"
-  dependencies:
-    "@ovhcloud/ods-stencil-accordion": ^15.0.1
-    "@types/react": 17.0.37
-    "@types/react-dom": 17.0.11
-    react: 16.14.0
-    react-dom: 16.14.0
-    rimraf: ^3.0.2
-    tslib: "*"
-    typescript: 4.7.4
-  peerDependencies:
-    react: ">=16.8.6"
-    react-dom: ">=16.8.6"
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-stencil-accordion-vue@workspace:packages/stencil/components/accordion/vue":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-stencil-accordion-vue@workspace:packages/stencil/components/accordion/vue"
-  dependencies:
-    "@ovhcloud/ods-stencil-accordion": ^15.0.1
-    rimraf: ^3.0.2
-    typescript: 4.7.4
-    vue: ^3.2.41
-  peerDependencies:
-    vue: ">=3"
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-stencil-accordion@^15.0.1, @ovhcloud/ods-stencil-accordion@workspace:packages/stencil/components/accordion":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-stencil-accordion@workspace:packages/stencil/components/accordion"
-  dependencies:
-    "@ovhcloud/ods-component-collapsible": ^15.0.1
-    "@ovhcloud/ods-component-icon": ^15.0.1
-    "@ovhcloud/ods-stencil-component": ^15.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^15.0.1
   languageName: unknown
   linkType: soft
 

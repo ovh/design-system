@@ -1,14 +1,14 @@
+import type { HTMLStencilElement } from "@stencil/core/internal";
+import type { OsdsAccordion } from "../osds-accordion/osds-accordion";
+import type { OdsAccordionGroupMethod } from "./interfaces/methods";
 import { Component, Element, Host, Method, h } from "@stencil/core";
-import { HTMLStencilElement } from "@stencil/core/internal";
-import { OsdsAccordion } from "../osds-accordion/osds-accordion";
 import { OdsAccordionGroupController } from "./core/controller";
-import { OdsAccordionGroupMethods } from "./interfaces/methods";
 
 @Component({
   tag: 'osds-accordion-group',
   shadow: true,
 })
-export class OsdsAccordionGroup implements OdsAccordionGroupMethods {
+export class OsdsAccordionGroup implements OdsAccordionGroupMethod {
 
   accordions: (OsdsAccordion)[] = [];
   controller: OdsAccordionGroupController = new OdsAccordionGroupController(this);
@@ -17,13 +17,13 @@ export class OsdsAccordionGroup implements OdsAccordionGroupMethods {
 
   @Element() el!: HTMLStencilElement;
 
-  /** @see OdsAccordionGroupMethods.registerAccordion */
+  /** @see OdsAccordionGroupMethod.registerAccordion */
   @Method()
   async registerAccordion(accordion: OsdsAccordion) {
     this.controller.registerAccordion(accordion);
   }
 
-  /** @see OdsAccordionGroupMethods.unRegisterAccordion */
+  /** @see OdsAccordionGroupMethod.unRegisterAccordion */
   @Method()
   async unRegisterAccordion(accordion: OsdsAccordion) {
     this.controller.unRegisterAccordion(accordion);

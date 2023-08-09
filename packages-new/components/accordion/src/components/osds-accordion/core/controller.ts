@@ -1,6 +1,6 @@
-import { OsdsAccordion } from "../osds-accordion";
+import type { OsdsAccordion } from "../osds-accordion";
 
-export class OdsAccordionController {
+class OdsAccordionController {
 
   constructor(private component: OsdsAccordion) { }
 
@@ -37,4 +37,8 @@ export class OdsAccordionController {
       accordionGroup.unRegisterAccordion(this.component)
     }
   }
+}
+
+export { 
+  OdsAccordionController,
 }

@@ -1,6 +1,5 @@
-import { EventEmitter } from '@stencil/core';
-import { HTMLStencilElement } from '@stencil/core/internal';
-
+import type { EventEmitter } from '@stencil/core';
+import type { HTMLStencilElement } from '@stencil/core/internal';
 import { OsdsAccordion } from '../osds-accordion';
 import { OdsAccordionController } from './controller';
 import { OsdsAccordionGroup } from '../../osds-accordion-group/osds-accordion-group';

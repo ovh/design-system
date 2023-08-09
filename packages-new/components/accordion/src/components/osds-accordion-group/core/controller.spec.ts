@@ -1,20 +1,20 @@
-import { HTMLStencilElement } from '@stencil/core/internal';
+
+import type { OdsAccordionAttribute } from '../../osds-accordion/interfaces/attributes';
+import type { OdsAccordionToggleEvent } from '../../osds-accordion/interfaces/events';
 import { OsdsAccordion } from '../../osds-accordion/osds-accordion';
-import type { OdsAccordionAttributes } from '../../osds-accordion/interfaces/attributes';
 import { OsdsAccordionGroup } from '../osds-accordion-group';
 import { OdsAccordionGroupController } from './controller';
-import type { OdsAccordionToggleEvent } from '../../osds-accordion/interfaces/type';
 
 class OdsAccordionMock extends OsdsAccordion {
   constructor(attribute: Partial<OsdsAccordion>) {
     super();
-    Object.assign(this, attribute)
+    Object.assign(this, attribute);
   }
 }
 class OdsAccordionGroupMock extends OsdsAccordionGroup {
   constructor(attribute: Partial<OsdsAccordionGroup>) {
     super();
-    Object.assign(this, attribute)
+    Object.assign(this, attribute);
   }
 }
 
@@ -22,12 +22,12 @@ describe('spec:ods-accordion-controller', () => {
   let controller: OdsAccordionGroupController;
   let component: OsdsAccordionGroup;
 
-  function createAccordion(attributes: Partial<OdsAccordionAttributes> = {}): OdsAccordionMock {
+  function createAccordion(attributes: Partial<OdsAccordionAttribute> = {}): OdsAccordionMock {
     const accordion = new OdsAccordionMock(attributes);
     accordion.el.addEventListener = jest.fn();
     accordion.el.removeEventListener = jest.fn();
 
-    (Object.keys(attributes) as Array<keyof OdsAccordionAttributes>)
+    (Object.keys(attributes) as Array<keyof OdsAccordionAttribute>)
       .forEach((key) => (accordion as any)[key] = attributes[key]);
 
     return accordion;
@@ -43,7 +43,7 @@ describe('spec:ods-accordion-controller', () => {
   }
 
   function setup(attributes: Partial<OsdsAccordionGroup> = {}) {
-    component = new OdsAccordionGroupMock(attributes);;
+    component = new OdsAccordionGroupMock(attributes);
     controller = new OdsAccordionGroupController(component);
   }
 

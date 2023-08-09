@@ -1,2 +1,2 @@
 export { OsdsAccordionGroup } from './osds-accordion-group';
-export { OdsAccordionGroupMethods } from './interfaces/methods';
+export { OdsAccordionGroupMethod } from './interfaces/methods';

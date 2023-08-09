@@ -1,19 +1,19 @@
+import type { OdsAccordionAttribute } from "./interfaces/attributes";
 import { E2EElement, E2EPage, newE2EPage } from "@stencil/core/testing";
 import { DEFAULT_ATTRIBUTE } from "./constants/default-attributes";
-import { OdsAccordionAttributes } from "./interfaces/attributes";
-import { OdsComponentAttributes2StringAttributes } from '@ovhcloud/ods-common-core';
-import { OdsStringAttributes2Str } from "@ovhcloud/ods-common-testing";
+import { odsComponentAttributes2StringAttributes } from '@ovhcloud/ods-common-core';
+import { odsStringAttributes2Str } from "@ovhcloud/ods-common-testing";
 
 describe('e2e:osds-accordion', () => {
   let page: E2EPage;
   let el: E2EElement;
 
-  async function setup({ attributes = {}, html = '' }: { attributes?: Partial<OdsAccordionAttributes>, html?: string } = {}) {
-    const stringAttributes = OdsComponentAttributes2StringAttributes<OdsAccordionAttributes>(attributes, DEFAULT_ATTRIBUTE);
+  async function setup({ attributes = {}, html = '' }: { attributes?: Partial<OdsAccordionAttribute>, html?: string } = {}) {
+    const stringAttributes = odsComponentAttributes2StringAttributes<OdsAccordionAttribute>(attributes, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
     await page.setContent(`
-      <osds-accordion ${OdsStringAttributes2Str(stringAttributes)}>
+      <osds-accordion ${odsStringAttributes2Str(stringAttributes)}>
         ${html}
       </osds-accordion>
     `);

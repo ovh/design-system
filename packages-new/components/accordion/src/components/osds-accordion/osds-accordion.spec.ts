@@ -1,12 +1,12 @@
 jest.mock('./core/controller'); // keep jest.mock before any import
 
-import { newSpecPage } from '@stencil/core/testing';
 import type { SpecPage } from '@stencil/core/testing';
+import type { OdsAccordionAttribute } from './interfaces/attributes';
+import { newSpecPage } from '@stencil/core/testing';
 import { OdsUnitTestAttributeType, odsUnitTestAttribute, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import { OsdsAccordion } from './osds-accordion';
-import { OdsComponentAttributes2StringAttributes } from '@ovhcloud/ods-common-core';
+import { odsComponentAttributes2StringAttributes } from '@ovhcloud/ods-common-core';
 import { OdsAccordionController } from './core/controller';
-import type { OdsAccordionAttributes } from './interfaces/attributes';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 import { ODS_ACCORDION_SIZE } from './constants/accordion-size';
@@ -19,8 +19,8 @@ describe('spec:osds-accordion', () => {
   let mainSlot: HTMLElement | null | undefined;
   let controller: OdsAccordionController;
 
-  async function setup({ attributes = {}, html = '' }: { attributes?: Partial<OdsAccordionAttributes>, html?: string } = {}) {
-    const stringAttributes = OdsComponentAttributes2StringAttributes<OdsAccordionAttributes>(attributes, DEFAULT_ATTRIBUTE);
+  async function setup({ attributes = {}, html = '' }: { attributes?: Partial<OdsAccordionAttribute>, html?: string } = {}) {
+    const stringAttributes = odsComponentAttributes2StringAttributes<OdsAccordionAttribute>(attributes, DEFAULT_ATTRIBUTE);
 
     page = await newSpecPage({
       components: [OsdsAccordion],
@@ -54,7 +54,7 @@ describe('spec:osds-accordion', () => {
     };
 
     describe('color', () => {
-      odsUnitTestAttribute<OdsAccordionAttributes, 'color'>({
+      odsUnitTestAttribute<OdsAccordionAttribute, 'color'>({
         name: 'color',
         defaultValue: DEFAULT_ATTRIBUTE.color,
         newValue: OdsThemeColorIntent.primary,
@@ -65,7 +65,7 @@ describe('spec:osds-accordion', () => {
     });
 
     describe('contrasted', () => {
-      odsUnitTestAttribute<OdsAccordionAttributes, 'contrasted'>({
+      odsUnitTestAttribute<OdsAccordionAttribute, 'contrasted'>({
         name: 'contrasted',
         defaultValue: DEFAULT_ATTRIBUTE.contrasted,
         newValue: true,
@@ -76,7 +76,7 @@ describe('spec:osds-accordion', () => {
     });
 
     describe('disabled', () => {
-      odsUnitTestAttribute<OdsAccordionAttributes, 'disabled'>({
+      odsUnitTestAttribute<OdsAccordionAttribute, 'disabled'>({
         name: 'disabled',
         defaultValue: DEFAULT_ATTRIBUTE.disabled,
         newValue: true,
@@ -87,7 +87,7 @@ describe('spec:osds-accordion', () => {
     });
 
     describe('size', () => {
-      odsUnitTestAttribute<OdsAccordionAttributes, 'size'>({
+      odsUnitTestAttribute<OdsAccordionAttribute, 'size'>({
         name: 'size',
         defaultValue: DEFAULT_ATTRIBUTE.size,
         newValue: undefined,
@@ -98,7 +98,7 @@ describe('spec:osds-accordion', () => {
     });
 
     describe('opened', () => {
-      odsUnitTestAttribute<OdsAccordionAttributes, 'opened'>({
+      odsUnitTestAttribute<OdsAccordionAttribute, 'opened'>({
         name: 'opened',
         defaultValue: DEFAULT_ATTRIBUTE.opened,
         newValue: true,

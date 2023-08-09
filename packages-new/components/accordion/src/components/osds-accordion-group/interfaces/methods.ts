@@ -1,10 +1,10 @@
-import { OsdsAccordion } from '../../osds-accordion/osds-accordion';
+import type { OsdsAccordion } from '../../osds-accordion/osds-accordion';
 
-interface OdsAccordionGroupMethods {
+interface OdsAccordionGroupMethod {
     registerAccordion(accordion: OsdsAccordion): void;
     unRegisterAccordion(accordion: OsdsAccordion): void;
 }
 
 export {
-    OdsAccordionGroupMethods,
+    OdsAccordionGroupMethod,
 }

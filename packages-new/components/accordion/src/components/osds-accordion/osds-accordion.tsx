@@ -1,20 +1,20 @@
-import { Component, Element, Event, EventEmitter, Host, Prop, Watch, h } from '@stencil/core';
-import { HTMLStencilElement } from '@stencil/core/internal';
-import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
-import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
-import type { OdsAccordionAttributes } from './interfaces/attributes';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import type { OdsAccordionAttribute } from './interfaces/attributes';
 import type { ODS_ACCORDION_SIZE } from './constants/accordion-size';
-import { OdsAccordionController } from './core/controller';
-import { OsdsAccordionGroup } from '../osds-accordion-group/osds-accordion-group';
 import type { OdsAccordionEvents } from './interfaces/events';
+import type { HTMLStencilElement } from '@stencil/core/internal';
+import type { OsdsAccordionGroup } from '../osds-accordion-group/osds-accordion-group';
+import type { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { Component, Element, Event, EventEmitter, Host, Prop, Watch, h } from '@stencil/core';
+import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { OdsAccordionController } from './core/controller';
 
 @Component({
   tag: 'osds-accordion',
   styleUrl: 'osds-accordion.scss',
   shadow: true
 })
-export class OsdsAccordion implements OdsAccordionAttributes, OdsAccordionEvents {
+export class OsdsAccordion implements OdsAccordionAttribute, OdsAccordionEvents {
 
   controller: OdsAccordionController = new OdsAccordionController(this);
   detailsEl?: HTMLDetailsElement;

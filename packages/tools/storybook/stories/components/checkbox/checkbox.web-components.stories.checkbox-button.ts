@@ -1,16 +1,9 @@
 import { html } from 'lit-html';
-import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-
-
 import { defineCustomElements } from '@ovhcloud/ods-stencil/components/checkbox-button/loader';
-
 import { extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
-import { olesIpsum, OlesIpsumGeneration } from '@ovhcloud/ods-core';
-import { OdsLogger } from '@ovhcloud/ods-core/src';
+import { olesIpsum, OlesIpsumGeneration } from '@ovhcloud/ods-common-core';
 
 defineCustomElements();
-
-const logger = new OdsLogger('OsdsCheckbox-stories-checkbox-button');
 
 const storyParams = {
   disabled: {

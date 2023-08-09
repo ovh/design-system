@@ -1,11 +1,12 @@
 import { extractArgTypes, extractStoryParams, getTagAttributes, } from '../../../core/componentHTMLUtils';
 
-import changelog from '@ovhcloud/ods-stencil/components/checkbox/CHANGELOG.md';
-import { defineCustomElements } from '@ovhcloud/ods-stencil/components/checkbox/loader';
+import { defineCustomElements } from '@ovhcloud/ods-component-checkbox/loader';
 import { html } from 'lit-html';
-import { iframe } from '../../../.storybook/iframe';
-import page from './checkbox.web-component.stories.page.mdx';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
+// @ts-ignore
+import page from './checkbox.web-component.stories.page.mdx';
+// @ts-ignore
+import changelog from '@ovhcloud/ods-component-checkbox/CHANGELOG.md';
 
 defineCustomElements();
 
@@ -38,7 +39,6 @@ export default {
   id: 'checkbox',
   parameters: {
     notes: {
-      API: iframe('/stencil-components-checkbox/modules/index.html'),
       changelog,
     },
     docs: { page }

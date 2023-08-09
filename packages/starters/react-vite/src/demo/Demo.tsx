@@ -3,10 +3,10 @@ import React from 'react';
 // you can import react proxy from the independent package
 import { OsdsButton } from '@ovhcloud/ods-components/button/react';
 import { OsdsTile } from '@ovhcloud/ods-components/tile/react';
+import { OsdsCheckbox } from '@ovhcloud/ods-components/checkbox/react';
 
 // you can import multiple react proxies from the grouped package
 import {
-  OsdsCheckbox,
   OsdsCheckboxButton,
   OsdsMessage,
   OsdsRadio,

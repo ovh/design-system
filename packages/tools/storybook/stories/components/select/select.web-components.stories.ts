@@ -1,41 +1,40 @@
 import { html } from 'lit-html';
-import { iframe } from '../../../.storybook/iframe';
-
-
-import { defineCustomElements } from '@ovhcloud/ods-stencil-select/loader';
-
-import changelog from '@ovhcloud/ods-stencil-select/CHANGELOG.md';
-import page from './select.web-component.stories.page.mdx';
 import { getTagAttributes, extractArgTypes, extractStoryParams } from '../../../core/componentHTMLUtils';
-import { odsSelectDefaultAttributes, OdsSelectSizeList } from '@ovhcloud/ods-core';
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_SELECT_SIZES } from '@ovhcloud/ods-component-select';
+import { defineCustomElements } from '@ovhcloud/ods-component-select/loader';
+import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-component-select/src/components/osds-select/constants/default-attributes';
+// @ts-ignore
+import changelog from '@ovhcloud/ods-component-select/CHANGELOG.md';
+// @ts-ignore
+import page from './select.web-component.stories.page.mdx';
 
 defineCustomElements();
 
 const storyParams = {
   color: {
     category: 'General',
-    defaultValue: odsSelectDefaultAttributes.color,
+    defaultValue: DEFAULT_ATTRIBUTE.color,
     options: [OdsThemeColorIntent.primary],
     control: { type: 'select' },
   },
   size: {
     category: 'General',
-    defaultValue: odsSelectDefaultAttributes.size,
-    options: OdsSelectSizeList,
+    defaultValue: DEFAULT_ATTRIBUTE.size,
+    options: ODS_SELECT_SIZES,
     control: { type: 'select' },
   },
   disabled: {
     category: 'Misc',
-    defaultValue: odsSelectDefaultAttributes.disabled,
+    defaultValue: DEFAULT_ATTRIBUTE.disabled,
   },
-  flex: {
+  inline: {
     category: 'Misc',
-    defaultValue: odsSelectDefaultAttributes.flex,
+    defaultValue: DEFAULT_ATTRIBUTE.inline,
   },
   required: {
     category: 'Misc',
-    defaultValue: odsSelectDefaultAttributes.required,
+    defaultValue: DEFAULT_ATTRIBUTE.required,
   },
 };
 
@@ -44,7 +43,6 @@ export default {
   id: 'select',
   parameters: {
     notes: {
-      API: iframe('stencil-select/modules/index.html'),
       changelog,
     },
     docs: { page }
@@ -63,6 +61,7 @@ const TemplateDefault = (args: any) => html`
   </osds-select>
 `;
 export const Default = TemplateDefault.bind({});
+// @ts-ignore
 Default.args = {
   ...extractStoryParams(storyParams),
 };
@@ -81,6 +80,7 @@ const TemplateMultiGroup = (args: any) => html`
   </osds-select>
 `;
 export const MultiGroup = TemplateMultiGroup.bind({});
+// @ts-ignore
 MultiGroup.args = {
   ...extractStoryParams(storyParams),
 };

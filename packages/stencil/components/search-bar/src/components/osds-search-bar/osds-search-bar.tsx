@@ -1,4 +1,5 @@
 import type { OdsInputValueChangeEvent } from '@ovhcloud/ods-component-input';
+import type { OdsSelectValueChangeEvent } from '@ovhcloud/ods-component-select';
 import { Component, Element, Host, h, Prop, Event, EventEmitter, Listen } from '@stencil/core';
 import {
   OdsSearchBar,
@@ -6,7 +7,6 @@ import {
   odsSearchBarDefaultAttributes,
   OdsSearchBarEvents,
   OdsSearchBarMethods,
-  OdsSelectValueChangeEvent,
 } from '@ovhcloud/ods-core';
 import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libraries/stencil-core';
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';

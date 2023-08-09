@@ -9,7 +9,7 @@ import { OdsLogger } from '@ovhcloud/ods-core';
 import '@ovhcloud/ods-component-button';
 import '@ovhcloud/ods-component-icon';
 import '@ovhcloud/ods-component-input';
-import '@ovhcloud/ods-stencil/components/select';
+import '@ovhcloud/ods-component-select';
 
 const logger = new OdsLogger('global-dev');
 logger.log('init');

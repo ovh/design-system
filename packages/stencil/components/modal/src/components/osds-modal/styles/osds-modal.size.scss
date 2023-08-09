@@ -14,19 +14,14 @@
     }
 
     :host .wrapper {
+        width: 70%;
         border-radius: var(--ods-size-04);
-        margin: 8px;
+        margin: var(--ods-size-04);
     }
 
     @media screen and (max-width: 768px) {
         :host .wrapper {
             width: 100%;
-        }
-    }
-
-    @media screen and (min-width: 768px) {
-        :host .wrapper {
-            width: 70%;
         }
     }
 
@@ -38,8 +33,8 @@
 
     :host .wrapper .header {
         width: 100%;
-        height: calc(var(--ods-size-09) + 8px);
-        padding: 0 4px;
+        height: calc(var(--ods-size-09) + var(--ods-size-04));
+        padding: 0 calc(var(--ods-size-04) / 2);
     }
 
     :host .wrapper .content {
@@ -49,6 +44,10 @@
 
     :host .wrapper .content .headline {
         margin-bottom: var(--ods-size-05);
+    }
+
+    :host .wrapper .content .slot {
+        max-height: 30vh;
     }
 
     :host .wrapper .content .actions {

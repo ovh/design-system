@@ -15,6 +15,11 @@ describe('e2e:osds-modal', () => {
     await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
 
     el = await page.find('osds-modal');
+
+    await page.evaluate(() => {
+      const wrapperElement = document.querySelector('osds-modal')?.shadowRoot?.querySelector('.wrapper') as HTMLElement;
+      wrapperElement.style.setProperty('animation', 'none');
+    });
   }
 
   it('should render', async () => {
@@ -158,6 +163,62 @@ describe('e2e:osds-modal', () => {
       });
       expect(display).toBe('flex');
     });
+  });
+
+  describe('keyboard navigation', () => {
+    it('should allow keyboard navigation inside modal but not outside when body has inert attribute', async () => {
+
+      page = await newE2EPage();
+
+      await page.setContent(`
+        <button id="outsideButton">Outside Modal</button>
+        <osds-modal dismissible="true">
+          <button id="insideModalButton1">Inside Modal 1</button>
+          <button id="insideModalButton2">Inside Modal 2</button>
+        </osds-modal>
+      `);
+
+      const outsideButton = await page.find('#outsideButton');
+      await outsideButton.click();
+      await page.waitForChanges();
+
+      await page.evaluate(() => {
+        document.body.setAttribute('inert', '');
+      });
+      const inert = await page.evaluate(() => document.body.hasAttribute('inert'));
+      expect(inert).toBe(true);
+      await page.waitForChanges();
+
+      await page.keyboard.press('Tab');
+      await page.waitForChanges();
+      const activeElementId1 = await page.evaluate(() => document.activeElement?.id);
+      expect(activeElementId1).toBe('insideModalButton1');
+
+      await page.keyboard.press('Tab');
+      await page.waitForChanges();
+      const activeElementId2 = await page.evaluate(() => document.activeElement?.id);
+      expect(activeElementId2).toBe('insideModalButton2');
+
+      await page.keyboard.press('Tab');
+      await page.waitForChanges();
+      const activeElementId3 = await page.evaluate(() => document.activeElement?.id);
+      expect(activeElementId3).toBe('insideModalButton1');
+
+      await page.waitForChanges();
+
+      await page.evaluate(() => {
+        document.body.setAttribute('inert', '');
+      });
+      const inert2 = await page.evaluate(() => document.body.hasAttribute('inert'));
+      expect(inert2).toBe(false);
+      await page.waitForChanges();
+
+      await page.keyboard.press('Tab');
+      await page.waitForChanges();
+      const activeElementId4 = await page.evaluate(() => document.activeElement?.id);
+      expect(activeElementId4).toBe('outsideButton');
+    });
+
   });
 
 });

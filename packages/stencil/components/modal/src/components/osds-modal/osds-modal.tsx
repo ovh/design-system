@@ -60,7 +60,7 @@ export class OsdsModal implements OdsModal<OdsStencilMethods<OdsModalMethods>, O
   }
 
   componentWillRender(): void {
-
+    document.documentElement.appendChild(this.el);
   }
 
   render() {
@@ -102,7 +102,9 @@ export class OsdsModal implements OdsModal<OdsStencilMethods<OdsModalMethods>, O
               </div>
             }
 
-            <slot></slot>
+            <div class="slot">
+              <slot></slot>
+            </div>
 
             <div class="actions">
               <slot name="actions"></slot>

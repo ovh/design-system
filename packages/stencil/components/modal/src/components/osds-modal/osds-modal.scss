@@ -35,7 +35,7 @@
 
 :host .backdrop {
   position: absolute;
-  background: rgba(0, 0, 0, 0.5);
+  opacity: 30%;
 }
 
 :host .wrapper {
@@ -54,7 +54,13 @@
   cursor: pointer;
 }
 
-:host .wrapper .actions {
+:host .wrapper .content .slot {
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+}
+
+:host .wrapper .content .actions {
   display: flex;
   align-items: center;
   justify-content: flex-end;

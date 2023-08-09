@@ -13,24 +13,28 @@
   <script nomodule src='/build/osds-modal.js'></script>
   <link rel="stylesheet" href="/build/osds-modal.css">
 </head>
-<body>
-  <osds-text color="text">
-    OVHcloud, anciennement OVH, est une entreprise française. Elle pratique initialement de l'hébergement de serveur, et est un fournisseur d'accès à Internet (FAI), puis opérateur de télécommunications pour les entreprises. Elle se développe, à la fin des années 2010, dans le cloud computing (informatique en nuage).
-  </osds-text>
-  <script>
-    document.querySelectorAll('ods-modal').forEach((elem) => {});
-  </script>
-</body>
 
-<osds-modal
-  color="info"
-  headline="On Vous Héberge ?"
-  dismissible="true"
->
+<body inert>
   <osds-text color="text">
     OVHcloud, anciennement OVH, est une entreprise française. Elle pratique initialement de l'hébergement de serveur, et est un fournisseur d'accès à Internet (FAI), puis opérateur de télécommunications pour les entreprises. Elle se développe, à la fin des années 2010, dans le cloud computing (informatique en nuage).
   </osds-text>
   <osds-button slot="actions" color="default" href="https://www.ovh.com/fr/" target="_blank">En savoir plus</osds-button>
   <osds-button slot="actions" color="primary" href="https://www.ovh.com/fr/" target="_blank">On m'héberge</osds-button>
-</osds-modal>
+  <script>
+    document.querySelectorAll('ods-modal').forEach((elem) => {});
+  </script>
+
+  <osds-modal
+    color="info"
+    headline="On Vous Héberge ?"
+    dismissible="true"
+  >
+    <osds-text color="text">
+      OVHcloud, anciennement OVH, est une entreprise française. Elle pratique initialement de l'hébergement de serveur, et est un fournisseur d'accès à Internet (FAI), puis opérateur de télécommunications pour les entreprises. Elle se développe, à la fin des années 2010, dans le cloud computing (informatique en nuage).
+    </osds-text>
+    <osds-button slot="actions" color="default" href="https://www.ovh.com/fr/" target="_blank">En savoir plus</osds-button>
+    <osds-button slot="actions" color="primary" href="https://www.ovh.com/fr/" target="_blank">On m'héberge</osds-button>
+  </osds-modal>
+</body>
+
 </html>

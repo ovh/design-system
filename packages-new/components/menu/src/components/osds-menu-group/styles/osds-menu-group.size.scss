@@ -1,0 +1,7 @@
+@import '~@ovhcloud/ods-theming/size/ods-component-size';
+
+@mixin osds-menu-group-theme-size() {
+  :host{
+    padding: var(--ods-size-inset-04);
+  }
+}

@@ -8,6 +8,10 @@
   )) using($colors) {
     @include osds-modal-on-selected-host() {
       //color: map_get($colors, color);
+      .backdrop {
+        background-color: map_get($colors, color);
+      }
+
       .wrapper .header {
         background-color: map_get($colors, background-color);
       }

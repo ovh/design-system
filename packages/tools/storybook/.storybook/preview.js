@@ -1,8 +1,8 @@
-import { DocsPage, DocsContainer } from '@storybook/addon-docs';
 import { html } from 'lit-html';
 
 import '@ovhcloud/ods-theme-blue-jeans/index.css';
 import { addCopyCodeButton } from './copy-code-button';
+import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -29,13 +29,10 @@ export const parameters = {
   },
   previewTabs: {
     'storybook/docs/panel': {
-      title: 'Docs',
+      hidden: true,
     },
     'canvas': {
-      title: 'Sandbox',
-    },
-    'storybookjs/notes/panel': {
-      title: 'Notes',
+      title: ' ',
     },
   },
   options: {
@@ -65,16 +62,21 @@ export const parameters = {
     },
     showPanel: true,
   },
-  docs: {
-    container: DocsContainer,
-    page: DocsPage,
+  themes: {
+    default: 'default',
+    list: [
+      { name: 'default', class: 'theme-default', color: '#fff' },
+      { name: 'contrasted', class: 'theme-contrasted', color: '#000E9C' }
+    ],
   },
 };
 
 export const decorators = [
   (story, context) => {
-    if (typeof story() === 'string') return `<div class="ods-theme">${story()}</div>`;
+    const template = [`<div class="ods-theme">`,`</div>`];
 
-    return html` <div class="ods-theme">${story()}</div>${context?.parameters?.options?.showPanel ? addCopyCodeButton() : ""}`;
+    return typeof story() === 'string' ?
+      `${template[0]}${story()}${template[1]}` :
+      html`${unsafeHTML(template[0])}${story()}${unsafeHTML(template[1])}${context?.parameters?.options?.showPanel ? addCopyCodeButton() : ""}`;
   },
 ];

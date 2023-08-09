@@ -62,24 +62,56 @@ export const getTagAttributes = directive(args => (part: any) => {
   });
 });
 
-export const extractArgTypes = (storyParams: { [ k: string ]: any }) => {
-  const res: { [ k: string ]: any } = {};
+export const extractNewArgTypes = (storyCategories: Record<string, Record<string, unknown>[]>) => {
+  const res = {};
+  Object.entries(storyCategories).forEach(([category, categoryParams]: [string, Record<string, unknown>[]]) => {
+    categoryParams.forEach(({
+                              name,
+                              options,
+                              defaultValue,
+                              control,
+                              ...rest
+                            }: { name: string, options?: string[], control?: Record<string, string>, rest?: unknown }) => {
+      res[name] = {
+        table: {
+          category,
+        },
+        ...control ? { control } : options && options.length ? { control: { type: 'select', options } } : { control: undefined },
+        ...rest,
+      };
+    });
+  });
+  return res;
+};
+
+export const extractArgTypes = (storyParams: { [k: string]: any }) => {
+  const res: { [k: string]: any } = {};
   Object.keys(storyParams).forEach((storyParam) => {
-    res[ storyParam ] = (({ options, control, description }) => ({
+    res[storyParam] = (({ options, control, description }) => ({
       options,
       control,
       description
-    }))(storyParams[ storyParam ]);
+    }))(storyParams[storyParam]);
     // keep table if already defined
-    res[ storyParam ].table = storyParams[ storyParam ].table;
+    res[storyParam].table = storyParams[storyParam].table;
 
-    if (storyParams[ storyParam ]?.category) {
-      res[ storyParam ].table = { ...res[ storyParam ].table, category: storyParams[ storyParam ].category };
+    if (storyParams[storyParam]?.category) {
+      res[storyParam].table = { ...res[storyParam].table, category: storyParams[storyParam].category };
     }
   });
   return {
-    ...res
+    ...res,
   };
+};
+
+export const extractNewStoryParams = (storyCategories: Record<string, Record<string, unknown>[]>) => {
+  const res = {};
+  Object.values(storyCategories).forEach((categoryParams: Record<string, unknown>[]) => {
+    categoryParams.forEach(({ name, defaultValue }: { name: string, defaultValue: string }) => {
+      res[name] = typeof defaultValue !== 'undefined' ? defaultValue : '';
+    });
+  });
+  return res;
 };
 
 export const extractStoryParams = (storyParams: { [k: string]: any }) => {

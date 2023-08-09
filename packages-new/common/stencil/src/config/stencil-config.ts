@@ -298,10 +298,6 @@ export function getStencilConfig({
         ...(distCustomElementsBundle ? distCustomElementsBundle : {}),
         copy: distCustomElementsBundleCopy
       },
-      {
-        type: 'docs-readme',
-        dir: 'dist/docs',
-      },
       // generate www app only when we are in dev mode (serve): gain build time
       ...(isDev ? (() => {
         console.info('ODS: generate www');

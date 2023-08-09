@@ -5,29 +5,29 @@ import type { ODS_BUTTON_TYPE } from '../constants/button-type';
 import type { ODS_BUTTON_VARIANT } from '../constants/button-variant';
 
 interface OdsButtonAttribute {
-  /** use a circle shape */
+  /** Uses a circle shape as variant */
   circle?: boolean;
-  /** main color: see component principles */
+  /** Component main color */
   color?: OdsThemeColorIntent;
-  /** contrasted or not: see component principles */
+  /** Contrasted mode */
   contrasted?: boolean;
-  /** disabled or not: see component principles */
+  /** Disabled mode */
   disabled?: boolean;
   /** Button with href as download source */
   download?: HTMLAnchorElement['download'];
-  /** use a button as a link with `<a>` element */
+  /** Uses a button as link by replace `<button>` with `<a>` */
   href?: string;
-  /** inline or not: see component principles */
+  /** Inline modet */
   inline?: boolean;
-  /** Button with href relationship */
+  /** Link's `rel` (works only if we are already in link-mode -using `href` attribute -) */
   rel?: OdsHTMLAnchorElementRel;
-  /** size: see component principles */
+  /** Component size */
   size?: ODS_BUTTON_SIZE;
-  /** link target if we are in a link-mode (using `href` attribute) */
+  /** Link's target (works only if we are already in link-mode -using `href` attribute -) */
   target?: OdsHTMLAnchorElementTarget;
-  /** type of the vanilla button */
+  /** Button type */
   type?: ODS_BUTTON_TYPE;
-  /** used design aspect */
+  /** Uses a variant type */
   variant?: ODS_BUTTON_VARIANT;
 }
 

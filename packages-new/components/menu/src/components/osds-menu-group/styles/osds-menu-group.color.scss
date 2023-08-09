@@ -1,0 +1,9 @@
+@import '~@ovhcloud/ods-theming/color/ods-component-color';
+
+@mixin osds-menu-group-theme-color() {
+
+}
+
+::slotted(*) {
+  color: ods-get-color-variable($intent-name: primary, $hue: '800');
+}

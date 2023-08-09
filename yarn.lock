@@ -5902,6 +5902,42 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-component-menu-react@workspace:packages-new/components/menu/react":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-menu-react@workspace:packages-new/components/menu/react"
+  dependencies:
+    "@ovhcloud/ods-component-menu": ^15.0.1
+    "@ovhcloud/ods-react-dev": ^15.0.1
+  peerDependencies:
+    react: ">=16.8.6"
+    react-dom: ">=16.8.6"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-component-menu-vue@workspace:packages-new/components/menu/vue":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-menu-vue@workspace:packages-new/components/menu/vue"
+  dependencies:
+    "@ovhcloud/ods-component-menu": ^15.0.1
+    "@ovhcloud/ods-vue-dev": ^15.0.1
+  peerDependencies:
+    vue: ">=3"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-component-menu@^15.0.1, @ovhcloud/ods-component-menu@workspace:packages-new/components/menu":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-menu@workspace:packages-new/components/menu"
+  dependencies:
+    "@ovhcloud/ods-common-core": ^15.0.1
+    "@ovhcloud/ods-common-stencil": ^15.0.1
+    "@ovhcloud/ods-common-testing": ^15.0.1
+    "@ovhcloud/ods-component-button": ^15.0.1
+    "@ovhcloud/ods-component-divider": ^15.0.1
+    "@ovhcloud/ods-stencil-dev": ^15.0.1
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-component-pagination-react@workspace:packages-new/components/pagination/react":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-pagination-react@workspace:packages-new/components/pagination/react"
@@ -6241,6 +6277,7 @@ __metadata:
     "@ovhcloud/ods-component-icon": ^15.0.1
     "@ovhcloud/ods-component-input": ^15.0.1
     "@ovhcloud/ods-component-link": ^15.0.1
+    "@ovhcloud/ods-component-menu": ^15.0.1
     "@ovhcloud/ods-component-pagination": ^15.0.1
     "@ovhcloud/ods-component-password": ^15.0.1
     "@ovhcloud/ods-component-select": ^15.0.1

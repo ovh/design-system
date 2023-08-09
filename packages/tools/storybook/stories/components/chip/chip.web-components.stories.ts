@@ -1,18 +1,12 @@
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-import { iframe } from '../../../.storybook/iframe';
-
 import { OdsThemeColorIntent, OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
-import { defineCustomElements } from '@ovhcloud/ods-stencil-chip/loader';
-import { OdsChipSize, OdsChipSizeList, OdsChipVariant, OdsChipVariantList } from '@ovhcloud/ods-core';
-import {
-  createComponentTable,
-  extractArgTypes,
-  extractStoryParams,
-  getTagAttributes,
-} from '../../../core/componentHTMLUtils';
-
-import changelog from '@ovhcloud/ods-stencil-chip/CHANGELOG.md';
+import { ODS_CHIP_SIZE, ODS_CHIP_SIZES, ODS_CHIP_VARIANT, ODS_CHIP_VARIANTS } from '@ovhcloud/ods-component-chip';
+import { defineCustomElements } from '@ovhcloud/ods-component-chip/loader';
+import { createComponentTable, extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
+// @ts-ignore
+import changelog from '@ovhcloud/ods-component-chip/CHANGELOG.md';
+// @ts-ignore
 import page from './chip.web-component.stories.page.mdx';
 
 defineCustomElements();
@@ -27,14 +21,14 @@ const storyParams = {
   },
   size: {
     category: 'General',
-    defaultValue: OdsChipSize.md,
-    options: OdsChipSizeList,
+    defaultValue: ODS_CHIP_SIZE.md,
+    options: ODS_CHIP_SIZES,
     control: { type: 'select' },
   },
   variant: {
     category: 'General',
-    defaultValue: OdsChipVariant.flat,
-    options: OdsChipVariantList,
+    defaultValue: ODS_CHIP_VARIANT.flat,
+    options: ODS_CHIP_VARIANTS,
     control: { type: 'select' },
   },
   chipContent: {
@@ -57,7 +51,7 @@ const storyParams = {
     category: 'Misc',
     defaultValue: false
   },
-  flex: {
+  inline: {
     category: 'Misc',
     defaultValue: false
   },
@@ -68,7 +62,6 @@ export default {
   id: 'chip',
   parameters: {
     notes: {
-      API: iframe('/stencil-chip/modules/index.html'),
       changelog,
     },
     docs: { page }
@@ -78,8 +71,8 @@ export default {
 
 /* Default */
 const TemplateDefault = (args:any) => {
-  if(args.flex === 0) {
-    delete args.flex;
+  if(args.inline === 0) {
+    delete args.inline;
   }
   return html`
     <osds-chip ...=${getTagAttributes(args)}>
@@ -88,6 +81,7 @@ const TemplateDefault = (args:any) => {
   `;
 }
 export const Default = TemplateDefault.bind({});
+// @ts-ignore
 Default.args = {
   ...extractStoryParams(storyParams),
 };
@@ -116,28 +110,28 @@ const TemplateAll = () => html`
 <h1>Variants & Colors</h1>
 ${unsafeHTML(createComponentTable(
   defaultTag,
-  { variant: OdsChipVariantList },
+  { variant: ODS_CHIP_VARIANTS },
   { color: OdsThemeColorIntentList },
   defaultContent,
 ))}
 <h1>Sizes & Colors</h1>
 ${unsafeHTML(createComponentTable(
   defaultTag,
-  { size: OdsChipSizeList },
+  { size: ODS_CHIP_SIZES },
   { color: OdsThemeColorIntentList },
   defaultContent,
 ))}
 <h1>Sizes & Variants</h1>
 ${unsafeHTML(createComponentTable(
   defaultTag,
-  { size: OdsChipSizeList },
-  { variant: OdsChipVariantList },
+  { size: ODS_CHIP_SIZES },
+  { variant: ODS_CHIP_VARIANTS },
   defaultContent,
 ))}
 <h1>Selectable Variants & Colors</h1>
 ${unsafeHTML(createComponentTable(
   defaultTag,
-  { variant: OdsChipVariantList },
+  { variant: ODS_CHIP_VARIANTS },
   { color: OdsThemeColorIntentList },
   defaultContent,
   { selectable: true },
@@ -145,7 +139,7 @@ ${unsafeHTML(createComponentTable(
 <h1>Disabled Variants & Colors</h1>
 ${unsafeHTML(createComponentTable(
   defaultTag,
-  { variant: OdsChipVariantList },
+  { variant: ODS_CHIP_VARIANTS },
   { color: OdsThemeColorIntentList },
   defaultContent,
   { disabled: true },
@@ -154,7 +148,7 @@ ${unsafeHTML(createComponentTable(
   <h1>Contrasted Variants & Colors</h1>
   ${unsafeHTML(createComponentTable(
   defaultTag,
-  { variant: OdsChipVariantList },
+  { variant: ODS_CHIP_VARIANTS },
   { color: OdsThemeColorIntentList },
   defaultContent,
   { contrasted: true },
@@ -162,7 +156,7 @@ ${unsafeHTML(createComponentTable(
   <h1>Selectable and contrasted Variants & Colors</h1>
   ${unsafeHTML(createComponentTable(
   defaultTag,
-  { variant: OdsChipVariantList },
+  { variant: ODS_CHIP_VARIANTS },
   { color: OdsThemeColorIntentList },
   defaultContent,
   { contrasted: true, selectable: true },
@@ -170,7 +164,7 @@ ${unsafeHTML(createComponentTable(
   <h1>Disabled and contrasted Variants & Colors</h1>
   ${unsafeHTML(createComponentTable(
   defaultTag,
-  { variant: OdsChipVariantList },
+  { variant: ODS_CHIP_VARIANTS },
   { color: OdsThemeColorIntentList },
   defaultContent,
   { contrasted: true, disabled: true },
@@ -178,6 +172,7 @@ ${unsafeHTML(createComponentTable(
 </div>
 `;
 export const All = TemplateAll.bind({});
+// @ts-ignore
 All.parameters = {
   controls: { hideNoControlsWarning: true },
   options: { showPanel: false }

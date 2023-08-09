@@ -1,0 +1,70 @@
+@import 'styles/osds-chip.mixins';
+@import 'styles/osds-chip.color';
+@import 'styles/osds-chip.size';
+@import 'styles/osds-chip.typography';
+@import '~@ovhcloud/ods-theming/color/ods-theming-color';
+@import '~@ovhcloud/ods-theming/ods-theme';
+
+// CSS for the component but not for theming
+
+:host {
+  align-items: center;
+  border-color: transparent;
+  border-style: solid;
+  box-shadow: none;
+  box-sizing: border-box;
+  display: flex;
+  line-height: 1;
+  margin: 0;
+  opacity: 1;
+  overflow: hidden;
+
+  @include osds-chip-on-main-element() {
+    display: flex;
+    align-items: center;
+  }
+}
+
+:host([selectable]),
+:host([removable]) osds-icon[name='close'] {
+  cursor: pointer;
+  user-select: none;
+}
+
+:host([selectable]:active),
+:host([removable]) osds-icon[name='close']:active {
+  transition: background-color ease-in-out 0s;
+}
+
+:host([disabled]) {
+  cursor: not-allowed;
+
+  @include osds-chip-on-main-element() {
+    pointer-events: none;
+  }
+}
+
+:host([inline]) {
+  display: inline-flex;
+  width: var(--width);
+}
+
+:host:not([disabled]):focus-visible {
+  @include osds-chip-on-selected-host() {
+    outline-style: dotted;
+    outline-width: var(--ods-size-inset-02);
+    outline-offset: var(--ods-size-inset-02);
+  }
+}
+
+slot {
+  display: inline-flex;
+  flex: 1;
+}
+
+// apply the theme template for the component
+@include ods-theme-component() {
+  @include osds-chip-theme-color();
+  @include osds-chip-theme-size();
+  @include osds-chip-theme-typography();
+}

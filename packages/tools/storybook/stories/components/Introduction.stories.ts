@@ -337,7 +337,7 @@ const uiComponents = {
       url: parent.location.href.replace(parent.location.search, "?path=/story/select--default"),
       attributes: {
         color: OdsThemeColorIntent.primary,
-        flex: '',
+        inline: true,
         style: `max-width: 12em;`
       },
       slots: {

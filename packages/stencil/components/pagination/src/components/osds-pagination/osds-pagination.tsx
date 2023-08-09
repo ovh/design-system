@@ -1,3 +1,4 @@
+import type { OdsSelectOptionClickEventDetail } from '@ovhcloud/ods-component-select';
 import {
   OdsLogger,
   OdsPagination,
@@ -7,7 +8,6 @@ import {
   OdsPaginationMethods,
   OdsPaginationChangedEventDetail,
   OdsPaginationPageList,
-  OdsSelectOptionClickEventDetail,
   odsPaginationPerPageMin,
   odsPaginationMinPerPageOptions,
 } from '@ovhcloud/ods-core';

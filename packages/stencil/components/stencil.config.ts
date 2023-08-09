@@ -36,6 +36,7 @@ const config: Config = {
       excludeComponents: [
         'osds-breadcrumb',
         'osds-button',
+        'osds-checkbox',
         'osds-chip',
         'osds-collapsible',
         'osds-content-addon',
@@ -56,6 +57,7 @@ const config: Config = {
       excludeComponents: [
         'osds-breadcrumb',
         'osds-button',
+        'osds-checkbox',
         'osds-chip',
         'osds-collapsible',
         'osds-content-addon',
@@ -97,7 +99,6 @@ const config: Config = {
         'osds-cart-total',
       ],
     },
-    { components: ['osds-checkbox'] },
     { components: ['osds-checkbox-button'] },
     { components: ['osds-flag'] },
     { components: ['osds-location-tile'] },

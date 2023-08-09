@@ -2,10 +2,10 @@
 // you can import react proxy from the independent package
 import { OsdsButton } from '@ovhcloud/ods-components/button/vue'
 import { OsdsTile } from '@ovhcloud/ods-components/tile/vue';
+import { OsdsCheckbox } from '@ovhcloud/ods-components/checkbox/vue';
 
 // you can import multiple react proxies from the grouped package
 import {
-  OsdsCheckbox,
   OsdsCheckboxButton,
   OsdsMessage,
   OsdsRadio,

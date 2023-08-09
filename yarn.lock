@@ -5590,6 +5590,41 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-component-content-addon-react@workspace:packages-new/components/content-addon/react":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-content-addon-react@workspace:packages-new/components/content-addon/react"
+  dependencies:
+    "@ovhcloud/ods-component-content-addon": ^15.0.1
+    "@ovhcloud/ods-react-dev": ^15.0.1
+  peerDependencies:
+    react: ">=16.8.6"
+    react-dom: ">=16.8.6"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-component-content-addon-vue@workspace:packages-new/components/content-addon/vue":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-content-addon-vue@workspace:packages-new/components/content-addon/vue"
+  dependencies:
+    "@ovhcloud/ods-component-content-addon": ^15.0.1
+    "@ovhcloud/ods-vue-dev": ^15.0.1
+  peerDependencies:
+    vue: ">=3"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-component-content-addon@^15.0.1, @ovhcloud/ods-component-content-addon@workspace:packages-new/components/content-addon":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-content-addon@workspace:packages-new/components/content-addon"
+  dependencies:
+    "@ovhcloud/ods-common-core": ^15.0.1
+    "@ovhcloud/ods-common-stencil": ^15.0.1
+    "@ovhcloud/ods-common-testing": ^15.0.1
+    "@ovhcloud/ods-stencil-dev": ^15.0.1
+    "@ovhcloud/ods-theming": ^15.0.1
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-component-divider-react@workspace:packages-new/components/divider/react":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-divider-react@workspace:packages-new/components/divider/react"
@@ -5965,6 +6000,7 @@ __metadata:
     "@ovhcloud/ods-component-breadcrumb": ^15.0.1
     "@ovhcloud/ods-component-button": ^15.0.1
     "@ovhcloud/ods-component-collapsible": ^15.0.1
+    "@ovhcloud/ods-component-content-addon": ^15.0.1
     "@ovhcloud/ods-component-flag": ^15.0.1
     "@ovhcloud/ods-component-icon": ^15.0.1
     "@ovhcloud/ods-component-input": ^15.0.1
@@ -6501,46 +6537,6 @@ __metadata:
     puppeteer: ^10.4.0
     tslib: ^2.1.0
     typescript: 4.7.4
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-stencil-content-addon-react@workspace:packages/stencil/components/content-addon/react":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-stencil-content-addon-react@workspace:packages/stencil/components/content-addon/react"
-  dependencies:
-    "@ovhcloud/ods-stencil-cart": ^15.0.1
-    "@types/react": 17.0.37
-    "@types/react-dom": 17.0.11
-    react: 16.14.0
-    react-dom: 16.14.0
-    rimraf: ^3.0.2
-    tslib: "*"
-    typescript: 4.7.4
-  peerDependencies:
-    react: ">=16.8.6"
-    react-dom: ">=16.8.6"
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-stencil-content-addon-vue@workspace:packages/stencil/components/content-addon/vue":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-stencil-content-addon-vue@workspace:packages/stencil/components/content-addon/vue"
-  dependencies:
-    "@ovhcloud/ods-stencil-content-addon": ^15.0.1
-    rimraf: ^3.0.2
-    typescript: 4.7.4
-    vue: ^3.2.41
-  peerDependencies:
-    vue: ">=3"
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-stencil-content-addon@^15.0.1, @ovhcloud/ods-stencil-content-addon@workspace:packages/stencil/components/content-addon":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-stencil-content-addon@workspace:packages/stencil/components/content-addon"
-  dependencies:
-    "@ovhcloud/ods-stencil-component": ^15.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^15.0.1
   languageName: unknown
   linkType: soft
 
@@ -7114,6 +7110,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-select@workspace:packages/stencil/components/select"
   dependencies:
+    "@ovhcloud/ods-component-content-addon": ^15.0.1
     "@ovhcloud/ods-component-icon": ^15.0.1
     "@ovhcloud/ods-stencil-component": ^15.0.1
     "@ovhcloud/ods-stencil-component-dev": ^15.0.1

@@ -1,23 +1,15 @@
-import { E2EPage, newE2EPage } from '@stencil/core/testing';
-import {
-  OdsComponentAttributes2StringAttributes,
-  OdsContentAddonAttributes,
-  OdsLogger,
-  odsContentAddonDefaultAttributes,
-} from '@ovhcloud/ods-core';
-import { OdsCreateAttributes, OdsStringAttributes2Str, odsContentAddonBaseAttributes } from '@ovhcloud/ods-testing';
+import type { E2EPage } from '@stencil/core/testing';
+import { newE2EPage } from '@stencil/core/testing';
+import { OdsLogger } from '@ovhcloud/ods-common-core';
 
 const logger = new OdsLogger('osds-content-addon-e2e');
 
 describe('e2e:osds-content-addon', () => {
   let page: E2EPage;
 
-  async function setup({ attributes, html }: { attributes: Partial<OdsContentAddonAttributes>, html: string }) {
-    const minimalAttributes: OdsContentAddonAttributes = OdsCreateAttributes(attributes, odsContentAddonBaseAttributes);
-    const stringAttributes = OdsComponentAttributes2StringAttributes<OdsContentAddonAttributes>(minimalAttributes, odsContentAddonDefaultAttributes);
-
+  async function setup({ html }: { html: string }) {
     page = await newE2EPage();
-    await page.setContent(`<osds-content-addon ${OdsStringAttributes2Str(stringAttributes)}>${html}</osds-content-addon>`);
+    await page.setContent(`<osds-content-addon>${html}</osds-content-addon>`);
     await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
 
     const root = await page.find('osds-content-addon');
@@ -52,7 +44,7 @@ describe('e2e:osds-content-addon', () => {
   describe('screenshots', () => {
     it('check with all slots', async () => {
       await setup({
-        attributes: {}, html: `
+        html: `
         <span slot='top'>Top</span>
         <span slot='bottom'>Bottom</span>
         <span slot='start'>Start</span>
@@ -73,9 +65,7 @@ describe('e2e:osds-content-addon', () => {
     describe('screenshots for each slot', () => {
       slots.forEach(({ slotName, html }) => {
         it(slotName, async () => {
-          await setup({
-            attributes: {}, html,
-          });
+          await setup({ html });
 
           await page.waitForChanges();
           await page.setViewport({ width: 600, height:600 });

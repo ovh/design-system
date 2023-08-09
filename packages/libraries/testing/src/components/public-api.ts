@@ -4,7 +4,6 @@ export * from './checkbox/public-api';
 export * from './checkbox-button/public-api';
 export * from './chip/public-api';
 export * from './code/public-api';
-export * from './content-addon/public-api';
 export * from './location-tile/public-api';
 export * from './message/public-api';
 export * from './pagination/public-api';

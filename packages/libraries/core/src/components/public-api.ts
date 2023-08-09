@@ -14,7 +14,6 @@ export * from './checkbox-button/public-api';
 export * from './chip/public-api';
 export * from './clipboard/public-api';
 export * from './code/public-api';
-export * from './content-addon/public-api';
 export * from './form-field/public-api';
 export * from './location-tile/public-api';
 export * from './pagination/public-api';

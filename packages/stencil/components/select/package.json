@@ -37,6 +37,7 @@
     "@ovhcloud/ods-stencil-component": "^15.0.1"
   },
   "devDependencies": {
+    "@ovhcloud/ods-component-content-addon": "^15.0.1",
     "@ovhcloud/ods-stencil-component-dev": "^15.0.1"
   }
 }

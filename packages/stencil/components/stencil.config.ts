@@ -35,7 +35,6 @@ const config: Config = {
       // exclude components that have been moved to the new repo
       excludeComponents: [
         'osds-accordion',
-        'osds-accordion-group',
         'osds-breadcrumb',
         'osds-button',
         'osds-collapsible',
@@ -55,7 +54,6 @@ const config: Config = {
       // exclude components that have been moved to the new repo
       excludeComponents: [
         'osds-accordion',
-        'osds-accordion-group',
         'osds-breadcrumb',
         'osds-button',
         'osds-collapsible',

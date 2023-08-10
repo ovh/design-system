@@ -2,21 +2,19 @@ import type { OdsValidityState } from '@ovhcloud/ods-common-core';
 
 interface OdsSelectMethod {
   /**
-   * reset the value to the initial one (default value)
-   */
-  reset(): Promise<void>;
-
-  /**
    * erase the current selection
    */
   clear(): Promise<void>;
 
   /**
-   * check that the select is valid or not.
-   * In case of required field, the validation will check the entered value
-   * and set the field in error if it is not fulfilled
+   * get the validity state
    */
-  validate(): Promise<OdsValidityState>;
+  getValidity(): Promise<OdsValidityState>;
+
+  /**
+   * reset the value to the initial one (default value)
+   */
+  reset(): Promise<void>;
 
   /**
    * focus the element
@@ -29,9 +27,11 @@ interface OdsSelectMethod {
   setInputTabindex(value: number): Promise<void>;
 
   /**
-   * get the validity state
+   * check that the select is valid or not.
+   * In case of required field, the validation will check the entered value
+   * and set the field in error if it is not fulfilled
    */
-  getValidity(): Promise<OdsValidityState>;
+  validate(): Promise<OdsValidityState>;
 }
 
 export {

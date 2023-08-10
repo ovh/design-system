@@ -3,10 +3,10 @@ import type { EventEmitter } from '@stencil/core';
 import type { OsdsSelectOption } from '../../osds-select-option/osds-select-option';
 
 interface OdsSelectValueChangeEventDetail {
-  value: OdsInputValue,
   oldValue?: OdsInputValue,
-  validity: OdsValidityState,
   selection: OsdsSelectOption | null,
+  validity: OdsValidityState,
+  value: OdsInputValue,
 }
 
 type OdsSelectValueChangeEvent = CustomEvent<OdsSelectValueChangeEventDetail>;

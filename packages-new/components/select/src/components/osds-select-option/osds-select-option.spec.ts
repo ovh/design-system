@@ -51,26 +51,6 @@ describe('spec:osds-select-option', () => {
   });
 
   describe('attributes', () => {
-
-    // function getAttributeContextOptions<Name extends keyof OdsSelectOptionAttributes = keyof OdsSelectOptionAttributes>({
-    //                                                                                                         name,
-    //                                                                                                         list,
-    //                                                                                                         defaultValue
-    //                                                                                                       }: odsGetUnitTestAttributeContextOptions<OdsSelectOptionAttributes, Name>) {
-    //   return odsGetUnitTestAttributeBaseOptions<OdsSelectOptionAttributes, Name, OsdsSelectOption>({
-    //     name,
-    //     list,
-    //     defaultValue,
-    //     instance: () => instance,
-    //     root: () => page.root,
-    //     wait: () => page.waitForChanges(),
-    //     setup: (value) => {
-    //       const attributes: Partial<OdsSelectOptionAttributes> = {};
-    //       attributes[ name ] = value;
-    //       return setup({ attributes });
-    //     },
-    //   })
-    // }
     const config = {
       instance: () => instance,
       page: () => page,
@@ -79,13 +59,6 @@ describe('spec:osds-select-option', () => {
     };
 
     describe('value', () => {
-      // odsUnitTestAttribute<OdsSelectOptionAttribute, 'value'>({
-      //   ...getAttributeContextOptions({
-      //     name: 'value',
-      //     list: [3, 4],
-      //     defaultValue: DEFAULT_ATTRIBUTE.value,
-      //   })
-      // });
       odsUnitTestAttribute<OdsSelectOptionAttribute, 'value'>({
         name: 'value',
         defaultValue: DEFAULT_ATTRIBUTE.value,

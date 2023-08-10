@@ -10,9 +10,9 @@ import type { OsdsCheckbox } from './osds-checkbox';
 import { newE2EPage } from '@stencil/core/testing';
 import { OdsLogger } from '@ovhcloud/ods-common-core';
 import { odsComponentAttributes2StringAttributes, odsGetSimulatedPromise, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
-import { osdsSetPropertyFunction } from '@ovhcloud/ods-stencil/libraries/stencil-testing';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-
+import { osdsSetPropertyFunction } from '@ovhcloud/ods-common-stencil';
+ 
 describe('e2e:osds-checkbox', () => {
   let page: E2EPage;
   let el: E2EElement;
@@ -25,6 +25,7 @@ describe('e2e:osds-checkbox', () => {
   let activeElementId: string | undefined;
   const logger = new OdsLogger('e2e:osds-checkbox');
   const spyEvent = async (eventName: keyof OdsCheckboxEvent) => await el.spyOnEvent(eventName);
+  const baseAttribute = { ariaLabel: '', checked: false, disabled: false, hasFocus: false, updating: false, value: '' };
 
   async function setup({
                          attributes = {},
@@ -33,7 +34,6 @@ describe('e2e:osds-checkbox', () => {
                          htmlOutside = '',
                          onPage,
                        }: { attributes?: Partial<OdsCheckboxAttribute>, html?: string, htmlOutside?: string, nativeAttributes?: Partial<HTMLElement>, onPage?: ({ page }: { page: E2EPage }) => void } = {}) {
-    const baseAttribute = { ariaLabel: '', checked: false, disabled: false, hasFocus: false, updating: false, value: '' };
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsCheckboxAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
     const nativeStringAttributes = odsComponentAttributes2StringAttributes<Partial<HTMLElement>>(nativeAttributes, {});
 

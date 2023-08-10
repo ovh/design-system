@@ -1,7 +1,7 @@
 export { OsdsCheckbox } from './osds-checkbox';
-export { OdsCheckboxAttribute } from './interfaces/attributes';
-export { OdsCheckboxMethod } from './interfaces/methods';
-export { 
+export type { OdsCheckboxAttribute } from './interfaces/attributes';
+export type { OdsCheckboxMethod } from './interfaces/methods';
+export type { 
     OdsCheckboxEvent, 
     OdsCheckboxFocusChangeEventDetail,
     OdsCheckboxUpdatingChangeEventDetail,

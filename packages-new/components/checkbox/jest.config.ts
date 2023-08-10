@@ -14,10 +14,5 @@ const config: Config.InitialOptions = {
    * @see https://jestjs.io/fr/docs/configuration#globalsetup-string
    */
   globalSetup: "./jest.global.ts",
-  /**
-   * setup jest files executed for each test and in the test environment
-   * @see https://jestjs.io/fr/docs/configuration#setupfiles-array
-   */
-  setupFiles: ["./jest.setup.ts"]
 };
 export default config;

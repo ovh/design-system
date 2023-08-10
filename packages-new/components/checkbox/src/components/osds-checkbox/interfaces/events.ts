@@ -18,24 +18,18 @@ interface OdsCheckboxFocusChangeEventDetail extends OdsFocusChangeEventDetail {
 interface OdsCheckboxEvent {
   /**
    * Event triggered on checkbox blur
-   * @see OdsCheckboxBehavior.onBlur
-   * @see OdsCheckboxBehavior.emitBlur
    */
   odsBlur: EventEmitter<OdsCheckboxFocusChangeEventDetail>;
   /**
    * the checked state changed
-   * @see OdsCheckboxBehavior.emitChecked
    */
   odsCheckedChange: EventEmitter<OdsCheckboxCheckedChangeEventDetail>;
   /**
    * Event triggered on checkbox focus
-   * @see OdsCheckboxBehavior.onFocus
-   * @see OdsCheckboxBehavior.emitFocus
    */
   odsFocus: EventEmitter<OdsCheckboxFocusChangeEventDetail>;
   /**
    * the checked state is being changed
-   * @see OdsCheckboxBehavior.emitUpdating
    */
   odsUpdatingChange: EventEmitter<OdsCheckboxUpdatingChangeEventDetail>;
 }

@@ -78,7 +78,6 @@ class OdsSelectController {
   }
 
   handlerKeyDown(event: KeyboardEvent): void {
-    console.log(this.selectOptions)
     const selectedSelectOptionIndex = this.selectOptions.findIndex((select) => select.getAttribute('selected') !== null || document.activeElement === select);
     switch (event.code) {
       case 'Escape': {

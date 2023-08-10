@@ -37,17 +37,6 @@ describe('spec:ods-select-controller', () => {
     controller.selectOptions = [item1, item2];
   }
 
-  beforeEach(() => {
-    // component = new OdsSelectMock();
-    // item1 = document.createElement('osds-select-option') as OdsSelectOption & HTMLElement;
-    // item1.value = '1';
-    // item2 = document.createElement('osds-select-option') as OdsSelectOption & HTMLElement;
-    // item2.value = '2';
-    // component.el = document.createElement('osds-select');
-    // component.el.appendChild(item1);
-    // component.el.appendChild(item2);
-  });
-
   it('should initialize', () => {
     setup();
     expect(controller).toBeDefined();

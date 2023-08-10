@@ -1,5 +1,3 @@
-// jest.mock('@ovhcloud/ods-core/src/components/checkbox/ods-checkbox-controller'); // keep jest.mock before any import
-
 import type { OdsCheckboxAttribute } from './interfaces/attributes';
 import type { SpecPage } from '@stencil/core/testing';
 import { newSpecPage } from '@stencil/core/testing';
@@ -47,8 +45,6 @@ describe('spec:osds-checkbox', () => {
 
     // note: assigned slot not yet available in HtmlMockedElement of stencil : https://github.com/ionic-team/stencil/issues/2830
     mainSlot = shadowRoot?.querySelector('slot:not([name])');
-
-    // controller = (OdsCheckboxController as unknown as jest.SpyInstance<OdsCheckboxController, unknown[]>).mock.instances[ 0 ];
   }
 
   afterEach(() => {

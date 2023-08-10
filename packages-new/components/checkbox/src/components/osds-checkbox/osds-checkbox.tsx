@@ -8,10 +8,7 @@ import type {
 import type { OdsCheckboxAttribute, OdsCheckboxAttributeCbk } from './interfaces/attributes';
 import type { OdsCheckboxMethod } from './interfaces/methods';
 import { Component, Element, Event, EventEmitter, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
-import {
-  OdsCheckboxable,
-  OdsLogger,
-} from '@ovhcloud/ods-common-core';
+import { OdsCheckboxable, OdsLogger} from '@ovhcloud/ods-common-core';
 import { OdsCheckboxController } from './core/ods-checkbox-controller';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 
@@ -20,7 +17,7 @@ import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
   styleUrl: 'osds-checkbox.scss',
   shadow: true,
 })
-class OsdsCheckbox implements OdsCheckboxMethod, OdsCheckboxEvent, OdsCheckboxAttribute {
+export class OsdsCheckbox implements OdsCheckboxMethod, OdsCheckboxEvent, OdsCheckboxAttribute {
   private static checkboxIds = 0;
   /** @see OdsComponent.controller */
   controller = new OdsCheckboxController(this);
@@ -190,8 +187,4 @@ class OsdsCheckbox implements OdsCheckboxMethod, OdsCheckboxEvent, OdsCheckboxAt
       </Host>
     );
   }
-}
-
-export { 
-  OsdsCheckbox,
 }

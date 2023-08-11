@@ -1,5 +1,5 @@
 import { html } from 'lit-html';
-import { defineCustomElements } from '@ovhcloud/ods-stencil/components/checkbox-button/loader';
+import { defineCustomElements } from '@ovhcloud/ods-component-checkbox-button/loader';
 import { extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 import { olesIpsum, OlesIpsumGeneration } from '@ovhcloud/ods-common-core';
 

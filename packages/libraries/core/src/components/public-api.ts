@@ -9,7 +9,6 @@ export * from './cart-manager/public-api';
 export * from './cart-section/public-api';
 export * from './cart-total/public-api';
 export * from './cart/public-api';
-export * from './checkbox-button/public-api';
 export * from './clipboard/public-api';
 export * from './code/public-api';
 export * from './flag/public-api';

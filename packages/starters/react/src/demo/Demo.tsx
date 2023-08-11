@@ -4,10 +4,11 @@ import React from 'react';
 import { OsdsButton } from '@ovhcloud/ods-components/button/react';
 import { OsdsTile } from '@ovhcloud/ods-components/tile/react';
 import { OsdsCheckbox } from '@ovhcloud/ods-components/checkbox/react';
+import { OsdsCheckboxButton } from '@ovhcloud/ods-components/checkbox-button/react';
+import { OdsCheckboxButtonSize } from '@ovhcloud/ods-components/checkbox-button';
 
 // you can import multiple react proxies from the grouped package
 import {
-  OsdsCheckboxButton,
   OsdsMessage,
   OsdsRadio,
   OsdsRadioGroup,
@@ -16,7 +17,7 @@ import {
 } from '@ovhcloud/ods-stencil/components/react';
 
 // each type you import types from ODS, you will need to import the core
-import { Ods, OdsCheckboxButtonSize, OdsExternalLogger, OdsMessageType, ODS_COUNTRY_ISO_CODE } from '@ovhcloud/ods-core';
+import { Ods, OdsExternalLogger, OdsMessageType, ODS_COUNTRY_ISO_CODE } from '@ovhcloud/ods-core';
 
 // each theming related type you use, you will need to import the theming
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';

@@ -1,13 +1,13 @@
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-import { iframe } from '../../../.storybook/iframe';
 
-import { defineCustomElements } from '@ovhcloud/ods-stencil/components/checkbox-button/loader';
-import changelog from '@ovhcloud/ods-stencil/components/checkbox-button/CHANGELOG.md';
+import { defineCustomElements } from '@ovhcloud/ods-component-checkbox-button/loader';
+import { OdsCheckboxButtonSize, OdsCheckboxButtonSizes } from '@ovhcloud/ods-component-checkbox-button';
+import { OdsThemeColorIntent, OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
+// @ts-ignore
+import changelog from '@ovhcloud/ods-component-checkbox-button/CHANGELOG.md';
+// @ts-ignore
 import page from './checkbox-button.web-component.stories.page.mdx';
-import { OdsCheckboxButtonSizeList, odsCheckboxButtonDefaultAttributes } from '@ovhcloud/ods-core';
-import { OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
-
 import {
   createComponentTable,
   extractArgTypes,
@@ -21,26 +21,26 @@ defineCustomElements();
 const storyParams = {
   checked: {
     category: 'General',
-    defaultValue: odsCheckboxButtonDefaultAttributes.checked,
+    defaultValue: false,
   },
   indeterminate: {
     category: 'General',
-    defaultValue: odsCheckboxButtonDefaultAttributes.indeterminate,
+    defaultValue: false,
   },
   checking: {
     category: 'General',
-    defaultValue: odsCheckboxButtonDefaultAttributes.checking,
+    defaultValue: false,
   },
   color: {
     category: 'General',
-    defaultValue: odsCheckboxButtonDefaultAttributes.color,
+    defaultValue: OdsThemeColorIntent.default,
     options: OdsThemeColorIntentList,
     control: { type: 'select' },
   },
   size: {
     category: 'General',
-    defaultValue: odsCheckboxButtonDefaultAttributes.size,
-    options: OdsCheckboxButtonSizeList,
+    defaultValue: OdsCheckboxButtonSize.md,
+    options: OdsCheckboxButtonSizes,
     control: { type: 'select' },
   },
   start: {
@@ -57,11 +57,11 @@ const storyParams = {
   },
   hasFocus: {
     category: 'Misc',
-    defaultValue: odsCheckboxButtonDefaultAttributes.hasFocus,
+    defaultValue: false,
   },
   interactive: {
     category: 'Misc',
-    defaultValue: odsCheckboxButtonDefaultAttributes.interactive,
+    defaultValue: false,
   },
 };
 
@@ -70,7 +70,6 @@ export default {
   id: 'checkbox-button',
   parameters: {
     notes: {
-      API: iframe('/stencil-checkbox-button/modules/index.html'),
       changelog,
     },
     docs: { page }
@@ -79,20 +78,21 @@ export default {
 };
 
 /* Default */
-const OsdsCheckboxButtonDefault = (args) => html`
+const OsdsCheckboxButtonDefault = (args: Record< string, unknown>) => html`
   <osds-checkbox-button ...=${getTagAttributes(args)}>
     <span slot='start'>${unsafeHTML(args.start)}</span>
     <span slot='end'>${unsafeHTML(args.end)}</span>
   </osds-checkbox-button>
 `;
-const TemplateDefault = (args) => OsdsCheckboxButtonDefault(args);
+const TemplateDefault = (args: Record< string, unknown>) => OsdsCheckboxButtonDefault(args);
 export const Default = TemplateDefault.bind({});
+// @ts-ignore
 Default.args = {
   ...extractStoryParams(storyParams),
 };
 
 /*  Checkbox */
-const OsdsCheckboxButtonCheckboxWrapper = (args) => html`
+const OsdsCheckboxButtonCheckboxWrapper = (args: Record< string, unknown>) => html`
   <h1 style='font-size: 1.3rem; font-family: "Source Sans Pro"; font-style: italic'>
     <a href=${parent.location.href.replace(parent.location.search, "?path=/story/checkbox--web-component")}>Checkbox</a> Meta component adds behavior to this Checkbox Button
   </h1>
@@ -103,8 +103,9 @@ const OsdsCheckboxButtonCheckboxWrapper = (args) => html`
       </osds-checkbox-button>
     </osds-checkbox>  
 `;
-const TemplateCheckboxWrapper = (args) => OsdsCheckboxButtonCheckboxWrapper(args);
+const TemplateCheckboxWrapper = (args: Record< string, unknown>) => OsdsCheckboxButtonCheckboxWrapper(args);
 export const CheckboxWrapper = TemplateCheckboxWrapper.bind({});
+// @ts-ignore
 CheckboxWrapper.args = {
   ...extractStoryParams(storyParams),
 };
@@ -133,7 +134,7 @@ const TemplateAll = () => html`
 <h1>Sizes & Colors</h1>
 ${unsafeHTML(createComponentTable(
   defaultTag,
-  { size: OdsCheckboxButtonSizeList },
+  { size: OdsCheckboxButtonSizes },
   { color: OdsThemeColorIntentList },
   defaultContent,
   {
@@ -143,6 +144,7 @@ ${unsafeHTML(createComponentTable(
 </div>
 `;
 export const All = TemplateAll.bind({});
+// @ts-ignore
 All.parameters = {
   controls: { hideNoControlsWarning: true },
   options: { showPanel: false }

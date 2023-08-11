@@ -6,7 +6,7 @@ import { createTag } from '../../core/componentHTMLUtils';
 import { ODS_COUNTRY_ISO_CODE, OdsRadioButtonSize, olesIpsum, OlesIpsumGeneration } from '@ovhcloud/ods-core';
 import { ODS_ICON_NAME } from '@ovhcloud/ods-component-icon';
 import { ODS_DIVIDER_SIZE } from '@ovhcloud/ods-component-divider';
-import { OdsCheckboxButtonSize } from '@ovhcloud/ods-component-checkbox-button';
+import { ODS_CHECKBOX_BUTTON_SIZE } from '@ovhcloud/ods-component-checkbox-button';
 
 export default {
   title: 'UI Components/Introduction',
@@ -81,7 +81,7 @@ const uiComponents = {
       attributes: {
         color: OdsThemeColorIntent.primary,
         checked: '',
-        size: OdsCheckboxButtonSize.sm,
+        size: ODS_CHECKBOX_BUTTON_SIZE.sm,
       },
       slots: {
         end: `Checkbox Button`,

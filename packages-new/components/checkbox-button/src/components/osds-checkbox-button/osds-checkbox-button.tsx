@@ -1,6 +1,6 @@
 import type { OdsCheckboxButtonAttribute } from './interfaces/attributes';
+import type { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 import { Component, Element, Host, Prop, h } from '@stencil/core';
-import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 import { ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
 import { OdsCheckboxButtonController } from './core/ods-checkbox-button-controller';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';

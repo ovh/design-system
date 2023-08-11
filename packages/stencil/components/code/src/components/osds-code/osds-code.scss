@@ -9,24 +9,17 @@
 // CSS for the component but not for theming
 :host {
   @include osds-code-on-main-element() {
-    position: relative;
-    margin: 0;
     display: flex;
-    justify-content: space-between;
 
     @include osds-code-on-container-element() {
-      flex: 1 1 auto;
-      display: flex;
-      justify-content: flex-start;
-      align-items: flex-start;
+      flex-grow: 1;
       white-space: pre-line;
     }
   }
-}
 
-slot[name='copy'] {
-  display: flex;
-  margin: var(--ods-size-03);
+  ::slotted([slot="copy"]) {
+    flex-shrink: 0;
+  }
 }
 
 // apply the theme template for the component

@@ -53,7 +53,7 @@ Default.args = {
 };
 
 const TemplateCopy = (args: any) => html`
-<osds-code ...=${getTagAttributes(args)}><osds-button slot="copy" title="copy text"></osds-button>${unsafeHTML(args.codeContent)}</osds-code>
+<osds-code ...=${getTagAttributes(args)}><span slot="copy"><osds-button color="default" contrasted size="sm" variant="ghost"><osds-icon name="copy" size="xs" contrasted></osds-icon></osds-button></span>${unsafeHTML(args.codeContent)}</osds-code>
 `;
 export const Copy = TemplateCopy.bind({});
 Copy.args = {

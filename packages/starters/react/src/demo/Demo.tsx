@@ -13,8 +13,8 @@ import {
   OsdsRadio,
   OsdsRadioGroup,
   OsdsToggle,
-  OsdsFlag
 } from '@ovhcloud/ods-stencil/components/react';
+import { OsdsFlag } from '@ovhcloud/ods-component-flag/react'
 
 // each type you import types from ODS, you will need to import the core
 import { Ods, OdsExternalLogger, OdsMessageType, ODS_COUNTRY_ISO_CODE } from '@ovhcloud/ods-core';

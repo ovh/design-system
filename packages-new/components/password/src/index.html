@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html dir='ltr' lang='en'>
+<head>
+  <meta charset='utf-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0' />
+  <title>Dev ods-password</title>
+
+  <script type="module">
+    !window.ods && (window.ods = {config: {logging: {active:true}}});
+  </script>
+
+  <script type='module' src='/build/osds-password.esm.js'></script>
+  <script nomodule src='/build/osds-password.js'></script>
+  <link rel="stylesheet" href="/build/osds-password.css">
+</head>
+<body>
+  <osds-password color="primary" clearable placeholder="Just ODS being ahead" value="On Vous Héberge ?"></osds-password>
+  <osds-password color="primary" clearable masked="false"></osds-password>
+
+  <div>
+    <h3>Inline</h3>
+    <osds-password color="primary" inline clearable masked="false"></osds-password>
+  </div>
+</body>
+</html>

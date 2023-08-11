@@ -5,7 +5,6 @@ export * from './code/public-api';
 export * from './flag/public-api';
 export * from './location-tile/public-api';
 export * from './message/public-api';
-export * from './pagination/public-api';
 export * from './popover/public-api';
 export * from './progress-bar/public-api';
 export * from './quantity/public-api';

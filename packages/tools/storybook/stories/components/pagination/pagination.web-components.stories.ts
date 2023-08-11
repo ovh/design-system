@@ -1,10 +1,11 @@
 import { html } from 'lit-html';
-import { iframe } from '../../../.storybook/iframe';
-import { defineCustomElements } from '@ovhcloud/ods-stencil-pagination/loader';
-import changelog from '@ovhcloud/ods-stencil-pagination/CHANGELOG.md';
-import page from './pagination.web-component.stories.page.mdx';
+import { defineCustomElements } from '@ovhcloud/ods-component-pagination/loader';
+import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-component-pagination/src/components/osds-pagination/constants/default-attributes';
 import { getTagAttributes, extractArgTypes, extractStoryParams } from '../../../core/componentHTMLUtils';
-import { odsPaginationDefaultAttributes } from '@ovhcloud/ods-core';
+// @ts-ignore
+import changelog from '@ovhcloud/ods-component-pagination/CHANGELOG.md';
+// @ts-ignore
+import page from './pagination.web-component.stories.page.mdx';
 
 defineCustomElements();
 
@@ -15,15 +16,15 @@ const sharedStoryParam = {
   },
   disabled: {
     category: 'Misc',
-    defaultValue: odsPaginationDefaultAttributes.disabled,
+    defaultValue: DEFAULT_ATTRIBUTE.disabled,
   },
   labelTooltipPrevious: {
     category: 'Misc',
-    defaultValue: odsPaginationDefaultAttributes.labelTooltipPrevious,
+    defaultValue: DEFAULT_ATTRIBUTE.labelTooltipPrevious,
   },
   labelTooltipNext: {
     category: 'Misc',
-    defaultValue: odsPaginationDefaultAttributes.labelTooltipNext,
+    defaultValue: DEFAULT_ATTRIBUTE.labelTooltipNext,
   }
 }
 
@@ -46,7 +47,6 @@ export default {
   id: 'pagination',
   parameters: {
     notes: {
-      API: iframe('stencil-pagination/modules/index.html'),
       changelog,
     },
     docs: { page }
@@ -57,6 +57,7 @@ export default {
 /* Default */
 const TemplateDefault = (args: any) => html` <osds-pagination ...=${getTagAttributes(args)}> </osds-pagination> `;
 export const Default = TemplateDefault.bind({});
+// @ts-ignore
 Default.args = {
   ...extractStoryParams({ ...sharedStoryParam, ...totalPagesParam }),
 };
@@ -64,6 +65,7 @@ Default.args = {
 /* Total Items */
 const TemplateTotalItems = (args: any) => html` <osds-pagination ...=${getTagAttributes(args)}> </osds-pagination> `;
 export const TotalItems = TemplateTotalItems.bind({});
+// @ts-ignore
 TotalItems.args = {
   ...extractStoryParams({ ...sharedStoryParam, ...totalItemsParam }),
 };
@@ -124,6 +126,7 @@ const TemplateAll = () => html`
   </div>
 `;
 export const All = TemplateAll.bind({});
+// @ts-ignore
 All.parameters = {
   controls: { hideNoControlsWarning: true },
   options: { showPanel: false },

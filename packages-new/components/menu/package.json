@@ -35,12 +35,14 @@
   },
   "dependencies": {
     "@ovhcloud/ods-common-core": "^15.0.1",
-    "@ovhcloud/ods-common-stencil": "^15.0.1",
-    "@ovhcloud/ods-component-button": "^15.0.1",
-    "@ovhcloud/ods-component-divider": "^15.0.1"
+    "@ovhcloud/ods-common-stencil": "^15.0.1"
   },
   "devDependencies": {
     "@ovhcloud/ods-common-testing": "^15.0.1",
+    "@ovhcloud/ods-component-button": "^15.0.1",
+    "@ovhcloud/ods-component-divider": "^15.0.1",
+    "@ovhcloud/ods-component-icon": "^15.0.1",
+    "@ovhcloud/ods-component-text": "^15.0.1",
     "@ovhcloud/ods-stencil-dev": "^15.0.1"
   }
 }

@@ -1,10 +1,10 @@
+import type { OdsMenuAttribute } from './interfaces/attributes';
+import type { HTMLStencilElement } from '@stencil/core/internal';
 import { Component, Prop, h, Host, Watch, Element, Listen, State } from '@stencil/core';
 import { OdsMenuController } from './core/controller';
-import { OdsMenuAttributes } from './interfaces/attributes';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OsdsMenuItem } from '../osds-menu-item/osds-menu-item'
 import { ocdkDefineCustomElements, ocdkIsSurface, OcdkSurface, } from '@ovhcloud/ods-cdk';
-import { HTMLStencilElement } from '@stencil/core/internal';
 
 ocdkDefineCustomElements();
 
@@ -13,7 +13,7 @@ ocdkDefineCustomElements();
   styleUrl: 'osds-menu.scss',
   shadow: true,
 })
-export class OsdsMenu implements OdsMenuAttributes {
+export class OsdsMenu implements OdsMenuAttribute {
   controller: OdsMenuController = new OdsMenuController(this);
   title: HTMLElement | null = null;
   anchor!: HTMLDivElement;

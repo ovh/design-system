@@ -1,5 +1,4 @@
 import { Component, h, Host } from '@stencil/core';
-import { OdsMenuGroupController } from './core/controller'
 
 @Component({
   tag: 'osds-menu-group',
@@ -7,8 +6,6 @@ import { OdsMenuGroupController } from './core/controller'
   shadow: true,
 })
 export class OsdsMenuGroup {
-  controller: OdsMenuGroupController = new OdsMenuGroupController(this);
-
   render() {
     return (
       <Host>

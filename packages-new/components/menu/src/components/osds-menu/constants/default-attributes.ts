@@ -1,9 +1,9 @@
-import type { OdsMenuAttributes } from '../interfaces/attributes';
+import type { OdsMenuAttribute } from '../interfaces/attributes';
 
 /**
  * default attribute values of menu
  */
-const DEFAULT_ATTRIBUTE: OdsMenuAttributes = Object.freeze({
+const DEFAULT_ATTRIBUTE: OdsMenuAttribute = Object.freeze({
   disabled: false,
 });
 

@@ -13,8 +13,6 @@
   "include": [
     "accordion/src",
     "cart/src",
-    "checkbox/src",
-    "checkbox-button/src",
     "code/src",
     "flag/src",
     "location-tile/src",

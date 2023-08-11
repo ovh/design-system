@@ -19,7 +19,6 @@
     "flag/src",
     "location-tile/src",
     "message/src",
-    "pagination/src",
     "popover/src",
     "progress-bar/src",
     "quantity/src",

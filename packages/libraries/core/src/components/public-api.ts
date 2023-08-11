@@ -15,7 +15,6 @@ export * from './code/public-api';
 export * from './flag/public-api';
 export * from './form-field/public-api';
 export * from './location-tile/public-api';
-export * from './pagination/public-api';
 export * from './password/public-api';
 export * from './popover/public-api';
 export * from './progress-bar/public-api';

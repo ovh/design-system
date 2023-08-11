@@ -1,8 +1,8 @@
-interface OdsMenuAttributes {
+interface OdsMenuAttribute {
   /**
    * Menu is disabled or not
    */
   disabled?: boolean;
 }
 
-export { OdsMenuAttributes };
+export { OdsMenuAttribute };

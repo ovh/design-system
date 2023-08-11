@@ -1,1 +1,1 @@
-export * from './components/osds-menu/public-api';
+export { OsdsMenu } from './components/osds-menu/public-api';

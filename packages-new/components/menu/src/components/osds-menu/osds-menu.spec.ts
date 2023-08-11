@@ -1,13 +1,13 @@
 jest.mock('./core/controller'); // keep jest.mock before any import
 jest.mock('@ovhcloud/ods-cdk/src/components/surface/ocdk-is-surface'); // keep jest.mock before any import
 
+import type { OdsMenuAttribute } from './interfaces/attributes'
 import { newSpecPage, SpecPage } from '@stencil/core/testing';
 import { OdsLogger } from '@ovhcloud/ods-common-core';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OsdsMenu } from './osds-menu';
 import { OdsMenuController } from './core/controller'
-import { OdsMenuAttributes } from './interfaces/attributes'
 import { ocdkIsSurface } from '@ovhcloud/ods-cdk';
 
 const logger = new OdsLogger('osds-menu-spec');
@@ -34,8 +34,8 @@ describe('spec:osds-menu', () => {
     jest.clearAllMocks();
   })
 
-  async function setup({ attributes = {}, html = `` }: { attributes?: Partial<OdsMenuAttributes>, html?: string }) {
-    const stringAttributes = odsComponentAttributes2StringAttributes<OdsMenuAttributes>(attributes, DEFAULT_ATTRIBUTE);
+  async function setup({ attributes = {}, html = `` }: { attributes?: Partial<OdsMenuAttribute>, html?: string }) {
+    const stringAttributes = odsComponentAttributes2StringAttributes<OdsMenuAttribute>(attributes, DEFAULT_ATTRIBUTE);
 
     page = await newSpecPage({
       components: [OsdsMenu],
@@ -152,7 +152,7 @@ describe('spec:osds-menu', () => {
     };
 
     describe('disabled', () => {
-      odsUnitTestAttribute<OdsMenuAttributes, 'disabled'>({
+      odsUnitTestAttribute<OdsMenuAttribute, 'disabled'>({
         name: 'disabled',
         defaultValue: DEFAULT_ATTRIBUTE.disabled,
         newValue: false,

@@ -1,11 +1,7 @@
 import { html } from 'lit-html';
-import { iframe } from '../../../.storybook/iframe';
-
 
 import { defineCustomElements } from '@ovhcloud/ods-component-menu/loader';
 
-import { XDConfig } from 'storybook-addon-xd-designs/lib/config';
-import { config } from 'storybook-addon-xd-designs';
 import changelog from '@ovhcloud/ods-component-menu/CHANGELOG.md';
 import page from './menu.web-component.stories.page.mdx';
 import { getTagAttributes, extractArgTypes, extractStoryParams } from '../../../core/componentHTMLUtils';

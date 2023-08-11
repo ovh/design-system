@@ -8,7 +8,6 @@ import './global';
 import { OdsLogger } from '@ovhcloud/ods-common-core';
 
 import '@ovhcloud/ods-component-button';
-import '@ovhcloud/ods-component-link';
 import '@ovhcloud/ods-component-text';
 import '@ovhcloud/ods-component-icon';
 import '@ovhcloud/ods-component-divider';
@@ -19,7 +18,3 @@ logger.log('init');
 (window as any).globalMethod = async function () {
   logger.log('globalMethod');
 };
-
-(async () => {
-  await customElements.whenDefined('osds-link');
-})();

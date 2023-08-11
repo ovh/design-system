@@ -1,6 +1,6 @@
 import { E2EElement, E2EPage, newE2EPage } from '@stencil/core/testing';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import type { OdsMenuAttributes } from './interfaces/attributes';
+import type { OdsMenuAttribute } from './interfaces/attributes';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 
 describe('e2e:osds-menu', () => {
@@ -11,8 +11,8 @@ describe('e2e:osds-menu', () => {
   let menuItemsSlot: E2EElement;
   let menuItemsSlotContent: E2EElement;
 
-  async function setup({ attributes = {}, html = `` }: { attributes?: Partial<OdsMenuAttributes>, html?: string }) {
-    const stringAttributes = odsComponentAttributes2StringAttributes<OdsMenuAttributes>(attributes, DEFAULT_ATTRIBUTE);
+  async function setup({ attributes = {}, html = `` }: { attributes?: Partial<OdsMenuAttribute>, html?: string }) {
+    const stringAttributes = odsComponentAttributes2StringAttributes<OdsMenuAttribute>(attributes, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
     await page.setContent(`<osds-menu ${odsStringAttributes2Str(stringAttributes)}>${html}</osds-menu>`);

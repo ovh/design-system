@@ -1,5 +1,5 @@
 import type { OdsCheckboxButtonAttribute } from '../interfaces/attributes';
-import { OdsCheckboxButtonSize } from './ods-checkbox-button-size';
+import { ODS_CHECKBOX_BUTTON_SIZE } from './ods-checkbox-button-size';
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 
 const DEFAULT_ATTRIBUTE: OdsCheckboxButtonAttribute = Object.freeze({
@@ -10,7 +10,7 @@ const DEFAULT_ATTRIBUTE: OdsCheckboxButtonAttribute = Object.freeze({
   hasFocus: false,
   indeterminate: false,
   interactive: false,
-  size: OdsCheckboxButtonSize.md,
+  size: ODS_CHECKBOX_BUTTON_SIZE.md,
 });
 
 export {

@@ -2,7 +2,7 @@ import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 
 import { defineCustomElements } from '@ovhcloud/ods-component-checkbox-button/loader';
-import { OdsCheckboxButtonSize, OdsCheckboxButtonSizes } from '@ovhcloud/ods-component-checkbox-button';
+import { ODS_CHECKBOX_BUTTON_SIZE, ODS_CHECKBOX_BUTTON_SIZES } from '@ovhcloud/ods-component-checkbox-button';
 import { OdsThemeColorIntent, OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
 // @ts-ignore
 import changelog from '@ovhcloud/ods-component-checkbox-button/CHANGELOG.md';
@@ -39,8 +39,8 @@ const storyParams = {
   },
   size: {
     category: 'General',
-    defaultValue: OdsCheckboxButtonSize.md,
-    options: OdsCheckboxButtonSizes,
+    defaultValue: ODS_CHECKBOX_BUTTON_SIZE.md,
+    options: ODS_CHECKBOX_BUTTON_SIZES,
     control: { type: 'select' },
   },
   start: {
@@ -134,7 +134,7 @@ const TemplateAll = () => html`
 <h1>Sizes & Colors</h1>
 ${unsafeHTML(createComponentTable(
   defaultTag,
-  { size: OdsCheckboxButtonSizes },
+  { size: ODS_CHECKBOX_BUTTON_SIZES },
   { color: OdsThemeColorIntentList },
   defaultContent,
   {

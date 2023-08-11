@@ -4,7 +4,7 @@ import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 import { ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
 import { OdsCheckboxButtonController } from './core/ods-checkbox-button-controller';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { OdsCheckboxButtonSize } from './constants/ods-checkbox-button-size';
+import { ODS_CHECKBOX_BUTTON_SIZE } from './constants/ods-checkbox-button-size';
 
 /**
  * @slot start - Fixed start checkbox button content
@@ -42,7 +42,7 @@ export class OsdsCheckboxButton implements OdsCheckboxButtonAttribute {
   @Prop({ reflect: true }) public interactive? = DEFAULT_ATTRIBUTE.interactive;
 
   /** @see OdsCheckboxButtonAttribute.label */
-  @Prop({ reflect: true }) public size?: OdsCheckboxButtonSize = DEFAULT_ATTRIBUTE.size;
+  @Prop({ reflect: true }) public size?: ODS_CHECKBOX_BUTTON_SIZE = DEFAULT_ATTRIBUTE.size;
 
   render() {
     const {
@@ -55,10 +55,10 @@ export class OsdsCheckboxButton implements OdsCheckboxButtonAttribute {
     let iconSize;
     // make corresponding between button size and icon size
     switch (size) {
-      case OdsCheckboxButtonSize.sm:
+      case ODS_CHECKBOX_BUTTON_SIZE.sm:
         iconSize = ODS_ICON_SIZE.sm;
         break;
-      case OdsCheckboxButtonSize.md:
+      case ODS_CHECKBOX_BUTTON_SIZE.md:
         iconSize = ODS_ICON_SIZE.md;
         break;
       default:

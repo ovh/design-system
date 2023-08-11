@@ -5,7 +5,7 @@ import { OsdsButton } from '@ovhcloud/ods-components/button/react';
 import { OsdsTile } from '@ovhcloud/ods-components/tile/react';
 import { OsdsCheckbox } from '@ovhcloud/ods-components/checkbox/react';
 import { OsdsCheckboxButton } from '@ovhcloud/ods-components/checkbox-button/react';
-import { OdsCheckboxButtonSize } from '@ovhcloud/ods-components/checkbox-button';
+import { ODS_CHECKBOX_BUTTON_SIZE } from '@ovhcloud/ods-components/checkbox-button';
 
 // you can import multiple react proxies from the grouped package
 import {
@@ -72,12 +72,12 @@ const Demo: React.FC = () => (
     <h5>Ods CheckboxButton in radio group</h5>
     <OsdsRadioGroup>
       <OsdsRadio value="A">
-        <OsdsCheckboxButton size={OdsCheckboxButtonSize.sm} interactive>
+        <OsdsCheckboxButton size={ODS_CHECKBOX_BUTTON_SIZE.sm} interactive>
           <span slot={'end'}>Option A</span>
         </OsdsCheckboxButton>
       </OsdsRadio>
       <OsdsRadio value="B">
-        <OsdsCheckboxButton size={OdsCheckboxButtonSize.sm} interactive>
+        <OsdsCheckboxButton size={ODS_CHECKBOX_BUTTON_SIZE.sm} interactive>
           <span slot={'end'}>Option B</span>
         </OsdsCheckboxButton>
       </OsdsRadio>

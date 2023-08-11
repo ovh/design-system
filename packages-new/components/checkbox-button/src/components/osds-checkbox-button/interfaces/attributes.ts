@@ -1,4 +1,4 @@
-import type { OdsCheckboxButtonSize } from '../constants/ods-checkbox-button-size';
+import type { ODS_CHECKBOX_BUTTON_SIZE } from '../constants/ods-checkbox-button-size';
 import type { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 
 export interface OdsCheckboxButtonAttribute {
@@ -30,5 +30,5 @@ export interface OdsCheckboxButtonAttribute {
   /**
    * Size of the radio button
    */
-  size?: OdsCheckboxButtonSize,
+  size?: ODS_CHECKBOX_BUTTON_SIZE,
 }

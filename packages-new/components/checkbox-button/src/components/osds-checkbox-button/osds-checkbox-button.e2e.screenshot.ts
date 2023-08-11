@@ -3,7 +3,7 @@ import type { OdsCheckboxButtonAttribute } from './interfaces/attributes';
 import { newE2EPage } from '@stencil/core/testing';
 import { OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { OdsCheckboxButtonSizes } from './constants/ods-checkbox-button-size';
+import { ODS_CHECKBOX_BUTTON_SIZES } from './constants/ods-checkbox-button-size';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 
 describe('e2e:osds-checkbox-button', () => {
@@ -74,7 +74,7 @@ describe('e2e:osds-checkbox-button', () => {
   describe('screenshots', () => {
     // Sizes & state (checked, indeterminate)
     [noAction, checkedAction, indeterminateAction].forEach(({ actionDescription, action }) => {
-        OdsCheckboxButtonSizes.forEach((size) => {
+      ODS_CHECKBOX_BUTTON_SIZES.forEach((size) => {
           it([size, actionDescription].join(', '), async () => {
             await setup({
               attributes: {

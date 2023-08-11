@@ -285,12 +285,12 @@ class OdsCheckboxButtonController {
   }
 }
 
-var OdsCheckboxButtonSize;
-(function (OdsCheckboxButtonSize) {
-  OdsCheckboxButtonSize["sm"] = "sm";
-  OdsCheckboxButtonSize["md"] = "md";
-})(OdsCheckboxButtonSize || (OdsCheckboxButtonSize = {}));
-const OdsCheckboxButtonSizes = Object.freeze(Object.values(OdsCheckboxButtonSize));
+var ODS_CHECKBOX_BUTTON_SIZE;
+(function (ODS_CHECKBOX_BUTTON_SIZE) {
+  ODS_CHECKBOX_BUTTON_SIZE["sm"] = "sm";
+  ODS_CHECKBOX_BUTTON_SIZE["md"] = "md";
+})(ODS_CHECKBOX_BUTTON_SIZE || (ODS_CHECKBOX_BUTTON_SIZE = {}));
+const ODS_CHECKBOX_BUTTON_SIZES = Object.freeze(Object.values(ODS_CHECKBOX_BUTTON_SIZE));
 
 const DEFAULT_ATTRIBUTE = Object.freeze({
   checked: false,
@@ -300,7 +300,7 @@ const DEFAULT_ATTRIBUTE = Object.freeze({
   hasFocus: false,
   indeterminate: false,
   interactive: false,
-  size: OdsCheckboxButtonSize.md,
+  size: ODS_CHECKBOX_BUTTON_SIZE.md,
 });
 
 const osdsCheckboxButtonCss = ":host{align-items:center;display:grid;grid-template-columns:auto 1fr auto;width:-webkit-fit-content;width:-moz-fit-content;width:fit-content;cursor:pointer}:host .checkbox-button{border-radius:var(--ods-size-border-radius-02);border-style:solid;position:relative;text-align:center;vertical-align:middle}:host .checkbox-button osds-icon{display:none;position:absolute}:host(:is([checked],[indeterminate])) .checkbox-button osds-icon{display:block}:host([disabled]){opacity:0.5;cursor:not-allowed}slot{display:block}:host .checkbox-button{outline:none}:host(:not([color])) .checkbox-button{border-color:var(--ods-color-default-500)}:host(:not([color]):not([disabled])[interactive]:hover) .checkbox-button{background-color:var(--ods-color-default-100)}:host(:not([color]):not([disabled])[interactive]:active) .checkbox-button{background-color:var(--ods-color-default-200)}:host([color^=default]) .checkbox-button{border-color:var(--ods-color-default-500)}:host([color^=default]:not([disabled])[interactive]:hover) .checkbox-button{background-color:var(--ods-color-default-100)}:host([color^=default]:not([disabled])[interactive]:active) .checkbox-button{background-color:var(--ods-color-default-200)}:host([color^=primary]) .checkbox-button{border-color:var(--ods-color-primary-500)}:host([color^=primary]:not([disabled])[interactive]:hover) .checkbox-button{background-color:var(--ods-color-primary-100)}:host([color^=primary]:not([disabled])[interactive]:active) .checkbox-button{background-color:var(--ods-color-primary-200)}:host([color^=text]) .checkbox-button{border-color:var(--ods-color-text-500)}:host([color^=text]:not([disabled])[interactive]:hover) .checkbox-button{background-color:var(--ods-color-text-100)}:host([color^=text]:not([disabled])[interactive]:active) .checkbox-button{background-color:var(--ods-color-text-200)}:host([color^=accent]) .checkbox-button{border-color:var(--ods-color-accent-500)}:host([color^=accent]:not([disabled])[interactive]:hover) .checkbox-button{background-color:var(--ods-color-accent-100)}:host([color^=accent]:not([disabled])[interactive]:active) .checkbox-button{background-color:var(--ods-color-accent-200)}:host([color^=error]) .checkbox-button{border-color:var(--ods-color-error-500)}:host([color^=error]:not([disabled])[interactive]:hover) .checkbox-button{background-color:var(--ods-color-error-100)}:host([color^=error]:not([disabled])[interactive]:active) .checkbox-button{background-color:var(--ods-color-error-200)}:host([color^=warning]) .checkbox-button{border-color:var(--ods-color-warning-500)}:host([color^=warning]:not([disabled])[interactive]:hover) .checkbox-button{background-color:var(--ods-color-warning-100)}:host([color^=warning]:not([disabled])[interactive]:active) .checkbox-button{background-color:var(--ods-color-warning-200)}:host([color^=success]) .checkbox-button{border-color:var(--ods-color-success-500)}:host([color^=success]:not([disabled])[interactive]:hover) .checkbox-button{background-color:var(--ods-color-success-100)}:host([color^=success]:not([disabled])[interactive]:active) .checkbox-button{background-color:var(--ods-color-success-200)}:host([color^=info]) .checkbox-button{border-color:var(--ods-color-info-500)}:host([color^=info]:not([disabled])[interactive]:hover) .checkbox-button{background-color:var(--ods-color-info-100)}:host([color^=info]:not([disabled])[interactive]:active) .checkbox-button{background-color:var(--ods-color-info-200)}:host([color^=promotion]) .checkbox-button{border-color:var(--ods-color-promotion-500)}:host([color^=promotion]:not([disabled])[interactive]:hover) .checkbox-button{background-color:var(--ods-color-promotion-100)}:host([color^=promotion]:not([disabled])[interactive]:active) .checkbox-button{background-color:var(--ods-color-promotion-200)}:host([size=md]) .checkbox-button{border-width:var(--ods-size-checkbox-button-md-border-width);height:var(--ods-size-checkbox-button-md-height);margin:var(--ods-size-checkbox-button-md-margin);width:var(--ods-size-checkbox-button-md-width);aspect-ratio:1/1}:host([size=sm]) .checkbox-button{border-width:var(--ods-size-checkbox-button-sm-border-width);height:var(--ods-size-checkbox-button-sm-height);margin:var(--ods-size-checkbox-button-sm-margin);width:var(--ods-size-checkbox-button-sm-width);aspect-ratio:1/1}:host([size=sm]) slot{font-family:var(--ods-typography-body-600-font-family);font-size:var(--ods-typography-body-600-font-size);font-style:var(--ods-typography-body-600-font-style);font-weight:var(--ods-typography-body-600-font-weight);letter-spacing:var(--ods-typography-body-600-letter-spacing);line-height:var(--ods-typography-body-600-line-height)}:host([size=md]) slot{font-family:var(--ods-typography-body-600-font-family);font-size:var(--ods-typography-body-600-font-size);font-style:var(--ods-typography-body-600-font-style);font-weight:var(--ods-typography-body-600-font-weight);letter-spacing:var(--ods-typography-body-600-letter-spacing);line-height:var(--ods-typography-body-600-line-height)}";
@@ -334,10 +334,10 @@ const OsdsCheckboxButton$1 = /*@__PURE__*/ proxyCustomElement(class extends HTML
     let iconSize;
     // make corresponding between button size and icon size
     switch (size) {
-      case OdsCheckboxButtonSize.sm:
+      case ODS_CHECKBOX_BUTTON_SIZE.sm:
         iconSize = ODS_ICON_SIZE.sm;
         break;
-      case OdsCheckboxButtonSize.md:
+      case ODS_CHECKBOX_BUTTON_SIZE.md:
         iconSize = ODS_ICON_SIZE.md;
         break;
       default:
@@ -382,4 +382,4 @@ function defineCustomElement$1() {
 const OsdsCheckboxButton = OsdsCheckboxButton$1;
 const defineCustomElement = defineCustomElement$1;
 
-export { OdsCheckboxButtonSize as O, OsdsCheckboxButton, OdsCheckboxButtonSizes as a, defineCustomElement };
+export { ODS_CHECKBOX_BUTTON_SIZE as O, OsdsCheckboxButton, ODS_CHECKBOX_BUTTON_SIZES as a, defineCustomElement };

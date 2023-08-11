@@ -1,11 +1,11 @@
-enum OdsCheckboxButtonSize {
+enum ODS_CHECKBOX_BUTTON_SIZE {
   sm = 'sm',
   md = 'md',
 }
 
-const OdsCheckboxButtonSizes = Object.freeze(Object.values(OdsCheckboxButtonSize));
+const ODS_CHECKBOX_BUTTON_SIZES = Object.freeze(Object.values(ODS_CHECKBOX_BUTTON_SIZE));
 
 export { 
-  OdsCheckboxButtonSize,
-  OdsCheckboxButtonSizes,
+  ODS_CHECKBOX_BUTTON_SIZE,
+  ODS_CHECKBOX_BUTTON_SIZES,
 }

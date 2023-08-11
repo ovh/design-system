@@ -12,7 +12,7 @@ import {
 import { OdsThemeColorIntent, OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
 import { OsdsCheckboxButton } from './osds-checkbox-button';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { OdsCheckboxButtonSize, OdsCheckboxButtonSizes } from './constants/ods-checkbox-button-size';
+import { ODS_CHECKBOX_BUTTON_SIZE, ODS_CHECKBOX_BUTTON_SIZES } from './constants/ods-checkbox-button-size';
 
 // mock validity property that does not exist when stencil mock HTMLInputElement
 OdsMockPropertyDescriptor(HTMLInputElement.prototype, 'validity', () => OdsCreateDefaultValidityState());
@@ -145,13 +145,13 @@ describe('spec:osds-checkbox-button', () => {
       odsUnitTestAttribute<OdsCheckboxButtonAttribute, 'size'>({
           name: 'size',
           defaultValue: DEFAULT_ATTRIBUTE.size,
-          newValue: OdsCheckboxButtonSize.md,
-          value: OdsCheckboxButtonSize.sm,
+          newValue: ODS_CHECKBOX_BUTTON_SIZE.md,
+          value: ODS_CHECKBOX_BUTTON_SIZE.sm,
           setup: (size) => setup({ attributes: { size } }),
           ...config,
       });
       it('should set a size if attribute is added', async () => {
-        const randomSize = OdsCheckboxButtonSizes[Math.floor(Math.random() * OdsCheckboxButtonSizes.length)];
+        const randomSize = ODS_CHECKBOX_BUTTON_SIZES[Math.floor(Math.random() * ODS_CHECKBOX_BUTTON_SIZES.length)];
         await setup({ attributes: { size: randomSize } });
         expect(instance.size).toBe(randomSize);
       });

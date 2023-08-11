@@ -1,17 +1,13 @@
 import { html } from 'lit-html';
-import { iframe } from '../../../.storybook/iframe';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-
-import { defineCustomElements } from '@ovhcloud/ods-stencil-password/loader';
-import {
-  extractArgTypes,
-  extractStoryParams,
-  getTagAttributes,
-} from '../../../core/componentHTMLUtils';
-import { OdsInputSizeList, odsPasswordDefaultAttributes } from '@ovhcloud/ods-core';
+import { defineCustomElements } from '@ovhcloud/ods-component-password/loader';
+import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
+import { ODS_INPUT_SIZES } from '@ovhcloud/ods-component-input';
 import { OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
-
-import changelog from '@ovhcloud/ods-stencil-password/CHANGELOG.md';
+import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-component-password/src/components/osds-password/constants/default-attributes';
+// @ts-ignore
+import changelog from '@ovhcloud/ods-component-password/CHANGELOG.md';
+// @ts-ignore
 import page from './password.web-component.stories.page.mdx';
 
 defineCustomElements();
@@ -20,21 +16,21 @@ defineCustomElements();
 const storyParams = {
   color: {
     category: 'General',
-    defaultValue: odsPasswordDefaultAttributes.color,
+    defaultValue: DEFAULT_ATTRIBUTE.color,
     options: OdsThemeColorIntentList,
     control: { type: 'select' },
   },
   size: {
     category: 'General',
-    defaultValue: odsPasswordDefaultAttributes.size,
-    options: OdsInputSizeList,
+    defaultValue: DEFAULT_ATTRIBUTE.size,
+    options: ODS_INPUT_SIZES,
     control: { type: 'select' },
   },
   value: {
     category: 'Misc',
     control: { type: 'text' },
   },
-  flex: {
+  inline: {
     category: 'Misc',
     defaultValue: false,
   },
@@ -86,7 +82,6 @@ export default {
   id: 'password',
   parameters: {
     notes: {
-      API: iframe('/stencil-password/modules/index.html'),
       changelog,
     },
     docs: { page }
@@ -147,6 +142,7 @@ const TemplateAll = () => html`
 `;
 
 export const All = TemplateAll.bind({});
+// @ts-ignore
 All.parameters = {
   controls: { hideNoControlsWarning: true },
   options: { showPanel: false },

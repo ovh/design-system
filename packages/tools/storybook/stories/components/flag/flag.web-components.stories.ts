@@ -1,10 +1,9 @@
 import { html } from 'lit-html';
-import { iframe } from '../../../.storybook/iframe';
 
-import { defineCustomElements } from '@ovhcloud/ods-stencil-flag/loader';
+import { defineCustomElements } from '@ovhcloud/ods-component-flag/loader';
 
-import { odsSetup, Ods } from '@ovhcloud/ods-core';
-import changelog from '@ovhcloud/ods-stencil-flag/CHANGELOG.md';
+import { odsSetup, Ods } from '@ovhcloud/ods-common-core';
+import changelog from '@ovhcloud/ods-component-flag/CHANGELOG.md';
 import page from './flag.web-component.stories.page.mdx';
 import { getTagAttributes } from '../../../core/componentHTMLUtils';
 
@@ -18,7 +17,6 @@ export default {
   id: 'flag',
   parameters: {
     notes: {
-      API: iframe('stencil-components-flag/modules/index.html'),
       changelog,
     },
     docs: { page }

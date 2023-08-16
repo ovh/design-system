@@ -1,29 +1,29 @@
 import { html } from 'lit-html';
-import { iframe } from '../../../.storybook/iframe';
-
-
-import { defineCustomElements } from '@ovhcloud/ods-stencil-skeleton/loader';
-import changelog from '@ovhcloud/ods-stencil-skeleton/CHANGELOG.md';
+import { ODS_SKELETON_SIZES } from '@ovhcloud/ods-component-skeleton';
+import { defineCustomElements } from '@ovhcloud/ods-component-skeleton/loader';
+import { getTagAttributes, extractArgTypes, extractStoryParams } from '../../../core/componentHTMLUtils';
+import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-component-skeleton/src/components/osds-skeleton/constants/default-attributes';
+// @ts-ignore
+import changelog from '@ovhcloud/ods-component-skeleton/CHANGELOG.md';
+// @ts-ignore
 import page from './skeleton.web-component.stories.page.mdx';
-import { OdsSkeletonSize, OdsSkeletonSizeList, odsSkeletonDefaultAttributes } from '@ovhcloud/ods-core/src';
-import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 
 defineCustomElements();
 
 /* Default story parameters  */
 const storyParams = {
-  flex: {
+  inline: {
     category: 'Misc',
-    defaultValue: odsSkeletonDefaultAttributes.flex,
+    defaultValue: DEFAULT_ATTRIBUTE.inline,
   },
   randomized: {
     category: 'Misc',
-    defaultValue: odsSkeletonDefaultAttributes.randomized,
+    defaultValue: DEFAULT_ATTRIBUTE.randomized,
   },
   size: {
     category: 'General',
-    defaultValue: odsSkeletonDefaultAttributes.size,
-    options: OdsSkeletonSizeList,
+    defaultValue: DEFAULT_ATTRIBUTE.size,
+    options: ODS_SKELETON_SIZES,
     control: { type: 'select' },
   },
 };
@@ -33,7 +33,6 @@ export default {
   id: 'skeleton',
   parameters: {
     notes: {
-      API: iframe('/stencil-skeleton/modules/index.html'),
       changelog,
     },
     docs: { page },

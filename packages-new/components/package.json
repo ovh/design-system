@@ -18,6 +18,7 @@
     "@ovhcloud/ods-component-pagination": "^15.0.1",
     "@ovhcloud/ods-component-password": "^15.0.1",
     "@ovhcloud/ods-component-select": "^15.0.1",
+    "@ovhcloud/ods-component-skeleton": "^15.0.1",
     "@ovhcloud/ods-component-spinner": "^15.0.1",
     "@ovhcloud/ods-component-text": "^15.0.1",
     "@ovhcloud/ods-component-textarea": "^15.0.1",

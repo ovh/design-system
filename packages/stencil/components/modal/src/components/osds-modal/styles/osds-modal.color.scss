@@ -12,8 +12,10 @@
         background-color: map_get($colors, color);
       }
 
-      .wrapper .header {
-        background-color: map_get($colors, background-color);
+      .wrapper {
+        .header {
+          background-color: map_get($colors, background-color);
+        }
       }
     }
   }
@@ -24,10 +26,10 @@
   /** base colors */
   :host {
     border-color: transparent;
-  }
 
-  :host .wrapper {
-    background: #ffffff;
+    .wrapper {
+      background: #ffffff;
+    }
   }
 
   /** no variant specified: default variant colors */

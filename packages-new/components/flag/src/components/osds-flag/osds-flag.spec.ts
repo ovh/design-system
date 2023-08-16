@@ -2,8 +2,8 @@ jest.mock('./core/controller')
 
 import type { SpecPage } from '@stencil/core/testing';
 import type { OdsFlagAttribute } from './interfaces/attributes';
-import { ODS_COUNTRY_ISO_CODE, OdsComponentAttributes2StringAttributes } from '@ovhcloud/ods-common-core';
-import { odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
+import { ODS_COUNTRY_ISO_CODE } from '@ovhcloud/ods-common-core';
+import { odsStringAttributes2Str, odsComponentAttributes2StringAttributes, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 import { Build } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
 import { getAssetPath } from '@stencil/core/internal';
@@ -21,7 +21,7 @@ describe('spec:osds-flag', () => {
   let controller: OdsFlagController;
 
   async function setup({ attributes = {} }: { attributes?: Partial<OdsFlagAttribute> } = {}) {
-    const stringAttributes = OdsComponentAttributes2StringAttributes<OdsFlagAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
+    const stringAttributes = odsComponentAttributes2StringAttributes<OdsFlagAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
 
     page = await newSpecPage({
       components: [OsdsFlag],

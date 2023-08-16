@@ -111,7 +111,6 @@ describe('ods-flag-controller', () => {
       it('should call load with no url', () => {
         setup();
         controller.load(true);
-        // expect(loadContent.load).toHaveBeenCalledTimes(1);
         expect(mockLoad).toHaveBeenCalledWith('', true, true, true);
       });
 

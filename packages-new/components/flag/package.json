@@ -1,7 +1,6 @@
 {
   "name": "@ovhcloud/ods-component-flag",
   "version": "15.0.1",
-  "private": true,
   "description": "ODS Flag component",
   "author": "OVH SAS",
   "license": "Apache-2.0",

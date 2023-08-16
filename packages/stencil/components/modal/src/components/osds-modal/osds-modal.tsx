@@ -4,12 +4,10 @@ import {
   OdsModalController,
   OdsModalEvents,
   OdsModalMethods,
-  odsModalDefaultAttributes,
-  OdsIconSize,
-  OdsIconName,
-  OdsTextLevel,
-  OdsButtonSize,
+  odsModalDefaultAttributes
 } from '@ovhcloud/ods-core';
+import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
+import { ODS_TEXT_LEVEL } from '@ovhcloud/ods-component-text';
 import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libraries/stencil-core';
 import { OdsThemeColorIntent, OdsThemeTypographySize } from '@ovhcloud/ods-theming';
 
@@ -53,13 +51,6 @@ export class OsdsModal implements OdsModal<OdsStencilMethods<OdsModalMethods>, O
     this.controller.open();
   }
 
-  /**
-   * @see OdsModalBehavior.beforeRender
-   */
-  beforeRender(): void {
-
-  }
-
   componentWillRender(): void {
     const allDirectChildren = Array.from(document.body.children);
     for (const child of allDirectChildren) {
@@ -95,9 +86,9 @@ export class OsdsModal implements OdsModal<OdsStencilMethods<OdsModalMethods>, O
                 circle={true}
               >
                 <osds-icon
-                  ariaName={OdsIconName.CLOSE + " icon"}
-                  name={OdsIconName.CLOSE}
-                  size={OdsIconSize.md}
+                  ariaName={ODS_ICON_NAME.CLOSE + " icon"}
+                  name={ODS_ICON_NAME.CLOSE}
+                  size={ODS_ICON_SIZE.md}
                   color={color}
                 ></osds-icon>
               </osds-button>
@@ -108,7 +99,7 @@ export class OsdsModal implements OdsModal<OdsStencilMethods<OdsModalMethods>, O
             {headline && headline.length > 0 &&
               <div class="headline">
                 <osds-text
-                  level={OdsTextLevel.heading}
+                  level={ODS_TEXT_LEVEL.heading}
                   size={OdsThemeTypographySize._400}
                   color={OdsThemeColorIntent.primary}
                 >{headline}</osds-text>

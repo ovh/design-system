@@ -3,56 +3,60 @@
 
 // Main CSS mixin for sizes
 @mixin osds-modal-theme-size() {
-    :host,
-    :host .backdrop {
+    :host {
         width: 100%;
         height: 100%;
-    }
 
-    :host * {
-        box-sizing: border-box;
-    }
+        * {
+            box-sizing: border-box;
+        }
 
-    :host .wrapper {
-        width: 70%;
-        border-radius: var(--ods-size-04);
-        margin: var(--ods-size-04);
-    }
-
-    @media screen and (max-width: 768px) {
-        :host .wrapper {
+        .backdrop {
             width: 100%;
+            height: 100%;
         }
-    }
 
-    @media screen and (min-width: 1280px) {
-        :host .wrapper {
-            width: 512px;
+        .wrapper {
+            width: 70%;
+            border-radius: var(--ods-size-04);
+            margin: var(--ods-size-04);
+
+            .header {
+                width: 100%;
+                height: calc(var(--ods-size-09) + var(--ods-size-04));
+                padding: 0 calc(var(--ods-size-04) / 2);
+            }
+
+            .content {
+                width: 100%;
+                padding: var(--ods-size-07);
+
+                .headline {
+                    margin-bottom: var(--ods-size-05);
+                }
+
+                .slot {
+                    max-height: 30vh;
+                }
+
+                .actions {
+                    margin-top: var(--ods-size-05);
+                    width: 100%;
+                    gap: var(--ods-size-04);
+                }
+            }
         }
-    }
 
-    :host .wrapper .header {
-        width: 100%;
-        height: calc(var(--ods-size-09) + var(--ods-size-04));
-        padding: 0 calc(var(--ods-size-04) / 2);
-    }
+        @media screen and (max-width: 768px) {
+            .wrapper {
+                width: 100%;
+            }
+        }
 
-    :host .wrapper .content {
-        width: 100%;
-        padding: var(--ods-size-07);
-    }
-
-    :host .wrapper .content .headline {
-        margin-bottom: var(--ods-size-05);
-    }
-
-    :host .wrapper .content .slot {
-        max-height: 30vh;
-    }
-
-    :host .wrapper .content .actions {
-        margin-top: var(--ods-size-05);
-        width: 100%;
-        gap: var(--ods-size-04);
+        @media screen and (min-width: 1280px) {
+            .wrapper {
+                width: 512px;
+            }
+        }
     }
 }

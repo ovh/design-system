@@ -20,50 +20,52 @@
 }
 
 :host {
-  display: flex;
-  position: fixed;
   top: 0;
   left: 0;
+  display: flex;
   justify-content: center;
   align-items: center;
+  position: fixed;
   z-index: 9999;
+
+  .backdrop {
+    position: absolute;
+    opacity: 30%;
+  }
+
+  .wrapper {
+    z-index: 1;
+    overflow: hidden;
+    animation: modal-appear 0.2s ease-in-out;
+
+    .header {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+
+      osds-icon {
+        cursor: pointer;
+      }
+    }
+
+    .content {
+      .slot {
+        display: flex;
+        flex-direction: column;
+        overflow-y: scroll;
+      }
+
+      .actions {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+      }
+    }
+  }
 }
 
 :host([masked]) {
   display: none;
-}
-
-:host .backdrop {
-  position: absolute;
-  opacity: 30%;
-}
-
-:host .wrapper {
-  z-index: 1;
-  overflow: hidden;
-  animation: modal-appear 0.2s ease-in-out;
-}
-
-:host .wrapper .header {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-:host .wrapper .header osds-icon {
-  cursor: pointer;
-}
-
-:host .wrapper .content .slot {
-  display: flex;
-  flex-direction: column;
-  overflow-y: scroll;
-}
-
-:host .wrapper .content .actions {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
 }
 
 // apply the theme template for the component

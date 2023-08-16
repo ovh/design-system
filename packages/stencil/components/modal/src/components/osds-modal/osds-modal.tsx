@@ -8,6 +8,7 @@ import {
   OdsIconSize,
   OdsIconName,
   OdsTextLevel,
+  OdsButtonSize,
 } from '@ovhcloud/ods-core';
 import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libraries/stencil-core';
 import { OdsThemeColorIntent, OdsThemeTypographySize } from '@ovhcloud/ods-theming';
@@ -60,7 +61,16 @@ export class OsdsModal implements OdsModal<OdsStencilMethods<OdsModalMethods>, O
   }
 
   componentWillRender(): void {
-    document.documentElement.appendChild(this.el);
+    const allDirectChildren = Array.from(document.body.children);
+    for (const child of allDirectChildren) {
+      if (child !== this.el) {
+        if (!this.masked) {
+          child.setAttribute('inert', '');
+        } else {
+          child.removeAttribute('inert');
+        }
+      }
+    }
   }
 
   render() {
@@ -73,20 +83,24 @@ export class OsdsModal implements OdsModal<OdsStencilMethods<OdsModalMethods>, O
     } = this;
 
     return (
-      <Host {...{ masked }}>
+      <Host masked={masked}>
         <div class="backdrop"></div>
 
         <div class="wrapper">
           <div class="header">
             { dismissible &&
-              <osds-icon
-                {...{
-                  ariaName: `${OdsIconName.CLOSE} icon`,
-                  name: OdsIconName.CLOSE,
-                  size: OdsIconSize.md,
-                  color,
-                  onClick: () => this.close(),
-              }}></osds-icon>
+              <osds-button
+                onClick={() => this.close()}
+                color={color}
+                circle={true}
+              >
+                <osds-icon
+                  ariaName={OdsIconName.CLOSE + " icon"}
+                  name={OdsIconName.CLOSE}
+                  size={OdsIconSize.md}
+                  color={color}
+                ></osds-icon>
+              </osds-button>
             }
           </div>
 
@@ -94,11 +108,10 @@ export class OsdsModal implements OdsModal<OdsStencilMethods<OdsModalMethods>, O
             {headline && headline.length > 0 &&
               <div class="headline">
                 <osds-text
-                  {...{
-                    level: OdsTextLevel.heading,
-                    size: OdsThemeTypographySize._400,
-                    color: OdsThemeColorIntent.primary,
-                }}>{headline}</osds-text>
+                  level={OdsTextLevel.heading}
+                  size={OdsThemeTypographySize._400}
+                  color={OdsThemeColorIntent.primary}
+                >{headline}</osds-text>
               </div>
             }
 

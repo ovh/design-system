@@ -1,7 +1,6 @@
 import type { OdsSkeletonAttribute } from './interfaces/attributes';
-import { Component, Element, h, Host, Prop } from '@stencil/core';
-import { HTMLStencilElement } from '@stencil/core/internal';
-import { ODS_SKELETON_SIZE } from './constants/skeleton-size';
+import type { ODS_SKELETON_SIZE } from './constants/skeleton-size';
+import { Component, h, Host, Prop } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 
 @Component({
@@ -10,9 +9,6 @@ import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
   shadow: true
 })
 export class OsdsSkeleton implements OdsSkeletonAttribute {
-  /** @see OdsSkeletonBehavior.hostElement */
-  @Element() hostElement!: HTMLStencilElement;
-
   /** @see OdsSkeletonAttributes.inline */
   @Prop({ reflect: true }) public inline?: boolean = DEFAULT_ATTRIBUTE.inline;
   /** @see OdsSkeletonAttributes.randomized */

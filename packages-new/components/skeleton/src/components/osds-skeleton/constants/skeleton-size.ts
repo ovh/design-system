@@ -1,9 +1,9 @@
 enum ODS_SKELETON_SIZE {
-  xs = 'xs',
-  sm = 'sm',
-  md = 'md',
   lg = 'lg',
+  md = 'md',
+  sm = 'sm',
   xl = 'xl',
+  xs = 'xs',
 }
 
 const ODS_SKELETON_SIZES = Object.freeze(Object.values(ODS_SKELETON_SIZE));

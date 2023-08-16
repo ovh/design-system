@@ -6972,47 +6972,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-modal-react@workspace:packages/stencil/components/modal/react":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-stencil-modal-react@workspace:packages/stencil/components/modal/react"
-  dependencies:
-    "@ovhcloud/ods-stencil-modal": ^14.0.1
-    "@types/react": 17.0.37
-    "@types/react-dom": 17.0.11
-    react: 16.14.0
-    react-dom: 16.14.0
-    rimraf: ^3.0.2
-    tslib: "*"
-    typescript: 4.7.4
-  peerDependencies:
-    react: ">=16.8.6"
-    react-dom: ">=16.8.6"
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-stencil-modal-vue@workspace:packages/stencil/components/modal/vue":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-stencil-modal-vue@workspace:packages/stencil/components/modal/vue"
-  dependencies:
-    "@ovhcloud/ods-stencil-modal": ^14.0.1
-    rimraf: ^3.0.2
-    typescript: 4.7.4
-    vue: ^3.2.41
-  peerDependencies:
-    vue: ">=3"
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-stencil-modal@^14.0.1, @ovhcloud/ods-stencil-modal@workspace:packages/stencil/components/modal":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-stencil-modal@workspace:packages/stencil/components/modal"
-  dependencies:
-    "@ovhcloud/ods-stencil-component": ^14.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^14.0.1
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-stencil-pagination-react@workspace:packages/stencil/components/pagination/react":
 "@ovhcloud/ods-stencil-component-dev@^15.0.1, @ovhcloud/ods-stencil-component-dev@workspace:packages/stencil/libraries/stencil-component-dev":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-component-dev@workspace:packages/stencil/libraries/stencil-component-dev"
@@ -7180,6 +7139,90 @@ __metadata:
   resolution: "@ovhcloud/ods-stencil-location-tile@workspace:packages/stencil/components/location-tile"
   dependencies:
     "@ovhcloud/ods-component-tile": ^15.0.1
+    "@ovhcloud/ods-stencil-component": ^15.0.1
+    "@ovhcloud/ods-stencil-component-dev": ^15.0.1
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-stencil-modal-react@workspace:packages/stencil/components/modal/react":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-stencil-modal-react@workspace:packages/stencil/components/modal/react"
+  dependencies:
+    "@ovhcloud/ods-stencil-modal": ^15.0.1
+    "@types/react": 17.0.37
+    "@types/react-dom": 17.0.11
+    react: 16.14.0
+    react-dom: 16.14.0
+    rimraf: ^3.0.2
+    tslib: "*"
+    typescript: 4.7.4
+  peerDependencies:
+    react: ">=16.8.6"
+    react-dom: ">=16.8.6"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-stencil-modal-vue@workspace:packages/stencil/components/modal/vue":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-stencil-modal-vue@workspace:packages/stencil/components/modal/vue"
+  dependencies:
+    "@ovhcloud/ods-stencil-modal": ^15.0.1
+    rimraf: ^3.0.2
+    typescript: 4.7.4
+    vue: ^3.2.41
+  peerDependencies:
+    vue: ">=3"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-stencil-modal@^15.0.1, @ovhcloud/ods-stencil-modal@workspace:packages/stencil/components/modal":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-stencil-modal@workspace:packages/stencil/components/modal"
+  dependencies:
+    "@ovhcloud/ods-component-button": ^15.0.1
+    "@ovhcloud/ods-component-icon": ^15.0.1
+    "@ovhcloud/ods-component-text": ^15.0.1
+    "@ovhcloud/ods-stencil-component": ^15.0.1
+    "@ovhcloud/ods-stencil-component-dev": ^15.0.1
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-stencil-password-react@workspace:packages/stencil/components/password/react":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-stencil-password-react@workspace:packages/stencil/components/password/react"
+  dependencies:
+    "@ovhcloud/ods-stencil-password": ^15.0.1
+    "@types/react": 17.0.37
+    "@types/react-dom": 17.0.11
+    react: 16.14.0
+    react-dom: 16.14.0
+    rimraf: ^3.0.2
+    tslib: "*"
+    typescript: 4.7.4
+  peerDependencies:
+    react: ">=16.8.6"
+    react-dom: ">=16.8.6"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-stencil-password-vue@workspace:packages/stencil/components/password/vue":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-stencil-password-vue@workspace:packages/stencil/components/password/vue"
+  dependencies:
+    "@ovhcloud/ods-stencil-password": ^15.0.1
+    rimraf: ^3.0.2
+    typescript: 4.7.4
+    vue: ^3.2.41
+  peerDependencies:
+    vue: ">=3"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-stencil-password@^15.0.1, @ovhcloud/ods-stencil-password@workspace:packages/stencil/components/password":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-stencil-password@workspace:packages/stencil/components/password"
+  dependencies:
+    "@ovhcloud/ods-component-input": ^15.0.1
     "@ovhcloud/ods-stencil-component": ^15.0.1
     "@ovhcloud/ods-stencil-component-dev": ^15.0.1
   languageName: unknown

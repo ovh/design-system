@@ -18,9 +18,34 @@ export function OdsGetJestConfig({
   stencil?: boolean
 }): Config.InitialOptions {
   const e2e = args.includes('--e2e'),
-    screenshot = args.includes('--screenshot');
+    screenshot = args.includes('--screenshot'),
+    all = args.includes('--onebyone');
+
+  let testRegex: string;
+  if (e2e) {
+    if (screenshot) {
+      if (all) {
+        testRegex = '(/__e2e-tests__/.*|\\.(e2e))\\.screenshot\\-onebyone.(tsx?|jsx?)$';
+      } else {
+        testRegex = '(/__e2e-tests__/.*|\\.(e2e))\\.screenshot\\-onepage.(tsx?|jsx?)$';
+      }
+    } else {
+      if (all) {
+        testRegex = '(/__e2e-tests__/.*|\\.(e2e))\\(.screenshot\\-(onebyone)?)?.(tsx?|jsx?)$';
+      } else {
+        testRegex = '(/__e2e-tests__/.*|\\.(e2e))\\.(tsx?|jsx?)$';
+      }
+    }
+  } else {
+    testRegex = '(/__tests__/.*|\\.?(spec))\\.(tsx?|ts?|jsx?|js?)$';
+  }
+
   console.log(`[OdsGetJestConfig] args=${args}`);
   console.log(`[OdsGetJestConfig] e2e=${e2e} screenshot=${screenshot}`);
+  // eslint-disable-next-line
+  console.info(
+    '%c[fe] ', 'background:#fff;color:#000',
+    );
 
   return {
     ...(stencil ? {
@@ -30,15 +55,9 @@ export function OdsGetJestConfig({
     // keep a string here because of conversion into getStencilConfig
     // TODO @francois: CDS executes e2e:screenshot, so here it will execute only the *.screenshot files
     // TODO: we may need to have a "e2e-all" flag to set the file regexp with AND without "*.screenshot"
-    ...(e2e ?
-      screenshot ? {
-      testRegex: "(/__e2e-tests__/.*|\\.(e2e))\\.screenshot\\.(tsx?|jsx?)$",
-      testTimeout: 60000
-    } : {
-      testRegex: "(/__e2e-tests__/.*|\\.(e2e))\\.(tsx?|jsx?)$",
-      testTimeout: 60000
-    } : {
-      testRegex: "(/__tests__/.*|\\.?(spec))\\.(tsx?|ts?|jsx?|js?)$"
+    ...({
+      testRegex,
+      testTimeout: 60000,
     }),
     // TODO check if still needed
     moduleNameMapper: {

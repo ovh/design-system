@@ -71,6 +71,12 @@
     "test:e2e:ci:screenshot:update": "lerna run --stream --concurrency 1 test:e2e:ci:screenshot:update",
     "test:e2e:screenshot": "lerna run --stream --concurrency 1 test:e2e:screenshot",
     "test:e2e:screenshot:update": "lerna run --stream --concurrency 1 test:e2e:screenshot:update",
+
+    "test:e2e:ci:screenshot:onebyone": "lerna run --stream --concurrency 1 test:e2e:ci:screenshot:onebyone",
+    "test:e2e:ci:screenshot:onebyone:update": "lerna run --stream --concurrency 1 test:e2e:ci:screenshot:onebyone:update",
+    "test:e2e:ci:screenshot:onepage": "lerna run --stream --concurrency 1 test:e2e:ci:screenshot:onepage",
+    "test:e2e:ci:screenshot:onepage:update": "lerna run --stream --concurrency 1 test:e2e:ci:screenshot:onepage:update",
+
     "test:spec": "lerna run --stream --concurrency 1 test:spec",
     "test:spec:ci": "lerna run --stream --concurrency 1 test:spec:ci",
     "version": "yarn install && git add yarn.lock && echo \"more info, see: https://github.com/lerna/lerna/issues/2891#issuecomment-953823502\"",

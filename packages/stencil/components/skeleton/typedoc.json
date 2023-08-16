@@ -1,7 +1,0 @@
-{
-  "entryPoints": ["src"],
-  "out": "docs-api/stencil-components-skeleton",
-  "tsconfig":"tsconfig.prod.json",
-  "exclude": "**/*+(index|.spec|.e2e|.d).ts",
-  "plugin": "none"
-}

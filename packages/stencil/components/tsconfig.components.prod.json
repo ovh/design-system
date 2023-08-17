@@ -22,7 +22,6 @@
     "src",
     "switch/src",
     "tabs/src",
-    "toggle/src",
   ],
   "exclude": [
     "node_modules",

@@ -12,9 +12,9 @@ import { ODS_MESSAGE_TYPE } from '@ovhcloud/ods-components/message';
 import {
   OsdsRadio,
   OsdsRadioGroup,
-  OsdsToggle,
 } from '@ovhcloud/ods-stencil/components/vue';
-import { OsdsFlag } from '@ovhcloud/ods-component-flag/vue'
+import { OsdsFlag } from '@ovhcloud/ods-component-flag/vue';
+import { OsdsToggle } from '@ovhcloud/ods-component-toggle/vue';
 
 // each type you import types from ODS, you will need to import the core
 import { Ods, OdsExternalLogger, ODS_COUNTRY_ISO_CODE } from '@ovhcloud/ods-core';

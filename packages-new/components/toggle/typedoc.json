@@ -1,0 +1,7 @@
+{
+  "entryPoints": ["src"],
+  "out": "docs-api/ods-component-toggle",
+  "tsconfig":"tsconfig.prod.json",
+  "exclude": "**/*+(index|.spec|.e2e|.d).ts",
+  "plugin": "none"
+}

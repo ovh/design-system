@@ -61,6 +61,7 @@ const config: Config = {
         'osds-text',
         'osds-textarea',
         'osds-tile',
+        'osds-toggle',
         'osds-tooltip',
       ],
     },
@@ -94,6 +95,7 @@ const config: Config = {
         'osds-text',
         'osds-textarea',
         'osds-tile',
+        'osds-toggle',
         'osds-tooltip',
       ],
     },
@@ -117,7 +119,6 @@ const config: Config = {
     { components: ['osds-range'] },
     { components: ['osds-switch'] },
     { components: ['osds-switch-item'] },
-    { components: ['osds-toggle'] },
   ],
   buildEs5: 'prod',
   extras: {

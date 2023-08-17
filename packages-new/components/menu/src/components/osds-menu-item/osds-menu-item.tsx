@@ -1,5 +1,4 @@
-import type { HTMLStencilElement } from '@stencil/core/internal';
-import { Component, Element, h, Host } from '@stencil/core';
+import { Component, h, Host } from '@stencil/core';
 
 @Component({
   tag: 'osds-menu-item',
@@ -7,8 +6,6 @@ import { Component, Element, h, Host } from '@stencil/core';
   shadow: true,
 })
 export class OsdsMenuItem {
-  @Element() el!: HTMLStencilElement;
-
   render() {
     return (
       <Host>

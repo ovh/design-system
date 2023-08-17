@@ -1,6 +1,6 @@
+import type { OdsMenuAttribute } from './interfaces/attributes';
 import { E2EElement, E2EPage, newE2EPage } from '@stencil/core/testing';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import type { OdsMenuAttribute } from './interfaces/attributes';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 
 describe('e2e:osds-menu', () => {

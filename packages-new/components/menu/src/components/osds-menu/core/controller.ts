@@ -1,5 +1,5 @@
+import type { OsdsMenu } from '../osds-menu';
 import { OdsLogger } from '@ovhcloud/ods-common-core';
-import { OsdsMenu } from '../osds-menu';
 import { OsdsMenuItem } from '../../osds-menu-item/osds-menu-item';
 
 /**

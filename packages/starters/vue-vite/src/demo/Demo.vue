@@ -5,10 +5,11 @@ import { OsdsTile } from '@ovhcloud/ods-components/tile/vue';
 import { OsdsCheckbox } from '@ovhcloud/ods-components/checkbox/vue';
 import { OsdsCheckboxButton } from '@ovhcloud/ods-components/checkbox-button/vue';
 import { ODS_CHECKBOX_BUTTON_SIZE } from '@ovhcloud/ods-components/checkbox-button';
+import { OsdsMessage } from '@ovhcloud/ods-components/message/vue';
+import { ODS_MESSAGE_TYPE } from '@ovhcloud/ods-components/message';
 
 // you can import multiple react proxies from the grouped package
 import {
-  OsdsMessage,
   OsdsRadio,
   OsdsRadioGroup,
   OsdsToggle,
@@ -16,7 +17,7 @@ import {
 import { OsdsFlag } from '@ovhcloud/ods-component-flag/vue'
 
 // each type you import types from ODS, you will need to import the core
-import { Ods, OdsExternalLogger, OdsMessageType, ODS_COUNTRY_ISO_CODE } from '@ovhcloud/ods-core';
+import { Ods, OdsExternalLogger, ODS_COUNTRY_ISO_CODE } from '@ovhcloud/ods-core';
 
 // each theming related type you use, you will need to import the theming
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
@@ -54,7 +55,7 @@ function handleMyButtonClick() {
     </div>
 
     <h5>Ods Message</h5>
-    <OsdsMessage :type="OdsMessageType.info">You can use a message here</OsdsMessage>
+    <OsdsMessage :type="ODS_MESSAGE_TYPE.info">You can use a message here</OsdsMessage>
 
     <h5>Ods Tile in radio group</h5>
     <OsdsRadioGroup>

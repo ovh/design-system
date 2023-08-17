@@ -48,6 +48,7 @@ const config: Config = {
         'osds-icon',
         'osds-input',
         'osds-link',
+        'osds-message',
         'osds-pagination',
         'osds-password',
         'osds-select',
@@ -76,6 +77,7 @@ const config: Config = {
         'osds-icon',
         'osds-input',
         'osds-link',
+        'osds-message',
         'osds-pagination',
         'osds-password',
         'osds-select',
@@ -101,7 +103,6 @@ const config: Config = {
   bundles: [
     { components: ['osds-accordion', 'osds-accordion-group'] },
     { components: ['osds-location-tile'] },
-    { components: ['osds-message'] },
     { components: ['osds-popover'] },
     { components: ['osds-quantity'] },
     { components: ['osds-radio', 'osds-radio-group'] },

@@ -1,17 +1,13 @@
-import { OdsThemeColorIntent, OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
-import {
-  createComponentTable,
-  extractArgTypes,
-  extractStoryParams,
-  getTagAttributes,
-} from '../../../core/componentHTMLUtils';
-
-import { OdsMessageTypeList } from '@ovhcloud/ods-core/src';
-import { defineCustomElements } from '@ovhcloud/ods-stencil-message/loader';
 import { html } from 'lit-html';
-import { iframe } from '../../../.storybook/iframe';
-import page from './message.web-component.stories.page.mdx';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
+import { extractArgTypes, extractStoryParams, getTagAttributes, createComponentTable } from '../../../core/componentHTMLUtils';
+import { OdsThemeColorIntent, OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
+import { defineCustomElements } from '@ovhcloud/ods-component-message/loader';
+import { ODS_MESSAGE_TYPES } from '@ovhcloud/ods-component-message/src/components/osds-message/constants/message-type';
+// @ts-ignore
+import changelog from '@ovhcloud/ods-component-message/CHANGELOG.md';
+// @ts-ignore
+import page from './message.web-component.stories.page.mdx';
 
 defineCustomElements();
 
@@ -25,7 +21,7 @@ const storyParams = {
   },
   type: {
     category: 'General',
-    options: OdsMessageTypeList,
+    options: ODS_MESSAGE_TYPES,
     control: { type: 'select' },
   },
   messageContent: {
@@ -40,7 +36,7 @@ const storyParams = {
     category: 'Misc',
     defaultValue: false,
   },
-  flex: {
+  inline: {
     category: 'Misc',
     defaultValue: false,
   },
@@ -55,7 +51,7 @@ export default {
   id: 'message',
   parameters: {
     notes: {
-      API: iframe('/stencil-message/modules/index.html'),
+      changelog,
     },
     docs: { page }
   },
@@ -64,9 +60,6 @@ export default {
 
 /* Default */
 const TemplateDefault = (args: any) => {
-  if (args.flex === 0) {
-    delete args.flex;
-  }
   return html`
     <osds-message ...=${getTagAttributes(args)}>
       ${unsafeHTML(args.messageContent)}
@@ -102,7 +95,7 @@ const TemplateAll = () => html`
 <h1>Types & Removable</h1>
 ${unsafeHTML(createComponentTable(
   defaultTag,
-  { type: OdsMessageTypeList },
+  { type: ODS_MESSAGE_TYPES },
   { removable: [false, true] },
   defaultContent,
 ))}`;

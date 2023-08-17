@@ -1,5 +1,5 @@
-import { Components as ComponentsCart } from '@ovhcloud/ods-stencil-cart';
-import { OdsLogger } from '@ovhcloud/ods-core/src';
+import type { OsdsCartManager } from '@ovhcloud/ods-component-cart';
+import { OdsLogger } from '@ovhcloud/ods-common-core';
 
 const logger = new OdsLogger('OsdsCart-stories');
 export const CartManagerPlay = async () => {
@@ -50,7 +50,7 @@ export const CartManagerPlay = async () => {
 
   let footer = {
     items: [
-      {title: "Next month", price: "X XXX,XX"},
+      {title: "Next month", price: 2000},
       {
         total: "Total",
         info: "info",
@@ -88,7 +88,7 @@ export const CartManagerPlay = async () => {
     instance.i18n(i18n);
   });
 
-  const cartManagerElement: (HTMLElement & ComponentsCart.OsdsCartManager) | null = document.getElementById('cart-manager-a') as (HTMLElement & ComponentsCart.OsdsCartManager)
+  const cartManagerElement: (HTMLElement & OsdsCartManager) | null = document.getElementById('cart-manager-a') as (HTMLElement & OsdsCartManager)
   cartManagerElement.sections = sections;
   cartManagerElement.footer = footer;
   cartManagerElement.i18n = i18n;

@@ -1,0 +1,46 @@
+@import '~@ovhcloud/ods-theming/size/ods-component-size';
+@import '~@ovhcloud/ods-theming/size/ods-theming-size';
+@import 'osds-cart.mixins';
+
+@mixin osds-cart-theme-size() {
+  $size-definitions: ods-get-size-definitions();
+  $component-size-definition: ods-get-component-size-definition($size-definitions, cart);
+  $size-properties: ods-get-size-properties($component-size-definition, sm);
+
+  :host {
+    padding: ods-get-size-property($size-properties, padding);
+    width: 100%;
+  }
+
+  :host([inline]) {
+    width: ods-get-size-property($size-properties, width);
+  }
+
+  :host([rounded='all']) {
+    border-radius: var(--ods-size-border-radius-02);
+  }
+
+  :host([rounded='none']) {
+    border-radius: 0;
+  }
+
+  :host([rounded='top']) {
+    border-radius: var(--ods-size-border-radius-02) var(--ods-size-border-radius-02) 0 0;
+  }
+
+  :host([collapsible]) {
+    max-height: 100vh;
+
+    .container {
+      /* /!\ This is hardcoded set due to non-interpolation of theming values */
+      --mask-bottom-height: calc(100% - var(--ods-size-stack-04));
+      mask-image: linear-gradient(to bottom, transparent, black var(--ods-size-stack-06), black var(--mask-bottom-height), transparent);
+      mask-size: 100% 100%;
+      padding: ods-get-size-property($size-properties, container-padding);
+    }
+  }
+
+  ::slotted([slot="empty"]) {
+    padding: ods-get-size-property($size-properties, empty-padding);
+  }
+}

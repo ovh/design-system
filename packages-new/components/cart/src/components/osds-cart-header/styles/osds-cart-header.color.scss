@@ -1,0 +1,9 @@
+@import '~@ovhcloud/ods-theming/color/ods-component-color';
+@import 'osds-cart-header.mixins';
+
+// entrypoint for customizing the theme color
+@mixin osds-cart-header-theme-color() {
+  .cart-mobile-handle hr {
+    background-color: ods-get-color-variable($palette-name: 'blue', $hue: '500-contrasted');
+  }
+}

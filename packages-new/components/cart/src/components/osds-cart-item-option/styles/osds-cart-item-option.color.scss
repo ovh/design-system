@@ -1,0 +1,12 @@
+@import '~@ovhcloud/ods-theming/color/ods-component-color';
+@import 'osds-cart-item-option.mixins';
+
+// entrypoint for customizing the theme color
+@mixin osds-cart-item-option-theme-color() {
+
+  :host {
+    color: ods-get-color-variable($intent-name: primary, $hue: '800');
+    background-color: ods-get-color-variable($palette-name: 'blue', $hue: '050');
+    border-color: ods-get-color-variable($intent-name: primary, $hue: '100');
+  }
+}

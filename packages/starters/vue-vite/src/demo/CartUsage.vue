@@ -8,7 +8,7 @@ import {
   OsdsCartItemOption,
   OsdsCartSection,
   OsdsCartTotal
-} from '@ovhcloud/ods-stencil/components/vue';
+} from '@ovhcloud/ods-component-cart-vue';
 
 </script>
 

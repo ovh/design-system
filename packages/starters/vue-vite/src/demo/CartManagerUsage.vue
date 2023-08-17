@@ -1,9 +1,9 @@
 <script setup lang="ts">
-
-import { OsdsCartFooter, OsdsCartHeader, OsdsCartManager } from '@ovhcloud/ods-stencil/components/vue';
+import type { OdsCartManagerFooter, OdsCartManagerSection } from '@ovhcloud/ods-component-cart';
+import { OsdsCartFooter, OsdsCartHeader, OsdsCartManager } from '@ovhcloud/ods-component-cart-vue';
 
 // each type you import types from ODS, you will need to import the core
-import { Ods, OdsCartManagerFooter, OdsCartManagerSection, OdsExternalLogger, OdsI18nHook } from '@ovhcloud/ods-core';
+import { Ods, OdsExternalLogger, OdsI18nHook } from '@ovhcloud/ods-core';
 
 // a translation system of your app
 import { translationSystem } from './translationSystem';

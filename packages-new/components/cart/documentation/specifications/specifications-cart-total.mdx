@@ -1,0 +1,33 @@
+import {Description} from '@storybook/addon-docs';
+import Specs from './cartTotalSpec.md';
+
+## Description
+The cart total displays the total amount and the total quantity of product of the order.
+A button can be displayed via the content.
+
+<Description>{Specs}</Description>
+
+## Contents
+
+| Name        | Description                           |
+|-------------|---------------------------------------|
+| `total`     | the total title                       |
+| `info`      | information like "x products"         |
+| `price`     | the total amount of items and options |
+| `extra`     | extra information like "HT / month"   |
+| `[content]` | content can be displayed here         |
+
+## Tests
+
+**Extra zone**
+- should display the passed content in the extra zone
+
+**Info zone**
+- should display the passed content in the info zone
+
+**Price zone**
+- should display the total price as the sum of all items and options
+
+**Content zone**
+- should display the passed content in the content zone
+- should not display any content if no content passed

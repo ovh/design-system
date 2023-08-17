@@ -36,6 +36,7 @@ const config: Config = {
       excludeComponents: [
         'osds-breadcrumb',
         'osds-button',
+        'osds-cart',
         'osds-checkbox',
         'osds-chip',
         'osds-checkbox-button',
@@ -62,6 +63,7 @@ const config: Config = {
       excludeComponents: [
         'osds-breadcrumb',
         'osds-button',
+        'osds-cart',
         'osds-checkbox',
         'osds-chip',
         'osds-collapsible',
@@ -96,19 +98,6 @@ const config: Config = {
   }),
   bundles: [
     { components: ['osds-accordion', 'osds-accordion-group'] },
-    {
-      components: [
-        'osds-cart',
-        'osds-cart-footer',
-        'osds-cart-footer-item',
-        'osds-cart-header',
-        'osds-cart-item',
-        'osds-cart-item-option',
-        'osds-cart-manager',
-        'osds-cart-section',
-        'osds-cart-total',
-      ],
-    },
     { components: ['osds-location-tile'] },
     { components: ['osds-message'] },
     { components: ['osds-popover'] },

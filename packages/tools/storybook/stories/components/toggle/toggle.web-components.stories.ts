@@ -6,10 +6,9 @@ import {
 } from '../../../core/componentHTMLUtils';
 
 import { OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
-import changelog from '@ovhcloud/ods-stencil-toggle/CHANGELOG.md';
-import { defineCustomElements } from '@ovhcloud/ods-stencil-toggle/loader';
+import { defineCustomElements } from '@ovhcloud/ods-component-toggle/loader';
+import changelog from '@ovhcloud/ods-component-toggle/CHANGELOG.md';
 import { html } from 'lit-html';
-import { iframe } from '../../../.storybook/iframe';
 import { odsToggleDefaultAttributes } from '@ovhcloud/ods-core';
 import page from './toggle.web-component.stories.page.mdx';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
@@ -59,7 +58,6 @@ export default {
   id: 'toggle',
   parameters: {
     notes: {
-      API: iframe('/stencil-toggle/modules/index.html'),
       changelog,
     },
     docs: { page }

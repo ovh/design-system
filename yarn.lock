@@ -6451,6 +6451,41 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-component-toggle-react@workspace:packages-new/components/toggle/react":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-toggle-react@workspace:packages-new/components/toggle/react"
+  dependencies:
+    "@ovhcloud/ods-component-toggle": ^15.0.1
+    "@ovhcloud/ods-react-dev": ^15.0.1
+  peerDependencies:
+    react: ">=16.8.6"
+    react-dom: ">=16.8.6"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-component-toggle-vue@workspace:packages-new/components/toggle/vue":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-toggle-vue@workspace:packages-new/components/toggle/vue"
+  dependencies:
+    "@ovhcloud/ods-component-toggle": ^15.0.1
+    "@ovhcloud/ods-vue-dev": ^15.0.1
+  peerDependencies:
+    vue: ">=3"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-component-toggle@^15.0.1, @ovhcloud/ods-component-toggle@workspace:packages-new/components/toggle":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-toggle@workspace:packages-new/components/toggle"
+  dependencies:
+    "@ovhcloud/ods-common-core": ^15.0.1
+    "@ovhcloud/ods-common-stencil": ^15.0.1
+    "@ovhcloud/ods-common-testing": ^15.0.1
+    "@ovhcloud/ods-stencil-dev": ^15.0.1
+    "@ovhcloud/ods-theming": ^15.0.1
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-component-tooltip-react@workspace:packages-new/components/tooltip/react":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-tooltip-react@workspace:packages-new/components/tooltip/react"
@@ -7221,46 +7256,6 @@ __metadata:
     "@ovhcloud/ods-core": ">=9.1"
     "@stencil/core": ~2.18.1
     puppeteer: ~10.0.0
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-stencil-toggle-react@workspace:packages/stencil/components/toggle/react":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-stencil-toggle-react@workspace:packages/stencil/components/toggle/react"
-  dependencies:
-    "@ovhcloud/ods-stencil-toggle": ^15.0.1
-    "@types/react": 17.0.37
-    "@types/react-dom": 17.0.11
-    react: 16.14.0
-    react-dom: 16.14.0
-    rimraf: ^3.0.2
-    tslib: "*"
-    typescript: 4.7.4
-  peerDependencies:
-    react: ">=16.8.6"
-    react-dom: ">=16.8.6"
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-stencil-toggle-vue@workspace:packages/stencil/components/toggle/vue":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-stencil-toggle-vue@workspace:packages/stencil/components/toggle/vue"
-  dependencies:
-    "@ovhcloud/ods-stencil-toggle": ^15.0.1
-    rimraf: ^3.0.2
-    typescript: 4.7.4
-    vue: ^3.2.41
-  peerDependencies:
-    vue: ">=3"
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-stencil-toggle@^15.0.1, @ovhcloud/ods-stencil-toggle@workspace:packages/stencil/components/toggle":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-stencil-toggle@workspace:packages/stencil/components/toggle"
-  dependencies:
-    "@ovhcloud/ods-stencil-component": ^15.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^15.0.1
   languageName: unknown
   linkType: soft
 

@@ -51,6 +51,8 @@
   }
 
   .button__centered-text {
+    display: inline-flex;
+    justify-content: center;
     min-width: 0;
     overflow: hidden;
     text-overflow: ellipsis;

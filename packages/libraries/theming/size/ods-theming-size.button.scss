@@ -13,6 +13,7 @@
 /// @access private
 @function ods-get-button-component-size-definition() {
   @return (
+    xs: ods-get-button-size-properties(xs),
     sm: ods-get-button-size-properties(sm),
     md: ods-get-button-size-properties(md)
   );

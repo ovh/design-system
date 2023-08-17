@@ -141,7 +141,6 @@
   }
 }
 
-
 @mixin osds-button-theme-color-variant-ghost() {
 
   @include osds-button-on-selected-host() {
@@ -207,6 +206,70 @@
   }
 }
 
+@mixin osds-button-theme-color-variant-hollow() {
+
+  @include osds-button-on-selected-host() {
+    background-color: initial;
+  }
+
+  @include ods-and-all-hue-foreach-theme-color((
+          color: '500',
+  )) using($colors) {
+    @include osds-button-on-selected-host() {
+      color: map_get($colors, color);
+    }
+  }
+
+  &[contrasted] {
+    @include ods-and-all-hue-foreach-theme-color((
+            color: '500-contrasted',
+    )) using($colors) {
+      @include osds-button-on-selected-host() {
+        color: map_get($colors, color);
+      }
+    }
+  }
+
+  &:not([disabled]) {
+    @include ods-and-one-hue-foreach-theme-color('600') using($color) {
+      :host(&:hover), :host(&:focus) {
+        @include osds-button-on-main-element() {
+          color: $color;
+        }
+      }
+    }
+
+    &[contrasted] {
+      @include ods-and-all-hue-foreach-theme-color((
+              color: (tone: '100', alpha: '.2'),
+      )) using($colors) {
+        :host(&:hover), :host(&:focus) {
+          @include osds-button-on-main-element() {
+            color: map_get($colors, color);
+          }
+        }
+      }
+    }
+  }
+
+  &:not([disabled]):active {
+    @include ods-and-one-hue-foreach-theme-color('700') using($color) {
+      @include osds-button-on-selected-host() {
+        color: $color;
+      }
+    }
+
+    &[contrasted] {
+      @include ods-and-all-hue-foreach-theme-color((
+              color: (tone: '100', alpha: '.5'),
+      )) using($colors) {
+        @include osds-button-on-selected-host() {
+          color: map_get($colors, color);
+        }
+      }
+    }
+  }
+}
 
 @mixin osds-button-theme-color() {
 
@@ -243,6 +306,11 @@
   /** ghost variant colors */
   [variant='ghost'] {
     @include osds-button-theme-color-variant-ghost();
+  }
+
+  /** ghost variant colors */
+  [variant='hollow'] {
+    @include osds-button-theme-color-variant-hollow();
   }
 
   :not([disabled]):focus {

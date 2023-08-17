@@ -1,7 +1,8 @@
 enum ODS_BUTTON_VARIANT {
   flat = 'flat',
   stroked = 'stroked',
-  ghost = 'ghost'
+  ghost = 'ghost',
+  hollow = 'hollow'
 }
 
 const ODS_BUTTON_VARIANTS = Object.freeze(Object.values(ODS_BUTTON_VARIANT));

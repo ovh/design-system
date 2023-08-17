@@ -75,6 +75,7 @@
         )
       ),
       $button: (
+        xs: (height: var(--ods-size-08), border-radius: var(--ods-size-border-radius-02), border-width: var(--ods-size-inset-02), padding-y: 0, padding-x: 0),
         sm: (height: 2.25rem, border-radius: var(--ods-size-border-radius-02), border-width: var(--ods-size-inset-02), padding-y: 0, padding-x: var(--ods-size-inline-05)),
         md: (height: 3.25rem, border-radius: var(--ods-size-border-radius-02), border-width: var(--ods-size-inset-02), padding-y: 0, padding-x: var(--ods-size-inline-06))
       ),

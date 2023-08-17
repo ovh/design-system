@@ -1,4 +1,5 @@
 enum ODS_BUTTON_SIZE {
+  xs = 'xs',
   sm = 'sm',
   md = 'md',
 }

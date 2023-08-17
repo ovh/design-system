@@ -1,6 +1,6 @@
 const main = `
 
-[Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 {{> header}}
 
@@ -20,9 +20,9 @@ const main = `
 
 const header = `
 {{#if isPatch~}}
-  # [{{version}}](https://ovhcloud.design/{{currentTag}}/?path=/docs/design-system-changelog--page)
+  # [{{version}}](https://ovh.github.io/design-system/{{currentTag}}/?path=/docs/design-system-changelog--page)
 {{~else~}}
-  # [{{version}}](https://ovhcloud.design/{{currentTag}}/?path=/docs/design-system-changelog--page)
+  # [{{version}}](https://ovh.github.io/design-system/{{currentTag}}/?path=/docs/design-system-changelog--page)
 {{~/if}}
 {{~#if title}} "{{title}}"
 {{~/if}}

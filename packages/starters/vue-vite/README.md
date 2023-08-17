@@ -17,8 +17,7 @@ There is examples of uses of the different feature from `ODS`:
 
 **1. download the starter**
 
-You can install this starter by downloading the code from
-the [repository]()
+You can install this starter by downloading the code from the [repository](https://github.com/ovh/design-system)
 
 ```shell
 git clone -b release/10.0 --single-branch ssh://git@github.com:ovh/design-system.git ods-temp
@@ -55,8 +54,8 @@ And finally, if you want to test the built app:
 
 # Information
 
-- [ODS integration in Vue application](../?path=/story/code-stencil-components-how-to-install--page#for-vue-framework)
-- [ODS Getting Started](../?path=/story/code-getting-started--page)
+- [ODS integration in Vue application](?path=/story/code-stencil-components-how-to-install--page#for-vue-framework)
+- [ODS Getting Started](?path=/story/ovhcloud-design-system-get-started--page)
 - [Vue script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup)
 
 Recommended IDE Setup:

@@ -51,7 +51,7 @@ export const parameters = {
         ['Our Principles', 'Design tokens', 'Starters',
           ['Introduction'],
           'Stencil',
-          ['Introduction'],
+          ['Introduction', 'Components'],
         ],
         'UI Components',
         ['Introduction'],

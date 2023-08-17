@@ -18,7 +18,7 @@ const uiComponents = {
     {
         tag: 'osds-divider',
         name: 'Divider',
-        url: parent.location.href.replace(parent.location.search, "?path=/story/divider--default'"),
+        url: parent.location.href.replace(parent.location.search, "?path=/story/divider--default"),
         attributes: {
             color: OdsThemeColorIntent.primary,
             size: ODS_DIVIDER_SIZE.ten,

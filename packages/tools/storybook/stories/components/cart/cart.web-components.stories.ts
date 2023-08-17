@@ -1,15 +1,13 @@
 import { html } from 'lit-html';
-import { iframe } from '../../../.storybook/iframe';
-
-
-import { defineCustomElements } from '@ovhcloud/ods-stencil-cart/loader';
-import changelog from '@ovhcloud/ods-stencil-cart/CHANGELOG.md';
-import page from './cart.web-component.stories.page.mdx';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
+import { ODS_CART_ROUNDED, ODS_CART_ROUNDEDS } from '@ovhcloud/ods-component-cart/';
+import { defineCustomElements } from '@ovhcloud/ods-component-cart/loader';
 import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
-import { OdsCartRounded } from '@ovhcloud/ods-core';
-import { OdsCartRoundedList } from '@ovhcloud/ods-core/src/components/cart/ods-cart-rounded';
 import { CartManagerPlay } from './cart.web-components.manager.stories';
+// @ts-ignore
+import changelog from '@ovhcloud/ods-component-cart/CHANGELOG.md';
+// @ts-ignore
+import page from './cart.web-component.stories.page.mdx';
 
 defineCustomElements();
 
@@ -22,8 +20,8 @@ const storyParams = {
   },
   rounded: {
     category: 'General',
-    defaultValue: OdsCartRounded.all,
-    options: OdsCartRoundedList,
+    defaultValue: ODS_CART_ROUNDED.all,
+    options: ODS_CART_ROUNDEDS,
     control: { type: 'select' },
   }
 }
@@ -33,7 +31,6 @@ export default {
   id: 'cart',
   parameters: {
     notes: {
-      API: iframe('/stencil-components-cart/modules/index.html'),
       changelog,
     },
     docs: { page },
@@ -93,7 +90,7 @@ const parametersResponsiveCartViewport = {
   }
 };
 
-const TemplateDefault = (args) => html`
+const TemplateDefault = (args: any) => html`
   <style>
     .cart-option-divider {
       padding: 0 1rem;
@@ -177,7 +174,9 @@ const TemplateDefault = (args) => html`
 `;
 
 export const Default = TemplateDefault.bind({});
+// @ts-ignore
 Default.parameters = parametersSmallCartViewport;
+// @ts-ignore
 Default.args = {
   ...extractStoryParams(storyParams),
   button: '<osds-button \n' +
@@ -190,7 +189,7 @@ Default.args = {
     '      </osds-button>'
 };
 
-const TemplateEmpty = (args) => html`
+const TemplateEmpty = (args: any) => html`
         <osds-cart ...=${getTagAttributes(args)}>
           <osds-cart-header slot="header">
             Your selection
@@ -202,11 +201,12 @@ const TemplateEmpty = (args) => html`
         </osds-cart>
 `;
 export const CartEmpty = TemplateEmpty.bind({});
+// @ts-ignore
 CartEmpty.args = {
   ...extractStoryParams(storyParams),
 };
 
-const OsdsCartManager = (args) => html`
+const OsdsCartManager = (args: any) => html`
   <osds-cart-manager id="cart-manager-a" ...=${getTagAttributes(args)}>
 
     <osds-cart-header slot="header">
@@ -222,8 +222,9 @@ const OsdsCartManager = (args) => html`
   </osds-cart-manager>
 `;
 
-const TemplateManager = (args) => OsdsCartManager(args);
+const TemplateManager = (args: any) => OsdsCartManager(args);
 export const CartManager = TemplateManager.bind({});
+// @ts-ignore
 CartManager.args = {
   ...extractStoryParams(storyParams),
   vatMode: false,
@@ -236,9 +237,10 @@ CartManager.args = {
     '         <osds-icon size="sm" name="arrow-right" contrasted="" color="default" aria-hidden="true" alt="" aria-name=""></osds-icon>' +
     '      </osds-button>',
 };
+// @ts-ignore
 CartManager.play = CartManagerPlay;
 
-const TemplateResponsive = (args) => html`
+const TemplateResponsive = (args: any) => html`
 <style>
   .group {
     display: flex;
@@ -373,7 +375,9 @@ const TemplateResponsive = (args) => html`
 `;
 
 export const Responsive = TemplateResponsive.bind({});
+// @ts-ignore
 Responsive.parameters = parametersResponsiveCartViewport;
+// @ts-ignore
 Responsive.args = {
   flex: true,
   rounded: 'top',

@@ -12,7 +12,6 @@
   },
   "include": [
     "accordion/src",
-    "cart/src",
     "code/src",
     "location-tile/src",
     "message/src",

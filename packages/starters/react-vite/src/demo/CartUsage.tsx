@@ -8,7 +8,7 @@ import {
   OsdsCartItemOption,
   OsdsCartSection,
   OsdsCartTotal
-} from '@ovhcloud/ods-stencil/components/react';
+} from '@ovhcloud/ods-component-cart-react';
 
 const CartUsage: React.FC = () => (
   <div>

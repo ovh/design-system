@@ -11,10 +11,8 @@ describe('e2e:osds-message', () => {
   let page: E2EPage;
   let el: E2EElement;
 
-  // async function setup({ attributes = {} }: { attributes?: Partial<OdsMessageAttribute> } = {}) {
   async function setup({ attributes = {}, onPage }: { attributes?: Partial<OdsMessageAttribute>, html?: string, onPage?: ({ page }: { page: E2EPage }) => void } = {}) {
-    const stringAttributes = odsComponentAttributes2StringAttributes<OdsMessageAttribute>({ ...attributes }, DEFAULT_ATTRIBUTE);
-
+    const stringAttributes = odsComponentAttributes2StringAttributes<OdsMessageAttribute>(attributes, DEFAULT_ATTRIBUTE);
     page = await newE2EPage();
     onPage && onPage({ page });
 

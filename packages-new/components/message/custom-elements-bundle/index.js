@@ -10,6 +10,8 @@ var ODS_MESSAGE_TYPE;
 })(ODS_MESSAGE_TYPE || (ODS_MESSAGE_TYPE = {}));
 const ODS_MESSAGE_TYPES = Object.freeze(Object.values(ODS_MESSAGE_TYPE));
 
+const odsGenerateColorVariable = (intent, hue, contrasted = false) => `--ods-color-${intent}-${hue}${contrasted ? '-contrasted' : ''}`;
+
 var OdsThemeColorHue;
 (function (OdsThemeColorHue) {
     OdsThemeColorHue["_000"] = "000";
@@ -26,7 +28,7 @@ var OdsThemeColorHue;
     OdsThemeColorHue["_900"] = "900";
     OdsThemeColorHue["_1000"] = "1000";
 })(OdsThemeColorHue || (OdsThemeColorHue = {}));
-Object.keys(OdsThemeColorHue)
+const OdsThemeColorHueList = Object.keys(OdsThemeColorHue)
     .map((key) => OdsThemeColorHue[key]);
 
 var OdsThemeColorIntent;
@@ -41,7 +43,7 @@ var OdsThemeColorIntent;
     OdsThemeColorIntent["info"] = "info";
     OdsThemeColorIntent["promotion"] = "promotion";
 })(OdsThemeColorIntent || (OdsThemeColorIntent = {}));
-Object.keys(OdsThemeColorIntent)
+const OdsThemeColorIntentList = Object.keys(OdsThemeColorIntent)
     .map((key) => OdsThemeColorIntent[key]);
 
 var OdsThemeSize;
@@ -56,7 +58,7 @@ var OdsThemeSize;
     OdsThemeSize["_800"] = "800";
     OdsThemeSize["_900"] = "900";
 })(OdsThemeSize || (OdsThemeSize = {}));
-Object.keys(OdsThemeSize)
+const OdsThemeSizeList = Object.keys(OdsThemeSize)
     .map((key) => OdsThemeSize[key]);
 /*
 
@@ -107,7 +109,7 @@ var OdsThemeTypographyLevel;
     OdsThemeTypographyLevel["caption"] = "caption";
     OdsThemeTypographyLevel["button"] = "button";
 })(OdsThemeTypographyLevel || (OdsThemeTypographyLevel = {}));
-Object.keys(OdsThemeTypographyLevel)
+const OdsThemeTypographyLevelList = Object.keys(OdsThemeTypographyLevel)
     .map((key) => OdsThemeTypographyLevel[key]);
 
 var OdsThemeTypographySize;
@@ -121,16 +123,16 @@ var OdsThemeTypographySize;
     OdsThemeTypographySize["_700"] = "700";
     OdsThemeTypographySize["_800"] = "800";
 })(OdsThemeTypographySize || (OdsThemeTypographySize = {}));
-Object.keys(OdsThemeTypographySize)
+const OdsThemeTypographySizeList = Object.keys(OdsThemeTypographySize)
     .map((key) => OdsThemeTypographySize[key]);
 
 const DEFAULT_ATTRIBUTE$1 = Object.freeze({
   color: OdsThemeColorIntent.default,
-  inline: false,
+  contrasted: false,
   icon: undefined,
+  inline: false,
   removable: false,
   type: undefined,
-  contrasted: false
 });
 
 var ODS_ICON_NAME;
@@ -403,7 +405,7 @@ var ODS_ICON_NAME;
   ODS_ICON_NAME["WORLD_ADD_CONCEPT"] = "world-add-concept";
   ODS_ICON_NAME["WORLD_CONCEPT"] = "world-concept";
 })(ODS_ICON_NAME || (ODS_ICON_NAME = {}));
-Object.freeze(Object.values(ODS_ICON_NAME));
+const ODS_ICON_NAMES = Object.freeze(Object.values(ODS_ICON_NAME));
 
 var ODS_ICON_SIZE;
 (function (ODS_ICON_SIZE) {
@@ -414,7 +416,7 @@ var ODS_ICON_SIZE;
   ODS_ICON_SIZE["lg"] = "lg";
   ODS_ICON_SIZE["xl"] = "xl";
 })(ODS_ICON_SIZE || (ODS_ICON_SIZE = {}));
-Object.freeze(Object.values(ODS_ICON_SIZE));
+const ODS_ICON_SIZES = Object.freeze(Object.values(ODS_ICON_SIZE));
 
 const add = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='%23000000' fill-rule='evenodd' d='M12 3a1 1 0 011 1v7h7a1 1 0 010 2h-7v7a1 1 0 01-2 0v-7H4a1 1 0 010-2h7V4a1 1 0 011-1z'/%3E%3C/svg%3E";
 const bell = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='%23000000' fill-rule='evenodd' d='M12 2a7 7 0 017 7v5c0 1.65.488 2.626 1.447 3.106.944.471.608 1.894-.447 1.894h-4.902a2.999 2.999 0 01-5.196 0H4c-1.055 0-1.391-1.423-.447-1.894C4.513 16.626 5 15.65 5 14V9a7 7 0 017-7zm0 2a5 5 0 00-5 5v5c0 1.171-.21 2.178-.632 3h11.264c-.422-.822-.632-1.829-.632-3V9a5 5 0 00-5-5z'/%3E%3C/svg%3E";
@@ -745,6 +747,68 @@ const DEFAULT_ATTRIBUTE = Object.freeze({
 });
 
 /**
+ * is the specified element has `aria-hidden` attribute or not
+ * @param hostElement - Element node
+ */
+function odsHasAriaHidden(hostElement) {
+    return hostElement.hasAttribute('aria-hidden') && hostElement.getAttribute('aria-hidden') === 'true';
+}
+
+/**
+ * convert some component attributes made of different properties into string properties.
+ * Only number and string will be converted as string values.
+ * Boolean are set in the result only if they are true.
+ * Other values are ignored.
+ * It is useful in order to place attributes on an html content
+ * | DOM matrix    | -         | wanted                   | wanted                                             |
+ * |---------------|-----------|--------------------------|----------------------------------------------------|
+ * | -             | -         | false                    | true                                               |
+ * | default value | false     | `-`                      | `attribute-name` or `attribute-name="true"`        |
+ * | default value | undefined | `-`                      | `attribute-name` or `attribute-name="true"`        |
+ * | default value | true      | `attribute-name="false"` | `-` or `attribute-name` or `attribute-name="true"` |
+ *
+ * @param attributes
+ * @constructor
+ */
+function OdsComponentAttributes2StringAttributes(attributes, defaultValues) {
+    const parameters = {};
+    Object.entries(attributes)
+        .map(([name, value]) => {
+        if (typeof value === "boolean") {
+            if (value) {
+                parameters[name] = "true";
+            }
+            else if (!value && defaultValues[name]) {
+                parameters[name] = `${value}`;
+            }
+        }
+        else if (typeof value === "number") {
+            parameters[name] = `${value}`;
+        }
+        else if (typeof value === "string") {
+            parameters[name] = `${value}`;
+        }
+        else if (typeof value === "object") {
+            parameters[name] = JSON.stringify(value);
+        }
+        else if (value) {
+            console.warn(`your attribute ${name}=${value} cannot be set as DOM attribute. use setProperty instead`);
+        }
+    });
+    return parameters;
+}
+
+/**
+ * common controller of a component.
+ * it contains common logic useful for all components
+ */
+class OdsComponentController {
+    constructor(component) {
+        this.component = component;
+    }
+}
+
+/**
  * default `ODS` configuration applied if there no custom configuration made on client side
  */
 const odsDefaultConfig = {
@@ -968,6 +1032,9 @@ class Ods {
                 // console.log('[Ods] static ods.instance created with id=', this._instance.instanceId);
             }
         }
+        else {
+            // console.log('[Ods] static ods.instance', 'instance already set id=', this._instance.instanceId);
+        }
         return this._instance;
     }
     /**
@@ -1015,6 +1082,11 @@ class Ods {
     }
 }
 Ods._instanceId = 0;
+
+/**
+ * Name of the main event fired by `ODS` (initialized)
+ */
+const OdsInitializedEventName = 'odsInitialized';
 
 /**
  * initialize all properties of window that are specific to `ods`.
@@ -1092,6 +1164,9 @@ function odsSetup( /*userConfig?: OdsConfig*/) {
             //console.log('[odsSetup] call instance');
             winFilled.ods.versions[VERSION] = Ods.instance(config);
         }
+        else {
+            //console.log('[odsSetup] instance already set');
+        }
         // always set as latest the superior detected versions
         if (!winFilled.ods.latest || (winFilled.ods.latest && VERSION > winFilled.ods.latest.version)) {
             winFilled.ods.latest = winFilled.ods.versions[VERSION];
@@ -1102,6 +1177,163 @@ function odsSetup( /*userConfig?: OdsConfig*/) {
 const win = getOdsWindow();
 if (win)
     win.odsSetup = odsSetup;
+
+function isOdsConfigLogging(config) {
+    return config && typeof config.active === 'boolean' && typeof config.color === 'boolean';
+}
+
+const logger = new OdsLogger('GetElementAttributes');
+/**
+ * get element's attribute as key value
+ */
+const getElementAttributes = (nodeMap) => {
+    if (nodeMap) {
+        const length = nodeMap.length;
+        return Object.keys(nodeMap).reduce((props, current) => {
+            try {
+                const numCurrent = parseInt(current, 10);
+                if (numCurrent < length) {
+                    const property = nodeMap[numCurrent];
+                    return Object.assign(Object.assign({}, props), { [property.name]: property.value });
+                }
+            }
+            catch (err) {
+                // eslint-disable-next-line no-console
+                logger.error(err);
+            }
+            return props;
+        }, {});
+    }
+    return {};
+};
+
+/**
+ * Determine if the argument is shaped like a Promise.
+ * see Angular team: https://github.com/angular/angular/blob/58408d6a60bd43b89cb1d9ad6f8812c8e696d42d/packages/compiler/src/util.ts#L225
+ */
+function isPromise(obj) {
+    // allow any Promise/A+ compliant thenable.
+    // It's up to the caller to ensure that obj.then conforms to the spec
+    return !!obj && typeof obj.then === 'function';
+}
+
+class OdsFormControl {
+    constructor(id) {
+        this.valid = true;
+        this.id = id;
+    }
+    register(formControl) {
+        this.formControl = formControl;
+    }
+    /**
+     * is the form control element has a particular error or not.
+     * It is based on the `odsValidityState`
+     * @param errorType - the error type to check
+     */
+    hasError(errorType) {
+        if (this.formControl) {
+            const validityState = this.formControl.getValidity();
+            if (isPromise(validityState)) {
+                return validityState.then(v => v[errorType]);
+            }
+            else {
+                return new Promise((resolve) => resolve(validityState[errorType]));
+            }
+        }
+        return new Promise((resolve) => resolve(false));
+    }
+}
+
+class OdsErrorStateControl {
+    isErrorState(control) {
+        return !!(control && !control.valid);
+    }
+}
+
+/**
+ * get a default vanilla `ValidityState` used in ODS
+ */
+function OdsCreateDefaultValidityState() {
+    return {
+        valid: true,
+        stepMismatch: false,
+        valueMissing: false,
+        customError: false
+    };
+}
+
+/**
+ * get a default `OdsValidityState`
+ */
+function OdsCreateDefaultOdsValidityState() {
+    const defaultOne = OdsCreateDefaultValidityState();
+    return Object.assign(Object.assign({}, defaultOne), { invalid: !defaultOne.valid, forbiddenValue: false });
+}
+
+/**
+ * enumerate used property of ValidityState in an object.
+ * (all properties of ValidityState are not enumerable)
+ * @param validityState - vanilla validity state to copy
+ */
+function OdsGetValidityState(validityState) {
+    if (!validityState) {
+        return OdsCreateDefaultValidityState();
+    }
+    else {
+        return {
+            valid: validityState.valid,
+            stepMismatch: validityState.stepMismatch,
+            valueMissing: validityState.valueMissing,
+            customError: validityState.customError
+        };
+    }
+}
+
+/**
+ * check if the passed argument is an `OdsValidityState`
+ * @param value - possible object corresponding to `OdsValidityState`
+ */
+function isOdsValidityState(value) {
+    const hasProperty = (k) => Object.prototype.hasOwnProperty.call(value, k);
+    return !!(value && hasProperty("invalid", value));
+}
+/**
+ * check if the passed argument is a property key of `OdsValidityState`
+ * @param name - possible string corresponding to a key
+ */
+function isOdsValidityStateProperty(name) {
+    const keys = ["invalid", "stepMismatch", "valueMissing", "valid"];
+    return keys.some(k => k === name);
+}
+
+/**
+ * get a default vanilla `ValidityState` used in ODS
+ */
+function OdsCreateTextAreaValidityState() {
+    return {
+        valid: true,
+        valueMissing: false,
+        customError: false
+    };
+}
+
+/**
+ * enumerate used property of ValidityState in an object.
+ * (all properties of ValidityState are not enumerable)
+ * @param validityState - vanilla validity state to copy
+ */
+function OdsTextAreaGetValidityState(validityState) {
+    if (!validityState) {
+        return OdsCreateTextAreaValidityState();
+    }
+    else {
+        return {
+            valid: validityState.valid,
+            valueMissing: validityState.valueMissing,
+            customError: validityState.customError
+        };
+    }
+}
 
 var ODS_COUNTRY_ISO_CODE;
 (function (ODS_COUNTRY_ISO_CODE) {
@@ -1341,8 +1573,33 @@ var ODS_COUNTRY_ISO_CODE;
     ODS_COUNTRY_ISO_CODE["ZA"] = "za";
     ODS_COUNTRY_ISO_CODE["ZM"] = "zm";
 })(ODS_COUNTRY_ISO_CODE || (ODS_COUNTRY_ISO_CODE = {}));
-Object.keys(ODS_COUNTRY_ISO_CODE)
+const OdsCountryIsoCodeList = Object.keys(ODS_COUNTRY_ISO_CODE)
     .map((key) => ODS_COUNTRY_ISO_CODE[key]);
+
+class OdsI18n {
+    constructor() {
+        this.logger = new OdsLogger('OdsI18N');
+    }
+    static get() {
+        if (this.instance) {
+            return this.instance;
+        }
+        this.instance = new OdsI18n();
+        return this.instance;
+    }
+    handle(key, values, overrideHook) {
+        const hook = overrideHook ? overrideHook : Ods.instance().getI18n();
+        if (hook) {
+            try {
+                return hook(key, values);
+            }
+            catch (e) {
+                this.logger.error('osds-cart', 'error handling i18n hook', { i18n: hook, key, values });
+            }
+        }
+        return key;
+    }
+}
 
 /**
  * @param term - an enum value or a string
@@ -1372,14 +1629,156 @@ function OdsWarnComponentAttribute(params, required = false) {
     return OdsWarnComponentEnumAttribute(params);
 }
 
+const OLES_IPSUM_START = 'Oles ipsum dolor sit amet, ';
+const LOREM_IPSUM = 'consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ' +
+    'ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur ' +
+    'soccaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+const LOREM_IPSUM_KEYWORDS = ['a', 'ac', 'accommodare', 'accumsan', 'accusata', 'ad', 'adhuc', 'adipisci',
+    'adipiscing', 'adolescens', 'adversarium', 'aenean', 'aeque', 'affert', 'agam', 'alia', 'alienum', 'aliquam', 'aliquet', 'aliquid', 'aliquip', 'altera', 'alterum', 'amet', 'an',
+    'ancillae', 'animal', 'ante', 'antiopam', 'aperiri', 'appareat', 'appetere', 'aptent', 'arcu', 'assueverit', 'at', 'atomorum', 'atqui', 'auctor', 'audire', 'augue', 'autem',
+    'bibendum', 'blandit', 'brute', 'causae', 'cetero', 'ceteros', 'civibus', 'class', 'commodo', 'commune', 'comprehensam', 'conceptam', 'conclusionemque', 'condimentum', 'congue',
+    'consectetuer', 'consectetur', 'consequat', 'consetetur', 'constituam', 'constituto', 'consul', 'contentiones', 'conubia', 'convallis', 'convenire', 'corrumpit', 'cras', 'cu',
+    'cubilia', 'cum', 'curabitur', 'curae', 'cursus', 'dapibus', 'debet', 'decore', 'definiebas', 'definitionem', 'definitiones', 'delectus', 'delenit', 'delicata', 'deseruisse',
+    'deserunt', 'deterruisset', 'detracto', 'detraxit', 'diam', 'dicam', 'dicant', 'dicat', 'dicit', 'dico', 'dicta', 'dictas', 'dictum', 'dictumst', 'dicunt', 'dignissim', 'dis',
+    'discere', 'disputationi', 'dissentiunt', 'docendi', 'doctus', 'dolor', 'dolore', 'dolorem', 'dolores', 'dolorum', 'doming', 'donec', 'dui', 'duis', 'duo', 'ea', 'eam',
+    'efficiantur', 'efficitur', 'egestas', 'eget', 'ei', 'eirmod', 'eius', 'elaboraret', 'electram', 'eleifend', 'elementum', 'elit', 'elitr', 'eloquentiam', 'enim', 'eos',
+    'epicurei', 'epicuri', 'equidem', 'erat', 'eripuit', 'eros', 'errem', 'error', 'erroribus', 'eruditi', 'esse', 'est', 'et', 'etiam', 'eu', 'euismod', 'eum', 'euripidis',
+    'evertitur', 'ex', 'expetenda', 'expetendis', 'explicari', 'fabellas', 'fabulas', 'facilis', 'facilisi', 'facilisis', 'falli', 'fames', 'fastidii', 'faucibus', 'felis',
+    'fermentum', 'ferri', 'feugait', 'feugiat', 'finibus', 'fringilla', 'fugit', 'fuisset', 'fusce', 'gloriatur', 'graece', 'graeci', 'graecis', 'graeco', 'gravida', 'gubergren',
+    'habemus', 'habeo', 'habitant', 'habitasse', 'hac', 'harum', 'has', 'hendrerit', 'himenaeos', 'hinc', 'his', 'homero', 'honestatis', 'iaculis', 'id', 'idque', 'ignota', 'iisque',
+    'imperdiet', 'impetus', 'in', 'inani', 'inceptos', 'inciderint', 'indoctum', 'inimicus', 'instructior', 'integer', 'intellegat', 'intellegebat', 'interdum', 'interesset',
+    'interpretaris', 'invenire', 'invidunt', 'ipsum', 'iriure', 'iudicabit', 'ius', 'iusto', 'iuvaret', 'justo', 'labores', 'lacinia', 'lacus', 'laoreet', 'latine', 'laudem',
+    'lectus', 'legere', 'legimus', 'leo', 'liber', 'libero', 'libris', 'ligula', 'litora', 'lobortis', 'lorem', 'luctus', 'ludus', 'luptatum', 'maecenas', 'magna', 'magnis',
+    'maiestatis', 'maiorum', 'malesuada', 'malorum', 'maluisset', 'mandamus', 'massa', 'mattis', 'mauris', 'maximus', 'mazim', 'mea', 'mediocrem', 'mediocritatem', 'mei', 'mel',
+    'meliore', 'melius', 'menandri', 'mentitum', 'metus', 'mi', 'minim', 'mnesarchum', 'moderatius', 'molestiae', 'molestie', 'mollis', 'montes', 'morbi', 'movet', 'mucius', 'mus',
+    'mutat', 'nam', 'nascetur', 'natoque', 'natum', 'ne', 'nec', 'necessitatibus', 'neglegentur', 'neque', 'netus', 'nibh', 'nihil', 'nisi', 'nisl', 'no', 'nobis', 'noluisse',
+    'nominavi', 'non', 'nonumes', 'nonumy', 'noster', 'nostra', 'nostrum', 'novum', 'nulla', 'nullam', 'numquam', 'nunc', 'ocurreret', 'odio', 'offendit', 'omittam', 'omittantur',
+    'omnesque', 'oporteat', 'option', 'oratio', 'orci', 'ornare', 'ornatus', 'partiendo', 'parturient', 'patrioque', 'pellentesque', 'penatibus', 'per', 'percipit', 'pericula',
+    'periculis', 'perpetua', 'persecuti', 'persequeris', 'persius', 'pertinacia', 'pertinax', 'petentium', 'pharetra', 'phasellus', 'placerat', 'platea', 'platonem', 'ponderum',
+    'populo', 'porro', 'porta', 'porttitor', 'posidonium', 'posse', 'possim', 'possit', 'postea', 'postulant', 'posuere', 'potenti', 'praesent', 'pretium', 'pri', 'primis',
+    'principes', 'pro', 'prodesset', 'proin', 'prompta', 'propriae', 'pulvinar', 'purus', 'putent', 'quaeque', 'quaerendum', 'quaestio', 'qualisque', 'quam', 'quas', 'quem', 'qui',
+    'quidam', 'quis', 'quisque', 'quo', 'quod', 'quot', 'recteque', 'referrentur', 'reformidans', 'regione', 'reprehendunt', 'reprimique', 'repudiandae', 'repudiare', 'reque',
+    'rhoncus', 'ridens', 'ridiculus', 'risus', 'rutrum', 'sadipscing', 'saepe', 'sagittis', 'sale', 'salutatus', 'sanctus', 'saperet', 'sapien', 'sapientem', 'scelerisque',
+    'scripserit', 'scripta', 'sea', 'sed', 'sem', 'semper', 'senectus', 'senserit', 'sententiae', 'signiferumque', 'similique', 'simul', 'singulis', 'sit', 'sociis', 'sociosqu',
+    'sodales', 'solet', 'sollicitudin', 'solum', 'sonet', 'splendide', 'suas', 'suavitate', 'sumo', 'suscipiantur', 'suscipit', 'suspendisse', 'tacimates', 'taciti', 'tale',
+    'tamquam', 'tantas', 'tation', 'te', 'tellus', 'tempor', 'tempus', 'theophrastus', 'tibique', 'tincidunt', 'torquent', 'tortor', 'tota', 'tractatos', 'tristique', 'tritani',
+    'turpis', 'ubique', 'ullamcorper', 'ultrices', 'ultricies', 'unum', 'urbanitas', 'urna', 'usu', 'ut', 'utamur', 'utinam', 'utroque', 'varius', 'vehicula', 'vel', 'velit',
+    'venenatis', 'veniam', 'verear', 'veri', 'veritus', 'vero', 'verterem', 'vestibulum', 'viderer', 'vidisse', 'vim', 'viris', 'vis', 'vitae', 'vituperata', 'vituperatoribus',
+    'vivamus', 'vivendo', 'viverra', 'vix', 'vocent', 'vocibus', 'volumus', 'voluptaria', 'voluptatibus', 'voluptatum', 'volutpat', 'vulputate', 'wisi'];
+const LOREM_IPSUM_PUNCTUATION = ['.', '?'];
+const LOREM_IPSUM_CARRIAGE_RETURN = '\n';
+const OVHCLOUD_KEYWORDS = ["address", "advance", "anonymous", "application", "armor", "array", "availability", "back", "backup", "balancer", "bandwidth", "bare", "bastion",
+    "bcp", "big", "bot", "business", "cache", "cat", "cdn", "ceph", "chmod", "cloud", "cluster", "cobit", "code", "commit", "compute", "computing", "connect", "connector",
+    "container", "content", "continuity", "control", "cpu", "crm", "customer", "data", "database", "datacenter", "datagram", "dbaas", "ddos", "dedicated", "deep", "delivery",
+    "desktop", "diagnostic", "disk", "dns", "domain", "drive", "drp", "ecosystem", "electronic", "end", "enterprise", "ethernet", "experience", "file", "firewall", "flash", "flavor",
+    "grade", "grt", "guaranteed", "high", "horizon", "host", "hosted", "hosting", "housing", "hybrid", "hypervisor", "iaas", "icmp", "indicator", "information", "infrastructure",
+    "instance", "interface", "internet", "ip", "ipmi", "ipv4", "ipv6", "itil", "key", "kimsufi", "kpi", "kvm", "learning", "library", "load", "loader", "log", "loop", "ls", "mac",
+    "machine", "managed", "management", "mechanical", "memory", "metal", "metrics", "mitigation", "model", "module", "netboot", "network", "objective", "openstack", "operating",
+    "operation", "os", "overclocking", "peer-to-peer", "peering", "performance", "platform", "port", "presence", "private", "privilege", "processing", "processor", "programming",
+    "protocol", "proxy", "public", "rack", "ram", "random", "recovery", "redirection", "region", "remote", "repair", "replication", "rise", "rm", "root", "router", "routing", "rpo",
+    "rto", "scale", "security", "server", "service", "sharing", "shield", "sla", "snapshot", "software", "solid", "solution", "source", "soyoustart", "space", "sql", "ssh", "ssl",
+    "standalone", "state", "storage", "sudo", "swap", "switch", "system", "technology", "telecom", "traffic", "transfer", "transmission", "ttl", "unit", "user", "vac", "value",
+    "veeam", "virtual", "virtualization", "vrack", "web"];
+
 var OlesIpsumGeneration;
 (function (OlesIpsumGeneration) {
     OlesIpsumGeneration["paragraphs"] = "paragraphs";
     OlesIpsumGeneration["sentences"] = "sentences";
     OlesIpsumGeneration["words"] = "words";
 })(OlesIpsumGeneration || (OlesIpsumGeneration = {}));
-Object.keys(OlesIpsumGeneration)
+const OlesIpsumGenerationList = Object.keys(OlesIpsumGeneration)
     .map((key) => OlesIpsumGeneration[key]);
+
+const trim = (s) => {
+    return s.replace(/^\s+/, '').replace(/\s+$/, '');
+};
+const getRandomInt = (max) => {
+    return Math.round(Math.random() * max);
+};
+const pickRandomWord = (array) => {
+    return array[getRandomInt(array.length - 1)];
+};
+const getRandomWord = () => {
+    if (getRandomInt(.6)) {
+        return pickRandomWord(OVHCLOUD_KEYWORDS);
+    }
+    return LOREM_IPSUM_KEYWORDS[getRandomInt(LOREM_IPSUM_KEYWORDS.length - 1)];
+};
+const getRandomPunctuation = () => {
+    return LOREM_IPSUM_PUNCTUATION[getRandomInt(LOREM_IPSUM_PUNCTUATION.length - 1)];
+};
+const createWords = (count) => {
+    let words = '';
+    while (count > 0) {
+        words += getRandomWord() + ' ';
+        count--;
+    }
+    return trim(words);
+};
+const sentencePart = () => {
+    return createWords(getRandomInt(10) + 3);
+};
+const createSentence = () => {
+    // Get first word
+    let sentence = getRandomWord();
+    // Add the uppercase to it
+    sentence = `${sentence.substring(0, 1).toUpperCase()}${sentence.substring(1)} `;
+    if (getRandomInt(1)) {
+        for (let i = 0, r = getRandomInt(3) + 1; i < r; i++) {
+            sentence += sentencePart() + ', ';
+        }
+    }
+    // last fragment + punctuation
+    return sentence + sentencePart() + getRandomPunctuation();
+};
+const createSentences = (count) => {
+    let sentences = '';
+    while (count > 0) {
+        sentences += createSentence() + ' ';
+        count--;
+    }
+    return trim(sentences);
+};
+const createParagraph = () => {
+    return createSentences(getRandomInt(3) + 2);
+};
+const createParagraphs = (count) => {
+    let paragraphs = '';
+    while (count > 0) {
+        paragraphs += createParagraph() + LOREM_IPSUM_CARRIAGE_RETURN + LOREM_IPSUM_CARRIAGE_RETURN;
+        count--;
+    }
+    return trim(paragraphs);
+};
+function olesIpsum(generationType, amount) {
+    let result = OLES_IPSUM_START;
+    if (!amount) {
+        amount = 1;
+    }
+    switch (generationType) {
+        case OlesIpsumGeneration.paragraphs:
+            result += createParagraphs(amount);
+            break;
+        case OlesIpsumGeneration.sentences:
+            result += createSentences(amount);
+            break;
+        case OlesIpsumGeneration.words:
+            result += createWords(amount);
+            break;
+        default:
+            result += createParagraphs(amount);
+            break;
+    }
+    return result;
+}
+
+/**
+ * is the value is a string
+ * @param val - value
+ */
+function odsIsStr(val) {
+    return typeof val === 'string';
+}
 
 /**
  * See rel attribute valid for <a> and <area> on
@@ -1403,7 +1802,7 @@ var OdsHTMLAnchorElementRel;
     OdsHTMLAnchorElementRel["search"] = "search";
     OdsHTMLAnchorElementRel["tag"] = "tag";
 })(OdsHTMLAnchorElementRel || (OdsHTMLAnchorElementRel = {}));
-Object.keys(OdsHTMLAnchorElementRel).map(key => OdsHTMLAnchorElementRel[key]);
+const OdsHTMLAnchorElementRelList = Object.keys(OdsHTMLAnchorElementRel).map(key => OdsHTMLAnchorElementRel[key]);
 
 /**
  * See target attribute on
@@ -1416,7 +1815,149 @@ var OdsHTMLAnchorElementTarget;
     OdsHTMLAnchorElementTarget["_parent"] = "_parent";
     OdsHTMLAnchorElementTarget["_top"] = "_top";
 })(OdsHTMLAnchorElementTarget || (OdsHTMLAnchorElementTarget = {}));
-Object.keys(OdsHTMLAnchorElementTarget).map(key => OdsHTMLAnchorElementTarget[key]);
+const OdsHTMLAnchorElementTargetList = Object.keys(OdsHTMLAnchorElementTarget).map(key => OdsHTMLAnchorElementTarget[key]);
+
+class OdsCheckboxUtils {
+    static isCheckedOnClick(checked) {
+        return !checked;
+    }
+}
+
+function odsDebounce(fn, ms = 300) {
+    let timeoutId;
+    return function (...args) {
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(() => fn.apply(this, args), ms);
+    };
+}
+
+/**
+ * return a random value from this enum
+ * @param anEnum - an enum interface
+ */
+function odsPickRandomValueFromEnum(anEnum) {
+    const enumValues = Object.values(anEnum);
+    const i = Math.floor(Math.random() * enumValues.length);
+    return enumValues[i];
+}
+
+/**
+ * filter properties that have not to be rendered into the DOM.
+ * it is applied only for boolean properties.
+ * it removes false properties (by setting them as null) and keep true properties (by setting theme as empty string).
+ * it is useful when you have to set boolean properties like `flex` or `contrasted` on a web component (even through
+ * a component proxy)
+ * the goal is to use this kind of properties just like vanilla ones `required` or `checked`.
+ * without this filter, the DOM will be generated as below (the boolean is converted to string in the property) :
+ * ```html
+ * <my-component flex="false" contrasted="true" id="foo"></my-component>
+ * ```
+ * with the filter, boolean properties are set into the DOM only if they are `true`:
+ * ```
+ * <my-component contrasted id="foo"></my-component>
+ * ```
+ * @example
+ * ```typescript
+ * // in react
+ * <MyComponent {...odsFilterTransientProps({ flex: false, contrasted: true, id: 'foo' })}>{children}</MyComponent>
+ * ```
+ * @see https://github.com/facebook/react/issues/9230
+ */
+function odsFilterTransientProps(props) {
+    const transients = {};
+    const keys = Object.keys(props);
+    keys.forEach((p) => {
+        const prop = props[p];
+        if (typeof prop === 'boolean') {
+            transients[p] = (prop ? '' : null);
+        }
+    });
+    return Object.assign(Object.assign({}, props), transients);
+}
+
+/**
+ * filter properties that are undefined
+ */
+function odsFilterUndefProps(props) {
+    const filtered = {};
+    const keys = Object.keys(props);
+    keys.forEach((p) => {
+        const prop = props[p];
+        if (prop !== undefined) {
+            filtered[p] = prop;
+        }
+    });
+    return filtered;
+}
+
+/**
+ * modify the given path with the parameter of `ods`.
+ * if a config was set for the asset path into `ods`, it applies it.
+ * in case of custom path given, it overrides the `ods` one with yours
+ * @param path - path to contextualize
+ * @param customPath - override with an optional path context
+ */
+function odsGetAssetPath(path, customPath = '') {
+    console.log('odsGetAssetPath path=', path);
+    console.log('odsGetAssetPath customPath=', customPath);
+    console.log('odsGetAssetPath getting instance...');
+    const instance = Ods.instance();
+    console.log('odsGetAssetPath instance.config=', JSON.stringify(instance.getConfig()));
+    if (!customPath) {
+        console.log('!customPath');
+        customPath = instance.getConfig().asset.path;
+        console.log('customPath', customPath);
+    }
+    return `${customPath}${path}`;
+}
+
+class OdsRadioUtils {
+    static isCheckedOnClick() {
+        return true;
+    }
+}
+
+/**
+ * check if the string is formatted as a src with path to a file
+ * @param str - string to check
+ */
+function odsIsSrc(str) {
+    return str.length > 0 && /([/.])/.test(str);
+}
+
+/**
+ * get a formatted src string without spaces
+ * @param src - string to check
+ * @returns a trimmed string or undefined if not a src type
+ */
+function odsGetSrc(src) {
+    if (odsIsStr(src)) {
+        src = src.trim();
+        if (odsIsSrc(src)) {
+            return src;
+        }
+    }
+    return;
+}
+
+/**
+ * convert a camelCase to a kebab-case
+ * @param anEnum - an enum interface
+ */
+// TODO moved to testing
+function odsCamelCase2KebabCase(str) {
+    return str.replace(/[A-Z]/g, (letter) => `-${letter.toLowerCase()}`);
+}
+
+class OdsComputedUtils {
+    static sumReducer(acc, val) {
+        return acc + (val || 0);
+    }
+}
+
+/**
+ * Entry point for all public APIs of this package.
+ */
 
 /**
  * common controller logic for icon component used by the different implementations.

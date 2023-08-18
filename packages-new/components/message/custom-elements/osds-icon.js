@@ -1,4 +1,4 @@
-import { c as OsdsIcon$1, d as defineCustomElement$1 } from './osds-icon2.js';
+import { O as OsdsIcon$1, d as defineCustomElement$1 } from './osds-icon2.js';
 
 const OsdsIcon = OsdsIcon$1;
 const defineCustomElement = defineCustomElement$1;

@@ -18,21 +18,23 @@
 
         .wrapper {
             width: 70%;
+            min-width: 50%;
+            max-width: clamp(36rem, 70%, 70%);
             border-radius: var(--ods-size-04);
             margin: var(--ods-size-04);
 
             .header {
                 width: 100%;
-                height: calc(var(--ods-size-09) + var(--ods-size-04));
+                height: calc(var(--ods-size-09) + var(--ods-size-05));
                 padding: 0 calc(var(--ods-size-04) / 2);
             }
 
             .content {
                 width: 100%;
-                padding: var(--ods-size-07);
+                padding: var(--ods-size-06) var(--ods-size-08) var(--ods-size-08);
 
                 .headline {
-                    margin-bottom: var(--ods-size-05);
+                    margin-bottom: var(--ods-size-04);
                 }
 
                 .slot {
@@ -40,22 +42,10 @@
                 }
 
                 .actions {
-                    margin-top: var(--ods-size-05);
+                    margin-top: var(--ods-size-07);
                     width: 100%;
                     gap: var(--ods-size-04);
                 }
-            }
-        }
-
-        @media screen and (max-width: 768px) {
-            .wrapper {
-                width: 100%;
-            }
-        }
-
-        @media screen and (min-width: 1280px) {
-            .wrapper {
-                width: 512px;
             }
         }
     }

@@ -1,12 +1,12 @@
-import { OdsThemeColorIntent, OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
-import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
-
-import changelog from '@ovhcloud/ods-stencil-code/CHANGELOG.md';
-import { defineCustomElements } from '@ovhcloud/ods-stencil-code/loader';
 import { html } from 'lit-html';
-import { iframe } from '../../../.storybook/iframe';
-import page from './code.web-component.stories.page.mdx';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
+import { defineCustomElements } from '@ovhcloud/ods-component-code/loader';
+import { OdsThemeColorIntent, OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
+import { getTagAttributes, extractArgTypes, extractStoryParams } from '../../../core/componentHTMLUtils';
+// @ts-ignore
+import changelog from '@ovhcloud/ods-component-code/CHANGELOG.md';
+// @ts-ignore
+import page from './code.web-component.stories.page.mdx';
 
 defineCustomElements();
 
@@ -33,7 +33,6 @@ export default {
   id: 'code',
   parameters: {
     notes: {
-      API: iframe('stencil-components-code/modules/index.html'),
       changelog,
     },
     docs: { page },

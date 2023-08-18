@@ -12,6 +12,7 @@
     "@ovhcloud/ods-component-checkbox-button": "^15.0.1",
     "@ovhcloud/ods-component-chip": "^15.0.1",
     "@ovhcloud/ods-component-clipboard": "^15.0.1",
+    "@ovhcloud/ods-component-code": "^15.0.1",
     "@ovhcloud/ods-component-collapsible": "^15.0.1",
     "@ovhcloud/ods-component-content-addon": "^15.0.1",
     "@ovhcloud/ods-component-divider": "^15.0.1",

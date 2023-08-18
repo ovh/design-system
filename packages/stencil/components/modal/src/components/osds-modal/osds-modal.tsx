@@ -52,9 +52,25 @@ export class OsdsModal implements OdsModal<OdsStencilMethods<OdsModalMethods>, O
   }
 
   componentWillRender(): void {
-    const allDirectChildren = Array.from(document.body.children);
-    for (const child of allDirectChildren) {
-      if (child !== this.el) {
+    const allDescendants = (el: HTMLElement): HTMLElement[] => {
+      const children = Array.from(el.children).filter(child => child instanceof HTMLElement) as HTMLElement[];
+      return children.reduce((acc, child) => acc.concat(child, allDescendants(child)), [] as HTMLElement[]);
+    };
+
+    const allBodyDescendants = allDescendants(document.body);
+    const modalDescendants = allDescendants(this.el);
+
+    let currentElement: HTMLElement | null = this.el;
+    const ancestors: HTMLElement[] = [];
+    while (currentElement && currentElement.parentElement) {
+      ancestors.push(currentElement.parentElement);
+      currentElement = currentElement.parentElement;
+    }
+
+    for (const child of allBodyDescendants) {
+      if (modalDescendants.indexOf(child) !== -1) continue;
+
+      if (child !== this.el && ancestors.indexOf(child) === -1) {
         if (!this.masked) {
           child.setAttribute('inert', '');
         } else {
@@ -84,11 +100,12 @@ export class OsdsModal implements OdsModal<OdsStencilMethods<OdsModalMethods>, O
                 onClick={() => this.close()}
                 color={color}
                 circle={true}
+                ghost={true}
               >
                 <osds-icon
                   ariaName={ODS_ICON_NAME.CLOSE + " icon"}
                   name={ODS_ICON_NAME.CLOSE}
-                  size={ODS_ICON_SIZE.md}
+                  size={ODS_ICON_SIZE.sm}
                   color={color}
                 ></osds-icon>
               </osds-button>

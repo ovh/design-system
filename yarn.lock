@@ -5439,6 +5439,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-common-stencil@workspace:packages-new/common/stencil"
   dependencies:
+    "@ovhcloud/ods-common-core": ^15.0.1
     "@ovhcloud/ods-common-testing": ^15.0.1
     "@ovhcloud/ods-dev": ^15.0.1
     "@ovhcloud/ods-theme-blue-jeans": ^15.0.1
@@ -5672,6 +5673,43 @@ __metadata:
     "@ovhcloud/ods-common-stencil": ^15.0.1
     "@ovhcloud/ods-common-testing": ^15.0.1
     "@ovhcloud/ods-component-icon": ^15.0.1
+    "@ovhcloud/ods-stencil-dev": ^15.0.1
+    "@ovhcloud/ods-theming": ^15.0.1
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-component-clipboard-react@workspace:packages-new/components/clipboard/react":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-clipboard-react@workspace:packages-new/components/clipboard/react"
+  dependencies:
+    "@ovhcloud/ods-component-clipboard": ^15.0.1
+    "@ovhcloud/ods-react-dev": ^15.0.1
+  peerDependencies:
+    react: ">=16.8.6"
+    react-dom: ">=16.8.6"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-component-clipboard-vue@workspace:packages-new/components/clipboard/vue":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-clipboard-vue@workspace:packages-new/components/clipboard/vue"
+  dependencies:
+    "@ovhcloud/ods-component-clipboard": ^15.0.1
+    "@ovhcloud/ods-vue-dev": ^15.0.1
+  peerDependencies:
+    vue: ">=3"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-component-clipboard@^15.0.1, @ovhcloud/ods-component-clipboard@workspace:packages-new/components/clipboard":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-clipboard@workspace:packages-new/components/clipboard"
+  dependencies:
+    "@ovhcloud/ods-common-core": ^15.0.1
+    "@ovhcloud/ods-common-stencil": ^15.0.1
+    "@ovhcloud/ods-common-testing": ^15.0.1
+    "@ovhcloud/ods-component-icon": ^15.0.1
+    "@ovhcloud/ods-component-input": ^15.0.1
     "@ovhcloud/ods-stencil-dev": ^15.0.1
     "@ovhcloud/ods-theming": ^15.0.1
   languageName: unknown
@@ -6311,6 +6349,7 @@ __metadata:
     "@ovhcloud/ods-component-checkbox": ^15.0.1
     "@ovhcloud/ods-component-checkbox-button": ^15.0.1
     "@ovhcloud/ods-component-chip": ^15.0.1
+    "@ovhcloud/ods-component-clipboard": ^15.0.1
     "@ovhcloud/ods-component-collapsible": ^15.0.1
     "@ovhcloud/ods-component-content-addon": ^15.0.1
     "@ovhcloud/ods-component-icon": ^15.0.1
@@ -6511,48 +6550,6 @@ __metadata:
   dependencies:
     "@ovhcloud/ods-component-collapsible": ^15.0.1
     "@ovhcloud/ods-component-icon": ^15.0.1
-    "@ovhcloud/ods-stencil-component": ^15.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^15.0.1
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-stencil-clipboard-react@workspace:packages/stencil/components/clipboard/react":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-stencil-clipboard-react@workspace:packages/stencil/components/clipboard/react"
-  dependencies:
-    "@ovhcloud/ods-stencil-clipboard": ^15.0.1
-    "@types/react": 17.0.37
-    "@types/react-dom": 17.0.11
-    react: 16.14.0
-    react-dom: 16.14.0
-    rimraf: ^3.0.2
-    tslib: "*"
-    typescript: 4.7.4
-  peerDependencies:
-    react: ">=16.8.6"
-    react-dom: ">=16.8.6"
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-stencil-clipboard-vue@workspace:packages/stencil/components/clipboard/vue":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-stencil-clipboard-vue@workspace:packages/stencil/components/clipboard/vue"
-  dependencies:
-    "@ovhcloud/ods-stencil-clipboard": ^15.0.1
-    rimraf: ^3.0.2
-    typescript: 4.7.4
-    vue: ^3.2.41
-  peerDependencies:
-    vue: ">=3"
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-stencil-clipboard@^15.0.1, @ovhcloud/ods-stencil-clipboard@workspace:packages/stencil/components/clipboard":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-stencil-clipboard@workspace:packages/stencil/components/clipboard"
-  dependencies:
-    "@ovhcloud/ods-component-icon": ^15.0.1
-    "@ovhcloud/ods-component-input": ^15.0.1
     "@ovhcloud/ods-stencil-component": ^15.0.1
     "@ovhcloud/ods-stencil-component-dev": ^15.0.1
   languageName: unknown

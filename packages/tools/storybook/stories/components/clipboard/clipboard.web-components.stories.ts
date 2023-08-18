@@ -1,25 +1,20 @@
 import { html } from 'lit-html';
-import { iframe } from '../../../.storybook/iframe';
-
-import { defineCustomElements } from '@ovhcloud/ods-stencil-clipboard/loader';
-import {
-  extractArgTypes,
-  extractStoryParams,
-  getTagAttributes,
-} from '../../../core/componentHTMLUtils';
-
-import changelog from '@ovhcloud/ods-stencil-clipboard/CHANGELOG.md';
+import { defineCustomElements } from '@ovhcloud/ods-component-clipboard/loader';
+import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
+// @ts-ignore
+import changelog from '@ovhcloud/ods-component-clipboard/CHANGELOG.md';
+// @ts-ignore
 import page from './clipboard.web-component.stories.page.mdx';
 
 defineCustomElements();
 
 /* Default story parameters  */
 const storyParams = {
-  flex: {
+  disabled: {
     category: 'General',
     defaultValue: false,
   },
-  disabled: {
+  inline: {
     category: 'General',
     defaultValue: false,
   },
@@ -33,7 +28,6 @@ export default {
   title: 'UI Components/Clipboard [atom]/Web Component',
   parameters: {
     notes: {
-      API: iframe('/stencil-clipboard/modules/index.html'),
       changelog,
     },
     docs: { page }
@@ -50,6 +44,7 @@ const TemplateDefault = (args:any) => {
   `;
 }
 export const Default = TemplateDefault.bind({});
+// @ts-ignore
 Default.args = {
   ...extractStoryParams(storyParams),
 };

@@ -8,13 +8,17 @@ interface OdsMessageAttribute {
    */
   color?: OdsThemeColorIntent
   /**
-   * Message as flex
+   * Message is in contrasted mode or not
    */
-  inline?: boolean
+  contrasted?: boolean
   /**
    * The icon prefix
    */
   icon?: ODS_ICON_NAME
+  /**
+   * Message as inline
+   */
+  inline?: boolean
   /**
    * If the message can be removed or not
    */
@@ -23,10 +27,6 @@ interface OdsMessageAttribute {
    * The message type
    */
   type?: ODS_MESSAGE_TYPE
-  /**
-   * Message is in contrasterd mode or not
-   */
-  contrasted?: boolean
 }
 
 export {

@@ -1,8 +1,7 @@
 import type { OsdsMessage } from '../osds-message';
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 import { ODS_MESSAGE_TYPE } from '../constants/message-type';
-import { odsIsTermInEnum } from '@ovhcloud/ods-common-core'
-import { OdsLogger } from '@ovhcloud/ods-common-core';
+import { odsIsTermInEnum, OdsLogger } from '@ovhcloud/ods-common-core'
 
 /**
  * common controller logic for chip component used by the different implementations.

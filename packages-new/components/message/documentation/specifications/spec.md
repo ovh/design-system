@@ -10,7 +10,7 @@
 |name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`color`** | `OdsThemeColorIntent` |  |  | Message color theme|
-|**`contrasted`** | _boolean_ |  |  | Message is in contrasterd mode or not|
+|**`contrasted`** | _boolean_ |  |  | Message is in contrasted mode or not|
 |**`icon`** | `OdsIconName` |  |  | The icon prefix|
 |**`inline`** | _boolean_ |  |  | Message as inline|
 |**`removable`** | _boolean_ |  |  | If the message can be removed or not|

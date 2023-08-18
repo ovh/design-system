@@ -1,13 +1,13 @@
 import { proxyCustomElement, HTMLElement, createEvent, h, Host } from '@stencil/core/internal/client';
-import { O as OdsThemeColorIntent, a as OdsLogger, o as odsIsTermInEnum, b as ODS_ICON_SIZE, d as defineCustomElement$2 } from './osds-icon2.js';
+import { a as OdsThemeColorIntent, b as OdsLogger, o as odsIsTermInEnum, c as ODS_ICON_SIZE, d as defineCustomElement$2 } from './osds-icon2.js';
 
 const DEFAULT_ATTRIBUTE = Object.freeze({
   color: OdsThemeColorIntent.default,
-  inline: false,
+  contrasted: false,
   icon: undefined,
+  inline: false,
   removable: false,
   type: undefined,
-  contrasted: false
 });
 
 var ODS_ICON_NAME;
@@ -280,7 +280,7 @@ var ODS_ICON_NAME;
   ODS_ICON_NAME["WORLD_ADD_CONCEPT"] = "world-add-concept";
   ODS_ICON_NAME["WORLD_CONCEPT"] = "world-concept";
 })(ODS_ICON_NAME || (ODS_ICON_NAME = {}));
-Object.freeze(Object.values(ODS_ICON_NAME));
+const ODS_ICON_NAMES = Object.freeze(Object.values(ODS_ICON_NAME));
 
 /**
  * common controller logic for chip component used by the different implementations.

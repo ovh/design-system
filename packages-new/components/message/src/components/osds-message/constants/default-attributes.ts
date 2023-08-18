@@ -3,11 +3,11 @@ import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
 
 const DEFAULT_ATTRIBUTE: OdsMessageAttribute = Object.freeze({
     color: OdsThemeColorIntent.default,
-    inline: false,
+    contrasted: false,
     icon: undefined,
+    inline: false,
     removable: false,
     type: undefined,
-    contrasted: false
 });
 
 export {

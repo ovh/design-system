@@ -7,7 +7,6 @@ import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_MESSAGE_TYPE } from './constants/message-type';
 import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
 import { OdsMessageController } from './core/controller';
-// import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libraries/stencil-core';
 
 /**
  * @slot (unnamed) - Message content

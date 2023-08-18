@@ -22,7 +22,7 @@ describe('spec:osds-message', () => {
   });
 
   async function setup({ attributes = {} }: { attributes?: Partial<OdsMessageAttribute> } = {}) {
-    const stringAttributes = odsComponentAttributes2StringAttributes<OdsMessageAttribute>({ ...attributes }, DEFAULT_ATTRIBUTE);
+    const stringAttributes = odsComponentAttributes2StringAttributes<OdsMessageAttribute>(attributes, DEFAULT_ATTRIBUTE);
 
     page = await newSpecPage({
       components: [OsdsMessage],

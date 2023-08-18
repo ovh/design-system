@@ -1,4 +1,5 @@
 export * from './checkbox/public-api';
+export * from './clipboard/public-api';
 export * from './debounce/public-api';
 export * from './enum/public-api';
 export * from './loading/public-api';

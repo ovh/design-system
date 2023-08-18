@@ -16,6 +16,7 @@
     "doc:api": "typedoc --plugin none src/*"
   },
   "dependencies": {
+    "@ovhcloud/ods-common-core": "^15.0.1",
     "@ovhcloud/ods-theme-blue-jeans": "^15.0.1",
     "@stencil/core": "~2.18.1"
   },

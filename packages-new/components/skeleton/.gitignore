@@ -1,4 +1,6 @@
 dist/
+custom-elements/
+custom-elements-bundle/
 www/
 loader/
 docs-api

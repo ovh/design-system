@@ -5710,6 +5710,43 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-component-code-react@workspace:packages-new/components/code/react":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-code-react@workspace:packages-new/components/code/react"
+  dependencies:
+    "@ovhcloud/ods-component-code": ^15.0.1
+    "@ovhcloud/ods-react-dev": ^15.0.1
+  peerDependencies:
+    react: ">=16.8.6"
+    react-dom: ">=16.8.6"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-component-code-vue@workspace:packages-new/components/code/vue":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-code-vue@workspace:packages-new/components/code/vue"
+  dependencies:
+    "@ovhcloud/ods-component-code": ^15.0.1
+    "@ovhcloud/ods-vue-dev": ^15.0.1
+  peerDependencies:
+    vue: ">=3"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-component-code@^15.0.1, @ovhcloud/ods-component-code@workspace:packages-new/components/code":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-code@workspace:packages-new/components/code"
+  dependencies:
+    "@ovhcloud/ods-common-core": ^15.0.1
+    "@ovhcloud/ods-common-stencil": ^15.0.1
+    "@ovhcloud/ods-common-testing": ^15.0.1
+    "@ovhcloud/ods-component-button": ^15.0.1
+    "@ovhcloud/ods-component-icon": ^15.0.1
+    "@ovhcloud/ods-stencil-dev": ^15.0.1
+    "@ovhcloud/ods-theming": ^15.0.1
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-component-collapsible-react@workspace:packages-new/components/collapsible/react":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-collapsible-react@workspace:packages-new/components/collapsible/react"
@@ -6717,6 +6754,7 @@ __metadata:
     "@ovhcloud/ods-component-checkbox-button": ^15.0.1
     "@ovhcloud/ods-component-chip": ^15.0.1
     "@ovhcloud/ods-component-clipboard": ^15.0.1
+    "@ovhcloud/ods-component-code": ^15.0.1
     "@ovhcloud/ods-component-collapsible": ^15.0.1
     "@ovhcloud/ods-component-content-addon": ^15.0.1
     "@ovhcloud/ods-component-divider": ^15.0.1

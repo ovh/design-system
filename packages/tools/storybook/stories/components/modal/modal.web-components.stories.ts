@@ -64,7 +64,6 @@ const TemplateDefault = (args:any) => {
     if (modal) {
       modal.open();
     }
-    args.onOpenModal();
   }
 
   const handleCloseModal = () => {
@@ -72,7 +71,6 @@ const TemplateDefault = (args:any) => {
     if (modal) {
       modal.close();
     }
-    args.onOpenModal();
   }
 
   return html`

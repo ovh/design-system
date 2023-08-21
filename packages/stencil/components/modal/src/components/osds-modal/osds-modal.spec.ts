@@ -102,8 +102,8 @@ describe('spec:osds-modal', () => {
     });
   });
 
-  describe('methods', () => {
-    it('should call close from close method', async () => {
+  describe('controller', () => {
+    it('should call controller.close', async () => {
       await setup({});
       await instance.close();
 
@@ -111,12 +111,23 @@ describe('spec:osds-modal', () => {
       expect(controller.close).toHaveBeenCalledWith();
     });
 
-    it('should call open from open method', async () => {
+    it('should call controller.open', async () => {
       await setup({});
       await instance.open();
 
       expect(controller.open).toHaveBeenCalledTimes(1);
       expect(controller.open).toHaveBeenCalledWith();
+    });
+
+    it('should call controller.close on close icon click', async () => {
+      await setup();
+
+      const closeIcon = root?.shadowRoot?.querySelector('osds-icon[name="close"]') as HTMLElement;
+      await closeIcon.click();
+      await page.waitForChanges();
+
+      expect(controller.close).toHaveBeenCalledTimes(1);
+      expect(controller.close).toHaveBeenCalledWith();
     });
   });
 });

@@ -1,9 +1,0 @@
-{
-  "name": "@ovhcloud/ods-stencil-custom-elements",
-  "version": "0.0.0",
-  "description": "ODS Components exported as custom elements, extending HTMLElement.",
-  "main": "./index.js",
-  "types": "./custom-elements.d.ts",
-  "private": true,
-  "sideEffects": false
-}

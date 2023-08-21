@@ -1,28 +1,23 @@
 import { html } from 'lit-html';
-import { iframe } from '../../../.storybook/iframe';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-import { odsFormFieldDefaultAttributes } from '@ovhcloud/ods-core';
-import { defineCustomElements } from '@ovhcloud/ods-stencil-form-field/loader';
-import {
-  extractArgTypes,
-  extractStoryParams,
-  getTagAttributes,
-} from '../../../core/componentHTMLUtils';
-
-import changelog from '@ovhcloud/ods-stencil-form-field/CHANGELOG.md';
+import { defineCustomElements } from '@ovhcloud/ods-component-form-field/loader';
+import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
+// @ts-ignore
+import changelog from '@ovhcloud/ods-component-form-field/CHANGELOG.md';
+// @ts-ignore
 import page from './form-field.web-component.stories.page.mdx';
 
 defineCustomElements();
 
 /* Default story parameters  */
 const storyParams = {
-  flex: {
+  inline: {
     category: 'General',
-    defaultValue: odsFormFieldDefaultAttributes.flex,
+    defaultValue: false,
   },
   error: {
     category: 'General',
-    defaultValue: odsFormFieldDefaultAttributes.error,
+    defaultValue: '',
   },
   label: {
     category: 'Slot',
@@ -53,7 +48,6 @@ export default {
   id: 'form-field',
   parameters: {
     notes: {
-      API: iframe('/stencil-form-field/modules/index.html'),
       changelog,
     },
     docs: { page }
@@ -72,6 +66,7 @@ const TemplateDefault = (args:any) => {
 }
 
 export const Default = TemplateDefault.bind({});
+// @ts-ignore
 Default.args = {
   ...extractStoryParams(storyParams),
 };

@@ -5858,6 +5858,46 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-component-form-field-react@workspace:packages-new/components/form-field/react":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-form-field-react@workspace:packages-new/components/form-field/react"
+  dependencies:
+    "@ovhcloud/ods-component-form-field": ^15.0.1
+    "@ovhcloud/ods-react-dev": ^15.0.1
+  peerDependencies:
+    react: ">=16.8.6"
+    react-dom: ">=16.8.6"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-component-form-field-vue@workspace:packages-new/components/form-field/vue":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-form-field-vue@workspace:packages-new/components/form-field/vue"
+  dependencies:
+    "@ovhcloud/ods-component-form-field": ^15.0.1
+    "@ovhcloud/ods-vue-dev": ^15.0.1
+  peerDependencies:
+    vue: ">=3"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-component-form-field@^15.0.1, @ovhcloud/ods-component-form-field@workspace:packages-new/components/form-field":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-form-field@workspace:packages-new/components/form-field"
+  dependencies:
+    "@ovhcloud/ods-common-core": ^15.0.1
+    "@ovhcloud/ods-common-stencil": ^15.0.1
+    "@ovhcloud/ods-common-testing": ^15.0.1
+    "@ovhcloud/ods-component-input": ^15.0.1
+    "@ovhcloud/ods-component-link": ^15.0.1
+    "@ovhcloud/ods-component-text": ^15.0.1
+    "@ovhcloud/ods-component-textarea": ^15.0.1
+    "@ovhcloud/ods-component-tooltip": ^15.0.1
+    "@ovhcloud/ods-stencil-dev": ^15.0.1
+    "@ovhcloud/ods-theming": ^15.0.1
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-component-generator@workspace:packages/tools/generator/component":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-generator@workspace:packages/tools/generator/component"
@@ -6388,6 +6428,9 @@ __metadata:
     "@ovhcloud/ods-component-clipboard": ^15.0.1
     "@ovhcloud/ods-component-collapsible": ^15.0.1
     "@ovhcloud/ods-component-content-addon": ^15.0.1
+    "@ovhcloud/ods-component-divider": ^15.0.1
+    "@ovhcloud/ods-component-flag": ^15.0.1
+    "@ovhcloud/ods-component-form-field": ^15.0.1
     "@ovhcloud/ods-component-icon": ^15.0.1
     "@ovhcloud/ods-component-input": ^15.0.1
     "@ovhcloud/ods-component-link": ^15.0.1
@@ -6762,51 +6805,6 @@ __metadata:
     "@stencil/sass": ~2.0.0
     "@stencil/vue-output-target": ~0.6.2
     stencil-inline-svg: ^1.1.0
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-stencil-form-field-react@workspace:packages/stencil/components/form-field/react":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-stencil-form-field-react@workspace:packages/stencil/components/form-field/react"
-  dependencies:
-    "@ovhcloud/ods-stencil-form-field": ^15.0.1
-    "@types/react": 17.0.37
-    "@types/react-dom": 17.0.11
-    react: 16.14.0
-    react-dom: 16.14.0
-    rimraf: ^3.0.2
-    tslib: "*"
-    typescript: 4.7.4
-  peerDependencies:
-    react: ">=16.8.6"
-    react-dom: ">=16.8.6"
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-stencil-form-field-vue@workspace:packages/stencil/components/form-field/vue":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-stencil-form-field-vue@workspace:packages/stencil/components/form-field/vue"
-  dependencies:
-    "@ovhcloud/ods-stencil-form-field": ^15.0.1
-    rimraf: ^3.0.2
-    typescript: 4.7.4
-    vue: ^3.2.41
-  peerDependencies:
-    vue: ">=3"
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-stencil-form-field@^15.0.1, @ovhcloud/ods-stencil-form-field@workspace:packages/stencil/components/form-field":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-stencil-form-field@workspace:packages/stencil/components/form-field"
-  dependencies:
-    "@ovhcloud/ods-component-input": ^15.0.1
-    "@ovhcloud/ods-component-link": ^15.0.1
-    "@ovhcloud/ods-component-text": ^15.0.1
-    "@ovhcloud/ods-component-textarea": ^15.0.1
-    "@ovhcloud/ods-component-tooltip": ^15.0.1
-    "@ovhcloud/ods-stencil-component": ^15.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^15.0.1
   languageName: unknown
   linkType: soft
 

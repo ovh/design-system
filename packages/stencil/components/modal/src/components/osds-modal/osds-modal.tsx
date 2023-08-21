@@ -52,25 +52,10 @@ export class OsdsModal implements OdsModal<OdsStencilMethods<OdsModalMethods>, O
   }
 
   componentWillRender(): void {
-    const allDescendants = (el: HTMLElement): HTMLElement[] => {
-      const children = Array.from(el.children).filter(child => child instanceof HTMLElement) as HTMLElement[];
-      return children.reduce((acc, child) => acc.concat(child, allDescendants(child)), [] as HTMLElement[]);
-    };
-
-    const allBodyDescendants = allDescendants(document.body);
-    const modalDescendants = allDescendants(this.el);
-
-    let currentElement: HTMLElement | null = this.el;
-    const ancestors: HTMLElement[] = [];
-    while (currentElement && currentElement.parentElement) {
-      ancestors.push(currentElement.parentElement);
-      currentElement = currentElement.parentElement;
-    }
-
-    for (const child of allBodyDescendants) {
-      if (modalDescendants.indexOf(child) !== -1) continue;
-
-      if (child !== this.el && ancestors.indexOf(child) === -1) {
+    document.body.appendChild(this.el);
+    const directChildren = Array.from(document.body.children);
+    for (const child of directChildren) {
+      if (child !== this.el && child.nodeName !== 'SCRIPT') {
         if (!this.masked) {
           child.setAttribute('inert', '');
         } else {

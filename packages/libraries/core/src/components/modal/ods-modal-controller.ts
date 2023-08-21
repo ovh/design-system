@@ -23,6 +23,6 @@ export class OdsModalController extends OdsComponentController<OdsModal> {
    * Attributes validation documentation
    */
   validateAttributes(): void {
-      return;
+    return;
   }
 }

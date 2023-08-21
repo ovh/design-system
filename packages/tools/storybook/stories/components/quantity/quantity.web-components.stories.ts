@@ -1,13 +1,9 @@
-import {
-  extractArgTypes,
-  extractStoryParams,
-  getTagAttributes,
-} from '../../../core/componentHTMLUtils';
-
-import changelog from '@ovhcloud/ods-stencil-quantity/CHANGELOG.md';
-import { defineCustomElements } from '@ovhcloud/ods-stencil-quantity/loader';
+import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
+import { defineCustomElements } from '@ovhcloud/ods-component-quantity/loader';
 import { html } from 'lit-html';
-import { iframe } from '../../../.storybook/iframe';
+// @ts-ignore
+import changelog from '@ovhcloud/ods-component-quantity/CHANGELOG.md';
+// @ts-ignore
 import page from './quantity.web-component.stories.page.mdx';
 
 defineCustomElements();
@@ -25,7 +21,6 @@ export default {
   id: 'quantity',
   parameters: {
     notes: {
-      API: iframe('/stencil-components-quantity/modules/index.html'),
       changelog,
     },
     docs: { page }
@@ -46,6 +41,7 @@ const TemplateDefault = (args: any) => html`
   </osds-quantity>
 `;
 export const Default = TemplateDefault.bind({});
+// @ts-ignore
 Default.args = {
   ...extractStoryParams(storyParams)
 };
@@ -59,6 +55,7 @@ const TemplateVariant = (args: any) => html`
   </osds-quantity>
 `;
 export const Variant = TemplateVariant.bind({});
+// @ts-ignore
 Variant.args = {
   ...extractStoryParams(storyParams)
 };

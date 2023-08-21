@@ -5,7 +5,6 @@ export * from './form-field/public-api';
 export * from './location-tile/public-api';
 export * from './popover/public-api';
 export * from './progress-bar/public-api';
-export * from './quantity/public-api';
 export * from './radio/public-api';
 export * from './radio-group/public-api';
 export * from './radio-button/public-api';

@@ -3,7 +3,6 @@ export * from './accordion-group/public-api';
 export * from './code/public-api';
 export * from './location-tile/public-api';
 export * from './popover/public-api';
-export * from './progress-bar/public-api';
 export * from './radio/public-api';
 export * from './radio-group/public-api';
 export * from './radio-button/public-api';

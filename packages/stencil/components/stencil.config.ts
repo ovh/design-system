@@ -84,6 +84,8 @@ const config: Config = {
         'osds-message',
         'osds-pagination',
         'osds-password',
+        'osds-progress-bar',
+        'osds-quantity',
         'osds-select',
         'osds-skeleton',
         'osds-spinner',

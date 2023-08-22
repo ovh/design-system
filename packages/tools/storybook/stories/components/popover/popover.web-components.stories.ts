@@ -1,14 +1,9 @@
 import { html } from 'lit-html';
-import { iframe } from '../../../.storybook/iframe';
-
-import { defineCustomElements } from '@ovhcloud/ods-stencil-popover/loader';
-import {
-  extractArgTypes,
-  extractStoryParams,
-  getTagAttributes,
-} from '../../../core/componentHTMLUtils';
-
-import changelog from '@ovhcloud/ods-stencil-popover/CHANGELOG.md';
+import { defineCustomElements } from '@ovhcloud/ods-component-popover/loader';
+import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
+// @ts-ignore
+import changelog from '@ovhcloud/ods-component-popover/CHANGELOG.md';
+// @ts-ignore
 import page from './popover.web-component.stories.page.mdx';
 
 defineCustomElements();
@@ -23,7 +18,6 @@ export default {
   id: 'popover',
   parameters: {
     notes: {
-      API: iframe('/stencil-popover/modules/index.html'),
       changelog,
     },
     docs: { page }
@@ -42,14 +36,15 @@ const TemplateDefault = (args:any) => {
         <span slot="popover-header">My popover title</span>
         <osds-text color='text'>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam</osds-text>
         <span slot="popover-footer">
-          <osds-button color='primary' variant='ghost'>Dismiss</osds-button>
-          <osds-button color='primary'>Action</osds-button>
+          <osds-button color='primary' variant='ghost' inline>Dismiss</osds-button>
+          <osds-button color='primary' inline>Action</osds-button>
         </span>
       </osds-popover-content>
     </osds-popover>
   `;
 }
 export const Default = TemplateDefault.bind({});
+// @ts-ignore
 Default.args = {
   ...extractStoryParams(storyParams),
 };

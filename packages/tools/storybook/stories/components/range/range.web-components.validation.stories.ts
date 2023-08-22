@@ -1,10 +1,9 @@
 import {
   OdsErrorStateControl,
-  OdsFormControl, OdsRangeValidityState,
-  OdsRangeValueChangeEventDetail,
+  OdsFormControl, OdsValidityState
 } from '@ovhcloud/ods-core';
-import { Components as ComponentsRange } from '@ovhcloud/ods-stencil-range';
-import { OdsLogger } from '@ovhcloud/ods-core/src';
+import { Components as ComponentsRange, OdsRangeValueChangeEventDetail } from '@ovhcloud/ods-component-range/loader';
+import { OdsLogger } from '@ovhcloud/ods-common-core';
 
 const logger = new OdsLogger('validation.stories');
 
@@ -39,7 +38,7 @@ export const RangePlay = async () => {
   })();
 
   if(range) {
-    const rangeFormControl = new OdsFormControl<OdsRangeValidityState>('2');
+    const rangeFormControl = new OdsFormControl<OdsValidityState>('2');
     range.formControl = rangeFormControl;
     range.forbiddenValues = [4, { min: 7, max: 20 }]
 
@@ -52,7 +51,7 @@ export const RangePlay = async () => {
 
       interface ErrorMessagesConnexion {
         el: HTMLElement | null,
-        error: keyof OdsRangeValidityState;
+        error: keyof OdsValidityState;
       }
 
       interface FoundErrorMessagesConnexion extends ErrorMessagesConnexion {

@@ -6345,6 +6345,42 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-component-range-react@workspace:packages-new/components/range/react":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-range-react@workspace:packages-new/components/range/react"
+  dependencies:
+    "@ovhcloud/ods-component-range": ^15.0.1
+    "@ovhcloud/ods-react-dev": ^15.0.1
+  peerDependencies:
+    react: ">=16.8.6"
+    react-dom: ">=16.8.6"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-component-range-vue@workspace:packages-new/components/range/vue":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-range-vue@workspace:packages-new/components/range/vue"
+  dependencies:
+    "@ovhcloud/ods-component-range": ^15.0.1
+    "@ovhcloud/ods-vue-dev": ^15.0.1
+  peerDependencies:
+    vue: ">=3"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-component-range@^15.0.1, @ovhcloud/ods-component-range@workspace:packages-new/components/range":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-range@workspace:packages-new/components/range"
+  dependencies:
+    "@ovhcloud/ods-common-core": ^15.0.1
+    "@ovhcloud/ods-common-stencil": ^15.0.1
+    "@ovhcloud/ods-common-testing": ^15.0.1
+    "@ovhcloud/ods-component-input": ^15.0.1
+    "@ovhcloud/ods-stencil-dev": ^15.0.1
+    "@ovhcloud/ods-theming": ^15.0.1
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-component-search-bar-react@workspace:packages-new/components/search-bar/react":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-search-bar-react@workspace:packages-new/components/search-bar/react"
@@ -7103,45 +7139,6 @@ __metadata:
   resolution: "@ovhcloud/ods-stencil-location-tile@workspace:packages/stencil/components/location-tile"
   dependencies:
     "@ovhcloud/ods-component-tile": ^15.0.1
-    "@ovhcloud/ods-stencil-component": ^15.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^15.0.1
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-stencil-range-react@workspace:packages/stencil/components/range/react":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-stencil-range-react@workspace:packages/stencil/components/range/react"
-  dependencies:
-    "@types/react": 17.0.37
-    "@types/react-dom": 17.0.11
-    react: 16.14.0
-    react-dom: 16.14.0
-    rimraf: ^3.0.2
-    tslib: "*"
-    typescript: 4.7.4
-  peerDependencies:
-    react: ">=16.8.6"
-    react-dom: ">=16.8.6"
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-stencil-range-vue@workspace:packages/stencil/components/range/vue":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-stencil-range-vue@workspace:packages/stencil/components/range/vue"
-  dependencies:
-    "@ovhcloud/ods-stencil-range": ^15.0.1
-    rimraf: ^3.0.2
-    typescript: 4.7.4
-    vue: ^3.2.41
-  peerDependencies:
-    vue: ">=3"
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-stencil-range@^15.0.1, @ovhcloud/ods-stencil-range@workspace:packages/stencil/components/range":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-stencil-range@workspace:packages/stencil/components/range"
-  dependencies:
     "@ovhcloud/ods-stencil-component": ^15.0.1
     "@ovhcloud/ods-stencil-component-dev": ^15.0.1
   languageName: unknown

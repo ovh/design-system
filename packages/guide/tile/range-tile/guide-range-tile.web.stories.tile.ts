@@ -2,12 +2,12 @@ import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 import { Components as ComponentsRadio } from '@ovhcloud/ods-component-radio/loader';
 import { Components as ComponentsInput } from '@ovhcloud/ods-component-input/loader';
-import { Components as ComponentsRange } from '@ovhcloud/ods-stencil-range/loader';
+import { Components as ComponentsRange } from '@ovhcloud/ods-component-range/loader';
+import { OdsRangeValueChangeEventDetail } from '@ovhcloud/ods-component-range';
 import { Components as ComponentsTile } from '@ovhcloud/ods-component-tile/loader';
 import {
   OdsErrorStateControl,
-  OdsFormControl,
-  OdsRangeValueChangeEventDetail
+  OdsFormControl
 } from '@ovhcloud/ods-core';
 import { OdsInputValidityState, OdsInputValueChangeEventDetail } from '@ovhcloud/ods-component-input';
 

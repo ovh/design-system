@@ -59,6 +59,7 @@ const config: Config = {
         'osds-radio-button',
         'osds-radio-group',
         'osds-search-bar',
+        'osds-range',
         'osds-select',
         'osds-skeleton',
         'osds-spinner',
@@ -97,6 +98,7 @@ const config: Config = {
         'osds-quantity',
         'osds-radio-button',
         'osds-search-bar',
+        'osds-range',
         'osds-select',
         'osds-skeleton',
         'osds-spinner',
@@ -121,7 +123,6 @@ const config: Config = {
   bundles: [
     { components: ['osds-accordion', 'osds-accordion-group'] },
     { components: ['osds-location-tile'] },
-    { components: ['osds-range'] },
     { components: ['osds-switch'] },
     { components: ['osds-switch-item'] },
   ],

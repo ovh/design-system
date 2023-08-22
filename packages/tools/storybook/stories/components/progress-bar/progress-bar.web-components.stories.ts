@@ -1,15 +1,11 @@
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-import { iframe } from '../../../.storybook/iframe';
-
-import { defineCustomElements } from '@ovhcloud/ods-stencil-progress-bar/loader';
-import {
-  extractArgTypes,
-  extractStoryParams,
-  getTagAttributes,
-} from '../../../core/componentHTMLUtils';
-
-import changelog from '@ovhcloud/ods-stencil-progress-bar/CHANGELOG.md';
+import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
+import { defineCustomElements } from '@ovhcloud/ods-component-progress-bar/loader';
+import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-component-progress-bar/src/components/osds-progress-bar/constants/default-attributes';
+// @ts-ignore
+import changelog from '@ovhcloud/ods-component-progress-bar/CHANGELOG.md';
+// @ts-ignore
 import page from './progress-bar.web-component.stories.page.mdx';
 
 defineCustomElements();
@@ -19,12 +15,12 @@ const storyParams = {
   value: {
     category: 'Misc',
     control: { type: 'number' },
-    defaultValue: 27
+    defaultValue: DEFAULT_ATTRIBUTE.value,
   },
   max: {
     category: 'Misc',
     control: { type: 'number' },
-    defaultValue: 100
+    defaultValue: DEFAULT_ATTRIBUTE.max,
   },
   end: {
     category: 'Slot',
@@ -37,10 +33,9 @@ export default {
   id: 'progress-bar',
   parameters: {
     notes: {
-      API: iframe('/stencil-progress-bar/modules/index.html'),
       changelog,
     },
-    docs: { page }
+    docs: { page },
   },
   argTypes: extractArgTypes(storyParams)
 };

@@ -52,6 +52,7 @@ const config: Config = {
         'osds-message',
         'osds-pagination',
         'osds-password',
+        'osds-popover',
         'osds-progress-bar',
         'osds-quantity',
         'osds-select',
@@ -84,6 +85,7 @@ const config: Config = {
         'osds-message',
         'osds-pagination',
         'osds-password',
+        'osds-popover',
         'osds-progress-bar',
         'osds-quantity',
         'osds-select',
@@ -109,7 +111,6 @@ const config: Config = {
   bundles: [
     { components: ['osds-accordion', 'osds-accordion-group'] },
     { components: ['osds-location-tile'] },
-    { components: ['osds-popover'] },
     { components: ['osds-radio', 'osds-radio-group'] },
     { components: ['osds-radio-button'] },
     { components: ['osds-range'] },

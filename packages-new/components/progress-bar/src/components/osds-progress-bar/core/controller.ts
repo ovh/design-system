@@ -1,4 +1,4 @@
-import { OsdsProgressBar } from '../osds-progress-bar';
+import type { OsdsProgressBar } from '../osds-progress-bar';
 import { OdsLogger } from '@ovhcloud/ods-common-core';
 
 /**

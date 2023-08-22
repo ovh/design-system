@@ -11,9 +11,9 @@ import { OdsProgressBarController } from './core/controller';
   styleUrl: 'osds-progress-bar.scss',
   shadow: true
 })
+
 export class OsdsProgressBar implements OdsProgressBarAttribute {
   controller: OdsProgressBarController = new OdsProgressBarController(this);
-  @Element() el!: HTMLElement;
 
   /** @see OdsProgressBarAttributes.max */
   @Prop({ reflect: true }) public max?: string | number = DEFAULT_ATTRIBUTE.max;

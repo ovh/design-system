@@ -1,6 +1,8 @@
-import { E2EElement, E2EPage, newE2EPage } from '@stencil/core/testing';
-import { OdsSearchBarAttributes, OdsComponentAttributes2StringAttributes, odsSearchBarDefaultAttributes } from '@ovhcloud/ods-core';
-import { OdsCreateAttributes, OdsStringAttributes2Str } from '@ovhcloud/ods-testing';
+import type { OdsSearchBarAttribute } from './interfaces/attributes';
+import type { E2EElement, E2EPage } from '@stencil/core/testing';
+import { newE2EPage } from '@stencil/core/testing';
+import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 
 describe('e2e:osds-search-bar', () => {
   let page: E2EPage;
@@ -8,13 +10,13 @@ describe('e2e:osds-search-bar', () => {
   let select: E2EElement;
   let button: E2EElement;
   let input: E2EElement;
+  const baseAttribute = { value: '' };
 
-  async function setup({ attributes }: { attributes: Partial<OdsSearchBarAttributes> }) {
-    const minimalAttributes: OdsSearchBarAttributes = OdsCreateAttributes(attributes, odsSearchBarDefaultAttributes);
-    const stringAttributes = OdsComponentAttributes2StringAttributes<OdsSearchBarAttributes>(minimalAttributes, odsSearchBarDefaultAttributes);
+  async function setup({ attributes }: { attributes: Partial<OdsSearchBarAttribute> }) {
+    const stringAttributes = odsComponentAttributes2StringAttributes<OdsSearchBarAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
-    await page.setContent(`<osds-search-bar ${OdsStringAttributes2Str(stringAttributes)}></osds-search-bar>`);
+    await page.setContent(`<osds-search-bar ${odsStringAttributes2Str(stringAttributes)}></osds-search-bar>`);
     await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
     await page.waitForChanges();
 
@@ -46,12 +48,12 @@ describe('e2e:osds-search-bar', () => {
 
   it('should get default attributes', async () => {
     await setup({ attributes: {} });
-    expect(await el.getProperty('contrasted')).toBe(odsSearchBarDefaultAttributes.contrasted);
-    expect(await el.getProperty('disabled')).toBe(odsSearchBarDefaultAttributes.disabled);
-    expect(await el.getProperty('value')).toBe(odsSearchBarDefaultAttributes.value);
-    expect(await el.getProperty('loading')).toBe(odsSearchBarDefaultAttributes.loading);
-    expect(await el.getProperty('options')).toEqual(odsSearchBarDefaultAttributes.options);
-    expect(await el.getProperty('placeholder')).toBe(odsSearchBarDefaultAttributes.placeholder);
+    expect(await el.getProperty('contrasted')).toBe(DEFAULT_ATTRIBUTE.contrasted);
+    expect(await el.getProperty('disabled')).toBe(DEFAULT_ATTRIBUTE.disabled);
+    expect(await el.getProperty('value')).toBe(DEFAULT_ATTRIBUTE.value);
+    expect(await el.getProperty('loading')).toBe(DEFAULT_ATTRIBUTE.loading);
+    expect(await el.getProperty('options')).toEqual(DEFAULT_ATTRIBUTE.options);
+    expect(await el.getProperty('placeholder')).toBe(DEFAULT_ATTRIBUTE.placeholder);
   });
 
   it('should display select because of options', async () => {

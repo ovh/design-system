@@ -6239,6 +6239,45 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-component-search-bar-react@workspace:packages-new/components/search-bar/react":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-search-bar-react@workspace:packages-new/components/search-bar/react"
+  dependencies:
+    "@ovhcloud/ods-component-search-bar": ^15.0.1
+    "@ovhcloud/ods-react-dev": ^15.0.1
+  peerDependencies:
+    react: ">=16.8.6"
+    react-dom: ">=16.8.6"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-component-search-bar-vue@workspace:packages-new/components/search-bar/vue":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-search-bar-vue@workspace:packages-new/components/search-bar/vue"
+  dependencies:
+    "@ovhcloud/ods-component-search-bar": ^15.0.1
+    "@ovhcloud/ods-vue-dev": ^15.0.1
+  peerDependencies:
+    vue: ">=3"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-component-search-bar@^15.0.1, @ovhcloud/ods-component-search-bar@workspace:packages-new/components/search-bar":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-search-bar@workspace:packages-new/components/search-bar"
+  dependencies:
+    "@ovhcloud/ods-common-core": ^15.0.1
+    "@ovhcloud/ods-common-stencil": ^15.0.1
+    "@ovhcloud/ods-common-testing": ^15.0.1
+    "@ovhcloud/ods-component-button": ^15.0.1
+    "@ovhcloud/ods-component-icon": ^15.0.1
+    "@ovhcloud/ods-component-input": ^15.0.1
+    "@ovhcloud/ods-component-select": ^15.0.1
+    "@ovhcloud/ods-stencil-dev": ^15.0.1
+    "@ovhcloud/ods-theming": ^15.0.1
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-component-select-react@workspace:packages-new/components/select/react":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-select-react@workspace:packages-new/components/select/react"
@@ -7080,50 +7119,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-range@workspace:packages/stencil/components/range"
   dependencies:
-    "@ovhcloud/ods-stencil-component": ^15.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^15.0.1
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-stencil-search-bar-react@workspace:packages/stencil/components/search-bar/react":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-stencil-search-bar-react@workspace:packages/stencil/components/search-bar/react"
-  dependencies:
-    "@ovhcloud/ods-stencil-search-bar": ^15.0.1
-    "@types/react": 17.0.37
-    "@types/react-dom": 17.0.11
-    react: 16.14.0
-    react-dom: 16.14.0
-    rimraf: ^3.0.2
-    tslib: "*"
-    typescript: 4.7.4
-  peerDependencies:
-    react: ">=16.8.6"
-    react-dom: ">=16.8.6"
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-stencil-search-bar-vue@workspace:packages/stencil/components/search-bar/vue":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-stencil-search-bar-vue@workspace:packages/stencil/components/search-bar/vue"
-  dependencies:
-    "@ovhcloud/ods-stencil-search-bar": ^15.0.1
-    rimraf: ^3.0.2
-    typescript: 4.7.4
-    vue: ^3.2.41
-  peerDependencies:
-    vue: ">=3"
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-stencil-search-bar@^15.0.1, @ovhcloud/ods-stencil-search-bar@workspace:packages/stencil/components/search-bar":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-stencil-search-bar@workspace:packages/stencil/components/search-bar"
-  dependencies:
-    "@ovhcloud/ods-component-button": ^15.0.1
-    "@ovhcloud/ods-component-icon": ^15.0.1
-    "@ovhcloud/ods-component-input": ^15.0.1
-    "@ovhcloud/ods-component-select": ^15.0.1
     "@ovhcloud/ods-stencil-component": ^15.0.1
     "@ovhcloud/ods-stencil-component-dev": ^15.0.1
   languageName: unknown

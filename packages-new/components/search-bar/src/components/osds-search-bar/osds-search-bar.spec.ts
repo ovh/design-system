@@ -1,35 +1,31 @@
+import type { OdsSearchBarAttribute } from './interfaces/attributes';
+import type { SpecPage } from '@stencil/core/testing';
 import {
-  OdsSearchBarAttributes,
-  OdsComponentAttributes2StringAttributes,
-  odsSearchBarDefaultAttributes,
-} from '@ovhcloud/ods-core';
-import {
-  OdsCreateAttributes,
-  OdsStringAttributes2Str,
+  odsComponentAttributes2StringAttributes,
+  odsStringAttributes2Str,
   odsUnitTestAttribute
-} from '@ovhcloud/ods-testing';
-import { SpecPage, newSpecPage } from '@stencil/core/testing';
-
+} from '@ovhcloud/ods-common-testing';
+import { newSpecPage } from '@stencil/core/testing';
 import { OsdsSearchBar } from './osds-search-bar';
-import { getAttributeContextOptions } from '@ovhcloud/ods-stencil/libraries/stencil-testing';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 
 describe('spec:osds-search-bar', () => {
   let page: SpecPage;
   let root: HTMLElement | undefined;
   let instance: OsdsSearchBar;
   let buttonSearch: HTMLElement;
+  const baseAttribute = { value: '' };
 
   afterEach(() => {
     jest.clearAllMocks();
   });
 
-  async function setup({ attributes = {} }: { attributes?: Partial<OdsSearchBarAttributes> } = {}) {
-    const minimalAttributes: OdsSearchBarAttributes = OdsCreateAttributes(attributes, odsSearchBarDefaultAttributes);
-    const stringAttributes = OdsComponentAttributes2StringAttributes<OdsSearchBarAttributes>(minimalAttributes, odsSearchBarDefaultAttributes);
+  async function setup({ attributes = {} }: { attributes?: Partial<OdsSearchBarAttribute> } = {}) {
+    const stringAttributes = odsComponentAttributes2StringAttributes<OdsSearchBarAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
 
     page = await newSpecPage({
       components: [OsdsSearchBar],
-      html: `<osds-search-bar ${OdsStringAttributes2Str(stringAttributes)}>My SearchBar</osds-search-bar>`,
+      html: `<osds-search-bar ${odsStringAttributes2Str(stringAttributes)}>My SearchBar</osds-search-bar>`,
     });
 
     root = page.root;
@@ -45,63 +41,64 @@ describe('spec:osds-search-bar', () => {
 
   describe('attributes', () => {
     const config = {
-      page: () => page,
       instance: () => instance,
-      setup
+      page: () => page,
+      root: () => page.root,
+      wait: () => page.waitForChanges(),
     };
-
+  
     describe('contrasted', () => {
-      odsUnitTestAttribute<OdsSearchBarAttributes, 'contrasted'>({
-        ...getAttributeContextOptions<OdsSearchBarAttributes, OsdsSearchBar, 'contrasted'>({
+      odsUnitTestAttribute<OdsSearchBarAttribute, 'contrasted'>({
           name: 'contrasted',
-          list: [true, false],
-          defaultValue: odsSearchBarDefaultAttributes.contrasted,
+          defaultValue: DEFAULT_ATTRIBUTE.contrasted,
+          newValue: true,
+          value: false,
+          setup: (contrasted) => setup({ attributes: { contrasted } }),
           ...config
-        })
       });
     });
 
     describe('disabled', () => {
-      odsUnitTestAttribute<OdsSearchBarAttributes, 'disabled'>({
-        ...getAttributeContextOptions<OdsSearchBarAttributes, OsdsSearchBar, 'disabled'>({
+      odsUnitTestAttribute<OdsSearchBarAttribute, 'disabled'>({
           name: 'disabled',
-          list: [true, false],
-          defaultValue: odsSearchBarDefaultAttributes.disabled,
+          defaultValue: DEFAULT_ATTRIBUTE.disabled,
+          newValue: true,
+          value: false,
+          setup: (disabled) => setup({ attributes: { disabled } }),
           ...config
-        })
       });
     });
 
     describe('loading', () => {
-      odsUnitTestAttribute<OdsSearchBarAttributes, 'loading'>({
-        ...getAttributeContextOptions<OdsSearchBarAttributes, OsdsSearchBar, 'loading'>({
+      odsUnitTestAttribute<OdsSearchBarAttribute, 'loading'>({
           name: 'loading',
-          list: [true, false],
-          defaultValue: odsSearchBarDefaultAttributes.loading,
+          defaultValue: DEFAULT_ATTRIBUTE.loading,
+          newValue: true,
+          value: false,
+          setup: (loading) => setup({ attributes: { loading } }),
           ...config
-        })
       });
     });
 
     describe('placeholder', () => {
-      odsUnitTestAttribute<OdsSearchBarAttributes, 'placeholder'>({
-        ...getAttributeContextOptions<OdsSearchBarAttributes, OsdsSearchBar, 'placeholder'>({
+      odsUnitTestAttribute<OdsSearchBarAttribute, 'placeholder'>({
           name: 'placeholder',
-          list: ['', 'some placeholder'],
-          defaultValue: odsSearchBarDefaultAttributes.placeholder,
+          defaultValue: DEFAULT_ATTRIBUTE.placeholder,
+          newValue: '',
+          value: 'some placeholder',
+          setup: (placeholder) => setup({ attributes: { placeholder } }),
           ...config
-        })
       });
     });
 
     describe('value', () => {
-      odsUnitTestAttribute<OdsSearchBarAttributes, 'value'>({
-        ...getAttributeContextOptions<OdsSearchBarAttributes, OsdsSearchBar, 'value'>({
+      odsUnitTestAttribute<OdsSearchBarAttribute, 'value'>({
           name: 'value',
-          list: ['', 'some value'],
-          defaultValue: odsSearchBarDefaultAttributes.value,
+          defaultValue: DEFAULT_ATTRIBUTE.value,
+          newValue: '',
+          value: 'some value',
+          setup: (value) => setup({ attributes: { value } }),
           ...config
-        })
       });
     });
   });

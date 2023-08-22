@@ -6,10 +6,9 @@ import {
 } from '../../../core/componentHTMLUtils';
 
 import { RangePlay } from './range.web-components.validation.stories';
-import changelog from '@ovhcloud/ods-stencil-range/CHANGELOG.md';
-import { defineCustomElements } from '@ovhcloud/ods-stencil-range/loader';
+import changelog from '@ovhcloud/ods-component-range/CHANGELOG.md';
+import { defineCustomElements } from '@ovhcloud/ods-component-range/loader';
 import { html } from 'lit-html';
-import { iframe } from '../../../.storybook/iframe';
 import page from './range.web-component.stories.page.mdx';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 
@@ -67,7 +66,6 @@ export default {
   id: 'range',
   parameters: {
     notes: {
-      API: iframe('/stencil-range/modules/index.html'),
       changelog,
     },
     docs: { page },

@@ -1,0 +1,37 @@
+import FlexProperty from './properties/usage.flex.mdx';
+import DualProperty from './properties/usage.dual.mdx';
+import DisabledProperty from './properties/usage.disabled.mdx';
+import ColorProperty from './properties/usage.color.mdx';
+import GenericStyle from '@ovhcloud/ods-common-core/docs/generic-style.mdx';
+
+import Events from './events-methods/usage.events.mdx';
+
+<GenericStyle />
+
+## Usage
+
+### Default
+<osds-range></osds-range>
+
+```html
+<osds-range></osds-range>
+```
+
+### Simple value
+<osds-range min="0" max="60" value="42"></osds-range>
+
+```html
+<osds-range min="0" max="60" value="42"></osds-range>
+```
+
+### Dual
+<DualProperty />
+
+### Color
+<ColorProperty />
+
+### Disabled
+<DisabledProperty />
+
+### How to use events
+<Events />

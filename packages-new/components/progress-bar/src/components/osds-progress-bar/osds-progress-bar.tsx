@@ -1,5 +1,5 @@
 import type { OdsProgressBarAttribute } from './interfaces/attributes';
-import { Component, Element, Host, Prop, h } from '@stencil/core';
+import { Component, Host, Prop, h } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsProgressBarController } from './core/controller';
 

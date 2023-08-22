@@ -1,15 +1,14 @@
 {
-  "name": "@ovhcloud/ods-stencil-search-bar",
+  "name": "@ovhcloud/ods-component-search-bar",
   "version": "15.0.1",
-  "private": true,
-  "description": "SearchBar component",
+  "description": "ODS SearchBar component",
   "author": "OVH SAS",
   "license": "Apache-2.0",
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
   "es2015": "dist/esm/index.js",
   "es2017": "dist/esm/index.js",
-  "types": "dist/types/components.d.ts",
+  "types": "dist/types/index.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
   "scripts": {
@@ -35,14 +34,17 @@
     "test:e2e:ci:screenshot:update": "stencil test --config stencil.config.ts --e2e --ci --screenshot --update-screenshot --passWithNoTests"
   },
   "dependencies": {
+    "@ovhcloud/ods-common-core": "^15.0.1",
+    "@ovhcloud/ods-common-stencil": "^15.0.1",
     "@ovhcloud/ods-component-button": "^15.0.1",
     "@ovhcloud/ods-component-icon": "^15.0.1",
     "@ovhcloud/ods-component-input": "^15.0.1",
     "@ovhcloud/ods-component-select": "^15.0.1",
-    "@ovhcloud/ods-stencil-component": "^15.0.1"
+    "@ovhcloud/ods-theming": "^15.0.1"
   },
   "devDependencies": {
-    "@ovhcloud/ods-stencil-component-dev": "^15.0.1"
+    "@ovhcloud/ods-common-testing": "^15.0.1",
+    "@ovhcloud/ods-stencil-dev": "^15.0.1"
   },
   "publishConfig": {
     "registry": ""

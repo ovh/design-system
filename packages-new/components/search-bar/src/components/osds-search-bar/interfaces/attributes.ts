@@ -1,6 +1,4 @@
-import { OdsComponentAttributes } from '../ods-component-attributes';
-
-export interface OdsSearchBarAttributes extends OdsComponentAttributes {
+interface OdsSearchBarAttribute {
   /** Indicates if the search-bar is contrasted or not: see component principles */
   contrasted?: boolean;
   /** Indicates if the search-bar is disabled or not: see component principles */
@@ -13,4 +11,8 @@ export interface OdsSearchBarAttributes extends OdsComponentAttributes {
   placeholder?: string;
   /** Current value of the search-bar */
   value: string;
+}
+
+export {
+  OdsSearchBarAttribute,
 }

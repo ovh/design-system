@@ -7,7 +7,6 @@ export * from './radio/public-api';
 export * from './radio-group/public-api';
 export * from './radio-button/public-api';
 export * from './range/public-api';
-export * from './search-bar/public-api';
 export * from './switch/public-api';
 export * from './switch-item/public-api';
 export * from './tabs/public-api';

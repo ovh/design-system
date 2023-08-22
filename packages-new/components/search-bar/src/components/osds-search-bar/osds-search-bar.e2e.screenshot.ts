@@ -1,22 +1,20 @@
-import { E2EElement, E2EPage, newE2EPage } from '@stencil/core/testing';
-import {
-  OdsSearchBarAttributes,
-  OdsComponentAttributes2StringAttributes,
-  odsSearchBarDefaultAttributes,
-} from '@ovhcloud/ods-core';
-import { OdsCreateAttributes, OdsStringAttributes2Str } from '@ovhcloud/ods-testing';
+import type { OdsSearchBarAttribute } from './interfaces/attributes';
+import type { E2EElement, E2EPage } from '@stencil/core/testing';
+import { newE2EPage } from '@stencil/core/testing';
+import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 
 describe('e2e:osds-search-bar', () => {
   let page: E2EPage;
   let el: E2EElement;
+  const baseAttribute = { value: '' };
 
-  async function setup({ attributes = {}, html = `` }: { attributes?: Partial<OdsSearchBarAttributes>, html?: string } = {}) {
-    const minimalAttributes: OdsSearchBarAttributes = OdsCreateAttributes(attributes, odsSearchBarDefaultAttributes);
-    const stringAttributes = OdsComponentAttributes2StringAttributes<OdsSearchBarAttributes>(minimalAttributes, odsSearchBarDefaultAttributes);
+  async function setup({ attributes = {}, html = `` }: { attributes?: Partial<OdsSearchBarAttribute>, html?: string } = {}) {
+    const stringAttributes = odsComponentAttributes2StringAttributes<OdsSearchBarAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
     await page.setContent(`
-      <osds-search-bar ${OdsStringAttributes2Str(stringAttributes)}>
+      <osds-search-bar ${odsStringAttributes2Str(stringAttributes)}>
         ${html}
       </osds-search-bar>
     `);

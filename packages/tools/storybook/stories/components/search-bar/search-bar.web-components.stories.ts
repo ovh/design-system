@@ -1,14 +1,15 @@
 import { html } from 'lit-html';
-import { iframe } from '../../../.storybook/iframe';
 
-import { defineCustomElements } from '@ovhcloud/ods-stencil-search-bar/loader';
+import { defineCustomElements } from '@ovhcloud/ods-component-search-bar/loader';
 import {
   extractArgTypes,
   extractStoryParams,
   getTagAttributes,
 } from '../../../core/componentHTMLUtils';
 
-import changelog from '@ovhcloud/ods-stencil-search-bar/CHANGELOG.md';
+// @ts-ignore
+import changelog from '@ovhcloud/ods-component-search-bar/CHANGELOG.md';
+// @ts-ignore
 import page from './search-bar.web-component.stories.page.mdx';
 
 defineCustomElements();
@@ -48,7 +49,6 @@ export default {
   title: 'UI Components/Search Bar [atom]/Web Component',
   parameters: {
     notes: {
-      API: iframe('/stencil-search-bar/modules/index.html'),
       changelog,
     },
     docs: { page }
@@ -65,6 +65,7 @@ const TemplateDefault = (args:any) => {
   `;
 }
 export const Default = TemplateDefault.bind({});
+// @ts-ignore
 Default.args = {
   ...extractStoryParams(storyParams),
 };
@@ -78,6 +79,7 @@ const SelectTemplate = (args:any) => {
   `;
 }
 export const Select = SelectTemplate.bind({});
+// @ts-ignore
 Select.args = {
   ...extractStoryParams({ ...storyParams, ...selectParams }),
 };

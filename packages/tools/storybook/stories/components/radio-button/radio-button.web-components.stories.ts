@@ -1,19 +1,14 @@
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-import { iframe } from '../../../.storybook/iframe';
-
-import { defineCustomElements } from '@ovhcloud/ods-stencil/components/radio-button/loader';
-import changelog from '@ovhcloud/ods-stencil/components/radio-button/CHANGELOG.md';
-import page from './radio-button.web-component.stories.page.mdx';
-import { OdsRadioButtonSizeList, odsRadioButtonDefaultAttributes } from '@ovhcloud/ods-core';
+import { defineCustomElements } from '@ovhcloud/ods-component-radio-button/loader';
+import { ODS_RADIO_BUTTON_SIZES } from '@ovhcloud/ods-component-radio-button';
 import { OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
-
-import {
-  createComponentTable,
-  extractArgTypes,
-  extractStoryParams,
-  getTagAttributes,
-} from '../../../core/componentHTMLUtils';
+import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-component-radio-button/src/components/osds-radio-button/constants/default-attributes';
+import { createComponentTable, extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
+// @ts-ignore
+import changelog from '@ovhcloud/ods-component-radio-button/CHANGELOG.md';
+// @ts-ignore
+import page from './radio-button.web-component.stories.page.mdx';
 
 defineCustomElements();
 
@@ -21,22 +16,22 @@ defineCustomElements();
 const storyParams = {
   checked: {
     category: 'General',
-    defaultValue: odsRadioButtonDefaultAttributes.checked,
+    defaultValue: DEFAULT_ATTRIBUTE.checked,
   },
   checking: {
     category: 'General',
-    defaultValue: odsRadioButtonDefaultAttributes.checking,
+    defaultValue: DEFAULT_ATTRIBUTE.checking,
   },
   color: {
     category: 'General',
-    defaultValue: odsRadioButtonDefaultAttributes.color,
+    defaultValue: DEFAULT_ATTRIBUTE.color,
     options: OdsThemeColorIntentList,
     control: { type: 'select' },
   },
   size: {
     category: 'General',
-    defaultValue: odsRadioButtonDefaultAttributes.size,
-    options: OdsRadioButtonSizeList,
+    defaultValue: DEFAULT_ATTRIBUTE.size,
+    options: ODS_RADIO_BUTTON_SIZES,
     control: { type: 'select' },
   },
   start: {
@@ -66,7 +61,6 @@ export default {
   id: 'radio-button',
   parameters: {
     notes: {
-      API: iframe('/stencil-radio-button/modules/index.html'),
       changelog,
     },
     docs: { page }
@@ -88,7 +82,7 @@ Default.args = {
 };
 
 /* RadioWrapper */
-const OsdsRadioButtonRadioWrapper = (args) => html`  
+const OsdsRadioButtonRadioWrapper = (args) => html`
   <h1 style='font-size: 1.3rem; font-family: "Source Sans Pro"; font-style: italic'>
     <a href=${parent.location.href.replace(parent.location.search, "?path=/story/radio--default")}>Radio</a> Meta component adds behavior to this Radio Button
   </h1>
@@ -105,7 +99,7 @@ RadioWrapper.args = {
   ...extractStoryParams(storyParams),
 };
 /* RadioWrapper */
-const OsdsRadioButtonRadioGroupWrapper = (args) => html`  
+const OsdsRadioButtonRadioGroupWrapper = (args) => html`
   <h1 style='font-size: 1.3rem; font-family: "Source Sans Pro"; font-style: italic'>
     <a href=${parent.location.href.replace(parent.location.search, "?path=/story/radio--default")}>Radio</a> and <a href=${parent.location.href.replace(parent.location.search, "?path=/story/radio-group--default")}>Radio Group</a> Meta components adds behavior to these Radio Buttons
   </h1>
@@ -154,7 +148,7 @@ const TemplateAll = () => html`
 <h1>Sizes & Colors</h1>
 ${unsafeHTML(createComponentTable(
   defaultTag,
-  { size: OdsRadioButtonSizeList },
+  { size: ODS_RADIO_BUTTON_SIZES },
   { color: OdsThemeColorIntentList },
   defaultContent,
   {

@@ -3,10 +3,11 @@ import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 
 import { OdsThemeColorIntent, OdsThemeTypographyLevel, OdsThemeTypographySize } from '@ovhcloud/ods-theming';
 import { createTag } from '../../core/componentHTMLUtils';
-import { ODS_COUNTRY_ISO_CODE, OdsRadioButtonSize, olesIpsum, OlesIpsumGeneration } from '@ovhcloud/ods-core';
+import { ODS_COUNTRY_ISO_CODE, olesIpsum, OlesIpsumGeneration } from '@ovhcloud/ods-core';
 import { ODS_ICON_NAME } from '@ovhcloud/ods-component-icon';
 import { ODS_DIVIDER_SIZE } from '@ovhcloud/ods-component-divider';
 import { ODS_CHECKBOX_BUTTON_SIZE } from '@ovhcloud/ods-component-checkbox-button';
+import { ODS_RADIO_BUTTON_SIZE } from '@ovhcloud/ods-component-radio-button';
 
 export default {
   title: 'UI Components/Introduction',
@@ -177,7 +178,7 @@ const uiComponents = {
       attributes: {
         color: OdsThemeColorIntent.primary,
         checked: '',
-        size: OdsRadioButtonSize.sm,
+        size: ODS_RADIO_BUTTON_SIZE.sm,
       },
       slots: {
         end: `Radio Button`,

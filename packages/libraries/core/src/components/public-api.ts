@@ -4,7 +4,6 @@ export * from './code/public-api';
 export * from './location-tile/public-api';
 export * from './radio/public-api';
 export * from './radio-group/public-api';
-export * from './radio-button/public-api';
 export * from './range/public-api';
 export * from './switch/public-api';
 export * from './switch-item/public-api';

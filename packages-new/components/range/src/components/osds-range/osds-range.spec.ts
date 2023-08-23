@@ -2,20 +2,20 @@ jest.mock('./core/controller'); // keep jest.mock before any
 
 import type { SpecPage } from '@stencil/core/testing';
 import type { OdsRangeAttribute } from './interfaces/attributes';
+import type { OdsRangeValueChangeEventDetail } from './interfaces/events';
 import { newSpecPage } from '@stencil/core/testing';
 import { OdsFormControl, OdsCreateDefaultValidityState } from '@ovhcloud/ods-common-core';
 import {
   OdsCreateAttributes,
   OdsMockNativeMethod,
   OdsMockPropertyDescriptor,
-  OdsStringAttributes2Str,
+  odsStringAttributes2Str,
   OdsUnitTestAttributeType,
   odsUnitTestAttribute,
   odsComponentAttributes2StringAttributes
 } from '@ovhcloud/ods-common-testing';
 import { OdsThemeColorIntent, OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { OdsRangeValueChangeEventDetail } from './interfaces/events';
 import { OdsRangeController } from './core/controller';
 import { OsdsRange } from './osds-range';
 
@@ -33,7 +33,7 @@ describe('spec:osds-range', () => {
     disabled: false,
     error: undefined,
     errorStateControl: undefined,
-    flex: false,
+    inline: false,
     max: 100,
     min: 0,
     step: 1,
@@ -43,7 +43,7 @@ describe('spec:osds-range', () => {
   };
 
 
-  async function setup({ attributes = {} }: { attributes?: Partial<OdsRangeAttribute> }) {
+  async function setup({ attributes = {} }: { attributes?: Partial<OdsRangeAttribute> } = {}) {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsRangeAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
 
     // mock setCustomValidity method that does not exist when stencil mock HTMLInputElement
@@ -105,13 +105,13 @@ describe('spec:osds-range', () => {
         ...config,
       });
     });
-    describe('flex', () => {
-      odsUnitTestAttribute<OdsRangeAttribute, 'flex'>({
-        name: 'flex',
-        defaultValue: DEFAULT_ATTRIBUTE.flex,
+    describe('inline', () => {
+      odsUnitTestAttribute<OdsRangeAttribute, 'inline'>({
+        name: 'inline',
+        defaultValue: DEFAULT_ATTRIBUTE.inline,
         newValue: false,
         value: true,
-        setup: (value) => setup({ attributes: { ['flex']: value } }),
+        setup: (value) => setup({ attributes: { ['inline']: value } }),
         ...config,
       });
     });

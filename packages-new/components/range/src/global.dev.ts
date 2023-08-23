@@ -4,8 +4,8 @@
 // ###
 
 import type { OdsInputValueChangeEventDetail } from '@ovhcloud/ods-component-input';
-import type { OdsValidityState, OdsFormControl, OdsErrorStateControl } from '@ovhcloud/ods-common-core';
-import { OdsLogger } from '@ovhcloud/ods-common-core';
+import type { OdsValidityState } from '@ovhcloud/ods-common-core';
+import { OdsLogger, OdsFormControl, OdsErrorStateControl } from '@ovhcloud/ods-common-core';
 import { OsdsRange } from './components/osds-range/osds-range';
 import './components';
 import './global';

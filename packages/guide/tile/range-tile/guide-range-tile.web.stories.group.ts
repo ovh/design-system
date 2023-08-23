@@ -9,7 +9,7 @@ import {
   OdsFormControl,
   OdsValidityState
 } from '@ovhcloud/ods-core';
-import { OdsRangeValueChangeEventDetail } from '@ovhcloud/ods-component-range/';
+import { OdsRangeValueChangeEventDetail } from '@ovhcloud/ods-component-range';
 import { OdsInputValueChangeEventDetail } from '@ovhcloud/ods-component-input';
 
 export const RadioGroupTemplate = (args: any) => html`

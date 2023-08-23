@@ -6,20 +6,20 @@
 ## Interfaces
 
 ### OdsRangeAttributes
-|name | Type | Required | Default | Description|
-|---|---|:---:|---|---|
-|**`color`** | `OdsThemeColorIntent` |  |  | Range color theme|
-|**`disabled`** | _boolean_ |  |  | Indicate if the range is entirely disabled.It means no interaction is possible (hover, click, focus, etc)|
-|**`error`** | _boolean_ |  |  | If the range is in error or not|
-|**`errorStateControl`** | `OdsErrorStateControl` |  |  | Check range error state|
-|**`flex`** | _boolean_ |  |  | Flex unit for range width|
-|**`forbiddenValues`** | `OdsFormForbiddenValues` | ✴️ |  | The range forbidden values|
-|**`formControl`** | `OdsFormControl` |  |  | The form control for range|
-|**`id`** | _string_ |  |  | The range id|
-|**`max`** | _number_ |  |  | The range maximum value|
-|**`min`** | _number_ |  |  | The range minimum value|
-|**`step`** | _number_ |  |  | The range step value|
-|**`value`** | `OdsRangeValue` | ✴️ |  | The range value|
+| name                    | Type | Required | Default | Description                                                                                               |
+|-------------------------|---|:---:|---|-----------------------------------------------------------------------------------------------------------|
+| **`color`**             | `OdsThemeColorIntent` |  |  | Range color theme                                                                                         |
+| **`disabled`**          | _boolean_ |  |  | Indicate if the range is entirely disabled.It means no interaction is possible (hover, click, focus, etc) |
+| **`error`**             | _boolean_ |  |  | If the range is in error or not                                                                           |
+| **`errorStateControl`** | `OdsErrorStateControl` |  |  | Check range error state                                                                                   |
+| **`inline`**            | _boolean_ |  |  | Inline unit for range width                                                                               |
+| **`forbiddenValues`**   | `OdsFormForbiddenValues` | ✴️ |  | The range forbidden values                                                                                |
+| **`formControl`**       | `OdsFormControl` |  |  | The form control for range                                                                                |
+| **`id`**                | _string_ |  |  | The range id                                                                                              |
+| **`max`**               | _number_ |  |  | The range maximum value                                                                                   |
+| **`min`**               | _number_ |  |  | The range minimum value                                                                                   |
+| **`step`**              | _number_ |  |  | The range step value                                                                                      |
+| **`value`**             | `OdsRangeValue` | ✴️ |  | The range value                                                                                           |
 
 ### OdsRangeBehavior
 |name | Type | Required | Default | Description|

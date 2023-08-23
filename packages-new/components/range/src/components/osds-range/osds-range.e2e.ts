@@ -16,7 +16,7 @@ describe('e2e:osds-range', () => {
     disabled: false,
     error: undefined,
     errorStateControl: undefined,
-    flex: false,
+    inline: false,
     max: 100,
     min: 0,
     step: 1,

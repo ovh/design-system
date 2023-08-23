@@ -37,8 +37,8 @@ export class OsdsRange implements OdsRangeAttribute, OdsRangeEvent {
   /** @see OdsRangeAttributes.disabled */
   @Prop({ reflect: true }) public disabled?: boolean = DEFAULT_ATTRIBUTE.disabled;
 
-  /** @see OdsRangeAttributes.flex */
-  @Prop({ reflect: true }) public flex?: boolean = DEFAULT_ATTRIBUTE.flex;
+  /** @see OdsRangeAttributes.inline */
+  @Prop({ reflect: true }) public inline?: boolean = DEFAULT_ATTRIBUTE.inline;
 
   /** @see OdsRangeAttributes.max */
   @Prop({ reflect: true }) public max?: number = DEFAULT_ATTRIBUTE.max;

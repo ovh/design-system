@@ -1,5 +1,5 @@
 import { Config } from '@stencil/core';
-import { getStencilConfig } from '@ovhcloud/ods-stencil/libraries/stencil-core';
+import { getStencilConfig } from '@ovhcloud/ods-common-stencil';
 
 const args = process.argv.slice(2);
 
@@ -9,7 +9,6 @@ const config: Config = {
     args,
     reactOutput: {
       componentCorePackage: '@ovhcloud/ods-cdk-dev',
-      // exclude peer dependencies that corresponds to www usage
       excludeComponents: []
     },
     vueOutput: {
@@ -48,11 +47,6 @@ const config: Config = {
       tsConfig: 'tsconfig.prod.json'
     }
   }),
-  // bundles: [
-  //   { components: ['ocdk-dummy'] },
-  //   { components: ['ocdk-surface-select-example', 'ocdk-surface-select-item-example'] },
-  // ],
-  globalStyle: '../dist/ocdk.css'
 };
 
 export { config };

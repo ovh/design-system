@@ -1,4 +1,4 @@
 {
   "entryPoints": ["src/index.ts"],
-  "out": "docs-api/libraries-cdk"
+  "out": "docs-api/ods-cdk"
 }

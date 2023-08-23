@@ -141,7 +141,7 @@ config.outputTargets && config.outputTargets
   .forEach(o => {
     (o as any).copy = [
       {
-        src: '../../../libraries/cdk/dist',
+        src: '../../packages-new/cdk/dist',
         dest: 'cdk'
       }
     ]

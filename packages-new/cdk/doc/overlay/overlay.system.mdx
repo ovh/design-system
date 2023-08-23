@@ -1,0 +1,133 @@
+# Overlay System
+
+The overlay system of `ODS CDK` is based on a web component we call `surface`.
+A `surface` is used to display content in the foreground, such as menu, select or tooltip, etc.:
+this is the overlay concept. It is very common to all User Interface components.
+This is why the overlay system is implemented in `ODS CDK`: it helps developers to make overlays simpler!
+
+The `surface` will be displayed after a user action or programmatically.
+
+## Principles
+
+In order to make it works, it needs to be anchored to an element: this is the `trigger` and it represents an anchor for
+the `surface`.
+
+Depending on how you configure the `surface`, it will be displayed at some computed coordinates `(x,y)` relatively to
+this `anchor`.
+
+The overlay (the `surface`) position is computed by placing two references at the same coordinates:
+
+- an `anchor corner` reference (that corresponds to the trigger)
+- a `surface corner` reference (that corresponds to the content of the overlay)
+
+A `corner` can be placed to the different corner of an HTML
+element: `top left`, `top right`, `bottom left`, `bottom right`.
+
+As the overlay system is compatible with the `Right To Left` HTML directionality,
+we can define the `corner` references also with: `top start`, `top end`, `bottom start`, `bottom end`.
+The `start` or `end` notions will be replaced by the correct `left` or `right` depending on the directionality you defined
+in your app.
+
+At the end, the `surface` is linked to his `anchor` via their `corner` references.
+
+All the positions are computed thanks to `position strategies`.
+By default, `ODS CDK` has a built-in `strategy` called `symmetry` but you can define your own strategy.
+
+The system works with two different margins:
+
+- a comfort margin: for instance, in comfort mode, the `surface` positioning avoids the edges of the viewport
+- a limit margin: for instance, in limit mode, we allow the `surface` to overlap the comfort margin up to the margin limit
+
+the meaning and behavior of the margins are defined inside the `strategy`.
+
+By default, the system will use these references:
+
+- `trigger` at `bottom-start` corner
+- `surface` at `top-start` corner
+
+![Anatomy](cdk-images/cdk-overlay-anatomy.png)
+
+When the system will compute the position of the `surface`,
+it will use one of the four corner of the `anchor` as the `zero` reference
+in order to display at a certain coordinate, relatively to the surface.
+
+You have all the control over the width of the `surface` in your component:
+![Width](cdk-images/cdk-overlay-surface-width.png)
+
+## Directionality
+
+The system is compatible with the `RTL directionality`.
+It detects automatically the direction.
+You can find here some examples:
+![Direction](cdk-images/cdk-overlay-surface-direction.png)
+
+An `RTL` conversion table is used to translate the wanted position into the real positioning.
+Each position corresponds to a specific bit and allows us to change easily the result,
+depending on whether we are in `RTL` mode or not.
+
+For instance, if you indicate `Top start` for the `surface corner` and you are in `LTR` mode,
+the system will translate it to `Top left`:
+![RTL conversion table](cdk-images/cdk-overlay-rtl-table.png)
+
+## Position table
+
+The overlay management works with a position table.
+Each combination of `anchor` corner reference and `surface` corner reference can be described via a position table.
+
+The position `strategy` uses and completes this table.
+
+The embedded default strategy is called `symmetry` and works with this base position table:
+![Position table](cdk-images/cdk-overlay-position-table.jpg)
+
+## Position computing
+
+The overlay system starts with a position that you want to use or a default one.
+The default positions are:
+- `Bottom start` for the `trigger`
+- `Top start` for the `surface`
+
+### 1. RTL conversion
+
+The first step is to normalize the wanted position thanks to the `RTL conversion` table.
+Once the `start` or `end` are converted into the correct direction `left` or `right`,
+it will call the `inspectors`.
+
+### 2. Standard inspections
+
+The `inspectors` are here to get the available space around the trigger, in the page.
+Starting here, this is the `position strategy` which will define the `inspectors`
+and returns the available computed spaces.
+
+### 3. Compute position
+
+Once the `inspections` are done, the overlay system calls the `compute` function of the position strategy.
+The system will check the returned result:
+
+- returns `undefined`: it keep the position
+- returns a `fallback`: it will apply the fallback position
+- returns a different position (switching): it will attempt a second time the workflow with the new position
+
+### 4. Fallback inspections
+
+When the returned result of `compute` is a fallback, it will determine another available spacing
+through the fallback `inspectors`.
+The result are computed by the `position strategy`.
+
+### 5. Standard appliers
+
+When there is no fallback position to apply, the system will call the standard appliers in order to
+get the final `verticalOffset`, `verticalALignment`, `HorizontalOffset`, `HorizontalAlignment` and `maxHeight`.
+This is the nominal case when the overlay can be entirely displayed into the page.
+
+### 6. Fallback appliers
+
+When we are in a fallback positioning, we had determinate that there is not enought space for displaying.
+It will call different appliers for `verticalOffset`, `verticalALignment`, `HorizontalOffset`,
+`HorizontalAlignment` and `maxHeight`.
+Accordingly with the `position strategy`, the position will be different and in a degraded mode.
+
+### 7. Apply position
+
+At the end, the final position will be applied on the `surface` container.
+
+![Position computing](cdk-images/cdk-overlay-position-computing.jpg)

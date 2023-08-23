@@ -9,11 +9,9 @@ import type { Config } from '@jest/types';
  * @see https://jestjs.io/docs/configuration#rootdir-string
  */
 export function OdsGetJestConfig({
-                                   basePath,
                                    args,
                                    stencil = true
                                  }: {
-  basePath: string,
   args: string[],
   stencil?: boolean
 }): Config.InitialOptions {
@@ -40,18 +38,7 @@ export function OdsGetJestConfig({
     } : {
       testRegex: "(/__tests__/.*|\\.?(spec))\\.(tsx?|ts?|jsx?|js?)$"
     }),
-    // TODO check if still needed
-    moduleNameMapper: {
-      ...(!e2e ? {
-        '^@ovhcloud/ods-core$': `${basePath}/packages/libraries/core/src/index`,
-        '^@ovhcloud/ods-cdk$': `${basePath}/packages/libraries/cdk/src/index`,
-        '^@ovhcloud/ods-testing$': `${basePath}/packages/libraries/testing/src/index`,
-        '^@ovhcloud/ods-theming$': `${basePath}/packages/libraries/theming/src/index`,
-        '^@ovhcloud/ods-stencil/libraries/stencil-core$': `${basePath}/packages/stencil/libraries/stencil-core/src/index`,
-        '^@ovhcloud/ods-stencil/libraries/stencil-testing': `${basePath}/packages/stencil/libraries/stencil-testing/src/index`,
-        '^@ovhcloud/ods-stencil/(.*)$': `${basePath}/packages/stencil/$1`,
-      }: {})
-    },
+    moduleNameMapper: {},
     ...(stencil ? {
       transform: {
         "\\.svg$": "jest-transform-stub",

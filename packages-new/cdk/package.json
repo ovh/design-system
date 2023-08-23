@@ -1,0 +1,26 @@
+{
+  "name": "@ovhcloud/ods-cdk",
+  "version": "15.0.1",
+  "description": "OvhCloud Component Development Kit",
+  "author": "OVH SAS",
+  "license": "Apache-2.0",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "scripts": {
+    "ignore:rm": "git clean -Xdf",
+    "start": "stencil build --docs --dev --watch --serve",
+    "build:esm": "tsc -p tsconfig.esm.json -out dist/esm/index.ts",
+    "build:cjs": "tsc -p tsconfig.cjs.json",
+    "build:prod:esm": "tsc -p tsconfig.esm.prod.json",
+    "build:prod:amd": "tsc -p tsconfig.amd.prod.json",
+    "build:prod:cjs": "tsc -p tsconfig.cjs.prod.json",
+    "build": "npm run build:esm --if-present && npm run build:cjs --if-present",
+    "build:prod": "npm run build:prod:esm --if-present && npm run build:prod:cjs --if-present && node ./scripts/generate-ocdk-version.js",
+    "doc:api": "typedoc --plugin none src/*",
+    "watch": "tsc -w -p tsconfig.esm.json"
+  },
+  "devDependencies": {
+    "@ovhcloud/ods-dev": "^15.0.1",
+    "@ovhcloud/ods-theming": "^15.0.1"
+  }
+}

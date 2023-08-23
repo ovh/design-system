@@ -43,7 +43,7 @@ export function OdsGetJestConfig({
     moduleNameMapper: {
       ...(!e2e ? {
         '^@ovhcloud/ods-core$': `${basePath}/packages/libraries/core/src/index`,
-        '^@ovhcloud/ods-cdk$': `${basePath}/packages/libraries/cdk/src/index`,
+        '^@ovhcloud/ods-cdk$': `${basePath}/packages-new/cdk/src/index`,
         '^@ovhcloud/ods-testing$': `${basePath}/packages/libraries/testing/src/index`,
         '^@ovhcloud/ods-theming$': `${basePath}/packages/libraries/theming/src/index`,
         '^@ovhcloud/ods-stencil/libraries/stencil-core$': `${basePath}/packages/stencil/libraries/stencil-core/src/index`,

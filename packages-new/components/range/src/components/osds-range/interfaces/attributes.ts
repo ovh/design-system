@@ -21,9 +21,9 @@ interface OdsRangeAttribute {
    */
   errorStateControl?: OdsErrorStateControl;
   /**
-   * Flex unit for range width
+   * inline unit for range width
    */
-  flex?: boolean;
+  inline?: boolean;
   /**
    * The range id
    */

@@ -6,13 +6,13 @@ const DEFAULT_ATTRIBUTE: OdsRangeAttribute = Object.freeze({
   disabled: false,
   error: undefined,
   errorStateControl: undefined,
-  flex: false,
+  forbiddenValues: [],
+  formControl: undefined,
+  inline: false,
   max: 100,
   min: 0,
   step: 1,
   value: '',
-  forbiddenValues: [],
-  formControl: undefined
 });
 
 export {

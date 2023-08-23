@@ -5402,27 +5402,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ovhcloud/ods-cdk-dev@workspace:packages/libraries/cdk/dev":
+"@ovhcloud/ods-cdk-dev@workspace:packages-new/cdk/dev":
   version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-cdk-dev@workspace:packages/libraries/cdk/dev"
+  resolution: "@ovhcloud/ods-cdk-dev@workspace:packages-new/cdk/dev"
   dependencies:
     "@ovhcloud/ods-cdk": ^15.0.1
-    "@ovhcloud/ods-stencil-component": ^15.0.1
-    "@ovhcloud/ods-stencil-component-dev": ^15.0.1
+    "@ovhcloud/ods-common-stencil": ^15.0.1
+    "@ovhcloud/ods-stencil-dev": ^15.0.1
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-cdk@^15.0.1, @ovhcloud/ods-cdk@workspace:packages/libraries/cdk":
+"@ovhcloud/ods-cdk@^15.0.1, @ovhcloud/ods-cdk@workspace:packages-new/cdk":
   version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-cdk@workspace:packages/libraries/cdk"
+  resolution: "@ovhcloud/ods-cdk@workspace:packages-new/cdk"
   dependencies:
-    "@ovhcloud/ods-library-dev": ^15.0.1
+    "@ovhcloud/ods-dev": ^15.0.1
     "@ovhcloud/ods-theming": ^15.0.1
-    autoprefixer: ~10.3.7
-    node-sass: ^8.0.0
-    postcss: ^8.3.9
-    postcss-cli: ^9.0.1
-    postcss-scss: ^4.0.1
   languageName: unknown
   linkType: soft
 
@@ -6043,6 +6038,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-menu@workspace:packages-new/components/menu"
   dependencies:
+    "@ovhcloud/ods-cdk": ^15.0.1
     "@ovhcloud/ods-common-core": ^15.0.1
     "@ovhcloud/ods-common-stencil": ^15.0.1
     "@ovhcloud/ods-common-testing": ^15.0.1
@@ -6193,6 +6189,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-popover@workspace:packages-new/components/popover"
   dependencies:
+    "@ovhcloud/ods-cdk": ^15.0.1
     "@ovhcloud/ods-common-core": ^15.0.1
     "@ovhcloud/ods-common-stencil": ^15.0.1
     "@ovhcloud/ods-common-testing": ^15.0.1
@@ -6343,6 +6340,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-select@workspace:packages-new/components/select"
   dependencies:
+    "@ovhcloud/ods-cdk": ^15.0.1
     "@ovhcloud/ods-common-core": ^15.0.1
     "@ovhcloud/ods-common-stencil": ^15.0.1
     "@ovhcloud/ods-common-testing": ^15.0.1
@@ -6590,6 +6588,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-tooltip@workspace:packages-new/components/tooltip"
   dependencies:
+    "@ovhcloud/ods-cdk": ^15.0.1
     "@ovhcloud/ods-common-core": ^15.0.1
     "@ovhcloud/ods-common-stencil": ^15.0.1
     "@ovhcloud/ods-common-testing": ^15.0.1

@@ -1,11 +1,11 @@
 {
-  "extends": "../../../../tsconfig.json",
+  "extends": "../../../tsconfig.json",
   "compilerOptions": {
     "jsx": "react",
     "jsxFactory": "h",
     "declaration": true,
     "paths": {
-      "~@ovhcloud/ods-cdk": ["./packages/libraries/cdk/src/index"]
+      "~@ovhcloud/ods-cdk": ["./packages-new/cdk/src/index"]
     }
     },
   "include": [

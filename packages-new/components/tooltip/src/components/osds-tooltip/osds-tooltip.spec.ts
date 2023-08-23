@@ -1,6 +1,6 @@
 // keep jest.mock before any
-jest.mock('./core/controller');
 jest.mock('@ovhcloud/ods-cdk');
+jest.mock('./core/controller');
 
 import type { SpecPage } from '@stencil/core/testing';
 import type { OdsTooltipAttribute } from './interfaces/attributes';

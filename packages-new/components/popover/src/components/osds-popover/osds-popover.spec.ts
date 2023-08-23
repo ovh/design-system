@@ -1,4 +1,4 @@
-jest.mock('@ovhcloud/ods-cdk/src/components/surface/ocdk-is-surface'); // keep jest.mock before any import
+jest.mock('@ovhcloud/ods-cdk'); // keep jest.mock before any import
 jest.mock('./core/controller'); // keep jest.mock before any
 
 import type { SpecPage } from '@stencil/core/testing';

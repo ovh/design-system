@@ -1,5 +1,5 @@
+jest.mock('@ovhcloud/ods-cdk'); // keep jest.mock before any import
 jest.mock('./core/controller'); // keep jest.mock before any import
-jest.mock('@ovhcloud/ods-cdk/src/components/surface/ocdk-is-surface'); // keep jest.mock before any import
 
 import type { OdsMenuAttribute } from './interfaces/attributes'
 import { newSpecPage, SpecPage } from '@stencil/core/testing';
@@ -22,7 +22,7 @@ describe('spec:osds-menu', () => {
   let controller: OdsMenuController
 
   function mockSurfaceElements() {
-    ocdkIsSurface.mockImplementation(() => true);
+    (ocdkIsSurface as unknown as jest.Mock).mockImplementation(() => true);
   }
 
   function findElements(){
@@ -78,7 +78,7 @@ describe('spec:osds-menu', () => {
 
   describe('cdk not initialized', () => {
     it('should not have yet the ref to surface', async () => {
-      ocdkIsSurface.mockImplementation(() => false);
+      (ocdkIsSurface as unknown as jest.Mock).mockImplementation(() => false);
       await setup({ attributes: {}, html: `` });
       expect(instance.surface).toBeFalsy();
     })

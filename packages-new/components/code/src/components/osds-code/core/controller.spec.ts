@@ -12,8 +12,11 @@ class OdsCodeMock extends OsdsCode {
     super();
     Object.assign(this, attribute)
   }
-  codeEl = document.createElement('code') as HTMLElement;
+  controller: OdsCodeController = jest.fn() as unknown as OdsCodeController;
   beforeRender = jest.fn();
+  copyCode = jest.fn();
+  autocompleteCopySlot = jest.fn();
+  codeEl = document.createElement('code') as HTMLElement;
 }
 
 describe('spec:ods-code-controller', () => {
@@ -29,7 +32,6 @@ describe('spec:ods-code-controller', () => {
   }
 
   beforeEach(() => {
-
     const loggerMocked = new OdsLogger('myLoggerMocked');
     loggerSpyReferences = OdsInitializeLoggerSpy({
       loggerMocked: loggerMocked as never,
@@ -48,7 +50,17 @@ describe('spec:ods-code-controller', () => {
 
   describe('methods', () => {
     describe('methods:copyCode', () => {
-      it('should copy code content to clipboard', () => {
+      beforeEach(() => {
+        Object.assign(navigator, {
+          clipboard: {
+            writeText: jest.fn().mockImplementation(() => Promise.resolve()),
+          },
+        });
+      });
+
+      // FIXME seems like testing slot text content is not possible for now as assignedNodes function is not available
+      //  (see https://github.com/ionic-team/stencil/issues/2830)
+      xit('should copy code content to clipboard', () => {
         setup();
         const textNode = document.createTextNode('Code content');
         const slot = document.createElement('slot');

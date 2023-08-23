@@ -1,3 +1,5 @@
+jest.mock('./core/controller'); // keep jest.mock before any import
+
 import type { SpecPage } from '@stencil/core/testing';
 import type { OdsCodeAttribute } from './interfaces/attributes';
 import { newSpecPage } from '@stencil/core/testing';
@@ -32,6 +34,8 @@ describe('spec:osds-code', () => {
     });
 
     instance = page.rootInstance;
+
+    controller = (OdsCodeController as unknown as jest.SpyInstance<OdsCodeController, unknown[]>).mock.instances[ 0 ];
 
     // note: assigned slot not yet available in HtmlMockedElement of stencil : https://github.com/ionic-team/stencil/issues/2830
     mainSlot = page.root?.shadowRoot?.querySelector('slot:not([name])');

@@ -1,13 +1,11 @@
 import { html } from 'lit-html';
-import { iframe } from '../../../.storybook/iframe';
-
-
-import { defineCustomElements } from '@ovhcloud/ods-stencil-radio/loader';
-
-import changelog from '@ovhcloud/ods-stencil-radio/CHANGELOG.md';
-import page from './radio.web-component.stories.page.mdx';
+import { defineCustomElements } from '@ovhcloud/ods-component-radio/loader';
 import { getTagAttributes, extractArgTypes, extractStoryParams } from '../../../core/componentHTMLUtils';
-import { olesIpsum, OlesIpsumGeneration } from '@ovhcloud/ods-core';
+import { olesIpsum, OlesIpsumGeneration } from '@ovhcloud/ods-common-core';
+// @ts-ignore
+import changelog from '@ovhcloud/ods-component-radio/CHANGELOG.md';
+// @ts-ignore
+import page from './radio.web-component.stories.page.mdx';
 
 defineCustomElements();
 
@@ -27,7 +25,6 @@ export default {
   id: 'radio',
   parameters: {
     notes: {
-      API: iframe('stencil-components-radio/modules/index.html'),
       changelog,
     },
     docs: { page },
@@ -53,9 +50,11 @@ const TemplateDefault = (args: any) => html`
   </osds-radio>
 `;
 export const Default = TemplateDefault.bind({});
+// @ts-ignore
 Default.args = {
   ...extractStoryParams(storyParams),
 };
+// @ts-ignore
 Default.argTypes = extractArgTypes(storyParams)
 
 export { UpdateStrategy } from './radio.web-components.stories.update-strategy';

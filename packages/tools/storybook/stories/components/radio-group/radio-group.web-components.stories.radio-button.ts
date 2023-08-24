@@ -2,15 +2,12 @@ import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 
 
-import { defineCustomElements } from '@ovhcloud/ods-stencil/components/radio/loader';
+import { defineCustomElements } from '@ovhcloud/ods-component-radio/loader';
 
 import { extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
-import { olesIpsum, OlesIpsumGeneration } from '@ovhcloud/ods-core';
-import { OdsLogger } from '@ovhcloud/ods-core/src';
+import { olesIpsum, OlesIpsumGeneration } from '@ovhcloud/ods-common-core';
 
 defineCustomElements();
-
-const logger = new OdsLogger('OsdsRadioGroup-stories-radio-button');
 
 const storyParams = {
   disabled: {
@@ -105,6 +102,7 @@ const TemplateRadioButton = (args: any) => html`
 `;
 
 export const RadioButton = TemplateRadioButton.bind({});
+// @ts-ignore
 RadioButton.args = {
   ...extractStoryParams(storyParams),
 };

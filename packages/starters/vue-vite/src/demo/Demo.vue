@@ -7,12 +7,7 @@ import { OsdsCheckboxButton } from '@ovhcloud/ods-components/checkbox-button/vue
 import { ODS_CHECKBOX_BUTTON_SIZE } from '@ovhcloud/ods-components/checkbox-button';
 import { OsdsMessage } from '@ovhcloud/ods-components/message/vue';
 import { ODS_MESSAGE_TYPE } from '@ovhcloud/ods-components/message';
-
-// you can import multiple react proxies from the grouped package
-import {
-  OsdsRadio,
-  OsdsRadioGroup,
-} from '@ovhcloud/ods-stencil/components/vue';
+import { OsdsRadio, OsdsRadioGroup } from '@ovhcloud/ods-components/radio/vue';
 import { OsdsFlag } from '@ovhcloud/ods-component-flag/vue';
 import { OsdsToggle } from '@ovhcloud/ods-component-toggle/vue';
 

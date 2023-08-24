@@ -1,3 +1,4 @@
+import type { OsdsRadio } from '@ovhcloud/ods-component-radio';
 import { Component, Element, Host, h, Prop, State, Method } from '@stencil/core';
 import {
   OdsSwitchItem,
@@ -7,7 +8,6 @@ import {
   odsSwitchItemDefaultAttributes,
 } from '@ovhcloud/ods-core';
 import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libraries/stencil-core';
-import { Components } from '@ovhcloud/ods-stencil/components/radio';
 
 @Component({
   tag: 'osds-switch-item',
@@ -17,7 +17,7 @@ import { Components } from '@ovhcloud/ods-stencil/components/radio';
 export class OsdsSwitchItem implements OdsSwitchItem<OdsStencilMethods<OdsSwitchItemMethods>, OdsStencilEvents<OdsSwitchItemEvents>> {
   controller: OdsSwitchItemController = new OdsSwitchItemController(this);
 
-  private radio?: Components.OsdsRadio;
+  private radio?: OsdsRadio;
 
   @Element() el!: HTMLElement;
 
@@ -46,7 +46,7 @@ export class OsdsSwitchItem implements OdsSwitchItem<OdsStencilMethods<OdsSwitch
           checked,
           id,
           value,
-          ref: (el: unknown) => this.radio = el as Components.OsdsRadio,
+          ref: (el: unknown) => this.radio = el as OsdsRadio,
         }}>
           <slot></slot>
         </osds-radio>

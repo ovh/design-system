@@ -1,7 +1,7 @@
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 
-import { defineCustomElements } from '@ovhcloud/ods-stencil-radio/loader';
+import { defineCustomElements } from '@ovhcloud/ods-component-radio/loader';
 
 import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 

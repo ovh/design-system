@@ -1,10 +1,8 @@
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
-import { olesIpsum, OlesIpsumGeneration } from '@ovhcloud/ods-core';
-import { OdsLogger } from '@ovhcloud/ods-core/src';
+import { olesIpsum, OlesIpsumGeneration } from '@ovhcloud/ods-common-core';
 
-const logger = new OdsLogger('OsdsRadio-stories-update-strategy');
 const slotJs = `
     <script>
   var radio4 = document.getElementById("radio-4");
@@ -94,8 +92,10 @@ const TemplateUpdateStrategy = (args: any) => html`
   </div>
 `;
 export const UpdateStrategy = TemplateUpdateStrategy.bind({});
+// @ts-ignore
 UpdateStrategy.args = {
   ...extractStoryParams(storyParams)
 };
+// @ts-ignore
 UpdateStrategy.argTypes = extractArgTypes(storyParams)
 

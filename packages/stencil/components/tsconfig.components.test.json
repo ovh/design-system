@@ -15,7 +15,6 @@
     "code/src",
     "location-tile/src",
     "src",
-    "switch/src",
     "tabs/src",
   ],
   "exclude": [

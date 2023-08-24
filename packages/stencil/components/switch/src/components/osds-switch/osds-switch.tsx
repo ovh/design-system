@@ -1,3 +1,4 @@
+import type { OdsRadioGroupValueChangeEvent } from '@ovhcloud/ods-component-radio';
 import { Component, Element, Host, h, Prop, EventEmitter, Event, Listen, State } from '@stencil/core';
 import {
   OdsSwitch,
@@ -8,7 +9,6 @@ import {
   OdsSwitchChangedEventDetail,
   OdsSwitchSize,
   OdsSwitchVariant,
-  OdsRadioGroupValueChangeEvent,
 } from '@ovhcloud/ods-core';
 import { OdsStencilEvents, OdsStencilMethods } from '@ovhcloud/ods-stencil/libraries/stencil-core';
 import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';

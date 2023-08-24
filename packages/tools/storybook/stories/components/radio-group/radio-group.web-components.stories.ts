@@ -1,13 +1,11 @@
 import { html } from 'lit-html';
-import { iframe } from '../../../.storybook/iframe';
-
-
-import { defineCustomElements } from '@ovhcloud/ods-stencil-radio/loader';
-
-import changelog from '@ovhcloud/ods-stencil-radio/CHANGELOG.md';
+import { defineCustomElements } from '@ovhcloud/ods-component-radio/loader';
+// @ts-ignore
+import changelog from '@ovhcloud/ods-component-radio/CHANGELOG.md';
+// @ts-ignore
 import page from './radio-group.web-components.stories.page.mdx';
 import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
-import { olesIpsum, OlesIpsumGeneration } from '@ovhcloud/ods-core';
+import { olesIpsum, OlesIpsumGeneration } from '@ovhcloud/ods-common-core';
 
 defineCustomElements();
 
@@ -23,7 +21,6 @@ export default {
   id: 'radio-group',
   parameters: {
     notes: {
-      API: iframe('stencil-components-radio-group/modules/index.html'),
       changelog,
     },
     docs: { page },
@@ -49,6 +46,7 @@ const TemplateDefault = (args: any) => html`
   </osds-radio-group>
 `;
 export const Default = TemplateDefault.bind({});
+// @ts-ignore
 Default.args = {
   ...extractStoryParams(storyParams),
 };

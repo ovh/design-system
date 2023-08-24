@@ -1,6 +1,6 @@
 // TODO fix those import
 import { defineCustomElements as tileCustomElements } from '@ovhcloud/ods-component-tile/loader';
-import { defineCustomElements as radioCustomElements } from '@ovhcloud/ods-stencil-radio/loader';
+import { defineCustomElements as radioCustomElements } from '@ovhcloud/ods-component-radio/loader';
 import { defineCustomElements as rangeCustomElements } from '@ovhcloud/ods-stencil-range/loader';
 import { defineCustomElements as inputCustomElements } from '@ovhcloud/ods-component-input/loader';
 import { defineCustomElements as textCustomElements } from '@ovhcloud/ods-component-text/loader';

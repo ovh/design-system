@@ -5,4 +5,4 @@
 
 import './global';
 
-import '@ovhcloud/ods-stencil/components/radio';
+import '@ovhcloud/ods-component-radio';

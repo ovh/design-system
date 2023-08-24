@@ -49,9 +49,9 @@ describe('spec:ods-radio-controller', () => {
     return {
       ...document.createElement('input'),
       ...config,
-      setAttribute: jest.fn(),
-      removeAttribute: jest.fn(),
       componentOnReady: jest.fn(),
+      removeAttribute: jest.fn(),
+      setAttribute: jest.fn(),
     };
   }
 

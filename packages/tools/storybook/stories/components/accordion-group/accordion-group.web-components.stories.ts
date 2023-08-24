@@ -1,14 +1,11 @@
-import {
-  extractArgTypes,
-  extractStoryParams,
-  getTagAttributes,
-} from '../../../core/componentHTMLUtils';
-
-import { defineCustomElements } from '@ovhcloud/ods-stencil-accordion/loader';
 import { html } from 'lit-html';
-import { iframe } from '../../../.storybook/iframe';
-import page from './accordion-group.web-component.stories.page.mdx';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
+import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
+import { defineCustomElements } from '@ovhcloud/ods-component-accordion/loader';
+// @ts-ignore
+import changelog from '@ovhcloud/ods-component-accordion/CHANGELOG.md';
+// @ts-ignore
+import page from './accordion-group.web-component.stories.page.mdx';
 
 defineCustomElements();
 
@@ -42,7 +39,7 @@ export default {
   id: 'accordion-group',
   parameters: {
     notes: {
-      API: iframe('/stencil-accordion/modules/index.html'),
+      changelog,
     },
     docs: { page }
   },

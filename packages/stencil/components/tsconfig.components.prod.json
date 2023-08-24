@@ -12,7 +12,6 @@
     }
   },
   "include": [
-    "accordion/src",
     "code/src",
     "location-tile/src",
     "src",

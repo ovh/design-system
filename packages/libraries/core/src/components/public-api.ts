@@ -18,5 +18,4 @@ export * from './ods-component-generic-methods';
 export * from './ods-component-methods';
 export * from './ods-focus-change-event-detail';
 export * from './ods-string-attributes';
-export * from './form-field/public-api';
 export * from './modal/public-api';

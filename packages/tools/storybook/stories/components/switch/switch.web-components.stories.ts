@@ -1,17 +1,16 @@
 import { html } from 'lit-html';
-import { iframe } from '../../../.storybook/iframe';
-
-import { defineCustomElements } from '@ovhcloud/ods-stencil-switch/loader';
+import { defineCustomElements } from '@ovhcloud/ods-component-switch/loader';
 import {
   extractArgTypes,
   extractStoryParams,
   getTagAttributes,
 } from '../../../core/componentHTMLUtils';
-
-import changelog from '@ovhcloud/ods-stencil-switch/CHANGELOG.md';
+import { OdsThemeColorIntent, OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
+import { ODS_SWITCH_SIZE, ODS_SWITCH_SIZES } from '@ovhcloud/ods-component-switch';
+// @ts-ignore
+import changelog from '@ovhcloud/ods-component-switch/CHANGELOG.md';
+// @ts-ignore
 import page from './switch.web-component.stories.page.mdx';
-import { odsSwitchDefaultAttributes, OdsSwitchSizeList } from '@ovhcloud/ods-core';
-import { OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
 
 defineCustomElements();
 
@@ -19,14 +18,14 @@ defineCustomElements();
 const storyParams = {
   color: {
     category: 'General',
-    defaultValue: odsSwitchDefaultAttributes.color,
+    defaultValue: OdsThemeColorIntent.default,
     options: OdsThemeColorIntentList,
     control: { type: 'select' },
   },
   size: {
     category: 'General',
-    defaultValue: odsSwitchDefaultAttributes.size,
-    options: OdsSwitchSizeList,
+    defaultValue: ODS_SWITCH_SIZE.md,
+    options: ODS_SWITCH_SIZES,
     control: { type: 'select' },
   },
   default: {
@@ -35,11 +34,11 @@ const storyParams = {
   },
   contrasted: {
     category: 'Misc',
-    defaultValue: odsSwitchDefaultAttributes.contrasted
+    defaultValue: false,
   },
   disabled: {
     category: 'Misc',
-    defaultValue: odsSwitchDefaultAttributes.disabled
+    defaultValue: false,
   },
 
 };
@@ -49,7 +48,6 @@ export default {
   id: 'switch',
   parameters: {
     notes: {
-      API: iframe('/stencil-switch/modules/index.html'),
       changelog,
     },
     docs: { page }
@@ -68,6 +66,7 @@ const TemplateDefault = (args:any) => {
   `;
 }
 export const Default = TemplateDefault.bind({});
+// @ts-ignore
 Default.args = {
   ...extractStoryParams(storyParams),
 };

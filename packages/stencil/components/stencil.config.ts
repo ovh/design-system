@@ -63,6 +63,7 @@ const config: Config = {
         'osds-select',
         'osds-skeleton',
         'osds-spinner',
+        'osds-switch',
         'osds-text',
         'osds-textarea',
         'osds-tile',
@@ -102,6 +103,7 @@ const config: Config = {
         'osds-select',
         'osds-skeleton',
         'osds-spinner',
+        'osds-switch',
         'osds-text',
         'osds-textarea',
         'osds-tile',
@@ -123,8 +125,6 @@ const config: Config = {
   bundles: [
     { components: ['osds-accordion', 'osds-accordion-group'] },
     { components: ['osds-location-tile'] },
-    { components: ['osds-switch'] },
-    { components: ['osds-switch-item'] },
   ],
   buildEs5: 'prod',
   extras: {

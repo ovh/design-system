@@ -51,7 +51,7 @@ describe('spec:osds-range', () => {
 
     page = await newSpecPage({
       components: [OsdsRange],
-      html: `<osds-range ${OdsStringAttributes2Str(stringAttributes)}></osds-range>`,
+      html: `<osds-range ${odsStringAttributes2Str(stringAttributes)}></osds-range>`,
     });
 
     root = page.root;

@@ -1,10 +1,12 @@
 import { html } from 'lit-html';
-import { iframe } from '../../../../.storybook/iframe';
-import { defineCustomElements } from '@ovhcloud/ods-stencil-tabs/loader';
 import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../../core/componentHTMLUtils';
-import changelog from '@ovhcloud/ods-stencil-tabs/CHANGELOG.md';
+import { defineCustomElements } from '@ovhcloud/ods-component-tabs/loader';
+import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-component-tabs/src/components/osds-tabs/constants/default-attributes';
+import { ODS_TABS_SIZES } from '@ovhcloud/ods-component-tabs/src/components/osds-tabs/constants/tabs-size';
+// @ts-ignore
+import changelog from '@ovhcloud/ods-component-tabs/CHANGELOG.md';
+// @ts-ignore
 import page from './tabs.web-component.stories.page.mdx';
-import { OdsTabsSize, odsTabsSizeList } from '@ovhcloud/ods-core';
 
 defineCustomElements();
 
@@ -25,9 +27,9 @@ const storyParams = {
   },
   size: {
     category: 'osds-tabs',
-    options: odsTabsSizeList,
+    options: ODS_TABS_SIZES,
     control: { type: 'select' },
-    defaultValue: OdsTabsSize.md,
+    defaultValue: DEFAULT_ATTRIBUTE.size,
   },
   contrasted: {
     category: 'osds-tabs',
@@ -40,12 +42,11 @@ export default {
   id: 'tabs',
   parameters: {
     notes: {
-      API: iframe('stencil-components-tabs/modules/index.html'),
       changelog,
     },
     docs: { page },
   },
-  argTypes: extractArgTypes(storyParams),
+  argTypes: extractArgTypes(storyParams)
 };
 
 /* Story options */

@@ -6676,6 +6676,44 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-component-tabs-react@workspace:packages-new/components/tabs/react":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-tabs-react@workspace:packages-new/components/tabs/react"
+  dependencies:
+    "@ovhcloud/ods-component-tabs": ^15.0.1
+    "@ovhcloud/ods-react-dev": ^15.0.1
+  peerDependencies:
+    react: ">=16.8.6"
+    react-dom: ">=16.8.6"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-component-tabs-vue@workspace:packages-new/components/tabs/vue":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-tabs-vue@workspace:packages-new/components/tabs/vue"
+  dependencies:
+    "@ovhcloud/ods-component-tabs": ^15.0.1
+    "@ovhcloud/ods-vue-dev": ^15.0.1
+  peerDependencies:
+    vue: ">=3"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-component-tabs@^15.0.1, @ovhcloud/ods-component-tabs@workspace:packages-new/components/tabs":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-tabs@workspace:packages-new/components/tabs"
+  dependencies:
+    "@ovhcloud/ods-common-core": ^15.0.1
+    "@ovhcloud/ods-common-stencil": ^15.0.1
+    "@ovhcloud/ods-common-testing": ^15.0.1
+    "@ovhcloud/ods-component-icon": ^15.0.1
+    "@ovhcloud/ods-component-link": ^15.0.1
+    "@ovhcloud/ods-component-text": ^15.0.1
+    "@ovhcloud/ods-stencil-dev": ^15.0.1
+    "@ovhcloud/ods-theming": ^15.0.1
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-component-text-react@workspace:packages-new/components/text/react":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-text-react@workspace:packages-new/components/text/react"
@@ -6889,7 +6927,6 @@ __metadata:
     "@ovhcloud/ods-component-select": ^15.0.1
     "@ovhcloud/ods-component-skeleton": ^15.0.1
     "@ovhcloud/ods-component-spinner": ^15.0.1
-    "@ovhcloud/ods-component-switch": ^15.0.1
     "@ovhcloud/ods-component-text": ^15.0.1
     "@ovhcloud/ods-component-textarea": ^15.0.1
     "@ovhcloud/ods-component-tile": ^15.0.1

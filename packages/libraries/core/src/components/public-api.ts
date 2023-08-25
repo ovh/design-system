@@ -1,6 +1,5 @@
 export * from './code/public-api';
 export * from './location-tile/public-api';
-export * from './tabs/public-api';
 
 export * from './ods-component';
 export * from './ods-component-generic-attributes';

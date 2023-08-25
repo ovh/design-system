@@ -1,17 +1,18 @@
+import { html } from 'lit-html';
+import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 import {
   createComponentTable,
   extractArgTypes,
   extractStoryParams,
   getTagAttributes,
 } from '../../../core/componentHTMLUtils';
-
 import { OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
+import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-component-toggle/src/components/osds-toggle/constants/default-attributes';
 import { defineCustomElements } from '@ovhcloud/ods-component-toggle/loader';
+// @ts-ignore
 import changelog from '@ovhcloud/ods-component-toggle/CHANGELOG.md';
-import { html } from 'lit-html';
-import { odsToggleDefaultAttributes } from '@ovhcloud/ods-core';
+// @ts-ignore
 import page from './toggle.web-component.stories.page.mdx';
-import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 
 defineCustomElements();
 
@@ -19,7 +20,7 @@ defineCustomElements();
 const storyParams = {
   color: {
     category: 'General',
-    defaultValue: odsToggleDefaultAttributes.color,
+    defaultValue: DEFAULT_ATTRIBUTE.color,
     options: OdsThemeColorIntentList,
     control: { type: 'select' },
   },
@@ -33,23 +34,23 @@ const storyParams = {
   },
   contrasted: {
     category: 'Misc',
-    defaultValue: odsToggleDefaultAttributes.contrasted
+    defaultValue: DEFAULT_ATTRIBUTE.contrasted
   },
   disabled: {
     category: 'Misc',
-    defaultValue: odsToggleDefaultAttributes.disabled
+    defaultValue: DEFAULT_ATTRIBUTE.disabled
   },
   interactive: {
     category: 'Misc',
-    defaultValue: odsToggleDefaultAttributes.interactive
+    defaultValue: DEFAULT_ATTRIBUTE.interactive
   },
   checked: {
     category: 'Misc',
-    defaultValue: odsToggleDefaultAttributes.checked
+    defaultValue: DEFAULT_ATTRIBUTE.checked
   },
   checking: {
     category: 'Misc',
-    defaultValue: odsToggleDefaultAttributes.checking
+    defaultValue: DEFAULT_ATTRIBUTE.checking
   }
 };
 

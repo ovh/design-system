@@ -5899,6 +5899,45 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-component-file-react@workspace:packages-new/components/file/react":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-file-react@workspace:packages-new/components/file/react"
+  dependencies:
+    "@ovhcloud/ods-component-file": ^15.0.1
+    "@ovhcloud/ods-react-dev": ^15.0.1
+  peerDependencies:
+    react: ">=16.8.6"
+    react-dom: ">=16.8.6"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-component-file-vue@workspace:packages-new/components/file/vue":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-file-vue@workspace:packages-new/components/file/vue"
+  dependencies:
+    "@ovhcloud/ods-component-file": ^15.0.1
+    "@ovhcloud/ods-vue-dev": ^15.0.1
+  peerDependencies:
+    vue: ">=3"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-component-file@^15.0.1, @ovhcloud/ods-component-file@workspace:packages-new/components/file":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-file@workspace:packages-new/components/file"
+  dependencies:
+    "@ovhcloud/ods-common-core": ^15.0.1
+    "@ovhcloud/ods-common-stencil": ^15.0.1
+    "@ovhcloud/ods-common-testing": ^15.0.1
+    "@ovhcloud/ods-component-button": ^15.0.1
+    "@ovhcloud/ods-component-icon": ^15.0.1
+    "@ovhcloud/ods-component-link": ^15.0.1
+    "@ovhcloud/ods-component-progress-bar": ^15.0.1
+    "@ovhcloud/ods-stencil-dev": ^15.0.1
+    "@ovhcloud/ods-theming": ^15.0.1
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-component-flag-react@workspace:packages-new/components/flag/react":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-flag-react@workspace:packages-new/components/flag/react"
@@ -32796,6 +32835,31 @@ fsevents@^1.2.7:
   version: 2.12.0
   resolution: "store2@npm:2.12.0"
   checksum: dd4184a677b11e5efc304b910d08f43e2b0ea018930a4e5ac407cb3472f08a6d42004c43b5f249c7299ba9cfd05cbe1eed998ea3f3388d2ca0f0650a6efb5dc4
+  languageName: node
+  linkType: hard
+
+"storybook-addon-mock@npm:^4.1.0":
+  version: 4.2.1
+  resolution: "storybook-addon-mock@npm:4.2.1"
+  dependencies:
+    mock-xmlhttprequest: ^8.1.0
+    path-to-regexp: ^6.2.1
+    polished: ^4.2.2
+  peerDependencies:
+    "@storybook/addons": ^7.0.0
+    "@storybook/blocks": ^7.0.0
+    "@storybook/components": ^7.0.2
+    "@storybook/manager-api": ^7.0.0
+    "@storybook/theming": ^7.0.0
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    storybook: ^7.0.0
+  peerDependenciesMeta:
+    react:
+      optional: true
+    react-dom:
+      optional: true
+  checksum: 0b1c96443f7e1ca3a6375ff4b682787673802f1b4cc0b8a536212c3c636512c3b6a19e85c15779228c628a9e2020d61a5533c0f9017b2e7f94855f42936381da
   languageName: node
   linkType: hard
 

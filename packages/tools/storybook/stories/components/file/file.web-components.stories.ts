@@ -1,14 +1,13 @@
 import { html } from 'lit-html';
-import { iframe } from '../../../.storybook/iframe';
-
-import { defineCustomElements } from '@ovhcloud/ods-stencil-file/loader';
+import { defineCustomElements } from '@ovhcloud/ods-component-file/loader';
 import {
   extractArgTypes,
   extractStoryParams,
   getTagAttributes,
 } from '../../../core/componentHTMLUtils';
-
-import changelog from '@ovhcloud/ods-stencil-file/CHANGELOG.md';
+// @ts-ignore
+import changelog from '@ovhcloud/ods-component-file/CHANGELOG.md';
+// @ts-ignore
 import page from './file.web-component.stories.page.mdx';
 
 defineCustomElements();
@@ -53,7 +52,6 @@ export default {
   title: 'UI Components/File [atom]/Web Component',
   parameters: {
     notes: {
-      API: iframe('/stencil-file/modules/index.html'),
       changelog,
     },
     docs: { page },

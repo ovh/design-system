@@ -6,8 +6,8 @@ import {
   extractStoryParams,
   getTagAttributes,
 } from '../../../core/componentHTMLUtils';
-import { OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
-import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-component-toggle/src/components/osds-toggle/constants/default-attributes';
+
+import { OdsThemeColorIntent, OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
 import { defineCustomElements } from '@ovhcloud/ods-component-toggle/loader';
 // @ts-ignore
 import changelog from '@ovhcloud/ods-component-toggle/CHANGELOG.md';
@@ -20,7 +20,7 @@ defineCustomElements();
 const storyParams = {
   color: {
     category: 'General',
-    defaultValue: DEFAULT_ATTRIBUTE.color,
+    defaultValue: OdsThemeColorIntent.default,
     options: OdsThemeColorIntentList,
     control: { type: 'select' },
   },
@@ -34,23 +34,23 @@ const storyParams = {
   },
   contrasted: {
     category: 'Misc',
-    defaultValue: DEFAULT_ATTRIBUTE.contrasted
+    defaultValue: false,
   },
   disabled: {
     category: 'Misc',
-    defaultValue: DEFAULT_ATTRIBUTE.disabled
+    defaultValue: false,
   },
   interactive: {
     category: 'Misc',
-    defaultValue: DEFAULT_ATTRIBUTE.interactive
+    defaultValue: false,
   },
   checked: {
     category: 'Misc',
-    defaultValue: DEFAULT_ATTRIBUTE.checked
+    defaultValue: false,
   },
   checking: {
     category: 'Misc',
-    defaultValue: DEFAULT_ATTRIBUTE.checking
+    defaultValue: false,
   }
 };
 
@@ -80,9 +80,11 @@ const TemplateDefault = (args: any) => {
   `;
 }
 export const Default = TemplateDefault.bind({});
+// @ts-ignore
 Default.args = {
   ...extractStoryParams(storyParams),
 };
+// @ts-ignore
 Default.argTypes = extractArgTypes(storyParams);
 
 const defaultTag = 'osds-toggle';
@@ -150,7 +152,9 @@ const storyParamsAll = {
 };
 
 export const All = TemplateAll.bind({});
+// @ts-ignore
 All.args = {
   ...extractStoryParams(storyParamsAll),
 };
+// @ts-ignore
 All.argTypes = extractArgTypes(storyParamsAll);

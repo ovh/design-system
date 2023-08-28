@@ -1,4 +1,4 @@
-import { EventEmitter } from '@stencil/core';
+import type { EventEmitter } from '@stencil/core';
 
 type NonFunctionKeys<T> = {
   // get the type of P at the end for example if the type is "" I want string
@@ -9,6 +9,8 @@ type ExtractDefaultValueType<T> = {
   [P in keyof T]: T[P] extends string ? string : T[P] extends number ? number : T[P] extends boolean ? boolean : T[P];
 }
 
+// Should extract attributes type of the stencil component
+// Try it not sure it's work for all the component
 export type ExtractAttributesType<T> = Pick<ExtractDefaultValueType<T>, NonFunctionKeys<T>>;
 
 type ExtractKeys<T, TKeyValue> = NonNullable<

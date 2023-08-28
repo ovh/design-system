@@ -1,4 +1,4 @@
-import { E2EPage } from '@stencil/core/testing';
+import type { E2EPage } from '@stencil/core/testing';
 
 export const odsPuppeteerConsoleHelper = (page: E2EPage) => {
   page.on('console', async msg => {

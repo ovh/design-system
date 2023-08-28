@@ -38,26 +38,6 @@ describe('spec:osds-file-header', () => {
       expect(root?.shadowRoot?.querySelector('#file')?.attributes.getNamedItem('accept')?.value).toBe('image/jpg');
     })
 
-    // it.each([false, true])('should render success header only when isSuccessful is %p', async (isSuccessful) => {
-    //   const { root } = await setup({ attributes: { isSuccessful } });
-    //   expect(!!root?.shadowRoot?.querySelector('.ods-file__dropzone--success__header')).toBe(isSuccessful);
-    // })
-
-    // it.each(['', 'Big Error'])('should render errored only when errorMessage is defined', async (errorMessage) => {
-    //   const { root } = await setup({ attributes: { errorMessage } });
-    //   expect(!!root?.shadowRoot?.querySelector('.ods-file__dropzone--errored__header')).toBe(!!errorMessage);
-    // })
-
-    // it.each([
-    //   { errorMessage: '', isSuccessful: false, normalHeaderExists: true },
-    //   { errorMessage: '', isSuccessful: true, normalHeaderExists: false },
-    //   { errorMessage: 'Big Error', isSuccessful: false, normalHeaderExists: false },
-    //   { errorMessage: 'Big Error', isSuccessful: true, normalHeaderExists: false },
-    // ])('should render normal header only when no error or success', async ({ errorMessage, isSuccessful, normalHeaderExists }) => {
-    //   const { root } = await setup({ attributes: { errorMessage, isSuccessful } });
-    //   expect(!!root?.shadowRoot?.querySelector('.ods-file__dropzone__header')).toBe(normalHeaderExists);
-    // })
-
     it.each([
       ['', undefined],
       ['image/jpg', '(jpg)'],

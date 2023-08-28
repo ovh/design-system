@@ -6160,6 +6160,44 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-component-modal-react@workspace:packages-new/components/modal/react":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-modal-react@workspace:packages-new/components/modal/react"
+  dependencies:
+    "@ovhcloud/ods-component-modal": ^15.0.1
+    "@ovhcloud/ods-react-dev": ^15.0.1
+  peerDependencies:
+    react: ">=16.8.6"
+    react-dom: ">=16.8.6"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-component-modal-vue@workspace:packages-new/components/modal/vue":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-modal-vue@workspace:packages-new/components/modal/vue"
+  dependencies:
+    "@ovhcloud/ods-component-modal": ^15.0.1
+    "@ovhcloud/ods-vue-dev": ^15.0.1
+  peerDependencies:
+    vue: ">=3"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-component-modal@^15.0.1, @ovhcloud/ods-component-modal@workspace:packages-new/components/modal":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-modal@workspace:packages-new/components/modal"
+  dependencies:
+    "@ovhcloud/ods-common-core": ^15.0.1
+    "@ovhcloud/ods-common-stencil": ^15.0.1
+    "@ovhcloud/ods-common-testing": ^15.0.1
+    "@ovhcloud/ods-component-button": ^15.0.1
+    "@ovhcloud/ods-component-icon": ^15.0.1
+    "@ovhcloud/ods-component-text": ^15.0.1
+    "@ovhcloud/ods-stencil-dev": ^15.0.1
+    "@ovhcloud/ods-theming": ^15.0.1
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-component-pagination-react@workspace:packages-new/components/pagination/react":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-pagination-react@workspace:packages-new/components/pagination/react"
@@ -6839,6 +6877,7 @@ __metadata:
     "@ovhcloud/ods-component-link": ^15.0.1
     "@ovhcloud/ods-component-menu": ^15.0.1
     "@ovhcloud/ods-component-message": ^15.0.1
+    "@ovhcloud/ods-component-modal": ^15.0.1
     "@ovhcloud/ods-component-pagination": ^15.0.1
     "@ovhcloud/ods-component-password": ^15.0.1
     "@ovhcloud/ods-component-popover": ^15.0.1

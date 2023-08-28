@@ -1,16 +1,12 @@
 import { html } from 'lit-html';
-import { iframe } from '../../../.storybook/iframe';
-import { odsModalDefaultAttributes } from '@ovhcloud/ods-core';
-import { defineCustomElements } from '@ovhcloud/ods-stencil-modal/loader';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-import {
-  extractArgTypes,
-  extractStoryParams,
-  getTagAttributes,
-} from '../../../core/componentHTMLUtils';
+import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 import { OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
-
-import changelog from '@ovhcloud/ods-stencil-modal/CHANGELOG.md';
+import { defineCustomElements } from '@ovhcloud/ods-component-modal/loader';
+import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-component-modal/src/components/osds-modal/constants/default-attributes';
+// @ts-ignore
+import changelog from '@ovhcloud/ods-component-modal/CHANGELOG.md';
+// @ts-ignore
 import page from './modal.web-component.stories.page.mdx';
 
 defineCustomElements();
@@ -19,13 +15,13 @@ defineCustomElements();
 const storyParams = {
   color: {
     category: 'General',
-    defaultValue: odsModalDefaultAttributes.color,
+    defaultValue: DEFAULT_ATTRIBUTE.color,
     options: OdsThemeColorIntentList,
     control: { type: 'select' },
   },
   dismissible: {
     category: 'General',
-    defaultValue: odsModalDefaultAttributes.dismissible,
+    defaultValue: DEFAULT_ATTRIBUTE.dismissible,
   },
   headline: {
     category: 'General',
@@ -33,7 +29,7 @@ const storyParams = {
   },
   masked: {
     category: 'General',
-    defaultValue: odsModalDefaultAttributes.masked,
+    defaultValue: DEFAULT_ATTRIBUTE.masked,
   },
   content: {
     category: 'Slot',
@@ -48,14 +44,14 @@ const storyParams = {
 
 export default {
   title: 'UI Components/Modal [molecule]/Web Component',
+  id: 'modal',
   parameters: {
     notes: {
-      API: iframe('/stencil-modal/modules/index.html'),
       changelog,
     },
-    docs: { page }
+    docs: { page },
   },
-  argTypes: extractArgTypes(storyParams),
+  argTypes: extractArgTypes(storyParams)
 };
 
 const TemplateDefault = (args:any) => {

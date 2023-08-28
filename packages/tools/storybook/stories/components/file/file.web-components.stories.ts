@@ -55,16 +55,6 @@ export default {
       changelog,
     },
     docs: { page },
-    mockData: [
-      {
-        url: 'http://httpbin.org/post',
-        method: 'GET',
-        status: 200,
-        response: {
-          data: 'Hello storybook-addon-mock!',
-        },
-      },
-    ],
   },
   argTypes: extractArgTypes(storyParams)
 };

@@ -88,14 +88,6 @@ export class OsdsTabs implements OdsTabsAttribute, OdsTabsEvent {
     this.controller.propagateContrastedToItems(contrasted);
   }
 
-  afterInit() {
-    this.controller.afterInit();
-  }
-
-  componentDidLoad() {
-    this.afterInit();
-  }
-
   beforeInit() {
     this.controller.beforeInit();
   }

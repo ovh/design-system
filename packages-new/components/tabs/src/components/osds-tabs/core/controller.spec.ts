@@ -10,18 +10,23 @@ import { OsdsTabsPanel } from '../../osds-tab-panel/osds-tab-panel';
 import { DEFAULT_ATTRIBUTE } from '../constants/default-attributes';
 
 class OdsTabsMock extends OsdsTabs {
-    constructor(attribute: Partial<OsdsTabs>) {
-        super();
-        Object.assign(this, attribute)
-    }
-    controller: OdsTabsController = jest.fn() as unknown as OdsTabsController;
-    beforeInit = jest.fn();
+  constructor(attribute: Partial<OsdsTabs>) {
+      super();
+      Object.assign(this, attribute)
+  }
+  controller: OdsTabsController = jest.fn() as unknown as OdsTabsController;
+  beforeInit = jest.fn();
+  emitChanged = jest.fn();
 }
 
 describe('spec:ods-tabs-controller', () => {
   const baseAttribute = { contrasted: DEFAULT_ATTRIBUTE.contrasted, panel: DEFAULT_ATTRIBUTE.panel, size: DEFAULT_ATTRIBUTE.size };
   let controller: OdsTabsController;
   let component: OsdsTabs;
+
+  let spyOnChangeActivePanel: jest.SpyInstance<void, jest.ArgsType<OdsTabsController['changeActivePanel']>>;
+  let spyOnEmitChanged: jest.SpyInstance<void, jest.ArgsType<OsdsTabs['emitChanged']>>;
+  let spyOnOnContrastedPropChange: jest.SpyInstance<void, jest.ArgsType<OsdsTabs['onContrastedPropChange']>>;
   let loggerSpyReferences: OdsLoggerSpyReferences;
   let item1: OsdsTabBarItem & HTMLElement;
   let item2: OsdsTabBarItem & HTMLElement;
@@ -31,13 +36,17 @@ describe('spec:ods-tabs-controller', () => {
 
   Ods.instance().logging(false);
 
-  function setup(componentToCreate: OsdsTabs) {
-    controller = new OdsTabsController(componentToCreate);
+  function setup(attributes: Partial<OsdsTabs> = {}) {
+    component = new OdsTabsMock(attributes);
+    controller = component.controller = new OdsTabsController(component);
+
+    Object.defineProperty(component, 'el', {
+      value: document.createElement('osds-tabs') as HTMLStencilElement,
+      writable: true
+    });
   }
 
   beforeEach(() => {
-    component = new OdsTabsMock(baseAttribute);
-
     const loggerMocked = new OdsLogger('myLoggerMocked');
     loggerSpyReferences = OdsInitializeLoggerSpy({
       loggerMocked: loggerMocked as never,
@@ -48,21 +57,21 @@ describe('spec:ods-tabs-controller', () => {
     item1.panel = '1';
     item2 = document.createElement('osds-tab-bar-item') as OsdsTabBarItem & HTMLElement;
     item2.panel = '2';
+
     panel1 = document.createElement('osds-tabs-panel') as OsdsTabsPanel & HTMLElement;
     panel1.name = '1';
     panel2 = document.createElement('osds-tabs-panel') as OsdsTabsPanel & HTMLElement;
     panel2.name = '2';
-    tabBar = document.createElement('osds-tab-bar') as OsdsTabBarItem & HTMLElement;
 
-    component.el = document.createElement('osds-tabs') as HTMLStencilElement;
+    tabBar = document.createElement('osds-tab-bar') as OsdsTabBarItem & HTMLElement;
 
     tabBar.appendChild(item1);
     tabBar.appendChild(item2);
   });
 
   afterEach(() => {
-    OdsClearLoggerSpy(loggerSpyReferences);
     jest.clearAllMocks();
+    OdsClearLoggerSpy(loggerSpyReferences);
   });
 
   function mockGetTabItems(items: Array<OsdsTabBarItem & HTMLElement>) {
@@ -74,56 +83,69 @@ describe('spec:ods-tabs-controller', () => {
   }
 
   it('should initialize', () => {
-    setup(component);
+    setup({});
     expect(controller).toBeTruthy();
   });
 
   describe('methods', () => {
 
     describe('beforeInit', () => {
-      beforeEach(() => {
-        component.panel = '2';
-        component.contrasted = true;
-        setup(component);
-        jest.spyOn(controller, 'changeActivePanel').mockImplementation(() => undefined);
-        controller.beforeInit();
-      })
       it('should call changeActivePanel', () => {
-        expect(controller.changeActivePanel).toHaveBeenCalledWith(component.panel);
+        setup({ panel: '2', contrasted: true });
+        spyOnChangeActivePanel = jest.spyOn(controller, 'changeActivePanel');
+        controller.beforeInit();
+
+        expect(spyOnChangeActivePanel).toHaveBeenCalledTimes(1);
+        expect(spyOnChangeActivePanel).toHaveBeenCalledWith(component.panel);
       });
+
       it('should call onContrastedPropChange', () => {
-        expect(component.onContrastedPropChange).toHaveBeenCalledWith(component.contrasted);
+        setup({ panel: '2', contrasted: true });
+        spyOnOnContrastedPropChange = jest.spyOn(component, 'onContrastedPropChange');
+        controller.beforeInit();
+
+        expect(spyOnOnContrastedPropChange).toHaveBeenCalledTimes(1);
+        expect(spyOnOnContrastedPropChange).toHaveBeenCalledWith(component.contrasted);
       });
     });
 
     describe('getTabItems', () => {
       it('should retrieve items inside tab bar', () => {
+        setup({ panel: '2', contrasted: true });
+
         component.el.appendChild(tabBar);
-        setup(component);
-        const items = controller.getTabItems('ods-tab-bar-item');
+
+        const items = controller.getTabItems('osds-tab-bar-item');
         expect(items).toEqual([item1, item2]);
       });
     });
 
     describe('getTabPanels', () => {
       it('should retrieve panels tabs', () => {
+        setup({ panel: '2', contrasted: true });
+
         component.el.appendChild(panel1);
         component.el.appendChild(panel2);
-        setup(component);
-        const items = controller.getTabPanels('ods-tab-panel');
+
+        const items = controller.getTabPanels('osds-tabs-panel');
         expect(items).toEqual([panel1, panel2]);
       });
     });
 
     describe('changeActivePanel', () => {
       beforeEach(() => {
+        setup({ panel: '', contrasted: true });
+
+        spyOnEmitChanged = jest.spyOn(component, 'emitChanged');
+
         component.el.appendChild(tabBar);
         component.el.appendChild(panel1);
         component.el.appendChild(panel2);
+
         mockGetTabItems([item1, item2]);
         mockGetTabPanels([panel1, panel2]);
-        setup(component);
       });
+
       describe('panel unset', () => {
         beforeEach(() => {
           controller.changeActivePanel('');
@@ -140,7 +162,7 @@ describe('spec:ods-tabs-controller', () => {
           expect(component.panel).toEqual('1');
         });
         it('should emit event', () => {
-          expect(component.emitChanged).toHaveBeenCalledWith();
+          expect(spyOnEmitChanged).toHaveBeenCalledWith();
         });
       });
 
@@ -160,7 +182,7 @@ describe('spec:ods-tabs-controller', () => {
           expect(component.panel).toEqual('2');
         });
         it('should emit event', () => {
-          expect(component.emitChanged).toHaveBeenCalledWith();
+          expect(spyOnEmitChanged).toHaveBeenCalledWith();
         });
       });
 
@@ -171,7 +193,7 @@ describe('spec:ods-tabs-controller', () => {
           item2.active = true;
           panel2.active = true;
           controller.changeActivePanel('2');
-          expect(component.emitChanged).not.toHaveBeenCalled();
+          expect(spyOnEmitChanged).not.toHaveBeenCalledWith();
         });
       });
 

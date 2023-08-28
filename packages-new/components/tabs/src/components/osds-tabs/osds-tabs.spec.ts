@@ -13,7 +13,7 @@ import { OsdsTabs } from './osds-tabs';
 import { OsdsTabBarItem } from '../osds-tab-bar-item/osds-tab-bar-item';
 import { OdsTabItemSelectEventDetail } from '../osds-tab-bar-item/interfaces/events';
 
-describe('spec:OsdsTabs', () => {
+describe('spec:osds-tabs', () => {
   const baseAttribute = { contrasted: DEFAULT_ATTRIBUTE.contrasted, panel: DEFAULT_ATTRIBUTE.panel, size: DEFAULT_ATTRIBUTE.size };
   let page: SpecPage;
   let shadowRoot: ShadowRoot | null | undefined;
@@ -62,12 +62,12 @@ describe('spec:OsdsTabs', () => {
   });
 
   it('should render', async () => {
-    await setup({});
-    expect(shadowRoot).toBeTruthy();
+    await setup();
+    expect(page.root?.shadowRoot).toBeTruthy();
     expect(instance).toBeTruthy();
   });
 
-  it('should have his controller', async () => {
+  it('should have its controller', async () => {
     await setup({});
     expect(controller).toBeTruthy();
   });
@@ -81,13 +81,6 @@ describe('spec:OsdsTabs', () => {
       await setup({ attributes: {}, html: baseHtml({}) });
       expect(topSlot).toBeTruthy();
     });
-  });
-
-  it('afterInit called', async () => {
-    const component = new OsdsTabs();
-    jest.spyOn(component, 'afterInit');
-    component.componentDidLoad();
-    expect(component.afterInit).toHaveBeenCalledTimes(1);
   });
 
   /**

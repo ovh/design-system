@@ -1,29 +1,3 @@
-// /* eslint-disable no-console */
-// jest.mock('@ovhcloud/ods-core/src/components/tabs/ods-tab-panel/ods-tab-panel-controller'); // keep jest.mock before any import
-
-// import {
-//   OdsClearLoggerSpy,
-//   OdsCreateAttributes,
-//   OdsInitializeLoggerSpy,
-//   OdsLoggerSpyReferences,
-//   OdsStringAttributes2Str,
-//   odsTabPanelBaseAttributes,
-//   odsUnitTestAttribute,
-// } from '@ovhcloud/ods-testing';
-// import { getAttributeContextOptions } from '@ovhcloud/ods-stencil/libraries/stencil-testing';
-// import { OsdsTabsPanel } from './osds-tab-panel';
-// import {
-//   OdsComponentAttributes2StringAttributes,
-//   OdsLogger,
-//   OdsTabPanel,
-//   OdsTabPanelAttributes,
-//   OdsTabPanelController,
-//   odsTabPanelDefaultAttributes,
-// } from '@ovhcloud/ods-core';
-// import { newSpecPage, SpecPage } from '@stencil/core/testing';
-
-jest.mock('./core/controller'); // keep jest.mock before any
-
 import type { SpecPage } from '@stencil/core/testing';
 import type { OdsTabPanelAttribute } from './interfaces/attributes';
 import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';

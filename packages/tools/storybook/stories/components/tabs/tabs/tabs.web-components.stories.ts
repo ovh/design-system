@@ -2,7 +2,7 @@ import { html } from 'lit-html';
 import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../../core/componentHTMLUtils';
 import { defineCustomElements } from '@ovhcloud/ods-component-tabs/loader';
 import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-component-tabs/src/components/osds-tabs/constants/default-attributes';
-import { ODS_TABS_SIZES } from '@ovhcloud/ods-component-tabs/src/components/osds-tabs/constants/tabs-size';
+import { ODS_TABS_SIZES } from '@ovhcloud/ods-component-tabs';
 // @ts-ignore
 import changelog from '@ovhcloud/ods-component-tabs/CHANGELOG.md';
 // @ts-ignore

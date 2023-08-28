@@ -6,13 +6,13 @@ interface OdsTabsAttribute {
      */
   contrasted: boolean;
   /**
-   * Tabs size
-   */
-  size: ODS_TABS_SIZE;
-  /**
    * Tabs active panel
    */
   panel: string;
+  /**
+   * Tabs size
+   */
+  size: ODS_TABS_SIZE;
 }
 
 export {

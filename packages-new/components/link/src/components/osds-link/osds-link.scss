@@ -8,6 +8,8 @@
 // CSS for the component but not for theming
 
 :host {
+  display: inline-flex;
+
   @include osds-link-on-link-container() {
     cursor: pointer;
     text-decoration: none;

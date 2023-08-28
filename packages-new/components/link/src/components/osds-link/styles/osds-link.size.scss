@@ -7,9 +7,5 @@
       display: inline-flex;
       align-items: baseline;
     }
-
-    @include osds-link-on-selected-host() {
-      display: inline-flex;
-    }
   }
 }

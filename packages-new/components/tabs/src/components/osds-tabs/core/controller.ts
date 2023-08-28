@@ -2,11 +2,6 @@ import type { OsdsTabs } from '../osds-tabs';
 import { OsdsTabBarItem } from '../../osds-tab-bar-item/osds-tab-bar-item';
 import { OsdsTabsPanel } from '../../osds-tab-panel/osds-tab-panel';
 
-
-// import type { OdsTextAreaValidityState } from '@ovhcloud/ods-common-core';
-// import type { OsdsTextArea } from '../osds-textarea';
-// import { OdsFormControl, OdsLogger, OdsTextAreaGetValidityState } from '@ovhcloud/ods-common-core';
-
 /**
  * common controller logic for text component used by the different implementations.
  * it contains all the glue between framework implementation and the third party service.
@@ -21,10 +16,6 @@ class OdsTabsController {
   beforeInit() {
     this.changeActivePanel(this.component.panel);
     this.component.onContrastedPropChange(this.component.contrasted);
-  }
-
-  afterInit() {
-    // nothing for now
   }
 
   changeActivePanel(panel: string) {

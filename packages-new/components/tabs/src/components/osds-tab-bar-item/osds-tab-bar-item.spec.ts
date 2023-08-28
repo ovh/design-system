@@ -44,7 +44,6 @@ describe('spec:OsdsTabBarItem', () => {
     controller = (OdsTabBarItemController as unknown as jest.SpyInstance<OdsTabBarItemController, unknown[]>).mock.instances[ 0 ];
   }
 
-
   beforeEach(() => {
     const loggerMocked = new OdsLogger('myLoggerMocked');
     loggerSpyReferences = OdsInitializeLoggerSpy({

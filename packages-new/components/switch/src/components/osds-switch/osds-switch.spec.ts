@@ -4,7 +4,7 @@ import type { SpecPage } from '@stencil/core/testing';
 import type { OdsSwitchAttribute } from './interfaces/attributes';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute, OdsUnitTestAttributeType } from '@ovhcloud/ods-common-testing';
 import { newSpecPage } from '@stencil/core/testing';
-import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { OsdsSwitch } from './osds-switch';
 import { OdsSwitchController } from './core/controller';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
@@ -16,7 +16,7 @@ describe('spec:osds-switch', () => {
   let root: HTMLElement | undefined;
   let instance: OsdsSwitch;
   let controller: OdsSwitchController;
-  let mainSlot: HTMLElement;
+  let mainSlot: HTMLElement | null | undefined;
 
   afterEach(() => {
     jest.clearAllMocks();
@@ -57,8 +57,8 @@ describe('spec:osds-switch', () => {
     describe('color', () => {
       odsUnitTestAttribute<OdsSwitchAttribute, 'color'>({
         name: 'color',
-        newValue: OdsThemeColorIntent.default,
-        value: OdsThemeColorIntent.primary,
+        newValue: ODS_THEME_COLOR_INTENT.default,
+        value: ODS_THEME_COLOR_INTENT.primary,
         setup: (value) => setup({ attributes: { ['color']: value } }),
         defaultValue: DEFAULT_ATTRIBUTE.color,
         ...config,
@@ -145,7 +145,7 @@ describe('spec:osds-switch', () => {
       await setup();
       const keyArraowLeft = new KeyboardEvent('keydown', { code: 'ArrowLeft' });
       instance.handlerOnKeyDown(keyArraowLeft);
-      root.dispatchEvent(keyArraowLeft);
+      root?.dispatchEvent(keyArraowLeft);
       expect(controller.findPreviousSwitchItem).toHaveBeenCalledTimes(2);
     });
 
@@ -153,7 +153,7 @@ describe('spec:osds-switch', () => {
       await setup();
       const keyArrawRight = new KeyboardEvent('keydown', { code: 'ArrowRight' });
       instance.handlerOnKeyDown(keyArrawRight);
-      root.dispatchEvent(keyArrawRight);
+      root?.dispatchEvent(keyArrawRight);
       expect(controller.findNextSwitchItem).toHaveBeenCalledTimes(2);
     });
 
@@ -161,13 +161,13 @@ describe('spec:osds-switch', () => {
       await setup();
       const keySpace = new KeyboardEvent('keydown', { code: 'Space' });
       instance.handlerOnKeyDown(keySpace);
-      root.dispatchEvent(keySpace);
+      root?.dispatchEvent(keySpace);
       const keyEnter = new KeyboardEvent('keydown', { code: 'Enter' });
       instance.handlerOnKeyDown(keyEnter);
-      root.dispatchEvent(keyEnter);
+      root?.dispatchEvent(keyEnter);
       const keyEscape = new KeyboardEvent('keydown', { code: 'Escape' });
       instance.handlerOnKeyDown(keyEscape);
-      root.dispatchEvent(keyEscape);
+      root?.dispatchEvent(keyEscape);
       const keyA = new KeyboardEvent('keydown', { code: 'A' });
       instance.handlerOnKeyDown(keyA);
 

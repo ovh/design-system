@@ -1,7 +1,7 @@
 import type { E2EElement, E2EPage } from '@stencil/core/testing';
 import type { OdsDividerAttribute } from './interfaces/attributes';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
-import { OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
 import { newE2EPage } from '@stencil/core/testing';
 import { ODS_DIVIDER_SIZES } from './constants/divider-size';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
@@ -29,7 +29,7 @@ describe('e2e:osds-divider', () => {
 
   describe('screenshots', () => {
     [() => {}, () => el.setProperty('separator', true), () => {el.setProperty('contrasted', true); el.setProperty('separator', true)}].forEach((action) => {
-      OdsThemeColorIntentList.forEach((color) => {
+      ODS_THEME_COLOR_INTENTS.forEach((color) => {
         ODS_DIVIDER_SIZES.forEach((size) => {
           it([color, size, action].join(', '), async () => {
             await setup({

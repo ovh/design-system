@@ -9,7 +9,7 @@ import {
   odsStringAttributes2Str,
   odsUnitTestAttribute,
 } from '@ovhcloud/ods-common-testing';
-import { OdsThemeColorIntent, OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
 import { OsdsCheckboxButton } from './osds-checkbox-button';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_CHECKBOX_BUTTON_SIZE, ODS_CHECKBOX_BUTTON_SIZES } from './constants/ods-checkbox-button-size';
@@ -74,13 +74,13 @@ describe('spec:osds-checkbox-button', () => {
       odsUnitTestAttribute<OdsCheckboxButtonAttribute, 'color'>({
           name: 'color',
           defaultValue: DEFAULT_ATTRIBUTE.color,
-          newValue: OdsThemeColorIntent.primary,
-          value: OdsThemeColorIntent.default,
+          newValue: ODS_THEME_COLOR_INTENT.primary,
+          value: ODS_THEME_COLOR_INTENT.default,
           setup: (color) => setup({ attributes: { color } }),
           ...config,
       });
       it('should set a color if attribute is added', async () => {
-        const randomColor = OdsThemeColorIntentList[ Math.floor(Math.random() * OdsThemeColorIntentList.length) ];
+        const randomColor = ODS_THEME_COLOR_INTENTS[ Math.floor(Math.random() * ODS_THEME_COLOR_INTENTS.length) ];
         await setup({ attributes: { color: randomColor } });
         expect(page.root?.color).toBe(randomColor);
       });

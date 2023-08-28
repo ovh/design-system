@@ -1,6 +1,6 @@
 import type { OsdsButton } from '../osds-button';
 import { OdsLogger, OdsWarnComponentAttribute } from '@ovhcloud/ods-common-core';
-import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_BUTTON_SIZE } from '../constants/button-size';
 import { ODS_BUTTON_VARIANT } from '../constants/button-variant';
 
@@ -22,9 +22,9 @@ class OdsButtonController {
    */
   validateAttributes(): void {
     const logger = this.logger;
-    OdsWarnComponentAttribute<OdsThemeColorIntent, OsdsButton>({
+    OdsWarnComponentAttribute<ODS_THEME_COLOR_INTENT, OsdsButton>({
       logger,
-      attributeValues: OdsThemeColorIntent as Record<string, unknown>,
+      attributeValues: ODS_THEME_COLOR_INTENT as Record<string, unknown>,
       attributeName: 'color',
       attribute: this.component.color
     });

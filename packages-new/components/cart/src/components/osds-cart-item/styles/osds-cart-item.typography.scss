@@ -1,4 +1,4 @@
-@import '~@ovhcloud/ods-theming/typography/ods-component-typography';
+@import '~@ovhcloud/ods-common-theming/typography/ods-component-typography';
 
 slot[name='subhead'] {
   $typography-properties: ods-get-typography-properties(body, '100');

@@ -1,11 +1,11 @@
 import type { OdsToggleAttribute } from '../interfaces/attributes';
-import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 
 const DEFAULT_ATTRIBUTE: OdsToggleAttribute = Object.freeze({
   contrasted: false,
   checked: false,
   checking: false,
-  color: OdsThemeColorIntent.primary,
+  color: ODS_THEME_COLOR_INTENT.primary,
   disabled: false,
   interactive: true
 });

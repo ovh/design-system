@@ -1,5 +1,5 @@
 @import './osds-search-bar.mixins';
-@import '~@ovhcloud/ods-theming/size/ods-component-size';
+@import '~@ovhcloud/ods-common-theming/size/ods-component-size';
 
 // Main CSS mixin for sizes
 @mixin osds-search-bar-theme-size() {
@@ -10,5 +10,5 @@
     }
     :host {
         width: 100%;
-    }     
+    }
 }

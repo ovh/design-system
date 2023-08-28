@@ -37,7 +37,7 @@
   "dependencies": {
     "@ovhcloud/ods-common-core": "^15.0.1",
     "@ovhcloud/ods-common-stencil": "^15.0.1",
-    "@ovhcloud/ods-theming": "^15.0.1",
+    "@ovhcloud/ods-common-theming": "^15.0.1",
     "flag-icons": "^6.6.6",
     "workbox-build": "4.3.1"
   },

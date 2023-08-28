@@ -3,7 +3,7 @@ jest.mock('./core/controller'); // keep jest.mock before any
 import type { SpecPage } from '@stencil/core/testing';
 import type { OdsIconAttribute } from './interfaces/attributes';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
-import { OdsThemeColorIntent, OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
 import { newSpecPage } from '@stencil/core/testing';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_ICON_NAME } from './constants/icon-name';
@@ -65,14 +65,14 @@ describe('spec:osds-icon', () => {
       odsUnitTestAttribute<OdsIconAttribute, 'color'>({
         name: 'color',
         defaultValue: DEFAULT_ATTRIBUTE.color,
-        newValue: OdsThemeColorIntent.error,
-        value: OdsThemeColorIntent.success,
+        newValue: ODS_THEME_COLOR_INTENT.error,
+        value: ODS_THEME_COLOR_INTENT.success,
         setup: (value) => setup({ attributes: { ['color']: value } }),
         ...config,
       });
 
       it('should set a color if attribute is added', async () => {
-        const randomColor = OdsThemeColorIntentList[Math.floor(Math.random() * OdsThemeColorIntentList.length)];
+        const randomColor = ODS_THEME_COLOR_INTENTS[Math.floor(Math.random() * ODS_THEME_COLOR_INTENTS.length)];
         await setup({ attributes: { color: randomColor } });
         expect(instance.color).toBe(randomColor);
       });

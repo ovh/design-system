@@ -5,7 +5,7 @@
 
 import './components';
 import './global';
-import { OdsLogger } from '@ovhcloud/ods-core';
+import { OdsLogger } from '@ovhcloud/ods-common-core';
 import '@ovhcloud/ods-component-radio';
 import '@ovhcloud/ods-component-icon';
 

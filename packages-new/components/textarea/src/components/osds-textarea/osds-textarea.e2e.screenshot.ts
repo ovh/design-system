@@ -2,7 +2,7 @@ import type { E2EElement, E2EPage } from '@stencil/core/testing';
 import type { OdsTextAreaAttribute } from './interfaces/attributes';
 import { newE2EPage } from '@stencil/core/testing';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
-import { OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 
 describe('e2e:osds-textarea', () => {
@@ -71,7 +71,7 @@ describe('e2e:osds-textarea', () => {
     // Todo : add active behaviour on top of hover and focus
     screenshotActions.forEach(({ actionDescription, action }) => {
       screenshotBehaviours.forEach(({ behaviourDescription, behaviour }) => {
-        OdsThemeColorIntentList.forEach((color) => {
+        ODS_THEME_COLOR_INTENTS.forEach((color) => {
           it([color, actionDescription, behaviourDescription].join(', '), async () => {
             await setup({
               attributes: {

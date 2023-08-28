@@ -13,10 +13,10 @@ import { OsdsFlag } from '@ovhcloud/ods-component-flag/react'
 import { OsdsToggle } from '@ovhcloud/ods-component-toggle/react'
 
 // each type you import types from ODS, you will need to import the core
-import { Ods, OdsExternalLogger, ODS_COUNTRY_ISO_CODE } from '@ovhcloud/ods-core';
+import { Ods, OdsExternalLogger, ODS_COUNTRY_ISO_CODE } from '@ovhcloud/ods-common-core';
 
 // each theming related type you use, you will need to import the theming
-import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 
 import TabsUsage from './Tabs';
 import CartManagerUsage from './CartManagerUsage';
@@ -43,7 +43,7 @@ const Demo: React.FC = () => (
     <h3 className={'ods-subheading-200'}>ODS React components</h3>
     <h5>Ods Button</h5>
     <div>
-      <OsdsButton color={OdsThemeColorIntent.primary} onClick={handleOdsButtonClick}>ODS button</OsdsButton>
+      <OsdsButton color={ODS_THEME_COLOR_INTENT.primary} onClick={handleOdsButtonClick}>ODS button</OsdsButton>
       <MyButton onClick={handleMyButtonClick}>My React Button based on ODS</MyButton>
     </div>
 

@@ -2,8 +2,8 @@
 @import 'styles/osds-form-field.color';
 @import 'styles/osds-form-field.size';
 @import 'styles/osds-form-field.typography';
-@import '~@ovhcloud/ods-theming/color/ods-theming-color';
-@import '~@ovhcloud/ods-theming/ods-theme';
+@import '~@ovhcloud/ods-common-theming/color/ods-theming-color';
+@import '~@ovhcloud/ods-common-theming/ods-theme';
 
 // CSS targeted only for this component
 // /!\ for theming purposes, it has to be done in theming files

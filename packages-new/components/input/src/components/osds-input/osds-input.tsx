@@ -7,7 +7,7 @@ import { Component, Element, Event, Host, Listen, Method, Prop, State, Watch, h 
 import { OdsLogger } from '@ovhcloud/ods-common-core';
 import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
 import { ODS_SPINNER_SIZE } from '@ovhcloud/ods-component-spinner';
-import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_INPUT_SIZE } from './constants/input-size';
 import { ODS_INPUT_TYPE } from './constants/input-type';
@@ -49,7 +49,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
   @Prop({ reflect: true }) clearable?: boolean = DEFAULT_ATTRIBUTE.clearable;
 
   /** @see OdsInputAttributes.color */
-  @Prop({ reflect: true }) color?: OdsThemeColorIntent = DEFAULT_ATTRIBUTE.color;
+  @Prop({ reflect: true }) color?: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
 
   /** @see OdsInputAttributes.contrasted */
   @Prop({ reflect: true }) contrasted?: boolean = DEFAULT_ATTRIBUTE.contrasted;

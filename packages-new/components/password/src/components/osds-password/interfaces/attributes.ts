@@ -1,6 +1,6 @@
 import type { OdsFormForbiddenValues } from '@ovhcloud/ods-common-core';
 import type { ODS_INPUT_SIZE } from '@ovhcloud/ods-component-input';
-import type { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 
 interface OdsPasswordAttribute {
   /** ariaLabel of the password */
@@ -10,7 +10,7 @@ interface OdsPasswordAttribute {
   /** Ability to clear the password value */
   clearable?: boolean;
   /** Main color of the password: see component principles */
-  color?: OdsThemeColorIntent;
+  color?: ODS_THEME_COLOR_INTENT;
   /** Indicates if the password is contrasted or not: see component principles */
   contrasted?: boolean;
   /** Indicates if the password is disabled or not: see component principles */

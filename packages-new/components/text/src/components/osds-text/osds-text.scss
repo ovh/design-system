@@ -1,8 +1,8 @@
 @import 'styles/osds-text.mixins';
 @import 'styles/osds-text.color';
 @import 'styles/osds-text.typography';
-@import '~@ovhcloud/ods-theming/color/ods-theming-color';
-@import '~@ovhcloud/ods-theming/ods-theme';
+@import '~@ovhcloud/ods-common-theming/color/ods-theming-color';
+@import '~@ovhcloud/ods-common-theming/ods-theme';
 
 :host([break-spaces]) {
   white-space: break-spaces;

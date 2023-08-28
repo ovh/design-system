@@ -2,7 +2,7 @@ import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 import { defineCustomElements } from '@ovhcloud/ods-component-content-addon/loader';
 import { defineCustomElements as tileCustomElements } from '@ovhcloud/ods-component-tile/loader';
-import { olesIpsum, OlesIpsumGeneration } from '@ovhcloud/ods-core';
+import { olesIpsum, OlesIpsumGeneration } from '@ovhcloud/ods-common-core';
 
 defineCustomElements();
 tileCustomElements();

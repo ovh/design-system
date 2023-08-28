@@ -2,7 +2,7 @@ import type { E2EElement, E2EPage } from '@stencil/core/testing';
 import type { OdsTileAttribute } from './interfaces/attributes';
 import { newE2EPage } from '@stencil/core/testing';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
-import { OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_TILE_SIZES } from './constants/tile-size';
 import { ODS_TILE_VARIANTS } from './constants/tile-variant';
@@ -53,7 +53,7 @@ describe('e2e:osds-tile', () => {
 
   describe('screenshots', () => {
     screenshotActions.forEach(({ actionDescription, action }) => {
-        OdsThemeColorIntentList.forEach((color) => {
+      ODS_THEME_COLOR_INTENTS.forEach((color) => {
           ODS_TILE_SIZES.forEach((size) => {
             ODS_TILE_VARIANTS.forEach((variant) => {
             it([color, size, variant, actionDescription].join(', '), async () => {

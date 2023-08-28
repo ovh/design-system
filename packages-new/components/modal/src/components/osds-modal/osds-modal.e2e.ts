@@ -1,12 +1,12 @@
 import type { E2EElement, E2EPage } from '@stencil/core/testing';
 import type { OdsModalAttribute } from './interfaces/attributes';
-import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { newE2EPage } from '@stencil/core/testing';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 
 describe('e2e:osds-modal', () => {
-  const baseAttribute = { color: OdsThemeColorIntent.info, dismissible: true, headline: '', masked: false };
+  const baseAttribute = { color: ODS_THEME_COLOR_INTENT.info, dismissible: true, headline: '', masked: false };
   let page: E2EPage;
   let el: E2EElement;
 
@@ -169,7 +169,7 @@ describe('e2e:osds-modal', () => {
   });
 
   describe('keyboard navigation', () => {
-    let outsideButton;
+    let outsideButton: E2EElement;
 
     beforeEach(async () => {
       page = await newE2EPage();
@@ -189,8 +189,8 @@ describe('e2e:osds-modal', () => {
       await page.waitForChanges();
     });
 
-    it('should have inert attribute on outsideButton when modal is active', async () => {
-      const inert = await outsideButton.getAttribute('inert');
+    it('should have inert attribute on outsideButton when modal is active', () => {
+      const inert = outsideButton.getAttribute('inert');
       expect(inert).not.toBeNull();
     });
 
@@ -198,9 +198,8 @@ describe('e2e:osds-modal', () => {
       await el.callMethod('close');
       await page.waitForChanges();
 
-      const inert = await outsideButton.getAttribute('inert');
+      const inert = outsideButton.getAttribute('inert');
       expect(inert).toBeNull();
     });
   });
-
 });

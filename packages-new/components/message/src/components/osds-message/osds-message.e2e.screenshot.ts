@@ -1,6 +1,6 @@
-import type { E2EElement, E2EPage } from '@stencil/core/testing';
+import type { E2EPage } from '@stencil/core/testing';
 import type { OdsMessageAttribute } from './interfaces/attributes';
-import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { newE2EPage } from '@stencil/core/testing';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import { ODS_ICON_NAME } from '@ovhcloud/ods-component-icon';
@@ -9,7 +9,6 @@ import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 
 describe('e2e:osds-message', () => {
   let page: E2EPage;
-  let el: E2EElement;
 
   async function setup({ attributes = {}, onPage }: { attributes?: Partial<OdsMessageAttribute>, html?: string, onPage?: ({ page }: { page: E2EPage }) => void } = {}) {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsMessageAttribute>(attributes, DEFAULT_ATTRIBUTE);
@@ -19,14 +18,12 @@ describe('e2e:osds-message', () => {
 
     await page.setContent(`<osds-message ${odsStringAttributes2Str(stringAttributes)}></osds-message>`);
     await page.evaluate(() => document.body.style.setProperty('margin', '4px'));
-
-    el = await page.find('osds-message');
   }
 
   describe('screenshots', () => {
     [false, true].forEach((contrasted) => {
       [false, true].forEach((removable) => {
-        [undefined, OdsThemeColorIntent.primary].forEach((color) => {
+        [undefined, ODS_THEME_COLOR_INTENT.primary].forEach((color) => {
           ODS_MESSAGE_TYPES.forEach((type) => {
             [undefined, ODS_ICON_NAME.CHECK].forEach((icon) => {
               it([color, type, icon, contrasted && 'contrasted', removable && 'removable'].join(', '), async () => {

@@ -1,5 +1,5 @@
 import type { OdsHTMLAnchorElementRel, OdsHTMLAnchorElementTarget } from '@ovhcloud/ods-common-core';
-import type { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import type { HTMLStencilElement } from '@stencil/core/internal';
 import type { ODS_BUTTON_SIZE } from './constants/button-size';
 import type { ODS_BUTTON_TYPE } from './constants/button-type';
@@ -24,7 +24,7 @@ export class OsdsButton implements OdsButtonAttribute {
   @Element() el!: HTMLStencilElement;
 
   /** @see OdsButtonAttributes.color */
-  @Prop({ reflect: true }) public color?: OdsThemeColorIntent = DEFAULT_ATTRIBUTE.color;
+  @Prop({ reflect: true }) public color?: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
 
   /** @see OdsButtonAttributes.contrasted */
   @Prop({ reflect: true }) public contrasted? = DEFAULT_ATTRIBUTE.contrasted;

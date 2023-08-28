@@ -1,6 +1,6 @@
 import type { E2EElement, E2EPage } from '@stencil/core/testing';
 import type { OdsMessageAttribute } from './interfaces/attributes';
-import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { newE2EPage } from '@stencil/core/testing';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import { ODS_ICON_NAME } from '@ovhcloud/ods-component-icon';
@@ -37,7 +37,7 @@ describe('e2e:osds-message', () => {
     it('should have a success type', async () => {
       await setup({ attributes: { type: ODS_MESSAGE_TYPE.success } });
       expect(await el.getProperty('type')).toBe(ODS_MESSAGE_TYPE.success);
-      expect(await el.getProperty('color')).toBe(OdsThemeColorIntent.success);
+      expect(await el.getProperty('color')).toBe(ODS_THEME_COLOR_INTENT.success);
 
       const icon = await (await page.find('osds-message >>> .message__wrapper')).find('osds-icon');
       expect(icon.getAttribute('name')).toBe(ODS_ICON_NAME.SUCCESS_CIRCLE);
@@ -46,7 +46,7 @@ describe('e2e:osds-message', () => {
     it('should have a info type', async () => {
       await setup({ attributes: { type: ODS_MESSAGE_TYPE.info } });
       expect(await el.getProperty('type')).toBe(ODS_MESSAGE_TYPE.info);
-      expect(await el.getProperty('color')).toBe(OdsThemeColorIntent.info);
+      expect(await el.getProperty('color')).toBe(ODS_THEME_COLOR_INTENT.info);
 
       const icon = await (await page.find('osds-message >>> .message__wrapper')).find('osds-icon');
       expect(icon.getAttribute('name')).toBe(ODS_ICON_NAME.INFO_CIRCLE);
@@ -55,7 +55,7 @@ describe('e2e:osds-message', () => {
     it('should have a warning type', async () => {
       await setup({ attributes: { type: ODS_MESSAGE_TYPE.warning } });
       expect(await el.getProperty('type')).toBe(ODS_MESSAGE_TYPE.warning);
-      expect(await el.getProperty('color')).toBe(OdsThemeColorIntent.warning);
+      expect(await el.getProperty('color')).toBe(ODS_THEME_COLOR_INTENT.warning);
 
       const icon = await (await page.find('osds-message >>> .message__wrapper')).find('osds-icon');
       expect(icon.getAttribute('name')).toBe(ODS_ICON_NAME.WARNING_CIRCLE);
@@ -64,7 +64,7 @@ describe('e2e:osds-message', () => {
     it('should have a error type', async () => {
       await setup({ attributes: { type: ODS_MESSAGE_TYPE.error } });
       expect(await el.getProperty('type')).toBe(ODS_MESSAGE_TYPE.error);
-      expect(await el.getProperty('color')).toBe(OdsThemeColorIntent.error);
+      expect(await el.getProperty('color')).toBe(ODS_THEME_COLOR_INTENT.error);
 
       const icon = await (await page.find('osds-message >>> .message__wrapper')).find('osds-icon');
       expect(icon.getAttribute('name')).toBe(ODS_ICON_NAME.ERROR_CIRCLE);

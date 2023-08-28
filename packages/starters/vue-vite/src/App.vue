@@ -7,8 +7,8 @@ import viteLogo from './assets/vite.svg'
 import vueLogo from './assets/vue.svg'
 
 // for each component's type you use from ODS, you will need to import the core or theming:
-import { Ods, odsSetup } from '@ovhcloud/ods-core'
-import { OdsThemeColorHue, OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { Ods, odsSetup } from '@ovhcloud/ods-common-core'
+import { ODS_THEME_COLOR_HUE, ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 
 // for each react component you use from `ODS`, use this import:
 import { OsdsText } from '@ovhcloud/ods-components/text/vue';
@@ -44,13 +44,13 @@ Ods.instance().assetPath('flags/flags-4x3/');
     <h1 class="ods-heading-800">ODS + Vite + Vue</h1>
     <div class="ods-caption-200">
       <p>
-        <OsdsText :color="OdsThemeColorIntent.info" :size="ODS_TEXT_SIZE._100">
+        <OsdsText :color="ODS_THEME_COLOR_INTENT.info" :size="ODS_TEXT_SIZE._100">
           Edit <code>src/App.tsx</code> and save to test HMR
         </OsdsText>
       </p>
     </div>
     <p>
-      <OsdsText :color="OdsThemeColorIntent.default" :size="ODS_TEXT_SIZE._200" :hue="OdsThemeColorHue._600">
+      <OsdsText :color="ODS_THEME_COLOR_INTENT.default" :size="ODS_TEXT_SIZE._200" :hue="ODS_THEME_COLOR_HUE._600">
         Click on the ODS, Vite or React logos to learn more
       </OsdsText>
     </p>

@@ -3,7 +3,7 @@ import { Component, Element, Host, Prop, h } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsToggleController } from './core/controller'
 
-import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 
 /**
  * @slot start - Fixed start toggle content
@@ -28,7 +28,7 @@ export class OsdsToggle implements OdsToggleAttribute {
   @Prop({ reflect: true }) public checking? = DEFAULT_ATTRIBUTE.checking;
 
   /** @see OdsToggleAttributes.color */
-  @Prop({ reflect: true }) public color?: OdsThemeColorIntent = DEFAULT_ATTRIBUTE.color;
+  @Prop({ reflect: true }) public color?: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
 
   /** @see OdsToggleAttributes.disabled */
   @Prop({ reflect: true }) public disabled? = DEFAULT_ATTRIBUTE.disabled;

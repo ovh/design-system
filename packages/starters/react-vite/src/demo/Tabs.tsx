@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { OsdsTabs, OsdsTabBar, OsdsTabBarItem, OsdsTabPanel } from '@ovhcloud/ods-components/tabs/react';
+import { OsdsTabs, OsdsTabBar, OsdsTabBarItem, OsdsTabPanel } from '@ovhcloud/ods-component-tabs/react';
 import { useLocation, Link, Route, Routes, } from 'react-router-dom';
 
 const DefaultPanel: React.FC = () => <div>Default panel</div>;

@@ -1,0 +1,27 @@
+{
+  "name": "@ovhcloud/ods-common-theming",
+  "version": "15.0.1",
+  "description": "ODS common theming helpers",
+  "author": "OVH SAS",
+  "license": "Apache-2.0",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "style": "index.css",
+  "scripts": {
+    "ignore:rm": "git clean -Xdf",
+    "build:esm": "tsc -p tsconfig.esm.json",
+    "build:cjs": "tsc -p tsconfig.cjs.json",
+    "build": "npm run build:esm && npm run build:cjs",
+    "build:prod": "npm run build",
+    "watch": "tsc -w -p tsconfig.esm.json",
+    "doc": "typedoc --plugin typedoc-plugin-markdown --hideBreadcrumbs true --hideInPageTOC true",
+    "doc:api": "typedoc --plugin none src/*",
+    "doc:sass": "sassdoc color size typography reset ods-theme.scss -d sassdoc",
+    "generate:licence": "npx generate-license-file --input package.json --output THIRD-PARTY-LICENCES --overwrite",
+    "generate:icons": "svgpack icons/_helpers/ > icons/_generated-icons.scss && svgpack icons/concept/ >> icons/_generated-icons.scss && svgpack icons/system/ >> icons/_generated-icons.scss"
+  },
+  "devDependencies": {
+    "@marsbased/svgpack": "^1.0.3",
+    "@ovhcloud/ods-library-dev": "^15.0.1"
+  }
+}

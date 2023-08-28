@@ -8,7 +8,7 @@ import {
   OdsErrorStateControl,
   OdsFormControl,
   OdsValidityState
-} from '@ovhcloud/ods-core';
+} from '@ovhcloud/ods-common-core';
 import { OdsRangeValueChangeEventDetail } from '@ovhcloud/ods-component-range';
 import { OdsInputValueChangeEventDetail } from '@ovhcloud/ods-component-input';
 

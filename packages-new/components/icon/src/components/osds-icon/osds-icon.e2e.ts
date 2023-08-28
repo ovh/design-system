@@ -2,7 +2,7 @@ import type { E2EElement, E2EPage } from '@stencil/core/testing';
 import type { OdsIconAttribute } from './interfaces/attributes';
 import { OdsLogger } from '@ovhcloud/ods-common-core';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
-import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { newE2EPage } from '@stencil/core/testing';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 
@@ -31,12 +31,12 @@ describe('e2e:osds-icon', () => {
   }
 
   it('should render', async () => {
-    await setup({ attributes: { color: OdsThemeColorIntent.primary, contrasted: false } });
+    await setup({ attributes: { color: ODS_THEME_COLOR_INTENT.primary, contrasted: false } });
     expect(el).not.toBeNull();
   });
 
   xit('should have the text icon', async () => {
-    await setup({ attributes: { color: OdsThemeColorIntent.primary, contrasted: false } });
+    await setup({ attributes: { color: ODS_THEME_COLOR_INTENT.primary, contrasted: false } });
     // todo
   });
 });

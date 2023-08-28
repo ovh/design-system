@@ -2,9 +2,9 @@
 @import 'styles/osds-input.color';
 @import 'styles/osds-input.size';
 @import 'styles/osds-input.typography';
-@import '~@ovhcloud/ods-theming/color/ods-theming-color';
-@import '~@ovhcloud/ods-theming/reset/ods-theming-reset.input';
-@import '~@ovhcloud/ods-theming/ods-theme';
+@import '~@ovhcloud/ods-common-theming/color/ods-theming-color';
+@import '~@ovhcloud/ods-common-theming/reset/ods-theming-reset.input';
+@import '~@ovhcloud/ods-common-theming/ods-theme';
 
 :host {
   align-items: center;

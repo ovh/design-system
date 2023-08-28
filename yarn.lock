@@ -5416,8 +5416,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-cdk@workspace:packages-new/cdk"
   dependencies:
+    "@ovhcloud/ods-common-theming": ^15.0.1
     "@ovhcloud/ods-dev": ^15.0.1
-    "@ovhcloud/ods-theming": ^15.0.1
   languageName: unknown
   linkType: soft
 
@@ -5455,6 +5455,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-common-theming@^15.0.1, @ovhcloud/ods-common-theming@workspace:packages-new/common/theming":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-common-theming@workspace:packages-new/common/theming"
+  dependencies:
+    "@marsbased/svgpack": ^1.0.3
+    "@ovhcloud/ods-library-dev": ^15.0.1
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-component-accordion-react@workspace:packages-new/components/accordion/react":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-accordion-react@workspace:packages-new/components/accordion/react"
@@ -5485,10 +5494,10 @@ __metadata:
     "@ovhcloud/ods-common-core": ^15.0.1
     "@ovhcloud/ods-common-stencil": ^15.0.1
     "@ovhcloud/ods-common-testing": ^15.0.1
+    "@ovhcloud/ods-common-theming": ^15.0.1
     "@ovhcloud/ods-component-collapsible": ^15.0.1
     "@ovhcloud/ods-component-icon": ^15.0.1
     "@ovhcloud/ods-stencil-dev": ^15.0.1
-    "@ovhcloud/ods-theming": ^15.0.1
   languageName: unknown
   linkType: soft
 
@@ -5522,11 +5531,11 @@ __metadata:
     "@ovhcloud/ods-common-core": ^15.0.1
     "@ovhcloud/ods-common-stencil": ^15.0.1
     "@ovhcloud/ods-common-testing": ^15.0.1
+    "@ovhcloud/ods-common-theming": ^15.0.1
     "@ovhcloud/ods-component-icon": ^15.0.1
     "@ovhcloud/ods-component-link": ^15.0.1
     "@ovhcloud/ods-component-text": ^15.0.1
     "@ovhcloud/ods-stencil-dev": ^15.0.1
-    "@ovhcloud/ods-theming": ^15.0.1
   languageName: unknown
   linkType: soft
 
@@ -5560,9 +5569,9 @@ __metadata:
     "@ovhcloud/ods-common-core": ^15.0.1
     "@ovhcloud/ods-common-stencil": ^15.0.1
     "@ovhcloud/ods-common-testing": ^15.0.1
+    "@ovhcloud/ods-common-theming": ^15.0.1
     "@ovhcloud/ods-component-icon": ^15.0.1
     "@ovhcloud/ods-stencil-dev": ^15.0.1
-    "@ovhcloud/ods-theming": ^15.0.1
   languageName: unknown
   linkType: soft
 
@@ -5596,9 +5605,9 @@ __metadata:
     "@ovhcloud/ods-common-core": ^15.0.1
     "@ovhcloud/ods-common-stencil": ^15.0.1
     "@ovhcloud/ods-common-testing": ^15.0.1
+    "@ovhcloud/ods-common-theming": ^15.0.1
     "@ovhcloud/ods-component-divider": ^15.0.1
     "@ovhcloud/ods-stencil-dev": ^15.0.1
-    "@ovhcloud/ods-theming": ^15.0.1
   languageName: unknown
   linkType: soft
 
@@ -5632,9 +5641,9 @@ __metadata:
     "@ovhcloud/ods-common-core": ^15.0.1
     "@ovhcloud/ods-common-stencil": ^15.0.1
     "@ovhcloud/ods-common-testing": ^15.0.1
+    "@ovhcloud/ods-common-theming": ^15.0.1
     "@ovhcloud/ods-component-icon": ^15.0.1
     "@ovhcloud/ods-stencil-dev": ^15.0.1
-    "@ovhcloud/ods-theming": ^15.0.1
   languageName: unknown
   linkType: soft
 
@@ -5668,9 +5677,9 @@ __metadata:
     "@ovhcloud/ods-common-core": ^15.0.1
     "@ovhcloud/ods-common-stencil": ^15.0.1
     "@ovhcloud/ods-common-testing": ^15.0.1
+    "@ovhcloud/ods-common-theming": ^15.0.1
     "@ovhcloud/ods-component-tile": ^15.0.1
     "@ovhcloud/ods-stencil-dev": ^15.0.1
-    "@ovhcloud/ods-theming": ^15.0.1
   languageName: unknown
   linkType: soft
 
@@ -5704,9 +5713,9 @@ __metadata:
     "@ovhcloud/ods-common-core": ^15.0.1
     "@ovhcloud/ods-common-stencil": ^15.0.1
     "@ovhcloud/ods-common-testing": ^15.0.1
+    "@ovhcloud/ods-common-theming": ^15.0.1
     "@ovhcloud/ods-component-icon": ^15.0.1
     "@ovhcloud/ods-stencil-dev": ^15.0.1
-    "@ovhcloud/ods-theming": ^15.0.1
   languageName: unknown
   linkType: soft
 
@@ -5740,10 +5749,10 @@ __metadata:
     "@ovhcloud/ods-common-core": ^15.0.1
     "@ovhcloud/ods-common-stencil": ^15.0.1
     "@ovhcloud/ods-common-testing": ^15.0.1
+    "@ovhcloud/ods-common-theming": ^15.0.1
     "@ovhcloud/ods-component-icon": ^15.0.1
     "@ovhcloud/ods-component-input": ^15.0.1
     "@ovhcloud/ods-stencil-dev": ^15.0.1
-    "@ovhcloud/ods-theming": ^15.0.1
   languageName: unknown
   linkType: soft
 
@@ -5777,10 +5786,10 @@ __metadata:
     "@ovhcloud/ods-common-core": ^15.0.1
     "@ovhcloud/ods-common-stencil": ^15.0.1
     "@ovhcloud/ods-common-testing": ^15.0.1
+    "@ovhcloud/ods-common-theming": ^15.0.1
     "@ovhcloud/ods-component-button": ^15.0.1
     "@ovhcloud/ods-component-icon": ^15.0.1
     "@ovhcloud/ods-stencil-dev": ^15.0.1
-    "@ovhcloud/ods-theming": ^15.0.1
   languageName: unknown
   linkType: soft
 
@@ -5814,8 +5823,8 @@ __metadata:
     "@ovhcloud/ods-common-core": ^15.0.1
     "@ovhcloud/ods-common-stencil": ^15.0.1
     "@ovhcloud/ods-common-testing": ^15.0.1
+    "@ovhcloud/ods-common-theming": ^15.0.1
     "@ovhcloud/ods-stencil-dev": ^15.0.1
-    "@ovhcloud/ods-theming": ^15.0.1
   languageName: unknown
   linkType: soft
 
@@ -5849,8 +5858,8 @@ __metadata:
     "@ovhcloud/ods-common-core": ^15.0.1
     "@ovhcloud/ods-common-stencil": ^15.0.1
     "@ovhcloud/ods-common-testing": ^15.0.1
+    "@ovhcloud/ods-common-theming": ^15.0.1
     "@ovhcloud/ods-stencil-dev": ^15.0.1
-    "@ovhcloud/ods-theming": ^15.0.1
   languageName: unknown
   linkType: soft
 
@@ -5885,8 +5894,8 @@ __metadata:
     "@ovhcloud/ods-common-core": ^15.0.1
     "@ovhcloud/ods-common-stencil": ^15.0.1
     "@ovhcloud/ods-common-testing": ^15.0.1
+    "@ovhcloud/ods-common-theming": ^15.0.1
     "@ovhcloud/ods-stencil-dev": ^15.0.1
-    "@ovhcloud/ods-theming": ^15.0.1
   languageName: unknown
   linkType: soft
 
@@ -5920,8 +5929,8 @@ __metadata:
     "@ovhcloud/ods-common-core": ^15.0.1
     "@ovhcloud/ods-common-stencil": ^15.0.1
     "@ovhcloud/ods-common-testing": ^15.0.1
+    "@ovhcloud/ods-common-theming": ^15.0.1
     "@ovhcloud/ods-stencil-dev": ^15.0.1
-    "@ovhcloud/ods-theming": ^15.0.1
     flag-icons: ^6.6.6
     workbox-build: 4.3.1
   languageName: unknown
@@ -5957,13 +5966,13 @@ __metadata:
     "@ovhcloud/ods-common-core": ^15.0.1
     "@ovhcloud/ods-common-stencil": ^15.0.1
     "@ovhcloud/ods-common-testing": ^15.0.1
+    "@ovhcloud/ods-common-theming": ^15.0.1
     "@ovhcloud/ods-component-input": ^15.0.1
     "@ovhcloud/ods-component-link": ^15.0.1
     "@ovhcloud/ods-component-text": ^15.0.1
     "@ovhcloud/ods-component-textarea": ^15.0.1
     "@ovhcloud/ods-component-tooltip": ^15.0.1
     "@ovhcloud/ods-stencil-dev": ^15.0.1
-    "@ovhcloud/ods-theming": ^15.0.1
   languageName: unknown
   linkType: soft
 
@@ -6007,8 +6016,8 @@ __metadata:
     "@ovhcloud/ods-common-core": ^15.0.1
     "@ovhcloud/ods-common-stencil": ^15.0.1
     "@ovhcloud/ods-common-testing": ^15.0.1
+    "@ovhcloud/ods-common-theming": ^15.0.1
     "@ovhcloud/ods-stencil-dev": ^15.0.1
-    "@ovhcloud/ods-theming": ^15.0.1
   languageName: unknown
   linkType: soft
 
@@ -6042,10 +6051,10 @@ __metadata:
     "@ovhcloud/ods-common-core": ^15.0.1
     "@ovhcloud/ods-common-stencil": ^15.0.1
     "@ovhcloud/ods-common-testing": ^15.0.1
+    "@ovhcloud/ods-common-theming": ^15.0.1
     "@ovhcloud/ods-component-icon": ^15.0.1
     "@ovhcloud/ods-component-spinner": ^15.0.1
     "@ovhcloud/ods-stencil-dev": ^15.0.1
-    "@ovhcloud/ods-theming": ^15.0.1
   languageName: unknown
   linkType: soft
 
@@ -6079,9 +6088,9 @@ __metadata:
     "@ovhcloud/ods-common-core": ^15.0.1
     "@ovhcloud/ods-common-stencil": ^15.0.1
     "@ovhcloud/ods-common-testing": ^15.0.1
+    "@ovhcloud/ods-common-theming": ^15.0.1
     "@ovhcloud/ods-component-icon": ^15.0.1
     "@ovhcloud/ods-stencil-dev": ^15.0.1
-    "@ovhcloud/ods-theming": ^15.0.1
   languageName: unknown
   linkType: soft
 
@@ -6154,9 +6163,9 @@ __metadata:
     "@ovhcloud/ods-common-core": ^15.0.1
     "@ovhcloud/ods-common-stencil": ^15.0.1
     "@ovhcloud/ods-common-testing": ^15.0.1
+    "@ovhcloud/ods-common-theming": ^15.0.1
     "@ovhcloud/ods-component-icon": ^15.0.1
     "@ovhcloud/ods-stencil-dev": ^15.0.1
-    "@ovhcloud/ods-theming": ^15.0.1
   languageName: unknown
   linkType: soft
 
@@ -6190,11 +6199,11 @@ __metadata:
     "@ovhcloud/ods-common-core": ^15.0.1
     "@ovhcloud/ods-common-stencil": ^15.0.1
     "@ovhcloud/ods-common-testing": ^15.0.1
+    "@ovhcloud/ods-common-theming": ^15.0.1
     "@ovhcloud/ods-component-button": ^15.0.1
     "@ovhcloud/ods-component-icon": ^15.0.1
     "@ovhcloud/ods-component-text": ^15.0.1
     "@ovhcloud/ods-stencil-dev": ^15.0.1
-    "@ovhcloud/ods-theming": ^15.0.1
   languageName: unknown
   linkType: soft
 
@@ -6228,13 +6237,13 @@ __metadata:
     "@ovhcloud/ods-common-core": ^15.0.1
     "@ovhcloud/ods-common-stencil": ^15.0.1
     "@ovhcloud/ods-common-testing": ^15.0.1
+    "@ovhcloud/ods-common-theming": ^15.0.1
     "@ovhcloud/ods-component-button": ^15.0.1
     "@ovhcloud/ods-component-icon": ^15.0.1
     "@ovhcloud/ods-component-select": ^15.0.1
     "@ovhcloud/ods-component-text": ^15.0.1
     "@ovhcloud/ods-component-tooltip": ^15.0.1
     "@ovhcloud/ods-stencil-dev": ^15.0.1
-    "@ovhcloud/ods-theming": ^15.0.1
   languageName: unknown
   linkType: soft
 
@@ -6268,9 +6277,9 @@ __metadata:
     "@ovhcloud/ods-common-core": ^15.0.1
     "@ovhcloud/ods-common-stencil": ^15.0.1
     "@ovhcloud/ods-common-testing": ^15.0.1
+    "@ovhcloud/ods-common-theming": ^15.0.1
     "@ovhcloud/ods-component-input": ^15.0.1
     "@ovhcloud/ods-stencil-dev": ^15.0.1
-    "@ovhcloud/ods-theming": ^15.0.1
   languageName: unknown
   linkType: soft
 
@@ -6305,11 +6314,11 @@ __metadata:
     "@ovhcloud/ods-common-core": ^15.0.1
     "@ovhcloud/ods-common-stencil": ^15.0.1
     "@ovhcloud/ods-common-testing": ^15.0.1
+    "@ovhcloud/ods-common-theming": ^15.0.1
     "@ovhcloud/ods-component-button": ^15.0.1
     "@ovhcloud/ods-component-icon": ^15.0.1
     "@ovhcloud/ods-component-text": ^15.0.1
     "@ovhcloud/ods-stencil-dev": ^15.0.1
-    "@ovhcloud/ods-theming": ^15.0.1
   languageName: unknown
   linkType: soft
 
@@ -6343,8 +6352,8 @@ __metadata:
     "@ovhcloud/ods-common-core": ^15.0.1
     "@ovhcloud/ods-common-stencil": ^15.0.1
     "@ovhcloud/ods-common-testing": ^15.0.1
+    "@ovhcloud/ods-common-theming": ^15.0.1
     "@ovhcloud/ods-stencil-dev": ^15.0.1
-    "@ovhcloud/ods-theming": ^15.0.1
   languageName: unknown
   linkType: soft
 
@@ -6378,11 +6387,11 @@ __metadata:
     "@ovhcloud/ods-common-core": ^15.0.1
     "@ovhcloud/ods-common-stencil": ^15.0.1
     "@ovhcloud/ods-common-testing": ^15.0.1
+    "@ovhcloud/ods-common-theming": ^15.0.1
     "@ovhcloud/ods-component-button": ^15.0.1
     "@ovhcloud/ods-component-icon": ^15.0.1
     "@ovhcloud/ods-component-input": ^15.0.1
     "@ovhcloud/ods-stencil-dev": ^15.0.1
-    "@ovhcloud/ods-theming": ^15.0.1
   languageName: unknown
   linkType: soft
 
@@ -6416,8 +6425,8 @@ __metadata:
     "@ovhcloud/ods-common-core": ^15.0.1
     "@ovhcloud/ods-common-stencil": ^15.0.1
     "@ovhcloud/ods-common-testing": ^15.0.1
+    "@ovhcloud/ods-common-theming": ^15.0.1
     "@ovhcloud/ods-stencil-dev": ^15.0.1
-    "@ovhcloud/ods-theming": ^15.0.1
   languageName: unknown
   linkType: soft
 
@@ -6451,9 +6460,9 @@ __metadata:
     "@ovhcloud/ods-common-core": ^15.0.1
     "@ovhcloud/ods-common-stencil": ^15.0.1
     "@ovhcloud/ods-common-testing": ^15.0.1
+    "@ovhcloud/ods-common-theming": ^15.0.1
     "@ovhcloud/ods-component-tile": ^15.0.1
     "@ovhcloud/ods-stencil-dev": ^15.0.1
-    "@ovhcloud/ods-theming": ^15.0.1
   languageName: unknown
   linkType: soft
 
@@ -6487,9 +6496,9 @@ __metadata:
     "@ovhcloud/ods-common-core": ^15.0.1
     "@ovhcloud/ods-common-stencil": ^15.0.1
     "@ovhcloud/ods-common-testing": ^15.0.1
+    "@ovhcloud/ods-common-theming": ^15.0.1
     "@ovhcloud/ods-component-input": ^15.0.1
     "@ovhcloud/ods-stencil-dev": ^15.0.1
-    "@ovhcloud/ods-theming": ^15.0.1
   languageName: unknown
   linkType: soft
 
@@ -6523,12 +6532,12 @@ __metadata:
     "@ovhcloud/ods-common-core": ^15.0.1
     "@ovhcloud/ods-common-stencil": ^15.0.1
     "@ovhcloud/ods-common-testing": ^15.0.1
+    "@ovhcloud/ods-common-theming": ^15.0.1
     "@ovhcloud/ods-component-button": ^15.0.1
     "@ovhcloud/ods-component-icon": ^15.0.1
     "@ovhcloud/ods-component-input": ^15.0.1
     "@ovhcloud/ods-component-select": ^15.0.1
     "@ovhcloud/ods-stencil-dev": ^15.0.1
-    "@ovhcloud/ods-theming": ^15.0.1
   languageName: unknown
   linkType: soft
 
@@ -6563,10 +6572,10 @@ __metadata:
     "@ovhcloud/ods-common-core": ^15.0.1
     "@ovhcloud/ods-common-stencil": ^15.0.1
     "@ovhcloud/ods-common-testing": ^15.0.1
+    "@ovhcloud/ods-common-theming": ^15.0.1
     "@ovhcloud/ods-component-content-addon": ^15.0.1
     "@ovhcloud/ods-component-icon": ^15.0.1
     "@ovhcloud/ods-stencil-dev": ^15.0.1
-    "@ovhcloud/ods-theming": ^15.0.1
   languageName: unknown
   linkType: soft
 
@@ -6600,8 +6609,8 @@ __metadata:
     "@ovhcloud/ods-common-core": ^15.0.1
     "@ovhcloud/ods-common-stencil": ^15.0.1
     "@ovhcloud/ods-common-testing": ^15.0.1
+    "@ovhcloud/ods-common-theming": ^15.0.1
     "@ovhcloud/ods-stencil-dev": ^15.0.1
-    "@ovhcloud/ods-theming": ^15.0.1
   languageName: unknown
   linkType: soft
 
@@ -6635,8 +6644,8 @@ __metadata:
     "@ovhcloud/ods-common-core": ^15.0.1
     "@ovhcloud/ods-common-stencil": ^15.0.1
     "@ovhcloud/ods-common-testing": ^15.0.1
+    "@ovhcloud/ods-common-theming": ^15.0.1
     "@ovhcloud/ods-stencil-dev": ^15.0.1
-    "@ovhcloud/ods-theming": ^15.0.1
   languageName: unknown
   linkType: soft
 
@@ -6670,9 +6679,9 @@ __metadata:
     "@ovhcloud/ods-common-core": ^15.0.1
     "@ovhcloud/ods-common-stencil": ^15.0.1
     "@ovhcloud/ods-common-testing": ^15.0.1
+    "@ovhcloud/ods-common-theming": ^15.0.1
     "@ovhcloud/ods-component-radio": ^15.0.1
     "@ovhcloud/ods-stencil-dev": ^15.0.1
-    "@ovhcloud/ods-theming": ^15.0.1
   languageName: unknown
   linkType: soft
 
@@ -6744,8 +6753,8 @@ __metadata:
     "@ovhcloud/ods-common-core": ^15.0.1
     "@ovhcloud/ods-common-stencil": ^15.0.1
     "@ovhcloud/ods-common-testing": ^15.0.1
+    "@ovhcloud/ods-common-theming": ^15.0.1
     "@ovhcloud/ods-stencil-dev": ^15.0.1
-    "@ovhcloud/ods-theming": ^15.0.1
   languageName: unknown
   linkType: soft
 
@@ -6779,8 +6788,8 @@ __metadata:
     "@ovhcloud/ods-common-core": ^15.0.1
     "@ovhcloud/ods-common-stencil": ^15.0.1
     "@ovhcloud/ods-common-testing": ^15.0.1
+    "@ovhcloud/ods-common-theming": ^15.0.1
     "@ovhcloud/ods-stencil-dev": ^15.0.1
-    "@ovhcloud/ods-theming": ^15.0.1
   languageName: unknown
   linkType: soft
 
@@ -6814,8 +6823,8 @@ __metadata:
     "@ovhcloud/ods-common-core": ^15.0.1
     "@ovhcloud/ods-common-stencil": ^15.0.1
     "@ovhcloud/ods-common-testing": ^15.0.1
+    "@ovhcloud/ods-common-theming": ^15.0.1
     "@ovhcloud/ods-stencil-dev": ^15.0.1
-    "@ovhcloud/ods-theming": ^15.0.1
   languageName: unknown
   linkType: soft
 
@@ -6849,8 +6858,8 @@ __metadata:
     "@ovhcloud/ods-common-core": ^15.0.1
     "@ovhcloud/ods-common-stencil": ^15.0.1
     "@ovhcloud/ods-common-testing": ^15.0.1
+    "@ovhcloud/ods-common-theming": ^15.0.1
     "@ovhcloud/ods-stencil-dev": ^15.0.1
-    "@ovhcloud/ods-theming": ^15.0.1
   languageName: unknown
   linkType: soft
 
@@ -6885,10 +6894,10 @@ __metadata:
     "@ovhcloud/ods-common-core": ^15.0.1
     "@ovhcloud/ods-common-stencil": ^15.0.1
     "@ovhcloud/ods-common-testing": ^15.0.1
+    "@ovhcloud/ods-common-theming": ^15.0.1
     "@ovhcloud/ods-component-icon": ^15.0.1
     "@ovhcloud/ods-component-text": ^15.0.1
     "@ovhcloud/ods-stencil-dev": ^15.0.1
-    "@ovhcloud/ods-theming": ^15.0.1
   languageName: unknown
   linkType: soft
 
@@ -7030,12 +7039,22 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-starter-react-vite@workspace:packages/starters/react-vite"
   dependencies:
-    "@ovhcloud/ods-components": ^15.0.1
-    "@ovhcloud/ods-core": ^15.0.1
+    "@ovhcloud/ods-common-core": ^15.0.1
+    "@ovhcloud/ods-common-stencil": ^15.0.1
+    "@ovhcloud/ods-common-theming": ^15.0.1
+    "@ovhcloud/ods-component-button": ^15.0.1
+    "@ovhcloud/ods-component-cart": ^15.0.1
+    "@ovhcloud/ods-component-checkbox": ^15.0.1
+    "@ovhcloud/ods-component-checkbox-button": ^15.0.1
+    "@ovhcloud/ods-component-flag": ^15.0.1
+    "@ovhcloud/ods-component-message": ^15.0.1
+    "@ovhcloud/ods-component-radio": ^15.0.1
+    "@ovhcloud/ods-component-tabs": ^15.0.1
+    "@ovhcloud/ods-component-text": ^15.0.1
+    "@ovhcloud/ods-component-tile": ^15.0.1
+    "@ovhcloud/ods-component-toggle": ^15.0.1
     "@ovhcloud/ods-dev": ^15.0.1
-    "@ovhcloud/ods-stencil": ^15.0.1
     "@ovhcloud/ods-theme-blue-jeans": ^15.0.1
-    "@ovhcloud/ods-theming": ^15.0.1
     "@types/react": ^18.2.0
     "@types/react-dom": ^18.2.0
     "@vitejs/plugin-react": ^2.1.0
@@ -7051,12 +7070,21 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-starter-react@workspace:packages/starters/react"
   dependencies:
-    "@ovhcloud/ods-components": ^15.0.1
-    "@ovhcloud/ods-core": ^15.0.1
+    "@ovhcloud/ods-common-core": ^15.0.1
+    "@ovhcloud/ods-common-stencil": ^15.0.1
+    "@ovhcloud/ods-common-theming": ^15.0.1
+    "@ovhcloud/ods-component-button": ^15.0.1
+    "@ovhcloud/ods-component-cart": ^15.0.1
+    "@ovhcloud/ods-component-checkbox": ^15.0.1
+    "@ovhcloud/ods-component-checkbox-button": ^15.0.1
+    "@ovhcloud/ods-component-flag": ^15.0.1
+    "@ovhcloud/ods-component-message": ^15.0.1
+    "@ovhcloud/ods-component-radio": ^15.0.1
+    "@ovhcloud/ods-component-text": ^15.0.1
+    "@ovhcloud/ods-component-tile": ^15.0.1
+    "@ovhcloud/ods-component-toggle": ^15.0.1
     "@ovhcloud/ods-react-dev": ^15.0.1
-    "@ovhcloud/ods-stencil": ^15.0.1
     "@ovhcloud/ods-theme-blue-jeans": ^15.0.1
-    "@ovhcloud/ods-theming": ^15.0.1
     react: 16.14.0
     react-dom: 16.14.0
     react-scripts: 3.4.4
@@ -7067,11 +7095,20 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-starter-vue-vite@workspace:packages/starters/vue-vite"
   dependencies:
-    "@ovhcloud/ods-components": ^15.0.1
-    "@ovhcloud/ods-core": ^15.0.1
-    "@ovhcloud/ods-stencil": ^15.0.1
+    "@ovhcloud/ods-common-core": ^15.0.1
+    "@ovhcloud/ods-common-stencil": ^15.0.1
+    "@ovhcloud/ods-common-theming": ^15.0.1
+    "@ovhcloud/ods-component-button": ^15.0.1
+    "@ovhcloud/ods-component-cart": ^15.0.1
+    "@ovhcloud/ods-component-checkbox": ^15.0.1
+    "@ovhcloud/ods-component-checkbox-button": ^15.0.1
+    "@ovhcloud/ods-component-flag": ^15.0.1
+    "@ovhcloud/ods-component-message": ^15.0.1
+    "@ovhcloud/ods-component-radio": ^15.0.1
+    "@ovhcloud/ods-component-text": ^15.0.1
+    "@ovhcloud/ods-component-tile": ^15.0.1
+    "@ovhcloud/ods-component-toggle": ^15.0.1
     "@ovhcloud/ods-theme-blue-jeans": ^15.0.1
-    "@ovhcloud/ods-theming": ^15.0.1
     "@ovhcloud/ods-vue-dev": ^15.0.1
     "@vitejs/plugin-vue": ^3.1.0
     "@vue/cli-service": ^5.0.8
@@ -7348,7 +7385,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-theme-blue-jeans@workspace:packages/themes/blue-jeans"
   dependencies:
-    "@ovhcloud/ods-theming": ^15.0.1
+    "@ovhcloud/ods-common-theming": ^15.0.1
     autoprefixer: ~10.3.7
     node-sass: ^8.0.0
     postcss: ^8.3.9

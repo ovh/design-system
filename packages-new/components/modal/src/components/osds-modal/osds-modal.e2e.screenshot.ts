@@ -1,12 +1,12 @@
 import type { E2EPage } from '@stencil/core/testing';
 import type { OdsModalAttribute } from './interfaces/attributes';
-import { OdsThemeColorIntent, OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
 import { newE2EPage } from '@stencil/core/testing';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 
 describe('e2e:osds-modal', () => {
-  const baseAttribute = { color: OdsThemeColorIntent.info, dismissible: true, headline: '', masked: false };
+  const baseAttribute = { color: ODS_THEME_COLOR_INTENT.info, dismissible: true, headline: '', masked: false };
   let page: E2EPage;
 
   async function setup({ attributes = {}, html = `` }: { attributes?: Partial<OdsModalAttribute>, html?: string } = {}) {
@@ -47,7 +47,7 @@ describe('e2e:osds-modal', () => {
   describe('screenshots', () => {
     screenshotConfigurations.forEach(( screenshotConfiguration ) => {
       actionsConfigurations.forEach(( actionsConfiguration ) => {
-        OdsThemeColorIntentList.forEach((color) => {
+        ODS_THEME_COLOR_INTENTS.forEach((color) => {
           [true, false].forEach(( dismissible ) => {
             ['', 'Innovation for Freedom'].forEach(( headline ) => {
               [false, true].forEach(( masked ) => {

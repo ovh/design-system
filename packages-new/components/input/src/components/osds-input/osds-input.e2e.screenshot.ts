@@ -2,7 +2,7 @@ import type { E2EElement, E2EPage } from '@stencil/core/testing';
 import type { OdsInputAttribute } from './interfaces/attributes';
 import { newE2EPage } from '@stencil/core/testing';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
-import { OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_INPUT_SIZES } from './constants/input-size';
 import { ODS_INPUT_TYPE } from './constants/input-type';
@@ -242,7 +242,7 @@ describe('e2e:osds-input', () => {
     // Todo : add active behaviour on top of hover and focus
     screenshotActions.forEach(({ actionDescription, action }) => {
       screenshotBehaviours.forEach(({ behaviourDescription, behaviour }) => {
-        OdsThemeColorIntentList.forEach((color) => {
+        ODS_THEME_COLOR_INTENTS.forEach((color) => {
           ODS_INPUT_SIZES.forEach((size) => {
             const name = [color, size, actionDescription, behaviourDescription].join(', ');
             it(name, async () => {

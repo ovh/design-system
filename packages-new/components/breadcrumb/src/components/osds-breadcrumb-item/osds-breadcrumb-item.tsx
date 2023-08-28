@@ -1,7 +1,7 @@
 import type { OdsBreadcrumbItemAttribute } from './interfaces/attributes';
 import { Component, Element, Event, EventEmitter, Host, h, Prop } from '@stencil/core';
 import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
-import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 
 /**
@@ -13,7 +13,7 @@ import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
   shadow: true
 })
 export class OsdsBreadcrumbItem implements OdsBreadcrumbItemAttribute {
-  private defaultColorIntent = OdsThemeColorIntent.primary;
+  private defaultColorIntent = ODS_THEME_COLOR_INTENT.primary;
 
   @Element() el!: HTMLElement;
 

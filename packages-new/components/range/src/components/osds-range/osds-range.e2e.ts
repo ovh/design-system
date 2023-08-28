@@ -3,7 +3,7 @@ import type { OdsRangeAttribute } from './interfaces/attributes';
 import { newE2EPage } from '@stencil/core/testing';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { OdsThemeColorIntent } from '@ovhcloud/ods-theming/src';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 
 const slotContent = `Range`;
 
@@ -12,7 +12,7 @@ describe('e2e:osds-range', () => {
   let el: E2EElement;
 
   const baseAttribute = {
-    color: OdsThemeColorIntent.default,
+    color: ODS_THEME_COLOR_INTENT.default,
     disabled: false,
     error: undefined,
     errorStateControl: undefined,
@@ -37,7 +37,7 @@ describe('e2e:osds-range', () => {
   }
 
   it('should render', async () => {
-    await setup({ attributes: { color: OdsThemeColorIntent.primary } });
+    await setup({ attributes: { color: ODS_THEME_COLOR_INTENT.primary } });
     expect(el).not.toBeNull();
   });
 
@@ -66,43 +66,43 @@ describe('e2e:osds-range', () => {
 
   describe('colors', () => {
     it('should have a default color', async () => {
-      await setup({ attributes: { color: OdsThemeColorIntent.default }, html: slotContent });
-      expect(await el.getProperty('color')).toBe(OdsThemeColorIntent.default);
+      await setup({ attributes: { color: ODS_THEME_COLOR_INTENT.default }, html: slotContent });
+      expect(await el.getProperty('color')).toBe(ODS_THEME_COLOR_INTENT.default);
     });
 
     it('should have a primary color', async () => {
-      await setup({ attributes: { color: OdsThemeColorIntent.primary }, html: slotContent });
-      expect(await el.getProperty('color')).toBe(OdsThemeColorIntent.primary);
+      await setup({ attributes: { color: ODS_THEME_COLOR_INTENT.primary }, html: slotContent });
+      expect(await el.getProperty('color')).toBe(ODS_THEME_COLOR_INTENT.primary);
     });
 
     it('should have a range color', async () => {
-      await setup({ attributes: { color: OdsThemeColorIntent.text }, html: slotContent });
-      expect(await el.getProperty('color')).toBe(OdsThemeColorIntent.text);
+      await setup({ attributes: { color: ODS_THEME_COLOR_INTENT.text }, html: slotContent });
+      expect(await el.getProperty('color')).toBe(ODS_THEME_COLOR_INTENT.text);
     });
 
     it('should have an accent color', async () => {
-      await setup({ attributes: { color: OdsThemeColorIntent.accent }, html: slotContent });
-      expect(await el.getProperty('color')).toBe(OdsThemeColorIntent.accent);
+      await setup({ attributes: { color: ODS_THEME_COLOR_INTENT.accent }, html: slotContent });
+      expect(await el.getProperty('color')).toBe(ODS_THEME_COLOR_INTENT.accent);
     });
 
     it('should have a warning color', async () => {
-      await setup({ attributes: { color: OdsThemeColorIntent.warning }, html: slotContent });
-      expect(await el.getProperty('color')).toBe(OdsThemeColorIntent.warning);
+      await setup({ attributes: { color: ODS_THEME_COLOR_INTENT.warning }, html: slotContent });
+      expect(await el.getProperty('color')).toBe(ODS_THEME_COLOR_INTENT.warning);
     });
 
     it('should have a success color', async () => {
-      await setup({ attributes: { color: OdsThemeColorIntent.success }, html: slotContent });
-      expect(await el.getProperty('color')).toBe(OdsThemeColorIntent.success);
+      await setup({ attributes: { color: ODS_THEME_COLOR_INTENT.success }, html: slotContent });
+      expect(await el.getProperty('color')).toBe(ODS_THEME_COLOR_INTENT.success);
     });
 
     it('should have a info color', async () => {
-      await setup({ attributes: { color: OdsThemeColorIntent.info }, html: slotContent });
-      expect(await el.getProperty('color')).toBe(OdsThemeColorIntent.info);
+      await setup({ attributes: { color: ODS_THEME_COLOR_INTENT.info }, html: slotContent });
+      expect(await el.getProperty('color')).toBe(ODS_THEME_COLOR_INTENT.info);
     });
 
     it('should have a promotion color', async () => {
-      await setup({ attributes: { color: OdsThemeColorIntent.promotion }, html: slotContent });
-      expect(await el.getProperty('color')).toBe(OdsThemeColorIntent.promotion);
+      await setup({ attributes: { color: ODS_THEME_COLOR_INTENT.promotion }, html: slotContent });
+      expect(await el.getProperty('color')).toBe(ODS_THEME_COLOR_INTENT.promotion);
     });
   });
 });

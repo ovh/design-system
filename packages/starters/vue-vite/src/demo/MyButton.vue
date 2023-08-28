@@ -5,14 +5,14 @@ export default {}
 <script setup lang="ts">
 import type { OdsButtonAttribute } from '@ovhcloud/ods-components/button';
 import { OsdsButton } from '@ovhcloud/ods-components/button/vue';
-import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 
 /**
  * default custom properties values for the custom button
  */
 const DEFAULT_BUTTON_PROPS: Partial<OdsButtonAttribute> = {
   inline: false,
-  color: OdsThemeColorIntent.accent
+  color: ODS_THEME_COLOR_INTENT.accent
 };
 
 const props = withDefaults(defineProps<{id?: string}>(), { id: undefined });

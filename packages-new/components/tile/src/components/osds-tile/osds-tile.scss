@@ -3,8 +3,8 @@
 @import 'styles/osds-tile.size.scss';
 @import 'styles/osds-tile.typography.scss';
 
-@import '~@ovhcloud/ods-theming/color/ods-theming-color';
-@import '~@ovhcloud/ods-theming/ods-theme';
+@import '~@ovhcloud/ods-common-theming/color/ods-theming-color';
+@import '~@ovhcloud/ods-common-theming/ods-theme';
 
 :host {
   border: solid var(--ods-size-inset-02);

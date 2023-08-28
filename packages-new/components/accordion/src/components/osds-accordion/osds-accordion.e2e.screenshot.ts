@@ -1,7 +1,7 @@
 import type { E2EElement, E2EPage } from '@stencil/core/testing';
 import type { OdsAccordionAttribute } from './interfaces/attributes';
 import { newE2EPage } from '@stencil/core/testing';
-import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import { ODS_ACCORDION_SIZES } from './constants/accordion-size';
@@ -31,7 +31,7 @@ describe('e2e:screenshot:osds-accordion', () => {
   describe('screenshots', () => {
     [() => { }, () => el.setProperty('disabled', true)].forEach((setDisabled) => {
       [() => { }, () => el.setProperty('contrasted', true)].forEach((setContrasted) => {
-        [undefined, OdsThemeColorIntent.primary].forEach((color) => {
+        [undefined, ODS_THEME_COLOR_INTENT.primary].forEach((color) => {
           [false, true].forEach((opened) => {
             [undefined, 'Accordion content'].forEach((content) => {
               ODS_ACCORDION_SIZES.forEach((size) => {

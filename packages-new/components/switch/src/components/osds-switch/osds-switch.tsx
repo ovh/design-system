@@ -1,5 +1,5 @@
 import type { OdsRadioGroupValueChangeEvent } from '@ovhcloud/ods-component-radio';
-import type { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import type { ODS_SWITCH_SIZE } from './constants/switch-size';
 import type { ODS_SWITCH_VARIANT } from './constants/switch-variant';
 import type { OdsSwitchChangedEventDetail, OdsSwitchEvent } from './interfaces/events';
@@ -19,8 +19,8 @@ export class OsdsSwitch implements OdsSwitchAttribute, OdsSwitchEvent {
 
   @State() tabindex = 0;
 
-  @Prop({ reflect: true }) public color?: OdsThemeColorIntent = DEFAULT_ATTRIBUTE.color;
-  
+  @Prop({ reflect: true }) public color?: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
+
   @Prop({ reflect: true }) public disabled?: boolean = DEFAULT_ATTRIBUTE.disabled;
 
   @Prop({ reflect: true }) public contrasted?: boolean = DEFAULT_ATTRIBUTE.contrasted;
@@ -87,4 +87,3 @@ export class OsdsSwitch implements OdsSwitchAttribute, OdsSwitchEvent {
     );
   }
 }
- 

@@ -1,0 +1,15 @@
+
+/// @access private
+@function ods-get-tile-size-properties($size-name) {
+  @return (
+    padding: var(--ods-size-tile-#{$size-name}-padding),
+  )
+}
+
+/// @access private
+@function ods-get-tile-component-size-definition() {
+  @return (
+    sm: ods-get-tile-size-properties(sm),
+    md: ods-get-tile-size-properties(md)
+  );
+}

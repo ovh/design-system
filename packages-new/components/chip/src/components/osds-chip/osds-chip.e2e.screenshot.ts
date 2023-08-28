@@ -2,7 +2,7 @@ import type { E2EElement, E2EPage } from '@stencil/core/testing';
 import type { OdsChipAttribute } from './interfaces/attributes';
 import { newE2EPage } from '@stencil/core/testing';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
-import { OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
 import { ODS_CHIP_SIZES } from './constants/chip-size';
 import { ODS_CHIP_VARIANTS } from './constants/chip-variant';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
@@ -37,7 +37,7 @@ describe('e2e:osds-chip', () => {
         () => {el.setProperty('selectable', true); el.hover()},
         () => {el.setProperty('selectable', true); el.focus()}
       ].forEach((behaviour) => {
-        OdsThemeColorIntentList.forEach((color) => {
+        ODS_THEME_COLOR_INTENTS.forEach((color) => {
           ODS_CHIP_SIZES.forEach((size) => {
             ODS_CHIP_VARIANTS.forEach((variant) => {
               it([color, variant, size, action, behaviour].join(', '), async () => {

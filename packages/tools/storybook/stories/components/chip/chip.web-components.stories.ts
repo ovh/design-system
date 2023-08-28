@@ -1,6 +1,6 @@
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-import { OdsThemeColorIntent, OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
 import { ODS_CHIP_SIZE, ODS_CHIP_SIZES, ODS_CHIP_VARIANT, ODS_CHIP_VARIANTS } from '@ovhcloud/ods-component-chip';
 import { defineCustomElements } from '@ovhcloud/ods-component-chip/loader';
 import { createComponentTable, extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
@@ -15,8 +15,8 @@ defineCustomElements();
 const storyParams = {
   color: {
     category: 'General',
-    defaultValue: OdsThemeColorIntent.default,
-    options: OdsThemeColorIntentList,
+    defaultValue: ODS_THEME_COLOR_INTENT.default,
+    options: ODS_THEME_COLOR_INTENTS,
     control: { type: 'select' },
   },
   size: {
@@ -111,14 +111,14 @@ const TemplateAll = () => html`
 ${unsafeHTML(createComponentTable(
   defaultTag,
   { variant: ODS_CHIP_VARIANTS },
-  { color: OdsThemeColorIntentList },
+  { color: ODS_THEME_COLOR_INTENTS },
   defaultContent,
 ))}
 <h1>Sizes & Colors</h1>
 ${unsafeHTML(createComponentTable(
   defaultTag,
   { size: ODS_CHIP_SIZES },
-  { color: OdsThemeColorIntentList },
+  { color: ODS_THEME_COLOR_INTENTS },
   defaultContent,
 ))}
 <h1>Sizes & Variants</h1>
@@ -132,7 +132,7 @@ ${unsafeHTML(createComponentTable(
 ${unsafeHTML(createComponentTable(
   defaultTag,
   { variant: ODS_CHIP_VARIANTS },
-  { color: OdsThemeColorIntentList },
+  { color: ODS_THEME_COLOR_INTENTS },
   defaultContent,
   { selectable: true },
 ))}
@@ -140,7 +140,7 @@ ${unsafeHTML(createComponentTable(
 ${unsafeHTML(createComponentTable(
   defaultTag,
   { variant: ODS_CHIP_VARIANTS },
-  { color: OdsThemeColorIntentList },
+  { color: ODS_THEME_COLOR_INTENTS },
   defaultContent,
   { disabled: true },
 ))}
@@ -149,7 +149,7 @@ ${unsafeHTML(createComponentTable(
   ${unsafeHTML(createComponentTable(
   defaultTag,
   { variant: ODS_CHIP_VARIANTS },
-  { color: OdsThemeColorIntentList },
+  { color: ODS_THEME_COLOR_INTENTS },
   defaultContent,
   { contrasted: true },
 ))}
@@ -157,7 +157,7 @@ ${unsafeHTML(createComponentTable(
   ${unsafeHTML(createComponentTable(
   defaultTag,
   { variant: ODS_CHIP_VARIANTS },
-  { color: OdsThemeColorIntentList },
+  { color: ODS_THEME_COLOR_INTENTS },
   defaultContent,
   { contrasted: true, selectable: true },
 ))}
@@ -165,7 +165,7 @@ ${unsafeHTML(createComponentTable(
   ${unsafeHTML(createComponentTable(
   defaultTag,
   { variant: ODS_CHIP_VARIANTS },
-  { color: OdsThemeColorIntentList },
+  { color: ODS_THEME_COLOR_INTENTS },
   defaultContent,
   { contrasted: true, disabled: true },
 ))}

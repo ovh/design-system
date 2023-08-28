@@ -6,7 +6,6 @@ import type { OdsRangeValueChangeEventDetail } from './interfaces/events';
 import { newSpecPage } from '@stencil/core/testing';
 import { OdsFormControl, OdsCreateDefaultValidityState } from '@ovhcloud/ods-common-core';
 import {
-  OdsCreateAttributes,
   OdsMockNativeMethod,
   OdsMockPropertyDescriptor,
   odsStringAttributes2Str,
@@ -14,7 +13,7 @@ import {
   odsUnitTestAttribute,
   odsComponentAttributes2StringAttributes
 } from '@ovhcloud/ods-common-testing';
-import { OdsThemeColorIntent, OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsRangeController } from './core/controller';
 import { OsdsRange } from './osds-range';
@@ -26,10 +25,9 @@ describe('spec:osds-range', () => {
   let page: SpecPage;
   let root: HTMLElement | undefined;
   let instance: OsdsRange;
-  let htmlInput: HTMLInputElement | null | undefined;
   let controller: OdsRangeController;
   const baseAttribute = {
-    color: OdsThemeColorIntent.default,
+    color: ODS_THEME_COLOR_INTENT.default,
     disabled: false,
     error: undefined,
     errorStateControl: undefined,
@@ -56,8 +54,6 @@ describe('spec:osds-range', () => {
 
     root = page.root;
     instance = page.rootInstance;
-
-    htmlInput = page.root?.shadowRoot?.querySelector('.range-input');
     controller = (OdsRangeController as unknown as jest.SpyInstance<OdsRangeController, unknown[]>).mock.instances[0];
   }
 
@@ -83,14 +79,14 @@ describe('spec:osds-range', () => {
       odsUnitTestAttribute<OdsRangeAttribute, 'color'>({
         name: 'color',
         defaultValue: DEFAULT_ATTRIBUTE.color,
-        newValue: OdsThemeColorIntent.primary,
-        value: OdsThemeColorIntent.default,
+        newValue: ODS_THEME_COLOR_INTENT.primary,
+        value: ODS_THEME_COLOR_INTENT.default,
         setup: (value) => setup({ attributes: { ['color']: value } }),
         ...config,
       });
 
       it('should set a color if attribute is added', async () => {
-        const randomColor = OdsThemeColorIntentList[Math.floor(Math.random() * OdsThemeColorIntentList.length)];
+        const randomColor = ODS_THEME_COLOR_INTENTS[Math.floor(Math.random() * ODS_THEME_COLOR_INTENTS.length)];
         await setup({ attributes: { color: randomColor } });
         expect(page.root?.color).toBe(randomColor);
       });

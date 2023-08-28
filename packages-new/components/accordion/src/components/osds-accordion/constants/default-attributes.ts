@@ -1,9 +1,9 @@
 import type { OdsAccordionAttribute } from '../interfaces/attributes';
 import { ODS_ACCORDION_SIZE } from './accordion-size';
-import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 
 const DEFAULT_ATTRIBUTE: OdsAccordionAttribute = Object.freeze({
-  color: OdsThemeColorIntent.info,
+  color: ODS_THEME_COLOR_INTENT.info,
   contrasted: false,
   disabled: false,
   opened: false,

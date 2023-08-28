@@ -2,8 +2,8 @@
 @import 'styles/osds-tooltip.color';
 @import 'styles/osds-tooltip.size';
 @import 'styles/osds-tooltip.typography';
-@import '~@ovhcloud/ods-theming/color/ods-theming-color';
-@import '~@ovhcloud/ods-theming/ods-theme';
+@import '~@ovhcloud/ods-common-theming/color/ods-theming-color';
+@import '~@ovhcloud/ods-common-theming/ods-theme';
 
 // CSS targeted only for this component
 // /!\ for theming purposes, it has to be done in theming files

@@ -1,5 +1,5 @@
-@import '~@ovhcloud/ods-theming/color/ods-theming-color';
-@import '~@ovhcloud/ods-theming/ods-theme';
+@import '~@ovhcloud/ods-common-theming/color/ods-theming-color';
+@import '~@ovhcloud/ods-common-theming/ods-theme';
 
 // CSS targeted only for this component
 // /!\ for theming purposes, it has to be done in theming files
@@ -26,7 +26,7 @@ $switch-item-border-radius: 3em;
         &:focus-visible {
             border-radius: $switch-item-border-radius;
         }
-    } 
+    }
 
     &::before {
         content: '';
@@ -39,7 +39,7 @@ $switch-item-border-radius: 3em;
     }
 }
 
-:host(.fadein-from-right)::before {  
+:host(.fadein-from-right)::before {
     animation: fadeinfromright ease-out .3s;
 }
 :host(.fadein-from-left)::before {
@@ -80,7 +80,7 @@ $switch-item-border-radius: 3em;
         opacity: 1;
         transform: translateX(0);
     }
-    to {  
+    to {
         opacity: 0;
         transform: translateX(-3em);
     }

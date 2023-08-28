@@ -4,7 +4,7 @@ import type { SpecPage } from '@stencil/core/testing';
 import type { OdsToggleAttribute } from './interfaces/attributes';
 import { odsStringAttributes2Str, odsComponentAttributes2StringAttributes, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 import { newSpecPage } from '@stencil/core/testing';
-import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { OdsToggleController } from './core/controller'
 import { OsdsToggle } from './osds-toggle';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
@@ -14,7 +14,7 @@ describe('spec:osds-toggle', () => {
     contrasted: false,
     checked: false,
     checking: false,
-    color: OdsThemeColorIntent.primary,
+    color: ODS_THEME_COLOR_INTENT.primary,
     disabled: false,
     interactive: true
   }
@@ -58,8 +58,8 @@ describe('spec:osds-toggle', () => {
       odsUnitTestAttribute<OdsToggleAttribute, 'color'>({
         name: 'color',
         defaultValue: DEFAULT_ATTRIBUTE.color,
-        newValue: OdsThemeColorIntent.primary,
-        value: OdsThemeColorIntent.default,
+        newValue: ODS_THEME_COLOR_INTENT.primary,
+        value: ODS_THEME_COLOR_INTENT.default,
         setup: (value) => setup({ attributes: { ['color']: value } }),
         ...config
       });

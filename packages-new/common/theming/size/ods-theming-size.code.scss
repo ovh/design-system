@@ -1,0 +1,17 @@
+
+/// @access private
+@function ods-get-code-size-properties($size-name) {
+    @return (
+      border-radius: var(--ods-size-code-#{$size-name}-border-radius),
+      min-height: var(--ods-size-code-#{$size-name}-min-height),
+      global-padding: var(--ods-size-code-#{$size-name}-global-padding),
+      code-padding: var(--ods-size-code-#{$size-name}-code-padding)
+    )
+  }
+
+  /// @access private
+  @function ods-get-code-component-size-definition() {
+    @return (
+      md: ods-get-code-size-properties(md)
+    );
+  }

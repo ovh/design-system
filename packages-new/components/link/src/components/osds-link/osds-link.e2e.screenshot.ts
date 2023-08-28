@@ -2,7 +2,7 @@ import type { E2EElement, E2EPage } from '@stencil/core/testing';
 import type { OdsLinkAttribute } from './interfaces/attributes';
 import { newE2EPage } from '@stencil/core/testing';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
-import { OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 
 describe('e2e:osds-link', () => {
@@ -26,7 +26,7 @@ describe('e2e:osds-link', () => {
       el.setProperty('disabled', true);
     }].forEach((action) => {
       [() => {}, () => el.hover(), () => el.focus()].forEach((behaviour) => {
-        OdsThemeColorIntentList.forEach((color) => {
+        ODS_THEME_COLOR_INTENTS.forEach((color) => {
           it([color, action, behaviour].join(', '), async () => {
             await setup({
               attributes: {

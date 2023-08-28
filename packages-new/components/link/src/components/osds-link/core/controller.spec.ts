@@ -1,7 +1,7 @@
 import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
 import { Ods, OdsHTMLAnchorElementRel, OdsHTMLAnchorElementTarget, OdsLogger } from '@ovhcloud/ods-common-core';
 import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
-import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_LINK_REFERRER_POLICY } from '../constants/referrer-policies';
 import { OdsLinkController } from './controller';
 import { OsdsLink } from '../osds-link';
@@ -41,7 +41,7 @@ describe('spec:ods-link-controller', () => {
   describe('methods', () => {
     beforeEach(() => {
       setup({
-        color: OdsThemeColorIntent.default,
+        color: ODS_THEME_COLOR_INTENT.default,
         referrerpolicy: ODS_LINK_REFERRER_POLICY.origin,
         rel: OdsHTMLAnchorElementRel.noreferrer,
         target: OdsHTMLAnchorElementTarget._blank,
@@ -55,8 +55,8 @@ describe('spec:ods-link-controller', () => {
       });
 
       it('should call console.warn with wrong color', () => {
-        const expected = 'The color attribute must have a value from [default, primary, text, accent, error, warning, success, info, promotion]';
-        component.color = 'color' as OdsThemeColorIntent;
+        const expected = 'The color attribute must have a value from [accent, default, error, info, primary, promotion, success, text, warning]';
+        component.color = 'color' as ODS_THEME_COLOR_INTENT;
 
         controller.validateAttributes();
 

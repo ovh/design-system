@@ -2,8 +2,8 @@
 @import 'styles/osds-divider.mixins.scss';
 @import 'styles/osds-divider.size.scss';
 
-@import '~@ovhcloud/ods-theming/color/ods-theming-color';
-@import '~@ovhcloud/ods-theming/ods-theme';
+@import '~@ovhcloud/ods-common-theming/color/ods-theming-color';
+@import '~@ovhcloud/ods-common-theming/ods-theme';
 
 :host {
   /* Bug on Safari: issue on the height when no content inside the html element.

@@ -1,15 +1,15 @@
 import type { OdsButtonAttribute } from '@ovhcloud/ods-components/button';
 import React, { PropsWithChildren } from 'react';
 import { OsdsButton } from '@ovhcloud/ods-components/button/react';
-import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
-import { odsFilterTransientProps } from '@ovhcloud/ods-core';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+import { odsFilterTransientProps } from '@ovhcloud/ods-common-core';
 
 /**
  * default custom properties values for the custom button
  */
 const DEFAULT_BUTTON_PROPS: Partial<OdsButtonAttribute> = {
   inline: false,
-  color: OdsThemeColorIntent.accent
+  color: ODS_THEME_COLOR_INTENT.accent
 };
 
 /**

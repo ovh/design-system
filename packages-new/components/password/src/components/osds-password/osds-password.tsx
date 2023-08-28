@@ -1,6 +1,6 @@
 import type { OdsFormForbiddenValues } from '@ovhcloud/ods-common-core';
 import type { ODS_INPUT_SIZE } from '@ovhcloud/ods-component-input';
-import type { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import type { OdsPasswordAttribute } from './interfaces/attributes';
 import { Component, Element, Host, h, Prop } from '@stencil/core';
 import { ODS_INPUT_TYPE } from '@ovhcloud/ods-component-input';
@@ -27,7 +27,7 @@ export class OsdsPassword implements OdsPasswordAttribute {
   @Prop({ reflect: true }) clearable?: boolean = DEFAULT_ATTRIBUTE.clearable;
 
   /** @see OdsPasswordAttributes.color */
-  @Prop({ reflect: true }) color?: OdsThemeColorIntent = DEFAULT_ATTRIBUTE.color;
+  @Prop({ reflect: true }) color?: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
 
   /** @see OdsPasswordAttributes.contrasted */
   @Prop({ reflect: true }) contrasted?: boolean = DEFAULT_ATTRIBUTE.contrasted;

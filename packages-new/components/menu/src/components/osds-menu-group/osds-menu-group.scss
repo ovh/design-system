@@ -2,8 +2,8 @@
 @import 'styles/osds-menu-group.size.scss';
 @import 'styles/osds-menu-group.typography.scss';
 
-@import '~@ovhcloud/ods-theming/color/ods-theming-color';
-@import '~@ovhcloud/ods-theming/ods-theme';
+@import '~@ovhcloud/ods-common-theming/color/ods-theming-color';
+@import '~@ovhcloud/ods-common-theming/ods-theme';
 
 :host{
   display: inline-block;

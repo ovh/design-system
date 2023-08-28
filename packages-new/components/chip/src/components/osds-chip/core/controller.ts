@@ -1,6 +1,6 @@
 import type { OsdsChip } from '../osds-chip';
 import { OdsLogger, OdsWarnComponentAttribute } from '@ovhcloud/ods-common-core';
-import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_CHIP_SIZE } from '../constants/chip-size';
 import { ODS_CHIP_VARIANT } from '../constants/chip-variant';
 
@@ -18,9 +18,9 @@ class OdsChipController {
    */
   validateAttributes(): void {
     const logger = this.logger;
-    OdsWarnComponentAttribute<OdsThemeColorIntent, OsdsChip>({
+    OdsWarnComponentAttribute<ODS_THEME_COLOR_INTENT, OsdsChip>({
       logger,
-      attributeValues: OdsThemeColorIntent as Record<string, unknown>,
+      attributeValues: ODS_THEME_COLOR_INTENT as Record<string, unknown>,
       attributeName: 'color',
       attribute: this.component.color
     });

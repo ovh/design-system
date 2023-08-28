@@ -1,6 +1,6 @@
 import type { OsdsTile } from '../osds-tile';
 import { OdsLogger, OdsWarnComponentAttribute } from '@ovhcloud/ods-common-core';
-import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_TILE_SIZE } from '../constants/tile-size';
 import { ODS_TILE_VARIANT } from '../constants/tile-variant';
 
@@ -22,9 +22,9 @@ class OdsTileController {
    */
   validateAttributes(): void {
     const logger = this.logger;
-    OdsWarnComponentAttribute<OdsThemeColorIntent, OsdsTile>({
+    OdsWarnComponentAttribute<ODS_THEME_COLOR_INTENT, OsdsTile>({
       logger,
-      attributeValues: OdsThemeColorIntent,
+      attributeValues: ODS_THEME_COLOR_INTENT,
       attributeName: 'color',
       attribute: this.component.color
     });

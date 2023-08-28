@@ -1,4 +1,4 @@
-import type { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import type { EventEmitter } from '@stencil/core';
 import type { OdsMessageAttribute } from './interfaces/attributes';
 import type { OdsMessageEvent } from './interfaces/events';
@@ -20,7 +20,7 @@ export class OsdsMessage implements OdsMessageAttribute, OdsMessageEvent {
   controller: OdsMessageController = new OdsMessageController(this);
 
   /** @see OdsMessageAttributes.color */
-  @Prop({ reflect: true, mutable: true }) public color?: OdsThemeColorIntent = DEFAULT_ATTRIBUTE.color;
+  @Prop({ reflect: true, mutable: true }) public color?: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
 
   /** @see OdsMessageAttributes.inline */
   @Prop({ reflect: true }) public inline? = DEFAULT_ATTRIBUTE.inline;
@@ -41,7 +41,7 @@ export class OsdsMessage implements OdsMessageAttribute, OdsMessageEvent {
   @Event() odsRemoveClick!: EventEmitter<void>;
 
   @Watch('color')
-  validateColor(color?: OdsThemeColorIntent): void {
+  validateColor(color?: ODS_THEME_COLOR_INTENT): void {
     this.controller.validateColor(color);
   }
 
@@ -77,7 +77,7 @@ export class OsdsMessage implements OdsMessageAttribute, OdsMessageEvent {
             {icon || type ? <osds-icon {...{
               name: (icon || `${type}-circle`) as ODS_ICON_NAME,
               size: ODS_ICON_SIZE.sm,
-              color: color as OdsThemeColorIntent
+              color: color as ODS_THEME_COLOR_INTENT
             }}></osds-icon>
             : ''}
             <slot></slot>
@@ -89,7 +89,7 @@ export class OsdsMessage implements OdsMessageAttribute, OdsMessageEvent {
             <osds-icon {...{
               name: ODS_ICON_NAME.CLOSE,
               size: ODS_ICON_SIZE.xs,
-              color: color as OdsThemeColorIntent
+              color: color as ODS_THEME_COLOR_INTENT
             }}></osds-icon>
           </span> : ''}
         </span>

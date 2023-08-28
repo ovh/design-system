@@ -1,0 +1,17 @@
+
+/// @access private
+@function ods-get-toggle-size-properties($size-name) {
+    @return (
+      border-radius: var(--ods-size-toggle-#{$size-name}-border-radius),
+      handle-border-radius: var(--ods-size-toggle-#{$size-name}-handle-border-radius),
+      height: var(--ods-size-toggle-#{$size-name}-height),
+      width: var(--ods-size-toggle-#{$size-name}-width),
+    )
+  }
+  
+  /// @access private
+  @function ods-get-toggle-component-size-definition() {
+    @return (
+      md: ods-get-toggle-size-properties(md)
+    );
+  }

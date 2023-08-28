@@ -1,5 +1,5 @@
 import type { OdsCheckboxButtonAttribute } from './interfaces/attributes';
-import type { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { Component, Element, Host, Prop, h } from '@stencil/core';
 import { ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
 import { OdsCheckboxButtonController } from './core/ods-checkbox-button-controller';
@@ -27,7 +27,7 @@ export class OsdsCheckboxButton implements OdsCheckboxButtonAttribute {
   @Prop({ reflect: true }) public checking? = DEFAULT_ATTRIBUTE.checking;
 
   /** @see OdsCheckboxButtonAttribute.color */
-  @Prop({ reflect: true }) public color?: OdsThemeColorIntent = DEFAULT_ATTRIBUTE.color;
+  @Prop({ reflect: true }) public color?: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
 
   /** @see OdsCheckboxButtonAttribute.disabled */
   @Prop({ reflect: true }) public disabled? = DEFAULT_ATTRIBUTE.disabled;

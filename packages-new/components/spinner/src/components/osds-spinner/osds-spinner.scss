@@ -1,8 +1,8 @@
 @import 'styles/osds-spinner.mixins';
 @import 'styles/osds-spinner.color';
 @import 'styles/osds-spinner.size';
-@import '~@ovhcloud/ods-theming/color/ods-theming-color';
-@import '~@ovhcloud/ods-theming/ods-theme';
+@import '~@ovhcloud/ods-common-theming/color/ods-theming-color';
+@import '~@ovhcloud/ods-common-theming/ods-theme';
 
 // CSS targeted only for this component
 // /!\ for theming purposes, it has to be done in theming files

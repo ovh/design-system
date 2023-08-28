@@ -5,7 +5,7 @@ import type { OdsCodeAttribute } from './interfaces/attributes';
 import { newSpecPage } from '@stencil/core/testing';
 import { OdsLogger } from '@ovhcloud/ods-common-core';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
-import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_CODE_SIZE } from './constants/code-size';
 import { OsdsCode } from './osds-code';
@@ -15,7 +15,7 @@ const logger = new OdsLogger('osds-code-spec');
 
 describe('spec:osds-code', () => {
   logger.log('init');
-  const baseAttribute = { color: OdsThemeColorIntent.default, contrasted: false, size: ODS_CODE_SIZE.md };
+  const baseAttribute = { color: ODS_THEME_COLOR_INTENT.default, contrasted: false, size: ODS_CODE_SIZE.md };
   let page: SpecPage;
   let mainSlot: HTMLElement | undefined | null;
   let copySlot: HTMLElement | undefined | null;
@@ -89,8 +89,8 @@ describe('spec:osds-code', () => {
       odsUnitTestAttribute<OdsCodeAttribute, 'color'>({
           name: 'color',
           defaultValue: DEFAULT_ATTRIBUTE.color,
-          newValue: OdsThemeColorIntent.primary,
-          value: OdsThemeColorIntent.default,
+          newValue: ODS_THEME_COLOR_INTENT.primary,
+          value: ODS_THEME_COLOR_INTENT.default,
           setup: (value) => setup({ attributes: { ['color']: value } }),
           ...config
       });

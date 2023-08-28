@@ -1,0 +1,56 @@
+@import './ods-theming-typography';
+
+/// apply for each size of the typography level
+/// This will add the `&[size=md]` selector for instance.
+///
+/// @access public
+/// @param {String} $level-name - the name of the level like `title` or `button`
+/// @param {Boolean} $with-and-selector [false] - Indicates if the mixin have to apply an `&` selector or not
+@mixin ods-foreach-theme-typography-size($level-name, $with-and-selector: false) {
+  $and-selector: if($with-and-selector, '&', '');
+  @each $size-name, $typography-properties in ods-get-level-definition($level-name) {
+    #{$and-selector}[size='#{$size-name}'] {
+      @content($typography-properties);
+    }
+  }
+}
+
+/// apply for each size of the typography level
+/// This will add the `&[level=title]` selector for instance.
+///
+/// @access public
+/// @param {String} $level-name - the name of the level like `title` or `button`
+@mixin ods-and-foreach-theme-typography-size($level-name) {
+  @include ods-foreach-theme-typography-size($level-name, true) using($typography-properties) {
+    @content($typography-properties);
+  }
+}
+
+/// apply to select each level into $ods-typography-definitions
+/// @access public
+@mixin ods-foreach-theme-typography-level() {
+  @each $level-name, $level-definition in $ods-typography-definitions {
+      [level=#{$level-name}] {
+        @content($level-name);
+      }
+    }
+}
+
+/// apply for one specified size the typography level
+/// @access public
+/// @param {String} $level-name - the name of the level like `title` or `button`
+/// @param {String} $size-name - the name of the size like `md`
+/// @param {Boolean} $with-and-selector [false] - Indicates if the mixin have to apply an `&` selector or not
+@mixin ods-for-one-theme-typography-size($level-name, $size-name, $with-and-selector: false) {
+  $and-selector: if($with-and-selector, '&', '');
+  $typography-properties: ods-get-typography-properties($level-name, $size-name);
+  #{$and-selector}[size='#{$size-name}'] {
+    @content($typography-properties);
+  }
+}
+
+@mixin  ods-and-for-one-theme-typography-size($level-name, $size-name) {
+  @include ods-for-one-theme-typography-size($level-name, $size-name, true) using($typography-properties) {
+    @content($typography-properties);
+  }
+}

@@ -1,5 +1,5 @@
-@import '~@ovhcloud/ods-theming/size/ods-component-size';
-@import '~@ovhcloud/ods-theming/size/ods-theming-size';
+@import '~@ovhcloud/ods-common-theming/size/ods-component-size';
+@import '~@ovhcloud/ods-common-theming/size/ods-theming-size';
 @import 'osds-cart-footer.mixins';
 
 @mixin osds-cart-footer-theme-size() {

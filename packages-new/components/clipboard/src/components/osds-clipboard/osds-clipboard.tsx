@@ -2,7 +2,7 @@ import type { EventEmitter } from '@stencil/core';
 import type { OdsClipboardAttribute } from './interfaces/attributes';
 import type { OdsClipboardEvent } from './interfaces/events';
 import { Component, Host, h, Prop, Event } from '@stencil/core';
-import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_ICON_NAME } from '@ovhcloud/ods-component-icon';
 import { ODS_INPUT_TYPE } from '@ovhcloud/ods-component-input';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
@@ -49,7 +49,7 @@ export class OsdsClipboard implements OdsClipboardAttribute, OdsClipboardEvent {
     return (
       <Host>
         <osds-input read-only
-                    color={ OdsThemeColorIntent.primary }
+                    color={ ODS_THEME_COLOR_INTENT.primary }
                     disabled={ this.disabled }
                     icon={ ODS_ICON_NAME.COPY }
                     inline={ this.inline }

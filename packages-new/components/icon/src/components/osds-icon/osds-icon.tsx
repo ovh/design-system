@@ -1,7 +1,7 @@
 import type { OdsIconAttribute } from './interfaces/attributes';
-import icons from '@ovhcloud/ods-theming/icons/icons.data.json';
+import icons from '@ovhcloud/ods-common-theming/icons/icons.data.json';
 import { Component, Element, Host, Prop, Watch, h } from '@stencil/core';
-import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_ICON_NAME } from './constants/icon-name';
 import { ODS_ICON_SIZE } from './constants/icon-size';
@@ -20,7 +20,7 @@ export class OsdsIcon implements OdsIconAttribute {
   @Prop({ reflect: true }) public ariaName: string = DEFAULT_ATTRIBUTE.ariaName;
 
   /** @see OdsIconAttributes.color */
-  @Prop({ reflect: true }) public color?: OdsThemeColorIntent = DEFAULT_ATTRIBUTE.color;
+  @Prop({ reflect: true }) public color?: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
 
   /** @see OdsIconAttributes.contrasted */
   @Prop({ reflect: true }) public contrasted?: boolean = DEFAULT_ATTRIBUTE.contrasted;

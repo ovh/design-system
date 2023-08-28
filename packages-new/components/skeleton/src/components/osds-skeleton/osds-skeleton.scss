@@ -1,7 +1,7 @@
 @import 'styles/osds-skeleton.mixins';
 @import 'styles/osds-skeleton.size';
 
-@import '~@ovhcloud/ods-theming/ods-theme';
+@import '~@ovhcloud/ods-common-theming/ods-theme';
 
 :host {
   min-height: .5rem;

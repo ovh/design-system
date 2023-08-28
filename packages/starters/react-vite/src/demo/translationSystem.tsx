@@ -1,5 +1,5 @@
 import { priceFormatter } from './priceFormatter';
-import { Ods, OdsExternalLogger } from '@ovhcloud/ods-core';
+import { Ods, OdsExternalLogger } from '@ovhcloud/ods-common-core';
 import { translations } from './translations';
 
 // translation system to replace with the application one

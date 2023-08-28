@@ -8,7 +8,7 @@ import { Components as ComponentsTile } from '@ovhcloud/ods-component-tile/loade
 import {
   OdsErrorStateControl,
   OdsFormControl
-} from '@ovhcloud/ods-core';
+} from '@ovhcloud/ods-common-core';
 import { OdsInputValidityState, OdsInputValueChangeEventDetail } from '@ovhcloud/ods-component-input';
 
 export const TileTemplate = (args: any) => {

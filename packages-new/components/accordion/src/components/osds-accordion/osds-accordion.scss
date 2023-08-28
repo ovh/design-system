@@ -2,8 +2,8 @@
 @import 'styles/osds-accordion.color';
 @import 'styles/osds-accordion.size';
 @import 'styles/osds-accordion.typography';
-@import '~@ovhcloud/ods-theming/color/ods-theming-color';
-@import '~@ovhcloud/ods-theming/ods-theme';
+@import '~@ovhcloud/ods-common-theming/color/ods-theming-color';
+@import '~@ovhcloud/ods-common-theming/ods-theme';
 
 :host {
   @include osds-accordion-on-summary() {

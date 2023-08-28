@@ -1,6 +1,6 @@
 import type { OdsFormFieldAttribute } from './interfaces/attributes';
 import { Component, Host, h, Prop } from '@stencil/core';
-import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 
 /**
@@ -33,7 +33,7 @@ export class OsdsFormField implements OdsFormFieldAttribute {
         {
           error
           && error.length > 0
-          ? <osds-text color={OdsThemeColorIntent.error}>{error}</osds-text>
+          ? <osds-text color={ODS_THEME_COLOR_INTENT.error}>{error}</osds-text>
           : <slot name="helper"></slot>
         }
       </Host>

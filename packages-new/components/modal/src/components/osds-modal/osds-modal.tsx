@@ -1,5 +1,5 @@
 import type { OdsModalAttribute } from './interfaces/attributes';
-import { OdsThemeColorIntent, OdsThemeTypographySize } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENT, ODS_THEME_TYPOGRAPHY_SIZE } from '@ovhcloud/ods-common-theming';
 import { Component, Element, Host, Method, Prop, h } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
@@ -20,7 +20,7 @@ export class OsdsModal implements OdsModalAttribute, OdsModalMethod {
   @Element() el!: HTMLElement;
 
   /** @see OdsModalAttributes.color */
-  @Prop({ reflect: true }) color: OdsThemeColorIntent = DEFAULT_ATTRIBUTE.color;
+  @Prop({ reflect: true }) color: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
 
   /** @see OdsModalAttributes.dismissible */
   @Prop({ reflect: true }) dismissible?: boolean = DEFAULT_ATTRIBUTE.dismissible;
@@ -98,8 +98,8 @@ export class OsdsModal implements OdsModalAttribute, OdsModalMethod {
               <div class="headline">
                 <osds-text
                   level={ODS_TEXT_LEVEL.heading}
-                  size={OdsThemeTypographySize._400}
-                  color={OdsThemeColorIntent.primary}
+                  size={ODS_THEME_TYPOGRAPHY_SIZE._400}
+                  color={ODS_THEME_COLOR_INTENT.primary}
                 >{headline}</osds-text>
               </div>
             }

@@ -1,0 +1,20 @@
+
+/// @access private
+@function ods-get-icon-size-properties($size-name) {
+  @return (
+    height: var(--ods-size-icon-#{$size-name}-height),
+    width: var(--ods-size-icon-#{$size-name}-width)
+  )
+}
+
+/// @access private
+@function ods-get-icon-component-size-definition() {
+  @return (
+    xxs: ods-get-icon-size-properties(xxs),
+    xs: ods-get-icon-size-properties(xs),
+    sm: ods-get-icon-size-properties(sm),
+    md: ods-get-icon-size-properties(md),
+    lg: ods-get-icon-size-properties(lg),
+    xl: ods-get-icon-size-properties(xl)
+  );
+}

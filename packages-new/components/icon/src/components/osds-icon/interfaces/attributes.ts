@@ -1,6 +1,6 @@
 import type { ODS_ICON_NAME } from '../constants/icon-name';
 import type { ODS_ICON_SIZE } from '../constants/icon-size';
-import type { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 
 interface OdsIconAttribute {
   /**
@@ -10,7 +10,7 @@ interface OdsIconAttribute {
   /**
    * Icon color theme
    */
-  color?: OdsThemeColorIntent
+  color?: ODS_THEME_COLOR_INTENT
   /**
    * Icon if contrasted or not
    */

@@ -1,7 +1,7 @@
 import type { E2EElement, E2EPage } from '@stencil/core/testing';
 import type { OdsTextAttribute } from './interfaces/attributes';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
-import { OdsThemeColorHue, OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_HUE, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
 import { newE2EPage } from '@stencil/core/testing';
 import { ODS_TEXT_LEVELS } from './constants/text-level';
 import { ODS_TEXT_SIZES } from './constants/text-size';
@@ -25,8 +25,8 @@ describe('e2e:osds-text', () => {
 
   describe('screenshots', () => {
     [() => {}, () => el.setProperty('contrasted', true)].forEach((action) => {
-      [OdsThemeColorHue._100, OdsThemeColorHue._500].forEach((hue) => {
-        OdsThemeColorIntentList.forEach((color) => {
+      [ODS_THEME_COLOR_HUE._100, ODS_THEME_COLOR_HUE._500].forEach((hue) => {
+        ODS_THEME_COLOR_INTENTS.forEach((color) => {
           ODS_TEXT_SIZES.forEach((size) => {
             ODS_TEXT_LEVELS.forEach((level) => {
               it([color, level, size, action, hue].join(', '), async () => {

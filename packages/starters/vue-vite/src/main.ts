@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
 import './style.css'
-import { OdsWindow } from '@ovhcloud/ods-core';
+import { OdsWindow } from '@ovhcloud/ods-common-core';
 import App from './App.vue'
 
 // eslint-disable-next-line no-var

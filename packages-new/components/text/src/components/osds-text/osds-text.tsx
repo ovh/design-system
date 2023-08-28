@@ -1,8 +1,8 @@
-import type { OdsThemeColorHue, OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import type { ODS_THEME_COLOR_HUE, ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import type { ODS_TEXT_LEVEL } from './constants/text-level';
 import type { ODS_TEXT_SIZE } from './constants/text-size';
 import type { OdsTextAttribute } from './interfaces/attributes';
-import { odsGenerateColorVariable } from '@ovhcloud/ods-theming';
+import { odsGenerateColorVariable } from '@ovhcloud/ods-common-theming';
 import { Component, Host, Prop, h } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 
@@ -19,7 +19,7 @@ export class OsdsText implements OdsTextAttribute {
   @Prop({ reflect: true }) public breakSpaces? = DEFAULT_ATTRIBUTE.breakSpaces;
 
   /** @see OdsTextAttribute.color */
-  @Prop({ reflect: true }) public color?: OdsThemeColorIntent = DEFAULT_ATTRIBUTE.color;
+  @Prop({ reflect: true }) public color?: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
 
   /** @see OdsTextAttribute.contrasted */
   @Prop({ reflect: true }) public contrasted? = DEFAULT_ATTRIBUTE.contrasted;
@@ -31,7 +31,7 @@ export class OsdsText implements OdsTextAttribute {
   @Prop({ reflect: true }) public level?: ODS_TEXT_LEVEL = DEFAULT_ATTRIBUTE.level;
 
   /** @see OdsTextAttribute.hue */
-  @Prop({ reflect: true }) public hue?: OdsThemeColorHue = DEFAULT_ATTRIBUTE.hue;
+  @Prop({ reflect: true }) public hue?: ODS_THEME_COLOR_HUE = DEFAULT_ATTRIBUTE.hue;
 
   render() {
     return (

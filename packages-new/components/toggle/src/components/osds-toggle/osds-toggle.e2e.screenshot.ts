@@ -2,7 +2,7 @@ import type { E2EElement, E2EPage } from '@stencil/core/testing';
 import type { OdsToggleAttribute } from './interfaces/attributes';
 import { newE2EPage } from '@stencil/core/testing';
 import { odsCombinationName, odsCreateCombinationContext, odsCreateCombinationPropertyAction, odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
-import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 
 describe('e2e:osds-toggle', () => {
@@ -10,7 +10,7 @@ describe('e2e:osds-toggle', () => {
     contrasted: false,
     checked: false,
     checking: false,
-    color: OdsThemeColorIntent.primary,
+    color: ODS_THEME_COLOR_INTENT.primary,
     disabled: false,
     interactive: true
   };
@@ -44,7 +44,7 @@ describe('e2e:osds-toggle', () => {
       createPropAction('disabled', true).forEach((disabled) => {
         createPropAction('checked', true).forEach((checked) => {
           createPropAction('checking', true).forEach((checking) => {
-            odsCreateCombinationContext('color',[OdsThemeColorIntent.info]).forEach((color) => {
+            odsCreateCombinationContext('color',[ODS_THEME_COLOR_INTENT.info]).forEach((color) => {
               it(odsCombinationName([color, contrast, disabled, checked, checking]), async () => {
                 await setup({
                   attributes: {

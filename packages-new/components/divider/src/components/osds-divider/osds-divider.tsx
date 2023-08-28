@@ -1,5 +1,5 @@
 import type { OdsDividerAttribute } from './interfaces/attributes';
-import type { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import type { ODS_DIVIDER_SIZE } from './constants/divider-size';
 import { Component, Element, Host, Prop, h } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
@@ -16,7 +16,7 @@ export class OsdsDivider implements OdsDividerAttribute {
   @Prop({ reflect: true }) public separator? = DEFAULT_ATTRIBUTE.separator;
 
   /** @see OdsDividerAttributes.color */
-  @Prop({ reflect: true }) public color?: OdsThemeColorIntent = DEFAULT_ATTRIBUTE.color;
+  @Prop({ reflect: true }) public color?: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
 
   /** @see OdsDividerAttributes.size */
   @Prop({ reflect: true }) public size?: ODS_DIVIDER_SIZE = DEFAULT_ATTRIBUTE.size;

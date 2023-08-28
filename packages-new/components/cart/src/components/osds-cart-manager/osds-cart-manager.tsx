@@ -12,7 +12,7 @@ import type { ODS_CART_SIZE } from '../osds-cart/constants/cart-size';
 import { Component, Element, Host, Method, Prop, Watch, h } from '@stencil/core';
 import { ODS_PERIOD_ISO_CODE, OdsI18n, OdsI18nHook, OdsLogger } from '@ovhcloud/ods-common-core';
 import { ODS_DIVIDER_SIZE } from '@ovhcloud/ods-component-divider';
-import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsCartManagerController } from './core/controller';
 import { isOdsCartManagerFooter, isOdsCartManagerFooterItem } from './helpers/type';
@@ -112,11 +112,11 @@ export class OsdsCartManager implements OdsCartManagerAttribute, OdsCartManagerM
         // divider between each option
         (array.length - 1 !== i ?
           r.concat(a,
-            (<osds-divider color={OdsThemeColorIntent.primary} size={ODS_DIVIDER_SIZE.zero}
+            (<osds-divider color={ODS_THEME_COLOR_INTENT.primary} size={ODS_DIVIDER_SIZE.zero}
               separator={true}></osds-divider>))
           : r.concat(a)),
         // first divider before options
-        [(<osds-divider color={OdsThemeColorIntent.primary} size={ODS_DIVIDER_SIZE.zero}
+        [(<osds-divider color={ODS_THEME_COLOR_INTENT.primary} size={ODS_DIVIDER_SIZE.zero}
           separator={true}></osds-divider>)]
       );
   }

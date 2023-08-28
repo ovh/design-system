@@ -1,7 +1,7 @@
 import type { E2EElement, E2EPage } from '@stencil/core/testing';
 import type { OdsTextAttribute } from './interfaces/attributes';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
-import { OdsThemeColorHue, OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_HUE, ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { newE2EPage } from '@stencil/core/testing';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_TEXT_LEVEL } from './constants/text-level';
@@ -27,7 +27,7 @@ describe('e2e:osds-text', () => {
   }
 
   it('should render', async () => {
-    await setup({ attributes: { color: OdsThemeColorIntent.primary, contrasted: false } });
+    await setup({ attributes: { color: ODS_THEME_COLOR_INTENT.primary, contrasted: false } });
     expect(el).not.toBeNull();
   });
 
@@ -68,7 +68,7 @@ describe('e2e:osds-text', () => {
 
   describe('slots', () => {
     it('should have a slot', async () => {
-      await setup({ attributes: { color: OdsThemeColorIntent.primary,  contrasted: false }, html: slotContent });
+      await setup({ attributes: { color: ODS_THEME_COLOR_INTENT.primary,  contrasted: false }, html: slotContent });
       expect(textSlot).not.toBeNull();
     });
 
@@ -76,117 +76,117 @@ describe('e2e:osds-text', () => {
 
   describe('colors', () => {
     it('should have a default color', async () => {
-      await setup({ attributes: { color: OdsThemeColorIntent.default }, html: slotContent });
-      expect(await el.getProperty('color')).toBe(OdsThemeColorIntent.default);
+      await setup({ attributes: { color: ODS_THEME_COLOR_INTENT.default }, html: slotContent });
+      expect(await el.getProperty('color')).toBe(ODS_THEME_COLOR_INTENT.default);
     });
 
     it('should have a primary color', async () => {
-      await setup({ attributes: { color: OdsThemeColorIntent.primary }, html: slotContent });
-      expect(await el.getProperty('color')).toBe(OdsThemeColorIntent.primary);
+      await setup({ attributes: { color: ODS_THEME_COLOR_INTENT.primary }, html: slotContent });
+      expect(await el.getProperty('color')).toBe(ODS_THEME_COLOR_INTENT.primary);
     });
 
     it('should have a text color', async () => {
-      await setup({ attributes: { color: OdsThemeColorIntent.text }, html: slotContent });
-      expect(await el.getProperty('color')).toBe(OdsThemeColorIntent.text);
+      await setup({ attributes: { color: ODS_THEME_COLOR_INTENT.text }, html: slotContent });
+      expect(await el.getProperty('color')).toBe(ODS_THEME_COLOR_INTENT.text);
     });
 
     it('should have an accent color', async () => {
-      await setup({ attributes: { color: OdsThemeColorIntent.accent }, html: slotContent });
-      expect(await el.getProperty('color')).toBe(OdsThemeColorIntent.accent);
+      await setup({ attributes: { color: ODS_THEME_COLOR_INTENT.accent }, html: slotContent });
+      expect(await el.getProperty('color')).toBe(ODS_THEME_COLOR_INTENT.accent);
     });
 
     it('should have a warning color', async () => {
-      await setup({ attributes: { color: OdsThemeColorIntent.warning }, html: slotContent });
-      expect(await el.getProperty('color')).toBe(OdsThemeColorIntent.warning);
+      await setup({ attributes: { color: ODS_THEME_COLOR_INTENT.warning }, html: slotContent });
+      expect(await el.getProperty('color')).toBe(ODS_THEME_COLOR_INTENT.warning);
     });
 
     it('should have a success color', async () => {
-      await setup({ attributes: { color: OdsThemeColorIntent.success }, html: slotContent });
-      expect(await el.getProperty('color')).toBe(OdsThemeColorIntent.success);
+      await setup({ attributes: { color: ODS_THEME_COLOR_INTENT.success }, html: slotContent });
+      expect(await el.getProperty('color')).toBe(ODS_THEME_COLOR_INTENT.success);
     });
 
     it('should have a info color', async () => {
-      await setup({ attributes: { color: OdsThemeColorIntent.info }, html: slotContent });
-      expect(await el.getProperty('color')).toBe(OdsThemeColorIntent.info);
+      await setup({ attributes: { color: ODS_THEME_COLOR_INTENT.info }, html: slotContent });
+      expect(await el.getProperty('color')).toBe(ODS_THEME_COLOR_INTENT.info);
     });
 
     it('should have a promotion color', async () => {
-      await setup({ attributes: { color: OdsThemeColorIntent.promotion }, html: slotContent });
-      expect(await el.getProperty('color')).toBe(OdsThemeColorIntent.promotion);
+      await setup({ attributes: { color: ODS_THEME_COLOR_INTENT.promotion }, html: slotContent });
+      expect(await el.getProperty('color')).toBe(ODS_THEME_COLOR_INTENT.promotion);
     });
   });
 
   describe('level', () => {
     it('should have a body level', async () => {
-      await setup({ attributes: { color: OdsThemeColorIntent.primary, level: ODS_TEXT_LEVEL.body }, html: slotContent });
+      await setup({ attributes: { color: ODS_THEME_COLOR_INTENT.primary, level: ODS_TEXT_LEVEL.body }, html: slotContent });
       expect(await el.getProperty('level')).toBe(ODS_TEXT_LEVEL.body);
     });
 
     it('should have a button level', async () => {
-      await setup({ attributes: { color: OdsThemeColorIntent.primary, level: ODS_TEXT_LEVEL.button }, html: slotContent });
+      await setup({ attributes: { color: ODS_THEME_COLOR_INTENT.primary, level: ODS_TEXT_LEVEL.button }, html: slotContent });
       expect(await el.getProperty('level')).toBe(ODS_TEXT_LEVEL.button);
     });
 
     it('should have a caption level', async () => {
-      await setup({ attributes: { color: OdsThemeColorIntent.primary, level: ODS_TEXT_LEVEL.caption }, html: slotContent });
+      await setup({ attributes: { color: ODS_THEME_COLOR_INTENT.primary, level: ODS_TEXT_LEVEL.caption }, html: slotContent });
       expect(await el.getProperty('level')).toBe(ODS_TEXT_LEVEL.caption);
     });
 
     it('should have a subheading level', async () => {
-      await setup({ attributes: { color: OdsThemeColorIntent.primary, level: ODS_TEXT_LEVEL.subheading }, html: slotContent });
+      await setup({ attributes: { color: ODS_THEME_COLOR_INTENT.primary, level: ODS_TEXT_LEVEL.subheading }, html: slotContent });
       expect(await el.getProperty('level')).toBe(ODS_TEXT_LEVEL.subheading);
     });
 
     it('should have a heading level', async () => {
-      await setup({ attributes: { color: OdsThemeColorIntent.primary, level: ODS_TEXT_LEVEL.heading }, html: slotContent });
+      await setup({ attributes: { color: ODS_THEME_COLOR_INTENT.primary, level: ODS_TEXT_LEVEL.heading }, html: slotContent });
       expect(await el.getProperty('level')).toBe(ODS_TEXT_LEVEL.heading);
     });
   });
 
   describe('sizes', () => {
     it('should have a 100 size', async () => {
-      await setup({ attributes: { color: OdsThemeColorIntent.primary, size: ODS_TEXT_SIZE._100 }, html: slotContent });
+      await setup({ attributes: { color: ODS_THEME_COLOR_INTENT.primary, size: ODS_TEXT_SIZE._100 }, html: slotContent });
       expect(await el.getProperty('size')).toBe(ODS_TEXT_SIZE._100);
     });
     it('should have a 200 size', async () => {
-      await setup({ attributes: { color: OdsThemeColorIntent.primary, size: ODS_TEXT_SIZE._200 }, html: slotContent });
+      await setup({ attributes: { color: ODS_THEME_COLOR_INTENT.primary, size: ODS_TEXT_SIZE._200 }, html: slotContent });
       expect(await el.getProperty('size')).toBe(ODS_TEXT_SIZE._200);
     });
     it('should have a 300 size', async () => {
-      await setup({ attributes: { color: OdsThemeColorIntent.primary, size: ODS_TEXT_SIZE._300 }, html: slotContent });
+      await setup({ attributes: { color: ODS_THEME_COLOR_INTENT.primary, size: ODS_TEXT_SIZE._300 }, html: slotContent });
       expect(await el.getProperty('size')).toBe(ODS_TEXT_SIZE._300);
     });
     it('should have a 400 size', async () => {
-      await setup({ attributes: { color: OdsThemeColorIntent.primary, size: ODS_TEXT_SIZE._400 }, html: slotContent });
+      await setup({ attributes: { color: ODS_THEME_COLOR_INTENT.primary, size: ODS_TEXT_SIZE._400 }, html: slotContent });
       expect(await el.getProperty('size')).toBe(ODS_TEXT_SIZE._400);
     });
     it('should have a 500 size', async () => {
-      await setup({ attributes: { color: OdsThemeColorIntent.primary, size: ODS_TEXT_SIZE._500 }, html: slotContent });
+      await setup({ attributes: { color: ODS_THEME_COLOR_INTENT.primary, size: ODS_TEXT_SIZE._500 }, html: slotContent });
       expect(await el.getProperty('size')).toBe(ODS_TEXT_SIZE._500);
     });
     it('should have a 600 size', async () => {
-      await setup({ attributes: { color: OdsThemeColorIntent.primary, size: ODS_TEXT_SIZE._600 }, html: slotContent });
+      await setup({ attributes: { color: ODS_THEME_COLOR_INTENT.primary, size: ODS_TEXT_SIZE._600 }, html: slotContent });
       expect(await el.getProperty('size')).toBe(ODS_TEXT_SIZE._600);
     });
     it('should have a 700 size', async () => {
-      await setup({ attributes: { color: OdsThemeColorIntent.primary, size: ODS_TEXT_SIZE._700 }, html: slotContent });
+      await setup({ attributes: { color: ODS_THEME_COLOR_INTENT.primary, size: ODS_TEXT_SIZE._700 }, html: slotContent });
       expect(await el.getProperty('size')).toBe(ODS_TEXT_SIZE._700);
     });
     it('should have a 800 size', async () => {
-      await setup({ attributes: { color: OdsThemeColorIntent.primary, size: ODS_TEXT_SIZE._800 }, html: slotContent });
+      await setup({ attributes: { color: ODS_THEME_COLOR_INTENT.primary, size: ODS_TEXT_SIZE._800 }, html: slotContent });
       expect(await el.getProperty('size')).toBe(ODS_TEXT_SIZE._800);
     });
   });
 
   describe('hues', () => {
     it('should have a 100 hue', async () => {
-      await setup({ attributes: { color: OdsThemeColorIntent.primary, hue: OdsThemeColorHue._100 }, html: slotContent });
-      expect(await el.getProperty('hue')).toBe(OdsThemeColorHue._100);
+      await setup({ attributes: { color: ODS_THEME_COLOR_INTENT.primary, hue: ODS_THEME_COLOR_HUE._100 }, html: slotContent });
+      expect(await el.getProperty('hue')).toBe(ODS_THEME_COLOR_HUE._100);
     });
 
     it('should have a 500 hue', async () => {
-      await setup({ attributes: { color: OdsThemeColorIntent.primary, hue: OdsThemeColorHue._500 }, html: slotContent });
-      expect(await el.getProperty('hue')).toBe(OdsThemeColorHue._500);
+      await setup({ attributes: { color: ODS_THEME_COLOR_INTENT.primary, hue: ODS_THEME_COLOR_HUE._500 }, html: slotContent });
+      expect(await el.getProperty('hue')).toBe(ODS_THEME_COLOR_HUE._500);
     });
   });
 });

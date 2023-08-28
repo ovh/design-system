@@ -1,12 +1,12 @@
 import type { OdsPasswordAttribute } from '../interfaces/attributes';
-import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_INPUT_SIZE } from '@ovhcloud/ods-component-input';
 
 const DEFAULT_ATTRIBUTE: OdsPasswordAttribute = Object.freeze({
   ariaLabel: null,
   ariaLabelledby: undefined,
   clearable: false,
-  color: OdsThemeColorIntent.default,
+  color: ODS_THEME_COLOR_INTENT.default,
   contrasted: false,
   disabled: false,
   error: false,

@@ -1,5 +1,5 @@
 import type { OsdsMessage } from '../osds-message';
-import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_MESSAGE_TYPE } from '../constants/message-type';
 import { odsIsTermInEnum, OdsLogger } from '@ovhcloud/ods-common-core'
 
@@ -19,10 +19,10 @@ class OdsMessageController {
    * Warn user if the color attribute is wrong
    * @param color - color of the message
    */
-  validateColor(color?: OdsThemeColorIntent): void {
-    if (color && !odsIsTermInEnum(color, OdsThemeColorIntent)) {
+  validateColor(color?: ODS_THEME_COLOR_INTENT): void {
+    if (color && !odsIsTermInEnum(color, ODS_THEME_COLOR_INTENT)) {
       this.logger.warn(
-        `The color attribute must have a value from [${Object.values(OdsThemeColorIntent).join(', ')}]`
+        `The color attribute must have a value from [${Object.values(ODS_THEME_COLOR_INTENT).join(', ')}]`
       );
     }
   }
@@ -33,8 +33,8 @@ class OdsMessageController {
    * @param type - type of the message
    */
   setColorForType(type?: ODS_MESSAGE_TYPE): void {
-    if(this.component.type && this.component.color === OdsThemeColorIntent.default) {
-      this.component.color = type as unknown as OdsThemeColorIntent;
+    if(this.component.type && this.component.color === ODS_THEME_COLOR_INTENT.default) {
+      this.component.color = type as unknown as ODS_THEME_COLOR_INTENT;
     }
   }
 

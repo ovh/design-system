@@ -4,11 +4,11 @@ import type { OdsSelectValueChangeEventDetail } from './interfaces/events';
 import { newE2EPage } from '@stencil/core/testing';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { OdsThemeColorIntent } from '@ovhcloud/ods-theming/src';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_SELECT_SIZE } from './constants/select-size';
 
 describe('e2e:osds-select', () => {
-  const baseAttribute = { ariaLabel: null, ariaLabelledby: '', color: OdsThemeColorIntent.primary, defaultValue: '', disabled: false, inline: false, required: false, size: ODS_SELECT_SIZE.md, value: '' };
+  const baseAttribute = { ariaLabel: null, ariaLabelledby: '', color: ODS_THEME_COLOR_INTENT.primary, defaultValue: '', disabled: false, inline: false, required: false, size: ODS_SELECT_SIZE.md, value: '' };
   let page: E2EPage;
   let el: E2EElement;
   let divElement: E2EElement;

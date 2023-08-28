@@ -2,7 +2,7 @@ import type { ODS_CHIP_SIZE } from './constants/chip-size';
 import type { ODS_CHIP_VARIANT } from './constants/chip-variant';
 import type { OdsChipAttribute } from './interfaces/attributes';
 import { Component, Element, Host, Prop, h } from '@stencil/core';
-import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsChipController } from './core/controller';
@@ -20,7 +20,7 @@ export class OsdsChip implements OdsChipAttribute {
   @Element() el!: HTMLElement;
 
   /** @see OdsChipAttributes.color */
-  @Prop({ reflect: true }) public color?: OdsThemeColorIntent = DEFAULT_ATTRIBUTE.color;
+  @Prop({ reflect: true }) public color?: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
 
   /** @see OdsChipAttributes.contrasted */
   @Prop({ reflect: true }) public contrasted?: boolean = DEFAULT_ATTRIBUTE.contrasted;

@@ -1,6 +1,6 @@
 import type { ODS_TILE_SIZE } from '../constants/tile-size';
 import type { ODS_TILE_VARIANT } from '../constants/tile-variant';
-import type { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import type { OdsCheckboxable, OdsRadioizable } from '@ovhcloud/ods-common-core';
 
 interface OdsTileAttribute extends OdsRadioizable, OdsCheckboxable {
@@ -9,7 +9,7 @@ interface OdsTileAttribute extends OdsRadioizable, OdsCheckboxable {
   /** awaiting a change of checked state */
   checking?: boolean;
   /** Tile color theme */
-  color?: OdsThemeColorIntent;
+  color?: ODS_THEME_COLOR_INTENT;
   /** disabled or not: see component principles */
   disabled?: boolean;
   /** inline or not: see component principles */

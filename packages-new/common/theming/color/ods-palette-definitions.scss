@@ -1,0 +1,181 @@
+/// color palettes definitions
+/// a color for each Hue in normal mode and contrasted mode
+///
+/// @access public
+/// @type Map
+/// @prop gray - gray palette definitions
+/// @prop {Var} gray.[hue] - list of all declared hues variables for the gray palette
+/// @prop blue - blue palette definitions
+/// @prop {Var} blue.[hue] - list of all declared hues variables for the blue palette
+/// @prop gray-blue - gray-blue palette definitions
+/// @prop {Var} gray-blue.[hue] - list of all declared hues variables for the gray-blue palette
+/// @prop red - red palette definitions
+/// @prop {Var} red.[hue] - list of all declared hues variables for the red palette
+/// @prop orange - orange palette definitions
+/// @prop {Var} orange.[hue] - list of all declared hues variables for the orange palette
+/// @prop green - green palette definitions
+/// @prop {Var} green.[hue] - list of all declared hues variables for the green palette
+/// @prop pink - pink palette definitions
+/// @prop {Var} pink.[hue] - list of all declared hues variables for the pink palette
+$ods-palette-definitions: (
+  'gray': (
+    '000': var(--ods-color-gray-000),
+    '000-contrasted': var(--ods-color-gray-000-contrasted),
+    '050': var(--ods-color-gray-050),
+    '050-contrasted': var(--ods-color-gray-050-contrasted),
+    '100': var(--ods-color-gray-100),
+    '100-contrasted': var(--ods-color-gray-100-contrasted),
+    '200': var(--ods-color-gray-200),
+    '200-contrasted': var(--ods-color-gray-200-contrasted),
+    '300': var(--ods-color-gray-300),
+    '300-contrasted': var(--ods-color-gray-300-contrasted),
+    '400': var(--ods-color-gray-400),
+    '400-contrasted': var(--ods-color-gray-400-contrasted),
+    '500': var(--ods-color-gray-500),
+    '500-contrasted': var(--ods-color-gray-500-contrasted),
+    '600': var(--ods-color-gray-600),
+    '600-contrasted': var(--ods-color-gray-600-contrasted),
+    '700': var(--ods-color-gray-700),
+    '700-contrasted': var(--ods-color-gray-700-contrasted),
+    '800': var(--ods-color-gray-800),
+    '800-contrasted': var(--ods-color-gray-800-contrasted),
+    '900': var(--ods-color-gray-900),
+    '900-contrasted': var(--ods-color-gray-900-contrasted),
+  ),
+
+  'blue': (
+    '000': var(--ods-color-blue-000),
+    '000-contrasted': var(--ods-color-blue-000-contrasted),
+    '050': var(--ods-color-blue-050),
+    '050-contrasted': var(--ods-color-blue-050-contrasted),
+    '075': var(--ods-color-blue-075),
+    '075-contrasted': var(--ods-color-blue-075-contrasted),
+    '100': var(--ods-color-blue-100),
+    '100-contrasted': var(--ods-color-blue-100-contrasted),
+    '200': var(--ods-color-blue-200),
+    '200-contrasted': var(--ods-color-blue-200-contrasted),
+    '300': var(--ods-color-blue-300),
+    '300-contrasted': var(--ods-color-blue-300-contrasted),
+    '400': var(--ods-color-blue-400),
+    '400-contrasted': var(--ods-color-blue-400-contrasted),
+    '500': var(--ods-color-blue-500),
+    '500-contrasted': var(--ods-color-blue-500-contrasted),
+    '600': var(--ods-color-blue-600),
+    '600-contrasted': var(--ods-color-blue-600-contrasted),
+    '700': var(--ods-color-blue-700),
+    '700-contrasted': var(--ods-color-blue-700-contrasted),
+    '800': var(--ods-color-blue-800),
+    '800-contrasted': var(--ods-color-blue-800-contrasted),
+    '900': var(--ods-color-blue-900),
+    '900-contrasted': var(--ods-color-blue-900-contrasted),
+  ),
+
+  'gray-blue': (
+    '000': var(--ods-color-gray-blue-000),
+    '000-contrasted': var(--ods-color-gray-blue-000-contrasted),
+    '100': var(--ods-color-gray-blue-100),
+    '100-contrasted': var(--ods-color-gray-blue-100-contrasted),
+    '500': var(--ods-color-gray-blue-500),
+    '500-contrasted': var(--ods-color-gray-blue-500-contrasted),
+  ),
+
+  'red': (
+    '000': var(--ods-color-red-000),
+    '000-contrasted': var(--ods-color-red-000-contrasted),
+    '050': var(--ods-color-red-050),
+    '050-contrasted': var(--ods-color-red-050-contrasted),
+    '100': var(--ods-color-red-100),
+    '100-contrasted': var(--ods-color-red-100-contrasted),
+    '200': var(--ods-color-red-200),
+    '200-contrasted': var(--ods-color-red-200-contrasted),
+    '300': var(--ods-color-red-300),
+    '300-contrasted': var(--ods-color-red-300-contrasted),
+    '400': var(--ods-color-red-400),
+    '400-contrasted': var(--ods-color-red-400-contrasted),
+    '500': var(--ods-color-red-500),
+    '500-contrasted': var(--ods-color-red-500-contrasted),
+    '600': var(--ods-color-red-600),
+    '600-contrasted': var(--ods-color-red-600-contrasted),
+    '700': var(--ods-color-red-700),
+    '700-contrasted': var(--ods-color-red-700-contrasted),
+    '800': var(--ods-color-red-800),
+    '800-contrasted': var(--ods-color-red-800-contrasted),
+    '900': var(--ods-color-red-900),
+    '900-contrasted': var(--ods-color-red-900-contrasted),
+  ),
+
+  'orange': (
+    '000': var(--ods-color-orange-000),
+    '000-contrasted': var(--ods-color-orange-000-contrasted),
+    '050': var(--ods-color-orange-050),
+    '050-contrasted': var(--ods-color-orange-050-contrasted),
+    '100': var(--ods-color-orange-100),
+    '100-contrasted': var(--ods-color-orange-100-contrasted),
+    '200': var(--ods-color-orange-200),
+    '200-contrasted': var(--ods-color-orange-200-contrasted),
+    '300': var(--ods-color-orange-300),
+    '300-contrasted': var(--ods-color-orange-300-contrasted),
+    '400': var(--ods-color-orange-400),
+    '400-contrasted': var(--ods-color-orange-400-contrasted),
+    '500': var(--ods-color-orange-500),
+    '500-contrasted': var(--ods-color-orange-500-contrasted),
+    '600': var(--ods-color-orange-600),
+    '600-contrasted': var(--ods-color-orange-600-contrasted),
+    '700': var(--ods-color-orange-700),
+    '700-contrasted': var(--ods-color-orange-700-contrasted),
+    '800': var(--ods-color-orange-800),
+    '800-contrasted': var(--ods-color-orange-800-contrasted),
+    '900': var(--ods-color-orange-900),
+    '900-contrasted': var(--ods-color-orange-900-contrasted),
+  ),
+
+  'green': (
+    '000': var(--ods-color-green-000),
+    '000-contrasted': var(--ods-color-green-000-contrasted),
+    '050': var(--ods-color-green-050),
+    '050-contrasted': var(--ods-color-green-050-contrasted),
+    '100': var(--ods-color-green-100),
+    '100-contrasted': var(--ods-color-green-100-contrasted),
+    '200': var(--ods-color-green-200),
+    '200-contrasted': var(--ods-color-green-200-contrasted),
+    '300': var(--ods-color-green-300),
+    '300-contrasted': var(--ods-color-green-300-contrasted),
+    '400': var(--ods-color-green-400),
+    '400-contrasted': var(--ods-color-green-400-contrasted),
+    '500': var(--ods-color-green-500),
+    '500-contrasted': var(--ods-color-green-500-contrasted),
+    '600': var(--ods-color-green-600),
+    '600-contrasted': var(--ods-color-green-600-contrasted),
+    '700': var(--ods-color-green-700),
+    '700-contrasted': var(--ods-color-green-700-contrasted),
+    '800': var(--ods-color-green-800),
+    '800-contrasted': var(--ods-color-green-800-contrasted),
+    '900': var(--ods-color-green-900),
+    '900-contrasted': var(--ods-color-green-900-contrasted),
+  ),
+
+  'pink': (
+    '000': var(--ods-color-pink-000),
+    '000-contrasted': var(--ods-color-pink-000-contrasted),
+    '050': var(--ods-color-pink-050),
+    '050-contrasted': var(--ods-color-pink-050-contrasted),
+    '100': var(--ods-color-pink-100),
+    '100-contrasted': var(--ods-color-pink-100-contrasted),
+    '200': var(--ods-color-pink-200),
+    '200-contrasted': var(--ods-color-pink-200-contrasted),
+    '300': var(--ods-color-pink-300),
+    '300-contrasted': var(--ods-color-pink-300-contrasted),
+    '400': var(--ods-color-pink-400),
+    '400-contrasted': var(--ods-color-pink-400-contrasted),
+    '500': var(--ods-color-pink-500),
+    '500-contrasted': var(--ods-color-pink-500-contrasted),
+    '600': var(--ods-color-pink-600),
+    '600-contrasted': var(--ods-color-pink-600-contrasted),
+    '700': var(--ods-color-pink-700),
+    '700-contrasted': var(--ods-color-pink-700-contrasted),
+    '800': var(--ods-color-pink-800),
+    '800-contrasted': var(--ods-color-pink-800-contrasted),
+    '900': var(--ods-color-pink-900),
+    '900-contrasted': var(--ods-color-pink-900-contrasted),
+  )
+);

@@ -2,8 +2,8 @@
 @import 'styles/osds-popover-content.color';
 @import 'styles/osds-popover-content.size';
 @import 'styles/osds-popover-content.typography';
-@import '~@ovhcloud/ods-theming/color/ods-theming-color';
-@import '~@ovhcloud/ods-theming/ods-theme';
+@import '~@ovhcloud/ods-common-theming/color/ods-theming-color';
+@import '~@ovhcloud/ods-common-theming/ods-theme';
 
 // apply the theme template for the component
 @include ods-theme-component() {

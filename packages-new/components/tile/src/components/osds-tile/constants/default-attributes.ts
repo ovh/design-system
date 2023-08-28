@@ -1,12 +1,12 @@
 import type { OdsTileAttribute } from '../interfaces/attributes';
-import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_TILE_SIZE } from './tile-size';
 import { ODS_TILE_VARIANT } from './tile-variant';
 
 const DEFAULT_ATTRIBUTE: OdsTileAttribute = Object.freeze({
   checked: false,
   checking: false,
-  color: OdsThemeColorIntent.default,
+  color: ODS_THEME_COLOR_INTENT.default,
   disabled: false,
   inline: false,
   hoverable: false,

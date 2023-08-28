@@ -1,6 +1,6 @@
 import type { OdsErrorStateControl, OdsFormControl, OdsFormForbiddenValues, OdsInputValue, OdsValidityState } from '@ovhcloud/ods-common-core';
 import type { ODS_ICON_NAME } from '@ovhcloud/ods-component-icon';
-import type { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import type { ODS_INPUT_SIZE } from '../constants/input-size';
 import type { ODS_INPUT_TYPE } from '../constants/input-type';
 
@@ -24,7 +24,7 @@ interface OdsInputAttribute {
   /** Ability to clear the input value */
   clearable?: boolean;
   /** Main color of the input: see component principles */
-  color?: OdsThemeColorIntent;
+  color?: ODS_THEME_COLOR_INTENT;
   /** Indicates if the input is contrasted or not: see component principles */
   contrasted?: boolean;
   /** Default value of the input */

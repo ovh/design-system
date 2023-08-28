@@ -1,0 +1,13 @@
+/// @access private
+@function ods-get-breadcrumb-size-properties($size-name) {
+  @return (
+    padding: var(--ods-size-breadcrumb-#{$size-name}-padding)
+  )
+}
+
+/// @access private
+@function ods-get-breadcrumb-component-size-definition() {
+  @return (
+    md: ods-get-breadcrumb-size-properties(md)
+  );
+}

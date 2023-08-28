@@ -1,5 +1,5 @@
 import type { OdsInputValue } from '@ovhcloud/ods-common-core';
-import type { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import type { ODS_SELECT_SIZE } from '../constants/select-size';
 
 interface OdsSelectAttribute {
@@ -12,7 +12,7 @@ interface OdsSelectAttribute {
    */
   ariaLabelledby: string;
   /** the primary color of the theme */
-  color: OdsThemeColorIntent;
+  color: ODS_THEME_COLOR_INTENT;
   /**
    * Its corresponding default value. It needs to match with one option so the option will be selected
    */

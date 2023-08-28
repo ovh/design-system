@@ -1,6 +1,6 @@
 import type { OsdsButton } from '@ovhcloud/ods-component-button';
 import type { OsdsIcon } from '@ovhcloud/ods-component-icon';
-import type { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import type { EventEmitter, HTMLStencilElement } from '@stencil/core/internal';
 import type { OdsCodeEvent } from './interfaces/events';
 import type { ODS_CODE_SIZE } from './constants/code-size';
@@ -25,7 +25,7 @@ export class OsdsCode implements OdsCodeAttribute, OdsCodeEvent {
   codeEl!: HTMLElement;
 
   /** @see OdsCodeAttributes.color */
-  @Prop({ reflect: true }) public color?: OdsThemeColorIntent = DEFAULT_ATTRIBUTE.color;
+  @Prop({ reflect: true }) public color?: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
 
   /** @see OdsCodeAttributes.contrasted */
   @Prop({ reflect: true }) public contrasted? = DEFAULT_ATTRIBUTE.contrasted;

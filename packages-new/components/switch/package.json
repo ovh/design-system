@@ -36,8 +36,8 @@
   "dependencies": {
     "@ovhcloud/ods-common-core": "^15.0.1",
     "@ovhcloud/ods-common-stencil": "^15.0.1",
-    "@ovhcloud/ods-component-radio": "^15.0.1",
-    "@ovhcloud/ods-theming": "^15.0.1"
+    "@ovhcloud/ods-common-theming": "^15.0.1",
+    "@ovhcloud/ods-component-radio": "^15.0.1"
   },
   "devDependencies": {
     "@ovhcloud/ods-common-testing": "^15.0.1",

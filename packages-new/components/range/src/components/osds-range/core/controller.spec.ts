@@ -2,10 +2,10 @@ import type { OdsFormForbiddenValues, OdsValidityState } from '@ovhcloud/ods-com
 import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
 import type { OdsRangeValue } from '../interfaces/value';
 import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
-import { OdsFormControl, OdsLogger, OdsWarnComponentAttribute, OdsGetValidityState } from '@ovhcloud/ods-common-core';
+import { OdsFormControl, OdsLogger } from '@ovhcloud/ods-common-core';
 import { OsdsRange } from '../osds-range';
 import { OdsRangeController } from './controller';
-import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 
 class OdsRangeMock extends OsdsRange {
   constructor(attribute: Partial<OsdsRange>) {
@@ -32,13 +32,11 @@ describe('spec:ods-range-controller', () => {
   let loggerSpyReferences: OdsLoggerSpyReferences;
 
   function setup(attributes: Partial<OsdsRange> = {}) {
-    component = { ...component, ...attributes };
+    component = new OdsRangeMock(attributes);
     controller = new OdsRangeController(component);
   }
 
   beforeEach(() => {
-    component = new OdsRangeMock();
-
     const loggerMocked = new OdsLogger('myLoggerMocked');
     loggerSpyReferences = OdsInitializeLoggerSpy({
       loggerMocked: loggerMocked as never,
@@ -237,7 +235,7 @@ describe('spec:ods-range-controller', () => {
 
     describe('methods:validateAttributes', () => {
       it('should not call console.warn', () => {
-        setup({ color: OdsThemeColorIntent.default })
+        setup({ color: ODS_THEME_COLOR_INTENT.default })
         controller.validateAttributes();
 
         expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledTimes(0);
@@ -245,7 +243,7 @@ describe('spec:ods-range-controller', () => {
 
       it('should call console.warn with wrong color', () => {
         const expected = 'The color attribute must have a value from [default, primary, text, accent, error, warning, success, info, promotion]';
-        const color = 'color' as OdsThemeColorIntent;
+        const color = 'color' as ODS_THEME_COLOR_INTENT;
         setup({ color });
         controller.validateAttributes();
 

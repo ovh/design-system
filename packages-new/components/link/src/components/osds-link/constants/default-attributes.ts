@@ -1,8 +1,8 @@
 import type { OdsLinkAttribute } from '../interfaces/attributes';
-import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 
 const DEFAULT_ATTRIBUTE: OdsLinkAttribute = Object.freeze({
-  color: OdsThemeColorIntent.default,
+  color: ODS_THEME_COLOR_INTENT.default,
   contrasted: false,
   disabled: false,
   download: undefined,

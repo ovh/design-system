@@ -2,9 +2,9 @@
 @import 'styles/osds-textarea.color';
 @import 'styles/osds-textarea.size';
 @import 'styles/osds-textarea.typography';
-@import '~@ovhcloud/ods-theming/color/ods-theming-color';
-@import '~@ovhcloud/ods-theming/reset/ods-theming-reset.input';
-@import '~@ovhcloud/ods-theming/ods-theme';
+@import '~@ovhcloud/ods-common-theming/color/ods-theming-color';
+@import '~@ovhcloud/ods-common-theming/reset/ods-theming-reset.input';
+@import '~@ovhcloud/ods-common-theming/ods-theme';
 
 :host {
   outline: none;

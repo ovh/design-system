@@ -4,7 +4,7 @@ import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
 import { OsdsMessage } from '../osds-message';
 import { OdsMessageController } from './controller';
 import { ODS_MESSAGE_TYPE } from '../constants/message-type';
-import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { DEFAULT_ATTRIBUTE } from '../constants/default-attributes';
 
 class OdsMessageMock extends OsdsMessage {
@@ -57,7 +57,7 @@ describe('spec:ods-message-controller', () => {
         controller.validateColor(DEFAULT_ATTRIBUTE.color);
         expect(loggerSpyReferences.methodSpies.warn).not.toHaveBeenCalled();
 
-        controller.validateColor('wrongColor' as OdsThemeColorIntent);
+        controller.validateColor('wrongColor' as ODS_THEME_COLOR_INTENT);
 
         const expected = "The color attribute must have a value from [default, primary, text, accent, error, warning, success, info, promotion]";
         expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledWith(expected);
@@ -66,15 +66,15 @@ describe('spec:ods-message-controller', () => {
 
     describe('methods:setColorForType', () => {
       it('should change default color', async () => {
-        setup({ type: ODS_MESSAGE_TYPE.info, color: OdsThemeColorIntent.default });
+        setup({ type: ODS_MESSAGE_TYPE.info, color: ODS_THEME_COLOR_INTENT.default });
         controller.setColorForType(ODS_MESSAGE_TYPE.success);
-        expect(component.color).toBe(OdsThemeColorIntent.success);
+        expect(component.color).toBe(ODS_THEME_COLOR_INTENT.success);
       });
 
       it('should not change other color', () => {
-        setup({ type: ODS_MESSAGE_TYPE.success, color: OdsThemeColorIntent.success });
+        setup({ type: ODS_MESSAGE_TYPE.success, color: ODS_THEME_COLOR_INTENT.success });
         controller.setColorForType(ODS_MESSAGE_TYPE.error);
-        expect(component.color).toBe(OdsThemeColorIntent.success);
+        expect(component.color).toBe(ODS_THEME_COLOR_INTENT.success);
       });
     });
 

@@ -4,7 +4,7 @@ import type { SpecPage } from '@stencil/core/testing';
 import type { OdsMessageAttribute } from './interfaces/attributes';
 import { newSpecPage } from '@stencil/core/testing';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
-import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_MESSAGE_TYPE } from './constants/message-type';
 import { ODS_ICON_NAME } from '@ovhcloud/ods-component-icon';
@@ -53,8 +53,8 @@ describe('spec:osds-message', () => {
       odsUnitTestAttribute<OdsMessageAttribute, 'color'>({
         name: 'color',
         defaultValue: DEFAULT_ATTRIBUTE.color,
-        newValue: OdsThemeColorIntent.primary,
-        value: OdsThemeColorIntent.default,
+        newValue: ODS_THEME_COLOR_INTENT.primary,
+        value: ODS_THEME_COLOR_INTENT.default,
         setup: (value) => setup({ attributes: { ['color']: value } }),
         ...config,
       });
@@ -121,10 +121,10 @@ describe('spec:osds-message', () => {
       await setup();
       expect(controller.validateColor).toHaveBeenCalledWith(DEFAULT_ATTRIBUTE.color);
 
-      root?.setAttribute('color', OdsThemeColorIntent.success);
+      root?.setAttribute('color', ODS_THEME_COLOR_INTENT.success);
       await page.waitForChanges();
 
-      expect(controller.validateColor).toHaveBeenCalledWith(OdsThemeColorIntent.success);
+      expect(controller.validateColor).toHaveBeenCalledWith(ODS_THEME_COLOR_INTENT.success);
       expect(controller.validateColor).toHaveBeenCalledTimes(2);
     });
 

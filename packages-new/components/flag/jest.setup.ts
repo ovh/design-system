@@ -5,7 +5,7 @@
 
 // import { odsMockWindow } from '@ovhcloud/ods-testing/src/jest/ods-mock-window';
 
-jest.mock('@ovhcloud/ods-core/src/configure/ods-get-window', () => ({
+jest.mock('@ovhcloud/ods-common-core/src/configure/ods-get-window', () => ({
   getOdsWindow: () => {
     console.log('[odsMockWindow]', 'get mocked window');
     return window;

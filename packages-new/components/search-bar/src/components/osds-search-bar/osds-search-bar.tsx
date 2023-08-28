@@ -1,9 +1,9 @@
 import type { OdsInputValueChangeEvent } from '@ovhcloud/ods-component-input';
 import type { OdsSelectValueChangeEvent } from '@ovhcloud/ods-component-select';
-import type { OdsSearchBarEvent } from './interfaces/events'; 
-import type { OdsSearchBarAttribute } from './interfaces/attributes'; 
+import type { OdsSearchBarEvent } from './interfaces/events';
+import type { OdsSearchBarAttribute } from './interfaces/attributes';
 import { Component, Element, Host, h, Prop, Event, EventEmitter, Listen } from '@stencil/core';
-import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
 import { ODS_BUTTON_SIZE } from '@ovhcloud/ods-component-button';
 import { ODS_INPUT_TYPE } from '@ovhcloud/ods-component-input';
@@ -85,7 +85,7 @@ export class OsdsSearchBar implements OdsSearchBarAttribute, OdsSearchBarEvent {
 
         <osds-input
           tabindex="1"
-          color={ OdsThemeColorIntent.primary }
+          color={ ODS_THEME_COLOR_INTENT.primary }
           type={ ODS_INPUT_TYPE.text }
           clearable
           contrasted={ this.contrasted }
@@ -101,11 +101,11 @@ export class OsdsSearchBar implements OdsSearchBarAttribute, OdsSearchBarEvent {
           onClick={ () => this.handlerOnClickSearchButton() }
           onKeyDown={ (event: KeyboardEvent) => this.handlerOnKeydownInput(event) }
           size={ ODS_BUTTON_SIZE.sm }
-          color={ OdsThemeColorIntent.primary }
+          color={ ODS_THEME_COLOR_INTENT.primary }
           disabled={ this.disabled }
           contrasted={ this.contrasted }>
           <osds-icon
-            color={ OdsThemeColorIntent.primary }
+            color={ ODS_THEME_COLOR_INTENT.primary }
             size={ ODS_ICON_SIZE.sm }
             contrasted={ !this.contrasted }
             name={ ODS_ICON_NAME.SEARCH } />

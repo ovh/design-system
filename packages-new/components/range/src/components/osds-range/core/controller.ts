@@ -2,7 +2,7 @@ import type { OdsRangeValue } from '../interfaces/value';
 import type { OdsFormControl, OdsValidityState } from '@ovhcloud/ods-common-core';
 import { OdsLogger, OdsWarnComponentAttribute, OdsGetValidityState } from '@ovhcloud/ods-common-core';
 import { OsdsRange } from '../osds-range';
-import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 
 /**
  * common controller logic for range component used by the different implementations.
@@ -84,9 +84,9 @@ class OdsRangeController {
   }
 
   validateAttributes(): void {
-    OdsWarnComponentAttribute<OdsThemeColorIntent, OsdsRange>({
+    OdsWarnComponentAttribute<ODS_THEME_COLOR_INTENT, OsdsRange>({
       logger: this.logger,
-      attributeValues: OdsThemeColorIntent as Record<string, unknown>,
+      attributeValues: ODS_THEME_COLOR_INTENT as Record<string, unknown>,
       attributeName: 'color',
       attribute: this.component.color
     });

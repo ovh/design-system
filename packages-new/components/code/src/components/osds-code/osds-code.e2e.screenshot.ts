@@ -3,11 +3,11 @@ import type { OdsCodeAttribute } from './interfaces/attributes';
 import { newE2EPage } from '@stencil/core/testing';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { OdsThemeColorIntent, OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
 import { ODS_CODE_SIZE, ODS_CODE_SIZES } from './constants/code-size';
 
 describe('e2e:osds-code', () => {
-  const baseAttribute = { color: OdsThemeColorIntent.default, contrasted: false, size: ODS_CODE_SIZE.md };
+  const baseAttribute = { color: ODS_THEME_COLOR_INTENT.default, contrasted: false, size: ODS_CODE_SIZE.md };
   let page: E2EPage;
   let el: E2EElement;
 
@@ -24,7 +24,7 @@ describe('e2e:osds-code', () => {
 
   describe('screenshots', () => {
     [() => { }, () => el.setProperty('contrasted', true)].forEach((contrasted) => {
-      OdsThemeColorIntentList.forEach((color) => {
+      ODS_THEME_COLOR_INTENTS.forEach((color) => {
         it([color, contrasted].join(', '), async () => {
           await setup({
             attributes: {

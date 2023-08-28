@@ -4,7 +4,7 @@ import type { SpecPage } from '@stencil/core/testing';
 import type { OdsSwitchAttribute } from './interfaces/attributes';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute, OdsUnitTestAttributeType } from '@ovhcloud/ods-common-testing';
 import { newSpecPage } from '@stencil/core/testing';
-import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { OsdsSwitch } from './osds-switch';
 import { OdsSwitchController } from './core/controller';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
@@ -57,8 +57,8 @@ describe('spec:osds-switch', () => {
     describe('color', () => {
       odsUnitTestAttribute<OdsSwitchAttribute, 'color'>({
         name: 'color',
-        newValue: OdsThemeColorIntent.default,
-        value: OdsThemeColorIntent.primary,
+        newValue: ODS_THEME_COLOR_INTENT.default,
+        value: ODS_THEME_COLOR_INTENT.primary,
         setup: (value) => setup({ attributes: { ['color']: value } }),
         defaultValue: DEFAULT_ATTRIBUTE.color,
         ...config,

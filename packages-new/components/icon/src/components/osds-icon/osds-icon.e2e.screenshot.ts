@@ -3,7 +3,7 @@ import type { OdsIconAttribute } from './interfaces/attributes';
 import { newE2EPage } from '@stencil/core/testing';
 import { OdsLogger } from '@ovhcloud/ods-common-core';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
-import { OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_ICON_NAME, ODS_ICON_NAMES } from './constants/icon-name';
 import { ODS_ICON_SIZES } from './constants/icon-size';
@@ -59,7 +59,7 @@ describe('e2e:osds-icon', () => {
         expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
       });
     });
-    OdsThemeColorIntentList.forEach((color) => {
+    ODS_THEME_COLOR_INTENTS.forEach((color) => {
       it(color, async () => {
         await setup({
           attributes: {

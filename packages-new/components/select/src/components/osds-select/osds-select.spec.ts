@@ -3,7 +3,7 @@ import type { OdsSelectAttribute } from './interfaces/attributes';
 import { newSpecPage } from '@stencil/core/testing';
 import { OdsLogger } from '@ovhcloud/ods-common-core';
 import { OdsMockPropertyDescriptor, OdsMockNativeMethod, odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
-import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { DEFAULT_VALIDITY_STATE } from './constants/default-validity-state';
 import { ODS_SELECT_SIZE } from './constants/select-size';
@@ -16,7 +16,7 @@ OdsMockPropertyDescriptor(HTMLInputElement.prototype, 'validity', () => DEFAULT_
 
 describe('spec:osds-select', () => {
   logger.log('init');
-  const baseAttribute = { ariaLabel: null, ariaLabelledby: '', color: OdsThemeColorIntent.primary, defaultValue: '', disabled: false, inline: false, required: false, size: ODS_SELECT_SIZE.md, value: '' };
+  const baseAttribute = { ariaLabel: null, ariaLabelledby: '', color: ODS_THEME_COLOR_INTENT.primary, defaultValue: '', disabled: false, inline: false, required: false, size: ODS_SELECT_SIZE.md, value: '' };
   let page: SpecPage;
   let instance: OsdsSelect;
   let slotPlaceholder: HTMLElement | null | undefined;
@@ -77,8 +77,8 @@ describe('spec:osds-select', () => {
       odsUnitTestAttribute<OdsSelectAttribute, 'color'>({
         name: 'color',
         defaultValue: DEFAULT_ATTRIBUTE.color,
-        newValue: OdsThemeColorIntent.primary,
-        value: OdsThemeColorIntent.default,
+        newValue: ODS_THEME_COLOR_INTENT.primary,
+        value: ODS_THEME_COLOR_INTENT.default,
         setup: (value) => setup({ attributes: { ['color']: value } }),
         ...config,
       });

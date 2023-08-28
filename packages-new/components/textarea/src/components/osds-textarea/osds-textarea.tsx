@@ -1,5 +1,5 @@
 import type { OdsErrorStateControl, OdsFormControl, OdsTextAreaValidityState } from '@ovhcloud/ods-common-core';
-import type { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import type { EventEmitter } from '@stencil/core';
 import type { OdsTextAreaAttribute } from './interfaces/attributes';
 import type { OdsTextAreaEvent, OdsTextAreaValueChangeEvent } from './interfaces/events';
@@ -39,7 +39,7 @@ export class OsdsTextArea implements OdsTextAreaAttribute, OdsTextAreaEvent, Ods
   @Prop() ariaLabelledby?: string = DEFAULT_ATTRIBUTE.ariaLabelledby;
 
   /** @see OdsTextAreaAttributes.color */
-  @Prop({ reflect: true }) color?: OdsThemeColorIntent = DEFAULT_ATTRIBUTE.color;
+  @Prop({ reflect: true }) color?: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
 
   /** @see OdsTextAreaAttributes.cols */
   @Prop({ reflect: true }) cols?: number = DEFAULT_ATTRIBUTE.cols;

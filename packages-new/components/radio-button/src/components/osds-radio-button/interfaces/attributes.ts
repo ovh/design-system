@@ -1,5 +1,5 @@
 import type { ODS_RADIO_BUTTON_SIZE } from '../constants/radio-button-size';
-import type { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 
 interface OdsRadioButtonAttribute {
   /**
@@ -10,7 +10,7 @@ interface OdsRadioButtonAttribute {
   /**
    * The color theme
    */
-  color?: OdsThemeColorIntent,
+  color?: ODS_THEME_COLOR_INTENT,
   /**
    * Prevent the user from clicking on the radio button
    */

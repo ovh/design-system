@@ -1,6 +1,6 @@
 import type { E2EElement, E2EPage } from '@stencil/core/testing';
 import type { OdsMessageAttribute } from './interfaces/attributes';
-import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { newE2EPage } from '@stencil/core/testing';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import { ODS_ICON_NAME } from '@ovhcloud/ods-component-icon';
@@ -26,7 +26,7 @@ describe('e2e:osds-message', () => {
   describe('screenshots', () => {
     [false, true].forEach((contrasted) => {
       [false, true].forEach((removable) => {
-        [undefined, OdsThemeColorIntent.primary].forEach((color) => {
+        [undefined, ODS_THEME_COLOR_INTENT.primary].forEach((color) => {
           ODS_MESSAGE_TYPES.forEach((type) => {
             [undefined, ODS_ICON_NAME.CHECK].forEach((icon) => {
               it([color, type, icon, contrasted && 'contrasted', removable && 'removable'].join(', '), async () => {

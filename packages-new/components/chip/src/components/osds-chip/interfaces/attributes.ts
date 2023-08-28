@@ -1,4 +1,4 @@
-import type { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import type { ODS_CHIP_SIZE } from '../constants/chip-size';
 import type { ODS_CHIP_VARIANT } from '../constants/chip-variant';
 
@@ -6,7 +6,7 @@ interface OdsChipAttribute {
   /**
    * Chip color theme
    */
-  color?: OdsThemeColorIntent
+  color?: ODS_THEME_COLOR_INTENT
   /**
    * Chip is in contrasterd mode or not
    */

@@ -1,4 +1,4 @@
-@import '~@ovhcloud/ods-theming/color/ods-component-color';
+@import '~@ovhcloud/ods-common-theming/color/ods-component-color';
 @import './osds-switch.mixins';
 
 @mixin osds-switch-theme-color-variant-default() {
@@ -14,20 +14,20 @@
       @include osds-switch-on-switch-items-child() {
         color: map_get($colors, color);
       }
-  
+
       @include osds-switch-on-switch-items-child(':hover') {
         &::before {
           background-color: map_get($colors, background-color-hover);
         }
       }
-       
+
       @include osds-switch-on-switch-items-child('[checked]') {
         color: var(--ods-color-default-000);
         &::before{
           background-color: map_get($colors, background-color-checked);
         }
       }
-      
+
       @include osds-switch-on-switch-items-child('[checked]:hover') {
         color: var(--ods-color-default-000);
         &::before {

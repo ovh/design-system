@@ -2,7 +2,7 @@ import type { E2EElement, E2EPage } from '@stencil/core/testing';
 import type { OdsLinkAttribute } from './interfaces/attributes';
 import { newE2EPage } from '@stencil/core/testing';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
-import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 
 describe('e2e:osds-link', () => {
@@ -20,13 +20,13 @@ describe('e2e:osds-link', () => {
   }
 
   it('should render', async () => {
-    await setup({ attributes: { color: OdsThemeColorIntent.primary, contrasted: false } });
+    await setup({ attributes: { color: ODS_THEME_COLOR_INTENT.primary, contrasted: false } });
     expect(el).not.toBeNull();
   });
 
   it('should display a text in the link', async () => {
     const text = `Text`;
-    await setup({ attributes: { color: OdsThemeColorIntent.primary,  contrasted: false }, html: text });
+    await setup({ attributes: { color: ODS_THEME_COLOR_INTENT.primary,  contrasted: false }, html: text });
 
     expect(el.innerText).toContain(text);
     expect(el.getAttribute('href')).toBeFalsy();
@@ -36,7 +36,7 @@ describe('e2e:osds-link', () => {
     const href = 'https://www.ovhcloud.com';
     const text = `Text`;
     await setup({ attributes: {
-      color: OdsThemeColorIntent.primary,
+      color: ODS_THEME_COLOR_INTENT.primary,
       contrasted: false,
       href,
     }, html: text });
@@ -46,7 +46,7 @@ describe('e2e:osds-link', () => {
   });
 
   // it('should display a small size', async () => {
-  //   await setup({ attributes: { color: OdsThemeColorIntent.primary,  contrasted: false} });
+  //   await setup({ attributes: { color: ODS_THEME_COLOR_INTENT.primary,  contrasted: false} });
   //   const config: Config = getStencilConfig('osds-link', true, true, jestConfig.default);
   //   await runJestScreenshot(config, process.env)
   // });

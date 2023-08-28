@@ -7,7 +7,7 @@ import { OdsLogger } from '@ovhcloud/ods-common-core';
 import { ODS_BUTTON_SIZE, ODS_BUTTON_VARIANT } from '@ovhcloud/ods-component-button';
 import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
 import { ODS_TEXT_SIZE } from '@ovhcloud/ods-component-text';
-import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import {
   Component,
   Element,
@@ -185,7 +185,7 @@ export class OsdsPagination implements OdsPaginationAttribute, OdsPaginationEven
           }
           <osds-button
             variant={ODS_BUTTON_VARIANT.ghost}
-            color={OdsThemeColorIntent.primary}
+            color={ODS_THEME_COLOR_INTENT.primary}
             disabled={disabled || (isLeft && this.current === 1) || (direction === 'right' && this.current >= this.pageList.length)}
             onKeyDown={(event: KeyboardEvent) => {
               if (isLeft) {
@@ -206,7 +206,7 @@ export class OsdsPagination implements OdsPaginationAttribute, OdsPaginationEven
             <osds-icon
               size={ODS_ICON_SIZE.sm}
               name={arrowIcon}
-              color={OdsThemeColorIntent.primary}
+              color={ODS_THEME_COLOR_INTENT.primary}
               class={(isLeft && this.current === 1) || (direction === 'right' && this.current >= this.pageList.length) ? 'disabled' : ''}
             ></osds-icon>
           </osds-button>
@@ -218,11 +218,11 @@ export class OsdsPagination implements OdsPaginationAttribute, OdsPaginationEven
   renderEllipsis() {
     return (
       <li>
-        <osds-button color={OdsThemeColorIntent.primary}
+        <osds-button color={ODS_THEME_COLOR_INTENT.primary}
                      disabled={true}
                      variant={ODS_BUTTON_VARIANT.ghost}>
           <osds-text class="ellipsis"
-                     color={OdsThemeColorIntent.primary}
+                     color={ODS_THEME_COLOR_INTENT.primary}
                      size={ODS_TEXT_SIZE._500}>
             &#8230;
           </osds-text>
@@ -258,7 +258,7 @@ export class OsdsPagination implements OdsPaginationAttribute, OdsPaginationEven
                 &nbsp;
               </>
             }
-            <osds-text color={OdsThemeColorIntent.primary}
+            <osds-text color={ODS_THEME_COLOR_INTENT.primary}
                        size={ODS_TEXT_SIZE._500}>
               <slot name="before-total-items"></slot>
               {this.totalItems}
@@ -287,7 +287,7 @@ export class OsdsPagination implements OdsPaginationAttribute, OdsPaginationEven
                         variant={this.current === pageId ? ODS_BUTTON_VARIANT.flat : ODS_BUTTON_VARIANT.ghost}
                         disabled={this.disabled}
                         inline
-                        color={OdsThemeColorIntent.primary}
+                        color={ODS_THEME_COLOR_INTENT.primary}
                         size={ODS_BUTTON_SIZE.sm}
                         onKeyDown={(event: KeyboardEvent) => this.handlePageKeyDown(event, Number(pageId))}
                         onClick={() => this.handlePageClick(Number(pageId))}>

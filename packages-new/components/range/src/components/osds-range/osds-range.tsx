@@ -3,7 +3,7 @@ import type { OdsRangeEvent, OdsRangeValueChangeEventDetail } from './interfaces
 import type { OdsRangeAttribute } from './interfaces/attributes';
 import type { OdsValidityState, OdsErrorStateControl, OdsFormControl, OdsFormForbiddenValues } from '@ovhcloud/ods-common-core';
 import { Component, Element, Event, EventEmitter, Host, Method, Prop, Watch, h } from '@stencil/core';
-import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { OdsLogger } from '@ovhcloud/ods-common-core';
 import { OdsRangeController } from './core/controller'
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
@@ -32,7 +32,7 @@ export class OsdsRange implements OdsRangeAttribute, OdsRangeEvent {
   dualInputEl?: HTMLInputElement;
 
   /** @see OdsRangeAttributes.color */
-  @Prop({ reflect: true }) public color?: OdsThemeColorIntent = DEFAULT_ATTRIBUTE.color;
+  @Prop({ reflect: true }) public color?: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
 
   /** @see OdsRangeAttributes.disabled */
   @Prop({ reflect: true }) public disabled?: boolean = DEFAULT_ATTRIBUTE.disabled;

@@ -1,4 +1,4 @@
-import type { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 
 interface OdsToggleAttribute {
   /**
@@ -16,7 +16,7 @@ interface OdsToggleAttribute {
   /**
    * Toggle color theme
    */
-  color?: OdsThemeColorIntent
+  color?: ODS_THEME_COLOR_INTENT
   /**
    * Toggle is disabled or not
    */

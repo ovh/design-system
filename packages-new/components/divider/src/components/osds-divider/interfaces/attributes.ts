@@ -1,11 +1,11 @@
 import type { ODS_DIVIDER_SIZE } from '../constants/divider-size';
-import type { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 
 interface OdsDividerAttribute {
   /**
    * Divider color theme
    */
-  color?: OdsThemeColorIntent;
+  color?: ODS_THEME_COLOR_INTENT;
   /**
    * Divider design as contrasted version
    */

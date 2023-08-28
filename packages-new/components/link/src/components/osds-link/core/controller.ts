@@ -1,6 +1,6 @@
 import type { OsdsLink } from '../osds-link';
 import { OdsHTMLAnchorElementTarget, OdsLogger, OdsWarnComponentAttribute } from '@ovhcloud/ods-common-core';
-import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 
 /**
  * common controller logic for link component used by the different implementations.
@@ -21,9 +21,9 @@ class OdsLinkController {
   validateAttributes(): void {
     const logger = this.logger;
 
-    OdsWarnComponentAttribute<OdsThemeColorIntent, OsdsLink>({
+    OdsWarnComponentAttribute<ODS_THEME_COLOR_INTENT, OsdsLink>({
       logger,
-      attributeValues: OdsThemeColorIntent as Record<string, unknown>,
+      attributeValues: ODS_THEME_COLOR_INTENT as Record<string, unknown>,
       attributeName: 'color',
       attribute: this.component.color
     });

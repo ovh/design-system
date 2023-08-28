@@ -3,7 +3,7 @@ import type { ODS_LINK_REFERRER_POLICY } from './constants/referrer-policies';
 import type { OdsLinkAttribute } from './interfaces/attributes';
 import { Component, Element, Host, Prop, h } from '@stencil/core';
 import { HTMLStencilElement } from '@stencil/core/internal';
-import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsLinkController } from './core/controller';
 
@@ -22,7 +22,7 @@ export class OsdsLink implements OdsLinkAttribute {
   @Element() host!: HTMLStencilElement;
 
   /** @see OdsLinkAttributes.color */
-  @Prop({ reflect: true }) public color?: OdsThemeColorIntent = DEFAULT_ATTRIBUTE.color;
+  @Prop({ reflect: true }) public color?: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
 
   /** @see OdsLinkAttributes.contrasted */
   @Prop({ reflect: true }) public contrasted?: boolean = DEFAULT_ATTRIBUTE.contrasted;

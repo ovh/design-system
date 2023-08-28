@@ -2,7 +2,7 @@ import type { SpecPage } from '@stencil/core/testing';
 import type { OdsRadioButtonAttribute } from './interfaces/attributes';
 import { OdsCreateDefaultValidityState } from '@ovhcloud/ods-common-core';
 import { OdsMockNativeMethod, OdsMockPropertyDescriptor, odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
-import { OdsThemeColorIntent, OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
 import { newSpecPage } from '@stencil/core/testing';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_RADIO_BUTTON_SIZE, ODS_RADIO_BUTTON_SIZES } from './constants/radio-button-size';
@@ -64,14 +64,14 @@ describe('spec:osds-radio-button', () => {
       odsUnitTestAttribute<OdsRadioButtonAttribute, 'color'>({
         name: 'color',
         defaultValue: DEFAULT_ATTRIBUTE.color,
-        newValue: OdsThemeColorIntent.primary,
-        value: OdsThemeColorIntent.default,
+        newValue: ODS_THEME_COLOR_INTENT.primary,
+        value: ODS_THEME_COLOR_INTENT.default,
         setup: (value) => setup({ attributes: { ['color']: value } }),
         ...config
       });
 
       it('should set a color if attribute is added', async () => {
-        const randomColor = OdsThemeColorIntentList[ Math.floor(Math.random() * OdsThemeColorIntentList.length) ];
+        const randomColor = ODS_THEME_COLOR_INTENTS[ Math.floor(Math.random() * ODS_THEME_COLOR_INTENTS.length) ];
         await setup({ attributes: { color: randomColor } });
         expect(instance.color).toBe(randomColor);
       });

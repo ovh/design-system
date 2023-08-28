@@ -1,6 +1,6 @@
 import type { OsdsIcon } from '../osds-icon';
 import { OdsLogger, OdsWarnComponentAttribute } from '@ovhcloud/ods-common-core';
-import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_ICON_SIZE } from '../constants/icon-size';
 
 /**
@@ -28,9 +28,9 @@ class OdsIconController {
   validateAttributes(): void {
     const logger = this.logger;
 
-    OdsWarnComponentAttribute<OdsThemeColorIntent, OsdsIcon>({
+    OdsWarnComponentAttribute<ODS_THEME_COLOR_INTENT, OsdsIcon>({
       logger,
-      attributeValues: OdsThemeColorIntent,
+      attributeValues: ODS_THEME_COLOR_INTENT,
       attributeName: 'color',
       attribute: this.component.color
     });

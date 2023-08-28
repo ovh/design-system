@@ -3,14 +3,14 @@ import type { OdsRangeAttribute } from './interfaces/attributes';
 import { newE2EPage } from '@stencil/core/testing';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsCreateAttributes } from '@ovhcloud/ods-common-testing';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { OdsThemeColorIntent } from '@ovhcloud/ods-theming/src';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming/src';
 
 describe('e2e:osds-range', () => {
   let page: E2EPage;
   let el: E2EElement;
 
   const baseAttribute = {
-    color: OdsThemeColorIntent.default,
+    color: ODS_THEME_COLOR_INTENT.default,
     disabled: false,
     error: undefined,
     errorStateControl: undefined,

@@ -1,7 +1,7 @@
 import type { OsdsToggle } from '../osds-toggle'
 
 import { OdsLogger, OdsWarnComponentAttribute } from '@ovhcloud/ods-common-core';
-import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 
 /**
  * common controller logic for toggle component used by the different implementations.
@@ -20,9 +20,9 @@ class OdsToggleController {
    * and warn the user if not
    */
   validateAttributes(): void {
-    OdsWarnComponentAttribute<OdsThemeColorIntent, OsdsToggle>({
+    OdsWarnComponentAttribute<ODS_THEME_COLOR_INTENT, OsdsToggle>({
       logger: this.logger,
-      attributeValues: OdsThemeColorIntent as Record<string, unknown>,
+      attributeValues: ODS_THEME_COLOR_INTENT as Record<string, unknown>,
       attributeName: 'color',
       attribute: this.component.color
     });

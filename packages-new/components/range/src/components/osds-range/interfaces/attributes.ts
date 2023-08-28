@@ -1,12 +1,12 @@
 import type { OdsValidityState, OdsErrorStateControl, OdsFormControl, OdsFormForbiddenValues } from '@ovhcloud/ods-common-core';
 import type { OdsRangeValue } from './value'
-import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 
 interface OdsRangeAttribute {
   /**
    * Range color theme
    */
-  color?: OdsThemeColorIntent;
+  color?: ODS_THEME_COLOR_INTENT;
   /**
    * Indicate if the range is entirely disabled.
    * It means no interaction is possible (hover, click, focus, etc)

@@ -1,0 +1,24 @@
+/// Color intent list.
+/// Variables that defines the different color intents.
+///
+/// @access public
+/// @type Map
+/// @prop {Var} default - default palette name. Default color palette
+/// @prop {Var} primary - primary palette name. Most used color palette anywhere
+/// @prop {Var} text - text palette name. Color palette for texts
+/// @prop {Var} error - error palette name. Color palette for displaying in error state
+/// @prop {Var} warning - warning palette name. Color palette for displaying in warning state
+/// @prop {Var} success - success palette name. Color palette for displaying in success state
+/// @prop {Var} info - info palette name. Color palette for displaying in info state
+/// @prop {Var} promotion - promotion palette name. Color palette used for display promotions
+$ods-color-intents: (
+  default: var(--ods-theme-color-palette-default),
+  primary: var(--ods-theme-color-palette-primary),
+  text: var(--ods-theme-color-palette-text),
+  accent: var(--ods-theme-color-palette-accent),
+  error: var(--ods-theme-color-palette-error),
+  warning: var(--ods-theme-color-palette-warning),
+  success: var(--ods-theme-color-palette-success),
+  info: var(--ods-theme-color-palette-info),
+  promotion: var(--ods-theme-color-palette-promotion)
+);

@@ -7,7 +7,7 @@ import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUn
 import { OsdsAccordion } from './osds-accordion';
 import { OdsAccordionController } from './core/controller';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_ACCORDION_SIZE } from './constants/accordion-size';
 
 describe('spec:osds-accordion', () => {
@@ -56,8 +56,8 @@ describe('spec:osds-accordion', () => {
       odsUnitTestAttribute<OdsAccordionAttribute, 'color'>({
         name: 'color',
         defaultValue: DEFAULT_ATTRIBUTE.color,
-        newValue: OdsThemeColorIntent.primary,
-        value: OdsThemeColorIntent.default,
+        newValue: ODS_THEME_COLOR_INTENT.primary,
+        value: ODS_THEME_COLOR_INTENT.default,
         setup: (color) => setup({ attributes: { color } }),
         ...config
       });

@@ -4,7 +4,7 @@ import type { SpecPage } from '@stencil/core/testing';
 import type { OdsLinkAttribute } from './interfaces/attributes';
 import { OdsHTMLAnchorElementRel, OdsHTMLAnchorElementTarget } from '@ovhcloud/ods-common-core';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
-import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { newSpecPage } from '@stencil/core/testing';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_LINK_REFERRER_POLICY } from './constants/referrer-policies';
@@ -75,8 +75,8 @@ describe('spec:osds-link', () => {
       odsUnitTestAttribute<OdsLinkAttribute, 'color'>({
         name: 'color',
         defaultValue: DEFAULT_ATTRIBUTE.color,
-        newValue: OdsThemeColorIntent.primary,
-        value: OdsThemeColorIntent.default,
+        newValue: ODS_THEME_COLOR_INTENT.primary,
+        value: ODS_THEME_COLOR_INTENT.default,
         setup: (value) => setup({ attributes: { ['color']: value } }),
         ...config,
       });

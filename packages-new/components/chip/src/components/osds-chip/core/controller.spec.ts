@@ -1,7 +1,7 @@
 import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
 import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
 import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
-import { OdsThemeColorIntent } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_CHIP_SIZE } from '../constants/chip-size';
 import { ODS_CHIP_VARIANT } from '../constants/chip-variant';
 import { OdsChipController } from './controller';
@@ -42,7 +42,7 @@ describe('spec:ods-chip-controller', () => {
   describe('methods', () => {
     beforeEach(() => {
       setup({
-        color: OdsThemeColorIntent.default,
+        color: ODS_THEME_COLOR_INTENT.default,
         size: ODS_CHIP_SIZE.md,
         variant: ODS_CHIP_VARIANT.flat
       });
@@ -55,7 +55,7 @@ describe('spec:ods-chip-controller', () => {
 
       it('should call console.warn with wrong color', () => {
         const expected = 'The color attribute must have a value from [default, primary, text, accent, error, warning, success, info, promotion]';
-        component.color = 'color' as OdsThemeColorIntent;
+        component.color = 'color' as ODS_THEME_COLOR_INTENT;
 
         controller.validateAttributes();
 

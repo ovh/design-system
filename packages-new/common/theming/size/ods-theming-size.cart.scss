@@ -1,0 +1,26 @@
+/// @access private
+@function ods-get-cart-size-properties($size-name) {
+  @return (
+    container-padding: var(--ods-size-cart-#{$size-name}-container-padding),
+    container-mask-height: var(--ods-size-cart-#{$size-name}-container-mask-height),
+    empty-padding: var(--ods-size-cart-#{$size-name}-empty-padding),
+    header-margin-bottom: var(--ods-size-cart-#{$size-name}-header-margin-bottom),
+    mobile-handle-border-radius: var(--ods-size-cart-#{$size-name}-mobile-handle-border-radius),
+    mobile-handle-height: var(--ods-size-cart-#{$size-name}-mobile-handle-height),
+    mobile-handle-margin: var(--ods-size-cart-#{$size-name}-mobile-handle-margin),
+    mobile-handle-padding: var(--ods-size-cart-#{$size-name}-mobile-handle-padding),
+    mobile-handle-width: var(--ods-size-cart-#{$size-name}-mobile-handle-width),
+    padding: var(--ods-size-cart-#{$size-name}-padding),
+    section-divider-padding: var(--ods-size-cart-#{$size-name}-section-divider-padding),
+    section-margin: var(--ods-size-cart-#{$size-name}-section-margin),
+    section-padding: var(--ods-size-cart-#{$size-name}-section-padding),
+    total-margin: var(--ods-size-cart-#{$size-name}-total-margin),
+  )
+}
+
+/// @access private
+@function ods-get-cart-component-size-definition() {
+  @return (
+    sm: ods-get-cart-size-properties(sm)
+  );
+}

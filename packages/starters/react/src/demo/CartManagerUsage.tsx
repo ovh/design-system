@@ -3,7 +3,7 @@ import type { OdsCartManagerFooter, OdsCartManagerSection } from '@ovhcloud/ods-
 import { OsdsCartFooter, OsdsCartHeader, OsdsCartManager } from '@ovhcloud/ods-component-cart-react';
 
 // each type you import types from ODS, you will need to import the core
-import { Ods, OdsExternalLogger, OdsI18nHook } from '@ovhcloud/ods-core';
+import { Ods, OdsExternalLogger, OdsI18nHook } from '@ovhcloud/ods-common-core';
 
 // a translation system of your app
 import { translationSystem } from './translationSystem';

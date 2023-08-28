@@ -1,4 +1,4 @@
-@import '~@ovhcloud/ods-theming/typography/ods-component-typography';
+@import '~@ovhcloud/ods-common-theming/typography/ods-component-typography';
 
 @mixin osds-cart-total-theme-typography() {
   slot[name='total'] {

@@ -1,7 +1,7 @@
 import { html } from 'lit-html';
 import { defineCustomElements } from '@ovhcloud/ods-component-content-addon/loader';
 import { defineCustomElements as tileCustomElements } from '@ovhcloud/ods-component-tile/loader';
-import { OdsThemeColorIntentList } from '@ovhcloud/ods-theming';
+import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
 
 defineCustomElements();
 tileCustomElements();
@@ -10,7 +10,7 @@ tileCustomElements();
 export const storyParams = {
   color: {
     category: 'General',
-    options: OdsThemeColorIntentList,
+    options: ODS_THEME_COLOR_INTENTS,
     defaultValue: 'default',
     control: { type: 'select' },
   },

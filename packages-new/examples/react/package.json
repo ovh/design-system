@@ -2,7 +2,7 @@
   "name": "@ovhcloud/ods-starter-react",
   "version": "15.0.1",
   "private": true,
-  "description": "ODS react application starter",
+  "description": "ODS react application example",
   "author": "OVH SAS",
   "license": "Apache-2.0",
   "type": "module",

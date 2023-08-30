@@ -7035,9 +7035,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-starter-react-vite@^15.0.1, @ovhcloud/ods-starter-react-vite@workspace:packages/starters/react-vite":
+"@ovhcloud/ods-starter-react-vite@^15.0.1, @ovhcloud/ods-starter-react-vite@workspace:packages-new/examples/react-vite":
   version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-starter-react-vite@workspace:packages/starters/react-vite"
+  resolution: "@ovhcloud/ods-starter-react-vite@workspace:packages-new/examples/react-vite"
   dependencies:
     "@ovhcloud/ods-common-core": ^15.0.1
     "@ovhcloud/ods-common-stencil": ^15.0.1
@@ -7066,9 +7066,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-starter-react@^15.0.1, @ovhcloud/ods-starter-react@workspace:packages/starters/react":
+"@ovhcloud/ods-starter-react@^15.0.1, @ovhcloud/ods-starter-react@workspace:packages-new/examples/react":
   version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-starter-react@workspace:packages/starters/react"
+  resolution: "@ovhcloud/ods-starter-react@workspace:packages-new/examples/react"
   dependencies:
     "@ovhcloud/ods-common-core": ^15.0.1
     "@ovhcloud/ods-common-stencil": ^15.0.1
@@ -7091,9 +7091,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-starter-vue-vite@workspace:packages/starters/vue-vite":
+"@ovhcloud/ods-starter-vue-vite@workspace:packages-new/examples/vue-vite":
   version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-starter-vue-vite@workspace:packages/starters/vue-vite"
+  resolution: "@ovhcloud/ods-starter-vue-vite@workspace:packages-new/examples/vue-vite"
   dependencies:
     "@ovhcloud/ods-common-core": ^15.0.1
     "@ovhcloud/ods-common-stencil": ^15.0.1

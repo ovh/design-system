@@ -1,14 +1,14 @@
 {
-  "name": "@ovhcloud/ods-starter-react-vite",
+  "name": "@ovhcloud/ods-starter-vue-vite",
   "version": "15.0.1",
   "private": true,
-  "description": "ODS react vite application starter",
+  "description": "ODS vue vite application example",
   "author": "OVH SAS",
   "license": "Apache-2.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
     "build:prod": "npm run build"
   },
@@ -23,21 +23,17 @@
     "@ovhcloud/ods-component-flag": "^15.0.1",
     "@ovhcloud/ods-component-message": "^15.0.1",
     "@ovhcloud/ods-component-radio": "^15.0.1",
-    "@ovhcloud/ods-component-tabs": "^15.0.1",
     "@ovhcloud/ods-component-text": "^15.0.1",
     "@ovhcloud/ods-component-tile": "^15.0.1",
     "@ovhcloud/ods-component-toggle": "^15.0.1",
     "@ovhcloud/ods-theme-blue-jeans": "^15.0.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.10.0",
-    "vite-plugin-static-copy": "~0.13.0"
+    "@vue/cli-service": "^5.0.8",
+    "vue": "^3.2.37"
   },
   "devDependencies": {
-    "@ovhcloud/ods-dev": "^15.0.1",
-    "@types/react": "^18.2.0",
-    "@types/react-dom": "^18.2.0",
-    "@vitejs/plugin-react": "^2.1.0",
-    "vite": "^3.1.0"
+    "@ovhcloud/ods-vue-dev": "^15.0.1",
+    "@vitejs/plugin-vue": "^3.1.0",
+    "vite": "^3.1.0",
+    "vue-tsc": "^0.40.4"
   }
 }

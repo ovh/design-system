@@ -17,7 +17,6 @@
     "packages/stencil/components/!(loader|custom-elements|custom-elements-bundle)*/react",
     "packages/stencil/components/!(loader|custom-elements|custom-elements-bundle)*/vue",
     "packages/stencil",
-    "packages/starters/*",
     "packages/tools/*",
     "packages/tools/generator/component",
     "packages-new/cdk",
@@ -27,6 +26,7 @@
     "packages-new/components/!(loader|custom-elements|custom-elements-bundle)*",
     "packages-new/components/!(loader|custom-elements|custom-elements-bundle)*/react",
     "packages-new/components/!(loader|custom-elements|custom-elements-bundle)*/vue",
+    "packages-new/examples/*",
     "packages-new/shared-dependencies/*",
     "packages-new/themes/*"
   ],

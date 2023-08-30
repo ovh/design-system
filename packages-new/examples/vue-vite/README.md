@@ -1,11 +1,11 @@
-# ODS Vue Starter application with Vite
+# ODS Vue Example application with Vite
 
-This package is a starter to show how to integrate `ODS` vue components.
-This is a mini application made with React 18 that displays some components.
+This package is an example to show how to integrate `ODS` vue components.
+This is a mini application made with Vue that displays some components.
 
 It was made with : `yarn create vite my-vue--vite-ods-app --template vue-ts`
 
-There is examples of uses of the different feature from `ODS`:
+There are examples of uses of the different feature from `ODS`:
 
 - using independent package with only one component
 - using component collection package with all components
@@ -15,18 +15,18 @@ There is examples of uses of the different feature from `ODS`:
 
 # Initialization
 
-**1. download the starter**
+**1. download the project**
 
-You can install this starter by downloading the code from the [repository](https://github.com/ovh/design-system)
+You can install this project by downloading the code from the [repository](https://github.com/ovh/design-system)
 
 ```shell
 git clone -b release/10.0 --single-branch ssh://git@github.com:ovh/design-system.git ods-temp
-cp -a ods-temp/packages/starters/vue-vite my-vue-vite-ods-app
+cp -a ods-temp/packages/examples/vue-vite my-vue-vite-ods-app
 rm -rf ods-temp/
 cd my-vue-vite-ods-app
 ```
 
-> This clones the repo, copy the wanted starter and then clean up.
+> This clones the repo, copy the project and then clean up.
 
 **2. Enable access (coming soon)**
 

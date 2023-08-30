@@ -1,6 +1,12 @@
 @import '~@ovhcloud/ods-common-theming/size/ods-component-size';
 @import './osds-select.mixins';
 
+:host {
+  ocdk-surface {
+    width: auto;
+  }
+}
+
 @mixin osds-select-theme-size() {
   @include ods-foreach-theme-size(select) using ($sizes) {
     @include osds-select-on-select-element() {
@@ -27,7 +33,7 @@
     @include osds-select-on-overlay-element() {
       border-width: ods-get-size-property($sizes, border-width) ods-get-size-property($sizes, border-width) ods-get-size-property($sizes, border-width) ods-get-size-property($sizes, border-width);
       top: ods-get-size-property($sizes, height);
-      width: calc(100% - var(--ods-size-inline-02));
+      min-width: calc(100% - var(--ods-size-inline-02));
     }
   }
 }

@@ -28,7 +28,7 @@
 <osds-search-bar value="with value" loading></osds-search-bar>
 
 <p>SearchBar with options</p>
-<osds-search-bar disabled id="search-bar-options" value="with value"></osds-search-bar>
+<osds-search-bar id="search-bar-options" value="with value"></osds-search-bar>
 
 <p>SearchBar disabled</p>
 <osds-search-bar disabled></osds-search-bar>
@@ -44,6 +44,9 @@
   },{
     label: "options2",
     value: "2"
+  },{
+    label: "options3 with looooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong text",
+    value: "3"
   }];
   searchBarOptions.addEventListener('odsSearchSubmit', (event) => console.log('odsSearchSubmit trigger', event));
   searchBarOptions.addEventListener('odsValueChange', () => console.log('odsValueChange trigger'))

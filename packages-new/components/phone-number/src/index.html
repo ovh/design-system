@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html dir='ltr' lang='en'>
+<head>
+  <meta charset='utf-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0' />
+  <title>Dev ods-phone-number</title>
+
+  <script type="module">
+    !window.ods && (window.ods = {config: {logging: {active:true}}});
+  </script>
+
+  <script type='module' src='/build/osds-phone-number.esm.js'></script>
+  <script nomodule src='/build/osds-phone-number.js'></script>
+  <link rel="stylesheet" href="/build/osds-phone-number.css">
+</head>
+<body>
+  <p>Default</p>
+  <osds-phone-number clearable value="+33 6426658925"></osds-phone-number>
+
+  <p>Error</p>
+  <osds-phone-number error value="+33 6426658925"></osds-phone-number>
+
+  <p>Disabled</p>
+  <osds-phone-number disabled value="+33 6426658925"></osds-phone-number>
+
+</body>
+</html>

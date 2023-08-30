@@ -3,12 +3,12 @@
   "version": "15.0.1",
   "description": "Blue Jeans theme, containing color variables & fonts",
   "license": "Apache-2.0",
-  "style": "index.css",
+  "main": "dist/index.css",
   "scripts": {
     "build": "yarn run build:prod",
     "build:prod": "yarn run build:sass:prefix",
     "generate:licence": "npx generate-license-file --input package.json --output THIRD-PARTY-LICENCES --overwrite",
-    "generate:theme": "node-sass --importer ../../../node_modules/node-sass-package-importer/dist/cli.js theme/ -o dist && node-sass --importer ../../../node_modules/node-sass-package-importer/dist/cli.js fonts/index.scss dist/fonts.css",
+    "generate:theme": "node-sass --importer ../../../node_modules/node-sass-package-importer/dist/cli.js src/index.scss -o dist",
     "generate:prefix": "postcss dist/**/*.css --dir dist --use autoprefixer --parser postcss-scss",
     "build:sass:prefix": "yarn run generate:theme && yarn run generate:prefix"
   },
@@ -16,11 +16,7 @@
     "@ovhcloud/ods-common-theming": "^15.0.1"
   },
   "devDependencies": {
-    "autoprefixer": "~10.3.7",
-    "node-sass": "^8.0.0",
-    "postcss": "^8.3.9",
-    "postcss-cli": "^9.0.1",
-    "postcss-scss": "^4.0.1"
+    "@ovhcloud/ods-style-dev": "^15.0.1"
   },
   "browserslist": [
     "last 4 version",

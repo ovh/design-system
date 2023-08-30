@@ -243,7 +243,7 @@ export function getStencilConfig({
     } : {}),
     // in case of testing, injecting the blue-jeans theme in order to have nominal UI
     ...((isTest || isDev) ? {
-      globalStyle: require.resolve('@ovhcloud/ods-theme-blue-jeans/index.scss'),
+      globalStyle: require.resolve('@ovhcloud/ods-theme-blue-jeans'),
     } : {}),
     plugins: [sass({
         importer: nodeSassPackageImporter()

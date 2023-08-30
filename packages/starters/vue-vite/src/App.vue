@@ -17,7 +17,7 @@ import { ODS_TEXT_SIZE } from '@ovhcloud/ods-components/text';
 import Demo from './demo/Demo.vue';
 
 // you can directly import the generated ods theme here, or through the application css (app.css)
-import '@ovhcloud/ods-theme-blue-jeans/index.css';
+import '@ovhcloud/ods-theme-blue-jeans';
 
 // you have to setup ods before using it:
 odsSetup();

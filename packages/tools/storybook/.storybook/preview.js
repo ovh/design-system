@@ -1,7 +1,7 @@
 import { DocsPage, DocsContainer } from '@storybook/addon-docs';
 import { html } from 'lit-html';
 
-import '@ovhcloud/ods-theme-blue-jeans/index.css';
+import '@ovhcloud/ods-theme-blue-jeans';
 import { addCopyCodeButton } from './copy-code-button';
 
 export const parameters = {

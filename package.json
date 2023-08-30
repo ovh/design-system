@@ -10,7 +10,6 @@
     "packages/guide",
     "packages/doc",
     "packages/specifications",
-    "packages/themes/*",
     "packages/libraries/*",
     "packages/stencil/libraries/*",
     "packages/stencil/components",
@@ -28,7 +27,8 @@
     "packages-new/components/!(loader|custom-elements|custom-elements-bundle)*",
     "packages-new/components/!(loader|custom-elements|custom-elements-bundle)*/react",
     "packages-new/components/!(loader|custom-elements|custom-elements-bundle)*/vue",
-    "packages-new/shared-dependencies/*"
+    "packages-new/shared-dependencies/*",
+    "packages-new/themes/*"
   ],
   "scripts": {
     "build": "lerna run build",

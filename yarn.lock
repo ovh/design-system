@@ -7381,16 +7381,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-theme-blue-jeans@^15.0.1, @ovhcloud/ods-theme-blue-jeans@workspace:packages/themes/blue-jeans":
+"@ovhcloud/ods-theme-blue-jeans@^15.0.1, @ovhcloud/ods-theme-blue-jeans@workspace:packages-new/themes/blue-jeans":
   version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-theme-blue-jeans@workspace:packages/themes/blue-jeans"
+  resolution: "@ovhcloud/ods-theme-blue-jeans@workspace:packages-new/themes/blue-jeans"
   dependencies:
     "@ovhcloud/ods-common-theming": ^15.0.1
-    autoprefixer: ~10.3.7
-    node-sass: ^8.0.0
-    postcss: ^8.3.9
-    postcss-cli: ^9.0.1
-    postcss-scss: ^4.0.1
+    "@ovhcloud/ods-style-dev": ^15.0.1
   languageName: unknown
   linkType: soft
 

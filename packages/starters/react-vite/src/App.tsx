@@ -12,7 +12,7 @@ import { OsdsText } from '@ovhcloud/ods-components/text/react';
 import { ODS_TEXT_SIZE } from '@ovhcloud/ods-components/text';
 
 // you can directly import the generated ods theme here, or through the application css (app.css)
-import '@ovhcloud/ods-theme-blue-jeans/index.css';
+import '@ovhcloud/ods-theme-blue-jeans';
 import './App.css';
 
 import Demo from './demo/Demo';

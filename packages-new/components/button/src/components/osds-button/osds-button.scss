@@ -51,11 +51,13 @@
   }
 
   .button__centered-text {
-    min-width: 0;
+    grid-area: center;
+    min-width: 0;    
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     word-break: break-all;
+    --ods-icon-vertical-align: bottom;
   }
 }
 
@@ -112,10 +114,6 @@ slot {
 ::slotted([slot="start"]:empty),
 ::slotted([slot="end"]:empty) {
   display: none;
-}
-
-.button__centered-text {
-  grid-area: center;
 }
 
 // apply the theme template for the component

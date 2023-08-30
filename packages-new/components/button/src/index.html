@@ -28,6 +28,18 @@
 <osds-button>Default</osds-button>
 <osds-button size='lg'>Large</osds-button>
 
+<p>Vertical Align</p>
+<osds-button>
+  <span slot="start"><osds-icon name="close" contrasted="" size="sm" aria-hidden="" alt="" aria-name="" color="default" class="hydrated"></osds-icon><!----></span>
+    <osds-icon name="close" contrasted="" size="sm" aria-hidden="" alt="" aria-name="" color="default" class="hydrated"></osds-icon>
+  <span slot="end"><osds-icon name="close" contrasted="" size="sm" aria-hidden="" alt="" aria-name="" color="default" class="hydrated"></osds-icon><!----></span> 
+</osds-button>
+<osds-button inline>
+  <span slot="start"><osds-icon name="close" contrasted="" size="sm" aria-hidden="" alt="" aria-name="" color="default" class="hydrated"></osds-icon><!----></span>
+  <osds-icon name="close" contrasted="" size="sm" aria-hidden="" alt="" aria-name="" color="default" class="hydrated"></osds-icon>
+  <span slot="end"><osds-icon name="close" contrasted="" size="sm" aria-hidden="" alt="" aria-name="" color="default" class="hydrated"></osds-icon><!----></span> 
+</osds-button>
+
 <p>Variant</p>
 <osds-button variant='ghost'>Ghost</osds-button>
 <osds-button variant='stroked'>Primary</osds-button>
@@ -94,6 +106,16 @@
 
 <p>Inline</p>
 <osds-button inline>Default</osds-button>
+
+<p>InlineWith Icon</p>
+<osds-button inline>
+  Default
+  <osds-icon
+    name="plus"
+    size="sm"
+    color="primary"
+  />
+</osds-button>
 
 <p>Ellipsis</p>
 <osds-button size='lg'>

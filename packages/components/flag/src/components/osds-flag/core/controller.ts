@@ -2,7 +2,7 @@ import type { OsdsFlag } from '../osds-flag';
 
 import {
   ODS_COUNTRY_ISO_CODE,
-  OdsCountryIsoCodeList,
+  ODS_COUNTRY_ISO_CODES,
   OdsLogger,
   odsIsTermInEnum,
   OdsLoadContent,
@@ -66,9 +66,10 @@ class OdsFlagController {
    * @param iso - iso code
    */
   validateISO(iso?: ODS_COUNTRY_ISO_CODE): void {
+    console.log('iso', iso, odsIsTermInEnum(iso, ODS_COUNTRY_ISO_CODE))
     if (!iso || !odsIsTermInEnum(iso, ODS_COUNTRY_ISO_CODE)) {
       this.component.iso = undefined;
-      this.logger.warn(`The iso attribute must be one of those values ${OdsCountryIsoCodeList}`);
+      this.logger.warn(`The iso attribute must be one of those values ${ODS_COUNTRY_ISO_CODES}`);
     }
   }
 

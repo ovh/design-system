@@ -1,10 +1,19 @@
 export enum ODS_COUNTRY_ISO_CODE {
+  AD = 'ad', // Andorra
+  AE = 'ae', // United Arab Emirates
+  AF = 'af', // Afghanistan
+  AG = 'ag', // Antigua and Barbuda
+  AL = 'al', // Albania
+  AO = 'ao', // Angola
+  AI = 'ai', // Anguilla
+  AM = 'am', // Armenia
   AR = 'ar', // Argentina
   AS = 'as', // American Samoa
   AT = 'at', // Austria
   AU = 'au', // Australia
   AW = 'aw', // Aruba
   AX = 'ax', // Åland Islands
+  AQ = 'aq', // Antarctica
   AZ = 'az', // Azerbaijan
   BA = 'ba', // Bosnia and Herzegovina
   BB = 'bb', // Barbados
@@ -23,6 +32,7 @@ export enum ODS_COUNTRY_ISO_CODE {
   BR = 'br', // Brazil
   BS = 'bs', // Bahamas
   BT = 'bt', // Bhutan
+  BV = 'bv', // Bouvet Island
   BW = 'bw', // Botswana
   BY = 'by', // Belarus
   BZ = 'bz', // Belize
@@ -32,7 +42,7 @@ export enum ODS_COUNTRY_ISO_CODE {
   CF = 'cf', // Central African Republic
   CG = 'cg', // Congo
   CH = 'ch', // Switzerland
-  CI = 'ci', // ôte d\'Ivoire
+  CI = 'ci', // Côte d\'Ivoire
   CK = 'ck', // Cook Islands
   CL = 'cl', // Chile
   CM = 'cm', // Cameroon
@@ -86,6 +96,7 @@ export enum ODS_COUNTRY_ISO_CODE {
   GY = 'gy', // Guyana
   HK = 'hk', // Hong Kong
   HN = 'hn', // Honduras
+  HM = 'hm', // Heard Island and McDonald Islands
   HR = 'hr', // Croatia
   HT = 'ht', // Haiti
   HU = 'hu', // Hungary
@@ -104,7 +115,11 @@ export enum ODS_COUNTRY_ISO_CODE {
   JO = 'jo', // Jordan
   JP = 'jp', // Japan
   KE = 'ke', // Kenya
+  KG = 'kg', // Kiribati
+  KH = 'kh', // Cambodia
+  KI = 'ki', // Kiribati
   KN = 'kn', // Saint Kitts and Nevis
+  KM = 'km', // Comoros
   KP = 'kp', // orea (Democratic People\'s Republic of)
   KR = 'kr', // Korea, Republic of
   KW = 'kw', // Kuwait
@@ -114,6 +129,7 @@ export enum ODS_COUNTRY_ISO_CODE {
   LB = 'lb', // Lebanon
   LC = 'lc', // Saint Lucia
   LI = 'li', // Liechtenstein
+  LK = 'lk', // Sri lanka
   LR = 'lr', // Liberia
   LS = 'ls', // Lesotho
   LT = 'lt', // Lithuania
@@ -157,6 +173,7 @@ export enum ODS_COUNTRY_ISO_CODE {
   NZ = 'nz', // New Zealand
   OM = 'om', // Oman
   PA = 'pa', // Panama
+  PE = 'pe', // Peru
   PF = 'pf', // French Polynesia
   PG = 'pg', // Papua New Guinea
   PH = 'ph', // Philippines
@@ -234,8 +251,7 @@ export enum ODS_COUNTRY_ISO_CODE {
   YT = 'yt', // Mayotte
   ZA = 'za', // South Africa
   ZM = 'zm', // Zambia
+  ZW = 'zw', // Zimbabwe
 }
-export type OdsCountryIsoCodeUnion = `${keyof typeof ODS_COUNTRY_ISO_CODE}`;
 
-export const OdsCountryIsoCodeList = Object.keys(ODS_COUNTRY_ISO_CODE)
-  .map((key) => ODS_COUNTRY_ISO_CODE[key as OdsCountryIsoCodeUnion]);
+export const ODS_COUNTRY_ISO_CODES =  Object.freeze(Object.keys(ODS_COUNTRY_ISO_CODE));

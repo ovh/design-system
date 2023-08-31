@@ -79,7 +79,7 @@ describe('spec:osds-phone-number', () => {
         name: 'value',
         defaultValue: DEFAULT_ATTRIBUTE.value,
         newValue: 'new value',
-        value: 'old value',
+        value: null,
         setup: (value) => setup({ attributes: { value } }),
         ...config,
       });

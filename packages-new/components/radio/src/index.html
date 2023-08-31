@@ -48,29 +48,13 @@
   </osds-radio>
 </osds-radio-group>
 
-
-
-<script type="module">
+<script>
   const radioGroupA = document.getElementById('radio-group-a');
   const radioGroupAInfo = document.getElementById('radio-group-a-info');
-
-  document.addEventListener('odsInitialized', ({detail}) => {
-    const instance = detail.instance;
-    instance.logging(true);
-    const logger = new instance.logger('custom logger');
-    logger.log('ods initialized event received', {detail});
-    logger.error('my log with the same logger as ODS');
-
-    instance.logging(false);
-    logger.log('my log disabled as ods log is disabled');
-    instance.logging(true);
-  })
-
-
   let generatedRadioId = 0;
 
   function removeRadio(event) {
-    logger.log('removeRadio', event);
+    console.log('removeRadio', event);
     const target = event.target;
     if (radioGroupA && target) {
       const radio = target.closest('osds-radio');
@@ -98,16 +82,12 @@
     return anotherRadioToAdd;
   }
 
-
-  logger.log('radioGroupA', radioGroupA);
-
   function addRadio() {
-    logger.log('addRadio');
+    console.log('addRadio');
     if (radioGroupA) {
       radioGroupA.appendChild(generateRadio());
     }
-  };
-
+  }
 
   if (radioGroupA && radioGroupAInfo) {
     const info = {
@@ -116,7 +96,7 @@
     };
 
     radioGroupA.addEventListener('odsValueChange', async (event) => {
-      logger.log("odsValueChange event", event.detail);
+      console.log("odsValueChange event", event.detail);
       info.newValue = event.detail.newValue;
       info.previousValue = event.detail.previousValue;
       info.radios = (await radioGroupA.getRadios())
@@ -130,10 +110,8 @@
         .replace(/ /g, '&nbsp;');
     })
   } else {
-    logger.warn('radioGroupA or radioGroupAInfo not found');
+    console.warn('radioGroupA or radioGroupAInfo not found');
   }
-
 </script>
-
 </body>
 </html>

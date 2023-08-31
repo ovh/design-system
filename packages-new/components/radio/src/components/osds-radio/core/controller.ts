@@ -111,7 +111,7 @@ class OdsRadioController {
 
   getFirstElementChild(): HTMLStencilElement & OdsRadioizable {
     return this.component.el.firstElementChild as unknown as (HTMLStencilElement & OdsRadioizable);
-  } 
+  }
 
   /**
    *
@@ -208,6 +208,6 @@ class OdsRadioController {
   }
 }
 
-export { 
+export {
   OdsRadioController,
 }

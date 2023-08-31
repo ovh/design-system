@@ -5,7 +5,7 @@ interface OdsPhoneNumberAttribute {
   /** Indicates if the phone number shows error or not */
   error?: boolean;
   /** Current value of the phone number */
-  value: string;
+  value: string | null;
 }
 
 export {

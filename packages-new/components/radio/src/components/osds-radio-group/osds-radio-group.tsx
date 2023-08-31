@@ -121,5 +121,4 @@ export class OsdsRadioGroup implements OdsRadioGroupAttribute, OdsRadioGroupEven
       </Host>
     );
   }
-
 }

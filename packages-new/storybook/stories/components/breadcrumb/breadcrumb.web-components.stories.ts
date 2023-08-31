@@ -21,7 +21,7 @@ const storyParams = {
   },
   contrasted: {
     category: 'Misc',
-    defaultValue: false
+    defaultValue: false,
   },
 };
 
@@ -32,9 +32,9 @@ export default {
     notes: {
       changelog,
     },
-    docs: { page }
+    docs: { page },
   },
-  argTypes: extractArgTypes(storyParams)
+  argTypes: extractArgTypes(storyParams),
 };
 
 /* Default */

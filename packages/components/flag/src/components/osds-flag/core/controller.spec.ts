@@ -22,7 +22,7 @@ import {
   odsGetAssetPath,
   odsGetSrc,
   ODS_COUNTRY_ISO_CODE,
-  OdsCountryIsoCodeList
+  ODS_COUNTRY_ISO_CODES,
 } from '@ovhcloud/ods-common-core';
 import { OsdsFlag } from '../osds-flag';
 import { OdsFlagController } from './controller';
@@ -71,7 +71,7 @@ describe('ods-flag-controller', () => {
 
   describe('methods', () => {
     describe('validateISO', () => {
-      const expected = `The iso attribute must be one of those values ${OdsCountryIsoCodeList}`;
+      const expected = `The iso attribute must be one of those values ${ODS_COUNTRY_ISO_CODES}`;
 
       beforeEach(() => {
         setup();

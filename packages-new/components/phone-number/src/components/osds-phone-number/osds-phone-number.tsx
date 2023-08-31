@@ -1,4 +1,4 @@
-import { Component, Element, Host, h, Prop } from '@stencil/core';
+import { Component, Host, h, Prop } from '@stencil/core';
 import { ODS_INPUT_TYPE } from '@ovhcloud/ods-component-input';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsPhoneNumberAttribute } from './interfaces/attributes';
@@ -12,8 +12,6 @@ import { OdsPhoneNumberAttribute } from './interfaces/attributes';
   shadow: true
 })
 export class OsdsPhoneNumber implements OdsPhoneNumberAttribute {
-  @Element() el!: HTMLElement;
-
   /** @see OdsPhoneNumberAttribute.clearable */
   @Prop({ reflect: true }) clearable?: boolean = DEFAULT_ATTRIBUTE.clearable;
 

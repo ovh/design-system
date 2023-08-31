@@ -1,0 +1,52 @@
+{
+  "name": "@ovhcloud/ods-storybook",
+  "version": "15.0.1",
+  "description": "ODS Storybook",
+  "author": "OVH SAS",
+  "license": "Apache-2.0",
+  "main": "index.js",
+  "scripts": {
+    "build:storybook": "yarn list:releases && build-storybook -o dist $(yarn node ./.storybook/utils/static-dirs.js)",
+    "list:docs:api": "yarn node .storybook/utils/docs-api-dir.js",
+    "list:releases": "yarn node .storybook/utils/get-repo-releases.js",
+    "prepare": "npm run build:storybook",
+    "start": "start-storybook -p 6006 $(yarn node ./.storybook/utils/static-dirs.js)",
+    "start:nocache": "start-storybook -p 6006 $(yarn node ./.storybook/utils/static-dirs.js) --no-manager-cache",
+    "start:quiet": "start-storybook -p 6006 --quiet $(yarn node ./.storybook/utils/static-dirs.js)"
+  },
+  "dependencies": {
+    "@ovhcloud/ods-cdk": "^15.0.1",
+    "@ovhcloud/ods-cdk-dev": "^15.0.1",
+    "@ovhcloud/ods-common-core": "^15.0.1",
+    "@ovhcloud/ods-common-stencil": "^15.0.1",
+    "@ovhcloud/ods-common-theming": "^15.0.1",
+    "@ovhcloud/ods-components": "^15.0.1",
+    "@ovhcloud/ods-starter-react": "^15.0.1",
+    "@ovhcloud/ods-starter-react-vite": "^15.0.1",
+    "@ovhcloud/ods-starter-vue-vite": "^15.0.1",
+    "@ovhcloud/ods-theme-blue-jeans": "^15.0.1",
+    "react": "^16.8.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@storybook/addon-a11y": "^6.4.19",
+    "@storybook/addon-actions": "^6.4.19",
+    "@storybook/addon-backgrounds": "^6.4.19",
+    "@storybook/addon-console": "^1.2.3",
+    "@storybook/addon-controls": "^6.4.19",
+    "@storybook/addon-docs": "^6.4.19",
+    "@storybook/addon-essentials": "^6.4.19",
+    "@storybook/addon-links": "^6.4.19",
+    "@storybook/addon-notes": "^5.3.21",
+    "@storybook/addon-viewport": "^6.4.19",
+    "@storybook/addons": "^6.4.19",
+    "@storybook/html": "^6.4.19",
+    "@storybook/theming": "^6.4.19",
+    "@storybook/web-components": "^6.4.19",
+    "@whitespace/storybook-addon-html": "^5.0.0",
+    "babel-loader": "~8.1.0",
+    "lit-html": "^1.3.0",
+    "node-fetch": "2.6.7",
+    "raw-loader": "^4.0.2"
+  }
+}

@@ -1,0 +1,39 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Contributing/How to's/Use an ODS component from outside" />
+
+# Use an ODS component from outside
+
+All components can be used in an other component when necessary.
+
+<!-- TOC -->
+
+* [Import the component](#import-the-component)
+* [Exclude component for React and Vue](#exclude-component-for-react-and-vue)
+
+<!-- TOC -->
+
+## Import the component
+You have to import the component you would like to use in your own component in `packages/stencil/components/%component%/src/global.dev.ts`:
+``` typescript
+import '@ovhcloud/ods-stencil/components/%component%';
+```
+
+## Exclude component for React and Vue
+
+You also need to exclude the imported component for React and Vue in your own component in `packages/stencil/components/%component%/stencil.config.ts` as following:
+``` typescript
+reactOutput: {
+    componentCorePackage: '@ovhcloud/ods-stencil/components/%component%',
+    // exclude peer dependencies that corresponds to www usage
+    excludeComponents: ['osds-%component%']
+  },
+  vueOutput: {
+      componentCorePackage: '@ovhcloud/ods-stencil/components/%component%',
+      // exclude peer dependencies that corresponds to www usage
+      excludeComponents: ['osds-%component%']
+    },
+```
+
+> ⚠️️ **Please note**<br />
+> Be sure to run `yarn build:prod` at the root of your workspace project after importing an other component in your own ones.

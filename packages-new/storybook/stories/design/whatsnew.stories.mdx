@@ -1,0 +1,314 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="OVHcloud Design System/What's new?/What's new" />
+
+<style>
+  {`
+    * {
+        font-family: "Source Sans Pro","Trebuchet MS","Arial","Segoe UI",sans-serif !important;
+    }
+  `}
+</style>
+
+# What's new ?
+
+## v15.0.1
+
+  * Fix new packages release process.
+  * Update documentation.
+
+## v15.0.0
+
+As it is a major version, you have to do the [migration guide 14.x to 15.x](?path=/story/ovhcloud-design-system-what-s-new-migration-guide-14-x-to-15-x--page)
+
+### Project changes:
+
+This version is the first step towards the new ODS internal architecture.
+The goal of this refactoring is to simplify and improve the whole project to:
+- provide a better developer experience and thus reduce development time
+- normalize all components behavior / design / attributes
+- have better control on dependencies and lib version upgrade
+- have better control on what ODS expose (through component or CDK)
+- ...
+
+This first step only impact two components `osds-text` and `osds-textarea`.
+
+All other components will follow on next version.
+
+Then common ODS lib and theming will be refactored on next version.
+
+### Features changes:
+* **Text**
+* `OsdsText` is no longer part of `@ovhcloud/ods-stencil` package.
+* `OsdsText` is now accessible by adding either `@ovhcloud/ods-component-text` or `@ovhcloud/ods-components` dependency.
+* `@ovhcloud/ods-stencil-text` lib has been replaced by `@ovhcloud/ods-component-text`.
+* `@ovhcloud/ods-stencil-text-react` lib has been replaced by `@ovhcloud/ods-component-text-react`.
+* `@ovhcloud/ods-stencil-text-vue` lib has been replaced by `@ovhcloud/ods-component-text- vue`.
+* `OdsTextSize` has been removed from `@ovhcloud/ods-core` and has been replaced by `ODS_TEXT_SIZE` from `@ovhcloud/ods-component-text`.
+* `OdsTextSizeList` has been removed from `@ovhcloud/ods-core` and is replaced by `ODS_TEXT_SIZES` from `@ovhcloud/ods-component-text`.
+* `OdsTextSizeUnion` has been removed from `@ovhcloud/ods-core`.
+* `OdsTextLevel` has been removed from `@ovhcloud/ods-core` and has been replaced by `ODS_TEXT_LEVEL` from `@ovhcloud/ods-component-text`.
+* `OdsTextLevelList` has been removed from `@ovhcloud/ods-core` and is replaced by `ODS_TEXT_LEVELS` from `@ovhcloud/ods-component-text`.
+* `OdsTextLevelUnion` has been removed from `@ovhcloud/ods-core`.
+* `@ovhcloud/ods-component-text` exports only `OdsTextAttribute` as component interface.
+
+* **Textarea**
+* `OsdsTextarea` is no longer part of `@ovhcloud/ods-stencil` package.
+* `OsdsTextarea` is now accessible by adding either `@ovhcloud/ods-component-textarea` or `@ovhcloud/ods-components` dependency.
+* `@ovhcloud/ods-stencil-textarea` lib has been replaced by `@ovhcloud/ods-component-textarea`.
+* `@ovhcloud/ods-stencil-textarea-react` lib has been replaced by `@ovhcloud/ods-component-textarea-react`.
+* `@ovhcloud/ods-stencil-textarea-vue` lib has been replaced by `@ovhcloud/ods-component-textarea- vue`.
+* `OdsTextAreaSize` has been removed from `@ovhcloud/ods-core` and is replaced by `ODS_TEXTAREA_SIZE` from `@ovhcloud/ods-component-textarea`.
+* `OdsTextAreaSizeList` has been removed from `@ovhcloud/ods-core` and is replaced by `ODS_TEXTAREA_SIZES` from `@ovhcloud/ods-component-textarea`.
+* `OdsTextAreaSizeUnion` has been removed from `@ovhcloud/ods-core`.
+* `@ovhcloud/ods-component-textarea` exports only `OdsTextAttribute`, `OdsTextAreaEvent` and `OdsTextAreaValueChangeEvent` as component interfaces.
+* `OsdsTextarea` is now displayed as flex by default.
+* `OsdsTextarea` `flex` attribute has been removed.
+* `OsdsTextarea` `inline` attribute has been added.
+
+
+## v14.1.0
+### New features:
+* **CDK**
+* Manage surface position when located on the edge.
+* The surface can now be centered at the top or bottom of the trigger. [See CDK Documentation](?path=/story/libraries-cdk-overlay-strategies-symmetry--page)
+
+We added the following components:
+* **Form Field**: [See Form Field Documentation](?path=/story/form-field--default)
+* **Switch**: [See Form Field Documentation](?path=/story/switch--default)
+
+### Features changes:
+* **Pagination**
+* Add tooltip to the arrows.
+* Can now show pages according to a numbers of items shown by page.
+> For more information, check our documentation [See Pagination Documentation](?path=/story/ui-components-pagination-molecule-specifications--page)
+
+* **Location-tile**
+* Component is now deprecated and won't be supported anymore. It will be deleted in a future release.
+> For more information, check our replacement guide [See Location Tile Documentation](?path=/story/ui-components-location-tile-deprecated-remplacement--page)
+
+### Bug fixes:
+* **Radio**:
+* Radio button is now unfocusable when disabled
+
+* **Input**:
+* cursor is set to not-allowed when disabled
+
+## v14.0.0
+As it is a major version, you have to do the [migration guide 13.x to 14.x](?path=/story/ovhcloud-design-system-what-s-new-migration-guide-13-x-to-14-x--page)
+
+### New features:
+We added the following components:
+* **Progress Bar**: [See Progress Bar Documentation](?path=/story/progress-bar--default)
+* **Popover**: [See Popover Documentation](?path=/story/popover--default)
+* **Tooltip**: [See Popover Documentation](?path=/story/tooltip--default)
+
+Components version 2:
+* **Input V2**: [See Input Documentation](?path=/story/input--default)
+* new properties have been added
+* `loading`: it displays a Spinner
+* `clearable`: it clears the input value on click
+* `masked`: it indicates if the input value is hidden or not (to be used with password type)
+* new types have been added: `date`, `email`, `password`, `search`, `tel`, `text`, `time` and `url`
+* **Select V2**: it is now connected to our CDK and keyboard navigation has been added [See Select Documentation](?path=/story/select--default)
+
+**Quantity** component accepts four digits in the input field:
+[See Quantity Documentation](?path=/story/quantity--default)
+
+**CDK** (Component Development Kit): new symmetry strategies have been added (left and right):
+[See CDK Documentation](?path=/story/libraries-cdk-overlay-introduction--page)
+
+### Bug fixes:
+* **Tile**:
+* `hoverable` attribute has been added to avoid double focus
+* `interactive` attribute has been removed
+> ⚠️️ **Breaking change**<br />
+  > For more information, check our migration guide
+* **Link**:
+* add missing color for active state
+* fix Link host container size to match its content
+* **Icon**: add `hoverable` attribute so component color can change when in selectable parent
+* **Checkbox Button**: aspect ratio has been added
+* **Quantity**: icons alignment has been fixed
+* **Textarea**: when component is resized and `flex` attribute is set to `true` and then, set back to `false`, Textarea width is no more blocked to 100%
+
+
+## v13.0.0
+
+As it is a major version, you have to do the [migration guide 12.x to 13.x](?path=/story/ovhcloud-design-system-what-s-new-migration-guide-12-x-to-13-x--page)
+
+### New features:
+We added the following components:
+* Breadcrumb: [See Breadcrumb Documentation](?path=/story/breadcrumb--default)
+* Collapsible: [See Collapsible Documentation](?path=/story/collapsible--default)
+* Pagination: [See Pagination Documentation](?path=/story/pagination--default)
+* Spinner: [See Spinner Documentation](?path=/story/spinner--default)
+
+[Circle-shaped button](?path=/story/button--default) has been added to Button Component (circle attribute)
+
+### Bug fixes:
+* Button: `button' and `link` roles have been added (switching to `link` role when Button has a href property)
+
+* Chip: expected style on Chip focus has been applied
+
+* Icon: missing download icon has been added
+
+* Input: odsValueChange event won't emit on component init
+
+* Link:
+* all content in Link is now aligned as expected
+* href and target attributes are optional
+
+* Select :
+* check for outside click target inside its DOM
+* fixed width on non flex Select has been removed
+> ⚠️️ **Breaking change**<br />
+  > For more information, check our migration guide
+
+
+
+## v12.1.0
+
+### New features:
+We added the Tabs component.<br />
+[See Tabs Documentation](?path=/story/ui-components-tabs-atom-specifications--page)
+
+A component generator has been added. Now, you can use that tool to generate a new component easily.<br />
+[See Component Generator in Contributing Documentation](?path=/story/contributing-how-to-s-create-a-component--page)
+
+A coding Style has also been added so you can check our guidelines and how to write code for OVHcloud Design System project.<br />
+[See Component Coding Style Rules](?path=/story/code-our-principles-coding-style--page)
+
+The [Contributing Documentation](?path=/story/contributing-get-started--page) has been updated:
+* How to use a component in an other one
+* Theming: how to customize a style
+* some warning about pushing any sensitive content
+
+### Bug fixes:
+Range component color when in error has been fixed.
+
+Some width issue on Button component has been fixed.<br />
+When in flex, a Button can now display an ellipsis for text content when necessary.
+
+## v12.0.5
+
+### Bug fixes:
+Button component of type submit in a form will now submit the form as expected (by click or Enter / Space keys).
+
+Quantity component issue has been fixed regarding minus control that should be disabled when the input `min` attribute is equal to 0 and its value has reached 0 too.
+
+## v12.0.0
+
+First release on GitHub. There is no new feature in this version. It is now open source
+
+## v11.0.0
+
+Flag component has been modified; you’ll need to update as explained in the migration guide.
+For more details about assets, see [Installation](?path=/docs/code-stencil-components-how-to-install--page#assets) page.
+New attributes are available on this component: `lazy`, `assetPath` and `src`.
+
+Before importing any component you now have to setup ods, for more details see [migration guide 10.x to 11.x](?path=/story/code-migration-guide-10-x-to-11-x--page).
+
+[Dual range](?path=/story/range--dual) is now available for Range component; It offers two handles to set a min and max value.
+
+To build resilient infrastructure and promote sustainable industrialization, we moved code that could be agnostic.
+Now, ODS components logic has been moved into controllers.
+If you want to contribute to ODS by developing new components, please refer to the how-to section for controllers in our [Storybook](?path=/story/contributing-how-to-s-create-a-controller--page).
+
+Now, Button component has `download` and `rel` new attributes available when it is used as a link (href).
+
+We had blur events on Quantity component to set the correct value regarding the Quantity bounds.
+It means when the user set manually a value that is out of bounds for Quantity, the value will be automatically reset to a correct value.
+When Quantity is out of bounds, the field value is now in error state.
+
+As it is a major version, you have to do the [migration guide 10.x to 11.x](?path=/story/code-migration-guide-10-x-to-11-x--page)
+
+## v10.2.0
+
+A new library called `CDK` for `Component Development Kit` is available.
+The main objective is to make the development to be easier thanks to helpers.
+The first integrated feature is an overlay system that allows manipulating and displaying content
+on foreground of the page.
+[CDK Documentation](?path=/story/cdk-getting-started--page)
+
+We added a new entire section for `contributions` in the storybook.
+Feel free to read the [Contributing Documentation](?path=/story/contributing-getting-started--page) if you want to contribute.
+
+We simplified our developer environment with a `global.dev.ts` file in order to
+make the developer tests isolated from the production build.
+
+We optimized our CI/CD workflow for a more reactive and efficient build time and release time.
+
+We fixed some issue about automated screenshot testing with some timeout.
+
+[Technical Changelog](?path=/story/code-changelog--page)
+
+## v10.1.0
+
+We added the select component (version 1).
+[See Select Documentation](?path=/story/ui-components-select-atom-specifications--page)
+
+[Technical Changelog](?path=/story/code-changelog--page)
+
+## v10.0.0
+
+We updated a lot of third dependencies (stencilJs, typescript, jest, puppeteer, ...):
+```text
+@stencil/core ~2.6.0 to ~2.18.1
+@stencil/sass ~1.4.1 to ~2.0.0
+jest ~26.6.3 to ~27.4.5
+@types/jest ~26.0.24 to ~27.5.2
+jest-cli ~26.6.3 to ~27.4.5
+jest-puppeteer ^5.0.4 to ~6.1.1
+jest-puppeteer-preset ^5.0.4 to ~6.1.1
+ts-jest ~26.5.6 to ~27.1.5
+typescript 4.2.3 to 4.7.4
+puppeteer ~5.5.0 to ~10.0.0
+yarn-2.4.2 to yarn-3.2.4
+node-fetch ~2.6.6 to ~2.6.7
+ts-node ~9.1.1 to ~10.7.0
+```
+> If you are an `ODS` contributor, you may need to do some changes
+
+We now build all of our components for `React` and `Vue` frameworks.
+They allow to use all the potential and features of your high-end JS framework.
+You can read the updated [Getting Started](?path=/story/ovhcloud-design-system-get-started--page)
+and more especially the [ODS Starters chapter](?path=/story/ovhcloud-design-system-get-started--page#ods-starters)
+to initialize an App with ODS and see how it works depending the framework.
+
+Also, `ods-cart` is no more impacted by a parent container with `text-align:center`.
+
+`ods-textarea` had an incorrect `spellcheck` property than could be equal to `spellcheck="false'` which is incorrect in HTML.
+Now it is in DOM only if it is `true`.
+
+You can now disable animation on `ods-toggle` by defining a CSS value `--ods-toggle-transition-slider: none`.
+
+Css variables `--ods-size-squish-n-*` and `--ods-size-stretch-n-*` are no more incorrect.
+It was previously set with only one number instead of two, accordingly with CSS3.
+
+As it is a major version, you have to do the [migration guide 9.x to 10.x](?path=/story/code-migration-guide-9-x-to-10-x--page)
+
+[Technical Changelog](?path=/story/code-changelog--page)
+
+## v9.1.0
+
+Adding 2 new components :
+- accordion: display a content that can be collapsed
+- code: display a snippet of code and copy it into the clipboard
+
+If you already have customized themes, you have to declare the variables for this 2 new components.
+see more in the migration guide 9.x
+
+## February 2022
+The V1 **Design System** graphical charter is finalized. This charter contains :
+* Multiple color palettes (blue, gray, red, orange, green, availability & promotion extra colors)
+* A Typography system
+* All spacing options
+* Components:
+* **Buttons**
+* **Form items** (inputs, dropdowns, checkboxes, radios, radio buttons, toggle buttons, range, textarea, etc.)
+* **Chips & Badges**
+* **Cards**
+* **Cart**
+
+[It is visible here](https://xd.adobe.com/view/031606c8-8f2f-4163-a2c2-f037d64bb294-5645)

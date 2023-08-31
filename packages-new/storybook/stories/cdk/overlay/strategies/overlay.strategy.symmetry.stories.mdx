@@ -1,0 +1,75 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Libraries/CDK/Overlay/Strategies/Symmetry" />
+
+# Symmetry strategy
+
+This `position strategy` is the default built-in strategy used inside the overlay system.
+The main principles are:
+
+- always positioning the `surface` around the `trigger`, without any overlap (except if not enough space)
+- when there is not enough space, in a direction, we display the `surface` in the opposite direction.
+This is why it is called `symmetry`
+- When there is not enough space in the opposite direction too, we must fall back the position with something different.
+In this case, we stay as much as possible at the original position but never overlapping the limit margin.
+And we could limit the `surface` size to a smaller size.
+
+## Symmetry position table
+
+Positions that correspond to a `vertical` and `horizontal` positioning are defined (`green tick`). The surface can be centered at the top or bottom of the trigger.
+Some positions are not available because of the overlapping of the `surface` container on top of the `anchor` (`red cross`).
+
+The `orange` arrows shows the position switching when there is not enough space on the vertical `Y` axis.
+The `blue` arrows are here for horizontal axis.
+
+![Symmetry position table](cdk-images/cdk-overlay-symmetry-position-table.png)
+
+## Symmetry position strategy
+
+The `symmetry` strategy starts with the default position, except if the user specified another one.
+
+### 1. RTL conversion
+
+The process is internal to the overlay system and is applied for all strategies.
+
+### 2. Standard inspections
+
+The standard mode checks the space between the border of the `anchor` and the border of the `comfort` margin.
+
+### 3. Compute position
+
+When there is not enough space and this is the first computation,
+it switches to the opposite position, as with `symmetry`, and it starts again with `standard inspections`.
+
+When it already switched off, it will apply a fallback system.
+Indeed, there is not enough space on the both sides of the `trigger`.
+It will call the `fallback inspectors`.
+
+### 4. Fallback inspections
+
+The `fallback` mode check the space between the border of the `anchor` and the border of the `limit` margin.
+Then, it will call the `fallback` appliers.
+
+### 5. Standard appliers
+
+When there is no fallback position to apply, the system will call the standard appliers in order to
+get the final `verticalOffset`, `verticalALignment`, `HorizontalOffset`, `HorizontalAlignment` and `maxHeight`.
+This is the nominal case when the overlay can be entirely displayed between the `anchor` and the `comfort` margin.
+
+### 6. Fallback appliers
+
+When we are in a fallback positioning, we had determinate that there is not enough space for displaying on both sides.
+If the `surface` size is inferior to the space between the opposites `comfort` margin of both sides,
+it starts by staying sticky to the original side of the position, but overlapping the `anchor`.
+
+If there is not enough space between `comfort` margin, it displays the `surface` vertically
+or horizontally centered between `limit` margins and it won't grow anymore.
+In this case, if the viewport is very small, the content will always stay in this configuration.
+
+In all cases, the content will be scrollable if needed.
+
+### 7. Apply position
+
+At the end, the final position will be applied on the `surface` container.
+
+![Symmetry position computing](cdk-images/cdk-overlay-symmetry-position-computing.jpg)

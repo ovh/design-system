@@ -77,6 +77,7 @@ Default.args = {
   ...(extractStoryParams(storyParams)),
 };
 
+export const Countries = OsdsPhoneNumberDefault.bind({});
 // @ts-ignore
 Countries.args = {
   ...extractStoryParams({ ...storyParams, ...countriesParams }),

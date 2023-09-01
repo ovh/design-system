@@ -46,6 +46,12 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
   /** @see OdsPhoneNumberAttribute.locale */
   @Prop({ reflect: true, mutable: true }) locale?: ODS_LOCALE = DEFAULT_ATTRIBUTE.locale;
 
+  /** @see OdsPhoneNumberAttribute.isoCode */
+  @Prop({ reflect: true, mutable: true }) isoCode?: ODS_COUNTRY_ISO_CODE = DEFAULT_ATTRIBUTE.isoCode;
+
+  /** @see OdsPhoneNumberAttribute.locale */
+  @Prop({ reflect: true, mutable: true }) locale?: ODS_COUNTRY_ISO_CODE = DEFAULT_ATTRIBUTE.locale;
+
   /** @see OdsPhoneNumberAttribute.value */
   @Prop({ reflect: true, mutable: true }) value = DEFAULT_ATTRIBUTE.value;
 

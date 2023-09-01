@@ -116,6 +116,30 @@ describe('spec:osds-phone-number', () => {
       });
     });
 
+    describe('isoCode', () => {
+      odsUnitTestAttribute<OdsPhoneNumberAttribute, 'isoCode'>({
+        name: 'isoCode',
+        defaultValue: DEFAULT_ATTRIBUTE.isoCode,
+        newValue: ODS_COUNTRY_ISO_CODE.FR,
+        value:  ODS_COUNTRY_ISO_CODE.GB,
+        setup: (isoCode) => setup({ attributes: { isoCode } }),
+        ...config,
+        exclude: [OdsUnitTestAttributeType.DEFAULT],
+      });
+    });
+
+    describe('locale', () => {
+      odsUnitTestAttribute<OdsPhoneNumberAttribute, 'locale'>({
+        name: 'locale',
+        defaultValue: DEFAULT_ATTRIBUTE.locale,
+        newValue: ODS_LOCALE.FR,
+        value: ODS_LOCALE.EN,
+        setup: (locale) => setup({ attributes: { locale } }),
+        ...config,
+        exclude: [OdsUnitTestAttributeType.DEFAULT],
+      });
+    });
+
     describe('value', () => {
       odsUnitTestAttribute<OdsPhoneNumberAttribute, 'value'>({
         name: 'value',

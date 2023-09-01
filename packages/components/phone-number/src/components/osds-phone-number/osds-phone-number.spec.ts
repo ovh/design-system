@@ -27,7 +27,6 @@ describe('spec:osds-phone-number', () => {
 
     root = page.root;
     instance = page.rootInstance;
-
     select = root.shadowRoot.querySelector('osds-select');
   }
 

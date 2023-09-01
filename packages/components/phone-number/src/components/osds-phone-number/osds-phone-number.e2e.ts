@@ -29,7 +29,6 @@ describe('e2e:osds-phone-number', () => {
     await page.waitForChanges();
 
     el = await page.find('osds-phone-number');
-
     el.setProperty('countries', attributes.countries ?? []);
     await page.waitForChanges();
 
@@ -54,7 +53,6 @@ describe('e2e:osds-phone-number', () => {
 
   it('should render', async () => {
     await setup({ attributes: {}, cbkInterceptorRequest: myCbk });
-
     expect(el).not.toBeNull();
     expect(el).toHaveClass('hydrated');
     

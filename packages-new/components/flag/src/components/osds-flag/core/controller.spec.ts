@@ -21,11 +21,10 @@ import {
   OdsLogger,
   odsGetAssetPath,
   odsGetSrc,
-  ODS_COUNTRY_ISO_CODE,
-  ODS_COUNTRY_ISO_CODES,
 } from '@ovhcloud/ods-common-core';
 import { OsdsFlag } from '../osds-flag';
 import { OdsFlagController } from './controller';
+import { ODS_FLAG_ISO_CODE, ODS_FLAG_ISO_CODES } from '../constants/flag-iso-code';
 
 class OdsFlagMock extends OsdsFlag {
   constructor(attribute: Partial<OsdsFlag>) {
@@ -71,24 +70,24 @@ describe('ods-flag-controller', () => {
 
   describe('methods', () => {
     describe('validateISO', () => {
-      const expected = `The iso attribute must be one of those values ${ODS_COUNTRY_ISO_CODES}`;
+      const expected = `The iso attribute must be one of those values ${ODS_FLAG_ISO_CODES}`;
 
       beforeEach(() => {
         setup();
       });
 
       it('should clean up the wrong iso code', () => {
-        controller.validateISO('test' as ODS_COUNTRY_ISO_CODE);
+        controller.validateISO('test' as ODS_FLAG_ISO_CODE);
         expect(component.iso).toEqual(undefined);
       });
 
       it('should not call console.warn with correct iso', () => {
-        controller.validateISO(ODS_COUNTRY_ISO_CODE.FR);
+        controller.validateISO(ODS_FLAG_ISO_CODE.FR);
         expect(loggerSpyReferences.methodSpies.warn).not.toHaveBeenCalled();
       });
 
       it('should call console.warn with wrong iso', () => {
-        controller.validateISO('ods' as ODS_COUNTRY_ISO_CODE);
+        controller.validateISO('ods' as ODS_FLAG_ISO_CODE);
         expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledWith(expected);
         expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledTimes(1);
       });

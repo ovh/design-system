@@ -1,6 +1,6 @@
 import { html } from 'lit-html';
 import { repeat } from 'lit-html/directives/repeat';
-import { ODS_COUNTRY_ISO_CODES } from '@ovhcloud/ods-common-core';
+import { ODS_FLAG_ISO_CODES } from '@ovhcloud/ods-component-flag';
 
 const flagTemplate = (iso:string) => html`
   <span class='flag-block'>
@@ -33,7 +33,7 @@ const TemplateAll = () => html`
     <osds-flag shadow></osds-flag>
     default
   </span>
-  ${repeat(ODS_COUNTRY_ISO_CODES, (iso: string) => flagTemplate(iso.toLowerCase()))}
+  ${repeat(ODS_FLAG_ISO_CODES, (iso: string) => flagTemplate(iso))}
 </div>
 `;
 

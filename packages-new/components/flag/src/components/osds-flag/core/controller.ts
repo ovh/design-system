@@ -1,8 +1,6 @@
 import type { OsdsFlag } from '../osds-flag';
 
 import {
-  ODS_COUNTRY_ISO_CODE,
-  ODS_COUNTRY_ISO_CODES,
   OdsLogger,
   odsIsTermInEnum,
   OdsLoadContent,
@@ -10,6 +8,7 @@ import {
   odsGetSrc,
   odsGetAssetPath
 } from '@ovhcloud/ods-common-core';
+import { ODS_FLAG_ISO_CODE, ODS_FLAG_ISO_CODES } from '../constants/flag-iso-code';
 
 /**
  * common controller logic for flag component used by the different implementations.
@@ -65,11 +64,11 @@ class OdsFlagController {
    * not blocking.
    * @param iso - iso code
    */
-  validateISO(iso?: ODS_COUNTRY_ISO_CODE): void {
-    console.log('iso', iso, odsIsTermInEnum(iso, ODS_COUNTRY_ISO_CODE))
-    if (!iso || !odsIsTermInEnum(iso, ODS_COUNTRY_ISO_CODE)) {
+  validateISO(iso?: ODS_FLAG_ISO_CODE): void {
+    console.log('iso', iso, odsIsTermInEnum(iso, ODS_FLAG_ISO_CODE))
+    if (!iso || !odsIsTermInEnum(iso, ODS_FLAG_ISO_CODE)) {
       this.component.iso = undefined;
-      this.logger.warn(`The iso attribute must be one of those values ${ODS_COUNTRY_ISO_CODES}`);
+      this.logger.warn(`The iso attribute must be one of those values ${ODS_FLAG_ISO_CODES}`);
     }
   }
 

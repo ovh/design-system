@@ -1,4 +1,4 @@
-export enum ODS_COUNTRY_ISO_CODE {
+enum ODS_COUNTRY_ISO_CODE {
   AD = 'ad', // Andorra
   AE = 'ae', // United Arab Emirates
   AF = 'af', // Afghanistan
@@ -68,7 +68,6 @@ export enum ODS_COUNTRY_ISO_CODE {
   ER = 'er', // Eritrea
   ES = 'es', // Spain
   ET = 'et', // Ethiopia
-  EU = 'eu', // Europe
   FI = 'fi', // Finland
   FJ = 'fj', // Fiji
   FK = 'fk', // Falkland Islands (Malvinas)
@@ -232,8 +231,6 @@ export enum ODS_COUNTRY_ISO_CODE {
   UA = 'ua', // Ukraine
   UG = 'ug', // Uganda
   UM = 'um', // United States Minor Outlying Islands
-  UN = 'un', // United Nations
-  UNIA = 'unia', // Pan-Africa
   US = 'us', // United States of America
   UY = 'uy', // Uruguay
   UZ = 'uz', // Uzbekistan
@@ -246,7 +243,6 @@ export enum ODS_COUNTRY_ISO_CODE {
   VU = 'vu', // Vanuatu
   WF = 'wf', // Wallis and Futuna
   WS = 'ws', // Samoa
-  XK = 'xk', // Kosovo
   YE = 'ye', // Yemen
   YT = 'yt', // Mayotte
   ZA = 'za', // South Africa
@@ -254,4 +250,9 @@ export enum ODS_COUNTRY_ISO_CODE {
   ZW = 'zw', // Zimbabwe
 }
 
-export const ODS_COUNTRY_ISO_CODES =  Object.freeze(Object.keys(ODS_COUNTRY_ISO_CODE));
+const ODS_COUNTRY_ISO_CODES =  Object.freeze(Object.values(ODS_COUNTRY_ISO_CODE));
+
+export { 
+  ODS_COUNTRY_ISO_CODE,
+  ODS_COUNTRY_ISO_CODES,
+}

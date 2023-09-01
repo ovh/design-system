@@ -120,8 +120,8 @@ class OdsRadioController {
     const radioGroup = this.component.radioGroup;
     if (radioGroup) {
       radioGroup.unregisterRadio(this.component);
-      radioGroup.el.removeEventListener('odsDisabledChange', () => this.updateState());
-      radioGroup.el.removeEventListener('odsValueChange', () => this.updateState());
+      radioGroup.el?.removeEventListener('odsDisabledChange', () => this.updateState());
+      radioGroup.el?.removeEventListener('odsValueChange', () => this.updateState());
       this.component.radioGroup = null;
     }
   }

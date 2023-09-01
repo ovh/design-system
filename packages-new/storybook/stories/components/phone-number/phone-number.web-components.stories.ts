@@ -47,6 +47,7 @@ const countriesParams = {
   },
 }
 
+<<<<<<<< HEAD:packages/storybook/stories/components/phone-number/phone-number.web-components.stories.ts
 const allCountriesParams = {
   countries: {
     category: 'Général',
@@ -54,6 +55,8 @@ const allCountriesParams = {
   },
 }
 
+========
+>>>>>>>> 01c53f47 (feat(phone-number): add countries in component):packages-new/storybook/stories/components/phone-number/phone-number.web-components.stories.ts
 export default {
   title: 'UI Components/Phone Number [molecule]/Web Component',
   id: 'phone-number',
@@ -77,13 +80,29 @@ Default.args = {
   ...(extractStoryParams(storyParams)),
 };
 
+<<<<<<<< HEAD:packages/storybook/stories/components/phone-number/phone-number.web-components.stories.ts
+export const Countries = OsdsPhoneNumberDefault.bind({});
+========
+const OsdsPhoneNumberCountriesTemplate = (args: Record<string, unknown>) => {
+  return html`
+    <osds-phone-number ...=${getTagAttributes(args)} @keydown=${(e: KeyboardEvent) => e.stopPropagation()}>
+    </osds-phone-number>
+  `;
+}
+export const Countries = OsdsPhoneNumberCountriesTemplate.bind({});
+>>>>>>>> 01c53f47 (feat(phone-number): add countries in component):packages-new/storybook/stories/components/phone-number/phone-number.web-components.stories.ts
 // @ts-ignore
 Countries.args = {
   ...extractStoryParams({ ...storyParams, ...countriesParams }),
 };
+
+<<<<<<<< HEAD:packages/storybook/stories/components/phone-number/phone-number.web-components.stories.ts
 
 export const AllCountries = OsdsPhoneNumberDefault.bind({});
 // @ts-ignore
 AllCountries.args = {
   ...extractStoryParams({ ...storyParams, ...allCountriesParams }),
 };
+
+========
+>>>>>>>> 01c53f47 (feat(phone-number): add countries in component):packages-new/storybook/stories/components/phone-number/phone-number.web-components.stories.ts

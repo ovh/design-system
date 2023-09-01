@@ -111,7 +111,7 @@ class OdsRadioController {
 
   getFirstElementChild(): HTMLStencilElement & OdsRadioizable {
     return this.component.el.firstElementChild as unknown as (HTMLStencilElement & OdsRadioizable);
-  } 
+  }
 
   /**
    *
@@ -120,8 +120,8 @@ class OdsRadioController {
     const radioGroup = this.component.radioGroup;
     if (radioGroup) {
       radioGroup.unregisterRadio(this.component);
-      radioGroup.el.removeEventListener('odsDisabledChange', () => this.updateState());
-      radioGroup.el.removeEventListener('odsValueChange', () => this.updateState());
+      radioGroup.el?.removeEventListener('odsDisabledChange', () => this.updateState());
+      radioGroup.el?.removeEventListener('odsValueChange', () => this.updateState());
       this.component.radioGroup = null;
     }
   }
@@ -208,6 +208,6 @@ class OdsRadioController {
   }
 }
 
-export { 
+export {
   OdsRadioController,
 }

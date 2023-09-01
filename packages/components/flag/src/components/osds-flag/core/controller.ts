@@ -50,10 +50,8 @@ class OdsFlagController {
    * @param isBrowser - is the context is browser
    */
   onInit(onBecomeVisible: () => void, isBrowser = true): void {
-    this.logger.log('[onInit] wait until is visible');
     this.svgLoadContent.waitUntilVisible(this.component.hostElement, '50px', () => {
       onBecomeVisible();
-      this.logger.log('[onInit] is visible: load it');
       this.component.load();
     }, this.component.lazy, isBrowser);
   }

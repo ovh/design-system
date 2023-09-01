@@ -10,11 +10,11 @@ export const config: Config = getStencilConfig({
   jestConfig: jestConfig.default,
   reactOutput: {
     componentCorePackage: '@ovhcloud/ods-component-phone-number',
-    excludeComponents: ['osds-input', 'osds-icon', 'osds-spinner']
+    excludeComponents: ['osds-input', 'osds-icon', 'osds-spinner', 'osds-select', 'osds-select-group', 'osds-select-option', 'osds-flag']
   },
   vueOutput: {
     componentCorePackage: '@ovhcloud/ods-component-phone-number',
-    excludeComponents: ['osds-input', 'osds-icon', 'osds-spinner']
+    excludeComponents: ['osds-input', 'osds-icon', 'osds-spinner', 'osds-select', 'osds-select-group', 'osds-select-option', 'osds-flag']
   },
   dev: {
     globalScript: 'src/global.dev.ts',

@@ -105,12 +105,9 @@ export class OdsLoadContent {
    */
   waitUntilVisible(el: HTMLElement, rootMargin: string, cb: () => void, lazy: boolean, isBrowser = true): void {
     if (isBrowser && lazy && typeof window !== 'undefined' && window.IntersectionObserver) {
-      this.logger.log('[waitUntilVisible] use intersection');
       const io = (this.io = new window.IntersectionObserver(
         (data: IntersectionObserverEntry[]) => {
-          this.logger.log('[waitUntilVisible] compute change');
           if (data[ 0 ].isIntersecting) {
-            this.logger.log('[waitUntilVisible] isIntersecting');
             io.disconnect();
             this.io = undefined;
             cb();
@@ -118,10 +115,8 @@ export class OdsLoadContent {
         },
         { rootMargin },
       ));
-      this.logger.log('[waitUntilVisible] observe');
       io.observe(el);
     } else {
-      this.logger.log('[waitUntilVisible] no using intersection');
       cb();
     }
   }

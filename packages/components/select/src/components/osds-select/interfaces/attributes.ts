@@ -22,6 +22,10 @@ interface OdsSelectAttribute {
    * it means no interactions (hover, click, focus, etc)
    */
   disabled: boolean;
+  /**
+   * indicates if the select has an error.
+   */
+  error?: boolean;
   /** full width or not: see component principles */
   inline: boolean;
   /** opened or not */

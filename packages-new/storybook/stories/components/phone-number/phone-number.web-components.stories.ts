@@ -26,7 +26,26 @@ const storyParams = {
     category: 'Misc',
     defaultValue: false,
   },
+  locale: {
+    category: 'Général',
+    control: { type: 'text' },
+    defaultValue: 'fr',
+  },
+  isoCode: {
+    category: 'Général',
+    control: { type: 'text' },
+    defaultValue: 'fr',
+  }
 };
+
+const countriesParams = {
+  countries: {
+    category: 'Général',
+    defaultValue: [
+      'fr', 'pt', 'gb'
+    ]
+  },
+}
 
 export default {
   title: 'UI Components/Phone Number [molecule]/Web Component',
@@ -37,7 +56,7 @@ export default {
     },
     docs: { page }
   },
-  argTypes: extractArgTypes(storyParams)
+  argTypes: extractArgTypes({...storyParams, ...countriesParams })
 };
 
 /* Default */
@@ -45,11 +64,21 @@ const OsdsPhoneNumberDefault = (args: Record<string, unknown>) => html`
   <osds-phone-number ...=${getTagAttributes(args)} @keydown=${(e: KeyboardEvent) => e.stopPropagation()}>
   </osds-phone-number>
 `;
-const TemplateDefault = (args: Record<string, unknown>) => OsdsPhoneNumberDefault(args);
-export const Default = TemplateDefault.bind({});
-type DefaultProps = {
-  args: Record<string, unknown>;
+export const Default = OsdsPhoneNumberDefault.bind({});
+// @ts-ignore
+Default.args = {
+  ...(extractStoryParams(storyParams)),
 };
-(Default as unknown as DefaultProps).args = {
-  ...(extractStoryParams(storyParams) as Record<string, unknown>),
+
+const OsdsPhoneNumberCountriesTemplate = (args: Record<string, unknown>) => {
+  return html`
+    <osds-phone-number ...=${getTagAttributes(args)} @keydown=${(e: KeyboardEvent) => e.stopPropagation()}>
+    </osds-phone-number>
+  `;
+}
+export const Countries = OsdsPhoneNumberCountriesTemplate.bind({});
+// @ts-ignore
+Countries.args = {
+  ...extractStoryParams({ ...storyParams, ...countriesParams }),
 };
+

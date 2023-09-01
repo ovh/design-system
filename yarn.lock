@@ -6527,7 +6527,9 @@ __metadata:
     "@ovhcloud/ods-common-stencil": ^15.0.1
     "@ovhcloud/ods-common-testing": ^15.0.1
     "@ovhcloud/ods-common-theming": ^15.0.1
+    "@ovhcloud/ods-component-flag": ^15.0.1
     "@ovhcloud/ods-component-input": ^15.0.1
+    "@ovhcloud/ods-component-select": ^15.0.1
     "@ovhcloud/ods-stencil-dev": ^15.0.1
   languageName: unknown
   linkType: soft

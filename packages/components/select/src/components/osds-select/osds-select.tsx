@@ -49,34 +49,37 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
    */
   @Prop({ reflect: true, mutable: true }) opened = false;
 
-  /** @see OdsSelectAttributes.ariaLabel */
+  /** @see OdsSelectAttribute.ariaLabel */
   @Prop({ reflect: true }) ariaLabel = DEFAULT_ATTRIBUTE.ariaLabel;
 
-  /** @see OdsSelectAttributes.ariaLabelledby */
+  /** @see OdsSelectAttribute.ariaLabelledby */
   @Prop() ariaLabelledby = DEFAULT_ATTRIBUTE.ariaLabelledby;
 
-  /** @see OdsSelectAttributes.color */
+  /** @see OdsSelectAttribute.color */
   @Prop({ reflect: true }) color: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
 
-  /** @see OdsSelectAttributes.defaultValue */
+  /** @see OdsSelectAttribute.defaultValue */
   @Prop({ reflect: true }) defaultValue: OdsInputValue = DEFAULT_ATTRIBUTE.defaultValue;
 
-  /** @see OdsSelectAttributes.disabled */
+  /** @see OdsSelectAttribute.disabled */
   @Prop({ reflect: true, mutable: true }) disabled = DEFAULT_ATTRIBUTE.disabled;
 
-  /** @see OdsSelectAttributes.inline */
+  /** @see OdsSelectAttribute.error */
+  @Prop({ reflect: true }) error = DEFAULT_ATTRIBUTE.error;
+
+  /** @see OdsSelectAttribute.inline */
   @Prop({ reflect: true }) inline = DEFAULT_ATTRIBUTE.inline;
 
-  /** @see OdsSelectAttributes.required */
+  /** @see OdsSelectAttribute.required */
   @Prop({ reflect: true, mutable: true }) required = DEFAULT_ATTRIBUTE.required;
 
-  /** @see OdsSelectAttributes.size */
+  /** @see OdsSelectAttribute.size */
   @Prop({ reflect: true }) size: ODS_SELECT_SIZE = DEFAULT_ATTRIBUTE.size;
 
-  /** @see OdsSelectAttributes.value */
+  /** @see OdsSelectAttribute.value */
   @Prop({ reflect: true, mutable: true }) value: OdsInputValue = DEFAULT_ATTRIBUTE.value;
 
-  /** @see OdsSelectEvents.odsValueChange */
+  /** @see OdsSelectEvent.odsValueChange */
   @Event() odsValueChange!: EventEmitter<OdsSelectValueChangeEventDetail>;
 
   optionSelected: OsdsSelectOption | null = null;
@@ -294,7 +297,7 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
   }
 
   private hasError(): boolean {
-    return this.validityState.invalid;
+    return this.error || this.validityState.invalid;
   }
 
   private renderLabel(): JSX.Element {

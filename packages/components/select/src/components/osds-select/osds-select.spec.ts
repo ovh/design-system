@@ -95,6 +95,17 @@ describe('spec:osds-select', () => {
       });
     });
 
+    describe('error', () => {
+      odsUnitTestAttribute<OdsSelectAttribute, 'error'>({
+        name: 'error',
+        defaultValue: DEFAULT_ATTRIBUTE.error,
+        newValue: false,
+        value: true,
+        setup: (value) => setup({ attributes: { ['error']: value } }),
+        ...config,
+      });
+    });
+
     describe('inline', () => {
       odsUnitTestAttribute<OdsSelectAttribute, 'inline'>({
         name: 'inline',

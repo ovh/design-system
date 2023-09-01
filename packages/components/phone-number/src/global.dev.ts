@@ -5,11 +5,16 @@
 
 import './components';
 import './global';
-import { OdsLogger } from '@ovhcloud/ods-common-core';
+import { OdsLogger, Ods, odsSetup } from '@ovhcloud/ods-common-core';
 import '@ovhcloud/ods-component-input';
+import '@ovhcloud/ods-component-select';
+import '@ovhcloud/ods-component-flag';
+
+odsSetup();
 
 const logger = new OdsLogger('global-dev');
 logger.log('init');
+Ods.instance().assetPath('../../../packages/tools/stories/public/flags/');
 
 (window as any).globalMethod = async function () {
   logger.log('globalMethod');

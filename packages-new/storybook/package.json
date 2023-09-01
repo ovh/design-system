@@ -6,7 +6,7 @@
   "license": "Apache-2.0",
   "main": "index.js",
   "scripts": {
-    "build:storybook": "yarn list:releases && build-storybook -o dist $(yarn node ./.storybook/utils/static-dirs.js)",
+    "build:storybook": "yarn list:releases && build-storybook -o dist",
     "list:docs:api": "yarn node .storybook/utils/docs-api-dir.js",
     "list:releases": "yarn node .storybook/utils/get-repo-releases.js",
     "prepare": "npm run build:storybook",

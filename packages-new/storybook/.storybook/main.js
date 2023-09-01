@@ -7,6 +7,7 @@ module.exports = {
     buildStoriesJson: true
   },
   framework: '@storybook/react',
+  staticDirs: ['../public'],
   stories: ['../**/*.stories.@(md|mdx|ts|tsx)'],
   addons: [
     {

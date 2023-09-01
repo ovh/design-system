@@ -8,6 +8,7 @@ const DEFAULT_ATTRIBUTE: OdsSelectAttribute = Object.freeze({
   color: ODS_THEME_COLOR_INTENT.primary,
   defaultValue: '',
   disabled: false,
+  error: false,
   inline: false,
   opened: false,
   required: false,

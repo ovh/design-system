@@ -4,7 +4,7 @@ import type { OdsFlagAttribute } from './interfaces/attributes';
 import type { ODS_FLAG_ISO_CODE_UNION } from './constants/flag-iso-code';
 import { Ods, OdsWindow, odsSetup } from '@ovhcloud/ods-common-core';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
-import { odsSetE2eInterceptRequest } from '@ovhcloud/ods-stencil/libraries/stencil-testing';
+import { odsSetE2eInterceptRequest } from '@ovhcloud/ods-common-stencil';
 import { Build } from '@stencil/core';
 import { newE2EPage } from '@stencil/core/testing';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes'
@@ -22,7 +22,7 @@ describe('e2e:osds-flag', () => {
   let myCbk: (request: pRequest) => void;
   let spaceBefore = ``;
 
-  async function setup({ attributes = {}, cbkInterceptorRequest, outsideViewport }: { attributes: Partial<OdsFlagAttribute>, html?: string, cbkInterceptorRequest?: (request: pRequest) => void, outsideViewport?: boolean }) {
+  async function setup({ attributes = {}, cbkInterceptorRequest, outsideViewport }: { attributes: Partial<OdsFlagAttribute>, cbkInterceptorRequest?: (request: pRequest) => void, outsideViewport?: boolean }) {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsFlagAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
@@ -41,12 +41,6 @@ describe('e2e:osds-flag', () => {
   }
 
   beforeEach( async () => {
-
-    const winB = window;
-    // console.log('ici winB', (winB as any));
-    // console.log('ici winB', (winB as any).gg);
-    (winB as any).gg = 'winB';
-    // console.log('ici winB', (winB as any).gg);
     odsSetup();
     url = '';
     myCbk = (request) => {

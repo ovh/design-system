@@ -3,14 +3,16 @@ import { E2EElement, newE2EPage } from '@stencil/core/testing';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsSelectAttribute } from './interfaces/attributes';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 
 
 describe('e2e:osds-select', () => {
   let page: E2EPage;
   let el: E2EElement;
+  const baseAttribute = { ariaLabel: null, ariaLabelledby: '', color: ODS_THEME_COLOR_INTENT.primary, defaultValue: '', disabled: false, inline: false, required: false, size: ODS_SELECT_SIZE.md, value: '' };
 
   async function setup({ attributes = {}, html = `` }: { attributes?: Partial<OdsSelectAttribute>, html?: string } = {}) {
-    const stringAttributes = odsComponentAttributes2StringAttributes<OdsSelectAttribute>(attributes, DEFAULT_ATTRIBUTE);
+    const stringAttributes = odsComponentAttributes2StringAttributes<OdsSelectAttribute>({...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
 

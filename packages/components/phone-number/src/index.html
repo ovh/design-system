@@ -14,14 +14,29 @@
   <link rel="stylesheet" href="/build/osds-phone-number.css">
 </head>
 <body>
-  <p>Default</p>
+  <p>Default </p>
   <osds-phone-number clearable value="+33 6426658925"></osds-phone-number>
+  <br/>
+  <br/>
+  <osds-phone-number id="phoneNumberWithSetCountries" clearable value="+33 6426658925"></osds-phone-number>
 
   <p>Error</p>
+  <osds-phone-number countries="all" error value="+33 6426658925"></osds-phone-number>
+  <br/>
+  <br/>
   <osds-phone-number error value="+33 6426658925"></osds-phone-number>
 
   <p>Disabled</p>
+  <osds-phone-number countries="all" disabled value="+33 6426658925"></osds-phone-number>
+  <br/>
+  <br/>
   <osds-phone-number disabled value="+33 6426658925"></osds-phone-number>
 
+
+  <script>
+    const phoneNumberWithSetCountries = document.getElementById('phoneNumberWithSetCountries');
+    phoneNumberWithSetCountries.countries = ['fr', 'gb'];
+    phoneNumberWithSetCountries.addEventListener('odsValueChange', () => console.log('odsValueChange'))
+  </script>
 </body>
 </html>

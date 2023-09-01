@@ -17,7 +17,7 @@ const allFlagIsos = ['ar', 'as', 'at', 'au', 'aw', 'ax', 'az', 'ba', 'bb', 'bd',
 
 const flagTemplate = (iso:string) => html`
   <span class='flag-block'>
-    <osds-flag iso='${iso}' lazy='true' asset-path='flags-4x3/'></osds-flag>
+    <osds-flag iso='${iso}' lazy='true'></osds-flag>
     ${iso}
   </span>
 `;

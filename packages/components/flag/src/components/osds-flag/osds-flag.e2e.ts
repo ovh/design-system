@@ -1,21 +1,22 @@
 import type { E2EElement, E2EPage } from '@stencil/core/testing';
 import type { HTTPRequest as pRequest } from 'puppeteer';
 import type { OdsFlagAttribute } from './interfaces/attributes';
-import { Ods, ODS_COUNTRY_ISO_CODE, OdsWindow, odsSetup } from '@ovhcloud/ods-common-core';
+import { Ods, OdsWindow, odsSetup } from '@ovhcloud/ods-common-core';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import { odsSetE2eInterceptRequest } from '@ovhcloud/ods-stencil/libraries/stencil-testing';
 import { Build } from '@stencil/core';
 import { newE2EPage } from '@stencil/core/testing';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes'
+import { ODS_FLAG_ISO_CODE } from './constants/flag-iso-code';
 
 // eslint-disable-next-line no-var
 declare var window: OdsWindow;
 
 describe('e2e:osds-flag', () => {
-  const baseAttribute = { iso: ODS_COUNTRY_ISO_CODE.FR, lazy: false };
+  const baseAttribute = { iso: ODS_FLAG_ISO_CODE.FR, lazy: false };
   let page: E2EPage;
   let el: E2EElement;
-  let isoProperty: ODS_COUNTRY_ISO_CODE;
+  let isoProperty: ODS_FLAG_ISO_CODE;
   let url: string;
   let myCbk: (request: pRequest) => void;
   let spaceBefore = ``;
@@ -77,7 +78,7 @@ describe('e2e:osds-flag', () => {
   });
 
   it('should fallback to default when iso code does not exist', async () => {
-    await setup({ attributes: { iso: 'wrongIso' as ODS_COUNTRY_ISO_CODE } });
+    await setup({ attributes: { iso: 'wrongIso' as ODS_FLAG_ISO_CODE } });
     await updateReferences();
     expect(isoProperty).toBe(undefined);
   });
@@ -106,7 +107,7 @@ describe('e2e:osds-flag', () => {
     });
 
     it('should load with custom path', async () => {
-      await setup({ attributes: { iso: ODS_COUNTRY_ISO_CODE.FR ,assetPath: '../flags-custom-path/' }, cbkInterceptorRequest: myCbk });
+      await setup({ attributes: { iso: ODS_FLAG_ISO_CODE.FR ,assetPath: '../flags-custom-path/' }, cbkInterceptorRequest: myCbk });
       const pattern = /^https?:\/\/localhost(:\d+)?\/[\w\/]*flags-custom-path\/fr\.svg/;
       expect(url).toMatch(pattern);
     });
@@ -123,7 +124,7 @@ describe('e2e:osds-flag', () => {
           request.continue();
         }
       };
-      await setup({ attributes: { iso: ODS_COUNTRY_ISO_CODE.FR, src: '../flags-custom-src-path/it.svg' }, cbkInterceptorRequest: myCbk });
+      await setup({ attributes: { iso: ODS_FLAG_ISO_CODE.FR, src: '../flags-custom-src-path/it.svg' }, cbkInterceptorRequest: myCbk });
       const pattern = /^https?:\/\/localhost(:\d+)?\/flags-custom-src-path\/it.svg/;
       expect(url).toMatch(pattern);
     });
@@ -131,12 +132,12 @@ describe('e2e:osds-flag', () => {
 
   describe('lazy', () => {
     it('should load if visible', async () => {
-      await setup({ attributes: { iso: ODS_COUNTRY_ISO_CODE.FR, lazy: true }, cbkInterceptorRequest: myCbk });
+      await setup({ attributes: { iso: ODS_FLAG_ISO_CODE.FR, lazy: true }, cbkInterceptorRequest: myCbk });
       const pattern = /^https?:\/\/localhost(:\d+)?(\/.*)?\/fr\.svg$/;
       expect(url).toMatch(pattern);
     });
     it('should not load if hidden', async () => {
-      await setup({ attributes: { iso: ODS_COUNTRY_ISO_CODE.FR, lazy: true }, cbkInterceptorRequest: myCbk, outsideViewport: true });
+      await setup({ attributes: { iso: ODS_FLAG_ISO_CODE.FR, lazy: true }, cbkInterceptorRequest: myCbk, outsideViewport: true });
       expect(url).toBe('');
     });
   });

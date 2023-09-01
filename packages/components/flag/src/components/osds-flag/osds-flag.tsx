@@ -1,8 +1,9 @@
 import type { OdsFlagAttribute } from './interfaces/attributes';
-import { OdsLogger, odsHasAriaHidden, ODS_COUNTRY_ISO_CODE } from '@ovhcloud/ods-common-core'
+import { OdsLogger, odsHasAriaHidden } from '@ovhcloud/ods-common-core'
 import { Build, Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsFlagController } from './core/controller'
+import { ODS_FLAG_ISO_CODE } from './constants/flag-iso-code';
 
 @Component({
   tag: 'osds-flag',
@@ -17,7 +18,7 @@ export class OsdsFlag implements OdsFlagAttribute {
   /** @see OdsFlagAttributes.assetPath */
   @Prop({ reflect: true }) assetPath = DEFAULT_ATTRIBUTE.assetPath;
   /** @see OdsFlagAttributes.iso */
-  @Prop({ reflect: true, mutable: true }) iso?: ODS_COUNTRY_ISO_CODE = DEFAULT_ATTRIBUTE.iso;
+  @Prop({ reflect: true, mutable: true }) iso?: ODS_FLAG_ISO_CODE = DEFAULT_ATTRIBUTE.iso;
   /** @see OdsFlagAttributes.lazy */
   @Prop({ reflect: true }) lazy = DEFAULT_ATTRIBUTE.lazy;
   /** @see OdsFlagAttributes.src */

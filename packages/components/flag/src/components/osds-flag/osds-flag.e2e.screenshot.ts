@@ -1,12 +1,12 @@
 import type { E2EElement, E2EPage } from '@stencil/core/testing';
 import type { OdsFlagAttribute } from './interfaces/attributes';
-import { ODS_COUNTRY_ISO_CODE, ODS_COUNTRY_ISO_CODES } from '@ovhcloud/ods-common-core';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import { newE2EPage } from '@stencil/core/testing';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { ODS_FLAG_ISO_CODE, ODS_FLAG_ISO_CODES } from './constants/flag-iso-code';
 
 describe('e2e:osds-flag', () => {
-  const baseAttribute = { iso: ODS_COUNTRY_ISO_CODE.FR, lazy: false };
+  const baseAttribute = { iso: ODS_FLAG_ISO_CODE.FR, lazy: false };
   let page: E2EPage;
   let el: E2EElement;
 
@@ -21,7 +21,7 @@ describe('e2e:osds-flag', () => {
   }
 
   describe('screenshots', () => {
-    ODS_COUNTRY_ISO_CODES.forEach((iso) => {
+    ODS_FLAG_ISO_CODES.forEach((iso) => {
       it(`The flag ${iso} is displaying correctly`, async () => {
         await setup({
           attributes: { iso, assetPath: `./dist/flags/flags-4x3/` },

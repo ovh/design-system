@@ -2,7 +2,6 @@ jest.mock('./core/controller')
 
 import type { SpecPage } from '@stencil/core/testing';
 import type { OdsFlagAttribute } from './interfaces/attributes';
-import { ODS_COUNTRY_ISO_CODE } from '@ovhcloud/ods-common-core';
 import { odsStringAttributes2Str, odsComponentAttributes2StringAttributes, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 import { Build } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
@@ -10,9 +9,10 @@ import { getAssetPath } from '@stencil/core/internal';
 import { OdsFlagController } from './core/controller';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes'
 import { OsdsFlag } from './osds-flag';
+import { ODS_FLAG_ISO_CODE } from './constants/flag-iso-code';
 
 describe('spec:osds-flag', () => {
-  const baseAttribute = { iso: ODS_COUNTRY_ISO_CODE.FR, lazy: false };
+  const baseAttribute = { iso: ODS_FLAG_ISO_CODE.FR, lazy: false };
   let page: SpecPage;
   let root: HTMLElement | undefined;
   let divEl: HTMLElement | null | undefined;
@@ -64,8 +64,8 @@ describe('spec:osds-flag', () => {
       odsUnitTestAttribute<OdsFlagAttribute, 'iso'>({
         name: 'iso',
         defaultValue: DEFAULT_ATTRIBUTE.iso,
-        newValue: ODS_COUNTRY_ISO_CODE.ES,
-        value: ODS_COUNTRY_ISO_CODE.FR,
+        newValue: ODS_FLAG_ISO_CODE.ES,
+        value: ODS_FLAG_ISO_CODE.FR,
         setup: (value) => setup({ attributes: { ['iso']: value } }),
         ...config
       });
@@ -114,12 +114,12 @@ describe('spec:osds-flag', () => {
   it('should set visible once it is visible', async () => {
     // mock before setup because of the setup call onInit
     jest.spyOn(OdsFlagController.prototype, 'onInit').mockImplementation((onBecomeVisible) => onBecomeVisible());
-    await setup({ attributes: { iso: ODS_COUNTRY_ISO_CODE.FR } });
+    await setup({ attributes: { iso: ODS_FLAG_ISO_CODE.FR } });
     // load method will be called after setup, when iso changed, so we can mock it after setup
     // goal: change the iso code in order to trigger the load method with the visible variable
     const spy = jest.spyOn(controller, 'load').mockImplementation(() => new Promise(resolve => resolve('')));
     page.waitForChanges();
-    instance.iso = ODS_COUNTRY_ISO_CODE.BE;
+    instance.iso = ODS_FLAG_ISO_CODE.BE;
     page.waitForChanges();
     expect(spy).toHaveBeenCalledTimes(1);
     expect(spy).toHaveBeenCalledWith(true, false);
@@ -148,8 +148,8 @@ describe('spec:osds-flag', () => {
   });
 
   it('should call load of controller when iso change', async () => {
-    await setup({ attributes: { iso: ODS_COUNTRY_ISO_CODE.FR } });
-    instance.iso = ODS_COUNTRY_ISO_CODE.BE;
+    await setup({ attributes: { iso: ODS_FLAG_ISO_CODE.FR } });
+    instance.iso = ODS_FLAG_ISO_CODE.BE;
     page.waitForChanges();
     expect(controller.load).toHaveBeenCalledTimes(1);
   });
@@ -167,7 +167,7 @@ describe('spec:osds-flag', () => {
     root?.setAttribute('aria-hidden', 'true');
     await page.waitForChanges();
     // need to change iso so setAttribute is effective
-    instance.iso = ODS_COUNTRY_ISO_CODE.BE;
+    instance.iso = ODS_FLAG_ISO_CODE.BE;
     await page.waitForChanges();
 
     const withAriaHidden = root?.getAttribute('aria-label');

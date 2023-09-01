@@ -1,4 +1,4 @@
-import type { ODS_COUNTRY_ISO_CODE } from '@ovhcloud/ods-common-core';
+import type { ODS_FLAG_ISO_CODE } from "../constants/flag-iso-code";
 
 interface OdsFlagAttribute {
   /**
@@ -9,7 +9,7 @@ interface OdsFlagAttribute {
   /**
    * Flag ISO country code
    */
-  iso?: ODS_COUNTRY_ISO_CODE;
+  iso?: ODS_FLAG_ISO_CODE;
   /**
    * allow to lazy load the content only when it's visible
    */

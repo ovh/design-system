@@ -1,3 +1,5 @@
+import type { ODS_FLAG_ISO_CODE_UNION } from "../constants/flag-iso-code";
+
 interface OdsFlagAttribute {
   /**
    * override the `ODS` directory path of the assets.
@@ -7,7 +9,7 @@ interface OdsFlagAttribute {
   /**
    * Flag ISO country code
    */
-  iso?: string;
+  iso?: ODS_FLAG_ISO_CODE_UNION;
   /**
    * allow to lazy load the content only when it's visible
    */

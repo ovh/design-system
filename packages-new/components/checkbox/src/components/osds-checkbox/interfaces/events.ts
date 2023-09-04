@@ -1,4 +1,4 @@
-import type { OdsFocusChangeEventDetail } from "@ovhcloud/ods-common-core";
+import type { OdsFocusChangeEventDetail } from '@ovhcloud/ods-common-core';
 import type { EventEmitter } from '@stencil/core';
 
 interface OdsCheckboxCheckedChangeEventDetail {
@@ -34,7 +34,7 @@ interface OdsCheckboxEvent {
   odsUpdatingChange: EventEmitter<OdsCheckboxUpdatingChangeEventDetail>;
 }
 
-export { 
+export {
   OdsCheckboxEvent,
   OdsCheckboxFocusChangeEventDetail,
   OdsCheckboxUpdatingChangeEventDetail,

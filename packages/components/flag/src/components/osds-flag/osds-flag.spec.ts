@@ -157,7 +157,7 @@ describe('spec:osds-flag', () => {
   it('should not have aria-label if aria-hidden set', async () => {
     await setup();
 
-    instance['ariaLabel'] = 'fr';
+    instance['ariaLabel'] = ODS_FLAG_ISO_CODE.FR;
     await page.waitForChanges();
     expect(instance['ariaLabel']).toBe('fr');
 

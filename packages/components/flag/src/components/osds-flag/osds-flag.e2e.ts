@@ -1,6 +1,7 @@
 import type { E2EElement, E2EPage } from '@stencil/core/testing';
 import type { HTTPRequest as pRequest } from 'puppeteer';
 import type { OdsFlagAttribute } from './interfaces/attributes';
+import type { ODS_FLAG_ISO_CODE_UNION } from './constants/flag-iso-code';
 import { Ods, OdsWindow, odsSetup } from '@ovhcloud/ods-common-core';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import { odsSetE2eInterceptRequest } from '@ovhcloud/ods-stencil/libraries/stencil-testing';
@@ -78,7 +79,7 @@ describe('e2e:osds-flag', () => {
   });
 
   it('should fallback to default when iso code does not exist', async () => {
-    await setup({ attributes: { iso: 'wrongIso' } });
+    await setup({ attributes: { iso: 'wrongIso' as unknown as ODS_FLAG_ISO_CODE_UNION } });
     await updateReferences();
     expect(isoProperty).toBe(undefined);
   });

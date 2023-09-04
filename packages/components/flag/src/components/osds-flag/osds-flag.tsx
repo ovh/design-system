@@ -1,4 +1,5 @@
 import type { OdsFlagAttribute } from './interfaces/attributes';
+import type { ODS_FLAG_ISO_CODE_UNION } from './constants/flag-iso-code';
 import { odsHasAriaHidden } from '@ovhcloud/ods-common-core'
 import { Build, Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
@@ -17,13 +18,13 @@ export class OsdsFlag implements OdsFlagAttribute {
   /** @see OdsFlagAttributes.assetPath */
   @Prop({ reflect: true }) assetPath = DEFAULT_ATTRIBUTE.assetPath;
   /** @see OdsFlagAttributes.iso */
-  @Prop({ reflect: true, mutable: true }) iso?: string = DEFAULT_ATTRIBUTE.iso;
+  @Prop({ reflect: true, mutable: true }) iso?: ODS_FLAG_ISO_CODE_UNION = DEFAULT_ATTRIBUTE.iso;
   /** @see OdsFlagAttributes.lazy */
   @Prop({ reflect: true }) lazy = DEFAULT_ATTRIBUTE.lazy;
   /** @see OdsFlagAttributes.src */
   @Prop({ reflect: true }) src = DEFAULT_ATTRIBUTE.src;
 
-  @State() private ariaLabel?: string;
+  @State() private ariaLabel?: ODS_FLAG_ISO_CODE_UNION;
   @State() private visible = false;
   @State() private svgContent?: string;
 

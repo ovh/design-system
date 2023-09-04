@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@jest/types": "~27.1.1",
+    "@types/jest": "^27.4.1",
     "jest": "^27.5.1",
     "jest-transform-stub": "^2.0.0",
     "puppeteer": "^10.4.0",

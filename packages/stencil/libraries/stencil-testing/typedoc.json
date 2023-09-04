@@ -1,4 +1,0 @@
-{
-  "entryPoints": ["src/index.ts"],
-  "out": "docs-api/stencil-libraries-stencil-testing"
-}

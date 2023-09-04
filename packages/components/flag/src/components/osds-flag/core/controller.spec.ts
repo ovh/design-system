@@ -77,7 +77,7 @@ describe('ods-flag-controller', () => {
       });
 
       it('should clean up the wrong iso code', () => {
-        controller.validateISO('test' as ODS_FLAG_ISO_CODE);
+        controller.validateISO('test');
         expect(component.iso).toEqual(undefined);
       });
 
@@ -87,7 +87,7 @@ describe('ods-flag-controller', () => {
       });
 
       it('should call console.warn with wrong iso', () => {
-        controller.validateISO('ods' as ODS_FLAG_ISO_CODE);
+        controller.validateISO('ods');
         expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledWith(expected);
         expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledTimes(1);
       });

@@ -64,8 +64,7 @@ class OdsFlagController {
    * not blocking.
    * @param iso - iso code
    */
-  validateISO(iso?: ODS_FLAG_ISO_CODE): void {
-    console.log('iso', iso, odsIsTermInEnum(iso, ODS_FLAG_ISO_CODE))
+  validateISO(iso?: string): void {
     if (!iso || !odsIsTermInEnum(iso, ODS_FLAG_ISO_CODE)) {
       this.component.iso = undefined;
       this.logger.warn(`The iso attribute must be one of those values ${ODS_FLAG_ISO_CODES}`);

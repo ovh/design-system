@@ -1,5 +1,5 @@
 import type { OsdsFlag } from '../osds-flag';
-
+import type { ODS_FLAG_ISO_CODE_UNION } from '../constants/flag-iso-code';
 import {
   OdsLogger,
   odsIsTermInEnum,
@@ -64,7 +64,7 @@ class OdsFlagController {
    * not blocking.
    * @param iso - iso code
    */
-  validateISO(iso?: string): void {
+  validateISO(iso?: ODS_FLAG_ISO_CODE_UNION): void {
     if (!iso || !odsIsTermInEnum(iso, ODS_FLAG_ISO_CODE)) {
       this.component.iso = undefined;
       this.logger.warn(`The iso attribute must be one of those values ${ODS_FLAG_ISO_CODES}`);
@@ -96,7 +96,7 @@ class OdsFlagController {
    * @param iso - iso code of the flag
    * @param customPath - optional override path
    */
-  private getUrlForIso(iso: string, customPath?: string) {
+  private getUrlForIso(iso: ODS_FLAG_ISO_CODE_UNION, customPath?: string) {
     const path = odsGetAssetPath(`${iso}.svg`, customPath);
     return this.component.getAssetPath(`${path}`);
   }

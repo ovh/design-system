@@ -16,7 +16,7 @@ describe('e2e:osds-flag', () => {
   const baseAttribute = { iso: ODS_FLAG_ISO_CODE.FR, lazy: false };
   let page: E2EPage;
   let el: E2EElement;
-  let isoProperty: ODS_FLAG_ISO_CODE;
+  let isoProperty: string;
   let url: string;
   let myCbk: (request: pRequest) => void;
   let spaceBefore = ``;
@@ -78,7 +78,7 @@ describe('e2e:osds-flag', () => {
   });
 
   it('should fallback to default when iso code does not exist', async () => {
-    await setup({ attributes: { iso: 'wrongIso' as ODS_FLAG_ISO_CODE } });
+    await setup({ attributes: { iso: 'wrongIso' } });
     await updateReferences();
     expect(isoProperty).toBe(undefined);
   });
@@ -107,7 +107,7 @@ describe('e2e:osds-flag', () => {
     });
 
     it('should load with custom path', async () => {
-      await setup({ attributes: { iso: ODS_FLAG_ISO_CODE.FR ,assetPath: '../flags-custom-path/' }, cbkInterceptorRequest: myCbk });
+      await setup({ attributes: { iso: ODS_FLAG_ISO_CODE.FR, assetPath: '../flags-custom-path/' }, cbkInterceptorRequest: myCbk });
       const pattern = /^https?:\/\/localhost(:\d+)?\/[\w\/]*flags-custom-path\/fr\.svg/;
       expect(url).toMatch(pattern);
     });

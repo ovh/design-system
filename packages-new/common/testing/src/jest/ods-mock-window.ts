@@ -20,7 +20,7 @@ interface OdsMockWindow extends Window {
  */
 export function odsMockWindow(setupConfig: any): void {
   // TODO remove or update if still needed
-  jest.mock('@ovhcloud/ods-core/src/configure/ods-get-window', () => ({
+  jest.mock('@ovhcloud/ods-common-core/src/configure/ods-get-window', () => ({
     getOdsWindow: ():OdsMockWindow | undefined => {
       console.log('[odsMockWindow]', 'get mocked window');
       // node protection or other env : window may not exist

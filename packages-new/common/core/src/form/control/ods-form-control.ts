@@ -1,17 +1,17 @@
 import { isPromise } from '../../types/guard/ods-is-promise';
 import { OdsFormControlMethods } from './ods-form-control-methods';
-import { OdsComponentGenericMethods } from '../../components/ods-component-generic-methods';
 import { OdsValidityStateUnion } from './ods-form-control-type';
+
 export class OdsFormControl<ValidityState extends OdsValidityStateUnion> {
-  valid = true;
-  private formControl?: OdsComponentGenericMethods<OdsFormControlMethods<ValidityState>>;
+  private formControl?: OdsFormControlMethods<ValidityState>;
   id: string;
+  valid = true;
 
   constructor(id: string) {
     this.id = id;
   }
 
-  register(formControl: OdsComponentGenericMethods<OdsFormControlMethods<ValidityState>>) {
+  register(formControl: OdsFormControlMethods<ValidityState>) {
     this.formControl = formControl;
   }
 

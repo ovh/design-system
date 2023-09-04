@@ -70,31 +70,32 @@ class OdsRadioController {
     if (radioGroup) {
       radioGroup.registerRadio(this.component);
       this.updateState();
-      radioGroup.el?.addEventListener('odsDisabledChange', () => this.updateState());
-      radioGroup.el?.addEventListener('odsValueChange', () => this.updateState());
+      const radioGroupEl = radioGroup.el ? radioGroup.el : radioGroup;
+      radioGroupEl.addEventListener('odsDisabledChange', () => this.updateState());
+      radioGroupEl.addEventListener('odsValueChange', () => this.updateState());
     }
   }
 
   closestPassShadow(node: Node | ParentNode | null, selector: string): HTMLStencilElement & OsdsRadioGroup | null {
     if (!node) {
-        return null;
+      return null;
     }
 
     if (node instanceof ShadowRoot) {
-        return this.closestPassShadow(node.host, selector);
+      return this.closestPassShadow(node.host, selector);
     }
 
     if (node instanceof HTMLElement) {
-        if (node.matches(selector)) {
-            return node as HTMLStencilElement & OsdsRadioGroup;
-        }
-        if (node.assignedSlot) {
-          return this.closestPassShadow(node.assignedSlot.parentElement, selector);
-        }
-        return this.closestPassShadow(node.parentNode, selector);
+      if (node.matches(selector)) {
+        return node as HTMLStencilElement & OsdsRadioGroup;
+      }
+      if (node.assignedSlot) {
+        return this.closestPassShadow(node.assignedSlot.parentElement, selector);
+      }
+      return this.closestPassShadow(node.parentNode, selector);
     }
     return this.closestPassShadow(node.parentNode, selector);
-}
+  }
 
   /**
    *
@@ -117,11 +118,12 @@ class OdsRadioController {
    *
    */
   onDestroy(): void {
-    const radioGroup = this.component.radioGroup;
+    const radioGroup = this.component.radioGroup as HTMLStencilElement & OsdsRadioGroup;
     if (radioGroup) {
       radioGroup.unregisterRadio(this.component);
-      radioGroup.el?.removeEventListener('odsDisabledChange', () => this.updateState());
-      radioGroup.el?.removeEventListener('odsValueChange', () => this.updateState());
+      const radioGroupEl = radioGroup.el ? radioGroup.el : radioGroup;
+      radioGroupEl.removeEventListener('odsDisabledChange', () => this.updateState());
+      radioGroupEl.removeEventListener('odsValueChange', () => this.updateState());
       this.component.radioGroup = null;
     }
   }

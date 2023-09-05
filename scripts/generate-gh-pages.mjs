@@ -42,7 +42,7 @@ const outDirName = 'docs';
   }
   try {
     // add the current build (released just done)
-    await $`cp -r packages/tools/storybook/dist dist/v${currentVersion}`;
+    await $`cp -r packages/storybook/dist dist/v${currentVersion}`;
     await $`ln -s v${currentVersion} dist/latest`;
   } catch (e) {
     console.error(`cannot add the current storybook build. ignore it`, e);

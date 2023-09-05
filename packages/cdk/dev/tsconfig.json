@@ -5,7 +5,7 @@
     "jsxFactory": "h",
     "declaration": true,
     "paths": {
-      "~@ovhcloud/ods-cdk": ["./packages-new/cdk/src/index"]
+      "~@ovhcloud/ods-cdk": ["./packages/cdk/src/index"]
     }
     },
   "include": [

@@ -97,60 +97,60 @@
   const odsStencilE2eList = document.getElementById('ods-stencil-e2e-list');
 
   const elements = [
-    {name: 'osds-accordion', id: 'accordion', newArch: true},
-    {name: 'osds-breadcrumb', id: 'breadcrumb', newArch: true},
-    {name: 'osds-button', id: 'button', newArch: true},
-    {name: 'osds-cart', id: 'cart', newArch: true},
-    {name: 'osds-checkbox', id: 'checkbox', newArch: true},
-    {name: 'osds-checkbox-button', id: 'checkbox-button', newArch: true},
-    {name: 'osds-chip', id: 'chip', newArch: true},
-    {name: 'osds-clipboard', id: 'clipboard', newArch: true},
-    {name: 'osds-code', id: 'code', newArch: true},
-    {name: 'osds-collapsible', id: 'collapsible', newArch: true},
-    {name: 'osds-content-addon', id: 'content-addon', newArch: true},
-    {name: 'osds-divider', id: 'divider', newArch: true},
-    {name: 'osds-flag', id: 'flag', newArch: true},
-    {name: 'osds-form-field', id: 'flag', newArch: true},
-    {name: 'osds-icon', id: 'icon', newArch: true},
-    {name: 'osds-input', id: 'input', newArch: true},
-    {name: 'osds-link', id: 'link', newArch: true},
+    {name: 'osds-accordion', id: 'accordion'},
+    {name: 'osds-breadcrumb', id: 'breadcrumb'},
+    {name: 'osds-button', id: 'button'},
+    {name: 'osds-cart', id: 'cart'},
+    {name: 'osds-checkbox', id: 'checkbox'},
+    {name: 'osds-checkbox-button', id: 'checkbox-button'},
+    {name: 'osds-chip', id: 'chip'},
+    {name: 'osds-clipboard', id: 'clipboard'},
+    {name: 'osds-code', id: 'code'},
+    {name: 'osds-collapsible', id: 'collapsible'},
+    {name: 'osds-content-addon', id: 'content-addon'},
+    {name: 'osds-divider', id: 'divider'},
+    {name: 'osds-flag', id: 'flag'},
+    {name: 'osds-form-field', id: 'flag'},
+    {name: 'osds-icon', id: 'icon'},
+    {name: 'osds-input', id: 'input'},
+    {name: 'osds-link', id: 'link'},
     {name: 'osds-location-tile', id: 'location-tile'},
-    {name: 'osds-menu', id: 'menu', newArch: true},
-    {name: 'osds-message', id: 'message', newArch: true},
-    {name: 'osds-modal', id: 'modal', newArch: true},
-    {name: 'osds-pagination', id: 'pagination', newArch: true},
-    {name: 'osds-password', id: 'password', newArch: true},
-    {name: 'osds-popover', id: 'popover', newArch: true},
-    {name: 'osds-progress-bar', id: 'progress-bar', newArch: true},
-    {name: 'osds-quantity', id: 'quantity', newArch: true},
-    {name: 'osds-radio', id: 'radio', newArch: true},
-    {name: 'osds-radio-button', id: 'radio-button', newArch: true},
-    {name: 'osds-range', id: 'range', newArch: true},
-    {name: 'osds-search-bar', id: 'search-bar', newArch: true},
-    {name: 'osds-select', id: 'select', newArch: true},
-    {name: 'osds-skeleton', id: 'skeleton', newArch: true},
-    {name: 'osds-spinner', id: 'spinner', newArch: true},
-    {name: 'osds-switch', id: 'switch', newArch: true},
-    {name: 'osds-tabs', id: 'tabs', newArch: true},
-    {name: 'osds-text', id: 'text', newArch: true},
-    {name: 'osds-textarea', id: 'textarea', newArch: true},
-    {name: 'osds-tile', id: 'tile', newArch: true},
-    {name: 'osds-toggle', id: 'toggle', newArch: true},
-    {name: 'osds-tooltip', id: 'tooltip', newArch: true},
+    {name: 'osds-menu', id: 'menu'},
+    {name: 'osds-message', id: 'message'},
+    {name: 'osds-modal', id: 'modal'},
+    {name: 'osds-pagination', id: 'pagination'},
+    {name: 'osds-password', id: 'password'},
+    {name: 'osds-popover', id: 'popover'},
+    {name: 'osds-progress-bar', id: 'progress-bar'},
+    {name: 'osds-quantity', id: 'quantity'},
+    {name: 'osds-radio', id: 'radio'},
+    {name: 'osds-radio-button', id: 'radio-button'},
+    {name: 'osds-range', id: 'range'},
+    {name: 'osds-search-bar', id: 'search-bar'},
+    {name: 'osds-select', id: 'select'},
+    {name: 'osds-skeleton', id: 'skeleton'},
+    {name: 'osds-spinner', id: 'spinner'},
+    {name: 'osds-switch', id: 'switch'},
+    {name: 'osds-tabs', id: 'tabs'},
+    {name: 'osds-text', id: 'text'},
+    {name: 'osds-textarea', id: 'textarea'},
+    {name: 'osds-tile', id: 'tile'},
+    {name: 'osds-toggle', id: 'toggle'},
+    {name: 'osds-tooltip', id: 'tooltip'},
   ].map((componentDef) => {
     return `
           <li class="mdc-list-item" tabindex="0">
 
             <a class="mdc-list-item__text">${componentDef.name}</a>
 
-            <a class="mdc-button mdc-button--raised" href="${componentDef.newArch ? 'packages-new' : 'packages/stencil'}/components/${componentDef.id}/screenshot/compare.html">
+            <a class="mdc-button mdc-button--raised" href="packages/components/${componentDef.id}/screenshot/compare.html">
               <span class="mdc-button__ripple"></span>
               <i class="material-icons mdc-button__icon" aria-hidden="true">screenshot</i>
               <span class="mdc-button__label">screenshots</span>
             </a>
 
             <a class="mdc-button mdc-button--raised"
-                    href="${componentDef.newArch ? 'packages-new' : 'packages/stencil'}/components/${componentDef.id}/coverage/lcov-report/index.html">
+                    href="packages/components/${componentDef.id}/coverage/lcov-report/index.html">
               <span class="mdc-button__ripple"></span>
               <i class="material-icons mdc-button__icon" aria-hidden="true">grading</i>
               <span class="mdc-button__label">coverage</span>

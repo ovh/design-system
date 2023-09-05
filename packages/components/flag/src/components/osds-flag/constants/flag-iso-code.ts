@@ -1,11 +1,11 @@
 import { ODS_COUNTRY_ISO_CODE } from "@ovhcloud/ods-common-core";
 
-const ODS_FLAG_ISO_CODE = {
+const ODS_FLAG_ISO_CODE = Object.freeze({
     ...ODS_COUNTRY_ISO_CODE,   
     EU: 'eu', // Europe
     UN: 'un', // United Nations
     XK: 'xk', // Kosovo
-} as const;
+});
 
 type ODS_FLAG_ISO_CODE_UNION = typeof ODS_FLAG_ISO_CODE[keyof typeof ODS_FLAG_ISO_CODE];
 

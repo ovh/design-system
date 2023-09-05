@@ -54,14 +54,14 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute {
   }
 
   @Watch('countries')
-  handlerCountries() {
+  handlerCountries(): void {
     this.hasCountries = Boolean(this.countries?.length);
     this.countriesList = this.controller.getCountriesList();
   }
 
   render() {
     return (
-      <Host>
+      <Host class="phone-number">
         {
           this.hasCountries && <osds-select
             tabindex="0"
@@ -69,8 +69,10 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute {
             error={this.error}
             value={this.isoCode}>
             { this.countriesList?.map((country) => <osds-select-option value={ country }>
-              <osds-flag iso={country}></osds-flag>
-              <span>{ this.i18nCountries?.get(country)?.name }</span>
+              <div class="phone-number--select-option">
+                <osds-flag iso={country}></osds-flag>
+                <span>{ this.i18nCountries?.get(country)?.name }</span>
+              </div>
             </osds-select-option>) }
           </osds-select>
         }

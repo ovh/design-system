@@ -77,14 +77,8 @@ Default.args = {
   ...(extractStoryParams(storyParams)),
 };
 
-const OsdsPhoneNumberCountriesTemplate = (args: Record<string, unknown>) => {
-  return html`
-    <osds-phone-number ...=${getTagAttributes(args)} @keydown=${(e: KeyboardEvent) => e.stopPropagation()}>
-    </osds-phone-number>
-  `;
-}
+export const Countries = OsdsPhoneNumberDefault.bind({});
 
-export const Countries = OsdsPhoneNumberCountriesTemplate.bind({});
 // @ts-ignore
 Countries.args = {
   ...extractStoryParams({ ...storyParams, ...countriesParams }),

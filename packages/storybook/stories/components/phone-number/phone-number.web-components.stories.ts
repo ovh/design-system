@@ -47,6 +47,13 @@ const countriesParams = {
   },
 }
 
+const allCountriesParams = {
+  countries: {
+    category: 'Général',
+    defaultValue: 'all'
+  },
+}
+
 export default {
   title: 'UI Components/Phone Number [molecule]/Web Component',
   id: 'phone-number',
@@ -70,15 +77,16 @@ Default.args = {
   ...(extractStoryParams(storyParams)),
 };
 
-const OsdsPhoneNumberCountriesTemplate = (args: Record<string, unknown>) => {
-  return html`
-    <osds-phone-number ...=${getTagAttributes(args)} @keydown=${(e: KeyboardEvent) => e.stopPropagation()}>
-    </osds-phone-number>
-  `;
-}
-export const Countries = OsdsPhoneNumberCountriesTemplate.bind({});
+export const Countries = OsdsPhoneNumberDefault.bind({});
 // @ts-ignore
 Countries.args = {
   ...extractStoryParams({ ...storyParams, ...countriesParams }),
+};
+
+
+export const AllCountries = OsdsPhoneNumberDefault.bind({});
+// @ts-ignore
+AllCountries.args = {
+  ...extractStoryParams({ ...storyParams, ...allCountriesParams }),
 };
 

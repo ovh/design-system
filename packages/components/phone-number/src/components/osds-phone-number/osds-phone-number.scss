@@ -24,6 +24,13 @@
   osds-flag {
     display: inline-block;
     width: 2em;
-    margin-right: 1em;
+    margin-right: .5em;
   }
+
+  .phone-number {
+    &--select-option {
+      display: flex;
+    }
+  }
+    
 }

@@ -6496,9 +6496,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-component-phone-number-react@workspace:packages-new/components/phone-number/react":
+"@ovhcloud/ods-component-phone-number-react@workspace:packages/components/phone-number/react":
   version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-component-phone-number-react@workspace:packages-new/components/phone-number/react"
+  resolution: "@ovhcloud/ods-component-phone-number-react@workspace:packages/components/phone-number/react"
   dependencies:
     "@ovhcloud/ods-component-phone-number": ^15.0.1
     "@ovhcloud/ods-react-dev": ^15.0.1
@@ -6508,9 +6508,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-component-phone-number-vue@workspace:packages-new/components/phone-number/vue":
+"@ovhcloud/ods-component-phone-number-vue@workspace:packages/components/phone-number/vue":
   version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-component-phone-number-vue@workspace:packages-new/components/phone-number/vue"
+  resolution: "@ovhcloud/ods-component-phone-number-vue@workspace:packages/components/phone-number/vue"
   dependencies:
     "@ovhcloud/ods-component-phone-number": ^15.0.1
     "@ovhcloud/ods-vue-dev": ^15.0.1
@@ -6519,9 +6519,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-component-phone-number@^15.0.1, @ovhcloud/ods-component-phone-number@workspace:packages-new/components/phone-number":
+"@ovhcloud/ods-component-phone-number@^15.0.1, @ovhcloud/ods-component-phone-number@workspace:packages/components/phone-number":
   version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-component-phone-number@workspace:packages-new/components/phone-number"
+  resolution: "@ovhcloud/ods-component-phone-number@workspace:packages/components/phone-number"
   dependencies:
     "@ovhcloud/ods-common-core": ^15.0.1
     "@ovhcloud/ods-common-stencil": ^15.0.1
@@ -6532,7 +6532,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-component-popover-react@workspace:packages-new/components/popover/react":
+"@ovhcloud/ods-component-popover-react@workspace:packages/components/popover/react":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-popover-react@workspace:packages/components/popover/react"
   dependencies:

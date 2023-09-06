@@ -11,6 +11,7 @@
       margin: ods-get-size-property($sizes, margin);
       width: ods-get-size-property($sizes, width);
       aspect-ratio: 1/1;
+      box-sizing: border-box;
     }
   }
 }

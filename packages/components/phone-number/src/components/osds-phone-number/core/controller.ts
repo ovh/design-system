@@ -1,5 +1,5 @@
+import type { OsdsPhoneNumber } from '../osds-phone-number';
 import { ODS_COUNTRY_ISO_CODE, ODS_COUNTRY_ISO_CODES } from '@ovhcloud/ods-common-core';
-import { OsdsPhoneNumber } from '../osds-phone-number';
 
 class OdsPhoneNumberController {
 

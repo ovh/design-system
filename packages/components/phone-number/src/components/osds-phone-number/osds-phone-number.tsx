@@ -1,8 +1,8 @@
+import type { OdsPhoneNumberAttribute } from './interfaces/attributes';
+import type { ODS_COUNTRY_ISO_CODE } from '@ovhcloud/ods-common-core';
 import { Component, Host, h, Prop, State, Watch } from '@stencil/core';
 import { ODS_INPUT_TYPE } from '@ovhcloud/ods-component-input';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { OdsPhoneNumberAttribute } from './interfaces/attributes';
-import { ODS_COUNTRY_ISO_CODE } from '@ovhcloud/ods-common-core';
 import { OdsPhoneNumberController } from './core/controller';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { default as translateEn } from '@ovhcloud/ods-common-core/src/i18n/countries/en.json';

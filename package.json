@@ -75,34 +75,29 @@
     "version:prerelease:nocommit": "lerna version --conventional-commits --conventional-prerelease --no-commit-hooks --no-git-tag-version --no-push"
   },
   "devDependencies": {
-    "@commitlint/cli": "^11.0.0",
-    "@commitlint/config-conventional": "^11.0.0",
-    "@mermaid-js/mermaid-cli": "^8.11.5",
-    "@types/node": "^15.14.1",
-    "@typescript-eslint/eslint-plugin": "^5.20.0",
-    "@typescript-eslint/parser": "^5.20.0",
-    "btoa": "^1.2.1",
-    "conventional-changelog-angular": "^5.0.12",
-    "eslint": "^7.32.0",
-    "eslint-plugin-jsx-a11y": "^6.1.2",
-    "eslint-plugin-tsdoc": "^0.2.11",
-    "fs-extra": "^10.0.0",
-    "generate-license-file": "^2.0.0",
-    "husky": "^4.3.7",
-    "lerna": "^3.22.1",
-    "node-fetch": "~2.6.7",
-    "ts-node": "~10.7.0"
+    "@commitlint/cli": "11.0.0",
+    "@commitlint/config-conventional": "11.0.0",
+    "@mermaid-js/mermaid-cli": "8.14.0",
+    "@types/node": "15.14.9",
+    "@typescript-eslint/eslint-plugin": "5.45.0",
+    "@typescript-eslint/parser": "5.45.0",
+    "btoa": "1.2.1",
+    "conventional-changelog-angular": "5.0.13",
+    "eslint": "7.32.0",
+    "eslint-plugin-jsx-a11y": "6.6.1",
+    "eslint-plugin-tsdoc": "0.2.17",
+    "fs-extra": "10.0.0",
+    "generate-license-file": "2.0.0",
+    "husky": "4.3.8",
+    "lerna": "3.22.1",
+    "node-fetch": "2.6.7",
+    "ts-node": "10.7.0"
   },
   "engines": {
     "node": ">= 14.15 <16",
     "yarn": ">= 2.4.0"
   },
-  "publishConfig": {
-    "registry": ""
-  },
   "resolutions": {
-    "ua-parser-js": "0.7.18",
-    "@types/react": "^16.14.0",
     "@types/ws": "8.5.4"
   }
 }

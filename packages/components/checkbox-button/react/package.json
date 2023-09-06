@@ -20,7 +20,7 @@
     "dist/"
   ],
   "dependencies": {
-    "@ovhcloud/ods-component-checkbox-button": "^15.0.1"
+    "@ovhcloud/ods-component-checkbox-button": "15.0.1"
   },
   "peerDependencies": {
     "react": ">=16.8.6",

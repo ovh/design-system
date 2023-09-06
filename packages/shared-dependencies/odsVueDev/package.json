@@ -5,7 +5,7 @@
   "description": "ODS common Vue dev dependencies",
   "license": "Apache-2.0",
   "dependencies": {
-    "@ovhcloud/ods-dev": "^15.0.1",
-    "vue": "^3.2.41"
+    "@ovhcloud/ods-dev": "15.0.1",
+    "vue": "3.2.41"
   }
 }

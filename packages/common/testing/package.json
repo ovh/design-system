@@ -20,14 +20,14 @@
     "test:spec:ci": "jest --ci"
   },
   "dependencies": {
-    "@jest/types": "~27.1.1",
-    "@types/jest": "^27.4.1",
-    "jest": "^27.5.1",
-    "jest-transform-stub": "^2.0.0",
-    "puppeteer": "^10.4.0",
-    "ts-jest": "~27.1.5"
+    "@jest/types": "27.1.1",
+    "@types/jest": "27.5.2",
+    "jest": "27.5.1",
+    "jest-transform-stub": "2.0.0",
+    "puppeteer": "10.4.0",
+    "ts-jest": "27.1.5"
   },
   "devDependencies": {
-    "@ovhcloud/ods-dev": "^15.0.1"
+    "@ovhcloud/ods-dev": "15.0.1"
   }
 }

@@ -34,17 +34,17 @@
     "test:e2e:ci:screenshot:update": "stencil test --config stencil.config.ts --e2e --ci --screenshot --update-screenshot --passWithNoTests"
   },
   "dependencies": {
-    "@ovhcloud/ods-common-core": "^15.0.1",
-    "@ovhcloud/ods-common-stencil": "^15.0.1",
-    "@ovhcloud/ods-common-theming": "^15.0.1",
-    "@ovhcloud/ods-component-text": "^15.0.1"
+    "@ovhcloud/ods-common-core": "15.0.1",
+    "@ovhcloud/ods-common-stencil": "15.0.1",
+    "@ovhcloud/ods-common-theming": "15.0.1",
+    "@ovhcloud/ods-component-text": "15.0.1"
   },
   "devDependencies": {
-    "@ovhcloud/ods-common-testing": "^15.0.1",
-    "@ovhcloud/ods-component-input": "^15.0.1",
-    "@ovhcloud/ods-component-link": "^15.0.1",
-    "@ovhcloud/ods-component-textarea": "^15.0.1",
-    "@ovhcloud/ods-component-tooltip": "^15.0.1",
-    "@ovhcloud/ods-stencil-dev": "^15.0.1"
+    "@ovhcloud/ods-common-testing": "15.0.1",
+    "@ovhcloud/ods-component-input": "15.0.1",
+    "@ovhcloud/ods-component-link": "15.0.1",
+    "@ovhcloud/ods-component-textarea": "15.0.1",
+    "@ovhcloud/ods-component-tooltip": "15.0.1",
+    "@ovhcloud/ods-stencil-dev": "15.0.1"
   }
 }

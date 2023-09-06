@@ -20,12 +20,12 @@
     "dist/"
   ],
   "dependencies": {
-    "@ovhcloud/ods-component-menu": "^15.0.1"
+    "@ovhcloud/ods-component-menu": "15.0.1"
   },
   "peerDependencies": {
     "vue": ">=3"
   },
   "devDependencies": {
-    "@ovhcloud/ods-vue-dev": "^15.0.1"
+    "@ovhcloud/ods-vue-dev": "15.0.1"
   }
 }

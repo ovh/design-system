@@ -20,13 +20,13 @@
     "dist/"
   ],
   "dependencies": {
-    "@ovhcloud/ods-component-popover": "^15.0.1"
+    "@ovhcloud/ods-component-popover": "15.0.1"
   },
   "peerDependencies": {
     "react": ">=16.8.6",
     "react-dom": ">=16.8.6"
   },
   "devDependencies": {
-    "@ovhcloud/ods-react-dev": "^15.0.1"
+    "@ovhcloud/ods-react-dev": "15.0.1"
   }
 }

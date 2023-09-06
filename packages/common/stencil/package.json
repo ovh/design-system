@@ -16,14 +16,14 @@
     "doc:api": "typedoc --plugin none src/*"
   },
   "dependencies": {
-    "@ovhcloud/ods-common-core": "^15.0.1",
-    "@ovhcloud/ods-theme-blue-jeans": "^15.0.1",
-    "@stencil/core": "~2.18.1"
+    "@ovhcloud/ods-common-core": "15.0.1",
+    "@ovhcloud/ods-theme-blue-jeans": "15.0.1",
+    "@stencil/core": "2.18.1"
   },
   "devDependencies": {
-    "@ovhcloud/ods-common-testing": "^15.0.1",
-    "@ovhcloud/ods-dev": "^15.0.1",
-    "@ovhcloud/ods-stencil-dev": "^15.0.1",
-    "@ovhcloud/ods-style-dev": "^15.0.1"
+    "@ovhcloud/ods-common-testing": "15.0.1",
+    "@ovhcloud/ods-dev": "15.0.1",
+    "@ovhcloud/ods-stencil-dev": "15.0.1",
+    "@ovhcloud/ods-style-dev": "15.0.1"
   }
 }

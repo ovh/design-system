@@ -21,7 +21,7 @@
     "generate:icons": "svgpack icons/_helpers/ > icons/_generated-icons.scss && svgpack icons/concept/ >> icons/_generated-icons.scss && svgpack icons/system/ >> icons/_generated-icons.scss"
   },
   "devDependencies": {
-    "@marsbased/svgpack": "^1.0.3",
-    "@ovhcloud/ods-dev": "^15.0.1"
+    "@marsbased/svgpack": "1.0.3",
+    "@ovhcloud/ods-dev": "15.0.1"
   }
 }

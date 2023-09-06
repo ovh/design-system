@@ -7,20 +7,21 @@
 ## Interfaces
 
 ### OdsButtonAttributes
-|name | Type | Required | Default | Description|
-|---|---|:---:|---|---|
-|**`circle`** | _boolean_ |  |  | use a circle shape|
-|**`color`** | `OdsThemeColorIntent` |  |  | main color: see component principles|
-|**`contrasted`** | _boolean_ |  |  | contrasted or not: see component principles|
-|**`disabled`** | _boolean_ |  |  | disabled or not: see component principles|
-|**`download`** | _string_ |  |  | Button with href as download source|
-|**`flex`** | _boolean_ |  |  | full width or not: see component principles|
-|**`href`** | _string_ |  |  | use a button as a link with `<a>` element|
-|**`rel`** | `OdsHTMLAnchorElementRel` |  |  | Button with href relationship|
-|**`size`** | `OdsButtonSize` |  |  | size: see component principles|
-|**`target`** | `OdsHTMLAnchorElementTarget` |  |  | link target if we are in a link-mode (using `href` attribute)|
-|**`type`** | `OdsButtonType` |  |  | type of the vanilla button|
-|**`variant`** | `OdsButtonVariant` |  |  | used design aspect|
+| name             | Type                         | Required | Default | Description                        |
+|------------------|------------------------------|:---:|---|------------------------------------|
+| **`circle`**     | _boolean_                    |  |  | use a circle shape                 |
+| **`color`**      | `OdsThemeColorIntent`        |  |  | main color: see component principles |
+| **`contrasted`** | _boolean_                    |  |  | contrasted or not: see component principles |
+| **`disabled`**   | _boolean_                    |  |  | disabled or not: see component principles |
+| **`download`**   | _string_                     |  |  | Button with href as download source |
+| **`flex`**       | _boolean_                    |  |  | full width or not: see component principles |
+| **`href`**       | _string_                     |  |  | use a button as a link with `<a>` element |
+| **`rel`**        | `OdsHTMLAnchorElementRel`    |  |  | Button with href relationship      |
+| **`size`**       | `OdsButtonSize`              |  |  | size: see component principles     |
+| **`target`**     | `OdsHTMLAnchorElementTarget` |  |  | link target if we are in a link-mode (using `href` attribute) |
+| **`textAlign`**  | `OdsButtonTextAlign`         |  |  | position of text                   |
+| **`type`**       | `OdsButtonType`              |  |  | type of the vanilla button         |
+| **`variant`**    | `OdsButtonVariant`           |  |  | used design aspect                 |
 
 ### OdsButtonBehavior
 |name | Type | Required | Default | Description|
@@ -50,6 +51,13 @@
 | `flat` |
 | `ghost` |
 | `stroked` |
+
+### OdsButtonTextAlign
+|          |
+|:--------:|
+| `center` |
+|  `end`   |
+| `start`  |
 
 ## Classes
 

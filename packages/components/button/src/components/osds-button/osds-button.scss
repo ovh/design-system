@@ -49,15 +49,43 @@
   @include osds-button-on-text-container {
     width: inherit;
   }
+}
 
-  .button__centered-text {
-    grid-area: center;
-    min-width: 0;    
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    word-break: break-all;
-    --ods-icon-vertical-align: bottom;
+:host([text-align]) {
+  @include osds-button-on-text-container {
+    & span:not([slot]) {
+      grid-area: center;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      word-break: break-all;
+      --ods-icon-vertical-align: bottom;
+    }
+  }
+}
+
+:host([text-align="center"]) {
+  @include osds-button-on-text-container {
+    & span:not([slot]) {
+      text-align: center;
+    }
+  }
+}
+
+:host([text-align="start"]) {
+  @include osds-button-on-text-container {
+    & span:not([slot]) {
+      text-align: start;
+    }
+  }
+}
+
+:host([text-align="end"]) {
+  @include osds-button-on-text-container {
+    & span:not([slot]) {
+      text-align: end;
+    }
   }
 }
 
@@ -90,11 +118,13 @@ slot {
   &[name="start"] {
     grid-area: start;
     justify-self: start;
+    white-space: nowrap
   }
 
   &[name="end"] {
     grid-area: end;
     justify-self: end;
+    white-space: nowrap
   }
 }
 

@@ -4,6 +4,7 @@ import type { HTMLStencilElement } from '@stencil/core/internal';
 import type { ODS_BUTTON_SIZE } from './constants/button-size';
 import type { ODS_BUTTON_TYPE } from './constants/button-type';
 import type { ODS_BUTTON_VARIANT } from './constants/button-variant';
+import type { ODS_BUTTON_TEXTALIGN } from './constants/button-textalign';
 import type { OdsButtonAttribute } from './interfaces/attributes';
 import { Component, Element, Host, Prop, h, Listen } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
@@ -56,6 +57,9 @@ export class OsdsButton implements OdsButtonAttribute {
   /** @see OdsButtonAttributes.variant */
   @Prop({ reflect: true, mutable: true }) public variant?: ODS_BUTTON_VARIANT = DEFAULT_ATTRIBUTE.variant;
 
+  /** @see OdsButtonAttributes.textAlign */
+  @Prop({ reflect: true, mutable: true }) public textAlign?: ODS_BUTTON_TEXTALIGN = DEFAULT_ATTRIBUTE.textAlign;
+
   /** @see OdsButtonAttributes.circle */
   @Prop({ reflect: true }) public circle? = DEFAULT_ATTRIBUTE.circle;
 
@@ -83,7 +87,7 @@ export class OsdsButton implements OdsButtonAttribute {
     const content = (
       <span class={'button__text-container'}>
         <slot name={'start'}></slot>
-        <span class={'button__centered-text'}>
+        <span>
           <slot></slot>
         </span>
         <slot name={'end'}></slot>
@@ -102,6 +106,7 @@ export class OsdsButton implements OdsButtonAttribute {
           target: this.target,
           rel: this.rel,
           download: this.download,
+          textAlign: this.textAlign,
         }}>
           {content}
         </a>

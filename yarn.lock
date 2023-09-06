@@ -6928,11 +6928,11 @@ __metadata:
     "@ovhcloud/ods-common-core": ^15.0.1
     "@ovhcloud/ods-common-stencil": ^15.0.1
     "@ovhcloud/ods-common-testing": ^15.0.1
+    "@ovhcloud/ods-common-theming": ^15.0.1
     "@ovhcloud/ods-component-icon": ^15.0.1
     "@ovhcloud/ods-component-link": ^15.0.1
     "@ovhcloud/ods-component-text": ^15.0.1
     "@ovhcloud/ods-stencil-dev": ^15.0.1
-    "@ovhcloud/ods-theming": ^15.0.1
   languageName: unknown
   linkType: soft
 
@@ -7339,13 +7339,6 @@ __metadata:
     "@ovhcloud/ods-style-dev": ^15.0.1
   languageName: unknown
   linkType: soft
-
-"@ovhcloud/ods-theming@npm:^15.0.1":
-  version: 15.0.1
-  resolution: "@ovhcloud/ods-theming@npm:15.0.1"
-  checksum: c03297f342f2e52940c14c27e6f926e758192a22792f18f271c9d7cac3775ceaf44bb25db212c94b2dfde44a40d4c1491cfc84ee5dd80b2633de1bd466796fad
-  languageName: node
-  linkType: hard
 
 "@ovhcloud/ods-vue-dev@^15.0.1, @ovhcloud/ods-vue-dev@workspace:packages/shared-dependencies/odsVueDev":
   version: 0.0.0-use.local

@@ -12,6 +12,80 @@ import { Meta } from '@storybook/addon-docs';
 
 # What's new ?
 
+## v16.0.0
+
+As it is a major version, you'll have to follow the [migration guide 15.x to 16.x](?path=/story/ovhcloud-design-system-what-s-new-migration-guide-15-x-to-16-x--page)
+
+⚠️We're aware that not all the documentation is up-to-date with the latest technical changes ⚠️
+⚠️We're currently working on improving the storybook but didn't want to delay the release much more ⚠️
+⚠️If you have any issue migrating, reach us directly and we'll help you. ⚠️
+
+### Project changes:
+
+This version embed the whole new project architecture (initiated with the v15).
+
+We now have seperations between:
+- `cdk` (@ovhcloud/ods-cdk) which provides public non component related utilities.
+- `common` libs (@ovhcloud/ods-common-[core|stencil|testing|theming]) which provides internal helpers.
+- `components` (@ovhcloud/ods-components or @ovhcloud/ods-component-`<component-name>`) which provide the agnostic components and their React, Vue wrapped versions.
+- `examples` (@ovhcloud/ods-starter-[react|react-vite|vue-vite]) which contains application examples that use some ODS components.
+- `shared-dependencies` to share common dependencies internally accross projects.
+- `storybook` (@ovhcloud/ods-storybook) which tends to centralize all the ODS documentation content.
+- `themes` (@ovhcloud/ods-theme-blue-jeans) which provides all existing themes that can be applied to ODS.
+
+### Component changes:
+
+**All Components**
+* `@ovhcloud/ods-stencil` package does not exists anymore.
+* Components are now accessible by adding either `@ovhcloud/ods-component-<component>` or `@ovhcloud/ods-components` dependency.
+* All `@ovhcloud/ods-stencil-<component>` libs have been replaced by `@ovhcloud/ods-component-<component>`.
+* All `@ovhcloud/ods-stencil-<component>-react` libs have been replaced by `@ovhcloud/ods-component-<component>-react`.
+* All `@ovhcloud/ods-stencil-<component>-vue` libs have been replaced by `@ovhcloud/ods-component-<component>- vue`.
+
+* Constants/Enums have been renamed to follow new naming convention:
+  * All constants are now in UPPER_SNAKE_CASE.
+  * All objects are now in singular form.
+  * All lists are now in plural form.
+
+Ex:
+`OdsSpinnerSize` is now `ODS_SPINNER_SIZE`.
+`OdsSpinnerSizeList` is now `ODS_SPINNER_SIZES`.
+`OdsSpinnerSizeUnion` has been removed.
+
+* Exported types follow also the same naming convention, thus most of them are now in singular form.
+
+Ex:
+`OdsSpinnerAttributes` is now `OdsSpinnerAttribute`.
+
+* A lot of empty types who were exported previously have been removed.
+
+Ex:
+`OdsSpinnerEvents` have been removed, as the component does not handle any events.
+`OdsSpinnerMethods` have been removed, as the component does not expose any methods.
+
+### New component:
+
+* **Clipboard**: [See Documentation](?path=/story/ui-components-clipboard-atom-web-component--default)
+* **Menu**: [See Documentation](?path=/story/menu--default)
+* **Modal**: [See Documentation](?path=/story/modal--default)
+* **Search Bar**: [See Documentation](?path=/story/ui-components-search-bar-atom-web-component--default)
+
+### Features changes:
+
+**Button**
+* Add a new attribute `textAlign` which allows to choose the button text alignement between `center`, `end` and `start`.
+
+### Bug fixes:
+
+**Button**
+* Main slot is now correctly aligned vertically (visible when using icon).
+
+**Flag**
+* Flags are now correctly displayed in the documentation.
+
+**Link**
+* Outline is now correctly updated on viewport change.
+
 ## v15.0.1
 
   * Fix new packages release process.

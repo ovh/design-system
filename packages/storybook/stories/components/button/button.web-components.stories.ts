@@ -1,7 +1,7 @@
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 import { OdsHTMLAnchorElementRelList, OdsHTMLAnchorElementTargetList } from '@ovhcloud/ods-common-core';
-import { ODS_BUTTON_SIZE, ODS_BUTTON_SIZES, ODS_BUTTON_VARIANT, ODS_BUTTON_VARIANTS, ODS_BUTTON_TEXTALIGN, ODS_BUTTON_TEXTALIGNS } from '@ovhcloud/ods-components/button';
+import { ODS_BUTTON_SIZE, ODS_BUTTON_SIZES, ODS_BUTTON_VARIANT, ODS_BUTTON_VARIANTS, ODS_BUTTON_TEXT_ALIGN, ODS_BUTTON_TEXT_ALIGNS } from '@ovhcloud/ods-components/button';
 import { defineCustomElements } from '@ovhcloud/ods-components/button/loader';
 import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
 import { createComponentTable, getTagAttributes, extractArgTypes, extractStoryParams } from '../../../core/componentHTMLUtils';
@@ -28,8 +28,8 @@ const storyParams = {
   },
   textAlign: {
     category: 'General',
-    defaultValue: ODS_BUTTON_TEXTALIGN.center,
-    options: ODS_BUTTON_TEXTALIGNS,
+    defaultValue: ODS_BUTTON_TEXT_ALIGN.center,
+    options: ODS_BUTTON_TEXT_ALIGNS,
     control: { type: 'select' },
   },
   variant: {

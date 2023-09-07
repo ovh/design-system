@@ -3,7 +3,7 @@ import { OdsLogger, OdsWarnComponentAttribute } from '@ovhcloud/ods-common-core'
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_BUTTON_SIZE } from '../constants/button-size';
 import { ODS_BUTTON_VARIANT } from '../constants/button-variant';
-import { ODS_BUTTON_TEXTALIGN } from '../constants/button-textalign';
+import { ODS_BUTTON_TEXT_ALIGN } from '../constants/button-text-align';
 
 /**
  * common controller logic for button component used by the different implementations.
@@ -41,9 +41,9 @@ class OdsButtonController {
       attributeName: 'variant',
       attribute: this.component.variant
     });
-    OdsWarnComponentAttribute<ODS_BUTTON_TEXTALIGN, OsdsButton>({
+    OdsWarnComponentAttribute<ODS_BUTTON_TEXT_ALIGN, OsdsButton>({
       logger,
-      attributeValues: ODS_BUTTON_TEXTALIGN as Record<string, unknown>,
+      attributeValues: ODS_BUTTON_TEXT_ALIGN as Record<string, unknown>,
       attributeName: 'textAlign',
       attribute: this.component.textAlign
     });

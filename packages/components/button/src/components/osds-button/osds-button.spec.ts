@@ -8,7 +8,7 @@ import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-c
 import { newSpecPage } from '@stencil/core/testing';
 import { ODS_BUTTON_SIZE, ODS_BUTTON_SIZES } from './constants/button-size';
 import { ODS_BUTTON_VARIANT, ODS_BUTTON_VARIANTS } from './constants/button-variant';
-import { ODS_BUTTON_TEXTALIGN, ODS_BUTTON_TEXTALIGNS } from './constants/button-textalign';
+import { ODS_BUTTON_TEXT_ALIGN, ODS_BUTTON_TEXT_ALIGNS } from './constants/button-text-align';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsButtonController } from './core/controller';
 import { OsdsButton } from './osds-button';
@@ -226,14 +226,14 @@ describe('spec:osds-button', () => {
       odsUnitTestAttribute<OdsButtonAttribute, 'textAlign'>({
         name: 'textAlign',
         defaultValue: DEFAULT_ATTRIBUTE.textAlign,
-        newValue: ODS_BUTTON_TEXTALIGN.center,
-        value: ODS_BUTTON_TEXTALIGN.start,
+        newValue: ODS_BUTTON_TEXT_ALIGN.center,
+        value: ODS_BUTTON_TEXT_ALIGN.start,
         setup: (value) => setup({ attributes: { ['textAlign']: value } }),
         ...config,
       });
 
       it('should set a textAlign if attribute is added', async () => {
-        const randomTextAlign = ODS_BUTTON_TEXTALIGNS[Math.floor(Math.random() * ODS_BUTTON_TEXTALIGNS.length)];
+        const randomTextAlign = ODS_BUTTON_TEXT_ALIGNS[Math.floor(Math.random() * ODS_BUTTON_TEXT_ALIGNS.length)];
         await setup({ attributes: { textAlign: randomTextAlign } });
         expect(page.root?.textAlign).toBe(randomTextAlign);
       });

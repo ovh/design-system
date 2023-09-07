@@ -4,7 +4,7 @@ import type { HTMLStencilElement } from '@stencil/core/internal';
 import type { ODS_BUTTON_SIZE } from './constants/button-size';
 import type { ODS_BUTTON_TYPE } from './constants/button-type';
 import type { ODS_BUTTON_VARIANT } from './constants/button-variant';
-import type { ODS_BUTTON_TEXTALIGN } from './constants/button-textalign';
+import type { ODS_BUTTON_TEXT_ALIGN } from './constants/button-text-align';
 import type { OdsButtonAttribute } from './interfaces/attributes';
 import { Component, Element, Host, Prop, h, Listen } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
@@ -58,7 +58,7 @@ export class OsdsButton implements OdsButtonAttribute {
   @Prop({ reflect: true, mutable: true }) public variant?: ODS_BUTTON_VARIANT = DEFAULT_ATTRIBUTE.variant;
 
   /** @see OdsButtonAttributes.textAlign */
-  @Prop({ reflect: true, mutable: true }) public textAlign?: ODS_BUTTON_TEXTALIGN = DEFAULT_ATTRIBUTE.textAlign;
+  @Prop({ reflect: true, mutable: true }) public textAlign?: ODS_BUTTON_TEXT_ALIGN = DEFAULT_ATTRIBUTE.textAlign;
 
   /** @see OdsButtonAttributes.circle */
   @Prop({ reflect: true }) public circle? = DEFAULT_ATTRIBUTE.circle;

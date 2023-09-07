@@ -14,7 +14,7 @@ You can have an example of usage in our three Starters for:
 
 ### Default
 will set `fr` flag by default
-<div class="container">
+<div style={{width: '100px'}}>
   <osds-flag></osds-flag>
 </div>
 
@@ -23,7 +23,7 @@ will set `fr` flag by default
 ```
 
 ### Basic
-<div class="container">
+<div style={{width: '100px'}}>
   <osds-flag iso='de'></osds-flag>
 </div>
 
@@ -33,27 +33,27 @@ will set `fr` flag by default
 
 ### Custom asset path
 For some cases, you may want to use a custom path that will override the ODS path:
-<div class="container">
-  <osds-flag iso="de" asset-path="../flags-custom-path/"></osds-flag>
+<div style={{width: '100px'}}>
+  <osds-flag iso="de" asset-path="./custom-flags/"></osds-flag>
 </div>
 
 ```html
-<osds-flag iso="de" asset-path="../flags-custom-path/"></osds-flag>
+<osds-flag iso="de" asset-path="./custom-flags/"></osds-flag>
 ```
 
 ### Custom src file
 Same goes with `src` attribute when you want to point at your own SVG:
-<div class="container">
-  <osds-flag iso="de" src="../flags-custom-path/it.svg"></osds-flag>
+<div style={{width: '100px'}}>
+  <osds-flag iso="de" src="./custom-flags/it.svg"></osds-flag>
 </div>
 
 ```html
-  <osds-flag iso="de" src="../flags-custom-path/it.svg"></osds-flag>
+  <osds-flag iso="de" src="./custom-flags/it.svg"></osds-flag>
 ```
 
 ### Lazy loading
 will load the flag only when it is visible in viewport
-<div class="container">
+<div style={{width: '100px'}}>
   <osds-flag iso="gb" lazy></osds-flag>
 </div>
 

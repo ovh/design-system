@@ -17,6 +17,11 @@
   cursor: not-allowed;
 }
 
+slot[name] {
+  // FIXME this will work only with flex slotted element (like osds-button), shall be fix when we replace slot with osds-button
+  width: var(--ods-button-width);
+}
+
 slot:not([name]) {
   margin-left: var(--ods-size-03);
   margin-right: var(--ods-size-03);

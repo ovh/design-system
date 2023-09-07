@@ -327,11 +327,8 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
         <div {...{
           class: `select-trigger${this.opened ? ' opened' : ''}${this.hasError() ? ' error' : ''}`,
         }}>
-          <div class={'label'}>
-            { (!value) ?
-              <slot name={'placeholder'}>&nbsp;</slot>
-              : this.selectedOptionLabel
-            }
+          <div class={'label'} innerHTML={ (value) ? this.selectedOptionLabel : undefined } >
+            { (value) ? undefined : <slot name={'placeholder'}>&nbsp;</slot> }
           </div>
           <osds-icon size={ODS_ICON_SIZE.sm} color={color} name={ODS_ICON_NAME.CHEVRON_DOWN}></osds-icon>
         </div>

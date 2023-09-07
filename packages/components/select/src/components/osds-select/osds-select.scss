@@ -43,6 +43,7 @@
 
   .select-trigger > .label {
     flex: 1;
+    display: inline-flex;
     max-width: calc(100% - 24px);
     overflow: hidden;
     text-overflow: ellipsis;

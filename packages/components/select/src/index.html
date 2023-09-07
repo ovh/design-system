@@ -21,6 +21,19 @@
   }
 </style>
 
+<h3>With selected label</h3>
+<osds-select id="withSelectedlabel" inline="">
+  <span slot="placeholder"><i>Select</i> option</span>
+  <osds-select-option value="FR">
+    France
+    <span slot='selectedLabel'>Fr</span>
+  </osds-select-option>
+  <osds-select-option value="Home">
+    <osds-icon name='home' size='sm'></osds-icon> Home
+    <span slot='selectedLabel'><osds-icon name='home' size='sm'></osds-icon></span>
+  </osds-select-option>
+</osds-select>
+
 <h3>default</h3>
 <div style="text-align:center">
   <osds-select id="select1">

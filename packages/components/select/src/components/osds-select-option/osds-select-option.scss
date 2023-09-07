@@ -22,6 +22,8 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     word-break: break-all;
+    display: inline-flex;
+    align-items: flex-end;
   }
 }
 
@@ -29,6 +31,10 @@
   outline-style: dotted;
   outline-width: var(--ods-size-inset-02);
   outline-offset: var(--ods-size-inset-02);
+}
+
+slot[name="selectedLabel"] {
+  display: none;
 }
 
 // apply the theme template for the component

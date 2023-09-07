@@ -23,8 +23,14 @@ describe('e2e:osds-select', () => {
 
     await page.setContent(`
       <osds-select ${odsStringAttributes2Str(stringAttributes)}>
-        <osds-select-option value="42">value</osds-select-option>
-        <osds-select-option value="43">value2</osds-select-option>
+        <osds-select-option value="42">
+          value1
+          <span slot='selectedLabel'>1</span>
+        </osds-select-option>
+        <osds-select-option value="43">
+          value2
+          <span slot='selectedLabel'>2</span>
+        </osds-select-option>
       </osds-select>
     `);
     await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
@@ -51,6 +57,21 @@ describe('e2e:osds-select', () => {
     it('should have a div element', async () => {
       expect(divElement).not.toBeNull();
       expect(optionDivElement).not.toBeNull();
+    });
+
+    it('should display selectedLabel as selected option', async () => {
+      await setup({ attributes: { } });
+      const secondOption = await page.find('osds-select osds-select-option:last-child');
+      await el.click();
+      await page.waitForChanges();
+
+      await secondOption.click();
+      await page.waitForChanges();
+
+      const selectedLabel = await secondOption.find('[slot="selectedLabel"]');
+      const selectedOption = await page.find('osds-select >>> .label');
+
+      expect(selectedOption.innerHTML).toEqual(selectedLabel.innerHTML);
     });
   });
 

@@ -4,9 +4,9 @@
 @import '~@ovhcloud/ods-common-theming/ods-theme';
 
 :host {
-  min-height: .5rem;
   position: relative;
   display: flex;
+  min-height: .5rem;
 
   &::before {
     content: "\00a0";
@@ -41,7 +41,6 @@
 :host([inline]) {
   @include osds-skeleton-on-selected-host() {
     display: inline-block;
-    width: var(--width);
   }
 }
 

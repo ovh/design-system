@@ -6,7 +6,7 @@ import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 @Component({
   tag: 'osds-skeleton',
   styleUrl: 'osds-skeleton.scss',
-  shadow: true
+  shadow: true,
 })
 export class OsdsSkeleton implements OdsSkeletonAttribute {
   /** @see OdsSkeletonAttributes.inline */
@@ -16,16 +16,21 @@ export class OsdsSkeleton implements OdsSkeletonAttribute {
   /** @see OdsSkeletonAttributes.size */
   @Prop({ reflect: true }) public size?: ODS_SKELETON_SIZE = DEFAULT_ATTRIBUTE.size;
 
+  private getRandomValue() {
+    // between 30 and 100
+    return Math.floor(Math.random() * (100 - 30)) + 30;
+  }
+
   render() {
     const { inline, randomized } = this;
 
     return (
       <Host {...{
         'style': {
-          width: !inline ? '100%' : randomized ? `${Math.floor(Math.random() * (100 - 30)) + 30}%` : '', // between 30-100%
+          width: !inline ? '100%' : randomized ? `${this.getRandomValue()}%` : '',
         }
       }}>
-        <div {...{ class: 'loader' }}></div>
+        <div class="loader"></div>
       </Host>
     );
   }

@@ -97,16 +97,16 @@
       ),
       $checkbox-button: (
         sm: (
-          border-width: calc(0.2rem * var(--ods-size-ratio)),
+          border-width: var(--ods-size-02),
+          height: var(--ods-size-06),
+          margin: calc(0.25rem * var(--ods-size-ratio)) calc(0.5rem * var(--ods-size-ratio)),
+          width: var(--ods-size-06),
+        ),
+        md: (
+          border-width: var(--ods-size-02),
           height: var(--ods-size-08),
           margin: calc(0.25rem * var(--ods-size-ratio)) calc(0.5rem * var(--ods-size-ratio)),
           width: var(--ods-size-08),
-        ),
-        md: (
-          border-width: calc(0.2rem * var(--ods-size-ratio)),
-          height: var(--ods-size-09),
-          margin: calc(0.25rem * var(--ods-size-ratio)) calc(0.5rem * var(--ods-size-ratio)),
-          width: var(--ods-size-09),
         ),
       ),
       $chip: (

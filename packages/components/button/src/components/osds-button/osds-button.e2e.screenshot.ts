@@ -5,7 +5,7 @@ import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from
 import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
 import { ODS_BUTTON_SIZES } from './constants/button-size';
 import { ODS_BUTTON_VARIANTS } from './constants/button-variant';
-import { ODS_BUTTON_TEXTALIGNS } from './constants/button-textalign';
+import { ODS_BUTTON_TEXT_ALIGNS } from './constants/button-text-align';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 
 describe('e2e:osds-button', () => {
@@ -32,7 +32,7 @@ describe('e2e:osds-button', () => {
         ODS_THEME_COLOR_INTENTS.forEach((color) => {
           ODS_BUTTON_SIZES.forEach((size) => {
             ODS_BUTTON_VARIANTS.forEach((variant) => {
-              ODS_BUTTON_TEXTALIGNS.forEach((textAlign) => {
+              ODS_BUTTON_TEXT_ALIGNS.forEach((textAlign) => {
                 it([color, variant, size, action, behaviour, textAlign].join(', '), async () => {
                   await setup({
                     attributes: {

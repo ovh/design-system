@@ -4,7 +4,7 @@ import { newE2EPage } from '@stencil/core/testing';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_BUTTON_SIZE } from './constants/button-size';
-import { ODS_BUTTON_TEXTALIGN } from './constants/button-textalign';
+import { ODS_BUTTON_TEXT_ALIGN } from './constants/button-text-align';
 import { ODS_BUTTON_TYPE } from './constants/button-type';
 import { ODS_BUTTON_VARIANT } from './constants/button-variant';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
@@ -197,18 +197,18 @@ describe('e2e:osds-button', () => {
 
   describe('textAlign', () => {
     it('should have a textAlign to center', async () => {
-      await setup({ attributes: { textAlign: ODS_BUTTON_TEXTALIGN.center } });
-      expect(await el.getProperty('textAlign')).toBe(ODS_BUTTON_TEXTALIGN.center);
+      await setup({ attributes: { textAlign: ODS_BUTTON_TEXT_ALIGN.center } });
+      expect(await el.getProperty('textAlign')).toBe(ODS_BUTTON_TEXT_ALIGN.center);
     });
 
     it('should have a textAlign to start', async () => {
-      await setup({ attributes: { textAlign: ODS_BUTTON_TEXTALIGN.start } });
-      expect(await el.getProperty('textAlign')).toBe(ODS_BUTTON_TEXTALIGN.start);
+      await setup({ attributes: { textAlign: ODS_BUTTON_TEXT_ALIGN.start } });
+      expect(await el.getProperty('textAlign')).toBe(ODS_BUTTON_TEXT_ALIGN.start);
     });
 
     it('should have a textAlign to end', async () => {
-      await setup({ attributes: { textAlign: ODS_BUTTON_TEXTALIGN.end } });
-      expect(await el.getProperty('textAlign')).toBe(ODS_BUTTON_TEXTALIGN.end);
+      await setup({ attributes: { textAlign: ODS_BUTTON_TEXT_ALIGN.end } });
+      expect(await el.getProperty('textAlign')).toBe(ODS_BUTTON_TEXT_ALIGN.end);
     });
   });
 

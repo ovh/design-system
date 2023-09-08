@@ -1,4 +1,5 @@
-import { ODS_COUNTRY_ISO_CODE, ODS_COUNTRY_ISO_CODES } from '@ovhcloud/ods-common-core';
+import { ODS_COUNTRY_ISO_CODE, ODS_COUNTRY_ISO_CODES, ODS_LOCALE } from '@ovhcloud/ods-common-core';
+import { ODS_PHONE_NUMBER_COUTRIE } from '../constants/phone-number-countries';
 import { OsdsPhoneNumber } from '../osds-phone-number';
 import { OdsPhoneNumberController } from './controller';
 
@@ -30,85 +31,73 @@ describe('spec:ods-phone-number-controller', () => {
   });
 
   describe('methods', () => {
-    describe('methods:setDefaultIsoCode', () => {
+    describe('methods:getDefaultIsoCode', () => {
       it('should get the default iso code', () => {
         setup();
-        const isoCode = controller.setDefaultIsoCode();
+        const isoCode = controller.getDefaultIsoCode();
         expect(isoCode).toBe(ODS_COUNTRY_ISO_CODE.AD);
       });
 
       it('should get the component iso code', () => {
         setup({ isoCode: ODS_COUNTRY_ISO_CODE.FR });
-        const isoCode = controller.setDefaultIsoCode();
+        const isoCode = controller.getDefaultIsoCode();
         expect(isoCode).toBe(ODS_COUNTRY_ISO_CODE.FR);
       });
 
       it('should get the navigator iso code', () => {
         setup({ }, 'fr-FR');
-        const isoCode = controller.setDefaultIsoCode();
+        const isoCode = controller.getDefaultIsoCode();
         expect(isoCode).toBe(ODS_COUNTRY_ISO_CODE.FR);
-      });
-
-      it('should get the navigator iso code with the second language', () => {
-        setup({ }, 'en-us');
-        const isoCode = controller.setDefaultIsoCode();
-        expect(isoCode).toBe(ODS_COUNTRY_ISO_CODE.US);
       });
 
       it('should not get the navigator iso code because of a wrong isoCode', () => {
         setup({ }, 'en');
-        const isoCode = controller.setDefaultIsoCode();
+        const isoCode = controller.getDefaultIsoCode();
         expect(isoCode).toBe(ODS_COUNTRY_ISO_CODE.AD);
       });
 
       it('should not get the component iso code because of a wrong isoCode', () => {
         setup({ isoCode: 'fake' as ODS_COUNTRY_ISO_CODE });
-        const isoCode = controller.setDefaultIsoCode();
+        const isoCode = controller.getDefaultIsoCode();
         expect(isoCode).toBe(ODS_COUNTRY_ISO_CODE.AD);
       });
     });
     
-    describe('methods:setDefaultLocale', () => {
+    describe('methods:getDefaultLocale', () => {
       it('should get the default locale', () => {
         setup();
-        const locale = controller.setDefaultLocale();
-        expect(locale).toBe(ODS_COUNTRY_ISO_CODE.FR);
+        const locale = controller.getDefaultLocale();
+        expect(locale).toBe(ODS_LOCALE.FR);
       });
 
       it('should get the component locale', () => {
-        setup({ locale: ODS_COUNTRY_ISO_CODE.GB });
-        const locale = controller.setDefaultLocale();
-        expect(locale).toBe(ODS_COUNTRY_ISO_CODE.GB);
+        setup({ locale: ODS_LOCALE.EN });
+        const locale = controller.getDefaultLocale();
+        expect(locale).toBe(ODS_LOCALE.EN);
       });
 
       it('should get the navigator locale', () => {
         setup({ }, 'fr-FR');
-        const locale = controller.setDefaultLocale();
+        const locale = controller.getDefaultLocale();
         expect(locale).toBe(ODS_COUNTRY_ISO_CODE.FR);
       });
 
-      it('should get the navigator locale with the second language', () => {
-        setup({ }, 'en-us');
-        const isoCode = controller.setDefaultIsoCode();
-        expect(isoCode).toBe(ODS_COUNTRY_ISO_CODE.US);
+      it('should not get the navigator locale because of a wrong navigator language', () => {
+        setup({ }, 'af');
+        const locale = controller.getDefaultLocale();
+        expect(locale).toBe(ODS_LOCALE.FR);
       });
 
-      it('should not get the navigator locale because of a wrong isoCode', () => {
-        setup({ }, 'en-UK');
-        const locale = controller.setDefaultLocale();
-        expect(locale).toBe(ODS_COUNTRY_ISO_CODE.FR);
-      });
-
-      it('should not get the component locale because of a wrong isoCode', () => {
-        setup({ locale: 'fake' as ODS_COUNTRY_ISO_CODE });
-        const locale = controller.setDefaultLocale();
-        expect(locale).toBe(ODS_COUNTRY_ISO_CODE.FR);
+      it('should not get the component locale because of a wrong locale', () => {
+        setup({ locale: 'fake' as ODS_LOCALE });
+        const locale = controller.getDefaultLocale();
+        expect(locale).toBe(ODS_LOCALE.FR);
       });
     });
 
     describe('methods:getCountriesList', () => {
       it('should get all countries', () => {
-        setup({ countries: 'all' });
+        setup({ countries: ODS_PHONE_NUMBER_COUTRIE.All });
         const countries = controller.getCountriesList();
         expect(countries).toEqual(ODS_COUNTRY_ISO_CODES);
       });

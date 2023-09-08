@@ -1,11 +1,18 @@
+jest.mock('./core/controller', () => ({
+  loadTranslationFileByLocale: () => Promise.resolve([]),
+}));
+
 import type { OdsPhoneNumberAttribute } from './interfaces/attributes';
 import type { E2EElement, E2EPage } from '@stencil/core/testing';
 import type { HTTPRequest as pRequest } from 'puppeteer';
 import { newE2EPage } from '@stencil/core/testing';
-import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
+import { odsComponentAttributes2StringAttributes, odsMockProperty, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_COUNTRY_ISO_CODE } from '@ovhcloud/ods-common-core';
 import { odsSetE2eInterceptRequest } from '@ovhcloud/ods-common-stencil';
+import { ODS_PHONE_NUMBER_COUTRIE } from './constants/phone-number-countries';
+
+jest.useFakeTimers();
 
 describe('e2e:osds-phone-number', () => {
   const baseAttribute = { value: '' };
@@ -13,20 +20,22 @@ describe('e2e:osds-phone-number', () => {
   let el: E2EElement;
   let select: E2EElement;
   let input: E2EElement;
-  let url: string;
   let myCbk: (request: pRequest) => void;
 
   async function setup({ attributes, cbkInterceptorRequest }: { attributes: Partial<OdsPhoneNumberAttribute>, cbkInterceptorRequest?: (request: pRequest) => void }) {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsPhoneNumberAttribute>({ ...baseAttribute, ...attributes, countries: undefined }, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
+    
+    page.setRequestInterception(true);
     cbkInterceptorRequest && odsSetE2eInterceptRequest(page, cbkInterceptorRequest);
-
+    
     await page.setContent(`<osds-phone-number ${odsStringAttributes2Str(stringAttributes)}></osds-phone-number>`);
     await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
     await page.waitForChanges();
 
     el = await page.find('osds-phone-number');
+
     el.setProperty('countries', attributes.countries ?? []);
     await page.waitForChanges();
 
@@ -37,14 +46,12 @@ describe('e2e:osds-phone-number', () => {
   }
 
   beforeEach( async () => {
-    url = '';
     myCbk = (request) => {
-      if (request.url().includes('.svg')) {
+      if (request.url().includes('.svg') || request.url().includes('.json')) {
         request.respond({
           headers: { "Access-Control-Allow-Origin": "*" },
           body: 'myContent',
         });
-        url = request.url();
       } else {
         request.continue();
       }
@@ -53,6 +60,7 @@ describe('e2e:osds-phone-number', () => {
 
   it('should render', async () => {
     await setup({ attributes: {}, cbkInterceptorRequest: myCbk });
+
     expect(el).not.toBeNull();
     expect(el).toHaveClass('hydrated');
     
@@ -81,7 +89,7 @@ describe('e2e:osds-phone-number', () => {
   });
 
   it('should display select because of countries all', async () => {
-    await setup({ attributes: { countries: 'all' }, cbkInterceptorRequest: myCbk });
+    await setup({ attributes: { countries: ODS_PHONE_NUMBER_COUTRIE.All }, cbkInterceptorRequest: myCbk });
     
     expect(select).not.toBeNull();
     expect(select).toHaveClass('hydrated');

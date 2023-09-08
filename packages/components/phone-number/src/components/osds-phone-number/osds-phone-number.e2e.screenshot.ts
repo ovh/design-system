@@ -3,7 +3,7 @@ import type { OdsPhoneNumberAttribute } from './interfaces/attributes';
 import { newE2EPage } from '@stencil/core/testing';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { ODS_COUNTRY_ISO_CODE } from '@ovhcloud/ods-common-core';
+import { ODS_COUNTRY_ISO_CODE, ODS_LOCALE } from '@ovhcloud/ods-common-core';
 
 describe('e2e:osds-phone-number', () => {
   const baseAttribute = { ariaLabel: '', forbiddenValues: [], value: '' };
@@ -26,7 +26,7 @@ describe('e2e:osds-phone-number', () => {
     [false, true].forEach((disabled) => {
       [false, true].forEach((error) => {
         [[], 'all', [ODS_COUNTRY_ISO_CODE.FR, ODS_COUNTRY_ISO_CODE.AD]].forEach((countries) => {
-          [undefined, ODS_COUNTRY_ISO_CODE.FR].forEach((locale) => {  
+          [undefined, ODS_LOCALE.FR].forEach((locale) => {  
             [undefined, ODS_COUNTRY_ISO_CODE.FR].forEach((isoCode) => {  
               [false, true].forEach((clearable) => {
                 ['', 'value'].forEach((value) => {

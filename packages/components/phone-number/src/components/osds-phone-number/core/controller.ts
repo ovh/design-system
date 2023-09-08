@@ -1,6 +1,8 @@
 import type { OsdsPhoneNumber } from '../osds-phone-number';
 import { ODS_COUNTRY_ISO_CODE, ODS_COUNTRY_ISO_CODES, ODS_LOCALE, ODS_LOCALES } from '@ovhcloud/ods-common-core';
 import { ODS_PHONE_NUMBER_COUTRIE } from '../constants/phone-number-countries';
+import countriesTranslationEn from '@ovhcloud/ods-common-core/src/i18n/countries/en.json'
+import countriesTranslationFr from '@ovhcloud/ods-common-core/src/i18n/countries/fr.json'
 
 class OdsPhoneNumberController {
 
@@ -31,18 +33,11 @@ class OdsPhoneNumberController {
     return this.component.countries || [];
   }
 
-  async loadTranslationFileByLocale(locale: ODS_LOCALE): Promise<{ isoCode: string, name: string }[]> {
-    console.log('locale', locale)
-    try {
-      const { default: file } = await import(`../../../assets/countries/${locale}.json`);
-      return file;
-    } catch (error) {
-      if (error instanceof Error && error.message.includes('error loading dynamically imported module')) {
-        const { default: file } = await import(`../../../assets/countries/en.json`);
-        return file;
-      }
-      throw error;
+  loadTranslationFileByLocale(locale: ODS_LOCALE): { isoCode: string, name: string }[] {
+    if (locale === ODS_LOCALE.EN) {
+      return countriesTranslationEn;
     }
+    return countriesTranslationFr;
   }
 
   private getValueOrNavigatorOrDefault<T>({ value, list, defaultValue, guard }: { value: T | undefined, list: readonly T[], defaultValue: T, guard: (value: T | string | undefined) => value is T }): T {

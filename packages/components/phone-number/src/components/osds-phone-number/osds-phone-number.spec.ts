@@ -4,7 +4,8 @@ import { newSpecPage } from '@stencil/core/testing';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute, OdsUnitTestAttributeType } from '@ovhcloud/ods-common-testing';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OsdsPhoneNumber } from './osds-phone-number';
-import { ODS_COUNTRY_ISO_CODE, ODS_COUNTRY_ISO_CODES } from '@ovhcloud/ods-common-core';
+import { ODS_COUNTRY_ISO_CODE, ODS_COUNTRY_ISO_CODES, ODS_LOCALE } from '@ovhcloud/ods-common-core';
+import { ODS_PHONE_NUMBER_COUTRIE } from './constants/phone-number-countries';
 
 describe('spec:osds-phone-number', () => {
   const baseAttribute = { ariaLabel: '', forbiddenValues: [], value: '' };
@@ -60,7 +61,7 @@ describe('spec:osds-phone-number', () => {
         name: 'countries',
         defaultValue: DEFAULT_ATTRIBUTE.countries,
         newValue: [ODS_COUNTRY_ISO_CODE.FR, ODS_COUNTRY_ISO_CODE.GB],
-        value: 'all',
+        value: ODS_PHONE_NUMBER_COUTRIE.All,
         setup: (countries) => setup({ attributes: { countries } }),
         ...config,
         exclude: [OdsUnitTestAttributeType.REFLECTED, OdsUnitTestAttributeType.MUTABLE],
@@ -105,8 +106,8 @@ describe('spec:osds-phone-number', () => {
       odsUnitTestAttribute<OdsPhoneNumberAttribute, 'locale'>({
         name: 'locale',
         defaultValue: DEFAULT_ATTRIBUTE.locale,
-        newValue: ODS_COUNTRY_ISO_CODE.FR,
-        value:  ODS_COUNTRY_ISO_CODE.GB,
+        newValue: ODS_LOCALE.FR,
+        value:  ODS_LOCALE.EN,
         setup: (locale) => setup({ attributes: { locale } }),
         ...config,
         exclude: [OdsUnitTestAttributeType.DEFAULT],
@@ -135,7 +136,7 @@ describe('spec:osds-phone-number', () => {
       });
 
       it('should get countries list with all', async () => {
-        await setup({ attributes: { countries: 'all'} });
+        await setup({ attributes: { countries: ODS_PHONE_NUMBER_COUTRIE.All} });
         instance.handlerCountries();
         expect(instance.countriesList).toEqual(ODS_COUNTRY_ISO_CODES);
         expect(select).toBeDefined();
@@ -149,10 +150,6 @@ describe('spec:osds-phone-number', () => {
         expect(instance.countriesList).toEqual(countries);
         expect(select).toBeDefined();
       });
-    });
-
-    describe('methods:componentWillLoad', () => {
-      
     });
   });
 });

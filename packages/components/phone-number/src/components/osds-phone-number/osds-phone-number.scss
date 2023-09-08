@@ -1,36 +1,35 @@
 @import '~@ovhcloud/ods-common-theming/color/ods-theming-color';
 @import '~@ovhcloud/ods-common-theming/ods-theme';
 
-:host {
+:host(.phone-number) {
   display: inline-flex;
+}
 
-  osds-select {
+.phone-number {
+
+  &__select {
     --ods-size-select-border-radius-bottom-right: 0;
     --ods-size-select-border-radius-top-right: 0;
     --ods-size-select-border-right-width: 0;
-  }
 
-  osds-input {
-    flex: auto;
-    
-  }
-
-  osds-input:not(.first) {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-    border-left-width: 0;
-  }
-
-  osds-flag {
-    display: inline-block;
-    width: 2em;
-    margin-right: .5em;
-  }
-
-  .phone-number {
-    &--select-option {
+    &__option {
       display: flex;
+
+      &__flag {
+        display: inline-block;
+        width: 2em;
+        margin-right: .5em;
+      }
     }
   }
-    
+
+  &__input {
+    flex: auto;
+
+    &--no-first {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      border-left-width: 0;
+    }
+  }
 }

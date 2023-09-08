@@ -6,12 +6,14 @@ import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OsdsPhoneNumber } from './osds-phone-number';
 import { ODS_COUNTRY_ISO_CODE, ODS_COUNTRY_ISO_CODES, ODS_LOCALE } from '@ovhcloud/ods-common-core';
 import { ODS_PHONE_NUMBER_COUTRIE } from './constants/phone-number-countries';
+import { OdsPhoneNumberController } from './core/controller';
 
 describe('spec:osds-phone-number', () => {
   const baseAttribute = { ariaLabel: '', forbiddenValues: [], value: '' };
   let page: SpecPage;
   let root: HTMLElement | undefined;
   let instance: OsdsPhoneNumber;
+  let controller: OdsPhoneNumberController;
   let select: HTMLElement;
 
   afterEach(() => {
@@ -27,7 +29,7 @@ describe('spec:osds-phone-number', () => {
 
     root = page.root;
     instance = page.rootInstance;
-    
+
     select = root.shadowRoot.querySelector('osds-select');
   }
 
@@ -149,6 +151,24 @@ describe('spec:osds-phone-number', () => {
         instance.handlerCountries();
         expect(instance.countriesList).toEqual(countries);
         expect(select).toBeDefined();
+      });
+    });
+    
+    describe('methods:handlerLocale', () => {
+      it('should get i18nCountriesMap by locale EN', async () => {
+        await setup();
+        instance.handlerLocale(ODS_LOCALE.EN);
+        expect(instance.i18nCountriesMap).toBeInstanceOf(Map);
+        expect(instance.i18nCountriesMap.get('fr')).toEqual({ isoCode: "fr", name: "France" });
+        expect(instance.i18nCountriesMap.get('gb')).toEqual({ isoCode: "gb", name: "United Kingdom of Great Britain and Northern Ireland" },);
+      });
+
+      it('should get i18nCountriesMap by locale FR', async () => {
+        await setup();
+        instance.handlerLocale(ODS_LOCALE.FR);
+        expect(instance.i18nCountriesMap).toBeInstanceOf(Map);
+        expect(instance.i18nCountriesMap.get('fr')).toEqual({ isoCode: "fr", name: "France" });
+        expect(instance.i18nCountriesMap.get('gb')).toEqual({ isoCode: "gb", name: "Royaume-Uni" },);
       });
     });
   });

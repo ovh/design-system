@@ -2,6 +2,8 @@ import { ODS_COUNTRY_ISO_CODE, ODS_COUNTRY_ISO_CODES, ODS_LOCALE } from '@ovhclo
 import { ODS_PHONE_NUMBER_COUTRIE } from '../constants/phone-number-countries';
 import { OsdsPhoneNumber } from '../osds-phone-number';
 import { OdsPhoneNumberController } from './controller';
+import countriesTranslationEn from '@ovhcloud/ods-common-core/src/i18n/countries/en.json'
+import countriesTranslationFr from '@ovhcloud/ods-common-core/src/i18n/countries/fr.json'
 
 class OdsPhoneNumberMock extends OsdsPhoneNumber {
   constructor(attribute: Partial<OsdsPhoneNumber>) {
@@ -112,6 +114,26 @@ describe('spec:ods-phone-number-controller', () => {
         const countries = [ODS_COUNTRY_ISO_CODE.FR, ODS_COUNTRY_ISO_CODE.GB]
         setup({ countries });
         expect(controller.getCountriesList()).toEqual(countries);
+      });
+    });
+    
+    describe('methods:loadTranslationFileByLocale', () => {
+      it('should get translationFile by locale EN', async () => {
+        await setup({ });
+        const file = await controller.loadTranslationFileByLocale(ODS_LOCALE.FR);
+        expect(file).toEqual(countriesTranslationFr);
+      });
+
+      it('should get translationFile by locale FR', async () => {
+        await setup({ });
+        const file = await controller.loadTranslationFileByLocale(ODS_LOCALE.EN);
+        expect(file).toEqual(countriesTranslationEn);
+      });
+
+      it('should get translationFile FR by default', async () => {
+        await setup({ });
+        const file = await controller.loadTranslationFileByLocale(ODS_LOCALE.AR);
+        expect(file).toEqual(countriesTranslationFr);
       });
     });
     

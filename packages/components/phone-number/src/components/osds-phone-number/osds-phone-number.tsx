@@ -1,5 +1,5 @@
 import type { OdsPhoneNumberAttribute } from './interfaces/attributes';
-import type { ODS_COUNTRY_ISO_CODE, ODS_LOCALE } from '@ovhcloud/ods-common-core';
+import { ODS_COUNTRY_ISO_CODE, ODS_LOCALE } from '@ovhcloud/ods-common-core';
 import { Component, Host, h, Prop, State, Watch } from '@stencil/core';
 import { ODS_INPUT_TYPE } from '@ovhcloud/ods-component-input';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
@@ -14,6 +14,7 @@ import { ODS_PHONE_NUMBER_COUTRIE } from './constants/phone-number-countries';
   tag: 'osds-phone-number',
   styleUrl: 'osds-phone-number.scss',
   shadow: true,
+  assetsDirs: ['../../assets'],
 })
 export class OsdsPhoneNumber implements OdsPhoneNumberAttribute {
   controller = new OdsPhoneNumberController(this);
@@ -44,20 +45,20 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute {
   @State() countriesList: readonly ODS_COUNTRY_ISO_CODE[] = [];
   @State() hasCountries: boolean = false;
 
-  async componentWillLoad(): Promise<void> {
+  componentWillLoad(): void {
     this.isoCode = this.controller.getDefaultIsoCode();
     this.locale = this.controller.getDefaultLocale();
-    const translationFile = await this.loadTranslationFileByLocale(this.locale)
-    this.i18nCountriesMap = translationFile.reduce((acc, country) => {
-      acc.set(country.isoCode, country);
-      return acc;
-    }, new Map());
+    this.handlerLocale(this.locale);
     this.handlerCountries();
   }
 
   @Watch('locale')
-  async loadTranslationFileByLocale(locale: ODS_LOCALE): Promise<{ isoCode: string, name: string }[]> {
-    return this.controller.loadTranslationFileByLocale(locale);
+  handlerLocale(locale: ODS_LOCALE): void {
+    const translationFile = this.controller.loadTranslationFileByLocale(locale);
+    this.i18nCountriesMap = translationFile.reduce((acc, country) => {
+      acc.set(country.isoCode, country);
+      return acc;
+    }, new Map());
   }
 
   @Watch('countries')
@@ -89,7 +90,7 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute {
           tabindex="1"
           class={{ 
             'phone-number__input': true,
-            'phone-number__input--no-first': this.hasCountries,
+            'phone-number__input--not-first': this.hasCountries,
           }}
           color={ODS_THEME_COLOR_INTENT.primary}
           type={ODS_INPUT_TYPE.tel}

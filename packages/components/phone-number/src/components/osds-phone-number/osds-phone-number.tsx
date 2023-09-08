@@ -1,11 +1,11 @@
 import type { OdsPhoneNumberAttribute } from './interfaces/attributes';
-import type { ODS_COUNTRY_ISO_CODE } from '@ovhcloud/ods-common-core';
+import type { ODS_COUNTRY_ISO_CODE, ODS_LOCALE } from '@ovhcloud/ods-common-core';
 import { Component, Host, h, Prop, State, Watch } from '@stencil/core';
 import { ODS_INPUT_TYPE } from '@ovhcloud/ods-component-input';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsPhoneNumberController } from './core/controller';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import { default as translateEn } from '@ovhcloud/ods-common-core/src/i18n/countries/en.json';
+import { ODS_PHONE_NUMBER_COUTRIE } from './constants/phone-number-countries';
 
 /**
  * @slot (unnamed) - Phone Number content
@@ -22,7 +22,7 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute {
   @Prop({ reflect: true }) clearable?: boolean = DEFAULT_ATTRIBUTE.clearable;
 
   /** @see OdsPhoneNumberAttribute.countries */
-  @Prop({ reflect: true }) countries?: ODS_COUNTRY_ISO_CODE[] | 'all' = DEFAULT_ATTRIBUTE.countries;
+  @Prop({ reflect: true, mutable: true }) countries?: ODS_COUNTRY_ISO_CODE[] | ODS_PHONE_NUMBER_COUTRIE.All = DEFAULT_ATTRIBUTE.countries;
 
   /** @see OdsPhoneNumberAttribute.disabled */
   @Prop({ reflect: true }) disabled?: boolean = DEFAULT_ATTRIBUTE.disabled;
@@ -34,23 +34,30 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute {
   @Prop({ reflect: true, mutable: true }) isoCode?: ODS_COUNTRY_ISO_CODE = DEFAULT_ATTRIBUTE.isoCode;
 
   /** @see OdsPhoneNumberAttribute.locale */
-  @Prop({ reflect: true, mutable: true }) locale?: ODS_COUNTRY_ISO_CODE = DEFAULT_ATTRIBUTE.locale;
+  @Prop({ reflect: true, mutable: true }) locale?: ODS_LOCALE = DEFAULT_ATTRIBUTE.locale;
 
   /** @see OdsPhoneNumberAttribute.value */
   @Prop({ reflect: true, mutable: true }) value = DEFAULT_ATTRIBUTE.value;
 
-  @State() i18nCountries: Map<string, { isoCode: string , name: string }> = translateEn.reduce((acc, country) => {
-    acc.set(country.isoCode, country);
-    return acc;
-  }, new Map());
+  @State() i18nCountriesMap!: Map<string, { isoCode: string , name: string }>;
 
-  @State() countriesList: ODS_COUNTRY_ISO_CODE[] = [];
+  @State() countriesList: readonly ODS_COUNTRY_ISO_CODE[] = [];
   @State() hasCountries: boolean = false;
 
-  componentWillLoad(): void {
-    this.isoCode = this.controller.setDefaultIsoCode();
-    this.locale = this.controller.setDefaultLocale();
+  async componentWillLoad(): Promise<void> {
+    this.isoCode = this.controller.getDefaultIsoCode();
+    this.locale = this.controller.getDefaultLocale();
+    const translationFile = await this.loadTranslationFileByLocale(this.locale)
+    this.i18nCountriesMap = translationFile.reduce((acc, country) => {
+      acc.set(country.isoCode, country);
+      return acc;
+    }, new Map());
     this.handlerCountries();
+  }
+
+  @Watch('locale')
+  async loadTranslationFileByLocale(locale: ODS_LOCALE): Promise<{ isoCode: string, name: string }[]> {
+    return this.controller.loadTranslationFileByLocale(locale);
   }
 
   @Watch('countries')
@@ -65,13 +72,14 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute {
         {
           this.hasCountries && <osds-select
             tabindex="0"
+            class="phone-number__select"
             disabled={this.disabled}
             error={this.error}
             value={this.isoCode}>
             { this.countriesList?.map((country) => <osds-select-option value={ country }>
-              <div class="phone-number--select-option">
+              <div class="phone-number__select__option">
                 <osds-flag iso={country}></osds-flag>
-                <span>{ this.i18nCountries?.get(country)?.name }</span>
+                <osds-text>{ this.i18nCountriesMap?.get(country)?.name }</osds-text>
               </div>
             </osds-select-option>) }
           </osds-select>
@@ -79,7 +87,10 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute {
         
         <osds-input
           tabindex="1"
-          class={{ 'first': !this.hasCountries }}
+          class={{ 
+            'phone-number__input': true,
+            'phone-number__input--no-first': this.hasCountries,
+          }}
           color={ODS_THEME_COLOR_INTENT.primary}
           type={ODS_INPUT_TYPE.tel}
           clearable={this.clearable}

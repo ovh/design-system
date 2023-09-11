@@ -15,7 +15,7 @@ odsSetup();
 
 const logger = new OdsLogger('global-dev');
 logger.log('init');
-Ods.instance().assetPath('../../../packages/tools/stories/public/flags/');
+Ods.instance().assetPath('../flags/flags-4x3/');
 
 (window as any).globalMethod = async function () {
   logger.log('globalMethod');

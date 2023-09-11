@@ -18,7 +18,7 @@
   <osds-phone-number clearable value="+33 6426658925"></osds-phone-number>
   <br/>
   <br/>
-  <osds-phone-number id="phoneNumberWithSetCountries" clearable value="+33 6426658925"></osds-phone-number>
+  <osds-phone-number countries='["fr", "gb"]' clearable value="+33 6426658925"></osds-phone-number>
 
   <p>Error</p>
   <osds-phone-number countries="all" error value="+33 6426658925"></osds-phone-number>
@@ -31,12 +31,5 @@
   <br/>
   <br/>
   <osds-phone-number disabled value="+33 6426658925"></osds-phone-number>
-
-
-  <script>
-    const phoneNumberWithSetCountries = document.getElementById('phoneNumberWithSetCountries');
-    phoneNumberWithSetCountries.countries = ['fr', 'gb'];
-    phoneNumberWithSetCountries.addEventListener('odsValueChange', () => console.log('odsValueChange'))
-  </script>
 </body>
 </html>

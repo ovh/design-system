@@ -26,7 +26,7 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
   controller = new OdsPhoneNumberController(this);
   parsedCountries: ODS_COUNTRY_ISO_CODE[] = [];
 
-  phoneUtil = PhoneNumberUtil.getInstance();
+  phoneUtils = PhoneNumberUtil.getInstance();
 
   /** @see OdsPhoneNumberAttribute.clearable */
   @Prop({ reflect: true }) clearable?: boolean = DEFAULT_ATTRIBUTE.clearable;
@@ -60,6 +60,9 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
     // order matter
     this.handlerCountries();
     this.isoCode = this.controller.getDefaultIsoCode();
+    // const number = this.phoneUtils.parseAndKeepRawInput('0642664231', 'fr');
+    // console.log('number', number)
+    // console.log('this.isValidNumberForRegion', this.phoneUtils.isValidNumberForRegion(number, 'fr'))
     this.locale = this.controller.getDefaultLocale();
     this.handlerLocale(this.locale);
     this.validateValue();
@@ -110,8 +113,8 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
     const oldNumber =this.controller.parseNumber(event.oldValue);
     this.odsValueChange.emit({
       ...event,
-      value: number && this.phoneUtil.format(number, PhoneNumberFormat.E164),
-      oldValue: oldNumber && this.phoneUtil.format(oldNumber, PhoneNumberFormat.E164) || undefined,
+      value: number && this.phoneUtils.format(number, PhoneNumberFormat.E164),
+      oldValue: oldNumber && this.phoneUtils.format(oldNumber, PhoneNumberFormat.E164) || undefined,
       isoCode: this.isoCode,
     })
   }
@@ -129,15 +132,37 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
     if (!number) {
       return false;
     }
-    return this.phoneUtil.isPossibleNumber(number) && this.phoneUtil.isValidNumberForRegion(number, this.isoCode);
+    return this.phoneUtils.isPossibleNumber(number) && this.phoneUtils.isValidNumberForRegion(number, this.isoCode);
   }
 
   getPlaceholder(): string | undefined {
     if (!this.isoCode) {
       return undefined;
     }
-    const exampleNumber = this.phoneUtil.getExampleNumber(this.isoCode);
-    return this.phoneUtil.format(exampleNumber, PhoneNumberFormat.E164);
+    const exampleNumber = this.phoneUtils.getExampleNumber(this.isoCode);
+    return this.phoneUtils.format(exampleNumber, PhoneNumberFormat.E164);
+  }
+
+  @Listen('odsValueChange')
+  handlerInputEventChange(event: CustomEvent<OdsInputValueChangeEventDetail>): void {
+    event.preventDefault();
+    this.error = this.isValidInput();
+    console.log('this.error', this.error)
+    if(this.error) {
+      return;
+    }
+    this.odsValueChange.emit({
+      ...event.detail,
+      isoCode: this.isoCode,
+    })
+  }
+
+  isValidInput(): boolean {
+    const number = this.phoneUtils.parse(this.value ?? '', this.isoCode);
+    console.log('number', number);
+    console.log('this.phoneUtils.isPossibleNumber(number)', this.phoneUtils.isPossibleNumber(number));
+    console.log('this.phoneUtils.isValidNumberForRegion(number, this.isoCode)', this.phoneUtils.isValidNumberForRegion(number, this.isoCode))
+    return this.phoneUtils.isPossibleNumber(number) && this.phoneUtils.isValidNumberForRegion(number, this.isoCode);
   }
 
   render() {

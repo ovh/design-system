@@ -40,10 +40,12 @@
     "@ovhcloud/ods-component-flag": "^16.0.1",
     "@ovhcloud/ods-component-input": "^16.0.1",
     "@ovhcloud/ods-component-select": "^16.0.1",
-    "@ovhcloud/ods-component-text": "^16.0.1"
+    "@ovhcloud/ods-component-text": "^16.0.1",
+    "google-libphonenumber": "^3.2.33"
   },
   "devDependencies": {
     "@ovhcloud/ods-common-testing": "^16.0.1",
-    "@ovhcloud/ods-stencil-dev": "^16.0.1"
+    "@ovhcloud/ods-stencil-dev": "^16.0.1",
+    "@types/google-libphonenumber": "^7.4.26"
   }
 }

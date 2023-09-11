@@ -1,6 +1,6 @@
 import type { OsdsPhoneNumber } from '../osds-phone-number';
 import { ODS_COUNTRY_ISO_CODE, ODS_COUNTRY_ISO_CODES, ODS_LOCALE, ODS_LOCALES } from '@ovhcloud/ods-common-core';
-import { ODS_PHONE_NUMBER_COUTRIE } from '../constants/phone-number-countries';
+import { ODS_PHONE_NUMBER_COUNTRY_PRESET } from '../constants/phone-number-countries';
 import countriesTranslationEn from '@ovhcloud/ods-common-core/src/i18n/countries/en.json'
 import countriesTranslationFr from '@ovhcloud/ods-common-core/src/i18n/countries/fr.json'
 
@@ -21,13 +21,13 @@ class OdsPhoneNumberController {
     return this.getValueOrNavigatorOrDefault({
       value: this.component.isoCode,
       list: ODS_COUNTRY_ISO_CODES,
-      defaultValue: ODS_COUNTRY_ISO_CODE.AD,
+      defaultValue: this.component.parsedCountries[0],
       guard: this.isOdsCountryCode,
     });
   }
 
-  getCountriesList(): readonly ODS_COUNTRY_ISO_CODE[] {
-    if (this.component.countries === ODS_PHONE_NUMBER_COUTRIE.All) {
+  getCountriesList(): readonly ODS_COUNTRY_ISO_CODE[] | string {
+    if (this.component.countries === ODS_PHONE_NUMBER_COUNTRY_PRESET.All) {
       return ODS_COUNTRY_ISO_CODES;
     }
     return this.component.countries || [];

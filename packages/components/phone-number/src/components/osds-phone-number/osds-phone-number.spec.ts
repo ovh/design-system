@@ -5,15 +5,13 @@ import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUn
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OsdsPhoneNumber } from './osds-phone-number';
 import { ODS_COUNTRY_ISO_CODE, ODS_COUNTRY_ISO_CODES, ODS_LOCALE } from '@ovhcloud/ods-common-core';
-import { ODS_PHONE_NUMBER_COUTRIE } from './constants/phone-number-countries';
-import { OdsPhoneNumberController } from './core/controller';
+import { ODS_PHONE_NUMBER_COUNTRY_PRESET } from './constants/phone-number-countries';
 
 describe('spec:osds-phone-number', () => {
   const baseAttribute = { ariaLabel: '', forbiddenValues: [], value: '' };
   let page: SpecPage;
   let root: HTMLElement | undefined;
   let instance: OsdsPhoneNumber;
-  let controller: OdsPhoneNumberController;
   let select: HTMLElement;
 
   afterEach(() => {
@@ -63,7 +61,7 @@ describe('spec:osds-phone-number', () => {
         name: 'countries',
         defaultValue: DEFAULT_ATTRIBUTE.countries,
         newValue: [ODS_COUNTRY_ISO_CODE.FR, ODS_COUNTRY_ISO_CODE.GB],
-        value: ODS_PHONE_NUMBER_COUTRIE.All,
+        value: ODS_PHONE_NUMBER_COUNTRY_PRESET.All,
         setup: (countries) => setup({ attributes: { countries } }),
         ...config,
         exclude: [OdsUnitTestAttributeType.REFLECTED, OdsUnitTestAttributeType.MUTABLE],
@@ -133,14 +131,14 @@ describe('spec:osds-phone-number', () => {
       it('should get countries list with default value & not display select', async () => {
         await setup();
         instance.handlerCountries();
-        expect(instance.countriesList).toEqual([]);
+        expect(instance.parsedCountries).toEqual([]);
         expect(select).toBe(null);
       });
 
       it('should get countries list with all', async () => {
-        await setup({ attributes: { countries: ODS_PHONE_NUMBER_COUTRIE.All} });
+        await setup({ attributes: { countries: ODS_PHONE_NUMBER_COUNTRY_PRESET.All } });
         instance.handlerCountries();
-        expect(instance.countriesList).toEqual(ODS_COUNTRY_ISO_CODES);
+        expect(instance.parsedCountries).toEqual(ODS_COUNTRY_ISO_CODES);
         expect(select).toBeDefined();
       });
 
@@ -149,9 +147,18 @@ describe('spec:osds-phone-number', () => {
         await setup({ });
         instance.countries = countries;
         instance.handlerCountries();
-        expect(instance.countriesList).toEqual(countries);
+        expect(instance.parsedCountries).toEqual(countries);
         expect(select).toBeDefined();
       });
+
+      it('should parsed string coutries', async () => {
+        await setup();
+        instance.countries = JSON.stringify(["fr", "gb"]);
+        instance.handlerCountries();
+        expect(instance.parsedCountries).toEqual([ODS_COUNTRY_ISO_CODE.FR, ODS_COUNTRY_ISO_CODE.GB]);
+        expect(select).toBeDefined();
+      });
+
     });
     
     describe('methods:handlerLocale', () => {

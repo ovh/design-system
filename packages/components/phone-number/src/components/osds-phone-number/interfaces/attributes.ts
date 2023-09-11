@@ -1,11 +1,11 @@
 import type { ODS_COUNTRY_ISO_CODE, ODS_LOCALE } from "@ovhcloud/ods-common-core";
-import { ODS_PHONE_NUMBER_COUTRIE } from "../constants/phone-number-countries";
+import { ODS_PHONE_NUMBER_COUNTRY_PRESET } from "../constants/phone-number-countries";
 
 interface OdsPhoneNumberAttribute {
   /** Ability to clear the phone number value */
   clearable?: boolean;
   /** A specific subset of countries to display in the select instead of the whole list  */
-  countries?: ODS_COUNTRY_ISO_CODE[] | ODS_PHONE_NUMBER_COUTRIE.All;
+  countries?: ODS_COUNTRY_ISO_CODE[] | ODS_PHONE_NUMBER_COUNTRY_PRESET.All | string;
   disabled?: boolean;
   /** Indicates if the phone number shows error or not */
   error?: boolean;

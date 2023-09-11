@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-common-theming",
-  "version": "15.0.1",
+  "version": "16.0.0",
   "description": "ODS common theming helpers",
   "author": "OVH SAS",
   "license": "Apache-2.0",
@@ -22,6 +22,6 @@
   },
   "devDependencies": {
     "@marsbased/svgpack": "1.0.3",
-    "@ovhcloud/ods-dev": "15.0.1"
+    "@ovhcloud/ods-dev": "16.0.0"
   }
 }

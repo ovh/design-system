@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [16.0.0](https://ovh.github.io/design-system/v16.0.0/?path=/docs/design-system-changelog--page) (2023-09-11)
+[compare](https://github.com/ovh/design-system/compare/v15.0.1...v16.0.0)
+
+### Bug Fixes
+
+* **checkbox-button:** fix sizing in theme ([9bc48db](https://github.com/ovh/design-system/commit/9bc48db6948a9983d8a5f738b97b771d47459430))
+* **code:** display error when inserting long code inputs ([#138](https://github.com/ovh/design-system/issues/138)) ([b12fd47](https://github.com/ovh/design-system/commit/b12fd470f7e6fe0dfb6d4aa1c4c8002d76b27ac3))
+
+
+### Features
+
+* **deps:** use fixed library version ([116d583](https://github.com/ovh/design-system/commit/116d58306b5c528f127dcfa1a1043507f2ec5141))
+
+
+
 [Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
 
 

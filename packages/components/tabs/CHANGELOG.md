@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [16.0.0](https://ovh.github.io/design-system/v16.0.0/?path=/docs/design-system-changelog--page) (2023-09-11)
+[compare](https://github.com/ovh/design-system/compare/v15.0.1...v16.0.0)
+
+### Bug Fixes
+
+* **tabs:** theming import ([4286a54](https://github.com/ovh/design-system/commit/4286a541c47e3a23dbc241c5ef19335d7b7da3b0))
+* **tabs:** use correct theming dependency ([b31672a](https://github.com/ovh/design-system/commit/b31672aea674bc2f5831b9b678f36c83b67d079a))
+
+
+### Features
+
+* **deps:** use fixed library version ([116d583](https://github.com/ovh/design-system/commit/116d58306b5c528f127dcfa1a1043507f2ec5141))
+
+
+
 [Latest version](https://ovhcloud.design/latest/?path=/docs/design-system-changelog--page)
 
 

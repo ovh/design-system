@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-component-menu-react",
-  "version": "15.0.1",
+  "version": "16.0.0",
   "private": true,
   "description": "React specific wrapper for ods",
   "keywords": [],
@@ -20,13 +20,13 @@
     "dist/"
   ],
   "dependencies": {
-    "@ovhcloud/ods-component-menu": "15.0.1"
+    "@ovhcloud/ods-component-menu": "16.0.0"
   },
   "peerDependencies": {
     "react": ">=16.8.6",
     "react-dom": ">=16.8.6"
   },
   "devDependencies": {
-    "@ovhcloud/ods-react-dev": "15.0.1"
+    "@ovhcloud/ods-react-dev": "16.0.0"
   }
 }

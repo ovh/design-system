@@ -4,7 +4,7 @@ import * as jestConfig from './jest.config';
 
 const args = process.argv.slice(2);
 
-export const config: Config = getStencilConfig({
+const config: Config = getStencilConfig({
   namespace: 'osds-phone-number',
   args,
   jestConfig: jestConfig.default,
@@ -26,3 +26,25 @@ export const config: Config = getStencilConfig({
     globalScript: 'src/global.test.ts'
   },
 });
+
+
+config.outputTargets?.forEach(output => {
+  if (output.type === 'dist-custom-elements' || output.type === 'www') {
+    output.copy = output.copy || [];
+    output.copy.push(
+      {
+        src: '../../../../node_modules/flag-icons/flags/4x3/',
+        dest: `${output.type === 'dist-custom-elements' ? 'dist/' : ''}flags/flags-4x3/`,
+      }
+    );
+  }
+  if (output.type === 'www') {
+    output.copy = output.copy || [];
+    output.copy.push({
+      src: '../../../../node_modules/flag-icons/flags/4x3/',
+      dest: 'flags-custom-path/'
+    });
+  }
+});
+
+export { config };

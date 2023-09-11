@@ -1,5 +1,5 @@
 import { ODS_COUNTRY_ISO_CODE, ODS_COUNTRY_ISO_CODES, ODS_LOCALE } from '@ovhcloud/ods-common-core';
-import { ODS_PHONE_NUMBER_COUTRIE } from '../constants/phone-number-countries';
+import { ODS_PHONE_NUMBER_COUNTRY_PRESET } from '../constants/phone-number-countries';
 import { OsdsPhoneNumber } from '../osds-phone-number';
 import { OdsPhoneNumberController } from './controller';
 import countriesTranslationEn from '@ovhcloud/ods-common-core/src/i18n/countries/en.json'
@@ -13,6 +13,7 @@ class OdsPhoneNumberMock extends OsdsPhoneNumber {
   emitChange = jest.fn();
   emitFocus = jest.fn();
   emitBlur = jest.fn();
+  parsedCountries = ODS_COUNTRY_ISO_CODES as ODS_COUNTRY_ISO_CODE[];
 }
 
 describe('spec:ods-phone-number-controller', () => {
@@ -63,6 +64,12 @@ describe('spec:ods-phone-number-controller', () => {
         const isoCode = controller.getDefaultIsoCode();
         expect(isoCode).toBe(ODS_COUNTRY_ISO_CODE.AD);
       });
+
+      it('should get the first element of parsedCountries as isoCode', () => {
+        setup({ parsedCountries: [ODS_COUNTRY_ISO_CODE.CH, ODS_COUNTRY_ISO_CODE.AD, ODS_COUNTRY_ISO_CODE.AE]});
+        const isoCode = controller.getDefaultIsoCode();
+        expect(isoCode).toBe(ODS_COUNTRY_ISO_CODE.CH);
+      });
     });
     
     describe('methods:getDefaultLocale', () => {
@@ -99,7 +106,7 @@ describe('spec:ods-phone-number-controller', () => {
 
     describe('methods:getCountriesList', () => {
       it('should get all countries', () => {
-        setup({ countries: ODS_PHONE_NUMBER_COUTRIE.All });
+        setup({ countries: ODS_PHONE_NUMBER_COUNTRY_PRESET.All });
         const countries = controller.getCountriesList();
         expect(countries).toEqual(ODS_COUNTRY_ISO_CODES);
       });

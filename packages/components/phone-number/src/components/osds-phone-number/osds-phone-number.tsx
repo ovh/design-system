@@ -1,11 +1,11 @@
 import type { OdsPhoneNumberAttribute } from './interfaces/attributes';
-import { ODS_COUNTRY_ISO_CODE, ODS_LOCALE } from '@ovhcloud/ods-common-core';
+import { OdsLogger, ODS_COUNTRY_ISO_CODE, ODS_LOCALE } from '@ovhcloud/ods-common-core';
 import { Component, Host, h, Prop, State, Watch } from '@stencil/core';
 import { ODS_INPUT_TYPE } from '@ovhcloud/ods-component-input';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsPhoneNumberController } from './core/controller';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import { ODS_PHONE_NUMBER_COUTRIE } from './constants/phone-number-countries';
+import { ODS_PHONE_NUMBER_COUNTRY_PRESET } from './constants/phone-number-countries';
 
 /**
  * @slot (unnamed) - Phone Number content
@@ -14,16 +14,17 @@ import { ODS_PHONE_NUMBER_COUTRIE } from './constants/phone-number-countries';
   tag: 'osds-phone-number',
   styleUrl: 'osds-phone-number.scss',
   shadow: true,
-  assetsDirs: ['../../assets'],
 })
 export class OsdsPhoneNumber implements OdsPhoneNumberAttribute {
+  private logger = new OdsLogger('OsdsPhoneNumber');
   controller = new OdsPhoneNumberController(this);
+  parsedCountries: ODS_COUNTRY_ISO_CODE[] = [];
 
   /** @see OdsPhoneNumberAttribute.clearable */
   @Prop({ reflect: true }) clearable?: boolean = DEFAULT_ATTRIBUTE.clearable;
 
   /** @see OdsPhoneNumberAttribute.countries */
-  @Prop({ reflect: true, mutable: true }) countries?: ODS_COUNTRY_ISO_CODE[] | ODS_PHONE_NUMBER_COUTRIE.All = DEFAULT_ATTRIBUTE.countries;
+  @Prop({ reflect: true, mutable: true }) countries?: ODS_COUNTRY_ISO_CODE[] | ODS_PHONE_NUMBER_COUNTRY_PRESET.All | string = DEFAULT_ATTRIBUTE.countries;
 
   /** @see OdsPhoneNumberAttribute.disabled */
   @Prop({ reflect: true }) disabled?: boolean = DEFAULT_ATTRIBUTE.disabled;
@@ -42,14 +43,14 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute {
 
   @State() i18nCountriesMap!: Map<string, { isoCode: string , name: string }>;
 
-  @State() countriesList: readonly ODS_COUNTRY_ISO_CODE[] = [];
   @State() hasCountries: boolean = false;
 
   componentWillLoad(): void {
+    // order matter
+    this.handlerCountries();
     this.isoCode = this.controller.getDefaultIsoCode();
     this.locale = this.controller.getDefaultLocale();
     this.handlerLocale(this.locale);
-    this.handlerCountries();
   }
 
   @Watch('locale')
@@ -63,8 +64,22 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute {
 
   @Watch('countries')
   handlerCountries(): void {
-    this.hasCountries = Boolean(this.countries?.length);
-    this.countriesList = this.controller.getCountriesList();
+    const countriesList = this.controller.getCountriesList();
+    this.parseCountries(countriesList);
+    this.hasCountries = !!this.parsedCountries?.length;
+  }
+
+  private parseCountries(countries: readonly ODS_COUNTRY_ISO_CODE[] | string) {
+    if (typeof countries === 'string') {
+      try {
+        this.parsedCountries = JSON.parse(countries);
+      } catch (err) {
+        this.logger.warn('[OsdsPhoneNumber] countries string could not be parsed.');
+        this.parsedCountries = [];
+      }
+    } else {
+      this.parsedCountries = [...countries];
+    }
   }
 
   render() {
@@ -77,9 +92,9 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute {
             disabled={this.disabled}
             error={this.error}
             value={this.isoCode}>
-            { this.countriesList?.map((country) => <osds-select-option value={ country }>
+            { this.parsedCountries?.map((country) => <osds-select-option value={ country }>
               <div class="phone-number__select__option">
-                <osds-flag iso={country}></osds-flag>
+                <osds-flag iso={country} class="phone-number__select__option__flag"></osds-flag>
                 <osds-text>{ this.i18nCountriesMap?.get(country)?.name }</osds-text>
               </div>
             </osds-select-option>) }

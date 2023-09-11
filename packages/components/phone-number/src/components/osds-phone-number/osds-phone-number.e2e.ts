@@ -6,7 +6,7 @@ import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_COUNTRY_ISO_CODE } from '@ovhcloud/ods-common-core';
 import { odsSetE2eInterceptRequest } from '@ovhcloud/ods-common-stencil';
-import { ODS_PHONE_NUMBER_COUTRIE } from './constants/phone-number-countries';
+import { ODS_PHONE_NUMBER_COUNTRY_PRESET } from './constants/phone-number-countries';
 
 describe('e2e:osds-phone-number', () => {
   const baseAttribute = { value: '' };
@@ -83,7 +83,7 @@ describe('e2e:osds-phone-number', () => {
   });
 
   it('should display select because of countries all', async () => {
-    await setup({ attributes: { countries: ODS_PHONE_NUMBER_COUTRIE.All }, cbkInterceptorRequest: myCbk });
+    await setup({ attributes: { countries: ODS_PHONE_NUMBER_COUNTRY_PRESET.All }, cbkInterceptorRequest: myCbk });
     
     expect(select).not.toBeNull();
     expect(select).toHaveClass('hydrated');

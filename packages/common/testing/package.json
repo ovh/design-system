@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-common-testing",
-  "version": "16.0.0",
+  "version": "16.0.1",
   "description": "ODS common testing helpers",
   "author": "OVH SAS",
   "license": "Apache-2.0",
@@ -28,6 +28,6 @@
     "ts-jest": "27.1.5"
   },
   "devDependencies": {
-    "@ovhcloud/ods-dev": "16.0.0"
+    "@ovhcloud/ods-dev": "16.0.1"
   }
 }

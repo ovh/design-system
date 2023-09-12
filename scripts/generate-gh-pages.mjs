@@ -38,7 +38,11 @@ const outDirName = 'docs';
     const command = `curl -sS "${tarball}" | tar -xzf - -C ${dir} --strip 1`;
     await $([command]);
 
-    await $`mv ${dir}/dist dist/v${version}`;
+    try {
+      await $`mv ${dir}/dist dist/v${version}`;
+    } catch (e) {
+      console.error(`No dist dir found, ignoring the version`, e);
+    }
   }
   try {
     // add the current build (released just done)

@@ -7,12 +7,11 @@
   "main": "index.js",
   "scripts": {
     "build:storybook": "yarn list:releases && build-storybook -o dist",
-    "list:docs:api": "yarn node .storybook/utils/docs-api-dir.js",
     "list:releases": "yarn node .storybook/utils/get-repo-releases.js",
     "prepare": "npm run build:storybook",
-    "start": "start-storybook -p 6006 $(yarn node ./.storybook/utils/static-dirs.js)",
-    "start:nocache": "start-storybook -p 6006 $(yarn node ./.storybook/utils/static-dirs.js) --no-manager-cache",
-    "start:quiet": "start-storybook -p 6006 --quiet $(yarn node ./.storybook/utils/static-dirs.js)"
+    "start": "yarn list:releases && start-storybook -p 6006",
+    "start:nocache": "yarn list:releases && start-storybook -p 6006 --no-manager-cache",
+    "start:quiet": "yarn list:releases && start-storybook -p 6006 --quiet"
   },
   "dependencies": {
     "@ovhcloud/ods-cdk": "15.0.1",

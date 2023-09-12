@@ -39,6 +39,4 @@ const file = './public/releases.js';
       console.log(`${file} written with success`, {availableVersions});
     }
   });
-
-
 })();

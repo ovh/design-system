@@ -48,7 +48,7 @@ const Demo: React.FC = () => (
     </div>
 
     <h5>Ods Flag</h5>
-    <div style={{height: 20, width: 30, margin: 'auto'}}>
+    <div style={{ height: 20, width: 30, margin: 'auto' }}>
       <OsdsFlag iso={ODS_COUNTRY_ISO_CODE.PL} />
     </div>
 

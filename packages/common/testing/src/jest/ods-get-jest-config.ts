@@ -1,69 +1,47 @@
-/* eslint-disable no-console */
 import type { Config } from '@jest/types';
 
 /**
- * get the base jest config available for all stencil components
- * @param basePath - relative or absolute path made of `<rootDir>...` for instance.
- * @param args - is the command line arguments passed to jest
- * @param stencil - is the jest config used with stencil
- * @see https://jestjs.io/docs/configuration#rootdir-string
+ * Get the base jest config
+ * @param args - command line arguments passed to jest
+ * @param options - jest config option to override
  */
-export function OdsGetJestConfig({
-                                   args,
-                                   stencil = true
-                                 }: {
-  args: string[],
-  stencil?: boolean
-}): Config.InitialOptions {
-  const e2e = args.includes('--e2e'),
-    screenshot = args.includes('--screenshot');
-  console.log(`[OdsGetJestConfig] args=${args}`);
-  console.log(`[OdsGetJestConfig] e2e=${e2e} screenshot=${screenshot}`);
-
-  return {
-    ...(stencil ? {
-      preset: "@stencil/core/testing"
-    } : {}),
-    verbose: true,
-    // keep a string here because of conversion into getStencilConfig
-    // TODO @francois: CDS executes e2e:screenshot, so here it will execute only the *.screenshot files
-    // TODO: we may need to have a "e2e-all" flag to set the file regexp with AND without "*.screenshot"
-    ...(e2e ?
-      screenshot ? {
-      testRegex: "(/__e2e-tests__/.*|\\.(e2e))\\.screenshot\\.(tsx?|jsx?)$",
-      testTimeout: 60000
-    } : {
-      testRegex: "(/__e2e-tests__/.*|\\.(e2e))\\.(tsx?|jsx?)$",
-      testTimeout: 60000
-    } : {
-      testRegex: "(/__tests__/.*|\\.?(spec))\\.(tsx?|ts?|jsx?|js?)$"
-    }),
+function getJestConfig({ args, options = {} }: { args: string[], options?: Config.InitialOptions }): Config.InitialOptions {
+  const e2e = args.includes('--e2e');
+  const screenshot = args.includes('--screenshot');
+  const baseOption = {
     moduleNameMapper: {},
-    ...(stencil ? {
-      transform: {
-        "\\.svg$": "jest-transform-stub",
-      },
-    } : {
-      // when using jest without stencil, we need to transform typescript files
-      // and ignore dist directories that contains specs
-      transform: {
-        "\\.(ts|tsx)$": "ts-jest",
-      },
-      testPathIgnorePatterns: [
-        "/node_modules/",
-        "dist/"
-      ],
-      // must set env to jsdom in order to have window and other stuff (default to node)
-      testEnvironment: "jsdom"
-    }),
-    // todo: make e2e testing working with webstorm
-    // preset: "../../../../node_modules/jest-puppeteer",
-    // "transform": {
-    //   "^.+\\.(js|ts|tsx)$":
-    //     "<rootDir>/../../../../node_modules/@stencil/core/testing/jest-preprocessor.js"
-    // },
-    // "moduleFileExtensions": ["ts", "tsx", "js", "json", "jsx"],
-    // testEnvironment:  "<rootDir>/../../../../node_modules/@stencil/core/testing/jest-environment.js"
-
+    testEnvironment: 'jsdom',
+    testPathIgnorePatterns: [
+      '/node_modules/',
+      'dist/'
+    ],
+    testRegex: '(/__tests__/.*|\\.?(spec))\\.(tsx?|ts?|jsx?|js?)$',
+    transform: {
+      '\\.(ts|tsx)$': 'ts-jest',
+    },
+    verbose: true,
+    ...options,
   };
+
+  if (e2e) {
+    if (screenshot) {
+      return {
+        ...baseOption,
+        testRegex: '(/__e2e-tests__/.*|\\.(e2e))\\.screenshot\\.(tsx?|jsx?)$',
+        testTimeout: 60000,
+      }
+    }
+
+    return {
+      ...baseOption,
+      testRegex: '(/__e2e-tests__/.*|\\.(e2e))\\.(tsx?|jsx?)$',
+      testTimeout: 60000,
+    }
+  }
+
+  return baseOption;
 }
+
+export {
+  getJestConfig,
+};

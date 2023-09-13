@@ -62,12 +62,22 @@ function renderGrid() {
                 cellClick: (_e, cell) => {
                     cell.getRow().toggleSelect();
                 },
+                cssClass: 'test',
+                frozen: true,
+
+                // formatter: () => {
+                //     return `
+                //     <osds-button icon="pen" size="sm" circle color="primary">
+                //         <osds-icon name="pen" size="xxs" color="primary"></osds-icon>
+                //     </osds-button>
+                //     `;
+                // },
                 width: '50',
             },
             { 
                 title: "Author",
                 field: "author",
-                width: 150,
+                width: 350,
                 editor: "input",
                 headerFilter: "input",
             },

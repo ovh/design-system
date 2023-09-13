@@ -1,6 +1,15 @@
 import { Component, Host, h } from '@stencil/core';
 import { TabulatorFull as Tabulator } from 'tabulator-tables';
 import { data } from './data';
+// import { defineCustomElements as defineCustomElementsOsdsButton } from '@ovhcloud/ods-stencil/components/button/custom-elements-bundle'
+// import { defineCustomElements as defineCustomElementsOsdsIcon } from '@ovhcloud/ods-stencil/components/icon/custom-elements-bundle'
+// import { defineCustomElements as defineCustomElementsOsdsPagination, OsdsPagination } from '@ovhcloud/ods-stencil/components/pagination/custom-elements-bundle'
+// import { defineCustomElements as defineCustomElementsOsdsSelect } from '@ovhcloud/ods-stencil/components/select/custom-elements-bundle'
+
+// defineCustomElementsOsdsButton();
+// defineCustomElementsOsdsIcon();
+// defineCustomElementsOsdsPagination();
+// defineCustomElementsOsdsSelect();
 
 @Component({
   tag: 'my-component',
@@ -12,6 +21,8 @@ export class MyComponent {
   private table: Tabulator;
   
   componentDidLoad() {
+    // const pagination = document.createElement('osds-pagination') as OsdsPagination;
+    // pagination.current = 1;
     this.table = new Tabulator(this.grid, {
       height: "100%",
       data,
@@ -55,24 +66,24 @@ export class MyComponent {
               // editor: editPrice,
               headerFilter: "number"
           },
-          // { 
-          //     title: "Actions",
-          //     cellClick: (_event, cell) => {
-          //         cell.getRow().getCells().forEach((c) => {
-          //             if (!c.getColumn().getDefinition().editor) {
-          //                 return;
-          //             }
-          //             c?.edit();
-          //         })
-          //     },
-          //     formatter: () => {
-          //        return `
-          //         <osds-button icon="pen" size="sm" circle color="primary">
-          //             <osds-icon name="pen" size="xxs" color="primary"></osds-icon>
-          //         </osds-button>
-          //         `;
-          //     },
-          // }
+        //   { 
+        //       title: "Actions",
+        //       cellClick: (_event, cell) => {
+        //           cell.getRow().getCells().forEach((c) => {
+        //               if (!c.getColumn().getDefinition().editor) {
+        //                   return;
+        //               }
+        //               c?.edit();
+        //           })
+        //       },
+        //       formatter: () => {
+        //          return `
+        //           <osds-button icon="pen" size="sm" circle color="primary">
+        //               <osds-icon name="pen" size="xxs" color="primary"></osds-icon>
+        //           </osds-button>
+        //           `;
+        //       },
+        //   }
       ],
       // groupBy:["author"],
       pagination: true,

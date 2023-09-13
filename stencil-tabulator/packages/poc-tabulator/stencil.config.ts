@@ -8,6 +8,7 @@ export const config: Config = {
     reactOutputTarget({
       componentCorePackage: 'poc-tabulator',
       proxiesFile: '../react-library/lib/components/stencil-generated/index.ts',
+      excludeComponents: ['osds-select', 'osds-pagination', 'osds-button', 'osds-icon']
     }),
     {
       type: 'dist',

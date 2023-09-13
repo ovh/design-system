@@ -1,13 +1,15 @@
 import type { OdsPhoneNumberAttribute } from './interfaces/attributes';
 import type { OdsInputPhoneNumberValueChangeEventDetail, OdsPhoneNumberEvent } from './interfaces/events';
-import { OdsLogger, ODS_COUNTRY_ISO_CODE, ODS_LOCALE } from '@ovhcloud/ods-common-core';
+import type { OdsSelectValueChangeEventDetail } from '@ovhcloud/ods-component-select';
+import type { OdsInputValueChangeEventDetail } from '@ovhcloud/ods-component-input';
+import { OdsLogger, ODS_COUNTRY_ISO_CODE, ODS_COUNTRY_ISO_CODES, ODS_LOCALE } from '@ovhcloud/ods-common-core';
 import { Component, Host, h, Prop, State, Watch, Event, EventEmitter, Listen } from '@stencil/core';
-import { OdsInputValueChangeEventDetail, ODS_INPUT_TYPE } from '@ovhcloud/ods-component-input';
+import { ODS_INPUT_TYPE } from '@ovhcloud/ods-component-input';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsPhoneNumberController } from './core/controller';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_PHONE_NUMBER_COUNTRY_PRESET } from './constants/phone-number-countries';
-import { PhoneNumberUtil } from 'google-libphonenumber';
+import { PhoneNumberFormat, PhoneNumberUtil } from 'google-libphonenumber';
 
 /**
  * @slot (unnamed) - Phone Number content
@@ -18,12 +20,12 @@ import { PhoneNumberUtil } from 'google-libphonenumber';
   shadow: true,
 })
 export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberEvent {
-  private logger = new OdsLogger('OsdsPhoneNumber');
+  logger = new OdsLogger('OsdsPhoneNumber');
 
   controller = new OdsPhoneNumberController(this);
   parsedCountries: ODS_COUNTRY_ISO_CODE[] = [];
 
-  phoneUtils = PhoneNumberUtil.getInstance();
+  phoneUtil = PhoneNumberUtil.getInstance();
 
   /** @see OdsPhoneNumberAttribute.clearable */
   @Prop({ reflect: true }) clearable?: boolean = DEFAULT_ATTRIBUTE.clearable;
@@ -49,7 +51,7 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
   /** @see OdsPhoneNumberEvent.odsValueChange */
   @Event() odsValueChange!: EventEmitter<OdsInputPhoneNumberValueChangeEventDetail>;
 
-  @State() i18nCountriesMap!: Map<string, { isoCode: string , name: string }>;
+  @State() i18nCountriesMap!: Map<string, { isoCode: string , name: string, countryCode?: number }>;
 
   @State() hasCountries: boolean = false;
 
@@ -57,18 +59,17 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
     // order matter
     this.handlerCountries();
     this.isoCode = this.controller.getDefaultIsoCode();
-    // const number = this.phoneUtils.parseAndKeepRawInput('0642664231', 'fr');
-    // console.log('number', number)
-    // console.log('this.isValidNumberForRegion', this.phoneUtils.isValidNumberForRegion(number, 'fr'))
     this.locale = this.controller.getDefaultLocale();
     this.handlerLocale(this.locale);
+    this.isValidValue(this.value);
   }
 
   @Watch('locale')
   handlerLocale(locale: ODS_LOCALE): void {
     const translationFile = this.controller.loadTranslationFileByLocale(locale);
     this.i18nCountriesMap = translationFile.reduce((acc, country) => {
-      acc.set(country.isoCode, country);
+      const exampleNumber = this.phoneUtil.getExampleNumber(country.isoCode);
+      acc.set(country.isoCode, { ...country, countryCode: exampleNumber?.getCountryCode() });
       return acc;
     }, new Map());
   }
@@ -76,47 +77,65 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
   @Watch('countries')
   handlerCountries(): void {
     const countriesList = this.controller.getCountriesList();
-    this.parseCountries(countriesList);
+    this.parsedCountries = this.controller.parseCountries(countriesList);
     this.hasCountries = !!this.parsedCountries?.length;
   }
 
-  private parseCountries(countries: readonly ODS_COUNTRY_ISO_CODE[] | string) {
-    if (typeof countries === 'string') {
-      try {
-        this.parsedCountries = JSON.parse(countries);
-      } catch (err) {
-        this.logger.warn('[OsdsPhoneNumber] countries string could not be parsed.');
-        this.parsedCountries = [];
-      }
-    } else {
-      this.parsedCountries = [...countries];
-    }
-  }
-
   @Listen('odsValueChange')
-  handlerInputEventChange(event: CustomEvent<OdsInputValueChangeEventDetail>): void {
-    event.preventDefault();
-    this.error = this.isValidInput();
-    console.log('this.error', this.error)
-    if(this.error) {
+  handlerOdsValueChange(event: CustomEvent<OdsInputValueChangeEventDetail | OdsInputPhoneNumberValueChangeEventDetail | OdsSelectValueChangeEventDetail>): void {
+    if ('isoCode' in event.detail) {
       return;
     }
+    event.preventDefault();
+    event.stopPropagation();
+    if ('selection' in event.detail) {
+      this.isoCode = ODS_COUNTRY_ISO_CODES.find((countryIsoCode) => countryIsoCode === event.detail.value);
+      this.value = '';
+      this.error = false;
+      return;
+    }
+    return this.handlerInputEvent(event.detail);
+  }
+
+  private handlerInputEvent(event: OdsInputValueChangeEventDetail) {
+    if (event.value) {
+      this.value = event.value;
+    }
+    if(!this.isValidValue(this.value)) {
+      return;
+    }
+    const number = this.controller.parseNumber(event.value);
+    const oldNumber =this.controller.parseNumber(event.oldValue);
     this.odsValueChange.emit({
-      ...event.detail,
+      ...event,
+      value: number && this.phoneUtil.format(number, PhoneNumberFormat.E164),
+      oldValue: oldNumber && this.phoneUtil.format(oldNumber, PhoneNumberFormat.E164) || undefined,
       isoCode: this.isoCode,
     })
   }
 
-  isValidInput(): boolean {
-    const number = this.phoneUtils.parse(this.value ?? '', this.isoCode);
-    console.log('number', number);
-    console.log('this.phoneUtils.isPossibleNumber(number)', this.phoneUtils.isPossibleNumber(number));
-    console.log('this.phoneUtils.isValidNumberForRegion(number, this.isoCode)', this.phoneUtils.isValidNumberForRegion(number, this.isoCode))
-    return this.phoneUtils.isPossibleNumber(number) && this.phoneUtils.isValidNumberForRegion(number, this.isoCode);
+  @Watch('value')
+  private isValidValue(value: string | null): boolean {
+    if (!value) {
+      this.error = false;
+      return true;
+    }
+    const number = this.controller.parseNumber(value);
+    if (!number) {
+      this.error = true;
+      return false;
+    }
+    const valid = this.phoneUtil.isPossibleNumber(number) && this.phoneUtil.isValidNumberForRegion(number, this.isoCode);
+    this.error = !valid;
+    return valid;
   }
 
   getPlaceholder(): string | undefined {
-    return `+ ${this.phoneUtils.getExampleNumber('fr').getCountryCode()?.toString()}`;
+    if (!this.isoCode) {
+      return undefined;
+    }
+    const exampleNumber = this.phoneUtil.getExampleNumber(this.isoCode);
+    return this.phoneUtil.format(exampleNumber, PhoneNumberFormat.E164);
   }
 
   render() {
@@ -129,12 +148,15 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
             disabled={this.disabled}
             error={this.error}
             value={this.isoCode}>
-            { this.parsedCountries?.map((country) => <osds-select-option value={ country }>
-              <div class="phone-number__select__option">
-                <osds-flag iso={country} class="phone-number__select__option__flag"></osds-flag>
-                <osds-text>{ this.i18nCountriesMap?.get(country)?.name }</osds-text>
-              </div>
-            </osds-select-option>) }
+            { this.parsedCountries?.map((country) => {
+              const i18nCountry = this.i18nCountriesMap?.get(country);
+              return <osds-select-option value={ country }>
+                <div class="phone-number__select__option">
+                  <osds-flag iso={country} class="phone-number__select__option__flag"></osds-flag>
+                  <osds-text>{ i18nCountry?.name } (+{ i18nCountry?.countryCode })</osds-text>
+                </div>
+              </osds-select-option>
+            }) }
           </osds-select>
         }
         

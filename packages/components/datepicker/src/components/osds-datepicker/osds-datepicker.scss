@@ -1,0 +1,51 @@
+@import 'styles/osds-datepicker.mixins';
+@import 'styles/osds-datepicker.color';
+@import 'styles/osds-datepicker.size';
+@import 'styles/osds-datepicker.typography';
+@import '~@ovhcloud/ods-common-theming/color/ods-theming-color';
+@import '~@ovhcloud/ods-common-theming/ods-theme';
+
+// CSS targeted only for this component
+// /!\ for theming purposes, it has to be done in theming files
+// (i.e. packages/libraries/theming/...)
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+:host([inline]) {
+  width: fit-content;
+}
+
+:host .osds-datepicker__hidden-input {
+  display: none;
+}
+
+:host .datepicker {
+  display: none;
+}
+
+:host([hasFocus]) {
+  .datepicker {
+    width: 50%;
+    max-width: clamp(36rem, 50%, 50%);
+    margin-top: var(--ods-size-04);
+    height: 0;
+    position: relative;
+    display: flex;
+
+    .datepicker-picker {
+      width: 100%;
+      height: fit-content;
+      background: gray;
+      position: absolute;
+    }
+  }
+}
+
+// apply the theme template for the component
+@include ods-theme-component() {
+  @include osds-datepicker-theme-color();
+  @include osds-datepicker-theme-size();
+  @include osds-datepicker-theme-typography();
+}

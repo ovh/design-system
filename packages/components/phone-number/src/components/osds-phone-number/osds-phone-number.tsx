@@ -60,9 +60,6 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
     // order matter
     this.handlerCountries();
     this.isoCode = this.controller.getDefaultIsoCode();
-    // const number = this.phoneUtils.parseAndKeepRawInput('0642664231', 'fr');
-    // console.log('number', number)
-    // console.log('this.isValidNumberForRegion', this.phoneUtils.isValidNumberForRegion(number, 'fr'))
     this.locale = this.controller.getDefaultLocale();
     this.handlerLocale(this.locale);
     this.validateValue();
@@ -72,7 +69,7 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
   handlerLocale(locale: ODS_LOCALE): void {
     const translationFile = this.controller.loadTranslationFileByLocale(locale);
     this.i18nCountriesMap = translationFile.reduce((acc, country) => {
-      const exampleNumber = this.phoneUtil.getExampleNumber(country.isoCode);
+      const exampleNumber = this.phoneUtils.getExampleNumber(country.isoCode);
       acc.set(country.isoCode, { ...country, countryCode: exampleNumber?.getCountryCode() });
       return acc;
     }, new Map());
@@ -141,28 +138,6 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
     }
     const exampleNumber = this.phoneUtils.getExampleNumber(this.isoCode);
     return this.phoneUtils.format(exampleNumber, PhoneNumberFormat.E164);
-  }
-
-  @Listen('odsValueChange')
-  handlerInputEventChange(event: CustomEvent<OdsInputValueChangeEventDetail>): void {
-    event.preventDefault();
-    this.error = this.isValidInput();
-    console.log('this.error', this.error)
-    if(this.error) {
-      return;
-    }
-    this.odsValueChange.emit({
-      ...event.detail,
-      isoCode: this.isoCode,
-    })
-  }
-
-  isValidInput(): boolean {
-    const number = this.phoneUtils.parse(this.value ?? '', this.isoCode);
-    console.log('number', number);
-    console.log('this.phoneUtils.isPossibleNumber(number)', this.phoneUtils.isPossibleNumber(number));
-    console.log('this.phoneUtils.isValidNumberForRegion(number, this.isoCode)', this.phoneUtils.isValidNumberForRegion(number, this.isoCode))
-    return this.phoneUtils.isPossibleNumber(number) && this.phoneUtils.isValidNumberForRegion(number, this.isoCode);
   }
 
   render() {

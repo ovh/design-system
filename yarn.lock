@@ -4654,6 +4654,48 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-component-datepicker-react@workspace:packages/components/datepicker/react":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-datepicker-react@workspace:packages/components/datepicker/react"
+  dependencies:
+    "@ovhcloud/ods-component-datepicker": ^15.0.1
+    "@ovhcloud/ods-react-dev": ^15.0.1
+  peerDependencies:
+    react: ">=16.8.6"
+    react-dom: ">=16.8.6"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-component-datepicker-vue@workspace:packages/components/datepicker/vue":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-datepicker-vue@workspace:packages/components/datepicker/vue"
+  dependencies:
+    "@ovhcloud/ods-component-datepicker": ^15.0.1
+    "@ovhcloud/ods-vue-dev": ^15.0.1
+  peerDependencies:
+    vue: ">=3"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-component-datepicker@^15.0.1, @ovhcloud/ods-component-datepicker@workspace:packages/components/datepicker":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-datepicker@workspace:packages/components/datepicker"
+  dependencies:
+    "@ovhcloud/ods-common-core": ^15.0.1
+    "@ovhcloud/ods-common-stencil": ^15.0.1
+    "@ovhcloud/ods-common-testing": ^15.0.1
+    "@ovhcloud/ods-common-theming": ^15.0.1
+    "@ovhcloud/ods-component-input": ^15.0.1
+    "@ovhcloud/ods-component-link": ^15.0.1
+    "@ovhcloud/ods-component-text": ^15.0.1
+    "@ovhcloud/ods-component-textarea": ^15.0.1
+    "@ovhcloud/ods-component-tooltip": ^15.0.1
+    "@ovhcloud/ods-stencil-dev": ^15.0.1
+    "@types/vanillajs-datepicker": ^1.2.2
+    vanillajs-datepicker: ^1.3.3
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-component-divider-react@workspace:packages/components/divider/react":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-divider-react@workspace:packages/components/divider/react"
@@ -8526,6 +8568,13 @@ __metadata:
   version: 2.0.8
   resolution: "@types/unist@npm:2.0.8"
   checksum: f4852d10a6752dc70df363917ef74453e5d2fd42824c0f6d09d19d530618e1402193977b1207366af4415aaec81d4e262c64d00345402020c4ca179216e553c7
+  languageName: node
+  linkType: hard
+
+"@types/vanillajs-datepicker@npm:^1.2.2":
+  version: 1.2.2
+  resolution: "@types/vanillajs-datepicker@npm:1.2.2"
+  checksum: 4899837a457a62fa9e2606c61788ee98fa24979435a013b8101ec22107cf4e100af9e6eb340049844f2be6e68032d3b226b15bbc909b95410e8e6eb2db0b5939
   languageName: node
   linkType: hard
 
@@ -30393,6 +30442,13 @@ __metadata:
   dependencies:
     builtins: ^1.0.3
   checksum: ce4c68207abfb22c05eedb09ff97adbcedc80304a235a0844f5344f1fd5086aa80e4dbec5684d6094e26e35065277b765c1caef68bcea66b9056761eddb22967
+  languageName: node
+  linkType: hard
+
+"vanillajs-datepicker@npm:^1.3.3":
+  version: 1.3.4
+  resolution: "vanillajs-datepicker@npm:1.3.4"
+  checksum: 830958f8af5c586ee81ba2b75a76771db425d4eddb68ec08d1b49ac898674376ef3517a0d40eefaf4926a815c23179c54e1637d7327df090f22cdb98056074cf
   languageName: node
   linkType: hard
 

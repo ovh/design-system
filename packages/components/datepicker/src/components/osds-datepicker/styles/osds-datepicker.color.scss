@@ -1,0 +1,27 @@
+@import '~@ovhcloud/ods-common-theming/color/ods-component-color';
+@import './osds-datepicker.mixins';
+
+@mixin osds-datepicker-theme-color-variant-default() {
+  @include ods-and-all-hue-foreach-theme-color((
+          color: '800',
+          background-color: '100'
+  )) using($colors) {
+    @include osds-datepicker-on-selected-host() {
+      //color: map_get($colors, color);
+      //background-color: map_get($colors, background-color);
+    }
+  }
+}
+
+// Main CSS color theme mixin
+@mixin osds-datepicker-theme-color() {
+  /** base colors */
+  :host {
+    border-color: transparent;
+  }
+
+  /** no variant specified: default variant colors */
+  :not([variant]) {
+    @include osds-datepicker-theme-color-variant-default();
+  }
+}

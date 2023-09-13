@@ -1,30 +1,10 @@
-import type { Config } from '@jest/types';
-import { OdsGetJestConfig } from '@ovhcloud/ods-common-testing';
+import { getStencilJestConfig } from '@ovhcloud/ods-common-testing';
 
-const args = process.argv.slice(2);
+const config = getStencilJestConfig({
+  args: process.argv.slice(2),
+  options: {
+    setupFiles: ['./jest.setup.ts'],
+  },
+});
 
-/**
- * synchronous config for jest.
- *
- * example with async config :
- * ```typescript
- * export default async (): Promise<Config.InitialOptions> => {
- *   return {
- *     verbose: true,
- *   };
- * };
- * ```
- */
-// @ts-ignore until dependencies are fixed to one unique version of @jest/types
-const config: Config.InitialOptions = {
-  ...OdsGetJestConfig({
-    basePath: '<rootDir>/../../..',
-    args
-  }),
-  /**
-   * setup jest files executed for each test and in the test environment
-   * @see https://jestjs.io/fr/docs/configuration#setupfiles-array
-   */
-  setupFiles: ["./jest.setup.ts"]
-};
 export default config;

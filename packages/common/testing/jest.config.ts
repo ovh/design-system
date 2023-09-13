@@ -4,12 +4,12 @@ import type { Config } from '@jest/types';
 // as it is part of the code that we'll have to test
 const config: Config.InitialOptions = {
   testPathIgnorePatterns: [
-    "/node_modules/",
-    "dist/",
+    '/node_modules/',
+    'dist/',
   ],
-  testRegex: "(/__tests__/.*|\\.?(spec))\\.(tsx?|ts?|jsx?|js?)$",
+  testRegex: '(/__tests__/.*|\\.?(spec))\\.(tsx?|ts?|jsx?|js?)$',
   transform: {
-    "\\.(ts|tsx)$": "ts-jest",
+    '\\.(ts|tsx)$': 'ts-jest',
   },
   verbose: true,
 };

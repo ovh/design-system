@@ -14,7 +14,7 @@ describe('spec:osds-phone-number', () => {
   let page: SpecPage;
   let root: HTMLElement | undefined;
   let instance: OsdsPhoneNumber;
-  let select: HTMLElement;
+  let select: HTMLElement | undefined;
 
   afterEach(() => {
     jest.clearAllMocks();
@@ -29,7 +29,7 @@ describe('spec:osds-phone-number', () => {
 
     root = page.root;
     instance = page.rootInstance;
-    select = root.shadowRoot.querySelector('osds-select');
+    select = root?.shadowRoot?.querySelector('osds-select') || undefined;
   }
 
   it('should render', async () => {

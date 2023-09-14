@@ -10,6 +10,7 @@ import { OdsPhoneNumberController } from './core/controller';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_PHONE_NUMBER_COUNTRY_PRESET } from './constants/phone-number-countries';
 import { PhoneNumberFormat, PhoneNumberUtil } from 'google-libphonenumber';
+import { ODS_TEXT_LEVEL, ODS_TEXT_SIZE } from '@ovhcloud/ods-component-text';
 
 /**
  * @slot (unnamed) - Phone Number content
@@ -154,7 +155,12 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
               return <osds-select-option value={ country }>
                 <div class="phone-number__select__option">
                   <osds-flag iso={country} class="phone-number__select__option__flag"></osds-flag>
-                  <osds-text>{ i18nCountry?.name } (+{ i18nCountry?.countryCode })</osds-text>
+                  <osds-text
+                    color={ODS_THEME_COLOR_INTENT.text}
+                    size={ODS_TEXT_SIZE._400}
+                    level={ODS_TEXT_LEVEL.body}>
+                      { i18nCountry?.name } (+{ i18nCountry?.countryCode })
+                  </osds-text>
                 </div>
               </osds-select-option>
             }) }

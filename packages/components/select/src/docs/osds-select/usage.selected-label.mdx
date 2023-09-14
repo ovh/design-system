@@ -1,0 +1,62 @@
+export const selectedLabel = () => {
+    setTimeout(() => {
+        const selectWithSelectedlabel = document.getElementById('withSelectedlabel');
+        const slotSelectedLabel = selectWithSelectedlabel?.querySelector('[slot="selectedLabel"]')
+        selectWithSelectedlabel?.addEventListener('odsValueChange', (event) => {
+            // remove all previous child
+            while (slotSelectedLabel?.firstChild) {
+            slotSelectedLabel?.removeChild(slotSelectedLabel?.firstChild);
+            }
+            const span = document.createElement('span');
+            span.innerText = event.detail.value;
+            const icon = document.createElement('osds-icon')
+            icon.name = 'home';
+            icon.size = 'sm';
+            slotSelectedLabel?.appendChild(icon);
+            slotSelectedLabel?.appendChild(span);
+        });
+    }, 0);
+};
+<>{ selectedLabel() }</>
+
+<osds-select id="withSelectedlabel">
+  <span slot="selectedLabel"></span>
+  <osds-select-option value="1">Value 1</osds-select-option>
+  <osds-select-option value="2">Value 2</osds-select-option>
+  <osds-select-option value="3">Value 3</osds-select-option>
+</osds-select>
+
+
+```html
+<osds-select id="withSelectedlabel">
+  <span slot="selectedLabel" class="selectedLabel--center"></span>
+  <osds-select-option value="1">Value 1</osds-select-option>
+  <osds-select-option value="2">Value 2</osds-select-option>
+  <osds-select-option value="3">Value 3</osds-select-option>
+</osds-select>
+
+<script>
+  const selectWithSelectedlabel = document.getElementById('withSelectedlabel');
+  const slotSelectedLabel = selectWithSelectedlabel.querySelector('[slot="selectedLabel"]')
+  selectWithSelectedlabel.addEventListener('odsValueChange', (event) => {
+    // remove all previous child
+    while (slotSelectedLabel.firstChild) {
+      slotSelectedLabel.removeChild(slotSelectedLabel.firstChild);
+    }
+    const span = document.createElement('span');
+    span.innerText = event.detail.value;
+    const icon = document.createElement('osds-icon')
+    icon.name = 'home';
+    icon.size = 'sm';
+    slotSelectedLabel.appendChild(icon);
+    slotSelectedLabel.appendChild(span);
+  });
+</script>  
+
+<style>
+  .selectedLabel--center {
+    display: inline-flex;
+    align-items: center;
+  }
+</style>
+```

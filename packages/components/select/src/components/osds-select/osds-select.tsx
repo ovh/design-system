@@ -32,6 +32,9 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
   controller: OdsSelectController = new OdsSelectController(this);
   anchor!: HTMLElement;
   surface: OcdkSurface | undefined = undefined;
+  /** is the select was touched by the user */
+  dirty = false;
+  selectedLabelSlot: HTMLElement | null = null;
 
   @Element() el!: HTMLStencilElement;
 
@@ -78,14 +81,10 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
 
   optionSelected: OsdsSelectOption | null = null;
 
-  @State()
-  selectedOptionLabel = '';
+  @State() selectedOptionLabel = '';
 
-  /** is the select was touched by the user */
-  dirty = false;
 
-  @State()
-  validityState: OdsValidityState = DEFAULT_VALIDITY_STATE;
+  @State() validityState: OdsValidityState = DEFAULT_VALIDITY_STATE;
 
   /** @see OdsSelectEvents.odsFocus */
   @Event() odsFocus!: EventEmitter<void>;
@@ -106,6 +105,7 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
       this.value = this.defaultValue;
     }
     this.openedChanged(this.opened);
+    this.selectedLabelSlot = this.el.querySelector('[slot="selectedLabel"]');
   }
 
   /**
@@ -297,13 +297,22 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
     return this.validityState.invalid;
   }
 
+  private renderLabel(): JSX.Element {
+    if (!this.value) {
+      return (<slot name="placeholder" key="placeholder"></slot>);
+    }
+    if (this.selectedLabelSlot) {
+      return (<slot name="selectedLabel" key="selectedLabel"></slot>);
+    }
+    return (<span key="default">{ this.selectedOptionLabel }</span>);
+  }
+
   render() {
     const {
       ariaLabel,
       ariaLabelledby,
       disabled,
       inline,
-      value,
       color
     } = this;
 
@@ -327,8 +336,8 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
         <div {...{
           class: `select-trigger${this.opened ? ' opened' : ''}${this.hasError() ? ' error' : ''}`,
         }}>
-          <div class={'label'} innerHTML={ (value) ? this.selectedOptionLabel : undefined } >
-            { (value) ? undefined : <slot name={'placeholder'}>&nbsp;</slot> }
+          <div class="select-trigger__label">
+            { this.renderLabel() }
           </div>
           <osds-icon size={ODS_ICON_SIZE.sm} color={color} name={ODS_ICON_NAME.CHEVRON_DOWN}></osds-icon>
         </div>

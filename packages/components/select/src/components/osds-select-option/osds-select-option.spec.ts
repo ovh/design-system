@@ -17,7 +17,6 @@ describe('spec:osds-select-option', () => {
   let page: SpecPage;
   let instance: OsdsSelectOption;
   let slotLabel: HTMLElement | null | undefined;
-  let slotSelectedLabel: HTMLElement | null | undefined;
 
   afterEach(() => {
     jest.clearAllMocks();
@@ -36,7 +35,6 @@ describe('spec:osds-select-option', () => {
 
     instance = page.rootInstance;
     slotLabel = page.root?.shadowRoot?.querySelector('slot:not([name])');
-    slotSelectedLabel = page.root?.shadowRoot?.querySelector('slot[name="selectedLabel"]');
   }
 
   it('should render', async () => {
@@ -49,11 +47,6 @@ describe('spec:osds-select-option', () => {
     it('should have a label slot', async () => {
       await setup({ attributes: {} });
       expect(slotLabel).toBeTruthy();
-    });
-
-    it('should have a selected label slot', async () => {
-      await setup({ attributes: {} });
-      expect(slotSelectedLabel).toBeTruthy();
     });
   });
 

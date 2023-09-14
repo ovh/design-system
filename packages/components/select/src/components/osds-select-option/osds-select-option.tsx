@@ -70,12 +70,7 @@ export class OsdsSelectOption implements OdsSelectOptionAttribute, OdsSelectOpti
    */
   @Method()
   async getLabel() {
-    const selectedLabel = this.el.querySelector('[slot="selectedLabel"]');
-    if (selectedLabel) {
-      return selectedLabel.innerHTML;
-    } else {
-      return this.el.innerHTML;
-    }
+    return this.el.innerText;
   }
 
   @Watch('value')
@@ -120,7 +115,6 @@ export class OsdsSelectOption implements OdsSelectOptionAttribute, OdsSelectOpti
             <slot></slot>
           </span>
         </div>
-        <slot name="selectedLabel"></slot>
       </Host>
     );
   }

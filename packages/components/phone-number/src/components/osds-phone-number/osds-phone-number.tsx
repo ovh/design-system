@@ -1,5 +1,5 @@
 import type { OdsPhoneNumberAttribute } from './interfaces/attributes';
-import type { OdsInputPhoneNumberValueChangeEventDetail, OdsPhoneNumberEvent } from './interfaces/events';
+import type { OdsPhoneNumberValueChangeEventDetail, OdsPhoneNumberEvent } from './interfaces/events';
 import type { OdsSelectValueChangeEventDetail } from '@ovhcloud/ods-component-select';
 import type { OdsInputValueChangeEventDetail } from '@ovhcloud/ods-component-input';
 import { OdsLogger, ODS_COUNTRY_ISO_CODE, ODS_COUNTRY_ISO_CODES, ODS_LOCALE } from '@ovhcloud/ods-common-core';
@@ -49,7 +49,7 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
   @Prop({ reflect: true, mutable: true }) value = DEFAULT_ATTRIBUTE.value;
 
   /** @see OdsPhoneNumberEvent.odsValueChange */
-  @Event() odsValueChange!: EventEmitter<OdsInputPhoneNumberValueChangeEventDetail>;
+  @Event() odsValueChange!: EventEmitter<OdsPhoneNumberValueChangeEventDetail>;
 
   @State() i18nCountriesMap!: Map<string, { isoCode: string , name: string, countryCode?: number }>;
 
@@ -61,7 +61,7 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
     this.isoCode = this.controller.getDefaultIsoCode();
     this.locale = this.controller.getDefaultLocale();
     this.handlerLocale(this.locale);
-    this.isValidValue(this.value);
+    this.validateValue();
   }
 
   @Watch('locale')
@@ -82,7 +82,7 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
   }
 
   @Listen('odsValueChange')
-  handlerOdsValueChange(event: CustomEvent<OdsInputValueChangeEventDetail | OdsInputPhoneNumberValueChangeEventDetail | OdsSelectValueChangeEventDetail>): void {
+  handlerOdsValueChange(event: CustomEvent<OdsInputValueChangeEventDetail | OdsPhoneNumberValueChangeEventDetail | OdsSelectValueChangeEventDetail>): void {
     if ('isoCode' in event.detail) {
       return;
     }
@@ -102,6 +102,7 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
       this.value = event.value;
     }
     if(!this.isValidValue(this.value)) {
+      this.error = true;
       return;
     }
     const number = this.controller.parseNumber(event.value);
@@ -115,19 +116,19 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
   }
 
   @Watch('value')
+  private validateValue(): void {
+    this.error = !this.isValidValue(this.value)
+  }
+
   private isValidValue(value: string | null): boolean {
     if (!value) {
-      this.error = false;
       return true;
     }
     const number = this.controller.parseNumber(value);
     if (!number) {
-      this.error = true;
       return false;
     }
-    const valid = this.phoneUtil.isPossibleNumber(number) && this.phoneUtil.isValidNumberForRegion(number, this.isoCode);
-    this.error = !valid;
-    return valid;
+    return this.phoneUtil.isPossibleNumber(number) && this.phoneUtil.isValidNumberForRegion(number, this.isoCode);
   }
 
   getPlaceholder(): string | undefined {

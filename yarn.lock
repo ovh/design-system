@@ -5101,7 +5101,7 @@ __metadata:
     "@ovhcloud/ods-component-text": ^16.0.1
     "@ovhcloud/ods-stencil-dev": ^16.0.1
     "@types/google-libphonenumber": ^7.4.26
-    google-libphonenumber: ^3.2.33
+    google-libphonenumber: 3.2.33
   languageName: unknown
   linkType: soft
 
@@ -17567,7 +17567,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"google-libphonenumber@npm:^3.2.33":
+"google-libphonenumber@npm:3.2.33":
   version: 3.2.33
   resolution: "google-libphonenumber@npm:3.2.33"
   checksum: d029c19c7278ac9acb446028c2e304df16341732905a0cf8a105ab595cb19c01456fd57d76e48a3220038044d8ce361edc539eea2bfd924ea36fb28178cf7dbe

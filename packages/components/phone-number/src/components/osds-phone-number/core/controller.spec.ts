@@ -171,21 +171,21 @@ describe('spec:ods-phone-number-controller', () => {
         await setup({ isoCode: ODS_COUNTRY_ISO_CODE.FR });
         const number = '0658585858';
         const parsedNumber = await controller.parseNumber(number);
-        expect(parsedNumber.getRawInput()).toEqual(number);
+        expect(parsedNumber.getRawInput()).toBe(number);
       });
 
       it('should return a null because of an empty string', async () => {
         await setup({ isoCode: ODS_COUNTRY_ISO_CODE.FR });
         const number = '';
         const parsedNumber = await controller.parseNumber(number);
-        expect(parsedNumber).toEqual(null);
+        expect(parsedNumber).toBe(null);
       });
 
       it('should return a null because of an null value', async () => {
         await setup({ isoCode: ODS_COUNTRY_ISO_CODE.FR });
         const number = null;
         const parsedNumber = await controller.parseNumber(number);
-        expect(parsedNumber).toEqual(null);
+        expect(parsedNumber).toBe(null);
       });
     });
   });

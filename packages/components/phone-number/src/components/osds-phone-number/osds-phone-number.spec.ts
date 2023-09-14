@@ -1,5 +1,7 @@
 import type { SpecPage } from '@stencil/core/testing';
 import type { OdsPhoneNumberAttribute } from './interfaces/attributes';
+import type { OdsSelectValueChangeEventDetail } from '@ovhcloud/ods-component-select';
+import type { OdsInputValueChangeEventDetail } from '@ovhcloud/ods-component-input';
 import { newSpecPage } from '@stencil/core/testing';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute, OdsUnitTestAttributeType } from '@ovhcloud/ods-common-testing';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
@@ -200,7 +202,7 @@ describe('spec:osds-phone-number', () => {
           selection: document.createElement('osds-select-option'),
           validity: true,
           value: 'gb',
-        };
+        } as unknown as OdsSelectValueChangeEventDetail;
         const spyEmitOdsValueChange = jest.spyOn(instance.odsValueChange, 'emit');
         instance.handlerOdsValueChange(new CustomEvent('odsValueChange', { detail }));
         expect(instance.value).toBe('');
@@ -211,7 +213,7 @@ describe('spec:osds-phone-number', () => {
 
       it('should handler the input change value with valid value', async () => {
         await setup({ attributes: { isoCode: ODS_COUNTRY_ISO_CODE.FR } });
-        const detail = { value: '0653535353' };
+        const detail = { value: '0653535353' } as OdsInputValueChangeEventDetail;
         const spyEmitOdsValueChange = jest.spyOn(instance.odsValueChange, 'emit');
         instance.handlerOdsValueChange(new CustomEvent('odsValueChange', { detail }));
         expect(instance.value).toBe(detail.value);
@@ -221,7 +223,7 @@ describe('spec:osds-phone-number', () => {
 
       it('should handler the input change value with invalid value', async () => {
         await setup({ attributes: { isoCode: ODS_COUNTRY_ISO_CODE.FR } });
-        const detail = { value: '065353qsd5353' };
+        const detail = { value: '065353qsd5353' } as OdsInputValueChangeEventDetail;
         const spyEmitOdsValueChange = jest.spyOn(instance.odsValueChange, 'emit');
         instance.handlerOdsValueChange(new CustomEvent('odsValueChange', { detail }));
         expect(instance.value).toBe(detail.value);
@@ -231,7 +233,7 @@ describe('spec:osds-phone-number', () => {
 
       it('should handler the input change value with empty value', async () => {
         await setup({ attributes: { isoCode: ODS_COUNTRY_ISO_CODE.FR } });
-        const detail = { value: '' };
+        const detail = { value: '' } as OdsInputValueChangeEventDetail;
         const spyEmitOdsValueChange = jest.spyOn(instance.odsValueChange, 'emit');
         instance.handlerOdsValueChange(new CustomEvent('odsValueChange', { detail }));
         expect(instance.value).toBe(detail.value);
@@ -241,7 +243,7 @@ describe('spec:osds-phone-number', () => {
 
       it('should emit an event with old value', async () => {
         await setup({ attributes: { isoCode: ODS_COUNTRY_ISO_CODE.FR } });
-        const detail = { value: '0653535353', oldValue: '0612345' };
+        const detail = { value: '0653535353', oldValue: '0612345' } as OdsInputValueChangeEventDetail;
         const spyEmitOdsValueChange = jest.spyOn(instance.odsValueChange, 'emit');
         instance.handlerOdsValueChange(new CustomEvent('odsValueChange', { detail }));
         expect(spyEmitOdsValueChange).toHaveBeenCalledTimes(1);

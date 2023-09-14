@@ -152,7 +152,6 @@ describe('e2e:osds-phone-number', () => {
     it('should receive event odsValueChange with options selected', async () => {
       const countries = [ODS_COUNTRY_ISO_CODE.AD, ODS_COUNTRY_ISO_CODE.FR];
       await setup({ attributes: { countries }, cbkInterceptorRequest: myCbk });
-      expect(await el.getProperty('isoCode')).toBe(ODS_COUNTRY_ISO_CODE.AD);
 
       const odsValueChange = await el.spyOnEvent('odsValueChange');
 

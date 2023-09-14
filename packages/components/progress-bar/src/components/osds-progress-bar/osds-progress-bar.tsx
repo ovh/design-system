@@ -11,15 +11,14 @@ import { OdsProgressBarController } from './core/controller';
   styleUrl: 'osds-progress-bar.scss',
   shadow: true
 })
-
 export class OsdsProgressBar implements OdsProgressBarAttribute {
   controller: OdsProgressBarController = new OdsProgressBarController(this);
 
   /** @see OdsProgressBarAttributes.max */
-  @Prop({ reflect: true }) public max?: string | number = DEFAULT_ATTRIBUTE.max;
+  @Prop({ reflect: true }) public max? = DEFAULT_ATTRIBUTE.max;
 
   /** @see OdsProgressBarAttributes.value */
-  @Prop({ reflect: true }) public value?: string | number = DEFAULT_ATTRIBUTE.value;
+  @Prop({ reflect: true }) public value? = DEFAULT_ATTRIBUTE.value;
 
   /**
    * @see OdsProgressBarBehavior.beforeRender

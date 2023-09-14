@@ -1,7 +1,0 @@
-{
-  "entryPoints": ["src"],
-  "out": "docs-api/ods-component-phone-number",
-  "tsconfig":"tsconfig.prod.json",
-  "exclude": "**/*+(index|.spec|.e2e|.d).ts",
-  "plugin": "none"
-}

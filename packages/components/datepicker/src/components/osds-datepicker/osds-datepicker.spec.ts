@@ -1,5 +1,3 @@
-jest.mock('@types/vanillajs-datepicker');
-
 import type { SpecPage } from '@stencil/core/testing';
 import type { OdsDatepickerAttribute } from './interfaces/attributes';
 import { newSpecPage } from '@stencil/core/testing';

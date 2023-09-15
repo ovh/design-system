@@ -3,12 +3,63 @@
 
 @mixin osds-datepicker-theme-color-variant-default() {
   @include ods-and-all-hue-foreach-theme-color((
-          color: '800',
-          background-color: '100'
+    selected: '800',
+    color: '500',
+    border-color: '200',
+    background-color: '100'
   )) using($colors) {
     @include osds-datepicker-on-selected-host() {
-      //color: map_get($colors, color);
-      //background-color: map_get($colors, background-color);
+      .datepicker {
+        * {
+          color: map_get($colors, color);
+        }
+
+        .datepicker-picker {
+          border-color: map_get($colors, border-color);
+
+          .datepicker-header,
+          .datepicker-controls {
+
+            .prev-btn:hover,
+            .next-btn:hover {
+              background: map_get($colors, background-color);
+            }
+
+            .view-switch:hover {
+              background: map_get($colors, background-color);
+            }
+          }
+
+          .datepicker-main {
+            .datepicker-view {
+              .days {
+                .datepicker-grid {
+                  .datepicker-cell:hover,
+                  .selected {
+                    background: map_get($colors, background-color);
+                  }
+
+                  .selected,
+                  .selected:hover {
+                    background: map_get($colors, selected);
+                  }
+                }
+              }
+            }
+
+            .datepicker-grid {
+              .datepicker-cell:hover {
+                background: map_get($colors, background-color);
+              }
+
+              .selected,
+              .selected:hover {
+                background: map_get($colors, selected);
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
@@ -17,7 +68,57 @@
 @mixin osds-datepicker-theme-color() {
   /** base colors */
   :host {
-    border-color: transparent;
+    .datepicker {
+      .datepicker-picker {
+        background-color: var(--ods-color-gray-000);
+
+        .datepicker-header,
+        .datepicker-controls {
+          .prev-btn,
+          .next-btn {
+            background: none;
+          }
+
+          .view-switch {
+            background: none;
+          }
+        }
+
+        .datepicker-main {
+          .datepicker-view {
+            .days {
+              .days-of-week {
+                .dow {
+                  color: var(--ods-color-text-500);
+                }
+              }
+
+              .datepicker-grid {
+                .datepicker-cell {
+                  background: none;
+                }
+
+                .selected,
+                .selected:hover {
+                  color: var(--ods-color-gray-000);
+                }
+              }
+            }
+          }
+
+          .datepicker-grid {
+            .datepicker-cell {
+              background: none;
+            }
+
+            .selected,
+            .selected:hover {
+              color: var(--ods-color-gray-000);
+            }
+          }
+        }
+      }
+    }
   }
 
   /** no variant specified: default variant colors */

@@ -8,43 +8,102 @@
 // CSS targeted only for this component
 // /!\ for theming purposes, it has to be done in theming files
 // (i.e. packages/libraries/theming/...)
-:host(.osds-datepicker) {
-  display: flex;
-  flex-direction: column;
-}
-
-.osds-datepicker {
-  &__hidden-input {
-    display: none;
+@keyframes datepicker-appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 
 :host {
-  .datepicker {
+  .osds-datepicker__hidden-input {
     display: none;
+  }
+
+:host([hasFocus]) {
+  .datepicker {
     width: 50%;
     max-width: clamp(36rem, 50%, 50%);
     margin-top: var(--ods-size-04);
     height: 0;
     position: relative;
+    display: flex;
 
     .datepicker-picker {
-      width: 100%;
-      height: fit-content;
-      background: gray;
       position: absolute;
+      border-style: solid;
+
+      .datepicker-header,
+      .datepicker-controls {
+        display: flex;
+        justify-content: space-between;
+
+        .prev-btn,
+        .next-btn {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border: none;
+          cursor: pointer;
+        }
+
+        .view-switch {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border: none;
+          cursor: pointer;
+        }
+      }
+
+      .datepicker-main {
+        .datepicker-view {
+          .days {
+            .days-of-week {
+              display: grid;
+
+              .dow {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: default;
+              }
+            }
+
+            .datepicker-grid {
+              display: grid;
+
+              .datepicker-cell {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border: none;
+                cursor: pointer;
+              }
+
+              .prev,
+              .next {
+                opacity: 50%;
+              }
+            }
+          }
+        }
+
+        .datepicker-grid {
+          display: grid;
+
+          .datepicker-cell {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: none;
+            cursor: pointer;
+          }
+        }
+      }
     }
-  }
-}
-
-:host([disabled]) {
-  opacity: .5;
-  cursor: not-allowed;
-}
-
-:host([hasFocus]) {
-  .datepicker {
-    display: flex;
   }
 }
 

@@ -3,6 +3,7 @@ import type { OdsDatepickerAttribute } from './interfaces/attributes';
 import type { OdsDatepickerEvent, OdsDatepickerValueChangeEventDetail } from './interfaces/events';
 import { Component, Element, Event, Host, h, Listen, Prop, State } from '@stencil/core';
 import { ODS_INPUT_TYPE } from '@ovhcloud/ods-component-input';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_ICON_NAME } from '@ovhcloud/ods-component-icon';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { Datepicker } from 'vanillajs-datepicker'
@@ -22,9 +23,13 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
   @Element() el!: HTMLElement;
 
   @State() hasFocus = false;
+  @State() datepickerInstance: Datepicker | undefined = undefined;
 
   /** @see OdsDatepickerAttribute.clearable */
   @Prop({ reflect: true }) clearable?: boolean = DEFAULT_ATTRIBUTE.clearable;
+
+  /** @see OdsDatepickerAttribute.color */
+  @Prop({ reflect: true }) color?: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
 
   /** @see OdsDatepickerAttribute.disabled */
   @Prop({ reflect: true }) disabled?: boolean = DEFAULT_ATTRIBUTE.disabled;
@@ -35,27 +40,30 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
   /** @see OdsDatepickerAttribute.format */
   @Prop({ reflect: true }) format?: string = DEFAULT_ATTRIBUTE.format;
 
+  /** @see OdsDatepickerAttribute.inline */
+  @Prop({ reflect: true }) inline?: boolean = DEFAULT_ATTRIBUTE.inline;
+
   /** @see OdsDatepickerAttribute.placeholder */
   @Prop({ reflect: true }) placeholder?: string = DEFAULT_ATTRIBUTE.placeholder;
 
   /** @see OdsDatepickerAttribute.value */
   @Prop({ reflect: true, mutable: true }) value?: Date = DEFAULT_ATTRIBUTE.value;
 
-  /** @see OdsDatepickerEvents.odsValueChange */
-  @Event() odsValueChange!: EventEmitter<OdsDatepickerValueChangeEventDetail>;
-
-  /** @see OdsDatepickerEvents.odsDatepickerBlur */
+  /** @see OdsDatepickerEvent.odsDatepickerBlur */
   @Event() odsDatepickerBlur!: EventEmitter<void>;
 
-  /** @see OdsDatepickerEvents.odsDatepickerFocus */
+  /** @see OdsDatepickerEvent.odsDatepickerFocus */
   @Event() odsDatepickerFocus!: EventEmitter<void>;
+
+  /** @see OdsDatepickerEvent.odsDatepickerValueChange */
+  @Event() odsDatepickerValueChange!: EventEmitter<OdsDatepickerValueChangeEventDetail>;
 
   @Watch('value')
   onValueChange(value: Date, oldValue?: Date) {
     this.controller.onValueChange(value, oldValue);
   }
 
-  @Listen('odsValueChange', { target: 'body' })
+  @Listen('odsValueChange')
   handleInputValueChange(event: CustomEvent) {
     if (this.format && event.detail.value.length === this.format.length) {
       this.onChange(new Date(Datepicker.parseDate(event.detail.value, this.format)))
@@ -104,24 +112,86 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
       return;
     }
 
-    const datepickerElement = this.el.shadowRoot.querySelector('.osds-datepicker__hidden-input') as HTMLInputElement;
+    const hiddenInput = this.el.shadowRoot.querySelector('.osds-datepicker__hidden-input') as HTMLInputElement;
 
-    if (!datepickerElement.getAttribute('initialized')) {
-      new Datepicker(datepickerElement, {
+    if (!hiddenInput.getAttribute('initialized')) {
+      this.datepickerInstance = new Datepicker(hiddenInput, {
         format: this.format,
+        nextArrow: `<osds-icon name="triangle-right" size="sm" color=${this.color}></osds-icon>`,
+        prevArrow: `<osds-icon name="triangle-left" size="sm" color=${this.color}></osds-icon>`,
+        maxView: 2,
       });
 
-      datepickerElement.addEventListener('changeDate', (e: Event) => {
+      const datepickerElement = this.el.shadowRoot.querySelector('.datepicker-picker') as HTMLElement;
+
+      hiddenInput.addEventListener('changeDate', (e: Event) => {
         const customEvent = e as CustomEvent;
         this.onChange(customEvent.detail.date);
       });
 
-      datepickerElement.setAttribute('initialized', 'true');
+      hiddenInput.setAttribute('initialized', 'true');
+
+      const allElements = datepickerElement.querySelectorAll('*');
+      allElements.forEach(element => {
+        element.removeAttribute('tabindex');
+      });
+
+      const dayNames = this.el.shadowRoot.querySelectorAll('.dow');
+      dayNames.forEach(day => {
+        if (day.textContent) {
+          day.textContent = day.textContent.trim().charAt(0);
+        }
+      });
+
+      const viewSwitch = this.el.shadowRoot.querySelector('.view-switch') as HTMLElement;
+      const chevron = document.createElement('osds-icon');
+      chevron.setAttribute('name', 'chevron-down');
+      chevron.setAttribute('color', `${this.color}`);
+      chevron.setAttribute('size', 'xs');
+      viewSwitch.appendChild(chevron);
+
+      const spans = this.el.shadowRoot.querySelectorAll('.datepicker-grid span');
+      spans.forEach(span => {
+        const button = document.createElement('button');
+        button.setAttribute('class', span.getAttribute('class') as string);
+        button.setAttribute('data-date', span.getAttribute('data-date') as string);
+        button.innerHTML = span.innerHTML;
+        span.replaceWith(button);
+      });
+
+      hiddenInput.addEventListener('changeView', (e: Event) => {
+        const customEvent = e as CustomEvent;
+        if(this.el.shadowRoot) {
+          const spans = this.el.shadowRoot.querySelectorAll('.datepicker-grid span');
+          spans.forEach(span => {
+            const button = document.createElement('button');
+            button.setAttribute('class', span.getAttribute('class') as string);
+            if (customEvent.detail.viewId === 0) {
+              button.setAttribute('data-date', span.getAttribute('data-date') as string);
+            } else if (customEvent.detail.viewId === 1) {
+              button.setAttribute('data-month', span.getAttribute('data-month') as string);
+            } else if (customEvent.detail.viewId === 2) {
+              button.setAttribute('data-year', span.getAttribute('data-year') as string);
+            }
+            button.innerHTML = span.innerHTML;
+            span.replaceWith(button);
+          });
+        }
+      });
+
+      ['changeView', 'changeMonth', 'changeYear'].forEach(event => {
+        hiddenInput.addEventListener(event, (e: Event) => {
+          const customEvent = e as CustomEvent;
+          if (customEvent.detail.viewId < 2) {
+            viewSwitch.appendChild(chevron);
+          }
+        });
+      });
     }
   }
 
   formatDate(date?: Date | undefined) {
-    if (this.format && date) {
+    if (this.format && date && this.el.shadowRoot) {
       return Datepicker.formatDate(date, this.format);
     } else {
       return '';
@@ -131,29 +201,38 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
   render() {
     const {
       clearable,
+      color,
       disabled,
       error,
       hasFocus,
+      inline,
       placeholder,
       value,
     } = this;
 
     return (
       <Host {...{
+        disabled,
         hasFocus,
+        inline,
         onBlur: () => this.onBlur(),
         onFocus: () => this.onFocus(),
       }}>
         <osds-input
-          type={ODS_INPUT_TYPE.text}
           clearable={clearable}
-          disabled={disabled}
-          error={error}
+          color={color}
+          error={error && error.length > 0 ? true : false }
           icon={ODS_ICON_NAME.CALENDAR}
           placeholder={placeholder}
+          type={ODS_INPUT_TYPE.text}
           value={this.formatDate(value)}
         ></osds-input>
         <input tabindex={-1} class="osds-datepicker__hidden-input"></input>
+        {
+          error
+          && error.length > 0
+          && <osds-text color={ODS_THEME_COLOR_INTENT.error}>{error}</osds-text>
+        }
       </Host>
     );
   }

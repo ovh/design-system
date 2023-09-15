@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-component-datepicker-vue",
-  "version": "15.0.1",
+  "version": "16.0.1",
   "private": true,
   "description": "Vue specific wrapper for ods",
   "keywords": [],
@@ -20,12 +20,12 @@
     "dist/"
   ],
   "dependencies": {
-    "@ovhcloud/ods-component-datepicker": "^15.0.1"
+    "@ovhcloud/ods-component-datepicker": "16.0.1"
   },
   "peerDependencies": {
     "vue": ">=3"
   },
   "devDependencies": {
-    "@ovhcloud/ods-vue-dev": "^15.0.1"
+    "@ovhcloud/ods-vue-dev": "16.0.1"
   }
 }

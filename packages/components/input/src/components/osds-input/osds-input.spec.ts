@@ -178,6 +178,17 @@ describe('spec:osds-input', () => {
       });
     });
 
+    describe('prefixValue', () => {
+      odsUnitTestAttribute<OdsInputAttribute, 'prefixValue'>({
+        name: 'prefixValue',
+        defaultValue: DEFAULT_ATTRIBUTE.prefixValue,
+        newValue: 'prefix',
+        value: '',
+        setup: (value) => setup({ attributes: { ['prefixValue']: value } }),
+        ...config,
+      });
+    });
+
     describe('size', () => {
       odsUnitTestAttribute<OdsInputAttribute, 'size'>({
         name: 'size',

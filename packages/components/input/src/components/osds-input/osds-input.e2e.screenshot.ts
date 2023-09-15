@@ -226,6 +226,26 @@ describe('e2e:osds-input', () => {
       actionDescription: 'placeholder',
       action: () => el.setProperty('placeholder', 'placeholder'),
     },
+    {
+      // Will display an input with an error and an icon
+      actionDescription: 'prefixValue',
+      action: () => el.setProperty('prefixValue', 'prefix'),
+    },
+    {
+      // Will display an input with an error and an icon
+      actionDescription: 'prefixValue & placeholder',
+      action: () => {
+        el.setProperty('prefixValue', 'prefix');
+        el.setProperty('placeholder', 'placeholder');
+      },
+    }, {
+      // Will display an input with an error and an icon
+      actionDescription: 'prefixValue & value',
+      action: () => {
+        el.setProperty('prefixValue', 'prefix');
+        el.setProperty('value', 'value');
+      },
+    },
   ];
 
   const screenshotBehaviours = [

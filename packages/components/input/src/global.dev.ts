@@ -11,6 +11,7 @@ import './global';
 import { OdsErrorStateControl, OdsFormControl, OdsLogger } from '@ovhcloud/ods-common-core';
 import '@ovhcloud/ods-component-icon';
 import '@ovhcloud/ods-component-spinner';
+import '@ovhcloud/ods-component-text';
 
 const input3: (HTMLElement & OsdsInput) | null = document.getElementById('input-3') as (HTMLElement & OsdsInput);
 const input3ErrorForbiddenValue: HTMLElement | null = document.querySelector('#example-3 .forbidden-value');

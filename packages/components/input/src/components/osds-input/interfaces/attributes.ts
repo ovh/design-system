@@ -57,6 +57,8 @@ interface OdsInputAttribute {
   name?: string;
   /** Placeholder text for the input */
   placeholder?: string;
+  /** Text before the input value */
+  prefixValue?: string;
   /** Indicates if the input is read-only or not */
   readOnly?: boolean;
   /** Indicates if the input is required or not */

@@ -12,7 +12,7 @@ import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_INPUT_SIZE } from './constants/input-size';
 import { ODS_INPUT_TYPE } from './constants/input-type';
 import { OdsInputController } from './core/controller';
-
+import { ODS_TEXT_SIZE } from '@ovhcloud/ods-component-text';
 /**
  *
  */
@@ -39,82 +39,85 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
 
   /** Props */
 
-  /** @see OdsInputAttributes.ariaLabel */
+  /** @see OdsInputAttribute.ariaLabel */
   @Prop() ariaLabel: HTMLElement['ariaLabel'] = DEFAULT_ATTRIBUTE.ariaLabel;
 
-  /** @see OdsInputAttributes.ariaLabelledby */
+  /** @see OdsInputAttribute.ariaLabelledby */
   @Prop() ariaLabelledby?: string = DEFAULT_ATTRIBUTE.ariaLabelledby;
 
-  /** @see OdsInputAttributes.clearable */
+  /** @see OdsInputAttribute.clearable */
   @Prop({ reflect: true }) clearable?: boolean = DEFAULT_ATTRIBUTE.clearable;
 
-  /** @see OdsInputAttributes.color */
+  /** @see OdsInputAttribute.color */
   @Prop({ reflect: true }) color?: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
 
-  /** @see OdsInputAttributes.contrasted */
+  /** @see OdsInputAttribute.contrasted */
   @Prop({ reflect: true }) contrasted?: boolean = DEFAULT_ATTRIBUTE.contrasted;
 
-  /** @see OdsInputAttributes.defaultValue */
+  /** @see OdsInputAttribute.defaultValue */
   @Prop({ reflect: true }) defaultValue: OdsInputValue = DEFAULT_ATTRIBUTE.defaultValue;
 
-  /** @see OdsInputAttributes.disabled */
+  /** @see OdsInputAttribute.disabled */
   @Prop({ reflect: true }) disabled?: boolean = DEFAULT_ATTRIBUTE.disabled;
 
-  /** @see OdsInputAttributes.error */
+  /** @see OdsInputAttribute.error */
   @Prop({ reflect: true }) error?: boolean = DEFAULT_ATTRIBUTE.error;
 
-  /** @see OdsInputAttributes.errorStateControl */
+  /** @see OdsInputAttribute.errorStateControl */
   @Prop({ reflect: true }) errorStateControl?: OdsErrorStateControl = DEFAULT_ATTRIBUTE.errorStateControl;
 
-  /** @see OdsInputAttributes.forbiddenValues */
+  /** @see OdsInputAttribute.forbiddenValues */
   @Prop({ reflect: true }) forbiddenValues: OdsFormForbiddenValues<number> = DEFAULT_ATTRIBUTE.forbiddenValues;
 
-  /** @see OdsInputAttributes.formControl */
+  /** @see OdsInputAttribute.formControl */
   @Prop({ reflect: true }) formControl?: OdsFormControl<OdsInputValidityState> = DEFAULT_ATTRIBUTE.formControl;
 
-  /** @see OdsInputAttributes.icon */
+  /** @see OdsInputAttribute.icon */
   @Prop({ reflect: true }) icon?: ODS_ICON_NAME = DEFAULT_ATTRIBUTE.icon;
 
-  /** @see OdsInputAttributes.inline */
+  /** @see OdsInputAttribute.inline */
   @Prop({ reflect: true }) inline?: boolean = DEFAULT_ATTRIBUTE.inline;
 
-  /** @see OdsInputAttributes.label */
+  /** @see OdsInputAttribute.label */
   @Prop({ reflect: true }) label?: string = DEFAULT_ATTRIBUTE.label;
 
-  /** @see OdsInputAttributes.loading */
+  /** @see OdsInputAttribute.loading */
   @Prop({ reflect: true }) loading?: boolean = DEFAULT_ATTRIBUTE.loading;
 
-  /** @see OdsInputAttributes.masked */
+  /** @see OdsInputAttribute.masked */
   @Prop({ reflect: true, mutable: true }) masked?: boolean = DEFAULT_ATTRIBUTE.masked;
 
-  /** @see OdsInputAttributes.max */
+  /** @see OdsInputAttribute.max */
   @Prop({ reflect: true }) max?: number = DEFAULT_ATTRIBUTE.max;
 
-  /** @see OdsInputAttributes.min */
+  /** @see OdsInputAttribute.min */
   @Prop({ reflect: true }) min?: number = DEFAULT_ATTRIBUTE.min;
 
-  /** @see OdsInputAttributes.name */
+  /** @see OdsInputAttribute.name */
   @Prop({ reflect: true }) name?: string = DEFAULT_ATTRIBUTE.name;
 
-  /** @see OdsInputAttributes.placeholder */
+  /** @see OdsInputAttribute.placeholder */
   @Prop({ reflect: true }) placeholder?: string = DEFAULT_ATTRIBUTE.placeholder;
 
-  /** @see OdsInputAttributes.readOnly */
+  /** @see OdsInputAttribute.prefixValue */
+  @Prop({ reflect: true }) prefixValue = DEFAULT_ATTRIBUTE.prefixValue;
+
+  /** @see OdsInputAttribute.readOnly */
   @Prop({ reflect: true }) readOnly?: boolean = DEFAULT_ATTRIBUTE.readOnly;
 
-  /** @see OdsInputAttributes.required */
+  /** @see OdsInputAttribute.required */
   @Prop({ reflect: true }) required?: boolean = DEFAULT_ATTRIBUTE.required;
 
-  /** @see OdsInputAttributes.size */
+  /** @see OdsInputAttribute.size */
   @Prop({ reflect: true }) size?: ODS_INPUT_SIZE = DEFAULT_ATTRIBUTE.size;
 
-  /** @see OdsInputAttributes.step */
+  /** @see OdsInputAttribute.step */
   @Prop({ reflect: true }) step?: number = DEFAULT_ATTRIBUTE.step;
 
-  /** @see OdsInputAttributes.type */
+  /** @see OdsInputAttribute.type */
   @Prop({ reflect: true }) type: ODS_INPUT_TYPE = DEFAULT_ATTRIBUTE.type;
 
-  /** @see OdsInputAttributes.value */
+  /** @see OdsInputAttribute.value */
   @Prop({ reflect: true, mutable: true }) value: OdsInputValue = DEFAULT_ATTRIBUTE.value;
 
   /** Events */
@@ -285,6 +288,10 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
     this.controller.onChange();
   }
 
+  private hasPlaceholder(): boolean {
+    return !!this.placeholder && !this.inputEl?.value;
+  }
+
   render() {
     const {
       ariaLabel,
@@ -315,7 +322,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
     const labelId = ariaLabelledby ? ariaLabelledby : `${inputId}-label`;
 
     const isPassword = type === 'password';
-
+ 
     return (
       /** Main styling is applied to Host, so that the icons are integrated inside the component */
       <Host {...{
@@ -326,6 +333,10 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
         hasFocus,
       }}
       >
+        <osds-text color={ODS_THEME_COLOR_INTENT.text}
+          size={this.hasPlaceholder() ? ODS_TEXT_SIZE._300 : ODS_TEXT_SIZE._400}>
+          { this.prefixValue }
+        </osds-text>
         {/** Input field with attributes */}
         <input
           {...{

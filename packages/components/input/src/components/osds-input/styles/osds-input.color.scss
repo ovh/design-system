@@ -33,7 +33,7 @@
   }
 
   input,
-  input::placeholder{
+  input::placeholder {
       color: ods-get-color-variable($intent-name: text, $hue: '500');
       opacity: 1;
     }

@@ -6,3 +6,4 @@
 import './global';
 import '@ovhcloud/ods-component-icon';
 import '@ovhcloud/ods-component-spinner';
+import '@ovhcloud/ods-component-text';

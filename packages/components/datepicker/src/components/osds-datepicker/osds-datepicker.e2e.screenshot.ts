@@ -3,7 +3,6 @@ import type { OdsDatepickerAttribute } from './interfaces/attributes';
 import { newE2EPage } from '@stencil/core/testing';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
 
 describe('e2e:osds-datepicker', () => {
   let page: E2EPage;

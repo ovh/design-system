@@ -30,10 +30,6 @@ const storyParams = {
     category: 'General',
     defaultValue: '',
   },
-  value: {
-    category: 'General',
-    defaultValue: new Date(Date.now()),
-  },
 };
 
 export default {

@@ -123,19 +123,22 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
       return;
     }
 
-    const datepickerElement = this.el.shadowRoot.querySelector('.osds-datepicker__hidden-input') as HTMLInputElement;
+    const hiddenInput = this.el.shadowRoot.querySelector('.osds-datepicker__hidden-input') as HTMLInputElement;
 
-    if (!datepickerElement.getAttribute('initialized')) {
-      new Datepicker(datepickerElement, {
+    if (!hiddenInput.getAttribute('initialized')) {
+      this.datepickerInstance = new Datepicker(hiddenInput, {
         format: this.format,
+        nextArrow: `<osds-icon name="triangle-right" size="sm" color="primary"></osds-icon>`,
+        prevArrow: `<osds-icon name="triangle-left" size="sm" color="primary"></osds-icon>`,
+        maxView: 2,
       });
 
-      datepickerElement.addEventListener('changeDate', (e: Event) => {
+      hiddenInput.addEventListener('changeDate', (e: Event) => {
         const customEvent = e as CustomEvent;
         this.onChange(customEvent.detail.date);
       });
 
-      datepickerElement.setAttribute('initialized', 'true');
+      hiddenInput.setAttribute('initialized', 'true');
     }
   }
 

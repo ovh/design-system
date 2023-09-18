@@ -1,8 +1,6 @@
 import type { EventEmitter } from '@stencil/core';
-import type { OdsValidityState } from '@ovhcloud/ods-common-core';
 
 interface OdsDatepickerValueChangeEventDetail {
-  validity: OdsValidityState;
   value: Date | undefined | null;
   oldValue?: Date | undefined | null;
 }
@@ -15,7 +13,7 @@ interface OdsDatepickerEvent {
   /** Triggered on focus */
   odsDatepickerFocus: EventEmitter<void>;
   /** Triggered on value change */
-  odsValueChange: EventEmitter<OdsDatepickerValueChangeEventDetail>;
+  odsDatepickerValueChange: EventEmitter<OdsDatepickerValueChangeEventDetail>;
 }
 
 export {

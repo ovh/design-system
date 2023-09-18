@@ -71,8 +71,8 @@ describe('spec:osds-datepicker', () => {
       odsUnitTestAttribute<OdsDatepickerAttribute, 'error'>({
         name: 'error',
         defaultValue: DEFAULT_ATTRIBUTE.error,
-        newValue: 'Bip bop, we encountered a problem.',
-        value: '',
+        newValue: true,
+        value: false,
         setup: (value) => setup({ attributes: { ['error']: value } }),
         ...config,
       });
@@ -132,17 +132,6 @@ describe('spec:osds-datepicker', () => {
         instance?.onFocus();
         expect(controller.onFocus).toHaveBeenCalledTimes(1);
         expect(controller.onFocus).toHaveBeenCalledWith();
-      });
-    });
-
-    describe('watchers', () => {
-      it('should call onValueChange on value change', async () => {
-        const value = new Date('1999-11-02');
-        await setup({ });
-        instance.value = value;
-
-        expect(controller.onValueChange).toHaveBeenCalledTimes(1);
-        expect(controller.onValueChange).toHaveBeenCalledWith(value, null);
       });
     });
   });

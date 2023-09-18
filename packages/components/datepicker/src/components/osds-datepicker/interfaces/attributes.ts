@@ -10,7 +10,7 @@ interface OdsDatepickerAttribute {
   /**
    * Defines if the Datepicker should display an error message
    */
-  error?: string;
+  error?: boolean;
   /**
    * Defines which format the Datepicker should be applying (supported formats: https://mymth.github.io/vanillajs-datepicker/#/date-string+format?id=date-format)
    */

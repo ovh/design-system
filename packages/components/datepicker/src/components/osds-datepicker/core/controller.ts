@@ -1,5 +1,4 @@
 import type { OsdsDatepicker } from '../osds-datepicker';
-import { OdsLogger } from '@ovhcloud/ods-common-core';
 
 /**
  * common controller logic for input component used by the different implementations.
@@ -7,15 +6,9 @@ import { OdsLogger } from '@ovhcloud/ods-common-core';
  */
 class OdsDatepickerController {
   private readonly component: OsdsDatepicker;
-  private readonly logger = new OdsLogger('OdsDatepickerController');
 
   constructor(component: OsdsDatepicker) {
     this.component = component;
-  }
-
-  beforeInit(): void {
-    this.logger.debug('[datepicker]', 'beforeInit', this.component.value);
-    this.onChange(this.component.value);
   }
 
   onFocus() {
@@ -23,14 +16,14 @@ class OdsDatepickerController {
     this.component.emitFocus();
   }
 
-  onChange(newValue: Date | undefined | null, value?: Date | null) {
-    this.logger.debug(`[datepicker=${newValue}]`, 'value changed', { newValue, value });
+  onChange(newValue: Date | undefined | null, oldValue?: Date | undefined | null) {
     if(!this.component.disabled) {
       if (newValue === undefined || newValue === null || isNaN(newValue.getTime())) {
         this.component.value = null;
       } else {
         this.component.value = newValue;
         this.component.datepickerInstance?.setDate(newValue);
+        this.component.emitValueChange(newValue, oldValue);
       }
     }
   }
@@ -38,15 +31,6 @@ class OdsDatepickerController {
   onBlur() {
     this.component.hasFocus = false;
     this.component.emitBlur();
-  }
-
-  onValueChange(value: Date, oldValue?: Date): void {
-    this.logger.debug(`[datepicker=${this.component.value}]`, 'value changed', { value, oldValue });
-    this.validateValue();
-  }
-
-  private validateValue() {
-    return true
   }
 }
 

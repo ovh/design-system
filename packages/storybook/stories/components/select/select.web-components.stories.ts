@@ -77,6 +77,7 @@ const TemplateMultiGroup = (args: any) => html`
     <osds-select-group>North America</osds-select-group>
     <osds-select-option value="4">Value 4</osds-select-option>
     <osds-select-option value="5">Value 5</osds-select-option>
+    <osds-select-option value="6">Value 6</osds-select-option>
   </osds-select>
 `;
 export const MultiGroup = TemplateMultiGroup.bind({});

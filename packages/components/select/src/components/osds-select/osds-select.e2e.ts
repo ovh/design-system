@@ -15,7 +15,7 @@ describe('e2e:osds-select', () => {
   let optionElement: E2EElement;
   let optionDivElement: E2EElement;
 
-  async function setup({ attributes = {}, onPage }: { attributes?: Partial<OdsSelectAttribute>, html?: string, onPage?: ({ page }: { page: E2EPage }) => void } = {}) {
+  async function setup({ attributes = {}, html,  onPage }: { attributes?: Partial<OdsSelectAttribute>, html?: string, onPage?: ({ page }: { page: E2EPage }) => void } = {}) {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsSelectAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
@@ -23,8 +23,13 @@ describe('e2e:osds-select', () => {
 
     await page.setContent(`
       <osds-select ${odsStringAttributes2Str(stringAttributes)}>
-        <osds-select-option value="42">value</osds-select-option>
-        <osds-select-option value="43">value2</osds-select-option>
+        ${html}
+        <osds-select-option value="42">
+          value1
+        </osds-select-option>
+        <osds-select-option value="43">
+          value2
+        </osds-select-option>
       </osds-select>
     `);
     await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
@@ -51,6 +56,37 @@ describe('e2e:osds-select', () => {
     it('should have a div element', async () => {
       expect(divElement).not.toBeNull();
       expect(optionDivElement).not.toBeNull();
+    });
+
+    it('should display selectedLabel slot', async () => {
+      await setup({ attributes: { }, html: `<span slot="selectedLabel"></span>` });
+
+      await page.waitForChanges();
+
+      const selectedLabel = await page.find('[slot="selectedLabel"]');
+
+      expect(selectedLabel).toBeDefined();
+    });
+
+    it('should display placeholder slot without value', async () => {
+      await setup({ attributes: { }, html: `<span slot="placeholder">Placeholder</span>` });
+
+      await page.waitForChanges();
+
+      const selectedLabel = await page.find('[slot="placeholder"]');
+
+      expect(selectedLabel).toBeDefined();
+      expect(selectedLabel.innerHTML).toBe('Placeholder');
+    });
+
+    it('should not display placeholder slot because of value', async () => {
+      await setup({ attributes: { value: '42' }, html: `<span slot="placeholder">Placeholder</span>` });
+
+      await page.waitForChanges();
+
+      const selectedLabel = await page.find('slot[name="placeholder"]');
+
+      expect(selectedLabel).toBe(null);
     });
   });
 

@@ -36,26 +36,26 @@ describe('e2e:osds-datepicker', () => {
     await el.click();
     const clearButton = await page.find('osds-datepicker >>> osds-input >>> osds-icon[name="close"]');
     await clearButton.click();
-    expect(await el.getProperty('value')).toBe(undefined);
+    expect(await el.getProperty('value')).toBe(null);
   });
 
   it('should be disabled when disabled attribute is true', async () => {
     await setup({ attributes: { disabled: true } });
-    const input = await page.find('osds-datepicker >>> osds-input');
-    expect(input).toHaveAttribute('disabled');
+    const datepicker = await page.find('osds-datepicker');
+    expect(datepicker).toHaveAttribute('disabled');
   });
 
-  it('should update the value when date is selected', async () => {
+  it('should update the value when date is selected from the datepicker', async () => {
     await setup({ attributes: {} });
     let value = await el.getProperty('value');
-    expect(value).toBe(undefined);
+    expect(value).toBe(null);
     await el.click();
     await page.waitForChanges();
     const dateButton = await page.find('osds-datepicker >>> .datepicker .datepicker-grid .datepicker-cell:first-child');
     await dateButton.click();
     await page.waitForChanges();
     value = await el.getProperty('value');
-    expect(value).not.toBe(undefined);
+    expect(value).not.toBe(null);
   });
 
   it('should format date according to format attribute', async () => {
@@ -68,5 +68,55 @@ describe('e2e:osds-datepicker', () => {
     const inputElement = await page.find('osds-datepicker >>> osds-input');
     const inputValue = await inputElement.getProperty('value');
     expect(inputValue).toMatch(/^\d{4}\/\d{2}\/\d{2}$/);
+  });
+
+  it('should display a datepicker with a selected date when value is updated', async () => {
+    await setup({ attributes: {} });
+    await el.click();
+    await page.waitForChanges();
+    const dateButton = await page.find('osds-datepicker >>> .datepicker .datepicker-grid .datepicker-cell:first-child');
+    await dateButton.click();
+    await page.waitForChanges();
+    const selectedDate = await page.find('osds-datepicker >>> .datepicker .datepicker-grid .datepicker-cell.selected');
+    expect(selectedDate).not.toBeNull();
+  });
+
+  it('should display the months grid when the view is switched', async () => {
+    await setup({ attributes: {} });
+    await el.click();
+    await page.waitForChanges();
+    const viewSwitch = await page.find('osds-datepicker >>> .datepicker .datepicker-controls .view-switch');
+    await viewSwitch.click();
+    await page.waitForChanges();
+    const monthGrid = await page.find('osds-datepicker >>> .datepicker .months');
+    expect(monthGrid).not.toBeNull();
+  });
+
+  it('should display the years grid when the view is switched', async () => {
+    await setup({ attributes: {} });
+    await el.click();
+    await page.waitForChanges();
+    const viewSwitch = await page.find('osds-datepicker >>> .datepicker .datepicker-controls .view-switch');
+    await viewSwitch.click();
+    await page.waitForChanges();
+    await viewSwitch.click();
+    await page.waitForChanges();
+    const yearGrid = await page.find('osds-datepicker >>> .datepicker .years');
+    expect(yearGrid).not.toBeNull();
+  });
+
+  it('should *not* display the decade grid when the view is switched', async () => {
+    await setup({ attributes: {} });
+    await el.click();
+    await page.waitForChanges();
+    const viewSwitch = await page.find('osds-datepicker >>> .datepicker .datepicker-controls .view-switch');
+    await viewSwitch.click();
+    await page.waitForChanges();
+    await viewSwitch.click();
+    await page.waitForChanges();
+    await viewSwitch.click();
+    await page.waitForChanges();
+    const decadeGrid = await page.find('osds-datepicker >>> .datepicker .decades');
+    expect(decadeGrid).toBeNull();
   });
 });

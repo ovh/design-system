@@ -6,7 +6,7 @@
   /** typography properties */
 
   [size='md'] {
-    :host(&) input, :host(&) .ods-input__prefix {
+    :host(&) input {
       $typography-properties: ods-get-typography-properties(body, '400');
       font-family: ods-get-typography-property($typography-properties, font-family);
       font-size: ods-get-typography-property($typography-properties, font-size);

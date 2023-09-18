@@ -1,7 +1,7 @@
 import type { EventEmitter } from '@stencil/core';
 import type { OdsDatepickerAttribute } from './interfaces/attributes';
 import type { OdsDatepickerEvent, OdsDatepickerValueChangeEventDetail } from './interfaces/events';
-import { Component, Element, Event, Host, h, Listen, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Event, Host, h, Listen, Prop, State } from '@stencil/core';
 import { ODS_INPUT_TYPE } from '@ovhcloud/ods-component-input';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_ICON_NAME } from '@ovhcloud/ods-component-icon';
@@ -34,7 +34,7 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
   @Prop({ reflect: true }) disabled?: boolean = DEFAULT_ATTRIBUTE.disabled;
 
   /** @see OdsDatepickerAttribute.error */
-  @Prop({ reflect: true }) error?: string = DEFAULT_ATTRIBUTE.error;
+  @Prop({ reflect: true }) error?: boolean = DEFAULT_ATTRIBUTE.error;
 
   /** @see OdsDatepickerAttribute.format */
   @Prop({ reflect: true }) format?: string = DEFAULT_ATTRIBUTE.format;
@@ -47,22 +47,16 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
 
   /** Events */
 
-  /** @see OdsDatepickerEvents.odsValueChange */
-  @Event() odsValueChange!: EventEmitter<OdsDatepickerValueChangeEventDetail>;
-
-  /** @see OdsDatepickerEvents.odsDatepickerBlur */
+  /** @see OdsDatepickerEvent.odsDatepickerBlur */
   @Event() odsDatepickerBlur!: EventEmitter<void>;
 
-  /** @see OdsDatepickerEvents.odsDatepickerFocus */
+  /** @see OdsDatepickerEvent.odsDatepickerFocus */
   @Event() odsDatepickerFocus!: EventEmitter<void>;
 
-  /** Watchers */
+  /** @see OdsDatepickerEvent.odsDatepickerValueChange */
+  @Event() odsDatepickerValueChange!: EventEmitter<OdsDatepickerValueChangeEventDetail>;
 
-  @Watch('value')
-  onValueChange(value: Date, oldValue?: Date) {
-    this.controller.onValueChange(value, oldValue);
-  }
-
+  /** Listening to user's manual input */
   @Listen('odsValueChange')
   handleInputValueChange(event: CustomEvent) {
     if (this.format && event.detail.value.length === this.format.length) {
@@ -87,6 +81,13 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
   }
 
   /**
+   * @see OdsDatepickerBehavior.emitValueChange
+   */
+  emitValueChange(newValue: Date | undefined | null, oldValue?: Date | undefined | null): void {
+    this.odsDatepickerValueChange.emit({ value: newValue, oldValue: oldValue });
+  }
+
+  /**
    * @see OdsDatepickerBehavior.onBlur
    */
   onBlur(): void {
@@ -107,29 +108,18 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
     this.controller.onFocus();
   }
 
-  /**
-   * @see OdsInputBehavior.beforeInit
-   */
-  beforeInit() {
-    this.controller.beforeInit();
-  }
-
-  componentWillLoad() {
-    this.beforeInit();
-  }
-
   componentDidLoad() {
     if(!this.el.shadowRoot) {
       return;
     }
 
-    const hiddenInput = this.el.shadowRoot.querySelector('.osds-datepicker__hidden-input') as HTMLInputElement;
+    const hiddenInput = this.el.shadowRoot.querySelector('#hidden-input') as HTMLInputElement;
 
     if (!hiddenInput.getAttribute('initialized')) {
       this.datepickerInstance = new Datepicker(hiddenInput, {
         format: this.format,
-        nextArrow: `<osds-icon name="triangle-right" size="sm" color="primary"></osds-icon>`,
-        prevArrow: `<osds-icon name="triangle-left" size="sm" color="primary"></osds-icon>`,
+        nextArrow: `<osds-icon name="triangle-right" size="sm" color="${ODS_THEME_COLOR_INTENT.primary}"></osds-icon>`,
+        prevArrow: `<osds-icon name="triangle-left" size="sm" color="${ODS_THEME_COLOR_INTENT.primary}"></osds-icon>`,
         maxView: 2,
       });
 
@@ -143,7 +133,7 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
   }
 
   formatDate(date?: Date | undefined | null) {
-    if (this.format && date && this.el.shadowRoot) {
+    if (this.format && date) {
       return Datepicker.formatDate(date, this.format);
     } else {
       return '';
@@ -162,25 +152,22 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
 
     return (
       <Host {...{
+        class: 'osds-datepicker',
         disabled,
+        error,
         hasFocus,
         onBlur: () => this.onBlur(),
         onFocus: () => this.onFocus(),
       }}>
         <osds-input
           clearable={clearable}
-          error={error && error.length > 0 ? true : false }
+          error={error}
           icon={ODS_ICON_NAME.CALENDAR}
           placeholder={placeholder}
           type={ODS_INPUT_TYPE.text}
           value={this.formatDate(value)}
         ></osds-input>
-        <input tabindex={-1} class="osds-datepicker__hidden-input"></input>
-        {
-          error
-          && error.length > 0
-          && <osds-text color={ODS_THEME_COLOR_INTENT.error}>{error}</osds-text>
-        }
+        <input tabindex={-1} id="hidden-input" class="osds-datepicker__hidden-input"></input>
       </Host>
     );
   }

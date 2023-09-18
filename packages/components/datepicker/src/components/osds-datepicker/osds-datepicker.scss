@@ -8,31 +8,25 @@
 // CSS targeted only for this component
 // /!\ for theming purposes, it has to be done in theming files
 // (i.e. packages/libraries/theming/...)
-:host {
+:host(.osds-datepicker) {
   display: flex;
   flex-direction: column;
 }
 
-:host([inline]) {
-  width: fit-content;
+.osds-datepicker {
+  &__hidden-input {
+    display: none;
+  }
 }
 
-:host .osds-datepicker__hidden-input {
-  display: none;
-}
-
-:host .datepicker {
-  display: none;
-}
-
-:host([hasFocus]) {
+:host {
   .datepicker {
+    display: none;
     width: 50%;
     max-width: clamp(36rem, 50%, 50%);
     margin-top: var(--ods-size-04);
     height: 0;
     position: relative;
-    display: flex;
 
     .datepicker-picker {
       width: 100%;
@@ -40,6 +34,12 @@
       background: gray;
       position: absolute;
     }
+  }
+}
+
+:host([hasFocus]) {
+  .datepicker {
+    display: flex;
   }
 }
 

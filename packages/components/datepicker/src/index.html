@@ -6,7 +6,7 @@
   <title>Dev ods-datepicker</title>
 
   <script type="module">
-    !window.ods && (window.ods = {config: {logging: {active:true}}});
+    !window.ods && ( window.ods = { config: { logging: { active:true } } } );
   </script>
 
   <script type='module' src='/build/osds-datepicker.esm.js'></script>
@@ -21,6 +21,9 @@
 
 <script>
   const datepicker = document.querySelector('osds-datepicker');
+  document.addEventListener("DOMContentLoaded", () => {
+    datepicker.value = new Date('1999-11-02');
+  });
 </script>
 </body>
 </html>

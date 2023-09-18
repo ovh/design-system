@@ -6,7 +6,7 @@ const DEFAULT_ATTRIBUTE: OdsDatepickerAttribute = Object.freeze({
   error: '',
   format: 'dd/mm/yyyy',
   placeholder: '',
-  value: undefined,
+  value: null,
 });
 
 export {

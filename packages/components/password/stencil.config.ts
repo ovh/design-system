@@ -14,6 +14,7 @@ export const config: Config = getStencilConfig({
       'osds-input',
       'osds-icon',
       'osds-spinner',
+      'osds-text',
     ]
   },
   vueOutput: {
@@ -22,6 +23,7 @@ export const config: Config = getStencilConfig({
       'osds-input',
       'osds-icon',
       'osds-spinner',
+      'osds-text',
     ]
   },
   dev: {

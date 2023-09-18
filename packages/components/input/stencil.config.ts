@@ -11,11 +11,11 @@ export const config: Config = {
     jestConfig: jestConfig.default,
     reactOutput: {
       componentCorePackage: '@ovhcloud/ods-component-input',
-      excludeComponents: ['osds-icon', 'osds-spinner'],
+      excludeComponents: ['osds-icon', 'osds-spinner', 'osds-text'],
     },
     vueOutput: {
       componentCorePackage: '@ovhcloud/ods-component-input',
-      excludeComponents: ['osds-icon', 'osds-spinner'],
+      excludeComponents: ['osds-icon', 'osds-spinner', 'osds-text'],
     },
     dev: {
       globalScript: 'src/global.dev.ts',

@@ -11,11 +11,11 @@ export const config: Config = getStencilConfig({
   reactOutput: {
     componentCorePackage: '@ovhcloud/ods-component-search-bar',
     // exclude peer dependencies that corresponds to www usage
-    excludeComponents: ['osds-icon', 'osds-button', 'osds-select', 'osds-input', 'osds-spinner']
+    excludeComponents: ['osds-icon', 'osds-button', 'osds-select', 'osds-input', 'osds-spinner', 'osds-text']
   },
   vueOutput: {
     componentCorePackage: '@ovhcloud/ods-component-search-bar',
-    excludeComponents: ['osds-icon', 'osds-button', 'osds-select', 'osds-input', 'osds-spinner']
+    excludeComponents: ['osds-icon', 'osds-button', 'osds-select', 'osds-input', 'osds-spinner', 'osds-text']
   },
   dev: {
     globalScript: 'src/global.dev.ts',

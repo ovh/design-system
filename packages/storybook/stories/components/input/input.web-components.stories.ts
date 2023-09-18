@@ -102,6 +102,10 @@ const storyParams = {
     defaultValue: [],
     control: { type: 'array' },
   },
+  prefixValue: {
+    category: 'Misc',
+    defaultValue: ''
+  },
 };
 
 export default {

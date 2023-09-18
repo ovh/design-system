@@ -10,11 +10,11 @@ export const config: Config = getStencilConfig({
   jestConfig: jestConfig.default,
   reactOutput: {
     componentCorePackage: '@ovhcloud/ods-component-clipboard',
-    excludeComponents: ['osds-input', 'osds-icon', 'osds-spinner']
+    excludeComponents: ['osds-input', 'osds-icon', 'osds-spinner', 'osds-text']
   },
   vueOutput: {
     componentCorePackage: '@ovhcloud/ods-component-clipboard',
-    excludeComponents: ['osds-input', 'osds-icon', 'osds-spinner']
+    excludeComponents: ['osds-input', 'osds-icon', 'osds-spinner', 'osds-text']
   },
   dev: {
     globalScript: 'src/global.dev.ts',

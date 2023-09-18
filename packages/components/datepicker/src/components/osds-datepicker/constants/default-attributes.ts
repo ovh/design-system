@@ -3,7 +3,7 @@ import { OdsDatepickerAttribute } from '../interfaces/attributes';
 const DEFAULT_ATTRIBUTE: OdsDatepickerAttribute = Object.freeze({
   clearable: false,
   disabled: false,
-  error: '',
+  error: false,
   format: 'dd/mm/yyyy',
   placeholder: '',
   value: null,

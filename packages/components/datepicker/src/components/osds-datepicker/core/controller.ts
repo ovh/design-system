@@ -13,18 +13,24 @@ class OdsDatepickerController {
     this.component = component;
   }
 
+  beforeInit(): void {
+    this.logger.debug('[datepicker]', 'beforeInit', this.component.value);
+    this.onChange(this.component.value);
+  }
+
   onFocus() {
     this.component.hasFocus = true;
     this.component.emitFocus();
   }
 
-  onChange(newValue: Date | undefined, value?: Date) {
+  onChange(newValue: Date | undefined | null, value?: Date | null) {
     this.logger.debug(`[datepicker=${newValue}]`, 'value changed', { newValue, value });
     if(!this.component.disabled) {
-      if (newValue === undefined || isNaN(newValue.getTime())) {
-        this.component.value = undefined;
+      if (newValue === undefined || newValue === null || isNaN(newValue.getTime())) {
+        this.component.value = null;
       } else {
         this.component.value = newValue;
+        this.component.datepickerInstance?.setDate(newValue);
       }
     }
   }

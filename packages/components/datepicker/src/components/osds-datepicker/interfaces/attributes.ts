@@ -22,7 +22,7 @@ interface OdsDatepickerAttribute {
   /**
    * Defines the Datepicker's value (Date object)
    */
-  value?: Date;
+  value?: Date | undefined | null;
 }
 
 export {

@@ -152,9 +152,9 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
             value={this.isoCode}>
             { this.parsedCountries?.map((country) => {
               const i18nCountry = this.i18nCountriesMap?.get(country);
-              return <osds-select-option value={ country }>
+              return <osds-select-option value={ country } key={ country }>
                 <div class="phone-number__select__option">
-                  <osds-flag iso={country} class="phone-number__select__option__flag"></osds-flag>
+                  <osds-flag lazy iso={country} class="phone-number__select__option__flag"></osds-flag>
                   <osds-text
                     color={ODS_THEME_COLOR_INTENT.text}
                     size={ODS_TEXT_SIZE._400}

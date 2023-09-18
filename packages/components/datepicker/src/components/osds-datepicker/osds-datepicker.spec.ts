@@ -1,14 +1,18 @@
+jest.mock('./core/controller'); // keep jest.mock before any
+
 import type { SpecPage } from '@stencil/core/testing';
 import type { OdsDatepickerAttribute } from './interfaces/attributes';
 import { newSpecPage } from '@stencil/core/testing';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OsdsDatepicker } from './osds-datepicker';
+import { OdsDatepickerController } from './core/controller';
 
 describe('spec:osds-datepicker', () => {
   let page: SpecPage;
   let root: HTMLElement | undefined;
   let instance: OsdsDatepicker;
+  let controller: OdsDatepickerController;
 
   afterEach(() => {
     jest.clearAllMocks();
@@ -19,11 +23,12 @@ describe('spec:osds-datepicker', () => {
 
     page = await newSpecPage({
       components: [OsdsDatepicker],
-      html: `<osds-datepicker ${odsStringAttributes2Str(stringAttributes)}>My Datepicker</osds-datepicker>`,
+      html: `<osds-datepicker ${odsStringAttributes2Str(stringAttributes)}></osds-datepicker>`,
     });
 
     root = page.root;
     instance = page.rootInstance;
+    controller = (OdsDatepickerController as unknown as jest.SpyInstance<OdsDatepickerController, unknown[]>).mock.instances[0];
   }
 
   it('should render', async () => {
@@ -66,7 +71,7 @@ describe('spec:osds-datepicker', () => {
       odsUnitTestAttribute<OdsDatepickerAttribute, 'error'>({
         name: 'error',
         defaultValue: DEFAULT_ATTRIBUTE.error,
-        newValue: 'error',
+        newValue: 'Bip bop, we encountered a problem.',
         value: '',
         setup: (value) => setup({ attributes: { ['error']: value } }),
         ...config,
@@ -99,10 +104,45 @@ describe('spec:osds-datepicker', () => {
       odsUnitTestAttribute<OdsDatepickerAttribute, 'value'>({
         name: 'value',
         defaultValue: DEFAULT_ATTRIBUTE.value,
-        newValue: new Date('2023-09-11'),
-        value: undefined,
+        newValue: new Date('1999-11-02'),
+        value: null,
         setup: (value) => setup({ attributes: { ['value']: value } }),
         ...config,
+      });
+    });
+  });
+
+  describe('controller', () => {
+    describe('events', () => {
+      it('should call onBlur on blur', async () => {
+        await setup({});
+        instance?.onBlur();
+        expect(controller.onBlur).toHaveBeenCalledTimes(1);
+        expect(controller.onBlur).toHaveBeenCalledWith();
+      });
+
+      it('should call onChange on change', async () => {
+        await setup({});
+        instance.onChange(new Date(''));
+        expect(controller.onChange).toHaveBeenCalledTimes(1);
+      });
+
+      it('should call onFocus on focus', async () => {
+        await setup({});
+        instance?.onFocus();
+        expect(controller.onFocus).toHaveBeenCalledTimes(1);
+        expect(controller.onFocus).toHaveBeenCalledWith();
+      });
+    });
+
+    describe('watchers', () => {
+      it('should call onValueChange on value change', async () => {
+        const value = new Date('1999-11-02');
+        await setup({ });
+        instance.value = value;
+
+        expect(controller.onValueChange).toHaveBeenCalledTimes(1);
+        expect(controller.onValueChange).toHaveBeenCalledWith(value, null);
       });
     });
   });

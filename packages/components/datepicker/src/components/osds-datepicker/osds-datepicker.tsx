@@ -3,6 +3,7 @@ import type { OdsDatepickerAttribute } from './interfaces/attributes';
 import type { OdsDatepickerEvent, OdsDatepickerValueChangeEventDetail } from './interfaces/events';
 import { Component, Element, Event, Host, h, Listen, Prop, State, Watch } from '@stencil/core';
 import { ODS_INPUT_TYPE } from '@ovhcloud/ods-component-input';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_ICON_NAME } from '@ovhcloud/ods-component-icon';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { Datepicker } from 'vanillajs-datepicker'
@@ -22,6 +23,9 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
   @Element() el!: HTMLElement;
 
   @State() hasFocus = false;
+  @State() datepickerInstance: Datepicker | undefined = undefined;
+
+  /** Attributes */
 
   /** @see OdsDatepickerAttribute.clearable */
   @Prop({ reflect: true }) clearable?: boolean = DEFAULT_ATTRIBUTE.clearable;
@@ -39,7 +43,9 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
   @Prop({ reflect: true }) placeholder?: string = DEFAULT_ATTRIBUTE.placeholder;
 
   /** @see OdsDatepickerAttribute.value */
-  @Prop({ reflect: true, mutable: true }) value?: Date = DEFAULT_ATTRIBUTE.value;
+  @Prop({ reflect: true, mutable: true }) value?: Date | undefined | null = DEFAULT_ATTRIBUTE.value;
+
+  /** Events */
 
   /** @see OdsDatepickerEvents.odsValueChange */
   @Event() odsValueChange!: EventEmitter<OdsDatepickerValueChangeEventDetail>;
@@ -50,17 +56,19 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
   /** @see OdsDatepickerEvents.odsDatepickerFocus */
   @Event() odsDatepickerFocus!: EventEmitter<void>;
 
+  /** Watchers */
+
   @Watch('value')
   onValueChange(value: Date, oldValue?: Date) {
     this.controller.onValueChange(value, oldValue);
   }
 
-  @Listen('odsValueChange', { target: 'body' })
+  @Listen('odsValueChange')
   handleInputValueChange(event: CustomEvent) {
     if (this.format && event.detail.value.length === this.format.length) {
       this.onChange(new Date(Datepicker.parseDate(event.detail.value, this.format)))
     } else if (event.detail.value.length === 0) {
-      this.onChange(undefined)
+      this.onChange(null)
     }
   }
 
@@ -88,7 +96,7 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
   /**
    * @see OdsDatepickerBehavior.onChange
    */
-  onChange(newValue: Date | undefined): void {
+  onChange(newValue: Date | undefined | null): void {
     this.controller.onChange(newValue, this.value);
   }
 
@@ -97,6 +105,17 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
    */
   onFocus(): void {
     this.controller.onFocus();
+  }
+
+  /**
+   * @see OdsInputBehavior.beforeInit
+   */
+  beforeInit() {
+    this.controller.beforeInit();
+  }
+
+  componentWillLoad() {
+    this.beforeInit();
   }
 
   componentDidLoad() {
@@ -120,8 +139,8 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
     }
   }
 
-  formatDate(date?: Date | undefined) {
-    if (this.format && date) {
+  formatDate(date?: Date | undefined | null) {
+    if (this.format && date && this.el.shadowRoot) {
       return Datepicker.formatDate(date, this.format);
     } else {
       return '';
@@ -140,20 +159,25 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
 
     return (
       <Host {...{
+        disabled,
         hasFocus,
         onBlur: () => this.onBlur(),
         onFocus: () => this.onFocus(),
       }}>
         <osds-input
-          type={ODS_INPUT_TYPE.text}
           clearable={clearable}
-          disabled={disabled}
-          error={error}
+          error={error && error.length > 0 ? true : false }
           icon={ODS_ICON_NAME.CALENDAR}
           placeholder={placeholder}
+          type={ODS_INPUT_TYPE.text}
           value={this.formatDate(value)}
         ></osds-input>
         <input tabindex={-1} class="osds-datepicker__hidden-input"></input>
+        {
+          error
+          && error.length > 0
+          && <osds-text color={ODS_THEME_COLOR_INTENT.error}>{error}</osds-text>
+        }
       </Host>
     );
   }

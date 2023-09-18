@@ -57,10 +57,7 @@ const TemplateDefault = (args: any) => html`
     <osds-select-group>Group title</osds-select-group>
     <osds-select-option value="1">Value 1</osds-select-option>
     <osds-select-option value="2">Value 2</osds-select-option>
-    <osds-select-option value="3">
-      Value 3 (will show '3' as label)
-      <span slot='selectedLabel'>3</span>
-    </osds-select-option>
+    <osds-select-option value="3">Value 3</osds-select-option>
   </osds-select>
 `;
 export const Default = TemplateDefault.bind({});
@@ -78,18 +75,9 @@ const TemplateMultiGroup = (args: any) => html`
     <osds-select-option value="2">Value 2</osds-select-option>
     <osds-select-option value="3">Value 3</osds-select-option>
     <osds-select-group>North America</osds-select-group>
-    <osds-select-option value="4">
-      Value 4 (will show '4' as label)
-      <span slot='selectedLabel'>4</span>
-    </osds-select-option>
-    <osds-select-option value="5">
-      Value 5 (will show '5' as label)
-      <span slot='selectedLabel'>5</span>
-    </osds-select-option>
-    <osds-select-option value="6">
-      Value 6 (will show '6' as label)
-      <span slot='selectedLabel'>6</span>
-    </osds-select-option>
+    <osds-select-option value="4">Value 4</osds-select-option>
+    <osds-select-option value="5">Value 5</osds-select-option>
+    <osds-select-option value="6">Value 6</osds-select-option>
   </osds-select>
 `;
 export const MultiGroup = TemplateMultiGroup.bind({});

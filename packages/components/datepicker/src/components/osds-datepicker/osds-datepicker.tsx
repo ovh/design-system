@@ -24,6 +24,7 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
 
   @State() hasFocus = false;
   @State() datepickerInstance: Datepicker | undefined = undefined;
+  @State() hiddenInput: HTMLInputElement | undefined = undefined;
 
   /** Attributes */
 
@@ -66,44 +67,26 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
     }
   }
 
-  /**
-   * @see OdsDatepickerBehavior.emitBlur
-   */
   emitBlur(): void {
     this.odsDatepickerBlur.emit();
   }
 
-  /**
-   * @see OdsDatepickerBehavior.emitFocus
-   */
   emitFocus(): void {
     this.odsDatepickerFocus.emit();
   }
 
-  /**
-   * @see OdsDatepickerBehavior.emitValueChange
-   */
   emitValueChange(newValue: Date | undefined | null, oldValue?: Date | undefined | null): void {
     this.odsDatepickerValueChange.emit({ value: newValue, oldValue: oldValue });
   }
 
-  /**
-   * @see OdsDatepickerBehavior.onBlur
-   */
   onBlur(): void {
     this.controller.onBlur();
   }
 
-  /**
-   * @see OdsDatepickerBehavior.onChange
-   */
   onChange(newValue: Date | undefined | null): void {
     this.controller.onChange(newValue, this.value);
   }
 
-  /**
-   * @see OdsDatepickerBehavior.onFocus
-   */
   onFocus(): void {
     this.controller.onFocus();
   }
@@ -113,31 +96,28 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
       return;
     }
 
-    const hiddenInput = this.el.shadowRoot.querySelector('#hidden-input') as HTMLInputElement;
-
-    if (!hiddenInput.getAttribute('initialized')) {
-      this.datepickerInstance = new Datepicker(hiddenInput, {
+    if (this.hiddenInput && !this.hiddenInput.getAttribute('initialized')) {
+      this.datepickerInstance = new Datepicker(this.hiddenInput, {
         format: this.format,
         nextArrow: `<osds-icon name="triangle-right" size="sm" color="${ODS_THEME_COLOR_INTENT.primary}"></osds-icon>`,
         prevArrow: `<osds-icon name="triangle-left" size="sm" color="${ODS_THEME_COLOR_INTENT.primary}"></osds-icon>`,
         maxView: 2,
       });
 
-      hiddenInput.addEventListener('changeDate', (e: Event) => {
+      this.hiddenInput.addEventListener('changeDate', (e: Event) => {
         const customEvent = e as CustomEvent;
         this.onChange(customEvent.detail.date);
       });
 
-      hiddenInput.setAttribute('initialized', 'true');
+      this.hiddenInput.setAttribute('initialized', 'true');
     }
   }
 
-  formatDate(date?: Date | undefined | null) {
+  private formatDate(date?: Date | undefined | null) {
     if (this.format && date) {
       return Datepicker.formatDate(date, this.format);
-    } else {
-      return '';
     }
+    return '';
   }
 
   render() {
@@ -162,12 +142,17 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
         <osds-input
           clearable={clearable}
           error={error}
+          disabled={disabled}
           icon={ODS_ICON_NAME.CALENDAR}
           placeholder={placeholder}
           type={ODS_INPUT_TYPE.text}
           value={this.formatDate(value)}
         ></osds-input>
-        <input tabindex={-1} id="hidden-input" class="osds-datepicker__hidden-input"></input>
+        <input
+          tabindex={-1}
+          class="osds-datepicker__hidden-input"
+          ref={(el?: HTMLInputElement) => this.hiddenInput = el || this.hiddenInput}
+        ></input>
       </Host>
     );
   }

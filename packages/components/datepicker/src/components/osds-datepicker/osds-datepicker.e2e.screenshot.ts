@@ -20,8 +20,8 @@ describe('e2e:osds-datepicker', () => {
   const attributeConfigurations = [
     {},
     { format: `mm/dd/yyyy` },
-    { error: `An error occured.` },
-    { placeholder: `placeholder`, error: `An error occured.` },
+    { error: true },
+    { placeholder: `placeholder`, error: true },
   ];
 
   describe('screenshots', () => {

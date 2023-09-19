@@ -37,6 +37,11 @@
   }
 }
 
+:host([disabled]) {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
 :host([hasFocus]) {
   .datepicker {
     display: flex;

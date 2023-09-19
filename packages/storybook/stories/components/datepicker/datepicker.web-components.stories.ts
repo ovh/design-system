@@ -20,7 +20,7 @@ const storyParams = {
   },
   error: {
     category: 'General',
-    defaultValue: '',
+    defaultValue: false,
   },
   format: {
     category: 'General',

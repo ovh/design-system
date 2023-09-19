@@ -12,11 +12,13 @@ class OdsDatepickerController {
   }
 
   onFocus() {
-    this.component.hasFocus = true;
-    this.component.emitFocus();
+    if (!this.component.disabled) {
+      this.component.hasFocus = true;
+      this.component.emitFocus();
+    }
   }
 
-  onChange(newValue: Date | undefined | null, oldValue?: Date | undefined | null) {
+  onChange(newValue: Date | undefined | null, oldValue?: Date | null) {
     if(!this.component.disabled) {
       if (newValue === undefined || newValue === null || isNaN(newValue.getTime())) {
         this.component.value = null;

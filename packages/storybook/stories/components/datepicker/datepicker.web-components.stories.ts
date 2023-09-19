@@ -33,7 +33,7 @@ const storyParams = {
 };
 
 export default {
-  title: 'UI Components/Datepicker [organism]/Web Component',
+  title: 'UI Components/Datepicker [molecule]/Web Component',
   id: 'datepicker',
   parameters: {
     notes: {

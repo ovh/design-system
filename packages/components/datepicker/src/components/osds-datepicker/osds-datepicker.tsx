@@ -101,8 +101,6 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
       return;
     }
 
-    this.hiddenInput = this.el.shadowRoot.querySelector('.osds-datepicker__hidden-input') as HTMLInputElement;
-
     if (this.hiddenInput && !this.hiddenInput.getAttribute('initialized')) {
       this.datepickerInstance = new Datepicker(this.hiddenInput, {
         format: this.format,
@@ -219,7 +217,7 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
           type={ODS_INPUT_TYPE.text}
           value={this.formatDate(value)}
         ></osds-input>
-        <input tabindex={-1} class="osds-datepicker__hidden-input"></input>
+        <input tabindex={-1} class="osds-datepicker__hidden-input" ref={(el?: HTMLInputElement) => this.hiddenInput = el || this.hiddenInput}></input>
       </Host>
     );
   }

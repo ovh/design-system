@@ -2,11 +2,21 @@
 @import '~@ovhcloud/ods-common-theming/ods-theme';
 
 :host {
-    osds-input {
-        cursor: pointer;
-        --ods-input-cursor: pointer;
-        --ods-input-icon-cursor: pointer;
-    }
+  /* overlay important properties */
+  position: relative; /* must be here to make the positioning working well */
+  text-align: initial; /* must be here to make the positioning working well for RTL alignment */
+  padding: 0; /* must be here to make the computing works. If you need padding, apply it on trigger or surface */
+  /* end overlay important properties */
+
+  osds-input {
+      cursor: pointer;
+      --ods-input-cursor: pointer;
+      --ods-input-icon-cursor: pointer;
+  }
+}
+
+:host([inline]) {
+  display: inline-flex;
 }
 
 :host([disabled]) {
@@ -16,4 +26,13 @@
         --ods-input-cursor: not-allowed;
         --ods-input-icon-cursor: not-allowed;
     }
+}
+
+ocdk-surface {
+  padding: 8px;
+  width: max-content;
+  max-width: 300px;
+  background: var(--white) 0% 0% no-repeat padding-box;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 0px 6px #00000026;
 }

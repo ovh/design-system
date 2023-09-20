@@ -1,7 +1,7 @@
 import type { EventEmitter } from '@stencil/core';
 
 interface OdsDatepickerValueChangeEventDetail {
-  value: Date | undefined | null;
+  value?: Date | null;
   oldValue?: Date | null;
 }
 

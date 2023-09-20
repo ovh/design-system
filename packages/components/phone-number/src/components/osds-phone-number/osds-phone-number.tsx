@@ -9,7 +9,7 @@ import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsPhoneNumberController } from './core/controller';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_PHONE_NUMBER_COUNTRY_PRESET } from './constants/phone-number-countries';
-import { PhoneNumberFormat, PhoneNumberUtil } from 'google-libphonenumber';
+import { PhoneNumber, PhoneNumberFormat, PhoneNumberUtil } from 'google-libphonenumber';
 import { ODS_TEXT_LEVEL, ODS_TEXT_SIZE } from '@ovhcloud/ods-component-text';
 
 /**
@@ -56,6 +56,8 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
 
   @State() hasCountries: boolean = false;
 
+  @State() slotSelectedLabel?: HTMLSpanElement;
+
   componentWillLoad(): void {
     // order matter
     this.handlerCountries();
@@ -80,6 +82,15 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
     const countriesList = this.controller.getCountriesList();
     this.parsedCountries = this.controller.parseCountries(countriesList);
     this.hasCountries = !!this.parsedCountries?.length;
+  }
+
+  @Watch('isoCode')
+  @Watch('slotSelectedLabel')
+  onIsoCodeChange(): void {
+    if (!this.slotSelectedLabel || !this.isoCode) {
+      return;
+    }
+    this.slotSelectedLabel.innerHTML = `<osds-flag lazy iso=${this.isoCode}></osds-flag>`;
   }
 
   @Listen('odsValueChange')
@@ -133,11 +144,16 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
   }
 
   getPlaceholder(): string | undefined {
-    if (!this.isoCode) {
-      return undefined;
-    }
-    const exampleNumber = this.phoneUtils.getExampleNumber(this.isoCode);
-    return this.phoneUtils.format(exampleNumber, PhoneNumberFormat.E164);
+    const exampleNumber = this.getExampleNumberByIsoCode();
+    return exampleNumber && this.phoneUtils.format(exampleNumber, PhoneNumberFormat.NATIONAL);
+  }
+
+  getPrefix(): string | undefined {
+    return `(+${this.getExampleNumberByIsoCode()?.getCountryCode()})`
+  }
+
+  private getExampleNumberByIsoCode(): PhoneNumber | undefined {
+    return this.isoCode && this.phoneUtils.getExampleNumber(this.isoCode);
   }
 
   render() {
@@ -150,6 +166,14 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
             disabled={this.disabled}
             error={this.error}
             value={this.isoCode}>
+            <span ref={ (el?: HTMLSpanElement) => {
+              if (!el) {
+                return;
+              }
+              setTimeout(() => this.slotSelectedLabel = el, 0);
+            }}
+              slot="selectedLabel"
+              class="phone-number__select-label" />
             { this.parsedCountries?.map((country) => {
               const i18nCountry = this.i18nCountriesMap?.get(country);
               return <osds-select-option value={ country } key={ country }>
@@ -173,6 +197,7 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
             'phone-number__input': true,
             'phone-number__input--not-first': this.hasCountries,
           }}
+          prefix-value={this.getPrefix()}
           placeholder={this.getPlaceholder()}
           color={ODS_THEME_COLOR_INTENT.primary}
           type={ODS_INPUT_TYPE.tel}

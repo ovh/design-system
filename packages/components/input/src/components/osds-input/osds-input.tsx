@@ -289,7 +289,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
   }
 
   private hasPlaceholder(): boolean {
-    return !!this.placeholder && !this.inputEl?.value;
+    return !!this.placeholder && !this.value;
   }
 
   render() {

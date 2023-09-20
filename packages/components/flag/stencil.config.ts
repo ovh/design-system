@@ -1,33 +1,14 @@
-import * as jestConfig from './jest.config';
-import { Config } from '@stencil/core';
 import { getStencilConfig } from '@ovhcloud/ods-common-stencil';
+import jestConfig from './jest.config';
 
-const args = process.argv.slice(2);
-
-const config: Config = getStencilConfig({
+const config = getStencilConfig({
+  args: process.argv.slice(2),
+  componentCorePackage: '@ovhcloud/ods-component-flag',
+  devScript: 'src/dev.ts',
+  jestConfig,
   namespace: 'osds-flag',
-  args,
-  jestConfig: jestConfig.default,
-  reactOutput: {
-    componentCorePackage: '@ovhcloud/ods-component-flag',
-    // exclude peer dependencies that corresponds to www usage
-    excludeComponents: []
-  },
-  vueOutput: {
-    componentCorePackage: '@ovhcloud/ods-component-flag',
-    excludeComponents: []
-  },
-  dev: {
-    globalScript: 'src/global.dev.ts',
-  },
-  prod: {
-    globalScript: 'src/global.prod.ts'
-  },
-  test: {
-    globalScript: 'src/global.test.ts',
-  }
 });
-
+// TODO replace this with spritesheet embedded in the component bundle
 config.outputTargets?.forEach(output => {
   if (output.type === 'dist-custom-elements' || output.type === 'www') {
     output.copy = output.copy || [];

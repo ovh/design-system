@@ -1,32 +1,22 @@
-import { Config } from '@stencil/core';
 import { getStencilConfig } from '@ovhcloud/ods-common-stencil';
-import * as jestConfig from './jest.config';
+import jestConfig from './jest.config';
 
-const args = process.argv.slice(2);
-
-const config: Config = getStencilConfig({
+const config = getStencilConfig({
+  args: process.argv.slice(2),
+  componentCorePackage: '@ovhcloud/ods-component-phone-number',
+  excludeComponents: [
+    'osds-flag',
+    'osds-icon',
+    'osds-input',
+    'osds-select',
+    'osds-select-group',
+    'osds-select-option',
+    'osds-spinner',
+    'osds-text',
+  ],
+  jestConfig,
   namespace: 'osds-phone-number',
-  args,
-  jestConfig: jestConfig.default,
-  reactOutput: {
-    componentCorePackage: '@ovhcloud/ods-component-phone-number',
-    excludeComponents: ['osds-input', 'osds-icon', 'osds-spinner', 'osds-select', 'osds-select-group', 'osds-select-option', 'osds-flag', 'osds-text']
-  },
-  vueOutput: {
-    componentCorePackage: '@ovhcloud/ods-component-phone-number',
-    excludeComponents: ['osds-input', 'osds-icon', 'osds-spinner', 'osds-select', 'osds-select-group', 'osds-select-option', 'osds-flag', 'osds-text']
-  },
-  dev: {
-    globalScript: 'src/global.dev.ts',
-  },
-  prod: {
-    globalScript: 'src/global.prod.ts'
-  },
-  test: {
-    globalScript: 'src/global.test.ts'
-  },
 });
-
 
 config.outputTargets?.forEach(output => {
   if (output.type === 'dist-custom-elements' || output.type === 'www') {

@@ -1,9 +1,8 @@
-import type { E2EElement, E2EPage } from '@stencil/core/testing';
+import type { E2EPage } from '@stencil/core/testing';
 import { newE2EPage } from '@stencil/core/testing';
 
 describe('e2e:screenshot:osds-accordion-group', () => {
   let page: E2EPage;
-  let el: E2EElement;
 
   async function setup({ html = '' }: { html?: string } = {}) {
     page = await newE2EPage();
@@ -18,7 +17,6 @@ describe('e2e:screenshot:osds-accordion-group', () => {
       </osds-accordion-group>
     `);
     await page.evaluate(() => document.body.style.setProperty('margin', '4px'));
-    el = await page.find('osds-accordion-group');
   }
 
   describe('screenshots', () => {
@@ -45,5 +43,4 @@ describe('e2e:screenshot:osds-accordion-group', () => {
       });
     });
   });
-
 });

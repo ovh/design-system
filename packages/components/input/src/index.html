@@ -20,7 +20,6 @@
   </style>
 </head>
 <body style="margin: 0;">
-
   <osds-input inline type="text" value="On Vous Héberge ?" disabled clearable></osds-input>
   <osds-input inline type="password" value="On Vous Héberge ?" disabled clearable></osds-input>
   <osds-input inline type="text" value="On Vous Héberge ?" clearable></osds-input>
@@ -34,14 +33,17 @@
     <h2>[types]</h2>
     <table style="width: 100%;" id="input-table"></table>
   </section>
+
   <section style="background: none; padding: 1em;">
     <h2>[colors]</h2>
     <table style="width: 100%;" id="input-table-color"></table>
   </section>
+
   <section style="background: #000e9c; padding: 1em;">
     <h2 style="color: #fff;">[contrasted]</h2>
     <table style="width: 100%;" id="input-table-contrasted"></table>
   </section>
+
   <section style="background: none; padding: 1em;">
     <h2>[flex]</h2>
     <table style="width: 100%;" id="input-table-flex"></table>
@@ -156,60 +158,15 @@
     >
     </osds-input>
   </article>
-</section>
 
-<article id="example-3">
-  <h2>[number]</h2>
-  <osds-input id="input-3" type="number" placeholder="Here is a number" min1="1" max1="4" step1="2" default-value="3">
-  </osds-input><button onclick="input3Clear()">clear</button><button onclick="input3Reset()">reset</button>
-  <span class="error-msg forbidden-value">Forbidden value</span>
-  <span class="error-msg value-missing">Value required please</span>
-  <span class="error-msg step-mismatch">Please insert a value by step 2, starting from 1</span>
-  <span class="error-msg valid">Not valid</span>
-</article>
-<section>
-
-</section>
-
-<script>
-  const odsInput1 = document.querySelector('osds-input#odsInput-1');
-  const odsInput2 = document.querySelector('osds-input#odsInput-2');
-
-
-  let logger;
-  document.addEventListener('odsInitialized', ({detail}) => {
-    const instance = detail.instance;
-    instance.logging(true);
-    logger = new instance.logger('www');
-    logger.log('odsInitialized received');
-  })
-
-  odsInput1.addEventListener('odsValueChange', (event) => {
-    logger && logger.log("🟡 odsValueChange event", event.detail);
-
-    odsInput1.getValidity().then((validity) => {
-      logger && logger.log("🟡 getValidity odsInput-1 from Event", validity);
-    });
-  })
-
-  async function getValidityForOdsInput1() {
-    await customElements.whenDefined('osds-input');
-    odsInput1.getValidity().then((validity) => {
-      logger && logger.log("🟡 getValidity odsInput-1", validity);
-    });
-  }
-
-  async function getValidityForOdsInput2() {
-    await customElements.whenDefined('osds-input');
-    odsInput2.getValidity().then((validity) => {
-      logger && logger.log("🔴 getValidity odsInput-2", validity);
-    });
-  }
-
-  getValidityForOdsInput1();
-  getValidityForOdsInput2();
-
-</script>
-
+  <article id="example-3">
+    <h2>[number]</h2>
+    <osds-input id="input-3" type="number" placeholder="Here is a number" min1="1" max1="4" step1="2" default-value="3">
+    </osds-input><button onclick="input3Clear()">clear</button><button onclick="input3Reset()">reset</button>
+    <span class="error-msg forbidden-value">Forbidden value</span>
+    <span class="error-msg value-missing">Value required please</span>
+    <span class="error-msg step-mismatch">Please insert a value by step 2, starting from 1</span>
+    <span class="error-msg valid">Not valid</span>
+  </article>
 </body>
 </html>

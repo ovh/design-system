@@ -25,9 +25,9 @@
   },
   "exclude": [
     "node_modules",
-    "**/*.d.ts",
-    "**/*.e2e.ts",
-    "**/*.e2e.screenshot.ts",
-    "**/*.spec.ts"
+            "**/*.d.ts",
+            "**/*.e2e.ts",
+            "**/*.e2e.screenshot.ts",
+            "**/*.spec.ts"
   ]
 }

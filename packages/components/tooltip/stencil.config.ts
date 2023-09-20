@@ -1,28 +1,10 @@
 import { Config } from '@stencil/core';
 import { getStencilConfig } from '@ovhcloud/ods-common-stencil';
-import * as jestConfig from './jest.config';
-
-const args = process.argv.slice(2);
+import jestConfig from './jest.config';
 
 export const config: Config = getStencilConfig({
+  args: process.argv.slice(2),
+  componentCorePackage: '@ovhcloud/ods-component-tooltip',
+  jestConfig,
   namespace: 'osds-tooltip',
-  args,
-  jestConfig: jestConfig.default,
-  reactOutput: {
-    componentCorePackage: '@ovhcloud/ods-component-tooltip',
-    excludeComponents: []
-  },
-  vueOutput: {
-    componentCorePackage: '@ovhcloud/ods-component-tooltip',
-    excludeComponents: []
-  },
-  dev: {
-    globalScript: 'src/global.dev.ts',
-  },
-  prod: {
-    globalScript: 'src/global.prod.ts'
-  },
-  test: {
-    globalScript: 'src/global.test.ts'
-  }
 });

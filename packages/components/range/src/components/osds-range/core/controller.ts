@@ -68,6 +68,7 @@ class OdsRangeController {
           return ((this.asDualValues()[0] >= forbiddenValue.min && this.asDualValues()[0] <= forbiddenValue.max)
             || (this.asDualValues()[1] >= forbiddenValue.min && this.asDualValues()[0] <= forbiddenValue.max));
         } else {
+          // @ts-ignore FIXME operator like ">" should not be used on non number type like value here, either use parseInt or update attribute
           return this.component.value >= forbiddenValue.min && this.component.value <= forbiddenValue.max;
         }
       }

@@ -13,6 +13,7 @@ function getStencilJestConfig({ args, options = {} }: { args: string[], options?
     ...config,
     preset: '@stencil/core/testing',
     transform: {
+      // ...config.transform, // FIXME this removes the ts-jest transform, thus allows invalid ts files to run (see JIRA 937)
       '\\.svg$': 'jest-transform-stub',
     },
   };

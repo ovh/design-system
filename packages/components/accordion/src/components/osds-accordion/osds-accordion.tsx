@@ -15,7 +15,6 @@ import { OdsAccordionController } from './core/controller';
   shadow: true
 })
 export class OsdsAccordion implements OdsAccordionAttribute, OdsAccordionEvent {
-
   controller: OdsAccordionController = new OdsAccordionController(this);
   detailsEl?: HTMLDetailsElement;
   accordionGroup: (HTMLStencilElement & OsdsAccordionGroup) | null = null;

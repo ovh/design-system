@@ -42,7 +42,6 @@
   "devDependencies": {
     "@ovhcloud/ods-common-testing": "16.0.1",
     "@ovhcloud/ods-component-input": "16.0.1",
-    "@ovhcloud/ods-component-link": "16.0.1",
     "@ovhcloud/ods-component-textarea": "16.0.1",
     "@ovhcloud/ods-component-tooltip": "16.0.1",
     "@ovhcloud/ods-stencil-dev": "16.0.1"

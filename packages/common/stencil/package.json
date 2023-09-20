@@ -18,7 +18,7 @@
   "dependencies": {
     "@ovhcloud/ods-common-core": "16.0.1",
     "@ovhcloud/ods-theme-blue-jeans": "16.0.1",
-    "@stencil/core": "2.18.1"
+    "@stencil/core": "4.2.1"
   },
   "devDependencies": {
     "@ovhcloud/ods-common-testing": "16.0.1",

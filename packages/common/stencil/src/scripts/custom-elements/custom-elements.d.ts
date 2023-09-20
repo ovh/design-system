@@ -1,5 +1,5 @@
-// TODO this will be useless when upgrading to Stencil 3+
-// When removing those, update stencil config to remove distCustomElementsCopy
+// These file is needed to fix react/vue wrapper typing
+// Would be nice to find the correct configuration to get rid of it
 
 // @ts-ignore
 export * from './index';

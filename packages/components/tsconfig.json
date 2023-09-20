@@ -1,13 +1,8 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "jsx": "react",
-    "jsxFactory": "h",
     "declaration": true
   },
-  "include": [
-    "src"
-  ],
   "exclude": [
     "node_modules",
     "**/**/*.spec.ts",
@@ -16,8 +11,6 @@
     "**/**/*.e2e.screenshot.ts",
     "**/.stencil",
     "**/**/*.d.ts",
-    "**/**/global.dev.ts",
-    "**/**/global.test.ts",
     "react"
   ]
 }

@@ -4262,7 +4262,7 @@ __metadata:
     "@ovhcloud/ods-stencil-dev": 16.2.1
     "@ovhcloud/ods-style-dev": 16.2.1
     "@ovhcloud/ods-theme-blue-jeans": 16.2.1
-    "@stencil/core": 2.18.1
+    "@stencil/core": 4.5.0
   languageName: unknown
   linkType: soft
 
@@ -4833,7 +4833,6 @@ __metadata:
     "@ovhcloud/ods-common-testing": 16.2.1
     "@ovhcloud/ods-common-theming": 16.2.1
     "@ovhcloud/ods-component-input": 16.2.1
-    "@ovhcloud/ods-component-link": 16.2.1
     "@ovhcloud/ods-component-text": 16.2.1
     "@ovhcloud/ods-component-textarea": 16.2.1
     "@ovhcloud/ods-component-tooltip": 16.2.1
@@ -5472,6 +5471,7 @@ __metadata:
     "@ovhcloud/ods-common-theming": 16.2.1
     "@ovhcloud/ods-component-content-addon": 16.2.1
     "@ovhcloud/ods-component-icon": 16.2.1
+    "@ovhcloud/ods-component-text": 16.2.1
     "@ovhcloud/ods-stencil-dev": 16.2.1
   languageName: unknown
   linkType: soft
@@ -5577,6 +5577,7 @@ __metadata:
     "@ovhcloud/ods-common-stencil": 16.2.1
     "@ovhcloud/ods-common-testing": 16.2.1
     "@ovhcloud/ods-common-theming": 16.2.1
+    "@ovhcloud/ods-component-icon": 16.2.1
     "@ovhcloud/ods-component-radio": 16.2.1
     "@ovhcloud/ods-stencil-dev": 16.2.1
   languageName: unknown
@@ -6003,10 +6004,10 @@ __metadata:
   dependencies:
     "@ovhcloud/ods-dev": 16.2.1
     "@ovhcloud/ods-style-dev": 16.2.1
-    "@stencil/postcss": 2.1.0
-    "@stencil/react-output-target": 0.2.1
-    "@stencil/sass": 2.0.0
-    "@stencil/vue-output-target": 0.6.2
+    "@stencil-community/postcss": 2.2.0
+    "@stencil/react-output-target": 0.5.3
+    "@stencil/sass": 3.0.6
+    "@stencil/vue-output-target": 0.8.6
     stencil-inline-svg: 1.1.0
   languageName: unknown
   linkType: soft
@@ -6304,51 +6305,50 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@stencil/core@npm:2.18.1":
-  version: 2.18.1
-  resolution: "@stencil/core@npm:2.18.1"
+"@stencil-community/postcss@npm:2.2.0":
+  version: 2.2.0
+  resolution: "@stencil-community/postcss@npm:2.2.0"
+  dependencies:
+    postcss: ~8.4.27
+  peerDependencies:
+    "@stencil/core": ">=2.0.0 || >=3.0.0 || >=4.0.0"
+  checksum: c018ce9e022ad6d3acfa6fe0f1ee84bb263e2748c19bc92c136ae2a4ec815f0b906027600ee02c387bdb6b27039094763a85923d8050abdcbc80388488857fdc
+  languageName: node
+  linkType: hard
+
+"@stencil/core@npm:4.5.0":
+  version: 4.5.0
+  resolution: "@stencil/core@npm:4.5.0"
   bin:
     stencil: bin/stencil
-  checksum: 5be827077bcff3cda8b4f1e8d362c0c5e1d33e1f2103e6f2ff507d69a1a4731ff5e674dcfc7df495ba54d57a5e4e493fff43922f7ff2a6595a1974867e9c8214
+  checksum: 2bdd960af33a52565c297ef2ac65fed017b2fbe5ec228b2bdaafa48b1d99a6fe41e4c3ffe429437d27f3ea9b410e361714d088cedd6e13bb035f4b96b0310038
   languageName: node
   linkType: hard
 
-"@stencil/postcss@npm:2.1.0":
-  version: 2.1.0
-  resolution: "@stencil/postcss@npm:2.1.0"
-  dependencies:
-    autoprefixer: ^10.3.6
-    postcss: ~8.3.8
+"@stencil/react-output-target@npm:0.5.3":
+  version: 0.5.3
+  resolution: "@stencil/react-output-target@npm:0.5.3"
   peerDependencies:
-    "@stencil/core": ">=2.0.0"
-  checksum: 05391c7096bae68b28ffca4b6359644aacea6069c91aad15ea064ad26b4ce600b033827e2d145bf96908edde936a9b0215254425f3a7627b2760e9b71e97153d
+    "@stencil/core": ">=2.0.0 || >=3 || >= 4.0.0-beta.0 || >= 4.0.0"
+  checksum: ce762ecd37fe8b04b4193402f8999b44291d18af59e488ab4571528473aec9cac60c508df5db68298c78a493779e4781433dc2390ce7c34039b2a7a2455bd7db
   languageName: node
   linkType: hard
 
-"@stencil/react-output-target@npm:0.2.1":
-  version: 0.2.1
-  resolution: "@stencil/react-output-target@npm:0.2.1"
+"@stencil/sass@npm:3.0.6":
+  version: 3.0.6
+  resolution: "@stencil/sass@npm:3.0.6"
   peerDependencies:
-    "@stencil/core": ^2.9.0
-  checksum: 1067397a00cb3d9f2177c8cbb925548837062960d7ea7851e6d5c8c159c338db522f436a9702c2b89438d39272ef0ea3a89e9542eba2fdea1db55d8126b979b0
+    "@stencil/core": ">=2.0.0 || >=3.0.0-beta.0 || >= 4.0.0-beta.0 || >= 4.0.0"
+  checksum: 0a5ce86a103db5e85b31a238ce8f3d1c450820142e77ccc67a4841e6196ec913def796703f4ef26539b8abf64ea17641983b0d2821c9f0533a1c778566d3e0cb
   languageName: node
   linkType: hard
 
-"@stencil/sass@npm:2.0.0":
-  version: 2.0.0
-  resolution: "@stencil/sass@npm:2.0.0"
+"@stencil/vue-output-target@npm:0.8.6":
+  version: 0.8.6
+  resolution: "@stencil/vue-output-target@npm:0.8.6"
   peerDependencies:
-    "@stencil/core": ">=2.0.0"
-  checksum: 382bbc6f30b57d68688fda527f9bf1041c236703e80c2b718947f43b2af250d6efd6530743f8d2b0068cde09ce4e7a97bd1916ba241a9c9043c23d88faeb2aab
-  languageName: node
-  linkType: hard
-
-"@stencil/vue-output-target@npm:0.6.2":
-  version: 0.6.2
-  resolution: "@stencil/vue-output-target@npm:0.6.2"
-  peerDependencies:
-    "@stencil/core": ^2.9.0
-  checksum: bd25b6f88e93cce9450a90278d71b432f139d665446b77c841db7d09a644165075759c9e8dcd27e4b84fbbd0abaac8b39d11c28aaeb8cbe3156fef3e125080cc
+    "@stencil/core": ">=2.0.0 || >=3 || >= 4.0.0-beta.0 || >= 4.0.0"
+  checksum: 9bf9dc612ecddb6dd5aa73fa4496452d3c06acb45a0c79af8ddbd59e04a2e52bf34c26109f445a6d2be58f15735cdcc26a463b7201593beedd1bfc332a584b70
   languageName: node
   linkType: hard
 
@@ -8357,10 +8357,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:15.14.9":
-  version: 15.14.9
-  resolution: "@types/node@npm:15.14.9"
-  checksum: 49f7f0522a3af4b8389aee660e88426490cd54b86356672a1fedb49919a8797c00d090ec2dcc4a5df34edc2099d57fc2203d796c4e7fbd382f2022ccd789eee7
+"@types/node@npm:18.17.15":
+  version: 18.17.15
+  resolution: "@types/node@npm:18.17.15"
+  checksum: eed11d4398ccdb999a4c65658ee75de621a4ad57aece48ed2fb8803b1e2711fadf58d8aefbdb0a447d69cf3cba602ca32fe0fc92077575950a796e1dc13baa0f
   languageName: node
   linkType: hard
 
@@ -10733,9 +10733,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"autoprefixer@npm:^10.2.4, autoprefixer@npm:^10.3.6, autoprefixer@npm:^10.4.13":
-  version: 10.4.16
-  resolution: "autoprefixer@npm:10.4.16"
+"autoprefixer@npm:^10.2.4, autoprefixer@npm:^10.4.13":
+  version: 10.4.15
+  resolution: "autoprefixer@npm:10.4.15"
   dependencies:
     browserslist: ^4.21.10
     caniuse-lite: ^1.0.30001538
@@ -10747,7 +10747,7 @@ __metadata:
     postcss: ^8.1.0
   bin:
     autoprefixer: bin/autoprefixer
-  checksum: 45fad7086495048dacb14bb7b00313e70e135b5d8e8751dcc60548889400763705ab16fc2d99ea628b44c3472698fb0e39598f595ba28409c965ab159035afde
+  checksum: d490b14fb098c043e109fc13cd23628f146af99a493d35b9df3a26f8ec0b4dd8937c5601cdbaeb465b98ea31d3ea05aa7184711d4d93dfb52358d073dcb67032
   languageName: node
   linkType: hard
 
@@ -23192,7 +23192,7 @@ __metadata:
     "@commitlint/cli": 11.0.0
     "@commitlint/config-conventional": 11.0.0
     "@mermaid-js/mermaid-cli": 8.14.0
-    "@types/node": 15.14.9
+    "@types/node": 18.17.15
     "@typescript-eslint/eslint-plugin": 5.45.0
     "@typescript-eslint/parser": 5.45.0
     btoa: 1.2.1
@@ -25167,7 +25167,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.1.10, postcss@npm:^8.2.6, postcss@npm:^8.2.7, postcss@npm:^8.3.5, postcss@npm:^8.4.18, postcss@npm:^8.4.21, postcss@npm:^8.4.23, postcss@npm:^8.4.27, postcss@npm:^8.4.4":
+"postcss@npm:^8.1.10, postcss@npm:^8.2.6, postcss@npm:^8.2.7, postcss@npm:^8.3.5, postcss@npm:^8.4.18, postcss@npm:^8.4.21, postcss@npm:^8.4.23, postcss@npm:^8.4.4, postcss@npm:~8.4.27":
+  version: 8.4.29
+  resolution: "postcss@npm:8.4.29"
+  dependencies:
+    nanoid: ^3.3.6
+    picocolors: ^1.0.0
+    source-map-js: ^1.0.2
+  checksum: dd6daa25e781db9ae5b651d9b7bfde0ec6e60e86a37da69a18eb4773d5ddd51e28fc4ff054fbdc04636a31462e6bf09a1e50986f69ac52b10d46b7457cd36d12
+  languageName: node
+  linkType: hard
+
+"postcss@npm:^8.4.27":
   version: 8.4.31
   resolution: "postcss@npm:8.4.31"
   dependencies:
@@ -25175,17 +25186,6 @@ __metadata:
     picocolors: ^1.0.0
     source-map-js: ^1.0.2
   checksum: 1d8611341b073143ad90486fcdfeab49edd243377b1f51834dc4f6d028e82ce5190e4f11bb2633276864503654fb7cab28e67abdc0fbf9d1f88cad4a0ff0beea
-  languageName: node
-  linkType: hard
-
-"postcss@npm:~8.3.8":
-  version: 8.3.11
-  resolution: "postcss@npm:8.3.11"
-  dependencies:
-    nanoid: ^3.1.30
-    picocolors: ^1.0.0
-    source-map-js: ^0.6.2
-  checksum: 1a230553d74c66aa9585c90781ed8ea75f19cefea405d2117b67fbeb24b5b5e0e17be2e0c5a07db31dd085643a13394127ab2222e940771b70498331bf20f35e
   languageName: node
   linkType: hard
 
@@ -27991,13 +27991,6 @@ __metadata:
   version: 2.0.1
   resolution: "source-list-map@npm:2.0.1"
   checksum: 806efc6f75e7cd31e4815e7a3aaf75a45c704871ea4075cb2eb49882c6fca28998f44fc5ac91adb6de03b2882ee6fb02f951fdc85e6a22b338c32bfe19557938
-  languageName: node
-  linkType: hard
-
-"source-map-js@npm:^0.6.2":
-  version: 0.6.2
-  resolution: "source-map-js@npm:0.6.2"
-  checksum: 9c8151a29e00fd8d3ba87709fdf9a9ce48313d653f4a29a39b4ae53d346ac79e005de624796ff42eff55cbaf26d2e87f4466001ca87831d400d818c5cf146a0e
   languageName: node
   linkType: hard
 

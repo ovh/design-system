@@ -85,7 +85,7 @@
     "@commitlint/cli": "11.0.0",
     "@commitlint/config-conventional": "11.0.0",
     "@mermaid-js/mermaid-cli": "8.14.0",
-    "@types/node": "15.14.9",
+    "@types/node": "18.17.15",
     "@typescript-eslint/eslint-plugin": "5.45.0",
     "@typescript-eslint/parser": "5.45.0",
     "btoa": "1.2.1",

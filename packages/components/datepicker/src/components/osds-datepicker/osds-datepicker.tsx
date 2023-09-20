@@ -44,7 +44,7 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
   @Prop({ reflect: true }) placeholder?: string = DEFAULT_ATTRIBUTE.placeholder;
 
   /** @see OdsDatepickerAttribute.value */
-  @Prop({ reflect: true, mutable: true }) value?: Date | undefined | null = DEFAULT_ATTRIBUTE.value;
+  @Prop({ reflect: true, mutable: true }) value?: Date | null = DEFAULT_ATTRIBUTE.value;
 
   /** Events */
 

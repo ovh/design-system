@@ -17,19 +17,26 @@
   }
 }
 
-:host {
-  .osds-datepicker__hidden-input {
+:host(.osds-datepicker) {
+  display: flex;
+  flex-direction: column;
+}
+
+.osds-datepicker {
+  &__hidden-input {
     display: none;
   }
+}
 
-:host([hasFocus]) {
+:host {
   .datepicker {
-    width: 50%;
-    max-width: clamp(36rem, 50%, 50%);
-    margin-top: var(--ods-size-04);
-    height: 0;
     position: relative;
-    display: flex;
+    display: none;
+    animation: datepicker-appear 0.2s ease-in-out;
+
+    * {
+      transition: background-color 0.1s ease-in-out;
+    }
 
     .datepicker-picker {
       position: absolute;
@@ -105,6 +112,25 @@
       }
     }
   }
+}
+
+:host([hasFocus]) {
+  .datepicker {
+    display: flex;
+  }
+}
+
+:host([inline]) {
+  display: inline-block;
+}
+
+[disabled] {
+  @include osds-datepicker-on-selected-host() {
+    opacity: .5;
+    cursor: not-allowed;
+  }
+
+  cursor: not-allowed;
 }
 
 // apply the theme template for the component

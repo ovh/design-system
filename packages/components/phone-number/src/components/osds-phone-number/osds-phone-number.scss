@@ -11,6 +11,10 @@
     --ods-size-select-border-radius-bottom-right: 0;
     --ods-size-select-border-radius-top-right: 0;
     --ods-size-select-border-right-width: 0;
+    &-label{
+      width: 24px;
+      height: 18px;
+    }
 
     &__option {
       display: flex;

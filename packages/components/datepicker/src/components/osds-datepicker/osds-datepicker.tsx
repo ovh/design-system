@@ -211,6 +211,7 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
         <osds-input
           clearable={clearable}
           color={color}
+          disabled={disabled}
           error={error}
           icon={ODS_ICON_NAME.CALENDAR}
           placeholder={placeholder}

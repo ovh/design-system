@@ -124,13 +124,10 @@
   display: inline-block;
 }
 
-[disabled] {
-  @include osds-datepicker-on-selected-host() {
-    opacity: .5;
-    cursor: not-allowed;
+:host([disabled]) {
+  .datepicker {
+    display: none;
   }
-
-  cursor: not-allowed;
 }
 
 // apply the theme template for the component

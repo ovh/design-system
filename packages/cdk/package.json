@@ -15,7 +15,7 @@
     "build:prod:amd": "tsc -p tsconfig.amd.prod.json",
     "build:prod:cjs": "tsc -p tsconfig.cjs.prod.json",
     "build": "npm run build:esm --if-present && npm run build:cjs --if-present",
-    "build:prod": "npm run build:prod:esm --if-present && npm run build:prod:cjs --if-present && node ./scripts/generate-ocdk-version.js",
+    "build:prod": "run-p build:prod:esm build:prod:cjs && node ./scripts/generate-ocdk-version.js",
     "doc:api": "typedoc --plugin none src/*",
     "watch": "tsc -w -p tsconfig.esm.json"
   },

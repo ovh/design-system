@@ -9,7 +9,7 @@
     "ignore:rm": "git clean -Xdf",
     "build:esm": "tsc -p tsconfig.esm.json",
     "build:cjs": "tsc -p tsconfig.cjs.json",
-    "build": "npm run build:esm && npm run build:cjs",
+    "build": "run-p build:esm build:cjs",
     "build:prod": "npm run build",
     "watch": "tsc -w -p tsconfig.esm.json",
     "generate:licence": "npx generate-license-file --input package.json --output THIRD-PARTY-LICENCES --overwrite",

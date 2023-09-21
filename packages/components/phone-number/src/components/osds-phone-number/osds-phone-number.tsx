@@ -143,13 +143,14 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
     return this.phoneUtils.isPossibleNumber(number) && this.phoneUtils.isValidNumberForRegion(number, this.isoCode);
   }
 
-  getPlaceholder(): string | undefined {
+  getPlaceholder(): string {  
     const exampleNumber = this.getExampleNumberByIsoCode();
-    return exampleNumber && this.phoneUtils.format(exampleNumber, PhoneNumberFormat.NATIONAL);
+    return exampleNumber && this.phoneUtils.format(exampleNumber, PhoneNumberFormat.NATIONAL) || '';
   }
 
-  getPrefix(): string | undefined {
-    return `(+${this.getExampleNumberByIsoCode()?.getCountryCode()})`
+  getPrefix(): string {
+    const countryCode = this.getExampleNumberByIsoCode()?.getCountryCode();
+    return countryCode && `(+${countryCode})` || '';
   }
 
   private getExampleNumberByIsoCode(): PhoneNumber | undefined {

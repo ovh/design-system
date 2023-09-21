@@ -44,6 +44,7 @@ $blue-jeans-palettes : (
     '000': hsl(0, 0%, 100%),
     '100': hsl(234, 13%, 85%),
     '500': hsl(233, 31%, 44%),
+    '900': hsl(233, 31%, 22%),
   ),
 
   'red': (
@@ -131,13 +132,14 @@ $contrasted-palettes: (
     '600-contrasted': map-get(map-get($blue-jeans-palettes, 'blue'), '000'),
     '700-contrasted': map-get(map-get($blue-jeans-palettes, 'blue'), '000'),
     '800-contrasted': map-get(map-get($blue-jeans-palettes, 'blue'), '000'),
-    '900-contrasted': map-get(map-get($blue-jeans-palettes, 'blue'), '800'),
+    '900-contrasted': map-get(map-get($blue-jeans-palettes, 'blue'), '000'),
   ),
 
   'gray-blue': (
-    '000-contrasted': map-get(map-get($blue-jeans-palettes, 'gray-blue'), '000'),
-    '100-contrasted': map-get(map-get($blue-jeans-palettes, 'gray-blue'), '000'),
+    '000-contrasted': map-get(map-get($blue-jeans-palettes, 'gray-blue'), '500'),
+    '100-contrasted': map-get(map-get($blue-jeans-palettes, 'gray-blue'), '500'),
     '500-contrasted': map-get(map-get($blue-jeans-palettes, 'gray-blue'), '000'),
+    '900-contrasted': map-get(map-get($blue-jeans-palettes, 'gray-blue'), '000'),
   ),
 
   'red': (

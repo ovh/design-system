@@ -4208,7 +4208,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-common-core@16.0.1, @ovhcloud/ods-common-core@^16.0.1, @ovhcloud/ods-common-core@workspace:packages/common/core":
+"@ovhcloud/ods-common-core@16.0.1, @ovhcloud/ods-common-core@workspace:packages/common/core":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-common-core@workspace:packages/common/core"
   dependencies:
@@ -4217,7 +4217,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-common-stencil@16.0.1, @ovhcloud/ods-common-stencil@^16.0.1, @ovhcloud/ods-common-stencil@workspace:packages/common/stencil":
+"@ovhcloud/ods-common-stencil@16.0.1, @ovhcloud/ods-common-stencil@workspace:packages/common/stencil":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-common-stencil@workspace:packages/common/stencil"
   dependencies:
@@ -4231,7 +4231,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-common-testing@16.0.1, @ovhcloud/ods-common-testing@^16.0.1, @ovhcloud/ods-common-testing@workspace:packages/common/testing":
+"@ovhcloud/ods-common-testing@16.0.1, @ovhcloud/ods-common-testing@workspace:packages/common/testing":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-common-testing@workspace:packages/common/testing"
   dependencies:
@@ -4245,7 +4245,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-common-theming@16.0.1, @ovhcloud/ods-common-theming@^16.0.1, @ovhcloud/ods-common-theming@workspace:packages/common/theming":
+"@ovhcloud/ods-common-theming@16.0.1, @ovhcloud/ods-common-theming@workspace:packages/common/theming":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-common-theming@workspace:packages/common/theming"
   dependencies:
@@ -4712,7 +4712,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-component-flag@16.0.1, @ovhcloud/ods-component-flag@^16.0.1, @ovhcloud/ods-component-flag@workspace:packages/components/flag":
+"@ovhcloud/ods-component-flag@16.0.1, @ovhcloud/ods-component-flag@workspace:packages/components/flag":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-flag@workspace:packages/components/flag"
   dependencies:
@@ -4824,7 +4824,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-component-input@16.0.1, @ovhcloud/ods-component-input@^16.0.1, @ovhcloud/ods-component-input@workspace:packages/components/input":
+"@ovhcloud/ods-component-input@16.0.1, @ovhcloud/ods-component-input@workspace:packages/components/input":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-input@workspace:packages/components/input"
   dependencies:
@@ -5091,15 +5091,17 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-phone-number@workspace:packages/components/phone-number"
   dependencies:
-    "@ovhcloud/ods-common-core": ^16.0.1
-    "@ovhcloud/ods-common-stencil": ^16.0.1
-    "@ovhcloud/ods-common-testing": ^16.0.1
-    "@ovhcloud/ods-common-theming": ^16.0.1
-    "@ovhcloud/ods-component-flag": ^16.0.1
-    "@ovhcloud/ods-component-input": ^16.0.1
-    "@ovhcloud/ods-component-select": ^16.0.1
-    "@ovhcloud/ods-component-text": ^16.0.1
-    "@ovhcloud/ods-stencil-dev": ^16.0.1
+    "@ovhcloud/ods-common-core": 16.0.1
+    "@ovhcloud/ods-common-stencil": 16.0.1
+    "@ovhcloud/ods-common-testing": 16.0.1
+    "@ovhcloud/ods-common-theming": 16.0.1
+    "@ovhcloud/ods-component-flag": 16.0.1
+    "@ovhcloud/ods-component-input": 16.0.1
+    "@ovhcloud/ods-component-select": 16.0.1
+    "@ovhcloud/ods-component-text": 16.0.1
+    "@ovhcloud/ods-stencil-dev": 16.0.1
+    "@types/google-libphonenumber": 7.4.26
+    google-libphonenumber: 3.2.33
   languageName: unknown
   linkType: soft
 
@@ -5384,7 +5386,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-component-select@16.0.1, @ovhcloud/ods-component-select@^16.0.1, @ovhcloud/ods-component-select@workspace:packages/components/select":
+"@ovhcloud/ods-component-select@16.0.1, @ovhcloud/ods-component-select@workspace:packages/components/select":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-select@workspace:packages/components/select"
   dependencies:
@@ -5566,7 +5568,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-component-text@16.0.1, @ovhcloud/ods-component-text@^16.0.1, @ovhcloud/ods-component-text@workspace:packages/components/text":
+"@ovhcloud/ods-component-text@16.0.1, @ovhcloud/ods-component-text@workspace:packages/components/text":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-text@workspace:packages/components/text"
   dependencies:
@@ -5876,7 +5878,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-stencil-dev@16.0.1, @ovhcloud/ods-stencil-dev@^16.0.1, @ovhcloud/ods-stencil-dev@workspace:packages/shared-dependencies/odsStencilDev":
+"@ovhcloud/ods-stencil-dev@16.0.1, @ovhcloud/ods-stencil-dev@workspace:packages/shared-dependencies/odsStencilDev":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-stencil-dev@workspace:packages/shared-dependencies/odsStencilDev"
   dependencies:
@@ -8067,6 +8069,13 @@ __metadata:
     "@types/minimatch": "*"
     "@types/node": "*"
   checksum: 6ae717fedfdfdad25f3d5a568323926c64f52ef35897bcac8aca8e19bc50c0bd84630bbd063e5d52078b2137d8e7d3c26eabebd1a2f03ff350fff8a91e79fc19
+  languageName: node
+  linkType: hard
+
+"@types/google-libphonenumber@npm:7.4.26":
+  version: 7.4.26
+  resolution: "@types/google-libphonenumber@npm:7.4.26"
+  checksum: a504166ca7df616cfd8bffb9ef9ec6e4b998a16817c14de264d8318e4753c7dfe0c37dfba7c8eb3dac2dc2d098a417dfb08203c024dbce8c8e32a227604a664c
   languageName: node
   linkType: hard
 
@@ -17555,6 +17564,13 @@ __metadata:
   dependencies:
     delegate: ^3.1.2
   checksum: f39fb82c4e41524f56104cfd2d7aef1a88e72f3f75139115fbdf98cc7d844e0c1b39218b2e83438c6188727bf904ed78c7f0f2feff67b32833bc3af7f0202b33
+  languageName: node
+  linkType: hard
+
+"google-libphonenumber@npm:3.2.33":
+  version: 3.2.33
+  resolution: "google-libphonenumber@npm:3.2.33"
+  checksum: d029c19c7278ac9acb446028c2e304df16341732905a0cf8a105ab595cb19c01456fd57d76e48a3220038044d8ce361edc539eea2bfd924ea36fb28178cf7dbe
   languageName: node
   linkType: hard
 

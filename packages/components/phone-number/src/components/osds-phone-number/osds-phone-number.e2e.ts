@@ -29,7 +29,6 @@ describe('e2e:osds-phone-number', () => {
     await page.waitForChanges();
 
     el = await page.find('osds-phone-number');
-
     el.setProperty('countries', attributes.countries ?? []);
     await page.waitForChanges();
 
@@ -54,7 +53,6 @@ describe('e2e:osds-phone-number', () => {
 
   it('should render', async () => {
     await setup({ attributes: {}, cbkInterceptorRequest: myCbk });
-
     expect(el).not.toBeNull();
     expect(el).toHaveClass('hydrated');
     
@@ -101,21 +99,59 @@ describe('e2e:osds-phone-number', () => {
     expect(input).toHaveClass('hydrated');
   });
 
+  it('should get an error on load component', async () => {
+    await setup({ attributes: { value: '0612345678902', isoCode: ODS_COUNTRY_ISO_CODE.FR}, cbkInterceptorRequest: myCbk });
+    
+    expect(await el.getProperty('error')).toBe(true);
+  });
+
+  it('should not parse the value as a number', async () => {
+    await setup({ attributes: { value: '06123456dfsdf2', isoCode: ODS_COUNTRY_ISO_CODE.FR}, cbkInterceptorRequest: myCbk });
+    
+    expect(await el.getProperty('error')).toBe(true);
+  });
+
+  it('should reset the input with a change isoCode', async () => {
+    const countries = [ODS_COUNTRY_ISO_CODE.AD, ODS_COUNTRY_ISO_CODE.FR];
+    await setup({ attributes: { countries }, cbkInterceptorRequest: myCbk });
+
+    await select.click();
+    const optionElement = await page.findAll('osds-phone-number >>> osds-select > osds-select-option');
+    await optionElement[1].click();
+
+    await page.waitForChanges();
+    expect(await el.getProperty('error')).toBe(false);
+    expect(await el.getProperty('value')).toBe('');
+    expect(await el.getProperty('isoCode')).toBe(ODS_COUNTRY_ISO_CODE.FR);
+  });
+
   describe('Event', () => {
-    it('should receive event odsValueChange', async () => {
-      await setup({ attributes: { }, cbkInterceptorRequest: myCbk });
+    it('should receive event odsValueChange with isoCode', async () => {
+      await setup({ attributes: { isoCode: ODS_COUNTRY_ISO_CODE.FR }, cbkInterceptorRequest: myCbk });
   
-      const odsValueChange = await el.spyOnEvent('odsValueChange');
+      const spyOdsValueChange = await page.spyOnEvent('odsValueChange');
   
-      await input.setProperty('value', '+33655998866');
+      const value = '0655998866';
+      await input.setProperty('value', value);
       await page.waitForChanges();
-      expect(odsValueChange).toHaveReceivedEventTimes(1);
+      expect(spyOdsValueChange).toHaveReceivedEventTimes(1);
+      expect(spyOdsValueChange).toHaveReceivedEventDetail({
+        isoCode: 'fr',
+        value: '+33655998866',
+        validity: {
+          customError: false,
+          forbiddenValue: false,
+          invalid: false,
+          stepMismatch: false,
+          valid: true,
+          valueMissing: false,
+        },
+      });
     });
 
     it('should receive event odsValueChange with options selected', async () => {
       const countries = [ODS_COUNTRY_ISO_CODE.AD, ODS_COUNTRY_ISO_CODE.FR];
       await setup({ attributes: { countries }, cbkInterceptorRequest: myCbk });
-  
       const odsValueChange = await el.spyOnEvent('odsValueChange');
 
       await select.click();

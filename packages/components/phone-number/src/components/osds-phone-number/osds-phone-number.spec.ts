@@ -1,5 +1,7 @@
 import type { SpecPage } from '@stencil/core/testing';
 import type { OdsPhoneNumberAttribute } from './interfaces/attributes';
+import type { OdsSelectValueChangeEventDetail } from '@ovhcloud/ods-component-select';
+import type { OdsInputValueChangeEventDetail } from '@ovhcloud/ods-component-input';
 import { newSpecPage } from '@stencil/core/testing';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute, OdsUnitTestAttributeType } from '@ovhcloud/ods-common-testing';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
@@ -27,7 +29,6 @@ describe('spec:osds-phone-number', () => {
 
     root = page.root;
     instance = page.rootInstance;
-
     select = root.shadowRoot.querySelector('osds-select');
   }
 
@@ -87,6 +88,7 @@ describe('spec:osds-phone-number', () => {
         value: true,
         setup: (value) => setup({ attributes: { ['error']: value } }),
         ...config,
+        exclude: [OdsUnitTestAttributeType.PROPERTY, OdsUnitTestAttributeType.MUTABLE],
       });
     });
 
@@ -108,6 +110,30 @@ describe('spec:osds-phone-number', () => {
         defaultValue: DEFAULT_ATTRIBUTE.locale,
         newValue: ODS_LOCALE.FR,
         value:  ODS_LOCALE.EN,
+        setup: (locale) => setup({ attributes: { locale } }),
+        ...config,
+        exclude: [OdsUnitTestAttributeType.DEFAULT],
+      });
+    });
+
+    describe('isoCode', () => {
+      odsUnitTestAttribute<OdsPhoneNumberAttribute, 'isoCode'>({
+        name: 'isoCode',
+        defaultValue: DEFAULT_ATTRIBUTE.isoCode,
+        newValue: ODS_COUNTRY_ISO_CODE.FR,
+        value:  ODS_COUNTRY_ISO_CODE.GB,
+        setup: (isoCode) => setup({ attributes: { isoCode } }),
+        ...config,
+        exclude: [OdsUnitTestAttributeType.DEFAULT],
+      });
+    });
+
+    describe('locale', () => {
+      odsUnitTestAttribute<OdsPhoneNumberAttribute, 'locale'>({
+        name: 'locale',
+        defaultValue: DEFAULT_ATTRIBUTE.locale,
+        newValue: ODS_LOCALE.FR,
+        value: ODS_LOCALE.EN,
         setup: (locale) => setup({ attributes: { locale } }),
         ...config,
         exclude: [OdsUnitTestAttributeType.DEFAULT],
@@ -166,16 +192,90 @@ describe('spec:osds-phone-number', () => {
         await setup();
         instance.handlerLocale(ODS_LOCALE.EN);
         expect(instance.i18nCountriesMap).toBeInstanceOf(Map);
-        expect(instance.i18nCountriesMap.get('fr')).toEqual({ isoCode: "fr", name: "France" });
-        expect(instance.i18nCountriesMap.get('gb')).toEqual({ isoCode: "gb", name: "United Kingdom of Great Britain and Northern Ireland" },);
+        expect(instance.i18nCountriesMap.get('fr')).toEqual({ isoCode: 'fr', name: 'France', countryCode: 33 });
+        expect(instance.i18nCountriesMap.get('gb')).toEqual({ isoCode: 'gb', name: 'United Kingdom of Great Britain and Northern Ireland', countryCode: 44 },);
       });
 
       it('should get i18nCountriesMap by locale FR', async () => {
         await setup();
         instance.handlerLocale(ODS_LOCALE.FR);
         expect(instance.i18nCountriesMap).toBeInstanceOf(Map);
-        expect(instance.i18nCountriesMap.get('fr')).toEqual({ isoCode: "fr", name: "France" });
-        expect(instance.i18nCountriesMap.get('gb')).toEqual({ isoCode: "gb", name: "Royaume-Uni" },);
+        expect(instance.i18nCountriesMap.get('fr')).toEqual({ isoCode: 'fr', name: 'France', countryCode: 33 });
+        expect(instance.i18nCountriesMap.get('gb')).toEqual({ isoCode: 'gb', name: 'Royaume-Uni', countryCode: 44 },);
+      });
+    });
+
+    describe('methods:getPlaceholder', () => {
+      it('should get placeholder without isoCode', async () => {
+        await setup();
+        const placehoslder = instance.getPlaceholder();
+        expect(placehoslder).toBe(undefined);
+      });
+
+      it('should get placeholder with isoCode', async () => {
+        await setup({ attributes: { isoCode: ODS_COUNTRY_ISO_CODE.FR } });
+        const placehoslder = instance.getPlaceholder();
+        expect(placehoslder).toBe('+33123456789');
+      });
+    });
+
+    describe('methods:handlerOdsValueChange', () => {
+      it('should handler the select change value', async () => {
+        await setup();
+        const detail = {
+          selection: document.createElement('osds-select-option'),
+          validity: true,
+          value: 'gb',
+        } as unknown as OdsSelectValueChangeEventDetail;
+        const spyEmitOdsValueChange = jest.spyOn(instance.odsValueChange, 'emit');
+        instance.handlerOdsValueChange(new CustomEvent('odsValueChange', { detail }));
+        expect(instance.value).toBe('');
+        expect(instance.error).toBe(false);
+        expect(instance.isoCode).toBe(ODS_COUNTRY_ISO_CODE.GB);
+        expect(spyEmitOdsValueChange).toHaveBeenCalledTimes(0);
+      });
+
+      it('should handler the input change value with valid value', async () => {
+        await setup({ attributes: { isoCode: ODS_COUNTRY_ISO_CODE.FR } });
+        const detail = { value: '0653535353' } as OdsInputValueChangeEventDetail;
+        const spyEmitOdsValueChange = jest.spyOn(instance.odsValueChange, 'emit');
+        instance.handlerOdsValueChange(new CustomEvent('odsValueChange', { detail }));
+        expect(instance.value).toBe(detail.value);
+        expect(instance.error).toBe(false);
+        expect(spyEmitOdsValueChange).toHaveBeenCalledTimes(1);
+      });
+
+      it('should handler the input change value with invalid value', async () => {
+        await setup({ attributes: { isoCode: ODS_COUNTRY_ISO_CODE.FR } });
+        const detail = { value: '065353qsd5353' } as OdsInputValueChangeEventDetail;
+        const spyEmitOdsValueChange = jest.spyOn(instance.odsValueChange, 'emit');
+        instance.handlerOdsValueChange(new CustomEvent('odsValueChange', { detail }));
+        expect(instance.value).toBe(detail.value);
+        expect(instance.error).toBe(true);
+        expect(spyEmitOdsValueChange).toHaveBeenCalledTimes(0);
+      });
+
+      it('should handler the input change value with empty value', async () => {
+        await setup({ attributes: { isoCode: ODS_COUNTRY_ISO_CODE.FR } });
+        const detail = { value: '' } as OdsInputValueChangeEventDetail;
+        const spyEmitOdsValueChange = jest.spyOn(instance.odsValueChange, 'emit');
+        instance.handlerOdsValueChange(new CustomEvent('odsValueChange', { detail }));
+        expect(instance.value).toBe(detail.value);
+        expect(instance.error).toBe(false);
+        expect(spyEmitOdsValueChange).toHaveBeenCalledTimes(1);
+      });
+
+      it('should emit an event with old value', async () => {
+        await setup({ attributes: { isoCode: ODS_COUNTRY_ISO_CODE.FR } });
+        const detail = { value: '0653535353', oldValue: '0612345' } as OdsInputValueChangeEventDetail;
+        const spyEmitOdsValueChange = jest.spyOn(instance.odsValueChange, 'emit');
+        instance.handlerOdsValueChange(new CustomEvent('odsValueChange', { detail }));
+        expect(spyEmitOdsValueChange).toHaveBeenCalledTimes(1);
+        expect(spyEmitOdsValueChange).toHaveBeenCalledWith({
+          value: '+33653535353',
+          oldValue: '+330612345',
+          isoCode: 'fr'
+        });
       });
     });
   });

@@ -1,5 +1,7 @@
 import type { OsdsPhoneNumber } from '../osds-phone-number';
-import { ODS_COUNTRY_ISO_CODE, ODS_COUNTRY_ISO_CODES, ODS_LOCALE, ODS_LOCALES } from '@ovhcloud/ods-common-core';
+import type { PhoneNumber } from 'google-libphonenumber';
+import type { ODS_COUNTRY_ISO_CODE } from '@ovhcloud/ods-common-core';
+import { ODS_COUNTRY_ISO_CODES, ODS_LOCALE, ODS_LOCALES } from '@ovhcloud/ods-common-core';
 import { ODS_PHONE_NUMBER_COUNTRY_PRESET } from '../constants/phone-number-countries';
 import countriesTranslationEn from '@ovhcloud/ods-common-core/src/i18n/countries/en.json'
 import countriesTranslationFr from '@ovhcloud/ods-common-core/src/i18n/countries/fr.json'
@@ -38,6 +40,31 @@ class OdsPhoneNumberController {
       return countriesTranslationEn;
     }
     return countriesTranslationFr;
+  }
+
+    
+  parseCountries(countries: readonly ODS_COUNTRY_ISO_CODE[] | string) {
+    if (typeof countries === 'string') {
+      try {
+        return JSON.parse(countries);
+      } catch (err) {
+        this.component.logger.warn('[OsdsPhoneNumber] countries string could not be parsed.');
+        return [];
+      }
+    }
+    return [...countries];
+  }
+
+  parseNumber(number: string | null | undefined): PhoneNumber | null {
+    if (!number) {
+      return null;
+    }
+    try {
+      return this.component.phoneUtil.parseAndKeepRawInput(number, this.component.isoCode);
+    } catch {
+      this.component.logger.warn('[OsdsPhoneNumber] value could not be parsed as a phone number.');
+      return null;
+    }
   }
 
   private getValueOrNavigatorOrDefault<T>({ value, list, defaultValue, guard }: { value: T | undefined, list: readonly T[], defaultValue: T, guard: (value: T | string | undefined) => value is T }): T {

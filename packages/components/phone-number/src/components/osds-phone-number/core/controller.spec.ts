@@ -143,6 +143,50 @@ describe('spec:ods-phone-number-controller', () => {
         expect(file).toEqual(countriesTranslationFr);
       });
     });
-    
+
+    describe('methods:parseCountries', () => {
+      it('should return a countries array', async () => {
+        await setup({ });
+        const countries = [ODS_COUNTRY_ISO_CODE.FR, ODS_COUNTRY_ISO_CODE.GB];
+        const parsedCountries = await controller.parseCountries(countries);
+        expect(parsedCountries).toEqual(countries);
+      });
+
+      it('should parsed countries in array', async () => {
+        await setup({ });
+        const countries = [ODS_COUNTRY_ISO_CODE.FR, ODS_COUNTRY_ISO_CODE.GB];
+        const parsedCountries = await controller.parseCountries(JSON.stringify(countries));
+        expect(parsedCountries).toEqual(countries);
+      });
+
+      it('should fail parsed countries and return an empty array', async () => {
+        await setup({ });
+        const parsedCountries = await controller.parseCountries('["fr", "gb", ch]');
+        expect(parsedCountries).toEqual([]);
+      });
+    });
+
+    describe('methods:parseNumber', () => {
+      it('should return a Phone Number', async () => {
+        await setup({ isoCode: ODS_COUNTRY_ISO_CODE.FR });
+        const number = '0658585858';
+        const parsedNumber = await controller.parseNumber(number);
+        expect(parsedNumber.getRawInput()).toBe(number);
+      });
+
+      it('should return a null because of an empty string', async () => {
+        await setup({ isoCode: ODS_COUNTRY_ISO_CODE.FR });
+        const number = '';
+        const parsedNumber = await controller.parseNumber(number);
+        expect(parsedNumber).toBe(null);
+      });
+
+      it('should return a null because of an null value', async () => {
+        await setup({ isoCode: ODS_COUNTRY_ISO_CODE.FR });
+        const number = null;
+        const parsedNumber = await controller.parseNumber(number);
+        expect(parsedNumber).toBe(null);
+      });
+    });
   });
 });

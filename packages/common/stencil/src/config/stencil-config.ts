@@ -23,6 +23,8 @@ function getStencilConfig({ args, componentCorePackage, devScript, excludeCompon
 
   function getTsConfig() {
     if (isProd) {
+      // The prod config needs to explicitly define 'declaration: true' even if the parent config define it already.
+      // See https://github.com/ionic-team/stencil/issues/4834
       return 'tsconfig.prod.json';
     }
     if (isTest) {

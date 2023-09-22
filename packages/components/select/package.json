@@ -21,6 +21,7 @@
     "ignore:rm": "git clean -Xdf",
     "generate": "stencil generate",
     "doc:api": "typedoc",
+    "generate:licence": "npx generate-license-file --input package.json --output THIRD-PARTY-LICENCES --overwrite",
     "test": "yarn run test:spec && yarn run test:e2e",
     "test:spec": "stencil test --spec --config stencil.config.ts --coverage",
     "test:spec:ci": "stencil test --config stencil.config.ts  --spec --ci --coverage",

@@ -1,5 +1,9 @@
 {
   "extends": "../tsconfig.prod.json",
-  "exclude": ["src/dev.ts", "src/globals.ts"],
-  "include": ["src"],
+  "compilerOptions": {
+    "declaration": true
+  },
+  "include": [
+    "src"
+  ]
 }

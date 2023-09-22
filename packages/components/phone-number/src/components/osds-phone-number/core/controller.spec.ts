@@ -25,7 +25,7 @@ describe('spec:ods-phone-number-controller', () => {
     controller = new OdsPhoneNumberController(component);
     global.navigator = {
       ...global.navigator,
-      language,
+      language: language || '',
     }    
   }
 
@@ -52,6 +52,13 @@ describe('spec:ods-phone-number-controller', () => {
         const isoCode = controller.getDefaultIsoCode();
         expect(isoCode).toBe(ODS_COUNTRY_ISO_CODE.FR);
       });
+
+      it('should get the navigator iso code with split language', () => {
+        setup({ }, 'en-US');
+        const isoCode = controller.getDefaultIsoCode();
+        expect(isoCode).toBe(ODS_COUNTRY_ISO_CODE.US);
+      });
+
 
       it('should not get the navigator iso code because of a wrong isoCode', () => {
         setup({ }, 'en');
@@ -171,7 +178,7 @@ describe('spec:ods-phone-number-controller', () => {
         await setup({ isoCode: ODS_COUNTRY_ISO_CODE.FR });
         const number = '0658585858';
         const parsedNumber = await controller.parseNumber(number);
-        expect(parsedNumber.getRawInput()).toBe(number);
+        expect(parsedNumber?.getRawInput()).toBe(number);
       });
 
       it('should return a null because of an empty string', async () => {

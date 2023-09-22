@@ -60,7 +60,7 @@ class OdsPhoneNumberController {
       return null;
     }
     try {
-      return this.component.phoneUtil.parseAndKeepRawInput(number, this.component.isoCode);
+      return this.component.phoneUtils.parseAndKeepRawInput(number, this.component.isoCode);
     } catch {
       this.component.logger.warn('[OsdsPhoneNumber] value could not be parsed as a phone number.');
       return null;
@@ -75,12 +75,17 @@ class OdsPhoneNumberController {
     if (guard(navigatorLang)) {
         return list[list.indexOf(navigatorLang)];
     }
+    const navigatorLang1 = this.getNavigatorLang(1);
+    if (guard(navigatorLang1)) {
+        return list[list.indexOf(navigatorLang1)];
+    }
     return defaultValue;
   }
 
-  private getNavigatorLang(): string | undefined {
-    return navigator.language?.split('-')[0];
+  private getNavigatorLang(index: number = 0): string | undefined {
+    return navigator.language?.split('-')[index]?.toLocaleLowerCase();
   }
+  
 
   private isOdsCountryCode(value: string | ODS_COUNTRY_ISO_CODE | undefined): value is ODS_COUNTRY_ISO_CODE {
     return !!value && ODS_COUNTRY_ISO_CODES.includes(value as ODS_COUNTRY_ISO_CODE);

@@ -4767,6 +4767,43 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-component-datagrid-react@workspace:packages/components/datagrid/react":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-datagrid-react@workspace:packages/components/datagrid/react"
+  dependencies:
+    "@ovhcloud/ods-component-datagrid": 16.1.1
+    "@ovhcloud/ods-react-dev": 16.1.1
+  peerDependencies:
+    react: ">=16.8.6"
+    react-dom: ">=16.8.6"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-component-datagrid-vue@workspace:packages/components/datagrid/vue":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-datagrid-vue@workspace:packages/components/datagrid/vue"
+  dependencies:
+    "@ovhcloud/ods-component-datagrid": 16.1.1
+    "@ovhcloud/ods-vue-dev": 16.1.1
+  peerDependencies:
+    vue: ">=3"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-component-datagrid@16.1.1, @ovhcloud/ods-component-datagrid@workspace:packages/components/datagrid":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-datagrid@workspace:packages/components/datagrid"
+  dependencies:
+    "@ovhcloud/ods-common-core": 16.1.1
+    "@ovhcloud/ods-common-stencil": 16.1.1
+    "@ovhcloud/ods-common-testing": 16.1.1
+    "@ovhcloud/ods-common-theming": 16.1.1
+    "@ovhcloud/ods-stencil-dev": 16.1.1
+    "@types/tabulator-tables": 5.5.2
+    tabulator-tables: 5.5.2
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-component-divider-react@workspace:packages/components/divider/react":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-divider-react@workspace:packages/components/divider/react"

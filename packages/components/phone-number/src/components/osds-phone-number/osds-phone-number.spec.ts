@@ -14,7 +14,7 @@ describe('spec:osds-phone-number', () => {
   let page: SpecPage;
   let root: HTMLElement | undefined;
   let instance: OsdsPhoneNumber;
-  let select: HTMLElement | undefined;
+  let select: HTMLElement | undefined | null;
 
   afterEach(() => {
     jest.clearAllMocks();
@@ -29,7 +29,7 @@ describe('spec:osds-phone-number', () => {
 
     root = page.root;
     instance = page.rootInstance;
-    select = root?.shadowRoot?.querySelector('osds-select') || undefined;
+    select = root?.shadowRoot?.querySelector('osds-select');
   }
 
   it('should render', async () => {
@@ -209,13 +209,13 @@ describe('spec:osds-phone-number', () => {
       it('should get placeholder without isoCode', async () => {
         await setup();
         const placehoslder = instance.getPlaceholder();
-        expect(placehoslder).toBe(undefined);
+        expect(placehoslder).toBe('');
       });
 
       it('should get placeholder with isoCode', async () => {
         await setup({ attributes: { isoCode: ODS_COUNTRY_ISO_CODE.FR } });
         const placehoslder = instance.getPlaceholder();
-        expect(placehoslder).toBe('+33123456789');
+        expect(placehoslder).toBe('01 23 45 67 89');
       });
     });
 

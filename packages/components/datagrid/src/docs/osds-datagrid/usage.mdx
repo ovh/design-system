@@ -1,0 +1,37 @@
+import GenericStyle from '@ovhcloud/ods-common-core/docs/generic-style.mdx';
+
+<GenericStyle />
+
+## Usage
+
+### Default with string
+<osds-datagrid columns='[{"title":"Name","field":"name"},{"title":"Firstname","field":"firstname"},{"title":"Gender","field":"gender"},{"title":"Date Of Birth","field":"dob"}]'
+    rows='[{"name":"Dupont","firstname":"Antoine","gender":"male","dob":"15/11/1996"},{"name":"Garnbret","firstname":"Janja","gender":"female","dob":"12/03/1999"}]'></osds-datagrid>
+
+```html
+<!-- Attributes need to be stringify -->
+<osds-datagrid columns='[{"title":"Name","field":"name"},{"title":"Firstname","field":"firstname"},{"title":"Gender","field":"gender"},{"title":"Date Of Birth","field":"dob"}]'
+    rows='[{"name":"Dupont","firstname":"Antoine","gender":"male","dob":"15/11/1996"},{"name":"Garnbret","firstname":"Janja","gender":"female","dob":"12/03/1999"}]'></osds-datagrid>
+```
+
+### Default with js
+<osds-datagrid columns='[{"title":"Name","field":"name"},{"title":"Firstname","field":"firstname"},{"title":"Gender","field":"gender"},{"title":"Date Of Birth","field":"dob"}]'
+    rows='[{"name":"Dupont","firstname":"Antoine","gender":"male","dob":"15/11/1996"},{"name":"Garnbret","firstname":"Janja","gender":"female","dob":"12/03/1999"}]'></osds-datagrid>
+
+```html
+<osds-datagrid id="datagrid"></osds-datagrid>
+
+<script>
+    const datagrid = document.querySelector('#datagrid')
+    datagrid.columns = [
+      { title: "Name", field: "name" },
+      { title: "Firstname", field: "firstname" },
+      { title: "Gender", field: "gender" },
+      { title: "Date Of Birth", field: "dob" },
+    ];
+    datagrid.rows = [
+      { name: "Dupont", firstname: "Antoine", gender: "male", dob: "15/11/1996" },
+      { name: "Garnbret", firstname: "Janja", gender: "female", dob: "12/03/1999" },
+    ];
+</script>
+```

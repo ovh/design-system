@@ -1,8 +1,7 @@
-import { Config } from '@stencil/core';
 import { getStencilConfig } from '@ovhcloud/ods-common-stencil';
 import jestConfig from './jest.config';
 
-const config: Config = getStencilConfig({
+const config = getStencilConfig({
   args: process.argv.slice(2),
   componentCorePackage: '@ovhcloud/ods-component-flag',
   devScript: 'src/dev.ts',

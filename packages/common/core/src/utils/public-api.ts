@@ -8,5 +8,6 @@ export * from './path/public-api';
 export * from './radio/public-api';
 export * from './string/public-api';
 export * from './time/public-api';
+export * from './typedoc/public-api';
 export * from './case/public-api';
 export * from './computed/public-api';

@@ -22,6 +22,7 @@
     "ignore:rm": "git clean -Xdf",
     "generate": "stencil generate",
     "doc:api": "typedoc",
+    "doc": "typedoc --json ./docs-api/typedoc.json --pretty && node ../../../scripts/generate-typedoc-md.js",
     "generate:licence": "npx generate-license-file --input package.json --output THIRD-PARTY-LICENCES --overwrite",
     "test": "yarn run test:spec && yarn run test:e2e",
     "test:spec": "stencil test --spec --config stencil.config.ts --coverage",

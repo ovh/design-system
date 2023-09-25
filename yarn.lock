@@ -5778,6 +5778,7 @@ __metadata:
     "@ovhcloud/ods-component-code": 16.1.1
     "@ovhcloud/ods-component-collapsible": 16.1.1
     "@ovhcloud/ods-component-content-addon": 16.1.1
+    "@ovhcloud/ods-component-datepicker": 16.1.1
     "@ovhcloud/ods-component-divider": 16.1.1
     "@ovhcloud/ods-component-flag": 16.1.1
     "@ovhcloud/ods-component-form-field": 16.1.1

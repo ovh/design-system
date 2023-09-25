@@ -10,6 +10,7 @@ import { OdsLogger } from '@ovhcloud/ods-common-core';
 // Input dependencies
 import '@ovhcloud/ods-component-input';
 import '@ovhcloud/ods-component-icon';
+import '@ovhcloud/ods-component-text';
 
 const logger = new OdsLogger('global-dev');
 logger.log('init');

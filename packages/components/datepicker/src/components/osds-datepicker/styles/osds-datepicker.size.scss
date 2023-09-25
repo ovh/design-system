@@ -3,5 +3,105 @@
 
 // Main CSS mixin for sizes
 @mixin osds-datepicker-theme-size() {
+  /** sizes */
+  :host {
+    osds-input {
+      width: 100%;
+      min-width: calc((var(--ods-size-10) - var(--ods-size-03)) * 7 + var(--ods-size-07) * 2 + var(--ods-size-01) * 2);
+    }
 
+    .osds-datepicker__hidden-input {
+      width: 0;
+    }
+
+    .datepicker {
+      width: 0;
+      height: 0;
+
+      .datepicker-picker {
+        height: fit-content;
+        border-width: var(--ods-size-01);
+        border-top-width: 0;
+        border-bottom-left-radius: var(--ods-size-03);
+        border-bottom-right-radius: var(--ods-size-03);
+        padding: var(--ods-size-04) var(--ods-size-07) calc(var(--ods-size-04) * 2) var(--ods-size-07);
+
+        .datepicker-header,
+        .datepicker-controls {
+          width: 100%;
+
+          .prev-btn,
+          .next-btn {
+            width: calc(var(--ods-size-10) - var(--ods-size-03));
+            height: calc(var(--ods-size-10) - var(--ods-size-03));
+            min-width: calc(var(--ods-size-10) - var(--ods-size-03));
+            min-height: calc(var(--ods-size-10) - var(--ods-size-03));
+            border-radius: 50%;
+          }
+
+          .view-switch {
+            width: 100%;
+            border-radius: var(--ods-size-03);
+          }
+        }
+      }
+
+      .datepicker-main {
+        margin-top: var(--ods-size-04);
+
+        .datepicker-view {
+          .days {
+            .days-of-week {
+              grid-template-columns: repeat(7, 1fr);
+
+              .dow {
+                width: calc(var(--ods-size-10) - var(--ods-size-03));
+                height: calc(var(--ods-size-10) - var(--ods-size-03));
+              }
+            }
+
+            .datepicker-grid {
+              grid-template-columns: repeat(7, 1fr);
+              grid-template-rows: repeat(6, 1fr);
+
+              .datepicker-cell {
+                width: calc(var(--ods-size-10) - var(--ods-size-03));
+                height: calc(var(--ods-size-10) - var(--ods-size-03));
+                border-radius: 50%;
+              }
+            }
+          }
+        }
+
+        .datepicker-grid {
+          grid-template-columns: repeat(4, 1fr);
+          grid-template-rows: repeat(3, 1fr);
+
+          .datepicker-cell {
+            width: calc(calc(var(--ods-size-10) - var(--ods-size-03)) * 1.75);
+            height: calc(var(--ods-size-10) - var(--ods-size-03));
+            border-radius: var(--ods-size-03);
+          }
+        }
+      }
+    }
+  }
+
+  :host([inline]) {
+    osds-input {
+      width: calc((var(--ods-size-10) - var(--ods-size-03)) * 7 + var(--ods-size-07) * 2 + var(--ods-size-01) * 2);
+    }
+  }
+
+  :host([hasFocus]) {
+    osds-input {
+      border-bottom-left-radius: 0;
+    }
+  }
+
+  :host([inline][hasFocus]) {
+    osds-input {
+      border-bottom-right-radius: 0;
+    }
+  }
 }

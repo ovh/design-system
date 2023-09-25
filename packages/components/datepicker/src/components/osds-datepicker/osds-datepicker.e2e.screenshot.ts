@@ -1,5 +1,6 @@
 import type { E2EPage } from '@stencil/core/testing';
 import type { OdsDatepickerAttribute } from './interfaces/attributes';
+import type { OsdsDatepicker } from './osds-datepicker';
 import { newE2EPage } from '@stencil/core/testing';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
@@ -15,33 +16,75 @@ describe('e2e:osds-datepicker', () => {
       <osds-datepicker ${odsStringAttributes2Str(stringAttributes)}></osds-datepicker>
     `);
     await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
+
+    await page.evaluate(() => {
+      const pickerElement = document.querySelector('osds-datepicker')?.shadowRoot?.querySelector('.datepicker') as HTMLElement;
+      pickerElement.style.setProperty('animation', 'none');
+    });
+
+    if (attributes.value) {
+      const dateStr = attributes.value.toISOString();
+      await page.evaluate((dateStr) => {
+          const datepicker = document.querySelector('osds-datepicker') as unknown as OsdsDatepicker;
+          datepicker.value = new Date(dateStr);
+      }, dateStr);
+    }
   }
 
   const attributeConfigurations = [
-    {},
-    { format: `mm/dd/yyyy` },
-    { error: true },
-    { placeholder: `placeholder`, error: true },
+    { name: 'clearable', options: [true, false] },
+    { name: 'disabled', options: [true, false] },
+    { name: 'error', options: [false, true] },
+    { name: 'format', options: ['dd/mm/yyyy', 'mm/dd/yyyy'] },
+    { name: 'inline', options: [true, false] },
+    { name: 'placeholder', options: ['', 'placeholder message'] },
+    { name: 'value', options: ['', new Date('1999-11-02')] },
   ];
 
+  function generateCombinations(attributes: typeof attributeConfigurations): Array<Partial<OdsDatepickerAttribute>> {
+    if (attributes.length === 0) return [{}];
+
+    const attribute = attributes[0];
+    const rest = attributes.slice(1);
+
+    const combinationsOfRest = generateCombinations(rest);
+    return attribute.options.flatMap(option => combinationsOfRest.map(combination => ({
+      ...combination,
+      [attribute.name]: option
+    })));
+  }
+
+  const allAttributeCombinations = generateCombinations(attributeConfigurations);
+
   describe('screenshots', () => {
-    attributeConfigurations.forEach(( attributes ) => {
-      const attributeDescription = Object.keys(attributes).join(' & ');
+    [true, false].forEach(displayDatepicker => {
+      allAttributeCombinations.forEach(attributes => {
+        const attributeDescription = Object.entries(attributes)
+        .map(([key, value]) => value ? `${key}=${value}` : '')
+        .filter(attr => attr)
+        .join(', ');
 
-      it(`${attributeDescription}`, async () => {
-        await setup({ attributes });
+        const composedName = [
+          attributeDescription,
+          displayDatepicker ? 'datepicker displayed' : ''
+        ].filter(Boolean).join(', ');
 
-        await page.waitForChanges();
+        it(composedName, async () => {
+          await setup({ attributes });
 
-        await page.evaluate(() => {
-          const element = document.querySelector('osds-datepicker') as HTMLElement;
-          return { width: element.clientWidth, height: element.clientHeight };
+          await page.waitForChanges();
+          const datepicker = await page.find('osds-datepicker');
+          if (displayDatepicker) {
+            await datepicker.click();
+          }
+
+          await page.waitForChanges();
+
+          await page.setViewport({ width: 600, height: 600 });
+
+          const results = await page.compareScreenshot('datepicker', { fullPage: false, omitBackground: true });
+          expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
         });
-
-        await page.setViewport({ width: 600, height:600 });
-
-        const results = await page.compareScreenshot('datepicker', { fullPage: false, omitBackground: true });
-        expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
       });
     });
   });

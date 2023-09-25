@@ -1,10 +1,11 @@
-jest.mock('./core/controller'); // keep jest.mock before any
+jest.mock('./core/controller');
 
 import type { SpecPage } from '@stencil/core/testing';
 import type { OdsDatepickerAttribute } from './interfaces/attributes';
 import { newSpecPage } from '@stencil/core/testing';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { OsdsDatepicker } from './osds-datepicker';
 import { OdsDatepickerController } from './core/controller';
 
@@ -13,6 +14,8 @@ describe('spec:osds-datepicker', () => {
   let root: HTMLElement | undefined;
   let instance: OsdsDatepicker;
   let controller: OdsDatepickerController;
+
+  jest.spyOn(OsdsDatepicker.prototype, 'componentDidLoad').mockImplementation(jest.fn());
 
   afterEach(() => {
     jest.clearAllMocks();
@@ -56,6 +59,17 @@ describe('spec:osds-datepicker', () => {
       });
     });
 
+    describe('color', () => {
+      odsUnitTestAttribute<OdsDatepickerAttribute, 'color'>({
+        name: 'color',
+        defaultValue: DEFAULT_ATTRIBUTE.color,
+        newValue: ODS_THEME_COLOR_INTENT.primary,
+        value: ODS_THEME_COLOR_INTENT.success,
+        setup: (value) => setup({ attributes: { ['color']: value } }),
+        ...config,
+      });
+    });
+
     describe('disabled', () => {
       odsUnitTestAttribute<OdsDatepickerAttribute, 'disabled'>({
         name: 'disabled',
@@ -85,6 +99,17 @@ describe('spec:osds-datepicker', () => {
         newValue: 'dd/mm/yyyy',
         value: 'yyyy-mm-dd',
         setup: (value) => setup({ attributes: { ['format']: value } }),
+        ...config,
+      });
+    });
+
+    describe('inline', () => {
+      odsUnitTestAttribute<OdsDatepickerAttribute, 'inline'>({
+        name: 'inline',
+        defaultValue: DEFAULT_ATTRIBUTE.inline,
+        newValue: true,
+        value: false,
+        setup: (value) => setup({ attributes: { ['inline']: value } }),
         ...config,
       });
     });

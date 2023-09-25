@@ -13,7 +13,7 @@
     "build": "npm run build:esm && npm run build:cjs && node ./scripts/generate-ods-version.js",
     "build:prod": "npm run build",
     "watch": "tsc -w -p tsconfig.esm.json",
-    "doc": "typedoc --plugin none src/* && typedoc --plugin typedoc-plugin-markdown --hideBreadcrumbs true --hideInPageTOC true && typedoc --json ./typedoc/typedoc.json --pretty && tsc src/utils/typedoc/typedoc-json-to-md.ts && node scripts/generate-typedoc-md.js",
+    "doc": "typedoc --plugin none src/* && typedoc --plugin typedoc-plugin-markdown --hideBreadcrumbs true --hideInPageTOC true && typedoc --json ./typedoc/typedoc.json --pretty",
     "generate:licence": "npx generate-license-file --input package.json --output THIRD-PARTY-LICENCES --overwrite",
     "test:spec": "jest --coverage",
     "test:spec:ci": "jest --ci  --coverage --detectOpenHandles"

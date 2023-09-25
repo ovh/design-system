@@ -22,6 +22,7 @@ class OdsDatepickerController {
     if(!this.component.disabled) {
       if (newValue === undefined || newValue === null || isNaN(newValue.getTime())) {
         this.component.value = null;
+        this.component.datepickerInstance?.setDate({ clear: true });
       } else {
         this.component.value = newValue;
         this.component.datepickerInstance?.setDate(newValue);

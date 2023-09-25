@@ -25,11 +25,13 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
   @State() hasFocus = false;
   @State() datepickerInstance: Datepicker | undefined = undefined;
   @State() hiddenInput: HTMLInputElement | undefined = undefined;
-
-  /** Attributes */
+  @State() datepickerElement: HTMLElement | undefined = undefined;
 
   /** @see OdsDatepickerAttribute.clearable */
   @Prop({ reflect: true }) clearable?: boolean = DEFAULT_ATTRIBUTE.clearable;
+
+  /** @see OdsDatepickerAttribute.color */
+  @Prop({ reflect: true }) color?: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
 
   /** @see OdsDatepickerAttribute.disabled */
   @Prop({ reflect: true }) disabled?: boolean = DEFAULT_ATTRIBUTE.disabled;
@@ -39,6 +41,9 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
 
   /** @see OdsDatepickerAttribute.format */
   @Prop({ reflect: true }) format?: string = DEFAULT_ATTRIBUTE.format;
+
+  /** @see OdsDatepickerAttribute.inline */
+  @Prop({ reflect: true }) inline?: boolean = DEFAULT_ATTRIBUTE.inline;
 
   /** @see OdsDatepickerAttribute.placeholder */
   @Prop({ reflect: true }) placeholder?: string = DEFAULT_ATTRIBUTE.placeholder;
@@ -99,10 +104,12 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
     if (this.hiddenInput && !this.hiddenInput.getAttribute('initialized')) {
       this.datepickerInstance = new Datepicker(this.hiddenInput, {
         format: this.format,
-        nextArrow: `<osds-icon name="triangle-right" size="sm" color="${ODS_THEME_COLOR_INTENT.primary}"></osds-icon>`,
-        prevArrow: `<osds-icon name="triangle-left" size="sm" color="${ODS_THEME_COLOR_INTENT.primary}"></osds-icon>`,
+        nextArrow: `<osds-icon name="triangle-right" size="sm" color=${this.color}></osds-icon>`,
+        prevArrow: `<osds-icon name="triangle-left" size="sm" color=${this.color}></osds-icon>`,
         maxView: 2,
       });
+
+      this.datepickerElement = this.el.shadowRoot.querySelector('.datepicker-picker') as HTMLElement;
 
       this.hiddenInput.addEventListener('changeDate', (e: Event) => {
         const customEvent = e as CustomEvent;
@@ -110,49 +117,108 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
       });
 
       this.hiddenInput.setAttribute('initialized', 'true');
+
+      const datepickerButtons = this.datepickerElement.querySelectorAll('button');
+      datepickerButtons.forEach(element => {
+        element.removeAttribute('tabindex');
+      });
+
+      const datepickerDayNames = this.el.shadowRoot.querySelectorAll('.dow');
+      datepickerDayNames.forEach(day => {
+        if (day.textContent) {
+          day.textContent = day.textContent.trim().charAt(0);
+        }
+      });
+
+      const viewSwitch = this.el.shadowRoot.querySelector('.view-switch') as HTMLElement;
+      const chevron = document.createElement('osds-icon');
+      chevron.setAttribute('name', 'chevron-down');
+      chevron.setAttribute('color', `${this.color}`);
+      chevron.setAttribute('size', 'xs');
+      viewSwitch.appendChild(chevron);
+
+      const datepickerSpanElements = this.el.shadowRoot.querySelectorAll('.datepicker-grid span');
+      datepickerSpanElements.forEach(span => {
+        const button = document.createElement('button');
+        button.setAttribute('class', span.getAttribute('class') as string);
+        button.setAttribute('data-date', span.getAttribute('data-date') as string);
+        button.innerHTML = span.innerHTML;
+        span.replaceWith(button);
+      });
+
+      this.hiddenInput.addEventListener('changeView', (e: Event) => {
+        const customEvent = e as CustomEvent;
+        if(this.el.shadowRoot) {
+          const datepickerSpanElements = this.el.shadowRoot.querySelectorAll('.datepicker-grid span');
+          datepickerSpanElements.forEach(span => {
+            const button = document.createElement('button');
+            button.setAttribute('class', span.getAttribute('class') as string);
+            if (customEvent.detail.viewId === 0) {
+              button.setAttribute('data-date', span.getAttribute('data-date') as string);
+            } else if (customEvent.detail.viewId === 1) {
+              button.setAttribute('data-month', span.getAttribute('data-month') as string);
+            } else if (customEvent.detail.viewId === 2) {
+              button.setAttribute('data-year', span.getAttribute('data-year') as string);
+            }
+            button.innerHTML = span.innerHTML;
+            span.replaceWith(button);
+          });
+        }
+      });
+
+      ['changeView', 'changeMonth', 'changeYear'].forEach(event => {
+        if (this.hiddenInput) {
+          this.hiddenInput.addEventListener(event, (e: Event) => {
+            const customEvent = e as CustomEvent;
+            if (customEvent.detail.viewId < 2) {
+              viewSwitch.appendChild(chevron);
+            }
+          });
+        }
+      });
     }
   }
 
-  private formatDate(date?: Date | undefined | null) {
+  formatDate(date?: Date | undefined | null) {
     if (this.format && date) {
       return Datepicker.formatDate(date, this.format);
+    } else {
+      return '';
     }
-    return '';
   }
 
   render() {
     const {
       clearable,
+      color,
       disabled,
       error,
       hasFocus,
+      inline,
       placeholder,
       value,
     } = this;
 
     return (
       <Host {...{
-        class: 'osds-datepicker',
-        disabled,
         error,
+        disabled,
         hasFocus,
+        inline,
         onBlur: () => this.onBlur(),
         onFocus: () => this.onFocus(),
       }}>
         <osds-input
           clearable={clearable}
-          error={error}
+          color={color}
           disabled={disabled}
+          error={error}
           icon={ODS_ICON_NAME.CALENDAR}
           placeholder={placeholder}
           type={ODS_INPUT_TYPE.text}
           value={this.formatDate(value)}
         ></osds-input>
-        <input
-          tabindex={-1}
-          class="osds-datepicker__hidden-input"
-          ref={(el?: HTMLInputElement) => this.hiddenInput = el || this.hiddenInput}
-        ></input>
+        <input tabindex={-1} class="osds-datepicker__hidden-input" ref={(el?: HTMLInputElement) => this.hiddenInput = el || this.hiddenInput}></input>
       </Host>
     );
   }

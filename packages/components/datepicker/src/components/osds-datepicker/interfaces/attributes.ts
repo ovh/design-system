@@ -1,8 +1,14 @@
+import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+
 interface OdsDatepickerAttribute {
   /**
    * Defines if the Datepicker should be clearable or not (displays a clear button)
    */
   clearable?: boolean;
+  /**
+   * Defines the Datepicker's color (see component principles)
+   */
+  color?: ODS_THEME_COLOR_INTENT;
   /**
    * Defines if the Datepicker should be disabled or not (lower opacity and not interactable)
    */
@@ -15,6 +21,10 @@ interface OdsDatepickerAttribute {
    * Defines which format the Datepicker should be applying (supported formats: https://mymth.github.io/vanillajs-datepicker/#/date-string+format?id=date-format)
    */
   format?: string;
+  /**
+   * Defines if the Datepicker should be displayed inline or not
+   */
+  inline?: boolean;
   /**
    * Defines if the Datepicker should display a placeholder message
    */

@@ -1,0 +1,15 @@
+name: ODS-release
+description: Workflow that will build the latest release branch, upload the libs to artifactory and create a npm sync PR on stash
+version: v2.0
+workflow:
+  setup:
+    pipeline: setup
+    application: ods-github
+    environment: uxci-eu
+    one_at_a_time: true
+metadata:
+  default_tags: git.branch,git.author
+notifications:
+- type: vcs
+  pipelines:
+  - setup

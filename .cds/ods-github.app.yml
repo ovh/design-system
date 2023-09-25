@@ -1,0 +1,7 @@
+version: v1.0
+name: ods-github
+description: ODS application with code base stored on github
+vcs_server: github
+repo: ovh/design-system
+vcs_connection_type: ssh
+vcs_ssh_key: proj-robot-cds-ods-ssh

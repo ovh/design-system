@@ -1,0 +1,53 @@
+version: v1.0
+name: setup
+jobs:
+- job: Setup
+  description: Initialize all needed resources
+  steps:
+  - name: Global variables
+    script:
+    - '#!/bin/bash'
+    - '#echo "warning:"'
+    - '#echo ".git.tag is always replaced by the tag or an empty string by CDS"'
+    - '#echo ".git.branch exists only if there is a branch. CDS is not replacing the accolades if a tag was pushed (the variable does not exists)"'
+    - GIT_BRANCH_NAME="{{.git.branch | escape}}"
+    - echo "GIT_BRANCH_NAME=${GIT_BRANCH_NAME}"
+    - '#GIT_TAG_NAME="{{.git.tag | escape}}"'
+    - '#echo "GIT_TAG_NAME=${GIT_TAG_NAME}"'
+    - '#GIT_REF_NAME="${GIT_TAG_NAME:-$GIT_BRANCH_NAME}"'
+    - '#echo "GIT_REF_NAME=${GIT_REF_NAME}"'
+    - '#TAGNAME_STENCIL_SCREENSHOT="stencil-screenshots-{{.cds.workflow}}-${GIT_REF_NAME}"'
+    - '#TAGNAME_STENCIL_COVERAGE="stencil-lcov-{{.cds.workflow}}-${GIT_REF_NAME}"'
+    - '#TAGNAME_TESTING_REPORT="testing-report-{{.cds.workflow}}-${GIT_REF_NAME}"'
+    - '#FILENAME_STENCIL_SCREENSHOT="${TAGNAME_STENCIL_SCREENSHOT}.tar.gz"'
+    - '#FILENAME_STENCIL_COVERAGE="${TAGNAME_STENCIL_COVERAGE}.tar.gz"'
+    - '#FILENAME_TESTING_REPORT="${TAGNAME_TESTING_REPORT}.tar.gz"'
+    - '#worker export GIT_BRANCH_NAME "$GIT_BRANCH_NAME"'
+    - '#worker export GIT_TAG_NAME "$GIT_TAG_NAME"'
+    - '#worker export GIT_REF_NAME "$GIT_REF_NAME"'
+    - '#worker export STENCIL_SCREENSHOT_FILENAME "$FILENAME_STENCIL_SCREENSHOT"'
+    - '#worker export STENCIL_SCREENSHOT_DESTINATION "CDS/{{.cds.workflow}}/${GIT_REF_NAME}/$FILENAME_STENCIL_SCREENSHOT"'
+    - '#worker export STENCIL_SCREENSHOT_REPORT_TAGNAME "{{.cds.version}}-${TAGNAME_STENCIL_SCREENSHOT}"'
+    - '#worker export STENCIL_SCREENSHOT_REPORT_FILENAME "{{.cds.version}}-${FILENAME_STENCIL_SCREENSHOT}"'
+    - '#worker export STENCIL_COVERAGE_REPORT_TAGNAME "{{.cds.version}}-${TAGNAME_STENCIL_COVERAGE}"'
+    - '#worker export STENCIL_COVERAGE_REPORT_FILENAME "{{.cds.version}}-${FILENAME_STENCIL_COVERAGE}"'
+    - '#worker export TESTING_REPORT_TAGNAME "{{.cds.version}}-${TAGNAME_TESTING_REPORT}"'
+    - '#worker export TESTING_REPORT_FILENAME "{{.cds.version}}-$FILENAME_TESTING_REPORT"'
+  - checkout: '{{.cds.workspace}}'
+  - name: Install dependencies
+    script:
+    - '#!/bin/bash'
+    - ""
+    - '# Use the private key for installing internal (stash) dependencies'
+    - '#eval $(worker key install --env-git proj-ods)'
+    - ""
+    - npm i -g yarn
+    - yarn install
+  - name: Push yarn cache
+    script:
+    - '#!/bin/bash'
+    - ""
+    - worker cache push yarn-cache-{{.cds.workflow}} {{.cds.workspace}}/.yarn/cache
+  requirements:
+  - binary: git
+  - model: nodejs-14.x

@@ -43,7 +43,7 @@ describe('e2e:osds-menu', () => {
     });
 
     it('should display a menu title as a ODS button', async () => {
-      const button = `<osds-button slot="menu-title" color="primary" tabindex="0" size="md" type="button" variant="flat" class="hydrated">Button</osds-button>`;
+      const button = `<osds-button slot="menu-title" color="primary" tabindex="0" size="md" type="button" variant="flat" class="hydrated" text-align="center">Button</osds-button>`;
       await setup({ attributes: { }, html: button });
       expect(menuTitleContent.outerHTML).toBe(button);
     });

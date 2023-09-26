@@ -1,10 +1,9 @@
-import {
+import type {
   DeclarationReflection,
   SomeType,
   LiteralType,
   IntrinsicType,
   ReflectionType,
-  ReflectionKind,
   ReferenceType,
 } from 'typedoc';
 
@@ -99,7 +98,7 @@ function getClass(filteredJSON: DeclarationReflection[]): string[] {
     }
 
     // Methods
-    const methods = typeDocClass.children?.filter((method) => method.kind === ReflectionKind.Method)
+    const methods = typeDocClass.children?.filter((method) => method?.kindString === 'Method')
       .filter((method) => method.decorators?.[0].name === 'Method' && (method.decorators?.[0].type as ReferenceType)?.package === '@stencil/core');
     if (!methods?.length) {
       return;

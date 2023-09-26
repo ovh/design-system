@@ -8,17 +8,18 @@
   "module": "dist/esm/index.js",
   "style": "index.css",
   "scripts": {
-    "ignore:rm": "git clean -Xdf",
-    "build:esm": "tsc -p tsconfig.esm.json",
-    "build:cjs": "tsc -p tsconfig.cjs.json",
     "build": "npm run build:esm && npm run build:cjs",
+    "build:ci": "npm run build:prod",
+    "build:cjs": "tsc -p tsconfig.cjs.json",
+    "build:esm": "tsc -p tsconfig.esm.json",
     "build:prod": "npm run build",
-    "watch": "tsc -w -p tsconfig.esm.json",
     "doc": "typedoc --plugin typedoc-plugin-markdown --hideBreadcrumbs true --hideInPageTOC true",
     "doc:api": "typedoc --plugin none src/*",
     "doc:sass": "sassdoc color size typography reset ods-theme.scss -d sassdoc",
+    "generate:icons": "svgpack icons/_helpers/ > icons/_generated-icons.scss && svgpack icons/concept/ >> icons/_generated-icons.scss && svgpack icons/system/ >> icons/_generated-icons.scss",
     "generate:licence": "npx generate-license-file --input package.json --output THIRD-PARTY-LICENCES --overwrite",
-    "generate:icons": "svgpack icons/_helpers/ > icons/_generated-icons.scss && svgpack icons/concept/ >> icons/_generated-icons.scss && svgpack icons/system/ >> icons/_generated-icons.scss"
+    "ignore:rm": "git clean -Xdf",
+    "watch": "tsc -w -p tsconfig.esm.json"
   },
   "devDependencies": {
     "@marsbased/svgpack": "1.0.3",

@@ -12,6 +12,7 @@
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
   "scripts": {
+    "build:ci": "npm run build:stencil",
     "build:prod": "npm run build:stencil --if-present && npm run build:react --if-present && npm run build:vue --if-present",
     "build": "echo \"use build:prod\"",
     "build:stencil": "stencil build --docs --prod --config stencil.config.ts",

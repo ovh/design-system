@@ -7,17 +7,18 @@
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "scripts": {
-    "ignore:rm": "git clean -Xdf",
-    "build:esm": "tsc -p tsconfig.esm.json",
-    "build:cjs": "tsc -p tsconfig.cjs.json",
     "build": "npm run build:esm && npm run build:cjs",
+    "build:ci": "npm run build:prod",
+    "build:cjs": "tsc -p tsconfig.cjs.json",
+    "build:esm": "tsc -p tsconfig.esm.json",
     "build:prod": "npm run build",
-    "watch": "tsc -w -p tsconfig.esm.json",
-    "generate:licence": "npx generate-license-file --input package.json --output THIRD-PARTY-LICENCES --overwrite",
     "doc": "typedoc --plugin typedoc-plugin-markdown --hideBreadcrumbs true --hideInPageTOC true",
     "doc:api": "typedoc --plugin none src/*",
+    "generate:licence": "npx generate-license-file --input package.json --output THIRD-PARTY-LICENCES --overwrite",
+    "ignore:rm": "git clean -Xdf",
     "test:spec": "jest",
-    "test:spec:ci": "jest --ci"
+    "test:spec:ci": "jest --ci",
+    "watch": "tsc -w -p tsconfig.esm.json"
   },
   "dependencies": {
     "@jest/types": "27.1.1",

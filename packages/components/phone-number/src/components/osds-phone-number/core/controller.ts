@@ -43,7 +43,7 @@ class OdsPhoneNumberController {
   }
 
     
-  parseCountries(countries: readonly ODS_COUNTRY_ISO_CODE[] | string) {
+  parseCountries(countries: readonly ODS_COUNTRY_ISO_CODE[] | string): ODS_COUNTRY_ISO_CODE[] {
     if (typeof countries === 'string') {
       try {
         return JSON.parse(countries);

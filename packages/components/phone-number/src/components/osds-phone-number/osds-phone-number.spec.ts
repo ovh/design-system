@@ -8,6 +8,7 @@ import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OsdsPhoneNumber } from './osds-phone-number';
 import { ODS_COUNTRY_ISO_CODE, ODS_COUNTRY_ISO_CODES, ODS_LOCALE } from '@ovhcloud/ods-common-core';
 import { ODS_PHONE_NUMBER_COUNTRY_PRESET } from './constants/phone-number-countries';
+import { PhoneNumberUtil } from 'google-libphonenumber';
 
 describe('spec:osds-phone-number', () => {
   const baseAttribute = { ariaLabel: '', forbiddenValues: [], value: '' };
@@ -15,6 +16,7 @@ describe('spec:osds-phone-number', () => {
   let root: HTMLElement | undefined;
   let instance: OsdsPhoneNumber;
   let select: HTMLElement | undefined | null;
+  const phoneUtils = PhoneNumberUtil.getInstance();
 
   afterEach(() => {
     jest.clearAllMocks();
@@ -164,7 +166,7 @@ describe('spec:osds-phone-number', () => {
       it('should get countries list with all', async () => {
         await setup({ attributes: { countries: ODS_PHONE_NUMBER_COUNTRY_PRESET.All } });
         instance.handlerCountries();
-        expect(instance.parsedCountries).toEqual(ODS_COUNTRY_ISO_CODES);
+        expect(instance.parsedCountries).toEqual(ODS_COUNTRY_ISO_CODES.filter((country) => phoneUtils.getCountryCodeForRegion(country)));
         expect(select).toBeDefined();
       });
 

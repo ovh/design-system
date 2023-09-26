@@ -125,6 +125,13 @@ describe('e2e:osds-phone-number', () => {
     expect(await el.getProperty('isoCode')).toBe(ODS_COUNTRY_ISO_CODE.FR);
   });
 
+  it('should display select options sorted', async () => {
+    await setup({ attributes: { countries: ODS_PHONE_NUMBER_COUNTRY_PRESET.All }, cbkInterceptorRequest: myCbk });
+    
+    const optionsElement = await page.findAll('osds-phone-number >>> osds-select > osds-select-option');
+    expect(optionsElement[0].innerText < optionsElement[1].innerText).toBe(true)
+  });
+
   describe('Event', () => {
     it('should receive event odsValueChange with isoCode', async () => {
       await setup({ attributes: { isoCode: ODS_COUNTRY_ISO_CODE.FR }, cbkInterceptorRequest: myCbk });
@@ -156,8 +163,8 @@ describe('e2e:osds-phone-number', () => {
 
       await select.click();
       
-      const optionElement = await page.findAll('osds-phone-number >>> osds-select > osds-select-option');
-      await optionElement[1].click();
+      const optionsElement = await page.findAll('osds-phone-number >>> osds-select > osds-select-option');
+      await optionsElement[1].click();
 
       await page.waitForChanges();
       expect(odsValueChange).toHaveReceivedEventTimes(1);

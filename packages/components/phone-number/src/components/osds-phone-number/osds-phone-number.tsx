@@ -80,7 +80,7 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
   @Watch('countries')
   handlerCountries(): void {
     const countriesList = this.controller.getCountriesList();
-    this.parsedCountries = this.controller.parseCountries(countriesList);
+    this.parsedCountries = this.controller.parseCountries(countriesList).filter((country) => this.phoneUtils.getCountryCodeForRegion(country))
     this.hasCountries = !!this.parsedCountries?.length;
   }
 
@@ -110,9 +110,7 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
   }
 
   private handlerInputEvent(event: OdsInputValueChangeEventDetail) {
-    if (event.value) {
-      this.value = event.value;
-    }
+    this.value = event.value || '';
     if(!this.isValidValue(this.value)) {
       this.error = true;
       return;
@@ -124,12 +122,12 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
       value: number && this.phoneUtils.format(number, PhoneNumberFormat.E164),
       oldValue: oldNumber && this.phoneUtils.format(oldNumber, PhoneNumberFormat.E164) || undefined,
       isoCode: this.isoCode,
-    })
+    });
   }
 
   @Watch('value')
   private validateValue(): void {
-    this.error = !this.isValidValue(this.value)
+    this.error = !this.isValidValue(this.value);
   }
 
   private isValidValue(value: string | null): boolean {
@@ -157,6 +155,18 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
     return this.isoCode && this.phoneUtils.getExampleNumber(this.isoCode);
   }
 
+  private sortCountriesByName(countryA: string, countryB: string): number {
+    const aName = this.i18nCountriesMap?.has(countryA) && this.i18nCountriesMap.get(countryA)!.name;
+    const bName = this.i18nCountriesMap?.has(countryB) && this.i18nCountriesMap.get(countryB)!.name
+    if (aName < bName) {
+      return -1;
+    }
+    if (aName > bName) {
+      return 1;
+    }
+    return 0;
+  }
+
   render() {
     return (
       <Host class="phone-number">
@@ -175,7 +185,7 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
             }}
               slot="selectedLabel"
               class="phone-number__select-label" />
-            { this.parsedCountries?.map((country) => {
+            { this.parsedCountries?.sort((a, b) => this.sortCountriesByName(a, b)).map((country) => {
               const i18nCountry = this.i18nCountriesMap?.get(country);
               return <osds-select-option value={ country } key={ country }>
                 <div class="phone-number__select__option">

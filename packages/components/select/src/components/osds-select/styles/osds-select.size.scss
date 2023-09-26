@@ -3,7 +3,7 @@
 
 :host {
   ocdk-surface {
-    width: auto;
+    width: var(--ods-size-select-surface-width, 'auto');
   }
 }
 

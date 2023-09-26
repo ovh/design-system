@@ -1,8 +1,6 @@
 * [**Interfaces**](#interfaces)
 * [**Types**](#types)
 * [**Classes**](#classes)
-* [**Type alias**](#type-alias)
-* [**Variables**](#variables)
 
 ## Interfaces
 
@@ -36,66 +34,16 @@
 ## Classes
 
 ### OsdsAccordion
-#### Methods
-> **afterInit**() => _unknown_
-
-
-> **beforeInit**() => _unknown_
-
-
-> **componentDidLoad**() => _unknown_
-
-
-> **connectedCallback**() => _unknown_
-
-
-> **disconnectedCallback**() => _unknown_
-
-
-> **emitToggle**() => _unknown_
-
-
-> **onDestroy**() => _unknown_
-
-
-> **onOpenedChanged**() => _unknown_
-
-
-> **render**() => _unknown_
-
-
 
 ### OsdsAccordionGroup
 #### Methods
-> **beforeInit**() => _unknown_
+> **registerAccordion**(`accordion`: `OsdsAccordion`) => `Promise<void>`
 
+Name | Type | Description 
+---|---|---
+**accordion** | `OsdsAccordion` | 
+> **unRegisterAccordion**(`accordion`: `OsdsAccordion`) => `Promise<void>`
 
-> **connectedCallback**() => _unknown_
-
-
-> **disconnectedCallback**() => _unknown_
-
-
-> **onDestroy**() => _unknown_
-
-
-> **registerAccordion**() => _unknown_
-
-
-> **render**() => _unknown_
-
-
-> **unRegisterAccordion**() => _unknown_
-
-
-
-## Type alias
-
-### OdsAccordionToggleEvent
-
-> - _unknown_
-
-## Variables
-
-### ODS_ACCORDION_SIZES
-_unknown_
+Name | Type | Description 
+---|---|---
+**accordion** | `OsdsAccordion` | 

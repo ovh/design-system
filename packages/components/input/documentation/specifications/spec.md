@@ -1,27 +1,25 @@
 * [**Interfaces**](#interfaces)
 * [**Types**](#types)
 * [**Classes**](#classes)
-* [**Type alias**](#type-alias)
-* [**Variables**](#variables)
 
 ## Interfaces
 
-### OdsInputAttributes
+### OdsInputAttribute
 |name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
-|**`ariaLabel`** | `null` \| `string` | ✴️ |  | |
+|**`ariaLabel`** | `undefined` \| `string` | ✴️ |  | |
 |**`ariaLabelledby`** | _string_ |  |  | ID of the element that labels the input|
 |**`clearable`** | _boolean_ |  |  | Ability to clear the input value|
-|**`color`** | `OdsThemeColorIntent` |  |  | Main color of the input: see component principles|
+|**`color`** | `ODS_THEME_COLOR_INTENT` |  |  | Main color of the input: see component principles|
 |**`contrasted`** | _boolean_ |  |  | Indicates if the input is contrasted or not: see component principles|
 |**`defaultValue`** | `OdsInputValue` | ✴️ |  | Default value of the input|
 |**`disabled`** | _boolean_ |  |  | Indicates if the input is disabled or not: see component principles|
 |**`error`** | _boolean_ |  |  | Indicates if the input shows error or not|
 |**`errorStateControl`** | `OdsErrorStateControl` |  |  | Controls the error state of the input|
-|**`flex`** | _boolean_ |  |  | Indicates if the input is full width or not: see component principles|
 |**`forbiddenValues`** | `OdsFormForbiddenValues` | ✴️ |  | List of forbidden values for the input|
 |**`formControl`** | `OdsFormControl` |  |  | Control object of the form the input belongs to|
 |**`icon`** | `ODS_ICON_NAME` |  |  | Icon to be used in the input field|
+|**`inline`** | _boolean_ |  |  | Indicates if the input is inline or not: see component principles|
 |**`label`** | _string_ |  |  | Label of the input field|
 |**`loading`** | _boolean_ |  |  | Indicates if the input is in loading state or not|
 |**`masked`** | _boolean_ |  |  | Indicates if the input is masked or not|
@@ -29,53 +27,39 @@
 |**`min`** | _number_ |  |  | Minimum value for the input (type number)|
 |**`name`** | _string_ |  |  | Name of the input field|
 |**`placeholder`** | _string_ |  |  | Placeholder text for the input|
+|**`prefixValue`** | _string_ |  |  | Text before the input value|
 |**`readOnly`** | _boolean_ |  |  | Indicates if the input is read-only or not|
 |**`required`** | _boolean_ |  |  | Indicates if the input is required or not|
 |**`size`** | `md` |  |  | Size of the input: see component principles|
 |**`step`** | _number_ |  |  | Step value for the input|
-|**`type`** | `OdsInputType` | ✴️ |  | Type of the input field|
+|**`type`** | `ODS_INPUT_TYPE` | ✴️ |  | Type of the input field|
 |**`value`** | `OdsInputValue` | ✴️ |  | Current value of the input|
 
-### OdsInputBehavior
+### OdsInputEvent
 |name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
-|**`hasFocus`** | _boolean_ | ✴️ |  | |
-|**`inputEl`** | `HTMLInputElement` |  |  | reference to the input element.|
-|**`inputTabindex`** | _number_ | ✴️ |  | |
-|**`beforeInit`** | _void_ | ✴️ |  | before init component function.should be called before component init.should register form controlshould emit valueshould set value with default if undefined|
-|**`emitBlur`** | _void_ | ✴️ |  | when a blur is triggered, this method emit the event|
-|**`emitChange`** | _void_ | ✴️ |  | when a input change is triggered, this method emit the event|
-|**`emitFocus`** | _void_ | ✴️ |  | when a focus is triggered, this method emit the event|
-|**`onBlur`** | _void_ | ✴️ |  | |
-|**`onChange`** | _void_ | ✴️ |  | process the change of the component.|
-|**`onFocus`** | _void_ | ✴️ |  | |
-|**`onInput`** | _void_ | ✴️ |  | process the input of the component.this method has to call OdsInputController.onInput|
+|**`odsInputBlur`** | `EventEmitter` | ✴️ |  | |
+|**`odsInputFocus`** | `EventEmitter` | ✴️ |  | |
+|**`odsValueChange`** | `EventEmitter` | ✴️ |  | the input value changed|
 
-### OdsInputEvents
+### OdsInputMethod
 |name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
-|**`odsInputBlur`** | _void_ | ✴️ |  | |
-|**`odsInputFocus`** | _void_ | ✴️ |  | Event triggered on input blur|
-|**`odsValueChange`** | `OdsInputValueChangeEventDetail` | ✴️ |  | the input value changed|
-
-### OdsInputMethods
-|name | Type | Required | Default | Description|
-|---|---|:---:|---|---|
-|**`clear`** | _void_ | ✴️ |  | empty the value|
-|**`getValidity`** | `OdsInputValidityState` | ✴️ |  | get the validity state|
-|**`hide`** | _void_ | ✴️ |  | hide or display the value|
-|**`reset`** | _void_ | ✴️ |  | restore the value to the initial state|
-|**`setFocus`** | _void_ | ✴️ |  | active the focus on the input in order to let the user write something|
-|**`setInputTabindex`** | _void_ | ✴️ |  | set a custom tab index for easier navigation|
-|**`stepDown`** | _void_ | ✴️ |  | |
-|**`stepUp`** | _void_ | ✴️ |  | |
+|**`clear`** | `Promise<void>` | ✴️ |  | empty the value|
+|**`getValidity`** | `Promise<OdsInputValidityState>` | ✴️ |  | get the validity state|
+|**`hide`** | `Promise<void>` | ✴️ |  | hide or display the value|
+|**`reset`** | `Promise<void>` | ✴️ |  | restore the value to the initial state|
+|**`setFocus`** | `Promise<void>` | ✴️ |  | active the focus on the input in order to let the user write something|
+|**`setInputTabindex`** | `Promise<void>` | ✴️ |  | set a custom tab index for easier navigation|
+|**`stepDown`** | `Promise<void>` | ✴️ |  | |
+|**`stepUp`** | `Promise<void>` | ✴️ |  | |
 
 ### OdsInputValidityState
 |name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`badInput`** | _boolean_ |  |  | |
 |**`customError`** | _boolean_ | ✴️ |  | |
-|**`forbiddenValue`** | _boolean_ | ✴️ |  | is the value is forbidden|
+|**`forbiddenValue`** | _boolean_ | ✴️ |  | |
 |**`invalid`** | _boolean_ | ✴️ |  | |
 |**`patternMismatch`** | _boolean_ |  |  | |
 |**`rangeOverflow`** | _boolean_ |  |  | |
@@ -90,18 +74,18 @@
 ### OdsInputValueChangeEventDetail
 |name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
-|**`oldValue`** | `null` \| `string` |  |  | |
+|**`oldValue`** | `undefined` \| `string` |  |  | |
 |**`validity`** | `OdsValidityState` | ✴️ |  | |
-|**`value`** | `undefined` \| `null` \| `string` | ✴️ |  | |
+|**`value`** | `undefined` \| `undefined` \| `string` | ✴️ |  | |
 
 ## Types
 
-### OdsInputSize
+### ODS_INPUT_SIZE
 |  |
 |:---:|
 | `md` |
 
-### OdsInputType
+### ODS_INPUT_TYPE
 |  |
 |:---:|
 | `date` |
@@ -116,106 +100,30 @@
 
 ## Classes
 
-### OdsInputController
-_common controller logic for input component used by the different implementations._
-_it contains all the glue between framework implementation and the third party service._
-
+### OsdsInput
 #### Methods
-> **assertValue**() => _unknown_
+> **clear**() => `Promise<void>`
 
 
-> **beforeInit**() => _unknown_
+> **getValidity**() => `Promise<OdsInputValidityState>`
 
 
-> **clear**() => _unknown_
+> **hide**() => `Promise<void>`
 
 
-> **getInputValidity**() => _unknown_
+> **reset**() => `Promise<void>`
 
 
-> **hasError**() => _unknown_
+> **setFocus**() => `Promise<void>`
 
 
-> **hide**() => _unknown_
+> **setInputTabindex**(`value`: _number_) => `Promise<void>`
+
+Name | Type | Description 
+---|---|---
+**value** | _number_ | 
+> **stepDown**() => `Promise<void>`
 
 
-> **onBlur**() => _unknown_
+> **stepUp**() => `Promise<void>`
 
-
-> **onChange**() => _unknown_
-
-
-> **onDefaultValueChange**() => _unknown_
-
-
-> **onFocus**() => _unknown_
-
-
-> **onFormControlChange**() => _unknown_
-
-
-> **onInput**() => _unknown_
-
-
-> **onValueChange**() => _unknown_
-
-
-> **reset**() => _unknown_
-
-
-> **setInputTabindex**() => _unknown_
-
-
-> **stepDown**() => _unknown_
-
-
-> **stepUp**() => _unknown_
-
-
-
-## Type alias
-
-### HTMLOdsInputElement
-
-### OdsInput
-
-interface description of all implementation of `ods-input`.
-each implementation must have defined events, methods, attributes
-and one controller for the common behavior logic
-
-> - `OdsComponentGenericMethods`
-
-> - `OdsComponentGenericEvents`
-
-### OdsInputValue
-
-> - _string_
-
-> - _number_
-
-> - _null_
-
-### OdsInputValueChangeEvent
-
-> - `OdsInputValueChangeEventDetail`
-
-### OdsInputAttributes
-
-> _Based on `OdsComponentAttributes`_
-
-### OdsInputEvents
-
-> _Based on `OdsComponentEvents`_
-
-### OdsInputMethods
-
-> _Based on `OdsFormControlMethods`_
-
-### OdsInputValidityState
-
-> _Based on `OdsValidityState`_
-
-## Variables
-
-### odsInputDefaultAttributes
-`OdsInputAttributes`

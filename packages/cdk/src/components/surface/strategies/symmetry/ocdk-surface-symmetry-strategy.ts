@@ -11,6 +11,8 @@ import { ocdkSurfaceSymmetryTrBr } from './ocdk-surface-symmetry.tr-br';
 import { ocdkSurfaceSymmetryTlTr } from './ocdk-surface-symmetry.tl-tr';
 import { ocdkSurfaceSymmetryTrTl } from './ocdk-surface-symmetry.tr-tl';
 import { ocdkSurfaceSymmetryTcBc } from './ocdk-surface-symmetry.tc-bc';
+import { ocdkSurfaceSymmetryClCr } from './ocdk-surface-symmetry.cl-cr';
+import { ocdkSurfaceSymmetryCrCl } from './ocdk-surface-symmetry.cr-cl';
 
 /**
  * global config to implement for the `symmetry` strategy
@@ -42,6 +44,10 @@ export class OcdkSurfaceSymmetryStrategy implements OcdkSurfaceStrategyDefiner<O
       ocdkSurfaceSymmetryTrTl(), // TopRight and TopLeft
       ocdkSurfaceSymmetryTlTr(),  // TopLeft and TopRight
       ocdkSurfaceSymmetryTcBc(),  // TopCenter and BottomCenter
+
+      // ### anchored at center,
+      ocdkSurfaceSymmetryClCr(), // CenterLeft and CenterRight
+      ocdkSurfaceSymmetryCrCl(), // CenterRight and CenterLeft
     ];
   }
 

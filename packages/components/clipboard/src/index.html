@@ -15,7 +15,7 @@
 </head>
 <body>
 
-<h1>Clipboard</h1>
+<!--h1>Clipboard</h1-->
 <osds-clipboard value="test">
   Clipboard
   <span slot='success-message'>Copied <osds-icon name='ok' size='xxs'></osds-icon></span>
@@ -28,6 +28,15 @@
   <span slot='success-message'>Copied2</span>
   <span slot='error-message'>Error2</span>
 </osds-clipboard>
+
+<div style='display:flex; justify-content: end'>
+  <osds-clipboard value="test3" inline>
+    Clipboard
+    <span slot='success-message'>Copied3</span>
+    <span slot='error-message'>Error3</span>
+  </osds-clipboard>
+</div>
+
 
 <h1>Clipboard disabled</h1>
 <osds-clipboard value="test" disabled>Clipboard</osds-clipboard>

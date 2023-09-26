@@ -92,7 +92,7 @@ export class OsdsClipboard implements OdsClipboardAttribute, OdsClipboardEvent, 
         </div>
         <ocdk-surface
           innerHTML={this.surfaceMessage}
-          corners={[OcdkSurfaceCorner.TOP_RIGHT, OcdkSurfaceCorner.TOP_LEFT]}
+          corners={[OcdkSurfaceCorner.CENTER_RIGHT, OcdkSurfaceCorner.CENTER_LEFT]}
           ref={(el: HTMLElement) => {
             if (ocdkIsSurface(el)) {
               this.surface = el as OcdkSurface;

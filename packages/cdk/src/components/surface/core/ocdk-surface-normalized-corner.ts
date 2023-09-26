@@ -13,4 +13,6 @@ export enum OcdkSurfaceNormalizedCorner {
   BOTTOM_RIGHT = OcdkSurfaceCornerBit.BOTTOM | OcdkSurfaceCornerBit.RIGHT, // tslint:disable-line:no-bitwise
   /** 3 */
   BOTTOM_CENTER = 3,
+  CENTER_LEFT = 6,
+  CENTER_RIGHT = 7,
 }

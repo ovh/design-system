@@ -6,11 +6,12 @@
   "main": "dist/index.css",
   "scripts": {
     "build": "yarn run build:prod",
+    "build:ci": "npm run build:prod",
     "build:prod": "yarn run build:sass:prefix",
+    "build:sass:prefix": "yarn run generate:theme && yarn run generate:prefix",
     "generate:licence": "npx generate-license-file --input package.json --output THIRD-PARTY-LICENCES --overwrite",
-    "generate:theme": "node-sass --importer ../../../node_modules/node-sass-package-importer/dist/cli.js src/index.scss -o dist",
     "generate:prefix": "postcss dist/**/*.css --dir dist --use autoprefixer --parser postcss-scss",
-    "build:sass:prefix": "yarn run generate:theme && yarn run generate:prefix"
+    "generate:theme": "node-sass --importer ../../../node_modules/node-sass-package-importer/dist/cli.js src/index.scss -o dist"
   },
   "dependencies": {
     "@ovhcloud/ods-common-theming": "16.1.1"

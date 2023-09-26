@@ -15,7 +15,8 @@
   "scripts": {
     "start": "stencil build --docs --dev --watch --serve",
     "build:prod": "npm run build:stencil",
-    "build:stencil": "stencil build --docs --prod --config stencil.config.ts"
+    "build:stencil": "stencil build --docs --prod --config stencil.config.ts",
+    "build:storybook": "npm run build:prod"
   },
   "dependencies": {
     "@ovhcloud/ods-cdk": "16.1.1",

@@ -1,10 +1,10 @@
 import type { E2EPage } from '@stencil/core/testing';
 import { E2EElement, newE2EPage } from '@stencil/core/testing';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { ODS_SELECT_SIZE } from './constants/select-size';
 import { OdsSelectAttribute } from './interfaces/attributes';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-
 
 describe('e2e:osds-select', () => {
   let page: E2EPage;

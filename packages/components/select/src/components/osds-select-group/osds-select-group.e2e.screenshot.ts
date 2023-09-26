@@ -5,9 +5,8 @@ describe('e2e:osds-select-group', () => {
   let page: E2EPage;
   let el: E2EElement;
 
-  async function setup({ onPage }: { onPage?: ({ page }: { page: E2EPage }) => void } = {}) {
+  async function setup() {
     page = await newE2EPage();
-    onPage && onPage({ page });
 
     await page.setContent(`
       <osds-select-group>
@@ -37,7 +36,7 @@ describe('e2e:osds-select-group', () => {
     // Todo : add active behaviour on top of hover and focus
     screenshotActions.forEach(({ actionDescription, action }) => {
       it(actionDescription, async () => {
-        await setup({});
+        await setup();
         action();
         await page.waitForChanges();
 

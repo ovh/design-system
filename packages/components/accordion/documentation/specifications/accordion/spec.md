@@ -16,13 +16,7 @@
 ### OdsAccordionEvent
 |name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
-|**`odsAccordionToggle`** | `EventEmitter` | ✴️ |  | Event triggered on accordion toggle|
-
-### OdsAccordionGroupMethod
-|name | Type | Required | Default | Description|
-|---|---|:---:|---|---|
-|**`registerAccordion`** | _void_ | ✴️ |  | |
-|**`unRegisterAccordion`** | _void_ | ✴️ |  | |
+|**`odsAccordionToggle`** | `EventEmitter<boolean>` | ✴️ |  | Event triggered on accordion toggle|
 
 ## Types
 
@@ -34,16 +28,3 @@
 ## Classes
 
 ### OsdsAccordion
-
-### OsdsAccordionGroup
-#### Methods
-> **registerAccordion**(`accordion`: `OsdsAccordion`) => `Promise<void>`
-
-Name | Type | Description 
----|---|---
-**accordion** | `OsdsAccordion` | 
-> **unRegisterAccordion**(`accordion`: `OsdsAccordion`) => `Promise<void>`
-
-Name | Type | Description 
----|---|---
-**accordion** | `OsdsAccordion` | 

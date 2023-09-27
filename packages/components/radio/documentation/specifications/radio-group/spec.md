@@ -1,11 +1,9 @@
 * [**Interfaces**](#interfaces)
 * [**Classes**](#classes)
-* [**Type alias**](#type-alias)
-* [**Variables**](#variables)
 
 ## Interfaces
 
-### OdsRadioGroupAttributes
+### OdsRadioGroupAttribute
 |name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`defaultValue`** | _unknown_ |  |  | |
@@ -13,30 +11,20 @@
 |**`name`** | _string_ |  |  | |
 |**`required`** | _boolean_ |  |  | If the radio selection is required or not|
 |**`value`** | _string_ | ✴️ |  | |
-|**`afterSave`** | `Promise` |  |  | |
-|**`beforeSave`** | `Promise` |  |  | |
-|**`save`** | `Promise` |  |  | save input allow to set a function that returns a promise.It is called before each time an update is performed and allowing to manage pessimistic update strategy|
+|**`afterSave`** | `Promise<void>` |  |  | |
+|**`beforeSave`** | `Promise<void>` |  |  | |
+|**`save`** | `Promise<void>` |  |  | save input allow to set a function that returns a promise.It is called before each time an update is performed and allowing to manage pessimistic update strategy|
 
-### OdsRadioGroupBehavior
+### OdsRadioGroupEvent
 |name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
-|**`el`** | `HTMLElement` | ✴️ |  | |
-|**`inputId`** | _string_ | ✴️ |  | |
-|**`radios`** | _unknown_ | ✴️ |  | |
-|**`emitChange`** | _void_ | ✴️ |  | |
-|**`emitDisabled`** | _void_ | ✴️ |  | |
-|**`onDestroy`** | _void_ | ✴️ |  | |
+|**`odsDisabledChange`** | `EventEmitter<reflection>` | ✴️ |  | |
+|**`odsValueChange`** | `EventEmitter<reflection>` | ✴️ |  | Emitted when the value has changed.|
 
-### OdsRadioGroupEvents
+### OdsRadioGroupMethod
 |name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
-|**`odsDisabledChange`** | _unknown_ | ✴️ |  | |
-|**`odsValueChange`** | _unknown_ | ✴️ |  | Emitted when the value has changed.|
-
-### OdsRadioGroupMethods
-|name | Type | Required | Default | Description|
-|---|---|:---:|---|---|
-|**`getRadios`** | _unknown_ | ✴️ |  | |
+|**`getRadios`** | `Promise<array>` | ✴️ |  | |
 
 ### OdsRadioGroupValueChangeEventDetail
 |name | Type | Required | Default | Description|
@@ -46,64 +34,23 @@
 
 ## Classes
 
-### OdsRadioGroupController
-_common controller logic for radio-group component used by the different implementations._
-_it contains all the glue between framework implementation and the third party service._
-
+### OsdsRadioGroup
 #### Methods
-> **clearRadios**() => _unknown_
+> **getRadios**() => `Promise<array>`
 
 
-> **handleLabelClick**() => _unknown_
+> **registerRadio**(`radio`: `OsdsRadio`) => `Promise<void>`
 
+Name | Type | Description 
+---|---|---
+**radio** | `OsdsRadio` | 
+> **unregisterRadio**(`radio`: `OsdsRadio`) => `Promise<void>`
 
-> **onDisabledChange**() => _unknown_
+Name | Type | Description 
+---|---|---
+**radio** | `OsdsRadio` | 
+> **updateState**(`__namedParameters`: _unknown_) => `Promise<void>`
 
-
-> **onValueChange**() => _unknown_
-
-
-> **registerRadio**() => _unknown_
-
-
-> **unregisterRadio**() => _unknown_
-
-
-> **updateState**() => _unknown_
-
-
-
-### OdsRadioGroupMock
-
-## Type alias
-
-### OdsRadioGroup
-
-interface description of all implementation of `ods-radio-group`.
-each implementation must have defined events, methods, attributes
-and one controller for the common behavior logic
-
-> - `OdsComponentGenericMethods`
-
-> - `OdsComponentGenericEvents`
-
-### OdsRadioGroupValueChangeEvent
-
-> - `OdsRadioGroupValueChangeEventDetail`
-
-### OdsRadioGroupAttributes
-
-> _Based on `OdsComponentAttributes`_
-
-### OdsRadioGroupEvents
-
-> _Based on `OdsComponentEvents`_
-
-### OdsRadioGroupMethods
-
-> _Based on `OdsComponentMethods`_
-
-## Variables
-
-### odsRadioGroupDefaultAttributes
-`OdsRadioGroupAttributes`
+Name | Type | Description 
+---|---|---
+**__namedParameters** | _unknown_ | 

@@ -38,9 +38,9 @@
 ### OdsInputEvent
 |name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
-|**`odsInputBlur`** | `EventEmitter` | ✴️ |  | |
-|**`odsInputFocus`** | `EventEmitter` | ✴️ |  | |
-|**`odsValueChange`** | `EventEmitter` | ✴️ |  | the input value changed|
+|**`odsInputBlur`** | `EventEmitter<void>` | ✴️ |  | |
+|**`odsInputFocus`** | `EventEmitter<void>` | ✴️ |  | |
+|**`odsValueChange`** | `EventEmitter<OdsInputValueChangeEventDetail>` | ✴️ |  | the input value changed|
 
 ### OdsInputMethod
 |name | Type | Required | Default | Description|

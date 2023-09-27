@@ -1,29 +1,22 @@
 * [**Interfaces**](#interfaces)
 * [**Types**](#types)
 * [**Classes**](#classes)
-* [**Type alias**](#type-alias)
-* [**Variables**](#variables)
 
 ## Interfaces
 
-### OdsIconAttributes
+### OdsIconAttribute
 |name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`ariaName`** | _string_ | ✴️ |  | Icon ARIA name|
-|**`color`** | `OdsThemeColorIntent` |  |  | Icon color theme|
+|**`color`** | `ODS_THEME_COLOR_INTENT` |  |  | Icon color theme|
 |**`contrasted`** | _boolean_ |  |  | Icon if contrasted or not|
 |**`hoverable`** | _boolean_ |  |  | Icon if hoverabled or not|
-|**`name`** | `OdsIconName` |  |  | Icon name|
-|**`size`** | `OdsIconSize` |  |  | Icon size|
-
-### OdsIconBehavior
-|name | Type | Required | Default | Description|
-|---|---|:---:|---|---|
-|**`beforeRender`** | _void_ | ✴️ |  | before render component functionshould be called before component renderit have to check the validity of attributes.|
+|**`name`** | `ODS_ICON_NAME` |  |  | Icon name|
+|**`size`** | `ODS_ICON_SIZE` |  |  | Icon size|
 
 ## Types
 
-### OdsIconName
+### ODS_ICON_NAME
 |  |
 |:---:|
 | `ADD` |
@@ -294,7 +287,7 @@
 | `WORLD_ADD_CONCEPT` |
 | `WORLD_CONCEPT` |
 
-### OdsIconSize
+### ODS_ICON_SIZE
 |  |
 |:---:|
 | `lg` |
@@ -306,45 +299,4 @@
 
 ## Classes
 
-### OdsIconController
-_common controller logic for icon component used by the different implementations._
-_it contains all the glue between framework implementation and the third party service._
-
-#### Methods
-> **validateAriaName**() => _unknown_
-
-
-> **validateAttributes**() => _unknown_
-
-
-
-### OdsIconMock
-
-## Type alias
-
-### OdsIcon
-
-interface description of all implementation of `ods-icon`.
-each implementation must have defined events, methods, attributes
-and one controller for the common behavior logic
-
-> - `OdsComponentGenericMethods`
-
-> - `OdsComponentGenericEvents`
-
-### OdsIconAttributes
-
-> _Based on `OdsComponentAttributes`_
-
-### OdsIconEvents
-
-> _Based on `OdsComponentEvents`_
-
-### OdsIconMethods
-
-> _Based on `OdsComponentMethods`_
-
-## Variables
-
-### odsIconDefaultAttributes
-`OdsIconAttributes`
+### OsdsIcon

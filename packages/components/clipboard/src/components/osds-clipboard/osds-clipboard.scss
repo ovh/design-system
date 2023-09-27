@@ -2,6 +2,8 @@
 @import '~@ovhcloud/ods-common-theming/ods-theme';
 
 :host {
+  display: block;
+
   /* overlay important properties */
   position: relative; /* must be here to make the positioning working well */
   text-align: initial; /* must be here to make the positioning working well for RTL alignment */

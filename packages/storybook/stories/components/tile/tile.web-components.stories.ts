@@ -49,10 +49,6 @@ const storyParams = {
     category: 'Slot',
     defaultValue: ''
   },
-  contrasted: {
-    category: 'Misc',
-    defaultValue: false
-  },
   disabled: {
     category: 'Misc',
     defaultValue: false
@@ -74,6 +70,14 @@ const storyParams = {
     defaultValue: false
   },
   checking: {
+    category: 'Misc',
+    defaultValue: false
+  },
+  loading: {
+    category: 'Misc',
+    defaultValue: false
+  },
+  hasFocus: {
     category: 'Misc',
     defaultValue: false
   },

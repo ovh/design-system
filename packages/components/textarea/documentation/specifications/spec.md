@@ -1,26 +1,24 @@
 * [**Interfaces**](#interfaces)
 * [**Types**](#types)
 * [**Classes**](#classes)
-* [**Type alias**](#type-alias)
-* [**Variables**](#variables)
 
 ## Interfaces
 
-### OdsTextAreaAttributes
+### OdsTextAreaAttribute
 |name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
-|**`ariaLabel`** | `null` \| `string` | ✴️ |  | ariaLabel: see component principles|
+|**`ariaLabel`** | `undefined` \| `string` | ✴️ |  | ariaLabel: see component principles|
 |**`ariaLabelledby`** | _string_ |  |  | ariaLabelledby: see component principles|
-|**`color`** | `OdsThemeColorIntent` |  |  | main color: see component principles|
+|**`color`** | `ODS_THEME_COLOR_INTENT` |  |  | main color: see component principles|
 |**`cols`** | _number_ |  |  | cols: see component principles|
 |**`contrasted`** | _boolean_ |  |  | contrasted: see component principles|
 |**`defaultValue`** | _string_ |  |  | defaultValue: see component principles|
 |**`disabled`** | _boolean_ |  |  | cols: see component principles|
 |**`error`** | _boolean_ |  |  | on error or not|
 |**`errorStateControl`** | `OdsErrorStateControl` |  |  | |
-|**`flex`** | _boolean_ |  |  | full width or not: see component principles|
 |**`formControl`** | `OdsFormControl` |  |  | textarea form control|
 |**`hasFocus`** | _boolean_ | ✴️ |  | hasFocus or not|
+|**`inline`** | _boolean_ |  |  | inline or not: see component principles|
 |**`name`** | _string_ |  |  | name : see component principles|
 |**`placeholder`** | _string_ |  |  | placeholder : see component principles|
 |**`readOnly`** | _boolean_ |  |  | readOnly or not : see component principles|
@@ -32,136 +30,54 @@
 |**`textAreaId`** | _string_ |  |  | textarea id|
 |**`value`** | _string_ | ✴️ |  | value: see component principles|
 
-### OdsTextAreaEvents
+### OdsTextAreaEvent
 |name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
-|**`odsBlur`** | _void_ | ✴️ |  | Event triggered on textarea blur|
-|**`odsFocus`** | _void_ | ✴️ |  | Event triggered on textarea focus|
-|**`odsValueChange`** | `OdsTextAreaValueChangeEventDetail` | ✴️ |  | the textarea value changed|
+|**`odsBlur`** | `EventEmitter<void>` | ✴️ |  | Event triggered on textarea blur|
+|**`odsFocus`** | `EventEmitter<void>` | ✴️ |  | Event triggered on textarea focus|
+|**`odsValueChange`** | `EventEmitter<OdsTextAreaValueChangeEvent>` | ✴️ |  | the textarea value changed|
 
-### OdsTextAreaMethods
+### OdsTextAreaMethod
 |name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
-|**`clear`** | _void_ | ✴️ |  | empty the value|
-|**`getValidity`** | `OdsTextAreaValidityState` | ✴️ |  | get the validity state|
-|**`reset`** | _void_ | ✴️ |  | restore the value to the initial state|
-|**`setFocus`** | _void_ | ✴️ |  | active the focus on the textarea in order to let the user write something|
-|**`setTextAreaTabindex`** | _void_ | ✴️ |  | set a custom tab index for easier navigation|
+|**`clear`** | `Promise<void>` | ✴️ |  | empty the value|
+|**`getValidity`** | `Promise<OdsTextAreaValidityState>` | ✴️ |  | get the validity state|
+|**`reset`** | `Promise<void>` | ✴️ |  | restore the value to the initial state|
+|**`setFocus`** | `Promise<void>` | ✴️ |  | active the focus on the textarea in order to let the user write something|
+|**`setTextAreaTabindex`** | `Promise<void>` | ✴️ |  | set a custom tab index for easier navigation|
 
-### OdsTextAreaValidityState
+### OdsTextAreaValueChangeEvent
 |name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
-|**`customError`** | _boolean_ | ✴️ |  | |
-|**`invalid`** | _boolean_ | ✴️ |  | |
-|**`valid`** | _boolean_ | ✴️ |  | |
-|**`valueMissing`** | _boolean_ | ✴️ |  | |
-
-### OdsTextAreaValueChangeEventDetail
-|name | Type | Required | Default | Description|
-|---|---|:---:|---|---|
-|**`oldValue`** | `null` \| `string` |  |  | |
-|**`validity`** | `OdsTextAreaUsedValidityState` |  |  | |
-|**`value`** | `null` \| `string` |  |  | |
+|**`oldValue`** | `undefined` \| `string` |  |  | |
+|**`validity`** | `OdsTextAreaValidityState` |  |  | |
+|**`value`** | `undefined` \| `string` |  |  | |
 
 ## Types
 
-### OdsTextAreaSize
+### ODS_TEXTAREA_SIZE
 |  |
 |:---:|
 | `md` |
 
 ## Classes
 
-### OdsTextAreaController
-_common controller logic for textarea component used by the different implementations._
-_it contains all the glue between framework implementation and the third party service._
-
+### OsdsTextArea
 #### Methods
-> **beforeInit**() => _unknown_
+> **clear**() => `Promise<void>`
 
 
-> **emitValue**() => _unknown_
+> **getValidity**() => `Promise<OdsTextAreaValidityState>`
 
 
-> **getTextAreaValidity**() => _unknown_
+> **reset**() => `Promise<void>`
 
 
-> **handleTextAreaValue**() => _unknown_
+> **setFocus**() => `Promise<void>`
 
 
-> **hasError**() => _unknown_
+> **setTextAreaTabindex**(`value`: _number_) => `Promise<void>`
 
-
-> **onBlur**() => _unknown_
-
-
-> **onChange**() => _unknown_
-
-
-> **onDefaultValueChange**() => _unknown_
-
-
-> **onFocus**() => _unknown_
-
-
-> **onInput**() => _unknown_
-
-
-> **registerFormControl**() => _unknown_
-
-
-> **setFocus**() => _unknown_
-
-
-> **setTextAreaTabindex**() => _unknown_
-
-
-> **setValue**() => _unknown_
-
-
-
-## Type alias
-
-### OdsTextArea
-
-interface description of all implementation of `ods-textarea`.
-each implementation must have defined events, methods, attributes
-and one controller for the common behavior logic
-
-> - `OdsComponentGenericMethods`
-
-> - `OdsComponentGenericEvents`
-
-### OdsTextAreaUsedValidityState
-
-> - `OdsUsedValidityState`
-
-> - _stepMismatch_
-
-### OdsTextAreaValueChangeEvent
-
-> - `OdsTextAreaValueChangeEventDetail`
-
-### OdsTextAreaAttributes
-
-> _Based on `OdsComponentAttributes`_
-
-### OdsTextAreaEvents
-
-> _Based on `OdsComponentEvents`_
-
-### OdsTextAreaMethods
-
-> _Based on `OdsFormControlMethods`_
-
-### OdsTextAreaValidityState
-
-> _Based on `OdsTextAreaUsedValidityState`_
-
-## Variables
-
-### odsTextAreaDefaultAttributes
-`OdsTextAreaAttributes`
-
-### odsTextAreaDefaultAttributesDoc
-`OdsTextAreaAttributes`
+Name | Type | Description 
+---|---|---
+**value** | _number_ |  |

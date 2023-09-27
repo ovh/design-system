@@ -17,7 +17,7 @@ export class OsdsBreadcrumbItem implements OdsBreadcrumbItemAttribute {
 
   @Element() el!: HTMLElement;
 
-  /** @see OdsBreadcrumbItemAttributes.contrasted */
+  /** @see OdsBreadcrumbItemAttribute.contrasted */
   @Prop({ reflect: true }) public contrasted? = DEFAULT_ATTRIBUTE.contrasted;
 
   /** @internal */
@@ -29,16 +29,16 @@ export class OsdsBreadcrumbItem implements OdsBreadcrumbItemAttribute {
   /** @internal */
   @Prop() isLast = DEFAULT_ATTRIBUTE.isLast;
 
-  /** @see OdsBreadcrumbItemAttributes.href */
+  /** @see OdsBreadcrumbItemAttribute.href */
   @Prop({ reflect: true }) href = DEFAULT_ATTRIBUTE.href
 
-  /** @see OdsBreadcrumbItemAttributes.icon */
+  /** @see OdsBreadcrumbItemAttribute.icon */
   @Prop({ reflect: true }) icon?: ODS_ICON_NAME;
 
-  /** @see OdsBreadcrumbItemAttributes.label */
+  /** @see OdsBreadcrumbItemAttribute.label */
   @Prop({ reflect: true }) label?: string;
 
-  /** @see OdsBreadcrumbItemEvents.odsBreadcrumbItemCollapsedClick */
+  /** @see OdsBreadcrumbItemEvent.odsBreadcrumbItemCollapsedClick */
   @Event() odsBreadcrumbItemCollapsedClick!: EventEmitter<void>;
 
   private onCollapsedElementClick() {

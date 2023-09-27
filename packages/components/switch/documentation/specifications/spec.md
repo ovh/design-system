@@ -1,24 +1,17 @@
 * [**Interfaces**](#interfaces)
 * [**Types**](#types)
 * [**Classes**](#classes)
-* [**Type alias**](#type-alias)
-* [**Variables**](#variables)
 
 ## Interfaces
 
-### OdsSwitchAttributes
+### OdsSwitchAttribute
 |name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
-|**`color`** | `OdsThemeColorIntent` |  |  | main color: see component principles|
+|**`color`** | `ODS_THEME_COLOR_INTENT` |  |  | main color: see component principles|
 |**`contrasted`** | _boolean_ |  |  | contrasted or not: see component principles|
 |**`disabled`** | _boolean_ |  |  | disabled: see component principles|
-|**`size`** | `OdsSwitchSize` |  |  | size: see component principles|
+|**`size`** | `ODS_SWITCH_SIZE` |  |  | size: see component principles|
 |**`variant`** | `flat` |  |  | used design aspect|
-
-### OdsSwitchBehavior
-|name | Type | Required | Default | Description|
-|---|---|:---:|---|---|
-|**`el`** | `HTMLElement` | ✴️ |  | reference to the host element.|
 
 ### OdsSwitchChangedEventDetail
 |name | Type | Required | Default | Description|
@@ -26,12 +19,12 @@
 |**`current`** | _string_ | ✴️ |  | |
 |**`previous`** | _string_ |  |  | |
 
-### OdsSwitchEvents
+### OdsSwitchEvent
 |name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
-|**`odsSwitchChanged`** | `OdsSwitchChangedEventDetail` | ✴️ |  | Event triggered on accordion toggle|
+|**`odsSwitchChanged`** | `EventEmitter<OdsSwitchChangedEventDetail>` | ✴️ |  | Event triggered on accordion toggle|
 
-### OdsSwitchItemAttributes
+### OdsSwitchItemAttribute
 |name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`checked`** | _boolean_ | ✴️ |  | The checked status of the SwitchItem|
@@ -40,101 +33,22 @@
 
 ## Types
 
-### OdsSwitchSize
+### ODS_SWITCH_SIZE
 |  |
 |:---:|
 | `md` |
 | `sm` |
 
-### OdsSwitchVariant
+### ODS_SWITCH_VARIANT
 |  |
 |:---:|
 | `flat` |
 
 ## Classes
 
-### OdsSwitchController
-_common controller logic for cmpnt component used by the different implementations._
-_it contains all the glue between framework implementation and the third party service._
+### OsdsSwitch
 
+### OsdsSwitchItem
 #### Methods
-> **changeCheckedSwitchItem**() => _unknown_
+> **setFocus**() => `Promise<void>`
 
-
-> **finCheckedSwitchItem**() => _unknown_
-
-
-> **findNextSwitchItem**() => _unknown_
-
-
-> **findPreviousSwitchItem**() => _unknown_
-
-
-> **getActiveSwitchItemIndex**() => _unknown_
-
-
-> **getSwitchItems**() => _unknown_
-
-
-
-### OdsSwitchItemController
-
-## Type alias
-
-### OdsSwitch
-
-interface description of all implementation of `ods-switch`.
-each implementation must have defined events, methods, attributes
-and one controller for the common behavior logic
-
-> - `OdsComponentGenericMethods`
-
-> - `OdsComponentGenericEvents`
-
-### OdsSwitchItem
-
-interface description of all implementation of `ods-switch`.
-each implementation must have defined events, methods, attributes
-and one controller for the common behavior logic
-
-> - `OdsComponentGenericMethods`
-
-> - `OdsComponentGenericEvents`
-
-### OdsSwitchAttributes
-
-> _Based on `OdsComponentAttributes`_
-
-### OdsSwitchEvents
-
-> _Based on `OdsComponentEvents`_
-
-### OdsSwitchItemAttributes
-
-> _Based on `OdsComponentAttributes`_
-
-### OdsSwitchItemEvents
-
-> _Based on `OdsComponentEvents`_
-
-### OdsSwitchItemMethods
-
-> _Based on `OdsComponentMethods`_
-
-### OdsSwitchMethods
-
-> _Based on `OdsComponentMethods`_
-
-## Variables
-
-### odsSwitchDefaultAttributes
-`OdsSwitchAttributes`
-
-### odsSwitchDefaultAttributesDoc
-`OdsSwitchAttributes`
-
-### odsSwitchItemDefaultAttributes
-`OdsSwitchItemAttributes`
-
-### odsSwitchItemDefaultAttributesDoc
-`OdsSwitchItemAttributes`

@@ -6,13 +6,14 @@
 }
 
 $phone-number-input-width: 236px;
+
 .phone-number {
 
   &__select {
     --ods-size-select-border-radius-bottom-right: 0;
     --ods-size-select-border-radius-top-right: 0;
     --ods-size-select-border-right-width: 0;
-    --ods-size-select-surface-width: calc(#{$phone-number-input-width} + 71px);
+    --ods-size-select-surface-width: #{$phone-number-input-width + 71px};
 
     &.opened + .phone-number__input {
       border-bottom-right-radius: 0;

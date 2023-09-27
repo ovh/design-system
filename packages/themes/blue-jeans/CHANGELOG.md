@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [16.1.0](https://ovh.github.io/design-system/v16.1.0/?path=/docs/design-system-changelog--page) (2023-09-27)
+[compare](https://github.com/ovh/design-system/compare/v16.0.1...v16.1.0)
+
+### Bug Fixes
+
+* **code:** contrasted versions colors for "primary", "info", "text" ([894ddd7](https://github.com/ovh/design-system/commit/894ddd7285ac3d51ba18a8f9ca7a2676289ad69d))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

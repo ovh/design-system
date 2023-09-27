@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [16.1.0](https://ovh.github.io/design-system/v16.1.0/?path=/docs/design-system-changelog--page) (2023-09-27)
+[compare](https://github.com/ovh/design-system/compare/v16.0.1...v16.1.0)
+
+### Bug Fixes
+
+* **phone-number:** style select + clear input error + sort list select options ([77b1957](https://github.com/ovh/design-system/commit/77b19574adc3dacc16d2278b2b23905d87112032))
+* **select:** fix broken e2e screenshot tests ([02e409e](https://github.com/ovh/design-system/commit/02e409e7bdac8d4508f4e9e9d0775043087566cb))
+
+
+### Features
+
+* **phone-number:** add countries in component ([51308cc](https://github.com/ovh/design-system/commit/51308cc15a7c8c760b0d1d108fbefc97ef2735a6))
+* **select:** add slot selectedLabel ([#197](https://github.com/ovh/design-system/issues/197)) ([f8829b2](https://github.com/ovh/design-system/commit/f8829b23a1e3a2c9fa93c443a3baa32ecd670a9a))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

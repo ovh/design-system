@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [16.1.0](https://ovh.github.io/design-system/v16.1.0/?path=/docs/design-system-changelog--page) (2023-09-27)
+[compare](https://github.com/ovh/design-system/compare/v16.0.1...v16.1.0)
+
+### Bug Fixes
+
+* **phone-number:** ajustement PR + import file dynamic ([e90ccef](https://github.com/ovh/design-system/commit/e90ccef088dfaaca1d2013834f70012e9196e3df))
+* **phone-number:** flag enum & list iso codes ([3d1f67f](https://github.com/ovh/design-system/commit/3d1f67f6cbfeb7660f1a33c251cdd4ee291a9ae5))
+
+
+### Features
+
+* **phone-number:** add countries in component ([51308cc](https://github.com/ovh/design-system/commit/51308cc15a7c8c760b0d1d108fbefc97ef2735a6))
+* **phone-number:** add new iso code & file trad for countries ([f018ef5](https://github.com/ovh/design-system/commit/f018ef54ef63a04a25ba7e63b2ef64d4c9bb7668))
+* **phone-number:** import translate file ([55b0990](https://github.com/ovh/design-system/commit/55b0990fae14da5f511df160742bec51c55c1c87))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

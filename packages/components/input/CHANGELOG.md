@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [16.1.0](https://ovh.github.io/design-system/v16.1.0/?path=/docs/design-system-changelog--page) (2023-09-27)
+[compare](https://github.com/ovh/design-system/compare/v16.0.1...v16.1.0)
+
+### Features
+
+* **input:** add prefix value ([ba33fe7](https://github.com/ovh/design-system/commit/ba33fe768c7d6a387a4cb55dd2822e2c799e6445))
+* **input:** prefix storybook ([76ecf23](https://github.com/ovh/design-system/commit/76ecf23502fe4cf1be5089f8b88605a1a1472c8f))
+* **phone-number:** add prefix input & selected label ([3cecc62](https://github.com/ovh/design-system/commit/3cecc629c3495f6c4bd8ef51d3ad3d2e88498d3c))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

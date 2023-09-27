@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [16.1.0](https://ovh.github.io/design-system/v16.1.0/?path=/docs/design-system-changelog--page) (2023-09-27)
+[compare](https://github.com/ovh/design-system/compare/v16.0.1...v16.1.0)
+
+### Bug Fixes
+
+* **phone-number:** flag enum & list iso codes ([3d1f67f](https://github.com/ovh/design-system/commit/3d1f67f6cbfeb7660f1a33c251cdd4ee291a9ae5))
+
+
+### Features
+
+* **input:** prefix storybook ([76ecf23](https://github.com/ovh/design-system/commit/76ecf23502fe4cf1be5089f8b88605a1a1472c8f))
+* **phone-number:** add countries in component ([9da57dd](https://github.com/ovh/design-system/commit/9da57dd4f5616c4effe92b7d72438adf48741ef0))
+* **phone-number:** add countries in component ([3c62dc4](https://github.com/ovh/design-system/commit/3c62dc408eec5c65bb6840f10fbbfdacbb660be3))
+* **phone-number:** add countries in component ([808340b](https://github.com/ovh/design-system/commit/808340b201d046326d82c1e218f91d1c276dedcb))
+* **phone-number:** add countries in component ([d5987bf](https://github.com/ovh/design-system/commit/d5987bf731305aec33f194e42e50320338e03f7c))
+* **phone-number:** add countries in component ([9445b1c](https://github.com/ovh/design-system/commit/9445b1c68e4314ae2066af225e4bf09a4dd0d13d))
+* **phone-number:** add countries in component ([32b79cf](https://github.com/ovh/design-system/commit/32b79cfa40296125dcd962bd47f49e93db85e47d))
+* **phone-number:** add new iso code & file trad for countries ([f018ef5](https://github.com/ovh/design-system/commit/f018ef54ef63a04a25ba7e63b2ef64d4c9bb7668))
+* **select:** add slot selectedLabel ([#197](https://github.com/ovh/design-system/issues/197)) ([f8829b2](https://github.com/ovh/design-system/commit/f8829b23a1e3a2c9fa93c443a3baa32ecd670a9a))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

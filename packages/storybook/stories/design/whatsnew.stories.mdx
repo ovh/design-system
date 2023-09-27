@@ -12,6 +12,30 @@ import { Meta } from '@storybook/addon-docs';
 
 # What's new ?
 
+## v16.1.0
+
+### New component:
+
+* **Phone Number**: [See Documentation](?path=/story/phone-number--default)
+
+### Component changes:
+
+**Input**
+* New attribute `prefixValue` that allow to display a fixed prefix in front of the input value.
+
+**Progress Bar**
+> ⚠️️ **Breaking change**
+* `max` and `value` attributes are now `number` and won`t accept `string` anymore.
+
+### Bug fixes:
+
+**Code**
+* Contrasted version have now the right color.
+
+### Project changes:
+
+* The whole project is now built using node 18.
+
 ## v16.0.1
 
 Fixes CI build issues when deploying Storybook.

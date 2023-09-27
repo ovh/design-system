@@ -9,9 +9,8 @@ import type {
 
 const tableSeparator = '|';
 
-export function convertJsonToMarkdown(jsonItems: DeclarationReflection[], filter: RegExp): string {
+export function convertJsonToMarkdown(jsonItems: DeclarationReflection[]): string {
   const result: string[] = [];
-  const filteredItems = jsonItems.filter(({ name }) => name.match(filter));
 
   const displaySection = (stringArray: string[], sectionString: string) => {
     const res = stringArray;
@@ -21,9 +20,9 @@ export function convertJsonToMarkdown(jsonItems: DeclarationReflection[], filter
     }
   };
 
-  const interfaces = getInterfaces(filteredItems),
-    types = getTypes(filteredItems),
-    classes = getClass(filteredItems);
+  const interfaces = getInterfaces(jsonItems),
+    types = getTypes(jsonItems),
+    classes = getClass(jsonItems);
 
   // Create Table
   result.push(
@@ -115,7 +114,7 @@ function getClass(filteredJSON: DeclarationReflection[]): string[] {
         parameterSection.push(`Name | Type | Description \n---|---|---`);
         parameters?.map(({name: paramName, type: paramType, comment: paramComment }) => {
           params.push(`\`${paramName}\`: ${printType(paramType)}`);
-          parameterSection.push(`**${paramName}** | ${printType(paramType)} | ${paramComment?.shortText || ''}`);
+          parameterSection.push(`**${paramName}** | ${printType(paramType)} | ${paramComment?.shortText || ' '} |`);
         });
       }
       res.push(`> **${methodName}**(${(params || ['']).join(',')}) => ${printType(type)}\n`);
@@ -147,7 +146,7 @@ function printType(typeObject?: SomeType | unknown) {
       case 'literal':
         return `_${getTypeValue(someType)}_`;
       case 'reference': {
-        if (someType.name === 'Promise') {
+        if (someType.name === 'Promise' || someType.name === 'EventEmitter') {
           return `\`${someType.name}<${getTypeValue(someType.typeArguments?.[0] as IntrinsicType)}>\``;
         }
         return `\`${someType.name}\``;

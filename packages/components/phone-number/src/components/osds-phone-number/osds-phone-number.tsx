@@ -75,6 +75,7 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
       acc.set(country.isoCode, { ...country, countryCode: exampleNumber?.getCountryCode() });
       return acc;
     }, new Map());
+    this.parsedCountries.sort((a, b) => this.sortCountriesByName(a, b));
   }
 
   @Watch('countries')
@@ -185,7 +186,7 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
             }}
               slot="selectedLabel"
               class="phone-number__select-label" />
-            { this.parsedCountries?.sort((a, b) => this.sortCountriesByName(a, b)).map((country) => {
+            { this.parsedCountries.map((country) => {
               const i18nCountry = this.i18nCountriesMap?.get(country);
               return <osds-select-option value={ country } key={ country }>
                 <div class="phone-number__select__option">

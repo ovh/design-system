@@ -130,39 +130,39 @@ export class OsdsTextArea implements OdsTextAreaAttribute, OdsTextAreaEvent, Ods
   /**
    * @see OdsTextAreaBehavior.beforeInit
    */
-   beforeInit(): void {
+  beforeInit(): void {
     this.controller.beforeInit();
   }
 
   /**
    * @see OdsTextAreaBehavior.emitChange
    */
-   emitChange(value: HTMLTextAreaElement['value'], oldValue?: HTMLTextAreaElement['value']): void {
+  emitChange(value: HTMLTextAreaElement['value'], oldValue?: HTMLTextAreaElement['value']): void {
     this.odsValueChange.emit({
-      value: value == null ? value : `${value}`,
       oldValue: oldValue == null ? oldValue : `${oldValue}`,
-      validity: this.controller.getTextAreaValidity()
+      validity: this.controller.getTextAreaValidity(),
+      value: value == null ? value : `${value}`,
     });
   }
 
   /**
    * @see OdsTextAreaBehavior.emitBlur
    */
-   emitBlur(): void {
+  emitBlur(): void {
     this.odsBlur.emit();
   }
 
   /**
    * @see OdsTextAreaBehavior.emitFocus
    */
-   emitFocus(): void {
+  emitFocus(): void {
     this.odsFocus.emit();
   }
 
   /**
    * @see OdsTextAreaBehavior.onBlur
    */
-   onBlur(): void {
+  onBlur(): void {
     this.controller.onBlur();
   }
 
@@ -176,7 +176,7 @@ export class OsdsTextArea implements OdsTextAreaAttribute, OdsTextAreaEvent, Ods
   /**
    * @see OdsTextAreaBehavior.onChange
    */
-   onChange(): void {
+  onChange(): void {
     this.controller.onChange();
   }
 

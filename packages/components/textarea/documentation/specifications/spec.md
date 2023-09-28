@@ -35,7 +35,7 @@
 |---|---|:---:|---|---|
 |**`odsBlur`** | `EventEmitter<void>` | ✴️ |  | Event triggered on textarea blur|
 |**`odsFocus`** | `EventEmitter<void>` | ✴️ |  | Event triggered on textarea focus|
-|**`odsValueChange`** | `EventEmitter<OdsTextAreaValueChangeEvent>` | ✴️ |  | the textarea value changed|
+|**`odsValueChange`** | `EventEmitter<OdsTextAreaValueChangeEvent>` | ✴️ |  | The textarea value changed|
 
 ### OdsTextAreaMethod
 |name | Type | Required | Default | Description|
@@ -80,4 +80,4 @@
 
 Name | Type | Description 
 ---|---|---
-**value** | _number_ |  |
+**value** | _number_ |   |

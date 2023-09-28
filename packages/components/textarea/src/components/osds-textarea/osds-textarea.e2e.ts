@@ -98,6 +98,28 @@ describe('e2e:osds-textarea', () => {
         expect(odsValueChange).toHaveReceivedEventDetail(expected);
         expect(odsValueChange).toHaveReceivedEventTimes(1);
       });
+
+      it('should emit if we write inside the textarea', async () => {
+        const newValue = 'Lorem';
+        await setup();
+        const odsValueChange = await el.spyOnEvent('odsValueChange');
+
+        el.setProperty('value', ' ipsum');
+        await page.waitForChanges();
+
+        el.callMethod('setFocus');
+        await page.waitForChanges();
+        await page.keyboard.type(newValue);
+
+        const expected: OdsTextAreaValueChangeEvent = {
+          ...odsTextAreaValueChangeEventDetailBase,
+          oldValue: 'Lore ipsum',
+          value: 'Lorem ipsum',
+        };
+
+        expect(odsValueChange).toHaveReceivedEventDetail(expected);
+        expect(odsValueChange).toHaveReceivedEventTimes(newValue.length + 1);
+      })
     });
   });
 });

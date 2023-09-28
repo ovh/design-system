@@ -16,7 +16,9 @@ interface OdsTextAreaEvent {
    * Event triggered on textarea focus
    */
   odsFocus: EventEmitter<void>;
-  /** the textarea value changed */
+  /**
+   * The textarea value changed
+   */
   odsValueChange: EventEmitter<OdsTextAreaValueChangeEvent>;
 }
 

@@ -70,22 +70,24 @@ const TemplateDefault = (args:any) => {
     }
   }
 
-  const locationChangeTrigger = () => {
-    setTimeout(() => {
-      let prevUrl = window.location.href;
-      const interval = setInterval(() => {
-        const currUrl = window.location.href;
-        if (currUrl !== prevUrl) {
-          prevUrl = currUrl;
-          const modals = document.getElementsByTagName('osds-modal');
-          for (let i = 0; i < modals.length; i++) {
-            modals[i].close();
-          }
-          clearInterval(interval);
+const locationChangeTrigger = () => {
+  let prevUrl = document.location.href;
+  const body = document.querySelector("body");
+
+  const observer = new MutationObserver(() => {
+    if (prevUrl !== document.location.href) {
+      prevUrl = document.location.href;
+
+      const modals = document.getElementsByTagName('osds-modal');
+        for (let i = 0; i < modals.length; i++) {
+          modals[i].close();
         }
-      }, 100);
-    }, 0);
-  };
+    }
+  });
+  observer.observe(body, { childList: true, subtree: true });
+};
+
+window.onload = locationChangeTrigger;
 
   return html`
     <button @click=${handleOpenModal}>Trigger "open()"</button>
@@ -96,7 +98,7 @@ const TemplateDefault = (args:any) => {
       ${unsafeHTML(args.content)}
       ${unsafeHTML(args.actions)}
     </osds-modal>
-  `;
+  `
 }
 
 export const Default = TemplateDefault.bind({});

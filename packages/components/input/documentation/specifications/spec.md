@@ -5,7 +5,7 @@
 ## Interfaces
 
 ### OdsInputAttribute
-|name | Type | Required | Default | Description|
+|Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`ariaLabel`** | `undefined` \| `string` | ✴️ |  | |
 |**`ariaLabelledby`** | _string_ |  |  | ID of the element that labels the input|
@@ -36,14 +36,14 @@
 |**`value`** | `OdsInputValue` | ✴️ |  | Current value of the input|
 
 ### OdsInputEvent
-|name | Type | Required | Default | Description|
+|Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`odsInputBlur`** | `EventEmitter<void>` | ✴️ |  | |
 |**`odsInputFocus`** | `EventEmitter<void>` | ✴️ |  | |
 |**`odsValueChange`** | `EventEmitter<OdsInputValueChangeEventDetail>` | ✴️ |  | the input value changed|
 
 ### OdsInputMethod
-|name | Type | Required | Default | Description|
+|Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`clear`** | `Promise<void>` | ✴️ |  | empty the value|
 |**`getValidity`** | `Promise<OdsInputValidityState>` | ✴️ |  | get the validity state|
@@ -55,7 +55,7 @@
 |**`stepUp`** | `Promise<void>` | ✴️ |  | |
 
 ### OdsInputValidityState
-|name | Type | Required | Default | Description|
+|Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`badInput`** | _boolean_ |  |  | |
 |**`customError`** | _boolean_ | ✴️ |  | |
@@ -72,7 +72,7 @@
 |**`valueMissing`** | _boolean_ | ✴️ |  | |
 
 ### OdsInputValueChangeEventDetail
-|name | Type | Required | Default | Description|
+|Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`oldValue`** | `undefined` \| `string` |  |  | |
 |**`validity`** | `OdsValidityState` | ✴️ |  | |
@@ -121,7 +121,7 @@
 
 Name | Type | Description 
 ---|---|---
-**value** | _number_ | 
+**value** | _number_ |   |
 > **stepDown**() => `Promise<void>`
 
 

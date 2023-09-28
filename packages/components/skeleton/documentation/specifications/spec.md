@@ -5,7 +5,7 @@
 ## Interfaces
 
 ### OdsSkeletonAttribute
-|name | Type | Required | Default | Description|
+|Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`inline`** | _boolean_ |  |  | inline or not: see component principles|
 |**`randomized`** | _boolean_ |  |  | wether or not skeleton size is randomized|

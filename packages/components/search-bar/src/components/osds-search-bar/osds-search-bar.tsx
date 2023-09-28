@@ -1,13 +1,14 @@
 import type { OdsInputValueChangeEvent } from '@ovhcloud/ods-component-input';
 import type { OdsSelectValueChangeEvent } from '@ovhcloud/ods-component-select';
 import type { OdsSearchBarEvent } from './interfaces/events';
-import type { OdsSearchBarAttribute } from './interfaces/attributes';
+import type { OdsSearchBarAttribute, OdsSearchbarOption } from './interfaces/attributes';
 import { Component, Element, Host, h, Prop, Event, EventEmitter, Listen } from '@stencil/core';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
 import { ODS_BUTTON_SIZE } from '@ovhcloud/ods-component-button';
 import { ODS_INPUT_TYPE } from '@ovhcloud/ods-component-input';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+
 /**
  * @slot (unnamed) - SearchBar content
  */
@@ -34,7 +35,7 @@ export class OsdsSearchBar implements OdsSearchBarAttribute, OdsSearchBarEvent {
   @Prop({ reflect: true }) public placeholder?: string = DEFAULT_ATTRIBUTE.placeholder;
 
   /** @see OdsSearchBarAttributes.options */
-  @Prop({ reflect: true }) public options?: { label: string; value: string; }[] = DEFAULT_ATTRIBUTE.options;
+  @Prop({ reflect: true }) public options?: OdsSearchbarOption[] = DEFAULT_ATTRIBUTE.options;
 
   /** @see OdsSearchBarAttributes.value */
   @Prop({ reflect: true, mutable: true }) public value: string = DEFAULT_ATTRIBUTE.value;

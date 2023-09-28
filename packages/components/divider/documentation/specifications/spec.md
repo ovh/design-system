@@ -5,7 +5,7 @@
 ## Interfaces
 
 ### OdsDividerAttribute
-|name | Type | Required | Default | Description|
+|Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`color`** | `ODS_THEME_COLOR_INTENT` |  |  | Divider color theme|
 |**`contrasted`** | _boolean_ |  |  | Divider design as contrasted version|

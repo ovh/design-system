@@ -4,7 +4,7 @@
 ## Interfaces
 
 ### OdsCheckboxAttribute
-|name | Type | Required | Default | Description|
+|Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`afterSave`** | `OdsCheckboxAttributeCbk` |  |  | afterSave input allows to set a function that returns a promise.It is called after each time an update was performed and allowing to manage pessimistic update strategy|
 |**`ariaLabel`** | `undefined` \| `string` | ✴️ |  | The corresponding aria-label describing its content|
@@ -20,13 +20,13 @@
 |**`value`** | _string_ | ✴️ |  | Its corresponding value|
 
 ### OdsCheckboxCheckedChangeEventDetail
-|name | Type | Required | Default | Description|
+|Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`checked`** | _boolean_ | ✴️ |  | |
 |**`value`** | _string_ | ✴️ |  | |
 
 ### OdsCheckboxEvent
-|name | Type | Required | Default | Description|
+|Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`odsBlur`** | `EventEmitter<OdsCheckboxFocusChangeEventDetail>` | ✴️ |  | Event triggered on checkbox blur|
 |**`odsCheckedChange`** | `EventEmitter<OdsCheckboxCheckedChangeEventDetail>` | ✴️ |  | the checked state changed|
@@ -34,19 +34,19 @@
 |**`odsUpdatingChange`** | `EventEmitter<OdsCheckboxUpdatingChangeEventDetail>` | ✴️ |  | the checked state is being changed|
 
 ### OdsCheckboxFocusChangeEventDetail
-|name | Type | Required | Default | Description|
+|Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`focus`** | _boolean_ | ✴️ |  | |
 |**`value`** | _string_ | ✴️ |  | |
 
 ### OdsCheckboxMethod
-|name | Type | Required | Default | Description|
+|Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`setFocus`** | `Promise<void>` | ✴️ |  | programmatically set the focus on the checkbox.this method has to call OdsCheckboxController.setFocus|
 |**`setTabindex`** | `Promise<void>` | ✴️ |  | set the tab index.this method has to call OdsCheckboxController.setTabindex|
 
 ### OdsCheckboxUpdatingChangeEventDetail
-|name | Type | Required | Default | Description|
+|Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`updating`** | _boolean_ | ✴️ |  | |
 |**`value`** | _string_ | ✴️ |  | |
@@ -62,4 +62,4 @@
 
 Name | Type | Description 
 ---|---|---
-**index** | _number_ | 
+**index** | _number_ |   |

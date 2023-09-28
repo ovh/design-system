@@ -5,7 +5,7 @@
 ## Interfaces
 
 ### OdsChipAttribute
-|name | Type | Required | Default | Description|
+|Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`color`** | `ODS_THEME_COLOR_INTENT` |  |  | Chip color theme|
 |**`contrasted`** | _boolean_ |  |  | Chip is in contrasterd mode or not|

@@ -4,7 +4,7 @@
 ## Interfaces
 
 ### OdsPopoverMethod
-|name | Type | Required | Default | Description|
+|Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`closeSurface`** | `Promise<void>` | ✴️ |  | Close the surface|
 

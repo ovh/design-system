@@ -5,12 +5,12 @@
 ## Interfaces
 
 ### OdsTooltipAttribute
-|name | Type | Required | Default | Description|
+|Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`variant`** | `ODS_TOOLTIP_VARIANT` |  |  | with or without visible tip: see component principles|
 
 ### OdsTooltipMethod
-|name | Type | Required | Default | Description|
+|Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`closeSurface`** | `Promise<void>` | ✴️ |  | Close the surface|
 |**`setTabindex`** | `Promise<void>` | ✴️ |  | set tab index on the component|

@@ -5,7 +5,7 @@
 ## Interfaces
 
 ### OdsMessageAttribute
-|name | Type | Required | Default | Description|
+|Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`color`** | `ODS_THEME_COLOR_INTENT` |  |  | Message color theme|
 |**`contrasted`** | _boolean_ |  |  | Message is in contrasted mode or not|
@@ -15,7 +15,7 @@
 |**`type`** | `ODS_MESSAGE_TYPE` |  |  | The message type|
 
 ### OdsMessageEvent
-|name | Type | Required | Default | Description|
+|Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`odsRemoveClick`** | `EventEmitter<void>` | ✴️ |  | Event triggered on removable icon click|
 

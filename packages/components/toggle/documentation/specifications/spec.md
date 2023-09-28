@@ -4,7 +4,7 @@
 ## Interfaces
 
 ### OdsToggleAttribute
-|name | Type | Required | Default | Description|
+|Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`checked`** | _boolean_ |  |  | Toggle is checked or not|
 |**`checking`** | _boolean_ |  |  | Awaiting a change of checked state|

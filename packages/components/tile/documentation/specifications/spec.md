@@ -5,7 +5,7 @@
 ## Interfaces
 
 ### OdsTileAttribute
-|name | Type | Required | Default | Description|
+|Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`checked`** | _boolean_ |  |  | If the tile is selected or not|
 |**`checking`** | _boolean_ |  |  | awaiting a change of checked state|

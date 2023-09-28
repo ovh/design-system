@@ -5,7 +5,7 @@
 ## Interfaces
 
 ### OdsRadioButtonAttribute
-|name | Type | Required | Default | Description|
+|Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`checked`** | _boolean_ |  |  | The checked status of the radio button|
 |**`checking`** | _boolean_ |  |  | |

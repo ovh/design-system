@@ -4,7 +4,7 @@
 ## Interfaces
 
 ### OdsAccordionGroupMethod
-|name | Type | Required | Default | Description|
+|Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`registerAccordion`** | _void_ | ✴️ |  | |
 |**`unRegisterAccordion`** | _void_ | ✴️ |  | |
@@ -17,9 +17,9 @@
 
 Name | Type | Description 
 ---|---|---
-**accordion** | `OsdsAccordion` | 
+**accordion** | `OsdsAccordion` |   |
 > **unRegisterAccordion**(`accordion`: `OsdsAccordion`) => `Promise<void>`
 
 Name | Type | Description 
 ---|---|---
-**accordion** | `OsdsAccordion` | 
+**accordion** | `OsdsAccordion` |   |

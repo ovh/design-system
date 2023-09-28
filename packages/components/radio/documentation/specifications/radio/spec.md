@@ -4,7 +4,7 @@
 ## Interfaces
 
 ### OdsRadioAttribute
-|name | Type | Required | Default | Description|
+|Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`ariaLabel`** | `undefined` \| `string` | ✴️ |  | The corresponding aria-label describing its content|
 |**`ariaLabelledby`** | _string_ |  |  | The id to an external description|
@@ -19,25 +19,29 @@
 |**`save`** | `Promise<void>` |  |  | save input allow to set a function that returns a promise.It is called before each time an update is performed and allowing to manage pessimistic update strategy|
 
 ### OdsRadioCheckedChangeEventDetail
-|name | Type | Required | Default | Description|
+|Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`checked`** | _boolean_ | ✴️ |  | |
 |**`value`** | _string_ | ✴️ |  | |
 
 ### OdsRadioCheckingChangeEventDetail
-|name | Type | Required | Default | Description|
+|Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`checking`** | _boolean_ | ✴️ |  | |
 |**`value`** | _string_ | ✴️ |  | |
 
 ### OdsRadioEvent
-|name | Type | Required | Default | Description|
+|Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`odsBlur`** | `EventEmitter<void>` | ✴️ |  | Event triggered on radio blur|
 |**`odsCheckedChange`** | `EventEmitter<OdsRadioCheckedChangeEventDetail>` | ✴️ |  | the checked state changed|
 |**`odsCheckingChange`** | `EventEmitter<OdsRadioCheckingChangeEventDetail>` | ✴️ |  | the checked state is being changed|
 |**`odsFocus`** | `EventEmitter<void>` | ✴️ |  | Event triggered on radio focus|
 |**`odsValueChange`** | `EventEmitter<reflection>` | ✴️ |  | the radio value changed|
+
+### OdsRadioMethod
+|Name | Type | Required | Default | Description|
+|---|---|:---:|---|---|
 
 ## Classes
 

@@ -5,7 +5,7 @@
 ## Interfaces
 
 ### OdsPaginationAttribute
-|name | Type | Required | Default | Description|
+|Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`current`** | _number_ | ✴️ |  | Its corresponding current page.|
 |**`disabled`** | _boolean_ | ✴️ |  | indicates if the pagination is entirely disabled.it means no interactions (hover, click, focus, etc)|
@@ -15,18 +15,18 @@
 |**`totalPages`** | _number_ | ✴️ |  | The total amount of pages.|
 
 ### OdsPaginationChangedEventDetail
-|name | Type | Required | Default | Description|
+|Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`current`** | _number_ | ✴️ |  | |
 |**`oldCurrent`** | _number_ |  |  | |
 
 ### OdsPaginationEvent
-|name | Type | Required | Default | Description|
+|Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`odsPaginationChanged`** | `EventEmitter<OdsPaginationChangedEventDetail>` | ✴️ |  | Emitted when the value has changed|
 
 ### OdsPaginationMethod
-|name | Type | Required | Default | Description|
+|Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`setPageIndex`** | `Promise<void>` | ✴️ |  | set page index on the component|
 

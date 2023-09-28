@@ -4,7 +4,7 @@
 ## Interfaces
 
 ### OdsModalAttribute
-|name | Type | Required | Default | Description|
+|Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`color`** | `ODS_THEME_COLOR_INTENT` | ✴️ |  | Color of the modal's header background|
 |**`dismissible`** | _boolean_ |  |  | Defines if the modal is dismissible (displays a close button)|

@@ -13,7 +13,7 @@ class OdsClipboardController {
     const errorMessage = this.component.el.querySelector('[slot=error-message]')?.innerHTML;
 
     try {
-      writeOnClipboard(value);
+      await writeOnClipboard(value);
       this.component.surfaceMessage = successMessage;
       if (this.component.surface && this.component.surfaceMessage !== "") {
         this.component.surface.opened = !this.component.surface.opened;
@@ -23,7 +23,7 @@ class OdsClipboardController {
       if (this.component.surface  && this.component.surfaceMessage !== "") {
         this.component.surface.opened = !this.component.surface.opened;
       }
-      return Promise.reject(error);
+      throw error;
     }
   }
 

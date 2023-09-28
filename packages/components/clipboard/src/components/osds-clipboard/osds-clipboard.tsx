@@ -34,6 +34,8 @@ export class OsdsClipboard implements OdsClipboardAttribute, OdsClipboardEvent, 
   /** @see OdsClipboardAttributes.disabled */
   @Prop({ reflect: true }) public disabled?: boolean = DEFAULT_ATTRIBUTE.disabled;
 
+  @State() surfaceMessage: string | undefined = "";
+
   @Method()
   async closeSurface() {
     this.controller.closeSurface();
@@ -46,8 +48,6 @@ export class OsdsClipboard implements OdsClipboardAttribute, OdsClipboardEvent, 
   checkForClickOutside(event: any) {
     this.controller.checkForClickOutside(event);
   }
-
-  @State() surfaceMessage: string | undefined = "";
 
   handlerClick(): void {
     if (this.disabled) {

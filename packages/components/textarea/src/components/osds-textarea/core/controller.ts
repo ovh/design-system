@@ -19,7 +19,7 @@ class OdsTextAreaController {
    * @param newValue - value of the HTML textarea
    */
   handleTextAreaValue(newValue: HTMLTextAreaElement['value']): void {
-    if(!this.component.disabled && newValue === '') {
+    if(!this.component.disabled) {
       this.component.value = newValue;
     }
   }

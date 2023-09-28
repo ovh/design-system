@@ -5,7 +5,7 @@
 ## Interfaces
 
 ### OdsCheckboxButtonAttribute
-|name | Type | Required | Default | Description|
+|Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`checked`** | _boolean_ |  |  | The checked status of the checkbox button|
 |**`checking`** | _boolean_ |  |  | |

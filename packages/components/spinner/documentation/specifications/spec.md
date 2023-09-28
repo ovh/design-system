@@ -5,7 +5,7 @@
 ## Interfaces
 
 ### OdsSpinnerAttribute
-|name | Type | Required | Default | Description|
+|Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`contrasted`** | _boolean_ |  |  | contrasted or not: see component principles|
 |**`inline`** | _boolean_ |  |  | full width or not: see component principles|

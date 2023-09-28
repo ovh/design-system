@@ -4,7 +4,7 @@
 ## Interfaces
 
 ### OdsFlagAttribute
-|name | Type | Required | Default | Description|
+|Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`assetPath`** | _string_ |  |  | override the `ODS` directory path of the assets.if not set, the configured path in `ODS` will be used.|
 |**`iso`** | `ODS_FLAG_ISO_CODE_UNION` |  |  | Flag ISO country code|

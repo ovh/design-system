@@ -4,7 +4,7 @@
 ## Interfaces
 
 ### OdsRangeAttribute
-|name | Type | Required | Default | Description|
+|Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`color`** | `ODS_THEME_COLOR_INTENT` |  |  | Range color theme|
 |**`disabled`** | _boolean_ |  |  | Indicate if the range is entirely disabled.It means no interaction is possible (hover, click, focus, etc)|
@@ -20,12 +20,12 @@
 |**`value`** | `OdsRangeValue` | ✴️ |  | The range value|
 
 ### OdsRangeEvent
-|name | Type | Required | Default | Description|
+|Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`odsValueChange`** | `EventEmitter<OdsRangeValueChangeEventDetail>` | ✴️ |  | the range value changed|
 
 ### OdsRangeValueChangeEventDetail
-|name | Type | Required | Default | Description|
+|Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`oldValue`** | `OdsRangeValue` |  |  | |
 |**`validity`** | `OdsValidityState` | ✴️ |  | |

@@ -5,7 +5,7 @@
 ## Interfaces
 
 ### OdsButtonAttribute
-|name | Type | Required | Default | Description|
+|Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`circle`** | _boolean_ |  |  | use a circle shape|
 |**`color`** | `ODS_THEME_COLOR_INTENT` |  |  | main color: see component principles|

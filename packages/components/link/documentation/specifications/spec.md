@@ -5,7 +5,7 @@
 ## Interfaces
 
 ### OdsLinkAttribute
-|name | Type | Required | Default | Description|
+|Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`color`** | `ODS_THEME_COLOR_INTENT` |  |  | Link color theme|
 |**`contrasted`** | _boolean_ |  |  | Link design as contrasted version|

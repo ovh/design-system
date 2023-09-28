@@ -5,7 +5,7 @@
 ## Interfaces
 
 ### OdsIconAttribute
-|name | Type | Required | Default | Description|
+|Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`ariaName`** | _string_ | ✴️ |  | Icon ARIA name|
 |**`color`** | `ODS_THEME_COLOR_INTENT` |  |  | Icon color theme|

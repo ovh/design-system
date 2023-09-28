@@ -5,7 +5,7 @@
 ## Interfaces
 
 ### OdsSelectAttribute
-|name | Type | Required | Default | Description|
+|Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`ariaLabel`** | `undefined` \| `string` | ✴️ |  | The corresponding aria-label describing its content|
 |**`ariaLabelledby`** | _string_ | ✴️ |  | The id to an external description|
@@ -20,14 +20,14 @@
 |**`value`** | `OdsInputValue` | ✴️ |  | Its corresponding value. It needs to correspond to the value of the option|
 
 ### OdsSelectEvent
-|name | Type | Required | Default | Description|
+|Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`odsBlur`** | `EventEmitter<void>` | ✴️ |  | Event triggered on select blur|
 |**`odsFocus`** | `EventEmitter<void>` | ✴️ |  | Event triggered on select focus|
 |**`odsValueChange`** | `EventEmitter<OdsSelectValueChangeEventDetail>` | ✴️ |  | Emitted when the value has changed|
 
 ### OdsSelectMethod
-|name | Type | Required | Default | Description|
+|Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`clear`** | `Promise<void>` | ✴️ |  | erase the current selection|
 |**`getValidity`** | `Promise<OdsValidityState>` | ✴️ |  | get the validity state|
@@ -37,28 +37,28 @@
 |**`validate`** | `Promise<OdsValidityState>` | ✴️ |  | check that the select is valid or not.In case of required field, the validation will check the entered valueand set the field in error if it is not fulfilled|
 
 ### OdsSelectOptionAttribute
-|name | Type | Required | Default | Description|
+|Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`selected`** | _boolean_ |  |  | |
 |**`value`** | `OdsInputValue` | ✴️ |  | |
 
 ### OdsSelectOptionClickEventDetail
-|name | Type | Required | Default | Description|
+|Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`value`** | `OdsInputValue` | ✴️ |  | |
 
 ### OdsSelectOptionEvent
-|name | Type | Required | Default | Description|
+|Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`odsSelectOptionClick`** | `EventEmitter<OdsSelectOptionClickEventDetail>` | ✴️ |  | the select value changed|
 
 ### OdsSelectOptionMethod
-|name | Type | Required | Default | Description|
+|Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`getLabel`** | `Promise<string>` | ✴️ |  | get label of the element|
 
 ### OdsSelectValueChangeEventDetail
-|name | Type | Required | Default | Description|
+|Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`oldValue`** | `OdsInputValue` |  |  | |
 |**`selection`** | `undefined` \| `OsdsSelectOption` | ✴️ |  | |

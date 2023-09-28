@@ -5,7 +5,7 @@
 ## Interfaces
 
 ### OdsTextAttribute
-|name | Type | Required | Default | Description|
+|Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`breakSpaces`** | _boolean_ |  |  | If text handles break spaces or not|
 |**`color`** | `ODS_THEME_COLOR_INTENT` |  |  | Text contrasted theme|

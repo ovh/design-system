@@ -5,7 +5,7 @@
 ## Interfaces
 
 ### OdsTextAreaAttribute
-|name | Type | Required | Default | Description|
+|Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`ariaLabel`** | `undefined` \| `string` | ✴️ |  | ariaLabel: see component principles|
 |**`ariaLabelledby`** | _string_ |  |  | ariaLabelledby: see component principles|
@@ -31,14 +31,14 @@
 |**`value`** | _string_ | ✴️ |  | value: see component principles|
 
 ### OdsTextAreaEvent
-|name | Type | Required | Default | Description|
+|Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`odsBlur`** | `EventEmitter<void>` | ✴️ |  | Event triggered on textarea blur|
 |**`odsFocus`** | `EventEmitter<void>` | ✴️ |  | Event triggered on textarea focus|
 |**`odsValueChange`** | `EventEmitter<OdsTextAreaValueChangeEvent>` | ✴️ |  | The textarea value changed|
 
 ### OdsTextAreaMethod
-|name | Type | Required | Default | Description|
+|Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`clear`** | `Promise<void>` | ✴️ |  | empty the value|
 |**`getValidity`** | `Promise<OdsTextAreaValidityState>` | ✴️ |  | get the validity state|
@@ -47,7 +47,7 @@
 |**`setTextAreaTabindex`** | `Promise<void>` | ✴️ |  | set a custom tab index for easier navigation|
 
 ### OdsTextAreaValueChangeEvent
-|name | Type | Required | Default | Description|
+|Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`oldValue`** | `undefined` \| `string` |  |  | |
 |**`validity`** | `OdsTextAreaValidityState` |  |  | |

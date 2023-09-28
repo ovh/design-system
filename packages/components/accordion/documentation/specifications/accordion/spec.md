@@ -5,7 +5,7 @@
 ## Interfaces
 
 ### OdsAccordionAttribute
-|name | Type | Required | Default | Description|
+|Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`color`** | `ODS_THEME_COLOR_INTENT` |  |  | main color: see component principles|
 |**`contrasted`** | _boolean_ |  |  | contrasted or not: see component principles|
@@ -14,7 +14,7 @@
 |**`size`** | `md` |  |  | size: see component principles|
 
 ### OdsAccordionEvent
-|name | Type | Required | Default | Description|
+|Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`odsAccordionToggle`** | `EventEmitter<boolean>` | ✴️ |  | Event triggered on accordion toggle|
 

@@ -4,7 +4,7 @@
 ## Interfaces
 
 ### OdsMenuAttribute
-|name | Type | Required | Default | Description|
+|Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`disabled`** | _boolean_ |  |  | Menu is disabled or not|
 

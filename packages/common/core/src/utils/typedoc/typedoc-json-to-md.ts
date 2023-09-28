@@ -5,6 +5,7 @@ import type {
   IntrinsicType,
   ReflectionType,
   ReferenceType,
+  Type,
 } from 'typedoc';
 
 const tableSeparator = '|';
@@ -41,8 +42,9 @@ export function convertJsonToMarkdown(jsonItems: DeclarationReflection[]): strin
 function getInterfaces(filteredJSON: DeclarationReflection[]): string[] {
   const res: string[] = [];
 
-  filteredJSON.filter(({ kindString: filteredString, children: filteredChildren }) => filteredString === 'Interface'
-    && typeof filteredChildren !== 'undefined').forEach(({ name, children }) => {
+  filteredJSON
+    .filter(({ kindString, children, indexSignature }) => kindString === 'Interface' && (!children || !indexSignature))
+    .forEach(({ name, children, indexSignature }) => {
     res.push(`\n### ${name}`);
 
     // Find default values
@@ -54,8 +56,18 @@ function getInterfaces(filteredJSON: DeclarationReflection[]): string[] {
       defaultValues[name] = defaultValue?.toString() || '';
     });
 
+    if (indexSignature) {
+      res.push(tableSeparator + ['Key', 'Type', 'Description'].join(` ${tableSeparator} `) + tableSeparator);
+      res.push(tableSeparator + ['---', ':---:', '---'].join(`${tableSeparator}`) + tableSeparator);
+      res.push(tableSeparator + [
+        printType(indexSignature.parameters?.[0]?.type),
+        printType(indexSignature.type),
+        indexSignature.comment?.shortText,
+      ].join(` ${tableSeparator} `) + tableSeparator);
+      return;
+    }
     res.push(
-      tableSeparator + ['name', 'Type', 'Required', 'Default', 'Description'].join(` ${tableSeparator} `) + tableSeparator
+      tableSeparator + ['Name', 'Type', 'Required', 'Default', 'Description'].join(` ${tableSeparator} `) + tableSeparator
     );
     res.push(
       tableSeparator + ['---', '---', ':---:', '---', '---'].join(`${tableSeparator}`) + tableSeparator
@@ -70,6 +82,7 @@ function getInterfaces(filteredJSON: DeclarationReflection[]): string[] {
         commentString.replace(/\n/g, '')
       ].join(` ${tableSeparator} `) + tableSeparator);
     });
+    return;
   });
 
   return res;
@@ -112,7 +125,7 @@ function getClass(filteredJSON: DeclarationReflection[]): string[] {
       const parameterSection: string[] = [];
       if (parameters && parameters.length) {
         parameterSection.push(`Name | Type | Description \n---|---|---`);
-        parameters?.map(({name: paramName, type: paramType, comment: paramComment }) => {
+        parameters?.map(({ name: paramName, type: paramType, comment: paramComment }) => {
           params.push(`\`${paramName}\`: ${printType(paramType)}`);
           parameterSection.push(`**${paramName}** | ${printType(paramType)} | ${paramComment?.shortText || ' '} |`);
         });
@@ -129,15 +142,15 @@ function getClass(filteredJSON: DeclarationReflection[]): string[] {
   return res;
 }
 
-function printType(typeObject?: SomeType | unknown) {
-  const getTypeValue = (tObj: SomeType | LiteralType | IntrinsicType) => {
+function printType(typeObject?: SomeType | unknown): string {
+  const getTypeValue = (tObj: SomeType | LiteralType | IntrinsicType | Type) => {
     if ('name' in tObj) {
       return tObj.name.toString();
-    } 
+    }
     if ('value' in tObj) {
       return tObj.value?.toString();
-    } 
-    return tObj.type
+    }
+    return tObj.type;
   };
   const someType = typeObject as SomeType;
   if (someType && someType.type) {
@@ -151,8 +164,11 @@ function printType(typeObject?: SomeType | unknown) {
         }
         return `\`${someType.name}\``;
       }
+      case 'array':
+        return `${printType(someType.elementType).replace(/^(_|`)|(_|`)$/g, '')}[]`
       case 'union':
-        return someType.types.map((tObj) => `\`${getTypeValue(tObj)}\``).join(' \\| ');
+        return someType.types.map((tObj) => `\`${printType(tObj).replace(/^(_|`)|(_|`)$/g, '')}\``).join(' \\| ')
+          ;
     }
   }
   return '_unknown_';

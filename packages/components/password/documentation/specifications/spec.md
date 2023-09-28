@@ -4,7 +4,7 @@
 ## Interfaces
 
 ### OdsPasswordAttribute
-|name | Type | Required | Default | Description|
+|Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`ariaLabel`** | `undefined` \| `string` | ✴️ |  | ariaLabel of the password|
 |**`ariaLabelledby`** | _string_ |  |  | ID of the element that labels the password|

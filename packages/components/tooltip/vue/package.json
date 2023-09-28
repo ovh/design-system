@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-component-tooltip-vue",
-  "version": "16.1.0",
+  "version": "16.1.1",
   "private": true,
   "description": "Vue specific wrapper for ods",
   "keywords": [],
@@ -20,12 +20,12 @@
     "dist/"
   ],
   "dependencies": {
-    "@ovhcloud/ods-component-tooltip": "16.1.0"
+    "@ovhcloud/ods-component-tooltip": "16.1.1"
   },
   "peerDependencies": {
     "vue": ">=3"
   },
   "devDependencies": {
-    "@ovhcloud/ods-vue-dev": "16.1.0"
+    "@ovhcloud/ods-vue-dev": "16.1.1"
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-component-form-field-react",
-  "version": "16.1.0",
+  "version": "16.1.1",
   "private": true,
   "description": "React specific wrapper for ods",
   "keywords": [],
@@ -20,13 +20,13 @@
     "dist/"
   ],
   "dependencies": {
-    "@ovhcloud/ods-component-form-field": "16.1.0"
+    "@ovhcloud/ods-component-form-field": "16.1.1"
   },
   "peerDependencies": {
     "react": ">=16.8.6",
     "react-dom": ">=16.8.6"
   },
   "devDependencies": {
-    "@ovhcloud/ods-react-dev": "16.1.0"
+    "@ovhcloud/ods-react-dev": "16.1.1"
   }
 }

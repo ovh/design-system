@@ -8,6 +8,20 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [16.1.1](https://ovh.github.io/design-system/v16.1.1/?path=/docs/design-system-changelog--page) (2023-09-28)
+[compare](https://github.com/ovh/design-system/compare/v16.1.0...v16.1.1)
+
+### Bug Fixes
+
+* **docs:** import type ([cc77a5f](https://github.com/ovh/design-system/commit/cc77a5f3da677013d1dc506f6887227b1cb35db8))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [16.1.0](https://ovh.github.io/design-system/v16.1.0/?path=/docs/design-system-changelog--page) (2023-09-27)
 [compare](https://github.com/ovh/design-system/compare/v16.0.1...v16.1.0)
 

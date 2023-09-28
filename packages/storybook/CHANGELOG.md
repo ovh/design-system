@@ -8,6 +8,21 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [16.1.1](https://ovh.github.io/design-system/v16.1.1/?path=/docs/design-system-changelog--page) (2023-09-28)
+[compare](https://github.com/ovh/design-system/compare/v16.1.0...v16.1.1)
+
+### Bug Fixes
+
+* **docs:** generate spec for multiple component ([96cf6fd](https://github.com/ovh/design-system/commit/96cf6fd6dfa221a492f3a59b4d3d6ea8a3934db3))
+* **storybook:** update tile attributes ([e11aea1](https://github.com/ovh/design-system/commit/e11aea15bc1bda5046bb2f3949ceeea7709f19ba))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [16.1.0](https://ovh.github.io/design-system/v16.1.0/?path=/docs/design-system-changelog--page) (2023-09-27)
 [compare](https://github.com/ovh/design-system/compare/v16.0.1...v16.1.0)
 

@@ -8,6 +8,23 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [16.1.1](https://ovh.github.io/design-system/v16.1.1/?path=/docs/design-system-changelog--page) (2023-09-28)
+[compare](https://github.com/ovh/design-system/compare/v16.1.0...v16.1.1)
+
+### Bug Fixes
+
+* **docs:** generate spec for multiple component ([96cf6fd](https://github.com/ovh/design-system/commit/96cf6fd6dfa221a492f3a59b4d3d6ea8a3934db3))
+* **docs:** generate spec.md ([236bb64](https://github.com/ovh/design-system/commit/236bb6433175e8956d1e2a8b5b7e321a209f8b90))
+* **docs:** import type ([cc77a5f](https://github.com/ovh/design-system/commit/cc77a5f3da677013d1dc506f6887227b1cb35db8))
+* **tabs:** spec multiple ([5441ade](https://github.com/ovh/design-system/commit/5441ade2e04cbad48f9f55851d3ceb86535c18a7))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [16.1.0](https://ovh.github.io/design-system/v16.1.0/?path=/docs/design-system-changelog--page) (2023-09-27)
 [compare](https://github.com/ovh/design-system/compare/v16.0.1...v16.1.0)
 

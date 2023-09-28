@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [16.1.1](https://ovh.github.io/design-system/v16.1.1/?path=/docs/design-system-changelog--page) (2023-09-28)
+[compare](https://github.com/ovh/design-system/compare/v16.1.0...v16.1.1)
+
+### Bug Fixes
+
+* **tabs:** spec multiple ([5441ade](https://github.com/ovh/design-system/commit/5441ade2e04cbad48f9f55851d3ceb86535c18a7))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

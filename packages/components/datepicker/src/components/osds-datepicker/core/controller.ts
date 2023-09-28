@@ -23,10 +23,17 @@ class OdsDatepickerController {
       if (newValue === undefined || newValue === null || isNaN(newValue.getTime())) {
         this.component.value = null;
         this.component.datepickerInstance?.setDate({ clear: true });
+        this.component.emitDatepickerValueChange(null, oldValue);
       } else {
-        this.component.value = newValue;
-        this.component.datepickerInstance?.setDate(newValue);
-        this.component.emitValueChange(newValue, oldValue);
+        if (this.validateValue(newValue)) {
+          this.component.value = newValue;
+          this.component.datepickerInstance?.setDate(newValue);
+          this.component.emitDatepickerValueChange(newValue, oldValue);
+        } else {
+          this.component.value = null;
+          this.component.datepickerInstance?.setDate({ clear: true });
+          this.component.emitDatepickerValueChange(null, oldValue);
+        }
       }
     }
   }
@@ -34,6 +41,26 @@ class OdsDatepickerController {
   onBlur() {
     this.component.hasFocus = false;
     this.component.emitBlur();
+  }
+
+  private getMidnightDate(date: Date) {
+    return new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()))
+  }
+
+  private validateValue(value?: Date) {
+    if (value) {
+      if (!this.component.maxDate || this.getMidnightDate(value).getTime() <= this.getMidnightDate(this.component.maxDate).getTime() ) {
+        if (!this.component.minDate || this.getMidnightDate(value).getTime() >= this.getMidnightDate(this.component.minDate).getTime() ) {
+          if (!this.component.daysOfWeekDisabled || !this.component.daysOfWeekDisabled.includes(value.getDay())) {
+            // Checking if the datesDisabled array exists, and if so checking if it contains the value
+            if (!this.component.datesDisabled || !this.component.datesDisabled.some(d => this.getMidnightDate(d).getTime() === this.getMidnightDate(value).getTime())) {
+              return true;
+            }
+          }
+        }
+      }
+    }
+    return false;
   }
 }
 

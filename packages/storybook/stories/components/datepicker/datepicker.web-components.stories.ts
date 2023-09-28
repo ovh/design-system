@@ -2,6 +2,7 @@ import { html } from 'lit-html';
 import { defineCustomElements } from '@ovhcloud/ods-components/datepicker/loader';
 import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-components/datepicker/src/components/osds-datepicker/constants/default-attributes';
+import { ODS_DATEPICKER_DAYS } from '@ovhcloud/ods-components/datepicker/src/components/osds-datepicker/constants/datepicker-day';
 import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
 // @ts-ignore
 import changelog from '@ovhcloud/ods-components/datepicker/CHANGELOG.md';
@@ -22,6 +23,11 @@ const storyParams = {
     options: ODS_THEME_COLOR_INTENTS,
     control: { type: 'select' },
   },
+  daysOfWeekDisabled: {
+    category: 'General',
+    defaultValue: [],
+    options: ODS_DATEPICKER_DAYS,
+  },
   disabled: {
     category: 'General',
     defaultValue: false,
@@ -37,6 +43,16 @@ const storyParams = {
   inline: {
     category: 'General',
     defaultValue: false,
+  },
+  maxDate: {
+    category: 'General',
+    defaultValue: null,
+    options: [null, new Date('1999-11-02'), new Date('2024-11-02')],
+  },
+  minDate: {
+    category: 'General',
+    defaultValue: null,
+    options: [null, new Date('1999-11-02'), new Date('2024-11-02')],
   },
   placeholder: {
     category: 'General',

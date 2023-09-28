@@ -1,11 +1,68 @@
-@import 'styles/osds-text.mixins';
-@import 'styles/osds-text.color';
-@import 'styles/osds-text.typography';
-@import '~@ovhcloud/ods-common-theming/color/ods-theming-color';
 @import '~@ovhcloud/ods-common-theming/ods-theme';
+@import '~@ovhcloud/ods-common-theming/color/ods-theming-color';
+@import '~@ovhcloud/ods-common-theming/color/ods-component-color';
+@import '~@ovhcloud/ods-common-theming/typography/ods-theming-typography';
+@import '~@ovhcloud/ods-common-theming/typography/ods-component-typography';
 
 :host([break-spaces]) {
   white-space: break-spaces;
+}
+
+@mixin osds-text-on-selected-host() {
+  :host(&) {
+    @content;
+  }
+}
+
+@mixin osds-text-theme-color() {
+
+  @include ods-all-hue-foreach-theme-color((
+    color: '500',
+  )) using($colors) {
+    @include osds-text-on-selected-host() {
+      color: map_get($colors, color);
+    }
+  }
+
+  [hue] {
+    @include ods-and-all-hue-foreach-theme-color((
+      color: '500'
+    )) using($colors) {
+      @include osds-text-on-selected-host() {
+        color: var(--osds-text-color-specific-hue, map_get($colors, color));
+      }
+    }
+  }
+
+  [contrasted] {
+    @include ods-and-all-hue-foreach-theme-color((
+      color: '500-contrasted'
+    )) using($colors) {
+      @include osds-text-on-selected-host() {
+        color: map_get($colors, color);
+      }
+    }
+  }
+}
+
+@mixin osds-text-theme-typography() {
+  /** typography properties */
+
+  @include ods-foreach-theme-typography-level() using ($level-name) {
+    @include ods-and-foreach-theme-typography-size($level-name) using($typos) {
+
+      @include osds-text-on-selected-host() {
+        font: {
+          size: ods-get-typography-property($typos, font-size);
+          weight: ods-get-typography-property($typos, font-weight);
+          family: ods-get-typography-property($typos, font-family);
+          style: ods-get-typography-property($typos, font-style);
+        }
+        letter-spacing: ods-get-typography-property($typos, letter-spacing);
+        line-height: ods-get-typography-property($typos, line-height);
+      }
+    }
+  }
 }
 
 // apply the theme template for the component

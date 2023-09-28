@@ -59,6 +59,7 @@ const TemplateDefault = (args:any) => {
     const modal = document.querySelector('osds-modal');
     if (modal) {
       modal.open();
+      locationChangeTrigger();
     }
   }
 
@@ -69,9 +70,27 @@ const TemplateDefault = (args:any) => {
     }
   }
 
+  const locationChangeTrigger = () => {
+    setTimeout(() => {
+      let prevUrl = window.location.href;
+      const interval = setInterval(() => {
+        const currUrl = window.location.href;
+        if (currUrl !== prevUrl) {
+          prevUrl = currUrl;
+          const modals = document.getElementsByTagName('osds-modal');
+          for (let i = 0; i < modals.length; i++) {
+            modals[i].close();
+          }
+          clearInterval(interval);
+        }
+      }, 100);
+    }, 0);
+  };
+
   return html`
     <button @click=${handleOpenModal}>Trigger "open()"</button>
     <button @click=${handleCloseModal}>Trigger "close()"</button>
+    ${locationChangeTrigger()}
 
     <osds-modal id="my-modal" ...=${getTagAttributes(args)}>
       ${unsafeHTML(args.content)}

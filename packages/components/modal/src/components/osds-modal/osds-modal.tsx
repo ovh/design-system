@@ -1,10 +1,9 @@
 import type { OdsModalAttribute } from './interfaces/attributes';
 import { ODS_THEME_COLOR_INTENT, ODS_THEME_TYPOGRAPHY_SIZE } from '@ovhcloud/ods-common-theming';
-import { Component, Element, Host, Method, Prop, h } from '@stencil/core';
+import { Component, Element, Host, Method, Prop, Watch, h } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
 import { ODS_TEXT_LEVEL } from '@ovhcloud/ods-component-text';
-import { OdsModalController } from './core/controller';
 import { OdsModalMethod } from './interfaces/methods';
 
 /**
@@ -16,7 +15,6 @@ import { OdsModalMethod } from './interfaces/methods';
   shadow: true
 })
 export class OsdsModal implements OdsModalAttribute, OdsModalMethod {
-  controller: OdsModalController = new OdsModalController(this);
   @Element() el!: HTMLElement;
 
   /** @see OdsModalAttributes.color */
@@ -36,7 +34,7 @@ export class OsdsModal implements OdsModalAttribute, OdsModalMethod {
    */
   @Method()
   async close(): Promise<void> {
-    this.controller.close();
+    this.masked = true;
   }
 
   /**
@@ -44,21 +42,25 @@ export class OsdsModal implements OdsModalAttribute, OdsModalMethod {
    */
   @Method()
   async open(): Promise<void> {
-    this.controller.open();
+    this.masked = false;
   }
 
-  componentWillRender(): void {
-    document.body.appendChild(this.el);
+  @Watch('masked')
+  watchOpenedStateHandler(masked: boolean) {
     const directChildren = Array.from(document.body.children);
-    for (const child of directChildren) {
-      if (child !== this.el && child.nodeName !== 'SCRIPT') {
-        if (!this.masked) {
-          child.setAttribute('inert', '');
-        } else {
-          child.removeAttribute('inert');
-        }
+    const filteredChildren = directChildren.filter(child => child !== this.el && child.nodeName !== 'SCRIPT');
+
+    for (const child of filteredChildren) {
+      if (!masked) {
+        child.setAttribute('inert', '');
+      } else {
+        child.removeAttribute('inert');
       }
     }
+  }
+
+  componentWillLoad(): void {
+    document.body.appendChild(this.el);
   }
 
   render() {

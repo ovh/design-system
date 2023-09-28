@@ -39,12 +39,12 @@ class OdsClipboardController {
     }
   }
 
-  checkForClickOutside(event: any): void {
-    if (this.component.el.contains(event.target) || this.component.surface === undefined || !this.component.surface.opened) {
+  checkForClickOutside(event: MouseEvent): void {
+    if (this.component.el.contains(event.target as Node) || this.component.surface === undefined || !this.component.surface.opened) {
       return;
-    } else {
-      this.closeSurface();
     }
+
+    this.closeSurface();
   }
 }
 

@@ -91,21 +91,23 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
   @Watch('maxDate')
   @Watch('minDate')
   updateDatepicker() {
-    if (this.datepickerInstance) {
-      this.datepickerInstance.setOptions({
-        datesDisabled: this.datesDisabled
-          ? this.datesDisabled.map(date => Datepicker.formatDate(date, `dd/mm/yyyy`))
-          : undefined,
-        daysOfWeekDisabled: this.daysOfWeekDisabled,
-        format: this.format,
-        maxDate: this.maxDate
-          ? this.maxDate
-          : undefined,
-        minDate: this.minDate
-          ? this.minDate
-          : undefined,
-      });
+    if (!this.datepickerInstance) {
+      return;
     }
+
+    this.datepickerInstance.setOptions({
+      datesDisabled: this.datesDisabled
+        ? this.datesDisabled.map(date => Datepicker.formatDate(date, `dd/mm/yyyy`))
+        : undefined,
+      daysOfWeekDisabled: this.daysOfWeekDisabled,
+      format: this.format,
+      maxDate: this.maxDate
+        ? this.maxDate
+        : undefined,
+      minDate: this.minDate
+        ? this.minDate
+        : undefined,
+    })
   }
 
   emitBlur(): void {

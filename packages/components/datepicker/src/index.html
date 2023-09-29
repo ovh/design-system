@@ -30,6 +30,7 @@
   document.addEventListener("DOMContentLoaded", () => {
     const datepicker = document.querySelector('#datepicker1');
     datepicker.value = new Date('2024-01-15');
+    datepicker.maxDate = new Date('2024-01-20');
 
     setTimeout(() => {
       console.log(datepicker.value)

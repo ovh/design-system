@@ -47,12 +47,14 @@ const storyParams = {
   maxDate: {
     category: 'General',
     defaultValue: null,
-    options: [null, new Date('1999-11-02'), new Date('2024-11-02')],
+    options: ['1999-11-02', '2024-01-01'],
+    control: { type: 'select' },
   },
   minDate: {
     category: 'General',
     defaultValue: null,
-    options: [null, new Date('1999-11-02'), new Date('2024-11-02')],
+    options: ['1999-11-02', '2024-01-01'],
+    control: { type: 'select' },
   },
   placeholder: {
     category: 'General',
@@ -76,8 +78,16 @@ export default {
 };
 
 /* Default */
+const isDateConstructorArg = (value: unknown): value is string | number | Date => {
+  return typeof value === "string" || typeof value === "number" || value instanceof Date;
+};
+
 const OsdsDatepickerDefault = (args: Record<string, unknown>) => html`
-  <osds-datepicker ...=${getTagAttributes(args)}>
+  <osds-datepicker ...=${getTagAttributes({
+    ...args,
+    maxDate: isDateConstructorArg(args.maxDate) ? new Date(args.maxDate) : null,
+    minDate: isDateConstructorArg(args.minDate) ? new Date(args.minDate) : null
+  })}>
   </osds-datepicker>
 `;
 const TemplateDefault = (args: Record<string, unknown>) => OsdsDatepickerDefault(args);

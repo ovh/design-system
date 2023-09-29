@@ -139,9 +139,9 @@ export class OsdsTextArea implements OdsTextAreaAttribute, OdsTextAreaEvent, Ods
    */
   emitChange(value: HTMLTextAreaElement['value'], oldValue?: HTMLTextAreaElement['value']): void {
     this.odsValueChange.emit({
-      oldValue: oldValue == null ? oldValue : `${oldValue}`,
+      oldValue: oldValue === null ? oldValue : `${oldValue}`,
       validity: this.controller.getTextAreaValidity(),
-      value: value == null ? value : `${value}`,
+      value: value === null ? value : `${value}`,
     });
   }
 

@@ -29,7 +29,7 @@ const defaultStoryParams = {
 };
 
 export default {
-  title: 'UI Components/Datagrid [molecule]/Web Component',
+  title: 'UI Components/Datagrid [organism]/Web Component',
   id: 'datagrid',
   parameters: {
     notes: {

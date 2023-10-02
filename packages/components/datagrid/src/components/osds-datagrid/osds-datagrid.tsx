@@ -12,7 +12,7 @@ import { OdsLogger } from '@ovhcloud/ods-common-core';
 })
 export class OsdsDatagrid implements OdsDatagridAttribute {
   private readonly controler = new OdsDatagridController(this);
-  readonly logger = new OdsLogger('OsdsPhoneNumber');
+  readonly logger = new OdsLogger('OsdsDatagrid');
   private grid?: HTMLDivElement;
   private table?: Tabulator;
 

@@ -31,11 +31,11 @@ describe('e2e:osds-datagrid', () => {
     expect(table).not.toBeNull();
   });
 
-  it('sould render 1 rows & 2 columns', async () => {
+  it('should render 1 rows & 2 columns', async () => {
     await setup({ attributes: {
       columns: JSON.stringify([{ title: 'Name', field: 'name' }, { title: 'Firstname', field: 'firstname' }]),
       rows: JSON.stringify([{ name: 'Homer', firstname: 'Simpson' }]),
-    }});
+    } });
     const columns = await table?.findAll('.tabulator-col');
     expect(columns).toHaveLength(2);
     expect(columns?.[0].innerText).toContain('Name');
@@ -45,11 +45,11 @@ describe('e2e:osds-datagrid', () => {
     expect(rows?.[0].innerText).toContain('HomerSimpson');
   })
 
-  it('sould update rows', async () => {
+  it('should update rows', async () => {
     await setup({ attributes: {
       columns: JSON.stringify([{ title: 'Name', field: 'name' }, { title: 'Firstname', field: 'firstname' }]),
       rows: JSON.stringify([{ name: 'Homer', firstname: 'Simpson' }]),
-    }});
+    } });
     el.setProperty('rows', JSON.stringify([
       { name: 'Homer', firstname: 'Simpson' },
       { name: 'Marge', firstname: 'Simpson' },

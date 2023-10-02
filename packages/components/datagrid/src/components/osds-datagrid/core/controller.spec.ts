@@ -47,6 +47,33 @@ describe('spec:ods-select-controller', () => {
       const tabulartorColumn = controller.toTabulatorColumn(column);
       expect(tabulartorColumn.title).toBe(column.title);
       expect(tabulartorColumn.field).toBe(column.field);
-  });
+      expect(tabulartorColumn.headerSort).toBe(false);
+    });
+
+    it('should mapped column to a Tabular column with isSortable', () => {
+      setup({ });
+      const column = { title: 'Name', field: 'name', isSortable: true };
+      const tabulartorColumn = controller.toTabulatorColumn(column);
+      expect(tabulartorColumn.title).toBe(column.title);
+      expect(tabulartorColumn.field).toBe(column.field);
+      expect(tabulartorColumn.headerSort).toBe(true);
+    });
+
+    it('should get columns with selections columns', () => {
+      setup({ isSelectable: true });
+      const columns = [{ title: 'Name', field: 'name' }];
+      const tabulartorColumns = controller.getTabulatorColumns(columns);
+      expect(tabulartorColumns[0].formatter).toBe('rowSelection');
+      expect(tabulartorColumns[0].titleFormatter).toBe('rowSelection');
+    });
+
+    it('should get columns without selections columns', () => {
+      setup({ isSelectable: false });
+      const columns = [{ title: 'Name', field: 'name' }];
+      const tabulartorColumns = controller.getTabulatorColumns(columns);
+      expect(tabulartorColumns[0].title).toBe(columns[0].title);
+      expect(tabulartorColumns[0].field).toBe(columns[0].field);
+      expect(tabulartorColumns[0].headerSort).toBe(false);
+    });
   });
 });

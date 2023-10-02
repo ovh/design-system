@@ -15,5 +15,19 @@
 </head>
 <body>
   <osds-datagrid columns='[{"title":"Name", "field":"name"}, {"title":"Firstname", "field":"firstname"}]' rows='[{"name":"Homer", "firstname":"Simpson"}]'></osds-datagrid>
+
+  <h1>With sorted column</h1>
+  <osds-datagrid
+    columns='[{"title":"Name", "field":"name", "isSortable": true}, {"title":"Firstname", "field":"firstname"}]'
+    rows='[{"name":"Homer", "firstname":"Simpson"}, {"name":"Marge", "firstname":"Simpson"}]'>
+  </osds-datagrid>
+
+  <h1>With selectable columns</h1>
+  <osds-datagrid
+    is-selectable
+    columns='[{"title":"Name", "field":"name"}, {"title":"Firstname", "field":"firstname"}]'
+    rows='[{"name":"Homer", "firstname":"Simpson"}]'>
+  </osds-datagrid>
+
 </body>
 </html>

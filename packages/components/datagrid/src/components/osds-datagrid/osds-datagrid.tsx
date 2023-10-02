@@ -24,6 +24,9 @@ export class OsdsDatagrid implements OdsDatagridAttribute {
   /** @see OdsDatagridAttribute.rows */
   @Prop({ reflect: true }) public rows: OdsDatagridRow[] | string = DEFAULT_ATTRIBUTE.rows;
 
+  /** @see OdsDatagridAttribute.isSelectable */
+  @Prop({ reflect: true }) public isSelectable?: boolean = DEFAULT_ATTRIBUTE.isSelectable;
+
   componentDidLoad(): void {
     if (!this.grid) {
       return;
@@ -31,12 +34,11 @@ export class OsdsDatagrid implements OdsDatagridAttribute {
     const columns = this.controler.getColumns();
     const rows = this.controler.getRows();
 
-    const tabulatorColumns = columns.map((column) => this.controler.toTabulatorColumn(column));
     this.table = new Tabulator(this.grid, {
       height: "100%",
       data: rows,
       layout: "fitColumns",
-      columns: tabulatorColumns,
+      columns: this.controler.getTabulatorColumns(columns),
     });
   }
 

@@ -1,5 +1,5 @@
 import type { OsdsDatagrid } from "../osds-datagrid";
-import type { ColumnDefinition } from 'tabulator-tables';
+import type { CellComponent, ColumnDefinition } from 'tabulator-tables';
 import { OdsDatagridColumn, OdsDatagridRow } from "../interfaces/attributes";
 import { parseStringToArray } from '@ovhcloud/ods-common-core';
 
@@ -13,8 +13,22 @@ class OdsDatagridController {
         return {
             title: column.title,
             field: column.field,
-            headerSort: false, 
+            headerSort: column.isSortable ?? false, 
         }
+    }
+
+    getTabulatorColumns(columns: OdsDatagridColumn[]): ColumnDefinition[] {
+        return [
+            ...(this.component.isSelectable && [{
+                title: '',
+                formatter: 'rowSelection' as const,
+                titleFormatter: 'rowSelection' as const,
+                headerSort: false,
+                cellClick: (_e: UIEvent, cell: CellComponent) => cell.getRow().toggleSelect(),
+                width: '40',
+            }] || []),
+            ...columns.map((column) => this.toTabulatorColumn(column)),
+        ];
     }
 
     getColumns(): OdsDatagridColumn[] {

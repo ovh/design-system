@@ -43,7 +43,7 @@ describe('e2e:osds-datagrid', () => {
     const rows = await table?.findAll('.tabulator-row');
     expect(rows).toHaveLength(1);
     expect(rows?.[0].innerText).toContain('HomerSimpson');
-  })
+  });
 
   it('should update rows', async () => {
     await setup({ attributes: {
@@ -60,5 +60,73 @@ describe('e2e:osds-datagrid', () => {
     expect(rows).toHaveLength(2);
     expect(rows?.[0].innerText).toContain('HomerSimpson');
     expect(rows?.[1].innerText).toContain('MargeSimpson');
-  })
+  });
+
+  it('should have selectable columns', async () => {
+    await setup({ attributes: {
+      columns: JSON.stringify([{ title: 'Name', field: 'name' }, { title: 'Firstname', field: 'firstname' }]),
+      rows: JSON.stringify([{ name: 'Homer', firstname: 'Simpson' }]),
+      isSelectable: true,
+    } });
+    
+    const selectableHeader = await table?.find('.tabulator-header input[type="checkbox"]');
+    expect(selectableHeader).toBeDefined();
+    expect(selectableHeader).not.toBe(null);
+  });
+
+  it('should select all rows', async () => {
+    await setup({ attributes: {
+      columns: JSON.stringify([{ title: 'Name', field: 'name' }, { title: 'Firstname', field: 'firstname' }]),
+      rows: JSON.stringify([{ name: 'Homer', firstname: 'Simpson' }, { name: 'Marge', firstname: 'Simpson' }]),
+      isSelectable: true,
+    } });
+    
+    const selectableHeader = await table?.find('.tabulator-header input[type="checkbox"]');
+    await selectableHeader?.click();
+
+    const selectableRows = await table?.findAll('.tabulator-row input[type="checkbox"]');
+    const isAllSelect = await Promise.all(selectableRows?.map(async (input) => {
+      const checked: boolean = await input.getProperty('checked');
+      return checked;
+    }) ?? []);
+    expect(isAllSelect.includes(false)).toBe(false);
+  });
+
+  it('should select 1 rows with header checkbox indeterminate', async () => {
+    await setup({ attributes: {
+      columns: JSON.stringify([{ title: 'Name', field: 'name' }, { title: 'Firstname', field: 'firstname' }]),
+      rows: JSON.stringify([{ name: 'Homer', firstname: 'Simpson' }, { name: 'Marge', firstname: 'Simpson' }]),
+      isSelectable: true,
+    } });
+    const selectableRow = await table?.find('.tabulator-row input[type="checkbox"]');
+    await selectableRow?.click();
+
+    const selectableHeader = await table?.find('.tabulator-header input[type="checkbox"]');
+    const selectableRows = await table?.findAll('.tabulator-row input[type="checkbox"]');
+    const isAllSelect = await Promise.all(selectableRows?.map(async (input) => {
+      const checked: boolean = await input.getProperty('checked');
+      return checked;
+    }) ?? []);
+    expect(isAllSelect.includes(false)).toBe(true);
+    expect(await selectableHeader?.getProperty('indeterminate')).toBe(true);
+  });
+
+  it('should sortable columns', async () => {
+    await setup({ attributes: {
+      columns: JSON.stringify([{ title: 'Name', field: 'name', isSortable: true }, { title: 'Firstname', field: 'firstname' }]),
+      rows: JSON.stringify([{ name: 'Homer', firstname: 'Simpson' }, { name: 'Marge', firstname: 'Simpson' }]),
+    } });
+    
+    const sortableHeader = await table?.find('.tabulator-header .tabulator-col-sorter');
+    await sortableHeader?.click();
+
+    const rows = await table?.findAll('.tabulator-row [tabulator-field="name"]');
+    expect(rows?.[0].innerHTML).toBe('Homer');
+    expect(rows?.[1].innerHTML).toBe('Marge');
+
+    await sortableHeader?.click();
+    const newRows = await table?.findAll('.tabulator-row [tabulator-field="name"]');
+    expect(newRows?.[0].innerHTML).toBe('Marge');
+    expect(newRows?.[1].innerHTML).toBe('Homer');
+  });
 });

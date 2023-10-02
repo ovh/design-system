@@ -65,5 +65,16 @@ describe('spec:osds-datagrid', () => {
       });
     });
 
+    describe('isSelectable', () => {
+      odsUnitTestAttribute<OdsDatagridAttribute, 'isSelectable'>({
+        name: 'isSelectable',
+        defaultValue: DEFAULT_ATTRIBUTE.isSelectable,
+        newValue: true,
+        value: false,
+        setup: (value) => setup({ attributes: { ['isSelectable']: value } }),
+        ...config,
+      });
+    });
+
   });
 });

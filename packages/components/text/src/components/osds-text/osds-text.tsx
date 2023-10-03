@@ -37,7 +37,7 @@ export class OsdsText implements OdsTextAttribute {
     return (
       <Host {...{
         style: {
-          '--osds-text-color-specific-hue': this.color && this.hue ? `var(${odsGenerateColorVariable(this.color, this.hue)})` : '',
+          '--osds-text-color-specific-hue': `var(${odsGenerateColorVariable(this.color!, this.hue!)})`,
         }
       }}>
         <slot></slot>

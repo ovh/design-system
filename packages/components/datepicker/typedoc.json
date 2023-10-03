@@ -1,7 +1,10 @@
 {
-  "entryPoints": ["src"],
-  "out": "docs-api/ods-component-datepicker",
+  "entryPoints": ["src/index.ts"],
+  "out": "docs-api/",
   "tsconfig":"tsconfig.prod.json",
-  "exclude": "**/*+(index|.spec|.e2e|.d).ts",
-  "plugin": "none"
+  "plugin": ["none"],
+  "excludeInternal": true,
+  "excludePrivate": true,
+  "excludeProtected": true,
+  "hideGenerator": true
 }

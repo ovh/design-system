@@ -76,5 +76,16 @@ describe('spec:osds-datagrid', () => {
       });
     });
 
+    describe('placeholder', () => {
+      odsUnitTestAttribute<OdsDatagridAttribute, 'placeholder'>({
+        name: 'placeholder',
+        defaultValue: DEFAULT_ATTRIBUTE.placeholder,
+        newValue: 'Aucune données de renseignée',
+        value: '',
+        setup: (value) => setup({ attributes: { ['placeholder']: value } }),
+        ...config,
+      });
+    });
+
   });
 });

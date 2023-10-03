@@ -18,15 +18,22 @@
 
   <h1>With sorted column</h1>
   <osds-datagrid
-    columns='[{"title":"Name", "field":"name", "isSortable": true}, {"title":"Firstname", "field":"firstname"}]'
-    rows='[{"name":"Homer", "firstname":"Simpson"}, {"name":"Marge", "firstname":"Simpson"}]'>
+    columns='[{"title":"Name", "field":"name", "isSortable": true}, {"title":"Firstname", "field":"firstname"}, {"title":"Gender", "field":"gender"}]'
+    rows='[{"name":"Homer", "firstname":"Simpson", "gender": "Male"}, {"name":"Marge", "firstname":"Simpson", "gender": "Female"}]'>
   </osds-datagrid>
 
   <h1>With selectable columns</h1>
   <osds-datagrid
     is-selectable
     columns='[{"title":"Name", "field":"name"}, {"title":"Firstname", "field":"firstname"}]'
-    rows='[{"name":"Homer", "firstname":"Simpson"}]'>
+    rows='[{"name":"Homer", "firstname":"Simpson"}, {"name":"Marge", "firstname":"Simpson"}]'>
+  </osds-datagrid>
+
+  <h1>Empty state</h1>
+  <osds-datagrid
+    columns='[{"title":"Name", "field":"name", "isSortable": true}, {"title":"Firstname", "field":"firstname"}]'
+    rows='[]'
+    placeholder="Aucune données de renseignée">
   </osds-datagrid>
 
 </body>

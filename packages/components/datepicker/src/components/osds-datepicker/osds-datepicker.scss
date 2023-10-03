@@ -33,6 +33,7 @@
     position: relative;
     display: none;
     animation: datepicker-appear 0.2s ease-in-out;
+    z-index: 99;
 
     * {
       transition: background-color 0.1s ease-in-out;
@@ -54,6 +55,12 @@
           align-items: center;
           border: none;
           cursor: pointer;
+        }
+
+        .prev-btn[disabled],
+        .next-btn[disabled] {
+          pointer-events: none;
+          opacity: 0.5;
         }
 
         .view-switch {
@@ -91,7 +98,8 @@
               }
 
               .prev,
-              .next {
+              .next,
+              .disabled {
                 opacity: 50%;
               }
             }
@@ -107,6 +115,10 @@
             align-items: center;
             border: none;
             cursor: pointer;
+          }
+
+          .disabled {
+            opacity: 50%;
           }
         }
       }

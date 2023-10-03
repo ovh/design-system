@@ -38,6 +38,8 @@
     "@ovhcloud/ods-common-core": "16.2.0",
     "@ovhcloud/ods-common-stencil": "16.2.0",
     "@ovhcloud/ods-common-theming": "16.2.0",
+    "@ovhcloud/ods-component-icon": "16.2.0",
+    "@ovhcloud/ods-component-text": "16.2.0",
     "tabulator-tables": "5.5.2"
   },
   "devDependencies": {

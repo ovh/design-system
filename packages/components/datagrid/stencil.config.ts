@@ -10,11 +10,11 @@ export const config: Config = getStencilConfig({
   jestConfig: jestConfig.default,
   reactOutput: {
     componentCorePackage: '@ovhcloud/ods-component-datagrid',
-    excludeComponents: []
+    excludeComponents: ['osds-icon', 'osds-text']
   },
   vueOutput: {
     componentCorePackage: '@ovhcloud/ods-component-datagrid',
-    excludeComponents: []
+    excludeComponents: ['osds-icon', 'osds-text']
   },
   dev: {
     globalScript: 'src/global.dev.ts',

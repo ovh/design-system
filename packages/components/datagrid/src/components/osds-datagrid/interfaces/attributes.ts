@@ -19,6 +19,8 @@ interface OdsDatagridAttribute {
   rows: OdsDatagridRow[] | string;
   /** The rows can be selectable */
   isSelectable?: boolean
+  /** Text when the datagrid was no rows */
+  placeholder?: string;
 }
 
 export {

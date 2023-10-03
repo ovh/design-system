@@ -21272,7 +21272,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash@npm:^4.17.11, lodash@npm:^4.17.12, lodash@npm:^4.17.14, lodash@npm:^4.17.15, lodash@npm:^4.17.19, lodash@npm:^4.17.20, lodash@npm:^4.17.21, lodash@npm:^4.2.1, lodash@npm:^4.7.0":
+"lodash@npm:^4.17.11, lodash@npm:^4.17.12, lodash@npm:^4.17.14, lodash@npm:^4.17.15, lodash@npm:^4.17.19, lodash@npm:^4.17.20, lodash@npm:^4.17.21, lodash@npm:^4.17.5, lodash@npm:^4.2.1, lodash@npm:^4.7.0":
   version: 4.17.21
   resolution: "lodash@npm:4.17.21"
   checksum: eb835a2e51d381e561e508ce932ea50a8e5a68f4ebdd771ea240d3048244a8d13658acbd502cd4829768c56f2e16bdd4340b9ea141297d472517b83868e677f7
@@ -23241,6 +23241,7 @@ __metadata:
     stylelint: ^15.10.3
     stylelint-config-concentric-order: ^5.2.0
     stylelint-config-standard-scss: ^11.0.0
+    stylelint-formatter-html: ^1.0.1
     ts-node: 10.7.0
   languageName: unknown
   linkType: soft
@@ -28911,6 +28912,15 @@ __metadata:
   peerDependencies:
     stylelint: ^15.10.0
   checksum: 536249800c04b48a9c354067765f042713982e8222be17bb897a27d26546e50adfb87e6f1e4541807d720de3554345da99ab470e13e8d7ab0ab326c73ae3df61
+  languageName: node
+  linkType: hard
+
+"stylelint-formatter-html@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "stylelint-formatter-html@npm:1.0.1"
+  dependencies:
+    lodash: ^4.17.5
+  checksum: 3e0cfb7ee7299f56eeba14adb127f2dd945b150869541f366638dc74676e837cef5b5c2452da3b2bc8455e4bf60fecc18f36743d6bcd4a5b68ef08db74f9fc53
   languageName: node
   linkType: hard
 

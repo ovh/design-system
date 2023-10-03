@@ -138,3 +138,6 @@ Thumbs.db
 
 # used file storing the artijfrog token, used when building docker image
 /artitoken
+
+# Stylelint
+stylelint-report.html

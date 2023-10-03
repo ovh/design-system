@@ -42,7 +42,7 @@
     "ignore:rm": "lerna run ignore:rm",
     "lerna:ls:pl": "lerna ls -pl",
     "lint": "eslint '*/**/*.{js,ts,tsx}'",
-    "lint:scss": "stylelint 'packages/themes/blue-jeans/src/*/*.scss' 'packages/components/**/*.scss'",
+    "lint:scss": "stylelint 'packages/themes/blue-jeans/src/*/*.scss' 'packages/components/**/*.scss' --custom-formatter node_modules/stylelint-formatter-html > stylelint-report.html",
     "list:releases": "lerna run list:releases",
     "ods:graduate": "yarn ods:release:prepare && yarn version:graduate",
     "ods:major": "yarn ods:release:prepare && yarn version:major",
@@ -100,6 +100,7 @@
     "stylelint": "^15.10.3",
     "stylelint-config-concentric-order": "^5.2.0",
     "stylelint-config-standard-scss": "^11.0.0",
+    "stylelint-formatter-html": "^1.0.1",
     "ts-node": "10.7.0"
   },
   "engines": {

@@ -1,7 +1,9 @@
+jest.mock('@ovhcloud/ods-cdk'); // keep jest.mock before any import
 jest.mock('./core/controller'); // keep jest.mock before any
 
 import type { SpecPage } from '@stencil/core/testing';
 import type { OdsClipboardAttribute } from './interfaces/attributes';
+import { ocdkIsSurface } from '@ovhcloud/ods-cdk';
 import { newSpecPage } from '@stencil/core/testing';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
@@ -19,6 +21,10 @@ describe('spec:osds-clipboard', () => {
   afterEach(() => {
     jest.clearAllMocks();
   });
+
+  function mockSurfaceElements() {
+    (ocdkIsSurface as unknown as jest.Mock).mockImplementation(() => true);
+  }
 
   async function setup({ attributes = {} }: { attributes?: Partial<OdsClipboardAttribute> } = {}) {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsClipboardAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
@@ -38,6 +44,59 @@ describe('spec:osds-clipboard', () => {
     await setup({});
     expect(root?.shadowRoot).toBeTruthy();
     expect(instance).toBeTruthy();
+  });
+
+  describe('cdk not initialized', () => {
+    it('should not have yet the ref to surface', async () => {
+      (ocdkIsSurface as unknown as jest.Mock).mockImplementation(() => false);
+      await setup();
+      expect(instance.surface).toBe(undefined);
+    })
+  });
+
+  describe('cdk initialized', () => {
+    it('should have ref to anchor', async () => {
+      await setup();
+      expect(instance.anchor).toBeTruthy();
+    })
+
+    it('should have ref to surface', async () => {
+      mockSurfaceElements();
+      await setup();
+      expect(instance.surface).toBeTruthy();
+    })
+
+    it('should call syncReferences of controller for anchor and surface', async () => {
+      mockSurfaceElements();
+      await setup();
+      expect(controller.syncReferences).toHaveBeenCalledTimes(2);
+      expect(controller.syncReferences).toHaveBeenCalledWith();
+    });
+  })
+
+  describe('controller', () => {
+    it('should call handlerClick of controller', async () => {
+      const string = "test"
+      await setup( { attributes: { value: string } });
+      instance.handlerClick();
+      expect(controller.handlerClick).toHaveBeenCalledTimes(1);
+      expect(controller.handlerClick).toHaveBeenCalledWith(string);
+    });
+
+    it('should call checkForClickOutside of controller', async () => {
+      const event = new Event('click');
+      await setup();
+      instance.checkForClickOutside(event);
+      expect(controller.checkForClickOutside).toHaveBeenCalledTimes(1);
+      expect(controller.checkForClickOutside).toHaveBeenCalledWith(event);
+    })
+
+    it('should call closeSurface of controller', async () => {
+      await setup();
+      await instance.closeSurface();
+      expect(controller.closeSurface).toHaveBeenCalledTimes(1);
+      expect(controller.closeSurface).toHaveBeenCalledWith();
+    })
   });
 
   describe('attributes', () => {

@@ -4536,6 +4536,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-clipboard@workspace:packages/components/clipboard"
   dependencies:
+    "@ovhcloud/ods-cdk": 16.1.1
     "@ovhcloud/ods-common-core": 16.1.1
     "@ovhcloud/ods-common-stencil": 16.1.1
     "@ovhcloud/ods-common-testing": 16.1.1

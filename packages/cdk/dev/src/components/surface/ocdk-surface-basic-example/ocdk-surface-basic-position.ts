@@ -9,4 +9,6 @@ export const OcdkSurfaceBasicPositionList: string[] = [
   'TOP_RIGHT BOTTOM_RIGHT',
   'BOTTOM_CENTER TOP_CENTER',
   'TOP_CENTER BOTTOM_CENTER',
+  'CENTER_LEFT CENTER_RIGHT',
+  'CENTER_RIGHT CENTER_LEFT',
 ];

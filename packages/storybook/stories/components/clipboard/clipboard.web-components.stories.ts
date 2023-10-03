@@ -40,6 +40,8 @@ const TemplateDefault = (args:any) => {
   return html`
     <osds-clipboard ...=${getTagAttributes(args)} @keydown=${(e: KeyboardEvent) => e.stopPropagation()}>
       Clipboard
+      <span slot='success-message'>Success</span>
+      <span slot='error-message'>Error</span>
     </osds-clipboard>
   `;
 }

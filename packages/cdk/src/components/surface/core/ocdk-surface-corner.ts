@@ -22,6 +22,8 @@ export enum OcdkSurfaceCorner {
   BOTTOM_START = OcdkSurfaceCornerBit.BOTTOM | OcdkSurfaceCornerBit.FLIP_RTL, // tslint:disable-line:no-bitwise
   /** 13 */
   BOTTOM_END = OcdkSurfaceCornerBit.BOTTOM | OcdkSurfaceCornerBit.RIGHT | OcdkSurfaceCornerBit.FLIP_RTL, // tslint:disable-line:no-bitwise
+  CENTER_LEFT = 6,
+  CENTER_RIGHT = 7,
 }
 
 export const OcdkSurfaceCornerNameList = ocdkGetEnumNames(OcdkSurfaceCorner);

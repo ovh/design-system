@@ -1,0 +1,3 @@
+{
+  "extends": ["stylelint-config-concentric-order", "stylelint-config-standard-scss"]
+}

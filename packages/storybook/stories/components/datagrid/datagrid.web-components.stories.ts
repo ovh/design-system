@@ -8,12 +8,12 @@ import page from './datagrid.web-component.stories.page.mdx';
 
 defineCustomElements();
 
-/* Default story parameters  */
+/* Default story parameters */
 const defaultStoryParams = {
   columns: {
     category: 'Général',
     defaultValue: [
-      { title: "Name", field: "name" },
+      { title: "Name", field: "name", isSortable: true },
       { title: "Firstname", field: "firstname" },
       { title: "Gender", field: "gender" },
       { title: "Date Of Birth", field: "dob" },
@@ -25,6 +25,10 @@ const defaultStoryParams = {
       { name: "Dupont", firstname: "Antoine", gender: "male", dob: "15/11/1996" },
       { name: "Garnbret", firstname: "Janja", gender: "female", dob: "12/03/1999" },
     ],
+  },
+  isSelectable: {
+    category: 'Général',
+    defaultValue: false
   },
 };
 

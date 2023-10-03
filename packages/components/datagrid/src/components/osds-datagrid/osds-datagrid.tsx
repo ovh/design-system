@@ -48,6 +48,13 @@ export class OsdsDatagrid implements OdsDatagridAttribute {
     this.table?.setData(rows);
   }
 
+  @Watch('isSelectable')
+  @Watch('columns')
+  onChangeColumns(): void {
+    const columns = this.controler.getColumns();
+    this.table?.setColumns(this.controler.getTabulatorColumns(columns));
+  }
+
   render(): JSX.Element {
     return (
       <Host>

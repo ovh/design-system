@@ -1,3 +1,134 @@
 @import '~@ovhcloud/ods-common-theming/color/ods-theming-color';
 @import '~@ovhcloud/ods-common-theming/ods-theme';
 @import "~tabulator-tables/dist/css/tabulator.min.css";
+
+@mixin ods-input-checkbox {
+    input[type="checkbox"] {
+        appearance: none;
+        border-radius: var(--ods-size-border-radius-01);
+        border: solid 3px var(--ods-color-primary-500);
+        margin: 0;
+        width: 20px;
+        height: 20px;
+        
+        &::before {
+            content: "";
+            display: block;
+            width: 15px;
+            height: 15px;
+            mask-position: center;
+            mask-repeat: no-repeat;
+        }
+
+        &:checked::before {
+            background-color: var(--ods-color-primary-500);
+            mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='15' height='15' viewBox='0 0 24 24'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cpath stroke-linecap='round' stroke-width='2' d='M4 13l5 5M20 7L9 18'/%3E%3Cpath fill='%23000000' d='M19.293 6.293a1 1 0 011.414 1.414l-11 11a.995.995 0 01-.53.277l-.118.014h-.118a.996.996 0 01-.648-.29l-5-5a1 1 0 011.414-1.415L9 16.585z'/%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        &:indeterminate::before {
+            background-color: var(--ods-color-primary-500);
+            mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='13' height='13' viewBox='0 0 24 24'%3E%3Cpath fill='%23000000' fill-rule='evenodd' d='M20 11a1 1 0 010 2H4a1 1 0 010-2h16z'/%3E%3C/svg%3E");
+        }
+    }
+}
+
+.tabulator {
+    border: none;
+    background-color: #FFF;
+
+    .tabulator-tableholder {
+        border: solid 1px var(--ods-color-blue-200);
+        box-sizing: border-box;
+        overflow-x: hidden;
+
+        .tabulator-row {
+            border-bottom: solid 1px var(--ods-color-blue-200);
+            background-color: #FFF;
+
+            &:last-child {
+                border-bottom: 0;
+            }
+
+            &:hover {
+                background-color: #FFF;
+            }
+        }
+    
+        .tabulator-cell {
+            border-right: none;
+            height: unset !important;
+        }
+    
+        .ods-selectable__input-checkbox {
+            &.tabulator-cell {
+                padding-left: 9px;
+            }
+            &.tabulator-cell {
+                @include ods-input-checkbox;
+            }
+        }
+
+        .tabulator-placeholder {
+
+            .tabulator-placeholder-contents {
+                color: var(--ods-color-text-500);
+                font-size: var(--ods-typography-body-500-font-size);
+                font-weight: var(--ods-typography-body-500-font-weight);
+                font-family: var(--ods-typography-body-500-font-family);
+                font-style: var(--ods-typography-body-500-font-style);
+                letter-spacing: var(--ods-typography-body-500-letter-spacing);
+                line-height: var(--ods-typography-body-500-line-height);
+            }
+        }
+    }
+
+    .tabulator-header {
+        background-color: #FFF;
+        border-bottom: none;
+        height: unset !important;
+
+        .tabulator-headers {
+            height: unset !important;
+
+            .tabulator-col {
+                background-color: #FFF;
+                border: none;
+                height: unset !important;
+                
+                &.tabulator-sortable {
+
+                    & .tabulator-col-title {
+                        padding-right: 10px;
+                    }
+                    &:hover {
+                        background-color: #FFF;
+                    }
+                }
+                &.ods-selectable__input-checkbox {
+                    @include ods-input-checkbox;
+
+                    .tabulator-col-content {
+                        padding: 0;
+                    }
+                }
+
+                .tabulator-col-content {
+                    
+                    .tabulator-col-title-holder {
+                        display: flex;
+                        justify-content: center;
+                        align-items: flex-end;
+
+                        .tabulator-col-title {
+                            width: unset;
+                        }
+
+                        .tabulator-col-sorter {
+                            position: inherit;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

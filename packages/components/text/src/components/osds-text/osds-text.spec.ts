@@ -40,6 +40,12 @@ describe('spec:osds-text', () => {
     expect(textSlot).toBeTruthy();
   });
 
+  it('should have set a style variable', async () => {
+    const styleVar = '--osds-text-color-specific-hue: var(--ods-color-default-500);';
+    await setup({ attributes: {} });
+    expect(root?.getAttribute('style')).toBe(styleVar);
+  });
+
   describe('attributes', () => {
     const config = {
       instance: () => instance,

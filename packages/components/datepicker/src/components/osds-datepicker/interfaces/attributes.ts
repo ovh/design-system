@@ -1,4 +1,5 @@
 import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+import type { ODS_DATEPICKER_DAY } from '../constants/datepicker-day';
 
 interface OdsDatepickerAttribute {
   /**
@@ -9,6 +10,14 @@ interface OdsDatepickerAttribute {
    * Defines the Datepicker's color (see component principles)
    */
   color?: ODS_THEME_COLOR_INTENT;
+  /**
+   * Defines the Datepicker's disabled dates
+   */
+  datesDisabled?: Date[];
+  /**
+   * Defines the Datepicker's disabled days of the week (monday, tuesday...)
+   */
+  daysOfWeekDisabled?: ODS_DATEPICKER_DAY[];
   /**
    * Defines if the Datepicker should be disabled or not (lower opacity and not interactable)
    */
@@ -25,6 +34,14 @@ interface OdsDatepickerAttribute {
    * Defines if the Datepicker should be displayed inline or not
    */
   inline?: boolean;
+  /**
+   * Defines the Datepicker's maximum selectable date
+   */
+  maxDate?: Date | undefined | null;
+  /**
+   * Defines the Datepicker's minimum selectable date
+   */
+  minDate?: Date | undefined | null;
   /**
    * Defines if the Datepicker should display a placeholder message
    */

@@ -1,7 +1,8 @@
 import type { EventEmitter } from '@stencil/core';
 import type { OdsDatepickerAttribute } from './interfaces/attributes';
 import type { OdsDatepickerEvent, OdsDatepickerValueChangeEventDetail } from './interfaces/events';
-import { Component, Element, Event, Host, h, Listen, Prop, State } from '@stencil/core';
+import type { ODS_DATEPICKER_DAY } from './constants/datepicker-day';
+import { Component, Element, Event, Host, h, Listen, Prop, State, Watch } from '@stencil/core';
 import { ODS_INPUT_TYPE } from '@ovhcloud/ods-component-input';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_ICON_NAME } from '@ovhcloud/ods-component-icon';
@@ -33,6 +34,12 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
   /** @see OdsDatepickerAttribute.color */
   @Prop({ reflect: true }) color?: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
 
+  /** @see OdsDatepickerAttribute.datesDisabled */
+  @Prop({ reflect: true }) datesDisabled?: Date[] = DEFAULT_ATTRIBUTE.datesDisabled;
+
+  /** @see OdsDatepickerAttribute.daysOfWeekDisabled */
+  @Prop({ reflect: true }) daysOfWeekDisabled?: ODS_DATEPICKER_DAY[] = DEFAULT_ATTRIBUTE.daysOfWeekDisabled;
+
   /** @see OdsDatepickerAttribute.disabled */
   @Prop({ reflect: true }) disabled?: boolean = DEFAULT_ATTRIBUTE.disabled;
 
@@ -44,6 +51,12 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
 
   /** @see OdsDatepickerAttribute.inline */
   @Prop({ reflect: true }) inline?: boolean = DEFAULT_ATTRIBUTE.inline;
+
+  /** @see OdsDatepickerAttribute.maxDate */
+  @Prop({ reflect: true }) maxDate?: Date | null = DEFAULT_ATTRIBUTE.maxDate;
+
+  /** @see OdsDatepickerAttribute.minDate */
+  @Prop({ reflect: true }) minDate?: Date | null = DEFAULT_ATTRIBUTE.minDate;
 
   /** @see OdsDatepickerAttribute.placeholder */
   @Prop({ reflect: true }) placeholder?: string = DEFAULT_ATTRIBUTE.placeholder;
@@ -66,10 +79,35 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
   @Listen('odsValueChange')
   handleInputValueChange(event: CustomEvent) {
     if (this.format && event.detail.value.length === this.format.length) {
-      this.onChange(new Date(Datepicker.parseDate(event.detail.value, this.format)))
+      this.onChange(new Date(Datepicker.parseDate(event.detail.value, this.format)));
     } else if (event.detail.value.length === 0) {
-      this.onChange(null)
+      this.onChange(null);
     }
+  }
+
+  @Watch('datesDisabled')
+  @Watch('daysOfWeekDisabled')
+  @Watch('format')
+  @Watch('maxDate')
+  @Watch('minDate')
+  updateDatepicker() {
+    if (!this.datepickerInstance) {
+      return;
+    }
+
+    this.datepickerInstance.setOptions({
+      datesDisabled: this.datesDisabled
+        ? this.datesDisabled.map(date => Datepicker.formatDate(date, `dd/mm/yyyy`))
+        : undefined,
+      daysOfWeekDisabled: this.daysOfWeekDisabled,
+      format: this.format,
+      maxDate: this.maxDate
+        ? this.maxDate
+        : undefined,
+      minDate: this.minDate
+        ? this.minDate
+        : undefined,
+    })
   }
 
   emitBlur(): void {
@@ -80,7 +118,7 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
     this.odsDatepickerFocus.emit();
   }
 
-  emitValueChange(newValue: Date | undefined | null, oldValue?: Date | undefined | null): void {
+  emitDatepickerValueChange(newValue: Date | undefined | null, oldValue?: Date | undefined | null): void {
     this.odsDatepickerValueChange.emit({ value: newValue, oldValue: oldValue });
   }
 
@@ -103,10 +141,20 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
 
     if (this.hiddenInput && !this.hiddenInput.getAttribute('initialized')) {
       this.datepickerInstance = new Datepicker(this.hiddenInput, {
+        datesDisabled: this.datesDisabled
+          ? this.datesDisabled.map(date => Datepicker.formatDate(date, `dd/mm/yyyy`))
+          : undefined,
+        daysOfWeekDisabled: this.daysOfWeekDisabled,
         format: this.format,
+        maxDate: this.maxDate
+          ? this.maxDate
+          : undefined,
+        maxView: 2,
+        minDate: this.minDate
+          ? this.minDate
+          : undefined,
         nextArrow: `<osds-icon name="triangle-right" size="sm" color=${this.color}></osds-icon>`,
         prevArrow: `<osds-icon name="triangle-left" size="sm" color=${this.color}></osds-icon>`,
-        maxView: 2,
       });
 
       this.datepickerElement = this.el.shadowRoot.querySelector('.datepicker-picker') as HTMLElement;
@@ -218,7 +266,11 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
           type={ODS_INPUT_TYPE.text}
           value={this.formatDate(value)}
         ></osds-input>
-        <input tabindex={-1} class="osds-datepicker__hidden-input" ref={(el?: HTMLInputElement) => this.hiddenInput = el || this.hiddenInput}></input>
+        <input
+          tabindex={-1}
+          class="osds-datepicker__hidden-input"
+          ref={(el?: HTMLInputElement) => this.hiddenInput = el || this.hiddenInput}
+        ></input>
       </Host>
     );
   }

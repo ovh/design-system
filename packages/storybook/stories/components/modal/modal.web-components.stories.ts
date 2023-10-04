@@ -51,55 +51,51 @@ export default {
     },
     docs: { page },
   },
-  argTypes: extractArgTypes(storyParams)
+  argTypes: extractArgTypes(storyParams),
 };
 
-const TemplateDefault = (args:any) => {
+const TemplateDefault = (args: any) => {
   const handleOpenModal = () => {
     const modal = document.querySelector('osds-modal');
     if (modal) {
       modal.open();
-      locationChangeTrigger();
     }
-  }
+  };
 
   const handleCloseModal = () => {
     const modal = document.querySelector('osds-modal');
     if (modal) {
       modal.close();
     }
-  }
+  };
 
-const locationChangeTrigger = () => {
-  let prevUrl = document.location.href;
-  const body = document.querySelector("body");
+  const locationChangeTrigger = () => {
+    let prevUrl = document.location.href;
+    const body = document.querySelector('body');
 
-  const observer = new MutationObserver(() => {
-    if (prevUrl !== document.location.href) {
-      prevUrl = document.location.href;
+    const observer = new MutationObserver(() => {
+      if (prevUrl !== document.location.href) {
+        prevUrl = document.location.href;
 
-      const modals = document.getElementsByTagName('osds-modal');
+        const modals = document.getElementsByTagName('osds-modal');
         for (let i = 0; i < modals.length; i++) {
           modals[i].close();
         }
-    }
-  });
-  observer.observe(body, { childList: true, subtree: true });
-};
+      }
+    });
+    observer.observe(body, { childList: true, subtree: true });
+  };
 
-window.onload = locationChangeTrigger;
+  window.onload = locationChangeTrigger;
 
   return html`
     <button @click=${handleOpenModal}>Trigger "open()"</button>
     <button @click=${handleCloseModal}>Trigger "close()"</button>
     ${locationChangeTrigger()}
 
-    <osds-modal id="my-modal" ...=${getTagAttributes(args)}>
-      ${unsafeHTML(args.content)}
-      ${unsafeHTML(args.actions)}
-    </osds-modal>
-  `
-}
+    <osds-modal id="my-modal" ...=${getTagAttributes(args)}> ${unsafeHTML(args.content)} ${unsafeHTML(args.actions)} </osds-modal>
+  `;
+};
 
 export const Default = TemplateDefault.bind({});
 Default.args = {

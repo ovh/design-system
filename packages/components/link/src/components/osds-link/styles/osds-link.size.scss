@@ -3,7 +3,7 @@
 
 @mixin osds-link-theme-size() {
   :host {
-    @include osds-link-on-text-container() {
+    @include osds-link-on-text-container {
       display: inline-flex;
       align-items: baseline;
     }

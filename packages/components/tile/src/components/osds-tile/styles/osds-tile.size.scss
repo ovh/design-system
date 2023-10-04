@@ -5,7 +5,7 @@
   /** sizes */
 
   @include ods-foreach-theme-size(tile) using ($sizes) {
-    @include osds-tile-on-selected-host() {
+    @include osds-tile-on-selected-host {
       padding: ods-get-size-property($sizes, padding);
     }
   }

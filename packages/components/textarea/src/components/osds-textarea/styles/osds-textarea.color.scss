@@ -2,16 +2,15 @@
 @import './osds-textarea.mixins';
 
 @mixin osds-textarea-theme-color-variant-flat() {
-
   @include ods-and-all-hue-foreach-theme-color((
           color: '500',
           background-color: '000'
   )) using($colors) {
-    @include osds-textarea-on-selected-host() {
-      @include osds-textarea-on-main-element() {
-        color: map_get($colors, color);
-        background-color: map_get($colors, background-color);
+    @include osds-textarea-on-selected-host {
+      @include osds-textarea-on-main-element {
         border-color: var(--ods-color-primary-200);
+        background-color: map_get($colors, background-color);
+        color: map_get($colors, color);
 
         &::placeholder {
           color: map_get($colors, color);
@@ -25,8 +24,8 @@
     }
 
     &[error] {
-      @include osds-textarea-on-selected-host() {
-        @include osds-textarea-on-main-element() {
+      @include osds-textarea-on-selected-host {
+        @include osds-textarea-on-main-element {
           border-color: var(--ods-color-error-500);
 
           &:focus {
@@ -43,11 +42,11 @@
       border-color: '000',
       background-color: (tone: '100', alpha: '.2')
       )) using($colors) {
-      @include osds-textarea-on-selected-host() {
-        @include osds-textarea-on-main-element() {
-          color: map_get($colors, color);
-          background-color: transparent;
+      @include osds-textarea-on-selected-host {
+        @include osds-textarea-on-main-element {
           border-color: map_get($colors, border-color);
+          background-color: transparent;
+          color: map_get($colors, color);
 
           &::placeholder {
             color: map_get($colors, color);
@@ -71,11 +70,11 @@
 
   /** no variant specified: flat variant colors */
   :not([variant]) {
-    @include osds-textarea-theme-color-variant-flat();
+    @include osds-textarea-theme-color-variant-flat;
   }
 
   [disabled] {
-    @include osds-textarea-on-selected-host() {
+    @include osds-textarea-on-selected-host {
       opacity: .5;
     }
   }

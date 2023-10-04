@@ -3,10 +3,9 @@
 
 // entrypoint for customizing the theme color
 @mixin osds-cart-item-option-theme-color() {
-
   :host {
-    color: ods-get-color-variable($intent-name: primary, $hue: '800');
-    background-color: ods-get-color-variable($palette-name: 'blue', $hue: '050');
     border-color: ods-get-color-variable($intent-name: primary, $hue: '100');
+    background-color: ods-get-color-variable($palette-name: 'blue', $hue: '050');
+    color: ods-get-color-variable($intent-name: primary, $hue: '800');
   }
 }

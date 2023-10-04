@@ -3,9 +3,7 @@
 
 // entrypoint for customizing the theme color
 @mixin osds-cart-theme-color() {
-
   :host {
-
     $color-start: ods-get-color-variable($intent-name: primary, $hue: '700');
     $color-end: ods-get-color-variable($intent-name: primary, $hue: '500');
 

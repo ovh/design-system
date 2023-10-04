@@ -18,14 +18,15 @@
 :host([disabled]) {
   opacity: .5;
   cursor: not-allowed;
+
   & > * {
     pointer-events: none;
   }
 }
 
 // apply the theme template for the component
-@include ods-theme-component() {
-  @include osds-switch-theme-color();
-  @include osds-switch-theme-size();
-  @include osds-switch-theme-typography();
+@include ods-theme-component {
+  @include osds-switch-theme-color;
+  @include osds-switch-theme-size;
+  @include osds-switch-theme-typography;
 }

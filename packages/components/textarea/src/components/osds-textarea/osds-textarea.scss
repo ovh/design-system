@@ -7,15 +7,15 @@
 @import '~@ovhcloud/ods-common-theming/ods-theme';
 
 :host {
-  outline: none;
-
-  @include osds-textarea-on-selected-host() {
-    display: flex;
-
-    @include osds-textarea-on-main-element() {
+  @include osds-textarea-on-selected-host {
+    @include osds-textarea-on-main-element {
       width: 100%;
     }
+
+    display: flex;
   }
+
+  outline: none;
 }
 
 :host([inline]) {
@@ -23,23 +23,23 @@
   width: var(--width);
 }
 
-@include osds-textarea-on-main-element() {
-  border-style: solid;
+@include osds-textarea-on-main-element {
   position: relative;
+  border-style: solid;
   text-align: var(--ods-textarea-text-align, left);
 }
 
 :not([resizable]) {
-  @include osds-textarea-on-selected-host() {
-    @include osds-textarea-on-main-element() {
+  @include osds-textarea-on-selected-host {
+    @include osds-textarea-on-main-element {
       resize: none;
     }
   }
 }
 
 // apply the theme template for the component
-@include ods-theme-component() {
-  @include osds-textarea-theme-color();
-  @include osds-textarea-theme-size();
-  @include osds-textarea-theme-typography();
+@include ods-theme-component {
+  @include osds-textarea-theme-color;
+  @include osds-textarea-theme-size;
+  @include osds-textarea-theme-typography;
 }

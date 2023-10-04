@@ -3,33 +3,33 @@
 
 @mixin osds-range-theme-color-error-state() {
   .ods-error {
-    $background-track: linear-gradient(ods-get-color-variable($intent-name: error, $hue: '500'), ods-get-color-variable($intent-name: error, $hue: '500')) 0/var(--ods-range-percent-value) 100% no-repeat, ods-get-color-variable($intent-name: error, $hue: '300');
+    $background-track: linear-gradient(ods-get-color-variable($intent-name: error, $hue: '500'), ods-get-color-variable($intent-name: error, $hue: '500')) 0 / var(--ods-range-percent-value) 100% no-repeat, ods-get-color-variable($intent-name: error, $hue: '300');
     $background-dualtrack: linear-gradient(to right, ods-get-color-variable($intent-name: error, $hue: '300') 0, ods-get-color-variable($intent-name: error, $hue: '300') min(var(--ods-range-percent-value), var(--ods-range-percent-value-secondary)), ods-get-color-variable($intent-name: error, $hue: '500') min(var(--ods-range-percent-value), var(--ods-range-percent-value-secondary)), ods-get-color-variable($intent-name: error, $hue: '500') max(var(--ods-range-percent-value), var(--ods-range-percent-value-secondary)), ods-get-color-variable($intent-name: error, $hue: '300') max(var(--ods-range-percent-value), var(--ods-range-percent-value-secondary)), ods-get-color-variable($intent-name: error, $hue: '300') 100%);
     $background-thumb: ods-get-color-variable($intent-name: error, $hue: '000');
     $hover-color: ods-get-color-variable($intent-name: error, $hue: '100');
     $border: ods-get-color-variable($intent-name: error, $hue: '500');
 
-    @include osds-range-on-selected-host() {
-      @include osds-range-on-main-element() {
-        outline-color: $border;
-
+    @include osds-range-on-selected-host {
+      @include osds-range-on-main-element {
         @include track-color($background-track);
         @include thumb-color($background-thumb, $border, $hover-color);
+
+        outline-color: $border;
       }
     }
 
-    @include osds-range-on-selected-dual-host() {
-      @include osds-range-on-main-element() {
-        outline-color: $border;
-
+    @include osds-range-on-selected-dual-host {
+      @include osds-range-on-main-element {
         @include track-color($background-dualtrack);
         @include thumb-color($background-thumb, $border, $hover-color);
+
+        outline-color: $border;
       }
 
-      @include osds-range-on-multi-element() {
-        outline-color: $border;
-
+      @include osds-range-on-multi-element {
         @include thumb-color($background-thumb, $border, $hover-color);
+
+        outline-color: $border;
       }
     }
   }
@@ -43,51 +43,50 @@
       focus-color: '200',
       active-color: '500'
     )) using($colors) {
-    @include osds-range-on-selected-host() {
-      color: ods-get-color-variable($palette-name: 'gray-blue', $hue: '500');
-
-      @include osds-range-on-main-element() {
+    @include osds-range-on-selected-host {
+      @include osds-range-on-main-element {
         outline-color: map_get($colors, starting-color);
+
         // Track color
         &::-webkit-slider-runnable-track {
-          background: linear-gradient(#{map_get($colors, starting-color)}, #{map_get($colors, starting-color)}) 0/var(--ods-range-percent-value) 100% no-repeat,
+          background: linear-gradient(#{map_get($colors, starting-color)}, #{map_get($colors, starting-color)}) 0 / var(--ods-range-percent-value) 100% no-repeat,
           #{map_get($colors, background-color)};
         }
 
         &::-moz-range-track {
-          background: linear-gradient(#{map_get($colors, starting-color)}, #{map_get($colors, starting-color)}) 0/var(--ods-range-percent-value) 100% no-repeat,
+          background: linear-gradient(#{map_get($colors, starting-color)}, #{map_get($colors, starting-color)}) 0 / var(--ods-range-percent-value) 100% no-repeat,
           #{map_get($colors, background-color)};
         }
 
         &::-ms-fill-upper {
-          background: linear-gradient(#{map_get($colors, starting-color)}, #{map_get($colors, starting-color)}) 0/var(--ods-range-percent-value) 100% no-repeat,
+          background: linear-gradient(#{map_get($colors, starting-color)}, #{map_get($colors, starting-color)}) 0 / var(--ods-range-percent-value) 100% no-repeat,
           #{map_get($colors, background-color)};
         }
       }
 
-      @include osds-range-inputs() {
+      @include osds-range-inputs {
         // Thumb color
         &::-webkit-slider-thumb {
-          background-color: map_get($colors, handle-color);
           border-color: map_get($colors, starting-color);
+          background-color: map_get($colors, handle-color);
         }
 
         &::-moz-range-thumb {
-          background-color: map_get($colors, handle-color);
           border-color: map_get($colors, starting-color);
+          background-color: map_get($colors, handle-color);
         }
 
         &::-ms-thumb {
-          background-color: map_get($colors, handle-color);
           border-color: map_get($colors, starting-color);
+          background-color: map_get($colors, handle-color);
         }
       }
+
+      color: ods-get-color-variable($palette-name: 'gray-blue', $hue: '500');
     }
 
-    @include osds-range-on-selected-dual-host() {
-      color: ods-get-color-variable($palette-name: 'gray-blue', $hue: '500');
-
-      @include osds-range-on-main-element() {
+    @include osds-range-on-selected-dual-host {
+      @include osds-range-on-main-element {
         outline-color: map_get($colors, starting-color);
 
         // Track color
@@ -121,26 +120,13 @@
             #{map_get($colors, background-color)} 100%);
         }
       }
+
+      color: ods-get-color-variable($palette-name: 'gray-blue', $hue: '500');
     }
 
-    &:not([disabled]):not(.ods-error) {
-      @include osds-range-on-selected-host() {
-        @include osds-range-inputs() {
-          &:focus-visible {
-            // Input focus thumb color
-            &::-webkit-slider-thumb {
-              background-color: map_get($colors, focus-color);
-            }
-
-            &::-moz-range-thumb {
-              background-color: map_get($colors, focus-color);
-            }
-
-            &::-ms-thumb {
-              background-color: map_get($colors, focus-color);
-            }
-          }
-
+    &:not([disabled], .ods-error) {
+      @include osds-range-on-selected-host {
+        @include osds-range-inputs {
           // Thumb interactive color
           &::-webkit-slider-thumb {
             &:hover {
@@ -171,11 +157,26 @@
               background-color: map_get($colors, active-color);
             }
           }
+
+          &:focus-visible {
+            // Input focus thumb color
+            &::-webkit-slider-thumb {
+              background-color: map_get($colors, focus-color);
+            }
+
+            &::-moz-range-thumb {
+              background-color: map_get($colors, focus-color);
+            }
+
+            &::-ms-thumb {
+              background-color: map_get($colors, focus-color);
+            }
+          }
         }
       }
     }
   }
 
   /** Override error state colors in */
-  @include osds-range-theme-color-error-state();
+  @include osds-range-theme-color-error-state;
 }

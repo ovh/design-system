@@ -6,16 +6,16 @@
 @import '~@ovhcloud/ods-common-theming/ods-theme';
 
 :host {
-  @include osds-accordion-on-summary() {
-    cursor: pointer;
-    list-style: none;
-    position: relative;
+  @include osds-accordion-on-summary {
     display: flex;
+    position: relative;
     align-items: center;
     justify-content: space-between;
+    cursor: pointer;
+    list-style: none;
   }
 
-  @include osds-accordion-on-summary-marker() {
+  @include osds-accordion-on-summary-marker {
     display: none;
   }
 }
@@ -25,6 +25,7 @@
     opacity: 0;
     margin-top: -1.25rem;
   }
+
   100% {
     opacity: 1;
     margin-top: 0;
@@ -40,18 +41,18 @@ details > slot {
 }
 
 :host([disabled]) {
-  * {
-    opacity: 0.5;
-  }
-
-  @include osds-accordion-on-summary() {
+  @include osds-accordion-on-summary {
     cursor: not-allowed;
     pointer-events: none;
   }
+
+  * {
+    opacity: 0.5;
+  }
 }
 
-@include ods-theme-component() {
-  @include osds-accordion-theme-color();
-  @include osds-accordion-theme-size();
-  @include osds-accordion-theme-typography();
+@include ods-theme-component {
+  @include osds-accordion-theme-color;
+  @include osds-accordion-theme-size;
+  @include osds-accordion-theme-typography;
 }

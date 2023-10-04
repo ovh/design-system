@@ -5,15 +5,14 @@
 @import '~@ovhcloud/ods-common-theming/ods-theme';
 
 :host {
-
-  @include osds-cart-item-option-on-main-content() {
-    align-items: baseline;
+  @include osds-cart-item-option-on-main-content {
     display: grid;
-    gap: 0 0;
     grid-template-areas:
       "subhead price"
       "title extra";
     grid-template-columns: 1fr auto;
+    gap: 0 0;
+    align-items: baseline;
   }
 }
 
@@ -37,12 +36,12 @@ slot[name="price"] {
 
 slot[name="extra"] {
   grid-area: extra;
-  justify-content: right;
   align-self: flex-start;
+  justify-content: right;
 }
 
 // apply the theme template for the component
-@include ods-theme-component() {
-  @include osds-cart-item-option-theme-color();
-  @include osds-cart-item-option-theme-size();
+@include ods-theme-component {
+  @include osds-cart-item-option-theme-color;
+  @include osds-cart-item-option-theme-size;
 }

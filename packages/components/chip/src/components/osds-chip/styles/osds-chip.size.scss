@@ -3,15 +3,15 @@
 
 @mixin osds-chip-theme-size() {
   @include ods-foreach-theme-size(chip) using ($sizes) {
-    @include osds-chip-on-selected-host() {
-      border-radius: ods-get-size-property($sizes, border-radius);
-      border-width: ods-get-size-property($sizes, border-width);
-      height: ods-get-size-property($sizes, height);
-      padding: ods-get-size-property($sizes, padding);
-
-      @include osds-chip-on-main-element() {
+    @include osds-chip-on-selected-host {
+      @include osds-chip-on-main-element {
         gap: ods-get-size-property($sizes, inline-margin);
       }
+
+      border-width: ods-get-size-property($sizes, border-width);
+      border-radius: ods-get-size-property($sizes, border-radius);
+      padding: ods-get-size-property($sizes, padding);
+      height: ods-get-size-property($sizes, height);
     }
   }
 }

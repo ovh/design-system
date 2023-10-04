@@ -5,11 +5,11 @@
   /** sizes */
 
   @include ods-foreach-theme-size(radio-button) using ($sizes) {
-    @include osds-radio-button-on-main-element() {
-      border-width: ods-get-size-property($sizes, border-width);
-      height: ods-get-size-property($sizes, height);
+    @include osds-radio-button-on-main-element {
       margin: ods-get-size-property($sizes, margin);
+      border-width: ods-get-size-property($sizes, border-width);
       width: ods-get-size-property($sizes, width);
+      height: ods-get-size-property($sizes, height);
     }
   }
 }

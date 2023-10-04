@@ -2,7 +2,7 @@
 
 @mixin osds-button-on-selected-host() {
   :host(&) {
-    @include osds-button-on-main-element() {
+    @include osds-button-on-main-element {
       @content;
     }
   }

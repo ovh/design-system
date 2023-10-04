@@ -1,6 +1,6 @@
 :host {
-  padding: var(--ods-size-inset-06);
   display: block;
+  padding: var(--ods-size-inset-06);
 }
 
 :host(:not([active])) {

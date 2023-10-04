@@ -7,26 +7,6 @@
 // CSS targeted only for this component
 // /!\ for theming purposes, it has to be done in theming files
 // (i.e. packages/libraries/theming/...)
-:host {
-  display: block;
-  height: 100%;
-  width: 100%;
-  font-size: 0;
-}
-
-:host(:not([inline])) {
-  .spinner > svg {
-    width: 100%;
-    max-height: 100%;
-    max-width: 100%;
-  }
-}
-
-:host([inline]) {
-  display: inline-block;
-  height: auto;
-  width: auto;
-}
 
 .spinner > svg {
   position: relative;
@@ -45,13 +25,35 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
 
+:host {
+  display: block;
+  width: 100%;
+  height: 100%;
+  font-size: 0;
+}
+
+:host(:not([inline])) {
+  .spinner > svg {
+    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
+
+:host([inline]) {
+  display: inline-block;
+  width: auto;
+  height: auto;
+}
+
 // apply the theme template for the component
-@include ods-theme-component() {
-  @include osds-spinner-theme-color();
-  @include osds-spinner-theme-size();
+@include ods-theme-component {
+  @include osds-spinner-theme-color;
+  @include osds-spinner-theme-size;
 }

@@ -10,8 +10,8 @@
 }
 
 // apply the theme template for the component
-@include ods-theme-component() {
-  @include osds-tooltip-content-theme-color();
-  @include osds-tooltip-content-theme-size();
-  @include osds-tooltip-content-theme-typography();
+@include ods-theme-component {
+  @include osds-tooltip-content-theme-color;
+  @include osds-tooltip-content-theme-size;
+  @include osds-tooltip-content-theme-typography;
 }

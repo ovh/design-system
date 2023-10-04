@@ -7,14 +7,14 @@
 @import '~@ovhcloud/ods-common-theming/ods-theme';
 
 :host {
-  align-items: center;
-  border-style: solid;
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
+  align-items: center;
   outline: none;
-  overflow: hidden;
+  border-style: solid;
   cursor: text;
+  overflow: hidden;
 }
 
 :host(:not([disabled])) osds-icon {
@@ -25,9 +25,9 @@
   display: inline-flex;
 }
 
-:host osds-icon[name=close],
-:host osds-icon[name=eye-open],
-:host osds-icon[name=eye-closed] {
+:host osds-icon[name="close"],
+:host osds-icon[name="eye-open"],
+:host osds-icon[name="eye-closed"] {
   cursor: pointer;
 }
 
@@ -37,13 +37,13 @@
 
 input {
   box-sizing: border-box;
-  text-align: var(--ods-input-text-align, left);
-  width: 100%;
   cursor: var(--ods-input-cursor, text);
+  width: 100%;
+  text-align: var(--ods-input-text-align, left);
 }
 
 [disabled] {
-  @include osds-input-on-selected-host() {
+  @include osds-input-on-selected-host {
     opacity: .5;
     cursor: not-allowed;
   }
@@ -52,17 +52,17 @@ input {
 }
 
 /* Chrome, Safari, Edge, Opera */
-input[type=number],
-input[type=number]::-webkit-outer-spin-button,
-input[type=number]::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  -moz-appearance: textfield;
+input[type="number"],
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  appearance: none;
+  appearance: textfield;
   margin: 0;
 }
 
 // apply the theme template for the component
-@include ods-theme-component() {
-  @include osds-input-theme-color();
-  @include osds-input-theme-size();
-  @include osds-input-theme-typography();
+@include ods-theme-component {
+  @include osds-input-theme-color;
+  @include osds-input-theme-size;
+  @include osds-input-theme-typography;
 }

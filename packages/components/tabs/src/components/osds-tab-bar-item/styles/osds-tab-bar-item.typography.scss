@@ -2,9 +2,9 @@
 
 @mixin osds-tabs-theme-typography() {
   :host {
+    line-height: var(--ods-typo-size-04);
     font-family: var(--ods-font-family);
     font-size: var(--ods-typo-size-03);
-    line-height: var(--ods-typo-size-04);
     font-weight: var(--ods-typo-weight-semibold);
   }
 }

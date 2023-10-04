@@ -1,9 +1,9 @@
 @import '~@ovhcloud/ods-common-theming/typography/ods-component-typography';
 
 .button {
+  line-height: var(--ods-typo-size-04);
   font-family: var(--ods-font-family);
   font-size: var(--ods-typo-size-02);
-  line-height: var(--ods-typo-size-04);
   font-weight: var(--ods-typo-weight-semibold);
 }
 
@@ -12,12 +12,13 @@
   @each $size in ('md','sm', 'lg') {
     :host([size='#{$size}']) .button__text-container {
       $typography-properties: ods-get-typography-properties(button, '100');
+
+      line-height: ods-get-typography-property($typography-properties, line-height);
+      letter-spacing: ods-get-typography-property($typography-properties, letter-spacing);
       font-family: ods-get-typography-property($typography-properties, font-family);
       font-size: ods-get-typography-property($typography-properties, font-size);
-      font-style: ods-get-typography-property($typography-properties, font-style);
       font-weight: ods-get-typography-property($typography-properties, font-weight);
-      letter-spacing: ods-get-typography-property($typography-properties, letter-spacing);
-      line-height: ods-get-typography-property($typography-properties, line-height);
+      font-style: ods-get-typography-property($typography-properties, font-style);
     }
   }
 }

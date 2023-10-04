@@ -2,26 +2,13 @@
 @import './osds-chip.mixins';
 
 @mixin osds-chip-theme-color-variant-flat() {
-
   @include ods-and-all-hue-foreach-theme-color((
           color: '800',
           background-color: '100'
   )) using($colors) {
-    @include osds-chip-on-selected-host() {
-      color: map_get($colors, color);
+    @include osds-chip-on-selected-host {
       background-color: map_get($colors, background-color);
-    }
-  }
-
-  &[contrasted] {
-    @include ods-and-all-hue-foreach-theme-color((
-            color: '500',
-            background-color: '500-contrasted'
-    )) using($colors) {
-      @include osds-chip-on-selected-host() {
-        color: map_get($colors, color);
-        background-color: map_get($colors, background-color);
-      }
+      color: map_get($colors, color);
     }
   }
 
@@ -44,6 +31,7 @@
           background-color: $color;
         }
       }
+
       @include ods-and-one-hue-foreach-theme-color('200') using($color) {
         :host(&:active) {
           background-color: $color;
@@ -51,11 +39,23 @@
       }
     }
   }
+
+  &[contrasted] {
+    @include ods-and-all-hue-foreach-theme-color((
+            color: '500',
+            background-color: '500-contrasted'
+    )) using($colors) {
+      @include osds-chip-on-selected-host {
+        background-color: map_get($colors, background-color);
+        color: map_get($colors, color);
+      }
+    }
+  }
 }
 
 
 @mixin osds-chip-theme-color-variant-stroked() {
-  @include osds-chip-on-selected-host() {
+  @include osds-chip-on-selected-host {
     background-color: initial;
   }
 
@@ -63,21 +63,9 @@
           color: '500',
           border-color: '500'
   )) using($colors) {
-    @include osds-chip-on-selected-host() {
-      color: map_get($colors, color);
+    @include osds-chip-on-selected-host {
       border-color: map_get($colors, border-color);
-    }
-  }
-
-  &[contrasted] {
-    @include ods-and-all-hue-foreach-theme-color((
-            color: '500-contrasted',
-            border-color: '500-contrasted'
-    )) using($colors) {
-      @include osds-chip-on-selected-host() {
-        color: map_get($colors, color);
-        border-color: map_get($colors, border-color);
-      }
+      color: map_get($colors, color);
     }
   }
 
@@ -95,8 +83,8 @@
               color: '100-contrasted'
       )) using($colors) {
         :host(&:hover), :host(&:focus) {
-          background-color: map_get($colors, background-color);
           border-color: map_get($colors, border-color);
+          background-color: map_get($colors, background-color);
           color: map_get($colors, color);
         }
       }
@@ -117,10 +105,22 @@
               color: '200-contrasted',
       )) using($colors) {
         :host(&:active) {
-          background-color: map_get($colors, background-color);
           border-color: map_get($colors, border-color);
+          background-color: map_get($colors, background-color);
           color: map_get($colors, color);
         }
+      }
+    }
+  }
+
+  &[contrasted] {
+    @include ods-and-all-hue-foreach-theme-color((
+            color: '500-contrasted',
+            border-color: '500-contrasted'
+    )) using($colors) {
+      @include osds-chip-on-selected-host {
+        border-color: map_get($colors, border-color);
+        color: map_get($colors, color);
       }
     }
   }
@@ -128,7 +128,6 @@
 
 
 @mixin osds-chip-theme-color() {
-
   /** base colors */
   :host {
     border-color: transparent;
@@ -136,22 +135,23 @@
 
   /** disabled colors */
   [disabled] {
-    @include osds-chip-on-selected-host() {
+    @include osds-chip-on-selected-host {
       opacity: .5;
     }
   }
 
   /** no variant specified: flat variant colors */
   :not([variant]) {
-    @include osds-chip-theme-color-variant-flat();
+    @include osds-chip-theme-color-variant-flat;
   }
+
   /** flat variant colors */
   [variant='flat'] {
-    @include osds-chip-theme-color-variant-flat();
+    @include osds-chip-theme-color-variant-flat;
   }
 
   /** stroked variant colors */
   [variant='stroked'] {
-    @include osds-chip-theme-color-variant-stroked();
+    @include osds-chip-theme-color-variant-stroked;
   }
 }

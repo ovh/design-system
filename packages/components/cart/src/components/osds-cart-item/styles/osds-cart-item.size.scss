@@ -8,6 +8,7 @@
 
   :host {
     $size-properties: ods-get-size-properties($component-size-definition, sm);
+
     padding: ods-get-size-property($size-properties, section-padding);
   }
 

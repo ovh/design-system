@@ -3,14 +3,13 @@
 
 @mixin osds-code-theme-color() {
   :not([variant]) {
-
     @include ods-and-all-hue-foreach-theme-color((
       color: '000',
       background-color: '900'
     )) using($colors) {
-      @include osds-code-on-selected-host() {
-        color: map_get($colors, color);
+      @include osds-code-on-selected-host {
         background-color: map_get($colors, background-color);
+        color: map_get($colors, color);
       }
     }
 
@@ -19,9 +18,9 @@
         color: '000-contrasted',
         background-color: '900-contrasted'
       )) using($colors) {
-        @include osds-code-on-selected-host() {
-          color: map_get($colors, color);
+        @include osds-code-on-selected-host {
           background-color: map_get($colors, background-color);
+          color: map_get($colors, color);
         }
       }
     }

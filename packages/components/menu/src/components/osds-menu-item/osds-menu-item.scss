@@ -1,16 +1,16 @@
-@import 'styles/osds-menu-item.color.scss';
-@import 'styles/osds-menu-item.size.scss';
-
+@import 'styles/osds-menu-item.color';
+@import 'styles/osds-menu-item.size';
 @import '~@ovhcloud/ods-common-theming/color/ods-theming-color';
 @import '~@ovhcloud/ods-common-theming/ods-theme';
 
 :host{
-  display: block;
   --ods-size-button-border-radius: 0;
   --ods-size-button-padding-x: var(--ods-size-inset-04);
+
+  display: block;
 }
 
-@include ods-theme-component() {
-  @include osds-menu-item-theme-color();
-  @include osds-menu-item-theme-size();
+@include ods-theme-component {
+  @include osds-menu-item-theme-color;
+  @include osds-menu-item-theme-size;
 }

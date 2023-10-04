@@ -8,6 +8,7 @@
 
   :host {
     $size-properties: ods-get-size-properties($component-size-definition, md);
+
     grid-column-gap: ods-get-size-property($size-properties, grid-column-gap);
   }
 }

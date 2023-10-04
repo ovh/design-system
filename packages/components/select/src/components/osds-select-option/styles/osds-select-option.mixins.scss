@@ -20,7 +20,7 @@
 
 
 @mixin osds-select-option-on-type-number-main-element() {
-  select[type=number] {
+  select[type="number"] {
     @content;
   }
 }

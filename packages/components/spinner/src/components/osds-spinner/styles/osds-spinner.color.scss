@@ -9,7 +9,7 @@
   }
 
   :not([contrasted]) {
-    @include osds-spinner-on-selected-host() {
+    @include osds-spinner-on-selected-host {
       fill: ods-get-color-variable($intent-name: 'primary', $hue: '500');
     }
   }

@@ -15,8 +15,8 @@
 }
 
 // apply the theme template for the component
-@include ods-theme-component() {
-  @include osds-progress-bar-theme-color();
-  @include osds-progress-bar-theme-size();
-  @include osds-progress-bar-theme-typography();
+@include ods-theme-component {
+  @include osds-progress-bar-theme-color;
+  @include osds-progress-bar-theme-size;
+  @include osds-progress-bar-theme-typography;
 }

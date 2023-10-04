@@ -10,27 +10,28 @@
 // (i.e. packages/libraries/theming/...)
 @keyframes modal-appear {
   from {
-    opacity: 0;
     transform: scale(0.8);
+    opacity: 0;
   }
+
   to {
-    opacity: 1;
     transform: scale(1);
+    opacity: 1;
   }
 }
 
 :host {
+  display: flex;
+  position: fixed;
   top: 0;
   left: 0;
-  display: flex;
-  justify-content: center;
   align-items: center;
-  position: fixed;
+  justify-content: center;
   z-index: 9999;
 
   .backdrop {
     position: absolute;
-    opacity: 75%;
+    opacity: 0.75;
   }
 
   .wrapper {
@@ -40,8 +41,8 @@
 
     .header {
       display: flex;
-      justify-content: flex-end;
       align-items: center;
+      justify-content: flex-end;
       overflow: hidden;
     }
 
@@ -66,8 +67,8 @@
 }
 
 // apply the theme template for the component
-@include ods-theme-component() {
-  @include osds-modal-theme-color();
-  @include osds-modal-theme-size();
-  @include osds-modal-theme-typography();
+@include ods-theme-component {
+  @include osds-modal-theme-color;
+  @include osds-modal-theme-size;
+  @include osds-modal-theme-typography;
 }

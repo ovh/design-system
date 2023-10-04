@@ -4,11 +4,10 @@
 // Main CSS mixin for sizes
 @mixin osds-search-bar-theme-size() {
     :host {
-        osds-select {
-            width: 33%;
-        }
-    }
-    :host {
-        width: 100%;
+      width: 100%;
+
+      osds-select {
+        width: 33%;
+      }
     }
 }

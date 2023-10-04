@@ -11,8 +11,8 @@
   align-items: center;
 }
 
-@include ods-theme-component() {
-  @include osds-breadcrumb-theme-color();
-  @include osds-breadcrumb-theme-size();
-  @include osds-breadcrumb-theme-typography();
+@include ods-theme-component {
+  @include osds-breadcrumb-theme-color;
+  @include osds-breadcrumb-theme-size;
+  @include osds-breadcrumb-theme-typography;
 }

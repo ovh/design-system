@@ -7,16 +7,16 @@
 // CSS for the component but not for theming
 
 :host {
-  margin: 0;
+    display: flex;
   position: relative;
     align-items: center;
+  margin: 0;
     cursor: default;
-    display: flex;
 }
 
 // apply the theme template for the component
-@include ods-theme-component() {
-  @include osds-select-group-theme-color();
-  @include osds-select-group-theme-size();
-  @include osds-select-group-theme-typography();
+@include ods-theme-component {
+  @include osds-select-group-theme-color;
+  @include osds-select-group-theme-size;
+  @include osds-select-group-theme-typography;
 }

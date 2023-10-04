@@ -6,7 +6,7 @@
           background-color: '000',
           border-color: '000'
   )) using($colors) {
-    @include osds-tile-on-selected-host() {
+    @include osds-tile-on-selected-host {
       border-color: map_get($colors, border-color);
       background-color: map_get($colors, background-color);
     }
@@ -19,6 +19,7 @@
         background-color: $color;
       }
     }
+
     @include ods-and-one-hue-foreach-theme-color('200') using($color) {
       :host(&:active) {
         border-color: $color;
@@ -33,8 +34,8 @@
       2: '100',
       3: '500'
     )) using($colors) {
-      @include osds-tile-on-selected-host() {
-        &:after {
+      @include osds-tile-on-selected-host {
+        &::after {
           background-image: linear-gradient(transparent, transparent),
           linear-gradient(45deg, map_get($colors, 3), map_get($colors, 2), map_get($colors, 3), map_get($colors, 2));
         }
@@ -48,7 +49,7 @@
           background-color: '000',
           border-color: '200'
   )) using($colors) {
-    @include osds-tile-on-selected-host() {
+    @include osds-tile-on-selected-host {
       border-color: map_get($colors, border-color);
       background-color: map_get($colors, background-color);
     }
@@ -60,6 +61,7 @@
         background-color: $color;
       }
     }
+
     @include ods-and-one-hue-foreach-theme-color('200') using($color) {
       :host(&:active) {
         background-color: $color;
@@ -81,8 +83,8 @@
             2: '100',
             3: '500'
     )) using($colors) {
-      @include osds-tile-on-selected-host() {
-        &:after {
+      @include osds-tile-on-selected-host {
+        &::after {
           background-image: linear-gradient(transparent, transparent),
           linear-gradient(45deg, map_get($colors, 3), map_get($colors, 2), map_get($colors, 3), map_get($colors, 2));
         }
@@ -93,7 +95,7 @@
 
 @mixin osds-tile-theme-color-variant-ghost {
   @include ods-and-all-hue-foreach-theme-color(()) using($colors) {
-    @include osds-tile-on-selected-host() {
+    @include osds-tile-on-selected-host {
       border-color: transparent;
       background-color: transparent;
     }
@@ -106,6 +108,7 @@
         background-color: $color;
       }
     }
+
     @include ods-and-one-hue-foreach-theme-color('200') using($color) {
       :host(&:active) {
         border-color: $color;
@@ -128,8 +131,8 @@
             2: '100',
             3: '500'
     )) using($colors) {
-      @include osds-tile-on-selected-host() {
-        &:after {
+      @include osds-tile-on-selected-host {
+        &::after {
           background-image: linear-gradient(transparent, transparent),
           linear-gradient(45deg, map_get($colors, 3), map_get($colors, 2), map_get($colors, 3), map_get($colors, 2));
         }
@@ -142,7 +145,7 @@
   @include ods-and-all-hue-foreach-theme-color((
           border-color: '200'
   )) using($colors) {
-    @include osds-tile-on-selected-host() {
+    @include osds-tile-on-selected-host {
       border-color: map_get($colors, border-color);
       background-color: transparent;
     }
@@ -151,14 +154,15 @@
   &[hoverable]:not([disabled]) {
     @include ods-and-one-hue-foreach-theme-color('100') using($color) {
       :host(&:hover){
-        background-color: transparent;
         border-color: $color;
+        background-color: transparent;
       }
     }
+
     @include ods-and-one-hue-foreach-theme-color('200') using($color) {
       :host(&:active) {
-        background-color: transparent;
         border-color: $color;
+        background-color: transparent;
       }
     }
   }
@@ -177,8 +181,8 @@
             2: '100',
             3: '500'
     )) using($colors) {
-      @include osds-tile-on-selected-host() {
-        &:after {
+      @include osds-tile-on-selected-host {
+        &::after {
           background-image: linear-gradient(transparent, transparent),
           linear-gradient(45deg, map_get($colors, 3), map_get($colors, 2), map_get($colors, 3), map_get($colors, 2));
         }
@@ -188,7 +192,6 @@
 }
 
 @mixin osds-tile-theme-color() {
-
   /** base colors */
   :host {
     border-color: transparent;
@@ -196,7 +199,7 @@
 
   /** disabled colors */
   [disabled] {
-    @include osds-tile-on-selected-host() {
+    @include osds-tile-on-selected-host {
       opacity: .5;
     }
   }
@@ -204,26 +207,26 @@
   /** no variant specified: flat variant colors */
   :not([variant]),
   [variant='default']{
-    @include osds-tile-theme-color-variant-stroked();
+    @include osds-tile-theme-color-variant-stroked;
   }
 
   /** stroked variant colors */
   [variant='stroked'] {
-    @include osds-tile-theme-color-variant-stroked();
+    @include osds-tile-theme-color-variant-stroked;
   }
 
   /** flat variant colors */
   [variant='flat'] {
-    @include osds-tile-theme-color-variant-flat();
+    @include osds-tile-theme-color-variant-flat;
   }
 
   /** ghost variant colors */
   [variant='ghost'] {
-    @include osds-tile-theme-color-variant-ghost();
+    @include osds-tile-theme-color-variant-ghost;
   }
 
   /** ghost variant colors */
   [variant='hollow'] {
-    @include osds-tile-theme-color-variant-hollow();
+    @include osds-tile-theme-color-variant-hollow;
   }
 }

@@ -18,8 +18,8 @@
 }
 
 // apply the theme template for the component
-@include ods-theme-component() {
-  @include osds-cart-section-theme-color();
-  @include osds-cart-section-theme-size();
-  @include osds-cart-section-theme-typography();
+@include ods-theme-component {
+  @include osds-cart-section-theme-color;
+  @include osds-cart-section-theme-size;
+  @include osds-cart-section-theme-typography;
 }

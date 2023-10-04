@@ -6,9 +6,9 @@
           color: '800',
           background-color: '100'
   )) using($colors) {
-    @include osds-search-bar-on-selected-host() {
-      //color: map_get($colors, color);
-      //background-color: map_get($colors, background-color);
+    @include osds-search-bar-on-selected-host {
+      // color: map_get($colors, color);
+      // background-color: map_get($colors, background-color);
     }
   }
 }
@@ -22,6 +22,6 @@
 
   /** no variant specified: default variant colors */
   :not([variant]) {
-    @include osds-search-bar-theme-color-variant-default();
+    @include osds-search-bar-theme-color-variant-default;
   }
 }

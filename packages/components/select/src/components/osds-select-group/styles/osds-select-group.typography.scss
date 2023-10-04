@@ -3,15 +3,15 @@
 @import './osds-select-group.mixins';
 
 @mixin osds-select-group-theme-typography() {
-
   [size='md'] {
-    @include osds-select-group-on-selected-host() {
+    @include osds-select-group-on-selected-host {
       $typography-properties: ods-get-typography-properties(body, '400');
+
+      line-height: ods-get-typography-property($typography-properties, line-height);
+      letter-spacing: ods-get-typography-property($typography-properties, letter-spacing);
       font-family: ods-get-typography-property($typography-properties, font-family);
       font-size: ods-get-typography-property($typography-properties, font-size);
       font-style: ods-get-typography-property($typography-properties, font-style);
-      letter-spacing: ods-get-typography-property($typography-properties, letter-spacing);
-      line-height: ods-get-typography-property($typography-properties, line-height);
     }
   }
 

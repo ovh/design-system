@@ -6,9 +6,9 @@
           color: '800',
           background-color: '100'
   )) using($colors) {
-    @include osds-form-field-on-selected-host() {
-      //color: map_get($colors, color);
-      //background-color: map_get($colors, background-color);
+    @include osds-form-field-on-selected-host {
+      // color: map_get($colors, color);
+      // background-color: map_get($colors, background-color);
     }
   }
 }
@@ -22,6 +22,6 @@
 
   /** no variant specified: default variant colors */
   :not([variant]) {
-    @include osds-form-field-theme-color-variant-default();
+    @include osds-form-field-theme-color-variant-default;
   }
 }

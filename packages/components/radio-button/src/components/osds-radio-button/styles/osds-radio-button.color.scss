@@ -2,14 +2,6 @@
 @import './osds-radio-button.mixins';
 
 @mixin osds-radio-button-theme-color() {
-  .radio-button {
-    @include osds-radio-button-on-main-element() {
-      background: none;
-      background-color: transparent;
-      outline: none;
-    }
-  }
-
   @include ods-all-hue-foreach-theme-color((
     background-color-active: '200',
     background-color-checked: '500',
@@ -17,30 +9,38 @@
     background-color-focus: '100',
     border-color: '500'
   )) using($colors) {
-    @include osds-radio-button-on-main-element() {
+    @include osds-radio-button-on-main-element {
       border-color: map_get($colors, border-color);
     }
 
-    @include osds-radio-button-on-hover() {
-      @include osds-radio-button-on-main-element() {
+    @include osds-radio-button-on-hover {
+      @include osds-radio-button-on-main-element {
         background-color: map_get($colors, background-color-hover);
       }
     }
 
-    @include osds-radio-button-on-active() {
-      @include osds-radio-button-on-main-element() {
+    @include osds-radio-button-on-active {
+      @include osds-radio-button-on-main-element {
         background-color: map_get($colors, background-color-active);
       }
     }
 
-    @include osds-radio-button-on-focus() {
-      @include osds-radio-button-on-main-element() {
+    @include osds-radio-button-on-focus {
+      @include osds-radio-button-on-main-element {
         background-color: map_get($colors, background-color-focus);
       }
     }
 
-    @include osds-radio-button-on-checked-element() {
+    @include osds-radio-button-on-checked-element {
       background-color: map_get($colors, background-color-checked);
+    }
+  }
+
+  .radio-button {
+    @include osds-radio-button-on-main-element {
+      outline: none;
+      background: none;
+      background-color: transparent;
     }
   }
 }

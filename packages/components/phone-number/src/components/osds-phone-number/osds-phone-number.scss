@@ -8,16 +8,11 @@
 $phone-number-input-width: 236px;
 
 .phone-number {
-
   &__select {
     --ods-size-select-border-radius-bottom-right: 0;
     --ods-size-select-border-radius-top-right: 0;
     --ods-size-select-border-right-width: 0;
     --ods-size-select-surface-width: #{$phone-number-input-width + 71px};
-
-    &.opened + .phone-number__input {
-      border-bottom-right-radius: 0;
-    }
 
     &-label{
       width: 24px;
@@ -30,9 +25,9 @@ $phone-number-input-width: 236px;
 
       &__flag {
         display: inline-block;
+        margin-right: .5em;
         width: 24px;
         height: 15px;
-        margin-right: .5em;
       }
     }
   }
@@ -42,9 +37,13 @@ $phone-number-input-width: 236px;
     width: $phone-number-input-width;
 
     &--not-first {
+      border-left-width: 0;
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
-      border-left-width: 0;
     }
+  }
+
+  &.opened + .phone-number__input {
+    border-bottom-right-radius: 0;
   }
 }

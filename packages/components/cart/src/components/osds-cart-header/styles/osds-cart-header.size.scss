@@ -17,9 +17,9 @@
 
     hr {
       margin: 0 auto;
+      border-radius: ods-get-size-property($size-properties, mobile-handle-border-radius);
       width: ods-get-size-property($size-properties, mobile-handle-width);
       height: ods-get-size-property($size-properties, mobile-handle-height);
-      border-radius: ods-get-size-property($size-properties, mobile-handle-border-radius);
     }
   }
 }

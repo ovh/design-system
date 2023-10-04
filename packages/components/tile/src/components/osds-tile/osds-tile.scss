@@ -1,22 +1,21 @@
-@import 'styles/osds-tile.color.scss';
-@import 'styles/osds-tile.mixins.scss';
-@import 'styles/osds-tile.size.scss';
-@import 'styles/osds-tile.typography.scss';
-
+@import 'styles/osds-tile.color';
+@import 'styles/osds-tile.mixins';
+@import 'styles/osds-tile.size';
+@import 'styles/osds-tile.typography';
 @import '~@ovhcloud/ods-common-theming/color/ods-theming-color';
 @import '~@ovhcloud/ods-common-theming/ods-theme';
 
 :host {
-  border: solid var(--ods-size-inset-02);
   box-sizing: border-box;
   flex-direction: row;
+  border: solid var(--ods-size-inset-02);
 }
 
 :host(:not([inline])) {
-  @include osds-tile-on-selected-host() {
-    width: 100%;
+  @include osds-tile-on-selected-host {
     display: grid;
     grid-template-columns: auto 1fr auto;
+    width: 100%;
   }
 }
 
@@ -25,14 +24,8 @@
   width: var(--width);
 }
 
-:not([checking])[disabled] {
-  @include osds-tile-on-selected-host() {
-    opacity: .5;
-  }
-}
-
 [disabled] {
-  @include osds-tile-on-selected-host() {
+  @include osds-tile-on-selected-host {
     cursor: not-allowed;
 
     * {
@@ -41,14 +34,20 @@
   }
 }
 
+:not([checking])[disabled] {
+  @include osds-tile-on-selected-host {
+    opacity: .5;
+  }
+}
+
 [hoverable]:not([disabled]) {
-  @include osds-tile-on-selected-host() {
+  @include osds-tile-on-selected-host {
     cursor: pointer;
   }
 }
 
 [rounded] {
-  @include osds-tile-on-selected-host() {
+  @include osds-tile-on-selected-host {
     border-radius: var(--ods-size-border-radius-02);
   }
 }
@@ -62,6 +61,7 @@ slot[name="end"],
 ::slotted([slot="start"]),
 ::slotted([slot="end"])  {
   display: inherit;
+
   &:empty {
     display: none;
   }
@@ -80,24 +80,20 @@ slot[name="end"] {
 }
 
 [checking] {
-
-  @include osds-tile-on-selected-host() {
-    overflow: visible;
+  @include osds-tile-on-selected-host {
     position: relative;
+    overflow: visible;
 
-    &:after {
-      content: '';
+    &::after {
       position: absolute;
-      left: -2px;
       top: -2px;
+      left: -2px;
+      z-index: -1;
       background-size: 400%;
       width: calc(100% + 4px);
       height: calc(100% + 4px);
-      z-index: -1;
       animation: steam 3s linear infinite;
-    }
-
-    &:after {
+      content: '';
       filter: blur(5px);
     }
 
@@ -105,9 +101,11 @@ slot[name="end"] {
       0% {
         background-position: 0 0;
       }
+
       50% {
         background-position: 100% 0;
       }
+
       100% {
         background-position: 0 0;
       }
@@ -116,8 +114,8 @@ slot[name="end"] {
 }
 
 // apply the theme template for the component
-@include ods-theme-component() {
-  @include osds-tile-theme-color();
-  @include osds-tile-theme-size();
-  @include osds-tile-theme-typography();
+@include ods-theme-component {
+  @include osds-tile-theme-color;
+  @include osds-tile-theme-size;
+  @include osds-tile-theme-typography;
 }

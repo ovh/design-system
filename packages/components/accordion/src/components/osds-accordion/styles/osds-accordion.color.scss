@@ -2,21 +2,20 @@
 @import './osds-accordion.mixins';
 
 @mixin osds-accordion-theme() {
-
   @include ods-all-hue-foreach-theme-color((
     background-color: '000',
     border-color: '200',
     color: '500',
   )) using($colors) {
-    @include osds-accordion-on-selected-host() {
-      @include osds-accordion-on-main() {
-        background-color: map_get($colors, background-color);
-        border-color: map_get($colors, border-color);
-        color: var(--ods-color-text-500);
-
-        @include osds-accordion-on-summary() {
+    @include osds-accordion-on-selected-host {
+      @include osds-accordion-on-main {
+        @include osds-accordion-on-summary {
           color: map_get($colors, color);
         }
+
+        border-color: map_get($colors, border-color);
+        background-color: map_get($colors, background-color);
+        color: var(--ods-color-text-500);
       }
     }
   }
@@ -25,8 +24,8 @@
     @include ods-and-all-hue-foreach-theme-color((
       border-color: '100'
     )) using($colors) {
-      @include osds-accordion-on-selected-host() {
-        @include osds-accordion-on-main() {
+      @include osds-accordion-on-selected-host {
+        @include osds-accordion-on-main {
           border-color: map_get($colors, border-color);
         }
       }
@@ -39,24 +38,25 @@
       border-color: '200-contrasted',
       color: '500-contrasted'
     )) using($colors) {
-      @include osds-accordion-on-selected-host() {
-        @include osds-accordion-on-main() {
-          background-color: map_get($colors, background-color);
-          border-color: map_get($colors, border-color);
-          color: var(--ods-color-text-500-contrasted);
-
-          @include osds-accordion-on-summary() {
+      @include osds-accordion-on-selected-host {
+        @include osds-accordion-on-main {
+          @include osds-accordion-on-summary {
             color: map_get($colors, color);
           }
+
+          border-color: map_get($colors, border-color);
+          background-color: map_get($colors, background-color);
+          color: var(--ods-color-text-500-contrasted);
         }
       }
     }
+
     &:not([opened]) {
       @include ods-and-all-hue-foreach-theme-color((
         border-color: '100-contrasted'
       )) using($colors) {
-        @include osds-accordion-on-selected-host() {
-          @include osds-accordion-on-main() {
+        @include osds-accordion-on-selected-host {
+          @include osds-accordion-on-main {
             border-color: map_get($colors, border-color);
           }
         }
@@ -66,5 +66,5 @@
 }
 
 @mixin osds-accordion-theme-color() {
-  @include osds-accordion-theme();
+  @include osds-accordion-theme;
 }

@@ -1,28 +1,24 @@
 @import '~@ovhcloud/ods-common-theming/ods-theme';
-@import "styles/osds-content-addon.mixins.scss";
+@import "styles/osds-content-addon.mixins";
 
 :host {
   display: inline-block;
 
   .osds-content-addon {
     display: grid;
-    grid-template-columns: max-content max-content max-content;
-    grid-template-rows: min-content min-content min-content;
-    grid-auto-columns: 1fr;
+    grid-template:
+    "top top top" min-content "start main end" min-content "bottom bottom bottom" min-content / max-content max-content max-content;
     grid-auto-rows: 1fr;
-    gap: 0 0;
+    grid-auto-columns: 1fr;
     grid-auto-flow: row;
-    grid-template-areas:
-    "top top top"
-    "start main end"
-    "bottom bottom bottom";
+    gap: 0 0;
     width: 100%;
     height: 100%;
 
     .inset-grid {
       display:grid;
-      grid-template-columns: auto auto auto;
       grid-template-areas: "start main end";
+      grid-template-columns: auto auto auto;
       align-items: baseline;
     }
 

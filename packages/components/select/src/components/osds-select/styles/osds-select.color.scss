@@ -4,23 +4,28 @@
 @mixin osds-select-theme-color-error-state() {
   .ods-error {
     $border: ods-get-color-variable($intent-name: error, $hue: '500');
-    @include osds-select-on-select-element() {
+
+    @include osds-select-on-select-element {
       border-color: $border;
     }
-    @include osds-select-on-overlay-element() {
+
+    @include osds-select-on-overlay-element {
       border-color: $border;
     }
   }
 }
 
 @mixin osds-select-theme-color() {
+  /** Override error state colors in */
+  @include osds-select-theme-color-error-state;
+
   /** main colors */
   :host {
     .select-trigger {
-      background-color: var(--ods-color-primary-000);
-      border-color: ods-get-color-variable($intent-name: primary, $hue: '200');
-      color: ods-get-color-variable($intent-name: primary, $hue: '500');
       outline: none;
+      border-color: ods-get-color-variable($intent-name: primary, $hue: '200');
+      background-color: var(--ods-color-primary-000);
+      color: ods-get-color-variable($intent-name: primary, $hue: '500');
 
       &:hover {
         background-color: ods-get-color-variable($intent-name: primary, $hue: '100');
@@ -50,7 +55,4 @@
       }
     }
   }
-
-  /** Override error state colors in */
-  @include osds-select-theme-color-error-state();
 }

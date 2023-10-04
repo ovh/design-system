@@ -7,13 +7,13 @@
 // CSS for the component but not for theming
 
 :host {
-  margin: 0;
   display: block;
   position: relative;
+  margin: 0;
 
   .option {
-    align-items: center;
     display: flex;
+    align-items: center;
   }
 
   .option > .truncated {
@@ -26,14 +26,14 @@
 }
 
 :host(:focus-visible) {
-  outline-style: dotted;
-  outline-width: var(--ods-size-inset-02);
   outline-offset: var(--ods-size-inset-02);
+  outline-width: var(--ods-size-inset-02);
+  outline-style: dotted;
 }
 
 // apply the theme template for the component
-@include ods-theme-component() {
-  @include osds-select-option-theme-color();
-  @include osds-select-option-theme-size();
-  @include osds-select-option-theme-typography();
+@include ods-theme-component {
+  @include osds-select-option-theme-color;
+  @include osds-select-option-theme-size;
+  @include osds-select-option-theme-typography;
 }

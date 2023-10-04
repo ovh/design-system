@@ -1,7 +1,6 @@
 @import 'styles/osds-icon.color';
 @import 'styles/osds-icon.mixins';
 @import 'styles/osds-icon.size';
-
 @import '~@ovhcloud/ods-common-theming/color/ods-theming-color';
 @import '~@ovhcloud/ods-common-theming/ods-theme';
 
@@ -13,7 +12,7 @@
 }
 
 // apply the theme template for the component
-@include ods-theme-component() {
-  @include osds-icon-theme-color();
-  @include osds-icon-theme-size();
+@include ods-theme-component {
+  @include osds-icon-theme-color;
+  @include osds-icon-theme-size;
 }

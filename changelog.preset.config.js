@@ -53,6 +53,6 @@ module.exports = Promise.resolve()
     preset.writerOpts.mainTemplate = main;
     preset.writerOpts.headerPartial = header;
     preset.writerOpts.commitUrlFormat = '{{host}}/{{owner}}/{{repository}}/commits/{{hash}}';
-    preset.writerOpts.compareUrlFormat = '{{host}}/{{owner}}/{{repository}}/compare/{{currentTag}}...{{previousTag}}'
+    preset.writerOpts.compareUrlFormat = '{{host}}/{{owner}}/{{repository}}/compare/{{currentTag}}...{{previousTag}}';
     return preset;
   })

@@ -12,7 +12,7 @@ import { OdsModalMethod } from './interfaces/methods';
 @Component({
   tag: 'osds-modal',
   styleUrl: 'osds-modal.scss',
-  shadow: true
+  shadow: true,
 })
 export class OsdsModal implements OdsModalAttribute, OdsModalMethod {
   @Element() el!: HTMLElement;
@@ -48,13 +48,13 @@ export class OsdsModal implements OdsModalAttribute, OdsModalMethod {
   @Watch('masked')
   watchOpenedStateHandler(masked: boolean) {
     const directChildren = Array.from(document.body.children);
-    const filteredChildren = directChildren.filter(child => child !== this.el && child.nodeName !== 'SCRIPT');
-
-    for (const child of filteredChildren) {
-      if (!masked) {
-        child.setAttribute('inert', '');
-      } else {
-        child.removeAttribute('inert');
+    for (const child of directChildren) {
+      if (child !== this.el && child.nodeName !== 'SCRIPT') {
+        if (!masked) {
+          child.setAttribute('inert', '');
+        } else {
+          child.removeAttribute('inert');
+        }
       }
     }
   }
@@ -64,13 +64,7 @@ export class OsdsModal implements OdsModalAttribute, OdsModalMethod {
   }
 
   render() {
-
-    const {
-      color,
-      headline,
-      dismissible,
-      masked
-    } = this;
+    const { color, headline, dismissible, masked } = this;
 
     return (
       <Host masked={masked}>
@@ -78,33 +72,21 @@ export class OsdsModal implements OdsModalAttribute, OdsModalMethod {
 
         <div class="wrapper">
           <div class="header">
-            { dismissible &&
-              <osds-button
-                onClick={() => this.close()}
-                color={color}
-                circle={true}
-                ghost={true}
-              >
-                <osds-icon
-                  ariaName={ODS_ICON_NAME.CLOSE + " icon"}
-                  name={ODS_ICON_NAME.CLOSE}
-                  size={ODS_ICON_SIZE.sm}
-                  color={color}
-                ></osds-icon>
+            {dismissible && (
+              <osds-button onClick={() => this.close()} color={color} circle={true} ghost={true}>
+                <osds-icon ariaName={ODS_ICON_NAME.CLOSE + ' icon'} name={ODS_ICON_NAME.CLOSE} size={ODS_ICON_SIZE.sm} color={color}></osds-icon>
               </osds-button>
-            }
+            )}
           </div>
 
           <div class="content">
-            {headline && headline.length > 0 &&
+            {headline && headline.length > 0 && (
               <div class="headline">
-                <osds-text
-                  level={ODS_TEXT_LEVEL.heading}
-                  size={ODS_THEME_TYPOGRAPHY_SIZE._400}
-                  color={ODS_THEME_COLOR_INTENT.primary}
-                >{headline}</osds-text>
+                <osds-text level={ODS_TEXT_LEVEL.heading} size={ODS_THEME_TYPOGRAPHY_SIZE._400} color={ODS_THEME_COLOR_INTENT.primary}>
+                  {headline}
+                </osds-text>
               </div>
-            }
+            )}
 
             <div class="slot">
               <slot></slot>

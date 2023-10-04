@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [16.2.0](https://ovh.github.io/design-system/v16.2.0/?path=/docs/design-system-changelog--page) (2023-10-04)
+[compare](https://github.com/ovh/design-system/compare/v16.1.1...v16.2.0)
+
+### Bug Fixes
+
+* **docs:** better type for Array & typo ([a2c99a4](https://github.com/ovh/design-system/commit/a2c99a44030bef1de2a08ee7c91822783b19f508))
+* **textarea:** emit odsValueChange on value change ([753749f](https://github.com/ovh/design-system/commit/753749fd86557a3790d66bc7a3f4bc6194828b10))
+* **textarea:** emit odsValueChange on value change ([d828b4e](https://github.com/ovh/design-system/commit/d828b4e7942d9ff93425fb594d69dc8f18dcc2c6))
+
+
+### Features
+
+* **ci:** add command to build only minimal required libs ([0828885](https://github.com/ovh/design-system/commit/082888576cea53e62072580f2f9d50fcebe507ad))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

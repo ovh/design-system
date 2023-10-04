@@ -6,6 +6,18 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [16.2.0](https://ovh.github.io/design-system/v16.2.0/?path=/docs/design-system-changelog--page) (2023-10-04)
+[compare](https://github.com/ovh/design-system/compare/v16.1.1...v16.2.0)
+
+**Note:** Version bump only for package @ovhcloud/ods-style-dev
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [16.1.1](https://ovh.github.io/design-system/v16.1.1/?path=/docs/design-system-changelog--page) (2023-09-28)
 [compare](https://github.com/ovh/design-system/compare/v16.1.0...v16.1.1)
 

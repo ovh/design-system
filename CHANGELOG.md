@@ -8,6 +8,43 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [16.2.0](https://ovh.github.io/design-system/v16.2.0/?path=/docs/design-system-changelog--page) (2023-10-04)
+[compare](https://github.com/ovh/design-system/compare/v16.1.1...v16.2.0)
+
+### Bug Fixes
+
+* **docs:** better type for Array & typo ([a2c99a4](https://github.com/ovh/design-system/commit/a2c99a44030bef1de2a08ee7c91822783b19f508))
+* **menu:** update expected button element ([7fe7058](https://github.com/ovh/design-system/commit/7fe7058f42a1fd1e46433793161af0f3fe79529a))
+* **text:** reorganize style files ([144c697](https://github.com/ovh/design-system/commit/144c697c1839c16ff62e26286fb91c9bc0ec7aa0))
+* **textarea:** emit odsValueChange on value change ([753749f](https://github.com/ovh/design-system/commit/753749fd86557a3790d66bc7a3f4bc6194828b10))
+* **textarea:** emit odsValueChange on value change ([d828b4e](https://github.com/ovh/design-system/commit/d828b4e7942d9ff93425fb594d69dc8f18dcc2c6))
+
+
+### Features
+
+* **ci:** add command to build only minimal required libs ([0828885](https://github.com/ovh/design-system/commit/082888576cea53e62072580f2f9d50fcebe507ad))
+* **clipboard:** add tooltip message for confirmation ([#208](https://github.com/ovh/design-system/issues/208)) ([edd9463](https://github.com/ovh/design-system/commit/edd9463cb6b65a5d8c61105bf7a7bccc0bae2155))
+* **datepicker:** addressing changes ([c8664f8](https://github.com/ovh/design-system/commit/c8664f82b7959c38117b1031303c48e44e2ee39d))
+* **datepicker:** addressing changes ([c33cd08](https://github.com/ovh/design-system/commit/c33cd0800333c0fe1ec2dce4779d291bd23e9e81))
+* **datepicker:** addressing changes ([536c061](https://github.com/ovh/design-system/commit/536c061e4da9e59e2071e9c314accb0617014246))
+* **datepicker:** addressing changes ([5247506](https://github.com/ovh/design-system/commit/5247506bce475ce050365b066c9c57caf3f507c2))
+* **datepicker:** addressing changes ([bd4dc48](https://github.com/ovh/design-system/commit/bd4dc48be6ef88af092e0c0a2211f5eeb8a57e42))
+* **datepicker:** addressing changes ([e7e80c1](https://github.com/ovh/design-system/commit/e7e80c1e4262c153c9a34364b1d06404a23815c4))
+* **datepicker:** addressing changes ([ab5e233](https://github.com/ovh/design-system/commit/ab5e2336200cfb48ba4591b426b8ec1336f765b0))
+* **datepicker:** addressing changes ([0cc2f76](https://github.com/ovh/design-system/commit/0cc2f763040b9c06d1f6a9589eca05425e85bc65))
+* **datepicker:** date picker component ([acc5b28](https://github.com/ovh/design-system/commit/acc5b2881a2eb89af5847305e7f19f58812c1a4b))
+* **datepicker:** remove typedoc-json-to-md ([021d89f](https://github.com/ovh/design-system/commit/021d89f05c6680cf4bf6b95542f41202f8af1d09))
+* **datepicker:** step 1, component with no style ([15b5f0e](https://github.com/ovh/design-system/commit/15b5f0e7a8a8d2646d750e0016183fc38f6c36b7))
+* **datepicker:** step 2, styling the component ([#207](https://github.com/ovh/design-system/issues/207)) ([cd851a1](https://github.com/ovh/design-system/commit/cd851a112a19462351801a3a970b157f2e741eb5))
+* **datepicker:** step 3, excluding dates ([#219](https://github.com/ovh/design-system/issues/219)) ([ed6cdb7](https://github.com/ovh/design-system/commit/ed6cdb7bc817de2847b03c0db4e04deb5a79b5bf))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [16.1.1](https://ovh.github.io/design-system/v16.1.1/?path=/docs/design-system-changelog--page) (2023-09-28)
 [compare](https://github.com/ovh/design-system/compare/v16.1.0...v16.1.1)
 

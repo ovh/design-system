@@ -5,8 +5,8 @@
 @import '~@ovhcloud/ods-common-theming/ods-theme';
 
 :host {
-  display: inline-block;
   box-sizing: border-box;
+  display: inline-block;
 
   // avoid side effect alignment from the consumer application
   text-align: left;
@@ -18,31 +18,31 @@ slot[name="empty"] {
 
 :host([collapsed]) {
   display: inline-grid;
-  grid-auto-columns: 1fr;
-  grid-auto-rows: 1fr;
   grid-template-rows: min-content 0 min-content;
+  grid-auto-rows: 1fr;
+  grid-auto-columns: 1fr;
 
   .container {
+    transition: all 1s;
     height: 0;
     overflow: hidden;
-    transition: all 1s;
   }
 }
 
 :host([collapsible]) {
   display: inline-grid;
-  grid-auto-columns: 1fr;
-  grid-auto-rows: 1fr;
   grid-template-rows: min-content 1fr min-content;
+  grid-auto-rows: 1fr;
+  grid-auto-columns: 1fr;
 
   .container {
-    -ms-overflow-style: none;
-    align-self: stretch;
     grid-area: 2 / 1 / 3 / 2;
+    align-self: stretch;
     justify-self: stretch;
+    overflow-y: auto;
+    -ms-overflow-style: none;
     mask-position: 0 0, 100% 0;
     mask-repeat: no-repeat, no-repeat;
-    overflow-y: auto;
     scrollbar-width: none;
   }
 
@@ -52,8 +52,8 @@ slot[name="empty"] {
 }
 
 // apply the theme template for the component
-@include ods-theme-component() {
-  @include osds-cart-theme-color();
-  @include osds-cart-theme-size();
-  @include osds-cart-theme-typography();
+@include ods-theme-component {
+  @include osds-cart-theme-color;
+  @include osds-cart-theme-size;
+  @include osds-cart-theme-typography;
 }

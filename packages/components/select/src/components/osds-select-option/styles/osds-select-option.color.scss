@@ -20,7 +20,7 @@
   /** disabled colors */
   [disabled],
   [disabled]:focus {
-    @include osds-select-option-on-selected-host() {
+    @include osds-select-option-on-selected-host {
       opacity: .5;
     }
   }

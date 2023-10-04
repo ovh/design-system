@@ -6,15 +6,20 @@
 // CSS for the component but not for theming
 
 :host {
-  display: flex;
-  flex-direction: row;
   --ods-input-text-align: center;
   --ods-input-width: calc(2.813rem * var(--ods-size-ratio));
   --ods-icon-vertical-align: middle;
+
+  display: flex;
+  flex-direction: row;
 }
 
 :host([disabled]) {
   cursor: not-allowed;
+}
+
+slot {
+  display: block;
 }
 
 slot[name] {
@@ -23,15 +28,11 @@ slot[name] {
 }
 
 slot:not([name]) {
-  margin-left: var(--ods-size-03);
   margin-right: var(--ods-size-03);
-}
-
-slot {
-  display: block;
+  margin-left: var(--ods-size-03);
 }
 
 // apply the theme template for the component
-@include ods-theme-component() {
-  @include osds-quantity-theme-size();
+@include ods-theme-component {
+  @include osds-quantity-theme-size;
 }

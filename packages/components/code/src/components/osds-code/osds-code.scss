@@ -1,20 +1,20 @@
 @import 'styles/osds-code.mixins';
 @import 'styles/osds-code.color';
 @import 'styles/osds-code.size';
-@import 'styles/osds-code.typography.scss';
+@import 'styles/osds-code.typography';
 @import '~@ovhcloud/ods-common-theming/color/ods-theming-color';
 @import '~@ovhcloud/ods-common-theming/reset/ods-theming-reset.button';
 @import '~@ovhcloud/ods-common-theming/ods-theme';
 
 // CSS for the component but not for theming
 :host {
-  @include osds-code-on-main-element() {
-    display: flex;
-
-    @include osds-code-on-container-element() {
+  @include osds-code-on-main-element {
+    @include osds-code-on-container-element {
       flex-grow: 1;
       white-space: pre-line;
     }
+
+    display: flex;
   }
 
   ::slotted([slot="copy"]) {
@@ -23,8 +23,8 @@
 }
 
 // apply the theme template for the component
-@include ods-theme-component() {
-  @include osds-code-theme-color();
-  @include osds-code-theme-size();
-  @include osds-code-theme-typography();
+@include ods-theme-component {
+  @include osds-code-theme-color;
+  @include osds-code-theme-size;
+  @include osds-code-theme-typography;
 }

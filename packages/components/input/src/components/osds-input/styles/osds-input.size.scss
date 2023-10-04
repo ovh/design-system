@@ -2,22 +2,17 @@
 @import './osds-input.mixins';
 
 @mixin osds-input-theme-size() {
-  /** sizes */
-  :host {
-    width: var(--ods-input-width, auto);
-  }
-
   @include ods-foreach-theme-size(input) using ($sizes) {
-    @include osds-input-on-selected-host() {
-      height: ods-get-size-property($sizes, height);
+    @include osds-input-on-selected-host {
       border-width: ods-get-size-property($sizes, border-width);
       border-radius: ods-get-size-property($sizes, border-radius);
       padding: var(--ods-input-padding, ods-get-size-property($sizes, padding));
+      height: ods-get-size-property($sizes, height);
 
       osds-icon {
         min-width: ods-get-size-property($sizes, icon-width);
-        min-height: ods-get-size-property($sizes, icon-height);
         max-width: ods-get-size-property($sizes, icon-width);
+        min-height: ods-get-size-property($sizes, icon-height);
         max-height: ods-get-size-property($sizes, icon-height);
       }
 
@@ -25,5 +20,10 @@
         margin-left: var(--ods-size-03);
       }
     }
+  }
+
+  /** sizes */
+  :host {
+    width: var(--ods-input-width, auto);
   }
 }

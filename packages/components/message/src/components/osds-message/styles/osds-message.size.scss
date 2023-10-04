@@ -2,7 +2,6 @@
 @import 'osds-message.mixins';
 
 @mixin osds-message-theme-size() {
-
   /** base colors */
   :host {
     padding: var(--ods-size-inset-05);

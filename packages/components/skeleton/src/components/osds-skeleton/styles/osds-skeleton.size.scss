@@ -5,7 +5,7 @@
   /** sizes */
 
   @include ods-foreach-theme-size(skeleton) using ($sizes) {
-    @include osds-skeleton-on-selected-host() {
+    @include osds-skeleton-on-selected-host {
       width: ods-get-size-property($sizes, width);
     }
   }

@@ -4,7 +4,7 @@
   aspect-ratio: 4/3;
 }
 
-@supports not (aspect-ratio: 4/3) {
+@supports not (aspect-ratio: 4 / 3) {
   :host::before {
     float: left;
     padding-top: 75%;
@@ -13,8 +13,8 @@
 
   :host::after {
     display: block;
-    content: "";
     clear: both;
+    content: "";
   }
 }
 
@@ -23,7 +23,7 @@
 }
 
 .svg-inner.flag-default {
-  height: 100%;
-  width: 100%;
   background: var(--ods-color-gray-200);
+  width: 100%;
+  height: 100%;
 }

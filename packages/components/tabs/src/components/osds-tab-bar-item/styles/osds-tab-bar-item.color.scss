@@ -2,19 +2,19 @@
 @import './osds-tab-bar-item.mixin';
 
 @mixin osds-tab-item-theme-color() {
-
   // NOMINAL case
   :host {
-    color: var(--ods-color-primary-500);
     border-bottom-color: transparent;
+    color: var(--ods-color-primary-500);
   }
 
   :not([disabled]):hover {
-    @include osds-tab-bar-item-on-selected-host() {
-      color: var(--ods-color-primary-700);
+    @include osds-tab-bar-item-on-selected-host {
       border-bottom-color: var(--ods-color-primary-700);
+      color: var(--ods-color-primary-700);
     }
   }
+
   :host([active]) {
     border-bottom-color: inherit;
   }
@@ -25,19 +25,19 @@
 
   // DISABLED case
   [disabled] {
-    @include osds-tab-bar-item-on-selected-host() {
+    @include osds-tab-bar-item-on-selected-host {
       opacity: .5;
     }
   }
 
   // CONTRASTED case
   [contrasted] {
-    @include osds-tab-bar-item-on-selected-host() {
+    @include osds-tab-bar-item-on-selected-host {
       color: var(--ods-color-primary-000);
     }
 
     &:not([disabled]):hover {
-      @include osds-tab-bar-item-on-selected-host() {
+      @include osds-tab-bar-item-on-selected-host {
         border-bottom-color: var(--ods-color-primary-100);
         color: var(--ods-color-primary-100);
       }
@@ -45,14 +45,14 @@
 
 
     &[active] {
-      &:hover {
-        @include osds-tab-bar-item-on-selected-host() {
-          border-bottom-color: var(--ods-color-primary-100);
-        }
+      @include osds-tab-bar-item-on-selected-host {
+        border-bottom-color: var(--ods-color-primary-000);
       }
 
-      @include osds-tab-bar-item-on-selected-host() {
-        border-bottom-color: var(--ods-color-primary-000);
+      &:hover {
+        @include osds-tab-bar-item-on-selected-host {
+          border-bottom-color: var(--ods-color-primary-100);
+        }
       }
     }
   }

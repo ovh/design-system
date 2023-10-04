@@ -1,5 +1,5 @@
 // general mixins and functions for the component
-//
+
 @mixin osds-cart-footer-on-main-content() {
   :host(&) {
     @content;

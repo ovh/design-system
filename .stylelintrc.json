@@ -1,3 +1,12 @@
 {
-  "extends": ["stylelint-config-concentric-order", "stylelint-config-standard-scss"]
+  "extends": ["stylelint-config-concentric-order", "stylelint-config-standard-scss"],
+  "rules": {
+    "hue-degree-notation": "number",
+    "selector-class-pattern": [
+      "^[a-z]([-_]?[a-z0-9]+)*(__[a-z0-9]([-]?[a-z0-9]+)*)?(--[a-z0-9]([-]?[a-z0-9]+)*)?$",
+      {
+        "resolveNestedSelectors": true
+      }
+    ]
+  }
 }

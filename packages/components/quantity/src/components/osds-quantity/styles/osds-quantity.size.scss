@@ -2,7 +2,6 @@
 @import './osds-quantity.mixins';
 
 @mixin osds-quantity-theme-size() {
-
   :host {
     --ods-input-padding: 0;
     --ods-button-width: calc(2.25rem * var(--ods-size-ratio));

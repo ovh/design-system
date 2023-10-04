@@ -34,9 +34,11 @@
   &::-moz-range-track {
     background: $color;
   }
+
   &::-webkit-slider-runnable-track {
     background: $color;
   }
+
   &::-ms-track {
     background: $color;
   }
@@ -44,8 +46,8 @@
 
 @mixin thumb-color($background, $border, $hover-color){
   &::-moz-range-thumb {
-    background-color: $background;
     border-color: $border;
+    background-color: $background;
 
     &:hover {
       background-color: $hover-color;
@@ -57,8 +59,8 @@
   }
 
   &::-webkit-slider-thumb {
-    background-color: $background;
     border-color: $border;
+    background-color: $background;
 
     &:hover {
       background-color: $hover-color;
@@ -70,8 +72,8 @@
   }
 
   &::-ms-thumb {
-    background-color: $background;
     border-color: $border;
+    background-color: $background;
 
     &:hover {
       background-color: $hover-color;

@@ -2,25 +2,11 @@
 @import 'osds-link.mixins';
 
 @mixin osds-link-theme-color() {
-
-  :host {
-    @include osds-link-on-text-content() {
-      background-image: linear-gradient(currentColor, currentColor);
-    }
-  }
-
-  :host(:not([href])),
-  :host([href=""]) {
-    @include osds-link-on-link-container() {
-      background-color: transparent;
-    }
-  }
-
   @include ods-all-hue-foreach-theme-color((
           color: '500',
   )) using($colors) {
-    @include osds-link-on-selected-host() {
-      @include osds-link-on-link-container() {
+    @include osds-link-on-selected-host {
+      @include osds-link-on-link-container {
         color: map_get($colors, color);
       }
     }
@@ -32,7 +18,7 @@
   )) using($colors) {
     :host(&:hover),
     :host(&:focus) {
-      @include osds-link-on-link-container() {
+      @include osds-link-on-link-container {
         color: map_get($colors, color);
       }
     }
@@ -43,9 +29,22 @@
     border-color: '800',
   )) using($colors) {
     :host(&:active) {
-      @include osds-link-on-link-container() {
+      @include osds-link-on-link-container {
         color: map_get($colors, color);
       }
+    }
+  }
+
+  :host {
+    @include osds-link-on-text-content {
+      background-image: linear-gradient(currentcolor, currentcolor);
+    }
+  }
+
+  :host(:not([href])),
+  :host([href=""]) {
+    @include osds-link-on-link-container {
+      background-color: transparent;
     }
   }
 
@@ -53,8 +52,8 @@
     @include ods-and-all-hue-foreach-theme-color((
             color: '500-contrasted'
     )) using($colors) {
-      @include osds-link-on-selected-host() {
-        @include osds-link-on-link-container() {
+      @include osds-link-on-selected-host {
+        @include osds-link-on-link-container {
           color: map_get($colors, color);
         }
       }

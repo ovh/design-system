@@ -5,9 +5,9 @@
   /** sizes */
 
   @include ods-foreach-theme-size(icon) using ($sizes) {
-    @include osds-icon-on-selected-host() {
-      height: ods-get-size-property($sizes, height);
+    @include osds-icon-on-selected-host {
       width: ods-get-size-property($sizes, width);
+      height: ods-get-size-property($sizes, height);
     }
   }
 }

@@ -13,7 +13,6 @@ $font-weights: (
 );
 
 :root {
-  
   @each $size, $value in $font-weights {
     --ods-typo-weight-#{$size}: #{$value};
 

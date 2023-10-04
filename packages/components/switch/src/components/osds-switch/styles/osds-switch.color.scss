@@ -9,9 +9,8 @@
     background-color-checked-hover: '700',
     background-color-hover: '100',
   )) using($colors) {
-    @include osds-switch-on-selected-host() {
-      background-color: var(--ods-color-gray-100);
-      @include osds-switch-on-switch-items-child() {
+    @include osds-switch-on-selected-host {
+      @include osds-switch-on-switch-items-child {
         color: map_get($colors, color);
       }
 
@@ -23,6 +22,7 @@
 
       @include osds-switch-on-switch-items-child('[checked]') {
         color: var(--ods-color-default-000);
+
         &::before{
           background-color: map_get($colors, background-color-checked);
         }
@@ -30,11 +30,15 @@
 
       @include osds-switch-on-switch-items-child('[checked]:hover') {
         color: var(--ods-color-default-000);
+
         &::before {
-          color: var(--ods-color-default-000);
           background-color: map_get($colors, background-color-checked-hover);
+          color: var(--ods-color-default-000);
         }
       }
+
+      background-color: var(--ods-color-gray-100);
+
       [color="text"] {
         @include osds-switch-on-switch-items-child('[checked]') {
           color: map_get($colors, background-color-checked);
@@ -50,9 +54,10 @@
     background-color: '500-contrasted',
     background-color-checked: '600-contrasted',
   )) using($colors) {
-    @include osds-switch-on-selected-host() {
+    @include osds-switch-on-selected-host {
       @include osds-switch-on-switch-items-child('[checked]') {
         color: map_get($colors, color);
+
         &::before{
           background-color: map_get($colors, background-color-checked);
         }
@@ -67,13 +72,13 @@
   :host {
     background-color: transparent;
   }
+
   /** no variant specified: default variant colors */
   :not([variant]) {
-    @include osds-switch-theme-color-variant-default();
-  }
-  :not([variant]) {
+    @include osds-switch-theme-color-variant-default;
+
     &[contrasted] {
-      @include osds-switch-theme-color-variant-default__contrasted();
+      @include osds-switch-theme-color-variant-default__contrasted;
     }
   }
 }

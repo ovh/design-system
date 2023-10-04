@@ -26,7 +26,7 @@
 }
 
 @mixin osds-toggle-on-slider-before-element() {
-  .toggle__slider:before {
+  .toggle__slider::before {
     @content;
   }
 }

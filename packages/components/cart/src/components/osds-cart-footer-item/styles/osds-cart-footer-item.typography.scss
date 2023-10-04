@@ -3,41 +3,45 @@
 @mixin osds-cart-footer-item-theme-typography() {
   slot[name='title'] {
     $typography-properties: ods-get-typography-properties(body, '100');
+
+    line-height: ods-get-typography-property($typography-properties, line-height);
+    letter-spacing: ods-get-typography-property($typography-properties, letter-spacing);
     font-family: ods-get-typography-property($typography-properties, font-family);
     font-size: ods-get-typography-property($typography-properties, font-size);
-    font-style: ods-get-typography-property($typography-properties, font-style);
     font-weight: ods-get-typography-property($typography-properties, font-weight);
-    letter-spacing: ods-get-typography-property($typography-properties, letter-spacing);
-    line-height: ods-get-typography-property($typography-properties, line-height);
+    font-style: ods-get-typography-property($typography-properties, font-style);
   }
 
   slot[name='subhead'] {
     $typography-properties: ods-get-typography-properties(caption, '100');
+
+    line-height: ods-get-typography-property($typography-properties, line-height);
+    letter-spacing: ods-get-typography-property($typography-properties, letter-spacing);
     font-family: ods-get-typography-property($typography-properties, font-family);
     font-size: ods-get-typography-property($typography-properties, font-size);
-    font-style: ods-get-typography-property($typography-properties, font-style);
     font-weight: ods-get-typography-property($typography-properties, font-weight);
-    letter-spacing: ods-get-typography-property($typography-properties, letter-spacing);
-    line-height: ods-get-typography-property($typography-properties, line-height);
+    font-style: ods-get-typography-property($typography-properties, font-style);
   }
 
   slot[name='price'] {
     $typography-properties: ods-get-typography-properties(body, '200');
+
+    line-height: ods-get-typography-property($typography-properties, line-height);
+    letter-spacing: ods-get-typography-property($typography-properties, letter-spacing);
     font-family: ods-get-typography-property($typography-properties, font-family);
     font-size: ods-get-typography-property($typography-properties, font-size);
-    font-style: ods-get-typography-property($typography-properties, font-style);
     font-weight: ods-get-typography-property($typography-properties, font-weight);
-    letter-spacing: ods-get-typography-property($typography-properties, letter-spacing);
-    line-height: ods-get-typography-property($typography-properties, line-height);
+    font-style: ods-get-typography-property($typography-properties, font-style);
   }
 
   slot[name='extraFooter'] {
     $typography-properties: ods-get-typography-properties(caption, '100');
+
+    line-height: ods-get-typography-property($typography-properties, line-height);
+    letter-spacing: ods-get-typography-property($typography-properties, letter-spacing);
     font-family: ods-get-typography-property($typography-properties, font-family);
     font-size: ods-get-typography-property($typography-properties, font-size);
-    font-style: ods-get-typography-property($typography-properties, font-style);
     font-weight: ods-get-typography-property($typography-properties, font-weight);
-    letter-spacing: ods-get-typography-property($typography-properties, letter-spacing);
-    line-height: ods-get-typography-property($typography-properties, line-height);
+    font-style: ods-get-typography-property($typography-properties, font-style);
   }
 }

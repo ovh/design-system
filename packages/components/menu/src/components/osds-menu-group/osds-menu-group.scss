@@ -1,7 +1,6 @@
-@import 'styles/osds-menu-group.color.scss';
-@import 'styles/osds-menu-group.size.scss';
-@import 'styles/osds-menu-group.typography.scss';
-
+@import 'styles/osds-menu-group.color';
+@import 'styles/osds-menu-group.size';
+@import 'styles/osds-menu-group.typography';
 @import '~@ovhcloud/ods-common-theming/color/ods-theming-color';
 @import '~@ovhcloud/ods-common-theming/ods-theme';
 
@@ -14,8 +13,8 @@
   word-break: break-all;
 }
 
-@include ods-theme-component() {
-  @include osds-menu-group-theme-color();
-  @include osds-menu-group-theme-size();
-  @include osds-menu-group-theme-typography();
+@include ods-theme-component {
+  @include osds-menu-group-theme-color;
+  @include osds-menu-group-theme-size;
+  @include osds-menu-group-theme-typography;
 }

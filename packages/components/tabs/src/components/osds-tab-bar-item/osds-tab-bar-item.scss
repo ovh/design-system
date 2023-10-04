@@ -3,13 +3,12 @@
 @import './styles/osds-tab-bar-item.color';
 
 :host {
-  cursor: pointer;
-  white-space: nowrap;
-
-  padding: var(--ods-size-inset-04) var(--ods-size-inset-06);
   margin: 0 var(--ods-size-inset-05);
   border-bottom-width: 2px;
   border-bottom-style: solid;
+  cursor: pointer;
+  padding: var(--ods-size-inset-04) var(--ods-size-inset-06);
+  white-space: nowrap;
 }
 
 :host([disabled]) {
@@ -18,7 +17,7 @@
 
 
 // apply the theme template for the component
-@include ods-theme-component() {
-  @include osds-tabs-theme-typography();
-  @include osds-tab-item-theme-color();
+@include ods-theme-component {
+  @include osds-tabs-theme-typography;
+  @include osds-tab-item-theme-color;
 }

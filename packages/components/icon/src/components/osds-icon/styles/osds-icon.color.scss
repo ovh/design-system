@@ -3,14 +3,14 @@
 
 @mixin osds-icon-theme-color() {
   @include ods-one-hue-foreach-theme-color('500') using($color) {
-    @include osds-icon-on-selected-host() {
+    @include osds-icon-on-selected-host {
       background-color: $color;
     }
   }
 
   [contrasted] {
     @include ods-and-one-hue-foreach-theme-color('500-contrasted') using($color) {
-      @include osds-icon-on-selected-host() {
+      @include osds-icon-on-selected-host {
         background-color: $color;
       }
     }
@@ -18,15 +18,15 @@
 
   [hoverable] {
     :host(&[color='default']) {
-      @include osds-icon-on-selected-host() {
-        background-color: currentColor;
+      @include osds-icon-on-selected-host {
+        background-color: currentcolor;
       }
     }
 
     :host(&:not([color='default'])){
       @include ods-and-one-hue-foreach-theme-color('700') using($color) {
         :host(&:hover) {
-          @include osds-icon-on-selected-host() {
+          @include osds-icon-on-selected-host {
             background-color: $color;
           }
         }

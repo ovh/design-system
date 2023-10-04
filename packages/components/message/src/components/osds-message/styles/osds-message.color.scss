@@ -2,7 +2,6 @@
 @import 'osds-message.mixins';
 
 @mixin osds-message-theme-color() {
-
   :host {
     border-color: transparent;
   }
@@ -12,9 +11,9 @@
             color: '900',
             background-color: '100'
     )) using($colors) {
-      @include osds-message-on-selected-host() {
-        color: map_get($colors, color);
+      @include osds-message-on-selected-host {
         background-color: map_get($colors, background-color);
+        color: map_get($colors, color);
       }
     }
 
@@ -23,9 +22,9 @@
               color: '500',
               background-color: '500-contrasted'
       )) using($colors) {
-        @include osds-message-on-selected-host() {
-          color: map_get($colors, color);
+        @include osds-message-on-selected-host {
           background-color: map_get($colors, background-color);
+          color: map_get($colors, color);
         }
       }
     }

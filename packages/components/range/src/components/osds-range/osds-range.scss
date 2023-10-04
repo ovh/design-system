@@ -1,16 +1,15 @@
-@import 'styles/osds-range.color.scss';
-@import 'styles/osds-range.mixins.scss';
-@import 'styles/osds-range.size.scss';
-@import 'styles/osds-range.typography.scss';
-
+@import 'styles/osds-range.color';
+@import 'styles/osds-range.mixins';
+@import 'styles/osds-range.size';
+@import 'styles/osds-range.typography';
 @import '~@ovhcloud/ods-common-theming/color/ods-theming-color';
 @import '~@ovhcloud/ods-common-theming/ods-theme';
 
 :host {
-  width: 100%;
   display: flex;
-  flex-flow: column;
   position: relative;
+  flex-flow: column;
+  width: 100%;
 }
 
 :host([inline]) {
@@ -19,15 +18,73 @@
 }
 
 [disabled] {
-  @include osds-range-on-selected-host() {
-    cursor: not-allowed;
+  @include osds-range-on-selected-host {
     opacity: .5;
+    cursor: not-allowed;
 
     * {
       pointer-events: none;
     }
   }
 }
+
+.range-input,
+.range-input_dual {
+  @mixin thumb {
+    appearance: none;
+    box-sizing: border-box;
+    border-style: solid;
+    border-radius: 50%;
+    box-shadow: none;
+    cursor: pointer;
+    pointer-events: auto;
+  }
+
+  appearance: none;
+  box-sizing: border-box;
+  margin: 0;
+  border-color: transparent;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0;
+  width: inherit;
+  color: transparent;
+
+  &::-webkit-slider-runnable-track {
+    border: none;
+    box-shadow: none;
+    cursor: pointer;
+  }
+
+  &::-moz-range-track {
+    border: none;
+    box-shadow: none;
+    cursor: pointer;
+  }
+
+  &::-ms-fill-upper {
+    border: none;
+    box-shadow: none;
+    cursor: pointer;
+  }
+
+  &::-webkit-slider-thumb {
+    @include thumb;
+  }
+
+  &::-moz-range-thumb {
+    @include thumb;
+  }
+
+  &::-ms-thumb {
+    @include thumb;
+  }
+
+  &:focus-visible {
+    outline-style: dotted;
+  }
+}
+
 
 :host(.dual-range) {
   .range-input,
@@ -40,59 +97,6 @@
   }
 }
 
-.range-input,
-.range-input_dual {
-  -webkit-appearance: none;
-  background-color: transparent;
-  border-color: transparent;
-  box-sizing: border-box;
-  color: transparent;
-  cursor: pointer;
-  margin: 0;
-  padding: 0;
-  width: inherit;
-
-  &:focus-visible {
-    outline-style: dotted;
-  }
-
-  &::-webkit-slider-runnable-track {
-    box-shadow: none;
-    border: none;
-    cursor: pointer;
-  }
-  &::-moz-range-track {
-    box-shadow: none;
-    border: none;
-    cursor: pointer;
-  }
-  &::-ms-fill-upper {
-    box-shadow: none;
-    border: none;
-    cursor: pointer;
-  }
-
-  @mixin thumb {
-    -webkit-appearance: none;
-    box-sizing: border-box;
-    box-shadow: none;
-    border-radius: 50%;
-    border-style: solid;
-    cursor: pointer;
-    pointer-events: auto;
-  }
-
-  &::-webkit-slider-thumb {
-    @include thumb;
-  }
-  &::-moz-range-thumb {
-    @include thumb;
-  }
-  &::-ms-thumb {
-    @include thumb;
-  }
-}
-
 .range-bounds:not(:empty) {
   display: flex;
   flex-direction: row;
@@ -100,14 +104,14 @@
 
   ::slotted([slot="start-bound"]) {
     margin-bottom: var(--ods-size-stack-04);
-    text-align: start;
     width: 100%;
+    text-align: start;
   }
 
   ::slotted([slot="end-bound"]) {
     margin-bottom: var(--ods-size-stack-04);
-    text-align: end;
     width: 100%;
+    text-align: end;
   }
  }
 
@@ -119,8 +123,8 @@
 }
 
 // apply the theme template for the component
-@include ods-theme-component() {
-  @include osds-range-theme-color();
-  @include osds-range-theme-size();
-  @include osds-range-theme-typography();
+@include ods-theme-component {
+  @include osds-range-theme-color;
+  @include osds-range-theme-size;
+  @include osds-range-theme-typography;
 }

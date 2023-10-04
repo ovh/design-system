@@ -4,26 +4,20 @@
 // CSS for the component but not for theming
 
 :host(:not([disabled]):focus-visible) {
-  outline-style: dotted;
-  outline-width: var(--ods-size-inset-02);
+  outline: var(--ods-color-gray-500) dotted var(--ods-size-inset-02);
   outline-offset: var(--ods-size-inset-02);
-  outline-color: var(--ods-color-gray-500);
 }
 
 :host(:not([debug])) {
   display: block;
 
   .radio__input {
-    clip: rect(0 0 0 0);
-    clip-path: inset(100%);
+    position: absolute;
+    width: var(--ods-size-01);
     height: var(--ods-size-01);
     overflow: hidden;
-    position: absolute;
     white-space: nowrap;
-    width: var(--ods-size-01);
+    clip: rect(0 0 0 0);
+    clip-path: inset(100%);
   }
-}
-
-// apply the theme template for the component
-@include ods-theme-component() {
 }

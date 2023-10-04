@@ -14,8 +14,8 @@
   display: none;
 }
 
-@include ods-theme-component() {
-  @include osds-breadcrumb-item-theme-color();
-  @include osds-breadcrumb-item-theme-size();
-  @include osds-breadcrumb-item-theme-typography();
+@include ods-theme-component {
+  @include osds-breadcrumb-item-theme-color;
+  @include osds-breadcrumb-item-theme-size;
+  @include osds-breadcrumb-item-theme-typography;
 }

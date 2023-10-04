@@ -28,10 +28,10 @@
 }
 
 :not([disabled]):focus-visible {
-  @include osds-pagination-on-selected-host() {
-    outline-style: dotted;
-    outline-width: var(--ods-size-inset-02);
+  @include osds-pagination-on-selected-host {
     outline-offset: var(--ods-size-inset-02);
+    outline-width: var(--ods-size-inset-02);
+    outline-style: dotted;
   }
 }
 
@@ -45,7 +45,7 @@
 }
 
 // apply the theme template for the component
-@include ods-theme-component() {
-  @include osds-pagination-theme-color();
-  @include osds-pagination-theme-size();
+@include ods-theme-component {
+  @include osds-pagination-theme-color;
+  @include osds-pagination-theme-size;
 }

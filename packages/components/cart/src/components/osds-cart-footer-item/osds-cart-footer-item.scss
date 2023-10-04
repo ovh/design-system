@@ -5,15 +5,11 @@
 @import '~@ovhcloud/ods-common-theming/ods-theme';
 
 :host {
-
-  @include osds-cart-footer-item-on-main-content() {
+  @include osds-cart-footer-item-on-main-content {
     display: grid;
-    grid-template-columns: 1fr auto;
-    grid-template-rows: 1fr 1fr;
+    grid-template:
+      "cell-subhead-title cell-price-extra" 1fr "cell-subhead-title cell-price-extra" 1fr / 1fr auto;
     gap: 0 0;
-    grid-template-areas:
-      "cell-subhead-title cell-price-extra"
-      "cell-subhead-title cell-price-extra";
   }
 }
 
@@ -24,21 +20,21 @@ slot {
 .cell-subhead-title {
   display: grid;
   grid-area: cell-subhead-title;
-  align-content: center;
-  grid-template-columns: 1fr;
   grid-template-areas:
     "subhead"
     "title";
+  grid-template-columns: 1fr;
+  align-content: center;
 }
 
 .cell-price-extra {
   display: grid;
   grid-area: cell-price-extra;
-  align-content: center;
-  grid-template-columns: 1fr;
   grid-template-areas:
     "price"
     "extra";
+  grid-template-columns: 1fr;
+  align-content: center;
 }
 
 slot[name="subhead"] {
@@ -61,8 +57,8 @@ slot[name="extra"] {
 }
 
 // apply the theme template for the component
-@include ods-theme-component() {
-  @include osds-cart-footer-item-theme-color();
-  @include osds-cart-footer-item-theme-size();
-  @include osds-cart-footer-item-theme-typography();
+@include ods-theme-component {
+  @include osds-cart-footer-item-theme-color;
+  @include osds-cart-footer-item-theme-size;
+  @include osds-cart-footer-item-theme-typography;
 }

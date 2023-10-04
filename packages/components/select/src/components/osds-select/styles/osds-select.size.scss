@@ -9,20 +9,17 @@
 
 @mixin osds-select-theme-size() {
   @include ods-foreach-theme-size(select) using ($sizes) {
-    @include osds-select-on-select-element() {
+    @include osds-select-on-select-element {
       grid-column-gap: ods-get-size-property($sizes, grid-column-gap);
-      height: ods-get-size-property($sizes, height);
       border-width: ods-get-size-property($sizes, border-width);
       border-right-width: var(--ods-size-select-border-right-width, ods-get-size-property($sizes, border-width));
+      border-radius: var(--ods-size-select-border-radius-top-left, ods-get-size-property($sizes, border-radius)) var(--ods-size-select-border-radius-top-right, ods-get-size-property($sizes, border-radius)) var(--ods-size-select-border-radius-bottom-right, ods-get-size-property($sizes, border-radius)) var(--ods-size-select-border-radius-bottom-left, ods-get-size-property($sizes, border-radius));
       padding: ods-get-size-property($sizes, padding);
-      border-top-left-radius: var(--ods-size-select-border-radius-top-left, ods-get-size-property($sizes, border-radius));
-      border-bottom-left-radius: var(--ods-size-select-border-radius-bottom-left, ods-get-size-property($sizes, border-radius));
-      border-top-right-radius: var(--ods-size-select-border-radius-top-right, ods-get-size-property($sizes, border-radius));
-      border-bottom-right-radius: var(--ods-size-select-border-radius-bottom-right, ods-get-size-property($sizes, border-radius));
+      height: ods-get-size-property($sizes, height);
 
       &.opened {
-        border-bottom-right-radius: 0;
         border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
       }
 
       .overlay {
@@ -30,9 +27,9 @@
       }
     }
 
-    @include osds-select-on-overlay-element() {
-      border-width: ods-get-size-property($sizes, border-width) ods-get-size-property($sizes, border-width) ods-get-size-property($sizes, border-width) ods-get-size-property($sizes, border-width);
+    @include osds-select-on-overlay-element {
       top: ods-get-size-property($sizes, height);
+      border-width: ods-get-size-property($sizes, border-width) ods-get-size-property($sizes, border-width) ods-get-size-property($sizes, border-width) ods-get-size-property($sizes, border-width);
       min-width: calc(100% - var(--ods-size-inline-02));
     }
   }

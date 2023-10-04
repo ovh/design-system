@@ -6,8 +6,8 @@
 @import '~@ovhcloud/ods-common-theming/ods-theme';
 
 // apply the theme template for the component
-@include ods-theme-component() {
-  @include osds-popover-content-theme-color();
-  @include osds-popover-content-theme-size();
-  @include osds-popover-content-theme-typography();
+@include ods-theme-component {
+  @include osds-popover-content-theme-color;
+  @include osds-popover-content-theme-size;
+  @include osds-popover-content-theme-typography;
 }

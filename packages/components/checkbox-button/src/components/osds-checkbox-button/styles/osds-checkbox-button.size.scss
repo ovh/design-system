@@ -5,13 +5,13 @@
   /** sizes */
 
   @include ods-foreach-theme-size(checkbox-button) using ($sizes) {
-    @include osds-checkbox-button-on-main-element() {
-      border-width: ods-get-size-property($sizes, border-width);
-      height: ods-get-size-property($sizes, height);
-      margin: ods-get-size-property($sizes, margin);
-      width: ods-get-size-property($sizes, width);
-      aspect-ratio: 1/1;
+    @include osds-checkbox-button-on-main-element {
       box-sizing: border-box;
+      margin: ods-get-size-property($sizes, margin);
+      border-width: ods-get-size-property($sizes, border-width);
+      width: ods-get-size-property($sizes, width);
+      height: ods-get-size-property($sizes, height);
+      aspect-ratio: 1/1;
     }
   }
 }

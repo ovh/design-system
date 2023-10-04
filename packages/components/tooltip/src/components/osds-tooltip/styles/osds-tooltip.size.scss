@@ -8,12 +8,13 @@
   ocdk-surface {
     width: max-content;
     max-width: 300px;
-    word-break: break-all;
     overflow: visible;
+    word-break: break-all;
   }
 
   .tooltip-content {
     $size-properties: ods-get-size-properties($component-size-definition, md);
+
     border-radius: ods-get-size-property($size-properties, border-radius);
     padding: ods-get-size-property($size-properties, padding);
   }

@@ -7,6 +7,7 @@
     $size-definitions: ods-get-size-definitions();
     $component-size-definition: ods-get-component-size-definition($size-definitions, cart);
     $size-properties: ods-get-size-properties($component-size-definition, sm);
+
     margin: ods-get-size-property($size-properties, total-margin);
   }
 }

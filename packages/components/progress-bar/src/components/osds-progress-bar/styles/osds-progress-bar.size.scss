@@ -3,12 +3,12 @@
 
 // Main CSS mixin for sizes
 @mixin osds-progress-bar-theme-size() {
-  @include osds-progress-bar-on-progress() {
-    height: var(--ods-size-03);
+  @include osds-progress-bar-on-progress {
+    appearance: none;
+    transition : width ease 0.3s;
     border-radius: var(--ods-size-03);
     width: 100%;
-    transition : width ease 0.3s;
-    appearance: none;
+    height: var(--ods-size-03);
 
     &::-moz-progress-bar {
       border-radius: var(--ods-size-03);
@@ -20,10 +20,9 @@
     }
   }
 
-    @include osds-progress-bar-on-wrapper() {
-      transition: width ease-in-out 0.3s;
-
+    @include osds-progress-bar-on-wrapper {
       display: flex;
       align-items: center;
+      transition: width ease-in-out 0.3s;
     }
 }

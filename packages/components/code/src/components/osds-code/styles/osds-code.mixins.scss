@@ -2,7 +2,7 @@
 
 @mixin osds-code-on-selected-host() {
   :host(&) {
-    @include osds-code-on-main-element() {
+    @include osds-code-on-main-element {
       @content;
     }
   }

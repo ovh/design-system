@@ -2,11 +2,10 @@
 @import './osds-divider.mixins';
 
 @mixin osds-divider-theme-color() {
-
   @include ods-all-hue-foreach-theme-color((
     background-color: '100'
   )) using($colors) {
-    @include osds-divider-on-selected-host() {
+    @include osds-divider-on-selected-host {
       hr {
         background-color: map_get($colors, background-color);
       }
@@ -17,7 +16,7 @@
     @include ods-and-all-hue-foreach-theme-color((
       background-color: '100-contrasted'
     )) using($colors) {
-      @include osds-divider-on-selected-host() {
+      @include osds-divider-on-selected-host {
         hr {
           background-color: map_get($colors, background-color);
         }

@@ -7,9 +7,9 @@
   $size-properties: ods-get-size-properties($component-size-definition, md);
 
   [opened] {
-    @include osds-accordion-on-selected-host() {
-      @include osds-accordion-on-main() {
-        @include osds-accordion-on-summary() {
+    @include osds-accordion-on-selected-host {
+      @include osds-accordion-on-main {
+        @include osds-accordion-on-summary {
           padding-bottom: ods-get-size-property($size-properties, padding);
         }
       }
@@ -17,7 +17,7 @@
   }
 
   :host {
-    @include osds-accordion-on-main() {
+    @include osds-accordion-on-main {
       border: ods-get-size-property($size-properties, border-width) solid;
       padding: ods-get-size-property($size-properties, padding);
     }

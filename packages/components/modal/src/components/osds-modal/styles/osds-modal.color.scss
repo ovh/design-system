@@ -6,8 +6,8 @@
           color: '800',
           background-color: '100'
   )) using($colors) {
-    @include osds-modal-on-selected-host() {
-      //color: map_get($colors, color);
+    @include osds-modal-on-selected-host {
+      // color: map_get($colors, color);
 
       .wrapper {
         .header {
@@ -29,12 +29,12 @@
     }
 
     .wrapper {
-      background: #ffffff;
+      background: #fff;
     }
   }
 
   /** no variant specified: default variant colors */
   :not([variant]) {
-    @include osds-modal-theme-color-variant-default();
+    @include osds-modal-theme-color-variant-default;
   }
 }

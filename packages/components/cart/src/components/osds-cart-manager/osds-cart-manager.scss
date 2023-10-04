@@ -1,16 +1,9 @@
 @import '~@ovhcloud/ods-common-theming/ods-theme';
 
-:host {
-}
-
 slot {
   display: grid;
 }
 
 slot[name="content"] {
   padding: var(--ods-size-05) 0 0 0;
-}
-
-// apply the theme template for the component
-@include ods-theme-component() {
 }

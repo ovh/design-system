@@ -2,7 +2,7 @@
 
 @mixin osds-content-addon-on-main-content() {
   :host(&) {
-    @include osds-content-addon-on-main-element() {
+    @include osds-content-addon-on-main-element {
       @content;
     }
   }

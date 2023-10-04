@@ -34,6 +34,7 @@
     .container {
       /* /!\ This is hardcoded set due to non-interpolation of theming values */
       --mask-bottom-height: calc(100% - var(--ods-size-stack-04));
+
       mask-image: linear-gradient(to bottom, transparent, black var(--ods-size-stack-06), black var(--mask-bottom-height), transparent);
       mask-size: 100% 100%;
       padding: ods-get-size-property($size-properties, container-padding);

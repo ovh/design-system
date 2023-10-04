@@ -3,16 +3,15 @@
 
 @mixin osds-code-theme-size() {
   @include ods-foreach-theme-size(code) using ($sizes) {
-    @include osds-code-on-selected-host() {
-      border-radius: ods-get-size-property($sizes, border-radius);
-      margin: 0; // browser reset of <pre> tag
-      min-height: ods-get-size-properties($sizes, min-height);
-      padding: ods-get-size-property($sizes, global-padding);
-
-
-      @include osds-code-on-container-element() {
+    @include osds-code-on-selected-host {
+      @include osds-code-on-container-element {
         padding: ods-get-size-property($sizes, code-padding);
       }
+
+      margin: 0; // browser reset of <pre> tag
+      border-radius: ods-get-size-property($sizes, border-radius);
+      padding: ods-get-size-property($sizes, global-padding);
+      min-height: ods-get-size-properties($sizes, min-height);
     }
   }
 }

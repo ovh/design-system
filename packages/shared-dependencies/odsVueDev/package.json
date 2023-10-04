@@ -1,11 +1,11 @@
 {
   "name": "@ovhcloud/ods-vue-dev",
-  "version": "16.1.1",
+  "version": "16.2.0",
   "private": true,
   "description": "ODS common Vue dev dependencies",
   "license": "Apache-2.0",
   "dependencies": {
-    "@ovhcloud/ods-dev": "16.1.1",
+    "@ovhcloud/ods-dev": "16.2.0",
     "vue": "3.2.41"
   }
 }

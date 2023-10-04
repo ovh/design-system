@@ -8,6 +8,26 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [16.2.0](https://ovh.github.io/design-system/v16.2.0/?path=/docs/design-system-changelog--page) (2023-10-04)
+[compare](https://github.com/ovh/design-system/compare/v16.1.1...v16.2.0)
+
+### Features
+
+* **clipboard:** add tooltip message for confirmation ([#208](https://github.com/ovh/design-system/issues/208)) ([edd9463](https://github.com/ovh/design-system/commit/edd9463cb6b65a5d8c61105bf7a7bccc0bae2155))
+* **datepicker:** addressing changes ([c33cd08](https://github.com/ovh/design-system/commit/c33cd0800333c0fe1ec2dce4779d291bd23e9e81))
+* **datepicker:** addressing changes ([5247506](https://github.com/ovh/design-system/commit/5247506bce475ce050365b066c9c57caf3f507c2))
+* **datepicker:** addressing changes ([e7e80c1](https://github.com/ovh/design-system/commit/e7e80c1e4262c153c9a34364b1d06404a23815c4))
+* **datepicker:** step 1, component with no style ([15b5f0e](https://github.com/ovh/design-system/commit/15b5f0e7a8a8d2646d750e0016183fc38f6c36b7))
+* **datepicker:** step 2, styling the component ([#207](https://github.com/ovh/design-system/issues/207)) ([cd851a1](https://github.com/ovh/design-system/commit/cd851a112a19462351801a3a970b157f2e741eb5))
+* **datepicker:** step 3, excluding dates ([#219](https://github.com/ovh/design-system/issues/219)) ([ed6cdb7](https://github.com/ovh/design-system/commit/ed6cdb7bc817de2847b03c0db4e04deb5a79b5bf))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [16.1.1](https://ovh.github.io/design-system/v16.1.1/?path=/docs/design-system-changelog--page) (2023-09-28)
 [compare](https://github.com/ovh/design-system/compare/v16.1.0...v16.1.1)
 

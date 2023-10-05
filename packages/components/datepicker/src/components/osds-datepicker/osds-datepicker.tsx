@@ -119,7 +119,7 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
   }
 
   emitDatepickerValueChange(newValue: Date | undefined | null, oldValue?: Date | undefined | null): void {
-    this.odsDatepickerValueChange.emit({ value: newValue, oldValue: oldValue });
+    this.odsDatepickerValueChange.emit({ value: newValue, oldValue: oldValue, formattedValue: newValue && this.format ? Datepicker.formatDate(newValue, this.format) : undefined });
   }
 
   onBlur(): void {

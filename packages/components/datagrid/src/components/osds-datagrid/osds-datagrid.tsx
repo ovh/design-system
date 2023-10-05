@@ -28,8 +28,8 @@ export class OsdsDatagrid implements OdsDatagridAttribute {
   /** @see OdsDatagridAttribute.isSelectable */
   @Prop({ reflect: true }) public isSelectable?: boolean = DEFAULT_ATTRIBUTE.isSelectable;
 
-   /** @see OdsDatagridAttribute.placeholder */
-   @Prop({ reflect: true }) public placeholder?: string = DEFAULT_ATTRIBUTE.placeholder;
+   /** @see OdsDatagridAttribute.noResultLabel */
+   @Prop({ reflect: true }) public noResultLabel?: string = DEFAULT_ATTRIBUTE.noResultLabel;
 
   componentDidLoad(): void {
     if (!this.grid) {
@@ -42,12 +42,12 @@ export class OsdsDatagrid implements OdsDatagridAttribute {
       height: '100%',
       data: rows,
       layout: 'fitColumns',
-      placeholder: this.placeholder,
+      placeholder: this.noResultLabel,
       columns: this.controler.getTabulatorColumns(columns),
       headerSortElement: (_column: ColumnComponent, dir: 'asc' | 'desc' | 'none') => {
         const getIcon = () => {
           if (dir === 'none') {
-            return ODS_ICON_NAME.SORT;
+            return ODS_ICON_NAME.SORT_DOWN;
           }
           return dir === 'desc' ? ODS_ICON_NAME.SORT_UP : ODS_ICON_NAME.SORT_DOWN;
         }

@@ -20,6 +20,7 @@ class OdsDatagridController {
             titleFormatter: (cell: CellComponent) => this.getOdsText(cell.getValue(), ODS_TEXT_SIZE._500),
             formatter: (cell: CellComponent) => this.getOdsText(cell.getValue(), ODS_TEXT_SIZE._400),
             hozAlign: 'center',
+            minWidth: 100,
         }
     }
 
@@ -33,7 +34,7 @@ class OdsDatagridController {
                 resizable: false,
                 cssClass: 'ods-selectable__input-checkbox',
                 cellClick: (_e: UIEvent, cell: CellComponent) => cell.getRow().toggleSelect(),
-                width: '40',
+                width: 40,
             } as ColumnDefinition] || []),
             ...columns.map((column) => this.toTabulatorColumn(column)),
         ];

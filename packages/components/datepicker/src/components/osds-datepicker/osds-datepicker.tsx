@@ -265,7 +265,6 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
           placeholder={placeholder}
           type={ODS_INPUT_TYPE.text}
           value={this.formatDate(value)}
-          style={{ '--placeholder-color': 'red' }}
         ></osds-input>
         <input
           tabindex={-1}

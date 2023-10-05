@@ -96,6 +96,11 @@ Object.keys(examples).forEach(k => {
   // todo
   // examples.select1.component && (examples.select1.component.opened = !examples.select1.component.opened);
   // evt.stopPropagation()
+  const options = document.querySelectorAll('#select1 > osds-select-option');
+  options.forEach((option) => {
+    option.innerHTML = `NewValue${option.getAttribute('value')}`;
+  });
+  // const select = document.querySelector('#select1');
 };
 
 (window as any).select6Clear = function () {

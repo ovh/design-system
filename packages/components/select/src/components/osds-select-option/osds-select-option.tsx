@@ -4,8 +4,7 @@ import type { OdsSelectOptionAttribute } from './interfaces/attributes';
 import type { OdsSelectOptionEvent, OdsSelectOptionClickEventDetail } from './interfaces/events';
 import type { OdsSelectOptionMethod } from './interfaces/methods';
 import type { OsdsSelect } from '../osds-select/osds-select';
-import { Component, Element, Event, EventEmitter, Host, Method, Prop, State, Watch, h } from '@stencil/core';
-import { OdsLogger } from '@ovhcloud/ods-common-core';
+import { Component, Element, Event, EventEmitter, Host, Method, Prop, State, h } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE as SELECT_DEFAULT_ATTRIBUTE } from '../osds-select/constants/default-attributes';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 
@@ -18,7 +17,6 @@ import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
   shadow: true,
 })
 export class OsdsSelectOption implements OdsSelectOptionAttribute, OdsSelectOptionEvent, OdsSelectOptionMethod {
-  private logger = new OdsLogger('OsdsSelectOption');
   private selectParent: (HTMLStencilElement & OsdsSelect) | null = null;
 
   @Element() el!: HTMLStencilElement;
@@ -73,23 +71,12 @@ export class OsdsSelectOption implements OdsSelectOptionAttribute, OdsSelectOpti
     return this.el.innerText;
   }
 
-  @Watch('value')
-  watchValue(value: OdsInputValue) {
-    this.logger.log(`[select=${this.value}]`, 'value changed', { value });
-  }
-
-  @Watch('selected')
-  updateSelectGroupValue(selected: boolean) {
-    this.logger.log(`[select=${this.value}]`, 'selected changed.', { selected });
-  }
-
   emitClick(value: OdsInputValue) {
     this.odsSelectOptionClick.emit({ value });
   }
 
   handleClick(event: MouseEvent) {
     event.stopPropagation();
-    this.logger.log(`[select=${this.value}]`, 'option clicked.');
     this.emitClick(this.value);
   }
 

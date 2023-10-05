@@ -1,7 +1,7 @@
 interface OdsDatagridColumn {
   field: string // the key matching the row property
-  title: string // the column title
   isSortable?: boolean // Column is sortable by string
+  title: string // the column title
 }
 
 interface OdsDatagridRow {
@@ -12,15 +12,15 @@ interface OdsDatagridRow {
 interface OdsDatagridAttribute {
   /** The list of the column */
   columns: OdsDatagridColumn[] | string;
+  /** The rows can be selectable */
+  isSelectable?: boolean
+  /** Text when the datagrid was no rows */
+  noResultLabel?: string;
   /** 
    * The list of the rows 
    * The key need to be according to the column field
    */
   rows: OdsDatagridRow[] | string;
-  /** The rows can be selectable */
-  isSelectable?: boolean
-  /** Text when the datagrid was no rows */
-  placeholder?: string;
 }
 
 export {

@@ -3,8 +3,8 @@ class Stub {
 
     }
 
-    static formatDate() {
-
+    static formatDate(date, format) {
+        return `${date} ${format}`;
     }
 
     static parseDate() {
@@ -12,6 +12,7 @@ class Stub {
     }
 }
 
+// eslint-disable-next-line no-undef
 module.exports = {
     Datepicker: Stub,
 };

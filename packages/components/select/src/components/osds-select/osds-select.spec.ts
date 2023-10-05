@@ -9,6 +9,17 @@ import { DEFAULT_VALIDITY_STATE } from './constants/default-validity-state';
 import { ODS_SELECT_SIZE } from './constants/select-size';
 import { OsdsSelect } from './osds-select';
 
+const mutationObserverMock = jest.fn(function MutationObserver(callback) {
+  this.observe = jest.fn();
+  this.disconnect = jest.fn();
+  // Optionally add a trigger() method to manually trigger a change
+  this.trigger = (mockedMutationsList) => {
+      callback(mockedMutationsList, this);
+  };
+});
+// @ts-ignore
+global.MutationObserver = mutationObserverMock;
+
 const logger = new OdsLogger('osds-select-spec');
 
 // mock validity property that does not exist when stencil mock HTMLInputElement

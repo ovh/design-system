@@ -88,6 +88,20 @@ describe('e2e:osds-select', () => {
 
       expect(selectedLabel).toBe(null);
     });
+
+    it('should change the selected value text', async () => {
+      await setup({ attributes: { value: '42' } });
+      await page.waitForChanges();
+
+      const options = await page.findAll('osds-select > osds-select-option');
+      options.forEach((option) => {
+        option.innerHTML = `NewValue${option.getAttribute('value')}`
+      });
+      await page.waitForChanges();
+
+      const label = await page.find('osds-select >>> .select-trigger__label');
+      expect(label.innerText.trim()).toBe('NewValue42');
+    });
   });
 
     // TODO getValidity

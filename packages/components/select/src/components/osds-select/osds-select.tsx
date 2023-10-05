@@ -8,7 +8,6 @@ import type { ODS_SELECT_SIZE } from './constants/select-size';
 import type { OsdsSelectOption } from '../osds-select-option/osds-select-option';
 import type { OdsSelectOptionClickEventDetail } from '../osds-select-option/interfaces/events';
 import { Component, Element, Event, EventEmitter, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
-import { OdsLogger } from '@ovhcloud/ods-common-core';
 import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ocdkAssertEventTargetIsNode, ocdkDefineCustomElements, ocdkIsSurface } from '@ovhcloud/ods-cdk';
@@ -28,13 +27,13 @@ ocdkDefineCustomElements()
   shadow: true,
 })
 export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelectMethod {
-  private logger = new OdsLogger('OsdsSelect');
   controller: OdsSelectController = new OdsSelectController(this);
   anchor!: HTMLElement;
   surface: OcdkSurface | undefined = undefined;
   /** is the select was touched by the user */
   dirty = false;
   selectedLabelSlot: HTMLElement | null = null;
+  observer?: MutationObserver = undefined;
 
   @Element() el!: HTMLStencilElement;
 
@@ -103,12 +102,15 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
   }
 
   componentWillLoad() {
-    this.onDefaultValueChange();
     if (this.value === '' && this.defaultValue !== undefined) {
       this.value = this.defaultValue;
     }
     this.openedChanged(this.opened);
     this.selectedLabelSlot = this.el.querySelector('[slot="selectedLabel"]');
+  }
+
+  disconnectedCallback(): void {
+    this.observer?.disconnect();
   }
 
   /**
@@ -120,11 +122,6 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
     await this.updateSelectOptionStates(this.value);
   }
 
-  @Watch('defaultValue')
-  onDefaultValueChange(defaultValue?: OdsInputValue) {
-    this.logger.debug(`[input=${this.value}]`, 'defaultValue', defaultValue);
-  }
-
   @Watch('opened')
   openedChanged(opened: boolean) {
     if (this.surface) {
@@ -134,13 +131,11 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
 
   @Watch('value')
   async onValueChange(value: OdsInputValue, oldValue?: OdsInputValue) {
-    this.logger.log(`[onValueChange=${this.value}]`, 'value changed. emit new value', { value });
     this.emitChange(value, oldValue);
     await this.updateSelectOptionStates(value);
   }
 
   private emitChange(value: OdsInputValue, oldValue?: OdsInputValue) {
-    this.logger.debug('emit', { value, oldValue });
     this.odsValueChange.emit({
       value: value,
       oldValue: oldValue,
@@ -225,13 +220,11 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
   }
 
   changeValue(value: OdsInputValue) {
-    this.logger.log(`[changeValue=${this.value}]`, 'value changed', { value });
     this.value = value;
   }
 
   // Toggle overlay when we click on the Select.
   handleSelectClick(): void {
-    this.logger.log('[handleSelectClick]', arguments, { validity: this.validityState });
     if (this.disabled) {
       return;
     }
@@ -250,7 +243,6 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
     if (!this.dirty || this.surface?.isClickOutsideSurface(ev)) {
       return;
     }
-    this.logger.log('[checkForClickOutside]', arguments, { validity: this.validityState });
     this.controller.closeSurface();
 
     this.controller.selectOptions.forEach((option) => {
@@ -268,7 +260,6 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
 
   @Listen('odsSelectOptionClick')
   handleValueChange(event: CustomEvent<OdsSelectOptionClickEventDetail>): void {
-    this.logger.log(`[odsSelectOptionClick=${this.value}]`, 'received odsSelectOptionClick event', { detail: event.detail });
     this.changeValue(event.detail.value);
     this.controller.closeSurface();
   }
@@ -284,12 +275,15 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
     this.controller.syncReferences()
   }
 
-  handleSlotChange() {
+  async handleSlotChange(): Promise<void> {
     this.setSelectOptions();
+    await this.updateSelectOptionStates();
   }
 
   setSelectOptions() {
     this.controller.selectOptions = this.getSelectOptionList();
+    this.observer = new MutationObserver(async() => await this.updateSelectOptionStates(this.value));
+    this.controller.selectOptions.forEach((option) => this.observer?.observe(option, { childList: true }))
   }
 
   getSelectOptionList(): (HTMLElement & OsdsSelectOption)[] {

@@ -37,9 +37,8 @@
     background-color: #FFF;
 
     .tabulator-tableholder {
-        border: solid 1px var(--ods-color-blue-200);
         box-sizing: border-box;
-        overflow-x: hidden;
+        border: solid 1px var(--ods-color-blue-200);
 
         .tabulator-row {
             border-bottom: solid 1px var(--ods-color-blue-200);
@@ -62,6 +61,7 @@
         .ods-selectable__input-checkbox {
             &.tabulator-cell {
                 padding-left: 9px;
+                // min-width: unset;
             }
             &.tabulator-cell {
                 @include ods-input-checkbox;

@@ -6,6 +6,10 @@ class TabulatorFullStub {
     setData() {
 
     }
+
+    setColumns() {
+        
+    }
 }
 
 module.exports = {

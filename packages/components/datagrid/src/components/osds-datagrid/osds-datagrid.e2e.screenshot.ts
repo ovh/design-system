@@ -28,7 +28,21 @@ describe('e2e:osds-datagrid', () => {
         { columns: '[]', rows: '[]' },
         { 
           columns: JSON.stringify([{ title:'Name', field:'name' }, { title:'Firstname', field:'firstname' }]),
+          rows: '[]',
+          noResultLabel: 'Aucune données de renseignée',
+        },
+        { 
+          columns: JSON.stringify([{ title:'Name', field:'name' }, { title:'Firstname', field:'firstname' }]),
           rows: JSON.stringify([{ name:'Homer', firstname:'Simpson' }]),
+        },
+        { 
+          columns: JSON.stringify([{ title:'Name', field:'name', isSortable: true }, { title:'Firstname', field:'firstname' }]),
+          rows: JSON.stringify([{ name:'Homer', firstname:'Simpson' }]),
+        },
+        { 
+          columns: JSON.stringify([{ title:'Name', field:'name' }, { title:'Firstname', field:'firstname' }]),
+          rows: JSON.stringify([{ name:'Homer', firstname:'Simpson' }]),
+          isSelectable: true,
         },
       ].map((attributes) => createContent({ attributes })).join(' ');
       await setup(content);

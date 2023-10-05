@@ -46,6 +46,14 @@ describe('spec:osds-text', () => {
     expect(root?.getAttribute('style')).toBe(styleVar);
   });
 
+  it('should not set a style variable', async () => {
+    await setup({ attributes: {
+      color: "",
+      hue: ""
+    } });
+    expect(root?.getAttribute('style')).toBeNull();
+  });
+
   describe('attributes', () => {
     const config = {
       instance: () => instance,

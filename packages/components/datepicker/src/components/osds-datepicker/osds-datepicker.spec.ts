@@ -9,6 +9,7 @@ import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { OsdsDatepicker } from './osds-datepicker';
 import { OdsDatepickerController } from './core/controller';
 import { ODS_DATEPICKER_DAY } from './constants/datepicker-day';
+import { Datepicker } from '../../jestStub';
 
 describe('spec:osds-datepicker', () => {
   let page: SpecPage;
@@ -278,12 +279,51 @@ describe('spec:osds-datepicker', () => {
       expect(spy).toHaveBeenCalled();
     });
 
-    it('should emit odsDatepickerValueChange event with newValue and oldValue', () => {
-      const spy = jest.spyOn(instance.odsDatepickerValueChange, 'emit');
-      const newValue = new Date('2023-10-03');
-      const oldValue = new Date('2023-10-02');
-      instance.emitDatepickerValueChange(newValue, oldValue);
-      expect(spy).toHaveBeenCalledWith({ value: newValue, oldValue: oldValue });
+    describe('emitDatepickerValueChange', () => {
+      let mockFormatDate: jest.SpyInstance;
+
+      beforeAll(() => {
+        mockFormatDate = jest.spyOn(Datepicker, 'formatDate');
+      });
+
+      afterEach(() => {
+        mockFormatDate.mockClear();
+      });
+
+      afterAll(() => {
+        mockFormatDate.mockRestore();
+      });
+
+      beforeEach(async () => {
+        await setup({});
+      });
+
+      it('should emit odsDatepickerValueChange event with newValue and oldValue', () => {
+        const spy = jest.spyOn(instance.odsDatepickerValueChange, 'emit');
+        const newValue = new Date('2023-10-03');
+        const oldValue = new Date('2023-10-02');
+        instance.emitDatepickerValueChange(newValue, oldValue);
+        expect(spy).toHaveBeenCalledWith({ value: newValue, oldValue: oldValue, formattedValue: `${newValue} dd/mm/yyyy` });
+      });
+
+      it('should call Datepicker.formatDate when format is defined', () => {
+        const testDate = new Date('2023-10-03');
+        instance.format = 'dd/mm/yyyy';
+
+        instance.emitDatepickerValueChange(testDate);
+
+        expect(mockFormatDate).toHaveBeenCalledWith(testDate, 'dd/mm/yyyy');
+      });
+
+      it('should emit event with undefined formattedValue when format is not defined', () => {
+        const testDate = new Date('2023-10-03');
+        instance.format = undefined;
+
+        const spy = jest.spyOn(instance.odsDatepickerValueChange, 'emit');
+        instance.emitDatepickerValueChange(testDate);
+
+        expect(spy).toHaveBeenCalledWith({ value: testDate, oldValue: undefined, formattedValue: undefined });
+      });
     });
   });
 });

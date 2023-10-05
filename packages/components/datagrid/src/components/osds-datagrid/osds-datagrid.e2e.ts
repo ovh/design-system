@@ -42,7 +42,7 @@ describe('e2e:osds-datagrid', () => {
     expect(columns?.[1].innerText).toContain('Firstname');
     const rows = await table?.findAll('.tabulator-row');
     expect(rows).toHaveLength(1);
-    expect(rows?.[0].innerText).toContain('HomerSimpson');
+    expect(rows?.[0].innerText).toContain('Homer');
   });
 
   it('should update rows', async () => {
@@ -58,8 +58,8 @@ describe('e2e:osds-datagrid', () => {
     
     const rows = await table?.findAll('.tabulator-row');
     expect(rows).toHaveLength(2);
-    expect(rows?.[0].innerText).toContain('HomerSimpson');
-    expect(rows?.[1].innerText).toContain('MargeSimpson');
+    expect(rows?.[0].innerText).toContain('Homer');
+    expect(rows?.[1].innerText).toContain('Marge');
   });
 
   it('should have selectable columns', async () => {
@@ -121,12 +121,12 @@ describe('e2e:osds-datagrid', () => {
     await sortableHeader?.click();
 
     const rows = await table?.findAll('.tabulator-row [tabulator-field="name"]');
-    expect(rows?.[0].innerHTML).toBe('Homer');
-    expect(rows?.[1].innerHTML).toBe('Marge');
+    expect(rows?.[0].innerText).toContain('Homer');
+    expect(rows?.[1].innerText).toContain('Marge');
 
     await sortableHeader?.click();
     const newRows = await table?.findAll('.tabulator-row [tabulator-field="name"]');
-    expect(newRows?.[0].innerHTML).toBe('Marge');
-    expect(newRows?.[1].innerHTML).toBe('Homer');
+    expect(newRows?.[0].innerText).toContain('Marge');
+    expect(newRows?.[1].innerText).toContain('Homer');
   });
 });

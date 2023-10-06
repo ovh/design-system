@@ -1,12 +1,9 @@
-jest.mock('./core/controller'); // keep jest.mock before any
-
 import type { SpecPage } from '@stencil/core/testing';
 import type { OdsModalAttribute } from './interfaces/attributes';
 import { newSpecPage } from '@stencil/core/testing';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { OdsModalController } from './core/controller';
 import { OsdsModal } from './osds-modal';
 
 describe('spec:osds-modal', () => {
@@ -14,7 +11,6 @@ describe('spec:osds-modal', () => {
   let page: SpecPage;
   let root: HTMLElement | undefined;
   let instance: OsdsModal;
-  let controller: OdsModalController;
 
   afterEach(() => {
     jest.clearAllMocks();
@@ -30,7 +26,6 @@ describe('spec:osds-modal', () => {
 
     root = page.root;
     instance = page.rootInstance;
-    controller = (OdsModalController as unknown as jest.SpyInstance<OdsModalController, unknown[]>).mock.instances[0];
   }
 
   it('should render', async () => {
@@ -92,32 +87,35 @@ describe('spec:osds-modal', () => {
     });
   });
 
-  describe('controller', () => {
-    it('should call controller.close', async () => {
-      await setup({});
-      await instance.close();
+  describe('methods', () => {
+    describe('close', () => {
+      it('should set masked to true', async () => {
+        await setup({});
+        await instance.close();
 
-      expect(controller.close).toHaveBeenCalledTimes(1);
-      expect(controller.close).toHaveBeenCalledWith();
+        expect(instance.masked).toBe(true);
+      });
     });
 
-    it('should call controller.open', async () => {
-      await setup({});
-      await instance.open();
+    describe('open', () => {
+      it('should set masked to false', async () => {
+        await setup({});
+        await instance.open();
 
-      expect(controller.open).toHaveBeenCalledTimes(1);
-      expect(controller.open).toHaveBeenCalledWith();
+        expect(instance.masked).toBe(false);
+      });
     });
+  });
 
-    it('should call controller.close on close icon click', async () => {
-      await setup();
+  it('should mask on close icon click', async () => {
+    await setup();
 
-      const closeIcon = root?.shadowRoot?.querySelector('osds-icon[name="close"]') as HTMLElement;
-      await closeIcon.click();
-      await page.waitForChanges();
+    expect(instance.masked).toBe(false);
+    
+    const closeIcon = root?.shadowRoot?.querySelector('osds-icon[name="close"]') as HTMLElement;
+    await closeIcon.click();
+    await page.waitForChanges();
 
-      expect(controller.close).toHaveBeenCalledTimes(1);
-      expect(controller.close).toHaveBeenCalledWith();
-    });
+    expect(instance.masked).toBe(true);
   });
 });

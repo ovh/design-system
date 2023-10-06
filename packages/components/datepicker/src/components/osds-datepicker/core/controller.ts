@@ -22,11 +22,11 @@ class OdsDatepickerController {
     if(!this.component.disabled) {
       if (!this.validateValue(newValue)) {
         this.component.value = null;
-        this.component.datepickerInstance?.setDate({ clear: true });
+        this.component.datepickerInstanceAccessor?.setDate({ clear: true });
         this.component.emitDatepickerValueChange(null, oldValue ? oldValue : null);
       } else {
         this.component.value = newValue;
-        this.component.datepickerInstance?.setDate(newValue);
+        this.component.datepickerInstanceAccessor?.setDate(newValue);
         this.component.emitDatepickerValueChange(newValue, oldValue ? oldValue : null);
       }
     }

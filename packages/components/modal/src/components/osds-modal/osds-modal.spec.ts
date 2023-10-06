@@ -111,7 +111,7 @@ describe('spec:osds-modal', () => {
     await setup();
 
     expect(instance.masked).toBe(false);
-    
+
     const closeIcon = root?.shadowRoot?.querySelector('osds-icon[name="close"]') as HTMLElement;
     await closeIcon.click();
     await page.waitForChanges();

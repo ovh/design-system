@@ -24,9 +24,14 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
   @Element() el!: HTMLElement;
 
   @State() hasFocus = false;
-  @State() datepickerInstance: Datepicker | undefined = undefined;
-  @State() hiddenInput: HTMLInputElement | undefined = undefined;
-  @State() datepickerElement: HTMLElement | undefined = undefined;
+
+  protected datepickerInstance: Datepicker | undefined = undefined;
+  get datepickerInstanceAccessor(): Datepicker | undefined {
+    return this.datepickerInstance;
+  }
+
+  private hiddenInput: HTMLInputElement | undefined = undefined;
+  private datepickerElement: HTMLElement | undefined = undefined;
 
   /** @see OdsDatepickerAttribute.clearable */
   @Prop({ reflect: true }) clearable?: boolean = DEFAULT_ATTRIBUTE.clearable;
@@ -135,9 +140,12 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
   }
 
   componentDidLoad() {
-    if(!this.el.shadowRoot) {
-      return;
-    }
+    this.initializeDatepicker();
+  }
+
+  initializeDatepicker() {
+    if(!this.el.shadowRoot) return;
+    if(this.datepickerInstance) return;
 
     if (this.hiddenInput && !this.hiddenInput.getAttribute('initialized')) {
       this.datepickerInstance = new Datepicker(this.hiddenInput, {

@@ -120,6 +120,8 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
   async componentDidLoad() {
     this.setSelectOptions();
     await this.updateSelectOptionStates(this.value);
+    this.observer = new MutationObserver(async () => this.selectedOptionLabel = await this.optionSelected?.getLabel() || '');
+    this.observer?.observe(this.controller.selectOptions[0], { childList: true });
   }
 
   @Watch('opened')
@@ -282,8 +284,6 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
 
   setSelectOptions() {
     this.controller.selectOptions = this.getSelectOptionList();
-    this.observer = new MutationObserver(async() => await this.updateSelectOptionStates(this.value));
-    this.controller.selectOptions.forEach((option) => this.observer?.observe(option, { childList: true }))
   }
 
   getSelectOptionList(): (HTMLElement & OsdsSelectOption)[] {

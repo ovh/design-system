@@ -1,7 +1,7 @@
 import type { E2EPage } from '@stencil/core/testing';
 import type { OdsTextAttribute } from './interfaces/attributes';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
-import { ODS_THEME_COLOR_HUES, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
+import { ODS_TEXT_COLOR_HUES, ODS_TEXT_COLOR_INTENTS } from './constants/text-color';
 import { newE2EPage } from '@stencil/core/testing';
 import { ODS_TEXT_LEVELS } from './constants/text-level';
 import { ODS_TEXT_SIZES } from './constants/text-size';
@@ -15,7 +15,7 @@ describe('e2e:osds-text', () => {
 
   async function setup(content: string) {
     page = await newE2EPage();
-    
+
     await page.setContent(content);
     await page.evaluate(() => {
       document.body.style.setProperty('margin', '0px');
@@ -29,8 +29,8 @@ describe('e2e:osds-text', () => {
     });
 
     it('should take screenshots of all attributes variations', async () => {
-      ODS_THEME_COLOR_HUES.forEach((hue) => {
-        ODS_THEME_COLOR_INTENTS.forEach((color) => {
+      ODS_TEXT_COLOR_HUES.forEach((hue) => {
+        ODS_TEXT_COLOR_INTENTS.forEach((color) => {
           ODS_TEXT_SIZES.forEach((size) => {
             ODS_TEXT_LEVELS.forEach((level) => {
               variations.push(`

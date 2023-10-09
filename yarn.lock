@@ -5822,6 +5822,49 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-ovh-component-location-tile-react@workspace:packages/components-ovh/location-tile/react":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-ovh-component-location-tile-react@workspace:packages/components-ovh/location-tile/react"
+  dependencies:
+    "@ovhcloud/ods-ovh-component-location-tile": 16.2.0
+    "@ovhcloud/ods-react-dev": 16.2.0
+  peerDependencies:
+    react: ">=16.8.6"
+    react-dom: ">=16.8.6"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-ovh-component-location-tile-vue@workspace:packages/components-ovh/location-tile/vue":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-ovh-component-location-tile-vue@workspace:packages/components-ovh/location-tile/vue"
+  dependencies:
+    "@ovhcloud/ods-ovh-component-location-tile": 16.2.0
+    "@ovhcloud/ods-vue-dev": 16.2.0
+  peerDependencies:
+    vue: ">=3"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-ovh-component-location-tile@16.2.0, @ovhcloud/ods-ovh-component-location-tile@workspace:packages/components-ovh/location-tile":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-ovh-component-location-tile@workspace:packages/components-ovh/location-tile"
+  dependencies:
+    "@ovhcloud/ods-common-core": 16.2.0
+    "@ovhcloud/ods-common-stencil": 16.2.0
+    "@ovhcloud/ods-common-testing": 16.2.0
+    "@ovhcloud/ods-stencil-dev": 16.2.0
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-ovh-components@16.2.0, @ovhcloud/ods-ovh-components@workspace:packages/components-ovh":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-ovh-components@workspace:packages/components-ovh"
+  dependencies:
+    "@ovhcloud/ods-dev": 16.2.0
+    "@ovhcloud/ods-ovh-component-location-tile": 16.2.0
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-react-dev@16.2.0, @ovhcloud/ods-react-dev@workspace:packages/shared-dependencies/odsReactDev":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-react-dev@workspace:packages/shared-dependencies/odsReactDev"
@@ -5944,6 +5987,7 @@ __metadata:
     "@ovhcloud/ods-common-stencil": 16.2.0
     "@ovhcloud/ods-common-theming": 16.2.0
     "@ovhcloud/ods-components": 16.2.0
+    "@ovhcloud/ods-ovh-components": 16.2.0
     "@ovhcloud/ods-starter-react": 16.2.0
     "@ovhcloud/ods-starter-react-vite": 16.2.0
     "@ovhcloud/ods-starter-vue-vite": 16.2.0

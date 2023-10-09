@@ -25,7 +25,7 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
 
   @State() hasFocus = false;
 
-  protected datepickerInstance: Datepicker | undefined = undefined;
+  private datepickerInstance: Datepicker | undefined = undefined;
   get datepickerInstanceAccessor(): Datepicker | undefined {
     return this.datepickerInstance;
   }

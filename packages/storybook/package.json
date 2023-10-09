@@ -20,6 +20,7 @@
     "@ovhcloud/ods-common-stencil": "16.2.0",
     "@ovhcloud/ods-common-theming": "16.2.0",
     "@ovhcloud/ods-components": "16.2.0",
+    "@ovhcloud/ods-ovh-components": "16.2.0",
     "@ovhcloud/ods-starter-react": "16.2.0",
     "@ovhcloud/ods-starter-react-vite": "16.2.0",
     "@ovhcloud/ods-starter-vue-vite": "16.2.0",

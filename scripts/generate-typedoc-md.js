@@ -1,36 +1,34 @@
 /**
- * Script to generate the file spec.md for one specifique component
- * The file is create in <component>/documentation/specifications
+ * Script to generate the file spec.md for one specific component
+ * The file is created in <component>/documentation/specifications
  * The script need a json typedoc file in <component>/docs-api/typedoc.json
+ *
+ * You can pass an optional --prefix <value> to manage components that are not
+ * in the default "components" package, ex:
+ *   --prefix ovh # for "components-ovh"
  */
-
 const fs = require('fs');
 const path = require('path');
-// CARE this is the path where the script was exec
-const packageJson = require(path.resolve('package.json'));
-const rootComponent = packageJson.name.replace('@ovhcloud/ods-component-', '');
-
 const { convertJsonToMarkdown } = require('@ovhcloud/ods-common-core');
 const isMultiple = process.argv[2]?.includes('multiple');
+// Carefull, this is the path where the script was executed
+const packageJson = require(path.resolve('package.json'));
+const pathPrefixIdx = process.argv.indexOf('--prefix');
 
-if (!isMultiple) {
-  const typedocJson = require(path.resolve('docs-api/typedoc.json'));
-  const dir = path.resolve('../../components', rootComponent, 'documentation/specifications');
-  return createSpecMd(typedocJson, dir);
+function getRootComponent() {
+  if (!pathPrefix) {
+    return packageJson.name.replace('@ovhcloud/ods-component-', '');
+  }
+  return packageJson.name.replace(`@ovhcloud/ods-${pathPrefix}-component-`, '')
 }
 
-/** See Radio or Accordion for example multiple */
-const componentFolders = fs.readdirSync('./src/components', {});
-componentFolders.forEach((osdsComponent) => {
-  const component = osdsComponent.replace('osds-', '');
-  const typedocJson = require(path.resolve(`docs-api/${component}/typedoc.json`));
-  const dir = path.resolve('../../components', rootComponent, 'documentation/specifications', component);
-  createSpecMd(typedocJson, dir);
-});
+function createSpecMd(component = '') {
+  const typedocJson = require(path.resolve('docs-api', component, 'typedoc.json'));
+  const destPath = `../../components${pathPrefix ? `-${pathPrefix}` : ''}`
+  const dir = path.resolve(destPath, rootComponent, 'documentation/specifications', component);
 
-function createSpecMd(typedocJson, dir) {
   fs.mkdirSync(dir, { recursive: true });
-  
+
   if(typedocJson.children) {
     fs.writeFileSync(path.resolve(dir, 'spec.md'), convertJsonToMarkdown(typedocJson.children), (err) => {
       if (err) {
@@ -40,3 +38,20 @@ function createSpecMd(typedocJson, dir) {
     });
   }
 }
+
+let pathPrefix = '';
+if (pathPrefixIdx > -1) {
+  pathPrefix = process.argv[pathPrefixIdx + 1];
+}
+const rootComponent = getRootComponent()
+
+if (!isMultiple) {
+  return createSpecMd();
+}
+
+// See Radio or Accordion for example multiple
+const componentFolders = fs.readdirSync('./src/components', {});
+componentFolders.forEach((osdsComponent) => {
+  const component = osdsComponent.replace(`osds${pathPrefix ? `-${pathPrefix}` : ''}-`, '');
+  return createSpecMd(component);
+});

@@ -185,12 +185,12 @@ describe('e2e:osds-modal', () => {
 
       el = await page.find('osds-modal');
       outsideButton = await page.find('#outsideButton');
-
-      await page.waitForChanges();
     });
 
-    // FIXME
-    xit('should have inert attribute on outsideButton when modal is active', () => {
+    it('should have inert attribute on outsideButton when modal is active', async () => {
+      await el.callMethod('open');
+      await page.waitForChanges();
+
       const inert = outsideButton.getAttribute('inert');
       expect(inert).not.toBeNull();
     });

@@ -43,16 +43,21 @@ export class OsdsModal implements OdsModalAttribute, OdsModalMethod {
   @Method()
   async open(): Promise<void> {
     this.masked = false;
+    this.inertBodyChildren(this.masked);
   }
 
   @Watch('masked')
   watchOpenedStateHandler(masked: boolean) {
+    this.inertBodyChildren(masked);
+  }
+
+  inertBodyChildren(masked: boolean = false) {
     const directChildren = Array.from(document.body.children);
     for (const child of directChildren) {
       if (child !== this.el && child.nodeName !== 'SCRIPT') {
-        if (!masked) {
+        if (!masked && !child.getAttribute('inert')) {
           child.setAttribute('inert', '');
-        } else {
+        } else if (child.getAttribute('inert')) {
           child.removeAttribute('inert');
         }
       }

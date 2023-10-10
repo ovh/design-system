@@ -19,7 +19,7 @@ describe('e2e:osds-text', () => {
     await page.setContent(content);
     await page.evaluate(() => {
       document.body.style.setProperty('margin', '0px');
-      document.body.style.background = 'gray';
+      document.body.style.background = '#e2e2e2';
     });
   }
 
@@ -64,8 +64,9 @@ describe('e2e:osds-text', () => {
 
       await setup(variations.join(''));
       await page.waitForChanges();
+
       const results = await page.compareScreenshot('text', { fullPage: true });
-      expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 })
+      expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
     });
   });
 });

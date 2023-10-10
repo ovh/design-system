@@ -121,6 +121,9 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
     this.setSelectOptions();
     await this.updateSelectOptionStates(this.value);
     this.observer = new MutationObserver(async () => this.selectedOptionLabel = await this.optionSelected?.getLabel() || '');
+    if (!this.controller.selectOptions[0]) {
+      return;
+    }
     this.observer?.observe(this.controller.selectOptions[0], { childList: true });
   }
 

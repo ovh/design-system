@@ -329,7 +329,7 @@ export function getStencilConfig({
          * some CI doesn't allow sandbox, therefore this parameters must be passed to your Headless Chrome
          * before it can run your tests
          */
-        browserArgs: ['--no-sandbox', '--disable-setuid-sandbox'],
+        browserArgs: ['--no-sandbox', '--disable-setuid-sandbox', '--font-render-hinting=none'],
       } : {})
     }
   };

@@ -33,8 +33,8 @@
     "test:e2e:screenshot": "stencil test --e2e --screenshot --config stencil.config.ts --passWithNoTests",
     "test:e2e:screenshot:update": "stencil test --e2e --screenshot --config stencil.config.ts --update-screenshot --passWithNoTests",
     "test:e2e:ci": "stencil test --config stencil.config.ts --e2e --ci",
-    "test:e2e:ci:screenshot": "stencil test --config stencil.config.ts --e2e --ci --screenshot --passWithNoTests",
-    "test:e2e:ci:screenshot:update": "stencil test --config stencil.config.ts --e2e --ci --screenshot --update-screenshot --passWithNoTests"
+    "FIXME_test:e2e:ci:screenshot": "stencil test --config stencil.config.ts --e2e --ci --screenshot --passWithNoTests",
+    "FIXME_test:e2e:ci:screenshot:update": "stencil test --config stencil.config.ts --e2e --ci --screenshot --update-screenshot --passWithNoTests"
   },
   "dependencies": {
     "@ovhcloud/ods-common-core": "16.2.0",

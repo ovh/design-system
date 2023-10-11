@@ -3,12 +3,14 @@ jest.mock('./core/controller');
 import type { SpecPage } from '@stencil/core/testing';
 import type { OdsDatepickerAttribute } from './interfaces/attributes';
 import { newSpecPage } from '@stencil/core/testing';
-import { OdsUnitTestAttributeType, odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+import { OdsUnitTestAttributeType, odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
+import { ODS_DATEPICKER_LOCALE } from './constants/datepicker-locale';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OsdsDatepicker } from './osds-datepicker';
 import { OdsDatepickerController } from './core/controller';
 import { ODS_DATEPICKER_DAY } from './constants/datepicker-day';
+// @ts-ignore
 import { Datepicker } from '../../jestStub';
 
 describe('spec:osds-datepicker', () => {
@@ -136,6 +138,17 @@ describe('spec:osds-datepicker', () => {
         newValue: true,
         value: false,
         setup: (value) => setup({ attributes: { ['inline']: value } }),
+        ...config,
+      });
+    });
+
+    describe('locale', () => {
+      odsUnitTestAttribute<OdsDatepickerAttribute, 'locale'>({
+        name: 'locale',
+        defaultValue: DEFAULT_ATTRIBUTE.locale,
+        newValue: ODS_DATEPICKER_LOCALE.EN,
+        value: ODS_DATEPICKER_LOCALE.FR,
+        setup: (value) => setup({ attributes: { ['locale']: value } }),
         ...config,
       });
     });

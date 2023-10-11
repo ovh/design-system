@@ -3,8 +3,9 @@ import type { OdsDatepickerAttribute } from './interfaces/attributes';
 import type { OsdsDatepicker } from './osds-datepicker';
 import { newE2EPage } from '@stencil/core/testing';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_DATEPICKER_DAY } from './constants/datepicker-day';
+import { ODS_DATEPICKER_LOCALE } from './constants/datepicker-locale';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 
 describe('e2e:osds-datepicker', () => {
   let page: E2EPage;
@@ -240,5 +241,13 @@ describe('e2e:osds-datepicker', () => {
     await page.waitForChanges();
     const afterMaxDateButton = await page.find(`osds-datepicker >>> .datepicker .datepicker-grid .datepicker-cell:last-child`);
     expect(afterMaxDateButton).toHaveClass('disabled');
+  });
+
+  it('should change the displayed locale', async () => {
+    await setup({ attributes: { locale: ODS_DATEPICKER_LOCALE.FR, value: new Date('2023-05-15') } });
+    await el.click();
+    await page.waitForChanges();
+    const monthSelector = await page.find(`osds-datepicker >>> .datepicker-controls .view-switch`);
+    expect(monthSelector.innerText).toBe('mai 2023');
   });
 });

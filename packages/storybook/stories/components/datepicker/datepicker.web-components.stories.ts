@@ -1,8 +1,8 @@
 import { html } from 'lit-html';
 import { defineCustomElements } from '@ovhcloud/ods-components/datepicker/loader';
 import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
+import { ODS_DATEPICKER_DAYS, ODS_DATEPICKER_LOCALE, ODS_DATEPICKER_LOCALES } from '@ovhcloud/ods-components/datepicker';
 import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-components/datepicker/src/components/osds-datepicker/constants/default-attributes';
-import { ODS_DATEPICKER_DAYS } from '@ovhcloud/ods-components/datepicker/src/components/osds-datepicker/constants/datepicker-day';
 import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
 // @ts-ignore
 import changelog from '@ovhcloud/ods-components/datepicker/CHANGELOG.md';
@@ -43,6 +43,12 @@ const storyParams = {
   inline: {
     category: 'General',
     defaultValue: false,
+  },
+  locale: {
+    category: 'General',
+    defaultValue: ODS_DATEPICKER_LOCALE.EN,
+    options: ODS_DATEPICKER_LOCALES,
+    control: { type: 'select' },
   },
   maxDate: {
     category: 'General',

@@ -27,6 +27,7 @@
     "doc:accordion": "typedoc src/components/osds-accordion/public-api.ts --out ./docs-api/accordion --json ./docs-api/accordion/typedoc.json",
     "doc:accordion-group": "typedoc src/components/osds-accordion-group/public-api.ts --out ./docs-api/accordion-group --json ./docs-api/accordion-group/typedoc.json",
     "generate:licence": "npx generate-license-file --input package.json --output THIRD-PARTY-LICENCES --overwrite",
+    "lint:scss": "stylelint 'src/components/**/*.scss'",
     "test": "yarn run test:spec && yarn run test:e2e",
     "test:spec": "stencil test --spec --config stencil.config.ts --coverage",
     "test:spec:ci": "stencil test --config stencil.config.ts  --spec --ci --coverage",

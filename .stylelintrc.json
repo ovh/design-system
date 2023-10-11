@@ -4,6 +4,7 @@
     "color-function-notation": "legacy",
     "hue-degree-notation": "number",
     "scss/no-global-function-names": null,
+    "scss/at-rule-conditional-no-parentheses": null,
     "selector-class-pattern": [
       "^[a-z]([-_]{0,2}?[a-z0-9]+)*(__[a-z0-9]([-]?[a-z0-9]+)*)?(--[a-z0-9]([-]?[a-z0-9]+)*)?$",
       {

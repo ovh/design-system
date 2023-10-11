@@ -1,5 +1,6 @@
 import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import type { ODS_DATEPICKER_DAY } from '../constants/datepicker-day';
+import type { ODS_DATEPICKER_LOCALE } from '../constants/datepicker-locale';
 
 interface OdsDatepickerAttribute {
   /**
@@ -34,6 +35,10 @@ interface OdsDatepickerAttribute {
    * Defines if the Datepicker should be displayed inline or not
    */
   inline?: boolean;
+  /**
+   * Defines the locale to use
+   */
+  locale?: ODS_DATEPICKER_LOCALE;
   /**
    * Defines the Datepicker's maximum selectable date
    */

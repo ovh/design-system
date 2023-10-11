@@ -1,14 +1,37 @@
 import type { EventEmitter } from '@stencil/core';
+import type { ODS_DATEPICKER_DAY } from './constants/datepicker-day';
+import type { ODS_DATEPICKER_LOCALE } from './constants/datepicker-locale';
 import type { OdsDatepickerAttribute } from './interfaces/attributes';
 import type { OdsDatepickerEvent, OdsDatepickerValueChangeEventDetail } from './interfaces/events';
-import type { ODS_DATEPICKER_DAY } from './constants/datepicker-day';
 import { Component, Element, Event, Host, h, Listen, Prop, State, Watch } from '@stencil/core';
-import { ODS_INPUT_TYPE } from '@ovhcloud/ods-component-input';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_ICON_NAME } from '@ovhcloud/ods-component-icon';
+import { ODS_INPUT_TYPE } from '@ovhcloud/ods-component-input';
+import { Datepicker } from 'vanillajs-datepicker';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { Datepicker } from 'vanillajs-datepicker'
 import { OdsDatepickerController } from './core/controller';
+// @ts-ignore
+import de from 'vanillajs-datepicker/js/i18n/locales/de';
+// @ts-ignore
+import es from 'vanillajs-datepicker/js/i18n/locales/es';
+// @ts-ignore
+import fr from 'vanillajs-datepicker/js/i18n/locales/fr';
+// @ts-ignore
+import it from 'vanillajs-datepicker/js/i18n/locales/it';
+// @ts-ignore
+import nl from 'vanillajs-datepicker/js/i18n/locales/nl';
+// @ts-ignore
+import pl from 'vanillajs-datepicker/js/i18n/locales/pl';
+// @ts-ignore
+import pt from 'vanillajs-datepicker/js/i18n/locales/pt';
+
+Object.assign(Datepicker.locales, de);
+Object.assign(Datepicker.locales, es);
+Object.assign(Datepicker.locales, fr);
+Object.assign(Datepicker.locales, it);
+Object.assign(Datepicker.locales, nl);
+Object.assign(Datepicker.locales, pl);
+Object.assign(Datepicker.locales, pt);
 
 /**
  * @slot (unnamed) - Datepicker content
@@ -16,7 +39,7 @@ import { OdsDatepickerController } from './core/controller';
 @Component({
   tag: 'osds-datepicker',
   styleUrl: 'osds-datepicker.scss',
-  shadow: true
+  shadow: true,
 })
 export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEvent {
   controller: OdsDatepickerController = new OdsDatepickerController(this);
@@ -57,6 +80,9 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
   /** @see OdsDatepickerAttribute.inline */
   @Prop({ reflect: true }) inline?: boolean = DEFAULT_ATTRIBUTE.inline;
 
+  /** @see OdsDatepickerAttribute.locale */
+  @Prop({ reflect: true }) locale?: ODS_DATEPICKER_LOCALE = DEFAULT_ATTRIBUTE.locale;
+
   /** @see OdsDatepickerAttribute.maxDate */
   @Prop({ reflect: true }) maxDate?: Date | null = DEFAULT_ATTRIBUTE.maxDate;
 
@@ -93,6 +119,7 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
   @Watch('datesDisabled')
   @Watch('daysOfWeekDisabled')
   @Watch('format')
+  @Watch('locale')
   @Watch('maxDate')
   @Watch('minDate')
   updateDatepicker() {
@@ -106,6 +133,7 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
         : undefined,
       daysOfWeekDisabled: this.daysOfWeekDisabled,
       format: this.format,
+      language: this.locale,
       maxDate: this.maxDate
         ? this.maxDate
         : undefined,
@@ -154,6 +182,7 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
           : undefined,
         daysOfWeekDisabled: this.daysOfWeekDisabled,
         format: this.format,
+        language: this.locale,
         maxDate: this.maxDate
           ? this.maxDate
           : undefined,

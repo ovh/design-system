@@ -1,7 +1,7 @@
 class Stub {
-    constructor() {
+    constructor() {}
 
-    }
+    static locales = {}
 
     static formatDate(date, format) {
         return `${date} ${format}`;

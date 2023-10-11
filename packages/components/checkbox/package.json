@@ -25,6 +25,7 @@
     "doc:api": "typedoc",
     "doc": "typedoc --json ./docs-api/typedoc.json --pretty && node ../../../scripts/generate-typedoc-md.js",
     "generate:licence": "npx generate-license-file --input package.json --output THIRD-PARTY-LICENCES --overwrite",
+    "lint:scss": "stylelint 'src/components/**/*.scss'",
     "test": "yarn run test:spec && yarn run test:e2e",
     "test:ci": "yarn run test:spec:ci && yarn run test:e2e:ci",
     "test:spec": "stencil test --spec --config stencil.config.ts --coverage",

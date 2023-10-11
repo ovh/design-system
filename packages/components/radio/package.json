@@ -26,6 +26,7 @@
     "doc:radio": "typedoc src/components/osds-radio/public-api.ts --out ./docs-api/radio --json ./docs-api/radio/typedoc.json",
     "doc:radio-group": "typedoc src/components/osds-radio-group/public-api.ts --out ./docs-api/radio-group --json ./docs-api/radio-group/typedoc.json",
     "generate:licence": "npx generate-license-file --input package.json --output THIRD-PARTY-LICENCES --overwrite",
+    "lint:scss": "stylelint 'src/components/**/*.scss'",
     "test": "yarn run test:spec && yarn run test:e2e",
     "test:spec": "stencil test --spec --config stencil.config.ts --coverage",
     "test:spec:ci": "stencil test --config stencil.config.ts  --spec --ci --coverage",

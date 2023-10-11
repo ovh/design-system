@@ -8502,17 +8502,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*":
-  version: 18.2.24
-  resolution: "@types/react@npm:18.2.24"
-  dependencies:
-    "@types/prop-types": "*"
-    "@types/scheduler": "*"
-    csstype: ^3.0.2
-  checksum: ea5d8204e71b1c9c6631f429a93f8e7be0614cdbdb464e92b3181bdccd8a7c45e30ded8b13da726684b6393f651317c36d54832e3d3cdea0da480a3f26268909
-  languageName: node
-  linkType: hard
-
 "@types/react@npm:16.14.38":
   version: 16.14.38
   resolution: "@types/react@npm:16.14.38"
@@ -8521,28 +8510,6 @@ __metadata:
     "@types/scheduler": "*"
     csstype: ^3.0.2
   checksum: b5e73bb51225c8d869bd6bd081a2b220f21e7f4038a3a06fd2cc49a1da859b12abce4dff14cd888de715b3647fecd26c30f3fc4f96ac9a3874a81922822d4b4e
-  languageName: node
-  linkType: hard
-
-"@types/react@npm:18.2.21":
-  version: 18.2.21
-  resolution: "@types/react@npm:18.2.21"
-  dependencies:
-    "@types/prop-types": "*"
-    "@types/scheduler": "*"
-    csstype: ^3.0.2
-  checksum: ffed203bfe7aad772b8286f7953305c9181ac3a8f27d3f5400fbbc2a8e27ca8e5bbff818ee014f39ca0d19d2b3bb154e5bdbec7e232c6f80b59069375aa78349
-  languageName: node
-  linkType: hard
-
-"@types/react@npm:^16":
-  version: 16.14.48
-  resolution: "@types/react@npm:16.14.48"
-  dependencies:
-    "@types/prop-types": "*"
-    "@types/scheduler": "*"
-    csstype: ^3.0.2
-  checksum: 4c621e72c3c70f233e68c27b6ea3478ae22633d2b833ead2fc55e3c72e843e19154d75bb7832532231ccf01f7bedff62889f3571b702a375d52a418782a78fdb
   languageName: node
   linkType: hard
 
@@ -23238,10 +23205,10 @@ __metadata:
     husky: 4.3.8
     lerna: 3.22.1
     node-fetch: 2.6.7
-    stylelint: ^15.10.3
-    stylelint-config-concentric-order: ^5.2.0
-    stylelint-config-standard-scss: ^11.0.0
-    stylelint-formatter-html: ^1.0.1
+    stylelint: 15.10.3
+    stylelint-config-concentric-order: 5.2.0
+    stylelint-config-standard-scss: 11.0.0
+    stylelint-formatter-html: 1.0.1
     ts-node: 10.7.0
   languageName: unknown
   linkType: soft
@@ -28853,7 +28820,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stylelint-config-concentric-order@npm:^5.2.0":
+"stylelint-config-concentric-order@npm:5.2.0":
   version: 5.2.0
   resolution: "stylelint-config-concentric-order@npm:5.2.0"
   dependencies:
@@ -28888,7 +28855,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stylelint-config-standard-scss@npm:^11.0.0":
+"stylelint-config-standard-scss@npm:11.0.0":
   version: 11.0.0
   resolution: "stylelint-config-standard-scss@npm:11.0.0"
   dependencies:
@@ -28915,7 +28882,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stylelint-formatter-html@npm:^1.0.1":
+"stylelint-formatter-html@npm:1.0.1":
   version: 1.0.1
   resolution: "stylelint-formatter-html@npm:1.0.1"
   dependencies:
@@ -28951,7 +28918,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stylelint@npm:^15.10.3":
+"stylelint@npm:15.10.3":
   version: 15.10.3
   resolution: "stylelint@npm:15.10.3"
   dependencies:

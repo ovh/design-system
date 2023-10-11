@@ -19,12 +19,12 @@
       height: 0;
 
       .datepicker-picker {
-        height: fit-content;
         border-width: var(--ods-size-01);
         border-top-width: 0;
         border-bottom-left-radius: var(--ods-size-03);
         border-bottom-right-radius: var(--ods-size-03);
         padding: var(--ods-size-04) var(--ods-size-07) calc(var(--ods-size-04) * 2) var(--ods-size-07);
+        height: fit-content;
 
         .datepicker-header,
         .datepicker-controls {
@@ -32,22 +32,33 @@
 
           .prev-btn,
           .next-btn {
-            width: calc(var(--ods-size-10) - var(--ods-size-03));
-            height: calc(var(--ods-size-10) - var(--ods-size-03));
-            min-width: calc(var(--ods-size-10) - var(--ods-size-03));
-            min-height: calc(var(--ods-size-10) - var(--ods-size-03));
             border-radius: 50%;
+            width: calc(var(--ods-size-10) - var(--ods-size-03));
+            min-width: calc(var(--ods-size-10) - var(--ods-size-03));
+            height: calc(var(--ods-size-10) - var(--ods-size-03));
+            min-height: calc(var(--ods-size-10) - var(--ods-size-03));
           }
 
           .view-switch {
-            width: 100%;
             border-radius: var(--ods-size-03);
+            width: 100%;
           }
         }
       }
 
       .datepicker-main {
         margin-top: var(--ods-size-04);
+
+        .datepicker-grid {
+          grid-template-rows: repeat(3, 1fr);
+          grid-template-columns: repeat(4, 1fr);
+
+          .datepicker-cell {
+            border-radius: var(--ods-size-03);
+            width: calc(calc(var(--ods-size-10) - var(--ods-size-03)) * 1.75);
+            height: calc(var(--ods-size-10) - var(--ods-size-03));
+          }
+        }
 
         .datepicker-view {
           .days {
@@ -61,26 +72,15 @@
             }
 
             .datepicker-grid {
-              grid-template-columns: repeat(7, 1fr);
               grid-template-rows: repeat(6, 1fr);
+              grid-template-columns: repeat(7, 1fr);
 
               .datepicker-cell {
+                border-radius: 50%;
                 width: calc(var(--ods-size-10) - var(--ods-size-03));
                 height: calc(var(--ods-size-10) - var(--ods-size-03));
-                border-radius: 50%;
               }
             }
-          }
-        }
-
-        .datepicker-grid {
-          grid-template-columns: repeat(4, 1fr);
-          grid-template-rows: repeat(3, 1fr);
-
-          .datepicker-cell {
-            width: calc(calc(var(--ods-size-10) - var(--ods-size-03)) * 1.75);
-            height: calc(var(--ods-size-10) - var(--ods-size-03));
-            border-radius: var(--ods-size-03);
           }
         }
       }

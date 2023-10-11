@@ -5,10 +5,10 @@
 // Main CSS mixin for typography
 @mixin osds-datepicker-theme-typography() {
   :host .datepicker * {
-    font-family: var(--ods-font-family);
-    font-size: var(--ods-typo-size-03);
     line-height: var(--ods-line-height-size-03);
     letter-spacing: var(--ods-letter-spacing-size-02);
+    font-family: var(--ods-font-family);
+    font-size: var(--ods-typo-size-03);
     font-weight: var(--ods-typo-weight-semibold);
   }
 }

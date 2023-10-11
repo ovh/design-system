@@ -12,6 +12,7 @@
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -30,10 +31,10 @@
 
 :host {
   .datepicker {
-    position: relative;
     display: none;
-    animation: datepicker-appear 0.2s ease-in-out;
+    position: relative;
     z-index: 99;
+    animation: datepicker-appear 0.2s ease-in-out;
 
     * {
       transition: background-color 0.1s ease-in-out;
@@ -51,28 +52,44 @@
         .prev-btn,
         .next-btn {
           display: flex;
-          justify-content: center;
           align-items: center;
+          justify-content: center;
           border: none;
           cursor: pointer;
         }
 
         .prev-btn[disabled],
         .next-btn[disabled] {
-          pointer-events: none;
           opacity: 0.5;
+          pointer-events: none;
         }
 
         .view-switch {
           display: flex;
-          justify-content: center;
           align-items: center;
+          justify-content: center;
           border: none;
           cursor: pointer;
         }
       }
 
       .datepicker-main {
+        .datepicker-grid {
+          display: grid;
+
+          .datepicker-cell {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            cursor: pointer;
+          }
+
+          .disabled {
+            opacity: 0.5;
+          }
+        }
+
         .datepicker-view {
           .days {
             .days-of-week {
@@ -80,8 +97,8 @@
 
               .dow {
                 display: flex;
-                justify-content: center;
                 align-items: center;
+                justify-content: center;
                 cursor: default;
               }
             }
@@ -91,8 +108,8 @@
 
               .datepicker-cell {
                 display: flex;
-                justify-content: center;
                 align-items: center;
+                justify-content: center;
                 border: none;
                 cursor: pointer;
               }
@@ -100,25 +117,9 @@
               .prev,
               .next,
               .disabled {
-                opacity: 50%;
+                opacity: 0.5;
               }
             }
-          }
-        }
-
-        .datepicker-grid {
-          display: grid;
-
-          .datepicker-cell {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border: none;
-            cursor: pointer;
-          }
-
-          .disabled {
-            opacity: 50%;
           }
         }
       }
@@ -143,8 +144,8 @@
 }
 
 // apply the theme template for the component
-@include ods-theme-component() {
-  @include osds-datepicker-theme-color();
-  @include osds-datepicker-theme-size();
-  @include osds-datepicker-theme-typography();
+@include ods-theme-component {
+  @include osds-datepicker-theme-color;
+  @include osds-datepicker-theme-size;
+  @include osds-datepicker-theme-typography;
 }

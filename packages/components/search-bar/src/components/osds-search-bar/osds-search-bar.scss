@@ -1,7 +1,6 @@
 @import 'styles/osds-search-bar.mixins';
 @import 'styles/osds-search-bar.color';
 @import 'styles/osds-search-bar.size';
-@import 'styles/osds-search-bar.typography';
 @import '~@ovhcloud/ods-common-theming/color/ods-theming-color';
 @import '~@ovhcloud/ods-common-theming/ods-theme';
 
@@ -51,5 +50,4 @@
 @include ods-theme-component {
   @include osds-search-bar-theme-color;
   @include osds-search-bar-theme-size;
-  @include osds-search-bar-theme-typography;
 }

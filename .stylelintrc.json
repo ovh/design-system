@@ -1,9 +1,11 @@
 {
   "extends": ["stylelint-config-concentric-order", "stylelint-config-standard-scss"],
   "rules": {
+    "color-function-notation": "legacy",
     "hue-degree-notation": "number",
+    "scss/no-global-function-names": null,
     "selector-class-pattern": [
-      "^[a-z]([-_]?[a-z0-9]+)*(__[a-z0-9]([-]?[a-z0-9]+)*)?(--[a-z0-9]([-]?[a-z0-9]+)*)?$",
+      "^[a-z]([-_]{0,2}?[a-z0-9]+)*(__[a-z0-9]([-]?[a-z0-9]+)*)?(--[a-z0-9]([-]?[a-z0-9]+)*)?$",
       {
         "resolveNestedSelectors": true
       }

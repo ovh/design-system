@@ -40,7 +40,7 @@ $border-radius-concept: (
   @each $size, $value in $stack-concept {
     $result: calc(#{$size-base * $value}rem * var(--ods-size-ratio));
 
-    @if $size == "06" {
+    @if ($size == "06") {
       --ods-size-stack-default: #{$result};
       --ods-size-stack-n-default: calc(-1 * var(--ods-size-stack-default));
     }
@@ -52,7 +52,7 @@ $border-radius-concept: (
   @each $size, $value in $inline-concept {
     $result: calc(#{$size-base * $value}rem * var(--ods-size-ratio));
 
-    @if $size == "06" {
+    @if ($size == "06") {
       --ods-size-inline-default: #{$result};
       --ods-size-inline-n-default: calc(-1 * var(--ods-size-inline-default));
     }
@@ -64,7 +64,7 @@ $border-radius-concept: (
   @each $size, $value in $inset-concept {
     $result: calc(#{$size-base * $value}rem * var(--ods-size-ratio));
 
-    @if  $size == "06" {
+    @if ($size == "06") {
       --ods-size-inset-default: #{$result};
       --ods-size-inset-default-x: #{$result};
       --ods-size-inset-default-y: #{$result};
@@ -81,7 +81,7 @@ $border-radius-concept: (
     $result: calc(#{$size-base * $value}rem * var(--ods-size-ratio));
     $larger-result: calc(#{$size-base * $value * 1.5}rem * var(--ods-size-ratio));
 
-    @if  $size == "06" {
+    @if ($size == "06") {
       --ods-size-squish-default: #{$result} #{$larger-result};
       --ods-size-squish-default-x: #{$larger-result};
       --ods-size-squish-default-y: #{$result};
@@ -98,7 +98,7 @@ $border-radius-concept: (
     $result: calc(#{$size-base * $value}rem * var(--ods-size-ratio));
     $larger-result: calc(#{$size-base * $value * 1.5}rem * var(--ods-size-ratio));
 
-    @if $size == "06" {
+    @if ($size == "06") {
       --ods-size-stretch-default: #{$larger-result} #{$result};
       --ods-size-stretch-default-x: #{$result};
       --ods-size-stretch-default-y: #{$larger-result};
@@ -114,7 +114,7 @@ $border-radius-concept: (
   @each $size, $value in $border-radius-concept {
     $result: calc(#{$size-base * $value}rem * var(--ods-size-ratio));
 
-    @if $size == "06" {
+    @if ($size == "06") {
       --ods-size-border-radius-default: #{$result};
     }
 

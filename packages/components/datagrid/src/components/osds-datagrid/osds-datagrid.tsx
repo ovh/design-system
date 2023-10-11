@@ -41,6 +41,7 @@ export class OsdsDatagrid implements OdsDatagridAttribute {
     this.table = new Tabulator(this.grid, {
       height: '100%',
       data: rows,
+      rowHeight: 28,
       layout: 'fitColumns',
       placeholder: this.noResultLabel,
       columns: this.controler.getTabulatorColumns(columns),

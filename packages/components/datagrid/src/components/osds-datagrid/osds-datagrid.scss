@@ -32,38 +32,40 @@
     }
 }
 
+$ods-border-datagrid: solid 1px var(--ods-color-blue-200);
+
 .tabulator {
     border: none;
     background-color: #FFF;
+    box-sizing: border-box;
 
     .tabulator-tableholder {
-        box-sizing: border-box;
-        border: solid 1px var(--ods-color-blue-200);
 
         .tabulator-row {
-            border-bottom: solid 1px var(--ods-color-blue-200);
             background-color: #FFF;
-
-            &:last-child {
-                border-bottom: 0;
-            }
 
             &:hover {
                 background-color: #FFF;
+            }
+            &:last-child {
+                border-bottom: $ods-border-datagrid;
             }
         }
     
         .tabulator-cell {
             border-right: none;
-            height: unset !important;
-        }
-    
-        .ods-selectable__input-checkbox {
-            &.tabulator-cell {
-                padding-left: 9px;
-                // min-width: unset;
+            border-top: $ods-border-datagrid;
+            box-sizing: border-box;
+
+            &:first-child {
+                border-left: $ods-border-datagrid;
             }
-            &.tabulator-cell {
+            &:last-of-type {
+                border-right: $ods-border-datagrid;
+            }
+
+            &.ods-selectable__input-checkbox {
+                padding-left: 9px;
                 @include ods-input-checkbox;
             }
         }
@@ -71,6 +73,7 @@
         .tabulator-placeholder {
 
             .tabulator-placeholder-contents {
+                border: $ods-border-datagrid;
                 color: var(--ods-color-text-500);
                 font-size: var(--ods-typography-body-500-font-size);
                 font-weight: var(--ods-typography-body-500-font-weight);

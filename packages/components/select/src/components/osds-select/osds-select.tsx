@@ -33,7 +33,7 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
   /** is the select was touched by the user */
   dirty = false;
   selectedLabelSlot: HTMLElement | null = null;
-  observer?: MutationObserver = undefined;
+  observer?: MutationObserver;
 
   @Element() el!: HTMLStencilElement;
 
@@ -118,13 +118,9 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
    * in order to synchronize the already set value with the placeholder
    */
   async componentDidLoad() {
+    this.observer = new MutationObserver(async () => this.selectedOptionLabel = await this.optionSelected?.getLabel() || '');
     this.setSelectOptions();
     await this.updateSelectOptionStates(this.value);
-    this.observer = new MutationObserver(async () => this.selectedOptionLabel = await this.optionSelected?.getLabel() || '');
-    if (!this.controller.selectOptions[0]) {
-      return;
-    }
-    this.observer?.observe(this.controller.selectOptions[0], { childList: true });
   }
 
   @Watch('opened')
@@ -287,6 +283,7 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
 
   setSelectOptions() {
     this.controller.selectOptions = this.getSelectOptionList();
+    this.controller.selectOptions.forEach((option) => this.observer?.observe(option, { childList: true }))
   }
 
   getSelectOptionList(): (HTMLElement & OsdsSelectOption)[] {

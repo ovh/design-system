@@ -10,7 +10,7 @@
 /// @param {String} $hue - the hue to apply like '500' or '500-contrasted'
 /// @return {Variable} - a CSS variable corresponding to the color defined in the theme
 @function ods-get-color-variable($intent-name: null, $palette-name: null, $hue, $alpha: 1) {
-  @if not ($intent-name and $palette-name) {
+  @if (not $intent-name and not $palette-name) {
     @error 'You must set $intent-name or $palette-name at least';
   }
 

@@ -1,5 +1,4 @@
 @import "sizes";
-@use "sass:map";
 
 /**
  * SPACING CONCEPTS
@@ -18,27 +17,28 @@
 
 $stack-concept: $sizes;
 $inline-concept: (
-        "01": map.get($sizes, "01"), // 1px
-        "02": map.get($sizes, "02"), // 2px
-        "03": map.get($sizes, "03"), // 4px
-        "04": map.get($sizes, "04"), // 8px
-        "05": map.get($sizes, "05"), // 12px
-        "06": map.get($sizes, "06"), // 16px
-        "07": map.get($sizes, "07"), // 20px
-        "08": map.get($sizes, "08")  // 24px
+        "01": map-get($sizes, "01"), // 1px
+        "02": map-get($sizes, "02"), // 2px
+        "03": map-get($sizes, "03"), // 4px
+        "04": map-get($sizes, "04"), // 8px
+        "05": map-get($sizes, "05"), // 12px
+        "06": map-get($sizes, "06"), // 16px
+        "07": map-get($sizes, "07"), // 20px
+        "08": map-get($sizes, "08")  // 24px
 );
 $inset-concept: $inline-concept;
 $squish-concept: $inset-concept;
 $stretch-concept: $inset-concept;
 $border-radius-concept: (
-        "01": map.get($sizes, "03"), // 4px
-        "02": map.get($sizes, "04"), // 8px
-        "03": map.get($sizes, "06")  // 16px
+        "01": map-get($sizes, "03"), // 4px
+        "02": map-get($sizes, "04"), // 8px
+        "03": map-get($sizes, "06")  // 16px
 );
 
+/* stylelint-disable function-calc-no-unspaced-operator */
 :root {
   @each $size, $value in $stack-concept {
-    $result: calc(#{$size - base * $value}rem * var(--ods-size-ratio));
+    $result: calc(#{$size-base * $value}rem * var(--ods-size-ratio));
 
     @if $size == "06" {
       --ods-size-stack-default: #{$result};
@@ -50,7 +50,7 @@ $border-radius-concept: (
   }
 
   @each $size, $value in $inline-concept {
-    $result: calc(#{$size - base * $value}rem * var(--ods-size-ratio));
+    $result: calc(#{$size-base * $value}rem * var(--ods-size-ratio));
 
     @if $size == "06" {
       --ods-size-inline-default: #{$result};
@@ -62,7 +62,7 @@ $border-radius-concept: (
   }
 
   @each $size, $value in $inset-concept {
-    $result: calc(#{$size - base * $value}rem * var(--ods-size-ratio));
+    $result: calc(#{$size-base * $value}rem * var(--ods-size-ratio));
 
     @if  $size == "06" {
       --ods-size-inset-default: #{$result};
@@ -78,8 +78,8 @@ $border-radius-concept: (
   }
 
   @each $size, $value in $squish-concept {
-    $result: calc(#{$size - base * $value}rem * var(--ods-size-ratio));
-    $larger-result: calc(#{$size - base * $value * 1.5}rem * var(--ods-size-ratio));
+    $result: calc(#{$size-base * $value}rem * var(--ods-size-ratio));
+    $larger-result: calc(#{$size-base * $value * 1.5}rem * var(--ods-size-ratio));
 
     @if  $size == "06" {
       --ods-size-squish-default: #{$result} #{$larger-result};
@@ -95,8 +95,8 @@ $border-radius-concept: (
   }
 
   @each $size, $value in $stretch-concept {
-    $result: calc(#{$size - base * $value}rem * var(--ods-size-ratio));
-    $larger-result: calc(#{$size - base * $value * 1.5}rem * var(--ods-size-ratio));
+    $result: calc(#{$size-base * $value}rem * var(--ods-size-ratio));
+    $larger-result: calc(#{$size-base * $value * 1.5}rem * var(--ods-size-ratio));
 
     @if $size == "06" {
       --ods-size-stretch-default: #{$larger-result} #{$result};
@@ -112,7 +112,7 @@ $border-radius-concept: (
   }
 
   @each $size, $value in $border-radius-concept {
-    $result: calc(#{$size - base * $value}rem * var(--ods-size-ratio));
+    $result: calc(#{$size-base * $value}rem * var(--ods-size-ratio));
 
     @if $size == "06" {
       --ods-size-border-radius-default: #{$result};

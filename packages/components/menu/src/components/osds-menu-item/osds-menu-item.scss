@@ -9,8 +9,3 @@
 
   display: block;
 }
-
-@include ods-theme-component {
-  @include osds-menu-item-theme-color;
-  @include osds-menu-item-theme-size;
-}

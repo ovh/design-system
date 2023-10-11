@@ -1,7 +1,6 @@
 @import 'styles/osds-popover.mixins';
 @import 'styles/osds-popover.color';
 @import 'styles/osds-popover.size';
-@import 'styles/osds-popover.typography';
 @import '~@ovhcloud/ods-common-theming/color/ods-theming-color';
 @import '~@ovhcloud/ods-common-theming/ods-theme';
 
@@ -27,5 +26,4 @@
 @include ods-theme-component {
   @include osds-popover-theme-color;
   @include osds-popover-theme-size;
-  @include osds-popover-theme-typography;
 }

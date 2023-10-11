@@ -76,6 +76,12 @@
       }
     }
 
+    @include ods-and-one-hue-foreach-theme-color('200') using($color) {
+      :host(&:active) {
+        background-color: $color;
+      }
+    }
+
     &[contrasted] {
       @include ods-and-all-hue-foreach-theme-color((
               background-color: '100',
@@ -88,17 +94,7 @@
           color: map_get($colors, color);
         }
       }
-    }
-  }
 
-  &:not([disabled])[selectable] {
-    @include ods-and-one-hue-foreach-theme-color('200') using($color) {
-      :host(&:active) {
-        background-color: $color;
-      }
-    }
-
-    &[contrasted] {
       @include ods-and-all-hue-foreach-theme-color((
               background-color: '200',
               border-color: '200',

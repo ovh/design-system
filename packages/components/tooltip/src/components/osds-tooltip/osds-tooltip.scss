@@ -1,7 +1,6 @@
 @import 'styles/osds-tooltip.mixins';
 @import 'styles/osds-tooltip.color';
 @import 'styles/osds-tooltip.size';
-@import 'styles/osds-tooltip.typography';
 @import '~@ovhcloud/ods-common-theming/color/ods-theming-color';
 @import '~@ovhcloud/ods-common-theming/ods-theme';
 
@@ -22,5 +21,4 @@
 @include ods-theme-component {
   @include osds-tooltip-theme-color;
   @include osds-tooltip-theme-size;
-  @include osds-tooltip-theme-typography;
 }

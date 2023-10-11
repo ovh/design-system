@@ -48,7 +48,7 @@
   }
 }
 
-@mixin osds-switch-theme-color-variant-default__contrasted() {
+@mixin osds-switch-theme-color-variant-default-contrasted() {
   @include ods-and-all-hue-foreach-theme-color((
     color: '700',
     background-color: '500-contrasted',
@@ -78,7 +78,7 @@
     @include osds-switch-theme-color-variant-default;
 
     &[contrasted] {
-      @include osds-switch-theme-color-variant-default__contrasted;
+      @include osds-switch-theme-color-variant-default-contrasted;
     }
   }
 }

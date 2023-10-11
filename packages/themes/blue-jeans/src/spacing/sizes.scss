@@ -20,10 +20,11 @@ $sizes: (
 );
 
 :root {
+  /* stylelint-disable function-calc-no-unspaced-operator */
   --ods-size-ratio: #{$size-ratio};
 
   @each $size, $value in $sizes {
-    --ods-size-#{$size}: calc(#{$size - base * $value}rem * var(--ods-size-ratio));
+    --ods-size-#{$size}: calc(#{$size-base * $value}rem * var(--ods-size-ratio));
     --ods-size-n-#{$size}: calc(-1 * var(--ods-size-#{$size}));
   }
 }

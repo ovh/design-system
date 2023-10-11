@@ -42,7 +42,7 @@
     "ignore:rm": "lerna run ignore:rm",
     "lerna:ls:pl": "lerna ls -pl",
     "lint": "eslint '*/**/*.{js,ts,tsx}'",
-    "lint:scss": "stylelint 'packages/themes/*/src/*/*.scss' 'packages/components/**/*.scss'",
+    "lint:scss": "lerna run lint:scss",
     "lint:scss:report": "stylelint 'packages/themes/*/src/*/*.scss' 'packages/components/**/*.scss' --custom-formatter node_modules/stylelint-formatter-html > stylelint-report.html",
     "list:releases": "lerna run list:releases",
     "ods:graduate": "yarn ods:release:prepare && yarn version:graduate",

@@ -2,9 +2,10 @@
 @import '~@ovhcloud/ods-common-theming/size/ods-theming-size';
 @import '~@ovhcloud/ods-common-theming/typography/ods-theming-typography';
 @import '~@ovhcloud/ods-common-theming/ods-theme';
-@import './colors/index';
-@import './fonts/index';
-@import './spacing/index';
+//@import './colors/index';
+@import './colors/palettes';
+//@import './fonts/index';
+//@import './spacing/index';
 
 :root {
   --ods-font-family: 'Source Sans Pro', 'Trebuchet MS', Arial, 'Segoe UI', sans-serif;

@@ -43,6 +43,7 @@
     "@ovhcloud/ods-component-text": "16.3.1",
     "@ovhcloud/ods-component-textarea": "16.3.1",
     "@ovhcloud/ods-component-tile": "16.3.1",
+    "@ovhcloud/ods-component-timepicker": "16.3.1",
     "@ovhcloud/ods-component-tooltip": "16.3.1"
   },
   "devDependencies": {

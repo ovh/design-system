@@ -115,12 +115,34 @@ $ods-border-datagrid: solid 1px var(--ods-color-blue-200);
                     }
                 }
 
+                &[aria-sort="descending"] {
+                    .tabulator-col-content {
+                        
+                        .tabulator-col-title-holder {
+
+                            .tabulator-col-sorter {
+                                top: 2px;
+                            }
+                        }
+                    }
+                }
+                &[aria-sort="ascending"], &[aria-sort="none"] {
+                    .tabulator-col-content {
+
+                        .tabulator-col-title-holder {
+
+                            .tabulator-col-sorter {
+                                top: -7px;
+                            }
+                        }
+                    }
+                }
+
                 .tabulator-col-content {
                     
                     .tabulator-col-title-holder {
                         display: flex;
                         justify-content: center;
-                        align-items: baseline;
 
                         .tabulator-col-title {
                             width: unset;

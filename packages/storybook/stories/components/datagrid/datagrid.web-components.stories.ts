@@ -16,7 +16,9 @@ const defaultStoryParams = {
       { title: "Name", field: "name", isSortable: true },
       { title: "Firstname", field: "firstname" },
       { title: "Gender", field: "gender" },
-      { title: "Date Of Birth", field: "dob" },
+      { title: "Date Of Birth", field: "dob", formatter: (value: string) => {
+        return `<osds-icon name="calendar"></osds-icon> <osds-text color="text" size="400">${value}</osds-text>` 
+      } },
     ],
   },
   rows: {
@@ -28,8 +30,12 @@ const defaultStoryParams = {
   },
   isSelectable: {
     category: 'Général',
-    defaultValue: false
+    defaultValue: false,
   },
+  noResultLabel: {
+    category: 'Général',
+    defaultValue: 'Aucun résultat',
+  }
 };
 
 export default {

@@ -16,11 +16,11 @@ describe('e2e:osds-datagrid', () => {
     page = await newE2EPage();
     await page.setContent(`<osds-datagrid ${odsStringAttributes2Str(stringAttributes)}></osds-datagrid>`);
     await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
-
-    el = await page.find('osds-datagrid');
     await page.waitForChanges();
-    
+
+    el = await page.find('osds-datagrid');    
     table = await page.find('osds-datagrid >>> .tabulator');
+    await page.waitForChanges();
   }
 
   it('should render', async () => {
@@ -128,5 +128,20 @@ describe('e2e:osds-datagrid', () => {
     const newRows = await table?.findAll('.tabulator-row [tabulator-field="name"]');
     expect(newRows?.[0].innerText).toContain('Marge');
     expect(newRows?.[1].innerText).toContain('Homer');
+  });
+
+  it('should have a column formatter', async () => {
+    await setup({ attributes: {
+      columns: [{ title: 'Name', field: 'name' }, { title: 'Firstname', field: 'firstname' }],
+      rows: JSON.stringify([{ name: 'Homer', firstname: 'Simpson' }, { name: 'Marge', firstname: 'Simpson' }]),
+    } });
+    await page.$eval('osds-datagrid', (elm: any) => {
+      elm.columns = [{ title: 'Name', field: 'name', formatter: (value) => `<osds-button>Button content</osds-button>${value}` }, { title: 'Firstname', field: 'firstname' }];
+    });
+    await page.waitForChanges();
+
+    const rows = await table?.findAll('.tabulator-row [tabulator-field="name"]');
+    expect(rows?.[0].innerHTML).toContain('osds-button');
+    expect(rows?.[0].innerHTML).toContain('Homer');
   });
 });

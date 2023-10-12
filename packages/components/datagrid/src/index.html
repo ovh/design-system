@@ -14,9 +14,9 @@
   <link rel="stylesheet" href="/build/osds-datagrid.css">
 </head>
 <body>
-  <osds-datagrid columns='[{"title":"Name", "field":"name"}, {"title":"Firstname", "field":"firstname"}]' rows='[{"name":"Homer", "firstname":"Simpson"}]'></osds-datagrid>
+  <osds-datagrid id="datagridFormatter"></osds-datagrid>
 
-  <h1>With sorted column</h1>
+  <!-- <h1>With sorted column</h1>
   <osds-datagrid
     columns='[{"title":"Name", "field":"name", "isSortable": true}, {"title":"Firstname", "field":"firstname"}, {"title":"Gender", "field":"gender"}]'
     rows='[{"name":"Homer", "firstname":"Simpson", "gender": "Male"}, {"name":"Marge", "firstname":"Simpson", "gender": "Female"}]'>
@@ -34,7 +34,24 @@
     columns='[{"title":"Name", "field":"name", "isSortable": true}, {"title":"Firstname", "field":"firstname"}]'
     rows='[]'
     no-result-label="Aucune données de renseignée">
-  </osds-datagrid>
+  </osds-datagrid> -->
+
+  <script>
+    const datagrid = document.getElementById('datagridFormatter');
+    datagrid.columns = [
+      { title: "Name", field: "name", formatter: (cellValue) => {
+          return `<osds-button>Button content</osds-button> ${cellValue}`
+        }
+      },
+      { title: "Firstname", field: "firstname" },
+      { title: "Gender", field: "gender" },
+      { title: "Date Of Birth", field: "dob" },
+    ];
+    datagrid.rows = [
+      { name: "Dupont", firstname: "Antoine", gender: "male", dob: "15/11/1996" },
+      { name: "Garnbret", firstname: "Janja", gender: "female", dob: "12/03/1999" },
+    ];
+  </script>
 
 </body>
 </html>

@@ -6,6 +6,7 @@ import { OdsDatagridController } from './core/controller';
 import { OdsLogger } from '@ovhcloud/ods-common-core';
 import { ODS_ICON_SIZE, ODS_ICON_NAME } from '@ovhcloud/ods-component-icon'
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+
 @Component({
   tag: 'osds-datagrid',
   styleUrl: 'osds-datagrid.scss',
@@ -41,7 +42,6 @@ export class OsdsDatagrid implements OdsDatagridAttribute {
     this.table = new Tabulator(this.grid, {
       height: '100%',
       data: rows,
-      rowHeight: 28,
       layout: 'fitColumns',
       placeholder: this.noResultLabel,
       columns: this.controler.getTabulatorColumns(columns),
@@ -58,6 +58,18 @@ export class OsdsDatagrid implements OdsDatagridAttribute {
           color="${ODS_THEME_COLOR_INTENT.primary}">
         </osds-icon>`
       },
+    });
+    this.table?.on('renderComplete', () => {
+      setTimeout(() => {
+        this.table?.getRows().forEach((row) => {
+          const cells = row.getCells();
+          const maxHeight = Math.max(...cells.map((cell) => cell.getElement().getBoundingClientRect().height));
+          cells.forEach((cell) => {
+            cell.getElement().classList.add('height-calc');
+            cell.getElement().style.height = maxHeight + 'px';
+          });
+        });
+      }, 0);
     });
   }
 

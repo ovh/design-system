@@ -17,8 +17,9 @@ class OdsDatagridController {
             field: column.field,
             headerSort: column.isSortable ?? false,
             headerHozAlign: 'center',
+            vertAlign: 'middle',
             titleFormatter: (cell: CellComponent) => this.getOdsText(cell.getValue(), ODS_TEXT_SIZE._500),
-            formatter: (cell: CellComponent) => this.getOdsText(cell.getValue(), ODS_TEXT_SIZE._400),
+            formatter: (cell: CellComponent) => column.formatter?.(cell.getValue()) ?? this.getOdsText(cell.getValue(), ODS_TEXT_SIZE._400),
             hozAlign: 'center',
             minWidth: 100,
         }

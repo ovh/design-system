@@ -5743,6 +5743,42 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-component-timepicker-react@workspace:packages/components/timepicker/react":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-timepicker-react@workspace:packages/components/timepicker/react"
+  dependencies:
+    "@ovhcloud/ods-component-timepicker": 16.3.0
+    "@ovhcloud/ods-react-dev": 16.3.0
+  peerDependencies:
+    react: ">=16.8.6"
+    react-dom: ">=16.8.6"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-component-timepicker-vue@workspace:packages/components/timepicker/vue":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-timepicker-vue@workspace:packages/components/timepicker/vue"
+  dependencies:
+    "@ovhcloud/ods-component-timepicker": 16.3.0
+    "@ovhcloud/ods-vue-dev": 16.3.0
+  peerDependencies:
+    vue: ">=3"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-component-timepicker@16.3.0, @ovhcloud/ods-component-timepicker@workspace:packages/components/timepicker":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-timepicker@workspace:packages/components/timepicker"
+  dependencies:
+    "@ovhcloud/ods-common-core": 16.3.0
+    "@ovhcloud/ods-common-stencil": 16.3.0
+    "@ovhcloud/ods-common-testing": 16.3.0
+    "@ovhcloud/ods-common-theming": 16.3.0
+    "@ovhcloud/ods-component-input": 16.3.0
+    "@ovhcloud/ods-stencil-dev": 16.3.0
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-component-toggle-react@workspace:packages/components/toggle/react":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-toggle-react@workspace:packages/components/toggle/react"
@@ -5860,6 +5896,7 @@ __metadata:
     "@ovhcloud/ods-component-text": 16.3.0
     "@ovhcloud/ods-component-textarea": 16.3.0
     "@ovhcloud/ods-component-tile": 16.3.0
+    "@ovhcloud/ods-component-timepicker": 16.3.0
     "@ovhcloud/ods-component-tooltip": 16.3.0
     "@ovhcloud/ods-dev": 16.3.0
   languageName: unknown

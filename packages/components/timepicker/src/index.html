@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html dir='ltr' lang='en'>
+<head>
+  <meta charset='utf-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0' />
+  <title>Dev osds-timepicker</title>
+
+  <script type="module">
+    !window.ods && (window.ods = {config: {logging: {active:true}}});
+  </script>
+
+  <script type='module' src='/build/osds-timepicker.esm.js'></script>
+  <script nomodule src='/build/osds-timepicker.js'></script>
+  <link rel="stylesheet" href="/build/osds-timepicker.css">
+</head>
+<body>
+  <p>Default</p>
+  <osds-timepicker></osds-timepicker>
+
+  <p>clearable</p>
+  <osds-timepicker clearable=''></osds-timepicker>
+
+  <p>With Seconds</p>
+  <osds-timepicker with-seconds=''></osds-timepicker>
+
+  <p>With preset value</p>
+  <osds-timepicker value='11:11'></osds-timepicker>
+
+  <p>In Error</p>
+  <osds-timepicker error=''></osds-timepicker>
+
+  <p>Inline</p>
+  <osds-timepicker inline=''></osds-timepicker>
+
+  <p>Disabled</p>
+  <osds-timepicker disabled=''></osds-timepicker>
+</body>
+</html>

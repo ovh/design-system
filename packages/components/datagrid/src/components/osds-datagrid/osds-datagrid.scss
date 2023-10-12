@@ -6,7 +6,7 @@
     input[type="checkbox"] {
         appearance: none;
         border-radius: var(--ods-size-border-radius-01);
-        border: solid 3px var(--ods-color-primary-500);
+        border: solid 2px var(--ods-color-primary-500);
         margin: 0;
         width: 20px;
         height: 20px;
@@ -120,7 +120,7 @@ $ods-border-datagrid: solid 1px var(--ods-color-blue-200);
                     .tabulator-col-title-holder {
                         display: flex;
                         justify-content: center;
-                        align-items: flex-end;
+                        align-items: baseline;
 
                         .tabulator-col-title {
                             width: unset;

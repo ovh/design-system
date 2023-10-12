@@ -11,7 +11,7 @@ defineCustomElements();
 
 /* Default story parameters  */
 const storyParams = {
-  clearable: {
+  clearable: {y
     category: 'General',
     defaultValue: DEFAULT_ATTRIBUTE.clearable,
   },

@@ -1,5 +1,4 @@
 jest.mock('./core/controller'); // keep jest.mock before any
-
 import type { OdsTimepickerAttribute } from './interfaces/attributes';
 import type { SpecPage } from '@stencil/core/testing';
 import { newSpecPage } from '@stencil/core/testing';
@@ -15,7 +14,6 @@ import { ODS_TIMEZONE } from './constants/timezones';
 import { ODS_TIMEZONES_PRESET } from './constants/timezones-preset';
 import { OsdsSelect, OsdsSelectOption } from '@ovhcloud/ods-component-select';
 
-
 describe('spec:osds-timepicker', () => {
   let page: SpecPage;
   let root: HTMLElement | undefined;
@@ -23,7 +21,6 @@ describe('spec:osds-timepicker', () => {
   let controller: OdsTimepickerController;
   let select: OsdsSelect | null | undefined;
   let selectOptions: OsdsSelectOption[] | null | undefined;
-
 
   afterEach(() => {
     jest.clearAllMocks();

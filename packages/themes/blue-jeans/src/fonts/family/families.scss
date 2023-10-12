@@ -14,11 +14,11 @@ $source-sans-pro-font-families: $source-sans-pro-base64;
       $font-files: map_get($font_category, $font_style);
 
       @font-face {
-        font-display: fallback;
         font-family: "Source Sans Pro";
         font-stretch: normal;
-        font-style: #{$font-style};
         font-weight: #{$font-weight};
+        font-style: #{$font-style};
+        font-display: fallback;
         src: #{map_get($font-files, 'woff2')}
              #{map_get($font-files, 'woff')};
       }
@@ -27,9 +27,9 @@ $source-sans-pro-font-families: $source-sans-pro-base64;
 
 @font-face {
   font-family: "ODS Icons";
+  font-stretch: normal;
   font-weight: 200;
   font-style: normal;
-  font-stretch: normal;
   font-display: block;
   src: #{$ods-icons-base64};
 }

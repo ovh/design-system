@@ -20,13 +20,13 @@
   }
 
   :host(:focus-visible) {
-    outline: 2px gray dotted;
+    outline: 2px #808080 dotted;
   }
 
   // DISABLED case
   [disabled] {
     @include osds-tab-bar-item-on-selected-host {
-      opacity: .5;
+      opacity: 0.5;
     }
   }
 
@@ -43,7 +43,6 @@
       }
     }
 
-
     &[active] {
       @include osds-tab-bar-item-on-selected-host {
         border-bottom-color: var(--ods-color-primary-000);
@@ -56,5 +55,4 @@
       }
     }
   }
-
 }

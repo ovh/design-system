@@ -10,7 +10,7 @@
 
     osds-button.selected-page::part(button) {
       background-color: ods-get-color-variable($intent-name: primary, $hue: '800');
-      color: white;
+      color: #fff;
     }
   }
 }

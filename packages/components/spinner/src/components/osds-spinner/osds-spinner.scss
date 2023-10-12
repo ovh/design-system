@@ -11,9 +11,9 @@
 .spinner > svg {
   position: relative;
   aspect-ratio: 1 / 1;
-  animation: rotate .8s infinite linear;
+  animation: rotate 0.8s infinite linear;
   animation-play-state: running;
-  mask-image: conic-gradient(from 190deg, transparent 25%, black 65%);
+  mask-image: conic-gradient(from 190deg, transparent 25%, #000 65%);
   font-size: initial;
 }
 

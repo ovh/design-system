@@ -2,14 +2,13 @@
 @import '~@ovhcloud/ods-common-theming/size/ods-theming-size';
 @import '~@ovhcloud/ods-common-theming/typography/ods-theming-typography';
 @import '~@ovhcloud/ods-common-theming/ods-theme';
-//@import './colors/index';
-@import './colors/palettes';
-//@import './fonts/index';
-//@import './spacing/index';
+@import './colors/index';
+@import './fonts/index';
+@import './spacing/index';
 
 :root {
   --ods-font-family: 'Source Sans Pro', 'Trebuchet MS', Arial, 'Segoe UI', sans-serif;
-  --ods-toggle-transition-slider: .3s;
+  --ods-toggle-transition-slider: 0.3s;
   --ods-toggle-animation-checking-shadow: steam 3s linear infinite;
   --ods-accordion-animation-opening: toggle 0.3s;
 }
@@ -20,254 +19,463 @@
 // - size-config: which width, height etc for which component size
 @function ods-blue-jeans-theme-config() {
   @return (
-    color-config: ods-create-color-config(
-      $theme-palettes: $ods-theme-palettes-blue-jeans,
-      $default: 'gray',
-      $primary: 'blue',
-      $text: 'gray-blue',
-      $accent: 'pink',
-      $error: 'red',
-      $warning: 'orange',
-      $success: 'green',
-      $info: 'blue',
-      $promotion: 'pink'
-    ),
-    typography-config: ods-create-typography-config(
-      $heading: (
-        "100": (font-family: var(--ods-font-family), font-size: var(--ods-typo-size-03), line-height: var(--ods-line-height-size-03), font-style: normal, letter-spacing: var(--ods-letter-spacing-size-02), font-weight: var(--ods-typo-weight-semibold)),
-        "200": (font-family: var(--ods-font-family), font-size: var(--ods-typo-size-03), line-height: var(--ods-line-height-size-04), font-style: normal, letter-spacing: var(--ods-letter-spacing-size-02), font-weight: var(--ods-typo-weight-bold)),
-        "300": (font-family: var(--ods-font-family), font-size: var(--ods-typo-size-04), line-height: var(--ods-line-height-size-04), font-style: normal, letter-spacing: var(--ods-letter-spacing-size-02), font-weight: var(--ods-typo-weight-bold)),
-        "400": (font-family: var(--ods-font-family), font-size: var(--ods-typo-size-05), line-height: var(--ods-line-height-size-05), font-style: normal, letter-spacing: var(--ods-letter-spacing-size-02), font-weight: var(--ods-typo-weight-bold)),
-        "500": (font-family: var(--ods-font-family), font-size: var(--ods-typo-size-06), line-height: var(--ods-line-height-size-06), font-style: normal, letter-spacing: var(--ods-letter-spacing-size-02), font-weight: var(--ods-typo-weight-bold)),
-        "600": (font-family: var(--ods-font-family), font-size: var(--ods-typo-size-07), line-height: var(--ods-line-height-size-07), font-style: normal, letter-spacing: var(--ods-letter-spacing-size-02), font-weight: var(--ods-typo-weight-bold)),
-        "700": (font-family: var(--ods-font-family), font-size: var(--ods-typo-size-08), line-height: var(--ods-line-height-size-08), font-style: normal, letter-spacing: var(--ods-letter-spacing-size-02), font-weight: var(--ods-typo-weight-bold)),
-        "800": (font-family: var(--ods-font-family), font-size: var(--ods-typo-size-09), line-height: var(--ods-line-height-size-09), font-style: normal, letter-spacing: var(--ods-letter-spacing-size-02), font-weight: var(--ods-typo-weight-bold)),
+    color-config:
+      ods-create-color-config(
+        $theme-palettes: $ods-theme-palettes-blue-jeans,
+        $default: 'gray',
+        $primary: 'blue',
+        $text: 'gray-blue',
+        $accent: 'pink',
+        $error: 'red',
+        $warning: 'orange',
+        $success: 'green',
+        $info: 'blue',
+        $promotion: 'pink'
       ),
-      $subheading: (
-        "100": (font-family: var(--ods-font-family), font-size: var(--ods-typo-size-03), line-height: var(--ods-line-height-size-03), font-style: normal, letter-spacing: var(--ods-letter-spacing-size-02), font-weight: var(--ods-typo-weight-semibold)),
-        "200": (font-family: var(--ods-font-family), font-size: var(--ods-typo-size-05), line-height: var(--ods-line-height-size-05), font-style: normal, letter-spacing: var(--ods-letter-spacing-size-02), font-weight: var(--ods-typo-weight-bold)),
+    typography-config:
+      ods-create-typography-config(
+        $heading: (
+          '100': (
+            font-family: var(--ods-font-family),
+            font-size: var(--ods-typo-size-03),
+            line-height: var(--ods-line-height-size-03),
+            font-style: normal,
+            letter-spacing: var(--ods-letter-spacing-size-02),
+            font-weight: var(--ods-typo-weight-semibold),
+          ),
+          '200': (
+            font-family: var(--ods-font-family),
+            font-size: var(--ods-typo-size-03),
+            line-height: var(--ods-line-height-size-04),
+            font-style: normal,
+            letter-spacing: var(--ods-letter-spacing-size-02),
+            font-weight: var(--ods-typo-weight-bold),
+          ),
+          '300': (
+            font-family: var(--ods-font-family),
+            font-size: var(--ods-typo-size-04),
+            line-height: var(--ods-line-height-size-04),
+            font-style: normal,
+            letter-spacing: var(--ods-letter-spacing-size-02),
+            font-weight: var(--ods-typo-weight-bold),
+          ),
+          '400': (
+            font-family: var(--ods-font-family),
+            font-size: var(--ods-typo-size-05),
+            line-height: var(--ods-line-height-size-05),
+            font-style: normal,
+            letter-spacing: var(--ods-letter-spacing-size-02),
+            font-weight: var(--ods-typo-weight-bold),
+          ),
+          '500': (
+            font-family: var(--ods-font-family),
+            font-size: var(--ods-typo-size-06),
+            line-height: var(--ods-line-height-size-06),
+            font-style: normal,
+            letter-spacing: var(--ods-letter-spacing-size-02),
+            font-weight: var(--ods-typo-weight-bold),
+          ),
+          '600': (
+            font-family: var(--ods-font-family),
+            font-size: var(--ods-typo-size-07),
+            line-height: var(--ods-line-height-size-07),
+            font-style: normal,
+            letter-spacing: var(--ods-letter-spacing-size-02),
+            font-weight: var(--ods-typo-weight-bold),
+          ),
+          '700': (
+            font-family: var(--ods-font-family),
+            font-size: var(--ods-typo-size-08),
+            line-height: var(--ods-line-height-size-08),
+            font-style: normal,
+            letter-spacing: var(--ods-letter-spacing-size-02),
+            font-weight: var(--ods-typo-weight-bold),
+          ),
+          '800': (
+            font-family: var(--ods-font-family),
+            font-size: var(--ods-typo-size-09),
+            line-height: var(--ods-line-height-size-09),
+            font-style: normal,
+            letter-spacing: var(--ods-letter-spacing-size-02),
+            font-weight: var(--ods-typo-weight-bold),
+          ),
+        ),
+        $subheading: (
+          '100': (
+            font-family: var(--ods-font-family),
+            font-size: var(--ods-typo-size-03),
+            line-height: var(--ods-line-height-size-03),
+            font-style: normal,
+            letter-spacing: var(--ods-letter-spacing-size-02),
+            font-weight: var(--ods-typo-weight-semibold),
+          ),
+          '200': (
+            font-family: var(--ods-font-family),
+            font-size: var(--ods-typo-size-05),
+            line-height: var(--ods-line-height-size-05),
+            font-style: normal,
+            letter-spacing: var(--ods-letter-spacing-size-02),
+            font-weight: var(--ods-typo-weight-bold),
+          ),
+        ),
+        $body: (
+          '100': (
+            font-family: var(--ods-font-family),
+            font-size: var(--ods-typo-size-02),
+            line-height: var(--ods-line-height-size-02),
+            font-style: normal,
+            letter-spacing: var(--ods-letter-spacing-size-02),
+            font-weight: var(--ods-typo-weight-regular),
+          ),
+          '200': (
+            font-family: var(--ods-font-family),
+            font-size: var(--ods-typo-size-02),
+            line-height: var(--ods-line-height-size-02),
+            font-style: normal,
+            letter-spacing: var(--ods-letter-spacing-size-02),
+            font-weight: var(--ods-typo-weight-semibold),
+          ),
+          '300': (
+            font-family: var(--ods-font-family),
+            font-size: var(--ods-typo-size-03),
+            line-height: var(--ods-line-height-size-03),
+            font-style: italic,
+            letter-spacing: var(--ods-letter-spacing-size-02),
+            font-weight: var(--ods-typo-weight-regular),
+          ),
+          '400': (
+            font-family: var(--ods-font-family),
+            font-size: var(--ods-typo-size-03),
+            line-height: var(--ods-line-height-size-03),
+            font-style: normal,
+            letter-spacing: var(--ods-letter-spacing-size-02),
+            font-weight: var(--ods-typo-weight-regular),
+          ),
+          '500': (
+            font-family: var(--ods-font-family),
+            font-size: var(--ods-typo-size-03),
+            line-height: var(--ods-line-height-size-03),
+            font-style: normal,
+            letter-spacing: var(--ods-letter-spacing-size-02),
+            font-weight: var(--ods-typo-weight-semibold),
+          ),
+          '600': (
+            font-family: var(--ods-font-family),
+            font-size: var(--ods-typo-size-04),
+            line-height: var(--ods-line-height-size-04),
+            font-style: normal,
+            letter-spacing: var(--ods-letter-spacing-size-02),
+            font-weight: var(--ods-typo-weight-regular),
+          ),
+        ),
+        $button: (
+          '100': (
+            font-family: var(--ods-font-family),
+            font-size: var(--ods-typo-size-03),
+            line-height: var(--ods-line-height-size-03),
+            font-style: normal,
+            letter-spacing: var(--ods-letter-spacing-size-02),
+            font-weight: var(--ods-typo-weight-semibold),
+          ),
+        ),
+        $caption: (
+          '100': (
+            font-family: var(--ods-font-family),
+            font-size: var(--ods-typo-size-01),
+            line-height: var(--ods-line-height-size-01),
+            font-style: normal,
+            letter-spacing: var(--ods-letter-spacing-size-01),
+            font-weight: var(--ods-typo-weight-regular),
+          ),
+        )
       ),
-      $body: (
-        "100": (font-family: var(--ods-font-family), font-size: var(--ods-typo-size-02), line-height: var(--ods-line-height-size-02), font-style: normal, letter-spacing: var(--ods-letter-spacing-size-02), font-weight: var(--ods-typo-weight-regular)),
-        "200": (font-family: var(--ods-font-family), font-size: var(--ods-typo-size-02), line-height: var(--ods-line-height-size-02), font-style: normal, letter-spacing: var(--ods-letter-spacing-size-02), font-weight: var(--ods-typo-weight-semibold)),
-        "300": (font-family: var(--ods-font-family), font-size: var(--ods-typo-size-03), line-height: var(--ods-line-height-size-03), font-style: italic, letter-spacing: var(--ods-letter-spacing-size-02), font-weight: var(--ods-typo-weight-regular)),
-        "400": (font-family: var(--ods-font-family), font-size: var(--ods-typo-size-03), line-height: var(--ods-line-height-size-03), font-style: normal, letter-spacing: var(--ods-letter-spacing-size-02), font-weight: var(--ods-typo-weight-regular)),
-        "500": (font-family: var(--ods-font-family), font-size: var(--ods-typo-size-03), line-height: var(--ods-line-height-size-03), font-style: normal, letter-spacing: var(--ods-letter-spacing-size-02), font-weight: var(--ods-typo-weight-semibold)),
-        "600": (font-family: var(--ods-font-family), font-size: var(--ods-typo-size-04), line-height: var(--ods-line-height-size-04), font-style: normal, letter-spacing: var(--ods-letter-spacing-size-02), font-weight: var(--ods-typo-weight-regular)),
-      ),
-      $button: (
-        "100": (font-family: var(--ods-font-family), font-size: var(--ods-typo-size-03), line-height: var(--ods-line-height-size-03), font-style: normal, letter-spacing: var(--ods-letter-spacing-size-02), font-weight: var(--ods-typo-weight-semibold)),
-      ),
-      $caption: (
-        "100": (font-family: var(--ods-font-family), font-size: var(--ods-typo-size-01), line-height: var(--ods-line-height-size-01), font-style: normal, letter-spacing: var(--ods-letter-spacing-size-01), font-weight: var(--ods-typo-weight-regular)),
+    size-config:
+      ods-create-size-config(
+        $accordion: (
+          md: (
+            padding: var(--ods-size-inset-04),
+            border-width: var(--ods-size-inset-02),
+          ),
+        ),
+        $breadcrumb: (
+          md: (
+            padding: 0 var(--ods-size-inset-04),
+          ),
+        ),
+        $button: (
+          sm: (
+            height: 2.25rem,
+            border-radius: var(--ods-size-border-radius-02),
+            border-width: var(--ods-size-inset-02),
+            padding-y: 0,
+            padding-x: var(--ods-size-inline-05),
+          ),
+          md: (
+            height: 3.25rem,
+            border-radius: var(--ods-size-border-radius-02),
+            border-width: var(--ods-size-inset-02),
+            padding-y: 0,
+            padding-x: var(--ods-size-inline-06),
+          ),
+        ),
+        $cart: (
+          sm: (
+            container-padding: var(--ods-size-stack-03) 0,
+            container-mask-height: var(--ods-size-stack-06),
+            empty-padding: var(--ods-size-stack-06) 0,
+            header-margin-bottom: var(--ods-size-stack-03),
+            mobile-handle-border-radius: var(--ods-size-border-radius-01),
+            mobile-handle-height: var(--ods-size-stack-03),
+            mobile-handle-margin: var(--ods-size-inset-n-06),
+            mobile-handle-padding: var(--ods-size-inset-06),
+            mobile-handle-width: clamp(calc(4rem * var(--ods-size-ratio)), 20vw, calc(8rem * var(--ods-size-ratio))),
+            padding: var(--ods-size-inset-06),
+            section-divider-padding: 0 var(--ods-size-inline-05),
+            section-margin: var(--ods-size-stack-04) 0,
+            section-padding: var(--ods-size-inset-05),
+            total-margin: var(--ods-size-stack-04) var(--ods-size-inline-05),
+          ),
+        ),
+        $checkbox-button: (
+          sm: (
+            border-width: var(--ods-size-02),
+            height: var(--ods-size-06),
+            margin: calc(0.25rem * var(--ods-size-ratio)) calc(0.5rem * var(--ods-size-ratio)),
+            width: var(--ods-size-06),
+          ),
+          md: (
+            border-width: var(--ods-size-02),
+            height: var(--ods-size-08),
+            margin: calc(0.25rem * var(--ods-size-ratio)) calc(0.5rem * var(--ods-size-ratio)),
+            width: var(--ods-size-08),
+          ),
+        ),
+        $chip: (
+          sm: (
+            border-radius: var(--ods-size-border-radius-03),
+            border-width: var(--ods-size-inset-01),
+            height: var(--ods-size-08),
+            icon-width: calc(0.875rem * var(--ods-size-ratio)),
+            inline-margin: var(--ods-size-inline-03),
+            padding: 0 var(--ods-size-inset-04),
+          ),
+          md: (
+            border-radius: var(--ods-size-border-radius-03),
+            border-width: var(--ods-size-inset-01),
+            height: var(--ods-size-09),
+            icon-width: calc(0.875rem * var(--ods-size-ratio)),
+            inline-margin: var(--ods-size-inline-03),
+            padding: 0 var(--ods-size-inset-05),
+          ),
+        ),
+        $code: (
+          md: (
+            border-radius: var(--ods-size-border-radius-01),
+            min-height: var(--ods-size-09),
+            global-padding: var(--ods-size-inset-03),
+            code-padding: var(--ods-size-inset-04),
+          ),
+        ),
+        $divider: (
+          0: (
+            margin-y: 0,
+            height: var(--ods-size-stack-02),
+          ),
+          1: (
+            margin-y: var(--ods-size-stack-02),
+            height: var(--ods-size-stack-02),
+          ),
+          2: (
+            margin-y: var(--ods-size-stack-03),
+            height: var(--ods-size-stack-02),
+          ),
+          3: (
+            margin-y: var(--ods-size-stack-04),
+            height: var(--ods-size-stack-02),
+          ),
+          4: (
+            margin-y: var(--ods-size-stack-05),
+            height: var(--ods-size-stack-02),
+          ),
+          5: (
+            margin-y: var(--ods-size-stack-06),
+            height: var(--ods-size-stack-02),
+          ),
+          6: (
+            margin-y: var(--ods-size-stack-07),
+            height: var(--ods-size-stack-02),
+          ),
+          7: (
+            margin-y: var(--ods-size-stack-08),
+            height: var(--ods-size-stack-02),
+          ),
+          8: (
+            margin-y: var(--ods-size-stack-09),
+            height: var(--ods-size-stack-02),
+          ),
+          9: (
+            margin-y: var(--ods-size-stack-10),
+            height: var(--ods-size-stack-02),
+          ),
+          10: (
+            margin-y: var(--ods-size-stack-11),
+            height: var(--ods-size-stack-02),
+          ),
+        ),
+        $icon: (
+          xxs: (
+            width: var(--ods-size-06),
+            height: var(--ods-size-06),
+          ),
+          xs: (
+            width: var(--ods-size-07),
+            height: var(--ods-size-07),
+          ),
+          sm: (
+            width: var(--ods-size-08),
+            height: var(--ods-size-08),
+          ),
+          md: (
+            width: var(--ods-size-09),
+            height: var(--ods-size-09),
+          ),
+          lg: (
+            width: var(--ods-size-10),
+            height: var(--ods-size-10),
+          ),
+          xl: (
+            width: var(--ods-size-11),
+            height: var(--ods-size-11),
+          ),
+        ),
+        $input: (
+          md: (
+            height: calc(2.25rem * var(--ods-size-ratio)),
+            border-width: var(--ods-size-inset-01),
+            border-radius: var(--ods-size-border-radius-01),
+            icon-width: var(--ods-size-06),
+            padding: 0 var(--ods-size-inline-04),
+          ),
+        ),
+        $pagination: (
+          md: (
+            height: calc(2.25rem * var(--ods-size-ratio)),
+            padding-y: 0,
+            padding-x: var(--ods-size-inline-04),
+          ),
+        ),
+        $radio-button: (
+          sm: (
+            border-width: calc(0.2rem * var(--ods-size-ratio)),
+            height: calc(1.25rem * var(--ods-size-ratio)),
+            margin: calc(0.25rem * var(--ods-size-ratio)) calc(0.5rem * var(--ods-size-ratio)),
+            width: calc(1.25rem * var(--ods-size-ratio)),
+          ),
+          md: (
+            border-width: calc(0.2rem * var(--ods-size-ratio)),
+            height: calc(1.75rem * var(--ods-size-ratio)),
+            margin: calc(0.25rem * var(--ods-size-ratio)) calc(0.5rem * var(--ods-size-ratio)),
+            width: calc(1.75rem * var(--ods-size-ratio)),
+          ),
+        ),
+        $range: (
+          md: (
+            outline-width: var(--ods-size-03),
+            outline-offset: var(--ods-size-03),
+            bar-height: var(--ods-size-04),
+            bar-radius: var(--ods-size-03),
+            thumb-size: var(--ods-size-06),
+            thumb-border: var(--ods-size-02),
+          ),
+        ),
+        $select: (
+          md: (
+            grid-column-gap: var(--ods-size-inline-04),
+            height: calc(2.25rem * var(--ods-size-ratio)),
+            border-width: var(--ods-size-inset-01),
+            border-radius: var(--ods-size-border-radius-01),
+            padding: 0 var(--ods-size-inline-04),
+          ),
+        ),
+        $spinner: (
+          sm: (
+            max-width: var(--ods-size-07),
+          ),
+          md: (
+            max-width: var(--ods-size-10),
+          ),
+          lg: (
+            max-width: calc(var(--ods-size-07) * 7),
+          ),
+        ),
+        $skeleton: (
+          xs: (
+            width: calc(4.688rem * var(--ods-size-ratio)),
+          ),
+          sm: (
+            width: calc(9.375rem * var(--ods-size-ratio)),
+          ),
+          md: (
+            width: calc(15.625rem * var(--ods-size-ratio)),
+          ),
+          lg: (
+            width: calc(21.875rem * var(--ods-size-ratio)),
+          ),
+          xl: (
+            width: calc(31.25rem * var(--ods-size-ratio)),
+          ),
+        ),
+        $switch: (
+          sm: (
+            height: calc(var(--ods-size-08) * var(--ods-size-ratio)),
+            line-height: var(--ods-size-08),
+          ),
+          md: (
+            height: calc(2.25rem * var(--ods-size-ratio)),
+            line-height: calc(2.25rem * var(--ods-size-ratio)),
+          ),
+        ),
+        $tabs: (
+          md: (
+            height: var(--ods-size-08),
+            width: var(--ods-size-11),
+          ),
+        ),
+        $textarea: (
+          md: (
+            padding: var(--ods-size-inset-04),
+            border-radius: var(--ods-size-03),
+          ),
+        ),
+        $tile: (
+          sm: (
+            padding: var(--ods-size-inset-05),
+          ),
+          md: (
+            padding: var(--ods-size-inset-06),
+          ),
+        ),
+        $toggle: (
+          md: (
+            handle-border-radius: 50%,
+            border-radius: var(--ods-size-10),
+            height: var(--ods-size-08),
+            width: var(--ods-size-11),
+          ),
+        ),
+        $tooltip: (
+          md: (
+            grid-column-gap: var(--ods-size-inset-05),
+            border-radius: var(--ods-size-03),
+            padding: var(--ods-size-04),
+          ),
+        )
       )
-    ),
-    size-config: ods-create-size-config(
-      $accordion: (
-        md:(
-          padding: var(--ods-size-inset-04),
-          border-width: var(--ods-size-inset-02)
-        )
-      ),
-      $breadcrumb: (
-        md:(
-          padding: 0 var(--ods-size-inset-04),
-        )
-      ),
-      $button: (
-        sm: (height: 2.25rem, border-radius: var(--ods-size-border-radius-02), border-width: var(--ods-size-inset-02), padding-y: 0, padding-x: var(--ods-size-inline-05)),
-        md: (height: 3.25rem, border-radius: var(--ods-size-border-radius-02), border-width: var(--ods-size-inset-02), padding-y: 0, padding-x: var(--ods-size-inline-06))
-      ),
-      $cart: (
-        sm: (
-          container-padding: var(--ods-size-stack-03) 0,
-          container-mask-height: var(--ods-size-stack-06),
-          empty-padding: var(--ods-size-stack-06) 0,
-          header-margin-bottom: var(--ods-size-stack-03),
-          mobile-handle-border-radius: var(--ods-size-border-radius-01),
-          mobile-handle-height: var(--ods-size-stack-03),
-          mobile-handle-margin: var(--ods-size-inset-n-06),
-          mobile-handle-padding: var(--ods-size-inset-06),
-          mobile-handle-width: clamp(calc(4rem * var(--ods-size-ratio)), 20vw, calc(8rem * var(--ods-size-ratio))),
-          padding: var(--ods-size-inset-06),
-          section-divider-padding: 0 var(--ods-size-inline-05),
-          section-margin: var(--ods-size-stack-04) 0,
-          section-padding: var(--ods-size-inset-05),
-          total-margin: var(--ods-size-stack-04) var(--ods-size-inline-05),
-        ),
-      ),
-      $checkbox-button: (
-        sm: (
-          border-width: var(--ods-size-02),
-          height: var(--ods-size-06),
-          margin: calc(0.25rem * var(--ods-size-ratio)) calc(0.5rem * var(--ods-size-ratio)),
-          width: var(--ods-size-06),
-        ),
-        md: (
-          border-width: var(--ods-size-02),
-          height: var(--ods-size-08),
-          margin: calc(0.25rem * var(--ods-size-ratio)) calc(0.5rem * var(--ods-size-ratio)),
-          width: var(--ods-size-08),
-        ),
-      ),
-      $chip: (
-        sm: (
-          border-radius: var(--ods-size-border-radius-03),
-          border-width: var(--ods-size-inset-01),
-          height: var(--ods-size-08),
-          icon-width: calc(.875rem * var(--ods-size-ratio)),
-          inline-margin: var(--ods-size-inline-03),
-          padding: 0 var(--ods-size-inset-04)
-        ),
-        md: (
-          border-radius: var(--ods-size-border-radius-03),
-          border-width: var(--ods-size-inset-01),
-          height: var(--ods-size-09),
-          icon-width: calc(.875rem * var(--ods-size-ratio)),
-          inline-margin: var(--ods-size-inline-03),
-          padding: 0 var(--ods-size-inset-05)
-        )
-      ),
-      $code: (
-        md: (
-          border-radius: var(--ods-size-border-radius-01),
-          min-height: var(--ods-size-09),
-          global-padding: var(--ods-size-inset-03),
-          code-padding: var(--ods-size-inset-04)
-        ),
-      ),
-      $divider: (
-        0: (margin-y: 0, height: var(--ods-size-stack-02)),
-        1: (margin-y: var(--ods-size-stack-02), height: var(--ods-size-stack-02)),
-        2: (margin-y: var(--ods-size-stack-03), height: var(--ods-size-stack-02)),
-        3: (margin-y: var(--ods-size-stack-04), height: var(--ods-size-stack-02)),
-        4: (margin-y: var(--ods-size-stack-05), height: var(--ods-size-stack-02)),
-        5: (margin-y: var(--ods-size-stack-06), height: var(--ods-size-stack-02)),
-        6: (margin-y: var(--ods-size-stack-07), height: var(--ods-size-stack-02)),
-        7: (margin-y: var(--ods-size-stack-08), height: var(--ods-size-stack-02)),
-        8: (margin-y: var(--ods-size-stack-09), height: var(--ods-size-stack-02)),
-        9: (margin-y: var(--ods-size-stack-10), height: var(--ods-size-stack-02)),
-        10: (margin-y: var(--ods-size-stack-11), height: var(--ods-size-stack-02)),
-      ),
-      $icon: (
-        xxs: (width: var(--ods-size-06), height: var(--ods-size-06)),
-        xs: (width: var(--ods-size-07), height: var(--ods-size-07)),
-        sm: (width: var(--ods-size-08), height: var(--ods-size-08)),
-        md: (width: var(--ods-size-09), height: var(--ods-size-09)),
-        lg: (width: var(--ods-size-10), height: var(--ods-size-10)),
-        xl: (width: var(--ods-size-11), height: var(--ods-size-11))
-      ),
-      $input: (
-        md: (
-          height: calc(2.25rem * var(--ods-size-ratio)),
-          border-width: var(--ods-size-inset-01),
-          border-radius: var(--ods-size-border-radius-01),
-          icon-width: var(--ods-size-06),
-          padding: 0 var(--ods-size-inline-04)
-        ),
-      ),
-      $pagination: (
-        md: (
-          height: calc(2.25rem * var(--ods-size-ratio)),
-          padding-y: 0,
-          padding-x: var(--ods-size-inline-04),
-        ),
-      ),
-      $radio-button: (
-        sm: (
-          border-width: calc(0.2rem * var(--ods-size-ratio)),
-          height: calc(1.25rem * var(--ods-size-ratio)),
-          margin: calc(0.25rem * var(--ods-size-ratio)) calc(0.5rem * var(--ods-size-ratio)),
-          width: calc(1.25rem * var(--ods-size-ratio)),
-        ),
-        md: (
-          border-width: calc(0.2rem * var(--ods-size-ratio)),
-          height: calc(1.75rem * var(--ods-size-ratio)),
-          margin: calc(0.25rem * var(--ods-size-ratio)) calc(0.5rem * var(--ods-size-ratio)),
-          width: calc(1.75rem * var(--ods-size-ratio)),
-        ),
-      ),
-      $range: (
-        md: (outline-width: var(--ods-size-03), outline-offset: var(--ods-size-03), bar-height: var(--ods-size-04), bar-radius: var(--ods-size-03), thumb-size: var(--ods-size-06), thumb-border: var(--ods-size-02))
-      ),
-      $select: (
-        md: (
-          grid-column-gap: var(--ods-size-inline-04),
-          height: calc(2.25rem * var(--ods-size-ratio)),
-          border-width: var(--ods-size-inset-01),
-          border-radius: var(--ods-size-border-radius-01),
-          padding: 0 var(--ods-size-inline-04),
-        ),
-      ),
-      $spinner: (
-        sm: (
-          max-width: var(--ods-size-07)
-        ),
-        md: (
-          max-width: var(--ods-size-10)
-        ),
-        lg: (
-          max-width: calc(var(--ods-size-07) * 7)
-        ),
-      ),
-      $skeleton: (
-        xs: (width: calc(4.688rem * var(--ods-size-ratio))),
-        sm: (width: calc(9.375rem * var(--ods-size-ratio))),
-        md: (width: calc(15.625rem * var(--ods-size-ratio))),
-        lg: (width: calc(21.875rem * var(--ods-size-ratio))),
-        xl: (width: calc(31.25rem * var(--ods-size-ratio))),
-      ),
-      $switch: (
-        sm: (
-          height: calc(var(--ods-size-08) * var(--ods-size-ratio)),
-          line-height: var(--ods-size-08),
-        ),
-        md: (
-          height: calc(2.25rem * var(--ods-size-ratio)),
-          line-height: calc(2.25rem * var(--ods-size-ratio)),
-        ),
-      ),
-      $tabs: (
-        md: (
-          height: var(--ods-size-08),
-          width: var(--ods-size-11)
-        )
-      ),
-      $textarea: (
-        md: (
-          padding: var(--ods-size-inset-04),
-          border-radius: var(--ods-size-03),
-        )
-      ),
-      $tile: (
-        sm: (
-          padding: var(--ods-size-inset-05)
-        ),
-        md: (
-          padding: var(--ods-size-inset-06)
-        )
-      ),
-      $toggle: (
-        md: (
-          handle-border-radius: 50%,
-          border-radius: var(--ods-size-10),
-          height: var(--ods-size-08),
-          width: var(--ods-size-11)
-        )
-      ),
-      $tooltip: (
-        md: (
-          grid-column-gap: var(--ods-size-inset-05),
-          border-radius: var(--ods-size-03),
-          padding: var(--ods-size-04)
-        )
-      )
-    )
-  )
+  );
 }
 
 $ods-theme-config: ods-blue-jeans-theme-config();
 
 @include ods-theme($ods-theme-config) {
   // specific CSS to add only if needed here
-};
+} ;

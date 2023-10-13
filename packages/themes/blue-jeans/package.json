@@ -12,7 +12,7 @@
     "generate:licence": "npx generate-license-file --input package.json --output THIRD-PARTY-LICENCES --overwrite",
     "generate:prefix": "postcss dist/**/*.css --dir dist --use autoprefixer --parser postcss-scss",
     "generate:theme": "node-sass --importer ../../../node_modules/node-sass-package-importer/dist/cli.js src/index.scss -o dist",
-    "lint:scss": "stylelint 'src/**/!(base64-fonts)*.scss'"
+    "lint:scss": "stylelint 'src/**/*.scss'"
   },
   "dependencies": {
     "@ovhcloud/ods-common-theming": "16.2.0"

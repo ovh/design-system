@@ -51,6 +51,11 @@ const rowsLarge = {
   defaultValue: Array.from({ length: 10000 }).fill({ name: "Garnbret", firstname: "Janja", gender: "female", dob: "12/03/1999" }),
 };
 
+const rowsLarge = {
+  category: 'Général',
+  defaultValue: Array.from({ length: 10000 }).fill({ name: "Garnbret", firstname: "Janja", gender: "female", dob: "12/03/1999" }),
+};
+
 export default {
   title: 'UI Components/Datagrid [organism]/Web Component',
   id: 'datagrid',

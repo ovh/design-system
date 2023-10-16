@@ -1,5 +1,5 @@
 import type { OdsDatagridAttribute, OdsDatagridColumn, OdsDatagridRow } from './interfaces/attributes';
-import { Component, Element, Host, h, Prop, Watch } from '@stencil/core';
+import { Component, Element, Host, h, Prop, Watch, State } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ColumnComponent, TabulatorFull as Tabulator } from 'tabulator-tables';
 import { OdsDatagridController } from './core/controller';
@@ -17,6 +17,7 @@ export class OsdsDatagrid implements OdsDatagridAttribute {
   readonly logger = new OdsLogger('OsdsDatagrid');
   private grid?: HTMLDivElement;
   private table?: Tabulator;
+  @State() private rowHeight = 0;
 
   @Element() el!: HTMLElement;
 
@@ -43,7 +44,10 @@ export class OsdsDatagrid implements OdsDatagridAttribute {
       height: '100%',
       data: rows,
       layout: 'fitColumns',
+      renderVertical: 'virtual',
+      renderHorizontal: 'virtual',
       placeholder: this.noResultLabel,
+      rowHeight: this.rowHeight,
       columns: this.controler.getTabulatorColumns(columns),
       headerSortElement: (_column: ColumnComponent, dir: 'asc' | 'desc' | 'none') => {
         const getIcon = () => {
@@ -60,17 +64,18 @@ export class OsdsDatagrid implements OdsDatagridAttribute {
       },
     });
     this.table?.on('renderComplete', () => {
-      setTimeout(() => {
-        this.table?.getRows().forEach((row) => {
-          const cells = row.getCells();
-          const maxHeight = Math.max(...cells.map((cell) => cell.getElement().getBoundingClientRect().height));
-          cells.forEach((cell) => {
-            cell.getElement().classList.add('height-calc');
-            cell.getElement().style.height = maxHeight + 'px';
-          });
-        });
-      }, 0);
+      this.calcRowHeight();
     });
+  }
+
+  private calcRowHeight(): void {
+    const row = this.table?.getRows()[0];
+    const cells = row?.getCells();
+    if (!cells) {
+      return;
+    }
+    const maxHeight = Math.max(...cells.map((cell) => cell.getElement().getBoundingClientRect().height));
+    this.rowHeight = maxHeight;
   }
 
   @Watch('rows')

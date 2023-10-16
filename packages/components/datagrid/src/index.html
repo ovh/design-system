@@ -47,10 +47,7 @@
       { title: "Gender", field: "gender" },
       { title: "Date Of Birth", field: "dob" },
     ];
-    datagrid.rows = [
-      { name: "Dupont", firstname: "Antoine", gender: "male", dob: "15/11/1996" },
-      { name: "Garnbret", firstname: "Janja", gender: "female", dob: "12/03/1999" },
-    ];
+    datagrid.rows = Array.from({ length: 2000 }).fill({ name: "Garnbret", firstname: "Janja", gender: "female", dob: "12/03/1999" });
   </script>
 
 </body>

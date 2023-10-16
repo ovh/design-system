@@ -1,5 +1,5 @@
 import type { OdsTimepickerAttribute } from './interfaces/attributes';
-import { Component, Host, Prop, h } from '@stencil/core';
+import { Component, Host, Prop, h, Watch, Element } from '@stencil/core';
 import { ODS_INPUT_TYPE } from '@ovhcloud/ods-component-input';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 
@@ -9,6 +9,9 @@ import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
   shadow: true,
 })
 export class OsdsTimepicker implements OdsTimepickerAttribute {
+  @Element() el!: HTMLElement;
+  inputEl?: HTMLInputElement;
+
   /** @see OdsTimepickerAttribute.clearable */
   @Prop({ reflect: true }) public clearable? = DEFAULT_ATTRIBUTE.clearable;
 
@@ -22,10 +25,18 @@ export class OsdsTimepicker implements OdsTimepickerAttribute {
   @Prop({ reflect: true }) public inline? = DEFAULT_ATTRIBUTE.inline;
 
   /** @see OdsTimepickerAttribute.value */
-  @Prop({ reflect: true }) public value? = DEFAULT_ATTRIBUTE.value;
+  @Prop({ reflect: true, mutable: true }) public value? = DEFAULT_ATTRIBUTE.value;
 
   /** @see OdsTimepickerAttribute.withSeconds */
   @Prop({ reflect: true }) public withSeconds? = DEFAULT_ATTRIBUTE.withSeconds;
+
+  @Watch('withSeconds')
+  checkSeconds(withSeconds: boolean) {
+    if(withSeconds === false && this.inputEl?.value.match(/:/g)?.length === 2 ){
+      const inputValue = this.inputEl.value.split(':');
+      this.inputEl.value = inputValue[0].concat(':', inputValue[1]);
+    }
+  }
 
   render() {
     const {
@@ -46,6 +57,9 @@ export class OsdsTimepicker implements OdsTimepickerAttribute {
                     step={ withSeconds ? 1 : "" }
                     type={ ODS_INPUT_TYPE.time }
                     value={ value }
+                    {...{
+                      ref: (el: HTMLElement) => this.inputEl = el as HTMLInputElement,
+                    }}
         >
         </osds-input>
       </Host>

@@ -1,4 +1,4 @@
-import { OdsTimepickerAttribute } from '../interfaces/attributes';
+import type { OdsTimepickerAttribute } from '../interfaces/attributes';
 
 const DEFAULT_ATTRIBUTE: OdsTimepickerAttribute = Object.freeze({
   clearable: false,

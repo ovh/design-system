@@ -12,6 +12,11 @@ interface OdsDatagridAttribute {
   columns: OdsDatagridColumn[] | string;
   /** Height of the datagrid, in pixel */
   height: number;
+  /** 
+   * List of the hide columns
+   * The key need to be according to the column field
+   */
+  hideableColumns?: string[]; 
   /** The rows can be selectable */
   isSelectable?: boolean
   /** Text when the datagrid was no rows */

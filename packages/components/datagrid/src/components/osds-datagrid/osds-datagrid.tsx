@@ -1,9 +1,10 @@
 import type { OdsDatagridAttribute, OdsDatagridColumn, OdsDatagridRow } from './interfaces/attributes';
+import type { OdsCheckboxCheckedChangeEventDetail } from '@ovhcloud/ods-component-checkbox';
 
 import { OdsLogger } from '@ovhcloud/ods-common-core';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
-import { Component, Element, Host, Prop, Watch, h } from '@stencil/core';
+import { Component, Element, Host, Listen, Prop, State, Watch, h } from '@stencil/core';
 import { ColumnComponent, TabulatorFull as Tabulator } from 'tabulator-tables';
 
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
@@ -18,7 +19,8 @@ export class OsdsDatagrid implements OdsDatagridAttribute {
   private readonly controler = new OdsDatagridController(this);
   readonly logger = new OdsLogger('OsdsDatagrid');
   private grid?: HTMLDivElement;
-  private table?: Tabulator;
+  table?: Tabulator;
+  @State() parsedColumns: OdsDatagridColumn[] = [];
 
   @Element() el!: HTMLElement;
 
@@ -26,6 +28,9 @@ export class OsdsDatagrid implements OdsDatagridAttribute {
   @Prop({ reflect: true }) public columns: OdsDatagridColumn[] | string = DEFAULT_ATTRIBUTE.columns;
 
   @Prop({ reflect: true }) public height: number = DEFAULT_ATTRIBUTE.height;
+
+  /** @see OdsDatagridAttribute.hideableColumns */
+  @Prop({ mutable: true, reflect: true }) public hideableColumns?: string[] = DEFAULT_ATTRIBUTE.hideableColumns;
 
   /** @see OdsDatagridAttribute.isSelectable */
   @Prop({ reflect: true }) public isSelectable?: boolean = DEFAULT_ATTRIBUTE.isSelectable;
@@ -78,6 +83,19 @@ export class OsdsDatagrid implements OdsDatagridAttribute {
     this.setColumnsHeight();
   }
 
+  @Listen('odsCheckedChange')
+  handlerCheckedChange({ detail }: CustomEvent<OdsCheckboxCheckedChangeEventDetail>): void {
+    const column = this.table?.getColumn(detail.value);
+    if (detail.checked) {
+      column?.show();
+      this.hideableColumns = this.hideableColumns?.filter((col) => col !== detail.value);
+    } else {
+      column?.hide();
+      this.hideableColumns?.push(detail.value);
+    }
+    this.table?.redraw();
+  }
+
   private setColumnsHeight(): void {
     this.table?.getColumns().forEach((col) => {
       col.getElement().style.height = `${this.rowHeight}px`;
@@ -88,11 +106,11 @@ export class OsdsDatagrid implements OdsDatagridAttribute {
     if (!this.grid) {
       return;
     }
-    const columns = this.controler.getColumns();
+    this.parsedColumns = this.controler.getColumns();
     const rows = this.controler.getRows();
 
     this.table = new Tabulator(this.grid, {
-      columns: this.controler.getTabulatorColumns(columns),
+      columns: this.controler.getTabulatorColumns(this.parsedColumns),
       data: rows,
       headerSortElement: (_column: ColumnComponent, dir: 'asc' | 'desc' | 'none'): string => {
         function getIcon(): ODS_ICON_NAME {

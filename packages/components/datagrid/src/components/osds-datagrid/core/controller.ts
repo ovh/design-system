@@ -1,11 +1,12 @@
+import type { OdsDatagridColumn, OdsDatagridRow } from '../interfaces/attributes';
 import type { OsdsDatagrid } from '../osds-datagrid';
 import type { CellComponent, ColumnDefinition } from 'tabulator-tables';
 
 import { parseStringToArray } from '@ovhcloud/ods-common-core';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+import { ODS_BUTTON_VARIANT } from '@ovhcloud/ods-component-button';
+import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
 import { ODS_TEXT_SIZE } from '@ovhcloud/ods-component-text';
-
-import { OdsDatagridColumn, OdsDatagridRow } from '../interfaces/attributes';
 
 class OdsDatagridController {
 
@@ -35,10 +36,9 @@ class OdsDatagridController {
 
   validateAttributes(): void {
     if (!this.component.height) {
-      this.component.logger.warn('Attributes "height" need to be set');
+      this.component.logger.warn('[OsdsDatagrid] Attributes "height" need to be set');
     }
   }
-
 
   getTabulatorColumns(columns: OdsDatagridColumn[]): ColumnDefinition[] {
     return [
@@ -51,8 +51,16 @@ class OdsDatagridController {
         title: '',
         titleFormatter: 'rowSelection' as const,
         width: 40,
-      } as ColumnDefinition] || []),
+      }] || []),
       ...columns.map((column) => this.toTabulatorColumn(column)),
+      {
+        cssClass: 'ods-hidabled-columns',
+        headerSort: false,
+        resizable: false,
+        title: '',
+        titleFormatter: () => this.getOdsPopover(),
+        width: 40,
+      },
     ];
   }
 
@@ -76,6 +84,27 @@ class OdsDatagridController {
             color="${ODS_THEME_COLOR_INTENT.text}">
             ${text}
         </osds-text>`;
+  }
+
+  private getOdsPopover(): string {
+    return `<osds-popover>
+        <span slot="popover-trigger">
+          <osds-button circle variant="${ODS_BUTTON_VARIANT.ghost}">
+            <osds-icon color="text" size="${ODS_ICON_SIZE.sm}" name="${ODS_ICON_NAME.GEAR}"></osds-icon>
+          </osds-button>
+        </span>
+        <osds-popover-content>
+          ${this.component.parsedColumns.map((column) => {
+    const isChecked = !this.component.hideableColumns?.includes(column.field);
+    return `<osds-checkbox value="${column.field}" checked="${isChecked}">
+                          <osds-checkbox-button color="${ODS_THEME_COLOR_INTENT.primary}">
+                            <span slot="end">${column.title}</span>
+                          </osds-checkbox-button>
+                        </osds-checkbox>`;
+  }).join('')
+}
+        </osds-popover-content>
+      </osds-popover>`;
   }
 }
 

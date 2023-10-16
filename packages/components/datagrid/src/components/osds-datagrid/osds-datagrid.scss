@@ -41,6 +41,10 @@
 
 $ods-border-datagrid: solid 1px var(--ods-color-blue-200);
 
+:host {
+    height: 100%;
+}
+
 .tabulator {
     box-sizing: border-box;
     border: none;
@@ -110,6 +114,13 @@ $ods-border-datagrid: solid 1px var(--ods-color-blue-200);
                 border: none;
                 background-color: #FFF;
                 
+                &.ods-hidabled-columns {
+                    overflow: unset;
+                    .tabulator-col-title {
+                        overflow: unset;
+                    }
+                }
+
                 &.tabulator-sortable {
                     &:hover {
                         background-color: #FFF;

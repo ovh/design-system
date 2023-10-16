@@ -19,6 +19,7 @@ export class OsdsDatagrid implements OdsDatagridAttribute {
   readonly logger = new OdsLogger('OsdsDatagrid');
   private grid?: HTMLDivElement;
   private table?: Tabulator;
+  @State() private rowHeight = 0;
 
   @Element() el!: HTMLElement;
 
@@ -115,8 +116,18 @@ export class OsdsDatagrid implements OdsDatagridAttribute {
       rowHeight: this.rowHeight,
     });
     this.table?.on('renderComplete', () => {
-      this.setColumnsHeight();
+      this.calcRowHeight();
     });
+  }
+
+  private calcRowHeight(): void {
+    const row = this.table?.getRows()[0];
+    const cells = row?.getCells();
+    if (!cells) {
+      return;
+    }
+    const maxHeight = Math.max(...cells.map((cell) => cell.getElement().getBoundingClientRect().height));
+    this.rowHeight = maxHeight;
   }
 
   render(): JSX.Element {

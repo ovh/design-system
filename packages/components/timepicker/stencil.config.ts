@@ -8,6 +8,7 @@ export const config = getStencilConfig({
   excludeComponents: [
     'osds-icon',
     'osds-input',
+    'osds-select',
     'osds-spinner',
     'osds-text',
   ],

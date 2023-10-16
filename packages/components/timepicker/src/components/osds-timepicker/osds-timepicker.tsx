@@ -1,7 +1,10 @@
+import type { ODS_TIMEZONE } from './constants/timezones';
 import type { OdsTimepickerAttribute } from './interfaces/attributes';
 import { Component, Host, Prop, h, Watch, Element } from '@stencil/core';
-import { ODS_INPUT_TYPE } from '@ovhcloud/ods-component-input';
+import { OsdsInput, ODS_INPUT_TYPE } from '@ovhcloud/ods-component-input';
+import { OdsTimepickerController } from './core/controller';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { ODS_TIMEZONES_PRESET } from './constants/timezones-preset';
 
 @Component({
   tag: 'osds-timepicker',
@@ -10,10 +13,15 @@ import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 })
 export class OsdsTimepicker implements OdsTimepickerAttribute {
   @Element() el!: HTMLElement;
-  inputEl?: HTMLInputElement;
+  input: (OsdsInput & HTMLElement) | HTMLInputElement | null = null;
+  timezonesList: ODS_TIMEZONE[] = [];
+  controller = new OdsTimepickerController(this);
 
   /** @see OdsTimepickerAttribute.clearable */
   @Prop({ reflect: true }) public clearable? = DEFAULT_ATTRIBUTE.clearable;
+
+  /** @see OdsTimepickerAttribute.currentTimezone */
+  @Prop({ reflect: true, mutable: true }) public currentTimezone?: ODS_TIMEZONE = DEFAULT_ATTRIBUTE.currentTimezone;
 
   /** @see OdsTimepickerAttribute.disabled */
   @Prop({ reflect: true }) public disabled? = DEFAULT_ATTRIBUTE.disabled;
@@ -24,27 +32,47 @@ export class OsdsTimepicker implements OdsTimepickerAttribute {
   /** @see OdsTimepickerAttribute.inline */
   @Prop({ reflect: true }) public inline? = DEFAULT_ATTRIBUTE.inline;
 
+  /** @see OdsTimepickerAttribute.timezones */
+  @Prop({ reflect: true, mutable: true }) public timezones?: ODS_TIMEZONE[] | ODS_TIMEZONES_PRESET = DEFAULT_ATTRIBUTE.timezones;
+
   /** @see OdsTimepickerAttribute.value */
   @Prop({ reflect: true, mutable: true }) public value? = DEFAULT_ATTRIBUTE.value;
 
   /** @see OdsTimepickerAttribute.withSeconds */
-  @Prop({ reflect: true }) public withSeconds? = DEFAULT_ATTRIBUTE.withSeconds;
+  @Prop({ reflect: true, mutable: true }) public withSeconds? = DEFAULT_ATTRIBUTE.withSeconds;
+
+  @Watch('timezones')
+  @Watch('currentTimezone')
+  handleTimezones(): void {
+    this.initTimezones()
+  }
 
   @Watch('withSeconds')
+  @Watch('value')
   checkSeconds(withSeconds: boolean) {
-    if(withSeconds === false && this.inputEl?.value.match(/:/g)?.length === 2 ){
-      const inputValue = this.inputEl.value.split(':');
-      this.inputEl.value = `${inputValue[0]}:${inputValue[1]}`;
+    this.controller.checkSeconds(withSeconds);
+  }
+
+  componentWillLoad(): void {
+    this.initTimezones();
+  }
+
+  initTimezones(): void {
+    if (this.currentTimezone || this.timezones) {
+      this.controller.handleCurrentTimezone();
+      this.controller.handleTimezones();
     }
   }
 
   render() {
     const {
       clearable,
+      currentTimezone,
       disabled,
       error,
       value,
       inline,
+      timezones,
       withSeconds,
     } = this;
 
@@ -57,9 +85,21 @@ export class OsdsTimepicker implements OdsTimepickerAttribute {
                     step={ withSeconds ? 1 : "" }
                     type={ ODS_INPUT_TYPE.time }
                     value={ value }
-                    ref={(el: HTMLElement) => this.inputEl = el as HTMLInputElement}
+                    ref={(el: HTMLElement) => this.input = el as HTMLInputElement}
         >
         </osds-input>
+        {
+          (currentTimezone || timezones) && <osds-select
+            disabled={ disabled }
+            error={ error }
+            inline={ inline }
+            value={ currentTimezone }
+            tabindex="0">
+            { this.timezonesList.map((timezone) => {
+              return <osds-select-option value={ timezone }>{ timezone }</osds-select-option>
+            }) }
+          </osds-select>
+        }
       </Host>
     );
   }

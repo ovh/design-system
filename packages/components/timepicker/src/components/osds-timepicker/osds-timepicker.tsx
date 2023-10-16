@@ -68,6 +68,14 @@ export class OsdsTimepicker implements OdsTimepickerAttribute {
     }
   }
 
+  @Watch('withSeconds')
+  checkSeconds(withSeconds: boolean) {
+    if(withSeconds === false && this.input?.value.match(/:/g)?.length === 2 ){
+      const inputValue = this.input.value.split(':');
+      this.input.value = inputValue[0].concat(':', inputValue[1]);
+    }
+  }
+
   render() {
     const {
       clearable,

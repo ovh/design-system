@@ -38,6 +38,11 @@ const defaultStoryParams = {
   }
 };
 
+const rowsLarge = {
+  category: 'Général',
+  defaultValue: Array.from({ length: 10000 }).fill({ name: "Garnbret", firstname: "Janja", gender: "female", dob: "12/03/1999" }),
+};
+
 export default {
   title: 'UI Components/Datagrid [organism]/Web Component',
   id: 'datagrid',
@@ -60,3 +65,12 @@ Default.args = {
 };
 // @ts-ignore
 Default.argTypes = extractArgTypes(defaultStoryParams);
+
+
+export const LargeData = TemplateDefault.bind({});
+// @ts-ignore
+LargeData.args = {
+  ...extractStoryParams({ ...defaultStoryParams, rows: rowsLarge }),
+};
+// @ts-ignore
+LargeData.argTypes = extractArgTypes({ ...defaultStoryParams, rows: rowsLarge });

@@ -23,6 +23,7 @@
     "lint:scss": "stylelint 'src/components/**/*.scss'",
     "FIXME_lint:ts": "eslint 'src/**/*.{js,ts,tsx}'",
     "start": "stencil build --docs --dev --watch --serve",
+    "test": "yarn run test:spec && yarn run test:e2e",
     "test:e2e": "stencil test --e2e --config stencil.config.ts",
     "test:e2e:ci": "stencil test --config stencil.config.ts --e2e --ci",
     "test:e2e:screenshot": "stencil test --e2e --screenshot --config stencil.config.ts --passWithNoTests",

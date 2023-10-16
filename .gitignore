@@ -141,3 +141,6 @@ Thumbs.db
 
 # Stylelint
 stylelint-report.html
+
+# Eslint
+eslint-report.html

@@ -15,9 +15,8 @@ ocdkDefineCustomElements();
   shadow: true
 })
 export class OsdsPopover implements OdsPopoverMethod {
-  controller: OdsPopoverController = new OdsPopoverController(this);
-  title: HTMLElement | null = null;
   anchor!: HTMLDivElement;
+  controller: OdsPopoverController = new OdsPopoverController(this);
   surface: OcdkSurface | undefined = undefined;
 
   @Element() el!: HTMLStencilElement;
@@ -34,10 +33,6 @@ export class OsdsPopover implements OdsPopoverMethod {
   @Method()
   async closeSurface() {
     this.controller.closeSurface();
-  }
-
-  componentDidRender() {
-    this.title = this.el.querySelector('[slot=popover-trigger]');
   }
 
   handleTriggerClick() {

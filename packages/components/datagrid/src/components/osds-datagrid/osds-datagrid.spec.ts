@@ -6,7 +6,7 @@ import { OsdsDatagrid } from './osds-datagrid';
 import { OdsDatagridAttribute } from './interfaces/attributes';
 
 describe('spec:osds-datagrid', () => {
-  const baseAttribute = { columns: [], rows: [] };
+  const baseAttribute = { columns: [], rows: [], height: 100 };
   let page: SpecPage;
   let root: HTMLElement | undefined;
   let instance: OsdsDatagrid;
@@ -83,6 +83,28 @@ describe('spec:osds-datagrid', () => {
         newValue: 'Aucune données de renseignée',
         value: '',
         setup: (value) => setup({ attributes: { ['noResultLabel']: value } }),
+        ...config,
+      });
+    });
+
+    describe('height', () => {
+      odsUnitTestAttribute<OdsDatagridAttribute, 'height'>({
+        name: 'height',
+        defaultValue: DEFAULT_ATTRIBUTE.height,
+        newValue: 600,
+        value: 0,
+        setup: (value) => setup({ attributes: { ['height']: value } }),
+        ...config,
+      });
+    });
+
+    describe('rowHeight', () => {
+      odsUnitTestAttribute<OdsDatagridAttribute, 'rowHeight'>({
+        name: 'rowHeight',
+        defaultValue: DEFAULT_ATTRIBUTE.rowHeight,
+        newValue: 60,
+        value: 0,
+        setup: (value) => setup({ attributes: { ['rowHeight']: value } }),
         ...config,
       });
     });

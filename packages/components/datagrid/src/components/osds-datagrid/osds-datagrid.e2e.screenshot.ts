@@ -5,7 +5,7 @@ import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 
 describe('e2e:osds-datagrid', () => {
-  const baseAttribute = { columns: [], rows: [] };
+  const baseAttribute = { columns: [], rows: [], height: 100 };
   let page: E2EPage;
 
   function createContent({ attributes = {} }: { attributes?: Partial<OdsDatagridAttribute> } = {}): string {

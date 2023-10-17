@@ -35,6 +35,14 @@ const defaultStoryParams = {
   noResultLabel: {
     category: 'Général',
     defaultValue: 'Aucun résultat',
+  },
+  height: {
+    category: 'Général',
+    defaultValue: 600,
+  },
+  rowHeight: {
+    category: 'Général',
+    defaultValue: 60,
   }
 };
 

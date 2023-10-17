@@ -5,7 +5,7 @@ import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 
 describe('e2e:osds-datagrid', () => {
-  const baseAttribute = { columns: [], rows: [], };
+  const baseAttribute = { columns: [], rows: [], height: 100 };
   let page: E2EPage;
   let el: E2EElement;
   let table: E2EElement | null;
@@ -143,5 +143,31 @@ describe('e2e:osds-datagrid', () => {
     const rows = await table?.findAll('.tabulator-row [tabulator-field="name"]');
     expect(rows?.[0].innerHTML).toContain('osds-button');
     expect(rows?.[0].innerHTML).toContain('Homer');
+  });
+
+  it('should have height', async () => {
+    const height = 600;
+    await setup({ attributes: {
+      height,
+      columns: [{ title: 'Name', field: 'name' }, { title: 'Firstname', field: 'firstname' }],
+      rows: JSON.stringify([{ name: 'Homer', firstname: 'Simpson' }, { name: 'Marge', firstname: 'Simpson' }]),
+    } });
+    const style = await table?.getComputedStyle()
+    expect(style?.height).toBe(height + 'px');
+  });
+
+  it('should have row height', async () => {
+    const rowHeight = 60;
+    await setup({ attributes: {
+      rowHeight,
+      columns: [{ title: 'Name', field: 'name' }, { title: 'Firstname', field: 'firstname' }],
+      rows: JSON.stringify([{ name: 'Homer', firstname: 'Simpson' }, { name: 'Marge', firstname: 'Simpson' }]),
+    } });
+    const rows = await table?.findAll('.tabulator-row');
+    const isAllRowHasHeight = await rows?.every(async (row) => {
+      const style = await row.getComputedStyle();
+      return style.height === rowHeight + 'px'
+    })
+    expect(isAllRowHasHeight).toBe(true);
   });
 });

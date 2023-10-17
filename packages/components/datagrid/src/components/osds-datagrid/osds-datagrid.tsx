@@ -1,5 +1,5 @@
 import type { OdsDatagridAttribute, OdsDatagridColumn, OdsDatagridRow } from './interfaces/attributes';
-import { Component, Element, Host, h, Prop, Watch, State } from '@stencil/core';
+import { Component, Element, Host, h, Prop, Watch } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ColumnComponent, TabulatorFull as Tabulator } from 'tabulator-tables';
 import { OdsDatagridController } from './core/controller';
@@ -17,15 +17,14 @@ export class OsdsDatagrid implements OdsDatagridAttribute {
   readonly logger = new OdsLogger('OsdsDatagrid');
   private grid?: HTMLDivElement;
   private table?: Tabulator;
-  @State() private rowHeight = 0;
 
   @Element() el!: HTMLElement;
 
   /** @see OdsDatagridAttribute.columns */
   @Prop({ reflect: true }) public columns: OdsDatagridColumn[] | string = DEFAULT_ATTRIBUTE.columns;
 
-  /** @see OdsDatagridAttribute.rows */
-  @Prop({ reflect: true }) public rows: OdsDatagridRow[] | string = DEFAULT_ATTRIBUTE.rows;
+  /** @see OdsDatagridAttribute.height */
+  @Prop({ reflect: true }) public height: number = DEFAULT_ATTRIBUTE.height;
 
   /** @see OdsDatagridAttribute.isSelectable */
   @Prop({ reflect: true }) public isSelectable?: boolean = DEFAULT_ATTRIBUTE.isSelectable;
@@ -33,7 +32,14 @@ export class OsdsDatagrid implements OdsDatagridAttribute {
    /** @see OdsDatagridAttribute.noResultLabel */
    @Prop({ reflect: true }) public noResultLabel?: string = DEFAULT_ATTRIBUTE.noResultLabel;
 
+   /** @see OdsDatagridAttribute.rowHeight */
+   @Prop({ reflect: true }) public rowHeight?: number = DEFAULT_ATTRIBUTE.rowHeight;
+
+   /** @see OdsDatagridAttribute.rows */
+  @Prop({ reflect: true }) public rows: OdsDatagridRow[] | string = DEFAULT_ATTRIBUTE.rows;
+
   componentDidLoad(): void {
+    this.controler.validateAttributes();
     if (!this.grid) {
       return;
     }
@@ -41,7 +47,7 @@ export class OsdsDatagrid implements OdsDatagridAttribute {
     const rows = this.controler.getRows();
 
     this.table = new Tabulator(this.grid, {
-      height: '100%',
+      height: this.height,
       data: rows,
       layout: 'fitColumns',
       renderVertical: 'virtual',
@@ -63,19 +69,6 @@ export class OsdsDatagrid implements OdsDatagridAttribute {
         </osds-icon>`
       },
     });
-    this.table?.on('renderComplete', () => {
-      this.calcRowHeight();
-    });
-  }
-
-  private calcRowHeight(): void {
-    const row = this.table?.getRows()[0];
-    const cells = row?.getCells();
-    if (!cells) {
-      return;
-    }
-    const maxHeight = Math.max(...cells.map((cell) => cell.getElement().getBoundingClientRect().height));
-    this.rowHeight = maxHeight;
   }
 
   @Watch('rows')

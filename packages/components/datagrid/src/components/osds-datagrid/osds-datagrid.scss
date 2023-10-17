@@ -56,7 +56,11 @@ $ods-border-datagrid: solid 1px var(--ods-color-blue-200);
             border-right: none;
             border-top: $ods-border-datagrid;
             box-sizing: border-box;
-           
+
+            // &:not(.height-calc) {
+            //     height: unset !important;
+            // }
+
             &:first-child {
                 border-left: $ods-border-datagrid;
             }

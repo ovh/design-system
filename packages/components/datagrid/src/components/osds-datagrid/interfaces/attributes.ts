@@ -13,15 +13,20 @@ interface OdsDatagridRow {
 interface OdsDatagridAttribute {
   /** The list of the column */
   columns: OdsDatagridColumn[] | string;
+  /** Height of the datagrid, in pixel */
+  height: number;
   /** The rows can be selectable */
   isSelectable?: boolean
   /** Text when the datagrid was no rows */
   noResultLabel?: string;
+  /** Height for each row, in pixel */
+  rowHeight?: number;
   /** 
    * The list of the rows 
    * The key need to be according to the column field
    */
   rows: OdsDatagridRow[] | string;
+  
 }
 
 export {

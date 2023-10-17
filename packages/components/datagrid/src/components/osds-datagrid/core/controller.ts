@@ -11,6 +11,12 @@ class OdsDatagridController {
         private readonly component: OsdsDatagrid,
     ) {}
 
+    validateAttributes(): void {
+        if (!this.component.height) {
+            this.component.logger.warn('Attributes "height" need to be set');
+        }
+    }
+
     toTabulatorColumn(column: OdsDatagridColumn): ColumnDefinition {
         return {
             title: column.title,

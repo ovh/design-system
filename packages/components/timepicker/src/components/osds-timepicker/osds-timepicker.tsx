@@ -34,7 +34,7 @@ export class OsdsTimepicker implements OdsTimepickerAttribute {
   checkSeconds(withSeconds: boolean) {
     if(withSeconds === false && this.inputEl?.value.match(/:/g)?.length === 2 ){
       const inputValue = this.inputEl.value.split(':');
-      this.inputEl.value = inputValue[0].concat(':', inputValue[1]);
+      this.inputEl.value = `${inputValue[0]}:${inputValue[1]}`;
     }
   }
 
@@ -57,9 +57,7 @@ export class OsdsTimepicker implements OdsTimepickerAttribute {
                     step={ withSeconds ? 1 : "" }
                     type={ ODS_INPUT_TYPE.time }
                     value={ value }
-                    {...{
-                      ref: (el: HTMLElement) => this.inputEl = el as HTMLInputElement,
-                    }}
+                    ref={(el: HTMLElement) => this.inputEl = el as HTMLInputElement}
         >
         </osds-input>
       </Host>

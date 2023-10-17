@@ -33,6 +33,7 @@
     "@typescript-eslint/explicit-function-return-type": "error",
     "@typescript-eslint/no-explicit-any": "error",
     "@typescript-eslint/no-unused-vars": ["error", { "varsIgnorePattern": "h" }],
+    "@typescript-eslint/ban-ts-comment": ["error", { "ts-ignore": "allow-with-description" }],
     "array-bracket-spacing": ["error", "never"],
     "arrow-parens": ["error", "always"],
     "arrow-spacing": ["error", { "before": true, "after": true }],

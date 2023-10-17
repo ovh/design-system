@@ -1,4 +1,4 @@
-import { ODS_THEME_TYPOGRAPHY_LEVEL, ODS_THEME_TYPOGRAPHY_LEVELS } from '@ovhcloud/ods-common-theming';
+import {ODS_THEME_TYPOGRAPHY_LEVEL, ODS_THEME_TYPOGRAPHY_LEVELS} from '@ovhcloud/ods-common-theming';
 
 export {
   ODS_THEME_TYPOGRAPHY_LEVEL as ODS_TEXT_LEVEL,

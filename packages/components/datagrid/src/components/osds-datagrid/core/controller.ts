@@ -33,6 +33,13 @@ class OdsDatagridController {
     };
   }
 
+  validateAttributes(): void {
+    if (!this.component.height) {
+      this.component.logger.warn('Attributes "height" need to be set');
+    }
+  }
+
+
   getTabulatorColumns(columns: OdsDatagridColumn[]): ColumnDefinition[] {
     return [
       ...(this.component.isSelectable && [{

@@ -1,4 +1,4 @@
-import { ODS_THEME_TYPOGRAPHY_SIZE, ODS_THEME_TYPOGRAPHY_SIZES } from '@ovhcloud/ods-common-theming';
+import {ODS_THEME_TYPOGRAPHY_SIZE, ODS_THEME_TYPOGRAPHY_SIZES} from '@ovhcloud/ods-common-theming';
 
 export {
   ODS_THEME_TYPOGRAPHY_SIZE as ODS_TEXT_SIZE,

@@ -9,7 +9,13 @@
     "**/docs/**",
     "**/packages/**/dist/**",
     "**/packages/**/doc/**",
-    "**/packages/themes/**"
+    "**/packages/themes/**",
+    "**/packages/components/**/custom-elements",
+    "**/packages/components/**/custom-elements-bundle",
+    "**/packages/components/**/documentation",
+    "**/packages/components/**/loader",
+    "**/packages/components/**/react",
+    "**/packages/components/**/vue"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -26,6 +32,7 @@
     "@typescript-eslint/ban-types": "error",
     "@typescript-eslint/explicit-function-return-type": "error",
     "@typescript-eslint/no-explicit-any": "error",
+    "@typescript-eslint/no-unused-vars": ["error", { "varsIgnorePattern": "h" }],
     "array-bracket-spacing": ["error", "never"],
     "arrow-parens": ["error", "always"],
     "arrow-spacing": ["error", { "before": true, "after": true }],
@@ -35,7 +42,7 @@
     "curly": ["error", "all"],
     "default-case": "error",
     "func-call-spacing": ["error", "never"],
-    "func-style": ["error", "expression"],
+    "func-style": ["error", "declaration"],
     "function-call-argument-newline": ["error", "consistent"],
     "indent": ["error", 2],
     "lines-between-class-members": ["error", "always", { "exceptAfterSingleLine": true }],

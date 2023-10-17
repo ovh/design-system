@@ -110,7 +110,5 @@ describe('spec:osds-datagrid', () => {
         ...config,
       });
     });
-
-
   });
 });

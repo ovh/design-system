@@ -43,12 +43,7 @@ const defaultStoryParams = {
   rowHeight: {
     category: 'Général',
     defaultValue: 52,
-  },
-};
-
-const rowsLarge = {
-  category: 'Général',
-  defaultValue: Array.from({ length: 10000 }).fill({ name: "Garnbret", firstname: "Janja", gender: "female", dob: "12/03/1999" }),
+  }
 };
 
 const rowsLarge = {

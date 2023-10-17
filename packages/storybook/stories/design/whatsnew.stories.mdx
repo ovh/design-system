@@ -12,6 +12,38 @@ import { Meta } from '@storybook/addon-docs';
 
 # What's new ?
 
+## v16.2.1
+
+### Component changes:
+
+**Datepicker**
+* New attribute `locale` to manage internationalization, accepted locales are for now:
+- French
+- English
+- German
+- Spanish
+- Italian
+- Polish
+- Portuguese
+- Dutch
+
+**Text**
+* Component has been refactored internally, but this should not have any impacts
+
+### Bug fixes:
+
+**Datepicker**
+* Add missing constants and types exports
+
+**Modal**
+* Is now correctly destroyed on page change
+
+**Popover**
+* Now correctly work when used with React
+
+**Select**
+* Selected value is now correctly updated on cnange (ex: translation change)
+
 ## v16.2.0
 
 ### New component:

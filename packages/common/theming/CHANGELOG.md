@@ -8,6 +8,25 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [16.2.1](https://ovh.github.io/design-system/v16.2.1/?path=/docs/design-system-changelog--page) (2023-10-18)
+[compare](https://github.com/ovh/design-system/compare/v16.2.0...v16.2.1)
+
+### Bug Fixes
+
+* **theming:** use correct sass syntax ([4bd2298](https://github.com/ovh/design-system/commit/4bd2298b641a78b6a4d346681525125d7917653f))
+
+
+### Features
+
+* **sass linter:** fixing at-rule-conditional-no-parentheses rule ([bc70eac](https://github.com/ovh/design-system/commit/bc70eac77984c8a8b13df979f672556fcecae0c8))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [16.2.0](https://ovh.github.io/design-system/v16.2.0/?path=/docs/design-system-changelog--page) (2023-10-04)
 [compare](https://github.com/ovh/design-system/compare/v16.1.1...v16.2.0)
 

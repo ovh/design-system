@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-component-breadcrumb",
-  "version": "16.2.0",
+  "version": "16.2.1",
   "description": "ODS Breadcrumb component",
   "author": "OVH SAS",
   "license": "Apache-2.0",
@@ -37,15 +37,15 @@
     "FIXME_test:e2e:ci:screenshot:update": "stencil test --config stencil.config.ts --e2e --ci --screenshot --update-screenshot --passWithNoTests"
   },
   "dependencies": {
-    "@ovhcloud/ods-common-core": "16.2.0",
-    "@ovhcloud/ods-common-stencil": "16.2.0",
-    "@ovhcloud/ods-common-theming": "16.2.0",
-    "@ovhcloud/ods-component-icon": "16.2.0",
-    "@ovhcloud/ods-component-link": "16.2.0",
-    "@ovhcloud/ods-component-text": "16.2.0"
+    "@ovhcloud/ods-common-core": "16.2.1",
+    "@ovhcloud/ods-common-stencil": "16.2.1",
+    "@ovhcloud/ods-common-theming": "16.2.1",
+    "@ovhcloud/ods-component-icon": "16.2.1",
+    "@ovhcloud/ods-component-link": "16.2.1",
+    "@ovhcloud/ods-component-text": "16.2.1"
   },
   "devDependencies": {
-    "@ovhcloud/ods-common-testing": "16.2.0",
-    "@ovhcloud/ods-stencil-dev": "16.2.0"
+    "@ovhcloud/ods-common-testing": "16.2.1",
+    "@ovhcloud/ods-stencil-dev": "16.2.1"
   }
 }

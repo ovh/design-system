@@ -8,6 +8,28 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [16.2.1](https://ovh.github.io/design-system/v16.2.1/?path=/docs/design-system-changelog--page) (2023-10-18)
+[compare](https://github.com/ovh/design-system/compare/v16.2.0...v16.2.1)
+
+### Bug Fixes
+
+* **modal:** closed in Storybook on window location change ([50d5c86](https://github.com/ovh/design-system/commit/50d5c860f5b4c4f93028d66331198d855374faae))
+* **modal:** fix reviewed changes ([7e8cfcd](https://github.com/ovh/design-system/commit/7e8cfcd440d6ad97debcc25e2dcc7658de61f3e0))
+* **modal:** refactor locationchangetrigger ([81f1d07](https://github.com/ovh/design-system/commit/81f1d07c78f299c71a882f20b17638271a083833))
+
+
+### Features
+
+* **app:** add new ovh components ([94c307f](https://github.com/ovh/design-system/commit/94c307f80f818efbe332b21bd614190545cf54c2))
+* **datepicker:** add locale prop ([0cda07e](https://github.com/ovh/design-system/commit/0cda07eb26d7d8d2e2b17b3aa2b9fe160a2d7399))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [16.2.0](https://ovh.github.io/design-system/v16.2.0/?path=/docs/design-system-changelog--page) (2023-10-04)
 [compare](https://github.com/ovh/design-system/compare/v16.1.1...v16.2.0)
 

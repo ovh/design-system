@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-ovh-component-location-tile",
-  "version": "16.2.0",
+  "version": "16.2.1",
   "description": "ODS OVH Location Tile component",
   "private": true,
   "author": "OVH SAS",
@@ -37,11 +37,11 @@
     "test:e2e:ci:screenshot:update": "stencil test --config stencil.config.ts --e2e --ci --screenshot --update-screenshot --passWithNoTests"
   },
   "dependencies": {
-    "@ovhcloud/ods-common-core": "16.2.0",
-    "@ovhcloud/ods-common-stencil": "16.2.0"
+    "@ovhcloud/ods-common-core": "16.2.1",
+    "@ovhcloud/ods-common-stencil": "16.2.1"
   },
   "devDependencies": {
-    "@ovhcloud/ods-common-testing": "16.2.0",
-    "@ovhcloud/ods-stencil-dev": "16.2.0"
+    "@ovhcloud/ods-common-testing": "16.2.1",
+    "@ovhcloud/ods-stencil-dev": "16.2.1"
   }
 }

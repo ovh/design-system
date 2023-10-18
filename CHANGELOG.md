@@ -8,6 +8,64 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [16.2.1](https://ovh.github.io/design-system/v16.2.1/?path=/docs/design-system-changelog--page) (2023-10-18)
+[compare](https://github.com/ovh/design-system/compare/v16.2.0...v16.2.1)
+
+### Bug Fixes
+
+* **ci:** disable screenshot tests until reworked ([6cd906a](https://github.com/ovh/design-system/commit/6cd906af48a955b25cd5f59a17de7fff3a54c764))
+* **datepicker:** addressing changes ([9af539b](https://github.com/ovh/design-system/commit/9af539b9d35a8e138c6781827add8299e39e1582))
+* **datepicker:** addressing changes ([d94b053](https://github.com/ovh/design-system/commit/d94b053fe001b736a43964eb4ae39a586af7d45f))
+* **datepicker:** addressing changes ([0836d0b](https://github.com/ovh/design-system/commit/0836d0baa36a13936fc4bbd4196f315a328a539d))
+* **datepicker:** addressing changes ([13c7aae](https://github.com/ovh/design-system/commit/13c7aae7cb8fc7973de9d26f91a95b5e8ef40639))
+* **datepicker:** fix exports ([e0d5a13](https://github.com/ovh/design-system/commit/e0d5a1347649a2407d51cdac9d45ba494038be53))
+* **env:** removing undesirable package-lock.json file ([7598b81](https://github.com/ovh/design-system/commit/7598b819c7cee2cc29749d0ef3b1f63257426e62))
+* **modal:** closed in Storybook on window location change ([50d5c86](https://github.com/ovh/design-system/commit/50d5c860f5b4c4f93028d66331198d855374faae))
+* **modal:** disable broken test temporarily ([c76b6c4](https://github.com/ovh/design-system/commit/c76b6c424834e98557f7d5cc5c68e6438fddb71a))
+* **modal:** fix broken tests ([367ad90](https://github.com/ovh/design-system/commit/367ad9013e13e2be0478cf5bf941e48fb2b65ae7))
+* **modal:** fix reviewed changes ([7e8cfcd](https://github.com/ovh/design-system/commit/7e8cfcd440d6ad97debcc25e2dcc7658de61f3e0))
+* **modal:** forcing watcher trigger ([f71d16d](https://github.com/ovh/design-system/commit/f71d16d34476cb4caac506d7ddb9e17821c4482d))
+* **modal:** refactor locationchangetrigger ([81f1d07](https://github.com/ovh/design-system/commit/81f1d07c78f299c71a882f20b17638271a083833))
+* **modal:** trigger inert at modal open and fix e2e test ([32b44fc](https://github.com/ovh/design-system/commit/32b44fc16063969608c1c1dfea17c83c8dd948bc))
+* **popover:** remove useless code in lifecycle ([33504f9](https://github.com/ovh/design-system/commit/33504f92b2410a03fa5666fc56f5ee25506f2656))
+* **reports:** add missing components ([a97107a](https://github.com/ovh/design-system/commit/a97107a20ca09ef7565309589918a28838d6aea5))
+* **sass:** fix lint errors ([0231f8d](https://github.com/ovh/design-system/commit/0231f8d0640672faf64b2c68a25cb70d58880810))
+* **sass:** fixing imports and case error ([e32ebe4](https://github.com/ovh/design-system/commit/e32ebe4083977faa0f4ce993e97f1ee6124d8db1))
+* **sass:** theme imports ([14f89a2](https://github.com/ovh/design-system/commit/14f89a2e862b94cab360e489fbaaab7039205084))
+* **script:** update theme yarn script ([9974e6f](https://github.com/ovh/design-system/commit/9974e6fc99f6beeab432e0d48b91e1855901379d))
+* **select:** ajustement mutationObserver ([a611d8f](https://github.com/ovh/design-system/commit/a611d8f8c422793dc3cc60a9bc6ca85cd8e6ac1a))
+* **select:** change label on slot change ([8c73dd4](https://github.com/ovh/design-system/commit/8c73dd42d2562ebf81425f66b9ca0e101b60d4a2))
+* **select:** multiple obsevable ([f03f1f2](https://github.com/ovh/design-system/commit/f03f1f23bc269abe607c0121fcf4964e38ac46da))
+* **select:** no option found for mutationObserver ([4f64e2b](https://github.com/ovh/design-system/commit/4f64e2ba486c3687644eb74b5dd5e90be52bf075))
+* **text:** add export to public api ([5e63f1a](https://github.com/ovh/design-system/commit/5e63f1a3e58d558428380ccd402896fbccfe2962))
+* **text:** add missing test line for coverage ([813566e](https://github.com/ovh/design-system/commit/813566e80b3521cebf7a443847f287bb90b9784f))
+* **text:** merge constrasted action with attributes ([8e8c2b2](https://github.com/ovh/design-system/commit/8e8c2b29b3b8f540ff4727b927eb5562535baa8b))
+* **text:** remove destructuring object ([2cf2fe7](https://github.com/ovh/design-system/commit/2cf2fe7286c169b2bd501b10813f520cd42e6b12))
+* **text:** restore ternary and add new test for it ([bab890c](https://github.com/ovh/design-system/commit/bab890c4a18d17fe5adcb816b83c47e89f78fa5d))
+* **themes:** exclude broken file from lint && add root lint command ([162b287](https://github.com/ovh/design-system/commit/162b287f2ef1a416b66f7c0b353c656f02150b65))
+* **theming:** use correct sass syntax ([4bd2298](https://github.com/ovh/design-system/commit/4bd2298b641a78b6a4d346681525125d7917653f))
+
+
+### Features
+
+* **app:** add new ovh components ([94c307f](https://github.com/ovh/design-system/commit/94c307f80f818efbe332b21bd614190545cf54c2))
+* **datepicker:** add locale prop ([0cda07e](https://github.com/ovh/design-system/commit/0cda07eb26d7d8d2e2b17b3aa2b9fe160a2d7399))
+* **sass linter:** added html reporter for stylelint ([bc9c3b1](https://github.com/ovh/design-system/commit/bc9c3b1471f480cbc4c7f4fa5697c25a20873e59))
+* **sass linter:** added Stylelint with concentric order ([5610de2](https://github.com/ovh/design-system/commit/5610de2d19c7d560f6b037a3f2a2b93957b057a5))
+* **sass linter:** adding lint scripts in all components' and theme's package.json ([d78cc5c](https://github.com/ovh/design-system/commit/d78cc5c2bcc676525d7b20e532b0e2d570e06839))
+* **sass linter:** fixing at-rule-conditional-no-parentheses rule ([bc70eac](https://github.com/ovh/design-system/commit/bc70eac77984c8a8b13df979f672556fcecae0c8))
+* **sass linter:** fixing basic stylelint errors ([e92252d](https://github.com/ovh/design-system/commit/e92252d068956b64c15dd992b6b374fecfe545fd))
+* **sass linter:** fixing rollback stylelint errors ([e5619cc](https://github.com/ovh/design-system/commit/e5619ccd470fccc85c23e209ac20727587b61e79))
+* **text:** take all variations in one page screenshot only ([2737681](https://github.com/ovh/design-system/commit/27376818870a800e3f40598178456e75ea3d1f39))
+* **text:** use local import instead of theme directly ([6e50ce9](https://github.com/ovh/design-system/commit/6e50ce9af10371fab496b5e9921e1ff069249021))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [16.2.0](https://ovh.github.io/design-system/v16.2.0/?path=/docs/design-system-changelog--page) (2023-10-04)
 [compare](https://github.com/ovh/design-system/compare/v16.1.1...v16.2.0)
 

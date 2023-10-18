@@ -8,6 +8,33 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [16.2.1](https://ovh.github.io/design-system/v16.2.1/?path=/docs/design-system-changelog--page) (2023-10-18)
+[compare](https://github.com/ovh/design-system/compare/v16.2.0...v16.2.1)
+
+### Bug Fixes
+
+* **ci:** disable screenshot tests until reworked ([6cd906a](https://github.com/ovh/design-system/commit/6cd906af48a955b25cd5f59a17de7fff3a54c764))
+* **datepicker:** addressing changes ([9af539b](https://github.com/ovh/design-system/commit/9af539b9d35a8e138c6781827add8299e39e1582))
+* **datepicker:** addressing changes ([d94b053](https://github.com/ovh/design-system/commit/d94b053fe001b736a43964eb4ae39a586af7d45f))
+* **datepicker:** addressing changes ([0836d0b](https://github.com/ovh/design-system/commit/0836d0baa36a13936fc4bbd4196f315a328a539d))
+* **datepicker:** addressing changes ([13c7aae](https://github.com/ovh/design-system/commit/13c7aae7cb8fc7973de9d26f91a95b5e8ef40639))
+* **datepicker:** fix exports ([e0d5a13](https://github.com/ovh/design-system/commit/e0d5a1347649a2407d51cdac9d45ba494038be53))
+* **reports:** add missing components ([a97107a](https://github.com/ovh/design-system/commit/a97107a20ca09ef7565309589918a28838d6aea5))
+
+
+### Features
+
+* **datepicker:** add locale prop ([0cda07e](https://github.com/ovh/design-system/commit/0cda07eb26d7d8d2e2b17b3aa2b9fe160a2d7399))
+* **sass linter:** adding lint scripts in all components' and theme's package.json ([d78cc5c](https://github.com/ovh/design-system/commit/d78cc5c2bcc676525d7b20e532b0e2d570e06839))
+* **sass linter:** fixing rollback stylelint errors ([e5619cc](https://github.com/ovh/design-system/commit/e5619ccd470fccc85c23e209ac20727587b61e79))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [16.2.0](https://ovh.github.io/design-system/v16.2.0/?path=/docs/design-system-changelog--page) (2023-10-04)
 [compare](https://github.com/ovh/design-system/compare/v16.1.1...v16.2.0)
 

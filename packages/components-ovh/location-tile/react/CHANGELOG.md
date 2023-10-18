@@ -14,9 +14,3 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Features
 
 * **app:** add new ovh components ([94c307f](https://github.com/ovh/design-system/commit/94c307f80f818efbe332b21bd614190545cf54c2))
-
-
-
-
-
-[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)

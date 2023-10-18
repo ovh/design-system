@@ -8,6 +8,34 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [16.2.1](https://ovh.github.io/design-system/v16.2.1/?path=/docs/design-system-changelog--page) (2023-10-18)
+[compare](https://github.com/ovh/design-system/compare/v16.2.0...v16.2.1)
+
+### Bug Fixes
+
+* **ci:** disable screenshot tests until reworked ([6cd906a](https://github.com/ovh/design-system/commit/6cd906af48a955b25cd5f59a17de7fff3a54c764))
+* **text:** add export to public api ([5e63f1a](https://github.com/ovh/design-system/commit/5e63f1a3e58d558428380ccd402896fbccfe2962))
+* **text:** add missing test line for coverage ([813566e](https://github.com/ovh/design-system/commit/813566e80b3521cebf7a443847f287bb90b9784f))
+* **text:** merge constrasted action with attributes ([8e8c2b2](https://github.com/ovh/design-system/commit/8e8c2b29b3b8f540ff4727b927eb5562535baa8b))
+* **text:** remove destructuring object ([2cf2fe7](https://github.com/ovh/design-system/commit/2cf2fe7286c169b2bd501b10813f520cd42e6b12))
+* **text:** restore ternary and add new test for it ([bab890c](https://github.com/ovh/design-system/commit/bab890c4a18d17fe5adcb816b83c47e89f78fa5d))
+
+
+### Features
+
+* **datepicker:** add locale prop ([0cda07e](https://github.com/ovh/design-system/commit/0cda07eb26d7d8d2e2b17b3aa2b9fe160a2d7399))
+* **sass linter:** adding lint scripts in all components' and theme's package.json ([d78cc5c](https://github.com/ovh/design-system/commit/d78cc5c2bcc676525d7b20e532b0e2d570e06839))
+* **sass linter:** fixing basic stylelint errors ([e92252d](https://github.com/ovh/design-system/commit/e92252d068956b64c15dd992b6b374fecfe545fd))
+* **text:** take all variations in one page screenshot only ([2737681](https://github.com/ovh/design-system/commit/27376818870a800e3f40598178456e75ea3d1f39))
+* **text:** use local import instead of theme directly ([6e50ce9](https://github.com/ovh/design-system/commit/6e50ce9af10371fab496b5e9921e1ff069249021))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [16.2.0](https://ovh.github.io/design-system/v16.2.0/?path=/docs/design-system-changelog--page) (2023-10-04)
 [compare](https://github.com/ovh/design-system/compare/v16.1.1...v16.2.0)
 

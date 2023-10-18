@@ -8,6 +8,32 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [16.2.1](https://ovh.github.io/design-system/v16.2.1/?path=/docs/design-system-changelog--page) (2023-10-18)
+[compare](https://github.com/ovh/design-system/compare/v16.2.0...v16.2.1)
+
+### Bug Fixes
+
+* **sass:** fix lint errors ([0231f8d](https://github.com/ovh/design-system/commit/0231f8d0640672faf64b2c68a25cb70d58880810))
+* **sass:** fixing imports and case error ([e32ebe4](https://github.com/ovh/design-system/commit/e32ebe4083977faa0f4ce993e97f1ee6124d8db1))
+* **sass:** theme imports ([14f89a2](https://github.com/ovh/design-system/commit/14f89a2e862b94cab360e489fbaaab7039205084))
+* **script:** update theme yarn script ([9974e6f](https://github.com/ovh/design-system/commit/9974e6fc99f6beeab432e0d48b91e1855901379d))
+* **themes:** exclude broken file from lint && add root lint command ([162b287](https://github.com/ovh/design-system/commit/162b287f2ef1a416b66f7c0b353c656f02150b65))
+
+
+### Features
+
+* **sass linter:** adding lint scripts in all components' and theme's package.json ([d78cc5c](https://github.com/ovh/design-system/commit/d78cc5c2bcc676525d7b20e532b0e2d570e06839))
+* **sass linter:** fixing at-rule-conditional-no-parentheses rule ([bc70eac](https://github.com/ovh/design-system/commit/bc70eac77984c8a8b13df979f672556fcecae0c8))
+* **sass linter:** fixing basic stylelint errors ([e92252d](https://github.com/ovh/design-system/commit/e92252d068956b64c15dd992b6b374fecfe545fd))
+* **sass linter:** fixing rollback stylelint errors ([e5619cc](https://github.com/ovh/design-system/commit/e5619ccd470fccc85c23e209ac20727587b61e79))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [16.2.0](https://ovh.github.io/design-system/v16.2.0/?path=/docs/design-system-changelog--page) (2023-10-04)
 [compare](https://github.com/ovh/design-system/compare/v16.1.1...v16.2.0)
 

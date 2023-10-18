@@ -7,8 +7,10 @@
 |Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`columns`** | `string` \| `OdsDatagridColumn[]` | ✴️ |  | The list of the column|
+|**`height`** | _number_ | ✴️ |  | Height of the datagrid, in pixel|
 |**`isSelectable`** | _boolean_ |  |  | The rows can be selectable|
 |**`noResultLabel`** | _string_ |  |  | Text when the datagrid was no rows|
+|**`rowHeight`** | _number_ |  |  | Height for each row, in pixel|
 |**`rows`** | `string` \| `OdsDatagridRow[]` | ✴️ |  | The list of the rowsThe key need to be according to the column field|
 
 ### OdsDatagridColumn

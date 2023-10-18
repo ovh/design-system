@@ -6,17 +6,20 @@ import GenericStyle from '@ovhcloud/ods-common-core/docs/generic-style.mdx';
 
 ### Default with string
 <osds-datagrid columns='[{"title":"Name","field":"name"},{"title":"Firstname","field":"firstname"},{"title":"Gender","field":"gender"},{"title":"Date Of Birth","field":"dob"}]'
-    rows='[{"name":"Dupont","firstname":"Antoine","gender":"male","dob":"15/11/1996"},{"name":"Garnbret","firstname":"Janja","gender":"female","dob":"12/03/1999"}]'></osds-datagrid>
+    rows='[{"name":"Dupont","firstname":"Antoine","gender":"male","dob":"15/11/1996"},{"name":"Garnbret","firstname":"Janja","gender":"female","dob":"12/03/1999"}]'
+    height="150"></osds-datagrid>
 
 ```html
 <!-- Attributes need to be stringify -->
 <osds-datagrid columns='[{"title":"Name","field":"name"},{"title":"Firstname","field":"firstname"},{"title":"Gender","field":"gender"},{"title":"Date Of Birth","field":"dob"}]'
-    rows='[{"name":"Dupont","firstname":"Antoine","gender":"male","dob":"15/11/1996"},{"name":"Garnbret","firstname":"Janja","gender":"female","dob":"12/03/1999"}]'></osds-datagrid>
+    rows='[{"name":"Dupont","firstname":"Antoine","gender":"male","dob":"15/11/1996"},{"name":"Garnbret","firstname":"Janja","gender":"female","dob":"12/03/1999"}]'
+    height="150"></osds-datagrid>
 ```
 
 ### Default with js
 <osds-datagrid columns='[{"title":"Name","field":"name"},{"title":"Firstname","field":"firstname"},{"title":"Gender","field":"gender"},{"title":"Date Of Birth","field":"dob"}]'
-    rows='[{"name":"Dupont","firstname":"Antoine","gender":"male","dob":"15/11/1996"},{"name":"Garnbret","firstname":"Janja","gender":"female","dob":"12/03/1999"}]'></osds-datagrid>
+    rows='[{"name":"Dupont","firstname":"Antoine","gender":"male","dob":"15/11/1996"},{"name":"Garnbret","firstname":"Janja","gender":"female","dob":"12/03/1999"}]'
+    height="150"></osds-datagrid>
 
 ```html
 <osds-datagrid id="datagrid"></osds-datagrid>
@@ -33,6 +36,7 @@ import GenericStyle from '@ovhcloud/ods-common-core/docs/generic-style.mdx';
       { name: "Dupont", firstname: "Antoine", gender: "male", dob: "15/11/1996" },
       { name: "Garnbret", firstname: "Janja", gender: "female", dob: "12/03/1999" },
     ];
+    datagrid.height = 150;
 </script>
 ```
 
@@ -40,7 +44,8 @@ import GenericStyle from '@ovhcloud/ods-common-core/docs/generic-style.mdx';
 <osds-datagrid 
   columns='[{"title":"Name","field":"name"},{"title":"Firstname","field":"firstname"},{"title":"Gender","field":"gender"},{"title":"Date Of Birth","field":"dob"}]'
   rows='[{"name":"Dupont","firstname":"Antoine","gender":"male","dob":"15/11/1996"},{"name":"Garnbret","firstname":"Janja","gender":"female","dob":"12/03/1999"}]'
-  is-selectable>
+  is-selectable
+  height="150">
   </osds-datagrid>
 
 ```html
@@ -48,13 +53,15 @@ import GenericStyle from '@ovhcloud/ods-common-core/docs/generic-style.mdx';
 <osds-datagrid 
   columns='[{"title":"Name","field":"name"},{"title":"Firstname","field":"firstname"},{"title":"Gender","field":"gender"},{"title":"Date Of Birth","field":"dob"}]'
   rows='[{"name":"Dupont","firstname":"Antoine","gender":"male","dob":"15/11/1996"},{"name":"Garnbret","firstname":"Janja","gender":"female","dob":"12/03/1999"}]'
-  is-selectable>
+  is-selectable
+  height="150">
 </osds-datagrid>
 ```
 ### With sortable columns
 <osds-datagrid 
   columns='[{"title":"Name","field":"name", "isSortable": true},{"title":"Firstname","field":"firstname"},{"title":"Gender","field":"gender"},{"title":"Date Of Birth","field":"dob"}]'
-  rows='[{"name":"Dupont","firstname":"Antoine","gender":"male","dob":"15/11/1996"},{"name":"Garnbret","firstname":"Janja","gender":"female","dob":"12/03/1999"}]'>
+  rows='[{"name":"Dupont","firstname":"Antoine","gender":"male","dob":"15/11/1996"},{"name":"Garnbret","firstname":"Janja","gender":"female","dob":"12/03/1999"}]'
+  height="150">
 </osds-datagrid>
 
 ```html
@@ -72,13 +79,15 @@ import GenericStyle from '@ovhcloud/ods-common-core/docs/generic-style.mdx';
       { name: "Dupont", firstname: "Antoine", gender: "male", dob: "15/11/1996" },
       { name: "Garnbret", firstname: "Janja", gender: "female", dob: "12/03/1999" },
     ];
+    datagrid.height = 150;
 </script>
 ```
 
 ### With Formatter
 <osds-datagrid 
   columns='[{"title":"Name","field":"name", "isSortable": true},{"title":"Firstname","field":"firstname"},{"title":"Gender","field":"gender"},{"title":"Date Of Birth","field":"dob"}]'
-  rows='[{"name":"Dupont","firstname":"Antoine","gender":"male","dob":"15/11/1996"},{"name":"Garnbret","firstname":"Janja","gender":"female","dob":"12/03/1999"}]'>
+  rows='[{"name":"Dupont","firstname":"Antoine","gender":"male","dob":"15/11/1996"},{"name":"Garnbret","firstname":"Janja","gender":"female","dob":"12/03/1999"}]'
+  height="150">
 </osds-datagrid>
 
 <script>
@@ -100,7 +109,9 @@ import GenericStyle from '@ovhcloud/ods-common-core/docs/generic-style.mdx';
     ];
     datagrid.rows = [
       { name: "Dupont", firstname: "Antoine", gender: "male", dob: "15/11/1996" },
-      { name: "Garnbret", firstname: "Janja", gender: "female", dob: "12/03/1999" },];
+      { name: "Garnbret", firstname: "Janja", gender: "female", dob: "12/03/1999" },
+    ];
+    datagrid.height = 150;
 </script>
 ```
 
@@ -108,7 +119,8 @@ import GenericStyle from '@ovhcloud/ods-common-core/docs/generic-style.mdx';
 <osds-datagrid 
   columns='[{"title":"Name","field":"name", "isSortable": true},{"title":"Firstname","field":"firstname"},{"title":"Gender","field":"gender"},{"title":"Date Of Birth","field":"dob"}]'
   rows='[]'
-  no-result-label="Aucun résultat">
+  no-result-label="Aucun résultat"
+  height="150">
 </osds-datagrid>
 
 ```html
@@ -123,5 +135,6 @@ import GenericStyle from '@ovhcloud/ods-common-core/docs/generic-style.mdx';
       { title: "Date Of Birth", field: "dob" },
     ];
     datagrid.rows = [];
+    datagrid.height = 150;
 </script>
 ```

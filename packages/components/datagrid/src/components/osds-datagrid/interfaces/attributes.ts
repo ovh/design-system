@@ -26,7 +26,6 @@ interface OdsDatagridAttribute {
    * The key need to be according to the column field
    */
   rows: OdsDatagridRow[] | string;
-  
 }
 
 export {

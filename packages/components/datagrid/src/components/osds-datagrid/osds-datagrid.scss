@@ -2,7 +2,7 @@
 @import '~@ovhcloud/ods-common-theming/ods-theme';
 @import "~tabulator-tables/dist/css/tabulator.min.css";
 
-@mixin ods-input-checkbox {
+@mixin ods-input-checkbox($cell: 0) {
     input[type="checkbox"] {
         appearance: none;
         border-radius: var(--ods-size-border-radius-01);
@@ -10,6 +10,12 @@
         margin: 0;
         width: 20px;
         height: 20px;
+        @if $cell == 1 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
         
         &::before {
             content: "";
@@ -57,10 +63,6 @@ $ods-border-datagrid: solid 1px var(--ods-color-blue-200);
             border-top: $ods-border-datagrid;
             box-sizing: border-box;
 
-            // &:not(.height-calc) {
-            //     height: unset !important;
-            // }
-
             &:first-child {
                 border-left: $ods-border-datagrid;
             }
@@ -70,7 +72,8 @@ $ods-border-datagrid: solid 1px var(--ods-color-blue-200);
 
             &.ods-selectable__input-checkbox {
                 padding-left: 9px;
-                @include ods-input-checkbox;
+                @include ods-input-checkbox(1);
+
             }
         }
 

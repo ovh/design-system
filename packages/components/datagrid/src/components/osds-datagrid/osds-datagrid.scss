@@ -10,6 +10,7 @@
         margin: 0;
         width: 20px;
         height: 20px;
+        cursor: pointer;
         @if $cell == 1 {
             position: absolute;
             top: 50%;
@@ -49,6 +50,7 @@ $ods-border-datagrid: solid 1px var(--ods-color-blue-200);
 
         .tabulator-row {
             background-color: #FFF;
+            cursor: default;
 
             &:hover {
                 background-color: #FFF;

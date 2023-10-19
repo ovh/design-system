@@ -20,7 +20,6 @@ export class OsdsDatagrid implements OdsDatagridAttribute {
   readonly logger = new OdsLogger('OsdsDatagrid');
   private grid?: HTMLDivElement;
   table?: Tabulator;
-  @State() parsedColumns: OdsDatagridColumn[] = [];
 
   @Element() el!: HTMLElement;
 
@@ -106,11 +105,11 @@ export class OsdsDatagrid implements OdsDatagridAttribute {
     if (!this.grid) {
       return;
     }
-    this.parsedColumns = this.controler.getColumns();
+    const columns = this.controler.getColumns();
     const rows = this.controler.getRows();
 
     this.table = new Tabulator(this.grid, {
-      columns: this.controler.getTabulatorColumns(this.parsedColumns),
+      columns: this.controler.getTabulatorColumns(columns),
       data: rows,
       headerSortElement: (_column: ColumnComponent, dir: 'asc' | 'desc' | 'none'): string => {
         function getIcon(): ODS_ICON_NAME {

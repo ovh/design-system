@@ -32,15 +32,16 @@ describe('e2e:osds-datagrid', () => {
     expect(table).not.toBeNull();
   });
 
-  it('should render 1 rows & 2 columns', async() => {
+  it('should render 1 rows & 3 columns', async() => {
     await setup({ attributes: {
       columns: JSON.stringify([{ field: 'name', title: 'Name' }, { field: 'firstname', title: 'Firstname' }]),
       rows: JSON.stringify([{ firstname: 'Simpson', name: 'Homer' }]),
     } });
     const columns = await table?.findAll('.tabulator-col');
-    expect(columns).toHaveLength(2);
+    expect(columns).toHaveLength(3);
     expect(columns?.[0].innerText).toContain('Name');
     expect(columns?.[1].innerText).toContain('Firstname');
+    expect(columns?.[2].innerHTML).toContain('osds-button');
     const rows = await table?.findAll('.tabulator-row');
     expect(rows).toHaveLength(1);
     expect(rows?.[0].innerText).toContain('Homer');

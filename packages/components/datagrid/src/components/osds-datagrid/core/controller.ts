@@ -58,7 +58,7 @@ class OdsDatagridController {
         headerSort: false,
         resizable: false,
         title: '',
-        titleFormatter: () => this.getOdsPopover(),
+        titleFormatter: () => this.getOdsPopover(columns),
         width: 40,
       },
     ];
@@ -86,7 +86,7 @@ class OdsDatagridController {
         </osds-text>`;
   }
 
-  private getOdsPopover(): string {
+  private getOdsPopover(columns: OdsDatagridColumn[]): string {
     return `<osds-popover>
         <span slot="popover-trigger">
           <osds-button circle variant="${ODS_BUTTON_VARIANT.ghost}">
@@ -94,13 +94,14 @@ class OdsDatagridController {
           </osds-button>
         </span>
         <osds-popover-content>
-          ${this.component.parsedColumns.map((column) => {
+          ${
+  columns.map((column) => {
     const isChecked = !this.component.hideableColumns?.includes(column.field);
     return `<osds-checkbox value="${column.field}" checked="${isChecked}">
-                          <osds-checkbox-button color="${ODS_THEME_COLOR_INTENT.primary}">
-                            <span slot="end">${column.title}</span>
-                          </osds-checkbox-button>
-                        </osds-checkbox>`;
+                <osds-checkbox-button color="${ODS_THEME_COLOR_INTENT.primary}">
+                  <span slot="end">${column.title}</span>
+                </osds-checkbox-button>
+              </osds-checkbox>`;
   }).join('')
 }
         </osds-popover-content>

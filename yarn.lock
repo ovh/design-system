@@ -4252,6 +4252,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-common-scripts@16.2.1, @ovhcloud/ods-common-scripts@workspace:packages/common/scripts":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-common-scripts@workspace:packages/common/scripts"
+  bin:
+    build-stencil: ./src/build-stencil.js
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-common-stencil@16.2.1, @ovhcloud/ods-common-stencil@workspace:packages/common/stencil":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-common-stencil@workspace:packages/common/stencil"
@@ -4317,6 +4325,7 @@ __metadata:
   resolution: "@ovhcloud/ods-component-accordion@workspace:packages/components/accordion"
   dependencies:
     "@ovhcloud/ods-common-core": 16.2.1
+    "@ovhcloud/ods-common-scripts": 16.2.1
     "@ovhcloud/ods-common-stencil": 16.2.1
     "@ovhcloud/ods-common-testing": 16.2.1
     "@ovhcloud/ods-common-theming": 16.2.1
@@ -4354,6 +4363,7 @@ __metadata:
   resolution: "@ovhcloud/ods-component-breadcrumb@workspace:packages/components/breadcrumb"
   dependencies:
     "@ovhcloud/ods-common-core": 16.2.1
+    "@ovhcloud/ods-common-scripts": 16.2.1
     "@ovhcloud/ods-common-stencil": 16.2.1
     "@ovhcloud/ods-common-testing": 16.2.1
     "@ovhcloud/ods-common-theming": 16.2.1
@@ -4392,6 +4402,7 @@ __metadata:
   resolution: "@ovhcloud/ods-component-button@workspace:packages/components/button"
   dependencies:
     "@ovhcloud/ods-common-core": 16.2.1
+    "@ovhcloud/ods-common-scripts": 16.2.1
     "@ovhcloud/ods-common-stencil": 16.2.1
     "@ovhcloud/ods-common-testing": 16.2.1
     "@ovhcloud/ods-common-theming": 16.2.1
@@ -4428,6 +4439,7 @@ __metadata:
   resolution: "@ovhcloud/ods-component-cart@workspace:packages/components/cart"
   dependencies:
     "@ovhcloud/ods-common-core": 16.2.1
+    "@ovhcloud/ods-common-scripts": 16.2.1
     "@ovhcloud/ods-common-stencil": 16.2.1
     "@ovhcloud/ods-common-testing": 16.2.1
     "@ovhcloud/ods-common-theming": 16.2.1
@@ -4464,6 +4476,7 @@ __metadata:
   resolution: "@ovhcloud/ods-component-checkbox-button@workspace:packages/components/checkbox-button"
   dependencies:
     "@ovhcloud/ods-common-core": 16.2.1
+    "@ovhcloud/ods-common-scripts": 16.2.1
     "@ovhcloud/ods-common-stencil": 16.2.1
     "@ovhcloud/ods-common-testing": 16.2.1
     "@ovhcloud/ods-common-theming": 16.2.1
@@ -4500,6 +4513,7 @@ __metadata:
   resolution: "@ovhcloud/ods-component-checkbox@workspace:packages/components/checkbox"
   dependencies:
     "@ovhcloud/ods-common-core": 16.2.1
+    "@ovhcloud/ods-common-scripts": 16.2.1
     "@ovhcloud/ods-common-stencil": 16.2.1
     "@ovhcloud/ods-common-testing": 16.2.1
     "@ovhcloud/ods-common-theming": 16.2.1
@@ -4536,6 +4550,7 @@ __metadata:
   resolution: "@ovhcloud/ods-component-chip@workspace:packages/components/chip"
   dependencies:
     "@ovhcloud/ods-common-core": 16.2.1
+    "@ovhcloud/ods-common-scripts": 16.2.1
     "@ovhcloud/ods-common-stencil": 16.2.1
     "@ovhcloud/ods-common-testing": 16.2.1
     "@ovhcloud/ods-common-theming": 16.2.1
@@ -4573,6 +4588,7 @@ __metadata:
   dependencies:
     "@ovhcloud/ods-cdk": 16.2.1
     "@ovhcloud/ods-common-core": 16.2.1
+    "@ovhcloud/ods-common-scripts": 16.2.1
     "@ovhcloud/ods-common-stencil": 16.2.1
     "@ovhcloud/ods-common-testing": 16.2.1
     "@ovhcloud/ods-common-theming": 16.2.1
@@ -4610,6 +4626,7 @@ __metadata:
   resolution: "@ovhcloud/ods-component-code@workspace:packages/components/code"
   dependencies:
     "@ovhcloud/ods-common-core": 16.2.1
+    "@ovhcloud/ods-common-scripts": 16.2.1
     "@ovhcloud/ods-common-stencil": 16.2.1
     "@ovhcloud/ods-common-testing": 16.2.1
     "@ovhcloud/ods-common-theming": 16.2.1
@@ -4647,6 +4664,7 @@ __metadata:
   resolution: "@ovhcloud/ods-component-collapsible@workspace:packages/components/collapsible"
   dependencies:
     "@ovhcloud/ods-common-core": 16.2.1
+    "@ovhcloud/ods-common-scripts": 16.2.1
     "@ovhcloud/ods-common-stencil": 16.2.1
     "@ovhcloud/ods-common-testing": 16.2.1
     "@ovhcloud/ods-common-theming": 16.2.1
@@ -4682,6 +4700,7 @@ __metadata:
   resolution: "@ovhcloud/ods-component-content-addon@workspace:packages/components/content-addon"
   dependencies:
     "@ovhcloud/ods-common-core": 16.2.1
+    "@ovhcloud/ods-common-scripts": 16.2.1
     "@ovhcloud/ods-common-stencil": 16.2.1
     "@ovhcloud/ods-common-testing": 16.2.1
     "@ovhcloud/ods-common-theming": 16.2.1
@@ -4717,6 +4736,7 @@ __metadata:
   resolution: "@ovhcloud/ods-component-datepicker@workspace:packages/components/datepicker"
   dependencies:
     "@ovhcloud/ods-common-core": 16.2.1
+    "@ovhcloud/ods-common-scripts": 16.2.1
     "@ovhcloud/ods-common-stencil": 16.2.1
     "@ovhcloud/ods-common-testing": 16.2.1
     "@ovhcloud/ods-common-theming": 16.2.1
@@ -4757,6 +4777,7 @@ __metadata:
   resolution: "@ovhcloud/ods-component-divider@workspace:packages/components/divider"
   dependencies:
     "@ovhcloud/ods-common-core": 16.2.1
+    "@ovhcloud/ods-common-scripts": 16.2.1
     "@ovhcloud/ods-common-stencil": 16.2.1
     "@ovhcloud/ods-common-testing": 16.2.1
     "@ovhcloud/ods-common-theming": 16.2.1
@@ -4792,6 +4813,7 @@ __metadata:
   resolution: "@ovhcloud/ods-component-flag@workspace:packages/components/flag"
   dependencies:
     "@ovhcloud/ods-common-core": 16.2.1
+    "@ovhcloud/ods-common-scripts": 16.2.1
     "@ovhcloud/ods-common-stencil": 16.2.1
     "@ovhcloud/ods-common-testing": 16.2.1
     "@ovhcloud/ods-common-theming": 16.2.1
@@ -4829,6 +4851,7 @@ __metadata:
   resolution: "@ovhcloud/ods-component-form-field@workspace:packages/components/form-field"
   dependencies:
     "@ovhcloud/ods-common-core": 16.2.1
+    "@ovhcloud/ods-common-scripts": 16.2.1
     "@ovhcloud/ods-common-stencil": 16.2.1
     "@ovhcloud/ods-common-testing": 16.2.1
     "@ovhcloud/ods-common-theming": 16.2.1
@@ -4868,6 +4891,7 @@ __metadata:
   resolution: "@ovhcloud/ods-component-icon@workspace:packages/components/icon"
   dependencies:
     "@ovhcloud/ods-common-core": 16.2.1
+    "@ovhcloud/ods-common-scripts": 16.2.1
     "@ovhcloud/ods-common-stencil": 16.2.1
     "@ovhcloud/ods-common-testing": 16.2.1
     "@ovhcloud/ods-common-theming": 16.2.1
@@ -4903,6 +4927,7 @@ __metadata:
   resolution: "@ovhcloud/ods-component-input@workspace:packages/components/input"
   dependencies:
     "@ovhcloud/ods-common-core": 16.2.1
+    "@ovhcloud/ods-common-scripts": 16.2.1
     "@ovhcloud/ods-common-stencil": 16.2.1
     "@ovhcloud/ods-common-testing": 16.2.1
     "@ovhcloud/ods-common-theming": 16.2.1
@@ -4941,6 +4966,7 @@ __metadata:
   resolution: "@ovhcloud/ods-component-link@workspace:packages/components/link"
   dependencies:
     "@ovhcloud/ods-common-core": 16.2.1
+    "@ovhcloud/ods-common-scripts": 16.2.1
     "@ovhcloud/ods-common-stencil": 16.2.1
     "@ovhcloud/ods-common-testing": 16.2.1
     "@ovhcloud/ods-common-theming": 16.2.1
@@ -4978,6 +5004,7 @@ __metadata:
   dependencies:
     "@ovhcloud/ods-cdk": 16.2.1
     "@ovhcloud/ods-common-core": 16.2.1
+    "@ovhcloud/ods-common-scripts": 16.2.1
     "@ovhcloud/ods-common-stencil": 16.2.1
     "@ovhcloud/ods-common-testing": 16.2.1
     "@ovhcloud/ods-component-button": 16.2.1
@@ -5016,6 +5043,7 @@ __metadata:
   resolution: "@ovhcloud/ods-component-message@workspace:packages/components/message"
   dependencies:
     "@ovhcloud/ods-common-core": 16.2.1
+    "@ovhcloud/ods-common-scripts": 16.2.1
     "@ovhcloud/ods-common-stencil": 16.2.1
     "@ovhcloud/ods-common-testing": 16.2.1
     "@ovhcloud/ods-common-theming": 16.2.1
@@ -5052,6 +5080,7 @@ __metadata:
   resolution: "@ovhcloud/ods-component-modal@workspace:packages/components/modal"
   dependencies:
     "@ovhcloud/ods-common-core": 16.2.1
+    "@ovhcloud/ods-common-scripts": 16.2.1
     "@ovhcloud/ods-common-stencil": 16.2.1
     "@ovhcloud/ods-common-testing": 16.2.1
     "@ovhcloud/ods-common-theming": 16.2.1
@@ -5090,6 +5119,7 @@ __metadata:
   resolution: "@ovhcloud/ods-component-pagination@workspace:packages/components/pagination"
   dependencies:
     "@ovhcloud/ods-common-core": 16.2.1
+    "@ovhcloud/ods-common-scripts": 16.2.1
     "@ovhcloud/ods-common-stencil": 16.2.1
     "@ovhcloud/ods-common-testing": 16.2.1
     "@ovhcloud/ods-common-theming": 16.2.1
@@ -5130,6 +5160,7 @@ __metadata:
   resolution: "@ovhcloud/ods-component-password@workspace:packages/components/password"
   dependencies:
     "@ovhcloud/ods-common-core": 16.2.1
+    "@ovhcloud/ods-common-scripts": 16.2.1
     "@ovhcloud/ods-common-stencil": 16.2.1
     "@ovhcloud/ods-common-testing": 16.2.1
     "@ovhcloud/ods-common-theming": 16.2.1
@@ -5166,6 +5197,7 @@ __metadata:
   resolution: "@ovhcloud/ods-component-phone-number@workspace:packages/components/phone-number"
   dependencies:
     "@ovhcloud/ods-common-core": 16.2.1
+    "@ovhcloud/ods-common-scripts": 16.2.1
     "@ovhcloud/ods-common-stencil": 16.2.1
     "@ovhcloud/ods-common-testing": 16.2.1
     "@ovhcloud/ods-common-theming": 16.2.1
@@ -5208,6 +5240,7 @@ __metadata:
   dependencies:
     "@ovhcloud/ods-cdk": 16.2.1
     "@ovhcloud/ods-common-core": 16.2.1
+    "@ovhcloud/ods-common-scripts": 16.2.1
     "@ovhcloud/ods-common-stencil": 16.2.1
     "@ovhcloud/ods-common-testing": 16.2.1
     "@ovhcloud/ods-common-theming": 16.2.1
@@ -5246,6 +5279,7 @@ __metadata:
   resolution: "@ovhcloud/ods-component-progress-bar@workspace:packages/components/progress-bar"
   dependencies:
     "@ovhcloud/ods-common-core": 16.2.1
+    "@ovhcloud/ods-common-scripts": 16.2.1
     "@ovhcloud/ods-common-stencil": 16.2.1
     "@ovhcloud/ods-common-testing": 16.2.1
     "@ovhcloud/ods-common-theming": 16.2.1
@@ -5281,6 +5315,7 @@ __metadata:
   resolution: "@ovhcloud/ods-component-quantity@workspace:packages/components/quantity"
   dependencies:
     "@ovhcloud/ods-common-core": 16.2.1
+    "@ovhcloud/ods-common-scripts": 16.2.1
     "@ovhcloud/ods-common-stencil": 16.2.1
     "@ovhcloud/ods-common-testing": 16.2.1
     "@ovhcloud/ods-common-theming": 16.2.1
@@ -5319,6 +5354,7 @@ __metadata:
   resolution: "@ovhcloud/ods-component-radio-button@workspace:packages/components/radio-button"
   dependencies:
     "@ovhcloud/ods-common-core": 16.2.1
+    "@ovhcloud/ods-common-scripts": 16.2.1
     "@ovhcloud/ods-common-stencil": 16.2.1
     "@ovhcloud/ods-common-testing": 16.2.1
     "@ovhcloud/ods-common-theming": 16.2.1
@@ -5354,6 +5390,7 @@ __metadata:
   resolution: "@ovhcloud/ods-component-radio@workspace:packages/components/radio"
   dependencies:
     "@ovhcloud/ods-common-core": 16.2.1
+    "@ovhcloud/ods-common-scripts": 16.2.1
     "@ovhcloud/ods-common-stencil": 16.2.1
     "@ovhcloud/ods-common-testing": 16.2.1
     "@ovhcloud/ods-common-theming": 16.2.1
@@ -5390,6 +5427,7 @@ __metadata:
   resolution: "@ovhcloud/ods-component-range@workspace:packages/components/range"
   dependencies:
     "@ovhcloud/ods-common-core": 16.2.1
+    "@ovhcloud/ods-common-scripts": 16.2.1
     "@ovhcloud/ods-common-stencil": 16.2.1
     "@ovhcloud/ods-common-testing": 16.2.1
     "@ovhcloud/ods-common-theming": 16.2.1
@@ -5426,6 +5464,7 @@ __metadata:
   resolution: "@ovhcloud/ods-component-search-bar@workspace:packages/components/search-bar"
   dependencies:
     "@ovhcloud/ods-common-core": 16.2.1
+    "@ovhcloud/ods-common-scripts": 16.2.1
     "@ovhcloud/ods-common-stencil": 16.2.1
     "@ovhcloud/ods-common-testing": 16.2.1
     "@ovhcloud/ods-common-theming": 16.2.1
@@ -5466,6 +5505,7 @@ __metadata:
   dependencies:
     "@ovhcloud/ods-cdk": 16.2.1
     "@ovhcloud/ods-common-core": 16.2.1
+    "@ovhcloud/ods-common-scripts": 16.2.1
     "@ovhcloud/ods-common-stencil": 16.2.1
     "@ovhcloud/ods-common-testing": 16.2.1
     "@ovhcloud/ods-common-theming": 16.2.1
@@ -5504,6 +5544,7 @@ __metadata:
   resolution: "@ovhcloud/ods-component-skeleton@workspace:packages/components/skeleton"
   dependencies:
     "@ovhcloud/ods-common-core": 16.2.1
+    "@ovhcloud/ods-common-scripts": 16.2.1
     "@ovhcloud/ods-common-stencil": 16.2.1
     "@ovhcloud/ods-common-testing": 16.2.1
     "@ovhcloud/ods-common-theming": 16.2.1
@@ -5539,6 +5580,7 @@ __metadata:
   resolution: "@ovhcloud/ods-component-spinner@workspace:packages/components/spinner"
   dependencies:
     "@ovhcloud/ods-common-core": 16.2.1
+    "@ovhcloud/ods-common-scripts": 16.2.1
     "@ovhcloud/ods-common-stencil": 16.2.1
     "@ovhcloud/ods-common-testing": 16.2.1
     "@ovhcloud/ods-common-theming": 16.2.1
@@ -5574,6 +5616,7 @@ __metadata:
   resolution: "@ovhcloud/ods-component-switch@workspace:packages/components/switch"
   dependencies:
     "@ovhcloud/ods-common-core": 16.2.1
+    "@ovhcloud/ods-common-scripts": 16.2.1
     "@ovhcloud/ods-common-stencil": 16.2.1
     "@ovhcloud/ods-common-testing": 16.2.1
     "@ovhcloud/ods-common-theming": 16.2.1
@@ -5611,6 +5654,7 @@ __metadata:
   resolution: "@ovhcloud/ods-component-tabs@workspace:packages/components/tabs"
   dependencies:
     "@ovhcloud/ods-common-core": 16.2.1
+    "@ovhcloud/ods-common-scripts": 16.2.1
     "@ovhcloud/ods-common-stencil": 16.2.1
     "@ovhcloud/ods-common-testing": 16.2.1
     "@ovhcloud/ods-common-theming": 16.2.1
@@ -5649,6 +5693,7 @@ __metadata:
   resolution: "@ovhcloud/ods-component-text@workspace:packages/components/text"
   dependencies:
     "@ovhcloud/ods-common-core": 16.2.1
+    "@ovhcloud/ods-common-scripts": 16.2.1
     "@ovhcloud/ods-common-stencil": 16.2.1
     "@ovhcloud/ods-common-testing": 16.2.1
     "@ovhcloud/ods-common-theming": 16.2.1
@@ -5684,6 +5729,7 @@ __metadata:
   resolution: "@ovhcloud/ods-component-textarea@workspace:packages/components/textarea"
   dependencies:
     "@ovhcloud/ods-common-core": 16.2.1
+    "@ovhcloud/ods-common-scripts": 16.2.1
     "@ovhcloud/ods-common-stencil": 16.2.1
     "@ovhcloud/ods-common-testing": 16.2.1
     "@ovhcloud/ods-common-theming": 16.2.1
@@ -5719,6 +5765,7 @@ __metadata:
   resolution: "@ovhcloud/ods-component-tile@workspace:packages/components/tile"
   dependencies:
     "@ovhcloud/ods-common-core": 16.2.1
+    "@ovhcloud/ods-common-scripts": 16.2.1
     "@ovhcloud/ods-common-stencil": 16.2.1
     "@ovhcloud/ods-common-testing": 16.2.1
     "@ovhcloud/ods-common-theming": 16.2.1
@@ -5754,6 +5801,7 @@ __metadata:
   resolution: "@ovhcloud/ods-component-toggle@workspace:packages/components/toggle"
   dependencies:
     "@ovhcloud/ods-common-core": 16.2.1
+    "@ovhcloud/ods-common-scripts": 16.2.1
     "@ovhcloud/ods-common-stencil": 16.2.1
     "@ovhcloud/ods-common-testing": 16.2.1
     "@ovhcloud/ods-common-theming": 16.2.1
@@ -5790,6 +5838,7 @@ __metadata:
   dependencies:
     "@ovhcloud/ods-cdk": 16.2.1
     "@ovhcloud/ods-common-core": 16.2.1
+    "@ovhcloud/ods-common-scripts": 16.2.1
     "@ovhcloud/ods-common-stencil": 16.2.1
     "@ovhcloud/ods-common-testing": 16.2.1
     "@ovhcloud/ods-common-theming": 16.2.1
@@ -5886,6 +5935,7 @@ __metadata:
   resolution: "@ovhcloud/ods-ovh-component-location-tile@workspace:packages/components-ovh/location-tile"
   dependencies:
     "@ovhcloud/ods-common-core": 16.2.1
+    "@ovhcloud/ods-common-scripts": 16.2.1
     "@ovhcloud/ods-common-stencil": 16.2.1
     "@ovhcloud/ods-common-testing": 16.2.1
     "@ovhcloud/ods-stencil-dev": 16.2.1

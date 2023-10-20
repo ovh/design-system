@@ -5,7 +5,7 @@ import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 
 @Component({
   tag: 'osds-timepicker',
-  styleUrl: 'osds-timepicker.scss',
+  // styleUrl: 'osds-timepicker.scss',
   shadow: true,
 })
 export class OsdsTimepicker implements OdsTimepickerAttribute {

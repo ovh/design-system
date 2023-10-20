@@ -1,0 +1,10 @@
+{
+  "name": "@ovhcloud/ods-common-scripts",
+  "version": "16.2.1",
+  "private": true,
+  "description": "ODS common scripts helpers",
+  "license": "Apache-2.0",
+  "bin": {
+    "build-stencil": "./src/build-stencil.js"
+  }
+}

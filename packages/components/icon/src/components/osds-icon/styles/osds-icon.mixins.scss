@@ -1,7 +1,0 @@
-// general mixins and functions for the component
-
-@mixin osds-icon-on-selected-host() {
-  :host(&) {
-    @content;
-  }
-}

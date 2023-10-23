@@ -1,9 +1,9 @@
-import type { OsdsButton } from '../osds-button';
-import { OdsLogger, OdsWarnComponentAttribute } from '@ovhcloud/ods-common-core';
-import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import { ODS_BUTTON_SIZE } from '../constants/button-size';
-import { ODS_BUTTON_VARIANT } from '../constants/button-variant';
-import { ODS_BUTTON_TEXT_ALIGN } from '../constants/button-text-align';
+import type {OsdsButton} from '../osds-button';
+import {OdsLogger, OdsWarnComponentAttribute} from '@ovhcloud/ods-common-core';
+import {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
+import {ODS_BUTTON_SIZE} from '../constants/button-size';
+import {ODS_BUTTON_VARIANT} from '../constants/button-variant';
+import {ODS_BUTTON_TEXT_ALIGN} from '../constants/button-text-align';
 
 /**
  * common controller logic for button component used by the different implementations.
@@ -27,25 +27,25 @@ class OdsButtonController {
       logger,
       attributeValues: ODS_THEME_COLOR_INTENT as Record<string, unknown>,
       attributeName: 'color',
-      attribute: this.component.color
+      attribute: this.component.color,
     });
     OdsWarnComponentAttribute<ODS_BUTTON_SIZE, OsdsButton>({
       logger,
       attributeValues: ODS_BUTTON_SIZE as Record<string, unknown>,
       attributeName: 'size',
-      attribute: this.component.size
+      attribute: this.component.size,
     });
     OdsWarnComponentAttribute<ODS_BUTTON_VARIANT, OsdsButton>({
       logger,
       attributeValues: ODS_BUTTON_VARIANT as Record<string, unknown>,
       attributeName: 'variant',
-      attribute: this.component.variant
+      attribute: this.component.variant,
     });
     OdsWarnComponentAttribute<ODS_BUTTON_TEXT_ALIGN, OsdsButton>({
       logger,
       attributeValues: ODS_BUTTON_TEXT_ALIGN as Record<string, unknown>,
       attributeName: 'textAlign',
-      attribute: this.component.textAlign
+      attribute: this.component.textAlign,
     });
   }
 
@@ -68,7 +68,7 @@ class OdsButtonController {
   }
 
   handleKey(event: KeyboardEvent): void {
-    if(event.key === " " || event.key === "Enter") {
+    if(event.key === ' ' || event.key === 'Enter') {
       this.logger.log('Key on osds-button');
       this.submitForm(event);
     }
@@ -78,8 +78,8 @@ class OdsButtonController {
    * Checking if the button is in a form to add the form submit behaviour on it
    */
   private submitForm(event: MouseEvent | KeyboardEvent) {
-    if (this.component.type && this.component.type === "submit" && !this.component.disabled) {
-      const form = (event.target as HTMLElement).closest("form");
+    if (this.component.type && this.component.type === 'submit' && !this.component.disabled) {
+      const form = (event.target as HTMLElement).closest('form');
       if (form) {
         event.preventDefault();
 

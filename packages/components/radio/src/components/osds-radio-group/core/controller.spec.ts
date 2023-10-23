@@ -1,8 +1,8 @@
-import { OdsClearLoggerSpy, OdsInitializeLoggerSpy, OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
-import { OsdsRadioGroup } from '../osds-radio-group';
-import { OsdsRadio } from '../../osds-radio/osds-radio';
-import { OdsRadioGroupController } from './controller';
-import { OdsLogger } from '@ovhcloud/ods-common-core';
+import {OdsClearLoggerSpy, OdsInitializeLoggerSpy, OdsLoggerSpyReferences} from '@ovhcloud/ods-common-testing';
+import {OsdsRadioGroup} from '../osds-radio-group';
+import {OsdsRadio} from '../../osds-radio/osds-radio';
+import {OdsRadioGroupController} from './controller';
+import {OdsLogger} from '@ovhcloud/ods-common-core';
 
 class OdsRadioMock extends OsdsRadio {
   constructor(attribute?: Partial<OsdsRadio>) {
@@ -36,13 +36,13 @@ describe('spec:ods-radio-group-controller', () => {
     radio.el.addEventListener = jest.fn();
     radio.el.removeEventListener = jest.fn();
     return radio;
-  } 
+  }
 
   beforeEach(() => {
     const loggerMocked = new OdsLogger('myLoggerMocked');
     loggerSpyReferences = OdsInitializeLoggerSpy({
       loggerMocked: loggerMocked as never,
-      spiedClass: OdsRadioGroupController
+      spiedClass: OdsRadioGroupController,
     });
   });
 
@@ -53,23 +53,23 @@ describe('spec:ods-radio-group-controller', () => {
 
   describe('methods', () => {
     describe('methods:updateState', () => {
-      it('should use logger', async () => {
+      it('should use logger', async() => {
         const inputId = 'input-id';
         const checked = true;
         const checking = true;
-        setup({ inputId });
-        await controller.updateState({ newValue: '', checked, checking });
+        setup({inputId});
+        await controller.updateState({newValue: '', checked, checking});
 
-        expect(loggerSpyReferences.methodSpies.log).toHaveBeenCalledWith(`[radio-group=${inputId}]`, 'updateState', { checked, checking });
+        expect(loggerSpyReferences.methodSpies.log).toHaveBeenCalledWith(`[radio-group=${inputId}]`, 'updateState', {checked, checking});
       });
 
       describe('pessimistic update', () => {
         const save = jest.fn();
 
-        it('should use logger', async () => {
+        it('should use logger', async() => {
           const inputId = 'input-id';
-          setup({ inputId, save });
-          await controller.updateState({ newValue: '', checked: false, checking: false });
+          setup({inputId, save});
+          await controller.updateState({newValue: '', checked: false, checking: false});
 
           expect(loggerSpyReferences.methodSpies.log).toHaveBeenCalledWith(`[radio-group=${inputId}]`, 'pessimistic update');
         });
@@ -78,40 +78,40 @@ describe('spec:ods-radio-group-controller', () => {
           const save = jest.fn();
           const beforeSave = jest.fn();
 
-          it('should call beforeSave', async () => {
+          it('should call beforeSave', async() => {
             const value = 'value';
-            setup({ value, save, beforeSave });
-            await controller.updateState({ newValue: '', checked: false, checking: false });
+            setup({value, save, beforeSave});
+            await controller.updateState({newValue: '', checked: false, checking: false});
 
             expect(beforeSave).toHaveBeenCalledTimes(1);
-            expect(beforeSave).toHaveBeenCalledWith({ value })
+            expect(beforeSave).toHaveBeenCalledWith({value});
           });
 
-          it('should call save', async () => {
+          it('should call save', async() => {
             const value = 'value';
-            setup({ value, save, beforeSave });
-            await controller.updateState({ newValue: '', checked: false, checking: false });
+            setup({value, save, beforeSave});
+            await controller.updateState({newValue: '', checked: false, checking: false});
 
             expect(save).toHaveBeenCalledTimes(1);
-            expect(save).toHaveBeenCalledWith({ value })
+            expect(save).toHaveBeenCalledWith({value});
           });
 
-          it('should change value', async () => {
+          it('should change value', async() => {
             const value = 'value';
             const newValue = 'newValue';
-            setup({ value, save, beforeSave });
-            await controller.updateState({ newValue, checked: false, checking: false });
+            setup({value, save, beforeSave});
+            await controller.updateState({newValue, checked: false, checking: false});
 
             expect(component.value).toBe(newValue);
           });
         });
 
         describe('calling save failed', () => {
-          it('should use logger', async () => {
+          it('should use logger', async() => {
             const inputId = 'input-id';
-            setup({ save, inputId });
+            setup({save, inputId});
             component.beforeSave = jest.fn().mockRejectedValue(null);
-            await controller.updateState({ newValue: '', checked: false, checking: false });
+            await controller.updateState({newValue: '', checked: false, checking: false});
 
             expect(loggerSpyReferences.methodSpies.log).toHaveBeenCalledWith(`[radio-group=${inputId}]`, 'calling save failed');
           });
@@ -121,7 +121,7 @@ describe('spec:ods-radio-group-controller', () => {
           const save = jest.fn();
           const afterSave = jest.fn();
 
-          it('should updateRadioStates', async () => {
+          it('should updateRadioStates', async() => {
             const radios: OsdsRadio[] = [];
             const n = 1 + Math.round(Math.random() * 5);
             for (let i = 0; i < n; i++) {
@@ -129,51 +129,51 @@ describe('spec:ods-radio-group-controller', () => {
               radio.updateState = jest.fn();
               radios.push(radio);
             }
-            setup({ radios, save, afterSave });
-            await controller.updateState({ newValue: '', checked: false, checking: false });
+            setup({radios, save, afterSave});
+            await controller.updateState({newValue: '', checked: false, checking: false});
 
-            radios.forEach(radio => {
+            radios.forEach((radio) => {
               // called twice (before save + after save)
               expect(radio.updateState).toHaveBeenCalledTimes(2);
               expect(radio.updateState).toHaveBeenCalledWith(false);
             });
           });
 
-          it('should call afterSave', async () => {
+          it('should call afterSave', async() => {
             const value = 'value';
-            setup({ value, save, afterSave });
-            await controller.updateState({ newValue: value, checked: false, checking: false });
+            setup({value, save, afterSave});
+            await controller.updateState({newValue: value, checked: false, checking: false});
 
             expect(afterSave).toHaveBeenCalledTimes(1);
-            expect(afterSave).toHaveBeenCalledWith({ value });
+            expect(afterSave).toHaveBeenCalledWith({value});
           });
         });
       });
 
       describe('optimistic update', () => {
-        it('should use logger', async () => {
+        it('should use logger', async() => {
           const inputId = 'input-id';
-          setup({ inputId });
-          await controller.updateState({ newValue: '', checked: false, checking: false });
+          setup({inputId});
+          await controller.updateState({newValue: '', checked: false, checking: false});
 
           expect(loggerSpyReferences.methodSpies.log).toHaveBeenCalledWith(`[radio-group=${inputId}]`, 'optimistic update');
         });
 
-        it('should change value', async () => {
+        it('should change value', async() => {
           const value = 'value';
           const newValue = 'newValue';
-          setup({ value });
-          await controller.updateState({ newValue, checked: false, checking: false });
+          setup({value});
+          await controller.updateState({newValue, checked: false, checking: false});
 
           expect(component.value).toBe(newValue);
         });
 
-        it('should call emitChange', async () => {
+        it('should call emitChange', async() => {
           const value = 'value';
           const newValue = 'newValue';
-          setup({ value });
+          setup({value});
           spyOnEmitChange = jest.spyOn(component, 'emitChange');
-          await controller.updateState({ newValue, checked: false, checking: false });
+          await controller.updateState({newValue, checked: false, checking: false});
 
           expect(spyOnEmitChange).toHaveBeenCalledTimes(1);
           expect(spyOnEmitChange).toHaveBeenCalledWith(newValue, value);
@@ -186,7 +186,7 @@ describe('spec:ods-radio-group-controller', () => {
       const name = 'radioGroup';
 
       it('should push radio to component.radios', () => {
-        setup({ name, radios });
+        setup({name, radios});
         const radio = createRadio();
         controller.registerRadio(radio);
         expect(component.radios?.length).toBe(1);
@@ -194,21 +194,21 @@ describe('spec:ods-radio-group-controller', () => {
       });
 
       it('should set radio name from component name', () => {
-        setup({ name, radios });
+        setup({name, radios});
         const radio = createRadio();
         controller.registerRadio(radio);
         expect(radio.name).toEqual(name);
       });
 
       it('should remove disabledChange event', () => {
-        setup({ name, radios });
+        setup({name, radios});
         const radio = createRadio();
         controller.registerRadio(radio);
         expect(radio?.el.addEventListener).toHaveBeenCalledWith('odsCheckedChange', expect.any(Function));
       });
 
       it('should remove disabledChange event', () => {
-        setup({ name, radios });
+        setup({name, radios});
         const radio = createRadio();
         controller.registerRadio(radio);
         expect(radio?.el.addEventListener).toHaveBeenCalledWith('odsCheckingChange', expect.any(Function));
@@ -228,7 +228,7 @@ describe('spec:ods-radio-group-controller', () => {
 
       it('should removeEventListener from radio', () => {
         const radios = createRadios();
-        setup({ radios });
+        setup({radios});
         controller.unregisterRadio(radios[0]);
 
         expect(radios[0].el.removeEventListener).toHaveBeenCalledWith('odsCheckedChange', expect.any(Function));
@@ -237,7 +237,7 @@ describe('spec:ods-radio-group-controller', () => {
 
       it('should remove radio from radios', () => {
         const radios = createRadios();
-        setup({ radios });
+        setup({radios});
         controller.unregisterRadio(radios[0]);
 
         expect(component.radios).toEqual([radios[1]]);
@@ -246,7 +246,7 @@ describe('spec:ods-radio-group-controller', () => {
       it('should reset value', () => {
         const radios = createRadios();
         const value = 'value';
-        setup({ radios, value });
+        setup({radios, value});
         controller.unregisterRadio(radios[0]);
 
         expect(component.value).toBe('');
@@ -255,7 +255,7 @@ describe('spec:ods-radio-group-controller', () => {
       it('should call emitChange', () => {
         const radios = createRadios();
         const value = 'value';
-        setup({ radios, value });
+        setup({radios, value});
         spyOnEmitChange = jest.spyOn(component, 'emitChange');
         controller.unregisterRadio(radios[0]);
 
@@ -266,7 +266,7 @@ describe('spec:ods-radio-group-controller', () => {
       it('should not call emitChange', () => {
         const radios = createRadios();
         const value = 'radio-group-value';
-        setup({ radios, value });
+        setup({radios, value});
         spyOnEmitChange = jest.spyOn(component, 'emitChange');
         controller.unregisterRadio(radios[0]);
 
@@ -277,19 +277,19 @@ describe('spec:ods-radio-group-controller', () => {
 
     describe('methods:clearRadios', () => {
       it('should removeEventListener for all radios', () => {
-        const radios = [createRadio(), createRadio(), createRadio()]
-        setup({ radios });
+        const radios = [createRadio(), createRadio(), createRadio()];
+        setup({radios});
         controller.clearRadios();
 
-        radios.forEach(radio => {
+        radios.forEach((radio) => {
           expect(radio.el.removeEventListener).toHaveBeenCalledWith('odsCheckedChange', expect.any(Function));
           expect(radio.el.removeEventListener).toHaveBeenCalledWith('odsCheckingChange', expect.any(Function));
         });
       });
 
       it('should reset radios array', () => {
-        const radios = [createRadio(), createRadio(), createRadio()]
-        setup({ radios });
+        const radios = [createRadio(), createRadio(), createRadio()];
+        setup({radios});
         controller.clearRadios();
         expect(component.radios).toEqual([]);
       });
@@ -299,7 +299,7 @@ describe('spec:ods-radio-group-controller', () => {
       it('should log event', () => {
         const value = 'value';
         const event = {} as PointerEvent;
-        setup({ value });
+        setup({value});
         controller.handleLabelClick(event);
 
         expect(loggerSpyReferences.methodSpies.log).toHaveBeenCalledTimes(1);
@@ -316,10 +316,10 @@ describe('spec:ods-radio-group-controller', () => {
           radio.updateState = jest.fn();
           radios.push(radio);
         }
-        setup({ radios });
+        setup({radios});
         controller.onValueChange('', '');
 
-        radios.forEach(radio => {
+        radios.forEach((radio) => {
           expect(radio.updateState).toHaveBeenCalled();
         });
       });

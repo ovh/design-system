@@ -1,13 +1,13 @@
 jest.mock('./core/controller'); // keep jest.mock before any
 
-import type { AnyHTMLElement } from '@stencil/core/internal';
-import type { SpecPage } from '@stencil/core/testing';
-import type { OdsQuantityAttribute } from './interfaces/attributes';
-import { OdsMockNativeMethod, odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
-import { newSpecPage } from '@stencil/core/testing';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { OdsQuantityController } from './core/controller';
-import { OsdsQuantity } from './osds-quantity';
+import type {AnyHTMLElement} from '@stencil/core/internal';
+import type {SpecPage} from '@stencil/core/testing';
+import type {OdsQuantityAttribute} from './interfaces/attributes';
+import {OdsMockNativeMethod, odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute} from '@ovhcloud/ods-common-testing';
+import {newSpecPage} from '@stencil/core/testing';
+import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
+import {OdsQuantityController} from './core/controller';
+import {OsdsQuantity} from './osds-quantity';
 
 describe('spec:osds-quantity', () => {
   let page: SpecPage;
@@ -23,10 +23,10 @@ describe('spec:osds-quantity', () => {
   /** base html template (avoid boilerplate) */
   const baseHtml = (slots: { minus?: string, unnamed?: string, plus?: string }) =>
     `
-    ${slots.minus || slots.minus === '' ? slots.minus : `<button slot="minus"></button>`}
-    ${slots.unnamed || slots.unnamed === '' ? slots.unnamed : `<input type="number">`}
-    ${slots.plus || slots.plus === '' ? slots.plus : `<button slot="plus"></button>`}
-    `
+    ${slots.minus || slots.minus === '' ? slots.minus : '<button slot="minus"></button>'}
+    ${slots.unnamed || slots.unnamed === '' ? slots.unnamed : '<input type="number">'}
+    ${slots.plus || slots.plus === '' ? slots.plus : '<button slot="plus"></button>'}
+    `;
 
   function findElements() {
     // note: assigned slot not yet available in HtmlMockedElement of stencil : https://github.com/ionic-team/stencil/issues/2830
@@ -39,11 +39,11 @@ describe('spec:osds-quantity', () => {
     jest.clearAllMocks();
   });
 
-  async function setup({ attributes = {}, html = `` }: { attributes?: Partial<OdsQuantityAttribute>, html?: string } = {}) {
+  async function setup({attributes = {}, html = ''}: { attributes?: Partial<OdsQuantityAttribute>, html?: string } = {}) {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsQuantityAttribute>(attributes, DEFAULT_ATTRIBUTE);
 
     // mock setCustomValidity method that does not exist when stencil mock HTMLInputElement
-    OdsMockNativeMethod(HTMLInputElement.prototype, "setCustomValidity", jest.fn());
+    OdsMockNativeMethod(HTMLInputElement.prototype, 'setCustomValidity', jest.fn());
 
     page = await newSpecPage({
       components: [OsdsQuantity],
@@ -57,25 +57,25 @@ describe('spec:osds-quantity', () => {
     findElements();
   }
 
-  it('should render', async () => {
-    await setup({ attributes: {}, html: baseHtml({}) });
+  it('should render', async() => {
+    await setup({attributes: {}, html: baseHtml({})});
     expect(shadowRoot).toBeTruthy();
     expect(instance).toBeTruthy();
   });
 
   describe('contents', () => {
-    it('should have a minus slot', async () => {
-      await setup({ attributes: {}, html: baseHtml({}) });
+    it('should have a minus slot', async() => {
+      await setup({attributes: {}, html: baseHtml({})});
       expect(slotMinus).toBeTruthy();
     });
 
-    it('should have a plus slot', async () => {
-      await setup({ attributes: {}, html: baseHtml({}) });
+    it('should have a plus slot', async() => {
+      await setup({attributes: {}, html: baseHtml({})});
       expect(slotPlus).toBeTruthy();
     });
 
-    it('should have an unnamed slot', async () => {
-      await setup({ attributes: {}, html: baseHtml({}) });
+    it('should have an unnamed slot', async() => {
+      await setup({attributes: {}, html: baseHtml({})});
       expect(slotUnnamed).toBeTruthy();
     });
   });
@@ -94,7 +94,7 @@ describe('spec:osds-quantity', () => {
         defaultValue: DEFAULT_ATTRIBUTE.disabled,
         newValue: false,
         value: true,
-        setup: (value) => setup({ attributes: { ['disabled']: value } }),
+        setup: (value) => setup({attributes: {['disabled']: value}}),
         ...config,
       });
     });
@@ -102,7 +102,7 @@ describe('spec:osds-quantity', () => {
 
   describe('methods', () => {
     describe('methods:beforeInit', () => {
-      it('should call controller.initInput', async () => {
+      it('should call controller.initInput', async() => {
         await setup();
         expect(controller.initInput).toHaveBeenCalledWith();
         expect(controller.initInput).toHaveBeenCalledTimes(1);
@@ -110,7 +110,7 @@ describe('spec:osds-quantity', () => {
     });
 
     describe('methods:afterInit', () => {
-      it('should call controller.processInputValueChange', async () => {
+      it('should call controller.processInputValueChange', async() => {
         await setup();
         expect(controller.processInputValueChange).toHaveBeenCalledWith();
         expect(controller.processInputValueChange).toHaveBeenCalledTimes(1);
@@ -118,7 +118,7 @@ describe('spec:osds-quantity', () => {
     });
 
     describe('methods:afterRender', () => {
-      it('should call controller.initSlots', async () => {
+      it('should call controller.initSlots', async() => {
         await setup();
         expect(controller.initSlots).toHaveBeenCalledWith();
         expect(controller.initSlots).toHaveBeenCalledTimes(1);
@@ -126,7 +126,7 @@ describe('spec:osds-quantity', () => {
     });
 
     describe('methods:onDestroy', () => {
-      it('should call controller.clearEventListeners on destroy', async () => {
+      it('should call controller.clearEventListeners on destroy', async() => {
         await setup();
         root?.remove();
         await page.waitForChanges();

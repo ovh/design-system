@@ -1,13 +1,13 @@
-import type { OdsRadioizable } from '@ovhcloud/ods-common-core';
-import type { HTMLStencilElement } from '@stencil/core/internal';
-import type { OdsRadioEvent, OdsRadioCheckedChangeEventDetail, OdsRadioCheckingChangeEventDetail } from './interfaces/events';
-import type { OdsRadioMethod } from './interfaces/methods';
-import type { OdsRadioAttribute } from './interfaces/attributes';
-import type { OsdsRadioGroup } from '../osds-radio-group/osds-radio-group';
-import { Component, Element, Event, EventEmitter, Host, Method, Prop, State, Watch, h } from '@stencil/core';
-import { OdsLogger } from '@ovhcloud/ods-common-core';
-import { OdsRadioController } from './core/controller';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import type {OdsRadioizable} from '@ovhcloud/ods-common-core';
+import type {HTMLStencilElement} from '@stencil/core/internal';
+import type {OdsRadioCheckedChangeEventDetail, OdsRadioCheckingChangeEventDetail, OdsRadioEvent} from './interfaces/events';
+import type {OdsRadioMethod} from './interfaces/methods';
+import type {OdsRadioAttribute} from './interfaces/attributes';
+import type {OsdsRadioGroup} from '../osds-radio-group/osds-radio-group';
+import {Component, Element, Event, EventEmitter, Host, Method, Prop, State, Watch, h} from '@stencil/core';
+import {OdsLogger} from '@ovhcloud/ods-common-core';
+import {OdsRadioController} from './core/controller';
+import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
 
 @Component({
   tag: 'osds-radio',
@@ -25,7 +25,7 @@ export class OsdsRadio implements OdsRadioAttribute, OdsRadioEvent, OdsRadioMeth
   @Element() el!: HTMLStencilElement;
 
   /** @see OdsRadioAttribute.ariaLabel */
-  @Prop({ reflect: true }) ariaLabel = DEFAULT_ATTRIBUTE.ariaLabel;
+  @Prop({reflect: true}) ariaLabel = DEFAULT_ATTRIBUTE.ariaLabel;
 
   /** @see OdsRadioAttribute.ariaLabelledby */
   @Prop() ariaLabelledby?= DEFAULT_ATTRIBUTE.ariaLabelledby;
@@ -40,22 +40,22 @@ export class OsdsRadio implements OdsRadioAttribute, OdsRadioEvent, OdsRadioMeth
   @Prop() afterSave?= DEFAULT_ATTRIBUTE.afterSave;
 
   /** @see OdsRadioAttribute.checked */
-  @Prop({ reflect: true, mutable: true }) checked: boolean = DEFAULT_ATTRIBUTE.checked;
+  @Prop({reflect: true, mutable: true}) checked: boolean = DEFAULT_ATTRIBUTE.checked;
 
   /** @see OdsRadioAttributes.checking */
-  @Prop({ reflect: true, mutable: true }) checking: boolean = DEFAULT_ATTRIBUTE.checking;
+  @Prop({reflect: true, mutable: true}) checking: boolean = DEFAULT_ATTRIBUTE.checking;
 
   /** @see OdsRadioAttribute.disabled */
-  @Prop({ reflect: true, mutable: true }) disabled: boolean = DEFAULT_ATTRIBUTE.disabled;
+  @Prop({reflect: true, mutable: true}) disabled: boolean = DEFAULT_ATTRIBUTE.disabled;
 
   /** @see OdsRadioAttribute.label */
   @Prop() label?: string;
 
   /** @see OdsRadioAttribute.name */
-  @Prop({ reflect: true }) name?: string = DEFAULT_ATTRIBUTE.name;
+  @Prop({reflect: true}) name?: string = DEFAULT_ATTRIBUTE.name;
 
   /** @see OdsRadioAttribute.value */
-  @Prop({ reflect: true, mutable: true }) value: string = DEFAULT_ATTRIBUTE.value;
+  @Prop({reflect: true, mutable: true}) value: string = DEFAULT_ATTRIBUTE.value;
 
   /** @see OdsRadioEvent.odsValueChange */
   @Event() odsValueChange!: EventEmitter<{ checked: boolean, value: string }>;
@@ -117,16 +117,16 @@ export class OsdsRadio implements OdsRadioAttribute, OdsRadioEvent, OdsRadioMeth
    * @see OdsRadioBehavior.emitChecked
    */
   emitChecked(): void {
-    this.logger.log(`[radio=${this.value}]`, 'emit checked', { checked: this.checked });
-    this.odsCheckedChange.emit({ checked: this.checked, value: this.value });
+    this.logger.log(`[radio=${this.value}]`, 'emit checked', {checked: this.checked});
+    this.odsCheckedChange.emit({checked: this.checked, value: this.value});
   }
 
   /**
    * @see OdsRadioBehavior.emitChecking
    */
   emitChecking(): void {
-    this.logger.log(`[radio=${this.value}]`, 'emit checking', { checking: this.checking });
-    this.odsCheckingChange.emit({ checking: this.checking, value: this.value });
+    this.logger.log(`[radio=${this.value}]`, 'emit checking', {checking: this.checking});
+    this.odsCheckingChange.emit({checking: this.checking, value: this.value});
   }
 
   /**
@@ -144,9 +144,9 @@ export class OsdsRadio implements OdsRadioAttribute, OdsRadioEvent, OdsRadioMeth
   }
 
   changeValue(value: string): void {
-    this.logger.log(`[radio=${this.value}]`, 'value changed. emit new value', { value });
+    this.logger.log(`[radio=${this.value}]`, 'value changed. emit new value', {value});
     this.value = value;
-    this.odsValueChange.emit({ value, checked: this.checked });
+    this.odsValueChange.emit({value, checked: this.checked});
   }
 
   /**
@@ -210,7 +210,7 @@ export class OsdsRadio implements OdsRadioAttribute, OdsRadioEvent, OdsRadioMeth
   }
 
   componentDidLoad(): void {
-    (async () => {
+    (async() => {
       this.afterInit();
     })();
   }
@@ -227,7 +227,7 @@ export class OsdsRadio implements OdsRadioAttribute, OdsRadioEvent, OdsRadioMeth
       inputId,
       name,
       label,
-      ariaLabelledby
+      ariaLabelledby,
     } = this;
 
     return (
@@ -249,7 +249,7 @@ export class OsdsRadio implements OdsRadioAttribute, OdsRadioEvent, OdsRadioMeth
             id: inputId,
             name,
             tabindex: '-1',
-            type: 'radio'
+            type: 'radio',
           }}
           />
           <slot></slot>

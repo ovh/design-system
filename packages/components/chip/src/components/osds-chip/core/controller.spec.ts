@@ -1,16 +1,16 @@
-import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
-import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
-import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
-import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import { ODS_CHIP_SIZE } from '../constants/chip-size';
-import { ODS_CHIP_VARIANT } from '../constants/chip-variant';
-import { OdsChipController } from './controller';
-import { OsdsChip } from '../osds-chip';
+import type {OdsLoggerSpyReferences} from '@ovhcloud/ods-common-testing';
+import {Ods, OdsLogger} from '@ovhcloud/ods-common-core';
+import {OdsClearLoggerSpy, OdsInitializeLoggerSpy} from '@ovhcloud/ods-common-testing';
+import {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
+import {ODS_CHIP_SIZE} from '../constants/chip-size';
+import {ODS_CHIP_VARIANT} from '../constants/chip-variant';
+import {OdsChipController} from './controller';
+import {OsdsChip} from '../osds-chip';
 
 class OdsChipMock extends OsdsChip {
   constructor(attribute: Partial<OsdsChip>) {
     super();
-    Object.assign(this, attribute)
+    Object.assign(this, attribute);
   }
 }
 
@@ -30,7 +30,7 @@ describe('spec:ods-chip-controller', () => {
     const loggerMocked = new OdsLogger('myLoggerMocked');
     loggerSpyReferences = OdsInitializeLoggerSpy({
       loggerMocked: loggerMocked as never,
-      spiedClass: OdsChipController
+      spiedClass: OdsChipController,
     });
   });
 
@@ -44,9 +44,9 @@ describe('spec:ods-chip-controller', () => {
       setup({
         color: ODS_THEME_COLOR_INTENT.default,
         size: ODS_CHIP_SIZE.md,
-        variant: ODS_CHIP_VARIANT.flat
+        variant: ODS_CHIP_VARIANT.flat,
       });
-    })
+    });
     describe('methods:validateAttributes', () => {
       it('should not call console.warn', () => {
         controller.validateAttributes();

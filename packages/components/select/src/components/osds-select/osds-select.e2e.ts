@@ -1,25 +1,25 @@
-import type { E2EElement, E2EPage } from '@stencil/core/testing';
-import type { OdsSelectAttribute } from './interfaces/attributes';
-import type { OdsSelectValueChangeEventDetail } from './interfaces/events';
-import { newE2EPage } from '@stencil/core/testing';
-import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import { ODS_SELECT_SIZE } from './constants/select-size';
+import type {E2EElement, E2EPage} from '@stencil/core/testing';
+import type {OdsSelectAttribute} from './interfaces/attributes';
+import type {OdsSelectValueChangeEventDetail} from './interfaces/events';
+import {newE2EPage} from '@stencil/core/testing';
+import {odsComponentAttributes2StringAttributes, odsStringAttributes2Str} from '@ovhcloud/ods-common-testing';
+import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
+import {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
+import {ODS_SELECT_SIZE} from './constants/select-size';
 
 describe('e2e:osds-select', () => {
-  const baseAttribute = { ariaLabel: null, ariaLabelledby: '', color: ODS_THEME_COLOR_INTENT.primary, defaultValue: '', disabled: false, inline: false, required: false, size: ODS_SELECT_SIZE.md, value: '' };
+  const baseAttribute = {ariaLabel: null, ariaLabelledby: '', color: ODS_THEME_COLOR_INTENT.primary, defaultValue: '', disabled: false, inline: false, required: false, size: ODS_SELECT_SIZE.md, value: ''};
   let page: E2EPage;
   let el: E2EElement;
   let divElement: E2EElement;
   let optionElement: E2EElement;
   let optionDivElement: E2EElement;
 
-  async function setup({ attributes = {}, html,  onPage }: { attributes?: Partial<OdsSelectAttribute>, html?: string, onPage?: ({ page }: { page: E2EPage }) => void } = {}) {
-    const stringAttributes = odsComponentAttributes2StringAttributes<OdsSelectAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
+  async function setup({attributes = {}, html, onPage}: { attributes?: Partial<OdsSelectAttribute>, html?: string, onPage?: ({page}: { page: E2EPage }) => void } = {}) {
+    const stringAttributes = odsComponentAttributes2StringAttributes<OdsSelectAttribute>({...baseAttribute, ...attributes}, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
-    onPage && onPage({ page });
+    onPage && onPage({page});
 
     await page.setContent(`
       <osds-select ${odsStringAttributes2Str(stringAttributes)}>
@@ -41,11 +41,11 @@ describe('e2e:osds-select', () => {
   }
 
   describe('defaults', () => {
-    beforeEach(async () => {
+    beforeEach(async() => {
       await setup();
     });
 
-    it('should render', async () => {
+    it('should render', async() => {
       expect(el).not.toBeNull();
       expect(el).toHaveClass('hydrated');
 
@@ -53,13 +53,13 @@ describe('e2e:osds-select', () => {
       expect(optionElement).toHaveClass('hydrated');
     });
 
-    it('should have a div element', async () => {
+    it('should have a div element', async() => {
       expect(divElement).not.toBeNull();
       expect(optionDivElement).not.toBeNull();
     });
 
-    it('should display selectedLabel slot', async () => {
-      await setup({ attributes: { }, html: `<span slot="selectedLabel"></span>` });
+    it('should display selectedLabel slot', async() => {
+      await setup({attributes: { }, html: '<span slot="selectedLabel"></span>'});
 
       await page.waitForChanges();
 
@@ -68,8 +68,8 @@ describe('e2e:osds-select', () => {
       expect(selectedLabel).toBeDefined();
     });
 
-    it('should display placeholder slot without value', async () => {
-      await setup({ attributes: { }, html: `<span slot="placeholder">Placeholder</span>` });
+    it('should display placeholder slot without value', async() => {
+      await setup({attributes: { }, html: '<span slot="placeholder">Placeholder</span>'});
 
       await page.waitForChanges();
 
@@ -79,8 +79,8 @@ describe('e2e:osds-select', () => {
       expect(selectedLabel.innerHTML).toBe('Placeholder');
     });
 
-    it('should not display placeholder slot because of value', async () => {
-      await setup({ attributes: { value: '42' }, html: `<span slot="placeholder">Placeholder</span>` });
+    it('should not display placeholder slot because of value', async() => {
+      await setup({attributes: {value: '42'}, html: '<span slot="placeholder">Placeholder</span>'});
 
       await page.waitForChanges();
 
@@ -89,13 +89,13 @@ describe('e2e:osds-select', () => {
       expect(selectedLabel).toBe(null);
     });
 
-    it('should change the selected value text', async () => {
-      await setup({ attributes: { value: '42' } });
+    it('should change the selected value text', async() => {
+      await setup({attributes: {value: '42'}});
       await page.waitForChanges();
 
       const options = await page.findAll('osds-select > osds-select-option');
       options.forEach((option) => {
-        option.innerHTML = `NewValue${option.getAttribute('value')}`
+        option.innerHTML = `NewValue${option.getAttribute('value')}`;
       });
       await page.waitForChanges();
 
@@ -104,12 +104,12 @@ describe('e2e:osds-select', () => {
     });
   });
 
-    // TODO getValidity
-    // TODO getSelection
+  // TODO getValidity
+  // TODO getSelection
 
   describe('method:setInputTabindex', () => {
-    it('should set inputTabindex to -1', async () => {
-      await setup({ attributes: { } });
+    it('should set inputTabindex to -1', async() => {
+      await setup({attributes: { }});
       await el.callMethod('setInputTabindex', '-1');
       await page.waitForChanges();
       const value = el.getAttribute('tabindex');
@@ -118,8 +118,8 @@ describe('e2e:osds-select', () => {
   });
 
   describe('method:clear', () => {
-    it('should clear the value', async () => {
-      await setup({ attributes: { value: 3 } });
+    it('should clear the value', async() => {
+      await setup({attributes: {value: 3}});
       await el.callMethod('clear');
       await page.waitForChanges();
       const value = await el.getProperty('value');
@@ -128,8 +128,8 @@ describe('e2e:osds-select', () => {
   });
 
   describe('method:reset', () => {
-    it('should not reset the value because defaultValue is missing', async () => {
-      await setup({ attributes: { value: 3, defaultValue: undefined } });
+    it('should not reset the value because defaultValue is missing', async() => {
+      await setup({attributes: {value: 3, defaultValue: undefined}});
       await el.callMethod('reset');
       await page.waitForChanges();
       const value = await el.getProperty('value');
@@ -137,9 +137,9 @@ describe('e2e:osds-select', () => {
       expect(value).toBe(`${DEFAULT_ATTRIBUTE.defaultValue}`);
     });
 
-    it('should set the value to defaultValue', async () => {
+    it('should set the value to defaultValue', async() => {
       const defaultValue = 6;
-      await setup({ attributes: { value: 3, defaultValue } });
+      await setup({attributes: {value: 3, defaultValue}});
       await el.callMethod('reset');
       await page.waitForChanges();
       const value = await el.getProperty('value');
@@ -147,9 +147,9 @@ describe('e2e:osds-select', () => {
     });
   });
 
-// it should change the selection and value by clicking on a select-option
-// it should change the selection if the value property changed
-// it should remove the selection if the value property changed for an nonexistent option's value
+  // it should change the selection and value by clicking on a select-option
+  // it should change the selection if the value property changed
+  // it should remove the selection if the value property changed for an nonexistent option's value
 
   describe('events', () => {
     describe('odsValueChange', () => {
@@ -193,7 +193,7 @@ describe('e2e:osds-select', () => {
         expect(odsValueChange).toHaveReceivedEventDetail(expected);
         expect(odsValueChange).toHaveReceivedEventTimes(1);
       });*/
-/*
+      /*
       it('should emit when user changes the value', async () => {
         const oldValue = '4';
         const newValue = '42';
@@ -223,7 +223,7 @@ console.log('before clicks');
         expect(odsValueChange).toHaveReceivedEventTimes(1);
       });
 */
-      it('should emit when component value property change', async () => {
+      it('should emit when component value property change', async() => {
         const newValue = '42';
         await setup({});
         const odsValueChange = await el.spyOnEvent('odsValueChange');
@@ -245,7 +245,7 @@ console.log('before clicks');
   });
 
   describe('checkForClickOutside', () => {
-    let selectElement: E2EElement
+    let selectElement: E2EElement;
 
     async function isSelectOpen(): Promise<boolean> {
       return page.evaluate(() => {
@@ -276,10 +276,10 @@ console.log('before clicks');
       `);
       await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
 
-      selectElement = await page.find('osds-content-addon osds-select')
+      selectElement = await page.find('osds-content-addon osds-select');
     }
 
-    it('should close the tooltip on outside click', async () => {
+    it('should close the tooltip on outside click', async() => {
       await setupForClickOutside();
       const outsideElement = await page.find('button');
 
@@ -290,7 +290,7 @@ console.log('before clicks');
       expect(await isSelectOpen()).toBe(false);
     });
 
-    it('should close the tooltip on outside click on same parent DOM', async () => {
+    it('should close the tooltip on outside click on same parent DOM', async() => {
       await setupForClickOutside();
       const outsideElement = await page.find('osds-content-addon p');
 
@@ -303,7 +303,7 @@ console.log('before clicks');
   });
 
   describe('method:handlerKeyPress', () => {
-    it('should open select when Enter', async () => {
+    it('should open select when Enter', async() => {
       await setup({ });
       await page.waitForChanges();
       await el.focus();
@@ -311,7 +311,7 @@ console.log('before clicks');
       expect(await el.getProperty('opened')).toBe(true);
     });
 
-    it('should close select when Escape', async () => {
+    it('should close select when Escape', async() => {
       await setup({ });
       await page.waitForChanges();
       await el.focus();
@@ -320,7 +320,7 @@ console.log('before clicks');
       expect(await el.getProperty('opened')).toBe(false);
     });
 
-    it('should close select after focus was on option', async () => {
+    it('should close select after focus was on option', async() => {
       await setup({ });
       await page.waitForChanges();
       await el.focus();
@@ -331,7 +331,7 @@ console.log('before clicks');
       expect(await el.getProperty('opened')).toBe(false);
     });
 
-    it('should close select after focus was on option and has an selected option', async () => {
+    it('should close select after focus was on option and has an selected option', async() => {
       await setup({ });
       await page.waitForChanges();
       await el.focus();
@@ -345,7 +345,7 @@ console.log('before clicks');
       expect(await el.getProperty('opened')).toBe(false);
     });
 
-    it('should open select when Enter & focus on first option', async () => {
+    it('should open select when Enter & focus on first option', async() => {
       await setup({ });
       await page.waitForChanges();
       await el.focus();
@@ -354,7 +354,7 @@ console.log('before clicks');
       expect(await optionElement.getProperty('selected')).toBe(true);
     });
 
-    it('should open select when Enter & focus on first option with Tab', async () => {
+    it('should open select when Enter & focus on first option with Tab', async() => {
       await setup({ });
       await page.waitForChanges();
       await el.focus();
@@ -363,17 +363,17 @@ console.log('before clicks');
       expect(await optionElement.getProperty('selected')).toBe(true);
     });
 
-    it('should open select when Enter & select option', async () => {
+    it('should open select when Enter & select option', async() => {
       await setup({ });
       await page.waitForChanges();
       await el.focus();
       await page.keyboard.press('Enter');
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('Enter');
-      expect(await el.getProperty('value')).toBe("42");
+      expect(await el.getProperty('value')).toBe('42');
     });
 
-    it('should open select when Enter & select option already selected', async () => {
+    it('should open select when Enter & select option already selected', async() => {
       await setup({ });
       await page.waitForChanges();
       await el.focus();
@@ -381,16 +381,16 @@ console.log('before clicks');
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('Enter');
       expect(await el.getProperty('opened')).toBe(false);
-      expect(await el.getProperty('value')).toBe("42");
+      expect(await el.getProperty('value')).toBe('42');
       await page.keyboard.press('Enter');
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('ArrowUp');
       await page.keyboard.press('Enter');
       expect(await el.getProperty('opened')).toBe(false);
-      expect(await el.getProperty('value')).toBe("42");
+      expect(await el.getProperty('value')).toBe('42');
     });
 
-    it('should open select when Enter & focus on first option with arrow up', async () => {
+    it('should open select when Enter & focus on first option with arrow up', async() => {
       await setup({ });
       await page.waitForChanges();
       await el.focus();
@@ -399,10 +399,10 @@ console.log('before clicks');
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('ArrowUp');
       await page.keyboard.press('Enter');
-      expect(await el.getProperty('value')).toBe("42");
+      expect(await el.getProperty('value')).toBe('42');
     });
 
-    it('should open select when Enter & focus on first option with shift + Tab', async () => {
+    it('should open select when Enter & focus on first option with shift + Tab', async() => {
       await setup({ });
       await page.waitForChanges();
       await el.focus();
@@ -412,7 +412,7 @@ console.log('before clicks');
       await page.keyboard.down('Shift');
       await page.keyboard.press('Tab');
       await page.keyboard.press('Enter');
-      expect(await el.getProperty('value')).toBe("42");
+      expect(await el.getProperty('value')).toBe('42');
     });
   });
 });

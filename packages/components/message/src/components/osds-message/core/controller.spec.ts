@@ -1,17 +1,18 @@
-import type { EventEmitter } from '@stencil/core';
-import { OdsClearLoggerSpy, OdsInitializeLoggerSpy, OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
-import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
-import { OsdsMessage } from '../osds-message';
-import { OdsMessageController } from './controller';
-import { ODS_MESSAGE_TYPE } from '../constants/message-type';
-import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import { DEFAULT_ATTRIBUTE } from '../constants/default-attributes';
+import type {EventEmitter} from '@stencil/core';
+import {OdsClearLoggerSpy, OdsInitializeLoggerSpy, OdsLoggerSpyReferences} from '@ovhcloud/ods-common-testing';
+import {Ods, OdsLogger} from '@ovhcloud/ods-common-core';
+import {OsdsMessage} from '../osds-message';
+import {OdsMessageController} from './controller';
+import {ODS_MESSAGE_TYPE} from '../constants/message-type';
+import {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
+import {DEFAULT_ATTRIBUTE} from '../constants/default-attributes';
 
 class OdsMessageMock extends OsdsMessage {
   constructor(attribute: Partial<OsdsMessage>) {
     super();
-    Object.assign(this, attribute)
+    Object.assign(this, attribute);
   }
+
   controller: OdsMessageController = jest.fn() as unknown as OdsMessageController;
   odsRemoveClick!: EventEmitter<void>;
   removeClicked = jest.fn();
@@ -35,7 +36,7 @@ describe('spec:ods-message-controller', () => {
     const loggerMocked = new OdsLogger('myLoggerMocked');
     loggerSpyReferences = OdsInitializeLoggerSpy({
       loggerMocked: loggerMocked as never,
-      spiedClass: OdsMessageController
+      spiedClass: OdsMessageController,
     });
   });
 
@@ -59,20 +60,20 @@ describe('spec:ods-message-controller', () => {
 
         controller.validateColor('wrongColor' as ODS_THEME_COLOR_INTENT);
 
-        const expected = "The color attribute must have a value from [accent, default, error, info, primary, promotion, success, text, warning]";
+        const expected = 'The color attribute must have a value from [accent, default, error, info, primary, promotion, success, text, warning]';
         expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledWith(expected);
       });
     });
 
     describe('methods:setColorForType', () => {
-      it('should change default color', async () => {
-        setup({ type: ODS_MESSAGE_TYPE.info, color: ODS_THEME_COLOR_INTENT.default });
+      it('should change default color', async() => {
+        setup({type: ODS_MESSAGE_TYPE.info, color: ODS_THEME_COLOR_INTENT.default});
         controller.setColorForType(ODS_MESSAGE_TYPE.success);
         expect(component.color).toBe(ODS_THEME_COLOR_INTENT.success);
       });
 
       it('should not change other color', () => {
-        setup({ type: ODS_MESSAGE_TYPE.success, color: ODS_THEME_COLOR_INTENT.success });
+        setup({type: ODS_MESSAGE_TYPE.success, color: ODS_THEME_COLOR_INTENT.success});
         controller.setColorForType(ODS_MESSAGE_TYPE.error);
         expect(component.color).toBe(ODS_THEME_COLOR_INTENT.success);
       });
@@ -84,7 +85,7 @@ describe('spec:ods-message-controller', () => {
         spyOnRemoveClicked = jest.spyOn(component, 'removeClicked');
         controller.onRemoveClicked();
         expect(spyOnRemoveClicked).toHaveBeenCalledWith();
-      })
+      });
     });
   });
 });

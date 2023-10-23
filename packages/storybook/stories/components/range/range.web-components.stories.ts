@@ -1,15 +1,15 @@
-import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
+import {ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS} from '@ovhcloud/ods-common-theming';
 import {
   extractArgTypes,
   extractStoryParams,
   getTagAttributes,
 } from '../../../core/componentHTMLUtils';
-import { RangePlay } from './range.web-components.validation.stories';
+import {RangePlay} from './range.web-components.validation.stories';
 import changelog from '@ovhcloud/ods-components/range/CHANGELOG.md';
-import { defineCustomElements } from '@ovhcloud/ods-components/range/loader';
-import { html } from 'lit-html';
+import {defineCustomElements} from '@ovhcloud/ods-components/range/loader';
+import {html} from 'lit-html';
 import page from './range.web-component.stories.page.mdx';
-import { unsafeHTML } from 'lit-html/directives/unsafe-html';
+import {unsafeHTML} from 'lit-html/directives/unsafe-html';
 
 defineCustomElements();
 
@@ -19,7 +19,7 @@ const storyParams = {
     category: 'General',
     defaultValue: ODS_THEME_COLOR_INTENT.default,
     options: ODS_THEME_COLOR_INTENTS,
-    control: { type: 'select' },
+    control: {type: 'select'},
   },
   min: {
     category: 'General',
@@ -39,24 +39,24 @@ const storyParams = {
   },
   startBound: {
     category: 'Slot',
-    defaultValue: ''
+    defaultValue: '',
   },
   endBound: {
     category: 'Slot',
-    defaultValue: ''
+    defaultValue: '',
   },
   disabled: {
     category: 'Misc',
-    defaultValue: false
+    defaultValue: false,
   },
   inline: {
     category: 'Misc',
-    defaultValue: false
+    defaultValue: false,
   },
   forbiddenValues: {
     category: 'Misc',
     defaultValue: [],
-    control: { type: 'array' },
+    control: {type: 'array'},
   },
 };
 
@@ -67,8 +67,8 @@ export default {
     notes: {
       changelog,
     },
-    docs: { page },
-  }
+    docs: {page},
+  },
 };
 
 // A range example
@@ -84,7 +84,7 @@ const TemplateDefault = (args: any) => {
       </osds-range>
     </div>
   `;
-}
+};
 export const Default = TemplateDefault.bind({});
 Default.args = {
   ...extractStoryParams(storyParams),
@@ -93,7 +93,7 @@ Default.argTypes = extractArgTypes(storyParams);
 
 // dual range
 export const Dual = TemplateDefault.bind({});
-const dualParams = {...storyParams, value: { category: 'General', defaultValue: [20, 50], control: { type: 'array' }}};
+const dualParams = {...storyParams, value: {category: 'General', defaultValue: [20, 50], control: {type: 'array'}}};
 Dual.args = {
   ...extractStoryParams(dualParams),
 };

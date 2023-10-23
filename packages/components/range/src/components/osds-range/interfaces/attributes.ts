@@ -1,6 +1,6 @@
-import type { OdsValidityState, OdsErrorStateControl, OdsFormControl, OdsFormForbiddenValues } from '@ovhcloud/ods-common-core';
-import type { OdsRangeValue } from './value'
-import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+import type {OdsErrorStateControl, OdsFormControl, OdsFormForbiddenValues, OdsValidityState} from '@ovhcloud/ods-common-core';
+import type {OdsRangeValue} from './value';
+import type {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
 
 interface OdsRangeAttribute {
   /**
@@ -54,4 +54,4 @@ interface OdsRangeAttribute {
   formControl?: OdsFormControl<OdsValidityState>;
 }
 
-export { OdsRangeAttribute }
+export {OdsRangeAttribute};

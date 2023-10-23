@@ -1,12 +1,12 @@
 jest.mock('./core/controller'); // keep jest.mock before any
 
-import type { SpecPage } from '@stencil/core/testing';
-import type { OdsCollapsibleAttribute } from './interfaces/attributes';
-import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
-import { newSpecPage } from '@stencil/core/testing';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { OdsCollapsibleController } from './core/controller';
-import { OsdsCollapsible } from './osds-collapsible';
+import type {SpecPage} from '@stencil/core/testing';
+import type {OdsCollapsibleAttribute} from './interfaces/attributes';
+import {odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute} from '@ovhcloud/ods-common-testing';
+import {newSpecPage} from '@stencil/core/testing';
+import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
+import {OdsCollapsibleController} from './core/controller';
+import {OsdsCollapsible} from './osds-collapsible';
 
 describe('spec:osds-collapsible', () => {
   let page: SpecPage;
@@ -19,7 +19,7 @@ describe('spec:osds-collapsible', () => {
     jest.clearAllMocks();
   });
 
-  async function setup({ attributes = {} }: { attributes?: Partial<OdsCollapsibleAttribute> } = {}) {
+  async function setup({attributes = {}}: { attributes?: Partial<OdsCollapsibleAttribute> } = {}) {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsCollapsibleAttribute>(attributes, DEFAULT_ATTRIBUTE);
 
     page = await newSpecPage({
@@ -33,15 +33,15 @@ describe('spec:osds-collapsible', () => {
     mainSlot = page.root?.shadowRoot?.querySelector('slot:not([name])');
   }
 
-  it('should render', async () => {
+  it('should render', async() => {
     await setup({});
     expect(root?.shadowRoot).toBeTruthy();
     expect(instance).toBeTruthy();
   });
 
   describe('contents', () => {
-    it('should have a main slot', async () => {
-      await setup({ attributes: {} });
+    it('should have a main slot', async() => {
+      await setup({attributes: {}});
       expect(mainSlot).toBeTruthy();
     });
   });
@@ -60,20 +60,20 @@ describe('spec:osds-collapsible', () => {
         defaultValue: DEFAULT_ATTRIBUTE.opened,
         newValue: false,
         value: true,
-        setup: (value) => setup({ attributes: { ['opened']: value } }),
+        setup: (value) => setup({attributes: {['opened']: value}}),
         ...config,
       });
     });
   });
 
   describe('controller', () => {
-    it('should not call controller.onToggle init component', async () => {
-      await setup({ attributes: { opened: false } });
+    it('should not call controller.onToggle init component', async() => {
+      await setup({attributes: {opened: false}});
       expect(controller.onToggle).not.toHaveBeenCalled();
     });
 
-    it('should call controller.onToggle on open changes', async () => {
-      await setup({ attributes: { opened: false } });
+    it('should call controller.onToggle on open changes', async() => {
+      await setup({attributes: {opened: false}});
       instance.opened = true;
       expect(controller.onToggle).toHaveBeenCalledWith();
       expect(controller.onToggle).toHaveBeenCalledTimes(1);

@@ -1,5 +1,5 @@
-import type { E2EElement, E2EPage } from '@stencil/core/testing';
-import { newE2EPage } from '@stencil/core/testing';
+import type {E2EElement, E2EPage} from '@stencil/core/testing';
+import {newE2EPage} from '@stencil/core/testing';
 
 describe('e2e:osds-popover', () => {
   let page: E2EPage;
@@ -40,19 +40,19 @@ describe('e2e:osds-popover', () => {
   ];
 
   describe('screenshots', () => {
-    screenshotActions.forEach(({ actionDescription, action }) => {
-      it(actionDescription, async () => {
+    screenshotActions.forEach(({actionDescription, action}) => {
+      it(actionDescription, async() => {
         await setup();
         action();
         await page.waitForChanges();
 
         await page.evaluate(() => {
           const element = document.querySelector('osds-popover') as HTMLElement;
-          return { width: element.clientWidth, height: element.clientHeight };
+          return {width: element.clientWidth, height: element.clientHeight};
         });
-        await page.setViewport({ width: 600, height:600 });
-        const results = await page.compareScreenshot('menu', { fullPage: false, omitBackground: true });
-        expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
+        await page.setViewport({width: 600, height:600});
+        const results = await page.compareScreenshot('menu', {fullPage: false, omitBackground: true});
+        expect(results).toMatchScreenshot({allowableMismatchedRatio: 0});
       });
     });
   });

@@ -1,15 +1,15 @@
-import type { E2EPage } from '@stencil/core/testing';
-import type { OdsPaginationAttribute } from './interfaces/attributes';
-import { newE2EPage } from '@stencil/core/testing';
-import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import type {E2EPage} from '@stencil/core/testing';
+import type {OdsPaginationAttribute} from './interfaces/attributes';
+import {newE2EPage} from '@stencil/core/testing';
+import {odsComponentAttributes2StringAttributes, odsStringAttributes2Str} from '@ovhcloud/ods-common-testing';
+import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
 
 describe('e2e:osds-pagination', () => {
-  const baseAttribute = { current: 0, disabled: false, labelTooltipNext: '', labelTooltipPrevious: '', totalPages: 0 };
+  const baseAttribute = {current: 0, disabled: false, labelTooltipNext: '', labelTooltipPrevious: '', totalPages: 0};
   let page: E2EPage;
 
-  async function setup({ attributes = { totalPages: 21, current: 5 }, html = `` }: { attributes?: Partial<OdsPaginationAttribute>; html?: string } = {}) {
-    const stringAttributes = odsComponentAttributes2StringAttributes<OdsPaginationAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
+  async function setup({attributes = {totalPages: 21, current: 5}, html = ''}: { attributes?: Partial<OdsPaginationAttribute>; html?: string } = {}) {
+    const stringAttributes = odsComponentAttributes2StringAttributes<OdsPaginationAttribute>({...baseAttribute, ...attributes}, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
     await page.setContent(`
@@ -28,8 +28,8 @@ describe('e2e:osds-pagination', () => {
           action: () => {},
         },
       ];
-      screenshotActions.forEach(({ actionDescription, action }) => {
-        it(actionDescription, async () => {
+      screenshotActions.forEach(({actionDescription, action}) => {
+        it(actionDescription, async() => {
           await setup({
             attributes: {
               current,
@@ -41,11 +41,11 @@ describe('e2e:osds-pagination', () => {
 
           await page.evaluate(() => {
             const element = document.querySelector('osds-pagination') as HTMLElement;
-            return { width: element.clientWidth, height: element.clientHeight };
+            return {width: element.clientWidth, height: element.clientHeight};
           });
-          await page.setViewport({ width: 600, height: 600 });
-          const results = await page.compareScreenshot('pagination', { fullPage: false, omitBackground: true });
-          expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
+          await page.setViewport({width: 600, height: 600});
+          const results = await page.compareScreenshot('pagination', {fullPage: false, omitBackground: true});
+          expect(results).toMatchScreenshot({allowableMismatchedRatio: 0});
         });
       });
     }
@@ -59,8 +59,8 @@ describe('e2e:osds-pagination', () => {
           action: () => {},
         },
       ];
-      screenshotActions.forEach(({ actionDescription, action }) => {
-        it(actionDescription, async () => {
+      screenshotActions.forEach(({actionDescription, action}) => {
+        it(actionDescription, async() => {
           await setup({
             attributes: {
               current,
@@ -73,29 +73,29 @@ describe('e2e:osds-pagination', () => {
 
           await page.evaluate(() => {
             const element = document.querySelector('osds-pagination') as HTMLElement;
-            return { width: element.clientWidth, height: element.clientHeight };
+            return {width: element.clientWidth, height: element.clientHeight};
           });
-          await page.setViewport({ width: 600, height: 600 });
-          const results = await page.compareScreenshot('pagination', { fullPage: false, omitBackground: true });
-          expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
+          await page.setViewport({width: 600, height: 600});
+          const results = await page.compareScreenshot('pagination', {fullPage: false, omitBackground: true});
+          expect(results).toMatchScreenshot({allowableMismatchedRatio: 0});
         });
       });
     }
   });
 
   describe('screenshots with total items', () => {
-    it('should not display the per-page select if less than 10 items', async () => {
-      await setup({ attributes: { current: 1, totalItems: 5 } });
+    it('should not display the per-page select if less than 10 items', async() => {
+      await setup({attributes: {current: 1, totalItems: 5}});
 
-      const results = await page.compareScreenshot('pagination', { fullPage: false, omitBackground: true });
-      expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
+      const results = await page.compareScreenshot('pagination', {fullPage: false, omitBackground: true});
+      expect(results).toMatchScreenshot({allowableMismatchedRatio: 0});
     });
 
-    it('should render the per-page select if more than 10 items', async () => {
-      await setup({ attributes: { current: 1, totalItems: 25 } });
+    it('should render the per-page select if more than 10 items', async() => {
+      await setup({attributes: {current: 1, totalItems: 25}});
 
-      const results = await page.compareScreenshot('pagination', { fullPage: false, omitBackground: true });
-      expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
+      const results = await page.compareScreenshot('pagination', {fullPage: false, omitBackground: true});
+      expect(results).toMatchScreenshot({allowableMismatchedRatio: 0});
     });
   });
 });

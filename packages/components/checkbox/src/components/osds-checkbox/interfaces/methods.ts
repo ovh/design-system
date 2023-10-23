@@ -19,4 +19,4 @@ interface OdsCheckboxMethod {
 
 export {
   OdsCheckboxMethod,
-}
+};

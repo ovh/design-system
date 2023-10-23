@@ -1,4 +1,4 @@
-import { OdsUnitTestAttributeType } from './ods-unit-test-attribute-type';
+import {OdsUnitTestAttributeType} from './ods-unit-test-attribute-type';
 
 /**
  * @example

@@ -1,6 +1,6 @@
-import type { E2EPage } from '@stencil/core/testing';
-import type { odsPickMethods } from '@ovhcloud/ods-common-core';
-import type { SerializableOrJSHandle } from 'puppeteer';
+import type {E2EPage} from '@stencil/core/testing';
+import type {odsPickMethods} from '@ovhcloud/ods-common-core';
+import type {SerializableOrJSHandle} from 'puppeteer';
 
 /**
  * set a property on a component that is a function.
@@ -26,18 +26,18 @@ async function osdsSetPropertyFunction<Attributes,
     return fct;
   }
 
-  await page.exposeFunction("cbk", cbk);
-  const props = { property };
+  await page.exposeFunction('cbk', cbk);
+  const props = {property};
   await page.$eval(selector,
     (elm: Element, properties) => {
       const property = (properties as typeof props).property;
       const el = elm as unknown as K;
       el[ property ] = cbk();
     },
-    props as SerializableOrJSHandle
+    props as SerializableOrJSHandle,
   );
 }
 
 export {
-    osdsSetPropertyFunction,
+  osdsSetPropertyFunction,
 };

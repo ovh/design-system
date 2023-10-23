@@ -10,7 +10,7 @@ export function OdsMockPropertyDescriptor(element: Element, property: string, ge
   const wantedDescriptor: PropertyDescriptor = {
     get,
     enumerable: true,
-    configurable: true
+    configurable: true,
   };
 
   const descriptor = Object.getOwnPropertyDescriptor(element, property);

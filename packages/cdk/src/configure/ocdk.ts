@@ -1,8 +1,8 @@
-import { OcdkLogger } from '../logger/ocdk-logger';
-import { VERSION } from '../version';
-import { OcdkInitializedEventDetail } from './ocdk-initialized-event-detail';
-import { OcdkConfig } from './ocdk-config';
-import { ocdkDefaultConfig } from './ocdk-default-config';
+import {OcdkLogger} from '../logger/ocdk-logger';
+import {VERSION} from '../version';
+import {OcdkInitializedEventDetail} from './ocdk-initialized-event-detail';
+import {OcdkConfig} from './ocdk-config';
+import {ocdkDefaultConfig} from './ocdk-default-config';
 
 /**
  * Main class that controls OCDK :
@@ -77,14 +77,14 @@ export class Ocdk {
     this.config = config;
     this.genericLogger.info('Hi! You are using OVHCloud Component Development Kit, feel free to check out https://go/ocdkdoc/', {
       id: Ocdk._instanceId++,
-      version: this.version
+      version: this.version,
     });
 
-    const ocdkEvent = new CustomEvent<OcdkInitializedEventDetail>("ocdkInitialized", {
+    const ocdkEvent = new CustomEvent<OcdkInitializedEventDetail>('ocdkInitialized', {
       detail: {
         version: VERSION,
         instance: this,
-        config
+        config,
       },
       bubbles: true,
       cancelable: true,

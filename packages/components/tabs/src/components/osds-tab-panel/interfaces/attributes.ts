@@ -10,5 +10,5 @@ interface OdsTabPanelAttribute {
 }
 
 export {
-    OdsTabPanelAttribute,
+  OdsTabPanelAttribute,
 };

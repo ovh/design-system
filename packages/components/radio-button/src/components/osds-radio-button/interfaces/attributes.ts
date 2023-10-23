@@ -1,5 +1,5 @@
-import type { ODS_RADIO_BUTTON_SIZE } from '../constants/radio-button-size';
-import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+import type {ODS_RADIO_BUTTON_SIZE} from '../constants/radio-button-size';
+import type {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
 
 interface OdsRadioButtonAttribute {
   /**

@@ -1,4 +1,4 @@
-export const translations: { [ key: string ]: string } = {
+export const translations: Record<string, string> = {
   // translation used internally by the ods cart component
   'cart.total.info': '{{products}} produits',
   'cart.price': '€ {{price}}',
@@ -11,5 +11,5 @@ export const translations: { [ key: string ]: string } = {
   'my-cart.footer.conditions': '*1: Only for Enterprise',
 
   // other translations for your own
-  'products.title.item1.option1': 'Storage option {{gb}} *1'
-}
+  'products.title.item1.option1': 'Storage option {{gb}} *1',
+};

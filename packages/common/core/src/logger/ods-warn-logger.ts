@@ -1,5 +1,5 @@
-import { OdsLogger } from './ods-logger';
-import { odsIsTermInEnum } from '../types/guard/ods-is-term-in-enum';
+import {OdsLogger} from './ods-logger';
+import {odsIsTermInEnum} from '../types/guard/ods-is-term-in-enum';
 
 interface OdsWarnComponent<T, Component> {
   logger: OdsLogger;
@@ -27,7 +27,7 @@ function OdsWarnComponentEnumAttribute<T, Component>(params: OdsWarnEnumComponen
 function OdsWarnComponentRangeAttribute<Component>(params: OdsWarnRangeComponent<Component>): void {
   if (params.attribute && (params.attribute > params.max || params.attribute < params.min)) {
     params.logger.warn(
-      `The value attribute must be in bounds of [${[params.min, params.max].join(', ')}]`
+      `The value attribute must be in bounds of [${[params.min, params.max].join(', ')}]`,
     );
   }
 }
@@ -41,4 +41,3 @@ export function OdsWarnComponentAttribute<T, Component>(params: OdsWarnType<T, C
   }
   return OdsWarnComponentEnumAttribute<T, Component>(<OdsWarnEnumComponent<T, Component>>params);
 }
- 

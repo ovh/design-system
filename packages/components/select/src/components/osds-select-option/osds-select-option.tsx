@@ -1,12 +1,12 @@
-import type { OdsInputValue } from '@ovhcloud/ods-common-core';
-import type { HTMLStencilElement } from '@stencil/core/internal';
-import type { OdsSelectOptionAttribute } from './interfaces/attributes';
-import type { OdsSelectOptionEvent, OdsSelectOptionClickEventDetail } from './interfaces/events';
-import type { OdsSelectOptionMethod } from './interfaces/methods';
-import type { OsdsSelect } from '../osds-select/osds-select';
-import { Component, Element, Event, EventEmitter, Host, Method, Prop, State, h } from '@stencil/core';
-import { DEFAULT_ATTRIBUTE as SELECT_DEFAULT_ATTRIBUTE } from '../osds-select/constants/default-attributes';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import type {OdsInputValue} from '@ovhcloud/ods-common-core';
+import type {HTMLStencilElement} from '@stencil/core/internal';
+import type {OdsSelectOptionAttribute} from './interfaces/attributes';
+import type {OdsSelectOptionClickEventDetail, OdsSelectOptionEvent} from './interfaces/events';
+import type {OdsSelectOptionMethod} from './interfaces/methods';
+import type {OsdsSelect} from '../osds-select/osds-select';
+import {Component, Element, Event, EventEmitter, Host, Method, Prop, State, h} from '@stencil/core';
+import {DEFAULT_ATTRIBUTE as SELECT_DEFAULT_ATTRIBUTE} from '../osds-select/constants/default-attributes';
+import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
 
 /**
  * @slot (unnamed) - Select option content
@@ -26,7 +26,7 @@ export class OsdsSelectOption implements OdsSelectOptionAttribute, OdsSelectOpti
    * UI only purpose
    * @internal
    */
-  @Prop({ reflect: true }) selected?: boolean = false;
+  @Prop({reflect: true}) selected?: boolean = false;
 
   /**
    * The size of the select option
@@ -48,7 +48,7 @@ export class OsdsSelectOption implements OdsSelectOptionAttribute, OdsSelectOpti
   @State() tabindex = 0;
 
   /** @see OdsSelectOptionAttributes.value */
-  @Prop({ reflect: true }) value: OdsInputValue = DEFAULT_ATTRIBUTE.value;
+  @Prop({reflect: true}) value: OdsInputValue = DEFAULT_ATTRIBUTE.value;
 
   /** @see OdsSelectOptionEvents.odsSelectOptionClickEventDetail */
   @Event() odsSelectOptionClick!: EventEmitter<OdsSelectOptionClickEventDetail>;
@@ -72,7 +72,7 @@ export class OsdsSelectOption implements OdsSelectOptionAttribute, OdsSelectOpti
   }
 
   emitClick(value: OdsInputValue) {
-    this.odsSelectOptionClick.emit({ value });
+    this.odsSelectOptionClick.emit({value});
   }
 
   handleClick(event: MouseEvent) {

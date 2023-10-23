@@ -1,7 +1,7 @@
-import type { OsdsIcon } from '../osds-icon';
-import { OdsLogger, OdsWarnComponentAttribute } from '@ovhcloud/ods-common-core';
-import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import { ODS_ICON_SIZE } from '../constants/icon-size';
+import type {OsdsIcon} from '../osds-icon';
+import {OdsLogger, OdsWarnComponentAttribute} from '@ovhcloud/ods-common-core';
+import {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
+import {ODS_ICON_SIZE} from '../constants/icon-size';
 
 /**
  * common controller logic for icon component used by the different implementations.
@@ -12,7 +12,7 @@ class OdsIconController {
   protected component: OsdsIcon;
 
   constructor(component: OsdsIcon) {
-    this.component = component
+    this.component = component;
   }
 
   validateAriaName(ariaName?: string): void {
@@ -32,13 +32,13 @@ class OdsIconController {
       logger,
       attributeValues: ODS_THEME_COLOR_INTENT,
       attributeName: 'color',
-      attribute: this.component.color
+      attribute: this.component.color,
     });
     OdsWarnComponentAttribute<ODS_ICON_SIZE, OsdsIcon>({
       logger,
       attributeValues: ODS_ICON_SIZE,
       attributeName: 'size',
-      attribute: this.component.size
+      attribute: this.component.size,
     });
   }
 }

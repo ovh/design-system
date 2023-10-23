@@ -1,6 +1,6 @@
-import type { OsdsCart } from '../osds-cart/osds-cart';
-import { Component, Element, Host, h } from '@stencil/core';
-import { OdsCartItemController } from './core/controller'
+import type {OsdsCart} from '../osds-cart/osds-cart';
+import {Component, Element, Host, h} from '@stencil/core';
+import {OdsCartItemController} from './core/controller';
 
 @Component({
   tag: 'osds-cart-item',
@@ -38,7 +38,7 @@ export class OsdsCartItem {
   /**
    * @see OdsCartIteamBehavior.onDestroy
    */
-   async onDestroy(): Promise<void> {
+  async onDestroy(): Promise<void> {
     this.controller.refreshCart();
   }
 

@@ -8,4 +8,4 @@ function odsCamelCase2KebabCase(str: string): string {
 
 export {
   odsCamelCase2KebabCase,
-}
+};

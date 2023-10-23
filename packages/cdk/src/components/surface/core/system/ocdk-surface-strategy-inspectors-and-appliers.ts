@@ -1,5 +1,5 @@
-import { OcdkSurfaceStrategyAppliers } from './ocdk-surface-strategy-appliers';
-import { OcdkSurfaceStrategyInspectors } from './ocdk-surface-strategy-inspectors';
+import {OcdkSurfaceStrategyAppliers} from './ocdk-surface-strategy-appliers';
+import {OcdkSurfaceStrategyInspectors} from './ocdk-surface-strategy-inspectors';
 
 export interface OcdkSurfaceStrategyInspectorsAndAppliers<StrategyConfig> {
   appliers: OcdkSurfaceStrategyAppliers<StrategyConfig>

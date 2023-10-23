@@ -1,26 +1,27 @@
-import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
-import type { HTMLStencilElement } from '@stencil/core/internal';
-import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
-import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
-import { OdsTabsController } from './controller';
-import { OsdsTabs } from '../osds-tabs';
-import { OsdsTabBarItem } from '../../osds-tab-bar-item/osds-tab-bar-item';
-import { OsdsTabBar } from '../../osds-tab-bar/osds-tab-bar';
-import { OsdsTabsPanel } from '../../osds-tab-panel/osds-tab-panel';
-import { DEFAULT_ATTRIBUTE } from '../constants/default-attributes';
+import type {OdsLoggerSpyReferences} from '@ovhcloud/ods-common-testing';
+import type {HTMLStencilElement} from '@stencil/core/internal';
+import {Ods, OdsLogger} from '@ovhcloud/ods-common-core';
+import {OdsClearLoggerSpy, OdsInitializeLoggerSpy} from '@ovhcloud/ods-common-testing';
+import {OdsTabsController} from './controller';
+import {OsdsTabs} from '../osds-tabs';
+import {OsdsTabBarItem} from '../../osds-tab-bar-item/osds-tab-bar-item';
+import {OsdsTabBar} from '../../osds-tab-bar/osds-tab-bar';
+import {OsdsTabsPanel} from '../../osds-tab-panel/osds-tab-panel';
+import {DEFAULT_ATTRIBUTE} from '../constants/default-attributes';
 
 class OdsTabsMock extends OsdsTabs {
   constructor(attribute: Partial<OsdsTabs>) {
-      super();
-      Object.assign(this, attribute)
+    super();
+    Object.assign(this, attribute);
   }
+
   controller: OdsTabsController = jest.fn() as unknown as OdsTabsController;
   beforeInit = jest.fn();
   emitChanged = jest.fn();
 }
 
 describe('spec:ods-tabs-controller', () => {
-  const baseAttribute = { contrasted: DEFAULT_ATTRIBUTE.contrasted, panel: DEFAULT_ATTRIBUTE.panel, size: DEFAULT_ATTRIBUTE.size };
+  const baseAttribute = {contrasted: DEFAULT_ATTRIBUTE.contrasted, panel: DEFAULT_ATTRIBUTE.panel, size: DEFAULT_ATTRIBUTE.size};
   let controller: OdsTabsController;
   let component: OsdsTabs;
 
@@ -42,7 +43,7 @@ describe('spec:ods-tabs-controller', () => {
 
     Object.defineProperty(component, 'el', {
       value: document.createElement('osds-tabs') as HTMLStencilElement,
-      writable: true
+      writable: true,
     });
   }
 
@@ -91,7 +92,7 @@ describe('spec:ods-tabs-controller', () => {
 
     describe('beforeInit', () => {
       it('should call changeActivePanel', () => {
-        setup({ panel: '2', contrasted: true });
+        setup({panel: '2', contrasted: true});
         spyOnChangeActivePanel = jest.spyOn(controller, 'changeActivePanel');
         controller.beforeInit();
 
@@ -100,7 +101,7 @@ describe('spec:ods-tabs-controller', () => {
       });
 
       it('should call onContrastedPropChange', () => {
-        setup({ panel: '2', contrasted: true });
+        setup({panel: '2', contrasted: true});
         spyOnOnContrastedPropChange = jest.spyOn(component, 'onContrastedPropChange');
         controller.beforeInit();
 
@@ -111,7 +112,7 @@ describe('spec:ods-tabs-controller', () => {
 
     describe('getTabItems', () => {
       it('should retrieve items inside tab bar', () => {
-        setup({ panel: '2', contrasted: true });
+        setup({panel: '2', contrasted: true});
 
         component.el.appendChild(tabBar);
 
@@ -122,7 +123,7 @@ describe('spec:ods-tabs-controller', () => {
 
     describe('getTabPanels', () => {
       it('should retrieve panels tabs', () => {
-        setup({ panel: '2', contrasted: true });
+        setup({panel: '2', contrasted: true});
 
         component.el.appendChild(panel1);
         component.el.appendChild(panel2);
@@ -134,7 +135,7 @@ describe('spec:ods-tabs-controller', () => {
 
     describe('changeActivePanel', () => {
       beforeEach(() => {
-        setup({ panel: '', contrasted: true });
+        setup({panel: '', contrasted: true});
 
         spyOnEmitChanged = jest.spyOn(component, 'emitChanged');
 

@@ -1,12 +1,12 @@
-import { html } from 'lit-html';
-import { defineCustomElements } from '@ovhcloud/ods-components/switch/loader';
+import {html} from 'lit-html';
+import {defineCustomElements} from '@ovhcloud/ods-components/switch/loader';
 import {
   extractArgTypes,
   extractStoryParams,
   getTagAttributes,
 } from '../../../core/componentHTMLUtils';
-import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
-import { ODS_SWITCH_SIZE, ODS_SWITCH_SIZES } from '@ovhcloud/ods-components/switch';
+import {ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS} from '@ovhcloud/ods-common-theming';
+import {ODS_SWITCH_SIZE, ODS_SWITCH_SIZES} from '@ovhcloud/ods-components/switch';
 // @ts-ignore
 import changelog from '@ovhcloud/ods-components/switch/CHANGELOG.md';
 // @ts-ignore
@@ -20,13 +20,13 @@ const storyParams = {
     category: 'General',
     defaultValue: ODS_THEME_COLOR_INTENT.default,
     options: ODS_THEME_COLOR_INTENTS,
-    control: { type: 'select' },
+    control: {type: 'select'},
   },
   size: {
     category: 'General',
     defaultValue: ODS_SWITCH_SIZE.md,
     options: ODS_SWITCH_SIZES,
-    control: { type: 'select' },
+    control: {type: 'select'},
   },
   default: {
     category: 'Slot',
@@ -50,9 +50,9 @@ export default {
     notes: {
       changelog,
     },
-    docs: { page }
+    docs: {page},
   },
-  argTypes: extractArgTypes(storyParams)
+  argTypes: extractArgTypes(storyParams),
 };
 
 /* Default */
@@ -64,7 +64,7 @@ const TemplateDefault = (args:any) => {
       <osds-switch-item value="3" id="3">Item 3</osds-switch-item>
     </osds-switch>
   `;
-}
+};
 export const Default = TemplateDefault.bind({});
 // @ts-ignore
 Default.args = {

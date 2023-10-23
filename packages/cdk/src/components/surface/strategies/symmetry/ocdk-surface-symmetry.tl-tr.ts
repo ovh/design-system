@@ -1,9 +1,9 @@
-import { OcdkSurfaceSymmetryConfig } from './ocdk-surface-symmetry-strategy';
-import { OcdkSurfaceNormalizedCorner } from '../../core/ocdk-surface-normalized-corner';
-import { OcdkLogger } from '../../../../logger/ocdk-logger';
-import { OcdkSurfaceSymmetryStrategyHelpers } from './ocdk-surface-symmetry-strategy.helpers';
-import { isOcdkSurfaceStrategyComputeResultPosition } from '../../core/system/ocdk-surface-strategy-compute-result-position';
-import { OcdkSurfaceOnePositionStrategy } from '../../core/ocdk-surface-one-position-strategy';
+import {OcdkSurfaceSymmetryConfig} from './ocdk-surface-symmetry-strategy';
+import {OcdkSurfaceNormalizedCorner} from '../../core/ocdk-surface-normalized-corner';
+import {OcdkLogger} from '../../../../logger/ocdk-logger';
+import {OcdkSurfaceSymmetryStrategyHelpers} from './ocdk-surface-symmetry-strategy.helpers';
+import {isOcdkSurfaceStrategyComputeResultPosition} from '../../core/system/ocdk-surface-strategy-compute-result-position';
+import {OcdkSurfaceOnePositionStrategy} from '../../core/ocdk-surface-one-position-strategy';
 
 /**
  * ```
@@ -22,35 +22,35 @@ export function ocdkSurfaceSymmetryTlTr(): OcdkSurfaceOnePositionStrategy<OcdkSu
   return {
     cornerPoints: {
       anchor: OcdkSurfaceNormalizedCorner.TOP_LEFT,
-      origin: OcdkSurfaceNormalizedCorner.TOP_RIGHT
+      origin: OcdkSurfaceNormalizedCorner.TOP_RIGHT,
     },
     STRATEGIES: {
       standard: {
         inspectors: {
-            comfort: {
-              availableTop: (opt) => opt.measurements.viewportDistance.top  - opt.config.anchorMargin.top - opt.config.MARGIN_TO_EDGE_COMFORT + opt.measurements.anchorSize.height,
-              availableBottom: (opt) => opt.measurements.viewportDistance.bottom - opt.config.anchorMargin.bottom - opt.config.MARGIN_TO_EDGE_COMFORT,
-              availableLeft: (opt) => opt.measurements.viewportDistance.left - opt.config.anchorMargin.left - opt.config.MARGIN_TO_EDGE_COMFORT,
-              availableRight: (opt) => opt.measurements.viewportDistance.right - opt.config.anchorMargin.right - opt.config.MARGIN_TO_EDGE_COMFORT + opt.measurements.anchorSize.width,
-            }
+          comfort: {
+            availableTop: (opt) => opt.measurements.viewportDistance.top - opt.config.anchorMargin.top - opt.config.MARGIN_TO_EDGE_COMFORT + opt.measurements.anchorSize.height,
+            availableBottom: (opt) => opt.measurements.viewportDistance.bottom - opt.config.anchorMargin.bottom - opt.config.MARGIN_TO_EDGE_COMFORT,
+            availableLeft: (opt) => opt.measurements.viewportDistance.left - opt.config.anchorMargin.left - opt.config.MARGIN_TO_EDGE_COMFORT,
+            availableRight: (opt) => opt.measurements.viewportDistance.right - opt.config.anchorMargin.right - opt.config.MARGIN_TO_EDGE_COMFORT + opt.measurements.anchorSize.width,
           },
-          appliers: {
-            maxHeight: (opt) => opt.inspections.comfort.availableBottom,
-            maxWidth: (opt) => opt.inspections.comfort.availableLeft,
-            verticalOffset: () => 0,
-            verticalAlignment: 'top',
-            horizontalOffset: (opt) => -opt.config.anchorMargin.left - opt.measurements.surfaceSize.width,
-            horizontalAlignment: 'left'
-          }
+        },
+        appliers: {
+          maxHeight: (opt) => opt.inspections.comfort.availableBottom,
+          maxWidth: (opt) => opt.inspections.comfort.availableLeft,
+          verticalOffset: () => 0,
+          verticalAlignment: 'top',
+          horizontalOffset: (opt) => -opt.config.anchorMargin.left - opt.measurements.surfaceSize.width,
+          horizontalAlignment: 'left',
+        },
       },
       FALLBACK: {
         inspectors: {
           comfort: {
-            availableLeft: (opt) => opt.measurements.viewportSize.width - 2 * opt.config.MARGIN_TO_EDGE_COMFORT
+            availableLeft: (opt) => opt.measurements.viewportSize.width - 2 * opt.config.MARGIN_TO_EDGE_COMFORT,
           },
           limit: {
-            availableLeft: (opt) => opt.measurements.viewportSize.width - 2 * opt.config.MARGIN_TO_EDGE_LIMIT
-          }
+            availableLeft: (opt) => opt.measurements.viewportSize.width - 2 * opt.config.MARGIN_TO_EDGE_LIMIT,
+          },
         },
         appliers: {
           maxHeight: (opt) => opt.measurements.surfaceSize.height,
@@ -58,8 +58,8 @@ export function ocdkSurfaceSymmetryTlTr(): OcdkSurfaceOnePositionStrategy<OcdkSu
           verticalOffset: () => 0,
           verticalAlignment: 'top',
           horizontalOffset: (opt) => helpers.symmetryFallbackHorizontalOffset(opt, opt.inspections.comfort.availableLeft, opt.inspections.limit.availableLeft, false),
-          horizontalAlignment: 'right'
-        }
+          horizontalAlignment: 'right',
+        },
       },
       COMPUTE: (opt) => {
         loggerSymmetry.log('[COMPUTE] position TOP_LEFT TOP_RIGHT');
@@ -74,27 +74,27 @@ export function ocdkSurfaceSymmetryTlTr(): OcdkSurfaceOnePositionStrategy<OcdkSu
             return {
               cornerPoints: {
                 anchor: OcdkSurfaceNormalizedCorner.BOTTOM_RIGHT,
-                origin: OcdkSurfaceNormalizedCorner.BOTTOM_LEFT
-              }
+                origin: OcdkSurfaceNormalizedCorner.BOTTOM_LEFT,
+              },
             };
           }
           return {
             cornerPoints: {
               anchor: OcdkSurfaceNormalizedCorner.TOP_RIGHT,
-              origin: OcdkSurfaceNormalizedCorner.TOP_LEFT
-            }
+              origin: OcdkSurfaceNormalizedCorner.TOP_LEFT,
+            },
           };
         } else if (opt.measurements.surfaceSize.height > opt.inspections.comfort.availableBottom) {
           return {
             cornerPoints: {
               anchor: OcdkSurfaceNormalizedCorner.BOTTOM_LEFT,
-              origin: OcdkSurfaceNormalizedCorner.BOTTOM_RIGHT
-            }
+              origin: OcdkSurfaceNormalizedCorner.BOTTOM_RIGHT,
+            },
           };
         }
         return; // no position switching: apply the current one
-      }
+      },
 
-    }
+    },
   };
 }

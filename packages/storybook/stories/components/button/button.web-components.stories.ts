@@ -1,10 +1,10 @@
-import { html } from 'lit-html';
-import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-import { OdsHTMLAnchorElementRelList, OdsHTMLAnchorElementTargetList } from '@ovhcloud/ods-common-core';
-import { ODS_BUTTON_SIZE, ODS_BUTTON_SIZES, ODS_BUTTON_VARIANT, ODS_BUTTON_VARIANTS, ODS_BUTTON_TEXT_ALIGN, ODS_BUTTON_TEXT_ALIGNS } from '@ovhcloud/ods-components/button';
-import { defineCustomElements } from '@ovhcloud/ods-components/button/loader';
-import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
-import { createComponentTable, getTagAttributes, extractArgTypes, extractStoryParams } from '../../../core/componentHTMLUtils';
+import {html} from 'lit-html';
+import {unsafeHTML} from 'lit-html/directives/unsafe-html';
+import {OdsHTMLAnchorElementRelList, OdsHTMLAnchorElementTargetList} from '@ovhcloud/ods-common-core';
+import {ODS_BUTTON_SIZE, ODS_BUTTON_SIZES, ODS_BUTTON_TEXT_ALIGN, ODS_BUTTON_TEXT_ALIGNS, ODS_BUTTON_VARIANT, ODS_BUTTON_VARIANTS} from '@ovhcloud/ods-components/button';
+import {defineCustomElements} from '@ovhcloud/ods-components/button/loader';
+import {ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS} from '@ovhcloud/ods-common-theming';
+import {createComponentTable, extractArgTypes, extractStoryParams, getTagAttributes} from '../../../core/componentHTMLUtils';
 // @ts-ignore
 import changelog from '@ovhcloud/ods-component-button/CHANGELOG.md';
 // @ts-ignore
@@ -18,25 +18,25 @@ const storyParams = {
     category: 'General',
     defaultValue: ODS_THEME_COLOR_INTENT.default,
     options: ODS_THEME_COLOR_INTENTS,
-    control: { type: 'select' },
+    control: {type: 'select'},
   },
   size: {
     category: 'General',
     defaultValue: ODS_BUTTON_SIZE.md,
     options: ODS_BUTTON_SIZES,
-    control: { type: 'select' },
+    control: {type: 'select'},
   },
   textAlign: {
     category: 'General',
     defaultValue: ODS_BUTTON_TEXT_ALIGN.center,
     options: ODS_BUTTON_TEXT_ALIGNS,
-    control: { type: 'select' },
+    control: {type: 'select'},
   },
   variant: {
     category: 'General',
     defaultValue: ODS_BUTTON_VARIANT.flat,
     options: ODS_BUTTON_VARIANTS,
-    control: { type: 'select' },
+    control: {type: 'select'},
   },
   start: {
     category: 'Slot',
@@ -63,27 +63,27 @@ const storyParams = {
     defaultValue: false,
   },
   circle: {
-      category: 'Misc',
-      defaultValue: false,
+    category: 'Misc',
+    defaultValue: false,
   },
   href: {
     category: 'Misc',
-    defaultValue: ''
+    defaultValue: '',
   },
   rel: {
     category: 'Misc',
     options: OdsHTMLAnchorElementRelList,
-    control: { type: 'select' },
+    control: {type: 'select'},
   },
   target: {
     category: 'Misc',
     options: OdsHTMLAnchorElementTargetList,
-    control: { type: 'select' },
+    control: {type: 'select'},
   },
   download: {
     category: 'Misc',
-    defaultValue: 'filename'
-  }
+    defaultValue: 'filename',
+  },
 };
 
 export default {
@@ -93,7 +93,7 @@ export default {
     notes: {
       changelog,
     },
-    docs: { page }
+    docs: {page},
   },
   argTypes: extractArgTypes(storyParams),
 };
@@ -115,7 +115,7 @@ Default.args = {
 };
 
 const defaultTag = 'osds-button';
-const defaultContent = `Text`;
+const defaultContent = 'Text';
 
 const TemplateAll = () => html`
   <style>
@@ -136,29 +136,29 @@ const TemplateAll = () => html`
   </style>
 
   <h1>Variants & Colors</h1>
-  ${unsafeHTML(createComponentTable(defaultTag, { variant: ODS_BUTTON_VARIANTS }, { color: ODS_THEME_COLOR_INTENTS }, defaultContent))}
+  ${unsafeHTML(createComponentTable(defaultTag, {variant: ODS_BUTTON_VARIANTS}, {color: ODS_THEME_COLOR_INTENTS}, defaultContent))}
   <h1>Sizes & Colors</h1>
-  ${unsafeHTML(createComponentTable(defaultTag, { size: ODS_BUTTON_SIZES }, { color: ODS_THEME_COLOR_INTENTS }, defaultContent))}
+  ${unsafeHTML(createComponentTable(defaultTag, {size: ODS_BUTTON_SIZES}, {color: ODS_THEME_COLOR_INTENTS}, defaultContent))}
   <h1>Sizes & Variants</h1>
-  ${unsafeHTML(createComponentTable(defaultTag, { size: ODS_BUTTON_SIZES }, { variant: ODS_BUTTON_VARIANTS }, defaultContent))}
+  ${unsafeHTML(createComponentTable(defaultTag, {size: ODS_BUTTON_SIZES}, {variant: ODS_BUTTON_VARIANTS}, defaultContent))}
   <h1>Disabled Variants & Colors</h1>
-  ${unsafeHTML(createComponentTable(defaultTag, { variant: ODS_BUTTON_VARIANTS }, { color: ODS_THEME_COLOR_INTENTS }, defaultContent, { disabled: true }))}
+  ${unsafeHTML(createComponentTable(defaultTag, {variant: ODS_BUTTON_VARIANTS}, {color: ODS_THEME_COLOR_INTENTS}, defaultContent, {disabled: true}))}
   <div style="background: #666; padding: 1em; margin: -0.3em -0.8em; color: white">
     <h1>Contrasted Variants & Colors</h1>
-    ${unsafeHTML(createComponentTable(defaultTag, { variant: ODS_BUTTON_VARIANTS }, { color: ODS_THEME_COLOR_INTENTS }, defaultContent, { contrasted: true }))}
+    ${unsafeHTML(createComponentTable(defaultTag, {variant: ODS_BUTTON_VARIANTS}, {color: ODS_THEME_COLOR_INTENTS}, defaultContent, {contrasted: true}))}
     <h1>Disabled and contrasted Variants & Colors</h1>
-    ${unsafeHTML(createComponentTable(defaultTag, { variant: ODS_BUTTON_VARIANTS }, { color: ODS_THEME_COLOR_INTENTS }, defaultContent, { contrasted: true, disabled: true }))}
+    ${unsafeHTML(createComponentTable(defaultTag, {variant: ODS_BUTTON_VARIANTS}, {color: ODS_THEME_COLOR_INTENTS}, defaultContent, {contrasted: true, disabled: true}))}
   </div>
   <h1>Circle shape with little icon</h1>
-  ${unsafeHTML(createComponentTable(defaultTag, { variant: [ODS_BUTTON_VARIANTS[2]] }, { color: ODS_THEME_COLOR_INTENTS }, `<osds-icon size='xxs' name="ellipsis-vertical" />`, { circle: true }))}
+  ${unsafeHTML(createComponentTable(defaultTag, {variant: [ODS_BUTTON_VARIANTS[2]]}, {color: ODS_THEME_COLOR_INTENTS}, '<osds-icon size=\'xxs\' name="ellipsis-vertical" />', {circle: true}))}
   <h1>Circle shape with bigger icon</h1>
-  ${unsafeHTML(createComponentTable(defaultTag, { variant: [ODS_BUTTON_VARIANTS[2]] }, { color: ODS_THEME_COLOR_INTENTS }, `<osds-icon size='sm' name="plus" />`, { circle: true }))}
+  ${unsafeHTML(createComponentTable(defaultTag, {variant: [ODS_BUTTON_VARIANTS[2]]}, {color: ODS_THEME_COLOR_INTENTS}, '<osds-icon size=\'sm\' name="plus" />', {circle: true}))}
   <h1>Circle shape with text</h1>
-  ${unsafeHTML(createComponentTable(defaultTag, { variant: [ODS_BUTTON_VARIANTS[2]] }, { color: ODS_THEME_COLOR_INTENTS }, `<span>Text</span>`, { circle: true }))}
+  ${unsafeHTML(createComponentTable(defaultTag, {variant: [ODS_BUTTON_VARIANTS[2]]}, {color: ODS_THEME_COLOR_INTENTS}, '<span>Text</span>', {circle: true}))}
 `;
 export const All = TemplateAll.bind({});
 // @ts-ignore
 All.parameters = {
-  controls: { hideNoControlsWarning: true },
-  options: { showPanel: false },
+  controls: {hideNoControlsWarning: true},
+  options: {showPanel: false},
 };

@@ -1,6 +1,6 @@
-import { newSpecPage, SpecPage } from '@stencil/core/testing';
-import { OdsLogger } from '@ovhcloud/ods-common-core';
-import { OsdsMenuItem } from './osds-menu-item';
+import {SpecPage, newSpecPage} from '@stencil/core/testing';
+import {OdsLogger} from '@ovhcloud/ods-common-core';
+import {OsdsMenuItem} from './osds-menu-item';
 
 const logger = new OdsLogger('osds-menu-spec');
 
@@ -13,9 +13,9 @@ describe('spec:osds-menu', () => {
 
   function findElements(){
     menuItemContent = page.root.shadowRoot.querySelector('slot:not([name])');
-  };
+  }
 
-  async function setup({ html = `` }: { html?: string }) {
+  async function setup({html = ''}: { html?: string }) {
     page = await newSpecPage({
       components: [OsdsMenuItem],
       html: `<osds-menu-item>${html}</osds-menu-item>`,
@@ -25,15 +25,15 @@ describe('spec:osds-menu', () => {
     findElements();
   }
 
-  it('should render', async () => {
+  it('should render', async() => {
     await setup({});
     expect(page.root?.shadowRoot).toBeTruthy();
     expect(instance).toBeTruthy();
   });
 
   describe('contents', () => {
-    it('should have an unnamed slot', async () => {
-      await setup({ html: `` });
+    it('should have an unnamed slot', async() => {
+      await setup({html: ''});
       expect(menuItemContent).toBeTruthy();
     });
   });

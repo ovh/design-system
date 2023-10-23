@@ -1,6 +1,6 @@
-import { Ods } from './ods';
-import { OdsDeepPartial } from '../types/ods-deep-partial';
-import { OdsConfig } from './ods-config';
+import {Ods} from './ods';
+import {OdsDeepPartial} from '../types/ods-deep-partial';
+import {OdsConfig} from './ods-config';
 
 /**
  * parameters stored in the window globally.
@@ -14,5 +14,5 @@ export interface OdsWindowConfig {
   /** the most recent version of `ODS` instanced in the application */
   latest?: Ods;
   /** each version of `ODS` detected and instanced independently */
-  versions?: { [ version: string ]: Ods };
+  versions?: Record<string, Ods>;
 }

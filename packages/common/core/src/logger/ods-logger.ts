@@ -1,12 +1,12 @@
-import { odsDefaultConfig } from '../configure/ods-default-config';
-import { getOdsWindow } from '../configure/ods-get-window';
+import {odsDefaultConfig} from '../configure/ods-default-config';
+import {getOdsWindow} from '../configure/ods-get-window';
 
 export class OdsLogger {
   protected readonly id = Math.floor(Math.random()*10e6);
-  protected prefixColor = "color: white;background:#004fd6;font-weight: bold; font-size:10px; padding:2px 6px; border-radius: 5px 0px 0px 5px";
-  protected contextColor = "color: black;background:#d4e0e7;font-weight: bold; font-size:10px; padding:2px 6px; border-radius: 0px 5px 5px 0px";
-  protected prefix = "ODS";
-  protected context = "";
+  protected prefixColor = 'color: white;background:#004fd6;font-weight: bold; font-size:10px; padding:2px 6px; border-radius: 5px 0px 0px 5px';
+  protected contextColor = 'color: black;background:#d4e0e7;font-weight: bold; font-size:10px; padding:2px 6px; border-radius: 0px 5px 5px 0px';
+  protected prefix = 'ODS';
+  protected context = '';
 
   constructor(context: string, prefix?: string) {
     this.prefix = prefix ? prefix : this.prefix;

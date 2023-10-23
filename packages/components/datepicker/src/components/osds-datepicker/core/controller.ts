@@ -1,4 +1,4 @@
-import type { OsdsDatepicker } from '../osds-datepicker';
+import type {OsdsDatepicker} from '../osds-datepicker';
 
 /**
  * common controller logic for input component used by the different implementations.
@@ -22,7 +22,7 @@ class OdsDatepickerController {
     if(!this.component.disabled) {
       if (!this.validateValue(newValue)) {
         this.component.value = null;
-        this.component.datepickerInstanceAccessor?.setDate({ clear: true });
+        this.component.datepickerInstanceAccessor?.setDate({clear: true});
         this.component.emitDatepickerValueChange(null, oldValue ? oldValue : null);
       } else {
         this.component.value = newValue;
@@ -38,7 +38,7 @@ class OdsDatepickerController {
   }
 
   private getMidnightDate(date: Date): Date {
-    return new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()))
+    return new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
   }
 
   private validateValue(value?: Date | null | undefined): boolean {
@@ -48,7 +48,7 @@ class OdsDatepickerController {
 
     const midnightValue = this.getMidnightDate(value).getTime();
 
-    if (this.component.datesDisabled && this.component.datesDisabled.some(d => this.getMidnightDate(d).getTime() === midnightValue)) {
+    if (this.component.datesDisabled && this.component.datesDisabled.some((d) => this.getMidnightDate(d).getTime() === midnightValue)) {
       return false;
     }
 

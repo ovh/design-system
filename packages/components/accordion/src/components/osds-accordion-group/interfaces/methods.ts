@@ -1,4 +1,4 @@
-import type { OsdsAccordion } from '../../osds-accordion/osds-accordion';
+import type {OsdsAccordion} from '../../osds-accordion/osds-accordion';
 
 interface OdsAccordionGroupMethod {
     registerAccordion(accordion: OsdsAccordion): void;

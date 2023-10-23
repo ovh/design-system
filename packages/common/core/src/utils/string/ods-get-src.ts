@@ -1,5 +1,5 @@
-import { odsIsStr } from '../../types/guard/ods-is-string';
-import { odsIsSrc } from './ods-is-src';
+import {odsIsStr} from '../../types/guard/ods-is-string';
+import {odsIsSrc} from './ods-is-src';
 
 /**
  * get a formatted src string without spaces

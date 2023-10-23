@@ -1,14 +1,14 @@
-import { html } from 'lit-html';
-import { unsafeHTML } from 'lit-html/directives/unsafe-html';
+import {html} from 'lit-html';
+import {unsafeHTML} from 'lit-html/directives/unsafe-html';
 import {
   createComponentTable,
   extractArgTypes,
   extractStoryParams,
   getTagAttributes,
 } from '../../../core/componentHTMLUtils';
-import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
-import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-components/toggle/src/components/osds-toggle/constants/default-attributes';
-import { defineCustomElements } from '@ovhcloud/ods-components/toggle/loader';
+import {ODS_THEME_COLOR_INTENTS} from '@ovhcloud/ods-common-theming';
+import {DEFAULT_ATTRIBUTE} from '@ovhcloud/ods-components/toggle/src/components/osds-toggle/constants/default-attributes';
+import {defineCustomElements} from '@ovhcloud/ods-components/toggle/loader';
 // @ts-ignore
 import changelog from '@ovhcloud/ods-components/toggle/CHANGELOG.md';
 // @ts-ignore
@@ -22,7 +22,7 @@ const storyParams = {
     category: 'General',
     defaultValue: DEFAULT_ATTRIBUTE.color,
     options: ODS_THEME_COLOR_INTENTS,
-    control: { type: 'select' },
+    control: {type: 'select'},
   },
   start: {
     category: 'Slot',
@@ -34,24 +34,24 @@ const storyParams = {
   },
   contrasted: {
     category: 'Misc',
-    defaultValue: DEFAULT_ATTRIBUTE.contrasted
+    defaultValue: DEFAULT_ATTRIBUTE.contrasted,
   },
   disabled: {
     category: 'Misc',
-    defaultValue: DEFAULT_ATTRIBUTE.disabled
+    defaultValue: DEFAULT_ATTRIBUTE.disabled,
   },
   interactive: {
     category: 'Misc',
-    defaultValue: DEFAULT_ATTRIBUTE.interactive
+    defaultValue: DEFAULT_ATTRIBUTE.interactive,
   },
   checked: {
     category: 'Misc',
-    defaultValue: DEFAULT_ATTRIBUTE.checked
+    defaultValue: DEFAULT_ATTRIBUTE.checked,
   },
   checking: {
     category: 'Misc',
-    defaultValue: DEFAULT_ATTRIBUTE.checking
-  }
+    defaultValue: DEFAULT_ATTRIBUTE.checking,
+  },
 };
 
 export default {
@@ -61,8 +61,8 @@ export default {
     notes: {
       changelog,
     },
-    docs: { page }
-  }
+    docs: {page},
+  },
 };
 
 // A tile example
@@ -78,7 +78,7 @@ const TemplateDefault = (args: any) => {
       </osds-toggle>
     </div>
   `;
-}
+};
 export const Default = TemplateDefault.bind({});
 Default.args = {
   ...extractStoryParams(storyParams),
@@ -110,34 +110,34 @@ const TemplateAll = (args: any) => html`
   <h1>Default</h1>
   ${unsafeHTML(createComponentTable(
     defaultTag,
-    { a: [''] },
-    { color: ODS_THEME_COLOR_INTENTS },
+    {a: ['']},
+    {color: ODS_THEME_COLOR_INTENTS},
     '',
-    { ...(args.checking ? { checking: args.checking } : {}) }
+    {...(args.checking ? {checking: args.checking} : {})},
   ))}
   <h1>Checked</h1>
   ${unsafeHTML(createComponentTable(
     defaultTag,
-    { a: [''] },
-    { color: ODS_THEME_COLOR_INTENTS },
+    {a: ['']},
+    {color: ODS_THEME_COLOR_INTENTS},
     '',
-    { checked: true, ...(args.checking ? { checking: args.checking } : {}) }
+    {checked: true, ...(args.checking ? {checking: args.checking} : {})},
   ))}
   <h1>Disabled</h1>
   ${unsafeHTML(createComponentTable(
     defaultTag,
-    { a: [''] },
-    { color: ODS_THEME_COLOR_INTENTS },
+    {a: ['']},
+    {color: ODS_THEME_COLOR_INTENTS},
     '',
-    { disabled: true, ...(args.checking ? { checking: args.checking } : {}) }
+    {disabled: true, ...(args.checking ? {checking: args.checking} : {})},
   ))}
   <h1>Disabled checked</h1>
   ${unsafeHTML(createComponentTable(
     defaultTag,
-    { checked: [true] },
-    { color: ODS_THEME_COLOR_INTENTS },
+    {checked: [true]},
+    {color: ODS_THEME_COLOR_INTENTS},
     '',
-    { checked: true, disabled: true, ...(args.checking ? { checking: args.checking } : {}) }
+    {checked: true, disabled: true, ...(args.checking ? {checking: args.checking} : {})},
   ))}
 `;
 
@@ -145,7 +145,7 @@ const TemplateAll = (args: any) => html`
 const storyParamsAll = {
   checking: {
     category: 'Misc',
-    defaultValue: false
+    defaultValue: false,
   },
 };
 

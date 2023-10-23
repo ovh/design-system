@@ -3,7 +3,7 @@ import {
   OcdkSurfaceNormalizedCorner,
   OcdkSurfaceOnePositionStrategy,
   OcdkSurfaceStrategyDefiner,
-  OcdkSurfaceStrategyDefinerConfig
+  OcdkSurfaceStrategyDefinerConfig,
 } from '@ovhcloud/ods-cdk';
 
 /**
@@ -26,7 +26,7 @@ export class OcdkSurfaceCustomStrategyExample implements OcdkSurfaceStrategyDefi
     return [
       // ### anchored at bottom
       {
-        cornerPoints: { anchor: OcdkSurfaceNormalizedCorner.BOTTOM_LEFT, origin: OcdkSurfaceNormalizedCorner.TOP_LEFT },
+        cornerPoints: {anchor: OcdkSurfaceNormalizedCorner.BOTTOM_LEFT, origin: OcdkSurfaceNormalizedCorner.TOP_LEFT},
         STRATEGIES: {
           // main mode : standard
           standard: {
@@ -44,7 +44,7 @@ export class OcdkSurfaceCustomStrategyExample implements OcdkSurfaceStrategyDefi
                 availableLeft: () => 0,
                 availableRight: () => 0,
                 availableTop: () => 0,
-              }
+              },
             },
             // use analyzed spaces (limit and margin) and fill final values
             appliers: {
@@ -53,8 +53,8 @@ export class OcdkSurfaceCustomStrategyExample implements OcdkSurfaceStrategyDefi
               verticalOffset: () => 0,
               verticalAlignment: 'top',
               horizontalOffset: (opt) => -opt.measurements.surfaceSize.width,
-              horizontalAlignment: 'right'
-            }
+              horizontalAlignment: 'right',
+            },
           },
           // fallback mode
           FALLBACK: {
@@ -81,17 +81,17 @@ export class OcdkSurfaceCustomStrategyExample implements OcdkSurfaceStrategyDefi
               verticalOffset: () => 0,
               verticalAlignment: 'top',
               horizontalOffset: () => 0,
-              horizontalAlignment: 'left'
-            }
+              horizontalAlignment: 'left',
+            },
           },
           // make a choice of position: keep, switch or fallback
           COMPUTE: () => {
             this.logger.log('[COMPUTE] position BOTTOM_LEFT TOP_LEFT');
             return undefined; // no position switching: apply the current one
-          }
+          },
 
-        }
-      }
+        },
+      },
       // write here all the other positions of the strategy table position
     ];
   }

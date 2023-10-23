@@ -1,15 +1,15 @@
 jest.mock('./core/controller'); // keep jest.mock before any
 
-import type { SpecPage } from '@stencil/core/testing';
-import type { OdsSwitchAttribute } from './interfaces/attributes';
-import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute, OdsUnitTestAttributeType } from '@ovhcloud/ods-common-testing';
-import { newSpecPage } from '@stencil/core/testing';
-import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import { OsdsSwitch } from './osds-switch';
-import { OdsSwitchController } from './core/controller';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { ODS_SWITCH_SIZE } from './constants/switch-size';
-import { ODS_SWITCH_VARIANT } from './constants/switch-variant';
+import type {SpecPage} from '@stencil/core/testing';
+import type {OdsSwitchAttribute} from './interfaces/attributes';
+import {OdsUnitTestAttributeType, odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute} from '@ovhcloud/ods-common-testing';
+import {newSpecPage} from '@stencil/core/testing';
+import {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
+import {OsdsSwitch} from './osds-switch';
+import {OdsSwitchController} from './core/controller';
+import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
+import {ODS_SWITCH_SIZE} from './constants/switch-size';
+import {ODS_SWITCH_VARIANT} from './constants/switch-variant';
 
 describe('spec:osds-switch', () => {
   let page: SpecPage;
@@ -22,7 +22,7 @@ describe('spec:osds-switch', () => {
     jest.clearAllMocks();
   });
 
-  async function setup({ attributes = {} }: { attributes?: Partial<OdsSwitchAttribute> } = {}) {
+  async function setup({attributes = {}}: { attributes?: Partial<OdsSwitchAttribute> } = {}) {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsSwitchAttribute>(attributes, DEFAULT_ATTRIBUTE);
 
     page = await newSpecPage({
@@ -40,7 +40,7 @@ describe('spec:osds-switch', () => {
     mainSlot = root?.shadowRoot?.querySelector('slot:not([name])');
   }
 
-  it('should render', async () => {
+  it('should render', async() => {
     await setup({});
     expect(root?.shadowRoot).toBeTruthy();
     expect(instance).toBeTruthy();
@@ -59,7 +59,7 @@ describe('spec:osds-switch', () => {
         name: 'color',
         newValue: ODS_THEME_COLOR_INTENT.default,
         value: ODS_THEME_COLOR_INTENT.primary,
-        setup: (value) => setup({ attributes: { ['color']: value } }),
+        setup: (value) => setup({attributes: {['color']: value}}),
         defaultValue: DEFAULT_ATTRIBUTE.color,
         ...config,
       });
@@ -70,7 +70,7 @@ describe('spec:osds-switch', () => {
         name: 'contrasted',
         newValue: false,
         value: true,
-        setup: (value) => setup({ attributes: { ['contrasted']: value } }),
+        setup: (value) => setup({attributes: {['contrasted']: value}}),
         defaultValue: DEFAULT_ATTRIBUTE.contrasted,
         ...config,
       });
@@ -82,96 +82,96 @@ describe('spec:osds-switch', () => {
         newValue: false,
         value: true,
         defaultValue: DEFAULT_ATTRIBUTE.disabled,
-        setup: (value) => setup({ attributes: { ['disabled']: value } }),
+        setup: (value) => setup({attributes: {['disabled']: value}}),
         ...config,
       });
     });
 
     describe('size', () => {
       odsUnitTestAttribute<OdsSwitchAttribute, 'size'>({
-          name: 'size',
-          newValue: ODS_SWITCH_SIZE.sm,
-          value: ODS_SWITCH_SIZE.md,
-          setup: (value) => setup({ attributes: { ['size']: value } }),
-          defaultValue: DEFAULT_ATTRIBUTE.size,
-          ...config,
+        name: 'size',
+        newValue: ODS_SWITCH_SIZE.sm,
+        value: ODS_SWITCH_SIZE.md,
+        setup: (value) => setup({attributes: {['size']: value}}),
+        defaultValue: DEFAULT_ATTRIBUTE.size,
+        ...config,
       });
     });
 
     describe('variant', () => {
       odsUnitTestAttribute<OdsSwitchAttribute, 'variant'>({
-          name: 'variant',
-          newValue: ODS_SWITCH_VARIANT.flat,
-          value: undefined,
-          setup: (value) => setup({ attributes: { ['variant']: value } }),
-          defaultValue: DEFAULT_ATTRIBUTE.variant,
-          ...config,
-          exclude: [OdsUnitTestAttributeType.REFLECTED, OdsUnitTestAttributeType.MUTABLE],
+        name: 'variant',
+        newValue: ODS_SWITCH_VARIANT.flat,
+        value: undefined,
+        setup: (value) => setup({attributes: {['variant']: value}}),
+        defaultValue: DEFAULT_ATTRIBUTE.variant,
+        ...config,
+        exclude: [OdsUnitTestAttributeType.REFLECTED, OdsUnitTestAttributeType.MUTABLE],
       });
     });
   });
 
   describe('contents', () => {
-    it('should have a main slot', async () => {
+    it('should have a main slot', async() => {
       await setup();
       expect(mainSlot).toBeTruthy();
     });
   });
 
   describe('controller', () => {
-    it('should call controller.changeCheckedSwitchItem on switch item click', async () => {
+    it('should call controller.changeCheckedSwitchItem on switch item click', async() => {
       await setup();
       const spyEmit = jest.spyOn(instance, 'emitChanged');
       const spyFocus = jest.spyOn(instance, 'handlerFocus');
-      const detail = { newValue: '1', previousValue: '' }
-      controller.changeCheckedSwitchItem = jest.fn().mockImplementation(() => ({ current: { value: detail.newValue } , old: undefined }));
-      instance.handlerSwitchItemClick(new CustomEvent('odsValueChange', { detail }));
+      const detail = {newValue: '1', previousValue: ''};
+      controller.changeCheckedSwitchItem = jest.fn().mockImplementation(() => ({current: {value: detail.newValue} , old: undefined}));
+      instance.handlerSwitchItemClick(new CustomEvent('odsValueChange', {detail}));
       expect(controller.changeCheckedSwitchItem).toHaveBeenCalledTimes(1);
       expect(spyEmit).toHaveBeenNthCalledWith(1, detail.newValue, undefined);
       expect(spyFocus).toHaveBeenCalledTimes(1);
     });
 
-    it('should not call controller.changeCheckedSwitchItem because of disabled', async () => {
-      await setup({ attributes: { disabled: true } });
+    it('should not call controller.changeCheckedSwitchItem because of disabled', async() => {
+      await setup({attributes: {disabled: true}});
       const spyEmit = jest.spyOn(instance, 'emitChanged');
       const spyFocus = jest.spyOn(instance, 'handlerFocus');
-      instance.handlerSwitchItemClick(new CustomEvent('odsValueChange', { detail: { newValue: '1', previousValue: '' } }));
+      instance.handlerSwitchItemClick(new CustomEvent('odsValueChange', {detail: {newValue: '1', previousValue: ''}}));
       expect(controller.changeCheckedSwitchItem).not.toHaveBeenCalled();
       expect(spyEmit).not.toHaveBeenCalled();
       expect(spyFocus).not.toHaveBeenCalled();
     });
 
-    it('should call controller.findPreviousSwitchItem on navigate with arrow left', async () => {
+    it('should call controller.findPreviousSwitchItem on navigate with arrow left', async() => {
       await setup();
-      const keyArraowLeft = new KeyboardEvent('keydown', { code: 'ArrowLeft' });
+      const keyArraowLeft = new KeyboardEvent('keydown', {code: 'ArrowLeft'});
       instance.handlerOnKeyDown(keyArraowLeft);
       root?.dispatchEvent(keyArraowLeft);
       expect(controller.findPreviousSwitchItem).toHaveBeenCalledTimes(2);
     });
 
-    it('should call controller.findNextSwitchItem on navigate with arrow right', async () => {
+    it('should call controller.findNextSwitchItem on navigate with arrow right', async() => {
       await setup();
-      const keyArrawRight = new KeyboardEvent('keydown', { code: 'ArrowRight' });
+      const keyArrawRight = new KeyboardEvent('keydown', {code: 'ArrowRight'});
       instance.handlerOnKeyDown(keyArrawRight);
       root?.dispatchEvent(keyArrawRight);
       expect(controller.findNextSwitchItem).toHaveBeenCalledTimes(2);
     });
 
-    it('should do nothing because of unsupport key', async () => {
+    it('should do nothing because of unsupport key', async() => {
       await setup();
-      const keySpace = new KeyboardEvent('keydown', { code: 'Space' });
+      const keySpace = new KeyboardEvent('keydown', {code: 'Space'});
       instance.handlerOnKeyDown(keySpace);
       root?.dispatchEvent(keySpace);
-      const keyEnter = new KeyboardEvent('keydown', { code: 'Enter' });
+      const keyEnter = new KeyboardEvent('keydown', {code: 'Enter'});
       instance.handlerOnKeyDown(keyEnter);
       root?.dispatchEvent(keyEnter);
-      const keyEscape = new KeyboardEvent('keydown', { code: 'Escape' });
+      const keyEscape = new KeyboardEvent('keydown', {code: 'Escape'});
       instance.handlerOnKeyDown(keyEscape);
       root?.dispatchEvent(keyEscape);
-      const keyA = new KeyboardEvent('keydown', { code: 'A' });
+      const keyA = new KeyboardEvent('keydown', {code: 'A'});
       instance.handlerOnKeyDown(keyA);
 
       expect(controller.findNextSwitchItem).not.toHaveBeenCalled();
     });
-  })
+  });
 });

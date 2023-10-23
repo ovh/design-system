@@ -1,15 +1,15 @@
-import { html } from 'lit-html';
-import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-import { Components as ComponentsRadio } from '@ovhcloud/ods-components/radio/loader';
-import { Components as ComponentsInput } from '@ovhcloud/ods-components/input/loader';
-import { Components as ComponentsRange } from '@ovhcloud/ods-components/range/loader';
-import { OdsRangeValueChangeEventDetail } from '@ovhcloud/ods-components/range';
-import { Components as ComponentsTile } from '@ovhcloud/ods-components/tile/loader';
+import {html} from 'lit-html';
+import {unsafeHTML} from 'lit-html/directives/unsafe-html';
+import {Components as ComponentsRadio} from '@ovhcloud/ods-components/radio/loader';
+import {Components as ComponentsInput} from '@ovhcloud/ods-components/input/loader';
+import {Components as ComponentsRange} from '@ovhcloud/ods-components/range/loader';
+import {OdsRangeValueChangeEventDetail} from '@ovhcloud/ods-components/range';
+import {Components as ComponentsTile} from '@ovhcloud/ods-components/tile/loader';
 import {
   OdsErrorStateControl,
   OdsFormControl,
 } from '@ovhcloud/ods-common-core';
-import { OdsInputValidityState, OdsInputValueChangeEventDetail } from '@ovhcloud/ods-components/input';
+import {OdsInputValidityState, OdsInputValueChangeEventDetail} from '@ovhcloud/ods-components/input';
 
 export const TileTemplate = (args: any) => {
 
@@ -22,14 +22,14 @@ export const TileTemplate = (args: any) => {
   `;
 };
 
-export const TilePlay = async () => {
-  (async () => {
+export const TilePlay = async() => {
+  (async() => {
     await customElements.whenDefined('osds-radio');
     await customElements.whenDefined('osds-input');
   })();
 
   function setProperty(elements: HTMLElement[], attribute: string, value: any) {
-    elements.forEach(element => {
+    elements.forEach((element) => {
       element.setAttribute(attribute, value);
     });
   }
@@ -73,20 +73,20 @@ export const TilePlay = async () => {
     input.errorStateControl = inputErrorStateControl;
 
     const errorMessagesConnexions: ErrorMessagesConnexion[] = [
-      { el: inputErrorValueMissing, error: 'valueMissing' },
-      { el: inputErrorStepMismatch, error: 'stepMismatch' },
-      { el: inputErrorValid, error: 'invalid' },
+      {el: inputErrorValueMissing, error: 'valueMissing'},
+      {el: inputErrorStepMismatch, error: 'stepMismatch'},
+      {el: inputErrorValid, error: 'invalid'},
     ];
 
     const filteredErrorMessagesConnexions = errorMessagesConnexions
       .filter((cnx): cnx is FoundErrorMessagesConnexion => cnx.el !== null)
-      .map(cnx => {
+      .map((cnx) => {
         cnx.el.style.display = 'none';
         return cnx;
       });
 
-    (async () => {
-      const shouldFilter = await Promise.all(filteredErrorMessagesConnexions.map(cnx => inputFormControl.hasError(cnx.error)));
+    (async() => {
+      const shouldFilter = await Promise.all(filteredErrorMessagesConnexions.map((cnx) => inputFormControl.hasError(cnx.error)));
       const filteredErrors = filteredErrorMessagesConnexions.filter((_value, index) => {
         return shouldFilter[ index ];
       });
@@ -99,7 +99,7 @@ export const TilePlay = async () => {
         setProperty([tile], 'color', 'error');
       }
 
-      filteredErrors.forEach(cnx => (cnx.el.style.display = 'block'));
+      filteredErrors.forEach((cnx) => (cnx.el.style.display = 'block'));
     })();
   });
 };
@@ -147,5 +147,5 @@ export const tileArgs = {
         level="caption" size="md" color="error">Not valid</osds-text>
     </span>
   </div>
-  `
-}
+  `,
+};

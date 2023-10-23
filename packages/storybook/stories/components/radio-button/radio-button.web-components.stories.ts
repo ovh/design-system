@@ -1,10 +1,10 @@
-import { html } from 'lit-html';
-import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-import { defineCustomElements } from '@ovhcloud/ods-components/radio-button/loader';
-import { ODS_RADIO_BUTTON_SIZES } from '@ovhcloud/ods-components/radio-button';
-import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
-import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-components/radio-button/src/components/osds-radio-button/constants/default-attributes';
-import { createComponentTable, extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
+import {html} from 'lit-html';
+import {unsafeHTML} from 'lit-html/directives/unsafe-html';
+import {defineCustomElements} from '@ovhcloud/ods-components/radio-button/loader';
+import {ODS_RADIO_BUTTON_SIZES} from '@ovhcloud/ods-components/radio-button';
+import {ODS_THEME_COLOR_INTENTS} from '@ovhcloud/ods-common-theming';
+import {DEFAULT_ATTRIBUTE} from '@ovhcloud/ods-components/radio-button/src/components/osds-radio-button/constants/default-attributes';
+import {createComponentTable, extractArgTypes, extractStoryParams, getTagAttributes} from '../../../core/componentHTMLUtils';
 // @ts-ignore
 import changelog from '@ovhcloud/ods-components/radio-button/CHANGELOG.md';
 // @ts-ignore
@@ -26,13 +26,13 @@ const storyParams = {
     category: 'General',
     defaultValue: DEFAULT_ATTRIBUTE.color,
     options: ODS_THEME_COLOR_INTENTS,
-    control: { type: 'select' },
+    control: {type: 'select'},
   },
   size: {
     category: 'General',
     defaultValue: DEFAULT_ATTRIBUTE.size,
     options: ODS_RADIO_BUTTON_SIZES,
-    control: { type: 'select' },
+    control: {type: 'select'},
   },
   start: {
     category: 'Slot',
@@ -63,9 +63,9 @@ export default {
     notes: {
       changelog,
     },
-    docs: { page }
+    docs: {page},
   },
-  argTypes: extractArgTypes(storyParams)
+  argTypes: extractArgTypes(storyParams),
 };
 
 /* Default */
@@ -84,7 +84,7 @@ Default.args = {
 /* RadioWrapper */
 const OsdsRadioButtonRadioWrapper = (args) => html`
   <h1 style='font-size: 1.3rem; font-family: "Source Sans Pro"; font-style: italic'>
-    <a href=${parent.location.href.replace(parent.location.search, "?path=/story/radio--default")}>Radio</a> Meta component adds behavior to this Radio Button
+    <a href=${parent.location.href.replace(parent.location.search, '?path=/story/radio--default')}>Radio</a> Meta component adds behavior to this Radio Button
   </h1>
   <osds-radio value="radio-a">
     <osds-radio-button ...=${getTagAttributes(args)}>
@@ -101,7 +101,7 @@ RadioWrapper.args = {
 /* RadioWrapper */
 const OsdsRadioButtonRadioGroupWrapper = (args) => html`
   <h1 style='font-size: 1.3rem; font-family: "Source Sans Pro"; font-style: italic'>
-    <a href=${parent.location.href.replace(parent.location.search, "?path=/story/radio--default")}>Radio</a> and <a href=${parent.location.href.replace(parent.location.search, "?path=/story/radio-group--default")}>Radio Group</a> Meta components adds behavior to these Radio Buttons
+    <a href=${parent.location.href.replace(parent.location.search, '?path=/story/radio--default')}>Radio</a> and <a href=${parent.location.href.replace(parent.location.search, '?path=/story/radio-group--default')}>Radio Group</a> Meta components adds behavior to these Radio Buttons
   </h1>
   <osds-radio-group id="radio-group-a">
     <osds-radio id="radio-A" value="val-tile-A" checked>
@@ -125,7 +125,7 @@ RadioGroupWrapper.args = {
 };
 
 const defaultTag = 'osds-radio-button';
-const defaultContent = `Text`;
+const defaultContent = 'Text';
 
 const TemplateAll = () => html`
 <style>
@@ -147,18 +147,18 @@ const TemplateAll = () => html`
 
 <h1>Sizes & Colors</h1>
 ${unsafeHTML(createComponentTable(
-  defaultTag,
-  { size: ODS_RADIO_BUTTON_SIZES },
-  { color: ODS_THEME_COLOR_INTENTS },
-  defaultContent,
-  {
-    checked: true
-  }
-))}
+    defaultTag,
+    {size: ODS_RADIO_BUTTON_SIZES},
+    {color: ODS_THEME_COLOR_INTENTS},
+    defaultContent,
+    {
+      checked: true,
+    },
+  ))}
 </div>
 `;
 export const All = TemplateAll.bind({});
 All.parameters = {
-  controls: { hideNoControlsWarning: true },
-  options: { showPanel: false }
+  controls: {hideNoControlsWarning: true},
+  options: {showPanel: false},
 };

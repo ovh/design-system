@@ -1,4 +1,4 @@
-import { OcdkSurfaceStrategyInspectorDetails } from './ocdk-surface-strategy-inspector-details';
+import {OcdkSurfaceStrategyInspectorDetails} from './ocdk-surface-strategy-inspector-details';
 
 export type OcdkSurfaceStrategyInspectorLimit<StrategyConfig> = {
   limit: OcdkSurfaceStrategyInspectorDetails<StrategyConfig>

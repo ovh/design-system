@@ -9,7 +9,7 @@ jest.mock('@ovhcloud/ods-common-core/src/configure/ods-get-window', () => ({
   getOdsWindow: () => {
     console.log('[odsMockWindow]', 'get mocked window');
     return window;
-  }
+  },
 }));
 
 // set a mocked configured config for ODS

@@ -1,8 +1,8 @@
-import { html } from 'lit-html';
-import { ODS_SPINNER_SIZES } from '@ovhcloud/ods-components/spinner';
-import { defineCustomElements } from '@ovhcloud/ods-components/spinner/loader';
-import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-components/spinner/src/components/osds-spinner/constants/default-attributes';
-import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
+import {html} from 'lit-html';
+import {ODS_SPINNER_SIZES} from '@ovhcloud/ods-components/spinner';
+import {defineCustomElements} from '@ovhcloud/ods-components/spinner/loader';
+import {DEFAULT_ATTRIBUTE} from '@ovhcloud/ods-components/spinner/src/components/osds-spinner/constants/default-attributes';
+import {extractArgTypes, extractStoryParams, getTagAttributes} from '../../../core/componentHTMLUtils';
 // @ts-ignore
 import changelog from '@ovhcloud/ods-components/spinner/CHANGELOG.md';
 // @ts-ignore
@@ -16,7 +16,7 @@ const storyParams = {
     category: 'General',
     defaultValue: DEFAULT_ATTRIBUTE.size,
     options: ODS_SPINNER_SIZES,
-    control: { type: 'select' },
+    control: {type: 'select'},
   },
   contrasted: {
     category: 'Misc',
@@ -35,15 +35,15 @@ export default {
     notes: {
       changelog,
     },
-    docs: { page }
+    docs: {page},
   },
-  argTypes: extractArgTypes(storyParams)
+  argTypes: extractArgTypes(storyParams),
 };
 
 /* Default */
 const TemplateDefault = (args:any) => {
   return html`<osds-spinner ...=${getTagAttributes(args)}></osds-spinner>`;
-}
+};
 
 export const Default = TemplateDefault.bind({});
 // @ts-ignore

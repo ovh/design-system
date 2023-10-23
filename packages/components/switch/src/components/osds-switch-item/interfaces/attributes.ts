@@ -15,4 +15,4 @@ interface OdsSwitchItemAttribute {
 
 export {
   OdsSwitchItemAttribute,
-}
+};

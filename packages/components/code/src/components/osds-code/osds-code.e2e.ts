@@ -1,24 +1,24 @@
-import type { E2EElement, E2EPage } from '@stencil/core/testing';
-import type { OdsCodeAttribute } from './interfaces/attributes';
-import { newE2EPage } from '@stencil/core/testing';
-import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming/src';
-import { ODS_CODE_SIZE } from './constants/code-size';
-import { ODS_BUTTON_VARIANT } from '@ovhcloud/ods-component-button';
-import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
-import { OdsDeepPartial } from '@ovhcloud/ods-common-core';
+import type {E2EElement, E2EPage} from '@stencil/core/testing';
+import type {OdsCodeAttribute} from './interfaces/attributes';
+import {newE2EPage} from '@stencil/core/testing';
+import {odsComponentAttributes2StringAttributes, odsStringAttributes2Str} from '@ovhcloud/ods-common-testing';
+import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
+import {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming/src';
+import {ODS_CODE_SIZE} from './constants/code-size';
+import {ODS_BUTTON_VARIANT} from '@ovhcloud/ods-component-button';
+import {ODS_ICON_NAME, ODS_ICON_SIZE} from '@ovhcloud/ods-component-icon';
+import {OdsDeepPartial} from '@ovhcloud/ods-common-core';
 
 describe('e2e:osds-code', () => {
-  const baseAttribute = { color: ODS_THEME_COLOR_INTENT.default, contrasted: false, size: ODS_CODE_SIZE.md };
+  const baseAttribute = {color: ODS_THEME_COLOR_INTENT.default, contrasted: false, size: ODS_CODE_SIZE.md};
   let page: E2EPage;
   let el: E2EElement;
 
   async function setup({
-                         attributes = {},
-                         html = ``
-                       }: { attributes?: Partial<OdsCodeAttribute>, html?: string } = {}) {
-    const stringAttributes = odsComponentAttributes2StringAttributes<OdsCodeAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
+    attributes = {},
+    html = '',
+  }: { attributes?: Partial<OdsCodeAttribute>, html?: string } = {}) {
+    const stringAttributes = odsComponentAttributes2StringAttributes<OdsCodeAttribute>({...baseAttribute, ...attributes}, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
     await page.setContent(`
@@ -39,22 +39,22 @@ describe('e2e:osds-code', () => {
           },
           async readText() {
             return storedText;
-          }
-        }
-      }
-      Object.defineProperty(navigator, 'clipboard', { value: navigatorMocked.clipboard });
+          },
+        },
+      };
+      Object.defineProperty(navigator, 'clipboard', {value: navigatorMocked.clipboard});
     });
   }
 
-  it('should render', async () => {
+  it('should render', async() => {
     await setup();
     expect(el).not.toBeNull();
     expect(el).toHaveClass('hydrated');
   });
 
-  it('should set default ods-icon', async () => {
+  it('should set default ods-icon', async() => {
     await setup({
-      html: `Lorem ipsum<osds-button slot="copy"></osds-button>`
+      html: 'Lorem ipsum<osds-button slot="copy"></osds-button>',
     });
     const icon = await page.find('osds-button > osds-icon');
 
@@ -63,9 +63,9 @@ describe('e2e:osds-code', () => {
     expect(icon.getAttribute('size')).toBe(ODS_ICON_SIZE.xs);
   });
 
-  it('should set ods-button default attributes', async () => {
+  it('should set ods-button default attributes', async() => {
     await setup({
-      html: `Lorem ipsum<osds-button slot="copy"></osds-button>`
+      html: 'Lorem ipsum<osds-button slot="copy"></osds-button>',
     });
     const button = await page.find('osds-code > osds-button');
 
@@ -74,9 +74,9 @@ describe('e2e:osds-code', () => {
     expect(button.getAttribute('size')).toBe(ODS_ICON_SIZE.sm);
   });
 
-  it('should set ods-button variant', async () => {
+  it('should set ods-button variant', async() => {
     await setup({
-      html: `Lorem ipsum<osds-button slot="copy" variant="flat"></osds-button>`
+      html: 'Lorem ipsum<osds-button slot="copy" variant="flat"></osds-button>',
     });
     const button = await page.find('osds-code > osds-button');
 
@@ -85,10 +85,10 @@ describe('e2e:osds-code', () => {
   });
 
   describe('copy', () => {
-    it('should copy text to clipboard (osds-button)', async () => {
+    it('should copy text to clipboard (osds-button)', async() => {
       const expected = 'Lorem Ipsum';
       await setup({
-        html: `${expected}<osds-button slot="copy"></osds-button>`
+        html: `${expected}<osds-button slot="copy"></osds-button>`,
       });
       const button = await page.find('osds-button');
       button.click();
@@ -98,10 +98,10 @@ describe('e2e:osds-code', () => {
         .toBe(expected);
     });
 
-    it('should copy text to clipboard (vanilla button)', async () => {
+    it('should copy text to clipboard (vanilla button)', async() => {
       const expected = 'Lorem Ipsum';
       await setup({
-        html: `${expected}<button slot="copy"></button>`
+        html: `${expected}<button slot="copy"></button>`,
       });
       const button = await page.find('button');
       button.click();

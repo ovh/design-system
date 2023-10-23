@@ -1,4 +1,4 @@
-import type { OsdsRadio } from '../../osds-radio/osds-radio';
+import type {OsdsRadio} from '../../osds-radio/osds-radio';
 
 interface OdsRadioGroupMethod {
   getRadios(): Promise<OsdsRadio[]>;
@@ -23,9 +23,9 @@ interface OdsRadioGroupMethod {
    * @param checked - checked or not
    * @param checking - checking or not
    */
-  updateState({ newValue, checked, checking }: { newValue: string, checked: boolean, checking: boolean }): Promise<void>;
+  updateState({newValue, checked, checking}: { newValue: string, checked: boolean, checking: boolean }): Promise<void>;
 }
 
-export { 
+export {
   OdsRadioGroupMethod,
-}
+};

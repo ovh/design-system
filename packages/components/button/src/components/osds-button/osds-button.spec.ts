@@ -1,17 +1,17 @@
 jest.mock('./core/controller'); // keep jest.mock before any
 
-import type { SpecPage } from '@stencil/core/testing';
-import type { OdsButtonAttribute } from './interfaces/attributes';
-import { OdsHTMLAnchorElementRel, OdsHTMLAnchorElementTarget } from '@ovhcloud/ods-common-core';
-import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
-import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
-import { newSpecPage } from '@stencil/core/testing';
-import { ODS_BUTTON_SIZE, ODS_BUTTON_SIZES } from './constants/button-size';
-import { ODS_BUTTON_VARIANT, ODS_BUTTON_VARIANTS } from './constants/button-variant';
-import { ODS_BUTTON_TEXT_ALIGN, ODS_BUTTON_TEXT_ALIGNS } from './constants/button-text-align';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { OdsButtonController } from './core/controller';
-import { OsdsButton } from './osds-button';
+import type {SpecPage} from '@stencil/core/testing';
+import type {OdsButtonAttribute} from './interfaces/attributes';
+import {OdsHTMLAnchorElementRel, OdsHTMLAnchorElementTarget} from '@ovhcloud/ods-common-core';
+import {odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute} from '@ovhcloud/ods-common-testing';
+import {ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS} from '@ovhcloud/ods-common-theming';
+import {newSpecPage} from '@stencil/core/testing';
+import {ODS_BUTTON_SIZE, ODS_BUTTON_SIZES} from './constants/button-size';
+import {ODS_BUTTON_VARIANT, ODS_BUTTON_VARIANTS} from './constants/button-variant';
+import {ODS_BUTTON_TEXT_ALIGN, ODS_BUTTON_TEXT_ALIGNS} from './constants/button-text-align';
+import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
+import {OdsButtonController} from './core/controller';
+import {OsdsButton} from './osds-button';
 
 describe('spec:osds-button', () => {
   let page: SpecPage;
@@ -27,7 +27,7 @@ describe('spec:osds-button', () => {
     jest.clearAllMocks();
   });
 
-  async function setup({ attributes= {} , html = `` }: { attributes?: Partial<OdsButtonAttribute>, html?: string } = {}) {
+  async function setup({attributes= {} , html = ''}: { attributes?: Partial<OdsButtonAttribute>, html?: string } = {}) {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsButtonAttribute>(attributes, DEFAULT_ATTRIBUTE);
 
     page = await newSpecPage({
@@ -47,36 +47,36 @@ describe('spec:osds-button', () => {
     controller = (OdsButtonController as unknown as jest.SpyInstance<OdsButtonController, unknown[]>).mock.instances[0];
   }
 
-  it('should render', async () => {
+  it('should render', async() => {
     await setup({});
     expect(page.root?.shadowRoot).toBeTruthy();
     expect(page.rootInstance).toBeTruthy();
   });
 
   describe('contents', () => {
-    it('should have a start slot', async () => {
-      await setup({ attributes: {}, html: `<slot name='start'></slot>` });
+    it('should have a start slot', async() => {
+      await setup({attributes: {}, html: '<slot name=\'start\'></slot>'});
       expect(startSlot).toBeTruthy();
     });
 
-    it('should have a main slot', async () => {
-      await setup({ attributes: {}, html: `<slot></slot>` });
+    it('should have a main slot', async() => {
+      await setup({attributes: {}, html: '<slot></slot>'});
       expect(mainSlot).toBeTruthy();
     });
 
-    it('should have a end slot', async () => {
-      await setup({ attributes: {}, html: `<slot name='end'></slot>` });
+    it('should have a end slot', async() => {
+      await setup({attributes: {}, html: '<slot name=\'end\'></slot>'});
       expect(endSlot).toBeTruthy();
     });
 
-    it('should have a button', async () => {
+    it('should have a button', async() => {
       await setup({});
       expect(htmlButton).toBeTruthy();
       expect(htmlButton?.getAttribute('role')).toBe('button');
     });
 
-    it('should have a link when href attribute is set', async () => {
-      await setup({ attributes: { href: 'test' } });
+    it('should have a link when href attribute is set', async() => {
+      await setup({attributes: {href: 'test'}});
       expect(htmlLink).toBeTruthy();
       expect(htmlLink?.getAttribute('role')).toBe('link');
     });
@@ -96,13 +96,13 @@ describe('spec:osds-button', () => {
         defaultValue: DEFAULT_ATTRIBUTE.color,
         newValue: ODS_THEME_COLOR_INTENT.primary,
         value: ODS_THEME_COLOR_INTENT.default,
-        setup: (value) => setup({ attributes: { ['color']: value } }),
+        setup: (value) => setup({attributes: {['color']: value}}),
         ...config,
       });
 
-      it('should set a color if attribute is added', async () => {
+      it('should set a color if attribute is added', async() => {
         const randomColor = ODS_THEME_COLOR_INTENTS[Math.floor(Math.random() * ODS_THEME_COLOR_INTENTS.length)];
-        await setup({ attributes: { color: randomColor } });
+        await setup({attributes: {color: randomColor}});
         expect(page.root?.color).toBe(randomColor);
       });
     });
@@ -113,12 +113,12 @@ describe('spec:osds-button', () => {
         defaultValue: DEFAULT_ATTRIBUTE.contrasted,
         newValue: true,
         value: false,
-        setup: (value) => setup({ attributes: { ['contrasted']: value } }),
+        setup: (value) => setup({attributes: {['contrasted']: value}}),
         ...config,
       });
 
-      it('should be contrasted if attribute is added', async () => {
-        await setup({ attributes: { contrasted: true } });
+      it('should be contrasted if attribute is added', async() => {
+        await setup({attributes: {contrasted: true}});
         expect(page.root?.contrasted).toBeDefined();
       });
     });
@@ -129,12 +129,12 @@ describe('spec:osds-button', () => {
         defaultValue: DEFAULT_ATTRIBUTE.disabled,
         newValue: true,
         value: false,
-        setup: (value) => setup({ attributes: { ['disabled']: value } }),
+        setup: (value) => setup({attributes: {['disabled']: value}}),
         ...config,
       });
 
-      it('should be disabled if attribute is added', async () => {
-        await setup({ attributes: { disabled: true } });
+      it('should be disabled if attribute is added', async() => {
+        await setup({attributes: {disabled: true}});
         expect(page.root?.disabled).toBeDefined();
       });
     });
@@ -145,7 +145,7 @@ describe('spec:osds-button', () => {
         defaultValue: DEFAULT_ATTRIBUTE.inline,
         newValue: true,
         value: false,
-        setup: (value) => setup({ attributes: { ['inline']: value } }),
+        setup: (value) => setup({attributes: {['inline']: value}}),
         ...config,
       });
     });
@@ -156,7 +156,7 @@ describe('spec:osds-button', () => {
         defaultValue: DEFAULT_ATTRIBUTE.rel,
         newValue: OdsHTMLAnchorElementRel.author,
         value: OdsHTMLAnchorElementRel.external,
-        setup: (value) => setup({ attributes: { ['rel']: value } }),
+        setup: (value) => setup({attributes: {['rel']: value}}),
         ...config,
       });
     });
@@ -167,13 +167,13 @@ describe('spec:osds-button', () => {
         defaultValue: DEFAULT_ATTRIBUTE.size,
         newValue: ODS_BUTTON_SIZE.sm,
         value: ODS_BUTTON_SIZE.md,
-        setup: (value) => setup({ attributes: { ['size']: value } }),
+        setup: (value) => setup({attributes: {['size']: value}}),
         ...config,
       });
 
-      it('should set a size if attribute is added', async () => {
+      it('should set a size if attribute is added', async() => {
         const randomSize = ODS_BUTTON_SIZES[Math.floor(Math.random() * ODS_BUTTON_SIZES.length)];
-        await setup({ attributes: { size: randomSize } });
+        await setup({attributes: {size: randomSize}});
         expect(page.root?.size).toBe(randomSize);
       });
     });
@@ -184,12 +184,12 @@ describe('spec:osds-button', () => {
         defaultValue: DEFAULT_ATTRIBUTE.circle,
         newValue: true,
         value: false,
-        setup: (value) => setup({ attributes: { ['circle']: value } }),
+        setup: (value) => setup({attributes: {['circle']: value}}),
         ...config,
       });
 
-      it('should bind the circle attribute correctly', async () => {
-        await setup({ attributes: { circle: true } });
+      it('should bind the circle attribute correctly', async() => {
+        await setup({attributes: {circle: true}});
         expect(page.root?.circle).toBeDefined();
       });
     });
@@ -200,7 +200,7 @@ describe('spec:osds-button', () => {
         defaultValue: DEFAULT_ATTRIBUTE.target,
         newValue: OdsHTMLAnchorElementTarget._parent,
         value: OdsHTMLAnchorElementTarget._top,
-        setup: (value) => setup({ attributes: { ['target']: value } }),
+        setup: (value) => setup({attributes: {['target']: value}}),
         ...config,
       });
     });
@@ -211,13 +211,13 @@ describe('spec:osds-button', () => {
         defaultValue: DEFAULT_ATTRIBUTE.variant,
         newValue: ODS_BUTTON_VARIANT.flat,
         value: ODS_BUTTON_VARIANT.ghost,
-        setup: (value) => setup({ attributes: { ['variant']: value } }),
+        setup: (value) => setup({attributes: {['variant']: value}}),
         ...config,
       });
 
-      it('should set a variant if attribute is added', async () => {
+      it('should set a variant if attribute is added', async() => {
         const randomVariant = ODS_BUTTON_VARIANTS[Math.floor(Math.random() * ODS_BUTTON_VARIANTS.length)];
-        await setup({ attributes: { variant: randomVariant } });
+        await setup({attributes: {variant: randomVariant}});
         expect(page.root?.variant).toBe(randomVariant);
       });
     });
@@ -228,39 +228,39 @@ describe('spec:osds-button', () => {
         defaultValue: DEFAULT_ATTRIBUTE.textAlign,
         newValue: ODS_BUTTON_TEXT_ALIGN.center,
         value: ODS_BUTTON_TEXT_ALIGN.start,
-        setup: (value) => setup({ attributes: { ['textAlign']: value } }),
+        setup: (value) => setup({attributes: {['textAlign']: value}}),
         ...config,
       });
 
-      it('should set a textAlign if attribute is added', async () => {
+      it('should set a textAlign if attribute is added', async() => {
         const randomTextAlign = ODS_BUTTON_TEXT_ALIGNS[Math.floor(Math.random() * ODS_BUTTON_TEXT_ALIGNS.length)];
-        await setup({ attributes: { textAlign: randomTextAlign } });
+        await setup({attributes: {textAlign: randomTextAlign}});
         expect(page.root?.textAlign).toBe(randomTextAlign);
       });
     });
   });
 
   describe('controller', () => {
-    it('should call controller.validateAttributes', async () => {
+    it('should call controller.validateAttributes', async() => {
       await setup();
       expect(controller.validateAttributes).toHaveBeenCalledWith();
       expect(controller.validateAttributes).toHaveBeenCalledTimes(1);
     });
 
-    it('should call handleClick of controller', async () => {
+    it('should call handleClick of controller', async() => {
       const click = new MouseEvent('click');
       await setup({});
       instance.handleClick(click);
 
-      page.root?.click()
+      page.root?.click();
 
       expect(controller.handleClick).toHaveBeenCalledTimes(2);
       expect(controller.handleClick).toHaveBeenCalledWith(click);
     });
 
-    it('should call handleKey of controller', async () => {
+    it('should call handleKey of controller', async() => {
       await setup({});
-      const key = new KeyboardEvent("keyup", { key : "Enter" });
+      const key = new KeyboardEvent('keyup', {key : 'Enter'});
       instance.handleKey(key);
 
       page.root?.dispatchEvent(key);

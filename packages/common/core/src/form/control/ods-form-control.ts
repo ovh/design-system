@@ -1,6 +1,6 @@
-import { isPromise } from '../../types/guard/ods-is-promise';
-import { OdsFormControlMethods } from './ods-form-control-methods';
-import { OdsValidityStateUnion } from './ods-form-control-type';
+import {isPromise} from '../../types/guard/ods-is-promise';
+import {OdsFormControlMethods} from './ods-form-control-methods';
+import {OdsValidityStateUnion} from './ods-form-control-type';
 
 export class OdsFormControl<ValidityState extends OdsValidityStateUnion> {
   private formControl?: OdsFormControlMethods<ValidityState>;
@@ -24,7 +24,7 @@ export class OdsFormControl<ValidityState extends OdsValidityStateUnion> {
     if (this.formControl) {
       const validityState = this.formControl.getValidity();
       if (isPromise(validityState)) {
-        return validityState.then(v => (v as any)[errorType]);
+        return validityState.then((v) => (v as any)[errorType]);
       } else {
         return new Promise((resolve) => resolve((validityState as any)[ errorType ]));
       }

@@ -1,6 +1,6 @@
-import type { OdsValidityState } from '@ovhcloud/ods-common-core'
-import type { OsdsSelect } from '../osds-select';
-import type { OsdsSelectOption, OdsSelectOptionClickEventDetail } from '../../osds-select-option/public-api';
+import type {OdsValidityState} from '@ovhcloud/ods-common-core';
+import type {OsdsSelect} from '../osds-select';
+import type {OdsSelectOptionClickEventDetail, OsdsSelectOption} from '../../osds-select-option/public-api';
 
 /**
  * common controller logic for select component used by the different implementations.
@@ -13,12 +13,13 @@ class OdsSelectController {
   public get selectOptions(): (HTMLElement & OsdsSelectOption)[] {
     return this._selectOptions;
   }
+
   public set selectOptions(value: (HTMLElement & OsdsSelectOption)[]) {
     this._selectOptions = value;
   }
 
   constructor(component: OsdsSelect) {
-    this.component = component
+    this.component = component;
   }
 
   /**
@@ -41,7 +42,7 @@ class OdsSelectController {
   syncReferences(): void {
     if (this.component.surface && this.component.anchor) {
       this.component.surface.setAnchorElement(this.component.anchor);
-      this.component.surface.setAnchorMargin({ bottom: 0 });
+      this.component.surface.setAnchorMargin({bottom: 0});
     }
   }
 
@@ -80,20 +81,20 @@ class OdsSelectController {
   handlerKeyDown(event: KeyboardEvent): void {
     const selectedSelectOptionIndex = this.selectOptions.findIndex((select) => select.getAttribute('selected') !== null || document.activeElement === select);
     switch (event.code) {
-      case 'Escape': {
-        this.selectOptions.forEach(s => s.removeAttribute('selected'))
-        this.selectOptions.find(s => s.value === this.component.value)?.setAttribute('selected', '');
-        return this.closeSurface();
-      }
-      case 'ArrowUp':
-      case 'ArrowDown':
-      case 'Tab':
-        return this.handlerKeyArrow(event, selectedSelectOptionIndex);
-      case 'Enter':
-      case 'NumpadEnter':
-        return this.handlerKeyEnter(this.selectOptions[selectedSelectOptionIndex]);
-      default:
-        break;
+    case 'Escape': {
+      this.selectOptions.forEach((s) => s.removeAttribute('selected'));
+      this.selectOptions.find((s) => s.value === this.component.value)?.setAttribute('selected', '');
+      return this.closeSurface();
+    }
+    case 'ArrowUp':
+    case 'ArrowDown':
+    case 'Tab':
+      return this.handlerKeyArrow(event, selectedSelectOptionIndex);
+    case 'Enter':
+    case 'NumpadEnter':
+      return this.handlerKeyEnter(this.selectOptions[selectedSelectOptionIndex]);
+    default:
+      break;
     }
   }
 
@@ -105,7 +106,7 @@ class OdsSelectController {
       this.selectOptions[index].focus();
       this.selectOptions[index].setAttribute('selected', '');
       event.preventDefault();
-    }
+    };
     const hasSelectedOption = selectedSelectOptionIndex !== -1;
     if (hasSelectedOption) {
       this.selectOptions[selectedSelectOptionIndex].removeAttribute('selected');
@@ -116,15 +117,15 @@ class OdsSelectController {
       if (index < 0 && (event.code === 'Tab' && event.shiftKey)) {
         return;
       } else if (index < 0) {
-        return focusSelectOption(this.selectOptions.length -1)
+        return focusSelectOption(this.selectOptions.length -1);
       }
       return focusSelectOption(index);
     }
     if (event.code === 'ArrowDown' || event.code === 'Tab') {
       const index = hasSelectedOption ? selectedSelectOptionIndex + 1 : 0;
       if (index >= this.selectOptions.length && event.code === 'Tab') {
-        this.selectOptions.forEach(s => s.removeAttribute('selected'))
-        this.selectOptions.find(s => s.value === this.component.value)?.setAttribute('selected', '');
+        this.selectOptions.forEach((s) => s.removeAttribute('selected'));
+        this.selectOptions.find((s) => s.value === this.component.value)?.setAttribute('selected', '');
         return this.closeSurface();
       } else if (index >= this.selectOptions.length) {
         return focusSelectOption(0);
@@ -140,7 +141,7 @@ class OdsSelectController {
     this.component.handleValueChange(new CustomEvent<OdsSelectOptionClickEventDetail>('odsSelectOptionClick', {
       detail: {
         value: selectOption.value,
-      }
+      },
     }));
     this.component.setFocus();
   }

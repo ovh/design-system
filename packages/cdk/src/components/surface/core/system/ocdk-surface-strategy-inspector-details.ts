@@ -1,4 +1,4 @@
-import { OcdkSurfaceAvailableSpaceFct } from '../../ocdk-surface-default-config';
+import {OcdkSurfaceAvailableSpaceFct} from '../../ocdk-surface-default-config';
 
 export interface OcdkSurfaceStrategyInspectorDetails<StrategyConfig> {
   /** space available at bottom of the anchor corner */

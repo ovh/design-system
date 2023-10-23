@@ -1,6 +1,6 @@
-import type { SpecPage } from '@stencil/core/testing';
-import { newSpecPage } from '@stencil/core/testing';
-import { OsdsPopoverContent } from './osds-popover-content';
+import type {SpecPage} from '@stencil/core/testing';
+import {newSpecPage} from '@stencil/core/testing';
+import {OsdsPopoverContent} from './osds-popover-content';
 
 describe('spec:osds-popover-content', () => {
   let page: SpecPage;
@@ -23,7 +23,7 @@ describe('spec:osds-popover-content', () => {
   async function setup() {
     page = await newSpecPage({
       components: [OsdsPopoverContent],
-      html: `<osds-popover-content></osds-popover-content>`,
+      html: '<osds-popover-content></osds-popover-content>',
     });
 
     root = page.root;
@@ -32,24 +32,24 @@ describe('spec:osds-popover-content', () => {
     findElements();
   }
 
-  it('should render', async () => {
+  it('should render', async() => {
     await setup();
     expect(root?.shadowRoot).toBeTruthy();
     expect(instance).toBeTruthy();
   });
 
   describe('contents', () => {
-    it('should have a header', async () => {
+    it('should have a header', async() => {
       await setup();
       expect(popoverContentHeaderSlot).toBeTruthy();
     });
 
-    it('should have an unnamed slot', async () => {
+    it('should have an unnamed slot', async() => {
       await setup();
       expect(popoverContentSlot).toBeTruthy();
     });
 
-    it('should have a footer', async () => {
+    it('should have a footer', async() => {
       await setup();
       expect(popoverContentFooterSlot).toBeTruthy();
     });

@@ -1,9 +1,9 @@
-import { html } from 'lit-html';
-import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-import { extractArgTypes, extractStoryParams, getTagAttributes, createComponentTable } from '../../../core/componentHTMLUtils';
-import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
-import { defineCustomElements } from '@ovhcloud/ods-components/message/loader';
-import { ODS_MESSAGE_TYPES } from '@ovhcloud/ods-components/message/src/components/osds-message/constants/message-type';
+import {html} from 'lit-html';
+import {unsafeHTML} from 'lit-html/directives/unsafe-html';
+import {createComponentTable, extractArgTypes, extractStoryParams, getTagAttributes} from '../../../core/componentHTMLUtils';
+import {ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS} from '@ovhcloud/ods-common-theming';
+import {defineCustomElements} from '@ovhcloud/ods-components/message/loader';
+import {ODS_MESSAGE_TYPES} from '@ovhcloud/ods-components/message/src/components/osds-message/constants/message-type';
 // @ts-ignore
 import changelog from '@ovhcloud/ods-components/message/CHANGELOG.md';
 // @ts-ignore
@@ -17,12 +17,12 @@ const storyParams = {
     category: 'General',
     defaultValue: ODS_THEME_COLOR_INTENT.default,
     options: ODS_THEME_COLOR_INTENTS,
-    control: { type: 'select' },
+    control: {type: 'select'},
   },
   type: {
     category: 'General',
     options: ODS_MESSAGE_TYPES,
-    control: { type: 'select' },
+    control: {type: 'select'},
   },
   messageContent: {
     category: 'Slot',
@@ -30,7 +30,7 @@ const storyParams = {
   },
   icon: {
     category: 'Misc',
-    defaultValue: ''
+    defaultValue: '',
   },
   removable: {
     category: 'Misc',
@@ -53,7 +53,7 @@ export default {
     notes: {
       changelog,
     },
-    docs: { page }
+    docs: {page},
   },
   argTypes: extractArgTypes(storyParams),
 };
@@ -72,7 +72,7 @@ Default.args = {
 };
 
 const defaultTag = 'osds-message';
-const defaultContent = `Text`;
+const defaultContent = 'Text';
 
 const TemplateAll = () => html`
 <style>
@@ -94,14 +94,14 @@ const TemplateAll = () => html`
 
 <h1>Types & Removable</h1>
 ${unsafeHTML(createComponentTable(
-  defaultTag,
-  { type: ODS_MESSAGE_TYPES },
-  { removable: [false, true] },
-  defaultContent,
-))}`;
+    defaultTag,
+    {type: ODS_MESSAGE_TYPES},
+    {removable: [false, true]},
+    defaultContent,
+  ))}`;
 
 export const All = TemplateAll.bind({});
 All.parameters = {
-  controls: { hideNoControlsWarning: true },
-  options: { showPanel: false },
+  controls: {hideNoControlsWarning: true},
+  options: {showPanel: false},
 };

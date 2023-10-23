@@ -1,4 +1,4 @@
-import type { ODS_TABS_SIZE } from '../constants/tabs-size';
+import type {ODS_TABS_SIZE} from '../constants/tabs-size';
 
 interface OdsTabsAttribute {
   /**

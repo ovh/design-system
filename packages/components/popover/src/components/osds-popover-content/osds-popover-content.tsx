@@ -1,4 +1,4 @@
-import { Component, Host, h } from '@stencil/core';
+import {Component, Host, h} from '@stencil/core';
 
 /**
  * @slot (unnamed) - PopoverContent content
@@ -6,7 +6,7 @@ import { Component, Host, h } from '@stencil/core';
 @Component({
   tag: 'osds-popover-content',
   styleUrl: 'osds-popover-content.scss',
-  shadow: true
+  shadow: true,
 })
 export class OsdsPopoverContent {
   render() {

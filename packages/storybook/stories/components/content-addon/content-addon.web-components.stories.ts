@@ -1,8 +1,8 @@
-import { html } from 'lit-html';
-import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-import { defineCustomElements } from '@ovhcloud/ods-components/content-addon/loader';
-import { defineCustomElements as tileCustomElements } from '@ovhcloud/ods-components/tile/loader';
-import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
+import {html} from 'lit-html';
+import {unsafeHTML} from 'lit-html/directives/unsafe-html';
+import {defineCustomElements} from '@ovhcloud/ods-components/content-addon/loader';
+import {defineCustomElements as tileCustomElements} from '@ovhcloud/ods-components/tile/loader';
+import {extractArgTypes, extractStoryParams, getTagAttributes} from '../../../core/componentHTMLUtils';
 // @ts-ignore
 import changelog from '@ovhcloud/ods-components/content-addon/CHANGELOG.md';
 // @ts-ignore
@@ -15,23 +15,23 @@ tileCustomElements();
 const defaultStoryParams = {
   start: {
     category: 'Slot',
-    defaultValue: 'start'
+    defaultValue: 'start',
   },
   main: {
     category: 'Slot',
-    defaultValue: 'main'
+    defaultValue: 'main',
   },
   end: {
     category: 'Slot',
-    defaultValue: 'end'
+    defaultValue: 'end',
   },
   top: {
     category: 'Slot',
-    defaultValue: 'top'
+    defaultValue: 'top',
   },
   bottom: {
     category: 'Slot',
-    defaultValue: 'bottom'
+    defaultValue: 'bottom',
   },
 };
 
@@ -39,23 +39,23 @@ const defaultStoryParams = {
 const pricingStoryParams = {
   start: {
     category: 'Slot',
-    defaultValue: 'now'
+    defaultValue: 'now',
   },
   main: {
     category: 'Slot',
-    defaultValue: '<strong>123.456,78€</strong>'
+    defaultValue: '<strong>123.456,78€</strong>',
   },
   end: {
     category: 'Slot',
-    defaultValue: 'only!'
+    defaultValue: 'only!',
   },
   top: {
     category: 'Slot',
-    defaultValue: 'From XX,XX€'
+    defaultValue: 'From XX,XX€',
   },
   bottom: {
     category: 'Slot',
-    defaultValue: 'ex. VAT/month'
+    defaultValue: 'ex. VAT/month',
   },
 };
 
@@ -66,8 +66,8 @@ export default {
     notes: {
       changelog,
     },
-    docs: { page },
-  }
+    docs: {page},
+  },
 };
 
 // A content addon example

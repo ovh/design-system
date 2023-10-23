@@ -1,10 +1,10 @@
-import { html } from 'lit-html';
-import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-import { defineCustomElements } from '@ovhcloud/ods-components/password/loader';
-import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
-import { ODS_INPUT_SIZES } from '@ovhcloud/ods-components/input';
-import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
-import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-components/password/src/components/osds-password/constants/default-attributes';
+import {html} from 'lit-html';
+import {unsafeHTML} from 'lit-html/directives/unsafe-html';
+import {defineCustomElements} from '@ovhcloud/ods-components/password/loader';
+import {extractArgTypes, extractStoryParams, getTagAttributes} from '../../../core/componentHTMLUtils';
+import {ODS_INPUT_SIZES} from '@ovhcloud/ods-components/input';
+import {ODS_THEME_COLOR_INTENTS} from '@ovhcloud/ods-common-theming';
+import {DEFAULT_ATTRIBUTE} from '@ovhcloud/ods-components/password/src/components/osds-password/constants/default-attributes';
 // @ts-ignore
 import changelog from '@ovhcloud/ods-components/password/CHANGELOG.md';
 // @ts-ignore
@@ -18,17 +18,17 @@ const storyParams = {
     category: 'General',
     defaultValue: DEFAULT_ATTRIBUTE.color,
     options: ODS_THEME_COLOR_INTENTS,
-    control: { type: 'select' },
+    control: {type: 'select'},
   },
   size: {
     category: 'General',
     defaultValue: DEFAULT_ATTRIBUTE.size,
     options: ODS_INPUT_SIZES,
-    control: { type: 'select' },
+    control: {type: 'select'},
   },
   value: {
     category: 'Misc',
-    control: { type: 'text' },
+    control: {type: 'text'},
   },
   inline: {
     category: 'Misc',
@@ -48,7 +48,7 @@ const storyParams = {
   },
   contrasted: {
     category: 'Misc',
-    defaultValue: false
+    defaultValue: false,
   },
   disabled: {
     category: 'Misc',
@@ -60,11 +60,11 @@ const storyParams = {
   },
   name: {
     category: 'Misc',
-    defaultValue: 'my-password'
+    defaultValue: 'my-password',
   },
   placeholder: {
     category: 'Misc',
-    defaultValue: 'Just ODS being ahead!'
+    defaultValue: 'Just ODS being ahead!',
   },
   required: {
     category: 'Misc',
@@ -73,7 +73,7 @@ const storyParams = {
   forbiddenValues: {
     category: 'Misc',
     defaultValue: [],
-    control: { type: 'array' },
+    control: {type: 'array'},
   },
 };
 
@@ -84,9 +84,9 @@ export default {
     notes: {
       changelog,
     },
-    docs: { page }
+    docs: {page},
   },
-  argTypes: extractArgTypes(storyParams)
+  argTypes: extractArgTypes(storyParams),
 };
 
 /* Default */
@@ -109,7 +109,7 @@ type Attributes = 'default' | 'clearable' | 'value="ODS ahead"' | 'value="ODS ah
 
 const attributeList: Attributes[] = [
   'default', 'clearable', 'value="ODS ahead"',
-  'value="ODS ahead" masked="false"', 'loading', 'loading disabled'
+  'value="ODS ahead" masked="false"', 'loading', 'loading disabled',
 ];
 
 const createTable = (contrasted: boolean, headerList: string[], itemMapper: (attribute: string) => string) => `
@@ -117,33 +117,33 @@ const createTable = (contrasted: boolean, headerList: string[], itemMapper: (att
     <thead>
       <tr>
         <td></td>
-        ${headerList.map(header => `<td style="padding:0.1em; ${contrasted && "color: #ffffff;"}">${header}</td>`).join('')}
+        ${headerList.map((header) => `<td style="padding:0.1em; ${contrasted && 'color: #ffffff;'}">${header}</td>`).join('')}
       </tr>
     </thead>
     <tbody>
-      ${attributeList.map(attribute =>
-        `<tr>
+      ${attributeList.map((attribute) =>
+    `<tr>
           <td style="padding:0.1em;  ${contrasted && 'color: #ffffff;'}">${attribute}</td>
           ${itemMapper(attribute)}
-        </tr>`
-      ).join('')}
+        </tr>`,
+  ).join('')}
     </tbody>
   </table>`;
 
 const TemplateAll = () => html`
   <section style="margin-bottom: 3em; padding: 1em;" @keydown=${(e: KeyboardEvent) => e.stopPropagation()}>
     <h2>[colors]</h2>
-    ${unsafeHTML(createTable(false, ODS_THEME_COLOR_INTENTS, (attribute) => ODS_THEME_COLOR_INTENTS.map(color =>
-      `<td style="padding:0.1em;">
+    ${unsafeHTML(createTable(false, ODS_THEME_COLOR_INTENTS, (attribute) => ODS_THEME_COLOR_INTENTS.map((color) =>
+    `<td style="padding:0.1em;">
         <osds-password color="${color}" placeholder="Enter text..." ${attribute}></osds-password>
-      </td>`).join('')
-    ))}
+      </td>`).join(''),
+  ))}
   </section>
 `;
 
 export const All = TemplateAll.bind({});
 // @ts-ignore
 All.parameters = {
-  controls: { hideNoControlsWarning: true },
-  options: { showPanel: false },
+  controls: {hideNoControlsWarning: true},
+  options: {showPanel: false},
 };

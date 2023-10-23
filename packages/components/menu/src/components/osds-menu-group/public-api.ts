@@ -1,1 +1,1 @@
-export { OsdsMenuGroup } from './osds-menu-group';
+export {OsdsMenuGroup} from './osds-menu-group';

@@ -1,15 +1,15 @@
-import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
-import { OdsClearLoggerSpy, OdsInitializeLoggerSpy, OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
-import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import { ODS_BUTTON_SIZE } from '../constants/button-size';
-import { ODS_BUTTON_VARIANT } from '../constants/button-variant';
-import { OdsButtonController } from './controller';
-import { OsdsButton } from '../osds-button';
+import {Ods, OdsLogger} from '@ovhcloud/ods-common-core';
+import {OdsClearLoggerSpy, OdsInitializeLoggerSpy, OdsLoggerSpyReferences} from '@ovhcloud/ods-common-testing';
+import {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
+import {ODS_BUTTON_SIZE} from '../constants/button-size';
+import {ODS_BUTTON_VARIANT} from '../constants/button-variant';
+import {OdsButtonController} from './controller';
+import {OsdsButton} from '../osds-button';
 
 class OdsButtonMock extends OsdsButton {
   constructor(attribute: Partial<OsdsButton>) {
     super();
-    Object.assign(this, attribute)
+    Object.assign(this, attribute);
   }
 }
 
@@ -29,7 +29,7 @@ describe('spec:ods-button-controller', () => {
     const loggerMocked = new OdsLogger('myLoggerMocked');
     loggerSpyReferences = OdsInitializeLoggerSpy({
       loggerMocked: loggerMocked as never,
-      spiedClass: OdsButtonController
+      spiedClass: OdsButtonController,
     });
   });
 
@@ -43,7 +43,7 @@ describe('spec:ods-button-controller', () => {
         setup({
           color: ODS_THEME_COLOR_INTENT.default,
           size: ODS_BUTTON_SIZE.md,
-          variant: ODS_BUTTON_VARIANT.flat
+          variant: ODS_BUTTON_VARIANT.flat,
         });
       });
 
@@ -86,7 +86,7 @@ describe('spec:ods-button-controller', () => {
     describe('methods:mutateAttributes', () => {
       beforeEach(() => {
         setup({
-          variant: ODS_BUTTON_VARIANT.flat
+          variant: ODS_BUTTON_VARIANT.flat,
         });
       });
 
@@ -104,6 +104,6 @@ describe('spec:ods-button-controller', () => {
 
         expect(component.variant).toBe(ODS_BUTTON_VARIANT.ghost);
       });
-    })
+    });
   });
 });

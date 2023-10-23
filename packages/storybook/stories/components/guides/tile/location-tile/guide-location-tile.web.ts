@@ -1,7 +1,7 @@
-import { html } from 'lit-html';
-import { defineCustomElements } from '@ovhcloud/ods-components/content-addon/loader';
-import { defineCustomElements as tileCustomElements } from '@ovhcloud/ods-components/tile/loader';
-import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
+import {html} from 'lit-html';
+import {defineCustomElements} from '@ovhcloud/ods-components/content-addon/loader';
+import {defineCustomElements as tileCustomElements} from '@ovhcloud/ods-components/tile/loader';
+import {ODS_THEME_COLOR_INTENTS} from '@ovhcloud/ods-common-theming';
 
 defineCustomElements();
 tileCustomElements();
@@ -12,29 +12,29 @@ export const storyParams = {
     category: 'General',
     options: ODS_THEME_COLOR_INTENTS,
     defaultValue: 'default',
-    control: { type: 'select' },
+    control: {type: 'select'},
   },
   variant: {
     category: 'General',
     options: ['horizontal', 'vertical'],
     defaultValue: 'vertical',
-    control: { type: 'select' },
+    control: {type: 'select'},
   },
   city: {
     category: 'Content',
-    defaultValue: 'City'
+    defaultValue: 'City',
   },
   country: {
     category: 'Content',
-    defaultValue: 'Country'
+    defaultValue: 'Country',
   },
   info: {
     category: 'Content',
-    defaultValue: 'Info'
+    defaultValue: 'Info',
   },
   iso: {
     category: 'Content',
-    defaultValue: 'fr'
+    defaultValue: 'fr',
   },
 };
 

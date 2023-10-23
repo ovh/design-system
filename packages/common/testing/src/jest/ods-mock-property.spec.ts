@@ -1,4 +1,4 @@
-import { odsMockProperty, odsUnmockProperty } from './ods-mock-property';
+import {odsMockProperty, odsUnmockProperty} from './ods-mock-property';
 
 describe('spec:ods-mock-property', () => {
   class MyClassA {
@@ -55,7 +55,7 @@ describe('spec:ods-mock-property', () => {
     odsUnmockProperty(MyClassA.prototype as unknown as MyClassAForTesting, 'myProp');
     odsUnmockProperty(MyClassA.prototype as unknown as MyClassAForTesting, 'myProp2');
     odsUnmockProperty(MyClassB.prototype as unknown as MyClassBForTesting, 'myProp');
-  })
+  });
 
   describe('property', () => {
     it('should override with undefined if not mocked with value', () => {

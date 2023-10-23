@@ -1,7 +1,7 @@
-import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
-import { OdsLogger } from '@ovhcloud/ods-common-core';
-import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
-import { OdsBreadcrumbController } from './controller';
+import type {OdsLoggerSpyReferences} from '@ovhcloud/ods-common-testing';
+import {OdsLogger} from '@ovhcloud/ods-common-core';
+import {OdsClearLoggerSpy, OdsInitializeLoggerSpy} from '@ovhcloud/ods-common-testing';
+import {OdsBreadcrumbController} from './controller';
 
 describe('ods-breadcrumb-controller', () => {
   let controller: OdsBreadcrumbController;
@@ -30,8 +30,8 @@ describe('ods-breadcrumb-controller', () => {
 
       it('should return all items non collapsed with last set', () => {
         const dummyItems = [
-          { href: 'dummy href 1'},
-          { href: 'dummy href 2'},
+          {href: 'dummy href 1'},
+          {href: 'dummy href 2'},
         ];
 
         expect(controller.getBreadcrumbItems(dummyItems, true)).toEqual([
@@ -52,12 +52,12 @@ describe('ods-breadcrumb-controller', () => {
 
       it('should return all middle items collapsed with last set', () => {
         const dummyItems = [
-          { href: 'dummy href 1'},
-          { href: 'dummy href 2'},
-          { href: 'dummy href 3'},
-          { href: 'dummy href 4'},
-          { href: 'dummy href 5'},
-          { href: 'dummy href 6'},
+          {href: 'dummy href 1'},
+          {href: 'dummy href 2'},
+          {href: 'dummy href 3'},
+          {href: 'dummy href 4'},
+          {href: 'dummy href 5'},
+          {href: 'dummy href 6'},
         ];
 
         expect(controller.getBreadcrumbItems(dummyItems, true)).toEqual([
@@ -102,12 +102,12 @@ describe('ods-breadcrumb-controller', () => {
 
       it('should return all items non collapsed if component is no more collapsed with last set', () => {
         const dummyItems = [
-          { href: 'dummy href 1'},
-          { href: 'dummy href 2'},
-          { href: 'dummy href 3'},
-          { href: 'dummy href 4'},
-          { href: 'dummy href 5'},
-          { href: 'dummy href 6'},
+          {href: 'dummy href 1'},
+          {href: 'dummy href 2'},
+          {href: 'dummy href 3'},
+          {href: 'dummy href 4'},
+          {href: 'dummy href 5'},
+          {href: 'dummy href 6'},
         ];
 
         expect(controller.getBreadcrumbItems(dummyItems, false)).toEqual([

@@ -1,8 +1,8 @@
-import type { OdsTabPanelAttribute } from '../interfaces/attributes';
+import type {OdsTabPanelAttribute} from '../interfaces/attributes';
 
 const DEFAULT_ATTRIBUTE: OdsTabPanelAttribute = Object.freeze({
-    active: false,
-    name: '',
+  active: false,
+  name: '',
 });
 
 export {

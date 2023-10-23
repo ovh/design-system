@@ -1,5 +1,5 @@
-import { OdsCreateTextAreaValidityState } from './ods-create-textarea-validity-state';
-import { OdsTextAreaUsedValidityState } from './ods-used-textarea-validity-state';
+import {OdsCreateTextAreaValidityState} from './ods-create-textarea-validity-state';
+import {OdsTextAreaUsedValidityState} from './ods-used-textarea-validity-state';
 
 /**
  * enumerate used property of ValidityState in an object.
@@ -13,7 +13,7 @@ export function OdsTextAreaGetValidityState(validityState?: ValidityState): OdsT
     return {
       valid: validityState.valid,
       valueMissing: validityState.valueMissing,
-      customError: validityState.customError
+      customError: validityState.customError,
     };
   }
 }

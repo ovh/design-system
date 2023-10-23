@@ -1,4 +1,4 @@
-import type { EventEmitter } from '@stencil/core';
+import type {EventEmitter} from '@stencil/core';
 
 interface OdsMessageEvent {
     /**
@@ -8,5 +8,5 @@ interface OdsMessageEvent {
 }
 
 export {
-    OdsMessageEvent,
+  OdsMessageEvent,
 };

@@ -1,5 +1,5 @@
-import type { ODS_THEME_COLOR_HUE } from '../constants/ods-theme-color-hue';
-import type { ODS_THEME_COLOR_INTENT } from '../constants/ods-theme-color-intent';
+import type {ODS_THEME_COLOR_HUE} from '../constants/ods-theme-color-hue';
+import type {ODS_THEME_COLOR_INTENT} from '../constants/ods-theme-color-intent';
 
 // TODO used only by text, keep or move to text?
 function odsGenerateColorVariable(

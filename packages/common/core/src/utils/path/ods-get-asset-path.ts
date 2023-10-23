@@ -1,4 +1,4 @@
-import { Ods } from '../../configure/ods';
+import {Ods} from '../../configure/ods';
 
 /**
  * modify the given path with the parameter of `ods`.

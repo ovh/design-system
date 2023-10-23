@@ -1,14 +1,14 @@
-import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
-import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
-import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
-import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import { OsdsToggle } from '../osds-toggle';
-import { OdsToggleController } from './controller';
+import type {OdsLoggerSpyReferences} from '@ovhcloud/ods-common-testing';
+import {OdsClearLoggerSpy, OdsInitializeLoggerSpy} from '@ovhcloud/ods-common-testing';
+import {Ods, OdsLogger} from '@ovhcloud/ods-common-core';
+import {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
+import {OsdsToggle} from '../osds-toggle';
+import {OdsToggleController} from './controller';
 
 class OdsToggleMock extends OsdsToggle {
   constructor(attribute: Partial<OsdsToggle>) {
     super();
-    Object.assign(this, attribute)
+    Object.assign(this, attribute);
   }
 
   controller: OdsToggleController = jest.fn() as unknown as OdsToggleController;
@@ -23,7 +23,7 @@ describe('spec:ods-toggle-controller', () => {
   Ods.instance().logging(false);
 
   function setup(attributes: Partial<OsdsToggle> = {}) {
-    component = new OdsToggleMock(attributes)
+    component = new OdsToggleMock(attributes);
     controller = new OdsToggleController(component);
   }
 
@@ -31,7 +31,7 @@ describe('spec:ods-toggle-controller', () => {
     const loggerMocked = new OdsLogger('myLoggerMocked');
     loggerSpyReferences = OdsInitializeLoggerSpy({
       loggerMocked: loggerMocked as never,
-      spiedClass: OdsToggleController
+      spiedClass: OdsToggleController,
     });
   });
 
@@ -42,7 +42,7 @@ describe('spec:ods-toggle-controller', () => {
   describe('methods', () => {
     beforeEach(() => {
       setup({
-        color: ODS_THEME_COLOR_INTENT.default
+        color: ODS_THEME_COLOR_INTENT.default,
       });
     });
 

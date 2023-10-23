@@ -1,4 +1,4 @@
-import { OcdkSurfaceOnePositionStrategy } from '../ocdk-surface-one-position-strategy';
+import {OcdkSurfaceOnePositionStrategy} from '../ocdk-surface-one-position-strategy';
 
 export interface OcdkSurfaceStrategyDefiner<StrategyConfig> {
   /**

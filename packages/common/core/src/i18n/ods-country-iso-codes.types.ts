@@ -250,9 +250,9 @@ enum ODS_COUNTRY_ISO_CODE {
   ZW = 'zw', // Zimbabwe
 }
 
-const ODS_COUNTRY_ISO_CODES =  Object.freeze(Object.values(ODS_COUNTRY_ISO_CODE));
+const ODS_COUNTRY_ISO_CODES = Object.freeze(Object.values(ODS_COUNTRY_ISO_CODE));
 
-export { 
+export {
   ODS_COUNTRY_ISO_CODE,
   ODS_COUNTRY_ISO_CODES,
-}
+};

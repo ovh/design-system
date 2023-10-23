@@ -1,21 +1,21 @@
-import type { E2EElement, E2EPage } from '@stencil/core/testing';
-import type { OdsTextAreaAttribute } from './interfaces/attributes';
-import type { OdsTextAreaValueChangeEvent } from './interfaces/events';
-import { newE2EPage } from '@stencil/core/testing';
-import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import type {E2EElement, E2EPage} from '@stencil/core/testing';
+import type {OdsTextAreaAttribute} from './interfaces/attributes';
+import type {OdsTextAreaValueChangeEvent} from './interfaces/events';
+import {newE2EPage} from '@stencil/core/testing';
+import {odsComponentAttributes2StringAttributes, odsStringAttributes2Str} from '@ovhcloud/ods-common-testing';
+import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
 
 describe('e2e:osds-textarea', () => {
-  const baseAttribute = { ariaLabel: null, hasFocus: false, spellcheck: false, value: '' }
+  const baseAttribute = {ariaLabel: null, hasFocus: false, spellcheck: false, value: ''};
   let page: E2EPage;
   let el: E2EElement;
   let textareaElement: E2EElement;
 
-  async function setup({ attributes = {}, onPage }: { attributes?: Partial<OdsTextAreaAttribute>, html?: string, onPage?: ({ page }: { page: E2EPage }) => void } = {}) {
-    const stringAttributes = odsComponentAttributes2StringAttributes<OdsTextAreaAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
+  async function setup({attributes = {}, onPage}: { attributes?: Partial<OdsTextAreaAttribute>, html?: string, onPage?: ({page}: { page: E2EPage }) => void } = {}) {
+    const stringAttributes = odsComponentAttributes2StringAttributes<OdsTextAreaAttribute>({...baseAttribute, ...attributes}, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
-    onPage && onPage({ page });
+    onPage && onPage({page});
 
     await page.setContent(`
       <osds-textarea ${odsStringAttributes2Str(stringAttributes)}>
@@ -29,23 +29,23 @@ describe('e2e:osds-textarea', () => {
   }
 
   describe('defaults', () => {
-    beforeEach(async () => {
+    beforeEach(async() => {
       await setup();
     });
 
-    it('should render', async () => {
+    it('should render', async() => {
       expect(el).not.toBeNull();
       expect(el).toHaveClass('hydrated');
     });
 
-    it('should have a textarea element', async () => {
+    it('should have a textarea element', async() => {
       expect(textareaElement).not.toBeNull();
     });
   });
 
   describe('method:setFocus', () => {
 
-    it('should set setFocus', async () => {
+    it('should set setFocus', async() => {
       await setup();
       await page.waitForChanges();
       let value = el.getAttribute('hasFocus');
@@ -81,7 +81,7 @@ describe('e2e:osds-textarea', () => {
         };
       });
 
-      it('should emit when component value property change', async () => {
+      it('should emit when component value property change', async() => {
         const newValue = 'Lorem ipsum';
         await setup();
         const odsValueChange = await el.spyOnEvent('odsValueChange');
@@ -99,7 +99,7 @@ describe('e2e:osds-textarea', () => {
         expect(odsValueChange).toHaveReceivedEventTimes(1);
       });
 
-      it('should emit if we write inside the textarea', async () => {
+      it('should emit if we write inside the textarea', async() => {
         const newValue = 'Lorem';
         await setup();
         const odsValueChange = await el.spyOnEvent('odsValueChange');
@@ -119,7 +119,7 @@ describe('e2e:osds-textarea', () => {
 
         expect(odsValueChange).toHaveReceivedEventDetail(expected);
         expect(odsValueChange).toHaveReceivedEventTimes(newValue.length + 1);
-      })
+      });
     });
   });
 });

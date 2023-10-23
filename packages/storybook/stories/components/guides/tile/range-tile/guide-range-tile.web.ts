@@ -1,11 +1,11 @@
-import { defineCustomElements as tileCustomElements } from '@ovhcloud/ods-components/tile/loader';
-import { defineCustomElements as radioCustomElements } from '@ovhcloud/ods-components/radio/loader';
-import { defineCustomElements as rangeCustomElements } from '@ovhcloud/ods-components/range/loader';
-import { defineCustomElements as inputCustomElements } from '@ovhcloud/ods-components/input/loader';
-import { defineCustomElements as textCustomElements } from '@ovhcloud/ods-components/text/loader';
-import { defineCustomElements as contentAddonCustomElements } from '@ovhcloud/ods-components/content-addon/loader';
-import { radioGroupArgs, RadioGroupPlay, RadioGroupTemplate } from './guide-range-tile.web.group';
-import { tileArgs, TilePlay, TileTemplate } from './guide-range-tile.web.tile';
+import {defineCustomElements as tileCustomElements} from '@ovhcloud/ods-components/tile/loader';
+import {defineCustomElements as radioCustomElements} from '@ovhcloud/ods-components/radio/loader';
+import {defineCustomElements as rangeCustomElements} from '@ovhcloud/ods-components/range/loader';
+import {defineCustomElements as inputCustomElements} from '@ovhcloud/ods-components/input/loader';
+import {defineCustomElements as textCustomElements} from '@ovhcloud/ods-components/text/loader';
+import {defineCustomElements as contentAddonCustomElements} from '@ovhcloud/ods-components/content-addon/loader';
+import {RadioGroupPlay, RadioGroupTemplate, radioGroupArgs} from './guide-range-tile.web.group';
+import {TilePlay, TileTemplate, tileArgs} from './guide-range-tile.web.tile';
 
 tileCustomElements();
 radioCustomElements();
@@ -40,7 +40,7 @@ export const storyParams = {
   .error-msg {
     display: none;
   }
-  `
+  `,
 };
 
 
@@ -49,7 +49,7 @@ export const RangeTileStory = TileTemplate.bind({});
 // @ts-ignore
 RangeTileStory.args = {
   ...storyParams,
-  ...tileArgs
+  ...tileArgs,
 };
 // @ts-ignore
 RangeTileStory.play = TilePlay;
@@ -60,7 +60,7 @@ export const RangeTileGroupStory = RadioGroupTemplate.bind({});
 // @ts-ignore
 RangeTileGroupStory.args = {
   ...storyParams,
-  ...radioGroupArgs
+  ...radioGroupArgs,
 };
 // @ts-ignore
 RangeTileGroupStory.play = RadioGroupPlay;

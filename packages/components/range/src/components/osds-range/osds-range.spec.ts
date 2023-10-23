@@ -1,22 +1,22 @@
 jest.mock('./core/controller'); // keep jest.mock before any
 
-import type { SpecPage } from '@stencil/core/testing';
-import type { OdsRangeAttribute } from './interfaces/attributes';
-import type { OdsRangeValueChangeEventDetail } from './interfaces/events';
-import { newSpecPage } from '@stencil/core/testing';
-import { OdsFormControl, OdsCreateDefaultValidityState } from '@ovhcloud/ods-common-core';
+import type {SpecPage} from '@stencil/core/testing';
+import type {OdsRangeAttribute} from './interfaces/attributes';
+import type {OdsRangeValueChangeEventDetail} from './interfaces/events';
+import {newSpecPage} from '@stencil/core/testing';
+import {OdsCreateDefaultValidityState, OdsFormControl} from '@ovhcloud/ods-common-core';
 import {
   OdsMockNativeMethod,
   OdsMockPropertyDescriptor,
-  odsStringAttributes2Str,
   OdsUnitTestAttributeType,
+  odsComponentAttributes2StringAttributes,
+  odsStringAttributes2Str,
   odsUnitTestAttribute,
-  odsComponentAttributes2StringAttributes
 } from '@ovhcloud/ods-common-testing';
-import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { OdsRangeController } from './core/controller';
-import { OsdsRange } from './osds-range';
+import {ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS} from '@ovhcloud/ods-common-theming';
+import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
+import {OdsRangeController} from './core/controller';
+import {OsdsRange} from './osds-range';
 
 // mock validity property that does not exist when stencil mock HTMLInputElement
 OdsMockPropertyDescriptor(HTMLInputElement.prototype, 'validity', () => OdsCreateDefaultValidityState());
@@ -37,15 +37,15 @@ describe('spec:osds-range', () => {
     step: 1,
     value: '',
     forbiddenValues: [],
-    formControl: undefined
+    formControl: undefined,
   };
 
 
-  async function setup({ attributes = {} }: { attributes?: Partial<OdsRangeAttribute> } = {}) {
-    const stringAttributes = odsComponentAttributes2StringAttributes<OdsRangeAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
+  async function setup({attributes = {}}: { attributes?: Partial<OdsRangeAttribute> } = {}) {
+    const stringAttributes = odsComponentAttributes2StringAttributes<OdsRangeAttribute>({...baseAttribute, ...attributes}, DEFAULT_ATTRIBUTE);
 
     // mock setCustomValidity method that does not exist when stencil mock HTMLInputElement
-    OdsMockNativeMethod(HTMLInputElement.prototype, "setCustomValidity", jest.fn());
+    OdsMockNativeMethod(HTMLInputElement.prototype, 'setCustomValidity', jest.fn());
 
     page = await newSpecPage({
       components: [OsdsRange],
@@ -61,7 +61,7 @@ describe('spec:osds-range', () => {
     jest.clearAllMocks();
   });
 
-  it('should render', async () => {
+  it('should render', async() => {
     await setup({});
     expect(root?.shadowRoot).toBeTruthy();
     expect(page.rootInstance).toBeTruthy();
@@ -81,13 +81,13 @@ describe('spec:osds-range', () => {
         defaultValue: DEFAULT_ATTRIBUTE.color,
         newValue: ODS_THEME_COLOR_INTENT.primary,
         value: ODS_THEME_COLOR_INTENT.default,
-        setup: (value) => setup({ attributes: { ['color']: value } }),
+        setup: (value) => setup({attributes: {['color']: value}}),
         ...config,
       });
 
-      it('should set a color if attribute is added', async () => {
+      it('should set a color if attribute is added', async() => {
         const randomColor = ODS_THEME_COLOR_INTENTS[Math.floor(Math.random() * ODS_THEME_COLOR_INTENTS.length)];
-        await setup({ attributes: { color: randomColor } });
+        await setup({attributes: {color: randomColor}});
         expect(page.root?.color).toBe(randomColor);
       });
     });
@@ -97,7 +97,7 @@ describe('spec:osds-range', () => {
         defaultValue: DEFAULT_ATTRIBUTE.disabled,
         newValue: false,
         value: true,
-        setup: (value) => setup({ attributes: { ['disabled']: value } }),
+        setup: (value) => setup({attributes: {['disabled']: value}}),
         ...config,
       });
     });
@@ -107,7 +107,7 @@ describe('spec:osds-range', () => {
         defaultValue: DEFAULT_ATTRIBUTE.inline,
         newValue: false,
         value: true,
-        setup: (value) => setup({ attributes: { ['inline']: value } }),
+        setup: (value) => setup({attributes: {['inline']: value}}),
         ...config,
       });
     });
@@ -117,7 +117,7 @@ describe('spec:osds-range', () => {
         defaultValue: DEFAULT_ATTRIBUTE.max,
         newValue: 50,
         value: 100,
-        setup: (value) => setup({ attributes: { ['max']: value } }),
+        setup: (value) => setup({attributes: {['max']: value}}),
         ...config,
       });
     });
@@ -128,7 +128,7 @@ describe('spec:osds-range', () => {
         defaultValue: DEFAULT_ATTRIBUTE.min,
         newValue: 0,
         value: 5,
-        setup: (value) => setup({ attributes: { ['min']: value } }),
+        setup: (value) => setup({attributes: {['min']: value}}),
         ...config,
       });
     });
@@ -139,7 +139,7 @@ describe('spec:osds-range', () => {
         defaultValue: DEFAULT_ATTRIBUTE.step,
         newValue: 1,
         value: 2,
-        setup: (value) => setup({ attributes: { ['step']: value } }),
+        setup: (value) => setup({attributes: {['step']: value}}),
         ...config,
       });
     });
@@ -150,7 +150,7 @@ describe('spec:osds-range', () => {
         defaultValue: DEFAULT_ATTRIBUTE.value,
         newValue: 4,
         value: 5,
-        setup: (value) => setup({ attributes: { ['value']: value } }),
+        setup: (value) => setup({attributes: {['value']: value}}),
         include: [OdsUnitTestAttributeType.MUTABLE],
         ...config,
       });
@@ -162,34 +162,34 @@ describe('spec:osds-range', () => {
         defaultValue: DEFAULT_ATTRIBUTE.value,
         newValue: [1,2],
         value: [3,4],
-        setup: (value) => setup({ attributes: { ['value']: value } }),
+        setup: (value) => setup({attributes: {['value']: value}}),
         exclude: [OdsUnitTestAttributeType.DEFAULT, OdsUnitTestAttributeType.MUTABLE, OdsUnitTestAttributeType.PROPERTY, OdsUnitTestAttributeType.REFLECTED],
         ...config,
       });
     });
   });
   describe('events', () => {
-    it('odsValueChange', async () => {
-      await setup({ attributes: {} });
+    it('odsValueChange', async() => {
+      await setup({attributes: {}});
       expect(instance.odsValueChange).toBeTruthy();
     });
   });
 
   describe('controller', () => {
     describe('lifecycle', () => {
-      it('should call beforeInit on init', async () => {
+      it('should call beforeInit on init', async() => {
         await setup({});
         expect(controller.beforeInit).toHaveBeenCalledTimes(1);
         expect(controller.beforeInit).toHaveBeenCalledWith();
       });
 
-      it('should call validateAttributes before render', async () => {
+      it('should call validateAttributes before render', async() => {
         await setup({});
         expect(controller.validateAttributes).toHaveBeenCalledTimes(1);
         expect(controller.validateAttributes).toHaveBeenCalledWith();
       });
 
-      it('should call initValue after render', async () => {
+      it('should call initValue after render', async() => {
         await setup({});
         expect(controller.initValue).toHaveBeenCalledTimes(1);
         expect(controller.initValue).toHaveBeenCalledWith();
@@ -197,7 +197,7 @@ describe('spec:osds-range', () => {
     });
 
     describe('events', () => {
-      it('should call onInput on input', async () => {
+      it('should call onInput on input', async() => {
         const event = new Event('');
         const inputEl = document.createElement('input');
         await setup({});
@@ -207,7 +207,7 @@ describe('spec:osds-range', () => {
         expect(controller.onInput).toHaveBeenCalledWith(event, inputEl, false);
       });
 
-      it('should call onKeyup on keyup', async () => {
+      it('should call onKeyup on keyup', async() => {
         const event = new KeyboardEvent('');
         const inputEl = document.createElement('input');
         await setup({});
@@ -217,7 +217,7 @@ describe('spec:osds-range', () => {
         expect(controller.onKeyup).toHaveBeenCalledWith(event, inputEl, false);
       });
 
-      it('should call handleClick on click', async () => {
+      it('should call handleClick on click', async() => {
         await setup({});
         instance?.handleClick();
 
@@ -231,7 +231,7 @@ describe('spec:osds-range', () => {
         const expected: OdsRangeValueChangeEventDetail = {
           value: newValue,
           oldValue,
-          validity: undefined
+          validity: undefined,
         };
         setup({});
         const spy = jest.spyOn(instance?.odsValueChange, 'emit');
@@ -243,7 +243,7 @@ describe('spec:osds-range', () => {
     });
 
     describe('methods', () => {
-      it('should call getRangeValidity from getValidity method', async () => {
+      it('should call getRangeValidity from getValidity method', async() => {
         await setup({});
         await instance.getValidity();
 
@@ -251,7 +251,7 @@ describe('spec:osds-range', () => {
         expect(controller.getRangeValidity).toHaveBeenCalledWith();
       });
 
-      it('should call hasError from hasError method', async () => {
+      it('should call hasError from hasError method', async() => {
         await setup({});
         instance?.hasError();
 
@@ -263,19 +263,19 @@ describe('spec:osds-range', () => {
     });
 
     describe('watchers', () => {
-      it('should call onFormControlChange on formControl change', async () => {
+      it('should call onFormControlChange on formControl change', async() => {
         const formControl = new OdsFormControl('id');
-        await setup({ attributes: { formControl: null } });
+        await setup({attributes: {formControl: null}});
         instance.formControl = formControl;
 
         expect(controller.onFormControlChange).toHaveBeenCalledTimes(1);
         expect(controller.onFormControlChange).toHaveBeenCalledWith(formControl);
       });
 
-      it('should call onValueChange on value change', async () => {
+      it('should call onValueChange on value change', async() => {
         const oldValue = 3;
         const newValue = 2;
-        await setup({ attributes: { value: oldValue }});
+        await setup({attributes: {value: oldValue}});
         instance.value = newValue;
 
         expect(controller.onValueChange).toHaveBeenCalledTimes(1);

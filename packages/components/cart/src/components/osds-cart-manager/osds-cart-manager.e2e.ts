@@ -1,27 +1,27 @@
-import type { E2EElement, E2EPage } from '@stencil/core/testing';
-import type { OdsCartManagerAttribute, OdsCartManagerItem, OdsCartManagerSection } from './interfaces/attributes';
-import { OdsI18nHook, OdsLogger } from '@ovhcloud/ods-common-core';
-import { newE2EPage } from '@stencil/core/testing';
-import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import type {E2EElement, E2EPage} from '@stencil/core/testing';
+import type {OdsCartManagerAttribute, OdsCartManagerItem, OdsCartManagerSection} from './interfaces/attributes';
+import {OdsI18nHook, OdsLogger} from '@ovhcloud/ods-common-core';
+import {newE2EPage} from '@stencil/core/testing';
+import {odsComponentAttributes2StringAttributes, odsStringAttributes2Str} from '@ovhcloud/ods-common-testing';
+import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
 
 const logger = new OdsLogger('osds-cart-manager-e2e');
 
 describe('e2e:osds-cart-manager', () => {
-  const baseAttribute = { sections: [] };
-  const odsCartItemA: OdsCartManagerItem = { title: 'item 1', price: 3000, vat: 300 };
+  const baseAttribute = {sections: []};
+  const odsCartItemA: OdsCartManagerItem = {title: 'item 1', price: 3000, vat: 300};
   let page: E2EPage;
   let el: E2EElement;
   let slotEmpty: E2EElement;
   let cartElement: E2EElement;
   let footerElement: E2EElement;
   let myPriceFormatter: (num: string | number | undefined) => string;
-  let myTranslations: { [key: string]: string };
-  let myTranslationSystem: (key: string, values: { [key: string]: string | number | undefined }) => string;
+  let myTranslations: Record<string, string>;
+  let myTranslationSystem: (key: string, values: Record<string, string | number | undefined>) => string;
   let i18n: OdsI18nHook;
 
-  async function setup({ attributes = {}, html = '' }: { attributes?: Partial<OdsCartManagerAttribute>, html?: string } = {}) {
-    const stringAttributes = odsComponentAttributes2StringAttributes<OdsCartManagerAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
+  async function setup({attributes = {}, html = ''}: { attributes?: Partial<OdsCartManagerAttribute>, html?: string } = {}) {
+    const stringAttributes = odsComponentAttributes2StringAttributes<OdsCartManagerAttribute>({...baseAttribute, ...attributes}, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
     await page.setContent(`<osds-cart-manager ${odsStringAttributes2Str(stringAttributes)}>${html}</osds-cart-manager>`);
@@ -49,7 +49,7 @@ describe('e2e:osds-cart-manager', () => {
 
     // translation system to replace with the application one
     myTranslationSystem = (key, values) => {
-      logger.log('[i18nHook] translating...', { key, values });
+      logger.log('[i18nHook] translating...', {key, values});
       let translation = myTranslations[key];
       Object.keys(values)
         .forEach((valueName) => {
@@ -71,13 +71,13 @@ describe('e2e:osds-cart-manager', () => {
 
   }
 
-  it('should render', async () => {
-    await setup({ attributes: {}, html: `` });
+  it('should render', async() => {
+    await setup({attributes: {}, html: ''});
     expect(el).not.toBeNull();
     expect(el).toHaveClass('hydrated');
   });
 
-  it('should display a title', async () => {
+  it('should display a title', async() => {
     await setup({
       attributes: {}, html: `
 <osds-cart-manager-header slot="header">
@@ -89,9 +89,9 @@ describe('e2e:osds-cart-manager', () => {
   });
 
 
-  it('should display the empty slot', async () => {
+  it('should display the empty slot', async() => {
     await setup({
-      attributes: {}, html: ``,
+      attributes: {}, html: '',
     });
 
     logger.log('empty', slotEmpty);
@@ -106,9 +106,9 @@ describe('e2e:osds-cart-manager', () => {
     // expect(slotEmpty).toBeFalsy();
   });
 
-  xit('should have a footer', async () => {
+  xit('should have a footer', async() => {
     await setup({
-      attributes: {}, html: ``,
+      attributes: {}, html: '',
     });
 
     logger.log('footer', footerElement);
@@ -119,17 +119,17 @@ describe('e2e:osds-cart-manager', () => {
 
     describe('getProductQuantity', () => {
 
-      it('should get the number of product', async () => {
+      it('should get the number of product', async() => {
         await setup({
-          attributes: {}, html: ``,
+          attributes: {}, html: '',
         });
 
         let quantity = await el.callMethod('getProductQuantity');
         expect(quantity).toBe(0);
 
         const sections: OdsCartManagerSection[] = [
-          { item: { ...odsCartItemA, title: 'a', price: 3000, product: true }, options: [] },
-          { item: { ...odsCartItemA, title: 'b', price: 3000 }, options: [{ title: 'c', price: 600, product: true }] },
+          {item: {...odsCartItemA, title: 'a', price: 3000, product: true}, options: []},
+          {item: {...odsCartItemA, title: 'b', price: 3000}, options: [{title: 'c', price: 600, product: true}]},
         ];
         el.setProperty('sections', sections);
 
@@ -142,19 +142,19 @@ describe('e2e:osds-cart-manager', () => {
 
     describe('getTotalAmount', () => {
 
-      it('should get the total amount', async () => {
+      it('should get the total amount', async() => {
         await setup({
-          attributes: {}, html: ``,
+          attributes: {}, html: '',
         });
 
         let price = await el.callMethod('getTotalAmount');
         expect(price).toBe(0);
 
         const sections: OdsCartManagerSection[] = [
-          { item: { ...odsCartItemA, title: 'a', price: 3000, vat: 600, product: true }, options: [] },
+          {item: {...odsCartItemA, title: 'a', price: 3000, vat: 600, product: true}, options: []},
           {
-            item: { ...odsCartItemA, title: 'b', price: 3000, vat: 600 },
-            options: [{ title: 'c', price: 600, vat: 120 }],
+            item: {...odsCartItemA, title: 'b', price: 3000, vat: 600},
+            options: [{title: 'c', price: 600, vat: 120}],
           },
         ];
         const vatMode = true;

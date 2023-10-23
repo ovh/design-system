@@ -1,13 +1,13 @@
-import type { OsdsQuantity } from '../osds-quantity';
-import type { OsdsInput } from '@ovhcloud/ods-component-input';
-import { OdsLogger } from '@ovhcloud/ods-common-core';
+import type {OsdsQuantity} from '../osds-quantity';
+import type {OsdsInput} from '@ovhcloud/ods-component-input';
+import {OdsLogger} from '@ovhcloud/ods-common-core';
 
 class OdsQuantityController {
-  private component: OsdsQuantity
+  private component: OsdsQuantity;
   private readonly logger = new OdsLogger('OsdsQuantityController');
 
   constructor(component: OsdsQuantity) {
-    this.component = component
+    this.component = component;
   }
 
   initInput(): void {
@@ -34,9 +34,9 @@ class OdsQuantityController {
       const minNb = Number(this.component.input.min);
       const maxNb = Number(this.component.input.max);
 
-      if (this.component.input.min !== "" && valueAsNb < minNb) {
+      if (this.component.input.min !== '' && valueAsNb < minNb) {
         this.component.input.value = minNb;
-      } else if (this.component.input.max !== "" && valueAsNb > maxNb) {
+      } else if (this.component.input.max !== '' && valueAsNb > maxNb) {
         this.component.input.value = maxNb;
       }
     }
@@ -48,12 +48,12 @@ class OdsQuantityController {
       const minNb = Number(this.component.input.min);
       const maxNb = Number(this.component.input.max);
 
-      if (this.component.input.value !== "") {
+      if (this.component.input.value !== '') {
         this.removeDisabled(this.component.minus, this.component.plus);
 
-        if (this.component.input.min !== "" && valueAsNb <= minNb) {
+        if (this.component.input.min !== '' && valueAsNb <= minNb) {
           this.setDisabled(this.component.minus);
-        } else if (this.component.input.max !== "" && valueAsNb >= maxNb) {
+        } else if (this.component.input.max !== '' && valueAsNb >= maxNb) {
           this.setDisabled(this.component.plus);
         }
       }
@@ -61,7 +61,7 @@ class OdsQuantityController {
   }
 
   setDisabledOnChildren(disabled: boolean) {
-    this.logger.log('disabled changed. update child', { disabled });
+    this.logger.log('disabled changed. update child', {disabled});
     if (this.component.minus && this.component.plus && this.component.input) {
       if (disabled) {
         this.setDisabled(this.component.minus, this.component.plus, this.component.input);
@@ -105,11 +105,11 @@ class OdsQuantityController {
   }
 
   private setDisabled(...elements: HTMLElement[]): void {
-    elements.forEach(el => el.setAttribute('disabled', ''));
+    elements.forEach((el) => el.setAttribute('disabled', ''));
   }
 
   private removeDisabled(...elements: HTMLElement[]): void {
-    elements.forEach(el => el.removeAttribute('disabled'));
+    elements.forEach((el) => el.removeAttribute('disabled'));
   }
 }
 

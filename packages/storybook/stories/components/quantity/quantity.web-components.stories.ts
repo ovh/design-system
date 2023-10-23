@@ -1,6 +1,6 @@
-import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
-import { defineCustomElements } from '@ovhcloud/ods-components/quantity/loader';
-import { html } from 'lit-html';
+import {extractArgTypes, extractStoryParams, getTagAttributes} from '../../../core/componentHTMLUtils';
+import {defineCustomElements} from '@ovhcloud/ods-components/quantity/loader';
+import {html} from 'lit-html';
 // @ts-ignore
 import changelog from '@ovhcloud/ods-components/quantity/CHANGELOG.md';
 // @ts-ignore
@@ -12,8 +12,8 @@ defineCustomElements();
 const storyParams = {
   disabled: {
     category: 'Misc',
-    defaultValue: false
-  }
+    defaultValue: false,
+  },
 };
 
 export default {
@@ -23,9 +23,9 @@ export default {
     notes: {
       changelog,
     },
-    docs: { page }
+    docs: {page},
   },
-  argTypes: extractArgTypes(storyParams)
+  argTypes: extractArgTypes(storyParams),
 };
 
 // A quantity example using osds-components
@@ -43,7 +43,7 @@ const TemplateDefault = (args: any) => html`
 export const Default = TemplateDefault.bind({});
 // @ts-ignore
 Default.args = {
-  ...extractStoryParams(storyParams)
+  ...extractStoryParams(storyParams),
 };
 
 // A quantity example using vanilla elements
@@ -57,5 +57,5 @@ const TemplateVariant = (args: any) => html`
 export const Variant = TemplateVariant.bind({});
 // @ts-ignore
 Variant.args = {
-  ...extractStoryParams(storyParams)
+  ...extractStoryParams(storyParams),
 };

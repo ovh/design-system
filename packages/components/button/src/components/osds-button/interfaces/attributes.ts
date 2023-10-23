@@ -1,9 +1,9 @@
-import type { OdsHTMLAnchorElementRel, OdsHTMLAnchorElementTarget } from '@ovhcloud/ods-common-core';
-import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import type { ODS_BUTTON_SIZE } from '../constants/button-size';
-import type { ODS_BUTTON_TYPE } from '../constants/button-type';
-import type { ODS_BUTTON_VARIANT } from '../constants/button-variant';
-import type { ODS_BUTTON_TEXT_ALIGN } from '../constants/button-text-align';
+import type {OdsHTMLAnchorElementRel, OdsHTMLAnchorElementTarget} from '@ovhcloud/ods-common-core';
+import type {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
+import type {ODS_BUTTON_SIZE} from '../constants/button-size';
+import type {ODS_BUTTON_TYPE} from '../constants/button-type';
+import type {ODS_BUTTON_VARIANT} from '../constants/button-variant';
+import type {ODS_BUTTON_TEXT_ALIGN} from '../constants/button-text-align';
 
 interface OdsButtonAttribute {
   /** use a circle shape */

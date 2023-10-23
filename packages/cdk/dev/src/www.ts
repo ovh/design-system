@@ -1,7 +1,7 @@
-import { Ods } from '@ovhcloud/ods-common-core';
-import { OcdkSurface, ocdkDefineCustomElements, OcdkSurfaceCorner } from '@ovhcloud/ods-cdk';
+import {Ods} from '@ovhcloud/ods-common-core';
+import {OcdkSurface, OcdkSurfaceCorner, ocdkDefineCustomElements} from '@ovhcloud/ods-cdk';
 import {
-  OcdkSurfaceCustomStrategyExample
+  OcdkSurfaceCustomStrategyExample,
 } from './components/surface/strategies/custom-example/ocdk-surface-custom-strategy-example';
 
 ocdkDefineCustomElements();
@@ -9,7 +9,7 @@ ocdkDefineCustomElements();
 const logger = new (Ods.instance().logger)('www');
 logger.log('init');
 
-(async () => {
+(async() => {
   await customElements.whenDefined('ocdk-surface');
 
   const overlayPreContent1 = document.getElementById('overlay-pre-content-1') as HTMLElement | null;
@@ -37,7 +37,7 @@ logger.log('init');
       // toggle the open of the surface
       basicSurface1.opened = !basicSurface1.opened;
     }
-  }
+  };
 
   const customStrategyInstance = new OcdkSurfaceCustomStrategyExample();
   (window as any).basic2Toggle = () => {
@@ -48,16 +48,16 @@ logger.log('init');
       // toggle the open of the surface
       basicSurface2.opened = !basicSurface2.opened;
     }
-  }
+  };
 
   (window as any).basic3Toggle = () => {
     // synchronize the trigger element (anchor) with the surface when both are available
     if (basicTrigger3 && basicSurface3) {
-      basicSurface3.setCornerPoints({ anchor: OcdkSurfaceCorner.TOP_LEFT, origin: OcdkSurfaceCorner.TOP_RIGHT });
+      basicSurface3.setCornerPoints({anchor: OcdkSurfaceCorner.TOP_LEFT, origin: OcdkSurfaceCorner.TOP_RIGHT});
       // toggle the open of the surface
       basicSurface3.opened = !basicSurface3.opened;
     }
-  }
+  };
 
   (window as any).basic4Toggle = () => {
     // synchronize the trigger element (anchor) with the surface when both are available
@@ -66,7 +66,7 @@ logger.log('init');
       // toggle the open of the surface
       basicSurface4.opened = !basicSurface4.opened;
     }
-  }
+  };
 
   (window as any).basic5Toggle = () => {
     // synchronize the trigger element (anchor) with the surface when both are available
@@ -75,7 +75,7 @@ logger.log('init');
       // toggle the open of the surface
       basicSurface5.opened = !basicSurface5.opened;
     }
-  }
+  };
 
   (window as any).basic6Toggle = () => {
     // synchronize the trigger element (anchor) with the surface when both are available
@@ -84,7 +84,7 @@ logger.log('init');
       // toggle the open of the surface
       basicSurface6.opened = !basicSurface6.opened;
     }
-  }
+  };
 
   (window as any).changePosition = () => {
     logger.log('changePosition');
@@ -98,7 +98,7 @@ logger.log('init');
         overlayTrigger1.style.textAlign = 'right';
       }
     }
-  }
+  };
 
   (window as any).generateContent = () => {
     logger.log('generateContent');
@@ -107,5 +107,5 @@ logger.log('init');
       overlayPreContent1.innerHTML += arr.join('');
       overlayPostContent1.innerHTML += arr.join('');
     }
-  }
+  };
 })();

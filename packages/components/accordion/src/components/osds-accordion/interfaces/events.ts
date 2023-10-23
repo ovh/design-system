@@ -1,4 +1,4 @@
-import type { EventEmitter } from '@stencil/core';
+import type {EventEmitter} from '@stencil/core';
 
 interface OdsAccordionEvent {
   /**
@@ -13,4 +13,4 @@ type OdsAccordionToggleEvent = CustomEvent<OdsAccordionEvent['odsAccordionToggle
 export {
   OdsAccordionEvent,
   OdsAccordionToggleEvent,
-}
+};

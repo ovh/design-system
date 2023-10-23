@@ -1,6 +1,6 @@
-import { OcdkSurface } from '@ovhcloud/ods-cdk';
+import {OcdkSurface} from '@ovhcloud/ods-cdk';
 
-(async () => {
+(async() => {
   await customElements.whenDefined('ocdk-surface');
   const basicTrigger1 = document.getElementById('basic-trigger-1');
   const basicSurface1 = document.getElementById('basic-surface-1') as OcdkSurface;
@@ -12,5 +12,5 @@ import { OcdkSurface } from '@ovhcloud/ods-cdk';
     }
     // toggle the open of the surface
     basicSurface1.opened = !basicSurface1.opened;
-  }
+  };
 })();

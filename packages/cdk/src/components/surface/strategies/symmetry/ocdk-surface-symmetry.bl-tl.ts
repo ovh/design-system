@@ -1,11 +1,11 @@
-import { OcdkSurfaceSymmetryConfig } from './ocdk-surface-symmetry-strategy';
-import { OcdkSurfaceNormalizedCorner } from '../../core/ocdk-surface-normalized-corner';
-import { OcdkLogger } from '../../../../logger/ocdk-logger';
-import { OcdkSurfaceSymmetryStrategyHelpers } from './ocdk-surface-symmetry-strategy.helpers';
+import {OcdkSurfaceSymmetryConfig} from './ocdk-surface-symmetry-strategy';
+import {OcdkSurfaceNormalizedCorner} from '../../core/ocdk-surface-normalized-corner';
+import {OcdkLogger} from '../../../../logger/ocdk-logger';
+import {OcdkSurfaceSymmetryStrategyHelpers} from './ocdk-surface-symmetry-strategy.helpers';
 import {
-  isOcdkSurfaceStrategyComputeResultPosition
+  isOcdkSurfaceStrategyComputeResultPosition,
 } from '../../core/system/ocdk-surface-strategy-compute-result-position';
-import { OcdkSurfaceOnePositionStrategy } from '../../core/ocdk-surface-one-position-strategy';
+import {OcdkSurfaceOnePositionStrategy} from '../../core/ocdk-surface-one-position-strategy';
 
 /**
  * ```
@@ -25,7 +25,7 @@ export function ocdkSurfaceSymmetryBlTl(): OcdkSurfaceOnePositionStrategy<OcdkSu
   const helpers = OcdkSurfaceSymmetryStrategyHelpers;
 
   return {
-    cornerPoints: { anchor: OcdkSurfaceNormalizedCorner.BOTTOM_LEFT, origin: OcdkSurfaceNormalizedCorner.TOP_LEFT },
+    cornerPoints: {anchor: OcdkSurfaceNormalizedCorner.BOTTOM_LEFT, origin: OcdkSurfaceNormalizedCorner.TOP_LEFT},
     STRATEGIES: {
       standard: {
         inspectors: {
@@ -33,8 +33,8 @@ export function ocdkSurfaceSymmetryBlTl(): OcdkSurfaceOnePositionStrategy<OcdkSu
             availableTop: (opt) => opt.measurements.viewportDistance.top - opt.config.anchorMargin.top - opt.config.MARGIN_TO_EDGE_COMFORT + opt.measurements.anchorSize.height,
             availableBottom: (opt) => opt.measurements.viewportDistance.bottom - opt.config.anchorMargin.bottom - opt.config.MARGIN_TO_EDGE_COMFORT,
             availableLeft: (opt) => opt.measurements.viewportDistance.left - opt.config.anchorMargin.left - opt.config.MARGIN_TO_EDGE_COMFORT,
-            availableRight: (opt) => opt.measurements.viewportDistance.right - opt.config.anchorMargin.right - opt.config.MARGIN_TO_EDGE_COMFORT + opt.measurements.anchorSize.width
-          }
+            availableRight: (opt) => opt.measurements.viewportDistance.right - opt.config.anchorMargin.right - opt.config.MARGIN_TO_EDGE_COMFORT + opt.measurements.anchorSize.width,
+          },
         },
         appliers: {
           maxHeight: (opt) => opt.inspections.comfort.availableBottom,
@@ -42,8 +42,8 @@ export function ocdkSurfaceSymmetryBlTl(): OcdkSurfaceOnePositionStrategy<OcdkSu
           verticalOffset: (opt) => opt.measurements.anchorSize.height + opt.config.anchorMargin.bottom,
           verticalAlignment: 'top',
           horizontalOffset: () => 0,
-          horizontalAlignment: 'left'
-        }
+          horizontalAlignment: 'left',
+        },
       },
       /**
        * The main idea is to keep as much as possible the original principle: surface is below.
@@ -104,10 +104,10 @@ export function ocdkSurfaceSymmetryBlTl(): OcdkSurfaceOnePositionStrategy<OcdkSu
       FALLBACK: {
         inspectors: {
           comfort: {
-            availableBottom: (opt) => opt.measurements.viewportSize.height - 2 * opt.config.MARGIN_TO_EDGE_COMFORT
+            availableBottom: (opt) => opt.measurements.viewportSize.height - 2 * opt.config.MARGIN_TO_EDGE_COMFORT,
           },
           limit: {
-            availableBottom: (opt) => opt.measurements.viewportSize.height - 2 * opt.config.MARGIN_TO_EDGE_LIMIT
+            availableBottom: (opt) => opt.measurements.viewportSize.height - 2 * opt.config.MARGIN_TO_EDGE_LIMIT,
           },
         },
         appliers: {
@@ -116,8 +116,8 @@ export function ocdkSurfaceSymmetryBlTl(): OcdkSurfaceOnePositionStrategy<OcdkSu
           verticalOffset: (opt) => helpers.symmetryFallbackVerticalOffset(opt, opt.inspections.comfort.availableBottom, opt.inspections.limit.availableBottom, true),
           verticalAlignment: 'top',
           horizontalOffset: () => 0,
-          horizontalAlignment: 'left'
-        }
+          horizontalAlignment: 'left',
+        },
       },
       COMPUTE: (opt) => {
         loggerSymmetry.log('[COMPUTE] position BOTTOM_LEFT TOP_LEFT');
@@ -131,27 +131,27 @@ export function ocdkSurfaceSymmetryBlTl(): OcdkSurfaceOnePositionStrategy<OcdkSu
             return {
               cornerPoints: {
                 anchor: OcdkSurfaceNormalizedCorner.TOP_RIGHT,
-                origin: OcdkSurfaceNormalizedCorner.BOTTOM_RIGHT
-              }
+                origin: OcdkSurfaceNormalizedCorner.BOTTOM_RIGHT,
+              },
             };
           }
           return {
             cornerPoints: {
               anchor: OcdkSurfaceNormalizedCorner.TOP_LEFT,
-              origin: OcdkSurfaceNormalizedCorner.BOTTOM_LEFT
-            }
+              origin: OcdkSurfaceNormalizedCorner.BOTTOM_LEFT,
+            },
           };
         } else if (opt.measurements.surfaceSize.width > opt.inspections.comfort.availableRight) {
           return {
             cornerPoints: {
               anchor: OcdkSurfaceNormalizedCorner.BOTTOM_RIGHT,
-              origin: OcdkSurfaceNormalizedCorner.TOP_RIGHT
-            }
+              origin: OcdkSurfaceNormalizedCorner.TOP_RIGHT,
+            },
           };
         }
         return; // no position switching: apply the current one
-      }
+      },
 
-    }
+    },
   };
 }

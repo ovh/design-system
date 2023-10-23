@@ -1,6 +1,6 @@
-import { html } from 'lit-html';
-import { defineCustomElements } from '@ovhcloud/ods-components/popover/loader';
-import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
+import {html} from 'lit-html';
+import {defineCustomElements} from '@ovhcloud/ods-components/popover/loader';
+import {extractArgTypes, extractStoryParams, getTagAttributes} from '../../../core/componentHTMLUtils';
 // @ts-ignore
 import changelog from '@ovhcloud/ods-components/popover/CHANGELOG.md';
 // @ts-ignore
@@ -20,9 +20,9 @@ export default {
     notes: {
       changelog,
     },
-    docs: { page }
+    docs: {page},
   },
-  argTypes: extractArgTypes(storyParams)
+  argTypes: extractArgTypes(storyParams),
 };
 
 /* Default */
@@ -42,7 +42,7 @@ const TemplateDefault = (args:any) => {
       </osds-popover-content>
     </osds-popover>
   `;
-}
+};
 export const Default = TemplateDefault.bind({});
 // @ts-ignore
 Default.args = {

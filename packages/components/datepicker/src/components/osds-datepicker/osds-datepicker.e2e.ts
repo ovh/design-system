@@ -1,17 +1,17 @@
-import type { E2EElement, E2EPage } from '@stencil/core/testing';
-import type { OdsDatepickerAttribute } from './interfaces/attributes';
-import type { OsdsDatepicker } from './osds-datepicker';
-import { newE2EPage } from '@stencil/core/testing';
-import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
-import { ODS_DATEPICKER_DAY } from './constants/datepicker-day';
-import { ODS_DATEPICKER_LOCALE } from './constants/datepicker-locale';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import type {E2EElement, E2EPage} from '@stencil/core/testing';
+import type {OdsDatepickerAttribute} from './interfaces/attributes';
+import type {OsdsDatepicker} from './osds-datepicker';
+import {newE2EPage} from '@stencil/core/testing';
+import {odsComponentAttributes2StringAttributes, odsStringAttributes2Str} from '@ovhcloud/ods-common-testing';
+import {ODS_DATEPICKER_DAY} from './constants/datepicker-day';
+import {ODS_DATEPICKER_LOCALE} from './constants/datepicker-locale';
+import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
 
 describe('e2e:osds-datepicker', () => {
   let page: E2EPage;
   let el: E2EElement;
 
-  async function setup({ attributes }: { attributes: Partial<OdsDatepickerAttribute> }) {
+  async function setup({attributes}: { attributes: Partial<OdsDatepickerAttribute> }) {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsDatepickerAttribute>(attributes, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
@@ -35,7 +35,7 @@ describe('e2e:osds-datepicker', () => {
         minDateJSON && (datepicker.minDate = new Date(JSON.parse(minDateJSON)));
         valueJSON && (datepicker.value = new Date(JSON.parse(valueJSON)));
       },
-      JSON.stringify(attributes.datesDisabled?.map(date => date.toISOString())),
+      JSON.stringify(attributes.datesDisabled?.map((date) => date.toISOString())),
       JSON.stringify(attributes.daysOfWeekDisabled),
       JSON.stringify(attributes.maxDate?.toISOString()),
       JSON.stringify(attributes.minDate?.toISOString()),
@@ -51,16 +51,16 @@ describe('e2e:osds-datepicker', () => {
     return value ? new Date(value) : null;
   }
 
-  it('should render', async () => {
-    await setup({ attributes: {} });
+  it('should render', async() => {
+    await setup({attributes: {}});
     await page.waitForChanges();
     expect(el).not.toBeNull();
     expect(el).toHaveClass('hydrated');
   });
 
-  it('should render with a value', async () => {
+  it('should render with a value', async() => {
     const date = new Date('1999-11-02');
-    await setup({ attributes: { value: date } });
+    await setup({attributes: {value: date}});
     await page.waitForChanges();
     expect(el).not.toBeNull();
     expect(el).toHaveClass('hydrated');
@@ -68,17 +68,17 @@ describe('e2e:osds-datepicker', () => {
     expect(value).toEqual(date);
   });
 
-  it('should display a datepicker when focused', async () => {
-    await setup({ attributes: {} });
+  it('should display a datepicker when focused', async() => {
+    await setup({attributes: {}});
     await el.click();
     await page.waitForChanges();
     const datepicker = await page.find('osds-datepicker >>> .datepicker');
     expect(datepicker).not.toBeNull();
   });
 
-  it('should allow datepicker to be cleared when clearable is true', async () => {
+  it('should allow datepicker to be cleared when clearable is true', async() => {
     const date = new Date('1999-11-02');
-    await setup({ attributes: { clearable: true, value: date } });
+    await setup({attributes: {clearable: true, value: date}});
     await el.click();
     await page.waitForChanges();
     let value = await getDatepickerValue();
@@ -90,15 +90,15 @@ describe('e2e:osds-datepicker', () => {
     expect(value).toEqual(date);
   });
 
-  it('should be disabled when disabled attribute is true', async () => {
-    await setup({ attributes: { disabled: true } });
+  it('should be disabled when disabled attribute is true', async() => {
+    await setup({attributes: {disabled: true}});
     const datepicker = await page.find('osds-datepicker');
     await page.waitForChanges();
     expect(datepicker).toHaveAttribute('disabled');
   });
 
-  it('should update the value when date is selected from the datepicker', async () => {
-    await setup({ attributes: {} });
+  it('should update the value when date is selected from the datepicker', async() => {
+    await setup({attributes: {}});
     await page.waitForChanges();
     let value = await getDatepickerValue();
     expect(value).toBe(null);
@@ -111,8 +111,8 @@ describe('e2e:osds-datepicker', () => {
     expect(value).toBeInstanceOf(Date);
   });
 
-  it('should format date according to format attribute', async () => {
-    await setup({ attributes: { format: 'yyyy/mm/dd' } });
+  it('should format date according to format attribute', async() => {
+    await setup({attributes: {format: 'yyyy/mm/dd'}});
     await el.click();
     await page.waitForChanges();
     const dateButton = await page.find('osds-datepicker >>> .datepicker .datepicker-grid .datepicker-cell:first-child');
@@ -123,8 +123,8 @@ describe('e2e:osds-datepicker', () => {
     expect(inputValue).toMatch(/^\d{4}\/\d{2}\/\d{2}$/);
   });
 
-  it('should display a datepicker with a selected date when value is updated', async () => {
-    await setup({ attributes: {} });
+  it('should display a datepicker with a selected date when value is updated', async() => {
+    await setup({attributes: {}});
     await el.click();
     await page.waitForChanges();
     const dateButton = await page.find('osds-datepicker >>> .datepicker .datepicker-grid .datepicker-cell:first-child');
@@ -134,8 +134,8 @@ describe('e2e:osds-datepicker', () => {
     expect(selectedDate).not.toBeNull();
   });
 
-  it('should display the months grid when the view is switched', async () => {
-    await setup({ attributes: {} });
+  it('should display the months grid when the view is switched', async() => {
+    await setup({attributes: {}});
     await el.click();
     await page.waitForChanges();
     const viewSwitch = await page.find('osds-datepicker >>> .datepicker .datepicker-controls .view-switch');
@@ -145,8 +145,8 @@ describe('e2e:osds-datepicker', () => {
     expect(monthGrid).not.toBeNull();
   });
 
-  it('should display the years grid when the view is switched', async () => {
-    await setup({ attributes: {} });
+  it('should display the years grid when the view is switched', async() => {
+    await setup({attributes: {}});
     await el.click();
     await page.waitForChanges();
     const viewSwitch = await page.find('osds-datepicker >>> .datepicker .datepicker-controls .view-switch');
@@ -158,8 +158,8 @@ describe('e2e:osds-datepicker', () => {
     expect(yearGrid).not.toBeNull();
   });
 
-  it('should *not* display the decade grid when the view is switched', async () => {
-    await setup({ attributes: {} });
+  it('should *not* display the decade grid when the view is switched', async() => {
+    await setup({attributes: {}});
     await el.click();
     await page.waitForChanges();
     const viewSwitch = await page.find('osds-datepicker >>> .datepicker .datepicker-controls .view-switch');
@@ -173,8 +173,8 @@ describe('e2e:osds-datepicker', () => {
     expect(decadeGrid).toBeNull();
   });
 
-  it('should disable the desired days of the week', async () => {
-    await setup({ attributes: { daysOfWeekDisabled: [ODS_DATEPICKER_DAY.saturday, ODS_DATEPICKER_DAY.sunday] } });
+  it('should disable the desired days of the week', async() => {
+    await setup({attributes: {daysOfWeekDisabled: [ODS_DATEPICKER_DAY.saturday, ODS_DATEPICKER_DAY.sunday]}});
     await el.click();
     await page.waitForChanges();
     let dateButton = await page.find('osds-datepicker >>> .datepicker .datepicker-grid .datepicker-cell:nth-child(3)');
@@ -183,15 +183,15 @@ describe('e2e:osds-datepicker', () => {
     expect(dateButton).toHaveClass('disabled');
   });
 
-  it('should *not* allow to select out of scope date', async () => {
+  it('should *not* allow to select out of scope date', async() => {
     const date = new Date('2024-01-15');
-    await setup({ attributes: {
+    await setup({attributes: {
       datesDisabled: [new Date('2024-01-11'), new Date('2024-01-17')],
       daysOfWeekDisabled: [ODS_DATEPICKER_DAY.saturday, ODS_DATEPICKER_DAY.sunday],
       maxDate: new Date('2024-01-25'),
       minDate: new Date('2024-01-10'),
       value: date,
-    } });
+    }});
     await page.waitForChanges();
     await el.click();
     await page.waitForChanges();
@@ -205,15 +205,15 @@ describe('e2e:osds-datepicker', () => {
     expect(value).toEqual(date);
   });
 
-  it('should allow to select inside of scope date', async () => {
+  it('should allow to select inside of scope date', async() => {
     const date = new Date('2024-01-15');
-    await setup({ attributes: {
+    await setup({attributes: {
       datesDisabled: [new Date('2024-01-11'), new Date('2024-01-17')],
       daysOfWeekDisabled: [ODS_DATEPICKER_DAY.saturday, ODS_DATEPICKER_DAY.sunday],
       maxDate: new Date('2024-01-25'),
       minDate: new Date('2024-01-10'),
       value: date,
-    } });
+    }});
     await page.waitForChanges();
     await el.click();
     await page.waitForChanges();
@@ -227,27 +227,27 @@ describe('e2e:osds-datepicker', () => {
     expect(value).toEqual(new Date('2024-01-16'));
   });
 
-  it('should disable dates before the minDate', async () => {
-    await setup({ attributes: { minDate: new Date('2023-05-10'), value: new Date('2023-05-15') } });
+  it('should disable dates before the minDate', async() => {
+    await setup({attributes: {minDate: new Date('2023-05-10'), value: new Date('2023-05-15')}});
     await el.click();
     await page.waitForChanges();
-    const beforeMinDateButton = await page.find(`osds-datepicker >>> .datepicker .datepicker-grid .datepicker-cell:first-child`);
+    const beforeMinDateButton = await page.find('osds-datepicker >>> .datepicker .datepicker-grid .datepicker-cell:first-child');
     expect(beforeMinDateButton).toHaveClass('disabled');
   });
 
-  it('should disable dates after the maxDate', async () => {
-    await setup({ attributes: { maxDate: new Date('2023-05-20'), value: new Date('2023-05-15') } });
+  it('should disable dates after the maxDate', async() => {
+    await setup({attributes: {maxDate: new Date('2023-05-20'), value: new Date('2023-05-15')}});
     await el.click();
     await page.waitForChanges();
-    const afterMaxDateButton = await page.find(`osds-datepicker >>> .datepicker .datepicker-grid .datepicker-cell:last-child`);
+    const afterMaxDateButton = await page.find('osds-datepicker >>> .datepicker .datepicker-grid .datepicker-cell:last-child');
     expect(afterMaxDateButton).toHaveClass('disabled');
   });
 
-  it('should change the displayed locale', async () => {
-    await setup({ attributes: { locale: ODS_DATEPICKER_LOCALE.FR, value: new Date('2023-05-15') } });
+  it('should change the displayed locale', async() => {
+    await setup({attributes: {locale: ODS_DATEPICKER_LOCALE.FR, value: new Date('2023-05-15')}});
     await el.click();
     await page.waitForChanges();
-    const monthSelector = await page.find(`osds-datepicker >>> .datepicker-controls .view-switch`);
+    const monthSelector = await page.find('osds-datepicker >>> .datepicker-controls .view-switch');
     expect(monthSelector.innerText).toBe('mai 2023');
   });
 });

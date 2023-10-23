@@ -1,7 +1,7 @@
-import { OcdkSurfaceDimensions } from './ocdk-surface-dimensions';
-import { OcdkSurfacePoint } from './ocdk-surface-point';
-import { OcdkSurfaceDistance } from './ocdk-surface-distance';
-import { OcdkSurfaceMaxDimensions } from './ocdk-surface-max-dimensions';
+import {OcdkSurfaceDimensions} from './ocdk-surface-dimensions';
+import {OcdkSurfacePoint} from './ocdk-surface-point';
+import {OcdkSurfaceDistance} from './ocdk-surface-distance';
+import {OcdkSurfaceMaxDimensions} from './ocdk-surface-max-dimensions';
 
 export interface OcdkAutoLayoutMeasurements {
   anchorSize: OcdkSurfaceDimensions;

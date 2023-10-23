@@ -1,5 +1,5 @@
-import { Ocdk } from './ocdk';
-import { OcdkConfig } from './ocdk-config';
+import {Ocdk} from './ocdk';
+import {OcdkConfig} from './ocdk-config';
 
 /**
  * Content of the main `OcdkInitialized` event.

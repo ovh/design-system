@@ -1,5 +1,5 @@
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
+import {defineConfig} from 'vite';
+import vue from '@vitejs/plugin-vue';
 
 /**
  * https://vitejs.dev/config/
@@ -24,10 +24,10 @@ export default defineConfig({
       template: {
         compilerOptions: {
           isCustomElement: (tag) => {
-            return tag.startsWith('osds-') // return true when tag is a custom element
-          }
-        }
-      }
-    })
-  ]
-})
+            return tag.startsWith('osds-'); // return true when tag is a custom element
+          },
+        },
+      },
+    }),
+  ],
+});

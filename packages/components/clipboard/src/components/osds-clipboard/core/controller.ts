@@ -1,11 +1,11 @@
-import type { OsdsClipboard } from '../osds-clipboard';
-import { writeOnClipboard } from '@ovhcloud/ods-common-core';
+import type {OsdsClipboard} from '../osds-clipboard';
+import {writeOnClipboard} from '@ovhcloud/ods-common-core';
 
 class OdsClipboardController {
   private component: OsdsClipboard;
 
   constructor(component: OsdsClipboard) {
-    this.component = component
+    this.component = component;
   }
 
   async handlerClick(value: string): Promise<void> {
@@ -15,12 +15,12 @@ class OdsClipboardController {
     try {
       await writeOnClipboard(value);
       this.component.surfaceMessage = successMessage;
-      if (this.component.surface && this.component.surfaceMessage !== "") {
+      if (this.component.surface && this.component.surfaceMessage !== '') {
         this.component.surface.opened = !this.component.surface.opened;
       }
     } catch (error) {
       this.component.surfaceMessage = errorMessage;
-      if (this.component.surface  && this.component.surfaceMessage !== "") {
+      if (this.component.surface && this.component.surfaceMessage !== '') {
         this.component.surface.opened = !this.component.surface.opened;
       }
       throw error;

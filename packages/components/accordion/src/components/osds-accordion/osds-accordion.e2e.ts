@@ -1,14 +1,14 @@
-import type { E2EElement, E2EPage } from '@stencil/core/testing';
-import type { OdsAccordionAttribute } from "./interfaces/attributes";
-import { newE2EPage } from "@stencil/core/testing";
-import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from "@ovhcloud/ods-common-testing";
-import { DEFAULT_ATTRIBUTE } from "./constants/default-attributes";
+import type {E2EElement, E2EPage} from '@stencil/core/testing';
+import type {OdsAccordionAttribute} from './interfaces/attributes';
+import {newE2EPage} from '@stencil/core/testing';
+import {odsComponentAttributes2StringAttributes, odsStringAttributes2Str} from '@ovhcloud/ods-common-testing';
+import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
 
 describe('e2e:osds-accordion', () => {
   let page: E2EPage;
   let el: E2EElement;
 
-  async function setup({ attributes = {}, html = '' }: { attributes?: Partial<OdsAccordionAttribute>, html?: string } = {}) {
+  async function setup({attributes = {}, html = ''}: { attributes?: Partial<OdsAccordionAttribute>, html?: string } = {}) {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsAccordionAttribute>(attributes, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
@@ -22,21 +22,21 @@ describe('e2e:osds-accordion', () => {
   }
 
   describe('defaults', () => {
-    beforeEach(async () => {
+    beforeEach(async() => {
       await setup();
     });
 
-    it('should render', async () => {
+    it('should render', async() => {
       expect(el).not.toBeNull();
       expect(el).toHaveClass('hydrated');
     });
   });
 
   describe('toggle', () => {
-    it('should sync opened property and details open attribute', async () => {
+    it('should sync opened property and details open attribute', async() => {
       let componentOpened: boolean,
-      details: HTMLDetailsElement | null;
-      await setup({ attributes: { opened: false } });
+        details: HTMLDetailsElement | null;
+      await setup({attributes: {opened: false}});
 
       details = el.shadowRoot.querySelector('details');
       componentOpened = await el.getProperty('opened');

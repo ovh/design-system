@@ -1,8 +1,8 @@
-import type { HTMLStencilElement } from '@stencil/core/internal';
-import type { OdsPopoverMethod } from './interfaces/methods';
-import { Component, Element, Host, h, Listen, Method } from '@stencil/core';
-import { ocdkDefineCustomElements, ocdkIsSurface, OcdkSurface, } from '@ovhcloud/ods-cdk';
-import { OdsPopoverController } from './core/controller';
+import type {HTMLStencilElement} from '@stencil/core/internal';
+import type {OdsPopoverMethod} from './interfaces/methods';
+import {Component, Element, Host, Listen, Method, h} from '@stencil/core';
+import {OcdkSurface, ocdkDefineCustomElements, ocdkIsSurface} from '@ovhcloud/ods-cdk';
+import {OdsPopoverController} from './core/controller';
 
 ocdkDefineCustomElements();
 
@@ -12,7 +12,7 @@ ocdkDefineCustomElements();
 @Component({
   tag: 'osds-popover',
   styleUrl: 'osds-popover.scss',
-  shadow: true
+  shadow: true,
 })
 export class OsdsPopover implements OdsPopoverMethod {
   anchor!: HTMLDivElement;
@@ -21,7 +21,7 @@ export class OsdsPopover implements OdsPopoverMethod {
 
   @Element() el!: HTMLStencilElement;
 
-  @Listen('click', { target: 'window' })
+  @Listen('click', {target: 'window'})
   checkForClickOutside(event: any) {
     this.controller.checkForClickOutside(event);
   }
@@ -48,19 +48,19 @@ export class OsdsPopover implements OdsPopoverMethod {
   }
 
   syncReferences() {
-    this.controller.syncReferences()
+    this.controller.syncReferences();
   }
 
   render() {
     return (
       <Host role='dialog'>
         <div class="trigger"
-             onClick={this.handleTriggerClick.bind(this)}
-             onKeyUp={this.handleTriggerKey.bind(this)}
-             ref={(el?: HTMLElement | null) => {
-               this.anchor = el as HTMLDivElement;
-               this.syncReferences()
-             }}>
+          onClick={this.handleTriggerClick.bind(this)}
+          onKeyUp={this.handleTriggerKey.bind(this)}
+          ref={(el?: HTMLElement | null) => {
+            this.anchor = el as HTMLDivElement;
+            this.syncReferences();
+          }}>
           <slot name={'popover-trigger'} />
         </div>
         <ocdk-surface
@@ -68,12 +68,12 @@ export class OsdsPopover implements OdsPopoverMethod {
           ref={(el: HTMLElement) => {
             if (ocdkIsSurface(el)) {
               this.surface = el as OcdkSurface;
-              this.syncReferences()
+              this.syncReferences();
             }
           }}>
           <slot />
         </ocdk-surface>
       </Host>
-    )
+    );
   }
 }

@@ -1,7 +1,7 @@
-import type { OdsCartManagerFooter } from '../interfaces/attributes';
-import type { OsdsCartManager } from '../osds-cart-manager';
-import { OdsComputedUtils } from '@ovhcloud/ods-common-core';
-import { isOdsCartManagerFooter } from '../helpers/type';
+import type {OdsCartManagerFooter} from '../interfaces/attributes';
+import type {OsdsCartManager} from '../osds-cart-manager';
+import {OdsComputedUtils} from '@ovhcloud/ods-common-core';
+import {isOdsCartManagerFooter} from '../helpers/type';
 
 class OdsCartManagerController {
   private component: OsdsCartManager;
@@ -16,7 +16,7 @@ class OdsCartManagerController {
    */
   validateFooter(newValue?: OdsCartManagerFooter): void {
     if (!!newValue && !isOdsCartManagerFooter(newValue)) {
-      throw new Error('You must specify a footer of type OdsCartFooter')
+      throw new Error('You must specify a footer of type OdsCartFooter');
     }
   }
 
@@ -25,22 +25,22 @@ class OdsCartManagerController {
    */
   getTotalAmount(): number {
     const totalPriceItem = this.component.sections
-      .map(section => section.item.price)
+      .map((section) => section.item.price)
       .reduce(OdsComputedUtils.sumReducer, 0);
 
     const totalVatItem = this.component.sections
-      .map(section => section.item.vat)
+      .map((section) => section.item.vat)
       .reduce(OdsComputedUtils.sumReducer, 0);
 
     const totalPriceOption = this.component.sections
-      .map(section => section.options
-        .map(option => option.price)
+      .map((section) => section.options
+        .map((option) => option.price)
         .reduce(OdsComputedUtils.sumReducer, 0))
       .reduce(OdsComputedUtils.sumReducer, 0);
 
     const totalVatOption = this.component.sections
-      .map(section => section.options
-        .map(option => option.vat)
+      .map((section) => section.options
+        .map((option) => option.vat)
         .reduce(OdsComputedUtils.sumReducer, 0))
       .reduce(OdsComputedUtils.sumReducer, 0);
 

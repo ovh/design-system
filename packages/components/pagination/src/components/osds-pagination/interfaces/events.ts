@@ -1,4 +1,4 @@
-import type { EventEmitter } from '@stencil/core';
+import type {EventEmitter} from '@stencil/core';
 
 interface OdsPaginationChangedEventDetail {
   current: number;

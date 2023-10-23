@@ -1,9 +1,9 @@
-import { OcdkSurfaceSymmetryConfig } from './ocdk-surface-symmetry-strategy';
-import { OcdkSurfaceNormalizedCorner } from '../../core/ocdk-surface-normalized-corner';
-import { OcdkLogger } from '../../../../logger/ocdk-logger';
-import { OcdkSurfaceSymmetryStrategyHelpers } from './ocdk-surface-symmetry-strategy.helpers';
-import { isOcdkSurfaceStrategyComputeResultPosition } from '../../core/system/ocdk-surface-strategy-compute-result-position';
-import { OcdkSurfaceOnePositionStrategy } from '../../core/ocdk-surface-one-position-strategy';
+import {OcdkSurfaceSymmetryConfig} from './ocdk-surface-symmetry-strategy';
+import {OcdkSurfaceNormalizedCorner} from '../../core/ocdk-surface-normalized-corner';
+import {OcdkLogger} from '../../../../logger/ocdk-logger';
+import {OcdkSurfaceSymmetryStrategyHelpers} from './ocdk-surface-symmetry-strategy.helpers';
+import {isOcdkSurfaceStrategyComputeResultPosition} from '../../core/system/ocdk-surface-strategy-compute-result-position';
+import {OcdkSurfaceOnePositionStrategy} from '../../core/ocdk-surface-one-position-strategy';
 
 /**
  * ```
@@ -25,7 +25,7 @@ export function ocdkSurfaceSymmetryTrBr(): OcdkSurfaceOnePositionStrategy<OcdkSu
   return {
     cornerPoints: {
       anchor: OcdkSurfaceNormalizedCorner.TOP_RIGHT,
-      origin: OcdkSurfaceNormalizedCorner.BOTTOM_RIGHT
+      origin: OcdkSurfaceNormalizedCorner.BOTTOM_RIGHT,
     },
     STRATEGIES: {
       standard: {
@@ -35,7 +35,7 @@ export function ocdkSurfaceSymmetryTrBr(): OcdkSurfaceOnePositionStrategy<OcdkSu
             availableBottom: (opt) => opt.measurements.viewportDistance.bottom - opt.config.MARGIN_TO_EDGE_COMFORT + opt.measurements.anchorSize.height,
             availableLeft: (opt) => opt.measurements.viewportDistance.left - opt.config.MARGIN_TO_EDGE_COMFORT + opt.measurements.anchorSize.width,
             availableRight: (opt) => opt.measurements.viewportDistance.right - opt.config.MARGIN_TO_EDGE_COMFORT,
-          }
+          },
         },
         appliers: {
           maxHeight: (opt) => opt.inspections.comfort.availableTop - opt.config.anchorMargin.top,
@@ -43,17 +43,17 @@ export function ocdkSurfaceSymmetryTrBr(): OcdkSurfaceOnePositionStrategy<OcdkSu
           verticalOffset: (opt) => -opt.config.anchorMargin.top - opt.measurements.surfaceSize.height,
           verticalAlignment: 'top',
           horizontalOffset: () => 0,
-          horizontalAlignment: 'right'
-        }
+          horizontalAlignment: 'right',
+        },
       },
       FALLBACK: {
         inspectors: {
           comfort: {
-            availableTop: (opt) => opt.measurements.viewportSize.height - 2 * opt.config.MARGIN_TO_EDGE_COMFORT
+            availableTop: (opt) => opt.measurements.viewportSize.height - 2 * opt.config.MARGIN_TO_EDGE_COMFORT,
           },
           limit: {
-            availableTop: (opt) => opt.measurements.viewportSize.height - 2 * opt.config.MARGIN_TO_EDGE_LIMIT
-          }
+            availableTop: (opt) => opt.measurements.viewportSize.height - 2 * opt.config.MARGIN_TO_EDGE_LIMIT,
+          },
         },
         appliers: {
           maxHeight: (opt) => helpers.symmetryFallbackMaxHeight(opt, opt.inspections.comfort.availableTop, opt.inspections.limit.availableTop, false),
@@ -61,8 +61,8 @@ export function ocdkSurfaceSymmetryTrBr(): OcdkSurfaceOnePositionStrategy<OcdkSu
           verticalOffset: (opt) => helpers.symmetryFallbackVerticalOffset(opt, opt.inspections.comfort.availableTop, opt.inspections.limit.availableTop, false),
           verticalAlignment: 'top',
           horizontalOffset: () => 0,
-          horizontalAlignment: 'right'
-        }
+          horizontalAlignment: 'right',
+        },
       },
       COMPUTE: (opt) => {
         loggerSymmetry.log('[COMPUTE] position TOP_RIGHT BOTTOM_RIGHT');
@@ -77,27 +77,27 @@ export function ocdkSurfaceSymmetryTrBr(): OcdkSurfaceOnePositionStrategy<OcdkSu
             return {
               cornerPoints: {
                 anchor: OcdkSurfaceNormalizedCorner.BOTTOM_LEFT,
-                origin: OcdkSurfaceNormalizedCorner.TOP_LEFT
-              }
+                origin: OcdkSurfaceNormalizedCorner.TOP_LEFT,
+              },
             };
           }
           return {
             cornerPoints: {
               anchor: OcdkSurfaceNormalizedCorner.BOTTOM_RIGHT,
-              origin: OcdkSurfaceNormalizedCorner.TOP_RIGHT
-            }
+              origin: OcdkSurfaceNormalizedCorner.TOP_RIGHT,
+            },
           };
         } else if (opt.measurements.surfaceSize.width > opt.inspections.comfort.availableLeft) {
           return {
             cornerPoints: {
               anchor: OcdkSurfaceNormalizedCorner.TOP_LEFT,
-              origin: OcdkSurfaceNormalizedCorner.BOTTOM_LEFT
-            }
+              origin: OcdkSurfaceNormalizedCorner.BOTTOM_LEFT,
+            },
           };
         }
         return; // no position switching: apply the current one
-      }
+      },
 
-    }
+    },
   };
 }

@@ -1,4 +1,4 @@
-import { ODS_ICON_NAME } from '@ovhcloud/ods-component-icon';
+import {ODS_ICON_NAME} from '@ovhcloud/ods-component-icon';
 
 class OdsCheckboxButtonController {
 
@@ -12,6 +12,6 @@ class OdsCheckboxButtonController {
   }
 }
 
-export { 
-  OdsCheckboxButtonController
-}
+export {
+  OdsCheckboxButtonController,
+};

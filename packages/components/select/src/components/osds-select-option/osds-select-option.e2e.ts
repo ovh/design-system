@@ -1,20 +1,20 @@
-import type { E2EElement, E2EPage } from '@stencil/core/testing';
-import type { OdsSelectOptionAttribute } from './interfaces/attributes';
-import { newE2EPage } from '@stencil/core/testing';
-import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import type {E2EElement, E2EPage} from '@stencil/core/testing';
+import type {OdsSelectOptionAttribute} from './interfaces/attributes';
+import {newE2EPage} from '@stencil/core/testing';
+import {odsComponentAttributes2StringAttributes, odsStringAttributes2Str} from '@ovhcloud/ods-common-testing';
+import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
 
 describe('e2e:osds-select-option', () => {
-  const baseAttribute = { value: '' };
+  const baseAttribute = {value: ''};
   let page: E2EPage;
   let el: E2EElement;
   let divElement: E2EElement;
 
-  async function setup({ attributes = {}, onPage }: { attributes?: Partial<OdsSelectOptionAttribute>, html?: string, onPage?: ({ page }: { page: E2EPage }) => void } = {}) {
-    const stringAttributes = odsComponentAttributes2StringAttributes<OdsSelectOptionAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
+  async function setup({attributes = {}, onPage}: { attributes?: Partial<OdsSelectOptionAttribute>, html?: string, onPage?: ({page}: { page: E2EPage }) => void } = {}) {
+    const stringAttributes = odsComponentAttributes2StringAttributes<OdsSelectOptionAttribute>({...baseAttribute, ...attributes}, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
-    onPage && onPage({ page });
+    onPage && onPage({page});
 
     await page.setContent(`
       <osds-select-option ${odsStringAttributes2Str(stringAttributes)}>
@@ -27,16 +27,16 @@ describe('e2e:osds-select-option', () => {
   }
 
   describe('defaults', () => {
-    beforeEach(async () => {
+    beforeEach(async() => {
       await setup();
     });
 
-    it('should render', async () => {
+    it('should render', async() => {
       expect(el).not.toBeNull();
       expect(el).toHaveClass('hydrated');
     });
 
-    it('should have a div element', async () => {
+    it('should have a div element', async() => {
       expect(divElement).not.toBeNull();
     });
   });

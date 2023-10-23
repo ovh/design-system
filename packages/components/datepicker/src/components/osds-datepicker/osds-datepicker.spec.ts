@@ -1,17 +1,17 @@
 jest.mock('./core/controller');
 
-import type { SpecPage } from '@stencil/core/testing';
-import type { OdsDatepickerAttribute } from './interfaces/attributes';
-import { newSpecPage } from '@stencil/core/testing';
-import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import { OdsUnitTestAttributeType, odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
-import { ODS_DATEPICKER_LOCALE } from './constants/datepicker-locale';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { OsdsDatepicker } from './osds-datepicker';
-import { OdsDatepickerController } from './core/controller';
-import { ODS_DATEPICKER_DAY } from './constants/datepicker-day';
+import type {SpecPage} from '@stencil/core/testing';
+import type {OdsDatepickerAttribute} from './interfaces/attributes';
+import {newSpecPage} from '@stencil/core/testing';
+import {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
+import {OdsUnitTestAttributeType, odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute} from '@ovhcloud/ods-common-testing';
+import {ODS_DATEPICKER_LOCALE} from './constants/datepicker-locale';
+import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
+import {OsdsDatepicker} from './osds-datepicker';
+import {OdsDatepickerController} from './core/controller';
+import {ODS_DATEPICKER_DAY} from './constants/datepicker-day';
 // @ts-ignore
-import { Datepicker } from '../../jestStub';
+import {Datepicker} from '../../jestStub';
 
 describe('spec:osds-datepicker', () => {
   let page: SpecPage;
@@ -25,7 +25,7 @@ describe('spec:osds-datepicker', () => {
     jest.clearAllMocks();
   });
 
-  async function setup({ attributes = {} }: { attributes?: Partial<OdsDatepickerAttribute> } = {}) {
+  async function setup({attributes = {}}: { attributes?: Partial<OdsDatepickerAttribute> } = {}) {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsDatepickerAttribute>(attributes, DEFAULT_ATTRIBUTE);
 
     page = await newSpecPage({
@@ -38,7 +38,7 @@ describe('spec:osds-datepicker', () => {
     controller = (OdsDatepickerController as unknown as jest.SpyInstance<OdsDatepickerController, unknown[]>).mock.instances[0];
   }
 
-  it('should render', async () => {
+  it('should render', async() => {
     await setup({});
     expect(root?.shadowRoot).toBeTruthy();
     expect(instance).toBeTruthy();
@@ -58,7 +58,7 @@ describe('spec:osds-datepicker', () => {
         defaultValue: DEFAULT_ATTRIBUTE.clearable,
         newValue: true,
         value: false,
-        setup: (value) => setup({ attributes: { ['clearable']: value } }),
+        setup: (value) => setup({attributes: {['clearable']: value}}),
         ...config,
       });
     });
@@ -69,7 +69,7 @@ describe('spec:osds-datepicker', () => {
         defaultValue: DEFAULT_ATTRIBUTE.color,
         newValue: ODS_THEME_COLOR_INTENT.primary,
         value: ODS_THEME_COLOR_INTENT.success,
-        setup: (value) => setup({ attributes: { ['color']: value } }),
+        setup: (value) => setup({attributes: {['color']: value}}),
         ...config,
       });
     });
@@ -80,7 +80,7 @@ describe('spec:osds-datepicker', () => {
         defaultValue: DEFAULT_ATTRIBUTE.datesDisabled,
         newValue: [new Date('1999-11-02')],
         value: [],
-        setup: (value) => setup({ attributes: { ['datesDisabled']: value } }),
+        setup: (value) => setup({attributes: {['datesDisabled']: value}}),
         ...config,
         exclude: [OdsUnitTestAttributeType.REFLECTED, OdsUnitTestAttributeType.MUTABLE],
       });
@@ -92,7 +92,7 @@ describe('spec:osds-datepicker', () => {
         defaultValue: DEFAULT_ATTRIBUTE.daysOfWeekDisabled,
         newValue: [ODS_DATEPICKER_DAY.saturday, ODS_DATEPICKER_DAY.sunday],
         value: [],
-        setup: (value) => setup({ attributes: { ['daysOfWeekDisabled']: value } }),
+        setup: (value) => setup({attributes: {['daysOfWeekDisabled']: value}}),
         ...config,
         exclude: [OdsUnitTestAttributeType.REFLECTED, OdsUnitTestAttributeType.MUTABLE],
       });
@@ -104,7 +104,7 @@ describe('spec:osds-datepicker', () => {
         defaultValue: DEFAULT_ATTRIBUTE.disabled,
         newValue: true,
         value: false,
-        setup: (value) => setup({ attributes: { ['disabled']: value } }),
+        setup: (value) => setup({attributes: {['disabled']: value}}),
         ...config,
       });
     });
@@ -115,7 +115,7 @@ describe('spec:osds-datepicker', () => {
         defaultValue: DEFAULT_ATTRIBUTE.error,
         newValue: true,
         value: false,
-        setup: (value) => setup({ attributes: { ['error']: value } }),
+        setup: (value) => setup({attributes: {['error']: value}}),
         ...config,
       });
     });
@@ -126,7 +126,7 @@ describe('spec:osds-datepicker', () => {
         defaultValue: DEFAULT_ATTRIBUTE.format,
         newValue: 'dd/mm/yyyy',
         value: 'yyyy-mm-dd',
-        setup: (value) => setup({ attributes: { ['format']: value } }),
+        setup: (value) => setup({attributes: {['format']: value}}),
         ...config,
       });
     });
@@ -137,7 +137,7 @@ describe('spec:osds-datepicker', () => {
         defaultValue: DEFAULT_ATTRIBUTE.inline,
         newValue: true,
         value: false,
-        setup: (value) => setup({ attributes: { ['inline']: value } }),
+        setup: (value) => setup({attributes: {['inline']: value}}),
         ...config,
       });
     });
@@ -148,7 +148,7 @@ describe('spec:osds-datepicker', () => {
         defaultValue: DEFAULT_ATTRIBUTE.locale,
         newValue: ODS_DATEPICKER_LOCALE.EN,
         value: ODS_DATEPICKER_LOCALE.FR,
-        setup: (value) => setup({ attributes: { ['locale']: value } }),
+        setup: (value) => setup({attributes: {['locale']: value}}),
         ...config,
       });
     });
@@ -159,7 +159,7 @@ describe('spec:osds-datepicker', () => {
         defaultValue: DEFAULT_ATTRIBUTE.maxDate,
         newValue: new Date('1999-11-02'),
         value: null,
-        setup: (value) => setup({ attributes: { ['maxDate']: value } }),
+        setup: (value) => setup({attributes: {['maxDate']: value}}),
         ...config,
       });
     });
@@ -170,7 +170,7 @@ describe('spec:osds-datepicker', () => {
         defaultValue: DEFAULT_ATTRIBUTE.minDate,
         newValue: new Date('1999-11-02'),
         value: null,
-        setup: (value) => setup({ attributes: { ['minDate']: value } }),
+        setup: (value) => setup({attributes: {['minDate']: value}}),
         ...config,
       });
     });
@@ -181,7 +181,7 @@ describe('spec:osds-datepicker', () => {
         defaultValue: DEFAULT_ATTRIBUTE.placeholder,
         newValue: 'placeholder',
         value: '',
-        setup: (value) => setup({ attributes: { ['placeholder']: value } }),
+        setup: (value) => setup({attributes: {['placeholder']: value}}),
         ...config,
       });
     });
@@ -192,37 +192,37 @@ describe('spec:osds-datepicker', () => {
         defaultValue: DEFAULT_ATTRIBUTE.value,
         newValue: new Date('1999-11-02'),
         value: null,
-        setup: (value) => setup({ attributes: { ['value']: value } }),
+        setup: (value) => setup({attributes: {['value']: value}}),
         ...config,
       });
     });
   });
 
   describe('handleInputValueChange', () => {
-    it('should call onChange when format is set and value matches format length', async () => {
-      await setup({ attributes: { format: 'dd/mm/yyyy' } });
+    it('should call onChange when format is set and value matches format length', async() => {
+      await setup({attributes: {format: 'dd/mm/yyyy'}});
       await page.waitForChanges();
       const event = new CustomEvent('odsValueChange', {
-        detail: { value: '03/10/2023' }
+        detail: {value: '03/10/2023'},
       });
       instance.handleInputValueChange(event);
       await page.waitForChanges();
       expect(controller.onChange).toHaveBeenCalledTimes(1);
     });
 
-    it('should call onChange with null when value is empty', async () => {
+    it('should call onChange with null when value is empty', async() => {
       await setup();
       const event = new CustomEvent('odsValueChange', {
-        detail: { value: '' }
+        detail: {value: ''},
       });
       instance.handleInputValueChange(event);
       expect(controller.onChange).toHaveBeenCalledWith(null, null);
     });
 
-    it('should not call onChange if value does not match format length', async () => {
-      await setup({ attributes: { format: 'dd/mm/yyyy' } });
+    it('should not call onChange if value does not match format length', async() => {
+      await setup({attributes: {format: 'dd/mm/yyyy'}});
       const event = new CustomEvent('odsValueChange', {
-        detail: { value: '03/1' }
+        detail: {value: '03/1'},
       });
       instance.handleInputValueChange(event);
       expect(controller.onChange).not.toHaveBeenCalled();
@@ -230,20 +230,20 @@ describe('spec:osds-datepicker', () => {
   });
 
   describe('events', () => {
-    it('should call onBlur on blur', async () => {
+    it('should call onBlur on blur', async() => {
       await setup({});
       instance?.onBlur();
       expect(controller.onBlur).toHaveBeenCalledTimes(1);
       expect(controller.onBlur).toHaveBeenCalledWith();
     });
 
-    it('should call onChange on change', async () => {
+    it('should call onChange on change', async() => {
       await setup({});
       instance.onChange(new Date(''));
       expect(controller.onChange).toHaveBeenCalledTimes(1);
     });
 
-    it('should call onFocus on focus', async () => {
+    it('should call onFocus on focus', async() => {
       await setup({});
       instance?.onFocus();
       expect(controller.onFocus).toHaveBeenCalledTimes(1);
@@ -251,7 +251,7 @@ describe('spec:osds-datepicker', () => {
     });
 
     describe('On-host events', () => {
-      beforeEach(async () => {
+      beforeEach(async() => {
         await setup({});
       });
 
@@ -273,10 +273,10 @@ describe('spec:osds-datepicker', () => {
         expect(spy).toHaveBeenCalled();
       });
     });
-  })
+  });
 
   describe('event emitters', () => {
-    beforeEach(async () => {
+    beforeEach(async() => {
       await setup({});
     });
 
@@ -307,7 +307,7 @@ describe('spec:osds-datepicker', () => {
         mockFormatDate.mockRestore();
       });
 
-      beforeEach(async () => {
+      beforeEach(async() => {
         await setup({});
       });
 
@@ -316,7 +316,7 @@ describe('spec:osds-datepicker', () => {
         const newValue = new Date('2023-10-03');
         const oldValue = new Date('2023-10-02');
         instance.emitDatepickerValueChange(newValue, oldValue);
-        expect(spy).toHaveBeenCalledWith({ value: newValue, oldValue: oldValue, formattedValue: `${newValue} dd/mm/yyyy` });
+        expect(spy).toHaveBeenCalledWith({value: newValue, oldValue: oldValue, formattedValue: `${newValue} dd/mm/yyyy`});
       });
 
       it('should call Datepicker.formatDate when format is defined', () => {
@@ -335,7 +335,7 @@ describe('spec:osds-datepicker', () => {
         const spy = jest.spyOn(instance.odsDatepickerValueChange, 'emit');
         instance.emitDatepickerValueChange(testDate);
 
-        expect(spy).toHaveBeenCalledWith({ value: testDate, oldValue: undefined, formattedValue: undefined });
+        expect(spy).toHaveBeenCalledWith({value: testDate, oldValue: undefined, formattedValue: undefined});
       });
     });
   });

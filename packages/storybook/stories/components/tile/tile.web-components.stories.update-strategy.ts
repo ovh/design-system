@@ -1,14 +1,14 @@
-import { html } from 'lit-html';
-import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-import { defineCustomElements } from '@ovhcloud/ods-components/radio/loader';
-import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
+import {html} from 'lit-html';
+import {unsafeHTML} from 'lit-html/directives/unsafe-html';
+import {defineCustomElements} from '@ovhcloud/ods-components/radio/loader';
+import {extractArgTypes, extractStoryParams, getTagAttributes} from '../../../core/componentHTMLUtils';
 
 defineCustomElements();
 
 const storyParams = {
   disabled: {
     category: 'Misc',
-    defaultValue: false
+    defaultValue: false,
   },
   slotJs: {
     category: 'Misc',
@@ -37,7 +37,7 @@ function myAsyncAction({checked, value}) {
 }
 </script>
   `,
-  }
+  },
 };
 
 const TemplateUpdateStrategy = (args: any) => html`

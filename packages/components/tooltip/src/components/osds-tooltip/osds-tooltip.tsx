@@ -1,16 +1,16 @@
-import type { HTMLStencilElement } from '@stencil/core/internal';
-import type { ODS_TOOLTIP_VARIANT } from './constants/tooltip-variant';
-import type { OdsTooltipAttribute } from './interfaces/attributes';
-import type { OdsTooltipMethod } from './interfaces/methods';
-import { ocdkDefineCustomElements, ocdkIsSurface, OcdkSurface } from '@ovhcloud/ods-cdk';
-import { odsDebounce } from '@ovhcloud/ods-common-core';
-import { Component, Element, Host, h, Listen, State } from '@stencil/core';
-import { Method, Prop } from '@stencil/core/internal';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { OdsTooltipController } from './core/controller';
+import type {HTMLStencilElement} from '@stencil/core/internal';
+import type {ODS_TOOLTIP_VARIANT} from './constants/tooltip-variant';
+import type {OdsTooltipAttribute} from './interfaces/attributes';
+import type {OdsTooltipMethod} from './interfaces/methods';
+import {OcdkSurface, ocdkDefineCustomElements, ocdkIsSurface} from '@ovhcloud/ods-cdk';
+import {odsDebounce} from '@ovhcloud/ods-common-core';
+import {Component, Element, Host, Listen, State, h} from '@stencil/core';
+import {Method, Prop} from '@stencil/core/internal';
+import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
+import {OdsTooltipController} from './core/controller';
 
 // define custom elements from CDK
-ocdkDefineCustomElements()
+ocdkDefineCustomElements();
 
 /**
  * @slot (unnamed) - Tooltip content
@@ -36,12 +36,12 @@ export class OsdsTooltip implements OdsTooltipAttribute, OdsTooltipMethod {
   @State() tabindex = 0;
 
   /** @see OdsTooltipAttributes.variant */
-  @Prop({ reflect: true }) public variant?: ODS_TOOLTIP_VARIANT = DEFAULT_ATTRIBUTE.variant;
+  @Prop({reflect: true}) public variant?: ODS_TOOLTIP_VARIANT = DEFAULT_ATTRIBUTE.variant;
 
-  private debouncedHandleMouseEnter = odsDebounce(this.handleMouseEnter)
-  private debouncedHandleMouseLeave = odsDebounce(this.handleMouseLeave)
+  private debouncedHandleMouseEnter = odsDebounce(this.handleMouseEnter);
+  private debouncedHandleMouseLeave = odsDebounce(this.handleMouseLeave);
 
-  @Listen('click', { target: 'window' })
+  @Listen('click', {target: 'window'})
   checkForClickOutside(event: any) {
     this.controller.checkForClickOutside(event);
   }
@@ -69,7 +69,7 @@ export class OsdsTooltip implements OdsTooltipAttribute, OdsTooltipMethod {
   }
 
   componentWillLoad() {
-    this.setSlotTooltipContent()
+    this.setSlotTooltipContent();
   }
 
   setSlotTooltipContent() {
@@ -93,33 +93,33 @@ export class OsdsTooltip implements OdsTooltipAttribute, OdsTooltipMethod {
   }
 
   handleTriggerFocus(): void {
-    this.controller.handleTriggerFocus()
+    this.controller.handleTriggerFocus();
   }
 
   syncReferences() {
-    this.controller.syncReferences()
+    this.controller.syncReferences();
   }
 
   render() {
     return (
       <Host role="tooltip"
-            ref={(el: HTMLElement | null) => {
-              this.anchor = el as HTMLDivElement;
-              this.syncReferences()
-            }}
-            onBlur={ () => this.handleTriggerBlur() }
-            onClick={ () => this.handleTriggerClick() }
-            onFocus={ () => this.handleTriggerFocus() }
-            onMouseEnter={ () => this.debouncedHandleMouseEnter() }
-            onMouseLeave={ () => this.debouncedHandleMouseLeave() }
-            tabindex={ this.tabindex }>
+        ref={(el: HTMLElement | null) => {
+          this.anchor = el as HTMLDivElement;
+          this.syncReferences();
+        }}
+        onBlur={ () => this.handleTriggerBlur() }
+        onClick={ () => this.handleTriggerClick() }
+        onFocus={ () => this.handleTriggerFocus() }
+        onMouseEnter={ () => this.debouncedHandleMouseEnter() }
+        onMouseLeave={ () => this.debouncedHandleMouseLeave() }
+        tabindex={ this.tabindex }>
         <slot></slot>
 
-        { this.hasSlotTooltipContent &&
-          <ocdk-surface ref={(el: HTMLElement) => {
+        { this.hasSlotTooltipContent
+          && <ocdk-surface ref={(el: HTMLElement) => {
             if (ocdkIsSurface(el)) {
               this.surface = el as OcdkSurface;
-              this.syncReferences()
+              this.syncReferences();
             }
           }}>
             <div class="tooltip-content">

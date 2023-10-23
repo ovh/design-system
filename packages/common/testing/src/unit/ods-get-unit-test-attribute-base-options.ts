@@ -1,6 +1,6 @@
-import { OdsUnitTestAttributeOptions } from './ods-unit-test-attribute-options';
-import { OdsUnitTestAttributeType } from './ods-unit-test-attribute-type';
-import { OdsGetDifferentElement } from '../helpers/ods-get-different-element';
+import {OdsUnitTestAttributeOptions} from './ods-unit-test-attribute-options';
+import {OdsUnitTestAttributeType} from './ods-unit-test-attribute-type';
+import {OdsGetDifferentElement} from '../helpers/ods-get-different-element';
 
 export interface odsGetUnitTestAttributeBaseOptionsArgs<InstanceAttributes,
   Name extends keyof InstanceAttributes,
@@ -52,19 +52,19 @@ export interface odsGetUnitTestAttributeBaseOptionsArgs<InstanceAttributes,
 export function odsGetUnitTestAttributeBaseOptions<InstanceAttributes,
   Name extends keyof InstanceAttributes,
   InstanceType extends InstanceAttributes = InstanceAttributes>({
-                                                                  name,
-                                                                  list,
-                                                                  defaultValue,
-                                                                  instance,
-                                                                  root,
-                                                                  wait,
-                                                                  setup
-                                                                }: odsGetUnitTestAttributeBaseOptionsArgs<InstanceAttributes, Name, InstanceType>):
+  name,
+  list,
+  defaultValue,
+  instance,
+  root,
+  wait,
+  setup,
+}: odsGetUnitTestAttributeBaseOptionsArgs<InstanceAttributes, Name, InstanceType>):
   Pick<OdsUnitTestAttributeOptions<InstanceAttributes, Name, InstanceType>,
     'name' | 'instance' | 'wait' | 'root' | 'exclude' | 'value' | 'newValue' | 'defaultValue' | 'setup'> {
 
   // we want two values but not a value that equals to the defaultValue
-  let filtered = list.filter(el => el !== defaultValue);
+  let filtered = list.filter((el) => el !== defaultValue);
 
   // but if there is not any value to test, keep the original list even if some value equals to default
   if (!filtered.length) {
@@ -80,6 +80,6 @@ export function odsGetUnitTestAttributeBaseOptions<InstanceAttributes,
     value: values.element,
     newValue: values.elementNext,
     defaultValue,
-    setup
-  }
+    setup,
+  };
 }

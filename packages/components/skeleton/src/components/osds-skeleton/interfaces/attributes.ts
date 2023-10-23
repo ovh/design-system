@@ -1,4 +1,4 @@
-import type { ODS_SKELETON_SIZE } from '../constants/skeleton-size';
+import type {ODS_SKELETON_SIZE} from '../constants/skeleton-size';
 
 interface OdsSkeletonAttribute {
   /** inline or not: see component principles */

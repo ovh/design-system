@@ -1,8 +1,8 @@
-import { html } from 'lit-html';
-import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-import { defineCustomElements } from '@ovhcloud/ods-components/checkbox-button/loader';
-import { ODS_CHECKBOX_BUTTON_SIZE, ODS_CHECKBOX_BUTTON_SIZES } from '@ovhcloud/ods-components/checkbox-button';
-import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
+import {html} from 'lit-html';
+import {unsafeHTML} from 'lit-html/directives/unsafe-html';
+import {defineCustomElements} from '@ovhcloud/ods-components/checkbox-button/loader';
+import {ODS_CHECKBOX_BUTTON_SIZE, ODS_CHECKBOX_BUTTON_SIZES} from '@ovhcloud/ods-components/checkbox-button';
+import {ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS} from '@ovhcloud/ods-common-theming';
 // @ts-ignore
 import changelog from '@ovhcloud/ods-components/checkbox-button/CHANGELOG.md';
 // @ts-ignore
@@ -34,13 +34,13 @@ const storyParams = {
     category: 'General',
     defaultValue: ODS_THEME_COLOR_INTENT.default,
     options: ODS_THEME_COLOR_INTENTS,
-    control: { type: 'select' },
+    control: {type: 'select'},
   },
   size: {
     category: 'General',
     defaultValue: ODS_CHECKBOX_BUTTON_SIZE.md,
     options: ODS_CHECKBOX_BUTTON_SIZES,
-    control: { type: 'select' },
+    control: {type: 'select'},
   },
   start: {
     category: 'Slot',
@@ -71,9 +71,9 @@ export default {
     notes: {
       changelog,
     },
-    docs: { page }
+    docs: {page},
   },
-  argTypes: extractArgTypes(storyParams)
+  argTypes: extractArgTypes(storyParams),
 };
 
 /* Default */
@@ -93,7 +93,7 @@ Default.args = {
 /*  Checkbox */
 const OsdsCheckboxButtonCheckboxWrapper = (args: Record< string, unknown>) => html`
   <h1 style='font-size: 1.3rem; font-family: "Source Sans Pro"; font-style: italic'>
-    <a href=${parent.location.href.replace(parent.location.search, "?path=/story/checkbox--web-component")}>Checkbox</a> Meta component adds behavior to this Checkbox Button
+    <a href=${parent.location.href.replace(parent.location.search, '?path=/story/checkbox--web-component')}>Checkbox</a> Meta component adds behavior to this Checkbox Button
   </h1>
   <osds-checkbox>
       <osds-checkbox-button ...=${getTagAttributes(args)}>
@@ -110,7 +110,7 @@ CheckboxWrapper.args = {
 };
 
 const defaultTag = 'osds-checkbox-button';
-const defaultContent = `Text`;
+const defaultContent = 'Text';
 
 const TemplateAll = () => html`
 <style>
@@ -132,19 +132,19 @@ const TemplateAll = () => html`
 
 <h1>Sizes & Colors</h1>
 ${unsafeHTML(createComponentTable(
-  defaultTag,
-  { size: ODS_CHECKBOX_BUTTON_SIZES },
-  { color: ODS_THEME_COLOR_INTENTS },
-  defaultContent,
-  {
-    checked: true
-  }
-))}
+    defaultTag,
+    {size: ODS_CHECKBOX_BUTTON_SIZES},
+    {color: ODS_THEME_COLOR_INTENTS},
+    defaultContent,
+    {
+      checked: true,
+    },
+  ))}
 </div>
 `;
 export const All = TemplateAll.bind({});
 // @ts-ignore
 All.parameters = {
-  controls: { hideNoControlsWarning: true },
-  options: { showPanel: false }
+  controls: {hideNoControlsWarning: true},
+  options: {showPanel: false},
 };

@@ -1,4 +1,4 @@
-import { OdsUsedValidityState } from './ods-used-validity-state';
+import {OdsUsedValidityState} from './ods-used-validity-state';
 
 /**
  * get a default vanilla `ValidityState` used in ODS
@@ -8,6 +8,6 @@ export function OdsCreateDefaultValidityState(): OdsUsedValidityState {
     valid: true,
     stepMismatch: false,
     valueMissing: false,
-    customError: false
-  }
+    customError: false,
+  };
 }

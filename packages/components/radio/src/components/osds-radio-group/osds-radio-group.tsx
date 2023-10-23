@@ -1,11 +1,11 @@
-import type { HTMLStencilElement } from '@stencil/core/internal';
-import type { OdsRadioGroupEvent } from './interfaces/events';
-import type { OdsRadioGroupAttribute } from './interfaces/attributes';
-import type { OdsRadioGroupMethod } from './interfaces/methods';
-import type { OsdsRadio } from '../osds-radio/osds-radio';
-import { Component, Element, Event, EventEmitter, Host, Method, Prop, Watch, h } from '@stencil/core';
-import { OdsRadioGroupController } from './core/controller';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import type {HTMLStencilElement} from '@stencil/core/internal';
+import type {OdsRadioGroupEvent} from './interfaces/events';
+import type {OdsRadioGroupAttribute} from './interfaces/attributes';
+import type {OdsRadioGroupMethod} from './interfaces/methods';
+import type {OsdsRadio} from '../osds-radio/osds-radio';
+import {Component, Element, Event, EventEmitter, Host, Method, Prop, Watch, h} from '@stencil/core';
+import {OdsRadioGroupController} from './core/controller';
+import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
 
 @Component({
   tag: 'osds-radio-group',
@@ -26,10 +26,10 @@ export class OsdsRadioGroup implements OdsRadioGroupAttribute, OdsRadioGroupEven
   @Prop() name: string = DEFAULT_ATTRIBUTE.name || this.inputId;
 
   /** @see OdsRadioGroupAttributes.value */
-  @Prop({ reflect: true, mutable: true }) value: string = DEFAULT_ATTRIBUTE.value;
+  @Prop({reflect: true, mutable: true}) value: string = DEFAULT_ATTRIBUTE.value;
 
   /** @see OdsRadioGroupAttributes.disabled */
-  @Prop({ reflect: true }) disabled: boolean = DEFAULT_ATTRIBUTE.disabled;
+  @Prop({reflect: true}) disabled: boolean = DEFAULT_ATTRIBUTE.disabled;
 
   /** @see OdsRadioGroupAttributes.save */
   @Prop() save? = DEFAULT_ATTRIBUTE.save;
@@ -41,16 +41,16 @@ export class OsdsRadioGroup implements OdsRadioGroupAttribute, OdsRadioGroupEven
   @Prop() afterSave? = DEFAULT_ATTRIBUTE.afterSave;
 
   /** @see OdsRadioGroupAttributes.required */
-  @Prop({ reflect: true }) public required = DEFAULT_ATTRIBUTE.required;
+  @Prop({reflect: true}) public required = DEFAULT_ATTRIBUTE.required;
 
   /** @see OdsRadioGroupEvents.odsValueChange */
   @Event({
     bubbles: true,
-    composed: true
+    composed: true,
   }) odsValueChange!: EventEmitter<{ newValue?: string, previousValue?: string }>;
 
   /** @see OdsRadioGroupEvents.odsDisabledChange */
-  @Event({ bubbles: true, composed: true }) odsDisabledChange!: EventEmitter<{ value: boolean }>;
+  @Event({bubbles: true, composed: true}) odsDisabledChange!: EventEmitter<{ value: boolean }>;
 
   @Watch('value')
   valueChanged(newValue: string, previousValue: string) {
@@ -63,11 +63,11 @@ export class OsdsRadioGroup implements OdsRadioGroupAttribute, OdsRadioGroupEven
   }
 
   emitChange(newValue: string, previousValue: string): void {
-    this.odsValueChange.emit({ newValue, previousValue });
+    this.odsValueChange.emit({newValue, previousValue});
   }
 
   emitDisabled(disabled: boolean): void {
-    this.odsDisabledChange.emit({ value: disabled });
+    this.odsDisabledChange.emit({value: disabled});
   }
 
   /** @see OdsRadioGroupMethods.getRadios */
@@ -90,8 +90,8 @@ export class OsdsRadioGroup implements OdsRadioGroupAttribute, OdsRadioGroupEven
 
   /** @see OdsRadioGroupMethods.updateState */
   @Method()
-  async updateState({ newValue, checked, checking }: { newValue: string, checked: boolean, checking: boolean }) {
-    await this.controller.updateState({ newValue, checked, checking });
+  async updateState({newValue, checked, checking}: { newValue: string, checked: boolean, checking: boolean }) {
+    await this.controller.updateState({newValue, checked, checking});
   }
 
   onDestroy(): void {
@@ -107,7 +107,7 @@ export class OsdsRadioGroup implements OdsRadioGroupAttribute, OdsRadioGroupEven
   }
 
   render() {
-    const { label, labelId, name } = this;
+    const {label, labelId, name} = this;
 
     return (
       <Host {...{
@@ -115,7 +115,7 @@ export class OsdsRadioGroup implements OdsRadioGroupAttribute, OdsRadioGroupEven
         name,
         role: 'radiogroup',
       }}
-            onClick={this.handleLabelClick.bind(this)}
+      onClick={this.handleLabelClick.bind(this)}
       >
         <slot></slot>
       </Host>

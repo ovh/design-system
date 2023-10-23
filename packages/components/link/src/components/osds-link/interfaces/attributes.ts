@@ -1,6 +1,6 @@
-import type  { ODS_LINK_REFERRER_POLICY } from '../constants/referrer-policies';
-import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import type { OdsHTMLAnchorElementRel, OdsHTMLAnchorElementTarget } from '@ovhcloud/ods-common-core'
+import type {ODS_LINK_REFERRER_POLICY} from '../constants/referrer-policies';
+import type {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
+import type {OdsHTMLAnchorElementRel, OdsHTMLAnchorElementTarget} from '@ovhcloud/ods-common-core';
 
 interface OdsLinkAttribute {
   /** Link color theme */

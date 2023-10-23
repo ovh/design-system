@@ -1,4 +1,4 @@
-type OdsCheckboxAttributeCbk = ({ checked, value }: { checked: boolean, value: HTMLInputElement['value'] }) => Promise<void>;
+type OdsCheckboxAttributeCbk = ({checked, value}: { checked: boolean, value: HTMLInputElement['value'] }) => Promise<void>;
 
 interface OdsCheckboxAttribute {
   /**
@@ -62,4 +62,4 @@ interface OdsCheckboxAttribute {
 export {
   OdsCheckboxAttribute,
   OdsCheckboxAttributeCbk,
-}
+};

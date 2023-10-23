@@ -1,4 +1,4 @@
-import type { ODS_FLAG_ISO_CODE_UNION } from "../constants/flag-iso-code";
+import type {ODS_FLAG_ISO_CODE_UNION} from '../constants/flag-iso-code';
 
 interface OdsFlagAttribute {
   /**

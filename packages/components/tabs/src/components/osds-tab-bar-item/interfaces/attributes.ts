@@ -18,5 +18,5 @@ interface OdsTabBarItemAttribute {
 }
 
 export {
-    OdsTabBarItemAttribute,
+  OdsTabBarItemAttribute,
 };

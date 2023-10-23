@@ -1,6 +1,6 @@
-import type { E2EElement, E2EPage } from '@stencil/core/testing';
-import { OdsLogger } from '@ovhcloud/ods-common-core';
-import { newE2EPage } from '@stencil/core/testing';
+import type {E2EElement, E2EPage} from '@stencil/core/testing';
+import {OdsLogger} from '@ovhcloud/ods-common-core';
+import {newE2EPage} from '@stencil/core/testing';
 
 const logger = new OdsLogger('osds-cart-item-option-e2e');
 
@@ -10,7 +10,7 @@ describe('e2e:osds-cart-item-option', () => {
 
   async function setup() {
     page = await newE2EPage();
-    await page.setContent(`<osds-cart-item-option></osds-cart-item-option>`);
+    await page.setContent('<osds-cart-item-option></osds-cart-item-option>');
     await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
 
     el = await page.find('osds-cart-item-option');
@@ -21,8 +21,8 @@ describe('e2e:osds-cart-item-option', () => {
     logger.log(root);
   }
 
-  it('should render', async () => {
-    await setup()
+  it('should render', async() => {
+    await setup();
     expect(el).not.toBeNull();
     expect(el).toHaveClass('hydrated');
   });

@@ -1,15 +1,15 @@
 jest.mock('./core/controller'); // keep jest.mock before any import
 
-import type { SpecPage } from '@stencil/core/testing';
-import type { OdsMessageAttribute } from './interfaces/attributes';
-import { newSpecPage } from '@stencil/core/testing';
-import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
-import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { ODS_MESSAGE_TYPE } from './constants/message-type';
-import { ODS_ICON_NAME } from '@ovhcloud/ods-component-icon';
-import { OdsMessageController } from './core/controller';
-import { OsdsMessage } from './osds-message';
+import type {SpecPage} from '@stencil/core/testing';
+import type {OdsMessageAttribute} from './interfaces/attributes';
+import {newSpecPage} from '@stencil/core/testing';
+import {odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute} from '@ovhcloud/ods-common-testing';
+import {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
+import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
+import {ODS_MESSAGE_TYPE} from './constants/message-type';
+import {ODS_ICON_NAME} from '@ovhcloud/ods-component-icon';
+import {OdsMessageController} from './core/controller';
+import {OsdsMessage} from './osds-message';
 
 describe('spec:osds-message', () => {
   let page: SpecPage;
@@ -21,7 +21,7 @@ describe('spec:osds-message', () => {
     jest.clearAllMocks();
   });
 
-  async function setup({ attributes = {} }: { attributes?: Partial<OdsMessageAttribute> } = {}) {
+  async function setup({attributes = {}}: { attributes?: Partial<OdsMessageAttribute> } = {}) {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsMessageAttribute>(attributes, DEFAULT_ATTRIBUTE);
 
     page = await newSpecPage({
@@ -35,7 +35,7 @@ describe('spec:osds-message', () => {
     controller = (OdsMessageController as unknown as jest.SpyInstance<OdsMessageController, unknown[]>).mock.instances[0];
   }
 
-  it('should render', async () => {
+  it('should render', async() => {
     await setup();
     expect(root?.shadowRoot).toBeTruthy();
     expect(instance).toBeTruthy();
@@ -55,7 +55,7 @@ describe('spec:osds-message', () => {
         defaultValue: DEFAULT_ATTRIBUTE.color,
         newValue: ODS_THEME_COLOR_INTENT.primary,
         value: ODS_THEME_COLOR_INTENT.default,
-        setup: (value) => setup({ attributes: { ['color']: value } }),
+        setup: (value) => setup({attributes: {['color']: value}}),
         ...config,
       });
     });
@@ -66,7 +66,7 @@ describe('spec:osds-message', () => {
         defaultValue: DEFAULT_ATTRIBUTE.inline,
         newValue: false,
         value: true,
-        setup: (value) => setup({ attributes: { ['inline']: value } }),
+        setup: (value) => setup({attributes: {['inline']: value}}),
         ...config,
       });
     });
@@ -77,7 +77,7 @@ describe('spec:osds-message', () => {
         defaultValue: DEFAULT_ATTRIBUTE.icon,
         newValue: ODS_ICON_NAME.CLOSE,
         value: ODS_ICON_NAME.OVH,
-        setup: (value) => setup({ attributes: { ['icon']: value } }),
+        setup: (value) => setup({attributes: {['icon']: value}}),
         ...config,
       });
     });
@@ -88,7 +88,7 @@ describe('spec:osds-message', () => {
         defaultValue: DEFAULT_ATTRIBUTE.removable,
         newValue: false,
         value: true,
-        setup: (value) => setup({ attributes: { ['removable']: value } }),
+        setup: (value) => setup({attributes: {['removable']: value}}),
         ...config,
       });
     });
@@ -99,7 +99,7 @@ describe('spec:osds-message', () => {
         defaultValue: DEFAULT_ATTRIBUTE.type,
         newValue: ODS_MESSAGE_TYPE.error,
         value: ODS_MESSAGE_TYPE.success,
-        setup: (value) => setup({ attributes: { ['type']: value } }),
+        setup: (value) => setup({attributes: {['type']: value}}),
         ...config,
       });
     });
@@ -110,14 +110,14 @@ describe('spec:osds-message', () => {
         defaultValue: DEFAULT_ATTRIBUTE.contrasted,
         newValue: false,
         value: true,
-        setup: (value) => setup({ attributes: { ['contrasted']: value } }),
+        setup: (value) => setup({attributes: {['contrasted']: value}}),
         ...config,
       });
     });
   });
 
   describe('@Watch : validate', () => {
-    it('should call controller.validateColor on init and on color changes', async () => {
+    it('should call controller.validateColor on init and on color changes', async() => {
       await setup();
       expect(controller.validateColor).toHaveBeenCalledWith(DEFAULT_ATTRIBUTE.color);
 
@@ -128,7 +128,7 @@ describe('spec:osds-message', () => {
       expect(controller.validateColor).toHaveBeenCalledTimes(2);
     });
 
-    it('should call controller.setColorForType on init and on type changes', async () => {
+    it('should call controller.setColorForType on init and on type changes', async() => {
       await setup();
       expect(controller.setColorForType).toHaveBeenCalledWith(DEFAULT_ATTRIBUTE.type);
 

@@ -1,4 +1,4 @@
-import { OdsUsedValidityState } from './ods-used-validity-state';
+import {OdsUsedValidityState} from './ods-used-validity-state';
 
 /**
  * Ods representation of an input error state.
@@ -15,8 +15,8 @@ export interface OdsValidityState extends OdsUsedValidityState {
  * @param value - possible object corresponding to `OdsValidityState`
  */
 export function isOdsValidityState(value?: unknown): value is OdsValidityState {
-  const hasProperty: (key: keyof OdsValidityState, value?: unknown) => boolean = (k) => Object.prototype.hasOwnProperty.call(value, k)
-  return !!(value && hasProperty("invalid", value));
+  const hasProperty: (key: keyof OdsValidityState, value?: unknown) => boolean = (k) => Object.prototype.hasOwnProperty.call(value, k);
+  return !!(value && hasProperty('invalid', value));
 }
 
 /**
@@ -24,6 +24,6 @@ export function isOdsValidityState(value?: unknown): value is OdsValidityState {
  * @param name - possible string corresponding to a key
  */
 export function isOdsValidityStateProperty(name: unknown): name is keyof OdsValidityState {
-  const keys: Array<keyof OdsValidityState> = ["invalid", "stepMismatch", "valueMissing", "valid"]
-  return keys.some(k => k === name);
+  const keys: Array<keyof OdsValidityState> = ['invalid', 'stepMismatch', 'valueMissing', 'valid'];
+  return keys.some((k) => k === name);
 }

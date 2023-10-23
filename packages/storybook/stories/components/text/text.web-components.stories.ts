@@ -1,11 +1,11 @@
-import { html } from 'lit-html';
-import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-import { olesIpsum, OlesIpsumGeneration } from '@ovhcloud/ods-common-core';
-import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
-import { createComponentTable, extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
-import { defineCustomElements } from '@ovhcloud/ods-components/text/loader'
-import { ODS_TEXT_LEVELS, ODS_TEXT_SIZES } from '@ovhcloud/ods-components/text';
-import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-components/text/src/components/osds-text/constants/default-attributes';
+import {html} from 'lit-html';
+import {unsafeHTML} from 'lit-html/directives/unsafe-html';
+import {OlesIpsumGeneration, olesIpsum} from '@ovhcloud/ods-common-core';
+import {ODS_THEME_COLOR_INTENTS} from '@ovhcloud/ods-common-theming';
+import {createComponentTable, extractArgTypes, extractStoryParams, getTagAttributes} from '../../../core/componentHTMLUtils';
+import {defineCustomElements} from '@ovhcloud/ods-components/text/loader';
+import {ODS_TEXT_LEVELS, ODS_TEXT_SIZES} from '@ovhcloud/ods-components/text';
+import {DEFAULT_ATTRIBUTE} from '@ovhcloud/ods-components/text/src/components/osds-text/constants/default-attributes';
 // @ts-ignore
 import changelog from '@ovhcloud/ods-components/text/CHANGELOG.md';
 // @ts-ignore
@@ -19,31 +19,31 @@ const storyParams = {
     category: 'General',
     defaultValue: DEFAULT_ATTRIBUTE.color,
     options: ODS_THEME_COLOR_INTENTS,
-    control: { type: 'select' },
+    control: {type: 'select'},
   },
   size: {
     category: 'General',
     defaultValue: DEFAULT_ATTRIBUTE.size,
     options: ODS_TEXT_SIZES,
-    control: { type: 'select' },
+    control: {type: 'select'},
   },
   level: {
     category: 'General',
     defaultValue: DEFAULT_ATTRIBUTE.level,
     options: ODS_TEXT_LEVELS,
-    control: { type: 'select' },
+    control: {type: 'select'},
   },
   textContent: {
     category: 'Slot',
-    defaultValue: olesIpsum(OlesIpsumGeneration.sentences)
+    defaultValue: olesIpsum(OlesIpsumGeneration.sentences),
   },
   contrasted: {
     category: 'Misc',
-    defaultValue: DEFAULT_ATTRIBUTE.contrasted
+    defaultValue: DEFAULT_ATTRIBUTE.contrasted,
   },
   breakSpaces: {
     category: 'Misc',
-    defaultValue: DEFAULT_ATTRIBUTE.breakSpaces
+    defaultValue: DEFAULT_ATTRIBUTE.breakSpaces,
   },
 };
 
@@ -54,9 +54,9 @@ export default {
     notes: {
       changelog,
     },
-    docs: { page },
+    docs: {page},
   },
-  argTypes: extractArgTypes(storyParams)
+  argTypes: extractArgTypes(storyParams),
 };
 
 /* Default */
@@ -72,7 +72,7 @@ Default.args = {
 };
 
 const defaultTag = 'osds-text';
-const defaultContent = `<span>Text</span>`;
+const defaultContent = '<span>Text</span>';
 
 const TemplateAll = () => html`
 <style>
@@ -99,33 +99,33 @@ const TemplateAll = () => html`
 
 <h1>Sizes & Levels</h1>
 ${unsafeHTML(createComponentTable(
-  defaultTag,
-  { size: ODS_TEXT_SIZES },
-  { level: ODS_TEXT_LEVELS },
-  defaultContent
-))}
+    defaultTag,
+    {size: ODS_TEXT_SIZES},
+    {level: ODS_TEXT_LEVELS},
+    defaultContent,
+  ))}
 <h1>Levels & Colors</h1>
 ${unsafeHTML(createComponentTable(
-  defaultTag,
-  { level: ODS_TEXT_LEVELS },
-  { color: ODS_THEME_COLOR_INTENTS },
-  defaultContent
-))}
+    defaultTag,
+    {level: ODS_TEXT_LEVELS},
+    {color: ODS_THEME_COLOR_INTENTS},
+    defaultContent,
+  ))}
 
 <div style='background: #666; padding: 1em; margin: -0.3em -0.8em; color: white'>
   <h1>Size & Contrasted Levels</h1>
   ${unsafeHTML(createComponentTable(
     defaultTag,
-    { size: ODS_TEXT_SIZES },
-    { level: ODS_TEXT_LEVELS },
+    {size: ODS_TEXT_SIZES},
+    {level: ODS_TEXT_LEVELS},
     defaultContent,
-    { contrasted: true }
+    {contrasted: true},
   ))}
 </div>
 `;
 export const All = TemplateAll.bind({});
 // @ts-ignore
 All.parameters = {
-  controls: { hideNoControlsWarning: true },
-  options: { showPanel: false }
+  controls: {hideNoControlsWarning: true},
+  options: {showPanel: false},
 };

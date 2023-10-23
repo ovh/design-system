@@ -1,7 +1,7 @@
-import { html } from 'lit-html';
-import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-import { defineCustomElements } from '@ovhcloud/ods-components/collapsible/loader';
-import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
+import {html} from 'lit-html';
+import {unsafeHTML} from 'lit-html/directives/unsafe-html';
+import {defineCustomElements} from '@ovhcloud/ods-components/collapsible/loader';
+import {extractArgTypes, extractStoryParams, getTagAttributes} from '../../../core/componentHTMLUtils';
 // @ts-ignore
 import changelog from '@ovhcloud/ods-components/collapsible/CHANGELOG.md';
 // @ts-ignore
@@ -17,7 +17,7 @@ const storyParams = {
   },
   collapsibleContent: {
     category: 'Slot',
-    defaultValue: 'Collapsible content'
+    defaultValue: 'Collapsible content',
   },
 };
 
@@ -28,9 +28,9 @@ export default {
     notes: {
       changelog,
     },
-    docs: { page }
+    docs: {page},
   },
-  argTypes: extractArgTypes(storyParams)
+  argTypes: extractArgTypes(storyParams),
 };
 
 /* Default */
@@ -40,7 +40,7 @@ const TemplateDefault = (args: any) => {
       ${unsafeHTML(args.collapsibleContent)}
     </osds-collapsible>
   `;
-}
+};
 export const Default = TemplateDefault.bind({});
 // @ts-ignore
 Default.args = {
@@ -70,5 +70,5 @@ const TemplateTrigger = (args: any) => html`
 export const Trigger = TemplateTrigger.bind({});
 // @ts-ignore
 Trigger.args = {
-...extractStoryParams(storyParams),
+  ...extractStoryParams(storyParams),
 };

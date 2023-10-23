@@ -1,13 +1,13 @@
-import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
-import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
-import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
-import { OsdsCartHeader } from '../osds-cart-header';
-import { OdsCartHeaderController } from './controller';
+import type {OdsLoggerSpyReferences} from '@ovhcloud/ods-common-testing';
+import {Ods, OdsLogger} from '@ovhcloud/ods-common-core';
+import {OdsClearLoggerSpy, OdsInitializeLoggerSpy} from '@ovhcloud/ods-common-testing';
+import {OsdsCartHeader} from '../osds-cart-header';
+import {OdsCartHeaderController} from './controller';
 
 class OdsCartHeaderMock extends OsdsCartHeader {
   constructor(attribute: Partial<OsdsCartHeader>) {
     super();
-    Object.assign(this, attribute)
+    Object.assign(this, attribute);
   }
 }
 
@@ -27,7 +27,7 @@ describe('spec:ods-cart-header-controller', () => {
     const loggerMocked = new OdsLogger('myLoggerMocked');
     loggerSpyReferences = OdsInitializeLoggerSpy({
       loggerMocked: loggerMocked as never,
-      spiedClass: OdsCartHeaderController
+      spiedClass: OdsCartHeaderController,
     });
   });
 
@@ -37,7 +37,7 @@ describe('spec:ods-cart-header-controller', () => {
 
   describe('methods', () => {
     describe('methods:initCart', () => {
-      it(`should warn if cart doesn't exists`, () => {
+      it('should warn if cart doesn\'t exists', () => {
         setup();
 
         controller.initCart();
@@ -46,8 +46,8 @@ describe('spec:ods-cart-header-controller', () => {
         expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledWith('A cart is mandatory.');
       });
 
-      it(`should init cart`, () => {
-        const cart = { dummy: 'cart '};//new OsdsCartMock() as unknown as (HTMLElement & OsdsCart);
+      it('should init cart', () => {
+        const cart = {dummy: 'cart '};//new OsdsCartMock() as unknown as (HTMLElement & OsdsCart);
         setup();
         component.el.closest = jest.fn(() => cart);
         controller.initCart();
@@ -57,12 +57,12 @@ describe('spec:ods-cart-header-controller', () => {
     });
 
     describe('methods:validateHeaderTitle', () => {
-      it(`should throw an error if headerTitle doesn't exists`, () => {
+      it('should throw an error if headerTitle doesn\'t exists', () => {
         setup();
         expect(() => controller.validateHeaderTitle()).toThrow('[OsdsCartHeader] header-title attribute is mandatory');
       });
 
-      it(`should not throw an error if headerTitle exists`, () => {
+      it('should not throw an error if headerTitle exists', () => {
         setup();
         component.headerTitle = 'Title';
         expect(() => controller.validateHeaderTitle()).not.toThrow();

@@ -1,5 +1,5 @@
-import type { E2EPage } from '@stencil/core/testing';
-import type { HTTPRequest as pRequest, EventEmitter} from 'puppeteer';
+import type {E2EPage} from '@stencil/core/testing';
+import type {EventEmitter, HTTPRequest as pRequest} from 'puppeteer';
 
 /**
  *
@@ -18,12 +18,12 @@ import type { HTTPRequest as pRequest, EventEmitter} from 'puppeteer';
  * @param cbk
  */
 export function odsSetE2eInterceptRequest(page: E2EPage, cbk: (request: pRequest) => void) {
-  page.on('response', response => {
+  page.on('response', (response) => {
     if (response.url().match(/^https?:\/\/localhost(:\d+)?\/$/)) {
       (page as unknown as EventEmitter).removeAllListeners('request');
-      page.on('request', request => {
-        cbk(request)
+      page.on('request', (request) => {
+        cbk(request);
       });
-    };
+    }
   });
 }

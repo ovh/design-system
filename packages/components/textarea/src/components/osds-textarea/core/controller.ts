@@ -1,6 +1,6 @@
-import type { OdsTextAreaValidityState } from '@ovhcloud/ods-common-core';
-import type { OsdsTextArea } from '../osds-textarea';
-import { OdsFormControl, OdsLogger, OdsTextAreaGetValidityState } from '@ovhcloud/ods-common-core';
+import type {OdsTextAreaValidityState} from '@ovhcloud/ods-common-core';
+import type {OsdsTextArea} from '../osds-textarea';
+import {OdsFormControl, OdsLogger, OdsTextAreaGetValidityState} from '@ovhcloud/ods-common-core';
 
 /**
  * common controller logic for textarea component used by the different implementations.
@@ -34,13 +34,13 @@ class OdsTextAreaController {
     return {
       ...(textAreaEl ? {
         ...OdsTextAreaGetValidityState(textAreaEl.validity),
-        invalid: !textAreaEl.validity.valid
+        invalid: !textAreaEl.validity.valid,
       } : {
         valid: true,
         valueMissing: false,
         invalid: false,
         customError: false,
-      })
+      }),
     };
   }
 
@@ -60,7 +60,7 @@ class OdsTextAreaController {
   }
 
   onChange(): void {
-    this.logger.debug('onChange', this.component.textInputEl?.value)
+    this.logger.debug('onChange', this.component.textInputEl?.value);
   }
 
   registerFormControl(formControl?: OdsFormControl<OdsTextAreaValidityState>): void {
@@ -71,7 +71,7 @@ class OdsTextAreaController {
   }
 
   emitValue(value: HTMLTextAreaElement['value'], oldValue?: HTMLTextAreaElement['value']): void {
-    this.logger.debug(`[textarea=${this.component.value}]`, 'value changed', { value, oldValue });
+    this.logger.debug(`[textarea=${this.component.value}]`, 'value changed', {value, oldValue});
     this.component.emitChange(value, oldValue);
   }
 

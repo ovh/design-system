@@ -1,8 +1,8 @@
-import type { HTMLStencilElement } from '@stencil/core/internal';
-import type { OsdsRadio } from '../osds-radio';
-import type { OsdsRadioGroup } from '../../osds-radio-group/osds-radio-group';
-import type { OdsRadioizable } from '@ovhcloud/ods-common-core';
-import { OdsLogger } from '@ovhcloud/ods-common-core';
+import type {HTMLStencilElement} from '@stencil/core/internal';
+import type {OsdsRadio} from '../osds-radio';
+import type {OsdsRadioGroup} from '../../osds-radio-group/osds-radio-group';
+import type {OdsRadioizable} from '@ovhcloud/ods-common-core';
+import {OdsLogger} from '@ovhcloud/ods-common-core';
 
 class OdsRadioController {
   private readonly logger = new OdsLogger('OdsRadioController');
@@ -22,7 +22,7 @@ class OdsRadioController {
   }
 
   updateDisabledOnChild(disabled: boolean): void {
-    this.logger.log(`[radio=${this.component.value}]`, 'disabled changed. update child', { disabled });
+    this.logger.log(`[radio=${this.component.value}]`, 'disabled changed. update child', {disabled});
     if (this.component.radioizedComponent) {
       if (disabled) {
         this.component.radioizedComponent.setAttribute('disabled', '');
@@ -33,7 +33,7 @@ class OdsRadioController {
   }
 
   updateCheckingOnChild(checking: boolean): void {
-    this.logger.log(`[radio=${this.component.value}]`, 'checking changed. update child', { checking });
+    this.logger.log(`[radio=${this.component.value}]`, 'checking changed. update child', {checking});
     if (this.component.radioizedComponent) {
       if (checking) {
         this.component.radioizedComponent.setAttribute('checking', '');
@@ -44,7 +44,7 @@ class OdsRadioController {
   }
 
   updateCheckOnChild(checked: boolean): void {
-    this.logger.log(`[radio=${this.component.value}]`, 'checked changed. update child', { checked });
+    this.logger.log(`[radio=${this.component.value}]`, 'checked changed. update child', {checked});
     if (this.component.radioizedComponent) {
       if (checked) {
         this.component.radioizedComponent.setAttribute('checked', '');
@@ -59,7 +59,7 @@ class OdsRadioController {
    * @param value
    */
   watchValue(value: string): void {
-    this.logger.log(`[radio=${this.component.value}]`, 'value changed', { value });
+    this.logger.log(`[radio=${this.component.value}]`, 'value changed', {value});
   }
 
   beforeInit(): void {
@@ -103,7 +103,7 @@ class OdsRadioController {
   afterInit(): void {
     this.component.radioizedComponent = this.getFirstElementChild();
     if (!this.component.radioizedComponent) {
-      this.logger.warn(`[radio=${this.component.value}]`, 'you must place a radioizable element inside the radio component')
+      this.logger.warn(`[radio=${this.component.value}]`, 'you must place a radioizable element inside the radio component');
     } else {
       this.updateCheckOnChild(this.component.checked);
       this.updateDisabledOnChild(this.component.disabled);
@@ -161,7 +161,7 @@ class OdsRadioController {
    * @param event
    */
   async handleLabelKeyEvent(event: KeyboardEvent) {
-    this.logger.log(`[radio=${this.component.value}]`, 'key event', { event });
+    this.logger.log(`[radio=${this.component.value}]`, 'key event', {event});
     if (event.code === 'Space' || event.code.includes('Enter')) {
       await this.handleLabelEvent();
     }
@@ -173,8 +173,8 @@ class OdsRadioController {
       this.logger.log(`[radio=${this.component.value}]`, 'calling save');
       this.component.checking = true;
       this.component.emitChecking();
-      this.component.beforeSave && await this.component.beforeSave({ checked: this.component.checked, value: this.component.value });
-      this.component.save && await this.component.save({ checked: this.component.checked, value: this.component.value });
+      this.component.beforeSave && await this.component.beforeSave({checked: this.component.checked, value: this.component.value});
+      this.component.save && await this.component.save({checked: this.component.checked, value: this.component.value});
       this.logger.log(`[radio=${this.component.value}]`, 'calling save done');
       this.component.checked = true;
     } catch (e) {
@@ -183,7 +183,7 @@ class OdsRadioController {
     } finally {
       this.component.checking = false;
       this.component.emitChecking();
-      this.component.afterSave && await this.component.afterSave({ checked: this.component.checked, value: this.component.value });
+      this.component.afterSave && await this.component.afterSave({checked: this.component.checked, value: this.component.value});
     }
   }
 
@@ -212,4 +212,4 @@ class OdsRadioController {
 
 export {
   OdsRadioController,
-}
+};

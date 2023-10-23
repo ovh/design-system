@@ -1,7 +1,7 @@
-import type { OsdsMessage } from '../osds-message';
-import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import { ODS_MESSAGE_TYPE } from '../constants/message-type';
-import { odsIsTermInEnum, OdsLogger } from '@ovhcloud/ods-common-core'
+import type {OsdsMessage} from '../osds-message';
+import {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
+import {ODS_MESSAGE_TYPE} from '../constants/message-type';
+import {OdsLogger, odsIsTermInEnum} from '@ovhcloud/ods-common-core';
 
 /**
  * common controller logic for chip component used by the different implementations.
@@ -22,7 +22,7 @@ class OdsMessageController {
   validateColor(color?: ODS_THEME_COLOR_INTENT): void {
     if (color && !odsIsTermInEnum(color, ODS_THEME_COLOR_INTENT)) {
       this.logger.warn(
-        `The color attribute must have a value from [${Object.values(ODS_THEME_COLOR_INTENT).join(', ')}]`
+        `The color attribute must have a value from [${Object.values(ODS_THEME_COLOR_INTENT).join(', ')}]`,
       );
     }
   }

@@ -1,12 +1,12 @@
-import type { HTMLStencilElement } from '@stencil/core/internal';
-import { OdsCartItemController } from './controller';
-import { OsdsCart } from '../../osds-cart/osds-cart';
-import { OsdsCartItem } from '../osds-cart-item';
+import type {HTMLStencilElement} from '@stencil/core/internal';
+import {OdsCartItemController} from './controller';
+import {OsdsCart} from '../../osds-cart/osds-cart';
+import {OsdsCartItem} from '../osds-cart-item';
 
 class OdsCartItemMock extends OsdsCartItem {
   constructor(attribute: Partial<OsdsCartItem>) {
     super();
-    Object.assign(this, attribute)
+    Object.assign(this, attribute);
   }
 }
 
@@ -41,14 +41,14 @@ describe('spec:ods-cart-item-controller', () => {
 
   describe('methods', () => {
     describe('method:initCart', () => {
-      it('should set component cart', async () => {
+      it('should set component cart', async() => {
         setup();
         await controller.initCart();
 
         expect(component.cart).toEqual(cart);
       });
 
-      it('should call controller.refreshCart', async () => {
+      it('should call controller.refreshCart', async() => {
         setup();
         spyOnRefreshCart = jest.spyOn(controller, 'refreshCart');
         await controller.initCart();
@@ -58,7 +58,7 @@ describe('spec:ods-cart-item-controller', () => {
     });
 
     describe('method:refreshCart', () => {
-      it('should call cart.refresh', async () => {
+      it('should call cart.refresh', async() => {
         setup();
         component.cart = cart as unknown as (HTMLStencilElement & OsdsCart);
         await controller.refreshCart();

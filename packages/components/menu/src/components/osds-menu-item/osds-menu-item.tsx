@@ -1,4 +1,4 @@
-import { Component, h, Host } from '@stencil/core';
+import {Component, Host, h} from '@stencil/core';
 
 @Component({
   tag: 'osds-menu-item',

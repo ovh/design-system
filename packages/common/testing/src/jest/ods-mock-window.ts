@@ -24,7 +24,7 @@ export function odsMockWindow(setupConfig: any): void {
     getOdsWindow: ():OdsMockWindow | undefined => {
       console.log('[odsMockWindow]', 'get mocked window');
       // node protection or other env : window may not exist
-      if (typeof window !== "undefined") {
+      if (typeof window !== 'undefined') {
         const win: OdsMockWindow = window;
         // set automatically window id in order trace the used window or mocked window by the framework tool like stencil
         win.winId = win.winId ? win.winId : Math.floor(Math.random() * 100000000);
@@ -39,7 +39,7 @@ export function odsMockWindow(setupConfig: any): void {
         !win.ods && (win.ods = setupConfig);
 
         // eslint-disable-next-line no-console
-        console.log('want mocked window id=', win.winId, { setupId: win.ods?.setupId, config: win.ods?.config });
+        console.log('want mocked window id=', win.winId, {setupId: win.ods?.setupId, config: win.ods?.config});
         return win;
       }
       return undefined;

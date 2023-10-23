@@ -1,1 +1,1 @@
-export { OsdsOvhLocationTile } from './osds-ovh-location-tile';
+export {OsdsOvhLocationTile} from './osds-ovh-location-tile';

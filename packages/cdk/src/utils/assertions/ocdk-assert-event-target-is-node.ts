@@ -13,7 +13,7 @@
  * @param e - the event target
  */
 export function ocdkAssertEventTargetIsNode(e: EventTarget | null): asserts e is Node {
-  if (!e || !("nodeType" in e)) {
-    throw new Error(`OCDK: manipulation of non node event target.`);
+  if (!e || !('nodeType' in e)) {
+    throw new Error('OCDK: manipulation of non node event target.');
   }
 }

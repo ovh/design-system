@@ -83,5 +83,5 @@ LargeData.args = {
 // @ts-ignore
 LargeData.parameters = {
   controls: { hideNoControlsWarning: true },
-  options: { showPanel: false }
+  options: { showPanel: false },
 };

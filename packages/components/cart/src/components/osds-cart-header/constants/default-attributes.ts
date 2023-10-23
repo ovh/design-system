@@ -1,4 +1,4 @@
-import type { OdsCartHeaderAttribute } from '../interfaces/attributes';
+import type {OdsCartHeaderAttribute} from '../interfaces/attributes';
 
 const DEFAULT_ATTRIBUTE: OdsCartHeaderAttribute = Object.freeze({
   headerTitle: undefined,

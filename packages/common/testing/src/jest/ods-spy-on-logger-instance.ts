@@ -1,5 +1,5 @@
-import type { GenericLogger } from '../unit/generic-logger';
-import { OdsLoggerMethodSpies } from './ods-logger-method-spies';
+import type {GenericLogger} from '../unit/generic-logger';
+import {OdsLoggerMethodSpies} from './ods-logger-method-spies';
 
 export function OdsSpyOnLoggerInstance(loggerMocked: GenericLogger): OdsLoggerMethodSpies {
   return {
@@ -8,6 +8,6 @@ export function OdsSpyOnLoggerInstance(loggerMocked: GenericLogger): OdsLoggerMe
     error: jest.spyOn(loggerMocked, 'error'),
     info: jest.spyOn(loggerMocked, 'info'),
     debug: jest.spyOn(loggerMocked, 'debug'),
-    trace: jest.spyOn(loggerMocked, 'trace')
+    trace: jest.spyOn(loggerMocked, 'trace'),
   };
 }

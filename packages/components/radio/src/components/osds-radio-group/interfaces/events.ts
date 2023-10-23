@@ -1,4 +1,4 @@
-import type { EventEmitter } from '@stencil/core';
+import type {EventEmitter} from '@stencil/core';
 
 interface OdsRadioGroupValueChangeEventDetail {
   newValue: string,
@@ -19,4 +19,4 @@ export {
   OdsRadioGroupEvent,
   OdsRadioGroupValueChangeEvent,
   OdsRadioGroupValueChangeEventDetail,
-}
+};

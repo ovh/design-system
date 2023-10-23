@@ -1,11 +1,11 @@
-import { ODS_ICON_NAME } from '@ovhcloud/ods-component-icon';
-import { OsdsCheckboxButton } from '../osds-checkbox-button';
-import { OdsCheckboxButtonController } from './ods-checkbox-button-controller';
+import {ODS_ICON_NAME} from '@ovhcloud/ods-component-icon';
+import {OsdsCheckboxButton} from '../osds-checkbox-button';
+import {OdsCheckboxButtonController} from './ods-checkbox-button-controller';
 
 class OdsCheckboxButtonMock extends OsdsCheckboxButton {
   constructor(attribute: Partial<OsdsCheckboxButton>) {
     super();
-    Object.assign(this, attribute)
+    Object.assign(this, attribute);
   }
 }
 

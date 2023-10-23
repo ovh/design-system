@@ -1,4 +1,4 @@
-import { Component, Element, Host, h } from '@stencil/core';
+import {Component, Element, Host, h} from '@stencil/core';
 
 /**
  * @slot (tooltip-content) - The Tooltip content
@@ -6,7 +6,7 @@ import { Component, Element, Host, h } from '@stencil/core';
 @Component({
   tag: 'osds-tooltip-content',
   styleUrl: 'osds-tooltip-content.scss',
-  shadow: true
+  shadow: true,
 })
 export class OsdsTooltipContent {
   @Element() el!: HTMLElement;

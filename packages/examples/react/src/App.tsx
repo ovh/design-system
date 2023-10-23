@@ -1,14 +1,14 @@
-import React from 'react'
-import reactLogo from './assets/react.svg'
-import odsLogo from './assets/ods.svg'
+import React from 'react';
+import reactLogo from './assets/react.svg';
+import odsLogo from './assets/ods.svg';
 
 // for each component's type you use from ODS, you will need to import the core or theming:
-import { Ods, odsSetup } from '@ovhcloud/ods-common-core'
-import { ODS_THEME_COLOR_HUE, ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+import {Ods, odsSetup} from '@ovhcloud/ods-common-core';
+import {ODS_THEME_COLOR_HUE, ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
 
 // for each react component you use from `ODS`, use this import:
-import { OsdsText } from '@ovhcloud/ods-components/text/react';
-import { ODS_TEXT_SIZE } from '@ovhcloud/ods-components/text';
+import {OsdsText} from '@ovhcloud/ods-components/text/react';
+import {ODS_TEXT_SIZE} from '@ovhcloud/ods-components/text';
 
 // you can directly import the generated ods theme here, or through the application css (app.css)
 import '@ovhcloud/ods-theme-blue-jeans';
@@ -48,7 +48,7 @@ const App: React.FC = () => {
       </p>
       <Demo />
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;

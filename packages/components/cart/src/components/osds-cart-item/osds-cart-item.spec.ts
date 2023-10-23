@@ -1,9 +1,9 @@
 jest.mock('./core/controller'); // keep jest.mock before any
 
-import type { SpecPage } from '@stencil/core/testing';
-import { newSpecPage } from '@stencil/core/testing';
-import { OdsCartItemController } from './core/controller';
-import { OsdsCartItem } from './osds-cart-item';
+import type {SpecPage} from '@stencil/core/testing';
+import {newSpecPage} from '@stencil/core/testing';
+import {OdsCartItemController} from './core/controller';
+import {OsdsCartItem} from './osds-cart-item';
 
 describe('spec:osds-cart-item', () => {
   let page: SpecPage;
@@ -16,7 +16,7 @@ describe('spec:osds-cart-item', () => {
   async function setup() {
     page = await newSpecPage({
       components: [OsdsCartItem],
-      html: `<osds-cart-item></osds-cart-item>`,
+      html: '<osds-cart-item></osds-cart-item>',
     });
 
     // note: assigned slot not yet available in HtmlMockedElement of stencil : https://github.com/ionic-team/stencil/issues/2830
@@ -31,7 +31,7 @@ describe('spec:osds-cart-item', () => {
     jest.clearAllMocks();
   });
 
-  it('should render', async () => {
+  it('should render', async() => {
     await setup();
     expect(page.root?.shadowRoot).toBeTruthy();
     expect(page.rootInstance).toBeTruthy();
@@ -39,35 +39,35 @@ describe('spec:osds-cart-item', () => {
 
 
   describe('contents', () => {
-    it('should have a subhead slot', async () => {
+    it('should have a subhead slot', async() => {
       await setup();
       expect(slotSubhead).toBeTruthy();
     });
 
-    it('should have a title slot', async () => {
+    it('should have a title slot', async() => {
       await setup();
       expect(slotTitle).toBeTruthy();
     });
 
-    it('should have a price slot', async () => {
+    it('should have a price slot', async() => {
       await setup();
       expect(slotPrice).toBeTruthy();
     });
 
-    it('should have an extra slot', async () => {
+    it('should have an extra slot', async() => {
       await setup();
       expect(slotExtra).toBeTruthy();
     });
   });
 
   describe('controller', () => {
-    it('should call initCart on init', async () => {
+    it('should call initCart on init', async() => {
       await setup();
       expect(controller.initCart).toHaveBeenCalledTimes(1);
       expect(controller.initCart).toHaveBeenCalledWith();
     });
 
-    it('should call refreshCart on destroy', async () => {
+    it('should call refreshCart on destroy', async() => {
       await setup();
       page.root?.remove();
       expect(controller.refreshCart).toHaveBeenCalledTimes(1);

@@ -1,17 +1,17 @@
 jest.mock('./core/controller'); // keep jest.mock before any
 
-import type { OdsRadioAttribute } from './interfaces/attributes';
-import type { SpecPage } from '@stencil/core/testing';
+import type {OdsRadioAttribute} from './interfaces/attributes';
+import type {SpecPage} from '@stencil/core/testing';
 import {
   OdsUnitTestAttributeType,
-  odsUnitTestAttribute,
   odsComponentAttributes2StringAttributes,
-  odsStringAttributes2Str
+  odsStringAttributes2Str,
+  odsUnitTestAttribute,
 } from '@ovhcloud/ods-common-testing';
-import { newSpecPage } from '@stencil/core/testing';
-import { OsdsRadio } from './osds-radio';
-import { OdsRadioController } from './core/controller';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import {newSpecPage} from '@stencil/core/testing';
+import {OsdsRadio} from './osds-radio';
+import {OdsRadioController} from './core/controller';
+import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
 
 describe('spec:osds-radio', () => {
   let page: SpecPage;
@@ -19,10 +19,10 @@ describe('spec:osds-radio', () => {
   let instance: OsdsRadio;
   let label: HTMLLabelElement | null | undefined;
   let controller: OdsRadioController;
-  const baseAttributes = { ariaLabel: '', checked: false, checking: false, disabled: false, value: '' } 
+  const baseAttributes = {ariaLabel: '', checked: false, checking: false, disabled: false, value: ''};
 
-  async function setup({ attributes = {}, html = `` }: { attributes?: Partial<OdsRadioAttribute>, html?: string }) {
-    const stringAttributes = odsComponentAttributes2StringAttributes<OdsRadioAttribute>({ ...baseAttributes, ...attributes }, DEFAULT_ATTRIBUTE);
+  async function setup({attributes = {}, html = ''}: { attributes?: Partial<OdsRadioAttribute>, html?: string }) {
+    const stringAttributes = odsComponentAttributes2StringAttributes<OdsRadioAttribute>({...baseAttributes, ...attributes}, DEFAULT_ATTRIBUTE);
 
     page = await newSpecPage({
       components: [OsdsRadio],
@@ -40,7 +40,7 @@ describe('spec:osds-radio', () => {
     jest.clearAllMocks();
   });
 
-  it('should render', async () => {
+  it('should render', async() => {
     await setup({});
     expect(root?.shadowRoot).toBeTruthy();
     expect(page.rootInstance).toBeTruthy();
@@ -61,7 +61,7 @@ describe('spec:osds-radio', () => {
         defaultValue: DEFAULT_ATTRIBUTE.disabled,
         newValue: false,
         value: true,
-        setup: (disabled) => setup({ attributes: { disabled } }),
+        setup: (disabled) => setup({attributes: {disabled}}),
         ...config,
       });
     });
@@ -71,8 +71,8 @@ describe('spec:osds-radio', () => {
         defaultValue: DEFAULT_ATTRIBUTE.checking,
         newValue: false,
         value: true,
-        setup: (checking) => setup({ attributes: { checking } }),
-        ...config
+        setup: (checking) => setup({attributes: {checking}}),
+        ...config,
       });
     });
 
@@ -82,8 +82,8 @@ describe('spec:osds-radio', () => {
         defaultValue: DEFAULT_ATTRIBUTE.checked,
         newValue: false,
         value: true,
-        setup: (checked) => setup({ attributes: { checked } }),
-        ...config
+        setup: (checked) => setup({attributes: {checked}}),
+        ...config,
       });
     });
 
@@ -93,8 +93,8 @@ describe('spec:osds-radio', () => {
         defaultValue: DEFAULT_ATTRIBUTE.name,
         newValue: 'oles',
         value: 'ipsum',
-        setup: (name) => setup({ attributes: { name } }),
-        ...config
+        setup: (name) => setup({attributes: {name}}),
+        ...config,
       });
     });
     describe('label', () => {
@@ -103,8 +103,8 @@ describe('spec:osds-radio', () => {
         defaultValue: DEFAULT_ATTRIBUTE.label,
         newValue: 'oles',
         value: 'ipsum',
-        setup: (label) => setup({ attributes: { label } }),
-        ...config
+        setup: (label) => setup({attributes: {label}}),
+        ...config,
       });
     });
     describe('ariaLabel', () => {
@@ -113,8 +113,8 @@ describe('spec:osds-radio', () => {
         defaultValue: DEFAULT_ATTRIBUTE.ariaLabel,
         newValue: 'oles',
         value: 'ipsum',
-        setup: (ariaLabel) => setup({ attributes: { ariaLabel } }),
-        ...config
+        setup: (ariaLabel) => setup({attributes: {ariaLabel}}),
+        ...config,
       });
     });
     describe('ariaLabelledby', () => {
@@ -123,9 +123,9 @@ describe('spec:osds-radio', () => {
         defaultValue: DEFAULT_ATTRIBUTE.ariaLabelledby,
         newValue: 'oles',
         value: 'ipsum',
-        setup: (ariaLabelledby) => setup({ attributes: { ariaLabelledby } }),
+        setup: (ariaLabelledby) => setup({attributes: {ariaLabelledby}}),
         ...config,
-        exclude: [OdsUnitTestAttributeType.REFLECTED, OdsUnitTestAttributeType.MUTABLE, OdsUnitTestAttributeType.PROPERTY]
+        exclude: [OdsUnitTestAttributeType.REFLECTED, OdsUnitTestAttributeType.MUTABLE, OdsUnitTestAttributeType.PROPERTY],
       });
     });
     describe('value', () => {
@@ -134,7 +134,7 @@ describe('spec:osds-radio', () => {
         defaultValue: DEFAULT_ATTRIBUTE.value,
         newValue: 'radio-a',
         value: 'radio-b',
-        setup: (value) => setup({ attributes: { value } }),
+        setup: (value) => setup({attributes: {value}}),
         ...config,
         include: [OdsUnitTestAttributeType.MUTABLE],
       });
@@ -143,19 +143,19 @@ describe('spec:osds-radio', () => {
 
   describe('controller', () => {
     describe('lifecycle', () => {
-      it('should call controller.beforeInit on connectedCallback', async () => {
+      it('should call controller.beforeInit on connectedCallback', async() => {
         await setup({});
         expect(controller.beforeInit).toHaveBeenCalledTimes(1);
         expect(controller.beforeInit).toHaveBeenCalledWith();
       });
 
-      it('should call controller.afterInit when loaded', async () => {
+      it('should call controller.afterInit when loaded', async() => {
         await setup({});
         expect(controller.afterInit).toHaveBeenCalledTimes(1);
         expect(controller.afterInit).toHaveBeenCalledWith();
       });
 
-      it('should call controller.onDestroy when disconnected', async () => {
+      it('should call controller.onDestroy when disconnected', async() => {
         await setup({});
         page.root?.remove();
         expect(controller.onDestroy).toHaveBeenCalledTimes(1);
@@ -164,14 +164,14 @@ describe('spec:osds-radio', () => {
     });
 
     describe('events', () => {
-      it('should call controller.onFocus on focus', async () => {
+      it('should call controller.onFocus on focus', async() => {
         await setup({});
         instance?.onFocus();
         expect(controller.onFocus).toHaveBeenCalledTimes(1);
         expect(controller.onFocus).toHaveBeenCalledWith();
       });
 
-      it('should call controller.onBlur on blur', async () => {
+      it('should call controller.onBlur on blur', async() => {
         await setup({});
         instance?.onBlur();
 
@@ -179,7 +179,7 @@ describe('spec:osds-radio', () => {
         expect(controller.onBlur).toHaveBeenCalledWith();
       });
 
-      it('should call controller.handleLabelKeyEvent on keypress', async () => {
+      it('should call controller.handleLabelKeyEvent on keypress', async() => {
         const event = new Event('keypress');
         await setup({});
         instance.el?.dispatchEvent(event);
@@ -188,7 +188,7 @@ describe('spec:osds-radio', () => {
         expect(controller.handleLabelKeyEvent).toHaveBeenCalledWith(event);
       });
 
-      it('should call controller.handleLabelClick on click', async () => {
+      it('should call controller.handleLabelClick on click', async() => {
         const event = new Event('click');
         await setup({});
         instance.el.dispatchEvent(event);
@@ -200,7 +200,7 @@ describe('spec:osds-radio', () => {
     });
 
     describe('methods', () => {
-      it('should call controller.updateState from updateState method', async () => {
+      it('should call controller.updateState from updateState method', async() => {
         const checking = true;
         await setup({});
         await instance.updateState(checking);
@@ -209,7 +209,7 @@ describe('spec:osds-radio', () => {
         expect(controller.updateState).toHaveBeenCalledWith(checking);
       });
 
-      it('should call controller.setButtonTabindex from setButtonTabindex method', async () => {
+      it('should call controller.setButtonTabindex from setButtonTabindex method', async() => {
         const index = Math.round(Math.random() * 5);
         await setup({});
         await instance.setButtonTabindex(index);
@@ -220,37 +220,37 @@ describe('spec:osds-radio', () => {
     });
 
     describe('watchers', () => {
-      it('should call controller.updateDisabledOnChild on disabled change', async () => {
+      it('should call controller.updateDisabledOnChild on disabled change', async() => {
         const disabled = false;
-        await setup({ attributes: { disabled } });
+        await setup({attributes: {disabled}});
         instance.disabled = true;
 
         expect(controller.updateDisabledOnChild).toHaveBeenCalledTimes(1);
         expect(controller.updateDisabledOnChild).toHaveBeenCalledWith(!disabled);
       });
 
-      it('should call controller.updateCheckingOnChild on checking change', async () => {
+      it('should call controller.updateCheckingOnChild on checking change', async() => {
         const checking = false;
-        await setup({ attributes: { checking } });
+        await setup({attributes: {checking}});
         instance.checking = true;
 
         expect(controller.updateCheckingOnChild).toHaveBeenCalledTimes(1);
         expect(controller.updateCheckingOnChild).toHaveBeenCalledWith(!checking);
       });
 
-      it('should call controller.watchValue on value change', async () => {
+      it('should call controller.watchValue on value change', async() => {
         const value = 'value';
         const newValue = 'newValue';
-        await setup({ attributes: { value } });
+        await setup({attributes: {value}});
         instance.value = newValue;
 
         expect(controller.watchValue).toHaveBeenCalledTimes(1);
         expect(controller.watchValue).toHaveBeenCalledWith(newValue);
       });
 
-      it('should call controller.updateCheckOnChild on checked change', async () => {
+      it('should call controller.updateCheckOnChild on checked change', async() => {
         const checked = false;
-        await setup({ attributes: { checked } });
+        await setup({attributes: {checked}});
         instance.checked = true;
 
         expect(controller.updateCheckOnChild).toHaveBeenCalledTimes(1);

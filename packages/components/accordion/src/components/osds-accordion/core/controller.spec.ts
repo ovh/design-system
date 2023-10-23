@@ -1,16 +1,17 @@
-import type { EventEmitter } from '@stencil/core';
-import type { HTMLStencilElement } from '@stencil/core/internal';
-import { OsdsAccordion } from '../osds-accordion';
-import { OdsAccordionController } from './controller';
-import { OsdsAccordionGroup } from '../../osds-accordion-group/osds-accordion-group';
+import type {EventEmitter} from '@stencil/core';
+import type {HTMLStencilElement} from '@stencil/core/internal';
+import {OsdsAccordion} from '../osds-accordion';
+import {OdsAccordionController} from './controller';
+import {OsdsAccordionGroup} from '../../osds-accordion-group/osds-accordion-group';
 
 class OsdsAccordionMock extends OsdsAccordion {
   constructor(attribute: Partial<OsdsAccordion>) {
     super();
-    Object.assign(this, attribute)
+    Object.assign(this, attribute);
   }
+
   detailsEl = document.createElement('details');
-  odsAccordionToggle = { emit: jest.fn() } as unknown as EventEmitter<boolean>;
+  odsAccordionToggle = {emit: jest.fn()} as unknown as EventEmitter<boolean>;
 }
 
 describe('spec:ods-accordion-controller', () => {
@@ -30,13 +31,13 @@ describe('spec:ods-accordion-controller', () => {
   describe('methods', () => {
     describe('methods:syncOpenedOnDetail', () => {
       it('should remove open details attribute', () => {
-        setup({ opened: false });
+        setup({opened: false});
         controller.syncOpenedOnDetail();
         expect(component.detailsEl?.getAttribute('open')).toBe(null);
       });
 
       it('should set open details attribute', () => {
-        setup({ opened: true });
+        setup({opened: true});
         controller.syncOpenedOnDetail();
         expect(component.detailsEl?.getAttribute('open')).toBeDefined();
       });
@@ -49,7 +50,7 @@ describe('spec:ods-accordion-controller', () => {
         expect(component.opened).toBe(false);
       });
 
-      it('should set opened to true', async () => {
+      it('should set opened to true', async() => {
         setup();
         component.detailsEl?.setAttribute('open', '');
         controller.onToggle();
@@ -57,7 +58,7 @@ describe('spec:ods-accordion-controller', () => {
       });
 
       it('should set opened to false', () => {
-        setup({ opened: true });
+        setup({opened: true});
         controller.onToggle();
         expect(component.opened).toBe(false);
       });

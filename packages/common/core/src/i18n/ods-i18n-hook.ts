@@ -9,4 +9,4 @@
  * const translated: string = myI18nHook('a.translation.request.by.component', {variable1: 'val1', variable2: 42});
  * ```
  */
-export type OdsI18nHook = (key: string, values: { [ key: string ]: string | number | undefined }) => string;
+export type OdsI18nHook = (key: string, values: Record<string, string | number | undefined>) => string;

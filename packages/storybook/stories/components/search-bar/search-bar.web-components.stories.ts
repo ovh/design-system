@@ -1,5 +1,5 @@
-import { html } from 'lit-html';
-import { defineCustomElements } from '@ovhcloud/ods-components/search-bar/loader';
+import {html} from 'lit-html';
+import {defineCustomElements} from '@ovhcloud/ods-components/search-bar/loader';
 import {
   extractArgTypes,
   extractStoryParams,
@@ -16,19 +16,19 @@ defineCustomElements();
 const storyParams = {
   placeholder: {
     category: 'Général',
-    defaultValue: ''
+    defaultValue: '',
   },
   contrasted: {
     category: 'Misc',
-    defaultValue: false
+    defaultValue: false,
   },
   disabled: {
     category: 'Misc',
-    defaultValue: false
+    defaultValue: false,
   },
   loading: {
     category: 'Misc',
-    defaultValue: false
+    defaultValue: false,
   },
 };
 
@@ -36,12 +36,12 @@ const selectParams = {
   options: {
     category: 'Général',
     defaultValue: [
-      { label: 'option1', value: '1' },
-      { label: 'option2', value: '2' },
-      { label: 'option3', value: '3' }
-    ]
+      {label: 'option1', value: '1'},
+      {label: 'option2', value: '2'},
+      {label: 'option3', value: '3'},
+    ],
   },
-}
+};
 
 export default {
   title: 'UI Components/Search Bar [atom]/Web Component',
@@ -49,9 +49,9 @@ export default {
     notes: {
       changelog,
     },
-    docs: { page }
+    docs: {page},
   },
-  argTypes: extractArgTypes({ ...storyParams, ...selectParams })
+  argTypes: extractArgTypes({...storyParams, ...selectParams}),
 };
 
 
@@ -61,7 +61,7 @@ const TemplateDefault = (args:any) => {
       SearchBar
     </osds-search-bar>
   `;
-}
+};
 export const Default = TemplateDefault.bind({});
 // @ts-ignore
 Default.args = {
@@ -75,9 +75,9 @@ const SelectTemplate = (args:any) => {
       SearchBar
     </osds-search-bar>
   `;
-}
+};
 export const Select = SelectTemplate.bind({});
 // @ts-ignore
 Select.args = {
-  ...extractStoryParams({ ...storyParams, ...selectParams }),
+  ...extractStoryParams({...storyParams, ...selectParams}),
 };

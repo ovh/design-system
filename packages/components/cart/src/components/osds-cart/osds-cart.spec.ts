@@ -1,14 +1,14 @@
 jest.mock('./core/controller'); // keep jest.mock before any
 
-import type { SpecPage } from '@stencil/core/testing';
-import type { OdsCartAttribute } from './interfaces/attributes';
-import { newSpecPage } from '@stencil/core/testing';
-import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { ODS_CART_ROUNDED } from './constants/cart-rounded';
-import { ODS_CART_SIZE } from './constants/cart-size';
-import { OdsCartController } from './core/controller';
-import { OsdsCart } from './osds-cart';
+import type {SpecPage} from '@stencil/core/testing';
+import type {OdsCartAttribute} from './interfaces/attributes';
+import {newSpecPage} from '@stencil/core/testing';
+import {odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute} from '@ovhcloud/ods-common-testing';
+import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
+import {ODS_CART_ROUNDED} from './constants/cart-rounded';
+import {ODS_CART_SIZE} from './constants/cart-size';
+import {OdsCartController} from './core/controller';
+import {OsdsCart} from './osds-cart';
 
 describe('spec:osds-cart', () => {
   let page: SpecPage;
@@ -19,7 +19,7 @@ describe('spec:osds-cart', () => {
   let instance: OsdsCart;
   let controller: OdsCartController;
 
-  async function setup({ attributes = {}, html = '' }: { attributes?: Partial<OdsCartAttribute>, html?: string } = {}) {
+  async function setup({attributes = {}, html = ''}: { attributes?: Partial<OdsCartAttribute>, html?: string } = {}) {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsCartAttribute>(attributes, DEFAULT_ATTRIBUTE);
 
     page = await newSpecPage({
@@ -41,30 +41,30 @@ describe('spec:osds-cart', () => {
     jest.clearAllMocks();
   });
 
-  it('should render', async () => {
-    await setup({ attributes: {}, html: '' });
+  it('should render', async() => {
+    await setup({attributes: {}, html: ''});
     expect(root?.shadowRoot).toBeTruthy();
     expect(instance).toBeTruthy();
   });
 
   describe('contents', () => {
-    it('should have a header slot', async () => {
-      await setup({ attributes: {}, html: '' });
+    it('should have a header slot', async() => {
+      await setup({attributes: {}, html: ''});
       expect(slotHeader).toBeTruthy();
     });
 
-    it('should have an empty slot if no sections specified', async () => {
-      await setup({ attributes: {}, html: '' });
+    it('should have an empty slot if no sections specified', async() => {
+      await setup({attributes: {}, html: ''});
       expect(slotEmpty).toBeTruthy();
     });
 
-    it('should have content in unnamed slot if specified content is in slot without name', async () => {
+    it('should have content in unnamed slot if specified content is in slot without name', async() => {
       await setup({
         attributes: {}, html: `
         <osds-cart-section>
             <osds-cart-item></osds-cart-item>
         </osds-cart-section>
-      `
+      `,
       });
 
       expect(slotUnnamed).toBeTruthy();
@@ -86,7 +86,7 @@ describe('spec:osds-cart', () => {
         defaultValue: DEFAULT_ATTRIBUTE.size,
         newValue: ODS_CART_SIZE.sm,
         value: ODS_CART_SIZE.sm,
-        setup: (value) => setup({ attributes: { ['size']: value } }),
+        setup: (value) => setup({attributes: {['size']: value}}),
         ...config,
       });
     });
@@ -97,7 +97,7 @@ describe('spec:osds-cart', () => {
         defaultValue: DEFAULT_ATTRIBUTE.inline,
         newValue: false,
         value: true,
-        setup: (value) => setup({ attributes: { ['inline']: value } }),
+        setup: (value) => setup({attributes: {['inline']: value}}),
         ...config,
       });
     });
@@ -108,7 +108,7 @@ describe('spec:osds-cart', () => {
         defaultValue: DEFAULT_ATTRIBUTE.rounded,
         newValue: ODS_CART_ROUNDED.all,
         value: ODS_CART_ROUNDED.top,
-        setup: (value) => setup({ attributes: { ['rounded']: value } }),
+        setup: (value) => setup({attributes: {['rounded']: value}}),
         ...config,
       });
     });
@@ -119,7 +119,7 @@ describe('spec:osds-cart', () => {
         defaultValue: DEFAULT_ATTRIBUTE.collapsed,
         newValue: true,
         value: false,
-        setup: (value) => setup({ attributes: { ['collapsed']: value } }),
+        setup: (value) => setup({attributes: {['collapsed']: value}}),
         ...config,
       });
     });
@@ -130,14 +130,14 @@ describe('spec:osds-cart', () => {
         defaultValue: DEFAULT_ATTRIBUTE.collapsible,
         newValue: true,
         value: false,
-        setup: (value) => setup({ attributes: { ['collapsible']: value } }),
+        setup: (value) => setup({attributes: {['collapsible']: value}}),
         ...config,
       });
     });
   });
 
   describe('controller', () => {
-    it('should call updateCartHeaderState when collapsible change', async () => {
+    it('should call updateCartHeaderState when collapsible change', async() => {
       await setup();
       expect(controller.updateCartHeaderState).not.toHaveBeenCalled();
 
@@ -148,7 +148,7 @@ describe('spec:osds-cart', () => {
       expect(controller.updateCartHeaderState).toHaveBeenCalledWith();
     });
 
-    it('should call computeItemQuantity from getItemQuantity method', async () => {
+    it('should call computeItemQuantity from getItemQuantity method', async() => {
       await setup();
       await instance.getItemQuantity();
       // Called twice (1 from method, 1 from template conditional display)

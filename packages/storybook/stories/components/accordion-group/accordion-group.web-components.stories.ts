@@ -1,7 +1,7 @@
-import { html } from 'lit-html';
-import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
-import { defineCustomElements } from '@ovhcloud/ods-components/accordion/loader';
+import {html} from 'lit-html';
+import {unsafeHTML} from 'lit-html/directives/unsafe-html';
+import {extractArgTypes, extractStoryParams, getTagAttributes} from '../../../core/componentHTMLUtils';
+import {defineCustomElements} from '@ovhcloud/ods-components/accordion/loader';
 // @ts-ignore
 import changelog from '@ovhcloud/ods-components/accordion/CHANGELOG.md';
 // @ts-ignore
@@ -31,7 +31,7 @@ const storyParams = {
         Vestibulum placerat neque vitae elit vulputate aliquam. Fusce et nisi quis tellus porttitor
         pharetra facilisis id arcu. Nulla mollis tortor sed pretium mollis.
       </osds-accordion>`,
-  }
+  },
 };
 
 export default {
@@ -41,7 +41,7 @@ export default {
     notes: {
       changelog,
     },
-    docs: { page }
+    docs: {page},
   },
   argTypes: extractArgTypes(storyParams),
 };

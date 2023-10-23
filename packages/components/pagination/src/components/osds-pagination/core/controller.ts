@@ -1,5 +1,5 @@
-import type { OsdsPagination } from '../osds-pagination';
-import type { OdsPaginationPageList } from '../interfaces/attributes';
+import type {OsdsPagination} from '../osds-pagination';
+import type {OdsPaginationPageList} from '../interfaces/attributes';
 
 class OdsPaginationController {
   private component: OsdsPagination;
@@ -32,7 +32,7 @@ class OdsPaginationController {
 
     // Create initial pageList with 'active' property set to false for each page.
     for (let i = 1; i <= totalPages; i++) {
-      pageList.push({ active: false });
+      pageList.push({active: false});
     }
 
     let startIndex = Math.max(pageSelected - 2, 1);
@@ -80,9 +80,11 @@ class OdsPaginationController {
   handlePreviousClick(page: number) {
     this.setPageIndex(page - 1);
   }
+
   handleNextClick(page: number) {
     this.setPageIndex(page + 1);
   }
+
   handlePageClick(page: number) {
     this.setPageIndex(page);
   }

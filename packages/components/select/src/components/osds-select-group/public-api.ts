@@ -1,1 +1,1 @@
-export { OsdsSelectGroup } from './osds-select-group';
+export {OsdsSelectGroup} from './osds-select-group';

@@ -1,19 +1,19 @@
-import { html } from 'lit-html';
-import { defineCustomElements } from '@ovhcloud/ods-components/radio/loader';
+import {html} from 'lit-html';
+import {defineCustomElements} from '@ovhcloud/ods-components/radio/loader';
 // @ts-ignore
 import changelog from '@ovhcloud/ods-components/radio/CHANGELOG.md';
 // @ts-ignore
 import page from './radio-group.web-components.stories.page.mdx';
-import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
-import { olesIpsum, OlesIpsumGeneration } from '@ovhcloud/ods-common-core';
+import {extractArgTypes, extractStoryParams, getTagAttributes} from '../../../core/componentHTMLUtils';
+import {OlesIpsumGeneration, olesIpsum} from '@ovhcloud/ods-common-core';
 
 defineCustomElements();
 
 const storyParams = {
   disabled: {
     category: 'Misc',
-    defaultValue: false
-  }
+    defaultValue: false,
+  },
 };
 
 export default {
@@ -23,9 +23,9 @@ export default {
     notes: {
       changelog,
     },
-    docs: { page },
+    docs: {page},
   },
-  argTypes: extractArgTypes(storyParams)
+  argTypes: extractArgTypes(storyParams),
 };
 
 /* Default */
@@ -51,5 +51,5 @@ Default.args = {
   ...extractStoryParams(storyParams),
 };
 
-export { UpdateStrategy } from './radio-group.web-components.stories.update-strategy';
-export { RadioButton } from './radio-group.web-components.stories.radio-button';
+export {UpdateStrategy} from './radio-group.web-components.stories.update-strategy';
+export {RadioButton} from './radio-group.web-components.stories.radio-button';

@@ -1,15 +1,15 @@
-import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
-import { Ods, OdsHTMLAnchorElementRel, OdsHTMLAnchorElementTarget, OdsLogger } from '@ovhcloud/ods-common-core';
-import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
-import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import { ODS_LINK_REFERRER_POLICY } from '../constants/referrer-policies';
-import { OdsLinkController } from './controller';
-import { OsdsLink } from '../osds-link';
+import type {OdsLoggerSpyReferences} from '@ovhcloud/ods-common-testing';
+import {Ods, OdsHTMLAnchorElementRel, OdsHTMLAnchorElementTarget, OdsLogger} from '@ovhcloud/ods-common-core';
+import {OdsClearLoggerSpy, OdsInitializeLoggerSpy} from '@ovhcloud/ods-common-testing';
+import {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
+import {ODS_LINK_REFERRER_POLICY} from '../constants/referrer-policies';
+import {OdsLinkController} from './controller';
+import {OsdsLink} from '../osds-link';
 
 class OdsLinkMock extends OsdsLink {
   constructor(attribute: Partial<OsdsLink>) {
     super();
-    Object.assign(this, attribute)
+    Object.assign(this, attribute);
   }
 }
 
@@ -29,7 +29,7 @@ describe('spec:ods-link-controller', () => {
     const loggerMocked = new OdsLogger('myLoggerMocked');
     loggerSpyReferences = OdsInitializeLoggerSpy({
       loggerMocked: loggerMocked as never,
-      spiedClass: OdsLinkController
+      spiedClass: OdsLinkController,
     });
   });
 

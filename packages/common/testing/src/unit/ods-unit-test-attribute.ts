@@ -1,6 +1,6 @@
-import { odsUnitTestAttributeBehavior } from './ods-unit-test-attribute-behavior';
-import { OdsUnitTestAttributeOptions } from './ods-unit-test-attribute-options';
-import { OdsUnitTestAttributeType } from './ods-unit-test-attribute-type';
+import {odsUnitTestAttributeBehavior} from './ods-unit-test-attribute-behavior';
+import {OdsUnitTestAttributeOptions} from './ods-unit-test-attribute-options';
+import {OdsUnitTestAttributeType} from './ods-unit-test-attribute-type';
 
 /**
  * testing an attribute of a component in different use cases (test types).
@@ -60,17 +60,17 @@ export function odsUnitTestAttribute<InstanceAttribute,
   Name extends string & keyof InstanceAttribute = string & keyof InstanceAttribute,
   InstanceType extends InstanceAttribute = InstanceAttribute,
   Value extends InstanceAttribute[Name] | undefined = InstanceAttribute[Name] | undefined>({
-                                                                                                                 name,
-                                                                                                                 defaultValue,
-                                                                                                                 value,
-                                                                                                                 newValue,
-                                                                                                                 setup,
-                                                                                                                 root,
-                                                                                                                 wait,
-                                                                                                                 instance,
-                                                                                                                 exclude = [OdsUnitTestAttributeType.MUTABLE],
-                                                                                                                 include = []
-                                                                                                               }: OdsUnitTestAttributeOptions<InstanceAttribute, Name, InstanceType>): void {
+  name,
+  defaultValue,
+  value,
+  newValue,
+  setup,
+  root,
+  wait,
+  instance,
+  exclude = [OdsUnitTestAttributeType.MUTABLE],
+  include = [],
+}: OdsUnitTestAttributeOptions<InstanceAttribute, Name, InstanceType>): void {
   const isBoolean = typeof value === 'boolean';
   const defaultValueIsUndef = defaultValue === undefined;
   const defaultValueIsNull = defaultValue === null;
@@ -94,7 +94,7 @@ export function odsUnitTestAttribute<InstanceAttribute,
 
   const reflectedExpected = () => {
     if (isBoolean) {
-      return (true as unknown as Value)
+      return (true as unknown as Value);
     } else if (defaultValueIsUndef || defaultValueIsNull) {
       return value;
     } else {
@@ -105,42 +105,42 @@ export function odsUnitTestAttribute<InstanceAttribute,
   const allTests = [
     {
       type: OdsUnitTestAttributeType.DEFAULT,
-      expected: defaultValue
+      expected: defaultValue,
     },
     {
       type: OdsUnitTestAttributeType.REFLECTED,
       setup: reflectedSetup(),
-      expected: reflectedExpected()
+      expected: reflectedExpected(),
     },
     {
       type: OdsUnitTestAttributeType.PROPERTY,
       setup: () => setup(propertyValue),
-      expected: propertyValue
+      expected: propertyValue,
     },
     {
       type: OdsUnitTestAttributeType.MODIFIABLE,
       expected: value,
-      newValue: value
+      newValue: value,
     },
     {
       type: OdsUnitTestAttributeType.MUTABLE,
       setup: () => setup(value),
       expected: value,
-      newValue: newValue
-    }
+      newValue: newValue,
+    },
   ];
 
   allTests
-    .filter(test => !exclude.some(t => test.type === t))
+    .filter((test) => !exclude.some((t) => test.type === t))
     // add included tests
-    .concat(allTests.filter(test => include.some(t => test.type === t)))
+    .concat(allTests.filter((test) => include.some((t) => test.type === t)))
     // keep only unique values of tests
     .filter((value, index, all) => all.indexOf(value) === index)
-    .forEach(test => odsUnitTestAttributeBehavior({
+    .forEach((test) => odsUnitTestAttributeBehavior({
       name, type: test.type, root, expected: test.expected, instance,
       setup: test.setup || (() => setup(undefined)),
       newValue: test.newValue,
       wait,
-      isBoolean
+      isBoolean,
     }));
 }

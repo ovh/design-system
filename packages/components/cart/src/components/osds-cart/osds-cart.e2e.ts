@@ -1,9 +1,9 @@
-import type { E2EElement, E2EPage } from '@stencil/core/testing';
-import type { OdsCartAttribute } from './interfaces/attributes';
-import { OdsLogger } from '@ovhcloud/ods-common-core';
-import { newE2EPage } from '@stencil/core/testing';
-import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import type {E2EElement, E2EPage} from '@stencil/core/testing';
+import type {OdsCartAttribute} from './interfaces/attributes';
+import {OdsLogger} from '@ovhcloud/ods-common-core';
+import {newE2EPage} from '@stencil/core/testing';
+import {odsComponentAttributes2StringAttributes, odsStringAttributes2Str} from '@ovhcloud/ods-common-testing';
+import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
 
 const logger = new OdsLogger('OsdsCart-e2e');
 
@@ -14,7 +14,7 @@ describe('e2e:osds-cart', () => {
   let slotEmpty: E2EElement;
   let cellPriceElement: E2EElement;
 
-  async function setup({ attributes = {}, html = '' }: { attributes?: Partial<OdsCartAttribute>, html?: string } = {}) {
+  async function setup({attributes = {}, html = ''}: { attributes?: Partial<OdsCartAttribute>, html?: string } = {}) {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsCartAttribute>(attributes, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
@@ -33,15 +33,15 @@ describe('e2e:osds-cart', () => {
     logger.log(cellPriceElement);
   }
 
-  it('should render', async () => {
-    await setup({ attributes: {}, html: `` })
+  it('should render', async() => {
+    await setup({attributes: {}, html: ''});
     expect(el).not.toBeNull();
     expect(el).toHaveClass('hydrated');
   });
 
-  it('should display the empty slot', async () => {
+  it('should display the empty slot', async() => {
     await setup({
-      attributes: {}, html: ``
+      attributes: {}, html: '',
     });
 
     expect(slotEmpty).toBeTruthy();
@@ -56,19 +56,19 @@ describe('e2e:osds-cart', () => {
   });
 
   describe('method:getItemQuantity', () => {
-    it('should get the number of item', async () => {
+    it('should get the number of item', async() => {
       await setup({
-        attributes: {}, html: ``
+        attributes: {}, html: '',
       });
 
       let quantity = await el.callMethod('getItemQuantity');
       expect(quantity).toBe(0);
 
-      el.innerHTML = `<osds-cart-item></osds-cart-item>`;
+      el.innerHTML = '<osds-cart-item></osds-cart-item>';
       await page.waitForChanges();
 
       quantity = await el.callMethod('getItemQuantity');
       expect(quantity).toBe(1);
     });
-  })
+  });
 });

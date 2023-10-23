@@ -1,4 +1,4 @@
-import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+import type {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
 
 interface OdsModalAttribute {
   /** Color of the modal's header background */
@@ -12,5 +12,5 @@ interface OdsModalAttribute {
 }
 
 export {
-    OdsModalAttribute,
+  OdsModalAttribute,
 };

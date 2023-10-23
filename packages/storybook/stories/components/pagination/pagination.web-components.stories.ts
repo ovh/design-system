@@ -1,7 +1,7 @@
-import { html } from 'lit-html';
-import { defineCustomElements } from '@ovhcloud/ods-components/pagination/loader';
-import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-components/pagination/src/components/osds-pagination/constants/default-attributes';
-import { getTagAttributes, extractArgTypes, extractStoryParams } from '../../../core/componentHTMLUtils';
+import {html} from 'lit-html';
+import {defineCustomElements} from '@ovhcloud/ods-components/pagination/loader';
+import {DEFAULT_ATTRIBUTE} from '@ovhcloud/ods-components/pagination/src/components/osds-pagination/constants/default-attributes';
+import {extractArgTypes, extractStoryParams, getTagAttributes} from '../../../core/componentHTMLUtils';
 // @ts-ignore
 import changelog from '@ovhcloud/ods-components/pagination/CHANGELOG.md';
 // @ts-ignore
@@ -25,8 +25,8 @@ const sharedStoryParam = {
   labelTooltipNext: {
     category: 'Misc',
     defaultValue: DEFAULT_ATTRIBUTE.labelTooltipNext,
-  }
-}
+  },
+};
 
 const totalItemsParam = {
   totalItems: {
@@ -49,9 +49,9 @@ export default {
     notes: {
       changelog,
     },
-    docs: { page }
+    docs: {page},
   },
-  argTypes: extractArgTypes({ ...sharedStoryParam, ...totalPagesParam, ...totalItemsParam }),
+  argTypes: extractArgTypes({...sharedStoryParam, ...totalPagesParam, ...totalItemsParam}),
 };
 
 /* Default */
@@ -59,7 +59,7 @@ const TemplateDefault = (args: any) => html` <osds-pagination ...=${getTagAttrib
 export const Default = TemplateDefault.bind({});
 // @ts-ignore
 Default.args = {
-  ...extractStoryParams({ ...sharedStoryParam, ...totalPagesParam }),
+  ...extractStoryParams({...sharedStoryParam, ...totalPagesParam}),
 };
 
 /* Total Items */
@@ -67,7 +67,7 @@ const TemplateTotalItems = (args: any) => html` <osds-pagination ...=${getTagAtt
 export const TotalItems = TemplateTotalItems.bind({});
 // @ts-ignore
 TotalItems.args = {
-  ...extractStoryParams({ ...sharedStoryParam, ...totalItemsParam }),
+  ...extractStoryParams({...sharedStoryParam, ...totalItemsParam}),
 };
 
 /* All */
@@ -128,6 +128,6 @@ const TemplateAll = () => html`
 export const All = TemplateAll.bind({});
 // @ts-ignore
 All.parameters = {
-  controls: { hideNoControlsWarning: true },
-  options: { showPanel: false },
+  controls: {hideNoControlsWarning: true},
+  options: {showPanel: false},
 };

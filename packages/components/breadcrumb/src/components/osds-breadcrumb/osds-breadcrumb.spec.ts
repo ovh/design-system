@@ -1,15 +1,15 @@
 jest.mock('./core/controller'); // keep jest.mock before any
 
-import type { SpecPage } from '@stencil/core/testing';
-import type { OdsBreadcrumbAttribute } from './interfaces/attributes';
-import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
-import { newSpecPage } from '@stencil/core/testing';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { OdsBreadcrumbController } from './core/controller';
-import { OsdsBreadcrumb } from './osds-breadcrumb';
+import type {SpecPage} from '@stencil/core/testing';
+import type {OdsBreadcrumbAttribute} from './interfaces/attributes';
+import {odsComponentAttributes2StringAttributes, odsStringAttributes2Str} from '@ovhcloud/ods-common-testing';
+import {newSpecPage} from '@stencil/core/testing';
+import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
+import {OdsBreadcrumbController} from './core/controller';
+import {OsdsBreadcrumb} from './osds-breadcrumb';
 
 describe('spec:osds-breadcrumb', () => {
-  const baseAttribute = { items: [] };
+  const baseAttribute = {items: []};
   let page: SpecPage;
   let root: HTMLElement | undefined;
   let instance: OsdsBreadcrumb;
@@ -19,8 +19,8 @@ describe('spec:osds-breadcrumb', () => {
     jest.clearAllMocks();
   });
 
-  async function setup({ attributes = {} }: { attributes?: Partial<OdsBreadcrumbAttribute> } = {}) {
-    const stringAttributes = odsComponentAttributes2StringAttributes<OdsBreadcrumbAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
+  async function setup({attributes = {}}: { attributes?: Partial<OdsBreadcrumbAttribute> } = {}) {
+    const stringAttributes = odsComponentAttributes2StringAttributes<OdsBreadcrumbAttribute>({...baseAttribute, ...attributes}, DEFAULT_ATTRIBUTE);
 
     page = await newSpecPage({
       components: [OsdsBreadcrumb],
@@ -32,7 +32,7 @@ describe('spec:osds-breadcrumb', () => {
     controller = (OdsBreadcrumbController as unknown as jest.SpyInstance<OdsBreadcrumbController, unknown[]>).mock.instances[0];
   }
 
-  it('should render', async () => {
+  it('should render', async() => {
     await setup({});
     expect(root?.shadowRoot).toBeTruthy();
     expect(instance).toBeTruthy();
@@ -41,13 +41,13 @@ describe('spec:osds-breadcrumb', () => {
 
   describe('methods', () => {
     describe('onBreadcrumbItemCollapsedClick', () => {
-      it('should set the isCollapsed on refresh displayed items', async () => {
+      it('should set the isCollapsed on refresh displayed items', async() => {
         await setup({});
 
         expect(instance.isCollapsed).toBe(true);
         expect(controller.getBreadcrumbItems).toHaveBeenCalledWith([], true);
 
-        instance.onBreadcrumbItemCollapsedClick()
+        instance.onBreadcrumbItemCollapsedClick();
 
         expect(instance.isCollapsed).toBe(false);
         expect(controller.getBreadcrumbItems).toHaveBeenCalledWith([], false);

@@ -1,11 +1,11 @@
-import { createApp } from 'vue'
-import './style.css'
-import { OdsWindow } from '@ovhcloud/ods-common-core';
-import App from './App.vue'
+import {createApp} from 'vue';
+import './style.css';
+import {OdsWindow} from '@ovhcloud/ods-common-core';
+import App from './App.vue';
 
 // eslint-disable-next-line no-var
 declare var window: OdsWindow;
-!window.ods && (window.ods = { config: { logging: { active: true } } });
+!window.ods && (window.ods = {config: {logging: {active: true}}});
 if (window?.ods?.config?.logging) {
   window.ods.config.logging.active = true;
 }
@@ -18,4 +18,4 @@ if (window?.ods?.config?.logging) {
  * createApp(App).use(ComponentLibrary).mount('#app')
  * ```
  */
-createApp(App).mount('#app')
+createApp(App).mount('#app');

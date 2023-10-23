@@ -1,8 +1,8 @@
-import type { HTMLStencilElement } from "@stencil/core/internal";
-import type { OsdsAccordion } from "../osds-accordion/osds-accordion";
-import type { OdsAccordionGroupMethod } from "./interfaces/methods";
-import { Component, Element, Host, Method, h } from "@stencil/core";
-import { OdsAccordionGroupController } from "./core/controller";
+import type {HTMLStencilElement} from '@stencil/core/internal';
+import type {OsdsAccordion} from '../osds-accordion/osds-accordion';
+import type {OdsAccordionGroupMethod} from './interfaces/methods';
+import {Component, Element, Host, Method, h} from '@stencil/core';
+import {OdsAccordionGroupController} from './core/controller';
 
 @Component({
   tag: 'osds-accordion-group',
@@ -30,7 +30,7 @@ export class OsdsAccordionGroup implements OdsAccordionGroupMethod {
   }
 
   beforeInit(): void {
-    this.controller.beforeInit<OsdsAccordion>()
+    this.controller.beforeInit<OsdsAccordion>();
   }
 
   onDestroy(): void {
@@ -48,10 +48,10 @@ export class OsdsAccordionGroup implements OdsAccordionGroupMethod {
   render() {
     return (
       <Host {...{
-        role: 'tablist'
+        role: 'tablist',
       }}>
         <slot></slot>
       </Host>
-    )
+    );
   }
 }

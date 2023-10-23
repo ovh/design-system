@@ -1,6 +1,6 @@
-import type { EventEmitter } from '@stencil/core';
-import type { ODS_COUNTRY_ISO_CODE } from '@ovhcloud/ods-common-core';
-import type { OdsInputValueChangeEventDetail } from '@ovhcloud/ods-component-input';
+import type {EventEmitter} from '@stencil/core';
+import type {ODS_COUNTRY_ISO_CODE} from '@ovhcloud/ods-common-core';
+import type {OdsInputValueChangeEventDetail} from '@ovhcloud/ods-component-input';
 
 interface OdsPhoneNumberValueChangeEventDetail extends OdsInputValueChangeEventDetail {
   isoCode?: ODS_COUNTRY_ISO_CODE
@@ -14,4 +14,4 @@ interface OdsPhoneNumberEvent {
 export {
   OdsPhoneNumberEvent,
   OdsPhoneNumberValueChangeEventDetail,
-}
+};

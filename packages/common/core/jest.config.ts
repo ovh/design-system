@@ -1,4 +1,4 @@
-import { getJestConfig } from '@ovhcloud/ods-common-testing';
+import {getJestConfig} from '@ovhcloud/ods-common-testing';
 
 const config = getJestConfig({
   args: process.argv.slice(2),

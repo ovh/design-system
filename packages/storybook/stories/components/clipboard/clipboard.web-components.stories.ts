@@ -1,6 +1,6 @@
-import { html } from 'lit-html';
-import { defineCustomElements } from '@ovhcloud/ods-components/clipboard/loader';
-import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
+import {html} from 'lit-html';
+import {defineCustomElements} from '@ovhcloud/ods-components/clipboard/loader';
+import {extractArgTypes, extractStoryParams, getTagAttributes} from '../../../core/componentHTMLUtils';
 // @ts-ignore
 import changelog from '@ovhcloud/ods-components/clipboard/CHANGELOG.md';
 // @ts-ignore
@@ -30,9 +30,9 @@ export default {
     notes: {
       changelog,
     },
-    docs: { page }
+    docs: {page},
   },
-  argTypes: extractArgTypes(storyParams)
+  argTypes: extractArgTypes(storyParams),
 };
 
 /* Default */
@@ -44,7 +44,7 @@ const TemplateDefault = (args:any) => {
       <span slot='error-message'>Error</span>
     </osds-clipboard>
   `;
-}
+};
 export const Default = TemplateDefault.bind({});
 // @ts-ignore
 Default.args = {

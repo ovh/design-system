@@ -1,13 +1,13 @@
-import type { E2EElement, E2EPage } from '@stencil/core/testing';
-import { newE2EPage } from '@stencil/core/testing';
+import type {E2EElement, E2EPage} from '@stencil/core/testing';
+import {newE2EPage} from '@stencil/core/testing';
 
 describe('e2e:osds-select-group', () => {
   let page: E2EPage;
   let el: E2EElement;
 
-  async function setup({ onPage }: { onPage?: ({ page }: { page: E2EPage }) => void } = {}) {
+  async function setup({onPage}: { onPage?: ({page}: { page: E2EPage }) => void } = {}) {
     page = await newE2EPage();
-    onPage && onPage({ page });
+    onPage && onPage({page});
 
     await page.setContent(`
       <osds-select-group>
@@ -20,11 +20,11 @@ describe('e2e:osds-select-group', () => {
   }
 
   describe('defaults', () => {
-    beforeEach(async () => {
+    beforeEach(async() => {
       await setup();
     });
 
-    it('should render', async () => {
+    it('should render', async() => {
       expect(el).not.toBeNull();
       expect(el).toHaveClass('hydrated');
     });

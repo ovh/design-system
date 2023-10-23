@@ -11,4 +11,4 @@ export enum OdsHTMLAnchorElementTarget {
 
 export type OdsHTMLAnchorElementTargetUnion = `${OdsHTMLAnchorElementTarget}`;
 
-export const OdsHTMLAnchorElementTargetList = Object.keys(OdsHTMLAnchorElementTarget).map(key => OdsHTMLAnchorElementTarget[key as OdsHTMLAnchorElementTargetUnion]);
+export const OdsHTMLAnchorElementTargetList = Object.keys(OdsHTMLAnchorElementTarget).map((key) => OdsHTMLAnchorElementTarget[key as OdsHTMLAnchorElementTargetUnion]);

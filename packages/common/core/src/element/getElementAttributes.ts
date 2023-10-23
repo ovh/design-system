@@ -1,4 +1,4 @@
-import { OdsLogger } from '../logger/ods-logger';
+import {OdsLogger} from '../logger/ods-logger';
 const logger = new OdsLogger('GetElementAttributes');
 
 /**
@@ -15,7 +15,7 @@ export const getElementAttributes = (nodeMap: NamedNodeMap) => {
           return {
             ...props,
             [ property.name ]: property.value,
-          }
+          };
         }
       } catch (err) {
         // eslint-disable-next-line no-console

@@ -1,10 +1,10 @@
-import { OdsCartController } from './controller';
-import { OsdsCart } from '../osds-cart';
+import {OdsCartController} from './controller';
+import {OsdsCart} from '../osds-cart';
 
 class OdsCartMock extends OsdsCart {
   constructor(attribute: Partial<OsdsCart>) {
     super();
-    Object.assign(this, attribute)
+    Object.assign(this, attribute);
   }
 }
 
@@ -48,14 +48,14 @@ describe('spec:ods-cart-controller', () => {
         jest.clearAllMocks();
       });
 
-      it('should not set cardHeader', async () => {
+      it('should not set cardHeader', async() => {
         setup();
         await controller.updateCartHeaderState();
         expect(component.cartHeader).toBeNull();
       });
 
       // FIXME should test refresh call using jest mock instead
-      xit('should init component cartHeader', async () => {
+      xit('should init component cartHeader', async() => {
         // const cartHeader = new OdsCartHeaderMock();
         // jest.spyOn(component.el, 'querySelector').mockImplementation(() =>  cartHeader as never as HTMLElement);
         // setup();

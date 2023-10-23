@@ -1,6 +1,6 @@
-import { html } from 'lit-html';
-import { defineCustomElements } from '@ovhcloud/ods-ovh-components/location-tile/loader';
-import { extractArgTypes, extractStoryParams } from '../../../core/componentHTMLUtils';
+import {html} from 'lit-html';
+import {defineCustomElements} from '@ovhcloud/ods-ovh-components/location-tile/loader';
+import {extractArgTypes, extractStoryParams} from '../../../core/componentHTMLUtils';
 // @ts-ignore
 import changelog from '@ovhcloud/ods-ovh-components/location-tile/CHANGELOG.md';
 // @ts-ignore
@@ -18,9 +18,9 @@ export default {
     notes: {
       changelog,
     },
-    docs: { page }
+    docs: {page},
   },
-  argTypes: extractArgTypes(storyParams)
+  argTypes: extractArgTypes(storyParams),
 };
 
 /* Default */
@@ -29,7 +29,7 @@ const TemplateDefault = () => {
     <osds-ovh-location-tile>
     </osds-ovh-location-tile>
   `;
-}
+};
 export const Default = TemplateDefault.bind({});
 // @ts-ignore
 Default.args = {

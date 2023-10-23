@@ -1,11 +1,11 @@
-import type { Config } from '@jest/types';
+import type {Config} from '@jest/types';
 
 /**
  * Get the base jest config
  * @param args - command line arguments passed to jest
  * @param options - jest config option to override
  */
-function getJestConfig({ args, options = {} }: { args: string[], options?: Config.InitialOptions }): Config.InitialOptions {
+function getJestConfig({args, options = {}}: { args: string[], options?: Config.InitialOptions }): Config.InitialOptions {
   const e2e = args.includes('--e2e');
   const screenshot = args.includes('--screenshot');
   const baseOption = {
@@ -13,7 +13,7 @@ function getJestConfig({ args, options = {} }: { args: string[], options?: Confi
     testEnvironment: 'jsdom',
     testPathIgnorePatterns: [
       '/node_modules/',
-      'dist/'
+      'dist/',
     ],
     testRegex: '(/__tests__/.*|\\.?(spec))\\.(tsx?|ts?|jsx?|js?)$',
     transform: {
@@ -29,14 +29,14 @@ function getJestConfig({ args, options = {} }: { args: string[], options?: Confi
         ...baseOption,
         testRegex: '(/__e2e-tests__/.*|\\.(e2e))\\.screenshot\\.(tsx?|jsx?)$',
         testTimeout: 60000,
-      }
+      };
     }
 
     return {
       ...baseOption,
       testRegex: '(/__e2e-tests__/.*|\\.(e2e))\\.(tsx?|jsx?)$',
       testTimeout: 60000,
-    }
+    };
   }
 
   return baseOption;

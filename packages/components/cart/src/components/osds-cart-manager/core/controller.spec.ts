@@ -1,14 +1,14 @@
-import type { OdsCartManagerFooter } from '../interfaces/attributes';
-import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
-import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
-import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
-import { OdsCartManagerController } from './controller';
-import { OsdsCartManager } from '../osds-cart-manager';
+import type {OdsCartManagerFooter} from '../interfaces/attributes';
+import type {OdsLoggerSpyReferences} from '@ovhcloud/ods-common-testing';
+import {Ods, OdsLogger} from '@ovhcloud/ods-common-core';
+import {OdsClearLoggerSpy, OdsInitializeLoggerSpy} from '@ovhcloud/ods-common-testing';
+import {OdsCartManagerController} from './controller';
+import {OsdsCartManager} from '../osds-cart-manager';
 
 class OdsCartManagerMock extends OsdsCartManager {
   constructor(attribute: Partial<OsdsCartManager>) {
     super();
-    Object.assign(this, attribute)
+    Object.assign(this, attribute);
   }
 }
 
@@ -28,7 +28,7 @@ describe('spec:ods-cart-manager-controller', () => {
     const loggerMocked = new OdsLogger('myLoggerMocked');
     loggerSpyReferences = OdsInitializeLoggerSpy({
       loggerMocked: loggerMocked as never,
-      spiedClass: OdsCartManagerController
+      spiedClass: OdsCartManagerController,
     });
   });
 
@@ -39,19 +39,19 @@ describe('spec:ods-cart-manager-controller', () => {
 
   describe('methods', () => {
     describe('methods:validateFooter', () => {
-      it(`should throw an error if footer is not an OdsCartManagerFooter`, () => {
+      it('should throw an error if footer is not an OdsCartManagerFooter', () => {
         setup();
         expect(() => controller.validateFooter({} as OdsCartManagerFooter)).toThrow('You must specify a footer of type OdsCartFooter');
       });
 
-      it(`should not throw an error if footer doesn't exists`, () => {
+      it('should not throw an error if footer doesn\'t exists', () => {
         setup();
         expect(() => controller.validateFooter()).not.toThrow();
       });
 
-      it(`should not throw an error if footer is a valid OdsCartManagerFooter`, () => {
+      it('should not throw an error if footer is a valid OdsCartManagerFooter', () => {
         const footer: OdsCartManagerFooter = {
-          items: []
+          items: [],
         };
         setup();
         expect(() => controller.validateFooter(footer)).not.toThrow();

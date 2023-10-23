@@ -1,4 +1,4 @@
-import type { OdsClipboardAttribute } from '../interfaces/attributes';
+import type {OdsClipboardAttribute} from '../interfaces/attributes';
 
 const DEFAULT_ATTRIBUTE: OdsClipboardAttribute = Object.freeze({
   disabled: false,

@@ -2,15 +2,15 @@
 jest.mock('@ovhcloud/ods-cdk');
 jest.mock('./core/controller');
 
-import type { SpecPage } from '@stencil/core/testing';
-import type { OdsTooltipAttribute } from './interfaces/attributes';
-import { ocdkIsSurface } from '@ovhcloud/ods-cdk';
-import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
-import { newSpecPage } from '@stencil/core/testing';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { ODS_TOOLTIP_VARIANT, ODS_TOOLTIP_VARIANTS } from './constants/tooltip-variant';
-import { OdsTooltipController } from './core/controller';
-import { OsdsTooltip } from './osds-tooltip';
+import type {SpecPage} from '@stencil/core/testing';
+import type {OdsTooltipAttribute} from './interfaces/attributes';
+import {ocdkIsSurface} from '@ovhcloud/ods-cdk';
+import {odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute} from '@ovhcloud/ods-common-testing';
+import {newSpecPage} from '@stencil/core/testing';
+import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
+import {ODS_TOOLTIP_VARIANT, ODS_TOOLTIP_VARIANTS} from './constants/tooltip-variant';
+import {OdsTooltipController} from './core/controller';
+import {OsdsTooltip} from './osds-tooltip';
 
 describe('spec:osds-tooltip', () => {
   let page: SpecPage;
@@ -18,13 +18,13 @@ describe('spec:osds-tooltip', () => {
   let instance: OsdsTooltip;
   let controller: OdsTooltipController;
 
-  const htmlTooltipContent = '<osds-tooltip-content slot="tooltip-content">Tooltip content</osds-tooltip-content>'
+  const htmlTooltipContent = '<osds-tooltip-content slot="tooltip-content">Tooltip content</osds-tooltip-content>';
 
   afterEach(() => {
     jest.clearAllMocks();
   });
 
-  async function setup({ attributes = {}, html = '' }: { attributes?: Partial<OdsTooltipAttribute>, html?: string } = {}) {
+  async function setup({attributes = {}, html = ''}: { attributes?: Partial<OdsTooltipAttribute>, html?: string } = {}) {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsTooltipAttribute>(attributes, DEFAULT_ATTRIBUTE);
 
     page = await newSpecPage({
@@ -37,33 +37,33 @@ describe('spec:osds-tooltip', () => {
     controller = (OdsTooltipController as unknown as jest.SpyInstance<OdsTooltipController, unknown[]>).mock.instances[0];
   }
 
-  it('should render', async () => {
+  it('should render', async() => {
     await setup();
 
     expect(root?.shadowRoot).toBeDefined();
     expect(instance).toBeDefined();
   });
 
-  it('should call validateAttributes on render', async () => {
+  it('should call validateAttributes on render', async() => {
     await setup();
 
     expect(controller.validateAttributes).toHaveBeenCalledTimes(1);
   });
 
   describe('cdk not initialized', () => {
-    it('should not have yet the ref to surface', async () => {
+    it('should not have yet the ref to surface', async() => {
       (ocdkIsSurface as unknown as jest.Mock).mockImplementation(() => false);
-      await setup({ attributes: {}, html: '' });
+      await setup({attributes: {}, html: ''});
 
       expect(instance.surface).toBeUndefined();
-    })
+    });
   });
 
   describe('cdk initialized', () => {
-    beforeEach(async () => {
+    beforeEach(async() => {
       (ocdkIsSurface as unknown as jest.Mock).mockImplementation(() => true);
-      await setup({ html: htmlTooltipContent });
-    })
+      await setup({html: htmlTooltipContent});
+    });
 
     it('should have a ref to the anchor and the surface', () => {
       expect(instance.anchor).toBeDefined();
@@ -89,22 +89,22 @@ describe('spec:osds-tooltip', () => {
         defaultValue: DEFAULT_ATTRIBUTE.variant,
         newValue: ODS_TOOLTIP_VARIANT.standard,
         value: ODS_TOOLTIP_VARIANT.tip,
-        setup: (value) => setup({ attributes: { ['variant']: value } }),
+        setup: (value) => setup({attributes: {['variant']: value}}),
         ...config,
       });
 
-      it('should set the variant if attribute is added', async () => {
+      it('should set the variant if attribute is added', async() => {
         const randomVariant = ODS_TOOLTIP_VARIANTS[Math.floor(Math.random() * ODS_TOOLTIP_VARIANTS.length)];
-        await setup({ attributes: { variant: randomVariant } });
+        await setup({attributes: {variant: randomVariant}});
         expect(instance.variant).toBe(randomVariant);
       });
     });
   });
 
   describe('methods', () => {
-    beforeEach(async () => {
+    beforeEach(async() => {
       await setup({});
-    })
+    });
 
     describe('checkForClickOutside', () => {
       it('should call checkForClickOutside of controller', () => {
@@ -118,7 +118,7 @@ describe('spec:osds-tooltip', () => {
     });
 
     describe('closeSurface', () => {
-      it('should call closeSurface of controller', async () => {
+      it('should call closeSurface of controller', async() => {
         await instance.closeSurface();
 
         expect(controller.closeSurface).toHaveBeenCalledTimes(1);
@@ -126,7 +126,7 @@ describe('spec:osds-tooltip', () => {
     });
 
     describe('setTabindex', () => {
-      it('should set tabindex', async () => {
+      it('should set tabindex', async() => {
         const dummyTabindex = 42;
 
         await instance.setTabindex(dummyTabindex);
@@ -136,7 +136,7 @@ describe('spec:osds-tooltip', () => {
     });
 
     describe('handleMouseEnter', () => {
-      it('should call handleMouseEnter of controller', async () => {
+      it('should call handleMouseEnter of controller', async() => {
         await instance.handleMouseEnter();
 
         expect(controller.handleMouseEnter).toHaveBeenCalledTimes(1);
@@ -144,7 +144,7 @@ describe('spec:osds-tooltip', () => {
     });
 
     describe('handleMouseLeave', () => {
-      it('should call handleMouseLeave of controller', async () => {
+      it('should call handleMouseLeave of controller', async() => {
         await instance.handleMouseLeave();
 
         expect(controller.handleMouseLeave).toHaveBeenCalledTimes(1);
@@ -152,7 +152,7 @@ describe('spec:osds-tooltip', () => {
     });
 
     describe('handleTriggerBlur', () => {
-      it('should call handleTriggerBlur of controller', async () => {
+      it('should call handleTriggerBlur of controller', async() => {
         await instance.handleTriggerBlur();
 
         expect(controller.handleTriggerBlur).toHaveBeenCalledTimes(1);
@@ -160,7 +160,7 @@ describe('spec:osds-tooltip', () => {
     });
 
     describe('handleTriggerClick', () => {
-      it('should call handleTriggerClick of controller', async () => {
+      it('should call handleTriggerClick of controller', async() => {
         await instance.handleTriggerClick();
 
         expect(controller.handleTriggerClick).toHaveBeenCalledTimes(1);
@@ -168,7 +168,7 @@ describe('spec:osds-tooltip', () => {
     });
 
     describe('handleTriggerFocus', () => {
-      it('should call handleTriggerFocus of controller', async () => {
+      it('should call handleTriggerFocus of controller', async() => {
         await instance.handleTriggerFocus();
 
         expect(controller.handleTriggerFocus).toHaveBeenCalledTimes(1);
@@ -176,8 +176,8 @@ describe('spec:osds-tooltip', () => {
     });
 
     describe('syncReferences', () => {
-      it('should call syncReferences of controller', async () => {
-        (controller.syncReferences as jest.Mock).mockReset()
+      it('should call syncReferences of controller', async() => {
+        (controller.syncReferences as jest.Mock).mockReset();
 
         await instance.syncReferences();
 
@@ -186,14 +186,14 @@ describe('spec:osds-tooltip', () => {
     });
 
     describe('setSlotTooltipContent', () => {
-      it('should call setSlotTooltipContent with tooltip-content', async () => {
-        await setup({ html: htmlTooltipContent });
+      it('should call setSlotTooltipContent with tooltip-content', async() => {
+        await setup({html: htmlTooltipContent});
         await instance.setSlotTooltipContent();
 
         expect(instance.hasSlotTooltipContent).toBe(true);
       });
 
-      it('should call setSlotTooltipContent without tooltip-content', async () => {
+      it('should call setSlotTooltipContent without tooltip-content', async() => {
         await instance.setSlotTooltipContent();
 
         expect(instance.hasSlotTooltipContent).toBe(false);

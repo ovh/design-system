@@ -1,8 +1,8 @@
-import { OcdkSurfaceAnimation } from './ocdk-surface-animation';
-import { OcdkSurfaceStrategy } from './system/ocdk-surface-strategy';
-import { OcdkSurfaceStrategyDefiner } from './system/ocdk-surface-strategy-definer';
-import { OcdkSurfaceDistance } from './ocdk-surface-distance';
-import { OcdkSurfaceCornerPoints } from './ocdk-surface-corner-points';
+import {OcdkSurfaceAnimation} from './ocdk-surface-animation';
+import {OcdkSurfaceStrategy} from './system/ocdk-surface-strategy';
+import {OcdkSurfaceStrategyDefiner} from './system/ocdk-surface-strategy-definer';
+import {OcdkSurfaceDistance} from './ocdk-surface-distance';
+import {OcdkSurfaceCornerPoints} from './ocdk-surface-corner-points';
 
 export interface OcdkSurfaceConfig {
   ANIMATIONS: Record<OcdkSurfaceAnimation, {

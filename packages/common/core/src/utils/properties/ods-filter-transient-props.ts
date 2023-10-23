@@ -20,7 +20,7 @@
  * ```
  * @see https://github.com/facebook/react/issues/9230
  */
-export function odsFilterTransientProps<T extends {[k:string]: unknown}>(props: T): T {
+export function odsFilterTransientProps<T extends Record<string, unknown>>(props: T): T {
   const transients: Partial<T> = {};
   const keys = Object.keys(props) as Array<keyof T>;
   keys.forEach((p) => {
@@ -28,6 +28,6 @@ export function odsFilterTransientProps<T extends {[k:string]: unknown}>(props: 
     if (typeof prop === 'boolean') {
       transients[ p ] = (prop ? '' : null) as never;
     }
-  })
-  return { ...props, ...transients };
+  });
+  return {...props, ...transients};
 }

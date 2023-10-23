@@ -1,11 +1,11 @@
-import type { Unknown } from '@ovhcloud/ods-common-core';
-import type { OdsCartManagerFooter, OdsCartManagerFooterItem, OdsCartManagerTotal } from '../interfaces/attributes';
+import type {Unknown} from '@ovhcloud/ods-common-core';
+import type {OdsCartManagerFooter, OdsCartManagerFooterItem, OdsCartManagerTotal} from '../interfaces/attributes';
 
 function isOdsCartManagerFooter(footer?: Unknown<OdsCartManagerFooter>): footer is OdsCartManagerFooter {
   return !!footer
     && !!footer.items
     && Array.isArray((footer.items))
-    && footer.items.every(item => isOdsCartManagerFooterItem(item) || isOdsCartTotal(item));
+    && footer.items.every((item) => isOdsCartManagerFooterItem(item) || isOdsCartTotal(item));
 }
 
 function isOdsCartManagerFooterItem(footerItem?: Unknown<OdsCartManagerFooterItem>): footerItem is OdsCartManagerFooterItem {

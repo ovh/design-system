@@ -1,8 +1,8 @@
-import type { OsdsInput } from '@ovhcloud/ods-component-input';
-import type { OdsQuantityAttribute } from './interfaces/attributes';
-import { Component, Element, Host, Listen, Prop, Watch, h } from '@stencil/core';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { OdsQuantityController } from './core/controller';
+import type {OsdsInput} from '@ovhcloud/ods-component-input';
+import type {OdsQuantityAttribute} from './interfaces/attributes';
+import {Component, Element, Host, Listen, Prop, Watch, h} from '@stencil/core';
+import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
+import {OdsQuantityController} from './core/controller';
 
 /**
  * create type that correspond to our input component.
@@ -27,7 +27,7 @@ import { OdsQuantityController } from './core/controller';
 @Component({
   tag: 'osds-quantity',
   styleUrl: 'osds-quantity.scss',
-  shadow: true
+  shadow: true,
 })
 export class OsdsQuantity implements OdsQuantityAttribute {
   @Element() el!: HTMLElement;
@@ -38,7 +38,7 @@ export class OsdsQuantity implements OdsQuantityAttribute {
   plus: HTMLSlotElement | null = null;
 
   /** @see OdsQuantityAttributes.disabled */
-  @Prop({ reflect: true }) public disabled?: boolean = DEFAULT_ATTRIBUTE.disabled;
+  @Prop({reflect: true}) public disabled?: boolean = DEFAULT_ATTRIBUTE.disabled;
 
   @Watch('disabled')
   updateDisableOnChild(disabled: boolean) {

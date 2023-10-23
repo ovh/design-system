@@ -1,6 +1,6 @@
-import type { ODS_ICON_NAME } from '../constants/icon-name';
-import type { ODS_ICON_SIZE } from '../constants/icon-size';
-import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+import type {ODS_ICON_NAME} from '../constants/icon-name';
+import type {ODS_ICON_SIZE} from '../constants/icon-size';
+import type {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
 
 interface OdsIconAttribute {
   /**

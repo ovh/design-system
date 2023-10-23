@@ -1,8 +1,8 @@
-import type { OdsRangeValue } from '../interfaces/value';
-import type { OdsFormControl, OdsValidityState } from '@ovhcloud/ods-common-core';
-import { OdsLogger, OdsWarnComponentAttribute, OdsGetValidityState } from '@ovhcloud/ods-common-core';
-import { OsdsRange } from '../osds-range';
-import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+import type {OdsRangeValue} from '../interfaces/value';
+import type {OdsFormControl, OdsValidityState} from '@ovhcloud/ods-common-core';
+import {OdsGetValidityState, OdsLogger, OdsWarnComponentAttribute} from '@ovhcloud/ods-common-core';
+import {OsdsRange} from '../osds-range';
+import {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
 
 /**
  * common controller logic for range component used by the different implementations.
@@ -13,7 +13,7 @@ class OdsRangeController {
   protected component: OsdsRange;
 
   constructor(component: OsdsRange) {
-    this.component = component
+    this.component = component;
   }
 
   /**
@@ -42,21 +42,21 @@ class OdsRangeController {
       ...(inputEl ? {
         ...OdsGetValidityState(inputEl.validity),
         invalid: !inputEl.validity.valid,
-        forbiddenValue
+        forbiddenValue,
       } : {
         valid: !forbiddenValue,
         valueMissing: false,
         stepMismatch: false,
         invalid: forbiddenValue,
         customError: forbiddenValue,
-        forbiddenValue
-      })
+        forbiddenValue,
+      }),
     };
     return validity;
   }
 
   private hasForbiddenValue(): boolean {
-    return this.component.forbiddenValues.some(forbiddenValue => {
+    return this.component.forbiddenValues.some((forbiddenValue) => {
       if (typeof forbiddenValue === 'number') {
         if (this.isDualRange()) {
           return (`${forbiddenValue}` === `${this.asDualValues()[0]}` || `${forbiddenValue}` === `${this.asDualValues()[1]}`);
@@ -89,7 +89,7 @@ class OdsRangeController {
       logger: this.logger,
       attributeValues: ODS_THEME_COLOR_INTENT as Record<string, unknown>,
       attributeName: 'color',
-      attribute: this.component.color
+      attribute: this.component.color,
     });
   }
 
@@ -138,14 +138,14 @@ class OdsRangeController {
         attributeName: 'value',
         attribute: value,
         min: this.component.min,
-        max: this.component.max
+        max: this.component.max,
       });
     }
   }
 
   private updateInputCustomValidation(inputEl?: HTMLInputElement) {
     if (this.hasForbiddenValue()) {
-      inputEl?.setCustomValidity('forbiddenValue')
+      inputEl?.setCustomValidity('forbiddenValue');
     } else {
       inputEl?.setCustomValidity('');
     }
@@ -176,4 +176,4 @@ class OdsRangeController {
   }
 }
 
-export { OdsRangeController }
+export {OdsRangeController};

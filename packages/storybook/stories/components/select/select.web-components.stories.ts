@@ -1,9 +1,9 @@
-import { html } from 'lit-html';
-import { getTagAttributes, extractArgTypes, extractStoryParams } from '../../../core/componentHTMLUtils';
-import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import { ODS_SELECT_SIZES } from '@ovhcloud/ods-components/select';
-import { defineCustomElements } from '@ovhcloud/ods-components/select/loader';
-import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-components/select/src/components/osds-select/constants/default-attributes';
+import {html} from 'lit-html';
+import {extractArgTypes, extractStoryParams, getTagAttributes} from '../../../core/componentHTMLUtils';
+import {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
+import {ODS_SELECT_SIZES} from '@ovhcloud/ods-components/select';
+import {defineCustomElements} from '@ovhcloud/ods-components/select/loader';
+import {DEFAULT_ATTRIBUTE} from '@ovhcloud/ods-components/select/src/components/osds-select/constants/default-attributes';
 // @ts-ignore
 import changelog from '@ovhcloud/ods-components/select/CHANGELOG.md';
 // @ts-ignore
@@ -16,13 +16,13 @@ const storyParams = {
     category: 'General',
     defaultValue: DEFAULT_ATTRIBUTE.color,
     options: [ODS_THEME_COLOR_INTENT.primary],
-    control: { type: 'select' },
+    control: {type: 'select'},
   },
   size: {
     category: 'General',
     defaultValue: DEFAULT_ATTRIBUTE.size,
     options: ODS_SELECT_SIZES,
-    control: { type: 'select' },
+    control: {type: 'select'},
   },
   disabled: {
     category: 'Misc',
@@ -45,7 +45,7 @@ export default {
     notes: {
       changelog,
     },
-    docs: { page }
+    docs: {page},
   },
   argTypes: extractArgTypes(storyParams),
 };

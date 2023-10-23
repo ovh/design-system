@@ -1,6 +1,6 @@
-import { Component, Element, Event, EventEmitter, h, Host, Listen, Prop } from '@stencil/core';
-import { HTMLStencilElement } from '@stencil/core/internal';
-import { OcdkLogger } from '@ovhcloud/ods-cdk';
+import {Component, Element, Event, EventEmitter, Host, Listen, Prop, h} from '@stencil/core';
+import {HTMLStencilElement} from '@stencil/core/internal';
+import {OcdkLogger} from '@ovhcloud/ods-cdk';
 
 @Component({
   tag: 'ocdk-surface-select-item-example',
@@ -11,7 +11,7 @@ export class OcdkSurfaceSelectItemExample {
   static totalIds = 0;
   @Element() el!: HTMLStencilElement;
   @Event() ocdkSurfaceSelectItemExampleClick!: EventEmitter<{ item: OcdkSurfaceSelectItemExample, value: string }>;
-  @Prop({ reflect: true }) value = '';
+  @Prop({reflect: true}) value = '';
   private uniqueId = OcdkSurfaceSelectItemExample.totalIds++;
   private logger = new OcdkLogger(`OcdkSurfaceSelectItemExample #${this.uniqueId}`);
 
@@ -21,7 +21,7 @@ export class OcdkSurfaceSelectItemExample {
   @Listen('click')
   onCLick() {
     this.logger.log('onCLick', 'send value');
-    this.ocdkSurfaceSelectItemExampleClick.emit({ item: this, value: this.value })
+    this.ocdkSurfaceSelectItemExampleClick.emit({item: this, value: this.value});
   }
 
   render() {

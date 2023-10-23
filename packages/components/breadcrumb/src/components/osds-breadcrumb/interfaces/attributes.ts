@@ -1,4 +1,4 @@
-import type { ODS_ICON_NAME } from '@ovhcloud/ods-component-icon';
+import type {ODS_ICON_NAME} from '@ovhcloud/ods-component-icon';
 
 interface OdsBreadcrumbAttributeItem {
   /** Item link to redirect to */

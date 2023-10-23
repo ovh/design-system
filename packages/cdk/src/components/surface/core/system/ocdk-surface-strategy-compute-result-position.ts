@@ -1,5 +1,5 @@
-import { OcdkSurfaceCornerPointsNormalized } from '../ocdk-surface-corner-points-normalized';
-import { OcdkSurfaceOnePositionStrategy } from '../ocdk-surface-one-position-strategy';
+import {OcdkSurfaceCornerPointsNormalized} from '../ocdk-surface-corner-points-normalized';
+import {OcdkSurfaceOnePositionStrategy} from '../ocdk-surface-one-position-strategy';
 
 export type OcdkSurfaceStrategyComputeResultPosition<StrategyConfig> = {
   cornerPoints: OcdkSurfaceCornerPointsNormalized

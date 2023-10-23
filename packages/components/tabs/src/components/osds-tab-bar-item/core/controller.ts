@@ -1,15 +1,15 @@
-import { OsdsTabBarItem } from '../osds-tab-bar-item';
+import {OsdsTabBarItem} from '../osds-tab-bar-item';
 
 /**
  * common controller logic for text component used by the different implementations.
  * it contains all the glue between framework implementation and the third party service.
  */
 class OdsTabBarItemController {
-    protected component: OsdsTabBarItem;
+  protected component: OsdsTabBarItem;
 
-    constructor(component: OsdsTabBarItem) {
-      this.component = component;
-    }
+  constructor(component: OsdsTabBarItem) {
+    this.component = component;
+  }
 
   /**
    *
@@ -39,5 +39,5 @@ class OdsTabBarItemController {
 }
 
 export {
-    OdsTabBarItemController,
+  OdsTabBarItemController,
 };

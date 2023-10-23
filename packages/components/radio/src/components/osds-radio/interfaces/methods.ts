@@ -23,6 +23,6 @@ interface OdsRadioMethod {
   updateState(checking?: boolean): Promise<void>;
 }
 
-export { 
+export {
   OdsRadioMethod,
-}
+};

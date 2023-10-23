@@ -1,6 +1,6 @@
-import { defineConfig } from 'vite';
+import {defineConfig} from 'vite';
 import react from '@vitejs/plugin-react';
-import { viteStaticCopy } from 'vite-plugin-static-copy';
+import {viteStaticCopy} from 'vite-plugin-static-copy';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -9,10 +9,10 @@ export default defineConfig({
       targets: [
         {
           src: '../../../node_modules/@ovhcloud/ods-stencil/components/flag/dist/flags',
-          dest: 'my-flags'
-        }
-      ]
+          dest: 'my-flags',
+        },
+      ],
     }),
-    react()
-  ]
-})
+    react(),
+  ],
+});

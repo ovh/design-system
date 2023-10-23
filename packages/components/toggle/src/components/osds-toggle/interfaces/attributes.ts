@@ -1,4 +1,4 @@
-import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+import type {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
 
 interface OdsToggleAttribute {
   /**
@@ -28,5 +28,5 @@ interface OdsToggleAttribute {
   }
 
 export {
-  OdsToggleAttribute
-}
+  OdsToggleAttribute,
+};

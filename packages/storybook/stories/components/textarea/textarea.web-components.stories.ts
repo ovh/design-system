@@ -1,8 +1,8 @@
-import { html } from 'lit-html';
-import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
-import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
-import { defineCustomElements } from '@ovhcloud/ods-components/textarea/loader';
-import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-components/textarea/src/components/osds-textarea/constants/default-attributes';
+import {html} from 'lit-html';
+import {extractArgTypes, extractStoryParams, getTagAttributes} from '../../../core/componentHTMLUtils';
+import {ODS_THEME_COLOR_INTENTS} from '@ovhcloud/ods-common-theming';
+import {defineCustomElements} from '@ovhcloud/ods-components/textarea/loader';
+import {DEFAULT_ATTRIBUTE} from '@ovhcloud/ods-components/textarea/src/components/osds-textarea/constants/default-attributes';
 // @ts-ignore
 import changelog from '@ovhcloud/ods-components/textarea/CHANGELOG.md';
 // @ts-ignore
@@ -16,7 +16,7 @@ const storyParams = {
     category: 'General',
     defaultValue: DEFAULT_ATTRIBUTE.color,
     options: ODS_THEME_COLOR_INTENTS,
-    control: { type: 'select' },
+    control: {type: 'select'},
   },
   defaultValue: {
     category: 'General',
@@ -32,7 +32,7 @@ const storyParams = {
   },
   contrasted: {
     category: 'Misc',
-    defaultValue: DEFAULT_ATTRIBUTE.contrasted
+    defaultValue: DEFAULT_ATTRIBUTE.contrasted,
   },
   disabled: {
     category: 'Misc',
@@ -40,11 +40,11 @@ const storyParams = {
   },
   name: {
     category: 'Misc',
-    defaultValue: 'myTextArea'
+    defaultValue: 'myTextArea',
   },
   placeholder: {
     category: 'Misc',
-    defaultValue: 'placeholder'
+    defaultValue: 'placeholder',
   },
   error: {
     category: 'Misc',
@@ -57,12 +57,12 @@ const storyParams = {
   cols: {
     category: 'Misc',
     defaultValue: DEFAULT_ATTRIBUTE.cols,
-    control: { type: 'number' }
+    control: {type: 'number'},
   },
   rows: {
     category: 'Misc',
     defaultValue: DEFAULT_ATTRIBUTE.rows,
-    control: { type: 'number' }
+    control: {type: 'number'},
   },
 };
 
@@ -73,9 +73,9 @@ export default {
     notes: {
       changelog,
     },
-    docs: { page },
+    docs: {page},
   },
-  argTypes: extractArgTypes(storyParams)
+  argTypes: extractArgTypes(storyParams),
 };
 
 /* Default */

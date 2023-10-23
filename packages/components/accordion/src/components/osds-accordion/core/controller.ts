@@ -1,18 +1,18 @@
-import type { OsdsAccordion } from '../osds-accordion';
-import { HTMLStencilElement } from '@stencil/core/internal';
-import { OsdsAccordionGroup } from '../../osds-accordion-group/osds-accordion-group';
+import type {OsdsAccordion} from '../osds-accordion';
+import {HTMLStencilElement} from '@stencil/core/internal';
+import {OsdsAccordionGroup} from '../../osds-accordion-group/osds-accordion-group';
 
 class OdsAccordionController {
   private component: OsdsAccordion;
 
-    constructor(component: OsdsAccordion) {
-      this.component = component;
-    }
+  constructor(component: OsdsAccordion) {
+    this.component = component;
+  }
 
   /**
    * synchronize the `opened` status from this component to the vanilla `details` html tag
    */
-   syncOpenedOnDetail(): void {
+  syncOpenedOnDetail(): void {
     if (this.component.opened) {
       this.component.detailsEl?.setAttribute('open', '');
     } else {
@@ -30,7 +30,7 @@ class OdsAccordionController {
   }
 
   beforeInit(): void {
-    const accordionGroup = this.component.accordionGroup = this.component.el.closest('osds-accordion-group') as unknown  as (HTMLStencilElement & OsdsAccordionGroup);
+    const accordionGroup = this.component.accordionGroup = this.component.el.closest('osds-accordion-group') as unknown as (HTMLStencilElement & OsdsAccordionGroup);
     if (accordionGroup) {
       accordionGroup.registerAccordion(this.component);
     }
@@ -39,7 +39,7 @@ class OdsAccordionController {
   onDestroy(): void {
     const accordionGroup = this.component.accordionGroup;
     if (accordionGroup) {
-      accordionGroup.unRegisterAccordion(this.component)
+      accordionGroup.unRegisterAccordion(this.component);
     }
   }
 }

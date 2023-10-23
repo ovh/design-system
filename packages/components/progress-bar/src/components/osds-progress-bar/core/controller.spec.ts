@@ -1,14 +1,15 @@
-import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
-import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
-import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
-import { OdsProgressBarController } from './controller';
-import { OsdsProgressBar } from '../osds-progress-bar';
+import type {OdsLoggerSpyReferences} from '@ovhcloud/ods-common-testing';
+import {Ods, OdsLogger} from '@ovhcloud/ods-common-core';
+import {OdsClearLoggerSpy, OdsInitializeLoggerSpy} from '@ovhcloud/ods-common-testing';
+import {OdsProgressBarController} from './controller';
+import {OsdsProgressBar} from '../osds-progress-bar';
 
 class OdsProgressBarMock extends OsdsProgressBar {
   constructor(attribute: Partial<OsdsProgressBar>) {
     super();
-    Object.assign(this, attribute)
+    Object.assign(this, attribute);
   }
+
   controller: OdsProgressBarController = jest.fn() as unknown as OdsProgressBarController;
   beforeInit = jest.fn();
 }
@@ -29,7 +30,7 @@ describe('ods-progress-bar-controller', () => {
     const loggerMocked = new OdsLogger('myLoggerMocked');
     loggerSpyReferences = OdsInitializeLoggerSpy({
       loggerMocked: loggerMocked as never,
-      spiedClass: OdsProgressBarController
+      spiedClass: OdsProgressBarController,
     });
   });
 

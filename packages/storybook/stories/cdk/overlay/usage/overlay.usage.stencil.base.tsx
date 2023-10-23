@@ -1,8 +1,8 @@
-import { Component, h, Host } from '@stencil/core';
-import { ocdkDefineCustomElements, ocdkIsSurface, OcdkSurface, } from '@ovhcloud/ods-cdk';
+import {Component, Host, h} from '@stencil/core';
+import {OcdkSurface, ocdkDefineCustomElements, ocdkIsSurface} from '@ovhcloud/ods-cdk';
 
 // define custom elements from CDK
-ocdkDefineCustomElements()
+ocdkDefineCustomElements();
 
 @Component({
   tag: 'my-overlay',
@@ -21,16 +21,16 @@ export class MyOverlay {
     return (
       <Host>
         <div class="trigger"
-             ref={(el?: HTMLElement) => {
-               this.anchor = el as HTMLDivElement;
-               this.syncReferences()
-             }}>
+          ref={(el?: HTMLElement) => {
+            this.anchor = el as HTMLDivElement;
+            this.syncReferences();
+          }}>
           My select trigger
         </div>
         <ocdk-surface ref={(el: HTMLElement) => {
           if (ocdkIsSurface(el)) {
             this.surface = el as OcdkSurface;
-            this.syncReferences()
+            this.syncReferences();
           }
         }}>
           Content

@@ -1,4 +1,4 @@
-import {Component, Host, Prop, h} from '@stencil/core';
+import {Component, FunctionalComponent, Host, Prop, h} from '@stencil/core';
 import type {ODS_TEXT_COLOR_HUE, ODS_TEXT_COLOR_INTENT} from './constants/text-color';
 import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
 import type {ODS_TEXT_LEVEL} from './constants/text-level';
@@ -33,7 +33,7 @@ export class OsdsText implements OdsTextAttribute {
   /** @see OdsTextAttribute.hue */
   @Prop({reflect: true}) public hue?: ODS_TEXT_COLOR_HUE = DEFAULT_ATTRIBUTE.hue;
 
-  render(): object {
+  render(): FunctionalComponent {
     return (
       <Host style={{'--osds-text-color-specific-hue': this.color && this.hue ? `var(${odsGenerateColorVariable(this.color, this.hue)})` : ''}}>
         <slot></slot>

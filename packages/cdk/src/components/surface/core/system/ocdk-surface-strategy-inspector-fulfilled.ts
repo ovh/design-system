@@ -1,5 +1,5 @@
-import { OcdkSurfaceStrategyInspectorComfortFulfilled } from './ocdk-surface-strategy-inspector-comfort-fulfilled';
-import { OcdkSurfaceStrategyInspectorLimitFulFilled } from './ocdk-surface-strategy-inspector-limit-fulfilled';
+import {OcdkSurfaceStrategyInspectorComfortFulfilled} from './ocdk-surface-strategy-inspector-comfort-fulfilled';
+import {OcdkSurfaceStrategyInspectorLimitFulFilled} from './ocdk-surface-strategy-inspector-limit-fulfilled';
 
 export type OcdkSurfaceStrategyInspectorFulfilled<StrategyConfig> =
   OcdkSurfaceStrategyInspectorComfortFulfilled<StrategyConfig>

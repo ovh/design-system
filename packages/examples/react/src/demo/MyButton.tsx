@@ -1,15 +1,15 @@
-import type { OdsButtonAttribute } from '@ovhcloud/ods-components/button';
-import React, { PropsWithChildren } from 'react';
-import { OsdsButton } from '@ovhcloud/ods-components/button/react';
-import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import { odsFilterTransientProps } from '@ovhcloud/ods-common-core';
+import type {OdsButtonAttribute} from '@ovhcloud/ods-components/button';
+import React, {PropsWithChildren} from 'react';
+import {OsdsButton} from '@ovhcloud/ods-components/button/react';
+import {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
+import {odsFilterTransientProps} from '@ovhcloud/ods-common-core';
 
 /**
  * default custom properties values for the custom button
  */
 const DEFAULT_BUTTON_PROPS: Partial<OdsButtonAttribute> = {
   inline: false,
-  color: ODS_THEME_COLOR_INTENT.accent
+  color: ODS_THEME_COLOR_INTENT.accent,
 };
 
 /**
@@ -24,8 +24,8 @@ type MyButtonProps = PropsWithChildren<OdsButtonAttribute> & { onClick: () => vo
  * We recommend not to overuse with this kind of wrapper.
  * It is made here only the example.
  */
-const MyButton: React.FC<MyButtonProps> = ({ children, ...props }) => {
-  return <OsdsButton {...odsFilterTransientProps({ ...DEFAULT_BUTTON_PROPS, ...props })}>{children}</OsdsButton>
+const MyButton: React.FC<MyButtonProps> = ({children, ...props}) => {
+  return <OsdsButton {...odsFilterTransientProps({...DEFAULT_BUTTON_PROPS, ...props})}>{children}</OsdsButton>;
 };
 
 export default MyButton;

@@ -1,7 +1,7 @@
-import type { OdsQuantityAttribute } from '../interfaces/attributes';
+import type {OdsQuantityAttribute} from '../interfaces/attributes';
 
 const DEFAULT_ATTRIBUTE: OdsQuantityAttribute = Object.freeze({
-  disabled: false
+  disabled: false,
 });
 
 export {

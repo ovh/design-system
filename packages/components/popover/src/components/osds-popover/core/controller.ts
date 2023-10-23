@@ -1,10 +1,10 @@
-import type { OsdsPopover } from '../osds-popover';
+import type {OsdsPopover} from '../osds-popover';
 
 class OdsPopoverController {
   private component: OsdsPopover;
 
   constructor(component: OsdsPopover) {
-    this.component = component
+    this.component = component;
   }
 
   /**
@@ -21,14 +21,14 @@ class OdsPopoverController {
    * Handle keypress event on Trigger
    */
   handleTriggerKey(event: KeyboardEvent): void {
-    if((event.key === " " || event.key === "Enter")) {
+    if((event.key === ' ' || event.key === 'Enter')) {
       if (!this.component.surface) {
         return;
       }
       this.component.surface.opened = !this.component.surface.opened;
     }
 
-    if(event.key === "Escape") {
+    if(event.key === 'Escape') {
       this.closeSurface();
     }
   }
@@ -37,7 +37,7 @@ class OdsPopoverController {
    * Handle click event on Surface
    */
   handleSurfaceKey(event: KeyboardEvent): void {
-    if (event.key === "Escape") {
+    if (event.key === 'Escape') {
       this.closeSurface();
     }
   }

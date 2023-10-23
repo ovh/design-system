@@ -1,6 +1,6 @@
-import type { E2EElement, E2EPage } from '@stencil/core/testing';
-import { OdsLogger } from '@ovhcloud/ods-common-core';
-import { newE2EPage } from '@stencil/core/testing';
+import type {E2EElement, E2EPage} from '@stencil/core/testing';
+import {OdsLogger} from '@ovhcloud/ods-common-core';
+import {newE2EPage} from '@stencil/core/testing';
 
 const logger = new OdsLogger('osds-content-addon-e2e');
 
@@ -10,7 +10,7 @@ describe('e2e:osds-content-addon', () => {
 
   async function setup() {
     page = await newE2EPage();
-    await page.setContent(`<osds-content-addon></osds-content-addon>`);
+    await page.setContent('<osds-content-addon></osds-content-addon>');
     await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
 
     el = await page.find('osds-content-addon');
@@ -21,7 +21,7 @@ describe('e2e:osds-content-addon', () => {
     logger.log(root);
   }
 
-  it('should render', async () => {
+  it('should render', async() => {
     await setup();
     expect(el).not.toBeNull();
     expect(el).toHaveClass('hydrated');

@@ -1,11 +1,11 @@
-import { extractArgTypes, extractStoryParams, } from '../../../../../../core/componentHTMLUtils';
-import { html } from 'lit-html';
-import { styleMap } from 'lit-html/directives/style-map';
-import { defineCustomElements } from '@ovhcloud/ods-cdk/dev/loader';
+import {extractArgTypes, extractStoryParams} from '../../../../../../core/componentHTMLUtils';
+import {html} from 'lit-html';
+import {styleMap} from 'lit-html/directives/style-map';
+import {defineCustomElements} from '@ovhcloud/ods-cdk/dev/loader';
 import page from './overlay.stencil.select.stories.page.mdx';
-import { play } from './overlay.stencil.select.stories.play';
-import { olesIpsum, OlesIpsumGeneration } from '@ovhcloud/ods-common-core';
-import { OcdkSurfaceSelectPosition, OcdkSurfaceSelectPositionList } from '@ovhcloud/ods-cdk-dev';
+import {play} from './overlay.stencil.select.stories.play';
+import {OlesIpsumGeneration, olesIpsum} from '@ovhcloud/ods-common-core';
+import {OcdkSurfaceSelectPosition, OcdkSurfaceSelectPositionList} from '@ovhcloud/ods-cdk-dev';
 
 defineCustomElements();
 
@@ -15,77 +15,77 @@ const storyParams = {
     category: 'General',
     description: 'make the selection open or not',
     defaultValue: false,
-    control: { type: 'boolean' },
-    table: { defaultValue: { summary: 'false' } }
+    control: {type: 'boolean'},
+    table: {defaultValue: {summary: 'false'}},
   },
   position: {
     category: 'General',
     description: 'select position',
     defaultValue: OcdkSurfaceSelectPosition.BOTTOM,
     options: OcdkSurfaceSelectPositionList,
-    control: { type: 'select' },
-    table: { defaultValue: { summary: OcdkSurfaceSelectPosition.BOTTOM } }
+    control: {type: 'select'},
+    table: {defaultValue: {summary: OcdkSurfaceSelectPosition.BOTTOM}},
   },
   applyDirection: {
     category: 'General',
     description: 'apply an HTML directionality',
     defaultValue: 'ltr',
     options: ['ltr', 'rtl'],
-    control: { type: 'select' },
-    table: { defaultValue: { summary: 'ltr' } }
+    control: {type: 'select'},
+    table: {defaultValue: {summary: 'ltr'}},
   },
   changeAlignment: {
     category: 'General',
     description: 'position component on the page',
     defaultValue: 'start center',
     options: ['start start', 'start center', 'start end', 'center start', 'center', 'center end', 'end start', 'end center', 'end end'],
-    control: { type: 'select' },
-    table: { defaultValue: { summary: 'start center' } }
+    control: {type: 'select'},
+    table: {defaultValue: {summary: 'start center'}},
   },
   applyContent: {
     category: 'General',
     description: 'apply some fake HTML in order to enable scrolling',
     defaultValue: false,
-    control: { type: 'boolean' },
-    table: { defaultValue: { summary: 'false' } }
-  }
+    control: {type: 'boolean'},
+    table: {defaultValue: {summary: 'false'}},
+  },
 };
 
-const selectTsxFile = require(`!!raw-loader!@ovhcloud/ods-cdk-dev/src/components/surface/ocdk-surface-select-example/ocdk-surface-select-example.tsx`).default;
-const selectItemTsxFile = require(`!!raw-loader!@ovhcloud/ods-cdk-dev/src/components/surface/ocdk-surface-select-example/ocdk-surface-select-item-example.tsx`).default;
-const selectScss = require(`!!raw-loader!@ovhcloud/ods-cdk-dev/src/components/surface/ocdk-surface-select-example/ocdk-surface-select-example.scss`).default;
-const selectItemScss = require(`!!raw-loader!@ovhcloud/ods-cdk-dev/src/components/surface/ocdk-surface-select-example/ocdk-surface-select-item-example.scss`).default;
+const selectTsxFile = require('!!raw-loader!@ovhcloud/ods-cdk-dev/src/components/surface/ocdk-surface-select-example/ocdk-surface-select-example.tsx').default;
+const selectItemTsxFile = require('!!raw-loader!@ovhcloud/ods-cdk-dev/src/components/surface/ocdk-surface-select-example/ocdk-surface-select-item-example.tsx').default;
+const selectScss = require('!!raw-loader!@ovhcloud/ods-cdk-dev/src/components/surface/ocdk-surface-select-example/ocdk-surface-select-example.scss').default;
+const selectItemScss = require('!!raw-loader!@ovhcloud/ods-cdk-dev/src/components/surface/ocdk-surface-select-example/ocdk-surface-select-item-example.scss').default;
 
 export default {
   title: 'Libraries/CDK/Overlay/examples/Stencil/Select',
   parameters: {
-    docs: { page },
-    controls: { expanded: true },
+    docs: {page},
+    controls: {expanded: true},
     preview: [
       {
-        tab: "Select Component TSX",
+        tab: 'Select Component TSX',
         template: selectTsxFile,
-        language: "ts",
-        format: "tsx",
+        language: 'ts',
+        format: 'tsx',
         copy: true,
       },
       {
-        tab: "Select Component SCSS",
+        tab: 'Select Component SCSS',
         template: selectScss,
-        language: "css",
+        language: 'css',
         copy: true,
       },
       {
-        tab: "Select Item Component TSX",
+        tab: 'Select Item Component TSX',
         template: selectItemTsxFile,
-        language: "ts",
-        format: "tsx",
+        language: 'ts',
+        format: 'tsx',
         copy: true,
       },
       {
-        tab: "Select Item Component SCSS",
+        tab: 'Select Item Component SCSS',
         template: selectItemScss,
-        language: "css",
+        language: 'css',
         copy: true,
       },
     ],
@@ -104,7 +104,7 @@ const Template = (args: any) => {
       }
     </style>
 
-    <div id='alignment' style=${ styleMap({ placeContent: args.changeAlignment }) }>
+    <div id='alignment' style=${ styleMap({placeContent: args.changeAlignment}) }>
       <p>${args.applyContent ? olesIpsum(OlesIpsumGeneration.paragraphs, 2) : ''}</p>
       <ocdk-surface-select-example dir="${args.applyDirection}" opened="${args.opened}" position="${args.position}">
         <div slot="trigger">My Select</div>
@@ -124,6 +124,6 @@ const Template = (args: any) => {
 
 export const Select = Template.bind({});
 Select.args = {
-  ...extractStoryParams(storyParams)
+  ...extractStoryParams(storyParams),
 };
 Select.play = play;

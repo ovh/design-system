@@ -1,4 +1,4 @@
-enum ODS_SWITCH_SIZE {  
+enum ODS_SWITCH_SIZE {
   md = 'md',
   sm = 'sm',
 }
@@ -8,4 +8,4 @@ const ODS_SWITCH_SIZES = Object.freeze(Object.values(ODS_SWITCH_SIZE));
 export {
   ODS_SWITCH_SIZE,
   ODS_SWITCH_SIZES,
-}
+};

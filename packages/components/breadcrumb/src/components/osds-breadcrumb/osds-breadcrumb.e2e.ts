@@ -1,6 +1,6 @@
-import type { E2EElement, E2EPage } from '@stencil/core/testing';
-import type { OdsBreadcrumbAttributeItem } from './interfaces/attributes';
-import { newE2EPage } from '@stencil/core/testing';
+import type {E2EElement, E2EPage} from '@stencil/core/testing';
+import type {OdsBreadcrumbAttributeItem} from './interfaces/attributes';
+import {newE2EPage} from '@stencil/core/testing';
 
 describe('e2e:osds-breadcrumb', () => {
   const dummyItems = [
@@ -31,14 +31,14 @@ describe('e2e:osds-breadcrumb', () => {
     breadcrumbItemElements = await page.findAll('osds-breadcrumb >>> osds-breadcrumb-item');
   }
 
-  it('should render', async () => {
+  it('should render', async() => {
     await setup();
 
     expect(el).not.toBeNull();
     expect(el).toHaveClass('hydrated');
   });
 
-  it('should render with 4 visible items', async () => {
+  it('should render with 4 visible items', async() => {
     await setup(dummyItems);
 
     expect(breadcrumbItemElements.length).toBe(dummyItems.length);
@@ -56,7 +56,7 @@ describe('e2e:osds-breadcrumb', () => {
     expect(isExpandableItem(breadcrumbItemElements[3])).toBe(false);
   });
 
-  it('should render first and last items and a collapsed one in the middle', async () => {
+  it('should render first and last items and a collapsed one in the middle', async() => {
     const moreDummyItems = [...dummyItems,
       {href: 'href5', label: 'label5'},
       {href: 'href6', label: 'label6'},
@@ -84,10 +84,10 @@ describe('e2e:osds-breadcrumb', () => {
     expect(isExpandableItem(breadcrumbItemElements[5])).toBe(false);
   });
 
-  it('should render all on collapsed item click', async () => {
+  it('should render all on collapsed item click', async() => {
     const moreDummyItems = [...dummyItems,
-      { href: 'href5', label: 'label5' },
-      { href: 'href6', label: 'label6' },
+      {href: 'href5', label: 'label5'},
+      {href: 'href6', label: 'label6'},
     ];
     await setup(moreDummyItems);
 

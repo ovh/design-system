@@ -1,15 +1,15 @@
-import type { E2EElement, E2EPage } from '@stencil/core/testing';
-import type { OdsLinkAttribute } from './interfaces/attributes';
-import { newE2EPage } from '@stencil/core/testing';
-import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
-import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import type {E2EElement, E2EPage} from '@stencil/core/testing';
+import type {OdsLinkAttribute} from './interfaces/attributes';
+import {newE2EPage} from '@stencil/core/testing';
+import {odsComponentAttributes2StringAttributes, odsStringAttributes2Str} from '@ovhcloud/ods-common-testing';
+import {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
+import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
 
 describe('e2e:osds-link', () => {
   let page: E2EPage;
   let el: E2EElement;
 
-  async function setup({ attributes = {}, html = `` }: { attributes?: Partial<OdsLinkAttribute>, html?: string } = {}) {
+  async function setup({attributes = {}, html = ''}: { attributes?: Partial<OdsLinkAttribute>, html?: string } = {}) {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsLinkAttribute>(attributes, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
@@ -19,27 +19,27 @@ describe('e2e:osds-link', () => {
     el = await page.find('osds-link');
   }
 
-  it('should render', async () => {
-    await setup({ attributes: { color: ODS_THEME_COLOR_INTENT.primary, contrasted: false } });
+  it('should render', async() => {
+    await setup({attributes: {color: ODS_THEME_COLOR_INTENT.primary, contrasted: false}});
     expect(el).not.toBeNull();
   });
 
-  it('should display a text in the link', async () => {
-    const text = `Text`;
-    await setup({ attributes: { color: ODS_THEME_COLOR_INTENT.primary,  contrasted: false }, html: text });
+  it('should display a text in the link', async() => {
+    const text = 'Text';
+    await setup({attributes: {color: ODS_THEME_COLOR_INTENT.primary, contrasted: false}, html: text});
 
     expect(el.innerText).toContain(text);
     expect(el.getAttribute('href')).toBeFalsy();
   });
 
-  it('should display a text in the link with href', async () => {
+  it('should display a text in the link with href', async() => {
     const href = 'https://www.ovhcloud.com';
-    const text = `Text`;
-    await setup({ attributes: {
+    const text = 'Text';
+    await setup({attributes: {
       color: ODS_THEME_COLOR_INTENT.primary,
       contrasted: false,
       href,
-    }, html: text });
+    }, html: text});
 
     expect(el.innerText).toContain(text);
     expect(el.getAttribute('href')).toBe(href);

@@ -1,6 +1,6 @@
-import type { OdsErrorStateControl, OdsFormControl, OdsTextAreaValidityState } from '@ovhcloud/ods-common-core';
-import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import type { ODS_TEXTAREA_SIZE } from '../constants/textarea-size';
+import type {OdsErrorStateControl, OdsFormControl, OdsTextAreaValidityState} from '@ovhcloud/ods-common-core';
+import type {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
+import type {ODS_TEXTAREA_SIZE} from '../constants/textarea-size';
 
 interface OdsTextAreaAttribute {
   /** ariaLabel: see component principles */

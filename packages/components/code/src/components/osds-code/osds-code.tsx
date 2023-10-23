@@ -1,13 +1,13 @@
-import type { OsdsButton } from '@ovhcloud/ods-component-button';
-import type { OsdsIcon } from '@ovhcloud/ods-component-icon';
-import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import type { EventEmitter, HTMLStencilElement } from '@stencil/core/internal';
-import type { OdsCodeEvent } from './interfaces/events';
-import type { ODS_CODE_SIZE } from './constants/code-size';
-import type { OdsCodeAttribute } from './interfaces/attributes';
-import { Component, Element, Event, h, Host, Prop } from '@stencil/core';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { OdsCodeController } from './core/controller';
+import type {OsdsButton} from '@ovhcloud/ods-component-button';
+import type {OsdsIcon} from '@ovhcloud/ods-component-icon';
+import type {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
+import type {EventEmitter, HTMLStencilElement} from '@stencil/core/internal';
+import type {OdsCodeEvent} from './interfaces/events';
+import type {ODS_CODE_SIZE} from './constants/code-size';
+import type {OdsCodeAttribute} from './interfaces/attributes';
+import {Component, Element, Event, Host, Prop, h} from '@stencil/core';
+import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
+import {OdsCodeController} from './core/controller';
 
 /**
  * @slot (unnamed) - Code content
@@ -25,13 +25,13 @@ export class OsdsCode implements OdsCodeAttribute, OdsCodeEvent {
   codeEl!: HTMLElement;
 
   /** @see OdsCodeAttributes.color */
-  @Prop({ reflect: true }) public color?: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
+  @Prop({reflect: true}) public color?: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
 
   /** @see OdsCodeAttributes.contrasted */
-  @Prop({ reflect: true }) public contrasted? = DEFAULT_ATTRIBUTE.contrasted;
+  @Prop({reflect: true}) public contrasted? = DEFAULT_ATTRIBUTE.contrasted;
 
   /** @see OdsCodeAttributes.size */
-  @Prop({ reflect: true }) public size?: ODS_CODE_SIZE = DEFAULT_ATTRIBUTE.size;
+  @Prop({reflect: true}) public size?: ODS_CODE_SIZE = DEFAULT_ATTRIBUTE.size;
 
   /** @see OdsCodeEvents.odsCodeCopy */
   @Event() odsCodeCopy!: EventEmitter<void>;
@@ -73,7 +73,7 @@ export class OsdsCode implements OdsCodeAttribute, OdsCodeEvent {
           </code>
           <slot {...{
             name: 'copy',
-            onClick: () => this.onCopyClick()
+            onClick: () => this.onCopyClick(),
           }}></slot>
         </pre>
       </Host>

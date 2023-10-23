@@ -1,8 +1,8 @@
-import type { OsdsTile } from '../osds-tile';
-import { OdsLogger, OdsWarnComponentAttribute } from '@ovhcloud/ods-common-core';
-import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import { ODS_TILE_SIZE } from '../constants/tile-size';
-import { ODS_TILE_VARIANT } from '../constants/tile-variant';
+import type {OsdsTile} from '../osds-tile';
+import {OdsLogger, OdsWarnComponentAttribute} from '@ovhcloud/ods-common-core';
+import {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
+import {ODS_TILE_SIZE} from '../constants/tile-size';
+import {ODS_TILE_VARIANT} from '../constants/tile-variant';
 
 /**
  * common controller logic for tile component used by the different implementations.
@@ -13,7 +13,7 @@ class OdsTileController {
   protected component: OsdsTile;
 
   constructor(component: OsdsTile) {
-    this.component = component
+    this.component = component;
   }
 
   /**
@@ -26,19 +26,19 @@ class OdsTileController {
       logger,
       attributeValues: ODS_THEME_COLOR_INTENT,
       attributeName: 'color',
-      attribute: this.component.color
+      attribute: this.component.color,
     });
     OdsWarnComponentAttribute<ODS_TILE_SIZE, OsdsTile>({
       logger,
       attributeValues: ODS_TILE_SIZE,
       attributeName: 'size',
-      attribute: this.component.size
+      attribute: this.component.size,
     });
     OdsWarnComponentAttribute<ODS_TILE_VARIANT, OsdsTile>({
       logger,
       attributeValues: ODS_TILE_VARIANT,
       attributeName: 'variant',
-      attribute: this.component.variant
+      attribute: this.component.variant,
     });
   }
 

@@ -1,9 +1,9 @@
-import { html } from 'lit-html';
-import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
-import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
-import { defineCustomElements } from '@ovhcloud/ods-components/modal/loader';
-import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-components/modal/src/components/osds-modal/constants/default-attributes';
+import {html} from 'lit-html';
+import {unsafeHTML} from 'lit-html/directives/unsafe-html';
+import {extractArgTypes, extractStoryParams, getTagAttributes} from '../../../core/componentHTMLUtils';
+import {ODS_THEME_COLOR_INTENTS} from '@ovhcloud/ods-common-theming';
+import {defineCustomElements} from '@ovhcloud/ods-components/modal/loader';
+import {DEFAULT_ATTRIBUTE} from '@ovhcloud/ods-components/modal/src/components/osds-modal/constants/default-attributes';
 // @ts-ignore
 import changelog from '@ovhcloud/ods-components/modal/CHANGELOG.md';
 // @ts-ignore
@@ -17,7 +17,7 @@ const storyParams = {
     category: 'General',
     defaultValue: DEFAULT_ATTRIBUTE.color,
     options: ODS_THEME_COLOR_INTENTS,
-    control: { type: 'select' },
+    control: {type: 'select'},
   },
   dismissible: {
     category: 'General',
@@ -33,7 +33,7 @@ const storyParams = {
   },
   content: {
     category: 'Slot',
-    defaultValue: `<osds-text color="text">OVHcloud, anciennement OVH, est une entreprise française. Elle pratique initialement de l'hébergement de serveur, et est un fournisseur d'accès à Internet (FAI), puis opérateur de télécommunications pour les entreprises. Elle se développe, à la fin des années 2010, dans le cloud computing (informatique en nuage).</osds-text>`,
+    defaultValue: '<osds-text color="text">OVHcloud, anciennement OVH, est une entreprise française. Elle pratique initialement de l\'hébergement de serveur, et est un fournisseur d\'accès à Internet (FAI), puis opérateur de télécommunications pour les entreprises. Elle se développe, à la fin des années 2010, dans le cloud computing (informatique en nuage).</osds-text>',
   },
   actions: {
     category: 'Slot',
@@ -49,7 +49,7 @@ export default {
     notes: {
       changelog,
     },
-    docs: { page },
+    docs: {page},
   },
   argTypes: extractArgTypes(storyParams),
 };
@@ -83,7 +83,7 @@ const TemplateDefault = (args: any) => {
         }
       }
     });
-    observer.observe(body, { childList: true, subtree: true });
+    observer.observe(body, {childList: true, subtree: true});
   };
 
   window.onload = locationChangeTrigger;

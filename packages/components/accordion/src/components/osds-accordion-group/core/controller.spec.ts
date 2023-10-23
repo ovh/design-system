@@ -1,8 +1,8 @@
-import type { OdsAccordionAttribute } from '../../osds-accordion/interfaces/attributes';
-import type { OdsAccordionToggleEvent } from '../../osds-accordion/interfaces/events';
-import { OsdsAccordion } from '../../osds-accordion/osds-accordion';
-import { OsdsAccordionGroup } from '../osds-accordion-group';
-import { OdsAccordionGroupController } from './controller';
+import type {OdsAccordionAttribute} from '../../osds-accordion/interfaces/attributes';
+import type {OdsAccordionToggleEvent} from '../../osds-accordion/interfaces/events';
+import {OsdsAccordion} from '../../osds-accordion/osds-accordion';
+import {OsdsAccordionGroup} from '../osds-accordion-group';
+import {OdsAccordionGroupController} from './controller';
 
 class OdsAccordionMock extends OsdsAccordion {
   constructor(attribute: Partial<OsdsAccordion>) {
@@ -70,14 +70,14 @@ describe('spec:ods-accordion-controller', () => {
 
     describe('methods:handleToggle', () => {
       it('should close the first accordion on opening second', () => {
-        setup({ accordions: [createAccordion({ opened: true }), createAccordion()] });
-        controller.handleToggle({ detail: true } as unknown as OdsAccordionToggleEvent, component.accordions[1]);
+        setup({accordions: [createAccordion({opened: true}), createAccordion()]});
+        controller.handleToggle({detail: true} as unknown as OdsAccordionToggleEvent, component.accordions[1]);
         expect(component.accordions[0]?.opened).toBe(false);
       });
 
       it('should let the disabled accordion opened on opening second', () => {
-        setup({ accordions: [createAccordion({ opened: true, disabled: true }), createAccordion()] });
-        controller.handleToggle({ detail: true } as unknown as OdsAccordionToggleEvent, component.accordions[1]);
+        setup({accordions: [createAccordion({opened: true, disabled: true}), createAccordion()]});
+        controller.handleToggle({detail: true} as unknown as OdsAccordionToggleEvent, component.accordions[1]);
         expect(component.accordions[0]?.opened).toBe(true);
       });
     });
@@ -105,7 +105,7 @@ describe('spec:ods-accordion-controller', () => {
       it('should remove an accordion from accordion list', () => {
         const newAccordion = createAccordion();
 
-        setup({ accordions: [newAccordion] });
+        setup({accordions: [newAccordion]});
         controller.unRegisterAccordion(newAccordion);
         expect(component.accordions).toEqual([]);
       });
@@ -114,7 +114,7 @@ describe('spec:ods-accordion-controller', () => {
         const newAccordion = createAccordion();
         const spy = jest.spyOn(newAccordion.el, 'removeEventListener');
 
-        setup({ accordions: [newAccordion] });
+        setup({accordions: [newAccordion]});
         controller.unRegisterAccordion(newAccordion);
         expect(spy).toHaveBeenCalledWith('odsAccordionToggle', expect.any(Function));
       });
@@ -122,7 +122,7 @@ describe('spec:ods-accordion-controller', () => {
 
     describe('methods:onDestroy', () => {
       it('should reset accordion list', () => {
-        setup({ accordions: [createAccordion()] });
+        setup({accordions: [createAccordion()]});
         controller.onDestroy();
         expect(component.accordions).toEqual([]);
       });
@@ -132,7 +132,7 @@ describe('spec:ods-accordion-controller', () => {
         const accordion2 = createAccordion();
         const spy1 = jest.spyOn(accordion1.el, 'removeEventListener');
         const spy2 = jest.spyOn(accordion2.el, 'removeEventListener');
-        setup({ accordions: [accordion1, accordion2] });
+        setup({accordions: [accordion1, accordion2]});
         controller.onDestroy();
         expect(spy1).toHaveBeenCalledWith('odsAccordionToggle', expect.any(Function));
         expect(spy2).toHaveBeenCalledWith('odsAccordionToggle', expect.any(Function));

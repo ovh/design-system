@@ -1,4 +1,4 @@
-import { OdsDeepPartial } from './ods-deep-partial';
+import {OdsDeepPartial} from './ods-deep-partial';
 
 export type OdsDeepSelectivePartial<T, K = never> =
 // in case of no given properties, consider a classical deep partial

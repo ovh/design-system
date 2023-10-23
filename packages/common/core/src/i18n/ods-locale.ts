@@ -13,7 +13,7 @@ enum ODS_LOCALE {
     FI = 'fi', // Finnish
     FR = 'fr', // French
     HR = 'hr', // Croatian
-    HU = 'hu', // Hungirian 
+    HU = 'hu', // Hungirian
     HY = 'hy', // Armenian
     IT = 'it', // Italian
     JA = 'ja', // Japanese
@@ -35,6 +35,6 @@ enum ODS_LOCALE {
 const ODS_LOCALES = Object.freeze(Object.values(ODS_LOCALE));
 
 export {
-    ODS_LOCALE,
-    ODS_LOCALES,
-}
+  ODS_LOCALE,
+  ODS_LOCALES,
+};

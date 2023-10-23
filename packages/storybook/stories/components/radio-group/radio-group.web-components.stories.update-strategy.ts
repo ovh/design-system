@@ -1,15 +1,15 @@
-import { html } from 'lit-html';
-import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-import { defineCustomElements } from '@ovhcloud/ods-components/radio/loader';
-import { extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
-import { olesIpsum, OlesIpsumGeneration } from '@ovhcloud/ods-common-core';
+import {html} from 'lit-html';
+import {unsafeHTML} from 'lit-html/directives/unsafe-html';
+import {defineCustomElements} from '@ovhcloud/ods-components/radio/loader';
+import {extractStoryParams, getTagAttributes} from '../../../core/componentHTMLUtils';
+import {OlesIpsumGeneration, olesIpsum} from '@ovhcloud/ods-common-core';
 
 defineCustomElements();
 
 const storyParams = {
   disabled: {
     category: 'Misc',
-    defaultValue: false
+    defaultValue: false,
   },
   slotJs: {
     category: 'Misc',
@@ -55,7 +55,7 @@ if(radioGroupB) {
 }
 </script>
   `,
-  }
+  },
 };
 
 const TemplateUpdateStrategy = (args: any) => html`

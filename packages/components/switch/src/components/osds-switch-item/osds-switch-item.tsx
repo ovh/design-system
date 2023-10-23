@@ -1,12 +1,12 @@
-import type { OdsSwitchItemAttribute } from './interfaces/attributes';
-import type { OsdsRadio } from '@ovhcloud/ods-component-radio';
-import { Component, Element, Host, h, Prop, State, Method } from '@stencil/core';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import type {OdsSwitchItemAttribute} from './interfaces/attributes';
+import type {OsdsRadio} from '@ovhcloud/ods-component-radio';
+import {Component, Element, Host, Method, Prop, State, h} from '@stencil/core';
+import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
 
 @Component({
   tag: 'osds-switch-item',
   styleUrl: 'osds-switch-item.scss',
-  shadow: true
+  shadow: true,
 })
 export class OsdsSwitchItem implements OdsSwitchItemAttribute {
   private radio?: OsdsRadio;
@@ -16,9 +16,9 @@ export class OsdsSwitchItem implements OdsSwitchItemAttribute {
   @State() id = DEFAULT_ATTRIBUTE.id;
   @State() tabindex = 0;
 
-  @Prop({ reflect: true }) public value: HTMLInputElement['value'] = DEFAULT_ATTRIBUTE.value;
+  @Prop({reflect: true}) public value: HTMLInputElement['value'] = DEFAULT_ATTRIBUTE.value;
 
-  @Prop({ reflect: true }) public checked: boolean = DEFAULT_ATTRIBUTE.checked;
+  @Prop({reflect: true}) public checked: boolean = DEFAULT_ATTRIBUTE.checked;
 
   @Method()
   async setFocus(): Promise<void> {
@@ -30,7 +30,7 @@ export class OsdsSwitchItem implements OdsSwitchItemAttribute {
   }
 
   render() {
-    const { checked, id, value } = this;
+    const {checked, id, value} = this;
 
     return (
       <Host>
@@ -46,4 +46,3 @@ export class OsdsSwitchItem implements OdsSwitchItemAttribute {
     );
   }
 }
- 

@@ -7,7 +7,7 @@ import {
   OsdsCartItem,
   OsdsCartItemOption,
   OsdsCartSection,
-  OsdsCartTotal
+  OsdsCartTotal,
 } from '@ovhcloud/ods-component-cart-react';
 
 const CartUsage: React.FC = () => (

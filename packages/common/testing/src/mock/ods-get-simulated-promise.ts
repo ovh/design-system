@@ -8,5 +8,5 @@ export function odsGetSimulatedPromise<T>(withError: boolean, cbk: (...args: unk
     setTimeout(() => {
       withError ? reject(cbk()) : resolve(cbk());
     }, 300);
-  })
+  });
 }

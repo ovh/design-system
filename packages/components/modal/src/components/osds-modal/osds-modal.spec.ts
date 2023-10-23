@@ -1,13 +1,13 @@
-import type { SpecPage } from '@stencil/core/testing';
-import type { OdsModalAttribute } from './interfaces/attributes';
-import { newSpecPage } from '@stencil/core/testing';
-import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
-import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { OsdsModal } from './osds-modal';
+import type {SpecPage} from '@stencil/core/testing';
+import type {OdsModalAttribute} from './interfaces/attributes';
+import {newSpecPage} from '@stencil/core/testing';
+import {odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute} from '@ovhcloud/ods-common-testing';
+import {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
+import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
+import {OsdsModal} from './osds-modal';
 
 describe('spec:osds-modal', () => {
-  const baseAttribute = { color: ODS_THEME_COLOR_INTENT.info, dismissible: true, headline: '', masked: false };
+  const baseAttribute = {color: ODS_THEME_COLOR_INTENT.info, dismissible: true, headline: '', masked: false};
   let page: SpecPage;
   let root: HTMLElement | undefined;
   let instance: OsdsModal;
@@ -16,8 +16,8 @@ describe('spec:osds-modal', () => {
     jest.clearAllMocks();
   });
 
-  async function setup({ attributes = {} }: { attributes?: Partial<OdsModalAttribute> } = {}) {
-    const stringAttributes = odsComponentAttributes2StringAttributes<OdsModalAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
+  async function setup({attributes = {}}: { attributes?: Partial<OdsModalAttribute> } = {}) {
+    const stringAttributes = odsComponentAttributes2StringAttributes<OdsModalAttribute>({...baseAttribute, ...attributes}, DEFAULT_ATTRIBUTE);
 
     page = await newSpecPage({
       components: [OsdsModal],
@@ -28,7 +28,7 @@ describe('spec:osds-modal', () => {
     instance = page.rootInstance;
   }
 
-  it('should render', async () => {
+  it('should render', async() => {
     await setup({});
     expect(root?.shadowRoot).toBeTruthy();
     expect(instance).toBeTruthy();
@@ -48,7 +48,7 @@ describe('spec:osds-modal', () => {
         defaultValue: DEFAULT_ATTRIBUTE.color,
         newValue: ODS_THEME_COLOR_INTENT.primary,
         value: ODS_THEME_COLOR_INTENT.default,
-        setup: (value) => setup({ attributes: { ['color']: value } }),
+        setup: (value) => setup({attributes: {['color']: value}}),
         ...config,
       });
     });
@@ -59,7 +59,7 @@ describe('spec:osds-modal', () => {
         defaultValue: DEFAULT_ATTRIBUTE.dismissible,
         newValue: false,
         value: true,
-        setup: (value) => setup({ attributes: { ['dismissible']: value } }),
+        setup: (value) => setup({attributes: {['dismissible']: value}}),
         ...config,
       });
     });
@@ -70,7 +70,7 @@ describe('spec:osds-modal', () => {
         defaultValue: DEFAULT_ATTRIBUTE.headline,
         newValue: 'OVH',
         value: 'On Vous Héberge ?',
-        setup: (value) => setup({ attributes: { ['headline']: value } }),
+        setup: (value) => setup({attributes: {['headline']: value}}),
         ...config,
       });
     });
@@ -81,7 +81,7 @@ describe('spec:osds-modal', () => {
         defaultValue: DEFAULT_ATTRIBUTE.masked,
         newValue: false,
         value: true,
-        setup: (value) => setup({ attributes: { ['masked']: value } }),
+        setup: (value) => setup({attributes: {['masked']: value}}),
         ...config,
       });
     });
@@ -89,7 +89,7 @@ describe('spec:osds-modal', () => {
 
   describe('methods', () => {
     describe('close', () => {
-      it('should set masked to true', async () => {
+      it('should set masked to true', async() => {
         await setup({});
         await instance.close();
 
@@ -98,7 +98,7 @@ describe('spec:osds-modal', () => {
     });
 
     describe('open', () => {
-      it('should set masked to false', async () => {
+      it('should set masked to false', async() => {
         await setup({});
         await instance.open();
 
@@ -107,7 +107,7 @@ describe('spec:osds-modal', () => {
     });
   });
 
-  it('should mask on close icon click', async () => {
+  it('should mask on close icon click', async() => {
     await setup();
 
     expect(instance.masked).toBe(false);

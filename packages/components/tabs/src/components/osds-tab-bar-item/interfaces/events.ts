@@ -1,5 +1,5 @@
-import type { EventEmitter } from '@stencil/core';
-import type { OsdsTabBarItem } from '../osds-tab-bar-item';
+import type {EventEmitter} from '@stencil/core';
+import type {OsdsTabBarItem} from '../osds-tab-bar-item';
 
 interface OdsTabItemSelectEventDetail {
   panel: string;

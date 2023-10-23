@@ -1,10 +1,10 @@
-import { Ocdk } from './ocdk';
-import { VERSION } from '../version';
-import { OcdkConfig } from './ocdk-config';
-import { ocdkDefaultConfig } from './ocdk-default-config';
-import { OcdkWindowConfig } from './ocdk-window-config';
-import { OcdkConfigLogging } from './ocdk-config-logging';
-import { OcdkDeepPartial } from '../types/ocdk-deep-partial';
+import {Ocdk} from './ocdk';
+import {VERSION} from '../version';
+import {OcdkConfig} from './ocdk-config';
+import {ocdkDefaultConfig} from './ocdk-default-config';
+import {OcdkWindowConfig} from './ocdk-window-config';
+import {OcdkConfigLogging} from './ocdk-config-logging';
+import {OcdkDeepPartial} from '../types/ocdk-deep-partial';
 
 /**
  * description of all properties globally managed into window by the `OCDK` system.
@@ -66,17 +66,17 @@ declare var window: OcdkWindow;
  */
 function setUpGlobals() {
   // node protection or other env : window may not exist
-  if (typeof window !== "undefined") {
+  if (typeof window !== 'undefined') {
     const win = window;
 
     // make our object reference, based on default
-    const configObjectRef: OcdkConfig = { logging: { ...ocdkDefaultConfig.logging } };
+    const configObjectRef: OcdkConfig = {logging: {...ocdkDefaultConfig.logging}};
 
     // initialize if needed
     if (!win.ocdk) {
       win.ocdk = {
         // with our own object reference
-        config: configObjectRef
+        config: configObjectRef,
       };
     }
     if (!win.ocdk.versions) {
@@ -93,7 +93,7 @@ function setUpGlobals() {
       // warn: the object reference does not have to be modified, so we have to modify only
       const formatLogging = (winConf: OcdkDeepPartial<OcdkConfig>): OcdkConfigLogging => ({
         active: typeof winConf?.logging?.active !== 'boolean' ? ocdkDefaultConfig.logging.active : winConf.logging.active,
-        color: typeof winConf?.logging?.color !== 'boolean' ? ocdkDefaultConfig.logging.color : winConf.logging.color
+        color: typeof winConf?.logging?.color !== 'boolean' ? ocdkDefaultConfig.logging.color : winConf.logging.color,
       });
       winConf.logging = formatLogging(winConf);
       config = winConf as OcdkConfig;

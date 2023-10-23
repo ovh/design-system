@@ -1,4 +1,4 @@
-import { OdsFunction } from './ods-function';
+import {OdsFunction} from './ods-function';
 
 /**
  * describe a type that contains only functions as each property

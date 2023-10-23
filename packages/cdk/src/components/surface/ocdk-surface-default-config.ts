@@ -1,10 +1,10 @@
-import { OcdkSurfaceAnimation } from './core/ocdk-surface-animation';
-import { OcdkAutoLayoutMeasurements } from './core/ocdk-auto-layout-measurements';
-import { OcdkSurfaceCorner } from './core/ocdk-surface-corner';
-import { OcdkSurfaceInspections } from './core/ocdk-surface-inspections';
-import { OcdkSurfaceSymmetryStrategy } from './strategies/symmetry/ocdk-surface-symmetry-strategy';
-import { OcdkSurfaceStrategy } from './core/system/ocdk-surface-strategy';
-import { OcdkSurfaceConfig } from './core/ocdk-surface-config';
+import {OcdkSurfaceAnimation} from './core/ocdk-surface-animation';
+import {OcdkAutoLayoutMeasurements} from './core/ocdk-auto-layout-measurements';
+import {OcdkSurfaceCorner} from './core/ocdk-surface-corner';
+import {OcdkSurfaceInspections} from './core/ocdk-surface-inspections';
+import {OcdkSurfaceSymmetryStrategy} from './strategies/symmetry/ocdk-surface-symmetry-strategy';
+import {OcdkSurfaceStrategy} from './core/system/ocdk-surface-strategy';
+import {OcdkSurfaceConfig} from './core/ocdk-surface-config';
 
 export type OcdkSurfaceAvailableSpaceFctOpt<StrategyConfig> = {
   config: OcdkSurfaceConfig;
@@ -41,8 +41,8 @@ export type OcdkSurfaceMaxWidthOpt<StrategyConfig> = {
 
 export const OcdkSurfaceDefaultConfig: OcdkSurfaceConfig = {
   cornerPoints:
-    { anchor: OcdkSurfaceCorner.BOTTOM_START, origin: OcdkSurfaceCorner.TOP_START },
-  anchorMargin: { top: 10, right: 10, bottom: 10, left: 10 },
+    {anchor: OcdkSurfaceCorner.BOTTOM_START, origin: OcdkSurfaceCorner.TOP_START},
+  anchorMargin: {top: 10, right: 10, bottom: 10, left: 10},
   MARGIN_TO_EDGE_COMFORT: 32,
   MARGIN_TO_EDGE_LIMIT: 4,
   DEFAULT_ANIMATION: OcdkSurfaceAnimation.SCALING,
@@ -65,13 +65,13 @@ export const OcdkSurfaceDefaultConfig: OcdkSurfaceConfig = {
       TRANSITION_FADE_IN_DURATION: 120,
       TRANSITION_FADE_IN_DURATION_CSS: '.12s',
       TRANSITION_FADE_OUT_DURATION: 120,
-      TRANSITION_FADE_OUT_DURATION_CSS: '.12s'
-    }
+      TRANSITION_FADE_OUT_DURATION_CSS: '.12s',
+    },
   },
   POSITION_STRATEGY: {
     defaultStrategy: OcdkSurfaceStrategy.SYMMETRY,
     strategy: new OcdkSurfaceSymmetryStrategy(),
-  }
+  },
 };
 
 export const ocdkSurfaceCssClasses = {

@@ -1,4 +1,4 @@
-import type { EventEmitter } from '@stencil/core';
+import type {EventEmitter} from '@stencil/core';
 
 interface OdsRadioCheckedChangeEventDetail {
   checked: boolean;
@@ -37,4 +37,4 @@ export {
   OdsRadioCheckingChangeEvent,
   OdsRadioCheckingChangeEventDetail,
   OdsRadioEvent,
-}
+};

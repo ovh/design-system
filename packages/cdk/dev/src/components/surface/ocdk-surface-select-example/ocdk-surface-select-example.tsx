@@ -1,18 +1,18 @@
-import { Component, Element, h, Host, Listen, Prop, Watch } from '@stencil/core';
-import { HTMLStencilElement } from '@stencil/core/internal';
+import {Component, Element, Host, Listen, Prop, Watch, h} from '@stencil/core';
+import {HTMLStencilElement} from '@stencil/core/internal';
 import {
-  ocdkAssertEventTargetIsNode,
-  ocdkDefineCustomElements,
-  ocdkIsSurface,
   OcdkLogger,
   OcdkSurface,
   OcdkSurfaceCorner,
+  ocdkAssertEventTargetIsNode,
+  ocdkDefineCustomElements,
+  ocdkIsSurface,
 } from '@ovhcloud/ods-cdk';
-import { OcdkSurfaceSelectItemExample } from './ocdk-surface-select-item-example';
-import { OcdkSurfaceSelectPosition } from './ocdk-surface-select-position';
+import {OcdkSurfaceSelectItemExample} from './ocdk-surface-select-item-example';
+import {OcdkSurfaceSelectPosition} from './ocdk-surface-select-position';
 
 // define custom elements from CDK
-ocdkDefineCustomElements()
+ocdkDefineCustomElements();
 
 @Component({
   tag: 'ocdk-surface-select-example',
@@ -22,11 +22,11 @@ ocdkDefineCustomElements()
 export class OcdkSurfaceSelectExample {
   static totalIds = 0;
   @Element() el!: HTMLStencilElement;
-  @Prop({ reflect: true }) value = '';
-  @Prop({ reflect: true }) position: OcdkSurfaceSelectPosition = OcdkSurfaceSelectPosition.BOTTOM;
-  @Prop({ reflect: true }) opened = false;
-  @Prop({ reflect: true }) animation: null | 'none' = null;
-  @Prop({ reflect: false }) debug = false;
+  @Prop({reflect: true}) value = '';
+  @Prop({reflect: true}) position: OcdkSurfaceSelectPosition = OcdkSurfaceSelectPosition.BOTTOM;
+  @Prop({reflect: true}) opened = false;
+  @Prop({reflect: true}) animation: null | 'none' = null;
+  @Prop({reflect: false}) debug = false;
   /** anchor reference. can be considered as fulfilled by the stencil ref system */
   private anchor!: HTMLElement;
   /** surface reference. initialized when cdk is */
@@ -43,7 +43,7 @@ export class OcdkSurfaceSelectExample {
   @Listen('ocdkSurfaceSelectItemExampleClick')
   onItemSelection(event: CustomEvent<{ item: OcdkSurfaceSelectItemExample, value: string }>) {
     const details = event.detail;
-    this.logger.log('[onItemSelection]', 'one item selected', { details });
+    this.logger.log('[onItemSelection]', 'one item selected', {details});
     this.value = details.value;
     this.surface?.close();
   }
@@ -54,7 +54,7 @@ export class OcdkSurfaceSelectExample {
   }
 
   // Hide overlay when we click anywhere else in the window.
-  @Listen('click', { target: 'window' })
+  @Listen('click', {target: 'window'})
   checkForClickOutside(ev: PointerEvent) {
     ocdkAssertEventTargetIsNode(ev.target);
     if (!this.dirty || this.el.contains(ev.target)) { // click on component, do nothing
@@ -79,8 +79,8 @@ export class OcdkSurfaceSelectExample {
   }
 
   render() {
-    const debugHTML = this.debug ?
-      <div style={{ fontSize: '0.75rem', color: '#bbbbbb', position: 'absolute', left: '10px' }}>debug: #{this.uniqueId} - value: "{this.value}"</div> : '';
+    const debugHTML = this.debug
+      ? <div style={{fontSize: '0.75rem', color: '#bbbbbb', position: 'absolute', left: '10px'}}>debug: #{this.uniqueId} - value: "{this.value}"</div> : '';
     return (
       <Host>
         <div
@@ -88,7 +88,7 @@ export class OcdkSurfaceSelectExample {
           onClick={this.handleTriggerClick.bind(this)}
           ref={(el?: HTMLElement) => {
             this.anchor = el as HTMLDivElement;
-            this.syncReferences()
+            this.syncReferences();
           }}>
           {debugHTML}
           <slot name={'trigger'}></slot>
@@ -100,7 +100,7 @@ export class OcdkSurfaceSelectExample {
           ref={(el: HTMLElement) => {
             if (ocdkIsSurface(el)) {
               this.surface = el as OcdkSurface;
-              this.syncReferences()
+              this.syncReferences();
             }
           }}>
           <slot></slot>
@@ -133,28 +133,28 @@ export class OcdkSurfaceSelectExample {
   }
 
   private syncPosition() {
-    this.logger.log('[syncPosition]', { position: this.position.toUpperCase() });
+    this.logger.log('[syncPosition]', {position: this.position.toUpperCase()});
     if (!this.surface) {
       return;
     }
 
     switch (this.position.toUpperCase()) {
-      // two methods exist to set corners
-      case OcdkSurfaceSelectPosition.TOP:
-        this.surface.setAnchorCorner(OcdkSurfaceCorner.TOP_LEFT);
-        this.surface.setOriginCorner(OcdkSurfaceCorner.BOTTOM_LEFT);
-        break;
-      case OcdkSurfaceSelectPosition.BOTTOM:
-        this.surface.setCornerPoints({ anchor: OcdkSurfaceCorner.BOTTOM_LEFT, origin: OcdkSurfaceCorner.TOP_LEFT });
-        break;
-      default:
-        break;
-      case OcdkSurfaceSelectPosition.LEFT:
-        this.surface.setCornerPoints({ anchor: OcdkSurfaceCorner.TOP_LEFT, origin: OcdkSurfaceCorner.TOP_RIGHT });
-        break;
-      case OcdkSurfaceSelectPosition.RIGHT:
-        this.surface.setCornerPoints({ anchor: OcdkSurfaceCorner.TOP_RIGHT, origin: OcdkSurfaceCorner.TOP_LEFT });
-        break;
+    // two methods exist to set corners
+    case OcdkSurfaceSelectPosition.TOP:
+      this.surface.setAnchorCorner(OcdkSurfaceCorner.TOP_LEFT);
+      this.surface.setOriginCorner(OcdkSurfaceCorner.BOTTOM_LEFT);
+      break;
+    case OcdkSurfaceSelectPosition.BOTTOM:
+      this.surface.setCornerPoints({anchor: OcdkSurfaceCorner.BOTTOM_LEFT, origin: OcdkSurfaceCorner.TOP_LEFT});
+      break;
+    default:
+      break;
+    case OcdkSurfaceSelectPosition.LEFT:
+      this.surface.setCornerPoints({anchor: OcdkSurfaceCorner.TOP_LEFT, origin: OcdkSurfaceCorner.TOP_RIGHT});
+      break;
+    case OcdkSurfaceSelectPosition.RIGHT:
+      this.surface.setCornerPoints({anchor: OcdkSurfaceCorner.TOP_RIGHT, origin: OcdkSurfaceCorner.TOP_LEFT});
+      break;
     }
 
   }

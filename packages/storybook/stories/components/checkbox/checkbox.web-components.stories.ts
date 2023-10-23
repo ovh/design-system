@@ -1,7 +1,7 @@
-import { extractArgTypes, extractStoryParams, getTagAttributes, } from '../../../core/componentHTMLUtils';
-import { defineCustomElements } from '@ovhcloud/ods-components/checkbox/loader';
-import { html } from 'lit-html';
-import { unsafeHTML } from 'lit-html/directives/unsafe-html';
+import {extractArgTypes, extractStoryParams, getTagAttributes} from '../../../core/componentHTMLUtils';
+import {defineCustomElements} from '@ovhcloud/ods-components/checkbox/loader';
+import {html} from 'lit-html';
+import {unsafeHTML} from 'lit-html/directives/unsafe-html';
 // @ts-ignore
 import page from './checkbox.web-component.stories.page.mdx';
 // @ts-ignore
@@ -13,23 +13,23 @@ defineCustomElements();
 const storyParams = {
   disabled: {
     category: 'Misc',
-    defaultValue: false
+    defaultValue: false,
   },
   checked: {
     category: 'Misc',
-    defaultValue: false
+    defaultValue: false,
   },
   value: {
     category: 'Misc',
-    defaultValue: 'my-value'
+    defaultValue: 'my-value',
   },
   name: {
     category: 'Misc',
-    defaultValue: 'my-name'
+    defaultValue: 'my-name',
   },
   checkboxContent: {
     category: 'Slot',
-    defaultValue: `<osds-tile interactive>My tile as a checkbox element</osds-tile>`
+    defaultValue: '<osds-tile interactive>My tile as a checkbox element</osds-tile>',
   },
 };
 
@@ -40,9 +40,9 @@ export default {
     notes: {
       changelog,
     },
-    docs: { page }
+    docs: {page},
   },
-  argTypes: extractArgTypes(storyParams)
+  argTypes: extractArgTypes(storyParams),
 };
 
 // A checkbox example using osds-components
@@ -53,16 +53,16 @@ const TemplateDefault = (args: any) => html`
 `;
 export const WebComponent = TemplateDefault.bind({});
 WebComponent.args = {
-  ...extractStoryParams(storyParams)
+  ...extractStoryParams(storyParams),
 };
 const TemplateToggle = (args: any) => html`
   <osds-checkbox ...=${getTagAttributes(args)}>
   <osds-toggle></osds-toggle>
   </osds-checkbox>
-`
+`;
 export const Toggle = TemplateToggle.bind({});
 Toggle.args = {
-  ...extractStoryParams(storyParams)
+  ...extractStoryParams(storyParams),
 };
 
-export { CheckboxButton } from './checkbox.web-components.stories.checkbox-button';
+export {CheckboxButton} from './checkbox.web-components.stories.checkbox-button';

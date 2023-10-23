@@ -1,7 +1,7 @@
-import { html } from 'lit-html';
-import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
-import { olesIpsum, OlesIpsumGeneration } from '@ovhcloud/ods-common-core';
+import {html} from 'lit-html';
+import {unsafeHTML} from 'lit-html/directives/unsafe-html';
+import {extractArgTypes, extractStoryParams, getTagAttributes} from '../../../core/componentHTMLUtils';
+import {OlesIpsumGeneration, olesIpsum} from '@ovhcloud/ods-common-core';
 
 const slotJs = `
     <script>
@@ -49,18 +49,18 @@ const slotJs = `
     });
   }
   </script>
-    `
+    `;
 
 const storyParams = {
   slotJs: {
-    defaultValue: slotJs
+    defaultValue: slotJs,
   },
   disabled: {
-    defaultValue: false
+    defaultValue: false,
   },
   required: {
-    defaultValue: false
-  }
+    defaultValue: false,
+  },
 };
 
 /* Default */
@@ -94,8 +94,8 @@ const TemplateUpdateStrategy = (args: any) => html`
 export const UpdateStrategy = TemplateUpdateStrategy.bind({});
 // @ts-ignore
 UpdateStrategy.args = {
-  ...extractStoryParams(storyParams)
+  ...extractStoryParams(storyParams),
 };
 // @ts-ignore
-UpdateStrategy.argTypes = extractArgTypes(storyParams)
+UpdateStrategy.argTypes = extractArgTypes(storyParams);
 

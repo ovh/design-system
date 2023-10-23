@@ -1,14 +1,14 @@
-import type { OdsHTMLAnchorElementRel, OdsHTMLAnchorElementTarget } from '@ovhcloud/ods-common-core';
-import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import type { HTMLStencilElement } from '@stencil/core/internal';
-import type { ODS_BUTTON_SIZE } from './constants/button-size';
-import type { ODS_BUTTON_TYPE } from './constants/button-type';
-import type { ODS_BUTTON_VARIANT } from './constants/button-variant';
-import type { ODS_BUTTON_TEXT_ALIGN } from './constants/button-text-align';
-import type { OdsButtonAttribute } from './interfaces/attributes';
-import { Component, Element, Host, Prop, h, Listen } from '@stencil/core';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { OdsButtonController } from './core/controller';
+import type {OdsHTMLAnchorElementRel, OdsHTMLAnchorElementTarget} from '@ovhcloud/ods-common-core';
+import type {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
+import type {HTMLStencilElement} from '@stencil/core/internal';
+import type {ODS_BUTTON_SIZE} from './constants/button-size';
+import type {ODS_BUTTON_TYPE} from './constants/button-type';
+import type {ODS_BUTTON_VARIANT} from './constants/button-variant';
+import type {ODS_BUTTON_TEXT_ALIGN} from './constants/button-text-align';
+import type {OdsButtonAttribute} from './interfaces/attributes';
+import {Component, Element, Host, Listen, Prop, h} from '@stencil/core';
+import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
+import {OdsButtonController} from './core/controller';
 
 /**
  * @slot start - Fixed start button content
@@ -25,43 +25,43 @@ export class OsdsButton implements OdsButtonAttribute {
   @Element() el!: HTMLStencilElement;
 
   /** @see OdsButtonAttributes.color */
-  @Prop({ reflect: true }) public color?: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
+  @Prop({reflect: true}) public color?: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
 
   /** @see OdsButtonAttributes.contrasted */
-  @Prop({ reflect: true }) public contrasted? = DEFAULT_ATTRIBUTE.contrasted;
+  @Prop({reflect: true}) public contrasted? = DEFAULT_ATTRIBUTE.contrasted;
 
   /** @see OdsButtonAttributes.disabled */
-  @Prop({ reflect: true }) public disabled? = DEFAULT_ATTRIBUTE.disabled;
+  @Prop({reflect: true}) public disabled? = DEFAULT_ATTRIBUTE.disabled;
 
   /** @see OdsButtonAttributes.rel */
   @Prop() public download?: HTMLAnchorElement['download'] = DEFAULT_ATTRIBUTE.download;
 
   /** @see OdsButtonAttributes.inline */
-  @Prop({ reflect: true, mutable: true }) public inline? = DEFAULT_ATTRIBUTE.inline;
+  @Prop({reflect: true, mutable: true}) public inline? = DEFAULT_ATTRIBUTE.inline;
 
   /** @see OdsButtonAttributes.href */
-  @Prop({ reflect: true }) public href?: string;
+  @Prop({reflect: true}) public href?: string;
 
   /** @see OdsButtonAttributes.rel */
-  @Prop({ reflect: true }) public rel?: OdsHTMLAnchorElementRel = DEFAULT_ATTRIBUTE.rel;
+  @Prop({reflect: true}) public rel?: OdsHTMLAnchorElementRel = DEFAULT_ATTRIBUTE.rel;
 
   /** @see OdsButtonAttributes.size */
-  @Prop({ reflect: true }) public size?: ODS_BUTTON_SIZE = DEFAULT_ATTRIBUTE.size;
+  @Prop({reflect: true}) public size?: ODS_BUTTON_SIZE = DEFAULT_ATTRIBUTE.size;
 
   /** @see OdsButtonAttributes.target */
-  @Prop({ reflect: true }) public target?: OdsHTMLAnchorElementTarget = DEFAULT_ATTRIBUTE.target;
+  @Prop({reflect: true}) public target?: OdsHTMLAnchorElementTarget = DEFAULT_ATTRIBUTE.target;
 
   /** @see OdsButtonAttributes.type */
-  @Prop({ reflect: true }) type?: ODS_BUTTON_TYPE = DEFAULT_ATTRIBUTE.type;
+  @Prop({reflect: true}) type?: ODS_BUTTON_TYPE = DEFAULT_ATTRIBUTE.type;
 
   /** @see OdsButtonAttributes.variant */
-  @Prop({ reflect: true, mutable: true }) public variant?: ODS_BUTTON_VARIANT = DEFAULT_ATTRIBUTE.variant;
+  @Prop({reflect: true, mutable: true}) public variant?: ODS_BUTTON_VARIANT = DEFAULT_ATTRIBUTE.variant;
 
   /** @see OdsButtonAttributes.textAlign */
-  @Prop({ reflect: true, mutable: true }) public textAlign?: ODS_BUTTON_TEXT_ALIGN = DEFAULT_ATTRIBUTE.textAlign;
+  @Prop({reflect: true, mutable: true}) public textAlign?: ODS_BUTTON_TEXT_ALIGN = DEFAULT_ATTRIBUTE.textAlign;
 
   /** @see OdsButtonAttributes.circle */
-  @Prop({ reflect: true }) public circle? = DEFAULT_ATTRIBUTE.circle;
+  @Prop({reflect: true}) public circle? = DEFAULT_ATTRIBUTE.circle;
 
   @Listen('keyup')
   handleKey(event: KeyboardEvent) {

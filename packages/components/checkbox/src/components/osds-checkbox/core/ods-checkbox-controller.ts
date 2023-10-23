@@ -1,5 +1,5 @@
-import type { OsdsCheckbox } from '../osds-checkbox';
-import { OdsLogger } from '@ovhcloud/ods-common-core';
+import type {OsdsCheckbox} from '../osds-checkbox';
+import {OdsLogger} from '@ovhcloud/ods-common-core';
 
 class OdsCheckboxController {
   private readonly logger = new OdsLogger('OdsCheckboxController');
@@ -19,7 +19,7 @@ class OdsCheckboxController {
       this.component.checkboxableComponent.setAttribute('tabindex', '-1');
     } else {
       this.logger.warn(`you must place a checkboxable element inside the checkbox component.
-          (html input checkbox or any html component that accepts checked attribute)`)
+          (html input checkbox or any html component that accepts checked attribute)`);
     }
 
     this.component.propagateCheckedToChild(this.component.checked);
@@ -38,13 +38,13 @@ class OdsCheckboxController {
   }
 
   async handleToggleByClick(event: MouseEvent): Promise<void> {
-    this.logger.log(`[checkbox=${this.component.value}]`, 'click event', { event });
+    this.logger.log(`[checkbox=${this.component.value}]`, 'click event', {event});
     event.preventDefault();
     await this.toggleCheck();
   }
 
   async handleToggleByKeyEvent(event: KeyboardEvent): Promise<void> {
-    this.logger.log(`[checkbox=${this.component.value}]`, 'key event', { event });
+    this.logger.log(`[checkbox=${this.component.value}]`, 'key event', {event});
     if (event.code === 'Space' || event.code.includes('Enter')) {
       await this.toggleCheck();
     }
@@ -72,21 +72,21 @@ class OdsCheckboxController {
    * propagate `checked` attribute update from the parent `checkbox` to the child (tile, toggle, checkbox-button)
    */
   propagateCheckedToChild(checked: boolean): void {
-    this.propagateAttributeToChild({ name: 'checked', value: checked });
+    this.propagateAttributeToChild({name: 'checked', value: checked});
   }
 
   /**
    * propagate `disabled` attribute update from the parent `checkbox` to the child (tile, toggle, checkbox-button)
    */
   propagateDisabledToChild(disabled: boolean): void {
-    this.propagateAttributeToChild({ name: 'disabled', value: disabled });
+    this.propagateAttributeToChild({name: 'disabled', value: disabled});
   }
 
   /**
    * propagate `hasFocus` attribute update from the parent `checkbox` to the child (tile, toggle, checkbox-button)
    */
   propagateHasFocusToChild(hasFocus: boolean): void {
-    this.propagateAttributeToChild({ name: 'has-focus', value: hasFocus });
+    this.propagateAttributeToChild({name: 'has-focus', value: hasFocus});
   }
 
   /**
@@ -139,7 +139,7 @@ class OdsCheckboxController {
     try {
       this.component.afterSave && await this.component.afterSave({
         checked: this.component.checked,
-        value: this.component.value
+        value: this.component.value,
       });
     } catch (e) {
       this.logger.error(`[checkbox=${this.component.value}]`, 'calling afterSave failed');
@@ -156,14 +156,14 @@ class OdsCheckboxController {
     this.component.emitUpdating();
     this.component.beforeSave && await this.component.beforeSave({
       checked: this.component.checked,
-      value: this.component.value
+      value: this.component.value,
     });
-    this.component.save && await this.component.save({ checked: this.component.checked, value: this.component.value });
+    this.component.save && await this.component.save({checked: this.component.checked, value: this.component.value});
     this.logger.log(`[checkbox=${this.component.value}]`, 'calling save done');
   }
 
-  private propagateAttributeToChild({ name, value }: { name: 'disabled' | 'checked' | 'has-focus', value: boolean }) {
-    this.logger.log(`[checkbox=${this.component.value}]`, `${name} changed. update child`, { value });
+  private propagateAttributeToChild({name, value}: { name: 'disabled' | 'checked' | 'has-focus', value: boolean }) {
+    this.logger.log(`[checkbox=${this.component.value}]`, `${name} changed. update child`, {value});
     if (this.component.checkboxableComponent) {
       if (value) {
         this.component.checkboxableComponent.setAttribute(name, '');
@@ -174,6 +174,6 @@ class OdsCheckboxController {
   }
 }
 
-export { 
+export {
   OdsCheckboxController,
-}
+};

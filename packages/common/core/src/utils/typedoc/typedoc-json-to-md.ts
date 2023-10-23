@@ -1,10 +1,10 @@
 import type {
   DeclarationReflection,
-  SomeType,
-  LiteralType,
   IntrinsicType,
-  ReflectionType,
+  LiteralType,
   ReferenceType,
+  ReflectionType,
+  SomeType,
   Type,
 } from 'typedoc';
 
@@ -27,14 +27,14 @@ export function convertJsonToMarkdown(jsonItems: DeclarationReflection[]): strin
 
   // Create Table
   result.push(
-    ...(interfaces?.length ? [`* [**Interfaces**](#interfaces)`] : []),
-    ...(types?.length ? [`* [**Types**](#types)`] : []),
-    ...(classes?.length ? [`* [**Classes**](#classes)`] : []),
+    ...(interfaces?.length ? ['* [**Interfaces**](#interfaces)'] : []),
+    ...(types?.length ? ['* [**Types**](#types)'] : []),
+    ...(classes?.length ? ['* [**Classes**](#classes)'] : []),
   );
 
-  displaySection(interfaces, `\n## Interfaces`);
-  displaySection(types, `\n## Types`);
-  displaySection(classes, `\n## Classes`);
+  displaySection(interfaces, '\n## Interfaces');
+  displaySection(types, '\n## Types');
+  displaySection(classes, '\n## Classes');
 
   return result.join('\n');
 }
@@ -43,47 +43,47 @@ function getInterfaces(filteredJSON: DeclarationReflection[]): string[] {
   const res: string[] = [];
 
   filteredJSON
-    .filter(({ kindString, children, indexSignature }) => kindString === 'Interface' && (!children || !indexSignature))
-    .forEach(({ name, children, indexSignature }) => {
-    res.push(`\n### ${name}`);
+    .filter(({kindString, children, indexSignature}) => kindString === 'Interface' && (!children || !indexSignature))
+    .forEach(({name, children, indexSignature}) => {
+      res.push(`\n### ${name}`);
 
-    // Find default values
-    const defaultValues: Record<string, string> = {};
-    (filteredJSON.find(({ kindString: defaultString, name: defaultName }) => {
-      return defaultString === 'Variable' && defaultName.toLowerCase() === `${name.toLowerCase()}defaultdoc`;
-    }) as unknown as ReflectionType)
-    ?.declaration.children?.forEach(({ name, defaultValue }) => {
-      defaultValues[name] = defaultValue?.toString() || '';
-    });
+      // Find default values
+      const defaultValues: Record<string, string> = {};
+      (filteredJSON.find(({kindString: defaultString, name: defaultName}) => {
+        return defaultString === 'Variable' && defaultName.toLowerCase() === `${name.toLowerCase()}defaultdoc`;
+      }) as unknown as ReflectionType)
+        ?.declaration.children?.forEach(({name, defaultValue}) => {
+          defaultValues[name] = defaultValue?.toString() || '';
+        });
 
-    if (indexSignature) {
-      res.push(tableSeparator + ['Key', 'Type', 'Description'].join(` ${tableSeparator} `) + tableSeparator);
-      res.push(tableSeparator + ['---', ':---:', '---'].join(`${tableSeparator}`) + tableSeparator);
-      res.push(tableSeparator + [
-        printType(indexSignature.parameters?.[0]?.type),
-        printType(indexSignature.type),
-        indexSignature.comment?.shortText,
-      ].join(` ${tableSeparator} `) + tableSeparator);
+      if (indexSignature) {
+        res.push(tableSeparator + ['Key', 'Type', 'Description'].join(` ${tableSeparator} `) + tableSeparator);
+        res.push(tableSeparator + ['---', ':---:', '---'].join(`${tableSeparator}`) + tableSeparator);
+        res.push(tableSeparator + [
+          printType(indexSignature.parameters?.[0]?.type),
+          printType(indexSignature.type),
+          indexSignature.comment?.shortText,
+        ].join(` ${tableSeparator} `) + tableSeparator);
+        return;
+      }
+      res.push(
+        tableSeparator + ['Name', 'Type', 'Required', 'Default', 'Description'].join(` ${tableSeparator} `) + tableSeparator,
+      );
+      res.push(
+        tableSeparator + ['---', '---', ':---:', '---', '---'].join(`${tableSeparator}`) + tableSeparator,
+      );
+      children?.forEach(({name, type, signatures, flags, comment}) => {
+        const commentString: string = (comment || (signatures && signatures[0]?.comment))?.shortText as unknown as string || '';
+        res.push(tableSeparator + [
+          `**\`${name}\`**`,
+          type ? printType(type) : printType(signatures?.[0]?.type),
+          !flags.isOptional ? '✴️' : '',
+          defaultValues[name] ? `\`${defaultValues[name]}\`` : '',
+          commentString.replace(/\n/g, ''),
+        ].join(` ${tableSeparator} `) + tableSeparator);
+      });
       return;
-    }
-    res.push(
-      tableSeparator + ['Name', 'Type', 'Required', 'Default', 'Description'].join(` ${tableSeparator} `) + tableSeparator
-    );
-    res.push(
-      tableSeparator + ['---', '---', ':---:', '---', '---'].join(`${tableSeparator}`) + tableSeparator
-    );
-    children?.forEach(({ name, type, signatures, flags, comment }) => {
-      const commentString: string = (comment || (signatures && signatures[0]?.comment))?.shortText as unknown as string || '';
-      res.push(tableSeparator + [
-        `**\`${name}\`**`,
-        type ? printType(type) : printType(signatures?.[0]?.type),
-        !flags.isOptional ? '✴️' : '',
-        defaultValues[name] ? `\`${defaultValues[name]}\`` : '',
-        commentString.replace(/\n/g, '')
-      ].join(` ${tableSeparator} `) + tableSeparator);
     });
-    return;
-  });
 
   return res;
 }
@@ -92,7 +92,7 @@ function getTypes(filteredJSON: DeclarationReflection[]): string[] {
   const res: string[] = [];
   filteredJSON.filter((item) => item.kindString === 'Enumeration').forEach((enumeration: DeclarationReflection) => {
     res.push(`\n### ${enumeration.name}`);
-    res.push(`|  |\n|:---:|`);
+    res.push('|  |\n|:---:|');
     if (enumeration.children) {
       res.push(enumeration.children.map((property) => `| \`${property.name}\` |`).join('\n'));
     }
@@ -115,17 +115,17 @@ function getClass(filteredJSON: DeclarationReflection[]): string[] {
     if (!methods?.length) {
       return;
     }
-    res.push(`#### Methods`);
-    methods.forEach(({ signatures: methodSignatures, name: methodName }) => {
+    res.push('#### Methods');
+    methods.forEach(({signatures: methodSignatures, name: methodName}) => {
       if (!methodSignatures?.[0]) {
         return;
       }
-      const { parameters, type, comment } = methodSignatures[0];
+      const {parameters, type, comment} = methodSignatures[0];
       const params: string[] = [];
       const parameterSection: string[] = [];
       if (parameters && parameters.length) {
-        parameterSection.push(`Name | Type | Description \n---|---|---`);
-        parameters?.map(({ name: paramName, type: paramType, comment: paramComment }) => {
+        parameterSection.push('Name | Type | Description \n---|---|---');
+        parameters?.map(({name: paramName, type: paramType, comment: paramComment}) => {
           params.push(`\`${paramName}\`: ${printType(paramType)}`);
           parameterSection.push(`**${paramName}** | ${printType(paramType)} | ${paramComment?.shortText || ' '} |`);
         });
@@ -138,7 +138,7 @@ function getClass(filteredJSON: DeclarationReflection[]): string[] {
       res.push(`${(parameterSection || ['']).join('\n')}`);
     });
   });
-  
+
   return res;
 }
 
@@ -155,20 +155,20 @@ function printType(typeObject?: SomeType | unknown): string {
   const someType = typeObject as SomeType;
   if (someType && someType.type) {
     switch (someType.type) {
-      case 'intrinsic':
-      case 'literal':
-        return `_${getTypeValue(someType)}_`;
-      case 'reference': {
-        if (someType.name === 'Promise' || someType.name === 'EventEmitter') {
-          return `\`${someType.name}<${getTypeValue(someType.typeArguments?.[0] as IntrinsicType)}>\``;
-        }
-        return `\`${someType.name}\``;
+    case 'intrinsic':
+    case 'literal':
+      return `_${getTypeValue(someType)}_`;
+    case 'reference': {
+      if (someType.name === 'Promise' || someType.name === 'EventEmitter') {
+        return `\`${someType.name}<${getTypeValue(someType.typeArguments?.[0] as IntrinsicType)}>\``;
       }
-      case 'array':
-        return `${printType(someType.elementType).replace(/^(_|`)|(_|`)$/g, '')}[]`
-      case 'union':
-        return someType.types.map((tObj) => `\`${printType(tObj).replace(/^(_|`)|(_|`)$/g, '')}\``).join(' \\| ')
-          ;
+      return `\`${someType.name}\``;
+    }
+    case 'array':
+      return `${printType(someType.elementType).replace(/^(_|`)|(_|`)$/g, '')}[]`;
+    case 'union':
+      return someType.types.map((tObj) => `\`${printType(tObj).replace(/^(_|`)|(_|`)$/g, '')}\``).join(' \\| ')
+      ;
     }
   }
   return '_unknown_';

@@ -1,4 +1,4 @@
-import type { OdsValidityState } from '@ovhcloud/ods-common-core';
+import type {OdsValidityState} from '@ovhcloud/ods-common-core';
 
 const DEFAULT_VALIDITY_STATE: OdsValidityState = Object.freeze({
   customError: false,

@@ -22,4 +22,4 @@ export enum OdsHTMLAnchorElementRel {
 
 export type OdsHTMLAnchorElementRelUnion = `${OdsHTMLAnchorElementRel}`;
 
-export const OdsHTMLAnchorElementRelList = Object.keys(OdsHTMLAnchorElementRel).map(key => OdsHTMLAnchorElementRel[key as OdsHTMLAnchorElementRelUnion]);
+export const OdsHTMLAnchorElementRelList = Object.keys(OdsHTMLAnchorElementRel).map((key) => OdsHTMLAnchorElementRel[key as OdsHTMLAnchorElementRelUnion]);

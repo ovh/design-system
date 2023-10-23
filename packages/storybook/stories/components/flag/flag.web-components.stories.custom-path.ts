@@ -1,10 +1,10 @@
-import { html } from 'lit-html';
-import { getTagAttributes } from '../../../core/componentHTMLUtils';
+import {html} from 'lit-html';
+import {getTagAttributes} from '../../../core/componentHTMLUtils';
 
 const storyParams = {
   iso: 'fr',
   lazy: true,
-  assetPath: 'custom-flags/'
+  assetPath: 'custom-flags/',
 };
 
 // A flag example

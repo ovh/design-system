@@ -1,5 +1,5 @@
-import { Ods } from './ods';
-import { OdsConfig } from './ods-config';
+import {Ods} from './ods';
+import {OdsConfig} from './ods-config';
 
 /**
  * Content of the main `OdsInitialized` event.

@@ -1,11 +1,11 @@
-import type { E2EElement, E2EPage } from '@stencil/core/testing';
-import type { OdsClipboardAttribute } from './interfaces/attributes';
-import { newE2EPage } from '@stencil/core/testing';
-import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import type {E2EElement, E2EPage} from '@stencil/core/testing';
+import type {OdsClipboardAttribute} from './interfaces/attributes';
+import {newE2EPage} from '@stencil/core/testing';
+import {odsComponentAttributes2StringAttributes, odsStringAttributes2Str} from '@ovhcloud/ods-common-testing';
+import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
 
 describe('e2e:osds-clipboard', () => {
-  const baseAttribute = { value: '' };
+  const baseAttribute = {value: ''};
   let page: E2EPage;
   let el: E2EElement;
   let input: E2EElement;
@@ -15,16 +15,16 @@ describe('e2e:osds-clipboard', () => {
     await page.evaluate(() => {
       let clipboardText = '';
       const clipboard = {
-        writeText: (text: string) => new Promise(resolve => resolve(clipboardText = text)),
-        readText: () => new Promise(resolve => resolve(clipboardText)),
+        writeText: (text: string) => new Promise((resolve) => resolve(clipboardText = text)),
+        readText: () => new Promise((resolve) => resolve(clipboardText)),
       };
-      (window["navigator"] as any)["clipboard"] = clipboard;
-      Object.defineProperty(navigator, 'clipboard', { value: clipboard });
+      (window['navigator'] as any)['clipboard'] = clipboard;
+      Object.defineProperty(navigator, 'clipboard', {value: clipboard});
     });
   }
 
-  async function setup({ attributes = {}, html = "" }: { attributes?: Partial<OdsClipboardAttribute>, html?: string } = {}) {
-    const stringAttributes = odsComponentAttributes2StringAttributes<OdsClipboardAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
+  async function setup({attributes = {}, html = ''}: { attributes?: Partial<OdsClipboardAttribute>, html?: string } = {}) {
+    const stringAttributes = odsComponentAttributes2StringAttributes<OdsClipboardAttribute>({...baseAttribute, ...attributes}, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
     await page.setContent(`<osds-clipboard ${odsStringAttributes2Str(stringAttributes)}>${html}</osds-clipboard>`);
@@ -43,8 +43,8 @@ describe('e2e:osds-clipboard', () => {
     await page.waitForChanges();
   }
 
-  it('should render', async () => {
-    await setup({ attributes: {} });
+  it('should render', async() => {
+    await setup({attributes: {}});
     expect(el).not.toBeNull();
     expect(el).toHaveClass('hydrated');
 
@@ -52,20 +52,20 @@ describe('e2e:osds-clipboard', () => {
     expect(input).toHaveClass('hydrated');
   });
 
-  it('should copy the input value', async () => {
+  it('should copy the input value', async() => {
     const value = 'text to copy';
 
-    await setup({ attributes: { value } });
+    await setup({attributes: {value}});
 
     await input.click();
 
     expect(await page.evaluate(() => navigator.clipboard.readText())).toBe(value);
   });
 
-  it('should copy the input value with keyboard', async () => {
+  it('should copy the input value with keyboard', async() => {
     const value = 'text to copy';
 
-    await setup({ attributes: { value } });
+    await setup({attributes: {value}});
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
@@ -73,9 +73,9 @@ describe('e2e:osds-clipboard', () => {
     expect(await page.evaluate(() => navigator.clipboard.readText())).toBe(value);
   });
 
-  it('should not copy the input value because of disabled', async () => {
+  it('should not copy the input value because of disabled', async() => {
     const value = 'text to copy';
-    await setup({ attributes: { value, disabled: true } });
+    await setup({attributes: {value, disabled: true}});
     await page.evaluate(() => navigator.clipboard.writeText(''));
 
     await input.click();
@@ -83,10 +83,10 @@ describe('e2e:osds-clipboard', () => {
     expect(await page.evaluate(() => navigator.clipboard.readText())).toBe('');
   });
 
-  it('should noy copy the input value with keyboard', async () => {
+  it('should noy copy the input value with keyboard', async() => {
     const value = 'text to copy';
 
-    await setup({ attributes: { value, disabled: true } });
+    await setup({attributes: {value, disabled: true}});
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
@@ -94,24 +94,24 @@ describe('e2e:osds-clipboard', () => {
     expect(await page.evaluate(() => navigator.clipboard.readText())).toBe('');
   });
 
-  it('should show the surface when clicked on', async () => {
+  it('should show the surface when clicked on', async() => {
     const value = 'text to copy';
-    const messages = `<span slot='success-message'>Copied</span><span slot='error-message'>Error</span>`
+    const messages = '<span slot=\'success-message\'>Copied</span><span slot=\'error-message\'>Error</span>';
 
-    await setup({ attributes: { value }, html: messages });
+    await setup({attributes: {value}, html: messages});
 
     await input.click();
-    expect(clipboardSurface).toHaveClass('ocdk-surface--open')
+    expect(clipboardSurface).toHaveClass('ocdk-surface--open');
   });
 
-  it('should hide the surface when a click happened outside of the surface', async () => {
+  it('should hide the surface when a click happened outside of the surface', async() => {
     const value = 'text to copy';
-    const messages = `<span slot='success-message'>Copied</span><span slot='error-message'>Error</span>`
+    const messages = '<span slot=\'success-message\'>Copied</span><span slot=\'error-message\'>Error</span>';
 
-    await setup({ attributes: { value }, html: messages });
+    await setup({attributes: {value}, html: messages});
 
     await input.click();
     await el.click();
-    expect(clipboardSurface).not.toHaveClass('ocdk-surface--open')
+    expect(clipboardSurface).not.toHaveClass('ocdk-surface--open');
   });
 });

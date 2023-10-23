@@ -1,6 +1,6 @@
 interface OdsRadioGroupAttribute {
-  afterSave?: ({ value }: { value: string }) => Promise<void>;
-  beforeSave?: ({ value }: { value: string }) => Promise<void>;
+  afterSave?: ({value}: { value: string }) => Promise<void>;
+  beforeSave?: ({value}: { value: string }) => Promise<void>;
 
   defaultValue?: unknown;
   /**
@@ -16,11 +16,11 @@ interface OdsRadioGroupAttribute {
    * save input allow to set a function that returns a promise.
    * It is called before each time an update is performed and allowing to manage pessimistic update strategy
    */
-  save?: ({ value }: { value: string }) => Promise<void>;
-  
+  save?: ({value}: { value: string }) => Promise<void>;
+
   value: string;
 }
 
-export { 
+export {
   OdsRadioGroupAttribute,
-}
+};

@@ -1,8 +1,8 @@
 /* eslint-disable no-console */
-import { OdsLogger } from './ods-logger';
-import { OdsWindow } from '../configure/ods-window';
-import { Ods } from '../configure/ods';
-import { odsDefaultConfig } from '../configure/ods-default-config';
+import {OdsLogger} from './ods-logger';
+import {OdsWindow} from '../configure/ods-window';
+import {Ods} from '../configure/ods';
+import {odsDefaultConfig} from '../configure/ods-default-config';
 
 describe('e2e:ods-logging', () => {
   let logger: OdsLogger;
@@ -38,7 +38,7 @@ describe('e2e:ods-logging', () => {
     it('should enable logging via window', () => {
       const win: OdsWindow = window;
       win.ods = win.ods || {};
-      win.ods.config = { logging: { active: true, color: true } }
+      win.ods.config = {logging: {active: true, color: true}};
       setup();
       expect(logger.logging).toEqual(true);
     });
@@ -46,7 +46,7 @@ describe('e2e:ods-logging', () => {
     it('should modify logging via window', () => {
       const win: OdsWindow = window;
       win.ods = win.ods || {};
-      win.ods.config = { logging: { active: false, color: true } }
+      win.ods.config = {logging: {active: false, color: true}};
       setup();
       expect(logger.logging).toEqual(win.ods.config.logging?.active);
 

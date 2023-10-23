@@ -1,9 +1,9 @@
-import { html } from 'lit-html';
-import { defineCustomElements } from '@ovhcloud/ods-components/datepicker/loader';
-import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
-import { ODS_DATEPICKER_DAYS, ODS_DATEPICKER_LOCALE, ODS_DATEPICKER_LOCALES } from '@ovhcloud/ods-components/datepicker';
-import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-components/datepicker/src/components/osds-datepicker/constants/default-attributes';
-import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
+import {html} from 'lit-html';
+import {defineCustomElements} from '@ovhcloud/ods-components/datepicker/loader';
+import {extractArgTypes, extractStoryParams, getTagAttributes} from '../../../core/componentHTMLUtils';
+import {ODS_DATEPICKER_DAYS, ODS_DATEPICKER_LOCALE, ODS_DATEPICKER_LOCALES} from '@ovhcloud/ods-components/datepicker';
+import {DEFAULT_ATTRIBUTE} from '@ovhcloud/ods-components/datepicker/src/components/osds-datepicker/constants/default-attributes';
+import {ODS_THEME_COLOR_INTENTS} from '@ovhcloud/ods-common-theming';
 // @ts-ignore
 import changelog from '@ovhcloud/ods-components/datepicker/CHANGELOG.md';
 // @ts-ignore
@@ -21,7 +21,7 @@ const storyParams = {
     category: 'General',
     defaultValue: DEFAULT_ATTRIBUTE.color,
     options: ODS_THEME_COLOR_INTENTS,
-    control: { type: 'select' },
+    control: {type: 'select'},
   },
   daysOfWeekDisabled: {
     category: 'General',
@@ -48,19 +48,19 @@ const storyParams = {
     category: 'General',
     defaultValue: ODS_DATEPICKER_LOCALE.EN,
     options: ODS_DATEPICKER_LOCALES,
-    control: { type: 'select' },
+    control: {type: 'select'},
   },
   maxDate: {
     category: 'General',
     defaultValue: null,
     options: ['1999-11-02', '2024-01-01'],
-    control: { type: 'select' },
+    control: {type: 'select'},
   },
   minDate: {
     category: 'General',
     defaultValue: null,
     options: ['1999-11-02', '2024-01-01'],
-    control: { type: 'select' },
+    control: {type: 'select'},
   },
   placeholder: {
     category: 'General',
@@ -75,24 +75,24 @@ export default {
     notes: {
       changelog,
     },
-    docs: { page },
+    docs: {page},
     options: {
       enableShortcuts: false,
     },
   },
-  argTypes: extractArgTypes(storyParams)
+  argTypes: extractArgTypes(storyParams),
 };
 
 /* Default */
 const isDateConstructorArg = (value: unknown): value is string | number | Date => {
-  return typeof value === "string" || typeof value === "number" || value instanceof Date;
+  return typeof value === 'string' || typeof value === 'number' || value instanceof Date;
 };
 
 const OsdsDatepickerDefault = (args: Record<string, unknown>) => html`
   <osds-datepicker ...=${getTagAttributes({
     ...args,
     maxDate: isDateConstructorArg(args.maxDate) ? new Date(args.maxDate) : null,
-    minDate: isDateConstructorArg(args.minDate) ? new Date(args.minDate) : null
+    minDate: isDateConstructorArg(args.minDate) ? new Date(args.minDate) : null,
   })}>
   </osds-datepicker>
 `;
@@ -102,5 +102,5 @@ type DefaultProps = {
   args: Record<string, unknown>;
 };
 (Default as unknown as DefaultProps).args = {
-  ...(extractStoryParams(storyParams) as Record<string, unknown>)
+  ...(extractStoryParams(storyParams) as Record<string, unknown>),
 };

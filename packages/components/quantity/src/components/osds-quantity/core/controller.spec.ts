@@ -1,15 +1,15 @@
-import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
-import type { OsdsInput } from '@ovhcloud/ods-component-input';
-import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
-import { ODS_INPUT_TYPE } from '@ovhcloud/ods-component-input';
-import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
-import { OdsQuantityController } from './controller';
-import { OsdsQuantity } from '../osds-quantity';
+import type {OdsLoggerSpyReferences} from '@ovhcloud/ods-common-testing';
+import type {OsdsInput} from '@ovhcloud/ods-component-input';
+import {Ods, OdsLogger} from '@ovhcloud/ods-common-core';
+import {ODS_INPUT_TYPE} from '@ovhcloud/ods-component-input';
+import {OdsClearLoggerSpy, OdsInitializeLoggerSpy} from '@ovhcloud/ods-common-testing';
+import {OdsQuantityController} from './controller';
+import {OsdsQuantity} from '../osds-quantity';
 
 class OdsQuantityMock extends OsdsQuantity {
   constructor(attribute: Partial<OsdsQuantity>) {
     super();
-    Object.assign(this, attribute)
+    Object.assign(this, attribute);
   }
 }
 
@@ -33,7 +33,7 @@ describe('spec:ods-quantity-controller', () => {
     const loggerMocked = new OdsLogger('myLoggerMocked');
     loggerSpyReferences = OdsInitializeLoggerSpy({
       loggerMocked: loggerMocked as never,
-      spiedClass: OdsQuantityController
+      spiedClass: OdsQuantityController,
     });
   });
 
@@ -78,7 +78,7 @@ describe('spec:ods-quantity-controller', () => {
 
         component.el.appendChild(input);
         component.input = input;
-        spyInputAddEventListener = jest.spyOn(component.input, 'addEventListener')
+        spyInputAddEventListener = jest.spyOn(component.input, 'addEventListener');
 
         controller.initInput();
 
@@ -103,9 +103,9 @@ describe('spec:ods-quantity-controller', () => {
           input.blur();
 
           expect(input.value).toEqual(input.min);
-        })
+        });
 
-        it('should change value of input if superior to max on Blur',  () => {
+        it('should change value of input if superior to max on Blur', () => {
           setup();
           const input = document.createElement('input');
           input.setAttribute('type', 'number');
@@ -119,16 +119,16 @@ describe('spec:ods-quantity-controller', () => {
           input.blur();
 
           expect(input.value).toEqual(input.max);
-        })
+        });
 
-        it('should change value of osds-input if inferior to min on Blur',  () => {
+        it('should change value of osds-input if inferior to min on Blur', () => {
           setup();
           const input = document.createElement('osds-input') as (OsdsInput & HTMLElement);
           input.type = ODS_INPUT_TYPE.number;
           input.setAttribute('type', 'number');
           input.tabIndex = 0;
           input.setAttribute('tabindex', '0');
-          input.value = "-2";
+          input.value = '-2';
           input.setAttribute('value', '-2');
           input.min = 2;
 
@@ -141,16 +141,16 @@ describe('spec:ods-quantity-controller', () => {
           input.dispatchEvent(new CustomEvent('odsInputBlur'));
 
           expect(input.value).toEqual(input.min);
-        })
+        });
 
-        it('should change value of osds-input if superior to max on Blur',  () => {
+        it('should change value of osds-input if superior to max on Blur', () => {
           setup();
           const input = document.createElement('osds-input') as (OsdsInput & HTMLElement);
           input.type = ODS_INPUT_TYPE.number;
           input.setAttribute('type', 'number');
           input.tabIndex = 0;
           input.setAttribute('tabindex', '0');
-          input.value = "11";
+          input.value = '11';
           input.setAttribute('value', '11');
           input.max = 10;
 
@@ -163,7 +163,7 @@ describe('spec:ods-quantity-controller', () => {
           input.dispatchEvent(new CustomEvent('odsInputBlur'));
 
           expect(input.value).toEqual(input.max);
-        })
+        });
       });
 
       describe('methods:initInput validation', () => {
@@ -220,11 +220,11 @@ describe('spec:ods-quantity-controller', () => {
       });
 
       it('should remove input and slots disabled attribute', () => {
-        component.input = (component.input as HTMLInputElement)
+        component.input = (component.input as HTMLInputElement);
         component.input.min = '1';
         component.input.max = '10';
 
-        [component.input, (component.minus as HTMLSlotElement), (component.plus as HTMLSlotElement)].forEach(e => e.setAttribute('disabled', ''));
+        [component.input, (component.minus as HTMLSlotElement), (component.plus as HTMLSlotElement)].forEach((e) => e.setAttribute('disabled', ''));
 
         controller.processInputValueChange();
 
@@ -234,7 +234,7 @@ describe('spec:ods-quantity-controller', () => {
       });
 
       it('should set disable to minus slot', () => {
-        component.input = (component.input as HTMLInputElement)
+        component.input = (component.input as HTMLInputElement);
         component.input.min = '5';
         component.input.max = '10';
 
@@ -259,7 +259,7 @@ describe('spec:ods-quantity-controller', () => {
       });
 
       it('should set disable to plus slot', () => {
-        component.input = (component.input as HTMLInputElement)
+        component.input = (component.input as HTMLInputElement);
         component.input.min = '1';
         component.input.max = '5';
 
@@ -291,7 +291,7 @@ describe('spec:ods-quantity-controller', () => {
         component.minus = document.createElement('osds-button') as HTMLSlotElement;
 
         component.plus = document.createElement('osds-button') as HTMLSlotElement;
-        [component.input, component.minus, component.plus].forEach(e => e.setAttribute('disabled', ''));
+        [component.input, component.minus, component.plus].forEach((e) => e.setAttribute('disabled', ''));
         controller.setDisabledOnChildren(false);
 
         expect(component.input.getAttribute('disabled')).toBe(null);
@@ -318,7 +318,7 @@ describe('spec:ods-quantity-controller', () => {
         setup();
 
         component.input = document.createElement('input');
-        spyInputRemoveEventListener = jest.spyOn(component.input, 'removeEventListener')
+        spyInputRemoveEventListener = jest.spyOn(component.input, 'removeEventListener');
 
         controller.clearEventListeners();
 
@@ -335,7 +335,7 @@ describe('spec:ods-quantity-controller', () => {
         component.input = {
           stepDown: jest.fn(),
         } as any;
-      })
+      });
 
       it('should call input.stepDown', () => {
         controller.minusClickHandler();
@@ -359,7 +359,7 @@ describe('spec:ods-quantity-controller', () => {
         component.input = {
           stepUp: jest.fn(),
         } as any;
-      })
+      });
 
       it('should call input.stepUp', () => {
         controller.plusClickHandler();

@@ -1,4 +1,4 @@
-import type { OdsCheckboxAttribute } from '../interfaces/attributes';
+import type {OdsCheckboxAttribute} from '../interfaces/attributes';
 
 const DEFAULT_ATTRIBUTE: OdsCheckboxAttribute = Object.freeze({
   afterSave: undefined,

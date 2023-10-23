@@ -1,6 +1,6 @@
-import type { SpecPage } from '@stencil/core/testing';
-import { newSpecPage } from '@stencil/core/testing';
-import { OsdsContentAddon } from './osds-content-addon';
+import type {SpecPage} from '@stencil/core/testing';
+import {newSpecPage} from '@stencil/core/testing';
+import {OsdsContentAddon} from './osds-content-addon';
 
 describe('spec:osds-content-addon', () => {
   let page: SpecPage;
@@ -13,7 +13,7 @@ describe('spec:osds-content-addon', () => {
   async function setup() {
     page = await newSpecPage({
       components: [OsdsContentAddon],
-      html: `<osds-content-addon></osds-content-addon>`,
+      html: '<osds-content-addon></osds-content-addon>',
     });
 
     // note: assigned slot not yet available in HtmlMockedElement of stencil : https://github.com/ionic-team/stencil/issues/2830
@@ -24,7 +24,7 @@ describe('spec:osds-content-addon', () => {
     slotMain = page.root?.shadowRoot?.querySelector('slot[name=main]');
   }
 
-  it('should render', async () => {
+  it('should render', async() => {
     await setup();
     expect(page.root?.shadowRoot).toBeTruthy();
     expect(page.rootInstance).toBeTruthy();
@@ -32,27 +32,27 @@ describe('spec:osds-content-addon', () => {
 
 
   describe('contents', () => {
-    it('should have a top slot', async () => {
+    it('should have a top slot', async() => {
       await setup();
       expect(slotTop).toBeTruthy();
     });
 
-    it('should have a bottom slot', async () => {
+    it('should have a bottom slot', async() => {
       await setup();
       expect(slotBottom).toBeTruthy();
     });
 
-    it('should have a start slot', async () => {
+    it('should have a start slot', async() => {
       await setup();
       expect(slotStart).toBeTruthy();
     });
 
-    it('should have an end slot', async () => {
+    it('should have an end slot', async() => {
       await setup();
       expect(slotEnd).toBeTruthy();
     });
 
-    it('should have a main slot', async () => {
+    it('should have a main slot', async() => {
       await setup();
       expect(slotMain).toBeTruthy();
     });

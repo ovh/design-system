@@ -1,4 +1,4 @@
-import type { OsdsCollapsible } from '../osds-collapsible';
+import type {OsdsCollapsible} from '../osds-collapsible';
 
 /**
  * common controller logic for cmpnt component used by the different implementations.

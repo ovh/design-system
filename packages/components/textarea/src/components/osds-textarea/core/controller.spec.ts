@@ -1,15 +1,16 @@
-import type { OdsTextAreaValidityState, OdsValidityStateUnion } from '@ovhcloud/ods-common-core';
-import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
-import { Ods, OdsFormControl, OdsLogger } from '@ovhcloud/ods-common-core';
-import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
-import { OdsTextAreaController } from './controller';
-import { OsdsTextArea } from '../osds-textarea';
+import type {OdsTextAreaValidityState, OdsValidityStateUnion} from '@ovhcloud/ods-common-core';
+import type {OdsLoggerSpyReferences} from '@ovhcloud/ods-common-testing';
+import {Ods, OdsFormControl, OdsLogger} from '@ovhcloud/ods-common-core';
+import {OdsClearLoggerSpy, OdsInitializeLoggerSpy} from '@ovhcloud/ods-common-testing';
+import {OdsTextAreaController} from './controller';
+import {OsdsTextArea} from '../osds-textarea';
 
 class OdsTextAreaMock extends OsdsTextArea {
   constructor(attribute: Partial<OsdsTextArea>) {
     super();
-    Object.assign(this, attribute)
+    Object.assign(this, attribute);
   }
+
   controller: OdsTextAreaController = jest.fn() as unknown as OdsTextAreaController;
   beforeInit = jest.fn();
   clear = jest.fn();
@@ -50,7 +51,7 @@ describe('ods-textarea-controller', () => {
     const loggerMocked = new OdsLogger('myLoggerMocked');
     loggerSpyReferences = OdsInitializeLoggerSpy({
       loggerMocked: loggerMocked as never,
-      spiedClass: OdsTextAreaController
+      spiedClass: OdsTextAreaController,
     });
   });
 
@@ -63,7 +64,7 @@ describe('ods-textarea-controller', () => {
     describe('handleTextareaValue', () => {
       it('should reset component value if new value is empty', () => {
         const value = 'Text area';
-        setup({ value });
+        setup({value});
         expect(component.value).toBe(value);
         controller.handleTextAreaValue('');
 
@@ -72,7 +73,7 @@ describe('ods-textarea-controller', () => {
 
       it('should not change component value if component is disabled', () => {
         const value = 'Text area';
-        setup({ disabled: true, value });
+        setup({disabled: true, value});
         expect(component.value).toBe(value);
         controller.handleTextAreaValue('');
 
@@ -81,7 +82,7 @@ describe('ods-textarea-controller', () => {
 
       it('should not change component value if component is not empty', () => {
         const value = 'Text area';
-        setup({ disabled: true, value });
+        setup({disabled: true, value});
         expect(component.value).toBe(value);
         controller.handleTextAreaValue('New value');
 
@@ -95,37 +96,37 @@ describe('ods-textarea-controller', () => {
           valid: true,
           valueMissing: false,
           invalid: false,
-          customError: false
+          customError: false,
         };
         setup();
-        const validity = controller.getTextAreaValidity()
+        const validity = controller.getTextAreaValidity();
 
         expect(validity).toEqual(defaultValidityState);
       });
 
       it('should return textarea validity (valid case)', () => {
-        const textAreaEl = { validity: { valid: true } } as HTMLTextAreaElement
+        const textAreaEl = {validity: {valid: true}} as HTMLTextAreaElement;
         setup();
-        const validity = controller.getTextAreaValidity(textAreaEl)
+        const validity = controller.getTextAreaValidity(textAreaEl);
 
         expect(validity).toEqual({
           valid: true,
           valueMissing: undefined,
           customError: undefined,
-          invalid: false
+          invalid: false,
         });
       });
 
       it('should return textarea validity (invalid case)', () => {
-        const textAreaEl = { validity: { valid: false } } as HTMLTextAreaElement
+        const textAreaEl = {validity: {valid: false}} as HTMLTextAreaElement;
         setup();
-        const validity = controller.getTextAreaValidity(textAreaEl)
+        const validity = controller.getTextAreaValidity(textAreaEl);
 
         expect(validity).toEqual({
           valid: false,
           valueMissing: undefined,
           customError: undefined,
-          invalid: true
+          invalid: true,
         });
       });
     });
@@ -134,7 +135,7 @@ describe('ods-textarea-controller', () => {
       it('should log value', () => {
         const textInputEl = document.createElement('textarea');
         textInputEl.value = 'Text area';
-        setup({ textInputEl });
+        setup({textInputEl});
         controller.onInput(new Event(''));
 
         expect(loggerSpyReferences.methodSpies.debug).toHaveBeenCalledTimes(1);
@@ -144,7 +145,7 @@ describe('ods-textarea-controller', () => {
       it('should call handleTextAreaValue', () => {
         const textInputEl = document.createElement('textarea');
         textInputEl.value = 'Text area';
-        setup({ textInputEl });
+        setup({textInputEl});
         spyOnHandleTextAreaValue = jest.spyOn(controller, 'handleTextAreaValue');
         controller.onInput(new Event(''));
 
@@ -171,7 +172,7 @@ describe('ods-textarea-controller', () => {
       });
 
       it('should have hasFocus to false', () => {
-        setup({ hasFocus: true });
+        setup({hasFocus: true});
         controller.onBlur();
 
         expect(component.hasFocus).toBe(false);
@@ -193,7 +194,7 @@ describe('ods-textarea-controller', () => {
       it('should log value', () => {
         const textInputEl = document.createElement('textarea');
         textInputEl.value = 'Text area';
-        setup({ textInputEl });
+        setup({textInputEl});
         controller.onChange();
 
         expect(loggerSpyReferences.methodSpies.debug).toHaveBeenCalledTimes(1);
@@ -204,8 +205,8 @@ describe('ods-textarea-controller', () => {
     describe('registerFormControl', () => {
       it('should log value, form control and form control id', () => {
         const formControl = new OdsFormControl('id');
-        const value = 'Text area'
-        setup({ value });
+        const value = 'Text area';
+        setup({value});
         controller.registerFormControl(formControl);
 
         expect(loggerSpyReferences.methodSpies.log).toHaveBeenCalledTimes(1);
@@ -225,12 +226,12 @@ describe('ods-textarea-controller', () => {
 
     describe('emitValue', () => {
       it('should log value', () => {
-        const value = 'Text area'
-        setup({ value });
+        const value = 'Text area';
+        setup({value});
         controller.emitValue('New value', 'Old value');
 
         expect(loggerSpyReferences.methodSpies.debug).toHaveBeenCalledTimes(1);
-        expect(loggerSpyReferences.methodSpies.debug).toHaveBeenCalledWith(`[textarea=Text area]`, 'value changed', { value: 'New value', oldValue: 'Old value' });
+        expect(loggerSpyReferences.methodSpies.debug).toHaveBeenCalledWith('[textarea=Text area]', 'value changed', {value: 'New value', oldValue: 'Old value'});
       });
 
       it('should call formControl.register', () => {
@@ -245,7 +246,7 @@ describe('ods-textarea-controller', () => {
 
     describe('onDefaultValueChange', () => {
       it('should log default value change', () => {
-        setup({ value: 'Text area' });
+        setup({value: 'Text area'});
         controller.onDefaultValueChange('default');
 
         expect(loggerSpyReferences.methodSpies.debug).toHaveBeenCalledTimes(1);
@@ -265,7 +266,7 @@ describe('ods-textarea-controller', () => {
       it('should set value to textInputEl if defined', () => {
         const value = 'Text area';
         const textInputEl = document.createElement('textarea');
-        setup({ textInputEl });
+        setup({textInputEl});
         controller.setValue(value);
 
         expect(component.textInputEl?.value).toBe(value);
@@ -276,7 +277,7 @@ describe('ods-textarea-controller', () => {
     describe('hasError', () => {
       it('should return true if component.error is true', () => {
         const error = true;
-        setup({ error });
+        setup({error});
         const hasError = controller.hasError();
 
         expect(hasError).toBe(true);
@@ -285,7 +286,7 @@ describe('ods-textarea-controller', () => {
       it('should return true if OdsTextAreaValidityState.invalid is true', () => {
         setup();
         controller.getTextAreaValidity = jest.fn().mockImplementation(() => {
-          return { invalid: true };
+          return {invalid: true};
         });
         const hasError = controller.hasError();
 
@@ -294,9 +295,9 @@ describe('ods-textarea-controller', () => {
 
       it('should return false if component.error and OdsTextAreaValidityState.invalid are false', () => {
         const error = false;
-        setup({ error });
+        setup({error});
         controller.getTextAreaValidity = jest.fn().mockImplementation(() => {
-          return { invalid: false };
+          return {invalid: false};
         });
         const hasError = controller.hasError();
 
@@ -307,7 +308,7 @@ describe('ods-textarea-controller', () => {
     describe('beforeInit', () => {
       it('should call registerFormControl', () => {
         const formControl = new OdsFormControl('id');
-        setup({ formControl });
+        setup({formControl});
         spyOnRegisterFormControl = jest.spyOn(controller, 'registerFormControl');
         controller.beforeInit();
 
@@ -317,7 +318,7 @@ describe('ods-textarea-controller', () => {
 
       it('should call emitValue', () => {
         const value = 'Text area';
-        setup({ value });
+        setup({value});
         spyOnEmitValue = jest.spyOn(controller, 'emitValue');
         controller.beforeInit();
 
@@ -327,7 +328,7 @@ describe('ods-textarea-controller', () => {
 
       it('should call onDefaultValueChange', () => {
         const defaultValue = 'default';
-        setup({ defaultValue });
+        setup({defaultValue});
         spyOnOnDefaultValueChange = jest.spyOn(controller, 'onDefaultValueChange');
         controller.beforeInit();
 
@@ -337,7 +338,7 @@ describe('ods-textarea-controller', () => {
 
       it('should set value with defaultValue if value is undefined', () => {
         const defaultValue = 'default';
-        setup({ defaultValue });
+        setup({defaultValue});
         controller.beforeInit();
 
         expect(component.value).toBe(defaultValue);

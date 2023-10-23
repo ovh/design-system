@@ -1,1 +1,1 @@
-export { OsdsPopoverContent } from './osds-popover-content';
+export {OsdsPopoverContent} from './osds-popover-content';

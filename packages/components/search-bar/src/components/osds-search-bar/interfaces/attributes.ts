@@ -22,4 +22,4 @@ interface OdsSearchBarAttribute {
 export {
   OdsSearchBarAttribute,
   OdsSearchbarOption,
-}
+};

@@ -1,7 +1,7 @@
-import type { OdsFormFieldAttribute } from './interfaces/attributes';
-import { Component, Host, h, Prop } from '@stencil/core';
-import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import type {OdsFormFieldAttribute} from './interfaces/attributes';
+import {Component, Host, Prop, h} from '@stencil/core';
+import {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
+import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
 
 /**
  * @slot (unnamed) - FormField content
@@ -9,18 +9,18 @@ import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 @Component({
   tag: 'osds-form-field',
   styleUrl: 'osds-form-field.scss',
-  shadow: true
+  shadow: true,
 })
 export class OsdsFormField implements OdsFormFieldAttribute {
   /** @see OdsFormFieldAttributes.error */
-  @Prop({ reflect: true }) error?: string = DEFAULT_ATTRIBUTE.error;
+  @Prop({reflect: true}) error?: string = DEFAULT_ATTRIBUTE.error;
 
   /** @see OdsFormFieldAttributes.inline */
-  @Prop({ reflect: true }) inline?: boolean = DEFAULT_ATTRIBUTE.inline;
+  @Prop({reflect: true}) inline?: boolean = DEFAULT_ATTRIBUTE.inline;
 
   render() {
     const {
-      error
+      error,
     } = this;
 
     return (
@@ -33,8 +33,8 @@ export class OsdsFormField implements OdsFormFieldAttribute {
         {
           error
           && error.length > 0
-          ? <osds-text color={ODS_THEME_COLOR_INTENT.error}>{error}</osds-text>
-          : <slot name="helper"></slot>
+            ? <osds-text color={ODS_THEME_COLOR_INTENT.error}>{error}</osds-text>
+            : <slot name="helper"></slot>
         }
       </Host>
     );

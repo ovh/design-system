@@ -1,7 +1,7 @@
-import { html } from 'lit-html';
-import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-import { defineCustomElements } from '@ovhcloud/ods-components/form-field/loader';
-import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
+import {html} from 'lit-html';
+import {unsafeHTML} from 'lit-html/directives/unsafe-html';
+import {defineCustomElements} from '@ovhcloud/ods-components/form-field/loader';
+import {extractArgTypes, extractStoryParams, getTagAttributes} from '../../../core/componentHTMLUtils';
 // @ts-ignore
 import changelog from '@ovhcloud/ods-components/form-field/CHANGELOG.md';
 // @ts-ignore
@@ -33,7 +33,7 @@ const storyParams = {
   },
   input: {
     category: 'Slot',
-    defaultValue: `<osds-input type="text" id="input" value="Just ODS being ahead"></osds-input>`,
+    defaultValue: '<osds-input type="text" id="input" value="Just ODS being ahead"></osds-input>',
   },
   helper: {
     category: 'Slot',
@@ -50,9 +50,9 @@ export default {
     notes: {
       changelog,
     },
-    docs: { page }
+    docs: {page},
   },
-  argTypes: extractArgTypes(storyParams)
+  argTypes: extractArgTypes(storyParams),
 };
 
 /* Default */
@@ -63,7 +63,7 @@ const TemplateDefault = (args:any) => {
     ${unsafeHTML(args.input)}
     <div slot="helper">${unsafeHTML(args.helper)}</div>
   </osds-form-field>`;
-}
+};
 
 export const Default = TemplateDefault.bind({});
 // @ts-ignore

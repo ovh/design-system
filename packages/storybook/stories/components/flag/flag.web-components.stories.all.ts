@@ -1,6 +1,6 @@
-import { html } from 'lit-html';
-import { repeat } from 'lit-html/directives/repeat';
-import { ODS_FLAG_ISO_CODES } from '@ovhcloud/ods-component-flag';
+import {html} from 'lit-html';
+import {repeat} from 'lit-html/directives/repeat';
+import {ODS_FLAG_ISO_CODES} from '@ovhcloud/ods-component-flag';
 
 const flagTemplate = (iso:string) => html`
   <span class='flag-block'>
@@ -40,6 +40,6 @@ const TemplateAll = () => html`
 export const All = TemplateAll.bind({});
 // @ts-ignore
 All.parameters = {
-  controls: { hideNoControlsWarning: true },
-  options: { showPanel: false }
+  controls: {hideNoControlsWarning: true},
+  options: {showPanel: false},
 };

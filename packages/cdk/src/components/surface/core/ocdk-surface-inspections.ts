@@ -1,4 +1,4 @@
-import { OcdkSurfaceInspectionValues } from './ocdk-surface-inspection-values';
+import {OcdkSurfaceInspectionValues} from './ocdk-surface-inspection-values';
 
 export interface OcdkSurfaceInspections {
   comfort: OcdkSurfaceInspectionValues,

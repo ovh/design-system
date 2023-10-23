@@ -1,10 +1,10 @@
-import type { EventEmitter } from '@stencil/core';
+import type {EventEmitter} from '@stencil/core';
 
 interface OdsSwitchChangedEventDetail {
     current: string;
     previous?: string;
 }
-  
+
 interface OdsSwitchEvent {
     /**
      * Event triggered on accordion toggle
@@ -13,6 +13,6 @@ interface OdsSwitchEvent {
 }
 
 export {
-    OdsSwitchChangedEventDetail,
-    OdsSwitchEvent,
-}
+  OdsSwitchChangedEventDetail,
+  OdsSwitchEvent,
+};

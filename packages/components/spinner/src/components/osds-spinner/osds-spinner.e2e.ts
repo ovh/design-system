@@ -1,15 +1,15 @@
-import type { E2EElement, E2EPage } from '@stencil/core/testing';
-import type { OdsSpinnerAttribute } from './interfaces/attributes';
-import { newE2EPage } from '@stencil/core/testing';
-import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { ODS_SPINNER_SIZE } from './constants/spinner-size';
+import type {E2EElement, E2EPage} from '@stencil/core/testing';
+import type {OdsSpinnerAttribute} from './interfaces/attributes';
+import {newE2EPage} from '@stencil/core/testing';
+import {odsComponentAttributes2StringAttributes, odsStringAttributes2Str} from '@ovhcloud/ods-common-testing';
+import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
+import {ODS_SPINNER_SIZE} from './constants/spinner-size';
 
 describe('e2e:osds-spinner', () => {
   let page: E2EPage;
   let el: E2EElement;
 
-  async function setup({ attributes = {} }: { attributes?: Partial<OdsSpinnerAttribute> } = {}) {
+  async function setup({attributes = {}}: { attributes?: Partial<OdsSpinnerAttribute> } = {}) {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsSpinnerAttribute>(attributes, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
@@ -20,15 +20,15 @@ describe('e2e:osds-spinner', () => {
     el = await page.find('osds-spinner');
   }
 
-  it('should render', async () => {
-    await setup({ attributes: {} });
+  it('should render', async() => {
+    await setup({attributes: {}});
 
     expect(el).not.toBeNull();
     expect(el).toHaveClass('hydrated');
   });
 
   describe('sizes', () => {
-    const sizeSetup = async ({ attributes = {} }: { attributes?: Partial<OdsSpinnerAttribute> } = {}) => {
+    const sizeSetup = async({attributes = {}}: { attributes?: Partial<OdsSpinnerAttribute> } = {}) => {
       const stringAttributes = odsComponentAttributes2StringAttributes<OdsSpinnerAttribute>(attributes, DEFAULT_ATTRIBUTE);
 
       const page = await newE2EPage();
@@ -48,14 +48,14 @@ describe('e2e:osds-spinner', () => {
         mdSpinner,
         lgSpinner,
       };
-    }
+    };
 
-    it('should respect increase order (sm < md < lg)', async () => {
+    it('should respect increase order (sm < md < lg)', async() => {
       const {
         smSpinner,
         mdSpinner,
         lgSpinner,
-      } = await sizeSetup({ attributes: {} });
+      } = await sizeSetup({attributes: {}});
       const smSpinnerStyle = await smSpinner.getComputedStyle();
       const smSpinnerWidth = parseInt(smSpinnerStyle.getPropertyValue('width'), 10);
 

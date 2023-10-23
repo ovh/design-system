@@ -1,4 +1,4 @@
-import { OdsInitializedEventDetail } from './ods-initialized-event-detail';
+import {OdsInitializedEventDetail} from './ods-initialized-event-detail';
 
 /**
  * `ODS` main event fired when the `Ods` instance is created.

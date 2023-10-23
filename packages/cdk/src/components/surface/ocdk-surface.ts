@@ -1,17 +1,17 @@
-import { OcdkLogger } from '../../logger/ocdk-logger';
-import { OcdkSurfaceController } from './ocdk-surface-controller';
-import { OcdkSurfaceAdapter } from './ocdk-surface-adapter';
-import { ocdkSurfaceCssTemplate } from './ocdk-surface.css';
-import { OcdkSurfaceAnimation } from './core/ocdk-surface-animation';
-import { OcdkSurfaceDistance } from './core/ocdk-surface-distance';
-import { OcdkSurfaceCorner } from './core/ocdk-surface-corner';
-import { OcdkSurfaceCornerPoints } from './core/ocdk-surface-corner-points';
-import { ocdkIsWindow } from '../../utils/window/ocdk-is-window';
-import { OcdkSurfaceMaxDimensions } from './core/ocdk-surface-max-dimensions';
-import { OcdkSurfaceStrategyDefiner } from './core/system/ocdk-surface-strategy-definer';
-import { OcdkSurfaceStrategyDefinerConfig } from './core/system/ocdk-surface-strategy-definer-config';
-import { ocdkGetCorrectPropertyName } from '../../utils/css/ocdk-get-correct-property-name';
-import { OcdkSurfaceBehaviour } from './ocdk-surface-behaviour'
+import {OcdkLogger} from '../../logger/ocdk-logger';
+import {OcdkSurfaceController} from './ocdk-surface-controller';
+import {OcdkSurfaceAdapter} from './ocdk-surface-adapter';
+import {ocdkSurfaceCssTemplate} from './ocdk-surface.css';
+import {OcdkSurfaceAnimation} from './core/ocdk-surface-animation';
+import {OcdkSurfaceDistance} from './core/ocdk-surface-distance';
+import {OcdkSurfaceCorner} from './core/ocdk-surface-corner';
+import {OcdkSurfaceCornerPoints} from './core/ocdk-surface-corner-points';
+import {ocdkIsWindow} from '../../utils/window/ocdk-is-window';
+import {OcdkSurfaceMaxDimensions} from './core/ocdk-surface-max-dimensions';
+import {OcdkSurfaceStrategyDefiner} from './core/system/ocdk-surface-strategy-definer';
+import {OcdkSurfaceStrategyDefinerConfig} from './core/system/ocdk-surface-strategy-definer-config';
+import {ocdkGetCorrectPropertyName} from '../../utils/css/ocdk-get-correct-property-name';
+import {OcdkSurfaceBehaviour} from './ocdk-surface-behaviour';
 
 
 export class OcdkSurface extends HTMLElement implements OcdkSurfaceBehaviour {
@@ -30,7 +30,7 @@ export class OcdkSurface extends HTMLElement implements OcdkSurfaceBehaviour {
     this.controller = new OcdkSurfaceController(this);
     this.logger.log('controller', this.controller);
 
-    this.attachShadow({ mode: 'open' });
+    this.attachShadow({mode: 'open'});
     if (this.shadowRoot) {
       this.debug = this.hasAttribute('debug');
 
@@ -39,7 +39,7 @@ export class OcdkSurface extends HTMLElement implements OcdkSurfaceBehaviour {
       this.shadowRoot.appendChild(ocdkSurfaceCssTemplate.content.cloneNode(true));
 
       // Select the slot element from the ShadowDOM
-      const slot = this.shadowRoot.querySelector('slot')
+      const slot = this.shadowRoot.querySelector('slot');
       if (slot) {
         slot.addEventListener('slotchange', (event) => {
           this.logger.log('slotchange');
@@ -103,7 +103,7 @@ export class OcdkSurface extends HTMLElement implements OcdkSurfaceBehaviour {
    * @param corners - tuple of corner references (anchor, origin)
    */
   set corners(corners: [OcdkSurfaceCorner, OcdkSurfaceCorner]) {
-    this.controller.setCornerPoints({ anchor: corners[ 0 ], origin: corners[ 1 ] });
+    this.controller.setCornerPoints({anchor: corners[ 0 ], origin: corners[ 1 ]});
   }
 
   get opened(): boolean {
@@ -132,19 +132,19 @@ export class OcdkSurface extends HTMLElement implements OcdkSurfaceBehaviour {
    */
   attributeChangedCallback(name: any, _oldValue: any, newValue: any | null) {
     switch (name) {
-      case 'animation':
-        this.processAnimation(newValue);
-        break;
-      case 'animated':
-        this.processAnimated(newValue === '');
-        break;
-      case 'opened':
-        if (this.opened) {
-          this.controller.open();
-        } else {
-          this.controller.open();
-        }
-        break;
+    case 'animation':
+      this.processAnimation(newValue);
+      break;
+    case 'animated':
+      this.processAnimated(newValue === '');
+      break;
+    case 'opened':
+      if (this.opened) {
+        this.controller.open();
+      } else {
+        this.controller.open();
+      }
+      break;
     }
   }
 
@@ -161,7 +161,7 @@ export class OcdkSurface extends HTMLElement implements OcdkSurfaceBehaviour {
     if (!this.anchorElement) {
       const parentEl = this.shadowRoot?.host;
       this.anchorElement = parentEl ? parentEl : null;
-      this.logger.log('[connectedCallback]', 'set anchor', { anchorElement: this.anchorElement });
+      this.logger.log('[connectedCallback]', 'set anchor', {anchorElement: this.anchorElement});
     }
 
 
@@ -254,24 +254,24 @@ export class OcdkSurface extends HTMLElement implements OcdkSurfaceBehaviour {
       isRtl: () =>
         getComputedStyle(this).getPropertyValue('direction') === 'rtl',
       setTransformOrigin: (origin) => {
-        const propertyName =
-          `${ocdkGetCorrectPropertyName(window, 'transform')}-origin`;
-        this.logger.log('[getDefaultAdapter].setTransformOrigin', { propertyName, origin });
+        const propertyName
+          = `${ocdkGetCorrectPropertyName(window, 'transform')}-origin`;
+        this.logger.log('[getDefaultAdapter].setTransformOrigin', {propertyName, origin});
         this.style.setProperty(propertyName, origin);
       },
       isFocused: () => document.activeElement === this,
       getInnerDimensions: () => {
         const dimensions = {
           width: this.offsetWidth,
-          height: this.offsetHeight
+          height: this.offsetHeight,
         };
-        this.logger.log('[getDefaultAdapter].getInnerDimensions', { dimensions });
+        this.logger.log('[getDefaultAdapter].getInnerDimensions', {dimensions});
         return dimensions;
       },
       getMaxDimensions: () => {
         const dimensions: OcdkSurfaceMaxDimensions = {
           maxWidth: null,
-          maxHeight: null
+          maxHeight: null,
         };
         if (ocdkIsWindow(window)) {
           const computed = window.getComputedStyle(this);
@@ -280,20 +280,20 @@ export class OcdkSurface extends HTMLElement implements OcdkSurfaceBehaviour {
           dimensions.maxHeight = isNaN(maxHeight) ? dimensions.maxHeight : maxHeight;
           dimensions.maxWidth = isNaN(maxWidth) ? dimensions.maxWidth : maxWidth;
         }
-        this.logger.log('[getDefaultAdapter].getMaxDimensions', { dimensions });
+        this.logger.log('[getDefaultAdapter].getMaxDimensions', {dimensions});
         return dimensions;
       },
-      getAnchorDimensions: () => this.anchorElement ?
-        this.anchorElement.getBoundingClientRect() :
-        null,
+      getAnchorDimensions: () => this.anchorElement
+        ? this.anchorElement.getBoundingClientRect()
+        : null,
       getWindowDimensions: () => {
-        return { width: window.innerWidth, height: window.innerHeight };
+        return {width: window.innerWidth, height: window.innerHeight};
       },
       getBodyDimensions: () => {
-        return { width: document.body.clientWidth, height: document.body.clientHeight };
+        return {width: document.body.clientWidth, height: document.body.clientHeight};
       },
       getWindowScroll: () => {
-        return { x: window.pageXOffset, y: window.pageYOffset };
+        return {x: window.pageXOffset, y: window.pageYOffset};
       },
       setPosition: (position) => {
         this.style.left = 'left' in position ? `${position.left}px` : '';
@@ -302,9 +302,9 @@ export class OcdkSurface extends HTMLElement implements OcdkSurfaceBehaviour {
         this.style.bottom = 'bottom' in position ? `${position.bottom}px` : '';
       },
       cleanUpStyles: () => {
-        const propertyName =
-          `${ocdkGetCorrectPropertyName(window, 'transform')}-origin`;
-        this.logger.log('[getDefaultAdapter].cleanUpStyles', { propertyName });
+        const propertyName
+          = `${ocdkGetCorrectPropertyName(window, 'transform')}-origin`;
+        this.logger.log('[getDefaultAdapter].cleanUpStyles', {propertyName});
         this.style.removeProperty(propertyName);
         this.style.removeProperty('left');
         this.style.removeProperty('right');
@@ -329,16 +329,16 @@ export class OcdkSurface extends HTMLElement implements OcdkSurfaceBehaviour {
         const elements = this.querySelector('slot')?.assignedElements();
         const firstElement = elements && elements[ 0 ] as HTMLElement | undefined;
         const height = firstElement ? firstElement.offsetHeight : 0;
-        this.logger.log('[getDefaultAdapter].autoDetectItemHeight', { height });
+        this.logger.log('[getDefaultAdapter].autoDetectItemHeight', {height});
         return height;
       },
       autoDetectItemWidth: () => {
         const elements = this.querySelector('slot')?.assignedElements();
         const firstElement = elements && elements[ 0 ] as HTMLElement | undefined;
         const width = firstElement ? firstElement.offsetWidth : 0;
-        this.logger.log('[getDefaultAdapter].autoDetectItemWidth', { width });
+        this.logger.log('[getDefaultAdapter].autoDetectItemWidth', {width});
         return width;
-      }
+      },
     };
     return adapter;
   }

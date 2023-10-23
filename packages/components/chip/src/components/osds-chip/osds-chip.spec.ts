@@ -1,15 +1,15 @@
 jest.mock('./core/controller'); // keep jest.mock before any
 
-import type { SpecPage } from '@stencil/core/testing';
-import type { OdsChipAttribute } from './interfaces/attributes';
-import { newSpecPage } from '@stencil/core/testing';
-import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
-import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { ODS_CHIP_SIZE } from './constants/chip-size';
-import { ODS_CHIP_VARIANT } from './constants/chip-variant';
-import { OdsChipController } from './core/controller';
-import { OsdsChip } from './osds-chip';
+import type {SpecPage} from '@stencil/core/testing';
+import type {OdsChipAttribute} from './interfaces/attributes';
+import {newSpecPage} from '@stencil/core/testing';
+import {odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute} from '@ovhcloud/ods-common-testing';
+import {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
+import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
+import {ODS_CHIP_SIZE} from './constants/chip-size';
+import {ODS_CHIP_VARIANT} from './constants/chip-variant';
+import {OdsChipController} from './core/controller';
+import {OsdsChip} from './osds-chip';
 
 describe('spec:osds-chip', () => {
   let page: SpecPage;
@@ -21,7 +21,7 @@ describe('spec:osds-chip', () => {
     jest.clearAllMocks();
   });
 
-  async function setup({ attributes = {} }: { attributes?: Partial<OdsChipAttribute> } = {}) {
+  async function setup({attributes = {}}: { attributes?: Partial<OdsChipAttribute> } = {}) {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsChipAttribute>(attributes, DEFAULT_ATTRIBUTE);
 
     page = await newSpecPage({
@@ -34,7 +34,7 @@ describe('spec:osds-chip', () => {
     controller = (OdsChipController as unknown as jest.SpyInstance<OdsChipController, unknown[]>).mock.instances[0];
   }
 
-  it('should render', async () => {
+  it('should render', async() => {
     await setup({});
     expect(root?.shadowRoot).toBeTruthy();
     expect(instance).toBeTruthy();
@@ -54,7 +54,7 @@ describe('spec:osds-chip', () => {
         defaultValue: DEFAULT_ATTRIBUTE.color,
         newValue: ODS_THEME_COLOR_INTENT.primary,
         value: ODS_THEME_COLOR_INTENT.default,
-        setup: (value) => setup({ attributes: { ['color']: value } }),
+        setup: (value) => setup({attributes: {['color']: value}}),
         ...config,
       });
     });
@@ -65,7 +65,7 @@ describe('spec:osds-chip', () => {
         defaultValue: DEFAULT_ATTRIBUTE.contrasted,
         newValue: true,
         value: false,
-        setup: (value) => setup({ attributes: { ['contrasted']: value } }),
+        setup: (value) => setup({attributes: {['contrasted']: value}}),
         ...config,
       });
     });
@@ -76,7 +76,7 @@ describe('spec:osds-chip', () => {
         defaultValue: DEFAULT_ATTRIBUTE.size,
         newValue: ODS_CHIP_SIZE.md,
         value: ODS_CHIP_SIZE.sm,
-        setup: (value) => setup({ attributes: { ['size']: value } }),
+        setup: (value) => setup({attributes: {['size']: value}}),
         ...config,
       });
     });
@@ -87,7 +87,7 @@ describe('spec:osds-chip', () => {
         defaultValue: DEFAULT_ATTRIBUTE.inline,
         newValue: true,
         value: false,
-        setup: (value) => setup({ attributes: { ['inline']: value } }),
+        setup: (value) => setup({attributes: {['inline']: value}}),
         ...config,
       });
     });
@@ -98,7 +98,7 @@ describe('spec:osds-chip', () => {
         defaultValue: DEFAULT_ATTRIBUTE.variant,
         newValue: ODS_CHIP_VARIANT.flat,
         value: ODS_CHIP_VARIANT.stroked,
-        setup: (value) => setup({ attributes: { ['variant']: value } }),
+        setup: (value) => setup({attributes: {['variant']: value}}),
         ...config,
       });
     });
@@ -109,7 +109,7 @@ describe('spec:osds-chip', () => {
         defaultValue: DEFAULT_ATTRIBUTE.disabled,
         newValue: true,
         value: false,
-        setup: (value) => setup({ attributes: { ['disabled']: value } }),
+        setup: (value) => setup({attributes: {['disabled']: value}}),
         ...config,
       });
     });
@@ -120,7 +120,7 @@ describe('spec:osds-chip', () => {
         defaultValue: DEFAULT_ATTRIBUTE.removable,
         newValue: true,
         value: false,
-        setup: (value) => setup({ attributes: { ['removable']: value } }),
+        setup: (value) => setup({attributes: {['removable']: value}}),
         ...config,
       });
     });
@@ -132,14 +132,14 @@ describe('spec:osds-chip', () => {
         defaultValue: DEFAULT_ATTRIBUTE.selectable,
         newValue: true,
         value: false,
-        setup: (value) => setup({ attributes: { ['selectable']: value } }),
+        setup: (value) => setup({attributes: {['selectable']: value}}),
         ...config,
       });
     });
   });
 
   describe('controller', () => {
-    it('should call controller.validateAttributes', async () => {
+    it('should call controller.validateAttributes', async() => {
       await setup();
       expect(controller.validateAttributes).toHaveBeenCalledWith();
       expect(controller.validateAttributes).toHaveBeenCalledTimes(1);

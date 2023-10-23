@@ -1,4 +1,4 @@
-import { OdsLogger } from '../logger/ods-logger';
+import {OdsLogger} from '../logger/ods-logger';
 
 /**
  * manage loading of content like svg files.
@@ -76,7 +76,7 @@ export class OdsLoadContent {
           // async if it hasn't been loaded
           this.getContent(url, sanitize)
             .then(() => resolve(this.contentCache.get(url)))
-            .catch(reason => reject(reason));
+            .catch((reason) => reject(reason));
         }
       } else {
         resolve(undefined);
@@ -113,7 +113,7 @@ export class OdsLoadContent {
             cb();
           }
         },
-        { rootMargin },
+        {rootMargin},
       ));
       io.observe(el);
     } else {
@@ -141,7 +141,7 @@ export class OdsLoadContent {
             // this.logger.log('getContent trigger fetched', rsp.statusText);
             if (rsp.ok) {
               return rsp.text().then((svgContent) => {
-            // console.log('getContent svgContent', svgContent);
+                // console.log('getContent svgContent', svgContent);
                 if (svgContent && sanitize) {
                   svgContent = this.sanitize(svgContent, url);
                 }
@@ -149,12 +149,12 @@ export class OdsLoadContent {
                 return svgContent;
               });
             }
-            this.logger.error('[getContent]', 'response is not ok', { url });
+            this.logger.error('[getContent]', 'response is not ok', {url});
             this.contentCache.set(url, '');
             return;
           })
           .catch((error) => {
-            this.logger.error('[getContent]', 'request failed', { url });
+            this.logger.error('[getContent]', 'request failed', {url});
             this.contentCache.set(url, '');
             throw error;
           });
@@ -177,7 +177,7 @@ export class OdsLoadContent {
       try {
         sanitized = validator(sanitized);
       } catch (e) {
-        this.logger.error('[sanitize]', 'error calling validator for the loaded content from url', { url });
+        this.logger.error('[sanitize]', 'error calling validator for the loaded content from url', {url});
       }
     });
     return sanitized;

@@ -1,54 +1,54 @@
-import { directive } from 'lit-html';
+import {directive} from 'lit-html';
 
 export const DEFAULT_SLOT = 'DEFAULT';
 
-export const createTag = ({ tag, attributes = {}, slots = {} }: { tag: string; attributes: { [index: string]: any }; slots: { [index: string]: any } }) =>
+export const createTag = ({tag, attributes = {}, slots = {}}: { tag: string; attributes: Record<string, any>; slots: Record<string, any> }) =>
   `
   <${tag} ${Object.keys(attributes)
-    .map(key => `${key}='${attributes[key]}'`)
-    .join(' ')}>
+  .map((key) => `${key}='${attributes[key]}'`)
+  .join(' ')}>
     ${Object.keys(slots)
-      .map((key: string) => (key === DEFAULT_SLOT ? slots[key] : `<span slot="${key}">${slots[key]}</span>`))
-      .join('')}
+    .map((key: string) => (key === DEFAULT_SLOT ? slots[key] : `<span slot="${key}">${slots[key]}</span>`))
+    .join('')}
   </${tag}>
 `;
 
-export const createComponentTable = (tag: string, tableDataX: { [index: string]: any }, tableDataY: { [index: string]: any }, tagContent: string, otherAttributes = {}) => {
-  let res = `<div class="table">`;
+export const createComponentTable = (tag: string, tableDataX: Record<string, any>, tableDataY: Record<string, any>, tagContent: string, otherAttributes = {}) => {
+  let res = '<div class="table">';
   const attrX: string = Object.keys(tableDataX)[0];
   const attrY: string = Object.keys(tableDataY)[0];
   // Headers
-  res += `<div class="table-row"><span class="table-cell"></span>`;
+  res += '<div class="table-row"><span class="table-cell"></span>';
   tableDataY[attrY].map((valueY: string) => {
     res += `<span class="table-cell">${valueY}</span>`;
   });
-  res += `</div>`;
+  res += '</div>';
 
   // Rows
   tableDataX[attrX].map((valueX: string) => {
     res += `<div class="table-row"><span class="table-cell">${valueX}</span>`;
     tableDataY[attrY].map((valueY: string) => {
-      let obj: { [index: string]: any } = {};
+      let obj: Record<string, any> = {};
       obj[attrX] = valueX;
       obj[attrY] = valueY;
-      obj = { ...obj, ...otherAttributes };
-      res += `<span class="table-cell">${createTag({ tag, attributes: obj, slots: { DEFAULT: tagContent } })}</span>`;
+      obj = {...obj, ...otherAttributes};
+      res += `<span class="table-cell">${createTag({tag, attributes: obj, slots: {DEFAULT: tagContent}})}</span>`;
     });
-    res += `</div>`;
+    res += '</div>';
   });
-  res += `</div>`;
+  res += '</div>';
   return res;
 };
 
 const previousProps = new WeakMap();
 
-export const getTagAttributes = directive(args => (part: any) => {
+export const getTagAttributes = directive((args) => (part: any) => {
   const prev = previousProps.get(part);
   if (prev === args) {
     return;
   }
-  const tagArgs: { [index: string]: any } = {};
-  Object.keys(args).forEach(key => {
+  const tagArgs: Record<string, any> = {};
+  Object.keys(args).forEach((key) => {
     if (!key.match(/Slot/i)) {
       tagArgs[key] = args[key];
     }
@@ -62,29 +62,29 @@ export const getTagAttributes = directive(args => (part: any) => {
   });
 });
 
-export const extractArgTypes = (storyParams: { [ k: string ]: any }) => {
-  const res: { [ k: string ]: any } = {};
+export const extractArgTypes = (storyParams: Record<string, any>) => {
+  const res: Record<string, any> = {};
   Object.keys(storyParams).forEach((storyParam) => {
-    res[ storyParam ] = (({ options, control, description }) => ({
+    res[ storyParam ] = (({options, control, description}) => ({
       options,
       control,
-      description
+      description,
     }))(storyParams[ storyParam ]);
     // keep table if already defined
     res[ storyParam ].table = storyParams[ storyParam ].table;
 
     if (storyParams[ storyParam ]?.category) {
-      res[ storyParam ].table = { ...res[ storyParam ].table, category: storyParams[ storyParam ].category };
+      res[ storyParam ].table = {...res[ storyParam ].table, category: storyParams[ storyParam ].category};
     }
   });
   return {
-    ...res
+    ...res,
   };
 };
 
-export const extractStoryParams = (storyParams: { [k: string]: any }) => {
-  const res: { [k: string]: any } = {};
-  Object.keys(storyParams).forEach(storyParam => {
+export const extractStoryParams = (storyParams: Record<string, any>) => {
+  const res: Record<string, any> = {};
+  Object.keys(storyParams).forEach((storyParam) => {
     if (typeof storyParams[storyParam]?.defaultValue !== 'undefined') {
       res[storyParam] = storyParams[storyParam]?.defaultValue;
     }

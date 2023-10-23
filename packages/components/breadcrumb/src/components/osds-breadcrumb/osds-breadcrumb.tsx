@@ -1,9 +1,9 @@
-import type { OdsBreadcrumbAttribute, OdsBreadcrumbAttributeItem } from './interfaces/attributes';
-import type { OdsBreadcrumbItemAttribute } from '../osds-breadcrumb-item/interfaces/attributes';
-import { Component, Element, Host, h, Listen, Prop, State, Watch } from '@stencil/core';
-import { OdsLogger } from '@ovhcloud/ods-common-core';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { OdsBreadcrumbController } from './core/controller';
+import type {OdsBreadcrumbAttribute, OdsBreadcrumbAttributeItem} from './interfaces/attributes';
+import type {OdsBreadcrumbItemAttribute} from '../osds-breadcrumb-item/interfaces/attributes';
+import {Component, Element, Host, Listen, Prop, State, Watch, h} from '@stencil/core';
+import {OdsLogger} from '@ovhcloud/ods-common-core';
+import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
+import {OdsBreadcrumbController} from './core/controller';
 
 /**
  * @slot (unnamed) - Breadcrumb content
@@ -11,7 +11,7 @@ import { OdsBreadcrumbController } from './core/controller';
 @Component({
   tag: 'osds-breadcrumb',
   styleUrl: 'osds-breadcrumb.scss',
-  shadow: true
+  shadow: true,
 })
 export class OsdsBreadcrumb implements OdsBreadcrumbAttribute {
   private logger = new OdsLogger('OsdsBreadcrumb');
@@ -23,10 +23,10 @@ export class OsdsBreadcrumb implements OdsBreadcrumbAttribute {
   @State() isCollapsed = true;
 
   /** @see OdsBreadcrumbAttributes.contrasted */
-  @Prop({ reflect: true }) public contrasted?: boolean = DEFAULT_ATTRIBUTE.contrasted;
+  @Prop({reflect: true}) public contrasted?: boolean = DEFAULT_ATTRIBUTE.contrasted;
 
   /** @see OdsBreadcrumbAttributes.items */
-  @Prop({ reflect: true }) public items: OdsBreadcrumbAttributeItem[] | string = [];
+  @Prop({reflect: true}) public items: OdsBreadcrumbAttributeItem[] | string = [];
 
   componentWillLoad() {
     this.parseItems();
@@ -71,8 +71,8 @@ export class OsdsBreadcrumb implements OdsBreadcrumbAttribute {
         {
           (this.breadcrumbItems || []).map((breadcrumbItem, index) => (
             <osds-breadcrumb-item key={index}
-                                  contrasted={this.contrasted}
-                                  {...breadcrumbItem}>
+              contrasted={this.contrasted}
+              {...breadcrumbItem}>
             </osds-breadcrumb-item>
           ))
         }

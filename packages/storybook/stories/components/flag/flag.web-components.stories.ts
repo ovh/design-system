@@ -1,9 +1,9 @@
-import { html } from 'lit-html';
-import { defineCustomElements } from '@ovhcloud/ods-components/flag/loader';
-import { odsSetup, Ods } from '@ovhcloud/ods-common-core';
+import {html} from 'lit-html';
+import {defineCustomElements} from '@ovhcloud/ods-components/flag/loader';
+import {Ods, odsSetup} from '@ovhcloud/ods-common-core';
 import changelog from '@ovhcloud/ods-components/flag/CHANGELOG.md';
 import page from './flag.web-component.stories.page.mdx';
-import { getTagAttributes } from '../../../core/componentHTMLUtils';
+import {getTagAttributes} from '../../../core/componentHTMLUtils';
 
 odsSetup();
 Ods.instance().assetPath('flags/');
@@ -17,20 +17,20 @@ export default {
     notes: {
       changelog,
     },
-    docs: { page }
+    docs: {page},
   },
 };
 
 const storyParams = {
   iso: 'fr',
-  lazy: true
+  lazy: true,
 };
 
 // A flag example
 const TemplateDefault = (args: any) => html`
   <osds-flag ...=${getTagAttributes(args)}></osds-flag>
 `;
- export const Default = TemplateDefault.bind({});
+export const Default = TemplateDefault.bind({});
 Default.parameters = {
   viewport: {
     viewports: {
@@ -50,7 +50,7 @@ Default.args = {
   ...storyParams,
 };
 
-const Play = async () => {
+const Play = async() => {
   Ods.instance().assetPath('flags/');
 };
 

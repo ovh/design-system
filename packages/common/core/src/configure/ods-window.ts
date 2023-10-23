@@ -1,7 +1,7 @@
-import { OdsWindowConfig } from './ods-window-config';
-import { OdsConfig } from './ods-config';
-import { DeepRequired } from '../types/ods-deep-required';
-import { odsSetup } from './ods-setup';
+import {OdsWindowConfig} from './ods-window-config';
+import {OdsConfig} from './ods-config';
+import {DeepRequired} from '../types/ods-deep-required';
+import {odsSetup} from './ods-setup';
 
 /**
  * description of all properties globally managed into window by the `ODS` system.

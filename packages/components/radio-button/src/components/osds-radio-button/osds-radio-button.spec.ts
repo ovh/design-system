@@ -1,12 +1,12 @@
-import type { SpecPage } from '@stencil/core/testing';
-import type { OdsRadioButtonAttribute } from './interfaces/attributes';
-import { OdsCreateDefaultValidityState } from '@ovhcloud/ods-common-core';
-import { OdsMockNativeMethod, OdsMockPropertyDescriptor, odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
-import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
-import { newSpecPage } from '@stencil/core/testing';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { ODS_RADIO_BUTTON_SIZE, ODS_RADIO_BUTTON_SIZES } from './constants/radio-button-size';
-import { OsdsRadioButton } from './osds-radio-button';
+import type {SpecPage} from '@stencil/core/testing';
+import type {OdsRadioButtonAttribute} from './interfaces/attributes';
+import {OdsCreateDefaultValidityState} from '@ovhcloud/ods-common-core';
+import {OdsMockNativeMethod, OdsMockPropertyDescriptor, odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute} from '@ovhcloud/ods-common-testing';
+import {ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS} from '@ovhcloud/ods-common-theming';
+import {newSpecPage} from '@stencil/core/testing';
+import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
+import {ODS_RADIO_BUTTON_SIZE, ODS_RADIO_BUTTON_SIZES} from './constants/radio-button-size';
+import {OsdsRadioButton} from './osds-radio-button';
 
 // mock validity property that does not exist when stencil mock HTMLInputElement
 OdsMockPropertyDescriptor(HTMLInputElement.prototype, 'validity', () => OdsCreateDefaultValidityState());
@@ -18,11 +18,11 @@ describe('spec:osds-radio-button', () => {
   let startSlot: HTMLElement | null | undefined;
   let endSlot: HTMLElement | null | undefined;
 
-  async function setup({ attributes = {}, html = `` }: { attributes?: Partial<OdsRadioButtonAttribute>, html?: string }) {
+  async function setup({attributes = {}, html = ''}: { attributes?: Partial<OdsRadioButtonAttribute>, html?: string }) {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsRadioButtonAttribute>(attributes, DEFAULT_ATTRIBUTE);
 
     // mock setCustomValidity method that does not exist when stencil mock HTMLInputElement
-    OdsMockNativeMethod(HTMLInputElement.prototype, "setCustomValidity", jest.fn());
+    OdsMockNativeMethod(HTMLInputElement.prototype, 'setCustomValidity', jest.fn());
 
     page = await newSpecPage({
       components: [OsdsRadioButton],
@@ -35,18 +35,18 @@ describe('spec:osds-radio-button', () => {
     endSlot = root?.shadowRoot?.querySelector('slot[name="end"]');
   }
 
-  it('should render', async () => {
+  it('should render', async() => {
     await setup({});
     expect(root?.shadowRoot).toBeTruthy();
     expect(instance).toBeTruthy();
   });
 
   describe('contents', () => {
-    it('should have a start slot', async () => {
+    it('should have a start slot', async() => {
       await setup({});
       expect(startSlot).toBeTruthy();
     });
-    it('should have a end slot', async () => {
+    it('should have a end slot', async() => {
       await setup({});
       expect(endSlot).toBeTruthy();
     });
@@ -66,13 +66,13 @@ describe('spec:osds-radio-button', () => {
         defaultValue: DEFAULT_ATTRIBUTE.color,
         newValue: ODS_THEME_COLOR_INTENT.primary,
         value: ODS_THEME_COLOR_INTENT.default,
-        setup: (value) => setup({ attributes: { ['color']: value } }),
-        ...config
+        setup: (value) => setup({attributes: {['color']: value}}),
+        ...config,
       });
 
-      it('should set a color if attribute is added', async () => {
+      it('should set a color if attribute is added', async() => {
         const randomColor = ODS_THEME_COLOR_INTENTS[ Math.floor(Math.random() * ODS_THEME_COLOR_INTENTS.length) ];
-        await setup({ attributes: { color: randomColor } });
+        await setup({attributes: {color: randomColor}});
         expect(instance.color).toBe(randomColor);
       });
     });
@@ -83,7 +83,7 @@ describe('spec:osds-radio-button', () => {
         defaultValue: DEFAULT_ATTRIBUTE.checked,
         newValue: false,
         value: true,
-        setup: (value) => setup({ attributes: { ['checked']: value } }),
+        setup: (value) => setup({attributes: {['checked']: value}}),
         ...config,
       });
     });
@@ -94,7 +94,7 @@ describe('spec:osds-radio-button', () => {
         defaultValue: DEFAULT_ATTRIBUTE.checking,
         newValue: false,
         value: true,
-        setup: (value) => setup({ attributes: { ['checking']: value } }),
+        setup: (value) => setup({attributes: {['checking']: value}}),
         ...config,
       });
     });
@@ -105,7 +105,7 @@ describe('spec:osds-radio-button', () => {
         defaultValue: DEFAULT_ATTRIBUTE.disabled,
         newValue: false,
         value: true,
-        setup: (value) => setup({ attributes: { ['disabled']: value } }),
+        setup: (value) => setup({attributes: {['disabled']: value}}),
         ...config,
       });
     });
@@ -116,12 +116,12 @@ describe('spec:osds-radio-button', () => {
         defaultValue: DEFAULT_ATTRIBUTE.size,
         newValue: ODS_RADIO_BUTTON_SIZE.md,
         value: ODS_RADIO_BUTTON_SIZE.md,
-        setup: (value) => setup({ attributes: { ['size']: value } }),
+        setup: (value) => setup({attributes: {['size']: value}}),
         ...config,
       });
-      it('should set a size if attribute is added', async () => {
+      it('should set a size if attribute is added', async() => {
         const randomSize = ODS_RADIO_BUTTON_SIZES[Math.floor(Math.random() * ODS_RADIO_BUTTON_SIZES.length)];
-        await setup({ attributes: { size: randomSize } });
+        await setup({attributes: {size: randomSize}});
         expect(instance.size).toBe(randomSize);
       });
     });

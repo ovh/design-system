@@ -1,6 +1,6 @@
-import type { OsdsTabs } from '../osds-tabs';
-import { OsdsTabBarItem } from '../../osds-tab-bar-item/osds-tab-bar-item';
-import { OsdsTabsPanel } from '../../osds-tab-panel/osds-tab-panel';
+import type {OsdsTabs} from '../osds-tabs';
+import {OsdsTabBarItem} from '../../osds-tab-bar-item/osds-tab-bar-item';
+import {OsdsTabsPanel} from '../../osds-tab-panel/osds-tab-panel';
 
 /**
  * common controller logic for text component used by the different implementations.
@@ -21,11 +21,11 @@ class OdsTabsController {
   changeActivePanel(panel: string) {
     const items = this.component.getTabItems();
     // if not item found, select the first one
-    if (!items.find(item => item.panel === panel) && items.length) {
+    if (!items.find((item) => item.panel === panel) && items.length) {
       panel = items[0].panel;
     }
-    items.forEach(item => item.active = item.panel === panel);
-    this.component.getTabPanels().forEach(tabPanel => tabPanel.active = tabPanel.name === panel);
+    items.forEach((item) => item.active = item.panel === panel);
+    this.component.getTabPanels().forEach((tabPanel) => tabPanel.active = tabPanel.name === panel);
     if (this.component.panel !== panel) {
       this.component.panel = panel;
       this.component.emitChanged();
@@ -47,5 +47,5 @@ class OdsTabsController {
 }
 
 export {
-    OdsTabsController,
+  OdsTabsController,
 };

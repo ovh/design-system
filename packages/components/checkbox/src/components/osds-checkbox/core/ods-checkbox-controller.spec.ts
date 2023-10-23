@@ -1,21 +1,22 @@
-import type { HTMLStencilElement } from '@stencil/core/internal';
-import { OdsCheckboxController } from './ods-checkbox-controller';
-import { OsdsCheckbox } from '../osds-checkbox';
+import type {HTMLStencilElement} from '@stencil/core/internal';
+import {OdsCheckboxController} from './ods-checkbox-controller';
+import {OsdsCheckbox} from '../osds-checkbox';
 import {
   OdsClearLoggerSpy,
-  odsGetSimulatedPromise,
   OdsInitializeLoggerSpy,
-  OdsLoggerSpyReferences
+  OdsLoggerSpyReferences,
+  odsGetSimulatedPromise,
 } from '@ovhcloud/ods-common-testing';
-import { Ods, OdsCheckboxable, OdsLogger } from '@ovhcloud/ods-common-core';
+import {Ods, OdsCheckboxable, OdsLogger} from '@ovhcloud/ods-common-core';
 
 class OdsCheckboxMock extends OsdsCheckbox {
   constructor(attribute: Partial<OsdsCheckbox>) {
     super();
-    Object.assign(this, attribute)
+    Object.assign(this, attribute);
   }
+
   inputEl = document.createElement('input');
-  checkboxableComponent = document.createElement('div') as unknown as (HTMLStencilElement & OdsCheckboxable);  
+  checkboxableComponent = document.createElement('div') as unknown as (HTMLStencilElement & OdsCheckboxable);
 }
 
 describe('spec:ods-checkbox-controller', () => {
@@ -33,7 +34,7 @@ describe('spec:ods-checkbox-controller', () => {
     const loggerMocked = new OdsLogger('myLoggerMocked');
     loggerSpyReferences = OdsInitializeLoggerSpy({
       loggerMocked: loggerMocked as never,
-      spiedClass: OdsCheckboxController
+      spiedClass: OdsCheckboxController,
     });
   });
 
@@ -43,7 +44,7 @@ describe('spec:ods-checkbox-controller', () => {
   });
 
   function getSaveCbk(withError: boolean) {
-    const cbk: OsdsCheckbox['save'] = ({ checked, value }) => {
+    const cbk: OsdsCheckbox['save'] = ({checked, value}) => {
       return odsGetSimulatedPromise(withError, () => {
         logger.log(`getSaveFct. checked=${checked}, value=${value}`);
       });
@@ -52,7 +53,7 @@ describe('spec:ods-checkbox-controller', () => {
   }
 
   function getBeforeSaveCbk(withError: boolean) {
-    const cbk: OsdsCheckbox['beforeSave'] = ({ checked, value }) => {
+    const cbk: OsdsCheckbox['beforeSave'] = ({checked, value}) => {
       return odsGetSimulatedPromise(withError, () => {
         logger.log(`getSaveFct. checked=${checked}, value=${value}`);
       });
@@ -61,7 +62,7 @@ describe('spec:ods-checkbox-controller', () => {
   }
 
   function getAfterSaveCbk(withError: boolean) {
-    const cbk: OsdsCheckbox['afterSave'] = ({ checked, value }) => {
+    const cbk: OsdsCheckbox['afterSave'] = ({checked, value}) => {
       return odsGetSimulatedPromise(withError, () => {
         logger.log(`getSaveFct. checked=${checked}, value=${value}`);
       });
@@ -95,26 +96,26 @@ describe('spec:ods-checkbox-controller', () => {
   describe('methods', () => {
 
     describe('afterInit', () => {
-      it('should call propagateCheckedToChild and propagateDisabledToChild methods', async () => {
+      it('should call propagateCheckedToChild and propagateDisabledToChild methods', async() => {
         setup();
         const spyOnPropagateCheckedToChild = jest.spyOn(component, 'propagateCheckedToChild').mockImplementation((checked) => {
-          logger.log(`resolving propagateCheckedToChild`, checked);
+          logger.log('resolving propagateCheckedToChild', checked);
         });
         const spyOnPropagateDisabledToChild = jest.spyOn(component, 'propagateDisabledToChild').mockImplementation((disabled) => {
-          logger.log(`resolving propagateDisabledToChild`, disabled);
+          logger.log('resolving propagateDisabledToChild', disabled);
         });
         controller.afterInit();
         expect(spyOnPropagateCheckedToChild).toHaveBeenCalled();
         expect(spyOnPropagateDisabledToChild).toHaveBeenCalled();
       });
 
-      it('should disable focus management on child', async () => {
+      it('should disable focus management on child', async() => {
         setup();
         controller.afterInit();
         expect(component.checkboxableComponent.getAttribute('tabindex')).toEqual('-1');
       });
 
-      it('should warn user if no checkboxable element found', async () => {
+      it('should warn user if no checkboxable element found', async() => {
         const expected = `you must place a checkboxable element inside the checkbox component.
           (html input checkbox or any html component that accepts checked attribute)`;
         setup({
@@ -128,7 +129,7 @@ describe('spec:ods-checkbox-controller', () => {
     describe('getTabIndex', () => {
       it('should get the tab index', () => {
         setup({
-          tabindex: 42
+          tabindex: 42,
         });
         const index = controller.getTabIndex();
         expect(index).toEqual(component.tabindex);
@@ -144,7 +145,7 @@ describe('spec:ods-checkbox-controller', () => {
     });
 
     describe('handleToggleByClick', () => {
-      it('should call toggleCheck method on click', async () => {
+      it('should call toggleCheck method on click', async() => {
         setup();
         const spyOnToggleCheck = jest.spyOn(controller, 'toggleCheck');
         const event = new MouseEvent('click');
@@ -155,13 +156,13 @@ describe('spec:ods-checkbox-controller', () => {
     });
 
     describe('handleToggleByKeyEvent', () => {
-      it('should call toggleCheck method on key event', async () => {
+      it('should call toggleCheck method on key event', async() => {
         setup();
         const spyOnEmitChecked = jest.spyOn(component, 'emitChecked').mockImplementation(() => {
-          logger.log(`emitChecked`);
+          logger.log('emitChecked');
         });
         const spyOnToggleCheck = jest.spyOn(controller, 'toggleCheck');
-        const event = new KeyboardEvent('keyDown', { code: 'Space', keyCode: 32, bubbles: true });
+        const event = new KeyboardEvent('keyDown', {code: 'Space', keyCode: 32, bubbles: true});
         await controller.handleToggleByKeyEvent(event);
         expect(spyOnToggleCheck).toHaveBeenCalled();
         expect(component.checked).toEqual(true);
@@ -229,8 +230,8 @@ describe('spec:ods-checkbox-controller', () => {
 
       it('should do nothing if no inputEl', () => {
         setup({
-            disabled: false,
-            inputEl: undefined,
+          disabled: false,
+          inputEl: undefined,
         });
         controller.setFocus();
         expect(component.hasFocus).toEqual(false);
@@ -252,7 +253,7 @@ describe('spec:ods-checkbox-controller', () => {
     describe('setTabindex', () => {
       it('should set the index', () => {
         setup({
-          tabindex: 1
+          tabindex: 1,
         });
         controller.setTabindex(42);
         expect(component.tabindex).toEqual(42);
@@ -260,7 +261,7 @@ describe('spec:ods-checkbox-controller', () => {
     });
 
     describe('toggleCheck', () => {
-      it('should not toggle if disabled and not checked', async () => {
+      it('should not toggle if disabled and not checked', async() => {
         setup({
           disabled: true,
           checked: false,
@@ -269,7 +270,7 @@ describe('spec:ods-checkbox-controller', () => {
         expect(component.checked).toEqual(false);
       });
 
-      it('should not toggle if disabled and checked', async () => {
+      it('should not toggle if disabled and checked', async() => {
         setup({
           disabled: true,
           checked: true,
@@ -283,7 +284,7 @@ describe('spec:ods-checkbox-controller', () => {
        * in case of no save callback defined
        */
       describe('optimistic update', () => {
-        it('should doing optimistic update', async () => {
+        it('should doing optimistic update', async() => {
           setup();
           const spyOnEmitChecked = jest.spyOn(component, 'emitChecked');
           await controller.toggleCheck();
@@ -300,7 +301,7 @@ describe('spec:ods-checkbox-controller', () => {
 
 
         describe('saving process in success', () => {
-          it('should call beforeSave', async () => {
+          it('should call beforeSave', async() => {
             setup({
               beforeSave: getBeforeSaveCbk(false),
               save: getSaveCbk(false),
@@ -316,7 +317,7 @@ describe('spec:ods-checkbox-controller', () => {
             expect(spyOnSave).toHaveBeenCalled();
           });
 
-          it('should call save', async () => {
+          it('should call save', async() => {
             setup({
               save: getSaveCbk(false),
             });
@@ -329,7 +330,7 @@ describe('spec:ods-checkbox-controller', () => {
             expect(spyOnSave).toHaveBeenCalled();
           });
 
-          it('should call afterSave', async () => {
+          it('should call afterSave', async() => {
             setup({
               afterSave: getAfterSaveCbk(false),
               save: getSaveCbk(false),
@@ -346,8 +347,8 @@ describe('spec:ods-checkbox-controller', () => {
 
         describe('saving catching potential errors', () => {
 
-          it('should catch potential error of beforeSave', async () => {
-           setup({
+          it('should catch potential error of beforeSave', async() => {
+            setup({
               beforeSave: getBeforeSaveCbk(true),
               save: getSaveCbk(false),
             });
@@ -362,7 +363,7 @@ describe('spec:ods-checkbox-controller', () => {
             expect(spyOnSave).not.toHaveBeenCalled();
           });
 
-          it('should catch potential error of save', async () => {
+          it('should catch potential error of save', async() => {
             setup({
               save: getSaveCbk(true),
             });
@@ -375,7 +376,7 @@ describe('spec:ods-checkbox-controller', () => {
             expect(spyOnSave).toHaveBeenCalled();
           });
 
-          it('should catch potential error of afterSave', async () => {
+          it('should catch potential error of afterSave', async() => {
             setup({
               afterSave: getAfterSaveCbk(true),
               save: getSaveCbk(false),

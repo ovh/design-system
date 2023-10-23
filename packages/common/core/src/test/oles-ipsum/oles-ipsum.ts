@@ -5,7 +5,7 @@ import {
   OLES_IPSUM_START,
   OVHCLOUD_KEYWORDS,
 } from './oles-ipsum.constants';
-import { OlesIpsumGeneration } from './oles-ipsum.types';
+import {OlesIpsumGeneration} from './oles-ipsum.types';
 
 const trim = (s: string) => {
   return s.replace(/^\s+/, '').replace(/\s+$/, '');
@@ -88,18 +88,18 @@ export function olesIpsum(generationType?: OlesIpsumGeneration, amount?: number)
   }
 
   switch (generationType) {
-    case OlesIpsumGeneration.paragraphs:
-      result += createParagraphs(amount);
-      break;
-    case OlesIpsumGeneration.sentences:
-      result += createSentences(amount);
-      break;
-    case OlesIpsumGeneration.words:
-      result += createWords(amount);
-      break;
-    default:
-      result += createParagraphs(amount);
-      break;
+  case OlesIpsumGeneration.paragraphs:
+    result += createParagraphs(amount);
+    break;
+  case OlesIpsumGeneration.sentences:
+    result += createSentences(amount);
+    break;
+  case OlesIpsumGeneration.words:
+    result += createWords(amount);
+    break;
+  default:
+    result += createParagraphs(amount);
+    break;
   }
 
   return result;

@@ -1,17 +1,18 @@
-import type { OsdsButton } from '@ovhcloud/ods-component-button';
-import type { OsdsIcon } from '@ovhcloud/ods-component-icon';
-import { ODS_BUTTON_SIZE, ODS_BUTTON_VARIANT } from '@ovhcloud/ods-component-button';
-import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
-import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
-import { OdsClearLoggerSpy, OdsInitializeLoggerSpy, OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
-import { OdsCodeController } from './controller';
-import { OsdsCode } from '../osds-code';
+import type {OsdsButton} from '@ovhcloud/ods-component-button';
+import type {OsdsIcon} from '@ovhcloud/ods-component-icon';
+import {ODS_BUTTON_SIZE, ODS_BUTTON_VARIANT} from '@ovhcloud/ods-component-button';
+import {ODS_ICON_NAME, ODS_ICON_SIZE} from '@ovhcloud/ods-component-icon';
+import {Ods, OdsLogger} from '@ovhcloud/ods-common-core';
+import {OdsClearLoggerSpy, OdsInitializeLoggerSpy, OdsLoggerSpyReferences} from '@ovhcloud/ods-common-testing';
+import {OdsCodeController} from './controller';
+import {OsdsCode} from '../osds-code';
 
 class OdsCodeMock extends OsdsCode {
   constructor(attribute: Partial<OsdsCode>) {
     super();
-    Object.assign(this, attribute)
+    Object.assign(this, attribute);
   }
+
   controller: OdsCodeController = jest.fn() as unknown as OdsCodeController;
   beforeRender = jest.fn();
   copyCode = jest.fn();
@@ -35,7 +36,7 @@ describe('spec:ods-code-controller', () => {
     const loggerMocked = new OdsLogger('myLoggerMocked');
     loggerSpyReferences = OdsInitializeLoggerSpy({
       loggerMocked: loggerMocked as never,
-      spiedClass: OdsCodeController
+      spiedClass: OdsCodeController,
     });
   });
 
@@ -68,7 +69,7 @@ describe('spec:ods-code-controller', () => {
           return slot;
         });
         const spyOnAssignedElements = jest.spyOn(slot, 'assignedNodes').mockImplementation(() => [textNode]);
-        const spyOnClipboard = jest.spyOn(navigator.clipboard, "writeText");
+        const spyOnClipboard = jest.spyOn(navigator.clipboard, 'writeText');
         controller.copyCode();
         expect(spyOnQuerySelectorCodeEL).toHaveBeenCalledWith('slot');
         expect(spyOnQuerySelectorCodeEL).toHaveBeenCalledTimes(1);

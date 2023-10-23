@@ -1,8 +1,8 @@
-import type { GenericLogger } from '../unit/generic-logger';
-import { odsMockProperty } from './ods-mock-property';
-import { OdsComponentForTesting } from '../unit/ods-component-for-testing';
-import { OdsSpyOnLoggerInstance } from './ods-spy-on-logger-instance';
-import { OdsLoggerSpyReferences } from './ods-logger-spy-references';
+import type {GenericLogger} from '../unit/generic-logger';
+import {odsMockProperty} from './ods-mock-property';
+import {OdsComponentForTesting} from '../unit/ods-component-for-testing';
+import {OdsSpyOnLoggerInstance} from './ods-spy-on-logger-instance';
+import {OdsLoggerSpyReferences} from './ods-logger-spy-references';
 
 /**
  * initialize the spy for the ods logger.
@@ -29,7 +29,7 @@ import { OdsLoggerSpyReferences } from './ods-logger-spy-references';
  *
  * @param options - give the logger instance, the class and optionally the name of logger property
  */
-export function OdsInitializeLoggerSpy<T extends (unknown & { prototype: unknown; })>(options: {
+export function OdsInitializeLoggerSpy<T extends(unknown & { prototype: unknown; })>(options: {
   /** instance of GenericLogger you want to override the original one */
   loggerMocked: GenericLogger,
   /** class on which to spy the logger property */
@@ -47,6 +47,6 @@ export function OdsInitializeLoggerSpy<T extends (unknown & { prototype: unknown
     spiedClass: options.spiedClass,
     propertyName,
     methodSpies: loggerMethodsSpies,
-    propertySpy: loggerPropertySpy
-  }
+    propertySpy: loggerPropertySpy,
+  };
 }

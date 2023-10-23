@@ -1,4 +1,4 @@
-import { isOcdkConfigLogging, OcdkConfigLogging } from './ocdk-config-logging';
+import {OcdkConfigLogging, isOcdkConfigLogging} from './ocdk-config-logging';
 
 /**
  * OCDK main configuration parameters.

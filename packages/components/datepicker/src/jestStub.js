@@ -1,18 +1,18 @@
 class Stub {
-    constructor() {}
+  constructor() {}
 
-    static locales = {}
+  static locales = {};
 
-    static formatDate(date, format) {
-        return `${date} ${format}`;
-    }
+  static formatDate(date, format) {
+    return `${date} ${format}`;
+  }
 
-    static parseDate() {
+  static parseDate() {
 
-    }
+  }
 }
 
 // eslint-disable-next-line no-undef
 module.exports = {
-    Datepicker: Stub,
+  Datepicker: Stub,
 };

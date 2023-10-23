@@ -1,5 +1,5 @@
-import { Config } from '@stencil/core';
-import { getStencilConfig } from '@ovhcloud/ods-common-stencil';
+import {Config} from '@stencil/core';
+import {getStencilConfig} from '@ovhcloud/ods-common-stencil';
 
 const args = process.argv.slice(2);
 
@@ -9,11 +9,11 @@ const config: Config = {
     args,
     reactOutput: {
       componentCorePackage: '@ovhcloud/ods-cdk-dev',
-      excludeComponents: []
+      excludeComponents: [],
     },
     vueOutput: {
       componentCorePackage: '@ovhcloud/ods-cdk-dev',
-      excludeComponents: []
+      excludeComponents: [],
     },
     distCustomElements: {
       type: 'dist-custom-elements',
@@ -41,12 +41,12 @@ const config: Config = {
     },
     dev: {
       tsConfig: 'tsconfig.dev.json',
-      globalScript: 'src/www.ts'
+      globalScript: 'src/www.ts',
     },
     prod: {
-      tsConfig: 'tsconfig.prod.json'
-    }
+      tsConfig: 'tsconfig.prod.json',
+    },
   }),
 };
 
-export { config };
+export {config};

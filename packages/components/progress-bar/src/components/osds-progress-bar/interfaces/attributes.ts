@@ -10,5 +10,5 @@ interface OdsProgressBarAttribute {
 }
 
 export {
-    OdsProgressBarAttribute,
+  OdsProgressBarAttribute,
 };

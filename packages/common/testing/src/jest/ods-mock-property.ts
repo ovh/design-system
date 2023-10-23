@@ -43,10 +43,10 @@ export function odsMockProperty<T extends unknown, K extends keyof T>(object: T,
   mocksForThisObject[property] = descriptor;
   mocks.set(object, mocksForThisObject);
   const newDescriptor = {
-    ...(descriptor ? descriptor  : {}),
+    ...(descriptor ? descriptor : {}),
     get: descriptor?.get ? descriptor.get : () => value,
     set: descriptor?.set ? descriptor.set : (v: unknown) => v,
-    configurable: true };
+    configurable: true};
   delete newDescriptor.value;
   delete newDescriptor.writable;
   Object.defineProperty(object, property, newDescriptor);
@@ -68,7 +68,7 @@ export function odsMockProperty<T extends unknown, K extends keyof T>(object: T,
  */
 export function odsUnmockProperty<T extends {}, K extends keyof T>(object: T, property: K): void {
   const obj = mocks.get(object);
-  if (obj && Object.keys(obj).some(p => p === property)) {
+  if (obj && Object.keys(obj).some((p) => p === property)) {
     const descriptor = Object.getOwnPropertyDescriptor(obj, property);
     if (descriptor) {
       Object.defineProperty(object, property, descriptor);

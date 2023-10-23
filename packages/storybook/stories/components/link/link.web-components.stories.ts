@@ -1,9 +1,9 @@
-import { html } from 'lit-html';
-import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-import { defineCustomElements } from '@ovhcloud/ods-components/link/loader';
-import { OdsHTMLAnchorElementRelList, OdsHTMLAnchorElementTarget, OdsHTMLAnchorElementTargetList } from '@ovhcloud/ods-common-core';
-import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
-import { createComponentTable, getTagAttributes } from '../../../core/componentHTMLUtils';
+import {html} from 'lit-html';
+import {unsafeHTML} from 'lit-html/directives/unsafe-html';
+import {defineCustomElements} from '@ovhcloud/ods-components/link/loader';
+import {OdsHTMLAnchorElementRelList, OdsHTMLAnchorElementTarget, OdsHTMLAnchorElementTargetList} from '@ovhcloud/ods-common-core';
+import {ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS} from '@ovhcloud/ods-common-theming';
+import {createComponentTable, getTagAttributes} from '../../../core/componentHTMLUtils';
 // @ts-ignore
 import changelog from '@ovhcloud/ods-components/link/CHANGELOG.md';
 // @ts-ignore
@@ -15,21 +15,21 @@ const argTypes = {
   color: {
     category: 'General',
     options: ODS_THEME_COLOR_INTENTS,
-    control: { type: 'select' },
+    control: {type: 'select'},
   },
   rel: {
     category: 'Misc',
     options: OdsHTMLAnchorElementRelList,
-    control: { type: 'select' },
+    control: {type: 'select'},
   },
   target: {
     category: 'Misc',
     options: OdsHTMLAnchorElementTargetList,
-    control: { type: 'select' },
+    control: {type: 'select'},
   },
   download: {
     category: 'Misc',
-  }
+  },
 };
 
 export default {
@@ -39,9 +39,9 @@ export default {
     notes: {
       changelog,
     },
-    docs: { page }
+    docs: {page},
   },
-  argTypes
+  argTypes,
 };
 
 /* Story options */
@@ -57,7 +57,7 @@ const storyParams = {
   startSlot: '',
   rel: '',
   target: OdsHTMLAnchorElementTarget._self,
-  download: 'filename'
+  download: 'filename',
 };
 
 /* Default */
@@ -75,7 +75,7 @@ Default.args = {
 };
 
 const defaultTag = 'osds-link';
-const defaultContent = `Text`;
+const defaultContent = 'Text';
 
 const TemplateAll = () => html`
 <style>
@@ -97,40 +97,40 @@ const TemplateAll = () => html`
 
 <h1>Colors</h1>
 ${unsafeHTML(createComponentTable(
-  defaultTag,
-  { href: [''] },
-  { color: ODS_THEME_COLOR_INTENTS },
-  defaultContent
-))}
+    defaultTag,
+    {href: ['']},
+    {color: ODS_THEME_COLOR_INTENTS},
+    defaultContent,
+  ))}
 <h1>Disabled Colors</h1>
 ${unsafeHTML(createComponentTable(
-  defaultTag,
-  { href: [''] },
-  { color: ODS_THEME_COLOR_INTENTS },
-  defaultContent,
-  { disabled: true }
-))}
+    defaultTag,
+    {href: ['']},
+    {color: ODS_THEME_COLOR_INTENTS},
+    defaultContent,
+    {disabled: true},
+  ))}
 <div style='background: #666; padding: 1em; margin: -0.3em -0.8em; color: white'>
   <h1>Contrasted Colors</h1>
   ${unsafeHTML(createComponentTable(
     defaultTag,
-    { href: [''] },
-    { color: ODS_THEME_COLOR_INTENTS },
+    {href: ['']},
+    {color: ODS_THEME_COLOR_INTENTS},
     defaultContent,
-    { contrasted: true }
+    {contrasted: true},
   ))}
   <h1>Disabled and contrasted Colors</h1>
   ${unsafeHTML(createComponentTable(
     defaultTag,
-    { href: [''] },
-    { color: ODS_THEME_COLOR_INTENTS },
+    {href: ['']},
+    {color: ODS_THEME_COLOR_INTENTS},
     defaultContent,
-    { contrasted: true, disabled: true }
+    {contrasted: true, disabled: true},
   ))}
 </div>
 `;
 export const All = TemplateAll.bind({});
 // @ts-ignore
 All.parameters = {
-  controls: { hideNoControlsWarning: true }
+  controls: {hideNoControlsWarning: true},
 };

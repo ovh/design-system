@@ -1,22 +1,22 @@
-import type { E2EElement, E2EPage } from '@stencil/core/testing';
-import type { OdsInputAttribute } from './interfaces/attributes';
-import { newE2EPage } from '@stencil/core/testing';
-import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
-import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { ODS_INPUT_SIZES } from './constants/input-size';
-import { ODS_INPUT_TYPE } from './constants/input-type';
+import type {E2EElement, E2EPage} from '@stencil/core/testing';
+import type {OdsInputAttribute} from './interfaces/attributes';
+import {newE2EPage} from '@stencil/core/testing';
+import {odsComponentAttributes2StringAttributes, odsStringAttributes2Str} from '@ovhcloud/ods-common-testing';
+import {ODS_THEME_COLOR_INTENTS} from '@ovhcloud/ods-common-theming';
+import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
+import {ODS_INPUT_SIZES} from './constants/input-size';
+import {ODS_INPUT_TYPE} from './constants/input-type';
 
 describe('e2e:osds-input', () => {
-  const baseAttribute = { ariaLabel: null, defaultValue: '', forbiddenValues: [], type: ODS_INPUT_TYPE.text, value: '' };
+  const baseAttribute = {ariaLabel: null, defaultValue: '', forbiddenValues: [], type: ODS_INPUT_TYPE.text, value: ''};
   let page: E2EPage;
   let el: E2EElement;
 
-  async function setup({ attributes = {}, onPage }: { attributes?: Partial<OdsInputAttribute>, html?: string, onPage?: ({ page }: { page: E2EPage }) => void } = {}) {
-    const stringAttributes = odsComponentAttributes2StringAttributes<OdsInputAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE)
+  async function setup({attributes = {}, onPage}: { attributes?: Partial<OdsInputAttribute>, html?: string, onPage?: ({page}: { page: E2EPage }) => void } = {}) {
+    const stringAttributes = odsComponentAttributes2StringAttributes<OdsInputAttribute>({...baseAttribute, ...attributes}, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
-    onPage && onPage({ page });
+    onPage && onPage({page});
 
     await page.setContent(`
       <osds-input ${odsStringAttributes2Str(stringAttributes)}>
@@ -27,12 +27,12 @@ describe('e2e:osds-input', () => {
     el = await page.find('osds-input');
   }
 
-  const stopSpinnerAnimation = async (page: E2EPage) => {
+  const stopSpinnerAnimation = async(page: E2EPage) => {
     await page.evaluate(() => {
       const spinnerEl = document.querySelector('osds-input')?.shadowRoot?.querySelector('osds-spinner')?.shadowRoot?.querySelector('.spinner > svg') as HTMLElement;
       spinnerEl.style.setProperty('animation', 'none');
     });
-  }
+  };
 
   const screenshotActions = [
     {
@@ -150,10 +150,10 @@ describe('e2e:osds-input', () => {
     }, {
       // Will display the input with a spinner
       actionDescription: 'loading',
-      action: async () => {
+      action: async() => {
         await Promise.all([
           el.setProperty('loading', true),
-          page.waitForChanges()
+          page.waitForChanges(),
         ]);
 
         await stopSpinnerAnimation(page);
@@ -161,11 +161,11 @@ describe('e2e:osds-input', () => {
     }, {
       // Will display the input with an icon and a spinner
       actionDescription: 'loading & icon',
-      action: async () => {
+      action: async() => {
         await Promise.all([
           el.setProperty('icon', 'ovh'),
           el.setProperty('loading', true),
-          page.waitForChanges()
+          page.waitForChanges(),
         ]);
 
         await stopSpinnerAnimation(page);
@@ -179,11 +179,11 @@ describe('e2e:osds-input', () => {
     }, {
       // Will display a disabled input with a spinner
       actionDescription: 'loading & disabled',
-      action: async () => {
+      action: async() => {
         await Promise.all([
           el.setProperty('disabled', true),
           el.setProperty('loading', true),
-          page.waitForChanges()
+          page.waitForChanges(),
         ]);
 
         await stopSpinnerAnimation(page);
@@ -251,25 +251,25 @@ describe('e2e:osds-input', () => {
   const screenshotBehaviours = [
     {
       behaviourDescription: 'no behaviour',
-      behaviour: () => new Promise(resolve => resolve('')),
+      behaviour: () => new Promise((resolve) => resolve('')),
     }, {
       behaviourDescription: 'focus',
       behaviour: () => el.focus(),
-    }
+    },
   ];
 
   describe('screenshots', () => {
     // Todo : add active behaviour on top of hover and focus
-    screenshotActions.forEach(({ actionDescription, action }) => {
-      screenshotBehaviours.forEach(({ behaviourDescription, behaviour }) => {
+    screenshotActions.forEach(({actionDescription, action}) => {
+      screenshotBehaviours.forEach(({behaviourDescription, behaviour}) => {
         ODS_THEME_COLOR_INTENTS.forEach((color) => {
           ODS_INPUT_SIZES.forEach((size) => {
             const name = [color, size, actionDescription, behaviourDescription].join(', ');
-            it(name, async () => {
+            it(name, async() => {
               await setup({
                 attributes: {
                   color,
-                  size
+                  size,
                 },
               });
               action();
@@ -278,13 +278,13 @@ describe('e2e:osds-input', () => {
 
               await page.evaluate(() => {
                 const element = document.querySelector('osds-input') as HTMLElement;
-                return { width: element.clientWidth, height: element.clientHeight };
+                return {width: element.clientWidth, height: element.clientHeight};
               });
-              await page.setViewport({ width: 600, height:600 });
+              await page.setViewport({width: 600, height:600});
 
-              const results = await page.compareScreenshot('input', { fullPage: false, omitBackground: true });
+              const results = await page.compareScreenshot('input', {fullPage: false, omitBackground: true});
 
-              expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
+              expect(results).toMatchScreenshot({allowableMismatchedRatio: 0});
             });
           });
         });

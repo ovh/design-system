@@ -1,9 +1,9 @@
-import { html } from 'lit-html';
-import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
-import { defineCustomElements } from '@ovhcloud/ods-components/tile/loader';
-import { ODS_TILE_SIZE, ODS_TILE_SIZES, ODS_TILE_VARIANT, ODS_TILE_VARIANTS } from '@ovhcloud/ods-components/tile';
-import { olesIpsum, OlesIpsumGeneration } from '@ovhcloud/ods-common-core';
+import {html} from 'lit-html';
+import {unsafeHTML} from 'lit-html/directives/unsafe-html';
+import {ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS} from '@ovhcloud/ods-common-theming';
+import {defineCustomElements} from '@ovhcloud/ods-components/tile/loader';
+import {ODS_TILE_SIZE, ODS_TILE_SIZES, ODS_TILE_VARIANT, ODS_TILE_VARIANTS} from '@ovhcloud/ods-components/tile';
+import {OlesIpsumGeneration, olesIpsum} from '@ovhcloud/ods-common-core';
 import {
   createComponentTable,
   extractArgTypes,
@@ -23,63 +23,63 @@ const storyParams = {
     category: 'General',
     defaultValue: ODS_THEME_COLOR_INTENT.default,
     options: ODS_THEME_COLOR_INTENTS,
-    control: { type: 'select' },
+    control: {type: 'select'},
   },
   size: {
     category: 'General',
     defaultValue: ODS_TILE_SIZE.md,
     options: ODS_TILE_SIZES,
-    control: { type: 'select' },
+    control: {type: 'select'},
   },
   variant: {
     category: 'General',
     defaultValue: ODS_TILE_VARIANT.stroked,
     options: ODS_TILE_VARIANTS,
-    control: { type: 'select' },
+    control: {type: 'select'},
   },
   start: {
     category: 'Slot',
-    defaultValue: ''
+    defaultValue: '',
   },
   tileContent: {
     category: 'Slot',
-    defaultValue: ''
+    defaultValue: '',
   },
   end: {
     category: 'Slot',
-    defaultValue: ''
+    defaultValue: '',
   },
   disabled: {
     category: 'Misc',
-    defaultValue: false
+    defaultValue: false,
   },
   inline: {
     category: 'Misc',
-    defaultValue: false
+    defaultValue: false,
   },
   rounded: {
     category: 'Misc',
-    defaultValue: true
+    defaultValue: true,
   },
   hoverable: {
     category: 'Misc',
-    defaultValue: false
+    defaultValue: false,
   },
   checked: {
     category: 'Misc',
-    defaultValue: false
+    defaultValue: false,
   },
   checking: {
     category: 'Misc',
-    defaultValue: false
+    defaultValue: false,
   },
   loading: {
     category: 'Misc',
-    defaultValue: false
+    defaultValue: false,
   },
   hasFocus: {
     category: 'Misc',
-    defaultValue: false
+    defaultValue: false,
   },
 };
 
@@ -90,8 +90,8 @@ export default {
     notes: {
       changelog,
     },
-    docs: { page }
-  }
+    docs: {page},
+  },
 };
 
 // A tile example
@@ -108,7 +108,7 @@ const TemplateDefault = (args: any) => {
       </osds-tile>
     </div>
   `;
-}
+};
 export const Default = TemplateDefault.bind({});
 Default.args = {
   ...extractStoryParams(storyParams),
@@ -141,34 +141,34 @@ const TemplateAll = (args: any) => html`
   <h1>Sizes & Colors</h1>
   ${unsafeHTML(createComponentTable(
     defaultTag,
-    { size: ODS_TILE_VARIANTS },
-    { color: ODS_THEME_COLOR_INTENTS },
+    {size: ODS_TILE_VARIANTS},
+    {color: ODS_THEME_COLOR_INTENTS},
     defaultContent,
-    { ...(args.checking ? { checking: args.checking } : {}) }
+    {...(args.checking ? {checking: args.checking} : {})},
   ))}
   <h1>hoverable Sizes & Colors</h1>
   ${unsafeHTML(createComponentTable(
     defaultTag,
-    { size: ODS_TILE_SIZES },
-    { color: ODS_THEME_COLOR_INTENTS },
+    {size: ODS_TILE_SIZES},
+    {color: ODS_THEME_COLOR_INTENTS},
     defaultContent,
-    { hoverable: true, ...(args.checking ? { checking: args.checking } : {}) }
+    {hoverable: true, ...(args.checking ? {checking: args.checking} : {})},
   ))}
   <h1>checked Sizes & Colors</h1>
   ${unsafeHTML(createComponentTable(
     defaultTag,
-    { size: ODS_TILE_SIZES },
-    { color: ODS_THEME_COLOR_INTENTS },
+    {size: ODS_TILE_SIZES},
+    {color: ODS_THEME_COLOR_INTENTS},
     defaultContent,
-    { hoverable: true, checked: true, ...(args.checking ? { checking: args.checking } : {}) }
+    {hoverable: true, checked: true, ...(args.checking ? {checking: args.checking} : {})},
   ))}
   <h1>Disabled Sizes & Colors</h1>
   ${unsafeHTML(createComponentTable(
     defaultTag,
-    { size: ODS_TILE_SIZES },
-    { color: ODS_THEME_COLOR_INTENTS },
+    {size: ODS_TILE_SIZES},
+    {color: ODS_THEME_COLOR_INTENTS},
     defaultContent,
-    { disabled: true, ...(args.checking ? { checking: args.checking } : {}) }
+    {disabled: true, ...(args.checking ? {checking: args.checking} : {})},
   ))}
 `;
 
@@ -176,7 +176,7 @@ const TemplateAll = (args: any) => html`
 const storyParamsAll = {
   checking: {
     category: 'Misc',
-    defaultValue: true
+    defaultValue: true,
   },
 };
 
@@ -186,4 +186,4 @@ All.args = {
 };
 All.argTypes = extractArgTypes(storyParamsAll);
 
-export { UpdateStrategy } from './tile.web-components.stories.update-strategy';
+export {UpdateStrategy} from './tile.web-components.stories.update-strategy';

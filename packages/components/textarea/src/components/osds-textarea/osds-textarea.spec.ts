@@ -1,18 +1,18 @@
 jest.mock('./core/controller'); // keep jest.mock before any
 
-import type { SpecPage } from '@stencil/core/testing';
-import type { OdsTextAreaAttribute } from './interfaces/attributes';
-import { newSpecPage } from '@stencil/core/testing';
-import { OdsFormControl } from '@ovhcloud/ods-common-core';
-import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
-import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { ODS_TEXTAREA_SIZE } from './constants/textarea-size';
-import { OdsTextAreaController } from './core/controller';
-import { OsdsTextArea } from './osds-textarea';
+import type {SpecPage} from '@stencil/core/testing';
+import type {OdsTextAreaAttribute} from './interfaces/attributes';
+import {newSpecPage} from '@stencil/core/testing';
+import {OdsFormControl} from '@ovhcloud/ods-common-core';
+import {odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute} from '@ovhcloud/ods-common-testing';
+import {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
+import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
+import {ODS_TEXTAREA_SIZE} from './constants/textarea-size';
+import {OdsTextAreaController} from './core/controller';
+import {OsdsTextArea} from './osds-textarea';
 
 describe('spec:osds-textarea', () => {
-  const baseAttribute = { ariaLabel: null, hasFocus: false, spellcheck: false, value: '' };
+  const baseAttribute = {ariaLabel: null, hasFocus: false, spellcheck: false, value: ''};
   let page: SpecPage;
   let htmlTextArea: HTMLTextAreaElement | null | undefined;
   let instance: OsdsTextArea;
@@ -22,8 +22,8 @@ describe('spec:osds-textarea', () => {
     jest.clearAllMocks();
   });
 
-  async function setup({ attributes = {} }: { attributes?: Partial<OdsTextAreaAttribute> } = {}) {
-    const stringAttributes = odsComponentAttributes2StringAttributes<OdsTextAreaAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
+  async function setup({attributes = {}}: { attributes?: Partial<OdsTextAreaAttribute> } = {}) {
+    const stringAttributes = odsComponentAttributes2StringAttributes<OdsTextAreaAttribute>({...baseAttribute, ...attributes}, DEFAULT_ATTRIBUTE);
 
     page = await newSpecPage({
       components: [OsdsTextArea],
@@ -35,13 +35,13 @@ describe('spec:osds-textarea', () => {
     controller = (OdsTextAreaController as unknown as jest.SpyInstance<OdsTextAreaController, unknown[]>).mock.instances[0];
   }
 
-  it('should render', async () => {
+  it('should render', async() => {
     await setup();
     expect(page.root?.shadowRoot).toBeTruthy();
     expect(instance).toBeTruthy();
   });
 
-  it('should use an html textarea', async () => {
+  it('should use an html textarea', async() => {
     await setup();
     expect(htmlTextArea).toBeTruthy();
   });
@@ -60,7 +60,7 @@ describe('spec:osds-textarea', () => {
         defaultValue: DEFAULT_ATTRIBUTE.color,
         newValue: ODS_THEME_COLOR_INTENT.primary,
         value: ODS_THEME_COLOR_INTENT.default,
-        setup: (value) => setup({ attributes: { ['color']: value } }),
+        setup: (value) => setup({attributes: {['color']: value}}),
         ...config,
       });
     });
@@ -71,7 +71,7 @@ describe('spec:osds-textarea', () => {
         defaultValue: DEFAULT_ATTRIBUTE.contrasted,
         newValue: false,
         value: true,
-        setup: (value) => setup({ attributes: { ['contrasted']: value } }),
+        setup: (value) => setup({attributes: {['contrasted']: value}}),
         ...config,
       });
     });
@@ -82,7 +82,7 @@ describe('spec:osds-textarea', () => {
         defaultValue: DEFAULT_ATTRIBUTE.disabled,
         newValue: false,
         value: true,
-        setup: (value) => setup({ attributes: { ['disabled']: value } }),
+        setup: (value) => setup({attributes: {['disabled']: value}}),
         ...config,
       });
     });
@@ -93,7 +93,7 @@ describe('spec:osds-textarea', () => {
         defaultValue: DEFAULT_ATTRIBUTE.inline,
         newValue: false,
         value: true,
-        setup: (value) => setup({ attributes: { ['inline']: value } }),
+        setup: (value) => setup({attributes: {['inline']: value}}),
         ...config,
       });
     });
@@ -104,7 +104,7 @@ describe('spec:osds-textarea', () => {
         defaultValue: DEFAULT_ATTRIBUTE.placeholder,
         newValue: 'oles',
         value: 'ipsum',
-        setup: (value) => setup({ attributes: { ['placeholder']: value } }),
+        setup: (value) => setup({attributes: {['placeholder']: value}}),
         ...config,
       });
     });
@@ -115,7 +115,7 @@ describe('spec:osds-textarea', () => {
         defaultValue: DEFAULT_ATTRIBUTE.defaultValue,
         newValue: 'oles',
         value: 'ipsum',
-        setup: (value) => setup({ attributes: { ['defaultValue']: value } }),
+        setup: (value) => setup({attributes: {['defaultValue']: value}}),
         ...config,
       });
     });
@@ -126,7 +126,7 @@ describe('spec:osds-textarea', () => {
         defaultValue: DEFAULT_ATTRIBUTE.cols,
         newValue: 1,
         value: 0,
-        setup: (value) => setup({ attributes: { ['cols']: value } }),
+        setup: (value) => setup({attributes: {['cols']: value}}),
         ...config,
       });
     });
@@ -137,7 +137,7 @@ describe('spec:osds-textarea', () => {
         defaultValue: DEFAULT_ATTRIBUTE.rows,
         newValue: 1,
         value: 0,
-        setup: (value) => setup({ attributes: { ['rows']: value } }),
+        setup: (value) => setup({attributes: {['rows']: value}}),
         ...config,
       });
     });
@@ -148,7 +148,7 @@ describe('spec:osds-textarea', () => {
         defaultValue: DEFAULT_ATTRIBUTE.size,
         newValue: ODS_TEXTAREA_SIZE.md,
         value: ODS_TEXTAREA_SIZE.md,
-        setup: (value) => setup({ attributes: { ['size']: value } }),
+        setup: (value) => setup({attributes: {['size']: value}}),
         ...config,
       });
     });
@@ -159,7 +159,7 @@ describe('spec:osds-textarea', () => {
         defaultValue: DEFAULT_ATTRIBUTE.spellcheck,
         newValue: false,
         value: true,
-        setup: (value) => setup({ attributes: { ['spellcheck']: value } }),
+        setup: (value) => setup({attributes: {['spellcheck']: value}}),
         ...config,
       });
     });
@@ -170,7 +170,7 @@ describe('spec:osds-textarea', () => {
         defaultValue: DEFAULT_ATTRIBUTE.readOnly,
         newValue: false,
         value: true,
-        setup: (value) => setup({ attributes: { ['readOnly']: value } }),
+        setup: (value) => setup({attributes: {['readOnly']: value}}),
         ...config,
       });
     });
@@ -181,7 +181,7 @@ describe('spec:osds-textarea', () => {
         defaultValue: DEFAULT_ATTRIBUTE.required,
         newValue: false,
         value: true,
-        setup: (value) => setup({ attributes: { ['required']: value } }),
+        setup: (value) => setup({attributes: {['required']: value}}),
         ...config,
       });
     });
@@ -192,7 +192,7 @@ describe('spec:osds-textarea', () => {
         defaultValue: DEFAULT_ATTRIBUTE.resizable,
         newValue: false,
         value: true,
-        setup: (value) => setup({ attributes: { ['resizable']: value } }),
+        setup: (value) => setup({attributes: {['resizable']: value}}),
         ...config,
       });
     });
@@ -203,7 +203,7 @@ describe('spec:osds-textarea', () => {
         defaultValue: DEFAULT_ATTRIBUTE.value,
         newValue: 'oles',
         value: 'ipsum',
-        setup: (value) => setup({ attributes: { ['value']: value } }),
+        setup: (value) => setup({attributes: {['value']: value}}),
         ...config,
       });
     });
@@ -214,24 +214,24 @@ describe('spec:osds-textarea', () => {
         defaultValue: DEFAULT_ATTRIBUTE.name,
         newValue: 'oles',
         value: 'ipsum',
-        setup: (value) => setup({ attributes: { ['name']: value } }),
+        setup: (value) => setup({attributes: {['name']: value}}),
         ...config,
       });
     });
   });
 
   describe('events', () => {
-    it('odsValueChange', async () => {
+    it('odsValueChange', async() => {
       await setup();
       expect(instance.odsValueChange).toBeTruthy();
     });
 
-    it('odsBlur', async () => {
+    it('odsBlur', async() => {
       await setup();
       expect(instance.odsBlur).toBeTruthy();
     });
 
-    it('odsFocus', async () => {
+    it('odsFocus', async() => {
       await setup();
       expect(instance.odsFocus).toBeTruthy();
     });
@@ -239,7 +239,7 @@ describe('spec:osds-textarea', () => {
 
   describe('controller', () => {
     describe('watchers', () => {
-      it('should call registerFormControl on formControl change', async () => {
+      it('should call registerFormControl on formControl change', async() => {
         const formControl = new OdsFormControl('id');
         await setup();
         instance.formControl = formControl;
@@ -249,7 +249,7 @@ describe('spec:osds-textarea', () => {
         expect(controller.registerFormControl).toHaveBeenCalledWith(formControl);
       });
 
-      it('should call onDefaultValueChange on defaultValue change', async () => {
+      it('should call onDefaultValueChange on defaultValue change', async() => {
         const defaultValue = 'Text area';
         await setup();
         instance.defaultValue = defaultValue;
@@ -259,10 +259,10 @@ describe('spec:osds-textarea', () => {
         expect(controller.onDefaultValueChange).toHaveBeenCalledWith(defaultValue);
       });
 
-      it('should call emitValue on value change', async () => {
+      it('should call emitValue on value change', async() => {
         const value = 'Text area';
         const oldValue = 'Old value';
-        await setup({ attributes: { value: oldValue } });
+        await setup({attributes: {value: oldValue}});
         instance.value = value;
         await page.waitForChanges();
 
@@ -272,7 +272,7 @@ describe('spec:osds-textarea', () => {
     });
 
     describe('lifecycle', () => {
-      it('should call beforeInit on init', async () => {
+      it('should call beforeInit on init', async() => {
         await setup();
         expect(controller.beforeInit).toHaveBeenCalledTimes(1);
         expect(controller.beforeInit).toHaveBeenCalledWith();
@@ -280,7 +280,7 @@ describe('spec:osds-textarea', () => {
     });
 
     describe('events', () => {
-      it('should call onBlur when blur', async () => {
+      it('should call onBlur when blur', async() => {
         await setup();
         instance?.onBlur();
 
@@ -288,7 +288,7 @@ describe('spec:osds-textarea', () => {
         expect(controller.onBlur).toHaveBeenCalledWith();
       });
 
-      it('should call onInput when input', async () => {
+      it('should call onInput when input', async() => {
         const event = new Event('');
         await setup();
         instance?.onInput(event);
@@ -297,7 +297,7 @@ describe('spec:osds-textarea', () => {
         expect(controller.onInput).toHaveBeenCalledWith(event);
       });
 
-      it('should call onChange when change', async () => {
+      it('should call onChange when change', async() => {
         await setup();
         instance?.onChange();
 
@@ -305,7 +305,7 @@ describe('spec:osds-textarea', () => {
         expect(controller.onChange).toHaveBeenCalledWith();
       });
 
-      it('should call onFocus when focus', async () => {
+      it('should call onFocus when focus', async() => {
         await setup();
         if (htmlTextArea) {
           htmlTextArea.focus = jest.fn();
@@ -318,7 +318,7 @@ describe('spec:osds-textarea', () => {
     });
 
     describe('methods', () => {
-      it('should call getTextAreaValidity from getValidity method', async () => {
+      it('should call getTextAreaValidity from getValidity method', async() => {
         await setup();
         await instance?.getValidity();
 
@@ -326,7 +326,7 @@ describe('spec:osds-textarea', () => {
         expect(controller.getTextAreaValidity).toHaveBeenCalledWith();
       });
 
-      it('should call setValue from clear method', async () => {
+      it('should call setValue from clear method', async() => {
         await setup();
         await instance?.clear();
 
@@ -334,7 +334,7 @@ describe('spec:osds-textarea', () => {
         expect(controller.setValue).toHaveBeenCalledWith();
       });
 
-      it('should call setValue from reset method', async () => {
+      it('should call setValue from reset method', async() => {
         await setup();
         await instance?.reset();
 
@@ -342,16 +342,16 @@ describe('spec:osds-textarea', () => {
         expect(controller.setValue).toHaveBeenCalledWith('');
       });
 
-      it('should call setValue from reset method (defaultValue case)', async () => {
+      it('should call setValue from reset method (defaultValue case)', async() => {
         const defaultValue = 'default';
-        await setup({attributes: { defaultValue }});
+        await setup({attributes: {defaultValue}});
         await instance?.reset();
 
         expect(controller.setValue).toHaveBeenCalledTimes(1);
         expect(controller.setValue).toHaveBeenCalledWith(defaultValue);
       });
 
-      it('should call setTextAreaTabindex from setTextAreaTabindex method', async () => {
+      it('should call setTextAreaTabindex from setTextAreaTabindex method', async() => {
         const n = 1;
         await setup();
         await instance?.setTextAreaTabindex(n);

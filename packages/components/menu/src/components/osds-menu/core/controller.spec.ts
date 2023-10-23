@@ -43,9 +43,9 @@ describe('spec:ods-menu-controller', () => {
   }
 
   beforeEach(() => {
-    item1 = document.createElement('osds-menu-item') as OdsMenuItem & HTMLElement;
+    item1 = document.createElement('osds-menu-item') as OsdsMenuItem & HTMLElement;
     item1.innerHTML = `<osds-button><span slot="start">Action 1</span></osds-button>`;
-    item2 = document.createElement('osds-menu-item') as OdsMenuItem & HTMLElement;
+    item2 = document.createElement('osds-menu-item') as OsdsMenuItem & HTMLElement;
     item2.innerHTML = `<osds-button><span slot="start">Action 2</span></osds-button>`;
 
     const loggerMocked = new OdsLogger('myLoggerMocked');

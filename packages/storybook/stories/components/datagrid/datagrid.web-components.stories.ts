@@ -42,7 +42,7 @@ const defaultStoryParams = {
   },
   rowHeight: {
     category: 'Général',
-    defaultValue: 60,
+    defaultValue: 52,
   }
 };
 
@@ -80,5 +80,9 @@ export const LargeData = TemplateDefault.bind({});
 LargeData.args = {
   ...extractStoryParams({ ...defaultStoryParams, rows: rowsLarge }),
 };
+
 // @ts-ignore
-LargeData.argTypes = extractArgTypes({ ...defaultStoryParams, rows: rowsLarge });
+LargeData.parameters = {
+  controls: { hideNoControlsWarning: true },
+  options: { showPanel: false }
+};

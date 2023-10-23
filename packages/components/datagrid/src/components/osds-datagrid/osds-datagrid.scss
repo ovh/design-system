@@ -75,11 +75,13 @@ $ods-border-datagrid: solid 1px var(--ods-color-blue-200);
             &.ods-selectable__input-checkbox {
                 padding-left: 9px;
                 @include ods-input-checkbox(1);
-
             }
         }
 
         .tabulator-placeholder {
+            &[tabulator-render-mode="virtual"] {
+                min-height: auto;
+            }
 
             .tabulator-placeholder-contents {
                 border: $ods-border-datagrid;
@@ -97,7 +99,6 @@ $ods-border-datagrid: solid 1px var(--ods-color-blue-200);
     .tabulator-header {
         background-color: #FFF;
         border-bottom: none;
-        height: unset !important;
 
         .tabulator-headers {
             height: unset !important;
@@ -105,7 +106,7 @@ $ods-border-datagrid: solid 1px var(--ods-color-blue-200);
             .tabulator-col {
                 background-color: #FFF;
                 border: none;
-                height: unset !important;
+                justify-content: center;
                 
                 &.tabulator-sortable {
 
@@ -121,6 +122,8 @@ $ods-border-datagrid: solid 1px var(--ods-color-blue-200);
 
                     .tabulator-col-content {
                         padding: 0;
+                        margin-top: 5px;
+                        margin-left: 1px;
                     }
                 }
 

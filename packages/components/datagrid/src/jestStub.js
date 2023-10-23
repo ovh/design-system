@@ -14,6 +14,10 @@ class TabulatorFullStub {
     on() {
 
     }
+
+    getColumns() {
+        return [];
+    }
 }
 
 module.exports = {

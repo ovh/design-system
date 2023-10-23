@@ -169,5 +169,12 @@ describe('e2e:osds-datagrid', () => {
       return style.height === rowHeight + 'px'
     })
     expect(isAllRowHasHeight).toBe(true);
+
+    const columns = await table?.findAll('.tabulator-col');
+    const isAllColumnsHasHeight = await columns?.every(async (row) => {
+      const style = await row.getComputedStyle();
+      return style.height === rowHeight + 'px'
+    })
+    expect(isAllColumnsHasHeight).toBe(true);
   });
 });

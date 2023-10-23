@@ -40,6 +40,50 @@ export class OsdsDatagrid implements OdsDatagridAttribute {
 
   componentDidLoad(): void {
     this.controler.validateAttributes();
+    this.initTable();
+  }
+
+  @Watch('rowHeight')
+  onChangeRowHeight(): void {
+    if (!this.table || !this.rowHeight) {
+      return;
+    }
+    this.table.options.rowHeight = this.rowHeight;
+    this.setColumnsHeight();
+    this.table.rowManager.reRenderInPosition();
+  }
+
+  @Watch('height')
+  onChangeHeight(): void {
+    this.table?.setHeight(this.height);
+  }
+
+  @Watch('noResultLabel')
+  onChangeNoResultLabel(): void {
+    this.initTable();
+  }
+
+  @Watch('rows')
+  onChangeRows(): void { 
+    const rows = this.controler.getRows();
+    this.table?.setData(rows);
+  }
+
+  @Watch('isSelectable')
+  @Watch('columns')
+  onChangeColumns(): void {
+    const columns = this.controler.getColumns();
+    this.table?.setColumns(this.controler.getTabulatorColumns(columns));
+    this.setColumnsHeight();
+  }
+
+  private setColumnsHeight(): void {
+    this.table?.getColumns().forEach(col => {
+      col.getElement().style.height = `${this.rowHeight}px`;
+    });
+  }
+
+  private initTable(): void {
     if (!this.grid) {
       return;
     }
@@ -69,19 +113,9 @@ export class OsdsDatagrid implements OdsDatagridAttribute {
         </osds-icon>`
       },
     });
-  }
-
-  @Watch('rows')
-  onChangeRows(): void { 
-    const rows = this.controler.getRows();
-    this.table?.setData(rows);
-  }
-
-  @Watch('isSelectable')
-  @Watch('columns')
-  onChangeColumns(): void {
-    const columns = this.controler.getColumns();
-    this.table?.setColumns(this.controler.getTabulatorColumns(columns));
+    this.table?.on('renderComplete', () => {
+      this.setColumnsHeight();
+    });
   }
 
   render(): JSX.Element {

@@ -114,6 +114,9 @@ export class OsdsDatagrid implements OdsDatagridAttribute {
       renderVertical: 'virtual',
       rowHeight: this.rowHeight,
     });
+    this.table?.on('renderComplete', () => {
+      this.setColumnsHeight();
+    });
   }
 
   render(): JSX.Element {

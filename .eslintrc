@@ -30,6 +30,7 @@
   "root": true,
   "rules": {
     "@typescript-eslint/ban-types": "error",
+    "@typescript-eslint/consistent-indexed-object-style": "error",
     "@typescript-eslint/explicit-function-return-type": "error",
     "@typescript-eslint/no-explicit-any": "error",
     "@typescript-eslint/no-unused-vars": ["error", { "varsIgnorePattern": "h" }],
@@ -45,6 +46,17 @@
     "func-call-spacing": ["error", "never"],
     "func-style": ["error", "declaration"],
     "function-call-argument-newline": ["error", "consistent"],
+    "import/order": [ "error",
+      {
+        "groups": [
+          "type",
+          "builtin", // Built-in types are first
+          ["sibling", "parent"], // Then sibling and parent types. They can be mingled together,
+          "index", // Then the index file,
+          "object"
+        ]
+      }
+    ],
     "indent": ["error", 2],
     "lines-between-class-members": ["error", "always", { "exceptAfterSingleLine": true }],
     "max-depth": ["error", {"max": 4}],

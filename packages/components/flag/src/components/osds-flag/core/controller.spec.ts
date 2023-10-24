@@ -22,9 +22,9 @@ import {
   odsGetAssetPath,
   odsGetSrc,
 } from '@ovhcloud/ods-common-core';
-import { OsdsFlag } from '../osds-flag';
-import { OdsFlagController } from './controller';
 import { ODS_FLAG_ISO_CODE, ODS_FLAG_ISO_CODES } from '../constants/flag-iso-code';
+import { OdsFlagController } from './controller';
+import { OsdsFlag } from '../osds-flag';
 
 class OdsFlagMock extends OsdsFlag {
   constructor(attribute: Partial<OsdsFlag>) {
@@ -76,24 +76,24 @@ describe('ods-flag-controller', () => {
         setup();
       });
 
-      it('should clean up the wrong iso code', () => {
-        controller.validateISO('test');
-        expect(component.iso).toEqual(undefined);
-      });
-
       it('should not call console.warn with correct iso', () => {
         controller.validateISO(ODS_FLAG_ISO_CODE.FR);
         expect(loggerSpyReferences.methodSpies.warn).not.toHaveBeenCalled();
       });
 
       it('should call console.warn with wrong iso', () => {
+        // @ts-ignore for test purpose
         controller.validateISO('ods');
+
+        expect(component.iso).toBe(undefined);
         expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledWith(expected);
         expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledTimes(1);
       });
 
       it('should call console.warn with empty iso', () => {
         controller.validateISO();
+
+        expect(component.iso).toBe(undefined);
         expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledWith(expected);
         expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledTimes(1);
       });
@@ -103,22 +103,28 @@ describe('ods-flag-controller', () => {
       it('should call validation of iso', () => {
         setup();
         spyOnValidateISO =  jest.spyOn(controller, 'validateISO');
+
         controller.load(true);
+
         expect(spyOnValidateISO).toHaveBeenCalled();
       });
 
       it('should call load with no url', () => {
         setup();
+
         controller.load(true);
+
         expect(mockLoad).toHaveBeenCalledWith('', true, true, true);
       });
 
       it('should call load with url', () => {
         const dummyUrl = 'dummy url'
         setup();
-        // @ts-ignore
+        // @ts-ignore to spy private method
         spyOnGetUrl =  jest.spyOn<any>(controller, 'getUrl').mockReturnValueOnce(dummyUrl);
+
         controller.load(false, false);
+
         expect(spyOnGetUrl).toHaveBeenCalled();
         expect(mockLoad).toHaveBeenCalledWith(dummyUrl, false, true, false);
       });
@@ -126,7 +132,9 @@ describe('ods-flag-controller', () => {
       describe('standard svg', () => {
         it('should call the asset path of ods', () => {
           setup();
+
           controller.load(true);
+
           expect(odsGetAssetPath).toHaveBeenNthCalledWith(1, 'fr.svg', '');
         });
 
@@ -134,7 +142,9 @@ describe('ods-flag-controller', () => {
           setup();
           const path = 'my-mocked-path';
           spyOnGetAssetPath = jest.spyOn(component, 'getAssetPath').mockImplementation(() => path);
+
           controller.load(true);
+
           expect(spyOnGetAssetPath).toHaveBeenCalled();
         });
 
@@ -142,8 +152,10 @@ describe('ods-flag-controller', () => {
           setup();
           const path = 'my-mocked-path';
           spyOnGetAssetPath = jest.spyOn(component, 'getAssetPath').mockImplementation(() => path);
+
           controller.load(true);
-          expect(mockLoad).toHaveBeenNthCalledWith(1, 'my-mocked-path', true, true, true);
+
+          expect(mockLoad).toHaveBeenNthCalledWith(1, path, true, true, true);
         });
       });
 
@@ -151,8 +163,10 @@ describe('ods-flag-controller', () => {
         it('should call GetSrc function', () => {
           const src = 'my/src/fr.svg';
           setup({ src });
+
           controller.load(true);
-          expect(odsGetSrc).toHaveBeenNthCalledWith(1, 'my/src/fr.svg');
+
+          expect(odsGetSrc).toHaveBeenNthCalledWith(1, src);
         });
       });
 
@@ -164,13 +178,14 @@ describe('ods-flag-controller', () => {
           expect(mockLoad).toHaveBeenNthCalledWith(1, 'my-mocked-result', true, true, true);
         });
       });
-
     });
 
     describe('onDestroy', () => {
       it('should call load management destroy', () => {
         setup();
+
         controller.onDestroy();
+
         expect(mockOnDestroy).toHaveBeenCalledTimes(1);
       });
     });
@@ -178,13 +193,18 @@ describe('ods-flag-controller', () => {
     describe('onInit', () => {
       it('should call waitUntilVisible of load management', () => {
         setup();
+
         controller.onInit(() => undefined, true);
+
         expect(mockWaitUntilVisible).toHaveBeenCalledTimes(1);
       });
 
       it('should call load of component once visible', () => {
         setup();
-        mockWaitUntilVisible.mockImplementation((_host, _margin, cb) => cb());        controller.onInit(() => true, true);
+        mockWaitUntilVisible.mockImplementation((_host, _margin, cb) => cb());
+
+        controller.onInit(() => true, true);
+
         expect(component.load).toHaveBeenCalledTimes(1);
       });
 
@@ -192,8 +212,10 @@ describe('ods-flag-controller', () => {
         let visible = false;
         setup();
         mockWaitUntilVisible.mockImplementation((_host, _margin, cb) => cb());
+
         controller.onInit(() => visible = true, true);
-        expect(visible).toEqual(true);
+
+        expect(visible).toBe(true);
       });
     });
   });

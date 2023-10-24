@@ -1,11 +1,13 @@
+import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import type { E2EPage } from '@stencil/core/testing';
-import type { OdsTextAttribute } from './interfaces/attributes';
-import { ODS_TEXT_COLOR_HUES, ODS_TEXT_COLOR_INTENTS } from './constants/text-color';
+import { newE2EPage } from '@stencil/core/testing';
+
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { ODS_TEXT_COLOR_HUES, ODS_TEXT_COLOR_INTENTS } from './constants/text-color';
 import { ODS_TEXT_LEVELS } from './constants/text-level';
 import { ODS_TEXT_SIZES } from './constants/text-size';
-import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
-import { newE2EPage } from '@stencil/core/testing';
+import type { OdsTextAttribute } from './interfaces/attributes';
+
 
 const slotContent = 'Text';
 

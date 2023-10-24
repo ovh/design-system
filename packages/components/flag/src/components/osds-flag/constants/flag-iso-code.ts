@@ -1,7 +1,7 @@
-import { ODS_COUNTRY_ISO_CODE } from "@ovhcloud/ods-common-core";
+import { ODS_COUNTRY_ISO_CODE } from '@ovhcloud/ods-common-core';
 
 const ODS_FLAG_ISO_CODE = Object.freeze({
-    ...ODS_COUNTRY_ISO_CODE,   
+    ...ODS_COUNTRY_ISO_CODE,
     EU: 'eu', // Europe
     UN: 'un', // United Nations
     XK: 'xk', // Kosovo

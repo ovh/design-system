@@ -6,14 +6,10 @@ import {
   OdsLoadContent,
   OdsSvgValidator,
   odsGetSrc,
-  odsGetAssetPath
+  odsGetAssetPath,
 } from '@ovhcloud/ods-common-core';
 import { ODS_FLAG_ISO_CODE, ODS_FLAG_ISO_CODES } from '../constants/flag-iso-code';
 
-/**
- * common controller logic for flag component used by the different implementations.
- * it contains all the glue between framework implementation and the third party service.
- */
 class OdsFlagController {
   private readonly logger = new OdsLogger('OdsFlagController');
   protected component: OsdsFlag;
@@ -31,7 +27,7 @@ class OdsFlagController {
    * @param isVisible - is the element to load is visible or not
    * @param isBrowser - is the context is browser one or not
    */
-  load(isVisible: boolean, isBrowser = true): Promise<string | void> {
+  async load(isVisible: boolean, isBrowser = true): Promise<string | void> {
     this.validateISO(this.component.iso);
     const url = this.getUrl();
     return this.svgLoadContent.load(url ? url : '', isVisible, true, isBrowser);
@@ -40,7 +36,6 @@ class OdsFlagController {
   onDestroy(): void {
     this.svgLoadContent.onDestroy();
   }
-
 
   /**
    * initialize the component logical.
@@ -80,9 +75,8 @@ class OdsFlagController {
       return url;
     }
 
-    const iso = this.component.iso;
-    if (iso) {
-      return this.getUrlForIso(iso, this.component.assetPath);
+    if (this.component.iso) {
+      return this.getUrlForIso(this.component.iso, this.component.assetPath);
     }
 
     return;
@@ -96,8 +90,10 @@ class OdsFlagController {
    */
   private getUrlForIso(iso: ODS_FLAG_ISO_CODE_UNION, customPath?: string) {
     const path = odsGetAssetPath(`${iso}.svg`, customPath);
-    return this.component.getAssetPath(`${path}`);
+    return this.component.getAssetPath(path);
   }
 }
 
-export { OdsFlagController }
+export {
+  OdsFlagController,
+};

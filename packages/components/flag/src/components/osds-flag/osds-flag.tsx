@@ -15,13 +15,9 @@ export class OsdsFlag implements OdsFlagAttribute {
 
   @Element() hostElement!: HTMLElement;
 
-  /** @see OdsFlagAttributes.assetPath */
   @Prop({ reflect: true }) assetPath = DEFAULT_ATTRIBUTE.assetPath;
-  /** @see OdsFlagAttributes.iso */
   @Prop({ reflect: true, mutable: true }) iso?: ODS_FLAG_ISO_CODE_UNION = DEFAULT_ATTRIBUTE.iso;
-  /** @see OdsFlagAttributes.lazy */
   @Prop({ reflect: true }) lazy = DEFAULT_ATTRIBUTE.lazy;
-  /** @see OdsFlagAttributes.src */
   @Prop({ reflect: true }) src = DEFAULT_ATTRIBUTE.src;
 
   @State() private ariaLabel?: ODS_FLAG_ISO_CODE_UNION;
@@ -36,31 +32,24 @@ export class OsdsFlag implements OdsFlagAttribute {
     this.onDestroy();
   }
 
-  /** @see OdsFlagBehavior.getAssetPath */
   getAssetPath(url: string) {
-    // todo currently we are not using getAssetPath from stencil since it doesn't work in React integration
+    // TODO currently we are not using getAssetPath from stencil since it doesn't work in React integration
     //return getAssetPath(url);
     return url;
   }
 
-  /** @see OdsFlagBehavior.load */
   @Watch('iso')
   @Watch('assetPath')
   @Watch('src')
-  load() {
-    this.controller.load(this.visible, Build.isBrowser)
-      .then((svgContent) => {
-        this.svgContent = svgContent || '';
-      });
+  async load() {
+    this.svgContent = await this.controller.load(this.visible, Build.isBrowser) || '';
     this.ariaLabel = this.iso;
   }
 
-  /** @see OdsFlagBehavior.onDestroy */
   onDestroy() {
     this.controller.onDestroy();
   }
 
-  /** @see OdsFlagBehavior.onInit */
   onInit() {
     this.controller.onInit(() => {
       this.visible = true;
@@ -70,12 +59,16 @@ export class OsdsFlag implements OdsFlagAttribute {
   render() {
     const { ariaLabel } = this;
     return (
-      <Host aria-label={ariaLabel && !odsHasAriaHidden(this.hostElement) ? ariaLabel : null} role="img">
-        {Build.isBrowser && this.svgContent ? (
-          <div class="svg-inner" innerHTML={this.svgContent}></div>
-        ) : (
-          <div class="svg-inner flag-default"></div>
-        )}
+      <Host class="flag"
+            aria-label={ ariaLabel && !odsHasAriaHidden(this.hostElement) ? ariaLabel : null }
+            role="img">
+        {
+          Build.isBrowser && this.svgContent ?
+          <div class="flag__svg"
+               innerHTML={ this.svgContent }>
+          </div> :
+          <div class="flag__svg flag__svg--default"></div>
+        }
       </Host>
     );
   }

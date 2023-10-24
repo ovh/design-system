@@ -1,15 +1,14 @@
-jest.mock('./core/controller')
+jest.mock('./core/controller');
 
 import type { SpecPage } from '@stencil/core/testing';
 import type { OdsFlagAttribute } from './interfaces/attributes';
 import { odsStringAttributes2Str, odsComponentAttributes2StringAttributes, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 import { Build } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
-import { getAssetPath } from '@stencil/core/internal';
-import { OdsFlagController } from './core/controller';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes'
-import { OsdsFlag } from './osds-flag';
 import { ODS_FLAG_ISO_CODE } from './constants/flag-iso-code';
+import { OdsFlagController } from './core/controller';
+import { OsdsFlag } from './osds-flag';
 
 describe('spec:osds-flag', () => {
   const baseAttribute = { iso: ODS_FLAG_ISO_CODE.FR, lazy: false };
@@ -33,7 +32,7 @@ describe('spec:osds-flag', () => {
     shadowRoot = page.root?.shadowRoot;
     controller = (OdsFlagController as unknown as jest.SpyInstance<OdsFlagController, unknown[]>).mock.instances[ 0 ];
 
-    divEl = shadowRoot?.querySelector('.svg-inner');
+    divEl = shadowRoot?.querySelector('.flag__svg');
   }
 
   beforeEach(() => {
@@ -103,11 +102,11 @@ describe('spec:osds-flag', () => {
         ...config
       });
     });
-
   });
 
   it('should call init of controller at start', async () => {
     await setup();
+
     expect(controller.onInit).toHaveBeenCalledTimes(1);
   });
 
@@ -115,42 +114,37 @@ describe('spec:osds-flag', () => {
     // mock before setup because of the setup call onInit
     jest.spyOn(OdsFlagController.prototype, 'onInit').mockImplementation((onBecomeVisible) => onBecomeVisible());
     await setup({ attributes: { iso: ODS_FLAG_ISO_CODE.FR } });
+
     // load method will be called after setup, when iso changed, so we can mock it after setup
     // goal: change the iso code in order to trigger the load method with the visible variable
     const spy = jest.spyOn(controller, 'load').mockImplementation(() => new Promise(resolve => resolve('')));
-    page.waitForChanges();
     instance.iso = ODS_FLAG_ISO_CODE.BE;
-    page.waitForChanges();
+
     expect(spy).toHaveBeenCalledTimes(1);
     expect(spy).toHaveBeenCalledWith(true, false);
   });
 
-  // todo currently we are not using getAssetPath from stencil since it doesn't work in React integration
-  xit('should call getAssetPath from node_modules', async () => {
-    await setup();
-    instance.getAssetPath('my-mocked-path');
-    expect(getAssetPath).toHaveBeenNthCalledWith(1, 'my-mocked-path');
-  });
-
   it('should call load of controller when src change', async () => {
     await setup({ attributes: { src: 'my/src/fr.svg' } });
-    page.waitForChanges();
+
     root?.setAttribute('src', 'my/src/de.svg');
-    page.waitForChanges();
+
     expect(controller.load).toHaveBeenCalledTimes(1);
   });
 
   it('should call load of controller when assetPath change', async () => {
     await setup({ attributes: { assetPath: undefined } });
+
     instance.assetPath = 'myAssetPath';
-    page.waitForChanges();
+
     expect(controller.load).toHaveBeenCalledTimes(1);
   });
 
   it('should call load of controller when iso change', async () => {
     await setup({ attributes: { iso: ODS_FLAG_ISO_CODE.FR } });
+
     instance.iso = ODS_FLAG_ISO_CODE.BE;
-    page.waitForChanges();
+
     expect(controller.load).toHaveBeenCalledTimes(1);
   });
 
@@ -177,11 +171,10 @@ describe('spec:osds-flag', () => {
   it('should set svgContent when received', async () => {
     await setup();
     jest.spyOn(controller, 'load').mockImplementation(() => new Promise(resolve => resolve('<svg></svg>')));
-    instance.load();
+    await instance.load();
     await page.waitForChanges();
 
     expect(instance['svgContent']).toBeTruthy();
-
   });
 
   it('should have default flag if no svg content', async () => {
@@ -191,7 +184,7 @@ describe('spec:osds-flag', () => {
     await page.waitForChanges();
 
     expect(divEl).toBeTruthy();
-    expect(divEl).toHaveClass('flag-default');
+    expect(divEl).toHaveClass('flag__svg--default');
   });
 
   it('should have flag if svg content', async () => {

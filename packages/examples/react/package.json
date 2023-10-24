@@ -7,9 +7,9 @@
   "license": "Apache-2.0",
   "type": "module",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "build:prod": "npm run build"
+    "start": "DISABLE_ESLINT_PLUGIN=true react-scripts start",
+    "build": "DISABLE_ESLINT_PLUGIN=true react-scripts build",
+    "build:prod": "DISABLE_ESLINT_PLUGIN=true npm run build"
   },
   "dependencies": {
     "@ovhcloud/ods-common-core": "16.2.1",

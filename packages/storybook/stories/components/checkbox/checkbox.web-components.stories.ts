@@ -1,9 +1,9 @@
-import {extractArgTypes, extractStoryParams, getTagAttributes} from '../../../core/componentHTMLUtils';
-import {defineCustomElements} from '@ovhcloud/ods-components/checkbox/loader';
-import {html} from 'lit-html';
-import {unsafeHTML} from 'lit-html/directives/unsafe-html';
-// @ts-ignore
+import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 import page from './checkbox.web-component.stories.page.mdx';
+import { defineCustomElements } from '@ovhcloud/ods-components/checkbox/loader';
+import { html } from 'lit-html';
+import { unsafeHTML } from 'lit-html/directives/unsafe-html';
+// @ts-ignore
 // @ts-ignore
 import changelog from '@ovhcloud/ods-components/checkbox/CHANGELOG.md';
 
@@ -40,7 +40,7 @@ export default {
     notes: {
       changelog,
     },
-    docs: {page},
+    docs: { page },
   },
   argTypes: extractArgTypes(storyParams),
 };
@@ -65,4 +65,4 @@ Toggle.args = {
   ...extractStoryParams(storyParams),
 };
 
-export {CheckboxButton} from './checkbox.web-components.stories.checkbox-button';
+export { CheckboxButton } from './checkbox.web-components.stories.checkbox-button';

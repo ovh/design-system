@@ -1,9 +1,9 @@
-import type {E2EElement, E2EPage} from '@stencil/core/testing';
-import type {OdsCartHeaderAttribute} from './interfaces/attributes';
-import {OdsLogger} from '@ovhcloud/ods-common-core';
-import {newE2EPage} from '@stencil/core/testing';
-import {odsComponentAttributes2StringAttributes, odsStringAttributes2Str} from '@ovhcloud/ods-common-testing';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
+import type { E2EElement, E2EPage } from '@stencil/core/testing';
+import type { OdsCartHeaderAttribute } from './interfaces/attributes';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { OdsLogger } from '@ovhcloud/ods-common-core';
+import { newE2EPage } from '@stencil/core/testing';
+import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 
 const logger = new OdsLogger('osds-cart-header-e2e');
 
@@ -11,7 +11,7 @@ describe('e2e:osds-cart-header', () => {
   let page: E2EPage;
   let el: E2EElement;
 
-  async function setup({attributes = {}, html = ''}: { attributes?: Partial<OdsCartHeaderAttribute>, html?: string } = {}) {
+  async function setup({ attributes = {}, html = '' }: { attributes?: Partial<OdsCartHeaderAttribute>, html?: string } = {}) {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsCartHeaderAttribute>(attributes, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
@@ -27,7 +27,7 @@ describe('e2e:osds-cart-header', () => {
   }
 
   it('should render', async() => {
-    await setup({attributes: {}, html: ''});
+    await setup({ attributes: {}, html: '' });
     expect(el).not.toBeNull();
     expect(el).toHaveClass('hydrated');
   });

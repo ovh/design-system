@@ -1,6 +1,6 @@
-import {odsUnitTestAttributeBehavior} from './ods-unit-test-attribute-behavior';
-import {OdsUnitTestAttributeOptions} from './ods-unit-test-attribute-options';
-import {OdsUnitTestAttributeType} from './ods-unit-test-attribute-type';
+import { odsUnitTestAttributeBehavior } from './ods-unit-test-attribute-behavior';
+import { OdsUnitTestAttributeOptions } from './ods-unit-test-attribute-options';
+import { OdsUnitTestAttributeType } from './ods-unit-test-attribute-type';
 
 /**
  * testing an attribute of a component in different use cases (test types).

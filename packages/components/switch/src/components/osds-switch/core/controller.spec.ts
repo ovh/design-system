@@ -1,6 +1,6 @@
-import type {OsdsSwitchItem} from '../../osds-switch-item/osds-switch-item';
-import {OsdsSwitch} from '../osds-switch';
-import {OdsSwitchController} from './controller';
+import type { OsdsSwitchItem } from '../../osds-switch-item/osds-switch-item';
+import { OsdsSwitch } from '../osds-switch';
+import { OdsSwitchController } from './controller';
 
 class OdsSwitchMock extends OsdsSwitch {
   constructor(attribute: Partial<OsdsSwitch>) {
@@ -38,7 +38,7 @@ describe('spec:ods-switch-controller', () => {
   describe('methods', () => {
     it('should changeCheckedSwitchItem', () => {
       setup(component);
-      const {current, previous} = controller.changeCheckedSwitchItem('2');
+      const { current, previous } = controller.changeCheckedSwitchItem('2');
       expect(current).toBe(item2);
       expect(current.className).toContain('fadein-from-left');
       expect(previous).toBe(undefined);
@@ -47,7 +47,7 @@ describe('spec:ods-switch-controller', () => {
     it('should changeCheckedSwitchItem with old value', () => {
       setup(component);
       controller.changeCheckedSwitchItem('1');
-      const {current, previous} = controller.changeCheckedSwitchItem('2');
+      const { current, previous } = controller.changeCheckedSwitchItem('2');
       expect(current).toBe(item2);
       expect(current.className).toContain('fadein-from-left');
       expect(previous).toBe(item1);
@@ -57,7 +57,7 @@ describe('spec:ods-switch-controller', () => {
     it('should changeCheckedSwitchItem with class', () => {
       setup(component);
       controller.changeCheckedSwitchItem('2');
-      const {current, previous} = controller.changeCheckedSwitchItem('1');
+      const { current, previous } = controller.changeCheckedSwitchItem('1');
       expect(current).toBe(item1);
       expect(current.className).toContain('fadein-from-right');
       expect(previous).toBe(item2);

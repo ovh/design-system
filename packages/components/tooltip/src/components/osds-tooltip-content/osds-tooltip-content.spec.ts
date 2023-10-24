@@ -1,6 +1,6 @@
-import type {SpecPage} from '@stencil/core/testing';
-import {newSpecPage} from '@stencil/core/testing';
-import {OsdsTooltipContent} from './osds-tooltip-content';
+import type { SpecPage } from '@stencil/core/testing';
+import { OsdsTooltipContent } from './osds-tooltip-content';
+import { newSpecPage } from '@stencil/core/testing';
 
 describe('spec:osds-tooltip-content', () => {
   let page: SpecPage;

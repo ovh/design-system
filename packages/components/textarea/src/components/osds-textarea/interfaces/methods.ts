@@ -1,4 +1,4 @@
-import type {OdsFormControlMethods, OdsTextAreaValidityState} from '@ovhcloud/ods-common-core';
+import type { OdsFormControlMethods, OdsTextAreaValidityState } from '@ovhcloud/ods-common-core';
 
 interface OdsTextAreaMethod extends OdsFormControlMethods<OdsTextAreaValidityState> {
   /**

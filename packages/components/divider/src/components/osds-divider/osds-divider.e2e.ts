@@ -1,7 +1,7 @@
-import {E2EElement, E2EPage, newE2EPage} from '@stencil/core/testing';
-import type {OdsDividerAttribute} from './interfaces/attributes';
-import {odsComponentAttributes2StringAttributes, odsStringAttributes2Str} from '@ovhcloud/ods-common-testing';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
+import type { OdsDividerAttribute } from './interfaces/attributes';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { E2EElement, E2EPage, newE2EPage } from '@stencil/core/testing';
+import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 
 describe('e2e:osds-divider', () => {
   let page: E2EPage;
@@ -9,7 +9,7 @@ describe('e2e:osds-divider', () => {
   let hrDividerElement: E2EElement;
   let spanDividerElement: E2EElement;
 
-  async function setup({attributes = {}}: { attributes?: Partial<OdsDividerAttribute>, html?: string }) {
+  async function setup({ attributes = {} }: { attributes?: Partial<OdsDividerAttribute>, html?: string }) {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsDividerAttribute>(attributes, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
@@ -40,7 +40,7 @@ describe('e2e:osds-divider', () => {
     expect(hrDividerElement).toBeNull();
   });
   it('should display an hr when separator set to true', async() => {
-    await setup({attributes: {separator: true}});
+    await setup({ attributes: { separator: true } });
     expect(hrDividerElement).not.toBeNull();
     expect(spanDividerElement).toBeNull();
   });

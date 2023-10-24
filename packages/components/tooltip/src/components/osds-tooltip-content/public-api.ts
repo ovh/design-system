@@ -1,1 +1,1 @@
-export {OsdsTooltipContent} from './osds-tooltip-content';
+export { OsdsTooltipContent } from './osds-tooltip-content';

@@ -1,11 +1,11 @@
-import {html} from 'lit-html';
-import {ODS_TOOLTIP_VARIANT, ODS_TOOLTIP_VARIANTS} from '@ovhcloud/ods-components/tooltip';
-import {defineCustomElements} from '@ovhcloud/ods-components/tooltip/loader';
-import {extractArgTypes, extractStoryParams, getTagAttributes} from '../../../core/componentHTMLUtils';
+import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
+import page from './tooltip.web-component.stories.page.mdx';
+import { html } from 'lit-html';
+import { ODS_TOOLTIP_VARIANT, ODS_TOOLTIP_VARIANTS } from '@ovhcloud/ods-components/tooltip';
+import { defineCustomElements } from '@ovhcloud/ods-components/tooltip/loader';
 // @ts-ignore
 import changelog from '@ovhcloud/ods-components/tooltip/CHANGELOG.md';
 // @ts-ignore
-import page from './tooltip.web-component.stories.page.mdx';
 
 defineCustomElements();
 
@@ -13,7 +13,7 @@ defineCustomElements();
 const storyParams = {
   variant: {
     category: 'General',
-    control: {type: 'select'},
+    control: { type: 'select' },
     defaultValue: ODS_TOOLTIP_VARIANT.standard,
     options: ODS_TOOLTIP_VARIANTS,
   },
@@ -30,7 +30,7 @@ export default {
     notes: {
       changelog,
     },
-    docs: {page},
+    docs: { page },
   },
   argTypes: extractArgTypes(storyParams),
 };

@@ -46,7 +46,7 @@ export function odsMockProperty<T extends unknown, K extends keyof T>(object: T,
     ...(descriptor ? descriptor : {}),
     get: descriptor?.get ? descriptor.get : () => value,
     set: descriptor?.set ? descriptor.set : (v: unknown) => v,
-    configurable: true};
+    configurable: true };
   delete newDescriptor.value;
   delete newDescriptor.writable;
   Object.defineProperty(object, property, newDescriptor);

@@ -1,22 +1,22 @@
-import type {E2EElement, E2EPage} from '@stencil/core/testing';
-import type {OdsInputAttribute} from './interfaces/attributes';
-import {newE2EPage} from '@stencil/core/testing';
-import {odsComponentAttributes2StringAttributes, odsStringAttributes2Str} from '@ovhcloud/ods-common-testing';
-import {ODS_THEME_COLOR_INTENTS} from '@ovhcloud/ods-common-theming';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
-import {ODS_INPUT_SIZES} from './constants/input-size';
-import {ODS_INPUT_TYPE} from './constants/input-type';
+import type { E2EElement, E2EPage } from '@stencil/core/testing';
+import type { OdsInputAttribute } from './interfaces/attributes';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { ODS_INPUT_SIZES } from './constants/input-size';
+import { ODS_INPUT_TYPE } from './constants/input-type';
+import { newE2EPage } from '@stencil/core/testing';
+import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
+import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
 
 describe('e2e:osds-input', () => {
-  const baseAttribute = {ariaLabel: null, defaultValue: '', forbiddenValues: [], type: ODS_INPUT_TYPE.text, value: ''};
+  const baseAttribute = { ariaLabel: null, defaultValue: '', forbiddenValues: [], type: ODS_INPUT_TYPE.text, value: '' };
   let page: E2EPage;
   let el: E2EElement;
 
-  async function setup({attributes = {}, onPage}: { attributes?: Partial<OdsInputAttribute>, html?: string, onPage?: ({page}: { page: E2EPage }) => void } = {}) {
-    const stringAttributes = odsComponentAttributes2StringAttributes<OdsInputAttribute>({...baseAttribute, ...attributes}, DEFAULT_ATTRIBUTE);
+  async function setup({ attributes = {}, onPage }: { attributes?: Partial<OdsInputAttribute>, html?: string, onPage?: ({ page }: { page: E2EPage }) => void } = {}) {
+    const stringAttributes = odsComponentAttributes2StringAttributes<OdsInputAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
-    onPage && onPage({page});
+    onPage && onPage({ page });
 
     await page.setContent(`
       <osds-input ${odsStringAttributes2Str(stringAttributes)}>
@@ -260,8 +260,8 @@ describe('e2e:osds-input', () => {
 
   describe('screenshots', () => {
     // Todo : add active behaviour on top of hover and focus
-    screenshotActions.forEach(({actionDescription, action}) => {
-      screenshotBehaviours.forEach(({behaviourDescription, behaviour}) => {
+    screenshotActions.forEach(({ actionDescription, action }) => {
+      screenshotBehaviours.forEach(({ behaviourDescription, behaviour }) => {
         ODS_THEME_COLOR_INTENTS.forEach((color) => {
           ODS_INPUT_SIZES.forEach((size) => {
             const name = [color, size, actionDescription, behaviourDescription].join(', ');
@@ -278,13 +278,13 @@ describe('e2e:osds-input', () => {
 
               await page.evaluate(() => {
                 const element = document.querySelector('osds-input') as HTMLElement;
-                return {width: element.clientWidth, height: element.clientHeight};
+                return { width: element.clientWidth, height: element.clientHeight };
               });
-              await page.setViewport({width: 600, height:600});
+              await page.setViewport({ width: 600, height:600 });
 
-              const results = await page.compareScreenshot('input', {fullPage: false, omitBackground: true});
+              const results = await page.compareScreenshot('input', { fullPage: false, omitBackground: true });
 
-              expect(results).toMatchScreenshot({allowableMismatchedRatio: 0});
+              expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
             });
           });
         });

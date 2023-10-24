@@ -1,15 +1,15 @@
-import type {E2EPage} from '@stencil/core/testing';
-import type {OdsDatepickerAttribute} from './interfaces/attributes';
-import type {OsdsDatepicker} from './osds-datepicker';
-import {newE2EPage} from '@stencil/core/testing';
-import {odsComponentAttributes2StringAttributes, odsStringAttributes2Str} from '@ovhcloud/ods-common-testing';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
-import {ODS_DATEPICKER_DAY} from './constants/datepicker-day';
+import type { E2EPage } from '@stencil/core/testing';
+import type { OdsDatepickerAttribute } from './interfaces/attributes';
+import type { OsdsDatepicker } from './osds-datepicker';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { ODS_DATEPICKER_DAY } from './constants/datepicker-day';
+import { newE2EPage } from '@stencil/core/testing';
+import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 
 describe('e2e:osds-datepicker', () => {
   let page: E2EPage;
 
-  async function setup({attributes = {}}: { attributes?: Partial<OdsDatepickerAttribute>, html?: string } = {}) {
+  async function setup({ attributes = {} }: { attributes?: Partial<OdsDatepickerAttribute>, html?: string } = {}) {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsDatepickerAttribute>(attributes, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
@@ -43,14 +43,14 @@ describe('e2e:osds-datepicker', () => {
   }
 
   const attributeConfigurations = [
-    {name: 'clearable', options: [true, false]},
-    {name: 'daysOfWeekDisabled', options: [[], [ODS_DATEPICKER_DAY.saturday, ODS_DATEPICKER_DAY.sunday]]},
-    {name: 'disabled', options: [true, false]},
-    {name: 'error', options: [false, true]},
-    {name: 'format', options: ['dd/mm/yyyy', 'mm/dd/yyyy']},
-    {name: 'inline', options: [true, false]},
-    {name: 'placeholder', options: ['', 'placeholder message']},
-    {name: 'value', options: [null, new Date('1999-11-02')]},
+    { name: 'clearable', options: [true, false] },
+    { name: 'daysOfWeekDisabled', options: [[], [ODS_DATEPICKER_DAY.saturday, ODS_DATEPICKER_DAY.sunday]] },
+    { name: 'disabled', options: [true, false] },
+    { name: 'error', options: [false, true] },
+    { name: 'format', options: ['dd/mm/yyyy', 'mm/dd/yyyy'] },
+    { name: 'inline', options: [true, false] },
+    { name: 'placeholder', options: ['', 'placeholder message'] },
+    { name: 'value', options: [null, new Date('1999-11-02')] },
   ];
 
   function generateCombinations(attributes: typeof attributeConfigurations): Array<Partial<OdsDatepickerAttribute>> {
@@ -84,7 +84,7 @@ describe('e2e:osds-datepicker', () => {
         ].filter(Boolean).join(', ');
 
         it(composedName, async() => {
-          await setup({attributes});
+          await setup({ attributes });
 
           await page.waitForChanges();
           const datepicker = await page.find('osds-datepicker');
@@ -94,10 +94,10 @@ describe('e2e:osds-datepicker', () => {
 
           await page.waitForChanges();
 
-          await page.setViewport({width: 600, height: 600});
+          await page.setViewport({ width: 600, height: 600 });
 
-          const results = await page.compareScreenshot('datepicker', {fullPage: false, omitBackground: true});
-          expect(results).toMatchScreenshot({allowableMismatchedRatio: 0});
+          const results = await page.compareScreenshot('datepicker', { fullPage: false, omitBackground: true });
+          expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
         });
       });
     });

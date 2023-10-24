@@ -1,10 +1,10 @@
-import {html} from 'lit-html';
-import {defineCustomElements} from '@ovhcloud/ods-components/popover/loader';
-import {extractArgTypes, extractStoryParams, getTagAttributes} from '../../../core/componentHTMLUtils';
+import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
+import page from './popover.web-component.stories.page.mdx';
+import { html } from 'lit-html';
+import { defineCustomElements } from '@ovhcloud/ods-components/popover/loader';
 // @ts-ignore
 import changelog from '@ovhcloud/ods-components/popover/CHANGELOG.md';
 // @ts-ignore
-import page from './popover.web-component.stories.page.mdx';
 
 defineCustomElements();
 
@@ -20,7 +20,7 @@ export default {
     notes: {
       changelog,
     },
-    docs: {page},
+    docs: { page },
   },
   argTypes: extractArgTypes(storyParams),
 };

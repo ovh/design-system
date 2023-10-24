@@ -1,16 +1,16 @@
-import type {OdsPhoneNumberAttribute} from './interfaces/attributes';
-import type {OdsPhoneNumberEvent, OdsPhoneNumberValueChangeEventDetail} from './interfaces/events';
-import type {OdsSelectValueChangeEventDetail} from '@ovhcloud/ods-component-select';
-import type {OdsInputValueChangeEventDetail} from '@ovhcloud/ods-component-input';
-import {ODS_COUNTRY_ISO_CODE, ODS_COUNTRY_ISO_CODES, ODS_LOCALE, OdsLogger} from '@ovhcloud/ods-common-core';
-import {Component, Event, EventEmitter, Host, Listen, Prop, State, Watch, h} from '@stencil/core';
-import {ODS_INPUT_TYPE} from '@ovhcloud/ods-component-input';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
-import {OdsPhoneNumberController} from './core/controller';
-import {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
-import {ODS_PHONE_NUMBER_COUNTRY_PRESET} from './constants/phone-number-countries';
-import {PhoneNumber, PhoneNumberFormat, PhoneNumberUtil} from 'google-libphonenumber';
-import {ODS_TEXT_LEVEL, ODS_TEXT_SIZE} from '@ovhcloud/ods-component-text';
+import type { OdsPhoneNumberAttribute } from './interfaces/attributes';
+import type { OdsPhoneNumberEvent, OdsPhoneNumberValueChangeEventDetail } from './interfaces/events';
+import type { OdsSelectValueChangeEventDetail } from '@ovhcloud/ods-component-select';
+import type { OdsInputValueChangeEventDetail } from '@ovhcloud/ods-component-input';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { OdsPhoneNumberController } from './core/controller';
+import { ODS_PHONE_NUMBER_COUNTRY_PRESET } from './constants/phone-number-countries';
+import { ODS_COUNTRY_ISO_CODE, ODS_COUNTRY_ISO_CODES, ODS_LOCALE, OdsLogger } from '@ovhcloud/ods-common-core';
+import { Component, Event, EventEmitter, Host, Listen, Prop, State, Watch, h } from '@stencil/core';
+import { ODS_INPUT_TYPE } from '@ovhcloud/ods-component-input';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+import { PhoneNumber, PhoneNumberFormat, PhoneNumberUtil } from 'google-libphonenumber';
+import { ODS_TEXT_LEVEL, ODS_TEXT_SIZE } from '@ovhcloud/ods-component-text';
 
 /**
  * @slot (unnamed) - Phone Number content
@@ -29,25 +29,25 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
   phoneUtils = PhoneNumberUtil.getInstance();
 
   /** @see OdsPhoneNumberAttribute.clearable */
-  @Prop({reflect: true}) clearable?: boolean = DEFAULT_ATTRIBUTE.clearable;
+  @Prop({ reflect: true }) clearable?: boolean = DEFAULT_ATTRIBUTE.clearable;
 
   /** @see OdsPhoneNumberAttribute.countries */
-  @Prop({reflect: true, mutable: true}) countries?: ODS_COUNTRY_ISO_CODE[] | ODS_PHONE_NUMBER_COUNTRY_PRESET | string = DEFAULT_ATTRIBUTE.countries;
+  @Prop({ reflect: true, mutable: true }) countries?: ODS_COUNTRY_ISO_CODE[] | ODS_PHONE_NUMBER_COUNTRY_PRESET | string = DEFAULT_ATTRIBUTE.countries;
 
   /** @see OdsPhoneNumberAttribute.disabled */
-  @Prop({reflect: true}) disabled?: boolean = DEFAULT_ATTRIBUTE.disabled;
+  @Prop({ reflect: true }) disabled?: boolean = DEFAULT_ATTRIBUTE.disabled;
 
   /** @see OdsPhoneNumberAttribute.error */
-  @Prop({reflect: true, mutable: true}) error?: boolean = DEFAULT_ATTRIBUTE.error;
+  @Prop({ reflect: true, mutable: true }) error?: boolean = DEFAULT_ATTRIBUTE.error;
 
   /** @see OdsPhoneNumberAttribute.isoCode */
-  @Prop({reflect: true, mutable: true}) isoCode?: ODS_COUNTRY_ISO_CODE = DEFAULT_ATTRIBUTE.isoCode;
+  @Prop({ reflect: true, mutable: true }) isoCode?: ODS_COUNTRY_ISO_CODE = DEFAULT_ATTRIBUTE.isoCode;
 
   /** @see OdsPhoneNumberAttribute.locale */
-  @Prop({reflect: true, mutable: true}) locale?: ODS_LOCALE = DEFAULT_ATTRIBUTE.locale;
+  @Prop({ reflect: true, mutable: true }) locale?: ODS_LOCALE = DEFAULT_ATTRIBUTE.locale;
 
   /** @see OdsPhoneNumberAttribute.value */
-  @Prop({reflect: true, mutable: true}) value = DEFAULT_ATTRIBUTE.value;
+  @Prop({ reflect: true, mutable: true }) value = DEFAULT_ATTRIBUTE.value;
 
   /** @see OdsPhoneNumberEvent.odsValueChange */
   @Event() odsValueChange!: EventEmitter<OdsPhoneNumberValueChangeEventDetail>;
@@ -72,7 +72,7 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
     const translationFile = this.controller.loadTranslationFileByLocale(locale);
     this.i18nCountriesMap = translationFile.reduce((acc, country) => {
       const exampleNumber = this.phoneUtils.getExampleNumber(country.isoCode);
-      acc.set(country.isoCode, {...country, countryCode: exampleNumber?.getCountryCode()});
+      acc.set(country.isoCode, { ...country, countryCode: exampleNumber?.getCountryCode() });
       return acc;
     }, new Map());
     this.parsedCountries.sort((a, b) => this.sortCountriesByName(a, b));

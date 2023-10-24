@@ -1,12 +1,12 @@
-import {html} from 'lit-html';
-import {extractArgTypes, extractStoryParams, getTagAttributes} from '../../../core/componentHTMLUtils';
-import {ODS_THEME_COLOR_INTENTS} from '@ovhcloud/ods-common-theming';
-import {defineCustomElements} from '@ovhcloud/ods-components/textarea/loader';
-import {DEFAULT_ATTRIBUTE} from '@ovhcloud/ods-components/textarea/src/components/osds-textarea/constants/default-attributes';
+import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
+import page from './textarea.web-component.stories.page.mdx';
+import { html } from 'lit-html';
+import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
+import { defineCustomElements } from '@ovhcloud/ods-components/textarea/loader';
+import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-components/textarea/src/components/osds-textarea/constants/default-attributes';
 // @ts-ignore
 import changelog from '@ovhcloud/ods-components/textarea/CHANGELOG.md';
 // @ts-ignore
-import page from './textarea.web-component.stories.page.mdx';
 
 defineCustomElements();
 
@@ -16,7 +16,7 @@ const storyParams = {
     category: 'General',
     defaultValue: DEFAULT_ATTRIBUTE.color,
     options: ODS_THEME_COLOR_INTENTS,
-    control: {type: 'select'},
+    control: { type: 'select' },
   },
   defaultValue: {
     category: 'General',
@@ -57,12 +57,12 @@ const storyParams = {
   cols: {
     category: 'Misc',
     defaultValue: DEFAULT_ATTRIBUTE.cols,
-    control: {type: 'number'},
+    control: { type: 'number' },
   },
   rows: {
     category: 'Misc',
     defaultValue: DEFAULT_ATTRIBUTE.rows,
-    control: {type: 'number'},
+    control: { type: 'number' },
   },
 };
 
@@ -73,7 +73,7 @@ export default {
     notes: {
       changelog,
     },
-    docs: {page},
+    docs: { page },
   },
   argTypes: extractArgTypes(storyParams),
 };

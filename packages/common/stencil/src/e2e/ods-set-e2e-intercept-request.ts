@@ -1,5 +1,5 @@
-import type {E2EPage} from '@stencil/core/testing';
-import type {EventEmitter, HTTPRequest as pRequest} from 'puppeteer';
+import type { E2EPage } from '@stencil/core/testing';
+import type { EventEmitter, HTTPRequest as pRequest } from 'puppeteer';
 
 /**
  *

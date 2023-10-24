@@ -1,6 +1,6 @@
-import type {OdsInputValidityState, OdsInputValueChangeEvent} from '@ovhcloud/ods-components/input';
-import {OdsErrorStateControl, OdsFormControl, OdsLogger} from '@ovhcloud/ods-common-core';
-import {OsdsInput} from '@ovhcloud/ods-components/input';
+import type { OdsInputValidityState, OdsInputValueChangeEvent } from '@ovhcloud/ods-components/input';
+import { OdsErrorStateControl, OdsFormControl, OdsLogger } from '@ovhcloud/ods-common-core';
+import { OsdsInput } from '@ovhcloud/ods-components/input';
 
 interface WindowWithInputMethods extends Window {
   inputClear?: () => Promise<void>;
@@ -46,7 +46,7 @@ export const InputPlay = async() => {
   if(input) {
     const inputFormControl = new OdsFormControl<OdsInputValidityState>('2');
     input.formControl = inputFormControl;
-    input.forbiddenValues = [4, {min: 7, max: 20}];
+    input.forbiddenValues = [4, { min: 7, max: 20 }];
 
     const inputErrorStateControl = new MyErrorStateControl();
     input.errorStateControl = inputErrorStateControl;
@@ -56,10 +56,10 @@ export const InputPlay = async() => {
       logger.log('odsValueChange event', evt.detail);
 
       const errorMessagesConnexions: ErrorMessagesConnexion[] = [
-        {el: inputErrorValueMissing, error: 'valueMissing'},
-        {el: inputErrorStepMismatch, error: 'stepMismatch'},
-        {el: inputErrorValid, error: 'invalid'},
-        {el: inputErrorForbiddenValue, error: 'forbiddenValue'},
+        { el: inputErrorValueMissing, error: 'valueMissing' },
+        { el: inputErrorStepMismatch, error: 'stepMismatch' },
+        { el: inputErrorValid, error: 'invalid' },
+        { el: inputErrorForbiddenValue, error: 'forbiddenValue' },
       ];
 
       const filteredErrorMessagesConnexions = errorMessagesConnexions

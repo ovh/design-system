@@ -1,4 +1,4 @@
-import {OdsUsedValidityState} from './ods-used-validity-state';
+import { OdsUsedValidityState } from './ods-used-validity-state';
 
 /**
  * Ods representation of an input error state.

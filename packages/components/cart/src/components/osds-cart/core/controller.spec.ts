@@ -1,5 +1,5 @@
-import {OdsCartController} from './controller';
-import {OsdsCart} from '../osds-cart';
+import { OdsCartController } from './controller';
+import { OsdsCart } from '../osds-cart';
 
 class OdsCartMock extends OsdsCart {
   constructor(attribute: Partial<OsdsCart>) {

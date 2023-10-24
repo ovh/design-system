@@ -1,4 +1,4 @@
-import {getStencilJestConfig} from '@ovhcloud/ods-common-testing';
+import { getStencilJestConfig } from '@ovhcloud/ods-common-testing';
 
 const start = 2;
 const config = getStencilJestConfig({

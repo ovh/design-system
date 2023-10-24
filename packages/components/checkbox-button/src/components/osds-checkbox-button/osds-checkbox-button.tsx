@@ -1,10 +1,10 @@
-import type {OdsCheckboxButtonAttribute} from './interfaces/attributes';
-import type {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
-import {Component, Element, Host, Prop, h} from '@stencil/core';
-import {ODS_ICON_SIZE} from '@ovhcloud/ods-component-icon';
-import {OdsCheckboxButtonController} from './core/ods-checkbox-button-controller';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
-import {ODS_CHECKBOX_BUTTON_SIZE} from './constants/ods-checkbox-button-size';
+import type { OdsCheckboxButtonAttribute } from './interfaces/attributes';
+import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+import { OdsCheckboxButtonController } from './core/ods-checkbox-button-controller';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { ODS_CHECKBOX_BUTTON_SIZE } from './constants/ods-checkbox-button-size';
+import { ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
+import { Component, Element, Host, Prop, h } from '@stencil/core';
 
 /**
  * @slot start - Fixed start checkbox button content
@@ -21,28 +21,28 @@ export class OsdsCheckboxButton implements OdsCheckboxButtonAttribute {
   public mainEl?: HTMLElement;
 
   /** @see OdsCheckboxButtonAttribute.checked */
-  @Prop({reflect: true}) public checked? = DEFAULT_ATTRIBUTE.checked;
+  @Prop({ reflect: true }) public checked? = DEFAULT_ATTRIBUTE.checked;
 
   /** @see OdsCheckboxButtonAttribute.checking */
-  @Prop({reflect: true}) public checking? = DEFAULT_ATTRIBUTE.checking;
+  @Prop({ reflect: true }) public checking? = DEFAULT_ATTRIBUTE.checking;
 
   /** @see OdsCheckboxButtonAttribute.color */
-  @Prop({reflect: true}) public color?: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
+  @Prop({ reflect: true }) public color?: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
 
   /** @see OdsCheckboxButtonAttribute.disabled */
-  @Prop({reflect: true}) public disabled? = DEFAULT_ATTRIBUTE.disabled;
+  @Prop({ reflect: true }) public disabled? = DEFAULT_ATTRIBUTE.disabled;
 
   /** @see OdsCheckboxButtonAttribute.hasFocus */
-  @Prop({reflect: true}) public hasFocus? = DEFAULT_ATTRIBUTE.hasFocus;
+  @Prop({ reflect: true }) public hasFocus? = DEFAULT_ATTRIBUTE.hasFocus;
 
   /** @see OdsCheckboxButtonAttribute.indeterminate */
-  @Prop({reflect: true}) public indeterminate? = DEFAULT_ATTRIBUTE.indeterminate;
+  @Prop({ reflect: true }) public indeterminate? = DEFAULT_ATTRIBUTE.indeterminate;
 
   /** @see OdsCheckboxButtonAttribute.interactive */
-  @Prop({reflect: true}) public interactive? = DEFAULT_ATTRIBUTE.interactive;
+  @Prop({ reflect: true }) public interactive? = DEFAULT_ATTRIBUTE.interactive;
 
   /** @see OdsCheckboxButtonAttribute.label */
-  @Prop({reflect: true}) public size?: ODS_CHECKBOX_BUTTON_SIZE = DEFAULT_ATTRIBUTE.size;
+  @Prop({ reflect: true }) public size?: ODS_CHECKBOX_BUTTON_SIZE = DEFAULT_ATTRIBUTE.size;
 
   render() {
     const {

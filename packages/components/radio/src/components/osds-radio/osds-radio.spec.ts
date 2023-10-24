@@ -1,17 +1,17 @@
 jest.mock('./core/controller'); // keep jest.mock before any
 
-import type {OdsRadioAttribute} from './interfaces/attributes';
-import type {SpecPage} from '@stencil/core/testing';
+import type { OdsRadioAttribute } from './interfaces/attributes';
+import type { SpecPage } from '@stencil/core/testing';
+import { OsdsRadio } from './osds-radio';
+import { OdsRadioController } from './core/controller';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { newSpecPage } from '@stencil/core/testing';
 import {
   OdsUnitTestAttributeType,
   odsComponentAttributes2StringAttributes,
   odsStringAttributes2Str,
   odsUnitTestAttribute,
 } from '@ovhcloud/ods-common-testing';
-import {newSpecPage} from '@stencil/core/testing';
-import {OsdsRadio} from './osds-radio';
-import {OdsRadioController} from './core/controller';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
 
 describe('spec:osds-radio', () => {
   let page: SpecPage;
@@ -19,10 +19,10 @@ describe('spec:osds-radio', () => {
   let instance: OsdsRadio;
   let label: HTMLLabelElement | null | undefined;
   let controller: OdsRadioController;
-  const baseAttributes = {ariaLabel: '', checked: false, checking: false, disabled: false, value: ''};
+  const baseAttributes = { ariaLabel: '', checked: false, checking: false, disabled: false, value: '' };
 
-  async function setup({attributes = {}, html = ''}: { attributes?: Partial<OdsRadioAttribute>, html?: string }) {
-    const stringAttributes = odsComponentAttributes2StringAttributes<OdsRadioAttribute>({...baseAttributes, ...attributes}, DEFAULT_ATTRIBUTE);
+  async function setup({ attributes = {}, html = '' }: { attributes?: Partial<OdsRadioAttribute>, html?: string }) {
+    const stringAttributes = odsComponentAttributes2StringAttributes<OdsRadioAttribute>({ ...baseAttributes, ...attributes }, DEFAULT_ATTRIBUTE);
 
     page = await newSpecPage({
       components: [OsdsRadio],
@@ -61,7 +61,7 @@ describe('spec:osds-radio', () => {
         defaultValue: DEFAULT_ATTRIBUTE.disabled,
         newValue: false,
         value: true,
-        setup: (disabled) => setup({attributes: {disabled}}),
+        setup: (disabled) => setup({ attributes: { disabled } }),
         ...config,
       });
     });
@@ -71,7 +71,7 @@ describe('spec:osds-radio', () => {
         defaultValue: DEFAULT_ATTRIBUTE.checking,
         newValue: false,
         value: true,
-        setup: (checking) => setup({attributes: {checking}}),
+        setup: (checking) => setup({ attributes: { checking } }),
         ...config,
       });
     });
@@ -82,7 +82,7 @@ describe('spec:osds-radio', () => {
         defaultValue: DEFAULT_ATTRIBUTE.checked,
         newValue: false,
         value: true,
-        setup: (checked) => setup({attributes: {checked}}),
+        setup: (checked) => setup({ attributes: { checked } }),
         ...config,
       });
     });
@@ -93,7 +93,7 @@ describe('spec:osds-radio', () => {
         defaultValue: DEFAULT_ATTRIBUTE.name,
         newValue: 'oles',
         value: 'ipsum',
-        setup: (name) => setup({attributes: {name}}),
+        setup: (name) => setup({ attributes: { name } }),
         ...config,
       });
     });
@@ -103,7 +103,7 @@ describe('spec:osds-radio', () => {
         defaultValue: DEFAULT_ATTRIBUTE.label,
         newValue: 'oles',
         value: 'ipsum',
-        setup: (label) => setup({attributes: {label}}),
+        setup: (label) => setup({ attributes: { label } }),
         ...config,
       });
     });
@@ -113,7 +113,7 @@ describe('spec:osds-radio', () => {
         defaultValue: DEFAULT_ATTRIBUTE.ariaLabel,
         newValue: 'oles',
         value: 'ipsum',
-        setup: (ariaLabel) => setup({attributes: {ariaLabel}}),
+        setup: (ariaLabel) => setup({ attributes: { ariaLabel } }),
         ...config,
       });
     });
@@ -123,7 +123,7 @@ describe('spec:osds-radio', () => {
         defaultValue: DEFAULT_ATTRIBUTE.ariaLabelledby,
         newValue: 'oles',
         value: 'ipsum',
-        setup: (ariaLabelledby) => setup({attributes: {ariaLabelledby}}),
+        setup: (ariaLabelledby) => setup({ attributes: { ariaLabelledby } }),
         ...config,
         exclude: [OdsUnitTestAttributeType.REFLECTED, OdsUnitTestAttributeType.MUTABLE, OdsUnitTestAttributeType.PROPERTY],
       });
@@ -134,7 +134,7 @@ describe('spec:osds-radio', () => {
         defaultValue: DEFAULT_ATTRIBUTE.value,
         newValue: 'radio-a',
         value: 'radio-b',
-        setup: (value) => setup({attributes: {value}}),
+        setup: (value) => setup({ attributes: { value } }),
         ...config,
         include: [OdsUnitTestAttributeType.MUTABLE],
       });
@@ -222,7 +222,7 @@ describe('spec:osds-radio', () => {
     describe('watchers', () => {
       it('should call controller.updateDisabledOnChild on disabled change', async() => {
         const disabled = false;
-        await setup({attributes: {disabled}});
+        await setup({ attributes: { disabled } });
         instance.disabled = true;
 
         expect(controller.updateDisabledOnChild).toHaveBeenCalledTimes(1);
@@ -231,7 +231,7 @@ describe('spec:osds-radio', () => {
 
       it('should call controller.updateCheckingOnChild on checking change', async() => {
         const checking = false;
-        await setup({attributes: {checking}});
+        await setup({ attributes: { checking } });
         instance.checking = true;
 
         expect(controller.updateCheckingOnChild).toHaveBeenCalledTimes(1);
@@ -241,7 +241,7 @@ describe('spec:osds-radio', () => {
       it('should call controller.watchValue on value change', async() => {
         const value = 'value';
         const newValue = 'newValue';
-        await setup({attributes: {value}});
+        await setup({ attributes: { value } });
         instance.value = newValue;
 
         expect(controller.watchValue).toHaveBeenCalledTimes(1);
@@ -250,7 +250,7 @@ describe('spec:osds-radio', () => {
 
       it('should call controller.updateCheckOnChild on checked change', async() => {
         const checked = false;
-        await setup({attributes: {checked}});
+        await setup({ attributes: { checked } });
         instance.checked = true;
 
         expect(controller.updateCheckOnChild).toHaveBeenCalledTimes(1);

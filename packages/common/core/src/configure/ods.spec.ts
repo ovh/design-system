@@ -1,4 +1,4 @@
-import {Ods} from './ods';
+import { Ods } from './ods';
 
 describe('spec:ods', () => {
   let odsInstance: Ods;

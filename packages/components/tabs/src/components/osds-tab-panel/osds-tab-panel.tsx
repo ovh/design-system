@@ -1,7 +1,7 @@
-import type {HTMLStencilElement} from '@stencil/core/internal';
-import type {OdsTabPanelAttribute} from './interfaces/attributes';
-import {Component, Element, Host, Prop, h} from '@stencil/core';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
+import type { HTMLStencilElement } from '@stencil/core/internal';
+import type { OdsTabPanelAttribute } from './interfaces/attributes';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { Component, Element, Host, Prop, h } from '@stencil/core';
 
 /**
  * Panel with content that has to be displayed when active
@@ -16,10 +16,10 @@ export class OsdsTabsPanel implements OdsTabPanelAttribute {
   @Element() el!: HTMLStencilElement;
 
   /** @see OdsTabPanelAttributes.active */
-  @Prop({reflect: true}) active: boolean = DEFAULT_ATTRIBUTE.active;
+  @Prop({ reflect: true }) active: boolean = DEFAULT_ATTRIBUTE.active;
 
   /** @see OdsTabPanelAttributes.name */
-  @Prop({reflect: true}) name: string = DEFAULT_ATTRIBUTE.name;
+  @Prop({ reflect: true }) name: string = DEFAULT_ATTRIBUTE.name;
 
   render() {
     return (

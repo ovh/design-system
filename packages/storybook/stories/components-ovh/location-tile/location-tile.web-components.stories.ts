@@ -1,10 +1,10 @@
-import {html} from 'lit-html';
-import {defineCustomElements} from '@ovhcloud/ods-ovh-components/location-tile/loader';
-import {extractArgTypes, extractStoryParams} from '../../../core/componentHTMLUtils';
+import { extractArgTypes, extractStoryParams } from '../../../core/componentHTMLUtils';
+import page from './location-tile.web-component.stories.page.mdx';
+import { html } from 'lit-html';
+import { defineCustomElements } from '@ovhcloud/ods-ovh-components/location-tile/loader';
 // @ts-ignore
 import changelog from '@ovhcloud/ods-ovh-components/location-tile/CHANGELOG.md';
 // @ts-ignore
-import page from './location-tile.web-component.stories.page.mdx';
 
 defineCustomElements();
 
@@ -18,7 +18,7 @@ export default {
     notes: {
       changelog,
     },
-    docs: {page},
+    docs: { page },
   },
   argTypes: extractArgTypes(storyParams),
 };

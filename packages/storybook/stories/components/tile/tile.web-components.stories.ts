@@ -1,19 +1,19 @@
-import {html} from 'lit-html';
-import {unsafeHTML} from 'lit-html/directives/unsafe-html';
-import {ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS} from '@ovhcloud/ods-common-theming';
-import {defineCustomElements} from '@ovhcloud/ods-components/tile/loader';
-import {ODS_TILE_SIZE, ODS_TILE_SIZES, ODS_TILE_VARIANT, ODS_TILE_VARIANTS} from '@ovhcloud/ods-components/tile';
-import {OlesIpsumGeneration, olesIpsum} from '@ovhcloud/ods-common-core';
 import {
   createComponentTable,
   extractArgTypes,
   extractStoryParams,
   getTagAttributes,
 } from '../../../core/componentHTMLUtils';
+import page from './tile.web-component.stories.page.mdx';
+import { html } from 'lit-html';
+import { unsafeHTML } from 'lit-html/directives/unsafe-html';
+import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
+import { defineCustomElements } from '@ovhcloud/ods-components/tile/loader';
+import { ODS_TILE_SIZE, ODS_TILE_SIZES, ODS_TILE_VARIANT, ODS_TILE_VARIANTS } from '@ovhcloud/ods-components/tile';
+import { OlesIpsumGeneration, olesIpsum } from '@ovhcloud/ods-common-core';
 // @ts-ignore
 import changelog from '@ovhcloud/ods-components/tile/CHANGELOG.md';
 // @ts-ignore
-import page from './tile.web-component.stories.page.mdx';
 
 defineCustomElements();
 
@@ -23,19 +23,19 @@ const storyParams = {
     category: 'General',
     defaultValue: ODS_THEME_COLOR_INTENT.default,
     options: ODS_THEME_COLOR_INTENTS,
-    control: {type: 'select'},
+    control: { type: 'select' },
   },
   size: {
     category: 'General',
     defaultValue: ODS_TILE_SIZE.md,
     options: ODS_TILE_SIZES,
-    control: {type: 'select'},
+    control: { type: 'select' },
   },
   variant: {
     category: 'General',
     defaultValue: ODS_TILE_VARIANT.stroked,
     options: ODS_TILE_VARIANTS,
-    control: {type: 'select'},
+    control: { type: 'select' },
   },
   start: {
     category: 'Slot',
@@ -90,7 +90,7 @@ export default {
     notes: {
       changelog,
     },
-    docs: {page},
+    docs: { page },
   },
 };
 
@@ -141,34 +141,34 @@ const TemplateAll = (args: any) => html`
   <h1>Sizes & Colors</h1>
   ${unsafeHTML(createComponentTable(
     defaultTag,
-    {size: ODS_TILE_VARIANTS},
-    {color: ODS_THEME_COLOR_INTENTS},
+    { size: ODS_TILE_VARIANTS },
+    { color: ODS_THEME_COLOR_INTENTS },
     defaultContent,
-    {...(args.checking ? {checking: args.checking} : {})},
+    { ...(args.checking ? { checking: args.checking } : {}) },
   ))}
   <h1>hoverable Sizes & Colors</h1>
   ${unsafeHTML(createComponentTable(
     defaultTag,
-    {size: ODS_TILE_SIZES},
-    {color: ODS_THEME_COLOR_INTENTS},
+    { size: ODS_TILE_SIZES },
+    { color: ODS_THEME_COLOR_INTENTS },
     defaultContent,
-    {hoverable: true, ...(args.checking ? {checking: args.checking} : {})},
+    { hoverable: true, ...(args.checking ? { checking: args.checking } : {}) },
   ))}
   <h1>checked Sizes & Colors</h1>
   ${unsafeHTML(createComponentTable(
     defaultTag,
-    {size: ODS_TILE_SIZES},
-    {color: ODS_THEME_COLOR_INTENTS},
+    { size: ODS_TILE_SIZES },
+    { color: ODS_THEME_COLOR_INTENTS },
     defaultContent,
-    {hoverable: true, checked: true, ...(args.checking ? {checking: args.checking} : {})},
+    { hoverable: true, checked: true, ...(args.checking ? { checking: args.checking } : {}) },
   ))}
   <h1>Disabled Sizes & Colors</h1>
   ${unsafeHTML(createComponentTable(
     defaultTag,
-    {size: ODS_TILE_SIZES},
-    {color: ODS_THEME_COLOR_INTENTS},
+    { size: ODS_TILE_SIZES },
+    { color: ODS_THEME_COLOR_INTENTS },
     defaultContent,
-    {disabled: true, ...(args.checking ? {checking: args.checking} : {})},
+    { disabled: true, ...(args.checking ? { checking: args.checking } : {}) },
   ))}
 `;
 
@@ -186,4 +186,4 @@ All.args = {
 };
 All.argTypes = extractArgTypes(storyParamsAll);
 
-export {UpdateStrategy} from './tile.web-components.stories.update-strategy';
+export { UpdateStrategy } from './tile.web-components.stories.update-strategy';

@@ -1,4 +1,4 @@
-import type {OdsPhoneNumberAttribute} from '../interfaces/attributes';
+import type { OdsPhoneNumberAttribute } from '../interfaces/attributes';
 
 const DEFAULT_ATTRIBUTE: OdsPhoneNumberAttribute = Object.freeze({
   clearable: false,

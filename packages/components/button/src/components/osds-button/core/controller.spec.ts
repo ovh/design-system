@@ -1,10 +1,10 @@
-import {Ods, OdsLogger} from '@ovhcloud/ods-common-core';
-import {OdsClearLoggerSpy, OdsInitializeLoggerSpy, OdsLoggerSpyReferences} from '@ovhcloud/ods-common-testing';
-import {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
-import {ODS_BUTTON_SIZE} from '../constants/button-size';
-import {ODS_BUTTON_VARIANT} from '../constants/button-variant';
-import {OdsButtonController} from './controller';
-import {OsdsButton} from '../osds-button';
+import { ODS_BUTTON_SIZE } from '../constants/button-size';
+import { ODS_BUTTON_VARIANT } from '../constants/button-variant';
+import { OdsButtonController } from './controller';
+import { OsdsButton } from '../osds-button';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+import { OdsClearLoggerSpy, OdsInitializeLoggerSpy, OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
+import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
 
 class OdsButtonMock extends OsdsButton {
   constructor(attribute: Partial<OsdsButton>) {

@@ -1,7 +1,7 @@
-import type {OdsRadioizable} from '@ovhcloud/ods-common-core';
+import type { OdsRadioizable } from '@ovhcloud/ods-common-core';
 
 interface OdsRadioAttribute extends OdsRadioizable {
-  afterSave?: ({checked, value}: { checked: boolean, value: HTMLInputElement['value'] }) => Promise<void>;
+  afterSave?: ({ checked, value }: { checked: boolean, value: HTMLInputElement['value'] }) => Promise<void>;
   /**
    * The corresponding aria-label describing its content
    */
@@ -11,7 +11,7 @@ interface OdsRadioAttribute extends OdsRadioizable {
    */
   ariaLabelledby?: string;
 
-  beforeSave?: ({checked, value}: { checked: boolean, value: HTMLInputElement['value'] }) => Promise<void>;
+  beforeSave?: ({ checked, value }: { checked: boolean, value: HTMLInputElement['value'] }) => Promise<void>;
 
   /**
    * The checked status of the radio
@@ -34,7 +34,7 @@ interface OdsRadioAttribute extends OdsRadioizable {
    * save input allow to set a function that returns a promise.
    * It is called before each time an update is performed and allowing to manage pessimistic update strategy
    */
-  save?: ({checked, value}: { checked: boolean, value: HTMLInputElement['value'] }) => Promise<void>;
+  save?: ({ checked, value }: { checked: boolean, value: HTMLInputElement['value'] }) => Promise<void>;
   /**
    * Its corresponding value
    */

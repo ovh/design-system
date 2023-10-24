@@ -1,1 +1,1 @@
-export {OsdsCartFooterItem} from './osds-cart-footer-item';
+export { OsdsCartFooterItem } from './osds-cart-footer-item';

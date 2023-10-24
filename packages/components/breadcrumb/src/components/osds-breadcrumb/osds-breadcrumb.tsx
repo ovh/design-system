@@ -1,9 +1,9 @@
-import type {OdsBreadcrumbAttribute, OdsBreadcrumbAttributeItem} from './interfaces/attributes';
-import type {OdsBreadcrumbItemAttribute} from '../osds-breadcrumb-item/interfaces/attributes';
-import {Component, Element, Host, Listen, Prop, State, Watch, h} from '@stencil/core';
-import {OdsLogger} from '@ovhcloud/ods-common-core';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
-import {OdsBreadcrumbController} from './core/controller';
+import type { OdsBreadcrumbAttribute, OdsBreadcrumbAttributeItem } from './interfaces/attributes';
+import type { OdsBreadcrumbItemAttribute } from '../osds-breadcrumb-item/interfaces/attributes';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { OdsBreadcrumbController } from './core/controller';
+import { Component, Element, Host, Listen, Prop, State, Watch, h } from '@stencil/core';
+import { OdsLogger } from '@ovhcloud/ods-common-core';
 
 /**
  * @slot (unnamed) - Breadcrumb content
@@ -23,10 +23,10 @@ export class OsdsBreadcrumb implements OdsBreadcrumbAttribute {
   @State() isCollapsed = true;
 
   /** @see OdsBreadcrumbAttributes.contrasted */
-  @Prop({reflect: true}) public contrasted?: boolean = DEFAULT_ATTRIBUTE.contrasted;
+  @Prop({ reflect: true }) public contrasted?: boolean = DEFAULT_ATTRIBUTE.contrasted;
 
   /** @see OdsBreadcrumbAttributes.items */
-  @Prop({reflect: true}) public items: OdsBreadcrumbAttributeItem[] | string = [];
+  @Prop({ reflect: true }) public items: OdsBreadcrumbAttributeItem[] | string = [];
 
   componentWillLoad() {
     this.parseItems();

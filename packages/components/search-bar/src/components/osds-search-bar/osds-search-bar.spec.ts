@@ -1,27 +1,27 @@
-import type {OdsSearchBarAttribute} from './interfaces/attributes';
-import type {SpecPage} from '@stencil/core/testing';
+import type { OdsSearchBarAttribute } from './interfaces/attributes';
+import type { SpecPage } from '@stencil/core/testing';
+import { OsdsSearchBar } from './osds-search-bar';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import {
   odsComponentAttributes2StringAttributes,
   odsStringAttributes2Str,
   odsUnitTestAttribute,
 } from '@ovhcloud/ods-common-testing';
-import {newSpecPage} from '@stencil/core/testing';
-import {OsdsSearchBar} from './osds-search-bar';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
+import { newSpecPage } from '@stencil/core/testing';
 
 describe('spec:osds-search-bar', () => {
   let page: SpecPage;
   let root: HTMLElement | undefined;
   let instance: OsdsSearchBar;
   let buttonSearch: HTMLElement;
-  const baseAttribute = {value: ''};
+  const baseAttribute = { value: '' };
 
   afterEach(() => {
     jest.clearAllMocks();
   });
 
-  async function setup({attributes = {}}: { attributes?: Partial<OdsSearchBarAttribute> } = {}) {
-    const stringAttributes = odsComponentAttributes2StringAttributes<OdsSearchBarAttribute>({...baseAttribute, ...attributes}, DEFAULT_ATTRIBUTE);
+  async function setup({ attributes = {} }: { attributes?: Partial<OdsSearchBarAttribute> } = {}) {
+    const stringAttributes = odsComponentAttributes2StringAttributes<OdsSearchBarAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
 
     page = await newSpecPage({
       components: [OsdsSearchBar],
@@ -53,7 +53,7 @@ describe('spec:osds-search-bar', () => {
         defaultValue: DEFAULT_ATTRIBUTE.contrasted,
         newValue: true,
         value: false,
-        setup: (contrasted) => setup({attributes: {contrasted}}),
+        setup: (contrasted) => setup({ attributes: { contrasted } }),
         ...config,
       });
     });
@@ -64,7 +64,7 @@ describe('spec:osds-search-bar', () => {
         defaultValue: DEFAULT_ATTRIBUTE.disabled,
         newValue: true,
         value: false,
-        setup: (disabled) => setup({attributes: {disabled}}),
+        setup: (disabled) => setup({ attributes: { disabled } }),
         ...config,
       });
     });
@@ -75,7 +75,7 @@ describe('spec:osds-search-bar', () => {
         defaultValue: DEFAULT_ATTRIBUTE.loading,
         newValue: true,
         value: false,
-        setup: (loading) => setup({attributes: {loading}}),
+        setup: (loading) => setup({ attributes: { loading } }),
         ...config,
       });
     });
@@ -86,7 +86,7 @@ describe('spec:osds-search-bar', () => {
         defaultValue: DEFAULT_ATTRIBUTE.placeholder,
         newValue: '',
         value: 'some placeholder',
-        setup: (placeholder) => setup({attributes: {placeholder}}),
+        setup: (placeholder) => setup({ attributes: { placeholder } }),
         ...config,
       });
     });
@@ -97,7 +97,7 @@ describe('spec:osds-search-bar', () => {
         defaultValue: DEFAULT_ATTRIBUTE.value,
         newValue: '',
         value: 'some value',
-        setup: (value) => setup({attributes: {value}}),
+        setup: (value) => setup({ attributes: { value } }),
         ...config,
       });
     });
@@ -110,27 +110,27 @@ describe('spec:osds-search-bar', () => {
       buttonSearch.click();
       instance.handlerOnClickSearchButton();
       expect(spyEmitOdsSearchSubmit).toHaveBeenCalledTimes(2);
-      expect(spyEmitOdsSearchSubmit).toHaveBeenCalledWith({optionValue: '', inputValue: ''});
+      expect(spyEmitOdsSearchSubmit).toHaveBeenCalledWith({ optionValue: '', inputValue: '' });
     });
 
     it('should call emit odsSearchSubmit with keyboard navigation', async() => {
       await setup({});
       const spyEmitOdsSearchSubmit = jest.spyOn(instance.odsSearchSubmit, 'emit');
-      const enterKey = new KeyboardEvent('keydown', {code: 'Enter'});
+      const enterKey = new KeyboardEvent('keydown', { code: 'Enter' });
       instance.handlerOnKeydownInput(enterKey);
-      const spaceKey = new KeyboardEvent('keydown', {code: 'Space'});
+      const spaceKey = new KeyboardEvent('keydown', { code: 'Space' });
       instance.handlerOnKeydownInput(spaceKey);
 
       expect(spyEmitOdsSearchSubmit).toHaveBeenCalledTimes(2);
-      expect(spyEmitOdsSearchSubmit).toHaveBeenCalledWith({optionValue: '', inputValue: ''});
+      expect(spyEmitOdsSearchSubmit).toHaveBeenCalledWith({ optionValue: '', inputValue: '' });
     });
 
     it('should not call emit odsSearchSubmit with keyboard navigation because of wrong key', async() => {
       await setup({});
       const spyEmitOdsSearchSubmit = jest.spyOn(instance.odsSearchSubmit, 'emit');
-      const enterKey = new KeyboardEvent('keydown', {code: 'A'});
+      const enterKey = new KeyboardEvent('keydown', { code: 'A' });
       instance.handlerOnKeydownInput(enterKey);
-      const spaceKey = new KeyboardEvent('keydown', {code: '0'});
+      const spaceKey = new KeyboardEvent('keydown', { code: '0' });
       instance.handlerOnKeydownInput(spaceKey);
 
       expect(spyEmitOdsSearchSubmit).not.toHaveBeenCalled();

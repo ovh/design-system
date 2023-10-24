@@ -1,2 +1,2 @@
-export type {OdsMenuAttribute} from './interfaces/attributes';
-export {OsdsMenu} from './osds-menu';
+export type { OdsMenuAttribute } from './interfaces/attributes';
+export { OsdsMenu } from './osds-menu';

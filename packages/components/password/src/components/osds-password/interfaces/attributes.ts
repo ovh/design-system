@@ -1,6 +1,6 @@
-import type {OdsFormForbiddenValues} from '@ovhcloud/ods-common-core';
-import type {ODS_INPUT_SIZE} from '@ovhcloud/ods-component-input';
-import type {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
+import type { OdsFormForbiddenValues } from '@ovhcloud/ods-common-core';
+import type { ODS_INPUT_SIZE } from '@ovhcloud/ods-component-input';
+import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 
 interface OdsPasswordAttribute {
   /** ariaLabel of the password */

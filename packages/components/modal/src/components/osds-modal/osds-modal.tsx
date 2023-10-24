@@ -1,10 +1,10 @@
-import type {OdsModalAttribute} from './interfaces/attributes';
-import {ODS_THEME_COLOR_INTENT, ODS_THEME_TYPOGRAPHY_SIZE} from '@ovhcloud/ods-common-theming';
-import {Component, Element, Host, Method, Prop, Watch, h} from '@stencil/core';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
-import {ODS_ICON_NAME, ODS_ICON_SIZE} from '@ovhcloud/ods-component-icon';
-import {ODS_TEXT_LEVEL} from '@ovhcloud/ods-component-text';
-import {OdsModalMethod} from './interfaces/methods';
+import type { OdsModalAttribute } from './interfaces/attributes';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { OdsModalMethod } from './interfaces/methods';
+import { ODS_THEME_COLOR_INTENT, ODS_THEME_TYPOGRAPHY_SIZE } from '@ovhcloud/ods-common-theming';
+import { Component, Element, Host, Method, Prop, Watch, h } from '@stencil/core';
+import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
+import { ODS_TEXT_LEVEL } from '@ovhcloud/ods-component-text';
 
 /**
  * @slot (unnamed) - Modal content
@@ -18,16 +18,16 @@ export class OsdsModal implements OdsModalAttribute, OdsModalMethod {
   @Element() el!: HTMLElement;
 
   /** @see OdsModalAttributes.color */
-  @Prop({reflect: true}) color: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
+  @Prop({ reflect: true }) color: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
 
   /** @see OdsModalAttributes.dismissible */
-  @Prop({reflect: true}) dismissible?: boolean = DEFAULT_ATTRIBUTE.dismissible;
+  @Prop({ reflect: true }) dismissible?: boolean = DEFAULT_ATTRIBUTE.dismissible;
 
   /** @see OdsModalAttributes.headline */
-  @Prop({reflect: true}) headline?: string = DEFAULT_ATTRIBUTE.headline;
+  @Prop({ reflect: true }) headline?: string = DEFAULT_ATTRIBUTE.headline;
 
   /** @see OdsModalAttributes.masked */
-  @Prop({reflect: true, mutable: true}) masked?: boolean = DEFAULT_ATTRIBUTE.masked;
+  @Prop({ reflect: true, mutable: true }) masked?: boolean = DEFAULT_ATTRIBUTE.masked;
 
   /**
    * @see OdsModalMethods.close
@@ -69,7 +69,7 @@ export class OsdsModal implements OdsModalAttribute, OdsModalMethod {
   }
 
   render() {
-    const {color, headline, dismissible, masked} = this;
+    const { color, headline, dismissible, masked } = this;
 
     return (
       <Host masked={masked}>

@@ -1,14 +1,14 @@
-import type {SpecPage} from '@stencil/core/testing';
-import type {OdsTabPanelAttribute} from './interfaces/attributes';
-import type {OdsLoggerSpyReferences} from '@ovhcloud/ods-common-testing';
-import {newSpecPage} from '@stencil/core/testing';
-import {OdsLogger} from '@ovhcloud/ods-common-core';
-import {OdsClearLoggerSpy, OdsInitializeLoggerSpy, odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute} from '@ovhcloud/ods-common-testing';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
-import {OsdsTabsPanel} from './osds-tab-panel';
+import type { SpecPage } from '@stencil/core/testing';
+import type { OdsTabPanelAttribute } from './interfaces/attributes';
+import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { OsdsTabsPanel } from './osds-tab-panel';
+import { newSpecPage } from '@stencil/core/testing';
+import { OdsLogger } from '@ovhcloud/ods-common-core';
+import { OdsClearLoggerSpy, OdsInitializeLoggerSpy, odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 
 describe('spec:OsdsTabsPanel', () => {
-  const baseAttribute = {active: DEFAULT_ATTRIBUTE.active, name: DEFAULT_ATTRIBUTE.name};
+  const baseAttribute = { active: DEFAULT_ATTRIBUTE.active, name: DEFAULT_ATTRIBUTE.name };
   let page: SpecPage;
   let shadowRoot: ShadowRoot | null | undefined;
   let instance: OsdsTabsPanel;
@@ -21,8 +21,8 @@ describe('spec:OsdsTabsPanel', () => {
     ${slots.unnamed || slots.unnamed === '' ? slots.unnamed : 'My Panel'}
     `;
 
-  async function setup({attributes = {}, html = ''}: { attributes?: Partial<OdsTabPanelAttribute>, html?: string } = {}) {
-    const stringAttributes = odsComponentAttributes2StringAttributes<OdsTabPanelAttribute>({...baseAttribute, ...attributes}, DEFAULT_ATTRIBUTE);
+  async function setup({ attributes = {}, html = '' }: { attributes?: Partial<OdsTabPanelAttribute>, html?: string } = {}) {
+    const stringAttributes = odsComponentAttributes2StringAttributes<OdsTabPanelAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
 
     page = await newSpecPage({
       components: [OsdsTabsPanel],
@@ -58,7 +58,7 @@ describe('spec:OsdsTabsPanel', () => {
 
   describe('contents', () => {
     it('should have a main slot', async() => {
-      await setup({attributes: {}, html: baseHtml({})});
+      await setup({ attributes: {}, html: baseHtml({}) });
       expect(mainSlot).toBeTruthy();
     });
   });
@@ -82,7 +82,7 @@ describe('spec:OsdsTabsPanel', () => {
         defaultValue: DEFAULT_ATTRIBUTE.active,
         newValue: false,
         value: true,
-        setup: (value) => setup({attributes: {['active']: value}}),
+        setup: (value) => setup({ attributes: { ['active']: value } }),
         ...config,
       });
     });
@@ -93,7 +93,7 @@ describe('spec:OsdsTabsPanel', () => {
         defaultValue: DEFAULT_ATTRIBUTE.name,
         newValue: 'a',
         value: 'b',
-        setup: (value) => setup({attributes: {['name']: value}}),
+        setup: (value) => setup({ attributes: { ['name']: value } }),
         ...config,
       });
     });

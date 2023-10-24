@@ -1,11 +1,11 @@
-import {extractArgTypes, extractStoryParams} from '../../../../../../core/componentHTMLUtils';
-import {html} from 'lit-html';
-import {styleMap} from 'lit-html/directives/style-map';
-import {defineCustomElements} from '@ovhcloud/ods-cdk/dev/loader';
+import { extractArgTypes, extractStoryParams } from '../../../../../../core/componentHTMLUtils';
 import page from './overlay.stencil.tooltip.stories.page.mdx';
-import {play} from './overlay.stencil.tooltip.stories.play';
-import {OcdkSurfaceTooltipPosition, OcdkSurfaceTooltipPositionList} from '@ovhcloud/ods-cdk-dev';
-import {OlesIpsumGeneration, olesIpsum} from '@ovhcloud/ods-common-core';
+import { play } from './overlay.stencil.tooltip.stories.play';
+import { html } from 'lit-html';
+import { styleMap } from 'lit-html/directives/style-map';
+import { defineCustomElements } from '@ovhcloud/ods-cdk/dev/loader';
+import { OcdkSurfaceTooltipPosition, OcdkSurfaceTooltipPositionList } from '@ovhcloud/ods-cdk-dev';
+import { OlesIpsumGeneration, olesIpsum } from '@ovhcloud/ods-common-core';
 
 defineCustomElements();
 
@@ -16,31 +16,31 @@ const storyParams = {
     description: 'tooltip position',
     defaultValue: OcdkSurfaceTooltipPosition.BOTTOM,
     options: OcdkSurfaceTooltipPositionList,
-    control: {type: 'select'},
-    table: {defaultValue: {summary: OcdkSurfaceTooltipPosition.BOTTOM}},
+    control: { type: 'select' },
+    table: { defaultValue: { summary: OcdkSurfaceTooltipPosition.BOTTOM } },
   },
   applyDirection: {
     category: 'General',
     description: 'apply an HTML directionality',
     defaultValue: 'ltr',
     options: ['ltr', 'rtl'],
-    control: {type: 'select'},
-    table: {defaultValue: {summary: 'ltr'}},
+    control: { type: 'select' },
+    table: { defaultValue: { summary: 'ltr' } },
   },
   changeAlignment: {
     category: 'General',
     description: 'position component on the page',
     defaultValue: 'start center',
     options: ['start start', 'start center', 'start end', 'center start', 'center', 'center end', 'end start', 'end center', 'end end'],
-    control: {type: 'select'},
-    table: {defaultValue: {summary: 'start center'}},
+    control: { type: 'select' },
+    table: { defaultValue: { summary: 'start center' } },
   },
   applyContent: {
     category: 'General',
     description: 'apply some fake HTML in order to enable scrolling',
     defaultValue: false,
-    control: {type: 'boolean'},
-    table: {defaultValue: {summary: 'false'}},
+    control: { type: 'boolean' },
+    table: { defaultValue: { summary: 'false' } },
   },
 };
 
@@ -50,8 +50,8 @@ const tooltipScss = require('!!raw-loader!@ovhcloud/ods-cdk-dev/src/components/s
 export default {
   title: 'Libraries/CDK/Overlay/examples/Stencil/Tooltip',
   parameters: {
-    docs: {page},
-    controls: {expanded: true},
+    docs: { page },
+    controls: { expanded: true },
     preview: [
       {
         tab: 'Tooltip Component TSX',
@@ -82,7 +82,7 @@ const Template = (args: any) => {
       }
     </style>
 
-    <div id='alignment' style=${ styleMap({placeContent: args.changeAlignment}) }>
+    <div id='alignment' style=${ styleMap({ placeContent: args.changeAlignment }) }>
       <p>${args.applyContent ? olesIpsum(OlesIpsumGeneration.paragraphs, 2) : ''}</p>
       <ocdk-surface-tooltip-example value="default positioning" dir="${args.applyDirection}" position="${args.position}">
         <button>tooltip over me</button>

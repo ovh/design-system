@@ -1,4 +1,4 @@
-import {Component, Host, h} from '@stencil/core';
+import { Component, Host, h } from '@stencil/core';
 
 /**
  * @slot (unnamed) - PopoverContent content

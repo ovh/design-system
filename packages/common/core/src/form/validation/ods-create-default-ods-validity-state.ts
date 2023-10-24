@@ -1,5 +1,5 @@
-import {OdsCreateDefaultValidityState} from './ods-create-default-validity-state';
-import {OdsValidityState} from './ods-validity-state';
+import { OdsCreateDefaultValidityState } from './ods-create-default-validity-state';
+import { OdsValidityState } from './ods-validity-state';
 
 /**
  * get a default `OdsValidityState`

@@ -1,4 +1,4 @@
-import type {OdsSelectOptionAttribute} from '../interfaces/attributes';
+import type { OdsSelectOptionAttribute } from '../interfaces/attributes';
 
 const DEFAULT_ATTRIBUTE: OdsSelectOptionAttribute = Object.freeze({
   selected: false,

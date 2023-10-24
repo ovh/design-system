@@ -5,4 +5,4 @@ interface OdsMenuAttribute {
   disabled?: boolean;
 }
 
-export {OdsMenuAttribute};
+export { OdsMenuAttribute };

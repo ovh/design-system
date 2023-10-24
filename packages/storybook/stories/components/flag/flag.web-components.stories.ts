@@ -1,9 +1,9 @@
-import {html} from 'lit-html';
-import {defineCustomElements} from '@ovhcloud/ods-components/flag/loader';
-import {Ods, odsSetup} from '@ovhcloud/ods-common-core';
-import changelog from '@ovhcloud/ods-components/flag/CHANGELOG.md';
 import page from './flag.web-component.stories.page.mdx';
-import {getTagAttributes} from '../../../core/componentHTMLUtils';
+import { getTagAttributes } from '../../../core/componentHTMLUtils';
+import { html } from 'lit-html';
+import { defineCustomElements } from '@ovhcloud/ods-components/flag/loader';
+import { Ods, odsSetup } from '@ovhcloud/ods-common-core';
+import changelog from '@ovhcloud/ods-components/flag/CHANGELOG.md';
 
 odsSetup();
 Ods.instance().assetPath('flags/');
@@ -17,7 +17,7 @@ export default {
     notes: {
       changelog,
     },
-    docs: {page},
+    docs: { page },
   },
 };
 
@@ -56,5 +56,5 @@ const Play = async() => {
 
 Default.play = Play;
 
-export {CustomPath} from './flag.web-components.stories.custom-path';
-export {All} from './flag.web-components.stories.all';
+export { CustomPath } from './flag.web-components.stories.custom-path';
+export { All } from './flag.web-components.stories.all';

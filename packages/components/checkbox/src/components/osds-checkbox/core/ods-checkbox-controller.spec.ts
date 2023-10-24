@@ -1,13 +1,13 @@
-import type {HTMLStencilElement} from '@stencil/core/internal';
-import {OdsCheckboxController} from './ods-checkbox-controller';
-import {OsdsCheckbox} from '../osds-checkbox';
+import type { HTMLStencilElement } from '@stencil/core/internal';
+import { OdsCheckboxController } from './ods-checkbox-controller';
+import { OsdsCheckbox } from '../osds-checkbox';
 import {
   OdsClearLoggerSpy,
   OdsInitializeLoggerSpy,
   OdsLoggerSpyReferences,
   odsGetSimulatedPromise,
 } from '@ovhcloud/ods-common-testing';
-import {Ods, OdsCheckboxable, OdsLogger} from '@ovhcloud/ods-common-core';
+import { Ods, OdsCheckboxable, OdsLogger } from '@ovhcloud/ods-common-core';
 
 class OdsCheckboxMock extends OsdsCheckbox {
   constructor(attribute: Partial<OsdsCheckbox>) {
@@ -44,7 +44,7 @@ describe('spec:ods-checkbox-controller', () => {
   });
 
   function getSaveCbk(withError: boolean) {
-    const cbk: OsdsCheckbox['save'] = ({checked, value}) => {
+    const cbk: OsdsCheckbox['save'] = ({ checked, value }) => {
       return odsGetSimulatedPromise(withError, () => {
         logger.log(`getSaveFct. checked=${checked}, value=${value}`);
       });
@@ -53,7 +53,7 @@ describe('spec:ods-checkbox-controller', () => {
   }
 
   function getBeforeSaveCbk(withError: boolean) {
-    const cbk: OsdsCheckbox['beforeSave'] = ({checked, value}) => {
+    const cbk: OsdsCheckbox['beforeSave'] = ({ checked, value }) => {
       return odsGetSimulatedPromise(withError, () => {
         logger.log(`getSaveFct. checked=${checked}, value=${value}`);
       });
@@ -62,7 +62,7 @@ describe('spec:ods-checkbox-controller', () => {
   }
 
   function getAfterSaveCbk(withError: boolean) {
-    const cbk: OsdsCheckbox['afterSave'] = ({checked, value}) => {
+    const cbk: OsdsCheckbox['afterSave'] = ({ checked, value }) => {
       return odsGetSimulatedPromise(withError, () => {
         logger.log(`getSaveFct. checked=${checked}, value=${value}`);
       });
@@ -162,7 +162,7 @@ describe('spec:ods-checkbox-controller', () => {
           logger.log('emitChecked');
         });
         const spyOnToggleCheck = jest.spyOn(controller, 'toggleCheck');
-        const event = new KeyboardEvent('keyDown', {code: 'Space', keyCode: 32, bubbles: true});
+        const event = new KeyboardEvent('keyDown', { code: 'Space', keyCode: 32, bubbles: true });
         await controller.handleToggleByKeyEvent(event);
         expect(spyOnToggleCheck).toHaveBeenCalled();
         expect(component.checked).toEqual(true);

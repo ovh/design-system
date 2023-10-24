@@ -1,19 +1,19 @@
-import {html} from 'lit-html';
 import page from './oles-ipsum.mdx';
-import {OlesIpsumGeneration, OlesIpsumGenerationList, olesIpsum} from '@ovhcloud/ods-common-core';
+import { html } from 'lit-html';
+import { OlesIpsumGeneration, OlesIpsumGenerationList, olesIpsum } from '@ovhcloud/ods-common-core';
 
 export default {
   title: 'Libraries/Core/Oles Ipsum',
   parameters: {
-    docs: {page},
+    docs: { page },
   },
   argTypes: {
     generationType: {
       options: OlesIpsumGenerationList,
-      control: {type: 'radio'},
+      control: { type: 'radio' },
     },
     amount: {
-      control: {type: 'range', min: 0, max: 50, step: 1},
+      control: { type: 'range', min: 0, max: 50, step: 1 },
     },
   },
 };

@@ -1,23 +1,23 @@
-import type {OdsPhoneNumberAttribute} from './interfaces/attributes';
-import type {E2EElement, E2EPage} from '@stencil/core/testing';
-import type {HTTPRequest as pRequest} from 'puppeteer';
-import {newE2EPage} from '@stencil/core/testing';
-import {odsComponentAttributes2StringAttributes, odsStringAttributes2Str} from '@ovhcloud/ods-common-testing';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
-import {ODS_COUNTRY_ISO_CODE} from '@ovhcloud/ods-common-core';
-import {odsSetE2eInterceptRequest} from '@ovhcloud/ods-common-stencil';
-import {ODS_PHONE_NUMBER_COUNTRY_PRESET} from './constants/phone-number-countries';
+import type { OdsPhoneNumberAttribute } from './interfaces/attributes';
+import type { E2EElement, E2EPage } from '@stencil/core/testing';
+import type { HTTPRequest as pRequest } from 'puppeteer';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { ODS_PHONE_NUMBER_COUNTRY_PRESET } from './constants/phone-number-countries';
+import { newE2EPage } from '@stencil/core/testing';
+import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
+import { ODS_COUNTRY_ISO_CODE } from '@ovhcloud/ods-common-core';
+import { odsSetE2eInterceptRequest } from '@ovhcloud/ods-common-stencil';
 
 describe('e2e:osds-phone-number', () => {
-  const baseAttribute = {value: ''};
+  const baseAttribute = { value: '' };
   let page: E2EPage;
   let el: E2EElement;
   let select: E2EElement;
   let input: E2EElement;
   let myCbk: (request: pRequest) => void;
 
-  async function setup({attributes, cbkInterceptorRequest}: { attributes: Partial<OdsPhoneNumberAttribute>, cbkInterceptorRequest?: (request: pRequest) => void }) {
-    const stringAttributes = odsComponentAttributes2StringAttributes<OdsPhoneNumberAttribute>({...baseAttribute, ...attributes, countries: undefined}, DEFAULT_ATTRIBUTE);
+  async function setup({ attributes, cbkInterceptorRequest }: { attributes: Partial<OdsPhoneNumberAttribute>, cbkInterceptorRequest?: (request: pRequest) => void }) {
+    const stringAttributes = odsComponentAttributes2StringAttributes<OdsPhoneNumberAttribute>({ ...baseAttribute, ...attributes, countries: undefined }, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
 
@@ -42,7 +42,7 @@ describe('e2e:osds-phone-number', () => {
     myCbk = (request) => {
       if (request.url().includes('.svg') || request.url().includes('.json')) {
         request.respond({
-          headers: {'Access-Control-Allow-Origin': '*'},
+          headers: { 'Access-Control-Allow-Origin': '*' },
           body: 'myContent',
         });
       } else {
@@ -52,7 +52,7 @@ describe('e2e:osds-phone-number', () => {
   });
 
   it('should render', async() => {
-    await setup({attributes: {}, cbkInterceptorRequest: myCbk});
+    await setup({ attributes: {}, cbkInterceptorRequest: myCbk });
     expect(el).not.toBeNull();
     expect(el).toHaveClass('hydrated');
 
@@ -61,7 +61,7 @@ describe('e2e:osds-phone-number', () => {
   });
 
   it('should get default attributes', async() => {
-    await setup({attributes: {}, cbkInterceptorRequest: myCbk});
+    await setup({ attributes: {}, cbkInterceptorRequest: myCbk });
     expect(await el.getProperty('clearable')).toBe(DEFAULT_ATTRIBUTE.clearable);
     expect(await el.getProperty('countries')).toEqual(DEFAULT_ATTRIBUTE.countries);
     expect(await el.getProperty('disabled')).toBe(DEFAULT_ATTRIBUTE.disabled);
@@ -71,7 +71,7 @@ describe('e2e:osds-phone-number', () => {
 
   it('should display select because of countries', async() => {
     const countries = [ODS_COUNTRY_ISO_CODE.AD, ODS_COUNTRY_ISO_CODE.FR];
-    await setup({attributes: {countries}, cbkInterceptorRequest: myCbk});
+    await setup({ attributes: { countries }, cbkInterceptorRequest: myCbk });
 
     expect(select).not.toBeNull();
     expect(select).toHaveClass('hydrated');
@@ -81,7 +81,7 @@ describe('e2e:osds-phone-number', () => {
   });
 
   it('should display select because of countries all', async() => {
-    await setup({attributes: {countries: ODS_PHONE_NUMBER_COUNTRY_PRESET.All}, cbkInterceptorRequest: myCbk});
+    await setup({ attributes: { countries: ODS_PHONE_NUMBER_COUNTRY_PRESET.All }, cbkInterceptorRequest: myCbk });
 
     expect(select).not.toBeNull();
     expect(select).toHaveClass('hydrated');
@@ -91,7 +91,7 @@ describe('e2e:osds-phone-number', () => {
   });
 
   it('should not display select because of no countries', async() => {
-    await setup({attributes: { }, cbkInterceptorRequest: myCbk});
+    await setup({ attributes: { }, cbkInterceptorRequest: myCbk });
 
     expect(select).toBeNull();
 
@@ -100,20 +100,20 @@ describe('e2e:osds-phone-number', () => {
   });
 
   it('should get an error on load component', async() => {
-    await setup({attributes: {value: '0612345678902', isoCode: ODS_COUNTRY_ISO_CODE.FR}, cbkInterceptorRequest: myCbk});
+    await setup({ attributes: { value: '0612345678902', isoCode: ODS_COUNTRY_ISO_CODE.FR }, cbkInterceptorRequest: myCbk });
 
     expect(await el.getProperty('error')).toBe(true);
   });
 
   it('should not parse the value as a number', async() => {
-    await setup({attributes: {value: '06123456dfsdf2', isoCode: ODS_COUNTRY_ISO_CODE.FR}, cbkInterceptorRequest: myCbk});
+    await setup({ attributes: { value: '06123456dfsdf2', isoCode: ODS_COUNTRY_ISO_CODE.FR }, cbkInterceptorRequest: myCbk });
 
     expect(await el.getProperty('error')).toBe(true);
   });
 
   it('should reset the input with a change isoCode', async() => {
     const countries = [ODS_COUNTRY_ISO_CODE.AD, ODS_COUNTRY_ISO_CODE.FR];
-    await setup({attributes: {countries}, cbkInterceptorRequest: myCbk});
+    await setup({ attributes: { countries }, cbkInterceptorRequest: myCbk });
 
     await select.click();
     const optionElement = await page.findAll('osds-phone-number >>> osds-select > osds-select-option');
@@ -126,7 +126,7 @@ describe('e2e:osds-phone-number', () => {
   });
 
   it('should display select options sorted', async() => {
-    await setup({attributes: {countries: ODS_PHONE_NUMBER_COUNTRY_PRESET.All}, cbkInterceptorRequest: myCbk});
+    await setup({ attributes: { countries: ODS_PHONE_NUMBER_COUNTRY_PRESET.All }, cbkInterceptorRequest: myCbk });
 
     const optionsElement = await page.findAll('osds-phone-number >>> osds-select > osds-select-option');
     expect(optionsElement[0].innerText < optionsElement[1].innerText).toBe(true);
@@ -134,7 +134,7 @@ describe('e2e:osds-phone-number', () => {
 
   describe('Event', () => {
     it('should receive event odsValueChange with isoCode', async() => {
-      await setup({attributes: {isoCode: ODS_COUNTRY_ISO_CODE.FR}, cbkInterceptorRequest: myCbk});
+      await setup({ attributes: { isoCode: ODS_COUNTRY_ISO_CODE.FR }, cbkInterceptorRequest: myCbk });
 
       const spyOdsValueChange = await page.spyOnEvent('odsValueChange');
 
@@ -158,7 +158,7 @@ describe('e2e:osds-phone-number', () => {
 
     it('should receive event odsValueChange with options selected', async() => {
       const countries = [ODS_COUNTRY_ISO_CODE.AD, ODS_COUNTRY_ISO_CODE.FR];
-      await setup({attributes: {countries}, cbkInterceptorRequest: myCbk});
+      await setup({ attributes: { countries }, cbkInterceptorRequest: myCbk });
       const odsValueChange = await el.spyOnEvent('odsValueChange');
 
       await select.click();

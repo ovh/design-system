@@ -1,1 +1,1 @@
-export {OsdsContentAddon} from './osds-content-addon';
+export { OsdsContentAddon } from './osds-content-addon';

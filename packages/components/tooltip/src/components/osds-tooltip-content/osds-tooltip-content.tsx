@@ -1,4 +1,4 @@
-import {Component, Element, Host, h} from '@stencil/core';
+import { Component, Element, Host, h } from '@stencil/core';
 
 /**
  * @slot (tooltip-content) - The Tooltip content

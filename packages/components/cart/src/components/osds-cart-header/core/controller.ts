@@ -1,7 +1,7 @@
-import type {OsdsCartHeader} from '../osds-cart-header';
-import {OdsLogger} from '@ovhcloud/ods-common-core';
-import {HTMLStencilElement} from '@stencil/core/internal';
-import {OsdsCart} from '../../osds-cart/osds-cart';
+import type { OsdsCartHeader } from '../osds-cart-header';
+import { OsdsCart } from '../../osds-cart/osds-cart';
+import { OdsLogger } from '@ovhcloud/ods-common-core';
+import { HTMLStencilElement } from '@stencil/core/internal';
 
 class OdsCartHeaderController {
   private readonly logger = new OdsLogger('OdsCartHeaderController');

@@ -1,11 +1,11 @@
-import type {OdsFormForbiddenValues, OdsValidityState} from '@ovhcloud/ods-common-core';
-import type {OdsLoggerSpyReferences} from '@ovhcloud/ods-common-testing';
-import type {OdsRangeValue} from '../interfaces/value';
-import {OdsClearLoggerSpy, OdsInitializeLoggerSpy} from '@ovhcloud/ods-common-testing';
-import {OdsFormControl, OdsLogger} from '@ovhcloud/ods-common-core';
-import {OsdsRange} from '../osds-range';
-import {OdsRangeController} from './controller';
-import {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
+import type { OdsFormForbiddenValues, OdsValidityState } from '@ovhcloud/ods-common-core';
+import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
+import type { OdsRangeValue } from '../interfaces/value';
+import { OsdsRange } from '../osds-range';
+import { OdsRangeController } from './controller';
+import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
+import { OdsFormControl, OdsLogger } from '@ovhcloud/ods-common-core';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 
 class OdsRangeMock extends OsdsRange {
   constructor(attribute: Partial<OsdsRange>) {
@@ -62,7 +62,7 @@ describe('spec:ods-range-controller', () => {
             customError: false,
             forbiddenValue: false,
           };
-          setup({forbiddenValues});
+          setup({ forbiddenValues });
           const validity = controller.getRangeValidity();
 
           expect(validity).toEqual(expected);
@@ -81,7 +81,7 @@ describe('spec:ods-range-controller', () => {
 
           it('should return invalid state simple range', () => {
             const value = 2;
-            setup({value, forbiddenValues});
+            setup({ value, forbiddenValues });
             const validity = controller.getRangeValidity();
 
             expect(validity).toEqual(expected);
@@ -89,7 +89,7 @@ describe('spec:ods-range-controller', () => {
 
           it('should return invalid state dual range', () => {
             const value: OdsRangeValue = [2, 3];
-            setup({value, forbiddenValues});
+            setup({ value, forbiddenValues });
             const validity = controller.getRangeValidity();
 
             expect(validity).toEqual(expected);
@@ -99,7 +99,7 @@ describe('spec:ods-range-controller', () => {
         describe('type of forbidden value is array', () => {
           const min = 2;
           const max = 3;
-          const forbiddenValues: OdsFormForbiddenValues<number> = [{min, max}];
+          const forbiddenValues: OdsFormForbiddenValues<number> = [{ min, max }];
           const expected = {
             valid: false,
             valueMissing: false,
@@ -111,7 +111,7 @@ describe('spec:ods-range-controller', () => {
 
           it('should return invalid state simple range (min case)', () => {
             const value = 2;
-            setup({value, forbiddenValues});
+            setup({ value, forbiddenValues });
             const validity = controller.getRangeValidity();
 
             expect(validity).toEqual(expected);
@@ -119,7 +119,7 @@ describe('spec:ods-range-controller', () => {
 
           it('should return invalid state simple range (max case)', () => {
             const value = 3;
-            setup({value, forbiddenValues});
+            setup({ value, forbiddenValues });
             const validity = controller.getRangeValidity();
 
             expect(validity).toEqual(expected);
@@ -127,7 +127,7 @@ describe('spec:ods-range-controller', () => {
 
           it('should return invalid state dual range (min case)', () => {
             const value: OdsRangeValue = [2, 4];
-            setup({value, forbiddenValues});
+            setup({ value, forbiddenValues });
             const validity = controller.getRangeValidity();
 
             expect(validity).toEqual(expected);
@@ -135,7 +135,7 @@ describe('spec:ods-range-controller', () => {
 
           it('should return invalid state dual range (min case)', () => {
             const value: OdsRangeValue = [1, 3];
-            setup({value, forbiddenValues});
+            setup({ value, forbiddenValues });
             const validity = controller.getRangeValidity();
 
             expect(validity).toEqual(expected);
@@ -191,7 +191,7 @@ describe('spec:ods-range-controller', () => {
     describe('methods:isDualRange', () => {
       it('should return false if value is not an array', () => {
         const value = 5;
-        setup({value});
+        setup({ value });
         const isDualRange = controller.isDualRange();
 
         expect(isDualRange).toEqual(false);
@@ -199,7 +199,7 @@ describe('spec:ods-range-controller', () => {
 
       it('should return false if value is an array with less than 2 items', () => {
         const value = [1];
-        setup({value: value as OdsRangeValue});
+        setup({ value: value as OdsRangeValue });
         const isDualRange = controller.isDualRange();
 
         expect(isDualRange).toEqual(false);
@@ -207,7 +207,7 @@ describe('spec:ods-range-controller', () => {
 
       it('should return false if value is an array with more than 2 items', () => {
         const value = [1, 2, 3];
-        setup({value: value as OdsRangeValue});
+        setup({ value: value as OdsRangeValue });
         const isDualRange = controller.isDualRange();
 
         expect(isDualRange).toEqual(false);
@@ -215,7 +215,7 @@ describe('spec:ods-range-controller', () => {
 
       it('should return true if value is an array of 2 items', () => {
         const value: OdsRangeValue = [1, 2];
-        setup({value});
+        setup({ value });
         const isDualRange = controller.isDualRange();
 
         expect(isDualRange).toEqual(true);
@@ -225,7 +225,7 @@ describe('spec:ods-range-controller', () => {
     describe('methods:asDualValues', () => {
       it('should return dual value type', () => {
         const value: OdsRangeValue = [1, 2];
-        setup({value});
+        setup({ value });
         const typedValue = controller.asDualValues();
 
         expect(typedValue instanceof Array).toBe(true);
@@ -235,7 +235,7 @@ describe('spec:ods-range-controller', () => {
 
     describe('methods:validateAttributes', () => {
       it('should not call console.warn', () => {
-        setup({color: ODS_THEME_COLOR_INTENT.default});
+        setup({ color: ODS_THEME_COLOR_INTENT.default });
         controller.validateAttributes();
 
         expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledTimes(0);
@@ -244,7 +244,7 @@ describe('spec:ods-range-controller', () => {
       it('should call console.warn with wrong color', () => {
         const expected = 'The color attribute must have a value from [accent, default, error, info, primary, promotion, success, text, warning]';
         const color = 'color' as ODS_THEME_COLOR_INTENT;
-        setup({color});
+        setup({ color });
         controller.validateAttributes();
 
         expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledWith(expected);
@@ -267,7 +267,7 @@ describe('spec:ods-range-controller', () => {
     describe('methods:beforeInit', () => {
       it('should call onFormControlChange', () => {
         const formControl = new OdsFormControl<OdsValidityState>('id');
-        setup({formControl});
+        setup({ formControl });
         spyOnOnFormControlChange = jest.spyOn(controller, 'onFormControlChange');
         controller.beforeInit();
 
@@ -277,7 +277,7 @@ describe('spec:ods-range-controller', () => {
 
       it('should call onValueChange', () => {
         const value = '4';
-        setup({value});
+        setup({ value });
         spyOnOnValueChange = jest.spyOn(controller, 'onValueChange');
         controller.beforeInit();
 
@@ -302,7 +302,7 @@ describe('spec:ods-range-controller', () => {
           ...document.createElement('input'),
           setCustomValidity: jest.fn(),
         };
-        setup({inputEl});
+        setup({ inputEl });
         controller.onValueChange(2);
 
         expect(inputEl.setCustomValidity).toHaveBeenCalledTimes(1);
@@ -316,7 +316,7 @@ describe('spec:ods-range-controller', () => {
           setCustomValidity: jest.fn(),
         };
         const value = 2;
-        setup({value, inputEl, forbiddenValues});
+        setup({ value, inputEl, forbiddenValues });
         controller.onValueChange(value);
 
         expect(inputEl.setCustomValidity).toHaveBeenCalledTimes(1);
@@ -339,7 +339,7 @@ describe('spec:ods-range-controller', () => {
         const value = 2;
         const inputEl = document.createElement('input');
         inputEl.value = `${value}`;
-        setup({value, inputEl});
+        setup({ value, inputEl });
         controller.initValue();
 
         expect(component.value).toBe(value);
@@ -350,7 +350,7 @@ describe('spec:ods-range-controller', () => {
         const inputValue = '3';
         const inputEl = document.createElement('input');
         inputEl.value = inputValue;
-        setup({value, inputEl});
+        setup({ value, inputEl });
         controller.initValue();
 
         expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledWith(`Value ${value} is not valid. New value has been set to ${inputValue}`);
@@ -365,7 +365,7 @@ describe('spec:ods-range-controller', () => {
         inputEl.value = inputValue;
         const dualInputEl = document.createElement('input');
         dualInputEl.value = dualInputValue;
-        setup({value, inputEl, dualInputEl});
+        setup({ value, inputEl, dualInputEl });
         controller.initValue();
 
         expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledWith(`Value [${value}] is not valid. New value has been set to [${inputValue},${dualInputValue}]`);
@@ -380,7 +380,7 @@ describe('spec:ods-range-controller', () => {
         inputEl.value = inputValue;
         const dualInputEl = document.createElement('input');
         dualInputEl.value = dualInputValue;
-        setup({value, inputEl, dualInputEl});
+        setup({ value, inputEl, dualInputEl });
         controller.initValue();
 
         expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledWith(`Value [${value}] is not valid. New value has been set to [${inputValue},${dualInputValue}]`);
@@ -398,7 +398,7 @@ describe('spec:ods-range-controller', () => {
       });
 
       it('should warn if value is not a dual range', () => {
-        setup({value: [] as unknown as OdsRangeValue});
+        setup({ value: [] as unknown as OdsRangeValue });
         controller.validateValue('value');
 
         expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledTimes(1);
@@ -413,7 +413,7 @@ describe('spec:ods-range-controller', () => {
       });
 
       it('should not warn if value is a dual range', () => {
-        setup({value: [1, 2]});
+        setup({ value: [1, 2] });
         controller.validateValue();
 
         expect(loggerSpyReferences.methodSpies.warn).not.toHaveBeenCalled();
@@ -423,7 +423,7 @@ describe('spec:ods-range-controller', () => {
         const min = 5;
         const max = 10;
         const value = 3;
-        setup({min, max, step: 1});
+        setup({ min, max, step: 1 });
         controller.validateValue(value);
 
         expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledTimes(1);
@@ -434,7 +434,7 @@ describe('spec:ods-range-controller', () => {
         const min = 5;
         const max = 10;
         const value = 12;
-        setup({min, max, step: 1});
+        setup({ min, max, step: 1 });
         controller.validateValue(value);
 
         expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledTimes(1);
@@ -449,7 +449,7 @@ describe('spec:ods-range-controller', () => {
           ...document.createElement('input'),
           value: inputValue,
         } as unknown as HTMLInputElement;
-        setup({value: 2, disabled: false});
+        setup({ value: 2, disabled: false });
         controller.onInput(new Event(''), inputEl);
 
         expect(component.value).toBe(inputValue);
@@ -461,7 +461,7 @@ describe('spec:ods-range-controller', () => {
           ...document.createElement('input'),
           value: inputValue,
         } as unknown as HTMLInputElement;
-        setup({value: [1, 4], disabled: false});
+        setup({ value: [1, 4], disabled: false });
         controller.onInput(new Event(''), inputEl);
 
         expect(component.value).toEqual([inputValue, 4]);
@@ -473,7 +473,7 @@ describe('spec:ods-range-controller', () => {
           ...document.createElement('input'),
           value: inputValue,
         } as unknown as HTMLInputElement;
-        setup({value: [1, 2], disabled: false});
+        setup({ value: [1, 2], disabled: false });
         controller.onInput(new Event(''), inputEl, true);
 
         expect(component.value).toEqual([1, inputValue]);
@@ -487,7 +487,7 @@ describe('spec:ods-range-controller', () => {
           ...document.createElement('input'),
           value: inputValue,
         } as unknown as HTMLInputElement;
-        setup({value: 2, disabled: false});
+        setup({ value: 2, disabled: false });
         controller.onKeyup(new KeyboardEvent(''), inputEl);
 
         expect(component.value).toBe(inputValue);
@@ -499,7 +499,7 @@ describe('spec:ods-range-controller', () => {
           ...document.createElement('input'),
           value: inputValue,
         } as unknown as HTMLInputElement;
-        setup({value: [1, 4], disabled: false});
+        setup({ value: [1, 4], disabled: false });
         controller.onKeyup(new KeyboardEvent(''), inputEl);
 
         expect(component.value).toEqual([inputValue, 4]);
@@ -511,7 +511,7 @@ describe('spec:ods-range-controller', () => {
           ...document.createElement('input'),
           value: inputValue,
         } as unknown as HTMLInputElement;
-        setup({value: [1, 2], disabled: false});
+        setup({ value: [1, 2], disabled: false });
         controller.onKeyup(new KeyboardEvent(''), inputEl, true);
 
         expect(component.value).toEqual([1, inputValue]);
@@ -522,7 +522,7 @@ describe('spec:ods-range-controller', () => {
           ...document.createElement('input'),
           stepUp: jest.fn(),
         };
-        const event = new KeyboardEvent('keyUp', {key: '+'});
+        const event = new KeyboardEvent('keyUp', { key: '+' });
         setup();
         controller.onKeyup(event, inputEl);
 
@@ -535,7 +535,7 @@ describe('spec:ods-range-controller', () => {
           ...document.createElement('input'),
           stepDown: jest.fn(),
         };
-        const event = new KeyboardEvent('keyDown', {key: '-'});
+        const event = new KeyboardEvent('keyDown', { key: '-' });
         setup();
         controller.onKeyup(event, inputEl);
 
@@ -556,24 +556,24 @@ describe('spec:ods-range-controller', () => {
 
     describe('methods:hasError', () => {
       it('should return false', () => {
-        setup({error: false});
+        setup({ error: false });
         controller.getRangeValidity = jest.fn().mockImplementation(() => {
-          return {invalid: false};
+          return { invalid: false };
         });
         const hasError = controller.hasError();
         expect(hasError).toEqual(false);
       });
 
       it('should return true if component.error', () => {
-        setup({error: true});
+        setup({ error: true });
         const hasError = controller.hasError();
         expect(hasError).toEqual(true);
       });
 
       it('should return true if getRangeValidity.invalid', () => {
-        setup({error: false});
+        setup({ error: false });
         controller.getRangeValidity = jest.fn().mockImplementation(() => {
-          return {invalid: true};
+          return { invalid: true };
         });
         const hasError = controller.hasError();
         expect(hasError).toEqual(true);

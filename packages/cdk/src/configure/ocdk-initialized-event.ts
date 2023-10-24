@@ -1,4 +1,4 @@
-import {OcdkInitializedEventDetail} from './ocdk-initialized-event-detail';
+import { OcdkInitializedEventDetail } from './ocdk-initialized-event-detail';
 
 /**
  * `OCDK` main event fired when the `Ocdk` instance is created.

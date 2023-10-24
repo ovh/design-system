@@ -1,11 +1,11 @@
-import {getOdsWindow} from './ods-get-window';
-import {OdsConfig} from './ods-config';
-import {odsDefaultConfig} from './ods-default-config';
-import {OdsDeepPartial} from '../types/ods-deep-partial';
-import {OdsConfigLogging} from './ods-config-logging';
-import {VERSION} from '../version';
-import {Ods} from './ods';
-import {OdsWindow, OdsWindowFilled} from './ods-window';
+import { getOdsWindow } from './ods-get-window';
+import { OdsConfig } from './ods-config';
+import { odsDefaultConfig } from './ods-default-config';
+import { OdsDeepPartial } from '../types/ods-deep-partial';
+import { OdsConfigLogging } from './ods-config-logging';
+import { VERSION } from '../version';
+import { Ods } from './ods';
+import { OdsWindow, OdsWindowFilled } from './ods-window';
 
 /**
  * initialize all properties of window that are specific to `ods`.
@@ -66,7 +66,7 @@ export function odsSetup(/*userConfig?: OdsConfig*/): void {
   if (win) {
 
     // make our object reference, based on default
-    const configObjectRef: OdsConfig = {...odsDefaultConfig, id: Date.now()};
+    const configObjectRef: OdsConfig = { ...odsDefaultConfig, id: Date.now() };
 
     const winFilled = initializeProperties(win, configObjectRef);
 

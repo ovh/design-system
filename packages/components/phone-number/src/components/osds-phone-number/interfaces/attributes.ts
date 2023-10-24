@@ -1,5 +1,5 @@
-import type {ODS_COUNTRY_ISO_CODE, ODS_LOCALE} from '@ovhcloud/ods-common-core';
-import {ODS_PHONE_NUMBER_COUNTRY_PRESET} from '../constants/phone-number-countries';
+import type { ODS_COUNTRY_ISO_CODE, ODS_LOCALE } from '@ovhcloud/ods-common-core';
+import { ODS_PHONE_NUMBER_COUNTRY_PRESET } from '../constants/phone-number-countries';
 
 interface OdsPhoneNumberAttribute {
   /** Ability to clear the phone number value */

@@ -1,6 +1,6 @@
-import type {OdsRadioButtonAttribute} from '../interfaces/attributes';
-import {ODS_RADIO_BUTTON_SIZE} from './radio-button-size';
-import {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
+import type { OdsRadioButtonAttribute } from '../interfaces/attributes';
+import { ODS_RADIO_BUTTON_SIZE } from './radio-button-size';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 
 const DEFAULT_ATTRIBUTE: OdsRadioButtonAttribute = Object.freeze({
   checked: false,

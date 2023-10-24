@@ -1,8 +1,8 @@
-import type {OdsLoggerSpyReferences} from '@ovhcloud/ods-common-testing';
-import {Ods, OdsLogger} from '@ovhcloud/ods-common-core';
-import {OdsClearLoggerSpy, OdsInitializeLoggerSpy} from '@ovhcloud/ods-common-testing';
-import {OsdsCartHeader} from '../osds-cart-header';
-import {OdsCartHeaderController} from './controller';
+import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
+import { OsdsCartHeader } from '../osds-cart-header';
+import { OdsCartHeaderController } from './controller';
+import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
+import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
 
 class OdsCartHeaderMock extends OsdsCartHeader {
   constructor(attribute: Partial<OsdsCartHeader>) {
@@ -47,7 +47,7 @@ describe('spec:ods-cart-header-controller', () => {
       });
 
       it('should init cart', () => {
-        const cart = {dummy: 'cart '};//new OsdsCartMock() as unknown as (HTMLElement & OsdsCart);
+        const cart = { dummy: 'cart ' };//new OsdsCartMock() as unknown as (HTMLElement & OsdsCart);
         setup();
         component.el.closest = jest.fn(() => cart);
         controller.initCart();

@@ -1,18 +1,18 @@
-import type {E2EElement, E2EPage} from '@stencil/core/testing';
-import type {OdsButtonAttribute} from './interfaces/attributes';
-import {newE2EPage} from '@stencil/core/testing';
-import {odsComponentAttributes2StringAttributes, odsStringAttributes2Str} from '@ovhcloud/ods-common-testing';
-import {ODS_THEME_COLOR_INTENTS} from '@ovhcloud/ods-common-theming';
-import {ODS_BUTTON_SIZES} from './constants/button-size';
-import {ODS_BUTTON_VARIANTS} from './constants/button-variant';
-import {ODS_BUTTON_TEXT_ALIGNS} from './constants/button-text-align';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
+import type { E2EElement, E2EPage } from '@stencil/core/testing';
+import type { OdsButtonAttribute } from './interfaces/attributes';
+import { ODS_BUTTON_SIZES } from './constants/button-size';
+import { ODS_BUTTON_VARIANTS } from './constants/button-variant';
+import { ODS_BUTTON_TEXT_ALIGNS } from './constants/button-text-align';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
+import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
+import { newE2EPage } from '@stencil/core/testing';
 
 describe('e2e:osds-button', () => {
   let page: E2EPage;
   let el: E2EElement;
 
-  async function setup({attributes = {}, html = ''}: { attributes?: Partial<OdsButtonAttribute>, html?: string } = {}) {
+  async function setup({ attributes = {}, html = '' }: { attributes?: Partial<OdsButtonAttribute>, html?: string } = {}) {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsButtonAttribute>(attributes, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
@@ -51,11 +51,11 @@ describe('e2e:osds-button', () => {
 
                   await page.evaluate(() => {
                     const element = document.querySelector('osds-button') as HTMLElement;
-                    return {width: element.clientWidth, height: element.clientHeight};
+                    return { width: element.clientWidth, height: element.clientHeight };
                   });
-                  await page.setViewport({width: 600, height: 600});
-                  const results = await page.compareScreenshot('button', {fullPage: false, omitBackground: true});
-                  expect(results).toMatchScreenshot({allowableMismatchedRatio: 0});
+                  await page.setViewport({ width: 600, height: 600 });
+                  const results = await page.compareScreenshot('button', { fullPage: false, omitBackground: true });
+                  expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
                 });
               });
             });
@@ -72,9 +72,9 @@ describe('e2e:osds-button', () => {
               action();
               await behaviour();
               await page.waitForChanges();
-              await page.setViewport({width: 600, height:600});
-              const results = await page.compareScreenshot('button', {fullPage: false, omitBackground: true});
-              expect(results).toMatchScreenshot({allowableMismatchedRatio: 0});
+              await page.setViewport({ width: 600, height:600 });
+              const results = await page.compareScreenshot('button', { fullPage: false, omitBackground: true });
+              expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
             });
           });
         });

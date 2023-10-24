@@ -1,5 +1,5 @@
-import {odsDefaultConfig} from '../configure/ods-default-config';
-import {getOdsWindow} from '../configure/ods-get-window';
+import { odsDefaultConfig } from '../configure/ods-default-config';
+import { getOdsWindow } from '../configure/ods-get-window';
 
 export class OdsLogger {
   protected readonly id = Math.floor(Math.random()*10e6);

@@ -1,4 +1,4 @@
-import {OdsTextAreaUsedValidityState} from './ods-used-textarea-validity-state';
+import { OdsTextAreaUsedValidityState } from './ods-used-textarea-validity-state';
 
 /**
  * get a default vanilla `ValidityState` used in ODS

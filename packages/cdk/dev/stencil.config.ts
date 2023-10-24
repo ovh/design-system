@@ -1,5 +1,5 @@
-import {Config} from '@stencil/core';
-import {getStencilConfig} from '@ovhcloud/ods-common-stencil';
+import { Config } from '@stencil/core';
+import { getStencilConfig } from '@ovhcloud/ods-common-stencil';
 
 const args = process.argv.slice(2);
 
@@ -49,4 +49,4 @@ const config: Config = {
   }),
 };
 
-export {config};
+export { config };

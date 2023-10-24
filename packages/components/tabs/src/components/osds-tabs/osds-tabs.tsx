@@ -1,13 +1,13 @@
-import type {HTMLStencilElement} from '@stencil/core/internal';
-import type {EventEmitter} from '@stencil/core';
-import type {OdsTabsAttribute} from './interfaces/attributes';
-import type {OdsTabsChangeEventDetail, OdsTabsEvent} from './interfaces/events';
-import type {OdsTabItemSelectEventDetail} from '../osds-tab-bar-item/interfaces/events';
-import {Component, Element, Event, Host, Listen, Prop, Watch, h} from '@stencil/core';
-import {OdsLogger} from '@ovhcloud/ods-common-core';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
-import {ODS_TABS_SIZE} from './constants/tabs-size';
-import {OdsTabsController} from './core/controller';
+import type { HTMLStencilElement } from '@stencil/core/internal';
+import type { EventEmitter } from '@stencil/core';
+import type { OdsTabsAttribute } from './interfaces/attributes';
+import type { OdsTabsChangeEventDetail, OdsTabsEvent } from './interfaces/events';
+import type { OdsTabItemSelectEventDetail } from '../osds-tab-bar-item/interfaces/events';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { ODS_TABS_SIZE } from './constants/tabs-size';
+import { OdsTabsController } from './core/controller';
+import { OdsLogger } from '@ovhcloud/ods-common-core';
+import { Component, Element, Event, Host, Listen, Prop, Watch, h } from '@stencil/core';
 
 /**
  * Main tabs component
@@ -27,13 +27,13 @@ export class OsdsTabs implements OdsTabsAttribute, OdsTabsEvent {
   @Element() el!: HTMLStencilElement;
 
   /** @see OdsTabsAttributes.contrasted */
-  @Prop({reflect: true}) contrasted: boolean = DEFAULT_ATTRIBUTE.contrasted;
+  @Prop({ reflect: true }) contrasted: boolean = DEFAULT_ATTRIBUTE.contrasted;
 
   /** @see OdsTabsAttributes.panel */
-  @Prop({reflect: true, mutable: true}) panel: string = DEFAULT_ATTRIBUTE.panel;
+  @Prop({ reflect: true, mutable: true }) panel: string = DEFAULT_ATTRIBUTE.panel;
 
   /** @see OdsTabsAttributes.size */
-  @Prop({reflect: true}) size: ODS_TABS_SIZE = DEFAULT_ATTRIBUTE.size;
+  @Prop({ reflect: true }) size: ODS_TABS_SIZE = DEFAULT_ATTRIBUTE.size;
 
   /** @see OdsTabsEvents.odsTabsChanged */
   @Event() odsTabsChanged!: EventEmitter<OdsTabsChangeEventDetail>;
@@ -43,7 +43,7 @@ export class OsdsTabs implements OdsTabsAttribute, OdsTabsEvent {
    */
   @Listen('odsTabItemSelectEvent')
   handleTabItemSelection(event: CustomEvent<OdsTabItemSelectEventDetail>) {
-    this.logger.log('[handleTabItemSelection]', {event});
+    this.logger.log('[handleTabItemSelection]', { event });
     this.controller.changeActivePanel(event.detail.panel);
   }
 
@@ -53,7 +53,7 @@ export class OsdsTabs implements OdsTabsAttribute, OdsTabsEvent {
    * @see OdsTabsController.changeActivePanel
    */
   emitChanged() {
-    this.odsTabsChanged.emit({panel: this.panel});
+    this.odsTabsChanged.emit({ panel: this.panel });
   }
 
   /**

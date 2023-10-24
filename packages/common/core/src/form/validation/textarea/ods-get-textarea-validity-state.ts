@@ -1,5 +1,5 @@
-import {OdsCreateTextAreaValidityState} from './ods-create-textarea-validity-state';
-import {OdsTextAreaUsedValidityState} from './ods-used-textarea-validity-state';
+import { OdsCreateTextAreaValidityState } from './ods-create-textarea-validity-state';
+import { OdsTextAreaUsedValidityState } from './ods-used-textarea-validity-state';
 
 /**
  * enumerate used property of ValidityState in an object.

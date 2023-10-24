@@ -1,11 +1,11 @@
-import {ODS_TEXT_COLOR_HUES, ODS_TEXT_COLOR_INTENTS} from './constants/text-color';
-import {odsComponentAttributes2StringAttributes, odsStringAttributes2Str} from '@ovhcloud/ods-common-testing';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
-import type {E2EPage} from '@stencil/core/testing';
-import {ODS_TEXT_LEVELS} from './constants/text-level';
-import {ODS_TEXT_SIZES} from './constants/text-size';
-import type {OdsTextAttribute} from './interfaces/attributes';
-import {newE2EPage} from '@stencil/core/testing';
+import type { E2EPage } from '@stencil/core/testing';
+import type { OdsTextAttribute } from './interfaces/attributes';
+import { ODS_TEXT_COLOR_HUES, ODS_TEXT_COLOR_INTENTS } from './constants/text-color';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { ODS_TEXT_LEVELS } from './constants/text-level';
+import { ODS_TEXT_SIZES } from './constants/text-size';
+import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
+import { newE2EPage } from '@stencil/core/testing';
 
 const slotContent = 'Text';
 
@@ -36,7 +36,7 @@ describe('e2e:osds-text', () => {
               variations.push(`
               <osds-text ${odsStringAttributes2Str(
     odsComponentAttributes2StringAttributes<OdsTextAttribute>(
-      {color, hue, level, size}, DEFAULT_ATTRIBUTE,
+      { color, hue, level, size }, DEFAULT_ATTRIBUTE,
     ),
   )}>
                 ${slotContent}
@@ -52,7 +52,7 @@ describe('e2e:osds-text', () => {
             variations.push(`
               <osds-text ${odsStringAttributes2Str(
     odsComponentAttributes2StringAttributes<OdsTextAttribute>(
-      {contrasted, level, size}, DEFAULT_ATTRIBUTE,
+      { contrasted, level, size }, DEFAULT_ATTRIBUTE,
     ),
   )}>
                 ${slotContent}
@@ -65,8 +65,8 @@ describe('e2e:osds-text', () => {
       await setup(variations.join(''));
       await page.waitForChanges();
 
-      const results = await page.compareScreenshot('text', {fullPage: true});
-      expect(results).toMatchScreenshot({allowableMismatchedRatio: 0});
+      const results = await page.compareScreenshot('text', { fullPage: true });
+      expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
     });
   });
 });

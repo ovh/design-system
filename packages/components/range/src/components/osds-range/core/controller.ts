@@ -1,8 +1,8 @@
-import type {OdsRangeValue} from '../interfaces/value';
-import type {OdsFormControl, OdsValidityState} from '@ovhcloud/ods-common-core';
-import {OdsGetValidityState, OdsLogger, OdsWarnComponentAttribute} from '@ovhcloud/ods-common-core';
-import {OsdsRange} from '../osds-range';
-import {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
+import type { OdsRangeValue } from '../interfaces/value';
+import type { OdsFormControl, OdsValidityState } from '@ovhcloud/ods-common-core';
+import { OsdsRange } from '../osds-range';
+import { OdsGetValidityState, OdsLogger, OdsWarnComponentAttribute } from '@ovhcloud/ods-common-core';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 
 /**
  * common controller logic for range component used by the different implementations.
@@ -176,4 +176,4 @@ class OdsRangeController {
   }
 }
 
-export {OdsRangeController};
+export { OdsRangeController };

@@ -1,6 +1,6 @@
-import type {OsdsTabs} from '../osds-tabs';
-import {OsdsTabBarItem} from '../../osds-tab-bar-item/osds-tab-bar-item';
-import {OsdsTabsPanel} from '../../osds-tab-panel/osds-tab-panel';
+import type { OsdsTabs } from '../osds-tabs';
+import { OsdsTabBarItem } from '../../osds-tab-bar-item/osds-tab-bar-item';
+import { OsdsTabsPanel } from '../../osds-tab-panel/osds-tab-panel';
 
 /**
  * common controller logic for text component used by the different implementations.

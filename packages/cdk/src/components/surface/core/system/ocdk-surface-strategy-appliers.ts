@@ -1,4 +1,4 @@
-import {OcdkSurfaceAvailableSpaceFct2, OcdkSurfaceMaxHeightOpt, OcdkSurfaceMaxWidthOpt} from '../../ocdk-surface-default-config';
+import { OcdkSurfaceAvailableSpaceFct2, OcdkSurfaceMaxHeightOpt, OcdkSurfaceMaxWidthOpt } from '../../ocdk-surface-default-config';
 
 export interface OcdkSurfaceStrategyAppliers<StrategyConfig> {
   horizontalAlignment: 'left' | 'center' | 'right'

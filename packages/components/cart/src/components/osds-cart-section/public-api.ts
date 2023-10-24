@@ -1,1 +1,1 @@
-export {OsdsCartSection} from './osds-cart-section';
+export { OsdsCartSection } from './osds-cart-section';

@@ -1,19 +1,19 @@
-import type {E2EElement, E2EPage} from '@stencil/core/testing';
-import type {OdsPaginationAttribute} from './interfaces/attributes';
-import type {OdsPaginationChangedEventDetail} from './interfaces/events';
-import {newE2EPage} from '@stencil/core/testing';
-import {odsComponentAttributes2StringAttributes, odsStringAttributes2Str} from '@ovhcloud/ods-common-testing';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
-import {ODS_PAGINATION_PER_PAGE_OPTIONS} from './constants/pagination-per-page';
+import type { E2EElement, E2EPage } from '@stencil/core/testing';
+import type { OdsPaginationAttribute } from './interfaces/attributes';
+import type { OdsPaginationChangedEventDetail } from './interfaces/events';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { ODS_PAGINATION_PER_PAGE_OPTIONS } from './constants/pagination-per-page';
+import { newE2EPage } from '@stencil/core/testing';
+import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 
 describe('e2e:osds-pagination', () => {
-  const baseAttribute = {current: 0, disabled: false, labelTooltipNext: '', labelTooltipPrevious: '', totalPages: 0};
+  const baseAttribute = { current: 0, disabled: false, labelTooltipNext: '', labelTooltipPrevious: '', totalPages: 0 };
   let page: E2EPage;
   let el: E2EElement;
   let osdsButtonPaginationPageButtonElement: E2EElement;
 
-  async function setup({attributes = {}, html = ''}: { attributes?: Partial<OdsPaginationAttribute>, html?: string } = {}) {
-    const stringAttributes = odsComponentAttributes2StringAttributes<OdsPaginationAttribute>({...baseAttribute, ...attributes}, DEFAULT_ATTRIBUTE);
+  async function setup({ attributes = {}, html = '' }: { attributes?: Partial<OdsPaginationAttribute>, html?: string } = {}) {
+    const stringAttributes = odsComponentAttributes2StringAttributes<OdsPaginationAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
 
@@ -29,7 +29,7 @@ describe('e2e:osds-pagination', () => {
 
   describe('defaults', () => {
     beforeEach(async() => {
-      await setup({attributes: {totalPages: 10, current: 4}});
+      await setup({ attributes: { totalPages: 10, current: 4 } });
     });
 
     it('should render', async() => {
@@ -58,68 +58,68 @@ describe('e2e:osds-pagination', () => {
 
   describe('check the pagination structure', () => {
     it('should not render if total pages is less than 2', async() => {
-      await setup({attributes: {current: 1, totalPages: 1}});
+      await setup({ attributes: { current: 1, totalPages: 1 } });
       expect(el.shadowRoot.innerHTML).toBe('');
     });
 
     it('< 1 2 > should have 4 osds-button', async() => {
-      await setup({attributes: {current: 1, totalPages: 2}});
+      await setup({ attributes: { current: 1, totalPages: 2 } });
 
       const buttonList = await page.findAll('osds-pagination >>> li >>> osds-button');
       expect(buttonList.length).toBe(4);
     });
 
     it('< 1 2 3 > should have 5 osds-button', async() => {
-      await setup({attributes: {current: 1, totalPages: 3}});
+      await setup({ attributes: { current: 1, totalPages: 3 } });
 
       const buttonList = await page.findAll('osds-pagination >>> li >>> osds-button');
       expect(buttonList.length).toBe(5);
     });
 
     it('< 1 2 3 4 > should have 6 osds-button', async() => {
-      await setup({attributes: {current: 1, totalPages: 4}});
+      await setup({ attributes: { current: 1, totalPages: 4 } });
 
       const buttonList = await page.findAll('osds-pagination >>> li >>> osds-button');
       expect(buttonList.length).toBe(6);
     });
 
     it('< 1 2 3 4 5 > should have 7 osds-button', async() => {
-      await setup({attributes: {current: 1, totalPages: 5}});
+      await setup({ attributes: { current: 1, totalPages: 5 } });
 
       const buttonList = await page.findAll('osds-pagination >>> li >>> osds-button');
       expect(buttonList.length).toBe(7);
     });
 
     it('< 1 2 3 4 5 6 > should have 8 osds-button', async() => {
-      await setup({attributes: {current: 1, totalPages: 6}});
+      await setup({ attributes: { current: 1, totalPages: 6 } });
 
       const buttonList = await page.findAll('osds-pagination >>> li >>> osds-button');
       expect(buttonList.length).toBe(8);
     });
 
     it('< 1 2 3 4 5 … 7 > should have 9 osds-button', async() => {
-      await setup({attributes: {current: 1, totalPages: 7}});
+      await setup({ attributes: { current: 1, totalPages: 7 } });
 
       const buttonList = await page.findAll('osds-pagination >>> li >>> osds-button');
       expect(buttonList.length).toBe(9);
     });
 
     it('< 1 2 3 4 5 … 8 > should have 9 osds-button', async() => {
-      await setup({attributes: {current: 1, totalPages: 8}});
+      await setup({ attributes: { current: 1, totalPages: 8 } });
 
       const buttonList = await page.findAll('osds-pagination >>> li >>> osds-button');
       expect(buttonList.length).toBe(9);
     });
 
     it('< 1 … 4 5 6 … 21 > should have 9 osds-button', async() => {
-      await setup({attributes: {current: 5, totalPages: 21}});
+      await setup({ attributes: { current: 5, totalPages: 21 } });
 
       const buttonList = await page.findAll('osds-pagination >>> li >>> osds-button');
       expect(buttonList.length).toBe(9);
     });
 
     it('< 1 … 4 5 6 … 9000 > should have 9 osds-button', async() => {
-      await setup({attributes: {current: 5, totalPages: 9000}});
+      await setup({ attributes: { current: 5, totalPages: 9000 } });
 
       const buttonList = await page.findAll('osds-pagination >>> li >>> osds-button');
       expect(buttonList.length).toBe(9);
@@ -128,7 +128,7 @@ describe('e2e:osds-pagination', () => {
 
   describe('should change page if we click', () => {
     it('current from 2 to 1 by button click', async() => {
-      await setup({attributes: {current: 2, totalPages: 5}});
+      await setup({ attributes: { current: 2, totalPages: 5 } });
 
       const buttonList = await page.findAll('osds-pagination >>> li >>> osds-button');
 
@@ -144,7 +144,7 @@ describe('e2e:osds-pagination', () => {
     });
 
     it('current from 2 to 3 by button click', async() => {
-      await setup({attributes: {current: 2, totalPages: 5}});
+      await setup({ attributes: { current: 2, totalPages: 5 } });
 
       const buttonList = await page.findAll('osds-pagination >>> li >>> osds-button');
 
@@ -160,7 +160,7 @@ describe('e2e:osds-pagination', () => {
     });
 
     it('current from 2 to 4 by button click', async() => {
-      await setup({attributes: {current: 2, totalPages: 5}});
+      await setup({ attributes: { current: 2, totalPages: 5 } });
 
       const buttonList = await page.findAll('osds-pagination >>> li >>> osds-button');
 
@@ -176,7 +176,7 @@ describe('e2e:osds-pagination', () => {
     });
 
     it('current from 2 to 5 by button click', async() => {
-      await setup({attributes: {current: 2, totalPages: 5}});
+      await setup({ attributes: { current: 2, totalPages: 5 } });
 
       const buttonList = await page.findAll('osds-pagination >>> li >>> osds-button');
 
@@ -192,7 +192,7 @@ describe('e2e:osds-pagination', () => {
     });
 
     it('should emit when the attribute changes', async() => {
-      await setup({attributes: {current: 2, totalPages: 5}});
+      await setup({ attributes: { current: 2, totalPages: 5 } });
 
       const odsPaginationChanged = await el.spyOnEvent('odsPaginationChanged');
 
@@ -214,7 +214,7 @@ describe('e2e:osds-pagination', () => {
     let perPageSelectElement: E2EElement;
 
     it('should not show the select if the totalItems < 10', async() => {
-      await setup({attributes: {current: 1, totalItems: 5}});
+      await setup({ attributes: { current: 1, totalItems: 5 } });
 
       perPageSelectElement = await page.find('osds-pagination >>> osds-select');
 
@@ -222,7 +222,7 @@ describe('e2e:osds-pagination', () => {
     });
 
     it('should show all the default step', async() => {
-      await setup({attributes: {current: 1, totalItems: 500}});
+      await setup({ attributes: { current: 1, totalItems: 500 } });
 
       perPageSelectElement = await page.find('osds-pagination >>> osds-select');
       expect(perPageSelectElement).toBeDefined();
@@ -245,7 +245,7 @@ describe('e2e:osds-pagination', () => {
 
     it('should show both slots and the totalItems number', async() => {
       await setup({
-        attributes: {current: 1, totalItems: dummyTotalItems},
+        attributes: { current: 1, totalItems: dummyTotalItems },
         html: `
           <span slot="before-total-items">of&nbsp;</span>
           <span slot="after-total-items">&nbsp;results</span>
@@ -265,7 +265,7 @@ describe('e2e:osds-pagination', () => {
     let pageItemElements: E2EElement[];
 
     it('should change the totalPages according to the selected step', async() => {
-      await setup({attributes: {current: 1, totalItems: 20}});
+      await setup({ attributes: { current: 1, totalItems: 20 } });
 
       pageItemElements = await page.findAll('osds-pagination >>> ul > li:not([class="arrows"])');
       expect(pageItemElements.length).toBe(2);

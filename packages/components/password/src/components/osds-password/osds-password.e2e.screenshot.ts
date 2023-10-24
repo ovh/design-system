@@ -1,21 +1,21 @@
-import type {E2EElement, E2EPage} from '@stencil/core/testing';
-import type {OdsPasswordAttribute} from './interfaces/attributes';
-import {newE2EPage} from '@stencil/core/testing';
-import {odsComponentAttributes2StringAttributes, odsStringAttributes2Str} from '@ovhcloud/ods-common-testing';
-import {ODS_INPUT_SIZES} from '@ovhcloud/ods-component-input';
-import {ODS_THEME_COLOR_INTENTS} from '@ovhcloud/ods-common-theming';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
+import type { E2EElement, E2EPage } from '@stencil/core/testing';
+import type { OdsPasswordAttribute } from './interfaces/attributes';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { newE2EPage } from '@stencil/core/testing';
+import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
+import { ODS_INPUT_SIZES } from '@ovhcloud/ods-component-input';
+import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
 
 describe('e2e:osds-password', () => {
-  const baseAttribute = {ariaLabel: '', forbiddenValues: [], value: ''};
+  const baseAttribute = { ariaLabel: '', forbiddenValues: [], value: '' };
   let page: E2EPage;
   let el: E2EElement;
 
-  async function setup({attributes = {}, onPage}: { attributes?: Partial<OdsPasswordAttribute>, onPage?: ({page}: { page: E2EPage }) => void } = {}) {
-    const stringAttributes = odsComponentAttributes2StringAttributes<OdsPasswordAttribute>({...baseAttribute, ...attributes}, DEFAULT_ATTRIBUTE);
+  async function setup({ attributes = {}, onPage }: { attributes?: Partial<OdsPasswordAttribute>, onPage?: ({ page }: { page: E2EPage }) => void } = {}) {
+    const stringAttributes = odsComponentAttributes2StringAttributes<OdsPasswordAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
-    onPage && onPage({page});
+    onPage && onPage({ page });
 
     await page.setContent(`<osds-password ${odsStringAttributes2Str(stringAttributes)}></osds-password>`);
     await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
@@ -106,7 +106,7 @@ describe('e2e:osds-password', () => {
   ];
 
   describe('screenshots', () => {
-    screenshotActions.forEach(({actionDescription, action}) => {
+    screenshotActions.forEach(({ actionDescription, action }) => {
       ODS_THEME_COLOR_INTENTS.forEach((color) => {
         ODS_INPUT_SIZES.forEach((size) => {
           const name = [color, size, actionDescription].join(', ');
@@ -122,13 +122,13 @@ describe('e2e:osds-password', () => {
 
             await page.evaluate(() => {
               const element = document.querySelector('osds-password') as HTMLElement;
-              return {width: element.clientWidth, height: element.clientHeight};
+              return { width: element.clientWidth, height: element.clientHeight };
             });
-            await page.setViewport({width: 600, height:600});
+            await page.setViewport({ width: 600, height:600 });
 
-            const results = await page.compareScreenshot('password', {fullPage: false, omitBackground: true});
+            const results = await page.compareScreenshot('password', { fullPage: false, omitBackground: true });
 
-            expect(results).toMatchScreenshot({allowableMismatchedRatio: 0});
+            expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
           });
         });
       });

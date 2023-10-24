@@ -72,7 +72,7 @@
     "no-multi-spaces": "error",
     "no-nested-ternary": "error",
     "no-trailing-spaces": "error",
-    "object-curly-spacing": ["error", "never"],
+    "object-curly-spacing": ["error", "always"],
     "operator-linebreak": ["error", "before"],
     "quotes": ["error", "single"],
     "semi": ["error", "always"],

@@ -1,15 +1,15 @@
 jest.mock('./core/controller'); // keep jest.mock before any
 
-import type {SpecPage} from '@stencil/core/testing';
-import type {OdsLinkAttribute} from './interfaces/attributes';
-import {OdsHTMLAnchorElementRel, OdsHTMLAnchorElementTarget} from '@ovhcloud/ods-common-core';
-import {odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute} from '@ovhcloud/ods-common-testing';
-import {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
-import {newSpecPage} from '@stencil/core/testing';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
-import {ODS_LINK_REFERRER_POLICY} from './constants/referrer-policies';
-import {OdsLinkController} from './core/controller';
-import {OsdsLink} from './osds-link';
+import type { SpecPage } from '@stencil/core/testing';
+import type { OdsLinkAttribute } from './interfaces/attributes';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { ODS_LINK_REFERRER_POLICY } from './constants/referrer-policies';
+import { OdsLinkController } from './core/controller';
+import { OsdsLink } from './osds-link';
+import { OdsHTMLAnchorElementRel, OdsHTMLAnchorElementTarget } from '@ovhcloud/ods-common-core';
+import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+import { newSpecPage } from '@stencil/core/testing';
 
 describe('spec:osds-link', () => {
   let page: SpecPage;
@@ -23,7 +23,7 @@ describe('spec:osds-link', () => {
     jest.clearAllMocks();
   });
 
-  async function setup({attributes = {}, html = ''}: { attributes?: Partial<OdsLinkAttribute>, html?: string } = {}) {
+  async function setup({ attributes = {}, html = '' }: { attributes?: Partial<OdsLinkAttribute>, html?: string } = {}) {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsLinkAttribute>(attributes, DEFAULT_ATTRIBUTE);
 
     page = await newSpecPage({
@@ -48,17 +48,17 @@ describe('spec:osds-link', () => {
 
   describe('contents', () => {
     it('should have a start slot', async() => {
-      await setup({attributes: {}, html: '<slot name=\'start\'></slot>'});
+      await setup({ attributes: {}, html: '<slot name=\'start\'></slot>' });
       expect(startSlot).toBeTruthy();
     });
 
     it('should have a main slot', async() => {
-      await setup({attributes: {}, html: '<slot></slot>'});
+      await setup({ attributes: {}, html: '<slot></slot>' });
       expect(mainSlot).toBeTruthy();
     });
 
     it('should have a end slot', async() => {
-      await setup({attributes: {}, html: '<slot name=\'end\'></slot>'});
+      await setup({ attributes: {}, html: '<slot name=\'end\'></slot>' });
       expect(endSlot).toBeTruthy();
     });
   });
@@ -77,7 +77,7 @@ describe('spec:osds-link', () => {
         defaultValue: DEFAULT_ATTRIBUTE.color,
         newValue: ODS_THEME_COLOR_INTENT.primary,
         value: ODS_THEME_COLOR_INTENT.default,
-        setup: (value) => setup({attributes: {['color']: value}}),
+        setup: (value) => setup({ attributes: { ['color']: value } }),
         ...config,
       });
     });
@@ -88,7 +88,7 @@ describe('spec:osds-link', () => {
         defaultValue: DEFAULT_ATTRIBUTE.contrasted,
         newValue: false,
         value: true,
-        setup: (value) => setup({attributes: {['contrasted']: value}}),
+        setup: (value) => setup({ attributes: { ['contrasted']: value } }),
         ...config,
       });
     });
@@ -99,7 +99,7 @@ describe('spec:osds-link', () => {
         defaultValue: DEFAULT_ATTRIBUTE.disabled,
         newValue: false,
         value: true,
-        setup: (value) => setup({attributes: {['disabled']: value}}),
+        setup: (value) => setup({ attributes: { ['disabled']: value } }),
         ...config,
       });
     });
@@ -110,7 +110,7 @@ describe('spec:osds-link', () => {
         defaultValue: DEFAULT_ATTRIBUTE.href,
         newValue: 'oles',
         value: 'ipsum',
-        setup: (value) => setup({attributes: {['href']: value}}),
+        setup: (value) => setup({ attributes: { ['href']: value } }),
         ...config,
       });
     });
@@ -121,7 +121,7 @@ describe('spec:osds-link', () => {
         defaultValue: DEFAULT_ATTRIBUTE.referrerpolicy,
         newValue: ODS_LINK_REFERRER_POLICY.noReferrer,
         value: ODS_LINK_REFERRER_POLICY.origin,
-        setup: (value) => setup({attributes: {['referrerpolicy']: value}}),
+        setup: (value) => setup({ attributes: { ['referrerpolicy']: value } }),
         ...config,
       });
     });
@@ -132,7 +132,7 @@ describe('spec:osds-link', () => {
         defaultValue: DEFAULT_ATTRIBUTE.rel,
         newValue: OdsHTMLAnchorElementRel.author,
         value: OdsHTMLAnchorElementRel.alternate,
-        setup: (value) => setup({attributes: {['rel']: value}}),
+        setup: (value) => setup({ attributes: { ['rel']: value } }),
         ...config,
       });
     });
@@ -143,7 +143,7 @@ describe('spec:osds-link', () => {
         defaultValue: DEFAULT_ATTRIBUTE.target,
         newValue: OdsHTMLAnchorElementTarget._parent,
         value: OdsHTMLAnchorElementTarget._top,
-        setup: (value) => setup({attributes: {['target']: value}}),
+        setup: (value) => setup({ attributes: { ['target']: value } }),
         ...config,
       });
     });

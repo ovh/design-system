@@ -1,4 +1,4 @@
-import {OdsFormFieldAttribute} from '../interfaces/attributes';
+import { OdsFormFieldAttribute } from '../interfaces/attributes';
 
 const DEFAULT_ATTRIBUTE: OdsFormFieldAttribute = Object.freeze({
   error: '',

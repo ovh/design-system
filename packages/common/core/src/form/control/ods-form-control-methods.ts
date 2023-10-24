@@ -1,4 +1,4 @@
-import {OdsValidityStateUnion} from './ods-form-control-type';
+import { OdsValidityStateUnion } from './ods-form-control-type';
 
 /**
  * methods for all component that are in fact an input for the user (using a html vanilla input under the hood).

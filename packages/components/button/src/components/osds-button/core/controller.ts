@@ -1,9 +1,9 @@
-import type {OsdsButton} from '../osds-button';
-import {OdsLogger, OdsWarnComponentAttribute} from '@ovhcloud/ods-common-core';
-import {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
-import {ODS_BUTTON_SIZE} from '../constants/button-size';
-import {ODS_BUTTON_VARIANT} from '../constants/button-variant';
-import {ODS_BUTTON_TEXT_ALIGN} from '../constants/button-text-align';
+import type { OsdsButton } from '../osds-button';
+import { ODS_BUTTON_SIZE } from '../constants/button-size';
+import { ODS_BUTTON_VARIANT } from '../constants/button-variant';
+import { ODS_BUTTON_TEXT_ALIGN } from '../constants/button-text-align';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+import { OdsLogger, OdsWarnComponentAttribute } from '@ovhcloud/ods-common-core';
 
 /**
  * common controller logic for button component used by the different implementations.

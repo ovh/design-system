@@ -26,7 +26,7 @@ export class OcdkSurfaceCustomStrategyExample implements OcdkSurfaceStrategyDefi
     return [
       // ### anchored at bottom
       {
-        cornerPoints: {anchor: OcdkSurfaceNormalizedCorner.BOTTOM_LEFT, origin: OcdkSurfaceNormalizedCorner.TOP_LEFT},
+        cornerPoints: { anchor: OcdkSurfaceNormalizedCorner.BOTTOM_LEFT, origin: OcdkSurfaceNormalizedCorner.TOP_LEFT },
         STRATEGIES: {
           // main mode : standard
           standard: {

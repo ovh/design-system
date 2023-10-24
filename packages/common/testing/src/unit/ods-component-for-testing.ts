@@ -1,4 +1,4 @@
-import type {GenericLogger} from './generic-logger';
+import type { GenericLogger } from './generic-logger';
 
 /**
  * define a class representing a class component.

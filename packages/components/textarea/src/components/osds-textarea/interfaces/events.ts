@@ -1,5 +1,5 @@
-import type {OdsTextAreaValidityState} from '@ovhcloud/ods-common-core';
-import type {EventEmitter} from '@stencil/core';
+import type { OdsTextAreaValidityState } from '@ovhcloud/ods-common-core';
+import type { EventEmitter } from '@stencil/core';
 
 interface OdsTextAreaValueChangeEvent {
   oldValue?: string | null;

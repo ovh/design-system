@@ -1,9 +1,9 @@
-import type {OdsLoggerSpyReferences} from '@ovhcloud/ods-common-testing';
-import {OcdkSurface, OcdkSurfaceMock} from '@ovhcloud/ods-cdk';
-import {Ods, OdsLogger} from '@ovhcloud/ods-common-core';
-import {OdsClearLoggerSpy, OdsInitializeLoggerSpy} from '@ovhcloud/ods-common-testing';
-import {OdsClipboardController} from './controller';
-import {OsdsClipboard} from '../osds-clipboard';
+import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
+import { OdsClipboardController } from './controller';
+import { OsdsClipboard } from '../osds-clipboard';
+import { OcdkSurface, OcdkSurfaceMock } from '@ovhcloud/ods-cdk';
+import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
+import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
 
 class OdsClipboardMock extends OsdsClipboard {
   constructor(attribute: Partial<OsdsClipboard>) {
@@ -53,7 +53,7 @@ describe('spec:ods-clipboard-controller', () => {
       });
 
       const target = document.createElement('OSDS-BUTTON');
-      Object.defineProperty(event, 'target', {value: target});
+      Object.defineProperty(event, 'target', { value: target });
 
 
       expect(() => {
@@ -75,7 +75,7 @@ describe('spec:ods-clipboard-controller', () => {
       });
 
       const target = document.createElement('OSDS-BUTTON');
-      Object.defineProperty(event, 'target', {value: target});
+      Object.defineProperty(event, 'target', { value: target });
 
       await controller.checkForClickOutside(event);
       expect(component.surface.opened).toBe(false);
@@ -93,7 +93,7 @@ describe('spec:ods-clipboard-controller', () => {
       });
 
       const target = document.createElement('OSDS-BUTTON');
-      Object.defineProperty(event, 'target', {value: target});
+      Object.defineProperty(event, 'target', { value: target });
 
       component.el.appendChild(target);
 
@@ -114,7 +114,7 @@ describe('spec:ods-clipboard-controller', () => {
       });
 
       const target = document.createElement('OSDS-BUTTON');
-      Object.defineProperty(event, 'target', {value: target});
+      Object.defineProperty(event, 'target', { value: target });
 
       await controller.checkForClickOutside(event);
       expect(component.surface.close).toHaveBeenCalledTimes(1);

@@ -1,13 +1,13 @@
 jest.mock('./core/controller'); // keep jest.mock before any
 
-import type {OdsRadioGroupAttribute} from './interfaces/attributes';
-import type {SpecPage} from '@stencil/core/testing';
-import {newSpecPage} from '@stencil/core/testing';
-import {OdsUnitTestAttributeType, odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute} from '@ovhcloud/ods-common-testing';
-import {OsdsRadioGroup} from './osds-radio-group';
-import {OdsRadioGroupController} from './core/controller';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
-import {OsdsRadio} from '../osds-radio/osds-radio';
+import type { OdsRadioGroupAttribute } from './interfaces/attributes';
+import type { SpecPage } from '@stencil/core/testing';
+import { OsdsRadioGroup } from './osds-radio-group';
+import { OdsRadioGroupController } from './core/controller';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { OsdsRadio } from '../osds-radio/osds-radio';
+import { OdsUnitTestAttributeType, odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
+import { newSpecPage } from '@stencil/core/testing';
 
 class OdsRadioMock extends OsdsRadio {
   constructor(attribute?: Partial<OsdsRadio>) {
@@ -20,10 +20,10 @@ describe('spec:osds-radio-group', () => {
   let root: HTMLElement | undefined;
   let instance: OsdsRadioGroup;
   let controller: OdsRadioGroupController;
-  const baseAttributes = {disabled: false, value: ''};
+  const baseAttributes = { disabled: false, value: '' };
 
-  async function setup({attributes = {}, html = ''}: { attributes?: Partial<OdsRadioGroupAttribute>, html?: string }) {
-    const stringAttributes = odsComponentAttributes2StringAttributes<OdsRadioGroupAttribute>({...baseAttributes, ...attributes}, DEFAULT_ATTRIBUTE);
+  async function setup({ attributes = {}, html = '' }: { attributes?: Partial<OdsRadioGroupAttribute>, html?: string }) {
+    const stringAttributes = odsComponentAttributes2StringAttributes<OdsRadioGroupAttribute>({ ...baseAttributes, ...attributes }, DEFAULT_ATTRIBUTE);
 
     page = await newSpecPage({
       components: [OsdsRadioGroup],
@@ -60,7 +60,7 @@ describe('spec:osds-radio-group', () => {
         defaultValue: 'ods-radio-group-1',
         newValue: 'oles',
         value: 'ipsum',
-        setup: (name) => setup({attributes: {name}}),
+        setup: (name) => setup({ attributes: { name } }),
         ...config,
       });
     });
@@ -71,7 +71,7 @@ describe('spec:osds-radio-group', () => {
         defaultValue: DEFAULT_ATTRIBUTE.value,
         newValue: 'oles',
         value: 'ipsum',
-        setup: (value) => setup({attributes: {value}}),
+        setup: (value) => setup({ attributes: { value } }),
         ...config,
         include: [OdsUnitTestAttributeType.MUTABLE],
       });
@@ -83,7 +83,7 @@ describe('spec:osds-radio-group', () => {
         defaultValue: DEFAULT_ATTRIBUTE.disabled,
         newValue: false,
         value: false,
-        setup: (disabled) => setup({attributes: {disabled}}),
+        setup: (disabled) => setup({ attributes: { disabled } }),
         ...config,
       });
     });
@@ -94,7 +94,7 @@ describe('spec:osds-radio-group', () => {
         defaultValue: DEFAULT_ATTRIBUTE.required,
         newValue: false,
         value: false,
-        setup: (required) => setup({attributes: {required}}),
+        setup: (required) => setup({ attributes: { required } }),
         ...config,
       });
     });
@@ -146,17 +146,17 @@ describe('spec:osds-radio-group', () => {
         const checked = true;
         const checking = true;
         await setup({});
-        await instance.updateState({newValue, checked, checking});
+        await instance.updateState({ newValue, checked, checking });
 
         expect(controller.updateState).toHaveBeenCalledTimes(1);
-        expect(controller.updateState).toHaveBeenCalledWith({newValue, checked, checking});
+        expect(controller.updateState).toHaveBeenCalledWith({ newValue, checked, checking });
       });
     });
 
     describe('watchers', () => {
       it('should call controller.onDisabledChange on disabled change', async() => {
         const disabled = false;
-        await setup({attributes: {disabled}});
+        await setup({ attributes: { disabled } });
         instance.disabled = true;
 
         expect(controller.onDisabledChange).toHaveBeenCalledTimes(1);
@@ -166,7 +166,7 @@ describe('spec:osds-radio-group', () => {
       it('should call controller.onValueChange on value change', async() => {
         const value = 'value';
         const newValue = 'newValue';
-        await setup({attributes: {value}});
+        await setup({ attributes: { value } });
         instance.value = newValue;
 
         expect(controller.onValueChange).toHaveBeenCalledTimes(1);

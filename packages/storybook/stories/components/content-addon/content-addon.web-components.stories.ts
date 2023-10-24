@@ -1,12 +1,12 @@
-import {html} from 'lit-html';
-import {unsafeHTML} from 'lit-html/directives/unsafe-html';
-import {defineCustomElements} from '@ovhcloud/ods-components/content-addon/loader';
-import {defineCustomElements as tileCustomElements} from '@ovhcloud/ods-components/tile/loader';
-import {extractArgTypes, extractStoryParams, getTagAttributes} from '../../../core/componentHTMLUtils';
+import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
+import page from './content-addon.web-component.stories.page.mdx';
+import { html } from 'lit-html';
+import { unsafeHTML } from 'lit-html/directives/unsafe-html';
+import { defineCustomElements } from '@ovhcloud/ods-components/content-addon/loader';
+import { defineCustomElements as tileCustomElements } from '@ovhcloud/ods-components/tile/loader';
 // @ts-ignore
 import changelog from '@ovhcloud/ods-components/content-addon/CHANGELOG.md';
 // @ts-ignore
-import page from './content-addon.web-component.stories.page.mdx';
 
 defineCustomElements();
 tileCustomElements();
@@ -66,7 +66,7 @@ export default {
     notes: {
       changelog,
     },
-    docs: {page},
+    docs: { page },
   },
 };
 

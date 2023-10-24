@@ -1,14 +1,14 @@
-import type {E2EElement, E2EPage} from '@stencil/core/testing';
-import type {OdsFormFieldAttribute} from './interfaces/attributes';
-import {newE2EPage} from '@stencil/core/testing';
-import {odsComponentAttributes2StringAttributes, odsStringAttributes2Str} from '@ovhcloud/ods-common-testing';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
+import type { E2EElement, E2EPage } from '@stencil/core/testing';
+import type { OdsFormFieldAttribute } from './interfaces/attributes';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { newE2EPage } from '@stencil/core/testing';
+import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 
 describe('e2e:osds-form-field', () => {
   let page: E2EPage;
   let el: E2EElement;
 
-  async function setup({attributes, content}: { attributes: Partial<OdsFormFieldAttribute>, content: string }) {
+  async function setup({ attributes, content }: { attributes: Partial<OdsFormFieldAttribute>, content: string }) {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsFormFieldAttribute>(attributes, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
@@ -19,7 +19,7 @@ describe('e2e:osds-form-field', () => {
   }
 
   it('should render', async() => {
-    await setup({attributes: {}, content: ''});
+    await setup({ attributes: {}, content: '' });
     expect(el).not.toBeNull();
     expect(el).toHaveClass('hydrated');
   });
@@ -28,7 +28,7 @@ describe('e2e:osds-form-field', () => {
     const content = `
       <osds-input type="text" value="Hello, ODS!"></osds-input>
     `;
-    await setup({attributes: {}, content});
+    await setup({ attributes: {}, content });
     const input = await page.find('osds-form-field osds-input');
 
     expect(input).not.toBeNull();
@@ -39,7 +39,7 @@ describe('e2e:osds-form-field', () => {
     const content = `
       <osds-textarea></osds-textarea>
     `;
-    await setup({attributes: {}, content});
+    await setup({ attributes: {}, content });
     const textarea = await page.find('osds-form-field osds-textarea');
 
     expect(textarea).not.toBeNull();
@@ -58,7 +58,7 @@ describe('e2e:osds-form-field', () => {
         </osds-text>
       </osds-tooltip>
     `;
-    await setup({attributes: {}, content});
+    await setup({ attributes: {}, content });
     const tooltip = await page.find('osds-form-field osds-tooltip[slot="visual-hint"]');
 
     expect(tooltip).not.toBeNull();
@@ -71,7 +71,7 @@ describe('e2e:osds-form-field', () => {
       <osds-input type="text" value="Hello, ODS!"></osds-input>
       <osds-text slot="helper">A little helper text</osds-text>
     `;
-    await setup({attributes: {}, content});
+    await setup({ attributes: {}, content });
     const label = await page.find('osds-form-field osds-text[slot="label"]');
     const visualHint = await page.find('osds-form-field osds-text[slot="visual-hint"]');
     const input = await page.find('osds-form-field osds-input');
@@ -96,7 +96,7 @@ describe('e2e:osds-form-field', () => {
       <osds-input type="text" value="Hello, ODS!"></osds-input>
       <osds-text slot="helper">A little helper text</osds-text>
     `;
-    await setup({attributes: {error: 'An error occured'}, content});
+    await setup({ attributes: { error: 'An error occured' }, content });
     const error = await page.find('osds-form-field >>> osds-text[color="error"]');
 
     expect(error).not.toBeNull();

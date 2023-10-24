@@ -1,8 +1,8 @@
-import type {OsdsTile} from '../osds-tile';
-import {OdsLogger, OdsWarnComponentAttribute} from '@ovhcloud/ods-common-core';
-import {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
-import {ODS_TILE_SIZE} from '../constants/tile-size';
-import {ODS_TILE_VARIANT} from '../constants/tile-variant';
+import type { OsdsTile } from '../osds-tile';
+import { ODS_TILE_SIZE } from '../constants/tile-size';
+import { ODS_TILE_VARIANT } from '../constants/tile-variant';
+import { OdsLogger, OdsWarnComponentAttribute } from '@ovhcloud/ods-common-core';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 
 /**
  * common controller logic for tile component used by the different implementations.

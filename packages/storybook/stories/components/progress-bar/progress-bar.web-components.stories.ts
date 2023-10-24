@@ -1,12 +1,12 @@
-import {html} from 'lit-html';
-import {unsafeHTML} from 'lit-html/directives/unsafe-html';
-import {extractArgTypes, extractStoryParams, getTagAttributes} from '../../../core/componentHTMLUtils';
-import {defineCustomElements} from '@ovhcloud/ods-components/progress-bar/loader';
-import {DEFAULT_ATTRIBUTE} from '@ovhcloud/ods-components/progress-bar/src/components/osds-progress-bar/constants/default-attributes';
+import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
+import page from './progress-bar.web-component.stories.page.mdx';
+import { html } from 'lit-html';
+import { unsafeHTML } from 'lit-html/directives/unsafe-html';
+import { defineCustomElements } from '@ovhcloud/ods-components/progress-bar/loader';
+import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-components/progress-bar/src/components/osds-progress-bar/constants/default-attributes';
 // @ts-ignore
 import changelog from '@ovhcloud/ods-components/progress-bar/CHANGELOG.md';
 // @ts-ignore
-import page from './progress-bar.web-component.stories.page.mdx';
 
 defineCustomElements();
 
@@ -14,12 +14,12 @@ defineCustomElements();
 const storyParams = {
   value: {
     category: 'Misc',
-    control: {type: 'number'},
+    control: { type: 'number' },
     defaultValue: DEFAULT_ATTRIBUTE.value,
   },
   max: {
     category: 'Misc',
-    control: {type: 'number'},
+    control: { type: 'number' },
     defaultValue: DEFAULT_ATTRIBUTE.max,
   },
   end: {
@@ -35,7 +35,7 @@ export default {
     notes: {
       changelog,
     },
-    docs: {page},
+    docs: { page },
   },
   argTypes: extractArgTypes(storyParams),
 };

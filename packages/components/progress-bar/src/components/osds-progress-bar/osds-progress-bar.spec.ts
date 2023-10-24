@@ -1,12 +1,12 @@
 jest.mock('./core/controller'); // keep jest.mock before any
 
-import type {SpecPage} from '@stencil/core/testing';
-import type {OdsProgressBarAttribute} from './interfaces/attributes';
-import {newSpecPage} from '@stencil/core/testing';
-import {odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute} from '@ovhcloud/ods-common-testing';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
-import {OdsProgressBarController} from './core/controller';
-import {OsdsProgressBar} from './osds-progress-bar';
+import type { SpecPage } from '@stencil/core/testing';
+import type { OdsProgressBarAttribute } from './interfaces/attributes';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { OdsProgressBarController } from './core/controller';
+import { OsdsProgressBar } from './osds-progress-bar';
+import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
+import { newSpecPage } from '@stencil/core/testing';
 
 describe('spec:osds-progress-bar', () => {
   let page: SpecPage;
@@ -17,7 +17,7 @@ describe('spec:osds-progress-bar', () => {
     jest.clearAllMocks();
   });
 
-  async function setup({attributes = {}}: { attributes?: Partial<OdsProgressBarAttribute> } = {}) {
+  async function setup({ attributes = {} }: { attributes?: Partial<OdsProgressBarAttribute> } = {}) {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsProgressBarAttribute>(attributes, DEFAULT_ATTRIBUTE);
 
     page = await newSpecPage({
@@ -49,7 +49,7 @@ describe('spec:osds-progress-bar', () => {
         defaultValue: DEFAULT_ATTRIBUTE.max,
         newValue: 50,
         value: 0,
-        setup: (value) => setup({attributes: {['max']: value}}),
+        setup: (value) => setup({ attributes: { ['max']: value } }),
         ...config,
       });
     });
@@ -60,7 +60,7 @@ describe('spec:osds-progress-bar', () => {
         defaultValue: DEFAULT_ATTRIBUTE.value,
         newValue: 50,
         value: 0,
-        setup: (value) => setup({attributes: {['value']: value}}),
+        setup: (value) => setup({ attributes: { ['value']: value } }),
         ...config,
       });
     });

@@ -1,4 +1,4 @@
-import {OcdkSurface} from '@ovhcloud/ods-cdk';
+import { OcdkSurface } from '@ovhcloud/ods-cdk';
 
 (async() => {
   await customElements.whenDefined('ocdk-surface');

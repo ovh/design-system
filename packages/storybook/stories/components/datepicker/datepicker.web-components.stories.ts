@@ -1,13 +1,13 @@
-import {html} from 'lit-html';
-import {defineCustomElements} from '@ovhcloud/ods-components/datepicker/loader';
-import {extractArgTypes, extractStoryParams, getTagAttributes} from '../../../core/componentHTMLUtils';
-import {ODS_DATEPICKER_DAYS, ODS_DATEPICKER_LOCALE, ODS_DATEPICKER_LOCALES} from '@ovhcloud/ods-components/datepicker';
-import {DEFAULT_ATTRIBUTE} from '@ovhcloud/ods-components/datepicker/src/components/osds-datepicker/constants/default-attributes';
-import {ODS_THEME_COLOR_INTENTS} from '@ovhcloud/ods-common-theming';
+import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
+import page from './datepicker.web-component.stories.page.mdx';
+import { html } from 'lit-html';
+import { defineCustomElements } from '@ovhcloud/ods-components/datepicker/loader';
+import { ODS_DATEPICKER_DAYS, ODS_DATEPICKER_LOCALE, ODS_DATEPICKER_LOCALES } from '@ovhcloud/ods-components/datepicker';
+import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-components/datepicker/src/components/osds-datepicker/constants/default-attributes';
+import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
 // @ts-ignore
 import changelog from '@ovhcloud/ods-components/datepicker/CHANGELOG.md';
 // @ts-ignore
-import page from './datepicker.web-component.stories.page.mdx';
 
 defineCustomElements();
 
@@ -21,7 +21,7 @@ const storyParams = {
     category: 'General',
     defaultValue: DEFAULT_ATTRIBUTE.color,
     options: ODS_THEME_COLOR_INTENTS,
-    control: {type: 'select'},
+    control: { type: 'select' },
   },
   daysOfWeekDisabled: {
     category: 'General',
@@ -48,19 +48,19 @@ const storyParams = {
     category: 'General',
     defaultValue: ODS_DATEPICKER_LOCALE.EN,
     options: ODS_DATEPICKER_LOCALES,
-    control: {type: 'select'},
+    control: { type: 'select' },
   },
   maxDate: {
     category: 'General',
     defaultValue: null,
     options: ['1999-11-02', '2024-01-01'],
-    control: {type: 'select'},
+    control: { type: 'select' },
   },
   minDate: {
     category: 'General',
     defaultValue: null,
     options: ['1999-11-02', '2024-01-01'],
-    control: {type: 'select'},
+    control: { type: 'select' },
   },
   placeholder: {
     category: 'General',
@@ -75,7 +75,7 @@ export default {
     notes: {
       changelog,
     },
-    docs: {page},
+    docs: { page },
     options: {
       enableShortcuts: false,
     },

@@ -1,4 +1,4 @@
-import {OcdkSurfaceCornerBit} from './ocdk-surface-corner-bit';
+import { OcdkSurfaceCornerBit } from './ocdk-surface-corner-bit';
 
 export enum OcdkSurfaceNormalizedCorner {
   /** 0 */

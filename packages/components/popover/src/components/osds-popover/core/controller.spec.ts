@@ -1,9 +1,9 @@
-import type {OdsLoggerSpyReferences} from '@ovhcloud/ods-common-testing';
-import {OcdkSurface, OcdkSurfaceMock} from '@ovhcloud/ods-cdk';
-import {Ods, OdsLogger} from '@ovhcloud/ods-common-core';
-import {OdsClearLoggerSpy, OdsInitializeLoggerSpy} from '@ovhcloud/ods-common-testing';
-import {OdsPopoverController} from './controller';
-import {OsdsPopover} from '../osds-popover';
+import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
+import { OdsPopoverController } from './controller';
+import { OsdsPopover } from '../osds-popover';
+import { OcdkSurface, OcdkSurfaceMock } from '@ovhcloud/ods-cdk';
+import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
+import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
 
 class OdsPopoverMock extends OsdsPopover {
   constructor(attribute: Partial<OsdsPopover>) {
@@ -74,10 +74,10 @@ describe('spec:ods-popover-controller', () => {
         cancelable: true,
         composed: true,
       });
-      Object.defineProperty(event, 'key', {value: 'A'});
+      Object.defineProperty(event, 'key', { value: 'A' });
 
       const target = document.createElement('OSDS-BUTTON');
-      Object.defineProperty(event, 'target', {value: target});
+      Object.defineProperty(event, 'target', { value: target });
 
       await controller.handleTriggerKey(event);
       expect(component.surface.opened).toBe(false);
@@ -92,10 +92,10 @@ describe('spec:ods-popover-controller', () => {
         cancelable: true,
         composed: true,
       });
-      Object.defineProperty(event, 'key', {value: 'A'});
+      Object.defineProperty(event, 'key', { value: 'A' });
       const openStatus = component.surface?.opened;
       const target = document.createElement('OSDS-BUTTON');
-      Object.defineProperty(event, 'target', {value: target});
+      Object.defineProperty(event, 'target', { value: target });
 
       expect(() => {
         controller.handleTriggerKey(event);
@@ -113,10 +113,10 @@ describe('spec:ods-popover-controller', () => {
         cancelable: true,
         composed: true,
       });
-      Object.defineProperty(event, 'key', {value: 'Enter'});
+      Object.defineProperty(event, 'key', { value: 'Enter' });
 
       const target = document.createElement('OSDS-BUTTON');
-      Object.defineProperty(event, 'target', {value: target});
+      Object.defineProperty(event, 'target', { value: target });
 
       await controller.handleTriggerKey(event);
       expect(component.surface.opened).toBeTruthy();
@@ -132,10 +132,10 @@ describe('spec:ods-popover-controller', () => {
         cancelable: true,
         composed: true,
       });
-      Object.defineProperty(event, 'key', {value: 'Escape'});
+      Object.defineProperty(event, 'key', { value: 'Escape' });
 
       const target = document.createElement('OSDS-BUTTON');
-      Object.defineProperty(event, 'target', {value: target});
+      Object.defineProperty(event, 'target', { value: target });
 
       await controller.handleTriggerKey(event);
       expect(component.surface.close).toHaveBeenCalledTimes(1);
@@ -154,7 +154,7 @@ describe('spec:ods-popover-controller', () => {
         cancelable: true,
         composed: true,
       });
-      Object.defineProperty(event, 'key', {value: 'A'});
+      Object.defineProperty(event, 'key', { value: 'A' });
 
       await controller.handleSurfaceKey(event);
       expect(component.surface.opened).toBeTruthy();
@@ -172,7 +172,7 @@ describe('spec:ods-popover-controller', () => {
         cancelable: true,
         composed: true,
       });
-      Object.defineProperty(event, 'key', {value: 'Escape'});
+      Object.defineProperty(event, 'key', { value: 'Escape' });
 
       await controller.handleSurfaceKey(event);
       expect(component.surface.close).toHaveBeenCalledTimes(1);
@@ -191,7 +191,7 @@ describe('spec:ods-popover-controller', () => {
       });
 
       const target = document.createElement('OSDS-BUTTON');
-      Object.defineProperty(event, 'target', {value: target});
+      Object.defineProperty(event, 'target', { value: target });
 
 
       expect(() => {
@@ -213,7 +213,7 @@ describe('spec:ods-popover-controller', () => {
       });
 
       const target = document.createElement('OSDS-BUTTON');
-      Object.defineProperty(event, 'target', {value: target});
+      Object.defineProperty(event, 'target', { value: target });
 
       await controller.checkForClickOutside(event);
       expect(component.surface.opened).toBe(false);
@@ -231,7 +231,7 @@ describe('spec:ods-popover-controller', () => {
       });
 
       const target = document.createElement('OSDS-BUTTON');
-      Object.defineProperty(event, 'target', {value: target});
+      Object.defineProperty(event, 'target', { value: target });
 
       component.el.appendChild(target);
 
@@ -252,7 +252,7 @@ describe('spec:ods-popover-controller', () => {
       });
 
       const target = document.createElement('OSDS-BUTTON');
-      Object.defineProperty(event, 'target', {value: target});
+      Object.defineProperty(event, 'target', { value: target });
 
       await controller.checkForClickOutside(event);
       expect(component.surface.close).toHaveBeenCalledTimes(1);

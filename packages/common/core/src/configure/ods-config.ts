@@ -1,4 +1,4 @@
-import {OdsConfigLogging, isOdsConfigLogging} from './ods-config-logging';
+import { OdsConfigLogging, isOdsConfigLogging } from './ods-config-logging';
 
 /**
  * ODS main configuration parameters.

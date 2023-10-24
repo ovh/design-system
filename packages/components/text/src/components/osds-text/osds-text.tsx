@@ -1,10 +1,10 @@
-import {Component, FunctionalComponent, Host, Prop, h} from '@stencil/core';
-import type {ODS_TEXT_COLOR_HUE, ODS_TEXT_COLOR_INTENT} from './constants/text-color';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
-import type {ODS_TEXT_LEVEL} from './constants/text-level';
-import type {ODS_TEXT_SIZE} from './constants/text-size';
-import type {OdsTextAttribute} from './interfaces/attributes';
-import {odsGenerateColorVariable} from '@ovhcloud/ods-common-theming';
+import type { ODS_TEXT_COLOR_HUE, ODS_TEXT_COLOR_INTENT } from './constants/text-color';
+import type { ODS_TEXT_LEVEL } from './constants/text-level';
+import type { ODS_TEXT_SIZE } from './constants/text-size';
+import type { OdsTextAttribute } from './interfaces/attributes';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { Component, FunctionalComponent, Host, Prop, h } from '@stencil/core';
+import { odsGenerateColorVariable } from '@ovhcloud/ods-common-theming';
 
 /**
  * @slot (unnamed) - Text content
@@ -16,26 +16,26 @@ import {odsGenerateColorVariable} from '@ovhcloud/ods-common-theming';
 })
 export class OsdsText implements OdsTextAttribute {
   /** @see OdsTextAttribute.breakSpaces */
-  @Prop({reflect: true}) public breakSpaces? = DEFAULT_ATTRIBUTE.breakSpaces;
+  @Prop({ reflect: true }) public breakSpaces? = DEFAULT_ATTRIBUTE.breakSpaces;
 
   /** @see OdsTextAttribute.color */
-  @Prop({reflect: true}) public color?: ODS_TEXT_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
+  @Prop({ reflect: true }) public color?: ODS_TEXT_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
 
   /** @see OdsTextAttribute.contrasted */
-  @Prop({reflect: true}) public contrasted? = DEFAULT_ATTRIBUTE.contrasted;
+  @Prop({ reflect: true }) public contrasted? = DEFAULT_ATTRIBUTE.contrasted;
 
   /** @see OdsTextAttribute.size */
-  @Prop({reflect: true}) public size?: ODS_TEXT_SIZE = DEFAULT_ATTRIBUTE.size;
+  @Prop({ reflect: true }) public size?: ODS_TEXT_SIZE = DEFAULT_ATTRIBUTE.size;
 
   /** @see OdsTextAttribute.level */
-  @Prop({reflect: true}) public level?: ODS_TEXT_LEVEL = DEFAULT_ATTRIBUTE.level;
+  @Prop({ reflect: true }) public level?: ODS_TEXT_LEVEL = DEFAULT_ATTRIBUTE.level;
 
   /** @see OdsTextAttribute.hue */
-  @Prop({reflect: true}) public hue?: ODS_TEXT_COLOR_HUE = DEFAULT_ATTRIBUTE.hue;
+  @Prop({ reflect: true }) public hue?: ODS_TEXT_COLOR_HUE = DEFAULT_ATTRIBUTE.hue;
 
   render(): FunctionalComponent {
     return (
-      <Host style={{'--osds-text-color-specific-hue': this.color && this.hue ? `var(${odsGenerateColorVariable(this.color, this.hue)})` : ''}}>
+      <Host style={{ '--osds-text-color-specific-hue': this.color && this.hue ? `var(${odsGenerateColorVariable(this.color, this.hue)})` : '' }}>
         <slot></slot>
       </Host>
     );

@@ -1,9 +1,9 @@
 jest.mock('./core/controller'); // keep jest.mock before any
 
-import type {SpecPage} from '@stencil/core/testing';
-import {newSpecPage} from '@stencil/core/testing';
-import {OdsCartItemController} from './core/controller';
-import {OsdsCartItem} from './osds-cart-item';
+import type { SpecPage } from '@stencil/core/testing';
+import { OdsCartItemController } from './core/controller';
+import { OsdsCartItem } from './osds-cart-item';
+import { newSpecPage } from '@stencil/core/testing';
 
 describe('spec:osds-cart-item', () => {
   let page: SpecPage;

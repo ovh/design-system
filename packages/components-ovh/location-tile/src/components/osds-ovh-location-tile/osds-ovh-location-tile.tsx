@@ -1,4 +1,4 @@
-import {Component, Host, h} from '@stencil/core';
+import { Component, Host, h } from '@stencil/core';
 
 // TODO when ready to deliver:
 //  - remove "private" from component package.json and from components-ovh root package.json

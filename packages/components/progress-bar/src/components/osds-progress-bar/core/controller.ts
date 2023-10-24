@@ -1,5 +1,5 @@
-import type {OsdsProgressBar} from '../osds-progress-bar';
-import {OdsLogger} from '@ovhcloud/ods-common-core';
+import type { OsdsProgressBar } from '../osds-progress-bar';
+import { OdsLogger } from '@ovhcloud/ods-common-core';
 
 /**
  * common controller logic for cmpnt component used by the different implementations.

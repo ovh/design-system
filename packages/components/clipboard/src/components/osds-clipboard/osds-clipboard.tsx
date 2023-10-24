@@ -1,15 +1,15 @@
-import type {EventEmitter} from '@stencil/core';
-import type {OdsClipboardAttribute} from './interfaces/attributes';
-import type {OdsClipboardEvent} from './interfaces/events';
-import type {OdsClipboardMethod} from './interfaces/methods';
-import {Component, Element, Event, Host, Listen, Method, Prop, State, h} from '@stencil/core';
-import {OcdkSurface, OcdkSurfaceCorner, ocdkDefineCustomElements, ocdkIsSurface} from '@ovhcloud/ods-cdk';
-import {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
-import {ODS_ICON_NAME} from '@ovhcloud/ods-component-icon';
-import {ODS_INPUT_TYPE} from '@ovhcloud/ods-component-input';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
-import {OdsClipboardController} from './core/controller';
-import {HTMLStencilElement} from '@stencil/core/internal';
+import type { EventEmitter } from '@stencil/core';
+import type { OdsClipboardAttribute } from './interfaces/attributes';
+import type { OdsClipboardEvent } from './interfaces/events';
+import type { OdsClipboardMethod } from './interfaces/methods';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { OdsClipboardController } from './core/controller';
+import { Component, Element, Event, Host, Listen, Method, Prop, State, h } from '@stencil/core';
+import { OcdkSurface, OcdkSurfaceCorner, ocdkDefineCustomElements, ocdkIsSurface } from '@ovhcloud/ods-cdk';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+import { ODS_ICON_NAME } from '@ovhcloud/ods-component-icon';
+import { ODS_INPUT_TYPE } from '@ovhcloud/ods-component-input';
+import { HTMLStencilElement } from '@stencil/core/internal';
 
 ocdkDefineCustomElements();
 
@@ -26,13 +26,13 @@ export class OsdsClipboard implements OdsClipboardAttribute, OdsClipboardEvent, 
   @Element() el!: HTMLStencilElement;
 
   /** @see OdsClipboardAttributes.inline */
-  @Prop({reflect: true}) public inline?: boolean = DEFAULT_ATTRIBUTE.inline;
+  @Prop({ reflect: true }) public inline?: boolean = DEFAULT_ATTRIBUTE.inline;
 
   /** @see OdsClipboardAttributes.value */
-  @Prop({reflect: true}) public value: string = DEFAULT_ATTRIBUTE.value;
+  @Prop({ reflect: true }) public value: string = DEFAULT_ATTRIBUTE.value;
 
   /** @see OdsClipboardAttributes.disabled */
-  @Prop({reflect: true}) public disabled?: boolean = DEFAULT_ATTRIBUTE.disabled;
+  @Prop({ reflect: true }) public disabled?: boolean = DEFAULT_ATTRIBUTE.disabled;
 
   @State() surfaceMessage: string | undefined = '';
 
@@ -44,7 +44,7 @@ export class OsdsClipboard implements OdsClipboardAttribute, OdsClipboardEvent, 
   /** @see OdsClipboardEvents.odsClipboardCopied */
   @Event() odsClipboardCopied!: EventEmitter<string>;
 
-  @Listen('click', {target: 'window'})
+  @Listen('click', { target: 'window' })
   checkForClickOutside(event: any) {
     this.controller.checkForClickOutside(event);
   }

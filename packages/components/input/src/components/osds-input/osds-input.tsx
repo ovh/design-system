@@ -1,18 +1,18 @@
-import type {EventEmitter} from '@stencil/core';
-import type {OdsErrorStateControl, OdsFormControl, OdsFormForbiddenValues, OdsInputValue} from '@ovhcloud/ods-common-core';
-import type {OdsInputAttribute, OdsInputValidityState} from './interfaces/attributes';
-import type {OdsInputEvent, OdsInputValueChangeEventDetail} from './interfaces/events';
-import type {OdsInputMethod} from './interfaces/methods';
-import {Component, Element, Event, Host, Listen, Method, Prop, State, Watch, h} from '@stencil/core';
-import {OdsLogger} from '@ovhcloud/ods-common-core';
-import {ODS_ICON_NAME, ODS_ICON_SIZE} from '@ovhcloud/ods-component-icon';
-import {ODS_SPINNER_SIZE} from '@ovhcloud/ods-component-spinner';
-import {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
-import {ODS_INPUT_SIZE} from './constants/input-size';
-import {ODS_INPUT_TYPE} from './constants/input-type';
-import {OdsInputController} from './core/controller';
-import {ODS_TEXT_SIZE} from '@ovhcloud/ods-component-text';
+import type { EventEmitter } from '@stencil/core';
+import type { OdsErrorStateControl, OdsFormControl, OdsFormForbiddenValues, OdsInputValue } from '@ovhcloud/ods-common-core';
+import type { OdsInputAttribute, OdsInputValidityState } from './interfaces/attributes';
+import type { OdsInputEvent, OdsInputValueChangeEventDetail } from './interfaces/events';
+import type { OdsInputMethod } from './interfaces/methods';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { ODS_INPUT_SIZE } from './constants/input-size';
+import { ODS_INPUT_TYPE } from './constants/input-type';
+import { OdsInputController } from './core/controller';
+import { Component, Element, Event, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
+import { OdsLogger } from '@ovhcloud/ods-common-core';
+import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
+import { ODS_SPINNER_SIZE } from '@ovhcloud/ods-component-spinner';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+import { ODS_TEXT_SIZE } from '@ovhcloud/ods-component-text';
 /**
  *
  */
@@ -46,79 +46,79 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
   @Prop() ariaLabelledby?: string = DEFAULT_ATTRIBUTE.ariaLabelledby;
 
   /** @see OdsInputAttribute.clearable */
-  @Prop({reflect: true}) clearable?: boolean = DEFAULT_ATTRIBUTE.clearable;
+  @Prop({ reflect: true }) clearable?: boolean = DEFAULT_ATTRIBUTE.clearable;
 
   /** @see OdsInputAttribute.color */
-  @Prop({reflect: true}) color?: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
+  @Prop({ reflect: true }) color?: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
 
   /** @see OdsInputAttribute.contrasted */
-  @Prop({reflect: true}) contrasted?: boolean = DEFAULT_ATTRIBUTE.contrasted;
+  @Prop({ reflect: true }) contrasted?: boolean = DEFAULT_ATTRIBUTE.contrasted;
 
   /** @see OdsInputAttribute.defaultValue */
-  @Prop({reflect: true}) defaultValue: OdsInputValue = DEFAULT_ATTRIBUTE.defaultValue;
+  @Prop({ reflect: true }) defaultValue: OdsInputValue = DEFAULT_ATTRIBUTE.defaultValue;
 
   /** @see OdsInputAttribute.disabled */
-  @Prop({reflect: true}) disabled?: boolean = DEFAULT_ATTRIBUTE.disabled;
+  @Prop({ reflect: true }) disabled?: boolean = DEFAULT_ATTRIBUTE.disabled;
 
   /** @see OdsInputAttribute.error */
-  @Prop({reflect: true}) error?: boolean = DEFAULT_ATTRIBUTE.error;
+  @Prop({ reflect: true }) error?: boolean = DEFAULT_ATTRIBUTE.error;
 
   /** @see OdsInputAttribute.errorStateControl */
-  @Prop({reflect: true}) errorStateControl?: OdsErrorStateControl = DEFAULT_ATTRIBUTE.errorStateControl;
+  @Prop({ reflect: true }) errorStateControl?: OdsErrorStateControl = DEFAULT_ATTRIBUTE.errorStateControl;
 
   /** @see OdsInputAttribute.forbiddenValues */
-  @Prop({reflect: true}) forbiddenValues: OdsFormForbiddenValues<number> = DEFAULT_ATTRIBUTE.forbiddenValues;
+  @Prop({ reflect: true }) forbiddenValues: OdsFormForbiddenValues<number> = DEFAULT_ATTRIBUTE.forbiddenValues;
 
   /** @see OdsInputAttribute.formControl */
-  @Prop({reflect: true}) formControl?: OdsFormControl<OdsInputValidityState> = DEFAULT_ATTRIBUTE.formControl;
+  @Prop({ reflect: true }) formControl?: OdsFormControl<OdsInputValidityState> = DEFAULT_ATTRIBUTE.formControl;
 
   /** @see OdsInputAttribute.icon */
-  @Prop({reflect: true}) icon?: ODS_ICON_NAME = DEFAULT_ATTRIBUTE.icon;
+  @Prop({ reflect: true }) icon?: ODS_ICON_NAME = DEFAULT_ATTRIBUTE.icon;
 
   /** @see OdsInputAttribute.inline */
-  @Prop({reflect: true}) inline?: boolean = DEFAULT_ATTRIBUTE.inline;
+  @Prop({ reflect: true }) inline?: boolean = DEFAULT_ATTRIBUTE.inline;
 
   /** @see OdsInputAttribute.label */
-  @Prop({reflect: true}) label?: string = DEFAULT_ATTRIBUTE.label;
+  @Prop({ reflect: true }) label?: string = DEFAULT_ATTRIBUTE.label;
 
   /** @see OdsInputAttribute.loading */
-  @Prop({reflect: true}) loading?: boolean = DEFAULT_ATTRIBUTE.loading;
+  @Prop({ reflect: true }) loading?: boolean = DEFAULT_ATTRIBUTE.loading;
 
   /** @see OdsInputAttribute.masked */
-  @Prop({reflect: true, mutable: true}) masked?: boolean = DEFAULT_ATTRIBUTE.masked;
+  @Prop({ reflect: true, mutable: true }) masked?: boolean = DEFAULT_ATTRIBUTE.masked;
 
   /** @see OdsInputAttribute.max */
-  @Prop({reflect: true}) max?: number = DEFAULT_ATTRIBUTE.max;
+  @Prop({ reflect: true }) max?: number = DEFAULT_ATTRIBUTE.max;
 
   /** @see OdsInputAttribute.min */
-  @Prop({reflect: true}) min?: number = DEFAULT_ATTRIBUTE.min;
+  @Prop({ reflect: true }) min?: number = DEFAULT_ATTRIBUTE.min;
 
   /** @see OdsInputAttribute.name */
-  @Prop({reflect: true}) name?: string = DEFAULT_ATTRIBUTE.name;
+  @Prop({ reflect: true }) name?: string = DEFAULT_ATTRIBUTE.name;
 
   /** @see OdsInputAttribute.placeholder */
-  @Prop({reflect: true}) placeholder?: string = DEFAULT_ATTRIBUTE.placeholder;
+  @Prop({ reflect: true }) placeholder?: string = DEFAULT_ATTRIBUTE.placeholder;
 
   /** @see OdsInputAttribute.prefixValue */
-  @Prop({reflect: true}) prefixValue = DEFAULT_ATTRIBUTE.prefixValue;
+  @Prop({ reflect: true }) prefixValue = DEFAULT_ATTRIBUTE.prefixValue;
 
   /** @see OdsInputAttribute.readOnly */
-  @Prop({reflect: true}) readOnly?: boolean = DEFAULT_ATTRIBUTE.readOnly;
+  @Prop({ reflect: true }) readOnly?: boolean = DEFAULT_ATTRIBUTE.readOnly;
 
   /** @see OdsInputAttribute.required */
-  @Prop({reflect: true}) required?: boolean = DEFAULT_ATTRIBUTE.required;
+  @Prop({ reflect: true }) required?: boolean = DEFAULT_ATTRIBUTE.required;
 
   /** @see OdsInputAttribute.size */
-  @Prop({reflect: true}) size?: ODS_INPUT_SIZE = DEFAULT_ATTRIBUTE.size;
+  @Prop({ reflect: true }) size?: ODS_INPUT_SIZE = DEFAULT_ATTRIBUTE.size;
 
   /** @see OdsInputAttribute.step */
-  @Prop({reflect: true}) step?: number = DEFAULT_ATTRIBUTE.step;
+  @Prop({ reflect: true }) step?: number = DEFAULT_ATTRIBUTE.step;
 
   /** @see OdsInputAttribute.type */
-  @Prop({reflect: true}) type: ODS_INPUT_TYPE = DEFAULT_ATTRIBUTE.type;
+  @Prop({ reflect: true }) type: ODS_INPUT_TYPE = DEFAULT_ATTRIBUTE.type;
 
   /** @see OdsInputAttribute.value */
-  @Prop({reflect: true, mutable: true}) value: OdsInputValue = DEFAULT_ATTRIBUTE.value;
+  @Prop({ reflect: true, mutable: true }) value: OdsInputValue = DEFAULT_ATTRIBUTE.value;
 
   /** Events */
 
@@ -170,7 +170,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
    * @see OdsInputBehavior.emitChange
    */
   emitChange(value: OdsInputValue, oldValue?: OdsInputValue) {
-    this.logger.debug('emit', {value, oldValue});
+    this.logger.debug('emit', { value, oldValue });
     this.odsValueChange.emit({
       value: value == null ? value : `${value}`,
       oldValue: oldValue == null ? oldValue : `${oldValue}`,

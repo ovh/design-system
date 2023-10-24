@@ -1,6 +1,6 @@
-import {OdsErrorStateControl, OdsFormControl, OdsLogger, OdsValidityState} from '@ovhcloud/ods-common-core';
-import {Components as ComponentsRange} from '@ovhcloud/ods-components/range/loader';
-import {OdsRangeValueChangeEventDetail} from '@ovhcloud/ods-components/range';
+import { OdsErrorStateControl, OdsFormControl, OdsLogger, OdsValidityState } from '@ovhcloud/ods-common-core';
+import { Components as ComponentsRange } from '@ovhcloud/ods-components/range/loader';
+import { OdsRangeValueChangeEventDetail } from '@ovhcloud/ods-components/range';
 
 const logger = new OdsLogger('validation.stories');
 
@@ -37,7 +37,7 @@ export const RangePlay = async() => {
   if(range) {
     const rangeFormControl = new OdsFormControl<OdsValidityState>('2');
     range.formControl = rangeFormControl;
-    range.forbiddenValues = [4, {min: 7, max: 20}];
+    range.forbiddenValues = [4, { min: 7, max: 20 }];
 
     const rangeErrorStateControl = new myErrorStateControl();
     range.errorStateControl = rangeErrorStateControl;
@@ -57,10 +57,10 @@ export const RangePlay = async() => {
 
       const errorMessagesConnexions: ErrorMessagesConnexion[]
         = [
-          {el: rangeErrorValueMissing, error: 'valueMissing'},
-          {el: rangeErrorStepMismatch, error: 'stepMismatch'},
-          {el: rangeErrorValid, error: 'invalid'},
-          {el: rangeErrorForbiddenValue, error: 'forbiddenValue'},
+          { el: rangeErrorValueMissing, error: 'valueMissing' },
+          { el: rangeErrorStepMismatch, error: 'stepMismatch' },
+          { el: rangeErrorValid, error: 'invalid' },
+          { el: rangeErrorForbiddenValue, error: 'forbiddenValue' },
         ];
 
       const filteredErrorMessagesConnexions = errorMessagesConnexions

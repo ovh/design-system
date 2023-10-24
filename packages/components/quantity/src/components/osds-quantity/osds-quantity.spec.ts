@@ -1,13 +1,13 @@
 jest.mock('./core/controller'); // keep jest.mock before any
 
-import type {AnyHTMLElement} from '@stencil/core/internal';
-import type {SpecPage} from '@stencil/core/testing';
-import type {OdsQuantityAttribute} from './interfaces/attributes';
-import {OdsMockNativeMethod, odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute} from '@ovhcloud/ods-common-testing';
-import {newSpecPage} from '@stencil/core/testing';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
-import {OdsQuantityController} from './core/controller';
-import {OsdsQuantity} from './osds-quantity';
+import type { AnyHTMLElement } from '@stencil/core/internal';
+import type { SpecPage } from '@stencil/core/testing';
+import type { OdsQuantityAttribute } from './interfaces/attributes';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { OdsQuantityController } from './core/controller';
+import { OsdsQuantity } from './osds-quantity';
+import { newSpecPage } from '@stencil/core/testing';
+import { OdsMockNativeMethod, odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 
 describe('spec:osds-quantity', () => {
   let page: SpecPage;
@@ -39,7 +39,7 @@ describe('spec:osds-quantity', () => {
     jest.clearAllMocks();
   });
 
-  async function setup({attributes = {}, html = ''}: { attributes?: Partial<OdsQuantityAttribute>, html?: string } = {}) {
+  async function setup({ attributes = {}, html = '' }: { attributes?: Partial<OdsQuantityAttribute>, html?: string } = {}) {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsQuantityAttribute>(attributes, DEFAULT_ATTRIBUTE);
 
     // mock setCustomValidity method that does not exist when stencil mock HTMLInputElement
@@ -58,24 +58,24 @@ describe('spec:osds-quantity', () => {
   }
 
   it('should render', async() => {
-    await setup({attributes: {}, html: baseHtml({})});
+    await setup({ attributes: {}, html: baseHtml({}) });
     expect(shadowRoot).toBeTruthy();
     expect(instance).toBeTruthy();
   });
 
   describe('contents', () => {
     it('should have a minus slot', async() => {
-      await setup({attributes: {}, html: baseHtml({})});
+      await setup({ attributes: {}, html: baseHtml({}) });
       expect(slotMinus).toBeTruthy();
     });
 
     it('should have a plus slot', async() => {
-      await setup({attributes: {}, html: baseHtml({})});
+      await setup({ attributes: {}, html: baseHtml({}) });
       expect(slotPlus).toBeTruthy();
     });
 
     it('should have an unnamed slot', async() => {
-      await setup({attributes: {}, html: baseHtml({})});
+      await setup({ attributes: {}, html: baseHtml({}) });
       expect(slotUnnamed).toBeTruthy();
     });
   });
@@ -94,7 +94,7 @@ describe('spec:osds-quantity', () => {
         defaultValue: DEFAULT_ATTRIBUTE.disabled,
         newValue: false,
         value: true,
-        setup: (value) => setup({attributes: {['disabled']: value}}),
+        setup: (value) => setup({ attributes: { ['disabled']: value } }),
         ...config,
       });
     });

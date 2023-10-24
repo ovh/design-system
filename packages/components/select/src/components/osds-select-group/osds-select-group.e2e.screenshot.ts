@@ -1,5 +1,5 @@
-import type {E2EElement, E2EPage} from '@stencil/core/testing';
-import {newE2EPage} from '@stencil/core/testing';
+import type { E2EElement, E2EPage } from '@stencil/core/testing';
+import { newE2EPage } from '@stencil/core/testing';
 
 describe('e2e:osds-select-group', () => {
   let page: E2EPage;
@@ -34,7 +34,7 @@ describe('e2e:osds-select-group', () => {
 
   describe('screenshots', () => {
     // Todo : add active behaviour on top of hover and focus
-    screenshotActions.forEach(({actionDescription, action}) => {
+    screenshotActions.forEach(({ actionDescription, action }) => {
       it(actionDescription, async() => {
         await setup();
         action();
@@ -42,11 +42,11 @@ describe('e2e:osds-select-group', () => {
 
         await page.evaluate(() => {
           const element = document.querySelector('osds-select-group') as HTMLElement;
-          return {width: element.clientWidth, height: element.clientHeight};
+          return { width: element.clientWidth, height: element.clientHeight };
         });
-        await page.setViewport({width: 600, height:600});
-        const results = await page.compareScreenshot('select-group', {fullPage: false, omitBackground: true});
-        expect(results).toMatchScreenshot({allowableMismatchedRatio: 0});
+        await page.setViewport({ width: 600, height:600 });
+        const results = await page.compareScreenshot('select-group', { fullPage: false, omitBackground: true });
+        expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
       });
     });
   });

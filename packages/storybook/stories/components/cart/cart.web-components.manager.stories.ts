@@ -1,5 +1,5 @@
-import type {OsdsCartManager} from '@ovhcloud/ods-components/cart';
-import {OdsLogger} from '@ovhcloud/ods-common-core';
+import type { OsdsCartManager } from '@ovhcloud/ods-components/cart';
+import { OdsLogger } from '@ovhcloud/ods-common-core';
 
 const logger = new OdsLogger('OsdsCart-stories');
 export const CartManagerPlay = async() => {
@@ -29,7 +29,7 @@ export const CartManagerPlay = async() => {
         product: true,
       },
       options: [
-        {subhead: 'Option available on this product', title: 'Option title', price: 3000, extra: 'ex.VAT / month', vat: 600},
+        { subhead: 'Option available on this product', title: 'Option title', price: 3000, extra: 'ex.VAT / month', vat: 600 },
       ],
     },
     {
@@ -42,15 +42,15 @@ export const CartManagerPlay = async() => {
         product: true,
       },
       options: [
-        {subhead: 'Another option subhead', title: 'Another option title', price: 3000, extra: 'ex.VAT / month', vat: 600},
-        {subhead: 'Another option subhead', title: 'Another option title', price: 3000, extra: 'ex.VAT / month', vat: 600},
+        { subhead: 'Another option subhead', title: 'Another option title', price: 3000, extra: 'ex.VAT / month', vat: 600 },
+        { subhead: 'Another option subhead', title: 'Another option title', price: 3000, extra: 'ex.VAT / month', vat: 600 },
       ],
     },
   ];
 
   const footer = {
     items: [
-      {title: 'Next month', price: 2000},
+      { title: 'Next month', price: 2000 },
       {
         total: 'Total',
         info: 'info',
@@ -66,7 +66,7 @@ export const CartManagerPlay = async() => {
 
   // translation system to replace with the application one
   const translationSystem = (key: string, values: any) => {
-    logger.log('[i18nHook] translating...', {key, values});
+    logger.log('[i18nHook] translating...', { key, values });
     let translation = myTranslations[key];
     Object.keys(values)
       .forEach((valueName) => {
@@ -83,7 +83,7 @@ export const CartManagerPlay = async() => {
     return translationSystem(key, values);
   };
 
-  document.addEventListener('odsInitialized', ({detail}) => {
+  document.addEventListener('odsInitialized', ({ detail }) => {
     const instance = detail.instance;
     instance.i18n(i18n);
   });

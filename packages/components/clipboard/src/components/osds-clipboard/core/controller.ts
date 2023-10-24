@@ -1,5 +1,5 @@
-import type {OsdsClipboard} from '../osds-clipboard';
-import {writeOnClipboard} from '@ovhcloud/ods-common-core';
+import type { OsdsClipboard } from '../osds-clipboard';
+import { writeOnClipboard } from '@ovhcloud/ods-common-core';
 
 class OdsClipboardController {
   private component: OsdsClipboard;

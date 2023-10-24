@@ -2,15 +2,15 @@
 jest.mock('@ovhcloud/ods-cdk');
 jest.mock('./core/controller');
 
-import type {SpecPage} from '@stencil/core/testing';
-import type {OdsTooltipAttribute} from './interfaces/attributes';
-import {ocdkIsSurface} from '@ovhcloud/ods-cdk';
-import {odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute} from '@ovhcloud/ods-common-testing';
-import {newSpecPage} from '@stencil/core/testing';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
-import {ODS_TOOLTIP_VARIANT, ODS_TOOLTIP_VARIANTS} from './constants/tooltip-variant';
-import {OdsTooltipController} from './core/controller';
-import {OsdsTooltip} from './osds-tooltip';
+import type { SpecPage } from '@stencil/core/testing';
+import type { OdsTooltipAttribute } from './interfaces/attributes';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { ODS_TOOLTIP_VARIANT, ODS_TOOLTIP_VARIANTS } from './constants/tooltip-variant';
+import { OdsTooltipController } from './core/controller';
+import { OsdsTooltip } from './osds-tooltip';
+import { newSpecPage } from '@stencil/core/testing';
+import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
+import { ocdkIsSurface } from '@ovhcloud/ods-cdk';
 
 describe('spec:osds-tooltip', () => {
   let page: SpecPage;
@@ -24,7 +24,7 @@ describe('spec:osds-tooltip', () => {
     jest.clearAllMocks();
   });
 
-  async function setup({attributes = {}, html = ''}: { attributes?: Partial<OdsTooltipAttribute>, html?: string } = {}) {
+  async function setup({ attributes = {}, html = '' }: { attributes?: Partial<OdsTooltipAttribute>, html?: string } = {}) {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsTooltipAttribute>(attributes, DEFAULT_ATTRIBUTE);
 
     page = await newSpecPage({
@@ -53,7 +53,7 @@ describe('spec:osds-tooltip', () => {
   describe('cdk not initialized', () => {
     it('should not have yet the ref to surface', async() => {
       (ocdkIsSurface as unknown as jest.Mock).mockImplementation(() => false);
-      await setup({attributes: {}, html: ''});
+      await setup({ attributes: {}, html: '' });
 
       expect(instance.surface).toBeUndefined();
     });
@@ -62,7 +62,7 @@ describe('spec:osds-tooltip', () => {
   describe('cdk initialized', () => {
     beforeEach(async() => {
       (ocdkIsSurface as unknown as jest.Mock).mockImplementation(() => true);
-      await setup({html: htmlTooltipContent});
+      await setup({ html: htmlTooltipContent });
     });
 
     it('should have a ref to the anchor and the surface', () => {
@@ -89,13 +89,13 @@ describe('spec:osds-tooltip', () => {
         defaultValue: DEFAULT_ATTRIBUTE.variant,
         newValue: ODS_TOOLTIP_VARIANT.standard,
         value: ODS_TOOLTIP_VARIANT.tip,
-        setup: (value) => setup({attributes: {['variant']: value}}),
+        setup: (value) => setup({ attributes: { ['variant']: value } }),
         ...config,
       });
 
       it('should set the variant if attribute is added', async() => {
         const randomVariant = ODS_TOOLTIP_VARIANTS[Math.floor(Math.random() * ODS_TOOLTIP_VARIANTS.length)];
-        await setup({attributes: {variant: randomVariant}});
+        await setup({ attributes: { variant: randomVariant } });
         expect(instance.variant).toBe(randomVariant);
       });
     });
@@ -187,7 +187,7 @@ describe('spec:osds-tooltip', () => {
 
     describe('setSlotTooltipContent', () => {
       it('should call setSlotTooltipContent with tooltip-content', async() => {
-        await setup({html: htmlTooltipContent});
+        await setup({ html: htmlTooltipContent });
         await instance.setSlotTooltipContent();
 
         expect(instance.hasSlotTooltipContent).toBe(true);

@@ -1,6 +1,6 @@
-import {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
-import {ODS_DATEPICKER_LOCALE} from '../constants/datepicker-locale';
-import {OdsDatepickerAttribute} from '../interfaces/attributes';
+import { ODS_DATEPICKER_LOCALE } from '../constants/datepicker-locale';
+import { OdsDatepickerAttribute } from '../interfaces/attributes';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 
 const DEFAULT_ATTRIBUTE: OdsDatepickerAttribute = Object.freeze({
   clearable: false,

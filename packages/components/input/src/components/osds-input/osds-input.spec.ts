@@ -1,16 +1,16 @@
 jest.mock('./core/controller'); // keep jest.mock before any
 
-import type {SpecPage} from '@stencil/core/testing';
-import type {OdsInputAttribute} from './interfaces/attributes';
-import {newSpecPage} from '@stencil/core/testing';
-import {OdsCreateDefaultValidityState, OdsFormControl, OdsLogger} from '@ovhcloud/ods-common-core';
-import {OdsMockNativeMethod, OdsMockPropertyDescriptor, odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute} from '@ovhcloud/ods-common-testing';
-import {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
-import {ODS_INPUT_SIZE} from './constants/input-size';
-import {ODS_INPUT_TYPE} from './constants/input-type';
-import {OdsInputController} from './core/controller';
-import {OsdsInput} from './osds-input';
+import type { SpecPage } from '@stencil/core/testing';
+import type { OdsInputAttribute } from './interfaces/attributes';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { ODS_INPUT_SIZE } from './constants/input-size';
+import { ODS_INPUT_TYPE } from './constants/input-type';
+import { OdsInputController } from './core/controller';
+import { OsdsInput } from './osds-input';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+import { OdsMockNativeMethod, OdsMockPropertyDescriptor, odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
+import { OdsCreateDefaultValidityState, OdsFormControl, OdsLogger } from '@ovhcloud/ods-common-core';
+import { newSpecPage } from '@stencil/core/testing';
 
 const logger = new OdsLogger('osds-input-spec');
 
@@ -19,7 +19,7 @@ OdsMockPropertyDescriptor(HTMLInputElement.prototype, 'validity', () => OdsCreat
 
 describe('spec:osds-input', () => {
   logger.log('init');
-  const baseAttribute = {ariaLabel: null, defaultValue: '', forbiddenValues: [], type: ODS_INPUT_TYPE.text, value: ''};
+  const baseAttribute = { ariaLabel: null, defaultValue: '', forbiddenValues: [], type: ODS_INPUT_TYPE.text, value: '' };
   let page: SpecPage;
   let htmlInput: HTMLInputElement | null | undefined;
   let instance: OsdsInput;
@@ -29,8 +29,8 @@ describe('spec:osds-input', () => {
     jest.clearAllMocks();
   });
 
-  async function setup({attributes = {}, html = ''}: { attributes?: Partial<OdsInputAttribute>, html?: string } = {}) {
-    const stringAttributes = odsComponentAttributes2StringAttributes<OdsInputAttribute>({...baseAttribute, ...attributes}, DEFAULT_ATTRIBUTE);
+  async function setup({ attributes = {}, html = '' }: { attributes?: Partial<OdsInputAttribute>, html?: string } = {}) {
+    const stringAttributes = odsComponentAttributes2StringAttributes<OdsInputAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
 
     // mock setCustomValidity method that does not exist when stencil mock HTMLInputElement
     OdsMockNativeMethod(HTMLInputElement.prototype, 'setCustomValidity', jest.fn());
@@ -74,7 +74,7 @@ describe('spec:osds-input', () => {
         defaultValue: DEFAULT_ATTRIBUTE.clearable,
         newValue: false,
         value: true,
-        setup: (value) => setup({attributes: {['clearable']: value}}),
+        setup: (value) => setup({ attributes: { ['clearable']: value } }),
         ...config,
       });
     });
@@ -85,7 +85,7 @@ describe('spec:osds-input', () => {
         defaultValue: DEFAULT_ATTRIBUTE.color,
         newValue: ODS_THEME_COLOR_INTENT.primary,
         value: ODS_THEME_COLOR_INTENT.default,
-        setup: (value) => setup({attributes: {['color']: value}}),
+        setup: (value) => setup({ attributes: { ['color']: value } }),
         ...config,
       });
     });
@@ -96,7 +96,7 @@ describe('spec:osds-input', () => {
         defaultValue: DEFAULT_ATTRIBUTE.contrasted,
         newValue: false,
         value: true,
-        setup: (value) => setup({attributes: {['contrasted']: value}}),
+        setup: (value) => setup({ attributes: { ['contrasted']: value } }),
         ...config,
       });
     });
@@ -107,7 +107,7 @@ describe('spec:osds-input', () => {
         defaultValue: DEFAULT_ATTRIBUTE.disabled,
         newValue: false,
         value: true,
-        setup: (value) => setup({attributes: {['disabled']: value}}),
+        setup: (value) => setup({ attributes: { ['disabled']: value } }),
         ...config,
       });
     });
@@ -118,7 +118,7 @@ describe('spec:osds-input', () => {
         defaultValue: DEFAULT_ATTRIBUTE.inline,
         newValue: false,
         value: true,
-        setup: (value) => setup({attributes: {['inline']: value}}),
+        setup: (value) => setup({ attributes: { ['inline']: value } }),
         ...config,
       });
     });
@@ -129,7 +129,7 @@ describe('spec:osds-input', () => {
         defaultValue: DEFAULT_ATTRIBUTE.loading,
         newValue: false,
         value: true,
-        setup: (value) => setup({attributes: {['loading']: value}}),
+        setup: (value) => setup({ attributes: { ['loading']: value } }),
         ...config,
       });
     });
@@ -140,7 +140,7 @@ describe('spec:osds-input', () => {
         defaultValue: DEFAULT_ATTRIBUTE.masked,
         newValue: false,
         value: true,
-        setup: (value) => setup({attributes: {['masked']: value}}),
+        setup: (value) => setup({ attributes: { ['masked']: value } }),
         ...config,
       });
     });
@@ -151,7 +151,7 @@ describe('spec:osds-input', () => {
         defaultValue: DEFAULT_ATTRIBUTE.max,
         newValue: 3,
         value: 6,
-        setup: (value) => setup({attributes: {['max']: value}}),
+        setup: (value) => setup({ attributes: { ['max']: value } }),
         ...config,
       });
     });
@@ -162,7 +162,7 @@ describe('spec:osds-input', () => {
         defaultValue: DEFAULT_ATTRIBUTE.min,
         newValue: 3,
         value: 6,
-        setup: (value) => setup({attributes: {['min']: value}}),
+        setup: (value) => setup({ attributes: { ['min']: value } }),
         ...config,
       });
     });
@@ -173,7 +173,7 @@ describe('spec:osds-input', () => {
         defaultValue: DEFAULT_ATTRIBUTE.placeholder,
         newValue: 'oles',
         value: 'ipsum',
-        setup: (value) => setup({attributes: {['placeholder']: value}}),
+        setup: (value) => setup({ attributes: { ['placeholder']: value } }),
         ...config,
       });
     });
@@ -184,7 +184,7 @@ describe('spec:osds-input', () => {
         defaultValue: DEFAULT_ATTRIBUTE.prefixValue,
         newValue: 'prefix',
         value: '',
-        setup: (value) => setup({attributes: {['prefixValue']: value}}),
+        setup: (value) => setup({ attributes: { ['prefixValue']: value } }),
         ...config,
       });
     });
@@ -195,7 +195,7 @@ describe('spec:osds-input', () => {
         defaultValue: DEFAULT_ATTRIBUTE.size,
         newValue: ODS_INPUT_SIZE.md,
         value: ODS_INPUT_SIZE.md,
-        setup: (value) => setup({attributes: {['size']: value}}),
+        setup: (value) => setup({ attributes: { ['size']: value } }),
         ...config,
       });
     });
@@ -206,7 +206,7 @@ describe('spec:osds-input', () => {
         defaultValue: DEFAULT_ATTRIBUTE.step,
         newValue: 1,
         value: 2,
-        setup: (value) => setup({attributes: {['step']: value}}),
+        setup: (value) => setup({ attributes: { ['step']: value } }),
         ...config,
       });
     });
@@ -217,7 +217,7 @@ describe('spec:osds-input', () => {
         defaultValue: DEFAULT_ATTRIBUTE.value,
         newValue: 1,
         value: 2,
-        setup: (value) => setup({attributes: {['value']: value}}),
+        setup: (value) => setup({ attributes: { ['value']: value } }),
         ...config,
       });
     });
@@ -226,7 +226,7 @@ describe('spec:osds-input', () => {
   describe('value changes', () => {
     it('input value should change if component value changed', async() => {
       const newValue = 2;
-      await setup({attributes: {type: ODS_INPUT_TYPE.number, value: 2}});
+      await setup({ attributes: { type: ODS_INPUT_TYPE.number, value: 2 } });
       instance.value = newValue;
       await page.waitForChanges();
       expect(`${htmlInput?.value}`).toBe(`${newValue}`);
@@ -235,17 +235,17 @@ describe('spec:osds-input', () => {
 
   describe('events', () => {
     it('odsValueChange', async() => {
-      await setup({attributes: {type: ODS_INPUT_TYPE.number}});
+      await setup({ attributes: { type: ODS_INPUT_TYPE.number } });
       expect(instance.odsValueChange).toBeTruthy();
     });
 
     it('odsInputBlur', async() => {
-      await setup({attributes: {type: ODS_INPUT_TYPE.number}});
+      await setup({ attributes: { type: ODS_INPUT_TYPE.number } });
       expect(instance.odsInputBlur).toBeTruthy();
     });
 
     it('odsInputFocus', async() => {
-      await setup({attributes: {type: ODS_INPUT_TYPE.number}});
+      await setup({ attributes: { type: ODS_INPUT_TYPE.number } });
       expect(instance.odsInputFocus).toBeTruthy();
     });
   });
@@ -307,7 +307,7 @@ describe('spec:osds-input', () => {
       });
 
       it('should call clear from clear method but should not change the value if disabled', async() => {
-        await setup({attributes: {type: ODS_INPUT_TYPE.password, value: 'Just ODS being ahead', masked: false, disabled: true}});
+        await setup({ attributes: { type: ODS_INPUT_TYPE.password, value: 'Just ODS being ahead', masked: false, disabled: true } });
         await instance.clear();
 
         expect(controller.clear).toHaveBeenCalledTimes(1);
@@ -326,7 +326,7 @@ describe('spec:osds-input', () => {
       });
 
       it('should call hide from hide method but should not display the value if disabled', async() => {
-        await setup({attributes: {type: ODS_INPUT_TYPE.password, value: 'Just ODS being ahead', masked: true, disabled: true}});
+        await setup({ attributes: { type: ODS_INPUT_TYPE.password, value: 'Just ODS being ahead', masked: true, disabled: true } });
         await instance.hide();
 
         expect(controller.hide).toHaveBeenCalledTimes(1);
@@ -372,7 +372,7 @@ describe('spec:osds-input', () => {
 
     describe('watchers', () => {
       it('should call onFormControlChange on formControl change', async() => {
-        await setup({attributes: {formControl: undefined}});
+        await setup({ attributes: { formControl: undefined } });
         instance.formControl = new OdsFormControl('id');
         const formControl = instance.formControl;
 
@@ -382,7 +382,7 @@ describe('spec:osds-input', () => {
 
       it('should call onDefaultValueChange on defaultValue change', async() => {
         const defaultValue = 'defaultValue';
-        await setup({attributes: {defaultValue: ''}});
+        await setup({ attributes: { defaultValue: '' } });
         instance.defaultValue = defaultValue;
 
         expect(controller.onDefaultValueChange).toHaveBeenCalledTimes(1);
@@ -392,7 +392,7 @@ describe('spec:osds-input', () => {
       it('should call onValueChange on value change', async() => {
         const value = 'value';
         const oldValue = 'oldValue';
-        await setup({attributes: {value: oldValue}});
+        await setup({ attributes: { value: oldValue } });
         instance.value = value;
 
         expect(controller.onValueChange).toHaveBeenCalledTimes(1);

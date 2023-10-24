@@ -1,8 +1,8 @@
-import type {OdsSearchBarAttribute} from './interfaces/attributes';
-import type {E2EElement, E2EPage} from '@stencil/core/testing';
-import {newE2EPage} from '@stencil/core/testing';
-import {odsComponentAttributes2StringAttributes, odsStringAttributes2Str} from '@ovhcloud/ods-common-testing';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
+import type { OdsSearchBarAttribute } from './interfaces/attributes';
+import type { E2EElement, E2EPage } from '@stencil/core/testing';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { newE2EPage } from '@stencil/core/testing';
+import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 
 describe('e2e:osds-search-bar', () => {
   let page: E2EPage;
@@ -10,10 +10,10 @@ describe('e2e:osds-search-bar', () => {
   let select: E2EElement;
   let button: E2EElement;
   let input: E2EElement;
-  const baseAttribute = {value: ''};
+  const baseAttribute = { value: '' };
 
-  async function setup({attributes}: { attributes: Partial<OdsSearchBarAttribute> }) {
-    const stringAttributes = odsComponentAttributes2StringAttributes<OdsSearchBarAttribute>({...baseAttribute, ...attributes}, DEFAULT_ATTRIBUTE);
+  async function setup({ attributes }: { attributes: Partial<OdsSearchBarAttribute> }) {
+    const stringAttributes = odsComponentAttributes2StringAttributes<OdsSearchBarAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
     await page.setContent(`<osds-search-bar ${odsStringAttributes2Str(stringAttributes)}></osds-search-bar>`);
@@ -33,7 +33,7 @@ describe('e2e:osds-search-bar', () => {
   }
 
   it('should render', async() => {
-    await setup({attributes: {}});
+    await setup({ attributes: {} });
     expect(el).not.toBeNull();
     expect(el).toHaveClass('hydrated');
 
@@ -47,7 +47,7 @@ describe('e2e:osds-search-bar', () => {
   });
 
   it('should get default attributes', async() => {
-    await setup({attributes: {}});
+    await setup({ attributes: {} });
     expect(await el.getProperty('contrasted')).toBe(DEFAULT_ATTRIBUTE.contrasted);
     expect(await el.getProperty('disabled')).toBe(DEFAULT_ATTRIBUTE.disabled);
     expect(await el.getProperty('value')).toBe(DEFAULT_ATTRIBUTE.value);
@@ -57,8 +57,8 @@ describe('e2e:osds-search-bar', () => {
   });
 
   it('should display select because of options', async() => {
-    const options = [{label: 'options1', value: '1'}, {label: 'options2', value: '2'}];
-    await setup({attributes: {options}});
+    const options = [{ label: 'options1', value: '1' }, { label: 'options2', value: '2' }];
+    await setup({ attributes: { options } });
 
     expect(select).not.toBeNull();
     expect(select).toHaveClass('hydrated');
@@ -66,7 +66,7 @@ describe('e2e:osds-search-bar', () => {
 
   describe('Event', () => {
     it('should receive event odsValueChange', async() => {
-      await setup({attributes: { }});
+      await setup({ attributes: { } });
 
       const odsValueChange = await el.spyOnEvent('odsValueChange');
 
@@ -76,7 +76,7 @@ describe('e2e:osds-search-bar', () => {
     });
 
     it('should receive event odsSearchSubmit with current value', async() => {
-      await setup({attributes: { }});
+      await setup({ attributes: { } });
 
       const odsSearchSubmit = await el.spyOnEvent('odsSearchSubmit');
       await input.setProperty('value', '4');
@@ -85,12 +85,12 @@ describe('e2e:osds-search-bar', () => {
       await button.click();
 
       expect(odsSearchSubmit).toHaveReceivedEventTimes(1);
-      expect(odsSearchSubmit).toHaveReceivedEventDetail({optionValue: '', inputValue: '4'});
+      expect(odsSearchSubmit).toHaveReceivedEventDetail({ optionValue: '', inputValue: '4' });
     });
 
     it('should receive event odsValueChange with options selected', async() => {
-      const options = [{label: 'options1', value: '1'}, {label: 'options2', value: '2'}];
-      await setup({attributes: {options}});
+      const options = [{ label: 'options1', value: '1' }, { label: 'options2', value: '2' }];
+      await setup({ attributes: { options } });
 
       const odsValueChange = await el.spyOnEvent('odsValueChange');
 
@@ -104,8 +104,8 @@ describe('e2e:osds-search-bar', () => {
     });
 
     it('should receive event odsSearchSubmit with options selected', async() => {
-      const options = [{label: 'options1', value: '1'}, {label: 'options2', value: '2'}];
-      await setup({attributes: {options}});
+      const options = [{ label: 'options1', value: '1' }, { label: 'options2', value: '2' }];
+      await setup({ attributes: { options } });
 
       const odsSearchSubmit = await el.spyOnEvent('odsSearchSubmit');
 
@@ -117,7 +117,7 @@ describe('e2e:osds-search-bar', () => {
 
       await page.waitForChanges();
       expect(odsSearchSubmit).toHaveReceivedEventTimes(1);
-      expect(odsSearchSubmit).toHaveReceivedEventDetail({optionValue: '1', inputValue: ''});
+      expect(odsSearchSubmit).toHaveReceivedEventDetail({ optionValue: '1', inputValue: '' });
     });
   });
 

@@ -1,11 +1,11 @@
-import {OdsI18nHook} from '../i18n/ods-i18n-hook';
-import {OdsLogger} from '../logger/ods-logger';
-import {VERSION} from '../version';
-import {OdsInitializedEventDetail} from './ods-initialized-event-detail';
-import {OdsConfig} from './ods-config';
-import {odsDefaultConfig} from './ods-default-config';
-import {OdsExternalLogger} from '../logger/ods-external-logger';
-import {getOdsWindow} from './ods-get-window';
+import { OdsI18nHook } from '../i18n/ods-i18n-hook';
+import { OdsLogger } from '../logger/ods-logger';
+import { VERSION } from '../version';
+import { OdsInitializedEventDetail } from './ods-initialized-event-detail';
+import { OdsConfig } from './ods-config';
+import { odsDefaultConfig } from './ods-default-config';
+import { OdsExternalLogger } from '../logger/ods-external-logger';
+import { getOdsWindow } from './ods-get-window';
 
 /**
  * Main class that controls ODS :

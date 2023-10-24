@@ -1,12 +1,12 @@
-import {html} from 'lit-html';
-import {unsafeHTML} from 'lit-html/directives/unsafe-html';
-import {ODS_THEME_COLOR_INTENT, ODS_THEME_TYPOGRAPHY_LEVEL, ODS_THEME_TYPOGRAPHY_SIZE} from '@ovhcloud/ods-common-theming';
-import {ODS_COUNTRY_ISO_CODE, OlesIpsumGeneration, olesIpsum} from '@ovhcloud/ods-common-core';
-import {ODS_ICON_NAME} from '@ovhcloud/ods-components/icon';
-import {ODS_DIVIDER_SIZE} from '@ovhcloud/ods-components/divider';
-import {ODS_CHECKBOX_BUTTON_SIZE} from '@ovhcloud/ods-components/checkbox-button';
-import {ODS_RADIO_BUTTON_SIZE} from '@ovhcloud/ods-components/radio-button';
-import {createTag} from '../../core/componentHTMLUtils';
+import { createTag } from '../../core/componentHTMLUtils';
+import { html } from 'lit-html';
+import { unsafeHTML } from 'lit-html/directives/unsafe-html';
+import { ODS_THEME_COLOR_INTENT, ODS_THEME_TYPOGRAPHY_LEVEL, ODS_THEME_TYPOGRAPHY_SIZE } from '@ovhcloud/ods-common-theming';
+import { ODS_COUNTRY_ISO_CODE, OlesIpsumGeneration, olesIpsum } from '@ovhcloud/ods-common-core';
+import { ODS_ICON_NAME } from '@ovhcloud/ods-components/icon';
+import { ODS_DIVIDER_SIZE } from '@ovhcloud/ods-components/divider';
+import { ODS_CHECKBOX_BUTTON_SIZE } from '@ovhcloud/ods-components/checkbox-button';
+import { ODS_RADIO_BUTTON_SIZE } from '@ovhcloud/ods-components/radio-button';
 
 export default {
   title: 'UI Components/Introduction',
@@ -285,9 +285,9 @@ const uiComponents = {
       url: parent.location.href.replace(parent.location.search, '?path=/story/breadcrumb--default'),
       attributes: {
         items: JSON.stringify([
-          {href: '#', label: 'Home'},
-          {href: '#', label: 'Products'},
-          {href: '#', label: 'Web'},
+          { href: '#', label: 'Home' },
+          { href: '#', label: 'Products' },
+          { href: '#', label: 'Web' },
         ]),
       },
     },
@@ -493,7 +493,7 @@ const TemplateIntroduction = () => html`
         <span class="cardGrid">
           ${
   uiComponents[section].map(
-    ({name, tag, url, attributes, slots, template}) =>
+    ({ name, tag, url, attributes, slots, template }) =>
       html`<a class="${section.match(/quarks|organisms|layouts/g) ? 'cardLink wideCard' : 'cardLink'}"
                     href=${url}
                     key=${name}>
@@ -527,6 +527,6 @@ const TemplateIntroduction = () => html`
 `;
 export const Introduction = TemplateIntroduction.bind({});
 Introduction.parameters = {
-  controls: {hideNoControlsWarning: true},
-  options: {showPanel: false},
+  controls: { hideNoControlsWarning: true },
+  options: { showPanel: false },
 };

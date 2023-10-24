@@ -1,2 +1,2 @@
-export type {OdsBreadcrumbAttribute, OdsBreadcrumbAttributeItem} from './interfaces/attributes';
-export {OsdsBreadcrumb} from './osds-breadcrumb';
+export type { OdsBreadcrumbAttribute, OdsBreadcrumbAttributeItem } from './interfaces/attributes';
+export { OsdsBreadcrumb } from './osds-breadcrumb';

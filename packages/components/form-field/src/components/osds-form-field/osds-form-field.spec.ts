@@ -1,9 +1,9 @@
-import type {SpecPage} from '@stencil/core/testing';
-import type {OdsFormFieldAttribute} from './interfaces/attributes';
-import {newSpecPage} from '@stencil/core/testing';
-import {odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute} from '@ovhcloud/ods-common-testing';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
-import {OsdsFormField} from './osds-form-field';
+import type { SpecPage } from '@stencil/core/testing';
+import type { OdsFormFieldAttribute } from './interfaces/attributes';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { OsdsFormField } from './osds-form-field';
+import { newSpecPage } from '@stencil/core/testing';
+import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 
 describe('spec:osds-form-field', () => {
   let page: SpecPage;
@@ -14,7 +14,7 @@ describe('spec:osds-form-field', () => {
     jest.clearAllMocks();
   });
 
-  async function setup({attributes = {}}: { attributes?: Partial<OdsFormFieldAttribute> } = {}) {
+  async function setup({ attributes = {} }: { attributes?: Partial<OdsFormFieldAttribute> } = {}) {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsFormFieldAttribute>(attributes, DEFAULT_ATTRIBUTE);
 
     page = await newSpecPage({
@@ -46,7 +46,7 @@ describe('spec:osds-form-field', () => {
         defaultValue: DEFAULT_ATTRIBUTE.error,
         newValue: '',
         value: 'There was an error with your message',
-        setup: (value) => setup({attributes: {['error']: value}}),
+        setup: (value) => setup({ attributes: { ['error']: value } }),
         ...config,
       });
     });
@@ -57,7 +57,7 @@ describe('spec:osds-form-field', () => {
         defaultValue: DEFAULT_ATTRIBUTE.inline,
         newValue: false,
         value: true,
-        setup: (value) => setup({attributes: {['inline']: value}}),
+        setup: (value) => setup({ attributes: { ['inline']: value } }),
         ...config,
       });
     });

@@ -1,15 +1,15 @@
-import type {E2EElement, E2EPage} from '@stencil/core/testing';
-import type {OdsCartManagerAttribute, OdsCartManagerItem, OdsCartManagerSection} from './interfaces/attributes';
-import {Ods, OdsI18nHook, OdsLogger} from '@ovhcloud/ods-common-core';
-import {newE2EPage} from '@stencil/core/testing';
-import {odsComponentAttributes2StringAttributes, odsStringAttributes2Str} from '@ovhcloud/ods-common-testing';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
+import type { E2EElement, E2EPage } from '@stencil/core/testing';
+import type { OdsCartManagerAttribute, OdsCartManagerItem, OdsCartManagerSection } from './interfaces/attributes';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { Ods, OdsI18nHook, OdsLogger } from '@ovhcloud/ods-common-core';
+import { newE2EPage } from '@stencil/core/testing';
+import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 
 const logger = new OdsLogger('osds-cart-manager-e2e');
 
 describe('e2e:osds-cart-manager', () => {
-  const baseAttribute = {sections: []};
-  const odsCartItemA: OdsCartManagerItem = {title: 'item 1', price: 3000, vat: 300};
+  const baseAttribute = { sections: [] };
+  const odsCartItemA: OdsCartManagerItem = { title: 'item 1', price: 3000, vat: 300 };
   let page: E2EPage;
   let el: E2EElement;
   let myPriceFormatter: (num: string | number | undefined) => string;
@@ -17,11 +17,11 @@ describe('e2e:osds-cart-manager', () => {
   let myTranslationSystem: (key: string, values: Record<string, string | number | undefined>) => string;
   let i18n: OdsI18nHook;
 
-  async function setup({attributes = {}, html = ''}: { attributes?: Partial<OdsCartManagerAttribute>, html?: string } = {}) {
-    const stringAttributes = odsComponentAttributes2StringAttributes<OdsCartManagerAttribute>({...baseAttribute, ...attributes}, DEFAULT_ATTRIBUTE);
+  async function setup({ attributes = {}, html = '' }: { attributes?: Partial<OdsCartManagerAttribute>, html?: string } = {}) {
+    const stringAttributes = odsComponentAttributes2StringAttributes<OdsCartManagerAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
-    await page.setContent(`<osds-cart-manager ${odsStringAttributes2Str(stringAttributes)}>${html}</osds-cart-manager>`, {timeout: 20000});
+    await page.setContent(`<osds-cart-manager ${odsStringAttributes2Str(stringAttributes)}>${html}</osds-cart-manager>`, { timeout: 20000 });
     await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
 
     el = await page.find('osds-cart-manager');
@@ -41,7 +41,7 @@ describe('e2e:osds-cart-manager', () => {
 
     // translation system to replace with the application one
     myTranslationSystem = (key, values) => {
-      logger.log('[i18nHook] translating...', {key, values});
+      logger.log('[i18nHook] translating...', { key, values });
       let translation = myTranslations[key];
       Object.keys(values)
         .forEach((valueName) => {
@@ -76,7 +76,7 @@ describe('e2e:osds-cart-manager', () => {
   <span slot="footer-content">a text</span>
 `,
       });
-      const sectionsItems: OdsCartManagerSection[] = [{item: odsCartItemA, options: []}];
+      const sectionsItems: OdsCartManagerSection[] = [{ item: odsCartItemA, options: [] }];
 
 
       // todo : why exposing function returns a promise ? not working
@@ -100,19 +100,19 @@ describe('e2e:osds-cart-manager', () => {
       // });
 
       el.setProperty('sections', sectionsItems);
-      el.setProperty('footer', {items: [{total: 'total'}]});
+      el.setProperty('footer', { items: [{ total: 'total' }] });
       await page.waitForChanges();
 
       await page.evaluate(() => {
         const element = document.querySelector('osds-cart-manager') as HTMLElement;
-        return {width: element.clientWidth, height: element.clientHeight};
+        return { width: element.clientWidth, height: element.clientHeight };
       });
-      await page.setViewport({width: 600, height:600});
+      await page.setViewport({ width: 600, height:600 });
       const results = await page.compareScreenshot('info: no header and footer', {
         fullPage: false,
         omitBackground: true,
       });
-      expect(results).toMatchScreenshot({allowableMismatchedRatio: 0});
+      expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
     });
   });
 });

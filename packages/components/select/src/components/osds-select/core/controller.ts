@@ -1,6 +1,6 @@
-import type {OdsValidityState} from '@ovhcloud/ods-common-core';
-import type {OsdsSelect} from '../osds-select';
-import type {OdsSelectOptionClickEventDetail, OsdsSelectOption} from '../../osds-select-option/public-api';
+import type { OdsValidityState } from '@ovhcloud/ods-common-core';
+import type { OsdsSelect } from '../osds-select';
+import type { OdsSelectOptionClickEventDetail, OsdsSelectOption } from '../../osds-select-option/public-api';
 
 /**
  * common controller logic for select component used by the different implementations.
@@ -42,7 +42,7 @@ class OdsSelectController {
   syncReferences(): void {
     if (this.component.surface && this.component.anchor) {
       this.component.surface.setAnchorElement(this.component.anchor);
-      this.component.surface.setAnchorMargin({bottom: 0});
+      this.component.surface.setAnchorMargin({ bottom: 0 });
     }
   }
 

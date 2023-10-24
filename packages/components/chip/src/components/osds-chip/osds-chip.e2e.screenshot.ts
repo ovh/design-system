@@ -1,17 +1,17 @@
-import type {E2EElement, E2EPage} from '@stencil/core/testing';
-import type {OdsChipAttribute} from './interfaces/attributes';
-import {newE2EPage} from '@stencil/core/testing';
-import {odsComponentAttributes2StringAttributes, odsStringAttributes2Str} from '@ovhcloud/ods-common-testing';
-import {ODS_THEME_COLOR_INTENTS} from '@ovhcloud/ods-common-theming';
-import {ODS_CHIP_SIZES} from './constants/chip-size';
-import {ODS_CHIP_VARIANTS} from './constants/chip-variant';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
+import type { E2EElement, E2EPage } from '@stencil/core/testing';
+import type { OdsChipAttribute } from './interfaces/attributes';
+import { ODS_CHIP_SIZES } from './constants/chip-size';
+import { ODS_CHIP_VARIANTS } from './constants/chip-variant';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { newE2EPage } from '@stencil/core/testing';
+import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
+import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
 
 describe('e2e:osds-chip', () => {
   let page: E2EPage;
   let el: E2EElement;
 
-  async function setup({attributes = {}, html = ''}: { attributes?: Partial<OdsChipAttribute>, html?: string } = {}) {
+  async function setup({ attributes = {}, html = '' }: { attributes?: Partial<OdsChipAttribute>, html?: string } = {}) {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsChipAttribute>(attributes, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
@@ -61,11 +61,11 @@ describe('e2e:osds-chip', () => {
 
                 await page.evaluate(() => {
                   const element = document.querySelector('osds-chip') as HTMLElement;
-                  return {width: element.clientWidth, height: element.clientHeight};
+                  return { width: element.clientWidth, height: element.clientHeight };
                 });
-                await page.setViewport({width: 600, height:600});
-                const results = await page.compareScreenshot('chip', {fullPage: false, omitBackground: true});
-                expect(results).toMatchScreenshot({allowableMismatchedRatio: 0});
+                await page.setViewport({ width: 600, height:600 });
+                const results = await page.compareScreenshot('chip', { fullPage: false, omitBackground: true });
+                expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
               });
             });
           });

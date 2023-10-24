@@ -1,5 +1,5 @@
-import type {OdsFocusChangeEventDetail} from '@ovhcloud/ods-common-core';
-import type {EventEmitter} from '@stencil/core';
+import type { OdsFocusChangeEventDetail } from '@ovhcloud/ods-common-core';
+import type { EventEmitter } from '@stencil/core';
 
 interface OdsCheckboxCheckedChangeEventDetail {
   checked: boolean;

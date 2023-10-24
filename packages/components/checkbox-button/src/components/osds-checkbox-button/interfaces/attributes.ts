@@ -1,5 +1,5 @@
-import type {ODS_CHECKBOX_BUTTON_SIZE} from '../constants/ods-checkbox-button-size';
-import type {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
+import type { ODS_CHECKBOX_BUTTON_SIZE } from '../constants/ods-checkbox-button-size';
+import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 
 interface OdsCheckboxButtonAttribute {
   /**

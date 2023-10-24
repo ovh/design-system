@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
-import {OdsLogger} from './ods-logger';
-import {odsDefaultConfig} from '../configure/ods-default-config';
-import {OdsWindow} from '../configure/ods-window';
+import { OdsLogger } from './ods-logger';
+import { odsDefaultConfig } from '../configure/ods-default-config';
+import { OdsWindow } from '../configure/ods-window';
 
 describe('spec:ods-logger', () => {
   let logger: OdsLogger;
@@ -33,7 +33,7 @@ describe('spec:ods-logger', () => {
         it('should take the default config', () => {
           const win: OdsWindow = window;
           win.ods = win.ods || {};
-          win.ods.config = {logging: {active: true, color: true}};
+          win.ods.config = { logging: { active: true, color: true } };
           setup();
           expect(logger.logging).toEqual(win.ods.config.logging?.active);
         });

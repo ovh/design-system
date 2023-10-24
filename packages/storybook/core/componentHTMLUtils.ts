@@ -1,8 +1,8 @@
-import {directive} from 'lit-html';
+import { directive } from 'lit-html';
 
 export const DEFAULT_SLOT = 'DEFAULT';
 
-export const createTag = ({tag, attributes = {}, slots = {}}: { tag: string; attributes: Record<string, any>; slots: Record<string, any> }) =>
+export const createTag = ({ tag, attributes = {}, slots = {} }: { tag: string; attributes: Record<string, any>; slots: Record<string, any> }) =>
   `
   <${tag} ${Object.keys(attributes)
   .map((key) => `${key}='${attributes[key]}'`)
@@ -31,8 +31,8 @@ export const createComponentTable = (tag: string, tableDataX: Record<string, any
       let obj: Record<string, any> = {};
       obj[attrX] = valueX;
       obj[attrY] = valueY;
-      obj = {...obj, ...otherAttributes};
-      res += `<span class="table-cell">${createTag({tag, attributes: obj, slots: {DEFAULT: tagContent}})}</span>`;
+      obj = { ...obj, ...otherAttributes };
+      res += `<span class="table-cell">${createTag({ tag, attributes: obj, slots: { DEFAULT: tagContent } })}</span>`;
     });
     res += '</div>';
   });
@@ -65,7 +65,7 @@ export const getTagAttributes = directive((args) => (part: any) => {
 export const extractArgTypes = (storyParams: Record<string, any>) => {
   const res: Record<string, any> = {};
   Object.keys(storyParams).forEach((storyParam) => {
-    res[ storyParam ] = (({options, control, description}) => ({
+    res[ storyParam ] = (({ options, control, description }) => ({
       options,
       control,
       description,
@@ -74,7 +74,7 @@ export const extractArgTypes = (storyParams: Record<string, any>) => {
     res[ storyParam ].table = storyParams[ storyParam ].table;
 
     if (storyParams[ storyParam ]?.category) {
-      res[ storyParam ].table = {...res[ storyParam ].table, category: storyParams[ storyParam ].category};
+      res[ storyParam ].table = { ...res[ storyParam ].table, category: storyParams[ storyParam ].category };
     }
   });
   return {

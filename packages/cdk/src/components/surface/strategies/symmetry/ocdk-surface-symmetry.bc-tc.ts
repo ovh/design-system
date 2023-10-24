@@ -1,11 +1,11 @@
-import {OcdkSurfaceSymmetryConfig} from './ocdk-surface-symmetry-strategy';
-import {OcdkSurfaceNormalizedCorner} from '../../core/ocdk-surface-normalized-corner';
-import {OcdkLogger} from '../../../../logger/ocdk-logger';
-import {OcdkSurfaceSymmetryStrategyHelpers} from './ocdk-surface-symmetry-strategy.helpers';
+import { OcdkSurfaceSymmetryConfig } from './ocdk-surface-symmetry-strategy';
+import { OcdkSurfaceNormalizedCorner } from '../../core/ocdk-surface-normalized-corner';
+import { OcdkLogger } from '../../../../logger/ocdk-logger';
+import { OcdkSurfaceSymmetryStrategyHelpers } from './ocdk-surface-symmetry-strategy.helpers';
 import {
   isOcdkSurfaceStrategyComputeResultPosition,
 } from '../../core/system/ocdk-surface-strategy-compute-result-position';
-import {OcdkSurfaceOnePositionStrategy} from '../../core/ocdk-surface-one-position-strategy';
+import { OcdkSurfaceOnePositionStrategy } from '../../core/ocdk-surface-one-position-strategy';
 
 /**
  * ```
@@ -25,7 +25,7 @@ export function ocdkSurfaceSymmetryBcTc(): OcdkSurfaceOnePositionStrategy<OcdkSu
   const helpers = OcdkSurfaceSymmetryStrategyHelpers;
 
   return {
-    cornerPoints: {anchor: OcdkSurfaceNormalizedCorner.BOTTOM_CENTER, origin: OcdkSurfaceNormalizedCorner.TOP_CENTER},
+    cornerPoints: { anchor: OcdkSurfaceNormalizedCorner.BOTTOM_CENTER, origin: OcdkSurfaceNormalizedCorner.TOP_CENTER },
     STRATEGIES: {
       standard: {
         inspectors: {

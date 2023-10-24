@@ -1,13 +1,13 @@
-import type {HTMLStencilElement} from '@stencil/core/internal';
-import type {ODS_TOOLTIP_VARIANT} from './constants/tooltip-variant';
-import type {OdsTooltipAttribute} from './interfaces/attributes';
-import type {OdsTooltipMethod} from './interfaces/methods';
-import {OcdkSurface, ocdkDefineCustomElements, ocdkIsSurface} from '@ovhcloud/ods-cdk';
-import {odsDebounce} from '@ovhcloud/ods-common-core';
-import {Component, Element, Host, Listen, State, h} from '@stencil/core';
-import {Method, Prop} from '@stencil/core/internal';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
-import {OdsTooltipController} from './core/controller';
+import type { HTMLStencilElement } from '@stencil/core/internal';
+import type { ODS_TOOLTIP_VARIANT } from './constants/tooltip-variant';
+import type { OdsTooltipAttribute } from './interfaces/attributes';
+import type { OdsTooltipMethod } from './interfaces/methods';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { OdsTooltipController } from './core/controller';
+import { OcdkSurface, ocdkDefineCustomElements, ocdkIsSurface } from '@ovhcloud/ods-cdk';
+import { odsDebounce } from '@ovhcloud/ods-common-core';
+import { Component, Element, Host, Listen, State, h } from '@stencil/core';
+import { Method, Prop } from '@stencil/core/internal';
 
 // define custom elements from CDK
 ocdkDefineCustomElements();
@@ -36,12 +36,12 @@ export class OsdsTooltip implements OdsTooltipAttribute, OdsTooltipMethod {
   @State() tabindex = 0;
 
   /** @see OdsTooltipAttributes.variant */
-  @Prop({reflect: true}) public variant?: ODS_TOOLTIP_VARIANT = DEFAULT_ATTRIBUTE.variant;
+  @Prop({ reflect: true }) public variant?: ODS_TOOLTIP_VARIANT = DEFAULT_ATTRIBUTE.variant;
 
   private debouncedHandleMouseEnter = odsDebounce(this.handleMouseEnter);
   private debouncedHandleMouseLeave = odsDebounce(this.handleMouseLeave);
 
-  @Listen('click', {target: 'window'})
+  @Listen('click', { target: 'window' })
   checkForClickOutside(event: any) {
     this.controller.checkForClickOutside(event);
   }

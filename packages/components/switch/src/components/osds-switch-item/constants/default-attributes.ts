@@ -1,4 +1,4 @@
-import type {OdsSwitchItemAttribute} from '../interfaces/attributes';
+import type { OdsSwitchItemAttribute } from '../interfaces/attributes';
 
 const DEFAULT_ATTRIBUTE: OdsSwitchItemAttribute = Object.freeze({
   checked: false,

@@ -1,21 +1,21 @@
 jest.mock('./core/controller'); // keep jest.mock before any import
 
-import type {SpecPage} from '@stencil/core/testing';
-import type {OdsCodeAttribute} from './interfaces/attributes';
-import {newSpecPage} from '@stencil/core/testing';
-import {OdsLogger} from '@ovhcloud/ods-common-core';
-import {odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute} from '@ovhcloud/ods-common-testing';
-import {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
-import {ODS_CODE_SIZE} from './constants/code-size';
-import {OsdsCode} from './osds-code';
-import {OdsCodeController} from './core/controller';
+import type { SpecPage } from '@stencil/core/testing';
+import type { OdsCodeAttribute } from './interfaces/attributes';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { ODS_CODE_SIZE } from './constants/code-size';
+import { OsdsCode } from './osds-code';
+import { OdsCodeController } from './core/controller';
+import { newSpecPage } from '@stencil/core/testing';
+import { OdsLogger } from '@ovhcloud/ods-common-core';
+import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 
 const logger = new OdsLogger('osds-code-spec');
 
 describe('spec:osds-code', () => {
   logger.log('init');
-  const baseAttribute = {color: ODS_THEME_COLOR_INTENT.default, contrasted: false, size: ODS_CODE_SIZE.md};
+  const baseAttribute = { color: ODS_THEME_COLOR_INTENT.default, contrasted: false, size: ODS_CODE_SIZE.md };
   let page: SpecPage;
   let mainSlot: HTMLElement | undefined | null;
   let copySlot: HTMLElement | undefined | null;
@@ -26,7 +26,7 @@ describe('spec:osds-code', () => {
     attributes = {},
     html = '',
   }: { attributes?: Partial<OdsCodeAttribute>, html?: string } = {}) {
-    const stringAttributes = odsComponentAttributes2StringAttributes<OdsCodeAttribute>({...baseAttribute, ...attributes}, DEFAULT_ATTRIBUTE);
+    const stringAttributes = odsComponentAttributes2StringAttributes<OdsCodeAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
 
     page = await newSpecPage({
       components: [OsdsCode],
@@ -54,13 +54,13 @@ describe('spec:osds-code', () => {
 
   describe('contents', () => {
     it('should have a main slot', async() => {
-      await setup({attributes: {}});
+      await setup({ attributes: {} });
       expect(mainSlot).toBeTruthy();
     });
 
     it('should have a copy slot', async() => {
       const copy = '<osds-button slot="copy"></osds-button>';
-      await setup({html: copy});
+      await setup({ html: copy });
       expect(copySlot).toBeTruthy();
     });
   });
@@ -68,7 +68,7 @@ describe('spec:osds-code', () => {
   describe('click', () => {
     it('should call copyCode', async() => {
       const copy = '<osds-button slot="copy"></osds-button>';
-      await setup({html: copy});
+      await setup({ html: copy });
       await page.waitForChanges();
       copySlot?.click();
       await page.waitForChanges();
@@ -91,7 +91,7 @@ describe('spec:osds-code', () => {
         defaultValue: DEFAULT_ATTRIBUTE.color,
         newValue: ODS_THEME_COLOR_INTENT.primary,
         value: ODS_THEME_COLOR_INTENT.default,
-        setup: (value) => setup({attributes: {['color']: value}}),
+        setup: (value) => setup({ attributes: { ['color']: value } }),
         ...config,
       });
     });
@@ -102,7 +102,7 @@ describe('spec:osds-code', () => {
         defaultValue: DEFAULT_ATTRIBUTE.contrasted,
         newValue: false,
         value: true,
-        setup: (value) => setup({attributes: {['contrasted']: value}}),
+        setup: (value) => setup({ attributes: { ['contrasted']: value } }),
         ...config,
       });
     });
@@ -113,7 +113,7 @@ describe('spec:osds-code', () => {
         defaultValue: DEFAULT_ATTRIBUTE.size,
         newValue: ODS_CODE_SIZE.md,
         value: ODS_CODE_SIZE.md,
-        setup: (value) => setup({attributes: {['size']: value}}),
+        setup: (value) => setup({ attributes: { ['size']: value } }),
         ...config,
       });
     });

@@ -1,30 +1,30 @@
-import {OcdkSurface} from './ocdk-surface';
-import {OcdkAutoLayoutMeasurements} from './core/ocdk-auto-layout-measurements';
-import {OcdkSurfaceAdapter} from './ocdk-surface-adapter';
-import {OcdkSurfacePoint} from './core/ocdk-surface-point';
-import {OcdkSurfaceDimensions} from './core/ocdk-surface-dimensions';
-import {OcdkSurfaceCorner} from './core/ocdk-surface-corner';
-import {OcdkSurfaceDefaultConfig, ocdkSurfaceCssClasses} from './ocdk-surface-default-config';
-import {OcdkSurfaceCornerBit} from './core/ocdk-surface-corner-bit';
-import {OcdkSurfaceDistance} from './core/ocdk-surface-distance';
-import {OcdkLogger} from '../../logger/ocdk-logger';
-import {OcdkSurfaceNormalizedCorner} from './core/ocdk-surface-normalized-corner';
-import {OcdkSurfaceCornerPointsNormalized} from './core/ocdk-surface-corner-points-normalized';
-import {OcdkSurfaceCornerPoints} from './core/ocdk-surface-corner-points';
-import {OcdkSurfaceInspections} from './core/ocdk-surface-inspections';
-import {OcdkSurfaceAnimationList} from './core/ocdk-surface-animation';
-import {OcdkSurfaceStrategyDefiner} from './core/system/ocdk-surface-strategy-definer';
-import {OcdkSurfaceInspectionValues} from './core/ocdk-surface-inspection-values';
+import { OcdkSurface } from './ocdk-surface';
+import { OcdkAutoLayoutMeasurements } from './core/ocdk-auto-layout-measurements';
+import { OcdkSurfaceAdapter } from './ocdk-surface-adapter';
+import { OcdkSurfacePoint } from './core/ocdk-surface-point';
+import { OcdkSurfaceDimensions } from './core/ocdk-surface-dimensions';
+import { OcdkSurfaceCorner } from './core/ocdk-surface-corner';
+import { OcdkSurfaceDefaultConfig, ocdkSurfaceCssClasses } from './ocdk-surface-default-config';
+import { OcdkSurfaceCornerBit } from './core/ocdk-surface-corner-bit';
+import { OcdkSurfaceDistance } from './core/ocdk-surface-distance';
+import { OcdkLogger } from '../../logger/ocdk-logger';
+import { OcdkSurfaceNormalizedCorner } from './core/ocdk-surface-normalized-corner';
+import { OcdkSurfaceCornerPointsNormalized } from './core/ocdk-surface-corner-points-normalized';
+import { OcdkSurfaceCornerPoints } from './core/ocdk-surface-corner-points';
+import { OcdkSurfaceInspections } from './core/ocdk-surface-inspections';
+import { OcdkSurfaceAnimationList } from './core/ocdk-surface-animation';
+import { OcdkSurfaceStrategyDefiner } from './core/system/ocdk-surface-strategy-definer';
+import { OcdkSurfaceInspectionValues } from './core/ocdk-surface-inspection-values';
 import {
   OcdkSurfaceStrategyInspectorDetails,
   OcdkSurfaceStrategyInspectorDetailsFulFilled,
 } from './core/system/ocdk-surface-strategy-inspector-details';
-import {OcdkSurfaceStrategyAppliers} from './core/system/ocdk-surface-strategy-appliers';
+import { OcdkSurfaceStrategyAppliers } from './core/system/ocdk-surface-strategy-appliers';
 import {
   OcdkSurfaceStrategyComputeResultPosition,
   isOcdkSurfaceStrategyComputeResultPosition,
 } from './core/system/ocdk-surface-strategy-compute-result-position';
-import {OcdkSurfaceStrategyComputeResult} from './core/system/ocdk-surface-strategy-compute-result';
+import { OcdkSurfaceStrategyComputeResult } from './core/system/ocdk-surface-strategy-compute-result';
 import {
   isOcdkSurfaceStrategyInspectorsAndAppliers,
 } from './core/system/ocdk-surface-strategy-inspectors-and-appliers';
@@ -40,11 +40,11 @@ import {
   OcdkSurfaceStrategyInspectorFulfilled,
   isOcdkSurfaceStrategyInspectorFulfilled,
 } from './core/system/ocdk-surface-strategy-inspector-fulfilled';
-import {OcdkSurfaceStrategyInspectors} from './core/system/ocdk-surface-strategy-inspectors';
-import {OcdkSurfaceOnePositionStrategy} from './core/ocdk-surface-one-position-strategy';
-import {OcdkSurfaceConfig} from './core/ocdk-surface-config';
-import {OcdkSurfaceMaxDimensions} from './core/ocdk-surface-max-dimensions';
-import {OcdkSurfaceStrategyDefinerConfig} from './core/system/ocdk-surface-strategy-definer-config';
+import { OcdkSurfaceStrategyInspectors } from './core/system/ocdk-surface-strategy-inspectors';
+import { OcdkSurfaceOnePositionStrategy } from './core/ocdk-surface-one-position-strategy';
+import { OcdkSurfaceConfig } from './core/ocdk-surface-config';
+import { OcdkSurfaceMaxDimensions } from './core/ocdk-surface-max-dimensions';
+import { OcdkSurfaceStrategyDefinerConfig } from './core/system/ocdk-surface-strategy-definer-config';
 
 export class OcdkSurfaceController<StrategyConfig = any> {
   static totalIds = 0;
@@ -66,7 +66,7 @@ export class OcdkSurfaceController<StrategyConfig = any> {
   // private measurements?: OcdkAutoLayoutMeasurements;
   private openAnimationEndTimerId = 0;
   private strategy: OcdkSurfaceStrategyDefiner<StrategyConfig> = OcdkSurfaceDefaultConfig.POSITION_STRATEGY.strategy;
-  private readonly surfacePosition: OcdkSurfacePoint = {x: 0, y: 0};
+  private readonly surfacePosition: OcdkSurfacePoint = { x: 0, y: 0 };
   // private maxHeight = 0;
   private uniqueId = OcdkSurfaceController.totalIds++;
   // private openBottomBias = 0;
@@ -139,7 +139,7 @@ export class OcdkSurfaceController<StrategyConfig = any> {
   }
 
   init():void {
-    const {OPEN} = ocdkSurfaceCssClasses;
+    const { OPEN } = ocdkSurfaceCssClasses;
 
     if (this.adapter.hasClass(OPEN)) {
       this.isSurfaceOpen = true;
@@ -154,7 +154,7 @@ export class OcdkSurfaceController<StrategyConfig = any> {
   }
 
   open(): void {
-    this.logger.log('[open]', {opened: this.isSurfaceOpen});
+    this.logger.log('[open]', { opened: this.isSurfaceOpen });
     if (this.isSurfaceOpen) {
       return;
     }
@@ -171,7 +171,7 @@ export class OcdkSurfaceController<StrategyConfig = any> {
         this.itemHeight = this.adapter.autoDetectItemHeight();
         this.autoPosition();
         this.adapter.addClass(ocdkSurfaceCssClasses.OPEN);
-        this.logger.log('[open]', {dimensions: this.dimensions});
+        this.logger.log('[open]', { dimensions: this.dimensions });
         const duration = this.config.ANIMATIONS[ this.animation ].TRANSITION_CLOSE_DURATION;
         this.logger.log('[open]', 'remove css in', duration);
         this.openAnimationEndTimerId = window.setTimeout(
@@ -185,7 +185,7 @@ export class OcdkSurfaceController<StrategyConfig = any> {
       this.adapter.addClass(ocdkSurfaceCssClasses.OPEN);
       this.dimensions = this.adapter.getInnerDimensions();
       this.maxDimensions = this.adapter.getMaxDimensions();
-      this.logger.log('[open]', {dimensions: this.dimensions});
+      this.logger.log('[open]', { dimensions: this.dimensions });
       this.autoPosition();
     }
   }
@@ -217,7 +217,7 @@ export class OcdkSurfaceController<StrategyConfig = any> {
       if (animation) {
         this.animation = animation;
       } else {
-        this.logger.warn('[setAnimation]', 'wrong animation name. ignoring.', {name});
+        this.logger.warn('[setAnimation]', 'wrong animation name. ignoring.', { name });
       }
     } else {
       this.resetDefaultAnimation();
@@ -244,7 +244,7 @@ export class OcdkSurfaceController<StrategyConfig = any> {
 
     // Compute measurements for auto position methods reuse.
     const measurements = this.getAutoLayoutMeasurements();
-    this.logger.log('[findOnePosition]', {measurements});
+    this.logger.log('[findOnePosition]', { measurements });
 
     let inspectors: OcdkSurfaceStrategyInspectors<StrategyConfig>;
     let appliers: OcdkSurfaceStrategyAppliers<StrategyConfig>;
@@ -256,7 +256,7 @@ export class OcdkSurfaceController<StrategyConfig = any> {
     appliers = wantedPositionStrategy.STRATEGIES.standard.appliers;
 
     if (isOcdkSurfaceStrategyInspectorsAndAppliers<StrategyConfig>(newPos.positionComputed)) {
-      this.logger.error('[autoposition]', 'positionComputed is a custom fallback at first', {positionComputed: newPos.positionComputed});
+      this.logger.error('[autoposition]', 'positionComputed is a custom fallback at first', { positionComputed: newPos.positionComputed });
       return;
     } else {
       positionComputed = newPos.positionComputed || newPos.wantedPositionStrategy;
@@ -272,15 +272,15 @@ export class OcdkSurfaceController<StrategyConfig = any> {
         appliers = wantedPositionStrategy.STRATEGIES.standard.appliers;
 
         if (isOcdkSurfaceStrategyInspectorsAndAppliers<StrategyConfig>(newPos.positionComputed)) {
-          this.logger.info('[autoposition]', 'positionComputed is a custom fallback at the end', {positionComputed});
+          this.logger.info('[autoposition]', 'positionComputed is a custom fallback at the end', { positionComputed });
           inspectors = newPos.positionComputed.inspectors;
           appliers = newPos.positionComputed.appliers;
           inspections = this.getInspections(inspectors, measurements);
-          this.logger.log('[autoposition]', {inspections});
+          this.logger.log('[autoposition]', { inspections });
         } else {
           positionComputed = newPos.positionComputed || newPos.wantedPositionStrategy;
           if (!positionComputed || (positionComputed.cornerPoints.anchor === wantedPositionStrategy.cornerPoints.anchor && positionComputed.cornerPoints.origin === wantedPositionStrategy.cornerPoints.origin)) {
-            this.logger.info('[autoposition]', 'apply new position', {wantedPositionStrategy});
+            this.logger.info('[autoposition]', 'apply new position', { wantedPositionStrategy });
           } else {
             this.logger.error('[autoposition]', 'no found applicable position strategy');
           }
@@ -291,44 +291,44 @@ export class OcdkSurfaceController<StrategyConfig = any> {
     }
 
     const originCorner = positionComputed.cornerPoints.anchor;
-    this.logger.log('[autoposition]', {computedOriginCorner: originCorner});
+    this.logger.log('[autoposition]', { computedOriginCorner: originCorner });
 
     let maxSurfaceHeight = this.getMaxHeight(appliers, inspections, measurements);
-    this.logger.log('[autoposition]', {maxMenuSurfaceHeight: maxSurfaceHeight});
+    this.logger.log('[autoposition]', { maxMenuSurfaceHeight: maxSurfaceHeight });
 
     if (this.maxDimensions.maxHeight !== null && maxSurfaceHeight >= this.maxDimensions.maxHeight) {
       maxSurfaceHeight = this.maxDimensions.maxHeight;
-      this.logger.info('[autoposition]', 'computed maxHeight oversize the css max-height of the surface. set to the max to the css value', {maxSurfaceHeight});
+      this.logger.info('[autoposition]', 'computed maxHeight oversize the css max-height of the surface. set to the max to the css value', { maxSurfaceHeight });
     }
 
     let maxSurfaceWidth = this.getMaxWidth(appliers, inspections, measurements);
-    this.logger.log('[autoposition]', {maxMenuSurfaceWidth: maxSurfaceWidth});
+    this.logger.log('[autoposition]', { maxMenuSurfaceWidth: maxSurfaceWidth });
 
     if (this.maxDimensions.maxWidth !== null && maxSurfaceWidth >= this.maxDimensions.maxWidth) {
       maxSurfaceWidth = this.maxDimensions.maxWidth;
-      this.logger.info('[autoposition]', 'computed maxWidth oversize the css max-width of the surface. set to the max to the css value', {maxSurfaceWidth});
+      this.logger.info('[autoposition]', 'computed maxWidth oversize the css max-width of the surface. set to the max to the css value', { maxSurfaceWidth });
     }
 
     const verticalAlignment = this.getVerticalAlignment(appliers);
 
     const horizontalAlignment = this.getHorizontalAlignment(appliers);
-    this.logger.log('[autoposition]', {verticalAlignment, horizontalAlignment});
+    this.logger.log('[autoposition]', { verticalAlignment, horizontalAlignment });
 
     const horizontalOffset = this.getHorizontalOffset(appliers, inspections, measurements, maxSurfaceHeight, maxSurfaceWidth);
-    this.logger.log('[autoposition]', {horizontalOffset});
+    this.logger.log('[autoposition]', { horizontalOffset });
 
     const verticalOffset = this.getVerticalOffset(appliers, inspections, measurements, maxSurfaceHeight, maxSurfaceWidth);
-    this.logger.log('[autoposition]', {verticalOffset});
+    this.logger.log('[autoposition]', { verticalOffset });
 
     const position: Partial<OcdkSurfaceDistance> = {
       [ horizontalAlignment ]: horizontalOffset,
       [ verticalAlignment ]: verticalOffset,
     };
 
-    this.logger.log('[autoposition]', 'setTransformOrigin', {horizontalAlignment, verticalAlignment});
+    this.logger.log('[autoposition]', 'setTransformOrigin', { horizontalAlignment, verticalAlignment });
     this.adapter.setTransformOrigin(`${horizontalAlignment} ${verticalAlignment}`);
 
-    this.logger.log('[autoposition]', 'setPosition', {position});
+    this.logger.log('[autoposition]', 'setPosition', { position });
     this.adapter.setPosition(position);
     this.adapter.setMaxHeight(maxSurfaceHeight ? maxSurfaceHeight + 'px' : '');
     this.adapter.setMinHeight(this.itemHeight ? (this.itemHeight * this.MIN_VISIBLE_ITEM) + 'px' : '');
@@ -424,13 +424,13 @@ export class OcdkSurfaceController<StrategyConfig = any> {
     const wantedPositionStrategy = this.findOnePositionStrategy(normalizedCornerPoints);
 
     const inspections = this.getInspections(wantedPositionStrategy.STRATEGIES.standard.inspectors, measurements);
-    this.logger.log('[findOnePosition]', {inspections});
+    this.logger.log('[findOnePosition]', { inspections });
 
     const positionComputed = this.computePosition(wantedPositionStrategy, measurements, inspections, fallbackFrom);
     if (isOcdkSurfaceStrategyComputeResultPosition<StrategyConfig>(positionComputed)) {
       positionComputed.position = wantedPositionStrategy;
     }
-    this.logger.log('[findOnePosition]', {positionComputed});
+    this.logger.log('[findOnePosition]', { positionComputed });
     return {
       wantedPositionStrategy,
       inspections,
@@ -499,7 +499,7 @@ export class OcdkSurfaceController<StrategyConfig = any> {
   }
 
   private getAvailableSpace(inspector: OcdkSurfaceStrategyInspectorDetailsFulFilled<StrategyConfig>, measurements: OcdkAutoLayoutMeasurements): OcdkSurfaceInspectionValues {
-    this.logger.log('[getAvailableSpace]', {inspector});
+    this.logger.log('[getAvailableSpace]', { inspector });
     const opt = {
       config: this.getOverriddenConfig(),
       strategyConfig: this.strategy.getConfig(),

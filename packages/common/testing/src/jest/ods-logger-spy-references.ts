@@ -1,6 +1,6 @@
-import type {GenericLogger} from '../unit/generic-logger';
-import {OdsLoggerMethodSpies} from './ods-logger-method-spies';
-import {OdsComponentForTesting} from '../unit/ods-component-for-testing';
+import type { GenericLogger } from '../unit/generic-logger';
+import { OdsLoggerMethodSpies } from './ods-logger-method-spies';
+import { OdsComponentForTesting } from '../unit/ods-component-for-testing';
 
 /**
  * references of a spied ods logger.

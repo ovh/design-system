@@ -1,10 +1,10 @@
-import type {OcdkSurface} from '@ovhcloud/ods-cdk';
-import {OcdkSurfaceMock} from '@ovhcloud/ods-cdk';
-import {Ods, OdsLogger} from '@ovhcloud/ods-common-core';
-import {OdsClearLoggerSpy, OdsInitializeLoggerSpy, OdsLoggerSpyReferences} from '@ovhcloud/ods-common-testing';
-import {ODS_TOOLTIP_VARIANT} from '../constants/tooltip-variant';
-import {OdsTooltipController} from './controller';
-import {OsdsTooltip} from '../osds-tooltip';
+import type { OcdkSurface } from '@ovhcloud/ods-cdk';
+import { ODS_TOOLTIP_VARIANT } from '../constants/tooltip-variant';
+import { OdsTooltipController } from './controller';
+import { OsdsTooltip } from '../osds-tooltip';
+import { OcdkSurfaceMock } from '@ovhcloud/ods-cdk';
+import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
+import { OdsClearLoggerSpy, OdsInitializeLoggerSpy, OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
 
 class OdsTooltipMock extends OsdsTooltip {
   constructor(attribute: Partial<OsdsTooltip>) {
@@ -53,7 +53,7 @@ describe('ods-tooltip-controller', () => {
 
       it('should do nothing if there is no surface', () => {
         expect(() => {
-          controller.checkForClickOutside({target});
+          controller.checkForClickOutside({ target });
         }).not.toThrow();
         expect(component.surface).toBeUndefined();
       });
@@ -62,7 +62,7 @@ describe('ods-tooltip-controller', () => {
         component.surface = new OcdkSurfaceMock() as unknown as OcdkSurface;
         component.surface!.opened = false;
 
-        controller.checkForClickOutside({target});
+        controller.checkForClickOutside({ target });
 
         expect(component.surface.close).toHaveBeenCalledTimes(0);
       });
@@ -72,7 +72,7 @@ describe('ods-tooltip-controller', () => {
         component.surface!.opened = true;
         component.el.appendChild(target);
 
-        controller.checkForClickOutside({target});
+        controller.checkForClickOutside({ target });
 
         expect(component.surface.close).toHaveBeenCalledTimes(0);
       });
@@ -81,7 +81,7 @@ describe('ods-tooltip-controller', () => {
         component.surface = new OcdkSurfaceMock() as unknown as OcdkSurface;
         component.surface!.opened = true;
 
-        controller.checkForClickOutside({target});
+        controller.checkForClickOutside({ target });
 
         expect(component.surface.close).toHaveBeenCalledTimes(1);
       });
@@ -249,7 +249,7 @@ describe('ods-tooltip-controller', () => {
 
     describe('validateAttributes', () => {
       beforeEach(() => {
-        setup({variant: ODS_TOOLTIP_VARIANT.standard});
+        setup({ variant: ODS_TOOLTIP_VARIANT.standard });
       });
 
       it('should not call console.warn', () => {

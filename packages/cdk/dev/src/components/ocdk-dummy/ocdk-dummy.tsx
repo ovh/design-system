@@ -1,5 +1,5 @@
-import {Component, Element, Host, h} from '@stencil/core';
-import {HTMLStencilElement} from '@stencil/core/internal';
+import { Component, Element, Host, h } from '@stencil/core';
+import { HTMLStencilElement } from '@stencil/core/internal';
 
 @Component({
   tag: 'ocdk-dummy',

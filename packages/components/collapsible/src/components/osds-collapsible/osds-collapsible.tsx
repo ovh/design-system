@@ -1,8 +1,8 @@
-import type {OdsCollapsibleAttribute} from './interfaces/attributes';
-import type {OdsCollapsibleEvent} from './interfaces/events';
-import {Component, Element, Event, EventEmitter, Host, Prop, Watch, h} from '@stencil/core';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
-import {OdsCollapsibleController} from './core/controller';
+import type { OdsCollapsibleAttribute } from './interfaces/attributes';
+import type { OdsCollapsibleEvent } from './interfaces/events';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { OdsCollapsibleController } from './core/controller';
+import { Component, Element, Event, EventEmitter, Host, Prop, Watch, h } from '@stencil/core';
 
 /**
  * @slot (unnamed) - Collapsible content
@@ -16,7 +16,7 @@ export class OsdsCollapsible implements OdsCollapsibleAttribute, OdsCollapsibleE
   controller: OdsCollapsibleController = new OdsCollapsibleController(this);
   @Element() el!: HTMLElement;
 
-  @Prop({reflect: true}) public opened?: boolean = DEFAULT_ATTRIBUTE.opened;
+  @Prop({ reflect: true }) public opened?: boolean = DEFAULT_ATTRIBUTE.opened;
 
   /** @see OdsCollapsibleEvents.odsCollapsibleToggle */
   @Event() odsCollapsibleToggle!: EventEmitter<boolean>;

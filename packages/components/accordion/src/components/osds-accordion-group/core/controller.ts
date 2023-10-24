@@ -1,7 +1,7 @@
-import type {OsdsAccordion} from '../../osds-accordion/osds-accordion';
-import type {OdsAccordionToggleEvent} from '../../osds-accordion/interfaces/events';
-import type {OsdsAccordionGroup} from '../osds-accordion-group';
-import {OdsLogger} from '@ovhcloud/ods-common-core';
+import type { OsdsAccordion } from '../../osds-accordion/osds-accordion';
+import type { OdsAccordionToggleEvent } from '../../osds-accordion/interfaces/events';
+import type { OsdsAccordionGroup } from '../osds-accordion-group';
+import { OdsLogger } from '@ovhcloud/ods-common-core';
 
 class OdsAccordionGroupController {
   private readonly logger = new OdsLogger('OdsAccordionGroupController');
@@ -28,7 +28,7 @@ class OdsAccordionGroupController {
     const odsAccordion = this.component.accordions.find((a) => a === accordion);
     if (!odsAccordion?.disabled) {
       if (event.detail) {
-        this.logger.log(`[ods-accordion-group-${this.component.accordionGroupId}]`, 'expand', {accordion});
+        this.logger.log(`[ods-accordion-group-${this.component.accordionGroupId}]`, 'expand', { accordion });
         this.component.accordions.filter((a) => a !== accordion)
           .forEach((a) => {
             if (!a.disabled) {
@@ -40,13 +40,13 @@ class OdsAccordionGroupController {
   }
 
   registerAccordion(accordion: OsdsAccordion): void {
-    this.logger.log(`[ods-accordion-group-${this.component.accordionGroupId}]`, 'registerAccordion', {accordion});
+    this.logger.log(`[ods-accordion-group-${this.component.accordionGroupId}]`, 'registerAccordion', { accordion });
     this.component.accordions.push(accordion);
     accordion.el.addEventListener('odsAccordionToggle', (e: Event) => this.handleToggle(e as OdsAccordionToggleEvent, accordion));
   }
 
   unRegisterAccordion(accordion: OsdsAccordion): void {
-    this.logger.log(`[ods-accordion-group-${this.component.accordionGroupId}]`, 'unRegisterAccordion', {accordion});
+    this.logger.log(`[ods-accordion-group-${this.component.accordionGroupId}]`, 'unRegisterAccordion', { accordion });
     console.log('this.component.accordions', this.component.accordions.find((a) => a === accordion));
     this.component.accordions.find((a) => a === accordion)?.el.removeEventListener('odsAccordionToggle', (e: Event) => this.handleToggle(e as OdsAccordionToggleEvent, accordion));
     this.component.accordions = this.component.accordions.filter((a) => a !== accordion);

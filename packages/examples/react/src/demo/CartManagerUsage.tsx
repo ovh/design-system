@@ -1,19 +1,19 @@
+import type { OdsCartManagerFooter, OdsCartManagerSection } from '@ovhcloud/ods-component-cart';
+import { translationSystem } from './translationSystem';
 import React from 'react';
-import type {OdsCartManagerFooter, OdsCartManagerSection} from '@ovhcloud/ods-component-cart';
-import {OsdsCartFooter, OsdsCartHeader, OsdsCartManager} from '@ovhcloud/ods-component-cart-react';
+import { OsdsCartFooter, OsdsCartHeader, OsdsCartManager } from '@ovhcloud/ods-component-cart-react';
 
 // each type you import types from ODS, you will need to import the core
-import {Ods, OdsExternalLogger, OdsI18nHook} from '@ovhcloud/ods-common-core';
+import { Ods, OdsExternalLogger, OdsI18nHook } from '@ovhcloud/ods-common-core';
 
 // a translation system of your app
-import {translationSystem} from './translationSystem';
 
 // using the logger embedded inside ODS
 const logger: OdsExternalLogger = new (Ods.instance().logger)('[my react CartManagerUsage]');
 
 // interfacing the translation system with the component
 const i18n: OdsI18nHook = (key, values) => {
-  logger.log('[i18n for component]', 'ask translating key', {key, values});
+  logger.log('[i18n for component]', 'ask translating key', { key, values });
   return translationSystem(key, values);
 };
 
@@ -28,8 +28,8 @@ const sections: OdsCartManagerSection[] = [
     },
     options: [
       // you can use your own system in the data passed to the cart-manager
-      {subhead: 'option1', price: 3000, title: translationSystem('products.title.item1.option1', {gb: '10Tb'})},
-      {subhead: 'option2', price: 3000, title: 'title option2'},
+      { subhead: 'option1', price: 3000, title: translationSystem('products.title.item1.option1', { gb: '10Tb' }) },
+      { subhead: 'option2', price: 3000, title: 'title option2' },
     ],
   },
   {
@@ -39,7 +39,7 @@ const sections: OdsCartManagerSection[] = [
       price: 3000,
     },
     options: [
-      {subhead: 'option3', price: 3000, title: 'title option3'},
+      { subhead: 'option3', price: 3000, title: 'title option3' },
     ],
   },
 ];
@@ -47,7 +47,7 @@ const sections: OdsCartManagerSection[] = [
 // define the footer data of the cart
 const footer: OdsCartManagerFooter = {
   items: [
-    {title: 'test', price: 1000},
+    { title: 'test', price: 1000 },
     {
       total: translationSystem('my-cart.footer.total'),
       info: 'info',

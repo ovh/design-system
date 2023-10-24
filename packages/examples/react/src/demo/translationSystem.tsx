@@ -1,11 +1,11 @@
-import {priceFormatter} from './priceFormatter';
-import {Ods, OdsExternalLogger} from '@ovhcloud/ods-common-core';
-import {translations} from './translations';
+import { priceFormatter } from './priceFormatter';
+import { translations } from './translations';
+import { Ods, OdsExternalLogger } from '@ovhcloud/ods-common-core';
 
 // translation system to replace with the application one
 export const translationSystem = (key: string, values: Record<string, string | number | undefined> = {}) => {
   const logger: OdsExternalLogger = new (Ods.instance().logger)('[translationSystem]');
-  logger.log('translating...', {key, values});
+  logger.log('translating...', { key, values });
   let translation = translations[ key ];
   Object.keys(values)
     .forEach((valueName) => {

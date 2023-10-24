@@ -1,4 +1,4 @@
-import type {OsdsDatepicker} from '../osds-datepicker';
+import type { OsdsDatepicker } from '../osds-datepicker';
 
 /**
  * common controller logic for input component used by the different implementations.
@@ -22,7 +22,7 @@ class OdsDatepickerController {
     if(!this.component.disabled) {
       if (!this.validateValue(newValue)) {
         this.component.value = null;
-        this.component.datepickerInstanceAccessor?.setDate({clear: true});
+        this.component.datepickerInstanceAccessor?.setDate({ clear: true });
         this.component.emitDatepickerValueChange(null, oldValue ? oldValue : null);
       } else {
         this.component.value = newValue;

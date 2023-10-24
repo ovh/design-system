@@ -1,9 +1,9 @@
-import type {OdsButtonAttribute} from '../interfaces/attributes';
-import {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
-import {ODS_BUTTON_SIZE} from './button-size';
-import {ODS_BUTTON_TEXT_ALIGN} from './button-text-align';
-import {ODS_BUTTON_TYPE} from './button-type';
-import {ODS_BUTTON_VARIANT} from './button-variant';
+import type { OdsButtonAttribute } from '../interfaces/attributes';
+import { ODS_BUTTON_SIZE } from './button-size';
+import { ODS_BUTTON_TEXT_ALIGN } from './button-text-align';
+import { ODS_BUTTON_TYPE } from './button-type';
+import { ODS_BUTTON_VARIANT } from './button-variant';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 
 const DEFAULT_ATTRIBUTE: OdsButtonAttribute = Object.freeze({
   circle: false,

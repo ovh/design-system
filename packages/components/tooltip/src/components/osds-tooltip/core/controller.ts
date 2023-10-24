@@ -1,6 +1,6 @@
-import type {OsdsTooltip} from '../osds-tooltip';
-import {OdsLogger, OdsWarnComponentAttribute} from '@ovhcloud/ods-common-core';
-import {ODS_TOOLTIP_VARIANT} from '../constants/tooltip-variant';
+import type { OsdsTooltip } from '../osds-tooltip';
+import { ODS_TOOLTIP_VARIANT } from '../constants/tooltip-variant';
+import { OdsLogger, OdsWarnComponentAttribute } from '@ovhcloud/ods-common-core';
 
 class OdsTooltipController {
   private component: OsdsTooltip;

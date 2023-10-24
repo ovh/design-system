@@ -1,11 +1,11 @@
-import type {OdsHTMLAnchorElementRel, OdsHTMLAnchorElementTarget} from '@ovhcloud/ods-common-core';
-import type {ODS_LINK_REFERRER_POLICY} from './constants/referrer-policies';
-import type {OdsLinkAttribute} from './interfaces/attributes';
-import {Component, Element, Host, Prop, h} from '@stencil/core';
-import {HTMLStencilElement} from '@stencil/core/internal';
-import {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
-import {OdsLinkController} from './core/controller';
+import type { OdsHTMLAnchorElementRel, OdsHTMLAnchorElementTarget } from '@ovhcloud/ods-common-core';
+import type { ODS_LINK_REFERRER_POLICY } from './constants/referrer-policies';
+import type { OdsLinkAttribute } from './interfaces/attributes';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { OdsLinkController } from './core/controller';
+import { Component, Element, Host, Prop, h } from '@stencil/core';
+import { HTMLStencilElement } from '@stencil/core/internal';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 
 /**
  * @slot start - Fixed start link content
@@ -22,31 +22,31 @@ export class OsdsLink implements OdsLinkAttribute {
   @Element() host!: HTMLStencilElement;
 
   /** @see OdsLinkAttributes.color */
-  @Prop({reflect: true}) public color?: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
+  @Prop({ reflect: true }) public color?: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
 
   /** @see OdsLinkAttributes.contrasted */
-  @Prop({reflect: true}) public contrasted?: boolean = DEFAULT_ATTRIBUTE.contrasted;
+  @Prop({ reflect: true }) public contrasted?: boolean = DEFAULT_ATTRIBUTE.contrasted;
 
   /** @see OdsLinkAttributes.disabled */
-  @Prop({reflect: true}) disabled?: boolean = DEFAULT_ATTRIBUTE.disabled;
+  @Prop({ reflect: true }) disabled?: boolean = DEFAULT_ATTRIBUTE.disabled;
 
   /** @see OdsLinkAttributes.download */
   @Prop() public download?: HTMLAnchorElement['download'] = DEFAULT_ATTRIBUTE.download;
 
   /** @see OdsLinkAttributes.href */
-  @Prop({reflect: true}) public href?: string = DEFAULT_ATTRIBUTE.href;
+  @Prop({ reflect: true }) public href?: string = DEFAULT_ATTRIBUTE.href;
 
   /** @see OdsLinkAttributes.referrerpolicy */
-  @Prop({reflect: true}) referrerpolicy?: ODS_LINK_REFERRER_POLICY = DEFAULT_ATTRIBUTE.referrerpolicy;
+  @Prop({ reflect: true }) referrerpolicy?: ODS_LINK_REFERRER_POLICY = DEFAULT_ATTRIBUTE.referrerpolicy;
 
   /** @see OdsLinkAttributes.rel */
-  @Prop({reflect: true}) public rel?: OdsHTMLAnchorElementRel = DEFAULT_ATTRIBUTE.rel;
+  @Prop({ reflect: true }) public rel?: OdsHTMLAnchorElementRel = DEFAULT_ATTRIBUTE.rel;
 
   /** @see OdsLinkAttributes.target */
-  @Prop({reflect: true, mutable: true}) public target?: OdsHTMLAnchorElementTarget = DEFAULT_ATTRIBUTE.target;
+  @Prop({ reflect: true, mutable: true }) public target?: OdsHTMLAnchorElementTarget = DEFAULT_ATTRIBUTE.target;
 
   /** @see OdsLinkAttributes.type */
-  @Prop({reflect: true}) public type?: string = DEFAULT_ATTRIBUTE.type;
+  @Prop({ reflect: true }) public type?: string = DEFAULT_ATTRIBUTE.type;
 
   /**
    * @see OdsLinkBehavior.beforeRender
@@ -60,7 +60,7 @@ export class OsdsLink implements OdsLinkAttribute {
   }
 
   render() {
-    const {download, href, referrerpolicy, rel, target, type} = this;
+    const { download, href, referrerpolicy, rel, target, type } = this;
 
     const content = (
       <span class={'link__text-container'}>

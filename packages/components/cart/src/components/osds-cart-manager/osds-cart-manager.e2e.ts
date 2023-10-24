@@ -1,15 +1,15 @@
-import type {E2EElement, E2EPage} from '@stencil/core/testing';
-import type {OdsCartManagerAttribute, OdsCartManagerItem, OdsCartManagerSection} from './interfaces/attributes';
-import {OdsI18nHook, OdsLogger} from '@ovhcloud/ods-common-core';
-import {newE2EPage} from '@stencil/core/testing';
-import {odsComponentAttributes2StringAttributes, odsStringAttributes2Str} from '@ovhcloud/ods-common-testing';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
+import type { E2EElement, E2EPage } from '@stencil/core/testing';
+import type { OdsCartManagerAttribute, OdsCartManagerItem, OdsCartManagerSection } from './interfaces/attributes';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { OdsI18nHook, OdsLogger } from '@ovhcloud/ods-common-core';
+import { newE2EPage } from '@stencil/core/testing';
+import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 
 const logger = new OdsLogger('osds-cart-manager-e2e');
 
 describe('e2e:osds-cart-manager', () => {
-  const baseAttribute = {sections: []};
-  const odsCartItemA: OdsCartManagerItem = {title: 'item 1', price: 3000, vat: 300};
+  const baseAttribute = { sections: [] };
+  const odsCartItemA: OdsCartManagerItem = { title: 'item 1', price: 3000, vat: 300 };
   let page: E2EPage;
   let el: E2EElement;
   let slotEmpty: E2EElement;
@@ -20,8 +20,8 @@ describe('e2e:osds-cart-manager', () => {
   let myTranslationSystem: (key: string, values: Record<string, string | number | undefined>) => string;
   let i18n: OdsI18nHook;
 
-  async function setup({attributes = {}, html = ''}: { attributes?: Partial<OdsCartManagerAttribute>, html?: string } = {}) {
-    const stringAttributes = odsComponentAttributes2StringAttributes<OdsCartManagerAttribute>({...baseAttribute, ...attributes}, DEFAULT_ATTRIBUTE);
+  async function setup({ attributes = {}, html = '' }: { attributes?: Partial<OdsCartManagerAttribute>, html?: string } = {}) {
+    const stringAttributes = odsComponentAttributes2StringAttributes<OdsCartManagerAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
     await page.setContent(`<osds-cart-manager ${odsStringAttributes2Str(stringAttributes)}>${html}</osds-cart-manager>`);
@@ -49,7 +49,7 @@ describe('e2e:osds-cart-manager', () => {
 
     // translation system to replace with the application one
     myTranslationSystem = (key, values) => {
-      logger.log('[i18nHook] translating...', {key, values});
+      logger.log('[i18nHook] translating...', { key, values });
       let translation = myTranslations[key];
       Object.keys(values)
         .forEach((valueName) => {
@@ -72,7 +72,7 @@ describe('e2e:osds-cart-manager', () => {
   }
 
   it('should render', async() => {
-    await setup({attributes: {}, html: ''});
+    await setup({ attributes: {}, html: '' });
     expect(el).not.toBeNull();
     expect(el).toHaveClass('hydrated');
   });
@@ -128,8 +128,8 @@ describe('e2e:osds-cart-manager', () => {
         expect(quantity).toBe(0);
 
         const sections: OdsCartManagerSection[] = [
-          {item: {...odsCartItemA, title: 'a', price: 3000, product: true}, options: []},
-          {item: {...odsCartItemA, title: 'b', price: 3000}, options: [{title: 'c', price: 600, product: true}]},
+          { item: { ...odsCartItemA, title: 'a', price: 3000, product: true }, options: [] },
+          { item: { ...odsCartItemA, title: 'b', price: 3000 }, options: [{ title: 'c', price: 600, product: true }] },
         ];
         el.setProperty('sections', sections);
 
@@ -151,10 +151,10 @@ describe('e2e:osds-cart-manager', () => {
         expect(price).toBe(0);
 
         const sections: OdsCartManagerSection[] = [
-          {item: {...odsCartItemA, title: 'a', price: 3000, vat: 600, product: true}, options: []},
+          { item: { ...odsCartItemA, title: 'a', price: 3000, vat: 600, product: true }, options: [] },
           {
-            item: {...odsCartItemA, title: 'b', price: 3000, vat: 600},
-            options: [{title: 'c', price: 600, vat: 120}],
+            item: { ...odsCartItemA, title: 'b', price: 3000, vat: 600 },
+            options: [{ title: 'c', price: 600, vat: 120 }],
           },
         ];
         const vatMode = true;

@@ -1,4 +1,4 @@
-import type {HTMLStencilElement} from '@stencil/core/internal';
+import type { HTMLStencilElement } from '@stencil/core/internal';
 import type {
   OdsCartManagerAttribute,
   OdsCartManagerFooter,
@@ -7,15 +7,15 @@ import type {
   OdsCartManagerSection,
   OdsCartManagerTotal,
 } from './interfaces/attributes';
-import type {OdsCartManagerMethod} from './interfaces/methods';
-import type {ODS_CART_SIZE} from '../osds-cart/constants/cart-size';
-import {Component, Element, Host, Method, Prop, Watch, h} from '@stencil/core';
-import {ODS_PERIOD_ISO_CODE, OdsI18n, OdsI18nHook, OdsLogger} from '@ovhcloud/ods-common-core';
-import {ODS_DIVIDER_SIZE} from '@ovhcloud/ods-component-divider';
-import {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
-import {OdsCartManagerController} from './core/controller';
-import {isOdsCartManagerFooter, isOdsCartManagerFooterItem} from './helpers/type';
+import type { OdsCartManagerMethod } from './interfaces/methods';
+import type { ODS_CART_SIZE } from '../osds-cart/constants/cart-size';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { OdsCartManagerController } from './core/controller';
+import { isOdsCartManagerFooter, isOdsCartManagerFooterItem } from './helpers/type';
+import { Component, Element, Host, Method, Prop, Watch, h } from '@stencil/core';
+import { ODS_PERIOD_ISO_CODE, OdsI18n, OdsI18nHook, OdsLogger } from '@ovhcloud/ods-common-core';
+import { ODS_DIVIDER_SIZE } from '@ovhcloud/ods-component-divider';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 
 /**
  *
@@ -32,25 +32,25 @@ export class OsdsCartManager implements OdsCartManagerAttribute, OdsCartManagerM
   odsI18n: OdsI18n;
 
   /** @see OdsCartManagerAttributes.size */
-  @Prop({reflect: true}) public size?: ODS_CART_SIZE = DEFAULT_ATTRIBUTE.size;
+  @Prop({ reflect: true }) public size?: ODS_CART_SIZE = DEFAULT_ATTRIBUTE.size;
 
   /** @see OdsCartManagerAttributes.inline */
-  @Prop({reflect: true}) public inline?: boolean = DEFAULT_ATTRIBUTE.inline;
+  @Prop({ reflect: true }) public inline?: boolean = DEFAULT_ATTRIBUTE.inline;
 
   /** @see OdsCartManagerAttributes.sections */
-  @Prop({reflect: true}) public sections: OdsCartManagerSection[] = DEFAULT_ATTRIBUTE.sections;
+  @Prop({ reflect: true }) public sections: OdsCartManagerSection[] = DEFAULT_ATTRIBUTE.sections;
 
   /** @see OdsCartManagerAttributes.footer */
-  @Prop({reflect: true}) public footer?: OdsCartManagerFooter = DEFAULT_ATTRIBUTE.footer;
+  @Prop({ reflect: true }) public footer?: OdsCartManagerFooter = DEFAULT_ATTRIBUTE.footer;
 
   /** @see OdsCartManagerAttributes.vatMode */
-  @Prop({reflect: true}) vatMode?: boolean = DEFAULT_ATTRIBUTE.vatMode;
+  @Prop({ reflect: true }) vatMode?: boolean = DEFAULT_ATTRIBUTE.vatMode;
 
   /** @see OdsCartManagerAttributes.period */
-  @Prop({reflect: true}) period?: ODS_PERIOD_ISO_CODE = DEFAULT_ATTRIBUTE.period;
+  @Prop({ reflect: true }) period?: ODS_PERIOD_ISO_CODE = DEFAULT_ATTRIBUTE.period;
 
   /** @see OdsCartManagerAttributes.i18n */
-  @Prop({reflect: true}) i18n?: OdsI18nHook = DEFAULT_ATTRIBUTE.i18n;
+  @Prop({ reflect: true }) i18n?: OdsI18nHook = DEFAULT_ATTRIBUTE.i18n;
 
   constructor() {
     this.odsI18n = OdsI18n.get();
@@ -130,7 +130,7 @@ export class OsdsCartManager implements OdsCartManagerAttribute, OdsCartManagerM
       <osds-cart-item-option>
         <span slot="subhead">{option.subhead}</span>
         <span slot="title">{option.title}</span>
-        <span slot="price">{this.odsI18n.handle('cart.price', {price: option.price}, this.i18n)}</span>
+        <span slot="price">{this.odsI18n.handle('cart.price', { price: option.price }, this.i18n)}</span>
         <span slot="extra">{option.extra}</span>
       </osds-cart-item-option>
     );
@@ -161,9 +161,9 @@ export class OsdsCartManager implements OdsCartManagerAttribute, OdsCartManagerM
       <osds-cart-total>
         <span slot="total">{item.total}</span>
         <span
-          slot="info">{this.odsI18n.handle('cart.total.info', {products}, this.i18n)}</span>
-        <span slot="price">{this.odsI18n.handle('cart.price', {price}, this.i18n)}</span>
-        <span slot="extra">{this.odsI18n.handle('cart.extra', {extra}, this.i18n)}</span>
+          slot="info">{this.odsI18n.handle('cart.total.info', { products }, this.i18n)}</span>
+        <span slot="price">{this.odsI18n.handle('cart.price', { price }, this.i18n)}</span>
+        <span slot="extra">{this.odsI18n.handle('cart.extra', { extra }, this.i18n)}</span>
       </osds-cart-total>
     );
   }
@@ -192,7 +192,7 @@ export class OsdsCartManager implements OdsCartManagerAttribute, OdsCartManagerM
       <osds-cart-footer-item>
         <span slot="subhead">{footerItem.subhead}</span>
         <span slot="title">{footerItem.title}</span>
-        <span slot="price">{this.odsI18n.handle('footer.item.price', {price}, this.i18n)}</span>
+        <span slot="price">{this.odsI18n.handle('footer.item.price', { price }, this.i18n)}</span>
         <span slot="extra">{footerItem.extra}</span>
       </osds-cart-footer-item>
     );
@@ -210,7 +210,7 @@ export class OsdsCartManager implements OdsCartManagerAttribute, OdsCartManagerM
   }
 
   render() {
-    const {inline} = this;
+    const { inline } = this;
 
     return (
       <Host>

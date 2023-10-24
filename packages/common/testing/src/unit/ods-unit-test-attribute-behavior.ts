@@ -1,6 +1,6 @@
-import {OdsUnitTestAttributeBehaviorOptions} from './ods-unit-test-attribute-behavior-options';
-import {OdsUnitTestAttributeType} from './ods-unit-test-attribute-type';
-import {odsCamelCase2KebabCase} from '../helpers/case';
+import { OdsUnitTestAttributeBehaviorOptions } from './ods-unit-test-attribute-behavior-options';
+import { OdsUnitTestAttributeType } from './ods-unit-test-attribute-type';
+import { odsCamelCase2KebabCase } from '../helpers/case';
 
 /**
  * test an attribute depending the indicated test type.

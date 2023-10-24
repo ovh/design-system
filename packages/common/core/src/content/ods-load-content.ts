@@ -1,4 +1,4 @@
-import {OdsLogger} from '../logger/ods-logger';
+import { OdsLogger } from '../logger/ods-logger';
 
 /**
  * manage loading of content like svg files.
@@ -113,7 +113,7 @@ export class OdsLoadContent {
             cb();
           }
         },
-        {rootMargin},
+        { rootMargin },
       ));
       io.observe(el);
     } else {
@@ -149,12 +149,12 @@ export class OdsLoadContent {
                 return svgContent;
               });
             }
-            this.logger.error('[getContent]', 'response is not ok', {url});
+            this.logger.error('[getContent]', 'response is not ok', { url });
             this.contentCache.set(url, '');
             return;
           })
           .catch((error) => {
-            this.logger.error('[getContent]', 'request failed', {url});
+            this.logger.error('[getContent]', 'request failed', { url });
             this.contentCache.set(url, '');
             throw error;
           });
@@ -177,7 +177,7 @@ export class OdsLoadContent {
       try {
         sanitized = validator(sanitized);
       } catch (e) {
-        this.logger.error('[sanitize]', 'error calling validator for the loaded content from url', {url});
+        this.logger.error('[sanitize]', 'error calling validator for the loaded content from url', { url });
       }
     });
     return sanitized;

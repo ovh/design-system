@@ -1,7 +1,10 @@
-import type {OdsCheckboxButtonAttribute} from './interfaces/attributes';
-import type {SpecPage} from '@stencil/core/testing';
-import {newSpecPage} from '@stencil/core/testing';
-import {OdsCreateDefaultValidityState} from '@ovhcloud/ods-common-core';
+import type { OdsCheckboxButtonAttribute } from './interfaces/attributes';
+import type { SpecPage } from '@stencil/core/testing';
+import { OsdsCheckboxButton } from './osds-checkbox-button';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { ODS_CHECKBOX_BUTTON_SIZE, ODS_CHECKBOX_BUTTON_SIZES } from './constants/ods-checkbox-button-size';
+import { newSpecPage } from '@stencil/core/testing';
+import { OdsCreateDefaultValidityState } from '@ovhcloud/ods-common-core';
 import {
   OdsMockNativeMethod,
   OdsMockPropertyDescriptor,
@@ -9,10 +12,7 @@ import {
   odsStringAttributes2Str,
   odsUnitTestAttribute,
 } from '@ovhcloud/ods-common-testing';
-import {ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS} from '@ovhcloud/ods-common-theming';
-import {OsdsCheckboxButton} from './osds-checkbox-button';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
-import {ODS_CHECKBOX_BUTTON_SIZE, ODS_CHECKBOX_BUTTON_SIZES} from './constants/ods-checkbox-button-size';
+import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
 
 // mock validity property that does not exist when stencil mock HTMLInputElement
 OdsMockPropertyDescriptor(HTMLInputElement.prototype, 'validity', () => OdsCreateDefaultValidityState());
@@ -24,7 +24,7 @@ describe('spec:osds-checkbox-button', () => {
   let startSlot: HTMLElement | null | undefined;
   let endSlot: HTMLElement | null | undefined;
 
-  async function setup({attributes = {}, html = ''}: { attributes?: Partial<OdsCheckboxButtonAttribute>, html?: string }) {
+  async function setup({ attributes = {}, html = '' }: { attributes?: Partial<OdsCheckboxButtonAttribute>, html?: string }) {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsCheckboxButtonAttribute>(attributes, DEFAULT_ATTRIBUTE);
 
     // mock setCustomValidity method that does not exist when stencil mock HTMLInputElement
@@ -76,12 +76,12 @@ describe('spec:osds-checkbox-button', () => {
         defaultValue: DEFAULT_ATTRIBUTE.color,
         newValue: ODS_THEME_COLOR_INTENT.primary,
         value: ODS_THEME_COLOR_INTENT.default,
-        setup: (color) => setup({attributes: {color}}),
+        setup: (color) => setup({ attributes: { color } }),
         ...config,
       });
       it('should set a color if attribute is added', async() => {
         const randomColor = ODS_THEME_COLOR_INTENTS[ Math.floor(Math.random() * ODS_THEME_COLOR_INTENTS.length) ];
-        await setup({attributes: {color: randomColor}});
+        await setup({ attributes: { color: randomColor } });
         expect(page.root?.color).toBe(randomColor);
       });
     });
@@ -92,7 +92,7 @@ describe('spec:osds-checkbox-button', () => {
         defaultValue: DEFAULT_ATTRIBUTE.checked,
         newValue: true,
         value: false,
-        setup: (checked) => setup({attributes: {checked}}),
+        setup: (checked) => setup({ attributes: { checked } }),
         ...config,
       });
     });
@@ -103,7 +103,7 @@ describe('spec:osds-checkbox-button', () => {
         defaultValue: DEFAULT_ATTRIBUTE.checking,
         newValue: true,
         value: false,
-        setup: (checking) => setup({attributes: {checking}}),
+        setup: (checking) => setup({ attributes: { checking } }),
         ...config,
       });
     });
@@ -114,7 +114,7 @@ describe('spec:osds-checkbox-button', () => {
         defaultValue: DEFAULT_ATTRIBUTE.disabled,
         newValue: true,
         value: false,
-        setup: (disabled) => setup({attributes: {disabled}}),
+        setup: (disabled) => setup({ attributes: { disabled } }),
         ...config,
       });
     });
@@ -125,7 +125,7 @@ describe('spec:osds-checkbox-button', () => {
         defaultValue: DEFAULT_ATTRIBUTE.hasFocus,
         newValue: true,
         value: false,
-        setup: (hasFocus) => setup({attributes: {hasFocus}}),
+        setup: (hasFocus) => setup({ attributes: { hasFocus } }),
         ...config,
       });
     });
@@ -136,7 +136,7 @@ describe('spec:osds-checkbox-button', () => {
         defaultValue: DEFAULT_ATTRIBUTE.indeterminate,
         newValue: true,
         value: false,
-        setup: (indeterminate) => setup({attributes: {indeterminate}}),
+        setup: (indeterminate) => setup({ attributes: { indeterminate } }),
         ...config,
       });
     });
@@ -147,12 +147,12 @@ describe('spec:osds-checkbox-button', () => {
         defaultValue: DEFAULT_ATTRIBUTE.size,
         newValue: ODS_CHECKBOX_BUTTON_SIZE.md,
         value: ODS_CHECKBOX_BUTTON_SIZE.sm,
-        setup: (size) => setup({attributes: {size}}),
+        setup: (size) => setup({ attributes: { size } }),
         ...config,
       });
       it('should set a size if attribute is added', async() => {
         const randomSize = ODS_CHECKBOX_BUTTON_SIZES[Math.floor(Math.random() * ODS_CHECKBOX_BUTTON_SIZES.length)];
-        await setup({attributes: {size: randomSize}});
+        await setup({ attributes: { size: randomSize } });
         expect(instance.size).toBe(randomSize);
       });
     });

@@ -1,13 +1,13 @@
-import {html} from 'lit-html';
-import {unsafeHTML} from 'lit-html/directives/unsafe-html';
-import {ODS_CART_ROUNDED, ODS_CART_ROUNDEDS} from '@ovhcloud/ods-components/cart/';
-import {defineCustomElements} from '@ovhcloud/ods-components/cart/loader';
-import {extractArgTypes, extractStoryParams, getTagAttributes} from '../../../core/componentHTMLUtils';
-import {CartManagerPlay} from './cart.web-components.manager.stories';
+import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
+import { CartManagerPlay } from './cart.web-components.manager.stories';
+import page from './cart.web-component.stories.page.mdx';
+import { html } from 'lit-html';
+import { unsafeHTML } from 'lit-html/directives/unsafe-html';
+import { ODS_CART_ROUNDED, ODS_CART_ROUNDEDS } from '@ovhcloud/ods-components/cart/';
+import { defineCustomElements } from '@ovhcloud/ods-components/cart/loader';
 // @ts-ignore
 import changelog from '@ovhcloud/ods-components/cart/CHANGELOG.md';
 // @ts-ignore
-import page from './cart.web-component.stories.page.mdx';
 
 defineCustomElements();
 
@@ -16,13 +16,13 @@ const storyParams = {
   flex: {
     category: 'General',
     defaultValue: false,
-    control: {type: 'boolean'},
+    control: { type: 'boolean' },
   },
   rounded: {
     category: 'General',
     defaultValue: ODS_CART_ROUNDED.all,
     options: ODS_CART_ROUNDEDS,
-    control: {type: 'select'},
+    control: { type: 'select' },
   },
 };
 
@@ -33,7 +33,7 @@ export default {
     notes: {
       changelog,
     },
-    docs: {page},
+    docs: { page },
     layout: 'fullscreen',
     actions: {
       handles: ['click'],

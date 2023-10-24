@@ -1,17 +1,17 @@
-import type {E2EElement, E2EPage} from '@stencil/core/testing';
-import type {OdsModalAttribute} from './interfaces/attributes';
-import {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
-import {newE2EPage} from '@stencil/core/testing';
-import {odsComponentAttributes2StringAttributes, odsStringAttributes2Str} from '@ovhcloud/ods-common-testing';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
+import type { E2EElement, E2EPage } from '@stencil/core/testing';
+import type { OdsModalAttribute } from './interfaces/attributes';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+import { newE2EPage } from '@stencil/core/testing';
+import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 
 describe('e2e:osds-modal', () => {
-  const baseAttribute = {color: ODS_THEME_COLOR_INTENT.info, dismissible: true, headline: '', masked: false};
+  const baseAttribute = { color: ODS_THEME_COLOR_INTENT.info, dismissible: true, headline: '', masked: false };
   let page: E2EPage;
   let el: E2EElement;
 
-  async function setup({attributes}: { attributes: Partial<OdsModalAttribute> }) {
-    const stringAttributes = odsComponentAttributes2StringAttributes<OdsModalAttribute>({...baseAttribute, ...attributes}, DEFAULT_ATTRIBUTE);
+  async function setup({ attributes }: { attributes: Partial<OdsModalAttribute> }) {
+    const stringAttributes = odsComponentAttributes2StringAttributes<OdsModalAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
     await page.setContent(`<osds-modal ${odsStringAttributes2Str(stringAttributes)}></osds-modal>`);
@@ -26,28 +26,28 @@ describe('e2e:osds-modal', () => {
   }
 
   it('should render', async() => {
-    await setup({attributes: {}});
+    await setup({ attributes: {} });
     expect(el).not.toBeNull();
     expect(el).toHaveClass('hydrated');
   });
 
   describe('attribute:dismissible', () => {
     it('should display a close icon/button', async() => {
-      await setup({attributes: {dismissible: true}});
+      await setup({ attributes: { dismissible: true } });
 
       const closeIcon = await page.find('osds-modal >>> osds-icon[name="close"]');
       expect(closeIcon).not.toBeNull();
     });
 
     it('should not display a close icon/button', async() => {
-      await setup({attributes: {dismissible: false}});
+      await setup({ attributes: { dismissible: false } });
 
       const closeIcon = await page.find('osds-modal >>> osds-icon[name="close"]');
       expect(closeIcon).toBeNull();
     });
 
     it('should set display styling to none when clicked', async() => {
-      await setup({attributes: {dismissible: true}});
+      await setup({ attributes: { dismissible: true } });
 
       const closeIcon = await page.find('osds-modal >>> osds-icon[name="close"]');
       expect(closeIcon).not.toBeNull();
@@ -64,14 +64,14 @@ describe('e2e:osds-modal', () => {
 
   describe('attribute:headline', () => {
     it('should render with a headline', async() => {
-      await setup({attributes: {headline: 'Innovation for Freedom'}});
+      await setup({ attributes: { headline: 'Innovation for Freedom' } });
 
       const headline = await page.find('osds-modal >>> .headline');
       expect(headline.innerText).toBe('Innovation for Freedom');
     });
 
     it('should not render with a headline', async() => {
-      await setup({attributes: {}});
+      await setup({ attributes: {} });
 
       const headline = await page.find('osds-modal >>> .headline');
       expect(headline).toBeNull();
@@ -80,7 +80,7 @@ describe('e2e:osds-modal', () => {
 
   describe('attribute:masked', () => {
     it('should display a modal', async() => {
-      await setup({attributes: {masked: false}});
+      await setup({ attributes: { masked: false } });
 
       const display = await page.evaluate(() => {
         const modal = document.querySelector('osds-modal');
@@ -90,7 +90,7 @@ describe('e2e:osds-modal', () => {
     });
 
     it('should not display a modal', async() => {
-      await setup({attributes: {masked: true}});
+      await setup({ attributes: { masked: true } });
 
       const display = await page.evaluate(() => {
         const modal = document.querySelector('osds-modal');
@@ -102,7 +102,7 @@ describe('e2e:osds-modal', () => {
 
   describe('method:close', () => {
     it('should set hidden to true', async() => {
-      await setup({attributes: {dismissible: true, masked: false}});
+      await setup({ attributes: { dismissible: true, masked: false } });
 
       let masked = await el.getProperty('masked');
       expect(masked).toBe(false);
@@ -115,7 +115,7 @@ describe('e2e:osds-modal', () => {
     });
 
     it('should set display styling to none', async() => {
-      await setup({attributes: {dismissible: true, masked: false}});
+      await setup({ attributes: { dismissible: true, masked: false } });
 
       let masked = await el.getProperty('masked');
       expect(masked).toBe(false);
@@ -136,7 +136,7 @@ describe('e2e:osds-modal', () => {
 
   describe('method:open', () => {
     it('should set hidden to false', async() => {
-      await setup({attributes: {dismissible: true, masked: true}});
+      await setup({ attributes: { dismissible: true, masked: true } });
 
       let masked = await el.getProperty('masked');
       expect(masked).toBe(true);
@@ -149,7 +149,7 @@ describe('e2e:osds-modal', () => {
     });
 
     it('should set display styling to flex', async() => {
-      await setup({attributes: {dismissible: true, masked: true}});
+      await setup({ attributes: { dismissible: true, masked: true } });
 
       let masked = await el.getProperty('masked');
       expect(masked).toBe(true);

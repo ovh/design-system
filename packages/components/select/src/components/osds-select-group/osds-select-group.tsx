@@ -1,7 +1,7 @@
-import type {HTMLStencilElement} from '@stencil/core/internal';
-import type {OsdsSelect} from '../osds-select/osds-select';
-import {Component, Element, Host, State, h} from '@stencil/core';
-import {DEFAULT_ATTRIBUTE} from '../osds-select/constants/default-attributes';
+import type { HTMLStencilElement } from '@stencil/core/internal';
+import type { OsdsSelect } from '../osds-select/osds-select';
+import { DEFAULT_ATTRIBUTE } from '../osds-select/constants/default-attributes';
+import { Component, Element, Host, State, h } from '@stencil/core';
 
 /**
  * @slot (unnamed) - Select group content
@@ -30,7 +30,7 @@ export class OsdsSelectGroup {
   }
 
   render() {
-    const {size} = this;
+    const { size } = this;
 
     return (
       <Host {...{

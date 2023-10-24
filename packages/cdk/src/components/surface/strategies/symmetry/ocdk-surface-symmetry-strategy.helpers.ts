@@ -1,10 +1,10 @@
-import {OcdkLogger} from '../../../../logger/ocdk-logger';
+import { OcdkLogger } from '../../../../logger/ocdk-logger';
 import {
   OcdkSurfaceAvailableSpaceFct2,
   OcdkSurfaceMaxHeightOpt,
   OcdkSurfaceMaxWidthOpt,
 } from '../../ocdk-surface-default-config';
-import {OcdkSurfaceSymmetryConfig} from './ocdk-surface-symmetry-strategy';
+import { OcdkSurfaceSymmetryConfig } from './ocdk-surface-symmetry-strategy';
 
 export class OcdkSurfaceSymmetryStrategyHelpers {
   private static loggerSymmetryBxTx = new OcdkLogger('SYMMETRY STRATEGY BxTx');

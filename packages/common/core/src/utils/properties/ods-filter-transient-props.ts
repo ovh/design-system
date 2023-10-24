@@ -29,5 +29,5 @@ export function odsFilterTransientProps<T extends Record<string, unknown>>(props
       transients[ p ] = (prop ? '' : null) as never;
     }
   });
-  return {...props, ...transients};
+  return { ...props, ...transients };
 }

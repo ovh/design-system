@@ -1,11 +1,11 @@
 jest.mock('@ovhcloud/ods-cdk'); // keep jest.mock before any import
 jest.mock('./core/controller'); // keep jest.mock before any
 
-import type {SpecPage} from '@stencil/core/testing';
-import {ocdkIsSurface} from '@ovhcloud/ods-cdk';
-import {newSpecPage} from '@stencil/core/testing';
-import {OdsPopoverController} from './core/controller';
-import {OsdsPopover} from './osds-popover';
+import type { SpecPage } from '@stencil/core/testing';
+import { OdsPopoverController } from './core/controller';
+import { OsdsPopover } from './osds-popover';
+import { ocdkIsSurface } from '@ovhcloud/ods-cdk';
+import { newSpecPage } from '@stencil/core/testing';
 
 describe('spec:osds-popover', () => {
   let page: SpecPage;
@@ -95,7 +95,7 @@ describe('spec:osds-popover', () => {
 
     it('should call handleTriggerKey of controller', async() => {
       await setup();
-      const key = new KeyboardEvent('keyup', {key : 'Enter'});
+      const key = new KeyboardEvent('keyup', { key : 'Enter' });
       instance.handleTriggerKey(key);
       expect(controller.handleTriggerKey).toHaveBeenCalledTimes(1);
       expect(controller.handleTriggerKey).toHaveBeenCalledWith(key);
@@ -103,7 +103,7 @@ describe('spec:osds-popover', () => {
 
     it('should call handleSurfaceKey of controller', async() => {
       await setup();
-      const key = new KeyboardEvent('keyup', {key : 'Escape'});
+      const key = new KeyboardEvent('keyup', { key : 'Escape' });
       instance.handleSurfaceKey(key);
       expect(controller.handleSurfaceKey).toHaveBeenCalledTimes(1);
       expect(controller.handleSurfaceKey).toHaveBeenCalledWith(key);

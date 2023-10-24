@@ -1,17 +1,17 @@
-import type {E2EElement, E2EPage} from '@stencil/core/testing';
-import type {OdsDividerAttribute} from './interfaces/attributes';
-import {odsComponentAttributes2StringAttributes, odsStringAttributes2Str} from '@ovhcloud/ods-common-testing';
-import {ODS_THEME_COLOR_INTENTS} from '@ovhcloud/ods-common-theming';
-import {newE2EPage} from '@stencil/core/testing';
-import {ODS_DIVIDER_SIZES} from './constants/divider-size';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
+import type { E2EElement, E2EPage } from '@stencil/core/testing';
+import type { OdsDividerAttribute } from './interfaces/attributes';
+import { ODS_DIVIDER_SIZES } from './constants/divider-size';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
+import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
+import { newE2EPage } from '@stencil/core/testing';
 
 
 describe('e2e:osds-divider', () => {
   let page: E2EPage;
   let el: E2EElement;
 
-  async function setup({attributes = {}}: { attributes?: Partial<OdsDividerAttribute>, html?: string }) {
+  async function setup({ attributes = {} }: { attributes?: Partial<OdsDividerAttribute>, html?: string }) {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsDividerAttribute>(attributes, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
@@ -45,11 +45,11 @@ describe('e2e:osds-divider', () => {
 
             await page.evaluate(() => {
               const element = document.querySelector('osds-divider') as HTMLElement;
-              return {width: element.clientWidth, height: element.clientHeight};
+              return { width: element.clientWidth, height: element.clientHeight };
             });
-            await page.setViewport({width: 600, height:600});
-            const results = await page.compareScreenshot('divider', {fullPage: false});
-            expect(results).toMatchScreenshot({allowableMismatchedRatio: 0});
+            await page.setViewport({ width: 600, height:600 });
+            const results = await page.compareScreenshot('divider', { fullPage: false });
+            expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
           });
         });
       });

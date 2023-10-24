@@ -1,7 +1,7 @@
-import type {OdsInputValidityState} from '../interfaces/attributes';
-import type {OsdsInput} from '../osds-input';
-import type {OdsFormControl, OdsInputValue} from '@ovhcloud/ods-common-core';
-import {OdsGetValidityState, OdsLogger, OdsWarnComponentAttribute} from '@ovhcloud/ods-common-core';
+import type { OdsInputValidityState } from '../interfaces/attributes';
+import type { OsdsInput } from '../osds-input';
+import type { OdsFormControl, OdsInputValue } from '@ovhcloud/ods-common-core';
+import { OdsGetValidityState, OdsLogger, OdsWarnComponentAttribute } from '@ovhcloud/ods-common-core';
 
 /**
  * common controller logic for input component used by the different implementations.
@@ -104,7 +104,7 @@ class OdsInputController {
   }
 
   onValueChange(value: OdsInputValue, oldValue?: OdsInputValue): void {
-    this.logger.debug(`[input=${this.component.value}]`, 'value changed', {value, oldValue});
+    this.logger.debug(`[input=${this.component.value}]`, 'value changed', { value, oldValue });
     this.assertValue(value);
     this.component.emitChange(value, oldValue);
   }
@@ -151,7 +151,7 @@ class OdsInputController {
   }
 
   stepUp() {
-    const inputEvent = new CustomEvent('input', {bubbles: true});
+    const inputEvent = new CustomEvent('input', { bubbles: true });
     if (this.component.inputEl) {
       this.component.inputEl.stepUp();
       this.component.inputEl.dispatchEvent(inputEvent);
@@ -159,7 +159,7 @@ class OdsInputController {
   }
 
   stepDown() {
-    const inputEvent = new CustomEvent('input', {bubbles: true});
+    const inputEvent = new CustomEvent('input', { bubbles: true });
     if (this.component.inputEl) {
       this.component.inputEl.stepDown();
       this.component.inputEl.dispatchEvent(inputEvent);

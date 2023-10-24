@@ -1,10 +1,10 @@
-import {Ocdk} from './ocdk';
-import {VERSION} from '../version';
-import {OcdkConfig} from './ocdk-config';
-import {ocdkDefaultConfig} from './ocdk-default-config';
-import {OcdkWindowConfig} from './ocdk-window-config';
-import {OcdkConfigLogging} from './ocdk-config-logging';
-import {OcdkDeepPartial} from '../types/ocdk-deep-partial';
+import { Ocdk } from './ocdk';
+import { VERSION } from '../version';
+import { OcdkConfig } from './ocdk-config';
+import { ocdkDefaultConfig } from './ocdk-default-config';
+import { OcdkWindowConfig } from './ocdk-window-config';
+import { OcdkConfigLogging } from './ocdk-config-logging';
+import { OcdkDeepPartial } from '../types/ocdk-deep-partial';
 
 /**
  * description of all properties globally managed into window by the `OCDK` system.
@@ -70,7 +70,7 @@ function setUpGlobals() {
     const win = window;
 
     // make our object reference, based on default
-    const configObjectRef: OcdkConfig = {logging: {...ocdkDefaultConfig.logging}};
+    const configObjectRef: OcdkConfig = { logging: { ...ocdkDefaultConfig.logging } };
 
     // initialize if needed
     if (!win.ocdk) {

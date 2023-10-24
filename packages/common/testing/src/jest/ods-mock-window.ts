@@ -39,7 +39,7 @@ export function odsMockWindow(setupConfig: any): void {
         !win.ods && (win.ods = setupConfig);
 
         // eslint-disable-next-line no-console
-        console.log('want mocked window id=', win.winId, {setupId: win.ods?.setupId, config: win.ods?.config});
+        console.log('want mocked window id=', win.winId, { setupId: win.ods?.setupId, config: win.ods?.config });
         return win;
       }
       return undefined;

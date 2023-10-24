@@ -43,16 +43,16 @@ function getInterfaces(filteredJSON: DeclarationReflection[]): string[] {
   const res: string[] = [];
 
   filteredJSON
-    .filter(({kindString, children, indexSignature}) => kindString === 'Interface' && (!children || !indexSignature))
-    .forEach(({name, children, indexSignature}) => {
+    .filter(({ kindString, children, indexSignature }) => kindString === 'Interface' && (!children || !indexSignature))
+    .forEach(({ name, children, indexSignature }) => {
       res.push(`\n### ${name}`);
 
       // Find default values
       const defaultValues: Record<string, string> = {};
-      (filteredJSON.find(({kindString: defaultString, name: defaultName}) => {
+      (filteredJSON.find(({ kindString: defaultString, name: defaultName }) => {
         return defaultString === 'Variable' && defaultName.toLowerCase() === `${name.toLowerCase()}defaultdoc`;
       }) as unknown as ReflectionType)
-        ?.declaration.children?.forEach(({name, defaultValue}) => {
+        ?.declaration.children?.forEach(({ name, defaultValue }) => {
           defaultValues[name] = defaultValue?.toString() || '';
         });
 
@@ -72,7 +72,7 @@ function getInterfaces(filteredJSON: DeclarationReflection[]): string[] {
       res.push(
         tableSeparator + ['---', '---', ':---:', '---', '---'].join(`${tableSeparator}`) + tableSeparator,
       );
-      children?.forEach(({name, type, signatures, flags, comment}) => {
+      children?.forEach(({ name, type, signatures, flags, comment }) => {
         const commentString: string = (comment || (signatures && signatures[0]?.comment))?.shortText as unknown as string || '';
         res.push(tableSeparator + [
           `**\`${name}\`**`,
@@ -116,16 +116,16 @@ function getClass(filteredJSON: DeclarationReflection[]): string[] {
       return;
     }
     res.push('#### Methods');
-    methods.forEach(({signatures: methodSignatures, name: methodName}) => {
+    methods.forEach(({ signatures: methodSignatures, name: methodName }) => {
       if (!methodSignatures?.[0]) {
         return;
       }
-      const {parameters, type, comment} = methodSignatures[0];
+      const { parameters, type, comment } = methodSignatures[0];
       const params: string[] = [];
       const parameterSection: string[] = [];
       if (parameters && parameters.length) {
         parameterSection.push('Name | Type | Description \n---|---|---');
-        parameters?.map(({name: paramName, type: paramType, comment: paramComment}) => {
+        parameters?.map(({ name: paramName, type: paramType, comment: paramComment }) => {
           params.push(`\`${paramName}\`: ${printType(paramType)}`);
           parameterSection.push(`**${paramName}** | ${printType(paramType)} | ${paramComment?.shortText || ' '} |`);
         });

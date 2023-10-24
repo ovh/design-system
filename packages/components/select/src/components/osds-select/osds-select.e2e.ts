@@ -1,25 +1,25 @@
-import type {E2EElement, E2EPage} from '@stencil/core/testing';
-import type {OdsSelectAttribute} from './interfaces/attributes';
-import type {OdsSelectValueChangeEventDetail} from './interfaces/events';
-import {newE2EPage} from '@stencil/core/testing';
-import {odsComponentAttributes2StringAttributes, odsStringAttributes2Str} from '@ovhcloud/ods-common-testing';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
-import {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
-import {ODS_SELECT_SIZE} from './constants/select-size';
+import type { E2EElement, E2EPage } from '@stencil/core/testing';
+import type { OdsSelectAttribute } from './interfaces/attributes';
+import type { OdsSelectValueChangeEventDetail } from './interfaces/events';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { ODS_SELECT_SIZE } from './constants/select-size';
+import { newE2EPage } from '@stencil/core/testing';
+import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 
 describe('e2e:osds-select', () => {
-  const baseAttribute = {ariaLabel: null, ariaLabelledby: '', color: ODS_THEME_COLOR_INTENT.primary, defaultValue: '', disabled: false, inline: false, required: false, size: ODS_SELECT_SIZE.md, value: ''};
+  const baseAttribute = { ariaLabel: null, ariaLabelledby: '', color: ODS_THEME_COLOR_INTENT.primary, defaultValue: '', disabled: false, inline: false, required: false, size: ODS_SELECT_SIZE.md, value: '' };
   let page: E2EPage;
   let el: E2EElement;
   let divElement: E2EElement;
   let optionElement: E2EElement;
   let optionDivElement: E2EElement;
 
-  async function setup({attributes = {}, html, onPage}: { attributes?: Partial<OdsSelectAttribute>, html?: string, onPage?: ({page}: { page: E2EPage }) => void } = {}) {
-    const stringAttributes = odsComponentAttributes2StringAttributes<OdsSelectAttribute>({...baseAttribute, ...attributes}, DEFAULT_ATTRIBUTE);
+  async function setup({ attributes = {}, html, onPage }: { attributes?: Partial<OdsSelectAttribute>, html?: string, onPage?: ({ page }: { page: E2EPage }) => void } = {}) {
+    const stringAttributes = odsComponentAttributes2StringAttributes<OdsSelectAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
-    onPage && onPage({page});
+    onPage && onPage({ page });
 
     await page.setContent(`
       <osds-select ${odsStringAttributes2Str(stringAttributes)}>
@@ -59,7 +59,7 @@ describe('e2e:osds-select', () => {
     });
 
     it('should display selectedLabel slot', async() => {
-      await setup({attributes: { }, html: '<span slot="selectedLabel"></span>'});
+      await setup({ attributes: { }, html: '<span slot="selectedLabel"></span>' });
 
       await page.waitForChanges();
 
@@ -69,7 +69,7 @@ describe('e2e:osds-select', () => {
     });
 
     it('should display placeholder slot without value', async() => {
-      await setup({attributes: { }, html: '<span slot="placeholder">Placeholder</span>'});
+      await setup({ attributes: { }, html: '<span slot="placeholder">Placeholder</span>' });
 
       await page.waitForChanges();
 
@@ -80,7 +80,7 @@ describe('e2e:osds-select', () => {
     });
 
     it('should not display placeholder slot because of value', async() => {
-      await setup({attributes: {value: '42'}, html: '<span slot="placeholder">Placeholder</span>'});
+      await setup({ attributes: { value: '42' }, html: '<span slot="placeholder">Placeholder</span>' });
 
       await page.waitForChanges();
 
@@ -90,7 +90,7 @@ describe('e2e:osds-select', () => {
     });
 
     it('should change the selected value text', async() => {
-      await setup({attributes: {value: '42'}});
+      await setup({ attributes: { value: '42' } });
       await page.waitForChanges();
 
       const options = await page.findAll('osds-select > osds-select-option');
@@ -109,7 +109,7 @@ describe('e2e:osds-select', () => {
 
   describe('method:setInputTabindex', () => {
     it('should set inputTabindex to -1', async() => {
-      await setup({attributes: { }});
+      await setup({ attributes: { } });
       await el.callMethod('setInputTabindex', '-1');
       await page.waitForChanges();
       const value = el.getAttribute('tabindex');
@@ -119,7 +119,7 @@ describe('e2e:osds-select', () => {
 
   describe('method:clear', () => {
     it('should clear the value', async() => {
-      await setup({attributes: {value: 3}});
+      await setup({ attributes: { value: 3 } });
       await el.callMethod('clear');
       await page.waitForChanges();
       const value = await el.getProperty('value');
@@ -129,7 +129,7 @@ describe('e2e:osds-select', () => {
 
   describe('method:reset', () => {
     it('should not reset the value because defaultValue is missing', async() => {
-      await setup({attributes: {value: 3, defaultValue: undefined}});
+      await setup({ attributes: { value: 3, defaultValue: undefined } });
       await el.callMethod('reset');
       await page.waitForChanges();
       const value = await el.getProperty('value');
@@ -139,7 +139,7 @@ describe('e2e:osds-select', () => {
 
     it('should set the value to defaultValue', async() => {
       const defaultValue = 6;
-      await setup({attributes: {value: 3, defaultValue}});
+      await setup({ attributes: { value: 3, defaultValue } });
       await el.callMethod('reset');
       await page.waitForChanges();
       const value = await el.getProperty('value');

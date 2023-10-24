@@ -1,9 +1,9 @@
-import type {OsdsButton} from '@ovhcloud/ods-component-button';
-import type {OsdsIcon} from '@ovhcloud/ods-component-icon';
-import type {OsdsCode} from '../osds-code';
-import {ODS_BUTTON_SIZE, ODS_BUTTON_VARIANT} from '@ovhcloud/ods-component-button';
-import {ODS_ICON_NAME, ODS_ICON_SIZE} from '@ovhcloud/ods-component-icon';
-import {OdsLogger} from '@ovhcloud/ods-common-core';
+import type { OsdsButton } from '@ovhcloud/ods-component-button';
+import type { OsdsIcon } from '@ovhcloud/ods-component-icon';
+import type { OsdsCode } from '../osds-code';
+import { ODS_BUTTON_SIZE, ODS_BUTTON_VARIANT } from '@ovhcloud/ods-component-button';
+import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
+import { OdsLogger } from '@ovhcloud/ods-common-core';
 
 /**
  * common controller logic for code component used by the different implementations.

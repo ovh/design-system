@@ -1,14 +1,14 @@
-import {html} from 'lit-html';
-import {unsafeHTML} from 'lit-html/directives/unsafe-html';
-import {defineCustomElements} from '@ovhcloud/ods-components/password/loader';
-import {extractArgTypes, extractStoryParams, getTagAttributes} from '../../../core/componentHTMLUtils';
-import {ODS_INPUT_SIZES} from '@ovhcloud/ods-components/input';
-import {ODS_THEME_COLOR_INTENTS} from '@ovhcloud/ods-common-theming';
-import {DEFAULT_ATTRIBUTE} from '@ovhcloud/ods-components/password/src/components/osds-password/constants/default-attributes';
+import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
+import page from './password.web-component.stories.page.mdx';
+import { html } from 'lit-html';
+import { unsafeHTML } from 'lit-html/directives/unsafe-html';
+import { defineCustomElements } from '@ovhcloud/ods-components/password/loader';
+import { ODS_INPUT_SIZES } from '@ovhcloud/ods-components/input';
+import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
+import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-components/password/src/components/osds-password/constants/default-attributes';
 // @ts-ignore
 import changelog from '@ovhcloud/ods-components/password/CHANGELOG.md';
 // @ts-ignore
-import page from './password.web-component.stories.page.mdx';
 
 defineCustomElements();
 
@@ -18,17 +18,17 @@ const storyParams = {
     category: 'General',
     defaultValue: DEFAULT_ATTRIBUTE.color,
     options: ODS_THEME_COLOR_INTENTS,
-    control: {type: 'select'},
+    control: { type: 'select' },
   },
   size: {
     category: 'General',
     defaultValue: DEFAULT_ATTRIBUTE.size,
     options: ODS_INPUT_SIZES,
-    control: {type: 'select'},
+    control: { type: 'select' },
   },
   value: {
     category: 'Misc',
-    control: {type: 'text'},
+    control: { type: 'text' },
   },
   inline: {
     category: 'Misc',
@@ -73,7 +73,7 @@ const storyParams = {
   forbiddenValues: {
     category: 'Misc',
     defaultValue: [],
-    control: {type: 'array'},
+    control: { type: 'array' },
   },
 };
 
@@ -84,7 +84,7 @@ export default {
     notes: {
       changelog,
     },
-    docs: {page},
+    docs: { page },
   },
   argTypes: extractArgTypes(storyParams),
 };
@@ -144,6 +144,6 @@ const TemplateAll = () => html`
 export const All = TemplateAll.bind({});
 // @ts-ignore
 All.parameters = {
-  controls: {hideNoControlsWarning: true},
-  options: {showPanel: false},
+  controls: { hideNoControlsWarning: true },
+  options: { showPanel: false },
 };

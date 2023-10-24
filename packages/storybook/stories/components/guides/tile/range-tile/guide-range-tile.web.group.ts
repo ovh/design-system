@@ -1,16 +1,16 @@
-import {html} from 'lit-html';
-import {unsafeHTML} from 'lit-html/directives/unsafe-html';
-import {Components as ComponentsRadio} from '@ovhcloud/ods-components/radio/loader';
-import {Components as ComponentsInput} from '@ovhcloud/ods-components/input/loader';
-import {Components as ComponentsRange} from '@ovhcloud/ods-components/range/loader';
-import {Components as ComponentsTile} from '@ovhcloud/ods-components/tile/loader';
+import { html } from 'lit-html';
+import { unsafeHTML } from 'lit-html/directives/unsafe-html';
+import { Components as ComponentsRadio } from '@ovhcloud/ods-components/radio/loader';
+import { Components as ComponentsInput } from '@ovhcloud/ods-components/input/loader';
+import { Components as ComponentsRange } from '@ovhcloud/ods-components/range/loader';
+import { Components as ComponentsTile } from '@ovhcloud/ods-components/tile/loader';
 import {
   OdsErrorStateControl,
   OdsFormControl,
   OdsValidityState,
 } from '@ovhcloud/ods-common-core';
-import {OdsRangeValueChangeEventDetail} from '@ovhcloud/ods-components/range';
-import {OdsInputValueChangeEventDetail} from '@ovhcloud/ods-components/input';
+import { OdsRangeValueChangeEventDetail } from '@ovhcloud/ods-components/range';
+import { OdsInputValueChangeEventDetail } from '@ovhcloud/ods-components/input';
 
 export const RadioGroupTemplate = (args: any) => html`
   <style>
@@ -96,7 +96,7 @@ export const RadioGroupPlay = async() => {
     const inputErrorStepMismatch: HTMLElement | null = document.querySelector('#error-msg-step-mismatch' + index);
     const inputErrorValid: HTMLElement | null = document.querySelector('#error-msg-valid' + index);
 
-    return {radio, input, range, tile, inputErrorValueMissing, inputErrorStepMismatch, inputErrorValid};
+    return { radio, input, range, tile, inputErrorValueMissing, inputErrorStepMismatch, inputErrorValid };
   }
 
   items.forEach((item: RadioItem, index: number) => {
@@ -143,9 +143,9 @@ export const RadioGroupPlay = async() => {
       input.errorStateControl = inputErrorStateControl;
 
       const errorMessagesConnexions: ErrorMessagesConnexion[] = [
-        {el: inputErrorValueMissing, error: 'valueMissing'},
-        {el: inputErrorStepMismatch, error: 'stepMismatch'},
-        {el: inputErrorValid, error: 'invalid'},
+        { el: inputErrorValueMissing, error: 'valueMissing' },
+        { el: inputErrorStepMismatch, error: 'stepMismatch' },
+        { el: inputErrorValid, error: 'invalid' },
       ];
 
       const filteredErrorMessagesConnexions = errorMessagesConnexions

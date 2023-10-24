@@ -1,6 +1,6 @@
-import type {E2EElement, E2EPage} from '@stencil/core/testing';
-import type {OdsTabsAttribute} from './interfaces/attributes';
-import {newE2EPage} from '@stencil/core/testing';
+import type { E2EElement, E2EPage } from '@stencil/core/testing';
+import type { OdsTabsAttribute } from './interfaces/attributes';
+import { newE2EPage } from '@stencil/core/testing';
 
 describe('e2e:osds-tabs', () => {
   let page: E2EPage;
@@ -43,9 +43,9 @@ background: white;
     `;
   }
 
-  async function setup({onPage, html = ''}: { html?: string, attributes?: Partial<OdsTabsAttribute>, onPage?: ({page}: { page: E2EPage }) => void } = {}) {
+  async function setup({ onPage, html = '' }: { html?: string, attributes?: Partial<OdsTabsAttribute>, onPage?: ({ page }: { page: E2EPage }) => void } = {}) {
     page = await newE2EPage();
-    onPage && onPage({page});
+    onPage && onPage({ page });
 
     await page.evaluate(() => {
       const charsetMetaTag = document.createElement('meta');
@@ -139,19 +139,19 @@ background: white;
 
   describe('screenshots', () => {
     [false, true].forEach((contrasted) => {
-      screenshotActions.forEach(({actionDescription, panel, action, disabledScale, testSpacing}) => {
+      screenshotActions.forEach(({ actionDescription, panel, action, disabledScale, testSpacing }) => {
         it(`${contrasted ? 'contrasted' : ''} ${actionDescription}`, async() => {
-          await setup({html: getContent(panel, contrasted, testSpacing, disabledScale)});
+          await setup({ html: getContent(panel, contrasted, testSpacing, disabledScale) });
           await action();
           await page.waitForChanges();
 
           await page.evaluate(() => {
             const element = document.querySelector('osds-tabs') as HTMLElement;
-            return {width: element.clientWidth, height: element.clientHeight};
+            return { width: element.clientWidth, height: element.clientHeight };
           });
-          await page.setViewport({width: 700, height: 200});
-          const results = await page.compareScreenshot('', {fullPage: false, omitBackground: true});
-          expect(results).toMatchScreenshot({allowableMismatchedRatio: 0});
+          await page.setViewport({ width: 700, height: 200 });
+          const results = await page.compareScreenshot('', { fullPage: false, omitBackground: true });
+          expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
         });
       });
     });

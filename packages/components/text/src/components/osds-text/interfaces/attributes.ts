@@ -1,6 +1,6 @@
-import type {ODS_TEXT_COLOR_HUE, ODS_TEXT_COLOR_INTENT} from '../constants/text-color';
-import type {ODS_TEXT_LEVEL} from '../constants/text-level';
-import type {ODS_TEXT_SIZE} from '../constants/text-size';
+import type { ODS_TEXT_COLOR_HUE, ODS_TEXT_COLOR_INTENT } from '../constants/text-color';
+import type { ODS_TEXT_LEVEL } from '../constants/text-level';
+import type { ODS_TEXT_SIZE } from '../constants/text-size';
 
 interface OdsTextAttribute {
   /**

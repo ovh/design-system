@@ -1,13 +1,13 @@
-import type {HTMLStencilElement} from '@stencil/core/internal';
-import type {ODS_CART_ROUNDED} from './constants/cart-rounded';
-import type {ODS_CART_SIZE} from './constants/cart-size';
-import type {OdsCartAttribute} from './interfaces/attributes';
-import type {OdsCartMethod} from './interfaces/methods';
-import type {OsdsCartHeader} from '../osds-cart-header/osds-cart-header';
-import {Component, Element, Host, Method, Prop, State, Watch, forceUpdate, h} from '@stencil/core';
-import {OdsLogger} from '@ovhcloud/ods-common-core';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
-import {OdsCartController} from './core/controller';
+import type { HTMLStencilElement } from '@stencil/core/internal';
+import type { ODS_CART_ROUNDED } from './constants/cart-rounded';
+import type { ODS_CART_SIZE } from './constants/cart-size';
+import type { OdsCartAttribute } from './interfaces/attributes';
+import type { OdsCartMethod } from './interfaces/methods';
+import type { OsdsCartHeader } from '../osds-cart-header/osds-cart-header';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { OdsCartController } from './core/controller';
+import { Component, Element, Host, Method, Prop, State, Watch, forceUpdate, h } from '@stencil/core';
+import { OdsLogger } from '@ovhcloud/ods-common-core';
 
 @Component({
   tag: 'osds-cart',
@@ -22,23 +22,23 @@ export class OsdsCart implements OdsCartAttribute, OdsCartMethod {
   @State() cartHeader: (HTMLStencilElement & OsdsCartHeader) | null = null;
 
   /** @see OdsCartAttributes.size */
-  @Prop({reflect: true}) public size?: ODS_CART_SIZE = DEFAULT_ATTRIBUTE.size;
+  @Prop({ reflect: true }) public size?: ODS_CART_SIZE = DEFAULT_ATTRIBUTE.size;
 
   /** @see OdsCartAttributes.inline */
-  @Prop({reflect: true}) public inline?: boolean = DEFAULT_ATTRIBUTE.inline;
+  @Prop({ reflect: true }) public inline?: boolean = DEFAULT_ATTRIBUTE.inline;
 
   /** @see OdsCartAttributes.rounded */
-  @Prop({reflect: true}) public rounded?: ODS_CART_ROUNDED = DEFAULT_ATTRIBUTE.rounded;
+  @Prop({ reflect: true }) public rounded?: ODS_CART_ROUNDED = DEFAULT_ATTRIBUTE.rounded;
 
   /** @see OdsCartAttributes.collapsed */
-  @Prop({reflect: true}) public collapsed?: boolean = DEFAULT_ATTRIBUTE.collapsed;
+  @Prop({ reflect: true }) public collapsed?: boolean = DEFAULT_ATTRIBUTE.collapsed;
 
   /** @see OdsCartAttributes.collapsible */
-  @Prop({reflect: true}) public collapsible?: boolean = DEFAULT_ATTRIBUTE.collapsible;
+  @Prop({ reflect: true }) public collapsible?: boolean = DEFAULT_ATTRIBUTE.collapsible;
 
   @Watch('collapsible')
   async collapsibleChanged(collapsible: boolean) {
-    this.logger.log('[cart-collapsible]', 'value changed', {collapsible});
+    this.logger.log('[cart-collapsible]', 'value changed', { collapsible });
     await this.controller.updateCartHeaderState();
   }
 

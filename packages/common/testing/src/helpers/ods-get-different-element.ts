@@ -5,5 +5,5 @@
 export function OdsGetDifferentElement<T extends unknown>(list: T[]): { element: T|undefined, elementNext: T|undefined } {
   const index = 0;
   const indexNext = index === (list.length - 1) ? 0 : index + 1;
-  return {element: list[ index ], elementNext: list[ indexNext ]};
+  return { element: list[ index ], elementNext: list[ indexNext ] };
 }

@@ -1,7 +1,7 @@
-import type {OsdsToggle} from '../osds-toggle';
+import type { OsdsToggle } from '../osds-toggle';
 
-import {OdsLogger, OdsWarnComponentAttribute} from '@ovhcloud/ods-common-core';
-import {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
+import { OdsLogger, OdsWarnComponentAttribute } from '@ovhcloud/ods-common-core';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 
 /**
  * common controller logic for toggle component used by the different implementations.
@@ -29,4 +29,4 @@ class OdsToggleController {
   }
 }
 
-export {OdsToggleController};
+export { OdsToggleController };

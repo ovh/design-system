@@ -1,4 +1,4 @@
-import {odsIsStr} from '../types/guard/ods-is-string';
+import { odsIsStr } from '../types/guard/ods-is-string';
 
 /**
  * Validate a svg content.

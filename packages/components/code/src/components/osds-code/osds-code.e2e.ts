@@ -1,16 +1,16 @@
-import type {E2EElement, E2EPage} from '@stencil/core/testing';
-import type {OdsCodeAttribute} from './interfaces/attributes';
-import {newE2EPage} from '@stencil/core/testing';
-import {odsComponentAttributes2StringAttributes, odsStringAttributes2Str} from '@ovhcloud/ods-common-testing';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
-import {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming/src';
-import {ODS_CODE_SIZE} from './constants/code-size';
-import {ODS_BUTTON_VARIANT} from '@ovhcloud/ods-component-button';
-import {ODS_ICON_NAME, ODS_ICON_SIZE} from '@ovhcloud/ods-component-icon';
-import {OdsDeepPartial} from '@ovhcloud/ods-common-core';
+import type { E2EElement, E2EPage } from '@stencil/core/testing';
+import type { OdsCodeAttribute } from './interfaces/attributes';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { ODS_CODE_SIZE } from './constants/code-size';
+import { newE2EPage } from '@stencil/core/testing';
+import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming/src';
+import { ODS_BUTTON_VARIANT } from '@ovhcloud/ods-component-button';
+import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
+import { OdsDeepPartial } from '@ovhcloud/ods-common-core';
 
 describe('e2e:osds-code', () => {
-  const baseAttribute = {color: ODS_THEME_COLOR_INTENT.default, contrasted: false, size: ODS_CODE_SIZE.md};
+  const baseAttribute = { color: ODS_THEME_COLOR_INTENT.default, contrasted: false, size: ODS_CODE_SIZE.md };
   let page: E2EPage;
   let el: E2EElement;
 
@@ -18,7 +18,7 @@ describe('e2e:osds-code', () => {
     attributes = {},
     html = '',
   }: { attributes?: Partial<OdsCodeAttribute>, html?: string } = {}) {
-    const stringAttributes = odsComponentAttributes2StringAttributes<OdsCodeAttribute>({...baseAttribute, ...attributes}, DEFAULT_ATTRIBUTE);
+    const stringAttributes = odsComponentAttributes2StringAttributes<OdsCodeAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
     await page.setContent(`
@@ -42,7 +42,7 @@ describe('e2e:osds-code', () => {
           },
         },
       };
-      Object.defineProperty(navigator, 'clipboard', {value: navigatorMocked.clipboard});
+      Object.defineProperty(navigator, 'clipboard', { value: navigatorMocked.clipboard });
     });
   }
 

@@ -1,4 +1,4 @@
-import type {OdsSearchBarAttribute} from '../interfaces/attributes';
+import type { OdsSearchBarAttribute } from '../interfaces/attributes';
 
 const DEFAULT_ATTRIBUTE: OdsSearchBarAttribute = Object.freeze({
   contrasted: false,

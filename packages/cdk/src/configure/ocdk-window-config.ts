@@ -1,6 +1,6 @@
-import {Ocdk} from './ocdk';
-import {OcdkDeepPartial} from '../types/ocdk-deep-partial';
-import {OcdkConfig} from './ocdk-config';
+import { Ocdk } from './ocdk';
+import { OcdkDeepPartial } from '../types/ocdk-deep-partial';
+import { OcdkConfig } from './ocdk-config';
 
 /**
  * parameters stored in the window globally.

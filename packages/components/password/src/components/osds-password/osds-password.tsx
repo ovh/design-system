@@ -1,10 +1,10 @@
-import type {OdsFormForbiddenValues} from '@ovhcloud/ods-common-core';
-import type {ODS_INPUT_SIZE} from '@ovhcloud/ods-component-input';
-import type {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
-import type {OdsPasswordAttribute} from './interfaces/attributes';
-import {Component, Element, Host, Prop, h} from '@stencil/core';
-import {ODS_INPUT_TYPE} from '@ovhcloud/ods-component-input';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
+import type { OdsFormForbiddenValues } from '@ovhcloud/ods-common-core';
+import type { ODS_INPUT_SIZE } from '@ovhcloud/ods-component-input';
+import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+import type { OdsPasswordAttribute } from './interfaces/attributes';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { Component, Element, Host, Prop, h } from '@stencil/core';
+import { ODS_INPUT_TYPE } from '@ovhcloud/ods-component-input';
 
 /**
  * @slot (unnamed) - Password content
@@ -24,52 +24,52 @@ export class OsdsPassword implements OdsPasswordAttribute {
   @Prop() ariaLabelledby?: string = DEFAULT_ATTRIBUTE.ariaLabelledby;
 
   /** @see OdsPasswordAttributes.clearable */
-  @Prop({reflect: true}) clearable?: boolean = DEFAULT_ATTRIBUTE.clearable;
+  @Prop({ reflect: true }) clearable?: boolean = DEFAULT_ATTRIBUTE.clearable;
 
   /** @see OdsPasswordAttributes.color */
-  @Prop({reflect: true}) color?: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
+  @Prop({ reflect: true }) color?: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
 
   /** @see OdsPasswordAttributes.contrasted */
-  @Prop({reflect: true}) contrasted?: boolean = DEFAULT_ATTRIBUTE.contrasted;
+  @Prop({ reflect: true }) contrasted?: boolean = DEFAULT_ATTRIBUTE.contrasted;
 
   /** @see OdsPasswordAttributes.disabled */
-  @Prop({reflect: true}) disabled?: boolean = DEFAULT_ATTRIBUTE.disabled;
+  @Prop({ reflect: true }) disabled?: boolean = DEFAULT_ATTRIBUTE.disabled;
 
   /** @see OdsPasswordAttributes.error */
-  @Prop({reflect: true}) error?: boolean = DEFAULT_ATTRIBUTE.error;
+  @Prop({ reflect: true }) error?: boolean = DEFAULT_ATTRIBUTE.error;
 
   /** @see OdsPasswordAttributes.forbiddenValues */
-  @Prop({reflect: true}) forbiddenValues: OdsFormForbiddenValues<number> = DEFAULT_ATTRIBUTE.forbiddenValues;
+  @Prop({ reflect: true }) forbiddenValues: OdsFormForbiddenValues<number> = DEFAULT_ATTRIBUTE.forbiddenValues;
 
   /** @see OdsPasswordAttributes.inline */
-  @Prop({reflect: true}) inline?: boolean = DEFAULT_ATTRIBUTE.inline;
+  @Prop({ reflect: true }) inline?: boolean = DEFAULT_ATTRIBUTE.inline;
 
   /** @see OdsPasswordAttributes.label */
-  @Prop({reflect: true}) label?: string = DEFAULT_ATTRIBUTE.label;
+  @Prop({ reflect: true }) label?: string = DEFAULT_ATTRIBUTE.label;
 
   /** @see OdsPasswordAttributes.loading */
-  @Prop({reflect: true}) loading?: boolean = DEFAULT_ATTRIBUTE.loading;
+  @Prop({ reflect: true }) loading?: boolean = DEFAULT_ATTRIBUTE.loading;
 
   /** @see OdsPasswordAttributes.masked */
-  @Prop({reflect: true, mutable: true}) masked?: boolean = DEFAULT_ATTRIBUTE.masked;
+  @Prop({ reflect: true, mutable: true }) masked?: boolean = DEFAULT_ATTRIBUTE.masked;
 
   /** @see OdsPasswordAttributes.name */
-  @Prop({reflect: true}) name?: string = DEFAULT_ATTRIBUTE.name;
+  @Prop({ reflect: true }) name?: string = DEFAULT_ATTRIBUTE.name;
 
   /** @see OdsPasswordAttributes.placeholder */
-  @Prop({reflect: true}) placeholder?: string = DEFAULT_ATTRIBUTE.placeholder;
+  @Prop({ reflect: true }) placeholder?: string = DEFAULT_ATTRIBUTE.placeholder;
 
   /** @see OdsPasswordAttributes.readOnly */
-  @Prop({reflect: true}) readOnly?: boolean = DEFAULT_ATTRIBUTE.readOnly;
+  @Prop({ reflect: true }) readOnly?: boolean = DEFAULT_ATTRIBUTE.readOnly;
 
   /** @see OdsPasswordAttributes.required */
-  @Prop({reflect: true}) required?: boolean = DEFAULT_ATTRIBUTE.required;
+  @Prop({ reflect: true }) required?: boolean = DEFAULT_ATTRIBUTE.required;
 
   /** @see OdsPasswordAttributes.size */
-  @Prop({reflect: true}) size?: ODS_INPUT_SIZE = DEFAULT_ATTRIBUTE.size;
+  @Prop({ reflect: true }) size?: ODS_INPUT_SIZE = DEFAULT_ATTRIBUTE.size;
 
   /** @see OdsInputAttributes.value */
-  @Prop({reflect: true, mutable: true}) value = DEFAULT_ATTRIBUTE.value;
+  @Prop({ reflect: true, mutable: true }) value = DEFAULT_ATTRIBUTE.value;
 
   render() {
     return (

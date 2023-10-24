@@ -1,5 +1,5 @@
-import {OcdkWindow} from '../configure/ocdk-window';
-import {ocdkDefaultConfig} from '../configure/ocdk-default-config';
+import { OcdkWindow } from '../configure/ocdk-window';
+import { ocdkDefaultConfig } from '../configure/ocdk-default-config';
 
 export class OcdkLogger {
   protected prefixColor = 'color: black;background:#ff8c00;font-weight: bold; font-size:10px; padding:2px 6px; border-radius: 5px 0px 0px 5px';

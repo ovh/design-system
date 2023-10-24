@@ -1,5 +1,5 @@
-import type {OsdsSwitchItem} from '../../osds-switch-item/osds-switch-item';
-import type {OsdsSwitch} from '../osds-switch';
+import type { OsdsSwitchItem } from '../../osds-switch-item/osds-switch-item';
+import type { OsdsSwitch } from '../osds-switch';
 
 type HtmlSwitchItem = (OsdsSwitchItem & HTMLElement);
 
@@ -27,7 +27,7 @@ class OdsSwitchController {
       checkedSwitchItem?.classList.add('fadeout-from-right');
       newCheckedSwitchItem?.classList.add('fadein-from-left');
     }
-    return {current: newCheckedSwitchItem, previous: checkedSwitchItem};
+    return { current: newCheckedSwitchItem, previous: checkedSwitchItem };
   }
 
   finCheckedSwitchItem(): HtmlSwitchItem | undefined {

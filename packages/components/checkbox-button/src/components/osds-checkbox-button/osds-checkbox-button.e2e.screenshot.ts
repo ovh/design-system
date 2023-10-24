@@ -1,10 +1,10 @@
-import type {E2EElement, E2EPage} from '@stencil/core/testing';
-import type {OdsCheckboxButtonAttribute} from './interfaces/attributes';
-import {newE2EPage} from '@stencil/core/testing';
-import {ODS_THEME_COLOR_INTENTS} from '@ovhcloud/ods-common-theming';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
-import {ODS_CHECKBOX_BUTTON_SIZES} from './constants/ods-checkbox-button-size';
-import {odsComponentAttributes2StringAttributes, odsStringAttributes2Str} from '@ovhcloud/ods-common-testing';
+import type { E2EElement, E2EPage } from '@stencil/core/testing';
+import type { OdsCheckboxButtonAttribute } from './interfaces/attributes';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { ODS_CHECKBOX_BUTTON_SIZES } from './constants/ods-checkbox-button-size';
+import { newE2EPage } from '@stencil/core/testing';
+import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
+import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 
 describe('e2e:osds-checkbox-button', () => {
   let page: E2EPage;
@@ -15,11 +15,11 @@ describe('e2e:osds-checkbox-button', () => {
     attributes = {},
     html = '',
     onPage,
-  }: { attributes?: Partial<OdsCheckboxButtonAttribute>, html?: string, onPage?: ({page}: { page: E2EPage }) => void } = {}) {
+  }: { attributes?: Partial<OdsCheckboxButtonAttribute>, html?: string, onPage?: ({ page }: { page: E2EPage }) => void } = {}) {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsCheckboxButtonAttribute>(attributes, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
-    onPage && onPage({page});
+    onPage && onPage({ page });
 
     await page.setContent(`
       <osds-checkbox-button ${odsStringAttributes2Str(stringAttributes)}>
@@ -73,7 +73,7 @@ describe('e2e:osds-checkbox-button', () => {
 
   describe('screenshots', () => {
     // Sizes & state (checked, indeterminate)
-    [noAction, checkedAction, indeterminateAction].forEach(({actionDescription, action}) => {
+    [noAction, checkedAction, indeterminateAction].forEach(({ actionDescription, action }) => {
       ODS_CHECKBOX_BUTTON_SIZES.forEach((size) => {
         it([size, actionDescription].join(', '), async() => {
           await setup({
@@ -84,27 +84,27 @@ describe('e2e:osds-checkbox-button', () => {
           el.removeAttribute('checking');
           action();
           await page.waitForChanges();
-          const results = await page.compareScreenshot('checkbox-button', {fullPage: false, omitBackground: true});
-          expect(results).toMatchScreenshot({allowableMismatchedRatio: 0});
+          const results = await page.compareScreenshot('checkbox-button', { fullPage: false, omitBackground: true });
+          expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
         });
       });
     });
 
     // interactive & hasFocus
-    [noAction, hasFocusAction].forEach(({actionDescription, action}) => {
+    [noAction, hasFocusAction].forEach(({ actionDescription, action }) => {
       it([actionDescription, interactiveAction.actionDescription].join(', '), async() => {
         await setup({});
         el.removeAttribute('checking');
         action();
         interactiveAction.action();
         await page.waitForChanges();
-        const results = await page.compareScreenshot('checkbox-button', {fullPage: false, omitBackground: true});
-        expect(results).toMatchScreenshot({allowableMismatchedRatio: 0});
+        const results = await page.compareScreenshot('checkbox-button', { fullPage: false, omitBackground: true });
+        expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
       });
     });
 
     // Colors & state (hover, focus, hasFocus, disabled, checked, indeterminate)
-    screenshotActions.forEach(({actionDescription, action}) => {
+    screenshotActions.forEach(({ actionDescription, action }) => {
       ODS_THEME_COLOR_INTENTS.forEach((color) => {
         it([color, actionDescription].join(', '), async() => {
           await setup({
@@ -115,8 +115,8 @@ describe('e2e:osds-checkbox-button', () => {
           el.removeAttribute('checking');
           action();
           await page.waitForChanges();
-          const results = await page.compareScreenshot('checkbox-button', {fullPage: false, omitBackground: true});
-          expect(results).toMatchScreenshot({allowableMismatchedRatio: 0});
+          const results = await page.compareScreenshot('checkbox-button', { fullPage: false, omitBackground: true });
+          expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
         });
       });
     });

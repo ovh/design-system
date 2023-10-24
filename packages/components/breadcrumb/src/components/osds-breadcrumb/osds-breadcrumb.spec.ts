@@ -1,15 +1,15 @@
 jest.mock('./core/controller'); // keep jest.mock before any
 
-import type {SpecPage} from '@stencil/core/testing';
-import type {OdsBreadcrumbAttribute} from './interfaces/attributes';
-import {odsComponentAttributes2StringAttributes, odsStringAttributes2Str} from '@ovhcloud/ods-common-testing';
-import {newSpecPage} from '@stencil/core/testing';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
-import {OdsBreadcrumbController} from './core/controller';
-import {OsdsBreadcrumb} from './osds-breadcrumb';
+import type { SpecPage } from '@stencil/core/testing';
+import type { OdsBreadcrumbAttribute } from './interfaces/attributes';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { OdsBreadcrumbController } from './core/controller';
+import { OsdsBreadcrumb } from './osds-breadcrumb';
+import { newSpecPage } from '@stencil/core/testing';
+import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 
 describe('spec:osds-breadcrumb', () => {
-  const baseAttribute = {items: []};
+  const baseAttribute = { items: [] };
   let page: SpecPage;
   let root: HTMLElement | undefined;
   let instance: OsdsBreadcrumb;
@@ -19,8 +19,8 @@ describe('spec:osds-breadcrumb', () => {
     jest.clearAllMocks();
   });
 
-  async function setup({attributes = {}}: { attributes?: Partial<OdsBreadcrumbAttribute> } = {}) {
-    const stringAttributes = odsComponentAttributes2StringAttributes<OdsBreadcrumbAttribute>({...baseAttribute, ...attributes}, DEFAULT_ATTRIBUTE);
+  async function setup({ attributes = {} }: { attributes?: Partial<OdsBreadcrumbAttribute> } = {}) {
+    const stringAttributes = odsComponentAttributes2StringAttributes<OdsBreadcrumbAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
 
     page = await newSpecPage({
       components: [OsdsBreadcrumb],

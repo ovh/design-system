@@ -1,4 +1,4 @@
-import {OdsLogger} from '../logger/ods-logger';
+import { OdsLogger } from '../logger/ods-logger';
 const logger = new OdsLogger('GetElementAttributes');
 
 /**

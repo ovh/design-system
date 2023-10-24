@@ -1,17 +1,17 @@
 jest.mock('@ovhcloud/ods-cdk'); // keep jest.mock before any import
 jest.mock('./core/controller'); // keep jest.mock before any
 
-import type {SpecPage} from '@stencil/core/testing';
-import type {OdsClipboardAttribute} from './interfaces/attributes';
-import {ocdkIsSurface} from '@ovhcloud/ods-cdk';
-import {newSpecPage} from '@stencil/core/testing';
-import {odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute} from '@ovhcloud/ods-common-testing';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
-import {OdsClipboardController} from './core/controller';
-import {OsdsClipboard} from './osds-clipboard';
+import type { SpecPage } from '@stencil/core/testing';
+import type { OdsClipboardAttribute } from './interfaces/attributes';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { OdsClipboardController } from './core/controller';
+import { OsdsClipboard } from './osds-clipboard';
+import { ocdkIsSurface } from '@ovhcloud/ods-cdk';
+import { newSpecPage } from '@stencil/core/testing';
+import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 
 describe('spec:osds-clipboard', () => {
-  const baseAttribute = {value: ''};
+  const baseAttribute = { value: '' };
   let page: SpecPage;
   let root: HTMLElement | undefined;
   let instance: OsdsClipboard;
@@ -26,8 +26,8 @@ describe('spec:osds-clipboard', () => {
     (ocdkIsSurface as unknown as jest.Mock).mockImplementation(() => true);
   }
 
-  async function setup({attributes = {}}: { attributes?: Partial<OdsClipboardAttribute> } = {}) {
-    const stringAttributes = odsComponentAttributes2StringAttributes<OdsClipboardAttribute>({...baseAttribute, ...attributes}, DEFAULT_ATTRIBUTE);
+  async function setup({ attributes = {} }: { attributes?: Partial<OdsClipboardAttribute> } = {}) {
+    const stringAttributes = odsComponentAttributes2StringAttributes<OdsClipboardAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
 
     page = await newSpecPage({
       components: [OsdsClipboard],
@@ -77,7 +77,7 @@ describe('spec:osds-clipboard', () => {
   describe('controller', () => {
     it('should call handlerClick of controller', async() => {
       const string = 'test';
-      await setup( {attributes: {value: string}});
+      await setup( { attributes: { value: string } });
       instance.handlerClick();
       expect(controller.handlerClick).toHaveBeenCalledTimes(1);
       expect(controller.handlerClick).toHaveBeenCalledWith(string);
@@ -113,7 +113,7 @@ describe('spec:osds-clipboard', () => {
         defaultValue: DEFAULT_ATTRIBUTE.inline,
         newValue: false,
         value: true,
-        setup: (value) => setup({attributes: {['inline']: value}}),
+        setup: (value) => setup({ attributes: { ['inline']: value } }),
         ...config,
       });
     });
@@ -124,7 +124,7 @@ describe('spec:osds-clipboard', () => {
         defaultValue: DEFAULT_ATTRIBUTE.disabled,
         newValue: false,
         value: true,
-        setup: (value) => setup({attributes: {['disabled']: value}}),
+        setup: (value) => setup({ attributes: { ['disabled']: value } }),
         ...config,
       });
     });
@@ -135,7 +135,7 @@ describe('spec:osds-clipboard', () => {
         defaultValue: DEFAULT_ATTRIBUTE.value,
         newValue: 'value',
         value: 'new value',
-        setup: (value) => setup({attributes: {['value']: value}}),
+        setup: (value) => setup({ attributes: { ['value']: value } }),
         ...config,
       });
     });
@@ -151,7 +151,7 @@ describe('spec:osds-clipboard', () => {
     });
 
     it('should not call handlerClick controller because of disabled', async() => {
-      await setup({attributes: {disabled: true}});
+      await setup({ attributes: { disabled: true } });
       instance.handlerClick();
       input?.click();
 

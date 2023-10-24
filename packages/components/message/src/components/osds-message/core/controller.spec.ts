@@ -1,11 +1,11 @@
-import type {EventEmitter} from '@stencil/core';
-import {OdsClearLoggerSpy, OdsInitializeLoggerSpy, OdsLoggerSpyReferences} from '@ovhcloud/ods-common-testing';
-import {Ods, OdsLogger} from '@ovhcloud/ods-common-core';
-import {OsdsMessage} from '../osds-message';
-import {OdsMessageController} from './controller';
-import {ODS_MESSAGE_TYPE} from '../constants/message-type';
-import {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
-import {DEFAULT_ATTRIBUTE} from '../constants/default-attributes';
+import type { EventEmitter } from '@stencil/core';
+import { OsdsMessage } from '../osds-message';
+import { OdsMessageController } from './controller';
+import { ODS_MESSAGE_TYPE } from '../constants/message-type';
+import { DEFAULT_ATTRIBUTE } from '../constants/default-attributes';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
+import { OdsClearLoggerSpy, OdsInitializeLoggerSpy, OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
 
 class OdsMessageMock extends OsdsMessage {
   constructor(attribute: Partial<OsdsMessage>) {
@@ -67,13 +67,13 @@ describe('spec:ods-message-controller', () => {
 
     describe('methods:setColorForType', () => {
       it('should change default color', async() => {
-        setup({type: ODS_MESSAGE_TYPE.info, color: ODS_THEME_COLOR_INTENT.default});
+        setup({ type: ODS_MESSAGE_TYPE.info, color: ODS_THEME_COLOR_INTENT.default });
         controller.setColorForType(ODS_MESSAGE_TYPE.success);
         expect(component.color).toBe(ODS_THEME_COLOR_INTENT.success);
       });
 
       it('should not change other color', () => {
-        setup({type: ODS_MESSAGE_TYPE.success, color: ODS_THEME_COLOR_INTENT.success});
+        setup({ type: ODS_MESSAGE_TYPE.success, color: ODS_THEME_COLOR_INTENT.success });
         controller.setColorForType(ODS_MESSAGE_TYPE.error);
         expect(component.color).toBe(ODS_THEME_COLOR_INTENT.success);
       });

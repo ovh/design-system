@@ -1,1 +1,1 @@
-export {OsdsCartTotal} from './osds-cart-total';
+export { OsdsCartTotal } from './osds-cart-total';

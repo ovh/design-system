@@ -1,9 +1,9 @@
-import type {SpecPage} from '@stencil/core/testing';
-import {newSpecPage} from '@stencil/core/testing';
-import {OdsLogger} from '@ovhcloud/ods-common-core';
-import {OdsMockNativeMethod, OdsMockPropertyDescriptor} from '@ovhcloud/ods-common-testing';
-import {DEFAULT_VALIDITY_STATE} from '../osds-select/constants/default-validity-state';
-import {OsdsSelectGroup} from './osds-select-group';
+import type { SpecPage } from '@stencil/core/testing';
+import { DEFAULT_VALIDITY_STATE } from '../osds-select/constants/default-validity-state';
+import { OsdsSelectGroup } from './osds-select-group';
+import { newSpecPage } from '@stencil/core/testing';
+import { OdsLogger } from '@ovhcloud/ods-common-core';
+import { OdsMockNativeMethod, OdsMockPropertyDescriptor } from '@ovhcloud/ods-common-testing';
 
 const logger = new OdsLogger('osds-select-group-spec');
 
@@ -20,7 +20,7 @@ describe('spec:osds-select-group', () => {
     jest.clearAllMocks();
   });
 
-  async function setup({html = ''}: { html?: string } = {}) {
+  async function setup({ html = '' }: { html?: string } = {}) {
     // mock setCustomValidity method that does not exist when stencil mock HTMLInputElement
     OdsMockNativeMethod(HTMLInputElement.prototype, 'setCustomValidity', jest.fn());
 

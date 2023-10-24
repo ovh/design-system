@@ -1,19 +1,19 @@
-import type {OcdkSurface} from '@ovhcloud/ods-cdk';
-import type {OdsInputValue, OdsValidityState} from '@ovhcloud/ods-common-core';
-import type {HTMLStencilElement} from '@stencil/core/internal';
-import type {OdsSelectAttribute} from './interfaces/attributes';
-import type {OdsSelectEvent, OdsSelectValueChangeEventDetail} from './interfaces/events';
-import type {OdsSelectMethod} from './interfaces/methods';
-import type {ODS_SELECT_SIZE} from './constants/select-size';
-import type {OsdsSelectOption} from '../osds-select-option/osds-select-option';
-import type {OdsSelectOptionClickEventDetail} from '../osds-select-option/interfaces/events';
-import {Component, Element, Event, EventEmitter, Host, Listen, Method, Prop, State, Watch, h} from '@stencil/core';
-import {ODS_ICON_NAME, ODS_ICON_SIZE} from '@ovhcloud/ods-component-icon';
-import {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
-import {ocdkAssertEventTargetIsNode, ocdkDefineCustomElements, ocdkIsSurface} from '@ovhcloud/ods-cdk';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
-import {DEFAULT_VALIDITY_STATE} from './constants/default-validity-state';
-import {OdsSelectController} from './core/controller';
+import type { OcdkSurface } from '@ovhcloud/ods-cdk';
+import type { OdsInputValue, OdsValidityState } from '@ovhcloud/ods-common-core';
+import type { HTMLStencilElement } from '@stencil/core/internal';
+import type { OdsSelectAttribute } from './interfaces/attributes';
+import type { OdsSelectEvent, OdsSelectValueChangeEventDetail } from './interfaces/events';
+import type { OdsSelectMethod } from './interfaces/methods';
+import type { ODS_SELECT_SIZE } from './constants/select-size';
+import type { OsdsSelectOption } from '../osds-select-option/osds-select-option';
+import type { OdsSelectOptionClickEventDetail } from '../osds-select-option/interfaces/events';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { DEFAULT_VALIDITY_STATE } from './constants/default-validity-state';
+import { OdsSelectController } from './core/controller';
+import { Component, Element, Event, EventEmitter, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
+import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+import { ocdkAssertEventTargetIsNode, ocdkDefineCustomElements, ocdkIsSurface } from '@ovhcloud/ods-cdk';
 
 // define custom elements from CDK
 ocdkDefineCustomElements();
@@ -46,37 +46,37 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
   /**
    * Whether or not the select is open
    */
-  @Prop({reflect: true, mutable: true}) opened = false;
+  @Prop({ reflect: true, mutable: true }) opened = false;
 
   /** @see OdsSelectAttribute.ariaLabel */
-  @Prop({reflect: true}) ariaLabel = DEFAULT_ATTRIBUTE.ariaLabel;
+  @Prop({ reflect: true }) ariaLabel = DEFAULT_ATTRIBUTE.ariaLabel;
 
   /** @see OdsSelectAttribute.ariaLabelledby */
   @Prop() ariaLabelledby = DEFAULT_ATTRIBUTE.ariaLabelledby;
 
   /** @see OdsSelectAttribute.color */
-  @Prop({reflect: true}) color: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
+  @Prop({ reflect: true }) color: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
 
   /** @see OdsSelectAttribute.defaultValue */
-  @Prop({reflect: true}) defaultValue: OdsInputValue = DEFAULT_ATTRIBUTE.defaultValue;
+  @Prop({ reflect: true }) defaultValue: OdsInputValue = DEFAULT_ATTRIBUTE.defaultValue;
 
   /** @see OdsSelectAttribute.disabled */
-  @Prop({reflect: true, mutable: true}) disabled = DEFAULT_ATTRIBUTE.disabled;
+  @Prop({ reflect: true, mutable: true }) disabled = DEFAULT_ATTRIBUTE.disabled;
 
   /** @see OdsSelectAttribute.error */
-  @Prop({reflect: true}) error = DEFAULT_ATTRIBUTE.error;
+  @Prop({ reflect: true }) error = DEFAULT_ATTRIBUTE.error;
 
   /** @see OdsSelectAttribute.inline */
-  @Prop({reflect: true}) inline = DEFAULT_ATTRIBUTE.inline;
+  @Prop({ reflect: true }) inline = DEFAULT_ATTRIBUTE.inline;
 
   /** @see OdsSelectAttribute.required */
-  @Prop({reflect: true, mutable: true}) required = DEFAULT_ATTRIBUTE.required;
+  @Prop({ reflect: true, mutable: true }) required = DEFAULT_ATTRIBUTE.required;
 
   /** @see OdsSelectAttribute.size */
-  @Prop({reflect: true}) size: ODS_SELECT_SIZE = DEFAULT_ATTRIBUTE.size;
+  @Prop({ reflect: true }) size: ODS_SELECT_SIZE = DEFAULT_ATTRIBUTE.size;
 
   /** @see OdsSelectAttribute.value */
-  @Prop({reflect: true, mutable: true}) value: OdsInputValue = DEFAULT_ATTRIBUTE.value;
+  @Prop({ reflect: true, mutable: true }) value: OdsInputValue = DEFAULT_ATTRIBUTE.value;
 
   /** @see OdsSelectEvent.odsValueChange */
   @Event() odsValueChange!: EventEmitter<OdsSelectValueChangeEventDetail>;
@@ -238,7 +238,7 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
   }
 
   // Hide overlay when we click anywhere else in the window.
-  @Listen('click', {target: 'window'})
+  @Listen('click', { target: 'window' })
   checkForClickOutside(ev: any) {
     ocdkAssertEventTargetIsNode(ev.target);
     if (!this.dirty || this.surface?.isClickOutsideSurface(ev)) {
@@ -283,7 +283,7 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
 
   setSelectOptions() {
     this.controller.selectOptions = this.getSelectOptionList();
-    this.controller.selectOptions.forEach((option) => this.observer?.observe(option, {childList: true}));
+    this.controller.selectOptions.forEach((option) => this.observer?.observe(option, { childList: true }));
   }
 
   getSelectOptionList(): (HTMLElement & OsdsSelectOption)[] {

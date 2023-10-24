@@ -1,13 +1,13 @@
 jest.mock('./core/controller'); // keep jest.mock before any
 
-import type {SpecPage} from '@stencil/core/testing';
-import type {OdsToggleAttribute} from './interfaces/attributes';
-import {odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute} from '@ovhcloud/ods-common-testing';
-import {newSpecPage} from '@stencil/core/testing';
-import {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
-import {OdsToggleController} from './core/controller';
-import {OsdsToggle} from './osds-toggle';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
+import type { SpecPage } from '@stencil/core/testing';
+import type { OdsToggleAttribute } from './interfaces/attributes';
+import { OdsToggleController } from './core/controller';
+import { OsdsToggle } from './osds-toggle';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
+import { newSpecPage } from '@stencil/core/testing';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 
 describe('spec:osds-toggle', () => {
   const baseAttributes = {
@@ -27,8 +27,8 @@ describe('spec:osds-toggle', () => {
     jest.clearAllMocks();
   });
 
-  async function setup({attributes = {}}: { attributes?: Partial<OdsToggleAttribute> } = {}) {
-    const stringAttributes = odsComponentAttributes2StringAttributes<OdsToggleAttribute>({...baseAttributes, ...attributes}, DEFAULT_ATTRIBUTE);
+  async function setup({ attributes = {} }: { attributes?: Partial<OdsToggleAttribute> } = {}) {
+    const stringAttributes = odsComponentAttributes2StringAttributes<OdsToggleAttribute>({ ...baseAttributes, ...attributes }, DEFAULT_ATTRIBUTE);
 
     page = await newSpecPage({
       components: [OsdsToggle],
@@ -60,7 +60,7 @@ describe('spec:osds-toggle', () => {
         defaultValue: DEFAULT_ATTRIBUTE.color,
         newValue: ODS_THEME_COLOR_INTENT.primary,
         value: ODS_THEME_COLOR_INTENT.default,
-        setup: (value) => setup({attributes: {['color']: value}}),
+        setup: (value) => setup({ attributes: { ['color']: value } }),
         ...config,
       });
     });
@@ -71,7 +71,7 @@ describe('spec:osds-toggle', () => {
         defaultValue: DEFAULT_ATTRIBUTE.contrasted,
         newValue: false,
         value: true,
-        setup: (value) => setup({attributes: {['contrasted']: value}}),
+        setup: (value) => setup({ attributes: { ['contrasted']: value } }),
         ...config,
       });
     });
@@ -82,7 +82,7 @@ describe('spec:osds-toggle', () => {
         defaultValue: DEFAULT_ATTRIBUTE.checked,
         newValue: false,
         value: true,
-        setup: (value) => setup({attributes: {['checked']: value}}),
+        setup: (value) => setup({ attributes: { ['checked']: value } }),
         ...config,
       });
     });
@@ -93,7 +93,7 @@ describe('spec:osds-toggle', () => {
         defaultValue: DEFAULT_ATTRIBUTE.checking,
         newValue: false,
         value: true,
-        setup: (value) => setup({attributes: {['checking']: value}}),
+        setup: (value) => setup({ attributes: { ['checking']: value } }),
         ...config,
       });
     });
@@ -104,7 +104,7 @@ describe('spec:osds-toggle', () => {
         defaultValue: DEFAULT_ATTRIBUTE.disabled,
         newValue: false,
         value: true,
-        setup: (value) => setup({attributes: {['disabled']: value}}),
+        setup: (value) => setup({ attributes: { ['disabled']: value } }),
         ...config,
       });
     });
@@ -115,7 +115,7 @@ describe('spec:osds-toggle', () => {
         defaultValue: DEFAULT_ATTRIBUTE.interactive,
         newValue: true,
         value: false,
-        setup: (value) => setup({attributes: {['interactive']: value}}),
+        setup: (value) => setup({ attributes: { ['interactive']: value } }),
         ...config,
       });
     });

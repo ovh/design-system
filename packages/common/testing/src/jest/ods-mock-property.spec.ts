@@ -1,4 +1,4 @@
-import {odsMockProperty, odsUnmockProperty} from './ods-mock-property';
+import { odsMockProperty, odsUnmockProperty } from './ods-mock-property';
 
 describe('spec:ods-mock-property', () => {
   class MyClassA {

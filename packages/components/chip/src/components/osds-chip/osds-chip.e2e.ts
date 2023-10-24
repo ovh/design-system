@@ -1,14 +1,14 @@
-import type {E2EElement, E2EPage} from '@stencil/core/testing';
-import type {OdsChipAttribute} from './interfaces/attributes';
-import {newE2EPage} from '@stencil/core/testing';
-import {odsComponentAttributes2StringAttributes, odsStringAttributes2Str} from '@ovhcloud/ods-common-testing';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
+import type { E2EElement, E2EPage } from '@stencil/core/testing';
+import type { OdsChipAttribute } from './interfaces/attributes';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { newE2EPage } from '@stencil/core/testing';
+import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 
 describe('e2e:osds-chip', () => {
   let page: E2EPage;
   let el: E2EElement;
 
-  async function setup({attributes}: { attributes: Partial<OdsChipAttribute> }) {
+  async function setup({ attributes }: { attributes: Partial<OdsChipAttribute> }) {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsChipAttribute>(attributes, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
@@ -19,7 +19,7 @@ describe('e2e:osds-chip', () => {
   }
 
   it('should render', async() => {
-    await setup({attributes: {}});
+    await setup({ attributes: {} });
     expect(el).not.toBeNull();
     expect(el).toHaveClass('hydrated');
   });

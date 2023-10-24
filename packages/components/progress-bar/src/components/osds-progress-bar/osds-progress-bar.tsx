@@ -1,7 +1,7 @@
-import type {OdsProgressBarAttribute} from './interfaces/attributes';
-import {Component, Host, Prop, h} from '@stencil/core';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
-import {OdsProgressBarController} from './core/controller';
+import type { OdsProgressBarAttribute } from './interfaces/attributes';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { OdsProgressBarController } from './core/controller';
+import { Component, Host, Prop, h } from '@stencil/core';
 
 /**
  * @slot end - display content aside the progress bar
@@ -15,10 +15,10 @@ export class OsdsProgressBar implements OdsProgressBarAttribute {
   controller: OdsProgressBarController = new OdsProgressBarController(this);
 
   /** @see OdsProgressBarAttributes.max */
-  @Prop({reflect: true}) public max? = DEFAULT_ATTRIBUTE.max;
+  @Prop({ reflect: true }) public max? = DEFAULT_ATTRIBUTE.max;
 
   /** @see OdsProgressBarAttributes.value */
-  @Prop({reflect: true}) public value? = DEFAULT_ATTRIBUTE.value;
+  @Prop({ reflect: true }) public value? = DEFAULT_ATTRIBUTE.value;
 
   /**
    * @see OdsProgressBarBehavior.beforeRender

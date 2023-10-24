@@ -1,10 +1,10 @@
-import type {HTMLStencilElement} from '@stencil/core/internal';
-import type {OdsCartHeaderAttribute} from './interfaces/attributes';
-import type {OdsCartHeaderMethod} from './interfaces/methods';
-import type {OsdsCart} from '../osds-cart/osds-cart';
-import {Component, Element, Host, Method, Prop, State, Watch, forceUpdate, h} from '@stencil/core';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
-import {OdsCartHeaderController} from './core/controller';
+import type { HTMLStencilElement } from '@stencil/core/internal';
+import type { OdsCartHeaderAttribute } from './interfaces/attributes';
+import type { OdsCartHeaderMethod } from './interfaces/methods';
+import type { OsdsCart } from '../osds-cart/osds-cart';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { OdsCartHeaderController } from './core/controller';
+import { Component, Element, Host, Method, Prop, State, Watch, forceUpdate, h } from '@stencil/core';
 
 @Component({
   tag: 'osds-cart-header',
@@ -18,7 +18,7 @@ export class OsdsCartHeader implements OdsCartHeaderAttribute, OdsCartHeaderMeth
   @Element() el!: HTMLStencilElement;
 
   /** @see OdsCartHeaderAttributes.headerTitle */
-  @Prop({reflect: true}) headerTitle?: string = DEFAULT_ATTRIBUTE.headerTitle;
+  @Prop({ reflect: true }) headerTitle?: string = DEFAULT_ATTRIBUTE.headerTitle;
 
   @Watch('headerTitle')
   validateHeaderTitle(): void {

@@ -1,14 +1,14 @@
-import {html} from 'lit-html';
-import {unsafeHTML} from 'lit-html/directives/unsafe-html';
-import {defineCustomElements} from '@ovhcloud/ods-components/radio-button/loader';
-import {ODS_RADIO_BUTTON_SIZES} from '@ovhcloud/ods-components/radio-button';
-import {ODS_THEME_COLOR_INTENTS} from '@ovhcloud/ods-common-theming';
-import {DEFAULT_ATTRIBUTE} from '@ovhcloud/ods-components/radio-button/src/components/osds-radio-button/constants/default-attributes';
-import {createComponentTable, extractArgTypes, extractStoryParams, getTagAttributes} from '../../../core/componentHTMLUtils';
+import { createComponentTable, extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
+import page from './radio-button.web-component.stories.page.mdx';
+import { html } from 'lit-html';
+import { unsafeHTML } from 'lit-html/directives/unsafe-html';
+import { defineCustomElements } from '@ovhcloud/ods-components/radio-button/loader';
+import { ODS_RADIO_BUTTON_SIZES } from '@ovhcloud/ods-components/radio-button';
+import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
+import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-components/radio-button/src/components/osds-radio-button/constants/default-attributes';
 // @ts-ignore
 import changelog from '@ovhcloud/ods-components/radio-button/CHANGELOG.md';
 // @ts-ignore
-import page from './radio-button.web-component.stories.page.mdx';
 
 defineCustomElements();
 
@@ -26,13 +26,13 @@ const storyParams = {
     category: 'General',
     defaultValue: DEFAULT_ATTRIBUTE.color,
     options: ODS_THEME_COLOR_INTENTS,
-    control: {type: 'select'},
+    control: { type: 'select' },
   },
   size: {
     category: 'General',
     defaultValue: DEFAULT_ATTRIBUTE.size,
     options: ODS_RADIO_BUTTON_SIZES,
-    control: {type: 'select'},
+    control: { type: 'select' },
   },
   start: {
     category: 'Slot',
@@ -63,7 +63,7 @@ export default {
     notes: {
       changelog,
     },
-    docs: {page},
+    docs: { page },
   },
   argTypes: extractArgTypes(storyParams),
 };
@@ -148,8 +148,8 @@ const TemplateAll = () => html`
 <h1>Sizes & Colors</h1>
 ${unsafeHTML(createComponentTable(
     defaultTag,
-    {size: ODS_RADIO_BUTTON_SIZES},
-    {color: ODS_THEME_COLOR_INTENTS},
+    { size: ODS_RADIO_BUTTON_SIZES },
+    { color: ODS_THEME_COLOR_INTENTS },
     defaultContent,
     {
       checked: true,
@@ -159,6 +159,6 @@ ${unsafeHTML(createComponentTable(
 `;
 export const All = TemplateAll.bind({});
 All.parameters = {
-  controls: {hideNoControlsWarning: true},
-  options: {showPanel: false},
+  controls: { hideNoControlsWarning: true },
+  options: { showPanel: false },
 };

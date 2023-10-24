@@ -1,4 +1,4 @@
-import type {OsdsPopover} from '../osds-popover';
+import type { OsdsPopover } from '../osds-popover';
 
 class OdsPopoverController {
   private component: OsdsPopover;

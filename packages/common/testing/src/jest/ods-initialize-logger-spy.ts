@@ -1,8 +1,8 @@
-import type {GenericLogger} from '../unit/generic-logger';
-import {odsMockProperty} from './ods-mock-property';
-import {OdsComponentForTesting} from '../unit/ods-component-for-testing';
-import {OdsSpyOnLoggerInstance} from './ods-spy-on-logger-instance';
-import {OdsLoggerSpyReferences} from './ods-logger-spy-references';
+import type { GenericLogger } from '../unit/generic-logger';
+import { odsMockProperty } from './ods-mock-property';
+import { OdsComponentForTesting } from '../unit/ods-component-for-testing';
+import { OdsSpyOnLoggerInstance } from './ods-spy-on-logger-instance';
+import { OdsLoggerSpyReferences } from './ods-logger-spy-references';
 
 /**
  * initialize the spy for the ods logger.

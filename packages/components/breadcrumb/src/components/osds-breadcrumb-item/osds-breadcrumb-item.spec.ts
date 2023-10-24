@@ -1,12 +1,12 @@
-import type {SpecPage} from '@stencil/core/testing';
-import type {OdsBreadcrumbItemAttribute} from './interfaces/attributes';
-import {odsComponentAttributes2StringAttributes, odsStringAttributes2Str} from '@ovhcloud/ods-common-testing';
-import {newSpecPage} from '@stencil/core/testing';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
-import {OsdsBreadcrumbItem} from './osds-breadcrumb-item';
+import type { SpecPage } from '@stencil/core/testing';
+import type { OdsBreadcrumbItemAttribute } from './interfaces/attributes';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { OsdsBreadcrumbItem } from './osds-breadcrumb-item';
+import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
+import { newSpecPage } from '@stencil/core/testing';
 
 describe('spec:osds-breadcrumb-item', () => {
-  const baseAttribute = {href: '', isCollapsed: false, isExpandableItem: false, isLast: false};
+  const baseAttribute = { href: '', isCollapsed: false, isExpandableItem: false, isLast: false };
   let page: SpecPage;
   let root: HTMLElement | undefined;
   let instance: OsdsBreadcrumbItem;
@@ -15,8 +15,8 @@ describe('spec:osds-breadcrumb-item', () => {
     jest.clearAllMocks();
   });
 
-  async function setup({attributes = {}}: { attributes?: Partial<OdsBreadcrumbItemAttribute> } = {}) {
-    const stringAttributes = odsComponentAttributes2StringAttributes<OdsBreadcrumbItemAttribute>({...baseAttribute, ...attributes}, DEFAULT_ATTRIBUTE);
+  async function setup({ attributes = {} }: { attributes?: Partial<OdsBreadcrumbItemAttribute> } = {}) {
+    const stringAttributes = odsComponentAttributes2StringAttributes<OdsBreadcrumbItemAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
 
     page = await newSpecPage({
       components: [OsdsBreadcrumbItem],

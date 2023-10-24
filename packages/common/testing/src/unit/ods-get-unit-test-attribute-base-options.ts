@@ -1,6 +1,6 @@
-import {OdsUnitTestAttributeOptions} from './ods-unit-test-attribute-options';
-import {OdsUnitTestAttributeType} from './ods-unit-test-attribute-type';
-import {OdsGetDifferentElement} from '../helpers/ods-get-different-element';
+import { OdsUnitTestAttributeOptions } from './ods-unit-test-attribute-options';
+import { OdsUnitTestAttributeType } from './ods-unit-test-attribute-type';
+import { OdsGetDifferentElement } from '../helpers/ods-get-different-element';
 
 export interface odsGetUnitTestAttributeBaseOptionsArgs<InstanceAttributes,
   Name extends keyof InstanceAttributes,

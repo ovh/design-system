@@ -1,11 +1,11 @@
-import type {E2EElement, E2EPage} from '@stencil/core/testing';
-import {newE2EPage} from '@stencil/core/testing';
+import type { E2EElement, E2EPage } from '@stencil/core/testing';
+import { newE2EPage } from '@stencil/core/testing';
 
 describe('e2e:osds-accordion-group', () => {
   let page: E2EPage;
   let el: E2EElement;
 
-  async function setup({html = ''}: { html?: string } = {}) {
+  async function setup({ html = '' }: { html?: string } = {}) {
     page = await newE2EPage();
     await page.setContent(`
       <osds-accordion-group>
@@ -29,14 +29,14 @@ describe('e2e:osds-accordion-group', () => {
 
   describe('accordions', () => {
     it('should add new accordion', async() => {
-      await setup({html: '<osds-accordion></osds-accordion>'});
+      await setup({ html: '<osds-accordion></osds-accordion>' });
       const accordion = await el.find('osds-accordion');
       expect(accordion).not.toBeNull();
     });
 
     it('should close opened accordions on toggle', async() => {
       let firstOpened: string;
-      await setup({html: '<osds-accordion opened></osds-accordion><osds-accordion></osds-accordion>'});
+      await setup({ html: '<osds-accordion opened></osds-accordion><osds-accordion></osds-accordion>' });
 
       const accordions = await el.findAll('osds-accordion');
       firstOpened = await accordions[0].getProperty('opened');

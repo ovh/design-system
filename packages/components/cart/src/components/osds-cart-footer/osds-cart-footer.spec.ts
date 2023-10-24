@@ -1,6 +1,6 @@
-import type {SpecPage} from '@stencil/core/testing';
-import {newSpecPage} from '@stencil/core/testing';
-import {OsdsCartFooter} from './osds-cart-footer';
+import type { SpecPage } from '@stencil/core/testing';
+import { OsdsCartFooter } from './osds-cart-footer';
+import { newSpecPage } from '@stencil/core/testing';
 
 describe('spec:osds-cart-footer', () => {
   let page: SpecPage;

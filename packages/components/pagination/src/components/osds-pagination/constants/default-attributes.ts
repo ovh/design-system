@@ -1,4 +1,4 @@
-import type {OdsPaginationAttribute} from '../interfaces/attributes';
+import type { OdsPaginationAttribute } from '../interfaces/attributes';
 
 const DEFAULT_ATTRIBUTE: OdsPaginationAttribute = Object.freeze({
   current: 1,

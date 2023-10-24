@@ -1,6 +1,6 @@
-import {OdsLogger} from '@ovhcloud/ods-common-core';
-import {SpecPage, newSpecPage} from '@stencil/core/testing';
-import {OsdsMenuGroup} from './osds-menu-group';
+import { OsdsMenuGroup } from './osds-menu-group';
+import { OdsLogger } from '@ovhcloud/ods-common-core';
+import { SpecPage, newSpecPage } from '@stencil/core/testing';
 
 const logger = new OdsLogger('osds-menu-spec');
 
@@ -15,7 +15,7 @@ describe('spec:osds-menu', () => {
     menuGroupContent = page.root.shadowRoot.querySelector('slot:not([name])');
   }
 
-  async function setup({html = ''}: { html?: string }) {
+  async function setup({ html = '' }: { html?: string }) {
     page = await newSpecPage({
       components: [OsdsMenuGroup],
       html: `<osds-menu-group>${html}</osds-menu-group>`,
@@ -33,7 +33,7 @@ describe('spec:osds-menu', () => {
 
   describe('contents', () => {
     it('should have an unnamed slot', async() => {
-      await setup({html: ''});
+      await setup({ html: '' });
       expect(menuGroupContent).toBeTruthy();
     });
   });

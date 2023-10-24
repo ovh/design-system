@@ -9,7 +9,7 @@
  */
 const fs = require('fs');
 const path = require('path');
-const {convertJsonToMarkdown} = require('@ovhcloud/ods-common-core');
+const { convertJsonToMarkdown } = require('@ovhcloud/ods-common-core');
 const isMultiple = process.argv[2]?.includes('multiple');
 // Carefull, this is the path where the script was executed
 const packageJson = require(path.resolve('package.json'));
@@ -27,7 +27,7 @@ function createSpecMd(component = '') {
   const destPath = `../../components${pathPrefix ? `-${pathPrefix}` : ''}`;
   const dir = path.resolve(destPath, rootComponent, 'documentation/specifications', component);
 
-  fs.mkdirSync(dir, {recursive: true});
+  fs.mkdirSync(dir, { recursive: true });
 
   if(typedocJson.children) {
     fs.writeFileSync(path.resolve(dir, 'spec.md'), convertJsonToMarkdown(typedocJson.children), (err) => {

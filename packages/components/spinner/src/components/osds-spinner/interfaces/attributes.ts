@@ -1,5 +1,5 @@
-import type {ODS_SPINNER_MODE} from '../constants/spinner-mode';
-import type {ODS_SPINNER_SIZE} from '../constants/spinner-size';
+import type { ODS_SPINNER_MODE } from '../constants/spinner-mode';
+import type { ODS_SPINNER_SIZE } from '../constants/spinner-size';
 
 interface OdsSpinnerAttribute {
   /** contrasted or not: see component principles */

@@ -1,13 +1,13 @@
-import type {HTMLStencilElement} from '@stencil/core/internal';
-import type {OdsAccordionAttribute} from './interfaces/attributes';
-import type {ODS_ACCORDION_SIZE} from './constants/accordion-size';
-import type {OdsAccordionEvent} from './interfaces/events';
-import type {OsdsAccordionGroup} from '../osds-accordion-group/osds-accordion-group';
-import {Component, Element, Event, EventEmitter, Host, Prop, Watch, h} from '@stencil/core';
-import {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
-import {ODS_ICON_NAME, ODS_ICON_SIZE} from '@ovhcloud/ods-component-icon';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
-import {OdsAccordionController} from './core/controller';
+import type { HTMLStencilElement } from '@stencil/core/internal';
+import type { OdsAccordionAttribute } from './interfaces/attributes';
+import type { ODS_ACCORDION_SIZE } from './constants/accordion-size';
+import type { OdsAccordionEvent } from './interfaces/events';
+import type { OsdsAccordionGroup } from '../osds-accordion-group/osds-accordion-group';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { OdsAccordionController } from './core/controller';
+import { Component, Element, Event, EventEmitter, Host, Prop, Watch, h } from '@stencil/core';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
 
 @Component({
   tag: 'osds-accordion',
@@ -22,19 +22,19 @@ export class OsdsAccordion implements OdsAccordionAttribute, OdsAccordionEvent {
   @Element() el!: HTMLStencilElement;
 
   /** @see OdsAccordionAttributes.color */
-  @Prop({reflect: true}) public color?: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
+  @Prop({ reflect: true }) public color?: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
 
   /** @see OdsAccordionAttributes.contrasted */
-  @Prop({reflect: true}) public contrasted?: boolean = DEFAULT_ATTRIBUTE.contrasted;
+  @Prop({ reflect: true }) public contrasted?: boolean = DEFAULT_ATTRIBUTE.contrasted;
 
   /** @see OdsAccordionAttributes.disabled */
-  @Prop({reflect: true}) public disabled?: boolean = DEFAULT_ATTRIBUTE.disabled;
+  @Prop({ reflect: true }) public disabled?: boolean = DEFAULT_ATTRIBUTE.disabled;
 
   /** @see OdsAccordionAttributes.opened */
-  @Prop({reflect: true, mutable: true}) public opened?: boolean = DEFAULT_ATTRIBUTE.opened;
+  @Prop({ reflect: true, mutable: true }) public opened?: boolean = DEFAULT_ATTRIBUTE.opened;
 
   /** @see OdsAccordionAttributes.size */
-  @Prop({reflect: true}) public size?: ODS_ACCORDION_SIZE = DEFAULT_ATTRIBUTE.size;
+  @Prop({ reflect: true }) public size?: ODS_ACCORDION_SIZE = DEFAULT_ATTRIBUTE.size;
 
   /** @see OdsAccordionEvents.odsAccordionToggle */
   @Event() odsAccordionToggle!: EventEmitter<boolean>;
@@ -79,7 +79,7 @@ export class OsdsAccordion implements OdsAccordionAttribute, OdsAccordionEvent {
   }
 
   render() {
-    const {opened, color, contrasted} = this;
+    const { opened, color, contrasted } = this;
 
     return (
       <Host>

@@ -1,5 +1,5 @@
-import {OdsDatepickerController} from './controller';
-import {OsdsDatepicker} from '../osds-datepicker';
+import { OdsDatepickerController } from './controller';
+import { OsdsDatepicker } from '../osds-datepicker';
 
 class OsdsDatepickerMock extends OsdsDatepicker {
   constructor(attribute: Partial<OsdsDatepicker>) {
@@ -35,7 +35,7 @@ describe('spec:ods-datepicker-controller', () => {
       });
 
       it('should not change hasFocus and not call emitFocus if component is disabled', () => {
-        setup({disabled: true});
+        setup({ disabled: true });
         controller.onFocus();
         expect(component.hasFocus).toBeFalsy();
         expect(component.emitFocus).not.toHaveBeenCalled();
@@ -72,7 +72,7 @@ describe('spec:ods-datepicker-controller', () => {
 
       it('should reset value if date is disabled', () => {
         const disabledDate = new Date('2023-05-05');
-        setup({datesDisabled: [disabledDate]});
+        setup({ datesDisabled: [disabledDate] });
         controller.onChange(disabledDate);
         expect(component.value).toBeNull();
         expect(component.emitDatepickerValueChange).toHaveBeenCalledWith(null, null);
@@ -80,7 +80,7 @@ describe('spec:ods-datepicker-controller', () => {
 
       it('should reset value if day of the week is disabled', () => {
         const sunday = new Date('2023-10-01'); // 1st of October 2023 is a sunday
-        setup({daysOfWeekDisabled: [0]});
+        setup({ daysOfWeekDisabled: [0] });
         controller.onChange(sunday);
         expect(component.value).toBeNull();
         expect(component.emitDatepickerValueChange).toHaveBeenCalledWith(null, null);
@@ -89,7 +89,7 @@ describe('spec:ods-datepicker-controller', () => {
       it('should reset value if date is greater than maxDate', () => {
         const maxDate = new Date('2023-05-05');
         const dateAboveMax = new Date('2023-05-06');
-        setup({maxDate: maxDate});
+        setup({ maxDate: maxDate });
         controller.onChange(dateAboveMax);
         expect(component.value).toBeNull();
         expect(component.emitDatepickerValueChange).toHaveBeenCalledWith(null, null);
@@ -98,7 +98,7 @@ describe('spec:ods-datepicker-controller', () => {
       it('should reset value if date is less than minDate', () => {
         const minDate = new Date('2023-05-05');
         const dateBelowMin = new Date('2023-05-04');
-        setup({minDate: minDate});
+        setup({ minDate: minDate });
         controller.onChange(dateBelowMin);
         expect(component.value).toBeNull();
         expect(component.emitDatepickerValueChange).toHaveBeenCalledWith(null, null);

@@ -1,10 +1,10 @@
-import {extractArgTypes, extractStoryParams, getTagAttributes} from '../../../core/componentHTMLUtils';
-import {defineCustomElements} from '@ovhcloud/ods-components/quantity/loader';
-import {html} from 'lit-html';
+import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
+import page from './quantity.web-component.stories.page.mdx';
+import { defineCustomElements } from '@ovhcloud/ods-components/quantity/loader';
+import { html } from 'lit-html';
 // @ts-ignore
 import changelog from '@ovhcloud/ods-components/quantity/CHANGELOG.md';
 // @ts-ignore
-import page from './quantity.web-component.stories.page.mdx';
 
 defineCustomElements();
 
@@ -23,7 +23,7 @@ export default {
     notes: {
       changelog,
     },
-    docs: {page},
+    docs: { page },
   },
   argTypes: extractArgTypes(storyParams),
 };

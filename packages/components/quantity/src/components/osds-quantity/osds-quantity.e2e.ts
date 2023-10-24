@@ -1,8 +1,8 @@
-import type {E2EElement, E2EPage} from '@stencil/core/testing';
-import type {OdsQuantityAttribute} from './interfaces/attributes';
-import {newE2EPage} from '@stencil/core/testing';
-import {odsComponentAttributes2StringAttributes, odsStringAttributes2Str} from '@ovhcloud/ods-common-testing';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
+import type { E2EElement, E2EPage } from '@stencil/core/testing';
+import type { OdsQuantityAttribute } from './interfaces/attributes';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { newE2EPage } from '@stencil/core/testing';
+import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 
 describe('e2e:osds-quantity', () => {
   let page: E2EPage;
@@ -11,7 +11,7 @@ describe('e2e:osds-quantity', () => {
   let plusElement: E2EElement;
   let inputElement: E2EElement;
 
-  async function setup({attributes = {}, html = ''}: { attributes?: Partial<OdsQuantityAttribute>, html?: string } = {}) {
+  async function setup({ attributes = {}, html = '' }: { attributes?: Partial<OdsQuantityAttribute>, html?: string } = {}) {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsQuantityAttribute>(attributes, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
@@ -48,7 +48,7 @@ describe('e2e:osds-quantity', () => {
 
   describe('disabled attribute on children', () => {
     beforeEach(async() => {
-      await setup({attributes: {}, html: template});
+      await setup({ attributes: {}, html: template });
       el.setAttribute('disabled', 'disabled');
       await page.waitForChanges();
     });
@@ -72,7 +72,7 @@ describe('e2e:osds-quantity', () => {
           <osds-input type="number" color="primary" min="0" max="3" step="1" value="0"></osds-input>
           <osds-button slot="plus" color="primary" size="sm">+</osds-button>`;
 
-      await setup({attributes: {}, html: zeroTemplate});
+      await setup({ attributes: {}, html: zeroTemplate });
       await page.waitForChanges();
 
       expect(minusElement).toHaveAttribute('disabled');
@@ -83,7 +83,7 @@ describe('e2e:osds-quantity', () => {
   xdescribe('step down', () => {
 
     it('should step down the input value', async() => {
-      await setup({attributes: {}, html: template});
+      await setup({ attributes: {}, html: template });
       await minusElement.click();
       await page.waitForChanges();
       const value = await inputElement.getProperty('value');
@@ -91,7 +91,7 @@ describe('e2e:osds-quantity', () => {
     });
 
     it('should trigger disabled property on minus control element when stepping down to min value', async() => {
-      await setup({attributes: {}, html: template});
+      await setup({ attributes: {}, html: template });
       await minusElement.click();
       await page.waitForChanges();
       expect(await minusElement.getProperty('disabled')).toBeTruthy();
@@ -102,7 +102,7 @@ describe('e2e:osds-quantity', () => {
   xdescribe('step up', () => {
 
     it('should step up the input value', async() => {
-      await setup({attributes: {}, html: template});
+      await setup({ attributes: {}, html: template });
       await plusElement.click();
       await page.waitForChanges();
       const value = await inputElement.getProperty('value');
@@ -110,7 +110,7 @@ describe('e2e:osds-quantity', () => {
     });
 
     it('should trigger disabled property on plus control element when stepping up to max value', async() => {
-      await setup({attributes: {}, html: template});
+      await setup({ attributes: {}, html: template });
       await plusElement.click();
       await page.waitForChanges();
       expect(await plusElement.getProperty('disabled')).toBeTruthy();

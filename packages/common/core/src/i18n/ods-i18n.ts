@@ -1,6 +1,6 @@
-import {OdsI18nHook} from './ods-i18n-hook';
-import {Ods} from '../configure/ods';
-import {OdsLogger} from '../logger/ods-logger';
+import { OdsI18nHook } from './ods-i18n-hook';
+import { Ods } from '../configure/ods';
+import { OdsLogger } from '../logger/ods-logger';
 
 export class OdsI18n {
   private logger = new OdsLogger('OdsI18N');
@@ -20,7 +20,7 @@ export class OdsI18n {
       try {
         return hook(key, values);
       } catch (e) {
-        this.logger.error('osds-cart', 'error handling i18n hook', {i18n: hook, key, values});
+        this.logger.error('osds-cart', 'error handling i18n hook', { i18n: hook, key, values });
       }
     }
     return key;

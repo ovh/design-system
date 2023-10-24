@@ -1,21 +1,21 @@
-import type {E2EElement, E2EPage} from '@stencil/core/testing';
-import type {OdsRadioButtonAttribute} from './interfaces/attributes';
-import {odsComponentAttributes2StringAttributes, odsStringAttributes2Str} from '@ovhcloud/ods-common-testing';
-import {ODS_THEME_COLOR_INTENTS} from '@ovhcloud/ods-common-theming';
-import {newE2EPage} from '@stencil/core/testing';
-import {ODS_RADIO_BUTTON_SIZES} from './constants/radio-button-size';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
+import type { E2EElement, E2EPage } from '@stencil/core/testing';
+import type { OdsRadioButtonAttribute } from './interfaces/attributes';
+import { ODS_RADIO_BUTTON_SIZES } from './constants/radio-button-size';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
+import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
+import { newE2EPage } from '@stencil/core/testing';
 
 describe('e2e:osds-radio-button', () => {
   let page: E2EPage;
   let el: E2EElement;
   let mainEl: E2EElement;
 
-  async function setup({attributes = {}, html = '', onPage}: { attributes?: Partial<OdsRadioButtonAttribute>, html?: string, onPage?: ({page}: { page: E2EPage }) => void } = {}) {
+  async function setup({ attributes = {}, html = '', onPage }: { attributes?: Partial<OdsRadioButtonAttribute>, html?: string, onPage?: ({ page }: { page: E2EPage }) => void } = {}) {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsRadioButtonAttribute>(attributes, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
-    onPage && onPage({page});
+    onPage && onPage({ page });
 
     await page.setContent(`
       <osds-radio-button ${odsStringAttributes2Str(stringAttributes)}>
@@ -52,7 +52,7 @@ describe('e2e:osds-radio-button', () => {
 
   describe('screenshots', () => {
     // Sizes & checked
-    [noAction, checkedAction].forEach(({actionDescription, action}) => {
+    [noAction, checkedAction].forEach(({ actionDescription, action }) => {
       ODS_RADIO_BUTTON_SIZES.forEach((size) => {
         it([size, actionDescription].join(', '), async() => {
           await setup({
@@ -63,14 +63,14 @@ describe('e2e:osds-radio-button', () => {
           el.removeAttribute('checking');
           action();
           await page.waitForChanges();
-          const results = await page.compareScreenshot('radio-button', {fullPage: false, omitBackground: true});
-          expect(results).toMatchScreenshot({allowableMismatchedRatio: 0});
+          const results = await page.compareScreenshot('radio-button', { fullPage: false, omitBackground: true });
+          expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
         });
       });
     });
 
     // Colors & state (hover, focus, disabled, checked)
-    screenshotActions.forEach(({actionDescription, action}) => {
+    screenshotActions.forEach(({ actionDescription, action }) => {
       ODS_THEME_COLOR_INTENTS.forEach((color) => {
         it([color, actionDescription].join(', '), async() => {
           await setup({
@@ -81,8 +81,8 @@ describe('e2e:osds-radio-button', () => {
           el.removeAttribute('checking');
           action();
           await page.waitForChanges();
-          const results = await page.compareScreenshot('radio-button', {fullPage: false, omitBackground: true});
-          expect(results).toMatchScreenshot({allowableMismatchedRatio: 0});
+          const results = await page.compareScreenshot('radio-button', { fullPage: false, omitBackground: true });
+          expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
         });
       });
     });

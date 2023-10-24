@@ -1,13 +1,13 @@
-import type {E2EElement, E2EPage} from '@stencil/core/testing';
-import type {OdsBreadcrumbAttributeItem} from './interfaces/attributes';
-import {newE2EPage} from '@stencil/core/testing';
+import type { E2EElement, E2EPage } from '@stencil/core/testing';
+import type { OdsBreadcrumbAttributeItem } from './interfaces/attributes';
+import { newE2EPage } from '@stencil/core/testing';
 
 describe('e2e:osds-breadcrumb', () => {
   const dummyItems = [
-    {href: 'href1', label: 'label1'},
-    {href: 'href2', label: 'label2'},
-    {href: 'href3', label: 'label3'},
-    {href: 'href4', label: 'label4'},
+    { href: 'href1', label: 'label1' },
+    { href: 'href2', label: 'label2' },
+    { href: 'href3', label: 'label3' },
+    { href: 'href4', label: 'label4' },
   ];
   let page: E2EPage;
   let el: E2EElement;
@@ -58,8 +58,8 @@ describe('e2e:osds-breadcrumb', () => {
 
   it('should render first and last items and a collapsed one in the middle', async() => {
     const moreDummyItems = [...dummyItems,
-      {href: 'href5', label: 'label5'},
-      {href: 'href6', label: 'label6'},
+      { href: 'href5', label: 'label5' },
+      { href: 'href6', label: 'label6' },
     ];
     await setup(moreDummyItems);
 
@@ -86,8 +86,8 @@ describe('e2e:osds-breadcrumb', () => {
 
   it('should render all on collapsed item click', async() => {
     const moreDummyItems = [...dummyItems,
-      {href: 'href5', label: 'label5'},
-      {href: 'href6', label: 'label6'},
+      { href: 'href5', label: 'label5' },
+      { href: 'href6', label: 'label6' },
     ];
     await setup(moreDummyItems);
 

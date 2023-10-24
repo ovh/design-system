@@ -1,14 +1,14 @@
-import {html} from 'lit-html';
-import {unsafeHTML} from 'lit-html/directives/unsafe-html';
-import {repeat} from 'lit-html/directives/repeat';
-import {ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS} from '@ovhcloud/ods-common-theming';
-import {defineCustomElements} from '@ovhcloud/ods-components/icon/loader';
-import {ODS_ICON_NAMES, ODS_ICON_SIZE, ODS_ICON_SIZES} from '@ovhcloud/ods-components/icon';
-import {createComponentTable, extractArgTypes, extractStoryParams, getTagAttributes} from '../../../core/componentHTMLUtils';
+import { createComponentTable, extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
+import page from './icon.web-component.stories.page.mdx';
+import { html } from 'lit-html';
+import { unsafeHTML } from 'lit-html/directives/unsafe-html';
+import { repeat } from 'lit-html/directives/repeat';
+import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
+import { defineCustomElements } from '@ovhcloud/ods-components/icon/loader';
+import { ODS_ICON_NAMES, ODS_ICON_SIZE, ODS_ICON_SIZES } from '@ovhcloud/ods-components/icon';
 // @ts-ignore
 import changelog from '@ovhcloud/ods-components/icon/CHANGELOG.md';
 // @ts-ignore
-import page from './icon.web-component.stories.page.mdx';
 
 defineCustomElements();
 
@@ -18,13 +18,13 @@ const storyParams = {
     category: 'General',
     defaultValue: ODS_THEME_COLOR_INTENT.default,
     options: ODS_THEME_COLOR_INTENTS,
-    control: {type: 'select'},
+    control: { type: 'select' },
   },
   size: {
     category: 'General',
     defaultValue: ODS_ICON_SIZE.md,
     options: ODS_ICON_SIZES,
-    control: {type: 'select'},
+    control: { type: 'select' },
   },
   ariaName: {
     category: 'Misc',
@@ -47,7 +47,7 @@ export default {
     notes: {
       changelog,
     },
-    docs: {page},
+    docs: { page },
   },
   argTypes: extractArgTypes(storyParams),
 };
@@ -99,16 +99,16 @@ ${repeat(ODS_ICON_NAMES, (i) => iconTemplate(i))}
 <h3>Sizes & Colors</h1>
 ${unsafeHTML(createComponentTable(
     defaultTag,
-    {size: ODS_ICON_SIZES},
-    {color: ODS_THEME_COLOR_INTENTS},
+    { size: ODS_ICON_SIZES },
+    { color: ODS_THEME_COLOR_INTENTS },
     '',
-    {name: 'home'},
+    { name: 'home' },
   ))}
 </div>
 `;
 export const All = TemplateAll.bind({});
 // @ts-ignore
 All.parameters = {
-  controls: {hideNoControlsWarning: true},
-  options: {showPanel: false},
+  controls: { hideNoControlsWarning: true },
+  options: { showPanel: false },
 };

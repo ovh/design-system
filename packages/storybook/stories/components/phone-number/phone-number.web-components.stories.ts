@@ -1,10 +1,10 @@
-import {html} from 'lit-html';
-import {defineCustomElements} from '@ovhcloud/ods-component-phone-number/loader';
-import {extractArgTypes, extractStoryParams, getTagAttributes} from '../../../core/componentHTMLUtils';
+import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
+import page from './phone-number.web-component.stories.page.mdx';
+import { html } from 'lit-html';
+import { defineCustomElements } from '@ovhcloud/ods-component-phone-number/loader';
 // @ts-ignore
 import changelog from '@ovhcloud/ods-component-phone-number/CHANGELOG.md';
 // @ts-ignore
-import page from './phone-number.web-component.stories.page.mdx';
 
 defineCustomElements();
 
@@ -12,7 +12,7 @@ defineCustomElements();
 const storyParams = {
   value: {
     category: 'Misc',
-    control: {type: 'text'},
+    control: { type: 'text' },
   },
   clearable: {
     category: 'Misc',
@@ -28,12 +28,12 @@ const storyParams = {
   },
   locale: {
     category: 'Général',
-    control: {type: 'text'},
+    control: { type: 'text' },
     defaultValue: 'fr',
   },
   isoCode: {
     category: 'Général',
-    control: {type: 'text'},
+    control: { type: 'text' },
     defaultValue: 'fr',
   },
 };
@@ -61,9 +61,9 @@ export default {
     notes: {
       changelog,
     },
-    docs: {page},
+    docs: { page },
   },
-  argTypes: extractArgTypes({...storyParams, ...countriesParams}),
+  argTypes: extractArgTypes({ ...storyParams, ...countriesParams }),
 };
 
 /* Default */
@@ -80,11 +80,11 @@ Default.args = {
 export const Countries = OsdsPhoneNumberDefault.bind({});
 // @ts-ignore
 Countries.args = {
-  ...extractStoryParams({...storyParams, ...countriesParams}),
+  ...extractStoryParams({ ...storyParams, ...countriesParams }),
 };
 
 export const AllCountries = OsdsPhoneNumberDefault.bind({});
 // @ts-ignore
 AllCountries.args = {
-  ...extractStoryParams({...storyParams, ...allCountriesParams}),
+  ...extractStoryParams({ ...storyParams, ...allCountriesParams }),
 };

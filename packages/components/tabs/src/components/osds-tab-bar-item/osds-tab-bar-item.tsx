@@ -1,11 +1,11 @@
-import type {HTMLStencilElement} from '@stencil/core/internal';
-import type {EventEmitter} from '@stencil/core';
-import type {OdsTabBarItemAttribute} from './interfaces/attributes';
-import type {OdsTabBarItemEvent, OdsTabItemSelectEventDetail} from './interfaces/events';
-import {Component, Element, Event, Host, Listen, Method, Prop, h} from '@stencil/core';
-import {OdsLogger} from '@ovhcloud/ods-common-core';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
-import {OdsTabBarItemController} from './core/controller';
+import type { HTMLStencilElement } from '@stencil/core/internal';
+import type { EventEmitter } from '@stencil/core';
+import type { OdsTabBarItemAttribute } from './interfaces/attributes';
+import type { OdsTabBarItemEvent, OdsTabItemSelectEventDetail } from './interfaces/events';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { OdsTabBarItemController } from './core/controller';
+import { Component, Element, Event, Host, Listen, Method, Prop, h } from '@stencil/core';
+import { OdsLogger } from '@ovhcloud/ods-common-core';
 
 /**
  * An Item that is part of the tab bar
@@ -25,16 +25,16 @@ export class OsdsTabBarItem implements OdsTabBarItemAttribute, OdsTabBarItemEven
   @Element() el!: HTMLStencilElement;
 
   /** @see OdsTabBarItemAttributes.active */
-  @Prop({reflect: true}) active: boolean = DEFAULT_ATTRIBUTE.active;
+  @Prop({ reflect: true }) active: boolean = DEFAULT_ATTRIBUTE.active;
 
   /** @see OdsTabBarItemAttributes.contrasted */
-  @Prop({reflect: true, mutable: true}) contrasted: boolean = DEFAULT_ATTRIBUTE.contrasted;
+  @Prop({ reflect: true, mutable: true }) contrasted: boolean = DEFAULT_ATTRIBUTE.contrasted;
 
   /** @see OdsTabBarItemAttributes.disabled */
-  @Prop({reflect: true}) disabled: boolean = DEFAULT_ATTRIBUTE.disabled;
+  @Prop({ reflect: true }) disabled: boolean = DEFAULT_ATTRIBUTE.disabled;
 
   /** @see OdsTabBarItemAttributes.panel */
-  @Prop({reflect: true}) panel: string = DEFAULT_ATTRIBUTE.panel;
+  @Prop({ reflect: true }) panel: string = DEFAULT_ATTRIBUTE.panel;
 
   /** @see OdsTabBarItemEvents.odsTabItemSelectEvent */
   @Event() odsTabItemSelectEvent!: EventEmitter<OdsTabItemSelectEventDetail>;
@@ -44,14 +44,14 @@ export class OsdsTabBarItem implements OdsTabBarItemAttribute, OdsTabBarItemEven
   @Listen('click')
   handleClick() {
     if (!this.disabled) {
-      this.logger.log('[handleClick]', {name: this.panel});
+      this.logger.log('[handleClick]', { name: this.panel });
       this.select();
     }
   }
 
   /** @see OdsTabBarItemBehavior.handlePanelKeyEvent */
   handlePanelKeyEvent(event: KeyboardEvent) {
-    this.logger.log('[handlePanelKeyEvent]', {event});
+    this.logger.log('[handlePanelKeyEvent]', { event });
     this.controller.handlePanelKeyEvent(event);
   }
 
@@ -61,7 +61,7 @@ export class OsdsTabBarItem implements OdsTabBarItemAttribute, OdsTabBarItemEven
    */
   @Method()
   async select() {
-    this.odsTabItemSelectEvent.emit({panel: this.panel, tabItem: this});
+    this.odsTabItemSelectEvent.emit({ panel: this.panel, tabItem: this });
   }
 
   beforeInit() {

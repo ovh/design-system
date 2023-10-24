@@ -1,11 +1,11 @@
-import {html} from 'lit-html';
-import {unsafeHTML} from 'lit-html/directives/unsafe-html';
-import {defineCustomElements} from '@ovhcloud/ods-components/form-field/loader';
-import {extractArgTypes, extractStoryParams, getTagAttributes} from '../../../core/componentHTMLUtils';
+import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
+import page from './form-field.web-component.stories.page.mdx';
+import { html } from 'lit-html';
+import { unsafeHTML } from 'lit-html/directives/unsafe-html';
+import { defineCustomElements } from '@ovhcloud/ods-components/form-field/loader';
 // @ts-ignore
 import changelog from '@ovhcloud/ods-components/form-field/CHANGELOG.md';
 // @ts-ignore
-import page from './form-field.web-component.stories.page.mdx';
 
 defineCustomElements();
 
@@ -50,7 +50,7 @@ export default {
     notes: {
       changelog,
     },
-    docs: {page},
+    docs: { page },
   },
   argTypes: extractArgTypes(storyParams),
 };

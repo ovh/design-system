@@ -1,4 +1,4 @@
-import {OcdkSurfaceCorner, OcdkSurfaceCornerNameList} from './ocdk-surface-corner';
+import { OcdkSurfaceCorner, OcdkSurfaceCornerNameList } from './ocdk-surface-corner';
 
 export interface OcdkSurfaceCornerPoints {
   anchor: OcdkSurfaceCorner,

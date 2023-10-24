@@ -1,8 +1,8 @@
-import type {E2EElement, E2EPage} from '@stencil/core/testing';
-import type {OdsTooltipAttribute} from './interfaces/attributes';
-import {odsComponentAttributes2StringAttributes, odsStringAttributes2Str} from '@ovhcloud/ods-common-testing';
-import {newE2EPage} from '@stencil/core/testing';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
+import type { E2EElement, E2EPage } from '@stencil/core/testing';
+import type { OdsTooltipAttribute } from './interfaces/attributes';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
+import { newE2EPage } from '@stencil/core/testing';
 
 describe('e2e:osds-tooltip', () => {
   let page: E2EPage;
@@ -14,7 +14,7 @@ describe('e2e:osds-tooltip', () => {
     });
   }
 
-  async function setup({attributes = {}, extraContent = ''}: { attributes?: Partial<OdsTooltipAttribute>, extraContent?: string } = {}) {
+  async function setup({ attributes = {}, extraContent = '' }: { attributes?: Partial<OdsTooltipAttribute>, extraContent?: string } = {}) {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsTooltipAttribute>(attributes, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
@@ -90,7 +90,7 @@ describe('e2e:osds-tooltip', () => {
 
   // FIXME focus() method does not trigger the onFocus handler, although the activeElement is correctly updated
   xit('should toggle the tooltip on anchor focus/blur', async() => {
-    await setup({attributes: {}});
+    await setup({ attributes: {} });
 
     await el.focus();
     await page.waitForChanges();
@@ -105,7 +105,7 @@ describe('e2e:osds-tooltip', () => {
   });
 
   it('should close the tooltip on outside click', async() => {
-    await setup({extraContent: '<button>Outside element</button>'});
+    await setup({ extraContent: '<button>Outside element</button>' });
     const outsideElement = await page.find('button');
 
     await el.click();

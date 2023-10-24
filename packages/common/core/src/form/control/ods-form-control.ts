@@ -1,6 +1,6 @@
-import {isPromise} from '../../types/guard/ods-is-promise';
-import {OdsFormControlMethods} from './ods-form-control-methods';
-import {OdsValidityStateUnion} from './ods-form-control-type';
+import { isPromise } from '../../types/guard/ods-is-promise';
+import { OdsFormControlMethods } from './ods-form-control-methods';
+import { OdsValidityStateUnion } from './ods-form-control-type';
 
 export class OdsFormControl<ValidityState extends OdsValidityStateUnion> {
   private formControl?: OdsFormControlMethods<ValidityState>;

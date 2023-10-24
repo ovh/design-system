@@ -1,4 +1,4 @@
-import type {OdsRadioGroupAttribute} from '../interfaces/attributes';
+import type { OdsRadioGroupAttribute } from '../interfaces/attributes';
 
 const DEFAULT_ATTRIBUTE: OdsRadioGroupAttribute = Object.freeze({
   afterSave: undefined,

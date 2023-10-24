@@ -1,13 +1,13 @@
-import type {OdsInputValueChangeEvent} from '@ovhcloud/ods-component-input';
-import type {OdsSelectValueChangeEvent} from '@ovhcloud/ods-component-select';
-import type {OdsSearchBarEvent} from './interfaces/events';
-import type {OdsSearchBarAttribute, OdsSearchbarOption} from './interfaces/attributes';
-import {Component, Element, Event, EventEmitter, Host, Listen, Prop, h} from '@stencil/core';
-import {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
-import {ODS_ICON_NAME, ODS_ICON_SIZE} from '@ovhcloud/ods-component-icon';
-import {ODS_BUTTON_SIZE} from '@ovhcloud/ods-component-button';
-import {ODS_INPUT_TYPE} from '@ovhcloud/ods-component-input';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
+import type { OdsInputValueChangeEvent } from '@ovhcloud/ods-component-input';
+import type { OdsSelectValueChangeEvent } from '@ovhcloud/ods-component-select';
+import type { OdsSearchBarEvent } from './interfaces/events';
+import type { OdsSearchBarAttribute, OdsSearchbarOption } from './interfaces/attributes';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { Component, Element, Event, EventEmitter, Host, Listen, Prop, h } from '@stencil/core';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
+import { ODS_BUTTON_SIZE } from '@ovhcloud/ods-component-button';
+import { ODS_INPUT_TYPE } from '@ovhcloud/ods-component-input';
 
 /**
  * @slot (unnamed) - SearchBar content
@@ -23,22 +23,22 @@ export class OsdsSearchBar implements OdsSearchBarAttribute, OdsSearchBarEvent {
   @Element() el!: HTMLElement;
 
   /** @see OdsSearchBarAttributes.contrasted */
-  @Prop({reflect: true}) public contrasted?: boolean = DEFAULT_ATTRIBUTE.contrasted;
+  @Prop({ reflect: true }) public contrasted?: boolean = DEFAULT_ATTRIBUTE.contrasted;
 
   /** @see OdsSearchBarAttributes.disabled */
-  @Prop({reflect: true}) public disabled?: boolean = DEFAULT_ATTRIBUTE.disabled;
+  @Prop({ reflect: true }) public disabled?: boolean = DEFAULT_ATTRIBUTE.disabled;
 
   /** @see OdsSearchBarAttributes.loading */
-  @Prop({reflect: true}) public loading?: boolean = DEFAULT_ATTRIBUTE.loading;
+  @Prop({ reflect: true }) public loading?: boolean = DEFAULT_ATTRIBUTE.loading;
 
   /** @see OdsSearchBarAttributes.placeholder */
-  @Prop({reflect: true}) public placeholder?: string = DEFAULT_ATTRIBUTE.placeholder;
+  @Prop({ reflect: true }) public placeholder?: string = DEFAULT_ATTRIBUTE.placeholder;
 
   /** @see OdsSearchBarAttributes.options */
-  @Prop({reflect: true}) public options?: OdsSearchbarOption[] = DEFAULT_ATTRIBUTE.options;
+  @Prop({ reflect: true }) public options?: OdsSearchbarOption[] = DEFAULT_ATTRIBUTE.options;
 
   /** @see OdsSearchBarAttributes.value */
-  @Prop({reflect: true, mutable: true}) public value: string = DEFAULT_ATTRIBUTE.value;
+  @Prop({ reflect: true, mutable: true }) public value: string = DEFAULT_ATTRIBUTE.value;
 
   /** @see OdsSearchBarEvents.odsSearchSubmit */
   @Event() odsSearchSubmit!: EventEmitter<{ optionValue: string; inputValue: string }>;
@@ -67,7 +67,7 @@ export class OsdsSearchBar implements OdsSearchBarAttribute, OdsSearchBarEvent {
   }
 
   emitSearchSubmit(): void {
-    this.odsSearchSubmit.emit({optionValue: this.optionValue, inputValue: this.value});
+    this.odsSearchSubmit.emit({ optionValue: this.optionValue, inputValue: this.value });
   }
 
   render() {
@@ -94,7 +94,7 @@ export class OsdsSearchBar implements OdsSearchBarAttribute, OdsSearchBarEvent {
           loading={ this.loading }
           disabled={ this.disabled }
           placeholder={ this.placeholder }
-          class={{'first': !hasSelect}}>
+          class={{ 'first': !hasSelect }}>
         </osds-input>
 
         <osds-button

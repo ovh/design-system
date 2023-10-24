@@ -1,12 +1,12 @@
-import {html} from 'lit-html';
-import {ODS_SKELETON_SIZES} from '@ovhcloud/ods-components/skeleton';
-import {defineCustomElements} from '@ovhcloud/ods-components/skeleton/loader';
-import {extractArgTypes, extractStoryParams, getTagAttributes} from '../../../core/componentHTMLUtils';
-import {DEFAULT_ATTRIBUTE} from '@ovhcloud/ods-components/skeleton/src/components/osds-skeleton/constants/default-attributes';
+import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
+import page from './skeleton.web-component.stories.page.mdx';
+import { html } from 'lit-html';
+import { ODS_SKELETON_SIZES } from '@ovhcloud/ods-components/skeleton';
+import { defineCustomElements } from '@ovhcloud/ods-components/skeleton/loader';
+import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-components/skeleton/src/components/osds-skeleton/constants/default-attributes';
 // @ts-ignore
 import changelog from '@ovhcloud/ods-components/skeleton/CHANGELOG.md';
 // @ts-ignore
-import page from './skeleton.web-component.stories.page.mdx';
 
 defineCustomElements();
 
@@ -24,7 +24,7 @@ const storyParams = {
     category: 'General',
     defaultValue: DEFAULT_ATTRIBUTE.size,
     options: ODS_SKELETON_SIZES,
-    control: {type: 'select'},
+    control: { type: 'select' },
   },
 };
 
@@ -35,7 +35,7 @@ export default {
     notes: {
       changelog,
     },
-    docs: {page},
+    docs: { page },
   },
   argTypes: extractArgTypes(storyParams),
 };

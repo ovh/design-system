@@ -1,17 +1,17 @@
-import type {E2EElement, E2EPage, EventSpy} from '@stencil/core/testing';
+import type { E2EElement, E2EPage, EventSpy } from '@stencil/core/testing';
 import type {
   OdsCheckboxCheckedChangeEventDetail,
   OdsCheckboxEvent,
   OdsCheckboxFocusChangeEventDetail,
   OdsCheckboxUpdatingChangeEventDetail,
 } from './interfaces/events';
-import type {OdsCheckboxAttribute} from './interfaces/attributes';
-import type {OsdsCheckbox} from './osds-checkbox';
-import {newE2EPage} from '@stencil/core/testing';
-import {OdsLogger} from '@ovhcloud/ods-common-core';
-import {odsComponentAttributes2StringAttributes, odsGetSimulatedPromise, odsStringAttributes2Str} from '@ovhcloud/ods-common-testing';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
-import {osdsSetPropertyFunction} from '@ovhcloud/ods-common-stencil';
+import type { OdsCheckboxAttribute } from './interfaces/attributes';
+import type { OsdsCheckbox } from './osds-checkbox';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { newE2EPage } from '@stencil/core/testing';
+import { OdsLogger } from '@ovhcloud/ods-common-core';
+import { odsComponentAttributes2StringAttributes, odsGetSimulatedPromise, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
+import { osdsSetPropertyFunction } from '@ovhcloud/ods-common-stencil';
 
 describe('e2e:osds-checkbox', () => {
   let page: E2EPage;
@@ -25,7 +25,7 @@ describe('e2e:osds-checkbox', () => {
   let activeElementId: string | undefined;
   const logger = new OdsLogger('e2e:osds-checkbox');
   const spyEvent = async(eventName: keyof OdsCheckboxEvent) => await el.spyOnEvent(eventName);
-  const baseAttribute = {ariaLabel: '', checked: false, disabled: false, hasFocus: false, updating: false, value: ''};
+  const baseAttribute = { ariaLabel: '', checked: false, disabled: false, hasFocus: false, updating: false, value: '' };
 
   async function setup({
     attributes = {},
@@ -33,12 +33,12 @@ describe('e2e:osds-checkbox', () => {
     html = '',
     htmlOutside = '',
     onPage,
-  }: { attributes?: Partial<OdsCheckboxAttribute>, html?: string, htmlOutside?: string, nativeAttributes?: Partial<HTMLElement>, onPage?: ({page}: { page: E2EPage }) => void } = {}) {
-    const stringAttributes = odsComponentAttributes2StringAttributes<OdsCheckboxAttribute>({...baseAttribute, ...attributes}, DEFAULT_ATTRIBUTE);
+  }: { attributes?: Partial<OdsCheckboxAttribute>, html?: string, htmlOutside?: string, nativeAttributes?: Partial<HTMLElement>, onPage?: ({ page }: { page: E2EPage }) => void } = {}) {
+    const stringAttributes = odsComponentAttributes2StringAttributes<OdsCheckboxAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
     const nativeStringAttributes = odsComponentAttributes2StringAttributes<Partial<HTMLElement>>(nativeAttributes, {});
 
     page = await newE2EPage();
-    onPage && onPage({page});
+    onPage && onPage({ page });
 
     await page.setContent(`
       <osds-checkbox ${odsStringAttributes2Str(stringAttributes)} ${odsStringAttributes2Str(nativeStringAttributes)}>
@@ -80,7 +80,7 @@ describe('e2e:osds-checkbox', () => {
    * @param withError - with error or not
    */
   function getSaveCbk(withError: boolean) {
-    const cbk: OsdsCheckbox['save'] = ({checked, value}) => {
+    const cbk: OsdsCheckbox['save'] = ({ checked, value }) => {
       return odsGetSimulatedPromise(withError, () => {
         logger.log(`simulated promise result. withError=${withError}, checked=${checked}, value=${value}`);
       });
@@ -97,7 +97,7 @@ describe('e2e:osds-checkbox', () => {
   describe('methods', () => {
     describe('setButtonTabindex', () => {
       it('should set setButtonTabindex to -1', async() => {
-        await setup({attributes: {}});
+        await setup({ attributes: {} });
         await el.callMethod('setTabindex', '-1');
         await page.waitForChanges();
         const value = el.getAttribute('tabindex');
@@ -107,7 +107,7 @@ describe('e2e:osds-checkbox', () => {
 
     describe('setFocus', () => {
       it('should set focus', async() => {
-        await setup({attributes: {hasFocus: false}});
+        await setup({ attributes: { hasFocus: false } });
         await page.waitForChanges();
         await updateReferences();
         expect(hasFocusProperty).toEqual(false);
@@ -125,7 +125,7 @@ describe('e2e:osds-checkbox', () => {
 
   describe('focusing', () => {
     it('should be focusable', async() => {
-      const options = {attributes: {hasFocus: false, disabled: false}, nativeAttributes: {id: 'my-id'}};
+      const options = { attributes: { hasFocus: false, disabled: false }, nativeAttributes: { id: 'my-id' } };
       await setup(options);
       await page.waitForChanges();
       await updateReferences();
@@ -142,7 +142,7 @@ describe('e2e:osds-checkbox', () => {
     });
 
     it('should NOT be focusable if disabled', async() => {
-      const options = {attributes: {hasFocus: false, disabled: true}, nativeAttributes: {id: 'my-id'}};
+      const options = { attributes: { hasFocus: false, disabled: true }, nativeAttributes: { id: 'my-id' } };
       await setup(options);
       await page.waitForChanges();
 
@@ -154,7 +154,7 @@ describe('e2e:osds-checkbox', () => {
     });
 
     xit('should be focusable with tab', async() => {
-      const options = {attributes: {hasFocus: false, disabled: false}, nativeAttributes: {id: 'my-id'}};
+      const options = { attributes: { hasFocus: false, disabled: false }, nativeAttributes: { id: 'my-id' } };
       await setup(options);
       await page.waitForChanges();
 
@@ -171,7 +171,7 @@ describe('e2e:osds-checkbox', () => {
 
   describe('checking', () => {
     it('should check or uncheck and its child on click', async() => {
-      await setup({attributes: {checked: false}});
+      await setup({ attributes: { checked: false } });
       await page.waitForChanges();
 
       // should be checked after click
@@ -188,7 +188,7 @@ describe('e2e:osds-checkbox', () => {
     });
 
     it('should check or uncheck and its child on keyboard event', async() => {
-      await setup({attributes: {checked: false}});
+      await setup({ attributes: { checked: false } });
       await page.waitForChanges();
 
       // should be checked after key event
@@ -216,7 +216,7 @@ describe('e2e:osds-checkbox', () => {
           value: '42',
         };
 
-        await setup({attributes: {checked: false, value: '42'}});
+        await setup({ attributes: { checked: false, value: '42' } });
         const odsCheckedChange: EventSpy = await spyEvent('odsCheckedChange');
         await page.waitForChanges();
 
@@ -232,7 +232,7 @@ describe('e2e:osds-checkbox', () => {
           value: 'oles',
         };
 
-        await setup({attributes: {value: eventDetailBase.value}});
+        await setup({ attributes: { value: eventDetailBase.value } });
         const odsUpdatingChange = await spyEvent('odsUpdatingChange');
         await page.waitForChanges();
 
@@ -241,8 +241,8 @@ describe('e2e:osds-checkbox', () => {
 
         await toggleByClick();
         expect(odsUpdatingChange).toHaveReceivedEventTimes(2);
-        expect(odsUpdatingChange).toHaveNthReceivedEventDetail(0, {...eventDetailBase, updating: true});
-        expect(odsUpdatingChange).toHaveNthReceivedEventDetail(1, {...eventDetailBase, updating: false});
+        expect(odsUpdatingChange).toHaveNthReceivedEventDetail(0, { ...eventDetailBase, updating: true });
+        expect(odsUpdatingChange).toHaveNthReceivedEventDetail(1, { ...eventDetailBase, updating: false });
       });
     });
 
@@ -254,7 +254,7 @@ describe('e2e:osds-checkbox', () => {
           value: '42',
         };
 
-        await setup({attributes: {disabled: false, value: expected.value}});
+        await setup({ attributes: { disabled: false, value: expected.value } });
         const odsFocus: EventSpy = await spyEvent('odsFocus');
         await page.waitForChanges();
 
@@ -275,7 +275,7 @@ describe('e2e:osds-checkbox', () => {
         };
 
         await setup({
-          attributes: {disabled: false, value: expected.value},
+          attributes: { disabled: false, value: expected.value },
           htmlOutside: '<input type="text" id="another" value="another thing to focus"/>',
         });
         const odsFocus: EventSpy = await spyEvent('odsBlur');

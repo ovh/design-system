@@ -1,11 +1,11 @@
-import {html} from 'lit-html';
-import {unsafeHTML} from 'lit-html/directives/unsafe-html';
-import {extractArgTypes, extractStoryParams, getTagAttributes} from '../../../core/componentHTMLUtils';
-import {defineCustomElements} from '@ovhcloud/ods-components/accordion/loader';
+import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
+import page from './accordion-group.web-component.stories.page.mdx';
+import { html } from 'lit-html';
+import { unsafeHTML } from 'lit-html/directives/unsafe-html';
+import { defineCustomElements } from '@ovhcloud/ods-components/accordion/loader';
 // @ts-ignore
 import changelog from '@ovhcloud/ods-components/accordion/CHANGELOG.md';
 // @ts-ignore
-import page from './accordion-group.web-component.stories.page.mdx';
 
 defineCustomElements();
 
@@ -41,7 +41,7 @@ export default {
     notes: {
       changelog,
     },
-    docs: {page},
+    docs: { page },
   },
   argTypes: extractArgTypes(storyParams),
 };

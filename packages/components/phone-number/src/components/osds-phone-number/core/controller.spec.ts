@@ -1,7 +1,7 @@
-import {ODS_COUNTRY_ISO_CODE, ODS_COUNTRY_ISO_CODES, ODS_LOCALE} from '@ovhcloud/ods-common-core';
-import {ODS_PHONE_NUMBER_COUNTRY_PRESET} from '../constants/phone-number-countries';
-import {OsdsPhoneNumber} from '../osds-phone-number';
-import {OdsPhoneNumberController} from './controller';
+import { ODS_PHONE_NUMBER_COUNTRY_PRESET } from '../constants/phone-number-countries';
+import { OsdsPhoneNumber } from '../osds-phone-number';
+import { OdsPhoneNumberController } from './controller';
+import { ODS_COUNTRY_ISO_CODE, ODS_COUNTRY_ISO_CODES, ODS_LOCALE } from '@ovhcloud/ods-common-core';
 import countriesTranslationEn from '@ovhcloud/ods-common-core/src/i18n/countries/en.json';
 import countriesTranslationFr from '@ovhcloud/ods-common-core/src/i18n/countries/fr.json';
 
@@ -43,7 +43,7 @@ describe('spec:ods-phone-number-controller', () => {
       });
 
       it('should get the component iso code', () => {
-        setup({isoCode: ODS_COUNTRY_ISO_CODE.FR});
+        setup({ isoCode: ODS_COUNTRY_ISO_CODE.FR });
         const isoCode = controller.getDefaultIsoCode();
         expect(isoCode).toBe(ODS_COUNTRY_ISO_CODE.FR);
       });
@@ -68,13 +68,13 @@ describe('spec:ods-phone-number-controller', () => {
       });
 
       it('should not get the component iso code because of a wrong isoCode', () => {
-        setup({isoCode: 'fake' as ODS_COUNTRY_ISO_CODE});
+        setup({ isoCode: 'fake' as ODS_COUNTRY_ISO_CODE });
         const isoCode = controller.getDefaultIsoCode();
         expect(isoCode).toBe(ODS_COUNTRY_ISO_CODE.AD);
       });
 
       it('should get the first element of parsedCountries as isoCode', () => {
-        setup({parsedCountries: [ODS_COUNTRY_ISO_CODE.CH, ODS_COUNTRY_ISO_CODE.AD, ODS_COUNTRY_ISO_CODE.AE]});
+        setup({ parsedCountries: [ODS_COUNTRY_ISO_CODE.CH, ODS_COUNTRY_ISO_CODE.AD, ODS_COUNTRY_ISO_CODE.AE] });
         const isoCode = controller.getDefaultIsoCode();
         expect(isoCode).toBe(ODS_COUNTRY_ISO_CODE.CH);
       });
@@ -88,7 +88,7 @@ describe('spec:ods-phone-number-controller', () => {
       });
 
       it('should get the component locale', () => {
-        setup({locale: ODS_LOCALE.EN});
+        setup({ locale: ODS_LOCALE.EN });
         const locale = controller.getDefaultLocale();
         expect(locale).toBe(ODS_LOCALE.EN);
       });
@@ -106,7 +106,7 @@ describe('spec:ods-phone-number-controller', () => {
       });
 
       it('should not get the component locale because of a wrong locale', () => {
-        setup({locale: 'fake' as ODS_LOCALE});
+        setup({ locale: 'fake' as ODS_LOCALE });
         const locale = controller.getDefaultLocale();
         expect(locale).toBe(ODS_LOCALE.FR);
       });
@@ -114,7 +114,7 @@ describe('spec:ods-phone-number-controller', () => {
 
     describe('methods:getCountriesList', () => {
       it('should get all countries', () => {
-        setup({countries: ODS_PHONE_NUMBER_COUNTRY_PRESET.All});
+        setup({ countries: ODS_PHONE_NUMBER_COUNTRY_PRESET.All });
         const countries = controller.getCountriesList();
         expect(countries).toEqual(ODS_COUNTRY_ISO_CODES);
       });
@@ -127,7 +127,7 @@ describe('spec:ods-phone-number-controller', () => {
 
       it('should get a list countries', () => {
         const countries = [ODS_COUNTRY_ISO_CODE.FR, ODS_COUNTRY_ISO_CODE.GB];
-        setup({countries});
+        setup({ countries });
         expect(controller.getCountriesList()).toEqual(countries);
       });
     });
@@ -176,21 +176,21 @@ describe('spec:ods-phone-number-controller', () => {
 
     describe('methods:parseNumber', () => {
       it('should return a Phone Number', async() => {
-        await setup({isoCode: ODS_COUNTRY_ISO_CODE.FR});
+        await setup({ isoCode: ODS_COUNTRY_ISO_CODE.FR });
         const number = '0658585858';
         const parsedNumber = await controller.parseNumber(number);
         expect(parsedNumber?.getRawInput()).toBe(number);
       });
 
       it('should return a null because of an empty string', async() => {
-        await setup({isoCode: ODS_COUNTRY_ISO_CODE.FR});
+        await setup({ isoCode: ODS_COUNTRY_ISO_CODE.FR });
         const number = '';
         const parsedNumber = await controller.parseNumber(number);
         expect(parsedNumber).toBe(null);
       });
 
       it('should return a null because of an null value', async() => {
-        await setup({isoCode: ODS_COUNTRY_ISO_CODE.FR});
+        await setup({ isoCode: ODS_COUNTRY_ISO_CODE.FR });
         const number = null;
         const parsedNumber = await controller.parseNumber(number);
         expect(parsedNumber).toBe(null);

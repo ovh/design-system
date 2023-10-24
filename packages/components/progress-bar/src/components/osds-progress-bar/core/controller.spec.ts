@@ -1,8 +1,8 @@
-import type {OdsLoggerSpyReferences} from '@ovhcloud/ods-common-testing';
-import {Ods, OdsLogger} from '@ovhcloud/ods-common-core';
-import {OdsClearLoggerSpy, OdsInitializeLoggerSpy} from '@ovhcloud/ods-common-testing';
-import {OdsProgressBarController} from './controller';
-import {OsdsProgressBar} from '../osds-progress-bar';
+import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
+import { OdsProgressBarController } from './controller';
+import { OsdsProgressBar } from '../osds-progress-bar';
+import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
+import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
 
 class OdsProgressBarMock extends OsdsProgressBar {
   constructor(attribute: Partial<OsdsProgressBar>) {

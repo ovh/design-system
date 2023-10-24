@@ -1,8 +1,8 @@
-import type {E2EElement, E2EPage} from '@stencil/core/testing';
-import type {OdsTileAttribute} from './interfaces/attributes';
-import {odsComponentAttributes2StringAttributes, odsStringAttributes2Str} from '@ovhcloud/ods-common-testing';
-import {newE2EPage} from '@stencil/core/testing';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
+import type { E2EElement, E2EPage } from '@stencil/core/testing';
+import type { OdsTileAttribute } from './interfaces/attributes';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
+import { newE2EPage } from '@stencil/core/testing';
 
 describe('e2e:osds-tile', () => {
   let page: E2EPage;
@@ -13,11 +13,11 @@ describe('e2e:osds-tile', () => {
     attributes = {},
     html = '',
     onPage,
-  }: { attributes?: Partial<OdsTileAttribute>, html?: string, onPage?: ({page}: { page: E2EPage }) => void } = {}) {
+  }: { attributes?: Partial<OdsTileAttribute>, html?: string, onPage?: ({ page }: { page: E2EPage }) => void } = {}) {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsTileAttribute>(attributes, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
-    onPage && await onPage({page});
+    onPage && await onPage({ page });
 
     await page.setContent(`
       <osds-tile ${odsStringAttributes2Str(stringAttributes)}>
@@ -30,7 +30,7 @@ describe('e2e:osds-tile', () => {
   }
 
   it('should render', async() => {
-    await setup({attributes: {}, html: ''});
+    await setup({ attributes: {}, html: '' });
     expect(el).not.toBeNull();
     expect(el).toHaveClass('hydrated');
   });
@@ -42,7 +42,7 @@ describe('e2e:osds-tile', () => {
     });
 
     it('should display a text in the tile', async() => {
-      await setup({html: ''});
+      await setup({ html: '' });
 
       el.innerHTML = '<osds-tile>text</osds-tile>';
       await page.waitForChanges();

@@ -1,1 +1,1 @@
-export {writeOnClipboard} from './write-on-clipboard';
+export { writeOnClipboard } from './write-on-clipboard';

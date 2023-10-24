@@ -1,11 +1,11 @@
-import {CommitmentTileStory, storyParams} from './guide-commitment-tile.web';
-import {extractArgTypes, extractStoryParams} from '../../../../../core/componentHTMLUtils';
+import { CommitmentTileStory, storyParams } from './guide-commitment-tile.web';
+import { extractArgTypes, extractStoryParams } from '../../../../../core/componentHTMLUtils';
 import page from './commitment-tile.web.stories.page.mdx';
 
 export default {
   title: 'Code/Stencil/Guides/Tiles/commitment',
   parameters: {
-    docs: {page},
+    docs: { page },
   },
 };
 

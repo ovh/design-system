@@ -1,8 +1,8 @@
-import {Ods} from '@ovhcloud/ods-common-core';
-import {OcdkSurface, OcdkSurfaceCorner, ocdkDefineCustomElements} from '@ovhcloud/ods-cdk';
 import {
   OcdkSurfaceCustomStrategyExample,
 } from './components/surface/strategies/custom-example/ocdk-surface-custom-strategy-example';
+import { Ods } from '@ovhcloud/ods-common-core';
+import { OcdkSurface, OcdkSurfaceCorner, ocdkDefineCustomElements } from '@ovhcloud/ods-cdk';
 
 ocdkDefineCustomElements();
 
@@ -53,7 +53,7 @@ logger.log('init');
   (window as any).basic3Toggle = () => {
     // synchronize the trigger element (anchor) with the surface when both are available
     if (basicTrigger3 && basicSurface3) {
-      basicSurface3.setCornerPoints({anchor: OcdkSurfaceCorner.TOP_LEFT, origin: OcdkSurfaceCorner.TOP_RIGHT});
+      basicSurface3.setCornerPoints({ anchor: OcdkSurfaceCorner.TOP_LEFT, origin: OcdkSurfaceCorner.TOP_RIGHT });
       // toggle the open of the surface
       basicSurface3.opened = !basicSurface3.opened;
     }

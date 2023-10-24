@@ -1,6 +1,6 @@
-import type {OdsValidityState} from '@ovhcloud/ods-common-core';
-import type {OdsRangeValue} from './value';
-import type {EventEmitter} from '@stencil/core';
+import type { OdsValidityState } from '@ovhcloud/ods-common-core';
+import type { OdsRangeValue } from './value';
+import type { EventEmitter } from '@stencil/core';
 
 interface OdsRangeValueChangeEventDetail {
   validity: OdsValidityState;

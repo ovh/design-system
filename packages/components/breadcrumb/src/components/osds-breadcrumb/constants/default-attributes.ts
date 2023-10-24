@@ -1,4 +1,4 @@
-import type {OdsBreadcrumbAttribute} from '../interfaces/attributes';
+import type { OdsBreadcrumbAttribute } from '../interfaces/attributes';
 
 const DEFAULT_ATTRIBUTE: OdsBreadcrumbAttribute = Object.freeze({
   contrasted: false,

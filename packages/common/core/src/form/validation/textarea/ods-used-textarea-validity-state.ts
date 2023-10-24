@@ -1,3 +1,3 @@
-import {OdsUsedValidityState} from '../ods-used-validity-state';
+import { OdsUsedValidityState } from '../ods-used-validity-state';
 
 export type OdsTextAreaUsedValidityState = Omit<OdsUsedValidityState, 'stepMismatch'>;

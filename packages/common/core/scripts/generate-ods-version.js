@@ -1,6 +1,6 @@
-var packageJson = require('../package.json');
 const fs = require('fs');
-console.log('writing version into version.js files...', {version: packageJson.version});
+var packageJson = require('../package.json');
+console.log('writing version into version.js files...', { version: packageJson.version });
 
 ['./dist/esm/version.d.ts', './dist/esm/version.js', './dist/cjs/version.d.ts', './dist/cjs/version.js']
   .forEach((file) =>

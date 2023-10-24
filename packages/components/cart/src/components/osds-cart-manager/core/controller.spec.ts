@@ -1,9 +1,9 @@
-import type {OdsCartManagerFooter} from '../interfaces/attributes';
-import type {OdsLoggerSpyReferences} from '@ovhcloud/ods-common-testing';
-import {Ods, OdsLogger} from '@ovhcloud/ods-common-core';
-import {OdsClearLoggerSpy, OdsInitializeLoggerSpy} from '@ovhcloud/ods-common-testing';
-import {OdsCartManagerController} from './controller';
-import {OsdsCartManager} from '../osds-cart-manager';
+import type { OdsCartManagerFooter } from '../interfaces/attributes';
+import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
+import { OdsCartManagerController } from './controller';
+import { OsdsCartManager } from '../osds-cart-manager';
+import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
+import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
 
 class OdsCartManagerMock extends OsdsCartManager {
   constructor(attribute: Partial<OsdsCartManager>) {

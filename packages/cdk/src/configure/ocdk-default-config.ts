@@ -1,4 +1,4 @@
-import {OcdkConfig} from './ocdk-config';
+import { OcdkConfig } from './ocdk-config';
 
 /**
  * default `OCDK` configuration applied if there no custom configuration made on client side

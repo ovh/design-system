@@ -1,7 +1,8 @@
-import type {OdsCheckboxAttribute} from './interfaces/attributes';
-import type {SpecPage} from '@stencil/core/testing';
-import {newSpecPage} from '@stencil/core/testing';
-import {OsdsCheckbox} from './osds-checkbox';
+import type { OdsCheckboxAttribute } from './interfaces/attributes';
+import type { SpecPage } from '@stencil/core/testing';
+import { OsdsCheckbox } from './osds-checkbox';
+import { OdsCheckboxController } from './core/ods-checkbox-controller';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import {
   OdsMockNativeMethod,
   OdsUnitTestAttributeType,
@@ -10,8 +11,7 @@ import {
   odsStringAttributes2Str,
   odsUnitTestAttribute,
 } from '@ovhcloud/ods-common-testing';
-import {OdsCheckboxController} from './core/ods-checkbox-controller';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
+import { newSpecPage } from '@stencil/core/testing';
 
 describe('spec:osds-checkbox', () => {
   let page: SpecPage;
@@ -26,9 +26,9 @@ describe('spec:osds-checkbox', () => {
     ${slots.unnamed || slots.unnamed === '' ? slots.unnamed : '<input type="checkbox">'}
     `;
 
-  async function setup({attributes = {}, html = ''}: { attributes?: Partial<OdsCheckboxAttribute>, html?: string }) {
-    const baseAttribute = {ariaLabel: '', checked: false, disabled: false, hasFocus: false, updating: false, value: ''};
-    const stringAttributes = odsComponentAttributes2StringAttributes<OdsCheckboxAttribute>({...baseAttribute, ...attributes}, DEFAULT_ATTRIBUTE);
+  async function setup({ attributes = {}, html = '' }: { attributes?: Partial<OdsCheckboxAttribute>, html?: string }) {
+    const baseAttribute = { ariaLabel: '', checked: false, disabled: false, hasFocus: false, updating: false, value: '' };
+    const stringAttributes = odsComponentAttributes2StringAttributes<OdsCheckboxAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
 
     // mock setCustomValidity method that does not exist when stencil mock HTMLInputElement
     OdsMockNativeMethod(HTMLInputElement.prototype, 'focus', jest.fn());
@@ -52,26 +52,26 @@ describe('spec:osds-checkbox', () => {
   });
 
   fit('should render', async() => {
-    await setup({attributes: {}, html: baseHtml({})});
+    await setup({ attributes: {}, html: baseHtml({}) });
     expect(shadowRoot).toBeTruthy();
     expect(instance).toBeTruthy();
   });
 
   it('should call afterInit', async() => {
-    await setup({attributes: {}, html: baseHtml({})});
+    await setup({ attributes: {}, html: baseHtml({}) });
     expect(controller.afterInit).toHaveBeenCalledWith();
     expect(controller.afterInit).toHaveBeenCalledTimes(1);
   });
 
   describe('contents', () => {
     it('should have a main slot', async() => {
-      await setup({attributes: {}, html: baseHtml({})});
+      await setup({ attributes: {}, html: baseHtml({}) });
       expect(mainSlot).toBeTruthy();
     });
   });
 
   it('should have a native html checkbox inside', async() => {
-    await setup({attributes: {}, html: baseHtml({})});
+    await setup({ attributes: {}, html: baseHtml({}) });
     expect(htmlCheckbox).toBeTruthy();
   });
 
@@ -91,7 +91,7 @@ describe('spec:osds-checkbox', () => {
         defaultValue: DEFAULT_ATTRIBUTE.afterSave,
         value: () => odsGetSimulatedPromise(false, () => undefined),
         newValue: () => odsGetSimulatedPromise(true, () => undefined),
-        setup: (afterSave) => setup({attributes: {afterSave}}),
+        setup: (afterSave) => setup({ attributes: { afterSave } }),
         ...config,
         include: [OdsUnitTestAttributeType.MUTABLE],
         exclude: [OdsUnitTestAttributeType.REFLECTED],
@@ -104,7 +104,7 @@ describe('spec:osds-checkbox', () => {
         defaultValue: DEFAULT_ATTRIBUTE.ariaLabel,
         value: 'oles',
         newValue: 'ipsum',
-        setup: (ariaLabel) => setup({attributes: {ariaLabel}}),
+        setup: (ariaLabel) => setup({ attributes: { ariaLabel } }),
         ...config,
       });
     });
@@ -115,7 +115,7 @@ describe('spec:osds-checkbox', () => {
         defaultValue: DEFAULT_ATTRIBUTE.ariaLabelledby,
         value: 'oles',
         newValue: 'ipsum',
-        setup: (ariaLabelledby) => setup({attributes: {ariaLabelledby}}),
+        setup: (ariaLabelledby) => setup({ attributes: { ariaLabelledby } }),
         ...config,
         exclude: [OdsUnitTestAttributeType.REFLECTED, OdsUnitTestAttributeType.MUTABLE, OdsUnitTestAttributeType.PROPERTY],
       });
@@ -128,7 +128,7 @@ describe('spec:osds-checkbox', () => {
         defaultValue: DEFAULT_ATTRIBUTE.beforeSave,
         value: () => odsGetSimulatedPromise(false, () => undefined),
         newValue: () => odsGetSimulatedPromise(true, () => undefined),
-        setup: (value) => setup({attributes: {beforeSave: value}}),
+        setup: (value) => setup({ attributes: { beforeSave: value } }),
         ...config,
         include: [OdsUnitTestAttributeType.MUTABLE],
         exclude: [OdsUnitTestAttributeType.REFLECTED],
@@ -141,7 +141,7 @@ describe('spec:osds-checkbox', () => {
         defaultValue: DEFAULT_ATTRIBUTE.checked,
         value: false,
         newValue: true,
-        setup: (checked) => setup({attributes: {checked}}),
+        setup: (checked) => setup({ attributes: { checked } }),
         ...config,
         include: [OdsUnitTestAttributeType.MUTABLE],
       });
@@ -153,7 +153,7 @@ describe('spec:osds-checkbox', () => {
         defaultValue: DEFAULT_ATTRIBUTE.disabled,
         value: false,
         newValue: true,
-        setup: (disabled) => setup({attributes: {disabled}}),
+        setup: (disabled) => setup({ attributes: { disabled } }),
         ...config,
       });
     });
@@ -164,7 +164,7 @@ describe('spec:osds-checkbox', () => {
         defaultValue: DEFAULT_ATTRIBUTE.hasFocus,
         value: false,
         newValue: true,
-        setup: (hasFocus) => setup({attributes: {hasFocus}}),
+        setup: (hasFocus) => setup({ attributes: { hasFocus } }),
         ...config,
         include: [OdsUnitTestAttributeType.MUTABLE],
       });
@@ -176,7 +176,7 @@ describe('spec:osds-checkbox', () => {
         defaultValue: DEFAULT_ATTRIBUTE.label,
         value: 'oles',
         newValue: 'ipsum',
-        setup: (label) => setup({attributes: {label}}),
+        setup: (label) => setup({ attributes: { label } }),
         ...config,
       });
     });
@@ -187,7 +187,7 @@ describe('spec:osds-checkbox', () => {
         defaultValue: DEFAULT_ATTRIBUTE.name,
         value: 'oles',
         newValue: 'ipsum',
-        setup: (name) => setup({attributes: {name}}),
+        setup: (name) => setup({ attributes: { name } }),
         ...config,
       });
     });
@@ -198,7 +198,7 @@ describe('spec:osds-checkbox', () => {
         name: 'save',
         value: () => odsGetSimulatedPromise(false, () => undefined),
         newValue: () => odsGetSimulatedPromise(true, () => undefined),
-        setup: (save) => setup({attributes: {save}}),
+        setup: (save) => setup({ attributes: { save } }),
         defaultValue: DEFAULT_ATTRIBUTE.save,
         ...config,
         include: [OdsUnitTestAttributeType.MUTABLE],
@@ -212,7 +212,7 @@ describe('spec:osds-checkbox', () => {
         defaultValue: DEFAULT_ATTRIBUTE.updating,
         value: false,
         newValue: true,
-        setup: (updating) => setup({attributes: {updating}}),
+        setup: (updating) => setup({ attributes: { updating } }),
         ...config,
         include: [OdsUnitTestAttributeType.MUTABLE],
       });
@@ -224,7 +224,7 @@ describe('spec:osds-checkbox', () => {
         defaultValue: DEFAULT_ATTRIBUTE.value,
         value: 'oles',
         newValue: 'ipsum',
-        setup: (value) => setup({attributes: {value}}),
+        setup: (value) => setup({ attributes: { value } }),
         ...config,
         include: [OdsUnitTestAttributeType.MUTABLE],
       });
@@ -236,22 +236,22 @@ describe('spec:osds-checkbox', () => {
    */
   describe('events', () => {
     it('odsCheckedChange', async() => {
-      await setup({attributes: {}, html: baseHtml({})});
+      await setup({ attributes: {}, html: baseHtml({}) });
       expect(instance.odsCheckedChange).toBeTruthy();
     });
 
     it('odsUpdatingChange', async() => {
-      await setup({attributes: {}, html: baseHtml({})});
+      await setup({ attributes: {}, html: baseHtml({}) });
       expect(instance.odsUpdatingChange).toBeTruthy();
     });
 
     it('odsBlur', async() => {
-      await setup({attributes: {}, html: baseHtml({})});
+      await setup({ attributes: {}, html: baseHtml({}) });
       expect(instance.odsBlur).toBeTruthy();
     });
 
     it('odsFocus', async() => {
-      await setup({attributes: {}, html: baseHtml({})});
+      await setup({ attributes: {}, html: baseHtml({}) });
       expect(instance.odsFocus).toBeTruthy();
     });
   });
@@ -261,7 +261,7 @@ describe('spec:osds-checkbox', () => {
    */
   describe('methods', () => {
     it('should call setButtonTabindex function and buttonTabindex should be set to 1', async() => {
-      await setup({attributes: {}, html: baseHtml({})});
+      await setup({ attributes: {}, html: baseHtml({}) });
       await page.waitForChanges();
       await instance.setTabindex(1);
       await page.waitForChanges();
@@ -269,7 +269,7 @@ describe('spec:osds-checkbox', () => {
     });
 
     it('should call setFocus function', async() => {
-      await setup({attributes: {}, html: baseHtml({})});
+      await setup({ attributes: {}, html: baseHtml({}) });
       await page.waitForChanges();
       expect(htmlCheckbox).toBeTruthy();
       await instance.setFocus();

@@ -1,13 +1,16 @@
-import type {OdsSelectOptionClickEventDetail} from '@ovhcloud/ods-component-select';
-import type {HTMLStencilElement} from '@stencil/core/internal';
-import type {OdsPaginationAttribute, OdsPaginationPageList} from './interfaces/attributes';
-import type {OdsPaginationChangedEventDetail, OdsPaginationEvent} from './interfaces/events';
-import type {OdsPaginationMethod} from './interfaces/methods';
-import {OdsLogger} from '@ovhcloud/ods-common-core';
-import {ODS_BUTTON_SIZE, ODS_BUTTON_VARIANT} from '@ovhcloud/ods-component-button';
-import {ODS_ICON_NAME, ODS_ICON_SIZE} from '@ovhcloud/ods-component-icon';
-import {ODS_TEXT_SIZE} from '@ovhcloud/ods-component-text';
-import {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
+import type { OdsSelectOptionClickEventDetail } from '@ovhcloud/ods-component-select';
+import type { HTMLStencilElement } from '@stencil/core/internal';
+import type { OdsPaginationAttribute, OdsPaginationPageList } from './interfaces/attributes';
+import type { OdsPaginationChangedEventDetail, OdsPaginationEvent } from './interfaces/events';
+import type { OdsPaginationMethod } from './interfaces/methods';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { ODS_PAGINATION_PER_PAGE_MIN, ODS_PAGINATION_PER_PAGE_OPTIONS } from './constants/pagination-per-page';
+import { OdsPaginationController } from './core/controller';
+import { OdsLogger } from '@ovhcloud/ods-common-core';
+import { ODS_BUTTON_SIZE, ODS_BUTTON_VARIANT } from '@ovhcloud/ods-component-button';
+import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
+import { ODS_TEXT_SIZE } from '@ovhcloud/ods-component-text';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import {
   Component,
   Element,
@@ -23,9 +26,6 @@ import {
   forceUpdate,
   h,
 } from '@stencil/core';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
-import {ODS_PAGINATION_PER_PAGE_MIN, ODS_PAGINATION_PER_PAGE_OPTIONS} from './constants/pagination-per-page';
-import {OdsPaginationController} from './core/controller';
 
 @Component({
   tag: 'osds-pagination',
@@ -43,22 +43,22 @@ export class OsdsPagination implements OdsPaginationAttribute, OdsPaginationEven
   @State() pageList: OdsPaginationPageList = [];
 
   /** @see OdsPaginationAttributes.current */
-  @Prop({reflect: true, mutable: true}) current: number = DEFAULT_ATTRIBUTE.current;
+  @Prop({ reflect: true, mutable: true }) current: number = DEFAULT_ATTRIBUTE.current;
 
   /** @see OdsPaginationAttributes.totalItems */
-  @Prop({reflect: true}) totalItems?: number;
+  @Prop({ reflect: true }) totalItems?: number;
 
   /** @see OdsPaginationAttributes.totalPages */
-  @Prop({reflect: true}) totalPages: number = DEFAULT_ATTRIBUTE.totalPages;
+  @Prop({ reflect: true }) totalPages: number = DEFAULT_ATTRIBUTE.totalPages;
 
   /** @see OdsPaginationAttributes.disabled */
-  @Prop({reflect: true, mutable: true}) disabled: boolean = DEFAULT_ATTRIBUTE.disabled;
+  @Prop({ reflect: true, mutable: true }) disabled: boolean = DEFAULT_ATTRIBUTE.disabled;
 
   /** @see OdsPaginationAttributes.labelTooltipPrevious */
-  @Prop({reflect: true}) labelTooltipPrevious: string = DEFAULT_ATTRIBUTE.labelTooltipPrevious;
+  @Prop({ reflect: true }) labelTooltipPrevious: string = DEFAULT_ATTRIBUTE.labelTooltipPrevious;
 
   /** @see OdsPaginationAttributes.labelTooltipNext */
-  @Prop({reflect: true}) labelTooltipNext: string = DEFAULT_ATTRIBUTE.labelTooltipNext;
+  @Prop({ reflect: true }) labelTooltipNext: string = DEFAULT_ATTRIBUTE.labelTooltipNext;
 
   /** @see OdsPaginationEvents.odsPaginationChanged */
   @Event() odsPaginationChanged!: EventEmitter<OdsPaginationChangedEventDetail>;
@@ -75,7 +75,7 @@ export class OsdsPagination implements OdsPaginationAttribute, OdsPaginationEven
 
   @Listen('odsValueChange')
   odsValueChangeHandler(event: CustomEvent<OdsSelectOptionClickEventDetail>) {
-    const {value} = event.detail;
+    const { value } = event.detail;
 
     if (value) {
       this.itemPerPage = typeof value === 'number' ? value : parseInt(value, 10);
@@ -90,7 +90,7 @@ export class OsdsPagination implements OdsPaginationAttribute, OdsPaginationEven
 
   @Watch('current')
   async onCurrentChange(current: number, oldCurrent?: number) {
-    this.logger.log(`current: ${this.current}]`, 'current changed. emit new current', {current});
+    this.logger.log(`current: ${this.current}]`, 'current changed. emit new current', { current });
 
     this.updatePageList();
     this.emitChange(current, oldCurrent);
@@ -116,7 +116,7 @@ export class OsdsPagination implements OdsPaginationAttribute, OdsPaginationEven
   }
 
   private emitChange(current: number, oldCurrent?: number) {
-    this.logger.debug('emit', {current, oldCurrent});
+    this.logger.debug('emit', { current, oldCurrent });
 
     this.odsPaginationChanged.emit({
       current: current,
@@ -168,7 +168,7 @@ export class OsdsPagination implements OdsPaginationAttribute, OdsPaginationEven
   }
 
   renderArrows(direction: 'left' | 'right') {
-    const {disabled} = this;
+    const { disabled } = this;
     const isLeft = direction === 'left';
     const arrowIcon = isLeft ? ODS_ICON_NAME.CHEVRON_LEFT : ODS_ICON_NAME.CHEVRON_RIGHT;
 

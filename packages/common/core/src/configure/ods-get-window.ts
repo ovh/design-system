@@ -1,4 +1,4 @@
-import {OdsWindow} from './ods-window';
+import { OdsWindow } from './ods-window';
 
 /**
  * get the window element typed as ODS window

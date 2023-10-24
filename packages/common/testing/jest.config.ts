@@ -1,4 +1,4 @@
-import type {Config} from '@jest/types';
+import type { Config } from '@jest/types';
 
 // Do not use here the ods-get-jest-config helper
 // as it is part of the code that we'll have to test

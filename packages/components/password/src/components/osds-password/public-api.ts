@@ -1,2 +1,2 @@
-export type {OdsPasswordAttribute} from './interfaces/attributes';
-export {OsdsPassword} from './osds-password';
+export type { OdsPasswordAttribute } from './interfaces/attributes';
+export { OsdsPassword } from './osds-password';

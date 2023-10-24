@@ -1,12 +1,12 @@
-import {html} from 'lit-html';
-import {extractArgTypes, extractStoryParams, getTagAttributes} from '../../../core/componentHTMLUtils';
-import {defineCustomElements} from '@ovhcloud/ods-components/tabs/loader';
-import {DEFAULT_ATTRIBUTE} from '@ovhcloud/ods-components/tabs/src/components/osds-tabs/constants/default-attributes';
-import {ODS_TABS_SIZES} from '@ovhcloud/ods-components/tabs';
+import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
+import page from './tabs.web-component.stories.page.mdx';
+import { html } from 'lit-html';
+import { defineCustomElements } from '@ovhcloud/ods-components/tabs/loader';
+import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-components/tabs/src/components/osds-tabs/constants/default-attributes';
+import { ODS_TABS_SIZES } from '@ovhcloud/ods-components/tabs';
 // @ts-ignore
 import changelog from '@ovhcloud/ods-components/tabs/CHANGELOG.md';
 // @ts-ignore
-import page from './tabs.web-component.stories.page.mdx';
 
 defineCustomElements();
 
@@ -22,13 +22,13 @@ const storyParams = {
       storage: 'storage',
       game: 'game',
     },
-    control: {type: 'select'},
+    control: { type: 'select' },
     defaultValue: 'rise',
   },
   size: {
     category: 'osds-tabs',
     options: ODS_TABS_SIZES,
-    control: {type: 'select'},
+    control: { type: 'select' },
     defaultValue: DEFAULT_ATTRIBUTE.size,
   },
   contrasted: {
@@ -44,7 +44,7 @@ export default {
     notes: {
       changelog,
     },
-    docs: {page},
+    docs: { page },
   },
   argTypes: extractArgTypes(storyParams),
 };

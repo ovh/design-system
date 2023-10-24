@@ -1,4 +1,4 @@
-import {odsDebounce} from './ods-debounce';
+import { odsDebounce } from './ods-debounce';
 
 describe('utils:debounce', () => {
   describe('ods-debounce', () => {

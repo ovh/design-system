@@ -1,18 +1,18 @@
-import type {E2EPage} from '@stencil/core/testing';
-import {E2EElement, newE2EPage} from '@stencil/core/testing';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
-import {ODS_SELECT_SIZE} from './constants/select-size';
-import {OdsSelectAttribute} from './interfaces/attributes';
-import {odsComponentAttributes2StringAttributes, odsStringAttributes2Str} from '@ovhcloud/ods-common-testing';
-import {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
+import type { E2EPage } from '@stencil/core/testing';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { ODS_SELECT_SIZE } from './constants/select-size';
+import { OdsSelectAttribute } from './interfaces/attributes';
+import { E2EElement, newE2EPage } from '@stencil/core/testing';
+import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 
 describe('e2e:osds-select', () => {
   let page: E2EPage;
   let el: E2EElement;
-  const baseAttribute = {ariaLabel: null, ariaLabelledby: '', color: ODS_THEME_COLOR_INTENT.primary, defaultValue: '', disabled: false, inline: false, required: false, size: ODS_SELECT_SIZE.md, value: ''};
+  const baseAttribute = { ariaLabel: null, ariaLabelledby: '', color: ODS_THEME_COLOR_INTENT.primary, defaultValue: '', disabled: false, inline: false, required: false, size: ODS_SELECT_SIZE.md, value: '' };
 
-  async function setup({attributes = {}, html = ''}: { attributes?: Partial<OdsSelectAttribute>, html?: string } = {}) {
-    const stringAttributes = odsComponentAttributes2StringAttributes<OdsSelectAttribute>({...baseAttribute, ...attributes}, DEFAULT_ATTRIBUTE);
+  async function setup({ attributes = {}, html = '' }: { attributes?: Partial<OdsSelectAttribute>, html?: string } = {}) {
+    const stringAttributes = odsComponentAttributes2StringAttributes<OdsSelectAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
 
@@ -46,7 +46,7 @@ describe('e2e:osds-select', () => {
 
   describe('screenshots with short text', () => {
     // Todo : add active behaviour on top of hover and focus
-    screenshotActions.forEach(({actionDescription, action}) => {
+    screenshotActions.forEach(({ actionDescription, action }) => {
       it(actionDescription, async() => {
 
         await setup({
@@ -63,18 +63,18 @@ describe('e2e:osds-select', () => {
 
         await page.evaluate(() => {
           const element = document.querySelector('osds-select') as HTMLElement;
-          return {width: element.clientWidth, height: element.clientHeight};
+          return { width: element.clientWidth, height: element.clientHeight };
         });
-        await page.setViewport({width: 600, height:600});
-        const results = await page.compareScreenshot('select', {fullPage: false, omitBackground: true});
-        expect(results).toMatchScreenshot({allowableMismatchedRatio: 0});
+        await page.setViewport({ width: 600, height:600 });
+        const results = await page.compareScreenshot('select', { fullPage: false, omitBackground: true });
+        expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
       });
     });
   });
 
   describe('screenshots with long text', () => {
     // Todo : add active behaviour on top of hover and focus
-    screenshotActions.forEach(({actionDescription, action}) => {
+    screenshotActions.forEach(({ actionDescription, action }) => {
       it(actionDescription, async() => {
 
         await setup({
@@ -94,11 +94,11 @@ describe('e2e:osds-select', () => {
 
         await page.evaluate(() => {
           const element = document.querySelector('osds-select') as HTMLElement;
-          return {width: element.clientWidth, height: element.clientHeight};
+          return { width: element.clientWidth, height: element.clientHeight };
         });
-        await page.setViewport({width: 600, height:600});
-        const results = await page.compareScreenshot('select', {fullPage: false, omitBackground: true});
-        expect(results).toMatchScreenshot({allowableMismatchedRatio: 0});
+        await page.setViewport({ width: 600, height:600 });
+        const results = await page.compareScreenshot('select', { fullPage: false, omitBackground: true });
+        expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
       });
     });
   });

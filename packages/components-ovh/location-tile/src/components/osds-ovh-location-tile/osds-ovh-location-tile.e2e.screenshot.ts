@@ -1,5 +1,5 @@
-import type {E2EPage} from '@stencil/core/testing';
-import {newE2EPage} from '@stencil/core/testing';
+import type { E2EPage } from '@stencil/core/testing';
+import { newE2EPage } from '@stencil/core/testing';
 
 describe('e2e:osds-ovh-location-tile', () => {
   let page: E2EPage;
@@ -17,8 +17,8 @@ describe('e2e:osds-ovh-location-tile', () => {
     it('standard', async() => {
       await setup();
 
-      const results = await page.compareScreenshot('ovh-location-tile', {fullPage: false});
-      expect(results).toMatchScreenshot({allowableMismatchedRatio: 0});
+      const results = await page.compareScreenshot('ovh-location-tile', { fullPage: false });
+      expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
     });
   });
 });

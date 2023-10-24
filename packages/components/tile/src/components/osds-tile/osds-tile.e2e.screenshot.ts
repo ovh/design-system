@@ -1,11 +1,11 @@
-import type {E2EElement, E2EPage} from '@stencil/core/testing';
-import type {OdsTileAttribute} from './interfaces/attributes';
-import {newE2EPage} from '@stencil/core/testing';
-import {odsComponentAttributes2StringAttributes, odsStringAttributes2Str} from '@ovhcloud/ods-common-testing';
-import {ODS_THEME_COLOR_INTENTS} from '@ovhcloud/ods-common-theming';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
-import {ODS_TILE_SIZES} from './constants/tile-size';
-import {ODS_TILE_VARIANTS} from './constants/tile-variant';
+import type { E2EElement, E2EPage } from '@stencil/core/testing';
+import type { OdsTileAttribute } from './interfaces/attributes';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { ODS_TILE_SIZES } from './constants/tile-size';
+import { ODS_TILE_VARIANTS } from './constants/tile-variant';
+import { newE2EPage } from '@stencil/core/testing';
+import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
+import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
 
 describe('e2e:osds-tile', () => {
   let page: E2EPage;
@@ -15,11 +15,11 @@ describe('e2e:osds-tile', () => {
     attributes = {},
     html = '',
     onPage,
-  }: { attributes?: Partial<OdsTileAttribute>, html?: string, onPage?: ({page}: { page: E2EPage }) => void } = {}) {
+  }: { attributes?: Partial<OdsTileAttribute>, html?: string, onPage?: ({ page }: { page: E2EPage }) => void } = {}) {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsTileAttribute>(attributes, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
-    onPage && await onPage({page});
+    onPage && await onPage({ page });
 
     await page.setContent(`
       <osds-tile ${odsStringAttributes2Str(stringAttributes)}>
@@ -52,7 +52,7 @@ describe('e2e:osds-tile', () => {
   ];
 
   describe('screenshots', () => {
-    screenshotActions.forEach(({actionDescription, action}) => {
+    screenshotActions.forEach(({ actionDescription, action }) => {
       ODS_THEME_COLOR_INTENTS.forEach((color) => {
         ODS_TILE_SIZES.forEach((size) => {
           ODS_TILE_VARIANTS.forEach((variant) => {
@@ -67,8 +67,8 @@ describe('e2e:osds-tile', () => {
               el.removeAttribute('checking');
               action();
               await page.waitForChanges();
-              const results = await page.compareScreenshot('tile', {fullPage: false, omitBackground: true});
-              expect(results).toMatchScreenshot({allowableMismatchedRatio: 0});
+              const results = await page.compareScreenshot('tile', { fullPage: false, omitBackground: true });
+              expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
             });
           });
         });
@@ -76,11 +76,11 @@ describe('e2e:osds-tile', () => {
     });
 
     it('should not be a rounded tile screenshot', async() => {
-      await setup({attributes: {}, html: ''});
+      await setup({ attributes: {}, html: '' });
       el.removeAttribute('rounded');
       await page.waitForChanges();
-      const results = await page.compareScreenshot('not rounded tile', {fullPage: false, omitBackground: true});
-      expect(results).toMatchScreenshot({allowableMismatchedRatio: 0});
+      const results = await page.compareScreenshot('not rounded tile', { fullPage: false, omitBackground: true });
+      expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
     });
   });
 });

@@ -1,13 +1,13 @@
-import type {E2EPage} from '@stencil/core/testing';
-import {newE2EPage} from '@stencil/core/testing';
-import {OdsLogger} from '@ovhcloud/ods-common-core';
+import type { E2EPage } from '@stencil/core/testing';
+import { newE2EPage } from '@stencil/core/testing';
+import { OdsLogger } from '@ovhcloud/ods-common-core';
 
 const logger = new OdsLogger('osds-content-addon-e2e');
 
 describe('e2e:osds-content-addon', () => {
   let page: E2EPage;
 
-  async function setup({html}: { html: string }) {
+  async function setup({ html }: { html: string }) {
     page = await newE2EPage();
     await page.setContent(`<osds-content-addon>${html}</osds-content-addon>`);
     await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
@@ -55,22 +55,22 @@ describe('e2e:osds-content-addon', () => {
 
       await page.evaluate(() => {
         const element = document.querySelector('osds-content-addon') as HTMLElement;
-        return {width: element.clientWidth, height: element.clientHeight};
+        return { width: element.clientWidth, height: element.clientHeight };
       });
-      await page.setViewport({width: 600, height:600});
-      const results = await page.compareScreenshot('all slots', {fullPage: false});
-      expect(results).toMatchScreenshot({allowableMismatchedPixels: 0});
+      await page.setViewport({ width: 600, height:600 });
+      const results = await page.compareScreenshot('all slots', { fullPage: false });
+      expect(results).toMatchScreenshot({ allowableMismatchedPixels: 0 });
     });
 
     describe('screenshots for each slot', () => {
-      slots.forEach(({slotName, html}) => {
+      slots.forEach(({ slotName, html }) => {
         it(slotName, async() => {
-          await setup({html});
+          await setup({ html });
 
           await page.waitForChanges();
-          await page.setViewport({width: 600, height:600});
-          const results = await page.compareScreenshot('each slot', {fullPage: false});
-          expect(results).toMatchScreenshot({allowableMismatchedPixels: 0});
+          await page.setViewport({ width: 600, height:600 });
+          const results = await page.compareScreenshot('each slot', { fullPage: false });
+          expect(results).toMatchScreenshot({ allowableMismatchedPixels: 0 });
         });
       });
     });

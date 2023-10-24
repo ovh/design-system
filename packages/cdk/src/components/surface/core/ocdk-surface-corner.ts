@@ -1,5 +1,5 @@
-import {OcdkSurfaceCornerBit} from './ocdk-surface-corner-bit';
-import {ocdkGetEnumNames} from '../../../types/ocdk-get-enum-names';
+import { OcdkSurfaceCornerBit } from './ocdk-surface-corner-bit';
+import { ocdkGetEnumNames } from '../../../types/ocdk-get-enum-names';
 
 export enum OcdkSurfaceCorner {
   /** 0 */

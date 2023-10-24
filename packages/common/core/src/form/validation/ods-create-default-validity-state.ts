@@ -1,4 +1,4 @@
-import {OdsUsedValidityState} from './ods-used-validity-state';
+import { OdsUsedValidityState } from './ods-used-validity-state';
 
 /**
  * get a default vanilla `ValidityState` used in ODS

@@ -1,11 +1,3 @@
-import {html} from 'lit-html';
-import {unsafeHTML} from 'lit-html/directives/unsafe-html';
-import {defineCustomElements} from '@ovhcloud/ods-components/checkbox-button/loader';
-import {ODS_CHECKBOX_BUTTON_SIZE, ODS_CHECKBOX_BUTTON_SIZES} from '@ovhcloud/ods-components/checkbox-button';
-import {ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS} from '@ovhcloud/ods-common-theming';
-// @ts-ignore
-import changelog from '@ovhcloud/ods-components/checkbox-button/CHANGELOG.md';
-// @ts-ignore
 import page from './checkbox-button.web-component.stories.page.mdx';
 import {
   createComponentTable,
@@ -13,6 +5,14 @@ import {
   extractStoryParams,
   getTagAttributes,
 } from '../../../core/componentHTMLUtils';
+import { html } from 'lit-html';
+import { unsafeHTML } from 'lit-html/directives/unsafe-html';
+import { defineCustomElements } from '@ovhcloud/ods-components/checkbox-button/loader';
+import { ODS_CHECKBOX_BUTTON_SIZE, ODS_CHECKBOX_BUTTON_SIZES } from '@ovhcloud/ods-components/checkbox-button';
+import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
+// @ts-ignore
+import changelog from '@ovhcloud/ods-components/checkbox-button/CHANGELOG.md';
+// @ts-ignore
 
 defineCustomElements();
 
@@ -34,13 +34,13 @@ const storyParams = {
     category: 'General',
     defaultValue: ODS_THEME_COLOR_INTENT.default,
     options: ODS_THEME_COLOR_INTENTS,
-    control: {type: 'select'},
+    control: { type: 'select' },
   },
   size: {
     category: 'General',
     defaultValue: ODS_CHECKBOX_BUTTON_SIZE.md,
     options: ODS_CHECKBOX_BUTTON_SIZES,
-    control: {type: 'select'},
+    control: { type: 'select' },
   },
   start: {
     category: 'Slot',
@@ -71,7 +71,7 @@ export default {
     notes: {
       changelog,
     },
-    docs: {page},
+    docs: { page },
   },
   argTypes: extractArgTypes(storyParams),
 };
@@ -133,8 +133,8 @@ const TemplateAll = () => html`
 <h1>Sizes & Colors</h1>
 ${unsafeHTML(createComponentTable(
     defaultTag,
-    {size: ODS_CHECKBOX_BUTTON_SIZES},
-    {color: ODS_THEME_COLOR_INTENTS},
+    { size: ODS_CHECKBOX_BUTTON_SIZES },
+    { color: ODS_THEME_COLOR_INTENTS },
     defaultContent,
     {
       checked: true,
@@ -145,6 +145,6 @@ ${unsafeHTML(createComponentTable(
 export const All = TemplateAll.bind({});
 // @ts-ignore
 All.parameters = {
-  controls: {hideNoControlsWarning: true},
-  options: {showPanel: false},
+  controls: { hideNoControlsWarning: true },
+  options: { showPanel: false },
 };

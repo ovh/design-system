@@ -1,12 +1,12 @@
-import type {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
-import type {EventEmitter} from '@stencil/core';
-import type {OdsMessageAttribute} from './interfaces/attributes';
-import type {OdsMessageEvent} from './interfaces/events';
-import {Component, Event, Host, Prop, Watch, h} from '@stencil/core';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
-import {ODS_MESSAGE_TYPE} from './constants/message-type';
-import {ODS_ICON_NAME, ODS_ICON_SIZE} from '@ovhcloud/ods-component-icon';
-import {OdsMessageController} from './core/controller';
+import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+import type { EventEmitter } from '@stencil/core';
+import type { OdsMessageAttribute } from './interfaces/attributes';
+import type { OdsMessageEvent } from './interfaces/events';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { ODS_MESSAGE_TYPE } from './constants/message-type';
+import { OdsMessageController } from './core/controller';
+import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
+import { Component, Event, Host, Prop, Watch, h } from '@stencil/core';
 
 /**
  * @slot (unnamed) - Message content
@@ -20,22 +20,22 @@ export class OsdsMessage implements OdsMessageAttribute, OdsMessageEvent {
   controller: OdsMessageController = new OdsMessageController(this);
 
   /** @see OdsMessageAttributes.color */
-  @Prop({reflect: true, mutable: true}) public color?: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
+  @Prop({ reflect: true, mutable: true }) public color?: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
 
   /** @see OdsMessageAttributes.inline */
-  @Prop({reflect: true}) public inline? = DEFAULT_ATTRIBUTE.inline;
+  @Prop({ reflect: true }) public inline? = DEFAULT_ATTRIBUTE.inline;
 
   /** @see OdsMessageAttributes.icon */
-  @Prop({reflect: true, mutable: true}) public icon?: ODS_ICON_NAME = DEFAULT_ATTRIBUTE.icon;
+  @Prop({ reflect: true, mutable: true }) public icon?: ODS_ICON_NAME = DEFAULT_ATTRIBUTE.icon;
 
   /** @see OdsMessageAttributes.removable */
-  @Prop({reflect: true}) public removable? = DEFAULT_ATTRIBUTE.removable;
+  @Prop({ reflect: true }) public removable? = DEFAULT_ATTRIBUTE.removable;
 
   /** @see OdsMessageAttributes.type */
-  @Prop({reflect: true}) public type?: ODS_MESSAGE_TYPE = DEFAULT_ATTRIBUTE.type;
+  @Prop({ reflect: true }) public type?: ODS_MESSAGE_TYPE = DEFAULT_ATTRIBUTE.type;
 
   /** @see OdsMessageAttributes.contrasted */
-  @Prop({reflect: true}) public contrasted? = DEFAULT_ATTRIBUTE.contrasted;
+  @Prop({ reflect: true }) public contrasted? = DEFAULT_ATTRIBUTE.contrasted;
 
   /** @see OdsMessageEvents.odsRemoveClick */
   @Event() odsRemoveClick!: EventEmitter<void>;
@@ -66,7 +66,7 @@ export class OsdsMessage implements OdsMessageAttribute, OdsMessageEvent {
   }
 
   render() {
-    const {color, icon, removable, type} = this;
+    const { color, icon, removable, type } = this;
 
     return (
       <Host {...{

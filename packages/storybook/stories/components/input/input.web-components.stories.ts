@@ -1,15 +1,15 @@
-import {html} from 'lit-html';
-import {unsafeHTML} from 'lit-html/directives/unsafe-html';
-import {ODS_INPUT_SIZES, ODS_INPUT_TYPES} from '@ovhcloud/ods-components/input';
-import {defineCustomElements} from '@ovhcloud/ods-components/input/loader';
-import {DEFAULT_ATTRIBUTE} from '@ovhcloud/ods-components/input/src/components/osds-input/constants/default-attributes';
-import {ODS_THEME_COLOR_INTENTS} from '@ovhcloud/ods-common-theming';
-import {extractArgTypes, extractStoryParams, getTagAttributes} from '../../../core/componentHTMLUtils';
-import {InputPlay} from './input.web-components.validation.stories';
+import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
+import { InputPlay } from './input.web-components.validation.stories';
+import page from './input.web-component.stories.page.mdx';
+import { html } from 'lit-html';
+import { unsafeHTML } from 'lit-html/directives/unsafe-html';
+import { ODS_INPUT_SIZES, ODS_INPUT_TYPES } from '@ovhcloud/ods-components/input';
+import { defineCustomElements } from '@ovhcloud/ods-components/input/loader';
+import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-components/input/src/components/osds-input/constants/default-attributes';
+import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
 // @ts-ignore
 import changelog from '@ovhcloud/ods-components/input/CHANGELOG.md';
 // @ts-ignore
-import page from './input.web-component.stories.page.mdx';
 
 defineCustomElements();
 
@@ -19,19 +19,19 @@ const storyParams = {
     category: 'General',
     defaultValue: DEFAULT_ATTRIBUTE.type,
     options: ODS_INPUT_TYPES,
-    control: {type: 'select'},
+    control: { type: 'select' },
   },
   color: {
     category: 'General',
     defaultValue: DEFAULT_ATTRIBUTE.color,
     options: ODS_THEME_COLOR_INTENTS,
-    control: {type: 'select'},
+    control: { type: 'select' },
   },
   size: {
     category: 'General',
     defaultValue: DEFAULT_ATTRIBUTE.size,
     options: ODS_INPUT_SIZES,
-    control: {type: 'select'},
+    control: { type: 'select' },
   },
   inline: {
     category: 'Misc',
@@ -59,23 +59,23 @@ const storyParams = {
   },
   defaultValue: {
     category: 'Misc',
-    control: {type: 'number'},
+    control: { type: 'number' },
   },
   value: {
     category: 'Misc',
-    control: {type: 'number'},
+    control: { type: 'number' },
   },
   min: {
     category: 'Misc',
-    control: {type: 'number'},
+    control: { type: 'number' },
   },
   max: {
     category: 'Misc',
-    control: {type: 'number'},
+    control: { type: 'number' },
   },
   step: {
     category: 'Misc',
-    control: {type: 'number'},
+    control: { type: 'number' },
   },
   name: {
     category: 'Misc',
@@ -100,7 +100,7 @@ const storyParams = {
   forbiddenValues: {
     category: 'Misc',
     defaultValue: [],
-    control: {type: 'array'},
+    control: { type: 'array' },
   },
   prefixValue: {
     category: 'Misc',
@@ -115,7 +115,7 @@ export default {
     notes: {
       changelog,
     },
-    docs: {page},
+    docs: { page },
   },
   argTypes: extractArgTypes(storyParams),
 };
@@ -214,6 +214,6 @@ const TemplateAll = () => html`
 export const All = TemplateAll.bind({});
 // @ts-ignore
 All.parameters = {
-  controls: {hideNoControlsWarning: true},
-  options: {showPanel: false},
+  controls: { hideNoControlsWarning: true },
+  options: { showPanel: false },
 };

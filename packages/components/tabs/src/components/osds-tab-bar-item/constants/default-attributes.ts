@@ -1,4 +1,4 @@
-import type {OdsTabBarItemAttribute} from '../interfaces/attributes';
+import type { OdsTabBarItemAttribute } from '../interfaces/attributes';
 
 const DEFAULT_ATTRIBUTE: OdsTabBarItemAttribute = Object.freeze({
   active: false,

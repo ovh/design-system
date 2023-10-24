@@ -1,4 +1,4 @@
-import type {OdsValidityState} from '@ovhcloud/ods-common-core';
+import type { OdsValidityState } from '@ovhcloud/ods-common-core';
 
 interface OdsSelectMethod {
   /**

@@ -1,14 +1,14 @@
 jest.mock('@ovhcloud/ods-cdk'); // keep jest.mock before any import
 jest.mock('./core/controller'); // keep jest.mock before any import
 
-import type {OdsMenuAttribute} from './interfaces/attributes';
-import {SpecPage, newSpecPage} from '@stencil/core/testing';
-import {OdsLogger} from '@ovhcloud/ods-common-core';
-import {odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute} from '@ovhcloud/ods-common-testing';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
-import {OsdsMenu} from './osds-menu';
-import {OdsMenuController} from './core/controller';
-import {ocdkIsSurface} from '@ovhcloud/ods-cdk';
+import type { OdsMenuAttribute } from './interfaces/attributes';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { OsdsMenu } from './osds-menu';
+import { OdsMenuController } from './core/controller';
+import { SpecPage, newSpecPage } from '@stencil/core/testing';
+import { OdsLogger } from '@ovhcloud/ods-common-core';
+import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
+import { ocdkIsSurface } from '@ovhcloud/ods-cdk';
 
 const logger = new OdsLogger('osds-menu-spec');
 
@@ -34,7 +34,7 @@ describe('spec:osds-menu', () => {
     jest.clearAllMocks();
   });
 
-  async function setup({attributes = {}, html = ''}: { attributes?: Partial<OdsMenuAttribute>, html?: string }) {
+  async function setup({ attributes = {}, html = '' }: { attributes?: Partial<OdsMenuAttribute>, html?: string }) {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsMenuAttribute>(attributes, DEFAULT_ATTRIBUTE);
 
     page = await newSpecPage({
@@ -57,19 +57,19 @@ describe('spec:osds-menu', () => {
 
   describe('contents', () => {
     it('should have a menu title', async() => {
-      await setup({attributes: {}, html: ''});
+      await setup({ attributes: {}, html: '' });
       expect(menuTitle).toBeTruthy();
     });
 
     it('should have an unnamed slot', async() => {
-      await setup({attributes: {}, html: ''});
+      await setup({ attributes: {}, html: '' });
       expect(menuItemsSlot).toBeTruthy();
     });
   });
 
   describe('Life cycle', () => {
     it('should call setSelectOptions', async() => {
-      await setup({attributes: { }});
+      await setup({ attributes: { } });
       const spySetMenuItemsButtons = jest.spyOn(instance, 'setMenuItemsButtons');
       await instance.componentDidLoad();
       expect(spySetMenuItemsButtons).toHaveBeenCalled();
@@ -79,20 +79,20 @@ describe('spec:osds-menu', () => {
   describe('cdk not initialized', () => {
     it('should not have yet the ref to surface', async() => {
       (ocdkIsSurface as unknown as jest.Mock).mockImplementation(() => false);
-      await setup({attributes: {}, html: ''});
+      await setup({ attributes: {}, html: '' });
       expect(instance.surface).toBeFalsy();
     });
   });
 
   describe('cdk initialized', () => {
     it('should have ref to anchor', async() => {
-      await setup({attributes: {}, html: ''});
+      await setup({ attributes: {}, html: '' });
       expect(instance.anchor).toBeTruthy();
     });
 
     it('should have ref to surface', async() => {
       mockSurfaceElements();
-      await setup({attributes: {}, html: ''});
+      await setup({ attributes: {}, html: '' });
       expect(instance.surface).toBeTruthy();
     });
 
@@ -112,7 +112,7 @@ describe('spec:osds-menu', () => {
 
     it('should call handlerKeyDown of controller', async() => {
       await setup({});
-      const key = new KeyboardEvent('keyup', {key : 'Enter'});
+      const key = new KeyboardEvent('keyup', { key : 'Enter' });
       instance.handleKeyDown(key);
       expect(controller.handleKeyDown).toHaveBeenCalledTimes(1);
       expect(controller.handleKeyDown).toHaveBeenCalledWith(key);
@@ -157,7 +157,7 @@ describe('spec:osds-menu', () => {
         defaultValue: DEFAULT_ATTRIBUTE.disabled,
         newValue: false,
         value: true,
-        setup: (value) => setup({attributes: {['disabled']: value}}),
+        setup: (value) => setup({ attributes: { ['disabled']: value } }),
         ...config,
       });
     });

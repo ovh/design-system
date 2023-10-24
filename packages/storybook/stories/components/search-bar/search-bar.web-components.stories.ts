@@ -1,14 +1,14 @@
-import {html} from 'lit-html';
-import {defineCustomElements} from '@ovhcloud/ods-components/search-bar/loader';
 import {
   extractArgTypes,
   extractStoryParams,
   getTagAttributes,
 } from '../../../core/componentHTMLUtils';
+import page from './search-bar.web-component.stories.page.mdx';
+import { html } from 'lit-html';
+import { defineCustomElements } from '@ovhcloud/ods-components/search-bar/loader';
 // @ts-ignore
 import changelog from '@ovhcloud/ods-components/search-bar/CHANGELOG.md';
 // @ts-ignore
-import page from './search-bar.web-component.stories.page.mdx';
 
 defineCustomElements();
 
@@ -36,9 +36,9 @@ const selectParams = {
   options: {
     category: 'Général',
     defaultValue: [
-      {label: 'option1', value: '1'},
-      {label: 'option2', value: '2'},
-      {label: 'option3', value: '3'},
+      { label: 'option1', value: '1' },
+      { label: 'option2', value: '2' },
+      { label: 'option3', value: '3' },
     ],
   },
 };
@@ -49,9 +49,9 @@ export default {
     notes: {
       changelog,
     },
-    docs: {page},
+    docs: { page },
   },
-  argTypes: extractArgTypes({...storyParams, ...selectParams}),
+  argTypes: extractArgTypes({ ...storyParams, ...selectParams }),
 };
 
 
@@ -79,5 +79,5 @@ const SelectTemplate = (args:any) => {
 export const Select = SelectTemplate.bind({});
 // @ts-ignore
 Select.args = {
-  ...extractStoryParams({...storyParams, ...selectParams}),
+  ...extractStoryParams({ ...storyParams, ...selectParams }),
 };

@@ -1,8 +1,8 @@
-import type {E2EElement, E2EPage} from '@stencil/core/testing';
-import type {OdsRadioButtonAttribute} from './interfaces/attributes';
-import {newE2EPage} from '@stencil/core/testing';
-import {odsComponentAttributes2StringAttributes, odsStringAttributes2Str} from '@ovhcloud/ods-common-testing';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
+import type { E2EElement, E2EPage } from '@stencil/core/testing';
+import type { OdsRadioButtonAttribute } from './interfaces/attributes';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { newE2EPage } from '@stencil/core/testing';
+import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 
 describe('e2e:osds-radio-button', () => {
   let page: E2EPage;
@@ -10,11 +10,11 @@ describe('e2e:osds-radio-button', () => {
   let slotStart: E2EElement;
   let slotEnd: E2EElement;
 
-  async function setup({attributes = {}, html = '', onPage}: { attributes?: Partial<OdsRadioButtonAttribute>, html?: string, onPage?: ({page}: { page: E2EPage }) => void } = {}) {
+  async function setup({ attributes = {}, html = '', onPage }: { attributes?: Partial<OdsRadioButtonAttribute>, html?: string, onPage?: ({ page }: { page: E2EPage }) => void } = {}) {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsRadioButtonAttribute>(attributes, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
-    onPage && await onPage({page});
+    onPage && await onPage({ page });
 
     await page.setContent(`
       <osds-radio-button ${odsStringAttributes2Str(stringAttributes)}>
@@ -28,7 +28,7 @@ describe('e2e:osds-radio-button', () => {
   }
 
   it('should render', async() => {
-    await setup({attributes: {}, html: ''});
+    await setup({ attributes: {}, html: '' });
     expect(el).not.toBeNull();
     expect(el).toHaveClass('hydrated');
   });
@@ -41,10 +41,10 @@ describe('e2e:osds-radio-button', () => {
     });
 
     it('should display slot texts', async() => {
-      await setup({html: `
+      await setup({ html: `
           <span slot="start">Left input</span>
           <span slot="end">Right input</span>
-        `});
+        ` });
 
       expect(el.innerText).toContain('Left input');
       expect(el.innerText).toContain('Right input');

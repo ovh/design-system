@@ -1,6 +1,6 @@
-import type {OsdsQuantity} from '../osds-quantity';
-import type {OsdsInput} from '@ovhcloud/ods-component-input';
-import {OdsLogger} from '@ovhcloud/ods-common-core';
+import type { OsdsQuantity } from '../osds-quantity';
+import type { OsdsInput } from '@ovhcloud/ods-component-input';
+import { OdsLogger } from '@ovhcloud/ods-common-core';
 
 class OdsQuantityController {
   private component: OsdsQuantity;
@@ -61,7 +61,7 @@ class OdsQuantityController {
   }
 
   setDisabledOnChildren(disabled: boolean) {
-    this.logger.log('disabled changed. update child', {disabled});
+    this.logger.log('disabled changed. update child', { disabled });
     if (this.component.minus && this.component.plus && this.component.input) {
       if (disabled) {
         this.setDisabled(this.component.minus, this.component.plus, this.component.input);

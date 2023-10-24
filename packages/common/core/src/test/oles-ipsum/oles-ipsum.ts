@@ -5,7 +5,7 @@ import {
   OLES_IPSUM_START,
   OVHCLOUD_KEYWORDS,
 } from './oles-ipsum.constants';
-import {OlesIpsumGeneration} from './oles-ipsum.types';
+import { OlesIpsumGeneration } from './oles-ipsum.types';
 
 const trim = (s: string) => {
   return s.replace(/^\s+/, '').replace(/\s+$/, '');

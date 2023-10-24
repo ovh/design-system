@@ -1,4 +1,4 @@
-import {OsdsTabBarItem} from '../osds-tab-bar-item';
+import { OsdsTabBarItem } from '../osds-tab-bar-item';
 
 /**
  * common controller logic for text component used by the different implementations.

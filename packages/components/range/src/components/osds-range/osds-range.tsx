@@ -1,12 +1,12 @@
-import type {OdsRangeValue} from './interfaces/value';
-import type {OdsRangeEvent, OdsRangeValueChangeEventDetail} from './interfaces/events';
-import type {OdsRangeAttribute} from './interfaces/attributes';
-import type {OdsErrorStateControl, OdsFormControl, OdsFormForbiddenValues, OdsValidityState} from '@ovhcloud/ods-common-core';
-import {Component, Element, Event, EventEmitter, Host, Method, Prop, Watch, h} from '@stencil/core';
-import {ODS_THEME_COLOR_INTENT} from '@ovhcloud/ods-common-theming';
-import {OdsLogger} from '@ovhcloud/ods-common-core';
-import {OdsRangeController} from './core/controller';
-import {DEFAULT_ATTRIBUTE} from './constants/default-attributes';
+import type { OdsRangeValue } from './interfaces/value';
+import type { OdsRangeEvent, OdsRangeValueChangeEventDetail } from './interfaces/events';
+import type { OdsRangeAttribute } from './interfaces/attributes';
+import type { OdsErrorStateControl, OdsFormControl, OdsFormForbiddenValues, OdsValidityState } from '@ovhcloud/ods-common-core';
+import { OdsRangeController } from './core/controller';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { Component, Element, Event, EventEmitter, Host, Method, Prop, Watch, h } from '@stencil/core';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+import { OdsLogger } from '@ovhcloud/ods-common-core';
 
 /**
  * @slot start - Fixed start button content
@@ -32,37 +32,37 @@ export class OsdsRange implements OdsRangeAttribute, OdsRangeEvent {
   dualInputEl?: HTMLInputElement;
 
   /** @see OdsRangeAttributes.color */
-  @Prop({reflect: true}) public color?: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
+  @Prop({ reflect: true }) public color?: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
 
   /** @see OdsRangeAttributes.disabled */
-  @Prop({reflect: true}) public disabled?: boolean = DEFAULT_ATTRIBUTE.disabled;
+  @Prop({ reflect: true }) public disabled?: boolean = DEFAULT_ATTRIBUTE.disabled;
 
   /** @see OdsRangeAttributes.inline */
-  @Prop({reflect: true}) public inline?: boolean = DEFAULT_ATTRIBUTE.inline;
+  @Prop({ reflect: true }) public inline?: boolean = DEFAULT_ATTRIBUTE.inline;
 
   /** @see OdsRangeAttributes.max */
-  @Prop({reflect: true}) public max?: number = DEFAULT_ATTRIBUTE.max;
+  @Prop({ reflect: true }) public max?: number = DEFAULT_ATTRIBUTE.max;
 
   /** @see OdsRangeAttributes.min */
-  @Prop({reflect: true}) public min?: number = DEFAULT_ATTRIBUTE.min;
+  @Prop({ reflect: true }) public min?: number = DEFAULT_ATTRIBUTE.min;
 
   /** @see OdsRangeAttributes.step */
-  @Prop({reflect: true}) public step?: number = DEFAULT_ATTRIBUTE.step;
+  @Prop({ reflect: true }) public step?: number = DEFAULT_ATTRIBUTE.step;
 
   /** @see OdsRangeAttributes.value */
-  @Prop({reflect: true, mutable: true}) public value: OdsRangeValue = DEFAULT_ATTRIBUTE.value;
+  @Prop({ reflect: true, mutable: true }) public value: OdsRangeValue = DEFAULT_ATTRIBUTE.value;
 
   /** @see OdsRangeAttributes.formControl */
-  @Prop({reflect: true}) formControl?: OdsFormControl<OdsValidityState> = DEFAULT_ATTRIBUTE.formControl;
+  @Prop({ reflect: true }) formControl?: OdsFormControl<OdsValidityState> = DEFAULT_ATTRIBUTE.formControl;
 
   /** @see OdsRangeAttributes.errorStateControl */
-  @Prop({reflect: true}) errorStateControl?: OdsErrorStateControl = DEFAULT_ATTRIBUTE.errorStateControl;
+  @Prop({ reflect: true }) errorStateControl?: OdsErrorStateControl = DEFAULT_ATTRIBUTE.errorStateControl;
 
   /** @see OdsRangeAttributes.error */
-  @Prop({reflect: true}) error?: boolean = DEFAULT_ATTRIBUTE.error;
+  @Prop({ reflect: true }) error?: boolean = DEFAULT_ATTRIBUTE.error;
 
   /** @see OdsRangeAttributes.forbiddenValues */
-  @Prop({reflect: true}) forbiddenValues: OdsFormForbiddenValues<number> = DEFAULT_ATTRIBUTE.forbiddenValues;
+  @Prop({ reflect: true }) forbiddenValues: OdsFormForbiddenValues<number> = DEFAULT_ATTRIBUTE.forbiddenValues;
 
   /** @see OdsRangeEvents.odsValueChange */
   @Event() odsValueChange!: EventEmitter<OdsRangeValueChangeEventDetail>;
@@ -120,7 +120,7 @@ export class OsdsRange implements OdsRangeAttribute, OdsRangeEvent {
    * @see OdsRangeBehavior.emitChange
    */
   emitChange(newValue: OdsRangeValue, oldValue?: OdsRangeValue): void {
-    this.logger.log('emit', {newValue, oldValue});
+    this.logger.log('emit', { newValue, oldValue });
     this.odsValueChange.emit({
       value: newValue,
       oldValue: oldValue,
@@ -151,7 +151,7 @@ export class OsdsRange implements OdsRangeAttribute, OdsRangeEvent {
   }
 
   render() {
-    const {disabled, min, max, step, value} = this;
+    const { disabled, min, max, step, value } = this;
     const val = this.controller.isDualRange() ? this.controller.asDualValues()[0] : value;
     const dualValue = this.controller.isDualRange() ? this.controller.asDualValues()[1] : undefined;
 

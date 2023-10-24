@@ -1,11 +1,11 @@
-import {extractArgTypes, extractStoryParams} from '../../../../../core/componentHTMLUtils';
-import {html} from 'lit-html';
-import {styleMap} from 'lit-html/directives/style-map';
-import {OcdkSurfaceAnimation, OcdkSurfaceAnimationList, OcdkSurfaceCorner, ocdkDefineCustomElements} from '@ovhcloud/ods-cdk';
-import {OcdkSurfaceBasicPositionList} from '@ovhcloud/ods-cdk-dev';
-import {OlesIpsumGeneration, olesIpsum} from '@ovhcloud/ods-common-core';
+import { extractArgTypes, extractStoryParams } from '../../../../../core/componentHTMLUtils';
 import page from './overlay.basic.stories.page.mdx';
-import {play} from './overlay.basic.stories.play';
+import { play } from './overlay.basic.stories.play';
+import { html } from 'lit-html';
+import { styleMap } from 'lit-html/directives/style-map';
+import { OcdkSurfaceAnimation, OcdkSurfaceAnimationList, OcdkSurfaceCorner, ocdkDefineCustomElements } from '@ovhcloud/ods-cdk';
+import { OcdkSurfaceBasicPositionList } from '@ovhcloud/ods-cdk-dev';
+import { OlesIpsumGeneration, olesIpsum } from '@ovhcloud/ods-common-core';
 
 ocdkDefineCustomElements();
 
@@ -15,54 +15,54 @@ const storyParams = {
     category: 'General',
     description: 'open the overlay or not',
     defaultValue: false,
-    control: {type: 'boolean'},
-    table: {defaultValue: {summary: false}},
+    control: { type: 'boolean' },
+    table: { defaultValue: { summary: false } },
   },
   corners: {
     category: 'General',
     description: 'choose the anchor and surface position reference',
     defaultValue: 'BOTTOM_LEFT TOP_LEFT',
     options: OcdkSurfaceBasicPositionList,
-    control: {type: 'select'},
-    table: {defaultValue: {summary: 'BOTTOM_LEFT TOP_LEFT'}},
+    control: { type: 'select' },
+    table: { defaultValue: { summary: 'BOTTOM_LEFT TOP_LEFT' } },
   },
   animated: {
     category: 'General',
     description: 'enable animation',
     defaultValue: true,
-    control: {type: 'boolean'},
-    table: {defaultValue: {summary: true}},
+    control: { type: 'boolean' },
+    table: { defaultValue: { summary: true } },
   },
   animation: {
     category: 'General',
     description: 'choose the animation',
     defaultValue: OcdkSurfaceAnimation.SLIPPING,
     options: OcdkSurfaceAnimationList,
-    control: {type: 'select'},
-    table: {defaultValue: {summary: OcdkSurfaceAnimation.SLIPPING}},
+    control: { type: 'select' },
+    table: { defaultValue: { summary: OcdkSurfaceAnimation.SLIPPING } },
   },
   applyDirection: {
     category: 'General',
     description: 'apply an HTML directionality',
     defaultValue: 'ltr',
     options: ['ltr', 'rtl'],
-    control: {type: 'select'},
-    table: {defaultValue: {summary: 'ltr'}},
+    control: { type: 'select' },
+    table: { defaultValue: { summary: 'ltr' } },
   },
   changeAlignment: {
     category: 'General',
     description: 'position component on the page',
     defaultValue: 'start center',
     options: ['start start', 'start center', 'start end', 'center start', 'center', 'center end', 'end start', 'end center', 'end end'],
-    control: {type: 'select'},
-    table: {defaultValue: {summary: 'start center'}},
+    control: { type: 'select' },
+    table: { defaultValue: { summary: 'start center' } },
   },
   applyContent: {
     category: 'General',
     description: 'apply some fake HTML in order to enable scrolling',
     defaultValue: false,
-    control: {type: 'boolean'},
-    table: {defaultValue: {summary: 'false'}},
+    control: { type: 'boolean' },
+    table: { defaultValue: { summary: 'false' } },
   },
 };
 
@@ -71,8 +71,8 @@ const htmlFile = require('!!raw-loader!@ovhcloud/ods-cdk/doc/overlay/examples/ba
 export default {
   title: 'Libraries/CDK/Overlay/examples/Basic',
   parameters: {
-    docs: {page},
-    controls: {expanded: true},
+    docs: { page },
+    controls: { expanded: true },
     preview: [
       {
         tab: 'Vanilla',
@@ -135,7 +135,7 @@ const Template = (args: any) => {
       }
 
     </style>
-    <div id='alignment' style=${ styleMap({placeContent: args.changeAlignment}) }>
+    <div id='alignment' style=${ styleMap({ placeContent: args.changeAlignment }) }>
       <p>${args.applyContent ? olesIpsum(OlesIpsumGeneration.paragraphs, 2) : ''}</p>
       <div id="basic-container-1" dir="${args.applyDirection}">
         <div id="basic-trigger-1" onclick="basic1Toggle()">my trigger</div>

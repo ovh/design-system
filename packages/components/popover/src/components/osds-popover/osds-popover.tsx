@@ -1,8 +1,8 @@
-import type {HTMLStencilElement} from '@stencil/core/internal';
-import type {OdsPopoverMethod} from './interfaces/methods';
-import {Component, Element, Host, Listen, Method, h} from '@stencil/core';
-import {OcdkSurface, ocdkDefineCustomElements, ocdkIsSurface} from '@ovhcloud/ods-cdk';
-import {OdsPopoverController} from './core/controller';
+import type { HTMLStencilElement } from '@stencil/core/internal';
+import type { OdsPopoverMethod } from './interfaces/methods';
+import { OdsPopoverController } from './core/controller';
+import { Component, Element, Host, Listen, Method, h } from '@stencil/core';
+import { OcdkSurface, ocdkDefineCustomElements, ocdkIsSurface } from '@ovhcloud/ods-cdk';
 
 ocdkDefineCustomElements();
 
@@ -21,7 +21,7 @@ export class OsdsPopover implements OdsPopoverMethod {
 
   @Element() el!: HTMLStencilElement;
 
-  @Listen('click', {target: 'window'})
+  @Listen('click', { target: 'window' })
   checkForClickOutside(event: any) {
     this.controller.checkForClickOutside(event);
   }

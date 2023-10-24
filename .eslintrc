@@ -24,6 +24,7 @@
   },
   "plugins": [
     "@typescript-eslint",
+    "eslint-plugin-import",
     "eslint-plugin-jsx-a11y",
     "eslint-plugin-tsdoc"
   ],
@@ -46,7 +47,7 @@
     "func-call-spacing": ["error", "never"],
     "func-style": ["error", "declaration"],
     "function-call-argument-newline": ["error", "consistent"],
-    "import/order": [ "error",
+    "import/order": ["error",
       {
         "groups": [
           "type",

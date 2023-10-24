@@ -10,28 +10,22 @@ import { OdsIconController } from './core/controller';
 @Component({
   tag: 'osds-icon',
   styleUrl: 'osds-icon.scss',
-  shadow: true
+  shadow: true,
 })
 export class OsdsIcon implements OdsIconAttribute {
   controller: OdsIconController = new OdsIconController(this);
   @Element() el!: HTMLElement;
 
-  /** @see OdsIconAttributes.ariaName */
   @Prop({ reflect: true }) public ariaName: string = DEFAULT_ATTRIBUTE.ariaName;
 
-  /** @see OdsIconAttributes.color */
   @Prop({ reflect: true }) public color?: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
 
-  /** @see OdsIconAttributes.contrasted */
   @Prop({ reflect: true }) public contrasted?: boolean = DEFAULT_ATTRIBUTE.contrasted;
 
-  /** @see OdsIconAttributes.hoverable */
   @Prop({ reflect: true }) public hoverable?: boolean = DEFAULT_ATTRIBUTE.hoverable;
 
-  /** @see OdsIconAttributes.name */
   @Prop({ reflect: true }) public name?: ODS_ICON_NAME = DEFAULT_ATTRIBUTE.name;
 
-  /** @see OdsIconAttributes.size */
   @Prop({ reflect: true }) public size?: ODS_ICON_SIZE = DEFAULT_ATTRIBUTE.size;
 
   @Watch('ariaName')

@@ -29,7 +29,7 @@ describe('spec:ods-icon-controller', () => {
     const loggerMocked = new OdsLogger('myLoggerMocked');
     loggerSpyReferences = OdsInitializeLoggerSpy({
       loggerMocked: loggerMocked as never,
-      spiedClass: OdsIconController
+      spiedClass: OdsIconController,
     });
   });
 
@@ -42,7 +42,7 @@ describe('spec:ods-icon-controller', () => {
       beforeEach(() => {
         setup({
           color: ODS_THEME_COLOR_INTENT.default,
-          size: ODS_ICON_SIZE.md
+          size: ODS_ICON_SIZE.md,
         });
       });
 

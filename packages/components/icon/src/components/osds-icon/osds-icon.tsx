@@ -52,18 +52,18 @@ export class OsdsIcon implements OdsIconAttribute {
     // @ts-ignore
     const base64Icon = icons[this.name];
     return (
-      <Host {...{
-        class: {
+      <Host 
+        class={{
           'ods-icon': true,
           'ods-icon--contrasted': this.contrasted ?? false,
           'ods-icon--hoverable': this.hoverable ?? false,
-        },
-        'aria-hidden': true,
-        alt: this.ariaName,
-        style: {
-          ...(base64Icon ? { '--icon-mask-image': `url("${base64Icon}")` } : {}),
+        }}
+        aria-hidden={ true }
+        alt={ this.ariaName }
+        style={
+          (base64Icon ? { '--icon-mask-image': `url("${base64Icon}")` } : { })
         }
-      }}></Host>
+      ></Host>
     );
   }
 }

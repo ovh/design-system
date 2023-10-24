@@ -90,7 +90,14 @@ describe('spec:osds-icon', () => {
 
       it('should be contrasted if attribute is added', async () => {
         await setup({ attributes: { contrasted: true } });
-        expect(instance.contrasted).toBeDefined();
+        expect(instance.contrasted).toBe(true);
+        expect(instance.el.classList.contains('ods-icon--contrasted')).toBe(true);
+      });
+
+      it('should not be contrasted if attribute is false', async () => {
+        await setup({ attributes: { contrasted: false } });
+        expect(instance.contrasted).toBe(false);
+        expect(instance.el.classList.contains('ods-icon--contrasted')).toBe(false);
       });
     });
 
@@ -106,7 +113,7 @@ describe('spec:osds-icon', () => {
 
       it('should set a name if attribute is added', async () => {
         const iconName = ODS_ICON_NAME.HOME;
-        await setup({ attributes: { name: iconName }});
+        await setup({ attributes: { name: iconName } });
         expect(instance.name).toBe(iconName);
       });
     });
@@ -136,6 +143,18 @@ describe('spec:osds-icon', () => {
         value: true,
         setup: (value) => setup({ attributes: { ['hoverable']: value } }),
         ...config,
+      });
+
+      it('should be hoverable if attribute is added', async () => {
+        await setup({ attributes: { hoverable: true } });
+        expect(instance.hoverable).toBe(true);
+        expect(instance.el.classList.contains('ods-icon--hoverable')).toBe(true);
+      });
+
+      it('should not be hoverable if attribute is false', async () => {
+        await setup({ attributes: { hoverable: false } });
+        expect(instance.hoverable).toBe(false);
+        expect(instance.el.classList.contains('ods-icon--hoverable')).toBe(false);
       });
     });
   });

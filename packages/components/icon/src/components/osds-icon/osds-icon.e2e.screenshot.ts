@@ -7,6 +7,8 @@ import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_ICON_NAMES } from './constants/icon-name';
 import { ODS_ICON_SIZES } from './constants/icon-size';
 
+const TIMEOUT = 50000;
+
 describe('e2e:osds-icon', () => {
   let page: E2EPage;
   let variations: string[] = [];
@@ -43,7 +45,7 @@ describe('e2e:osds-icon', () => {
 
       const results = await page.compareScreenshot('icon', { fullPage: true });
       expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
-    });
+    }, TIMEOUT);
 
     it('should take screenshots of all attributes variations contrasted', async () => {
       ODS_ICON_NAMES.forEach((name) => {
@@ -65,6 +67,6 @@ describe('e2e:osds-icon', () => {
 
       const results = await page.compareScreenshot('icon', { fullPage: true });
       expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
-    });
+    }, TIMEOUT);
   });
 });

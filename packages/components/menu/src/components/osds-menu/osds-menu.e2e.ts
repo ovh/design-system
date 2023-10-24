@@ -49,7 +49,7 @@ describe('e2e:osds-menu', () => {
     });
 
     it('should display a menu title as a ODS icon', async () => {
-      const icon = `<osds-icon slot="menu-title" name="home" size="xs" aria-hidden="" alt="" aria-name="" color="default" class="hydrated"></osds-icon>`;
+      const icon = `<osds-icon slot="menu-title" name="home" size="xs" aria-hidden="" alt="" aria-name="" color="default" class="hydrated ods-icon"></osds-icon>`;
       await setup({ attributes: { }, html: icon });
       expect(menuTitleContent.outerHTML).toBe(icon);
     });

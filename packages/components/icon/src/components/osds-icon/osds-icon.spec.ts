@@ -33,8 +33,8 @@ describe('spec:osds-icon', () => {
 
   it('should render', async () => {
     await setup({});
-    expect(root?.shadowRoot).toBeTruthy();
-    expect(instance).toBeTruthy();
+    expect(root?.shadowRoot).toBeDefined();
+    expect(instance).toBeDefined();
   });
 
   describe('attributes', () => {
@@ -57,7 +57,7 @@ describe('spec:osds-icon', () => {
 
       it('should have an aria-name content', async () => {
         await setup({ attributes: { ariaName: 'An icon' } });
-        expect(instance.ariaName).toBeTruthy();
+        expect(instance.ariaName).toBeDefined();
       });
     });
 

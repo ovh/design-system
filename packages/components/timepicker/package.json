@@ -2,6 +2,7 @@
   "name": "@ovhcloud/ods-component-timepicker",
   "version": "16.3.0",
   "description": "ODS Timepicker component",
+  "author": "OVH SAS",
   "license": "Apache-2.0",
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",

@@ -1,8 +1,9 @@
-import { extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
+import { OlesIpsumGeneration, olesIpsum } from '@ovhcloud/ods-common-core';
+import { defineCustomElements } from '@ovhcloud/ods-components/radio/loader';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-import { defineCustomElements } from '@ovhcloud/ods-components/radio/loader';
-import { OlesIpsumGeneration, olesIpsum } from '@ovhcloud/ods-common-core';
+
+import { extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 
 defineCustomElements();
 

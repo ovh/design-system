@@ -1,8 +1,8 @@
 /* eslint-disable no-console */
 import { OdsLogger } from './ods-logger';
-import { OdsWindow } from '../configure/ods-window';
 import { Ods } from '../configure/ods';
 import { odsDefaultConfig } from '../configure/ods-default-config';
+import { OdsWindow } from '../configure/ods-window';
 
 describe('e2e:ods-logging', () => {
   let logger: OdsLogger;

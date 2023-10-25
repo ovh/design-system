@@ -1,8 +1,10 @@
-import type { OdsCollapsibleAttribute } from './interfaces/attributes';
-import type { OdsCollapsibleEvent } from './interfaces/events';
+import { Component, Element, Event, EventEmitter, Host, Prop, Watch, h } from '@stencil/core';
+
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsCollapsibleController } from './core/controller';
-import { Component, Element, Event, EventEmitter, Host, Prop, Watch, h } from '@stencil/core';
+import type { OdsCollapsibleAttribute } from './interfaces/attributes';
+import type { OdsCollapsibleEvent } from './interfaces/events';
+
 
 /**
  * @slot (unnamed) - Collapsible content

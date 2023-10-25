@@ -1,10 +1,11 @@
 import type { OcdkSurface } from '@ovhcloud/ods-cdk';
-import { ODS_TOOLTIP_VARIANT } from '../constants/tooltip-variant';
-import { OdsTooltipController } from './controller';
-import { OsdsTooltip } from '../osds-tooltip';
 import { OcdkSurfaceMock } from '@ovhcloud/ods-cdk';
 import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
 import { OdsClearLoggerSpy, OdsInitializeLoggerSpy, OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
+
+import { OdsTooltipController } from './controller';
+import { ODS_TOOLTIP_VARIANT } from '../constants/tooltip-variant';
+import { OsdsTooltip } from '../osds-tooltip';
 
 class OdsTooltipMock extends OsdsTooltip {
   constructor(attribute: Partial<OsdsTooltip>) {

@@ -1,10 +1,12 @@
+import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import type { E2EElement, E2EPage } from '@stencil/core/testing';
-import type { OdsPaginationAttribute } from './interfaces/attributes';
-import type { OdsPaginationChangedEventDetail } from './interfaces/events';
+import { newE2EPage } from '@stencil/core/testing';
+
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_PAGINATION_PER_PAGE_OPTIONS } from './constants/pagination-per-page';
-import { newE2EPage } from '@stencil/core/testing';
-import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
+import type { OdsPaginationAttribute } from './interfaces/attributes';
+import type { OdsPaginationChangedEventDetail } from './interfaces/events';
+
 
 describe('e2e:osds-pagination', () => {
   const baseAttribute = { current: 0, disabled: false, labelTooltipNext: '', labelTooltipPrevious: '', totalPages: 0 };

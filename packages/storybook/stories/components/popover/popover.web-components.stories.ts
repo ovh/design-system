@@ -1,9 +1,10 @@
-import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
-import page from './popover.web-component.stories.page.mdx';
-import { html } from 'lit-html';
-import { defineCustomElements } from '@ovhcloud/ods-components/popover/loader';
-// @ts-ignore
 import changelog from '@ovhcloud/ods-components/popover/CHANGELOG.md';
+import { defineCustomElements } from '@ovhcloud/ods-components/popover/loader';
+import { html } from 'lit-html';
+
+import page from './popover.web-component.stories.page.mdx';
+import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
+// @ts-ignore
 // @ts-ignore
 
 defineCustomElements();

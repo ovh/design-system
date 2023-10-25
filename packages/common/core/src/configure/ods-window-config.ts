@@ -1,6 +1,6 @@
 import { Ods } from './ods';
-import { OdsDeepPartial } from '../types/ods-deep-partial';
 import { OdsConfig } from './ods-config';
+import { OdsDeepPartial } from '../types/ods-deep-partial';
 
 /**
  * parameters stored in the window globally.

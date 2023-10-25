@@ -1,5 +1,5 @@
-import { OdsUsedValidityState } from './ods-used-validity-state';
 import { OdsCreateDefaultValidityState } from './ods-create-default-validity-state';
+import { OdsUsedValidityState } from './ods-used-validity-state';
 
 /**
  * enumerate used property of ValidityState in an object.

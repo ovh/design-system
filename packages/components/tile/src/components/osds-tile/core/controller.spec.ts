@@ -1,11 +1,13 @@
+import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
 import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
-import { OsdsTile } from '../osds-tile';
+import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+
 import { OdsTileController } from './controller';
 import { ODS_TILE_SIZE } from '../constants/tile-size';
 import { ODS_TILE_VARIANT } from '../constants/tile-variant';
-import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
-import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
+import { OsdsTile } from '../osds-tile';
+
 
 class OsdsTileMock extends OsdsTile {
   constructor(attribute: Partial<OsdsTile>) {

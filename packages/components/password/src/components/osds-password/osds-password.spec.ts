@@ -1,11 +1,13 @@
-import type { SpecPage } from '@stencil/core/testing';
-import type { OdsPasswordAttribute } from './interfaces/attributes';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { OsdsPassword } from './osds-password';
-import { newSpecPage } from '@stencil/core/testing';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
-import { ODS_INPUT_SIZE } from '@ovhcloud/ods-component-input';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+import { ODS_INPUT_SIZE } from '@ovhcloud/ods-component-input';
+import type { SpecPage } from '@stencil/core/testing';
+import { newSpecPage } from '@stencil/core/testing';
+
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import type { OdsPasswordAttribute } from './interfaces/attributes';
+import { OsdsPassword } from './osds-password';
+
 
 describe('spec:osds-password', () => {
   const baseAttribute = { ariaLabel: '', forbiddenValues: [], value: '' };

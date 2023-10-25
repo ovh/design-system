@@ -1,6 +1,7 @@
 import type { SpecPage } from '@stencil/core/testing';
-import { OsdsContentAddon } from './osds-content-addon';
 import { newSpecPage } from '@stencil/core/testing';
+
+import { OsdsContentAddon } from './osds-content-addon';
 
 describe('spec:osds-content-addon', () => {
   let page: SpecPage;

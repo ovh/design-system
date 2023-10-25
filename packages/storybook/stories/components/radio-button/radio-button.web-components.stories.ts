@@ -1,13 +1,14 @@
-import { createComponentTable, extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
-import page from './radio-button.web-component.stories.page.mdx';
+import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
+import { ODS_RADIO_BUTTON_SIZES } from '@ovhcloud/ods-components/radio-button';
+import changelog from '@ovhcloud/ods-components/radio-button/CHANGELOG.md';
+import { defineCustomElements } from '@ovhcloud/ods-components/radio-button/loader';
+import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-components/radio-button/src/components/osds-radio-button/constants/default-attributes';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-import { defineCustomElements } from '@ovhcloud/ods-components/radio-button/loader';
-import { ODS_RADIO_BUTTON_SIZES } from '@ovhcloud/ods-components/radio-button';
-import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
-import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-components/radio-button/src/components/osds-radio-button/constants/default-attributes';
 // @ts-ignore
-import changelog from '@ovhcloud/ods-components/radio-button/CHANGELOG.md';
+
+import page from './radio-button.web-component.stories.page.mdx';
+import { createComponentTable, extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 // @ts-ignore
 
 defineCustomElements();

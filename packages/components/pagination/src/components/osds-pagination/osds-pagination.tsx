@@ -1,16 +1,9 @@
-import type { OdsSelectOptionClickEventDetail } from '@ovhcloud/ods-component-select';
-import type { HTMLStencilElement } from '@stencil/core/internal';
-import type { OdsPaginationAttribute, OdsPaginationPageList } from './interfaces/attributes';
-import type { OdsPaginationChangedEventDetail, OdsPaginationEvent } from './interfaces/events';
-import type { OdsPaginationMethod } from './interfaces/methods';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { ODS_PAGINATION_PER_PAGE_MIN, ODS_PAGINATION_PER_PAGE_OPTIONS } from './constants/pagination-per-page';
-import { OdsPaginationController } from './core/controller';
 import { OdsLogger } from '@ovhcloud/ods-common-core';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_BUTTON_SIZE, ODS_BUTTON_VARIANT } from '@ovhcloud/ods-component-button';
 import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
+import type { OdsSelectOptionClickEventDetail } from '@ovhcloud/ods-component-select';
 import { ODS_TEXT_SIZE } from '@ovhcloud/ods-component-text';
-import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import {
   Component,
   Element,
@@ -26,6 +19,14 @@ import {
   forceUpdate,
   h,
 } from '@stencil/core';
+import type { HTMLStencilElement } from '@stencil/core/internal';
+
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { ODS_PAGINATION_PER_PAGE_MIN, ODS_PAGINATION_PER_PAGE_OPTIONS } from './constants/pagination-per-page';
+import { OdsPaginationController } from './core/controller';
+import type { OdsPaginationAttribute, OdsPaginationPageList } from './interfaces/attributes';
+import type { OdsPaginationChangedEventDetail, OdsPaginationEvent } from './interfaces/events';
+import type { OdsPaginationMethod } from './interfaces/methods';
 
 @Component({
   tag: 'osds-pagination',

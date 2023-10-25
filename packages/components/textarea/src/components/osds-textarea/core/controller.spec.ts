@@ -1,9 +1,10 @@
 import type { OdsTextAreaValidityState, OdsValidityStateUnion } from '@ovhcloud/ods-common-core';
+import { Ods, OdsFormControl, OdsLogger } from '@ovhcloud/ods-common-core';
 import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
+import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
+
 import { OdsTextAreaController } from './controller';
 import { OsdsTextArea } from '../osds-textarea';
-import { Ods, OdsFormControl, OdsLogger } from '@ovhcloud/ods-common-core';
-import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
 
 class OdsTextAreaMock extends OsdsTextArea {
   constructor(attribute: Partial<OsdsTextArea>) {

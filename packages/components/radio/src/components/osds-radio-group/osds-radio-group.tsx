@@ -1,11 +1,12 @@
+import { Component, Element, Event, EventEmitter, Host, Method, Prop, Watch, h } from '@stencil/core';
 import type { HTMLStencilElement } from '@stencil/core/internal';
-import type { OdsRadioGroupEvent } from './interfaces/events';
+
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { OdsRadioGroupController } from './core/controller';
 import type { OdsRadioGroupAttribute } from './interfaces/attributes';
+import type { OdsRadioGroupEvent } from './interfaces/events';
 import type { OdsRadioGroupMethod } from './interfaces/methods';
 import type { OsdsRadio } from '../osds-radio/osds-radio';
-import { OdsRadioGroupController } from './core/controller';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { Component, Element, Event, EventEmitter, Host, Method, Prop, Watch, h } from '@stencil/core';
 
 @Component({
   tag: 'osds-radio-group',

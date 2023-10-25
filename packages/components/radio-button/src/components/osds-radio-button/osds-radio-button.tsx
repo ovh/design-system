@@ -1,8 +1,9 @@
-import type { OdsRadioButtonAttribute } from './interfaces/attributes';
 import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import type { ODS_RADIO_BUTTON_SIZE } from './constants/radio-button-size';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { Component, Host, Prop, h } from '@stencil/core';
+
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import type { ODS_RADIO_BUTTON_SIZE } from './constants/radio-button-size';
+import type { OdsRadioButtonAttribute } from './interfaces/attributes';
 
 /**
  * @slot start - Fixed start radio button content

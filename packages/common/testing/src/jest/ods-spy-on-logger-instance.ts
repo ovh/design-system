@@ -1,5 +1,5 @@
-import type { GenericLogger } from '../unit/generic-logger';
 import { OdsLoggerMethodSpies } from './ods-logger-method-spies';
+import type { GenericLogger } from '../unit/generic-logger';
 
 export function OdsSpyOnLoggerInstance(loggerMocked: GenericLogger): OdsLoggerMethodSpies {
   return {

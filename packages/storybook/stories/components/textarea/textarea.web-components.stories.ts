@@ -1,11 +1,12 @@
-import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
-import page from './textarea.web-component.stories.page.mdx';
-import { html } from 'lit-html';
 import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
+import changelog from '@ovhcloud/ods-components/textarea/CHANGELOG.md';
 import { defineCustomElements } from '@ovhcloud/ods-components/textarea/loader';
 import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-components/textarea/src/components/osds-textarea/constants/default-attributes';
 // @ts-ignore
-import changelog from '@ovhcloud/ods-components/textarea/CHANGELOG.md';
+import { html } from 'lit-html';
+
+import page from './textarea.web-component.stories.page.mdx';
+import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 // @ts-ignore
 
 defineCustomElements();

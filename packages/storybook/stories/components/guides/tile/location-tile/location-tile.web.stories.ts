@@ -1,6 +1,6 @@
 import { LocationTileStory, storyParams } from './guide-location-tile.web';
-import { extractArgTypes, extractStoryParams } from '../../../../../core/componentHTMLUtils';
 import page from './location-tile.web.stories.page.mdx';
+import { extractArgTypes, extractStoryParams } from '../../../../../core/componentHTMLUtils';
 
 export default {
   title: 'Code/Stencil/Guides/Tiles/Location',

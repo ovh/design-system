@@ -1,9 +1,10 @@
-import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
-import { OdsClipboardController } from './controller';
-import { OsdsClipboard } from '../osds-clipboard';
 import { OcdkSurface, OcdkSurfaceMock } from '@ovhcloud/ods-cdk';
 import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
+import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
 import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
+
+import { OdsClipboardController } from './controller';
+import { OsdsClipboard } from '../osds-clipboard';
 
 class OdsClipboardMock extends OsdsClipboard {
   constructor(attribute: Partial<OsdsClipboard>) {

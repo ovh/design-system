@@ -1,12 +1,13 @@
-import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
-import page from './divider.web-component.stories.page.mdx';
-import { html } from 'lit-html';
-import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
-import { defineCustomElements } from '@ovhcloud/ods-components/divider/loader';
 import { OlesIpsumGeneration, olesIpsum } from '@ovhcloud/ods-common-core';
+import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
 import { ODS_DIVIDER_SIZE, ODS_DIVIDER_SIZES } from '@ovhcloud/ods-components/divider';
 // @ts-ignore
 import changelog from '@ovhcloud/ods-components/divider/CHANGELOG.md';
+import { defineCustomElements } from '@ovhcloud/ods-components/divider/loader';
+import { html } from 'lit-html';
+
+import page from './divider.web-component.stories.page.mdx';
+import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 // @ts-ignore
 
 defineCustomElements();

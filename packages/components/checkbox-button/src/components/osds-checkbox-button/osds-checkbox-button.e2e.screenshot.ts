@@ -1,10 +1,12 @@
+import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
+import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
 import type { E2EElement, E2EPage } from '@stencil/core/testing';
-import type { OdsCheckboxButtonAttribute } from './interfaces/attributes';
+import { newE2EPage } from '@stencil/core/testing';
+
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_CHECKBOX_BUTTON_SIZES } from './constants/ods-checkbox-button-size';
-import { newE2EPage } from '@stencil/core/testing';
-import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
-import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
+import type { OdsCheckboxButtonAttribute } from './interfaces/attributes';
+
 
 describe('e2e:osds-checkbox-button', () => {
   let page: E2EPage;

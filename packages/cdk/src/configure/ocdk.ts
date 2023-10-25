@@ -1,8 +1,8 @@
-import { OcdkLogger } from '../logger/ocdk-logger';
-import { VERSION } from '../version';
-import { OcdkInitializedEventDetail } from './ocdk-initialized-event-detail';
 import { OcdkConfig } from './ocdk-config';
 import { ocdkDefaultConfig } from './ocdk-default-config';
+import { OcdkInitializedEventDetail } from './ocdk-initialized-event-detail';
+import { OcdkLogger } from '../logger/ocdk-logger';
+import { VERSION } from '../version';
 
 /**
  * Main class that controls OCDK :

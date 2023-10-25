@@ -1,13 +1,14 @@
-import { createComponentTable, extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
-import page from './button.web-component.stories.page.mdx';
-import { html } from 'lit-html';
-import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 import { OdsHTMLAnchorElementRelList, OdsHTMLAnchorElementTargetList } from '@ovhcloud/ods-common-core';
+import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
+import changelog from '@ovhcloud/ods-component-button/CHANGELOG.md';
 import { ODS_BUTTON_SIZE, ODS_BUTTON_SIZES, ODS_BUTTON_TEXT_ALIGN, ODS_BUTTON_TEXT_ALIGNS, ODS_BUTTON_VARIANT, ODS_BUTTON_VARIANTS } from '@ovhcloud/ods-components/button';
 import { defineCustomElements } from '@ovhcloud/ods-components/button/loader';
-import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
 // @ts-ignore
-import changelog from '@ovhcloud/ods-component-button/CHANGELOG.md';
+import { html } from 'lit-html';
+import { unsafeHTML } from 'lit-html/directives/unsafe-html';
+
+import page from './button.web-component.stories.page.mdx';
+import { createComponentTable, extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 // @ts-ignore
 
 defineCustomElements();

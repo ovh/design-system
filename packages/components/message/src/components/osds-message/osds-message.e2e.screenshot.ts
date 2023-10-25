@@ -1,11 +1,13 @@
-import type { E2EPage } from '@stencil/core/testing';
-import type { OdsMessageAttribute } from './interfaces/attributes';
-import { ODS_MESSAGE_TYPES } from './constants/message-type';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import { newE2EPage } from '@stencil/core/testing';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_ICON_NAME } from '@ovhcloud/ods-component-icon';
+import type { E2EPage } from '@stencil/core/testing';
+import { newE2EPage } from '@stencil/core/testing';
+
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { ODS_MESSAGE_TYPES } from './constants/message-type';
+import type { OdsMessageAttribute } from './interfaces/attributes';
+
 
 describe('e2e:osds-message', () => {
   let page: E2EPage;

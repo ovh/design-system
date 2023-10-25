@@ -1,8 +1,9 @@
-import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
-import { OsdsCartHeader } from '../osds-cart-header';
-import { OdsCartHeaderController } from './controller';
 import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
+import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
 import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
+
+import { OdsCartHeaderController } from './controller';
+import { OsdsCartHeader } from '../osds-cart-header';
 
 class OdsCartHeaderMock extends OsdsCartHeader {
   constructor(attribute: Partial<OsdsCartHeader>) {

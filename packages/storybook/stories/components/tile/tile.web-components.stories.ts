@@ -1,18 +1,19 @@
+import { OlesIpsumGeneration, olesIpsum } from '@ovhcloud/ods-common-core';
+import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
+import { ODS_TILE_SIZE, ODS_TILE_SIZES, ODS_TILE_VARIANT, ODS_TILE_VARIANTS } from '@ovhcloud/ods-components/tile';
+import changelog from '@ovhcloud/ods-components/tile/CHANGELOG.md';
+import { defineCustomElements } from '@ovhcloud/ods-components/tile/loader';
+import { html } from 'lit-html';
+import { unsafeHTML } from 'lit-html/directives/unsafe-html';
+// @ts-ignore
+
+import page from './tile.web-component.stories.page.mdx';
 import {
   createComponentTable,
   extractArgTypes,
   extractStoryParams,
   getTagAttributes,
 } from '../../../core/componentHTMLUtils';
-import page from './tile.web-component.stories.page.mdx';
-import { html } from 'lit-html';
-import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
-import { defineCustomElements } from '@ovhcloud/ods-components/tile/loader';
-import { ODS_TILE_SIZE, ODS_TILE_SIZES, ODS_TILE_VARIANT, ODS_TILE_VARIANTS } from '@ovhcloud/ods-components/tile';
-import { OlesIpsumGeneration, olesIpsum } from '@ovhcloud/ods-common-core';
-// @ts-ignore
-import changelog from '@ovhcloud/ods-components/tile/CHANGELOG.md';
 // @ts-ignore
 
 defineCustomElements();

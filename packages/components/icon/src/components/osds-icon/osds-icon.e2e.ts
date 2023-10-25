@@ -1,9 +1,10 @@
-import type { E2EElement, E2EPage } from '@stencil/core/testing';
-import type { OdsIconAttribute } from './interfaces/attributes';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+import type { E2EElement, E2EPage } from '@stencil/core/testing';
 import { newE2EPage } from '@stencil/core/testing';
+
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import type { OdsIconAttribute } from './interfaces/attributes';
 
 describe('e2e:osds-icon', () => {
   const baseAttribute = { ariaName: '' };
@@ -20,17 +21,17 @@ describe('e2e:osds-icon', () => {
     el = await page.find('osds-icon');
   }
 
-  it('should render', async () => {
+  it('should render', async() => {
     await setup({ attributes: { color: ODS_THEME_COLOR_INTENT.primary, contrasted: false } });
     expect(el).not.toBeNull();
   });
 
-  it('should have ods-icon--contrasted class', async () => {
+  it('should have ods-icon--contrasted class', async() => {
     await setup({ attributes: { color: ODS_THEME_COLOR_INTENT.primary, contrasted: true } });
     expect(el.classList.contains('ods-icon--contrasted')).toBe(true);
   });
 
-  it('should have ods-icon--hoverable class', async () => {
+  it('should have ods-icon--hoverable class', async() => {
     await setup({ attributes: { color: ODS_THEME_COLOR_INTENT.primary, hoverable: true } });
     expect(el.classList.contains('ods-icon--hoverable')).toBe(true);
   });

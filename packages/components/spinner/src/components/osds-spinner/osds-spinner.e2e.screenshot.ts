@@ -1,9 +1,11 @@
+import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import type { E2EPage } from '@stencil/core/testing';
-import type { OdsSpinnerAttribute } from './interfaces/attributes';
+import { newE2EPage } from '@stencil/core/testing';
+
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_SPINNER_SIZE } from './constants/spinner-size';
-import { newE2EPage } from '@stencil/core/testing';
-import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
+import type { OdsSpinnerAttribute } from './interfaces/attributes';
+
 
 describe('e2e:osds-spinner', () => {
   let page: E2EPage;

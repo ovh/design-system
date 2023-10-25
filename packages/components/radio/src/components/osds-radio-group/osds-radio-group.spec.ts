@@ -1,13 +1,15 @@
 jest.mock('./core/controller'); // keep jest.mock before any
 
-import type { OdsRadioGroupAttribute } from './interfaces/attributes';
-import type { SpecPage } from '@stencil/core/testing';
-import { OsdsRadioGroup } from './osds-radio-group';
-import { OdsRadioGroupController } from './core/controller';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { OsdsRadio } from '../osds-radio/osds-radio';
 import { OdsUnitTestAttributeType, odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
+import type { SpecPage } from '@stencil/core/testing';
 import { newSpecPage } from '@stencil/core/testing';
+
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { OdsRadioGroupController } from './core/controller';
+import type { OdsRadioGroupAttribute } from './interfaces/attributes';
+import { OsdsRadioGroup } from './osds-radio-group';
+import { OsdsRadio } from '../osds-radio/osds-radio';
+
 
 class OdsRadioMock extends OsdsRadio {
   constructor(attribute?: Partial<OsdsRadio>) {

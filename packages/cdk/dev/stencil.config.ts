@@ -1,5 +1,5 @@
-import { Config } from '@stencil/core';
 import { getStencilConfig } from '@ovhcloud/ods-common-stencil';
+import { Config } from '@stencil/core';
 
 const args = process.argv.slice(2);
 

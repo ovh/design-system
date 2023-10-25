@@ -1,10 +1,11 @@
-import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
-import page from './radio.web-component.stories.page.mdx';
-import { html } from 'lit-html';
-import { defineCustomElements } from '@ovhcloud/ods-components/radio/loader';
 import { OlesIpsumGeneration, olesIpsum } from '@ovhcloud/ods-common-core';
 // @ts-ignore
 import changelog from '@ovhcloud/ods-components/radio/CHANGELOG.md';
+import { defineCustomElements } from '@ovhcloud/ods-components/radio/loader';
+import { html } from 'lit-html';
+
+import page from './radio.web-component.stories.page.mdx';
+import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 // @ts-ignore
 
 defineCustomElements();

@@ -1,9 +1,10 @@
-import { extractArgTypes, extractStoryParams } from '../../../core/componentHTMLUtils';
-import page from './location-tile.web-component.stories.page.mdx';
-import { html } from 'lit-html';
-import { defineCustomElements } from '@ovhcloud/ods-ovh-components/location-tile/loader';
-// @ts-ignore
 import changelog from '@ovhcloud/ods-ovh-components/location-tile/CHANGELOG.md';
+import { defineCustomElements } from '@ovhcloud/ods-ovh-components/location-tile/loader';
+import { html } from 'lit-html';
+
+import page from './location-tile.web-component.stories.page.mdx';
+import { extractArgTypes, extractStoryParams } from '../../../core/componentHTMLUtils';
+// @ts-ignore
 // @ts-ignore
 
 defineCustomElements();

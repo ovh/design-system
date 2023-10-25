@@ -1,9 +1,11 @@
-import type { E2EElement, E2EPage, EventSpy } from '@stencil/core/testing';
-import type { OdsRadioGroupEvent, OdsRadioGroupValueChangeEventDetail } from './interfaces/events';
-import type { OdsRadioGroupAttribute } from './interfaces/attributes';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { newE2EPage } from '@stencil/core/testing';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
+import type { E2EElement, E2EPage, EventSpy } from '@stencil/core/testing';
+import { newE2EPage } from '@stencil/core/testing';
+
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import type { OdsRadioGroupAttribute } from './interfaces/attributes';
+import type { OdsRadioGroupEvent, OdsRadioGroupValueChangeEventDetail } from './interfaces/events';
+
 
 describe('e2e:osds-radio-group', () => {
   let page: E2EPage;

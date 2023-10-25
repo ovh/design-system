@@ -1,8 +1,8 @@
+import { OdsAccordionGroupController } from './controller';
 import type { OdsAccordionAttribute } from '../../osds-accordion/interfaces/attributes';
 import type { OdsAccordionToggleEvent } from '../../osds-accordion/interfaces/events';
 import { OsdsAccordion } from '../../osds-accordion/osds-accordion';
 import { OsdsAccordionGroup } from '../osds-accordion-group';
-import { OdsAccordionGroupController } from './controller';
 
 class OdsAccordionMock extends OsdsAccordion {
   constructor(attribute: Partial<OsdsAccordion>) {

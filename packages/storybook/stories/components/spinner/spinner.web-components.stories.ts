@@ -1,11 +1,12 @@
-import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
-import page from './spinner.web-component.stories.page.mdx';
-import { html } from 'lit-html';
 import { ODS_SPINNER_SIZES } from '@ovhcloud/ods-components/spinner';
+import changelog from '@ovhcloud/ods-components/spinner/CHANGELOG.md';
 import { defineCustomElements } from '@ovhcloud/ods-components/spinner/loader';
 import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-components/spinner/src/components/osds-spinner/constants/default-attributes';
 // @ts-ignore
-import changelog from '@ovhcloud/ods-components/spinner/CHANGELOG.md';
+import { html } from 'lit-html';
+
+import page from './spinner.web-component.stories.page.mdx';
+import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 // @ts-ignore
 
 defineCustomElements();

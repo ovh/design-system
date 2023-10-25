@@ -1,10 +1,11 @@
+import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
 import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing/src';
+import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing/src';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+
 import { OdsIconController } from './controller';
 import { ODS_ICON_SIZE } from '../constants/icon-size';
 import { OsdsIcon } from '../osds-icon';
-import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
-import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing/src';
-import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 
 class OsdsIconMock extends OsdsIcon {
   constructor(attribute: Partial<OsdsIcon>) {

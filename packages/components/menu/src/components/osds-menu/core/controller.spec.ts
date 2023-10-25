@@ -1,15 +1,16 @@
+import { OcdkSurface, OcdkSurfaceMock } from '@ovhcloud/ods-cdk';
+import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
 import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
 import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
-import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
-import { OsdsMenu } from '../osds-menu';
+
 import { OdsMenuController } from './controller';
-import { OcdkSurface, OcdkSurfaceMock } from '@ovhcloud/ods-cdk';
 import { OsdsMenuItem } from '../../osds-menu-item/osds-menu-item';
+import { OsdsMenu } from '../osds-menu';
 
 class OdsMenuMock extends OsdsMenu {
   constructor(attribute: Partial<OsdsMenu>) {
     super();
-    Object.assign(this, attribute)
+    Object.assign(this, attribute);
   }
 
   controller: OdsMenuController = jest.fn() as unknown as OdsMenuController;
@@ -44,14 +45,14 @@ describe('spec:ods-menu-controller', () => {
 
   beforeEach(() => {
     item1 = document.createElement('osds-menu-item') as OsdsMenuItem & HTMLElement;
-    item1.innerHTML = `<osds-button><span slot="start">Action 1</span></osds-button>`;
+    item1.innerHTML = '<osds-button><span slot="start">Action 1</span></osds-button>';
     item2 = document.createElement('osds-menu-item') as OsdsMenuItem & HTMLElement;
-    item2.innerHTML = `<osds-button><span slot="start">Action 2</span></osds-button>`;
+    item2.innerHTML = '<osds-button><span slot="start">Action 2</span></osds-button>';
 
     const loggerMocked = new OdsLogger('myLoggerMocked');
     loggerSpyReferences = OdsInitializeLoggerSpy({
       loggerMocked: loggerMocked as never,
-      spiedClass: OdsMenuController
+      spiedClass: OdsMenuController,
     });
   });
 
@@ -67,12 +68,14 @@ describe('spec:ods-menu-controller', () => {
 
   describe('methods', () => {
     describe('method: handleTriggerClick', () => {
-      it('should do nothing if there is no surface', async () => {
+      it('should do nothing if there is no surface', async() => {
         setup(component);
-        expect(() => { controller.handleTriggerClick() }).not.toThrow();
+        expect(() => {
+          controller.handleTriggerClick();
+        }).not.toThrow();
         await expect(component.surface).toBeUndefined();
       });
-      it('should change the value of opened attribute on click', async () => {
+      it('should change the value of opened attribute on click', async() => {
         setup(component);
         component.surface = new OcdkSurfaceMock() as unknown as OcdkSurface;
         component.surface!.opened = false;
@@ -83,60 +86,62 @@ describe('spec:ods-menu-controller', () => {
     });
 
     describe('method: handleKeyDown', () => {
-      it('should do nothing if key is not ENTER or SPACE or ESCAPE', async () => {
+      it('should do nothing if key is not ENTER or SPACE or ESCAPE', async() => {
         setup(component);
         component.surface = new OcdkSurfaceMock() as unknown as OcdkSurface;
         component.surface!.opened = false;
 
-        const event = new KeyboardEvent("keypress", {
+        const event = new KeyboardEvent('keypress', {
           bubbles: true,
           cancelable: true,
-          composed: true
+          composed: true,
         });
-        Object.defineProperty(event, 'key', { value: "A" })
+        Object.defineProperty(event, 'key', { value: 'A' });
 
-        const target = document.createElement("OSDS-BUTTON");
-        Object.defineProperty(event, 'target', { value: target })
+        const target = document.createElement('OSDS-BUTTON');
+        Object.defineProperty(event, 'target', { value: target });
 
         await controller.handleKeyDown(event);
-        expect(component.surface.opened).toBe(false)
+        expect(component.surface.opened).toBe(false);
       });
 
-      it('should do nothing if there is no surface', async () => {
+      it('should do nothing if there is no surface', async() => {
         setup(component);
         component.surface = undefined;
 
-        const event = new KeyboardEvent("keypress", {
+        const event = new KeyboardEvent('keypress', {
           bubbles: true,
           cancelable: true,
-          composed: true
+          composed: true,
         });
-        Object.defineProperty(event, 'key', { value: "A" })
+        Object.defineProperty(event, 'key', { value: 'A' });
 
-        const target = document.createElement("OSDS-BUTTON");
-        Object.defineProperty(event, 'target', { value: target })
+        const target = document.createElement('OSDS-BUTTON');
+        Object.defineProperty(event, 'target', { value: target });
 
-        expect(() => { controller.handleKeyDown(event) }).not.toThrow();
+        expect(() => {
+          controller.handleKeyDown(event);
+        }).not.toThrow();
         expect(component.surface).toBeUndefined();
       });
 
-      it('should change the value of opened attribute on ENTER or SPACE press', async () => {
+      it('should change the value of opened attribute on ENTER or SPACE press', async() => {
         setup(component);
         component.surface = new OcdkSurfaceMock() as unknown as OcdkSurface;
         component.surface!.opened = false;
-        const keyEnter = new KeyboardEvent("keydown", { code : "Enter" });
+        const keyEnter = new KeyboardEvent('keydown', { code : 'Enter' });
         controller.handleKeyDown(keyEnter);
 
         expect(component.surface.opened).toBe(true);
       });
 
-      it('should close the surface on ESCAPE press', async () => {
+      it('should close the surface on ESCAPE press', async() => {
         setup(component);
         component.surface = new OcdkSurfaceMock() as unknown as OcdkSurface;
         component.surface!.opened = true;
 
         const spyCloseSurface = jest.spyOn(controller, 'closeSurface');
-        const keyEscape = new KeyboardEvent("keydown", { code : "Escape" });
+        const keyEscape = new KeyboardEvent('keydown', { code : 'Escape' });
         controller.handleKeyDown(keyEscape);
         expect(spyCloseSurface).toHaveBeenCalledTimes(1);
       });
@@ -146,10 +151,10 @@ describe('spec:ods-menu-controller', () => {
         component.surface = new OcdkSurfaceMock() as unknown as OcdkSurface;
         component.surface!.opened = true;
 
-        const keyDown = new KeyboardEvent("keydown", { code : "ArrowDown" });
+        const keyDown = new KeyboardEvent('keydown', { code : 'ArrowDown' });
         controller.handleKeyDown(keyDown);
 
-        expect(item1.getAttribute('selected')).toBe("");
+        expect(item1.getAttribute('selected')).toBe('');
       });
 
       it('should select next option with arrow down', () => {
@@ -159,10 +164,10 @@ describe('spec:ods-menu-controller', () => {
         item1.focus();
         item1.setAttribute('selected', '');
 
-        const keyDown = new KeyboardEvent("keydown", { code : "ArrowDown" });
+        const keyDown = new KeyboardEvent('keydown', { code : 'ArrowDown' });
         controller.handleKeyDown(keyDown);
 
-        expect(item2.getAttribute('selected')).toBe("");
+        expect(item2.getAttribute('selected')).toBe('');
       });
 
       it('should go back to first option with arrow down when on the last one', () => {
@@ -172,10 +177,10 @@ describe('spec:ods-menu-controller', () => {
         item2.focus();
         item2.setAttribute('selected', '');
 
-        const keyDown = new KeyboardEvent("keydown", { code : "ArrowDown" });
+        const keyDown = new KeyboardEvent('keydown', { code : 'ArrowDown' });
         controller.handleKeyDown(keyDown);
 
-        expect(item1.getAttribute('selected')).toBe("");
+        expect(item1.getAttribute('selected')).toBe('');
       });
 
       it('should select previous option with arrow up', () => {
@@ -185,10 +190,10 @@ describe('spec:ods-menu-controller', () => {
         item2.focus();
         item2.setAttribute('selected', '');
 
-        const keyUp = new KeyboardEvent("keydown", { code : "ArrowUp" });
+        const keyUp = new KeyboardEvent('keydown', { code : 'ArrowUp' });
         controller.handleKeyDown(keyUp);
 
-        expect(item1.getAttribute('selected')).toBe("");
+        expect(item1.getAttribute('selected')).toBe('');
       });
 
       it('should go back to last option with arrow up when on the first one', () => {
@@ -198,65 +203,67 @@ describe('spec:ods-menu-controller', () => {
         item1.focus();
         item1.setAttribute('selected', '');
 
-        const keyUp = new KeyboardEvent("keydown", { code : "ArrowUp" });
+        const keyUp = new KeyboardEvent('keydown', { code : 'ArrowUp' });
         controller.handleKeyDown(keyUp);
 
-        expect(item2.getAttribute('selected')).toBe("");
+        expect(item2.getAttribute('selected')).toBe('');
       });
 
     });
 
     describe('method: checkForClickOutside', () => {
-      it('should do nothing if there is no surface', async () => {
+      it('should do nothing if there is no surface', async() => {
         setup(component);
         component.surface = undefined;
 
-        const event = new MouseEvent("click", {
+        const event = new MouseEvent('click', {
           bubbles: true,
           cancelable: true,
-          composed: true
+          composed: true,
         });
 
-        const target = document.createElement("OSDS-LINK");
-        Object.defineProperty(event, 'target', { value: target })
+        const target = document.createElement('OSDS-LINK');
+        Object.defineProperty(event, 'target', { value: target });
 
 
-        expect(() => { controller.checkForClickOutside(event) }).not.toThrow();
+        expect(() => {
+          controller.checkForClickOutside(event);
+        }).not.toThrow();
         await expect(component.surface).toBeUndefined();
       });
 
-      it('should do nothing if surface is not opened', async () => {
+      it('should do nothing if surface is not opened', async() => {
         setup(component);
 
         component.surface = new OcdkSurfaceMock() as unknown as OcdkSurface;
         component.surface!.opened = false;
 
-        const event = new MouseEvent("click", {
+        const event = new MouseEvent('click', {
           bubbles: true,
           cancelable: true,
-          composed: true
+          composed: true,
         });
 
-        const target = document.createElement("OSDS-LINK");
-        Object.defineProperty(event, 'target', { value: target })
+        const target = document.createElement('OSDS-LINK');
+        Object.defineProperty(event, 'target', { value: target });
 
         await controller.checkForClickOutside(event);
         expect(component.surface.opened).toBe(false);
       });
 
-      it('should do nothing if event target is in the component', async () => {
+      it('should do nothing if event target is in the component', async() => {
         setup(component);
         component.surface = new OcdkSurfaceMock() as unknown as OcdkSurface;
         component.surface!.opened = true;
 
-        const event = new MouseEvent("click", {
+        const event = new MouseEvent('click', {
           bubbles: true,
           cancelable: true,
-          composed: true
+          composed: true,
         });
 
-        const target = document.createElement("OSDS-LINK");
-        Object.defineProperty(event, 'target', { value: target })
+        const target = document.createElement('OSDS-LINK');
+        Object.defineProperty(event, 'target', { value: target });
 
         component.el.appendChild(target);
 
@@ -264,21 +271,21 @@ describe('spec:ods-menu-controller', () => {
         expect(component.surface.opened).toBe(true);
       });
 
-      it('should close the surface when click outside of the component', async () => {
+      it('should close the surface when click outside of the component', async() => {
         setup(component);
         component.surface = new OcdkSurfaceMock() as unknown as OcdkSurface;
         component.surface!.opened = true;
 
         const spyCloseSurface = jest.spyOn(controller, 'closeSurface');
 
-        const event = new MouseEvent("click", {
+        const event = new MouseEvent('click', {
           bubbles: true,
           cancelable: true,
-          composed: true
+          composed: true,
         });
 
-        const target = document.createElement("OSDS-BUTTON");
-        Object.defineProperty(event, 'target', { value: target })
+        const target = document.createElement('OSDS-BUTTON');
+        Object.defineProperty(event, 'target', { value: target });
 
         await controller.checkForClickOutside(event);
         expect(spyCloseSurface).toHaveBeenCalledTimes(1);
@@ -286,9 +293,9 @@ describe('spec:ods-menu-controller', () => {
     });
 
     describe('afterInit', () => {
-      it('should call propagateDisabledToChild method', async () => {
+      it('should call propagateDisabledToChild method', async() => {
         spyOnPropagateDisabledToChild = jest.spyOn(component, 'propagateDisabledToChild').mockImplementation((disabled: boolean | undefined) => {
-          logger.log(`resolving propagateDisabledToChild`, disabled);
+          logger.log('resolving propagateDisabledToChild', disabled);
         });
         setup(component);
         controller.afterInit();

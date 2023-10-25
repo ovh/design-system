@@ -1,9 +1,10 @@
-import page from './flag.web-component.stories.page.mdx';
-import { getTagAttributes } from '../../../core/componentHTMLUtils';
-import { html } from 'lit-html';
-import { defineCustomElements } from '@ovhcloud/ods-components/flag/loader';
 import { Ods, odsSetup } from '@ovhcloud/ods-common-core';
 import changelog from '@ovhcloud/ods-components/flag/CHANGELOG.md';
+import { defineCustomElements } from '@ovhcloud/ods-components/flag/loader';
+import { html } from 'lit-html';
+
+import page from './flag.web-component.stories.page.mdx';
+import { getTagAttributes } from '../../../core/componentHTMLUtils';
 
 odsSetup();
 Ods.instance().assetPath('flags/');

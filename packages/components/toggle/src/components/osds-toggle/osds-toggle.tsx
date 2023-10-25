@@ -1,9 +1,10 @@
-import type { OdsToggleAttribute } from './interfaces/attributes';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { OdsToggleController } from './core/controller';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { Component, Element, Host, Prop, h } from '@stencil/core';
 
-import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { OdsToggleController } from './core/controller';
+import type { OdsToggleAttribute } from './interfaces/attributes';
+
 
 /**
  * @slot start - Fixed start toggle content

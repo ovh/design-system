@@ -1,15 +1,15 @@
-import { html } from 'lit-html';
-import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-import { Components as ComponentsRadio } from '@ovhcloud/ods-components/radio/loader';
-import { Components as ComponentsInput } from '@ovhcloud/ods-components/input/loader';
-import { Components as ComponentsRange } from '@ovhcloud/ods-components/range/loader';
-import { OdsRangeValueChangeEventDetail } from '@ovhcloud/ods-components/range';
-import { Components as ComponentsTile } from '@ovhcloud/ods-components/tile/loader';
 import {
   OdsErrorStateControl,
   OdsFormControl,
 } from '@ovhcloud/ods-common-core';
 import { OdsInputValidityState, OdsInputValueChangeEventDetail } from '@ovhcloud/ods-components/input';
+import { Components as ComponentsInput } from '@ovhcloud/ods-components/input/loader';
+import { Components as ComponentsRadio } from '@ovhcloud/ods-components/radio/loader';
+import { OdsRangeValueChangeEventDetail } from '@ovhcloud/ods-components/range';
+import { Components as ComponentsRange } from '@ovhcloud/ods-components/range/loader';
+import { Components as ComponentsTile } from '@ovhcloud/ods-components/tile/loader';
+import { html } from 'lit-html';
+import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 
 export const TileTemplate = (args: any) => {
 

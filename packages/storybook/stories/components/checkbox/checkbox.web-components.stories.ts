@@ -1,11 +1,12 @@
-import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
-import page from './checkbox.web-component.stories.page.mdx';
+import changelog from '@ovhcloud/ods-components/checkbox/CHANGELOG.md';
 import { defineCustomElements } from '@ovhcloud/ods-components/checkbox/loader';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
+
+import page from './checkbox.web-component.stories.page.mdx';
+import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 // @ts-ignore
 // @ts-ignore
-import changelog from '@ovhcloud/ods-components/checkbox/CHANGELOG.md';
 
 defineCustomElements();
 

@@ -1,9 +1,10 @@
-import type { E2EPage } from '@stencil/core/testing';
-import type { OdsBreadcrumbAttribute } from './interfaces/attributes';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import { ODS_ICON_NAME } from '@ovhcloud/ods-component-icon';
+import type { E2EPage } from '@stencil/core/testing';
 import { newE2EPage } from '@stencil/core/testing';
+
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import type { OdsBreadcrumbAttribute } from './interfaces/attributes';
 
 describe('e2e:osds-breadcrumb', () => {
   let page: E2EPage;

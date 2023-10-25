@@ -1,6 +1,7 @@
 import type { OdsErrorStateControl, OdsFormControl, OdsFormForbiddenValues, OdsInputValue, OdsValidityState } from '@ovhcloud/ods-common-core';
-import type { ODS_ICON_NAME } from '@ovhcloud/ods-component-icon';
 import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+import type { ODS_ICON_NAME } from '@ovhcloud/ods-component-icon';
+
 import type { ODS_INPUT_SIZE } from '../constants/input-size';
 import type { ODS_INPUT_TYPE } from '../constants/input-type';
 

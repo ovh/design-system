@@ -1,9 +1,10 @@
-import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
-import page from './phone-number.web-component.stories.page.mdx';
-import { html } from 'lit-html';
-import { defineCustomElements } from '@ovhcloud/ods-component-phone-number/loader';
-// @ts-ignore
 import changelog from '@ovhcloud/ods-component-phone-number/CHANGELOG.md';
+import { defineCustomElements } from '@ovhcloud/ods-component-phone-number/loader';
+import { html } from 'lit-html';
+
+import page from './phone-number.web-component.stories.page.mdx';
+import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
+// @ts-ignore
 // @ts-ignore
 
 defineCustomElements();

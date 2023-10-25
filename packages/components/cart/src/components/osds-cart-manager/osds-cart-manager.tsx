@@ -1,4 +1,12 @@
+import { ODS_PERIOD_ISO_CODE, OdsI18n, OdsI18nHook, OdsLogger } from '@ovhcloud/ods-common-core';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+import { ODS_DIVIDER_SIZE } from '@ovhcloud/ods-component-divider';
+import { Component, Element, Host, Method, Prop, Watch, h } from '@stencil/core';
 import type { HTMLStencilElement } from '@stencil/core/internal';
+
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { OdsCartManagerController } from './core/controller';
+import { isOdsCartManagerFooter, isOdsCartManagerFooterItem } from './helpers/type';
 import type {
   OdsCartManagerAttribute,
   OdsCartManagerFooter,
@@ -9,13 +17,6 @@ import type {
 } from './interfaces/attributes';
 import type { OdsCartManagerMethod } from './interfaces/methods';
 import type { ODS_CART_SIZE } from '../osds-cart/constants/cart-size';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { OdsCartManagerController } from './core/controller';
-import { isOdsCartManagerFooter, isOdsCartManagerFooterItem } from './helpers/type';
-import { Component, Element, Host, Method, Prop, Watch, h } from '@stencil/core';
-import { ODS_PERIOD_ISO_CODE, OdsI18n, OdsI18nHook, OdsLogger } from '@ovhcloud/ods-common-core';
-import { ODS_DIVIDER_SIZE } from '@ovhcloud/ods-component-divider';
-import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 
 /**
  *

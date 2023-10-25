@@ -1,6 +1,6 @@
-import { ocdkSurfaceTag } from './ocdk-surface.tag';
-import { ocdkSurfaceGet } from './ocdk-surface.get';
 import { OcdkSurface } from './ocdk-surface';
+import { ocdkSurfaceGet } from './ocdk-surface.get';
+import { ocdkSurfaceTag } from './ocdk-surface.tag';
 
 export function ocdkIsSurface(element?: HTMLElement | OcdkSurface): element is OcdkSurface {
   return !!element

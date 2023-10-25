@@ -1,13 +1,14 @@
-import type { HTMLStencilElement } from '@stencil/core/internal';
-import { OdsCheckboxController } from './ods-checkbox-controller';
-import { OsdsCheckbox } from '../osds-checkbox';
+import { Ods, OdsCheckboxable, OdsLogger } from '@ovhcloud/ods-common-core';
 import {
   OdsClearLoggerSpy,
   OdsInitializeLoggerSpy,
   OdsLoggerSpyReferences,
   odsGetSimulatedPromise,
 } from '@ovhcloud/ods-common-testing';
-import { Ods, OdsCheckboxable, OdsLogger } from '@ovhcloud/ods-common-core';
+import type { HTMLStencilElement } from '@stencil/core/internal';
+
+import { OdsCheckboxController } from './ods-checkbox-controller';
+import { OsdsCheckbox } from '../osds-checkbox';
 
 class OdsCheckboxMock extends OsdsCheckbox {
   constructor(attribute: Partial<OsdsCheckbox>) {

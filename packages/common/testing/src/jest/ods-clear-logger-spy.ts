@@ -1,6 +1,6 @@
+import { OdsLoggerSpyReferences } from './ods-logger-spy-references';
 import { odsUnmockProperty } from './ods-mock-property';
 import { OdsComponentForTesting } from '../unit/ods-component-for-testing';
-import { OdsLoggerSpyReferences } from './ods-logger-spy-references';
 
 /**
  * unmock previous logger spy initialized with `OdsInitializeLoggerSpy`.

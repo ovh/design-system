@@ -1,14 +1,16 @@
-import type { SpecPage } from '@stencil/core/testing';
-import type { OdsPhoneNumberAttribute } from './interfaces/attributes';
-import type { OdsSelectValueChangeEventDetail } from '@ovhcloud/ods-component-select';
-import type { OdsInputValueChangeEventDetail } from '@ovhcloud/ods-component-input';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { OsdsPhoneNumber } from './osds-phone-number';
-import { ODS_PHONE_NUMBER_COUNTRY_PRESET } from './constants/phone-number-countries';
-import { newSpecPage } from '@stencil/core/testing';
-import { OdsUnitTestAttributeType, odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 import { ODS_COUNTRY_ISO_CODE, ODS_COUNTRY_ISO_CODES, ODS_LOCALE } from '@ovhcloud/ods-common-core';
+import { OdsUnitTestAttributeType, odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
+import type { OdsInputValueChangeEventDetail } from '@ovhcloud/ods-component-input';
+import type { OdsSelectValueChangeEventDetail } from '@ovhcloud/ods-component-select';
+import type { SpecPage } from '@stencil/core/testing';
+import { newSpecPage } from '@stencil/core/testing';
 import { PhoneNumberUtil } from 'google-libphonenumber';
+
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { ODS_PHONE_NUMBER_COUNTRY_PRESET } from './constants/phone-number-countries';
+import type { OdsPhoneNumberAttribute } from './interfaces/attributes';
+import { OsdsPhoneNumber } from './osds-phone-number';
+
 
 describe('spec:osds-phone-number', () => {
   const baseAttribute = { ariaLabel: '', forbiddenValues: [], value: '' };

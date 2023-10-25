@@ -1,13 +1,14 @@
-import type { HTMLStencilElement } from '@stencil/core/internal';
-import type { OdsAccordionAttribute } from './interfaces/attributes';
-import type { ODS_ACCORDION_SIZE } from './constants/accordion-size';
-import type { OdsAccordionEvent } from './interfaces/events';
-import type { OsdsAccordionGroup } from '../osds-accordion-group/osds-accordion-group';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { OdsAccordionController } from './core/controller';
-import { Component, Element, Event, EventEmitter, Host, Prop, Watch, h } from '@stencil/core';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
+import { Component, Element, Event, EventEmitter, Host, Prop, Watch, h } from '@stencil/core';
+import type { HTMLStencilElement } from '@stencil/core/internal';
+
+import type { ODS_ACCORDION_SIZE } from './constants/accordion-size';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { OdsAccordionController } from './core/controller';
+import type { OdsAccordionAttribute } from './interfaces/attributes';
+import type { OdsAccordionEvent } from './interfaces/events';
+import type { OsdsAccordionGroup } from '../osds-accordion-group/osds-accordion-group';
 
 @Component({
   tag: 'osds-accordion',

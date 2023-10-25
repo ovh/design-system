@@ -1,12 +1,14 @@
-import type { E2EElement, E2EPage } from '@stencil/core/testing';
-import type { OdsButtonAttribute } from './interfaces/attributes';
-import { ODS_BUTTON_SIZES } from './constants/button-size';
-import { ODS_BUTTON_VARIANTS } from './constants/button-variant';
-import { ODS_BUTTON_TEXT_ALIGNS } from './constants/button-text-align';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
+import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
+import type { E2EElement, E2EPage } from '@stencil/core/testing';
 import { newE2EPage } from '@stencil/core/testing';
+
+import { ODS_BUTTON_SIZES } from './constants/button-size';
+import { ODS_BUTTON_TEXT_ALIGNS } from './constants/button-text-align';
+import { ODS_BUTTON_VARIANTS } from './constants/button-variant';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import type { OdsButtonAttribute } from './interfaces/attributes';
+
 
 describe('e2e:osds-button', () => {
   let page: E2EPage;

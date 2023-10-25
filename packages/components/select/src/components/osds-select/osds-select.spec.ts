@@ -1,13 +1,15 @@
-import type { SpecPage } from '@stencil/core/testing';
-import type { OdsSelectAttribute } from './interfaces/attributes';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { DEFAULT_VALIDITY_STATE } from './constants/default-validity-state';
-import { ODS_SELECT_SIZE } from './constants/select-size';
-import { OsdsSelect } from './osds-select';
-import { newSpecPage } from '@stencil/core/testing';
 import { OdsLogger } from '@ovhcloud/ods-common-core';
 import { OdsMockNativeMethod, OdsMockPropertyDescriptor, odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+import type { SpecPage } from '@stencil/core/testing';
+import { newSpecPage } from '@stencil/core/testing';
+
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { DEFAULT_VALIDITY_STATE } from './constants/default-validity-state';
+import { ODS_SELECT_SIZE } from './constants/select-size';
+import type { OdsSelectAttribute } from './interfaces/attributes';
+import { OsdsSelect } from './osds-select';
+
 
 const mutationObserverMock = jest.fn(function MutationObserver(callback) {
   this.observe = jest.fn();

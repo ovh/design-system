@@ -1,12 +1,14 @@
 jest.mock('./core/controller'); // keep jest.mock before any
 
+import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 import type { SpecPage } from '@stencil/core/testing';
-import type { OdsProgressBarAttribute } from './interfaces/attributes';
+import { newSpecPage } from '@stencil/core/testing';
+
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsProgressBarController } from './core/controller';
+import type { OdsProgressBarAttribute } from './interfaces/attributes';
 import { OsdsProgressBar } from './osds-progress-bar';
-import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
-import { newSpecPage } from '@stencil/core/testing';
+
 
 describe('spec:osds-progress-bar', () => {
   let page: SpecPage;

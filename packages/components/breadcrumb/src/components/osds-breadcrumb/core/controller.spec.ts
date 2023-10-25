@@ -1,7 +1,8 @@
-import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
-import { OdsBreadcrumbController } from './controller';
 import { OdsLogger } from '@ovhcloud/ods-common-core';
+import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
 import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
+
+import { OdsBreadcrumbController } from './controller';
 
 describe('ods-breadcrumb-controller', () => {
   let controller: OdsBreadcrumbController;

@@ -1,10 +1,11 @@
+import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
 import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
+import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
 import type { OsdsInput } from '@ovhcloud/ods-component-input';
+import { ODS_INPUT_TYPE } from '@ovhcloud/ods-component-input';
+
 import { OdsQuantityController } from './controller';
 import { OsdsQuantity } from '../osds-quantity';
-import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
-import { ODS_INPUT_TYPE } from '@ovhcloud/ods-component-input';
-import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
 
 class OdsQuantityMock extends OsdsQuantity {
   constructor(attribute: Partial<OsdsQuantity>) {

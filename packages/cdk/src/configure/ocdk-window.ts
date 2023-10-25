@@ -1,10 +1,10 @@
 import { Ocdk } from './ocdk';
-import { VERSION } from '../version';
 import { OcdkConfig } from './ocdk-config';
+import { OcdkConfigLogging } from './ocdk-config-logging';
 import { ocdkDefaultConfig } from './ocdk-default-config';
 import { OcdkWindowConfig } from './ocdk-window-config';
-import { OcdkConfigLogging } from './ocdk-config-logging';
 import { OcdkDeepPartial } from '../types/ocdk-deep-partial';
+import { VERSION } from '../version';
 
 /**
  * description of all properties globally managed into window by the `OCDK` system.

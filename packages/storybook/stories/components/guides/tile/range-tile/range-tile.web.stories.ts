@@ -1,6 +1,6 @@
 import { RangeTileGroupStory, RangeTileStory, storyParams } from './guide-range-tile.web';
-import { extractArgTypes, extractStoryParams } from '../../../../../core/componentHTMLUtils';
 import page from './range-tile.web.stories.page.mdx';
+import { extractArgTypes, extractStoryParams } from '../../../../../core/componentHTMLUtils';
 
 export default {
   title: 'Code/Stencil/Guides/Tiles/range',

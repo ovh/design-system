@@ -1,9 +1,10 @@
-import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
-import { OsdsToggle } from '../osds-toggle';
-import { OdsToggleController } from './controller';
-import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
 import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
+import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
+import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+
+import { OdsToggleController } from './controller';
+import { OsdsToggle } from '../osds-toggle';
 
 class OdsToggleMock extends OsdsToggle {
   constructor(attribute: Partial<OsdsToggle>) {

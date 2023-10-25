@@ -1,8 +1,8 @@
-import type { OdsButtonAttribute } from '@ovhcloud/ods-components/button';
-import React, { PropsWithChildren } from 'react';
-import { OsdsButton } from '@ovhcloud/ods-components/button/react';
-import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { odsFilterTransientProps } from '@ovhcloud/ods-common-core';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+import type { OdsButtonAttribute } from '@ovhcloud/ods-components/button';
+import { OsdsButton } from '@ovhcloud/ods-components/button/react';
+import React, { PropsWithChildren } from 'react';
 
 /**
  * default custom properties values for the custom button

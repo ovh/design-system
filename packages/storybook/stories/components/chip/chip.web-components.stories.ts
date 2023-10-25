@@ -1,12 +1,13 @@
-import { createComponentTable, extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
-import page from './chip.web-component.stories.page.mdx';
-import { html } from 'lit-html';
-import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
 import { ODS_CHIP_SIZE, ODS_CHIP_SIZES, ODS_CHIP_VARIANT, ODS_CHIP_VARIANTS } from '@ovhcloud/ods-components/chip';
+import changelog from '@ovhcloud/ods-components/chip/CHANGELOG.md';
 import { defineCustomElements } from '@ovhcloud/ods-components/chip/loader';
 // @ts-ignore
-import changelog from '@ovhcloud/ods-components/chip/CHANGELOG.md';
+import { html } from 'lit-html';
+import { unsafeHTML } from 'lit-html/directives/unsafe-html';
+
+import page from './chip.web-component.stories.page.mdx';
+import { createComponentTable, extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 // @ts-ignore
 
 defineCustomElements();

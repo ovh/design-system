@@ -1,13 +1,15 @@
 jest.mock('./core/controller'); // keep jest.mock before any
 
-import type { SpecPage } from '@stencil/core/testing';
-import type { OdsToggleAttribute } from './interfaces/attributes';
-import { OdsToggleController } from './core/controller';
-import { OsdsToggle } from './osds-toggle';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
-import { newSpecPage } from '@stencil/core/testing';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+import type { SpecPage } from '@stencil/core/testing';
+import { newSpecPage } from '@stencil/core/testing';
+
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { OdsToggleController } from './core/controller';
+import type { OdsToggleAttribute } from './interfaces/attributes';
+import { OsdsToggle } from './osds-toggle';
+
 
 describe('spec:osds-toggle', () => {
   const baseAttributes = {

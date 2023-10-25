@@ -1,5 +1,6 @@
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { E2EElement, E2EPage, newE2EPage } from '@stencil/core/testing';
+
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 
 describe('e2e:osds-menu', () => {
   let page: E2EPage;

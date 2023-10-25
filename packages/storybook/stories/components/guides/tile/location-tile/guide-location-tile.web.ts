@@ -1,7 +1,7 @@
-import { html } from 'lit-html';
+import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
 import { defineCustomElements } from '@ovhcloud/ods-components/content-addon/loader';
 import { defineCustomElements as tileCustomElements } from '@ovhcloud/ods-components/tile/loader';
-import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
+import { html } from 'lit-html';
 
 defineCustomElements();
 tileCustomElements();

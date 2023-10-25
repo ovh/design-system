@@ -1,10 +1,11 @@
-import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
-import page from './tooltip.web-component.stories.page.mdx';
-import { html } from 'lit-html';
 import { ODS_TOOLTIP_VARIANT, ODS_TOOLTIP_VARIANTS } from '@ovhcloud/ods-components/tooltip';
+import changelog from '@ovhcloud/ods-components/tooltip/CHANGELOG.md';
 import { defineCustomElements } from '@ovhcloud/ods-components/tooltip/loader';
 // @ts-ignore
-import changelog from '@ovhcloud/ods-components/tooltip/CHANGELOG.md';
+import { html } from 'lit-html';
+
+import page from './tooltip.web-component.stories.page.mdx';
+import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 // @ts-ignore
 
 defineCustomElements();

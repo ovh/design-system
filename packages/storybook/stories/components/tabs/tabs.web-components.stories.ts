@@ -1,11 +1,12 @@
-import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
-import page from './tabs.web-component.stories.page.mdx';
-import { html } from 'lit-html';
+import { ODS_TABS_SIZES } from '@ovhcloud/ods-components/tabs';
+import changelog from '@ovhcloud/ods-components/tabs/CHANGELOG.md';
 import { defineCustomElements } from '@ovhcloud/ods-components/tabs/loader';
 import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-components/tabs/src/components/osds-tabs/constants/default-attributes';
-import { ODS_TABS_SIZES } from '@ovhcloud/ods-components/tabs';
 // @ts-ignore
-import changelog from '@ovhcloud/ods-components/tabs/CHANGELOG.md';
+import { html } from 'lit-html';
+
+import page from './tabs.web-component.stories.page.mdx';
+import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 // @ts-ignore
 
 defineCustomElements();

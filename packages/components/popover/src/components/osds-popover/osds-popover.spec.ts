@@ -1,11 +1,12 @@
 jest.mock('@ovhcloud/ods-cdk'); // keep jest.mock before any import
 jest.mock('./core/controller'); // keep jest.mock before any
 
+import { ocdkIsSurface } from '@ovhcloud/ods-cdk';
 import type { SpecPage } from '@stencil/core/testing';
+import { newSpecPage } from '@stencil/core/testing';
+
 import { OdsPopoverController } from './core/controller';
 import { OsdsPopover } from './osds-popover';
-import { ocdkIsSurface } from '@ovhcloud/ods-cdk';
-import { newSpecPage } from '@stencil/core/testing';
 
 describe('spec:osds-popover', () => {
   let page: SpecPage;

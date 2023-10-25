@@ -1,14 +1,15 @@
-import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
-import { InputPlay } from './input.web-components.validation.stories';
-import page from './input.web-component.stories.page.mdx';
-import { html } from 'lit-html';
-import { unsafeHTML } from 'lit-html/directives/unsafe-html';
+import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
 import { ODS_INPUT_SIZES, ODS_INPUT_TYPES } from '@ovhcloud/ods-components/input';
+import changelog from '@ovhcloud/ods-components/input/CHANGELOG.md';
 import { defineCustomElements } from '@ovhcloud/ods-components/input/loader';
 import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-components/input/src/components/osds-input/constants/default-attributes';
-import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
+import { html } from 'lit-html';
+import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 // @ts-ignore
-import changelog from '@ovhcloud/ods-components/input/CHANGELOG.md';
+
+import page from './input.web-component.stories.page.mdx';
+import { InputPlay } from './input.web-components.validation.stories';
+import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 // @ts-ignore
 
 defineCustomElements();

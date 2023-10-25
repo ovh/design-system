@@ -1,6 +1,7 @@
-import type { OsdsCartItem } from '../osds-cart-item';
-import { OsdsCart } from '../../osds-cart/osds-cart';
 import { HTMLStencilElement } from '@stencil/core/internal';
+
+import { OsdsCart } from '../../osds-cart/osds-cart';
+import type { OsdsCartItem } from '../osds-cart-item';
 
 class OdsCartItemController {
   private component: OsdsCartItem;

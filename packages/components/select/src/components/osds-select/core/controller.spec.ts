@@ -1,8 +1,10 @@
 import type { OcdkSurface } from '@ovhcloud/ods-cdk';
-import type { OsdsSelectOption } from '../../osds-select-option/osds-select-option';
-import { OdsSelectController } from './controller';
-import { OsdsSelect } from '../osds-select';
 import { OcdkSurfaceMock } from '@ovhcloud/ods-cdk';
+
+import { OdsSelectController } from './controller';
+import type { OsdsSelectOption } from '../../osds-select-option/osds-select-option';
+import { OsdsSelect } from '../osds-select';
+
 
 class OdsSelectMock extends OsdsSelect {
   constructor(attribute: Partial<OsdsSelect>) {

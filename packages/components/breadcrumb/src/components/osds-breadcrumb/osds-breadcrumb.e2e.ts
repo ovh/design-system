@@ -1,6 +1,7 @@
 import type { E2EElement, E2EPage } from '@stencil/core/testing';
-import type { OdsBreadcrumbAttributeItem } from './interfaces/attributes';
 import { newE2EPage } from '@stencil/core/testing';
+
+import type { OdsBreadcrumbAttributeItem } from './interfaces/attributes';
 
 describe('e2e:osds-breadcrumb', () => {
   const dummyItems = [

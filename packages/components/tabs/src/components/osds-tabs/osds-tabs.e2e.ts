@@ -1,9 +1,10 @@
+import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import type { E2EElement, E2EPage, EventSpy } from '@stencil/core/testing';
+import { newE2EPage } from '@stencil/core/testing';
+
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import type { OdsTabsAttribute } from './interfaces/attributes';
 import type { OdsTabsChangeEventDetail, OdsTabsEvent } from './interfaces/events';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { newE2EPage } from '@stencil/core/testing';
-import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 
 describe('e2e:osds-tabs', () => {
   const baseAttribute = { contrasted: DEFAULT_ATTRIBUTE.contrasted, panel: DEFAULT_ATTRIBUTE.panel, size: DEFAULT_ATTRIBUTE.size };

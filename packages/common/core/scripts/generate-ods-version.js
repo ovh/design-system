@@ -1,4 +1,5 @@
 const fs = require('fs');
+
 var packageJson = require('../package.json');
 console.log('writing version into version.js files...', { version: packageJson.version });
 

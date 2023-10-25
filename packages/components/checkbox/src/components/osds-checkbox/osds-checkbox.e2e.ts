@@ -1,17 +1,19 @@
+import { OdsLogger } from '@ovhcloud/ods-common-core';
+import { osdsSetPropertyFunction } from '@ovhcloud/ods-common-stencil';
+import { odsComponentAttributes2StringAttributes, odsGetSimulatedPromise, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import type { E2EElement, E2EPage, EventSpy } from '@stencil/core/testing';
+import { newE2EPage } from '@stencil/core/testing';
+
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import type { OdsCheckboxAttribute } from './interfaces/attributes';
 import type {
   OdsCheckboxCheckedChangeEventDetail,
   OdsCheckboxEvent,
   OdsCheckboxFocusChangeEventDetail,
   OdsCheckboxUpdatingChangeEventDetail,
 } from './interfaces/events';
-import type { OdsCheckboxAttribute } from './interfaces/attributes';
 import type { OsdsCheckbox } from './osds-checkbox';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { newE2EPage } from '@stencil/core/testing';
-import { OdsLogger } from '@ovhcloud/ods-common-core';
-import { odsComponentAttributes2StringAttributes, odsGetSimulatedPromise, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
-import { osdsSetPropertyFunction } from '@ovhcloud/ods-common-stencil';
+
 
 describe('e2e:osds-checkbox', () => {
   let page: E2EPage;

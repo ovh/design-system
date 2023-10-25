@@ -1,7 +1,9 @@
-import type { OsdsAccordion } from '../../osds-accordion/osds-accordion';
-import type { OdsAccordionToggleEvent } from '../../osds-accordion/interfaces/events';
-import type { OsdsAccordionGroup } from '../osds-accordion-group';
 import { OdsLogger } from '@ovhcloud/ods-common-core';
+
+import type { OdsAccordionToggleEvent } from '../../osds-accordion/interfaces/events';
+import type { OsdsAccordion } from '../../osds-accordion/osds-accordion';
+import type { OsdsAccordionGroup } from '../osds-accordion-group';
+
 
 class OdsAccordionGroupController {
   private readonly logger = new OdsLogger('OdsAccordionGroupController');

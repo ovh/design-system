@@ -1,13 +1,14 @@
 jest.mock('./core/controller');
 
-import type { SpecPage } from '@stencil/core/testing';
-import type { OdsFlagAttribute } from './interfaces/attributes';
-import { odsStringAttributes2Str, odsComponentAttributes2StringAttributes, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
+import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 import { Build } from '@stencil/core';
+import type { SpecPage } from '@stencil/core/testing';
 import { newSpecPage } from '@stencil/core/testing';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes'
+
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_FLAG_ISO_CODE } from './constants/flag-iso-code';
 import { OdsFlagController } from './core/controller';
+import type { OdsFlagAttribute } from './interfaces/attributes';
 import { OsdsFlag } from './osds-flag';
 
 describe('spec:osds-flag', () => {
@@ -36,15 +37,15 @@ describe('spec:osds-flag', () => {
   }
 
   beforeEach(() => {
-    jest.spyOn(OdsFlagController.prototype, 'load').mockImplementation(() => new Promise(resolve => resolve('')));
-  })
+    jest.spyOn(OdsFlagController.prototype, 'load').mockImplementation(() => new Promise((resolve) => resolve('')));
+  });
 
   afterEach(() => {
     Build.isBrowser = false;
     jest.clearAllMocks();
   });
 
-  it('should render', async () => {
+  it('should render', async() => {
     await setup({});
     expect(root).toBeTruthy();
     expect(root?.shadowRoot).toBeTruthy();
@@ -66,7 +67,7 @@ describe('spec:osds-flag', () => {
         newValue: ODS_FLAG_ISO_CODE.ES,
         value: ODS_FLAG_ISO_CODE.FR,
         setup: (value) => setup({ attributes: { ['iso']: value } }),
-        ...config
+        ...config,
       });
     });
 
@@ -77,7 +78,7 @@ describe('spec:osds-flag', () => {
         newValue: '',
         value: 'my/path.svg',
         setup: (value) => setup({ attributes: { ['src']: value } }),
-        ...config
+        ...config,
       });
     });
 
@@ -88,7 +89,7 @@ describe('spec:osds-flag', () => {
         newValue: '',
         value: 'my/path',
         setup: (value) => setup({ attributes: { ['assetPath']: value } }),
-        ...config
+        ...config,
       });
     });
 
@@ -99,32 +100,32 @@ describe('spec:osds-flag', () => {
         newValue: false,
         value: true,
         setup: (value) => setup({ attributes: { ['lazy']: value } }),
-        ...config
+        ...config,
       });
     });
   });
 
-  it('should call init of controller at start', async () => {
+  it('should call init of controller at start', async() => {
     await setup();
 
     expect(controller.onInit).toHaveBeenCalledTimes(1);
   });
 
-  it('should set visible once it is visible', async () => {
+  it('should set visible once it is visible', async() => {
     // mock before setup because of the setup call onInit
     jest.spyOn(OdsFlagController.prototype, 'onInit').mockImplementation((onBecomeVisible) => onBecomeVisible());
     await setup({ attributes: { iso: ODS_FLAG_ISO_CODE.FR } });
 
     // load method will be called after setup, when iso changed, so we can mock it after setup
     // goal: change the iso code in order to trigger the load method with the visible variable
-    const spy = jest.spyOn(controller, 'load').mockImplementation(() => new Promise(resolve => resolve('')));
+    const spy = jest.spyOn(controller, 'load').mockImplementation(() => new Promise((resolve) => resolve('')));
     instance.iso = ODS_FLAG_ISO_CODE.BE;
 
     expect(spy).toHaveBeenCalledTimes(1);
     expect(spy).toHaveBeenCalledWith(true, false);
   });
 
-  it('should call load of controller when src change', async () => {
+  it('should call load of controller when src change', async() => {
     await setup({ attributes: { src: 'my/src/fr.svg' } });
 
     root?.setAttribute('src', 'my/src/de.svg');
@@ -132,7 +133,7 @@ describe('spec:osds-flag', () => {
     expect(controller.load).toHaveBeenCalledTimes(1);
   });
 
-  it('should call load of controller when assetPath change', async () => {
+  it('should call load of controller when assetPath change', async() => {
     await setup({ attributes: { assetPath: undefined } });
 
     instance.assetPath = 'myAssetPath';
@@ -140,7 +141,7 @@ describe('spec:osds-flag', () => {
     expect(controller.load).toHaveBeenCalledTimes(1);
   });
 
-  it('should call load of controller when iso change', async () => {
+  it('should call load of controller when iso change', async() => {
     await setup({ attributes: { iso: ODS_FLAG_ISO_CODE.FR } });
 
     instance.iso = ODS_FLAG_ISO_CODE.BE;
@@ -148,7 +149,7 @@ describe('spec:osds-flag', () => {
     expect(controller.load).toHaveBeenCalledTimes(1);
   });
 
-  it('should not have aria-label if aria-hidden set', async () => {
+  it('should not have aria-label if aria-hidden set', async() => {
     await setup();
 
     instance['ariaLabel'] = ODS_FLAG_ISO_CODE.FR;
@@ -168,16 +169,16 @@ describe('spec:osds-flag', () => {
     expect(withAriaHidden).toBe(null);
   });
 
-  it('should set svgContent when received', async () => {
+  it('should set svgContent when received', async() => {
     await setup();
-    jest.spyOn(controller, 'load').mockImplementation(() => new Promise(resolve => resolve('<svg></svg>')));
+    jest.spyOn(controller, 'load').mockImplementation(() => new Promise((resolve) => resolve('<svg></svg>')));
     await instance.load();
     await page.waitForChanges();
 
     expect(instance['svgContent']).toBeTruthy();
   });
 
-  it('should have default flag if no svg content', async () => {
+  it('should have default flag if no svg content', async() => {
     await setup();
     Build.isBrowser = true;
     instance['svgContent'] = undefined;
@@ -187,7 +188,7 @@ describe('spec:osds-flag', () => {
     expect(divEl).toHaveClass('flag__svg--default');
   });
 
-  it('should have flag if svg content', async () => {
+  it('should have flag if svg content', async() => {
     await setup();
     Build.isBrowser = true;
     instance['svgContent'] = '<svg></svg>';

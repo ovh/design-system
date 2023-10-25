@@ -1,11 +1,12 @@
-import { extractArgTypes, extractStoryParams } from '../../../../../../core/componentHTMLUtils';
-import page from './overlay.stencil.tooltip.stories.page.mdx';
-import { play } from './overlay.stencil.tooltip.stories.play';
-import { html } from 'lit-html';
-import { styleMap } from 'lit-html/directives/style-map';
 import { defineCustomElements } from '@ovhcloud/ods-cdk/dev/loader';
 import { OcdkSurfaceTooltipPosition, OcdkSurfaceTooltipPositionList } from '@ovhcloud/ods-cdk-dev';
 import { OlesIpsumGeneration, olesIpsum } from '@ovhcloud/ods-common-core';
+import { html } from 'lit-html';
+import { styleMap } from 'lit-html/directives/style-map';
+
+import page from './overlay.stencil.tooltip.stories.page.mdx';
+import { play } from './overlay.stencil.tooltip.stories.play';
+import { extractArgTypes, extractStoryParams } from '../../../../../../core/componentHTMLUtils';
 
 defineCustomElements();
 

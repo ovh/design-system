@@ -1,7 +1,8 @@
-import { OcdkSurfaceTooltipPosition } from './ocdk-surface-tooltip-position';
+import { OcdkLogger, OcdkSurface, OcdkSurfaceCorner, ocdkDefineCustomElements, ocdkIsSurface } from '@ovhcloud/ods-cdk';
 import { Component, Element, Host, Listen, Prop, h } from '@stencil/core';
 import { HTMLStencilElement } from '@stencil/core/internal';
-import { OcdkLogger, OcdkSurface, OcdkSurfaceCorner, ocdkDefineCustomElements, ocdkIsSurface } from '@ovhcloud/ods-cdk';
+
+import { OcdkSurfaceTooltipPosition } from './ocdk-surface-tooltip-position';
 
 // define custom elements from CDK
 ocdkDefineCustomElements();

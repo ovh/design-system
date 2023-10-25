@@ -1,10 +1,11 @@
-import type { OdsModalAttribute } from './interfaces/attributes';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { OdsModalMethod } from './interfaces/methods';
 import { ODS_THEME_COLOR_INTENT, ODS_THEME_TYPOGRAPHY_SIZE } from '@ovhcloud/ods-common-theming';
-import { Component, Element, Host, Method, Prop, Watch, h } from '@stencil/core';
 import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
 import { ODS_TEXT_LEVEL } from '@ovhcloud/ods-component-text';
+import { Component, Element, Host, Method, Prop, Watch, h } from '@stencil/core';
+
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import type { OdsModalAttribute } from './interfaces/attributes';
+import { OdsModalMethod } from './interfaces/methods';
 
 /**
  * @slot (unnamed) - Modal content

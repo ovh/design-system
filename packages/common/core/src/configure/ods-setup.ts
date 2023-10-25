@@ -1,11 +1,11 @@
-import { getOdsWindow } from './ods-get-window';
-import { OdsConfig } from './ods-config';
-import { odsDefaultConfig } from './ods-default-config';
-import { OdsDeepPartial } from '../types/ods-deep-partial';
-import { OdsConfigLogging } from './ods-config-logging';
-import { VERSION } from '../version';
 import { Ods } from './ods';
+import { OdsConfig } from './ods-config';
+import { OdsConfigLogging } from './ods-config-logging';
+import { odsDefaultConfig } from './ods-default-config';
+import { getOdsWindow } from './ods-get-window';
 import { OdsWindow, OdsWindowFilled } from './ods-window';
+import { OdsDeepPartial } from '../types/ods-deep-partial';
+import { VERSION } from '../version';
 
 /**
  * initialize all properties of window that are specific to `ods`.

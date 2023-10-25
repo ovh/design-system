@@ -1,15 +1,17 @@
 jest.mock('./core/controller'); // keep jest.mock before any import
 
-import type { SpecPage } from '@stencil/core/testing';
-import type { OdsMessageAttribute } from './interfaces/attributes';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { ODS_MESSAGE_TYPE } from './constants/message-type';
-import { OdsMessageController } from './core/controller';
-import { OsdsMessage } from './osds-message';
-import { newSpecPage } from '@stencil/core/testing';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_ICON_NAME } from '@ovhcloud/ods-component-icon';
+import type { SpecPage } from '@stencil/core/testing';
+import { newSpecPage } from '@stencil/core/testing';
+
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { ODS_MESSAGE_TYPE } from './constants/message-type';
+import { OdsMessageController } from './core/controller';
+import type { OdsMessageAttribute } from './interfaces/attributes';
+import { OsdsMessage } from './osds-message';
+
 
 describe('spec:osds-message', () => {
   let page: SpecPage;

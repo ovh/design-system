@@ -1,4 +1,5 @@
 import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+
 import type { ODS_CHIP_SIZE } from '../constants/chip-size';
 import type { ODS_CHIP_VARIANT } from '../constants/chip-variant';
 

@@ -1,8 +1,9 @@
-import type { E2EElement, E2EPage } from '@stencil/core/testing';
-import type { OdsTooltipAttribute } from './interfaces/attributes';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
+import type { E2EElement, E2EPage } from '@stencil/core/testing';
 import { newE2EPage } from '@stencil/core/testing';
+
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import type { OdsTooltipAttribute } from './interfaces/attributes';
 
 describe('e2e:osds-tooltip', () => {
   let page: E2EPage;

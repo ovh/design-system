@@ -1,17 +1,18 @@
+import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
+import changelog from '@ovhcloud/ods-components/toggle/CHANGELOG.md';
+import { defineCustomElements } from '@ovhcloud/ods-components/toggle/loader';
+import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-components/toggle/src/components/osds-toggle/constants/default-attributes';
+import { html } from 'lit-html';
+import { unsafeHTML } from 'lit-html/directives/unsafe-html';
+// @ts-ignore
+
+import page from './toggle.web-component.stories.page.mdx';
 import {
   createComponentTable,
   extractArgTypes,
   extractStoryParams,
   getTagAttributes,
 } from '../../../core/componentHTMLUtils';
-import page from './toggle.web-component.stories.page.mdx';
-import { html } from 'lit-html';
-import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
-import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-components/toggle/src/components/osds-toggle/constants/default-attributes';
-import { defineCustomElements } from '@ovhcloud/ods-components/toggle/loader';
-// @ts-ignore
-import changelog from '@ovhcloud/ods-components/toggle/CHANGELOG.md';
 // @ts-ignore
 
 defineCustomElements();

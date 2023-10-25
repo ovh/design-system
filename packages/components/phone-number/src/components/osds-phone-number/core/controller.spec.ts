@@ -1,9 +1,10 @@
-import { ODS_PHONE_NUMBER_COUNTRY_PRESET } from '../constants/phone-number-countries';
-import { OsdsPhoneNumber } from '../osds-phone-number';
-import { OdsPhoneNumberController } from './controller';
 import { ODS_COUNTRY_ISO_CODE, ODS_COUNTRY_ISO_CODES, ODS_LOCALE } from '@ovhcloud/ods-common-core';
 import countriesTranslationEn from '@ovhcloud/ods-common-core/src/i18n/countries/en.json';
 import countriesTranslationFr from '@ovhcloud/ods-common-core/src/i18n/countries/fr.json';
+
+import { OdsPhoneNumberController } from './controller';
+import { ODS_PHONE_NUMBER_COUNTRY_PRESET } from '../constants/phone-number-countries';
+import { OsdsPhoneNumber } from '../osds-phone-number';
 
 class OdsPhoneNumberMock extends OsdsPhoneNumber {
   constructor(attribute: Partial<OsdsPhoneNumber>) {

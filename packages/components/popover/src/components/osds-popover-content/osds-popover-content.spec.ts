@@ -1,6 +1,7 @@
 import type { SpecPage } from '@stencil/core/testing';
-import { OsdsPopoverContent } from './osds-popover-content';
 import { newSpecPage } from '@stencil/core/testing';
+
+import { OsdsPopoverContent } from './osds-popover-content';
 
 describe('spec:osds-popover-content', () => {
   let page: SpecPage;

@@ -1,5 +1,5 @@
-import type { EventEmitter } from '@stencil/core';
 import type { OdsValidityState } from '@ovhcloud/ods-common-core';
+import type { EventEmitter } from '@stencil/core';
 
 interface OdsInputValueChangeEventDetail {
   validity: OdsValidityState;

@@ -1,15 +1,16 @@
-import {
-  extractArgTypes,
-  extractStoryParams,
-  getTagAttributes,
-} from '../../../core/componentHTMLUtils';
-import { RangePlay } from './range.web-components.validation.stories';
-import page from './range.web-component.stories.page.mdx';
 import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
 import changelog from '@ovhcloud/ods-components/range/CHANGELOG.md';
 import { defineCustomElements } from '@ovhcloud/ods-components/range/loader';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
+
+import page from './range.web-component.stories.page.mdx';
+import { RangePlay } from './range.web-components.validation.stories';
+import {
+  extractArgTypes,
+  extractStoryParams,
+  getTagAttributes,
+} from '../../../core/componentHTMLUtils';
 
 defineCustomElements();
 

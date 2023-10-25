@@ -1,11 +1,12 @@
-import type { OdsIconAttribute } from './interfaces/attributes';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import icons from '@ovhcloud/ods-common-theming/icons/icons.data.json';
 import { Component, Element, Host, Prop, Watch, h } from '@stencil/core';
-import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_ICON_NAME } from './constants/icon-name';
 import { ODS_ICON_SIZE } from './constants/icon-size';
 import { OdsIconController } from './core/controller';
+import type { OdsIconAttribute } from './interfaces/attributes';
 
 @Component({
   tag: 'osds-icon',
@@ -46,7 +47,7 @@ export class OsdsIcon implements OdsIconAttribute {
     // @ts-ignore
     const base64Icon = icons[this.name];
     return (
-      <Host 
+      <Host
         class={{
           'ods-icon': true,
           'ods-icon--contrasted': this.contrasted ?? false,

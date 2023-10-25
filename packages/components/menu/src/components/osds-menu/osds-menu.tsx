@@ -1,10 +1,11 @@
+import { OcdkSurface, ocdkDefineCustomElements, ocdkIsSurface } from '@ovhcloud/ods-cdk';
+import { Component, Element, Host, Listen, Prop, Watch, h } from '@stencil/core';
 import type { HTMLStencilElement } from '@stencil/core/internal';
-import type { OdsMenuAttribute } from './interfaces/attributes';
-import type { OsdsMenuItem } from '../osds-menu-item/osds-menu-item';
-import { ocdkDefineCustomElements, ocdkIsSurface, OcdkSurface, } from '@ovhcloud/ods-cdk';
-import { Component, Listen, Prop, h, Host, Element, Watch } from '@stencil/core';
+
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsMenuController } from './core/controller';
+import type { OdsMenuAttribute } from './interfaces/attributes';
+import type { OsdsMenuItem } from '../osds-menu-item/osds-menu-item';
 
 ocdkDefineCustomElements();
 
@@ -23,7 +24,7 @@ export class OsdsMenu implements OdsMenuAttribute {
   @Prop({ reflect: true }) public disabled?: boolean = DEFAULT_ATTRIBUTE.disabled;
 
   get title(): HTMLElement | null {
-    return this.el.querySelector('[slot=menu-title]')
+    return this.el.querySelector('[slot=menu-title]');
   }
 
   componentDidLoad() {
@@ -59,32 +60,32 @@ export class OsdsMenu implements OdsMenuAttribute {
   }
 
   syncReferences() {
-    this.controller.syncReferences()
+    this.controller.syncReferences();
   }
 
   render() {
     return (
       <Host>
         <div class="trigger"
-             onClick={ this.handleTriggerClick.bind(this) }
-             onKeyDown={ this.handleKeyDown.bind(this) }
-             ref={ (el?: HTMLElement | null) => {
-               this.anchor = el as HTMLDivElement;
-               this.syncReferences()
-             }}>
+          onClick={ this.handleTriggerClick.bind(this) }
+          onKeyDown={ this.handleKeyDown.bind(this) }
+          ref={ (el?: HTMLElement | null) => {
+            this.anchor = el as HTMLDivElement;
+            this.syncReferences();
+          }}>
           <slot name={'menu-title'} />
         </div>
 
         <ocdk-surface onKeyDown={ this.handleKeyDown.bind(this) }
-                      ref={ (el: HTMLElement) => {
-                        if (ocdkIsSurface(el)) {
-                          this.surface = el as OcdkSurface;
-                          this.syncReferences()
-                        }
-                      }}>
+          ref={ (el: HTMLElement) => {
+            if (ocdkIsSurface(el)) {
+              this.surface = el as OcdkSurface;
+              this.syncReferences();
+            }
+          }}>
           <slot/>
         </ocdk-surface>
       </Host>
-    )
+    );
   }
 }

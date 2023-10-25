@@ -1,10 +1,11 @@
-import type { OsdsPhoneNumber } from '../osds-phone-number';
-import type { PhoneNumber } from 'google-libphonenumber';
 import type { ODS_COUNTRY_ISO_CODE } from '@ovhcloud/ods-common-core';
-import { ODS_PHONE_NUMBER_COUNTRY_PRESET } from '../constants/phone-number-countries';
 import { ODS_COUNTRY_ISO_CODES, ODS_LOCALE, ODS_LOCALES } from '@ovhcloud/ods-common-core';
 import countriesTranslationEn from '@ovhcloud/ods-common-core/src/i18n/countries/en.json';
 import countriesTranslationFr from '@ovhcloud/ods-common-core/src/i18n/countries/fr.json';
+import type { PhoneNumber } from 'google-libphonenumber';
+
+import { ODS_PHONE_NUMBER_COUNTRY_PRESET } from '../constants/phone-number-countries';
+import type { OsdsPhoneNumber } from '../osds-phone-number';
 
 class OdsPhoneNumberController {
 

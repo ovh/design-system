@@ -1,9 +1,10 @@
-import type { OdsFlagAttribute } from './interfaces/attributes';
-import type { ODS_FLAG_ISO_CODE_UNION } from './constants/flag-iso-code';
-import { odsHasAriaHidden } from '@ovhcloud/ods-common-core'
-import { Build, Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
+import { odsHasAriaHidden } from '@ovhcloud/ods-common-core';
+import { Build, Component, Element, Host, Prop, State, Watch, h } from '@stencil/core';
+
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import type { ODS_FLAG_ISO_CODE_UNION } from './constants/flag-iso-code';
 import { OdsFlagController } from './core/controller';
+import type { OdsFlagAttribute } from './interfaces/attributes';
 
 @Component({
   tag: 'osds-flag',
@@ -60,14 +61,14 @@ export class OsdsFlag implements OdsFlagAttribute {
     const { ariaLabel } = this;
     return (
       <Host class="flag"
-            aria-label={ ariaLabel && !odsHasAriaHidden(this.hostElement) ? ariaLabel : null }
-            role="img">
+        aria-label={ ariaLabel && !odsHasAriaHidden(this.hostElement) ? ariaLabel : null }
+        role="img">
         {
-          Build.isBrowser && this.svgContent ?
-          <div class="flag__svg"
-               innerHTML={ this.svgContent }>
-          </div> :
-          <div class="flag__svg flag__svg--default"></div>
+          Build.isBrowser && this.svgContent
+            ? <div class="flag__svg"
+              innerHTML={ this.svgContent }>
+            </div>
+            : <div class="flag__svg flag__svg--default"></div>
         }
       </Host>
     );

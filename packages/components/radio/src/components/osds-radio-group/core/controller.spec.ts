@@ -1,8 +1,10 @@
-import { OsdsRadioGroup } from '../osds-radio-group';
-import { OsdsRadio } from '../../osds-radio/osds-radio';
-import { OdsRadioGroupController } from './controller';
-import { OdsClearLoggerSpy, OdsInitializeLoggerSpy, OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
 import { OdsLogger } from '@ovhcloud/ods-common-core';
+import { OdsClearLoggerSpy, OdsInitializeLoggerSpy, OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
+
+import { OdsRadioGroupController } from './controller';
+import { OsdsRadio } from '../../osds-radio/osds-radio';
+import { OsdsRadioGroup } from '../osds-radio-group';
+
 
 class OdsRadioMock extends OsdsRadio {
   constructor(attribute?: Partial<OsdsRadio>) {

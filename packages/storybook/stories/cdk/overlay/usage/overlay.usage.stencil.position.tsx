@@ -1,5 +1,5 @@
-import { Component, Host, h } from '@stencil/core';
 import { OcdkSurfaceCorner } from '@ovhcloud/ods-cdk';
+import { Component, Host, h } from '@stencil/core';
 
 /** ... */
 

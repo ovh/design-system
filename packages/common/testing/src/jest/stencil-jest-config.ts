@@ -1,4 +1,5 @@
 import type { Config } from '@jest/types';
+
 import { getJestConfig } from './ods-get-jest-config';
 
 /**

@@ -1,6 +1,7 @@
-import page from './oles-ipsum.mdx';
-import { html } from 'lit-html';
 import { OlesIpsumGeneration, OlesIpsumGenerationList, olesIpsum } from '@ovhcloud/ods-common-core';
+import { html } from 'lit-html';
+
+import page from './oles-ipsum.mdx';
 
 export default {
   title: 'Libraries/Core/Oles Ipsum',

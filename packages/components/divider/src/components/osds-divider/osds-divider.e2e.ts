@@ -1,7 +1,8 @@
-import type { OdsDividerAttribute } from './interfaces/attributes';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { E2EElement, E2EPage, newE2EPage } from '@stencil/core/testing';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
+import { E2EElement, E2EPage, newE2EPage } from '@stencil/core/testing';
+
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import type { OdsDividerAttribute } from './interfaces/attributes';
 
 describe('e2e:osds-divider', () => {
   let page: E2EPage;

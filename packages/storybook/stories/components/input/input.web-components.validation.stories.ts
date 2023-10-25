@@ -1,5 +1,5 @@
-import type { OdsInputValidityState, OdsInputValueChangeEvent } from '@ovhcloud/ods-components/input';
 import { OdsErrorStateControl, OdsFormControl, OdsLogger } from '@ovhcloud/ods-common-core';
+import type { OdsInputValidityState, OdsInputValueChangeEvent } from '@ovhcloud/ods-components/input';
 import { OsdsInput } from '@ovhcloud/ods-components/input';
 
 interface WindowWithInputMethods extends Window {

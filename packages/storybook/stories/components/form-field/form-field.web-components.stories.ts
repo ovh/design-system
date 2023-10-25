@@ -1,10 +1,11 @@
-import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
-import page from './form-field.web-component.stories.page.mdx';
+import changelog from '@ovhcloud/ods-components/form-field/CHANGELOG.md';
+import { defineCustomElements } from '@ovhcloud/ods-components/form-field/loader';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-import { defineCustomElements } from '@ovhcloud/ods-components/form-field/loader';
+
+import page from './form-field.web-component.stories.page.mdx';
+import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 // @ts-ignore
-import changelog from '@ovhcloud/ods-components/form-field/CHANGELOG.md';
 // @ts-ignore
 
 defineCustomElements();

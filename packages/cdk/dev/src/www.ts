@@ -1,8 +1,9 @@
+import { OcdkSurface, OcdkSurfaceCorner, ocdkDefineCustomElements } from '@ovhcloud/ods-cdk';
+import { Ods } from '@ovhcloud/ods-common-core';
+
 import {
   OcdkSurfaceCustomStrategyExample,
 } from './components/surface/strategies/custom-example/ocdk-surface-custom-strategy-example';
-import { Ods } from '@ovhcloud/ods-common-core';
-import { OcdkSurface, OcdkSurfaceCorner, ocdkDefineCustomElements } from '@ovhcloud/ods-cdk';
 
 ocdkDefineCustomElements();
 

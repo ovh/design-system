@@ -1,8 +1,8 @@
 import type { Config as JestConfig } from '@jest/types';
 import type { Config as StencilConfig } from '@stencil/core';
 import { reactOutputTarget } from '@stencil/react-output-target';
-import { vueOutputTarget } from '@stencil/vue-output-target';
 import { sass } from '@stencil/sass';
+import { vueOutputTarget } from '@stencil/vue-output-target';
 import { postcss } from '@stencil-community/postcss';
 import * as autoprefixer from 'autoprefixer';
 import * as nodeSassPackageImporter from 'node-sass-package-importer';
@@ -98,7 +98,7 @@ function getStencilConfig({ args, componentCorePackage, devScript, excludeCompon
         resolver: jestConfig.resolver || undefined,
         restoreMocks: undefined,
         testRegex: jestConfig.testRegex as string,
-        transform: jestConfig.transform as { [key: string]: string; },
+        transform: jestConfig.transform as Record<string, string>,
 
         // Actual Stencil testing config
         browserHeadless: false,
@@ -109,7 +109,7 @@ function getStencilConfig({ args, componentCorePackage, devScript, excludeCompon
           browserHeadless: true,
           browserSlowMo: 0, // milliseconds,
         } : {}),
-      }
+      },
     };
   }
 
@@ -134,8 +134,8 @@ function getStencilConfig({ args, componentCorePackage, devScript, excludeCompon
           includeImportCustomElements: true,
           includePolyfills: false,
           proxiesFile: './vue/src/components/stencil-generated/index.ts',
-        })
-      ])
+        }),
+      ]),
     };
   }
 

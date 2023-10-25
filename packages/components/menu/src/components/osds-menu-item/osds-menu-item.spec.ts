@@ -1,6 +1,7 @@
-import { OsdsMenuItem } from './osds-menu-item';
-import { SpecPage, newSpecPage } from '@stencil/core/testing';
 import { OdsLogger } from '@ovhcloud/ods-common-core';
+import { SpecPage, newSpecPage } from '@stencil/core/testing';
+
+import { OsdsMenuItem } from './osds-menu-item';
 
 const logger = new OdsLogger('osds-menu-spec');
 

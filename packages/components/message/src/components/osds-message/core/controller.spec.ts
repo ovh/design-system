@@ -1,11 +1,12 @@
-import type { EventEmitter } from '@stencil/core';
-import { OsdsMessage } from '../osds-message';
-import { OdsMessageController } from './controller';
-import { ODS_MESSAGE_TYPE } from '../constants/message-type';
-import { DEFAULT_ATTRIBUTE } from '../constants/default-attributes';
-import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
 import { OdsClearLoggerSpy, OdsInitializeLoggerSpy, OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+import type { EventEmitter } from '@stencil/core';
+
+import { OdsMessageController } from './controller';
+import { DEFAULT_ATTRIBUTE } from '../constants/default-attributes';
+import { ODS_MESSAGE_TYPE } from '../constants/message-type';
+import { OsdsMessage } from '../osds-message';
 
 class OdsMessageMock extends OsdsMessage {
   constructor(attribute: Partial<OsdsMessage>) {

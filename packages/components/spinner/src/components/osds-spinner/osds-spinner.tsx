@@ -1,9 +1,11 @@
+import { Component, Element, Host, Prop, h } from '@stencil/core';
+
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import type { ODS_SPINNER_MODE } from './constants/spinner-mode';
 import type { ODS_SPINNER_SIZE } from './constants/spinner-size';
 import type { OdsSpinnerAttribute } from './interfaces/attributes';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import SpinnerSVG from '../../assets/default.svg';
-import { Component, Element, Host, Prop, h } from '@stencil/core';
+
 
 /**
  * @slot (unnamed) - Spinner content

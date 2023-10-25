@@ -1,13 +1,15 @@
-import type { OdsRadioAttribute } from './interfaces/attributes';
+import { OdsLogger } from '@ovhcloud/ods-common-core';
+import { osdsSetPropertyFunction } from '@ovhcloud/ods-common-stencil';
+import { odsGetSimulatedPromise } from '@ovhcloud/ods-common-testing';
+import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import type { E2EElement, E2EPage } from '@stencil/core/testing';
+import { newE2EPage } from '@stencil/core/testing';
+
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import type { OdsRadioAttribute } from './interfaces/attributes';
 import type { OdsRadioCheckedChangeEventDetail, OdsRadioCheckingChangeEventDetail } from './interfaces/events';
 import type { OsdsRadio } from './osds-radio';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { newE2EPage } from '@stencil/core/testing';
-import { OdsLogger } from '@ovhcloud/ods-common-core';
-import { odsGetSimulatedPromise } from '@ovhcloud/ods-common-testing';
-import { osdsSetPropertyFunction } from '@ovhcloud/ods-common-stencil';
-import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
+
 
 describe('e2e:osds-radio', () => {
   let page: E2EPage;

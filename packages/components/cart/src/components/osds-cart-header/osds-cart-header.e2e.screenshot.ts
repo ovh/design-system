@@ -1,9 +1,10 @@
-import type { E2EPage } from '@stencil/core/testing';
-import type { OdsCartHeaderAttribute } from './interfaces/attributes';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsLogger } from '@ovhcloud/ods-common-core';
-import { newE2EPage } from '@stencil/core/testing';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
+import type { E2EPage } from '@stencil/core/testing';
+import { newE2EPage } from '@stencil/core/testing';
+
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import type { OdsCartHeaderAttribute } from './interfaces/attributes';
 
 const logger = new OdsLogger('osds-cart-header-e2e');
 

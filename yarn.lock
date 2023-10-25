@@ -5771,6 +5771,7 @@ __metadata:
   resolution: "@ovhcloud/ods-component-timepicker@workspace:packages/components/timepicker"
   dependencies:
     "@ovhcloud/ods-common-core": 16.3.0
+    "@ovhcloud/ods-common-scripts": 16.3.0
     "@ovhcloud/ods-common-stencil": 16.3.0
     "@ovhcloud/ods-common-testing": 16.3.0
     "@ovhcloud/ods-common-theming": 16.3.0

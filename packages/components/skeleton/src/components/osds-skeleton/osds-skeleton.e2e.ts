@@ -1,9 +1,11 @@
-import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
+import type { OdsSkeletonAttribute } from './interfaces/attributes';
 import type { E2EElement, E2EPage } from '@stencil/core/testing';
+
+import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import { newE2EPage } from '@stencil/core/testing';
 
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import type { OdsSkeletonAttribute } from './interfaces/attributes';
+
 
 describe('e2e:osds-skeleton', () => {
   let page: E2EPage;

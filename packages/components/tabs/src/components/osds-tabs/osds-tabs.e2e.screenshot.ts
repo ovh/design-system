@@ -1,7 +1,8 @@
+import type { OdsTabsAttribute } from './interfaces/attributes';
 import type { E2EElement, E2EPage } from '@stencil/core/testing';
+
 import { newE2EPage } from '@stencil/core/testing';
 
-import type { OdsTabsAttribute } from './interfaces/attributes';
 
 describe('e2e:osds-tabs', () => {
   let page: E2EPage;

@@ -1,9 +1,10 @@
-import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
+import type { OdsBreadcrumbItemAttribute } from './interfaces/attributes';
 import type { SpecPage } from '@stencil/core/testing';
+
+import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import { newSpecPage } from '@stencil/core/testing';
 
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import type { OdsBreadcrumbItemAttribute } from './interfaces/attributes';
 import { OsdsBreadcrumbItem } from './osds-breadcrumb-item';
 
 

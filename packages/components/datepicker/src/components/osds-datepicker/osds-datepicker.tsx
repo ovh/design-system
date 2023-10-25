@@ -1,8 +1,13 @@
+import type { ODS_DATEPICKER_DAY } from './constants/datepicker-day';
+import type { ODS_DATEPICKER_LOCALE } from './constants/datepicker-locale';
+import type { OdsDatepickerAttribute } from './interfaces/attributes';
+import type { OdsDatepickerEvent, OdsDatepickerValueChangeEventDetail } from './interfaces/events';
+import type { EventEmitter } from '@stencil/core';
+
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_ICON_NAME } from '@ovhcloud/ods-component-icon';
 import { ODS_INPUT_TYPE } from '@ovhcloud/ods-component-input';
 import { Component, Element, Event, Host, Listen, Prop, State, Watch, h } from '@stencil/core';
-import type { EventEmitter } from '@stencil/core';
 import { Datepicker } from 'vanillajs-datepicker';
 // @ts-ignore
 import de from 'vanillajs-datepicker/js/i18n/locales/de';
@@ -19,12 +24,10 @@ import pl from 'vanillajs-datepicker/js/i18n/locales/pl';
 // @ts-ignore
 import pt from 'vanillajs-datepicker/js/i18n/locales/pt';
 
-import type { ODS_DATEPICKER_DAY } from './constants/datepicker-day';
-import type { ODS_DATEPICKER_LOCALE } from './constants/datepicker-locale';
+
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsDatepickerController } from './core/controller';
-import type { OdsDatepickerAttribute } from './interfaces/attributes';
-import type { OdsDatepickerEvent, OdsDatepickerValueChangeEventDetail } from './interfaces/events';
+
 
 Object.assign(Datepicker.locales, de);
 Object.assign(Datepicker.locales, es);

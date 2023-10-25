@@ -1,13 +1,14 @@
+import type { OdsMessageAttribute } from './interfaces/attributes';
+import type { OdsMessageEvent } from './interfaces/events';
 import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
 import type { EventEmitter } from '@stencil/core';
+
+import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
 import { Component, Event, Host, Prop, Watch, h } from '@stencil/core';
 
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_MESSAGE_TYPE } from './constants/message-type';
 import { OdsMessageController } from './core/controller';
-import type { OdsMessageAttribute } from './interfaces/attributes';
-import type { OdsMessageEvent } from './interfaces/events';
 
 
 /**

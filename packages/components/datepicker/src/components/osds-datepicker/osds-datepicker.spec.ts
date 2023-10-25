@@ -1,15 +1,16 @@
 jest.mock('./core/controller');
 
+import type { OdsDatepickerAttribute } from './interfaces/attributes';
+import type { SpecPage } from '@stencil/core/testing';
+
 import { OdsUnitTestAttributeType, odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import type { SpecPage } from '@stencil/core/testing';
 import { newSpecPage } from '@stencil/core/testing';
 
 import { ODS_DATEPICKER_DAY } from './constants/datepicker-day';
 import { ODS_DATEPICKER_LOCALE } from './constants/datepicker-locale';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsDatepickerController } from './core/controller';
-import type { OdsDatepickerAttribute } from './interfaces/attributes';
 import { OsdsDatepicker } from './osds-datepicker';
 // @ts-ignore
 import { Datepicker } from '../../jestStub';

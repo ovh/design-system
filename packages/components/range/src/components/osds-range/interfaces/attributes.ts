@@ -1,7 +1,7 @@
+import type { OdsRangeValue } from './value';
 import type { OdsErrorStateControl, OdsFormControl, OdsFormForbiddenValues, OdsValidityState } from '@ovhcloud/ods-common-core';
 import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 
-import type { OdsRangeValue } from './value';
 
 interface OdsRangeAttribute {
   /**

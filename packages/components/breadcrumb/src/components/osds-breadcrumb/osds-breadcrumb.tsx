@@ -1,10 +1,11 @@
+import type { OdsBreadcrumbAttribute, OdsBreadcrumbAttributeItem } from './interfaces/attributes';
+import type { OdsBreadcrumbItemAttribute } from '../osds-breadcrumb-item/interfaces/attributes';
+
 import { OdsLogger } from '@ovhcloud/ods-common-core';
 import { Component, Element, Host, Listen, Prop, State, Watch, h } from '@stencil/core';
 
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsBreadcrumbController } from './core/controller';
-import type { OdsBreadcrumbAttribute, OdsBreadcrumbAttributeItem } from './interfaces/attributes';
-import type { OdsBreadcrumbItemAttribute } from '../osds-breadcrumb-item/interfaces/attributes';
 
 
 /**

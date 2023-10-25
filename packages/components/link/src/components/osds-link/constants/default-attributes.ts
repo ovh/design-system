@@ -1,6 +1,7 @@
+import type { OdsLinkAttribute } from '../interfaces/attributes';
+
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 
-import type { OdsLinkAttribute } from '../interfaces/attributes';
 
 const DEFAULT_ATTRIBUTE: OdsLinkAttribute = Object.freeze({
   color: ODS_THEME_COLOR_INTENT.default,

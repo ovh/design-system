@@ -1,15 +1,18 @@
-import type { OdsHTMLAnchorElementRel, OdsHTMLAnchorElementTarget } from '@ovhcloud/ods-common-core';
-import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import { Component, Element, Host, Listen, Prop, h } from '@stencil/core';
-import type { HTMLStencilElement } from '@stencil/core/internal';
-
 import type { ODS_BUTTON_SIZE } from './constants/button-size';
 import type { ODS_BUTTON_TEXT_ALIGN } from './constants/button-text-align';
 import type { ODS_BUTTON_TYPE } from './constants/button-type';
 import type { ODS_BUTTON_VARIANT } from './constants/button-variant';
+import type { OdsButtonAttribute } from './interfaces/attributes';
+import type { OdsHTMLAnchorElementRel, OdsHTMLAnchorElementTarget } from '@ovhcloud/ods-common-core';
+import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+import type { HTMLStencilElement } from '@stencil/core/internal';
+
+import { Component, Element, Host, Listen, Prop, h } from '@stencil/core';
+
+
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsButtonController } from './core/controller';
-import type { OdsButtonAttribute } from './interfaces/attributes';
+
 
 /**
  * @slot start - Fixed start button content

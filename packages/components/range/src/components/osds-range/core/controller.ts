@@ -1,8 +1,9 @@
+import type { OdsRangeValue } from '../interfaces/value';
 import type { OdsFormControl, OdsValidityState } from '@ovhcloud/ods-common-core';
+
 import { OdsGetValidityState, OdsLogger, OdsWarnComponentAttribute } from '@ovhcloud/ods-common-core';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 
-import type { OdsRangeValue } from '../interfaces/value';
 import { OsdsRange } from '../osds-range';
 
 /**

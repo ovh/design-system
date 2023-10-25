@@ -1,10 +1,11 @@
+import type { OdsModalAttribute } from './interfaces/attributes';
+import type { SpecPage } from '@stencil/core/testing';
+
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import type { SpecPage } from '@stencil/core/testing';
 import { newSpecPage } from '@stencil/core/testing';
 
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import type { OdsModalAttribute } from './interfaces/attributes';
 import { OsdsModal } from './osds-modal';
 
 

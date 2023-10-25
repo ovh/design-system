@@ -1,6 +1,7 @@
+import type { SpecPage } from '@stencil/core/testing';
+
 import { OdsLogger } from '@ovhcloud/ods-common-core';
 import { OdsMockNativeMethod, OdsMockPropertyDescriptor } from '@ovhcloud/ods-common-testing';
-import type { SpecPage } from '@stencil/core/testing';
 import { newSpecPage } from '@stencil/core/testing';
 
 import { OsdsSelectGroup } from './osds-select-group';

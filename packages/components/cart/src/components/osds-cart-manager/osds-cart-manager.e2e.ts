@@ -1,10 +1,12 @@
+import type { OdsCartManagerAttribute, OdsCartManagerItem, OdsCartManagerSection } from './interfaces/attributes';
+import type { E2EElement, E2EPage } from '@stencil/core/testing';
+
 import { OdsI18nHook, OdsLogger } from '@ovhcloud/ods-common-core';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
-import type { E2EElement, E2EPage } from '@stencil/core/testing';
 import { newE2EPage } from '@stencil/core/testing';
 
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import type { OdsCartManagerAttribute, OdsCartManagerItem, OdsCartManagerSection } from './interfaces/attributes';
+
 
 const logger = new OdsLogger('osds-cart-manager-e2e');
 

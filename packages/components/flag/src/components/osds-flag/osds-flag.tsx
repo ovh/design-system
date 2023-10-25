@@ -1,10 +1,12 @@
+import type { ODS_FLAG_ISO_CODE_UNION } from './constants/flag-iso-code';
+import type { OdsFlagAttribute } from './interfaces/attributes';
+
 import { odsHasAriaHidden } from '@ovhcloud/ods-common-core';
 import { Build, Component, Element, Host, Prop, State, Watch, h } from '@stencil/core';
 
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import type { ODS_FLAG_ISO_CODE_UNION } from './constants/flag-iso-code';
 import { OdsFlagController } from './core/controller';
-import type { OdsFlagAttribute } from './interfaces/attributes';
+
 
 @Component({
   tag: 'osds-flag',

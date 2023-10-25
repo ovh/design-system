@@ -1,5 +1,6 @@
-import { Ods, OdsHTMLAnchorElementRel, OdsHTMLAnchorElementTarget, OdsLogger } from '@ovhcloud/ods-common-core';
 import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
+
+import { Ods, OdsHTMLAnchorElementRel, OdsHTMLAnchorElementTarget, OdsLogger } from '@ovhcloud/ods-common-core';
 import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 

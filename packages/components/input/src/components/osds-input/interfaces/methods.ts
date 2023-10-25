@@ -1,6 +1,6 @@
+import type { OdsInputValidityState } from './attributes';
 import type { OdsFormControlMethods } from '@ovhcloud/ods-common-core';
 
-import type { OdsInputValidityState } from './attributes';
 
 interface OdsInputMethod extends OdsFormControlMethods<OdsInputValidityState> {
   /**

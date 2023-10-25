@@ -1,6 +1,7 @@
 import type { OdsTextAreaValidityState, OdsValidityStateUnion } from '@ovhcloud/ods-common-core';
-import { Ods, OdsFormControl, OdsLogger } from '@ovhcloud/ods-common-core';
 import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
+
+import { Ods, OdsFormControl, OdsLogger } from '@ovhcloud/ods-common-core';
 import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
 
 import { OdsTextAreaController } from './controller';

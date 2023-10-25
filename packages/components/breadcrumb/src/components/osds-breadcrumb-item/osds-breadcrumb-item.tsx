@@ -1,9 +1,10 @@
+import type { OdsBreadcrumbItemAttribute } from './interfaces/attributes';
+
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
 import { Component, Element, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
 
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import type { OdsBreadcrumbItemAttribute } from './interfaces/attributes';
 
 /**
  * @slot (unnamed) - Breadcrumb Item content

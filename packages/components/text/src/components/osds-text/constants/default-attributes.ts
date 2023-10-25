@@ -1,7 +1,8 @@
+import type { OdsTextAttribute } from '../interfaces/attributes';
+
 import { ODS_TEXT_COLOR_HUE, ODS_TEXT_COLOR_INTENT } from './text-color';
 import { ODS_TEXT_LEVEL } from './text-level';
 import { ODS_TEXT_SIZE } from './text-size';
-import type { OdsTextAttribute } from '../interfaces/attributes';
 
 const DEFAULT_ATTRIBUTE: OdsTextAttribute = Object.freeze({
   breakSpaces: false,

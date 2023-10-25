@@ -1,4 +1,5 @@
 import type { SpecPage } from '@stencil/core/testing';
+
 import { newSpecPage } from '@stencil/core/testing';
 
 import { OsdsContentAddon } from './osds-content-addon';

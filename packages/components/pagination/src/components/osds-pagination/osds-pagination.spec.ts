@@ -1,10 +1,11 @@
-import { OdsMockNativeMethod, odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
+import type { OdsPaginationAttribute } from './interfaces/attributes';
 import type { SpecPage } from '@stencil/core/testing';
+
+import { OdsMockNativeMethod, odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 import { newSpecPage } from '@stencil/core/testing';
 
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_PAGINATION_PER_PAGE_MIN } from './constants/pagination-per-page';
-import type { OdsPaginationAttribute } from './interfaces/attributes';
 import { OsdsPagination } from './osds-pagination';
 
 

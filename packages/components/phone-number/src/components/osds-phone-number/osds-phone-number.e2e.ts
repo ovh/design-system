@@ -1,13 +1,16 @@
+import type { OdsPhoneNumberAttribute } from './interfaces/attributes';
+import type { E2EElement, E2EPage } from '@stencil/core/testing';
+import type { HTTPRequest as pRequest } from 'puppeteer';
+
 import { ODS_COUNTRY_ISO_CODE } from '@ovhcloud/ods-common-core';
 import { odsSetE2eInterceptRequest } from '@ovhcloud/ods-common-stencil';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
-import type { E2EElement, E2EPage } from '@stencil/core/testing';
 import { newE2EPage } from '@stencil/core/testing';
-import type { HTTPRequest as pRequest } from 'puppeteer';
+
 
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_PHONE_NUMBER_COUNTRY_PRESET } from './constants/phone-number-countries';
-import type { OdsPhoneNumberAttribute } from './interfaces/attributes';
+
 
 describe('e2e:osds-phone-number', () => {
   const baseAttribute = { value: '' };

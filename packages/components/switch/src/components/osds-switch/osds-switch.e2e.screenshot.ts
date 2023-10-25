@@ -1,11 +1,13 @@
+import type { OdsSwitchAttribute } from './interfaces/attributes';
+import type { E2EElement, E2EPage } from '@stencil/core/testing';
+
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import type { E2EElement, E2EPage } from '@stencil/core/testing';
 import { newE2EPage } from '@stencil/core/testing';
 
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_SWITCH_SIZES } from './constants/switch-size';
-import type { OdsSwitchAttribute } from './interfaces/attributes';
+
 
 
 describe('e2e:osds-switch', () => {

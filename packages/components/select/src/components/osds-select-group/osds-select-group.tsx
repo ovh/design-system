@@ -1,8 +1,10 @@
-import { Component, Element, Host, State, h } from '@stencil/core';
+import type { OsdsSelect } from '../osds-select/osds-select';
 import type { HTMLStencilElement } from '@stencil/core/internal';
 
+import { Component, Element, Host, State, h } from '@stencil/core';
+
 import { DEFAULT_ATTRIBUTE } from '../osds-select/constants/default-attributes';
-import type { OsdsSelect } from '../osds-select/osds-select';
+
 
 /**
  * @slot (unnamed) - Select group content

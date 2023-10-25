@@ -1,15 +1,16 @@
 jest.mock('./core/controller'); // keep jest.mock before any
 
+import type { OdsChipAttribute } from './interfaces/attributes';
+import type { SpecPage } from '@stencil/core/testing';
+
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import type { SpecPage } from '@stencil/core/testing';
 import { newSpecPage } from '@stencil/core/testing';
 
 import { ODS_CHIP_SIZE } from './constants/chip-size';
 import { ODS_CHIP_VARIANT } from './constants/chip-variant';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsChipController } from './core/controller';
-import type { OdsChipAttribute } from './interfaces/attributes';
 import { OsdsChip } from './osds-chip';
 
 

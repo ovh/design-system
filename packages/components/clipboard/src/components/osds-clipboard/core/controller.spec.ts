@@ -1,6 +1,7 @@
+import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
+
 import { OcdkSurface, OcdkSurfaceMock } from '@ovhcloud/ods-cdk';
 import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
-import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
 import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
 
 import { OdsClipboardController } from './controller';

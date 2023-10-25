@@ -1,7 +1,8 @@
+import type { OsdsCart } from '../osds-cart/osds-cart';
+
 import { Component, Element, Host, h } from '@stencil/core';
 
 import { OdsCartItemController } from './core/controller';
-import type { OsdsCart } from '../osds-cart/osds-cart';
 
 @Component({
   tag: 'osds-cart-item',

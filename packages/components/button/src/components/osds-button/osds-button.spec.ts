@@ -1,9 +1,11 @@
 jest.mock('./core/controller'); // keep jest.mock before any
 
+import type { OdsButtonAttribute } from './interfaces/attributes';
+import type { SpecPage } from '@stencil/core/testing';
+
 import { OdsHTMLAnchorElementRel, OdsHTMLAnchorElementTarget } from '@ovhcloud/ods-common-core';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
-import type { SpecPage } from '@stencil/core/testing';
 import { newSpecPage } from '@stencil/core/testing';
 
 import { ODS_BUTTON_SIZE, ODS_BUTTON_SIZES } from './constants/button-size';
@@ -11,7 +13,6 @@ import { ODS_BUTTON_TEXT_ALIGN, ODS_BUTTON_TEXT_ALIGNS } from './constants/butto
 import { ODS_BUTTON_VARIANT, ODS_BUTTON_VARIANTS } from './constants/button-variant';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsButtonController } from './core/controller';
-import type { OdsButtonAttribute } from './interfaces/attributes';
 import { OsdsButton } from './osds-button';
 
 

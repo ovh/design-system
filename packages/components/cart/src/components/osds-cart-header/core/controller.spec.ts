@@ -1,5 +1,6 @@
-import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
 import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
+
+import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
 import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
 
 import { OdsCartHeaderController } from './controller';

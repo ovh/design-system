@@ -1,7 +1,8 @@
+import type { OdsTextAreaAttribute } from '../interfaces/attributes';
+
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 
 import { ODS_TEXTAREA_SIZE } from './textarea-size';
-import type { OdsTextAreaAttribute } from '../interfaces/attributes';
 
 const DEFAULT_ATTRIBUTE: OdsTextAreaAttribute = Object.freeze({
   ariaLabel: null,

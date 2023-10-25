@@ -1,4 +1,5 @@
 import type { OcdkSurface } from '@ovhcloud/ods-cdk';
+
 import { OcdkSurfaceMock } from '@ovhcloud/ods-cdk';
 import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
 import { OdsClearLoggerSpy, OdsInitializeLoggerSpy, OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';

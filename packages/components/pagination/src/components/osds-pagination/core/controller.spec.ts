@@ -1,8 +1,9 @@
+import type { OdsPaginationPageList } from '../interfaces/attributes';
+
 import { OdsLogger } from '@ovhcloud/ods-common-core';
 import { OdsClearLoggerSpy, OdsInitializeLoggerSpy, OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
 
 import { OdsPaginationController } from './controller';
-import type { OdsPaginationPageList } from '../interfaces/attributes';
 import { OsdsPagination } from '../osds-pagination';
 
 

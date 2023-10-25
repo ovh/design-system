@@ -14,13 +14,14 @@ jest.mock('@ovhcloud/ods-common-core', () => ({
   })),
 }));
 
+import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
+
 import {
   Ods,
   OdsLogger,
   odsGetAssetPath,
   odsGetSrc,
 } from '@ovhcloud/ods-common-core';
-import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
 import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
 
 import { OdsFlagController } from './controller';

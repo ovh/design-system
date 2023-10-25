@@ -1,9 +1,11 @@
-import { OcdkSurface, ocdkDefineCustomElements, ocdkIsSurface } from '@ovhcloud/ods-cdk';
-import { Component, Element, Host, Listen, Method, h } from '@stencil/core';
+import type { OdsPopoverMethod } from './interfaces/methods';
 import type { HTMLStencilElement } from '@stencil/core/internal';
 
+import { OcdkSurface, ocdkDefineCustomElements, ocdkIsSurface } from '@ovhcloud/ods-cdk';
+import { Component, Element, Host, Listen, Method, h } from '@stencil/core';
+
 import { OdsPopoverController } from './core/controller';
-import type { OdsPopoverMethod } from './interfaces/methods';
+
 
 ocdkDefineCustomElements();
 

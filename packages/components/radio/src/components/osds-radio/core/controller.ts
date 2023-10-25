@@ -1,9 +1,10 @@
-import type { OdsRadioizable } from '@ovhcloud/ods-common-core';
-import { OdsLogger } from '@ovhcloud/ods-common-core';
-import type { HTMLStencilElement } from '@stencil/core/internal';
-
 import type { OsdsRadioGroup } from '../../osds-radio-group/osds-radio-group';
 import type { OsdsRadio } from '../osds-radio';
+import type { OdsRadioizable } from '@ovhcloud/ods-common-core';
+import type { HTMLStencilElement } from '@stencil/core/internal';
+
+import { OdsLogger } from '@ovhcloud/ods-common-core';
+
 
 class OdsRadioController {
   private readonly logger = new OdsLogger('OdsRadioController');

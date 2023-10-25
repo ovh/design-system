@@ -1,7 +1,7 @@
-import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 
 import type { ODS_SWITCH_SIZE } from '../constants/switch-size';
 import type { ODS_SWITCH_VARIANT } from '../constants/switch-variant';
+import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 
 interface OdsSwitchAttribute {
   /** main color: see component principles */

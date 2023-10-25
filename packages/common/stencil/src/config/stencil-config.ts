@@ -1,5 +1,6 @@
 import type { Config as JestConfig } from '@jest/types';
 import type { Config as StencilConfig } from '@stencil/core';
+
 import { reactOutputTarget } from '@stencil/react-output-target';
 import { sass } from '@stencil/sass';
 import { vueOutputTarget } from '@stencil/vue-output-target';

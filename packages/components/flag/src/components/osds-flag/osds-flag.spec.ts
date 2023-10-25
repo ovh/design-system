@@ -1,14 +1,15 @@
 jest.mock('./core/controller');
 
+import type { OdsFlagAttribute } from './interfaces/attributes';
+import type { SpecPage } from '@stencil/core/testing';
+
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 import { Build } from '@stencil/core';
-import type { SpecPage } from '@stencil/core/testing';
 import { newSpecPage } from '@stencil/core/testing';
 
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_FLAG_ISO_CODE } from './constants/flag-iso-code';
 import { OdsFlagController } from './core/controller';
-import type { OdsFlagAttribute } from './interfaces/attributes';
 import { OsdsFlag } from './osds-flag';
 
 describe('spec:osds-flag', () => {

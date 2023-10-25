@@ -1,3 +1,6 @@
+import type { OdsCheckboxAttribute } from './interfaces/attributes';
+import type { SpecPage } from '@stencil/core/testing';
+
 import {
   OdsMockNativeMethod,
   OdsUnitTestAttributeType,
@@ -6,12 +9,10 @@ import {
   odsStringAttributes2Str,
   odsUnitTestAttribute,
 } from '@ovhcloud/ods-common-testing';
-import type { SpecPage } from '@stencil/core/testing';
 import { newSpecPage } from '@stencil/core/testing';
 
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsCheckboxController } from './core/ods-checkbox-controller';
-import type { OdsCheckboxAttribute } from './interfaces/attributes';
 import { OsdsCheckbox } from './osds-checkbox';
 
 

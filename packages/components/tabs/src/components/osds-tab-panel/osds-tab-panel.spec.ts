@@ -1,11 +1,12 @@
-import { OdsLogger } from '@ovhcloud/ods-common-core';
+import type { OdsTabPanelAttribute } from './interfaces/attributes';
 import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
-import { OdsClearLoggerSpy, OdsInitializeLoggerSpy, odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 import type { SpecPage } from '@stencil/core/testing';
+
+import { OdsLogger } from '@ovhcloud/ods-common-core';
+import { OdsClearLoggerSpy, OdsInitializeLoggerSpy, odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 import { newSpecPage } from '@stencil/core/testing';
 
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import type { OdsTabPanelAttribute } from './interfaces/attributes';
 import { OsdsTabsPanel } from './osds-tab-panel';
 
 

@@ -1,7 +1,7 @@
-import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 
 import type { ODS_DATEPICKER_DAY } from '../constants/datepicker-day';
 import type { ODS_DATEPICKER_LOCALE } from '../constants/datepicker-locale';
+import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 
 interface OdsDatepickerAttribute {
   /**

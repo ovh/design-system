@@ -1,7 +1,7 @@
+import type { ODS_MESSAGE_TYPE } from '../constants/message-type';
 import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import type { ODS_ICON_NAME } from '@ovhcloud/ods-component-icon';
 
-import type { ODS_MESSAGE_TYPE } from '../constants/message-type';
 
 interface OdsMessageAttribute {
   /**

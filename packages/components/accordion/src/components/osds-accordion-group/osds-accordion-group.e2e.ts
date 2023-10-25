@@ -1,4 +1,5 @@
 import type { E2EElement, E2EPage } from '@stencil/core/testing';
+
 import { newE2EPage } from '@stencil/core/testing';
 
 describe('e2e:osds-accordion-group', () => {

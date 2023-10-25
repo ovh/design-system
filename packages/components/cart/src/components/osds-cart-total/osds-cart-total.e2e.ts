@@ -1,5 +1,6 @@
-import { OdsLogger } from '@ovhcloud/ods-common-core';
 import type { E2EElement, E2EPage } from '@stencil/core/testing';
+
+import { OdsLogger } from '@ovhcloud/ods-common-core';
 import { newE2EPage } from '@stencil/core/testing';
 
 const logger = new OdsLogger('osds-cart-total-e2e');

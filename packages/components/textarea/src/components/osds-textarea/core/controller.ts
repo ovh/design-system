@@ -1,7 +1,8 @@
+import type { OsdsTextArea } from '../osds-textarea';
 import type { OdsTextAreaValidityState } from '@ovhcloud/ods-common-core';
+
 import { OdsFormControl, OdsLogger, OdsTextAreaGetValidityState } from '@ovhcloud/ods-common-core';
 
-import type { OsdsTextArea } from '../osds-textarea';
 
 /**
  * common controller logic for textarea component used by the different implementations.

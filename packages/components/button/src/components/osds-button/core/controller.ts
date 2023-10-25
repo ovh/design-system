@@ -1,10 +1,11 @@
+import type { OsdsButton } from '../osds-button';
+
 import { OdsLogger, OdsWarnComponentAttribute } from '@ovhcloud/ods-common-core';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 
 import { ODS_BUTTON_SIZE } from '../constants/button-size';
 import { ODS_BUTTON_TEXT_ALIGN } from '../constants/button-text-align';
 import { ODS_BUTTON_VARIANT } from '../constants/button-variant';
-import type { OsdsButton } from '../osds-button';
 
 
 /**

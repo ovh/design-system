@@ -1,13 +1,14 @@
 jest.mock('./core/controller'); // keep jest.mock before any
 
-import { OdsMockNativeMethod, odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
+import type { OdsQuantityAttribute } from './interfaces/attributes';
 import type { AnyHTMLElement } from '@stencil/core/internal';
 import type { SpecPage } from '@stencil/core/testing';
+
+import { OdsMockNativeMethod, odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 import { newSpecPage } from '@stencil/core/testing';
 
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsQuantityController } from './core/controller';
-import type { OdsQuantityAttribute } from './interfaces/attributes';
 import { OsdsQuantity } from './osds-quantity';
 
 

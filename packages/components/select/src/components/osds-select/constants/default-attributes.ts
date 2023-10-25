@@ -1,7 +1,8 @@
+import type { OdsSelectAttribute } from '../interfaces/attributes';
+
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 
 import { ODS_SELECT_SIZE } from './select-size';
-import type { OdsSelectAttribute } from '../interfaces/attributes';
 
 const DEFAULT_ATTRIBUTE: OdsSelectAttribute = Object.freeze({
   ariaLabel: null,

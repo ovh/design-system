@@ -1,4 +1,5 @@
 import type { SpecPage } from '@stencil/core/testing';
+
 import { newSpecPage } from '@stencil/core/testing';
 
 import { OsdsPopoverContent } from './osds-popover-content';

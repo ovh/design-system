@@ -1,4 +1,5 @@
 import type { E2EPage } from '@stencil/core/testing';
+
 import { newE2EPage } from '@stencil/core/testing';
 
 import { ODS_FLAG_ISO_CODES } from './constants/flag-iso-code';

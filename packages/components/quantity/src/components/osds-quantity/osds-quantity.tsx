@@ -1,9 +1,10 @@
+import type { OdsQuantityAttribute } from './interfaces/attributes';
 import type { OsdsInput } from '@ovhcloud/ods-component-input';
+
 import { Component, Element, Host, Listen, Prop, Watch, h } from '@stencil/core';
 
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsQuantityController } from './core/controller';
-import type { OdsQuantityAttribute } from './interfaces/attributes';
 
 
 /**

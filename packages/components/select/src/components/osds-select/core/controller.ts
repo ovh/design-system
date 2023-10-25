@@ -1,7 +1,7 @@
-import type { OdsValidityState } from '@ovhcloud/ods-common-core';
 
 import type { OdsSelectOptionClickEventDetail, OsdsSelectOption } from '../../osds-select-option/public-api';
 import type { OsdsSelect } from '../osds-select';
+import type { OdsValidityState } from '@ovhcloud/ods-common-core';
 
 /**
  * common controller logic for select component used by the different implementations.

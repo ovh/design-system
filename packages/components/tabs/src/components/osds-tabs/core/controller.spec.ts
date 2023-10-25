@@ -1,7 +1,9 @@
-import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
 import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
-import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
 import type { HTMLStencilElement } from '@stencil/core/internal';
+
+import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
+import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
+
 
 import { OdsTabsController } from './controller';
 import { OsdsTabBar } from '../../osds-tab-bar/osds-tab-bar';

@@ -1,11 +1,13 @@
+import type { OdsMenuAttribute } from './interfaces/attributes';
+import type { OsdsMenuItem } from '../osds-menu-item/osds-menu-item';
+import type { HTMLStencilElement } from '@stencil/core/internal';
+
 import { OcdkSurface, ocdkDefineCustomElements, ocdkIsSurface } from '@ovhcloud/ods-cdk';
 import { Component, Element, Host, Listen, Prop, Watch, h } from '@stencil/core';
-import type { HTMLStencilElement } from '@stencil/core/internal';
 
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsMenuController } from './core/controller';
-import type { OdsMenuAttribute } from './interfaces/attributes';
-import type { OsdsMenuItem } from '../osds-menu-item/osds-menu-item';
+
 
 ocdkDefineCustomElements();
 

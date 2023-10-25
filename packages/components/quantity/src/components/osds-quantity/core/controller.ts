@@ -1,7 +1,8 @@
-import { OdsLogger } from '@ovhcloud/ods-common-core';
+import type { OsdsQuantity } from '../osds-quantity';
 import type { OsdsInput } from '@ovhcloud/ods-component-input';
 
-import type { OsdsQuantity } from '../osds-quantity';
+import { OdsLogger } from '@ovhcloud/ods-common-core';
+
 
 class OdsQuantityController {
   private component: OsdsQuantity;

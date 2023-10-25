@@ -33,20 +33,20 @@ const TemplateDefault = (args: any) => html`
       <osds-text>Group/Text 1</osds-text>
     </osds-menu-group>
     <osds-menu-item>
-      <osds-button color="primary" size='sm' variant='ghost' flex><span slot="start">Action 1</span></osds-button>
+      <osds-button color="primary" size='sm' variant='ghost' text-align='start' flex><span>Action 1</span></osds-button>
     </osds-menu-item>
     <osds-menu-item>
-      <osds-button color="primary" size='sm' variant='ghost' flex><span slot="start">Action 2</span></osds-button>
+      <osds-button color="primary" size='sm' variant='ghost' text-align='start' flex><span>Action 2</span></osds-button>
     </osds-menu-item>
     <osds-divider color="text" separator="true"></osds-divider>
     <osds-menu-group>
       <osds-text>Group/Text 2</osds-text>
     </osds-menu-group>
     <osds-menu-item>
-      <osds-button color="primary" size='sm' variant='ghost' flex><span slot="start">Action 1 showing an ellipsis if content is longer than max-width</span></osds-button>
+      <osds-button color="primary" size='sm' variant='ghost' text-align='start' flex><span>Action 1 showing an ellipsis if content is longer than max-width</span></osds-button>
     </osds-menu-item>
     <osds-menu-item>
-      <osds-button color="primary" size='sm' variant='ghost' flex disabled><span slot="start">Action 2</span></osds-button>
+      <osds-button color="primary" size='sm' variant='ghost' text-align='start' flex disabled><span>Action 2</span></osds-button>
     </osds-menu-item>
   </osds-menu>
 `;

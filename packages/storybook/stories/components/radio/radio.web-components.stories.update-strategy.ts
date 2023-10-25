@@ -1,7 +1,8 @@
-import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
+import { OlesIpsumGeneration, olesIpsum } from '@ovhcloud/ods-common-core';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-import { OlesIpsumGeneration, olesIpsum } from '@ovhcloud/ods-common-core';
+
+import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 
 const slotJs = `
     <script>

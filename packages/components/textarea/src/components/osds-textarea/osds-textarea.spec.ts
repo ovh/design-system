@@ -1,15 +1,17 @@
 jest.mock('./core/controller'); // keep jest.mock before any
 
-import type { SpecPage } from '@stencil/core/testing';
-import type { OdsTextAreaAttribute } from './interfaces/attributes';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { ODS_TEXTAREA_SIZE } from './constants/textarea-size';
-import { OdsTextAreaController } from './core/controller';
-import { OsdsTextArea } from './osds-textarea';
-import { newSpecPage } from '@stencil/core/testing';
 import { OdsFormControl } from '@ovhcloud/ods-common-core';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+import type { SpecPage } from '@stencil/core/testing';
+import { newSpecPage } from '@stencil/core/testing';
+
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { ODS_TEXTAREA_SIZE } from './constants/textarea-size';
+import { OdsTextAreaController } from './core/controller';
+import type { OdsTextAreaAttribute } from './interfaces/attributes';
+import { OsdsTextArea } from './osds-textarea';
+
 
 describe('spec:osds-textarea', () => {
   const baseAttribute = { ariaLabel: null, hasFocus: false, spellcheck: false, value: '' };

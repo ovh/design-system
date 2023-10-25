@@ -1,9 +1,10 @@
-import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
-import { OdsPopoverController } from './controller';
-import { OsdsPopover } from '../osds-popover';
 import { OcdkSurface, OcdkSurfaceMock } from '@ovhcloud/ods-cdk';
 import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
+import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
 import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
+
+import { OdsPopoverController } from './controller';
+import { OsdsPopover } from '../osds-popover';
 
 class OdsPopoverMock extends OsdsPopover {
   constructor(attribute: Partial<OsdsPopover>) {

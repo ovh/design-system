@@ -1,13 +1,15 @@
 jest.mock('./core/controller'); // keep jest.mock before any
 
+import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import type { AnyHTMLElement } from '@stencil/core/internal';
 import type { SpecPage } from '@stencil/core/testing';
-import type { OdsCartHeaderAttribute } from './interfaces/attributes';
+import { newSpecPage } from '@stencil/core/testing';
+
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsCartHeaderController } from './core/controller';
+import type { OdsCartHeaderAttribute } from './interfaces/attributes';
 import { OsdsCartHeader } from './osds-cart-header';
-import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
-import { newSpecPage } from '@stencil/core/testing';
+
 
 describe('spec:osds-cart-header', () => {
   let page: SpecPage;

@@ -1,15 +1,17 @@
 jest.mock('./core/controller'); // keep jest.mock before any import
 
-import type { SpecPage } from '@stencil/core/testing';
-import type { OdsCodeAttribute } from './interfaces/attributes';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { ODS_CODE_SIZE } from './constants/code-size';
-import { OsdsCode } from './osds-code';
-import { OdsCodeController } from './core/controller';
-import { newSpecPage } from '@stencil/core/testing';
 import { OdsLogger } from '@ovhcloud/ods-common-core';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+import type { SpecPage } from '@stencil/core/testing';
+import { newSpecPage } from '@stencil/core/testing';
+
+import { ODS_CODE_SIZE } from './constants/code-size';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { OdsCodeController } from './core/controller';
+import type { OdsCodeAttribute } from './interfaces/attributes';
+import { OsdsCode } from './osds-code';
+
 
 const logger = new OdsLogger('osds-code-spec');
 

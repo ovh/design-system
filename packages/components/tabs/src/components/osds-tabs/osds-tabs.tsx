@@ -1,13 +1,15 @@
-import type { HTMLStencilElement } from '@stencil/core/internal';
+import { OdsLogger } from '@ovhcloud/ods-common-core';
 import type { EventEmitter } from '@stencil/core';
-import type { OdsTabsAttribute } from './interfaces/attributes';
-import type { OdsTabsChangeEventDetail, OdsTabsEvent } from './interfaces/events';
-import type { OdsTabItemSelectEventDetail } from '../osds-tab-bar-item/interfaces/events';
+import { Component, Element, Event, Host, Listen, Prop, Watch, h } from '@stencil/core';
+import type { HTMLStencilElement } from '@stencil/core/internal';
+
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_TABS_SIZE } from './constants/tabs-size';
 import { OdsTabsController } from './core/controller';
-import { OdsLogger } from '@ovhcloud/ods-common-core';
-import { Component, Element, Event, Host, Listen, Prop, Watch, h } from '@stencil/core';
+import type { OdsTabsAttribute } from './interfaces/attributes';
+import type { OdsTabsChangeEventDetail, OdsTabsEvent } from './interfaces/events';
+import type { OdsTabItemSelectEventDetail } from '../osds-tab-bar-item/interfaces/events';
+
 
 /**
  * Main tabs component

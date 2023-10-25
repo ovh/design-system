@@ -1,6 +1,7 @@
-import type { OsdsAccordion } from '../osds-accordion';
-import { OsdsAccordionGroup } from '../../osds-accordion-group/osds-accordion-group';
 import { HTMLStencilElement } from '@stencil/core/internal';
+
+import { OsdsAccordionGroup } from '../../osds-accordion-group/osds-accordion-group';
+import type { OsdsAccordion } from '../osds-accordion';
 
 class OdsAccordionController {
   private component: OsdsAccordion;

@@ -1,13 +1,14 @@
 import type { OdsRadioizable } from '@ovhcloud/ods-common-core';
+import { OdsLogger } from '@ovhcloud/ods-common-core';
+import { Component, Element, Event, EventEmitter, Host, Method, Prop, State, Watch, h } from '@stencil/core';
 import type { HTMLStencilElement } from '@stencil/core/internal';
+
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { OdsRadioController } from './core/controller';
+import type { OdsRadioAttribute } from './interfaces/attributes';
 import type { OdsRadioCheckedChangeEventDetail, OdsRadioCheckingChangeEventDetail, OdsRadioEvent } from './interfaces/events';
 import type { OdsRadioMethod } from './interfaces/methods';
-import type { OdsRadioAttribute } from './interfaces/attributes';
 import type { OsdsRadioGroup } from '../osds-radio-group/osds-radio-group';
-import { OdsRadioController } from './core/controller';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { Component, Element, Event, EventEmitter, Host, Method, Prop, State, Watch, h } from '@stencil/core';
-import { OdsLogger } from '@ovhcloud/ods-common-core';
 
 @Component({
   tag: 'osds-radio',

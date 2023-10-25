@@ -1,10 +1,11 @@
+import { Component, Element, Host, Method, Prop, State, Watch, forceUpdate, h } from '@stencil/core';
 import type { HTMLStencilElement } from '@stencil/core/internal';
+
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { OdsCartHeaderController } from './core/controller';
 import type { OdsCartHeaderAttribute } from './interfaces/attributes';
 import type { OdsCartHeaderMethod } from './interfaces/methods';
 import type { OsdsCart } from '../osds-cart/osds-cart';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { OdsCartHeaderController } from './core/controller';
-import { Component, Element, Host, Method, Prop, State, Watch, forceUpdate, h } from '@stencil/core';
 
 @Component({
   tag: 'osds-cart-header',

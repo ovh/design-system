@@ -1,15 +1,17 @@
 jest.mock('./core/controller'); // keep jest.mock before any
 
+import { OdsUnitTestAttributeType, odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import type { SpecPage } from '@stencil/core/testing';
-import type { OdsSwitchAttribute } from './interfaces/attributes';
-import { OsdsSwitch } from './osds-switch';
-import { OdsSwitchController } from './core/controller';
+import { newSpecPage } from '@stencil/core/testing';
+
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_SWITCH_SIZE } from './constants/switch-size';
 import { ODS_SWITCH_VARIANT } from './constants/switch-variant';
-import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import { newSpecPage } from '@stencil/core/testing';
-import { OdsUnitTestAttributeType, odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
+import { OdsSwitchController } from './core/controller';
+import type { OdsSwitchAttribute } from './interfaces/attributes';
+import { OsdsSwitch } from './osds-switch';
+
 
 describe('spec:osds-switch', () => {
   let page: SpecPage;

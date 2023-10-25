@@ -1,13 +1,14 @@
-import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
-import page from './password.web-component.stories.page.mdx';
+import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
+import { ODS_INPUT_SIZES } from '@ovhcloud/ods-components/input';
+import changelog from '@ovhcloud/ods-components/password/CHANGELOG.md';
+import { defineCustomElements } from '@ovhcloud/ods-components/password/loader';
+import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-components/password/src/components/osds-password/constants/default-attributes';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-import { defineCustomElements } from '@ovhcloud/ods-components/password/loader';
-import { ODS_INPUT_SIZES } from '@ovhcloud/ods-components/input';
-import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
-import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-components/password/src/components/osds-password/constants/default-attributes';
 // @ts-ignore
-import changelog from '@ovhcloud/ods-components/password/CHANGELOG.md';
+
+import page from './password.web-component.stories.page.mdx';
+import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 // @ts-ignore
 
 defineCustomElements();

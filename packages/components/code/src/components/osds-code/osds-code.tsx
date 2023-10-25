@@ -1,13 +1,15 @@
+import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import type { OsdsButton } from '@ovhcloud/ods-component-button';
 import type { OsdsIcon } from '@ovhcloud/ods-component-icon';
-import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+import { Component, Element, Event, Host, Prop, h } from '@stencil/core';
 import type { EventEmitter, HTMLStencilElement } from '@stencil/core/internal';
-import type { OdsCodeEvent } from './interfaces/events';
+
 import type { ODS_CODE_SIZE } from './constants/code-size';
-import type { OdsCodeAttribute } from './interfaces/attributes';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsCodeController } from './core/controller';
-import { Component, Element, Event, Host, Prop, h } from '@stencil/core';
+import type { OdsCodeAttribute } from './interfaces/attributes';
+import type { OdsCodeEvent } from './interfaces/events';
+
 
 /**
  * @slot (unnamed) - Code content

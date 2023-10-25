@@ -1,19 +1,20 @@
 import type { OcdkSurface } from '@ovhcloud/ods-cdk';
+import { ocdkAssertEventTargetIsNode, ocdkDefineCustomElements, ocdkIsSurface } from '@ovhcloud/ods-cdk';
 import type { OdsInputValue, OdsValidityState } from '@ovhcloud/ods-common-core';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
+import { Component, Element, Event, EventEmitter, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
 import type { HTMLStencilElement } from '@stencil/core/internal';
+
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { DEFAULT_VALIDITY_STATE } from './constants/default-validity-state';
+import type { ODS_SELECT_SIZE } from './constants/select-size';
+import { OdsSelectController } from './core/controller';
 import type { OdsSelectAttribute } from './interfaces/attributes';
 import type { OdsSelectEvent, OdsSelectValueChangeEventDetail } from './interfaces/events';
 import type { OdsSelectMethod } from './interfaces/methods';
-import type { ODS_SELECT_SIZE } from './constants/select-size';
-import type { OsdsSelectOption } from '../osds-select-option/osds-select-option';
 import type { OdsSelectOptionClickEventDetail } from '../osds-select-option/interfaces/events';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { DEFAULT_VALIDITY_STATE } from './constants/default-validity-state';
-import { OdsSelectController } from './core/controller';
-import { Component, Element, Event, EventEmitter, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
-import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
-import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import { ocdkAssertEventTargetIsNode, ocdkDefineCustomElements, ocdkIsSurface } from '@ovhcloud/ods-cdk';
+import type { OsdsSelectOption } from '../osds-select-option/osds-select-option';
 
 // define custom elements from CDK
 ocdkDefineCustomElements();

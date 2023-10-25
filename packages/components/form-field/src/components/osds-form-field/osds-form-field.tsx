@@ -1,7 +1,8 @@
-import type { OdsFormFieldAttribute } from './interfaces/attributes';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { Component, Host, Prop, h } from '@stencil/core';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+import { Component, Host, Prop, h } from '@stencil/core';
+
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import type { OdsFormFieldAttribute } from './interfaces/attributes';
 
 /**
  * @slot (unnamed) - FormField content

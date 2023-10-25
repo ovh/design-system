@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   OsdsCart,
   OsdsCartFooter,
@@ -9,6 +8,7 @@ import {
   OsdsCartSection,
   OsdsCartTotal,
 } from '@ovhcloud/ods-component-cart-react';
+import React from 'react';
 
 const CartUsage: React.FC = () => (
   <div>

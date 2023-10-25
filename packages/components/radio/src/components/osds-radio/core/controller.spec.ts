@@ -1,10 +1,11 @@
-import type { HTMLStencilElement } from '@stencil/core/internal';
 import type { OdsRadioizable } from '@ovhcloud/ods-common-core';
-import { OdsRadioController } from './controller';
-import { OsdsRadio } from '../osds-radio';
-import { OsdsRadioGroup } from '../../osds-radio-group/osds-radio-group';
 import { OdsLogger } from '@ovhcloud/ods-common-core';
 import { OdsClearLoggerSpy, OdsInitializeLoggerSpy, OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
+import type { HTMLStencilElement } from '@stencil/core/internal';
+
+import { OdsRadioController } from './controller';
+import { OsdsRadioGroup } from '../../osds-radio-group/osds-radio-group';
+import { OsdsRadio } from '../osds-radio';
 
 class OdsRadioMock extends OsdsRadio {
   constructor(attribute: Partial<OsdsRadio>) {

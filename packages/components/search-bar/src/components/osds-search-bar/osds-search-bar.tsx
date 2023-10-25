@@ -1,13 +1,15 @@
-import type { OdsInputValueChangeEvent } from '@ovhcloud/ods-component-input';
-import type { OdsSelectValueChangeEvent } from '@ovhcloud/ods-component-select';
-import type { OdsSearchBarEvent } from './interfaces/events';
-import type { OdsSearchBarAttribute, OdsSearchbarOption } from './interfaces/attributes';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { Component, Element, Event, EventEmitter, Host, Listen, Prop, h } from '@stencil/core';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
 import { ODS_BUTTON_SIZE } from '@ovhcloud/ods-component-button';
+import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
+import type { OdsInputValueChangeEvent } from '@ovhcloud/ods-component-input';
 import { ODS_INPUT_TYPE } from '@ovhcloud/ods-component-input';
+import type { OdsSelectValueChangeEvent } from '@ovhcloud/ods-component-select';
+import { Component, Element, Event, EventEmitter, Host, Listen, Prop, h } from '@stencil/core';
+
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import type { OdsSearchBarAttribute, OdsSearchbarOption } from './interfaces/attributes';
+import type { OdsSearchBarEvent } from './interfaces/events';
+
 
 /**
  * @slot (unnamed) - SearchBar content

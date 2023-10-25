@@ -1,8 +1,10 @@
 import type { OsdsInput } from '@ovhcloud/ods-component-input';
-import type { OdsQuantityAttribute } from './interfaces/attributes';
+import { Component, Element, Host, Listen, Prop, Watch, h } from '@stencil/core';
+
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsQuantityController } from './core/controller';
-import { Component, Element, Host, Listen, Prop, Watch, h } from '@stencil/core';
+import type { OdsQuantityAttribute } from './interfaces/attributes';
+
 
 /**
  * create type that correspond to our input component.

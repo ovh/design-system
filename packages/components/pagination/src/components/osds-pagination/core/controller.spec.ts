@@ -1,8 +1,10 @@
-import type { OdsPaginationPageList } from '../interfaces/attributes';
-import { OdsPaginationController } from './controller';
-import { OsdsPagination } from '../osds-pagination';
-import { OdsClearLoggerSpy, OdsInitializeLoggerSpy, OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
 import { OdsLogger } from '@ovhcloud/ods-common-core';
+import { OdsClearLoggerSpy, OdsInitializeLoggerSpy, OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
+
+import { OdsPaginationController } from './controller';
+import type { OdsPaginationPageList } from '../interfaces/attributes';
+import { OsdsPagination } from '../osds-pagination';
+
 
 class OdsPaginationMock extends OsdsPagination {
   constructor(attribute: Partial<OsdsPagination>) {

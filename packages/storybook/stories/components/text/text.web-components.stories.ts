@@ -1,14 +1,15 @@
-import { createComponentTable, extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
-import page from './text.web-component.stories.page.mdx';
-import { html } from 'lit-html';
-import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 import { OlesIpsumGeneration, olesIpsum } from '@ovhcloud/ods-common-core';
 import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
-import { defineCustomElements } from '@ovhcloud/ods-components/text/loader';
 import { ODS_TEXT_LEVELS, ODS_TEXT_SIZES } from '@ovhcloud/ods-components/text';
+import changelog from '@ovhcloud/ods-components/text/CHANGELOG.md';
+import { defineCustomElements } from '@ovhcloud/ods-components/text/loader';
 import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-components/text/src/components/osds-text/constants/default-attributes';
 // @ts-ignore
-import changelog from '@ovhcloud/ods-components/text/CHANGELOG.md';
+import { html } from 'lit-html';
+import { unsafeHTML } from 'lit-html/directives/unsafe-html';
+
+import page from './text.web-component.stories.page.mdx';
+import { createComponentTable, extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 // @ts-ignore
 
 defineCustomElements();

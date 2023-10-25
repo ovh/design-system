@@ -1,6 +1,7 @@
-import type { OdsInputValueChangeEventDetail } from '@ovhcloud/ods-component-input';
 import type { OdsValidityState } from '@ovhcloud/ods-common-core';
-import { OdsLogger, OdsFormControl, OdsErrorStateControl } from '@ovhcloud/ods-common-core';
+import { OdsErrorStateControl, OdsFormControl, OdsLogger } from '@ovhcloud/ods-common-core';
+import type { OdsInputValueChangeEventDetail } from '@ovhcloud/ods-component-input';
+
 import { OsdsRange } from './components/osds-range/osds-range';
 
 export default function() {
@@ -23,7 +24,7 @@ export default function() {
 
   }
 
-  (async () => {
+  (async() => {
     await customElements.whenDefined('osds-range');
   })();
 
@@ -39,68 +40,68 @@ export default function() {
   function filterMessages(errorMessagesConnexions: ErrorMessagesConnexion[], formControl: OdsFormControl<OdsValidityState>) {
     const filteredErrorMessagesConnexions = errorMessagesConnexions
       .filter((cnx): cnx is FoundErrorMessagesConnexion => cnx.el !== null)
-      .map(cnx => {
+      .map((cnx) => {
         cnx.el.style.display = 'none';
         return cnx;
       });
 
-    (async () => {
+    (async() => {
       const shouldFilter = await Promise
         .all(filteredErrorMessagesConnexions
           .map((cnx) => formControl.hasError(cnx.error)));
       const filtered2 = filteredErrorMessagesConnexions.filter((value, index) => {
         logger.log(value);
-        return shouldFilter[ index ]
+        return shouldFilter[ index ];
       });
-      filtered2.forEach(cnx => cnx.el.style.display = 'block')
+      filtered2.forEach((cnx) => cnx.el.style.display = 'block');
     })();
   }
 
   if (range1) {
     const formControl = new OdsFormControl<OdsValidityState>('2');
     range1.formControl = formControl;
-    range1.forbiddenValues = [4, { min: 7, max: 20 }]
+    range1.forbiddenValues = [4, { min: 7, max: 20 }];
 
     range1.errorStateControl = new myErrorStateControl();
 
     range1.addEventListener('odsValueChange', (event: Event) => {
       const evt = event as CustomEvent<OdsInputValueChangeEventDetail>;
-      logger.log("odsValueChange event", evt.detail);
+      logger.log('odsValueChange event', evt.detail);
 
 
-      const errorMessagesConnexions: ErrorMessagesConnexion[] =
-        [
+      const errorMessagesConnexions: ErrorMessagesConnexion[]
+        = [
           { el: range1ErrorValueMissing, error: 'valueMissing' },
           { el: range1ErrorStepMismatch, error: 'stepMismatch' },
           { el: range1ErrorValid, error: 'invalid' },
-          { el: range1ErrorForbiddenValue, error: 'forbiddenValue' }
+          { el: range1ErrorForbiddenValue, error: 'forbiddenValue' },
         ];
 
       filterMessages(errorMessagesConnexions, formControl);
-    })
+    });
   }
 
   if (rangeValidMulti) {
 
     const formControl = new OdsFormControl<OdsValidityState>('3');
     rangeValidMulti.formControl = formControl;
-    rangeValidMulti.forbiddenValues = [{ min: 50, max: 55 }]
+    rangeValidMulti.forbiddenValues = [{ min: 50, max: 55 }];
 
     rangeValidMulti.errorStateControl = new myErrorStateControl();
 
     rangeValidMulti.addEventListener('odsValueChange', (event: Event) => {
       const evt = event as CustomEvent<OdsInputValueChangeEventDetail>;
-      logger.log("odsValueChange event", evt.detail);
+      logger.log('odsValueChange event', evt.detail);
 
-      const errorMessagesConnexions: ErrorMessagesConnexion[] =
-        [
+      const errorMessagesConnexions: ErrorMessagesConnexion[]
+        = [
           { el: rangeValidMultiErrorValueMissing, error: 'valueMissing' },
           { el: rangeValidMultiErrorStepMismatch, error: 'stepMismatch' },
           { el: rangeValidMultiErrorValid, error: 'invalid' },
-          { el: rangeValidMultiErrorForbiddenValue, error: 'forbiddenValue' }
+          { el: rangeValidMultiErrorForbiddenValue, error: 'forbiddenValue' },
         ];
 
       filterMessages(errorMessagesConnexions, formControl);
-    })
+    });
   }
 }

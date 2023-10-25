@@ -1,7 +1,8 @@
-import type { HTMLStencilElement } from '@stencil/core/internal';
-import type { OdsTabPanelAttribute } from './interfaces/attributes';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { Component, Element, Host, Prop, h } from '@stencil/core';
+import type { HTMLStencilElement } from '@stencil/core/internal';
+
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import type { OdsTabPanelAttribute } from './interfaces/attributes';
 
 /**
  * Panel with content that has to be displayed when active

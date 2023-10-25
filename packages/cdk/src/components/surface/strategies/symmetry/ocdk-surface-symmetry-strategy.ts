@@ -1,18 +1,18 @@
-import { OcdkSurfaceStrategyDefiner } from '../../core/system/ocdk-surface-strategy-definer';
-import { OcdkSurfaceStrategyDefinerConfig } from '../../core/system/ocdk-surface-strategy-definer-config';
-import { OcdkSurfaceOnePositionStrategy } from '../../core/ocdk-surface-one-position-strategy';
 import { ocdkSurfaceSymmetryBcTc } from './ocdk-surface-symmetry.bc-tc';
 import { ocdkSurfaceSymmetryBlBr } from './ocdk-surface-symmetry.bl-br';
 import { ocdkSurfaceSymmetryBlTl } from './ocdk-surface-symmetry.bl-tl';
 import { ocdkSurfaceSymmetryBrBl } from './ocdk-surface-symmetry.br-bl';
 import { ocdkSurfaceSymmetryBrTr } from './ocdk-surface-symmetry.br-tr';
-import { ocdkSurfaceSymmetryTlBl } from './ocdk-surface-symmetry.tl-bl';
-import { ocdkSurfaceSymmetryTrBr } from './ocdk-surface-symmetry.tr-br';
-import { ocdkSurfaceSymmetryTlTr } from './ocdk-surface-symmetry.tl-tr';
-import { ocdkSurfaceSymmetryTrTl } from './ocdk-surface-symmetry.tr-tl';
-import { ocdkSurfaceSymmetryTcBc } from './ocdk-surface-symmetry.tc-bc';
 import { ocdkSurfaceSymmetryClCr } from './ocdk-surface-symmetry.cl-cr';
 import { ocdkSurfaceSymmetryCrCl } from './ocdk-surface-symmetry.cr-cl';
+import { ocdkSurfaceSymmetryTcBc } from './ocdk-surface-symmetry.tc-bc';
+import { ocdkSurfaceSymmetryTlBl } from './ocdk-surface-symmetry.tl-bl';
+import { ocdkSurfaceSymmetryTlTr } from './ocdk-surface-symmetry.tl-tr';
+import { ocdkSurfaceSymmetryTrBr } from './ocdk-surface-symmetry.tr-br';
+import { ocdkSurfaceSymmetryTrTl } from './ocdk-surface-symmetry.tr-tl';
+import { OcdkSurfaceOnePositionStrategy } from '../../core/ocdk-surface-one-position-strategy';
+import { OcdkSurfaceStrategyDefiner } from '../../core/system/ocdk-surface-strategy-definer';
+import { OcdkSurfaceStrategyDefinerConfig } from '../../core/system/ocdk-surface-strategy-definer-config';
 
 /**
  * global config to implement for the `symmetry` strategy

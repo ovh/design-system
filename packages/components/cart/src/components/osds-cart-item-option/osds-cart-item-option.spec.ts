@@ -1,6 +1,7 @@
 import type { SpecPage } from '@stencil/core/testing';
-import { OsdsCartItemOption } from './osds-cart-item-option';
 import { newSpecPage } from '@stencil/core/testing';
+
+import { OsdsCartItemOption } from './osds-cart-item-option';
 
 describe('spec:osds-cart-item-option', () => {
   let page: SpecPage;

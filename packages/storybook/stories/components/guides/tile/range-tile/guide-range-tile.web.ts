@@ -1,11 +1,12 @@
-import { RadioGroupPlay, RadioGroupTemplate, radioGroupArgs } from './guide-range-tile.web.group';
-import { TilePlay, TileTemplate, tileArgs } from './guide-range-tile.web.tile';
-import { defineCustomElements as tileCustomElements } from '@ovhcloud/ods-components/tile/loader';
+import { defineCustomElements as contentAddonCustomElements } from '@ovhcloud/ods-components/content-addon/loader';
+import { defineCustomElements as inputCustomElements } from '@ovhcloud/ods-components/input/loader';
 import { defineCustomElements as radioCustomElements } from '@ovhcloud/ods-components/radio/loader';
 import { defineCustomElements as rangeCustomElements } from '@ovhcloud/ods-components/range/loader';
-import { defineCustomElements as inputCustomElements } from '@ovhcloud/ods-components/input/loader';
 import { defineCustomElements as textCustomElements } from '@ovhcloud/ods-components/text/loader';
-import { defineCustomElements as contentAddonCustomElements } from '@ovhcloud/ods-components/content-addon/loader';
+import { defineCustomElements as tileCustomElements } from '@ovhcloud/ods-components/tile/loader';
+
+import { RadioGroupPlay, RadioGroupTemplate, radioGroupArgs } from './guide-range-tile.web.group';
+import { TilePlay, TileTemplate, tileArgs } from './guide-range-tile.web.tile';
 
 tileCustomElements();
 radioCustomElements();

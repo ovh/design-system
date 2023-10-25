@@ -1,5 +1,6 @@
-import type { OdsRangeAttribute } from '../interfaces/attributes';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+
+import type { OdsRangeAttribute } from '../interfaces/attributes';
 
 const DEFAULT_ATTRIBUTE: OdsRangeAttribute = Object.freeze({
   color: ODS_THEME_COLOR_INTENT.default,

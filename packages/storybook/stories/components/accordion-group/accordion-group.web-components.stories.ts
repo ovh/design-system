@@ -1,10 +1,11 @@
-import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
-import page from './accordion-group.web-component.stories.page.mdx';
+import changelog from '@ovhcloud/ods-components/accordion/CHANGELOG.md';
+import { defineCustomElements } from '@ovhcloud/ods-components/accordion/loader';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-import { defineCustomElements } from '@ovhcloud/ods-components/accordion/loader';
+
+import page from './accordion-group.web-component.stories.page.mdx';
+import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 // @ts-ignore
-import changelog from '@ovhcloud/ods-components/accordion/CHANGELOG.md';
 // @ts-ignore
 
 defineCustomElements();

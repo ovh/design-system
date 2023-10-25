@@ -1,6 +1,7 @@
-import type { OdsCheckboxButtonAttribute } from '../interfaces/attributes';
-import { ODS_CHECKBOX_BUTTON_SIZE } from './ods-checkbox-button-size';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+
+import { ODS_CHECKBOX_BUTTON_SIZE } from './ods-checkbox-button-size';
+import type { OdsCheckboxButtonAttribute } from '../interfaces/attributes';
 
 const DEFAULT_ATTRIBUTE: OdsCheckboxButtonAttribute = Object.freeze({
   checked: false,

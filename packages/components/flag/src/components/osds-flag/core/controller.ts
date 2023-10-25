@@ -1,24 +1,25 @@
-import type { OsdsFlag } from '../osds-flag';
-import type { ODS_FLAG_ISO_CODE_UNION } from '../constants/flag-iso-code';
 import {
-  OdsLogger,
-  odsIsTermInEnum,
   OdsLoadContent,
+  OdsLogger,
   OdsSvgValidator,
-  odsGetSrc,
   odsGetAssetPath,
+  odsGetSrc,
+  odsIsTermInEnum,
 } from '@ovhcloud/ods-common-core';
+
+import type { ODS_FLAG_ISO_CODE_UNION } from '../constants/flag-iso-code';
 import { ODS_FLAG_ISO_CODE, ODS_FLAG_ISO_CODES } from '../constants/flag-iso-code';
+import type { OsdsFlag } from '../osds-flag';
 
 class OdsFlagController {
   private readonly logger = new OdsLogger('OdsFlagController');
   protected component: OsdsFlag;
   private svgLoadContent = new OdsLoadContent([
-    (content) => OdsSvgValidator.validateContent(content)
+    (content) => OdsSvgValidator.validateContent(content),
   ]);
 
   constructor(component: OsdsFlag) {
-    this.component = component
+    this.component = component;
   }
 
   /**

@@ -1,11 +1,12 @@
 import type { OdsFormForbiddenValues, OdsValidityState } from '@ovhcloud/ods-common-core';
+import { OdsFormControl, OdsLogger } from '@ovhcloud/ods-common-core';
 import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
+import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+
+import { OdsRangeController } from './controller';
 import type { OdsRangeValue } from '../interfaces/value';
 import { OsdsRange } from '../osds-range';
-import { OdsRangeController } from './controller';
-import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
-import { OdsFormControl, OdsLogger } from '@ovhcloud/ods-common-core';
-import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 
 class OdsRangeMock extends OsdsRange {
   constructor(attribute: Partial<OsdsRange>) {

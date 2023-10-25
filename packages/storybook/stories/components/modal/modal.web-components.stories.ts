@@ -1,12 +1,13 @@
-import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
-import page from './modal.web-component.stories.page.mdx';
-import { html } from 'lit-html';
-import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
+import changelog from '@ovhcloud/ods-components/modal/CHANGELOG.md';
 import { defineCustomElements } from '@ovhcloud/ods-components/modal/loader';
 import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-components/modal/src/components/osds-modal/constants/default-attributes';
+import { html } from 'lit-html';
+import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 // @ts-ignore
-import changelog from '@ovhcloud/ods-components/modal/CHANGELOG.md';
+
+import page from './modal.web-component.stories.page.mdx';
+import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 // @ts-ignore
 
 defineCustomElements();

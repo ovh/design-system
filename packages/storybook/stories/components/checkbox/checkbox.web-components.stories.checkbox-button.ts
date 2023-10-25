@@ -1,7 +1,8 @@
-import { extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
-import { html } from 'lit-html';
-import { defineCustomElements } from '@ovhcloud/ods-components/checkbox-button/loader';
 import { OlesIpsumGeneration, olesIpsum } from '@ovhcloud/ods-common-core';
+import { defineCustomElements } from '@ovhcloud/ods-components/checkbox-button/loader';
+import { html } from 'lit-html';
+
+import { extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 
 defineCustomElements();
 

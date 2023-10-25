@@ -1,3 +1,10 @@
+import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
+import { ODS_CHECKBOX_BUTTON_SIZE, ODS_CHECKBOX_BUTTON_SIZES } from '@ovhcloud/ods-components/checkbox-button';
+import changelog from '@ovhcloud/ods-components/checkbox-button/CHANGELOG.md';
+import { defineCustomElements } from '@ovhcloud/ods-components/checkbox-button/loader';
+import { html } from 'lit-html';
+import { unsafeHTML } from 'lit-html/directives/unsafe-html';
+
 import page from './checkbox-button.web-component.stories.page.mdx';
 import {
   createComponentTable,
@@ -5,13 +12,7 @@ import {
   extractStoryParams,
   getTagAttributes,
 } from '../../../core/componentHTMLUtils';
-import { html } from 'lit-html';
-import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-import { defineCustomElements } from '@ovhcloud/ods-components/checkbox-button/loader';
-import { ODS_CHECKBOX_BUTTON_SIZE, ODS_CHECKBOX_BUTTON_SIZES } from '@ovhcloud/ods-components/checkbox-button';
-import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
 // @ts-ignore
-import changelog from '@ovhcloud/ods-components/checkbox-button/CHANGELOG.md';
 // @ts-ignore
 
 defineCustomElements();

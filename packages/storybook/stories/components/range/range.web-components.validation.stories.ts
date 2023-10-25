@@ -1,6 +1,6 @@
 import { OdsErrorStateControl, OdsFormControl, OdsLogger, OdsValidityState } from '@ovhcloud/ods-common-core';
-import { Components as ComponentsRange } from '@ovhcloud/ods-components/range/loader';
 import { OdsRangeValueChangeEventDetail } from '@ovhcloud/ods-components/range';
+import { Components as ComponentsRange } from '@ovhcloud/ods-components/range/loader';
 
 const logger = new OdsLogger('validation.stories');
 

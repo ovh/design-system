@@ -1,17 +1,17 @@
-import { OcdkLogger } from '../../logger/ocdk-logger';
-import { OcdkSurfaceController } from './ocdk-surface-controller';
-import { OcdkSurfaceAdapter } from './ocdk-surface-adapter';
-import { ocdkSurfaceCssTemplate } from './ocdk-surface.css';
 import { OcdkSurfaceAnimation } from './core/ocdk-surface-animation';
-import { OcdkSurfaceDistance } from './core/ocdk-surface-distance';
 import { OcdkSurfaceCorner } from './core/ocdk-surface-corner';
 import { OcdkSurfaceCornerPoints } from './core/ocdk-surface-corner-points';
-import { ocdkIsWindow } from '../../utils/window/ocdk-is-window';
+import { OcdkSurfaceDistance } from './core/ocdk-surface-distance';
 import { OcdkSurfaceMaxDimensions } from './core/ocdk-surface-max-dimensions';
 import { OcdkSurfaceStrategyDefiner } from './core/system/ocdk-surface-strategy-definer';
 import { OcdkSurfaceStrategyDefinerConfig } from './core/system/ocdk-surface-strategy-definer-config';
-import { ocdkGetCorrectPropertyName } from '../../utils/css/ocdk-get-correct-property-name';
+import { OcdkSurfaceAdapter } from './ocdk-surface-adapter';
 import { OcdkSurfaceBehaviour } from './ocdk-surface-behaviour';
+import { OcdkSurfaceController } from './ocdk-surface-controller';
+import { ocdkSurfaceCssTemplate } from './ocdk-surface.css';
+import { OcdkLogger } from '../../logger/ocdk-logger';
+import { ocdkGetCorrectPropertyName } from '../../utils/css/ocdk-get-correct-property-name';
+import { ocdkIsWindow } from '../../utils/window/ocdk-is-window';
 
 
 export class OcdkSurface extends HTMLElement implements OcdkSurfaceBehaviour {

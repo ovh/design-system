@@ -1,14 +1,16 @@
-import type { SpecPage } from '@stencil/core/testing';
-import type { OdsSkeletonAttribute } from './interfaces/attributes';
-import { ODS_SKELETON_SIZE, ODS_SKELETON_SIZES } from './constants/skeleton-size';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { OsdsSkeleton } from './osds-skeleton';
-import { newSpecPage } from '@stencil/core/testing';
 import {
   odsComponentAttributes2StringAttributes,
   odsStringAttributes2Str,
   odsUnitTestAttribute,
 } from '@ovhcloud/ods-common-testing';
+import type { SpecPage } from '@stencil/core/testing';
+import { newSpecPage } from '@stencil/core/testing';
+
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { ODS_SKELETON_SIZE, ODS_SKELETON_SIZES } from './constants/skeleton-size';
+import type { OdsSkeletonAttribute } from './interfaces/attributes';
+import { OsdsSkeleton } from './osds-skeleton';
+
 
 
 describe('spec:osds-skeleton', () => {

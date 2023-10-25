@@ -2,15 +2,17 @@
 jest.mock('@ovhcloud/ods-cdk');
 jest.mock('./core/controller');
 
+import { ocdkIsSurface } from '@ovhcloud/ods-cdk';
+import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 import type { SpecPage } from '@stencil/core/testing';
-import type { OdsTooltipAttribute } from './interfaces/attributes';
+import { newSpecPage } from '@stencil/core/testing';
+
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_TOOLTIP_VARIANT, ODS_TOOLTIP_VARIANTS } from './constants/tooltip-variant';
 import { OdsTooltipController } from './core/controller';
+import type { OdsTooltipAttribute } from './interfaces/attributes';
 import { OsdsTooltip } from './osds-tooltip';
-import { newSpecPage } from '@stencil/core/testing';
-import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
-import { ocdkIsSurface } from '@ovhcloud/ods-cdk';
+
 
 describe('spec:osds-tooltip', () => {
   let page: SpecPage;

@@ -1,7 +1,9 @@
-import type { OdsInputAttribute } from '../interfaces/attributes';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+
 import { ODS_INPUT_SIZE } from './input-size';
 import { ODS_INPUT_TYPE } from './input-type';
-import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+import type { OdsInputAttribute } from '../interfaces/attributes';
+
 
 const DEFAULT_ATTRIBUTE: OdsInputAttribute = Object.freeze({
   ariaLabel: null,

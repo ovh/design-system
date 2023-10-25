@@ -1,5 +1,5 @@
-import type { E2EPage } from '@stencil/core/testing';
 import type { odsPickMethods } from '@ovhcloud/ods-common-core';
+import type { E2EPage } from '@stencil/core/testing';
 import type { SerializableOrJSHandle } from 'puppeteer';
 
 /**

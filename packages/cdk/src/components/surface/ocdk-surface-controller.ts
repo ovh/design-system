@@ -1,14 +1,4 @@
-import { OcdkSurface } from './ocdk-surface';
 import { OcdkAutoLayoutMeasurements } from './core/ocdk-auto-layout-measurements';
-import { OcdkSurfaceAdapter } from './ocdk-surface-adapter';
-import { OcdkSurfacePoint } from './core/ocdk-surface-point';
-import { OcdkSurfaceDimensions } from './core/ocdk-surface-dimensions';
-import { OcdkSurfaceCorner } from './core/ocdk-surface-corner';
-import { OcdkSurfaceDefaultConfig, ocdkSurfaceCssClasses } from './ocdk-surface-default-config';
-import { OcdkSurfaceCornerBit } from './core/ocdk-surface-corner-bit';
-import { OcdkSurfaceDistance } from './core/ocdk-surface-distance';
-import { OcdkLogger } from '../../logger/ocdk-logger';
-import { OcdkSurfaceNormalizedCorner } from './core/ocdk-surface-normalized-corner';
 import { OcdkSurfaceCornerPointsNormalized } from './core/ocdk-surface-corner-points-normalized';
 import { OcdkSurfaceCornerPoints } from './core/ocdk-surface-corner-points';
 import { OcdkSurfaceInspections } from './core/ocdk-surface-inspections';
@@ -43,8 +33,18 @@ import {
 import { OcdkSurfaceStrategyInspectors } from './core/system/ocdk-surface-strategy-inspectors';
 import { OcdkSurfaceOnePositionStrategy } from './core/ocdk-surface-one-position-strategy';
 import { OcdkSurfaceConfig } from './core/ocdk-surface-config';
+import { OcdkSurfaceCorner } from './core/ocdk-surface-corner';
+import { OcdkSurfaceCornerBit } from './core/ocdk-surface-corner-bit';
+import { OcdkSurfaceDimensions } from './core/ocdk-surface-dimensions';
+import { OcdkSurfaceDistance } from './core/ocdk-surface-distance';
 import { OcdkSurfaceMaxDimensions } from './core/ocdk-surface-max-dimensions';
+import { OcdkSurfaceNormalizedCorner } from './core/ocdk-surface-normalized-corner';
+import { OcdkSurfacePoint } from './core/ocdk-surface-point';
 import { OcdkSurfaceStrategyDefinerConfig } from './core/system/ocdk-surface-strategy-definer-config';
+import { OcdkSurface } from './ocdk-surface';
+import { OcdkSurfaceAdapter } from './ocdk-surface-adapter';
+import { OcdkSurfaceDefaultConfig, ocdkSurfaceCssClasses } from './ocdk-surface-default-config';
+import { OcdkLogger } from '../../logger/ocdk-logger';
 
 export class OcdkSurfaceController<StrategyConfig = any> {
   static totalIds = 0;

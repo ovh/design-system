@@ -21,7 +21,7 @@ describe('e2e:screenshot:osds-accordion-group', () => {
 
   describe('screenshots', () => {
     [true, false].forEach((opened) => {
-      it([opened].join(', '), async () => {
+      it([opened].join(', '), async() => {
         await setup({
           html: `<osds-accordion ${opened ? 'opened' : ''}>
                   <span slot="summary">Accordion 1</span>
@@ -29,7 +29,7 @@ describe('e2e:screenshot:osds-accordion-group', () => {
                 </osds-accordion>
                 <osds-accordion>
                   <span slot="summary">Accordion 2</span>
-                </osds-accordion>`
+                </osds-accordion>`,
         });
         await page.waitForChanges();
 
@@ -39,7 +39,7 @@ describe('e2e:screenshot:osds-accordion-group', () => {
         });
         await page.setViewport({ width: 600, height:600 });
         const results = await page.compareScreenshot('accordion-group', { fullPage: false, omitBackground: true });
-        expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 })
+        expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
       });
     });
   });

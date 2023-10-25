@@ -1,10 +1,11 @@
-import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
-import page from './pagination.web-component.stories.page.mdx';
-import { html } from 'lit-html';
+import changelog from '@ovhcloud/ods-components/pagination/CHANGELOG.md';
 import { defineCustomElements } from '@ovhcloud/ods-components/pagination/loader';
 import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-components/pagination/src/components/osds-pagination/constants/default-attributes';
+import { html } from 'lit-html';
+
+import page from './pagination.web-component.stories.page.mdx';
+import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 // @ts-ignore
-import changelog from '@ovhcloud/ods-components/pagination/CHANGELOG.md';
 // @ts-ignore
 
 defineCustomElements();

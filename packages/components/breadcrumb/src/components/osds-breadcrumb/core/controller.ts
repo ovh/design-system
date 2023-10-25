@@ -1,5 +1,5 @@
-import type { OdsBreadcrumbAttributeItem } from '../interfaces/attributes';
 import type { OdsBreadcrumbItemAttribute } from '../../osds-breadcrumb-item/interfaces/attributes';
+import type { OdsBreadcrumbAttributeItem } from '../interfaces/attributes';
 
 const MAX_DISPLAYED_ITEMS = 4;
 

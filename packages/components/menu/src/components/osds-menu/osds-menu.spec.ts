@@ -1,14 +1,16 @@
 jest.mock('@ovhcloud/ods-cdk'); // keep jest.mock before any import
 jest.mock('./core/controller'); // keep jest.mock before any import
 
-import type { OdsMenuAttribute } from './interfaces/attributes';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { OsdsMenu } from './osds-menu';
-import { OdsMenuController } from './core/controller';
-import { SpecPage, newSpecPage } from '@stencil/core/testing';
+import { ocdkIsSurface } from '@ovhcloud/ods-cdk';
 import { OdsLogger } from '@ovhcloud/ods-common-core';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
-import { ocdkIsSurface } from '@ovhcloud/ods-cdk';
+import { SpecPage, newSpecPage } from '@stencil/core/testing';
+
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { OdsMenuController } from './core/controller';
+import type { OdsMenuAttribute } from './interfaces/attributes';
+import { OsdsMenu } from './osds-menu';
+
 
 const logger = new OdsLogger('osds-menu-spec');
 

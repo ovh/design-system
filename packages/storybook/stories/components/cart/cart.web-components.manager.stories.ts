@@ -1,5 +1,5 @@
-import type { OsdsCartManager } from '@ovhcloud/ods-components/cart';
 import { OdsLogger } from '@ovhcloud/ods-common-core';
+import type { OsdsCartManager } from '@ovhcloud/ods-components/cart';
 
 const logger = new OdsLogger('OsdsCart-stories');
 export const CartManagerPlay = async() => {

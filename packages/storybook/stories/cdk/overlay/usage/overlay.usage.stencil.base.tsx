@@ -1,5 +1,5 @@
-import { Component, Host, h } from '@stencil/core';
 import { OcdkSurface, ocdkDefineCustomElements, ocdkIsSurface } from '@ovhcloud/ods-cdk';
+import { Component, Host, h } from '@stencil/core';
 
 // define custom elements from CDK
 ocdkDefineCustomElements();

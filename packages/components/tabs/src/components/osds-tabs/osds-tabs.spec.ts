@@ -1,17 +1,19 @@
 jest.mock('./core/controller'); // keep jest.mock before any
 
-import type { SpecPage } from '@stencil/core/testing';
-import type { OdsTabsAttribute } from './interfaces/attributes';
+import { OdsLogger } from '@ovhcloud/ods-common-core';
 import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
+import { OdsClearLoggerSpy, OdsInitializeLoggerSpy, odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
+import type { SpecPage } from '@stencil/core/testing';
+import { newSpecPage } from '@stencil/core/testing';
+
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_TABS_SIZE } from './constants/tabs-size';
 import { OdsTabsController } from './core/controller';
+import type { OdsTabsAttribute } from './interfaces/attributes';
 import { OsdsTabs } from './osds-tabs';
-import { OsdsTabBarItem } from '../osds-tab-bar-item/osds-tab-bar-item';
 import { OdsTabItemSelectEventDetail } from '../osds-tab-bar-item/interfaces/events';
-import { OdsClearLoggerSpy, OdsInitializeLoggerSpy, odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
-import { OdsLogger } from '@ovhcloud/ods-common-core';
-import { newSpecPage } from '@stencil/core/testing';
+import { OsdsTabBarItem } from '../osds-tab-bar-item/osds-tab-bar-item';
+
 
 describe('spec:osds-tabs', () => {
   const baseAttribute = { contrasted: DEFAULT_ATTRIBUTE.contrasted, panel: DEFAULT_ATTRIBUTE.panel, size: DEFAULT_ATTRIBUTE.size };

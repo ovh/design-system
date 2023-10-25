@@ -1,11 +1,12 @@
-import { extractArgTypes, extractStoryParams } from '../../../../../../core/componentHTMLUtils';
-import page from './overlay.stencil.select.stories.page.mdx';
-import { play } from './overlay.stencil.select.stories.play';
+import { defineCustomElements } from '@ovhcloud/ods-cdk/dev/loader';
+import { OcdkSurfaceSelectPosition, OcdkSurfaceSelectPositionList } from '@ovhcloud/ods-cdk-dev';
+import { OlesIpsumGeneration, olesIpsum } from '@ovhcloud/ods-common-core';
 import { html } from 'lit-html';
 import { styleMap } from 'lit-html/directives/style-map';
-import { defineCustomElements } from '@ovhcloud/ods-cdk/dev/loader';
-import { OlesIpsumGeneration, olesIpsum } from '@ovhcloud/ods-common-core';
-import { OcdkSurfaceSelectPosition, OcdkSurfaceSelectPositionList } from '@ovhcloud/ods-cdk-dev';
+
+import page from './overlay.stencil.select.stories.page.mdx';
+import { play } from './overlay.stencil.select.stories.play';
+import { extractArgTypes, extractStoryParams } from '../../../../../../core/componentHTMLUtils';
 
 defineCustomElements();
 

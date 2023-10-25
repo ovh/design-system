@@ -1,6 +1,6 @@
+import { ODS_FLAG_ISO_CODES } from '@ovhcloud/ods-component-flag';
 import { html } from 'lit-html';
 import { repeat } from 'lit-html/directives/repeat';
-import { ODS_FLAG_ISO_CODES } from '@ovhcloud/ods-component-flag';
 
 const flagTemplate = (iso:string) => html`
   <span class='flag-block'>

@@ -1,13 +1,14 @@
-import type { E2EElement, E2EPage } from '@stencil/core/testing';
-import type { OdsCodeAttribute } from './interfaces/attributes';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { ODS_CODE_SIZE } from './constants/code-size';
-import { newE2EPage } from '@stencil/core/testing';
+import { OdsDeepPartial } from '@ovhcloud/ods-common-core';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming/src';
 import { ODS_BUTTON_VARIANT } from '@ovhcloud/ods-component-button';
 import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
-import { OdsDeepPartial } from '@ovhcloud/ods-common-core';
+import { newE2EPage } from '@stencil/core/testing';
+import type { E2EElement, E2EPage } from '@stencil/core/testing';
+
+import { ODS_CODE_SIZE } from './constants/code-size';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import type { OdsCodeAttribute } from './interfaces/attributes';
 
 describe('e2e:osds-code', () => {
   const baseAttribute = { color: ODS_THEME_COLOR_INTENT.default, contrasted: false, size: ODS_CODE_SIZE.md };

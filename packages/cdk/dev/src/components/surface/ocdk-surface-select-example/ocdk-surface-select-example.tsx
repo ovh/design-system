@@ -1,7 +1,3 @@
-import { OcdkSurfaceSelectItemExample } from './ocdk-surface-select-item-example';
-import { OcdkSurfaceSelectPosition } from './ocdk-surface-select-position';
-import { Component, Element, Host, Listen, Prop, Watch, h } from '@stencil/core';
-import { HTMLStencilElement } from '@stencil/core/internal';
 import {
   OcdkLogger,
   OcdkSurface,
@@ -10,6 +6,11 @@ import {
   ocdkDefineCustomElements,
   ocdkIsSurface,
 } from '@ovhcloud/ods-cdk';
+import { Component, Element, Host, Listen, Prop, Watch, h } from '@stencil/core';
+import { HTMLStencilElement } from '@stencil/core/internal';
+
+import { OcdkSurfaceSelectItemExample } from './ocdk-surface-select-item-example';
+import { OcdkSurfaceSelectPosition } from './ocdk-surface-select-position';
 
 // define custom elements from CDK
 ocdkDefineCustomElements();

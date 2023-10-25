@@ -1,11 +1,13 @@
+import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
+import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
 import type { E2EElement, E2EPage } from '@stencil/core/testing';
-import type { OdsChipAttribute } from './interfaces/attributes';
+import { newE2EPage } from '@stencil/core/testing';
+
 import { ODS_CHIP_SIZES } from './constants/chip-size';
 import { ODS_CHIP_VARIANTS } from './constants/chip-variant';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { newE2EPage } from '@stencil/core/testing';
-import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
-import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
+import type { OdsChipAttribute } from './interfaces/attributes';
+
 
 describe('e2e:osds-chip', () => {
   let page: E2EPage;

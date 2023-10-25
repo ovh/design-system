@@ -1,13 +1,14 @@
+import changelog from '@ovhcloud/ods-components/search-bar/CHANGELOG.md';
+import { defineCustomElements } from '@ovhcloud/ods-components/search-bar/loader';
+import { html } from 'lit-html';
+
+import page from './search-bar.web-component.stories.page.mdx';
 import {
   extractArgTypes,
   extractStoryParams,
   getTagAttributes,
 } from '../../../core/componentHTMLUtils';
-import page from './search-bar.web-component.stories.page.mdx';
-import { html } from 'lit-html';
-import { defineCustomElements } from '@ovhcloud/ods-components/search-bar/loader';
 // @ts-ignore
-import changelog from '@ovhcloud/ods-components/search-bar/CHANGELOG.md';
 // @ts-ignore
 
 defineCustomElements();

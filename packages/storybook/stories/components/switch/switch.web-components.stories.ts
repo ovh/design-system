@@ -1,15 +1,16 @@
+import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
+import { ODS_SWITCH_SIZE, ODS_SWITCH_SIZES } from '@ovhcloud/ods-components/switch';
+// @ts-ignore
+import changelog from '@ovhcloud/ods-components/switch/CHANGELOG.md';
+import { defineCustomElements } from '@ovhcloud/ods-components/switch/loader';
+import { html } from 'lit-html';
+
+import page from './switch.web-component.stories.page.mdx';
 import {
   extractArgTypes,
   extractStoryParams,
   getTagAttributes,
 } from '../../../core/componentHTMLUtils';
-import page from './switch.web-component.stories.page.mdx';
-import { html } from 'lit-html';
-import { defineCustomElements } from '@ovhcloud/ods-components/switch/loader';
-import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
-import { ODS_SWITCH_SIZE, ODS_SWITCH_SIZES } from '@ovhcloud/ods-components/switch';
-// @ts-ignore
-import changelog from '@ovhcloud/ods-components/switch/CHANGELOG.md';
 // @ts-ignore
 
 defineCustomElements();

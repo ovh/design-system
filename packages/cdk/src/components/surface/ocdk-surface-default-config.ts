@@ -1,10 +1,10 @@
-import { OcdkSurfaceAnimation } from './core/ocdk-surface-animation';
 import { OcdkAutoLayoutMeasurements } from './core/ocdk-auto-layout-measurements';
+import { OcdkSurfaceAnimation } from './core/ocdk-surface-animation';
+import { OcdkSurfaceConfig } from './core/ocdk-surface-config';
 import { OcdkSurfaceCorner } from './core/ocdk-surface-corner';
 import { OcdkSurfaceInspections } from './core/ocdk-surface-inspections';
-import { OcdkSurfaceSymmetryStrategy } from './strategies/symmetry/ocdk-surface-symmetry-strategy';
 import { OcdkSurfaceStrategy } from './core/system/ocdk-surface-strategy';
-import { OcdkSurfaceConfig } from './core/ocdk-surface-config';
+import { OcdkSurfaceSymmetryStrategy } from './strategies/symmetry/ocdk-surface-symmetry-strategy';
 
 export type OcdkSurfaceAvailableSpaceFctOpt<StrategyConfig> = {
   config: OcdkSurfaceConfig;

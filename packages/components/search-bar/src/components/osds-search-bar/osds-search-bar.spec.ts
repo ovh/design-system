@@ -1,13 +1,15 @@
-import type { OdsSearchBarAttribute } from './interfaces/attributes';
-import type { SpecPage } from '@stencil/core/testing';
-import { OsdsSearchBar } from './osds-search-bar';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import {
   odsComponentAttributes2StringAttributes,
   odsStringAttributes2Str,
   odsUnitTestAttribute,
 } from '@ovhcloud/ods-common-testing';
+import type { SpecPage } from '@stencil/core/testing';
 import { newSpecPage } from '@stencil/core/testing';
+
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import type { OdsSearchBarAttribute } from './interfaces/attributes';
+import { OsdsSearchBar } from './osds-search-bar';
+
 
 describe('spec:osds-search-bar', () => {
   let page: SpecPage;

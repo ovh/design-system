@@ -1,12 +1,13 @@
 import type { OdsInputValue } from '@ovhcloud/ods-common-core';
+import { Component, Element, Event, EventEmitter, Host, Method, Prop, State, h } from '@stencil/core';
 import type { HTMLStencilElement } from '@stencil/core/internal';
+
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import type { OdsSelectOptionAttribute } from './interfaces/attributes';
 import type { OdsSelectOptionClickEventDetail, OdsSelectOptionEvent } from './interfaces/events';
 import type { OdsSelectOptionMethod } from './interfaces/methods';
-import type { OsdsSelect } from '../osds-select/osds-select';
 import { DEFAULT_ATTRIBUTE as SELECT_DEFAULT_ATTRIBUTE } from '../osds-select/constants/default-attributes';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { Component, Element, Event, EventEmitter, Host, Method, Prop, State, h } from '@stencil/core';
+import type { OsdsSelect } from '../osds-select/osds-select';
 
 /**
  * @slot (unnamed) - Select option content

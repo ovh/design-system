@@ -1,7 +1,7 @@
 import { OcdkSurfaceDimensions } from './core/ocdk-surface-dimensions';
-import { OcdkSurfacePoint } from './core/ocdk-surface-point';
 import { OcdkSurfaceDistance } from './core/ocdk-surface-distance';
 import { OcdkSurfaceMaxDimensions } from './core/ocdk-surface-max-dimensions';
+import { OcdkSurfacePoint } from './core/ocdk-surface-point';
 
 export interface OcdkSurfaceAdapter {
   addClass(className: string): void;

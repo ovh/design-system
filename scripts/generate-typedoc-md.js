@@ -9,6 +9,7 @@
  */
 const fs = require('fs');
 const path = require('path');
+
 const { convertJsonToMarkdown } = require('@ovhcloud/ods-common-core');
 const isMultiple = process.argv[2]?.includes('multiple');
 // Carefull, this is the path where the script was executed

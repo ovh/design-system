@@ -1,4 +1,5 @@
 import type { EventEmitter } from '@stencil/core';
+
 import { OdsCollapsibleController } from './controller';
 import { OsdsCollapsible } from '../osds-collapsible';
 

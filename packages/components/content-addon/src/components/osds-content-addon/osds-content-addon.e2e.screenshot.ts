@@ -1,6 +1,6 @@
+import { OdsLogger } from '@ovhcloud/ods-common-core';
 import type { E2EPage } from '@stencil/core/testing';
 import { newE2EPage } from '@stencil/core/testing';
-import { OdsLogger } from '@ovhcloud/ods-common-core';
 
 const logger = new OdsLogger('osds-content-addon-e2e');
 

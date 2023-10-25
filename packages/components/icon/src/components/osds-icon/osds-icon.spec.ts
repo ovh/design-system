@@ -1,14 +1,15 @@
 jest.mock('./core/controller'); // keep jest.mock before any
 
-import type { SpecPage } from '@stencil/core/testing';
-import type { OdsIconAttribute } from './interfaces/attributes';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
+import type { SpecPage } from '@stencil/core/testing';
 import { newSpecPage } from '@stencil/core/testing';
+
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_ICON_NAME } from './constants/icon-name';
 import { ODS_ICON_SIZE, ODS_ICON_SIZES } from './constants/icon-size';
 import { OdsIconController } from './core/controller';
+import type { OdsIconAttribute } from './interfaces/attributes';
 import { OsdsIcon } from './osds-icon';
 
 describe('spec:osds-icon', () => {
@@ -31,7 +32,7 @@ describe('spec:osds-icon', () => {
     controller = (OdsIconController as unknown as jest.SpyInstance<OdsIconController, unknown[]>).mock.instances[0];
   }
 
-  it('should render', async () => {
+  it('should render', async() => {
     await setup({});
     expect(root?.shadowRoot).toBeDefined();
     expect(instance).toBeDefined();
@@ -55,7 +56,7 @@ describe('spec:osds-icon', () => {
         ...config,
       });
 
-      it('should have an aria-name content', async () => {
+      it('should have an aria-name content', async() => {
         await setup({ attributes: { ariaName: 'An icon' } });
         expect(instance.ariaName).toBeDefined();
       });
@@ -71,7 +72,7 @@ describe('spec:osds-icon', () => {
         ...config,
       });
 
-      it('should set a color if attribute is added', async () => {
+      it('should set a color if attribute is added', async() => {
         const randomColor = ODS_THEME_COLOR_INTENTS[Math.floor(Math.random() * ODS_THEME_COLOR_INTENTS.length)];
         await setup({ attributes: { color: randomColor } });
         expect(instance.color).toBe(randomColor);
@@ -88,13 +89,13 @@ describe('spec:osds-icon', () => {
         ...config,
       });
 
-      it('should be contrasted if attribute is added', async () => {
+      it('should be contrasted if attribute is added', async() => {
         await setup({ attributes: { contrasted: true } });
         expect(instance.contrasted).toBe(true);
         expect(instance.el.classList.contains('ods-icon--contrasted')).toBe(true);
       });
 
-      it('should not be contrasted if attribute is false', async () => {
+      it('should not be contrasted if attribute is false', async() => {
         await setup({ attributes: { contrasted: false } });
         expect(instance.contrasted).toBe(false);
         expect(instance.el.classList.contains('ods-icon--contrasted')).toBe(false);
@@ -111,7 +112,7 @@ describe('spec:osds-icon', () => {
         ...config,
       });
 
-      it('should set a name if attribute is added', async () => {
+      it('should set a name if attribute is added', async() => {
         const iconName = ODS_ICON_NAME.HOME;
         await setup({ attributes: { name: iconName } });
         expect(instance.name).toBe(iconName);
@@ -128,7 +129,7 @@ describe('spec:osds-icon', () => {
         ...config,
       });
 
-      it('should set a size if attribute is added', async () => {
+      it('should set a size if attribute is added', async() => {
         const randomSize = ODS_ICON_SIZES[Math.floor(Math.random() * ODS_ICON_SIZES.length)];
         await setup({ attributes: { size: randomSize } });
         expect(instance.size).toBe(randomSize);
@@ -145,13 +146,13 @@ describe('spec:osds-icon', () => {
         ...config,
       });
 
-      it('should be hoverable if attribute is added', async () => {
+      it('should be hoverable if attribute is added', async() => {
         await setup({ attributes: { hoverable: true } });
         expect(instance.hoverable).toBe(true);
         expect(instance.el.classList.contains('ods-icon--hoverable')).toBe(true);
       });
 
-      it('should not be hoverable if attribute is false', async () => {
+      it('should not be hoverable if attribute is false', async() => {
         await setup({ attributes: { hoverable: false } });
         expect(instance.hoverable).toBe(false);
         expect(instance.el.classList.contains('ods-icon--hoverable')).toBe(false);
@@ -160,7 +161,7 @@ describe('spec:osds-icon', () => {
   });
 
   describe('controller', () => {
-    it('should call controller.validateAttributes', async () => {
+    it('should call controller.validateAttributes', async() => {
       await setup();
       expect(controller.validateAttributes).toHaveBeenCalledWith();
       expect(controller.validateAttributes).toHaveBeenCalledTimes(1);

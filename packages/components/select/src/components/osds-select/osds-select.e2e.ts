@@ -1,11 +1,13 @@
-import type { E2EElement, E2EPage } from '@stencil/core/testing';
-import type { OdsSelectAttribute } from './interfaces/attributes';
-import type { OdsSelectValueChangeEventDetail } from './interfaces/events';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { ODS_SELECT_SIZE } from './constants/select-size';
-import { newE2EPage } from '@stencil/core/testing';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+import type { E2EElement, E2EPage } from '@stencil/core/testing';
+import { newE2EPage } from '@stencil/core/testing';
+
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { ODS_SELECT_SIZE } from './constants/select-size';
+import type { OdsSelectAttribute } from './interfaces/attributes';
+import type { OdsSelectValueChangeEventDetail } from './interfaces/events';
+
 
 describe('e2e:osds-select', () => {
   const baseAttribute = { ariaLabel: null, ariaLabelledby: '', color: ODS_THEME_COLOR_INTENT.primary, defaultValue: '', disabled: false, inline: false, required: false, size: ODS_SELECT_SIZE.md, value: '' };

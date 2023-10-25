@@ -1,7 +1,7 @@
-let mockOnDestroy = jest.fn();
-let mockLoad = jest.fn();
-let mockOdsGetSrc = jest.fn();
-let mockWaitUntilVisible = jest.fn();
+const mockOnDestroy = jest.fn();
+const mockLoad = jest.fn();
+const mockOdsGetSrc = jest.fn();
+const mockWaitUntilVisible = jest.fn();
 
 jest.mock('@ovhcloud/ods-common-core', () => ({
   ...jest.requireActual('@ovhcloud/ods-common-core'),
@@ -12,24 +12,25 @@ jest.mock('@ovhcloud/ods-common-core', () => ({
     load: mockLoad,
     waitUntilVisible: mockWaitUntilVisible,
   })),
-}))
+}));
 
-import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
-import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
 import {
   Ods,
   OdsLogger,
   odsGetAssetPath,
   odsGetSrc,
 } from '@ovhcloud/ods-common-core';
-import { ODS_FLAG_ISO_CODE, ODS_FLAG_ISO_CODES } from '../constants/flag-iso-code';
+import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
+import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
+
 import { OdsFlagController } from './controller';
+import { ODS_FLAG_ISO_CODE, ODS_FLAG_ISO_CODES } from '../constants/flag-iso-code';
 import { OsdsFlag } from '../osds-flag';
 
 class OdsFlagMock extends OsdsFlag {
   constructor(attribute: Partial<OsdsFlag>) {
     super();
-    Object.assign(this, attribute)
+    Object.assign(this, attribute);
   }
 
   beforeRender = jest.fn();
@@ -59,7 +60,7 @@ describe('ods-flag-controller', () => {
     const loggerMocked = new OdsLogger('myLoggerMocked');
     loggerSpyReferences = OdsInitializeLoggerSpy({
       loggerMocked: loggerMocked as never,
-      spiedClass: OdsFlagController
+      spiedClass: OdsFlagController,
     });
   });
 
@@ -102,7 +103,7 @@ describe('ods-flag-controller', () => {
     describe('load', () => {
       it('should call validation of iso', () => {
         setup();
-        spyOnValidateISO =  jest.spyOn(controller, 'validateISO');
+        spyOnValidateISO = jest.spyOn(controller, 'validateISO');
 
         controller.load(true);
 
@@ -118,10 +119,10 @@ describe('ods-flag-controller', () => {
       });
 
       it('should call load with url', () => {
-        const dummyUrl = 'dummy url'
+        const dummyUrl = 'dummy url';
         setup();
         // @ts-ignore to spy private method
-        spyOnGetUrl =  jest.spyOn<any>(controller, 'getUrl').mockReturnValueOnce(dummyUrl);
+        spyOnGetUrl = jest.spyOn<any>(controller, 'getUrl').mockReturnValueOnce(dummyUrl);
 
         controller.load(false, false);
 
@@ -172,7 +173,7 @@ describe('ods-flag-controller', () => {
 
       describe('custom svg src', () => {
         it('should manage an url with src', () => {
-          setup({src: 'my/src/fr.svg'});
+          setup({ src: 'my/src/fr.svg' });
           mockOdsGetSrc.mockReturnValueOnce('my-mocked-result');
           controller.load(true);
           expect(mockLoad).toHaveBeenNthCalledWith(1, 'my-mocked-result', true, true, true);

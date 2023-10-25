@@ -1,25 +1,25 @@
+import { ODS_COUNTRY_ISO_CODE, Ods, OdsExternalLogger } from '@ovhcloud/ods-common-core';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+import { OsdsFlag } from '@ovhcloud/ods-component-flag/react';
+import { OsdsToggle } from '@ovhcloud/ods-component-toggle/react';
+import { OsdsButton } from '@ovhcloud/ods-components/button/react';
+import { OsdsCheckbox } from '@ovhcloud/ods-components/checkbox/react';
+import { ODS_CHECKBOX_BUTTON_SIZE } from '@ovhcloud/ods-components/checkbox-button';
+import { OsdsCheckboxButton } from '@ovhcloud/ods-components/checkbox-button/react';
+import { OsdsTile } from '@ovhcloud/ods-components/tile/react';
+import React from 'react';
 import CartManagerUsage from './CartManagerUsage';
 import CartUsage from './CartUsage';
 import MyButton from './MyButton';
-import React from 'react';
 
 // you can import react proxy from the independent package
-import { OsdsButton } from '@ovhcloud/ods-components/button/react';
-import { OsdsTile } from '@ovhcloud/ods-components/tile/react';
-import { OsdsCheckbox } from '@ovhcloud/ods-components/checkbox/react';
-import { OsdsCheckboxButton } from '@ovhcloud/ods-components/checkbox-button/react';
-import { ODS_CHECKBOX_BUTTON_SIZE } from '@ovhcloud/ods-components/checkbox-button';
 import { OsdsMessage } from '@ovhcloud/ods-components/message/react';
 import { ODS_MESSAGE_TYPE } from '@ovhcloud/ods-components/message';
 import { OsdsRadio, OsdsRadioGroup } from '@ovhcloud/ods-components/radio/react';
-import { OsdsFlag } from '@ovhcloud/ods-component-flag/react';
-import { OsdsToggle } from '@ovhcloud/ods-component-toggle/react';
 
 // each type you import types from ODS, you will need to import the core
-import { ODS_COUNTRY_ISO_CODE, Ods, OdsExternalLogger } from '@ovhcloud/ods-common-core';
 
 // each theming related type you use, you will need to import the theming
-import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 
 
 

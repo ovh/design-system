@@ -1,9 +1,3 @@
-import type { OdsCheckboxButtonAttribute } from './interfaces/attributes';
-import type { SpecPage } from '@stencil/core/testing';
-import { OsdsCheckboxButton } from './osds-checkbox-button';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { ODS_CHECKBOX_BUTTON_SIZE, ODS_CHECKBOX_BUTTON_SIZES } from './constants/ods-checkbox-button-size';
-import { newSpecPage } from '@stencil/core/testing';
 import { OdsCreateDefaultValidityState } from '@ovhcloud/ods-common-core';
 import {
   OdsMockNativeMethod,
@@ -13,6 +7,13 @@ import {
   odsUnitTestAttribute,
 } from '@ovhcloud/ods-common-testing';
 import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
+import { newSpecPage } from '@stencil/core/testing';
+import type { SpecPage } from '@stencil/core/testing';
+
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { ODS_CHECKBOX_BUTTON_SIZE, ODS_CHECKBOX_BUTTON_SIZES } from './constants/ods-checkbox-button-size';
+import type { OdsCheckboxButtonAttribute } from './interfaces/attributes';
+import { OsdsCheckboxButton } from './osds-checkbox-button';
 
 // mock validity property that does not exist when stencil mock HTMLInputElement
 OdsMockPropertyDescriptor(HTMLInputElement.prototype, 'validity', () => OdsCreateDefaultValidityState());

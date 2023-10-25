@@ -1,8 +1,8 @@
-import { html } from 'lit-html';
-import { unsafeHTML } from 'lit-html/directives/unsafe-html';
+import { OlesIpsumGeneration, olesIpsum } from '@ovhcloud/ods-common-core';
 import { defineCustomElements } from '@ovhcloud/ods-components/content-addon/loader';
 import { defineCustomElements as tileCustomElements } from '@ovhcloud/ods-components/tile/loader';
-import { OlesIpsumGeneration, olesIpsum } from '@ovhcloud/ods-common-core';
+import { html } from 'lit-html';
+import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 
 defineCustomElements();
 tileCustomElements();

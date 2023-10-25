@@ -1,10 +1,11 @@
-import type { OdsCheckboxButtonAttribute } from './interfaces/attributes';
 import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import { OdsCheckboxButtonController } from './core/ods-checkbox-button-controller';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { ODS_CHECKBOX_BUTTON_SIZE } from './constants/ods-checkbox-button-size';
 import { ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
 import { Component, Element, Host, Prop, h } from '@stencil/core';
+
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { ODS_CHECKBOX_BUTTON_SIZE } from './constants/ods-checkbox-button-size';
+import { OdsCheckboxButtonController } from './core/ods-checkbox-button-controller';
+import type { OdsCheckboxButtonAttribute } from './interfaces/attributes';
 
 /**
  * @slot start - Fixed start checkbox button content

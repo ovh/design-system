@@ -1,5 +1,5 @@
-import type { OsdsPagination } from '../osds-pagination';
 import type { OdsPaginationPageList } from '../interfaces/attributes';
+import type { OsdsPagination } from '../osds-pagination';
 
 class OdsPaginationController {
   private component: OsdsPagination;

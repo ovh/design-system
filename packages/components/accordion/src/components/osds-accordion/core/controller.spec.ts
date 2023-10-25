@@ -1,8 +1,9 @@
 import type { EventEmitter } from '@stencil/core';
 import type { HTMLStencilElement } from '@stencil/core/internal';
-import { OsdsAccordion } from '../osds-accordion';
+
 import { OdsAccordionController } from './controller';
 import { OsdsAccordionGroup } from '../../osds-accordion-group/osds-accordion-group';
+import { OsdsAccordion } from '../osds-accordion';
 
 class OsdsAccordionMock extends OsdsAccordion {
   constructor(attribute: Partial<OsdsAccordion>) {

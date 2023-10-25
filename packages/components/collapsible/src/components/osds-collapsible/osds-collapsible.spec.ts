@@ -1,12 +1,14 @@
 jest.mock('./core/controller'); // keep jest.mock before any
 
+import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 import type { SpecPage } from '@stencil/core/testing';
-import type { OdsCollapsibleAttribute } from './interfaces/attributes';
+import { newSpecPage } from '@stencil/core/testing';
+
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsCollapsibleController } from './core/controller';
+import type { OdsCollapsibleAttribute } from './interfaces/attributes';
 import { OsdsCollapsible } from './osds-collapsible';
-import { newSpecPage } from '@stencil/core/testing';
-import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
+
 
 describe('spec:osds-collapsible', () => {
   let page: SpecPage;

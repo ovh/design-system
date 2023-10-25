@@ -1,5 +1,6 @@
 import type { E2EPage } from '@stencil/core/testing';
 import { newE2EPage } from '@stencil/core/testing';
+
 import { ODS_FLAG_ISO_CODES } from './constants/flag-iso-code';
 
 describe('e2e:osds-flag', () => {
@@ -19,13 +20,13 @@ describe('e2e:osds-flag', () => {
   }
 
   describe('screenshots', () => {
-    it(`should display all flags correctly`, async () => {
+    it('should display all flags correctly', async() => {
       const flags = isoList.map((iso) =>
         `<osds-flag style="width: ${flagWidth}px; height: ${flagHeight}px;"
                     asset-path="./dist/flags/flags-4x3/"
                     iso="${iso}"
                     lazy="false">
-        </osds-flag>`
+        </osds-flag>`,
       );
 
       await setup(flags.join(''));

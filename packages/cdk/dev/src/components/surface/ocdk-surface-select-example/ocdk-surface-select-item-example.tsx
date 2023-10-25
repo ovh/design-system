@@ -1,6 +1,6 @@
+import { OcdkLogger } from '@ovhcloud/ods-cdk';
 import { Component, Element, Event, EventEmitter, Host, Listen, Prop, h } from '@stencil/core';
 import { HTMLStencilElement } from '@stencil/core/internal';
-import { OcdkLogger } from '@ovhcloud/ods-cdk';
 
 @Component({
   tag: 'ocdk-surface-select-item-example',

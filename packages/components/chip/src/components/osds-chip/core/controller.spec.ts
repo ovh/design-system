@@ -1,11 +1,13 @@
+import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
 import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
+import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+
+import { OdsChipController } from './controller';
 import { ODS_CHIP_SIZE } from '../constants/chip-size';
 import { ODS_CHIP_VARIANT } from '../constants/chip-variant';
-import { OdsChipController } from './controller';
 import { OsdsChip } from '../osds-chip';
-import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
-import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
+
 
 class OdsChipMock extends OsdsChip {
   constructor(attribute: Partial<OsdsChip>) {

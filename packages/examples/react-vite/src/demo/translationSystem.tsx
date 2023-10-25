@@ -1,6 +1,7 @@
+import { Ods, OdsExternalLogger } from '@ovhcloud/ods-common-core';
+
 import { priceFormatter } from './priceFormatter';
 import { translations } from './translations';
-import { Ods, OdsExternalLogger } from '@ovhcloud/ods-common-core';
 
 // translation system to replace with the application one
 export const translationSystem = (key: string, values: Record<string, string | number | undefined> = {}) => {

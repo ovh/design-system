@@ -1,7 +1,8 @@
-import type { OdsInputValidityState } from '../interfaces/attributes';
-import type { OsdsInput } from '../osds-input';
 import type { OdsFormControl, OdsInputValue } from '@ovhcloud/ods-common-core';
 import { OdsGetValidityState, OdsLogger, OdsWarnComponentAttribute } from '@ovhcloud/ods-common-core';
+
+import type { OdsInputValidityState } from '../interfaces/attributes';
+import type { OsdsInput } from '../osds-input';
 
 /**
  * common controller logic for input component used by the different implementations.

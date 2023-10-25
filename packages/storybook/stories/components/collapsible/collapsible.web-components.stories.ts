@@ -1,10 +1,11 @@
-import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
-import page from './collapsible.web-component.stories.page.mdx';
+import changelog from '@ovhcloud/ods-components/collapsible/CHANGELOG.md';
+import { defineCustomElements } from '@ovhcloud/ods-components/collapsible/loader';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-import { defineCustomElements } from '@ovhcloud/ods-components/collapsible/loader';
+
+import page from './collapsible.web-component.stories.page.mdx';
+import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 // @ts-ignore
-import changelog from '@ovhcloud/ods-components/collapsible/CHANGELOG.md';
 // @ts-ignore
 
 defineCustomElements();

@@ -1,15 +1,17 @@
 jest.mock('./core/controller'); // keep jest.mock before any
 
+import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
+import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
 import type { SpecPage } from '@stencil/core/testing';
-import type { OdsTileAttribute } from './interfaces/attributes';
+import { newSpecPage } from '@stencil/core/testing';
+
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_TILE_SIZE, ODS_TILE_SIZES } from './constants/tile-size';
 import { ODS_TILE_VARIANT, ODS_TILE_VARIANTS } from './constants/tile-variant';
 import { OdsTileController } from './core/controller';
+import type { OdsTileAttribute } from './interfaces/attributes';
 import { OsdsTile } from './osds-tile';
-import { newSpecPage } from '@stencil/core/testing';
-import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
-import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
+
 
 describe('spec:osds-tile', () => {
   let page: SpecPage;

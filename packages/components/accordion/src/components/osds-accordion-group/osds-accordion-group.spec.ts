@@ -1,10 +1,12 @@
 jest.mock('./core/controller'); // keep jest.mock before any import
 
 import type { SpecPage } from '@stencil/core/testing';
-import { OsdsAccordion } from '../osds-accordion/osds-accordion';
+import { newSpecPage } from '@stencil/core/testing';
+
 import { OdsAccordionGroupController } from './core/controller';
 import { OsdsAccordionGroup } from './osds-accordion-group';
-import { newSpecPage } from '@stencil/core/testing';
+import { OsdsAccordion } from '../osds-accordion/osds-accordion';
+
 
 describe('spec:osds-accordion-group', () => {
   let page: SpecPage;

@@ -1,10 +1,11 @@
-import type { OdsTileAttribute } from './interfaces/attributes';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+import { Component, Element, Host, Prop, h } from '@stencil/core';
+
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_TILE_SIZE } from './constants/tile-size';
 import { ODS_TILE_VARIANT } from './constants/tile-variant';
 import { OdsTileController } from './core/controller';
-import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import { Component, Element, Host, Prop, h } from '@stencil/core';
+import type { OdsTileAttribute } from './interfaces/attributes';
 
 /**
  * @slot start - Fixed start button content

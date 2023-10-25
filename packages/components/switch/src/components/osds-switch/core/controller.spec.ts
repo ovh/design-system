@@ -1,6 +1,6 @@
+import { OdsSwitchController } from './controller';
 import type { OsdsSwitchItem } from '../../osds-switch-item/osds-switch-item';
 import { OsdsSwitch } from '../osds-switch';
-import { OdsSwitchController } from './controller';
 
 class OdsSwitchMock extends OsdsSwitch {
   constructor(attribute: Partial<OsdsSwitch>) {

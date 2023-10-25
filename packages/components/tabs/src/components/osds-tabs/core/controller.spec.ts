@@ -1,13 +1,14 @@
+import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
 import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
+import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
 import type { HTMLStencilElement } from '@stencil/core/internal';
+
 import { OdsTabsController } from './controller';
-import { OsdsTabs } from '../osds-tabs';
-import { OsdsTabBarItem } from '../../osds-tab-bar-item/osds-tab-bar-item';
 import { OsdsTabBar } from '../../osds-tab-bar/osds-tab-bar';
+import { OsdsTabBarItem } from '../../osds-tab-bar-item/osds-tab-bar-item';
 import { OsdsTabsPanel } from '../../osds-tab-panel/osds-tab-panel';
 import { DEFAULT_ATTRIBUTE } from '../constants/default-attributes';
-import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
-import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
+import { OsdsTabs } from '../osds-tabs';
 
 class OdsTabsMock extends OsdsTabs {
   constructor(attribute: Partial<OsdsTabs>) {

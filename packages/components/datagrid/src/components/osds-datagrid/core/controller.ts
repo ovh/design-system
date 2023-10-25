@@ -4,10 +4,10 @@ import type { CellComponent, ColumnDefinition } from 'tabulator-tables';
 
 import { parseStringToArray } from '@ovhcloud/ods-common-core';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import { ODS_BUTTON_VARIANT } from '@ovhcloud/ods-component-button';
+import { ODS_BUTTON_SIZE, ODS_BUTTON_VARIANT } from '@ovhcloud/ods-component-button';
+import { ODS_CHECKBOX_BUTTON_SIZE } from '@ovhcloud/ods-component-checkbox-button';
 import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
 import { ODS_TEXT_SIZE } from '@ovhcloud/ods-component-text';
-
 class OdsDatagridController {
 
   constructor(
@@ -59,7 +59,7 @@ class OdsDatagridController {
         resizable: false,
         title: '',
         titleFormatter: () => this.getOdsPopover(columns),
-        width: 40,
+        width: 60,
       },
     ];
   }
@@ -89,8 +89,8 @@ class OdsDatagridController {
   private getOdsPopover(columns: OdsDatagridColumn[]): string {
     return `<osds-popover>
         <span slot="popover-trigger">
-          <osds-button circle variant="${ODS_BUTTON_VARIANT.ghost}">
-            <osds-icon color="text" size="${ODS_ICON_SIZE.sm}" name="${ODS_ICON_NAME.GEAR}"></osds-icon>
+          <osds-button size="${ODS_BUTTON_SIZE.sm}" variant="${ODS_BUTTON_VARIANT.ghost}" color="${ODS_THEME_COLOR_INTENT.primary}">
+            <osds-icon color="${ODS_THEME_COLOR_INTENT.primary}" size="${ODS_ICON_SIZE.sm}" name="${ODS_ICON_NAME.GEAR}"></osds-icon>
           </osds-button>
         </span>
         <osds-popover-content>
@@ -98,7 +98,7 @@ class OdsDatagridController {
   columns.map((column) => {
     const isChecked = !this.component.hideableColumns?.includes(column.field);
     return `<osds-checkbox value="${column.field}" checked="${isChecked}">
-                <osds-checkbox-button color="${ODS_THEME_COLOR_INTENT.primary}">
+                <osds-checkbox-button color="${ODS_THEME_COLOR_INTENT.primary}" size="${ODS_CHECKBOX_BUTTON_SIZE.sm}">
                   <span slot="end">${column.title}</span>
                 </osds-checkbox-button>
               </osds-checkbox>`;

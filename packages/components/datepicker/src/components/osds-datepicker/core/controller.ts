@@ -29,6 +29,8 @@ class OdsDatepickerController {
         this.component.datepickerInstanceAccessor?.setDate(newValue);
         this.component.emitDatepickerValueChange(newValue, oldValue ? oldValue : null);
       }
+      this.component.el.focus();
+      this.component.el.blur();
     }
   }
 

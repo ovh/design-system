@@ -211,6 +211,7 @@ describe('spec:osds-datepicker', () => {
       instance.handleInputValueChange(event);
       await page.waitForChanges();
       expect(controller.onChange).toHaveBeenCalledTimes(1);
+      expect(instance.hasFocus).toBe(false);
     });
 
     it('should call onChange with null when value is empty', async() => {

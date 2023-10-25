@@ -9,8 +9,8 @@
         border: solid 2px var(--ods-color-primary-500);
         border-radius: var(--ods-size-border-radius-01);
         cursor: pointer;
-        width: 20px;
-        height: 20px;
+        width: 16px;
+        height: 16px;
         cursor: pointer;
         @if $cell == 1 {
             position: absolute;
@@ -20,21 +20,20 @@
         }
         &::before {
             display: block;
-            width: 15px;
-            height: 15px;
-            content: "";
+            width: 12px;
+            height: 12px;
             mask-position: center;
             mask-repeat: no-repeat;
         }
 
         &:checked::before {
             background-color: var(--ods-color-primary-500);
-            mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='15' height='15' viewBox='0 0 24 24'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cpath stroke-linecap='round' stroke-width='2' d='M4 13l5 5M20 7L9 18'/%3E%3Cpath fill='%23000000' d='M19.293 6.293a1 1 0 011.414 1.414l-11 11a.995.995 0 01-.53.277l-.118.014h-.118a.996.996 0 01-.648-.29l-5-5a1 1 0 011.414-1.415L9 16.585z'/%3E%3C/g%3E%3C/svg%3E");
+            mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cpath stroke-linecap='round' stroke-width='2' d='M4 13l5 5M20 7L9 18'/%3E%3Cpath fill='%23000000' d='M19.293 6.293a1 1 0 011.414 1.414l-11 11a.995.995 0 01-.53.277l-.118.014h-.118a.996.996 0 01-.648-.29l-5-5a1 1 0 011.414-1.415L9 16.585z'/%3E%3C/g%3E%3C/svg%3E");
         }
 
         &:indeterminate::before {
             background-color: var(--ods-color-primary-500);
-            mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='13' height='13' viewBox='0 0 24 24'%3E%3Cpath fill='%23000000' fill-rule='evenodd' d='M20 11a1 1 0 010 2H4a1 1 0 010-2h16z'/%3E%3C/svg%3E");
+            mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24'%3E%3Cpath fill='%23000000' fill-rule='evenodd' d='M20 11a1 1 0 010 2H4a1 1 0 010-2h16z'/%3E%3C/svg%3E");
         }
     }
 }
@@ -105,7 +104,12 @@ $ods-border-datagrid: solid 1px var(--ods-color-blue-200);
 
     .tabulator-header {
         border-bottom: none;
+        height: unset !important;
+        overflow: unset;
 
+        .tabulator-header-contents {
+            overflow: unset;
+        }
         .tabulator-headers {
             height: unset !important;
 

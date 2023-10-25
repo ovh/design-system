@@ -1,12 +1,14 @@
+import type { ODS_LINK_REFERRER_POLICY } from './constants/referrer-policies';
+import type { OdsLinkAttribute } from './interfaces/attributes';
 import type { OdsHTMLAnchorElementRel, OdsHTMLAnchorElementTarget } from '@ovhcloud/ods-common-core';
+
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { Component, Element, Host, Prop, h } from '@stencil/core';
 import { HTMLStencilElement } from '@stencil/core/internal';
 
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import type { ODS_LINK_REFERRER_POLICY } from './constants/referrer-policies';
 import { OdsLinkController } from './core/controller';
-import type { OdsLinkAttribute } from './interfaces/attributes';
+
 
 
 /**

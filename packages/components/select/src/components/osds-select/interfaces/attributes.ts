@@ -1,7 +1,7 @@
+import type { ODS_SELECT_SIZE } from '../constants/select-size';
 import type { OdsInputValue } from '@ovhcloud/ods-common-core';
 import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 
-import type { ODS_SELECT_SIZE } from '../constants/select-size';
 
 interface OdsSelectAttribute {
   /**

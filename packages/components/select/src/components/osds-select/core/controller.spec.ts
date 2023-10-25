@@ -1,8 +1,9 @@
+import type { OsdsSelectOption } from '../../osds-select-option/osds-select-option';
 import type { OcdkSurface } from '@ovhcloud/ods-cdk';
+
 import { OcdkSurfaceMock } from '@ovhcloud/ods-cdk';
 
 import { OdsSelectController } from './controller';
-import type { OsdsSelectOption } from '../../osds-select-option/osds-select-option';
 import { OsdsSelect } from '../osds-select';
 
 

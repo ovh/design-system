@@ -1,11 +1,12 @@
-import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
+import type { OdsSpinnerAttribute } from './interfaces/attributes';
 import type { SpecPage } from '@stencil/core/testing';
+
+import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 import { newSpecPage } from '@stencil/core/testing';
 
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_SPINNER_MODE, ODS_SPINNER_MODES } from './constants/spinner-mode';
 import { ODS_SPINNER_SIZE, ODS_SPINNER_SIZES } from './constants/spinner-size';
-import type { OdsSpinnerAttribute } from './interfaces/attributes';
 import { OsdsSpinner } from './osds-spinner';
 
 

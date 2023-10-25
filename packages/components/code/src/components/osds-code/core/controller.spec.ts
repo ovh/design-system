@@ -1,8 +1,9 @@
+import type { OsdsButton } from '@ovhcloud/ods-component-button';
+import type { OsdsIcon } from '@ovhcloud/ods-component-icon';
+
 import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
 import { OdsClearLoggerSpy, OdsInitializeLoggerSpy, OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
-import type { OsdsButton } from '@ovhcloud/ods-component-button';
 import { ODS_BUTTON_SIZE, ODS_BUTTON_VARIANT } from '@ovhcloud/ods-component-button';
-import type { OsdsIcon } from '@ovhcloud/ods-component-icon';
 import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
 
 import { OdsCodeController } from './controller';

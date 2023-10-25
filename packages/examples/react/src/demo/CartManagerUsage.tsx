@@ -1,5 +1,6 @@
-import { Ods, OdsExternalLogger, OdsI18nHook } from '@ovhcloud/ods-common-core';
 import type { OdsCartManagerFooter, OdsCartManagerSection } from '@ovhcloud/ods-component-cart';
+
+import { Ods, OdsExternalLogger, OdsI18nHook } from '@ovhcloud/ods-common-core';
 import { OsdsCartFooter, OsdsCartHeader, OsdsCartManager } from '@ovhcloud/ods-component-cart-react';
 import React from 'react';
 

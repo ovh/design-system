@@ -1,6 +1,7 @@
+import type { OsdsCheckbox } from '../osds-checkbox';
+
 import { OdsLogger } from '@ovhcloud/ods-common-core';
 
-import type { OsdsCheckbox } from '../osds-checkbox';
 
 class OdsCheckboxController {
   private readonly logger = new OdsLogger('OdsCheckboxController');

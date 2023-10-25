@@ -1,8 +1,9 @@
+import type { OsdsIcon } from '../osds-icon';
+
 import { OdsLogger, OdsWarnComponentAttribute } from '@ovhcloud/ods-common-core';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 
 import { ODS_ICON_SIZE } from '../constants/icon-size';
-import type { OsdsIcon } from '../osds-icon';
 
 /**
  * common controller logic for icon component used by the different implementations.

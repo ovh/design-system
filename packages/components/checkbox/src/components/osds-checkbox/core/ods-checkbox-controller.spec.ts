@@ -1,3 +1,5 @@
+import type { HTMLStencilElement } from '@stencil/core/internal';
+
 import { Ods, OdsCheckboxable, OdsLogger } from '@ovhcloud/ods-common-core';
 import {
   OdsClearLoggerSpy,
@@ -5,7 +7,6 @@ import {
   OdsLoggerSpyReferences,
   odsGetSimulatedPromise,
 } from '@ovhcloud/ods-common-testing';
-import type { HTMLStencilElement } from '@stencil/core/internal';
 
 import { OdsCheckboxController } from './ods-checkbox-controller';
 import { OsdsCheckbox } from '../osds-checkbox';

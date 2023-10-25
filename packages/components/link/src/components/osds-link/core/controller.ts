@@ -1,7 +1,8 @@
+import type { OsdsLink } from '../osds-link';
+
 import { OdsHTMLAnchorElementTarget, OdsLogger, OdsWarnComponentAttribute } from '@ovhcloud/ods-common-core';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 
-import type { OsdsLink } from '../osds-link';
 
 /**
  * common controller logic for link component used by the different implementations.

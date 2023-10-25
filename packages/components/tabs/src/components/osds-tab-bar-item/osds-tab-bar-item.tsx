@@ -1,12 +1,15 @@
-import { OdsLogger } from '@ovhcloud/ods-common-core';
+import type { OdsTabBarItemAttribute } from './interfaces/attributes';
+import type { OdsTabBarItemEvent, OdsTabItemSelectEventDetail } from './interfaces/events';
 import type { EventEmitter } from '@stencil/core';
-import { Component, Element, Event, Host, Listen, Method, Prop, h } from '@stencil/core';
 import type { HTMLStencilElement } from '@stencil/core/internal';
+
+import { OdsLogger } from '@ovhcloud/ods-common-core';
+import { Component, Element, Event, Host, Listen, Method, Prop, h } from '@stencil/core';
+
 
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsTabBarItemController } from './core/controller';
-import type { OdsTabBarItemAttribute } from './interfaces/attributes';
-import type { OdsTabBarItemEvent, OdsTabItemSelectEventDetail } from './interfaces/events';
+
 
 
 /**

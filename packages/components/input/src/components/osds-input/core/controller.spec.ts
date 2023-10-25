@@ -1,9 +1,10 @@
+import type { OdsInputValidityState } from '../interfaces/attributes';
+
 import { Ods, OdsFormControl, OdsLogger } from '@ovhcloud/ods-common-core';
 import { OdsClearLoggerSpy, OdsInitializeLoggerSpy, OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
 
 import { OdsInputController } from './controller';
 import { ODS_INPUT_TYPE } from '../constants/input-type';
-import type { OdsInputValidityState } from '../interfaces/attributes';
 import { OsdsInput } from '../osds-input';
 
 

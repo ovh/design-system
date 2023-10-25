@@ -1,8 +1,9 @@
+import type { OdsCartManagerFooter } from '../interfaces/attributes';
+import type { OsdsCartManager } from '../osds-cart-manager';
+
 import { OdsComputedUtils } from '@ovhcloud/ods-common-core';
 
 import { isOdsCartManagerFooter } from '../helpers/type';
-import type { OdsCartManagerFooter } from '../interfaces/attributes';
-import type { OsdsCartManager } from '../osds-cart-manager';
 
 class OdsCartManagerController {
   private component: OsdsCartManager;

@@ -1,14 +1,16 @@
-import { OdsLogger } from '@ovhcloud/ods-common-core';
-import { Component, Element, Host, Method, Prop, State, Watch, forceUpdate, h } from '@stencil/core';
-import type { HTMLStencilElement } from '@stencil/core/internal';
 
 import type { ODS_CART_ROUNDED } from './constants/cart-rounded';
 import type { ODS_CART_SIZE } from './constants/cart-size';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { OdsCartController } from './core/controller';
 import type { OdsCartAttribute } from './interfaces/attributes';
 import type { OdsCartMethod } from './interfaces/methods';
 import type { OsdsCartHeader } from '../osds-cart-header/osds-cart-header';
+import type { HTMLStencilElement } from '@stencil/core/internal';
+
+import { OdsLogger } from '@ovhcloud/ods-common-core';
+import { Component, Element, Host, Method, Prop, State, Watch, forceUpdate, h } from '@stencil/core';
+
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { OdsCartController } from './core/controller';
 
 @Component({
   tag: 'osds-cart',

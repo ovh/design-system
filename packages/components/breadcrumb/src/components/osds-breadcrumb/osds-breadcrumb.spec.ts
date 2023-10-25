@@ -1,12 +1,13 @@
 jest.mock('./core/controller'); // keep jest.mock before any
 
-import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
+import type { OdsBreadcrumbAttribute } from './interfaces/attributes';
 import type { SpecPage } from '@stencil/core/testing';
+
+import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import { newSpecPage } from '@stencil/core/testing';
 
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsBreadcrumbController } from './core/controller';
-import type { OdsBreadcrumbAttribute } from './interfaces/attributes';
 import { OsdsBreadcrumb } from './osds-breadcrumb';
 
 

@@ -1,4 +1,5 @@
 import type { SpecPage } from '@stencil/core/testing';
+
 import { newSpecPage } from '@stencil/core/testing';
 
 import { OsdsCartTotal } from './osds-cart-total';

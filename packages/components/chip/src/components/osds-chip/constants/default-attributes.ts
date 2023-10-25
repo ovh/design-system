@@ -1,8 +1,9 @@
+import type { OdsChipAttribute } from '../interfaces/attributes';
+
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 
 import { ODS_CHIP_SIZE } from './chip-size';
 import { ODS_CHIP_VARIANT } from './chip-variant';
-import type { OdsChipAttribute } from '../interfaces/attributes';
 
 
 const DEFAULT_ATTRIBUTE: OdsChipAttribute = Object.freeze({

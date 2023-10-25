@@ -1,18 +1,20 @@
 jest.mock('./core/controller'); // keep jest.mock before any
 
-import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
+import type { OdsCartManagerAttribute, OdsCartManagerFooter, OdsCartManagerFooterItem, OdsCartManagerItem, OdsCartManagerSection, OdsCartManagerTotal } from './interfaces/attributes';
+import type { OsdsCartItem } from '../osds-cart-item/osds-cart-item';
+import type { OsdsCartItemOption } from '../osds-cart-item-option/osds-cart-item-option';
+import type { OsdsCartSection } from '../osds-cart-section/osds-cart-section';
 import type { AnyHTMLElement } from '@stencil/core/internal';
 import type { SpecPage } from '@stencil/core/testing';
+
+import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 import { newSpecPage } from '@stencil/core/testing';
 
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsCartManagerController } from './core/controller';
-import type { OdsCartManagerAttribute, OdsCartManagerFooter, OdsCartManagerFooterItem, OdsCartManagerItem, OdsCartManagerSection, OdsCartManagerTotal } from './interfaces/attributes';
 import { OsdsCartManager } from './osds-cart-manager';
 import { ODS_CART_SIZE } from '../osds-cart/constants/cart-size';
-import type { OsdsCartItem } from '../osds-cart-item/osds-cart-item';
-import type { OsdsCartItemOption } from '../osds-cart-item-option/osds-cart-item-option';
-import type { OsdsCartSection } from '../osds-cart-section/osds-cart-section';
+
 
 
 describe('spec:osds-cart-manager', () => {

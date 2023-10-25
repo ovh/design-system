@@ -1,12 +1,13 @@
-import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
+import type { OdsTextAttribute } from './interfaces/attributes';
 import type { SpecPage } from '@stencil/core/testing';
+
+import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 import { newSpecPage } from '@stencil/core/testing';
 
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_TEXT_COLOR_INTENT, ODS_TEXT_COLOR_INTENTS } from './constants/text-color';
 import { ODS_TEXT_LEVEL, ODS_TEXT_LEVELS } from './constants/text-level';
 import { ODS_TEXT_SIZE, ODS_TEXT_SIZES } from './constants/text-size';
-import type { OdsTextAttribute } from './interfaces/attributes';
 import { OsdsText } from './osds-text';
 
 

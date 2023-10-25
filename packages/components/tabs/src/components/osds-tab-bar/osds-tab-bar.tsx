@@ -1,8 +1,9 @@
-import { Component, Element, Host, Prop, h } from '@stencil/core';
+import type { OdsTabBarAttribute } from './interfaces/attributes';
 import type { HTMLStencilElement } from '@stencil/core/internal';
 
+import { Component, Element, Host, Prop, h } from '@stencil/core';
+
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import type { OdsTabBarAttribute } from './interfaces/attributes';
 import { ODS_TABS_SIZE } from '../osds-tabs/constants/tabs-size';
 
 /**

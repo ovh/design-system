@@ -1,6 +1,7 @@
 jest.mock('./core/controller'); // keep jest.mock before any
 
 import type { SpecPage } from '@stencil/core/testing';
+
 import { newSpecPage } from '@stencil/core/testing';
 
 import { OdsCartItemController } from './core/controller';

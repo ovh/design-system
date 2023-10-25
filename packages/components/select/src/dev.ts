@@ -1,7 +1,8 @@
-import { OdsInitializedEvent, OdsInitializedEventName, OdsLogger } from '@ovhcloud/ods-common-core';
 
 import type { OdsSelectValueChangeEvent } from './components/osds-select/interfaces/events';
 import type { OsdsSelect } from './components/osds-select/osds-select';
+
+import { OdsInitializedEvent, OdsInitializedEventName, OdsLogger } from '@ovhcloud/ods-common-core';
 
 export default function() {
   const logger = new OdsLogger('global-dev');

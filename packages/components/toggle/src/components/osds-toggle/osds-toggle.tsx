@@ -1,9 +1,10 @@
+import type { OdsToggleAttribute } from './interfaces/attributes';
+
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { Component, Element, Host, Prop, h } from '@stencil/core';
 
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsToggleController } from './core/controller';
-import type { OdsToggleAttribute } from './interfaces/attributes';
 
 
 /**

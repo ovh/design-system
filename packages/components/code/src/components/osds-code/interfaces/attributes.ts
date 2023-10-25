@@ -1,6 +1,6 @@
+import type { ODS_CODE_SIZE } from '../constants/code-size';
 import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 
-import type { ODS_CODE_SIZE } from '../constants/code-size';
 
 interface OdsCodeAttribute {
   /** main color: see component principles */

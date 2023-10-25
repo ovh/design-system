@@ -1,11 +1,12 @@
+import type { OdsPasswordAttribute } from './interfaces/attributes';
 import type { OdsFormForbiddenValues } from '@ovhcloud/ods-common-core';
 import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import type { ODS_INPUT_SIZE } from '@ovhcloud/ods-component-input';
+
 import { ODS_INPUT_TYPE } from '@ovhcloud/ods-component-input';
 import { Component, Element, Host, Prop, h } from '@stencil/core';
 
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import type { OdsPasswordAttribute } from './interfaces/attributes';
 
 
 /**

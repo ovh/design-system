@@ -1,6 +1,6 @@
+import type { OdsCartManagerFooter, OdsCartManagerFooterItem, OdsCartManagerTotal } from '../interfaces/attributes';
 import type { Unknown } from '@ovhcloud/ods-common-core';
 
-import type { OdsCartManagerFooter, OdsCartManagerFooterItem, OdsCartManagerTotal } from '../interfaces/attributes';
 
 function isOdsCartManagerFooter(footer?: Unknown<OdsCartManagerFooter>): footer is OdsCartManagerFooter {
   return !!footer

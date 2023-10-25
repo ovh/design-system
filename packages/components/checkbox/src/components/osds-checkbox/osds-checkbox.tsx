@@ -1,9 +1,3 @@
-import { OdsCheckboxable, OdsLogger } from '@ovhcloud/ods-common-core';
-import { Component, Element, Event, EventEmitter, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
-import type { HTMLStencilElement } from '@stencil/core/internal';
-
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { OdsCheckboxController } from './core/ods-checkbox-controller';
 import type { OdsCheckboxAttribute, OdsCheckboxAttributeCbk } from './interfaces/attributes';
 import type {
   OdsCheckboxCheckedChangeEventDetail,
@@ -12,6 +6,14 @@ import type {
   OdsCheckboxUpdatingChangeEventDetail,
 } from './interfaces/events';
 import type { OdsCheckboxMethod } from './interfaces/methods';
+import type { HTMLStencilElement } from '@stencil/core/internal';
+
+import { OdsCheckboxable, OdsLogger } from '@ovhcloud/ods-common-core';
+import { Component, Element, Event, EventEmitter, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
+
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { OdsCheckboxController } from './core/ods-checkbox-controller';
+
 
 @Component({
   tag: 'osds-checkbox',

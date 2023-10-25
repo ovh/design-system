@@ -1,11 +1,13 @@
-import { odsGenerateColorVariable } from '@ovhcloud/ods-common-theming';
-import { Component, FunctionalComponent, Host, Prop, h } from '@stencil/core';
 
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import type { ODS_TEXT_COLOR_HUE, ODS_TEXT_COLOR_INTENT } from './constants/text-color';
 import type { ODS_TEXT_LEVEL } from './constants/text-level';
 import type { ODS_TEXT_SIZE } from './constants/text-size';
 import type { OdsTextAttribute } from './interfaces/attributes';
+
+import { odsGenerateColorVariable } from '@ovhcloud/ods-common-theming';
+import { Component, FunctionalComponent, Host, Prop, h } from '@stencil/core';
+
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 
 /**
  * @slot (unnamed) - Text content

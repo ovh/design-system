@@ -1,7 +1,8 @@
-import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
 import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
-import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
 import type { OsdsInput } from '@ovhcloud/ods-component-input';
+
+import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
+import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
 import { ODS_INPUT_TYPE } from '@ovhcloud/ods-component-input';
 
 import { OdsQuantityController } from './controller';

@@ -1,10 +1,12 @@
+import type { OdsRangeAttribute } from './interfaces/attributes';
+import type { E2EElement, E2EPage } from '@stencil/core/testing';
+
 import { odsComponentAttributes2StringAttributes, odsCreateAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming/src';
-import type { E2EElement, E2EPage } from '@stencil/core/testing';
 import { newE2EPage } from '@stencil/core/testing';
 
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import type { OdsRangeAttribute } from './interfaces/attributes';
+
 
 describe('e2e:osds-range', () => {
   let page: E2EPage;

@@ -1,8 +1,9 @@
+import type { ODS_SKELETON_SIZE } from './constants/skeleton-size';
+import type { OdsSkeletonAttribute } from './interfaces/attributes';
+
 import { Component, Host, Prop, h } from '@stencil/core';
 
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import type { ODS_SKELETON_SIZE } from './constants/skeleton-size';
-import type { OdsSkeletonAttribute } from './interfaces/attributes';
 
 
 @Component({

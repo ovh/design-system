@@ -1,12 +1,13 @@
+import type { OdsRadioButtonAttribute } from './interfaces/attributes';
+import type { SpecPage } from '@stencil/core/testing';
+
 import { OdsCreateDefaultValidityState } from '@ovhcloud/ods-common-core';
 import { OdsMockNativeMethod, OdsMockPropertyDescriptor, odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
-import type { SpecPage } from '@stencil/core/testing';
 import { newSpecPage } from '@stencil/core/testing';
 
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_RADIO_BUTTON_SIZE, ODS_RADIO_BUTTON_SIZES } from './constants/radio-button-size';
-import type { OdsRadioButtonAttribute } from './interfaces/attributes';
 import { OsdsRadioButton } from './osds-radio-button';
 
 // mock validity property that does not exist when stencil mock HTMLInputElement

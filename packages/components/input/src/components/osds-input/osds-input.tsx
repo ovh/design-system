@@ -1,18 +1,19 @@
+import type { OdsInputAttribute, OdsInputValidityState } from './interfaces/attributes';
+import type { OdsInputEvent, OdsInputValueChangeEventDetail } from './interfaces/events';
+import type { OdsInputMethod } from './interfaces/methods';
 import type { OdsErrorStateControl, OdsFormControl, OdsFormForbiddenValues, OdsInputValue } from '@ovhcloud/ods-common-core';
+import type { EventEmitter } from '@stencil/core';
+
 import { OdsLogger } from '@ovhcloud/ods-common-core';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
 import { ODS_SPINNER_SIZE } from '@ovhcloud/ods-component-spinner';
 import { ODS_TEXT_SIZE } from '@ovhcloud/ods-component-text';
-import type { EventEmitter } from '@stencil/core';
 import { Component, Element, Event, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
 
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_INPUT_SIZE } from './constants/input-size';
 import { ODS_INPUT_TYPE } from './constants/input-type';
-import type { OdsInputAttribute, OdsInputValidityState } from './interfaces/attributes';
-import type { OdsInputEvent, OdsInputValueChangeEventDetail } from './interfaces/events';
-import type { OdsInputMethod } from './interfaces/methods';
 import { OdsInputController } from './core/controller';
 
 /**

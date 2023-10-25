@@ -1,7 +1,8 @@
+import type { EventEmitter } from '@stencil/core';
+
 import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
 import { OdsClearLoggerSpy, OdsInitializeLoggerSpy, OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import type { EventEmitter } from '@stencil/core';
 
 import { OdsMessageController } from './controller';
 import { DEFAULT_ATTRIBUTE } from '../constants/default-attributes';

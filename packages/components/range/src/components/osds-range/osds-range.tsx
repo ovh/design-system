@@ -1,13 +1,14 @@
+import type { OdsRangeAttribute } from './interfaces/attributes';
+import type { OdsRangeEvent, OdsRangeValueChangeEventDetail } from './interfaces/events';
+import type { OdsRangeValue } from './interfaces/value';
 import type { OdsErrorStateControl, OdsFormControl, OdsFormForbiddenValues, OdsValidityState } from '@ovhcloud/ods-common-core';
+
 import { OdsLogger } from '@ovhcloud/ods-common-core';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { Component, Element, Event, EventEmitter, Host, Method, Prop, Watch, h } from '@stencil/core';
 
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsRangeController } from './core/controller';
-import type { OdsRangeAttribute } from './interfaces/attributes';
-import type { OdsRangeEvent, OdsRangeValueChangeEventDetail } from './interfaces/events';
-import type { OdsRangeValue } from './interfaces/value';
 
 /**
  * @slot start - Fixed start button content

@@ -1,8 +1,9 @@
+import type { OdsSwitchItemAttribute } from './interfaces/attributes';
 import type { OsdsRadio } from '@ovhcloud/ods-component-radio';
+
 import { Component, Element, Host, Method, Prop, State, h } from '@stencil/core';
 
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import type { OdsSwitchItemAttribute } from './interfaces/attributes';
 
 @Component({
   tag: 'osds-switch-item',

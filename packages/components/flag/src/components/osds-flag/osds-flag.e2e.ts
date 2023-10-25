@@ -1,14 +1,17 @@
+import type { ODS_FLAG_ISO_CODE_UNION } from './constants/flag-iso-code';
+import type { OdsFlagAttribute } from './interfaces/attributes';
+import type { E2EElement, E2EPage } from '@stencil/core/testing';
+import type { HTTPRequest as pRequest } from 'puppeteer';
+
 import { odsSetE2eInterceptRequest } from '@ovhcloud/ods-common-stencil';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import { Build } from '@stencil/core';
-import type { E2EElement, E2EPage } from '@stencil/core/testing';
 import { newE2EPage } from '@stencil/core/testing';
-import type { HTTPRequest as pRequest } from 'puppeteer';
+
 
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import type { ODS_FLAG_ISO_CODE_UNION } from './constants/flag-iso-code';
 import { ODS_FLAG_ISO_CODE } from './constants/flag-iso-code';
-import type { OdsFlagAttribute } from './interfaces/attributes';
+
 
 describe('e2e:osds-flag', () => {
   const baseAttribute = { iso: ODS_FLAG_ISO_CODE.FR, lazy: false };

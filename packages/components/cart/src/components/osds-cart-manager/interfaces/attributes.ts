@@ -1,6 +1,6 @@
+import type { ODS_CART_SIZE } from '../../osds-cart/constants/cart-size';
 import type { ODS_PERIOD_ISO_CODE, OdsI18nHook } from '@ovhcloud/ods-common-core';
 
-import type { ODS_CART_SIZE } from '../../osds-cart/constants/cart-size';
 
 interface OdsCartManagerFooterItem {
   /** extra information */

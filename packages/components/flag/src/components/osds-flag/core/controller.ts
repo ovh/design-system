@@ -1,3 +1,6 @@
+import type { ODS_FLAG_ISO_CODE_UNION } from '../constants/flag-iso-code';
+import type { OsdsFlag } from '../osds-flag';
+
 import {
   OdsLoadContent,
   OdsLogger,
@@ -7,9 +10,8 @@ import {
   odsIsTermInEnum,
 } from '@ovhcloud/ods-common-core';
 
-import type { ODS_FLAG_ISO_CODE_UNION } from '../constants/flag-iso-code';
 import { ODS_FLAG_ISO_CODE, ODS_FLAG_ISO_CODES } from '../constants/flag-iso-code';
-import type { OsdsFlag } from '../osds-flag';
+
 
 class OdsFlagController {
   private readonly logger = new OdsLogger('OdsFlagController');

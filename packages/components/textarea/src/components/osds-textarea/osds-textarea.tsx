@@ -1,14 +1,15 @@
+import type { OdsTextAreaAttribute } from './interfaces/attributes';
+import type { OdsTextAreaEvent, OdsTextAreaValueChangeEvent } from './interfaces/events';
+import type { OdsTextAreaMethod } from './interfaces/methods';
 import type { OdsErrorStateControl, OdsFormControl, OdsTextAreaValidityState } from '@ovhcloud/ods-common-core';
 import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import type { EventEmitter } from '@stencil/core';
+
 import { Component, Element, Event, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
 
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_TEXTAREA_SIZE } from './constants/textarea-size';
 import { OdsTextAreaController } from './core/controller';
-import type { OdsTextAreaAttribute } from './interfaces/attributes';
-import type { OdsTextAreaEvent, OdsTextAreaValueChangeEvent } from './interfaces/events';
-import type { OdsTextAreaMethod } from './interfaces/methods';
 
 
 /**

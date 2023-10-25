@@ -1,10 +1,12 @@
+import type { OdsPhoneNumberAttribute } from './interfaces/attributes';
+import type { E2EElement, E2EPage } from '@stencil/core/testing';
+
 import { ODS_COUNTRY_ISO_CODE, ODS_LOCALE } from '@ovhcloud/ods-common-core';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
-import type { E2EElement, E2EPage } from '@stencil/core/testing';
 import { newE2EPage } from '@stencil/core/testing';
 
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import type { OdsPhoneNumberAttribute } from './interfaces/attributes';
+
 
 describe('e2e:osds-phone-number', () => {
   const baseAttribute = { ariaLabel: '', forbiddenValues: [], value: '' };

@@ -1,8 +1,11 @@
+import type { OdsPhoneNumberAttribute } from './interfaces/attributes';
+import type { OdsPhoneNumberEvent, OdsPhoneNumberValueChangeEventDetail } from './interfaces/events';
+import type { OdsInputValueChangeEventDetail } from '@ovhcloud/ods-component-input';
+import type { OdsSelectValueChangeEventDetail } from '@ovhcloud/ods-component-select';
+
 import { ODS_COUNTRY_ISO_CODE, ODS_COUNTRY_ISO_CODES, ODS_LOCALE, OdsLogger } from '@ovhcloud/ods-common-core';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import type { OdsInputValueChangeEventDetail } from '@ovhcloud/ods-component-input';
 import { ODS_INPUT_TYPE } from '@ovhcloud/ods-component-input';
-import type { OdsSelectValueChangeEventDetail } from '@ovhcloud/ods-component-select';
 import { ODS_TEXT_LEVEL, ODS_TEXT_SIZE } from '@ovhcloud/ods-component-text';
 import { Component, Event, EventEmitter, Host, Listen, Prop, State, Watch, h } from '@stencil/core';
 import { PhoneNumber, PhoneNumberFormat, PhoneNumberUtil } from 'google-libphonenumber';
@@ -10,8 +13,7 @@ import { PhoneNumber, PhoneNumberFormat, PhoneNumberUtil } from 'google-libphone
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_PHONE_NUMBER_COUNTRY_PRESET } from './constants/phone-number-countries';
 import { OdsPhoneNumberController } from './core/controller';
-import type { OdsPhoneNumberAttribute } from './interfaces/attributes';
-import type { OdsPhoneNumberEvent, OdsPhoneNumberValueChangeEventDetail } from './interfaces/events';
+
 
 /**
  * @slot (unnamed) - Phone Number content

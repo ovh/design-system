@@ -1,23 +1,5 @@
 import { OcdkAutoLayoutMeasurements } from './core/ocdk-auto-layout-measurements';
-import { OcdkSurfaceCornerPointsNormalized } from './core/ocdk-surface-corner-points-normalized';
-import { OcdkSurfaceCornerPoints } from './core/ocdk-surface-corner-points';
-import { OcdkSurfaceInspections } from './core/ocdk-surface-inspections';
 import { OcdkSurfaceAnimationList } from './core/ocdk-surface-animation';
-import { OcdkSurfaceStrategyDefiner } from './core/system/ocdk-surface-strategy-definer';
-import { OcdkSurfaceInspectionValues } from './core/ocdk-surface-inspection-values';
-import {
-  OcdkSurfaceStrategyInspectorDetails,
-  OcdkSurfaceStrategyInspectorDetailsFulFilled,
-} from './core/system/ocdk-surface-strategy-inspector-details';
-import { OcdkSurfaceStrategyAppliers } from './core/system/ocdk-surface-strategy-appliers';
-import {
-  OcdkSurfaceStrategyComputeResultPosition,
-  isOcdkSurfaceStrategyComputeResultPosition,
-} from './core/system/ocdk-surface-strategy-compute-result-position';
-import { OcdkSurfaceStrategyComputeResult } from './core/system/ocdk-surface-strategy-compute-result';
-import {
-  isOcdkSurfaceStrategyInspectorsAndAppliers,
-} from './core/system/ocdk-surface-strategy-inspectors-and-appliers';
 import {
   OcdkSurfaceStrategyInspectorComfort,
   isOcdkSurfaceStrategyInspectorComfort,
@@ -35,12 +17,30 @@ import { OcdkSurfaceOnePositionStrategy } from './core/ocdk-surface-one-position
 import { OcdkSurfaceConfig } from './core/ocdk-surface-config';
 import { OcdkSurfaceCorner } from './core/ocdk-surface-corner';
 import { OcdkSurfaceCornerBit } from './core/ocdk-surface-corner-bit';
+import { OcdkSurfaceCornerPoints } from './core/ocdk-surface-corner-points';
+import { OcdkSurfaceCornerPointsNormalized } from './core/ocdk-surface-corner-points-normalized';
 import { OcdkSurfaceDimensions } from './core/ocdk-surface-dimensions';
 import { OcdkSurfaceDistance } from './core/ocdk-surface-distance';
+import { OcdkSurfaceInspectionValues } from './core/ocdk-surface-inspection-values';
+import { OcdkSurfaceInspections } from './core/ocdk-surface-inspections';
 import { OcdkSurfaceMaxDimensions } from './core/ocdk-surface-max-dimensions';
 import { OcdkSurfaceNormalizedCorner } from './core/ocdk-surface-normalized-corner';
 import { OcdkSurfacePoint } from './core/ocdk-surface-point';
+import { OcdkSurfaceStrategyAppliers } from './core/system/ocdk-surface-strategy-appliers';
+import { OcdkSurfaceStrategyComputeResult } from './core/system/ocdk-surface-strategy-compute-result';
+import {
+  OcdkSurfaceStrategyComputeResultPosition,
+  isOcdkSurfaceStrategyComputeResultPosition,
+} from './core/system/ocdk-surface-strategy-compute-result-position';
+import { OcdkSurfaceStrategyDefiner } from './core/system/ocdk-surface-strategy-definer';
 import { OcdkSurfaceStrategyDefinerConfig } from './core/system/ocdk-surface-strategy-definer-config';
+import {
+  OcdkSurfaceStrategyInspectorDetails,
+  OcdkSurfaceStrategyInspectorDetailsFulFilled,
+} from './core/system/ocdk-surface-strategy-inspector-details';
+import {
+  isOcdkSurfaceStrategyInspectorsAndAppliers,
+} from './core/system/ocdk-surface-strategy-inspectors-and-appliers';
 import { OcdkSurface } from './ocdk-surface';
 import { OcdkSurfaceAdapter } from './ocdk-surface-adapter';
 import { OcdkSurfaceDefaultConfig, ocdkSurfaceCssClasses } from './ocdk-surface-default-config';

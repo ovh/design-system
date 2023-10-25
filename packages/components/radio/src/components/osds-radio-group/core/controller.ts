@@ -1,8 +1,9 @@
-import { OdsLogger } from '@ovhcloud/ods-common-core';
 
 import type { OdsRadioCheckedChangeEvent, OdsRadioCheckingChangeEvent } from '../../osds-radio/interfaces/events';
 import type { OsdsRadio } from '../../osds-radio/osds-radio';
 import type { OsdsRadioGroup } from '../osds-radio-group';
+
+import { OdsLogger } from '@ovhcloud/ods-common-core';
 
 class OdsRadioGroupController {
   private readonly logger = new OdsLogger('OdsRadioGroupController');

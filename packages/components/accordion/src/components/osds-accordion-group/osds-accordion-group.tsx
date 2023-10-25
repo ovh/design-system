@@ -1,9 +1,11 @@
-import { Component, Element, Host, Method, h } from '@stencil/core';
-import type { HTMLStencilElement } from '@stencil/core/internal';
-
-import { OdsAccordionGroupController } from './core/controller';
 import type { OdsAccordionGroupMethod } from './interfaces/methods';
 import type { OsdsAccordion } from '../osds-accordion/osds-accordion';
+import type { HTMLStencilElement } from '@stencil/core/internal';
+
+import { Component, Element, Host, Method, h } from '@stencil/core';
+
+import { OdsAccordionGroupController } from './core/controller';
+
 
 @Component({
   tag: 'osds-accordion-group',

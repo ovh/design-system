@@ -1,6 +1,7 @@
+import type { OdsSpinnerAttribute } from '../interfaces/attributes';
+
 import { ODS_SPINNER_MODE } from './spinner-mode';
 import { ODS_SPINNER_SIZE } from './spinner-size';
-import type { OdsSpinnerAttribute } from '../interfaces/attributes';
 
 const DEFAULT_ATTRIBUTE: OdsSpinnerAttribute = Object.freeze({
   contrasted: false,

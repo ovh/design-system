@@ -1,13 +1,15 @@
+import type { ODS_SWITCH_SIZE } from './constants/switch-size';
+import type { ODS_SWITCH_VARIANT } from './constants/switch-variant';
+import type{ OdsSwitchAttribute } from './interfaces/attributes';
+import type { OdsSwitchChangedEventDetail, OdsSwitchEvent } from './interfaces/events';
 import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import type { OdsRadioGroupValueChangeEvent } from '@ovhcloud/ods-component-radio';
+
 import { Component, Element, Event, EventEmitter, Host, Listen, Prop, State, h } from '@stencil/core';
 
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import type { ODS_SWITCH_SIZE } from './constants/switch-size';
-import type { ODS_SWITCH_VARIANT } from './constants/switch-variant';
 import { OdsSwitchController } from './core/controller';
-import type{ OdsSwitchAttribute } from './interfaces/attributes';
-import type { OdsSwitchChangedEventDetail, OdsSwitchEvent } from './interfaces/events';
+
 
 
 @Component({

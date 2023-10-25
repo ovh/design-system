@@ -1,8 +1,9 @@
+import type { OdsTileAttribute } from '../interfaces/attributes';
+
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 
 import { ODS_TILE_SIZE } from './tile-size';
 import { ODS_TILE_VARIANT } from './tile-variant';
-import type { OdsTileAttribute } from '../interfaces/attributes';
 
 
 const DEFAULT_ATTRIBUTE: OdsTileAttribute = Object.freeze({

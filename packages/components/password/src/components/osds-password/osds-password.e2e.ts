@@ -1,10 +1,12 @@
+import type { OdsPasswordAttribute } from './interfaces/attributes';
+import type { E2EElement, E2EPage } from '@stencil/core/testing';
+
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import { ODS_INPUT_TYPE } from '@ovhcloud/ods-component-input';
-import type { E2EElement, E2EPage } from '@stencil/core/testing';
 import { newE2EPage } from '@stencil/core/testing';
 
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import type { OdsPasswordAttribute } from './interfaces/attributes';
+
 
 describe('e2e:osds-password', () => {
   const baseAttribute = { ariaLabel: '', forbiddenValues: [], value: '' };

@@ -53,6 +53,7 @@
       "error",
       {
         "groups": [
+          "type",
           "builtin", // Built-in imports (come from NodeJS native) go first
           "external", // <- External imports
           "internal", // <- Absolute imports

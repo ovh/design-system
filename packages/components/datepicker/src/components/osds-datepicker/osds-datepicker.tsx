@@ -171,7 +171,11 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
     this.controller.onFocus();
   }
 
-  componentDidLoad() {
+  onClick(): void {
+    this.controller.onClick();
+  }
+
+  componentDidLoad(): void {
     this.initializeDatepicker();
   }
 
@@ -302,6 +306,7 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
         onFocus: () => this.onFocus(),
       }}>
         <osds-input
+          onClick={ () => this.onClick() }
           clearable={clearable}
           color={color}
           disabled={disabled}

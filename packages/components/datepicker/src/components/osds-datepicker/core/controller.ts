@@ -11,7 +11,7 @@ class OdsDatepickerController {
     this.component = component;
   }
 
-  onFocus() {
+  onFocus(): void {
     if (!this.component.disabled) {
       this.component.hasFocus = true;
       this.component.emitFocus();
@@ -29,14 +29,17 @@ class OdsDatepickerController {
         this.component.datepickerInstanceAccessor?.setDate(newValue);
         this.component.emitDatepickerValueChange(newValue, oldValue ? oldValue : null);
       }
-      this.component.el.focus();
-      this.component.el.blur();
+      this.component.hasFocus = false;
     }
   }
 
-  onBlur() {
+  onBlur(): void {
     this.component.hasFocus = false;
     this.component.emitBlur();
+  }
+
+  onClick(): void {
+    this.component.hasFocus = true;
   }
 
   private getMidnightDate(date: Date): Date {

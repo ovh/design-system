@@ -2,11 +2,9 @@ jest.mock('./core/controller');
 
 import type { OdsFlagAttribute } from './interfaces/attributes';
 import type { SpecPage } from '@stencil/core/testing';
-
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 import { Build } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
-
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_FLAG_ISO_CODE } from './constants/flag-iso-code';
 import { OdsFlagController } from './core/controller';
@@ -21,7 +19,7 @@ describe('spec:osds-flag', () => {
   let shadowRoot: ShadowRoot | null | undefined;
   let controller: OdsFlagController;
 
-  async function setup({ attributes = {} }: { attributes?: Partial<OdsFlagAttribute> } = {}) {
+  async function setup({ attributes = {} }: { attributes?: Partial<OdsFlagAttribute> } = {}): Promise<void> {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsFlagAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
 
     page = await newSpecPage({
@@ -32,7 +30,7 @@ describe('spec:osds-flag', () => {
     root = page.root;
     instance = page.rootInstance;
     shadowRoot = page.root?.shadowRoot;
-    controller = (OdsFlagController as unknown as jest.SpyInstance<OdsFlagController, unknown[]>).mock.instances[ 0 ];
+    controller = (OdsFlagController as unknown as jest.SpyInstance<OdsFlagController, unknown[]>).mock.instances[0];
 
     divEl = shadowRoot?.querySelector('.flag__svg');
   }
@@ -55,52 +53,52 @@ describe('spec:osds-flag', () => {
 
   describe('attributes', () => {
     const config = {
-      page: () => page,
-      instance: () => instance,
-      root: () => page.root,
-      wait: () => page.waitForChanges(),
+      instance: (): OsdsFlag => instance,
+      page: (): SpecPage => page,
+      root: (): SpecPage['root'] => page.root,
+      wait: (): Promise<void> => page.waitForChanges(),
     };
 
     describe('iso', () => {
       odsUnitTestAttribute<OdsFlagAttribute, 'iso'>({
-        name: 'iso',
         defaultValue: DEFAULT_ATTRIBUTE.iso,
+        name: 'iso',
         newValue: ODS_FLAG_ISO_CODE.ES,
-        value: ODS_FLAG_ISO_CODE.FR,
         setup: (value) => setup({ attributes: { ['iso']: value } }),
+        value: ODS_FLAG_ISO_CODE.FR,
         ...config,
       });
     });
 
     describe('src', () => {
       odsUnitTestAttribute<OdsFlagAttribute, 'src'>({
-        name: 'src',
         defaultValue: DEFAULT_ATTRIBUTE.src,
+        name: 'src',
         newValue: '',
-        value: 'my/path.svg',
         setup: (value) => setup({ attributes: { ['src']: value } }),
+        value: 'my/path.svg',
         ...config,
       });
     });
 
     describe('assetPath', () => {
       odsUnitTestAttribute<OdsFlagAttribute, 'assetPath'>({
-        name: 'assetPath',
         defaultValue: DEFAULT_ATTRIBUTE.assetPath,
+        name: 'assetPath',
         newValue: '',
-        value: 'my/path',
         setup: (value) => setup({ attributes: { ['assetPath']: value } }),
+        value: 'my/path',
         ...config,
       });
     });
 
     describe('lazy', () => {
       odsUnitTestAttribute<OdsFlagAttribute, 'lazy'>({
-        name: 'lazy',
         defaultValue: DEFAULT_ATTRIBUTE.lazy,
+        name: 'lazy',
         newValue: false,
-        value: true,
         setup: (value) => setup({ attributes: { ['lazy']: value } }),
+        value: true,
         ...config,
       });
     });

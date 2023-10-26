@@ -1,17 +1,15 @@
 import type { ODS_FLAG_ISO_CODE_UNION } from './constants/flag-iso-code';
 import type { OdsFlagAttribute } from './interfaces/attributes';
-
+import type { FunctionalComponent } from '@stencil/core';
 import { odsHasAriaHidden } from '@ovhcloud/ods-common-core';
 import { Build, Component, Element, Host, Prop, State, Watch, h } from '@stencil/core';
-
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsFlagController } from './core/controller';
 
-
 @Component({
-  tag: 'osds-flag',
-  styleUrl: 'osds-flag.scss',
   shadow: true,
+  styleUrl: 'osds-flag.scss',
+  tag: 'osds-flag',
 })
 export class OsdsFlag implements OdsFlagAttribute {
   controller: OdsFlagController = new OdsFlagController(this);
@@ -19,7 +17,7 @@ export class OsdsFlag implements OdsFlagAttribute {
   @Element() hostElement!: HTMLElement;
 
   @Prop({ reflect: true }) assetPath = DEFAULT_ATTRIBUTE.assetPath;
-  @Prop({ reflect: true, mutable: true }) iso?: ODS_FLAG_ISO_CODE_UNION = DEFAULT_ATTRIBUTE.iso;
+  @Prop({ mutable: true, reflect: true }) iso?: ODS_FLAG_ISO_CODE_UNION = DEFAULT_ATTRIBUTE.iso;
   @Prop({ reflect: true }) lazy = DEFAULT_ATTRIBUTE.lazy;
   @Prop({ reflect: true }) src = DEFAULT_ATTRIBUTE.src;
 
@@ -27,15 +25,15 @@ export class OsdsFlag implements OdsFlagAttribute {
   @State() private visible = false;
   @State() private svgContent?: string;
 
-  connectedCallback() {
+  connectedCallback(): void {
     this.onInit();
   }
 
-  disconnectedCallback() {
+  disconnectedCallback(): void {
     this.onDestroy();
   }
 
-  getAssetPath(url: string) {
+  getAssetPath(url: string): string {
     // TODO currently we are not using getAssetPath from stencil since it doesn't work in React integration
     //return getAssetPath(url);
     return url;
@@ -44,22 +42,22 @@ export class OsdsFlag implements OdsFlagAttribute {
   @Watch('iso')
   @Watch('assetPath')
   @Watch('src')
-  async load() {
+  async load(): Promise<void> {
     this.svgContent = await this.controller.load(this.visible, Build.isBrowser) || '';
     this.ariaLabel = this.iso;
   }
 
-  onDestroy() {
+  onDestroy(): void {
     this.controller.onDestroy();
   }
 
-  onInit() {
+  onInit(): void {
     this.controller.onInit(() => {
       this.visible = true;
     }, Build.isBrowser);
   }
 
-  render() {
+  render(): FunctionalComponent {
     const { ariaLabel } = this;
     return (
       <Host class="flag"

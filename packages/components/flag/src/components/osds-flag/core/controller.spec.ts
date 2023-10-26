@@ -5,17 +5,16 @@ const mockWaitUntilVisible = jest.fn();
 
 jest.mock('@ovhcloud/ods-common-core', () => ({
   ...jest.requireActual('@ovhcloud/ods-common-core'),
-  odsGetAssetPath: jest.fn(),
-  odsGetSrc: mockOdsGetSrc,
   OdsLoadContent: jest.fn().mockImplementation(() => ({
-    onDestroy: mockOnDestroy,
     load: mockLoad,
+    onDestroy: mockOnDestroy,
     waitUntilVisible: mockWaitUntilVisible,
   })),
+  odsGetAssetPath: jest.fn(),
+  odsGetSrc: mockOdsGetSrc,
 }));
 
 import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
-
 import {
   Ods,
   OdsLogger,
@@ -23,7 +22,6 @@ import {
   odsGetSrc,
 } from '@ovhcloud/ods-common-core';
 import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
-
 import { OdsFlagController } from './controller';
 import { ODS_FLAG_ISO_CODE, ODS_FLAG_ISO_CODES } from '../constants/flag-iso-code';
 import { OsdsFlag } from '../osds-flag';
@@ -52,7 +50,7 @@ describe('ods-flag-controller', () => {
 
   Ods.instance().logging(false);
 
-  function setup(attributes: Partial<OsdsFlag> = {}) {
+  function setup(attributes: Partial<OsdsFlag> = {}): void {
     component = new OdsFlagMock(attributes);
     controller = new OdsFlagController(component);
   }
@@ -123,7 +121,7 @@ describe('ods-flag-controller', () => {
         const dummyUrl = 'dummy url';
         setup();
         // @ts-ignore to spy private method
-        spyOnGetUrl = jest.spyOn<any>(controller, 'getUrl').mockReturnValueOnce(dummyUrl);
+        spyOnGetUrl = jest.spyOn<any>(controller, 'getUrl').mockReturnValueOnce(dummyUrl); // eslint-disable-line
 
         controller.load(false, false);
 

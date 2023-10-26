@@ -11,13 +11,14 @@
         cursor: pointer;
         width: 16px;
         height: 16px;
-        cursor: pointer;
+
         @if $cell == 1 {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
         }
+
         &::before {
             display: block;
             width: 12px;
@@ -51,9 +52,10 @@ $ods-border-datagrid: solid 1px var(--ods-color-blue-200);
 
     .tabulator-tableholder {
         .tabulator-row {
+            display: --webkit-inline-flex;
             background-color: #FFF;
             cursor: default;
-
+            
             &:hover {
                 background-color: #FFF;
             }
@@ -80,7 +82,6 @@ $ods-border-datagrid: solid 1px var(--ods-color-blue-200);
                 @include ods-input-checkbox(1);
 
                 padding-left: 9px;
-                @include ods-input-checkbox(1);
             }
         }
 
@@ -104,12 +105,14 @@ $ods-border-datagrid: solid 1px var(--ods-color-blue-200);
 
     .tabulator-header {
         border-bottom: none;
+        background-color: #FFF;
         height: unset !important;
         overflow: unset;
 
         .tabulator-header-contents {
             overflow: unset;
         }
+
         .tabulator-headers {
             height: unset !important;
 
@@ -120,6 +123,7 @@ $ods-border-datagrid: solid 1px var(--ods-color-blue-200);
                 
                 &.ods-hidabled-columns {
                     overflow: unset;
+
                     .tabulator-col-title {
                         overflow: unset;
                     }

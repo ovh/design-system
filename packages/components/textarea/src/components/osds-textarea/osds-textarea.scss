@@ -16,6 +16,11 @@
   }
 
   outline: none;
+
+  textarea {
+    box-sizing: border-box;
+    width: 100%;
+  }
 }
 
 :host([inline]) {

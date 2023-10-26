@@ -4,7 +4,7 @@ import type { OdsCheckboxCheckedChangeEventDetail } from '@ovhcloud/ods-componen
 import { OdsLogger } from '@ovhcloud/ods-common-core';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
-import { Component, Element, Host, Listen, Prop, State, Watch, h } from '@stencil/core';
+import { Component, Element, Host, Listen, Prop, Watch, h } from '@stencil/core';
 import { ColumnComponent, TabulatorFull as Tabulator } from 'tabulator-tables';
 
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
@@ -23,24 +23,20 @@ export class OsdsDatagrid implements OdsDatagridAttribute {
 
   @Element() el!: HTMLElement;
 
-  /** @see OdsDatagridAttribute.columns */
   @Prop({ reflect: true }) public columns: OdsDatagridColumn[] | string = DEFAULT_ATTRIBUTE.columns;
+
+  @Prop({ reflect: true }) public hasHideableColumns?: boolean = DEFAULT_ATTRIBUTE.hasHideableColumns;
 
   @Prop({ reflect: true }) public height: number = DEFAULT_ATTRIBUTE.height;
 
-  /** @see OdsDatagridAttribute.hideableColumns */
   @Prop({ mutable: true, reflect: true }) public hideableColumns?: string[] = DEFAULT_ATTRIBUTE.hideableColumns;
 
-  /** @see OdsDatagridAttribute.isSelectable */
   @Prop({ reflect: true }) public isSelectable?: boolean = DEFAULT_ATTRIBUTE.isSelectable;
 
-  /** @see OdsDatagridAttribute.noResultLabel */
   @Prop({ reflect: true }) public noResultLabel?: string = DEFAULT_ATTRIBUTE.noResultLabel;
 
-  /** @see OdsDatagridAttribute.rowHeight */
   @Prop({ reflect: true }) public rowHeight?: number = DEFAULT_ATTRIBUTE.rowHeight;
 
-  /** @see OdsDatagridAttribute.rows */
   @Prop({ reflect: true }) public rows: OdsDatagridRow[] | string = DEFAULT_ATTRIBUTE.rows;
 
   componentDidLoad(): void {
@@ -74,6 +70,7 @@ export class OsdsDatagrid implements OdsDatagridAttribute {
     this.table?.setData(rows);
   }
 
+  @Watch('hasHideableColumns')
   @Watch('isSelectable')
   @Watch('columns')
   onChangeColumns(): void {

@@ -43,7 +43,11 @@ const defaultStoryParams = {
   rowHeight: {
     category: 'Général',
     defaultValue: 52,
-  }
+  },
+  hasHideableColumns: {
+    category: 'Général',
+    defaultValue: true,
+  },
 };
 
 const rowsLarge = {

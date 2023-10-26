@@ -180,4 +180,17 @@ describe('e2e:osds-datagrid', () => {
     });
     expect(isAllColumnsHasHeight).toBe(true);
   });
+
+  it('should not display hideablecolumns', async () => {
+    await setup({ attributes: {
+      columns: JSON.stringify([{ title: 'Name', field: 'name' }, { title: 'Firstname', field: 'firstname' }]),
+      rows: JSON.stringify([{ name: 'Homer', firstname: 'Simpson' }]),
+      hasHideableColumns: false,
+    } });
+    const columns = await table?.findAll('.tabulator-col');
+    expect(columns).toHaveLength(2);
+    expect(columns?.[0].innerText).toContain('Name');
+    expect(columns?.[1].innerText).toContain('Firstname');
+    expect(columns?.[2]).toBe(undefined);
+  });
 });

@@ -110,5 +110,16 @@ describe('spec:osds-datagrid', () => {
         ...config,
       });
     });
+
+    describe('hasHideableColumns', () => {
+      odsUnitTestAttribute<OdsDatagridAttribute, 'hasHideableColumns'>({
+        defaultValue: DEFAULT_ATTRIBUTE.hasHideableColumns,
+        name: 'hasHideableColumns',
+        newValue: true,
+        setup: (value) => setup({ attributes: { ['hasHideableColumns']: value } }),
+        value: false,
+        ...config,
+      });
+    });
   });
 });

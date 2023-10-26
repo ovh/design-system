@@ -46,6 +46,11 @@ describe('e2e:osds-datagrid', () => {
           isSelectable: true,
           rows: JSON.stringify([{ firstname:'Simpson', name:'Homer' }]),
         },
+        { 
+          columns: JSON.stringify([{ title:'Name', field:'name' }, { title:'Firstname', field:'firstname' }]),
+          rows: JSON.stringify([{ name:'Homer', firstname:'Simpson' }]),
+          hasHideabledColumns: false,
+        }
       ].map((attributes) => createContent({ attributes })).join(' ');
       await setup(content);
       await page.waitForChanges();

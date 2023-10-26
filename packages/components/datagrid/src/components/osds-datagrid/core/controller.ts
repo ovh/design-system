@@ -53,14 +53,14 @@ class OdsDatagridController {
         width: 40,
       }] || []),
       ...columns.map((column) => this.toTabulatorColumn(column)),
-      {
+      ...(this.component.hasHideableColumns && [{
         cssClass: 'ods-hidabled-columns',
         headerSort: false,
         resizable: false,
         title: '',
         titleFormatter: () => this.getOdsPopover(columns),
         width: 60,
-      },
+      }] || []),
     ];
   }
 

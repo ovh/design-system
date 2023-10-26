@@ -2,6 +2,7 @@ import type { OdsDatagridAttribute } from '../interfaces/attributes';
 
 const DEFAULT_ATTRIBUTE: OdsDatagridAttribute = Object.freeze({
   columns: [],
+  hasHideableColumns: true,
   height: 0,
   hideableColumns: [],
   isSelectable: false,

@@ -2,16 +2,12 @@ import type { ODS_FLAG_ISO_CODE_UNION } from './constants/flag-iso-code';
 import type { OdsFlagAttribute } from './interfaces/attributes';
 import type { E2EElement, E2EPage } from '@stencil/core/testing';
 import type { HTTPRequest as pRequest } from 'puppeteer';
-
 import { odsSetE2eInterceptRequest } from '@ovhcloud/ods-common-stencil';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import { Build } from '@stencil/core';
 import { newE2EPage } from '@stencil/core/testing';
-
-
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_FLAG_ISO_CODE } from './constants/flag-iso-code';
-
 
 describe('e2e:osds-flag', () => {
   const baseAttribute = { iso: ODS_FLAG_ISO_CODE.FR, lazy: false };
@@ -21,7 +17,7 @@ describe('e2e:osds-flag', () => {
   let url: string;
   let myCbk: (request: pRequest) => void;
 
-  async function setup({ attributes = {}, cbkInterceptorRequest, outsideViewport }: { attributes: Partial<OdsFlagAttribute>, cbkInterceptorRequest?: (request: pRequest) => void, outsideViewport?: boolean }) {
+  async function setup({ attributes = {}, cbkInterceptorRequest, outsideViewport }: { attributes: Partial<OdsFlagAttribute>, cbkInterceptorRequest?: (request: pRequest) => void, outsideViewport?: boolean }): Promise<void> {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsFlagAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
     let spaceBefore = '';
 
@@ -43,11 +39,11 @@ describe('e2e:osds-flag', () => {
   beforeEach(async() => {
     url = '';
 
-    myCbk = (request) => {
+    myCbk = (request): void => {
       if (request.url().includes('fr.svg')) {
         request.respond({
-          headers: { 'Access-Control-Allow-Origin': '*' },
           body: 'myContent',
+          headers: { 'Access-Control-Allow-Origin': '*' },
         });
         url = request.url();
       } else {
@@ -61,7 +57,7 @@ describe('e2e:osds-flag', () => {
     jest.clearAllMocks();
   });
 
-  async function updateReferences() {
+  async function updateReferences(): Promise<void> {
     isoProperty = await el.getProperty('iso');
   }
 
@@ -87,18 +83,18 @@ describe('e2e:osds-flag', () => {
     });
 
     it('should load with custom path', async() => {
-      await setup({ attributes: { iso: ODS_FLAG_ISO_CODE.FR, assetPath: '../flags-custom-path/' }, cbkInterceptorRequest: myCbk });
-      const pattern = /^https?:\/\/localhost(:\d+)?\/[\w\/]*flags-custom-path\/fr\.svg/;
+      await setup({ attributes: { assetPath: '../flags-custom-path/', iso: ODS_FLAG_ISO_CODE.FR }, cbkInterceptorRequest: myCbk });
+      const pattern = /^https?:\/\/localhost(:\d+)?[\w/]*flags-custom-path\/fr\.svg/;
 
       expect(url).toMatch(pattern);
     });
 
     it('should load custom src', async() => {
-      myCbk = (request) => {
+      myCbk = (request): void => {
         if (request.url().includes('it.svg')) {
           request.respond({
-            headers: { 'Access-Control-Allow-Origin': '*' },
             body: 'myContent',
+            headers: { 'Access-Control-Allow-Origin': '*' },
           });
           url = request.url();
         } else {
@@ -130,11 +126,11 @@ describe('e2e:osds-flag', () => {
   it('should have flag svg content in dom', async() => {
     const old = Build.isBrowser;
     Build.isBrowser = true;
-    myCbk = (request) => {
+    myCbk = (request): void => {
       if (request.url().includes('fr.svg')) {
         request.respond({
-          headers: { 'Access-Control-Allow-Origin': '*' },
           body: '<svg></svg>',
+          headers: { 'Access-Control-Allow-Origin': '*' },
         });
         url = request.url();
       } else {

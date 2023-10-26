@@ -16,11 +16,13 @@
     "**/packages/components/**/loader",
     "**/packages/components/**/react",
     "**/packages/components/**/vue",
-    "**/packages/components/**/www"
+    "**/packages/components/**/www",
+    "**/*.d.ts"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 2020,
+    "project": ["tsconfig.json", "tsconfig.test.json"],
     "sourceType": "module"
   },
   "plugins": [
@@ -33,6 +35,8 @@
   "rules": {
     "@typescript-eslint/ban-types": "error",
     "@typescript-eslint/consistent-indexed-object-style": "error",
+    "@typescript-eslint/consistent-type-exports": "error",
+    "@typescript-eslint/consistent-type-imports": "error",
     "@typescript-eslint/explicit-function-return-type": "error",
     "@typescript-eslint/no-explicit-any": "error",
     "@typescript-eslint/no-unused-vars": ["error", { "varsIgnorePattern": "h" }],
@@ -63,7 +67,7 @@
           "index", // <- index imports
           "unknown" // <- unknown
         ],
-        "newlines-between": "always",
+        "newlines-between": "never",
         "alphabetize": {
           /* sort in ascending order. Options: ["ignore", "asc", "desc"] */
           "order": "asc",
@@ -75,15 +79,15 @@
     "indent": ["error", 2],
     "lines-between-class-members": ["error", "always", { "exceptAfterSingleLine": true }],
     "max-depth": ["error", {"max": 4}],
-    "max-len": ["error", { "code": 200 }],
+    "max-len": ["error", { "code": 300 }],
     "max-params": ["error", 4],
     "newline-per-chained-call": "off",
     "no-array-constructor": "error",
     "no-await-in-loop": "error",
     "no-console": "error",
     "no-extra-bind": "error",
-    "no-magic-numbers": "error",
     "no-multi-spaces": "error",
+    "no-multiple-empty-lines": ["error", { "max": 1 }],
     "no-nested-ternary": "error",
     "no-trailing-spaces": "error",
     "object-curly-spacing": ["error", "always"],
@@ -97,7 +101,7 @@
         "ignoreDeclarationSort": true,
         "ignoreMemberSort": false,
         "memberSyntaxSortOrder": ["none", "all", "multiple", "single"],
-        "allowSeparatedGroups": true
+        "allowSeparatedGroups": false
       }
     ],
     "sort-keys": ["error", "asc"],

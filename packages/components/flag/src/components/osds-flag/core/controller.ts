@@ -1,6 +1,5 @@
 import type { ODS_FLAG_ISO_CODE_UNION } from '../constants/flag-iso-code';
 import type { OsdsFlag } from '../osds-flag';
-
 import {
   OdsLoadContent,
   OdsLogger,
@@ -9,15 +8,13 @@ import {
   odsGetSrc,
   odsIsTermInEnum,
 } from '@ovhcloud/ods-common-core';
-
 import { ODS_FLAG_ISO_CODE, ODS_FLAG_ISO_CODES } from '../constants/flag-iso-code';
-
 
 class OdsFlagController {
   private readonly logger = new OdsLogger('OdsFlagController');
   protected component: OsdsFlag;
   private svgLoadContent = new OdsLoadContent([
-    (content) => OdsSvgValidator.validateContent(content),
+    (content): string => OdsSvgValidator.validateContent(content),
   ]);
 
   constructor(component: OsdsFlag) {
@@ -72,7 +69,7 @@ class OdsFlagController {
    * in case of `src` specified on the component, the url is replaced with this one.
    * in the other cases, it gets the url corresponding to the iso code
    */
-  private getUrl() {
+  private getUrl(): string | undefined {
     const url = odsGetSrc(this.component.src);
     if (url) {
       return url;
@@ -91,7 +88,7 @@ class OdsFlagController {
    * @param iso - iso code of the flag
    * @param customPath - optional override path
    */
-  private getUrlForIso(iso: ODS_FLAG_ISO_CODE_UNION, customPath?: string) {
+  private getUrlForIso(iso: ODS_FLAG_ISO_CODE_UNION, customPath?: string): string {
     const path = odsGetAssetPath(`${iso}.svg`, customPath);
     return this.component.getAssetPath(path);
   }

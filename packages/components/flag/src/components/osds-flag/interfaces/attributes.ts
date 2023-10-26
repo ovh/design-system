@@ -20,6 +20,6 @@ interface OdsFlagAttribute {
   src?: string;
 }
 
-export {
+export type {
   OdsFlagAttribute,
 };

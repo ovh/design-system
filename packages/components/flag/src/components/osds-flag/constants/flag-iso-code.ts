@@ -11,8 +11,8 @@ type ODS_FLAG_ISO_CODE_UNION = typeof ODS_FLAG_ISO_CODE[keyof typeof ODS_FLAG_IS
 
 const ODS_FLAG_ISO_CODES = Object.freeze(Object.values(ODS_FLAG_ISO_CODE).sort());
 
+export type { ODS_FLAG_ISO_CODE_UNION };
 export {
   ODS_FLAG_ISO_CODE,
   ODS_FLAG_ISO_CODES,
-  ODS_FLAG_ISO_CODE_UNION,
 };

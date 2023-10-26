@@ -5,17 +5,17 @@
 @mixin ods-input-checkbox {
     input[type="checkbox"] {
         appearance: none;
-        border-radius: var(--ods-size-border-radius-01);
-        border: solid 2px var(--ods-color-primary-500);
         margin: 0;
+        border: solid 2px var(--ods-color-primary-500);
+        border-radius: var(--ods-size-border-radius-01);
         width: 20px;
         height: 20px;
         
         &::before {
-            content: "";
             display: block;
             width: 15px;
             height: 15px;
+            content: "";
             mask-position: center;
             mask-repeat: no-repeat;
         }
@@ -35,111 +35,81 @@
 $ods-border-datagrid: solid 1px var(--ods-color-blue-200);
 
 .tabulator {
+    box-sizing: border-box;
     border: none;
     background-color: #FFF;
-    box-sizing: border-box;
 
     .tabulator-tableholder {
-
         .tabulator-row {
             background-color: #FFF;
 
             &:hover {
                 background-color: #FFF;
             }
+
             &:last-child {
                 border-bottom: $ods-border-datagrid;
             }
         }
     
         .tabulator-cell {
-            border-right: none;
-            border-top: $ods-border-datagrid;
             box-sizing: border-box;
+            border-top: $ods-border-datagrid;
+            border-right: none;
 
             &:first-child {
                 border-left: $ods-border-datagrid;
             }
+
             &:last-of-type {
                 border-right: $ods-border-datagrid;
             }
 
             &.ods-selectable__input-checkbox {
-                padding-left: 9px;
                 @include ods-input-checkbox;
+
+                padding-left: 9px;
             }
         }
 
         .tabulator-placeholder {
-
             .tabulator-placeholder-contents {
                 border: $ods-border-datagrid;
+                line-height: var(--ods-typography-body-500-line-height);
+                letter-spacing: var(--ods-typography-body-500-letter-spacing);
                 color: var(--ods-color-text-500);
+                font-family: var(--ods-typography-body-500-font-family);
                 font-size: var(--ods-typography-body-500-font-size);
                 font-weight: var(--ods-typography-body-500-font-weight);
-                font-family: var(--ods-typography-body-500-font-family);
                 font-style: var(--ods-typography-body-500-font-style);
-                letter-spacing: var(--ods-typography-body-500-letter-spacing);
-                line-height: var(--ods-typography-body-500-line-height);
             }
         }
     }
 
     .tabulator-header {
-        background-color: #FFF;
         border-bottom: none;
+        background-color: #FFF;
         height: unset !important;
 
         .tabulator-headers {
             height: unset !important;
 
             .tabulator-col {
-                background-color: #FFF;
                 border: none;
+                background-color: #FFF;
                 height: unset !important;
                 
                 &.tabulator-sortable {
+                    &:hover {
+                        background-color: #FFF;
+                    }
 
                     & .tabulator-col-title {
                         padding-right: 10px;
                     }
-                    &:hover {
-                        background-color: #FFF;
-                    }
-                }
-                &.ods-selectable__input-checkbox {
-                    @include ods-input-checkbox;
-
-                    .tabulator-col-content {
-                        padding: 0;
-                    }
-                }
-
-                &[aria-sort="descending"] {
-                    .tabulator-col-content {
-                        
-                        .tabulator-col-title-holder {
-
-                            .tabulator-col-sorter {
-                                top: 2px;
-                            }
-                        }
-                    }
-                }
-                &[aria-sort="ascending"], &[aria-sort="none"] {
-                    .tabulator-col-content {
-
-                        .tabulator-col-title-holder {
-
-                            .tabulator-col-sorter {
-                                top: -7px;
-                            }
-                        }
-                    }
                 }
 
                 .tabulator-col-content {
-                    
                     .tabulator-col-title-holder {
                         display: flex;
                         justify-content: center;
@@ -153,6 +123,36 @@ $ods-border-datagrid: solid 1px var(--ods-color-blue-200);
                         }
                     }
                 }
+                
+                &.ods-selectable__input-checkbox {
+                    @include ods-input-checkbox;
+
+                    .tabulator-col-content {
+                        padding: 0;
+                    }
+                }
+
+                &[aria-sort="descending"] {
+                    .tabulator-col-content {
+                        .tabulator-col-title-holder {
+                            .tabulator-col-sorter {
+                                top: 2px;
+                            }
+                        }
+                    }
+                }
+
+                &[aria-sort="ascending"], &[aria-sort="none"] {
+                    .tabulator-col-content {
+                        .tabulator-col-title-holder {
+                            .tabulator-col-sorter {
+                                top: -7px;
+                            }
+                        }
+                    }
+                }
+
+                
             }
         }
     }

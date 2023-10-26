@@ -1,5 +1,4 @@
 * [**Interfaces**](#interfaces)
-* [**Classes**](#classes)
 
 ## Interfaces
 
@@ -30,10 +29,3 @@
 |**`oldValue`** | `OdsRangeValue` |  |  | |
 |**`validity`** | `OdsValidityState` | ✴️ |  | |
 |**`value`** | `OdsRangeValue` |  |  | |
-
-## Classes
-
-### OsdsRange
-#### Methods
-> **getValidity**() => `Promise<OdsValidityState>`
-

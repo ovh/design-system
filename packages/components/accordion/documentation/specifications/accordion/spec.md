@@ -1,6 +1,5 @@
 * [**Interfaces**](#interfaces)
 * [**Types**](#types)
-* [**Classes**](#classes)
 
 ## Interfaces
 
@@ -24,7 +23,3 @@
 |  |
 |:---:|
 | `md` |
-
-## Classes
-
-### OsdsAccordion

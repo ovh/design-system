@@ -1,5 +1,4 @@
 * [**Interfaces**](#interfaces)
-* [**Classes**](#classes)
 
 ## Interfaces
 
@@ -12,7 +11,3 @@
 |**`contrasted`** | _boolean_ |  |  | Toggle is in contrasted mode or not|
 |**`disabled`** | _boolean_ |  |  | Toggle is disabled or not|
 |**`interactive`** | _boolean_ |  |  | If the toggle can have interactive pseudo-classes or not|
-
-## Classes
-
-### OsdsToggle

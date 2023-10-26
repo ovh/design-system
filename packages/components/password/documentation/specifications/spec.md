@@ -1,5 +1,4 @@
 * [**Interfaces**](#interfaces)
-* [**Classes**](#classes)
 
 ## Interfaces
 
@@ -24,7 +23,3 @@
 |**`required`** | _boolean_ |  |  | Indicates if the password is required or not|
 |**`size`** | `md` |  |  | Size of the password: see component principles|
 |**`value`** | _string_ | ✴️ |  | Current value of the password|
-
-## Classes
-
-### OsdsPassword

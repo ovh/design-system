@@ -1,6 +1,5 @@
 * [**Interfaces**](#interfaces)
 * [**Types**](#types)
-* [**Classes**](#classes)
 
 ## Interfaces
 
@@ -22,7 +21,3 @@
 |:---:|
 | `md` |
 | `sm` |
-
-## Classes
-
-### OsdsRadioButton

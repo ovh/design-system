@@ -1,6 +1,5 @@
 * [**Interfaces**](#interfaces)
 * [**Types**](#types)
-* [**Classes**](#classes)
 
 ## Interfaces
 
@@ -25,7 +24,3 @@
 | `lg` |
 | `md` |
 | `sm` |
-
-## Classes
-
-### OsdsSpinner

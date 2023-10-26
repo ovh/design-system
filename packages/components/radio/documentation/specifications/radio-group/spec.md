@@ -1,5 +1,4 @@
 * [**Interfaces**](#interfaces)
-* [**Classes**](#classes)
 
 ## Interfaces
 
@@ -31,26 +30,3 @@
 |---|---|:---:|---|---|
 |**`newValue`** | _string_ | ✴️ |  | |
 |**`previousValue`** | _string_ | ✴️ |  | |
-
-## Classes
-
-### OsdsRadioGroup
-#### Methods
-> **getRadios**() => `Promise<array>`
-
-
-> **registerRadio**(`radio`: `OsdsRadio`) => `Promise<void>`
-
-Name | Type | Description 
----|---|---
-**radio** | `OsdsRadio` |   |
-> **unregisterRadio**(`radio`: `OsdsRadio`) => `Promise<void>`
-
-Name | Type | Description 
----|---|---
-**radio** | `OsdsRadio` |   |
-> **updateState**(`__namedParameters`: _unknown_) => `Promise<void>`
-
-Name | Type | Description 
----|---|---
-**__namedParameters** | _unknown_ |   |

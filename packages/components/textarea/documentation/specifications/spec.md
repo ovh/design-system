@@ -1,6 +1,5 @@
 * [**Interfaces**](#interfaces)
 * [**Types**](#types)
-* [**Classes**](#classes)
 
 ## Interfaces
 
@@ -59,25 +58,3 @@
 |  |
 |:---:|
 | `md` |
-
-## Classes
-
-### OsdsTextArea
-#### Methods
-> **clear**() => `Promise<void>`
-
-
-> **getValidity**() => `Promise<OdsTextAreaValidityState>`
-
-
-> **reset**() => `Promise<void>`
-
-
-> **setFocus**() => `Promise<void>`
-
-
-> **setTextAreaTabindex**(`value`: _number_) => `Promise<void>`
-
-Name | Type | Description 
----|---|---
-**value** | _number_ |   |

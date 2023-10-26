@@ -1,6 +1,5 @@
 * [**Interfaces**](#interfaces)
 * [**Types**](#types)
-* [**Classes**](#classes)
 
 ## Interfaces
 
@@ -28,7 +27,3 @@
 | `info` |
 | `success` |
 | `warning` |
-
-## Classes
-
-### OsdsMessage

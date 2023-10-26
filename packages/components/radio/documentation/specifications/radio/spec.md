@@ -1,5 +1,4 @@
 * [**Interfaces**](#interfaces)
-* [**Classes**](#classes)
 
 ## Interfaces
 
@@ -42,7 +41,3 @@
 ### OdsRadioMethod
 |Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
-
-## Classes
-
-### OsdsRadio

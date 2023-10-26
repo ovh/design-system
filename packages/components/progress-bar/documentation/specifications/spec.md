@@ -1,5 +1,4 @@
 * [**Interfaces**](#interfaces)
-* [**Classes**](#classes)
 
 ## Interfaces
 
@@ -8,7 +7,3 @@
 |---|---|:---:|---|---|
 |**`max`** | _number_ |  |  | Sets the maximum value the progress can reach|
 |**`value`** | _number_ |  |  | The value of the progress bar|
-
-## Classes
-
-### OsdsProgressBar

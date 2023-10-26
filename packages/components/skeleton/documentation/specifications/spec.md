@@ -1,6 +1,5 @@
 * [**Interfaces**](#interfaces)
 * [**Types**](#types)
-* [**Classes**](#classes)
 
 ## Interfaces
 
@@ -21,7 +20,3 @@
 | `sm` |
 | `xl` |
 | `xs` |
-
-## Classes
-
-### OsdsSkeleton

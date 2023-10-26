@@ -1,5 +1,4 @@
 * [**Interfaces**](#interfaces)
-* [**Classes**](#classes)
 
 ## Interfaces
 
@@ -19,12 +18,3 @@
 |Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`closeSurface`** | `Promise<void>` | ✴️ |  | Close the surface|
-
-## Classes
-
-### OsdsClipboard
-#### Methods
-> **closeSurface**() => `Promise<void>`
-
-_Close the surface_
-

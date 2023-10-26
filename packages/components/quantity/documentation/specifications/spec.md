@@ -1,5 +1,4 @@
 * [**Interfaces**](#interfaces)
-* [**Classes**](#classes)
 
 ## Interfaces
 
@@ -7,7 +6,3 @@
 |Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`disabled`** | _boolean_ |  |  | Quantity is disabled or not|
-
-## Classes
-
-### OsdsQuantity

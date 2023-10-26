@@ -1,6 +1,5 @@
 * [**Interfaces**](#interfaces)
 * [**Types**](#types)
-* [**Classes**](#classes)
 
 ## Interfaces
 
@@ -66,7 +65,3 @@
 | `_600` |
 | `_700` |
 | `_800` |
-
-## Classes
-
-### OsdsText

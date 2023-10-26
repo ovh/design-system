@@ -1,6 +1,5 @@
 * [**Interfaces**](#interfaces)
 * [**Types**](#types)
-* [**Classes**](#classes)
 
 ## Interfaces
 
@@ -71,15 +70,3 @@
 |  |
 |:---:|
 | `md` |
-
-## Classes
-
-### OsdsSelect
-#### Methods
-> **validate**() => `Promise<OdsValidityState>`
-
-
-
-### OsdsSelectGroup
-
-### OsdsSelectOption

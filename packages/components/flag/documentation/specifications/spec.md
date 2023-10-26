@@ -1,5 +1,4 @@
 * [**Interfaces**](#interfaces)
-* [**Classes**](#classes)
 
 ## Interfaces
 
@@ -10,7 +9,3 @@
 |**`iso`** | `ODS_FLAG_ISO_CODE_UNION` |  |  | Flag ISO country code|
 |**`lazy`** | _boolean_ | ✴️ |  | allow to lazy load the content only when it's visible|
 |**`src`** | _string_ |  |  | override with custom src to the svg file.|
-
-## Classes
-
-### OsdsFlag

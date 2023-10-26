@@ -1,6 +1,5 @@
 * [**Interfaces**](#interfaces)
 * [**Types**](#types)
-* [**Classes**](#classes)
 
 ## Interfaces
 
@@ -43,12 +42,3 @@
 |  |
 |:---:|
 | `flat` |
-
-## Classes
-
-### OsdsSwitch
-
-### OsdsSwitchItem
-#### Methods
-> **setFocus**() => `Promise<void>`
-

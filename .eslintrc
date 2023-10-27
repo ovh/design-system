@@ -82,7 +82,7 @@
     "no-await-in-loop": "error",
     "no-console": "error",
     "no-extra-bind": "error",
-    "no-magic-numbers": "error",
+    "no-magic-numbers": "off",
     "no-multi-spaces": "error",
     "no-nested-ternary": "error",
     "no-trailing-spaces": "error",

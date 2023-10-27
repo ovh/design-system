@@ -1,17 +1,20 @@
 class TabulatorFullStub {
-    constructor() {
+  constructor() {
 
-    }
+  }
 
-    setData() {
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+  setData() {
 
-    }
+  }
 
-    setColumns() {
-        
-    }
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+  setColumns() {
+
+  }
 }
 
+// eslint-disable-next-line no-undef
 module.exports = {
-    TabulatorFull: TabulatorFullStub,
+  TabulatorFull: TabulatorFullStub,
 };

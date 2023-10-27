@@ -2,7 +2,6 @@ import type {
   DeclarationReflection,
   IntrinsicType,
   LiteralType,
-  ReferenceType,
   ReflectionType,
   SomeType,
   Type,

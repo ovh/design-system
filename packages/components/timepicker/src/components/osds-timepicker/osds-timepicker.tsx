@@ -8,7 +8,7 @@ import { ODS_TIMEZONES_PRESET } from './constants/timezones-preset';
 
 @Component({
   tag: 'osds-timepicker',
-  // styleUrl: 'osds-timepicker.scss',
+  styleUrl: 'osds-timepicker.scss',
   shadow: true,
 })
 export class OsdsTimepicker implements OdsTimepickerAttribute {
@@ -99,6 +99,7 @@ export class OsdsTimepicker implements OdsTimepickerAttribute {
                     type={ ODS_INPUT_TYPE.time }
                     value={ value }
                     ref={(el: HTMLElement) => this.input = el as HTMLInputElement}
+                    color={ "primary" }
         >
         </osds-input>
         {

@@ -1,3 +1,13 @@
-:host {
-  font-weight: normal;
+:host([inline]) {
+  display: inline-flex;
+
+  & osds-select {
+    margin-left: var(--ods-size-03);
+  }
+}
+
+:host(:not([inline])) {
+  & osds-select {
+    margin-top: var(--ods-size-03);
+  }
 }

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html dir='ltr' lang='en'>
+<head>
+  <meta charset='utf-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0' />
+  <title>Dev ods-autocomplete</title>
+
+  <script type="module">
+    !window.ods && (window.ods = {config: {logging: {active:true}}});
+  </script>
+
+  <script type='module' src='/build/osds-autocomplete.esm.js'></script>
+  <script nomodule src='/build/osds-autocomplete.js'></script>
+  <link rel="stylesheet" href="/build/osds-autocomplete.css">
+</head>
+<body>
+
+<osds-autocomplete clearable="true" icon="ovh" value="Hello">
+</osds-autocomplete>
+
+<osds-text>Hi</osds-text>
+
+<osds-autocomplete clearable="true" color="success" inline icon="ovh">
+</osds-autocomplete>
+
+<osds-autocomplete clearable="true" inline disabled>
+</osds-autocomplete>
+
+<script>
+  const database = [
+    { value: 'Hello', text: 'Hello World' },
+    { value: 'How', text: 'How are you today?' },
+    { value: 'Bonjour', text: 'Bonjour tout le monde' },
+    { value: 'Hola', text: 'Hola Mundo' },
+    { value: 'Fizz', text: 'Buzz' },
+    { value: 'Auto', text: 'Autocomplete' },
+  ];
+
+  const autocompleteElem = document.querySelector('osds-autocomplete');
+
+  const updateOptions = (value) => {
+    while (autocompleteElem.firstChild) {
+      autocompleteElem.removeChild(autocompleteElem.firstChild);
+    }
+
+    const regex = new RegExp(value, 'i');
+
+    database.forEach(entry => {
+      if (regex.test(entry.text)) {
+        const optionElem = document.createElement('osds-select-option');
+        optionElem.value = entry.value;
+        optionElem.tabIndex = 1;
+
+        const textElem = document.createElement('osds-text');
+        textElem.innerHTML = entry.text.replace(regex, '<b>$&</b>');
+        optionElem.appendChild(textElem);
+
+        autocompleteElem.appendChild(optionElem);
+      }
+    });
+  };
+
+  autocompleteElem.addEventListener('odsValueChange', (event) => {
+    updateOptions(event.detail.value);
+  });
+  updateOptions('');
+</script>
+</body>
+</html>

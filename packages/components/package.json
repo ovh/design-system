@@ -6,6 +6,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@ovhcloud/ods-component-accordion": "16.2.0",
+    "@ovhcloud/ods-component-autocomplete": "16.2.0",
     "@ovhcloud/ods-component-breadcrumb": "16.2.0",
     "@ovhcloud/ods-component-button": "16.2.0",
     "@ovhcloud/ods-component-cart": "16.2.0",

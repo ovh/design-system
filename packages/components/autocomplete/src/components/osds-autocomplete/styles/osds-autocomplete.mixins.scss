@@ -1,0 +1,13 @@
+// general mixins and functions for the component
+
+@mixin osds-autocomplete-on-selected-host() {
+  :host(&) {
+    @content;
+  }
+}
+
+@mixin osds-autocomplete-on-main-element() {
+  .autocomplete__wrapper {
+    @content;
+  }
+}

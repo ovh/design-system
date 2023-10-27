@@ -1,0 +1,66 @@
+@import 'styles/osds-autocomplete.mixins';
+@import 'styles/osds-autocomplete.color';
+@import 'styles/osds-autocomplete.size';
+@import 'styles/osds-autocomplete.typography';
+@import '~@ovhcloud/ods-common-theming/color/ods-theming-color';
+@import '~@ovhcloud/ods-common-theming/ods-theme';
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+// CSS targeted only for this component
+// /!\ for theming purposes, it has to be done in theming files
+// (i.e. packages/libraries/theming/...)
+:host {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  .anchor {
+    width: 100%;
+    height: 0;
+    position: relative;
+
+    .overlay {
+      width: 100%;
+      z-index: 99;
+      box-sizing: border-box;
+      display: none;
+      position: absolute;
+      border-width: var(--ods-size-01);
+      border-style: solid;
+      border-top-width: 0;
+      border-bottom-left-radius: var(--ods-size-03);
+      border-bottom-right-radius: var(--ods-size-03);
+      animation: appear 0.2s ease-in-out;
+    }
+  }
+}
+
+:host([inline]) {
+  width: fit-content;
+}
+
+:host([hasFocus]) {
+  osds-input {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .overlay {
+    display: block;
+  }
+}
+
+// Apply the theme template for the component
+@include ods-theme-component() {
+  @include osds-autocomplete-theme-color();
+  @include osds-autocomplete-theme-size();
+  @include osds-autocomplete-theme-typography();
+}

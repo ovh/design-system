@@ -2,15 +2,23 @@
 @import '~@ovhcloud/ods-common-theming/ods-theme';
 @import "~tabulator-tables/dist/css/tabulator.min.css";
 
-@mixin ods-input-checkbox {
+@mixin ods-input-checkbox($cell: 0) {
     input[type="checkbox"] {
         appearance: none;
         margin: 0;
         border: solid 2px var(--ods-color-primary-500);
         border-radius: var(--ods-size-border-radius-01);
+        cursor: pointer;
         width: 20px;
         height: 20px;
-        
+
+        @if $cell == 1 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
         &::before {
             display: block;
             width: 15px;
@@ -42,6 +50,7 @@ $ods-border-datagrid: solid 1px var(--ods-color-blue-200);
     .tabulator-tableholder {
         .tabulator-row {
             background-color: #FFF;
+            cursor: default;
 
             &:hover {
                 background-color: #FFF;
@@ -66,13 +75,17 @@ $ods-border-datagrid: solid 1px var(--ods-color-blue-200);
             }
 
             &.ods-selectable__input-checkbox {
-                @include ods-input-checkbox;
+                @include ods-input-checkbox(1);
 
                 padding-left: 9px;
             }
         }
 
         .tabulator-placeholder {
+            &[tabulator-render-mode="virtual"] {
+                min-height: auto;
+            }
+
             .tabulator-placeholder-contents {
                 border: $ods-border-datagrid;
                 line-height: var(--ods-typography-body-500-line-height);
@@ -95,9 +108,9 @@ $ods-border-datagrid: solid 1px var(--ods-color-blue-200);
             height: unset !important;
 
             .tabulator-col {
+                justify-content: center;
                 border: none;
                 background-color: #FFF;
-                height: unset !important;
                 
                 &.tabulator-sortable {
                     &:hover {
@@ -128,6 +141,8 @@ $ods-border-datagrid: solid 1px var(--ods-color-blue-200);
                     @include ods-input-checkbox;
 
                     .tabulator-col-content {
+                        margin-top: 5px;
+                        margin-left: 1px;
                         padding: 0;
                     }
                 }

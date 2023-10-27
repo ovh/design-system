@@ -8,7 +8,7 @@ import { OdsDatagridAttribute } from './interfaces/attributes';
 import { OsdsDatagrid } from './osds-datagrid';
 
 describe('spec:osds-datagrid', () => {
-  const baseAttribute = { columns: [], rows: [] };
+  const baseAttribute = { columns: [], height: 100, rows: [] };
   let page: SpecPage;
   let root: HTMLElement | undefined;
   let instance: OsdsDatagrid;
@@ -88,6 +88,29 @@ describe('spec:osds-datagrid', () => {
         ...config,
       });
     });
+
+    describe('height', () => {
+      odsUnitTestAttribute<OdsDatagridAttribute, 'height'>({
+        defaultValue: DEFAULT_ATTRIBUTE.height,
+        name: 'height',
+        newValue: 600,
+        setup: (value) => setup({ attributes: { ['height']: value } }),
+        value: 0,
+        ...config,
+      });
+    });
+
+    describe('rowHeight', () => {
+      odsUnitTestAttribute<OdsDatagridAttribute, 'rowHeight'>({
+        defaultValue: DEFAULT_ATTRIBUTE.rowHeight,
+        name: 'rowHeight',
+        newValue: 60,
+        setup: (value) => setup({ attributes: { ['rowHeight']: value } }),
+        value: 0,
+        ...config,
+      });
+    });
+
 
   });
 });

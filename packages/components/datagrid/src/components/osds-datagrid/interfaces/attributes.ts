@@ -4,10 +4,7 @@ interface OdsDatagridColumn {
   title: string // the column title
 }
 
-interface OdsDatagridRow {
-  [key: string]: unknown
-}
-
+type OdsDatagridRow = Record<string, unknown>;
 
 interface OdsDatagridAttribute {
   /** The list of the column */
@@ -16,8 +13,8 @@ interface OdsDatagridAttribute {
   isSelectable?: boolean
   /** Text when the datagrid was no rows */
   noResultLabel?: string;
-  /** 
-   * The list of the rows 
+  /**
+   * The list of the rows
    * The key need to be according to the column field
    */
   rows: OdsDatagridRow[] | string;

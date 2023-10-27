@@ -22,6 +22,7 @@
     "@ovhcloud/ods-component-form-field": "16.2.1",
     "@ovhcloud/ods-component-icon": "16.2.1",
     "@ovhcloud/ods-component-input": "16.2.1",
+    "@ovhcloud/ods-component-interactive-surface": "16.2.1",
     "@ovhcloud/ods-component-link": "16.2.1",
     "@ovhcloud/ods-component-menu": "16.2.1",
     "@ovhcloud/ods-component-message": "16.2.1",

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html dir='ltr' lang='en'>
+<head>
+  <meta charset='utf-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0' />
+  <title>Dev ods-interactive-surface</title>
+
+  <script type="module">
+    !window.ods && (window.ods = {config: {logging: {active:true}}});
+  </script>
+
+  <script type='module' src='/build/osds-interactive-surface.esm.js'></script>
+  <script nomodule src='/build/osds-interactive-surface.js'></script>
+  <link rel="stylesheet" href="/build/osds-interactive-surface.css">
+</head>
+<body>
+
+<osds-interactive-surface inline>
+  <osds-select-option value="Hello">Bonjour</osds-select-option>
+  <osds-select-option value="Hello">Au revoir</osds-select-option>
+  <p>bien le bonsoir</p>
+</osds-interactive-surface>
+
+<script>
+  document.querySelectorAll('ods-interactive-surface').forEach((elem) => {});
+</script>
+</body>
+</html>

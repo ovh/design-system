@@ -1,0 +1,19 @@
+@import 'styles/osds-interactive-surface.mixins';
+@import 'styles/osds-interactive-surface.color';
+@import 'styles/osds-interactive-surface.typography';
+@import '~@ovhcloud/ods-common-theming/color/ods-theming-color';
+@import '~@ovhcloud/ods-common-theming/ods-theme';
+
+// CSS targeted only for this component
+// /!\ for theming purposes, it has to be done in theming files
+// (i.e. packages/libraries/theming/...)
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+// apply the theme template for the component
+@include ods-theme-component {
+  @include osds-interactive-surface-theme-color;
+  @include osds-interactive-surface-theme-typography;
+}

@@ -1,0 +1,13 @@
+// general mixins and functions for the component
+
+@mixin osds-interactive-surface-on-selected-host() {
+  :host(&) {
+    @content;
+  }
+}
+
+@mixin osds-interactive-surface-on-main-element() {
+  .interactive-surface__wrapper {
+    @content;
+  }
+}

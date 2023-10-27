@@ -16,6 +16,10 @@ interface OdsTextAttribute {
    */
   contrasted?: boolean
   /**
+   * Text hue
+   */
+  hue?: ODS_TEXT_COLOR_HUE
+  /**
    * Text level
    */
   level?: ODS_TEXT_LEVEL
@@ -23,12 +27,8 @@ interface OdsTextAttribute {
    * Text size
    */
   size?: ODS_TEXT_SIZE
-  /**
-   * Text hue
-   */
-  hue?: ODS_TEXT_COLOR_HUE
 }
 
-export {
+export type {
   OdsTextAttribute,
 };

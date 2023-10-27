@@ -7,7 +7,7 @@ import { newE2EPage } from '@stencil/core/testing';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 
 describe('e2e:osds-datagrid', () => {
-  const baseAttribute = { columns: [], rows: [] };
+  const baseAttribute = { columns: [], height: 100, rows: [] };
   let page: E2EPage;
 
   function createContent({ attributes = {} }: { attributes?: Partial<OdsDatagridAttribute> } = {}): string {

@@ -14,27 +14,44 @@
   <link rel="stylesheet" href="/build/osds-datagrid.css">
 </head>
 <body>
-  <osds-datagrid columns='[{"title":"Name", "field":"name"}, {"title":"Firstname", "field":"firstname"}]' rows='[{"name":"Homer", "firstname":"Simpson"}]'></osds-datagrid>
+  <osds-datagrid id="datagridFormatter" height="600"></osds-datagrid>
 
   <h1>With sorted column</h1>
   <osds-datagrid
     columns='[{"title":"Name", "field":"name", "isSortable": true}, {"title":"Firstname", "field":"firstname"}, {"title":"Gender", "field":"gender"}]'
-    rows='[{"name":"Homer", "firstname":"Simpson", "gender": "Male"}, {"name":"Marge", "firstname":"Simpson", "gender": "Female"}]'>
+    rows='[{"name":"Homer", "firstname":"Simpson", "gender": "Male"}, {"name":"Marge", "firstname":"Simpson", "gender": "Female"}]'
+    height="300">
   </osds-datagrid>
 
   <h1>With selectable columns</h1>
   <osds-datagrid
     is-selectable
     columns='[{"title":"Name", "field":"name"}, {"title":"Firstname", "field":"firstname"}]'
-    rows='[{"name":"Homer", "firstname":"Simpson"}, {"name":"Marge", "firstname":"Simpson"}]'>
+    rows='[{"name":"Homer", "firstname":"Simpson"}, {"name":"Marge", "firstname":"Simpson"}]'
+    height="300">
   </osds-datagrid>
 
   <h1>Empty state</h1>
   <osds-datagrid
     columns='[{"title":"Name", "field":"name", "isSortable": true}, {"title":"Firstname", "field":"firstname"}]'
     rows='[]'
-    no-result-label="Aucune données de renseignée">
+    no-result-label="Aucune données de renseignée"
+    height="100">
   </osds-datagrid>
 
+
+  <script>
+    const datagrid = document.getElementById('datagridFormatter');
+    datagrid.columns = [
+      { title: "Name", field: "name", formatter: (cellValue) => {
+          return `<osds-button>Button content</osds-button> ${cellValue}`
+        }
+      },
+      { title: "Firstname", field: "firstname" },
+      { title: "Gender", field: "gender" },
+      { title: "Date Of Birth", field: "dob" },
+    ];
+    datagrid.rows = Array.from({ length: 5000 }).fill({ name: "Garnbret", firstname: "Janja", gender: "female", dob: "12/03/1999" });
+  </script>
 </body>
 </html>

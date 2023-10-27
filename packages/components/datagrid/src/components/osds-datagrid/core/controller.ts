@@ -13,16 +13,23 @@ class OdsDatagridController {
         private readonly component: OsdsDatagrid,
   ) {}
 
+  validateAttributes(): void {
+    if (!this.component.height) {
+      this.component.logger.warn('Attributes "height" need to be set');
+    }
+  }
+
   toTabulatorColumn(column: OdsDatagridColumn): ColumnDefinition {
     return {
       field: column.field,
-      formatter: (cell: CellComponent) => this.getOdsText(cell.getValue(), ODS_TEXT_SIZE._400),
+      formatter: (cell: CellComponent) => column.formatter?.(cell.getValue()) ?? this.getOdsText(cell.getValue(), ODS_TEXT_SIZE._400),
       headerHozAlign: 'center',
       headerSort: column.isSortable ?? false,
       hozAlign: 'center',
       minWidth: 100,
       title: column.title,
       titleFormatter: (cell: CellComponent) => this.getOdsText(cell.getValue(), ODS_TEXT_SIZE._500),
+      vertAlign: 'middle',
     };
   }
 

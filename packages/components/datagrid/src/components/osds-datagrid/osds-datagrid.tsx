@@ -25,8 +25,7 @@ export class OsdsDatagrid implements OdsDatagridAttribute {
   /** @see OdsDatagridAttribute.columns */
   @Prop({ reflect: true }) public columns: OdsDatagridColumn[] | string = DEFAULT_ATTRIBUTE.columns;
 
-  /** @see OdsDatagridAttribute.rows */
-  @Prop({ reflect: true }) public rows: OdsDatagridRow[] | string = DEFAULT_ATTRIBUTE.rows;
+  @Prop({ reflect: true }) public height: number = DEFAULT_ATTRIBUTE.height;
 
   /** @see OdsDatagridAttribute.isSelectable */
   @Prop({ reflect: true }) public isSelectable?: boolean = DEFAULT_ATTRIBUTE.isSelectable;
@@ -34,7 +33,58 @@ export class OsdsDatagrid implements OdsDatagridAttribute {
   /** @see OdsDatagridAttribute.noResultLabel */
   @Prop({ reflect: true }) public noResultLabel?: string = DEFAULT_ATTRIBUTE.noResultLabel;
 
+  /** @see OdsDatagridAttribute.rowHeight */
+  @Prop({ reflect: true }) public rowHeight?: number = DEFAULT_ATTRIBUTE.rowHeight;
+
+  /** @see OdsDatagridAttribute.rows */
+  @Prop({ reflect: true }) public rows: OdsDatagridRow[] | string = DEFAULT_ATTRIBUTE.rows;
+
   componentDidLoad(): void {
+    this.controler.validateAttributes();
+    this.initTable();
+  }
+
+  @Watch('rowHeight')
+  onChangeRowHeight(): void {
+    if (!this.table || !this.rowHeight) {
+      return;
+    }
+    this.table.options.rowHeight = this.rowHeight;
+    this.setColumnsHeight();
+    this.table.rowManager.reRenderInPosition();
+  }
+
+  @Watch('height')
+  onChangeHeight(): void {
+    this.table?.setHeight(this.height);
+  }
+
+  @Watch('noResultLabel')
+  onChangeNoResultLabel(): void {
+    this.initTable();
+  }
+
+  @Watch('rows')
+  onChangeRows(): void {
+    const rows = this.controler.getRows();
+    this.table?.setData(rows);
+  }
+
+  @Watch('isSelectable')
+  @Watch('columns')
+  onChangeColumns(): void {
+    const columns = this.controler.getColumns();
+    this.table?.setColumns(this.controler.getTabulatorColumns(columns));
+    this.setColumnsHeight();
+  }
+
+  private setColumnsHeight(): void {
+    this.table?.getColumns().forEach((col) => {
+      col.getElement().style.height = `${this.rowHeight}px`;
+    });
+  }
+
+  private initTable(): void {
     if (!this.grid) {
       return;
     }
@@ -57,24 +107,16 @@ export class OsdsDatagrid implements OdsDatagridAttribute {
         color="${ODS_THEME_COLOR_INTENT.primary}">
       </osds-icon>`;
       },
-      height: '100%',
+      height: this.height,
       layout: 'fitColumns',
       placeholder: this.noResultLabel,
-      rowHeight: 28,
+      renderHorizontal: 'virtual',
+      renderVertical: 'virtual',
+      rowHeight: this.rowHeight,
     });
-  }
-
-  @Watch('rows')
-  onChangeRows(): void {
-    const rows = this.controler.getRows();
-    this.table?.setData(rows);
-  }
-
-  @Watch('isSelectable')
-  @Watch('columns')
-  onChangeColumns(): void {
-    const columns = this.controler.getColumns();
-    this.table?.setColumns(this.controler.getTabulatorColumns(columns));
+    this.table?.on('renderComplete', () => {
+      this.setColumnsHeight();
+    });
   }
 
   render(): JSX.Element {

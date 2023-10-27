@@ -1,7 +1,5 @@
 class TabulatorFullStub {
-  constructor() {
-
-  }
+  constructor() { }
 
   // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   setData() {
@@ -11,6 +9,16 @@ class TabulatorFullStub {
   // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   setColumns() {
 
+  }
+
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+  on() {
+
+  }
+
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+  getColumns() {
+    return [];
   }
 }
 

@@ -16,7 +16,9 @@ const defaultStoryParams = {
       { title: "Name", field: "name", isSortable: true },
       { title: "Firstname", field: "firstname" },
       { title: "Gender", field: "gender" },
-      { title: "Date Of Birth", field: "dob" },
+      { title: "Date Of Birth", field: "dob", formatter: (value: string) => {
+        return `<osds-icon name="calendar"></osds-icon> <osds-text color="text" size="400">${value}</osds-text>` 
+      } },
     ],
   },
   rows: {
@@ -28,7 +30,25 @@ const defaultStoryParams = {
   },
   isSelectable: {
     category: 'Général',
-    defaultValue: false
+    defaultValue: false,
+  },
+  noResultLabel: {
+    category: 'Général',
+    defaultValue: 'Aucun résultat',
+  },
+  height: {
+    category: 'Général',
+    defaultValue: 600,
+  },
+  rowHeight: {
+    category: 'Général',
+    defaultValue: 52,
+  }
+};
+
+const rowsLarge = {
+  category: 'Général',
+  defaultValue: Array.from({ length: 10000 }).fill({ name: "Garnbret", firstname: "Janja", gender: "female", dob: "12/03/1999" }),
   },
 };
 
@@ -54,3 +74,15 @@ Default.args = {
 };
 // @ts-ignore
 Default.argTypes = extractArgTypes(defaultStoryParams);
+
+export const LargeData = TemplateDefault.bind({});
+// @ts-ignore
+LargeData.args = {
+  ...extractStoryParams({ ...defaultStoryParams, rows: rowsLarge }),
+};
+
+// @ts-ignore
+LargeData.parameters = {
+  controls: { hideNoControlsWarning: true },
+  options: { showPanel: false }
+};

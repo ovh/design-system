@@ -191,6 +191,5 @@ describe('e2e:osds-datagrid', () => {
     expect(columns).toHaveLength(2);
     expect(columns?.[0].innerText).toContain('Name');
     expect(columns?.[1].innerText).toContain('Firstname');
-    expect(columns?.[2]).toBe(undefined);
   });
 });

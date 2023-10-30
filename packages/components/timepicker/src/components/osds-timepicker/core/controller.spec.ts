@@ -30,8 +30,9 @@ describe('spec:ods-timepicker-controller', () => {
   });
 
   describe('methods', () => {
-    describe('methods:checkSeconds', () => {
+    describe('methods:formatValue', () => {
       it('should change value seconds if not match ', () => {
+        let returnedValue;
         const valueWithSeconds = "11:11:11";
         const valueWithoutSeconds = "11:11";
         const valueWithSecondsAdded = "11:11:00";
@@ -41,16 +42,17 @@ describe('spec:ods-timepicker-controller', () => {
 
         component.input.value = valueWithSeconds;
         component.withSeconds = false;
-        controller.checkSeconds(component.withSeconds)
-        expect(component.input.value).toEqual(valueWithoutSeconds);
+        returnedValue = controller.formatValue(component.input.value, component.withSeconds);
+        expect(returnedValue).toBe(valueWithoutSeconds);
 
         component.input.value = valueWithoutSeconds;
         component.withSeconds = true;
-        controller.checkSeconds(component.withSeconds)
-        expect(component.input.value).toEqual(valueWithSecondsAdded);
+        returnedValue = controller.formatValue(component.input.value, component.withSeconds);
+        expect(returnedValue).toBe(valueWithSecondsAdded);
       });
 
       it('should do nothing if value and with seconds match', () => {
+        let returnedValue;
         const valueWithSeconds = "11:11:11";
         const valueWithoutSeconds = "11:11";
         const input = document.createElement('osds-input');
@@ -59,13 +61,13 @@ describe('spec:ods-timepicker-controller', () => {
 
         component.input.value = valueWithSeconds;
         component.withSeconds = true;
-        controller.checkSeconds(component.withSeconds)
-        expect(component.input.value).toEqual(valueWithSeconds);
+        returnedValue = controller.formatValue(component.input.value, component.withSeconds);
+        expect(returnedValue).toBe("");
 
         component.input.value = valueWithoutSeconds;
         component.withSeconds = false;
-        controller.checkSeconds(component.withSeconds)
-        expect(component.input.value).toEqual(valueWithoutSeconds);
+        returnedValue = controller.formatValue(component.input.value, component.withSeconds);
+        expect(returnedValue).toBe("");
       })
     });
 

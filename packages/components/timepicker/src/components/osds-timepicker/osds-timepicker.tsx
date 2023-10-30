@@ -13,7 +13,7 @@ import { ODS_TIMEZONES_PRESET } from './constants/timezones-preset';
 })
 export class OsdsTimepicker implements OdsTimepickerAttribute {
   @Element() el!: HTMLElement;
-  input: (OsdsInput & HTMLElement) | HTMLInputElement | null = null;
+  input: OsdsInput | HTMLInputElement | null = null;
   timezonesList: ODS_TIMEZONE[] = [];
   controller = new OdsTimepickerController(this);
 
@@ -49,8 +49,12 @@ export class OsdsTimepicker implements OdsTimepickerAttribute {
 
   @Watch('withSeconds')
   @Watch('value')
-  checkSeconds(withSeconds: boolean) {
-    this.controller.checkSeconds(withSeconds);
+  onSecondsChange(withSeconds: boolean) {
+    const value = this.controller.formatValue((this.input as HTMLInputElement).value, withSeconds);
+
+    if (value) {
+      (this.input as HTMLInputElement).value = value;
+    }
   }
 
   componentWillLoad(): void {

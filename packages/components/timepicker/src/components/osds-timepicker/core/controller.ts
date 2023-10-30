@@ -7,21 +7,22 @@ class OdsTimepickerController {
   constructor(private readonly component: OsdsTimepicker) {
   }
 
-  checkSeconds(withSeconds: boolean) {
-    if (withSeconds === false && (this.component.input as HTMLInputElement)?.value.match(/:/g)?.length === 2) {
-      const inputValue = (this.component.input as HTMLInputElement).value.split(':');
-      (this.component.input as HTMLInputElement).value = `${inputValue[0]}:${inputValue[1]}`
-    } else if (withSeconds === true && (this.component.input as HTMLInputElement)?.value.match(/:/g)?.length === 1) {
-      (this.component.input as HTMLInputElement).value = `${(this.component.input as HTMLInputElement).value}:00`
+  formatValue(value: string, withSeconds: boolean): string {
+    if (withSeconds === false && value.match(/:/g)?.length === 2) {
+      const inputValue = value.split(':');
+      return `${ inputValue[0] }:${ inputValue[1] }`
+    } else if (withSeconds === true && value.match(/:/g)?.length === 1) {
+      return `${ value }:00`
     }
+    return '';
   }
 
-  handleTimezones () {
+  handleTimezones() :void {
     const check = this.getTimezonesList();
     this.component.timezonesList = [...check] as ODS_TIMEZONE[] ;
   }
 
-  handleCurrentTimezone () {
+  handleCurrentTimezone() : void {
     if (!this.component.currentTimezone) {
       const browserTimezone = new Date().getTimezoneOffset() / 60 * -1;
       const parsedTimezone = browserTimezone >= 0 ? `+${browserTimezone}` : browserTimezone.toString();
@@ -29,7 +30,7 @@ class OdsTimepickerController {
     }
   }
 
-  private getTimezonesList(): readonly (ODS_TIMEZONE | string)[] {
+  private getTimezonesList(): readonly ODS_TIMEZONE[] | ODS_TIMEZONES_PRESET {
     if (this.component.timezones === undefined || this.component.timezones === ODS_TIMEZONES_PRESET.All) {
       return ODS_TIMEZONES;
     }

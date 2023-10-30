@@ -66,13 +66,12 @@ describe('spec:osds-timepicker', () => {
   });
 
   describe('watchers', () => {
-    it('should call checkSeconds on change of withSeconds', async () => {
+    it('should call onSecondsChange on change of withSeconds', async () => {
       await setup( { attributes : { withSeconds : true } });
-      const value = false;
-      instance.withSeconds = value;
+      const boolean = false;
+      instance.withSeconds = boolean;
 
-      expect(controller.checkSeconds).toHaveBeenCalledTimes(1);
-      expect(controller.checkSeconds).toHaveBeenCalledWith(value);
+      expect(controller.formatValue).toHaveBeenCalledTimes(1);
     });
 
     it('should call handleCurrentTimezone on change of currentTimezone', async () => {

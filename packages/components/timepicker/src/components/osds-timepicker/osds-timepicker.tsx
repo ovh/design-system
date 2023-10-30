@@ -101,12 +101,12 @@ export class OsdsTimepicker implements OdsTimepickerAttribute {
                     type={ ODS_INPUT_TYPE.time }
                     value={ value }
                     ref={(el: HTMLElement) => this.input = el as HTMLInputElement}
-                    color={ "primary" }
+                    color="primary"
         >
         </osds-input>
         {
           (currentTimezone || timezones) && <osds-select
-            class={ "osds-select" }
+            class="osds-select"
             disabled={ disabled }
             error={ error }
             inline={ inline }

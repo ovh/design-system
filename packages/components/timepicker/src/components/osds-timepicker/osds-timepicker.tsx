@@ -89,8 +89,10 @@ export class OsdsTimepicker implements OdsTimepickerAttribute {
       withSeconds,
     } = this;
 
+    const hostClasses = `osds-timepicker ${ inline ? 'osds-timepicker--inline' : '' }`
+
     return (
-      <Host>
+      <Host class={ hostClasses }>
         <osds-input clearable={ clearable }
                     disabled={ disabled }
                     error={ error }
@@ -104,6 +106,7 @@ export class OsdsTimepicker implements OdsTimepickerAttribute {
         </osds-input>
         {
           (currentTimezone || timezones) && <osds-select
+            class={ "osds-select" }
             disabled={ disabled }
             error={ error }
             inline={ inline }

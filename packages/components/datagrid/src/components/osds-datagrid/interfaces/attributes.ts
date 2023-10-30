@@ -27,7 +27,7 @@ interface OdsDatagridAttribute {
   rowHeight?: number;
   /**
    * The list of the rows
-   * The key need to be according to the column field
+   * The key needs to be according to the column field
    */
   rows: OdsDatagridRow[] | string;
 }

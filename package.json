@@ -31,6 +31,7 @@
     "build:prod:slow": "lerna run --stream --concurrency 1 build:prod",
     "build:slow": "lerna run --concurrency 1 build",
     "build:storybook": "lerna run --stream build:storybook",
+    "clean": "lerna run clean",
     "dev:clear:dist": "rm -rf $(find packages -type d \\( -name dist -or -name custom-elements -or -name custom-elements-bundle -or -name www -or -name docs-api -or -name loader \\) -not -path \"*/node_modules/*\"  -not -path \"*/stencil/scripts/*\" -not -path \"*/cdk/dev/scripts/*\")",
     "dev:clear:node_modules": "rm -rf $(find packages -type d -name node_modules -not -path \"packages/storybook/*\")",
     "doc": "lerna run doc",

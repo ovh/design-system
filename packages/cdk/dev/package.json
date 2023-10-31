@@ -13,10 +13,11 @@
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
   "scripts": {
-    "start": "stencil build --docs --dev --watch --serve",
     "build:prod": "npm run build:stencil",
     "build:stencil": "stencil build --docs --prod --config stencil.config.ts",
-    "build:storybook": "npm run build:prod"
+    "build:storybook": "npm run build:prod",
+    "clean": "rimraf .stencil custom-elements dist loader react/src/components vue/src/components",
+    "start": "stencil build --docs --dev --watch --serve"
   },
   "dependencies": {
     "@ovhcloud/ods-cdk": "16.2.1",

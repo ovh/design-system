@@ -11,6 +11,7 @@
     "build:cjs": "tsc -p tsconfig.cjs.json",
     "build:esm": "tsc -p tsconfig.esm.json",
     "build:prod": "npm run build",
+    "clean": "rimraf dist docs-api",
     "doc:api": "typedoc --plugin none src/*",
     "generate:licence": "npx generate-license-file --input package.json --output THIRD-PARTY-LICENCES --overwrite",
     "ignore:rm": "git clean -Xdf",
@@ -19,7 +20,7 @@
   "dependencies": {
     "@ovhcloud/ods-common-core": "16.2.1",
     "@ovhcloud/ods-theme-blue-jeans": "16.2.1",
-    "@stencil/core": "4.5.0"
+    "@stencil/core": "4.7.0"
   },
   "devDependencies": {
     "@ovhcloud/ods-common-testing": "16.2.1",

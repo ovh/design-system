@@ -16,6 +16,7 @@
     "build:react": "npm --prefix react run build",
     "build:stencil": "stencil build --docs --prod --config stencil.config.ts",
     "build:vue": "npm --prefix vue run build",
+    "clean": "rimraf .stencil coverage custom-elements custom-elements-bundle dist docs-api loader screenshot www",
     "doc": "yarn run doc:radio && yarn run doc:radio-group && node ../../../scripts/generate-typedoc-md.js --multiple",
     "doc:api": "typedoc",
     "doc:radio": "typedoc src/components/osds-radio/public-api.ts --out ./docs-api/radio --json ./docs-api/radio/typedoc.json",

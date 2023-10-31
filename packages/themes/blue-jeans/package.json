@@ -9,6 +9,7 @@
     "build:ci": "npm run build:prod",
     "build:prod": "yarn run build:sass:prefix",
     "build:sass:prefix": "yarn run generate:theme && yarn run generate:prefix",
+    "clean": "rimraf dist",
     "generate:licence": "npx generate-license-file --input package.json --output THIRD-PARTY-LICENCES --overwrite",
     "generate:prefix": "postcss dist/**/*.css --dir dist --use autoprefixer --parser postcss-scss",
     "generate:theme": "node-sass --importer ../../../node_modules/node-sass-package-importer/dist/cli.js src/index.scss -o dist",

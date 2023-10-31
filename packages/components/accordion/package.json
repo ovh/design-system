@@ -17,6 +17,7 @@
     "build:react": "npm --prefix react run build",
     "build:stencil": "stencil build --docs --prod --config stencil.config.ts",
     "build:vue": "npm --prefix vue run build",
+    "clean": "rimraf .stencil coverage custom-elements custom-elements-bundle dist docs-api loader screenshot www",
     "doc": "yarn run doc:accordion && yarn run doc:accordion-group && node ../../../scripts/generate-typedoc-md.js --multiple",
     "doc:accordion": "typedoc src/components/osds-accordion/public-api.ts --out ./docs-api/accordion --json ./docs-api/accordion/typedoc.json",
     "doc:accordion-group": "typedoc src/components/osds-accordion-group/public-api.ts --out ./docs-api/accordion-group --json ./docs-api/accordion-group/typedoc.json",

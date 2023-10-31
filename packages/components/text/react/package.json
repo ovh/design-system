@@ -10,7 +10,9 @@
     "clean": "rimraf dist",
     "compile": "npm run compile:esm && npm run compile:cjs",
     "compile:esm": "tsc -p tsconfig.json",
-    "compile:cjs": "tsc -p tsconfig.cjs.json"
+    "compile:cjs": "tsc -p tsconfig.cjs.json",
+    "start": "DISABLE_ESLINT_PLUGIN=true BROWSER=none react-scripts start",
+    "test:e2e": "jest -c jest.config.js"
   },
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -27,5 +29,17 @@
   },
   "devDependencies": {
     "@ovhcloud/ods-react-dev": "16.3.1"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

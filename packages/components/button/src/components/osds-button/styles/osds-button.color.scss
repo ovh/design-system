@@ -164,7 +164,7 @@
     }
   }
 
-  &:not([disabled]):not([circle]) {
+  &:not([disabled]) {
     @include ods-and-one-hue-foreach-theme-color('100') using($color) {
       :host(&:hover), :host(&:focus) {
         @include osds-button-on-main-element {
@@ -173,7 +173,7 @@
       }
     }
 
-    &[contrasted]:not([circle]) {
+    &[contrasted] {
       @include ods-and-all-hue-foreach-theme-color((
         background-color: (tone: '100', alpha: '.2'),
       )) using($colors) {

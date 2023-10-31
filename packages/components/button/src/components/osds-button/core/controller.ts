@@ -57,7 +57,6 @@ class OdsButtonController {
    */
   mutateAttributes(): void {
     if(this.component.circle) {
-      this.component.variant = ODS_BUTTON_VARIANT.ghost;
       this.component.inline = true;
     }
   }

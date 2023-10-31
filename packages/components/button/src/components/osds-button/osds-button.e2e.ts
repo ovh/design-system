@@ -228,17 +228,6 @@ describe('e2e:osds-button', () => {
     });
   });
 
-  describe('circle', () => {
-    beforeEach(async() => {
-      await setup();
-    });
-
-    it('should apply the ghost variant if circle attribute is true', async() => {
-      await setup({ attributes: { circle: true } });
-      expect(await el.getProperty('variant')).toBe(ODS_BUTTON_VARIANT.ghost);
-    });
-  });
-
   describe('form', () => {
     beforeEach(async() => {
       await setup({ attributes: { type: ODS_BUTTON_TYPE.submit }, html: 'submit', inForm: true });

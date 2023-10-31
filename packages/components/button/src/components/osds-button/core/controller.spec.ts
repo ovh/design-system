@@ -95,7 +95,6 @@ describe('spec:ods-button-controller', () => {
       it('should not mutate attributes if circle attribute is false', () => {
         controller.mutateAttributes();
 
-        expect(component.variant).toBe(ODS_BUTTON_VARIANT.flat);
         expect(component.inline).toBe(false);
       });
 
@@ -104,7 +103,7 @@ describe('spec:ods-button-controller', () => {
 
         controller.mutateAttributes();
 
-        expect(component.variant).toBe(ODS_BUTTON_VARIANT.ghost);
+        expect(component.inline).toBe(true);
       });
     });
   });

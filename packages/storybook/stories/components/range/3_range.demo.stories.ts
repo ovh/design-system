@@ -2,7 +2,7 @@ import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-c
 import { defineCustomElements } from '@ovhcloud/ods-components/range/loader';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-import { RangePlay } from './range.web-components.validation.stories';
+import { RangePlay } from './range.demo.validation.stories';
 import {
   extractArgTypes,
   extractStoryParams,

@@ -2,7 +2,7 @@ import { ODS_CART_ROUNDED, ODS_CART_ROUNDEDS } from '@ovhcloud/ods-components/ca
 import { defineCustomElements } from '@ovhcloud/ods-components/cart/loader';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-import { CartManagerPlay } from './cart.web-components.manager.stories';
+import { CartManagerPlay } from './cart.demo.manager.stories';
 import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 
 defineCustomElements();

@@ -1,9 +1,7 @@
 import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing/src';
-
 import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
 import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing/src';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-
 import { OdsIconController } from './controller';
 import { ODS_ICON_SIZE } from '../constants/icon-size';
 import { OsdsIcon } from '../osds-icon';
@@ -22,7 +20,7 @@ describe('spec:ods-icon-controller', () => {
 
   Ods.instance().logging(false);
 
-  function setup(attributes: Partial<OsdsIcon> = {}) {
+  function setup(attributes: Partial<OsdsIcon> = {}): void {
     component = new OsdsIconMock(attributes);
     controller = new OdsIconController(component);
   }

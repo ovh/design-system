@@ -2,11 +2,9 @@ jest.mock('./core/controller'); // keep jest.mock before any
 
 import type { OdsIconAttribute } from './interfaces/attributes';
 import type { SpecPage } from '@stencil/core/testing';
-
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
 import { newSpecPage } from '@stencil/core/testing';
-
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_ICON_NAME } from './constants/icon-name';
 import { ODS_ICON_SIZE, ODS_ICON_SIZES } from './constants/icon-size';
@@ -20,7 +18,7 @@ describe('spec:osds-icon', () => {
   let instance: OsdsIcon;
   let controller: OdsIconController;
 
-  async function setup({ attributes = {} }: { attributes?: Partial<OdsIconAttribute> } = {}) {
+  async function setup({ attributes = {} }: { attributes?: Partial<OdsIconAttribute> } = {}): Promise<void> {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsIconAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
 
     page = await newSpecPage({
@@ -41,19 +39,19 @@ describe('spec:osds-icon', () => {
 
   describe('attributes', () => {
     const config = {
-      instance: () => instance,
-      page: () => page,
-      root: () => page.root,
-      wait: () => page.waitForChanges(),
+      instance: (): OsdsIcon => instance,
+      page: (): SpecPage => page,
+      root: (): SpecPage['root'] => page.root,
+      wait: (): Promise<void> => page.waitForChanges(),
     };
 
     describe('aria-name', () => {
       odsUnitTestAttribute<OdsIconAttribute, 'ariaName'>({
-        name: 'ariaName',
         defaultValue: DEFAULT_ATTRIBUTE.ariaName,
+        name: 'ariaName',
         newValue: 'An Icon',
-        value: 'Oles ipsum',
         setup: (value) => setup({ attributes: { ['ariaName']: value } }),
+        value: 'Oles ipsum',
         ...config,
       });
 
@@ -65,11 +63,11 @@ describe('spec:osds-icon', () => {
 
     describe('color', () => {
       odsUnitTestAttribute<OdsIconAttribute, 'color'>({
-        name: 'color',
         defaultValue: DEFAULT_ATTRIBUTE.color,
+        name: 'color',
         newValue: ODS_THEME_COLOR_INTENT.error,
-        value: ODS_THEME_COLOR_INTENT.success,
         setup: (value) => setup({ attributes: { ['color']: value } }),
+        value: ODS_THEME_COLOR_INTENT.success,
         ...config,
       });
 
@@ -82,11 +80,11 @@ describe('spec:osds-icon', () => {
 
     describe('contrasted', () => {
       odsUnitTestAttribute<OdsIconAttribute, 'contrasted'>({
-        name: 'contrasted',
         defaultValue: DEFAULT_ATTRIBUTE.contrasted,
+        name: 'contrasted',
         newValue: false,
-        value: true,
         setup: (value) => setup({ attributes: { ['contrasted']: value } }),
+        value: true,
         ...config,
       });
 
@@ -105,11 +103,11 @@ describe('spec:osds-icon', () => {
 
     describe('name', () => {
       odsUnitTestAttribute<OdsIconAttribute, 'name'>({
-        name: 'name',
         defaultValue: DEFAULT_ATTRIBUTE.name,
+        name: 'name',
         newValue: ODS_ICON_NAME.ARROW_DOWN,
-        value: ODS_ICON_NAME.ARROW_UP,
         setup: (value) => setup({ attributes: { ['name']: value } }),
+        value: ODS_ICON_NAME.ARROW_UP,
         ...config,
       });
 
@@ -122,11 +120,11 @@ describe('spec:osds-icon', () => {
 
     describe('size', () => {
       odsUnitTestAttribute<OdsIconAttribute, 'size'>({
-        name: 'size',
         defaultValue: DEFAULT_ATTRIBUTE.size,
+        name: 'size',
         newValue: ODS_ICON_SIZE.md,
-        value: ODS_ICON_SIZE.sm,
         setup: (value) => setup({ attributes: { ['size']: value } }),
+        value: ODS_ICON_SIZE.sm,
         ...config,
       });
 
@@ -139,11 +137,11 @@ describe('spec:osds-icon', () => {
 
     describe('hoverable', () => {
       odsUnitTestAttribute<OdsIconAttribute, 'hoverable'>({
-        name: 'hoverable',
         defaultValue: DEFAULT_ATTRIBUTE.hoverable,
+        name: 'hoverable',
         newValue: false,
-        value: true,
         setup: (value) => setup({ attributes: { ['hoverable']: value } }),
+        value: true,
         ...config,
       });
 

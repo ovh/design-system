@@ -1,7 +1,5 @@
 import type { OdsIconAttribute } from '../interfaces/attributes';
-
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-
 import { ODS_ICON_SIZE } from './icon-size';
 
 const DEFAULT_ATTRIBUTE: OdsIconAttribute = Object.freeze({

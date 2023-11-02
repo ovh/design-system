@@ -16,6 +16,7 @@ const DEFAULT_ATTRIBUTE: OdsDatepickerAttribute = Object.freeze({
   maxDate: null,
   minDate: null,
   placeholder: '',
+  showOthersMouthDay: true,
   value: null,
 });
 

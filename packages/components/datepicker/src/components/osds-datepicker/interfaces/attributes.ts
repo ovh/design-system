@@ -52,6 +52,7 @@ interface OdsDatepickerAttribute {
    * Defines if the Datepicker should display a placeholder message
    */
   placeholder?: string;
+  showOthersMouthDay?: boolean;
   /**
    * Defines the Datepicker's value (Date object)
    */

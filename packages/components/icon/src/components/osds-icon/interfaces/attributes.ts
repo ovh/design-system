@@ -30,6 +30,6 @@ interface OdsIconAttribute {
   size?: ODS_ICON_SIZE
 }
 
-export {
+export type {
   OdsIconAttribute,
 };

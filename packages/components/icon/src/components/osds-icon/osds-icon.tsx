@@ -1,18 +1,17 @@
+import type { ODS_ICON_NAME } from './constants/icon-name';
+import type { ODS_ICON_SIZE } from './constants/icon-size';
 import type { OdsIconAttribute } from './interfaces/attributes';
-
-import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+import type { FunctionalComponent } from '@stencil/core';
 import icons from '@ovhcloud/ods-common-theming/icons/icons.data.json';
 import { Component, Element, Host, Prop, Watch, h } from '@stencil/core';
-
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { ODS_ICON_NAME } from './constants/icon-name';
-import { ODS_ICON_SIZE } from './constants/icon-size';
 import { OdsIconController } from './core/controller';
 
 @Component({
-  tag: 'osds-icon',
-  styleUrl: 'osds-icon.scss',
   shadow: true,
+  styleUrl: 'osds-icon.scss',
+  tag: 'osds-icon',
 })
 export class OsdsIcon implements OdsIconAttribute {
   controller: OdsIconController = new OdsIconController(this);
@@ -43,7 +42,7 @@ export class OsdsIcon implements OdsIconAttribute {
     this.beforeRender();
   }
 
-  render() {
+  render(): FunctionalComponent {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     const base64Icon = icons[this.name];

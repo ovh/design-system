@@ -254,4 +254,26 @@ describe('e2e:osds-datepicker', () => {
     const monthSelector = await page.find('osds-datepicker >>> .datepicker-controls .view-switch');
     expect(monthSelector.innerText).toBe('mai 2023');
   });
+
+  it('should displayed sibling month days', async() => {
+    await setup({ attributes: { showSiblingsMonthDays: true, value: new Date('2023-05-15') } });
+    await el.click();
+    await page.waitForChanges();
+    const datepickerNextDays = await page.findAll('osds-datepicker >>> .datepicker-grid .day.next');
+    expect(datepickerNextDays).not.toHaveLength(0);
+    const datepickerPrevDays = await page.findAll('osds-datepicker >>> .datepicker-grid .day.prev');
+    expect(datepickerPrevDays).not.toHaveLength(0);
+  });
+
+  it('should not displayed sibling month days', async() => {
+    await setup({ attributes: { showSiblingsMonthDays: false, value: new Date('2023-05-15') } });
+    await el.click();
+    await page.waitForChanges();
+    const datepickerNextDays = await page.findAll('osds-datepicker >>> .datepicker-grid .day.next');
+    const datepickerNextDaysNotDisplayed = datepickerNextDays.every((day) => day.classList.contains('no-displayed'));
+    expect(datepickerNextDaysNotDisplayed).toBe(true);
+    const datepickerPrevDays = await page.findAll('osds-datepicker >>> .datepicker-grid .day.prev');
+    const datepickerPrevDaysNotDisplayed = datepickerPrevDays.every((day) => day.classList.contains('no-displayed'));
+    expect(datepickerPrevDaysNotDisplayed).toBe(true);
+  });
 });

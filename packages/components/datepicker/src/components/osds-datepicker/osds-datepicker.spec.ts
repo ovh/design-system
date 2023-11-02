@@ -199,6 +199,17 @@ describe('spec:osds-datepicker', () => {
         ...config,
       });
     });
+
+    describe('showSiblingsMonthDays', () => {
+      odsUnitTestAttribute<OdsDatepickerAttribute, 'showSiblingsMonthDays'>({
+        defaultValue: DEFAULT_ATTRIBUTE.showSiblingsMonthDays,
+        name: 'showSiblingsMonthDays',
+        newValue: false,
+        setup: (value) => setup({ attributes: { ['showSiblingsMonthDays']: value } }),
+        value: true,
+        ...config,
+      });
+    });
   });
 
   describe('handleInputValueChange', () => {

@@ -67,6 +67,10 @@ const storyParams = {
     category: 'General',
     defaultValue: '',
   },
+  showSiblingsMonthDays: {
+    category: 'General',
+    defaultValue: true,
+  },
 };
 
 export default {

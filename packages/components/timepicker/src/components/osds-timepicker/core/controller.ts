@@ -11,9 +11,12 @@ class OdsTimepickerController {
     if (withSeconds === false && value.match(/:/g)?.length === 2) {
       const inputValue = value.split(':');
       return `${ inputValue[0] }:${ inputValue[1] }`
-    } else if (withSeconds === true && value.match(/:/g)?.length === 1) {
+    }
+
+    if (withSeconds === true && value.match(/:/g)?.length === 1) {
       return `${ value }:00`
     }
+
     return '';
   }
 

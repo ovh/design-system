@@ -114,6 +114,13 @@
                 cursor: pointer;
               }
 
+              .prev.no-displayed,
+              .next.no-displayed {
+                opacity: 0;
+                cursor: default;
+                pointer-events: none;
+              }
+
               .prev,
               .next,
               .disabled {

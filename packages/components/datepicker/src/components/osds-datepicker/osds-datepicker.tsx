@@ -96,6 +96,8 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
   /** @see OdsDatepickerAttribute.placeholder */
   @Prop({ reflect: true }) placeholder?: string = DEFAULT_ATTRIBUTE.placeholder;
 
+  @Prop({ reflect: true }) showOthersMouthDay?: boolean = DEFAULT_ATTRIBUTE.showOthersMouthDay;
+
   /** @see OdsDatepickerAttribute.value */
   @Prop({ reflect: true, mutable: true }) value?: Date | null = DEFAULT_ATTRIBUTE.value;
 
@@ -179,100 +181,113 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
     this.initializeDatepicker();
   }
 
-  initializeDatepicker() {
-    if(!this.el.shadowRoot) {
-      return;
-    }
-    if(this.datepickerInstance) {
+  initializeDatepicker(): void {
+    if(!this.el.shadowRoot || this.datepickerInstance) {
       return;
     }
 
-    if (this.hiddenInput && !this.hiddenInput.getAttribute('initialized')) {
-      this.datepickerInstance = new Datepicker(this.hiddenInput, {
-        datesDisabled: this.datesDisabled
-          ? this.datesDisabled.map((date) => Datepicker.formatDate(date, 'dd/mm/yyyy'))
-          : undefined,
-        daysOfWeekDisabled: this.daysOfWeekDisabled,
-        format: this.format,
-        language: this.locale,
-        maxDate: this.maxDate
-          ? this.maxDate
-          : undefined,
-        maxView: 2,
-        minDate: this.minDate
-          ? this.minDate
-          : undefined,
-        nextArrow: `<osds-icon name="triangle-right" size="sm" color=${this.color}></osds-icon>`,
-        prevArrow: `<osds-icon name="triangle-left" size="sm" color=${this.color}></osds-icon>`,
-      });
+    if (!this.hiddenInput || this.hiddenInput.getAttribute('initialized')) {
+      return;
+    }
 
-      this.datepickerElement = this.el.shadowRoot.querySelector('.datepicker-picker') as HTMLElement;
+    this.datepickerInstance = new Datepicker(this.hiddenInput, {
+      datesDisabled: this.datesDisabled
+        ? this.datesDisabled.map((date) => Datepicker.formatDate(date, 'dd/mm/yyyy'))
+        : undefined,
+      daysOfWeekDisabled: this.daysOfWeekDisabled,
+      format: this.format,
+      language: this.locale,
+      maxDate: this.maxDate
+        ? this.maxDate
+        : undefined,
+      maxView: 2,
+      minDate: this.minDate
+        ? this.minDate
+        : undefined,
+      nextArrow: `<osds-icon name="triangle-right" size="sm" color=${this.color}></osds-icon>`,
+      prevArrow: `<osds-icon name="triangle-left" size="sm" color=${this.color}></osds-icon>`,
+    });
 
-      this.hiddenInput.addEventListener('changeDate', (e: Event) => {
-        const customEvent = e as CustomEvent;
-        this.onChange(customEvent.detail.date);
-      });
+    this.datepickerElement = this.el.shadowRoot.querySelector('.datepicker-picker') as HTMLElement;
 
-      this.hiddenInput.setAttribute('initialized', 'true');
+    this.hiddenInput.addEventListener('changeDate', (e: Event) => {
+      const customEvent = e as CustomEvent;
+      this.onChange(customEvent.detail.date);
+    });
 
-      const datepickerButtons = this.datepickerElement.querySelectorAll('button');
-      datepickerButtons.forEach((element) => {
-        element.removeAttribute('tabindex');
-      });
+    this.hiddenInput.setAttribute('initialized', 'true');
 
-      const datepickerDayNames = this.el.shadowRoot.querySelectorAll('.dow');
-      datepickerDayNames.forEach((day) => {
-        if (day.textContent) {
-          day.textContent = day.textContent.trim().charAt(0);
-        }
-      });
+    const datepickerButtons = this.datepickerElement.querySelectorAll('button');
+    datepickerButtons.forEach((element) => {
+      element.removeAttribute('tabindex');
+    });
 
-      const viewSwitch = this.el.shadowRoot.querySelector('.view-switch') as HTMLElement;
-      const chevron = document.createElement('osds-icon');
-      chevron.setAttribute('name', 'chevron-down');
-      chevron.setAttribute('color', `${this.color}`);
-      chevron.setAttribute('size', 'xs');
-      viewSwitch.appendChild(chevron);
+    const datepickerDayNames = this.el.shadowRoot.querySelectorAll('.dow');
+    datepickerDayNames.forEach((day) => {
+      if (day.textContent) {
+        day.textContent = day.textContent.trim().charAt(0);
+      }
+    });
 
-      const datepickerSpanElements = this.el.shadowRoot.querySelectorAll('.datepicker-grid span');
-      datepickerSpanElements.forEach((span) => {
-        const button = document.createElement('button');
-        button.setAttribute('class', span.getAttribute('class') as string);
-        button.setAttribute('data-date', span.getAttribute('data-date') as string);
-        button.innerHTML = span.innerHTML;
-        span.replaceWith(button);
-      });
+    const viewSwitch = this.el.shadowRoot.querySelector('.view-switch') as HTMLElement;
+    const chevron = document.createElement('osds-icon');
+    chevron.setAttribute('name', 'chevron-down');
+    chevron.setAttribute('color', `${this.color}`);
+    chevron.setAttribute('size', 'xs');
+    viewSwitch.appendChild(chevron);
 
-      this.hiddenInput.addEventListener('changeView', (e: Event) => {
-        const customEvent = e as CustomEvent;
-        if(this.el.shadowRoot) {
-          const datepickerSpanElements = this.el.shadowRoot.querySelectorAll('.datepicker-grid span');
-          datepickerSpanElements.forEach((span) => {
-            const button = document.createElement('button');
-            button.setAttribute('class', span.getAttribute('class') as string);
-            if (customEvent.detail.viewId === 0) {
-              button.setAttribute('data-date', span.getAttribute('data-date') as string);
-            } else if (customEvent.detail.viewId === 1) {
-              button.setAttribute('data-month', span.getAttribute('data-month') as string);
-            } else if (customEvent.detail.viewId === 2) {
-              button.setAttribute('data-year', span.getAttribute('data-year') as string);
-            }
-            button.innerHTML = span.innerHTML;
-            span.replaceWith(button);
-          });
-        }
-      });
+    const datepickerSpanElements = this.el.shadowRoot.querySelectorAll('.datepicker-grid span');
+    datepickerSpanElements.forEach((span) => {
+      const button = document.createElement('button');
+      button.setAttribute('class', span.getAttribute('class') as string);
+      button.setAttribute('data-date', span.getAttribute('data-date') as string);
+      button.innerHTML = span.innerHTML;
+      span.replaceWith(button);
+    });
+    this.removeOthersMouthDay();
 
-      ['changeView', 'changeMonth', 'changeYear'].forEach((event) => {
-        if (this.hiddenInput) {
-          this.hiddenInput.addEventListener(event, (e: Event) => {
-            const customEvent = e as CustomEvent;
-            if (customEvent.detail.viewId < 2) {
-              viewSwitch.appendChild(chevron);
-            }
-          });
-        }
-      });
+    this.hiddenInput.addEventListener('changeView', (e: Event) => {
+      const customEvent = e as CustomEvent;
+      if (this.el.shadowRoot) {
+        const datepickerSpanElements = this.el.shadowRoot.querySelectorAll('.datepicker-grid span');
+        datepickerSpanElements.forEach((span) => {
+          const button = document.createElement('button');
+          button.setAttribute('class', span.getAttribute('class') as string);
+          if (customEvent.detail.viewId === 0) {
+            button.setAttribute('data-date', span.getAttribute('data-date') as string);
+          } else if (customEvent.detail.viewId === 1) {
+            button.setAttribute('data-month', span.getAttribute('data-month') as string);
+          } else if (customEvent.detail.viewId === 2) {
+            button.setAttribute('data-year', span.getAttribute('data-year') as string);
+          }
+          button.innerHTML = span.innerHTML;
+          span.replaceWith(button);
+        });
+      }
+    });
+
+    ['changeView', 'changeMonth', 'changeYear'].forEach((event) => {
+      if (this.hiddenInput) {
+        this.hiddenInput.addEventListener(event, (e: Event) => {
+          this.removeOthersMouthDay();
+          const customEvent = e as CustomEvent;
+          if (customEvent.detail.viewId < 2) {
+            viewSwitch.appendChild(chevron);
+          }
+        });
+      }
+    });
+  }
+
+  removeOthersMouthDay(): void {
+    const datepickerDay = this.el.shadowRoot?.querySelectorAll('.datepicker-grid .day');
+    datepickerDay?.forEach((day) => day.classList.remove('no-displayed'));
+
+    if (!this.showOthersMouthDay) {
+      const datepickerNextMouthDay = this.el.shadowRoot?.querySelectorAll('.datepicker-grid .day.next');
+      datepickerNextMouthDay?.forEach((day) => day.classList.add('no-displayed'));
+      const datepickerPrevMouthDay = this.el.shadowRoot?.querySelectorAll('.datepicker-grid .day.prev');
+      datepickerPrevMouthDay?.forEach((day) => day.classList.add('no-displayed'));
     }
   }
 

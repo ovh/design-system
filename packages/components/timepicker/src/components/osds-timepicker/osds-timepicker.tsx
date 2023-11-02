@@ -68,15 +68,6 @@ export class OsdsTimepicker implements OdsTimepickerAttribute {
     }
   }
 
-  @Watch('withSeconds')
-  @Watch('value')
-  checkSeconds(withSeconds: boolean) {
-    if(withSeconds === false && this.input?.value.match(/:/g)?.length === 2 ){
-      const inputValue = this.input.value.split(':');
-      this.input.value = inputValue[0].concat(':', inputValue[1]);
-    }
-  }
-
   render() {
     const {
       clearable,
@@ -106,7 +97,7 @@ export class OsdsTimepicker implements OdsTimepickerAttribute {
         </osds-input>
         {
           (currentTimezone || timezones) && <osds-select
-            class="osds-select"
+            class="osds-timepicker__timezones"
             disabled={ disabled }
             error={ error }
             inline={ inline }

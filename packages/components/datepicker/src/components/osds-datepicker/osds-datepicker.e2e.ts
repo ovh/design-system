@@ -276,4 +276,16 @@ describe('e2e:osds-datepicker', () => {
     const datepickerPrevDaysNotDisplayed = datepickerPrevDays.every((day) => day.classList.contains('no-displayed'));
     expect(datepickerPrevDaysNotDisplayed).toBe(true);
   });
+
+  it('should not navigate on hidden sibling month days', async() => {
+    await setup({ attributes: { showSiblingsMonthDays: false, value: new Date('2023-05-15') } });
+    await el.click();
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+    const value = await getDatepickerValue();
+    expect(value).toEqual(new Date('2023-04-30T23:00:00.000Z'));
+  });
 });

@@ -282,13 +282,22 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
   @Watch('showSiblingsMonthDays')
   hideSiblingsMonthDays(): void {
     const datepickerDay = this.el.shadowRoot?.querySelectorAll('.datepicker-grid .day');
-    datepickerDay?.forEach((day) => day.classList.remove('no-displayed'));
+    datepickerDay?.forEach((day) => {
+      day.removeAttribute('disabled');
+      return day.classList.remove('no-displayed');
+    });
 
     if (!this.showSiblingsMonthDays) {
       const datepickerNextMonthDays = this.el.shadowRoot?.querySelectorAll('.datepicker-grid .day.next');
-      datepickerNextMonthDays?.forEach((day) => day.classList.add('no-displayed'));
+      datepickerNextMonthDays?.forEach((day) => {
+        day.setAttribute('disabled', '');
+        return day.classList.add('no-displayed');
+      });
       const datepickerPrevMonthDays = this.el.shadowRoot?.querySelectorAll('.datepicker-grid .day.prev');
-      datepickerPrevMonthDays?.forEach((day) => day.classList.add('no-displayed'));
+      datepickerPrevMonthDays?.forEach((day) => {
+        day.setAttribute('disabled', '');
+        return day.classList.add('no-displayed');
+      });
     }
   }
 

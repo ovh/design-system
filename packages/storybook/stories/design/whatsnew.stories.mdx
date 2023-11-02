@@ -12,6 +12,43 @@ import { Meta } from '@storybook/addon-docs';
 
 # What's new ?
 
+## v16.3.0
+
+### Component changes:
+
+**Button**
+* Each variant now display correctly when using circle button
+> ⚠️️ **Breaking change**
+* Circle button may render differently regarding the variant you're using
+
+**Datepicker**
+* Component now close itself when value is selected
+* You can now hide adjacent month days with the attributes `showSiblingsMonthDays`
+
+**Flag**
+* Component has been refactored internally, but this should not have any impacts
+
+**Icon**
+* Component has been refactored internally, but this should not have any impacts
+
+### Bug fixes:
+**Menu**
+* Now correctly work when used with React
+
+**Select**
+* On Safari the component is displayed correctly when using flex 
+
+**Textarea**
+* On Safari the component is displayed correctly when using flex 
+
+**Tile**
+* On Safari the component is displayed correctly when using flex 
+
+### Project changes: 
+* The whole project is now built using Stenciljs v4.7
+> ⚠️️ **Breaking change**
+* We don't generate the bundle `custom-elements-bundle` anymore
+
 ## v16.2.1
 
 ### Component changes:

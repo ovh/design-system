@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-component-password-vue",
-  "version": "16.2.1",
+  "version": "16.3.0",
   "private": true,
   "description": "Vue specific wrapper for ods",
   "keywords": [],
@@ -20,12 +20,12 @@
     "dist/"
   ],
   "dependencies": {
-    "@ovhcloud/ods-component-password": "16.2.1"
+    "@ovhcloud/ods-component-password": "16.3.0"
   },
   "peerDependencies": {
     "vue": ">=3"
   },
   "devDependencies": {
-    "@ovhcloud/ods-vue-dev": "16.2.1"
+    "@ovhcloud/ods-vue-dev": "16.3.0"
   }
 }

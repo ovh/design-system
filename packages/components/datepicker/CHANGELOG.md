@@ -8,6 +8,34 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [16.3.0](https://ovh.github.io/design-system/v16.3.0/?path=/docs/design-system-changelog--page) (2023-11-02)
+[compare](https://github.com/ovh/design-system/compare/v16.2.1...v16.3.0)
+
+### Bug Fixes
+
+* **build:** prevent weird Stencil issue regarding types generation ([3c505d4](https://github.com/ovh/design-system/commit/3c505d459112b963c3b7544ef046f61e28d60644))
+* **datepicker:** close picker when select date ([6c06d99](https://github.com/ovh/design-system/commit/6c06d991dcbcd49516be4ace3be157aa881fd74b))
+* **datepicker:** has focus on click input ([b9b74ce](https://github.com/ovh/design-system/commit/b9b74ce3b496cacb8dad2797f3e84e8166396ff6))
+* **datepicker:** navigation on hidden sibling days ([f8cf480](https://github.com/ovh/design-system/commit/f8cf4809da6415b32726b32ece9205c12cf60a22))
+* **datepicker:** show thers mouth day ([ad71794](https://github.com/ovh/design-system/commit/ad7179462fd8a90a557222d3d9de0bb22bac607b))
+* **datepicker:** typo show siblingd mouth days & test ([4259ec1](https://github.com/ovh/design-system/commit/4259ec1d907ce254c1a73ba07968f7c1aec031c6))
+* **flag:** import type first ([dc83440](https://github.com/ovh/design-system/commit/dc8344055a1bd6b5e7edfd7a8376107cb86a4cd1))
+* **flag:** rebasing on master and autofixing eslint errors ([60275a9](https://github.com/ovh/design-system/commit/60275a9a1eb52fe891fc4dbfc4200be443aff9e6))
+
+
+### Features
+
+* **lib:** upgrade to Stencil 4.7 && add clean command ([aa7e165](https://github.com/ovh/design-system/commit/aa7e1655efa370f49e4ef60660c0d09b5d2c3b2f))
+* **linter:** fixing errors ([9181a5a](https://github.com/ovh/design-system/commit/9181a5aabec4130e9500077e6ef8b8686b48863a))
+* **linter:** fixing object curly spacing ([f59b24a](https://github.com/ovh/design-system/commit/f59b24a35758adf554262a2755f0340d92a137d7))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [16.2.1](https://ovh.github.io/design-system/v16.2.1/?path=/docs/design-system-changelog--page) (2023-10-18)
 [compare](https://github.com/ovh/design-system/compare/v16.2.0...v16.2.1)
 

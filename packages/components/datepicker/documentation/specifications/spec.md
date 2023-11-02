@@ -19,6 +19,7 @@
 |**`maxDate`** | `undefined` \| `Date` |  |  | Defines the Datepicker's maximum selectable date|
 |**`minDate`** | `undefined` \| `Date` |  |  | Defines the Datepicker's minimum selectable date|
 |**`placeholder`** | _string_ |  |  | Defines if the Datepicker should display a placeholder message|
+|**`showSiblingsMonthDays`** | _boolean_ |  |  | Defines if the Datepicker should display others month days|
 |**`value`** | `undefined` \| `Date` |  |  | Defines the Datepicker's value (Date object)|
 
 ### OdsDatepickerEvent

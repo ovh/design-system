@@ -96,7 +96,7 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
   /** @see OdsDatepickerAttribute.placeholder */
   @Prop({ reflect: true }) placeholder?: string = DEFAULT_ATTRIBUTE.placeholder;
 
-  @Prop({ reflect: true }) showOthersMouthDay?: boolean = DEFAULT_ATTRIBUTE.showOthersMouthDay;
+  @Prop({ reflect: true }) showSiblingsMonthDays?: boolean = DEFAULT_ATTRIBUTE.showSiblingsMonthDays;
 
   /** @see OdsDatepickerAttribute.value */
   @Prop({ reflect: true, mutable: true }) value?: Date | null = DEFAULT_ATTRIBUTE.value;
@@ -244,7 +244,7 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
       button.innerHTML = span.innerHTML;
       span.replaceWith(button);
     });
-    this.removeOthersMouthDay();
+    this.hideSiblingsMonthDays();
 
     this.hiddenInput.addEventListener('changeView', (e: Event) => {
       const customEvent = e as CustomEvent;
@@ -269,7 +269,7 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
     ['changeView', 'changeMonth', 'changeYear'].forEach((event) => {
       if (this.hiddenInput) {
         this.hiddenInput.addEventListener(event, (e: Event) => {
-          this.removeOthersMouthDay();
+          this.hideSiblingsMonthDays();
           const customEvent = e as CustomEvent;
           if (customEvent.detail.viewId < 2) {
             viewSwitch.appendChild(chevron);
@@ -279,15 +279,16 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
     });
   }
 
-  removeOthersMouthDay(): void {
+  @Watch('showSiblingsMonthDays')
+  hideSiblingsMonthDays(): void {
     const datepickerDay = this.el.shadowRoot?.querySelectorAll('.datepicker-grid .day');
     datepickerDay?.forEach((day) => day.classList.remove('no-displayed'));
 
-    if (!this.showOthersMouthDay) {
-      const datepickerNextMouthDay = this.el.shadowRoot?.querySelectorAll('.datepicker-grid .day.next');
-      datepickerNextMouthDay?.forEach((day) => day.classList.add('no-displayed'));
-      const datepickerPrevMouthDay = this.el.shadowRoot?.querySelectorAll('.datepicker-grid .day.prev');
-      datepickerPrevMouthDay?.forEach((day) => day.classList.add('no-displayed'));
+    if (!this.showSiblingsMonthDays) {
+      const datepickerNextMonthDays = this.el.shadowRoot?.querySelectorAll('.datepicker-grid .day.next');
+      datepickerNextMonthDays?.forEach((day) => day.classList.add('no-displayed'));
+      const datepickerPrevMonthDays = this.el.shadowRoot?.querySelectorAll('.datepicker-grid .day.prev');
+      datepickerPrevMonthDays?.forEach((day) => day.classList.add('no-displayed'));
     }
   }
 

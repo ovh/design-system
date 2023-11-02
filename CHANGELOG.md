@@ -8,6 +8,55 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [16.3.0](https://ovh.github.io/design-system/v16.3.0/?path=/docs/design-system-changelog--page) (2023-11-02)
+[compare](https://github.com/ovh/design-system/compare/v16.2.1...v16.3.0)
+
+### Bug Fixes
+
+* **build:** prevent weird Stencil issue regarding types generation ([3c505d4](https://github.com/ovh/design-system/commit/3c505d459112b963c3b7544ef046f61e28d60644))
+* **button:** not ghost variant on circle button ([fd04b92](https://github.com/ovh/design-system/commit/fd04b921cc1d940433929846d205f4adf634dd61))
+* **button:** remove circle ghost ([bcc58ad](https://github.com/ovh/design-system/commit/bcc58adf69bdb90fd1a66530b5360cd6f465ca45))
+* **datepicker:** close picker when select date ([6c06d99](https://github.com/ovh/design-system/commit/6c06d991dcbcd49516be4ace3be157aa881fd74b))
+* **datepicker:** has focus on click input ([b9b74ce](https://github.com/ovh/design-system/commit/b9b74ce3b496cacb8dad2797f3e84e8166396ff6))
+* **datepicker:** navigation on hidden sibling days ([f8cf480](https://github.com/ovh/design-system/commit/f8cf4809da6415b32726b32ece9205c12cf60a22))
+* **datepicker:** show thers mouth day ([ad71794](https://github.com/ovh/design-system/commit/ad7179462fd8a90a557222d3d9de0bb22bac607b))
+* **datepicker:** typo show siblingd mouth days & test ([4259ec1](https://github.com/ovh/design-system/commit/4259ec1d907ce254c1a73ba07968f7c1aec031c6))
+* **doc:** put back specific doc commands ([442af61](https://github.com/ovh/design-system/commit/442af61b9f292a192920885c7b5c56056d345710))
+* **flag:** fixing display on Safari browser by adding default width and height ([498708c](https://github.com/ovh/design-system/commit/498708c18b01f10b5ab9e0840062f82be850815f))
+* **flag:** import type first ([dc83440](https://github.com/ovh/design-system/commit/dc8344055a1bd6b5e7edfd7a8376107cb86a4cd1))
+* **flag:** rebasing on master and autofixing eslint errors ([60275a9](https://github.com/ovh/design-system/commit/60275a9a1eb52fe891fc4dbfc4200be443aff9e6))
+* **icon:** review ([6fd43b9](https://github.com/ovh/design-system/commit/6fd43b9a82aa9cb2b8177e5608dc66c923ad9d04))
+* **icon:** screenshot timeout ([461c099](https://github.com/ovh/design-system/commit/461c099a3b810a6b9c66e943bd7f03c6d92944cf))
+* **menu:** fixing story ([55f3a2a](https://github.com/ovh/design-system/commit/55f3a2a55c6b64d01a60577f5b796b324ab0ac56))
+* **menu:** replace initialized element with getter ([7671901](https://github.com/ovh/design-system/commit/7671901c27aca209a153f8f7365f964db4a5ebce))
+* **nenu:** test icon class ([c323d59](https://github.com/ovh/design-system/commit/c323d598e20c6978de200ea9c553ed70873c5653))
+* **project:** put back codeowners ([5268601](https://github.com/ovh/design-system/commit/52686016b0b25acc23ebff522f602fb4a9ad642f))
+* **select:** fixing display on Safari browser by adding 100% width to inner div ([331440a](https://github.com/ovh/design-system/commit/331440acad96e7130bcc560e40e19d27bf571b11))
+* **textarea:** fixing display on Safari browser by adding width and box-sizing ([6441f20](https://github.com/ovh/design-system/commit/6441f209b1afc15e45b05871d471a381e6440a80))
+* **tile:** fixing display on Safari browser by adding flex properties ([89e0a8b](https://github.com/ovh/design-system/commit/89e0a8b372cc323ab75139e38020a51ae29bee56))
+
+
+### Features
+
+* **icon:** apply lint rules ([bdfc2c3](https://github.com/ovh/design-system/commit/bdfc2c327c25295300cab9c37a40e9043ee486e3))
+* **lib:** upgrade to Stencil 4.7 && add clean command ([aa7e165](https://github.com/ovh/design-system/commit/aa7e1655efa370f49e4ef60660c0d09b5d2c3b2f))
+* **linter:** fix lint errors on text component ([e0f3c92](https://github.com/ovh/design-system/commit/e0f3c92a02d619cf695e945f8f036cc1cf0019af))
+* **linter:** fixing dependency ([ce7655d](https://github.com/ovh/design-system/commit/ce7655d54e4c36209bafb2436c04e8d99e78d55b))
+* **linter:** fixing errors ([9181a5a](https://github.com/ovh/design-system/commit/9181a5aabec4130e9500077e6ef8b8686b48863a))
+* **linter:** fixing import sorting with plugin ([30e25a9](https://github.com/ovh/design-system/commit/30e25a92719325168f3f7135d07fb5aaf207b044))
+* **linter:** fixing object curly spacing ([f59b24a](https://github.com/ovh/design-system/commit/f59b24a35758adf554262a2755f0340d92a137d7))
+* **linter:** fixing react example build by ignoring eslint errors ([151effc](https://github.com/ovh/design-system/commit/151effc12844cca00a9099dc936c24a355af6ea7))
+* **linter:** update eslint config with rules, plugins and reporter ([a722500](https://github.com/ovh/design-system/commit/a72250081e9fb10c47729212eafba84707a19166))
+* **linter:** update eslint config with rules, plugins and reporter ([7587b0f](https://github.com/ovh/design-system/commit/7587b0f1d0cf16e704052f63c10f995e2cc12c55))
+* **linter:** updating config for import/order (type first), import spaces ([d586677](https://github.com/ovh/design-system/commit/d58667792db248bab2bb7c55ca3f057cdfe7d571))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [16.2.1](https://ovh.github.io/design-system/v16.2.1/?path=/docs/design-system-changelog--page) (2023-10-18)
 [compare](https://github.com/ovh/design-system/compare/v16.2.0...v16.2.1)
 

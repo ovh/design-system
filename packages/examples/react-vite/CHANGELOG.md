@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [16.3.0](https://ovh.github.io/design-system/v16.3.0/?path=/docs/design-system-changelog--page) (2023-11-02)
+[compare](https://github.com/ovh/design-system/compare/v16.2.1...v16.3.0)
+
+### Bug Fixes
+
+* **flag:** import type first ([dc83440](https://github.com/ovh/design-system/commit/dc8344055a1bd6b5e7edfd7a8376107cb86a4cd1))
+* **flag:** rebasing on master and autofixing eslint errors ([60275a9](https://github.com/ovh/design-system/commit/60275a9a1eb52fe891fc4dbfc4200be443aff9e6))
+
+
+### Features
+
+* **linter:** fixing errors ([9181a5a](https://github.com/ovh/design-system/commit/9181a5aabec4130e9500077e6ef8b8686b48863a))
+* **linter:** fixing object curly spacing ([f59b24a](https://github.com/ovh/design-system/commit/f59b24a35758adf554262a2755f0340d92a137d7))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

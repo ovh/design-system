@@ -4258,6 +4258,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-common-theme-test-name@16.2.1, @ovhcloud/ods-common-theme-test-name@workspace:packages/themes/common":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-common-theme-test-name@workspace:packages/themes/common"
+  dependencies:
+    "@ovhcloud/ods-style-dev": 16.2.1
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-common-theming@16.2.1, @ovhcloud/ods-common-theming@workspace:packages/common/theming":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-common-theming@workspace:packages/common/theming"
@@ -5976,11 +5984,13 @@ __metadata:
     "@ovhcloud/ods-component-checkbox": 16.2.1
     "@ovhcloud/ods-component-checkbox-button": 16.2.1
     "@ovhcloud/ods-component-flag": 16.2.1
+    "@ovhcloud/ods-component-icon": 16.2.1
     "@ovhcloud/ods-component-message": 16.2.1
     "@ovhcloud/ods-component-radio": 16.2.1
     "@ovhcloud/ods-component-text": 16.2.1
     "@ovhcloud/ods-component-tile": 16.2.1
     "@ovhcloud/ods-component-toggle": 16.2.1
+    "@ovhcloud/ods-theme-basic": 16.2.1
     "@ovhcloud/ods-theme-blue-jeans": 16.2.1
     "@types/react": 16.14.38
     "@types/react-dom": 16.9.19
@@ -6084,11 +6094,29 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-theme-basic@16.2.1, @ovhcloud/ods-theme-basic@workspace:packages/themes/basic":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-theme-basic@workspace:packages/themes/basic"
+  dependencies:
+    "@ovhcloud/ods-common-theme-test-name": 16.2.1
+    "@ovhcloud/ods-style-dev": 16.2.1
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-theme-blue-jeans@16.2.1, @ovhcloud/ods-theme-blue-jeans@workspace:packages/themes/blue-jeans":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-theme-blue-jeans@workspace:packages/themes/blue-jeans"
   dependencies:
     "@ovhcloud/ods-common-theming": 16.2.1
+    "@ovhcloud/ods-style-dev": 16.2.1
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-theme-dark@workspace:packages/themes/dark":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-theme-dark@workspace:packages/themes/dark"
+  dependencies:
+    "@ovhcloud/ods-common-theme-test-name": 16.2.1
     "@ovhcloud/ods-style-dev": 16.2.1
   languageName: unknown
   linkType: soft

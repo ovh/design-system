@@ -6,13 +6,17 @@ import { ODS_THEME_COLOR_HUE, ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-commo
 // for each react component you use from `ODS`, use this import:
 import { ODS_TEXT_SIZE } from '@ovhcloud/ods-components/text';
 import { OsdsText } from '@ovhcloud/ods-components/text/react';
-import React from 'react';
+import { OsdsIcon } from '@ovhcloud/ods-components/icon/react';
+import React, { useEffect, useState } from 'react';
 
 import odsLogo from './assets/ods.svg';
 import reactLogo from './assets/react.svg';
 
 // you can directly import the generated ods theme here, or through the application css (app.css)
 import '@ovhcloud/ods-theme-blue-jeans';
+
+import '@ovhcloud/ods-theme-basic';
+import '@ovhcloud/ods-theme-dark';
 import './App.css';
 
 import Demo from './demo/Demo';
@@ -24,32 +28,70 @@ Ods.instance().assetPath('flags/flags-4x3/');
 Ods.instance().logging(true);
 
 const App: React.FC = () => {
+  const [theme, setTheme] = useState<string>()
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme || '')
+  }, [theme])
+
+  function onBasicThemeClick() {
+    setTheme('basic')
+  }
+
+  function onDarkThemeClick() {
+    setTheme('dark')
+  }
+
+  function onNoThemeClick() {
+    setTheme('')
+  }
+
   return (
-    <div className="ods-theme">
+    <div>
       <div>
-        <a href="http://go/odsdoc" target="_blank" rel="noopener noreferrer">
-          <img src={odsLogo} className="logo ODS" alt="ODS logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <button onClick={ onBasicThemeClick }>
+          Theme basic
+        </button>
+
+        <button onClick={ onDarkThemeClick }>
+          Theme dark
+        </button>
+
+        <button onClick={ onNoThemeClick }>
+          No theme
+        </button>
       </div>
-      <h1 className={'ods-heading-800'}>ODS + React</h1>
-      <div className={'ods-caption-200'}>
-        <p>
-          <OsdsText color={ODS_THEME_COLOR_INTENT.info} size={ODS_TEXT_SIZE._100}>
-            Edit <code>src/App.tsx</code> and save to test HMR
-          </OsdsText>
-        </p>
-      </div>
-      <p>
-        <OsdsText color={ODS_THEME_COLOR_INTENT.default} size={ODS_TEXT_SIZE._200} hue={ODS_THEME_COLOR_HUE._600}>
-          Click on the ODS, Vite or React logos to learn more
-        </OsdsText>
-      </p>
-      <Demo />
+
+      <OsdsIcon name="home"
+                size="md" />
     </div>
-  );
+  )
+  // return (
+  //   <div className="ods-theme">
+  //     <div>
+  //       <a href="http://go/odsdoc" target="_blank" rel="noopener noreferrer">
+  //         <img src={odsLogo} className="logo ODS" alt="ODS logo" />
+  //       </a>
+  //       <a href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
+  //         <img src={reactLogo} className="logo react" alt="React logo" />
+  //       </a>
+  //     </div>
+  //     <h1 className={'ods-heading-800'}>ODS + React</h1>
+  //     <div className={'ods-caption-200'}>
+  //       <p>
+  //         <OsdsText color={ODS_THEME_COLOR_INTENT.info} size={ODS_TEXT_SIZE._100}>
+  //           Edit <code>src/App.tsx</code> and save to test HMR
+  //         </OsdsText>
+  //       </p>
+  //     </div>
+  //     <p>
+  //       <OsdsText color={ODS_THEME_COLOR_INTENT.default} size={ODS_TEXT_SIZE._200} hue={ODS_THEME_COLOR_HUE._600}>
+  //         Click on the ODS, Vite or React logos to learn more
+  //       </OsdsText>
+  //     </p>
+  //     <Demo />
+  //   </div>
+  // );
 };
 
 export default App;

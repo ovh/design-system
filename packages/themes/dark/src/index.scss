@@ -1,0 +1,6 @@
+@import '~@ovhcloud/ods-common-theme-test-name';
+
+:root[data-theme='dark'] {
+  --ods-icon-background-color: blue;
+  --ods-icon-margin: 5px;
+}

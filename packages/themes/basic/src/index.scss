@@ -1,0 +1,5 @@
+@import '~@ovhcloud/ods-common-theme-test-name';
+
+:root[data-theme='basic'] {
+  --ods-icon-background-color: var(--ods-color-default);
+}

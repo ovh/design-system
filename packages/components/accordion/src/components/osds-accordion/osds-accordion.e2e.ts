@@ -10,6 +10,7 @@ import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 describe('e2e:osds-accordion', () => {
   let page: E2EPage;
   let el: E2EElement;
+  let summarySlot : E2EElement;
 
   async function setup({ attributes = {}, html = '' }: { attributes?: Partial<OdsAccordionAttribute>, html?: string } = {}) {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsAccordionAttribute>(attributes, DEFAULT_ATTRIBUTE);
@@ -22,6 +23,7 @@ describe('e2e:osds-accordion', () => {
     `);
     await page.evaluate(() => document.body.style.setProperty('margin', '4px'));
     el = await page.find('osds-accordion');
+    summarySlot = await page.find('osds-accordion >>> summary');
   }
 
   describe('defaults', () => {
@@ -53,6 +55,28 @@ describe('e2e:osds-accordion', () => {
       componentOpened = await el.getProperty('opened');
       expect(details?.getAttribute('open')).toBe('');
       expect(componentOpened).toBe(true);
+    });
+
+    it('should not opened if disabled', async() => {
+      const content = `
+        <span slot='summary'>Lorem ipsum</span>
+        Lorem ipsum
+       `
+      await setup({
+        attributes: { opened: false, disabled: true },
+        html : content
+      });
+      await page.waitForChanges();
+
+      await summarySlot.focus();
+      await page.waitForChanges();
+
+      await page.keyboard.press('Space');
+      await page.waitForChanges();
+
+      const componentOpened = await el.getProperty('opened');
+
+      expect(componentOpened).toBe(false);
     });
   });
 });

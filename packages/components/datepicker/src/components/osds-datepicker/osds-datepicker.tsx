@@ -147,6 +147,7 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
         ? this.minDate
         : undefined,
     });
+    this.hideSiblingsMonthDays();
   }
 
   emitBlur(): void {

@@ -277,6 +277,19 @@ describe('e2e:osds-datepicker', () => {
     expect(datepickerPrevDaysNotDisplayed).toBe(true);
   });
 
+  it('should not displayed sibling month days after updating datepicker', async() => {
+    await setup({ attributes: { showSiblingsMonthDays: false, value: new Date('2023-05-15') } });
+    await el.click();
+    await page.waitForChanges();
+    await el.setProperty('daysOfWeekDisabled', [ODS_DATEPICKER_DAY.saturday, ODS_DATEPICKER_DAY.sunday]);
+    const datepickerNextDays = await page.findAll('osds-datepicker >>> .datepicker-grid .day.next');
+    const datepickerNextDaysNotDisplayed = datepickerNextDays.every((day) => day.classList.contains('no-displayed'));
+    expect(datepickerNextDaysNotDisplayed).toBe(true);
+    const datepickerPrevDays = await page.findAll('osds-datepicker >>> .datepicker-grid .day.prev');
+    const datepickerPrevDaysNotDisplayed = datepickerPrevDays.every((day) => day.classList.contains('no-displayed'));
+    expect(datepickerPrevDaysNotDisplayed).toBe(true);
+  });
+
   it('should not navigate on hidden sibling month days', async() => {
     await setup({ attributes: { showSiblingsMonthDays: false, value: new Date('2023-05-15') } });
     await el.click();

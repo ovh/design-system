@@ -115,9 +115,15 @@ class OdsSelectController {
     }
     if (event.code === 'ArrowUp' || (event.code === 'Tab' && event.shiftKey)) {
       const index = hasSelectedOption ? selectedSelectOptionIndex - 1 : 0;
-      if (index < 0 && (event.code === 'Tab' && event.shiftKey)) {
+      if (!hasSelectedOption && (event.code === 'Tab' && event.shiftKey)) {
         return;
-      } else if (index < 0) {
+      }
+      if (index < 0 && (event.code === 'Tab' && event.shiftKey)) {
+        event.preventDefault();
+        this.component.anchor.focus();
+        return;
+      }
+      if (index < 0) {
         return focusSelectOption(this.selectOptions.length -1);
       }
       return focusSelectOption(index);

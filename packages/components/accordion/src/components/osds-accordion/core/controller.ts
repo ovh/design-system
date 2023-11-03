@@ -27,8 +27,10 @@ class OdsAccordionController {
    * in case of no `details` already set, it won't change the `opened` status.
    */
   onToggle(): void {
-    this.component.opened = this.component.detailsEl ? this.component.detailsEl.getAttribute('open') === '' : this.component.opened;
-    this.component.emitToggle(this.component.opened || false);
+    if(!this.component.disabled) {
+      this.component.opened = this.component.detailsEl ? this.component.detailsEl.getAttribute('open') === '' : this.component.opened;
+      this.component.emitToggle(this.component.opened || false);
+    }
   }
 
   beforeInit(): void {

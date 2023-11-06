@@ -173,4 +173,4 @@ All.args = {
 };
 All.argTypes = extractArgTypes(storyParamsAll);
 
-export { UpdateStrategy } from './tile.demo.stories.update-strategy';
+export { UpdateStrategy } from './demo.stories.update-strategy';

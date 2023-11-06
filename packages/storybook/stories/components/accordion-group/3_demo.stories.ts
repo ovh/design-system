@@ -48,6 +48,7 @@ const TemplateDefault = (args: any) => {
   `;
 };
 export const Default = TemplateDefault.bind({});
+// @ts-ignore
 Default.args = {
   ...extractStoryParams(storyParams),
 };

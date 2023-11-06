@@ -1,5 +1,4 @@
 import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
-import changelog from '@ovhcloud/ods-components/accordion/CHANGELOG.md';
 import { defineCustomElements } from '@ovhcloud/ods-components/accordion/loader';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
@@ -48,6 +47,7 @@ const TemplateDefault = (args: any) => {
   `;
 };
 export const Default = TemplateDefault.bind({});
+// @ts-ignore
 Default.args = {
   ...extractStoryParams(storyParams),
 };

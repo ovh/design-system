@@ -41,5 +41,5 @@ Default.args = {
   ...extractStoryParams(storyParams),
 };
 
-export { UpdateStrategy } from './radio-group.demo.stories.update-strategy';
-export { RadioButton } from './radio-group.demo.stories.radio-button';
+export { UpdateStrategy } from './demo.stories.update-strategy';
+export { RadioButton } from './demo.stories.radio-button';

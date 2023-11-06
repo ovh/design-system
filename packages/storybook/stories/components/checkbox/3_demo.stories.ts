@@ -55,4 +55,4 @@ Toggle.args = {
   ...extractStoryParams(storyParams),
 };
 
-export { CheckboxButton } from './checkbox.demo.stories.checkbox-button';
+export { CheckboxButton } from './demo.stories.checkbox-button';

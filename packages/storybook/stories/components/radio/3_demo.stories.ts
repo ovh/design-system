@@ -47,4 +47,4 @@ Default.args = {
 // @ts-ignore
 Default.argTypes = extractArgTypes(storyParams);
 
-export { UpdateStrategy } from './radio.demo.stories.update-strategy';
+export { UpdateStrategy } from './demo.stories.update-strategy';

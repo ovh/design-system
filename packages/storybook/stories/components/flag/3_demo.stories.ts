@@ -48,5 +48,5 @@ const Play = async() => {
 
 Default.play = Play;
 
-export { CustomPath } from './flag.demo.stories.custom-path';
-export { All } from './flag.demo.stories.all';
+export { CustomPath } from './demo.stories.custom-path';
+export { All } from './demo.stories.all';

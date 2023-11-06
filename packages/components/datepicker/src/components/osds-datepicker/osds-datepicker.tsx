@@ -147,7 +147,7 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
         ? this.minDate
         : undefined,
     });
-    this.hideSiblingsMonthDays();
+    this.updateSiblingsMonthDaysVisibility();
   }
 
   emitBlur(): void {
@@ -245,7 +245,7 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
       button.innerHTML = span.innerHTML;
       span.replaceWith(button);
     });
-    this.hideSiblingsMonthDays();
+    this.updateSiblingsMonthDaysVisibility();
 
     this.hiddenInput.addEventListener('changeView', (e: Event) => {
       const customEvent = e as CustomEvent;
@@ -270,7 +270,7 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
     ['changeView', 'changeMonth', 'changeYear'].forEach((event) => {
       if (this.hiddenInput) {
         this.hiddenInput.addEventListener(event, (e: Event) => {
-          this.hideSiblingsMonthDays();
+          this.updateSiblingsMonthDaysVisibility();
           const customEvent = e as CustomEvent;
           if (customEvent.detail.viewId < 2) {
             viewSwitch.appendChild(chevron);
@@ -281,7 +281,7 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
   }
 
   @Watch('showSiblingsMonthDays')
-  hideSiblingsMonthDays(): void {
+  updateSiblingsMonthDaysVisibility(): void {
     const datepickerDay = this.el.shadowRoot?.querySelectorAll('.datepicker-grid .day');
     datepickerDay?.forEach((day) => {
       day.removeAttribute('disabled');

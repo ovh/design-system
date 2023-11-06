@@ -35,11 +35,19 @@ class OdsQuantityController {
       const valueAsNb = Number(this.component.input.value);
       const minNb = Number(this.component.input.min);
       const maxNb = Number(this.component.input.max);
+      const stepNb = Number(this.component.input.step);
+      let valueToCheck = valueAsNb;
 
-      if (this.component.input.min !== '' && valueAsNb < minNb) {
+      if (stepNb && !Number.isInteger((valueAsNb - minNb) / stepNb)) {
+        valueToCheck = Math.floor( valueAsNb / stepNb ) * stepNb
+      }
+
+      if (this.component.input.min !== '' && valueToCheck < minNb) {
         this.component.input.value = minNb;
-      } else if (this.component.input.max !== '' && valueAsNb > maxNb) {
+      } else if (this.component.input.max !== '' && valueToCheck > maxNb) {
         this.component.input.value = maxNb;
+      } else if (valueToCheck != valueAsNb) {
+        this.component.input.value = valueToCheck;
       }
     }
   }

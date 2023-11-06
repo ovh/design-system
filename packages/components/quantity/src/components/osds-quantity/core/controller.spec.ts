@@ -123,6 +123,24 @@ describe('spec:ods-quantity-controller', () => {
           expect(input.value).toEqual(input.max);
         });
 
+        it('should change value of input if not in a valid step', () => {
+          setup();
+          let validInput = "1";
+          const input = document.createElement('input');
+          input.setAttribute('type', 'number');
+          input.setAttribute('value', '1.5');
+          input.setAttribute('min', '0');
+          input.setAttribute('step', '1');
+
+          component.el.appendChild(input);
+
+          controller.initInput();
+          input.focus();
+          input.blur();
+
+          expect(input.value).toEqual(validInput);
+        });
+
         it('should change value of osds-input if inferior to min on Blur', () => {
           setup();
           const input = document.createElement('osds-input') as (OsdsInput & HTMLElement);

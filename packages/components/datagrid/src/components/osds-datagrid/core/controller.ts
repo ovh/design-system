@@ -17,7 +17,9 @@ class OdsDatagridController {
   toTabulatorColumn(column: OdsDatagridColumn): ColumnDefinition {
     return {
       field: column.field,
-      formatter: (cell: CellComponent) => column.formatter?.(cell.getValue()) ?? this.getOdsText(cell.getValue(), ODS_TEXT_SIZE._400),
+      formatter: (cell: CellComponent): string => {
+        return column.formatter?.(cell.getValue(), cell.getRow().getData()) ?? this.getOdsText(cell.getValue(), ODS_TEXT_SIZE._400);
+      },
       headerHozAlign: 'center',
       headerSort: column.isSortable ?? false,
       hozAlign: 'center',
@@ -25,6 +27,7 @@ class OdsDatagridController {
       title: column.title,
       titleFormatter: (cell: CellComponent) => this.getOdsText(cell.getValue(), ODS_TEXT_SIZE._500),
       vertAlign: 'middle',
+      visible: this.component.hasHideableColumns ? !this.component.hideableColumns?.some((col) => column.field === col) : true,
     };
   }
 

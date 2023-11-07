@@ -20,6 +20,7 @@
         }
 
         &::before {
+            content: "";
             display: block;
             width: 12px;
             height: 12px;
@@ -49,13 +50,21 @@ $ods-border-datagrid: solid 1px var(--ods-color-blue-200);
     box-sizing: border-box;
     border: none;
     background-color: #FFF;
+    position: initial;
 
     .tabulator-tableholder {
+        position: initial;
+
+        .tabulator-table {
+            position: initial;
+        }
+
         .tabulator-row {
             display: --webkit-inline-flex;
             background-color: #FFF;
             cursor: default;
-            
+            position: initial;
+
             &:hover {
                 background-color: #FFF;
             }
@@ -69,6 +78,10 @@ $ods-border-datagrid: solid 1px var(--ods-color-blue-200);
             box-sizing: border-box;
             border-top: $ods-border-datagrid;
             border-right: none;
+
+            &:not(.ods-selectable__input-checkbox) {
+                position: initial;
+            }
 
             &:first-child {
                 border-left: $ods-border-datagrid;
@@ -107,10 +120,10 @@ $ods-border-datagrid: solid 1px var(--ods-color-blue-200);
         border-bottom: none;
         background-color: #FFF;
         height: unset !important;
-        overflow: unset;
+        position: initial;
 
         .tabulator-header-contents {
-            overflow: unset;
+            position: initial;
         }
 
         .tabulator-headers {
@@ -122,10 +135,18 @@ $ods-border-datagrid: solid 1px var(--ods-color-blue-200);
                 background-color: #FFF;
                 
                 &.ods-hidabled-columns {
-                    overflow: unset;
+                    position: initial;
 
-                    .tabulator-col-title {
-                        overflow: unset;
+                    .tabulator-col-content {
+                        position: initial;
+                    }
+
+                    .tabulator-col-title-holder {
+                        position: initial;
+                    }
+
+                    osds-popover {
+                        position: initial;
                     }
                 }
 
@@ -143,6 +164,7 @@ $ods-border-datagrid: solid 1px var(--ods-color-blue-200);
                     .tabulator-col-title-holder {
                         display: flex;
                         justify-content: center;
+                        align-items: center;
 
                         .tabulator-col-title {
                             width: unset;

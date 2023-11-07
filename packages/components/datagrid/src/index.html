@@ -6,7 +6,10 @@
   <title>Dev ods-datagrid</title>
 
   <script type="module">
-    !window.ods && (window.ods = {config: {logging: {active:true}}});
+    !window.ods && (window.ods = {config: { logging: { active:true } } });
+    window.ods && (window.ods.config.logging.active = true);
+    !window.ocdk && (window.ocdk = {config: {logging: {active: true}}});
+    window.ocdk && (window.ocdk.config.logging.active = true);
   </script>
 
   <script type='module' src='/build/osds-datagrid.esm.js'></script>
@@ -14,11 +17,12 @@
   <link rel="stylesheet" href="/build/osds-datagrid.css">
 </head>
 <body>
-  <osds-datagrid id="datagridFormatter" height="600"></osds-datagrid>
+  <osds-datagrid id="datagridFormatter" is-selectable height="600"></osds-datagrid>
 
-  <h1>With sorted column</h1>
+  <!-- <h1>With sorted column</h1>
   <osds-datagrid
-    columns='[{"title":"Name", "field":"name", "isSortable": true}, {"title":"Firstname", "field":"firstname"}, {"title":"Gender", "field":"gender"}]'
+    id="datagridFormatter"
+    columns='[{"title":"Name", "field":"name", "isSortable": true}, {"title":"Firstname", "field":"firstname", "isSortable": true}, {"title":"Gender", "field":"gender"}]'
     rows='[{"name":"Homer", "firstname":"Simpson", "gender": "Male"}, {"name":"Marge", "firstname":"Simpson", "gender": "Female"}]'
     height="300">
   </osds-datagrid>
@@ -37,22 +41,40 @@
     rows='[]'
     no-result-label="Aucune données de renseignée"
     height="100">
-  </osds-datagrid>
+  </osds-datagrid> -->
 
   <script>
     const datagrid = document.getElementById('datagridFormatter');
+    datagrid.addEventListener('odsSortChange', (data) => console.log('odsSortChange', data));
+    datagrid.addEventListener('odsRowSelectedChange', (data) => console.log('odsRowSelectedChange', data))
+
     datagrid.columns = [
-      { title: "Name", field: "name", formatter: (cellValue) => {
-          return `<osds-button>Button content</osds-button> ${cellValue}`
+      { title: "Name", field: "name", formatter: (cellValue, rowValue) => {
+          return `<osds-menu>
+<osds-button slot="menu-title" color="primary" variant="stroked">
+  Action menu
+  <osds-icon name="home" size="xs"></osds-icon>
+</osds-button>
+<osds-menu-item>
+  <osds-button
+    color="primary"
+    size="sm"
+    variant="ghost"
+    text-align="start"
+    flex=""
+  >
+    <span>Action 1</span>
+  </osds-button>
+</osds-menu-item>
+</osds-menu>`
         }
       },
-      { title: "Firstname", field: "firstname" },
-      { title: "Gender", field: "gender" },
-      { title: "Date Of Birth", field: "dob" },
+      { title: "Firstname", field: "firstname", isSortable: true },
+      { title: "Gender", field: "gender", isSortable: true },
+      { title: "Date Of Birth", field: "dob", isSortable: true },
     ];
-    datagrid.rows = Array.from({ length: 5000 }).fill({ name: "Garnbret", firstname: "Janja", gender: "female", dob: "12/03/1999" });
-    datagrid.hideableColumns = ['name', 'gender'];
-    datagrid.hasHideableColumns = false;
+    datagrid.rows = Array.from({ length: 5 }).fill({ name: "Garnbret", firstname: "Janja", gender: "female", dob: "12/03/1999" });
+    // datagrid.hideableColumns = ['name', 'gender'];
   </script>
 </body>
 </html>

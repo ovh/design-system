@@ -100,6 +100,8 @@ describe('e2e:osds-datagrid', () => {
       isSelectable: true,
       rows: JSON.stringify([{ firstname: 'Simpson', name: 'Homer' }, { firstname: 'Simpson', name: 'Marge' }]),
     } });
+    const rowSelectionChangeSpy = await el.spyOnEvent('odsRowSelectionChange');
+
     const selectableRow = await table?.find('.tabulator-row input[type="checkbox"]');
     await selectableRow?.click();
 
@@ -111,6 +113,7 @@ describe('e2e:osds-datagrid', () => {
     }) ?? []);
     expect(isAllSelect.includes(false)).toBe(true);
     expect(await selectableHeader?.getProperty('indeterminate')).toBe(true);
+    expect(rowSelectionChangeSpy).toHaveReceivedEventDetail({ rows: [{ firstname: 'Simpson', name: 'Homer' }] });
   });
 
   it('should sortable columns', async() => {
@@ -118,6 +121,7 @@ describe('e2e:osds-datagrid', () => {
       columns: JSON.stringify([{ field: 'name', isSortable: true, title: 'Name' }, { field: 'firstname', title: 'Firstname' }]),
       rows: JSON.stringify([{ firstname: 'Simpson', name: 'Homer' }, { firstname: 'Simpson', name: 'Marge' }]),
     } });
+    const sortSpy = await el.spyOnEvent('odsSortChange');
 
     const sortableHeader = await table?.find('.tabulator-header .tabulator-col-sorter');
     await sortableHeader?.click();
@@ -125,11 +129,14 @@ describe('e2e:osds-datagrid', () => {
     const rows = await table?.findAll('.tabulator-row [tabulator-field="name"]');
     expect(rows?.[0].innerText).toContain('Homer');
     expect(rows?.[1].innerText).toContain('Marge');
+    expect(sortSpy).toHaveReceivedEventDetail({ dir: 'asc', field: 'name' });
 
     await sortableHeader?.click();
     const newRows = await table?.findAll('.tabulator-row [tabulator-field="name"]');
     expect(newRows?.[0].innerText).toContain('Marge');
     expect(newRows?.[1].innerText).toContain('Homer');
+    expect(sortSpy).toHaveReceivedEventDetail({ dir: 'desc', field: 'name' });
+
   });
 
   it('should have a column formatter', async() => {

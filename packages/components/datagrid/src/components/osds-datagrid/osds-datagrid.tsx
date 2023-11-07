@@ -1,21 +1,24 @@
 import type { OdsDatagridAttribute, OdsDatagridColumn, OdsDatagridRow } from './interfaces/attributes';
+import type { OdsDatagridEvent } from './interfaces/events';
 import type { OdsCheckboxCheckedChangeEventDetail } from '@ovhcloud/ods-component-checkbox';
 
 import { OdsLogger } from '@ovhcloud/ods-common-core';
+import { Ods } from '@ovhcloud/ods-common-core';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
-import { Component, Element, Host, Listen, Prop, Watch, h } from '@stencil/core';
-import { ColumnComponent, TabulatorFull as Tabulator } from 'tabulator-tables';
+import { Component, Element, Event, EventEmitter, Host, Listen, Prop, Watch, h } from '@stencil/core';
+import { ColumnComponent, SorterFromTable, TabulatorFull as Tabulator } from 'tabulator-tables';
 
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsDatagridController } from './core/controller';
 
+Ods.instance().logging(true);
 @Component({
   shadow: true,
   styleUrl: 'osds-datagrid.scss',
   tag: 'osds-datagrid',
 })
-export class OsdsDatagrid implements OdsDatagridAttribute {
+export class OsdsDatagrid implements OdsDatagridAttribute, OdsDatagridEvent {
   private readonly controler = new OdsDatagridController(this);
   readonly logger = new OdsLogger('OsdsDatagrid');
   private grid?: HTMLDivElement;
@@ -38,6 +41,10 @@ export class OsdsDatagrid implements OdsDatagridAttribute {
   @Prop({ reflect: true }) public rowHeight?: number = DEFAULT_ATTRIBUTE.rowHeight;
 
   @Prop({ reflect: true }) public rows: OdsDatagridRow[] | string = DEFAULT_ATTRIBUTE.rows;
+
+  @Event() odsSortChange!: EventEmitter<{ field: string, dir: 'asc' | 'desc' | 'none' }>;
+
+  @Event() odsRowSelectionChange!: EventEmitter<{ rows: OdsDatagridRow[] }>;
 
   componentDidLoad(): void {
     this.controler.validateAttributes();
@@ -130,6 +137,18 @@ export class OsdsDatagrid implements OdsDatagridAttribute {
     });
     this.table?.on('renderComplete', () => {
       this.setColumnsHeight();
+      this.handlerEvent();
+    });
+  }
+
+  private handlerEvent(): void {
+    this.table?.on('dataSorting', (sorters: SorterFromTable[]): void => {
+      this.odsSortChange.emit({ dir: sorters[0].dir, field: sorters[0].field });
+    });
+
+    // @ts-ignore type not good, doc: https://tabulator.info/docs/5.5/events#select
+    this.table?.on('rowSelectionChanged', (rows: Record<string, unknown>[]): void => {
+      this.odsRowSelectionChange.emit({ rows });
     });
   }
 

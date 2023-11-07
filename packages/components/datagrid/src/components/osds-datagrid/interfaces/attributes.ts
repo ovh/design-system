@@ -2,7 +2,7 @@ interface OdsDatagridColumn {
   field: string; // the key matching the row property
   isSortable?: boolean; // Column is sortable by string
   title: string; // the column title
-  formatter?: (cellValue: string | number | boolean) => string; // The formatter for a column, sould return a string html
+  formatter?: (cellValue: string | number | boolean, rowValue: OdsDatagridRow) => string; // The formatter for a column, sould return a string html
 }
 
 type OdsDatagridRow = Record<string, unknown>;

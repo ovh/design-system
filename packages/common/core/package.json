@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-common-core",
-  "version": "16.3.0",
+  "version": "16.3.1",
   "description": "ODS common core helpers",
   "author": "OVH SAS",
   "license": "Apache-2.0",
@@ -21,7 +21,7 @@
     "watch": "tsc -w -p tsconfig.esm.json"
   },
   "devDependencies": {
-    "@ovhcloud/ods-common-testing": "16.3.0",
-    "@ovhcloud/ods-dev": "16.3.0"
+    "@ovhcloud/ods-common-testing": "16.3.1",
+    "@ovhcloud/ods-dev": "16.3.1"
   }
 }

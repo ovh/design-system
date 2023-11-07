@@ -5,18 +5,12 @@ import React from 'react';
 import { releases } from '../public/releases.js';
 
 document.addEventListener('DOMContentLoaded', function() {
-  const releaseSelectorConfig = {
-    enabled: true
-  };
-  const itemsObserverConfig = {
-    enabled: true
-  };
 
   // Add version select
   const observeReleaseSelector = () => {
     const callback = function(mutationsList) {
       for (let i = 0, len = mutationsList.length; i < len; i++) {
-        if (mutationsList[i].type === 'childList' && releaseSelectorConfig.enabled) {
+        if (mutationsList[i].type === 'childList') {
           const urlVersionRegex = /\/(latest|v(\d\.?){3}[^\/]*)\//gmi;
           const selector = document.querySelector('.sidebar-header');
             let element;
@@ -43,7 +37,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             selector.parentNode.insertBefore(element, selector.nextSibling);
             observer.disconnect();
-            releaseSelectorConfig.enabled = false;
           break;
         }
       }
@@ -57,12 +50,11 @@ document.addEventListener('DOMContentLoaded', function() {
   const observeItems = () => {
     const callback = function(mutationsList) {
       for (let i = 0, len = mutationsList.length; i < len; i++) {
-        if (mutationsList[i].type === 'childList' && itemsObserverConfig.enabled) {
+        if (mutationsList[i].type === 'childList') {
           let items = Array.from(document.querySelectorAll(".sidebar-item[id*='ods-components-'][data-nodetype='group']"));
           if (items.length > 0) {
             items.forEach(item => item.click());
             observer.disconnect();
-            itemsObserverConfig.enabled = false;
           }
           break;
         }

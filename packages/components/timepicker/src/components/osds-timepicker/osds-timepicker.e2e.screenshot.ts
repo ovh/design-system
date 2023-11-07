@@ -3,6 +3,7 @@ import type { OdsTimepickerAttribute } from './interfaces/attributes';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import { newE2EPage } from '@stencil/core/testing';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { ODS_TIMEZONE } from './constants/timezones';
 
 describe('e2e:osds-timepicker', () => {
   let page: E2EPage;
@@ -24,18 +25,20 @@ describe('e2e:osds-timepicker', () => {
 
     it('should take screenshots of all attributes variations', async () => {
       [true, false].forEach((clearable) => {
-        [true, false].forEach((disabled) => {
-          [true, false].forEach((error) => {
-            [true, false].forEach((inline) => {
-              [null, '11:11'].forEach((value) => {
-                [true, false].forEach((withSeconds) => {
-                  variations.push(`
+        [null, ODS_TIMEZONE.UTC].forEach((currentTimezone) => {
+          [true, false].forEach((disabled) => {
+            [true, false].forEach((error) => {
+              [true, false].forEach((inline) => {
+                [null, '11:11'].forEach((value) => {
+                  [true, false].forEach((withSeconds) => {
+                    variations.push(`
                     <osds-timepicker ${odsStringAttributes2Str(
                       odsComponentAttributes2StringAttributes<OdsTimepickerAttribute>(
-                        { clearable, disabled, error, inline, value, withSeconds }, DEFAULT_ATTRIBUTE
+                        { clearable, currentTimezone, disabled, error, inline, value, withSeconds }, DEFAULT_ATTRIBUTE
                       )
                     )}>
                   </osds-timepicker>`);
+                  })
                 });
               });
             });

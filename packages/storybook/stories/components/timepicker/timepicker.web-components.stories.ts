@@ -35,6 +35,14 @@ const storyParams = {
     category: 'Value',
     defaultValue: "",
   },
+  timezones: {
+    category: 'Timezones',
+    defaultValue: null,
+  },
+  currentTimezone: {
+    category: 'Timezones',
+    defaultValue: null,
+  },
 };
 
 export default {

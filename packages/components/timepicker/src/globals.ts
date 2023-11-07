@@ -6,3 +6,4 @@
  *   import '@ovhcloud/ods-component-text';
  */
 import '@ovhcloud/ods-component-input';
+import '@ovhcloud/ods-component-select';

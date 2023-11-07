@@ -84,7 +84,8 @@ export class OsdsTimepicker implements OdsTimepickerAttribute {
 
     return (
       <Host class={ hostClasses }>
-        <osds-input clearable={ clearable }
+        <osds-input class="osds-timepicker__time"
+                    clearable={ clearable }
                     disabled={ disabled }
                     error={ error }
                     inline={ inline }

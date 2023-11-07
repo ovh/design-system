@@ -1,17 +1,14 @@
 .osds-timepicker {
   $main: &;
 
-  :host(&#{&}--inline) {
-    display: inline-flex;
-
-  #{$main}__timezones {
-      margin-left: var(--ods-size-03);
-    }
+  :host(&) {
+    display: flex;
+    gap: var(--ods-size-03);
   }
 
   :host(&:not(&--inline)) {
-    #{$main}__timezones {
-      margin-top: var(--ods-size-03);
+    #{$main}__time, #{$main}__timezones {
+      flex: 1 1 0px;
     }
   }
 }

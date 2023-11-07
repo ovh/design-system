@@ -1,9 +1,6 @@
-<<<<<<< HEAD
 import type { ODS_TIMEZONE } from '../constants/timezones';
 import { ODS_TIMEZONES_PRESET } from '../constants/timezones-preset';
 
-=======
->>>>>>> dd79f9e4 (feat(timepicker): add new component timepicker)
 interface OdsTimepickerAttribute {
   /**
    * Defines if the Timepicker should be clearable or not (displays a clear button)

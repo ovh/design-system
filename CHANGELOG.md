@@ -8,6 +8,22 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [16.3.1](https://ovh.github.io/design-system/v16.3.1/?path=/docs/design-system-changelog--page) (2023-11-07)
+[compare](https://github.com/ovh/design-system/compare/v16.3.0...v16.3.1)
+
+### Bug Fixes
+
+* **datepicker:** hideSibligsMonthDays on update datepicker ([c2b0bf1](https://github.com/ovh/design-system/commit/c2b0bf12c82f0e4c2524f20c4b5af5d170306ebf))
+* **datepicker:** rename methods ([ef002c9](https://github.com/ovh/design-system/commit/ef002c992d15e34d00aa053931708c25ceaa3978))
+* **select:** shift tab now focus trigger on first ([ffa43c4](https://github.com/ovh/design-system/commit/ffa43c448f6285e9b7b4ed77ee5452e046700d11))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [16.3.0](https://ovh.github.io/design-system/v16.3.0/?path=/docs/design-system-changelog--page) (2023-11-02)
 [compare](https://github.com/ovh/design-system/compare/v16.2.1...v16.3.0)
 

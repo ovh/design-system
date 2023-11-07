@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-component-divider-react",
-  "version": "16.3.0",
+  "version": "16.3.1",
   "private": true,
   "description": "React specific wrapper for ods",
   "keywords": [],
@@ -20,7 +20,7 @@
     "dist/"
   ],
   "dependencies": {
-    "@ovhcloud/ods-component-divider": "16.3.0",
+    "@ovhcloud/ods-component-divider": "16.3.1",
     "tslib": "*"
   },
   "peerDependencies": {
@@ -28,6 +28,6 @@
     "react-dom": ">=16.8.6"
   },
   "devDependencies": {
-    "@ovhcloud/ods-react-dev": "16.3.0"
+    "@ovhcloud/ods-react-dev": "16.3.1"
   }
 }

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html dir='ltr' lang='en'>
+
+<head>
+  <meta charset='utf-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0' />
+  <title>Dev osds-medium</title>
+
+  <script type="module">
+    !window.ods && (window.ods = { config: { logging: { active: true } } });
+  </script>
+
+  <script type='module' src='/build/osds-medium.esm.js'></script>
+  <script nomodule src='/build/osds-medium.js'></script>
+  <link rel="stylesheet" href="/build/osds-medium.css">
+</head>
+
+<body>
+
+  <p>Default</p>
+  <osds-medium src='https://corporate.ovhcloud.com/sites/default/files/2022-03/ovhcloud-logo2.png' alt='OVHcloud logo'></osds-medium>
+
+  <p>Sizes</p>
+  <osds-medium height='50' src='https://corporate.ovhcloud.com/sites/default/files/2022-03/ovhcloud-logo2.png' alt='OVHcloud logo'></osds-medium>
+  <osds-medium width='300' src='https://corporate.ovhcloud.com/sites/default/files/2022-03/ovhcloud-logo2.png' alt='OVHcloud logo'></osds-medium>
+
+</body>
+
+</html>

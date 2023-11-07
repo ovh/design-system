@@ -1,6 +1,5 @@
 * [**Interfaces**](#interfaces)
 * [**Types**](#types)
-* [**Classes**](#classes)
 
 ## Interfaces
 
@@ -29,7 +28,3 @@
 |:---:|
 | `flat` |
 | `stroked` |
-
-## Classes
-
-### OsdsChip

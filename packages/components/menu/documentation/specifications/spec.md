@@ -1,5 +1,4 @@
 * [**Interfaces**](#interfaces)
-* [**Classes**](#classes)
 
 ## Interfaces
 
@@ -7,11 +6,3 @@
 |Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`disabled`** | _boolean_ |  |  | Menu is disabled or not|
-
-## Classes
-
-### OsdsMenu
-
-### OsdsMenuGroup
-
-### OsdsMenuItem

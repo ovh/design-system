@@ -1,5 +1,4 @@
 * [**Interfaces**](#interfaces)
-* [**Classes**](#classes)
 
 ## Interfaces
 
@@ -8,18 +7,3 @@
 |---|---|:---:|---|---|
 |**`registerAccordion`** | _void_ | ✴️ |  | |
 |**`unRegisterAccordion`** | _void_ | ✴️ |  | |
-
-## Classes
-
-### OsdsAccordionGroup
-#### Methods
-> **registerAccordion**(`accordion`: `OsdsAccordion`) => `Promise<void>`
-
-Name | Type | Description 
----|---|---
-**accordion** | `OsdsAccordion` |   |
-> **unRegisterAccordion**(`accordion`: `OsdsAccordion`) => `Promise<void>`
-
-Name | Type | Description 
----|---|---
-**accordion** | `OsdsAccordion` |   |

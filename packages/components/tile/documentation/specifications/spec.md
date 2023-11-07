@@ -1,6 +1,5 @@
 * [**Interfaces**](#interfaces)
 * [**Types**](#types)
-* [**Classes**](#classes)
 
 ## Interfaces
 
@@ -34,7 +33,3 @@
 | `ghost` |
 | `hollow` |
 | `stroked` |
-
-## Classes
-
-### OsdsTile

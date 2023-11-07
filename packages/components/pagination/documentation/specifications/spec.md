@@ -1,6 +1,5 @@
 * [**Interfaces**](#interfaces)
 * [**Types**](#types)
-* [**Classes**](#classes)
 
 ## Interfaces
 
@@ -36,7 +35,3 @@
 |  |
 |:---:|
 | `md` |
-
-## Classes
-
-### OsdsPagination

@@ -1,6 +1,5 @@
 * [**Interfaces**](#interfaces)
 * [**Types**](#types)
-* [**Classes**](#classes)
 
 ## Interfaces
 
@@ -22,7 +21,3 @@
 |:---:|
 | `standard` |
 | `tip` |
-
-## Classes
-
-### OsdsTooltip

@@ -25,36 +25,3 @@ I18N keys for the `cart-manager`:
 | `footer.item.price` | price for `cart-footer-item`                   | {price} euros       | `price`: `string`    |
 | `cart.total.info`   | info for `cart-total`                          | {products} products | `products`: `number` |
 | `cart.extra`        | extra for `cart-total`                         | incl. VAT           |                      |
-
-## Contents
-<DesignCartZoningPreview />
-
-| Name     | Description                                                       |
-|----------|-------------------------------------------------------------------|
-| `header` | header content like a title                                       |
-| `empty`  | displayed content when there are no items in the cart             |
-| `footer` | footer content to display. You can put some button inside it here |
-
-## Tests
-
-**header**
-- should displays the passed content in the header zone
-
-**content**
-- should displays the main content in the main content zone
-
-**footer**
-- should displays the passed content in the footer zone
-
-**size**
-- should have `sm` size by default
-
-**empty**
-- should display no items if empty set to true
-
-**method:getTotalAmount**
-- should returns the total amount excluded VAT by default
-- should returns the total amount with VAT if specified
-
-**method:getItemQuantity**
-- should returns the number of item placed in the cart

@@ -1,5 +1,4 @@
 * [**Interfaces**](#interfaces)
-* [**Classes**](#classes)
 
 ## Interfaces
 
@@ -12,7 +11,3 @@
 |Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`odsCollapsibleToggle`** | `EventEmitter<boolean>` | ✴️ |  | Event triggered on collapsible toggle|
-
-## Classes
-
-### OsdsCollapsible

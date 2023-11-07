@@ -1,6 +1,5 @@
 * [**Interfaces**](#interfaces)
 * [**Types**](#types)
-* [**Classes**](#classes)
 
 ## Interfaces
 
@@ -70,37 +69,3 @@
 |  |
 |:---:|
 | `sm` |
-
-## Classes
-
-### OsdsCart
-#### Methods
-> **getItemQuantity**() => `Promise<number>`
-
-
-> **refresh**() => `Promise<void>`
-
-
-
-### OsdsCartHeader
-#### Methods
-> **refresh**() => `Promise<void>`
-
-
-
-### OsdsCartItem
-
-### OsdsCartItemOption
-
-### OsdsCartManager
-#### Methods
-> **getProductQuantity**() => `Promise<number>`
-
-
-> **getTotalAmount**() => `Promise<number>`
-
-
-
-### OsdsCartSection
-
-### OsdsCartTotal

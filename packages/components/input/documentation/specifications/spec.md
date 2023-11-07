@@ -1,6 +1,5 @@
 * [**Interfaces**](#interfaces)
 * [**Types**](#types)
-* [**Classes**](#classes)
 
 ## Interfaces
 
@@ -97,33 +96,3 @@
 | `text` |
 | `time` |
 | `url` |
-
-## Classes
-
-### OsdsInput
-#### Methods
-> **clear**() => `Promise<void>`
-
-
-> **getValidity**() => `Promise<OdsInputValidityState>`
-
-
-> **hide**() => `Promise<void>`
-
-
-> **reset**() => `Promise<void>`
-
-
-> **setFocus**() => `Promise<void>`
-
-
-> **setInputTabindex**(`value`: _number_) => `Promise<void>`
-
-Name | Type | Description 
----|---|---
-**value** | _number_ |   |
-> **stepDown**() => `Promise<void>`
-
-
-> **stepUp**() => `Promise<void>`
-

@@ -1,6 +1,5 @@
 * [**Interfaces**](#interfaces)
 * [**Types**](#types)
-* [**Classes**](#classes)
 
 ## Interfaces
 
@@ -296,7 +295,3 @@
 | `xl` |
 | `xs` |
 | `xxs` |
-
-## Classes
-
-### OsdsIcon

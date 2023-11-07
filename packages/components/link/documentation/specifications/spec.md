@@ -1,6 +1,5 @@
 * [**Interfaces**](#interfaces)
 * [**Types**](#types)
-* [**Classes**](#classes)
 
 ## Interfaces
 
@@ -29,7 +28,3 @@
 | `sameOrigin` |
 | `strictOriginWhenCrossOrigin` |
 | `unsafeUrl` |
-
-## Classes
-
-### OsdsLink

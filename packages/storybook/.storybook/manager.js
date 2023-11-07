@@ -5,14 +5,14 @@ import React from 'react';
 import { releases } from '../public/releases.js';
 
 document.addEventListener('DOMContentLoaded', function() {
-  const callback = function(mutationsList) {
-    for (let i = 0, len = mutationsList.length; i < len; i++) {
-      if (mutationsList[i].type === 'childList') {
 
-          // Add version select
-          if(!document.querySelector('#release-selector')) {
-            const urlVersionRegex = /\/(latest|v(\d\.?){3}[^\/]*)\//gmi;
-            const selector = document.querySelector('.sidebar-header');
+  // Add version select
+  const observeReleaseSelector = () => {
+    const callback = function(mutationsList) {
+      for (let i = 0, len = mutationsList.length; i < len; i++) {
+        if (mutationsList[i].type === 'childList') {
+          const urlVersionRegex = /\/(latest|v(\d\.?){3}[^\/]*)\//gmi;
+          const selector = document.querySelector('.sidebar-header');
             let element;
             if (urlVersionRegex.test(location.href)) {
               const releasesSelector = document.createElement('select');
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const option = document.createElement('option');
                 option.text = value[0];
                 option.value = value[1];
-                releasesSelector.appendChild(option)
+                releasesSelector.appendChild(option);
               });
               element = releasesSelector;
 
@@ -37,14 +37,37 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             selector.parentNode.insertBefore(element, selector.nextSibling);
             observer.disconnect();
-          }
-        break;
+          break;
+        }
       }
-    }
+    };
+
+    const observer = new MutationObserver(callback);
+    observer.observe(document.body, { childList: true, subtree: false });
   };
-  const observer = new MutationObserver(callback);
-  observer.observe(document.body, { childList: true, subtree: false });
-}, false);
+
+  // trigger a click on ODS Components sections
+  const observeItems = () => {
+    const callback = function(mutationsList) {
+      for (let i = 0, len = mutationsList.length; i < len; i++) {
+        if (mutationsList[i].type === 'childList') {
+          let items = Array.from(document.querySelectorAll(".sidebar-item[id*='ods-components-'][data-nodetype='group']"));
+          if (items.length > 0) {
+            items.forEach(item => item.click());
+            observer.disconnect();
+          }
+          break;
+        }
+      }
+    };
+
+    const observer = new MutationObserver(callback);
+    observer.observe(document.getElementById('root'), { childList: true, subtree: true });
+  };
+
+  observeReleaseSelector();
+  observeItems();
+});
 
 addons.setConfig({
   theme,

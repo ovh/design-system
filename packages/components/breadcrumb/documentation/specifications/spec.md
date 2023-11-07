@@ -1,5 +1,4 @@
 * [**Interfaces**](#interfaces)
-* [**Classes**](#classes)
 
 ## Interfaces
 
@@ -15,7 +14,3 @@
 |**`href`** | _string_ | ✴️ |  | Item link to redirect to|
 |**`icon`** | `ODS_ICON_NAME` |  |  | Icon to display|
 |**`label`** | _string_ |  |  | Text to display|
-
-## Classes
-
-### OsdsBreadcrumb

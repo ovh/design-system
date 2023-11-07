@@ -1,6 +1,5 @@
 * [**Interfaces**](#interfaces)
 * [**Types**](#types)
-* [**Classes**](#classes)
 
 ## Interfaces
 
@@ -57,26 +56,3 @@
 |  |
 |:---:|
 | `md` |
-
-## Classes
-
-### OsdsTabBar
-_assemble different item in a bar_
-
-
-### OsdsTabBarItem
-_An Item that is part of the tab bar_
-
-#### Methods
-> **select**() => `Promise<void>`
-
-_select the panel by emitting_
-
-
-
-### OsdsTabs
-_Main tabs component_
-
-
-### OsdsTabsPanel
-_Panel with content that has to be displayed when active_

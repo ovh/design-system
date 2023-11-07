@@ -1,6 +1,5 @@
 * [**Interfaces**](#interfaces)
 * [**Types**](#types)
-* [**Classes**](#classes)
 
 ## Interfaces
 
@@ -49,7 +48,3 @@
 | `flat` |
 | `ghost` |
 | `stroked` |
-
-## Classes
-
-### OsdsButton

@@ -1,5 +1,4 @@
 * [**Interfaces**](#interfaces)
-* [**Classes**](#classes)
 
 ## Interfaces
 
@@ -23,7 +22,3 @@
 |---|---|:---:|---|---|
 |**`label`** | _string_ | ✴️ |  | |
 |**`value`** | _string_ | ✴️ |  | |
-
-## Classes
-
-### OsdsSearchBar

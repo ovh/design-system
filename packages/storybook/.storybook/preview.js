@@ -29,12 +29,15 @@ export const parameters = {
   previewTabs: {
     'storybook/docs/panel': {
       title: 'Docs',
+      hidden: true
     },
     'canvas': {
       title: 'Sandbox',
+      hidden: true
     },
     'storybookjs/notes/panel': {
       title: 'Notes',
+      hidden: true
     },
   },
   options: {
@@ -52,10 +55,8 @@ export const parameters = {
           'Stencil',
           ['Introduction', 'Components'],
         ],
-        'UI Components',
-        ['Introduction'],
-        'Meta Components',
-        ['Introduction'],
+        'ODS Components',
+        ['Actions', 'Content', 'Form', 'Layout', 'Navigation', 'User feedback'],
         'Contributing',
         ['Get Started', 'Deployment and Versioning', 'Repository Strategy', 'Troubleshooting Notes'],
         'Libraries',

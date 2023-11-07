@@ -1,5 +1,4 @@
 * [**Interfaces**](#interfaces)
-* [**Classes**](#classes)
 
 ## Interfaces
 
@@ -50,16 +49,3 @@
 |---|---|:---:|---|---|
 |**`updating`** | _boolean_ | ✴️ |  | |
 |**`value`** | _string_ | ✴️ |  | |
-
-## Classes
-
-### OsdsCheckbox
-#### Methods
-> **setFocus**() => `Promise<void>`
-
-
-> **setTabindex**(`index`: _number_) => `Promise<void>`
-
-Name | Type | Description 
----|---|---
-**index** | _number_ |   |

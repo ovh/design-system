@@ -41,6 +41,7 @@
     "@ovhcloud/ods-component-select": "16.3.1"
   },
   "devDependencies": {
+    "@ovhcloud/ods-common-scripts": "16.3.1",
     "@ovhcloud/ods-common-testing": "16.3.1",
     "@ovhcloud/ods-stencil-dev": "16.3.1"
   }

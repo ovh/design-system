@@ -11,7 +11,7 @@ defineCustomElements();
 
 /* Default story parameters  */
 const storyParams = {
-  clearable: {y
+  clearable: {
     category: 'General',
     defaultValue: DEFAULT_ATTRIBUTE.clearable,
   },
@@ -33,7 +33,7 @@ const storyParams = {
   },
   value: {
     category: 'Value',
-    defaultValue: "",
+    defaultValue: '',
   },
   timezones: {
     category: 'Timezones',

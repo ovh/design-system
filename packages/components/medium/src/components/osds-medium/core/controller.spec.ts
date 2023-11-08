@@ -12,9 +12,6 @@ class OdsMediumMock extends OsdsMedium {
     Object.assign(this, attribute);
   }
 
-  controller: OdsMediumController = jest.fn() as unknown as OdsMediumController;
-  odsRemoveClick!: EventEmitter<void>;
-  removeClicked = jest.fn();
   beforeInit = jest.fn();
 }
 

@@ -65,13 +65,23 @@ export class OsdsTile implements OdsTileAttribute {
     this.beforeRender();
   }
 
+
   render() {
     return (
       <Host {...{
         onClick: () => this.controller.handleClick(),
-      }}>
+      }}
+        class={{
+          'osds-tile' : true,
+          'osds-tile--checking' : this.checking || false,
+          'osds-tile--disabled' : this.disabled || false,
+          'osds-tile--hoverable' : this.hoverable || false,
+          'osds-tile--inline' : this.inline || false,
+          'osds-tile--rounded' : this.rounded || false
+        }}
+      >
         <slot name={'start'}></slot>
-        <span class={'tile__centered-text'}>
+        <span class={'osds-tile__text--center'}>
           <slot></slot>
         </span>
         <slot name={'end'}></slot>

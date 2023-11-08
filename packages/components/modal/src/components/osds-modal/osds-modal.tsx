@@ -1,9 +1,10 @@
 import type { OdsModalAttribute } from './interfaces/attributes';
+import type { OdsModalEvent } from './interfaces/events';
 
 import { ODS_THEME_COLOR_INTENT, ODS_THEME_TYPOGRAPHY_SIZE } from '@ovhcloud/ods-common-theming';
 import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
 import { ODS_TEXT_LEVEL } from '@ovhcloud/ods-component-text';
-import { Component, Element, Host, Method, Prop, Watch, h } from '@stencil/core';
+import { Component, Element, Host, Method, Prop, Watch, h, Event, EventEmitter } from '@stencil/core';
 
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsModalMethod } from './interfaces/methods';
@@ -16,7 +17,7 @@ import { OdsModalMethod } from './interfaces/methods';
   styleUrl: 'osds-modal.scss',
   shadow: true,
 })
-export class OsdsModal implements OdsModalAttribute, OdsModalMethod {
+export class OsdsModal implements OdsModalAttribute, OdsModalMethod, OdsModalEvent {
   @Element() el!: HTMLElement;
 
   /** @see OdsModalAttributes.color */
@@ -31,12 +32,19 @@ export class OsdsModal implements OdsModalAttribute, OdsModalMethod {
   /** @see OdsModalAttributes.masked */
   @Prop({ reflect: true, mutable: true }) masked?: boolean = DEFAULT_ATTRIBUTE.masked;
 
+  /** @see OdsModalEvents.odsModalOpen */
+  @Event() odsModalOpen!: EventEmitter<void>;
+
+  /** @see OdsModalEvents.odsModalClose */
+  @Event() odsModalClose!: EventEmitter<void>;
+
   /**
    * @see OdsModalMethods.close
    */
   @Method()
   async close(): Promise<void> {
     this.masked = true;
+    this.odsModalClose.emit();
   }
 
   /**
@@ -45,6 +53,7 @@ export class OsdsModal implements OdsModalAttribute, OdsModalMethod {
   @Method()
   async open(): Promise<void> {
     this.masked = false;
+    this.odsModalOpen.emit();
   }
 
   @Watch('masked')

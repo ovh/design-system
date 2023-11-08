@@ -104,7 +104,7 @@ describe('spec:ods-quantity-controller', () => {
           input.focus();
           input.blur();
 
-          expect(input.value).toEqual(input.min);
+          expect(input.value).toBe(input.min);
         });
 
         it('should change value of input if superior to max on Blur', () => {
@@ -120,7 +120,7 @@ describe('spec:ods-quantity-controller', () => {
           input.focus();
           input.blur();
 
-          expect(input.value).toEqual(input.max);
+          expect(input.value).toBe(input.max);
         });
 
         it('should change value of input if not in a valid step', () => {
@@ -138,7 +138,7 @@ describe('spec:ods-quantity-controller', () => {
           input.focus();
           input.blur();
 
-          expect(input.value).toEqual(validInput);
+          expect(input.value).toBe(validInput);
         });
 
         it('should change value of osds-input if inferior to min on Blur', () => {
@@ -160,7 +160,7 @@ describe('spec:ods-quantity-controller', () => {
           input.blur();
           input.dispatchEvent(new CustomEvent('odsInputBlur'));
 
-          expect(input.value).toEqual(input.min);
+          expect(input.value).toBe(input.min);
         });
 
         it('should change value of osds-input if superior to max on Blur', () => {
@@ -182,7 +182,7 @@ describe('spec:ods-quantity-controller', () => {
           input.blur();
           input.dispatchEvent(new CustomEvent('odsInputBlur'));
 
-          expect(input.value).toEqual(input.max);
+          expect(input.value).toBe(input.max);
         });
       });
 

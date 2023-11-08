@@ -26,6 +26,10 @@ const storyParams = {
     category: 'Misc',
     defaultValue: false,
   },
+  disabled: {
+    category: 'Misc',
+    defaultValue: false,
+  },
 };
 
 export default {

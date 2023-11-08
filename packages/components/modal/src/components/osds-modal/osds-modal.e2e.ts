@@ -171,6 +171,28 @@ describe('e2e:osds-modal', () => {
     });
   });
 
+  describe('Event', () => {
+    it('should receive event odsModalOpen', async () => {
+      await setup({ attributes: { dismissible: true, masked: true } });
+
+      const odsModalOpen = await el.spyOnEvent('odsModalOpen');
+
+      await el.callMethod('open');
+      await page.waitForChanges();
+      expect(odsModalOpen).toHaveReceivedEventTimes(1);
+    });
+
+    it('should receive event odsModalOpen', async () => {
+      await setup({ attributes: { dismissible: true, masked: false } });
+
+      const odsModalClose = await el.spyOnEvent('odsModalClose');
+
+      await el.callMethod('close');
+      await page.waitForChanges();
+      expect(odsModalClose).toHaveReceivedEventTimes(1);
+    });
+  });
+
   describe('keyboard navigation', () => {
     let outsideButton: E2EElement;
 

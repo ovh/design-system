@@ -21,12 +21,12 @@ const storyParams = {
   height: {
     category: 'Size',
     defaultValue: DEFAULT_ATTRIBUTE.height,
-    control: { type: 'input' }
+    control: { type: 'number' },
   },
   width: {
     category: 'Size',
     defaultValue: 700,
-    control: { type: 'input' }
+    control: { type: 'number' },
   },
 };
 

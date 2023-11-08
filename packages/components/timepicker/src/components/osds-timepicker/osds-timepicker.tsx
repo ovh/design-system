@@ -62,7 +62,7 @@ export class OsdsTimepicker implements OdsTimepickerAttribute {
   }
 
   initTimezones(): void {
-    if (this.currentTimezone || this.timezones) {
+    if (this.currentTimezone || (this.timezones && this.timezones.length > 0 )) {
       this.controller.handleCurrentTimezone();
       this.controller.handleTimezones();
     }
@@ -97,7 +97,7 @@ export class OsdsTimepicker implements OdsTimepickerAttribute {
         >
         </osds-input>
         {
-          (currentTimezone || timezones) && <osds-select
+          (currentTimezone || (timezones && timezones.length > 0)) && <osds-select
             class="osds-timepicker__timezones"
             disabled={ disabled }
             error={ error }

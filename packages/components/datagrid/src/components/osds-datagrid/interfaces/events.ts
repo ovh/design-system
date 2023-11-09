@@ -6,6 +6,6 @@ interface OdsDatagridEvent {
   odsRowSelectionChange: EventEmitter<{ rows: OdsDatagridRow[] }>;
 }
 
-export {
+export type {
   OdsDatagridEvent,
 };

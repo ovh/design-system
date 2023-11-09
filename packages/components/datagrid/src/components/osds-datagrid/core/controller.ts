@@ -1,7 +1,6 @@
 import type { OdsDatagridColumn, OdsDatagridRow } from '../interfaces/attributes';
 import type { OsdsDatagrid } from '../osds-datagrid';
 import type { CellComponent, ColumnDefinition } from 'tabulator-tables';
-
 import { parseStringToArray } from '@ovhcloud/ods-common-core';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_BUTTON_SIZE, ODS_BUTTON_VARIANT } from '@ovhcloud/ods-component-button';

@@ -1,14 +1,14 @@
 import type { OdsDatagridAttribute, OdsDatagridColumn, OdsDatagridRow } from './interfaces/attributes';
 import type { OdsDatagridEvent } from './interfaces/events';
 import type { OdsCheckboxCheckedChangeEventDetail } from '@ovhcloud/ods-component-checkbox';
-
+import type { EventEmitter } from '@stencil/core';
+import type { ColumnComponent, SorterFromTable } from 'tabulator-tables';
 import { OdsLogger } from '@ovhcloud/ods-common-core';
 import { Ods } from '@ovhcloud/ods-common-core';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
-import { Component, Element, Event, EventEmitter, Host, Listen, Prop, Watch, h } from '@stencil/core';
-import { ColumnComponent, SorterFromTable, TabulatorFull as Tabulator } from 'tabulator-tables';
-
+import { Component, Element, Event, Host, Listen, Prop, Watch, h } from '@stencil/core';
+import { TabulatorFull as Tabulator } from 'tabulator-tables';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsDatagridController } from './core/controller';
 

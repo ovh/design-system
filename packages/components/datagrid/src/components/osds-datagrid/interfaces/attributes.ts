@@ -32,7 +32,7 @@ interface OdsDatagridAttribute {
   rows: OdsDatagridRow[] | string;
 }
 
-export {
+export type {
   OdsDatagridAttribute,
   OdsDatagridColumn,
   OdsDatagridRow,

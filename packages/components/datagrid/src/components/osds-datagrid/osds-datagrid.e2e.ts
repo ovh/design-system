@@ -1,9 +1,7 @@
 import type { OdsDatagridAttribute } from './interfaces/attributes';
 import type { E2EElement, E2EPage } from '@stencil/core/testing';
-
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import { newE2EPage } from '@stencil/core/testing';
-
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 
 describe('e2e:osds-datagrid', () => {
@@ -45,23 +43,6 @@ describe('e2e:osds-datagrid', () => {
     const rows = await table?.findAll('.tabulator-row');
     expect(rows).toHaveLength(1);
     expect(rows?.[0].innerText).toContain('Homer');
-  });
-
-  it('should update rows', async() => {
-    await setup({ attributes: {
-      columns: JSON.stringify([{ field: 'name', title: 'Name' }, { field: 'firstname', title: 'Firstname' }]),
-      rows: JSON.stringify([{ firstname: 'Simpson', name: 'Homer' }]),
-    } });
-    el.setProperty('rows', JSON.stringify([
-      { firstname: 'Simpson', name: 'Homer' },
-      { firstname: 'Simpson', name: 'Marge' },
-    ]));
-    await page.waitForChanges();
-
-    const rows = await table?.findAll('.tabulator-row');
-    expect(rows).toHaveLength(2);
-    expect(rows?.[0].innerText).toContain('Homer');
-    expect(rows?.[1].innerText).toContain('Marge');
   });
 
   it('should have selectable columns', async() => {

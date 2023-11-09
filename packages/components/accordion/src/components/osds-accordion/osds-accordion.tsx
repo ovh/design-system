@@ -89,6 +89,7 @@ export class OsdsAccordion implements OdsAccordionAttribute, OdsAccordionEvent {
       <Host>
         <details class={'accordion__wrapper'}
           {...{
+            tabIndex: this.disabled ? -1 : 0,
             onToggle: () => {
               this.controller.onToggle();
             },

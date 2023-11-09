@@ -1,5 +1,5 @@
-import type { E2EPage } from '@stencil/core/testing';
 import type { OdsTimepickerAttribute } from './interfaces/attributes';
+import type { E2EPage } from '@stencil/core/testing';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import { newE2EPage } from '@stencil/core/testing';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
@@ -9,7 +9,7 @@ describe('e2e:osds-timepicker', () => {
   let page: E2EPage;
   let variations: Array<string>;
 
-  async function setup(content: string) {
+  async function setup(content: string): Promise<void> {
     page = await newE2EPage();
 
     await page.setContent(content);
@@ -23,7 +23,7 @@ describe('e2e:osds-timepicker', () => {
       variations = [];
     });
 
-    it('should take screenshots of all attributes variations', async () => {
+    it('should take screenshots of all attributes variations', async() => {
       [true, false].forEach((clearable) => {
         [null, ODS_TIMEZONE.UTC].forEach((currentTimezone) => {
           [true, false].forEach((disabled) => {
@@ -33,12 +33,12 @@ describe('e2e:osds-timepicker', () => {
                   [true, false].forEach((withSeconds) => {
                     variations.push(`
                     <osds-timepicker ${odsStringAttributes2Str(
-                      odsComponentAttributes2StringAttributes<OdsTimepickerAttribute>(
-                        { clearable, currentTimezone, disabled, error, inline, value, withSeconds }, DEFAULT_ATTRIBUTE
-                      )
-                    )}>
+    odsComponentAttributes2StringAttributes<OdsTimepickerAttribute>(
+      { clearable, currentTimezone, disabled, error, inline, value, withSeconds }, DEFAULT_ATTRIBUTE,
+    ),
+  )}>
                   </osds-timepicker>`);
-                  })
+                  });
                 });
               });
             });
@@ -49,7 +49,7 @@ describe('e2e:osds-timepicker', () => {
       await setup(variations.join(''));
       await page.waitForChanges();
       const results = await page.compareScreenshot('timepicker', { fullPage: true });
-      expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 })
+      expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
     });
   });
 });

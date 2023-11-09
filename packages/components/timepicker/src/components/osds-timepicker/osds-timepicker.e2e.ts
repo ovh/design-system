@@ -1,7 +1,7 @@
 import type { OdsTimepickerAttribute } from './interfaces/attributes';
 import type { E2EElement, E2EPage } from '@stencil/core/testing';
-import { newE2EPage } from '@stencil/core/testing';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
+import { newE2EPage } from '@stencil/core/testing';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_TIMEZONE } from './constants/timezones';
 
@@ -11,7 +11,7 @@ describe('e2e:osds-timepicker', () => {
   let input: E2EElement;
   let select: E2EElement;
 
-  async function setup({ attributes = {} }: { attributes?: Partial<OdsTimepickerAttribute> } = {}) {
+  async function setup({ attributes = {} }: { attributes?: Partial<OdsTimepickerAttribute> } = {}): Promise<void> {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsTimepickerAttribute>(attributes, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
@@ -26,7 +26,7 @@ describe('e2e:osds-timepicker', () => {
     await page.waitForChanges();
   }
 
-  it('should render', async () => {
+  it('should render', async() => {
     await setup({ attributes: {} });
     expect(el).not.toBeNull();
     expect(el).toHaveClass('hydrated');
@@ -35,7 +35,7 @@ describe('e2e:osds-timepicker', () => {
     expect(input).toHaveClass('hydrated');
   });
 
-  it('should render a select if there is timezones', async () => {
+  it('should render a select if there is timezones', async() => {
     await setup({ attributes: { currentTimezone : ODS_TIMEZONE.UTC } });
 
     select = await page.find('osds-timepicker >>> osds-select');
@@ -45,7 +45,7 @@ describe('e2e:osds-timepicker', () => {
     expect(select).toHaveClass('hydrated');
   });
 
-  it('should get default attributes', async () => {
+  it('should get default attributes', async() => {
     await setup({ attributes: {} });
     expect(await el.getProperty('clearable')).toBe(DEFAULT_ATTRIBUTE.clearable);
     expect(await el.getProperty('currentTimezone')).toBe(DEFAULT_ATTRIBUTE.currentTimezone);
@@ -58,7 +58,7 @@ describe('e2e:osds-timepicker', () => {
   });
 
   describe('Event', () => {
-    it('should receive event odsValueChange', async () => {
+    it('should receive event odsValueChange', async() => {
       await setup({ attributes: {} });
 
       const odsValueChange = await el.spyOnEvent('odsValueChange');

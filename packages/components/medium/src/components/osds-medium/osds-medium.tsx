@@ -49,8 +49,8 @@ export class OsdsMedium implements OdsMediumAttribute {
       <Host>
         <img alt={ this.alt }
           src={ this.src }
-          height={ this.height || undefined }
-          width={ this.width || undefined }
+          height={ this.height ?? undefined }
+          width={ this.width ?? undefined }
         />
       </Host>
     );

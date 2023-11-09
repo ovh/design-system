@@ -1,5 +1,4 @@
 import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
-import type { EventEmitter } from '@stencil/core';
 import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
 import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
 import { OdsMediumController } from './controller';

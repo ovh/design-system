@@ -18,7 +18,7 @@ class OdsMediumController {
    * @param alt - alternative description of the medium
    */
   validateAlt(alt: string): void {
-    if (alt.length == 0) {
+    if (alt.length === 0) {
       this.logger.warn('The alt attribute must be set');
     }
   }
@@ -28,7 +28,7 @@ class OdsMediumController {
    * @param src - url of the medium
    */
   validateSrc(src: string): void {
-    if (src.length == 0) {
+    if (src.length === 0) {
       this.logger.warn('The src attribute must be set');
     }
   }

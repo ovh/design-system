@@ -15,16 +15,12 @@ import { OdsMediumController } from './core/controller';
 export class OsdsMedium implements OdsMediumAttribute {
   controller: OdsMediumController = new OdsMediumController(this);
 
-  /** @see OdsMediumAttributes.alt */
   @Prop({ reflect: true }) public alt: string = DEFAULT_ATTRIBUTE.alt;
 
-  /** @see OdsMediumAttributes.height */
   @Prop({ reflect: true }) public height?: number = DEFAULT_ATTRIBUTE.height;
 
-  /** @see OdsMediumAttributes.src */
   @Prop({ reflect: true }) public src: string = DEFAULT_ATTRIBUTE.src;
 
-  /** @see OdsMediumAttributes.witdh */
   @Prop({ reflect: true }) public width?: number = DEFAULT_ATTRIBUTE.width;
 
   @Watch('height')
@@ -37,7 +33,6 @@ export class OsdsMedium implements OdsMediumAttribute {
     this.controller.validateWidth(width);
   }
 
-  /** @see OdsMediumBehavior.beforeInit */
   beforeInit(): void {
     this.controller.validateAlt(this.alt);
     this.controller.validateSrc(this.src);
@@ -54,8 +49,8 @@ export class OsdsMedium implements OdsMediumAttribute {
       <Host>
         <img alt={ this.alt }
           src={ this.src }
-          {...(this.height ? { height: this.height } : {}) }
-          {...(this.width ? { width: this.width } : {}) }
+          height={ this.height || undefined }
+          width={ this.width || undefined }
         />
       </Host>
     );

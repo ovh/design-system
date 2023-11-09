@@ -4945,7 +4945,30 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-component-medium@workspace:packages/components/medium":
+"@ovhcloud/ods-component-medium-react@workspace:packages/components/medium/react":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-medium-react@workspace:packages/components/medium/react"
+  dependencies:
+    "@ovhcloud/ods-component-medium": 16.3.1
+    "@ovhcloud/ods-react-dev": 16.3.1
+  peerDependencies:
+    react: ">=16.8.6"
+    react-dom: ">=16.8.6"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-component-medium-vue@workspace:packages/components/medium/vue":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-medium-vue@workspace:packages/components/medium/vue"
+  dependencies:
+    "@ovhcloud/ods-component-medium": 16.3.1
+    "@ovhcloud/ods-vue-dev": 16.3.1
+  peerDependencies:
+    vue: ">=3"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-component-medium@16.3.1, @ovhcloud/ods-component-medium@workspace:packages/components/medium":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-medium@workspace:packages/components/medium"
   dependencies:

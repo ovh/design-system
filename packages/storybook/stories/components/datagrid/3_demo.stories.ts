@@ -4,7 +4,7 @@ import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../
 // @ts-ignore
 import changelog from '@ovhcloud/ods-components/datagrid/CHANGELOG.md';
 // @ts-ignore
-import page from './datagrid.web-component.stories.page.mdx';
+import page from './2_usage.stories.mdx';
 
 defineCustomElements();
 
@@ -56,14 +56,9 @@ const rowsLarge = {
 };
 
 export default {
-  title: 'UI Components/Datagrid [organism]/Web Component',
+  title: 'ODS Components/Layout/Datagrid [organism]/Web Component',
   id: 'datagrid',
-  parameters: {
-    notes: {
-      changelog,
-    },
-    docs: { page },
-  }
+  argTypes: extractArgTypes(defaultStoryParams)
 };
 
 const TemplateDefault = (args: Record<string, unknown>) => html`

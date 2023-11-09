@@ -43,6 +43,12 @@
     height="100">
   </osds-datagrid> -->
 
+  <style>
+    :root {
+      --ods-menu-surface-position: absolute;
+    }
+  </style> 
+
   <script>
     const datagrid = document.getElementById('datagridFormatter');
     datagrid.addEventListener('odsSortChange', (data) => console.log('odsSortChange', data));

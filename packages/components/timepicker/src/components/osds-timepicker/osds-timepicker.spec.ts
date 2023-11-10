@@ -1,20 +1,18 @@
 jest.mock('./core/controller'); // keep jest.mock before any
-
 import type { OdsTimepickerAttribute } from './interfaces/attributes';
+import type { OsdsSelect, OsdsSelectOption } from '@ovhcloud/ods-component-select';
 import type { SpecPage } from '@stencil/core/testing';
-import { newSpecPage } from '@stencil/core/testing';
 import {
   odsComponentAttributes2StringAttributes,
   odsStringAttributes2Str,
   odsUnitTestAttribute,
 } from '@ovhcloud/ods-common-testing';
-import { OsdsTimepicker } from './osds-timepicker';
+import { newSpecPage } from '@stencil/core/testing';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { OdsTimepickerController } from './core/controller';
 import { ODS_TIMEZONE } from './constants/timezones';
 import { ODS_TIMEZONES_PRESET } from './constants/timezones-preset';
-import { OsdsSelect, OsdsSelectOption } from '@ovhcloud/ods-component-select';
-
+import { OdsTimepickerController } from './core/controller';
+import { OsdsTimepicker } from './osds-timepicker';
 
 describe('spec:osds-timepicker', () => {
   let page: SpecPage;
@@ -24,12 +22,11 @@ describe('spec:osds-timepicker', () => {
   let select: OsdsSelect | null | undefined;
   let selectOptions: OsdsSelectOption[] | null | undefined;
 
-
   afterEach(() => {
     jest.clearAllMocks();
   });
 
-  async function setup({ attributes = {} }: { attributes?: Partial<OdsTimepickerAttribute> } = {}) {
+  async function setup({ attributes = {} }: { attributes?: Partial<OdsTimepickerAttribute> } = {}): Promise<void> {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsTimepickerAttribute>(attributes, DEFAULT_ATTRIBUTE);
 
     page = await newSpecPage({
@@ -45,20 +42,20 @@ describe('spec:osds-timepicker', () => {
     controller = (OdsTimepickerController as unknown as jest.SpyInstance<OdsTimepickerController, unknown[]>).mock.instances[0];
   }
 
-  it('should render', async () => {
+  it('should render', async() => {
     await setup({});
     expect(root?.shadowRoot).toBeTruthy();
     expect(instance).toBeTruthy();
   });
 
-  it('should render select and select-options if timezones are set', async () => {
+  it('should render select and select-options if timezones are set', async() => {
     await setup({ attributes : { timezones : [ODS_TIMEZONE.UTC, ODS_TIMEZONE.UTC1] } });
     expect(select).toBeTruthy();
     expect(selectOptions).toBeTruthy();
-  })
+  });
 
   describe('init', () => {
-    it('should call handleCurrentTimezone and handleTimezones on init if there is timezones', async () => {
+    it('should call handleCurrentTimezone and handleTimezones on init if there is timezones', async() => {
       await setup({ attributes : { timezones : ODS_TIMEZONES_PRESET.All } });
       expect(controller.handleCurrentTimezone).toHaveBeenCalledTimes(1);
       expect(controller.handleTimezones).toHaveBeenCalledWith();
@@ -66,7 +63,7 @@ describe('spec:osds-timepicker', () => {
   });
 
   describe('watchers', () => {
-    it('should call onSecondsChange on change of withSeconds', async () => {
+    it('should call onSecondsChange on change of withSeconds', async() => {
       await setup( { attributes : { withSeconds : true } });
       const boolean = false;
       instance.withSeconds = boolean;
@@ -74,114 +71,114 @@ describe('spec:osds-timepicker', () => {
       expect(controller.formatValue).toHaveBeenCalledTimes(1);
     });
 
-    it('should call handleCurrentTimezone on change of currentTimezone', async () => {
+    it('should call handleCurrentTimezone on change of currentTimezone', async() => {
       await setup({});
-      instance.currentTimezone = ODS_TIMEZONE.UTC
+      instance.currentTimezone = ODS_TIMEZONE.UTC;
 
       expect(controller.handleCurrentTimezone).toHaveBeenCalledTimes(1);
     });
 
-    it('should call handleTimezones on change of timezones', async () => {
+    it('should call handleTimezones on change of timezones', async() => {
       await setup({});
-      instance.timezones = [ODS_TIMEZONE.UTC, ODS_TIMEZONE.UTC1]
+      instance.timezones = [ODS_TIMEZONE.UTC, ODS_TIMEZONE.UTC1];
 
       expect(controller.handleTimezones).toHaveBeenCalledTimes(1);
     });
-  })
+  });
 
   describe('attributes', () => {
     const config = {
-      instance: () => instance,
-      page: () => page,
-      root: () => page.root,
-      wait: () => page.waitForChanges(),
+      instance: ():OsdsTimepicker => instance,
+      page: ():SpecPage => page,
+      root: ():SpecPage['root'] => page.root,
+      wait: ():Promise<void> => page.waitForChanges(),
     };
 
     describe('clearable', () => {
       odsUnitTestAttribute<OdsTimepickerAttribute, 'clearable'>({
-        name: 'clearable',
         defaultValue: DEFAULT_ATTRIBUTE.clearable,
+        name: 'clearable',
         newValue: true,
-        value: false,
         setup: (clearable) => setup({ attributes: { clearable } }),
-        ...config
+        value: false,
+        ...config,
       });
     });
 
     describe('currentTimezone', () => {
       odsUnitTestAttribute<OdsTimepickerAttribute, 'currentTimezone'>({
-        name: 'currentTimezone',
         defaultValue: DEFAULT_ATTRIBUTE.currentTimezone,
+        name: 'currentTimezone',
         newValue: ODS_TIMEZONE.UTC,
-        value: '',
         setup: (currentTimezone) => setup({ attributes: { currentTimezone } }),
-        ...config
+        value: '',
+        ...config,
       });
     });
 
     describe('disabled', () => {
       odsUnitTestAttribute<OdsTimepickerAttribute, 'disabled'>({
-        name: 'disabled',
         defaultValue: DEFAULT_ATTRIBUTE.disabled,
+        name: 'disabled',
         newValue: true,
-        value: false,
         setup: (disabled) => setup({ attributes: { disabled } }),
-        ...config
+        value: false,
+        ...config,
       });
     });
 
     describe('error', () => {
       odsUnitTestAttribute<OdsTimepickerAttribute, 'error'>({
-        name: 'error',
         defaultValue: DEFAULT_ATTRIBUTE.error,
+        name: 'error',
         newValue: true,
-        value: false,
         setup: (error) => setup({ attributes: { error } }),
-        ...config
+        value: false,
+        ...config,
       });
     });
 
     describe('inline', () => {
       odsUnitTestAttribute<OdsTimepickerAttribute, 'inline'>({
-        name: 'inline',
         defaultValue: DEFAULT_ATTRIBUTE.inline,
+        name: 'inline',
         newValue: true,
-        value: false,
         setup: (inline) => setup({ attributes: { inline } }),
-        ...config
+        value: false,
+        ...config,
       });
     });
 
     describe('timezones', () => {
       odsUnitTestAttribute<OdsTimepickerAttribute, 'timezones'>({
-        name: 'timezones',
         defaultValue: DEFAULT_ATTRIBUTE.timezones,
+        name: 'timezones',
         newValue: [ODS_TIMEZONE.UTC, ODS_TIMEZONE.UTC2],
-        value: '',
         setup: (timezones) => setup({ attributes: { timezones } }),
-        ...config
+        value: '',
+        ...config,
       });
     });
 
     describe('value', () => {
       odsUnitTestAttribute<OdsTimepickerAttribute, 'value'>({
-        name: 'value',
         defaultValue: DEFAULT_ATTRIBUTE.value,
+        name: 'value',
         newValue: '11:11',
-        value: '',
         setup: (value) => setup({ attributes: { value } }),
-        ...config
+        value: '',
+        ...config,
       });
     });
 
     describe('withSeconds', () => {
       odsUnitTestAttribute<OdsTimepickerAttribute, 'withSeconds'>({
-        name: 'withSeconds',
         defaultValue: DEFAULT_ATTRIBUTE.withSeconds,
+        name: 'withSeconds',
         newValue: true,
-        value: false,
         setup: (withSeconds) => setup({ attributes: { withSeconds } }),
-        ...config
+        value: false,
+        ...config,
       });
     });
   });

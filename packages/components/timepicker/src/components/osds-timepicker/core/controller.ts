@@ -1,5 +1,6 @@
+import type { ODS_TIMEZONE } from '../constants/timezones';
 import type { OsdsTimepicker } from '../osds-timepicker';
-import { ODS_TIMEZONE, ODS_TIMEZONES } from '../constants/timezones';
+import { ODS_TIMEZONES } from '../constants/timezones';
 import { ODS_TIMEZONES_PRESET } from '../constants/timezones-preset';
 
 class OdsTimepickerController {
@@ -10,11 +11,11 @@ class OdsTimepickerController {
   formatValue(value: string, withSeconds: boolean): string {
     if (withSeconds === false && value.match(/:/g)?.length === 2) {
       const inputValue = value.split(':');
-      return `${ inputValue[0] }:${ inputValue[1] }`
+      return `${ inputValue[0] }:${ inputValue[1] }`;
     }
 
     if (withSeconds === true && value.match(/:/g)?.length === 1) {
-      return `${ value }:00`
+      return `${ value }:00`;
     }
 
     return '';
@@ -29,7 +30,7 @@ class OdsTimepickerController {
     if (!this.component.currentTimezone) {
       const browserTimezone = new Date().getTimezoneOffset() / 60 * -1;
       const parsedTimezone = browserTimezone >= 0 ? `+${browserTimezone}` : browserTimezone.toString();
-      this.component.currentTimezone = ODS_TIMEZONES.find((timezone) => (timezone as string).indexOf(parsedTimezone) > 1)
+      this.component.currentTimezone = ODS_TIMEZONES.find((timezone) => (timezone as string).indexOf(parsedTimezone) > 1);
     }
   }
 

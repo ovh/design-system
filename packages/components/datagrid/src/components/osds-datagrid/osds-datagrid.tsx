@@ -84,6 +84,9 @@ export class OsdsDatagrid implements OdsDatagridAttribute, OdsDatagridEvent {
     const columns = this.controler.getColumns();
     this.table?.setColumns(this.controler.getTabulatorColumns(columns));
     this.setColumnsHeight();
+    if (!this.isSelectable) {
+      this.table?.getRows().forEach((row) => row.deselect());
+    }
   }
 
   @Listen('odsCheckedChange')

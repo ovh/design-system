@@ -57,6 +57,21 @@ describe('e2e:osds-datagrid', () => {
     expect(selectableHeader).not.toBe(null);
   });
 
+  it('should deselect all selected columns after toggle isSelectable', async() => {
+    await setup({ attributes: {
+      columns: JSON.stringify([{ field: 'name', title: 'Name' }, { field: 'firstname', title: 'Firstname' }]),
+      isSelectable: true,
+      rows: JSON.stringify([{ firstname: 'Simpson', name: 'Homer' }]),
+    } });
+    const selectableRow = await table?.find('.tabulator-row input[type="checkbox"]');
+    await selectableRow?.click();
+    expect(await selectableRow?.getProperty('checked')).toBe(true);
+
+    el.setProperty('isSelectable', false);
+    await page.waitForChanges();
+    expect(await selectableRow?.getProperty('checked')).toBe(false);
+  });
+
   it('should select all rows', async() => {
     await setup({ attributes: {
       columns: JSON.stringify([{ field: 'name', title: 'Name' }, { field: 'firstname', title: 'Firstname' }]),

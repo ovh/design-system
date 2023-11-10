@@ -20,6 +20,11 @@ class TabulatorFullStub {
   getColumns() {
     return [];
   }
+
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+  getRows() {
+    return [];
+  }
 }
 
 // eslint-disable-next-line no-undef

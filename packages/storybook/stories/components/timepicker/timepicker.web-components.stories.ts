@@ -37,11 +37,7 @@ const storyParams = {
   },
   timezones: {
     category: 'Timezones',
-    defaultValue: null,
-  },
-  currentTimezone: {
-    category: 'Timezones',
-    defaultValue: null,
+    defaultValue: [],
   },
 };
 

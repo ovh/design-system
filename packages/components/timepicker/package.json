@@ -21,7 +21,7 @@
     "doc:api": "typedoc",
     "generate:licence": "npx generate-license-file --input package.json --output THIRD-PARTY-LICENCES --overwrite",
     "lint:scss": "stylelint 'src/components/**/*.scss'",
-    "FIXME_lint:ts": "eslint 'src/**/*.{js,ts,tsx}'",
+    "lint:ts": "eslint 'src/**/*.{js,ts,tsx}'",
     "start": "stencil build --docs --dev --watch --serve",
     "test": "yarn run test:spec && yarn run test:e2e",
     "test:e2e": "stencil test --e2e --config stencil.config.ts",

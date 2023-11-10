@@ -1,5 +1,5 @@
 import type { ODS_TIMEZONE } from '../constants/timezones';
-import { ODS_TIMEZONES_PRESET } from '../constants/timezones-preset';
+import type { ODS_TIMEZONES_PRESET } from '../constants/timezones-preset';
 
 interface OdsTimepickerAttribute {
   /**
@@ -36,6 +36,6 @@ interface OdsTimepickerAttribute {
   withSeconds?: boolean
 }
 
-export {
+export type {
   OdsTimepickerAttribute,
 };

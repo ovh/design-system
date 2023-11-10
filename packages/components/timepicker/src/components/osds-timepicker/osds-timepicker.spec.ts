@@ -90,7 +90,7 @@ describe('spec:osds-timepicker', () => {
     const config = {
       instance: ():OsdsTimepicker => instance,
       page: ():SpecPage => page,
-      root: ():HTMLElement |undefined => page.root,
+      root: ():SpecPage['root'] => page.root,
       wait: ():Promise<void> => page.waitForChanges(),
     };
 

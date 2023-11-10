@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/addon-docs';
 
-<Meta title="Code/Design tokens/Blue Jeans/Colors" />
+<Meta title="OVHcloud Design System/Design tokens/Blue Jeans/Colors" />
 
 <div style={{
   position: 'absolute',
@@ -8,6 +8,55 @@ import { Meta } from '@storybook/addon-docs';
 }}>
 
   # Colors
+  A color palette is made of different hue.
+  The hue is a number like `100` or `500` and defines the shade of the color.
+  There is also some contrasted hue. The purpose of this is to have a contrasted color in foreground of one hue.
+  For instance, a color on a color `blue-100` must be a `blue-100-contrasted`.
+
+  Here is an example of `blue` palette defined like this:
+
+  | hue            | color                   |
+  |----------------|-------------------------|
+  | 100            | hsla(193, 100%, 87%, 1) |
+  | 100-contrasted | hsla(218, 100%, 42%, 1) |
+  | 500            | hsla(218, 100%, 42%, 1) |
+  | 500-contrasted | hsla(0, 0%, 100%, 1)    |
+
+  So we have multiple color palette like `gray`, `blue`, `green`, etc.
+  Each of theses color palettes is defined in the `colorConfig` of the theme.
+
+  Defining the color theming also means defining the different usage of color palette.
+  It is the notion of color intent :
+
+  | intent                    | description                                               |
+  |---------------------------|-----------------------------------------------------------|
+  | default<br />_by default_ | A flat color, not product-oriented                        |
+  | primary                   | The most used color                                       |
+  | text                      | The most used color for texts                             |
+  | accent                    | Used to render visible a specific zone, like CTAs buttons |
+  | error                     | The component is in error state                           |
+  | warning                   | The component have a warning to notice                    |
+  | success                   | The component is in a done success                        |
+  | info                      | The component have an info to notice                      |
+  | promotion                 | The specific color used for promotions/special offers     |
+
+  So for each color intent we have to configure the palette to use for the theme :
+
+  | color       | example            |
+  |-------------|--------------------|
+  | `default`   | use a gray palette |
+  | `primary`   | blue palette       |
+  | `accent`    | green palette      |
+  | `error`     | red palette        |
+  | `warning`   | orange palette     |
+  | `success`   | green palette      |
+  | `info`      | blue palette       |
+  | `promotion` | pink palette       |
+
+  At the end, the components that have an input named `color` is the color intent.
+  The component will use the defined palette as the main color.
+  Each component can also directly retrieve a specific palette intent like `error` and apply some color.
+
   To maintain the coherence and presence of the OVH brand. A blue palette has been defined to serve as a pillar of graphic contiguity on all OVH applications.
 
   ## Color palettes

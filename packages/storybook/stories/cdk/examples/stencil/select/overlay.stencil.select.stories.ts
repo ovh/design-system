@@ -6,7 +6,7 @@ import { styleMap } from 'lit-html/directives/style-map';
 
 import page from './overlay.stencil.select.stories.page.mdx';
 import { play } from './overlay.stencil.select.stories.play';
-import { extractArgTypes, extractStoryParams } from '../../../../../../core/componentHTMLUtils';
+import { extractArgTypes, extractStoryParams } from '../../../../../core/componentHTMLUtils';
 
 defineCustomElements();
 
@@ -58,7 +58,7 @@ const selectScss = require('!!raw-loader!@ovhcloud/ods-cdk-dev/src/components/su
 const selectItemScss = require('!!raw-loader!@ovhcloud/ods-cdk-dev/src/components/surface/ocdk-surface-select-example/ocdk-surface-select-item-example.scss').default;
 
 export default {
-  title: 'Libraries/CDK/Overlay/examples/Stencil/Select',
+  title: 'OVHcloud Component Development Kit/examples/Stencil/Select',
   parameters: {
     docs: { page },
     controls: { expanded: true },

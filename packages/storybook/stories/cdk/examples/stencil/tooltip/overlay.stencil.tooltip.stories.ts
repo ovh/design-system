@@ -6,7 +6,7 @@ import { styleMap } from 'lit-html/directives/style-map';
 
 import page from './overlay.stencil.tooltip.stories.page.mdx';
 import { play } from './overlay.stencil.tooltip.stories.play';
-import { extractArgTypes, extractStoryParams } from '../../../../../../core/componentHTMLUtils';
+import { extractArgTypes, extractStoryParams } from '../../../../../core/componentHTMLUtils';
 
 defineCustomElements();
 
@@ -49,7 +49,7 @@ const tooltipTsxFile = require('!!raw-loader!@ovhcloud/ods-cdk-dev/src/component
 const tooltipScss = require('!!raw-loader!@ovhcloud/ods-cdk-dev/src/components/surface/ocdk-surface-tooltip-example/ocdk-surface-tooltip-example.scss').default;
 
 export default {
-  title: 'Libraries/CDK/Overlay/examples/Stencil/Tooltip',
+  title: 'OVHcloud Component Development Kit/examples/Stencil/Tooltip',
   parameters: {
     docs: { page },
     controls: { expanded: true },

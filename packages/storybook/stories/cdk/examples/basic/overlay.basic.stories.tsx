@@ -6,7 +6,7 @@ import { styleMap } from 'lit-html/directives/style-map';
 
 import page from './overlay.basic.stories.page.mdx';
 import { play } from './overlay.basic.stories.play';
-import { extractArgTypes, extractStoryParams } from '../../../../../core/componentHTMLUtils';
+import { extractArgTypes, extractStoryParams } from '../../../../core/componentHTMLUtils';
 
 ocdkDefineCustomElements();
 
@@ -70,7 +70,7 @@ const storyParams = {
 const typescriptFile = require('!!raw-loader!@ovhcloud/ods-cdk/doc/overlay/examples/basic/overlay.basic.ts').default;
 const htmlFile = require('!!raw-loader!@ovhcloud/ods-cdk/doc/overlay/examples/basic/overlay.basic.html').default;
 export default {
-  title: 'Libraries/CDK/Overlay/examples/Basic',
+  title: 'OVHcloud Component Development Kit/examples/Basic',
   parameters: {
     docs: { page },
     controls: { expanded: true },

@@ -38,7 +38,6 @@
     "doc:api": "lerna run doc:api",
     "doc:api:slow": "lerna run --concurrency 1 doc:api",
     "generate:component": "plop --plopfile scripts/component-generator/plopfile.js component",
-    "generate:component0000": "yarn workspace @ovhcloud/ods-component-generator run generate",
     "generate:licence": "npx generate-license-file --input package.json --output THIRD-PARTY-LICENCES --overwrite && lerna run generate:licence",
     "generate:theme": "lerna run generate:theme",
     "ignore:rm": "lerna run ignore:rm",

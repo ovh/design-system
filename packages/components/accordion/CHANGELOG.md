@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [16.3.2](https://ovh.github.io/design-system/v16.3.2/?path=/docs/design-system-changelog--page) (2023-11-13)
+[compare](https://github.com/ovh/design-system/compare/v16.3.1...v16.3.2)
+
+### Bug Fixes
+
+* **accordion:** add test ([121eaf3](https://github.com/ovh/design-system/commit/121eaf3b8996f70731bb4b9838d5e9f73089a454))
+* **accordion:** dont open when disabled ([200e5c7](https://github.com/ovh/design-system/commit/200e5c707e52578c19b305d8b0faddf8479d1db1))
+
+
+### Features
+
+* **accordion:** disable focus when disabled ([f30e237](https://github.com/ovh/design-system/commit/f30e2372ebfa5c2d6779164ffb895e4023283657))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

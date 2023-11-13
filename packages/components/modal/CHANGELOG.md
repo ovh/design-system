@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [16.3.2](https://ovh.github.io/design-system/v16.3.2/?path=/docs/design-system-changelog--page) (2023-11-13)
+[compare](https://github.com/ovh/design-system/compare/v16.3.1...v16.3.2)
+
+### Features
+
+* **modal:** add event on open and close ([51f16c6](https://github.com/ovh/design-system/commit/51f16c699435aa8cde52ed211c18b2aa64f48563))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

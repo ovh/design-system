@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-cdk-dev",
-  "version": "16.3.1",
+  "version": "16.3.2",
   "description": "ODS component development kit dev app",
   "private": true,
   "author": "OVH SAS",
@@ -20,10 +20,10 @@
     "start": "stencil build --docs --dev --watch --serve"
   },
   "dependencies": {
-    "@ovhcloud/ods-cdk": "16.3.1",
-    "@ovhcloud/ods-common-stencil": "16.3.1"
+    "@ovhcloud/ods-cdk": "16.3.2",
+    "@ovhcloud/ods-common-stencil": "16.3.2"
   },
   "devDependencies": {
-    "@ovhcloud/ods-stencil-dev": "16.3.1"
+    "@ovhcloud/ods-stencil-dev": "16.3.2"
   }
 }

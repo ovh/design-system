@@ -160,6 +160,16 @@ describe('e2e:osds-phone-number', () => {
       });
     });
 
+    it('should not receive event odsValueChange on type in input', async() => {
+      await setup({ attributes: { isoCode: ODS_COUNTRY_ISO_CODE.FR }, cbkInterceptorRequest: myCbk });
+
+      const spyOdsValueChange = await page.spyOnEvent('odsValueChange');
+
+      await input.type('0');
+      await page.waitForChanges();
+      expect(spyOdsValueChange).toHaveReceivedEventTimes(0);
+    });
+
     it('should receive event odsValueChange with options selected', async() => {
       const countries = [ODS_COUNTRY_ISO_CODE.AD, ODS_COUNTRY_ISO_CODE.FR];
       await setup({ attributes: { countries }, cbkInterceptorRequest: myCbk });

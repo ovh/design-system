@@ -65,7 +65,6 @@ export class OsdsTile implements OdsTileAttribute {
     this.beforeRender();
   }
 
-
   render() {
     return (
       <Host {...{

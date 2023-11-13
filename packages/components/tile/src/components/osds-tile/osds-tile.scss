@@ -32,7 +32,7 @@
     border: solid var(--ods-size-inset-02);
   }
 
-  :host(&#{&}--checking){
+  :host(&--checking){
     @include osds-tile-on-selected-host {
       position: relative;
       overflow: visible;
@@ -66,7 +66,7 @@
     }
   }
 
-  :host(&#{&}--disabled){
+  :host(&--disabled){
     @include osds-tile-on-selected-host {
       cursor: not-allowed;
 
@@ -76,19 +76,19 @@
     }
   }
 
-  :host(&#{&}--disabled:not(&--checking)){
+  :host(&--disabled:not(&--checking)){
     @include osds-tile-on-selected-host {
       opacity: .5;
     }
   }
 
-  :host(&#{&}--hoverable:not(&--disabled)) {
+  :host(&--hoverable:not(&--disabled)) {
     @include osds-tile-on-selected-host {
       cursor: pointer;
     }
   }
 
-  :host(&#{&}--inline){
+  :host(&--inline){
     display: inline-flex;
     width: var(--width);
   }
@@ -101,7 +101,7 @@
     }
   }
 
-  :host(&#{&}--rounded){
+  :host(&--rounded){
     @include osds-tile-on-selected-host {
       border-radius: var(--ods-size-border-radius-02);
     }

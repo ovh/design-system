@@ -1,0 +1,30 @@
+{
+  "name": "@ovhcloud/ods-component-{{> component-name }}-vue",
+  "version": "{{ component-version }}",
+  "private": true,
+  "description": "Vue specific wrapper for ods",
+  "keywords": [],
+  "license": "Apache-2.0",
+  "scripts": {
+    "build": "npm run clean && npm run compile",
+    "clean": "rimraf dist",
+    "compile": "npm run compile:esm && npm run compile:cjs",
+    "compile:esm": "tsc -p tsconfig.json",
+    "compile:cjs": "tsc -p tsconfig.cjs.json"
+  },
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "files": [
+    "dist/"
+  ],
+  "dependencies": {
+    "@ovhcloud/ods-component-{{> component-name }}": "{{ component-version }}"
+  },
+  "peerDependencies": {
+    "vue": ">=3"
+  },
+  "devDependencies": {
+    "@ovhcloud/ods-vue-dev": "{{ component-version }}"
+  }
+}

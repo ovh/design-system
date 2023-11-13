@@ -1,5 +1,5 @@
 {
-  "name": "@ovhcloud/ods-ovh-component-location-tile-react",
+  "name": "@ovhcloud/ods-component-ovh-location-tile-react",
   "version": "16.3.2",
   "private": true,
   "description": "React specific wrapper for ods",
@@ -20,7 +20,7 @@
     "dist/"
   ],
   "dependencies": {
-    "@ovhcloud/ods-ovh-component-location-tile": "16.3.2"
+    "@ovhcloud/ods-component-ovh-location-tile": "16.3.2"
   },
   "peerDependencies": {
     "react": ">=16.8.6",

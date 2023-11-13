@@ -5,12 +5,12 @@ import { Component, Host, h } from '@stencil/core';
 //  - replace stories config in storybook/.storybook/main
 
 /**
- * @slot (unnamed) - OVH Location Tile content
+ * @slot (unnamed) - OvhLocationTile content
  */
 @Component({
-  tag: 'osds-ovh-location-tile',
-  styleUrl: 'osds-ovh-location-tile.scss',
   shadow: true,
+  styleUrl: 'osds-ovh-location-tile.scss',
+  tag: 'osds-ovh-location-tile',
 })
 export class OsdsOvhLocationTile {
   render() {

@@ -4,7 +4,7 @@ import jestConfig from './jest.config';
 
 export const config = getStencilConfig({
   args: process.argv.slice(2),
-  componentCorePackage: '@ovhcloud/ods-ovh-component-location-tile',
+  componentCorePackage: '@ovhcloud/ods-component-ovh-location-tile',
   excludeComponents: [],
   jestConfig,
   namespace: 'osds-ovh-location-tile',

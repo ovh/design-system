@@ -220,6 +220,7 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
           disabled={this.disabled}
           error={this.error}
           value={this.value}
+          onOdsValueChange={(event: CustomEvent<OdsInputValueChangeEventDetail>) => this.handlerOdsValueChange(event)}
         >
         </osds-input>
       </Host>

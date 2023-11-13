@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [16.3.2](https://ovh.github.io/design-system/v16.3.2/?path=/docs/design-system-changelog--page) (2023-11-13)
+[compare](https://github.com/ovh/design-system/compare/v16.3.1...v16.3.2)
+
+### Bug Fixes
+
+* **quantity:** change value onblur to be valid with step ([155f675](https://github.com/ovh/design-system/commit/155f67579437aca50cb094d03806394d644cc5b9))
+* **quantity:** fix test and calculation ([e03cf0b](https://github.com/ovh/design-system/commit/e03cf0b58d98bfdfe57c368ded2f2dee082a2924))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

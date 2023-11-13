@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [16.3.2](https://ovh.github.io/design-system/v16.3.2/?path=/docs/design-system-changelog--page) (2023-11-13)
+[compare](https://github.com/ovh/design-system/compare/v16.3.1...v16.3.2)
+
+### Features
+
+* **accordion:** add disabled to story ([c294f36](https://github.com/ovh/design-system/commit/c294f366e33539ce994b53d5b5f1aced30ca1985))
+* **medium:** fixing story and unused code ([5cf52ad](https://github.com/ovh/design-system/commit/5cf52ad589d61396ed9d166fbb74bade67a15d3f))
+* **medium:** init component ([7c64f8c](https://github.com/ovh/design-system/commit/7c64f8c4a9839d8d35802b644a641a0d418f9e73))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

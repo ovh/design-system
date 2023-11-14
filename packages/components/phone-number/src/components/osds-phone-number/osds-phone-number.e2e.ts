@@ -160,14 +160,49 @@ describe('e2e:osds-phone-number', () => {
       });
     });
 
-    it('should not receive event odsValueChange on type in input', async() => {
+    it('should receive event odsValueChange with invalid validity', async() => {
       await setup({ attributes: { isoCode: ODS_COUNTRY_ISO_CODE.FR }, cbkInterceptorRequest: myCbk });
 
       const spyOdsValueChange = await page.spyOnEvent('odsValueChange');
 
       await input.type('0');
       await page.waitForChanges();
-      expect(spyOdsValueChange).toHaveReceivedEventTimes(0);
+      expect(spyOdsValueChange).toHaveReceivedEventTimes(1);
+      expect(spyOdsValueChange).toHaveReceivedEventDetail({
+        isoCode: 'fr',
+        value: '0',
+        validity: {
+          customError: false,
+          forbiddenValue: false,
+          invalid: true,
+          stepMismatch: false,
+          valid: false,
+          valueMissing: false,
+        },
+      });
+    });
+
+    it('should receive event odsValueChange with invalid validity', async() => {
+      await setup({ attributes: { isoCode: ODS_COUNTRY_ISO_CODE.FR }, cbkInterceptorRequest: myCbk });
+
+      const spyOdsValueChange = await page.spyOnEvent('odsValueChange');
+
+      await input.type('0642');
+      await page.waitForChanges();
+      expect(spyOdsValueChange).toHaveReceivedEventTimes(4);
+      expect(spyOdsValueChange).toHaveReceivedEventDetail({
+        isoCode: 'fr',
+        value: '0642',
+        oldValue: '064',
+        validity: {
+          customError: false,
+          forbiddenValue: false,
+          invalid: true,
+          stepMismatch: false,
+          valid: false,
+          valueMissing: false,
+        },
+      });
     });
 
     it('should receive event odsValueChange with options selected', async() => {

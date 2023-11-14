@@ -115,18 +115,27 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
 
   private handlerInputEvent(event: OdsInputValueChangeEventDetail) {
     this.value = event.value || '';
-    if(!this.isValidValue(this.value)) {
-      this.error = true;
-      return;
-    }
+    this.error = !this.isValidValue(this.value);
     const number = this.controller.parseNumber(event.value);
-    const oldNumber =this.controller.parseNumber(event.oldValue);
+    const oldNumber = this.controller.parseNumber(event.oldValue);
     this.odsValueChange.emit({
       ...event,
-      value: number && this.phoneUtils.format(number, PhoneNumberFormat.E164),
-      oldValue: oldNumber && this.phoneUtils.format(oldNumber, PhoneNumberFormat.E164) || undefined,
+      value: this.formatValue(number, this.value),
+      oldValue: this.formatValue(oldNumber, event.oldValue) ,
       isoCode: this.isoCode,
+      validity: {
+        ...event.validity,
+        invalid: this.error,
+        valid: !this.error,
+      },
     });
+  }
+
+  private formatValue(number: PhoneNumber | null, defaultValue?: string | null): string | undefined {
+    if (this.error || !number) {
+      return defaultValue ?? undefined;
+    }
+    return this.phoneUtils.format(number, PhoneNumberFormat.E164)
   }
 
   @Watch('value')

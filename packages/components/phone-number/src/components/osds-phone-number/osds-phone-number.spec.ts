@@ -248,6 +248,14 @@ describe('spec:osds-phone-number', () => {
         expect(instance.value).toBe(detail.value);
         expect(instance.error).toBe(false);
         expect(spyEmitOdsValueChange).toHaveBeenCalledTimes(1);
+        expect(spyEmitOdsValueChange).toHaveBeenCalledWith({
+          value: '+33653535353',
+          isoCode: 'fr',
+          validity: {
+            invalid: false,
+            valid: true,
+          },
+        });
       });
 
       it('should handler the input change value with invalid value', async() => {
@@ -257,7 +265,15 @@ describe('spec:osds-phone-number', () => {
         instance.handlerOdsValueChange(new CustomEvent('odsValueChange', { detail }));
         expect(instance.value).toBe(detail.value);
         expect(instance.error).toBe(true);
-        expect(spyEmitOdsValueChange).toHaveBeenCalledTimes(0);
+        expect(spyEmitOdsValueChange).toHaveBeenCalledTimes(1);
+        expect(spyEmitOdsValueChange).toHaveBeenCalledWith({
+          value: '065353qsd5353',
+          isoCode: 'fr',
+          validity: {
+            invalid: true,
+            valid: false,
+          },
+        });
       });
 
       it('should handler the input change value with empty value', async() => {
@@ -268,6 +284,14 @@ describe('spec:osds-phone-number', () => {
         expect(instance.value).toBe(detail.value);
         expect(instance.error).toBe(false);
         expect(spyEmitOdsValueChange).toHaveBeenCalledTimes(1);
+        expect(spyEmitOdsValueChange).toHaveBeenCalledWith({
+          value: '',
+          isoCode: 'fr',
+          validity: {
+            invalid: false,
+            valid: true,
+          },
+        });
       });
 
       it('should emit an event with old value', async() => {
@@ -280,6 +304,10 @@ describe('spec:osds-phone-number', () => {
           value: '+33653535353',
           oldValue: '+330612345',
           isoCode: 'fr',
+          validity: {
+            invalid: false,
+            valid: true,
+          },
         });
       });
     });

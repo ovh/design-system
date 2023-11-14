@@ -35,11 +35,10 @@
   <br/>
   <br/>
   <osds-phone-number disabled value="0642665892"></osds-phone-number>
-  
   <script>
     const phoneNumber = document.getElementById('phoneNumber');
     phoneNumber.addEventListener('odsValueChange', (event) => {
-      console.log('event', event);
+      console.log('event', event.detail);
     })
   </script>
 </body>

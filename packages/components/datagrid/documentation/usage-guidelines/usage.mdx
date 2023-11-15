@@ -1,5 +1,5 @@
 import GenericStyle from '@ovhcloud/ods-common-core/docs/generic-style.mdx';
-
+import './usage-style.css';
 <GenericStyle />
 
 ## Usage
@@ -57,6 +57,7 @@ import GenericStyle from '@ovhcloud/ods-common-core/docs/generic-style.mdx';
   height="150">
 </osds-datagrid>
 ```
+
 ### With sortable columns
 <osds-datagrid 
   columns='[{"title":"Name","field":"name", "isSortable": true},{"title":"Firstname","field":"firstname"},{"title":"Gender","field":"gender"},{"title":"Date Of Birth","field":"dob"}]'
@@ -84,14 +85,34 @@ import GenericStyle from '@ovhcloud/ods-common-core/docs/generic-style.mdx';
 ```
 
 ### With Formatter
-<osds-datagrid 
-  columns='[{"title":"Name","field":"name", "isSortable": true},{"title":"Firstname","field":"firstname"},{"title":"Gender","field":"gender"},{"title":"Date Of Birth","field":"dob"}]'
-  rows='[{"name":"Dupont","firstname":"Antoine","gender":"male","dob":"15/11/1996"},{"name":"Garnbret","firstname":"Janja","gender":"female","dob":"12/03/1999"}]'
-  height="150">
+
+export const datagridFormatter = () => {
+  setTimeout(() => {
+    const datagrid = document.getElementById('datagridWithFormatter');
+    if (!datagrid) {
+      return;
+    }
+    datagrid.columns = [
+      { title: "Name", field: "name", isSortable: true },
+      { title: "Firstname", field: "firstname" },
+      { title: "Gender", field: "gender" },
+      { title: "Date Of Birth", field: "dob", formatter: (value) => {
+          return '<osds-icon name="calendar"></osds-icon> <osds-text color="text" size="400">' + value + '</osds-text>' 
+        } 
+      },
+    ];
+    datagrid.rows = [
+      { name: "Dupont", firstname: "Antoine", gender: "male", dob: "15/11/1996" },
+      { name: "Garnbret", firstname: "Janja", gender: "female", dob: "12/03/1999" },
+    ];
+    datagrid.height = 150;
+  }, 0);
+};
+
+<osds-datagrid id="datagridWithFormatter">
 </osds-datagrid>
 
-<script>
-</script> 
+<>{ datagridFormatter() }</>
 
 ```html
 <osds-datagrid id="datagrid"></osds-datagrid>
@@ -102,7 +123,7 @@ import GenericStyle from '@ovhcloud/ods-common-core/docs/generic-style.mdx';
       { title: "Name", field: "name", isSortable: true },
       { title: "Firstname", field: "firstname" },
       { title: "Gender", field: "gender" },
-      { title: "Date Of Birth", field: "dob", formatter: (value: string) => {
+      { title: "Date Of Birth", field: "dob", formatter: (value) => {
           return '<osds-icon name="calendar"></osds-icon> <osds-text color="text" size="400"> ' + value + '</osds-text>' 
         } 
       },
@@ -139,58 +160,52 @@ import GenericStyle from '@ovhcloud/ods-common-core/docs/generic-style.mdx';
 </script>
 ```
 
-### With Formatter
-<osds-datagrid 
-  columns='[{"title":"Name","field":"name", "isSortable": true},{"title":"Firstname","field":"firstname"},{"title":"Gender","field":"gender"},{"title":"Date Of Birth","field":"dob"}]'
-  rows='[{"name":"Dupont","firstname":"Antoine","gender":"male","dob":"15/11/1996"},{"name":"Garnbret","firstname":"Janja","gender":"female","dob":"12/03/1999"}]'>
-</osds-datagrid>
+### Use Select, Tooltip, Menu or Popover in row formatter
 
-<script>
-</script> 
-
-```html
-<osds-datagrid id="datagrid"></osds-datagrid>
-
-<script>
-    const datagrid = document.querySelector('#datagrid')
+export const datagridWithMenu = () => {
+  setTimeout(() => {
+    const datagrid = document.getElementById('datagridWithMenu');
+    if (!datagrid) {
+      return;
+    }
     datagrid.columns = [
-      { title: "Name", field: "name", isSortable: true },
-      { title: "Firstname", field: "firstname" },
-      { title: "Gender", field: "gender" },
-      { title: "Date Of Birth", field: "dob", formatter: (value: string) => {
-          return '<osds-icon name="calendar"></osds-icon> <osds-text color="text" size="400"> ' + value + '</osds-text>' 
-        } 
+      { title: "Name", field: "name", formatter: (cellValue, rowValue) => {
+          return `<osds-menu>
+            <osds-button slot="menu-title" color="primary" variant="stroked">
+              Action menu
+              <osds-icon name="home" size="xs"></osds-icon>
+            </osds-button>
+            <osds-menu-item>
+              <osds-button
+                color="primary"
+                size="sm"
+                variant="ghost"
+                text-align="start"
+                flex=""
+              >
+                <span>Action 1</span>
+              </osds-button>
+            </osds-menu-item>
+          </osds-menu>`
+        }
       },
+      { title: "Firstname", field: "firstname", isSortable: true },
+      { title: "Gender", field: "gender", isSortable: true },
+      { title: "Date Of Birth", field: "dob", isSortable: true },
     ];
     datagrid.rows = [
       { name: "Dupont", firstname: "Antoine", gender: "male", dob: "15/11/1996" },
-      { name: "Garnbret", firstname: "Janja", gender: "female", dob: "12/03/1999" },];
-</script>
-```
+      { name: "Garnbret", firstname: "Janja", gender: "female", dob: "12/03/1999" },
+    ];
+    datagrid.height = 150;
+  }, 0);
+};
 
-### Empty rows
-<osds-datagrid 
-  columns='[{"title":"Name","field":"name", "isSortable": true},{"title":"Firstname","field":"firstname"},{"title":"Gender","field":"gender"},{"title":"Date Of Birth","field":"dob"}]'
-  rows='[]'
-  no-result-label="Aucun résultat">
+<osds-datagrid id="datagridWithMenu">
 </osds-datagrid>
 
-```html
-<osds-datagrid id="datagrid" no-result-label="Aucun résultat"></osds-datagrid>
+<>{ datagridWithMenu() }</>
 
-<script>
-    const datagrid = document.querySelector('#datagrid')
-    datagrid.columns = [
-      { title: "Name", field: "name", isSortable: true },
-      { title: "Firstname", field: "firstname" },
-      { title: "Gender", field: "gender" },
-      { title: "Date Of Birth", field: "dob" },
-    ];
-    datagrid.rows = [];
-</script>
-```
-
-### Use Select, Tooltip, Menu or Popover in row formatter
 ```html
 <osds-datagrid id="datagrid" no-result-label="Aucun résultat"></osds-datagrid>
 

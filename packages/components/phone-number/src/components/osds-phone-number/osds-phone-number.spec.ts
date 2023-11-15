@@ -270,6 +270,16 @@ describe('spec:osds-phone-number', () => {
         expect(spyEmitOdsValueChange).toHaveBeenCalledTimes(1);
       });
 
+      it('should handler the input change value with indicator included in the value', async() => {
+        await setup({ attributes: { isoCode: ODS_COUNTRY_ISO_CODE.FR } });
+        const detail = { value: '+330123456789' } as OdsInputValueChangeEventDetail;
+        const spyEmitOdsValueChange = jest.spyOn(instance.odsValueChange, 'emit');
+        instance.handlerOdsValueChange(new CustomEvent('odsValueChange', { detail }));
+        expect(instance.value).toBe(detail.value);
+        expect(instance.error).toBe(true);
+        expect(spyEmitOdsValueChange).toHaveBeenCalledTimes(0);
+      });
+
       it('should emit an event with old value', async() => {
         await setup({ attributes: { isoCode: ODS_COUNTRY_ISO_CODE.FR } });
         const detail = { value: '0653535353', oldValue: '0612345' } as OdsInputValueChangeEventDetail;

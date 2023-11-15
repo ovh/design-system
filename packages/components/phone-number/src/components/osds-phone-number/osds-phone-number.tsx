@@ -115,7 +115,8 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
 
   private handlerInputEvent(event: OdsInputValueChangeEventDetail) {
     this.value = event.value || '';
-    if(!this.isValidValue(this.value)) {
+    const cleanPrefix = this.value ? this.getPrefix().replace('/[()]/g', '') : '';
+    if(!this.isValidValue(cleanPrefix + this.value)) {
       this.error = true;
       return;
     }
@@ -131,7 +132,8 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
 
   @Watch('value')
   private validateValue(): void {
-    this.error = !this.isValidValue(this.value);
+    const cleanPrefix = this.value ? this.getPrefix().replace('/[()]/g', '') : '';
+    this.error = !this.isValidValue(cleanPrefix + this.value);
   }
 
   private isValidValue(value: string | null): boolean {

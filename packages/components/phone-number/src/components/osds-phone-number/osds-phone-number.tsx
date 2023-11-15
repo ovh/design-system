@@ -3,7 +3,7 @@ import type { OdsPhoneNumberEvent, OdsPhoneNumberValueChangeEventDetail } from '
 import type { OdsInputValueChangeEventDetail } from '@ovhcloud/ods-component-input';
 import type { OdsSelectValueChangeEventDetail } from '@ovhcloud/ods-component-select';
 
-import { ODS_COUNTRY_ISO_CODE, ODS_COUNTRY_ISO_CODES, ODS_LOCALE, OdsLogger } from '@ovhcloud/ods-common-core';
+import { ODS_COUNTRY_ISO_CODE, ODS_COUNTRY_ISO_CODES, ODS_LOCALE, OdsLogger, OdsCreateDefaultOdsValidityState } from '@ovhcloud/ods-common-core';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_INPUT_TYPE } from '@ovhcloud/ods-component-input';
 import { ODS_TEXT_LEVEL, ODS_TEXT_SIZE } from '@ovhcloud/ods-component-text';
@@ -67,7 +67,9 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
     this.isoCode = this.controller.getDefaultIsoCode();
     this.locale = this.controller.getDefaultLocale();
     this.handlerLocale(this.locale);
-    this.validateValue();
+    if (this.value) {
+      this.handlerInputEvent({ value: this.value, validity: OdsCreateDefaultOdsValidityState() })
+    }
   }
 
   @Watch('locale')
@@ -121,7 +123,7 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
     this.odsValueChange.emit({
       ...event,
       value: this.formatValue(number, this.value),
-      oldValue: this.formatValue(oldNumber, event.oldValue) ,
+      oldValue: this.formatValue(oldNumber, event.oldValue),
       isoCode: this.isoCode,
       validity: {
         ...event.validity,
@@ -135,11 +137,11 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
     if (this.error || !number) {
       return defaultValue ?? undefined;
     }
-    return this.phoneUtils.format(number, PhoneNumberFormat.E164)
+    return this.phoneUtils.format(number, PhoneNumberFormat.E164);
   }
 
   @Watch('value')
-  private validateValue(): void {
+  validateValue(): void {
     this.error = !this.isValidValue(this.value);
   }
 

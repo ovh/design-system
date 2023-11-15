@@ -110,8 +110,11 @@ describe('e2e:osds-phone-number', () => {
   });
 
   it('should not parse the value as a number', async() => {
-    await setup({ attributes: { value: '06123456dfsdf2', isoCode: ODS_COUNTRY_ISO_CODE.FR }, cbkInterceptorRequest: myCbk });
-
+    await setup({
+      attributes: { value: '06123456dfsdf2', isoCode: ODS_COUNTRY_ISO_CODE.FR },
+      cbkInterceptorRequest: myCbk,
+    });
+    
     expect(await el.getProperty('error')).toBe(true);
   });
 
@@ -149,6 +152,7 @@ describe('e2e:osds-phone-number', () => {
       expect(spyOdsValueChange).toHaveReceivedEventDetail({
         isoCode: 'fr',
         value: '+33655998866',
+        oldValue: '',
         validity: {
           customError: false,
           forbiddenValue: false,
@@ -171,6 +175,7 @@ describe('e2e:osds-phone-number', () => {
       expect(spyOdsValueChange).toHaveReceivedEventDetail({
         isoCode: 'fr',
         value: '0',
+        oldValue: '',
         validity: {
           customError: false,
           forbiddenValue: false,

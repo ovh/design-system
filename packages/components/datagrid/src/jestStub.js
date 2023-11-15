@@ -1,5 +1,11 @@
 class TabulatorFullStub {
-  constructor() { }
+  constructor() {
+    this.rowManager = {
+      element: {
+        style: {},
+      },
+    };
+  }
 
   // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   setData() {

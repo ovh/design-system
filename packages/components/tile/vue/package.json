@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-component-tile-vue",
-  "version": "16.3.2",
+  "version": "16.4.0",
   "private": true,
   "description": "Vue specific wrapper for ods",
   "keywords": [],
@@ -19,12 +19,12 @@
     "dist/"
   ],
   "dependencies": {
-    "@ovhcloud/ods-component-tile": "16.3.2"
+    "@ovhcloud/ods-component-tile": "16.4.0"
   },
   "peerDependencies": {
     "vue": ">=3"
   },
   "devDependencies": {
-    "@ovhcloud/ods-vue-dev": "16.3.2"
+    "@ovhcloud/ods-vue-dev": "16.4.0"
   }
 }

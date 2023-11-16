@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html dir='ltr' lang='en'>
+<head>
+  <meta charset='utf-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0' />
+  <title>Dev ods-datagrid</title>
+
+  <script type="module">
+    !window.ods && (window.ods = {config: { logging: { active:true } } });
+    window.ods && (window.ods.config.logging.active = true);
+    !window.ocdk && (window.ocdk = {config: {logging: {active: true}}});
+    window.ocdk && (window.ocdk.config.logging.active = true);
+  </script>
+
+  <script type='module' src='/build/osds-datagrid.esm.js'></script>
+  <script nomodule src='/build/osds-datagrid.js'></script>
+  <link rel="stylesheet" href="/build/osds-datagrid.css">
+
+  <style>
+    :root {
+      --ods-menu-position: absolute;
+      --ods-select-position: absolute;
+      --ods-popover-position: absolute;
+      --ods-tooltip-position: absolute;
+    }
+  </style>
+</head>
+<body>
+  <osds-datagrid id="datagridFormatter" is-selectable height="400"></osds-datagrid>
+  <button id="buttonDatagrid">Toggle isSelectable</button>
+
+  <h1>With sorted column</h1>
+  <osds-datagrid
+    id="datagridFormatter"
+    columns='[{"title":"Name", "field":"name", "isSortable": true}, {"title":"Firstname", "field":"firstname", "isSortable": true}, {"title":"Gender", "field":"gender"}]'
+    rows='[{"name":"Homer", "firstname":"Simpson", "gender": "Male"}, {"name":"Marge", "firstname":"Simpson", "gender": "Female"}]'
+    height="300">
+  </osds-datagrid>
+
+  <h1>With selectable columns</h1>
+  <osds-datagrid
+    is-selectable
+    columns='[{"title":"Name", "field":"name"}, {"title":"Firstname", "field":"firstname"}]'
+    rows='[{"name":"Homer", "firstname":"Simpson"}, {"name":"Marge", "firstname":"Simpson"}]'
+    height="300">
+  </osds-datagrid>
+
+  <h1>With many rows</h1>
+  <osds-datagrid
+    has-hideable-columns="false"
+    id="largeDatagrid"
+    is-selectable="false"
+    columns='[{"title":"Name", "field":"name"}, {"title":"Firstname", "field":"firstname"}]'
+    height="300">
+  </osds-datagrid>
+
+  <h1>Empty state</h1>
+  <osds-datagrid
+    columns='[{"title":"Name", "field":"name", "isSortable": true}, {"title":"Firstname", "field":"firstname"}]'
+    rows='[]'
+    no-result-label="Aucune données de renseignée"
+    height="100">
+  </osds-datagrid>
+
+  <script>
+    const datagrid = document.getElementById('datagridFormatter');
+    const button = document.getElementById('buttonDatagrid');
+    button.addEventListener('click', () => {
+      datagrid.isSelectable = !datagrid.isSelectable;
+    });
+    datagrid.addEventListener('odsSortChange', (data) => console.log('odsSortChange', data));
+    datagrid.addEventListener('odsRowSelectedChange', (data) => console.log('odsRowSelectedChange', data))
+
+    datagrid.columns = [
+      { title: "Name", field: "name", formatter: (cellValue, rowValue) => {
+          return `<osds-menu>
+<osds-button slot="menu-title" color="primary" variant="stroked">
+  Action menu
+  <osds-icon name="home" size="xs"></osds-icon>
+</osds-button>
+<osds-menu-item>
+  <osds-button
+    color="primary"
+    size="sm"
+    variant="ghost"
+    text-align="start"
+    flex=""
+  >
+    <span>Action 1</span>
+  </osds-button>
+</osds-menu-item>
+</osds-menu>`
+        }
+      },
+      { title: "Firstname", field: "firstname", isSortable: true },
+      { title: "Gender", field: "gender", isSortable: true },
+      { title: "Date Of Birth", field: "dob", isSortable: true },
+    ];
+    datagrid.rows = Array.from({ length: 5 }).fill({ name: "Garnbret", firstname: "Janja", gender: "female", dob: "12/03/1999" });
+    // datagrid.hideableColumns = ['name', 'gender'];
+
+    const largeDatagrid = document.getElementById('largeDatagrid');
+    const rows = [];
+
+    for (let i = 0; i < 100; i++) {
+      rows.push({
+        firstname: `firstname-${i}`,
+        name: `name${i}`,
+      });
+    }
+
+    largeDatagrid.rows = rows;
+  </script>
+</body>
+</html>

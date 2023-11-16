@@ -46,7 +46,7 @@ class OdsPopoverController {
    * Handle click event on document and check if it is not on the component itself
    */
   checkForClickOutside(event: any): void {
-    if (this.component.el.contains(event.target) || this.component.surface === undefined || !this.component.surface.opened) {
+    if (this.component.el.contains(event.target as Node) || event.composedPath().includes(this.component.el) || this.component.surface === undefined || !this.component.surface.opened) {
       return;
     } else {
       this.closeSurface();

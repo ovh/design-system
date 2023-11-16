@@ -4687,6 +4687,50 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-component-datagrid-react@workspace:packages/components/datagrid/react":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-datagrid-react@workspace:packages/components/datagrid/react"
+  dependencies:
+    "@ovhcloud/ods-component-datagrid": 16.3.2
+    "@ovhcloud/ods-react-dev": 16.3.2
+  peerDependencies:
+    react: ">=16.8.6"
+    react-dom: ">=16.8.6"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-component-datagrid-vue@workspace:packages/components/datagrid/vue":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-datagrid-vue@workspace:packages/components/datagrid/vue"
+  dependencies:
+    "@ovhcloud/ods-component-datagrid": 16.3.2
+    "@ovhcloud/ods-vue-dev": 16.3.2
+  peerDependencies:
+    vue: ">=3"
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-component-datagrid@16.3.2, @ovhcloud/ods-component-datagrid@workspace:packages/components/datagrid":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-datagrid@workspace:packages/components/datagrid"
+  dependencies:
+    "@ovhcloud/ods-common-core": 16.3.2
+    "@ovhcloud/ods-common-scripts": 16.3.2
+    "@ovhcloud/ods-common-stencil": 16.3.2
+    "@ovhcloud/ods-common-testing": 16.3.2
+    "@ovhcloud/ods-common-theming": 16.3.2
+    "@ovhcloud/ods-component-button": 16.3.2
+    "@ovhcloud/ods-component-checkbox": 16.3.2
+    "@ovhcloud/ods-component-checkbox-button": 16.3.2
+    "@ovhcloud/ods-component-icon": 16.3.2
+    "@ovhcloud/ods-component-popover": 16.3.2
+    "@ovhcloud/ods-component-text": 16.3.2
+    "@ovhcloud/ods-stencil-dev": 16.3.2
+    "@types/tabulator-tables": 5.4.4
+    tabulator-tables: 5.4.4
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-component-datepicker-react@workspace:packages/components/datepicker/react":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-datepicker-react@workspace:packages/components/datepicker/react"
@@ -8699,6 +8743,13 @@ __metadata:
   version: 2.0.1
   resolution: "@types/stack-utils@npm:2.0.1"
   checksum: 205fdbe3326b7046d7eaf5e494d8084f2659086a266f3f9cf00bccc549c8e36e407f88168ad4383c8b07099957ad669f75f2532ed4bc70be2b037330f7bae019
+  languageName: node
+  linkType: hard
+
+"@types/tabulator-tables@npm:5.4.4":
+  version: 5.4.4
+  resolution: "@types/tabulator-tables@npm:5.4.4"
+  checksum: 237fe967a0927f6b84d6061e58cc21442726d9166b03f71c54b85c5426f921f11f3d9c0e7d8a16744437f8ac10238c1df5986c04dc45c494f32fec27ed4e04da
   languageName: node
   linkType: hard
 
@@ -29821,6 +29872,13 @@ __metadata:
     string-width: ^4.2.3
     strip-ansi: ^6.0.1
   checksum: 08249c7046125d9d0a944a6e96cfe9ec66908d6b8a9db125531be6eb05fa0de047fd5542e9d43b4f987057f00a093b276b8d3e19af162a9c40db2681058fd306
+  languageName: node
+  linkType: hard
+
+"tabulator-tables@npm:5.4.4":
+  version: 5.4.4
+  resolution: "tabulator-tables@npm:5.4.4"
+  checksum: 00cc23ea4f1d805cd976436aa34bc39c1c50d248900507d29aacc69dfdbf4b6ea302837af651cb68d3b0e01461ba65c212e094a9d0881bbe9288c99cafd180c8
   languageName: node
   linkType: hard
 

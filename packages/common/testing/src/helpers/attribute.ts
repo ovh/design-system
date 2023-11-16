@@ -32,7 +32,7 @@ function odsStringAttributes2Str(attributes: Record<string, string | undefined>)
       const kebabName = name.replace(/([a-z])([A-Z])/g, '$1-$2')
         .replace(/[\s_]+/g, '-')
         .toLowerCase();
-      return value === undefined ? `${kebabName}` : `${kebabName}="${value}"`;
+      return value === undefined ? `${kebabName}` : `${kebabName}='${value}'`;
     })
     .join(' ');
 }

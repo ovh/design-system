@@ -1,0 +1,6 @@
+:root {
+    --ods-menu-position: absolute;
+    --ods-select-position: absolute;
+    --ods-popover-position: absolute;
+    --ods-tooltip-position: absolute;
+}

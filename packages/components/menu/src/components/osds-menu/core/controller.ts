@@ -13,8 +13,8 @@ class OdsMenuController {
     this.component.propagateDisabledToChild(this.component.disabled);
   }
 
-  checkForClickOutside(event: any): void {
-    if (this.component.el.contains(event.target) || this.component.surface === undefined || !this.component.surface.opened) {
+  checkForClickOutside(event: Event): void {
+    if (this.component.el.contains(event.target as Node) || event.composedPath().includes(this.component.el) || this.component.surface === undefined || !this.component.surface.opened) {
       return;
     } else {
       this.menuItems.forEach((s) => s.removeAttribute('selected'));

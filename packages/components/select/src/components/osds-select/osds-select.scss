@@ -13,7 +13,7 @@
 
   /* overlay important properties */
   display: flex; /* best practice for web component */
-  position: relative; /* must be here to make the positioning working well */
+  position: var(--ods-select-position, relative); /* must be here to make the positioning working well */
 
   /* end overlay important properties */
   cursor: pointer;

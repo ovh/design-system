@@ -15,10 +15,20 @@
   <script type='module' src='/build/osds-datagrid.esm.js'></script>
   <script nomodule src='/build/osds-datagrid.js'></script>
   <link rel="stylesheet" href="/build/osds-datagrid.css">
+
+  <style>
+    :root {
+      --ods-menu-position: absolute;
+      --ods-select-position: absolute;
+      --ods-popover-position: absolute;
+      --ods-tooltip-position: absolute;
+    }
+  </style>
 </head>
 <body>
-  <osds-datagrid id="datagridFormatter" is-selectable height="600"></osds-datagrid>
+  <osds-datagrid id="datagridFormatter" is-selectable height="400"></osds-datagrid>
   <button id="buttonDatagrid">Toggle isSelectable</button>
+
   <h1>With sorted column</h1>
   <osds-datagrid
     id="datagridFormatter"
@@ -35,6 +45,15 @@
     height="300">
   </osds-datagrid>
 
+  <h1>With many rows</h1>
+  <osds-datagrid
+    has-hideable-columns="false"
+    id="largeDatagrid"
+    is-selectable="false"
+    columns='[{"title":"Name", "field":"name"}, {"title":"Firstname", "field":"firstname"}]'
+    height="300">
+  </osds-datagrid>
+
   <h1>Empty state</h1>
   <osds-datagrid
     columns='[{"title":"Name", "field":"name", "isSortable": true}, {"title":"Firstname", "field":"firstname"}]'
@@ -42,15 +61,6 @@
     no-result-label="Aucune données de renseignée"
     height="100">
   </osds-datagrid>
-
-  <style>
-    :root {
-      --ods-menu-position: absolute;
-      --ods-select-position: absolute;
-      --ods-popover-position: absolute;
-      --ods-tooltip-position: absolute;
-    }
-  </style> 
 
   <script>
     const datagrid = document.getElementById('datagridFormatter');
@@ -88,6 +98,18 @@
     ];
     datagrid.rows = Array.from({ length: 5 }).fill({ name: "Garnbret", firstname: "Janja", gender: "female", dob: "12/03/1999" });
     // datagrid.hideableColumns = ['name', 'gender'];
+
+    const largeDatagrid = document.getElementById('largeDatagrid');
+    const rows = [];
+
+    for (let i = 0; i < 100; i++) {
+      rows.push({
+        firstname: `firstname-${i}`,
+        name: `name${i}`,
+      });
+    }
+
+    largeDatagrid.rows = rows;
   </script>
 </body>
 </html>

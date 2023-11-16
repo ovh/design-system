@@ -103,9 +103,16 @@ export class OsdsDatagrid implements OdsDatagridAttribute, OdsDatagridEvent {
   }
 
   private setColumnsHeight(): void {
-    this.table?.getColumns().forEach((col) => {
-      col.getElement().style.height = `${this.rowHeight}px`;
-    });
+    if (this.table) {
+      this.table.getColumns().forEach((col) => {
+        col.getElement().style.height = `${this.rowHeight}px`;
+      });
+
+      // As header is using web-component, its size is not correct when tabulator
+      // set the tableholder element height, so we need to update it
+      this.table.rowManager.element.style.height = `calc(100% - ${this.rowHeight}px)`;
+      this.table.rowManager.element.style.maxHeight = `calc(100% - ${this.rowHeight}px)`;
+    }
   }
 
   private initTable(): void {

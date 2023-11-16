@@ -19,6 +19,7 @@ import { OdsModalMethod } from './interfaces/methods';
 })
 export class OsdsModal implements OdsModalAttribute, OdsModalMethod, OdsModalEvent {
   @Element() el!: HTMLElement;
+  modalWrapper!: HTMLElement;
 
   /** @see OdsModalAttributes.color */
   @Prop({ reflect: true }) color: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
@@ -44,6 +45,7 @@ export class OsdsModal implements OdsModalAttribute, OdsModalMethod, OdsModalEve
   @Method()
   async close(): Promise<void> {
     this.masked = true;
+    this.modalWrapper.append(this.el);
     this.odsModalClose.emit();
   }
 
@@ -52,6 +54,7 @@ export class OsdsModal implements OdsModalAttribute, OdsModalMethod, OdsModalEve
    */
   @Method()
   async open(): Promise<void> {
+    document.body.appendChild(this.el);
     this.masked = false;
     this.odsModalOpen.emit();
   }
@@ -74,8 +77,14 @@ export class OsdsModal implements OdsModalAttribute, OdsModalMethod, OdsModalEve
     }
   }
 
+  private createWrapper(): void {
+    this.modalWrapper = document.createElement('osds-modal-wrapper');
+    this.el.parentElement?.insertBefore(this.modalWrapper, this.el);
+    this.modalWrapper.append(this.el);
+  }
+
   componentWillLoad(): void {
-    document.body.appendChild(this.el);
+    this.createWrapper();
     this.watchOpenedStateHandler(this.masked ?? false);
   }
 
@@ -89,7 +98,7 @@ export class OsdsModal implements OdsModalAttribute, OdsModalMethod, OdsModalEve
         <div class="wrapper">
           <div class="header">
             {dismissible && (
-              <osds-button onClick={() => this.close()} color={color} circle={true} ghost={true}>
+              <osds-button onClick={() => this.close()} color={color} contrasted={true} circle={true} ghost={true}>
                 <osds-icon ariaName={ODS_ICON_NAME.CLOSE + ' icon'} name={ODS_ICON_NAME.CLOSE} size={ODS_ICON_SIZE.sm} color={color}></osds-icon>
               </osds-button>
             )}

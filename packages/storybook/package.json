@@ -7,7 +7,7 @@
   "main": "index.js",
   "scripts": {
     "build:storybook": "yarn list:releases && build-storybook -o dist",
-    "list:releases": "yarn node .storybook/utils/get-repo-releases.js",
+    "list:releases": "node .storybook/utils/get-repo-releases.js",
     "prepare": "npm run build:storybook",
     "start": "yarn list:releases && start-storybook -p 6006",
     "start:nocache": "yarn list:releases && start-storybook -p 6006 --no-manager-cache",

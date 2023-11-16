@@ -1,10 +1,12 @@
 /**
- * execution from directory: `npm list:releases`
  * execution from directory: `yarn list:releases`
  * execution from monorepo with lerna `lerna run list:releases`
  */
-const fetch = require('node-fetch');
 const fs = require('fs');
+const fetch = require('node-fetch');
+const path = require('path');
+const { version: currentVersion } = require (path.resolve(process.cwd(), 'package.json'));
+
 const file = './public/releases.js';
 
 (async () => {
@@ -19,10 +21,17 @@ const file = './public/releases.js';
     availableVersions.latest = 'latest';
     withErrors = true;
   } else {
-    const versions = Object.keys(data.versions);
-    versions.sort().reverse().map((version, key) => {
-      const last = !key;
-      availableVersions[version + (last ? ' (latest)' : '')] = last ? 'latest' : version;
+    const versions = Object.keys(data.versions).sort().reverse();
+
+    // During release, npm registry does not know yet the new version that will get published
+    // so we need to add it manually
+    if (versions.length && versions[0] !== currentVersion) {
+      versions.unshift(currentVersion);
+    }
+
+    versions.forEach((version, index) => {
+      const latest = index === 0;
+      availableVersions[version + (latest ? ' (latest)' : '')] = latest ? 'latest' : version;
     });
   }
 

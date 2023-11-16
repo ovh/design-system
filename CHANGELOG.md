@@ -8,6 +8,28 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [16.4.0](https://ovh.github.io/design-system/v16.4.0/?path=/docs/design-system-changelog--page) (2023-11-16)
+[compare](https://github.com/ovh/design-system/compare/v16.3.2...v16.4.0)
+
+### Bug Fixes
+
+* **phone-number:** oldValue undefined ([8098e22](https://github.com/ovh/design-system/commit/8098e22a51f3416ec8c5dfc4f81f7b896fb84f34))
+* **phone-number:** trigger event ([9104220](https://github.com/ovh/design-system/commit/9104220e0a959d53841c457ac27d6055ab4b7630))
+* **storybook:** add missing value on release list ([1e6a59f](https://github.com/ovh/design-system/commit/1e6a59fc6ec2b9e2447da07855df82a57368e8d3))
+
+
+### Features
+
+* **datagrid:** component MVP ([#225](https://github.com/ovh/design-system/issues/225)) ([8156c4c](https://github.com/ovh/design-system/commit/8156c4c45fe4da5007f9e27d295707e348689d4b)), closes [#280](https://github.com/ovh/design-system/issues/280)
+* **scripts:** add component generator ([53f552c](https://github.com/ovh/design-system/commit/53f552c34da10f600ebabaf3e963950537c59138))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [16.3.2](https://ovh.github.io/design-system/v16.3.2/?path=/docs/design-system-changelog--page) (2023-11-13)
 [compare](https://github.com/ovh/design-system/compare/v16.3.1...v16.3.2)
 

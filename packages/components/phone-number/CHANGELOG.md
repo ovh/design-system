@@ -8,6 +8,21 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [16.4.0](https://ovh.github.io/design-system/v16.4.0/?path=/docs/design-system-changelog--page) (2023-11-16)
+[compare](https://github.com/ovh/design-system/compare/v16.3.2...v16.4.0)
+
+### Bug Fixes
+
+* **phone-number:** oldValue undefined ([8098e22](https://github.com/ovh/design-system/commit/8098e22a51f3416ec8c5dfc4f81f7b896fb84f34))
+* **phone-number:** trigger event ([9104220](https://github.com/ovh/design-system/commit/9104220e0a959d53841c457ac27d6055ab4b7630))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [16.3.2](https://ovh.github.io/design-system/v16.3.2/?path=/docs/design-system-changelog--page) (2023-11-13)
 [compare](https://github.com/ovh/design-system/compare/v16.3.1...v16.3.2)
 

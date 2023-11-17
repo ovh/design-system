@@ -29,20 +29,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 const version = selection.target.value === 'latest' ? 'latest' : `v${selection.target.value}`;
                 location.pathname = location.pathname.replace(urlVersionRegex, version);
               };
+              element.appendChild(createGithubImageElement());
             } else {
               const version = document.createElement('div');
               version.id = 'release-selector';
               version.innerText = Object.keys(releases)[0];
               element = version;
+              element.appendChild(createGithubImageElement());
             }
-            let img = document.createElement('img');
-            img.src = 'github_logo.png';
-            img.setAttribute('width', '24px');
-            img.style.marginLeft = '4px';
-            img.style.verticalAlign = 'bottom';
-            img.style.cursor = 'pointer';
-            element.appendChild(img);
-            img.onclick = () => window.open('https://github.com/ovh/design-system');
             selector.parentNode.insertBefore(element, selector.nextSibling);
             observer.disconnect();
           break;
@@ -99,3 +93,14 @@ addons.setConfig({
     },
   },
 });
+
+const createGithubImageElement = () => {
+  const img = document.createElement('img');
+  img.src = 'github_logo.png';
+  img.setAttribute('width', '24px');
+  img.style.marginLeft = '4px';
+  img.style.verticalAlign = 'bottom';
+  img.style.cursor = 'pointer';
+  img.onclick = () => window.open('https://github.com/ovh/design-system');
+  return img;
+}

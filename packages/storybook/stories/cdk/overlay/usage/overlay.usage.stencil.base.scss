@@ -1,8 +1,0 @@
-:host {
-  /* overlay important properties */
-  display: inline-block; /* best practice for web component */
-  position: relative; /* must be here to make the positioning working well */
-  text-align: initial; /* must be here to make the positioning working well for RTL alignment */
-  padding: 0; /* must be here to make the computing works. If you need padding, apply it on trigger or surface */
-  /* end overlay important properties */
-}

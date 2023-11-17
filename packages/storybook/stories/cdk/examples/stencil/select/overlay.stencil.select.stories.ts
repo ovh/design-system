@@ -1,10 +1,8 @@
 import { defineCustomElements } from '@ovhcloud/ods-cdk/dev/loader';
 import { OcdkSurfaceSelectPosition, OcdkSurfaceSelectPositionList } from '@ovhcloud/ods-cdk-dev';
-import { OlesIpsumGeneration, olesIpsum } from '@ovhcloud/ods-common-core';
 import { html } from 'lit-html';
 import { styleMap } from 'lit-html/directives/style-map';
 
-import page from './overlay.stencil.select.stories.page.mdx';
 import { play } from './overlay.stencil.select.stories.play';
 import { extractArgTypes, extractStoryParams } from '../../../../../core/componentHTMLUtils';
 
@@ -56,11 +54,12 @@ const selectTsxFile = require('!!raw-loader!@ovhcloud/ods-cdk-dev/src/components
 const selectItemTsxFile = require('!!raw-loader!@ovhcloud/ods-cdk-dev/src/components/surface/ocdk-surface-select-example/ocdk-surface-select-item-example.tsx').default;
 const selectScss = require('!!raw-loader!@ovhcloud/ods-cdk-dev/src/components/surface/ocdk-surface-select-example/ocdk-surface-select-example.scss').default;
 const selectItemScss = require('!!raw-loader!@ovhcloud/ods-cdk-dev/src/components/surface/ocdk-surface-select-example/ocdk-surface-select-item-example.scss').default;
+const applyContentText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, ' +
+  'quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Phasellus at blandit elit. Sed blandit, ipsum ut luctus venenatis, leo augue mollis massa, '
 
 export default {
-  title: 'OVHcloud Component Development Kit/examples/Stencil/Select',
+  title: 'OVHcloud Component Development Kit/examples/Stencil/Select/Demo',
   parameters: {
-    docs: { page },
     controls: { expanded: true },
     preview: [
       {
@@ -100,25 +99,19 @@ const Template = (args: any) => {
     <style>
       #alignment {
         display: flex;
-        height: 100vh;
         flex-wrap: wrap;
       }
     </style>
 
     <div id='alignment' style=${ styleMap({ placeContent: args.changeAlignment }) }>
-      <p>${args.applyContent ? olesIpsum(OlesIpsumGeneration.paragraphs, 2) : ''}</p>
+      <p>${args.applyContent ? applyContentText : ''}</p>
       <ocdk-surface-select-example dir="${args.applyDirection}" opened="${args.opened}" position="${args.position}">
         <div slot="trigger">My Select</div>
         <ocdk-surface-select-item-example value="item 1">item #1</ocdk-surface-select-item-example>
         <ocdk-surface-select-item-example value="item 2">item #2</ocdk-surface-select-item-example>
         <ocdk-surface-select-item-example value="item 3">item #3</ocdk-surface-select-item-example>
-        <ocdk-surface-select-item-example value="item 4">item #4</ocdk-surface-select-item-example>
-        <ocdk-surface-select-item-example value="item 5">item #5</ocdk-surface-select-item-example>
-        <ocdk-surface-select-item-example value="item 6">item #6</ocdk-surface-select-item-example>
-        <ocdk-surface-select-item-example value="item 7">item #7</ocdk-surface-select-item-example>
-        <ocdk-surface-select-item-example value="item 8">item #8</ocdk-surface-select-item-example>
       </ocdk-surface-select-example>
-      <p>${args.applyContent ? olesIpsum(OlesIpsumGeneration.paragraphs, 2) : ''}</p>
+      <p>${args.applyContent ? applyContentText : ''}</p>
     </div>
   `;
 };

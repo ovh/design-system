@@ -36,9 +36,11 @@ document.addEventListener('DOMContentLoaded', function() {
               element = version;
             }
             let img = document.createElement('img');
-            img.style.cursor = 'pointer';
             img.src = 'github_logo.png';
             img.setAttribute('width', '24px');
+            img.style.marginLeft = '4px';
+            img.style.verticalAlign = 'bottom';
+            img.style.cursor = 'pointer';
             element.appendChild(img);
             img.onclick = () => window.open('https://github.com/ovh/design-system');
             selector.parentNode.insertBefore(element, selector.nextSibling);

@@ -1,10 +1,8 @@
 import { OcdkSurfaceAnimation, OcdkSurfaceAnimationList, OcdkSurfaceCorner, ocdkDefineCustomElements } from '@ovhcloud/ods-cdk';
-import { OcdkSurfaceBasicPositionList } from '@ovhcloud/ods-cdk-dev';
-import { OlesIpsumGeneration, olesIpsum } from '@ovhcloud/ods-common-core';
+import { OcdkSurfaceBasicPositionList } from '@ovhcloud/ods-cdk-dev'
 import { html } from 'lit-html';
 import { styleMap } from 'lit-html/directives/style-map';
 
-import page from './overlay.basic.stories.page.mdx';
 import { play } from './overlay.basic.stories.play';
 import { extractArgTypes, extractStoryParams } from '../../../../core/componentHTMLUtils';
 
@@ -69,10 +67,11 @@ const storyParams = {
 
 const typescriptFile = require('!!raw-loader!@ovhcloud/ods-cdk/doc/overlay/examples/basic/overlay.basic.ts').default;
 const htmlFile = require('!!raw-loader!@ovhcloud/ods-cdk/doc/overlay/examples/basic/overlay.basic.html').default;
+const applyContentText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+
 export default {
-  title: 'OVHcloud Component Development Kit/examples/Basic',
+  title: 'OVHcloud Component Development Kit/examples/Basic/Demo',
   parameters: {
-    docs: { page },
     controls: { expanded: true },
     preview: [
       {
@@ -107,7 +106,6 @@ const Template = (args: any) => {
 
       #alignment {
         display: flex;
-        height: 100vh;
         flex-wrap: wrap;
       }
 
@@ -137,12 +135,12 @@ const Template = (args: any) => {
 
     </style>
     <div id='alignment' style=${ styleMap({ placeContent: args.changeAlignment }) }>
-      <p>${args.applyContent ? olesIpsum(OlesIpsumGeneration.paragraphs, 2) : ''}</p>
+      <p>${args.applyContent ? applyContentText : ''}</p>
       <div id="basic-container-1" dir="${args.applyDirection}">
         <div id="basic-trigger-1" onclick="basic1Toggle()">my trigger</div>
         <ocdk-surface id="basic-surface-1" ?opened=${args.opened} .animated=${args.animated} .corners=${corners} animation="${args.animation}">My surface Content</ocdk-surface>
       </div>
-      <p>${args.applyContent ? olesIpsum(OlesIpsumGeneration.paragraphs, 2) : ''}</p>
+      <p>${args.applyContent ? applyContentText : ''}</p>
     </div>
   `;
 };

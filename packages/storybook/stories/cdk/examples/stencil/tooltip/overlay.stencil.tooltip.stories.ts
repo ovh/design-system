@@ -1,10 +1,8 @@
 import { defineCustomElements } from '@ovhcloud/ods-cdk/dev/loader';
 import { OcdkSurfaceTooltipPosition, OcdkSurfaceTooltipPositionList } from '@ovhcloud/ods-cdk-dev';
-import { OlesIpsumGeneration, olesIpsum } from '@ovhcloud/ods-common-core';
 import { html } from 'lit-html';
 import { styleMap } from 'lit-html/directives/style-map';
 
-import page from './overlay.stencil.tooltip.stories.page.mdx';
 import { play } from './overlay.stencil.tooltip.stories.play';
 import { extractArgTypes, extractStoryParams } from '../../../../../core/componentHTMLUtils';
 
@@ -47,11 +45,11 @@ const storyParams = {
 
 const tooltipTsxFile = require('!!raw-loader!@ovhcloud/ods-cdk-dev/src/components/surface/ocdk-surface-tooltip-example/ocdk-surface-tooltip-example.tsx').default;
 const tooltipScss = require('!!raw-loader!@ovhcloud/ods-cdk-dev/src/components/surface/ocdk-surface-tooltip-example/ocdk-surface-tooltip-example.scss').default;
+const applyContentText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
 
 export default {
-  title: 'OVHcloud Component Development Kit/examples/Stencil/Tooltip',
+  title: 'OVHcloud Component Development Kit/examples/Stencil/Tooltip/Demo',
   parameters: {
-    docs: { page },
     controls: { expanded: true },
     preview: [
       {
@@ -78,17 +76,16 @@ const Template = (args: any) => {
     <style>
       #alignment {
         display: flex;
-        height: 100vh;
         flex-wrap: wrap;
       }
     </style>
 
     <div id='alignment' style=${ styleMap({ placeContent: args.changeAlignment }) }>
-      <p>${args.applyContent ? olesIpsum(OlesIpsumGeneration.paragraphs, 2) : ''}</p>
+      <p>${args.applyContent ? applyContentText : ''}</p>
       <ocdk-surface-tooltip-example value="default positioning" dir="${args.applyDirection}" position="${args.position}">
         <button>tooltip over me</button>
       </ocdk-surface-tooltip-example>
-      <p>${args.applyContent ? olesIpsum(OlesIpsumGeneration.paragraphs, 2) : ''}</p>
+      <p>${args.applyContent ? applyContentText : ''}</p>
     </div>
   `;
 };

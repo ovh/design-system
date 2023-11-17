@@ -1,4 +1,3 @@
-import { OlesIpsumGeneration, olesIpsum } from '@ovhcloud/ods-common-core';
 import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
 import { ODS_TILE_SIZE, ODS_TILE_SIZES, ODS_TILE_VARIANT, ODS_TILE_VARIANTS } from '@ovhcloud/ods-components/tile';
 import { defineCustomElements } from '@ovhcloud/ods-components/tile/loader';
@@ -93,7 +92,7 @@ const TemplateDefault = (args: any) => {
     <div class='tile-container'>
       <osds-tile ...=${getTagAttributes(args)}>
         <span slot='start'>${unsafeHTML(args.start)}</span>
-        <span>${unsafeHTML(args.tileContent || olesIpsum(OlesIpsumGeneration.words, 5))}</span>
+        <span>${unsafeHTML(args.tileContent || 'Lorem ipsum dolor sit amet')}</span>
         <span slot='end'>${unsafeHTML(args.end)}</span>
       </osds-tile>
     </div>
@@ -106,7 +105,7 @@ Default.args = {
 Default.argTypes = extractArgTypes(storyParams);
 
 const defaultTag = 'osds-tile';
-const defaultContent = olesIpsum(OlesIpsumGeneration.words, 5);
+const defaultContent = 'Lorem ipsum dolor sit amet';
 
 const TemplateAll = (args: any) => html`
   <style>

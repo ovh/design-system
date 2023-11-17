@@ -1,4 +1,3 @@
-import { OlesIpsumGeneration, olesIpsum } from '@ovhcloud/ods-common-core';
 import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
 import { ODS_TEXT_LEVELS, ODS_TEXT_SIZES } from '@ovhcloud/ods-components/text';
 import { defineCustomElements } from '@ovhcloud/ods-components/text/loader';
@@ -8,6 +7,8 @@ import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 import { createComponentTable, extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 
 defineCustomElements();
+
+const textContent = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.';
 
 /* Default story parameters  */
 const storyParams = {
@@ -31,7 +32,7 @@ const storyParams = {
   },
   textContent: {
     category: 'Slot',
-    defaultValue: olesIpsum(OlesIpsumGeneration.sentences),
+    defaultValue: textContent,
   },
   contrasted: {
     category: 'Misc',

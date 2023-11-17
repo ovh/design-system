@@ -4,7 +4,7 @@ import { Meta } from '@storybook/addon-docs';
 
 # Contributing
 
-`ODS` is based on `open source` concept and all contributions are very appreciates.
+`ODS` is based on `open source` concept and all contributions are very appreciated.
 
 When contributing to `ODS` project, to help us to make it even better, please first have a look to our guidelines and
 rules we would like you to follow.
@@ -29,8 +29,8 @@ reporting bugs, or sending suggestions.
 
 You need a `nodeJS` and `yarn` as prerequisites.
 
-* [NodeJS](https://nodejs.org/en) >= 14.15 <16
-* [Yarn](https://yarnpkg.com) >= 2
+* [NodeJS](https://nodejs.org/en) >= 18.17
+* [Yarn](https://yarnpkg.com) >= 2.4
 
 We recommend to be familiar with:
 
@@ -69,15 +69,19 @@ You are now ready to dev 🎉
 All the technical documentation and demonstrations of components are integrated into Storybook.
 
 In order to start it from your local environment, from the root folder, just type:
-
 ```shell
 yarn storybook
 ```
 
-ⓘ When you change files inside the storybook folders `packages/tools/storybook` (`tsx` and `mdx` stories), the server
+Or open `packages/storybook` in terminal and type:
+```shell
+yarn start
+```
+
+ⓘ When you change files inside the storybook folders `packages/storybook` (`tsx` and `mdx` stories), the server
 will live reload and updates the storybook
 
-### Assisted live updates
+### Live updates
 
 If you want to watch the code changes with the storybook started, you have to select the related prompt for watching
 components/libraries:
@@ -95,31 +99,6 @@ yarn storybook
 ⓘ Selecting `all` in the `start` prompt can have heavy load for your computer.
 We recommended to watch only one component or library.
 
-### Targeted live updates
-
-You can manually watch a component and see its changes in Storybook every time you change something in your code.
-Go to the folder of the component you want to watch and build it:
-
-```shell
-cd packages/stencil/components/button
-yarn build:prod
-```
-
-Then, watch it:
-
-```shell
-yarn watch
-```
-
-And you can start Storybook (from Storybook folder):
-
-```shell
-cd packages/tools/storybook
-yarn start
-```
-
-ⓘ All changes in storybook stories and your component you are building will trigger the live update.
-
 ## Development server
 
 You can start a `dev server` for one component in order to make the development easier in a simple HTML page.
@@ -131,12 +110,9 @@ cd packages/stencil/components/button
 yarn start
 ```
 
-Some important files:
+`index.html`: main page HTML page of the dev server
 
-- `index.html`: main page HTML page of the dev server
-- `global.dev.ts`: main typescript code for the dev server (not compiled in `build:prod`)
-
-> ⓘ all components are developed with `StencilJs` today and are located into `packages/stencil/components/`
+> ⓘ all components are developed with `StencilJs` today and are located into `packages/components/`
 
 ## Contributing a new component
 

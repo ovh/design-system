@@ -1,4 +1,4 @@
-import { ODS_COUNTRY_ISO_CODE, OlesIpsumGeneration, olesIpsum } from '@ovhcloud/ods-common-core';
+import { ODS_COUNTRY_ISO_CODE } from '@ovhcloud/ods-common-core';
 import { ODS_THEME_COLOR_INTENT, ODS_THEME_TYPOGRAPHY_LEVEL, ODS_THEME_TYPOGRAPHY_SIZE } from '@ovhcloud/ods-common-theming';
 import { ODS_CHECKBOX_BUTTON_SIZE } from '@ovhcloud/ods-components/checkbox-button';
 import { ODS_DIVIDER_SIZE } from '@ovhcloud/ods-components/divider';
@@ -269,7 +269,7 @@ const ODSComponents = {
       },
       slots: {
         summary: 'Accordion',
-        DEFAULT: olesIpsum(),
+        DEFAULT: 'Lorem ipsum,'
       },
     },
     {
@@ -280,11 +280,11 @@ const ODSComponents = {
         DEFAULT: `
       <osds-accordion opened>
         <span slot="summary">Accordion Group</span>
-        ${olesIpsum(OlesIpsumGeneration.words, 5)}
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit
       </osds-accordion>
       <osds-accordion>
         <span slot="summary">Accordion</span>
-        ${olesIpsum()}
+        Lorem ipsum
       </osds-accordion>`,
       },
     },
@@ -321,7 +321,7 @@ const ODSComponents = {
         interactive: '',
       },
       slots: {
-        DEFAULT: `${olesIpsum(OlesIpsumGeneration.words, 5)}`,
+        DEFAULT: `Lorem ipsum dolor sit amet, consectetur adipiscing elit`,
       },
     },
   ],
@@ -403,7 +403,7 @@ const ODSComponents = {
         removable: '',
       },
       slots: {
-        DEFAULT: `${olesIpsum(OlesIpsumGeneration.words, 5)}`,
+        DEFAULT: `Lorem ipsum dolor sit amet, consectetur adipiscing elit`,
       },
     },
     {

@@ -1,4 +1,3 @@
-import { OlesIpsumGeneration, olesIpsum } from '@ovhcloud/ods-common-core';
 import { defineCustomElements } from '@ovhcloud/ods-components/checkbox-button/loader';
 import { html } from 'lit-html';
 
@@ -36,7 +35,7 @@ const TemplateCheckboxButton = (args: any) => html`
           id="tile-A"
         >
           <span slot="end">
-            ${olesIpsum(OlesIpsumGeneration.words, 5)}
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit
           </span>
         </osds-checkbox-button>
       </osds-checkbox>
@@ -51,7 +50,7 @@ const TemplateCheckboxButton = (args: any) => html`
           id="tile-B"
         >
           <span slot="end">
-            ${olesIpsum(OlesIpsumGeneration.words, 5)}
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit
           </span>
         </osds-checkbox-button>
       </osds-checkbox>

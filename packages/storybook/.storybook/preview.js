@@ -44,22 +44,18 @@ export const parameters = {
     storySort: {
       order: [
         'OVHcloud Design System',
-        ['Home', 'Get Started', 'What\'s new?',
+        ['Welcome', 'Get Started', 'What\'s new?',
           ['What\'s new', 'Changelog', 'Migration guide'],
           'Design tokens',
-        ],
-        'Code',
-        ['Our Principles', 'Starters',
-          ['Introduction'],
-          'Stencil',
-          ['Introduction', 'Components'],
         ],
         'ODS Components',
         ['Actions', 'Content', 'Form', 'Layout', 'Navigation', 'User feedback'],
         'Contributing',
         ['Get Started', 'Deployment and Versioning', 'Repository Strategy', 'Troubleshooting Notes'],
-        'Libraries',
-        ['Introduction']
+        'OVHcloud Component Development Kit',
+        ['Introduction', 'Examples',
+        ['Basic', 'Usage']
+        ]
       ],
     },
     showPanel: true,

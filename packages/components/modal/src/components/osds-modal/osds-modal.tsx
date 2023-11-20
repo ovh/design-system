@@ -86,6 +86,9 @@ export class OsdsModal implements OdsModalAttribute, OdsModalMethod, OdsModalEve
   componentWillLoad(): void {
     this.createWrapper();
     this.watchOpenedStateHandler(this.masked ?? false);
+    if(!this.masked) {
+      document.body.appendChild(this.el);
+    }
   }
 
   render() {
@@ -98,7 +101,7 @@ export class OsdsModal implements OdsModalAttribute, OdsModalMethod, OdsModalEve
         <div class="wrapper">
           <div class="header">
             {dismissible && (
-              <osds-button onClick={() => this.close()} color={color} contrasted={true} circle={true} ghost={true}>
+              <osds-button onClick={() => this.close()} color={color} circle={true} variant={"ghost"}>
                 <osds-icon ariaName={ODS_ICON_NAME.CLOSE + ' icon'} name={ODS_ICON_NAME.CLOSE} size={ODS_ICON_SIZE.sm} color={color}></osds-icon>
               </osds-button>
             )}

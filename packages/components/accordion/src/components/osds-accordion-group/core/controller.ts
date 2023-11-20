@@ -50,7 +50,6 @@ class OdsAccordionGroupController {
 
   unRegisterAccordion(accordion: OsdsAccordion): void {
     this.logger.log(`[ods-accordion-group-${this.component.accordionGroupId}]`, 'unRegisterAccordion', { accordion });
-    console.log('this.component.accordions', this.component.accordions.find((a) => a === accordion));
     this.component.accordions.find((a) => a === accordion)?.el.removeEventListener('odsAccordionToggle', (e: Event) => this.handleToggle(e as OdsAccordionToggleEvent, accordion));
     this.component.accordions = this.component.accordions.filter((a) => a !== accordion);
   }

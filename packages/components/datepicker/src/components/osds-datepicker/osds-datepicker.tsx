@@ -183,7 +183,6 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
   }
 
   initializeDatepicker(): void {
-    console.log('JE SUIS ICI BIEN LINK', )
     if(!this.el.shadowRoot || this.datepickerInstance) {
       return;
     }

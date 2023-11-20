@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
               element = releasesSelector;
 
               releasesSelector.onchange = (selection) => {
-                const version = selection.target.value === 'latest' ? 'latest' : `v${selection.target.value}`;
+                const version = selection.target.value === 'latest' ? '/latest/' : `/v${selection.target.value}/`;
                 location.pathname = location.pathname.replace(urlVersionRegex, version);
               };
               element.appendChild(createGithubImageElement());
@@ -98,7 +98,7 @@ const createGithubImageElement = () => {
   const img = document.createElement('img');
   img.src = 'github_logo.png';
   img.setAttribute('width', '24px');
-  img.style.marginLeft = '4px';
+  img.style.marginLeft = '8px';
   img.style.verticalAlign = 'bottom';
   img.style.cursor = 'pointer';
   img.onclick = () => window.open('https://github.com/ovh/design-system');

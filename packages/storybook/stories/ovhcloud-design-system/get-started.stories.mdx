@@ -34,6 +34,7 @@ or
 npm install --save @ovhcloud/ods-components @ovhcloud/ods-theme-blue-jeans
 ```
 
+You should add @ovhcloud/ods-common-core when you need to use Flag component. For more detail, see [Assets](#assets) section.
 You should also add @ovhcloud/ods-common-theming when you would like to use a component with an intent.
 
 ### Import components
@@ -85,7 +86,7 @@ You can import independently some components:
 
 Or importing the entire bundle:
 
-- `@import { applyPolyfills, defineCustomElements } '@ovhcloud/ods-stencil/components/loader/';`
+- `@import { applyPolyfills, defineCustomElements } '@ovhcloud/ods-components/loader/';`
 
 Then, bind custom element to the window:
 
@@ -100,7 +101,7 @@ _Example via HTML for entire bundle:_
 ```html
 <!-- ES2017 module via loader -->
 <script type="module">
-  import { defineCustomElements, applyPolyfills } from './node_modules/@ovhcloud/ods-stencil/components/loader';
+  import { defineCustomElements, applyPolyfills } from './node_modules/@ovhcloud/ods-components/loader';
   applyPolyfills().then(() => {
     defineCustomElements();
   });

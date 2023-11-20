@@ -53,9 +53,7 @@ export const parameters = {
         'Contributing',
         ['Get Started', 'Deployment and Versioning', 'Repository Strategy', 'Troubleshooting Notes'],
         'OVHcloud Component Development Kit',
-        ['Introduction', 'Examples',
-        ['Basic', 'Usage']
-        ]
+        ['Introduction', 'Examples']
       ],
     },
     showPanel: true,

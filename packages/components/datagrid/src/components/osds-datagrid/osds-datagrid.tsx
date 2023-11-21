@@ -153,7 +153,9 @@ export class OsdsDatagrid implements OdsDatagridAttribute, OdsDatagridEvent {
 
   private handlerEvent(): void {
     this.table?.on('dataSorting', (sorters: SorterFromTable[]): void => {
-      this.odsSortChange.emit({ dir: sorters[0].dir, field: sorters[0].field });
+      if (sorters[0]) {
+        this.odsSortChange.emit({ dir: sorters[0].dir, field: sorters[0].field });
+      }
     });
 
     // @ts-ignore type not good, doc: https://tabulator.info/docs/5.5/events#select

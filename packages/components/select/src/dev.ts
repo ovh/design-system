@@ -88,6 +88,10 @@ export default function() {
 
   (window as any).select1Toggle = function(/*evt: Event*/) {
     logger.log('select1Toggle');
+    const options = document.querySelectorAll('#select1 > osds-select-option');
+    options.forEach((option) => {
+      option.innerHTML = `NewValue${option.getAttribute('value')}`;
+    });
     // todo
     // examples.select1.component && (examples.select1.component.opened = !examples.select1.component.opened);
     // evt.stopPropagation()

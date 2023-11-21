@@ -287,7 +287,7 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
 
   setSelectOptions() {
     this.controller.selectOptions = this.getSelectOptionList();
-    this.controller.selectOptions.forEach((option) => this.observer?.observe(option, { childList: true }));
+    this.controller.selectOptions.forEach((option) => this.observer?.observe(option, { childList: true, attributes: true, subtree: true }));
   }
 
   getSelectOptionList(): (HTMLElement & OsdsSelectOption)[] {

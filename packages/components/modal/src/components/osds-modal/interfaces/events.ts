@@ -5,6 +5,6 @@ interface OdsModalEvent {
   odsModalOpen: EventEmitter<void>;
 }
 
-export {
+export type {
   OdsModalEvent,
 };

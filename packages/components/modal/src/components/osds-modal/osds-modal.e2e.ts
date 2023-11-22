@@ -23,8 +23,8 @@ describe('e2e:osds-modal', () => {
     el = await page.find('osds-modal');
 
     await page.evaluate(() => {
-      const wrapperElement = document.querySelector('osds-modal')?.shadowRoot?.querySelector('.wrapper') as HTMLElement;
-      wrapperElement.style.setProperty('animation', 'none');
+      const modalElement = document.querySelector('osds-modal')?.shadowRoot?.querySelector('.wrapper') as HTMLDialogElement;
+      modalElement.style.setProperty('animation', 'none');
     });
   }
 
@@ -195,6 +195,8 @@ describe('e2e:osds-modal', () => {
 
   describe('keyboard navigation', () => {
     let outsideButton: E2EElement;
+    let insideModalButton1: E2EElement;
+    let insideModalButton2: E2EElement;
 
     beforeEach(async() => {
       page = await newE2EPage();
@@ -210,22 +212,34 @@ describe('e2e:osds-modal', () => {
 
       el = await page.find('osds-modal');
       outsideButton = await page.find('#outsideButton');
+      insideModalButton1 = await page.find('#insideModalButton1');
+      insideModalButton2 = await page.find('#insideModalButton2');
     });
 
-    it('should have inert attribute on outsideButton when modal is active', async() => {
+    it('should focus on first inside modal button when modal is active', async() => {
       await el.callMethod('open');
       await page.waitForChanges();
 
-      const inert = outsideButton.getAttribute('inert');
-      expect(inert).not.toBeNull();
+      await page.keyboard.press('Tab');
+
+      let focusedElementId = await page.evaluate(() => document.activeElement?.id);
+      expect(focusedElementId).toBe('insideModalButton1');
+
+      await page.keyboard.press('Tab');
+
+      focusedElementId = await page.evaluate(() => document.activeElement?.id);
+      expect(focusedElementId).toBe('insideModalButton2');
+      expect(focusedElementId).not.toBe('OVHcloud');
     });
 
-    it('should not have inert attribute on outsideButton when modal is closed', async() => {
+    it('should focus on outside button when modal is closed', async() => {
       await el.callMethod('close');
       await page.waitForChanges();
 
-      const inert = outsideButton.getAttribute('inert');
-      expect(inert).toBeNull();
+      await page.keyboard.press('Tab');
+
+      const focusedElementId = await page.evaluate(() => document.activeElement?.id);
+      expect(focusedElementId).toBe('outsideButton');
     });
   });
 });

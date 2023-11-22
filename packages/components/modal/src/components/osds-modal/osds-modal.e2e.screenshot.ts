@@ -24,8 +24,8 @@ describe('e2e:osds-modal', () => {
     await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
 
     await page.evaluate(() => {
-      const wrapperElement = document.querySelector('osds-modal')?.shadowRoot?.querySelector('.wrapper') as HTMLElement;
-      wrapperElement.style.setProperty('animation', 'none');
+      const modalElement = document.querySelector('osds-modal')?.shadowRoot?.querySelector('.wrapper') as HTMLDialogElement;
+      modalElement.style.setProperty('animation', 'none');
     });
   }
 

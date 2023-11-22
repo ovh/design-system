@@ -1,23 +1,23 @@
 import type { OdsModalAttribute } from './interfaces/attributes';
 import type { OdsModalEvent } from './interfaces/events';
-
+import type { OdsModalMethod } from './interfaces/methods';
+import type { EventEmitter } from '@stencil/core';
 import { ODS_THEME_COLOR_INTENT, ODS_THEME_TYPOGRAPHY_SIZE } from '@ovhcloud/ods-common-theming';
 import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
 import { ODS_TEXT_LEVEL } from '@ovhcloud/ods-component-text';
-import { Component, Element, Host, Method, Prop, Watch, h, Event, EventEmitter } from '@stencil/core';
-
+import { Component, Element, Event, Host, Listen, Method, Prop, Watch, h } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { OdsModalMethod } from './interfaces/methods';
 
 /**
  * @slot (unnamed) - Modal content
  */
 @Component({
-  tag: 'osds-modal',
-  styleUrl: 'osds-modal.scss',
   shadow: true,
+  styleUrl: 'osds-modal.scss',
+  tag: 'osds-modal',
 })
 export class OsdsModal implements OdsModalAttribute, OdsModalMethod, OdsModalEvent {
+  modal: HTMLDialogElement | undefined = undefined;
   @Element() el!: HTMLElement;
 
   /** @see OdsModalAttributes.color */
@@ -30,13 +30,35 @@ export class OsdsModal implements OdsModalAttribute, OdsModalMethod, OdsModalEve
   @Prop({ reflect: true }) headline?: string = DEFAULT_ATTRIBUTE.headline;
 
   /** @see OdsModalAttributes.masked */
-  @Prop({ reflect: true, mutable: true }) masked?: boolean = DEFAULT_ATTRIBUTE.masked;
+  @Prop({ mutable: true, reflect: true }) masked?: boolean = DEFAULT_ATTRIBUTE.masked;
 
   /** @see OdsModalEvents.odsModalOpen */
   @Event() odsModalOpen!: EventEmitter<void>;
 
   /** @see OdsModalEvents.odsModalClose */
   @Event() odsModalClose!: EventEmitter<void>;
+
+  @Listen('keydown', { target: 'window' })
+  handleKeyDown(event: KeyboardEvent): void {
+    if (event.key === 'Escape') {
+      event.stopPropagation();
+      event.preventDefault();
+      if (this.modal?.open && this.dismissible) {
+        this.close();
+      }
+    }
+  }
+
+  @Watch('masked')
+  handleShownState(): void {
+    if (!this.modal) {
+      return;
+    }
+    if (this.masked) {
+      return this.modal.close?.();
+    }
+    return this.modal.showModal?.();
+  }
 
   /**
    * @see OdsModalMethods.close
@@ -56,40 +78,25 @@ export class OsdsModal implements OdsModalAttribute, OdsModalMethod, OdsModalEve
     this.odsModalOpen.emit();
   }
 
-  @Watch('masked')
-  watchOpenedStateHandler(masked: boolean) {
-    this.inertBodyChildren(masked);
+  componentDidLoad(): void {
+    this.handleShownState();
   }
 
-  inertBodyChildren(masked = false) {
-    const directChildren = Array.from(document.body.children);
-    for (const child of directChildren) {
-      if (child !== this.el && child.nodeName !== 'SCRIPT') {
-        if (!masked) {
-          child.setAttribute('inert', '');
-        } else {
-          child.removeAttribute('inert');
-        }
-      }
-    }
-  }
-
-  componentWillLoad(): void {
-    document.body.appendChild(this.el);
-    this.watchOpenedStateHandler(this.masked ?? false);
-  }
-
-  render() {
+  render(): void {
     const { color, headline, dismissible, masked } = this;
 
     return (
       <Host masked={masked}>
         <div class="backdrop"></div>
 
-        <div class="wrapper">
+        <dialog
+          class="wrapper"
+          ref={(el?: HTMLElement | null): void => {
+            this.modal = el as HTMLDialogElement;
+          }}>
           <div class="header">
             {dismissible && (
-              <osds-button onClick={() => this.close()} color={color} circle={true} ghost={true}>
+              <osds-button onClick={(): Promise<void> => this.close()} color={color} circle variant='ghost'>
                 <osds-icon ariaName={ODS_ICON_NAME.CLOSE + ' icon'} name={ODS_ICON_NAME.CLOSE} size={ODS_ICON_SIZE.sm} color={color}></osds-icon>
               </osds-button>
             )}
@@ -112,7 +119,7 @@ export class OsdsModal implements OdsModalAttribute, OdsModalMethod, OdsModalEve
               <slot name="actions"></slot>
             </div>
           </div>
-        </div>
+        </dialog>
       </Host>
     );
   }

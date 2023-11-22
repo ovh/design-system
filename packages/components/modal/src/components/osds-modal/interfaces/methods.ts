@@ -10,6 +10,6 @@ interface OdsModalMethod {
   open(): Promise<void>;
 }
 
-export {
+export type {
   OdsModalMethod,
 };

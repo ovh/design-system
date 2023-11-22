@@ -216,27 +216,50 @@ describe('e2e:osds-modal', () => {
       insideModalButton2 = await page.find('#insideModalButton2');
     });
 
-    it('should focus on first inside modal button when modal is active', async() => {
+    it('should move focus to first button inside modal on first tab press', async() => {
       await el.callMethod('open');
       await page.waitForChanges();
 
       await page.keyboard.press('Tab');
+      await page.waitForChanges();
 
-      let focusedElementId = await page.evaluate(() => document.activeElement?.id);
+      const focusedElementId = await page.evaluate(() => document.activeElement?.id);
       expect(focusedElementId).toBe('insideModalButton1');
-
-      await page.keyboard.press('Tab');
-
-      focusedElementId = await page.evaluate(() => document.activeElement?.id);
-      expect(focusedElementId).toBe('insideModalButton2');
-      expect(focusedElementId).not.toBe('OVHcloud');
     });
 
-    it('should focus on outside button when modal is closed', async() => {
+    it('should loop focus back to first button inside modal on continued tabbing', async() => {
+      await el.callMethod('open');
+      await page.waitForChanges();
+
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await page.waitForChanges();
+
+      const focusedElementId = await page.evaluate(() => document.activeElement?.id);
+      expect(focusedElementId).toBe('insideModalButton1');
+    });
+
+    it('should keep focus within modal when open', async() => {
+      await el.callMethod('open');
+      await page.waitForChanges();
+
+      for (let i = 0; i < 10; i++) {
+        await page.keyboard.press('Tab');
+      }
+      await page.waitForChanges();
+
+      const focusedElementId = await page.evaluate(() => document.activeElement?.closest('osds-modal') ? document.activeElement.id : null);
+      expect(focusedElementId).not.toBeNull();
+    });
+
+    it('should return focus to the outside button if modal is closed', async() => {
       await el.callMethod('close');
       await page.waitForChanges();
 
       await page.keyboard.press('Tab');
+      await page.waitForChanges();
 
       const focusedElementId = await page.evaluate(() => document.activeElement?.id);
       expect(focusedElementId).toBe('outsideButton');

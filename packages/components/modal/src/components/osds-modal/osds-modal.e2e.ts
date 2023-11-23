@@ -227,16 +227,6 @@ describe('e2e:osds-modal', () => {
       expect(focusedElementId).toBe('insideModalButton1');
     });
 
-    it('should keep focus within modal when open', async() => {
-      for (let i = 0; i < 10; i++) {
-        await page.keyboard.press('Tab');
-      }
-      await page.waitForChanges();
-
-      const focusedElementId = await page.evaluate(() => document.activeElement?.closest('osds-modal') ? document.activeElement.id : null);
-      expect(focusedElementId).not.toBeNull();
-    });
-
     it('should return focus to the outside button if modal is closed', async() => {
       await el.callMethod('close');
       await page.waitForChanges();

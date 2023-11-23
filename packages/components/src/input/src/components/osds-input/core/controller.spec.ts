@@ -1,12 +1,8 @@
-import type { OdsInputValidityState } from '../interfaces/attributes';
-
-import { Ods, OdsFormControl, OdsLogger } from '@ovhcloud/ods-common-core';
+import type { OdsGenericFormFieldAttribute } from '@ovhcloud/ods-common-core';
+import { Ods, OdsFormControl, ODS_INPUT_TYPE, OdsLogger } from '@ovhcloud/ods-common-core';
 import { OdsClearLoggerSpy, OdsInitializeLoggerSpy, OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
-
 import { OdsInputController } from './controller';
-import { ODS_INPUT_TYPE } from '../constants/input-type';
 import { OsdsInput } from '../osds-input';
-
 
 class OdsInputMock extends OsdsInput {
   constructor(attribute: Partial<OsdsInput>) {
@@ -49,7 +45,7 @@ describe('spec:ods-input-controller', () => {
 
   describe('methods', () => {
     describe('methods:onFormControlChange', () => {
-      const formControl = new OdsFormControl<OdsInputValidityState>('id');
+      const formControl = new OdsFormControl<OdsGenericFormFieldAttribute>('id');
 
       beforeEach(() => {
         formControl.register = jest.fn();
@@ -73,7 +69,7 @@ describe('spec:ods-input-controller', () => {
 
     describe('methods:beforeInit', () => {
       it('should call onFormControlChange', () => {
-        const formControl = new OdsFormControl<OdsInputValidityState>('id');
+        const formControl = new OdsFormControl<OdsGenericFormFieldAttribute>('id');
         setup({ formControl });
         spyOnOnFormControlChange = jest.spyOn(controller, 'onFormControlChange');
         controller.beforeInit();

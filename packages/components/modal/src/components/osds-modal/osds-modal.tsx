@@ -3,6 +3,7 @@ import type { OdsModalEvent } from './interfaces/events';
 import type { OdsModalMethod } from './interfaces/methods';
 import type { EventEmitter } from '@stencil/core';
 import { ODS_THEME_COLOR_INTENT, ODS_THEME_TYPOGRAPHY_SIZE } from '@ovhcloud/ods-common-theming';
+import { ODS_BUTTON_VARIANT } from '@ovhcloud/ods-component-button';
 import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
 import { ODS_TEXT_LEVEL } from '@ovhcloud/ods-component-text';
 import { Component, Element, Event, Host, Listen, Method, Prop, Watch, h } from '@stencil/core';
@@ -40,6 +41,7 @@ export class OsdsModal implements OdsModalAttribute, OdsModalMethod, OdsModalEve
 
   @Listen('keydown', { target: 'window' })
   handleKeyDown(event: KeyboardEvent): void {
+    console.log(document.activeElement);
     if (event.key === 'Escape') {
       event.stopPropagation();
       event.preventDefault();
@@ -82,7 +84,7 @@ export class OsdsModal implements OdsModalAttribute, OdsModalMethod, OdsModalEve
     this.handleShownState();
   }
 
-  render(): void {
+  render(): JSX.Element {
     const { color, headline, dismissible, masked } = this;
 
     return (
@@ -96,7 +98,7 @@ export class OsdsModal implements OdsModalAttribute, OdsModalMethod, OdsModalEve
           }}>
           <div class="header">
             {dismissible && (
-              <osds-button onClick={(): Promise<void> => this.close()} color={color} circle variant='ghost'>
+              <osds-button onClick={(): Promise<void> => this.close()} color={color} circle variant={ODS_BUTTON_VARIANT.ghost}>
                 <osds-icon ariaName={ODS_ICON_NAME.CLOSE + ' icon'} name={ODS_ICON_NAME.CLOSE} size={ODS_ICON_SIZE.sm} color={color}></osds-icon>
               </osds-button>
             )}

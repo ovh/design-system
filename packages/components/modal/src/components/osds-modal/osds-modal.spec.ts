@@ -28,9 +28,6 @@ describe('spec:osds-modal', () => {
 
     root = page.root;
     instance = page.rootInstance;
-    instance.modal = {
-      showModal: jest.fn(),
-    } as unknown as HTMLDialogElement;
   }
 
   it('should render', async() => {

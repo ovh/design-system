@@ -28,10 +28,10 @@
 
     .wrapper {
       background: #fff;
-    }
 
-    .wrapper::backdrop {
-      opacity: 0;
+      &::backdrop {
+        opacity: 0;
+      }
     }
   }
 

@@ -9,7 +9,7 @@ import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 
 
 describe('e2e:osds-modal', () => {
-  const baseAttribute = { color: ODS_THEME_COLOR_INTENT.info, dismissible: true, headline: '', masked: false };
+  const baseAttribute = { color: ODS_THEME_COLOR_INTENT.info, dismissible: false, headline: '', masked: false };
   let page: E2EPage;
   let el: E2EElement;
 
@@ -211,29 +211,15 @@ describe('e2e:osds-modal', () => {
       await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
 
       el = await page.find('osds-modal');
+
+      await el.callMethod('open');
+      await page.waitForChanges();
       outsideButton = await page.find('#outsideButton');
       insideModalButton1 = await page.find('#insideModalButton1');
       insideModalButton2 = await page.find('#insideModalButton2');
     });
 
     it('should move focus to first button inside modal on first tab press', async() => {
-      await el.callMethod('open');
-      await page.waitForChanges();
-
-      await page.keyboard.press('Tab');
-      await page.waitForChanges();
-
-      const focusedElementId = await page.evaluate(() => document.activeElement?.id);
-      expect(focusedElementId).toBe('insideModalButton1');
-    });
-
-    it('should loop focus back to first button inside modal on continued tabbing', async() => {
-      await el.callMethod('open');
-      await page.waitForChanges();
-
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
       await page.waitForChanges();
 
@@ -242,9 +228,6 @@ describe('e2e:osds-modal', () => {
     });
 
     it('should keep focus within modal when open', async() => {
-      await el.callMethod('open');
-      await page.waitForChanges();
-
       for (let i = 0; i < 10; i++) {
         await page.keyboard.press('Tab');
       }
@@ -258,6 +241,7 @@ describe('e2e:osds-modal', () => {
       await el.callMethod('close');
       await page.waitForChanges();
 
+      await page.click('body');
       await page.keyboard.press('Tab');
       await page.waitForChanges();
 

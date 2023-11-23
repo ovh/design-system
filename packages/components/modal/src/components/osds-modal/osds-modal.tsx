@@ -41,7 +41,6 @@ export class OsdsModal implements OdsModalAttribute, OdsModalMethod, OdsModalEve
 
   @Listen('keydown', { target: 'window' })
   handleKeyDown(event: KeyboardEvent): void {
-    console.log(document.activeElement);
     if (event.key === 'Escape') {
       event.stopPropagation();
       event.preventDefault();

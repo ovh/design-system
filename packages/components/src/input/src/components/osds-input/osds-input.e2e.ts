@@ -1,10 +1,10 @@
 import type { OdsInputAttribute } from './interfaces/attributes';
 import type { OdsInputValueChangeEventDetail } from './interfaces/events';
 import type { E2EElement, E2EPage } from '@stencil/core/testing';
+import { ODS_INPUT_TYPE } from './constants/input-type';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import { newE2EPage } from '@stencil/core/testing';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { ODS_INPUT_TYPE } from './constants/input-type';
 
 class FormDataMock {
   private formMap = new Map();

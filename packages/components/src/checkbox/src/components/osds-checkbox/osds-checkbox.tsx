@@ -20,6 +20,7 @@ import { OdsCheckboxController } from './core/ods-checkbox-controller';
 export class OsdsCheckbox implements OdsCheckboxMethod, OdsCheckboxEvent, OdsCheckboxAttribute {
   private static checkboxIds = 0;
   controller = new OdsCheckboxController(this);
+  commonFieldMethodController = new OdsCommonFieldMethodController(this);
   private readonly inputId = `ods-checkbox-${OsdsCheckbox.checkboxIds++}`;
   private readonly logger = new OdsLogger('OsdsCheckbox');
 

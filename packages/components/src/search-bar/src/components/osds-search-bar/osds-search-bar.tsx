@@ -97,7 +97,8 @@ export class OsdsSearchBar implements OdsSearchBarAttribute, OdsSearchBarEvent {
 
         <osds-button
           tabindex="2"
-          onClick={ (): void => this.handlerOnClickSearchButton() }
+          onClick={ ():void => this.handlerOnClickSearchButton() }
+          onKeyDown={ (event: KeyboardEvent):void => this.handlerOnKeydownInput(event) }
           size={ ODS_BUTTON_SIZE.sm }
           color={ ODS_THEME_COLOR_INTENT.primary }
           disabled={ this.disabled }

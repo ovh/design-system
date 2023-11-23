@@ -1,8 +1,6 @@
 import type { OdsPasswordAttribute } from '../interfaces/attributes';
-
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import { ODS_INPUT_SIZE } from '../../../../../input/src';
-
+import { ODS_COMMON_FIELD_SIZE } from '@ovhcloud/ods-common-core';
 
 const DEFAULT_ATTRIBUTE: OdsPasswordAttribute = Object.freeze({
   ariaLabel: null,
@@ -22,7 +20,7 @@ const DEFAULT_ATTRIBUTE: OdsPasswordAttribute = Object.freeze({
   placeholder: undefined,
   readOnly: false,
   required: false,
-  size: ODS_INPUT_SIZE.md,
+  size: ODS_COMMON_FIELD_SIZE.md,
   value: '',
 });
 

@@ -1,16 +1,15 @@
-import type { OdsInputAttribute, OdsInputValidityState } from './interfaces/attributes';
+import type { OdsInputAttribute } from './interfaces/attributes';
 import type { OdsInputEvent, OdsInputValueChangeEventDetail } from './interfaces/events';
 import type { OdsInputMethod } from './interfaces/methods';
-import type { OdsErrorStateControl, OdsFormControl, OdsFormForbiddenValues, OdsInputValue } from '@ovhcloud/ods-common-core';
+import type { OdsCommonFieldValidityState, OdsErrorStateControl, OdsFormControl, OdsFormForbiddenValues, OdsInputValue } from '@ovhcloud/ods-common-core';
 import type { EventEmitter } from '@stencil/core';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_ICON_NAME, ODS_ICON_SIZE } from '../../../../icon/src';
 import { ODS_SPINNER_SIZE } from '../../../../spinner/src';
 import { ODS_TEXT_SIZE } from '../../../../text/src';
 import { AttachInternals, Component, Element, Event, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { ODS_INPUT_SIZE } from './constants/input-size';
 import { ODS_INPUT_TYPE } from './constants/input-type';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsInputController } from './core/controller';
 
 @Component({
@@ -29,8 +28,9 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
 
   @AttachInternals() internals!: ElementInternals;
 
-  @State() inputTabindex = 0;
+  @State() tabindex = 0;
   @State() hasFocus = false;
+  @State() internalError = false;
 
   @Prop() ariaLabel: HTMLElement['ariaLabel'] = DEFAULT_ATTRIBUTE.ariaLabel;
   @Prop() ariaLabelledby?: string = DEFAULT_ATTRIBUTE.ariaLabelledby;
@@ -65,38 +65,42 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
   @Event() odsInputFocus!: EventEmitter<void>;
 
   @Watch('formControl')
-  onFormControlChange(formControl?: OdsFormControl<OdsInputValidityState>) {
+  onFormControlChange(formControl?: OdsFormControl<OdsCommonFieldValidityState>): void {
     this.controller.onFormControlChange(formControl);
   }
 
   @Watch('value')
-  onValueChange(value: OdsInputValue, oldValue?: OdsInputValue) {
+  onValueChange(value: OdsInputValue, oldValue?: OdsInputValue): void {
     this.controller.onValueChange(value, oldValue);
   }
 
   @Listen('focus')
-  focus() {
+  focus(): void {
     this.setFocus.bind(this)();
   }
 
-  beforeInit() {
+  beforeInit(): void {
     this.controller.beforeInit();
   }
 
-  componentWillLoad() {
+  componentWillLoad(): void {
     this.beforeInit();
+  }
+  
+  async componentWillUpdate(): Promise<void> {
+    this.internalError = await this.controller.hasError();
   }
 
   formResetCallback(): void {
     this.value = this.defaultValue;
   }
 
-  emitChange(value: OdsInputValue, oldValue?: OdsInputValue) {
+  async emitChange(value: OdsInputValue, oldValue?: OdsInputValue): Promise<void> {
     this.odsValueChange.emit({
       name: this.name,
-      value: value == null ? value : `${value}`,
       oldValue: oldValue == null ? oldValue : `${oldValue}`,
-      validity: this.controller.getInputValidity(),
+      validity: await this.getValidity(),
+      value: value == null ? value : `${value}`,
     });
   }
 
@@ -109,47 +113,43 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
   }
 
   @Method()
-  async setFocus() {
+  async setFocus(): Promise<void> {
     this.inputEl?.focus();
   }
 
   @Method()
-  async getValidity() {
-    return this.controller.getInputValidity(this.inputEl);
+  async getValidity(): Promise<OdsCommonFieldValidityState> {
+    return this.commonFieldMethodController.getValidity();
   }
 
   @Method()
-  async clear() {
-    this.controller.clear();
+  async clear(): Promise<void> {
+    this.commonFieldMethodController.clear();
   }
 
   @Method()
-  async hide() {
-    this.controller.hide();
+  async hide(): Promise<void> {
+    this.commonFieldMethodController.hide();
   }
 
   @Method()
-  async reset() {
-    this.controller.reset();
+  async reset(): Promise<void> {
+    this.commonFieldMethodController.reset();
   }
 
   @Method()
-  async stepUp() {
+  async stepUp(): Promise<void> {
     this.controller.stepUp();
   }
 
   @Method()
-  async stepDown() {
+  async stepDown(): Promise<void> {
     this.controller.stepDown();
   }
 
   @Method()
-  async setInputTabindex(value: number) {
-    this.controller.setInputTabindex(value);
-  }
-
-  hasError(): boolean {
-    return this.controller.hasError();
+  async setTabindex(value: number): Promise<void> {
+    this.commonFieldMethodController.setTabindex(value);
   }
 
   onBlur(): void {
@@ -168,7 +168,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
     return !!this.placeholder && !this.value;
   }
 
-  render() {
+  render(): JSX.Element {
     const {
       ariaLabel,
       ariaLabelledby,
@@ -176,11 +176,10 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
       color,
       contrasted,
       disabled,
-      hasError,
       hasFocus,
       icon,
       inputId,
-      inputTabindex,
+      tabindex,
       loading,
       masked,
       max,
@@ -202,10 +201,10 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
     return (
       <Host {...{
         class: {
-          'ods-error': Boolean(hasError.bind(this)()),
+          'ods-error': this.internalError,
         },
-        tabindex: inputTabindex,
         hasFocus,
+        tabindex: tabindex,
       }}
       >
         <osds-text color={ODS_THEME_COLOR_INTENT.text}
@@ -217,8 +216,8 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
           {...{
             ariaLabel,
             ariaLabelledby: labelId || null,
-            disabled,
             contrasted,
+            disabled,
             id: inputId,
             masked,
             max,
@@ -258,10 +257,10 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
             <osds-icon
               {...{
                 ariaName: `${masked ? ODS_ICON_NAME.EYE_OPEN : ODS_ICON_NAME.EYE_CLOSED} icon`,
-                name: masked ? ODS_ICON_NAME.EYE_OPEN : ODS_ICON_NAME.EYE_CLOSED,
-                size: ODS_ICON_SIZE.sm,
                 color,
+                name: masked ? ODS_ICON_NAME.EYE_OPEN : ODS_ICON_NAME.EYE_CLOSED,
                 onClick: () => this.hide(),
+                size: ODS_ICON_SIZE.sm,
               }}></osds-icon>
           )
         }
@@ -271,10 +270,10 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
             <osds-icon
               {...{
                 ariaName: `${ODS_ICON_NAME.CLOSE} icon`,
-                name: ODS_ICON_NAME.CLOSE,
-                size: ODS_ICON_SIZE.sm,
                 color,
+                name: ODS_ICON_NAME.CLOSE,
                 onClick: () => this.clear(),
+                size: ODS_ICON_SIZE.sm,
               }}></osds-icon>
           )
         }
@@ -284,9 +283,9 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
             <osds-icon
               {...{
                 ariaName: `${icon} icon`,
+                color,
                 name: icon,
                 size: ODS_ICON_SIZE.sm,
-                color,
               }}></osds-icon>
           )
         }

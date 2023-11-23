@@ -4,8 +4,9 @@ import type { ODS_INPUT_SIZE, OdsInputValueChangeEvent, OdsInputValueChangeEvent
 import type { OdsFormForbiddenValues } from '@ovhcloud/ods-common-core';
 import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import type { EventEmitter } from '@stencil/core';
+import type { OdsPasswordMethod } from './interfaces/methods';
 import { ODS_INPUT_TYPE } from '../../../../input/src';
-import { AttachInternals, Component, Element, Event, Host, Listen, Prop, h } from '@stencil/core';
+import { AttachInternals, Component, Element, Event, Host, Listen, Method, Prop, h } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsPasswordController } from './core/controller';
 
@@ -15,7 +16,7 @@ import { OdsPasswordController } from './core/controller';
   styleUrl: 'osds-password.scss',
   shadow: true,
 })
-export class OsdsPassword implements OdsPasswordAttribute, OdsPasswordEvent {
+export class OsdsPassword implements OdsPasswordAttribute, OdsPasswordEvent, OdsPasswordMethod {
   private controller = new OdsPasswordController(this);
 
   @Element() el!: HTMLElement;
@@ -67,6 +68,36 @@ export class OsdsPassword implements OdsPasswordAttribute, OdsPasswordEvent {
 
   formResetCallback(): void {
     this.value = this.defaultValue;
+  }
+
+  @Method()
+  async getValidity(): Promise<OdsCommonFieldValidityState | undefined> {
+    return this.osdsInput?.getValidity();
+  }
+
+  @Method()
+  async clear(): Promise<void> {
+    this.osdsInput?.clear();
+  }
+
+  @Method()
+  async hide(): Promise<void> {
+    this.osdsInput?.hide();
+  }
+
+  @Method()
+  async reset(): Promise<void> {
+    this.osdsInput?.reset();
+  }
+
+  @Method()
+  async setFocus(): Promise<void> {
+    this.osdsInput?.setFocus();
+  }
+
+  @Method()
+  async setTabindex(value: number): Promise<void> {
+    this.osdsInput?.setTabindex(value);
   }
 
   render() {

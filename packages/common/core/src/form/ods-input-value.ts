@@ -1,4 +1,4 @@
-type OdsInputValue = string | number | null;
+type OdsInputValue = string | number | Date | null;
 
 export type {
   OdsInputValue,

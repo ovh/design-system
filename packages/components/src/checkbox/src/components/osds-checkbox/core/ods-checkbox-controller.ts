@@ -69,7 +69,7 @@ class OdsCheckboxController {
    * on focusing the component, it will process the internal focus.
    */
   onFocus(): void {
-    this.setFocus();
+    this.component.commonFieldMethodController.setFocus();
   }
 
   /**
@@ -91,26 +91,6 @@ class OdsCheckboxController {
    */
   propagateHasFocusToChild(hasFocus: boolean): void {
     this.propagateAttributeToChild({ name: 'has-focus', value: hasFocus });
-  }
-
-  /**
-   * set the focus on the component.
-   * it focuses the input in fact and emit the event
-   */
-  setFocus(): void {
-    if (this.component.inputEl && !this.component.disabled) {
-      this.component.inputEl.focus();
-      this.component.hasFocus = true;
-      this.component.emitFocus();
-    }
-  }
-
-  /**
-   * set a new tabindex
-   * @param index - index number
-   */
-  setTabindex(index: number): void {
-    this.component.tabindex = index;
   }
 
   async toggleCheck(): Promise<void> {

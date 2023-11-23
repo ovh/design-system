@@ -11,7 +11,7 @@ import { OsdsAccordion } from "./accordion/src/components/osds-accordion/osds-ac
 import { OdsBreadcrumbAttributeItem } from "./breadcrumb/src/components/osds-breadcrumb/interfaces/attributes";
 import { ODS_ICON_NAME } from "./icon/src";
 import { ODS_LINK_REFERRER_POLICY } from "./link/src";
-import { ODS_COUNTRY_ISO_CODE, ODS_LOCALE, ODS_PERIOD_ISO_CODE, OdsErrorStateControl, OdsFormControl, OdsFormForbiddenValues, OdsHTMLAnchorElementRel, OdsHTMLAnchorElementTarget, OdsI18nHook, OdsInputValue, OdsTextAreaValidityState, OdsValidityState } from "@ovhcloud/ods-common-core";
+import { ODS_COMMON_FIELD_SIZE, ODS_COMMON_INPUT_TYPE, ODS_COUNTRY_ISO_CODE, ODS_LOCALE, ODS_PERIOD_ISO_CODE, OdsCommonFieldValidityState, OdsErrorStateControl, OdsFormControl, OdsFormForbiddenValues, OdsHTMLAnchorElementRel, OdsHTMLAnchorElementTarget, OdsI18nHook, OdsInputValue, OdsTextAreaValidityState, OdsValidityState } from "@ovhcloud/ods-common-core";
 import { OdsBreadcrumbAttributeItem as OdsBreadcrumbAttributeItem1 } from "./breadcrumb/src/components/osds-breadcrumb/public-api";
 import { ODS_BUTTON_SIZE } from "./button/src/components/osds-button/constants/button-size";
 import { ODS_BUTTON_TYPE } from "./button/src/components/osds-button/constants/button-type";
@@ -34,9 +34,6 @@ import { ODS_DIVIDER_SIZE } from "./divider/src/components/osds-divider/constant
 import { ODS_FLAG_ISO_CODE_UNION } from "./flag/src/components/osds-flag/constants/flag-iso-code";
 import { ODS_ICON_NAME as ODS_ICON_NAME1 } from "./icon/src/components/osds-icon/constants/icon-name";
 import { ODS_ICON_SIZE } from "./icon/src/components/osds-icon/constants/icon-size";
-import { OdsInputValidityState } from "./input/src/components/osds-input/interfaces/attributes";
-import { ODS_INPUT_SIZE } from "./input/src/components/osds-input/constants/input-size";
-import { ODS_INPUT_TYPE } from "./input/src/components/osds-input/constants/input-type";
 import { OdsInputValueChangeEventDetail } from "./input/src/components/osds-input/interfaces/events";
 import { ODS_LINK_REFERRER_POLICY as ODS_LINK_REFERRER_POLICY1 } from "./link/src/components/osds-link/constants/referrer-policies";
 import { ODS_MESSAGE_TYPE } from "./message/src/components/osds-message/constants/message-type";
@@ -77,7 +74,7 @@ export { OsdsAccordion } from "./accordion/src/components/osds-accordion/osds-ac
 export { OdsBreadcrumbAttributeItem } from "./breadcrumb/src/components/osds-breadcrumb/interfaces/attributes";
 export { ODS_ICON_NAME } from "./icon/src";
 export { ODS_LINK_REFERRER_POLICY } from "./link/src";
-export { ODS_COUNTRY_ISO_CODE, ODS_LOCALE, ODS_PERIOD_ISO_CODE, OdsErrorStateControl, OdsFormControl, OdsFormForbiddenValues, OdsHTMLAnchorElementRel, OdsHTMLAnchorElementTarget, OdsI18nHook, OdsInputValue, OdsTextAreaValidityState, OdsValidityState } from "@ovhcloud/ods-common-core";
+export { ODS_COMMON_FIELD_SIZE, ODS_COMMON_INPUT_TYPE, ODS_COUNTRY_ISO_CODE, ODS_LOCALE, ODS_PERIOD_ISO_CODE, OdsCommonFieldValidityState, OdsErrorStateControl, OdsFormControl, OdsFormForbiddenValues, OdsHTMLAnchorElementRel, OdsHTMLAnchorElementTarget, OdsI18nHook, OdsInputValue, OdsTextAreaValidityState, OdsValidityState } from "@ovhcloud/ods-common-core";
 export { OdsBreadcrumbAttributeItem as OdsBreadcrumbAttributeItem1 } from "./breadcrumb/src/components/osds-breadcrumb/public-api";
 export { ODS_BUTTON_SIZE } from "./button/src/components/osds-button/constants/button-size";
 export { ODS_BUTTON_TYPE } from "./button/src/components/osds-button/constants/button-type";
@@ -100,9 +97,6 @@ export { ODS_DIVIDER_SIZE } from "./divider/src/components/osds-divider/constant
 export { ODS_FLAG_ISO_CODE_UNION } from "./flag/src/components/osds-flag/constants/flag-iso-code";
 export { ODS_ICON_NAME as ODS_ICON_NAME1 } from "./icon/src/components/osds-icon/constants/icon-name";
 export { ODS_ICON_SIZE } from "./icon/src/components/osds-icon/constants/icon-size";
-export { OdsInputValidityState } from "./input/src/components/osds-input/interfaces/attributes";
-export { ODS_INPUT_SIZE } from "./input/src/components/osds-input/constants/input-size";
-export { ODS_INPUT_TYPE } from "./input/src/components/osds-input/constants/input-type";
 export { OdsInputValueChangeEventDetail } from "./input/src/components/osds-input/interfaces/events";
 export { ODS_LINK_REFERRER_POLICY as ODS_LINK_REFERRER_POLICY1 } from "./link/src/components/osds-link/constants/referrer-policies";
 export { ODS_MESSAGE_TYPE } from "./message/src/components/osds-message/constants/message-type";
@@ -408,72 +402,59 @@ export namespace Components {
     interface OsdsCheckbox {
         /**
           * afterSave input allows to set a function that returns a promise. It is called after each time an update was performed and allowing to manage pessimistic update strategy
-          * @see OdsCheckboxAttribute.afterSave
          */
         "afterSave"?: OdsCheckboxAttributeCbk;
         /**
           * The corresponding aria-label describing its content
-          * @see OdsCheckboxAttribute.ariaLabel
          */
         "ariaLabel": string | null;
         /**
-          * The id to an external description
-          * @see OdsCheckboxAttribute.ariaLabelledby
+          * ID of the element that labels the input
          */
         "ariaLabelledby"?: string | undefined;
         /**
           * beforeSave input allows to set a function that returns a promise. It is called before each time an update will be performed and allowing to manage pessimistic update strategy
-          * @see OdsCheckboxAttribute.beforeSave
          */
         "beforeSave"?: OdsCheckboxAttributeCbk;
         /**
           * The checked status of the checkbox
-          * @see OdsCheckboxAttribute.checked
          */
         "checked": boolean;
         /**
           * indicate if the checkbox is entirely disabled. it means no interactions (hover, click, focus, etc)
-          * @see OdsCheckboxAttribute.disabled
          */
         "disabled": boolean;
         /**
           * is the checkbox is currently focused
-          * @see OdsCheckboxAttribute.hasFocus
          */
         "hasFocus": boolean;
         /**
-          * The corresponding label
-          * @see OdsCheckboxAttribute.label
+          * Label of the input field
          */
         "label"?: string;
         /**
-          * name used for the input element. useful for browser and posting forms
-          * @see OdsCheckboxAttribute.name
+          * Name of the input field
          */
         "name"?: string;
         /**
           * save input allows to set a function that returns a promise. It is called before each time an update is performed and allowing to manage pessimistic update strategy. the checked state will be updated just after the call.
-          * @see OdsCheckboxAttribute.save
          */
         "save"?: OdsCheckboxAttributeCbk;
         /**
-          * programmatically set the focus on the checkbox. this method has to call OdsCheckboxController.setFocus
-          * @see OdsCheckboxMethod.setFocus
+          * active the focus on the input in order to let the user write something
          */
         "setFocus": () => Promise<void>;
         /**
-          * set the tab index. this method has to call OdsCheckboxController.setTabindex
-          * @see OdsCheckboxMethod.setTabindex
+          * set a custom tab index for easier navigation
+          * @param value - chosen index
          */
         "setTabindex": (index: number) => Promise<void>;
         /**
           * update status indicating if the checked state is being modified. `updating` will be `true` until `beforeSave` or `save` are processed. it is used in `pessimistic` update
-          * @see OdsCheckboxAttribute.updating
          */
         "updating": boolean;
         /**
           * Its corresponding value
-          * @see OdsCheckboxAttribute.value
          */
         "value": string;
     }
@@ -809,10 +790,6 @@ export namespace Components {
         /**
           * Indicates if the input shows error or not
          */
-        "error"?: boolean;
-        /**
-          * Controls the error state of the input
-         */
         "errorStateControl"?: OdsErrorStateControl;
         /**
           * List of forbidden values for the input
@@ -821,11 +798,11 @@ export namespace Components {
         /**
           * Control object of the form the input belongs to
          */
-        "formControl"?: OdsFormControl<OdsInputValidityState>;
+        "formControl"?: OdsFormControl<OdsCommonFieldValidityState>;
         /**
           * get the validity state
          */
-        "getValidity": () => Promise<OdsInputValidityState>;
+        "getValidity": () => Promise<OdsCommonFieldValidityState>;
         /**
           * hide or display the value
          */
@@ -877,10 +854,6 @@ export namespace Components {
         /**
           * Indicates if the input is required or not
          */
-        "required"?: boolean;
-        /**
-          * restore the value to the initial state
-         */
         "reset": () => Promise<void>;
         /**
           * active the focus on the input in order to let the user write something
@@ -890,22 +863,15 @@ export namespace Components {
           * set a custom tab index for easier navigation
           * @param value - chosen index
          */
-        "setInputTabindex": (value: number) => Promise<void>;
+        "setTabindex": (value: number) => Promise<void>;
         /**
           * Size of the input: see component principles
          */
-        "size"?: ODS_INPUT_SIZE;
+        "size"?: ODS_COMMON_FIELD_SIZE;
         /**
           * Step value for the input
-         */
-        "step"?: number;
-        "stepDown": () => Promise<void>;
-        "stepUp": () => Promise<void>;
         /**
           * Type of the input field
-         */
-        "type": ODS_INPUT_TYPE;
-        /**
           * Current value of the input
          */
         "value": OdsInputValue;
@@ -1114,6 +1080,11 @@ export namespace Components {
          */
         "forbiddenValues": OdsFormForbiddenValues<number>;
         /**
+          * get the validity state
+         */
+        "getValidity": () => Promise<OdsCommonFieldValidityState | undefined>;
+        "hide": () => Promise<void>;
+        /**
           * Indicates if the password is inline or not
          */
         "inline"?: boolean;
@@ -1146,9 +1117,22 @@ export namespace Components {
          */
         "required"?: boolean;
         /**
+          * restore the value to the initial state
+         */
+        "reset": () => Promise<void>;
+        /**
+          * active the focus on the input in order to let the user write something
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * set a custom tab index for easier navigation
+          * @param value - chosen index
+         */
+        "setTabindex": (value: number) => Promise<void>;
+        /**
           * Size of the password: see component principles
          */
-        "size"?: ODS_INPUT_SIZE1;
+        "size"?: ODS_COMMON_FIELD_SIZE;
         /**
           * Current value of the password
          */
@@ -3079,82 +3063,66 @@ declare namespace LocalJSX {
     interface OsdsCheckbox {
         /**
           * afterSave input allows to set a function that returns a promise. It is called after each time an update was performed and allowing to manage pessimistic update strategy
-          * @see OdsCheckboxAttribute.afterSave
          */
         "afterSave"?: OdsCheckboxAttributeCbk;
         /**
           * The corresponding aria-label describing its content
-          * @see OdsCheckboxAttribute.ariaLabel
          */
         "ariaLabel"?: string | null;
         /**
-          * The id to an external description
-          * @see OdsCheckboxAttribute.ariaLabelledby
+          * ID of the element that labels the input
          */
         "ariaLabelledby"?: string | undefined;
         /**
           * beforeSave input allows to set a function that returns a promise. It is called before each time an update will be performed and allowing to manage pessimistic update strategy
-          * @see OdsCheckboxAttribute.beforeSave
          */
         "beforeSave"?: OdsCheckboxAttributeCbk;
         /**
           * The checked status of the checkbox
-          * @see OdsCheckboxAttribute.checked
          */
         "checked"?: boolean;
         /**
           * indicate if the checkbox is entirely disabled. it means no interactions (hover, click, focus, etc)
-          * @see OdsCheckboxAttribute.disabled
          */
         "disabled"?: boolean;
         /**
           * is the checkbox is currently focused
-          * @see OdsCheckboxAttribute.hasFocus
          */
         "hasFocus"?: boolean;
         /**
-          * The corresponding label
-          * @see OdsCheckboxAttribute.label
+          * Label of the input field
          */
         "label"?: string;
         /**
-          * name used for the input element. useful for browser and posting forms
-          * @see OdsCheckboxAttribute.name
+          * Name of the input field
          */
         "name"?: string;
         /**
           * Event triggered on checkbox blur
-          * @see OdsCheckboxEvent.odsBlur
          */
         "onOdsBlur"?: (event: OsdsCheckboxCustomEvent<OdsCheckboxFocusChangeEventDetail>) => void;
         /**
           * the checked state changed
-          * @see OdsCheckboxEvent.odsCheckedChange
          */
         "onOdsCheckedChange"?: (event: OsdsCheckboxCustomEvent<OdsCheckboxCheckedChangeEventDetail>) => void;
         /**
           * Event triggered on checkbox focus
-          * @see OdsCheckboxEvent.odsFocus
          */
         "onOdsFocus"?: (event: OsdsCheckboxCustomEvent<OdsCheckboxFocusChangeEventDetail>) => void;
         /**
           * the checked state is being changed
-          * @see OdsCheckboxEvent.odsUpdatingChange
          */
         "onOdsUpdatingChange"?: (event: OsdsCheckboxCustomEvent<OdsCheckboxUpdatingChangeEventDetail>) => void;
         /**
           * save input allows to set a function that returns a promise. It is called before each time an update is performed and allowing to manage pessimistic update strategy. the checked state will be updated just after the call.
-          * @see OdsCheckboxAttribute.save
          */
         "save"?: OdsCheckboxAttributeCbk;
         /**
           * update status indicating if the checked state is being modified. `updating` will be `true` until `beforeSave` or `save` are processed. it is used in `pessimistic` update
-          * @see OdsCheckboxAttribute.updating
          */
         "updating"?: boolean;
         /**
           * Its corresponding value
-          * @see OdsCheckboxAttribute.value
          */
         "value"?: string;
     }
@@ -3512,10 +3480,6 @@ declare namespace LocalJSX {
         /**
           * Indicates if the input shows error or not
          */
-        "error"?: boolean;
-        /**
-          * Controls the error state of the input
-         */
         "errorStateControl"?: OdsErrorStateControl;
         /**
           * List of forbidden values for the input
@@ -3524,7 +3488,7 @@ declare namespace LocalJSX {
         /**
           * Control object of the form the input belongs to
          */
-        "formControl"?: OdsFormControl<OdsInputValidityState>;
+        "formControl"?: OdsFormControl<OdsCommonFieldValidityState>;
         /**
           * Icon to be used in the input field
          */
@@ -3539,14 +3503,6 @@ declare namespace LocalJSX {
         "label"?: string;
         /**
           * Indicates if the input is in loading state or not
-         */
-        "loading"?: boolean;
-        /**
-          * Indicates if the input is masked or not
-         */
-        "masked"?: boolean;
-        /**
-          * Maximum value for the input (type number)
          */
         "max"?: number;
         /**
@@ -3574,25 +3530,8 @@ declare namespace LocalJSX {
         /**
           * Indicates if the input is read-only or not
          */
-        "readOnly"?: boolean;
-        /**
-          * Indicates if the input is required or not
-         */
-        "required"?: boolean;
-        /**
-          * Size of the input: see component principles
-         */
-        "size"?: ODS_INPUT_SIZE;
-        /**
-          * Step value for the input
-         */
         "step"?: number;
         /**
-          * Type of the input field
-         */
-        "type"?: ODS_INPUT_TYPE;
-        /**
-          * Current value of the input
          */
         "value"?: OdsInputValue;
     }
@@ -3851,7 +3790,7 @@ declare namespace LocalJSX {
         /**
           * Size of the password: see component principles
          */
-        "size"?: ODS_INPUT_SIZE1;
+        "size"?: ODS_COMMON_FIELD_SIZE;
         /**
           * Current value of the password
          */

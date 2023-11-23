@@ -39,6 +39,67 @@ Object.assign(Datepicker.locales, pt);
 
 /**
  * @slot (unnamed) - Datepicker content
+ *
+ * @summary
+ * The `OsdsDatepicker` class is a component that represents a datepicker in a web application. It is implemented using TypeScript and React.
+ *
+ * @example
+ * ```javascript
+ * import { OsdsDatepicker } from './OsdsDatepicker';
+ *
+ * // Create an instance of the OsdsDatepicker component
+ * const datepicker = new OsdsDatepicker();
+ *
+ * // Set the value of the datepicker
+ * datepicker.value = new Date();
+ *
+ * // Add an event listener for when the value of the datepicker changes
+ * datepicker.addEventListener('odsDatepickerValueChange', (event) => {
+ *   console.log('New value:', event.detail.value);
+ * });
+ *
+ * // Render the datepicker component
+ * datepicker.render();
+ * ```
+ *
+ * @codeAnalysis
+ * Main functionalities:
+ * - Renders a datepicker component with various configurable options such as clearable, color, disabled, error, inline, and placeholder.
+ * - Supports different date formats and locales.
+ * - Allows setting the minimum and maximum selectable dates.
+ * - Emits events when the value of the datepicker changes or when it gains or loses focus.
+ *
+ * Methods:
+ * - `onBlur()`: Handles the blur event of the datepicker.
+ * - `onChange(newValue: Date | undefined | null)`: Handles the change event of the datepicker and updates the value accordingly.
+ * - `onFocus()`: Handles the focus event of the datepicker.
+ * - `onClick()`: Handles the click event of the datepicker.
+ * - `componentDidLoad()`: Lifecycle method that is called when the component is loaded.
+ * - `initializeDatepicker()`: Initializes the underlying datepicker library and sets up event listeners.
+ * - `updateSiblingsMonthDaysVisibility()`: Updates the visibility of sibling month days based on the `showSiblingsMonthDays` property.
+ * - `formatDate(date?: Date | undefined | null)`: Formats a date using the specified format.
+ *
+ * Fields:
+ * - `el`: Reference to the HTML element of the datepicker component.
+ * - `hasFocus`: Indicates whether the datepicker has focus.
+ * - `datepickerInstance`: Instance of the underlying datepicker library.
+ * - `hiddenInput`: Reference to the hidden input element used by the datepicker.
+ * - `datepickerElement`: Reference to the datepicker element within the component's shadow root.
+ * - `clearable`: Indicates whether the datepicker is clearable.
+ * - `color`: The color of the datepicker.
+ * - `disabled`: Indicates whether the datepicker is disabled.
+ * - `error`: Indicates whether the datepicker has an error.
+ * - `format`: The format of the date displayed in the datepicker.
+ * - `inline`: Indicates whether the datepicker is displayed inline.
+ * - `locale`: The locale of the datepicker.
+ * - `maxDate`: The maximum selectable date in the datepicker.
+ * - `minDate`: The minimum selectable date in the datepicker.
+ * - `placeholder`: The placeholder text of the datepicker input.
+ * - `showSiblingsMonthDays`: Indicates whether to show sibling month days in the datepicker.
+ * - `value`: The selected value of the datepicker.
+ */
+/**
+ * @slot (unnamed) - Datepicker content
  */
 @Component({
   tag: 'osds-datepicker',

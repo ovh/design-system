@@ -16,6 +16,7 @@
     "@ovhcloud/ods-component-code": "16.4.0",
     "@ovhcloud/ods-component-collapsible": "16.4.0",
     "@ovhcloud/ods-component-content-addon": "16.4.0",
+    "@ovhcloud/ods-component-datagrid": "16.4.0",
     "@ovhcloud/ods-component-datepicker": "16.4.0",
     "@ovhcloud/ods-component-divider": "16.4.0",
     "@ovhcloud/ods-component-flag": "16.4.0",

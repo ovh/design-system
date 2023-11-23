@@ -1,8 +1,6 @@
-import type { OdsInputValidityState } from './attributes';
-import type { OdsFormControlMethods } from '@ovhcloud/ods-common-core';
+import type { OdsFormControlMethods, OdsGenericFormFieldValidityState } from '@ovhcloud/ods-common-core';
 
-
-interface OdsInputMethod extends OdsFormControlMethods<OdsInputValidityState> {
+interface OdsInputMethod extends OdsFormControlMethods<OdsGenericFormFieldValidityState> {
   /**
    * restore the value to the initial state
    */
@@ -34,6 +32,6 @@ interface OdsInputMethod extends OdsFormControlMethods<OdsInputValidityState> {
   stepDown(): Promise<ReturnType<HTMLInputElement['stepDown']>>;
 }
 
-export {
+export type {
   OdsInputMethod,
 };

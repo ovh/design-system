@@ -1,13 +1,10 @@
 import type { OdsInputAttribute } from './interfaces/attributes';
 import type { E2EElement, E2EPage } from '@stencil/core/testing';
-
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
 import { newE2EPage } from '@stencil/core/testing';
-
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { ODS_INPUT_SIZES } from './constants/input-size';
-import { ODS_INPUT_TYPE } from './constants/input-type';
+import { ODS_GENERIC_FORM_FIELD_SIZE, ODS_INPUT_TYPE } from '@ovhcloud/ods-common-core';
 
 
 
@@ -267,7 +264,7 @@ describe('e2e:osds-input', () => {
     screenshotActions.forEach(({ actionDescription, action }) => {
       screenshotBehaviours.forEach(({ behaviourDescription, behaviour }) => {
         ODS_THEME_COLOR_INTENTS.forEach((color) => {
-          ODS_INPUT_SIZES.forEach((size) => {
+          ODS_GENERIC_FORM_FIELD_SIZE.forEach((size) => {
             const name = [color, size, actionDescription, behaviourDescription].join(', ');
             it(name, async() => {
               await setup({

@@ -3,7 +3,7 @@ import type { E2EElement, E2EPage } from '@stencil/core/testing';
 
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
-import { ODS_INPUT_SIZES } from '../../../../input/src';
+import { ODS_GENERIC_FORM_FIELD_SIZES } from '@ovhcloud/ods-common-core';
 import { newE2EPage } from '@stencil/core/testing';
 
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
@@ -111,7 +111,7 @@ describe('e2e:osds-password', () => {
   describe('screenshots', () => {
     screenshotActions.forEach(({ actionDescription, action }) => {
       ODS_THEME_COLOR_INTENTS.forEach((color) => {
-        ODS_INPUT_SIZES.forEach((size) => {
+        ODS_GENERIC_FORM_FIELD_SIZES.forEach((size) => {
           const name = [color, size, actionDescription].join(', ');
           it(name, async() => {
             await setup({

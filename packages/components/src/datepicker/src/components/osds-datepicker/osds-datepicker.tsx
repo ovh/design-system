@@ -320,7 +320,7 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
           error={error}
           icon={ODS_ICON_NAME.CALENDAR}
           placeholder={placeholder}
-          type={ODS_INPUT_TYPE.text}
+          type={ODS_COMMON_INPUT_TYPE.text}
           value={this.formatDate(value)}
         ></osds-input>
         <input

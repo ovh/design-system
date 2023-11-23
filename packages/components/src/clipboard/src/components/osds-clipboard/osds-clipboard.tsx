@@ -2,14 +2,12 @@ import type { OdsClipboardAttribute } from './interfaces/attributes';
 import type { OdsClipboardEvent } from './interfaces/events';
 import type { OdsClipboardMethod } from './interfaces/methods';
 import type { EventEmitter } from '@stencil/core';
-
 import { OcdkSurface, OcdkSurfaceCorner, ocdkDefineCustomElements, ocdkIsSurface } from '@ovhcloud/ods-cdk';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_ICON_NAME } from '../../../../icon/src';
-import { ODS_INPUT_TYPE } from '../../../../input/src';
+import { ODS_COMMON_INPUT_TYPE } from '@ovhcloud/ods-common-core';
 import { Component, Element, Event, Host, Listen, Method, Prop, State, h } from '@stencil/core';
 import { HTMLStencilElement } from '@stencil/core/internal';
-
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsClipboardController } from './core/controller';
 
@@ -86,7 +84,7 @@ export class OsdsClipboard implements OdsClipboardAttribute, OdsClipboardEvent, 
             disabled={this.disabled}
             icon={ODS_ICON_NAME.COPY}
             inline={this.inline}
-            type={ODS_INPUT_TYPE.text}
+            type={ODS_COMMON_INPUT_TYPE.text}
             value={this.value}
             onClick={() => this.handlerClick()}
             onKeyDown={(event: KeyboardEvent) => this.handlerKeyDown(event)}

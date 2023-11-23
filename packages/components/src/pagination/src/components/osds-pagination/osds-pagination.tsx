@@ -62,7 +62,7 @@ export class OsdsPagination implements OdsPaginationAttribute, OdsPaginationEven
     const { value } = event.detail;
 
     if (value) {
-      this.itemPerPage = typeof value === 'number' ? value : parseInt(value, 10);
+      this.itemPerPage = typeof value === 'number' ? value : parseInt(value.toString(), 10);
     }
   }
 

@@ -1,10 +1,10 @@
 import type { OdsInputAttribute } from './interfaces/attributes';
 import type { OdsInputValueChangeEventDetail } from './interfaces/events';
 import type { E2EElement, E2EPage } from '@stencil/core/testing';
+import { ODS_INPUT_TYPE } from './constants/input-type';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import { newE2EPage } from '@stencil/core/testing';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { ODS_INPUT_TYPE } from './constants/input-type';
 
 describe('e2e:osds-input', () => {
   const baseAttribute = { ariaLabel: null, defaultValue: '', forbiddenValues: [], type: ODS_INPUT_TYPE.text, value: '' };
@@ -319,11 +319,11 @@ describe('e2e:osds-input', () => {
     });
   });
 
-  describe('method:setInputTabindex', () => {
+  describe('method:setTabindex', () => {
 
-    it('should set inputTabindex to -1', async() => {
+    it('should set tabindex to -1', async() => {
       await setup({ attributes: { type: ODS_INPUT_TYPE.number } });
-      await el.callMethod('setInputTabindex', '-1');
+      await el.callMethod('setTabindex', '-1');
       await page.waitForChanges();
       const value = el.getAttribute('tabindex');
       expect(value).toBe('-1');

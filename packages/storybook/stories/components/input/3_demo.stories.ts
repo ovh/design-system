@@ -1,6 +1,5 @@
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import { ODS_INPUT_TYPE, ODS_INPUT_TYPES, ODS_ICON_NAMES } from '@ovhcloud/ods-components';
-import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-input';
+import { defineCustomElement, ODS_INPUT_SIZES, ODS_INPUT_TYPES } from '@ovhcloud/ods-components/dist/components/osds-input';
 import { html } from 'lit-html';
 import { InputPlay } from './demo.validation.stories';
 import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
@@ -17,7 +16,7 @@ const storyParams = {
   },
   type: {
     category: 'General',
-    defaultValue: ODS_INPUT_TYPE.text,
+    defaultValue: 'text',
     options: ODS_INPUT_TYPES,
     control: { type: 'select' },
   },
@@ -27,16 +26,8 @@ const storyParams = {
   },
   defaultValue: {
     category: 'General',
-    control: { type: 'text' },
-  },
-  value: {
-    category: 'General',
-    control: { type: 'text' },
-  },
-  icon: {
-    category: 'General',
-    defaultValue: '',
-    options: ODS_ICON_NAMES,
+    defaultValue: 'md',
+    options: ODS_INPUT_SIZES,
     control: { type: 'select' },
   },
   prefixValue: {
@@ -139,3 +130,65 @@ type ValidationProps = {
   ...(extractStoryParams(storyParams) as Record<string, unknown>),
 };
 (Validation as unknown as ValidationProps).play = InputPlay;
+
+/* All Inputs */
+
+type Attributes = 'default' | 'clearable' | 'icon="ovh"' | 'clearable icon="ovh"' | 'value="ODS ahead"' | 'value="ODS ahead" masked' | 'loading' | 'loading icon="ovh"' | 'loading disabled' | 'loading disabled icon="ovh"';
+
+const attributeList: Attributes[] = [
+  'default', 'clearable', 'icon="ovh"', 'clearable icon="ovh"', 'value="ODS ahead"',
+  'value="ODS ahead" masked', 'loading', 'loading icon="ovh"', 'loading disabled',
+  'loading disabled icon="ovh"',
+];
+
+const createTable = (contrasted: boolean, headerList: readonly string[], itemMapper: (attribute: string) => string) => `
+  <table>
+    <thead>
+      <tr>
+        <td></td>
+        ${headerList.map((header) => `<td style="padding:0.1em; ${contrasted && 'color: #ffffff;'}">${header}</td>`).join('')}
+      </tr>
+    </thead>
+    <tbody>
+      ${attributeList.map((attribute) =>
+    `<tr>
+          <td style="padding:0.1em;  ${contrasted && 'color: #ffffff;'}">${attribute}</td>
+          ${itemMapper(attribute)}
+        </tr>`,
+  ).join('')}
+    </tbody>
+  </table>`;
+
+const TemplateAll = () => html`
+  <section style="margin-bottom: 3em; padding: 1em;">
+    <h2>[types]</h2>
+    ${unsafeHTML(createTable(false, ODS_INPUT_TYPES, (attribute) => ODS_INPUT_TYPES.map((type) =>
+    `<td style="padding:0.1em">
+        <osds-input type="${type}" placeholder="Enter ${type}..." ${attribute}></osds-input>
+      </td>`).join(''),
+  ))}
+  </section>
+  <section style="margin-bottom: 3em; padding: 1em;">
+    <h2>[colors]</h2>
+    ${unsafeHTML(createTable(false, ODS_THEME_COLOR_INTENTS, (attribute) => ODS_THEME_COLOR_INTENTS.map((color) =>
+    `<td style="padding:0.1em;">
+        <osds-input type="text" color="${color}" placeholder="Enter text..." ${attribute}></osds-input>
+      </td>`).join(''),
+  ))}
+  </section>
+  <section style="margin-bottom: 3em; background: #000e9c; padding: 1em;">
+    <h2 style="color: #ffffff;">[contrasted]</h2>
+    ${unsafeHTML(createTable(true, ODS_THEME_COLOR_INTENTS, (attribute) => ODS_THEME_COLOR_INTENTS.map((color) =>
+    `<td style="padding:0.1em">
+        <osds-input type="text" color="${color}" placeholder="Enter text..." ${attribute}></osds-input>
+      </td>`).join(''),
+  ))}
+  </section>
+`;
+
+export const All = TemplateAll.bind({});
+// @ts-ignore
+All.parameters = {
+  controls: { hideNoControlsWarning: true },
+  options: { showPanel: false },
+};

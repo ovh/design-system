@@ -4,7 +4,7 @@ import type { OdsPasswordAttribute } from './interfaces/attributes';
 import type { SpecPage } from '@stencil/core/testing';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import { ODS_INPUT_SIZE } from '../../../../input/src';
+import { ODS_COMMON_FIELD_SIZE } from '@ovhcloud/ods-common-core';
 import { newSpecPage } from '@stencil/core/testing';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OsdsPassword } from './osds-password';
@@ -137,8 +137,8 @@ describe('spec:osds-password', () => {
       odsUnitTestAttribute<OdsPasswordAttribute, 'size'>({
         name: 'size',
         defaultValue: DEFAULT_ATTRIBUTE.size,
-        newValue: ODS_INPUT_SIZE.md,
-        value: ODS_INPUT_SIZE.md,
+        newValue: ODS_COMMON_FIELD_SIZE.md,
+        value: ODS_COMMON_FIELD_SIZE.md,
         setup: (value) => setup({ attributes: { ['size']: value } }),
         ...config,
       });

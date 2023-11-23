@@ -2,11 +2,12 @@ import type { OdsSearchBarAttribute, OdsSearchbarOption } from './interfaces/att
 import type { OdsSearchBarEvent } from './interfaces/events';
 import type { OdsInputValueChangeEvent } from '../../../../input/src';
 import type { OdsSelectValueChangeEvent } from '../../../../select/src';
+import type { EventEmitter } from '@stencil/core';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_BUTTON_SIZE } from '../../../../button/src';
 import { ODS_ICON_NAME, ODS_ICON_SIZE } from '../../../../icon/src';
 import { ODS_INPUT_TYPE } from '../../../../input/src';
-import { Component, Element, Event, EventEmitter, Host, Listen, Prop, h } from '@stencil/core';
+import { Component, Element, Event, Host, Listen, Prop, h } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 
 @Component({
@@ -65,10 +66,10 @@ export class OsdsSearchBar implements OdsSearchBarAttribute, OdsSearchBarEvent {
   }
 
   emitSearchSubmit(): void {
-    this.odsSearchSubmit.emit({ optionValue: this.optionValue, inputValue: this.value });
+    this.odsSearchSubmit.emit({ inputValue: this.value, optionValue: this.optionValue });
   }
 
-  render() {
+  render(): JSX.Element {
     const hasSelect = Boolean(this.options?.length);
 
     return (
@@ -97,8 +98,8 @@ export class OsdsSearchBar implements OdsSearchBarAttribute, OdsSearchBarEvent {
 
         <osds-button
           tabindex="2"
-          onClick={ () => this.handlerOnClickSearchButton() }
-          onKeyDown={ (event: KeyboardEvent) => this.handlerOnKeydownInput(event) }
+          onClick={ ():void => this.handlerOnClickSearchButton() }
+          onKeyDown={ (event: KeyboardEvent):void => this.handlerOnKeydownInput(event) }
           size={ ODS_BUTTON_SIZE.sm }
           color={ ODS_THEME_COLOR_INTENT.primary }
           disabled={ this.disabled }

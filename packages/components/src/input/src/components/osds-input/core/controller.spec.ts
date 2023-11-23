@@ -6,7 +6,6 @@ class OdsInputMock {
   constructor(attribute: Partial<OsdsInput>) {
     Object.assign(this, attribute);
   }
-
   ariaLabel = '';
   defaultValue = null;
   disabled = false;

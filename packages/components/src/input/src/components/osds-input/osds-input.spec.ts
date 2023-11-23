@@ -7,9 +7,9 @@ import { OdsCreateDefaultValidityState } from '@ovhcloud/ods-common-core';
 import { OdsMockNativeMethod, OdsMockPropertyDescriptor, odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 import { newSpecPage } from '@stencil/core/testing';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { ODS_INPUT_TYPE } from './constants/input-type';
 import { OdsInputController } from './core/controller';
 import { OsdsInput } from './osds-input';
+import { ODS_INPUT_TYPE } from './constants/input-type';
 
 // mock validity property that does not exist when stencil mock HTMLInputElement
 OdsMockPropertyDescriptor(HTMLInputElement.prototype, 'validity', () => OdsCreateDefaultValidityState());
@@ -211,7 +211,7 @@ describe('spec:osds-input', () => {
   describe('value changes', () => {
     it('input value should change if component value changed', async() => {
       const newValue = 2;
-      await setup({ attributes: { type: ODS_COMMON_INPUT_TYPE.number, value: 2 } });
+      await setup({ attributes: { type: ODS_INPUT_TYPE.number, value: 2 } });
       instance.value = newValue;
       await page.waitForChanges();
       expect(`${htmlInput?.value}`).toBe(`${newValue}`);
@@ -220,7 +220,7 @@ describe('spec:osds-input', () => {
 
   describe('events', () => {
     it('odsValueChange', async() => {
-      await setup({ attributes: { type: ODS_COMMON_INPUT_TYPE.number } });
+      await setup({ attributes: { type: ODS_INPUT_TYPE.number } });
       expect(instance.odsValueChange).toBeTruthy();
     });
 
@@ -266,16 +266,16 @@ describe('spec:osds-input', () => {
         await setup({});
         await instance.clear();
 
-        expect(commonFieldMethodController.clear).toHaveBeenCalledTimes(1);
-        expect(commonFieldMethodController.clear).toHaveBeenCalledWith();
+        expect(controller.clear).toHaveBeenCalledTimes(1);
+        expect(controller.clear).toHaveBeenCalledWith();
       });
 
       it('should call clear from clear method but should not change the value if disabled', async() => {
         await setup({ attributes: { disabled: true, masked: false, type: ODS_INPUT_TYPE.password, value: 'Just ODS being ahead' } });
         await instance.clear();
 
-        expect(commonFieldMethodController.clear).toHaveBeenCalledTimes(1);
-        expect(commonFieldMethodController.clear).toHaveBeenCalledWith();
+        expect(controller.clear).toHaveBeenCalledTimes(1);
+        expect(controller.clear).toHaveBeenCalledWith();
 
         const value = instance.value;
         expect(value).toBe('Just ODS being ahead');
@@ -285,27 +285,27 @@ describe('spec:osds-input', () => {
         await setup({});
         await instance.hide();
 
-        expect(commonFieldMethodController.hide).toHaveBeenCalledTimes(1);
-        expect(commonFieldMethodController.hide).toHaveBeenCalledWith();
+        expect(controller.hide).toHaveBeenCalledTimes(1);
+        expect(controller.hide).toHaveBeenCalledWith();
       });
 
       it('should call hide from hide method but should not display the value if disabled', async() => {
         await setup({ attributes: { disabled: true, masked: true, type: ODS_INPUT_TYPE.password, value: 'Just ODS being ahead' } });
         await instance.hide();
 
-        expect(commonFieldMethodController.hide).toHaveBeenCalledTimes(1);
-        expect(commonFieldMethodController.hide).toHaveBeenCalledWith();
+        expect(controller.hide).toHaveBeenCalledTimes(1);
+        expect(controller.hide).toHaveBeenCalledWith();
 
         const type = instance.type;
-        expect(type).toBe(ODS_COMMON_INPUT_TYPE.password);
+        expect(type).toBe(ODS_INPUT_TYPE.password);
       });
 
       it('should call reset from reset method', async() => {
         await setup({});
         await instance.reset();
 
-        expect(commonFieldMethodController.reset).toHaveBeenCalledTimes(1);
-        expect(commonFieldMethodController.reset).toHaveBeenCalledWith();
+        expect(controller.reset).toHaveBeenCalledTimes(1);
+        expect(controller.reset).toHaveBeenCalledWith();
       });
 
       it('should call stepUp from stepUp method', async() => {

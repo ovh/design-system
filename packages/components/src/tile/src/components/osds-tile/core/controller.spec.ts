@@ -72,6 +72,3 @@ describe('spec:ods-tile-controller', () => {
         expect(console.warn).toHaveBeenCalledWith(expected);
         expect(console.warn).toHaveBeenCalledTimes(1);
       });
-    });
-  });
-});

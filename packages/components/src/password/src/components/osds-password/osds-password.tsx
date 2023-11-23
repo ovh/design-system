@@ -107,11 +107,11 @@ export class OsdsPassword implements OdsPasswordAttribute, OdsPasswordEvent, Ods
           loading={ this.loading }
           masked={ this.masked }
           name={ this.name }
-          ref={ (el?: HTMLElement): OsdsInput => this.osdsInput = el as OsdsInput & HTMLElement }
           pattern={ this.pattern }
           placeholder={ this.placeholder }
           prefixValue={ this.prefixValue }
           readOnly={ this.readOnly }
+          ref={ (el?: HTMLElement): OsdsInput => this.osdsInput = el as OsdsInput & HTMLElement }
           required={ this.required }
           type={ ODS_INPUT_TYPE.password }
           value={ this.value }>

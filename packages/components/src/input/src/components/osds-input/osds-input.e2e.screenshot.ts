@@ -211,7 +211,7 @@ describe('e2e:osds-input', () => {
       // Will display a disabled input with contrasted colors
       action: (): void => {
         el.setProperty('disabled', true);
-        el.setProperty('type', ODS_COMMON_INPUT_TYPE.text);
+        el.setProperty('type', ODS_INPUT_TYPE.text);
         el.setProperty('value', 'Just ODS being ahead');
       },
       actionDescription: 'disabled & value (type text)',

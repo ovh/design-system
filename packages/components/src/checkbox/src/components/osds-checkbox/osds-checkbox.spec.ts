@@ -265,21 +265,11 @@ describe('spec:osds-checkbox', () => {
   describe('methods', () => {
     it('should call setTabindex  function and tabindex  should be set to 1', async() => {
       await setup({ attributes: {}, html: baseHtml({}) });
-      const spy = jest.spyOn(instance.commonFieldMethodController, 'setTabindex');
+      const spy = jest.spyOn(instance, 'setTabindex');
       await page.waitForChanges();
       await instance.setTabindex(1);
       await page.waitForChanges();
       expect(spy).toHaveBeenCalledWith(1);
-    });
-
-    it('should call setFocus function', async() => {
-      await setup({ attributes: {}, html: baseHtml({}) });
-      await page.waitForChanges();
-      expect(htmlCheckbox).toBeTruthy();
-      const spy = jest.spyOn(instance.commonFieldMethodController, 'setFocus');
-      await instance.setFocus();
-      await page.waitForChanges();
-      expect(spy).toHaveBeenCalledWith();
     });
   });
 

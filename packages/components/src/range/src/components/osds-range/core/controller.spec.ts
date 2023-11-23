@@ -329,48 +329,48 @@ describe('spec:ods-range-controller', () => {
 
         expect(component.value).toBe(value);
       });
-      // FIXME when refactoring with internals
-      // it('should init value with input value', () => {
-      //   const value = 2;
-      //   const inputValue = '3';
-      //   const inputEl = document.createElement('input');
-      //   inputEl.value = inputValue;
-      //   setup({ value, inputEl });
-      //   controller.initValue();
-      //
-      //   expect(console.warn).toHaveBeenCalledWith(`Value ${value} is not valid. New value has been set to ${inputValue}`);
-      //   expect(component.value).toBe(inputValue);
-      // });
-      // FIXME when refactoring with internals
-      // it('should init dual value with input value (first case)', () => {
-      //   const value: OdsRangeValue = [1, 3];
-      //   const inputValue = '2';
-      //   const dualInputValue = '3';
-      //   const inputEl = document.createElement('input');
-      //   inputEl.value = inputValue;
-      //   const dualInputEl = document.createElement('input');
-      //   dualInputEl.value = dualInputValue;
-      //   setup({ value, inputEl, dualInputEl });
-      //   controller.initValue();
-      //
-      //   expect(console.warn).toHaveBeenCalledWith(`Value [${value}] is not valid. New value has been set to [${inputValue},${dualInputValue}]`);
-      //   expect(component.value).toEqual([Number(inputValue), Number(dualInputValue)]);
-      // });
-      // FIXME when refactoring with internals
-      // it('should init dual value with input value (second case)', () => {
-      //   const value: OdsRangeValue = [1, 3];
-      //   const inputValue = '1';
-      //   const dualInputValue = '4';
-      //   const inputEl = document.createElement('input');
-      //   inputEl.value = inputValue;
-      //   const dualInputEl = document.createElement('input');
-      //   dualInputEl.value = dualInputValue;
-      //   setup({ value, inputEl, dualInputEl });
-      //   controller.initValue();
-      //
-      //   expect(console.warn).toHaveBeenCalledWith(`Value [${value}] is not valid. New value has been set to [${inputValue},${dualInputValue}]`);
-      //   expect(component.value).toEqual([Number(inputValue), Number(dualInputValue)]);
-      // });
+
+      it('should init value with input value', () => {
+        const value = 2;
+        const inputValue = '3';
+        const inputEl = document.createElement('input');
+        inputEl.value = inputValue;
+        setup({ value, inputEl });
+        controller.initValue();
+
+        expect(console.warn).toHaveBeenCalledWith(`Value ${value} is not valid. New value has been set to ${inputValue}`);
+        expect(component.value).toBe(inputValue);
+      });
+
+      it('should init dual value with input value (first case)', () => {
+        const value: OdsRangeValue = [1, 3];
+        const inputValue = '2';
+        const dualInputValue = '3';
+        const inputEl = document.createElement('input');
+        inputEl.value = inputValue;
+        const dualInputEl = document.createElement('input');
+        dualInputEl.value = dualInputValue;
+        setup({ value, inputEl, dualInputEl });
+        controller.initValue();
+
+        expect(console.warn).toHaveBeenCalledWith(`Value [${value}] is not valid. New value has been set to [${inputValue},${dualInputValue}]`);
+        expect(component.value).toEqual([Number(inputValue), Number(dualInputValue)]);
+      });
+
+      it('should init dual value with input value (second case)', () => {
+        const value: OdsRangeValue = [1, 3];
+        const inputValue = '1';
+        const dualInputValue = '4';
+        const inputEl = document.createElement('input');
+        inputEl.value = inputValue;
+        const dualInputEl = document.createElement('input');
+        dualInputEl.value = dualInputValue;
+        setup({ value, inputEl, dualInputEl });
+        controller.initValue();
+
+        expect(console.warn).toHaveBeenCalledWith(`Value [${value}] is not valid. New value has been set to [${inputValue},${dualInputValue}]`);
+        expect(component.value).toEqual([Number(inputValue), Number(dualInputValue)]);
+      });
     });
 
     describe('methods:validateValue', () => {

@@ -1,10 +1,10 @@
 import type { OdsInputAttribute } from './interfaces/attributes';
 import type { OdsInputValueChangeEventDetail } from './interfaces/events';
 import type { E2EElement, E2EPage } from '@stencil/core/testing';
-import { ODS_INPUT_TYPE } from './constants/input-type';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import { newE2EPage } from '@stencil/core/testing';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { ODS_INPUT_TYPE } from './constants/input-type';
 
 class FormDataMock {
   private formMap = new Map();
@@ -28,7 +28,16 @@ class FormDataMock {
 global.FormData = FormDataMock;
 
 describe('e2e:osds-input', () => {
-  const baseAttribute = { ariaLabel: null, defaultValue: '', forbiddenValues: [], type: ODS_INPUT_TYPE.text, value: '' };
+  const baseAttribute = {
+    ariaLabel: null,
+    defaultValue: '',
+    disabled: false,
+    error: false,
+    forbiddenValues: [],
+    name: '',
+    type: ODS_INPUT_TYPE.text,
+    value: '',
+  };
   let page: E2EPage;
   let el: E2EElement;
   let inputElement: E2EElement;
@@ -49,6 +58,7 @@ describe('e2e:osds-input', () => {
     el = await page.find('osds-input');
 
     inputElement = await page.find('osds-input >>> input');
+    await page.waitForChanges();
   }
 
   describe('defaults', () => {
@@ -85,7 +95,7 @@ describe('e2e:osds-input', () => {
       expect(crossIcon).not.toBeNull();
       await crossIcon.click();
       await page.waitForChanges();
-
+      
       // Verify input value is cleared
       const value = await inputElement.getProperty('value');
       expect(value).toBe('');
@@ -287,7 +297,7 @@ describe('e2e:osds-input', () => {
       const value = await inputElement.getProperty('value');
       const elValue = await el.getProperty('value');
       expect(value).toBe('');
-      expect(elValue).toBe('');
+      expect(elValue).toBe(null);
     });
   });
 
@@ -324,8 +334,8 @@ describe('e2e:osds-input', () => {
       const value = await inputElement.getProperty('value');
       const elValue = await el.getProperty('value');
       await page.waitForChanges();
-      expect(value).toBe(`${DEFAULT_ATTRIBUTE.defaultValue}`);
-      expect(elValue).toBe(`${DEFAULT_ATTRIBUTE.defaultValue}`);
+      expect(value).toBe('');
+      expect(elValue).toBe('');
     });
 
     it('should set the value to defaultValue', async() => {
@@ -335,8 +345,8 @@ describe('e2e:osds-input', () => {
       await page.waitForChanges();
       const value = await inputElement.getProperty('value');
       const elValue = await el.getProperty('value');
-      expect(value).toBe(`${defaultValue}`);
-      expect(elValue).toBe(`${defaultValue}`);
+      expect(value).toBe(defaultValue.toString());
+      expect(elValue).toBe(defaultValue.toString());
     });
   });
 
@@ -354,7 +364,7 @@ describe('e2e:osds-input', () => {
   describe('method:setFocus', () => {
     it('should be focusable', async() => {
       await setup({ attributes: { type: ODS_INPUT_TYPE.number } });
-      await page.waitForChanges();
+      const focusSpy = await page.spyOnEvent('odsFocus'); 
 
       await el.callMethod('setFocus');
       await page.waitForChanges();
@@ -364,11 +374,12 @@ describe('e2e:osds-input', () => {
         return document.activeElement === element;
       });
       expect(isFocused).toBe(true);
+      expect(focusSpy).toHaveReceivedEventTimes(1);
     });
 
     it('should be focusable with tab', async() => {
       await setup({ attributes: { type: ODS_INPUT_TYPE.number } });
-      await page.waitForChanges();
+      const focusSpy = await page.spyOnEvent('odsFocus'); 
 
       // First, we set the focus to another element
       await page.focus('#anotherInput');
@@ -381,13 +392,29 @@ describe('e2e:osds-input', () => {
         const element = document.querySelector('osds-input');
         return document.activeElement === element;
       });
-
       expect(isFocused).toBe(true);
+      expect(focusSpy).toHaveReceivedEventTimes(1);
+    });
+
+    it('should be focusable with click', async() => {
+      await setup({ attributes: { type: ODS_INPUT_TYPE.number } });
+      const focusSpy = await page.spyOnEvent('odsFocus'); 
+
+      // First, we set the focus to another element
+      await el.click();
+
+      // We can now check if the input is focused
+      const isFocused = await page.evaluate(() => {
+        const element = document.querySelector('osds-input');
+        return document.activeElement === element;
+      });
+      expect(isFocused).toBe(true);
+      expect(focusSpy).toHaveReceivedEventTimes(1);
     });
 
     it('should not be focusable when disabled', async() => {
       await setup({ attributes: { type: ODS_INPUT_TYPE.number, disabled: true } });
-      await page.waitForChanges();
+      const focusSpy = await page.spyOnEvent('odsFocus'); 
 
       await el.callMethod('setFocus');
       await page.waitForChanges();
@@ -397,6 +424,7 @@ describe('e2e:osds-input', () => {
         return document.activeElement === element;
       });
       expect(isFocused).toBe(false);
+      expect(focusSpy).toHaveReceivedEventTimes(0);
     });
   });
 
@@ -411,14 +439,21 @@ describe('e2e:osds-input', () => {
 
       beforeEach(() => {
         odsInputValueChangeEventDetailBase = {
+          name: '',
           oldValue: '',
           validity: {
-            invalid: false,
-            stepMismatch: false,
-            valid: true,
-            valueMissing: false,
+            badInput: false,
             customError: false,
             forbiddenValue: false,
+            patternMismatch: false,
+            rangeOverflow: false,
+            rangeUnderflow: false,
+            stepMismatch: false,
+            tooLong: false,
+            tooShort: false,
+            typeMismatch: false,
+            valid: true,
+            valueMissing: false,
           },
           value: '',
         };
@@ -561,11 +596,13 @@ describe('e2e:osds-input', () => {
       `);
       await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
 
+      await page.waitForSelector('osds-input');
       osdsInput = await page.find('osds-input');
-      natifInput = await page.find('input[name=natifInput]');
+      natifInput = await page.find('input[name="natifInput"]');
       resetButton = await page.find('osds-button[type="reset"]');
       submitButton = await page.find('osds-button[type="submit"]');
       form = await page.find('form');
+      await page.waitForChanges();
     }
 
     it('should get FormData with default value', async() => {
@@ -578,8 +615,8 @@ describe('e2e:osds-input', () => {
     it('should reset form with button type reset', async() => {
       await setupForm();
 
+      osdsInput.setAttribute('value', 'test reset');
       await natifInput.type('test reset');
-      await osdsInput.type('test reset');
       await resetButton.click();
       await page.waitForChanges();
 
@@ -592,16 +629,15 @@ describe('e2e:osds-input', () => {
     it('should reset form with button type submit', async() => {
       await setupForm({ action: '/' });
 
+      osdsInput.setAttribute('value', 'test submit');
       await natifInput.type('name');
-      await osdsInput.type('test submit');
       await submitButton.click();
       await page.waitForChanges();
       const url = new URL(page.url());
 
       expect(url.searchParams.get('natifInput')).toBe('name');
-      expect(url.searchParams.get('odsInput')).toBe('On Vous Heberge ?test submit')
+      expect(url.searchParams.get('odsInput')).toBe('test submit')
       expect(url.pathname).toBe('/');
-
     });
   });
 });

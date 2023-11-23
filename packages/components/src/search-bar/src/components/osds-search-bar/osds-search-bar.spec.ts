@@ -7,7 +7,6 @@ import {
   odsUnitTestAttribute,
 } from '@ovhcloud/ods-common-testing';
 import { newSpecPage } from '@stencil/core/testing';
-
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OsdsSearchBar } from './osds-search-bar';
 
@@ -16,7 +15,7 @@ describe('spec:osds-search-bar', () => {
   let page: SpecPage;
   let root: HTMLElement | undefined;
   let instance: OsdsSearchBar;
-  let buttonSearch: HTMLElement;
+  let buttonSearch: HTMLElement | undefined | null;
   const baseAttribute = { value: '' };
 
   afterEach(() => {
@@ -33,7 +32,7 @@ describe('spec:osds-search-bar', () => {
 
     root = page.root;
     instance = page.rootInstance;
-    buttonSearch = root.shadowRoot.querySelector('osds-button');
+    buttonSearch = root?.shadowRoot?.querySelector('osds-button');
   }
 
   it('should render', async() => {
@@ -49,17 +48,6 @@ describe('spec:osds-search-bar', () => {
       root: () => page.root,
       wait: () => page.waitForChanges(),
     };
-
-    describe('contrasted', () => {
-      odsUnitTestAttribute<OdsSearchBarAttribute, 'contrasted'>({
-        name: 'contrasted',
-        defaultValue: DEFAULT_ATTRIBUTE.contrasted,
-        newValue: true,
-        value: false,
-        setup: (contrasted) => setup({ attributes: { contrasted } }),
-        ...config,
-      });
-    });
 
     describe('disabled', () => {
       odsUnitTestAttribute<OdsSearchBarAttribute, 'disabled'>({
@@ -110,7 +98,7 @@ describe('spec:osds-search-bar', () => {
     it('should call emit odsSearchSubmit', async() => {
       await setup({});
       const spyEmitOdsSearchSubmit = jest.spyOn(instance.odsSearchSubmit, 'emit');
-      buttonSearch.click();
+      buttonSearch?.click();
       instance.handlerOnClickSearchButton();
       expect(spyEmitOdsSearchSubmit).toHaveBeenCalledTimes(2);
       expect(spyEmitOdsSearchSubmit).toHaveBeenCalledWith({ optionValue: '', inputValue: '' });

@@ -3,7 +3,6 @@ import type { ODS_DATEPICKER_LOCALE } from './constants/datepicker-locale';
 import type { OdsDatepickerAttribute } from './interfaces/attributes';
 import type { OdsDatepickerEvent, OdsDatepickerValueChangeEventDetail } from './interfaces/events';
 import type { EventEmitter } from '@stencil/core';
-import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_ICON_NAME } from '../../../../icon/src';
 import { ODS_INPUT_TYPE } from '../../../../input/src';
 import { AttachInternals, Component, Element, Event, Host, Listen, Prop, State, Watch, h } from '@stencil/core';
@@ -55,19 +54,19 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
 
   @State() hasFocus = false;
 
+  @Prop({ reflect: true }) ariaLabel: HTMLElement['ariaLabel'] = DEFAULT_ATTRIBUTE.ariaLabel;
   @Prop({ reflect: true }) clearable?: boolean = DEFAULT_ATTRIBUTE.clearable;
-  @Prop({ reflect: true }) color?: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
   @Prop({ reflect: true }) datesDisabled?: Date[] = DEFAULT_ATTRIBUTE.datesDisabled;
   @Prop({ reflect: true }) daysOfWeekDisabled?: ODS_DATEPICKER_DAY[] = DEFAULT_ATTRIBUTE.daysOfWeekDisabled;
-  @Prop({ reflect: true }) defaultValue?: Date | null = DEFAULT_ATTRIBUTE.value;
-  @Prop({ reflect: true }) disabled?: boolean = DEFAULT_ATTRIBUTE.disabled;
-  @Prop({ reflect: true }) error?: boolean = DEFAULT_ATTRIBUTE.error;
+  @Prop({ reflect: true }) defaultValue: Date | null = DEFAULT_ATTRIBUTE.value;
+  @Prop({ reflect: true }) disabled: boolean = DEFAULT_ATTRIBUTE.disabled;
+  @Prop({ reflect: true }) error: boolean = DEFAULT_ATTRIBUTE.error;
   @Prop({ reflect: true }) format?: string = DEFAULT_ATTRIBUTE.format;
   @Prop({ reflect: true }) inline?: boolean = DEFAULT_ATTRIBUTE.inline;
   @Prop({ reflect: true }) locale?: ODS_DATEPICKER_LOCALE = DEFAULT_ATTRIBUTE.locale;
   @Prop({ reflect: true }) maxDate?: Date | null = DEFAULT_ATTRIBUTE.maxDate;
   @Prop({ reflect: true }) minDate?: Date | null = DEFAULT_ATTRIBUTE.minDate;
-  @Prop({ reflect: true }) name?: string = DEFAULT_ATTRIBUTE.format;
+  @Prop({ reflect: true }) name: string = DEFAULT_ATTRIBUTE.format;
   @Prop({ reflect: true }) placeholder?: string = DEFAULT_ATTRIBUTE.placeholder;
   @Prop({ reflect: true }) showSiblingsMonthDays?: boolean = DEFAULT_ATTRIBUTE.showSiblingsMonthDays;
   @Prop({ reflect: true, mutable: true }) value?: Date | null = DEFAULT_ATTRIBUTE.value;
@@ -148,7 +147,7 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
   }
 
   onChange(newValue: Date | undefined | null): void {
-    this.controller.onChange(newValue, this.value);
+    this.controller.onChange(newValue, this.value as Date);
   }
 
   onFocus(): void {
@@ -186,8 +185,8 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
       minDate: this.minDate
         ? this.minDate
         : undefined,
-      nextArrow: `<osds-icon name="triangle-right" size="sm" color=${this.color}></osds-icon>`,
-      prevArrow: `<osds-icon name="triangle-left" size="sm" color=${this.color}></osds-icon>`,
+      nextArrow: `<osds-icon name="triangle-right" size="sm" color="primary"></osds-icon>`,
+      prevArrow: `<osds-icon name="triangle-left" size="sm" color="primary"></osds-icon>`,
     });
 
     this.datepickerElement = this.el.shadowRoot.querySelector('.datepicker-picker') as HTMLElement;
@@ -207,7 +206,7 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
     const viewSwitch = this.el.shadowRoot.querySelector('.view-switch') as HTMLElement;
     const chevron = document.createElement('osds-icon');
     chevron.setAttribute('name', 'chevron-down');
-    chevron.setAttribute('color', `${this.color}`);
+    chevron.setAttribute('color', 'primary');
     chevron.setAttribute('size', 'xs');
     viewSwitch.appendChild(chevron);
 
@@ -276,8 +275,8 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
     }
   }
 
-  formatDate(date?: Date | undefined | null) {
-    if (this.format && date) {
+  formatDate(date?: Date | null) {
+    if (this.format && date && date instanceof Date) {
       return Datepicker.formatDate(date, this.format);
     } else {
       return '';
@@ -287,7 +286,6 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
   render() {
     const {
       clearable,
-      color,
       disabled,
       error,
       hasFocus,
@@ -308,12 +306,11 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
         <osds-input
           onClick={ () => this.onClick() }
           clearable={clearable}
-          color={color}
           disabled={disabled}
           error={error}
           icon={ODS_ICON_NAME.CALENDAR}
           placeholder={placeholder}
-          type={ODS_COMMON_INPUT_TYPE.text}
+          type={ODS_INPUT_TYPE.text}
           value={this.formatDate(value)}
         ></osds-input>
         <input

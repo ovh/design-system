@@ -1,3 +1,4 @@
+import type { OdsInputValue } from '@ovhcloud/ods-common-core';
 import type { OsdsDatepicker } from '../osds-datepicker';
 
 /**
@@ -33,7 +34,7 @@ class OdsDatepickerController {
         this.component.emitDatepickerValueChange(null, oldValue ? oldValue : null);
         this.component.internals.setFormValue('');
       } else {
-        this.component.value = newValue;
+        this.component.value = newValue as OdsInputValue;
         this.component.datepickerInstanceAccessor?.setDate(newValue);
         this.component.emitDatepickerValueChange(newValue, oldValue ? oldValue : null);
         this.component.internals.setFormValue(this.component.formatDate(newValue) ?? '');

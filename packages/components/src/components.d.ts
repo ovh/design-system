@@ -11,7 +11,7 @@ import { OsdsAccordion } from "./accordion/src/components/osds-accordion/osds-ac
 import { OdsBreadcrumbAttributeItem } from "./breadcrumb/src/components/osds-breadcrumb/interfaces/attributes";
 import { ODS_ICON_NAME } from "./icon/src";
 import { ODS_LINK_REFERRER_POLICY } from "./link/src";
-import { ODS_COMMON_FIELD_SIZE, ODS_COMMON_INPUT_TYPE, ODS_COUNTRY_ISO_CODE, ODS_LOCALE, ODS_PERIOD_ISO_CODE, OdsCommonFieldValidityState, OdsErrorStateControl, OdsFormControl, OdsFormForbiddenValues, OdsHTMLAnchorElementRel, OdsHTMLAnchorElementTarget, OdsI18nHook, OdsInputValue, OdsTextAreaValidityState, OdsValidityState } from "@ovhcloud/ods-common-core";
+import { ODS_COUNTRY_ISO_CODE, ODS_LOCALE, ODS_PERIOD_ISO_CODE, OdsCommonFieldValidityState, OdsErrorStateControl, OdsFormControl, OdsFormForbiddenValues, OdsHTMLAnchorElementRel, OdsHTMLAnchorElementTarget, OdsI18nHook, OdsInputValue, OdsTextAreaValidityState, OdsValidityState } from "@ovhcloud/ods-common-core";
 import { OdsBreadcrumbAttributeItem as OdsBreadcrumbAttributeItem1 } from "./breadcrumb/src/components/osds-breadcrumb/public-api";
 import { ODS_BUTTON_SIZE } from "./button/src/components/osds-button/constants/button-size";
 import { ODS_BUTTON_TYPE } from "./button/src/components/osds-button/constants/button-type";
@@ -21,7 +21,7 @@ import { ODS_CART_SIZE } from "./cart/src/components/osds-cart/constants/cart-si
 import { ODS_CART_ROUNDED } from "./cart/src/components/osds-cart/constants/cart-rounded";
 import { OdsCartManagerFooter, OdsCartManagerSection } from "./cart/src/components/osds-cart-manager/interfaces/attributes";
 import { OdsCheckboxAttributeCbk } from "./checkbox/src/components/osds-checkbox/interfaces/attributes";
-import { OdsCheckboxCheckedChangeEventDetail, OdsCheckboxFocusChangeEventDetail, OdsCheckboxUpdatingChangeEventDetail } from "./checkbox/src/components/osds-checkbox/interfaces/events";
+import { OdsCheckboxCheckedChangeEventDetail, OdsCheckboxUpdatingChangeEventDetail } from "./checkbox/src/components/osds-checkbox/interfaces/events";
 import { ODS_CHECKBOX_BUTTON_SIZE } from "./checkbox-button/src/components/osds-checkbox-button/constants/ods-checkbox-button-size";
 import { ODS_CHIP_SIZE } from "./chip/src/components/osds-chip/constants/chip-size";
 import { ODS_CHIP_VARIANT } from "./chip/src/components/osds-chip/constants/chip-variant";
@@ -34,6 +34,7 @@ import { ODS_DIVIDER_SIZE } from "./divider/src/components/osds-divider/constant
 import { ODS_FLAG_ISO_CODE_UNION } from "./flag/src/components/osds-flag/constants/flag-iso-code";
 import { ODS_ICON_NAME as ODS_ICON_NAME1 } from "./icon/src/components/osds-icon/constants/icon-name";
 import { ODS_ICON_SIZE } from "./icon/src/components/osds-icon/constants/icon-size";
+import { ODS_INPUT_TYPE } from "./input/src/components/osds-input/constants/input-type";
 import { OdsInputValueChangeEventDetail } from "./input/src/components/osds-input/interfaces/events";
 import { ODS_LINK_REFERRER_POLICY as ODS_LINK_REFERRER_POLICY1 } from "./link/src/components/osds-link/constants/referrer-policies";
 import { ODS_MESSAGE_TYPE } from "./message/src/components/osds-message/constants/message-type";
@@ -74,7 +75,7 @@ export { OsdsAccordion } from "./accordion/src/components/osds-accordion/osds-ac
 export { OdsBreadcrumbAttributeItem } from "./breadcrumb/src/components/osds-breadcrumb/interfaces/attributes";
 export { ODS_ICON_NAME } from "./icon/src";
 export { ODS_LINK_REFERRER_POLICY } from "./link/src";
-export { ODS_COMMON_FIELD_SIZE, ODS_COMMON_INPUT_TYPE, ODS_COUNTRY_ISO_CODE, ODS_LOCALE, ODS_PERIOD_ISO_CODE, OdsCommonFieldValidityState, OdsErrorStateControl, OdsFormControl, OdsFormForbiddenValues, OdsHTMLAnchorElementRel, OdsHTMLAnchorElementTarget, OdsI18nHook, OdsInputValue, OdsTextAreaValidityState, OdsValidityState } from "@ovhcloud/ods-common-core";
+export { ODS_COUNTRY_ISO_CODE, ODS_LOCALE, ODS_PERIOD_ISO_CODE, OdsCommonFieldValidityState, OdsErrorStateControl, OdsFormControl, OdsFormForbiddenValues, OdsHTMLAnchorElementRel, OdsHTMLAnchorElementTarget, OdsI18nHook, OdsInputValue, OdsTextAreaValidityState, OdsValidityState } from "@ovhcloud/ods-common-core";
 export { OdsBreadcrumbAttributeItem as OdsBreadcrumbAttributeItem1 } from "./breadcrumb/src/components/osds-breadcrumb/public-api";
 export { ODS_BUTTON_SIZE } from "./button/src/components/osds-button/constants/button-size";
 export { ODS_BUTTON_TYPE } from "./button/src/components/osds-button/constants/button-type";
@@ -84,7 +85,7 @@ export { ODS_CART_SIZE } from "./cart/src/components/osds-cart/constants/cart-si
 export { ODS_CART_ROUNDED } from "./cart/src/components/osds-cart/constants/cart-rounded";
 export { OdsCartManagerFooter, OdsCartManagerSection } from "./cart/src/components/osds-cart-manager/interfaces/attributes";
 export { OdsCheckboxAttributeCbk } from "./checkbox/src/components/osds-checkbox/interfaces/attributes";
-export { OdsCheckboxCheckedChangeEventDetail, OdsCheckboxFocusChangeEventDetail, OdsCheckboxUpdatingChangeEventDetail } from "./checkbox/src/components/osds-checkbox/interfaces/events";
+export { OdsCheckboxCheckedChangeEventDetail, OdsCheckboxUpdatingChangeEventDetail } from "./checkbox/src/components/osds-checkbox/interfaces/events";
 export { ODS_CHECKBOX_BUTTON_SIZE } from "./checkbox-button/src/components/osds-checkbox-button/constants/ods-checkbox-button-size";
 export { ODS_CHIP_SIZE } from "./chip/src/components/osds-chip/constants/chip-size";
 export { ODS_CHIP_VARIANT } from "./chip/src/components/osds-chip/constants/chip-variant";
@@ -97,6 +98,7 @@ export { ODS_DIVIDER_SIZE } from "./divider/src/components/osds-divider/constant
 export { ODS_FLAG_ISO_CODE_UNION } from "./flag/src/components/osds-flag/constants/flag-iso-code";
 export { ODS_ICON_NAME as ODS_ICON_NAME1 } from "./icon/src/components/osds-icon/constants/icon-name";
 export { ODS_ICON_SIZE } from "./icon/src/components/osds-icon/constants/icon-size";
+export { ODS_INPUT_TYPE } from "./input/src/components/osds-input/constants/input-type";
 export { OdsInputValueChangeEventDetail } from "./input/src/components/osds-input/interfaces/events";
 export { ODS_LINK_REFERRER_POLICY as ODS_LINK_REFERRER_POLICY1 } from "./link/src/components/osds-link/constants/referrer-policies";
 export { ODS_MESSAGE_TYPE } from "./message/src/components/osds-message/constants/message-type";
@@ -407,11 +409,11 @@ export namespace Components {
         /**
           * The corresponding aria-label describing its content
          */
-        "ariaLabel": string | null;
+        "ariaLabel": HTMLElement['ariaLabel'];
         /**
           * ID of the element that labels the input
          */
-        "ariaLabelledby"?: string | undefined;
+        "ariaLabelledby"?: string;
         /**
           * beforeSave input allows to set a function that returns a promise. It is called before each time an update will be performed and allowing to manage pessimistic update strategy
          */
@@ -421,9 +423,17 @@ export namespace Components {
          */
         "checked": boolean;
         /**
+          * Default value of the input
+         */
+        "defaultValue": OdsInputValue;
+        /**
           * indicate if the checkbox is entirely disabled. it means no interactions (hover, click, focus, etc)
          */
         "disabled": boolean;
+        /**
+          * Indicates if the input shows error or not
+         */
+        "error": boolean;
         /**
           * is the checkbox is currently focused
          */
@@ -435,15 +445,11 @@ export namespace Components {
         /**
           * Name of the input field
          */
-        "name"?: string;
+        "name": string;
         /**
           * save input allows to set a function that returns a promise. It is called before each time an update is performed and allowing to manage pessimistic update strategy. the checked state will be updated just after the call.
          */
         "save"?: OdsCheckboxAttributeCbk;
-        /**
-          * active the focus on the input in order to let the user write something
-         */
-        "setFocus": () => Promise<void>;
         /**
           * set a custom tab index for easier navigation
           * @param value - chosen index
@@ -614,14 +620,11 @@ export namespace Components {
         "rows": OdsDatagridRow[] | string;
     }
     interface OsdsDatepicker {
+        "ariaLabel": HTMLElement['ariaLabel'];
         /**
           * Defines if the Datepicker should be clearable or not (displays a clear button)
          */
         "clearable"?: boolean;
-        /**
-          * Defines the Datepicker's color (see component principles)
-         */
-        "color"?: ODS_THEME_COLOR_INTENT;
         /**
           * Defines the Datepicker's disabled dates
          */
@@ -637,11 +640,11 @@ export namespace Components {
         /**
           * Defines if the Datepicker should be disabled or not (lower opacity and not interactable)
          */
-        "disabled"?: boolean;
+        "disabled": boolean;
         /**
           * Defines if the Datepicker should display an error message
          */
-        "error"?: boolean;
+        "error": boolean;
         /**
           * Defines which format the Datepicker should be applying (supported formats: https://mymth.github.io/vanillajs-datepicker/#/date-string+format?id=date-format)
          */
@@ -675,16 +678,9 @@ export namespace Components {
          */
         "showSiblingsMonthDays"?: boolean;
         /**
-          * Defines the Datepicker's value (Date object)
+          * Type of the input field
+          * @see OdsDatepickerAttribute.value
          */
-        "value"?: Date | null;
-    }
-    interface OsdsDivider {
-        /**
-          * Divider color theme
-          * @see OdsDividerAttributes.color
-         */
-        "color"?: ODS_THEME_COLOR_INTENT;
         /**
           * Divider design as contrasted version
           * @see OdsDividerAttributes.contrasted
@@ -758,7 +754,7 @@ export namespace Components {
         "size"?: ODS_ICON_SIZE;
     }
     interface OsdsInput {
-        "ariaLabel": HTMLElement['ariaLabel'];
+        "ariaLabel": string | null;
         /**
           * ID of the element that labels the input
          */
@@ -772,40 +768,23 @@ export namespace Components {
          */
         "clearable"?: boolean;
         /**
-          * Main color of the input: see component principles
-         */
-        "color"?: ODS_THEME_COLOR_INTENT;
-        /**
-          * Indicates if the input is contrasted or not: see component principles
-         */
-        "contrasted"?: boolean;
-        /**
           * Default value of the input
          */
-        "defaultValue": OdsInputValue;
+        "defaultValue": string | number | Date | null;
         /**
           * Indicates if the input is disabled or not: see component principles
          */
-        "disabled"?: boolean;
+        "disabled": boolean;
         /**
           * Indicates if the input shows error or not
          */
-        "errorStateControl"?: OdsErrorStateControl;
+        "error": boolean;
         /**
           * List of forbidden values for the input
          */
-        "forbiddenValues": OdsFormForbiddenValues<number>;
-        /**
-          * Control object of the form the input belongs to
-         */
-        "formControl"?: OdsFormControl<OdsCommonFieldValidityState>;
-        /**
-          * get the validity state
-         */
-        "getValidity": () => Promise<OdsCommonFieldValidityState>;
-        /**
-          * hide or display the value
-         */
+        "forbiddenValues"?: OdsInputValue[];
+        "getInputEl": () => Promise<HTMLInputElement | undefined>;
+        "getValidity": () => Promise<OdsCommonFieldValidityState | undefined>;
         "hide": () => Promise<void>;
         /**
           * Icon to be used in the input field
@@ -814,7 +793,7 @@ export namespace Components {
         /**
           * Indicates if the input is inline or not: see component principles
          */
-        "inline"?: boolean;
+        "inline"?: boolean | undefined;
         /**
           * Label of the input field
          */
@@ -838,7 +817,7 @@ export namespace Components {
         /**
           * Name of the input field
          */
-        "name"?: string;
+        "name": string;
         /**
           * Placeholder text for the input
          */
@@ -846,7 +825,7 @@ export namespace Components {
         /**
           * Text before the input value
          */
-        "prefixValue": string | undefined;
+        "prefixValue"?: string;
         /**
           * Indicates if the input is read-only or not
          */
@@ -865,16 +844,12 @@ export namespace Components {
          */
         "setTabindex": (value: number) => Promise<void>;
         /**
-          * Size of the input: see component principles
-         */
-        "size"?: ODS_COMMON_FIELD_SIZE;
-        /**
           * Step value for the input
         /**
           * Type of the input field
           * Current value of the input
          */
-        "value": OdsInputValue;
+        "value": string | number | Date | null;
     }
     interface OsdsLink {
         /**
@@ -1043,9 +1018,6 @@ export namespace Components {
         "totalPages": number;
     }
     interface OsdsPassword {
-        /**
-          * ariaLabel of the password
-         */
         "ariaLabel": HTMLElement['ariaLabel'];
         /**
           * ID of the element that labels the password
@@ -1056,32 +1028,21 @@ export namespace Components {
          */
         "clearable"?: boolean;
         /**
-          * Main color of the password: see component principles
-         */
-        "color"?: ODS_THEME_COLOR_INTENT;
-        /**
-          * Indicates if the password is contrasted or not: see component principles
-         */
-        "contrasted"?: boolean;
-        /**
-          * Default value of the password
+          * Default value of the input
          */
         "defaultValue": string;
         /**
           * Indicates if the password is disabled or not: see component principles
          */
-        "disabled"?: boolean;
+        "disabled": boolean;
         /**
           * Indicates if the password shows error or not
          */
-        "error"?: boolean;
+        "error": boolean;
         /**
-          * List of forbidden values for the password
+          * List of forbidden values for the input
          */
-        "forbiddenValues": OdsFormForbiddenValues<number>;
-        /**
-          * get the validity state
-         */
+        "forbiddenValues"?: OdsInputValue[];
         "getValidity": () => Promise<OdsCommonFieldValidityState | undefined>;
         "hide": () => Promise<void>;
         /**
@@ -1103,7 +1064,7 @@ export namespace Components {
         /**
           * Name of the password field
          */
-        "name"?: string;
+        "name": string;
         /**
           * Placeholder text for the password
          */
@@ -1129,10 +1090,6 @@ export namespace Components {
           * @param value - chosen index
          */
         "setTabindex": (value: number) => Promise<void>;
-        /**
-          * Size of the password: see component principles
-         */
-        "size"?: ODS_COMMON_FIELD_SIZE;
         /**
           * Current value of the password
          */
@@ -1431,10 +1388,6 @@ export namespace Components {
         "value": OdsRangeValue;
     }
     interface OsdsSearchBar {
-        /**
-          * Indicates if the search-bar is contrasted or not: see component principles
-         */
-        "contrasted"?: boolean;
         /**
           * Indicates if the search-bar is disabled or not: see component principles
          */
@@ -2135,9 +2088,9 @@ declare global {
         new (): HTMLOsdsCartTotalElement;
     };
     interface HTMLOsdsCheckboxElementEventMap {
-        "odsBlur": OdsCheckboxFocusChangeEventDetail;
+        "odsBlur": void;
         "odsCheckedChange": OdsCheckboxCheckedChangeEventDetail;
-        "odsFocus": OdsCheckboxFocusChangeEventDetail;
+        "odsFocus": void;
         "odsUpdatingChange": OdsCheckboxUpdatingChangeEventDetail;
     }
     interface HTMLOsdsCheckboxElement extends Components.OsdsCheckbox, HTMLStencilElement {
@@ -2297,9 +2250,12 @@ declare global {
         new (): HTMLOsdsIconElement;
     };
     interface HTMLOsdsInputElementEventMap {
+        "odsBlur": void;
+        "odsClear": void;
+        "odsFocus": void;
+        "odsHide": void;
+        "odsReset": void;
         "odsValueChange": OdsInputValueChangeEventDetail;
-        "odsInputBlur": void;
-        "odsInputFocus": void;
     }
     interface HTMLOsdsInputElement extends Components.OsdsInput, HTMLStencilElement {
         addEventListener<K extends keyof HTMLOsdsInputElementEventMap>(type: K, listener: (this: HTMLOsdsInputElement, ev: OsdsInputCustomEvent<HTMLOsdsInputElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -3068,11 +3024,11 @@ declare namespace LocalJSX {
         /**
           * The corresponding aria-label describing its content
          */
-        "ariaLabel"?: string | null;
+        "ariaLabel"?: HTMLElement['ariaLabel'];
         /**
           * ID of the element that labels the input
          */
-        "ariaLabelledby"?: string | undefined;
+        "ariaLabelledby"?: string;
         /**
           * beforeSave input allows to set a function that returns a promise. It is called before each time an update will be performed and allowing to manage pessimistic update strategy
          */
@@ -3082,9 +3038,17 @@ declare namespace LocalJSX {
          */
         "checked"?: boolean;
         /**
+          * Default value of the input
+         */
+        "defaultValue"?: OdsInputValue;
+        /**
           * indicate if the checkbox is entirely disabled. it means no interactions (hover, click, focus, etc)
          */
         "disabled"?: boolean;
+        /**
+          * Indicates if the input shows error or not
+         */
+        "error"?: boolean;
         /**
           * is the checkbox is currently focused
          */
@@ -3100,7 +3064,7 @@ declare namespace LocalJSX {
         /**
           * Event triggered on checkbox blur
          */
-        "onOdsBlur"?: (event: OsdsCheckboxCustomEvent<OdsCheckboxFocusChangeEventDetail>) => void;
+        "onOdsBlur"?: (event: OsdsCheckboxCustomEvent<void>) => void;
         /**
           * the checked state changed
          */
@@ -3108,7 +3072,7 @@ declare namespace LocalJSX {
         /**
           * Event triggered on checkbox focus
          */
-        "onOdsFocus"?: (event: OsdsCheckboxCustomEvent<OdsCheckboxFocusChangeEventDetail>) => void;
+        "onOdsFocus"?: (event: OsdsCheckboxCustomEvent<void>) => void;
         /**
           * the checked state is being changed
          */
@@ -3296,14 +3260,11 @@ declare namespace LocalJSX {
         "rows"?: OdsDatagridRow[] | string;
     }
     interface OsdsDatepicker {
+        "ariaLabel"?: HTMLElement['ariaLabel'];
         /**
           * Defines if the Datepicker should be clearable or not (displays a clear button)
          */
         "clearable"?: boolean;
-        /**
-          * Defines the Datepicker's color (see component principles)
-         */
-        "color"?: ODS_THEME_COLOR_INTENT;
         /**
           * Defines the Datepicker's disabled dates
          */
@@ -3363,15 +3324,12 @@ declare namespace LocalJSX {
         /**
           * Defines if the Datepicker should display a placeholder message
          */
-        "placeholder"?: string;
-        /**
-          * Defines if the Datepicker should display others month days
-         */
         "showSiblingsMonthDays"?: boolean;
         /**
-          * Defines the Datepicker's value (Date object)
+          * Type of the input field
+          * @see OdsDatepickerAttribute.value
          */
-        "value"?: Date | null;
+        "value"?: OdsInputValue;
     }
     interface OsdsDivider {
         /**
@@ -3452,7 +3410,7 @@ declare namespace LocalJSX {
         "size"?: ODS_ICON_SIZE;
     }
     interface OsdsInput {
-        "ariaLabel"?: HTMLElement['ariaLabel'];
+        "ariaLabel"?: string | null;
         /**
           * ID of the element that labels the input
          */
@@ -3462,17 +3420,9 @@ declare namespace LocalJSX {
          */
         "clearable"?: boolean;
         /**
-          * Main color of the input: see component principles
-         */
-        "color"?: ODS_THEME_COLOR_INTENT;
-        /**
-          * Indicates if the input is contrasted or not: see component principles
-         */
-        "contrasted"?: boolean;
-        /**
           * Default value of the input
          */
-        "defaultValue"?: OdsInputValue;
+        "defaultValue"?: string | number | Date | null;
         /**
           * Indicates if the input is disabled or not: see component principles
          */
@@ -3480,15 +3430,11 @@ declare namespace LocalJSX {
         /**
           * Indicates if the input shows error or not
          */
-        "errorStateControl"?: OdsErrorStateControl;
+        "error"?: boolean;
         /**
           * List of forbidden values for the input
          */
-        "forbiddenValues"?: OdsFormForbiddenValues<number>;
-        /**
-          * Control object of the form the input belongs to
-         */
-        "formControl"?: OdsFormControl<OdsCommonFieldValidityState>;
+        "forbiddenValues"?: OdsInputValue[];
         /**
           * Icon to be used in the input field
          */
@@ -3496,7 +3442,7 @@ declare namespace LocalJSX {
         /**
           * Indicates if the input is inline or not: see component principles
          */
-        "inline"?: boolean;
+        "inline"?: boolean | undefined;
         /**
           * Label of the input field
          */
@@ -3513,11 +3459,14 @@ declare namespace LocalJSX {
           * Name of the input field
          */
         "name"?: string;
-        "onOdsInputBlur"?: (event: OsdsInputCustomEvent<void>) => void;
-        "onOdsInputFocus"?: (event: OsdsInputCustomEvent<void>) => void;
         /**
           * the input value changed
          */
+        "onOdsBlur"?: (event: OsdsInputCustomEvent<void>) => void;
+        "onOdsClear"?: (event: OsdsInputCustomEvent<void>) => void;
+        "onOdsFocus"?: (event: OsdsInputCustomEvent<void>) => void;
+        "onOdsHide"?: (event: OsdsInputCustomEvent<void>) => void;
+        "onOdsReset"?: (event: OsdsInputCustomEvent<void>) => void;
         "onOdsValueChange"?: (event: OsdsInputCustomEvent<OdsInputValueChangeEventDetail>) => void;
         /**
           * Placeholder text for the input
@@ -3526,14 +3475,27 @@ declare namespace LocalJSX {
         /**
           * Text before the input value
          */
-        "prefixValue"?: string | undefined;
+        "prefixValue"?: string;
         /**
           * Indicates if the input is read-only or not
          */
+        "readOnly"?: boolean;
+        /**
+          * Indicates if the input is required or not
+         */
+        "required"?: boolean;
+        /**
+          * Step value for the input
+         */
         "step"?: number;
         /**
+          * Type of the input field
          */
-        "value"?: OdsInputValue;
+        "type"?: ODS_INPUT_TYPE;
+        /**
+          * Type of the input field
+         */
+        "value"?: string | number | Date | null;
     }
     interface OsdsLink {
         /**
@@ -3707,9 +3669,6 @@ declare namespace LocalJSX {
         "totalPages"?: number;
     }
     interface OsdsPassword {
-        /**
-          * ariaLabel of the password
-         */
         "ariaLabel"?: HTMLElement['ariaLabel'];
         /**
           * ID of the element that labels the password
@@ -3720,15 +3679,7 @@ declare namespace LocalJSX {
          */
         "clearable"?: boolean;
         /**
-          * Main color of the password: see component principles
-         */
-        "color"?: ODS_THEME_COLOR_INTENT;
-        /**
-          * Indicates if the password is contrasted or not: see component principles
-         */
-        "contrasted"?: boolean;
-        /**
-          * Default value of the password
+          * Default value of the input
          */
         "defaultValue"?: string;
         /**
@@ -3740,9 +3691,9 @@ declare namespace LocalJSX {
          */
         "error"?: boolean;
         /**
-          * List of forbidden values for the password
+          * List of forbidden values for the input
          */
-        "forbiddenValues"?: OdsFormForbiddenValues<number>;
+        "forbiddenValues"?: OdsInputValue[];
         /**
           * Indicates if the password is inline or not
          */
@@ -3787,10 +3738,6 @@ declare namespace LocalJSX {
           * Indicates if the password is required or not
          */
         "required"?: boolean;
-        /**
-          * Size of the password: see component principles
-         */
-        "size"?: ODS_COMMON_FIELD_SIZE;
         /**
           * Current value of the password
          */
@@ -4108,10 +4055,6 @@ declare namespace LocalJSX {
         "value"?: OdsRangeValue;
     }
     interface OsdsSearchBar {
-        /**
-          * Indicates if the search-bar is contrasted or not: see component principles
-         */
-        "contrasted"?: boolean;
         /**
           * Indicates if the search-bar is disabled or not: see component principles
          */

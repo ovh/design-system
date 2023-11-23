@@ -30,15 +30,28 @@
     <osds-button type="submit">Submit</osds-button>
   </form>
 
+  <button id="buttonTrigger">trigger</button>
 
   <script>
     const form = document.getElementById('formElem');
+    const button = document.getElementById('buttonTrigger');
+    const odsInput = document.querySelector('[name="odsInput"]');
+    odsInput.addEventListener('odsFocus', () => {
+      console.log('focus event', )
+    });
+    odsInput.addEventListener('odsBlur', () => {
+      console.log('blur event', )
+    });
+    button.addEventListener('click', () => {
+      odsInput.setFocus();
+    })
+
     form.onsubmit = (event) => {
       event.preventDefault();
       console.log('onSubmit', new FormData(form))
     };
   </script>
-
+<!-- 
   <h2>[Common]</h2>
   <osds-input inline type="text" value="On Vous Héberge ?" disabled clearable></osds-input>
   <osds-input inline type="password" value="On Vous Héberge ?" disabled clearable></osds-input>
@@ -187,6 +200,6 @@
     <span class="error-msg value-missing">Value required please</span>
     <span class="error-msg step-mismatch">Please insert a value by step 2, starting from 1</span>
     <span class="error-msg valid">Not valid</span>
-  </article>
+  </article> -->
 </body>
 </html>

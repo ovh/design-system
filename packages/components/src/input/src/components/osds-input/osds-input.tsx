@@ -1,16 +1,16 @@
 import type { OdsInputAttribute } from './interfaces/attributes';
 import type { OdsInputEvent, OdsInputValueChangeEventDetail } from './interfaces/events';
 import type { OdsInputMethod } from './interfaces/methods';
-import type { OdsCommonFieldValidityState, OdsErrorStateControl, OdsFormControl, OdsFormForbiddenValues, OdsInputValue } from '@ovhcloud/ods-common-core';
 import type { EventEmitter } from '@stencil/core';
+import { OdsInputValue, OdsCommonFieldValidityState } from '@ovhcloud/ods-common-core';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import { ODS_ICON_NAME, ODS_ICON_SIZE } from '../../../../icon/src';
-import { ODS_SPINNER_SIZE } from '../../../../spinner/src';
-import { ODS_TEXT_SIZE } from '../../../../text/src';
 import { AttachInternals, Component, Element, Event, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
 import { ODS_INPUT_TYPE } from './constants/input-type';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsInputController } from './core/controller';
+import { ODS_ICON_NAME, ODS_ICON_SIZE } from '../../../../icon/src';
+import { ODS_SPINNER_SIZE } from '../../../../spinner/src';
+import { ODS_TEXT_SIZE } from '../../../../text/src';
 
 @Component({
   formAssociated: true,
@@ -19,9 +19,9 @@ import { OdsInputController } from './core/controller';
   tag: 'osds-input',
 })
 export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMethod {
+  controller = new OdsInputController<OsdsInput>(this);
   private static inputIds = 0;
   private inputId = `ods-input-${OsdsInput.inputIds++}`;
-  controller: OdsInputController = new OdsInputController(this);
   inputEl?: HTMLInputElement;
 
   @Element() el!: HTMLElement;
@@ -29,44 +29,47 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
   @AttachInternals() internals!: ElementInternals;
 
   @State() tabindex = 0;
-  @State() hasFocus = false;
   @State() internalError = false;
+  @State() hasFocus = false;
 
-  @Prop() ariaLabel: HTMLElement['ariaLabel'] = DEFAULT_ATTRIBUTE.ariaLabel;
-  @Prop() ariaLabelledby?: string = DEFAULT_ATTRIBUTE.ariaLabelledby;
-  @Prop({ reflect: true }) clearable?: boolean = DEFAULT_ATTRIBUTE.clearable;
-  @Prop({ reflect: true }) color?: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
-  @Prop({ reflect: true }) contrasted?: boolean = DEFAULT_ATTRIBUTE.contrasted;
-  @Prop({ reflect: true }) defaultValue: OdsInputValue = DEFAULT_ATTRIBUTE.defaultValue;
-  @Prop({ reflect: true }) disabled?: boolean = DEFAULT_ATTRIBUTE.disabled;
-  @Prop({ reflect: true }) error?: boolean = DEFAULT_ATTRIBUTE.error;
-  @Prop({ reflect: true }) errorStateControl?: OdsErrorStateControl = DEFAULT_ATTRIBUTE.errorStateControl;
-  @Prop({ reflect: true }) forbiddenValues: OdsFormForbiddenValues<number> = DEFAULT_ATTRIBUTE.forbiddenValues;
-  @Prop({ reflect: true }) formControl?: OdsFormControl<OdsInputValidityState> = DEFAULT_ATTRIBUTE.formControl;
-  @Prop({ reflect: true }) icon?: ODS_ICON_NAME = DEFAULT_ATTRIBUTE.icon;
-  @Prop({ reflect: true }) inline?: boolean = DEFAULT_ATTRIBUTE.inline;
-  @Prop({ reflect: true }) label?: string = DEFAULT_ATTRIBUTE.label;
-  @Prop({ reflect: true }) loading?: boolean = DEFAULT_ATTRIBUTE.loading;
-  @Prop({ reflect: true, mutable: true }) masked?: boolean = DEFAULT_ATTRIBUTE.masked;
-  @Prop({ reflect: true }) max?: number = DEFAULT_ATTRIBUTE.max;
-  @Prop({ reflect: true }) min?: number = DEFAULT_ATTRIBUTE.min;
-  @Prop({ reflect: true }) name?: string = DEFAULT_ATTRIBUTE.name;
-  @Prop({ reflect: true }) placeholder?: string = DEFAULT_ATTRIBUTE.placeholder;
-  @Prop({ reflect: true }) prefixValue = DEFAULT_ATTRIBUTE.prefixValue;
-  @Prop({ reflect: true }) readOnly?: boolean = DEFAULT_ATTRIBUTE.readOnly;
-  @Prop({ reflect: true }) required?: boolean = DEFAULT_ATTRIBUTE.required;
-  @Prop({ reflect: true }) size?: ODS_INPUT_SIZE = DEFAULT_ATTRIBUTE.size;
-  @Prop({ reflect: true }) step?: number = DEFAULT_ATTRIBUTE.step;
-  @Prop({ reflect: true }) type: ODS_INPUT_TYPE = DEFAULT_ATTRIBUTE.type;
-  @Prop({ reflect: true, mutable: true }) value: OdsInputValue = DEFAULT_ATTRIBUTE.value;
+  @Prop() ariaLabel = DEFAULT_ATTRIBUTE.ariaLabel;
+  @Prop() ariaLabelledby?: string;
+  @Prop({ reflect: true }) clearable?: boolean;
+  @Prop({ reflect: true }) defaultValue = DEFAULT_ATTRIBUTE.defaultValue;
+  @Prop({ reflect: true }) disabled = DEFAULT_ATTRIBUTE.disabled;
+  @Prop({ reflect: true }) error = DEFAULT_ATTRIBUTE.error;
+  @Prop({ reflect: true }) forbiddenValues?: OdsInputValue[];
+  @Prop({ reflect: true }) icon?: ODS_ICON_NAME;
+  @Prop({ reflect: true }) inline? = DEFAULT_ATTRIBUTE.inline;
+  @Prop({ reflect: true }) label?: string;
+  @Prop({ reflect: true }) loading?: boolean;
+  @Prop({ mutable: true, reflect: true }) masked?: boolean = DEFAULT_ATTRIBUTE.masked;
+  @Prop({ reflect: true }) max?: number;
+  @Prop({ reflect: true }) min?: number;
+  @Prop({ reflect: true }) name = DEFAULT_ATTRIBUTE.name;
+  @Prop({ reflect: true }) placeholder?: string;
+  @Prop({ reflect: true }) prefixValue? : string;
+  @Prop({ reflect: true }) readOnly?: boolean;
+  @Prop({ reflect: true }) required?: boolean;
+  @Prop({ reflect: true }) step?: number;
+  @Prop({ reflect: true }) type?: ODS_INPUT_TYPE = DEFAULT_ATTRIBUTE.type;
+  @Prop({ mutable: true, reflect: true }) value = DEFAULT_ATTRIBUTE.value;
 
+  @Event() odsBlur!: EventEmitter<void>;
+  @Event() odsClear!: EventEmitter<void>;
+  @Event() odsFocus!: EventEmitter<void>;
+  @Event() odsHide!: EventEmitter<void>;
+  @Event() odsReset!: EventEmitter<void>;
   @Event() odsValueChange!: EventEmitter<OdsInputValueChangeEventDetail>;
-  @Event() odsInputBlur!: EventEmitter<void>;
-  @Event() odsInputFocus!: EventEmitter<void>;
 
-  @Watch('formControl')
-  onFormControlChange(formControl?: OdsFormControl<OdsCommonFieldValidityState>): void {
-    this.controller.onFormControlChange(formControl);
+  @Method()
+  async clear(): Promise<void> {
+    this.controller.clear();
+  }
+
+  @Method()
+  async hide(): Promise<void> {
+    this.controller.hide();
   }
 
   @Watch('value')
@@ -74,67 +77,22 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
     this.controller.onValueChange(value, oldValue);
   }
 
-  @Listen('focus')
-  focus(): void {
-    this.setFocus.bind(this)();
-  }
-
-  beforeInit(): void {
-    this.controller.beforeInit();
-  }
-
-  componentWillLoad(): void {
-    this.beforeInit();
-  }
-  
-  async componentWillUpdate(): Promise<void> {
-    this.internalError = await this.controller.hasError();
-  }
-
-  formResetCallback(): void {
-    this.value = this.defaultValue;
-  }
-
-  async emitChange(value: OdsInputValue, oldValue?: OdsInputValue): Promise<void> {
-    this.odsValueChange.emit({
-      name: this.name,
-      oldValue: oldValue == null ? oldValue : `${oldValue}`,
-      validity: await this.getValidity(),
-      value: value == null ? value : `${value}`,
-    });
-  }
-
-  emitFocus(): void {
-    this.odsInputFocus.emit();
-  }
-
-  emitBlur(): void {
-    this.odsInputBlur.emit();
-  }
-
   @Method()
   async setFocus(): Promise<void> {
-    this.inputEl?.focus();
+    if (this.inputEl) {
+      this.hasFocus = true;
+      this.controller.setFocus(this.inputEl);
+    }
   }
 
   @Method()
-  async getValidity(): Promise<OdsCommonFieldValidityState> {
-    return this.commonFieldMethodController.getValidity();
+  async setTabindex(value: number): Promise<void> {
+    this.controller.setTabindex(value);
   }
-
+  
   @Method()
-  async clear(): Promise<void> {
-    this.commonFieldMethodController.clear();
-  }
-
-  @Method()
-  async hide(): Promise<void> {
-    this.commonFieldMethodController.hide();
-  }
-
-  @Method()
-  async reset(): Promise<void> {
-    this.commonFieldMethodController.reset();
+  async stepDown(): Promise<void> {
+    this.controller.stepDown();
   }
 
   @Method()
@@ -143,29 +101,59 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
   }
 
   @Method()
-  async stepDown(): Promise<void> {
-    this.controller.stepDown();
+  async getValidity(): Promise<OdsCommonFieldValidityState | undefined> {
+    return this.inputEl && this.controller.getValidity(this.inputEl) || undefined;
   }
 
   @Method()
-  async setTabindex(value: number): Promise<void> {
-    this.commonFieldMethodController.setTabindex(value);
+  async reset(): Promise<void> {
+    this.controller.reset();
   }
 
-  onBlur(): void {
-    this.controller.onBlur();
+  @Method()
+  async getInputEl(): Promise<HTMLInputElement | undefined> {
+    return this.inputEl; 
   }
 
-  onFocus(): void {
-    this.controller.onFocus();
+  componentWillLoad(): void {
+    this.controller.beforeInit();
+  }
+  
+  async componentWillUpdate(): Promise<void> {
+    this.internalError = await this.controller.hasError();
   }
 
-  onInput(event: Event) {
-    this.controller.onInput(event);
+  formResetCallback(): void {
+    this.reset();
+  }
+
+  async emitChange(value: OdsInputValue, oldValue?: OdsInputValue): Promise<void> {
+    this.odsValueChange.emit({
+      name: this.name,
+      oldValue: oldValue === null ? oldValue : `${oldValue}`,
+      validity: await this.getValidity(),
+      value,
+    });
   }
 
   private hasPlaceholder(): boolean {
     return !!this.placeholder && !this.value;
+  }
+
+  onBlur(): void {
+    this.odsBlur.emit();
+    this.hasFocus = false;
+  }
+
+  onInput(event: Event): void {
+    this.controller.onInput(event);
+  }
+
+  @Listen('focus')
+  focus() {
+    if (!this.hasFocus) {
+      this.odsFocus.emit();
+    }
   }
 
   render(): JSX.Element {
@@ -173,8 +161,6 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
       ariaLabel,
       ariaLabelledby,
       clearable,
-      color,
-      contrasted,
       disabled,
       hasFocus,
       icon,
@@ -203,8 +189,10 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
         class: {
           'ods-error': this.internalError,
         },
+        tabindex,
+        color: ODS_THEME_COLOR_INTENT.primary,
+        size: 'md',
         hasFocus,
-        tabindex: tabindex,
       }}
       >
         <osds-text color={ODS_THEME_COLOR_INTENT.text}
@@ -215,7 +203,6 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
           {...{
             ariaLabel,
             ariaLabelledby: labelId || null,
-            contrasted,
             disabled,
             id: inputId,
             masked,
@@ -223,7 +210,6 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
             min,
             name,
             onBlur: () => this.onBlur(),
-            onFocus: () => this.setFocus(),
             onInput: (e) => this.onInput(e),
             placeholder,
             readOnly,
@@ -256,7 +242,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
             <osds-icon
               {...{
                 ariaName: `${masked ? ODS_ICON_NAME.EYE_OPEN : ODS_ICON_NAME.EYE_CLOSED} icon`,
-                color,
+                color: ODS_THEME_COLOR_INTENT.primary,
                 name: masked ? ODS_ICON_NAME.EYE_OPEN : ODS_ICON_NAME.EYE_CLOSED,
                 onClick: () => this.hide(),
                 size: ODS_ICON_SIZE.sm,
@@ -269,7 +255,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
             <osds-icon
               {...{
                 ariaName: `${ODS_ICON_NAME.CLOSE} icon`,
-                color,
+                color: ODS_THEME_COLOR_INTENT.primary,
                 name: ODS_ICON_NAME.CLOSE,
                 onClick: () => this.clear(),
                 size: ODS_ICON_SIZE.sm,
@@ -282,7 +268,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
             <osds-icon
               {...{
                 ariaName: `${icon} icon`,
-                color,
+                color: ODS_THEME_COLOR_INTENT.primary,
                 name: icon,
                 size: ODS_ICON_SIZE.sm,
               }}></osds-icon>

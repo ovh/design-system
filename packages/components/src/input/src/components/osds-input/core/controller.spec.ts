@@ -1,5 +1,3 @@
-import type { OdsCommonFieldAttribute } from '@ovhcloud/ods-common-core';
-import { OdsFormControl } from '@ovhcloud/ods-common-core';
 import { OdsInputController } from './controller';
 import { OsdsInput } from '../osds-input';
 import { ODS_INPUT_TYPE } from '../constants/input-type';
@@ -8,27 +6,27 @@ class OdsInputMock {
   constructor(attribute: Partial<OsdsInput>) {
     Object.assign(this, attribute);
   }
-  logger = new OdsLogger('OdsInputMock');
-  internals = {
-    setFormValue: jest.fn()
-  };
-  type = ODS_INPUT_TYPE.number;
-  commonFieldMethodController = new OdsCommonFieldMethodController(this);
+  ariaLabel = '';
+  defaultValue = null;
+  disabled = false;
+  el = document.createElement('osds-input');
   emitChange = jest.fn();
   emitFocus = jest.fn();
   emitBlur = jest.fn();
-  forbiddenValues = [];
-  type = ODS_INPUT_TYPE.number;
-
+  error = false;
   internals = {
     setFormValue: jest.fn()
   };
+  masked = false;
+  name = '';
+  odsHide = { emit: jest.fn() };
+  type = ODS_INPUT_TYPE.text;
+  value = null;
 }
 
 describe('spec:ods-input-controller', () => {
-  let controller: OdsInputController;
+  let controller: OdsInputController<OsdsInput>;
   let component: OsdsInput;
-  let spyOnOnFormControlChange: jest.SpyInstance<void, jest.ArgsType<OdsInputController['onFormControlChange']>>;
   let spyOnAssertValue: jest.SpyInstance<void, jest.ArgsType<OdsInputController['assertValue']>>;
 
   function setup(attributes: Partial<OsdsInput> = {}) {
@@ -41,40 +39,7 @@ describe('spec:ods-input-controller', () => {
   });
 
   describe('methods', () => {
-    describe('methods:onFormControlChange', () => {
-      const formControl = new OdsFormControl<OdsCommonFieldValidityState>('id');
-
-      beforeEach(() => {
-        formControl.register = jest.fn();
-      });
-
-      it('should not call formControl.register', () => {
-        setup();
-        controller.onFormControlChange();
-
-        expect(formControl.register).not.toHaveBeenCalled();
-      });
-
-      it('should call formControl.register', () => {
-        setup();
-        controller.onFormControlChange(formControl);
-
-        expect(formControl.register).toHaveBeenCalledTimes(1);
-        expect(formControl.register).toHaveBeenCalledWith(component);
-      });
-    });
-
     describe('methods:beforeInit', () => {
-      it('should call onFormControlChange', () => {
-        const formControl = new OdsFormControl<OdsCommonFieldValidityState>('id');
-        setup({ formControl });
-        spyOnOnFormControlChange = jest.spyOn(controller, 'onFormControlChange');
-        controller.beforeInit();
-
-        expect(spyOnOnFormControlChange).toHaveBeenCalledTimes(1);
-        expect(spyOnOnFormControlChange).toHaveBeenCalledWith(formControl);
-      });
-
       it('should call assertValue', () => {
         const value = 'value';
         setup({ value });
@@ -164,13 +129,12 @@ describe('spec:ods-input-controller', () => {
           expect(inputEl.setCustomValidity).toHaveBeenCalledTimes(1);
         });
 
-
         it('should set forbiddenValue (bounded forbiddenValues)', () => {
           const value = 4;
-          const forbiddenValues = [{ min: 3, max: 5 }];
+          const forbiddenValues = ['5'];
           setup({ inputEl, value, forbiddenValues });
 
-          controller.onValueChange('');
+          controller.onValueChange('5');
 
           expect(inputEl.setCustomValidity).toHaveBeenCalledTimes(1);
         });
@@ -233,33 +197,19 @@ describe('spec:ods-input-controller', () => {
       });
     });
 
-    describe('methods:onFocus', () => {
-      it('should set hasFocus to true', () => {
-        setup({ hasFocus: false });
-        controller.onFocus();
-        expect(component.hasFocus).toEqual(true);
+    describe('methods:hide', () => {
+      it('should hide input', () => {
+        setup({ });
+        controller.hide();
+        expect(component.masked).toBe(true);
+        controller.hide();
+        expect(component.masked).toBe(false);
       });
-
-      it('should call emitFocus', () => {
-        setup();
-        controller.onFocus();
-        expect(component.emitFocus).toHaveBeenCalledTimes(1);
-        expect(component.emitFocus).toHaveBeenCalledWith();
-      });
-    });
-
-    describe('methods:onBlur', () => {
-      it('should set hasFocus to false', () => {
-        setup({ hasFocus: true });
-        controller.onBlur();
-        expect(component.hasFocus).toEqual(false);
-      });
-
-      it('should call emitBlur', () => {
-        setup();
-        controller.onBlur();
-        expect(component.emitBlur).toHaveBeenCalledTimes(1);
-        expect(component.emitBlur).toHaveBeenCalledWith();
+    
+      it('should not hide input because of disable', () => {
+        setup({ disabled: true });
+        controller.hide();
+        expect(component.masked).toBe(false);
       });
     });
 
@@ -304,8 +254,8 @@ describe('spec:ods-input-controller', () => {
     describe('methods:hasError', () => {
       it('should return false', () => {
         setup({ error: false });
-        controller.getInputValidity = jest.fn().mockImplementation(() => {
-          return { invalid: false };
+        controller.getValidity = jest.fn().mockImplementation(() => {
+          return { valid: true };
         });
         const hasError = controller.hasError();
         expect(hasError).toEqual(false);
@@ -319,8 +269,8 @@ describe('spec:ods-input-controller', () => {
 
       it('should return true if getInputValidity.invalid', () => {
         setup({ error: false });
-        controller.getInputValidity = jest.fn().mockImplementation(() => {
-          return { invalid: true };
+        controller.getValidity = jest.fn().mockImplementation(() => {
+          return { valid: false };
         });
         const hasError = controller.hasError();
         expect(hasError).toEqual(true);

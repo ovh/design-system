@@ -19,7 +19,7 @@ For more details go to [Events](#events)
 
 ```
 
-#### OdsInputFocus
+#### OdsFocus
 
 ```html
 <osds-input id="odsInput-2" type="number" placeholder="Placeholder" min="1" max="4" step="2" color="primary"></osds-input>
@@ -27,8 +27,8 @@ For more details go to [Events](#events)
 <script>
   const odsInput2 = document.querySelector('osds-input#odsInput-2');
 
-  odsInput1.addEventListener('odsInputFocus', (event) => {
-    console.log("odsInputFocus event", event.detail);
+  odsInput1.addEventListener('odsFocus', (event) => {
+    console.log("odsFocus event", event.detail);
 
     odsInput1.getValidity().then((validity) => {
       console.log("getValidity odsInput-1 from Event", validity);
@@ -38,7 +38,7 @@ For more details go to [Events](#events)
 
 ```
 
-#### OdsInputBlur
+#### OdsBlur
 
 ```html
 <osds-input id="odsInput-3" type="number" placeholder="Placeholder" min="1" max="4" step="2" color="primary"></osds-input>
@@ -46,8 +46,8 @@ For more details go to [Events](#events)
 <script>
   const odsInput1 = document.querySelector('osds-input#odsInput-3');
 
-  odsInput1.addEventListener('odsInputBlur', (event) => {
-    console.log("odsInputBlur event", event.detail);
+  odsInput1.addEventListener('odsBlur', (event) => {
+    console.log("odsBlur event", event.detail);
 
     odsInput1.getValidity().then((validity) => {
       console.log("getValidity odsInput-1 from Event", validity);

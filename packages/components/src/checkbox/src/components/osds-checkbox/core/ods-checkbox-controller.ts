@@ -67,7 +67,11 @@ class OdsCheckboxController {
    * on focusing the component, it will process the internal focus.
    */
   onFocus(): void {
-    this.component.commonFieldMethodController.setFocus();
+    if (!this.component.disabled) {
+      this.component.inputEl?.focus();
+      this.component.hasFocus = true;
+      this.component.emitFocus();
+    }
   }
 
   /**

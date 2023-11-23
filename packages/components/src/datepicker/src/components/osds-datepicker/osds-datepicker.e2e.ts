@@ -39,14 +39,14 @@ describe('e2e:osds-datepicker', () => {
       JSON.stringify(attributes.daysOfWeekDisabled),
       JSON.stringify(attributes.maxDate?.toISOString()),
       JSON.stringify(attributes.minDate?.toISOString()),
-      JSON.stringify(attributes.value?.toISOString()),
+      JSON.stringify((attributes.value as Date)?.toISOString()),
     );
   }
 
   async function getDatepickerValue(): Promise<Date | null> {
     const value = await page.evaluate(() => {
       const datepicker = document.querySelector('osds-datepicker') as unknown as OsdsDatepicker;
-      return datepicker.value?.toISOString();
+      return (datepicker.value as Date)?.toISOString();
     });
     return value ? new Date(value) : null;
   }

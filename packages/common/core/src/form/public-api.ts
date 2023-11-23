@@ -1,4 +1,3 @@
-export * from './constants/public-api';
 export * from './control/public-api';
 export * from './error/public-api';
 export * from './interfaces/public-api';

@@ -52,7 +52,6 @@ describe('e2e:osds-search-bar', () => {
 
   it('should get default attributes', async() => {
     await setup({ attributes: {} });
-    expect(await el.getProperty('contrasted')).toBe(DEFAULT_ATTRIBUTE.contrasted);
     expect(await el.getProperty('disabled')).toBe(DEFAULT_ATTRIBUTE.disabled);
     expect(await el.getProperty('value')).toBe(DEFAULT_ATTRIBUTE.value);
     expect(await el.getProperty('loading')).toBe(DEFAULT_ATTRIBUTE.loading);

@@ -9,6 +9,7 @@ import { ODS_ICON_NAME, ODS_ICON_SIZE } from '../../../../icon/src';
 import { ODS_INPUT_TYPE } from '../../../../input/src';
 import { Component, Element, Event, Host, Listen, Prop, h } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { ODS_INPUT_TYPE } from '../../../../input/src';
 
 @Component({
   shadow: true,
@@ -20,7 +21,6 @@ export class OsdsSearchBar implements OdsSearchBarAttribute, OdsSearchBarEvent {
 
   @Element() el!: HTMLElement;
 
-  @Prop({ reflect: true }) public contrasted?: boolean = DEFAULT_ATTRIBUTE.contrasted;
   @Prop({ reflect: true }) public disabled?: boolean = DEFAULT_ATTRIBUTE.disabled;
   @Prop({ reflect: true }) public loading?: boolean = DEFAULT_ATTRIBUTE.loading;
   @Prop({ reflect: true }) public placeholder?: string = DEFAULT_ATTRIBUTE.placeholder;
@@ -88,7 +88,6 @@ export class OsdsSearchBar implements OdsSearchBarAttribute, OdsSearchBarEvent {
           color={ ODS_THEME_COLOR_INTENT.primary }
           type={ ODS_INPUT_TYPE.text }
           clearable
-          contrasted={ this.contrasted }
           value={ this.value }
           loading={ this.loading }
           disabled={ this.disabled }
@@ -102,12 +101,10 @@ export class OsdsSearchBar implements OdsSearchBarAttribute, OdsSearchBarEvent {
           onKeyDown={ (event: KeyboardEvent):void => this.handlerOnKeydownInput(event) }
           size={ ODS_BUTTON_SIZE.sm }
           color={ ODS_THEME_COLOR_INTENT.primary }
-          disabled={ this.disabled }
-          contrasted={ this.contrasted }>
+          disabled={ this.disabled }>
           <osds-icon
             color={ ODS_THEME_COLOR_INTENT.primary }
             size={ ODS_ICON_SIZE.sm }
-            contrasted={ !this.contrasted }
             name={ ODS_ICON_NAME.SEARCH } />
         </osds-button>
       </Host>

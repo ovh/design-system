@@ -63,17 +63,6 @@ describe('spec:osds-datepicker', () => {
       });
     });
 
-    describe('color', () => {
-      odsUnitTestAttribute<OdsDatepickerAttribute, 'color'>({
-        name: 'color',
-        defaultValue: DEFAULT_ATTRIBUTE.color,
-        newValue: ODS_THEME_COLOR_INTENT.primary,
-        value: ODS_THEME_COLOR_INTENT.success,
-        setup: (value) => setup({ attributes: { ['color']: value } }),
-        ...config,
-      });
-    });
-
     describe('datesDisabled', () => {
       odsUnitTestAttribute<OdsDatepickerAttribute, 'datesDisabled'>({
         name: 'datesDisabled',

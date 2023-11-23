@@ -1,13 +1,11 @@
 import type { OdsPasswordAttribute } from '../interfaces/attributes';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import { ODS_COMMON_FIELD_SIZE } from '@ovhcloud/ods-common-core';
 
 const DEFAULT_ATTRIBUTE: OdsPasswordAttribute = Object.freeze({
   ariaLabel: null,
   ariaLabelledby: undefined,
   clearable: false,
   color: ODS_THEME_COLOR_INTENT.default,
-  contrasted: false,
   defaultValue: '',
   disabled: false,
   error: false,
@@ -16,11 +14,10 @@ const DEFAULT_ATTRIBUTE: OdsPasswordAttribute = Object.freeze({
   label: undefined,
   loading: false,
   masked: true,
-  name: undefined,
+  name: '',
   placeholder: undefined,
   readOnly: false,
   required: false,
-  size: ODS_COMMON_FIELD_SIZE.md,
   value: '',
 });
 

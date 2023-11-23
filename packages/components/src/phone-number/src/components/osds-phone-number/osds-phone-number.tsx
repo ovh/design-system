@@ -2,7 +2,7 @@ import type { OdsPhoneNumberAttribute } from './interfaces/attributes';
 import type { OdsPhoneNumberEvent, OdsPhoneNumberValueChangeEventDetail } from './interfaces/events';
 import type { OdsInputValueChangeEventDetail } from '../../../../input/src';
 import type { OdsSelectValueChangeEventDetail } from '../../../../select/src';
-import { ODS_COUNTRY_ISO_CODE, ODS_COUNTRY_ISO_CODES, ODS_LOCALE, OdsCreateDefaultOdsValidityState } from '@ovhcloud/ods-common-core';
+import { ODS_COUNTRY_ISO_CODE, ODS_COUNTRY_ISO_CODES, ODS_LOCALE, OdsCommonFieldValidityState } from '@ovhcloud/ods-common-core';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_TEXT_LEVEL, ODS_TEXT_SIZE } from '../../../../text/src';
 import { AttachInternals, Component, Event, EventEmitter, Host, Listen, Prop, State, Watch, h } from '@stencil/core';
@@ -51,7 +51,7 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
     this.handlerLocale(this.locale);
     this.controller.beforeInit();
     if (this.value) {
-      this.handlerInputEvent({ value: this.value, validity: OdsCreateDefaultOdsValidityState() })
+      this.handlerInputEvent({ value: this.value, validity: {} as OdsCommonFieldValidityState , name: '' })
     }
   }
 
@@ -116,16 +116,15 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
     this.value = event.value || '';
     this.controller.onValueChange(this.value);
     this.error = !this.isValidValue(this.value);
-    const number = this.controller.parseNumber(event.value);
-    const oldNumber = this.controller.parseNumber(event.oldValue);
+    const number = this.controller.parseNumber(this.value);
+    const oldNumber = this.controller.parseNumber(event.oldValue as string);
     this.odsValueChange.emit({
       ...event,
       isoCode: this.isoCode,
       name: this.name,
       oldValue: this.formatValue(oldNumber, event.oldValue),
       validity: {
-        ...event.validity,
-        invalid: this.error,
+        ...event.validity!,
         valid: !this.error,
       },
       value: this.formatValue(number, this.value),

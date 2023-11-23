@@ -113,10 +113,12 @@ class OdsRangeController {
       if(this.isDualRange()) {
         const val = this.asDualValues();
         if (`${val[0]}` !== this.component.inputEl?.value || `${val[1]}` !== this.component.dualInputEl?.value) {
+          console.warn(`Value [${val}] is not valid. New value has been set to [${this.component.inputEl?.value},${this.component.dualInputEl?.value}]`);
           this.component.value = [Number(this.component.inputEl?.value), Number(this.component.dualInputEl?.value)];
         }
       } else {
         if (`${this.component.value}` !== this.component.inputEl?.value) {
+          console.warn(`Value ${this.component.value} is not valid. New value has been set to ${this.component.inputEl?.value}`);
           this.component.value = this.component.inputEl?.value || null;
         }
       }

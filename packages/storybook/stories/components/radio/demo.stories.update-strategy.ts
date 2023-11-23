@@ -1,4 +1,3 @@
-import { OlesIpsumGeneration, olesIpsum } from '@ovhcloud/ods-common-core';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 
@@ -78,7 +77,7 @@ const TemplateUpdateStrategy = (args: any) => html`
     <osds-radio id="radio-4"
                 value="radio-4"
                 ...=${getTagAttributes(args)}>
-      <osds-tile interactive id="tile-4">${olesIpsum(OlesIpsumGeneration.words, 5)}</osds-tile>
+      <osds-tile interactive id="tile-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit</osds-tile>
     </osds-radio>
     <h5 id="radio-msg-4"></h5>
   </div>
@@ -87,7 +86,7 @@ const TemplateUpdateStrategy = (args: any) => html`
     <osds-radio id="radio-5"
                 value="radio-5"
                 ...=${getTagAttributes(args)}>
-      <osds-tile interactive id="tile-5">${olesIpsum(OlesIpsumGeneration.words, 5)}</osds-tile>
+      <osds-tile interactive id="tile-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit</osds-tile>
     </osds-radio>
     <h5 id="radio-msg-5"></h5>
   </div>

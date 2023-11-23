@@ -1,4 +1,3 @@
-import { OlesIpsumGeneration, olesIpsum } from '@ovhcloud/ods-common-core';
 import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
 import { ODS_DIVIDER_SIZE, ODS_DIVIDER_SIZES } from '@ovhcloud/ods-components/divider';
 import { defineCustomElements } from '@ovhcloud/ods-components/divider/loader';
@@ -37,7 +36,7 @@ export default {
   argTypes: extractArgTypes(storyParams)
 };
 
-const example = olesIpsum(OlesIpsumGeneration.sentences, 3);
+const example = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.';
 
 // A divider example
 const TemplateDefault = (args: any) => html`

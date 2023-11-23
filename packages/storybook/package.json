@@ -21,9 +21,6 @@
     "@ovhcloud/ods-common-theming": "16.4.0",
     "@ovhcloud/ods-components": "16.4.0",
     "@ovhcloud/ods-components-ovh": "16.4.0",
-    "@ovhcloud/ods-starter-react": "16.4.0",
-    "@ovhcloud/ods-starter-react-vite": "16.4.0",
-    "@ovhcloud/ods-starter-vue-vite": "16.4.0",
     "@ovhcloud/ods-theme-blue-jeans": "16.4.0",
     "react": "16.14.0"
   },

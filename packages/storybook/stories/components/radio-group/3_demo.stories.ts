@@ -1,4 +1,3 @@
-import { OlesIpsumGeneration, olesIpsum } from '@ovhcloud/ods-common-core';
 import { defineCustomElements } from '@ovhcloud/ods-components/radio/loader';
 import { html } from 'lit-html';
 import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
@@ -28,10 +27,10 @@ const TemplateDefault = (args: any) => html`
   </style>
   <osds-radio-group id="radio-group-a" ...=${getTagAttributes(args)}>
     <osds-radio id="radio-A" value="val-tile-A">
-      <osds-tile interactive="true" id="tile-A">${olesIpsum(OlesIpsumGeneration.words, 5)}</osds-tile>
+      <osds-tile interactive="true" id="tile-A">Lorem ipsum dolor sit amet, consectetur adipiscing elit</osds-tile>
     </osds-radio>
     <osds-radio id="radio-B" value="val-tile-B">
-      <osds-tile interactive="true" id="tile-B">${olesIpsum(OlesIpsumGeneration.words, 5)}</osds-tile>
+      <osds-tile interactive="true" id="tile-B">Lorem ipsum dolor sit amet, consectetur adipiscing elit</osds-tile>
     </osds-radio>
   </osds-radio-group>
 `;

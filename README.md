@@ -37,64 +37,65 @@
 ## Quick links
 * [**Storybook (current version)**](https://ovh.github.io/design-system/latest/)
 * [**All ODS versions**](https://ovh.github.io/design-system/)
+* [**What's new**](https://ovh.github.io/design-system/latest/?path=/story/ovhcloud-design-system-what-s-new-what-s-new--page)
 * [**Changelog**](https://ovh.github.io/design-system/latest/?path=/story/ovhcloud-design-system-what-s-new-changelog--page)
 * [**Global Documentation 🔗**](https://zeroheight.com/6fc8a63f7/p/533db0-ovhcloud-design-system)
 
-### Requirements
-* [**Node.js**](https://nodejs.org/en/) with version ">= 14.15 && < 16"
-* [**Yarn**](https://yarnpkg.com/) with version ">= 2"
+### Requirements (only for contributing)
+* [**Node.js**](https://nodejs.org/en/) with version ">= 18.17"
+* [**Yarn**](https://yarnpkg.com/) with version ">= 2.4"
 
 ## Installation
-Clone and install `ods` by using yarn.
+All the OVHcloud Design System packages are available on [**NPM**](https://www.npmjs.com/).
+
+```sh
+yarn add @ovhcloud/ods-components @ovhcloud/ods-theme-blue-jeans
 ```
-git clone https://github.com/ovh/design-system.git
-cd design-system
-yarn
+or
+```sh
+npm install --save @ovhcloud/ods-components @ovhcloud/ods-theme-blue-jeans
 ```
 
 ## Usage
+To start using ODS, you'll need to import the components.
 
-Please read `getting-started` guide into `packages/contributing/contributing-getting-started`
-to start using ODS.
+Add a dependency to either:
+* `@ovhcloud/ods-components` to import all components
+* `@ovhcloud/ods-components-<component>` to import a specific component
 
-## Development
-After preparing this repository, you can launch the Storybook UI containing all built components with:
+Components can be imported using one of:
+```typescript
+import { Osds<Component> } from '@ovhcloud/ods-component-<component>'
+import { Osds<Component> } from '@ovhcloud/ods-component-<component>/react'
+import { Osds<Component> } from '@ovhcloud/ods-component-<component>/vue'
 ```
-yarn build:prod && yarn doc && yarn start
+
+You can import enums directly from the component:
+```typescript
+import { ODS_%COMPONENT%_SIZE, ODS_%COMPONENT%_SIZES } from '@ovhcloud/ods-component-<component>'
 ```
-Then choose the right component in the list if you want to edit it (if not, just choose whatever you want)
+
+Same goes for interfaces:
+```typescript
+import type { Ods<Component>Attribute } from '@ovhcloud/ods-component-<component>'
+```
+
+Then, in your view, you can start using ODS components. For instance:
+```html
+<osds-button>
+  My Button
+</osds-button>
+```
+
+For more detail, see our global [Get Started](https://ovh.github.io/design-system/latest/?path=/story/ovhcloud-design-system-get-started--page) guide
 
 ## Contribute
 You've developed a new cool feature ? Fixed an annoying bug ? We'd be happy to hear from you !
 
-Have a look in [CONTRIBUTING.md](https://github.com/ovh/design-system/blob/master/CONTRIBUTING.md) 😃
+Please read [Get Started](https://ovh.github.io/design-system/latest/?path=/story/contributing-get-started--page) guide for contributing and [CONTRIBUTING.md](https://github.com/ovh/design-system/blob/master/CONTRIBUTING.md) 😃
 
 ## Migration
-Please read [Migration pages](https://ovh.github.io/design-system/latest/?path=/story/ovhcloud-design-system-what-s-new-migration-guide-introduction--page) to help you to manage the migration guides between each version of ODS.
-
-## Run the tests
-Tests are individually created for each UI component, but every test can be launch globally.
-
-### Scripts
-We created multiple test suites to test the different aspects of each UI component :
-* All testing : `yarn test`
-* Unit testing : `yarn test:spec`
-* E2E testing : `yarn test:e2e`
-* Screenshot testing : `yarn test:e2e:screenshot`
-
-All testing scripts are also available with a `ci` alternative (i.e, `yarn test:ci:screenshot`).
-
-### Global testing
-They are shortcuts that will test all components in the root directory. You can launch them with the previous described scripts.
-
-### Single component testing
-You can also test a single component.
-
-For instance, for the Button Stencil component, you can browse to it and launch what command you want:
-```
-cd packages/stencil/components/button
-yarn test:e2e:screenshot
-```
+Please read [Migration pages](https://ovh.github.io/design-system/latest/?path=/story/ovhcloud-design-system-what-s-new-migration-guide-12-x-to-13-x--page) to help you to manage the migration guides between each version of ODS.
 
 # Related links
 * Contribute: [https://github.com/ovh/design-system/blob/master/CONTRIBUTING.md](https://github.com/ovh/design-system/blob/master/CONTRIBUTING.md)
@@ -104,7 +105,7 @@ yarn test:e2e:screenshot
 * Get latest version: [https://github.com/ovh/ods](https://github.com/ovh/ods)
 
 # License
-Copyright 2022 OVH SAS
+Copyright 2023 OVH SAS
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

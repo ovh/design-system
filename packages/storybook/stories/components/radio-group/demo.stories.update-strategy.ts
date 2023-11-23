@@ -1,4 +1,3 @@
-import { OlesIpsumGeneration, olesIpsum } from '@ovhcloud/ods-common-core';
 import { defineCustomElements } from '@ovhcloud/ods-components/radio/loader';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
@@ -81,12 +80,12 @@ const TemplateUpdateStrategy = (args: any) => html`
         <osds-radio id="radio-A"
                     value="val-tile-A">
           <osds-tile interactive
-                     id="tile-A">${olesIpsum(OlesIpsumGeneration.words, 5)}</osds-tile>
+                     id="tile-A">Lorem ipsum dolor sit amet, consectetur adipiscing elit</osds-tile>
         </osds-radio>
         <osds-radio id="radio-B"
                     value="val-tile-B">
           <osds-tile interactive
-                     id="tile-B">${olesIpsum(OlesIpsumGeneration.words, 5)}</osds-tile>
+                     id="tile-B">Lorem ipsum dolor sit amet, consectetur adipiscing elit</osds-tile>
         </osds-radio>
       </osds-radio-group>
       <h5 id="radio-group-msg-a"></h5>
@@ -101,12 +100,12 @@ const TemplateUpdateStrategy = (args: any) => html`
         <osds-radio id="radio-C"
                     value="val-tile-C">
           <osds-tile interactive
-                     id="tile-C">${olesIpsum(OlesIpsumGeneration.words, 5)}</osds-tile>
+                     id="tile-C">Lorem ipsum dolor sit amet, consectetur adipiscing elit</osds-tile>
         </osds-radio>
         <osds-radio id="radio-D"
                     value="val-tile-D">
           <osds-tile interactive
-                     id="tile-D">${olesIpsum(OlesIpsumGeneration.words, 5)}</osds-tile>
+                     id="tile-D">Lorem ipsum dolor sit amet, consectetur adipiscing elit</osds-tile>
         </osds-radio>
       </osds-radio-group>
       <h5 id="radio-group-msg-b"></h5>

@@ -1,0 +1,70 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="OVHcloud Design System/Welcome" />
+
+<span style={{
+        display: "block",
+        position: "absolute",
+        top: "0",
+        left: "0",
+        right: "0",
+    }}>
+    <div style={{
+            background: `url(ods_bg.png) no-repeat center center fixed`,
+            backgroundSize: 'cover',
+            width: '100vw',
+            height: '100vh',
+            }}>
+      <span style={{
+              display: "inline-flex",
+              flexDirection: "column",
+              padding: "2rem",
+              margin: "auto"
+      }}>
+        <span style={{
+                width: '30rem',
+                height: '2rem',
+                backgroundImage: `url(ods_logo.svg)`,
+                backgroundSize: 'contain',
+                backgroundRepeat: 'no-repeat',
+        }}>
+        </span>
+        <osds-text color="primary"
+                   size="200"
+                   level="subheading"
+                   hue="500"
+                   style={{
+                      maxWidth: "30rem",
+                      padding: "2rem",
+                   }}>
+            A collection of assets, guidelines and UI components for building consistent user experiences across OVHcloud products.
+        </osds-text>
+        <span style={{
+            display: "inline-flex",
+            flexDirection: "column",
+            padding: '0 2rem',
+            maxWidth: "10rem",
+            gap: "1rem",
+        }}>
+          <osds-link href="?path=/story/ovhcloud-design-system-get-started--page" color="primary">
+            Get Started
+            <span slot="end"><osds-icon color="primary" name="arrow-right" size="xs" style={{ marginLeft: "8px" }}></osds-icon></span>
+          </osds-link>
+          <osds-link href="https://zeroheight.com/6fc8a63f7/p/533db0-ovhcloud-design-system" color="primary" target="_blank">
+            Design Guidelines
+            <span slot="end"><osds-icon color="primary" name="external-link" size="xs" style={{ marginLeft: "8px" }}></osds-icon></span>
+          </osds-link>
+          <osds-link href="https://github.com/ovh/design-system" color="primary" target="_blank">
+            Follow on GitHub
+            <span slot="end"><osds-icon color="primary" name="external-link" size="xs" style={{ marginLeft: "8px" }}></osds-icon></span>
+          </osds-link>
+          <osds-text color="primary"
+                     level="caption"
+                     size="100"
+                     hue="000">
+              (This webpage has been done using ODS components #inception)
+          </osds-text>
+        </span>
+      </span>
+    </div>
+</span>

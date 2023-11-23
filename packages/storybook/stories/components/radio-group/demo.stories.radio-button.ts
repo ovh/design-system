@@ -1,4 +1,3 @@
-import { OlesIpsumGeneration, olesIpsum } from '@ovhcloud/ods-common-core';
 import { defineCustomElements } from '@ovhcloud/ods-components/radio/loader';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
@@ -81,7 +80,6 @@ const TemplateRadioButton = (args: any) => html`
             color="primary"
             id="tile-A"
           >
-            ${olesIpsum(OlesIpsumGeneration.words, 5)}
           </osds-radio-button>
         </osds-radio>
         <osds-radio id="radio-B"
@@ -90,7 +88,6 @@ const TemplateRadioButton = (args: any) => html`
             color="primary"
             id="tile-B"
           >
-            ${olesIpsum(OlesIpsumGeneration.words, 5)}
           </osds-radio-button>
         </osds-radio>
       </osds-radio-group>

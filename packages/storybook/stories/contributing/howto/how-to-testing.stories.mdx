@@ -12,22 +12,22 @@ issues.
 
 ### Location
 
-Tests of `stencil` components are located under `packages/stencil/components/my-component/src/components` besides each
+Tests of `stencil` components are located under `packages/components/<component>/src/components` besides each
 file to test:
 
 - `*.spec.ts`: unit tests of the corresponding file
 - `*.e2e.ts`: functional end-to-end tests of the corresponding file
 - `*.e2e.screenshot.ts`: end-to-end screenshot tests of the corresponding file
 
-Tests of component controllers are located under `packages/libraries/core/src/components/my-component`:
+Tests of component controller are located under `packages/components/<component>/src/components/osds-<name>/core`:
 
-- `*-controller.spec.ts`: unit tests of the controller
+- `controller.spec.ts`: unit tests of the controller
 
 For more details about controller testing, please head over to the [Controller unit tests section](?path=/story/contributing-how-to-s-create-a-controller--page#controller-testing)
 
 ### Running tests from the command line
 
-When you are in the component folder, for instance, `packages/stencil/components/button` or `packages/libraries/core` for controllers (unit tests only), run:
+When you are in the component folder, for instance, `packages/components/button` run:
 
 #### Unit tests
 
@@ -50,16 +50,16 @@ For unit testing, the component is tested in the following cases:
 
 * it should render as expected (at DOM scope only - checking the component itself and its Shadow DOM)
 * every component attribute should:
-* have a default value (if attribute is required)
-* behave correctly with every defined values (initialization, DOM reflection, binding, modification -if any-,
+   * have a default value (if attribute is required)
+   * behave correctly with every defined values (initialization, DOM reflection, binding, modification -if any-,
 mutability -if any-)
-* check if content slots exist correctly in the Shadow DOM (if any)
-* check public methods and that methods from controllers have been called (if any)
-* check events (if any)
+  * check if content slots exist correctly in the Shadow DOM (if any)
+  * check public methods and that methods from controllers have been called (if any)
+  * check events (if any)
 
 Currently, we are using Jest library for testing, with its nomenclature:
 
-```
+```typescript
 describe('spec:component', () => {
     it('should render', async () => {
       await setup();
@@ -79,7 +79,7 @@ For end-to-end testing, the component is tested in the following cases:
 
 Currently, we are using Jest library for testing, with its nomenclature, and Puppeteer for E2E rendering.
 
-```
+```typescript
 describe('e2e:component', () => {
   el = await page.find('osds-%component%');
     it('should render', async () => {

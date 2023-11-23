@@ -1,11 +1,10 @@
+import type { OdsInputValueChangeEvent } from './components/osds-input/interfaces/events';
+import type { OsdsInput } from './components/osds-input/osds-input';
+import type { OdsGenericFormFieldValidityState } from '@ovhcloud/ods-common-core';
 import './globals';
 import { OdsErrorStateControl, OdsFormControl, OdsLogger } from '@ovhcloud/ods-common-core';
 
-import { OdsInputValidityState } from './components/osds-input/interfaces/attributes';
-import { OdsInputValueChangeEvent } from './components/osds-input/interfaces/events';
-import { OsdsInput } from './components/osds-input/osds-input';
-
-export default async function() {
+export default async function(): Promise<void> {
   const odsInput1: (HTMLElement & OsdsInput) | null = document.querySelector('osds-input#odsInput-1');
   const odsInput2: (HTMLElement & OsdsInput) | null = document.querySelector('osds-input#odsInput-2');
   const input3: (HTMLElement & OsdsInput) | null = document.getElementById('input-3') as (HTMLElement & OsdsInput);
@@ -25,14 +24,14 @@ export default async function() {
     });
   });
 
-  async function getValidityForOdsInput1() {
+  async function getValidityForOdsInput1(): Promise<void> {
     await customElements.whenDefined('osds-input');
     odsInput1?.getValidity().then((validity) => {
       console.log('🟡 getValidity odsInput-1', validity);
     });
   }
 
-  async function getValidityForOdsInput2() {
+  async function getValidityForOdsInput2(): Promise<void> {
     await customElements.whenDefined('osds-input');
     odsInput2?.getValidity().then((validity) => {
       console.log('🔴 getValidity odsInput-2', validity);
@@ -42,14 +41,14 @@ export default async function() {
   await getValidityForOdsInput1();
   await getValidityForOdsInput2();
 
-  (window as any).input3Clear = async function() {
+  (window as any).input3Clear = async function(): Promise<void> {
     logger.log('input3Clear');
     if (input3) {
       await input3.clear();
     }
   };
 
-  (window as any).input3Reset = async function() {
+  (window as any).input3Reset = async function(): Promise<void> {
     logger.log('input3Reset');
     if (input3) {
       await input3.reset();
@@ -60,15 +59,14 @@ export default async function() {
 
   }
 
-  (async() => {
+  (async(): Promise<void> => {
     await customElements.whenDefined('osds-input');
   })();
 
-
   if (input3) {
-    const input3FormControl = new OdsFormControl<OdsInputValidityState>('2');
+    const input3FormControl = new OdsFormControl<OdsGenericFormFieldValidityState>('2');
     input3.formControl = input3FormControl;
-    input3.forbiddenValues = [4, { min: 7, max: 20 }];
+    input3.forbiddenValues = [4, { max: 20, min: 7 }];
 
     const input3ErrorStateControl = new myErrorStateControl();
     input3.errorStateControl = input3ErrorStateControl;
@@ -79,7 +77,7 @@ export default async function() {
 
       interface ErrorMessagesConnexion {
         el: HTMLElement | null,
-        error: keyof OdsInputValidityState;
+        error: keyof OdsGenericFormFieldValidityState;
       }
 
       interface FoundErrorMessagesConnexion extends ErrorMessagesConnexion {
@@ -101,7 +99,7 @@ export default async function() {
           return cnx;
         });
 
-      (async() => {
+      (async(): Promise<void> => {
         const shouldFilter = await Promise.all(filteredErrorMessagesConnexions.map((cnx) => input3FormControl.hasError(cnx.error)));
         const filtered2 = filteredErrorMessagesConnexions.filter((value, index) => {
           logger.log(value);

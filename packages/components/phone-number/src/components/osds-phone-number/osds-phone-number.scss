@@ -14,7 +14,7 @@ $phone-number-input-width: 236px;
     --ods-size-select-border-right-width: 0;
     --ods-size-select-surface-width: #{$phone-number-input-width + 71px};
 
-    &-label{
+    &-label {
       width: 24px;
       height: 18px;
     }
@@ -27,7 +27,6 @@ $phone-number-input-width: 236px;
         display: inline-block;
         margin-right: .5em;
         width: 24px;
-        height: 15px;
       }
     }
   }

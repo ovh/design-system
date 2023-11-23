@@ -1,0 +1,10 @@
+enum ODS_GENERIC_FORM_FIELD_SIZE {
+  md = 'md'
+}
+
+const ODS_GENERIC_FORM_FIELD_SIZES = Object.freeze(Object.values(ODS_GENERIC_FORM_FIELD_SIZE));
+
+export {
+  ODS_GENERIC_FORM_FIELD_SIZE,
+  ODS_GENERIC_FORM_FIELD_SIZES,
+};

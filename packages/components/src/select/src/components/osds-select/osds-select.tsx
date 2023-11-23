@@ -156,6 +156,13 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
     });
   }
 
+  private getTabIndex(): number {
+    if (this.disabled) {
+      return -1;
+    }
+    return this.el.tabIndex === -1 ? 0 : this.el.tabIndex;
+  }
+
   getSelectOptionList(): (HTMLElement & OsdsSelectOption)[] {
     return Array.from(this.el.querySelectorAll<OsdsSelectOption & HTMLElement>('osds-select-option'));
   }
@@ -220,6 +227,7 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
   }
 
   render(): FunctionalComponent {
+    const tabIndex = this.getTabIndex();
     return (
       <Host
         aria-label={ this.ariaLabel }
@@ -238,7 +246,7 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
           this.syncReferences();
         }}
         size="md"
-        tabindex={ this.disabled ? -1 : 0 }>
+        tabindex={ tabIndex }>
         <div class={{
           error: this.internalError,
           opened: this.opened,

@@ -1,19 +1,16 @@
 import type { OdsPhoneNumberAttribute } from './interfaces/attributes';
 import type { E2EElement, E2EPage } from '@stencil/core/testing';
-
 import { ODS_COUNTRY_ISO_CODE, ODS_LOCALE } from '@ovhcloud/ods-common-core';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import { newE2EPage } from '@stencil/core/testing';
-
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-
 
 describe('e2e:osds-phone-number', () => {
   const baseAttribute = { ariaLabel: '', defaultValue: '', forbiddenValues: [], value: '' };
   let page: E2EPage;
   let el: E2EElement;
 
-  async function setup({ attributes = {}, onPage }: { attributes?: Partial<OdsPhoneNumberAttribute>, onPage?: ({ page }: { page: E2EPage }) => void } = {}) {
+  async function setup({ attributes = {}, onPage }: { attributes?: Partial<OdsPhoneNumberAttribute>, onPage?: ({ page }: { page: E2EPage }) => void } = {}): Promise<void> {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsPhoneNumberAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
@@ -49,9 +46,9 @@ describe('e2e:osds-phone-number', () => {
 
                     await page.evaluate(() => {
                       const element = document.querySelector('osds-phone-number') as HTMLElement;
-                      return { width: element.clientWidth, height: element.clientHeight };
+                      return { height: element.clientHeight, width: element.clientWidth };
                     });
-                    await page.setViewport({ width: 600, height:600 });
+                    await page.setViewport({ height:600, width: 600 });
                     const results = await page.compareScreenshot('phone-number', { fullPage: false, omitBackground: true });
                     expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
                   });

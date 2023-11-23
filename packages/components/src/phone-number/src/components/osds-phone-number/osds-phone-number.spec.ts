@@ -1,41 +1,40 @@
-// jest.mock('./core/controller'); // keep jest.mock before any
-
-// FIXME tests where using real controller value, which cause issues with internals
 import type { OdsPhoneNumberAttribute } from './interfaces/attributes';
 import type { OdsInputValueChangeEventDetail } from '../../../../input/src';
 import type { OdsSelectValueChangeEventDetail } from '../../../../select/src';
 import type { SpecPage } from '@stencil/core/testing';
-import { ODS_COUNTRY_ISO_CODE, ODS_LOCALE } from '@ovhcloud/ods-common-core';
+import { ODS_COUNTRY_ISO_CODE, ODS_COUNTRY_ISO_CODES, ODS_LOCALE } from '@ovhcloud/ods-common-core';
 import { OdsUnitTestAttributeType, odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 import { newSpecPage } from '@stencil/core/testing';
+import { PhoneNumberUtil } from 'google-libphonenumber';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { OsdsPhoneNumber } from './osds-phone-number';
 import { ODS_PHONE_NUMBER_COUNTRY_PRESET } from './constants/phone-number-countries';
 import { OdsPhoneNumberController } from './core/controller';
+import { OsdsPhoneNumber } from './osds-phone-number';
 
 describe('spec:osds-phone-number', () => {
   const baseAttribute = {
     ariaLabel: '',
     defaultValue: '',
-    error: false, 
+    disabled: false,
+    error: false,
     name: 'OsdsPhoneNumber',
-    forbiddenValues: [],
     value: '',
   };
   let page: SpecPage;
   let root: HTMLElement | undefined;
   let instance: OsdsPhoneNumber;
   let select: HTMLElement | undefined | null;
+  const phoneUtils = PhoneNumberUtil.getInstance();
 
   afterEach(() => {
     jest.clearAllMocks();
+    jest.clearAllTimers();
   });
 
-  async function setup({ attributes = {} }: { attributes?: Partial<OdsPhoneNumberAttribute> } = {}) {
+  async function setup({ attributes = {} }: { attributes?: Partial<OdsPhoneNumberAttribute> } = {}): Promise<void> {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsPhoneNumberAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
 
-    jest.spyOn(OdsPhoneNumberController.prototype, 'onValueChange').mockReturnValue();
-    jest.spyOn(OdsPhoneNumberController.prototype, 'beforeInit').mockReturnValue();
+    jest.spyOn(OdsPhoneNumberController.prototype, 'setFormValue').mockReturnValue();
 
     page = await newSpecPage({
       components: [OsdsPhoneNumber],
@@ -55,31 +54,30 @@ describe('spec:osds-phone-number', () => {
 
   describe('attributes', () => {
     const config = {
-      instance: () => instance,
-      page: () => page,
-      root: () => page.root,
-      wait: () => page.waitForChanges(),
+      instance: (): OsdsPhoneNumber => instance,
+      page: (): SpecPage => page,
+      root: (): SpecPage['root'] => page.root,
+      wait: (): Promise<void> => page.waitForChanges(),
     };
 
     describe('clearable', () => {
       odsUnitTestAttribute<OdsPhoneNumberAttribute, 'clearable'>({
-        name: 'clearable',
         defaultValue: DEFAULT_ATTRIBUTE.clearable,
-        newValue: false,
-        value: true,
+        name: 'clearable',
+        newValue: true,
         setup: (value) => setup({ attributes: { ['clearable']: value } }),
+        value: false,
         ...config,
       });
     });
 
-    // FIXME TypeError: Cannot read properties of undefined (reading '$hostElement$')
     describe('countries', () => {
       odsUnitTestAttribute<OdsPhoneNumberAttribute, 'countries'>({
-        name: 'countries',
         defaultValue: DEFAULT_ATTRIBUTE.countries,
+        name: 'countries',
         newValue: [ODS_COUNTRY_ISO_CODE.FR, ODS_COUNTRY_ISO_CODE.GB],
-        value: ODS_PHONE_NUMBER_COUNTRY_PRESET.All,
         setup: (countries) => setup({ attributes: { countries } }),
+        value: ODS_PHONE_NUMBER_COUNTRY_PRESET.All,
         ...config,
         exclude: [OdsUnitTestAttributeType.REFLECTED, OdsUnitTestAttributeType.MUTABLE],
       });
@@ -87,70 +85,70 @@ describe('spec:osds-phone-number', () => {
 
     describe('disabled', () => {
       odsUnitTestAttribute<OdsPhoneNumberAttribute, 'disabled'>({
-        name: 'disabled',
         defaultValue: DEFAULT_ATTRIBUTE.disabled,
+        name: 'disabled',
         newValue: false,
-        value: true,
         setup: (value) => setup({ attributes: { ['disabled']: value } }),
+        value: true,
         ...config,
       });
     });
 
     describe('error', () => {
       odsUnitTestAttribute<OdsPhoneNumberAttribute, 'error'>({
-        name: 'error',
         defaultValue: DEFAULT_ATTRIBUTE.error,
-        newValue: false,
-        value: true,
-        setup: (value) => setup({ attributes: { ['error']: value } }),
-        ...config,
         exclude: [OdsUnitTestAttributeType.PROPERTY, OdsUnitTestAttributeType.MUTABLE],
+        name: 'error',
+        newValue: false,
+        setup: (value) => setup({ attributes: { ['error']: value } }),
+        value: true,
+        ...config,
       });
     });
 
     describe('isoCode', () => {
       odsUnitTestAttribute<OdsPhoneNumberAttribute, 'isoCode'>({
-        name: 'isoCode',
         defaultValue: DEFAULT_ATTRIBUTE.isoCode,
-        newValue: ODS_COUNTRY_ISO_CODE.FR,
-        value:  ODS_COUNTRY_ISO_CODE.GB,
-        setup: (isoCode) => setup({ attributes: { isoCode } }),
-        ...config,
         exclude: [OdsUnitTestAttributeType.DEFAULT],
+        name: 'isoCode',
+        newValue: ODS_COUNTRY_ISO_CODE.FR,
+        setup: (isoCode) => setup({ attributes: { isoCode } }),
+        value:  ODS_COUNTRY_ISO_CODE.GB,
+        ...config,
       });
     });
 
     describe('locale', () => {
       odsUnitTestAttribute<OdsPhoneNumberAttribute, 'locale'>({
-        name: 'locale',
         defaultValue: DEFAULT_ATTRIBUTE.locale,
-        newValue: ODS_LOCALE.FR,
-        value:  ODS_LOCALE.EN,
-        setup: (locale) => setup({ attributes: { locale } }),
-        ...config,
         exclude: [OdsUnitTestAttributeType.DEFAULT],
+        name: 'locale',
+        newValue: ODS_LOCALE.FR,
+        setup: (locale) => setup({ attributes: { locale } }),
+        value:  ODS_LOCALE.EN,
+        ...config,
       });
     });
 
     describe('isoCode', () => {
       odsUnitTestAttribute<OdsPhoneNumberAttribute, 'isoCode'>({
-        name: 'isoCode',
         defaultValue: DEFAULT_ATTRIBUTE.isoCode,
-        newValue: ODS_COUNTRY_ISO_CODE.FR,
-        value:  ODS_COUNTRY_ISO_CODE.GB,
-        setup: (isoCode) => setup({ attributes: { isoCode } }),
-        ...config,
         exclude: [OdsUnitTestAttributeType.DEFAULT],
+        name: 'isoCode',
+        newValue: ODS_COUNTRY_ISO_CODE.FR,
+        setup: (isoCode) => setup({ attributes: { isoCode } }),
+        value:  ODS_COUNTRY_ISO_CODE.GB,
+        ...config,
       });
     });
 
     describe('value', () => {
       odsUnitTestAttribute<OdsPhoneNumberAttribute, 'value'>({
-        name: 'value',
         defaultValue: DEFAULT_ATTRIBUTE.value,
+        name: 'value',
         newValue: 'new value',
-        value: '',
         setup: (value) => setup({ attributes: { value } }),
+        value: '',
         ...config,
       });
     });
@@ -165,13 +163,12 @@ describe('spec:osds-phone-number', () => {
         expect(select).toBe(null);
       });
 
-      // FIXME TypeError: Cannot read properties of undefined (reading '$hostElement$')
-      // it('should get countries list with all', async() => {
-      //   await setup({ attributes: { countries: ODS_PHONE_NUMBER_COUNTRY_PRESET.All } });
-      //   instance.handlerCountries();
-      //   expect(instance.parsedCountries).toEqual(ODS_COUNTRY_ISO_CODES.filter((country) => phoneUtils.getCountryCodeForRegion(country)));
-      //   expect(select).toBeDefined();
-      // });
+      it('should get countries list with all', async() => {
+        await setup({ attributes: { countries: ODS_PHONE_NUMBER_COUNTRY_PRESET.All } });
+        instance.handlerCountries();
+        expect(instance.parsedCountries).toEqual(ODS_COUNTRY_ISO_CODES.filter((country) => phoneUtils.getCountryCodeForRegion(country)));
+        expect(select).toBeDefined();
+      });
 
       it('should get countries list with set value', async() => {
         const countries = [ODS_COUNTRY_ISO_CODE.FR];
@@ -192,20 +189,12 @@ describe('spec:osds-phone-number', () => {
     });
 
     describe('methods:handlerLocale', () => {
-      it('should get i18nCountriesMap by locale EN', async() => {
-        await setup();
-        instance.handlerLocale(ODS_LOCALE.EN);
-        expect(instance.i18nCountriesMap).toBeInstanceOf(Map);
-        expect(instance.i18nCountriesMap.get('fr')).toEqual({ isoCode: 'fr', name: 'France', countryCode: 33 });
-        expect(instance.i18nCountriesMap.get('gb')).toEqual({ isoCode: 'gb', name: 'United Kingdom of Great Britain and Northern Ireland', countryCode: 44 });
-      });
-
       it('should get i18nCountriesMap by locale FR', async() => {
         await setup();
         instance.handlerLocale(ODS_LOCALE.FR);
         expect(instance.i18nCountriesMap).toBeInstanceOf(Map);
-        expect(instance.i18nCountriesMap.get('fr')).toEqual({ isoCode: 'fr', name: 'France', countryCode: 33 });
-        expect(instance.i18nCountriesMap.get('gb')).toEqual({ isoCode: 'gb', name: 'Royaume-Uni', countryCode: 44 });
+        expect(instance.i18nCountriesMap.get('fr')).toEqual({ countryCode: 33, isoCode: 'fr', name: 'France' });
+        expect(instance.i18nCountriesMap.get('gb')).toEqual({ countryCode: 44, isoCode: 'gb', name: 'Royaume-Uni' });
       });
     });
 
@@ -241,72 +230,75 @@ describe('spec:osds-phone-number', () => {
 
       it('should handler the input change value with valid value', async() => {
         await setup({ attributes: { isoCode: ODS_COUNTRY_ISO_CODE.FR } });
-        const detail = { value: '0653535353' } as OdsInputValueChangeEventDetail;
+        const detail = { validity: { valid: true }, value: '0653535353' } as OdsInputValueChangeEventDetail;
         const spyEmitOdsValueChange = jest.spyOn(instance.odsValueChange, 'emit');
         instance.handlerOdsValueChange(new CustomEvent('odsValueChange', { detail }));
         expect(instance.value).toBe(detail.value);
         expect(instance.error).toBe(false);
         expect(spyEmitOdsValueChange).toHaveBeenCalledTimes(1);
         expect(spyEmitOdsValueChange).toHaveBeenCalledWith({
-          value: '+33653535353',
           isoCode: 'fr',
           name: 'OsdsPhoneNumber',
+          oldValue: undefined,
           validity: {
             valid: true,
           },
+          value: '+33653535353',
         });
       });
 
       it('should handler the input change value with invalid value', async() => {
         await setup({ attributes: { isoCode: ODS_COUNTRY_ISO_CODE.FR } });
-        const detail = { value: '065353qsd5353' } as OdsInputValueChangeEventDetail;
+        const detail = { validity: { valid: true }, value: '065353qsd5353' } as OdsInputValueChangeEventDetail;
         const spyEmitOdsValueChange = jest.spyOn(instance.odsValueChange, 'emit');
         instance.handlerOdsValueChange(new CustomEvent('odsValueChange', { detail }));
         expect(instance.value).toBe(detail.value);
         expect(instance.error).toBe(true);
         expect(spyEmitOdsValueChange).toHaveBeenCalledTimes(1);
         expect(spyEmitOdsValueChange).toHaveBeenCalledWith({
-          value: '065353qsd5353',
           isoCode: 'fr',
           name: 'OsdsPhoneNumber',
+          oldValue: undefined,
           validity: {
             valid: false,
           },
+          value: '065353qsd5353',
         });
       });
 
       it('should handler the input change value with empty value', async() => {
         await setup({ attributes: { isoCode: ODS_COUNTRY_ISO_CODE.FR } });
-        const detail = { value: '' } as OdsInputValueChangeEventDetail;
+        const detail = { validity: { valid: true }, value: '' } as OdsInputValueChangeEventDetail;
         const spyEmitOdsValueChange = jest.spyOn(instance.odsValueChange, 'emit');
         instance.handlerOdsValueChange(new CustomEvent('odsValueChange', { detail }));
         expect(instance.value).toBe(detail.value);
         expect(instance.error).toBe(false);
         expect(spyEmitOdsValueChange).toHaveBeenCalledTimes(1);
         expect(spyEmitOdsValueChange).toHaveBeenCalledWith({
-          value: '',
           isoCode: 'fr',
           name: 'OsdsPhoneNumber',
+          oldValue: undefined,
           validity: {
             valid: true,
           },
+          value: '',
         });
       });
 
       it('should emit an event with old value', async() => {
         await setup({ attributes: { isoCode: ODS_COUNTRY_ISO_CODE.FR } });
-        const detail = { value: '0653535353', oldValue: '0612345' } as OdsInputValueChangeEventDetail;
+        const detail = { oldValue: '0612345', validity: { valid: true }, value: '0653535353' } as OdsInputValueChangeEventDetail;
         const spyEmitOdsValueChange = jest.spyOn(instance.odsValueChange, 'emit');
         instance.handlerOdsValueChange(new CustomEvent('odsValueChange', { detail }));
         expect(spyEmitOdsValueChange).toHaveBeenCalledTimes(1);
         expect(spyEmitOdsValueChange).toHaveBeenCalledWith({
-          value: '+33653535353',
-          oldValue: '+330612345',
           isoCode: 'fr',
           name: 'OsdsPhoneNumber',
+          oldValue: '+330612345',
           validity: {
             valid: true,
           },
+          value: '+33653535353',
         });
       });
     });

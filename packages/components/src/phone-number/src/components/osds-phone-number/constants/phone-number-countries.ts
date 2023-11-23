@@ -1,5 +1,5 @@
 enum ODS_PHONE_NUMBER_COUNTRY_PRESET {
-  All = 'all'
+  All = 'all',
 }
 
 export {

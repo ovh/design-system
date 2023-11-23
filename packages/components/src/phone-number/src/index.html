@@ -14,17 +14,25 @@
   <link rel="stylesheet" href="/build/osds-phone-number.css">
 </head>
 <body>
-  <p>Placeholder</p>
+  <!-- <p>Placeholder</p>
   <osds-phone-number clearable></osds-phone-number>
 
   <p>Default </p>
 
   <osds-phone-number clearable value="0642665892"></osds-phone-number>
   <br/>
-  <br/>
-  <osds-phone-number countries='["fr", "gb"]' value="0642665892" clearable id="phoneNumber" locale="fr"></osds-phone-number>
+  <br/> -->
+  <form id="form1">
+    <osds-phone-number name="osdsPhoneNumber" countries='["fr", "gb"]' value="0642665892" clearable id="phoneNumber" locale="fr"></osds-phone-number>
+    <input type="text" name="natifInput">
 
-  <p>Error</p>
+
+    <osds-button type="reset">Reset</osds-button>
+    <osds-button type="submit">Submit</osds-button>
+  </form>
+  <button id="triggerButton">trigger</button>
+
+  <!-- <p>Error</p>
   <osds-phone-number countries="all" value="0642665892jklhvl"></osds-phone-number>
   <br/>
   <br/>
@@ -34,12 +42,28 @@
   <osds-phone-number countries="all" disabled value="0642665892"></osds-phone-number>
   <br/>
   <br/>
-  <osds-phone-number disabled value="0642665892"></osds-phone-number>
+  <osds-phone-number disabled value="0642665892"></osds-phone-number> -->
   <script>
+    const form = document.getElementById('form1');
+      form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      console.log('event', event);
+      const formData = new FormData(form);
+      console.log('formData', formData);
+    });
     const phoneNumber = document.getElementById('phoneNumber');
-    phoneNumber.addEventListener('odsValueChange', (event) => {
-      console.log('event', event.detail);
-    })
+    const button = document.getElementById('triggerButton');
+
+    button.addEventListener('click', () => {
+      phoneNumber.clear();
+    });
+
+    ['odsValueChange', 'odsClear', 'odsReset', 'odsFocus', 'odsBlur'].forEach((eventOds) => {
+      phoneNumber.addEventListener(eventOds, (event) => {
+        console.log('eventOds', eventOds);
+        // console.log('event', event);
+      })
+    });
   </script>
 </body>
 </html>

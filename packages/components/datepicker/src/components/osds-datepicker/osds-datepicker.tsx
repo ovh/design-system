@@ -6,7 +6,7 @@ import type { EventEmitter } from '@stencil/core';
 
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_ICON_NAME } from '@ovhcloud/ods-component-icon';
-import { ODS_INPUT_TYPE } from '@ovhcloud/ods-component-input';
+import { ODS_INPUT_TYPE } from '@ovhcloud/ods-common-core';
 import { Component, Element, Event, Host, Listen, Prop, State, Watch, h } from '@stencil/core';
 import { Datepicker } from 'vanillajs-datepicker';
 // @ts-ignore

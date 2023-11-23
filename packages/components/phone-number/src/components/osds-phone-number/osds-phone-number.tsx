@@ -5,11 +5,10 @@ import type { OdsSelectValueChangeEventDetail } from '@ovhcloud/ods-component-se
 
 import { ODS_COUNTRY_ISO_CODE, ODS_COUNTRY_ISO_CODES, ODS_LOCALE, OdsLogger, OdsCreateDefaultOdsValidityState } from '@ovhcloud/ods-common-core';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import { ODS_INPUT_TYPE } from '@ovhcloud/ods-component-input';
+import { ODS_INPUT_TYPE } from '@ovhcloud/ods-common-core';
 import { ODS_TEXT_LEVEL, ODS_TEXT_SIZE } from '@ovhcloud/ods-component-text';
 import { Component, Event, EventEmitter, Host, Listen, Prop, State, Watch, h } from '@stencil/core';
 import { PhoneNumber, PhoneNumberFormat, PhoneNumberUtil } from 'google-libphonenumber';
-
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_PHONE_NUMBER_COUNTRY_PRESET } from './constants/phone-number-countries';
 import { OdsPhoneNumberController } from './core/controller';

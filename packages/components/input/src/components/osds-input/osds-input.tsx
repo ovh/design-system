@@ -1,28 +1,24 @@
-import type { OdsInputAttribute, OdsInputValidityState } from './interfaces/attributes';
+import type { OdsInputAttribute } from './interfaces/attributes';
 import type { OdsInputEvent, OdsInputValueChangeEventDetail } from './interfaces/events';
 import type { OdsInputMethod } from './interfaces/methods';
-import type { OdsErrorStateControl, OdsFormControl, OdsFormForbiddenValues, OdsInputValue } from '@ovhcloud/ods-common-core';
+import type { OdsErrorStateControl, OdsFormControl, OdsFormForbiddenValues, ODS_GENERIC_FORM_FIELD_SIZE, OdsGenericFormFieldValidityState, ODS_INPUT_TYPE, OdsInputValue } from '@ovhcloud/ods-common-core';
 import type { EventEmitter } from '@stencil/core';
-
 import { OdsLogger } from '@ovhcloud/ods-common-core';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
 import { ODS_SPINNER_SIZE } from '@ovhcloud/ods-component-spinner';
 import { ODS_TEXT_SIZE } from '@ovhcloud/ods-component-text';
 import { Component, Element, Event, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
-
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { ODS_INPUT_SIZE } from './constants/input-size';
-import { ODS_INPUT_TYPE } from './constants/input-type';
 import { OdsInputController } from './core/controller';
 
 /**
  *
  */
 @Component({
-  tag: 'osds-input',
-  styleUrl: 'osds-input.scss',
   shadow: true,
+  styleUrl: 'osds-input.scss',
+  tag: 'osds-input',
 })
 export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMethod {
   private logger = new OdsLogger('OsdsInput');
@@ -42,16 +38,16 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
 
   /** Props */
 
-  /** @see OdsInputAttribute.ariaLabel */
+  /** @see OdsGenericFormFieldAttribute.ariaLabel */
   @Prop() ariaLabel: HTMLElement['ariaLabel'] = DEFAULT_ATTRIBUTE.ariaLabel;
 
-  /** @see OdsInputAttribute.ariaLabelledby */
+  /** @see OdsGenericFormFieldAttribute.ariaLabelledby */
   @Prop() ariaLabelledby?: string = DEFAULT_ATTRIBUTE.ariaLabelledby;
 
-  /** @see OdsInputAttribute.clearable */
+  /** @see OdsGenericFormFieldAttribute.clearable */
   @Prop({ reflect: true }) clearable?: boolean = DEFAULT_ATTRIBUTE.clearable;
 
-  /** @see OdsInputAttribute.color */
+  /** @see OdsGenericFormFieldAttribute.color */
   @Prop({ reflect: true }) color?: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
 
   /** @see OdsInputAttribute.contrasted */
@@ -60,20 +56,20 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
   /** @see OdsInputAttribute.defaultValue */
   @Prop({ reflect: true }) defaultValue: OdsInputValue = DEFAULT_ATTRIBUTE.defaultValue;
 
-  /** @see OdsInputAttribute.disabled */
+  /** @see OdsGenericFormFieldAttribute.disabled */
   @Prop({ reflect: true }) disabled?: boolean = DEFAULT_ATTRIBUTE.disabled;
 
-  /** @see OdsInputAttribute.error */
+  /** @see OdsGenericFormFieldAttribute.error */
   @Prop({ reflect: true }) error?: boolean = DEFAULT_ATTRIBUTE.error;
 
-  /** @see OdsInputAttribute.errorStateControl */
+  /** @see OdsGenericFormFieldAttribute.errorStateControl */
   @Prop({ reflect: true }) errorStateControl?: OdsErrorStateControl = DEFAULT_ATTRIBUTE.errorStateControl;
 
-  /** @see OdsInputAttribute.forbiddenValues */
+  /** @see OdsGenericFormFieldAttribute.forbiddenValues */
   @Prop({ reflect: true }) forbiddenValues: OdsFormForbiddenValues<number> = DEFAULT_ATTRIBUTE.forbiddenValues;
 
-  /** @see OdsInputAttribute.formControl */
-  @Prop({ reflect: true }) formControl?: OdsFormControl<OdsInputValidityState> = DEFAULT_ATTRIBUTE.formControl;
+  /** @see OdsGenericFormFieldAttribute.formControl */
+  @Prop({ reflect: true }) formControl?: OdsFormControl<OdsGenericFormFieldValidityState> = DEFAULT_ATTRIBUTE.formControl;
 
   /** @see OdsInputAttribute.icon */
   @Prop({ reflect: true }) icon?: ODS_ICON_NAME = DEFAULT_ATTRIBUTE.icon;
@@ -81,14 +77,14 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
   /** @see OdsInputAttribute.inline */
   @Prop({ reflect: true }) inline?: boolean = DEFAULT_ATTRIBUTE.inline;
 
-  /** @see OdsInputAttribute.label */
+  /** @see OdsGenericFormFieldAttribute.label */
   @Prop({ reflect: true }) label?: string = DEFAULT_ATTRIBUTE.label;
 
-  /** @see OdsInputAttribute.loading */
+  /** @see OdsGenericFormFieldAttribute.loading */
   @Prop({ reflect: true }) loading?: boolean = DEFAULT_ATTRIBUTE.loading;
 
-  /** @see OdsInputAttribute.masked */
-  @Prop({ reflect: true, mutable: true }) masked?: boolean = DEFAULT_ATTRIBUTE.masked;
+  /** @see OdsGenericFormFieldAttribute.masked */
+  @Prop({ mutable: true, reflect: true }) masked?: boolean = DEFAULT_ATTRIBUTE.masked;
 
   /** @see OdsInputAttribute.max */
   @Prop({ reflect: true }) max?: number = DEFAULT_ATTRIBUTE.max;
@@ -96,32 +92,32 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
   /** @see OdsInputAttribute.min */
   @Prop({ reflect: true }) min?: number = DEFAULT_ATTRIBUTE.min;
 
-  /** @see OdsInputAttribute.name */
+  /** @see OdsGenericFormFieldAttribute.name */
   @Prop({ reflect: true }) name?: string = DEFAULT_ATTRIBUTE.name;
 
-  /** @see OdsInputAttribute.placeholder */
+  /** @see OdsGenericFormFieldAttribute.placeholder */
   @Prop({ reflect: true }) placeholder?: string = DEFAULT_ATTRIBUTE.placeholder;
 
-  /** @see OdsInputAttribute.prefixValue */
+  /** @see OdsGenericFormFieldAttribute.prefixValue */
   @Prop({ reflect: true }) prefixValue = DEFAULT_ATTRIBUTE.prefixValue;
 
-  /** @see OdsInputAttribute.readOnly */
+  /** @see OdsGenericFormFieldAttribute.readOnly */
   @Prop({ reflect: true }) readOnly?: boolean = DEFAULT_ATTRIBUTE.readOnly;
 
-  /** @see OdsInputAttribute.required */
+  /** @see OdsGenericFormFieldAttribute.required */
   @Prop({ reflect: true }) required?: boolean = DEFAULT_ATTRIBUTE.required;
 
-  /** @see OdsInputAttribute.size */
-  @Prop({ reflect: true }) size?: ODS_INPUT_SIZE = DEFAULT_ATTRIBUTE.size;
+  /** @see OdsGenericFormFieldAttribute.size */
+  @Prop({ reflect: true }) size?: ODS_GENERIC_FORM_FIELD_SIZE = DEFAULT_ATTRIBUTE.size;
 
-  /** @see OdsInputAttribute.step */
+  /** @see OdsGenericFormFieldAttribute.step */
   @Prop({ reflect: true }) step?: number = DEFAULT_ATTRIBUTE.step;
 
-  /** @see OdsInputAttribute.type */
+  /** @see OdsGenericFormFieldAttribute.type */
   @Prop({ reflect: true }) type: ODS_INPUT_TYPE = DEFAULT_ATTRIBUTE.type;
 
-  /** @see OdsInputAttribute.value */
-  @Prop({ reflect: true, mutable: true }) value: OdsInputValue = DEFAULT_ATTRIBUTE.value;
+  /** @see OdsGenericFormFieldAttribute.value */
+  @Prop({ mutable: true, reflect: true }) value: OdsInputValue = DEFAULT_ATTRIBUTE.value;
 
   /** Events */
 
@@ -137,47 +133,47 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
   /** Watch */
 
   @Watch('formControl')
-  onFormControlChange(formControl?: OdsFormControl<OdsInputValidityState>) {
+  onFormControlChange(formControl?: OdsFormControl<OdsGenericFormFieldValidityState>): void {
     this.controller.onFormControlChange(formControl);
   }
 
   @Watch('defaultValue')
-  onDefaultValueChange(defaultValue?: OdsInputValue) {
+  onDefaultValueChange(defaultValue?: OdsInputValue): void {
     this.controller.onDefaultValueChange(defaultValue);
   }
 
   @Watch('value')
-  onValueChange(value: OdsInputValue, oldValue?: OdsInputValue) {
+  onValueChange(value: OdsInputValue, oldValue?: OdsInputValue): void {
     this.controller.onValueChange(value, oldValue);
   }
 
   /** Listen */
 
   @Listen('focus')
-  focus() {
+  focus(): void {
     this.setFocus.bind(this)();
   }
 
   /**
    * @see OdsInputBehavior.beforeInit
    */
-  beforeInit() {
+  beforeInit(): void {
     this.controller.beforeInit();
   }
 
-  componentWillLoad() {
+  componentWillLoad(): void {
     this.beforeInit();
   }
 
   /**
    * @see OdsInputBehavior.emitChange
    */
-  emitChange(value: OdsInputValue, oldValue?: OdsInputValue) {
-    this.logger.debug('emit', { value, oldValue });
+  emitChange(value: OdsInputValue, oldValue?: OdsInputValue): void {
+    this.logger.debug('emit', { oldValue, value });
     this.odsValueChange.emit({
-      value: value == null ? value : `${value}`,
       oldValue: oldValue == null ? oldValue : `${oldValue}`,
       validity: this.controller.getInputValidity(),
+      value: value == null ? value : `${value}`,
     });
   }
 
@@ -199,7 +195,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
    * @see OdsInputMethods.setFocus
    */
   @Method()
-  async setFocus() {
+  async setFocus(): Promise<void> {
     this.inputEl?.focus();
   }
 
@@ -207,7 +203,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
    * @see OdsInputMethods.getValidity
    */
   @Method()
-  async getValidity() {
+  async getValidity(): Promise<OdsGenericFormFieldValidityState> {
     return this.controller.getInputValidity(this.inputEl);
   }
 
@@ -215,7 +211,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
    * @see OdsInputMethods.clear
    */
   @Method()
-  async clear() {
+  async clear(): Promise<void> {
     this.controller.clear();
   }
 
@@ -223,7 +219,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
    * @see OdsInputMethods.hide
    */
   @Method()
-  async hide() {
+  async hide(): Promise<void> {
     this.controller.hide();
   }
 
@@ -231,7 +227,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
    * @see OdsInputMethods.reset
    */
   @Method()
-  async reset() {
+  async reset(): Promise<void> {
     this.controller.reset();
   }
 
@@ -239,7 +235,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
    * @see OdsInputMethods.stepUp
    */
   @Method()
-  async stepUp() {
+  async stepUp(): Promise<void> {
     this.controller.stepUp();
   }
 
@@ -247,7 +243,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
    * @see OdsInputMethods.stepDown
    */
   @Method()
-  async stepDown() {
+  async stepDown(): Promise<void> {
     this.controller.stepDown();
   }
 
@@ -255,7 +251,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
    * @see OdsInputMethods.setInputTabindex
    */
   @Method()
-  async setInputTabindex(value: number) {
+  async setInputTabindex(value: number): Promise<void> {
     this.controller.setInputTabindex(value);
   }
 
@@ -280,14 +276,14 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
   /**
    * @see OdsInputBehavior.onInput
    */
-  onInput(event: Event) {
+  onInput(event: Event): void {
     this.controller.onInput(event);
   }
 
   /**
    * @see OdsInputBehavior.onChange
    */
-  onChange(/*event: Event*/) {
+  onChange(/*event: Event*/): void {
     this.controller.onChange();
   }
 
@@ -295,7 +291,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
     return !!this.placeholder && !this.value;
   }
 
-  render() {
+  render(): JSX.Element {
     const {
       ariaLabel,
       ariaLabelledby,
@@ -332,8 +328,8 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
         class: {
           'ods-error': Boolean(hasError.bind(this)()),
         },
-        tabindex: inputTabindex,
         hasFocus,
+        tabindex: inputTabindex,
       }}
       >
         <osds-text color={ODS_THEME_COLOR_INTENT.text}
@@ -345,8 +341,8 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
           {...{
             ariaLabel,
             ariaLabelledby: labelId || null,
-            disabled,
             contrasted,
+            disabled,
             id: inputId,
             masked,
             max,
@@ -388,11 +384,11 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
             <osds-icon
               {...{
                 ariaName: `${masked ? ODS_ICON_NAME.EYE_OPEN : ODS_ICON_NAME.EYE_CLOSED} icon`,
-                name: masked ? ODS_ICON_NAME.EYE_OPEN : ODS_ICON_NAME.EYE_CLOSED,
-                size: ODS_ICON_SIZE.sm,
                 color,
+                name: masked ? ODS_ICON_NAME.EYE_OPEN : ODS_ICON_NAME.EYE_CLOSED,
                 /** Toggles hide(), which will either hide or display the inputs content by switching masked attribute */
                 onClick: () => this.hide(),
+                size: ODS_ICON_SIZE.sm,
               }}></osds-icon>
           )
         }
@@ -402,11 +398,11 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
             <osds-icon
               {...{
                 ariaName: `${ODS_ICON_NAME.CLOSE} icon`,
-                name: ODS_ICON_NAME.CLOSE,
-                size: ODS_ICON_SIZE.sm,
                 color,
+                name: ODS_ICON_NAME.CLOSE,
                 /** Toggles clear(), which will clear the inputs content */
                 onClick: () => this.clear(),
+                size: ODS_ICON_SIZE.sm,
               }}></osds-icon>
           )
         }
@@ -416,9 +412,9 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
             <osds-icon
               {...{
                 ariaName: `${icon} icon`,
+                color,
                 name: icon,
                 size: ODS_ICON_SIZE.sm,
-                color,
               }}></osds-icon>
           )
         }

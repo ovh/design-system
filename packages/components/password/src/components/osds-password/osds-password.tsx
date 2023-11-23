@@ -1,11 +1,8 @@
 import type { OdsPasswordAttribute } from './interfaces/attributes';
-import type { OdsFormForbiddenValues } from '@ovhcloud/ods-common-core';
+import type { OdsFormForbiddenValues, ODS_GENERIC_FORM_FIELD_SIZE } from '@ovhcloud/ods-common-core';
 import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import type { ODS_INPUT_SIZE } from '@ovhcloud/ods-component-input';
-
-import { ODS_INPUT_TYPE } from '@ovhcloud/ods-component-input';
+import { ODS_INPUT_TYPE } from '@ovhcloud/ods-common-core';
 import { Component, Element, Host, Prop, h } from '@stencil/core';
-
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 
 
@@ -69,7 +66,7 @@ export class OsdsPassword implements OdsPasswordAttribute {
   @Prop({ reflect: true }) required?: boolean = DEFAULT_ATTRIBUTE.required;
 
   /** @see OdsPasswordAttributes.size */
-  @Prop({ reflect: true }) size?: ODS_INPUT_SIZE = DEFAULT_ATTRIBUTE.size;
+  @Prop({ reflect: true }) size?: ODS_GENERIC_FORM_FIELD_SIZE = DEFAULT_ATTRIBUTE.size;
 
   /** @see OdsInputAttributes.value */
   @Prop({ reflect: true, mutable: true }) value = DEFAULT_ATTRIBUTE.value;

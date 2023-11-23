@@ -2,24 +2,21 @@ import type { OdsSearchBarAttribute, OdsSearchbarOption } from './interfaces/att
 import type { OdsSearchBarEvent } from './interfaces/events';
 import type { OdsInputValueChangeEvent } from '@ovhcloud/ods-component-input';
 import type { OdsSelectValueChangeEvent } from '@ovhcloud/ods-component-select';
-
+import type { EventEmitter } from '@stencil/core';
+import { ODS_INPUT_TYPE } from '@ovhcloud/ods-common-core';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_BUTTON_SIZE } from '@ovhcloud/ods-component-button';
 import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
-import { ODS_INPUT_TYPE } from '@ovhcloud/ods-component-input';
-import { Component, Element, Event, EventEmitter, Host, Listen, Prop, h } from '@stencil/core';
-
+import { Component, Element, Event, Host, Listen, Prop, h } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-
-
 
 /**
  * @slot (unnamed) - SearchBar content
  */
 @Component({
-  tag: 'osds-search-bar',
-  styleUrl: 'osds-search-bar.scss',
   shadow: true,
+  styleUrl: 'osds-search-bar.scss',
+  tag: 'osds-search-bar',
 })
 export class OsdsSearchBar implements OdsSearchBarAttribute, OdsSearchBarEvent {
   private optionValue: string = '';
@@ -42,7 +39,7 @@ export class OsdsSearchBar implements OdsSearchBarAttribute, OdsSearchBarEvent {
   @Prop({ reflect: true }) public options?: OdsSearchbarOption[] = DEFAULT_ATTRIBUTE.options;
 
   /** @see OdsSearchBarAttributes.value */
-  @Prop({ reflect: true, mutable: true }) public value: string = DEFAULT_ATTRIBUTE.value;
+  @Prop({ mutable: true, reflect: true }) public value: string = DEFAULT_ATTRIBUTE.value;
 
   /** @see OdsSearchBarEvents.odsSearchSubmit */
   @Event() odsSearchSubmit!: EventEmitter<{ optionValue: string; inputValue: string }>;
@@ -71,10 +68,10 @@ export class OsdsSearchBar implements OdsSearchBarAttribute, OdsSearchBarEvent {
   }
 
   emitSearchSubmit(): void {
-    this.odsSearchSubmit.emit({ optionValue: this.optionValue, inputValue: this.value });
+    this.odsSearchSubmit.emit({ inputValue: this.value, optionValue: this.optionValue });
   }
 
-  render() {
+  render(): JSX.Element {
     const hasSelect = Boolean(this.options?.length);
 
     return (
@@ -103,8 +100,8 @@ export class OsdsSearchBar implements OdsSearchBarAttribute, OdsSearchBarEvent {
 
         <osds-button
           tabindex="2"
-          onClick={ () => this.handlerOnClickSearchButton() }
-          onKeyDown={ (event: KeyboardEvent) => this.handlerOnKeydownInput(event) }
+          onClick={ ():void => this.handlerOnClickSearchButton() }
+          onKeyDown={ (event: KeyboardEvent):void => this.handlerOnKeydownInput(event) }
           size={ ODS_BUTTON_SIZE.sm }
           color={ ODS_THEME_COLOR_INTENT.primary }
           disabled={ this.disabled }

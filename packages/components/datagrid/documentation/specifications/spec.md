@@ -1,5 +1,4 @@
 * [**Interfaces**](#interfaces)
-* [**Classes**](#classes)
 
 ## Interfaces
 
@@ -13,7 +12,7 @@
 |**`isSelectable`** | _boolean_ |  |  | The rows can be selectable|
 |**`noResultLabel`** | _string_ |  |  | Text when the datagrid was no rows|
 |**`rowHeight`** | _number_ |  |  | Height for each row, in pixel|
-|**`rows`** | `string` \| `OdsDatagridRow[]` | ✴️ |  | The list of the rowsThe key need to be according to the column field|
+|**`rows`** | `string` \| `OdsDatagridRow[]` | ✴️ |  | The list of the rowsThe key needs to be according to the column field|
 
 ### OdsDatagridColumn
 |Name | Type | Required | Default | Description|
@@ -23,11 +22,9 @@
 |**`title`** | _string_ | ✴️ |  | |
 |**`formatter`** | _string_ |  |  | |
 
-### OdsDatagridRow
-|Key | Type | Description|
-|---|:---:|---|
-|_string_ | _unknown_ | |
-
-## Classes
-
-### OsdsDatagrid
+### OdsDatagridEvent
+|Name | Type | Required | Default | Description|
+|---|---|:---:|---|---|
+|**`odsBottomScroll`** | `EventEmitter<void>` | ✴️ |  | |
+|**`odsRowSelectionChange`** | `EventEmitter<reflection>` | ✴️ |  | |
+|**`odsSortChange`** | `EventEmitter<reflection>` | ✴️ |  | |

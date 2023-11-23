@@ -1,0 +1,72 @@
+## Usage React
+
+```jsx
+import React, { useRef } from 'react';
+import { render } from 'react-dom';
+import { OsdsDatagrid } from '@ovhcloud/ods-components/datagrid/react';
+import { OsdsButton } from '@ovhcloud/ods-components/button/react';
+import { OsdsText } from '@ovhcloud/ods-components/text/react';
+
+import '@ovhcloud/ods-theme-blue-jeans';
+
+const App = () => {
+    function SimpleButton(props) {
+        return <OsdsButton onClick={() => {
+            alert(props.rowData.name)
+        }}>{ props.cellData }</OsdsButton>;
+    }
+
+    function SimpleText(props) {
+        return <OsdsText onClick={() => alert(props.rowData.firstname)}>{ props.cellData }</OsdsText>;
+    }
+
+    function reactFormatter(JSX) {
+        return function customFormatter(cellData, rowData, cell, onRendered) {
+          const renderFn = () => {
+            const cellEl = cell.getElement();
+            if (cellEl) {
+              const formatterCell = cellEl.querySelector('.formatterCell');
+              if (formatterCell) {
+                const CompWithMoreProps = React.cloneElement(JSX, { cellData, rowData });
+                render(CompWithMoreProps, cellEl.querySelector('.formatterCell'));
+              }
+            }
+          };
+      
+          onRendered(renderFn); // initial render only.
+      
+          setTimeout(() => {
+            renderFn(); // render every time cell value changed.
+          }, 0);
+          return '<div class="formatterCell"></div>';
+        };
+    }
+
+    const columns = [
+        { title: 'Name', field: 'name', width: 150 },
+        { title: 'Firstname', field: 'firstname', formatter: reactFormatter(<SimpleText></SimpleText>) },
+        { title: 'Custom', field: 'custom', formatter: reactFormatter(<SimpleButton></SimpleButton>) }
+    ];
+
+    const rows = [
+        { name: "Homer", firstname: "Simpson", custom: 'test' }, 
+        { name: "Marge", firstname: "Simpson", custom: 'test' }
+    ];
+   
+    return (
+        <div>
+            <OsdsDatagrid
+                has-hideable-columns="false"
+                id="largeDatagrid"
+                is-selectable="false"
+                columns={columns}
+                rows={rows}
+                height="300">
+            </OsdsDatagrid>
+        </div>
+    )
+}
+
+export { App }
+
+```

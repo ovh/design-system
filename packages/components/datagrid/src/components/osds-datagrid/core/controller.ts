@@ -16,8 +16,8 @@ class OdsDatagridController {
   toTabulatorColumn(column: OdsDatagridColumn): ColumnDefinition {
     return {
       field: column.field,
-      formatter: (cell: CellComponent): string => {
-        return column.formatter?.(cell.getValue(), cell.getRow().getData()) ?? this.getOdsText(cell.getValue(), ODS_TEXT_SIZE._400);
+      formatter: (cell: CellComponent, _formatterParams, onRendered: (callback: () => void) => void): string => {
+        return column.formatter?.(cell.getValue(), cell.getRow().getData(), cell, onRendered) ?? this.getOdsText(cell.getValue(), ODS_TEXT_SIZE._400);
       },
       headerHozAlign: 'center',
       headerSort: column.isSortable ?? false,

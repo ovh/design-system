@@ -23,9 +23,9 @@ import { ODS_TEXT_SIZE } from '../../../../text/src';
   tag: 'osds-input',
 })
 export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMethod {
-  controller = new OdsInputController<OsdsInput>(this);
   private static inputIds = 0;
   private inputId = `ods-input-${OsdsInput.inputIds++}`;
+  controller = new OdsInputController<OsdsInput>(this);
   inputEl?: HTMLInputElement;
 
   @Element() el!: HTMLElement;

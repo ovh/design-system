@@ -2,44 +2,85 @@ import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/os
 import { html } from 'lit-html';
 import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 import { ODS_COUNTRY_ISO_CODES, ODS_LOCALE } from '@ovhcloud/ods-common-core';
+import { ODS_ICON_NAMES } from '@ovhcloud/ods-components';
+import { CONTROL_CATEGORY, orderControls } from '../../controls';
 
 defineCustomElement();
 
 /* Default story parameters  */
-const storyParams = {
+const storyParams = orderControls({
   value: {
-    category: 'Misc',
+    category: CONTROL_CATEGORY.general,
     control: { type: 'text' },
   },
   clearable: {
-    category: 'Misc',
+    category: CONTROL_CATEGORY.general,
     defaultValue: false,
   },
   disabled: {
-    category: 'Misc',
+    category: CONTROL_CATEGORY.general,
     defaultValue: false,
   },
   error: {
-    category: 'Misc',
+    category: CONTROL_CATEGORY.general,
     defaultValue: false,
   },
   isoCode: {
-    category: 'Général',
+    category: CONTROL_CATEGORY.general,
     control: {
       type: 'select',
       options: ODS_COUNTRY_ISO_CODES,
     },
     defaultValue: 'fr',
   },
-};
+  placeholder: {
+    category: CONTROL_CATEGORY.general,
+    control: { type: 'text' },
+  },
+  defaultValue: {
+    category: CONTROL_CATEGORY.general,
+    control: { type: 'text' },
+  },
+  prefixValue: {
+    category: CONTROL_CATEGORY.general,
+    control: { type: 'text' },
+  },
+  icon: {
+    category: CONTROL_CATEGORY.general,
+    defaultValue: '',
+    options: ODS_ICON_NAMES,
+    control: { type: 'select' },
+  },
+  loading: {
+    category: CONTROL_CATEGORY.general,
+    defaultValue: false,
+  },
+  name: {
+    category: CONTROL_CATEGORY.general,
+    defaultValue: 'myPhoneNumber',
+  },
+  readonly: {
+    category: CONTROL_CATEGORY.general,
+    defaultValue: false,
+  },
+  required: {
+    category: CONTROL_CATEGORY.general,
+    defaultValue: false,
+  },
+  forbiddenValues: {
+    category: CONTROL_CATEGORY.general,
+    defaultValue: [],
+    control: { type: 'array' },
+  },
+});
 
 const countriesParams = {
   countries: {
-    category: 'Général',
+    category: CONTROL_CATEGORY.general,
     defaultValue: 'all',
   },
   locale: {
-    category: 'Général',
+    category: CONTROL_CATEGORY.general,
     control: {
       type: 'select',
       options: ODS_LOCALE,
@@ -68,7 +109,7 @@ Default.args = {
 export const CountryIndicator = OsdsPhoneNumberDefault.bind({});
 // @ts-ignore
 CountryIndicator.args = {
-  ...extractStoryParams({ ...countriesParams, ...storyParams }),
+  ...extractStoryParams(orderControls({ ...countriesParams, ...storyParams })),
 };
 // @ts-ignore
 CountryIndicator.argTypes = extractArgTypes(countriesParams);

@@ -8,14 +8,13 @@ import { newE2EPage } from '@stencil/core/testing';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_PHONE_NUMBER_COUNTRY_PRESET } from './constants/phone-number-countries';
 
-
 describe('e2e:osds-phone-number', () => {
   const baseAttribute = {
     ariaLabel: '',
     defaultValue: '',
-    error: false, 
+    disabled: false,
+    error: false,
     name: 'OsdsPhoneNumber',
-    forbiddenValues: [],
     value: '',
   };
   let page: E2EPage;
@@ -24,7 +23,7 @@ describe('e2e:osds-phone-number', () => {
   let input: E2EElement;
   let myCbk: (request: pRequest) => void;
 
-  async function setup({ attributes, cbkInterceptorRequest }: { attributes: Partial<OdsPhoneNumberAttribute>, cbkInterceptorRequest?: (request: pRequest) => void }) {
+  async function setup({ attributes, cbkInterceptorRequest }: { attributes: Partial<OdsPhoneNumberAttribute>, cbkInterceptorRequest?: (request: pRequest) => void }): Promise<void> {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsPhoneNumberAttribute>({ ...baseAttribute, ...attributes, countries: undefined }, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
@@ -47,11 +46,11 @@ describe('e2e:osds-phone-number', () => {
   }
 
   beforeEach( async() => {
-    myCbk = (request) => {
+    myCbk = (request): void => {
       if (request.url().includes('.svg') || request.url().includes('.json')) {
         request.respond({
-          headers: { 'Access-Control-Allow-Origin': '*' },
           body: 'myContent',
+          headers: { 'Access-Control-Allow-Origin': '*' },
         });
       } else {
         request.continue();
@@ -108,14 +107,14 @@ describe('e2e:osds-phone-number', () => {
   });
 
   it('should get an error on load component', async() => {
-    await setup({ attributes: { value: '0612345678902', isoCode: ODS_COUNTRY_ISO_CODE.FR }, cbkInterceptorRequest: myCbk });
+    await setup({ attributes: { isoCode: ODS_COUNTRY_ISO_CODE.FR, value: '0612345678902' }, cbkInterceptorRequest: myCbk });
 
     expect(await el.getProperty('error')).toBe(true);
   });
 
   it('should not parse the value as a number', async() => {
     await setup({
-      attributes: { value: '06123456dfsdf2', isoCode: ODS_COUNTRY_ISO_CODE.FR },
+      attributes: { isoCode: ODS_COUNTRY_ISO_CODE.FR, value: '06123456dfsdf2' },
       cbkInterceptorRequest: myCbk,
     });
 
@@ -156,7 +155,6 @@ describe('e2e:osds-phone-number', () => {
       expect(spyOdsValueChange).toHaveReceivedEventDetail({
         isoCode: 'fr',
         name: 'OsdsPhoneNumber',
-        value: '+33655998866',
         oldValue: '',
         validity: {
           badInput: false,
@@ -172,6 +170,7 @@ describe('e2e:osds-phone-number', () => {
           valid: true,
           valueMissing: false,
         },
+        value: '+33655998866',
       });
     });
 
@@ -186,7 +185,6 @@ describe('e2e:osds-phone-number', () => {
       expect(spyOdsValueChange).toHaveReceivedEventDetail({
         isoCode: 'fr',
         name: 'OsdsPhoneNumber',
-        value: '0',
         oldValue: '',
         validity: {
           badInput: false,
@@ -202,6 +200,7 @@ describe('e2e:osds-phone-number', () => {
           valid: false,
           valueMissing: false,
         },
+        value: '0',
       });
     });
 
@@ -219,7 +218,6 @@ describe('e2e:osds-phone-number', () => {
       expect(spyOdsValueChange).toHaveReceivedEventDetail({
         isoCode: 'fr',
         name: 'OsdsPhoneNumber',
-        value: '0642',
         oldValue: '064',
         validity: {
           badInput: false,
@@ -235,6 +233,7 @@ describe('e2e:osds-phone-number', () => {
           valid: false,
           valueMissing: false,
         },
+        value: '0642',
       });
     });
 

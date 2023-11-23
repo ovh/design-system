@@ -9,3 +9,4 @@ import '../../flag/src';
 import '../../input/src';
 import '../../select/src';
 import '../../text/src';
+import '../../button/src';

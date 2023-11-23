@@ -1155,8 +1155,17 @@ export namespace Components {
         "value": string | null;
     }
     interface OsdsPhoneNumber {
+        "ariaLabel": string | null;
         /**
-          * Ability to clear the phone number value
+          * ID of the element that labels the input
+         */
+        "ariaLabelledby"?: string;
+        /**
+          * empty the value
+         */
+        "clear": () => Promise<void>;
+        /**
+          * Ability to clear the input value
          */
         "clearable"?: boolean;
         /**
@@ -1164,33 +1173,74 @@ export namespace Components {
          */
         "countries"?: ODS_COUNTRY_ISO_CODE[] | ODS_PHONE_NUMBER_COUNTRY_PRESET | string;
         /**
-          * Default value of the phone number
+          * Default value of the input
          */
-        "defaultValue": string | null;
+        "defaultValue": string | number | Date | null;
         /**
-          * Indicates if the phone number is disabled or not
+          * Indicates if the input is disabled or not: see component principles
          */
-        "disabled"?: boolean;
+        "disabled": boolean;
         /**
-          * Indicates if the phone number shows error or not
+          * Indicates if the input shows error or not
          */
-        "error"?: boolean;
+        "error": boolean;
+        /**
+          * List of forbidden values for the input
+         */
+        "forbiddenValues"?: OdsInputValue[];
+        /**
+          * return the element validity
+         */
+        "getValidity": () => Promise<OdsCommonFieldValidityState | undefined>;
+        "icon"?: ODS_ICON_NAME;
         /**
           * Select value
          */
         "isoCode"?: ODS_COUNTRY_ISO_CODE;
         /**
+          * Label of the input field
+         */
+        "label"?: string;
+        /**
+          * Indicates if the input is in loading state or not
+         */
+        "loading"?: boolean;
+        /**
           * This is the locale to use to translate the countries names
          */
         "locale"?: ODS_LOCALE;
         /**
-          * Name of the phone number field
+          * Name of the input field
          */
         "name": string;
         /**
-          * Current value of the phone number
+          * Placeholder text for the input
          */
-        "value": string | null;
+        "placeholder"?: string;
+        /**
+          * Text before the input value
+         */
+        "prefixValue"?: string;
+        /**
+          * Indicates if the input is read-only or not
+         */
+        "readOnly"?: boolean;
+        /**
+          * Indicates if the input is required or not
+         */
+        "required"?: boolean;
+        /**
+          * restore the value to the initial state
+         */
+        "reset": () => Promise<void>;
+        /**
+          * active the focus on the input in order to let the user write something
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * Value of the input field
+         */
+        "value": string | number | Date | null;
     }
     interface OsdsPopover {
         /**
@@ -2404,7 +2454,10 @@ declare global {
     };
     interface HTMLOsdsPhoneNumberElementEventMap {
         "odsBlur": void;
+        "odsClear": void;
         "odsFocus": void;
+        "odsHide": void;
+        "odsReset": void;
         "odsValueChange": OdsPhoneNumberValueChangeEventDetail;
     }
     interface HTMLOsdsPhoneNumberElement extends Components.OsdsPhoneNumber, HTMLStencilElement {
@@ -3798,8 +3851,13 @@ declare namespace LocalJSX {
         "value"?: string | null;
     }
     interface OsdsPhoneNumber {
+        "ariaLabel"?: string | null;
         /**
-          * Ability to clear the phone number value
+          * ID of the element that labels the input
+         */
+        "ariaLabelledby"?: string;
+        /**
+          * Ability to clear the input value
          */
         "clearable"?: boolean;
         /**
@@ -3807,45 +3865,68 @@ declare namespace LocalJSX {
          */
         "countries"?: ODS_COUNTRY_ISO_CODE[] | ODS_PHONE_NUMBER_COUNTRY_PRESET | string;
         /**
-          * Default value of the phone number
+          * Default value of the input
          */
-        "defaultValue"?: string | null;
+        "defaultValue"?: string | number | Date | null;
         /**
-          * Indicates if the phone number is disabled or not
+          * Indicates if the input is disabled or not: see component principles
          */
         "disabled"?: boolean;
         /**
-          * Indicates if the phone number shows error or not
+          * Indicates if the input shows error or not
          */
         "error"?: boolean;
+        /**
+          * List of forbidden values for the input
+         */
+        "forbiddenValues"?: OdsInputValue[];
+        "icon"?: ODS_ICON_NAME;
         /**
           * Select value
          */
         "isoCode"?: ODS_COUNTRY_ISO_CODE;
         /**
+          * Label of the input field
+         */
+        "label"?: string;
+        /**
+          * Indicates if the input is in loading state or not
+         */
+        "loading"?: boolean;
+        /**
           * This is the locale to use to translate the countries names
          */
         "locale"?: ODS_LOCALE;
         /**
-          * Name of the phone number field
+          * Name of the input field
          */
         "name"?: string;
-        /**
-          * Event triggered on textarea blur
-         */
         "onOdsBlur"?: (event: OsdsPhoneNumberCustomEvent<void>) => void;
-        /**
-          * Event triggered on textarea focus
-         */
+        "onOdsClear"?: (event: OsdsPhoneNumberCustomEvent<void>) => void;
         "onOdsFocus"?: (event: OsdsPhoneNumberCustomEvent<void>) => void;
-        /**
-          * Send event with the input & the selected isoCode when the select value or the input value change
-         */
+        "onOdsHide"?: (event: OsdsPhoneNumberCustomEvent<void>) => void;
+        "onOdsReset"?: (event: OsdsPhoneNumberCustomEvent<void>) => void;
         "onOdsValueChange"?: (event: OsdsPhoneNumberCustomEvent<OdsPhoneNumberValueChangeEventDetail>) => void;
         /**
-          * Current value of the phone number
+          * Placeholder text for the input
          */
-        "value"?: string | null;
+        "placeholder"?: string;
+        /**
+          * Text before the input value
+         */
+        "prefixValue"?: string;
+        /**
+          * Indicates if the input is read-only or not
+         */
+        "readOnly"?: boolean;
+        /**
+          * Indicates if the input is required or not
+         */
+        "required"?: boolean;
+        /**
+          * Value of the input field
+         */
+        "value"?: string | number | Date | null;
     }
     interface OsdsPopover {
     }

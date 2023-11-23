@@ -1,6 +1,7 @@
 import type { OdsPhoneNumberAttribute } from '../interfaces/attributes';
 
 const DEFAULT_ATTRIBUTE: OdsPhoneNumberAttribute = Object.freeze({
+  ariaLabel: '',
   clearable: false,
   countries: [],
   defaultValue: '',

@@ -23,9 +23,9 @@ import { ODS_TEXT_SIZE } from '../../../../text/src';
   tag: 'osds-input',
 })
 export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMethod {
+  controller = new OdsInputController<OsdsInput>(this);
   private static inputIds = 0;
   private inputId = `ods-input-${OsdsInput.inputIds++}`;
-  controller = new OdsInputController<OsdsInput>(this);
   inputEl?: HTMLInputElement;
 
   @Element() el!: HTMLElement;
@@ -55,8 +55,8 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
   @Prop({ reflect: true }) type?: ODS_INPUT_TYPE = DEFAULT_ATTRIBUTE.type;
   @Prop({ mutable: true, reflect: true }) value = DEFAULT_ATTRIBUTE.value;
 
-  @State() internalError = false;
   @State() hasFocus = false;
+  @State() internalError = false;
 
   @Event() odsBlur!: EventEmitter<void>;
   @Event() odsClear!: EventEmitter<void>;
@@ -111,8 +111,9 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
     this.internalError = await this.controller.hasError();
   }
 
-  componentWillLoad(): void {
+  async componentWillLoad(): Promise<void> {
     this.controller.beforeInit();
+    this.internalError = await this.controller.hasError();
   }
 
   formResetCallback(): Promise<void> {

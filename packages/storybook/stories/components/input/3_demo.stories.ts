@@ -1,9 +1,10 @@
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-input';
+import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-components/src/input/src/components/osds-input/constants/default-attributes';
 import { html } from 'lit-html';
 import { InputPlay } from './demo.validation.stories';
 import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
-import { ODS_ICON_NAMES, ODS_INPUT_TYPES, ODS_INPUT_TYPE } from '@ovhcloud/ods-components';
+import { ODS_ICON_NAMES, ODS_INPUT_TYPES } from '@ovhcloud/ods-components';
 
 defineCustomElement();
 
@@ -17,7 +18,7 @@ const storyParams = {
   },
   type: {
     category: 'General',
-    defaultValue: ODS_INPUT_TYPE.text,
+    defaultValue: DEFAULT_ATTRIBUTE.type,
     options: ODS_INPUT_TYPES,
     control: { type: 'select' },
   },

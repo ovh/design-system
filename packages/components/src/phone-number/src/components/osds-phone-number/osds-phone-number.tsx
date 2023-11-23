@@ -1,16 +1,21 @@
+import type { ODS_PHONE_NUMBER_COUNTRY_PRESET } from './constants/phone-number-countries';
 import type { OdsPhoneNumberAttribute } from './interfaces/attributes';
 import type { OdsPhoneNumberEvent, OdsPhoneNumberValueChangeEventDetail } from './interfaces/events';
-import type { OdsInputValueChangeEventDetail } from '../../../../input/src';
+import type { OdsPhoneNumberMethod } from './interfaces/methods';
+import type { ODS_ICON_NAME } from '../../../../icon/src';
+import type { OdsInputValueChangeEventDetail, OsdsInput } from '../../../../input/src';
 import type { OdsSelectValueChangeEventDetail } from '../../../../select/src';
-import { ODS_COUNTRY_ISO_CODE, ODS_COUNTRY_ISO_CODES, ODS_LOCALE, OdsCommonFieldValidityState } from '@ovhcloud/ods-common-core';
+import type { ODS_COUNTRY_ISO_CODE, ODS_LOCALE, OdsCommonFieldValidityState, OdsInputValue } from '@ovhcloud/ods-common-core';
+import type { EventEmitter, FunctionalComponent } from '@stencil/core';
+import type { PhoneNumber } from 'google-libphonenumber';
+import { ODS_COUNTRY_ISO_CODES } from '@ovhcloud/ods-common-core';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import { ODS_TEXT_LEVEL, ODS_TEXT_SIZE } from '../../../../text/src';
-import { AttachInternals, Component, Element, Event, EventEmitter, Host, Listen, Prop, State, Watch, h } from '@stencil/core';
-import { PhoneNumber, PhoneNumberFormat, PhoneNumberUtil } from 'google-libphonenumber';
+import { AttachInternals, Component, Element, Event, Host, Method, Prop, State, Watch, h } from '@stencil/core';
+import { PhoneNumberFormat, PhoneNumberUtil } from 'google-libphonenumber';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { ODS_PHONE_NUMBER_COUNTRY_PRESET } from './constants/phone-number-countries';
 import { OdsPhoneNumberController } from './core/controller';
 import { ODS_INPUT_TYPE } from '../../../../input/src';
+import { ODS_TEXT_LEVEL, ODS_TEXT_SIZE } from '../../../../text/src';
 
 @Component({
   formAssociated: true,
@@ -18,9 +23,10 @@ import { ODS_INPUT_TYPE } from '../../../../input/src';
   styleUrl: 'osds-phone-number.scss',
   tag: 'osds-phone-number',
 })
-export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberEvent {
-  controller = new OdsPhoneNumberController(this);
+export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberMethod, OdsPhoneNumberEvent {
+  controller = new OdsPhoneNumberController<OsdsPhoneNumber>(this);
   parsedCountries: ODS_COUNTRY_ISO_CODE[] = [];
+  osdsInput?: OsdsInput;
   phoneUtils = PhoneNumberUtil.getInstance();
 
   @Element() el!: HTMLElement;
@@ -30,34 +36,55 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
   @State() hasCountries: boolean = false;
   @State() i18nCountriesMap!: Map<string, { isoCode: string , name: string, countryCode?: number }>;
 
+  @Prop() ariaLabel = DEFAULT_ATTRIBUTE.ariaLabel;
+  @Prop() ariaLabelledby?: string;
   @Prop({ reflect: true }) clearable?: boolean = DEFAULT_ATTRIBUTE.clearable;
-  @Prop({ reflect: true, mutable: true }) countries?: ODS_COUNTRY_ISO_CODE[] | ODS_PHONE_NUMBER_COUNTRY_PRESET | string = DEFAULT_ATTRIBUTE.countries;
-  @Prop({ reflect: true }) defaultValue: string | null = DEFAULT_ATTRIBUTE.defaultValue;
-  @Prop({ reflect: true }) disabled?: boolean = DEFAULT_ATTRIBUTE.disabled;
-  @Prop({ reflect: true, mutable: true }) error?: boolean = DEFAULT_ATTRIBUTE.error;
-  @Prop({ reflect: true, mutable: true }) isoCode?: ODS_COUNTRY_ISO_CODE = DEFAULT_ATTRIBUTE.isoCode;
-  @Prop({ reflect: true, mutable: true }) locale?: ODS_LOCALE = DEFAULT_ATTRIBUTE.locale;
+  @Prop({ mutable: true, reflect: true }) countries?: ODS_COUNTRY_ISO_CODE[] | ODS_PHONE_NUMBER_COUNTRY_PRESET | string = DEFAULT_ATTRIBUTE.countries;
+  @Prop({ reflect: true }) defaultValue = DEFAULT_ATTRIBUTE.defaultValue;
+  @Prop({ reflect: true }) disabled: boolean = DEFAULT_ATTRIBUTE.disabled;
+  @Prop({ mutable: true, reflect: true }) error: boolean = DEFAULT_ATTRIBUTE.error;
+  @Prop({ reflect: true }) forbiddenValues?: OdsInputValue[];
+  @Prop({ reflect: true }) icon?: ODS_ICON_NAME;
+  @Prop({ reflect: true }) label?: string;
+  @Prop({ reflect: true }) loading?: boolean;
+  @Prop({ mutable: true, reflect: true }) isoCode?: ODS_COUNTRY_ISO_CODE = DEFAULT_ATTRIBUTE.isoCode;
+  @Prop({ mutable: true, reflect: true }) locale?: ODS_LOCALE = DEFAULT_ATTRIBUTE.locale;
   @Prop({ reflect: true }) name: string = DEFAULT_ATTRIBUTE.name;
-  @Prop({ reflect: true, mutable: true }) value: string | null = DEFAULT_ATTRIBUTE.value;
+  @Prop({ reflect: true }) placeholder?: string;
+  @Prop({ reflect: true }) prefixValue?: string;
+  @Prop({ reflect: true }) readOnly?: boolean;
+  @Prop({ reflect: true }) required?: boolean;
+  @Prop({ mutable: true, reflect: true }) value = DEFAULT_ATTRIBUTE.value;
 
   @Event() odsBlur!: EventEmitter<void>;
+  @Event() odsClear!: EventEmitter<void>;
   @Event() odsFocus!: EventEmitter<void>;
+  @Event() odsHide!: EventEmitter<void>;
+  @Event() odsReset!: EventEmitter<void>;
   @Event() odsValueChange!: EventEmitter<OdsPhoneNumberValueChangeEventDetail>;
 
-  componentWillLoad(): void {
-    // order matter
-    this.handlerCountries();
-    this.isoCode = this.controller.getDefaultIsoCode();
-    this.locale = this.controller.getDefaultLocale();
-    this.handlerLocale(this.locale);
-    this.controller.beforeInit();
-    if (this.value) {
-      this.handlerInputEvent({ value: this.value, validity: {} as OdsCommonFieldValidityState , name: '' })
-    }
+  @Method()
+  async clear(): Promise<void> {
+    return this.controller.clear();
   }
 
-  formResetCallback(): void {
-    this.value = this.defaultValue;
+  @Method()
+  async setFocus(): Promise<void> {
+    return this.osdsInput?.setFocus();
+  }
+
+  @Method()
+  async getValidity(): Promise<OdsCommonFieldValidityState | undefined> {
+    const inputEl = await this.osdsInput?.getInputEl();
+    if (inputEl) {
+      return this.controller.getValidity(inputEl);
+    }
+    return undefined;
+  }
+
+  @Method()
+  async reset(): Promise<void> {
+    return this.controller.reset();
   }
 
   @Watch('locale')
@@ -78,36 +105,65 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
     this.hasCountries = !!this.parsedCountries?.length;
   }
 
-  @Listen('odsInputBlur')
-  onInputBlur() {
-    this.odsBlur.emit();
+  @Watch('value')
+  onValueChange(): void {
+    this.controller.validateValue();
   }
 
-  @Listen('odsInputFocus')
-  onInputFocus() {
-    this.odsFocus.emit();
+  componentWillLoad(): void {
+    this.controller.beforeInit();
   }
 
-  @Listen('odsValueChange')
+  formResetCallback(): void {
+    this.reset();
+  }
+
   handlerOdsValueChange(event: CustomEvent<OdsInputValueChangeEventDetail | OdsPhoneNumberValueChangeEventDetail | OdsSelectValueChangeEventDetail>): void {
     if ('isoCode' in event.detail) {
       return;
     }
-    event.preventDefault();
-    event.stopPropagation();
     if ('selection' in event.detail) {
       this.isoCode = ODS_COUNTRY_ISO_CODES.find((countryIsoCode) => countryIsoCode === event.detail.value);
       this.value = '';
       this.error = false;
       return;
     }
+    event.preventDefault();
+    event.stopPropagation();
     return this.handlerInputEvent(event.detail);
   }
 
-  private handlerInputEvent(event: OdsInputValueChangeEventDetail) {
+  private formatValue(number: PhoneNumber | null, defaultValue?: string | null): string | undefined {
+    if (this.error || !number) {
+      return defaultValue ?? undefined;
+    }
+    return this.phoneUtils.format(number, PhoneNumberFormat.E164);
+  }
+
+  private getExampleNumberByIsoCode(): PhoneNumber | undefined {
+    return this.isoCode && this.phoneUtils.getExampleNumber(this.isoCode);
+  }
+
+  getPlaceholder(): string {
+    if (this.placeholder) {
+      return this.placeholder;
+    }
+    const exampleNumber = this.getExampleNumberByIsoCode();
+    return exampleNumber && this.phoneUtils.format(exampleNumber, PhoneNumberFormat.NATIONAL) || '';
+  }
+
+  getPrefix(): string {
+    if (this.prefixValue) {
+      return this.prefixValue;
+    }
+    const countryCode = this.getExampleNumberByIsoCode()?.getCountryCode();
+    return countryCode && `(+${countryCode})` || '';
+  }
+
+  private handlerInputEvent(event: OdsInputValueChangeEventDetail): void {
     this.value = (event.value || '') as string;
-    this.controller.onValueChange(this.value);
-    this.error = !this.isValidValue(this.value);
+    this.controller.setFormValue(this.value);
+    this.error = !event.validity?.valid || !this.controller.isValidValue(this.value);
     const number = this.controller.parseNumber(this.value);
     const oldNumber = this.controller.parseNumber(event.oldValue as string);
     this.odsValueChange.emit({
@@ -123,43 +179,6 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
     });
   }
 
-  private formatValue(number: PhoneNumber | null, defaultValue?: string | null): string | undefined {
-    if (this.error || !number) {
-      return defaultValue ?? undefined;
-    }
-    return this.phoneUtils.format(number, PhoneNumberFormat.E164);
-  }
-
-  @Watch('value')
-  validateValue(): void {
-    this.error = !this.isValidValue(this.value);
-  }
-
-  private isValidValue(value: string | null): boolean {
-    if (!value) {
-      return true;
-    }
-    const number = this.controller.parseNumber(value);
-    if (!number) {
-      return false;
-    }
-    return this.phoneUtils.isPossibleNumber(number) && this.phoneUtils.isValidNumberForRegion(number, this.isoCode);
-  }
-
-  getPlaceholder(): string {
-    const exampleNumber = this.getExampleNumberByIsoCode();
-    return exampleNumber && this.phoneUtils.format(exampleNumber, PhoneNumberFormat.NATIONAL) || '';
-  }
-
-  getPrefix(): string {
-    const countryCode = this.getExampleNumberByIsoCode()?.getCountryCode();
-    return countryCode && `(+${countryCode})` || '';
-  }
-
-  private getExampleNumberByIsoCode(): PhoneNumber | undefined {
-    return this.isoCode && this.phoneUtils.getExampleNumber(this.isoCode);
-  }
-
   private sortCountriesByName(countryA: string, countryB: string): number {
     const aName = this.i18nCountriesMap?.has(countryA) && this.i18nCountriesMap.get(countryA)!.name;
     const bName = this.i18nCountriesMap?.has(countryB) && this.i18nCountriesMap.get(countryB)!.name;
@@ -172,20 +191,21 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
     return 0;
   }
 
-  render() {
+  render(): FunctionalComponent {
     return (
-      <Host class="phone-number">
+      <Host
+        class="phone-number">
         {
           this.hasCountries && <osds-select
-            tabindex="0"
             class="phone-number__select"
             disabled={ this.disabled }
             error={ this.error }
-            name={ this.name }
+            onOdsValueChange={ (event: CustomEvent<OdsSelectValueChangeEventDetail>): void => this.handlerOdsValueChange(event) }
+            tabindex="1"
             value={ this.isoCode }>
             <span
-            slot="selectedLabel"
-            class="phone-number__select-label">
+              slot="selectedLabel"
+              class="phone-number__select-label">
               <osds-flag lazy iso={this.isoCode}></osds-flag>
             </span>
             { this.parsedCountries.map((country) => {
@@ -211,14 +231,21 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
             'phone-number__input--not-first': this.hasCountries,
           }}
           clearable={ this.clearable }
-          color={ ODS_THEME_COLOR_INTENT.primary }
+          defaultValue={ this.defaultValue }
           disabled={ this.disabled }
           error={ this.error }
+          forbiddenValues={ this.forbiddenValues }
+          icon={ this.icon }
           name={ this.name }
-          onOdsValueChange={ (event: CustomEvent<OdsInputValueChangeEventDetail>) => this.handlerOdsValueChange(event) }
+          label={ this.label }
+          loading={ this.loading }
+          onOdsValueChange={ (event: CustomEvent<OdsInputValueChangeEventDetail>): void => this.handlerOdsValueChange(event) }
           placeholder={ this.getPlaceholder() }
           prefix-value={ this.getPrefix() }
-          tabindex="1"
+          readOnly={ this.readOnly }
+          required={ this.required }
+          ref={ (el?: HTMLElement): HTMLElement & OsdsInput => this.osdsInput = el as HTMLElement & OsdsInput }
+          tabindex="2"
           type={ ODS_INPUT_TYPE.tel }
           value={ this.value }>
         </osds-input>

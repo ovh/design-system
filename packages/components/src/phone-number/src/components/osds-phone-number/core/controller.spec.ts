@@ -1,9 +1,10 @@
+import type { OsdsPhoneNumber } from '../osds-phone-number';
 import { ODS_COUNTRY_ISO_CODE, ODS_COUNTRY_ISO_CODES, ODS_LOCALE } from '@ovhcloud/ods-common-core';
 import countriesTranslationEn from '@ovhcloud/ods-common-core/src/i18n/countries/en.json';
 import countriesTranslationFr from '@ovhcloud/ods-common-core/src/i18n/countries/fr.json';
+import { PhoneNumberUtil } from 'google-libphonenumber';
 import { OdsPhoneNumberController } from './controller';
 import { ODS_PHONE_NUMBER_COUNTRY_PRESET } from '../constants/phone-number-countries';
-import { OsdsPhoneNumber } from '../osds-phone-number';
 
 class OdsPhoneNumberMock {
   constructor(attribute: Partial<OsdsPhoneNumber>) {
@@ -14,21 +15,14 @@ class OdsPhoneNumberMock {
   emitFocus = jest.fn();
   emitBlur = jest.fn();
   parsedCountries = ODS_COUNTRY_ISO_CODES as ODS_COUNTRY_ISO_CODE[];
-
-  phoneUtils = {
-    parseAndKeepRawInput: jest.fn(),
-  }
-
-  internals = {
-    setFormValue: jest.fn(),
-  };
+  phoneUtils = PhoneNumberUtil.getInstance();
 }
 
 describe('spec:ods-phone-number-controller', () => {
-  let controller: OdsPhoneNumberController;
+  let controller: OdsPhoneNumberController<OsdsPhoneNumber>;
   let component: OsdsPhoneNumber;
 
-  function setup(attributes: Partial<OsdsPhoneNumber> = {}, language?: string) {
+  function setup(attributes: Partial<OsdsPhoneNumber> = {}, language?: string): void {
     component = new OdsPhoneNumberMock(attributes) as unknown as OsdsPhoneNumber;
     controller = new OdsPhoneNumberController(component);
     global.navigator = {
@@ -66,7 +60,6 @@ describe('spec:ods-phone-number-controller', () => {
         const isoCode = controller.getDefaultIsoCode();
         expect(isoCode).toBe(ODS_COUNTRY_ISO_CODE.US);
       });
-
 
       it('should not get the navigator iso code because of a wrong isoCode', () => {
         setup({ }, 'en');
@@ -182,13 +175,6 @@ describe('spec:ods-phone-number-controller', () => {
     });
 
     describe('methods:parseNumber', () => {
-      it('should return a Phone Number', async() => {
-        await setup({ isoCode: ODS_COUNTRY_ISO_CODE.FR });
-        const number = '0658585858';
-        await controller.parseNumber(number);
-        expect(component.phoneUtils.parseAndKeepRawInput).toHaveBeenCalledWith(number, ODS_COUNTRY_ISO_CODE.FR);
-      });
-
       it('should return a null because of an empty string', async() => {
         await setup({ isoCode: ODS_COUNTRY_ISO_CODE.FR });
         const number = '';

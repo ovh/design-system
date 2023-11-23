@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { FormEvent, useRef } from 'react';
 import { OsdsInput, OsdsForm, OsdsButton, OsdsSelect, OsdsSelectOption, OsdsPassword, OsdsTextarea } from '@ovhcloud/ods-components/react';
 import { ODS_INPUT_TYPE, ODS_BUTTON_TYPE } from '@ovhcloud/ods-components';
 import './App.css';

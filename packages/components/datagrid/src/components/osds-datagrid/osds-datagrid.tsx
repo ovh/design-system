@@ -13,6 +13,7 @@ import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsDatagridController } from './core/controller';
 
 Ods.instance().logging(true);
+
 @Component({
   shadow: true,
   styleUrl: 'osds-datagrid.scss',
@@ -45,6 +46,8 @@ export class OsdsDatagrid implements OdsDatagridAttribute, OdsDatagridEvent {
   @Event() odsSortChange!: EventEmitter<{ field: string, dir: 'asc' | 'desc' | 'none' }>;
 
   @Event() odsRowSelectionChange!: EventEmitter<{ rows: OdsDatagridRow[] }>;
+
+  @Event() odsBottomScroll!: EventEmitter<void>;
 
   componentDidLoad(): void {
     this.controler.validateAttributes();
@@ -159,6 +162,13 @@ export class OsdsDatagrid implements OdsDatagridAttribute, OdsDatagridEvent {
     // @ts-ignore type not good, doc: https://tabulator.info/docs/5.5/events#select
     this.table?.on('rowSelectionChanged', (rows: Record<string, unknown>[]): void => {
       this.odsRowSelectionChange.emit({ rows });
+    });
+
+    const tabulatorholder = this.el.shadowRoot?.querySelector('.tabulator-tableholder');
+    tabulatorholder?.addEventListener("scroll", () => {
+      if ((tabulatorholder as HTMLElement).offsetHeight + tabulatorholder.scrollTop >= tabulatorholder.scrollHeight) {
+        this.odsBottomScroll.emit();
+      }
     });
   }
 

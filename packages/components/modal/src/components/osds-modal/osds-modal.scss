@@ -35,7 +35,10 @@
   }
 
   .wrapper {
+    position: absolute;
     z-index: 1;
+    outline: none;
+    border: none;
     overflow: hidden;
     animation: modal-appear 0.2s ease-in-out;
 

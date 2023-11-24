@@ -8,7 +8,6 @@ import { newSpecPage } from '@stencil/core/testing';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OsdsModal } from './osds-modal';
 
-
 describe('spec:osds-modal', () => {
   const baseAttribute = { color: ODS_THEME_COLOR_INTENT.info, dismissible: true, headline: '', masked: false };
   let page: SpecPage;
@@ -24,7 +23,7 @@ describe('spec:osds-modal', () => {
 
     page = await newSpecPage({
       components: [OsdsModal],
-      html: `<osds-modal ${odsStringAttributes2Str(stringAttributes)}>My Modal</osds-modal>`,
+      html: `<osds-modal ${odsStringAttributes2Str(stringAttributes)}>Modal</osds-modal>`,
     });
 
     root = page.root;

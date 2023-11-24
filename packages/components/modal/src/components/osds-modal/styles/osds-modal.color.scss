@@ -3,12 +3,10 @@
 
 @mixin osds-modal-theme-color-variant-default() {
   @include ods-and-all-hue-foreach-theme-color((
-          color: '800',
-          background-color: '100'
+    color: '800',
+    background-color: '100'
   )) using($colors) {
     @include osds-modal-on-selected-host {
-      // color: map_get($colors, color);
-
       .wrapper {
         .header {
           background-color: map_get($colors, background-color);
@@ -30,6 +28,10 @@
 
     .wrapper {
       background: #fff;
+
+      &::backdrop {
+        opacity: 0;
+      }
     }
   }
 

@@ -17,8 +17,8 @@
         }
 
         .wrapper {
-            margin: var(--ods-size-04);
             border-radius: var(--ods-size-04);
+            padding: 0;
             width: 70%;
             min-width: 50%;
             max-width: clamp(36rem, 70%, 70%);

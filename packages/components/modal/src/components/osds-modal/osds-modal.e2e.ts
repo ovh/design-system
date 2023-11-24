@@ -9,7 +9,7 @@ import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 
 
 describe('e2e:osds-modal', () => {
-  const baseAttribute = { color: ODS_THEME_COLOR_INTENT.info, dismissible: true, headline: '', masked: false };
+  const baseAttribute = { color: ODS_THEME_COLOR_INTENT.info, dismissible: false, headline: '', masked: false };
   let page: E2EPage;
   let el: E2EElement;
 
@@ -23,8 +23,8 @@ describe('e2e:osds-modal', () => {
     el = await page.find('osds-modal');
 
     await page.evaluate(() => {
-      const wrapperElement = document.querySelector('osds-modal')?.shadowRoot?.querySelector('.wrapper') as HTMLElement;
-      wrapperElement.style.setProperty('animation', 'none');
+      const modalElement = document.querySelector('osds-modal')?.shadowRoot?.querySelector('.wrapper') as HTMLDialogElement;
+      modalElement.style.setProperty('animation', 'none');
     });
   }
 
@@ -195,6 +195,8 @@ describe('e2e:osds-modal', () => {
 
   describe('keyboard navigation', () => {
     let outsideButton: E2EElement;
+    let insideModalButton1: E2EElement;
+    let insideModalButton2: E2EElement;
 
     beforeEach(async() => {
       page = await newE2EPage();
@@ -209,23 +211,32 @@ describe('e2e:osds-modal', () => {
       await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
 
       el = await page.find('osds-modal');
-      outsideButton = await page.find('#outsideButton');
-    });
 
-    it('should have inert attribute on outsideButton when modal is active', async() => {
       await el.callMethod('open');
       await page.waitForChanges();
-
-      const inert = outsideButton.getAttribute('inert');
-      expect(inert).not.toBeNull();
+      outsideButton = await page.find('#outsideButton');
+      insideModalButton1 = await page.find('#insideModalButton1');
+      insideModalButton2 = await page.find('#insideModalButton2');
     });
 
-    it('should not have inert attribute on outsideButton when modal is closed', async() => {
+    it('should move focus to first button inside modal on first tab press', async() => {
+      await page.keyboard.press('Tab');
+      await page.waitForChanges();
+
+      const focusedElementId = await page.evaluate(() => document.activeElement?.id);
+      expect(focusedElementId).toBe('insideModalButton1');
+    });
+
+    it('should return focus to the outside button if modal is closed', async() => {
       await el.callMethod('close');
       await page.waitForChanges();
 
-      const inert = outsideButton.getAttribute('inert');
-      expect(inert).toBeNull();
+      await page.click('body');
+      await page.keyboard.press('Tab');
+      await page.waitForChanges();
+
+      const focusedElementId = await page.evaluate(() => document.activeElement?.id);
+      expect(focusedElementId).toBe('outsideButton');
     });
   });
 });

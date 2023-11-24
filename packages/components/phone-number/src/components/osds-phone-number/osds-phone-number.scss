@@ -8,6 +8,17 @@
 $phone-number-input-width: 236px;
 
 .phone-number {
+  &__input {
+    flex: auto;
+    width: $phone-number-input-width;
+
+    &--not-first {
+      border-left-width: 0;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+
   &__select {
     --ods-size-select-border-radius-bottom-right: 0;
     --ods-size-select-border-radius-top-right: 0;
@@ -29,20 +40,9 @@ $phone-number-input-width: 236px;
         width: 24px;
       }
     }
-  }
-
-  &__input {
-    flex: auto;
-    width: $phone-number-input-width;
-
-    &--not-first {
-      border-left-width: 0;
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
+    
+    &.opened + .phone-number__input {
+      border-bottom-right-radius: 0;
     }
-  }
-
-  &.opened + .phone-number__input {
-    border-bottom-right-radius: 0;
   }
 }

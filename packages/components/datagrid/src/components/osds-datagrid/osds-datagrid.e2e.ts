@@ -195,4 +195,17 @@ describe('e2e:osds-datagrid', () => {
     expect(columns?.[0].innerText).toContain('Name');
     expect(columns?.[1].innerText).toContain('Firstname');
   });
+
+  it('should update rows', async() => {
+    await setup({ attributes: {
+      columns: JSON.stringify([{ field: 'name', title: 'Name' }, { field: 'firstname', title: 'Firstname' }]),
+      hasHideableColumns: false,
+      rows: JSON.stringify([{ firstname: 'Simpson', name: 'Homer' }]),
+    } });
+    el.setProperty('rows', JSON.stringify([{ firstname: 'Simpson', name: 'Homer' }, { firstname: 'Simpson', name: 'Marge' }]));
+    await page.waitForChanges();
+
+    const rows = JSON.parse(await el.getProperty('rows'));
+    expect(rows).toHaveLength(2);
+  });
 });

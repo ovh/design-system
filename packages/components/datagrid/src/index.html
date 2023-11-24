@@ -18,10 +18,10 @@
 
   <style>
     :root {
-      --ods-menu-position: absolute;
-      --ods-select-position: absolute;
-      --ods-popover-position: absolute;
-      --ods-tooltip-position: absolute;
+      --ods-menu-position: static;
+      --ods-select-position: static;
+      --ods-popover-position: static;
+      --ods-tooltip-position: static;
     }
   </style>
 </head>
@@ -66,7 +66,13 @@
     const datagrid = document.getElementById('datagridFormatter');
     const button = document.getElementById('buttonDatagrid');
     button.addEventListener('click', () => {
-      datagrid.isSelectable = !datagrid.isSelectable;
+      datagrid.rows = [{
+        firstname: `firstname1`,
+        name: `name1`,
+      }, {
+        firstname: `firstname2`,
+        name: `name2`,
+      }];
     });
     datagrid.addEventListener('odsSortChange', (data) => console.log('odsSortChange', data));
     datagrid.addEventListener('odsRowSelectedChange', (data) => console.log('odsRowSelectedChange', data))

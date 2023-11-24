@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-component-icon",
-  "version": "16.4.0",
+  "version": "16.5.0",
   "description": "ODS Icon component",
   "author": "OVH SAS",
   "license": "Apache-2.0",
@@ -34,13 +34,13 @@
     "FIXME_test:e2e:ci:screenshot:update": "stencil test --config stencil.config.ts --e2e --ci --screenshot --update-screenshot --passWithNoTests"
   },
   "dependencies": {
-    "@ovhcloud/ods-common-core": "16.4.0",
-    "@ovhcloud/ods-common-stencil": "16.4.0",
-    "@ovhcloud/ods-common-theming": "16.4.0"
+    "@ovhcloud/ods-common-core": "16.5.0",
+    "@ovhcloud/ods-common-stencil": "16.5.0",
+    "@ovhcloud/ods-common-theming": "16.5.0"
   },
   "devDependencies": {
-    "@ovhcloud/ods-common-scripts": "16.4.0",
-    "@ovhcloud/ods-common-testing": "16.4.0",
-    "@ovhcloud/ods-stencil-dev": "16.4.0"
+    "@ovhcloud/ods-common-scripts": "16.5.0",
+    "@ovhcloud/ods-common-testing": "16.5.0",
+    "@ovhcloud/ods-stencil-dev": "16.5.0"
   }
 }

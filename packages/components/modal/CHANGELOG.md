@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [16.5.0](https://ovh.github.io/design-system/v16.5.0/?path=/docs/design-system-changelog--page) (2023-11-24)
+[compare](https://github.com/ovh/design-system/compare/v16.4.0...v16.5.0)
+
+### Bug Fixes
+
+* **modal:** switch to dialog element ([#290](https://github.com/ovh/design-system/issues/290)) ([92900be](https://github.com/ovh/design-system/commit/92900be0a01aa4dbc4b474c20404ffa72975ab7a))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

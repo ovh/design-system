@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-component-skeleton-vue",
-  "version": "16.4.0",
+  "version": "16.5.0",
   "private": true,
   "description": "Vue specific wrapper for ods",
   "keywords": [],
@@ -19,12 +19,12 @@
     "dist/"
   ],
   "dependencies": {
-    "@ovhcloud/ods-component-skeleton": "16.4.0"
+    "@ovhcloud/ods-component-skeleton": "16.5.0"
   },
   "peerDependencies": {
     "vue": ">=3"
   },
   "devDependencies": {
-    "@ovhcloud/ods-vue-dev": "16.4.0"
+    "@ovhcloud/ods-vue-dev": "16.5.0"
   }
 }

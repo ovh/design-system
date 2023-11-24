@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [16.5.0](https://ovh.github.io/design-system/v16.5.0/?path=/docs/design-system-changelog--page) (2023-11-24)
+[compare](https://github.com/ovh/design-system/compare/v16.4.0...v16.5.0)
+
+### Bug Fixes
+
+* **phone-number:** flag height  ([3cc09b9](https://github.com/ovh/design-system/commit/3cc09b900816d9fe8484196986f8d069207dc4f5))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

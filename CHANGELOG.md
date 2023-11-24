@@ -8,6 +8,23 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [16.5.0](https://ovh.github.io/design-system/v16.5.0/?path=/docs/design-system-changelog--page) (2023-11-24)
+[compare](https://github.com/ovh/design-system/compare/v16.4.0...v16.5.0)
+
+### Bug Fixes
+
+* **datagrid:** row change & storybook ([#288](https://github.com/ovh/design-system/issues/288)) ([1bb506e](https://github.com/ovh/design-system/commit/1bb506eec9f33101258214eca00e94211d300283))
+* **modal:** switch to dialog element ([#290](https://github.com/ovh/design-system/issues/290)) ([92900be](https://github.com/ovh/design-system/commit/92900be0a01aa4dbc4b474c20404ffa72975ab7a))
+* **phone-number:** flag height  ([3cc09b9](https://github.com/ovh/design-system/commit/3cc09b900816d9fe8484196986f8d069207dc4f5))
+* **select:** observable for label change ([#284](https://github.com/ovh/design-system/issues/284)) ([272075b](https://github.com/ovh/design-system/commit/272075bed0008b96a3623eb6cbb0f64f98d168ff))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [16.4.0](https://ovh.github.io/design-system/v16.4.0/?path=/docs/design-system-changelog--page) (2023-11-16)
 [compare](https://github.com/ovh/design-system/compare/v16.3.2...v16.4.0)
 

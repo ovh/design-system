@@ -165,7 +165,7 @@ export class OsdsDatagrid implements OdsDatagridAttribute, OdsDatagridEvent {
     });
 
     const tabulatorholder = this.el.shadowRoot?.querySelector('.tabulator-tableholder');
-    tabulatorholder?.addEventListener("scroll", () => {
+    tabulatorholder?.addEventListener('scroll', () => {
       if ((tabulatorholder as HTMLElement).offsetHeight + tabulatorholder.scrollTop >= tabulatorholder.scrollHeight) {
         this.odsBottomScroll.emit();
       }

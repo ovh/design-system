@@ -62,7 +62,7 @@ interface OdsCommonFieldAttribute {
   /** Type of the input field */
   type?: ODS_INPUT_TYPE;
   /** Type of the input field */
-  value?: OdsInputValue;
+  value?: OdsInputValue | string | Date | HTMLInputElement['value'];
 }
 
 export type {

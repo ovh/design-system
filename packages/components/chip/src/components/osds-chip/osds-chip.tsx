@@ -1,25 +1,23 @@
 import type { ODS_CHIP_SIZE } from './constants/chip-size';
 import type { ODS_CHIP_VARIANT } from './constants/chip-variant';
 import type { OdsChipAttribute } from './interfaces/attributes';
-
-import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+import type { OdsChipEvent } from './interfaces/events';
+import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+import type { EventEmitter } from '@stencil/core';
 import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
-import { Component, Element, Host, Prop, h } from '@stencil/core';
-
-
+import { Component, Element, Event, Host, Listen, Prop, h } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsChipController } from './core/controller';
-
 
 /**
  * @slot (unnamed) - Chip content
  */
 @Component({
-  tag: 'osds-chip',
-  styleUrl: 'osds-chip.scss',
   shadow: true,
+  styleUrl: 'osds-chip.scss',
+  tag: 'osds-chip',
 })
-export class OsdsChip implements OdsChipAttribute {
+export class OsdsChip implements OdsChipAttribute, OdsChipEvent {
   controller: OdsChipController = new OdsChipController(this);
   @Element() el!: HTMLElement;
 
@@ -47,6 +45,17 @@ export class OsdsChip implements OdsChipAttribute {
   /** @see OdsChipAttributes.variant */
   @Prop({ reflect: true }) public variant?: ODS_CHIP_VARIANT = DEFAULT_ATTRIBUTE.variant;
 
+  /** @see OdsChipEvents.odsChipRemoval */
+  @Event() odsChipRemoval!: EventEmitter<void>;
+
+  @Listen('keydown', { capture: true })
+  handleKeyDown(event: KeyboardEvent): void {
+    const { key } = event;
+    if (key === 'Enter' || key === ' ') {
+      this.onRemoval();
+    }
+  }
+
   /**
    * @see OdsChipBehavior.beforeRender
    */
@@ -58,7 +67,15 @@ export class OsdsChip implements OdsChipAttribute {
     this.beforeRender();
   }
 
-  render() {
+  emitRemoval(): void {
+    this.removable && this.odsChipRemoval.emit();
+  }
+
+  onRemoval(): void {
+    this.emitRemoval();
+  }
+
+  render(): JSX.Element {
     const { color, contrasted, removable, selectable } = this;
     const isSelectable = selectable || removable;
 
@@ -71,7 +88,8 @@ export class OsdsChip implements OdsChipAttribute {
               ? <osds-icon color={color}
                 contrasted={contrasted}
                 name={ODS_ICON_NAME.CLOSE}
-                size={ODS_ICON_SIZE.xxs}>
+                size={ODS_ICON_SIZE.xxs}
+                onClick={(): void => this.onRemoval()}>
               </osds-icon> : ''
           }
         </span>

@@ -141,6 +141,55 @@ describe('spec:osds-chip', () => {
     });
   });
 
+  describe('events', () => {
+    it('should have an odsChipRemoval event', async() => {
+      await setup();
+      expect(instance.odsChipRemoval).toBeTruthy();
+    });
+
+    it('should call onRemoval on Enter or Space key press', async () => {
+      await setup();
+      const mockEventEnter = new KeyboardEvent('keydown', { key: 'Enter' });
+      const mockEventSpace = new KeyboardEvent('keydown', { key: ' ' });
+
+      jest.spyOn(instance, 'onRemoval');
+
+      root?.dispatchEvent(mockEventEnter);
+      expect(instance.onRemoval).toHaveBeenCalledTimes(1);
+
+      root?.dispatchEvent(mockEventSpace);
+      expect(instance.onRemoval).toHaveBeenCalledTimes(2);
+    });
+
+
+    it('should not emit odsChipRemoval event when not removable', async () => {
+      await setup({ attributes: { removable: false } });
+
+      jest.spyOn(instance.odsChipRemoval, 'emit');
+
+      instance.emitRemoval();
+      expect(instance.odsChipRemoval.emit).not.toHaveBeenCalled();
+    });
+
+    it('should emit odsChipRemoval event when removable', async () => {
+      await setup({ attributes: { removable: true } });
+
+      jest.spyOn(instance.odsChipRemoval, 'emit');
+
+      instance.emitRemoval();
+      expect(instance.odsChipRemoval.emit).toHaveBeenCalled();
+    });
+
+    it('should render correctly based on removable and selectable props', async () => {
+      await setup({ attributes: { removable: true, selectable: false } });
+      expect(root).toMatchSnapshot();
+
+      await setup({ attributes: { removable: false, selectable: true } });
+      expect(root).toMatchSnapshot();
+    });
+
+  });
+
   describe('controller', () => {
     it('should call controller.validateAttributes', async() => {
       await setup();

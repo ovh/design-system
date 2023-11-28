@@ -5547,6 +5547,7 @@ __metadata:
     "@ovhcloud/ods-component-icon": 16.5.0
     "@ovhcloud/ods-component-input": 16.5.0
     "@ovhcloud/ods-component-link": 16.5.0
+    "@ovhcloud/ods-component-medium": 16.5.0
     "@ovhcloud/ods-component-menu": 16.5.0
     "@ovhcloud/ods-component-message": 16.5.0
     "@ovhcloud/ods-component-modal": 16.5.0
@@ -5558,6 +5559,7 @@ __metadata:
     "@ovhcloud/ods-component-quantity": 16.5.0
     "@ovhcloud/ods-component-radio": 16.5.0
     "@ovhcloud/ods-component-radio-button": 16.5.0
+    "@ovhcloud/ods-component-range": 16.5.0
     "@ovhcloud/ods-component-search-bar": 16.5.0
     "@ovhcloud/ods-component-select": 16.5.0
     "@ovhcloud/ods-component-skeleton": 16.5.0
@@ -5567,6 +5569,7 @@ __metadata:
     "@ovhcloud/ods-component-text": 16.5.0
     "@ovhcloud/ods-component-textarea": 16.5.0
     "@ovhcloud/ods-component-tile": 16.5.0
+    "@ovhcloud/ods-component-toggle": 16.5.0
     "@ovhcloud/ods-component-tooltip": 16.5.0
     "@ovhcloud/ods-dev": 16.5.0
   languageName: unknown

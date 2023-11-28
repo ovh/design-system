@@ -99,6 +99,7 @@ const Template = (args: any) => {
     <style>
       #alignment {
         display: flex;
+        height: 100vh;
         flex-wrap: wrap;
       }
     </style>

@@ -1,52 +1,52 @@
-import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
-import { ODS_RADIO_BUTTON_SIZE, ODS_RADIO_BUTTON_SIZES } from '@ovhcloud/ods-components';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+import { ODS_RADIO_BUTTON_SIZE } from '@ovhcloud/ods-components';
 import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-radio-button';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-import { createComponentTable, extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
+import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 
 defineCustomElement();
 
 /* Default story parameters  */
 const storyParams = {
-  checked: {
-    category: 'General',
-    defaultValue: false,
-  },
-  checking: {
-    category: 'General',
-    defaultValue: false,
-  },
   color: {
     category: 'General',
-    defaultValue: ODS_THEME_COLOR_INTENT.default,
-    options: ODS_THEME_COLOR_INTENTS,
+    defaultValue: ODS_THEME_COLOR_INTENT.primary,
+    options: [ODS_THEME_COLOR_INTENT.default, ODS_THEME_COLOR_INTENT.primary, ODS_THEME_COLOR_INTENT.error],
     control: { type: 'select' },
   },
   size: {
     category: 'General',
-    defaultValue: ODS_RADIO_BUTTON_SIZE.md,
+    defaultValue: ODS_RADIO_BUTTON_SIZE.sm,
     options: ODS_RADIO_BUTTON_SIZES,
     control: { type: 'select' },
   },
+  checked: {
+    category: 'General',
+    defaultValue: true,
+  },
   start: {
     category: 'Slot',
-    defaultValue: 'Left input',
+    defaultValue: '',
   },
   end: {
     category: 'Slot',
-    defaultValue: 'Right input',
+    defaultValue: '<osds-text color="text" level="body" size="500">Radio Button</osds-text>',
   },
   disabled: {
     category: 'Misc',
     defaultValue: false,
   },
+  checking: {
+    category: 'Development',
+    defaultValue: DEFAULT_ATTRIBUTE.checking,
+  },
   interactive: {
-    category: 'Misc',
+    category: 'Development',
     defaultValue: false,
   },
   hasFocus: {
-    category: 'Misc',
+    category: 'Development',
     defaultValue: false,
   },
 };
@@ -58,40 +58,28 @@ export default {
 };
 
 /* Default */
-const OsdsRadioButtonDefault = (args) => html`
+const TemplateDefault = (args: any) => html`
   <osds-radio-button ...=${getTagAttributes(args)}>
     <span slot='start'>${unsafeHTML(args.start)}</span>
     <span slot='end'>${unsafeHTML(args.end)}</span>
   </osds-radio-button>
 `;
-const TemplateDefault = (args) => OsdsRadioButtonDefault(args);
+
 export const Default = TemplateDefault.bind({});
+// @ts-ignore
 Default.args = {
   ...extractStoryParams(storyParams),
 };
 
-/* RadioWrapper */
-const OsdsRadioButtonRadioWrapper = (args) => html`
-  <h1 style='font-size: 1.3rem; font-family: "Source Sans Pro"; font-style: italic'>
-    <a href=${parent.location.href.replace(parent.location.search, '?path=/story/radio--default')}>Radio</a> Meta component adds behavior to this Radio Button
-  </h1>
-  <osds-radio value="radio-a">
-    <osds-radio-button ...=${getTagAttributes(args)}>
-      <span slot='start'>${unsafeHTML(args.start)}</span>
-      <span slot='end'>${unsafeHTML(args.end)}</span>
-    </osds-radio-button>
-  </osds-radio>
-`;
-const TemplateRadioWrapper = (args) => OsdsRadioButtonRadioWrapper(args);
-export const RadioWrapper = TemplateRadioWrapper.bind({});
-RadioWrapper.args = {
-  ...extractStoryParams(storyParams),
-};
-/* RadioWrapper */
-const OsdsRadioButtonRadioGroupWrapper = (args) => html`
-  <h1 style='font-size: 1.3rem; font-family: "Source Sans Pro"; font-style: italic'>
-    <a href=${parent.location.href.replace(parent.location.search, '?path=/story/radio--default')}>Radio</a> and <a href=${parent.location.href.replace(parent.location.search, '?path=/story/radio-group--default')}>Radio Group</a> Meta components adds behavior to these Radio Buttons
-  </h1>
+/* In Radio Group */
+const TemplateInRadioGroup = (args: any) => html`
+  <osds-text level='heading' size='100' color='text'>
+    <osds-link href='?path=/story/radio--default' color='primary'>Radio</osds-link>
+    and
+    <osds-link href='?path=/story/radio-group--default' color='primary'>Radio Group</osds-link>
+    Meta components adds behavior to these Radio Buttons
+  </osds-text>
+  <osds-divider separator></osds-divider>
   <osds-radio-group id="radio-group-a">
     <osds-radio id="radio-A" value="val-tile-A" checked>
       <osds-radio-button ...=${getTagAttributes(args)}>
@@ -107,47 +95,9 @@ const OsdsRadioButtonRadioGroupWrapper = (args) => html`
     </osds-radio>
   </osds-radio-group>
 `;
-const TemplateRadioGroupWrapper = (args) => OsdsRadioButtonRadioGroupWrapper(args);
-export const RadioGroupWrapper = TemplateRadioGroupWrapper.bind({});
-RadioGroupWrapper.args = {
+
+export const InRadioGroup = TemplateInRadioGroup.bind({});
+// @ts-ignore
+InRadioGroup.args = {
   ...extractStoryParams(storyParams),
-};
-
-const defaultTag = 'osds-radio-button';
-const defaultContent = 'Text';
-
-const TemplateAll = () => html`
-<style>
-.table {
-  margin: 1em auto;
-}
-.table-row {
-  display: flex;
-  margin: .5em auto;
-  align-items: center;
-}
-.table-cell {
-  display: inline-flex;
-  width: 6em;
-  align-items: center;
-  justify-content: center;
-}
-</style>
-
-<h1>Sizes & Colors</h1>
-${unsafeHTML(createComponentTable(
-    defaultTag,
-    { size: ODS_RADIO_BUTTON_SIZES },
-    { color: ODS_THEME_COLOR_INTENTS },
-    defaultContent,
-    {
-      checked: true,
-    },
-  ))}
-</div>
-`;
-export const All = TemplateAll.bind({});
-All.parameters = {
-  controls: { hideNoControlsWarning: true },
-  options: { showPanel: false },
 };

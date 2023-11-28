@@ -5,7 +5,7 @@ import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../
 
 defineCustomElement();
 
-/* Default story parameters  */
+/* Demo story parameters  */
 const storyParams = {
   size: {
     category: 'General',
@@ -19,7 +19,7 @@ const storyParams = {
   },
   inline: {
     category: 'Misc',
-    defaultValue: false,
+    defaultValue: true,
   },
 };
 
@@ -30,12 +30,12 @@ export default {
 };
 
 /* Default */
-const TemplateDefault = (args:any) => {
+const TemplateDemo = (args:any) => {
   return html`<osds-spinner ...=${getTagAttributes(args)}></osds-spinner>`;
 };
 
-export const Default = TemplateDefault.bind({});
+export const Demo = TemplateDemo.bind({});
 // @ts-ignore
-Default.args = {
+Demo.args = {
   ...extractStoryParams(storyParams),
 };

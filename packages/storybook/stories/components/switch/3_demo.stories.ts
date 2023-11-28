@@ -1,4 +1,4 @@
-import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_SWITCH_SIZE, ODS_SWITCH_SIZES } from '@ovhcloud/ods-components';
 import { defineCustomElement as defineSwitch } from '@ovhcloud/ods-components/dist/components/osds-switch';
 import { defineCustomElement as defineSwitchItem } from '@ovhcloud/ods-components/dist/components/osds-switch-item';
@@ -12,12 +12,12 @@ import {
 defineSwitch();
 defineSwitchItem();
 
-/* Default story parameters  */
+/* Demo story parameters  */
 const storyParams = {
   color: {
     category: 'General',
-    defaultValue: ODS_THEME_COLOR_INTENT.default,
-    options: ODS_THEME_COLOR_INTENTS,
+    defaultValue: ODS_THEME_COLOR_INTENT.primary,
+    options: [ODS_THEME_COLOR_INTENT.primary],
     control: { type: 'select' },
   },
   size: {
@@ -26,9 +26,16 @@ const storyParams = {
     options: ODS_SWITCH_SIZES,
     control: { type: 'select' },
   },
-  default: {
-    category: 'Slot',
-    defaultValue: '',
+  numberOfOptions: {
+    category: 'General',
+    description: 'Warning: numberOfOptions is not an attribute of Switch. It is purely for Storybook rendering',
+    defaultValue: 3,
+    control: {
+      type: 'range',
+      min: 1,
+      max: 4,
+      step: 1,
+    },
   },
   contrasted: {
     category: 'Misc',
@@ -38,7 +45,6 @@ const storyParams = {
     category: 'Misc',
     defaultValue: false,
   },
-
 };
 
 export default {
@@ -48,17 +54,20 @@ export default {
 };
 
 /* Default */
-const TemplateDefault = (args:any) => {
+const TemplateDemo = ({ ...args }) => {
+  const switchOptions = Array.from({ length: args.numberOfOptions }, (_, i) => i + 1).map((value) => html`
+    <osds-switch-item value="${value}">Value ${value}</osds-switch-item>
+  `);
+
   return html`
     <osds-switch ...=${getTagAttributes(args)}>
-      <osds-switch-item value="1" id="1" checked>Item 1</osds-switch-item>
-      <osds-switch-item value="2" id="2">Item 2</osds-switch-item>
-      <osds-switch-item value="3" id="3">Item 3</osds-switch-item>
+      ${switchOptions}
     </osds-switch>
   `;
 };
-export const Default = TemplateDefault.bind({});
+
+export const Demo = TemplateDemo.bind({});
 // @ts-ignore
-Default.args = {
+Demo.args = {
   ...extractStoryParams(storyParams),
 };

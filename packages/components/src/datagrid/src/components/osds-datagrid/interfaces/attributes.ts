@@ -21,9 +21,9 @@ interface OdsDatagridAttribute {
    * The key need to be according to the column field
    */
   hideableColumns?: string[];
-  /** The rows can be selectable */
+  /** The rows can be selected */
   isSelectable?: boolean
-  /** Text when the datagrid was no rows */
+  /** Text when the datagrid has no rows */
   noResultLabel?: string;
   /** Height for each row, in pixel */
   rowHeight?: number;

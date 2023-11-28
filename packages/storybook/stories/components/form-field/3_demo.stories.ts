@@ -5,37 +5,31 @@ import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../
 
 defineCustomElement();
 
-/* Default story parameters  */
+/* Demo story parameters  */
 const storyParams = {
-  inline: {
-    category: 'General',
-    defaultValue: false,
-  },
-  error: {
-    category: 'General',
-    defaultValue: '',
-  },
   label: {
     category: 'Slot',
-    defaultValue: `<osds-text level='heading' color="primary">
-  Description
-</osds-text>`,
-  },
-  visualHint: {
-    category: 'Slot',
-    defaultValue: `<osds-text>
-  150/200
-</osds-text>`,
+    defaultValue: '<osds-text level=\'heading\' color="text">Field label</osds-text>',
   },
   input: {
     category: 'Slot',
-    defaultValue: '<osds-input type="text" id="input" value="Just ODS being ahead"></osds-input>',
+    defaultValue: '<osds-input type="text" id="input" placeholder="Input placeholder"></osds-input>',
   },
   helper: {
     category: 'Slot',
-    defaultValue: `<osds-text>
-  Write a few sentences about you
-</osds-text>`,
+    defaultValue: '<osds-text>Field helper</osds-text>',
+  },
+  visualHint: {
+    category: 'Slot',
+    defaultValue: '',
+  },
+  inline: {
+    category: 'Misc',
+    defaultValue: true,
+  },
+  error: {
+    category: 'Misc',
+    defaultValue: '',
   },
 };
 
@@ -46,7 +40,7 @@ export default {
 };
 
 /* Default */
-const TemplateDefault = (args:any) => {
+const TemplateDemo = (args:any) => {
   return html`<osds-form-field ...=${getTagAttributes(args)}>
     <div slot="label">${unsafeHTML(args.label)}</div>
     <div slot="visual-hint">${unsafeHTML(args.visualHint)}</div>
@@ -55,8 +49,8 @@ const TemplateDefault = (args:any) => {
   </osds-form-field>`;
 };
 
-export const Default = TemplateDefault.bind({});
+export const Demo = TemplateDemo.bind({});
 // @ts-ignore
-Default.args = {
+Demo.args = {
   ...extractStoryParams(storyParams),
 };

@@ -1,25 +1,25 @@
 import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
-import { ODS_TEXT_COLOR_INTENT, ODS_TEXT_LEVEL, ODS_TEXT_LEVELS, ODS_TEXT_SIZE, ODS_TEXT_SIZES } from '@ovhcloud/ods-components';
+import { ODS_TEXT_LEVEL, ODS_TEXT_LEVELS, ODS_TEXT_SIZE, ODS_TEXT_SIZES } from '@ovhcloud/ods-components';
 import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-text';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-import { createComponentTable, extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
+import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 
 defineCustomElement();
 
 const textContent = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.';
 
-/* Default story parameters  */
+/* Demo story parameters  */
 const storyParams = {
   color: {
     category: 'General',
-    defaultValue: ODS_TEXT_COLOR_INTENT.default,
+    defaultValue: ODS_THEME_COLOR_INTENT.text,
     options: ODS_THEME_COLOR_INTENTS,
     control: { type: 'select' },
   },
   size: {
     category: 'General',
-    defaultValue: ODS_TEXT_SIZE._100,
+    defaultValue: ODS_TEXT_SIZE._400,
     options: ODS_TEXT_SIZES,
     control: { type: 'select' },
   },
@@ -50,72 +50,13 @@ export default {
 };
 
 /* Default */
-const TemplateDefault = (args:any) => html`
+const TemplateDemo = (args:any) => html`
   <osds-text ...=${getTagAttributes(args)}>
     ${unsafeHTML(args.textContent)}
   </osds-text>
 `;
-export const Default = TemplateDefault.bind({});
+export const Demo = TemplateDemo.bind({});
 // @ts-ignore
-Default.args = {
+Demo.args = {
   ...extractStoryParams(storyParams),
-};
-
-const defaultTag = 'osds-text';
-const defaultContent = '<span>Text</span>';
-
-const TemplateAll = () => html`
-<style>
-.table {
-  margin: 1em auto;
-}
-.table-row {
-  display: flex;
-  margin: .5em auto;
-  align-items: start;
-}
-.table-cell {
-  display: inline-flex;
-  align-items: center;
-  justify-content: start;
-  min-width: 6em;
-  width: 100%;
-}
-.table-row > .table-cell:first-of-type {
-  width: fit-content;
-  min-width: 4em;
-}
-</style>
-
-<h1>Sizes & Levels</h1>
-${unsafeHTML(createComponentTable(
-    defaultTag,
-    { size: ODS_TEXT_SIZES },
-    { level: ODS_TEXT_LEVELS },
-    defaultContent,
-  ))}
-<h1>Levels & Colors</h1>
-${unsafeHTML(createComponentTable(
-    defaultTag,
-    { level: ODS_TEXT_LEVELS },
-    { color: ODS_THEME_COLOR_INTENTS },
-    defaultContent,
-  ))}
-
-<div style='background: #666; padding: 1em; margin: -0.3em -0.8em; color: white'>
-  <h1>Size & Contrasted Levels</h1>
-  ${unsafeHTML(createComponentTable(
-    defaultTag,
-    { size: ODS_TEXT_SIZES },
-    { level: ODS_TEXT_LEVELS },
-    defaultContent,
-    { contrasted: true },
-  ))}
-</div>
-`;
-export const All = TemplateAll.bind({});
-// @ts-ignore
-All.parameters = {
-  controls: { hideNoControlsWarning: true },
-  options: { showPanel: false },
 };

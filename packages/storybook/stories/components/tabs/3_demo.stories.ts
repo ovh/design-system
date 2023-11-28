@@ -1,4 +1,3 @@
-import { ODS_TABS_SIZE, ODS_TABS_SIZES } from '@ovhcloud/ods-components';
 import { defineCustomElement as defineTabs } from '@ovhcloud/ods-components/dist/components/osds-tabs';
 import { defineCustomElement as defineTabBar } from '@ovhcloud/ods-components/dist/components/osds-tab-bar';
 import { defineCustomElement as defineTabBarItem } from '@ovhcloud/ods-components/dist/components/osds-tab-bar-item';
@@ -14,26 +13,27 @@ defineTabPanel();
 /* Default story parameters  */
 const storyParams = {
   panel: {
-    category: 'osds-tabs',
+    category: 'General',
     options: {
-      rise: 'rise',
-      advance: 'advance',
-      scale: 'scale',
-      high: 'high',
-      storage: 'storage',
-      game: 'game',
+      tab1: 'tab1',
+      tab2: 'tab2',
     },
     control: { type: 'select' },
-    defaultValue: 'rise',
+    defaultValue: 'tab2',
   },
-  size: {
-    category: 'osds-tabs',
-    options: ODS_TABS_SIZES,
-    control: { type: 'select' },
-    defaultValue: ODS_TABS_SIZE.md,
+  numberOfPanels: {
+    category: 'General',
+    description: 'Warning: numberOfPanels is not an attribute of Tabs. It is purely for Storybook rendering',
+    defaultValue: 4,
+    control: {
+      type: 'range',
+      min: 2,
+      max: 6,
+      step: 1,
+    },
   },
   contrasted: {
-    category: 'osds-tabs',
+    category: 'Misc',
     defaultValue: false,
   },
 };
@@ -44,35 +44,29 @@ export default {
   argTypes: extractArgTypes(storyParams)
 };
 
-/* Story options */
-
 /* Default */
-const TemplateDefault = (args: any) => html`
+const TemplateDemo = ({ numberOfPanels, ...args }) => {
+  const tabItems = Array.from({ length: numberOfPanels }, (_, i) => i + 1).map((value) => html`
+    <osds-tab-bar-item panel='tab${value}'>Tab ${value}</osds-tab-bar-item>
+  `);
+
+  const tabPanels = Array.from({ length: numberOfPanels }, (_, i) => i + 1).map((value) => html`
+    <osds-tab-panel name='tab${value}'>Content for Tab ${value}</osds-tab-panel>
+  `);
+
+  return html`
   <div>
-    <osds-tabs ...='${getTagAttributes(args)}' panel='rise'>
+    <osds-tabs ...='${getTagAttributes(args)}' panel='${args.panel}'>
       <osds-tab-bar slot='top'>
-        <osds-tab-bar-item panel='rise'>Rise</osds-tab-bar-item>
-        <osds-tab-bar-item panel='advance'>Advance</osds-tab-bar-item>
-        <osds-tab-bar-item panel='scale'> Scale</osds-tab-bar-item>
-        <osds-tab-bar-item panel='high'>High Grade</osds-tab-bar-item>
-        <osds-tab-bar-item panel='storage'>Storage</osds-tab-bar-item>
-        <osds-tab-bar-item panel='game'>Game</osds-tab-bar-item>
+        ${tabItems}
       </osds-tab-bar>
-      <osds-tab-panel name='rise'>Les serveurs les plus abordables, adaptés à la plupart des usages.</osds-tab-panel>
-      <osds-tab-panel name='advance'>Des serveurs polyvalents pour les petites et moyennes entreprises.</osds-tab-panel>
-      <osds-tab-panel name='scale'>Des serveurs conçus pour les infrastructures complexes à haute résilience.
-      </osds-tab-panel>
-      <osds-tab-panel name='high'>Les serveurs les plus puissants, optimisés pour les charges critiques.
-      </osds-tab-panel>
-      <osds-tab-panel name='storage'>Des serveurs pour l'archivage, la sauvegarde ou le stockage distribué.
-      </osds-tab-panel>
-      <osds-tab-panel name='game'>Des serveurs optimisés pour les jeux vidéo et les plateformes de streaming.
-      </osds-tab-panel>
+      ${tabPanels}
     </osds-tabs>
   </div>
 `;
-export const WebComponent = TemplateDefault.bind({});
+}
+export const Demo = TemplateDemo.bind({});
 // @ts-ignore
-WebComponent.args = {
+Demo.args = {
   ...extractStoryParams(storyParams),
 };

@@ -35,7 +35,7 @@ export const Default = TemplateDefault.bind({});
 // @ts-ignore
 Default.args = {
   ...extractStoryParams(storyParams),
-};const TemplateTrigger = (args: any) => html`
+};const TemplateWithTrigger = (args: any) => html`
   <script>
     var elem = document.getElementById('collapsible');
     elem.addEventListener('odsCollapsibleToggle', event => {
@@ -54,8 +54,8 @@ Default.args = {
     ${unsafeHTML(args.collapsibleContent)}
   </osds-collapsible>
 `;
-export const Trigger = TemplateTrigger.bind({});
+export const WithTrigger = TemplateWithTrigger.bind({});
 // @ts-ignore
-Trigger.args = {
+WithTrigger.args = {
   ...extractStoryParams(storyParams),
 };

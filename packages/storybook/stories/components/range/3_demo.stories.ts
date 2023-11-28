@@ -1,8 +1,7 @@
-import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-range';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-import { RangePlay } from './demo.validation.stories';
 import {
   extractArgTypes,
   extractStoryParams,
@@ -15,9 +14,13 @@ defineCustomElement();
 const storyParams = {
   color: {
     category: 'General',
-    defaultValue: ODS_THEME_COLOR_INTENT.default,
-    options: ODS_THEME_COLOR_INTENTS,
+    defaultValue: ODS_THEME_COLOR_INTENT.primary,
+    options: [ODS_THEME_COLOR_INTENT.primary, ODS_THEME_COLOR_INTENT.error],
     control: { type: 'select' },
+  },
+  value: {
+    category: 'General',
+    defaultValue: 30,
   },
   min: {
     category: 'General',
@@ -31,17 +34,13 @@ const storyParams = {
     category: 'General',
     defaultValue: 1,
   },
-  value: {
-    category: 'General',
-    defaultValue: 30,
-  },
   startBound: {
     category: 'Slot',
-    defaultValue: '',
+    defaultValue: '<osds-text color="text" level="body" size="400">Minimum</osds-text>',
   },
   endBound: {
     category: 'Slot',
-    defaultValue: '',
+    defaultValue: '<osds-text color="text" level="body" size="400">Maximum</osds-text>',
   },
   disabled: {
     category: 'Misc',
@@ -52,7 +51,7 @@ const storyParams = {
     defaultValue: false,
   },
   forbiddenValues: {
-    category: 'Misc',
+    category: 'Development',
     defaultValue: [],
     control: { type: 'array' },
   },
@@ -61,6 +60,7 @@ const storyParams = {
 export default {
   title: 'ODS Components/Form/Range [atom]/Demo',
   id: 'range',
+  argTypes: extractArgTypes(storyParams),
 };
 
 // A range example
@@ -78,33 +78,15 @@ const TemplateDefault = (args: any) => {
   `;
 };
 export const Default = TemplateDefault.bind({});
+// @ts-ignore
 Default.args = {
   ...extractStoryParams(storyParams),
 };
-Default.argTypes = extractArgTypes(storyParams);
 
 // dual range
 export const Dual = TemplateDefault.bind({});
 const dualParams = { ...storyParams, value: { category: 'General', defaultValue: [20, 50], control: { type: 'array' } } };
+// @ts-ignore
 Dual.args = {
   ...extractStoryParams(dualParams),
 };
-Dual.argTypes = extractArgTypes(dualParams);
-
-/* Range Validation */
-const OsdsRangeValidation = (args) => html`
-  <article id="example-1">
-    <osds-range id="range"  ...=${getTagAttributes(args)}>
-    </osds-range>
-    <span class="error-msg forbidden-value">Forbidden value</span>
-    <span class="error-msg value-missing">Value required please</span>
-    <span class="error-msg step-mismatch">Please insert a value by step 2, starting from 1</span>
-    <span class="error-msg valid">Not valid</span>
-  </article>
-`;
-const TemplateValidation = (args) => OsdsRangeValidation(args);
-export const Validation = TemplateValidation.bind({});
-Validation.args = {
-  ...extractStoryParams(storyParams),
-};
-Validation.play = RangePlay;

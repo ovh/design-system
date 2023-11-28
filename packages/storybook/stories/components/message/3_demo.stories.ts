@@ -1,18 +1,18 @@
-import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-message';
-import { ODS_MESSAGE_TYPES } from '@ovhcloud/ods-components';
+import { ODS_MESSAGE_TYPES, ODS_ICON_NAME } from '@ovhcloud/ods-components';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-import { createComponentTable, extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
+import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 
 defineCustomElement();
 
-/* Default story parameters  */
+/* Demo story parameters  */
 const storyParams = {
   color: {
     category: 'General',
-    defaultValue: ODS_THEME_COLOR_INTENT.default,
-    options: ODS_THEME_COLOR_INTENTS,
+    defaultValue: ODS_THEME_COLOR_INTENT.primary,
+    options: [ODS_THEME_COLOR_INTENT.primary, ODS_THEME_COLOR_INTENT.success, ODS_THEME_COLOR_INTENT.warning, ODS_THEME_COLOR_INTENT.error],
     control: { type: 'select' },
   },
   type: {
@@ -27,6 +27,8 @@ const storyParams = {
   icon: {
     category: 'Misc',
     defaultValue: '',
+    control: { type: 'select' },
+    options: ODS_ICON_NAME,
   },
   removable: {
     category: 'Misc',
@@ -49,49 +51,15 @@ export default {
 };
 
 /* Default */
-const TemplateDefault = (args: any) => {
+const TemplateDemo = (args: any) => {
   return html`
     <osds-message ...=${getTagAttributes(args)}>
       ${unsafeHTML(args.messageContent)}
     </osds-message>
   `;
 };
-export const Default = TemplateDefault.bind({});
-Default.args = {
+export const Demo = TemplateDemo.bind({});
+// @ts-ignore
+Demo.args = {
   ...extractStoryParams(storyParams),
-};
-
-const defaultTag = 'osds-message';
-const defaultContent = 'Text';
-
-const TemplateAll = () => html`
-<style>
-.table {
-  margin: 1em auto;
-}
-.table-row {
-  display: flex;
-  margin: 1em auto;
-  align-items: center;
-}
-.table-cell {
-  display: inline-flex;
-  width: 7em;
-  align-items: center;
-  justify-content: center;
-}
-</style>
-
-<h1>Types & Removable</h1>
-${unsafeHTML(createComponentTable(
-    defaultTag,
-    { type: ODS_MESSAGE_TYPES },
-    { removable: [false, true] },
-    defaultContent,
-  ))}`;
-
-export const All = TemplateAll.bind({});
-All.parameters = {
-  controls: { hideNoControlsWarning: true },
-  options: { showPanel: false },
 };

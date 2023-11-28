@@ -67,7 +67,8 @@ const TemplateRadioButton = (args: any) => html`
   ${unsafeHTML(args.slotJs)}
 
   <div>
-    <h3>Radio-group with radio buttons</h3>
+    <osds-text level='heading' size='100' color='text'>Radio-group with radio buttons</osds-text>
+    <osds-divider separator></osds-divider>
     <div>
       <osds-radio-group id="radio-group-a"
                         ...=${getTagAttributes(args)}>

@@ -5,7 +5,7 @@ import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../
 
 defineCustomElement();
 
-/* Default story parameters  */
+/* Demo story parameters  */
 const storyParams = {
   alt: {
     category: 'General',
@@ -34,7 +34,7 @@ export default {
 };
 
 /* Default */
-const TemplateDefault = (args: any) => {
+const TemplateDemo = (args: any) => {
   return html`
     <osds-medium ...=${getTagAttributes(args)}>
       ${unsafeHTML(args.mediumContent)}
@@ -42,7 +42,8 @@ const TemplateDefault = (args: any) => {
   `;
 };
 
-export const Default = TemplateDefault.bind({});
-Default.args = {
+export const Demo = TemplateDemo.bind({});
+// @ts-ignore
+Demo.args = {
   ...extractStoryParams(storyParams),
 };

@@ -5,7 +5,7 @@ import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../
 
 defineCustomElement();
 
-/* Default story parameters  */
+/* Demo story parameters  */
 const storyParams = {
   slot: {
     category: 'Slot',
@@ -37,7 +37,7 @@ export default {
 };
 
 /* Default */
-const TemplateDefault = (args: any) => {
+const TemplateDemo = (args: any) => {
   const slot = args.slot;
   delete args.slot;
 
@@ -47,8 +47,8 @@ const TemplateDefault = (args: any) => {
     </osds-accordion>
   `;
 };
-export const Default = TemplateDefault.bind({});
+export const Demo = TemplateDemo.bind({});
 // @ts-ignore
-Default.args = {
+Demo.args = {
   ...extractStoryParams(storyParams),
 };

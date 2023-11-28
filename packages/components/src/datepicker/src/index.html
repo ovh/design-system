@@ -26,6 +26,8 @@
 <osds-datepicker placeholder="dd/mm/yyyy" disabled clearable inline></osds-datepicker>
 <div style="width:100%; height: 50px; background: rgb(220, 220, 220); margin: 20px 0;"></div>
 <osds-datepicker placeholder="dd/mm/yyyy" inline locale="fr"></osds-datepicker>
+<div style="width:100%; height: 50px; background: rgb(220, 220, 220); margin: 20px 0;"></div>
+<osds-datepicker placeholder="dd/mm/yyyy" id="datepicker2"></osds-datepicker>
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
@@ -33,8 +35,13 @@
     datepicker.value = new Date('2024-01-15');
     datepicker.maxDate = new Date('2024-01-20');
 
+    const datepicker2 = document.querySelector('#datepicker2');
+    datepicker2.datesDisabled = [];
+    datepicker2.datesDisabled.push(new Date('2023-12-25'));
+
     setTimeout(() => {
-      console.log(datepicker.value)
+      console.log(datepicker.value);
+      console.log(datepicker2.datesDisabled);
     }, 500);
   });
 </script>

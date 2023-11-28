@@ -1,21 +1,28 @@
 import { Ods, odsSetup } from '@ovhcloud/ods-common-core';
 import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-flag';
 import { html } from 'lit-html';
-import { getTagAttributes } from '../../../core/componentHTMLUtils';
+import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 
 odsSetup();
 Ods.instance().assetPath('flags/');
 
 defineCustomElement();
 
+const storyParams = {
+  iso: {
+    category: 'General',
+    defaultValue: 'fr',
+  },
+  lazy: {
+    category: 'Misc',
+    defaultValue: true,
+  },
+};
+
 export default {
   title: 'ODS Components/Content/Flag [atom]/Demo',
   id: 'flag',
-};
-
-const storyParams = {
-  iso: 'fr',
-  lazy: true,
+  argTypes: extractArgTypes(storyParams)
 };
 
 // A flag example
@@ -41,7 +48,7 @@ Default.parameters = {
 };
 // @ts-ignore
 Default.args = {
-  ...storyParams,
+  ...extractStoryParams(storyParams),
 };
 
 const Play = async() => {
@@ -51,5 +58,4 @@ const Play = async() => {
 // @ts-ignore
 Default.play = Play;
 
-export { CustomPath } from './demo.stories.custom-path';
 export { All } from './demo.stories.all';

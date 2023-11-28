@@ -1,9 +1,9 @@
-import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import { ODS_SELECT_SIZE, ODS_SELECT_SIZES } from '@ovhcloud/ods-components';
 import { defineCustomElement as defineSelect } from '@ovhcloud/ods-components/dist/components/osds-select';
 import { defineCustomElement as defineSelectGroup } from '@ovhcloud/ods-components/dist/components/osds-select-group';
 import { defineCustomElement as defineSelectOption } from '@ovhcloud/ods-components/dist/components/osds-select-option';
+import { positionParams, applyContentText } from '../../../core/commonPositionStoryParams';
 import { html } from 'lit-html';
+import { styleMap } from 'lit-html/directives/style-map';
 import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 
 defineSelect();
@@ -11,17 +11,16 @@ defineSelectGroup();
 defineSelectOption();
 
 const storyParams = {
-  color: {
+  numberOfOptions: {
     category: 'General',
-    defaultValue: ODS_THEME_COLOR_INTENT.primary,
-    options: [ODS_THEME_COLOR_INTENT.primary],
-    control: { type: 'select' },
-  },
-  size: {
-    category: 'General',
-    defaultValue: ODS_SELECT_SIZE.md,
-    options: ODS_SELECT_SIZES,
-    control: { type: 'select' },
+    description: 'Warning: numberOfOptions is not an attribute of Select. It is purely for Storybook rendering',
+    defaultValue: 3,
+    control: {
+      type: 'range',
+      min: 1,
+      max: 10,
+      step: 1,
+    },
   },
   disabled: {
     category: 'Misc',
@@ -29,10 +28,10 @@ const storyParams = {
   },
   inline: {
     category: 'Misc',
-    defaultValue: false,
+    defaultValue: true,
   },
   required: {
-    category: 'Misc',
+    category: 'Development',
     defaultValue: false,
   },
 };
@@ -44,37 +43,77 @@ export default {
 };
 
 /* Default */
-const TemplateDefault = (args: any) => html`
+const TemplateDefault = ({ ...args }) => {
+  const selectOptions = Array.from({ length: args.numberOfOptions }, (_, i) => i + 1).map((value) => html`
+    <osds-select-option value="${value}">Value ${value}</osds-select-option>
+  `);
+
+  return html`
   <osds-select ...=${getTagAttributes(args)}>
-    <span slot="placeholder">Select Country</span>
-    <osds-select-group>Group title</osds-select-group>
-    <osds-select-option value="1">Value 1</osds-select-option>
-    <osds-select-option value="2">Value 2</osds-select-option>
-    <osds-select-option value="3">Value 3</osds-select-option>
+    <span slot="placeholder">Select option</span>
+    ${selectOptions}
   </osds-select>
 `;
+}
+
+
 export const Default = TemplateDefault.bind({});
 // @ts-ignore
 Default.args = {
   ...extractStoryParams(storyParams),
 };
 
-/* Multi group */
-const TemplateMultiGroup = (args: any) => html`
+/* With group */
+const TemplateWithGroup = ({ ...args }) => {
+  const selectOptions = Array.from({ length: args.numberOfOptions }, (_, i) => i + 1).map((value) => html`
+    <osds-select-option value="${value}">Value ${value}</osds-select-option>
+  `);
+
+  return html`
   <osds-select ...=${getTagAttributes(args)}>
-    <span slot="placeholder">Select Country</span>
-    <osds-select-group>Europa</osds-select-group>
-    <osds-select-option value="1">Value 1</osds-select-option>
-    <osds-select-option value="2">Value 2</osds-select-option>
-    <osds-select-option value="3">Value 3</osds-select-option>
-    <osds-select-group>North America</osds-select-group>
-    <osds-select-option value="4">Value 4</osds-select-option>
-    <osds-select-option value="5">Value 5</osds-select-option>
-    <osds-select-option value="6">Value 6</osds-select-option>
+    <span slot="placeholder">Select option</span>
+    <osds-select-group>Group name</osds-select-group>
+    ${selectOptions}
   </osds-select>
 `;
-export const MultiGroup = TemplateMultiGroup.bind({});
+}
+
+export const WithGroup = TemplateWithGroup.bind({});
 // @ts-ignore
-MultiGroup.args = {
+WithGroup.args = {
   ...extractStoryParams(storyParams),
 };
+
+
+/* Position */
+const TemplatePosition = ({ ...args }) => {
+  const selectOptions = Array.from({ length: args.numberOfOptions }, (_, i) => i + 1).map((value) => html`
+    <osds-select-option value="${value}">Value ${value}</osds-select-option>
+  `);
+
+  return html`
+  <style>
+    #alignment {
+      display: flex;
+      height: 100vh;
+      flex-wrap: wrap;
+    }
+  </style>
+
+  <div id='alignment' style=${styleMap({ placeContent: args.changeAlignment })}>
+    <p>${args.applyContent ? applyContentText : ''}</p>
+    <osds-select ...=${getTagAttributes(args)}, dir="${args.applyDirection}">
+      <span slot="placeholder">Select option</span>
+      ${selectOptions}
+    </osds-select>
+    <p>${args.applyContent ? applyContentText : ''}</p>
+  </div>
+`;
+}
+export const Position = TemplatePosition.bind({});
+// @ts-ignore
+Position.args = {
+  ...extractStoryParams({ ...storyParams, ...positionParams }),
+};
+// @ts-ignore
+Position.argTypes = extractArgTypes(positionParams);

@@ -5,8 +5,43 @@ import GenericStyle from '@ovhcloud/ods-common-core/docs/generic-style.mdx';
 ## Usage
 
 ### Default
-<osds-password>Password</osds-password>
+<osds-password></osds-password>
 
 ```html
-<osds-password>Password</osds-password>
+<osds-password></osds-password>
+```
+
+### Clearable
+<osds-password inline clearable="true"></osds-password>
+
+```html
+<osds-password inline clearable="true"></osds-password>
+```
+
+### Masked value
+<osds-password inline masked="true" value="password"></osds-password>
+
+```html
+<osds-password inline masked="true" value="password"></osds-password>
+```
+
+### Unmasked value
+<osds-password inline masked="false" value="password"></osds-password>
+
+```html
+<osds-password inline masked="false" value="password"></osds-password>
+```
+
+### Loading
+<osds-password inline loading="true"></osds-password>
+
+```html
+<osds-password inline loading="false"></osds-password>
+```
+
+### Loading and disabled
+<osds-password inline loading="true" disabled="true"></osds-password>
+
+```html
+<osds-password inline loading="true" disabled="true"></osds-password>
 ```

@@ -1,9 +1,8 @@
-import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-toggle';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 import {
-  createComponentTable,
   extractArgTypes,
   extractStoryParams,
   getTagAttributes,
@@ -11,12 +10,12 @@ import {
 
 defineCustomElement();
 
-/* Default story parameters  */
+/* Demo story parameters  */
 const storyParams = {
   color: {
     category: 'General',
     defaultValue: ODS_THEME_COLOR_INTENT.primary,
-    options: ODS_THEME_COLOR_INTENTS,
+    options: [ODS_THEME_COLOR_INTENT.default, ODS_THEME_COLOR_INTENT.primary],
     control: { type: 'select' },
   },
   start: {
@@ -25,7 +24,7 @@ const storyParams = {
   },
   end: {
     category: 'Slot',
-    defaultValue: '',
+    defaultValue: '<osds-text style="padding-left: 8px;" color="text" level="body" size="500">Toggle</osds-text>',
   },
   contrasted: {
     category: 'Misc',
@@ -35,16 +34,16 @@ const storyParams = {
     category: 'Misc',
     defaultValue: false,
   },
-  interactive: {
-    category: 'Misc',
-    defaultValue: true,
-  },
   checked: {
     category: 'Misc',
     defaultValue: false,
   },
+  interactive: {
+    category: 'Development',
+    defaultValue: true,
+  },
   checking: {
-    category: 'Misc',
+    category: 'Development',
     defaultValue: false,
   },
 };
@@ -55,7 +54,7 @@ export default {
 };
 
 // A tile example
-const TemplateDefault = (args: any) => {
+const TemplateDemo = (args: any) => {
   if (args.flex === 0) {
     delete args.flex;
   }
@@ -68,78 +67,10 @@ const TemplateDefault = (args: any) => {
     </div>
   `;
 };
-export const Default = TemplateDefault.bind({});
-Default.args = {
+export const Demo = TemplateDemo.bind({});
+// @ts-ignore
+Demo.args = {
   ...extractStoryParams(storyParams),
 };
-Default.argTypes = extractArgTypes(storyParams);
-
-const defaultTag = 'osds-toggle';
-
-const TemplateAll = (args: any) => html`
-  <style>
-    .table {
-      margin: 1em auto;
-    }
-
-    .table-row {
-      display: flex;
-      margin: .5em auto;
-      align-items: center;
-    }
-
-    .table-cell {
-      display: inline-flex;
-      width: 8rem;
-      align-items: center;
-      justify-content: center;
-    }
-  </style>
-
-  <h1>Default</h1>
-  ${unsafeHTML(createComponentTable(
-    defaultTag,
-    { a: [''] },
-    { color: ODS_THEME_COLOR_INTENTS },
-    '',
-    { ...(args.checking ? { checking: args.checking } : {}) },
-  ))}
-  <h1>Checked</h1>
-  ${unsafeHTML(createComponentTable(
-    defaultTag,
-    { a: [''] },
-    { color: ODS_THEME_COLOR_INTENTS },
-    '',
-    { checked: true, ...(args.checking ? { checking: args.checking } : {}) },
-  ))}
-  <h1>Disabled</h1>
-  ${unsafeHTML(createComponentTable(
-    defaultTag,
-    { a: [''] },
-    { color: ODS_THEME_COLOR_INTENTS },
-    '',
-    { disabled: true, ...(args.checking ? { checking: args.checking } : {}) },
-  ))}
-  <h1>Disabled checked</h1>
-  ${unsafeHTML(createComponentTable(
-    defaultTag,
-    { checked: [true] },
-    { color: ODS_THEME_COLOR_INTENTS },
-    '',
-    { checked: true, disabled: true, ...(args.checking ? { checking: args.checking } : {}) },
-  ))}
-`;
-
-
-const storyParamsAll = {
-  checking: {
-    category: 'Misc',
-    defaultValue: false,
-  },
-};
-
-export const All = TemplateAll.bind({});
-All.args = {
-  ...extractStoryParams(storyParamsAll),
-};
-All.argTypes = extractArgTypes(storyParamsAll);
+// @ts-ignore
+Demo.argTypes = extractArgTypes(storyParams);

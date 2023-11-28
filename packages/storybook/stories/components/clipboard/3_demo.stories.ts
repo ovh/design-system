@@ -6,17 +6,17 @@ defineCustomElement();
 
 /* Default story parameters  */
 const storyParams = {
-  disabled: {
-    category: 'General',
-    defaultValue: false,
-  },
-  inline: {
-    category: 'General',
-    defaultValue: false,
-  },
   value: {
     category: 'General',
     defaultValue: '',
+  },
+  disabled: {
+    category: 'Misc',
+    defaultValue: false,
+  },
+  inline: {
+    category: 'Misc',
+    defaultValue: false,
   },
 };
 
@@ -26,7 +26,7 @@ export default {
 };
 
 /* Default */
-const TemplateDefault = (args:any) => {
+const TemplateDemo = (args:any) => {
   return html`
     <osds-clipboard ...=${getTagAttributes(args)} @keydown=${(e: KeyboardEvent) => e.stopPropagation()}>
       Clipboard
@@ -35,8 +35,8 @@ const TemplateDefault = (args:any) => {
     </osds-clipboard>
   `;
 };
-export const Default = TemplateDefault.bind({});
+export const Demo = TemplateDemo.bind({});
 // @ts-ignore
-Default.args = {
+Demo.args = {
   ...extractStoryParams(storyParams),
 };

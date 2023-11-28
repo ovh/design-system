@@ -1,4 +1,4 @@
-import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-modal';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
@@ -6,12 +6,12 @@ import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../
 
 defineCustomElement();
 
-/* Default story parameters  */
+/* Demo story parameters  */
 const storyParams = {
   color: {
     category: 'General',
     defaultValue: ODS_THEME_COLOR_INTENT.info,
-    options: ODS_THEME_COLOR_INTENTS,
+    options: [ODS_THEME_COLOR_INTENT.info, ODS_THEME_COLOR_INTENT.success, ODS_THEME_COLOR_INTENT.warning, ODS_THEME_COLOR_INTENT.error],
     control: { type: 'select' },
   },
   dismissible: {
@@ -20,20 +20,20 @@ const storyParams = {
   },
   headline: {
     category: 'General',
-    defaultValue: 'On Vous Héberge ?',
-  },
-  masked: {
-    category: 'General',
-    defaultValue: false,
+    defaultValue: 'Modal Title',
   },
   content: {
     category: 'Slot',
-    defaultValue: '<osds-text color="text">OVHcloud, anciennement OVH, est une entreprise française. Elle pratique initialement de l\'hébergement de serveur, et est un fournisseur d\'accès à Internet (FAI), puis opérateur de télécommunications pour les entreprises. Elle se développe, à la fin des années 2010, dans le cloud computing (informatique en nuage).</osds-text>',
+    defaultValue: '<osds-text color="text">Modal Content</osds-text>',
   },
   actions: {
     category: 'Slot',
-    defaultValue: `<osds-button slot="actions" color="default" href="https://www.ovh.com/fr/" target="_blank">En savoir plus</osds-button>
-<osds-button slot="actions" color="primary" href="https://www.ovh.com/fr/" target="_blank">On m'héberge</osds-button>`,
+    defaultValue: `<osds-button slot="actions" color="primary" variant='stroked'>Cancel</osds-button>
+<osds-button slot="actions" color="primary">OK</osds-button>`,
+  },
+  masked: {
+    category: 'Development',
+    defaultValue: false,
   },
 };
 
@@ -43,18 +43,11 @@ export default {
   argTypes: extractArgTypes(storyParams),
 };
 
-const TemplateDefault = (args: any) => {
+const TemplateDemo = (args: any) => {
   const handleOpenModal = () => {
     const modal = document.querySelector('osds-modal');
     if (modal) {
       modal.open();
-    }
-  };
-
-  const handleCloseModal = () => {
-    const modal = document.querySelector('osds-modal');
-    if (modal) {
-      modal.close();
     }
   };
 
@@ -78,15 +71,19 @@ const TemplateDefault = (args: any) => {
   window.onload = locationChangeTrigger;
 
   return html`
-    <button @click=${handleOpenModal}>Trigger "open()"</button>
-    <button @click=${handleCloseModal}>Trigger "close()"</button>
+    <osds-button style='position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);'
+                 color='primary'
+                 @click=${handleOpenModal}>
+      Trigger "open()"
+    </osds-button>
     ${locationChangeTrigger()}
 
     <osds-modal id="my-modal" ...=${getTagAttributes(args)}> ${unsafeHTML(args.content)} ${unsafeHTML(args.actions)} </osds-modal>
   `;
 };
 
-export const Default = TemplateDefault.bind({});
-Default.args = {
+export const Demo = TemplateDemo.bind({});
+// @ts-ignore
+Demo.args = {
   ...extractStoryParams(storyParams),
 };

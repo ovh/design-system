@@ -1,19 +1,19 @@
 import { OdsHTMLAnchorElementRelList, OdsHTMLAnchorElementTargetList } from '@ovhcloud/ods-common-core';
-import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_BUTTON_SIZE, ODS_BUTTON_SIZES, ODS_BUTTON_TEXT_ALIGN, ODS_BUTTON_TEXT_ALIGNS, ODS_BUTTON_VARIANT, ODS_BUTTON_VARIANTS } from '@ovhcloud/ods-components';
 import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-button';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-import { createComponentTable, extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
+import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 
 defineCustomElement();
 
-/* Default story parameters  */
+/* Demo story parameters  */
 const storyParams = {
   color: {
     category: 'General',
-    defaultValue: ODS_THEME_COLOR_INTENT.default,
-    options: ODS_THEME_COLOR_INTENTS,
+    defaultValue: ODS_THEME_COLOR_INTENT.primary,
+    options: [ODS_THEME_COLOR_INTENT.primary, ODS_THEME_COLOR_INTENT.error],
     control: { type: 'select' },
   },
   size: {
@@ -22,17 +22,33 @@ const storyParams = {
     options: ODS_BUTTON_SIZES,
     control: { type: 'select' },
   },
+  variant: {
+    category: 'General',
+    defaultValue: ODS_BUTTON_VARIANT.flat,
+    options: ODS_BUTTON_VARIANTS,
+    control: { type: 'select' },
+  },
   textAlign: {
     category: 'General',
     defaultValue: ODS_BUTTON_TEXT_ALIGN.center,
     options: ODS_BUTTON_TEXT_ALIGNS,
     control: { type: 'select' },
   },
-  variant: {
-    category: 'General',
-    defaultValue: ODS_BUTTON_VARIANT.flat,
-    options: ODS_BUTTON_VARIANTS,
-    control: { type: 'select' },
+  contrasted: {
+    category: 'Misc',
+    defaultValue: false,
+  },
+  disabled: {
+    category: 'Misc',
+    defaultValue: false,
+  },
+  inline: {
+    category: 'Misc',
+    defaultValue: true,
+  },
+  circle: {
+    category: 'Misc',
+    defaultValue: false,
   },
   start: {
     category: 'Slot',
@@ -46,38 +62,24 @@ const storyParams = {
     category: 'Slot',
     defaultValue: '',
   },
-  contrasted: {
-    category: 'Misc',
-    defaultValue: false,
-  },
-  disabled: {
-    category: 'Misc',
-    defaultValue: false,
-  },
-  inline: {
-    category: 'Misc',
-    defaultValue: false,
-  },
-  circle: {
-    category: 'Misc',
-    defaultValue: false,
-  },
   href: {
-    category: 'Misc',
+    category: 'Development',
     defaultValue: '',
   },
   rel: {
-    category: 'Misc',
+    category: 'Development',
+    defaultValue: '',
     options: OdsHTMLAnchorElementRelList,
     control: { type: 'select' },
   },
   target: {
-    category: 'Misc',
+    category: 'Development',
+    defaultValue: '',
     options: OdsHTMLAnchorElementTargetList,
     control: { type: 'select' },
   },
   download: {
-    category: 'Misc',
+    category: 'Development',
     defaultValue: 'filename',
   },
 };
@@ -91,67 +93,16 @@ export default {
   }
 };
 
-/* Story options */
-
 /* Default */
-const TemplateDefault = (args: any) => html`
+const TemplateDemo = (args: any) => html`
   <osds-button ...=${getTagAttributes(args)}>
     <span slot="start">${unsafeHTML(args.start)}</span>
     ${unsafeHTML(args.buttonContent || 'Button')}
     <span slot="end">${unsafeHTML(args.end)}</span>
   </osds-button>
 `;
-export const Default = TemplateDefault.bind({});
+export const Demo = TemplateDemo.bind({});
 // @ts-ignore
-Default.args = {
+Demo.args = {
   ...extractStoryParams(storyParams),
-};
-
-const defaultTag = 'osds-button';
-const defaultContent = 'Text';
-
-const TemplateAll = () => html`
-  <style>
-    .table {
-      margin: 1em auto;
-    }
-    .table-row {
-      display: flex;
-      margin: 0.5em auto;
-      align-items: center;
-    }
-    .table-cell {
-      display: inline-flex;
-      width: 6em;
-      align-items: center;
-      justify-content: center;
-    }
-  </style>
-
-  <h1>Variants & Colors</h1>
-  ${unsafeHTML(createComponentTable(defaultTag, { variant: ODS_BUTTON_VARIANTS }, { color: ODS_THEME_COLOR_INTENTS }, defaultContent))}
-  <h1>Sizes & Colors</h1>
-  ${unsafeHTML(createComponentTable(defaultTag, { size: ODS_BUTTON_SIZES }, { color: ODS_THEME_COLOR_INTENTS }, defaultContent))}
-  <h1>Sizes & Variants</h1>
-  ${unsafeHTML(createComponentTable(defaultTag, { size: ODS_BUTTON_SIZES }, { variant: ODS_BUTTON_VARIANTS }, defaultContent))}
-  <h1>Disabled Variants & Colors</h1>
-  ${unsafeHTML(createComponentTable(defaultTag, { variant: ODS_BUTTON_VARIANTS }, { color: ODS_THEME_COLOR_INTENTS }, defaultContent, { disabled: true }))}
-  <div style="background: #666; padding: 1em; margin: -0.3em -0.8em; color: white">
-    <h1>Contrasted Variants & Colors</h1>
-    ${unsafeHTML(createComponentTable(defaultTag, { variant: ODS_BUTTON_VARIANTS }, { color: ODS_THEME_COLOR_INTENTS }, defaultContent, { contrasted: true }))}
-    <h1>Disabled and contrasted Variants & Colors</h1>
-    ${unsafeHTML(createComponentTable(defaultTag, { variant: ODS_BUTTON_VARIANTS }, { color: ODS_THEME_COLOR_INTENTS }, defaultContent, { contrasted: true, disabled: true }))}
-  </div>
-  <h1>Circle shape with little icon</h1>
-  ${unsafeHTML(createComponentTable(defaultTag, { variant: [ODS_BUTTON_VARIANTS[2]] }, { color: ODS_THEME_COLOR_INTENTS }, '<osds-icon size=\'xxs\' name="ellipsis-vertical" />', { circle: true }))}
-  <h1>Circle shape with bigger icon</h1>
-  ${unsafeHTML(createComponentTable(defaultTag, { variant: [ODS_BUTTON_VARIANTS[2]] }, { color: ODS_THEME_COLOR_INTENTS }, '<osds-icon size=\'sm\' name="plus" />', { circle: true }))}
-  <h1>Circle shape with text</h1>
-  ${unsafeHTML(createComponentTable(defaultTag, { variant: [ODS_BUTTON_VARIANTS[2]] }, { color: ODS_THEME_COLOR_INTENTS }, '<span>Text</span>', { circle: true }))}
-`;
-export const All = TemplateAll.bind({});
-// @ts-ignore
-All.parameters = {
-  controls: { hideNoControlsWarning: true },
-  options: { showPanel: false },
 };

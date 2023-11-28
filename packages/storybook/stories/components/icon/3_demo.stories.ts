@@ -1,10 +1,9 @@
 import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
-import { ODS_ICON_NAMES, ODS_ICON_SIZE, ODS_ICON_SIZES } from '@ovhcloud/ods-components';
+import { ODS_ICON_NAME, ODS_ICON_NAMES, ODS_ICON_SIZE, ODS_ICON_SIZES } from '@ovhcloud/ods-components';
 import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-icon';
 import { html } from 'lit-html';
 import { repeat } from 'lit-html/directives/repeat';
-import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-import { createComponentTable, extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
+import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 
 defineCustomElement();
 
@@ -12,7 +11,7 @@ defineCustomElement();
 const storyParams = {
   color: {
     category: 'General',
-    defaultValue: ODS_THEME_COLOR_INTENT.default,
+    defaultValue: ODS_THEME_COLOR_INTENT.primary,
     options: ODS_THEME_COLOR_INTENTS,
     control: { type: 'select' },
   },
@@ -22,17 +21,23 @@ const storyParams = {
     options: ODS_ICON_SIZES,
     control: { type: 'select' },
   },
-  ariaName: {
-    category: 'Misc',
-    defaultValue: 'Home icon',
+  name: {
+    category: 'General',
+    defaultValue: 'home',
+    control: { type: 'select' },
+    options: ODS_ICON_NAME,
   },
   contrasted: {
     category: 'Misc',
     defaultValue: false,
   },
-  name: {
-    category: 'Misc',
-    defaultValue: 'home',
+  ariaName: {
+    category: 'Development',
+    defaultValue: 'Home icon',
+  },
+  hoverable: {
+    category: 'Development',
+    defaultValue: false,
   },
 };
 
@@ -54,8 +59,6 @@ export const Default = TemplateDefault.bind({});
 Default.args = {
   ...extractStoryParams(storyParams),
 };
-
-const defaultTag = 'osds-icon';
 
 const iconTemplate = (i:string) => html`
   <span class='table-cell' style='width: 8em; margin: .5em auto'>
@@ -85,16 +88,6 @@ const TemplateAll = () => html`
 <span class='table'>
 ${repeat(ODS_ICON_NAMES, (i) => iconTemplate(i))}
 </span>
-
-<h3>Sizes & Colors</h1>
-${unsafeHTML(createComponentTable(
-    defaultTag,
-    { size: ODS_ICON_SIZES },
-    { color: ODS_THEME_COLOR_INTENTS },
-    '',
-    { name: 'home' },
-  ))}
-</div>
 `;
 export const All = TemplateAll.bind({});
 // @ts-ignore

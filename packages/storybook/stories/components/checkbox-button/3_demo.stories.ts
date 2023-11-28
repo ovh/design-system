@@ -1,10 +1,9 @@
-import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_CHECKBOX_BUTTON_SIZE, ODS_CHECKBOX_BUTTON_SIZES } from '@ovhcloud/ods-components';
 import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-checkbox-button';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 import {
-  createComponentTable,
   extractArgTypes,
   extractStoryParams,
   getTagAttributes,
@@ -14,22 +13,10 @@ defineCustomElement();
 
 /* Default story parameters  */
 const storyParams = {
-  checked: {
-    category: 'General',
-    defaultValue: false,
-  },
-  indeterminate: {
-    category: 'General',
-    defaultValue: false,
-  },
-  checking: {
-    category: 'General',
-    defaultValue: false,
-  },
   color: {
     category: 'General',
-    defaultValue: ODS_THEME_COLOR_INTENT.default,
-    options: ODS_THEME_COLOR_INTENTS,
+    defaultValue: ODS_THEME_COLOR_INTENT.primary,
+    options: [ODS_THEME_COLOR_INTENT.default, ODS_THEME_COLOR_INTENT.primary, ODS_THEME_COLOR_INTENT.error],
     control: { type: 'select' },
   },
   size: {
@@ -38,24 +25,37 @@ const storyParams = {
     options: ODS_CHECKBOX_BUTTON_SIZES,
     control: { type: 'select' },
   },
+  checked: {
+    category: 'General',
+    description: '',
+    defaultValue: false,
+  },
+  indeterminate: {
+    category: 'General',
+    defaultValue: false,
+  },
   start: {
     category: 'Slot',
-    defaultValue: 'Left input',
+    defaultValue: '',
   },
   end: {
     category: 'Slot',
-    defaultValue: 'Right input',
+    defaultValue: '<osds-text color="text" level="body" size="500">Checkbox Button</osds-text>',
   },
   disabled: {
     category: 'Misc',
     defaultValue: false,
   },
-  hasFocus: {
-    category: 'Misc',
+  checking: {
+    category: 'Development',
     defaultValue: false,
   },
   interactive: {
-    category: 'Misc',
+    category: 'Development',
+    defaultValue: false,
+  },
+  hasFocus: {
+    category: 'Development',
     defaultValue: false,
   },
 };
@@ -82,9 +82,11 @@ Default.args = {
 
 /*  Checkbox */
 const OsdsCheckboxButtonCheckboxWrapper = (args: Record< string, unknown>) => html`
-  <h1 style='font-size: 1.3rem; font-family: "Source Sans Pro"; font-style: italic'>
-    <a href=${parent.location.href.replace(parent.location.search, '?path=/story/checkbox--web-component')}>Checkbox</a> Meta component adds behavior to this Checkbox Button
-  </h1>
+  <osds-text level='heading' size='100' color='text'>
+    <osds-link href='?path=/story/checkbox--default' color='primary'>Checkbox</osds-link>
+    Meta component adds behavior to this Checkbox Button
+  </osds-text>
+  <osds-divider separator></osds-divider>
   <osds-checkbox>
       <osds-checkbox-button ...=${getTagAttributes(args)}>
         <span slot='start'>${unsafeHTML(args.start)}</span>
@@ -97,44 +99,4 @@ export const CheckboxWrapper = TemplateCheckboxWrapper.bind({});
 // @ts-ignore
 CheckboxWrapper.args = {
   ...extractStoryParams(storyParams),
-};
-
-const defaultTag = 'osds-checkbox-button';
-const defaultContent = 'Text';
-
-const TemplateAll = () => html`
-<style>
-.table {
-  margin: 1em auto;
-}
-.table-row {
-  display: flex;
-  margin: .5em auto;
-  align-items: center;
-}
-.table-cell {
-  display: inline-flex;
-  width: 6em;
-  align-items: center;
-  justify-content: center;
-}
-</style>
-
-<h1>Sizes & Colors</h1>
-${unsafeHTML(createComponentTable(
-    defaultTag,
-    { size: ODS_CHECKBOX_BUTTON_SIZES },
-    { color: ODS_THEME_COLOR_INTENTS },
-    defaultContent,
-    {
-      checked: true,
-    },
-  ))}
-</div>
-`;
-export const All = TemplateAll.bind({});
-// @ts-ignore
-All.parameters = {
-  controls: { hideNoControlsWarning: true },
-  options: { showPanel: false },
 };

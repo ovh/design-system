@@ -5,12 +5,12 @@ import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../
 
 defineCustomElement();
 
-/* Default story parameters  */
+/* Demo story parameters  */
 const storyParams = {
   value: {
     category: 'Misc',
     control: { type: 'number' },
-    defaultValue: 0,
+    defaultValue: 50,
   },
   max: {
     category: 'Misc',
@@ -19,7 +19,7 @@ const storyParams = {
   },
   end: {
     category: 'Slot',
-    defaultValue: '',
+    defaultValue: '<osds-text style="padding-left: 8px;" color="text">100%</osds-text>',
   },
 };
 
@@ -30,14 +30,15 @@ export default {
 };
 
 /* Default */
-const TemplateDefault = (args:any) => {
+const TemplateDemo = (args:any) => {
   return html`
     <osds-progress-bar ...=${getTagAttributes(args)}>
       <span slot="end">${unsafeHTML(args.end)}</span>
     </osds-progress-bar>
   `;
 };
-export const Default = TemplateDefault.bind({});
-Default.args = {
+export const Demo = TemplateDemo.bind({});
+// @ts-ignore
+Demo.args = {
   ...extractStoryParams(storyParams),
 };

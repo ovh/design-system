@@ -33,8 +33,8 @@ const TemplateDefault = (args:any) => {
     <osds-breadcrumb ...=${getTagAttributes(args)}></osds-breadcrumb>
   `;
 };
-export const Default = TemplateDefault.bind({});
+export const Demo = TemplateDefault.bind({});
 // @ts-ignore
-Default.args = {
+Demo.args = {
   ...extractStoryParams(storyParams),
 };

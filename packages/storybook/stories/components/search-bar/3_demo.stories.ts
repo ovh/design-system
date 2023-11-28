@@ -11,8 +11,8 @@ defineCustomElement();
 /* Default story parameters  */
 const storyParams = {
   placeholder: {
-    category: 'Général',
-    defaultValue: '',
+    category: 'General',
+    defaultValue: 'placeholder',
   },
   contrasted: {
     category: 'Misc',
@@ -30,7 +30,7 @@ const storyParams = {
 
 const selectParams = {
   options: {
-    category: 'Général',
+    category: 'General',
     defaultValue: [
       { label: 'option1', value: '1' },
       { label: 'option2', value: '2' },
@@ -66,8 +66,8 @@ const SelectTemplate = (args:any) => {
     </osds-search-bar>
   `;
 };
-export const Select = SelectTemplate.bind({});
+export const WithCategory = SelectTemplate.bind({});
 // @ts-ignore
-Select.args = {
+WithCategory.args = {
   ...extractStoryParams({ ...storyParams, ...selectParams }),
 };

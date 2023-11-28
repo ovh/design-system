@@ -48,3 +48,41 @@ import GenericStyle from '@ovhcloud/ods-common-core/docs/generic-style.mdx';
 
 ### Disabled
 <DisabledProperty />
+
+### Tile with external click behaviour
+
+```html
+<osds-input type="number" placeholder="Placeholder" min="1" max="4" step="2" color="primary"></osds-input>
+<osds-tile hoverable
+               id="tile-1"
+               onclick="handleTile1Click()"
+               >
+      Click me !
+</osds-tile>
+
+<script>
+  const odsTile = document.querySelector('osds-tile');
+
+  async function handleTile1Click() {
+    logger.log('tile-1 click');
+    // in case of enabled tile, toggle his checked state like a checkbox
+    if (!odsTile.disabled) {
+      odsTile.checked = !odsTile.checked;
+    }
+  }
+
+  handleTile1Click();
+
+  function myAsyncAction({checked, value}) {
+    const max = 1, min = 0, delay = 1000;
+    logger.log('simulate xhr call...', {checked, value});
+    return new Promise(
+      (resolve, reject) => {
+          const isSuccess = Math.floor(Math.random() * (max - min + 1) + min)
+          if (isSuccess) {setTimeout(() => {logger.log('xhr call success');resolve("backend updated")}, delay)}
+          else {setTimeout(() => {logger.log('xhr call failed');reject(new Error("backend failed!"))}, delay)}
+      }
+    );
+  }
+</script>
+```

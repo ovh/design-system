@@ -1,23 +1,18 @@
-import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_TILE_SIZE, ODS_TILE_SIZES, ODS_TILE_VARIANT, ODS_TILE_VARIANTS } from '@ovhcloud/ods-components';
 import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-tile';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-import {
-  createComponentTable,
-  extractArgTypes,
-  extractStoryParams,
-  getTagAttributes,
-} from '../../../core/componentHTMLUtils';
+import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 
 defineCustomElement();
 
-/* Default story parameters  */
+/* Demo story parameters  */
 const storyParams = {
   color: {
     category: 'General',
-    defaultValue: ODS_THEME_COLOR_INTENT.default,
-    options: ODS_THEME_COLOR_INTENTS,
+    defaultValue: ODS_THEME_COLOR_INTENT.primary,
+    options: [ODS_THEME_COLOR_INTENT.default, ODS_THEME_COLOR_INTENT.primary],
     control: { type: 'select' },
   },
   size: {
@@ -38,7 +33,7 @@ const storyParams = {
   },
   tileContent: {
     category: 'Slot',
-    defaultValue: '',
+    defaultValue: 'Tile',
   },
   end: {
     category: 'Slot',
@@ -56,24 +51,24 @@ const storyParams = {
     category: 'Misc',
     defaultValue: true,
   },
-  hoverable: {
-    category: 'Misc',
-    defaultValue: false,
-  },
   checked: {
     category: 'Misc',
     defaultValue: false,
   },
   checking: {
-    category: 'Misc',
+    category: 'Development',
     defaultValue: false,
   },
   loading: {
-    category: 'Misc',
+    category: 'Development',
+    defaultValue: false,
+  },
+  hoverable: {
+    category: 'Development',
     defaultValue: false,
   },
   hasFocus: {
-    category: 'Misc',
+    category: 'Development',
     defaultValue: false,
   },
 };
@@ -84,9 +79,9 @@ export default {
 };
 
 // A tile example
-const TemplateDefault = (args: any) => {
-  if (args.flex === 0) {
-    delete args.flex;
+const TemplateDemo = (args: any) => {
+  if (args.inline === 0) {
+    delete args.inline;
   }
   return html`
     <div class='tile-container'>
@@ -98,78 +93,10 @@ const TemplateDefault = (args: any) => {
     </div>
   `;
 };
-export const Default = TemplateDefault.bind({});
-Default.args = {
+export const Demo = TemplateDemo.bind({});
+// @ts-ignore
+Demo.args = {
   ...extractStoryParams(storyParams),
 };
-Default.argTypes = extractArgTypes(storyParams);
-
-const defaultTag = 'osds-tile';
-const defaultContent = 'Lorem ipsum dolor sit amet';
-
-const TemplateAll = (args: any) => html`
-  <style>
-    .table {
-      margin: 1em auto;
-    }
-
-    .table-row {
-      display: flex;
-      margin: .5em auto;
-      align-items: center;
-    }
-
-    .table-cell {
-      display: inline-flex;
-      width: 8rem;
-      align-items: center;
-      justify-content: center;
-    }
-  </style>
-
-  <h1>Sizes & Colors</h1>
-  ${unsafeHTML(createComponentTable(
-    defaultTag,
-    { size: ODS_TILE_VARIANTS },
-    { color: ODS_THEME_COLOR_INTENTS },
-    defaultContent,
-    { ...(args.checking ? { checking: args.checking } : {}) },
-  ))}
-  <h1>hoverable Sizes & Colors</h1>
-  ${unsafeHTML(createComponentTable(
-    defaultTag,
-    { size: ODS_TILE_SIZES },
-    { color: ODS_THEME_COLOR_INTENTS },
-    defaultContent,
-    { hoverable: true, ...(args.checking ? { checking: args.checking } : {}) },
-  ))}
-  <h1>checked Sizes & Colors</h1>
-  ${unsafeHTML(createComponentTable(
-    defaultTag,
-    { size: ODS_TILE_SIZES },
-    { color: ODS_THEME_COLOR_INTENTS },
-    defaultContent,
-    { hoverable: true, checked: true, ...(args.checking ? { checking: args.checking } : {}) },
-  ))}
-  <h1>Disabled Sizes & Colors</h1>
-  ${unsafeHTML(createComponentTable(
-    defaultTag,
-    { size: ODS_TILE_SIZES },
-    { color: ODS_THEME_COLOR_INTENTS },
-    defaultContent,
-    { disabled: true, ...(args.checking ? { checking: args.checking } : {}) },
-  ))}
-`;const storyParamsAll = {
-  checking: {
-    category: 'Misc',
-    defaultValue: true,
-  },
-};
-
-export const All = TemplateAll.bind({});
-All.args = {
-  ...extractStoryParams(storyParamsAll),
-};
-All.argTypes = extractArgTypes(storyParamsAll);
-
-export { UpdateStrategy } from './demo.stories.update-strategy';
+// @ts-ignore
+Demo.argTypes = extractArgTypes(storyParams);

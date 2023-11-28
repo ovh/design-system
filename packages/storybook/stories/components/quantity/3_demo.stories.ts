@@ -4,7 +4,7 @@ import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../
 
 defineCustomElement();
 
-/* Default story parameters  */
+/* Demo story parameters  */
 const storyParams = {
   disabled: {
     category: 'Misc',
@@ -18,8 +18,7 @@ export default {
   argTypes: extractArgTypes(storyParams)
 };
 
-// A quantity example using osds-components
-const TemplateDefault = (args: any) => html`
+const TemplateDemo = (args: any) => html`
   <osds-quantity ...=${getTagAttributes(args)}>
     <osds-button slot="minus" size="sm" color="primary">
       <osds-icon size="sm" contrasted name="minus"></osds-icon>
@@ -30,22 +29,8 @@ const TemplateDefault = (args: any) => html`
     </osds-button>
   </osds-quantity>
 `;
-export const Default = TemplateDefault.bind({});
+export const Demo = TemplateDemo.bind({});
 // @ts-ignore
-Default.args = {
-  ...extractStoryParams(storyParams),
-};
-
-// A quantity example using vanilla elements
-const TemplateVariant = (args: any) => html`
-  <osds-quantity ...=${getTagAttributes(args)}>
-    <button slot="minus">-</button>
-    <input style="width: 45px" type="number" min="1" max="10" step="1" value="1"/>
-    <button slot="plus">+</button>
-  </osds-quantity>
-`;
-export const Variant = TemplateVariant.bind({});
-// @ts-ignore
-Variant.args = {
+Demo.args = {
   ...extractStoryParams(storyParams),
 };

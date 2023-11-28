@@ -1,6 +1,7 @@
 import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-phone-number';
 import { html } from 'lit-html';
 import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
+import { ODS_COUNTRY_ISO_CODES, ODS_LOCALE } from '@ovhcloud/ods-common-core';
 
 defineCustomElement();
 
@@ -22,14 +23,12 @@ const storyParams = {
     category: 'Misc',
     defaultValue: false,
   },
-  locale: {
-    category: 'Général',
-    control: { type: 'text' },
-    defaultValue: 'fr',
-  },
   isoCode: {
     category: 'Général',
-    control: { type: 'text' },
+    control: {
+      type: 'select',
+      options: ODS_COUNTRY_ISO_CODES,
+    },
     defaultValue: 'fr',
   },
 };
@@ -37,23 +36,22 @@ const storyParams = {
 const countriesParams = {
   countries: {
     category: 'Général',
-    defaultValue: [
-      'fr', 'pt', 'gb',
-    ],
-  },
-};
-
-const allCountriesParams = {
-  countries: {
-    category: 'Général',
     defaultValue: 'all',
+  },
+  locale: {
+    category: 'Général',
+    control: {
+      type: 'select',
+      options: ODS_LOCALE,
+    },
+    defaultValue: 'fr',
   },
 };
 
 export default {
   title: 'ODS Components/Form/Phone Number [molecule]/Demo',
   id: 'phone-number',
-  argTypes: extractArgTypes({...storyParams, ...countriesParams })
+  argTypes: extractArgTypes({ ...storyParams })
 };
 
 /* Default */
@@ -67,14 +65,10 @@ Default.args = {
   ...(extractStoryParams(storyParams)),
 };
 
-export const Countries = OsdsPhoneNumberDefault.bind({});
+export const CountryIndicator = OsdsPhoneNumberDefault.bind({});
 // @ts-ignore
-Countries.args = {
-  ...extractStoryParams({ ...storyParams, ...countriesParams }),
+CountryIndicator.args = {
+  ...extractStoryParams({ ...countriesParams, ...storyParams }),
 };
-
-export const AllCountries = OsdsPhoneNumberDefault.bind({});
 // @ts-ignore
-AllCountries.args = {
-  ...extractStoryParams({ ...storyParams, ...allCountriesParams }),
-};
+CountryIndicator.argTypes = extractArgTypes(countriesParams);

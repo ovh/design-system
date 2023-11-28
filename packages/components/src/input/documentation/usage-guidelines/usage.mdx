@@ -1,12 +1,15 @@
 import GenericStyle from '@ovhcloud/ods-common-core/docs/generic-style.mdx';
-import SizeProperty from './properties/usage.size.mdx';
-import NumberProperty from './properties/usage.number.mdx';
+import BasicProperty from './properties/usage.basic.mdx';
 import ColorProperty from './properties/usage.color.mdx';
 import DisabledProperty from './properties/usage.disabled.mdx';
-import BasicProperty from './properties/usage.basic.mdx';
 import ErrorProperty from './properties/usage.error.mdx';
+import InlineProperty from './properties/usage.inline.mdx';
+import LoadingProperty from './properties/usage.loading.mdx';
+import NumberProperty from './properties/usage.number.mdx';
+import SizeProperty from './properties/usage.size.mdx';
 import Events from './events-methods/usage.events.mdx';
 import Methods from './events-methods/usage.methods.mdx';
+
 
 <GenericStyle />
 
@@ -18,12 +21,14 @@ import Methods from './events-methods/usage.methods.mdx';
 ```html
 <osds-input></osds-input>
 ```
+### Inline
+<InlineProperty />
 
-### Bacic properties (name, placeholder, label, ariaLabel, ariaLabelledby)
+### Basic properties
 <BasicProperty />
 
-### Error state
-<ErrorProperty />
+### Color
+<ColorProperty />
 
 ### Sizes
 <SizeProperty />
@@ -31,8 +36,11 @@ import Methods from './events-methods/usage.methods.mdx';
 ### Disabled
 <DisabledProperty />
 
-### Color
-<ColorProperty />
+### Error state
+<ErrorProperty />
+
+### Loading state
+<LoadingProperty />
 
 ### Number Input
 <NumberProperty />

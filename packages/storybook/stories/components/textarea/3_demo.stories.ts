@@ -1,18 +1,11 @@
-import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
 import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-textarea';
 import { html } from 'lit-html';
 import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 
 defineCustomElement();
 
-/* Default story parameters  */
+/* Demo story parameters  */
 const storyParams = {
-  color: {
-    category: 'General',
-    defaultValue: ODS_THEME_COLOR_INTENT.text,
-    options: ODS_THEME_COLOR_INTENTS,
-    control: { type: 'select' },
-  },
   defaultValue: {
     category: 'General',
     defaultValue: '',
@@ -21,9 +14,9 @@ const storyParams = {
     category: 'General',
     defaultValue: '',
   },
-  inline: {
-    category: 'Misc',
-    defaultValue: false,
+  placeholder: {
+    category: 'General',
+    defaultValue: 'placeholder',
   },
   contrasted: {
     category: 'Misc',
@@ -33,13 +26,9 @@ const storyParams = {
     category: 'Misc',
     defaultValue: false,
   },
-  name: {
+  inline: {
     category: 'Misc',
-    defaultValue: 'myTextArea',
-  },
-  placeholder: {
-    category: 'Misc',
-    defaultValue: 'placeholder',
+    defaultValue: true,
   },
   error: {
     category: 'Misc',
@@ -49,13 +38,17 @@ const storyParams = {
     category: 'Misc',
     defaultValue: true,
   },
+  name: {
+    category: 'Development',
+    defaultValue: 'myTextArea',
+  },
   cols: {
-    category: 'Misc',
+    category: 'Development',
     defaultValue: undefined,
     control: { type: 'number' },
   },
   rows: {
-    category: 'Misc',
+    category: 'Development',
     defaultValue: undefined,
     control: { type: 'number' },
   },
@@ -68,12 +61,12 @@ export default {
 };
 
 /* Default */
-const TemplateDefault = (args: any) => html`
+const TemplateDemo = (args: any) => html`
   <osds-textarea ...=${getTagAttributes(args)}>
   </osds-textarea>
 `;
-export const Default = TemplateDefault.bind({});
+export const Demo = TemplateDemo.bind({});
 // @ts-ignore
-Default.args = {
+Demo.args = {
   ...extractStoryParams(storyParams),
 };

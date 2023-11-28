@@ -5,21 +5,21 @@ import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../
 
 defineCustomElement();
 
-/* Default story parameters  */
+/* Demo story parameters  */
 const storyParams = {
-  inline: {
-    category: 'Misc',
-    defaultValue: false,
-  },
-  randomized: {
-    category: 'Misc',
-    defaultValue: false,
-  },
   size: {
     category: 'General',
     defaultValue: ODS_SKELETON_SIZE.md,
     options: ODS_SKELETON_SIZES,
     control: { type: 'select' },
+  },
+  inline: {
+    category: 'Misc',
+    defaultValue: true,
+  },
+  randomized: {
+    category: 'Misc',
+    defaultValue: false,
   },
 };
 
@@ -31,11 +31,48 @@ export default {
 
 
 // A skeleton example
-const TemplateDefault = (args) => html`
+const TemplateDefault = (args: any) => html`
   <osds-skeleton ...=${getTagAttributes(args)}>
   </osds-skeleton>
 `;
 export const Default = TemplateDefault.bind({});
+// @ts-ignore
 Default.args = {
   ...extractStoryParams(storyParams),
+};
+
+// Skeleton paragraph example
+const TemplateParagraph = () => html`
+  <osds-skeleton inline size="xs"></osds-skeleton>
+  <osds-skeleton inline size="md"></osds-skeleton>
+  <osds-skeleton inline size="sm"></osds-skeleton>
+  <osds-skeleton inline size="lg"></osds-skeleton>
+  <osds-skeleton inline size="xs"></osds-skeleton>
+  <osds-skeleton inline size="md"></osds-skeleton>
+  <osds-skeleton inline size="sm"></osds-skeleton>
+  <osds-skeleton inline size="lg"></osds-skeleton>
+  <osds-skeleton inline size="xs"></osds-skeleton>
+  <osds-skeleton inline size="md"></osds-skeleton>
+  <osds-skeleton inline size="sm"></osds-skeleton>
+  <osds-skeleton inline size="lg"></osds-skeleton>
+  <osds-skeleton inline size="xs"></osds-skeleton>
+  <osds-skeleton inline size="md"></osds-skeleton>
+  <osds-skeleton inline size="sm"></osds-skeleton>
+  <osds-skeleton inline size="lg"></osds-skeleton>
+  <osds-skeleton inline size="sm"></osds-skeleton>
+  <osds-skeleton inline size="lg"></osds-skeleton>
+  <osds-skeleton inline size="xs"></osds-skeleton>
+  <osds-skeleton inline size="md"></osds-skeleton>
+  <osds-skeleton inline size="sm"></osds-skeleton>
+  <osds-skeleton inline size="lg"></osds-skeleton>
+  <osds-skeleton inline size="xs"></osds-skeleton>
+  <osds-skeleton inline size="md"></osds-skeleton>
+  <osds-skeleton inline size="sm"></osds-skeleton>
+  <osds-skeleton inline size="lg"></osds-skeleton>
+`;
+export const Paragraph = TemplateParagraph.bind({});
+// @ts-ignore
+Paragraph.parameters = {
+  controls: { hideNoControlsWarning: true },
+  options: { showPanel: false },
 };

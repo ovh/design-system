@@ -36,13 +36,16 @@ const defaultStoryParams = {
       } },
     ],
   },
+  rows: {
+    category: 'General',
+    defaultValue: [
+      { dob: '15/11/1996', firstname: 'Antoine', gender: 'male', lastname: 'Dupont' },
+      { dob: '12/03/1999', firstname: 'Janja', gender: 'female', lastname: 'Garnbret' },
+    ],
+  },
   hasHideableColumns: {
     category: 'General',
     defaultValue: true,
-  },
-  height: {
-    category: 'General',
-    defaultValue: 600,
   },
   isSelectable: {
     category: 'General',
@@ -52,16 +55,13 @@ const defaultStoryParams = {
     category: 'General',
     defaultValue: 'Aucun résultat',
   },
-  rowHeight: {
-    category: 'General',
-    defaultValue: 52,
+  height: {
+    category: 'Size',
+    defaultValue: 600,
   },
-  rows: {
-    category: 'General',
-    defaultValue: [
-      { dob: '15/11/1996', firstname: 'Antoine', gender: 'male', lastname: 'Dupont' },
-      { dob: '12/03/1999', firstname: 'Janja', gender: 'female', lastname: 'Garnbret' },
-    ],
+  rowHeight: {
+    category: 'Size',
+    defaultValue: 52,
   },
 };
 
@@ -71,9 +71,9 @@ const rowsLarge = {
 };
 
 export default {
-  argTypes: extractArgTypes(defaultStoryParams),
+  title: 'ODS Components/Layout/Datagrid [organism]/Demo',
   id: 'datagrid',
-  title: 'ODS Components/Layout/Datagrid [organism]/Web Component',
+  argTypes: extractArgTypes(defaultStoryParams),
 };
 
 const TemplateDefault = (args: Record<string, unknown>) => html`

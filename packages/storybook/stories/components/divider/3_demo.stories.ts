@@ -1,4 +1,4 @@
-import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_DIVIDER_SIZE, ODS_DIVIDER_SIZES } from '@ovhcloud/ods-components';
 import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-divider';
 import { html } from 'lit-html';
@@ -6,12 +6,12 @@ import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../
 
 defineCustomElement();
 
-/* Default story parameters  */
+/* Demo story parameters  */
 const storyParams = {
   color: {
     category: 'General',
-    defaultValue: ODS_THEME_COLOR_INTENT.default,
-    options: ODS_THEME_COLOR_INTENTS,
+    defaultValue: ODS_THEME_COLOR_INTENT.primary,
+    options: [ODS_THEME_COLOR_INTENT.default, ODS_THEME_COLOR_INTENT.primary],
     control: { type: 'select' },
   },
   size: {
@@ -26,7 +26,7 @@ const storyParams = {
   },
   separator: {
     category: 'Misc',
-    defaultValue: false,
+    defaultValue: true,
   },
 };
 
@@ -39,14 +39,31 @@ export default {
 const example = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.';
 
 // A divider example
-const TemplateDefault = (args: any) => html`
+const TemplateDemo = (args: any) => html`
   <div style='color: #ccc'>${example}</div>
   <osds-divider ...=${getTagAttributes(args)}>
   </osds-divider>
   <div style='color: #ccc'>${example}</div>
 `;
-export const Default = TemplateDefault.bind({});
+export const Demo = TemplateDemo.bind({});
 // @ts-ignore
-Default.args = {
+Demo.parameters = {
+  viewport: {
+    viewports: {
+      smallContainer: {
+        name: 'Small Container',
+        styles: {
+          width: '460px',
+          height: '100%',
+        },
+        type: 'desktop',
+      },
+    },
+    defaultViewport: 'smallContainer',
+  },
+};
+// @ts-ignore
+Demo.args = {
   ...extractStoryParams(storyParams),
 };
+

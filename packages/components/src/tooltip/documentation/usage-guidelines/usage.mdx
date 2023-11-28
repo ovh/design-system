@@ -5,8 +5,17 @@ import GenericStyle from '@ovhcloud/ods-common-core/docs/generic-style.mdx';
 ## Usage
 
 ### Default
-<osds-tooltip>Tooltip</osds-tooltip>
+<osds-tooltip>Tooltip
+  <osds-tooltip-content slot="tooltip-content">
+    Content
+  </osds-tooltip-content>
+</osds-tooltip>
 
 ```html
-<osds-tooltip>Tooltip</osds-tooltip>
+<osds-tooltip>
+  Tooltip
+  <osds-tooltip-content slot="tooltip-content">
+    Content
+  </osds-tooltip-content>
+</osds-tooltip>
 ```

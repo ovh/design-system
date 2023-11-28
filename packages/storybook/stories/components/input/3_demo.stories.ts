@@ -1,5 +1,5 @@
-import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
-import { ODS_INPUT_SIZE, ODS_INPUT_SIZES, ODS_INPUT_TYPE, ODS_INPUT_TYPES } from '@ovhcloud/ods-components';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+import { ODS_INPUT_TYPE, ODS_INPUT_TYPES, ODS_ICON_NAME } from '@ovhcloud/ods-components';
 import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-input';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
@@ -10,96 +10,92 @@ defineCustomElement();
 
 /* Default story parameters  */
 const storyParams = {
+  color: {
+    category: 'General',
+    defaultValue: ODS_THEME_COLOR_INTENT.primary,
+    options: [ODS_THEME_COLOR_INTENT.primary, ODS_THEME_COLOR_INTENT.error],
+    control: { type: 'select' },
+  },
   type: {
     category: 'General',
     defaultValue: ODS_INPUT_TYPE.text,
     options: ODS_INPUT_TYPES,
     control: { type: 'select' },
   },
-  color: {
+  placeholder: {
     category: 'General',
-    defaultValue: ODS_THEME_COLOR_INTENT.default,
-    options: ODS_THEME_COLOR_INTENTS,
+    defaultValue: 'placeholder',
+  },
+  defaultValue: {
+    category: 'General',
+    control: { type: 'text' },
+  },
+  value: {
+    category: 'General',
+    control: { type: 'text' },
+  },
+  icon: {
+    category: 'General',
+    defaultValue: '',
+    options: ODS_ICON_NAME,
     control: { type: 'select' },
   },
-  size: {
+  prefixValue: {
     category: 'General',
-    defaultValue: ODS_INPUT_SIZE.md,
-    options: ODS_INPUT_SIZES,
-    control: { type: 'select' },
-  },
-  inline: {
-    category: 'Misc',
-    defaultValue: false,
+    defaultValue: '',
   },
   clearable: {
-    category: 'Misc',
+    category: 'General',
     defaultValue: false,
   },
   loading: {
-    category: 'Misc',
-    defaultValue: false,
-  },
-  masked: {
-    category: 'Misc',
-    defaultValue: true,
-  },
-  contrasted: {
-    category: 'Misc',
+    category: 'General',
     defaultValue: false,
   },
   disabled: {
     category: 'Misc',
     defaultValue: false,
   },
-  defaultValue: {
+  inline: {
     category: 'Misc',
-    control: { type: 'number' },
-  },
-  value: {
-    category: 'Misc',
-    control: { type: 'number' },
-  },
-  min: {
-    category: 'Misc',
-    control: { type: 'number' },
-  },
-  max: {
-    category: 'Misc',
-    control: { type: 'number' },
-  },
-  step: {
-    category: 'Misc',
-    control: { type: 'number' },
-  },
-  name: {
-    category: 'Misc',
-    defaultValue: 'myInputNumber',
-  },
-  placeholder: {
-    category: 'Misc',
-    defaultValue: 'placeholder',
-  },
-  icon: {
-    category: 'Misc',
-    defaultValue: '',
-  },
-  required: {
-    category: 'Misc',
-    defaultValue: false,
+    defaultValue: true,
   },
   error: {
     category: 'Misc',
     defaultValue: false,
   },
+  name: {
+    category: 'Development',
+    defaultValue: 'myInputNumber',
+  },
+  readonly: {
+    category: 'Development',
+    defaultValue: false,
+  },
+  required: {
+    category: 'Development',
+    defaultValue: false,
+  },
+  masked: {
+    category: 'Development',
+    defaultValue: true,
+  },
+  min: {
+    category: 'Development',
+    control: { type: 'number' },
+  },
+  max: {
+    category: 'Development',
+    control: { type: 'number' },
+  },
+  step: {
+    category: 'Development',
+    control: { type: 'number' },
+  },
   forbiddenValues: {
-    category: 'Misc',
+    category: 'Development',
     defaultValue: [],
     control: { type: 'array' },
-  },
-  prefixValue: {
-    category: 'Misc',
-    defaultValue: '',
   },
 };
 
@@ -144,65 +140,3 @@ type ValidationProps = {
   ...(extractStoryParams(storyParams) as Record<string, unknown>),
 };
 (Validation as unknown as ValidationProps).play = InputPlay;
-
-/* All Inputs */
-
-type Attributes = 'default' | 'clearable' | 'icon="ovh"' | 'clearable icon="ovh"' | 'value="ODS ahead"' | 'value="ODS ahead" masked' | 'loading' | 'loading icon="ovh"' | 'loading disabled' | 'loading disabled icon="ovh"';
-
-const attributeList: Attributes[] = [
-  'default', 'clearable', 'icon="ovh"', 'clearable icon="ovh"', 'value="ODS ahead"',
-  'value="ODS ahead" masked', 'loading', 'loading icon="ovh"', 'loading disabled',
-  'loading disabled icon="ovh"',
-];
-
-const createTable = (contrasted: boolean, headerList: readonly string[], itemMapper: (attribute: string) => string) => `
-  <table>
-    <thead>
-      <tr>
-        <td></td>
-        ${headerList.map((header) => `<td style="padding:0.1em; ${contrasted && 'color: #ffffff;'}">${header}</td>`).join('')}
-      </tr>
-    </thead>
-    <tbody>
-      ${attributeList.map((attribute) =>
-    `<tr>
-          <td style="padding:0.1em;  ${contrasted && 'color: #ffffff;'}">${attribute}</td>
-          ${itemMapper(attribute)}
-        </tr>`,
-  ).join('')}
-    </tbody>
-  </table>`;
-
-const TemplateAll = () => html`
-  <section style="margin-bottom: 3em; padding: 1em;">
-    <h2>[types]</h2>
-    ${unsafeHTML(createTable(false, ODS_INPUT_TYPES, (attribute) => ODS_INPUT_TYPES.map((type) =>
-    `<td style="padding:0.1em">
-        <osds-input type="${type}" placeholder="Enter ${type}..." ${attribute}></osds-input>
-      </td>`).join(''),
-  ))}
-  </section>
-  <section style="margin-bottom: 3em; padding: 1em;">
-    <h2>[colors]</h2>
-    ${unsafeHTML(createTable(false, ODS_THEME_COLOR_INTENTS, (attribute) => ODS_THEME_COLOR_INTENTS.map((color) =>
-    `<td style="padding:0.1em;">
-        <osds-input type="text" color="${color}" placeholder="Enter text..." ${attribute}></osds-input>
-      </td>`).join(''),
-  ))}
-  </section>
-  <section style="margin-bottom: 3em; background: #000e9c; padding: 1em;">
-    <h2 style="color: #ffffff;">[contrasted]</h2>
-    ${unsafeHTML(createTable(true, ODS_THEME_COLOR_INTENTS, (attribute) => ODS_THEME_COLOR_INTENTS.map((color) =>
-    `<td style="padding:0.1em">
-        <osds-input type="text" color="${color}" placeholder="Enter text..." ${attribute}></osds-input>
-      </td>`).join(''),
-  ))}
-  </section>
-`;
-
-export const All = TemplateAll.bind({});
-// @ts-ignore
-All.parameters = {
-  controls: { hideNoControlsWarning: true },
-  options: { showPanel: false },
-};

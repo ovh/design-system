@@ -75,7 +75,7 @@ export class OsdsMessage implements OdsMessageAttribute, OdsMessageEvent {
       <Host {...{
         tabindex: removable ? '0' : '-1',
       }}>
-        <span class={'message__wrapper'}>
+        <span class={'message_wrapper'}>
           <span class={'message_content'}>
             {icon || type ? <osds-icon {...{
               name: (icon || `${type}-circle`) as ODS_ICON_NAME,
@@ -86,7 +86,7 @@ export class OsdsMessage implements OdsMessageAttribute, OdsMessageEvent {
             <slot></slot>
           </span>
           {removable ? <span
-            class={'message__close-wrapper'}
+            class={'message_close-wrapper'}
             onClick={() => this.controller.onRemoveClicked()}
           >
             <osds-icon {...{

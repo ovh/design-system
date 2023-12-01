@@ -41,9 +41,9 @@ class OdsSelectController {
   }
 
   syncReferences(): void {
-    if (this.component.surface && this.component.anchor) {
-      this.component.surface.setAnchorElement(this.component.anchor);
-      this.component.surface.setAnchorMargin({ bottom: 0 });
+    if (this.component.interactiveSurface?.surface && this.component.anchor) {
+      this.component.interactiveSurface.surface.setAnchorElement(this.component.anchor);
+      this.component.interactiveSurface.surface.setAnchorMargin({ bottom: 0 });
     }
   }
 
@@ -51,8 +51,10 @@ class OdsSelectController {
    * Method to close the surface
    */
   closeSurface(): void {
-    if (this.component.surface?.opened) {
-      this.component.surface.close();
+    console.log('closeSurface');
+    console.log(this.component.interactiveSurface);
+    if (this.component.interactiveSurface?.surface?.opened) {
+      this.component.interactiveSurface.surface.close();
       this.component.opened = false;
     }
   }
@@ -61,8 +63,9 @@ class OdsSelectController {
    * Method to open the surface
    */
   openSurface(): void {
-    if (this.component.surface) {
-      this.component.surface.open();
+    console.log('openSurface');
+    if (this.component.interactiveSurface?.surface) {
+      this.component.interactiveSurface.surface.open();
       this.component.opened = true;
     }
   }

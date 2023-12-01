@@ -7,8 +7,6 @@
           background-color: '100'
   )) using($colors) {
     @include osds-interactive-surface-on-selected-host {
-      // color: map_get($colors, color);
-      // background-color: map_get($colors, background-color);
     }
   }
 }

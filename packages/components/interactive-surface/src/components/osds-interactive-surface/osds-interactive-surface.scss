@@ -7,10 +7,6 @@
 // CSS targeted only for this component
 // /!\ for theming purposes, it has to be done in theming files
 // (i.e. packages/libraries/theming/...)
-:host {
-  display: flex;
-  flex-direction: column;
-}
 
 // apply the theme template for the component
 @include ods-theme-component {

@@ -1,5 +1,6 @@
 
 import type { OsdsInteractiveSurface } from '../osds-interactive-surface';
+import type { HTMLStencilElement } from '@stencil/core/internal';
 
 /**
  * common controller logic for select component used by the different implementations.
@@ -7,13 +8,13 @@ import type { OsdsInteractiveSurface } from '../osds-interactive-surface';
  */
 class OdsInteractiveSurfaceController {
   private component: OsdsInteractiveSurface;
-  private _options: (HTMLElement)[] = [];
+  private _options: (HTMLElement & HTMLStencilElement)[] = [];
 
-  public get options(): (HTMLElement)[] {
+  public get options(): (HTMLElement & HTMLStencilElement)[] {
     return this._options;
   }
 
-  public set options(value: (HTMLElement)[]) {
+  public set options(value: (HTMLElement & HTMLStencilElement)[]) {
     this._options = value;
   }
 
@@ -21,28 +22,90 @@ class OdsInteractiveSurfaceController {
     this.component = component;
   }
 
-  handlerKeyDown(event: KeyboardEvent): void {
-    // const selectedSelectOptionIndex = this.selectOptions.findIndex((select) => select.getAttribute('selected') !== null || document.activeElement === select);
-    switch (event.code) {
-    case 'Escape': {
-    //   this.selectOptions.forEach((s) => s.removeAttribute('selected'));
-    //   this.selectOptions.find((s) => s.value === this.component.value)?.setAttribute('selected', '');
-    //   return this.closeSurface();
-      return console.log('Escape');
+  findOptionIndex(element: HTMLElement): number {
+    return this._options.findIndex((option) => option === element);
+  }
+
+  focusOptionAtIndex(index: number): void {
+    if (index >= 0 && index < this._options.length) {
+      const option = this._options[index];
+      option.focus();
+      this.component.focusedElement = option;
     }
-    case 'ArrowUp':
-      return console.log('arr up');
-    case 'ArrowDown':
-      return console.log('arr down');
+  }
+
+  clickHandler(event: MouseEvent): void {
+    event.stopPropagation();
+    return console.log('click', event.target);
+  }
+
+  keyDownHandler(event: KeyboardEvent): void {
+    event.stopPropagation();
+    const { code } = event;
+
+    switch (code) {
     case 'Tab':
-    //   return this.handlerKeyArrow(event, selectedSelectOptionIndex);
-      return console.log('Tab');
+      if (event.shiftKey) {
+        console.log('shift tab', event.target);
+      } else {
+        console.log('tab', event.target);
+      }
+      break;
+    case 'ArrowLeft':
+    case 'ArrowUp':
+      console.log('navigate backwards', event.target);
+      this.navigateBackwards(event.target as HTMLElement);
+      break;
+    case 'ArrowRight':
+    case 'ArrowDown':
+      console.log('navigate forward', event.target);
+      this.navigateForward(event.target as HTMLElement);
+      break;
     case 'Enter':
-    case 'NumpadEnter':
-    //   return this.handlerKeyEnter(this.selectOptions[selectedSelectOptionIndex]);
-      return console.log('Numpad');
+    case 'Space':
+      console.log('select', event.target);
+      break;
+    case 'Escape':
+      console.log('close', event.target);
+      break;
     default:
       break;
+    }
+  }
+
+  isFocusable(el: HTMLElement): boolean {
+    return !el.hasAttribute('disabled')
+        && (el.tabIndex >= 0 || el.isContentEditable || this.isInherentlyFocusable(el));
+  }
+
+  isInherentlyFocusable(el: HTMLElement): boolean {
+    const focusableTags = ['a', 'button', 'input', 'select', 'textarea'];
+    return focusableTags.includes(el.tagName.toLowerCase()) && el.hasAttribute('href');
+  }
+
+  getNextFocusableIndex(currentIndex: number, direction: 'forward' | 'backward'): number {
+    const maxIndex = this._options.length;
+    let nextIndex = currentIndex;
+    do {
+      nextIndex = direction === 'forward' ? (nextIndex + 1) % maxIndex : (nextIndex - 1 + maxIndex) % maxIndex;
+    } while (nextIndex !== currentIndex && !this.isFocusable(this._options[nextIndex]));
+
+    return nextIndex === currentIndex ? -1 : nextIndex;
+  }
+
+  navigateBackwards(target: HTMLElement): void {
+    const currentIndex = this.findOptionIndex(target);
+    const previousIndex = this.getNextFocusableIndex(currentIndex, 'backward');
+    if (previousIndex !== -1) {
+      this.focusOptionAtIndex(previousIndex);
+    }
+  }
+
+  navigateForward(target: HTMLElement): void {
+    const currentIndex = this.findOptionIndex(target);
+    const nextIndex = this.getNextFocusableIndex(currentIndex, 'forward');
+    if (nextIndex !== -1) {
+      this.focusOptionAtIndex(nextIndex);
     }
   }
 

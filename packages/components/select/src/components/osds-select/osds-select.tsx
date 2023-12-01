@@ -11,8 +11,8 @@ import type { HTMLStencilElement } from '@stencil/core/internal';
 import { ocdkAssertEventTargetIsNode, ocdkDefineCustomElements, ocdkIsSurface } from '@ovhcloud/ods-cdk';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
+import { OsdsInteractiveSurface } from '@ovhcloud/ods-component-interactive-surface'
 import { Component, Element, Event, EventEmitter, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
-
 
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { DEFAULT_VALIDITY_STATE } from './constants/default-validity-state';
@@ -33,7 +33,7 @@ ocdkDefineCustomElements();
 export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelectMethod {
   controller: OdsSelectController = new OdsSelectController(this);
   anchor!: HTMLElement;
-  surface: OcdkSurface | undefined = undefined;
+  interactiveSurface: OsdsInteractiveSurface | undefined = undefined;
   /** is the select was touched by the user */
   dirty = false;
   selectedLabelSlot: HTMLElement | null = null;
@@ -129,8 +129,8 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
 
   @Watch('opened')
   openedChanged(opened: boolean) {
-    if (this.surface) {
-      this.surface.opened = opened;
+    if (this.interactiveSurface?.surface) {
+      this.interactiveSurface.surface.opened = opened;
     }
   }
 
@@ -245,7 +245,7 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
   @Listen('click', { target: 'window' })
   checkForClickOutside(ev: any) {
     ocdkAssertEventTargetIsNode(ev.target);
-    if (!this.dirty || this.surface?.isClickOutsideSurface(ev)) {
+    if (!this.dirty || this.interactiveSurface?.surface?.isClickOutsideSurface(ev)) {
       return;
     }
     this.controller.closeSurface();
@@ -342,16 +342,25 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
           </div>
           <osds-icon size={ODS_ICON_SIZE.sm} color={color} name={ODS_ICON_NAME.CHEVRON_DOWN}></osds-icon>
         </div>
-        <ocdk-surface
+        <osds-interactive-surface
+          class="overlay"
+          ref={(el: HTMLElement) => {
+            this.interactiveSurface = el as unknown as OsdsInteractiveSurface;
+              this.syncReferences();
+          }}
+        >
+          <slot onSlotchange={() => this.handleSlotChange()}></slot>
+        </osds-interactive-surface>
+        {/* <ocdk-surface
           class="overlay"
           ref={(el: HTMLElement) => {
             if (ocdkIsSurface(el)) {
-              this.surface = el as OcdkSurface;
+              this.interactiveSurface = el as OsdsInteractiveSurface;
               this.syncReferences();
             }
           }}>
           <slot onSlotchange={() => this.handleSlotChange()}></slot>
-        </ocdk-surface>
+        </ocdk-surface> */}
       </Host>
     );
   }

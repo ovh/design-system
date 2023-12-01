@@ -16,13 +16,20 @@
 <body>
 
 <osds-interactive-surface inline>
-  <osds-select-option value="Hello">Bonjour</osds-select-option>
-  <osds-select-option value="Hello">Au revoir</osds-select-option>
-  <p>bien le bonsoir</p>
+  <osds-select-option value="1">Option 1</osds-select-option>
+  <osds-select-option value="2">Option 2</osds-select-option>
+  <p>Paragraph</p>
 </osds-interactive-surface>
 
 <script>
-  document.querySelectorAll('ods-interactive-surface').forEach((elem) => {});
+  setTimeout(() => {
+    document.querySelectorAll('osds-interactive-surface').forEach((elem) => {
+      const newOption = document.createElement('osds-select-option');
+      newOption.value = '3';
+      newOption.textContent = 'Option 3';
+      elem.appendChild(newOption);
+    });
+  }, 2000);
 </script>
 </body>
 </html>

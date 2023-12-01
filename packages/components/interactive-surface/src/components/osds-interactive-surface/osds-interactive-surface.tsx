@@ -3,72 +3,89 @@ import type { OcdkSurface } from '@ovhcloud/ods-cdk';
 import type { HTMLStencilElement } from '@stencil/core/internal';
 
 import { ocdkIsSurface } from '@ovhcloud/ods-cdk';
-import { Component, Element, Event, EventEmitter, Host, h, Listen } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Host, Listen, h } from '@stencil/core';
 
 import { OdsInteractiveSurfaceController } from './core/controller';
+import { OdsInteractiveSurfaceEvent } from './interfaces/events';
 
 /**
  * @slot (unnamed) - InteractiveSurface content
  */
 @Component({
-  shadow: false,
+  shadow: true,
   styleUrl: 'osds-interactive-surface.scss',
   tag: 'osds-interactive-surface',
 })
-export class OsdsInteractiveSurface implements OdsInteractiveSurfaceAttribute {
-  controller: OdsInteractiveSurfaceController = new OdsInteractiveSurfaceController(this);
-  surface: OcdkSurface | undefined = undefined;
+export class OsdsInteractiveSurface implements OdsInteractiveSurfaceAttribute, OdsInteractiveSurfaceEvent {
   anchor!: HTMLElement;
-  dirty = false;
+  controller: OdsInteractiveSurfaceController = new OdsInteractiveSurfaceController(this);
+  dirty: boolean = false;
+  focusedElement: HTMLElement | HTMLStencilElement | null = null;
+  hasFocus: boolean = false;
   observer?: MutationObserver;
+  selectedElement: HTMLElement | HTMLStencilElement | null = null;
+  slotElement: HTMLSlotElement | null = null;
+  surface: OcdkSurface | undefined = undefined;
 
   @Element() el!: HTMLStencilElement;
 
   /** @see OdsSelectEvents.odsBlur */
   @Event() odsBlur!: EventEmitter<void>;
 
-  /** @see OdsSelectEvents.odsFocus */
-  @Event() odsFocus!: EventEmitter<void>;
+  /** @see OdsSelectEvents.odsInteractiveSurfaceFocus */
+  @Event() odsInteractiveSurfaceFocus!: EventEmitter<void>;
 
-  @Listen('click', { capture: true })
-  handleClick(ev: MouseEvent): void {
-    const target = ev.target as HTMLElement;
-    if (target.parentElement?.className === 'interactive-surface') {
-      return console.log('click', ev);
-    }
+  async componentDidLoad(): Promise<void> {
+    this.observer = new MutationObserver(() => this.handleSlotChange());
+    this.setOptions();
   }
 
-  handleKeyDown(event: KeyboardEvent): void {
+  @Listen('blur', { capture: true })
+  onBlur(event: FocusEvent): void {
     event.stopPropagation();
-    this.controller.handlerKeyDown(event);
-  }
-
-  onBlur(): void {
+    console.log('blur', event.target);
     this.odsBlur.emit();
   }
 
-  onFocus(): void {
-    this.odsFocus.emit();
+  @Listen('click', { capture: true })
+  handleClick(event: MouseEvent): void {
+    event.stopPropagation();
+    this.controller.clickHandler(event);
+  }
+
+  @Listen('focus', { capture: true })
+  onFocus(event: FocusEvent): void {
+    event.stopPropagation();
+    console.log('focus', event.target);
+    this.odsInteractiveSurfaceFocus.emit();
+  }
+
+  @Listen('keydown', { capture: true })
+  handleKeyDown(event: KeyboardEvent): void {
+    event.stopPropagation();
+    this.controller.keyDownHandler(event);
   }
 
   syncReferences(): void {
     this.controller.syncReferences();
   }
 
-  async handleSlotChange(): Promise<void> {
+  handleSlotChange(): void {
     this.setOptions();
   }
 
   setOptions(): void {
-    this.controller.options = this.getOptionList();
-    this.controller.options.forEach((option) => this.observer?.observe(option, { childList: true }));
+    const assignedElements = this.slotElement?.assignedElements({ flatten: true }) as (HTMLElement & HTMLStencilElement)[];
+    console.log('Assigned Elements', assignedElements);
+    this.controller.options = assignedElements ?? [];
+    this.observer?.observe(this.el, { childList: true, subtree: true });
   }
 
-  getOptionList(): HTMLElement[] {
+  getOptionList(): (HTMLElement & HTMLStencilElement)[] {
     if (!this.surface) {
       return [];
     }
-    return Array.from(this.surface.querySelectorAll<HTMLElement>('*'));
+    return Array.from(this.surface.querySelectorAll<HTMLElement & HTMLStencilElement>('*'));
   }
 
   disconnectedCallback(): void {
@@ -79,25 +96,30 @@ export class OsdsInteractiveSurface implements OdsInteractiveSurfaceAttribute {
 
     return (
       <Host {...{
-        onBlur: this.onBlur.bind(this),
-        onFocus: this.onFocus.bind(this),
-        onKeyDown: this.handleKeyDown.bind(this),
+        class: 'osds-interactive-surface',
         ref: (el?: HTMLElement | null): void => {
           this.anchor = el as HTMLElement;
           this.syncReferences();
         },
       }}>
-        <ocdk-surface
-          class="interactive-surface"
-          ref={(el: HTMLElement): void => {
+        <ocdk-surface {...{
+          class: 'osds-interactive-surface__surface',
+          ref: (el?: HTMLElement): void => {
             if (ocdkIsSurface(el)) {
               this.surface = el as OcdkSurface;
               this.syncReferences();
             }
-          }}>
-          <slot
-            onSlotchange={(): Promise<void> => this.handleSlotChange()}
-          ></slot>
+          },
+        }}>
+          <slot {...{
+            class: 'osds-interactive-surface__surface__slot',
+            ref: (el?: Element): void => {
+              if (el instanceof HTMLSlotElement) {
+                this.slotElement = el;
+                this.syncReferences();
+              }
+            },
+          }}></slot>
         </ocdk-surface>
       </Host>
     );

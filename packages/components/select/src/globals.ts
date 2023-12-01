@@ -7,4 +7,5 @@
  */
 import '@ovhcloud/ods-component-content-addon';
 import '@ovhcloud/ods-component-icon';
+import '@ovhcloud/ods-component-interactive-surface';
 import '@ovhcloud/ods-component-text';

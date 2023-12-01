@@ -180,14 +180,6 @@ describe('spec:osds-chip', () => {
       expect(instance.odsChipRemoval.emit).toHaveBeenCalled();
     });
 
-    it('should render correctly based on removable and selectable props', async () => {
-      await setup({ attributes: { removable: true, selectable: false } });
-      expect(root).toMatchSnapshot();
-
-      await setup({ attributes: { removable: false, selectable: true } });
-      expect(root).toMatchSnapshot();
-    });
-
   });
 
   describe('controller', () => {

@@ -50,10 +50,12 @@
     }
 
     .content {
+      max-height: 30vh;
+      overflow-y: auto;
+
       .slot {
         display: flex;
         flex-direction: column;
-        overflow-y: auto;
       }
 
       .actions {

@@ -18,7 +18,7 @@
 
   .option > .truncated {
     min-width: 0;
-    overflow: hidden;
+    overflow: var(--ods-select-option-overflow, hidden);
     text-overflow: ellipsis;
     white-space: nowrap;
     word-break: break-all;

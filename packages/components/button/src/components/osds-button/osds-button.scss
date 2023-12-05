@@ -117,6 +117,8 @@
 }
 
 slot {
+  display: inline;
+
   &[name="start"] {
     grid-area: start;
     justify-self: start;

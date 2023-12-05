@@ -45,7 +45,7 @@ describe('spec:osds-datagrid', () => {
       odsUnitTestAttribute<OdsDatagridAttribute, 'columns'>({
         defaultValue: DEFAULT_ATTRIBUTE.columns,
         name: 'columns',
-        newValue: JSON.stringify([{ field: 'name', title: 'Name' }, { field: 'firstname', title: 'Firstname' }]),
+        newValue: JSON.stringify([{ field: 'firstname', title: 'First name' }, { field: 'lastname', title: 'Last name' }]),
         setup: (value) => setup({ attributes: { ['columns']: value } }),
         value: '[]',
         ...config,
@@ -57,7 +57,7 @@ describe('spec:osds-datagrid', () => {
       odsUnitTestAttribute<OdsDatagridAttribute, 'rows'>({
         defaultValue: DEFAULT_ATTRIBUTE.rows,
         name: 'rows',
-        newValue: JSON.stringify([{ firstname: 'Homer', name: 'Simpson' }]),
+        newValue: JSON.stringify([{ lastname: 'Homer', firstname: 'Simpson' }]),
         setup: (value) => setup({ attributes: { ['rows']: value } }),
         value: '[]',
         ...config,
@@ -80,7 +80,7 @@ describe('spec:osds-datagrid', () => {
       odsUnitTestAttribute<OdsDatagridAttribute, 'noResultLabel'>({
         defaultValue: DEFAULT_ATTRIBUTE.noResultLabel,
         name: 'noResultLabel',
-        newValue: 'Aucune données de renseignée',
+        newValue: 'No data.',
         setup: (value) => setup({ attributes: { ['noResultLabel']: value } }),
         value: '',
         ...config,

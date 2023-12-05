@@ -1,64 +1,79 @@
-import { html } from 'lit-html';
-import { defineCustomElements } from '@ovhcloud/ods-components/datagrid/loader';
-import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 // @ts-ignore
 import changelog from '@ovhcloud/ods-components/datagrid/CHANGELOG.md';
+import { defineCustomElements } from '@ovhcloud/ods-components/datagrid/loader';
+import { html } from 'lit-html';
 // @ts-ignore
 import page from './2_usage.stories.mdx';
+import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 
 defineCustomElements();
 
 /* Default story parameters */
 const defaultStoryParams = {
   columns: {
-    category: 'Général',
+    category: 'General',
     defaultValue: [
-      { title: "Name", field: "name", isSortable: true },
-      { title: "Firstname", field: "firstname" },
-      { title: "Gender", field: "gender" },
-      { title: "Date Of Birth", field: "dob", formatter: (value: string) => {
-        return `<osds-icon name="calendar"></osds-icon> <osds-text color="text" size="400">${value}</osds-text>` 
+      { field: 'firstname', title: 'First name' },
+      { field: 'lastname', isSortable: true, title: 'Last name' },
+      { field: 'gender', title: 'Gender' },
+      { field: 'dob', title: 'Date Of Birth', formatter: (value: string) => {
+        return `<osds-icon name="calendar"></osds-icon> <osds-text color="text" size="400">${value}</osds-text>`;
+      } },
+      { field: 'test', title: 'Button', formatter: () => {
+        return `<osds-menu>
+    <osds-button slot="menu-title" color="primary" variant="stroked">Menu <osds-icon name='home' size='xs'></osds-icon></osds-button>
+    <osds-menu-group>
+      <osds-text>Group/Text 1</osds-text>
+    </osds-menu-group>
+    <osds-menu-item>
+      <osds-button color="primary" size='sm' variant='ghost' flex><span slot="start">Action 1</span></osds-button>
+    </osds-menu-item>
+    <osds-menu-item>
+      <osds-button color="primary" size='sm' variant='ghost' flex><span slot="start">Action 2</span></osds-button>
+    </osds-menu-item>
+    <osds-divider color="text" separator="true"></osds-divider>
+  </osds-menu>`;
       } },
     ],
   },
-  rows: {
-    category: 'Général',
-    defaultValue: [
-      { name: "Dupont", firstname: "Antoine", gender: "male", dob: "15/11/1996" },
-      { name: "Garnbret", firstname: "Janja", gender: "female", dob: "12/03/1999" },
-    ],
+  hasHideableColumns: {
+    category: 'General',
+    defaultValue: true,
+  },
+  height: {
+    category: 'General',
+    defaultValue: 600,
   },
   isSelectable: {
-    category: 'Général',
+    category: 'General',
     defaultValue: false,
   },
   noResultLabel: {
-    category: 'Général',
+    category: 'General',
     defaultValue: 'Aucun résultat',
   },
-  height: {
-    category: 'Général',
-    defaultValue: 600,
-  },
   rowHeight: {
-    category: 'Général',
+    category: 'General',
     defaultValue: 52,
   },
-  hasHideableColumns: {
-    category: 'Général',
-    defaultValue: true,
+  rows: {
+    category: 'General',
+    defaultValue: [
+      { dob: '15/11/1996', firstname: 'Antoine', gender: 'male', lastname: 'Dupont' },
+      { dob: '12/03/1999', firstname: 'Janja', gender: 'female', lastname: 'Garnbret' },
+    ],
   },
 };
 
 const rowsLarge = {
-  category: 'Général',
-  defaultValue: Array.from({ length: 10000 }).fill({ name: "Garnbret", firstname: "Janja", gender: "female", dob: "12/03/1999" }),
+  category: 'General',
+  defaultValue: Array.from({ length: 10000 }).fill({ dob: '12/03/1999', firstname: 'Janja', gender: 'female', lastname: 'Garnbret' }),
 };
 
 export default {
-  title: 'ODS Components/Layout/Datagrid [organism]/Web Component',
+  argTypes: extractArgTypes(defaultStoryParams),
   id: 'datagrid',
-  argTypes: extractArgTypes(defaultStoryParams)
+  title: 'ODS Components/Layout/Datagrid [organism]/Web Component',
 };
 
 const TemplateDefault = (args: Record<string, unknown>) => html`

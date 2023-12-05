@@ -82,6 +82,7 @@ $ods-border-datagrid: solid 1px var(--ods-color-blue-200);
             box-sizing: border-box;
             border-top: $ods-border-datagrid;
             border-right: none;
+            overflow: visible;
 
             &:not(.ods-selectable__input-checkbox) {
                 position: initial;

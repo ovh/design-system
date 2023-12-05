@@ -27,27 +27,40 @@ describe('e2e:osds-datagrid', () => {
         { columns: [], rows: [] },
         { columns: '[]', rows: '[]' },
         {
-          columns: JSON.stringify([{ field:'name', title:'Name' }, { field:'firstname', title:'Firstname' }]),
+          columns: JSON.stringify([{ field:'firstname', title:'First name' }, { field:'lastname', title:'Last name' }]),
           noResultLabel: 'Aucune données de renseignée',
           rows: '[]',
         },
         {
-          columns: JSON.stringify([{ field:'name', title:'Name' }, { field:'firstname', title:'Firstname' }]),
-          rows: JSON.stringify([{ firstname:'Simpson', name:'Homer' }]),
+          columns: JSON.stringify([{ field:'firstname', title:'First name' }, { field:'lastname', title:'Last name' }]),
+          rows: JSON.stringify([{ lastname:'Simpson', firstname:'Homer' }]),
         },
         {
-          columns: JSON.stringify([{ field:'name', isSortable: true, title:'Name' }, { field:'firstname', title:'Firstname' }]),
-          rows: JSON.stringify([{ firstname:'Simpson', name:'Homer' }]),
+          columns: JSON.stringify([{ field:'firstname', isSortable: true, title:'First name' }, { field:'lastname', title:'Last name' }]),
+          rows: JSON.stringify([{ lastname:'Simpson', firstname:'Homer' }]),
         },
         {
-          columns: JSON.stringify([{ field:'name', title:'Name' }, { field:'firstname', title:'Firstname' }]),
+          columns: JSON.stringify([{ field:'firstname', title:'First name' }, { field:'lastname', title:'Last name' }]),
           isSelectable: true,
-          rows: JSON.stringify([{ firstname:'Simpson', name:'Homer' }]),
+          rows: JSON.stringify([{ lastname:'Simpson', firstname:'Homer' }]),
         },
         {
-          columns: JSON.stringify([{ field:'name', title:'Name' }, { field:'firstname', title:'Firstname' }]),
+          columns: JSON.stringify([{ field:'firstname', title:'First name' }, { field:'lastname', title:'Last name' }, { title: "Button", field: "button", formatter: (cellValue, rowValue) => {
+            return `<osds-menu>
+        <osds-button slot="menu-title" color="primary" variant="stroked">Menu <osds-icon name='home' size='xs'></osds-icon></osds-button>
+        <osds-menu-group>
+          <osds-text>Group/Text 1</osds-text>
+        </osds-menu-group>
+        <osds-menu-item>
+          <osds-button color="primary" size='sm' variant='ghost' flex><span slot="start">Action 1</span></osds-button>
+        </osds-menu-item>
+        <osds-menu-item>
+          <osds-button color="primary" size='sm' variant='ghost' flex><span slot="start">Action 2</span></osds-button>
+        </osds-menu-item>
+        <osds-divider color="text" separator="true"></osds-divider>
+      </osds-menu>`}}]),
           hasHideabledColumns: false,
-          rows: JSON.stringify([{ firstname:'Simpson', name:'Homer' }]),
+          rows: JSON.stringify([{ lastname:'Simpson', firstname:'Homer' }]),
         },
       ].map((attributes) => createContent({ attributes })).join(' ');
       await setup(content);

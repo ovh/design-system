@@ -2,6 +2,8 @@
 @import '~@ovhcloud/ods-common-theming/ods-theme';
 
 :host(.phone-number) {
+  --ods-select-option-overflow: visible;
+  
   display: inline-flex;
 }
 
@@ -40,7 +42,7 @@ $phone-number-input-width: 236px;
         width: 24px;
       }
     }
-    
+
     &.opened + .phone-number__input {
       border-bottom-right-radius: 0;
     }

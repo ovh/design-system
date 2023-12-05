@@ -5,6 +5,7 @@ import jestConfig from './jest.config';
 const config = getStencilConfig({
   args: process.argv.slice(2),
   componentCorePackage: '@ovhcloud/ods-component-phone-number',
+  devScript: 'src/dev.ts',
   excludeComponents: [
     'osds-flag',
     'osds-icon',

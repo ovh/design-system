@@ -83,8 +83,15 @@ describe('e2e:osds-breadcrumb-item', () => {
       expect(iconElement.getAttribute('name')).toBe(dummyIcon);
     });
 
-    it('should render link disabled', async() => {
+    it('should render link disabled because of last', async() => {
       await setupItem({ href: dummyHref, isLast: true });
+
+      expect(itemLinkElement.getAttribute('href')).toBe(dummyHref);
+      expect(itemLinkElement.getAttribute('disabled')).not.toBeNull();
+    });
+
+    it('should render link disabled', async() => {
+      await setupItem({ href: dummyHref, disabled: true });
 
       expect(itemLinkElement.getAttribute('href')).toBe(dummyHref);
       expect(itemLinkElement.getAttribute('disabled')).not.toBeNull();
@@ -95,6 +102,14 @@ describe('e2e:osds-breadcrumb-item', () => {
 
       expect(itemLinkElement.getAttribute('contrasted')).not.toBeNull();
       expect(iconElement.getAttribute('contrasted')).not.toBeNull();
+    });
+
+
+    it('should render link with rel & referrerpolicy', async() => {
+      await setupItem({ href: dummyHref, label: dummyLabel, referrerpolicy: 'no-referrer', rel: 'stylesheets' });
+
+      expect(itemLinkElement.getAttribute('referrerpolicy')).toBe('no-referrer');
+      expect(itemLinkElement.getAttribute('rel')).toBe('stylesheets');
     });
   });
 

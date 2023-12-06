@@ -1,5 +1,6 @@
 import type { OdsBreadcrumbItemAttribute } from './interfaces/attributes';
 
+import type { ODS_LINK_REFERRER_POLICY } from '@ovhcloud/ods-component-link';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
 import { Component, Element, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
@@ -22,6 +23,9 @@ export class OsdsBreadcrumbItem implements OdsBreadcrumbItemAttribute {
   /** @see OdsBreadcrumbItemAttribute.contrasted */
   @Prop({ reflect: true }) public contrasted? = DEFAULT_ATTRIBUTE.contrasted;
 
+  /** @see OdsBreadcrumbItemAttribute.disabled */
+  @Prop({ reflect: true }) public disabled? = DEFAULT_ATTRIBUTE.disabled;
+
   /** @internal */
   @Prop() isCollapsed = DEFAULT_ATTRIBUTE.isCollapsed;
 
@@ -40,6 +44,15 @@ export class OsdsBreadcrumbItem implements OdsBreadcrumbItemAttribute {
   /** @see OdsBreadcrumbItemAttribute.label */
   @Prop({ reflect: true }) label?: string;
 
+  /** @see OdsBreadcrumbItemAttribute.referrerpolicy */
+  @Prop({ reflect: true }) referrerpolicy?: ODS_LINK_REFERRER_POLICY;
+  
+  /** @see OdsBreadcrumbItemAttribute.rel */
+  @Prop({ reflect: true }) rel?: HTMLLinkElement['rel'];
+
+  /** @see OdsBreadcrumbItemAttribute.disabled */
+  @Prop({ reflect: true }) target = DEFAULT_ATTRIBUTE.target;
+
   /** @see OdsBreadcrumbItemEvent.odsBreadcrumbItemCollapsedClick */
   @Event() odsBreadcrumbItemCollapsedClick!: EventEmitter<void>;
 
@@ -55,8 +68,11 @@ export class OsdsBreadcrumbItem implements OdsBreadcrumbItemAttribute {
         <div class="item">
           <osds-link color={this.defaultColorIntent}
             contrasted={this.contrasted}
-            disabled={this.isLast}
-            href={this.href}>
+            disabled={this.disabled || this.isLast}
+            href={this.href}
+            referrerpolicy={this.referrerpolicy}
+            rel={this.rel}
+            target={this.target}>
             {
               !!this.icon
               && <span slot="start">

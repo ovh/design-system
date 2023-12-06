@@ -14,12 +14,22 @@
   <link rel="stylesheet" href="/build/osds-password.css">
 </head>
 <body>
-  <osds-password color="primary" clearable placeholder="Just ODS being ahead" value="On Vous Héberge ?"></osds-password>
-  <osds-password color="primary" clearable masked="false"></osds-password>
+  <osds-password id="password1" color="primary" clearable placeholder="Just ODS being ahead" value="On Vous Héberge ?"></osds-password>
+  <!-- <osds-password color="primary" clearable masked="false"></osds-password> -->
+  <button id="button">click</button>
 
   <div>
     <h3>Inline</h3>
-    <osds-password color="primary" inline clearable masked="false"></osds-password>
+    <!-- <osds-password color="primary" inline clearable masked="false"></osds-password> -->
   </div>
+
+  <script>
+    const password1 = document.getElementById('password1');
+    const button = document.getElementById('button');
+
+    button.addEventListener('click', () => {
+      password1.setFocus();
+    });
+  </script>
 </body>
 </html>

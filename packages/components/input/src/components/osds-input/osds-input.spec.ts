@@ -1,8 +1,9 @@
 jest.mock('./core/controller'); // keep jest.mock before any
+jest.mock('@ovhcloud/ods-common-core'); // keep jest.mock before any
 
 import type { OdsInputAttribute } from './interfaces/attributes';
 import type { SpecPage } from '@stencil/core/testing';
-import { ODS_COMMON_FIELD_SIZE, OdsCreateDefaultValidityState, OdsFormControl, ODS_INPUT_TYPE, OdsLogger } from '@ovhcloud/ods-common-core';
+import { ODS_COMMON_FIELD_SIZE, OdsCreateDefaultValidityState, OdsFormControl, ODS_INPUT_TYPE, OdsLogger, OdsGenericFormMethodController } from '@ovhcloud/ods-common-core';
 import { OdsMockNativeMethod, OdsMockPropertyDescriptor, odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { newSpecPage } from '@stencil/core/testing';
@@ -17,12 +18,12 @@ const logger = new OdsLogger('osds-input-spec');
 OdsMockPropertyDescriptor(HTMLInputElement.prototype, 'validity', () => OdsCreateDefaultValidityState());
 
 describe('spec:osds-input', () => {
-  logger.log('init');
   const baseAttribute = { ariaLabel: null, defaultValue: '', forbiddenValues: [], type: ODS_INPUT_TYPE.text, value: '' };
   let page: SpecPage;
   let htmlInput: HTMLInputElement | null | undefined;
   let instance: OsdsInput;
   let controller: OdsInputController;
+  let genericFormFieldMethodController: OdsGenericFormMethodController;
 
   afterEach(() => {
     jest.clearAllMocks();
@@ -46,6 +47,7 @@ describe('spec:osds-input', () => {
     htmlInput && (htmlInput.stepDown = jest.fn());
 
     controller = (OdsInputController as unknown as jest.SpyInstance<OdsInputController, unknown[]>).mock.instances[0];
+    genericFormFieldMethodController = (OdsGenericFormMethodController as unknown as jest.SpyInstance<OdsGenericFormMethodController, unknown[]>).mock.instances[0];
   }
 
   it('should render', async() => {
@@ -266,13 +268,6 @@ describe('spec:osds-input', () => {
         expect(controller.onBlur).toHaveBeenCalledWith();
       });
 
-      it('should call onFocus on focus', async() => {
-        await setup({});
-        instance?.onFocus();
-        expect(controller.onFocus).toHaveBeenCalledTimes(1);
-        expect(controller.onFocus).toHaveBeenCalledWith();
-      });
-
       it('should call onInput on input', async() => {
         const event = new Event('');
         await setup({});
@@ -294,23 +289,23 @@ describe('spec:osds-input', () => {
         await setup({});
         await instance.getValidity();
 
-        expect(controller.getInputValidity).toHaveBeenCalledTimes(1);
+        expect(genericFormFieldMethodController.getValidity).toHaveBeenCalledTimes(1);
       });
 
       it('should call clear from clear method', async() => {
         await setup({});
         await instance.clear();
 
-        expect(controller.clear).toHaveBeenCalledTimes(1);
-        expect(controller.clear).toHaveBeenCalledWith();
+        expect(genericFormFieldMethodController.clear).toHaveBeenCalledTimes(1);
+        expect(genericFormFieldMethodController.clear).toHaveBeenCalledWith();
       });
 
       it('should call clear from clear method but should not change the value if disabled', async() => {
         await setup({ attributes: { type: ODS_INPUT_TYPE.password, value: 'Just ODS being ahead', masked: false, disabled: true } });
         await instance.clear();
 
-        expect(controller.clear).toHaveBeenCalledTimes(1);
-        expect(controller.clear).toHaveBeenCalledWith();
+        expect(genericFormFieldMethodController.clear).toHaveBeenCalledTimes(1);
+        expect(genericFormFieldMethodController.clear).toHaveBeenCalledWith();
 
         const value = instance.value;
         expect(value).toBe('Just ODS being ahead');
@@ -320,16 +315,16 @@ describe('spec:osds-input', () => {
         await setup({});
         await instance.hide();
 
-        expect(controller.hide).toHaveBeenCalledTimes(1);
-        expect(controller.hide).toHaveBeenCalledWith();
+        expect(genericFormFieldMethodController.hide).toHaveBeenCalledTimes(1);
+        expect(genericFormFieldMethodController.hide).toHaveBeenCalledWith();
       });
 
       it('should call hide from hide method but should not display the value if disabled', async() => {
         await setup({ attributes: { type: ODS_INPUT_TYPE.password, value: 'Just ODS being ahead', masked: true, disabled: true } });
         await instance.hide();
 
-        expect(controller.hide).toHaveBeenCalledTimes(1);
-        expect(controller.hide).toHaveBeenCalledWith();
+        expect(genericFormFieldMethodController.hide).toHaveBeenCalledTimes(1);
+        expect(genericFormFieldMethodController.hide).toHaveBeenCalledWith();
 
         const type = instance.type;
         expect(type).toBe(ODS_INPUT_TYPE.password);
@@ -339,8 +334,8 @@ describe('spec:osds-input', () => {
         await setup({});
         await instance.reset();
 
-        expect(controller.reset).toHaveBeenCalledTimes(1);
-        expect(controller.reset).toHaveBeenCalledWith();
+        expect(genericFormFieldMethodController.reset).toHaveBeenCalledTimes(1);
+        expect(genericFormFieldMethodController.reset).toHaveBeenCalledWith();
       });
 
       it('should call stepUp from stepUp method', async() => {
@@ -359,13 +354,13 @@ describe('spec:osds-input', () => {
         expect(controller.stepDown).toHaveBeenCalledWith();
       });
 
-      it('should call setInputTabindex from setInputTabindex method', async() => {
+      it('should call setTabindex from setTabindex method', async() => {
         const tabIndex = 1;
         await setup({});
-        await instance.setInputTabindex(tabIndex);
+        await instance.setTabindex(tabIndex);
 
-        expect(controller.setInputTabindex).toHaveBeenCalledTimes(1);
-        expect(controller.setInputTabindex).toHaveBeenCalledWith(tabIndex);
+        expect(genericFormFieldMethodController.setTabindex).toHaveBeenCalledTimes(1);
+        expect(genericFormFieldMethodController.setTabindex).toHaveBeenCalledWith(tabIndex);
       });
     });
 

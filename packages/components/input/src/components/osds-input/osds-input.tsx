@@ -3,12 +3,12 @@ import type { OdsInputEvent, OdsInputValueChangeEventDetail } from './interfaces
 import type { OdsInputMethod } from './interfaces/methods';
 import type { OdsCommonFieldValidityState, OdsErrorStateControl, OdsFormControl, OdsFormForbiddenValues, OdsInputValue, ODS_COMMON_FIELD_SIZE, ODS_INPUT_TYPE } from '@ovhcloud/ods-common-core';
 import type { EventEmitter } from '@stencil/core';
-import { OdsLogger } from '@ovhcloud/ods-common-core';
+import { OdsLogger, OdsGenericFormMethodController } from '@ovhcloud/ods-common-core';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
 import { ODS_SPINNER_SIZE } from '@ovhcloud/ods-component-spinner';
 import { ODS_TEXT_SIZE } from '@ovhcloud/ods-component-text';
-import { Component, Element, Event, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
+import { Component, Element, Event, Host, Method, Prop, Listen, State, Watch, h } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsInputController } from './core/controller';
 
@@ -25,6 +25,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
   private static inputIds = 0;
   private inputId = `ods-input-${OsdsInput.inputIds++}`;
   controller: OdsInputController = new OdsInputController(this);
+  genericFormMethodController = new OdsGenericFormMethodController(this);
 
   @Element() el!: HTMLElement;
   inputEl?: HTMLInputElement;
@@ -33,7 +34,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
    * The tabindex of the input.
    * @internal
    */
-  @State() inputTabindex = 0;
+  @State() tabindex = 0;
   @State() hasFocus = false;
 
   /** Props */
@@ -165,124 +166,75 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
     this.beforeInit();
   }
 
-  /**
-   * @see OdsInputBehavior.emitChange
-   */
-  emitChange(value: OdsInputValue, oldValue?: OdsInputValue): void {
+  async emitChange(value: OdsInputValue, oldValue?: OdsInputValue): Promise<void> {
     this.logger.debug('emit', { oldValue, value });
     this.odsValueChange.emit({
       oldValue: oldValue == null ? oldValue : `${oldValue}`,
-      validity: this.controller.getInputValidity(),
+      validity: await this.getValidity(),
       value: value == null ? value : `${value}`,
     });
   }
 
-  /**
-   * @see OdsInputBehavior.emitFocus
-   */
   emitFocus(): void {
     this.odsInputFocus.emit();
   }
 
-  /**
-   * @see OdsInputBehavior.emitBlur
-   */
   emitBlur(): void {
     this.odsInputBlur.emit();
   }
-
-  /**
-   * @see OdsInputMethods.setFocus
-   */
+  
   @Method()
   async setFocus(): Promise<void> {
-    this.inputEl?.focus();
+    this.genericFormMethodController.setFocus();
   }
 
-  /**
-   * @see OdsInputMethods.getValidity
-   */
   @Method()
   async getValidity(): Promise<OdsCommonFieldValidityState> {
-    return this.controller.getInputValidity(this.inputEl);
+    return this.genericFormMethodController.getValidity();
   }
 
-  /**
-   * @see OdsInputMethods.clear
-   */
   @Method()
   async clear(): Promise<void> {
-    this.controller.clear();
+    this.genericFormMethodController.clear();
   }
 
-  /**
-   * @see OdsInputMethods.hide
-   */
   @Method()
   async hide(): Promise<void> {
-    this.controller.hide();
+    this.genericFormMethodController.hide();
   }
 
-  /**
-   * @see OdsInputMethods.reset
-   */
   @Method()
   async reset(): Promise<void> {
-    this.controller.reset();
+    this.genericFormMethodController.reset();
   }
 
-  /**
-   * @see OdsInputMethods.stepUp
-   */
   @Method()
   async stepUp(): Promise<void> {
     this.controller.stepUp();
   }
 
-  /**
-   * @see OdsInputMethods.stepDown
-   */
   @Method()
   async stepDown(): Promise<void> {
     this.controller.stepDown();
   }
 
-  /**
-   * @see OdsInputMethods.setInputTabindex
-   */
   @Method()
-  async setInputTabindex(value: number): Promise<void> {
-    this.controller.setInputTabindex(value);
+  async setTabindex(value: number): Promise<void> {
+    this.genericFormMethodController.setTabindex(value);
   }
 
-  hasError(): boolean {
+  hasError(): Promise<boolean> {
     return this.controller.hasError();
   }
 
-  /**
-   * @see OdsInputBehavior.onBlur
-   */
   onBlur(): void {
     this.controller.onBlur();
   }
 
-  /**
-   * @see OdsInputBehavior.onFocus
-   */
-  onFocus(): void {
-    this.controller.onFocus();
-  }
-
-  /**
-   * @see OdsInputBehavior.onInput
-   */
   onInput(event: Event): void {
     this.controller.onInput(event);
   }
 
-  /**
-   * @see OdsInputBehavior.onChange
-   */
   onChange(/*event: Event*/): void {
     this.controller.onChange();
   }
@@ -303,7 +255,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
       hasFocus,
       icon,
       inputId,
-      inputTabindex,
+      tabindex,
       loading,
       masked,
       max,
@@ -329,7 +281,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
           'ods-error': Boolean(hasError.bind(this)()),
         },
         hasFocus,
-        tabindex: inputTabindex,
+        tabindex,
       }}
       >
         <osds-text color={ODS_THEME_COLOR_INTENT.text}
@@ -350,7 +302,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
             name,
             onBlur: () => this.onBlur(),
             onChange: () => this.onChange(),
-            onFocus: () => this.onFocus(),
+            onFocus: () => this.setFocus(),
             onInput: (e) => this.onInput(e),
             placeholder,
             readOnly,

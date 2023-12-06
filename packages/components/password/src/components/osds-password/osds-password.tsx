@@ -1,10 +1,11 @@
 import type { OdsPasswordAttribute } from './interfaces/attributes';
 import type { OdsFormForbiddenValues, ODS_COMMON_FIELD_SIZE } from '@ovhcloud/ods-common-core';
 import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import { ODS_INPUT_TYPE } from '@ovhcloud/ods-common-core';
-import { Component, Element, Host, Prop, h } from '@stencil/core';
+import type { OdsPasswordMethod } from './interfaces/methods';
+import { OdsFormForbiddenValues, OdsGenericFormFieldValidityState, ODS_INPUT_TYPE } from '@ovhcloud/ods-common-core';
+import { Component, Element, Host, Prop, h, Method } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-
+import { OsdsInput } from '@ovhcloud/ods-component-input';
 
 /**
  * @slot (unnamed) - Password content
@@ -14,7 +15,9 @@ import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
   styleUrl: 'osds-password.scss',
   shadow: true,
 })
-export class OsdsPassword implements OdsPasswordAttribute {
+export class OsdsPassword implements OdsPasswordAttribute, OdsPasswordMethod {
+  private osdsInput?: OsdsInput;
+
   @Element() el!: HTMLElement;
 
   /** @see OdsPasswordAttributes.ariaLabel */
@@ -71,10 +74,41 @@ export class OsdsPassword implements OdsPasswordAttribute {
   /** @see OdsInputAttributes.value */
   @Prop({ reflect: true, mutable: true }) value = DEFAULT_ATTRIBUTE.value;
 
+  @Method()
+  async getValidity(): Promise<OdsGenericFormFieldValidityState | undefined> {
+    return this.osdsInput?.getValidity();
+  }
+
+  @Method()
+  async clear(): Promise<void> {
+    this.osdsInput?.clear();
+  }
+
+  @Method()
+  async hide(): Promise<void> {
+    this.osdsInput?.hide();
+  }
+
+  @Method()
+  async reset(): Promise<void> {
+    this.osdsInput?.reset();
+  }
+
+  @Method()
+  async setFocus(): Promise<void> {
+    this.osdsInput?.setFocus();
+  }
+
+  @Method()
+  async setTabindex(value: number): Promise<void> {
+    this.osdsInput?.setTabindex(value);
+  }
+
   render() {
     return (
       <Host>
         <osds-input
+          ref={ (el: OsdsInput) => this.osdsInput = el }
           type={ODS_INPUT_TYPE.password}
           ariaLabel={this.ariaLabel}
           ariaLabelledby={this.ariaLabelledby}

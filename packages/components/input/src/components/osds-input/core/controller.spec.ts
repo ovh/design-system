@@ -209,14 +209,6 @@ describe('spec:ods-input-controller', () => {
       });
     });
 
-    describe('methods:setInputTabindex', () => {
-      it('should set inputTabindex value', () => {
-        setup({ inputTabindex: 0 });
-        controller.setInputTabindex(-1);
-        expect(component.inputTabindex).toBe(-1);
-      });
-    });
-
     describe('methods:stepUp', () => {
       const inputEl = document.createElement('input');
 
@@ -348,54 +340,6 @@ describe('spec:ods-input-controller', () => {
         controller.onChange();
         expect(loggerSpyReferences.methodSpies.debug).toHaveBeenCalledTimes(1);
         expect(loggerSpyReferences.methodSpies.debug).toHaveBeenCalledWith('onChange', value);
-      });
-    });
-
-    describe('methods:hasError', () => {
-      it('should return false', () => {
-        setup({ error: false });
-        controller.getInputValidity = jest.fn().mockImplementation(() => {
-          return { invalid: false };
-        });
-        const hasError = controller.hasError();
-        expect(hasError).toEqual(false);
-      });
-
-      it('should return true if component.error', () => {
-        setup({ error: true });
-        const hasError = controller.hasError();
-        expect(hasError).toEqual(true);
-      });
-
-      it('should return true if getInputValidity.invalid', () => {
-        setup({ error: false });
-        controller.getInputValidity = jest.fn().mockImplementation(() => {
-          return { invalid: true };
-        });
-        const hasError = controller.hasError();
-        expect(hasError).toEqual(true);
-      });
-    });
-
-    describe('methods:reset', () => {
-      it('should clear value', () => {
-        setup({ value: '5' });
-        controller.reset();
-        expect(component.value).toBe('');
-      });
-
-      it('should reset value with default', () => {
-        setup({ value: '5', defaultValue: '10' });
-        controller.reset();
-        expect(component.value).toBe('10');
-      });
-    });
-
-    describe('methods:clear', () => {
-      it('should clear value', () => {
-        setup({ value: '5' });
-        controller.clear();
-        expect(component.value).toBe('');
       });
     });
   });

@@ -1,9 +1,9 @@
-import type { OdsGenericFormFieldAttribute } from '@ovhcloud/ods-common-core';
+import type { OdsCommonFieldAttribute } from '@ovhcloud/ods-common-core';
 
 type OdsCheckboxAttributeCbk = ({ checked, value }: { checked: boolean, value: HTMLInputElement['value'] }) => Promise<void>;
 
-interface OdsCheckboxAttribute extends OdsGenericFormFieldAttribute {
-  /**
+interface OdsCheckboxAttribute extends OdsCommonFieldAttribute {
+  /**packages/components/datepicker/src/components/osds-datepicker/interfaces/attributes.ts
    * afterSave input allows to set a function that returns a promise.
    * It is called after each time an update was performed and allowing to manage pessimistic update strategy
    */

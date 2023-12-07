@@ -1,8 +1,8 @@
 import type { ODS_DATEPICKER_DAY } from '../constants/datepicker-day';
 import type { ODS_DATEPICKER_LOCALE } from '../constants/datepicker-locale';
-import type { OdsGenericFormFieldAttribute } from '@ovhcloud/ods-common-core';
+import type { OdsCommonFieldAttribute } from '@ovhcloud/ods-common-core';
 
-interface OdsDatepickerAttribute extends OdsGenericFormFieldAttribute {
+interface OdsDatepickerAttribute extends OdsCommonFieldAttribute {
   /**
    * Defines the Datepicker's disabled dates
    */

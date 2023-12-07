@@ -1,4 +1,4 @@
-import type { OdsCommonFieldAttribute, OdsFormForbiddenValues, ODS_COMMON_FIELD_SIZE } from '@ovhcloud/ods-common-core';
+import type { OdsCommonFieldAttribute, OdsFormForbiddenValues } from '@ovhcloud/ods-common-core';
 
 interface OdsPasswordAttribute extends OdsCommonFieldAttribute {
   /** ariaLabel of the password */
@@ -11,10 +11,6 @@ interface OdsPasswordAttribute extends OdsCommonFieldAttribute {
   inline?: boolean;
   /** Indicates if the password is read-only or not */
   readOnly?: boolean;
-  /** Indicates if the password is required or not */
-  required?: boolean;
-  /** Size of the password: see component principles */
-  size?: ODS_COMMON_FIELD_SIZE;
   /** Current value of the password */
   value: string;
 }

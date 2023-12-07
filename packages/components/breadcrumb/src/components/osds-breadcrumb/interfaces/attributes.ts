@@ -16,7 +16,7 @@ interface OdsBreadcrumbAttributeItem {
   /**  Link relationship */
   rel?: HTMLLinkElement['rel'];
   /** Specifies where to open the link */
-  target: OdsHTMLAnchorElementTarget;
+  target?: OdsHTMLAnchorElementTarget;
 }
 
 interface OdsBreadcrumbAttribute {

@@ -1,6 +1,6 @@
-import type { OdsFormControlMethods, OdsGenericFormFieldValidityState } from '@ovhcloud/ods-common-core';
+import type { OdsFormControlMethods, OdsGenericFieldValidityState } from '@ovhcloud/ods-common-core';
 
-interface OdsInputMethod extends OdsFormControlMethods<OdsGenericFormFieldValidityState> {
+interface OdsInputMethod extends OdsFormControlMethods<OdsGenericFieldValidityState> {
   /**
    * restore the value to the initial state
    */

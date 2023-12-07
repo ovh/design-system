@@ -1,5 +1,5 @@
 import type { OsdsInput } from '../osds-input';
-import type { OdsFormControl, OdsGenericFormFieldValidityState, OdsInputValue } from '@ovhcloud/ods-common-core';
+import type { OdsFormControl, OdsGenericFieldValidityState, OdsInputValue } from '@ovhcloud/ods-common-core';
 import { OdsGetValidityState, OdsLogger, OdsWarnComponentAttribute } from '@ovhcloud/ods-common-core';
 
 /**
@@ -41,7 +41,7 @@ class OdsInputController {
    * in case of no vanilla input passed, it returns the default value for each property
    * @param inputEl - vanilla input to analyze (may undefined if not already in the DOM during initialization)
    */
-  getInputValidity(inputEl?: HTMLInputElement): OdsGenericFormFieldValidityState {
+  getInputValidity(inputEl?: HTMLInputElement): OdsGenericFieldValidityState {
     const forbiddenValue = this.hasForbiddenValue();
     return {
       ...(inputEl ? {
@@ -86,7 +86,7 @@ class OdsInputController {
     }
   }
 
-  onFormControlChange(formControl?: OdsFormControl<OdsGenericFormFieldValidityState>): void {
+  onFormControlChange(formControl?: OdsFormControl<OdsGenericFieldValidityState>): void {
     this.logger.log(`[input=${this.component.value}]`, 'onFormControlChange', formControl, formControl && formControl.id);
     if (formControl) {
       formControl.register(this.component);

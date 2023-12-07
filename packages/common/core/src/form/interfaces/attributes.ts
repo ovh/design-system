@@ -1,4 +1,4 @@
-import type { ODS_GENERIC_FORM_FIELD_SIZE } from '../constants/ods-generic-form-field-size';
+import type { ODS_GENERIC_FIELD_SIZE } from '../constants/ods-generic-field-size';
 import type { ODS_INPUT_TYPE } from '../constants/ods-input-type';
 import type { OdsFormControl } from '../control/ods-form-control';
 import type { OdsErrorStateControl } from '../error/ods-error-state-control';
@@ -6,7 +6,7 @@ import type { OdsInputValue } from '../ods-input-value';
 import type { OdsFormForbiddenValues, OdsValidityState } from '../validation/public-api';
 import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 
-interface OdsGenericFormFieldValidityState extends OdsValidityState {
+interface OdsGenericFieldValidityState extends OdsValidityState {
   badInput?: boolean;
   patternMismatch?: boolean;
   rangeOverflow?: boolean;
@@ -16,7 +16,7 @@ interface OdsGenericFormFieldValidityState extends OdsValidityState {
   typeMismatch?: boolean;
 }
 
-interface OdsGenericFormFieldAttribute {
+interface OdsGenericFieldAttribute {
   /**
    * @see HTMLElement.ariaLabel
    */
@@ -36,7 +36,7 @@ interface OdsGenericFormFieldAttribute {
   /** List of forbidden values for the input */
   forbiddenValues?: OdsFormForbiddenValues;
   /** Control object of the form the input belongs to */
-  formControl?: OdsFormControl<OdsGenericFormFieldValidityState>;
+  formControl?: OdsFormControl<OdsGenericFieldValidityState>;
   /** Label of the input field */
   label?:string;
   /** Indicates if the input is in loading state or not */
@@ -54,7 +54,7 @@ interface OdsGenericFormFieldAttribute {
   /** Indicates if the input is required or not */
   required?: boolean;
   /** Size of the input: see component principles */
-  size?: ODS_GENERIC_FORM_FIELD_SIZE;
+  size?: ODS_GENERIC_FIELD_SIZE;
   /** Step value for the input */
   step?: number;
   /** Tabindex for the input */
@@ -66,6 +66,6 @@ interface OdsGenericFormFieldAttribute {
 }
 
 export type {
-  OdsGenericFormFieldAttribute,
-  OdsGenericFormFieldValidityState,
+  OdsGenericFieldAttribute,
+  OdsGenericFieldValidityState,
 };

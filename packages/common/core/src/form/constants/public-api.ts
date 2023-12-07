@@ -1,2 +1,2 @@
-export * from './ods-generic-form-field-size';
+export * from './ods-generic-field-size';
 export * from './ods-input-type';

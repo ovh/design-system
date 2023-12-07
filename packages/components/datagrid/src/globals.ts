@@ -6,10 +6,10 @@
  *   import '@ovhcloud/ods-component-text';
  */
 
-import '@ovhcloud/ods-component-icon';
-import '@ovhcloud/ods-component-text';
 import '@ovhcloud/ods-component-button';
 import '@ovhcloud/ods-component-checkbox';
 import '@ovhcloud/ods-component-checkbox-button';
+import '@ovhcloud/ods-component-icon';
 import '@ovhcloud/ods-component-popover';
 import '@ovhcloud/ods-component-menu';
+import '@ovhcloud/ods-component-text';

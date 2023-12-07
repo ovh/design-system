@@ -1,4 +1,4 @@
-import type { OdsGenericFormMethod } from "packages/common/core/dist/cjs";
+import type { OdsGenericFormMethod } from "@ovhcloud/ods-common-core";
 
 type OdsPasswordMethod = Omit<OdsGenericFormMethod, 'hide'>;
   

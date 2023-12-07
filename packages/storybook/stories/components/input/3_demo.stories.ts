@@ -1,5 +1,5 @@
 import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
-import { ODS_INPUT_SIZES, ODS_INPUT_TYPES } from '@ovhcloud/ods-components/input';
+import { ODS_GENERIC_FIELD_SIZES, ODS_INPUT_TYPES } from '@ovhcloud/ods-common-core';
 import { defineCustomElements } from '@ovhcloud/ods-components/input/loader';
 import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-components/input/src/components/osds-input/constants/default-attributes';
 import { html } from 'lit-html';
@@ -14,7 +14,7 @@ const storyParams = {
   type: {
     category: 'General',
     defaultValue: DEFAULT_ATTRIBUTE.type,
-    options: ODS_INPUT_TYPES,
+    options: ODS_GENERIC_FIELD_SIZES,
     control: { type: 'select' },
   },
   color: {
@@ -26,7 +26,7 @@ const storyParams = {
   size: {
     category: 'General',
     defaultValue: DEFAULT_ATTRIBUTE.size,
-    options: ODS_INPUT_SIZES,
+    options: ODS_GENERIC_FIELD_SIZES,
     control: { type: 'select' },
   },
   inline: {

@@ -1,30 +1,29 @@
 import { ODS_INPUT_TYPE } from './constants/ods-input-type';
-import { OdsGenericFormMethodController } from './method.controller';
+import { GenericFormComponent, OdsGenericFormMethodController } from './method.controller';
 
 describe('spec:OdsGenericFormMethodController', () => {
     let controller: OdsGenericFormMethodController;
     let osdsInput = {
-        inputEl: {
-            focus: jest.fn(),
-            value: '',
-            validity: {
-                valid: true,
-            },
-        },
-        disabled: false,
-        masked: false,
+      defaultValue: 'defaultValue',
+      disabled: false,
+      forbiddenValues: [],
+      hasFocus: false,
+      inputEl: {
+        focus: jest.fn(),
         value: '',
-        tabindex: 0,
-        type: ODS_INPUT_TYPE.text,
-        forbiddenValues: [] as string[],
-        defaultValue: 'defaultValue',
+        validity: { valid: true },
+      } as unknown as HTMLInputElement,
+      masked: false,
+      tabindex: 0,
+      type: ODS_INPUT_TYPE.text,
+      value: '',
     }
 
     afterEach(() => {
         jest.clearAllMocks();
     });
 
-  function setup(attributes: Partial<typeof osdsInput> = {}) {
+  function setup(attributes: Partial<GenericFormComponent> = {}) {
     controller = new OdsGenericFormMethodController({
         ...osdsInput,
         ...attributes,
@@ -35,6 +34,12 @@ describe('spec:OdsGenericFormMethodController', () => {
     setup();
     controller.setFocus();
     expect(osdsInput.inputEl.focus).toHaveBeenCalledTimes(1);
+  });
+
+  it('should not call focus on inputEl because of disabled', () => {
+    setup({ disabled: true });
+    controller.setFocus();
+    expect(osdsInput.inputEl.focus).not.toHaveBeenCalled();
   });
 
   it('should clear input', () => {
@@ -48,28 +53,28 @@ describe('spec:OdsGenericFormMethodController', () => {
     const value = 'test';
     setup({ value, inputEl: { ...osdsInput.inputEl, value }, disabled: true });
     controller.clear();
-    expect((controller as any).osdsInput.inputEl.value).toBe(value);
-    expect((controller as any).osdsInput.value).toBe(value);
+    expect((controller as any).component.inputEl.value).toBe(value);
+    expect((controller as any).component.value).toBe(value);
   });
 
   it('should hide input', () => {
     setup({ });
     controller.hide();
-    expect((controller as any).osdsInput.masked).toBe(true);
+    expect((controller as any).component.masked).toBe(true);
     controller.hide();
-    expect((controller as any).osdsInput.masked).toBe(false);
+    expect((controller as any).component.masked).toBe(false);
   });
 
   it('should not hide input because of disable', () => {
     setup({ disabled: true });
     controller.hide();
-    expect((controller as any).osdsInput.masked).toBe(false);
+    expect((controller as any).component.masked).toBe(false);
   });
 
   it('should reset input', () => {
     setup({ value: 'test' });
     controller.reset();
-    expect((controller as any).osdsInput.value).toBe('defaultValue');
+    expect((controller as any).component.value).toBe('defaultValue');
   });
 
   it('should getValidity input', async() => {
@@ -86,7 +91,7 @@ describe('spec:OdsGenericFormMethodController', () => {
   });
 
   it('should getValidity input with forbiddenValues', async() => {
-    setup({ value: 'test', forbiddenValues: ['test'] });
+    setup({ value: '1', forbiddenValues: ['1'] as unknown as number[] });
     const validity = await controller.getValidity();
     expect(validity).toEqual({
        customError: undefined,

@@ -114,7 +114,7 @@ describe('spec:ods-checkbox-controller', () => {
       it('should disable focus management on child', async() => {
         setup();
         controller.afterInit();
-        expect(component.checkboxableComponent.getAttribute('tabindex')).toEqual('-1');
+        expect(component.checkboxableComponent?.getAttribute('tabindex')).toEqual('-1');
       });
 
       it('should warn user if no checkboxable element found', async() => {
@@ -195,9 +195,9 @@ describe('spec:ods-checkbox-controller', () => {
     describe('onFocus', () => {
       it('should call setFocus', () => {
         setup();
-        jest.spyOn(controller, 'setFocus');
+        jest.spyOn(component.genericFormMethodController, 'setFocus');
         controller.onFocus();
-        expect(controller.setFocus).toHaveBeenCalledWith();
+        expect(component.genericFormMethodController.setFocus).toHaveBeenCalledWith();
       });
     });
 
@@ -216,49 +216,6 @@ describe('spec:ods-checkbox-controller', () => {
     describe('propagateHasFocusToChild', () => {
       it('should propagate hasFocus to child', () => {
         testPropagateAttributeToChild('has-focus', (value) => controller.propagateHasFocusToChild(value));
-      });
-    });
-
-    describe('setFocus', () => {
-      it('should do nothing if disabled', () => {
-        setup({
-          disabled: true,
-        });
-        controller.setFocus();
-        expect(component.hasFocus).toEqual(false);
-        expect(spyInputElFocus).not.toHaveBeenCalledWith();
-        expect(spyOnEmitFocus).not.toHaveBeenCalledWith();
-      });
-
-      it('should do nothing if no inputEl', () => {
-        setup({
-          disabled: false,
-          inputEl: undefined,
-        });
-        controller.setFocus();
-        expect(component.hasFocus).toEqual(false);
-        expect(spyInputElFocus).not.toHaveBeenCalledWith();
-        expect(spyOnEmitFocus).not.toHaveBeenCalledWith();
-      });
-
-      it('should update focus state', () => {
-        setup({
-          disabled: false,
-        });
-        controller.setFocus();
-        expect(component.hasFocus).toEqual(true);
-        expect(spyInputElFocus).toHaveBeenCalledWith();
-        expect(spyOnEmitFocus).toHaveBeenCalledWith();
-      });
-    });
-
-    describe('setTabindex', () => {
-      it('should set the index', () => {
-        setup({
-          tabindex: 1,
-        });
-        controller.setTabindex(42);
-        expect(component.tabindex).toEqual(42);
       });
     });
 

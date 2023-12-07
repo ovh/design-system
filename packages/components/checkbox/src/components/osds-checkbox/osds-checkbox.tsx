@@ -8,7 +8,7 @@ import type {
 import type { OdsCheckboxMethod } from './interfaces/methods';
 import type { HTMLStencilElement } from '@stencil/core/internal';
 
-import { OdsCheckboxable, OdsLogger } from '@ovhcloud/ods-common-core';
+import { OdsCheckboxable, OdsGenericFormMethodController, OdsLogger } from '@ovhcloud/ods-common-core';
 import { Component, Element, Event, EventEmitter, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
 
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
@@ -24,6 +24,7 @@ export class OsdsCheckbox implements OdsCheckboxMethod, OdsCheckboxEvent, OdsChe
   private static checkboxIds = 0;
   /** @see OdsComponent.controller */
   controller = new OdsCheckboxController(this);
+  genericFormMethodController = new OdsGenericFormMethodController(this);
   private readonly inputId = `ods-checkbox-${OsdsCheckbox.checkboxIds++}`;
   private readonly logger = new OdsLogger('OsdsCheckbox');
 
@@ -144,20 +145,14 @@ export class OsdsCheckbox implements OdsCheckboxMethod, OdsCheckboxEvent, OdsChe
     this.controller.propagateHasFocusToChild(hasFocus);
   }
 
-  /**
-   * @see OdsCheckboxMethod.setFocus
-   */
   @Method()
   async setFocus() {
-    this.controller.setFocus();
+    this.genericFormMethodController.setFocus();
   }
 
-  /**
-   * @see OdsCheckboxMethod.setTabindex
-   */
   @Method()
   async setTabindex(index: number) {
-    this.controller.setTabindex(index);
+    this.genericFormMethodController.setTabindex(index);
   }
 
   render() {

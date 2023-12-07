@@ -1,5 +1,6 @@
 import type { OdsBreadcrumbItemAttribute } from './interfaces/attributes';
 
+import type { OdsHTMLAnchorElementTarget } from '@ovhcloud/ods-common-core';
 import type { ODS_LINK_REFERRER_POLICY } from '@ovhcloud/ods-component-link';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
@@ -50,8 +51,8 @@ export class OsdsBreadcrumbItem implements OdsBreadcrumbItemAttribute {
   /** @see OdsBreadcrumbItemAttribute.rel */
   @Prop({ reflect: true }) rel?: HTMLLinkElement['rel'];
 
-  /** @see OdsBreadcrumbItemAttribute.disabled */
-  @Prop({ reflect: true }) target = DEFAULT_ATTRIBUTE.target;
+  /** @see OdsBreadcrumbItemAttribute.target */
+  @Prop({ reflect: true }) target?: OdsHTMLAnchorElementTarget = DEFAULT_ATTRIBUTE.target;
 
   /** @see OdsBreadcrumbItemEvent.odsBreadcrumbItemCollapsedClick */
   @Event() odsBreadcrumbItemCollapsedClick!: EventEmitter<void>;

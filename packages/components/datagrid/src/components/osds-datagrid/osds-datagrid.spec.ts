@@ -57,7 +57,7 @@ describe('spec:osds-datagrid', () => {
       odsUnitTestAttribute<OdsDatagridAttribute, 'rows'>({
         defaultValue: DEFAULT_ATTRIBUTE.rows,
         name: 'rows',
-        newValue: JSON.stringify([{ lastname: 'Homer', firstname: 'Simpson' }]),
+        newValue: JSON.stringify([{ firstname: 'Homer', lastname: 'Simpson' }]),
         setup: (value) => setup({ attributes: { ['rows']: value } }),
         value: '[]',
         ...config,

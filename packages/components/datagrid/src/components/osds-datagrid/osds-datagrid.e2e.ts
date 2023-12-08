@@ -33,7 +33,7 @@ describe('e2e:osds-datagrid', () => {
   it('should render 1 rows & 3 columns', async() => {
     await setup({ attributes: {
       columns: JSON.stringify([{ field: 'firstname', title: 'First name' }, { field: 'lastname', title: 'Last name' }]),
-      rows: JSON.stringify([{ lastname: 'Simpson', firstname: 'Homer' }]),
+      rows: JSON.stringify([{ firstname: 'Homer', lastname: 'Simpson' }]),
     } });
     const columns = await table?.findAll('.tabulator-col');
     expect(columns).toHaveLength(3);
@@ -49,7 +49,7 @@ describe('e2e:osds-datagrid', () => {
     await setup({ attributes: {
       columns: JSON.stringify([{ field: 'firstname', title: 'First name' }, { field: 'lastname', title: 'Last name' }]),
       isSelectable: true,
-      rows: JSON.stringify([{ lastname: 'Simpson', firstname: 'Homer' }]),
+      rows: JSON.stringify([{ firstname: 'Homer', lastname: 'Simpson' }]),
     } });
 
     const selectableHeader = await table?.find('.tabulator-header input[type="checkbox"]');
@@ -61,7 +61,7 @@ describe('e2e:osds-datagrid', () => {
     await setup({ attributes: {
       columns: JSON.stringify([{ field: 'firstname', title: 'First name' }, { field: 'lastname', title: 'Last name' }]),
       isSelectable: true,
-      rows: JSON.stringify([{ lastname: 'Simpson', firstname: 'Homer' }]),
+      rows: JSON.stringify([{ firstname: 'Homer', lastname: 'Simpson' }]),
     } });
     const selectableRow = await table?.find('.tabulator-row input[type="checkbox"]');
     await selectableRow?.click();
@@ -76,7 +76,7 @@ describe('e2e:osds-datagrid', () => {
     await setup({ attributes: {
       columns: JSON.stringify([{ field: 'firstname', title: 'First name' }, { field: 'lastname', title: 'Last name' }]),
       isSelectable: true,
-      rows: JSON.stringify([{ lastname: 'Simpson', firstname: 'Homer' }, { lastname: 'Simpson', firstname: 'Marge' }]),
+      rows: JSON.stringify([{ firstname: 'Homer', lastname: 'Simpson' }, { firstname: 'Marge', lastname: 'Simpson' }]),
     } });
 
     const selectableHeader = await table?.find('.tabulator-header input[type="checkbox"]');
@@ -94,7 +94,7 @@ describe('e2e:osds-datagrid', () => {
     await setup({ attributes: {
       columns: JSON.stringify([{ field: 'firstname', title: 'First name' }, { field: 'lastname', title: 'Last name' }]),
       isSelectable: true,
-      rows: JSON.stringify([{ lastname: 'Simpson', firstname: 'Homer' }, { lastname: 'Simpson', firstname: 'Marge' }]),
+      rows: JSON.stringify([{ firstname: 'Homer', lastname: 'Simpson' }, { firstname: 'Marge', lastname: 'Simpson' }]),
     } });
     const rowSelectionChangeSpy = await el.spyOnEvent('odsRowSelectionChange');
 
@@ -109,13 +109,13 @@ describe('e2e:osds-datagrid', () => {
     }) ?? []);
     expect(isAllSelect.includes(false)).toBe(true);
     expect(await selectableHeader?.getProperty('indeterminate')).toBe(true);
-    expect(rowSelectionChangeSpy).toHaveReceivedEventDetail({ rows: [{ lastname: 'Simpson', firstname: 'Homer' }] });
+    expect(rowSelectionChangeSpy).toHaveReceivedEventDetail({ rows: [{ firstname: 'Homer', lastname: 'Simpson' }] });
   });
 
   it('should have sortable columns', async() => {
     await setup({ attributes: {
       columns: JSON.stringify([{ field: 'firstname', isSortable: true, title: 'First name' }, { field: 'lastname', title: 'Last name' }]),
-      rows: JSON.stringify([{ lastname: 'Simpson', firstname: 'Homer' }, { lastname: 'Simpson', firstname: 'Marge' }]),
+      rows: JSON.stringify([{ firstname: 'Homer', lastname: 'Simpson' }, { firstname: 'Marge', lastname: 'Simpson' }]),
     } });
     const sortSpy = await el.spyOnEvent('odsSortChange');
 
@@ -138,7 +138,7 @@ describe('e2e:osds-datagrid', () => {
   it('should have a column formatter', async() => {
     await setup({ attributes: {
       columns: [{ field: 'firstname', title: 'First name' }, { field: 'lastname', title: 'Last name' }],
-      rows: JSON.stringify([{ lastname: 'Simpson', firstname: 'Homer' }, { lastname: 'Simpson', firstname: 'Marge' }]),
+      rows: JSON.stringify([{ firstname: 'Homer', lastname: 'Simpson' }, { firstname: 'Marge', lastname: 'Simpson' }]),
     } });
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     await page.$eval('osds-datagrid', (elm: any) => {
@@ -156,7 +156,7 @@ describe('e2e:osds-datagrid', () => {
     await setup({ attributes: {
       columns: [{ field: 'firstname', title: 'First name' }, { field: 'lastname', title: 'Last name' }],
       height,
-      rows: JSON.stringify([{ lastname: 'Simpson', firstname: 'Homer' }, { lastname: 'Simpson', firstname: 'Marge' }]),
+      rows: JSON.stringify([{ firstname: 'Homer', lastname: 'Simpson' }, { firstname: 'Marge', lastname: 'Simpson' }]),
     } });
     const style = await table?.getComputedStyle();
     expect(style?.height).toBe(height + 'px');
@@ -167,7 +167,7 @@ describe('e2e:osds-datagrid', () => {
     await setup({ attributes: {
       columns: [{ field: 'firstname', title: 'First name' }, { field: 'lastname', title: 'Last name' }],
       rowHeight,
-      rows: JSON.stringify([{ lastname: 'Simpson', firstname: 'Homer' }, { lastname: 'Simpson', firstname: 'Marge' }]),
+      rows: JSON.stringify([{ firstname: 'Homer', lastname: 'Simpson' }, { firstname: 'Marge', lastname: 'Simpson' }]),
     } });
     const rows = await table?.findAll('.tabulator-row');
     const isAllRowHasHeight = await rows?.every(async(row) => {
@@ -188,7 +188,7 @@ describe('e2e:osds-datagrid', () => {
     await setup({ attributes: {
       columns: JSON.stringify([{ field: 'firstname', title: 'First name' }, { field: 'lastname', title: 'Last name' }]),
       hasHideableColumns: false,
-      rows: JSON.stringify([{ lastname: 'Simpson', firstname: 'Homer' }]),
+      rows: JSON.stringify([{ firstname: 'Homer', lastname: 'Simpson' }]),
     } });
     const columns = await table?.findAll('.tabulator-col');
     expect(columns).toHaveLength(2);
@@ -200,9 +200,9 @@ describe('e2e:osds-datagrid', () => {
     await setup({ attributes: {
       columns: JSON.stringify([{ field: 'firstname', title: 'First name' }, { field: 'lastname', title: 'Last name' }]),
       hasHideableColumns: false,
-      rows: JSON.stringify([{ lastname: 'Simpson', firstname: 'Homer' }]),
+      rows: JSON.stringify([{ firstname: 'Homer', lastname: 'Simpson' }]),
     } });
-    el.setProperty('rows', JSON.stringify([{ lastname: 'Simpson', firstname: 'Homer' }, { lastname: 'Simpson', firstname: 'Marge' }]));
+    el.setProperty('rows', JSON.stringify([{ firstname: 'Homer', lastname: 'Simpson' }, { firstname: 'Marge', lastname: 'Simpson' }]));
     await page.waitForChanges();
 
     const rows = JSON.parse(await el.getProperty('rows'));

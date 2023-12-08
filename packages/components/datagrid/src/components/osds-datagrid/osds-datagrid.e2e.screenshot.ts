@@ -33,19 +33,19 @@ describe('e2e:osds-datagrid', () => {
         },
         {
           columns: JSON.stringify([{ field:'firstname', title:'First name' }, { field:'lastname', title:'Last name' }]),
-          rows: JSON.stringify([{ lastname:'Simpson', firstname:'Homer' }]),
+          rows: JSON.stringify([{ firstname:'Homer', lastname:'Simpson' }]),
         },
         {
           columns: JSON.stringify([{ field:'firstname', isSortable: true, title:'First name' }, { field:'lastname', title:'Last name' }]),
-          rows: JSON.stringify([{ lastname:'Simpson', firstname:'Homer' }]),
+          rows: JSON.stringify([{ firstname:'Homer', lastname:'Simpson' }]),
         },
         {
           columns: JSON.stringify([{ field:'firstname', title:'First name' }, { field:'lastname', title:'Last name' }]),
           isSelectable: true,
-          rows: JSON.stringify([{ lastname:'Simpson', firstname:'Homer' }]),
+          rows: JSON.stringify([{ firstname:'Homer', lastname:'Simpson' }]),
         },
         {
-          columns: JSON.stringify([{ field:'firstname', title:'First name' }, { field:'lastname', title:'Last name' }, { title: "Button", field: "button", formatter: (cellValue, rowValue) => {
+          columns: JSON.stringify([{ field:'firstname', title:'First name' }, { field:'lastname', title:'Last name' }, { field: 'button', formatter: (): string => {
             return `<osds-menu>
         <osds-button slot="menu-title" color="primary" variant="stroked">Menu <osds-icon name='home' size='xs'></osds-icon></osds-button>
         <osds-menu-group>
@@ -58,9 +58,10 @@ describe('e2e:osds-datagrid', () => {
           <osds-button color="primary" size='sm' variant='ghost' flex><span slot="start">Action 2</span></osds-button>
         </osds-menu-item>
         <osds-divider color="text" separator="true"></osds-divider>
-      </osds-menu>`}}]),
+      </osds-menu>`;
+          }, title: 'Button' }]),
           hasHideabledColumns: false,
-          rows: JSON.stringify([{ lastname:'Simpson', firstname:'Homer' }]),
+          rows: JSON.stringify([{ firstname:'Homer', lastname:'Simpson' }]),
         },
       ].map((attributes) => createContent({ attributes })).join(' ');
       await setup(content);

@@ -1,6 +1,6 @@
 import type { OdsInputValueChangeEvent } from './components/osds-input/interfaces/events';
 import type { OsdsInput } from './components/osds-input/osds-input';
-import type { OdsGenericFieldValidityState } from '@ovhcloud/ods-common-core';
+import type { OdsCommonFieldValidityState } from '@ovhcloud/ods-common-core';
 import './globals';
 import { OdsErrorStateControl, OdsFormControl, OdsLogger } from '@ovhcloud/ods-common-core';
 
@@ -64,7 +64,7 @@ export default async function(): Promise<void> {
   })();
 
   if (input3) {
-    const input3FormControl = new OdsFormControl<OdsGenericFieldValidityState>('2');
+    const input3FormControl = new OdsFormControl<OdsCommonFieldValidityState>('2');
     input3.formControl = input3FormControl;
     input3.forbiddenValues = [4, { max: 20, min: 7 }];
 
@@ -77,7 +77,7 @@ export default async function(): Promise<void> {
 
       interface ErrorMessagesConnexion {
         el: HTMLElement | null,
-        error: keyof OdsGenericFieldValidityState;
+        error: keyof OdsCommonFieldValidityState;
       }
 
       interface FoundErrorMessagesConnexion extends ErrorMessagesConnexion {

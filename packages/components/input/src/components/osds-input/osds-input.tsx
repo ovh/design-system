@@ -1,7 +1,7 @@
 import type { OdsInputAttribute } from './interfaces/attributes';
 import type { OdsInputEvent, OdsInputValueChangeEventDetail } from './interfaces/events';
 import type { OdsInputMethod } from './interfaces/methods';
-import type { OdsErrorStateControl, OdsFormControl, OdsFormForbiddenValues, ODS_GENERIC_FIELD_SIZE, OdsGenericFieldValidityState, ODS_INPUT_TYPE, OdsInputValue } from '@ovhcloud/ods-common-core';
+import type { OdsCommonFieldValidityState, OdsErrorStateControl, OdsFormControl, OdsFormForbiddenValues, OdsInputValue, ODS_COMMON_FIELD_SIZE, ODS_INPUT_TYPE } from '@ovhcloud/ods-common-core';
 import type { EventEmitter } from '@stencil/core';
 import { OdsLogger } from '@ovhcloud/ods-common-core';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
@@ -38,16 +38,16 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
 
   /** Props */
 
-  /** @see OdsGenericFieldAttribute.ariaLabel */
+  /** @see OdsCommonFieldAttribute.ariaLabel */
   @Prop() ariaLabel: HTMLElement['ariaLabel'] = DEFAULT_ATTRIBUTE.ariaLabel;
 
-  /** @see OdsGenericFieldAttribute.ariaLabelledby */
+  /** @see OdsCommonFieldAttribute.ariaLabelledby */
   @Prop() ariaLabelledby?: string = DEFAULT_ATTRIBUTE.ariaLabelledby;
 
-  /** @see OdsGenericFieldAttribute.clearable */
+  /** @see OdsCommonFieldAttribute.clearable */
   @Prop({ reflect: true }) clearable?: boolean = DEFAULT_ATTRIBUTE.clearable;
 
-  /** @see OdsGenericFieldAttribute.color */
+  /** @see OdsCommonFieldAttribute.color */
   @Prop({ reflect: true }) color?: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
 
   /** @see OdsInputAttribute.contrasted */
@@ -56,20 +56,20 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
   /** @see OdsInputAttribute.defaultValue */
   @Prop({ reflect: true }) defaultValue: OdsInputValue = DEFAULT_ATTRIBUTE.defaultValue;
 
-  /** @see OdsGenericFieldAttribute.disabled */
+  /** @see OdsCommonFieldAttribute.disabled */
   @Prop({ reflect: true }) disabled?: boolean = DEFAULT_ATTRIBUTE.disabled;
 
-  /** @see OdsGenericFieldAttribute.error */
+  /** @see OdsCommonFieldAttribute.error */
   @Prop({ reflect: true }) error?: boolean = DEFAULT_ATTRIBUTE.error;
 
-  /** @see OdsGenericFieldAttribute.errorStateControl */
+  /** @see OdsCommonFieldAttribute.errorStateControl */
   @Prop({ reflect: true }) errorStateControl?: OdsErrorStateControl = DEFAULT_ATTRIBUTE.errorStateControl;
 
-  /** @see OdsGenericFieldAttribute.forbiddenValues */
+  /** @see OdsCommonFieldAttribute.forbiddenValues */
   @Prop({ reflect: true }) forbiddenValues: OdsFormForbiddenValues<number> = DEFAULT_ATTRIBUTE.forbiddenValues;
 
-  /** @see OdsGenericFieldAttribute.formControl */
-  @Prop({ reflect: true }) formControl?: OdsFormControl<OdsGenericFieldValidityState> = DEFAULT_ATTRIBUTE.formControl;
+  /** @see OdsCommonFieldAttribute.formControl */
+  @Prop({ reflect: true }) formControl?: OdsFormControl<OdsCommonFieldValidityState> = DEFAULT_ATTRIBUTE.formControl;
 
   /** @see OdsInputAttribute.icon */
   @Prop({ reflect: true }) icon?: ODS_ICON_NAME = DEFAULT_ATTRIBUTE.icon;
@@ -77,13 +77,13 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
   /** @see OdsInputAttribute.inline */
   @Prop({ reflect: true }) inline?: boolean = DEFAULT_ATTRIBUTE.inline;
 
-  /** @see OdsGenericFieldAttribute.label */
+  /** @see OdsCommonFieldAttribute.label */
   @Prop({ reflect: true }) label?: string = DEFAULT_ATTRIBUTE.label;
 
-  /** @see OdsGenericFieldAttribute.loading */
+  /** @see OdsCommonFieldAttribute.loading */
   @Prop({ reflect: true }) loading?: boolean = DEFAULT_ATTRIBUTE.loading;
 
-  /** @see OdsGenericFieldAttribute.masked */
+  /** @see OdsCommonFieldAttribute.masked */
   @Prop({ mutable: true, reflect: true }) masked?: boolean = DEFAULT_ATTRIBUTE.masked;
 
   /** @see OdsInputAttribute.max */
@@ -92,31 +92,31 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
   /** @see OdsInputAttribute.min */
   @Prop({ reflect: true }) min?: number = DEFAULT_ATTRIBUTE.min;
 
-  /** @see OdsGenericFieldAttribute.name */
+  /** @see OdsCommonFieldAttribute.name */
   @Prop({ reflect: true }) name?: string = DEFAULT_ATTRIBUTE.name;
 
-  /** @see OdsGenericFieldAttribute.placeholder */
+  /** @see OdsCommonFieldAttribute.placeholder */
   @Prop({ reflect: true }) placeholder?: string = DEFAULT_ATTRIBUTE.placeholder;
 
-  /** @see OdsGenericFieldAttribute.prefixValue */
+  /** @see OdsCommonFieldAttribute.prefixValue */
   @Prop({ reflect: true }) prefixValue = DEFAULT_ATTRIBUTE.prefixValue;
 
-  /** @see OdsGenericFieldAttribute.readOnly */
+  /** @see OdsCommonFieldAttribute.readOnly */
   @Prop({ reflect: true }) readOnly?: boolean = DEFAULT_ATTRIBUTE.readOnly;
 
-  /** @see OdsGenericFieldAttribute.required */
+  /** @see OdsCommonFieldAttribute.required */
   @Prop({ reflect: true }) required?: boolean = DEFAULT_ATTRIBUTE.required;
 
-  /** @see OdsGenericFieldAttribute.size */
-  @Prop({ reflect: true }) size?: ODS_GENERIC_FIELD_SIZE = DEFAULT_ATTRIBUTE.size;
+  /** @see OdsCommonFieldAttribute.size */
+  @Prop({ reflect: true }) size?: ODS_COMMON_FIELD_SIZE = DEFAULT_ATTRIBUTE.size;
 
-  /** @see OdsGenericFieldAttribute.step */
+  /** @see OdsCommonFieldAttribute.step */
   @Prop({ reflect: true }) step?: number = DEFAULT_ATTRIBUTE.step;
 
-  /** @see OdsGenericFieldAttribute.type */
+  /** @see OdsCommonFieldAttribute.type */
   @Prop({ reflect: true }) type: ODS_INPUT_TYPE = DEFAULT_ATTRIBUTE.type;
 
-  /** @see OdsGenericFieldAttribute.value */
+  /** @see OdsCommonFieldAttribute.value */
   @Prop({ mutable: true, reflect: true }) value: OdsInputValue = DEFAULT_ATTRIBUTE.value;
 
   /** Events */
@@ -133,7 +133,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
   /** Watch */
 
   @Watch('formControl')
-  onFormControlChange(formControl?: OdsFormControl<OdsGenericFieldValidityState>): void {
+  onFormControlChange(formControl?: OdsFormControl<OdsCommonFieldValidityState>): void {
     this.controller.onFormControlChange(formControl);
   }
 
@@ -203,7 +203,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
    * @see OdsInputMethods.getValidity
    */
   @Method()
-  async getValidity(): Promise<OdsGenericFieldValidityState> {
+  async getValidity(): Promise<OdsCommonFieldValidityState> {
     return this.controller.getInputValidity(this.inputEl);
   }
 

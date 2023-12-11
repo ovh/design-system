@@ -1,4 +1,4 @@
-import type { OdsFormForbiddenValues, ODS_GENERIC_FIELD_SIZE } from '@ovhcloud/ods-common-core';
+import type { OdsFormForbiddenValues, ODS_COMMON_FIELD_SIZE } from '@ovhcloud/ods-common-core';
 import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 
 interface OdsPasswordAttribute {
@@ -35,7 +35,7 @@ interface OdsPasswordAttribute {
   /** Indicates if the password is required or not */
   required?: boolean;
   /** Size of the password: see component principles */
-  size?: ODS_GENERIC_FIELD_SIZE;
+  size?: ODS_COMMON_FIELD_SIZE;
   /** Current value of the password */
   value: string;
 }

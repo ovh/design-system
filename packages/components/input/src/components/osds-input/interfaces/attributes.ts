@@ -1,7 +1,7 @@
-import type { OdsFormForbiddenValues, OdsGenericFieldAttribute, ODS_INPUT_TYPE, OdsInputValue } from '@ovhcloud/ods-common-core';
+import type { OdsCommonFieldAttribute, OdsFormForbiddenValues, ODS_INPUT_TYPE, OdsInputValue } from '@ovhcloud/ods-common-core';
 import { ODS_ICON_NAME } from '@ovhcloud/ods-component-icon';
 
-interface OdsInputAttribute extends OdsGenericFieldAttribute {
+interface OdsInputAttribute extends OdsCommonFieldAttribute {
   /** Repeat this attribute because it cannot be undefined in osds-input */
   ariaLabel: HTMLElement['ariaLabel'];
   /** Indicates if the input is contrasted or not: see component principles */

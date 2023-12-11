@@ -1,4 +1,4 @@
-import type { OdsGenericFieldAttribute } from '@ovhcloud/ods-common-core';
+import type { OdsCommonFieldAttribute } from '@ovhcloud/ods-common-core';
 import { Ods, OdsFormControl, ODS_INPUT_TYPE, OdsLogger } from '@ovhcloud/ods-common-core';
 import { OdsClearLoggerSpy, OdsInitializeLoggerSpy, OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
 import { OdsInputController } from './controller';
@@ -45,7 +45,7 @@ describe('spec:ods-input-controller', () => {
 
   describe('methods', () => {
     describe('methods:onFormControlChange', () => {
-      const formControl = new OdsFormControl<OdsGenericFieldAttribute>('id');
+      const formControl = new OdsFormControl<OdsCommonFieldAttribute>('id');
 
       beforeEach(() => {
         formControl.register = jest.fn();
@@ -69,7 +69,7 @@ describe('spec:ods-input-controller', () => {
 
     describe('methods:beforeInit', () => {
       it('should call onFormControlChange', () => {
-        const formControl = new OdsFormControl<OdsGenericFieldAttribute>('id');
+        const formControl = new OdsFormControl<OdsCommonFieldAttribute>('id');
         setup({ formControl });
         spyOnOnFormControlChange = jest.spyOn(controller, 'onFormControlChange');
         controller.beforeInit();

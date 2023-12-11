@@ -1,0 +1,24 @@
+{
+  "extends": "./tsconfig.prod.json",
+  "compilerOptions": {
+    "jsx": "react",
+    "jsxFactory": "h",
+    "declaration": true,
+    "allowJs": true
+  },
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "node_modules",
+    "react",
+    "**/**/.stencil",
+    "**/**/dist",
+    "**/**/www",
+    "**/**/*.spec.ts",
+    "**/**/*.e2e.ts",
+    "**/**/*.e2e.screenshot.ts",
+    "**/**/*.d.ts",
+    "**/**/globals.ts"
+  ]
+}

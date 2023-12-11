@@ -9,7 +9,8 @@ module.exports = {
   framework: '@storybook/react',
   staticDirs: ['../public'],
   //stories: ['../**/*.stories.@(md|mdx|ts|tsx)'], TODO put back when components-ovh get delivered
-  stories: ['../stories/!(components-ovh)*/**/*.stories.@(md|mdx|ts|tsx)'],
+  //stories: ['../stories/!(components-ovh)*/**/*.stories.@(md|mdx|ts|tsx)'],
+  stories: ['../stories/!(components-ovh)*/text/*.stories.@(md|mdx|ts|tsx)'],
   addons: [
     {
       name: '@storybook/addon-essentials',

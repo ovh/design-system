@@ -1,12 +1,11 @@
 import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
-import { ODS_TEXT_LEVELS, ODS_TEXT_SIZES } from '@ovhcloud/ods-components/text';
-import { defineCustomElements } from '@ovhcloud/ods-components/text/loader';
-import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-components/text/src/components/osds-text/constants/default-attributes';
+import { ODS_TEXT_COLOR_INTENT, ODS_TEXT_LEVEL, ODS_TEXT_LEVELS, ODS_TEXT_SIZE, ODS_TEXT_SIZES } from '@ovhcloud/ods-components';
+import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-text';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 import { createComponentTable, extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 
-defineCustomElements();
+defineCustomElement();
 
 const textContent = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.';
 
@@ -14,19 +13,19 @@ const textContent = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, se
 const storyParams = {
   color: {
     category: 'General',
-    defaultValue: DEFAULT_ATTRIBUTE.color,
+    defaultValue: ODS_TEXT_COLOR_INTENT.default,
     options: ODS_THEME_COLOR_INTENTS,
     control: { type: 'select' },
   },
   size: {
     category: 'General',
-    defaultValue: DEFAULT_ATTRIBUTE.size,
+    defaultValue: ODS_TEXT_SIZE._100,
     options: ODS_TEXT_SIZES,
     control: { type: 'select' },
   },
   level: {
     category: 'General',
-    defaultValue: DEFAULT_ATTRIBUTE.level,
+    defaultValue: ODS_TEXT_LEVEL.body,
     options: ODS_TEXT_LEVELS,
     control: { type: 'select' },
   },
@@ -36,11 +35,11 @@ const storyParams = {
   },
   contrasted: {
     category: 'Misc',
-    defaultValue: DEFAULT_ATTRIBUTE.contrasted,
+    defaultValue: false,
   },
   breakSpaces: {
     category: 'Misc',
-    defaultValue: DEFAULT_ATTRIBUTE.breakSpaces,
+    defaultValue: false,
   },
 };
 

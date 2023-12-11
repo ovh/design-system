@@ -1,6 +1,7 @@
 {
   "name": "@ovhcloud/ods-component-text",
   "version": "16.6.0",
+  "private": true,
   "description": "ODS Text component",
   "license": "Apache-2.0",
   "main": "dist/index.cjs.js",
@@ -11,11 +12,6 @@
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
   "scripts": {
-    "build:ci": "build-stencil",
-    "build:prod": "build-stencil prod",
-    "build:react": "npm --prefix react run build",
-    "build:stencil": "stencil build --prod --config stencil.config.ts",
-    "build:vue": "npm --prefix vue run build",
     "clean": "rimraf .stencil coverage custom-elements custom-elements-bundle dist docs-api loader screenshot www",
     "doc": "typedoc --json ./docs-api/typedoc.json --pretty && node ../../../scripts/generate-typedoc-md.js",
     "doc:api": "typedoc",
@@ -38,7 +34,6 @@
     "@ovhcloud/ods-common-theming": "16.6.0"
   },
   "devDependencies": {
-    "@ovhcloud/ods-common-scripts": "16.6.0",
     "@ovhcloud/ods-common-testing": "16.6.0",
     "@ovhcloud/ods-stencil-dev": "16.6.0"
   }

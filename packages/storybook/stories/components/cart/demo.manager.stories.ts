@@ -1,5 +1,4 @@
-import type { OsdsCartManager } from '@ovhcloud/ods-components/cart';
-
+import type { OsdsCartManager } from '@ovhcloud/ods-components';
 import { OdsLogger } from '@ovhcloud/ods-common-core';
 
 const logger = new OdsLogger('OsdsCart-stories');

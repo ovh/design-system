@@ -1,9 +1,9 @@
-import { defineCustomElements } from '@ovhcloud/ods-components/checkbox-button/loader';
+import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-checkbox-button';
 import { html } from 'lit-html';
 
 import { extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 
-defineCustomElements();
+defineCustomElement();
 
 const storyParams = {
   disabled: {

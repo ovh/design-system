@@ -14,7 +14,7 @@
   "collection:main": "dist/collection/index.js",
   "scripts": {
     "build:prod": "build-stencil",
-    "build:stencil": "stencil build --docs --prod --config stencil.config.ts",
+    "build:stencil": "stencil build --prod --config stencil.config.ts",
     "build:react": "npm --prefix react run build",
     "build:vue": "npm --prefix vue run build"
   },

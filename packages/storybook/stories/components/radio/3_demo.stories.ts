@@ -1,8 +1,8 @@
-import { defineCustomElements } from '@ovhcloud/ods-components/radio/loader';
+import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-radio';
 import { html } from 'lit-html';
 import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 
-defineCustomElements();
+defineCustomElement();
 
 const storyParams = {
   disabled: {

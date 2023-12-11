@@ -1,8 +1,8 @@
-import { defineCustomElements } from '@ovhcloud/ods-components/breadcrumb/loader';
+import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-breadcrumb';
 import { html } from 'lit-html';
 import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 
-defineCustomElements();
+defineCustomElement();
 
 /* Default story parameters  */
 const storyParams = {

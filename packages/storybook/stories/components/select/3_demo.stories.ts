@@ -1,36 +1,35 @@
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import { ODS_SELECT_SIZES } from '@ovhcloud/ods-components/select';
-import { defineCustomElements } from '@ovhcloud/ods-components/select/loader';
-import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-components/select/src/components/osds-select/constants/default-attributes';
+import { ODS_SELECT_SIZE, ODS_SELECT_SIZES } from '@ovhcloud/ods-components';
+import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-select';
 import { html } from 'lit-html';
 import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 
-defineCustomElements();
+defineCustomElement();
 
 const storyParams = {
   color: {
     category: 'General',
-    defaultValue: DEFAULT_ATTRIBUTE.color,
+    defaultValue: ODS_THEME_COLOR_INTENT.primary,
     options: [ODS_THEME_COLOR_INTENT.primary],
     control: { type: 'select' },
   },
   size: {
     category: 'General',
-    defaultValue: DEFAULT_ATTRIBUTE.size,
+    defaultValue: ODS_SELECT_SIZE.md,
     options: ODS_SELECT_SIZES,
     control: { type: 'select' },
   },
   disabled: {
     category: 'Misc',
-    defaultValue: DEFAULT_ATTRIBUTE.disabled,
+    defaultValue: false,
   },
   inline: {
     category: 'Misc',
-    defaultValue: DEFAULT_ATTRIBUTE.inline,
+    defaultValue: false,
   },
   required: {
     category: 'Misc',
-    defaultValue: DEFAULT_ATTRIBUTE.required,
+    defaultValue: false,
   },
 };
 

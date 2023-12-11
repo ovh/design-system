@@ -1,9 +1,8 @@
-import { defineCustomElements } from '@ovhcloud/ods-components/pagination/loader';
-import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-components/pagination/src/components/osds-pagination/constants/default-attributes';
+import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-pagination';
 import { html } from 'lit-html';
 import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 
-defineCustomElements();
+defineCustomElement();
 
 const sharedStoryParam = {
   current: {
@@ -12,15 +11,15 @@ const sharedStoryParam = {
   },
   disabled: {
     category: 'Misc',
-    defaultValue: DEFAULT_ATTRIBUTE.disabled,
+    defaultValue: false,
   },
   labelTooltipPrevious: {
     category: 'Misc',
-    defaultValue: DEFAULT_ATTRIBUTE.labelTooltipPrevious,
+    defaultValue: '',
   },
   labelTooltipNext: {
     category: 'Misc',
-    defaultValue: DEFAULT_ATTRIBUTE.labelTooltipNext,
+    defaultValue: '',
   },
 };
 

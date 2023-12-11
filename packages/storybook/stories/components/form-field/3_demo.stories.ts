@@ -1,9 +1,9 @@
-import { defineCustomElements } from '@ovhcloud/ods-components/form-field/loader';
+import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-form-field';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 
-defineCustomElements();
+defineCustomElement();
 
 /* Default story parameters  */
 const storyParams = {

@@ -1,23 +1,22 @@
-import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
-import { defineCustomElements } from '@ovhcloud/ods-components/modal/loader';
-import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-components/modal/src/components/osds-modal/constants/default-attributes';
+import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
+import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-modal';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 
-defineCustomElements();
+defineCustomElement();
 
 /* Default story parameters  */
 const storyParams = {
   color: {
     category: 'General',
-    defaultValue: DEFAULT_ATTRIBUTE.color,
+    defaultValue: ODS_THEME_COLOR_INTENT.info,
     options: ODS_THEME_COLOR_INTENTS,
     control: { type: 'select' },
   },
   dismissible: {
     category: 'General',
-    defaultValue: DEFAULT_ATTRIBUTE.dismissible,
+    defaultValue: true,
   },
   headline: {
     category: 'General',
@@ -25,7 +24,7 @@ const storyParams = {
   },
   masked: {
     category: 'General',
-    defaultValue: DEFAULT_ATTRIBUTE.masked,
+    defaultValue: false,
   },
   content: {
     category: 'Slot',

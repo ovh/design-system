@@ -1,8 +1,8 @@
-import { defineCustomElements } from '@ovhcloud/ods-components/popover/loader';
+import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-popover';
 import { html } from 'lit-html';
 import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 
-defineCustomElements();
+defineCustomElement();
 
 /* Default story parameters  */
 const storyParams = {

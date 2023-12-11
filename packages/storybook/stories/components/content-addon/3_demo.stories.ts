@@ -1,10 +1,10 @@
-import { defineCustomElements } from '@ovhcloud/ods-components/content-addon/loader';
-import { defineCustomElements as tileCustomElements } from '@ovhcloud/ods-components/tile/loader';
+import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-content-addon';
+import { defineCustomElement as tileCustomElements } from '@ovhcloud/ods-components/dist/components/osds-tile';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 
-defineCustomElements();
+defineCustomElement();
 tileCustomElements();
 
 /* Default story parameters  */

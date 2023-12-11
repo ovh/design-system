@@ -1,4 +1,4 @@
-import { ODS_FLAG_ISO_CODES } from '@ovhcloud/ods-component-flag';
+import { ODS_FLAG_ISO_CODES } from '@ovhcloud/ods-components';
 import { html } from 'lit-html';
 import { repeat } from 'lit-html/directives/repeat';
 

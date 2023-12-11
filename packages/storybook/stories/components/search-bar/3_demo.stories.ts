@@ -1,4 +1,4 @@
-import { defineCustomElements } from '@ovhcloud/ods-components/search-bar/loader';
+import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-search-bar';
 import { html } from 'lit-html';
 import {
   extractArgTypes,
@@ -6,7 +6,7 @@ import {
   getTagAttributes,
 } from '../../../core/componentHTMLUtils';
 
-defineCustomElements();
+defineCustomElement();
 
 /* Default story parameters  */
 const storyParams = {

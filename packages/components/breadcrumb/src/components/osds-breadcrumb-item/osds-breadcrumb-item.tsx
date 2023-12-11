@@ -7,6 +7,8 @@ import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
 import { Component, Element, Event, EventEmitter, Host, Prop, h } from '@stencil/core';
 
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { OdsBreadcrumbItemEvent } from './interfaces/events';
+import { OdsBreadcrumbAttributeItem } from '../osds-breadcrumb/public-api';
 
 /**
  * @slot (unnamed) - Breadcrumb Item content
@@ -16,7 +18,7 @@ import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
   styleUrl: 'osds-breadcrumb-item.scss',
   shadow: true,
 })
-export class OsdsBreadcrumbItem implements OdsBreadcrumbItemAttribute {
+export class OsdsBreadcrumbItem implements OdsBreadcrumbItemAttribute, OdsBreadcrumbItemEvent {
   private defaultColorIntent = ODS_THEME_COLOR_INTENT.primary;
 
   @Element() el!: HTMLElement;
@@ -57,8 +59,30 @@ export class OsdsBreadcrumbItem implements OdsBreadcrumbItemAttribute {
   /** @see OdsBreadcrumbItemEvent.odsBreadcrumbItemCollapsedClick */
   @Event() odsBreadcrumbItemCollapsedClick!: EventEmitter<void>;
 
-  private onCollapsedElementClick() {
+   /** @see OdsBreadcrumbItemEvent.odsBreadcrumbItemClick */
+   @Event() odsBreadcrumbItemClick!: EventEmitter<OdsBreadcrumbAttributeItem & { event: MouseEvent }>;
+
+  private onCollapsedElementClick(): void {
     this.odsBreadcrumbItemCollapsedClick.emit();
+  }
+
+  private onElementClick(event: MouseEvent): void {
+    if (this.isDisabled()) {
+      return;
+    }
+    this.odsBreadcrumbItemClick.emit({
+      disabled: this.disabled,
+      href: this.href,
+      label: this.label,
+      referrerpolicy: this.referrerpolicy,
+      rel: this.rel,
+      target: this.target,
+      event,
+    });
+  }
+
+  private isDisabled() {
+    return this.disabled || this.isLast;
   }
 
   render() {
@@ -69,11 +93,12 @@ export class OsdsBreadcrumbItem implements OdsBreadcrumbItemAttribute {
         <div class="item">
           <osds-link color={this.defaultColorIntent}
             contrasted={this.contrasted}
-            disabled={this.disabled || this.isLast}
+            disabled={this.isDisabled()}
             href={this.href}
             referrerpolicy={this.referrerpolicy}
             rel={this.rel}
-            target={this.target}>
+            target={this.target}
+            onClick={(event: MouseEvent) => this.onElementClick(event)}>
             {
               !!this.icon
               && <span slot="start">

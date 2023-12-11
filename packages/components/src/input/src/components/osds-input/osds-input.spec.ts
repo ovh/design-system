@@ -2,7 +2,7 @@ jest.mock('./core/controller'); // keep jest.mock before any
 
 import type { OdsInputAttribute } from './interfaces/attributes';
 import type { SpecPage } from '@stencil/core/testing';
-import { OdsCreateDefaultValidityState, OdsFormControl, ODS_GENERIC_FIELD_SIZE, ODS_INPUT_TYPE, OdsLogger } from '@ovhcloud/ods-common-core';
+import { ODS_COMMON_FIELD_SIZE, OdsCreateDefaultValidityState, OdsFormControl, ODS_INPUT_TYPE, OdsLogger } from '@ovhcloud/ods-common-core';
 import { OdsMockNativeMethod, OdsMockPropertyDescriptor, odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { newSpecPage } from '@stencil/core/testing';
@@ -192,8 +192,8 @@ describe('spec:osds-input', () => {
       odsUnitTestAttribute<OdsInputAttribute, 'size'>({
         name: 'size',
         defaultValue: DEFAULT_ATTRIBUTE.size,
-        newValue: ODS_GENERIC_FIELD_SIZE.md,
-        value: ODS_GENERIC_FIELD_SIZE.md,
+        newValue: ODS_COMMON_FIELD_SIZE.md,
+        value: ODS_COMMON_FIELD_SIZE.md,
         setup: (value) => setup({ attributes: { ['size']: value } }),
         ...config,
       });

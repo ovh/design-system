@@ -104,12 +104,39 @@ describe('e2e:osds-breadcrumb-item', () => {
       expect(iconElement.getAttribute('contrasted')).not.toBeNull();
     });
 
-
     it('should render link with rel & referrerpolicy', async() => {
       await setupItem({ href: dummyHref, label: dummyLabel, referrerpolicy: 'no-referrer', rel: 'stylesheets' });
 
       expect(itemLinkElement.getAttribute('referrerpolicy')).toBe('no-referrer');
       expect(itemLinkElement.getAttribute('rel')).toBe('stylesheets');
+    });
+
+    it('should send en event odsBreadcrumbItemClick', async() => {
+      await setupItem({ href: dummyHref, label: dummyLabel });
+
+      const spy = await page.spyOnEvent('odsBreadcrumbItemClick');
+      await itemLinkElement.click();
+
+      expect(spy).toHaveReceivedEventTimes(1);
+      expect(spy.firstEvent.detail).toEqual(expect.objectContaining({ href: dummyHref, label: dummyLabel }));
+    });
+
+    it('should not send en event odsBreadcrumbItemClick because is disabled', async() => {
+      await setupItem({ href: dummyHref, label: dummyLabel, disabled: true });
+
+      const spy = await page.spyOnEvent('odsBreadcrumbItemClick');
+      await itemLinkElement.click();
+
+      expect(spy).not.toHaveReceivedEvent();
+    });
+
+    it('should not send en event odsBreadcrumbItemClick because isLast', async() => {
+      await setupItem({ href: dummyHref, label: dummyLabel, isLast: true });
+
+      const spy = await page.spyOnEvent('odsBreadcrumbItemClick');
+      await itemLinkElement.click();
+
+      expect(spy).not.toHaveReceivedEvent();
     });
   });
 

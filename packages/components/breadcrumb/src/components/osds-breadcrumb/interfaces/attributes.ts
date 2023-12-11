@@ -6,11 +6,11 @@ interface OdsBreadcrumbAttributeItem {
   /** Item should be disabled or not */
   disabled?: boolean;
   /** Item link to redirect to */
-  href: string
+  href?: string;
   /** Icon to display */
-  icon?: ODS_ICON_NAME
+  icon?: ODS_ICON_NAME;
   /** Text to display */
-  label?: string
+  label?: string;
   /** Link referrer policy */
   referrerpolicy?: ODS_LINK_REFERRER_POLICY;
   /**  Link relationship */

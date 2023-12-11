@@ -7,7 +7,7 @@ interface OdsBreadcrumbItemAttribute {
   /** Item should be disabled or not */
   disabled?: boolean;
   /** Item link to redirect to */
-  href: string
+  href?: string
   /** Icon to display */
   icon?: ODS_ICON_NAME
   /** @internal */

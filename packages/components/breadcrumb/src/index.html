@@ -37,7 +37,7 @@
 <script>
   document.querySelector('#default-breadcrumb').items = JSON.stringify([
     { href: "#home", label: "Home" },
-    { href: "#services", label: "Services", target: '_blank' },
+    { label: "Services" },
     { href: "#products", label: "Products", disabled: true },
     { href: "#web", label: "Web" },
   ]);
@@ -50,13 +50,18 @@
     { href: "#domains", label: "Domains" },
     { href: "#ovh", label: "ovh.com" },
   ];
+  document.querySelector('#collapsed-breadcrumb').addEventListener('odsBreadcrumbItemCollapsedClick', () => console.log('odsBreadcrumbItemCollapsedClick'))
 
-  document.querySelector('#icon-breadcrumb').items = [
+  const iconBreadcrumb = document.querySelector('#icon-breadcrumb')
+  iconBreadcrumb.items = [
     { href: "#home", icon: "home" },
     { href: "#services", label: "Services", icon: "book" },
-    { href: "#products", label: "Products" },
+    { label: "Products" },
     { href: "#web", label: "Web" },
   ];
+  iconBreadcrumb.addEventListener('odsBreadcrumbItemClick', (event) => {
+    console.log('event', event);
+  })
 
   document.querySelector('#contrasted-breadcrumb').items = [
     { href: "#home", icon: "home" },

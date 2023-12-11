@@ -1,5 +1,5 @@
 {
-  "extends": "../../tsconfig.vue.json",
+  "extends": "../tsconfig.react.json",
   "compilerOptions": {
     "outDir": "dist/esm",
     "declarationDir": "dist/types"

@@ -1,6 +1,5 @@
 import type { Config as JestConfig } from '@jest/types';
 import type { Config as StencilConfig } from '@stencil/core';
-
 import { reactOutputTarget } from '@stencil/react-output-target';
 import { sass } from '@stencil/sass';
 import { vueOutputTarget } from '@stencil/vue-output-target';
@@ -9,13 +8,13 @@ import * as autoprefixer from 'autoprefixer';
 import * as nodeSassPackageImporter from 'node-sass-package-importer';
 import { inlineSvg } from 'stencil-inline-svg';
 
-function getStencilConfig({ args, componentCorePackage, devScript, excludeComponents = [], jestConfig = {}, namespace }: {
+function getStencilConfig({ args, componentCorePackage, devScript, jestConfig = {}, namespace, tsconfig }: {
   args: string[],
   componentCorePackage: string,
-  excludeComponents?: string[],
   devScript?: string,
   jestConfig: JestConfig.InitialOptions,
   namespace: string,
+  tsconfig?: string,
 }): StencilConfig {
   const isCi = args.some((arg) => arg.match(/(--|:)ci/g));
   const isDev = args.includes('--dev');
@@ -23,6 +22,9 @@ function getStencilConfig({ args, componentCorePackage, devScript, excludeCompon
   const isTest = args.includes('--e2e') || args.includes('--spec');
 
   function getTsConfig() {
+    if (tsconfig) {
+      return tsconfig;
+    }
     if (isProd) {
       return 'tsconfig.prod.json';
     }
@@ -40,17 +42,10 @@ function getStencilConfig({ args, componentCorePackage, devScript, excludeCompon
     namespace,
     outputTargets: [
       {
-        dir: 'dist',
         esmLoaderPath: '../loader',
         type: 'dist',
       },
       {
-        dir: 'custom-elements',
-        copy: isProd ? [{
-          dest: 'custom-elements',
-          src: '../../../common/stencil/src/scripts/custom-elements', // TODO get rid of this indirect module reference
-          warn: true,
-        }] : [],
         generateTypeDeclarations: true,
         includeGlobalScripts: false,
         type: 'dist-custom-elements',
@@ -117,11 +112,11 @@ function getStencilConfig({ args, componentCorePackage, devScript, excludeCompon
   if (isProd) {
     return {
       ...baseConfig,
+      enableCache: false,
       outputTargets: baseConfig.outputTargets?.concat([
         reactOutputTarget({
           componentCorePackage,
-          customElementsDir: 'custom-elements',
-          excludeComponents,
+          customElementsDir: 'dist/components',
           includeDefineCustomElements: false,
           includeImportCustomElements: true,
           includePolyfills: false,
@@ -129,8 +124,7 @@ function getStencilConfig({ args, componentCorePackage, devScript, excludeCompon
         }),
         vueOutputTarget({
           componentCorePackage,
-          customElementsDir: 'custom-elements',
-          excludeComponents,
+          customElementsDir: 'dist/components',
           includeDefineCustomElements: false,
           includeImportCustomElements: true,
           includePolyfills: false,

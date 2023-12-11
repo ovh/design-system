@@ -1,9 +1,10 @@
 {
-  "name": "@ovhcloud/ods-component-text-vue",
+  "name": "@ovhcloud/ods-components-vue",
   "version": "16.6.0",
   "private": true,
   "description": "Vue specific wrapper for ods",
   "keywords": [],
+  "author": "OVH SAS",
   "license": "Apache-2.0",
   "scripts": {
     "build": "npm run clean && npm run compile",
@@ -19,7 +20,7 @@
     "dist/"
   ],
   "dependencies": {
-    "@ovhcloud/ods-component-text": "16.6.0"
+    "@ovhcloud/ods-components": "16.6.0"
   },
   "peerDependencies": {
     "vue": ">=3"

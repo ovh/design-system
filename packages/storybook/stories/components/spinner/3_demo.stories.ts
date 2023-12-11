@@ -1,26 +1,25 @@
-import { ODS_SPINNER_SIZES } from '@ovhcloud/ods-components/spinner';
-import { defineCustomElements } from '@ovhcloud/ods-components/spinner/loader';
-import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-components/spinner/src/components/osds-spinner/constants/default-attributes';
+import { ODS_SPINNER_SIZE, ODS_SPINNER_SIZES } from '@ovhcloud/ods-components';
+import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-spinner';
 import { html } from 'lit-html';
 import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 
-defineCustomElements();
+defineCustomElement();
 
 /* Default story parameters  */
 const storyParams = {
   size: {
     category: 'General',
-    defaultValue: DEFAULT_ATTRIBUTE.size,
+    defaultValue: ODS_SPINNER_SIZE.md,
     options: ODS_SPINNER_SIZES,
     control: { type: 'select' },
   },
   contrasted: {
     category: 'Misc',
-    defaultValue: DEFAULT_ATTRIBUTE.contrasted,
+    defaultValue: false,
   },
   inline: {
     category: 'Misc',
-    defaultValue: DEFAULT_ATTRIBUTE.inline,
+    defaultValue: false,
   },
 };
 

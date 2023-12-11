@@ -1,12 +1,12 @@
 // @ts-ignore
 import changelog from '@ovhcloud/ods-components/datagrid/CHANGELOG.md';
-import { defineCustomElements } from '@ovhcloud/ods-components/datagrid/loader';
+import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-datagrid';
 import { html } from 'lit-html';
 // @ts-ignore
 import page from './2_usage.stories.mdx';
 import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 
-defineCustomElements();
+defineCustomElement();
 
 /* Default story parameters */
 const defaultStoryParams = {

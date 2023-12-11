@@ -1,12 +1,9 @@
-import { defineCustomElements } from '@ovhcloud/ods-components/medium/loader';
+import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-medium';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
-import {
-  DEFAULT_ATTRIBUTE
-} from '@ovhcloud/ods-component-medium/src/components/osds-medium/constants/default-attributes';
 
-defineCustomElements();
+defineCustomElement();
 
 /* Default story parameters  */
 const storyParams = {
@@ -20,7 +17,7 @@ const storyParams = {
   },
   height: {
     category: 'Size',
-    defaultValue: DEFAULT_ATTRIBUTE.height,
+    defaultValue: undefined,
     control: { type: 'number' },
   },
   width: {

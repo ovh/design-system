@@ -1,9 +1,9 @@
-import { defineCustomElements } from '@ovhcloud/ods-components/accordion/loader';
+import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-accordion-group';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 
-defineCustomElements();
+defineCustomElement();
 
 /* Default story parameters  */
 const storyParams = {

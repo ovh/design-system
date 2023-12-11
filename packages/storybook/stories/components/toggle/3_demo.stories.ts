@@ -1,6 +1,5 @@
-import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
-import { defineCustomElements } from '@ovhcloud/ods-components/toggle/loader';
-import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-components/toggle/src/components/osds-toggle/constants/default-attributes';
+import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
+import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-toggle';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 import {
@@ -10,13 +9,13 @@ import {
   getTagAttributes,
 } from '../../../core/componentHTMLUtils';
 
-defineCustomElements();
+defineCustomElement();
 
 /* Default story parameters  */
 const storyParams = {
   color: {
     category: 'General',
-    defaultValue: DEFAULT_ATTRIBUTE.color,
+    defaultValue: ODS_THEME_COLOR_INTENT.primary,
     options: ODS_THEME_COLOR_INTENTS,
     control: { type: 'select' },
   },
@@ -30,23 +29,23 @@ const storyParams = {
   },
   contrasted: {
     category: 'Misc',
-    defaultValue: DEFAULT_ATTRIBUTE.contrasted,
+    defaultValue: false,
   },
   disabled: {
     category: 'Misc',
-    defaultValue: DEFAULT_ATTRIBUTE.disabled,
+    defaultValue: false,
   },
   interactive: {
     category: 'Misc',
-    defaultValue: DEFAULT_ATTRIBUTE.interactive,
+    defaultValue: true,
   },
   checked: {
     category: 'Misc',
-    defaultValue: DEFAULT_ATTRIBUTE.checked,
+    defaultValue: false,
   },
   checking: {
     category: 'Misc',
-    defaultValue: DEFAULT_ATTRIBUTE.checking,
+    defaultValue: false,
   },
 };
 

@@ -1,8 +1,8 @@
-import { defineCustomElements } from '@ovhcloud/ods-component-phone-number/loader';
+import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-phone-number';
 import { html } from 'lit-html';
 import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 
-defineCustomElements();
+defineCustomElement();
 
 /* Default story parameters  */
 const storyParams = {

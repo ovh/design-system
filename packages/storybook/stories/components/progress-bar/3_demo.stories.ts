@@ -1,22 +1,21 @@
-import { defineCustomElements } from '@ovhcloud/ods-components/progress-bar/loader';
-import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-components/progress-bar/src/components/osds-progress-bar/constants/default-attributes';
+import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-progress-bar';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 
-defineCustomElements();
+defineCustomElement();
 
 /* Default story parameters  */
 const storyParams = {
   value: {
     category: 'Misc',
     control: { type: 'number' },
-    defaultValue: DEFAULT_ATTRIBUTE.value,
+    defaultValue: 0,
   },
   max: {
     category: 'Misc',
     control: { type: 'number' },
-    defaultValue: DEFAULT_ATTRIBUTE.max,
+    defaultValue: 100,
   },
   end: {
     category: 'Slot',

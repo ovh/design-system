@@ -1,16 +1,15 @@
-import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
-import { defineCustomElements } from '@ovhcloud/ods-components/textarea/loader';
-import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-components/textarea/src/components/osds-textarea/constants/default-attributes';
+import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
+import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-textarea';
 import { html } from 'lit-html';
 import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 
-defineCustomElements();
+defineCustomElement();
 
 /* Default story parameters  */
 const storyParams = {
   color: {
     category: 'General',
-    defaultValue: DEFAULT_ATTRIBUTE.color,
+    defaultValue: ODS_THEME_COLOR_INTENT.text,
     options: ODS_THEME_COLOR_INTENTS,
     control: { type: 'select' },
   },
@@ -20,19 +19,19 @@ const storyParams = {
   },
   value: {
     category: 'General',
-    defaultValue: DEFAULT_ATTRIBUTE.value,
+    defaultValue: '',
   },
   inline: {
     category: 'Misc',
-    defaultValue: DEFAULT_ATTRIBUTE.inline,
+    defaultValue: false,
   },
   contrasted: {
     category: 'Misc',
-    defaultValue: DEFAULT_ATTRIBUTE.contrasted,
+    defaultValue: false,
   },
   disabled: {
     category: 'Misc',
-    defaultValue: DEFAULT_ATTRIBUTE.disabled,
+    defaultValue: false,
   },
   name: {
     category: 'Misc',
@@ -44,20 +43,20 @@ const storyParams = {
   },
   error: {
     category: 'Misc',
-    defaultValue: DEFAULT_ATTRIBUTE.error,
+    defaultValue: false,
   },
   resizable: {
     category: 'Misc',
-    defaultValue: DEFAULT_ATTRIBUTE.resizable,
+    defaultValue: true,
   },
   cols: {
     category: 'Misc',
-    defaultValue: DEFAULT_ATTRIBUTE.cols,
+    defaultValue: undefined,
     control: { type: 'number' },
   },
   rows: {
     category: 'Misc',
-    defaultValue: DEFAULT_ATTRIBUTE.rows,
+    defaultValue: undefined,
     control: { type: 'number' },
   },
 };

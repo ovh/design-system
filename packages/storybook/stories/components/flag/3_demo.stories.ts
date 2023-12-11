@@ -1,12 +1,12 @@
 import { Ods, odsSetup } from '@ovhcloud/ods-common-core';
-import { defineCustomElements } from '@ovhcloud/ods-components/flag/loader';
+import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-flag';
 import { html } from 'lit-html';
 import { getTagAttributes } from '../../../core/componentHTMLUtils';
 
 odsSetup();
 Ods.instance().assetPath('flags/');
 
-defineCustomElements();
+defineCustomElement();
 
 export default {
   title: 'ODS Components/Content/Flag [atom]/Demo',

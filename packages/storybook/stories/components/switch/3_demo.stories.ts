@@ -1,6 +1,6 @@
 import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
-import { ODS_SWITCH_SIZE, ODS_SWITCH_SIZES } from '@ovhcloud/ods-components/switch';
-import { defineCustomElements } from '@ovhcloud/ods-components/switch/loader';
+import { ODS_SWITCH_SIZE, ODS_SWITCH_SIZES } from '@ovhcloud/ods-components';
+import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-switch';
 import { html } from 'lit-html';
 import {
   extractArgTypes,
@@ -8,7 +8,7 @@ import {
   getTagAttributes,
 } from '../../../core/componentHTMLUtils';
 
-defineCustomElements();
+defineCustomElement();
 
 /* Default story parameters  */
 const storyParams = {

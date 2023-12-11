@@ -1,24 +1,23 @@
-import { ODS_SKELETON_SIZES } from '@ovhcloud/ods-components/skeleton';
-import { defineCustomElements } from '@ovhcloud/ods-components/skeleton/loader';
-import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-components/skeleton/src/components/osds-skeleton/constants/default-attributes';
+import { ODS_SKELETON_SIZE, ODS_SKELETON_SIZES } from '@ovhcloud/ods-components';
+import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-skeleton';
 import { html } from 'lit-html';
 import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 
-defineCustomElements();
+defineCustomElement();
 
 /* Default story parameters  */
 const storyParams = {
   inline: {
     category: 'Misc',
-    defaultValue: DEFAULT_ATTRIBUTE.inline,
+    defaultValue: false,
   },
   randomized: {
     category: 'Misc',
-    defaultValue: DEFAULT_ATTRIBUTE.randomized,
+    defaultValue: false,
   },
   size: {
     category: 'General',
-    defaultValue: DEFAULT_ATTRIBUTE.size,
+    defaultValue: ODS_SKELETON_SIZE.md,
     options: ODS_SKELETON_SIZES,
     control: { type: 'select' },
   },

@@ -1,10 +1,9 @@
-import { ODS_TABS_SIZES } from '@ovhcloud/ods-components/tabs';
-import { defineCustomElements } from '@ovhcloud/ods-components/tabs/loader';
-import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-components/tabs/src/components/osds-tabs/constants/default-attributes';
+import { ODS_TABS_SIZE, ODS_TABS_SIZES } from '@ovhcloud/ods-components';
+import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-tabs';
 import { html } from 'lit-html';
 import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 
-defineCustomElements();
+defineCustomElement();
 
 /* Default story parameters  */
 const storyParams = {
@@ -25,7 +24,7 @@ const storyParams = {
     category: 'osds-tabs',
     options: ODS_TABS_SIZES,
     control: { type: 'select' },
-    defaultValue: DEFAULT_ATTRIBUTE.size,
+    defaultValue: ODS_TABS_SIZE.md,
   },
   contrasted: {
     category: 'osds-tabs',

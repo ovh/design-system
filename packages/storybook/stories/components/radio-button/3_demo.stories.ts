@@ -1,32 +1,31 @@
-import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
-import { ODS_RADIO_BUTTON_SIZES } from '@ovhcloud/ods-components/radio-button';
-import { defineCustomElements } from '@ovhcloud/ods-components/radio-button/loader';
-import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-components/radio-button/src/components/osds-radio-button/constants/default-attributes';
+import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
+import { ODS_RADIO_BUTTON_SIZE, ODS_RADIO_BUTTON_SIZES } from '@ovhcloud/ods-components';
+import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-radio-button';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 import { createComponentTable, extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 
-defineCustomElements();
+defineCustomElement();
 
 /* Default story parameters  */
 const storyParams = {
   checked: {
     category: 'General',
-    defaultValue: DEFAULT_ATTRIBUTE.checked,
+    defaultValue: false,
   },
   checking: {
     category: 'General',
-    defaultValue: DEFAULT_ATTRIBUTE.checking,
+    defaultValue: false,
   },
   color: {
     category: 'General',
-    defaultValue: DEFAULT_ATTRIBUTE.color,
+    defaultValue: ODS_THEME_COLOR_INTENT.default,
     options: ODS_THEME_COLOR_INTENTS,
     control: { type: 'select' },
   },
   size: {
     category: 'General',
-    defaultValue: DEFAULT_ATTRIBUTE.size,
+    defaultValue: ODS_RADIO_BUTTON_SIZE.md,
     options: ODS_RADIO_BUTTON_SIZES,
     control: { type: 'select' },
   },

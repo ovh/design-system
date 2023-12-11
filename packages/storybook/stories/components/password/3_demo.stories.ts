@@ -1,24 +1,23 @@
-import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
-import { ODS_INPUT_SIZES } from '@ovhcloud/ods-components/input';
-import { defineCustomElements } from '@ovhcloud/ods-components/password/loader';
-import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-components/password/src/components/osds-password/constants/default-attributes';
+import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
+import { ODS_INPUT_SIZE, ODS_INPUT_SIZES } from '@ovhcloud/ods-components';
+import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-password';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 
-defineCustomElements();
+defineCustomElement();
 
 /* Default story parameters  */
 const storyParams = {
   color: {
     category: 'General',
-    defaultValue: DEFAULT_ATTRIBUTE.color,
+    defaultValue: ODS_THEME_COLOR_INTENT.default,
     options: ODS_THEME_COLOR_INTENTS,
     control: { type: 'select' },
   },
   size: {
     category: 'General',
-    defaultValue: DEFAULT_ATTRIBUTE.size,
+    defaultValue: ODS_INPUT_SIZE.md,
     options: ODS_INPUT_SIZES,
     control: { type: 'select' },
   },

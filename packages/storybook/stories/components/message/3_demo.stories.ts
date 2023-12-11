@@ -1,11 +1,11 @@
 import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
-import { defineCustomElements } from '@ovhcloud/ods-components/message/loader';
-import { ODS_MESSAGE_TYPES } from '@ovhcloud/ods-components/message/src/components/osds-message/constants/message-type';
+import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-message';
+import { ODS_MESSAGE_TYPES } from '@ovhcloud/ods-components';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 import { createComponentTable, extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 
-defineCustomElements();
+defineCustomElement();
 
 /* Default story parameters  */
 const storyParams = {

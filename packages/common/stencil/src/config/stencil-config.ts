@@ -42,7 +42,6 @@ function getStencilConfig({ args, componentCorePackage, devScript, jestConfig = 
     namespace,
     outputTargets: [
       {
-        esmLoaderPath: '../loader',
         type: 'dist',
       },
       {

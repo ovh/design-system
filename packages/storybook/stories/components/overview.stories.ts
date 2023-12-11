@@ -1,9 +1,6 @@
 import { ODS_COUNTRY_ISO_CODE } from '@ovhcloud/ods-common-core';
 import { ODS_THEME_COLOR_INTENT, ODS_THEME_TYPOGRAPHY_LEVEL, ODS_THEME_TYPOGRAPHY_SIZE } from '@ovhcloud/ods-common-theming';
-import { ODS_CHECKBOX_BUTTON_SIZE } from '@ovhcloud/ods-components/checkbox-button';
-import { ODS_DIVIDER_SIZE } from '@ovhcloud/ods-components/divider';
-import { ODS_ICON_NAME } from '@ovhcloud/ods-components/icon';
-import { ODS_RADIO_BUTTON_SIZE } from '@ovhcloud/ods-components/radio-button';
+import { ODS_CHECKBOX_BUTTON_SIZE, ODS_DIVIDER_SIZE, ODS_ICON_NAME, ODS_RADIO_BUTTON_SIZE } from '@ovhcloud/ods-components';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 

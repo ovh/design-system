@@ -156,7 +156,7 @@ describe('spec:ods-quantity-controller', () => {
           controller.initInput();
           input.focus();
           input.blur();
-          input.dispatchEvent(new CustomEvent('odsInputBlur'));
+          input.dispatchEvent(new CustomEvent('odsBlur'));
 
           expect(input.value).toBe(input.min);
         });
@@ -178,7 +178,7 @@ describe('spec:ods-quantity-controller', () => {
           controller.initInput();
           input.focus();
           input.blur();
-          input.dispatchEvent(new CustomEvent('odsInputBlur'));
+          input.dispatchEvent(new CustomEvent('odsBlur'));
 
           expect(input.value).toBe(input.max);
         });
@@ -342,7 +342,7 @@ describe('spec:ods-quantity-controller', () => {
 
         expect(spyInputRemoveEventListener).toHaveBeenCalledWith('change', expect.any(Function));
         expect(spyInputRemoveEventListener).toHaveBeenCalledWith('blur', expect.any(Function));
-        expect(spyInputRemoveEventListener).toHaveBeenCalledWith('odsInputBlur', expect.any(Function));
+        expect(spyInputRemoveEventListener).toHaveBeenCalledWith('odsBlur', expect.any(Function));
         expect(spyInputRemoveEventListener).toHaveBeenCalledTimes(3);
       });
     });

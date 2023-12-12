@@ -1,23 +1,7 @@
-import type { OdsValidityState } from '@ovhcloud/ods-common-core';
-import type { EventEmitter } from '@stencil/core';
+import type { OdsCommonFieldEvent as OdsInputEvent, OdsCommonFieldValueChangeEvent as OdsInputValueChangeEvent, OdsCommonFieldValueChangeEventDetail as OdsInputValueChangeEventDetail } from '@ovhcloud/ods-common-core';
 
-interface OdsInputValueChangeEventDetail {
-  validity: OdsValidityState;
-  value: string | undefined | null;
-  oldValue?: string | undefined | null;
-}
-
-type OdsInputValueChangeEvent = CustomEvent<OdsInputValueChangeEventDetail>;
-
-interface OdsInputEvent {
-  odsInputBlur: EventEmitter<void>;
-  odsInputFocus: EventEmitter<void>;
-  /** the input value changed */
-  odsValueChange: EventEmitter<OdsInputValueChangeEventDetail>;
-}
-
-export {
+export type {
   OdsInputEvent,
   OdsInputValueChangeEvent,
-  OdsInputValueChangeEventDetail,
+  g,
 };

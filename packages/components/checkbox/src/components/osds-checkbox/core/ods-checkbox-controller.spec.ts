@@ -195,9 +195,9 @@ describe('spec:ods-checkbox-controller', () => {
     describe('onFocus', () => {
       it('should call setFocus', () => {
         setup();
-        jest.spyOn(component.genericFormMethodController, 'setFocus');
+        jest.spyOn(component.commonFieldMethodController, 'setFocus');
         controller.onFocus();
-        expect(component.genericFormMethodController.setFocus).toHaveBeenCalledWith();
+        expect(component.commonFieldMethodController.setFocus).toHaveBeenCalledWith();
       });
     });
 

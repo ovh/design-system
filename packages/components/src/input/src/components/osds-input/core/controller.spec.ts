@@ -1,5 +1,5 @@
 import type { OdsCommonFieldAttribute } from '@ovhcloud/ods-common-core';
-import { Ods, OdsFormControl, ODS_INPUT_TYPE, OdsLogger } from '@ovhcloud/ods-common-core';
+import { Ods, OdsFormControl, ODS_COMMON_INPUT_TYPE, OdsLogger } from '@ovhcloud/ods-common-core';
 import { OdsClearLoggerSpy, OdsInitializeLoggerSpy, OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
 import { OdsInputController } from './controller';
 import { OsdsInput } from '../osds-input';
@@ -307,7 +307,7 @@ describe('spec:ods-input-controller', () => {
       it('should not change component value if it is disabled', () => {
         const value = '3';
         const inputEl = document.createElement('input');
-        setup({ disabled: true, value, type: ODS_INPUT_TYPE.number, inputEl });
+        setup({ disabled: true, value, type: ODS_COMMON_INPUT_TYPE.number, inputEl });
         controller.onInput(new Event(''));
 
         expect(`${component.value}`).toBe(`${value}`);
@@ -316,7 +316,7 @@ describe('spec:ods-input-controller', () => {
       it('should change the component number value', () => {
         const inputEl = document.createElement('input');
         inputEl.value = '5';
-        setup({ disabled: false, value: '3', type: ODS_INPUT_TYPE.number, inputEl });
+        setup({ disabled: false, value: '3', type: ODS_COMMON_INPUT_TYPE.number, inputEl });
         controller.onInput(new Event(''));
 
         expect(`${component.value}`).toBe(`${inputEl.value}`);
@@ -325,7 +325,7 @@ describe('spec:ods-input-controller', () => {
       it('value should be undefined if no input value', () => {
         const inputEl = document.createElement('input');
         inputEl.value = '';
-        setup({ disabled: false, value: '3', type: ODS_INPUT_TYPE.number, inputEl });
+        setup({ disabled: false, value: '3', type: ODS_COMMON_INPUT_TYPE.number, inputEl });
         controller.onInput(new Event(''));
 
         expect(`${component.value}`).toBe('');

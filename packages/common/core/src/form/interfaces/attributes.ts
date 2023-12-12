@@ -1,5 +1,5 @@
 import type { ODS_COMMON_FIELD_SIZE } from '../constants/ods-common-field-size';
-import type { ODS_INPUT_TYPE } from '../constants/ods-input-type';
+import type { ODS_COMMON_INPUT_TYPE } from '../constants/ods-common-input-type';
 import type { OdsFormControl } from '../control/ods-form-control';
 import type { OdsErrorStateControl } from '../error/ods-error-state-control';
 import type { OdsInputValue } from '../ods-input-value';
@@ -60,7 +60,7 @@ interface OdsCommonFieldAttribute {
   /** Tabindex for the input */
   tabindex?: number;
   /** Type of the input field */
-  type?: ODS_INPUT_TYPE;
+  type?: ODS_COMMON_INPUT_TYPE;
   /** Type of the input field */
   value?: OdsInputValue;
 }

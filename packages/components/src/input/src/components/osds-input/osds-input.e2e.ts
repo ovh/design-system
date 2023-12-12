@@ -1,7 +1,7 @@
 import type { OdsInputAttribute } from './interfaces/attributes';
 import type { OdsInputValueChangeEventDetail } from './interfaces/events';
 import type { E2EElement, E2EPage } from '@stencil/core/testing';
-import { ODS_INPUT_TYPE } from '@ovhcloud/ods-common-core';
+import { ODS_COMMON_INPUT_TYPE } from '@ovhcloud/ods-common-core';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import { newE2EPage } from '@stencil/core/testing';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
@@ -9,7 +9,7 @@ import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 
 
 describe('e2e:osds-input', () => {
-  const baseAttribute = { ariaLabel: null, defaultValue: '', forbiddenValues: [], type: ODS_INPUT_TYPE.text, value: '' };
+  const baseAttribute = { ariaLabel: null, defaultValue: '', forbiddenValues: [], type: ODS_COMMON_INPUT_TYPE.text, value: '' };
   let page: E2EPage;
   let el: E2EElement;
   let inputElement: E2EElement;
@@ -50,7 +50,7 @@ describe('e2e:osds-input', () => {
   describe('attribute:clearable', () => {
 
     it('should display cross icon/button', async() => {
-      await setup({ attributes: { type: ODS_INPUT_TYPE.text, value: 'Just ODS being ahead', clearable: true } });
+      await setup({ attributes: { type: ODS_COMMON_INPUT_TYPE.text, value: 'Just ODS being ahead', clearable: true } });
 
       // Verify eye icon/button is visible
       const crossIcon = await page.find('osds-input >>> osds-icon[name="close"]');
@@ -59,7 +59,7 @@ describe('e2e:osds-input', () => {
 
     it('should clear the input value when clicked', async() => {
       // Setup component with clearable attribute and some initial value
-      await setup({ attributes: { type: ODS_INPUT_TYPE.text, value: 'Just ODS being ahead', clearable: true } });
+      await setup({ attributes: { type: ODS_COMMON_INPUT_TYPE.text, value: 'Just ODS being ahead', clearable: true } });
 
       // Click cross icon/button
       const crossIcon = await page.find('osds-input >>> osds-icon[name="close"]');
@@ -74,7 +74,7 @@ describe('e2e:osds-input', () => {
 
     it('should not clear the input value when clicked if the input is disabled', async() => {
       // Setup component with clearable attribute and some initial value
-      await setup({ attributes: { type: ODS_INPUT_TYPE.text, value: 'Just ODS being ahead', clearable: true, disabled: true } });
+      await setup({ attributes: { type: ODS_COMMON_INPUT_TYPE.text, value: 'Just ODS being ahead', clearable: true, disabled: true } });
 
       // Click cross icon/button
       const crossIcon = await page.find('osds-input >>> osds-icon[name="close"]');
@@ -91,21 +91,21 @@ describe('e2e:osds-input', () => {
   describe('attribute:masked', () => {
 
     it('should change input type to password when masked is set', async() => {
-      await setup({ attributes: { type: ODS_INPUT_TYPE.password, value: 'Just ODS being ahead' } });
+      await setup({ attributes: { type: ODS_COMMON_INPUT_TYPE.password, value: 'Just ODS being ahead' } });
 
       const type = await inputElement.getProperty('type');
-      expect(type).toBe(ODS_INPUT_TYPE.password);
+      expect(type).toBe(ODS_COMMON_INPUT_TYPE.password);
     });
 
     it('should change input type to text when masked is set to false', async() => {
-      await setup({ attributes: { type: ODS_INPUT_TYPE.password, value: 'Just ODS being ahead', masked: false } });
+      await setup({ attributes: { type: ODS_COMMON_INPUT_TYPE.password, value: 'Just ODS being ahead', masked: false } });
 
       const type = await inputElement.getProperty('type');
-      expect(type).toBe(ODS_INPUT_TYPE.text);
+      expect(type).toBe(ODS_COMMON_INPUT_TYPE.text);
     });
 
     it('should display masked icon/button (eye open)', async() => {
-      await setup({ attributes: { type: ODS_INPUT_TYPE.password, value: 'Just ODS being ahead' } });
+      await setup({ attributes: { type: ODS_COMMON_INPUT_TYPE.password, value: 'Just ODS being ahead' } });
 
       const eyeIcon = await page.find('osds-input >>> osds-icon[name="eye-open"]');
       expect(eyeIcon).not.toBeNull();
@@ -113,7 +113,7 @@ describe('e2e:osds-input', () => {
 
     it('should hide the input value when clicked', async() => {
       // Setup component with password type and some initial value
-      await setup({ attributes: { type: ODS_INPUT_TYPE.password, value: 'Just ODS being ahead', masked: false } });
+      await setup({ attributes: { type: ODS_COMMON_INPUT_TYPE.password, value: 'Just ODS being ahead', masked: false } });
 
       // Click eye icon/button
       const eyeIcon = await page.find('osds-input >>> osds-icon[name="eye-closed"]');
@@ -122,12 +122,12 @@ describe('e2e:osds-input', () => {
       await page.waitForChanges();
 
       const type = await inputElement.getProperty('type');
-      expect(type).toBe(ODS_INPUT_TYPE.password);
+      expect(type).toBe(ODS_COMMON_INPUT_TYPE.password);
     });
 
     it('should not hide the input value when clicked if the input is disabled', async() => {
       // Setup component with password type and some initial value
-      await setup({ attributes: { type: ODS_INPUT_TYPE.password, value: 'Just ODS being ahead', disabled: true, masked: false } });
+      await setup({ attributes: { type: ODS_COMMON_INPUT_TYPE.password, value: 'Just ODS being ahead', disabled: true, masked: false } });
 
       // Click eye icon/button
       const eyeIcon = await page.find('osds-input >>> osds-icon[name="eye-closed"]');
@@ -136,21 +136,21 @@ describe('e2e:osds-input', () => {
       await page.waitForChanges();
 
       const type = await inputElement.getProperty('type');
-      expect(type).toBe(ODS_INPUT_TYPE.text);
+      expect(type).toBe(ODS_COMMON_INPUT_TYPE.text);
     });
   });
 
   describe('method:stepUp', () => {
 
     it('should stepUp by 1 by default', async() => {
-      await setup({ attributes: { type: ODS_INPUT_TYPE.number, value: 3 } });
+      await setup({ attributes: { type: ODS_COMMON_INPUT_TYPE.number, value: 3 } });
       await el.callMethod('stepUp');
       await page.waitForChanges();
       const value = await inputElement.getProperty('value');
       expect(value).toBe('4');
     });
     it('should stepUp by number of step (5)', async() => {
-      await setup({ attributes: { type: ODS_INPUT_TYPE.number, value: 0, step: 5 } });
+      await setup({ attributes: { type: ODS_COMMON_INPUT_TYPE.number, value: 0, step: 5 } });
       await el.callMethod('stepUp');
       await page.waitForChanges();
       let value = await inputElement.getProperty('value');
@@ -163,7 +163,7 @@ describe('e2e:osds-input', () => {
     });
 
     it('should stepUp by number of step (5) with min number at start', async() => {
-      await setup({ attributes: { type: ODS_INPUT_TYPE.number, value: 2, min: 2, step: 5 } });
+      await setup({ attributes: { type: ODS_COMMON_INPUT_TYPE.number, value: 2, min: 2, step: 5 } });
       await el.callMethod('stepUp');
       await page.waitForChanges();
       let value = await inputElement.getProperty('value');
@@ -176,7 +176,7 @@ describe('e2e:osds-input', () => {
     });
 
     it('should not stepUp by number of step (5) with when max number equal to value', async() => {
-      await setup({ attributes: { type: ODS_INPUT_TYPE.number, value: 5, max: 5, step: 5 } });
+      await setup({ attributes: { type: ODS_COMMON_INPUT_TYPE.number, value: 5, max: 5, step: 5 } });
       await el.callMethod('stepUp');
       await page.waitForChanges();
       let value = await inputElement.getProperty('value');
@@ -189,7 +189,7 @@ describe('e2e:osds-input', () => {
     });
 
     it('should have correct value on calling stepUp', async() => {
-      await setup({ attributes: { type: ODS_INPUT_TYPE.number, value: 0 } });
+      await setup({ attributes: { type: ODS_COMMON_INPUT_TYPE.number, value: 0 } });
       await el.callMethod('stepUp');
       await page.waitForChanges();
       let value = await inputElement.getProperty('value');
@@ -202,7 +202,7 @@ describe('e2e:osds-input', () => {
   describe('method:stepDown', () => {
 
     it('should stepDown by 1 by default', async() => {
-      await setup({ attributes: { type: ODS_INPUT_TYPE.number, value: 3 } });
+      await setup({ attributes: { type: ODS_COMMON_INPUT_TYPE.number, value: 3 } });
       await el.callMethod('stepDown');
       await page.waitForChanges();
       const value = await inputElement.getProperty('value');
@@ -210,7 +210,7 @@ describe('e2e:osds-input', () => {
     });
 
     it('should stepDown by number of step (5)', async() => {
-      await setup({ attributes: { type: ODS_INPUT_TYPE.number, value: 15, step: 5 } });
+      await setup({ attributes: { type: ODS_COMMON_INPUT_TYPE.number, value: 15, step: 5 } });
       await el.callMethod('stepDown');
       await page.waitForChanges();
       let value = await inputElement.getProperty('value');
@@ -223,7 +223,7 @@ describe('e2e:osds-input', () => {
     });
 
     it('should stepDown by number of step (5) with max number at start', async() => {
-      await setup({ attributes: { type: ODS_INPUT_TYPE.number, value: 15, max: 15, step: 5 } });
+      await setup({ attributes: { type: ODS_COMMON_INPUT_TYPE.number, value: 15, max: 15, step: 5 } });
       await el.callMethod('stepDown');
       await page.waitForChanges();
       let value = await inputElement.getProperty('value');
@@ -236,7 +236,7 @@ describe('e2e:osds-input', () => {
     });
 
     it('should not stepDown by number of step (5) with when min number equal to value', async() => {
-      await setup({ attributes: { type: ODS_INPUT_TYPE.number, value: 5, min: 5, step: 5 } });
+      await setup({ attributes: { type: ODS_COMMON_INPUT_TYPE.number, value: 5, min: 5, step: 5 } });
       await el.callMethod('stepDown');
       await page.waitForChanges();
       let value = await inputElement.getProperty('value');
@@ -249,7 +249,7 @@ describe('e2e:osds-input', () => {
     });
 
     it('should have correct value on calling stepDown', async() => {
-      await setup({ attributes: { type: ODS_INPUT_TYPE.number, value: 2 } });
+      await setup({ attributes: { type: ODS_COMMON_INPUT_TYPE.number, value: 2 } });
       await el.callMethod('stepDown');
       await page.waitForChanges();
       let value = await inputElement.getProperty('value');
@@ -262,7 +262,7 @@ describe('e2e:osds-input', () => {
   describe('method:clear', () => {
 
     it('should clear the value', async() => {
-      await setup({ attributes: { type: ODS_INPUT_TYPE.number, value: 3 } });
+      await setup({ attributes: { type: ODS_COMMON_INPUT_TYPE.number, value: 3 } });
       await el.callMethod('clear');
       await page.waitForChanges();
       const value = await inputElement.getProperty('value');
@@ -275,7 +275,7 @@ describe('e2e:osds-input', () => {
   describe('method:hide', () => {
 
     it('should switch input type between password and text', async() => {
-      await setup({ attributes: { type: ODS_INPUT_TYPE.password, value: 'why-is-ods-so-awesome17' } });
+      await setup({ attributes: { type: ODS_COMMON_INPUT_TYPE.password, value: 'why-is-ods-so-awesome17' } });
 
       // Check initial type of the input
       let type = await inputElement.getProperty('type');
@@ -299,7 +299,7 @@ describe('e2e:osds-input', () => {
   describe('method:reset', () => {
 
     it('should not reset the value because defaultValue is missing', async() => {
-      await setup({ attributes: { type: ODS_INPUT_TYPE.number, value: 3, defaultValue: undefined } });
+      await setup({ attributes: { type: ODS_COMMON_INPUT_TYPE.number, value: 3, defaultValue: undefined } });
       await el.callMethod('reset');
       await page.waitForChanges();
       const value = await inputElement.getProperty('value');
@@ -311,7 +311,7 @@ describe('e2e:osds-input', () => {
 
     it('should set the value to defaultValue', async() => {
       const defaultValue = 6;
-      await setup({ attributes: { type: ODS_INPUT_TYPE.number, value: 3, defaultValue } });
+      await setup({ attributes: { type: ODS_COMMON_INPUT_TYPE.number, value: 3, defaultValue } });
       await el.callMethod('reset');
       await page.waitForChanges();
       const value = await inputElement.getProperty('value');
@@ -324,7 +324,7 @@ describe('e2e:osds-input', () => {
   describe('method:setInputTabindex', () => {
 
     it('should set inputTabindex to -1', async() => {
-      await setup({ attributes: { type: ODS_INPUT_TYPE.number } });
+      await setup({ attributes: { type: ODS_COMMON_INPUT_TYPE.number } });
       await el.callMethod('setInputTabindex', '-1');
       await page.waitForChanges();
       const value = el.getAttribute('tabindex');
@@ -334,7 +334,7 @@ describe('e2e:osds-input', () => {
 
   describe('method:setFocus', () => {
     it('should be focusable', async() => {
-      await setup({ attributes: { type: ODS_INPUT_TYPE.number } });
+      await setup({ attributes: { type: ODS_COMMON_INPUT_TYPE.number } });
       await page.waitForChanges();
 
       await el.callMethod('setFocus');
@@ -348,7 +348,7 @@ describe('e2e:osds-input', () => {
     });
 
     it('should be focusable with tab', async() => {
-      await setup({ attributes: { type: ODS_INPUT_TYPE.number } });
+      await setup({ attributes: { type: ODS_COMMON_INPUT_TYPE.number } });
       await page.waitForChanges();
 
       // First, we set the focus to another element
@@ -367,7 +367,7 @@ describe('e2e:osds-input', () => {
     });
 
     it('should not be focusable when disabled', async() => {
-      await setup({ attributes: { type: ODS_INPUT_TYPE.number, disabled: true } });
+      await setup({ attributes: { type: ODS_COMMON_INPUT_TYPE.number, disabled: true } });
       await page.waitForChanges();
 
       await el.callMethod('setFocus');

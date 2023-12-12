@@ -1,6 +1,6 @@
-import type { OdsGenericFormMethod } from "@ovhcloud/ods-common-core";
+import type { OdsCommonFieldMethod } from "@ovhcloud/ods-common-core";
 
-type OdsCheckboxMethod = Pick<OdsGenericFormMethod, 'setFocus' | 'setTabindex'>;
+type OdsCheckboxMethod = Pick<OdsCommonFieldMethod, 'setFocus' | 'setTabindex'>;
 
 export {
   OdsCheckboxMethod,

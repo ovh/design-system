@@ -1,6 +1,6 @@
-import type { OdsGenericFormMethod } from "@ovhcloud/ods-common-core";
+import type { OdsCommonFieldMethod } from "@ovhcloud/ods-common-core";
 
-type OdsPasswordMethod = Omit<OdsGenericFormMethod, 'hide'>;
+type OdsPasswordMethod = Omit<OdsCommonFieldMethod, 'hide'>;
   
 export type {
     OdsPasswordMethod,

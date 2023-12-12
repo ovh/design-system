@@ -2,7 +2,7 @@ import type { OdsPasswordAttribute } from './interfaces/attributes';
 import type { OdsFormForbiddenValues, ODS_COMMON_FIELD_SIZE } from '@ovhcloud/ods-common-core';
 import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import type { OdsPasswordMethod } from './interfaces/methods';
-import { OdsGenericFieldValidityState, ODS_INPUT_TYPE } from '@ovhcloud/ods-common-core';
+import { OdsCommonFieldValidityState, ODS_INPUT_TYPE } from '@ovhcloud/ods-common-core';
 import { Component, Element, Host, Prop, h, Method } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OsdsInput } from '@ovhcloud/ods-component-input';
@@ -75,7 +75,7 @@ export class OsdsPassword implements OdsPasswordAttribute, OdsPasswordMethod {
   @Prop({ reflect: true, mutable: true }) value = DEFAULT_ATTRIBUTE.value;
 
   @Method()
-  async getValidity(): Promise<OdsGenericFieldValidityState | undefined> {
+  async getValidity(): Promise<OdsCommonFieldValidityState | undefined> {
     return this.osdsInput?.getValidity();
   }
 

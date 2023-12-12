@@ -1,7 +1,7 @@
-import type { OdsGenericFieldValidityState } from './attributes';
+import type { OdsCommonFieldValidityState } from './attributes';
 import type { OdsFormControlMethods } from '../control/ods-form-control-methods';
 
-interface OdsGenericFormMethod extends OdsFormControlMethods<OdsGenericFieldValidityState> {
+interface OdsCommonFieldMethod extends OdsFormControlMethods<OdsCommonFieldValidityState> {
     /**
      * empty the value
      */
@@ -28,10 +28,10 @@ interface OdsGenericFormMethod extends OdsFormControlMethods<OdsGenericFieldVali
      */
     setTabindex(value: number): Promise<void>;
 
-    getValidity(): Promise<OdsGenericFieldValidityState | undefined>;
+    getValidity(): Promise<OdsCommonFieldValidityState | undefined>;
 } 
 
 export {
-    OdsGenericFormMethod,
+    OdsCommonFieldMethod,
 }
   

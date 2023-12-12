@@ -87,7 +87,7 @@ class OdsInputController {
   }
 
   private updateInputCustomValidation(): void {
-    if (this.component.genericFormMethodController.hasForbiddenValue()) {
+    if (this.component.commonFieldMethodController.hasForbiddenValue()) {
       this.component.inputEl?.setCustomValidity('forbiddenValue');
     } else {
       this.component.inputEl?.setCustomValidity('');
@@ -131,7 +131,7 @@ class OdsInputController {
   }
 
   async hasError(): Promise<boolean> {
-    return this.component.error || (await this.component.genericFormMethodController.getValidity()).invalid;
+    return this.component.error || (await this.component.commonFieldMethodController.getValidity()).invalid;
   }
 }
 

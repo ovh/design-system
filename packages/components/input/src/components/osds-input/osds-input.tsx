@@ -3,7 +3,7 @@ import type { OdsInputEvent, OdsInputValueChangeEventDetail } from './interfaces
 import type { OdsInputMethod } from './interfaces/methods';
 import type { OdsCommonFieldValidityState, OdsErrorStateControl, OdsFormControl, OdsFormForbiddenValues, OdsInputValue, ODS_COMMON_FIELD_SIZE, ODS_INPUT_TYPE } from '@ovhcloud/ods-common-core';
 import type { EventEmitter } from '@stencil/core';
-import { OdsLogger, OdsGenericFormMethodController } from '@ovhcloud/ods-common-core';
+import { OdsLogger, OdsCommonFieldMethodController } from '@ovhcloud/ods-common-core';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
 import { ODS_SPINNER_SIZE } from '@ovhcloud/ods-component-spinner';
@@ -25,7 +25,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
   private static inputIds = 0;
   private inputId = `ods-input-${OsdsInput.inputIds++}`;
   controller: OdsInputController = new OdsInputController(this);
-  genericFormMethodController = new OdsGenericFormMethodController(this);
+  commonFieldMethodController = new OdsCommonFieldMethodController(this);
 
   @Element() el!: HTMLElement;
   inputEl?: HTMLInputElement;
@@ -185,27 +185,27 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
   
   @Method()
   async setFocus(): Promise<void> {
-    this.genericFormMethodController.setFocus();
+    this.commonFieldMethodController.setFocus();
   }
 
   @Method()
   async getValidity(): Promise<OdsCommonFieldValidityState> {
-    return this.genericFormMethodController.getValidity();
+    return this.commonFieldMethodController.getValidity();
   }
 
   @Method()
   async clear(): Promise<void> {
-    this.genericFormMethodController.clear();
+    this.commonFieldMethodController.clear();
   }
 
   @Method()
   async hide(): Promise<void> {
-    this.genericFormMethodController.hide();
+    this.commonFieldMethodController.hide();
   }
 
   @Method()
   async reset(): Promise<void> {
-    this.genericFormMethodController.reset();
+    this.commonFieldMethodController.reset();
   }
 
   @Method()
@@ -220,7 +220,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
 
   @Method()
   async setTabindex(value: number): Promise<void> {
-    this.genericFormMethodController.setTabindex(value);
+    this.commonFieldMethodController.setTabindex(value);
   }
 
   hasError(): Promise<boolean> {

@@ -1,8 +1,8 @@
 import { ODS_INPUT_TYPE } from './constants/ods-input-type';
-import { GenericFormComponent, OdsGenericFormMethodController } from './method.controller';
+import { OdsCommonFieldComponent, OdsCommonFieldMethodController } from './method.controller';
 
-describe('spec:OdsGenericFormMethodController', () => {
-    let controller: OdsGenericFormMethodController;
+describe('spec:OdsCommonFieldMethodController', () => {
+    let controller: OdsCommonFieldMethodController;
     let osdsInput = {
       defaultValue: 'defaultValue',
       disabled: false,
@@ -23,8 +23,8 @@ describe('spec:OdsGenericFormMethodController', () => {
         jest.clearAllMocks();
     });
 
-  function setup(attributes: Partial<GenericFormComponent> = {}) {
-    controller = new OdsGenericFormMethodController({
+  function setup(attributes: Partial<OdsCommonFieldComponent> = {}) {
+    controller = new OdsCommonFieldMethodController({
         ...osdsInput,
         ...attributes,
     });

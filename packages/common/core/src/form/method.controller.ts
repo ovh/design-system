@@ -1,11 +1,11 @@
-import type { OdsGenericFieldValidityState } from './interfaces/attributes';
-import type { OdsGenericFormMethod } from './interfaces/methods';
+import type { OdsCommonFieldValidityState } from './interfaces/attributes';
+import type { OdsCommonFieldMethod } from './interfaces/methods';
 import type { ODS_INPUT_TYPE } from './constants/ods-input-type';
 import type { OdsFormForbiddenValues } from './validation/ods-form-forbidden-values';
 import type { OdsInputValue } from './ods-input-value';
 import { OdsGetValidityState } from './validation/ods-get-validity-state';
 
-interface GenericFormComponent {
+interface OdsCommonFieldComponent {
   defaultValue?: OdsInputValue | string | Date | HTMLInputElement['value'];
   disabled?: boolean;  
   emitFocus?: () => void;
@@ -18,9 +18,9 @@ interface GenericFormComponent {
   value?: OdsInputValue | string | Date | HTMLInputElement['value'];
 }
 
-class OdsGenericFormMethodController implements OdsGenericFormMethod {
+class OdsCommonFieldMethodController implements OdsCommonFieldMethod {
 
-  constructor(private readonly component: GenericFormComponent) { }
+  constructor(private readonly component: OdsCommonFieldComponent) { }
 
   /**
    * empty the value
@@ -68,7 +68,7 @@ class OdsGenericFormMethodController implements OdsGenericFormMethod {
     this.component.tabindex = value;
   }
 
-  async getValidity(): Promise<OdsGenericFieldValidityState> {
+  async getValidity(): Promise<OdsCommonFieldValidityState> {
     const forbiddenValue = this.hasForbiddenValue();
     return {
       ...(this.component.inputEl ? {
@@ -120,7 +120,7 @@ class OdsGenericFormMethodController implements OdsGenericFormMethod {
 } 
 
 export {
-    OdsGenericFormMethodController,
-    GenericFormComponent,
+    OdsCommonFieldMethodController,
+    OdsCommonFieldComponent,
 }
   

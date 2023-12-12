@@ -238,14 +238,14 @@ describe('spec:osds-input', () => {
       expect(instance.odsValueChange).toBeTruthy();
     });
 
-    it('odsInputBlur', async() => {
+    it('odsBlur', async() => {
       await setup({ attributes: { type: ODS_COMMON_INPUT_TYPE.number } });
-      expect(instance.odsInputBlur).toBeTruthy();
+      expect(instance.odsBlur).toBeTruthy();
     });
 
-    it('odsInputFocus', async() => {
+    it('odsFocus', async() => {
       await setup({ attributes: { type: ODS_COMMON_INPUT_TYPE.number } });
-      expect(instance.odsInputFocus).toBeTruthy();
+      expect(instance.odsFocus).toBeTruthy();
     });
   });
 

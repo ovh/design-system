@@ -17,7 +17,7 @@ class OdsQuantityController {
     this.clearEventListeners();
     if (foundOsdsInput) {
       this.component.input = foundOsdsInput;
-      this.component.input.addEventListener('odsInputBlur', this.onBlur.bind(this));
+      this.component.input.addEventListener('odsBlur', this.onBlur.bind(this));
     } else {
       const foundNativeInput = this.component.el.querySelector('input[type=number]') as (OsdsInput & HTMLElement);
       if (foundNativeInput) {
@@ -85,7 +85,7 @@ class OdsQuantityController {
   clearEventListeners(): void {
     this.component.input?.removeEventListener('change', this.processInputValueChange);
     this.component.input?.removeEventListener('blur', this.onBlur);
-    this.component.input?.removeEventListener('odsInputBlur', this.onBlur);
+    this.component.input?.removeEventListener('odsBlur', this.onBlur);
   }
 
   minusClickHandler(): void {

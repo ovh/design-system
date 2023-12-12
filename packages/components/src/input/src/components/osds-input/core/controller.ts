@@ -67,17 +67,17 @@ class OdsInputController {
   private hasForbiddenValue(): boolean {
     switch (this.component.type) {
     case 'number':
-      return this.component.forbiddenValues.some((forbiddenValue: any) => {
+      return this.component.forbiddenValues.some((forbiddenValue: unknown) => {
         if (typeof forbiddenValue === 'number') {
           return `${forbiddenValue}` === `${this.component.value}`;
         }
         if (this.component.value && typeof this.component.value === 'number') {
-          return this.component.value >= forbiddenValue.min && this.component.value <= forbiddenValue.max;
+          return this.component.value >= (forbiddenValue as ({ min: number, max: number })).min && this.component.value <= (forbiddenValue as ({ min: number, max: number })).max;
         }
         return false;
       });
     default:
-      return this.component.forbiddenValues.some((forbiddenValue: any) => {
+      return this.component.forbiddenValues.some((forbiddenValue: unknown) => {
         if (typeof forbiddenValue === 'string') {
           return forbiddenValue === this.component.value;
         }

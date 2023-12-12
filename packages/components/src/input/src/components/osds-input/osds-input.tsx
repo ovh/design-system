@@ -1,7 +1,7 @@
 import type { OdsInputAttribute } from './interfaces/attributes';
 import type { OdsInputEvent, OdsInputValueChangeEventDetail } from './interfaces/events';
 import type { OdsInputMethod } from './interfaces/methods';
-import type { OdsCommonFieldValidityState, OdsErrorStateControl, OdsFormControl, OdsFormForbiddenValues, OdsInputValue, ODS_COMMON_FIELD_SIZE, ODS_INPUT_TYPE } from '@ovhcloud/ods-common-core';
+import type { OdsCommonFieldValidityState, OdsErrorStateControl, OdsFormControl, OdsFormForbiddenValues, OdsInputValue, ODS_COMMON_FIELD_SIZE, ODS_COMMON_INPUT_TYPE } from '@ovhcloud/ods-common-core';
 import type { EventEmitter } from '@stencil/core';
 import { OdsLogger } from '@ovhcloud/ods-common-core';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
@@ -114,7 +114,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
   @Prop({ reflect: true }) step?: number = DEFAULT_ATTRIBUTE.step;
 
   /** @see OdsCommonFieldAttribute.type */
-  @Prop({ reflect: true }) type: ODS_INPUT_TYPE = DEFAULT_ATTRIBUTE.type;
+  @Prop({ reflect: true }) type: ODS_COMMON_INPUT_TYPE = DEFAULT_ATTRIBUTE.type;
 
   /** @see OdsCommonFieldAttribute.value */
   @Prop({ mutable: true, reflect: true }) value: OdsInputValue = DEFAULT_ATTRIBUTE.value;

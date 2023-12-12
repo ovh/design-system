@@ -1,6 +1,6 @@
 import type { OdsInputAttribute } from '../interfaces/attributes';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import { ODS_COMMON_FIELD_SIZE, ODS_INPUT_TYPE } from '@ovhcloud/ods-common-core';
+import { ODS_COMMON_FIELD_SIZE, ODS_COMMON_INPUT_TYPE } from '@ovhcloud/ods-common-core';
 
 const DEFAULT_ATTRIBUTE: OdsInputAttribute = Object.freeze({
   ariaLabel: null,
@@ -26,7 +26,7 @@ const DEFAULT_ATTRIBUTE: OdsInputAttribute = Object.freeze({
   required: false,
   size: ODS_COMMON_FIELD_SIZE.md,
   step: undefined,
-  type: ODS_INPUT_TYPE.number,
+  type: ODS_COMMON_INPUT_TYPE.number,
   value: '',
 });
 

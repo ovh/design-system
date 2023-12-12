@@ -1,2 +1,2 @@
 export * from './ods-common-field-size';
-export * from './ods-input-type';
+export * from './ods-common-input-type';

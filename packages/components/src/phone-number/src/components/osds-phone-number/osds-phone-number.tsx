@@ -5,7 +5,7 @@ import type { OdsSelectValueChangeEventDetail } from '../../../../select/src';
 
 import { ODS_COUNTRY_ISO_CODE, ODS_COUNTRY_ISO_CODES, ODS_LOCALE, OdsLogger, OdsCreateDefaultOdsValidityState } from '@ovhcloud/ods-common-core';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import { ODS_INPUT_TYPE } from '@ovhcloud/ods-common-core';
+import { ODS_COMMON_INPUT_TYPE } from '@ovhcloud/ods-common-core';
 import { ODS_TEXT_LEVEL, ODS_TEXT_SIZE } from '../../../../text/src';
 import { Component, Event, EventEmitter, Host, Listen, Prop, State, Watch, h } from '@stencil/core';
 import { PhoneNumber, PhoneNumberFormat, PhoneNumberUtil } from 'google-libphonenumber';
@@ -225,7 +225,7 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
           prefix-value={this.getPrefix()}
           placeholder={this.getPlaceholder()}
           color={ODS_THEME_COLOR_INTENT.primary}
-          type={ODS_INPUT_TYPE.tel}
+          type={ODS_COMMON_INPUT_TYPE.tel}
           clearable={this.clearable}
           disabled={this.disabled}
           error={this.error}

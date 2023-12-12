@@ -1,4 +1,4 @@
-enum ODS_INPUT_TYPE {
+enum ODS_COMMON_INPUT_TYPE {
   date = 'date',
   email = 'email',
   number = 'number',
@@ -10,9 +10,9 @@ enum ODS_INPUT_TYPE {
   url = 'url',
 }
 
-const ODS_INPUT_TYPES = Object.freeze(Object.values(ODS_INPUT_TYPE));
+const ODS_COMMON_INPUT_TYPES = Object.freeze(Object.values(ODS_COMMON_INPUT_TYPE));
 
 export {
-  ODS_INPUT_TYPE,
-  ODS_INPUT_TYPES,
+  ODS_COMMON_INPUT_TYPE,
+  ODS_COMMON_INPUT_TYPES,
 };

@@ -100,6 +100,14 @@ export class OsdsPagination implements OdsPaginationAttribute, OdsPaginationEven
     this.emitChange(current, oldCurrent);
   }
 
+  @Watch('totalPages')
+  async onTotalPagesChange() {
+    if (!this.totalItems) {
+      this.actualTotalPages = this.totalPages;
+    }
+    this.updatePageList();
+  }
+
   @Watch('itemPerPage')
   async onItemPerPageChange() {
     await this.updatePagination();
@@ -125,6 +133,7 @@ export class OsdsPagination implements OdsPaginationAttribute, OdsPaginationEven
     this.odsPaginationChanged.emit({
       current: current,
       oldCurrent: oldCurrent,
+      itemPerPage: this.itemPerPage,
     });
   }
 

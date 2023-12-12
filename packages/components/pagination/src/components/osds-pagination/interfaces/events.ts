@@ -3,6 +3,7 @@ import type { EventEmitter } from '@stencil/core';
 interface OdsPaginationChangedEventDetail {
   current: number;
   oldCurrent?: number;
+  itemPerPage: number;
 }
 
 type OdsPaginationCurrentChangeEvent = CustomEvent<OdsPaginationChangedEventDetail>;

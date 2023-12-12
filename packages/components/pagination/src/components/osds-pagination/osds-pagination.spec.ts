@@ -176,6 +176,26 @@ describe('spec:osds-pagination', () => {
         expect(instance.pageList).not.toEqual(initialPageList);
       });
     });
+
+    describe('onTotalPagesChange', () => {
+      it('should update total pages', async() => {
+        await setup({ attributes: { disabled: false, totalPages: 20 } });
+        const initialPageList = [...instance.pageList];
+
+        instance.totalPages = 100;
+
+        expect(instance.pageList).not.toEqual(initialPageList);
+      });
+
+      it('should not update total pages if totalItems is set', async() => {
+        await setup({ attributes: { disabled: false, totalPages: 20, totalItems: 100 } });
+        const initialPageList = [...instance.pageList];
+
+        instance.totalPages = 100;
+
+        expect(instance.pageList).toEqual(initialPageList);
+      });
+    });
   });
 
   /**

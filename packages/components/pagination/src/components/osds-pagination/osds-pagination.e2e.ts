@@ -207,6 +207,7 @@ describe('e2e:osds-pagination', () => {
       const expected: OdsPaginationChangedEventDetail = {
         oldCurrent: 2,
         current: 5,
+        itemPerPage: 10,
       };
 
       expect(odsPaginationChanged).toHaveReceivedEventDetail(expected);

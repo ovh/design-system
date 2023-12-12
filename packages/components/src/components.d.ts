@@ -2383,8 +2383,8 @@ declare global {
     };
     interface HTMLOsdsInputElementEventMap {
         "odsValueChange": OdsInputValueChangeEventDetail;
-        "odsInputBlur": void;
-        "odsInputFocus": void;
+        "odsBlur": void;
+        "odsFocus": void;
     }
     interface HTMLOsdsInputElement extends Components.OsdsInput, HTMLStencilElement {
         addEventListener<K extends keyof HTMLOsdsInputElementEventMap>(type: K, listener: (this: HTMLOsdsInputElement, ev: OsdsInputCustomEvent<HTMLOsdsInputElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -3596,8 +3596,8 @@ declare namespace LocalJSX {
           * Name of the input field
          */
         "name"?: string;
-        "onOdsInputBlur"?: (event: OsdsInputCustomEvent<void>) => void;
-        "onOdsInputFocus"?: (event: OsdsInputCustomEvent<void>) => void;
+        "onOdsBlur"?: (event: OsdsInputCustomEvent<void>) => void;
+        "onOdsFocus"?: (event: OsdsInputCustomEvent<void>) => void;
         /**
           * Events
          */

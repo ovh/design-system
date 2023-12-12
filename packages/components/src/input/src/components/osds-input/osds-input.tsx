@@ -3,14 +3,14 @@ import type { OdsInputEvent, OdsInputValueChangeEventDetail } from './interfaces
 import type { OdsInputMethod } from './interfaces/methods';
 import type { OdsCommonFieldValidityState, OdsErrorStateControl, OdsFormControl, OdsFormForbiddenValues, OdsInputValue, ODS_COMMON_FIELD_SIZE, ODS_COMMON_INPUT_TYPE } from '@ovhcloud/ods-common-core';
 import type { EventEmitter } from '@stencil/core';
-import { OdsLogger, OdsCommonFieldMethodController } from '@ovhcloud/ods-common-core';
+import { OdsCommonFieldMethodController, OdsLogger } from '@ovhcloud/ods-common-core';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import { ODS_ICON_NAME, ODS_ICON_SIZE } from '../../../../icon/src';
-import { ODS_SPINNER_SIZE } from '../../../../spinner/src';
-import { ODS_TEXT_SIZE } from '../../../../text/src';
 import { AttachInternals, Component, Element, Event, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsInputController } from './core/controller';
+import { ODS_ICON_NAME, ODS_ICON_SIZE } from '../../../../icon/src';
+import { ODS_SPINNER_SIZE } from '../../../../spinner/src';
+import { ODS_TEXT_SIZE } from '../../../../text/src';
 
 @Component({
   formAssociated: true,
@@ -98,9 +98,9 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
 
   @Event() odsValueChange!: EventEmitter<OdsInputValueChangeEventDetail>;
 
-  @Event() odsInputBlur!: EventEmitter<void>;
+  @Event() odsBlur!: EventEmitter<void>;
 
-  @Event() odsInputFocus!: EventEmitter<void>;
+  @Event() odsFocus!: EventEmitter<void>;
 
   /** Watch */
 
@@ -147,11 +147,11 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
   }
 
   emitFocus(): void {
-    this.odsInputFocus.emit();
+    this.odsFocus.emit();
   }
 
   emitBlur(): void {
-    this.odsInputBlur.emit();
+    this.odsBlur.emit();
   }
 
   @Method()

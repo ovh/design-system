@@ -45,6 +45,7 @@ function getStencilConfig({ args, componentCorePackage, devScript, jestConfig = 
         type: 'dist',
       },
       {
+        customElementsExportBehavior: 'auto-define-custom-elements',
         generateTypeDeclarations: true,
         includeGlobalScripts: false,
         type: 'dist-custom-elements',

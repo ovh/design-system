@@ -49,6 +49,18 @@ export class OsdsDatagrid implements OdsDatagridAttribute, OdsDatagridEvent {
 
   @Event() odsBottomScroll!: EventEmitter<void>;
 
+  componentWillLoad(): void {
+    // Those components are used in some string templates, not JSX,
+    // thus Stencil does not detect them correctly and they're not embedded in the build,
+    // so we have to manually declare their usage here
+    h('osds-button');
+    h('osds-checkbox');
+    h('osds-checkbox-button');
+    h('osds-icon');
+    h('osds-popover');
+    h('osds-text');
+  }
+
   componentDidLoad(): void {
     this.controler.validateAttributes();
     this.initTable();

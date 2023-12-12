@@ -14,9 +14,6 @@ const fs = require('fs');
 const replace = require('replace-in-file');
 
 try {
-  //const isProd = process.argv[2] === 'prod';
-  const isProd = true;
-
   execSync('npm run build:stencil', { stdio: 'inherit' });
 
   if (!fs.existsSync('dist/types')) {
@@ -24,28 +21,25 @@ try {
     execSync('npm run build:stencil', { stdio: 'inherit' });
   }
 
-  // TODO see if those take long time or not to see if we still need the build:ci
-  if (isProd) {
-    const reactGeneratedFilePath = 'react/src/components/stencil-generated/index.ts';
-    const vueGeneratedFilePath = 'vue/src/components/stencil-generated/index.ts';
+  const reactGeneratedFilePath = 'react/src/components/stencil-generated/index.ts';
+  const vueGeneratedFilePath = 'vue/src/components/stencil-generated/index.ts';
 
-    // The stencil build does not generate a correct path for the JSX interface
-    // (see https://github.com/ionic-team/stencil-ds-output-targets/issues/404)
-    // So we need to manually fix it
-    if (!fs.existsSync(reactGeneratedFilePath) || !fs.existsSync(vueGeneratedFilePath)) {
-      throw new Error(`Cannot find either ${reactGeneratedFilePath} or ${vueGeneratedFilePath}`);
-    }
-
-    replace.sync({
-      files: [reactGeneratedFilePath, vueGeneratedFilePath],
-      from: 'import type { JSX } from \'@ovhcloud/ods-components/dist/components\';',
-      to: 'import type { JSX } from \'@ovhcloud/ods-components\';',
-    });
-
-    // Those two could be run in parallel, but it causes CI issue for now, to investigate
-    execSync('npm run build:react', { stdio: 'inherit' });
-    execSync('npm run build:vue', { stdio: 'inherit' });
+  // The stencil build does not generate a correct path for the JSX interface
+  // (see https://github.com/ionic-team/stencil-ds-output-targets/issues/404)
+  // So we need to manually fix it
+  if (!fs.existsSync(reactGeneratedFilePath) || !fs.existsSync(vueGeneratedFilePath)) {
+    throw new Error(`Cannot find either ${reactGeneratedFilePath} or ${vueGeneratedFilePath}`);
   }
+
+  replace.sync({
+    files: [reactGeneratedFilePath, vueGeneratedFilePath],
+    from: 'import type { JSX } from \'@ovhcloud/ods-components/dist/components\';',
+    to: 'import type { JSX } from \'@ovhcloud/ods-components\';',
+  });
+
+  // Those two could be run in parallel, but it causes CI issue for now, to investigate
+  execSync('npm run build:react', { stdio: 'inherit' });
+  execSync('npm run build:vue', { stdio: 'inherit' });
 } catch(e) {
   console.error('Error while building component');
   console.error(e);

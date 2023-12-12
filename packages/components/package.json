@@ -13,6 +13,7 @@
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
   "scripts": {
+    "build:ci": "npm run build:prod",
     "build:prod": "build-stencil",
     "build:stencil": "stencil build --prod --config stencil.config.ts",
     "build:react": "npm --prefix react run build",

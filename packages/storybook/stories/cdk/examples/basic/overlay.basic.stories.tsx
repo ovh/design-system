@@ -106,6 +106,7 @@ const Template = (args: any) => {
 
       #alignment {
         display: flex;
+        height: 100vh;
         flex-wrap: wrap;
       }
 

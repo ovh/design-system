@@ -43,7 +43,7 @@ describe('e2e:osds-message', () => {
       expect(await el.getProperty('type')).toBe(ODS_MESSAGE_TYPE.success);
       expect(await el.getProperty('color')).toBe(ODS_THEME_COLOR_INTENT.success);
 
-      const icon = await (await page.find('osds-message >>> .message__wrapper')).find('osds-icon');
+      const icon = await (await page.find('osds-message >>> .message_wrapper')).find('osds-icon');
       expect(icon.getAttribute('name')).toBe(ODS_ICON_NAME.SUCCESS_CIRCLE);
     });
 
@@ -52,7 +52,7 @@ describe('e2e:osds-message', () => {
       expect(await el.getProperty('type')).toBe(ODS_MESSAGE_TYPE.info);
       expect(await el.getProperty('color')).toBe(ODS_THEME_COLOR_INTENT.info);
 
-      const icon = await (await page.find('osds-message >>> .message__wrapper')).find('osds-icon');
+      const icon = await (await page.find('osds-message >>> .message_wrapper')).find('osds-icon');
       expect(icon.getAttribute('name')).toBe(ODS_ICON_NAME.INFO_CIRCLE);
     });
 
@@ -61,7 +61,7 @@ describe('e2e:osds-message', () => {
       expect(await el.getProperty('type')).toBe(ODS_MESSAGE_TYPE.warning);
       expect(await el.getProperty('color')).toBe(ODS_THEME_COLOR_INTENT.warning);
 
-      const icon = await (await page.find('osds-message >>> .message__wrapper')).find('osds-icon');
+      const icon = await (await page.find('osds-message >>> .message_wrapper')).find('osds-icon');
       expect(icon.getAttribute('name')).toBe(ODS_ICON_NAME.WARNING_CIRCLE);
     });
 
@@ -70,7 +70,7 @@ describe('e2e:osds-message', () => {
       expect(await el.getProperty('type')).toBe(ODS_MESSAGE_TYPE.error);
       expect(await el.getProperty('color')).toBe(ODS_THEME_COLOR_INTENT.error);
 
-      const icon = await (await page.find('osds-message >>> .message__wrapper')).find('osds-icon');
+      const icon = await (await page.find('osds-message >>> .message_wrapper')).find('osds-icon');
       expect(icon.getAttribute('name')).toBe(ODS_ICON_NAME.ERROR_CIRCLE);
     });
   });
@@ -80,7 +80,7 @@ describe('e2e:osds-message', () => {
       await setup({ attributes: { removable: true } });
       expect(await el.getProperty('removable')).toBe(true);
 
-      const icon = await (await page.find('osds-message >>> .message__close-wrapper')).find('osds-icon');
+      const icon = await (await page.find('osds-message >>> .message_close-wrapper')).find('osds-icon');
       expect(icon.getAttribute('name')).toBe(ODS_ICON_NAME.CLOSE);
     });
   });

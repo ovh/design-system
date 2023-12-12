@@ -1,4 +1,4 @@
-import type { OdsCommonFieldAttribute, OdsFormForbiddenValues, ODS_INPUT_TYPE, OdsInputValue } from '@ovhcloud/ods-common-core';
+import type { OdsCommonFieldAttribute, OdsFormForbiddenValues, ODS_COMMON_INPUT_TYPE, OdsInputValue } from '@ovhcloud/ods-common-core';
 import type { ODS_ICON_NAME } from '../../../../../icon/src';
 
 interface OdsInputAttribute extends OdsCommonFieldAttribute {
@@ -19,7 +19,7 @@ interface OdsInputAttribute extends OdsCommonFieldAttribute {
   /** Minimum value for the input (type number) */
   min?: number;
   /** Repeat this attribute because it cannot be undefined in osds-input */
-  type: ODS_INPUT_TYPE;
+  type: ODS_COMMON_INPUT_TYPE;
   /** Repeat this attribute because it cannot be undefined in osds-input */
   value: OdsInputValue;
 }

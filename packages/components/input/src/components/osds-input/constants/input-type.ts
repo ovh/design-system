@@ -1,0 +1,6 @@
+import { ODS_COMMON_INPUT_TYPE , ODS_COMMON_INPUT_TYPES } from '@ovhcloud/ods-common-core';
+
+export {
+  ODS_COMMON_INPUT_TYPE as ODS_INPUT_TYPE,
+  ODS_COMMON_INPUT_TYPES as ODS_INPUT_TYPES
+};

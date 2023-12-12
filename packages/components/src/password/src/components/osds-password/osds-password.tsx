@@ -1,7 +1,7 @@
 import type { OdsPasswordAttribute } from './interfaces/attributes';
 import type { OdsFormForbiddenValues, ODS_COMMON_FIELD_SIZE } from '@ovhcloud/ods-common-core';
 import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import { ODS_INPUT_TYPE } from '@ovhcloud/ods-common-core';
+import { ODS_COMMON_INPUT_TYPE } from '@ovhcloud/ods-common-core';
 import { Component, Element, Host, Prop, h } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 
@@ -75,7 +75,7 @@ export class OsdsPassword implements OdsPasswordAttribute {
     return (
       <Host>
         <osds-input
-          type={ODS_INPUT_TYPE.password}
+          type={ODS_COMMON_INPUT_TYPE.password}
           ariaLabel={this.ariaLabel}
           ariaLabelledby={this.ariaLabelledby}
           clearable={this.clearable}

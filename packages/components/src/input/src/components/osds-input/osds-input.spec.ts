@@ -2,7 +2,7 @@ jest.mock('./core/controller'); // keep jest.mock before any
 
 import type { OdsInputAttribute } from './interfaces/attributes';
 import type { SpecPage } from '@stencil/core/testing';
-import { ODS_COMMON_FIELD_SIZE, OdsCreateDefaultValidityState, OdsFormControl, ODS_INPUT_TYPE, OdsLogger } from '@ovhcloud/ods-common-core';
+import { ODS_COMMON_FIELD_SIZE, OdsCreateDefaultValidityState, OdsFormControl, ODS_COMMON_INPUT_TYPE, OdsLogger } from '@ovhcloud/ods-common-core';
 import { OdsMockNativeMethod, OdsMockPropertyDescriptor, odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { newSpecPage } from '@stencil/core/testing';
@@ -18,7 +18,7 @@ OdsMockPropertyDescriptor(HTMLInputElement.prototype, 'validity', () => OdsCreat
 
 describe('spec:osds-input', () => {
   logger.log('init');
-  const baseAttribute = { ariaLabel: null, defaultValue: '', forbiddenValues: [], type: ODS_INPUT_TYPE.text, value: '' };
+  const baseAttribute = { ariaLabel: null, defaultValue: '', forbiddenValues: [], type: ODS_COMMON_INPUT_TYPE.text, value: '' };
   let page: SpecPage;
   let htmlInput: HTMLInputElement | null | undefined;
   let instance: OsdsInput;
@@ -225,7 +225,7 @@ describe('spec:osds-input', () => {
   describe('value changes', () => {
     it('input value should change if component value changed', async() => {
       const newValue = 2;
-      await setup({ attributes: { type: ODS_INPUT_TYPE.number, value: 2 } });
+      await setup({ attributes: { type: ODS_COMMON_INPUT_TYPE.number, value: 2 } });
       instance.value = newValue;
       await page.waitForChanges();
       expect(`${htmlInput?.value}`).toBe(`${newValue}`);
@@ -234,17 +234,17 @@ describe('spec:osds-input', () => {
 
   describe('events', () => {
     it('odsValueChange', async() => {
-      await setup({ attributes: { type: ODS_INPUT_TYPE.number } });
+      await setup({ attributes: { type: ODS_COMMON_INPUT_TYPE.number } });
       expect(instance.odsValueChange).toBeTruthy();
     });
 
     it('odsInputBlur', async() => {
-      await setup({ attributes: { type: ODS_INPUT_TYPE.number } });
+      await setup({ attributes: { type: ODS_COMMON_INPUT_TYPE.number } });
       expect(instance.odsInputBlur).toBeTruthy();
     });
 
     it('odsInputFocus', async() => {
-      await setup({ attributes: { type: ODS_INPUT_TYPE.number } });
+      await setup({ attributes: { type: ODS_COMMON_INPUT_TYPE.number } });
       expect(instance.odsInputFocus).toBeTruthy();
     });
   });
@@ -306,7 +306,7 @@ describe('spec:osds-input', () => {
       });
 
       it('should call clear from clear method but should not change the value if disabled', async() => {
-        await setup({ attributes: { type: ODS_INPUT_TYPE.password, value: 'Just ODS being ahead', masked: false, disabled: true } });
+        await setup({ attributes: { type: ODS_COMMON_INPUT_TYPE.password, value: 'Just ODS being ahead', masked: false, disabled: true } });
         await instance.clear();
 
         expect(controller.clear).toHaveBeenCalledTimes(1);
@@ -325,14 +325,14 @@ describe('spec:osds-input', () => {
       });
 
       it('should call hide from hide method but should not display the value if disabled', async() => {
-        await setup({ attributes: { type: ODS_INPUT_TYPE.password, value: 'Just ODS being ahead', masked: true, disabled: true } });
+        await setup({ attributes: { type: ODS_COMMON_INPUT_TYPE.password, value: 'Just ODS being ahead', masked: true, disabled: true } });
         await instance.hide();
 
         expect(controller.hide).toHaveBeenCalledTimes(1);
         expect(controller.hide).toHaveBeenCalledWith();
 
         const type = instance.type;
-        expect(type).toBe(ODS_INPUT_TYPE.password);
+        expect(type).toBe(ODS_COMMON_INPUT_TYPE.password);
       });
 
       it('should call reset from reset method', async() => {

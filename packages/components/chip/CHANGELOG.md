@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [16.6.0](https://ovh.github.io/design-system/v16.6.0/?path=/docs/design-system-changelog--page) (2023-12-13)
+[compare](https://github.com/ovh/design-system/compare/v16.5.0...v16.6.0)
+
+### Features
+
+* **chip:** add odsChipRemoval event ([41aa1dd](https://github.com/ovh/design-system/commit/41aa1dd4714ddc5b1bc3833d4fc24aa5482db597))
+* **chip:** add odsChipRemoval event ([7ac1257](https://github.com/ovh/design-system/commit/7ac12578ac9197da06986907fb02b7baba73c290))
+* **chip:** add odsChipRemoval event ([5c82f10](https://github.com/ovh/design-system/commit/5c82f106fae0bc14817f9d6b99adade0502a677d))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

@@ -8,6 +8,21 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [16.6.0](https://ovh.github.io/design-system/v16.6.0/?path=/docs/design-system-changelog--page) (2023-12-13)
+[compare](https://github.com/ovh/design-system/compare/v16.5.0...v16.6.0)
+
+### Bug Fixes
+
+* **phone:** show flag on local env ([3816ddc](https://github.com/ovh/design-system/commit/3816ddc26946d7da092a4dd9dcb51465e0bdf610))
+* **phone-number:** fix flag shadow in select ([e433e9b](https://github.com/ovh/design-system/commit/e433e9b1d7a6d5b5807061e010a09651fa539b9a))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [16.5.0](https://ovh.github.io/design-system/v16.5.0/?path=/docs/design-system-changelog--page) (2023-11-24)
 [compare](https://github.com/ovh/design-system/compare/v16.4.0...v16.5.0)
 

@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [16.6.0](https://ovh.github.io/design-system/v16.6.0/?path=/docs/design-system-changelog--page) (2023-12-13)
+[compare](https://github.com/ovh/design-system/compare/v16.5.0...v16.6.0)
+
+### Bug Fixes
+
+* **pagination:** event payload & watch total pages ([4aedd79](https://github.com/ovh/design-system/commit/4aedd79cbf93fb1246a3b4d2bb43a0aeb7ef9a4b))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

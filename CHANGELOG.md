@@ -8,6 +8,39 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [16.6.0](https://ovh.github.io/design-system/v16.6.0/?path=/docs/design-system-changelog--page) (2023-12-13)
+[compare](https://github.com/ovh/design-system/compare/v16.5.0...v16.6.0)
+
+### Bug Fixes
+
+* **breadcrum:** add link complement argument ([641002e](https://github.com/ovh/design-system/commit/641002ed60a3eabd2a47a855a41396c909567e95))
+* **breadcrumb:** add event click on item ([1da94ef](https://github.com/ovh/design-system/commit/1da94efa07c64724bb9c72ebcaaad2ed558c675a))
+* **breadcrumb:** generation doc ([8c84f69](https://github.com/ovh/design-system/commit/8c84f69dabb10db88dcc593c42a4fafedea941f3))
+* **breadcrumb:** ref type ([ae98d6e](https://github.com/ovh/design-system/commit/ae98d6e09026dc5011144c2c12ce55db4f9d5074))
+* **button:** fix position of end when there is no start slot ([3e2bdd0](https://github.com/ovh/design-system/commit/3e2bdd04cf523e065f0aa1628d93442b03c847b1))
+* **core:** enum ods html anchor element rel ([1f6e1a0](https://github.com/ovh/design-system/commit/1f6e1a02e54918a346afb2093b2cf60b42dc63e5))
+* **datagrid:** elements cutoff ([4276beb](https://github.com/ovh/design-system/commit/4276beb6b240aacad5cbc69090513617d88a40ab))
+* **datagrid:** fix linter ([83ccc56](https://github.com/ovh/design-system/commit/83ccc56b8eb9cd9c95da946c164d8918991c4914))
+* **datagrid:** improve storybook ([653fc37](https://github.com/ovh/design-system/commit/653fc37028dff0f22eb0b6302b50ae7d993e08e9))
+* **global:** add missing packages to ods-components ([#302](https://github.com/ovh/design-system/issues/302)) ([0f94ce1](https://github.com/ovh/design-system/commit/0f94ce162d177d2c3c8b340727c1491380ff3bf4))
+* **pagination:** event payload & watch total pages ([4aedd79](https://github.com/ovh/design-system/commit/4aedd79cbf93fb1246a3b4d2bb43a0aeb7ef9a4b))
+* **phone:** show flag on local env ([3816ddc](https://github.com/ovh/design-system/commit/3816ddc26946d7da092a4dd9dcb51465e0bdf610))
+* **phone-number:** fix flag shadow in select ([e433e9b](https://github.com/ovh/design-system/commit/e433e9b1d7a6d5b5807061e010a09651fa539b9a))
+
+
+### Features
+
+* **chip:** add odsChipRemoval event ([41aa1dd](https://github.com/ovh/design-system/commit/41aa1dd4714ddc5b1bc3833d4fc24aa5482db597))
+* **chip:** add odsChipRemoval event ([7ac1257](https://github.com/ovh/design-system/commit/7ac12578ac9197da06986907fb02b7baba73c290))
+* **chip:** add odsChipRemoval event ([5c82f10](https://github.com/ovh/design-system/commit/5c82f106fae0bc14817f9d6b99adade0502a677d))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [16.5.0](https://ovh.github.io/design-system/v16.5.0/?path=/docs/design-system-changelog--page) (2023-11-24)
 [compare](https://github.com/ovh/design-system/compare/v16.4.0...v16.5.0)
 

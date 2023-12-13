@@ -103,7 +103,7 @@ export class OsdsTimepicker implements OdsTimepickerAttribute {
             disabled={ disabled }
             error={ error }
             inline={ inline }
-            value={ currentTimezone }
+            value={ this.timezonesList.length === 1 ? this.timezonesList[0] : currentTimezone }
             tabindex="0">
             { this.timezonesList.map((timezone) => {
               return <osds-select-option value={ timezone }>{ timezone }</osds-select-option>;

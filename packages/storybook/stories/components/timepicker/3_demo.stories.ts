@@ -2,15 +2,11 @@ import { html } from 'lit-html';
 import { defineCustomElements } from '@ovhcloud/ods-components/timepicker/loader';
 import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-components/timepicker/src/components/osds-timepicker/constants/default-attributes';
-// @ts-ignore
-import changelog from '@ovhcloud/ods-components/timepicker/CHANGELOG.md';
-// @ts-ignore
-import page from './timepicker.web-component.stories.page.mdx';
 
 defineCustomElements();
 
 /* Default story parameters  */
-const storyParams = {
+const sharedStoryParam = {
   clearable: {
     category: 'General',
     defaultValue: DEFAULT_ATTRIBUTE.clearable,
@@ -34,41 +30,51 @@ const storyParams = {
   value: {
     category: 'Value',
     defaultValue: '',
-  },
+  }
+};
+
+const defaultParam = {
   timezones: {
     category: 'Timezones',
     defaultValue: [],
+  }
+}
+
+const exampleParam = {
+  timezones: {
+    category: 'Timezones',
+    defaultValue: ['UTC-0', 'UTC-1', 'UTC-2'],
   },
-};
+}
 
 export default {
-  title: 'UI Components/Timepicker [molecule]/Web Component',
+  title: 'ODS Components/Form/Timepicker [molecule]/Web Component',
   id: 'timepicker',
-  parameters: {
-    notes: {
-      changelog,
-    },
-    docs: { page },
-    options: {
-      enableShortcuts: false,
-    },
-  },
-  argTypes: extractArgTypes(storyParams)
+  argTypes: extractArgTypes({...sharedStoryParam, ...defaultParam, ...exampleParam})
 };
 
 /* Default */
-
-const OsdsTimepickerDefault = (args: Record<string, unknown>) => html`
+const TemplateDefault = (args: any) => html`
   <osds-timepicker ...=${getTagAttributes({
-  ...args,
-})}>
+    ...args,
+  })}>
   </osds-timepicker>
 `;
-const TemplateDefault = (args: Record<string, unknown>) => OsdsTimepickerDefault(args);
 export const Default = TemplateDefault.bind({});
-type DefaultProps = {
-  args: Record<string, unknown>;
+// @ts-ignore
+Default.args = {
+  ...extractStoryParams({...sharedStoryParam, ...defaultParam}),
 };
-(Default as unknown as DefaultProps).args = {
-  ...(extractStoryParams(storyParams) as Record<string, unknown>)
+
+/* With Timezones Example */
+const TemplateTimezonesExample = (args: any) => html`
+  <osds-timepicker ...=${getTagAttributes({
+    ...args,
+  })}>
+  </osds-timepicker>
+`;
+export const TimezonesExample = TemplateTimezonesExample.bind({});
+// @ts-ignore
+TimezonesExample.args = {
+  ...extractStoryParams({...sharedStoryParam, ...exampleParam}),
 };

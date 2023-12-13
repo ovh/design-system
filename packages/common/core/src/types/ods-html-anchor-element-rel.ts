@@ -2,12 +2,12 @@
  * See rel attribute valid for <a> and <area> on
  * https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel
  */
-export enum OdsHTMLAnchorElementRel {
+enum OdsHTMLAnchorElementRel {
   alternate = 'alternate',
   author = 'author',
   bookmark = 'bookmark',
   canonical = 'canonical',
-  'dns-prefetch' = 'dns-prefetch',
+  dnsPrefetch = 'dns-prefetch',
   external = 'external',
   help = 'help',
   icon = 'icon',
@@ -26,13 +26,16 @@ export enum OdsHTMLAnchorElementRel {
   preload = 'preload',
   prerender = 'prerender',
   prev = 'prev',
-  'privacy-policy' = 'privacy-policy',
+  privacyPolicy = 'privacy-policy',
   search = 'search',
   stylesheet = 'stylesheet',
   tag = 'tag',
-  'terms-of-service' = 'terms-of-service'
+  termsOfService = 'terms-of-service'
 }
 
-export type OdsHTMLAnchorElementRelUnion = `${OdsHTMLAnchorElementRel}`;
+const OdsHTMLAnchorElementRelList = Object.freeze(Object.values(OdsHTMLAnchorElementRel));
 
-export const OdsHTMLAnchorElementRelList = Object.keys(OdsHTMLAnchorElementRel).map((key) => OdsHTMLAnchorElementRel[key as OdsHTMLAnchorElementRelUnion]);
+export {
+  OdsHTMLAnchorElementRel,
+  OdsHTMLAnchorElementRelList,
+}

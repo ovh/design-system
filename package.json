@@ -11,10 +11,6 @@
     "packages/common/*",
     "packages/components",
     "packages/components/src/!(dist|loader)*",
-    "packages/components-ovh",
-    "packages/components-ovh/!(loader|custom-elements|custom-elements-bundle)*",
-    "packages/components-ovh/!(loader|custom-elements|custom-elements-bundle)*/react",
-    "packages/components-ovh/!(loader|custom-elements|custom-elements-bundle)*/vue",
     "packages/shared-dependencies/*",
     "packages/storybook",
     "packages/themes/*"

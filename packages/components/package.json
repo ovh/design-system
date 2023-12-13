@@ -19,8 +19,14 @@
     "build:react": "npm --prefix react run build",
     "build:vue": "npm --prefix vue run build"
   },
+  "dependencies": {
+    "@ovhcloud/ods-common-core": "16.5.0",
+    "@ovhcloud/ods-common-stencil": "16.5.0",
+    "@ovhcloud/ods-common-theming": "16.5.0"
+  },
   "devDependencies": {
-    "@ovhcloud/ods-common-scripts": "16.6.0",
-    "@ovhcloud/ods-dev": "16.6.0"
+    "@ovhcloud/ods-common-scripts": "16.5.0",
+    "@ovhcloud/ods-common-testing": "16.5.0",
+    "@ovhcloud/ods-stencil-dev": "16.5.0"
   }
 }

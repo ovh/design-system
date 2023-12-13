@@ -2,8 +2,8 @@ If you are in a `React` application, you can connect the tab bar to your routes 
 
 ```typescript jsx
 import React, { useState, useEffect } from 'react';
-import { OsdsTabs, OsdsTabBar, OsdsTabBarItem, OsdsTabPanel } from '@ovhcloud/ods-stencil/components/react';
-import { useLocation, Link, Route, Routes } from 'react-router-dom';
+import { OsdsTabs, OsdsTabBar, OsdsTabBarItem, OsdsTabPanel } from '@ovhcloud/ods-components/tabs/react';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 
 const DefaultPanel: React.FC = () => <div>Default panel</div>;
 const ActivePanel: React.FC = () => <div>Active panel</div>;
@@ -13,36 +13,38 @@ const HoverPanel: React.FC = () => <div>Hover panel</div>;
 const TabsUsage: React.FC = () => {
 
   const [panel, setActivePanel] = useState('');
-  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     setActivePanel('hover');
-    setActivePanel(location.pathname.substring(1));
+    navigate('hover');
   }, []);
 
-  useEffect(() => {
-    setActivePanel(location.pathname.substring(1));
-  }, [location.pathname]);
+  const handlerTabChanged = (event: CustomEvent) => {
+    const panel = event.detail.panel;
+    setActivePanel(panel);
+    navigate(panel);
+  }
 
   return (
-    <OsdsTabs panel={panel}>
+    <OsdsTabs panel={panel} onOdsTabsChanged={(event) => handlerTabChanged(event)}>
       <OsdsTabBar slot="top">
         <OsdsTabBarItem panel="default">
-          <Link to="/default">Default</Link>
+          Default
         </OsdsTabBarItem>
         <OsdsTabBarItem panel="hover">
-          <Link to="/hover">Hover</Link>
+          Hover
         </OsdsTabBarItem>
         <OsdsTabBarItem panel="active">
-          <Link to="/active">Active</Link>
+          Active
         </OsdsTabBarItem>
       </OsdsTabBar>
-      <Routes>
-        <Route path="/default" element={<DefaultPanel />} />
-        <Route path="/active" element={<ActivePanel />} />
-        <Route path="/hover" element={<HoverPanel />} />
-      </Routes>
     </OsdsTabs>
+    <Routes>
+      <Route path="/default" element={<DefaultPanel />} />
+      <Route path="/active" element={<ActivePanel />} />
+      <Route path="/hover" element={<HoverPanel />} />
+    </Routes>
   )
 };
 

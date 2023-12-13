@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [16.6.0](https://ovh.github.io/design-system/v16.6.0/?path=/docs/design-system-changelog--page) (2023-12-13)
+[compare](https://github.com/ovh/design-system/compare/v16.5.0...v16.6.0)
+
+### Bug Fixes
+
+* **breadcrumb:** ref type ([ae98d6e](https://github.com/ovh/design-system/commit/ae98d6e09026dc5011144c2c12ce55db4f9d5074))
+* **core:** enum ods html anchor element rel ([1f6e1a0](https://github.com/ovh/design-system/commit/1f6e1a02e54918a346afb2093b2cf60b42dc63e5))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

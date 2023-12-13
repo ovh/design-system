@@ -10,7 +10,9 @@ import { ODS_ACCORDION_SIZE } from "./accordion/src/components/osds-accordion/co
 import { OsdsAccordion } from "./accordion/src/components/osds-accordion/osds-accordion";
 import { OdsBreadcrumbAttributeItem } from "./breadcrumb/src/components/osds-breadcrumb/interfaces/attributes";
 import { ODS_ICON_NAME } from "./icon/src";
+import { ODS_LINK_REFERRER_POLICY } from "./link/src";
 import { ODS_COUNTRY_ISO_CODE, ODS_LOCALE, ODS_PERIOD_ISO_CODE, OdsErrorStateControl, OdsFormControl, OdsFormForbiddenValues, OdsHTMLAnchorElementRel, OdsHTMLAnchorElementTarget, OdsI18nHook, OdsInputValue, OdsTextAreaValidityState, OdsValidityState } from "@ovhcloud/ods-common-core";
+import { OdsBreadcrumbAttributeItem as OdsBreadcrumbAttributeItem1 } from "./breadcrumb/src/components/osds-breadcrumb/public-api";
 import { ODS_BUTTON_SIZE } from "./button/src/components/osds-button/constants/button-size";
 import { ODS_BUTTON_TYPE } from "./button/src/components/osds-button/constants/button-type";
 import { ODS_BUTTON_VARIANT } from "./button/src/components/osds-button/constants/button-variant";
@@ -36,7 +38,7 @@ import { OdsInputValidityState } from "./input/src/components/osds-input/interfa
 import { ODS_INPUT_SIZE } from "./input/src/components/osds-input/constants/input-size";
 import { ODS_INPUT_TYPE } from "./input/src/components/osds-input/constants/input-type";
 import { OdsInputValueChangeEventDetail } from "./input/src/components/osds-input/interfaces/events";
-import { ODS_LINK_REFERRER_POLICY } from "./link/src/components/osds-link/constants/referrer-policies";
+import { ODS_LINK_REFERRER_POLICY as ODS_LINK_REFERRER_POLICY1 } from "./link/src/components/osds-link/constants/referrer-policies";
 import { ODS_MESSAGE_TYPE } from "./message/src/components/osds-message/constants/message-type";
 import { OdsPaginationChangedEventDetail } from "./pagination/src/components/osds-pagination/interfaces/events";
 import { ODS_INPUT_SIZE as ODS_INPUT_SIZE1 } from "./input/src";
@@ -73,7 +75,9 @@ export { ODS_ACCORDION_SIZE } from "./accordion/src/components/osds-accordion/co
 export { OsdsAccordion } from "./accordion/src/components/osds-accordion/osds-accordion";
 export { OdsBreadcrumbAttributeItem } from "./breadcrumb/src/components/osds-breadcrumb/interfaces/attributes";
 export { ODS_ICON_NAME } from "./icon/src";
+export { ODS_LINK_REFERRER_POLICY } from "./link/src";
 export { ODS_COUNTRY_ISO_CODE, ODS_LOCALE, ODS_PERIOD_ISO_CODE, OdsErrorStateControl, OdsFormControl, OdsFormForbiddenValues, OdsHTMLAnchorElementRel, OdsHTMLAnchorElementTarget, OdsI18nHook, OdsInputValue, OdsTextAreaValidityState, OdsValidityState } from "@ovhcloud/ods-common-core";
+export { OdsBreadcrumbAttributeItem as OdsBreadcrumbAttributeItem1 } from "./breadcrumb/src/components/osds-breadcrumb/public-api";
 export { ODS_BUTTON_SIZE } from "./button/src/components/osds-button/constants/button-size";
 export { ODS_BUTTON_TYPE } from "./button/src/components/osds-button/constants/button-type";
 export { ODS_BUTTON_VARIANT } from "./button/src/components/osds-button/constants/button-variant";
@@ -99,7 +103,7 @@ export { OdsInputValidityState } from "./input/src/components/osds-input/interfa
 export { ODS_INPUT_SIZE } from "./input/src/components/osds-input/constants/input-size";
 export { ODS_INPUT_TYPE } from "./input/src/components/osds-input/constants/input-type";
 export { OdsInputValueChangeEventDetail } from "./input/src/components/osds-input/interfaces/events";
-export { ODS_LINK_REFERRER_POLICY } from "./link/src/components/osds-link/constants/referrer-policies";
+export { ODS_LINK_REFERRER_POLICY as ODS_LINK_REFERRER_POLICY1 } from "./link/src/components/osds-link/constants/referrer-policies";
 export { ODS_MESSAGE_TYPE } from "./message/src/components/osds-message/constants/message-type";
 export { OdsPaginationChangedEventDetail } from "./pagination/src/components/osds-pagination/interfaces/events";
 export { ODS_INPUT_SIZE as ODS_INPUT_SIZE1 } from "./input/src";
@@ -188,10 +192,15 @@ export namespace Components {
          */
         "contrasted"?: boolean | undefined;
         /**
+          * Item should be disabled or not
+          * @see OdsBreadcrumbItemAttribute.disabled
+         */
+        "disabled"?: boolean | undefined;
+        /**
           * Item link to redirect to
           * @see OdsBreadcrumbItemAttribute.href
          */
-        "href": string;
+        "href": string | undefined;
         /**
           * Icon to display
           * @see OdsBreadcrumbItemAttribute.icon
@@ -205,6 +214,21 @@ export namespace Components {
           * @see OdsBreadcrumbItemAttribute.label
          */
         "label"?: string;
+        /**
+          * Link referrer policy
+          * @see OdsBreadcrumbItemAttribute.referrerpolicy
+         */
+        "referrerpolicy"?: ODS_LINK_REFERRER_POLICY;
+        /**
+          * Link relationship
+          * @see OdsBreadcrumbItemAttribute.rel
+         */
+        "rel"?: OdsHTMLAnchorElementRel;
+        /**
+          * Link target type Specifies where to open the link
+          * @see OdsBreadcrumbItemAttribute.target
+         */
+        "target"?: OdsHTMLAnchorElementTarget;
     }
     interface OsdsButton {
         /**
@@ -967,7 +991,7 @@ export namespace Components {
           * Link referrer policy
           * @see OdsLinkAttributes.referrerpolicy
          */
-        "referrerpolicy"?: ODS_LINK_REFERRER_POLICY;
+        "referrerpolicy"?: ODS_LINK_REFERRER_POLICY1;
         /**
           * Link relationship
           * @see OdsLinkAttributes.rel
@@ -2173,6 +2197,7 @@ declare global {
     };
     interface HTMLOsdsBreadcrumbItemElementEventMap {
         "odsBreadcrumbItemCollapsedClick": void;
+        "odsBreadcrumbItemClick": OdsBreadcrumbAttributeItem1 & { event: MouseEvent };
     }
     interface HTMLOsdsBreadcrumbItemElement extends Components.OsdsBreadcrumbItem, HTMLStencilElement {
         addEventListener<K extends keyof HTMLOsdsBreadcrumbItemElementEventMap>(type: K, listener: (this: HTMLOsdsBreadcrumbItemElement, ev: OsdsBreadcrumbItemCustomEvent<HTMLOsdsBreadcrumbItemElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2942,10 +2967,15 @@ declare namespace LocalJSX {
          */
         "contrasted"?: boolean | undefined;
         /**
+          * Item should be disabled or not
+          * @see OdsBreadcrumbItemAttribute.disabled
+         */
+        "disabled"?: boolean | undefined;
+        /**
           * Item link to redirect to
           * @see OdsBreadcrumbItemAttribute.href
          */
-        "href"?: string;
+        "href"?: string | undefined;
         /**
           * Icon to display
           * @see OdsBreadcrumbItemAttribute.icon
@@ -2960,9 +2990,30 @@ declare namespace LocalJSX {
          */
         "label"?: string;
         /**
+          * Event triggered item click
+          * @see OdsBreadcrumbItemEvent.odsBreadcrumbItemClick
+         */
+        "onOdsBreadcrumbItemClick"?: (event: OsdsBreadcrumbItemCustomEvent<OdsBreadcrumbAttributeItem1 & { event: MouseEvent }>) => void;
+        /**
+          * Event triggered on collapsed item click
           * @see OdsBreadcrumbItemEvent.odsBreadcrumbItemCollapsedClick
          */
         "onOdsBreadcrumbItemCollapsedClick"?: (event: OsdsBreadcrumbItemCustomEvent<void>) => void;
+        /**
+          * Link referrer policy
+          * @see OdsBreadcrumbItemAttribute.referrerpolicy
+         */
+        "referrerpolicy"?: ODS_LINK_REFERRER_POLICY;
+        /**
+          * Link relationship
+          * @see OdsBreadcrumbItemAttribute.rel
+         */
+        "rel"?: OdsHTMLAnchorElementRel;
+        /**
+          * Link target type Specifies where to open the link
+          * @see OdsBreadcrumbItemAttribute.target
+         */
+        "target"?: OdsHTMLAnchorElementTarget;
     }
     interface OsdsButton {
         /**
@@ -3717,7 +3768,7 @@ declare namespace LocalJSX {
           * Link referrer policy
           * @see OdsLinkAttributes.referrerpolicy
          */
-        "referrerpolicy"?: ODS_LINK_REFERRER_POLICY;
+        "referrerpolicy"?: ODS_LINK_REFERRER_POLICY1;
         /**
           * Link relationship
           * @see OdsLinkAttributes.rel

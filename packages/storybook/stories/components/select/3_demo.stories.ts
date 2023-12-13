@@ -1,10 +1,14 @@
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_SELECT_SIZE, ODS_SELECT_SIZES } from '@ovhcloud/ods-components';
-import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-select';
+import { defineCustomElement as defineSelect } from '@ovhcloud/ods-components/dist/components/osds-select';
+import { defineCustomElement as defineSelectGroup } from '@ovhcloud/ods-components/dist/components/osds-select-group';
+import { defineCustomElement as defineSelectOption } from '@ovhcloud/ods-components/dist/components/osds-select-option';
 import { html } from 'lit-html';
 import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 
-defineCustomElement();
+defineSelect();
+defineSelectGroup();
+defineSelectOption();
 
 const storyParams = {
   color: {

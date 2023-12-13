@@ -13,6 +13,7 @@ const Template = (args: any) => html`
   <osds-flag ...=${getTagAttributes(args)}></osds-flag>
 `;
 export const CustomPath = Template.bind({});
+// @ts-ignore
 CustomPath.parameters = {
   viewport: {
     viewports: {
@@ -28,6 +29,7 @@ CustomPath.parameters = {
     defaultViewport: 'smallContainer',
   },
 };
+// @ts-ignore
 CustomPath.args = {
   ...storyParams,
 };

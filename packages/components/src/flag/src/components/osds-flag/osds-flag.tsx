@@ -1,10 +1,14 @@
 import type { ODS_FLAG_ISO_CODE_UNION } from './constants/flag-iso-code';
 import type { OdsFlagAttribute } from './interfaces/attributes';
 import type { FunctionalComponent } from '@stencil/core';
-import { odsHasAriaHidden } from '@ovhcloud/ods-common-core';
+import { odsHasAriaHidden, odsSetup } from '@ovhcloud/ods-common-core';
 import { Build, Component, Element, Host, Prop, State, Watch, h } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsFlagController } from './core/controller';
+
+// We need this to be able to find the end-user ods instance (if defined)
+// This should be removed if we move to external assets
+odsSetup();
 
 @Component({
   shadow: true,

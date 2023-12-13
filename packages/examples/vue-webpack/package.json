@@ -1,0 +1,24 @@
+{
+  "name": "vue-webpack",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Example of how to use ODS with Vue",
+  "scripts": {
+    "start": "vue-cli-service serve",
+    "build": "vue-cli-service build"
+  },
+  "dependencies": {
+    "@ovhcloud/ods-components": "16.5.0",
+    "@ovhcloud/ods-theme-blue-jeans": "16.5.0",
+    "core-js": "3.34.0",
+    "vue": "3.3.11"
+  },
+  "devDependencies": {
+    "@ovhcloud/ods-dev": "16.5.0",
+    "@vue/cli-plugin-babel": "5.0.8",
+    "@vue/cli-plugin-typescript": "5.0.8",
+    "@vue/cli-service": "5.0.8",
+    "node-sass": "8.0.0",
+    "sass-loader": "13.3.2"
+  }
+}

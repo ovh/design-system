@@ -1,5 +1,6 @@
 import type { ODS_ICON_NAME } from '@ovhcloud/ods-component-icon';
-import type { OdsHTMLAnchorElementTarget } from '@ovhcloud/ods-common-core';
+import type { OdsHTMLAnchorElementRel, OdsHTMLAnchorElementTarget } from '@ovhcloud/ods-common-core';
+import type { ODS_LINK_REFERRER_POLICY } from '@ovhcloud/ods-component-link';
 
 interface OdsBreadcrumbItemAttribute {
   /** contrasted or not: see component principles */
@@ -19,9 +20,9 @@ interface OdsBreadcrumbItemAttribute {
   /** Text to display */
   label?: string
   /** Link referrer policy */
-  referrerpolicy?: HTMLLinkElement['referrerPolicy'];
+  referrerpolicy?: ODS_LINK_REFERRER_POLICY;
   /**  Link relationship */
-  rel?: HTMLLinkElement['rel'];
+  rel?: OdsHTMLAnchorElementRel;
   /**
    * Link target type
    * Specifies where to open the link

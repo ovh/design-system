@@ -1,9 +1,15 @@
 import { ODS_TABS_SIZE, ODS_TABS_SIZES } from '@ovhcloud/ods-components';
-import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-tabs';
+import { defineCustomElement as defineTabs } from '@ovhcloud/ods-components/dist/components/osds-tabs';
+import { defineCustomElement as defineTabBar } from '@ovhcloud/ods-components/dist/components/osds-tab-bar';
+import { defineCustomElement as defineTabBarItem } from '@ovhcloud/ods-components/dist/components/osds-tab-bar-item';
+import { defineCustomElement as defineTabPanel } from '@ovhcloud/ods-components/dist/components/osds-tab-panel';
 import { html } from 'lit-html';
 import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 
-defineCustomElement();
+defineTabs();
+defineTabBar();
+defineTabBarItem();
+defineTabPanel();
 
 /* Default story parameters  */
 const storyParams = {
@@ -66,6 +72,7 @@ const TemplateDefault = (args: any) => html`
   </div>
 `;
 export const WebComponent = TemplateDefault.bind({});
+// @ts-ignore
 WebComponent.args = {
   ...extractStoryParams(storyParams),
 };

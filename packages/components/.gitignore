@@ -1,2 +1,4 @@
 # On first build Stencil does not generate this file before building and so will fail if not present
-!src/components.d.ts
+# It just need to exists, not to be up-to-date
+# If it get removed, uncomment the following and commit one file again
+#!src/components.d.ts

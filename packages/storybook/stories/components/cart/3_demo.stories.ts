@@ -1,11 +1,27 @@
 import { ODS_CART_ROUNDED, ODS_CART_ROUNDEDS } from '@ovhcloud/ods-components';
-import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-cart';
+import { defineCustomElement as defineCart } from '@ovhcloud/ods-components/dist/components/osds-cart';
+import { defineCustomElement as defineCartFooter } from '@ovhcloud/ods-components/dist/components/osds-cart-footer';
+import { defineCustomElement as defineCartFooterItem } from '@ovhcloud/ods-components/dist/components/osds-cart-footer-item';
+import { defineCustomElement as defineCartHeader } from '@ovhcloud/ods-components/dist/components/osds-cart-header';
+import { defineCustomElement as defineCartItem } from '@ovhcloud/ods-components/dist/components/osds-cart-item';
+import { defineCustomElement as defineCartItemOption } from '@ovhcloud/ods-components/dist/components/osds-cart-item-option';
+import { defineCustomElement as defineCartManager } from '@ovhcloud/ods-components/dist/components/osds-cart-manager';
+import { defineCustomElement as defineCartSection } from '@ovhcloud/ods-components/dist/components/osds-cart-section';
+import { defineCustomElement as defineCartTotal } from '@ovhcloud/ods-components/dist/components/osds-cart-total';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 import { CartManagerPlay } from './demo.manager.stories';
 import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 
-defineCustomElement();
+defineCart();
+defineCartFooter();
+defineCartFooterItem();
+defineCartHeader();
+defineCartItem();
+defineCartItemOption();
+defineCartManager();
+defineCartSection();
+defineCartTotal();
 
 /* Default story parameters  */
 const storyParams = {

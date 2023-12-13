@@ -11,6 +11,7 @@
     "packages/common/*",
     "packages/components",
     "packages/components/src/!(dist|loader)*",
+    "packages/examples/*",
     "packages/shared-dependencies/*",
     "packages/storybook",
     "packages/themes/*"

@@ -23,6 +23,7 @@ const TemplateDefault = (args: any) => html`
   <osds-flag ...=${getTagAttributes(args)}></osds-flag>
 `;
 export const Default = TemplateDefault.bind({});
+// @ts-ignore
 Default.parameters = {
   viewport: {
     viewports: {
@@ -38,6 +39,7 @@ Default.parameters = {
     defaultViewport: 'smallContainer',
   },
 };
+// @ts-ignore
 Default.args = {
   ...storyParams,
 };
@@ -46,6 +48,7 @@ const Play = async() => {
   Ods.instance().assetPath('flags/');
 };
 
+// @ts-ignore
 Default.play = Play;
 
 export { CustomPath } from './demo.stories.custom-path';

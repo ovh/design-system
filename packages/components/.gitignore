@@ -1,0 +1,2 @@
+# On first build Stencil does not generate this file before building and so will fail if not present
+!src/components.d.ts

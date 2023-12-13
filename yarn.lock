@@ -5016,6 +5016,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+<<<<<<< HEAD
 >>>>>>> 39768c75 (refactor(stencil): move all components && fix doc)
 "@ovhcloud/ods-component-ovh-location-tile-react@workspace:packages/components-ovh/location-tile/react":
   version: 0.0.0-use.local
@@ -5052,6 +5053,8 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+=======
+>>>>>>> 6cea9cba (fix(ci): disable components-ovh && fix components dependency to ensure build order)
 "@ovhcloud/ods-component-pagination@workspace:packages/components/src/pagination":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-pagination@workspace:packages/components/src/pagination"
@@ -6055,6 +6058,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+<<<<<<< HEAD
 "@ovhcloud/ods-components-ovh@16.5.0, @ovhcloud/ods-components-ovh@workspace:packages/components-ovh":
 >>>>>>> 39768c75 (refactor(stencil): move all components && fix doc)
   version: 0.0.0-use.local
@@ -6118,6 +6122,18 @@ __metadata:
     "@ovhcloud/ods-common-scripts": 16.5.0
     "@ovhcloud/ods-dev": 16.5.0
 >>>>>>> 2907f97f (refactor(stencil): init new arch with text)
+=======
+"@ovhcloud/ods-components@16.5.0, @ovhcloud/ods-components@workspace:packages/components":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-components@workspace:packages/components"
+  dependencies:
+    "@ovhcloud/ods-common-core": 16.5.0
+    "@ovhcloud/ods-common-scripts": 16.5.0
+    "@ovhcloud/ods-common-stencil": 16.5.0
+    "@ovhcloud/ods-common-testing": 16.5.0
+    "@ovhcloud/ods-common-theming": 16.5.0
+    "@ovhcloud/ods-stencil-dev": 16.5.0
+>>>>>>> 6cea9cba (fix(ci): disable components-ovh && fix components dependency to ensure build order)
   languageName: unknown
   linkType: soft
 
@@ -6133,7 +6149,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+<<<<<<< HEAD
 "@ovhcloud/ods-react-dev@16.6.0, @ovhcloud/ods-react-dev@workspace:packages/shared-dependencies/odsReactDev":
+=======
+"@ovhcloud/ods-react-dev@workspace:packages/shared-dependencies/odsReactDev":
+>>>>>>> 6cea9cba (fix(ci): disable components-ovh && fix components dependency to ensure build order)
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-react-dev@workspace:packages/shared-dependencies/odsReactDev"
   dependencies:
@@ -6164,6 +6184,7 @@ __metadata:
   resolution: "@ovhcloud/ods-storybook@workspace:packages/storybook"
   dependencies:
     "@babel/core": 7.16.0
+<<<<<<< HEAD
     "@ovhcloud/ods-cdk": 16.6.0
     "@ovhcloud/ods-cdk-dev": 16.6.0
     "@ovhcloud/ods-common-core": 16.6.0
@@ -6172,6 +6193,15 @@ __metadata:
     "@ovhcloud/ods-components": 16.6.0
     "@ovhcloud/ods-components-ovh": 16.6.0
     "@ovhcloud/ods-theme-blue-jeans": 16.6.0
+=======
+    "@ovhcloud/ods-cdk": 16.5.0
+    "@ovhcloud/ods-cdk-dev": 16.5.0
+    "@ovhcloud/ods-common-core": 16.5.0
+    "@ovhcloud/ods-common-stencil": 16.5.0
+    "@ovhcloud/ods-common-theming": 16.5.0
+    "@ovhcloud/ods-components": 16.5.0
+    "@ovhcloud/ods-theme-blue-jeans": 16.5.0
+>>>>>>> 6cea9cba (fix(ci): disable components-ovh && fix components dependency to ensure build order)
     "@storybook/addon-a11y": 6.4.19
     "@storybook/addon-actions": 6.4.19
     "@storybook/addon-backgrounds": 6.4.19
@@ -6217,7 +6247,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+<<<<<<< HEAD
 "@ovhcloud/ods-vue-dev@16.6.0, @ovhcloud/ods-vue-dev@workspace:packages/shared-dependencies/odsVueDev":
+=======
+"@ovhcloud/ods-vue-dev@workspace:packages/shared-dependencies/odsVueDev":
+>>>>>>> 6cea9cba (fix(ci): disable components-ovh && fix components dependency to ensure build order)
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-vue-dev@workspace:packages/shared-dependencies/odsVueDev"
   dependencies:

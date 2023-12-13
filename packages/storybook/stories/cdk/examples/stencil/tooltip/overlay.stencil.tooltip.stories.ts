@@ -1,4 +1,4 @@
-import { defineCustomElements } from '@ovhcloud/ods-cdk/dev/loader';
+import { defineCustomElements } from '@ovhcloud/ods-cdk/dev/dist/loader';
 import { OcdkSurfaceTooltipPosition, OcdkSurfaceTooltipPositionList } from '@ovhcloud/ods-cdk-dev';
 import { html } from 'lit-html';
 import { styleMap } from 'lit-html/directives/style-map';

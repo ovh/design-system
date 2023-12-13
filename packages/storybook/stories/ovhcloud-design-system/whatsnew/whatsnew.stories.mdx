@@ -12,6 +12,45 @@ import { Meta } from '@storybook/addon-docs';
 
 # What's new ?
 
+## v16.6.0
+
+### Feature update:
+
+** Breadcrumb **
+
+* Add attributes on `breadcrumItem` : `disabled`, `rel`, `referrerpolicy`, `target`
+* Add event on `breadcrumItem` : `odsBreadcrumbItemClick`
+* Update `OdsHTMLAnchorElementRel` type
+
+** Chip **
+
+* Added `odsChipRemoval` event
+* If `OsdsChip` is removable and is clicked, it will emit event `odsChipRemoval`
+* If `OsdsChip` is removable, focused on and key Enter is pressed, it will emit event `odsChipRemoval`
+
+### Bug fixes:
+
+** Button **
+
+* Fix position of end slot when start slot is empty in `OsdsButton`
+
+** Datagrid **
+
+* If the `OsdsDatagrid` contains an overflowing on-interaction element (such as `OsdsMenu`, `OsdsTooltip`, `OsdsSelect` or `OsdsPopover`), the element is either being displayed at the top left corner of the `OsdsDatagrid` (native) or beneath the element, making it unvisible (React). This fix intends to correct this problem in both environments.
+
+** Pagination **
+
+* Add `itemPerPage` in payload event `odsPaginationChanged`
+* Watch `totalPages` & update it
+
+** PhoneNumber **
+
+*  Fix shadow of flag icon in the select that was cut behind overflow
+
+** Components **
+
+* Some components were missing from package.json of components: `medium`, `range`, `toggle`
+
 ## v16.5.0
 
 ### Feature update:

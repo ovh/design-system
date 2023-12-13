@@ -150,6 +150,13 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
     this.updateSiblingsMonthDaysVisibility();
   }
 
+  componentWillLoad(): void {
+    // Those components are used in some string templates, not JSX,
+    // thus Stencil does not detect them correctly and they're not embedded in the build,
+    // so we have to manually declare their usage here
+    h('osds-icon');
+  }
+
   emitBlur(): void {
     this.odsDatepickerBlur.emit();
   }

@@ -33,6 +33,24 @@ class OdsTabsController {
     }
   }
 
+  handleArrowKey(event: KeyboardEvent): void {
+    const currentSelectedTabIndex = this.component.getTabItems().findIndex((tab) => tab.hasAttribute('active'))
+    if(currentSelectedTabIndex === 0 && event.code === 'ArrowLeft' ) {
+      return;
+    }
+    if(currentSelectedTabIndex === this.component.getTabItems().length - 1 && event.code === 'ArrowRight' ) {
+      return;
+    }
+
+    if(event.code === 'ArrowLeft') {
+      const previousPanel = this.component.getTabItems()[currentSelectedTabIndex - 1].getAttribute('panel');
+      this.changeActivePanel(previousPanel!);
+    } else {
+      const nextPanel = this.component.getTabItems()[currentSelectedTabIndex + 1].getAttribute('panel');
+      this.changeActivePanel(nextPanel!);
+    }
+  }
+
   propagateContrastedToItems(contrasted: boolean) {
     this.component.getTabItems().forEach((item) => item.contrasted = contrasted);
   }

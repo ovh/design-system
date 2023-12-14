@@ -79,6 +79,13 @@ export class OsdsTabs implements OdsTabsAttribute, OdsTabsEvent {
     return this.controller.getTabPanels('osds-tab-panel');
   }
 
+  handleArrowKey(event: KeyboardEvent): void {
+    if (event.code === 'ArrowLeft' || event.code === 'ArrowRight') {
+      event.stopPropagation();
+      this.controller.handleArrowKey(event);
+    }
+  }
+
   /**
    * when panel property changes, it will change the active panel
    * @see OdsTabsBehavior.onPanelPropChange
@@ -104,7 +111,9 @@ export class OsdsTabs implements OdsTabsAttribute, OdsTabsEvent {
   render() {
     return (
       <Host>
-        <div class="tabs-nav-wrap">
+        <div class="tabs-nav-wrap"
+             onKeyDown={ this.handleArrowKey.bind(this) }
+        >
           <slot name='top' />
         </div>
         <slot />

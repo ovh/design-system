@@ -13,7 +13,7 @@
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
   "scripts": {
-    "doc": "typedoc --json ./docs-api/typedoc.json --pretty && node ../../../scripts/generate-typedoc-md.js",
+    "doc": "typedoc --json ./docs-api/typedoc.json --pretty && node ../../../../scripts/generate-typedoc-md.js",
     "doc:api": "typedoc",
     "generate:licence": "npx generate-license-file --input package.json --output THIRD-PARTY-LICENCES --overwrite",
     "lint:scss": "stylelint 'src/components/**/*.scss'",

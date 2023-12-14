@@ -14,7 +14,7 @@
   "collection:main": "dist/collection/index.js",
   "scripts": {
     "clean": "rimraf .stencil coverage custom-elements custom-elements-bundle dist docs-api loader screenshot www",
-    "doc": "yarn run doc:accordion && yarn run doc:accordion-group && node ../../../scripts/generate-typedoc-md.js --multiple",
+    "doc": "yarn run doc:accordion && yarn run doc:accordion-group && node ../../../../scripts/generate-typedoc-md.js --multiple",
     "doc:accordion": "typedoc src/components/osds-accordion/public-api.ts --out ./docs-api/accordion --json ./docs-api/accordion/typedoc.json",
     "doc:accordion-group": "typedoc src/components/osds-accordion-group/public-api.ts --out ./docs-api/accordion-group --json ./docs-api/accordion-group/typedoc.json",
     "doc:api": "typedoc",
@@ -37,7 +37,7 @@
     "@ovhcloud/ods-common-theming": "16.6.0"
   },
   "devDependencies": {
-    "@ovhcloud/ods-common-testing": "16..0",
+    "@ovhcloud/ods-common-testing": "16.6.0",
     "@ovhcloud/ods-stencil-dev": "16.6.0"
   }
 }

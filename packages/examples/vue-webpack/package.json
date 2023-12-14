@@ -8,13 +8,13 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
-    "@ovhcloud/ods-components": "16.5.0",
-    "@ovhcloud/ods-theme-blue-jeans": "16.5.0",
+    "@ovhcloud/ods-components": "16.6.0",
+    "@ovhcloud/ods-theme-blue-jeans": "16.6.0",
     "core-js": "3.34.0",
     "vue": "3.3.11"
   },
   "devDependencies": {
-    "@ovhcloud/ods-dev": "16.5.0",
+    "@ovhcloud/ods-dev": "16.6.0",
     "@vue/cli-plugin-babel": "5.0.8",
     "@vue/cli-plugin-typescript": "5.0.8",
     "@vue/cli-service": "5.0.8",

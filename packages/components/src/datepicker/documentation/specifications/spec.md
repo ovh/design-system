@@ -47,3 +47,38 @@
 | `thursday` |
 | `tuesday` |
 | `wednesday` |
+
+### ODS_DATEPICKER_LOCALE
+|  |
+|:---:|
+| `AR` |
+| `BG` |
+| `CS` |
+| `DA` |
+| `DE` |
+| `EL` |
+| `EN` |
+| `EO` |
+| `ES` |
+| `ET` |
+| `EU` |
+| `FI` |
+| `FR` |
+| `HR` |
+| `HU` |
+| `HY` |
+| `IT` |
+| `JA` |
+| `KO` |
+| `LT` |
+| `NL` |
+| `NO` |
+| `PL` |
+| `PT` |
+| `RO` |
+| `RU` |
+| `SL` |
+| `SV` |
+| `TH` |
+| `UK` |
+| `ZH` |

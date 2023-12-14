@@ -15,6 +15,11 @@
 |**`size`** | `ODS_CHIP_SIZE` |  |  | Chip size|
 |**`variant`** | `ODS_CHIP_VARIANT` |  |  | Chip variant|
 
+### OdsChipEvent
+|Name | Type | Required | Default | Description|
+|---|---|:---:|---|---|
+|**`odsChipRemoval`** | `EventEmitter<void>` | ✴️ |  | |
+
 ## Types
 
 ### ODS_CHIP_SIZE

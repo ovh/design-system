@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-component-popover",
-  "version": "16.5.0",
+  "version": "16.6.0",
   "private": true,
   "description": "ODS Popover component",
   "author": "OVH SAS",
@@ -14,7 +14,7 @@
   "collection:main": "dist/collection/index.js",
   "scripts": {
     "clean": "rimraf .stencil coverage custom-elements custom-elements-bundle dist docs-api loader screenshot www",
-    "doc": "typedoc --json ./docs-api/typedoc.json --pretty && node ../../../scripts/generate-typedoc-md.js",
+    "doc": "typedoc --json ./docs-api/typedoc.json --pretty && node ../../../../scripts/generate-typedoc-md.js",
     "doc:api": "typedoc",
     "generate:licence": "npx generate-license-file --input package.json --output THIRD-PARTY-LICENCES --overwrite",
     "lint:scss": "stylelint 'src/components/**/*.scss'",
@@ -36,7 +36,7 @@
     "@ovhcloud/ods-common-theming": "16.6.0"
   },
   "devDependencies": {
-    "@ovhcloud/ods-common-testing": "16.5.0",
-    "@ovhcloud/ods-stencil-dev": "16.5.0"
+    "@ovhcloud/ods-common-testing": "16.6.0",
+    "@ovhcloud/ods-stencil-dev": "16.6.0"
   }
 }

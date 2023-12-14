@@ -17,6 +17,7 @@
 |Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`current`** | _number_ | ✴️ |  | |
+|**`itemPerPage`** | _number_ | ✴️ |  | |
 |**`oldCurrent`** | _number_ |  |  | |
 
 ### OdsPaginationEvent

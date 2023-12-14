@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-component-radio",
-  "version": "16.5.0",
+  "version": "16.6.0",
   "private": true,
   "description": "ODS Radio component",
   "license": "Apache-2.0",
@@ -13,7 +13,7 @@
   "collection:main": "dist/collection/index.js",
   "scripts": {
     "clean": "rimraf .stencil coverage custom-elements custom-elements-bundle dist docs-api loader screenshot www",
-    "doc": "yarn run doc:radio && yarn run doc:radio-group && node ../../../scripts/generate-typedoc-md.js --multiple",
+    "doc": "yarn run doc:radio && yarn run doc:radio-group && node ../../../../scripts/generate-typedoc-md.js --multiple",
     "doc:api": "typedoc",
     "doc:radio": "typedoc src/components/osds-radio/public-api.ts --out ./docs-api/radio --json ./docs-api/radio/typedoc.json",
     "doc:radio-group": "typedoc src/components/osds-radio-group/public-api.ts --out ./docs-api/radio-group --json ./docs-api/radio-group/typedoc.json",
@@ -36,7 +36,7 @@
     "@ovhcloud/ods-common-theming": "16.6.0"
   },
   "devDependencies": {
-    "@ovhcloud/ods-common-testing": "16.5.0",
-    "@ovhcloud/ods-stencil-dev": "16.5.0"
+    "@ovhcloud/ods-common-testing": "16.6.0",
+    "@ovhcloud/ods-stencil-dev": "16.6.0"
   }
 }

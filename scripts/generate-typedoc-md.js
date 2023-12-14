@@ -25,8 +25,8 @@ function getRootComponent() {
 
 function createSpecMd(component = '') {
   const typedocJson = require(path.resolve('docs-api', component, 'typedoc.json'));
-  const destPath = `../../components${pathPrefix ? `-${pathPrefix}` : ''}`;
-  const dir = path.resolve(destPath, rootComponent, 'documentation/specifications', component);
+  // TODO test for prefixed project (like -ovh)
+  const dir = path.resolve('documentation', 'specifications', component);
 
   fs.mkdirSync(dir, { recursive: true });
 

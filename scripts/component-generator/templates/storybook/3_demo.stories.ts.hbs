@@ -1,8 +1,8 @@
-import { defineCustomElements } from '@ovhcloud/ods-{{> component-dir}}/{{ name }}/loader';
+import { defineCustomElement } from '@ovhcloud/ods-{{> component-dir}}/dist/components/osds-{{ name }}';
 import { html } from 'lit-html';
 import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 
-defineCustomElements();
+defineCustomElement();
 
 /* Default story parameters  */
 const storyParams = {};

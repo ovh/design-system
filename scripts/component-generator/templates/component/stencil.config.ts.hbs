@@ -5,7 +5,6 @@ import jestConfig from './jest.config';
 export const config = getStencilConfig({
   args: process.argv.slice(2),
   componentCorePackage: '@ovhcloud/ods-component-{{> component-name }}',
-  excludeComponents: [],
   jestConfig,
   namespace: 'osds-{{> component-name }}',
 });

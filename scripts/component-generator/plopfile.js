@@ -7,23 +7,15 @@ module.exports = function (plop) {
   const destinationPath = `${process.cwd()}/packages`;
   const packagePrefix = '@ovhcloud/ods';
 
-  plop.setActionType('yarn-install', function () {
+  plop.setActionType('yarn-install', function() {
     spawnSync('yarn', []);
   });
 
-  plop.setActionType('lerna-add-dependency', function (answers, config, plop) {
-    const componentsDirName = plop.getHelper('suffix-join')(answers.prefix, componentsBaseDirName);
-    const libPrefix = plop.getHelper('suffix-join')(answers.prefix, 'component');
-    const dependency = `${packagePrefix}-${libPrefix}-${answers.name}@${libVersion}`;
-
-    spawnSync('lerna', ['--scope', `${packagePrefix}-${componentsDirName}`, 'exec', '--', 'yarn', 'add', dependency]);
-  });
-
-  plop.setHelper('prefix-join', function (prefix, text) {
+  plop.setHelper('prefix-join', function(prefix, text) {
     return prefix ? `${prefix}-${text}` : text;
   });
 
-  plop.setHelper('suffix-join', function (suffix, text) {
+  plop.setHelper('suffix-join', function(suffix, text) {
     return suffix ? `${text}-${suffix}` : text;
   });
 
@@ -50,7 +42,7 @@ module.exports = function (plop) {
       type: 'input',
       name: 'name',
       message: 'Type the component name using kebab-case, without any "ods-" prefix (ex: text, search-bar, ...):',
-      validate: function(value) {
+      validate: function (value) {
         if (/.+/.test(value)) {
           return true;
         }
@@ -63,10 +55,14 @@ module.exports = function (plop) {
       templateFiles: 'templates/component/**/*',
       stripExtensions: ['hbs'],
       globOptions: { dot: true },
-      destination: `${destinationPath}/{{ suffix-join prefix "${componentsBaseDirName}" }}/{{name}}`,
+      destination: `${destinationPath}/{{ suffix-join prefix "${componentsBaseDirName}" }}/src/{{name}}`,
       data: {
         'component-version': libVersion,
       },
+    }, {
+      type: 'append',
+      path: `${destinationPath}/{{ suffix-join prefix "${componentsBaseDirName}" }}/src/index.ts`,
+      template: "export * from './{{name}}/src';",
     }, {
       type: 'addMany',
       base: 'templates/storybook',
@@ -76,8 +72,6 @@ module.exports = function (plop) {
       destination: `${destinationPath}/storybook/stories/{{ suffix-join prefix "${componentsBaseDirName}" }}/{{name}}`,
     }, {
       type: 'yarn-install',
-    }, {
-      type: 'lerna-add-dependency',
     }],
   });
 };

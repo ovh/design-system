@@ -3,7 +3,7 @@
  * when running dev server (yarn start) or e2e tests
  *
  * ex:
- *   import '@ovhcloud/ods-component-text';
+ *   import '../../input/src'
  */
-import '@ovhcloud/ods-component-input';
-import '@ovhcloud/ods-component-select';
+import '../../input/src';
+import '../../select/src';

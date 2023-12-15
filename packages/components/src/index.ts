@@ -42,5 +42,6 @@ export * from './tabs/src';
 export * from './text/src';
 export * from './textarea/src';
 export * from './tile/src';
+export * from './timepicker/src';
 export * from './toggle/src';
 export * from './tooltip/src';

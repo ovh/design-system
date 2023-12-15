@@ -1,6 +1,6 @@
 jest.mock('./core/controller'); // keep jest.mock before any
 import type { OdsTimepickerAttribute } from './interfaces/attributes';
-import type { OsdsSelect, OsdsSelectOption } from '@ovhcloud/ods-component-select';
+import type { OsdsSelect, OsdsSelectOption } from '../../../../select/src';;
 import type { SpecPage } from '@stencil/core/testing';
 import {
   odsComponentAttributes2StringAttributes,

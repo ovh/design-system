@@ -1,56 +1,55 @@
 import { html } from 'lit-html';
-import { defineCustomElements } from '@ovhcloud/ods-components/timepicker/loader';
+import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-timepicker';
 import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
-import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-components/timepicker/src/components/osds-timepicker/constants/default-attributes';
 
-defineCustomElements();
+defineCustomElement();
 
 /* Default story parameters  */
 const sharedStoryParam = {
   clearable: {
     category: 'General',
-    defaultValue: DEFAULT_ATTRIBUTE.clearable,
+    defaultValue: false,
   },
   disabled: {
     category: 'General',
-    defaultValue: DEFAULT_ATTRIBUTE.disabled,
+    defaultValue: false,
   },
   error: {
     category: 'General',
-    defaultValue: DEFAULT_ATTRIBUTE.error,
+    defaultValue: false,
   },
   inline: {
     category: 'General',
-    defaultValue: DEFAULT_ATTRIBUTE.inline,
-  },
-  withSeconds: {
-    category: 'General',
-    defaultValue: DEFAULT_ATTRIBUTE.withSeconds,
+    defaultValue: false,
   },
   value: {
     category: 'Value',
     defaultValue: '',
-  }
+  },
+  withSeconds: {
+    category: 'General',
+    defaultValue: false,
+  },
 };
 
 const defaultParam = {
   timezones: {
     category: 'Timezones',
     defaultValue: [],
-  }
-}
+  },
+};
 
 const exampleParam = {
   timezones: {
     category: 'Timezones',
     defaultValue: ['UTC-0', 'UTC-1', 'UTC-2'],
   },
-}
+};
 
 export default {
-  title: 'ODS Components/Form/Timepicker [molecule]/Web Component',
+  argTypes: extractArgTypes({ ...sharedStoryParam, ...defaultParam, ...exampleParam }),
   id: 'timepicker',
-  argTypes: extractArgTypes({...sharedStoryParam, ...defaultParam, ...exampleParam})
+  title: 'ODS Components/Form/Timepicker [molecule]/Web Component',
 };
 
 /* Default */

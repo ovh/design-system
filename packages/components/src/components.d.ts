@@ -65,6 +65,8 @@ import { ODS_TEXT_LEVEL } from "./text/src/components/osds-text/constants/text-l
 import { OdsTextareaValueChangeEventDetail } from "./textarea/src/components/osds-textarea/interfaces/events";
 import { ODS_TILE_SIZE } from "./tile/src/components/osds-tile/constants/tile-size";
 import { ODS_TILE_VARIANT } from "./tile/src/components/osds-tile/constants/tile-variant";
+import { ODS_TIMEZONE } from "./timepicker/src/components/osds-timepicker/constants/timezones";
+import { ODS_TIMEZONES_PRESET } from "./timepicker/src/components/osds-timepicker/constants/timezones-preset";
 import { ODS_TOOLTIP_VARIANT } from "./tooltip/src/components/osds-tooltip/constants/tooltip-variant";
 export { ODS_THEME_COLOR_INTENT } from "@ovhcloud/ods-common-theming";
 export { ODS_ACCORDION_SIZE } from "./accordion/src/components/osds-accordion/constants/accordion-size";
@@ -126,6 +128,8 @@ export { ODS_TEXT_LEVEL } from "./text/src/components/osds-text/constants/text-l
 export { OdsTextareaValueChangeEventDetail } from "./textarea/src/components/osds-textarea/interfaces/events";
 export { ODS_TILE_SIZE } from "./tile/src/components/osds-tile/constants/tile-size";
 export { ODS_TILE_VARIANT } from "./tile/src/components/osds-tile/constants/tile-variant";
+export { ODS_TIMEZONE } from "./timepicker/src/components/osds-timepicker/constants/timezones";
+export { ODS_TIMEZONES_PRESET } from "./timepicker/src/components/osds-timepicker/constants/timezones-preset";
 export { ODS_TOOLTIP_VARIANT } from "./tooltip/src/components/osds-tooltip/constants/tooltip-variant";
 export namespace Components {
     interface OsdsAccordion {
@@ -1893,6 +1897,48 @@ export namespace Components {
          */
         "variant"?: ODS_TILE_VARIANT;
     }
+    interface OsdsTimepicker {
+        /**
+          * Defines if the Timepicker should be clearable or not (displays a clear button)
+          * @see OdsTimepickerAttribute.clearable
+         */
+        "clearable"?: boolean | undefined;
+        /**
+          * Defines the timezone to show by default in the select
+          * @see OdsTimepickerAttribute.currentTimezone
+         */
+        "currentTimezone"?: ODS_TIMEZONE;
+        /**
+          * Defines the Timepicker's disabled state
+          * @see OdsTimepickerAttribute.disabled
+         */
+        "disabled"?: boolean | undefined;
+        /**
+          * Defines the Timepicker's error state
+          * @see OdsTimepickerAttribute.error
+         */
+        "error"?: boolean | undefined;
+        /**
+          * Defines if the Timepicker should be displayed inline or not
+          * @see OdsTimepickerAttribute.inline
+         */
+        "inline"?: boolean | undefined;
+        /**
+          * Defines the timezones available to show in the select
+          * @see OdsTimepickerAttribute.timezones
+         */
+        "timezones"?: ODS_TIMEZONE[] | ODS_TIMEZONES_PRESET;
+        /**
+          * Defines the Timepicker's value
+          * @see OdsTimepickerAttribute.value
+         */
+        "value"?: string | null | undefined;
+        /**
+          * Defines if the Timepicker should be displayed seconds or not
+          * @see OdsTimepickerAttribute.withSeconds
+         */
+        "withSeconds"?: boolean | undefined;
+    }
     interface OsdsToggle {
         /**
           * Toggle is checked or not
@@ -2754,6 +2800,12 @@ declare global {
         prototype: HTMLOsdsTileElement;
         new (): HTMLOsdsTileElement;
     };
+    interface HTMLOsdsTimepickerElement extends Components.OsdsTimepicker, HTMLStencilElement {
+    }
+    var HTMLOsdsTimepickerElement: {
+        prototype: HTMLOsdsTimepickerElement;
+        new (): HTMLOsdsTimepickerElement;
+    };
     interface HTMLOsdsToggleElement extends Components.OsdsToggle, HTMLStencilElement {
     }
     var HTMLOsdsToggleElement: {
@@ -2835,6 +2887,7 @@ declare global {
         "osds-text": HTMLOsdsTextElement;
         "osds-textarea": HTMLOsdsTextareaElement;
         "osds-tile": HTMLOsdsTileElement;
+        "osds-timepicker": HTMLOsdsTimepickerElement;
         "osds-toggle": HTMLOsdsToggleElement;
         "osds-tooltip": HTMLOsdsTooltipElement;
         "osds-tooltip-content": HTMLOsdsTooltipContentElement;
@@ -4555,6 +4608,48 @@ declare namespace LocalJSX {
          */
         "variant"?: ODS_TILE_VARIANT;
     }
+    interface OsdsTimepicker {
+        /**
+          * Defines if the Timepicker should be clearable or not (displays a clear button)
+          * @see OdsTimepickerAttribute.clearable
+         */
+        "clearable"?: boolean | undefined;
+        /**
+          * Defines the timezone to show by default in the select
+          * @see OdsTimepickerAttribute.currentTimezone
+         */
+        "currentTimezone"?: ODS_TIMEZONE;
+        /**
+          * Defines the Timepicker's disabled state
+          * @see OdsTimepickerAttribute.disabled
+         */
+        "disabled"?: boolean | undefined;
+        /**
+          * Defines the Timepicker's error state
+          * @see OdsTimepickerAttribute.error
+         */
+        "error"?: boolean | undefined;
+        /**
+          * Defines if the Timepicker should be displayed inline or not
+          * @see OdsTimepickerAttribute.inline
+         */
+        "inline"?: boolean | undefined;
+        /**
+          * Defines the timezones available to show in the select
+          * @see OdsTimepickerAttribute.timezones
+         */
+        "timezones"?: ODS_TIMEZONE[] | ODS_TIMEZONES_PRESET;
+        /**
+          * Defines the Timepicker's value
+          * @see OdsTimepickerAttribute.value
+         */
+        "value"?: string | null | undefined;
+        /**
+          * Defines if the Timepicker should be displayed seconds or not
+          * @see OdsTimepickerAttribute.withSeconds
+         */
+        "withSeconds"?: boolean | undefined;
+    }
     interface OsdsToggle {
         /**
           * Toggle is checked or not
@@ -4659,6 +4754,7 @@ declare namespace LocalJSX {
         "osds-text": OsdsText;
         "osds-textarea": OsdsTextarea;
         "osds-tile": OsdsTile;
+        "osds-timepicker": OsdsTimepicker;
         "osds-toggle": OsdsToggle;
         "osds-tooltip": OsdsTooltip;
         "osds-tooltip-content": OsdsTooltipContent;
@@ -4742,6 +4838,7 @@ declare module "@stencil/core" {
             "osds-text": LocalJSX.OsdsText & JSXBase.HTMLAttributes<HTMLOsdsTextElement>;
             "osds-textarea": LocalJSX.OsdsTextarea & JSXBase.HTMLAttributes<HTMLOsdsTextareaElement>;
             "osds-tile": LocalJSX.OsdsTile & JSXBase.HTMLAttributes<HTMLOsdsTileElement>;
+            "osds-timepicker": LocalJSX.OsdsTimepicker & JSXBase.HTMLAttributes<HTMLOsdsTimepickerElement>;
             "osds-toggle": LocalJSX.OsdsToggle & JSXBase.HTMLAttributes<HTMLOsdsToggleElement>;
             "osds-tooltip": LocalJSX.OsdsTooltip & JSXBase.HTMLAttributes<HTMLOsdsTooltipElement>;
             "osds-tooltip-content": LocalJSX.OsdsTooltipContent & JSXBase.HTMLAttributes<HTMLOsdsTooltipContentElement>;

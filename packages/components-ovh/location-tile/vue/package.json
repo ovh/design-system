@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-component-ovh-location-tile-vue",
-  "version": "16.6.0",
+  "version": "17.0.0",
   "private": true,
   "description": "Vue specific wrapper for ods",
   "keywords": [],
@@ -20,12 +20,12 @@
     "dist/"
   ],
   "dependencies": {
-    "@ovhcloud/ods-component-ovh-location-tile": "16.6.0"
+    "@ovhcloud/ods-component-ovh-location-tile": "17.0.0"
   },
   "peerDependencies": {
     "vue": ">=3"
   },
   "devDependencies": {
-    "@ovhcloud/ods-vue-dev": "16.6.0"
+    "@ovhcloud/ods-vue-dev": "17.0.0"
   }
 }

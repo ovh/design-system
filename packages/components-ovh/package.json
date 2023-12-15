@@ -1,14 +1,14 @@
 {
   "name": "@ovhcloud/ods-components-ovh",
-  "version": "16.6.0",
+  "version": "17.0.0",
   "description": "ODS OVH Components",
   "private": true,
   "author": "OVH SAS",
   "license": "Apache-2.0",
   "dependencies": {
-    "@ovhcloud/ods-component-ovh-location-tile": "16.6.0"
+    "@ovhcloud/ods-component-ovh-location-tile": "17.0.0"
   },
   "devDependencies": {
-    "@ovhcloud/ods-dev": "16.6.0"
+    "@ovhcloud/ods-dev": "17.0.0"
   }
 }

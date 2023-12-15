@@ -1,11 +1,12 @@
 import type { ODS_TIMEZONE } from './constants/timezones';
 import type { ODS_TIMEZONES_PRESET } from './constants/timezones-preset';
 import type { OdsTimepickerAttribute } from './interfaces/attributes';
-import type { OsdsInput } from '@ovhcloud/ods-component-input';
-import { ODS_INPUT_TYPE } from '@ovhcloud/ods-component-input';
+import type { OsdsInput } from '../../../../input/src';
 import { Component, Element, Host, Prop, Watch, h } from '@stencil/core';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsTimepickerController } from './core/controller';
+import { ODS_INPUT_TYPE } from '../../../../input/src';
 
 @Component({
   shadow: true,
@@ -90,11 +91,13 @@ export class OsdsTimepicker implements OdsTimepickerAttribute {
           disabled={ disabled }
           error={ error }
           inline={ inline }
-          step={ withSeconds ? 1 : '' }
+          step={ withSeconds ? 1 : undefined }
           type={ ODS_INPUT_TYPE.time }
           value={ value }
-          ref={(el: HTMLElement):HTMLInputElement => this.input = el as HTMLInputElement}
-          color="primary"
+          ref={(el?: HTMLElement | null): void => {
+            this.input = el as HTMLInputElement;
+          }}
+          color={ ODS_THEME_COLOR_INTENT.primary }
         >
         </osds-input>
         {

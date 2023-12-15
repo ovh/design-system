@@ -1,6 +1,7 @@
 {
   "name": "@ovhcloud/ods-component-{{> component-name }}",
   "version": "{{ component-version }}",
+  "private": true,
   "description": "ODS {{> componentName }} component",
   "license": "Apache-2.0",
   "main": "dist/index.cjs.js",
@@ -11,13 +12,8 @@
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
   "scripts": {
-    "build:ci": "build-stencil",
-    "build:prod": "build-stencil prod",
-    "build:react": "npm --prefix react run build",
-    "build:stencil": "stencil build --prod --config stencil.config.ts",
-    "build:vue": "npm --prefix vue run build",
     "clean": "rimraf .stencil coverage custom-elements custom-elements-bundle dist docs-api loader screenshot www",
-    "doc": "typedoc --json ./docs-api/typedoc.json --pretty && node ../../../scripts/generate-typedoc-md.js",
+    "doc": "typedoc --json ./docs-api/typedoc.json --pretty && node ../../../../scripts/generate-typedoc-md.js",
     "doc:api": "typedoc",
     "generate:licence": "npx generate-license-file --input package.json --output THIRD-PARTY-LICENCES --overwrite",
     "lint:scss": "stylelint 'src/components/**/*.scss'",
@@ -38,7 +34,6 @@
     "@ovhcloud/ods-common-theming": "{{ component-version }}"
   },
   "devDependencies": {
-    "@ovhcloud/ods-common-scripts": "{{ component-version }}",
     "@ovhcloud/ods-common-testing": "{{ component-version }}",
     "@ovhcloud/ods-stencil-dev": "{{ component-version }}"
   }

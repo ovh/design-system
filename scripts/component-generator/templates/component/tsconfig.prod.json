@@ -1,5 +1,5 @@
 {
-  "extends": "../tsconfig.prod.json",
+  "extends": "../../tsconfig.prod.json",
   "include": [
     "src"
   ]

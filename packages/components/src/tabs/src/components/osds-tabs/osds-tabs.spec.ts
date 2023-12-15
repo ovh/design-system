@@ -152,6 +152,16 @@ describe('spec:osds-tabs', () => {
     expect(controller.changeActivePanel).toHaveBeenCalledWith('a');
   });
 
+  it('should handle slot change', async() => {
+    await setup({ attributes: { } });
+    const spySetTabItems = jest.spyOn(instance, 'setTabItems');
+    const spySetTabPanels = jest.spyOn(instance, 'setTabPanels');
+
+    await instance.handleSlotChange();
+    expect(spySetTabItems).toHaveBeenCalled();
+    expect(spySetTabPanels).toHaveBeenCalled();
+  });
+
   describe('emitChanged', () => {
     it('should emit odsTabsChanged', async() => {
       await setup({ attributes: { panel: 'a' }, html: baseHtml({}) });
@@ -161,19 +171,15 @@ describe('spec:osds-tabs', () => {
     });
   });
 
-  describe('getTabItems', () => {
-    it('should call controller.getTabItems', async() => {
+  describe('handleArrowKey', () => {
+    it('should call controller.handleArrowKey', async() => {
       await setup({ attributes: {}, html: baseHtml({}) });
-      instance.getTabItems();
-      expect(controller.getTabItems).toHaveBeenCalledWith('osds-tab-bar-item');
-    });
-  });
 
-  describe('getTabPanels', () => {
-    it('should call controller.getTabPanels', async() => {
-      await setup({ attributes: {}, html: baseHtml({}) });
-      instance.getTabPanels();
-      expect(controller.getTabPanels).toHaveBeenCalledWith('osds-tab-panel');
+      const key = new KeyboardEvent('keypress', { code : 'ArrowLeft' });
+      instance.handleArrowKey(key);
+
+      expect(controller.handleArrowKey).toHaveBeenCalledTimes(1);
+      expect(controller.handleArrowKey).toHaveBeenCalledWith(key);
     });
   });
 

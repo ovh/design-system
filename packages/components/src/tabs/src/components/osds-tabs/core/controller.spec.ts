@@ -1,15 +1,11 @@
 import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
 import type { HTMLStencilElement } from '@stencil/core/internal';
-
 import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
 import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
-
-
 import { OdsTabsController } from './controller';
 import { OsdsTabBar } from '../../osds-tab-bar/osds-tab-bar';
 import { OsdsTabBarItem } from '../../osds-tab-bar-item/osds-tab-bar-item';
 import { OsdsTabsPanel } from '../../osds-tab-panel/osds-tab-panel';
-import { DEFAULT_ATTRIBUTE } from '../constants/default-attributes';
 import { OsdsTabs } from '../osds-tabs';
 
 class OdsTabsMock extends OsdsTabs {
@@ -24,7 +20,6 @@ class OdsTabsMock extends OsdsTabs {
 }
 
 describe('spec:ods-tabs-controller', () => {
-  const baseAttribute = { contrasted: DEFAULT_ATTRIBUTE.contrasted, panel: DEFAULT_ATTRIBUTE.panel, size: DEFAULT_ATTRIBUTE.size };
   let controller: OdsTabsController;
   let component: OsdsTabs;
 
@@ -48,6 +43,8 @@ describe('spec:ods-tabs-controller', () => {
       value: document.createElement('osds-tabs') as HTMLStencilElement,
       writable: true,
     });
+
+    controller.tabItems = [item1, item2];
   }
 
   beforeEach(() => {
@@ -78,14 +75,6 @@ describe('spec:ods-tabs-controller', () => {
     OdsClearLoggerSpy(loggerSpyReferences);
   });
 
-  function mockGetTabItems(items: Array<OsdsTabBarItem & HTMLElement>) {
-    jest.spyOn(component, 'getTabItems').mockImplementation(() => items);
-  }
-
-  function mockGetTabPanels(panels: Array<OsdsTabsPanel & HTMLElement>) {
-    jest.spyOn(component, 'getTabPanels').mockImplementation(() => panels);
-  }
-
   it('should initialize', () => {
     setup({});
     expect(controller).toBeTruthy();
@@ -113,29 +102,6 @@ describe('spec:ods-tabs-controller', () => {
       });
     });
 
-    describe('getTabItems', () => {
-      it('should retrieve items inside tab bar', () => {
-        setup({ panel: '2', contrasted: true });
-
-        component.el.appendChild(tabBar);
-
-        const items = controller.getTabItems('osds-tab-bar-item');
-        expect(items).toEqual([item1, item2]);
-      });
-    });
-
-    describe('getTabPanels', () => {
-      it('should retrieve panels tabs', () => {
-        setup({ panel: '2', contrasted: true });
-
-        component.el.appendChild(panel1);
-        component.el.appendChild(panel2);
-
-        const items = controller.getTabPanels('osds-tabs-panel');
-        expect(items).toEqual([panel1, panel2]);
-      });
-    });
-
     describe('changeActivePanel', () => {
       beforeEach(() => {
         setup({ panel: '', contrasted: true });
@@ -146,8 +112,8 @@ describe('spec:ods-tabs-controller', () => {
         component.el.appendChild(panel1);
         component.el.appendChild(panel2);
 
-        mockGetTabItems([item1, item2]);
-        mockGetTabPanels([panel1, panel2]);
+        controller.tabItems = [item1, item2];
+        controller.tabPanels = [panel1, panel2];
       });
 
       describe('panel unset', () => {
@@ -203,10 +169,59 @@ describe('spec:ods-tabs-controller', () => {
 
     });
 
-    describe('propagateContrastedToItems', () => {
-
+    describe('handleArrowKey', () => {
       beforeEach(() => {
-        mockGetTabItems([item1, item2]);
+        setup({ panel: '', contrasted: true });
+      });
+
+      it('should do nothing if arrowLeft is pressed on first tab', () => {
+        item1.setAttribute('active', '');
+        item2.removeAttribute('active');
+
+        const key = new KeyboardEvent('keypress', { code : 'ArrowLeft' });
+        controller.handleArrowKey(key);
+
+        expect(item1.getAttribute('active')).toEqual("");
+        expect(item2.getAttribute('active')).toEqual(null);
+      });
+
+      it('should do nothing if arrowRight is pressed on last tab', () => {
+        item1.removeAttribute('active');
+        item2.setAttribute('active', '');
+
+        const key = new KeyboardEvent('keypress', { code : 'ArrowRight' });
+        controller.handleArrowKey(key);
+
+        expect(item1.getAttribute('active')).toEqual(null);
+        expect(item2.getAttribute('active')).toEqual("");
+      });
+
+
+      it('should set active to tab 2', () => {
+        item1.setAttribute('active', '');
+        item2.removeAttribute('active');
+
+        const key = new KeyboardEvent('keypress', { code : 'ArrowRight' });
+        controller.handleArrowKey(key);
+
+        expect(item1.getAttribute('active')).toEqual("");
+        expect(item2.getAttribute('active')).toEqual(null);
+      });
+
+      it('should set active to tab 1', () => {
+        item1.removeAttribute('active');
+        item2.setAttribute('active', '');
+
+        const key = new KeyboardEvent('keypress', { code : 'ArrowLeft' });
+        controller.handleArrowKey(key);
+
+        expect(item2.getAttribute('active')).toEqual("");
+        expect(item1.getAttribute('active')).toEqual(null);
+      });
+    });
+
+    describe('propagateContrastedToItems', () => {
+      beforeEach(() => {
         setup(component);
       });
 

@@ -6,7 +6,26 @@ import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from
 import { newE2EPage } from '@stencil/core/testing';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 
-
+class FormDataMock {
+  private formMap = new Map();
+  constructor(form?: HTMLFormElement) {
+    for (const child of form?.children || []) {
+      this.formMap.set(child.getAttribute('name'), child.getAttribute('value') || '')
+    }    
+  }
+  [Symbol.iterator] = this.formMap[Symbol.iterator];
+  entries = this.formMap.entries;
+  append = jest.fn();
+  delete = this.formMap.delete;
+  get = (key: string) => this.formMap.get(key);
+  getAll = jest.fn();
+  has = this.formMap.has;
+  set = this.formMap.set;
+  forEach = jest.fn();
+  keys = this.formMap.keys;
+  values = this.formMap.values;
+}
+global.FormData = FormDataMock;
 
 describe('e2e:osds-input', () => {
   const baseAttribute = { ariaLabel: null, defaultValue: '', forbiddenValues: [], type: ODS_INPUT_TYPE.text, value: '' };
@@ -521,5 +540,70 @@ describe('e2e:osds-input', () => {
         expect(odsValueChange).toHaveReceivedEventTimes(1);
       });
     });
+  });
+
+  describe('Form', () => {
+    let submitButton: E2EElement;
+    let resetButton: E2EElement;
+    let osdsInput: E2EElement;
+    let natifInput: E2EElement;
+    let form: E2EElement;
+
+    async function setupForm(formAttributes = {}) { 
+      page = await newE2EPage();
+      await page.setContent(`
+        <form ${odsStringAttributes2Str(formAttributes)}>
+          <osds-input name="odsInput" inline type="text" value="On Vous Heberge ?" clearable></osds-input>
+          <input type="text" name="natifInput">
+
+          <osds-button type="reset">Reset</osds-button>
+          <osds-button type="submit">Submit</osds-button>
+        </form>
+      `);
+      await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
+  
+      osdsInput = await page.find('osds-input');
+      natifInput = await page.find('input[name=natifInput]');
+      resetButton = await page.find('osds-button[type="reset"]');
+      submitButton = await page.find('osds-button[type="submit"]');
+      form = await page.find('form');
+    }
+
+    it('should get FormData with default value', async() => {
+      await setupForm();
+      const formData = new FormData(form as unknown as HTMLFormElement);
+      expect(formData.get('natifInput')).toBe('');
+      expect(formData.get('odsInput')).toBe('On Vous Heberge ?');
+    });
+
+    it('should reset form with button type reset', async() => {
+      await setupForm();
+      
+      await natifInput.type('test reset');
+      await osdsInput.type('test reset');
+      await resetButton.click();
+      await page.waitForChanges();
+
+      const formData = new FormData(form as unknown as HTMLFormElement);
+
+      expect(formData.get('natifInput')).toBe('');
+      expect(formData.get('odsInput')).toBe('');
+    });
+
+    it('should reset form with button type submit', async() => {
+      await setupForm({ action: '/' });
+      
+      await natifInput.type('name');
+      await osdsInput.type('test submit');
+      await submitButton.click();
+      await page.waitForChanges();
+      const url = new URL(page.url());
+
+      expect(url.searchParams.get('natifInput')).toBe('name');
+      expect(url.searchParams.get('odsInput')).toBe('On Vous Heberge ?test submit')
+      expect(url.pathname).toBe('/');
+
+    });
+
   });
 });

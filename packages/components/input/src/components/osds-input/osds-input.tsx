@@ -8,7 +8,7 @@ import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_ICON_NAME, ODS_ICON_SIZE } from '@ovhcloud/ods-component-icon';
 import { ODS_SPINNER_SIZE } from '@ovhcloud/ods-component-spinner';
 import { ODS_TEXT_SIZE } from '@ovhcloud/ods-component-text';
-import { Component, Element, Event, Host, Method, Prop, Listen, State, Watch, h } from '@stencil/core';
+import { AttachInternals, Component, Element, Event, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsInputController } from './core/controller';
 
@@ -19,16 +19,19 @@ import { OdsInputController } from './core/controller';
   shadow: true,
   styleUrl: 'osds-input.scss',
   tag: 'osds-input',
+  formAssociated: true,
 })
 export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMethod {
   private logger = new OdsLogger('OsdsInput');
   private static inputIds = 0;
   private inputId = `ods-input-${OsdsInput.inputIds++}`;
-  controller: OdsInputController = new OdsInputController(this);
+  controller = new OdsInputController(this);
   commonFieldMethodController = new OdsCommonFieldMethodController(this);
 
   @Element() el!: HTMLElement;
   inputEl?: HTMLInputElement;
+
+  @AttachInternals() internals!: ElementInternals;
 
   /**
    * The tabindex of the input.
@@ -39,108 +42,69 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
 
   /** Props */
 
-  /** @see OdsCommonFieldAttribute.ariaLabel */
   @Prop() ariaLabel: HTMLElement['ariaLabel'] = DEFAULT_ATTRIBUTE.ariaLabel;
 
-  /** @see OdsCommonFieldAttribute.ariaLabelledby */
   @Prop() ariaLabelledby?: string = DEFAULT_ATTRIBUTE.ariaLabelledby;
 
-  /** @see OdsCommonFieldAttribute.clearable */
   @Prop({ reflect: true }) clearable?: boolean = DEFAULT_ATTRIBUTE.clearable;
 
-  /** @see OdsCommonFieldAttribute.color */
   @Prop({ reflect: true }) color?: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
 
-  /** @see OdsInputAttribute.contrasted */
   @Prop({ reflect: true }) contrasted?: boolean = DEFAULT_ATTRIBUTE.contrasted;
 
-  /** @see OdsInputAttribute.defaultValue */
   @Prop({ reflect: true }) defaultValue: OdsInputValue = DEFAULT_ATTRIBUTE.defaultValue;
 
-  /** @see OdsCommonFieldAttribute.disabled */
   @Prop({ reflect: true }) disabled?: boolean = DEFAULT_ATTRIBUTE.disabled;
 
-  /** @see OdsCommonFieldAttribute.error */
   @Prop({ reflect: true }) error?: boolean = DEFAULT_ATTRIBUTE.error;
 
-  /** @see OdsCommonFieldAttribute.errorStateControl */
   @Prop({ reflect: true }) errorStateControl?: OdsErrorStateControl = DEFAULT_ATTRIBUTE.errorStateControl;
 
-  /** @see OdsCommonFieldAttribute.forbiddenValues */
   @Prop({ reflect: true }) forbiddenValues: OdsFormForbiddenValues<number> = DEFAULT_ATTRIBUTE.forbiddenValues;
 
-  /** @see OdsCommonFieldAttribute.formControl */
   @Prop({ reflect: true }) formControl?: OdsFormControl<OdsCommonFieldValidityState> = DEFAULT_ATTRIBUTE.formControl;
 
-  /** @see OdsInputAttribute.icon */
   @Prop({ reflect: true }) icon?: ODS_ICON_NAME = DEFAULT_ATTRIBUTE.icon;
 
-  /** @see OdsInputAttribute.inline */
   @Prop({ reflect: true }) inline?: boolean = DEFAULT_ATTRIBUTE.inline;
 
-  /** @see OdsCommonFieldAttribute.label */
   @Prop({ reflect: true }) label?: string = DEFAULT_ATTRIBUTE.label;
 
-  /** @see OdsCommonFieldAttribute.loading */
   @Prop({ reflect: true }) loading?: boolean = DEFAULT_ATTRIBUTE.loading;
 
-  /** @see OdsCommonFieldAttribute.masked */
   @Prop({ mutable: true, reflect: true }) masked?: boolean = DEFAULT_ATTRIBUTE.masked;
 
-  /** @see OdsInputAttribute.max */
   @Prop({ reflect: true }) max?: number = DEFAULT_ATTRIBUTE.max;
 
-  /** @see OdsInputAttribute.min */
   @Prop({ reflect: true }) min?: number = DEFAULT_ATTRIBUTE.min;
 
-  /** @see OdsCommonFieldAttribute.name */
   @Prop({ reflect: true }) name?: string = DEFAULT_ATTRIBUTE.name;
 
-  /** @see OdsCommonFieldAttribute.placeholder */
   @Prop({ reflect: true }) placeholder?: string = DEFAULT_ATTRIBUTE.placeholder;
 
-  /** @see OdsCommonFieldAttribute.prefixValue */
   @Prop({ reflect: true }) prefixValue = DEFAULT_ATTRIBUTE.prefixValue;
 
-  /** @see OdsCommonFieldAttribute.readOnly */
   @Prop({ reflect: true }) readOnly?: boolean = DEFAULT_ATTRIBUTE.readOnly;
 
-  /** @see OdsCommonFieldAttribute.required */
   @Prop({ reflect: true }) required?: boolean = DEFAULT_ATTRIBUTE.required;
 
-  /** @see OdsCommonFieldAttribute.size */
   @Prop({ reflect: true }) size?: ODS_COMMON_FIELD_SIZE = DEFAULT_ATTRIBUTE.size;
 
-  /** @see OdsCommonFieldAttribute.step */
   @Prop({ reflect: true }) step?: number = DEFAULT_ATTRIBUTE.step;
 
-  /** @see OdsCommonFieldAttribute.type */
   @Prop({ reflect: true }) type: ODS_INPUT_TYPE = DEFAULT_ATTRIBUTE.type;
 
-  /** @see OdsCommonFieldAttribute.value */
   @Prop({ mutable: true, reflect: true }) value: OdsInputValue = DEFAULT_ATTRIBUTE.value;
 
-  /** Events */
-
-  /** @see OdsInputEvents.odsValueChange */
   @Event() odsValueChange!: EventEmitter<OdsInputValueChangeEventDetail>;
 
-  /** @see OdsInputEvents.odsInputBlur */
   @Event() odsInputBlur!: EventEmitter<void>;
 
-  /** @see OdsInputEvents.odsInputFocus */
   @Event() odsInputFocus!: EventEmitter<void>;
-
-  /** Watch */
 
   @Watch('formControl')
   onFormControlChange(formControl?: OdsFormControl<OdsCommonFieldValidityState>): void {
     this.controller.onFormControlChange(formControl);
-  }
-
-  @Watch('defaultValue')
-  onDefaultValueChange(defaultValue?: OdsInputValue): void {
-    this.controller.onDefaultValueChange(defaultValue);
   }
 
   @Watch('value')
@@ -148,22 +112,21 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
     this.controller.onValueChange(value, oldValue);
   }
 
-  /** Listen */
-
   @Listen('focus')
   focus(): void {
     this.setFocus.bind(this)();
   }
 
-  /**
-   * @see OdsInputBehavior.beforeInit
-   */
   beforeInit(): void {
     this.controller.beforeInit();
   }
 
   componentWillLoad(): void {
     this.beforeInit();
+  }
+
+  formResetCallback(): void {
+    this.value = this.defaultValue;
   }
 
   async emitChange(value: OdsInputValue, oldValue?: OdsInputValue): Promise<void> {
@@ -182,7 +145,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
   emitBlur(): void {
     this.odsInputBlur.emit();
   }
-  
+
   @Method()
   async setFocus(): Promise<void> {
     this.commonFieldMethodController.setFocus();
@@ -235,8 +198,8 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
     this.controller.onInput(event);
   }
 
-  onChange(/*event: Event*/): void {
-    this.controller.onChange();
+  onFocus(): void {
+    this.controller.onFocus();
   }
 
   private hasPlaceholder(): boolean {
@@ -275,7 +238,6 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
     const isPassword = type === 'password';
 
     return (
-      /** Main styling is applied to Host, so that the icons are integrated inside the component */
       <Host {...{
         class: {
           'ods-error': Boolean(hasError.bind(this)()),
@@ -288,7 +250,6 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
           size={this.hasPlaceholder() ? ODS_TEXT_SIZE._300 : ODS_TEXT_SIZE._400}>
           { this.prefixValue }
         </osds-text>
-        {/** Input field with attributes */}
         <input
           {...{
             ariaLabel,
@@ -301,8 +262,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
             min,
             name,
             onBlur: () => this.onBlur(),
-            onChange: () => this.onChange(),
-            onFocus: () => this.setFocus(),
+            onFocus: () => this.onFocus(),
             onInput: (e) => this.onInput(e),
             placeholder,
             readOnly,
@@ -319,7 +279,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
         >
         </input>
 
-        {/** Displaying Spinner if Loading is true */
+        {
           loading && (
             <osds-spinner
               {...{
@@ -331,7 +291,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
           )
         }
 
-        {/** If input type is password, display eye icon to hide input content */
+        {
           isPassword && !loading && (
             <osds-icon
               {...{
@@ -345,7 +305,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
           )
         }
 
-        {/** If Component isn't loading & clearable, display clear icon to clear input content */
+        {
           clearable && !loading && (
             <osds-icon
               {...{
@@ -359,7 +319,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
           )
         }
 
-        {/** If Component isn't loading & icon, display desired icon */
+        {
           icon && !loading && (
             <osds-icon
               {...{

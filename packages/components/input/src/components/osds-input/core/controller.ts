@@ -45,25 +45,22 @@ class OdsInputController {
   beforeInit(): void {
     this.onFormControlChange(this.component.formControl);
     this.assertValue(this.component.value);
-    this.onDefaultValueChange(/*this.defaultValue*/);
     if (!this.component.value && this.component.value !== 0) {
       this.component.value = this.component.defaultValue;
     }
+    this.component.internals.setFormValue(this.component.value?.toString() ?? '');
   }
 
   onValueChange(value: OdsInputValue, oldValue?: OdsInputValue): void {
     this.logger.debug(`[input=${this.component.value}]`, 'value changed', { oldValue, value });
     this.assertValue(value);
+    this.component.internals.setFormValue(value?.toString() ?? '');
     this.component.emitChange(value, oldValue);
   }
 
   assertValue(value: OdsInputValue): void {
     this.validateValue(value as number);
     this.updateInputCustomValidation();
-  }
-
-  onDefaultValueChange(defaultValue?: OdsInputValue): void {
-    this.logger.debug(`[input=${this.component.value}]`, 'defaultValue', defaultValue);
   }
 
   private validateValue(value?: number): void {
@@ -121,13 +118,8 @@ class OdsInputController {
   }
 
   onInput(event: Event): void {
-    this.logger.debug('oninput', this.component.inputEl?.value);
     event.preventDefault();
     this.component.inputEl && this.handleInputValue(this.component.inputEl.value);
-  }
-
-  onChange(): void {
-    this.logger.debug('onChange', this.component.inputEl?.value);
   }
 
   async hasError(): Promise<boolean> {

@@ -12,8 +12,6 @@ import { OdsInputController } from './core/controller';
 import { OsdsInput } from './osds-input';
 
 
-const logger = new OdsLogger('osds-input-spec');
-
 // mock validity property that does not exist when stencil mock HTMLInputElement
 OdsMockPropertyDescriptor(HTMLInputElement.prototype, 'validity', () => OdsCreateDefaultValidityState());
 
@@ -275,13 +273,6 @@ describe('spec:osds-input', () => {
         expect(controller.onInput).toHaveBeenCalledTimes(1);
         expect(controller.onInput).toHaveBeenCalledWith(event);
       });
-
-      it('should call onChange on change', async() => {
-        await setup({});
-        instance?.onChange();
-        expect(controller.onChange).toHaveBeenCalledTimes(1);
-        expect(controller.onChange).toHaveBeenCalledWith();
-      });
     });
 
     describe('methods', () => {
@@ -372,15 +363,6 @@ describe('spec:osds-input', () => {
 
         expect(controller.onFormControlChange).toHaveBeenCalledTimes(1);
         expect(controller.onFormControlChange).toHaveBeenCalledWith(formControl);
-      });
-
-      it('should call onDefaultValueChange on defaultValue change', async() => {
-        const defaultValue = 'defaultValue';
-        await setup({ attributes: { defaultValue: '' } });
-        instance.defaultValue = defaultValue;
-
-        expect(controller.onDefaultValueChange).toHaveBeenCalledTimes(1);
-        expect(controller.onDefaultValueChange).toHaveBeenCalledWith(defaultValue);
       });
 
       it('should call onValueChange on value change', async() => {

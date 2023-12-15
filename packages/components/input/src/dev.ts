@@ -14,7 +14,6 @@ export default async function(): Promise<void> {
   const input3ErrorValid: HTMLElement | null = document.querySelector('#example-3 .valid');
 
   const logger = new OdsLogger('global-dev');
-  logger.log('input-3', input3);
 
   odsInput1?.addEventListener('odsValueChange', (event) => {
     console.log('🟡 odsValueChange event', event);

@@ -1,15 +1,19 @@
-import type { OdsCommonFieldAttribute } from '@ovhcloud/ods-common-core';
+import { OdsCommonFieldMethodController, OdsCommonFieldValidityState } from '@ovhcloud/ods-common-core';
 import { Ods, OdsFormControl, ODS_INPUT_TYPE, OdsLogger } from '@ovhcloud/ods-common-core';
 import { OdsClearLoggerSpy, OdsInitializeLoggerSpy, OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
 import { OdsInputController } from './controller';
 import { OsdsInput } from '../osds-input';
 
-class OdsInputMock extends OsdsInput {
+class OdsInputMock {
   constructor(attribute: Partial<OsdsInput>) {
-    super();
     Object.assign(this, attribute);
   }
-
+  logger = new OdsLogger('OdsInputMock');
+  internals = {
+    setFormValue: jest.fn()
+  };
+  type = ODS_INPUT_TYPE.number;
+  commonFieldMethodController = new OdsCommonFieldMethodController(this);
   emitChange = jest.fn();
   emitFocus = jest.fn();
   emitBlur = jest.fn();
@@ -20,13 +24,12 @@ describe('spec:ods-input-controller', () => {
   let component: OsdsInput;
   let spyOnOnFormControlChange: jest.SpyInstance<void, jest.ArgsType<OdsInputController['onFormControlChange']>>;
   let spyOnAssertValue: jest.SpyInstance<void, jest.ArgsType<OdsInputController['assertValue']>>;
-  let spyOnOnDefaultValueChange: jest.SpyInstance<void, jest.ArgsType<OdsInputController['onDefaultValueChange']>>;
   let loggerSpyReferences: OdsLoggerSpyReferences;
 
   Ods.instance().logging(false);
 
   function setup(attributes: Partial<OsdsInput> = {}) {
-    component = new OdsInputMock(attributes);
+    component = new OdsInputMock(attributes) as unknown as OsdsInput;
     controller = new OdsInputController(component);
   }
 
@@ -45,7 +48,7 @@ describe('spec:ods-input-controller', () => {
 
   describe('methods', () => {
     describe('methods:onFormControlChange', () => {
-      const formControl = new OdsFormControl<OdsCommonFieldAttribute>('id');
+      const formControl = new OdsFormControl<OdsCommonFieldValidityState>('id');
 
       beforeEach(() => {
         formControl.register = jest.fn();
@@ -69,7 +72,7 @@ describe('spec:ods-input-controller', () => {
 
     describe('methods:beforeInit', () => {
       it('should call onFormControlChange', () => {
-        const formControl = new OdsFormControl<OdsCommonFieldAttribute>('id');
+        const formControl = new OdsFormControl<OdsCommonFieldValidityState>('id');
         setup({ formControl });
         spyOnOnFormControlChange = jest.spyOn(controller, 'onFormControlChange');
         controller.beforeInit();
@@ -86,16 +89,6 @@ describe('spec:ods-input-controller', () => {
 
         expect(spyOnAssertValue).toHaveBeenCalledTimes(1);
         expect(spyOnAssertValue).toHaveBeenCalledWith(value);
-      });
-
-      it('should call onDefaultValueChange', () => {
-        const value = 'value';
-        setup({ value });
-        spyOnOnDefaultValueChange = jest.spyOn(controller, 'onDefaultValueChange');
-        controller.beforeInit();
-
-        expect(spyOnOnDefaultValueChange).toHaveBeenCalledTimes(1);
-        expect(spyOnOnDefaultValueChange).toHaveBeenCalledWith();
       });
 
       it('should init value with defaultValue if value is undefined', () => {
@@ -198,17 +191,6 @@ describe('spec:ods-input-controller', () => {
       });
     });
 
-    describe('methods:onDefaultValueChange', () => {
-      it('should use logger', () => {
-        const value = 'value';
-        const defaultValue = 'defaultValue';
-        setup({ value });
-        controller.onDefaultValueChange(defaultValue);
-        expect(loggerSpyReferences.methodSpies.debug).toHaveBeenCalledTimes(1);
-        expect(loggerSpyReferences.methodSpies.debug).toHaveBeenCalledWith(`[input=${value}]`, 'defaultValue', defaultValue);
-      });
-    });
-
     describe('methods:stepUp', () => {
       const inputEl = document.createElement('input');
 
@@ -286,16 +268,6 @@ describe('spec:ods-input-controller', () => {
     });
 
     describe('methods:onInput', () => {
-      it('should use logger', () => {
-        const inputEl = document.createElement('input');
-        inputEl.value = '5';
-        setup({ inputEl });
-        controller.onInput(new Event(''));
-
-        expect(loggerSpyReferences.methodSpies.debug).toHaveBeenCalledTimes(1);
-        expect(loggerSpyReferences.methodSpies.debug).toHaveBeenCalledWith('oninput', inputEl.value);
-      });
-
       it('should not change component value if it is disabled', () => {
         const value = '3';
         const inputEl = document.createElement('input');
@@ -330,16 +302,6 @@ describe('spec:ods-input-controller', () => {
         controller.onInput(new Event(''));
 
         expect(`${component.value}`).toBe(`${inputEl.value}`);
-      });
-    });
-
-    describe('methods:onChange', () => {
-      it('should use logger', () => {
-        const value = 'value';
-        setup({ inputEl: { value } as HTMLInputElement });
-        controller.onChange();
-        expect(loggerSpyReferences.methodSpies.debug).toHaveBeenCalledTimes(1);
-        expect(loggerSpyReferences.methodSpies.debug).toHaveBeenCalledWith('onChange', value);
       });
     });
   });

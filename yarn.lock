@@ -3822,7 +3822,7 @@ __metadata:
     "@ovhcloud/ods-stencil-dev": 16.5.0
     "@ovhcloud/ods-style-dev": 16.5.0
     "@ovhcloud/ods-theme-blue-jeans": 16.5.0
-    "@stencil/core": 4.7.0
+    "@stencil/core": 4.8.2
   languageName: unknown
   linkType: soft
 
@@ -4527,6 +4527,7 @@ __metadata:
     "@ovhcloud/ods-common-stencil": 16.5.0
     "@ovhcloud/ods-common-testing": 16.5.0
     "@ovhcloud/ods-common-theming": 16.5.0
+    "@ovhcloud/ods-component-button": 16.5.0
     "@ovhcloud/ods-component-icon": 16.5.0
     "@ovhcloud/ods-component-spinner": 16.5.0
     "@ovhcloud/ods-component-text": 16.5.0
@@ -5745,12 +5746,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@stencil/core@npm:4.7.0":
-  version: 4.7.0
-  resolution: "@stencil/core@npm:4.7.0"
+"@stencil/core@npm:4.8.2":
+  version: 4.8.2
+  resolution: "@stencil/core@npm:4.8.2"
   bin:
     stencil: bin/stencil
-  checksum: 53842a15a8f620cce0b5b9cded462f460b6082fbd7afcd337716b8523d0fc121b950b7acc904674a2ae2638841a0d80dfad1a7c55020448959ffed0d952d8efc
+  checksum: 74c89ceb40aa88756668e685303b0d3d8bc3ccee20c0fd91c857c68ddcbd1e13dd8c3a7e654f9ded95c722f1e678e8c51cc49c9a3eeee8c330ce2dba65274084
   languageName: node
   linkType: hard
 

@@ -19,7 +19,7 @@ export default {
 /* Default */
 const TemplateDemo = () => html`
   <osds-menu>
-    <osds-button slot='menu-title' color='primary' variant='stroked'>Action menu <osds-icon name='home' size='xs'></osds-icon></osds-button>
+    <osds-button slot='menu-title' color='primary' variant='stroked'>Menu <osds-icon name='home' size='xs'></osds-icon></osds-button>
     <osds-menu-group>
       <osds-text>Group/Text 1</osds-text>
     </osds-menu-group>

@@ -1,5 +1,5 @@
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import { ODS_RADIO_BUTTON_SIZE } from '@ovhcloud/ods-components';
+import { ODS_RADIO_BUTTON_SIZE, ODS_RADIO_BUTTON_SIZES } from '@ovhcloud/ods-components';
 import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-radio-button';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
@@ -39,7 +39,7 @@ const storyParams = {
   },
   checking: {
     category: 'Development',
-    defaultValue: DEFAULT_ATTRIBUTE.checking,
+    defaultValue: false,
   },
   interactive: {
     category: 'Development',

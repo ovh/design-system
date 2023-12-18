@@ -1,5 +1,5 @@
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import { ODS_DATEPICKER_DAYS, ODS_DATEPICKER_LOCALE, ODS_DATEPICKER_LOCALES } from '@ovhcloud/ods-components';
+import { ODS_DATEPICKER_DAYS, ODS_DATEPICKER_LOCALE } from '@ovhcloud/ods-components';
 import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-datepicker';
 import { html } from 'lit-html';
 import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
@@ -23,7 +23,7 @@ const storyParams = {
   locale: {
     category: 'General',
     defaultValue: ODS_DATEPICKER_LOCALE.EN,
-    options: ODS_DATEPICKER_LOCALES,
+    options: [ODS_DATEPICKER_LOCALE.EN, ODS_DATEPICKER_LOCALE.DE, ODS_DATEPICKER_LOCALE.ES, ODS_DATEPICKER_LOCALE.FR, ODS_DATEPICKER_LOCALE.IT, ODS_DATEPICKER_LOCALE.NL, ODS_DATEPICKER_LOCALE.PL, ODS_DATEPICKER_LOCALE.PT],
     control: { type: 'select' },
   },
   placeholder: {

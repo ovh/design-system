@@ -622,11 +622,11 @@ export namespace Components {
          */
         "hideableColumns"?: string[];
         /**
-          * The rows can be selectable
+          * The rows can be selected
          */
         "isSelectable"?: boolean;
         /**
-          * Text when the datagrid was no rows
+          * Text when the datagrid has no rows
          */
         "noResultLabel"?: string;
         /**
@@ -1657,7 +1657,7 @@ export namespace Components {
          */
         "inline"?: boolean;
         /**
-          * wether or not skeleton size is randomized
+          * whether or not skeleton size is randomized
           * @see OdsSkeletonAttributes.randomized
          */
         "randomized"?: boolean;
@@ -3406,11 +3406,11 @@ declare namespace LocalJSX {
          */
         "hideableColumns"?: string[];
         /**
-          * The rows can be selectable
+          * The rows can be selected
          */
         "isSelectable"?: boolean;
         /**
-          * Text when the datagrid was no rows
+          * Text when the datagrid has no rows
          */
         "noResultLabel"?: string;
         "onOdsBottomScroll"?: (event: OsdsDatagridCustomEvent<void>) => void;
@@ -4425,7 +4425,7 @@ declare namespace LocalJSX {
          */
         "inline"?: boolean;
         /**
-          * wether or not skeleton size is randomized
+          * whether or not skeleton size is randomized
           * @see OdsSkeletonAttributes.randomized
          */
         "randomized"?: boolean;

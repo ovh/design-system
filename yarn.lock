@@ -4527,7 +4527,6 @@ __metadata:
     "@ovhcloud/ods-common-stencil": 16.5.0
     "@ovhcloud/ods-common-testing": 16.5.0
     "@ovhcloud/ods-common-theming": 16.5.0
-    "@ovhcloud/ods-component-button": 16.5.0
     "@ovhcloud/ods-component-icon": 16.5.0
     "@ovhcloud/ods-component-spinner": 16.5.0
     "@ovhcloud/ods-component-text": 16.5.0

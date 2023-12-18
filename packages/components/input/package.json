@@ -44,7 +44,6 @@
   "devDependencies": {
     "@ovhcloud/ods-common-scripts": "16.5.0",
     "@ovhcloud/ods-common-testing": "16.5.0",
-    "@ovhcloud/ods-component-button": "16.5.0",
     "@ovhcloud/ods-stencil-dev": "16.5.0"
   }
 }

@@ -8,12 +8,12 @@ _Welcome, developers! We're thrilled to have you here and to assist you in start
 _Our Design System development hub is a simple and straightforward way to get started._
 
 > - **[Overview](#overview)**
-> - **[How to use ODS components in my project](#how-to-use-ODS-components-in-my-project)**
+> - **[How to use ODS components in my project](#how-to-use-ods-components-in-my-project)**
 >     - **[Installation](#installation)**
 >     - **[Import components](#import-components)**
+>     - **[Import components constants](#import-components-constants)**
 >     - **[Import the theme](#import-the-theme)**
 >     - **[Assets](#assets)**
->     - **[Components usage](#components-usage)**
 > - **[Contribute on ODS](#contribute-on-ods)**
 
 ## Overview
@@ -38,118 +38,84 @@ You should add @ovhcloud/ods-common-core when you need to use Flag component. Fo
 You should also add @ovhcloud/ods-common-theming when you would like to use a component with an intent.
 
 ### Import components
-Add a dependency to either:
-* `@ovhcloud/ods-components` to import all components
-* `@ovhcloud/ods-components-<component>` to import a specific component
 
-Components can be imported using one of:
+#### As native webcomponents
+
+There are two different ways of using ODS webcomponent, using lazy-loading or bundle.
+
+To use lazy-loading, just include in your project the loader script, it will take care of loading each component resources on-demand.
+
 ```typescript
-import { Osds<Component> } from '@ovhcloud/ods-component-<component>'
-import { Osds<Component> } from '@ovhcloud/ods-component-<component>/react'
-import { Osds<Component> } from '@ovhcloud/ods-component-<component>/vue'
+import { defineCustomElements } from '@ovhcloud/ods-components/dist/loader';
+defineCustomElements();
 ```
 
-You can import enums directly from the component:
+If you prefer to use each components directly, you can use import them separately.
+This is recommended when working on projects bundled (using webpack, rollup, ...) as it is more optimized for tree-shaking.
+
 ```typescript
-import { ODS_%COMPONENT%_SIZE, ODS_%COMPONENT%_SIZES } from '@ovhcloud/ods-component-<component>'
+import { defineCustomElement as defineButton } from '@ovhcloud/ods-components/dist/components/osds-button';
+defineButton();
 ```
 
-Same goes for interfaces:
+#### As React components
+
+To use a React version of an ODS component, you need to import it from the `react` sub directory.
+
 ```typescript
-import type { Ods<Component>Attribute } from '@ovhcloud/ods-component-<component>'
+import { OsdsButtton, OsdsText } from '@ovhcloud/ods-components/react';
+
+const App = () => {
+  return (
+    <OsdsButtton ...>
+      <OsdsText>
+        Some Button
+      </OsdsText>
+    </OsdsButtton>
+  );
+};
 ```
 
-`@ovhcloud/ods-component-<component>/react`:
+Components are compatible with React v16.8+.
 
-Components are compatible with:
-- React v16.8+
-- TypeScript 3.7+
+#### As Vue components
 
-More information on React generated components with the component builder [stenciljs](https://stenciljs.com/docs/react)
+To use a React version of an ODS component, you need to import it from the `vue` sub directory.
 
-`@ovhcloud/ods-component-<component>/vue`:
+```typescript
+<template>
+  <OsdsButtton ...>
+    <OsdsText>
+      Some Button
+    </OsdsText>
+  </OsdsButtton>
+</template>
 
-Components are compatible with:
-- Vue 3
-- TypeScript 4
+<script lang="ts">
+import { defineComponent } from 'vue';
+import { OsdsButtton, OsdsText } from '@ovhcloud/ods-components/vue';
+import '@ovhcloud/ods-theme-blue-jeans';
 
-More information on Vue generated components with the component builder [stenciljs](https://stenciljs.com/docs/vue)
-
-#### Loader
-
-For frameworks like vue, you can import components via a loader.
-It is also the recommended way if you want IE11 and Edge support with these stencil build made components.
-
-You can import independently some components:
-
-- `@import { applyPolyfills, defineCustomElements } '@ovhcloud/ods-components/<component>/loader;`
-
-Or importing the entire bundle:
-
-- `@import { applyPolyfills, defineCustomElements } '@ovhcloud/ods-components/loader/';`
-
-Then, bind custom element to the window:
-
-```javascript
-applyPolyfills().then(() => {
-  defineCustomElements();
+export default defineComponent({
+  name: 'App',
+  components: {
+    OsdsButtton,
+    OsdsText,
+  },
 });
-```
-
-_Example via HTML for entire bundle:_
-
-```html
-<!-- ES2017 module via loader -->
-<script type="module">
-  import { defineCustomElements, applyPolyfills } from './node_modules/@ovhcloud/ods-components/loader';
-  applyPolyfills().then(() => {
-    defineCustomElements();
-  });
 </script>
 ```
 
-See more here:
+Components are compatible with Vue 3.
 
-- https://stenciljs.com/docs/react
-- https://stenciljs.com/docs/vue
-- https://stenciljs.com/docs/javascript
+### Import components constants
 
-#### Custom-elements
+All enums, interfaces, events are available directly from the `ods-components` lib
 
-You can import components as custom elements in the new way of Stencil team.
-It is more optimized (tree shaking for instance), and the recommended way with framework integrations.
-
-**No lazy loading**: this may be preferred for projects that are already handling bundling,
-lazy-loading and defining the custom elements themselves.
-
-**Old browser support**: not available, prefer using the **dist** to import the components.
-
-There is no **defineCustomElements**: you have to define the imported components yourself.
-
-You can import independently some components:
-
-```javascript
-import { OsdsCart, OsdsCartItem } from '@ovhcloud/ods-component-cart/custom-elements';
-import { OsdsButton } from '@ovhcloud/ods-component-button/custom-elements';
-
-// define the component and his sub components :
-customElements.define('osds-button', OsdsButton);
-customElements.define('osds-cart', OsdsCart);
-customElements.define('osds-cart-item', OsdsCartItem);
+```typescript
+import type { OdsButtonAttribute } from '@ovhcloud/ods-components'
+import { ODS_BUTTON_SIZE, ODS_BUTTON_SIZES } from '@ovhcloud/ods-components';
 ```
-
-Or importing the entire bundle:
-
-```javascript
-import { OsdsCart, OsdsCartItem, OsdsButton } from '@ovhcloud/ods-components/custom-elements';
-
-// define all the components and his sub components :
-customElements.define('osds-button', OsdsButton);
-customElements.define('osds-cart', OsdsCart);
-customElements.define('osds-cart-item', OsdsCartItem);
-```
-
-See https://stenciljs.com/docs/custom-elements
 
 ### Import the theme
 You need to import a theme to display all the components correctly.
@@ -176,70 +142,18 @@ via css import:
 ### Assets
 
 #### Ods-flag
-You would like to use the flags in your application, please note you will have to use the flags from ODS.
+To use the flags in your application, you'll have to copy the flags svg where you need them in your application.
 
-Here is the package you will need: `@ovhcloud/ods-component-flag/dist/flags`
-
-You have to copy the flags svg where you need them in your application.
-
-First, you have to setup ods before using it by calling odsSetup in your application:
+First, you have to setup ods by calling `odsSetup` in your application:
 
 ```typescript
 import { odsSetup } from '@ovhcloud/ods-common-core';
 odsSetup();
 ```
 
-Then, you have to call Ods.instance().assetPath();
+Then, you have to set the path that point to the directory where the flags are located:
 ```typescript
 Ods.instance().assetPath(`path/`);
-```
-
-### Components usage
-
-#### In the view
-
-```html
-<osds-button>
-  My Button
-</osds-button>
-```
-
-#### Handle component loading
-
-```javascript
-async function doAction() {
-  await customElements.whenDefined('osds-button');
-
-  // Do something
-}
-```
-
-OR
-
-```javascript
-Promise.all([
-  customElements.whenDefined('osds-button')
-]).then(() => {
-  // Do something
-});
-```
-
-#### Find the instance of a component
-
-Via javascript:
-
-```html
-<script>
-  const myButton = document.querySelector('osds-button');
-</script>
-```
-
-#### React to component events
-
-```js
-myButton.addEventListener('odsValueChanged', (event) => {
-  // Do something
-})
 ```
 
 ## Contribute on ODS

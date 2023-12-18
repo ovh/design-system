@@ -50,7 +50,7 @@ import { defineCustomElements } from '@ovhcloud/ods-components/dist/loader';
 defineCustomElements();
 ```
 
-If you prefer to use each components directly, you can use import them separately.
+If you prefer to use each components directly, you can import them separately.
 This is recommended when working on projects bundled (using webpack, rollup, ...) as it is more optimized for tree-shaking.
 
 ```typescript
@@ -63,15 +63,15 @@ defineButton();
 To use a React version of an ODS component, you need to import it from the `react` sub directory.
 
 ```typescript
-import { OsdsButtton, OsdsText } from '@ovhcloud/ods-components/react';
+import { OsdsButton, OsdsText } from '@ovhcloud/ods-components/react';
 
 const App = () => {
   return (
-    <OsdsButtton ...>
+    <OsdsButton ...>
       <OsdsText>
         Some Button
       </OsdsText>
-    </OsdsButtton>
+    </OsdsButton>
   );
 };
 ```
@@ -80,26 +80,26 @@ Components are compatible with React v16.8+.
 
 #### As Vue components
 
-To use a React version of an ODS component, you need to import it from the `vue` sub directory.
+To use a Vue version of an ODS component, you need to import it from the `vue` sub directory.
 
 ```typescript
 <template>
-  <OsdsButtton ...>
+  <OsdsButton ...>
     <OsdsText>
       Some Button
     </OsdsText>
-  </OsdsButtton>
+  </OsdsButton>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { OsdsButtton, OsdsText } from '@ovhcloud/ods-components/vue';
+import { OsdsButton, OsdsText } from '@ovhcloud/ods-components/vue';
 import '@ovhcloud/ods-theme-blue-jeans';
 
 export default defineComponent({
   name: 'App',
   components: {
-    OsdsButtton,
+    OsdsButton,
     OsdsText,
   },
 });

@@ -1,11 +1,15 @@
-import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-menu';
+import { defineCustomElement as defineMenu } from '@ovhcloud/ods-components/dist/components/osds-menu';
+import { defineCustomElement as defineMenuGroup } from '@ovhcloud/ods-components/dist/components/osds-menu-group';
+import { defineCustomElement as defineMenuItem } from '@ovhcloud/ods-components/dist/components/osds-menu-item';
 import { html } from 'lit-html';
 import { extractArgTypes, extractStoryParams } from '../../../core/componentHTMLUtils';
 import { applyContentText, positionParams } from '../../../core/commonPositionStoryParams';
 import { styleMap } from 'lit-html/directives/style-map';
 
 
-defineCustomElement();
+defineMenu();
+defineMenuGroup();
+defineMenuItem();
 
 export default {
   title: 'ODS Components/Actions/Menu [atom]/Demo',

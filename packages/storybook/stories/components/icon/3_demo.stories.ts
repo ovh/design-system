@@ -1,5 +1,5 @@
 import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
-import { ODS_ICON_NAME, ODS_ICON_NAMES, ODS_ICON_SIZE, ODS_ICON_SIZES } from '@ovhcloud/ods-components';
+import { ODS_ICON_NAMES, ODS_ICON_SIZE, ODS_ICON_SIZES } from '@ovhcloud/ods-components';
 import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-icon';
 import { html } from 'lit-html';
 import { repeat } from 'lit-html/directives/repeat';
@@ -25,7 +25,7 @@ const storyParams = {
     category: 'General',
     defaultValue: 'home',
     control: { type: 'select' },
-    options: ODS_ICON_NAME,
+    options: ODS_ICON_NAMES,
   },
   contrasted: {
     category: 'Misc',

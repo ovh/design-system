@@ -1,6 +1,6 @@
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-message';
-import { ODS_MESSAGE_TYPES, ODS_ICON_NAME } from '@ovhcloud/ods-components';
+import { ODS_MESSAGE_TYPES, ODS_ICON_NAMES } from '@ovhcloud/ods-components';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
@@ -28,7 +28,7 @@ const storyParams = {
     category: 'Misc',
     defaultValue: '',
     control: { type: 'select' },
-    options: ODS_ICON_NAME,
+    options: ODS_ICON_NAMES,
   },
   removable: {
     category: 'Misc',

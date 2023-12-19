@@ -131,7 +131,8 @@ class OdsInputController {
   }
 
   async hasError(): Promise<boolean> {
-    return this.component.error || (await this.component.commonFieldMethodController.getValidity()).invalid;
+    const validity = await this.component.commonFieldMethodController.getValidity();
+    return this.component.error || validity.invalid;
   }
 }
 

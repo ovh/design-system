@@ -36,6 +36,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
    */
   @State() tabindex = 0;
   @State() hasFocus = false;
+  @State() internalError = false;
 
   /** Props */
 
@@ -166,6 +167,10 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
     this.beforeInit();
   }
 
+  async componentWillUpdate(): Promise<void> {
+    this.internalError = await this.controller.hasError();
+  }
+
   async emitChange(value: OdsInputValue, oldValue?: OdsInputValue): Promise<void> {
     this.logger.debug('emit', { oldValue, value });
     this.odsValueChange.emit({
@@ -223,10 +228,6 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
     this.commonFieldMethodController.setTabindex(value);
   }
 
-  hasError(): Promise<boolean> {
-    return this.controller.hasError();
-  }
-
   onBlur(): void {
     this.controller.onBlur();
   }
@@ -251,7 +252,6 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
       color,
       contrasted,
       disabled,
-      hasError,
       hasFocus,
       icon,
       inputId,
@@ -273,12 +273,11 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
     const labelId = ariaLabelledby ? ariaLabelledby : `${inputId}-label`;
 
     const isPassword = type === 'password';
-
     return (
       /** Main styling is applied to Host, so that the icons are integrated inside the component */
       <Host {...{
         class: {
-          'ods-error': Boolean(hasError.bind(this)()),
+          'ods-error': this.internalError,
         },
         hasFocus,
         tabindex,

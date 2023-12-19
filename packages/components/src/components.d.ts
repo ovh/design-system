@@ -829,10 +829,6 @@ export namespace Components {
         /**
           * Indicates if the input is masked or not
          */
-        "masked"?: boolean;
-        /**
-          * Maximum value for the input (type number)
-         */
         "max"?: number;
         /**
           * Minimum value for the input (type number)
@@ -856,10 +852,6 @@ export namespace Components {
         "readOnly"?: boolean;
         /**
           * Indicates if the input is required or not
-         */
-        "required"?: boolean;
-        /**
-          * restore the value to the initial state
          */
         "reset": () => Promise<void>;
         /**
@@ -3477,10 +3469,6 @@ declare namespace LocalJSX {
         "ariaLabel"?: string | null;
         /**
           * ID of the element that labels the input
-         */
-        "ariaLabelledby"?: string;
-        /**
-          * Ability to clear the input value
          */
         "clearable"?: boolean;
         /**

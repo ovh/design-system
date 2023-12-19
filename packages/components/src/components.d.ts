@@ -11,7 +11,7 @@ import { OsdsAccordion } from "./accordion/src/components/osds-accordion/osds-ac
 import { OdsBreadcrumbAttributeItem } from "./breadcrumb/src/components/osds-breadcrumb/interfaces/attributes";
 import { ODS_ICON_NAME } from "./icon/src";
 import { ODS_LINK_REFERRER_POLICY } from "./link/src";
-import { ODS_COUNTRY_ISO_CODE, ODS_LOCALE, ODS_PERIOD_ISO_CODE, OdsErrorStateControl, OdsFormControl, OdsFormForbiddenValues, OdsHTMLAnchorElementRel, OdsHTMLAnchorElementTarget, OdsI18nHook, OdsInputValue, OdsTextAreaValidityState, OdsValidityState } from "@ovhcloud/ods-common-core";
+import { ODS_COMMON_FIELD_SIZE, ODS_COMMON_INPUT_TYPE, ODS_COUNTRY_ISO_CODE, ODS_LOCALE, ODS_PERIOD_ISO_CODE, OdsCommonFieldValidityState, OdsErrorStateControl, OdsFormControl, OdsFormForbiddenValues, OdsHTMLAnchorElementRel, OdsHTMLAnchorElementTarget, OdsI18nHook, OdsInputValue, OdsTextAreaValidityState, OdsValidityState } from "@ovhcloud/ods-common-core";
 import { OdsBreadcrumbAttributeItem as OdsBreadcrumbAttributeItem1 } from "./breadcrumb/src/components/osds-breadcrumb/public-api";
 import { ODS_BUTTON_SIZE } from "./button/src/components/osds-button/constants/button-size";
 import { ODS_BUTTON_TYPE } from "./button/src/components/osds-button/constants/button-type";
@@ -34,14 +34,10 @@ import { ODS_DIVIDER_SIZE } from "./divider/src/components/osds-divider/constant
 import { ODS_FLAG_ISO_CODE_UNION } from "./flag/src/components/osds-flag/constants/flag-iso-code";
 import { ODS_ICON_NAME as ODS_ICON_NAME1 } from "./icon/src/components/osds-icon/constants/icon-name";
 import { ODS_ICON_SIZE } from "./icon/src/components/osds-icon/constants/icon-size";
-import { OdsInputValidityState } from "./input/src/components/osds-input/interfaces/attributes";
-import { ODS_INPUT_SIZE } from "./input/src/components/osds-input/constants/input-size";
-import { ODS_INPUT_TYPE } from "./input/src/components/osds-input/constants/input-type";
 import { OdsInputValueChangeEventDetail } from "./input/src/components/osds-input/interfaces/events";
 import { ODS_LINK_REFERRER_POLICY as ODS_LINK_REFERRER_POLICY1 } from "./link/src/components/osds-link/constants/referrer-policies";
 import { ODS_MESSAGE_TYPE } from "./message/src/components/osds-message/constants/message-type";
 import { OdsPaginationChangedEventDetail } from "./pagination/src/components/osds-pagination/interfaces/events";
-import { ODS_INPUT_SIZE as ODS_INPUT_SIZE1 } from "./input/src";
 import { ODS_PHONE_NUMBER_COUNTRY_PRESET } from "./phone-number/src/components/osds-phone-number/constants/phone-number-countries";
 import { OdsPhoneNumberValueChangeEventDetail } from "./phone-number/src/components/osds-phone-number/interfaces/events";
 import { OdsRadioCheckedChangeEventDetail, OdsRadioCheckingChangeEventDetail } from "./radio/src/components/osds-radio/interfaces/events";
@@ -76,7 +72,7 @@ export { OsdsAccordion } from "./accordion/src/components/osds-accordion/osds-ac
 export { OdsBreadcrumbAttributeItem } from "./breadcrumb/src/components/osds-breadcrumb/interfaces/attributes";
 export { ODS_ICON_NAME } from "./icon/src";
 export { ODS_LINK_REFERRER_POLICY } from "./link/src";
-export { ODS_COUNTRY_ISO_CODE, ODS_LOCALE, ODS_PERIOD_ISO_CODE, OdsErrorStateControl, OdsFormControl, OdsFormForbiddenValues, OdsHTMLAnchorElementRel, OdsHTMLAnchorElementTarget, OdsI18nHook, OdsInputValue, OdsTextAreaValidityState, OdsValidityState } from "@ovhcloud/ods-common-core";
+export { ODS_COMMON_FIELD_SIZE, ODS_COMMON_INPUT_TYPE, ODS_COUNTRY_ISO_CODE, ODS_LOCALE, ODS_PERIOD_ISO_CODE, OdsCommonFieldValidityState, OdsErrorStateControl, OdsFormControl, OdsFormForbiddenValues, OdsHTMLAnchorElementRel, OdsHTMLAnchorElementTarget, OdsI18nHook, OdsInputValue, OdsTextAreaValidityState, OdsValidityState } from "@ovhcloud/ods-common-core";
 export { OdsBreadcrumbAttributeItem as OdsBreadcrumbAttributeItem1 } from "./breadcrumb/src/components/osds-breadcrumb/public-api";
 export { ODS_BUTTON_SIZE } from "./button/src/components/osds-button/constants/button-size";
 export { ODS_BUTTON_TYPE } from "./button/src/components/osds-button/constants/button-type";
@@ -99,14 +95,10 @@ export { ODS_DIVIDER_SIZE } from "./divider/src/components/osds-divider/constant
 export { ODS_FLAG_ISO_CODE_UNION } from "./flag/src/components/osds-flag/constants/flag-iso-code";
 export { ODS_ICON_NAME as ODS_ICON_NAME1 } from "./icon/src/components/osds-icon/constants/icon-name";
 export { ODS_ICON_SIZE } from "./icon/src/components/osds-icon/constants/icon-size";
-export { OdsInputValidityState } from "./input/src/components/osds-input/interfaces/attributes";
-export { ODS_INPUT_SIZE } from "./input/src/components/osds-input/constants/input-size";
-export { ODS_INPUT_TYPE } from "./input/src/components/osds-input/constants/input-type";
 export { OdsInputValueChangeEventDetail } from "./input/src/components/osds-input/interfaces/events";
 export { ODS_LINK_REFERRER_POLICY as ODS_LINK_REFERRER_POLICY1 } from "./link/src/components/osds-link/constants/referrer-policies";
 export { ODS_MESSAGE_TYPE } from "./message/src/components/osds-message/constants/message-type";
 export { OdsPaginationChangedEventDetail } from "./pagination/src/components/osds-pagination/interfaces/events";
-export { ODS_INPUT_SIZE as ODS_INPUT_SIZE1 } from "./input/src";
 export { ODS_PHONE_NUMBER_COUNTRY_PRESET } from "./phone-number/src/components/osds-phone-number/constants/phone-number-countries";
 export { OdsPhoneNumberValueChangeEventDetail } from "./phone-number/src/components/osds-phone-number/interfaces/events";
 export { OdsRadioCheckedChangeEventDetail, OdsRadioCheckingChangeEventDetail } from "./radio/src/components/osds-radio/interfaces/events";
@@ -789,12 +781,13 @@ export namespace Components {
     }
     interface OsdsInput {
         /**
-          * @see OdsInputAttribute.ariaLabel
+          * Repeat this attribute because it cannot be undefined in osds-input
+          * @see OdsCommonFieldAttribute.ariaLabel
          */
         "ariaLabel": HTMLElement['ariaLabel'];
         /**
           * ID of the element that labels the input
-          * @see OdsInputAttribute.ariaLabelledby
+          * @see OdsCommonFieldAttribute.ariaLabelledby
          */
         "ariaLabelledby"?: string;
         /**
@@ -804,12 +797,12 @@ export namespace Components {
         "clear": () => Promise<void>;
         /**
           * Ability to clear the input value
-          * @see OdsInputAttribute.clearable
+          * @see OdsCommonFieldAttribute.clearable
          */
         "clearable"?: boolean;
         /**
           * Main color of the input: see component principles
-          * @see OdsInputAttribute.color
+          * @see OdsCommonFieldAttribute.color
          */
         "color"?: ODS_THEME_COLOR_INTENT;
         /**
@@ -824,34 +817,34 @@ export namespace Components {
         "defaultValue": OdsInputValue;
         /**
           * Indicates if the input is disabled or not: see component principles
-          * @see OdsInputAttribute.disabled
+          * @see OdsCommonFieldAttribute.disabled
          */
         "disabled"?: boolean;
         /**
           * Indicates if the input shows error or not
-          * @see OdsInputAttribute.error
+          * @see OdsCommonFieldAttribute.error
          */
         "error"?: boolean;
         /**
           * Controls the error state of the input
-          * @see OdsInputAttribute.errorStateControl
+          * @see OdsCommonFieldAttribute.errorStateControl
          */
         "errorStateControl"?: OdsErrorStateControl;
         /**
-          * List of forbidden values for the input
-          * @see OdsInputAttribute.forbiddenValues
+          * Repeat this attribute because it cannot be undefined in osds-input
+          * @see OdsCommonFieldAttribute.forbiddenValues
          */
         "forbiddenValues": OdsFormForbiddenValues<number>;
         /**
           * Control object of the form the input belongs to
-          * @see OdsInputAttribute.formControl
+          * @see OdsCommonFieldAttribute.formControl
          */
-        "formControl"?: OdsFormControl<OdsInputValidityState>;
+        "formControl"?: OdsFormControl<OdsCommonFieldValidityState>;
         /**
           * get the validity state
           * @see OdsInputMethods.getValidity
          */
-        "getValidity": () => Promise<OdsInputValidityState>;
+        "getValidity": () => Promise<OdsCommonFieldValidityState>;
         /**
           * hide or display the value
           * @see OdsInputMethods.hide
@@ -869,17 +862,17 @@ export namespace Components {
         "inline"?: boolean;
         /**
           * Label of the input field
-          * @see OdsInputAttribute.label
+          * @see OdsCommonFieldAttribute.label
          */
         "label"?: string;
         /**
           * Indicates if the input is in loading state or not
-          * @see OdsInputAttribute.loading
+          * @see OdsCommonFieldAttribute.loading
          */
         "loading"?: boolean;
         /**
           * Indicates if the input is masked or not
-          * @see OdsInputAttribute.masked
+          * @see OdsCommonFieldAttribute.masked
          */
         "masked"?: boolean;
         /**
@@ -894,27 +887,27 @@ export namespace Components {
         "min"?: number;
         /**
           * Name of the input field
-          * @see OdsInputAttribute.name
+          * @see OdsCommonFieldAttribute.name
          */
         "name"?: string;
         /**
           * Placeholder text for the input
-          * @see OdsInputAttribute.placeholder
+          * @see OdsCommonFieldAttribute.placeholder
          */
         "placeholder"?: string;
         /**
           * Text before the input value
-          * @see OdsInputAttribute.prefixValue
+          * @see OdsCommonFieldAttribute.prefixValue
          */
         "prefixValue": string | undefined;
         /**
           * Indicates if the input is read-only or not
-          * @see OdsInputAttribute.readOnly
+          * @see OdsCommonFieldAttribute.readOnly
          */
         "readOnly"?: boolean;
         /**
           * Indicates if the input is required or not
-          * @see OdsInputAttribute.required
+          * @see OdsCommonFieldAttribute.required
          */
         "required"?: boolean;
         /**
@@ -934,12 +927,12 @@ export namespace Components {
         "setInputTabindex": (value: number) => Promise<void>;
         /**
           * Size of the input: see component principles
-          * @see OdsInputAttribute.size
+          * @see OdsCommonFieldAttribute.size
          */
-        "size"?: ODS_INPUT_SIZE;
+        "size"?: ODS_COMMON_FIELD_SIZE;
         /**
           * Step value for the input
-          * @see OdsInputAttribute.step
+          * @see OdsCommonFieldAttribute.step
          */
         "step"?: number;
         /**
@@ -951,13 +944,13 @@ export namespace Components {
          */
         "stepUp": () => Promise<void>;
         /**
-          * Type of the input field
-          * @see OdsInputAttribute.type
+          * Repeat this attribute because it cannot be undefined in osds-input
+          * @see OdsCommonFieldAttribute.type
          */
-        "type": ODS_INPUT_TYPE;
+        "type": ODS_COMMON_INPUT_TYPE;
         /**
-          * Current value of the input
-          * @see OdsInputAttribute.value
+          * Repeat this attribute because it cannot be undefined in osds-input
+          * @see OdsCommonFieldAttribute.value
          */
         "value": OdsInputValue;
     }
@@ -1222,7 +1215,7 @@ export namespace Components {
           * Size of the password: see component principles
           * @see OdsPasswordAttributes.size
          */
-        "size"?: ODS_INPUT_SIZE1;
+        "size"?: ODS_COMMON_FIELD_SIZE;
         /**
           * Current value of the password
           * @see OdsInputAttributes.value
@@ -3591,22 +3584,23 @@ declare namespace LocalJSX {
     }
     interface OsdsInput {
         /**
-          * @see OdsInputAttribute.ariaLabel
+          * Repeat this attribute because it cannot be undefined in osds-input
+          * @see OdsCommonFieldAttribute.ariaLabel
          */
         "ariaLabel"?: HTMLElement['ariaLabel'];
         /**
           * ID of the element that labels the input
-          * @see OdsInputAttribute.ariaLabelledby
+          * @see OdsCommonFieldAttribute.ariaLabelledby
          */
         "ariaLabelledby"?: string;
         /**
           * Ability to clear the input value
-          * @see OdsInputAttribute.clearable
+          * @see OdsCommonFieldAttribute.clearable
          */
         "clearable"?: boolean;
         /**
           * Main color of the input: see component principles
-          * @see OdsInputAttribute.color
+          * @see OdsCommonFieldAttribute.color
          */
         "color"?: ODS_THEME_COLOR_INTENT;
         /**
@@ -3621,29 +3615,29 @@ declare namespace LocalJSX {
         "defaultValue"?: OdsInputValue;
         /**
           * Indicates if the input is disabled or not: see component principles
-          * @see OdsInputAttribute.disabled
+          * @see OdsCommonFieldAttribute.disabled
          */
         "disabled"?: boolean;
         /**
           * Indicates if the input shows error or not
-          * @see OdsInputAttribute.error
+          * @see OdsCommonFieldAttribute.error
          */
         "error"?: boolean;
         /**
           * Controls the error state of the input
-          * @see OdsInputAttribute.errorStateControl
+          * @see OdsCommonFieldAttribute.errorStateControl
          */
         "errorStateControl"?: OdsErrorStateControl;
         /**
-          * List of forbidden values for the input
-          * @see OdsInputAttribute.forbiddenValues
+          * Repeat this attribute because it cannot be undefined in osds-input
+          * @see OdsCommonFieldAttribute.forbiddenValues
          */
         "forbiddenValues"?: OdsFormForbiddenValues<number>;
         /**
           * Control object of the form the input belongs to
-          * @see OdsInputAttribute.formControl
+          * @see OdsCommonFieldAttribute.formControl
          */
-        "formControl"?: OdsFormControl<OdsInputValidityState>;
+        "formControl"?: OdsFormControl<OdsCommonFieldValidityState>;
         /**
           * Icon to be used in the input field
           * @see OdsInputAttribute.icon
@@ -3656,17 +3650,17 @@ declare namespace LocalJSX {
         "inline"?: boolean;
         /**
           * Label of the input field
-          * @see OdsInputAttribute.label
+          * @see OdsCommonFieldAttribute.label
          */
         "label"?: string;
         /**
           * Indicates if the input is in loading state or not
-          * @see OdsInputAttribute.loading
+          * @see OdsCommonFieldAttribute.loading
          */
         "loading"?: boolean;
         /**
           * Indicates if the input is masked or not
-          * @see OdsInputAttribute.masked
+          * @see OdsCommonFieldAttribute.masked
          */
         "masked"?: boolean;
         /**
@@ -3681,7 +3675,7 @@ declare namespace LocalJSX {
         "min"?: number;
         /**
           * Name of the input field
-          * @see OdsInputAttribute.name
+          * @see OdsCommonFieldAttribute.name
          */
         "name"?: string;
         /**
@@ -3699,42 +3693,42 @@ declare namespace LocalJSX {
         "onOdsValueChange"?: (event: OsdsInputCustomEvent<OdsInputValueChangeEventDetail>) => void;
         /**
           * Placeholder text for the input
-          * @see OdsInputAttribute.placeholder
+          * @see OdsCommonFieldAttribute.placeholder
          */
         "placeholder"?: string;
         /**
           * Text before the input value
-          * @see OdsInputAttribute.prefixValue
+          * @see OdsCommonFieldAttribute.prefixValue
          */
         "prefixValue"?: string | undefined;
         /**
           * Indicates if the input is read-only or not
-          * @see OdsInputAttribute.readOnly
+          * @see OdsCommonFieldAttribute.readOnly
          */
         "readOnly"?: boolean;
         /**
           * Indicates if the input is required or not
-          * @see OdsInputAttribute.required
+          * @see OdsCommonFieldAttribute.required
          */
         "required"?: boolean;
         /**
           * Size of the input: see component principles
-          * @see OdsInputAttribute.size
+          * @see OdsCommonFieldAttribute.size
          */
-        "size"?: ODS_INPUT_SIZE;
+        "size"?: ODS_COMMON_FIELD_SIZE;
         /**
           * Step value for the input
-          * @see OdsInputAttribute.step
+          * @see OdsCommonFieldAttribute.step
          */
         "step"?: number;
         /**
-          * Type of the input field
-          * @see OdsInputAttribute.type
+          * Repeat this attribute because it cannot be undefined in osds-input
+          * @see OdsCommonFieldAttribute.type
          */
-        "type"?: ODS_INPUT_TYPE;
+        "type"?: ODS_COMMON_INPUT_TYPE;
         /**
-          * Current value of the input
-          * @see OdsInputAttribute.value
+          * Repeat this attribute because it cannot be undefined in osds-input
+          * @see OdsCommonFieldAttribute.value
          */
         "value"?: OdsInputValue;
     }
@@ -4002,7 +3996,7 @@ declare namespace LocalJSX {
           * Size of the password: see component principles
           * @see OdsPasswordAttributes.size
          */
-        "size"?: ODS_INPUT_SIZE1;
+        "size"?: ODS_COMMON_FIELD_SIZE;
         /**
           * Current value of the password
           * @see OdsInputAttributes.value

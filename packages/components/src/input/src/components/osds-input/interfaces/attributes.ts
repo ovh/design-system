@@ -1,5 +1,5 @@
-import type { OdsCommonFieldAttribute, OdsFormForbiddenValues, ODS_COMMON_INPUT_TYPE, OdsInputValue } from '@ovhcloud/ods-common-core';
 import type { ODS_ICON_NAME } from '../../../../../icon/src';
+import type { ODS_COMMON_INPUT_TYPE, OdsCommonFieldAttribute, OdsFormForbiddenValues, OdsInputValue } from '@ovhcloud/ods-common-core';
 
 interface OdsInputAttribute extends OdsCommonFieldAttribute {
   /** Repeat this attribute because it cannot be undefined in osds-input */

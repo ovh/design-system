@@ -56,9 +56,9 @@ function getStencilConfig({ args, componentCorePackage, devScript, jestConfig = 
       },
     ],
     plugins: [
-      inlineSvg(),
-      postcss({ plugins: [autoprefixer()] }),
       sass({ importer: nodeSassPackageImporter() }),
+      postcss({ plugins: [autoprefixer()] }),
+      inlineSvg(),
     ],
     sourceMap: isDev,
     tsconfig: getTsConfig(),

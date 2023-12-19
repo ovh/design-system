@@ -14865,9 +14865,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.4.601":
-  version: 1.4.612
-  resolution: "electron-to-chromium@npm:1.4.612"
-  checksum: fbb044289dcea34246254520b05245549013c68c7cc25ce69604ebd496a59d3b41defd10be4a2fca2d5e6e46d92481736e3d1498093e28c96cbe86e48d19634b
+  version: 1.4.615
+  resolution: "electron-to-chromium@npm:1.4.615"
+  checksum: 9ffb1d0dac11c629bd8aa38efa7d2e3f41de943cf81fb41ab05e960e954c464c168d1f2f7e571813805e85b895279f2882bcafa551a2f23089646008d7a5bd06
   languageName: node
   linkType: hard
 
@@ -21820,7 +21820,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nanoid@npm:^3.1.23, nanoid@npm:^3.1.30, nanoid@npm:^3.3.6":
+"nanoid@npm:^3.1.23, nanoid@npm:^3.1.30":
   version: 3.3.6
   resolution: "nanoid@npm:3.3.6"
   bin:
@@ -24195,18 +24195,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.1.10, postcss@npm:^8.2.7, postcss@npm:^8.4.21, postcss@npm:~8.4.27":
-  version: 8.4.29
-  resolution: "postcss@npm:8.4.29"
-  dependencies:
-    nanoid: ^3.3.6
-    picocolors: ^1.0.0
-    source-map-js: ^1.0.2
-  checksum: dd6daa25e781db9ae5b651d9b7bfde0ec6e60e86a37da69a18eb4773d5ddd51e28fc4ff054fbdc04636a31462e6bf09a1e50986f69ac52b10d46b7457cd36d12
-  languageName: node
-  linkType: hard
-
-"postcss@npm:^8.2.14, postcss@npm:^8.2.6, postcss@npm:^8.3.5, postcss@npm:^8.4.19, postcss@npm:^8.4.32":
+"postcss@npm:^8.1.10, postcss@npm:^8.2.14, postcss@npm:^8.2.6, postcss@npm:^8.2.7, postcss@npm:^8.3.5, postcss@npm:^8.4.19, postcss@npm:^8.4.21, postcss@npm:^8.4.27, postcss@npm:^8.4.32, postcss@npm:~8.4.27":
   version: 8.4.32
   resolution: "postcss@npm:8.4.32"
   dependencies:
@@ -24214,17 +24203,6 @@ __metadata:
     picocolors: ^1.0.0
     source-map-js: ^1.0.2
   checksum: 220d9d0bf5d65be7ed31006c523bfb11619461d296245c1231831f90150aeb4a31eab9983ac9c5c89759a3ca8b60b3e0d098574964e1691673c3ce5c494305ae
-  languageName: node
-  linkType: hard
-
-"postcss@npm:^8.4.27":
-  version: 8.4.31
-  resolution: "postcss@npm:8.4.31"
-  dependencies:
-    nanoid: ^3.3.6
-    picocolors: ^1.0.0
-    source-map-js: ^1.0.2
-  checksum: 1d8611341b073143ad90486fcdfeab49edd243377b1f51834dc4f6d028e82ce5190e4f11bb2633276864503654fb7cab28e67abdc0fbf9d1f88cad4a0ff0beea
   languageName: node
   linkType: hard
 

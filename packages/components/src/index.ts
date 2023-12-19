@@ -43,3 +43,5 @@ export * from './textarea/src';
 export * from './tile/src';
 export * from './toggle/src';
 export * from './tooltip/src';
+
+export * from './form/src';

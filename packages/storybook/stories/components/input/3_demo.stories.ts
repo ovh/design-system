@@ -1,8 +1,5 @@
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import { ODS_COMMON_FIELD_SIZES, ODS_COMMON_INPUT_TYPES } from '@ovhcloud/ods-common-core';
-import { ODS_ICON_NAMES } from '@ovhcloud/ods-components';
-import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-input';
-import { DEFAULT_ATTRIBUTE } from '@ovhcloud/ods-components/input/src/components/osds-input/constants/default-attributes';
+import { defineCustomElement, ODS_INPUT_SIZES, ODS_INPUT_TYPES } from '@ovhcloud/ods-components/dist/components/osds-input';
 import { html } from 'lit-html';
 import { InputPlay } from './demo.validation.stories';
 import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
@@ -19,8 +16,8 @@ const storyParams = {
   },
   type: {
     category: 'General',
-    defaultValue: DEFAULT_ATTRIBUTE.type,
-    options: ODS_COMMON_INPUT_TYPES,
+    defaultValue: 'text',
+    options: ODS_INPUT_TYPES,
     control: { type: 'select' },
   },
   placeholder: {
@@ -29,8 +26,8 @@ const storyParams = {
   },
   defaultValue: {
     category: 'General',
-    defaultValue: DEFAULT_ATTRIBUTE.size,
-    options: ODS_COMMON_FIELD_SIZES,
+    defaultValue: 'md',
+    options: ODS_INPUT_SIZES,
     control: { type: 'select' },
   },
   prefixValue: {
@@ -165,7 +162,7 @@ const createTable = (contrasted: boolean, headerList: readonly string[], itemMap
 const TemplateAll = () => html`
   <section style="margin-bottom: 3em; padding: 1em;">
     <h2>[types]</h2>
-    ${unsafeHTML(createTable(false, ODS_COMMON_INPUT_TYPES, (attribute) => ODS_COMMON_INPUT_TYPES.map((type) =>
+    ${unsafeHTML(createTable(false, ODS_INPUT_TYPES, (attribute) => ODS_INPUT_TYPES.map((type) =>
     `<td style="padding:0.1em">
         <osds-input type="${type}" placeholder="Enter ${type}..." ${attribute}></osds-input>
       </td>`).join(''),

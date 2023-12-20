@@ -1,8 +1,0 @@
-var ODS_BUTTON_TEXT_ALIGN;
-(function (ODS_BUTTON_TEXT_ALIGN) {
-  ODS_BUTTON_TEXT_ALIGN["center"] = "center";
-  ODS_BUTTON_TEXT_ALIGN["start"] = "start";
-  ODS_BUTTON_TEXT_ALIGN["end"] = "end";
-})(ODS_BUTTON_TEXT_ALIGN || (ODS_BUTTON_TEXT_ALIGN = {}));
-const ODS_BUTTON_TEXT_ALIGNS = Object.freeze(Object.values(ODS_BUTTON_TEXT_ALIGN));
-export { ODS_BUTTON_TEXT_ALIGN, ODS_BUTTON_TEXT_ALIGNS, };

@@ -16,7 +16,7 @@
 <body>
 
 <div>
-  <p>Default</p>
+  <h1>Default</h1>
 
   <osds-tooltip>
     <osds-tooltip-content slot="tooltip-content">
@@ -28,7 +28,8 @@
 </div>
 
 <div>
-  <p>osds-text and osds-icon</p>
+  <h1>osds-text and osds-icon</h1>
+
   <osds-tooltip>
     <osds-tooltip-content slot="tooltip-content">
       <osds-text color="text" size="400">Lorem ispum...</osds-text>
@@ -40,7 +41,7 @@
 </div>
 
 <div>
-  <p>Variant tip</p>
+  <h1>Variant tip</h1>
 
   <osds-tooltip variant="tip">
     <osds-tooltip-content slot="tooltip-content">
@@ -52,15 +53,13 @@
 </div>
 
 <div>
-  <p>No Slot</p>
+  <h1>No Slot</h1>
 
   <osds-tooltip id="tooltip-slot">
      not slot
   </osds-tooltip>
   <button id="add-slot">click to add slot</button>
-
 </div>
-
 
 <script>
   const button = document.querySelector('#add-slot');

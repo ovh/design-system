@@ -2,18 +2,13 @@ import type { ODS_TOOLTIP_VARIANT } from './constants/tooltip-variant';
 import type { OdsTooltipAttribute } from './interfaces/attributes';
 import type { OdsTooltipMethod } from './interfaces/methods';
 import type { HTMLStencilElement } from '@stencil/core/internal';
-
 import { OcdkSurface, ocdkDefineCustomElements, ocdkIsSurface } from '@ovhcloud/ods-cdk';
 import { odsDebounce } from '@ovhcloud/ods-common-core';
 import { Component, Element, Host, Listen, State, h } from '@stencil/core';
 import { Method, Prop } from '@stencil/core/internal';
-
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsTooltipController } from './core/controller';
 
-
-
-// define custom elements from CDK
 ocdkDefineCustomElements();
 
 /**

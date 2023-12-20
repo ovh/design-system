@@ -13,7 +13,7 @@ describe('e2e:osds-tooltip', () => {
 
   async function isTooltipVisible(): Promise<boolean> {
     return page.evaluate(() => {
-      return !! document.querySelector('osds-tooltip')?.shadowRoot?.querySelector('.ocdk-surface--open');
+      return !!document.querySelector('osds-tooltip')?.shadowRoot?.querySelector('.ocdk-surface--open');
     });
   }
 
@@ -47,14 +47,13 @@ describe('e2e:osds-tooltip', () => {
       it('should close the tooltip', async() => {
         await setup();
 
-        await el.click();
-        await page.waitForChanges();
+        await page.mouse.move(5, 5);
+        await page.waitForTimeout(500); // wait for debounce to resolve
         expect(await isTooltipVisible()).toBe(true);
 
         await el.callMethod('closeSurface');
         await page.waitForChanges();
-
-        expect(await isTooltipVisible()).toBe(true);
+        expect(await isTooltipVisible()).toBe(false);
       });
     });
 
@@ -104,17 +103,6 @@ describe('e2e:osds-tooltip', () => {
     });
     await page.waitForChanges();
 
-    expect(await isTooltipVisible()).toBe(false);
-  });
-
-  it('should close the tooltip on outside click', async() => {
-    await setup({ extraContent: '<button>Outside element</button>' });
-    const outsideElement = await page.find('button');
-
-    await el.click();
-    expect(await isTooltipVisible()).toBe(true);
-
-    await outsideElement.click();
     expect(await isTooltipVisible()).toBe(false);
   });
 });

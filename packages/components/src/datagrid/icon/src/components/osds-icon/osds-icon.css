@@ -1,0 +1,141 @@
+:host(.ods-icon) {
+  display: inline-block;
+  vertical-align: var(--ods-icon-vertical-align);
+  mask: center/contain no-repeat;
+  mask-image: var(--icon-mask-image, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'/%3E"));
+}
+
+/** sizes */
+:host([size=xxs]) {
+  width: var(--ods-size-icon-xxs-width);
+  height: var(--ods-size-icon-xxs-height);
+}
+
+:host([size=xs]) {
+  width: var(--ods-size-icon-xs-width);
+  height: var(--ods-size-icon-xs-height);
+}
+
+:host([size=sm]) {
+  width: var(--ods-size-icon-sm-width);
+  height: var(--ods-size-icon-sm-height);
+}
+
+:host([size=md]) {
+  width: var(--ods-size-icon-md-width);
+  height: var(--ods-size-icon-md-height);
+}
+
+:host([size=lg]) {
+  width: var(--ods-size-icon-lg-width);
+  height: var(--ods-size-icon-lg-height);
+}
+
+:host([size=xl]) {
+  width: var(--ods-size-icon-xl-width);
+  height: var(--ods-size-icon-xl-height);
+}
+
+:host(:not([color])) {
+  background-color: var(--ods-color-default-500);
+}
+
+:host([color^=default]) {
+  background-color: var(--ods-color-default-500);
+}
+
+:host([color^=primary]) {
+  background-color: var(--ods-color-primary-500);
+}
+
+:host([color^=text]) {
+  background-color: var(--ods-color-text-500);
+}
+
+:host([color^=accent]) {
+  background-color: var(--ods-color-accent-500);
+}
+
+:host([color^=error]) {
+  background-color: var(--ods-color-error-500);
+}
+
+:host([color^=warning]) {
+  background-color: var(--ods-color-warning-500);
+}
+
+:host([color^=success]) {
+  background-color: var(--ods-color-success-500);
+}
+
+:host([color^=info]) {
+  background-color: var(--ods-color-info-500);
+}
+
+:host([color^=promotion]) {
+  background-color: var(--ods-color-promotion-500);
+}
+
+:host(.ods-icon--contrasted:not([color])) {
+  background-color: var(--ods-color-default-500-contrasted);
+}
+:host(.ods-icon--contrasted[color^=default]) {
+  background-color: var(--ods-color-default-500-contrasted);
+}
+:host(.ods-icon--contrasted[color^=primary]) {
+  background-color: var(--ods-color-primary-500-contrasted);
+}
+:host(.ods-icon--contrasted[color^=text]) {
+  background-color: var(--ods-color-text-500-contrasted);
+}
+:host(.ods-icon--contrasted[color^=accent]) {
+  background-color: var(--ods-color-accent-500-contrasted);
+}
+:host(.ods-icon--contrasted[color^=error]) {
+  background-color: var(--ods-color-error-500-contrasted);
+}
+:host(.ods-icon--contrasted[color^=warning]) {
+  background-color: var(--ods-color-warning-500-contrasted);
+}
+:host(.ods-icon--contrasted[color^=success]) {
+  background-color: var(--ods-color-success-500-contrasted);
+}
+:host(.ods-icon--contrasted[color^=info]) {
+  background-color: var(--ods-color-info-500-contrasted);
+}
+:host(.ods-icon--contrasted[color^=promotion]) {
+  background-color: var(--ods-color-promotion-500-contrasted);
+}
+:host(.ods-icon--hoverable[color=default]) {
+  background-color: currentcolor;
+}
+:host(:host(.ods-icon--hoverable:not([color=default])):not([color]):hover) {
+  background-color: var(--ods-color-default-700);
+}
+:host(:host(.ods-icon--hoverable:not([color=default]))[color^=default]:hover) {
+  background-color: var(--ods-color-default-700);
+}
+:host(:host(.ods-icon--hoverable:not([color=default]))[color^=primary]:hover) {
+  background-color: var(--ods-color-primary-700);
+}
+:host(:host(.ods-icon--hoverable:not([color=default]))[color^=text]:hover) {
+  background-color: var(--ods-color-text-700);
+}
+:host(:host(.ods-icon--hoverable:not([color=default]))[color^=accent]:hover) {
+  background-color: var(--ods-color-accent-700);
+}
+:host(:host(.ods-icon--hoverable:not([color=default]))[color^=error]:hover) {
+  background-color: var(--ods-color-error-700);
+}
+:host(:host(.ods-icon--hoverable:not([color=default]))[color^=warning]:hover) {
+  background-color: var(--ods-color-warning-700);
+}
+:host(:host(.ods-icon--hoverable:not([color=default]))[color^=success]:hover) {
+  background-color: var(--ods-color-success-700);
+}
+:host(:host(.ods-icon--hoverable:not([color=default]))[color^=info]:hover) {
+  background-color: var(--ods-color-info-700);
+}
+:host(:host(.ods-icon--hoverable:not([color=default]))[color^=promotion]:hover) {
+  background-color: var(--ods-color-promotion-700);
+}

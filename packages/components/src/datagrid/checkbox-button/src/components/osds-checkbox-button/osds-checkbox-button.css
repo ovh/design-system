@@ -1,0 +1,173 @@
+:host {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  cursor: pointer;
+  width: fit-content;
+}
+:host .checkbox-button {
+  border-style: solid;
+  border-radius: var(--ods-size-border-radius-01);
+  vertical-align: middle;
+  text-align: center;
+}
+:host .checkbox-button osds-icon {
+  display: none;
+  width: 100%;
+  height: 100%;
+}
+
+:host(:is([checked], [indeterminate])) .checkbox-button osds-icon {
+  display: block;
+}
+
+:host([disabled]) {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+slot {
+  display: block;
+}
+
+:host(:not([color])) .checkbox-button {
+  border-color: var(--ods-color-default-500);
+}
+:host(:not([color]):not([disabled])[interactive]:hover) .checkbox-button {
+  background-color: var(--ods-color-default-100);
+}
+:host(:not([color]):not([disabled])[interactive]:active) .checkbox-button {
+  background-color: var(--ods-color-default-200);
+}
+
+:host([color^=default]) .checkbox-button {
+  border-color: var(--ods-color-default-500);
+}
+:host([color^=default]:not([disabled])[interactive]:hover) .checkbox-button {
+  background-color: var(--ods-color-default-100);
+}
+:host([color^=default]:not([disabled])[interactive]:active) .checkbox-button {
+  background-color: var(--ods-color-default-200);
+}
+
+:host([color^=primary]) .checkbox-button {
+  border-color: var(--ods-color-primary-500);
+}
+:host([color^=primary]:not([disabled])[interactive]:hover) .checkbox-button {
+  background-color: var(--ods-color-primary-100);
+}
+:host([color^=primary]:not([disabled])[interactive]:active) .checkbox-button {
+  background-color: var(--ods-color-primary-200);
+}
+
+:host([color^=text]) .checkbox-button {
+  border-color: var(--ods-color-text-500);
+}
+:host([color^=text]:not([disabled])[interactive]:hover) .checkbox-button {
+  background-color: var(--ods-color-text-100);
+}
+:host([color^=text]:not([disabled])[interactive]:active) .checkbox-button {
+  background-color: var(--ods-color-text-200);
+}
+
+:host([color^=accent]) .checkbox-button {
+  border-color: var(--ods-color-accent-500);
+}
+:host([color^=accent]:not([disabled])[interactive]:hover) .checkbox-button {
+  background-color: var(--ods-color-accent-100);
+}
+:host([color^=accent]:not([disabled])[interactive]:active) .checkbox-button {
+  background-color: var(--ods-color-accent-200);
+}
+
+:host([color^=error]) .checkbox-button {
+  border-color: var(--ods-color-error-500);
+}
+:host([color^=error]:not([disabled])[interactive]:hover) .checkbox-button {
+  background-color: var(--ods-color-error-100);
+}
+:host([color^=error]:not([disabled])[interactive]:active) .checkbox-button {
+  background-color: var(--ods-color-error-200);
+}
+
+:host([color^=warning]) .checkbox-button {
+  border-color: var(--ods-color-warning-500);
+}
+:host([color^=warning]:not([disabled])[interactive]:hover) .checkbox-button {
+  background-color: var(--ods-color-warning-100);
+}
+:host([color^=warning]:not([disabled])[interactive]:active) .checkbox-button {
+  background-color: var(--ods-color-warning-200);
+}
+
+:host([color^=success]) .checkbox-button {
+  border-color: var(--ods-color-success-500);
+}
+:host([color^=success]:not([disabled])[interactive]:hover) .checkbox-button {
+  background-color: var(--ods-color-success-100);
+}
+:host([color^=success]:not([disabled])[interactive]:active) .checkbox-button {
+  background-color: var(--ods-color-success-200);
+}
+
+:host([color^=info]) .checkbox-button {
+  border-color: var(--ods-color-info-500);
+}
+:host([color^=info]:not([disabled])[interactive]:hover) .checkbox-button {
+  background-color: var(--ods-color-info-100);
+}
+:host([color^=info]:not([disabled])[interactive]:active) .checkbox-button {
+  background-color: var(--ods-color-info-200);
+}
+
+:host([color^=promotion]) .checkbox-button {
+  border-color: var(--ods-color-promotion-500);
+}
+:host([color^=promotion]:not([disabled])[interactive]:hover) .checkbox-button {
+  background-color: var(--ods-color-promotion-100);
+}
+:host([color^=promotion]:not([disabled])[interactive]:active) .checkbox-button {
+  background-color: var(--ods-color-promotion-200);
+}
+
+:host .checkbox-button {
+  outline: none;
+}
+
+/** sizes */
+:host([size=md]) .checkbox-button {
+  box-sizing: border-box;
+  margin: var(--ods-size-checkbox-button-md-margin);
+  border-width: var(--ods-size-checkbox-button-md-border-width);
+  width: var(--ods-size-checkbox-button-md-width);
+  height: var(--ods-size-checkbox-button-md-height);
+  aspect-ratio: 1/1;
+}
+
+:host([size=sm]) .checkbox-button {
+  box-sizing: border-box;
+  margin: var(--ods-size-checkbox-button-sm-margin);
+  border-width: var(--ods-size-checkbox-button-sm-border-width);
+  width: var(--ods-size-checkbox-button-sm-width);
+  height: var(--ods-size-checkbox-button-sm-height);
+  aspect-ratio: 1/1;
+}
+
+/** typography properties */
+:host([size=sm]) slot {
+  line-height: var(--ods-typography-body-600-line-height);
+  letter-spacing: var(--ods-typography-body-600-letter-spacing);
+  font-family: var(--ods-typography-body-600-font-family);
+  font-size: var(--ods-typography-body-600-font-size);
+  font-weight: var(--ods-typography-body-600-font-weight);
+  font-style: var(--ods-typography-body-600-font-style);
+}
+
+:host([size=md]) slot {
+  line-height: var(--ods-typography-body-600-line-height);
+  letter-spacing: var(--ods-typography-body-600-letter-spacing);
+  font-family: var(--ods-typography-body-600-font-family);
+  font-size: var(--ods-typography-body-600-font-size);
+  font-weight: var(--ods-typography-body-600-font-weight);
+  font-style: var(--ods-typography-body-600-font-style);
+}

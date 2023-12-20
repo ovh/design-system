@@ -24,7 +24,7 @@
   <osds-datagrid
     id="datagridFormatter"
     columns='[{"title":"First name", "field":"firstname", "isSortable": true}, {"title":"Last name", "field":"lastname", "isSortable": true}, {"title":"Gender", "field":"gender"}]'
-    rows='[{"firstname":"Homer", "lastname":"Simpson", "gender": "Male"}, {"firstname":"Marge", "lastname":"Simpson", "gender": "Female"}]'
+    rows='[{"firstname":"Homer Barthelemy Johnson Martin Homer Barthelemy Johnson Martin Homer Barthelemy Johnson Martin Homer Barthelemy Johnson Martin", "lastname":"Simpson", "gender": "Male"}, {"firstname":"Marge", "lastname":"Simpson", "gender": "Female"}]'
     height="300">
   </osds-datagrid>
 
@@ -69,7 +69,7 @@
     datagrid.addEventListener('odsRowSelectedChange', (data) => console.log('odsRowSelectedChange', data))
 
     datagrid.columns = [
-      { title: "First name", field: "firstname", formatter: (cellValue, rowValue) => {
+      { title: "First name", field: "firstname", overflow: true, formatter: (cellValue, rowValue) => {
           return `<osds-menu>
 <osds-button slot="menu-title" color="primary" variant="stroked">
   Action menu

@@ -20,7 +20,7 @@ Ods.instance().logging(true);
   tag: 'osds-datagrid',
 })
 export class OsdsDatagrid implements OdsDatagridAttribute, OdsDatagridEvent {
-  private readonly controler = new OdsDatagridController(this);
+  private readonly controller = new OdsDatagridController(this);
   readonly logger = new OdsLogger('OsdsDatagrid');
   private grid?: HTMLDivElement;
   table?: Tabulator;
@@ -62,7 +62,7 @@ export class OsdsDatagrid implements OdsDatagridAttribute, OdsDatagridEvent {
   }
 
   componentDidLoad(): void {
-    this.controler.validateAttributes();
+    this.controller.validateAttributes();
     this.initTable();
   }
 
@@ -88,7 +88,7 @@ export class OsdsDatagrid implements OdsDatagridAttribute, OdsDatagridEvent {
 
   @Watch('rows')
   onChangeRows(): void {
-    const rows = this.controler.getRows();
+    const rows = this.controller.getRows();
     this.table?.setData(rows);
   }
 
@@ -96,8 +96,8 @@ export class OsdsDatagrid implements OdsDatagridAttribute, OdsDatagridEvent {
   @Watch('isSelectable')
   @Watch('columns')
   onChangeColumns(): void {
-    const columns = this.controler.getColumns();
-    this.table?.setColumns(this.controler.getTabulatorColumns(columns));
+    const columns = this.controller.getColumns();
+    this.table?.setColumns(this.controller.getTabulatorColumns(columns));
     this.setColumnsHeight();
     if (!this.isSelectable) {
       this.table?.getRows().forEach((row) => row.deselect());
@@ -134,11 +134,11 @@ export class OsdsDatagrid implements OdsDatagridAttribute, OdsDatagridEvent {
     if (!this.grid) {
       return;
     }
-    const columns = this.controler.getColumns();
-    const rows = this.controler.getRows();
+    const columns = this.controller.getColumns();
+    const rows = this.controller.getRows();
 
     this.table = new Tabulator(this.grid, {
-      columns: this.controler.getTabulatorColumns(columns),
+      columns: this.controller.getTabulatorColumns(columns),
       data: rows,
       headerSortElement: (_column: ColumnComponent, dir: 'asc' | 'desc' | 'none'): string => {
         function getIcon(): ODS_ICON_NAME {

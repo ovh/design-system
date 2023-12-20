@@ -56,8 +56,9 @@ $ods-border-datagrid: solid 1px var(--ods-color-blue-200);
     border: none;
     background-color: #FFF;
 
+
     .tabulator-tableholder {
-        position: initial;
+        position: relative;
 
         .tabulator-table {
             position: initial;
@@ -80,9 +81,11 @@ $ods-border-datagrid: solid 1px var(--ods-color-blue-200);
 
         .tabulator-cell {
             box-sizing: border-box;
+            position: relative;
             border-top: $ods-border-datagrid;
             border-right: none;
-            overflow: visible;
+            overflow-x: hidden;
+            overflow-y: visible;
 
             &:not(.ods-selectable__input-checkbox) {
                 position: initial;
@@ -100,6 +103,13 @@ $ods-border-datagrid: solid 1px var(--ods-color-blue-200);
                 @include ods-input-checkbox(1);
 
                 padding-left: 9px;
+            }
+
+            osds-menu,
+            osds-popover,
+            osds-select,
+            osds-tooltip {
+                position: absolute;
             }
         }
 

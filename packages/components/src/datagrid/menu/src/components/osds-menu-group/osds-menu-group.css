@@ -1,0 +1,25 @@
+::slotted(*) {
+  color: var(--ods-color-primary-800);
+}
+
+::slotted(*) {
+  line-height: var(--ods-typography-body-200-line-height);
+  letter-spacing: var(--ods-typography-body-200-letter-spacing);
+  font-family: var(--ods-typography-body-200-font-family);
+  font-size: var(--ods-typography-body-200-font-size);
+  font-weight: var(--ods-typography-body-200-font-weight);
+  font-style: var(--ods-typography-body-200-font-style);
+}
+
+:host {
+  display: inline-block;
+  max-width: 24rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-break: break-all;
+}
+
+:host {
+  padding: var(--ods-size-inset-04);
+}

@@ -1,0 +1,9 @@
+:host input {
+  display: none;
+}
+
+:host(:focus-visible) {
+  outline-offset: var(--ods-size-inset-02);
+  outline-width: var(--ods-size-inset-02);
+  outline-style: dotted;
+}

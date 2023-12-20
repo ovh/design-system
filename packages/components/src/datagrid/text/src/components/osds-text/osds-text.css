@@ -1,0 +1,255 @@
+:host([break-spaces]) {
+  white-space: break-spaces;
+}
+
+:host(:not([color])) {
+  color: var(--ods-color-default-500);
+}
+
+:host([color^=default]) {
+  color: var(--ods-color-default-500);
+}
+
+:host([color^=primary]) {
+  color: var(--ods-color-primary-500);
+}
+
+:host([color^=text]) {
+  color: var(--ods-color-text-500);
+}
+
+:host([color^=accent]) {
+  color: var(--ods-color-accent-500);
+}
+
+:host([color^=error]) {
+  color: var(--ods-color-error-500);
+}
+
+:host([color^=warning]) {
+  color: var(--ods-color-warning-500);
+}
+
+:host([color^=success]) {
+  color: var(--ods-color-success-500);
+}
+
+:host([color^=info]) {
+  color: var(--ods-color-info-500);
+}
+
+:host([color^=promotion]) {
+  color: var(--ods-color-promotion-500);
+}
+
+:host([hue]:not([color])) {
+  color: var(--osds-text-color-specific-hue, var(--ods-color-default-500));
+}
+:host([hue][color^=default]) {
+  color: var(--osds-text-color-specific-hue, var(--ods-color-default-500));
+}
+:host([hue][color^=primary]) {
+  color: var(--osds-text-color-specific-hue, var(--ods-color-primary-500));
+}
+:host([hue][color^=text]) {
+  color: var(--osds-text-color-specific-hue, var(--ods-color-text-500));
+}
+:host([hue][color^=accent]) {
+  color: var(--osds-text-color-specific-hue, var(--ods-color-accent-500));
+}
+:host([hue][color^=error]) {
+  color: var(--osds-text-color-specific-hue, var(--ods-color-error-500));
+}
+:host([hue][color^=warning]) {
+  color: var(--osds-text-color-specific-hue, var(--ods-color-warning-500));
+}
+:host([hue][color^=success]) {
+  color: var(--osds-text-color-specific-hue, var(--ods-color-success-500));
+}
+:host([hue][color^=info]) {
+  color: var(--osds-text-color-specific-hue, var(--ods-color-info-500));
+}
+:host([hue][color^=promotion]) {
+  color: var(--osds-text-color-specific-hue, var(--ods-color-promotion-500));
+}
+
+:host([contrasted]:not([color])) {
+  color: var(--ods-color-default-500-contrasted);
+}
+:host([contrasted][color^=default]) {
+  color: var(--ods-color-default-500-contrasted);
+}
+:host([contrasted][color^=primary]) {
+  color: var(--ods-color-primary-500-contrasted);
+}
+:host([contrasted][color^=text]) {
+  color: var(--ods-color-text-500-contrasted);
+}
+:host([contrasted][color^=accent]) {
+  color: var(--ods-color-accent-500-contrasted);
+}
+:host([contrasted][color^=error]) {
+  color: var(--ods-color-error-500-contrasted);
+}
+:host([contrasted][color^=warning]) {
+  color: var(--ods-color-warning-500-contrasted);
+}
+:host([contrasted][color^=success]) {
+  color: var(--ods-color-success-500-contrasted);
+}
+:host([contrasted][color^=info]) {
+  color: var(--ods-color-info-500-contrasted);
+}
+:host([contrasted][color^=promotion]) {
+  color: var(--ods-color-promotion-500-contrasted);
+}
+
+/** typography properties */
+:host([level=heading][size="100"]) {
+  line-height: var(--ods-typography-heading-100-line-height);
+  letter-spacing: var(--ods-typography-heading-100-letter-spacing);
+  font-size: var(--ods-typography-heading-100-font-size);
+  font-weight: var(--ods-typography-heading-100-font-weight);
+  font-family: var(--ods-typography-heading-100-font-family);
+  font-style: var(--ods-typography-heading-100-font-style);
+}
+:host([level=heading][size="200"]) {
+  line-height: var(--ods-typography-heading-200-line-height);
+  letter-spacing: var(--ods-typography-heading-200-letter-spacing);
+  font-size: var(--ods-typography-heading-200-font-size);
+  font-weight: var(--ods-typography-heading-200-font-weight);
+  font-family: var(--ods-typography-heading-200-font-family);
+  font-style: var(--ods-typography-heading-200-font-style);
+}
+:host([level=heading][size="300"]) {
+  line-height: var(--ods-typography-heading-300-line-height);
+  letter-spacing: var(--ods-typography-heading-300-letter-spacing);
+  font-size: var(--ods-typography-heading-300-font-size);
+  font-weight: var(--ods-typography-heading-300-font-weight);
+  font-family: var(--ods-typography-heading-300-font-family);
+  font-style: var(--ods-typography-heading-300-font-style);
+}
+:host([level=heading][size="400"]) {
+  line-height: var(--ods-typography-heading-400-line-height);
+  letter-spacing: var(--ods-typography-heading-400-letter-spacing);
+  font-size: var(--ods-typography-heading-400-font-size);
+  font-weight: var(--ods-typography-heading-400-font-weight);
+  font-family: var(--ods-typography-heading-400-font-family);
+  font-style: var(--ods-typography-heading-400-font-style);
+}
+:host([level=heading][size="500"]) {
+  line-height: var(--ods-typography-heading-500-line-height);
+  letter-spacing: var(--ods-typography-heading-500-letter-spacing);
+  font-size: var(--ods-typography-heading-500-font-size);
+  font-weight: var(--ods-typography-heading-500-font-weight);
+  font-family: var(--ods-typography-heading-500-font-family);
+  font-style: var(--ods-typography-heading-500-font-style);
+}
+:host([level=heading][size="600"]) {
+  line-height: var(--ods-typography-heading-600-line-height);
+  letter-spacing: var(--ods-typography-heading-600-letter-spacing);
+  font-size: var(--ods-typography-heading-600-font-size);
+  font-weight: var(--ods-typography-heading-600-font-weight);
+  font-family: var(--ods-typography-heading-600-font-family);
+  font-style: var(--ods-typography-heading-600-font-style);
+}
+:host([level=heading][size="700"]) {
+  line-height: var(--ods-typography-heading-700-line-height);
+  letter-spacing: var(--ods-typography-heading-700-letter-spacing);
+  font-size: var(--ods-typography-heading-700-font-size);
+  font-weight: var(--ods-typography-heading-700-font-weight);
+  font-family: var(--ods-typography-heading-700-font-family);
+  font-style: var(--ods-typography-heading-700-font-style);
+}
+:host([level=heading][size="800"]) {
+  line-height: var(--ods-typography-heading-800-line-height);
+  letter-spacing: var(--ods-typography-heading-800-letter-spacing);
+  font-size: var(--ods-typography-heading-800-font-size);
+  font-weight: var(--ods-typography-heading-800-font-weight);
+  font-family: var(--ods-typography-heading-800-font-family);
+  font-style: var(--ods-typography-heading-800-font-style);
+}
+
+:host([level=subheading][size="100"]) {
+  line-height: var(--ods-typography-subheading-100-line-height);
+  letter-spacing: var(--ods-typography-subheading-100-letter-spacing);
+  font-size: var(--ods-typography-subheading-100-font-size);
+  font-weight: var(--ods-typography-subheading-100-font-weight);
+  font-family: var(--ods-typography-subheading-100-font-family);
+  font-style: var(--ods-typography-subheading-100-font-style);
+}
+:host([level=subheading][size="200"]) {
+  line-height: var(--ods-typography-subheading-200-line-height);
+  letter-spacing: var(--ods-typography-subheading-200-letter-spacing);
+  font-size: var(--ods-typography-subheading-200-font-size);
+  font-weight: var(--ods-typography-subheading-200-font-weight);
+  font-family: var(--ods-typography-subheading-200-font-family);
+  font-style: var(--ods-typography-subheading-200-font-style);
+}
+
+:host([level=body][size="100"]) {
+  line-height: var(--ods-typography-body-100-line-height);
+  letter-spacing: var(--ods-typography-body-100-letter-spacing);
+  font-size: var(--ods-typography-body-100-font-size);
+  font-weight: var(--ods-typography-body-100-font-weight);
+  font-family: var(--ods-typography-body-100-font-family);
+  font-style: var(--ods-typography-body-100-font-style);
+}
+:host([level=body][size="200"]) {
+  line-height: var(--ods-typography-body-200-line-height);
+  letter-spacing: var(--ods-typography-body-200-letter-spacing);
+  font-size: var(--ods-typography-body-200-font-size);
+  font-weight: var(--ods-typography-body-200-font-weight);
+  font-family: var(--ods-typography-body-200-font-family);
+  font-style: var(--ods-typography-body-200-font-style);
+}
+:host([level=body][size="300"]) {
+  line-height: var(--ods-typography-body-300-line-height);
+  letter-spacing: var(--ods-typography-body-300-letter-spacing);
+  font-size: var(--ods-typography-body-300-font-size);
+  font-weight: var(--ods-typography-body-300-font-weight);
+  font-family: var(--ods-typography-body-300-font-family);
+  font-style: var(--ods-typography-body-300-font-style);
+}
+:host([level=body][size="400"]) {
+  line-height: var(--ods-typography-body-400-line-height);
+  letter-spacing: var(--ods-typography-body-400-letter-spacing);
+  font-size: var(--ods-typography-body-400-font-size);
+  font-weight: var(--ods-typography-body-400-font-weight);
+  font-family: var(--ods-typography-body-400-font-family);
+  font-style: var(--ods-typography-body-400-font-style);
+}
+:host([level=body][size="500"]) {
+  line-height: var(--ods-typography-body-500-line-height);
+  letter-spacing: var(--ods-typography-body-500-letter-spacing);
+  font-size: var(--ods-typography-body-500-font-size);
+  font-weight: var(--ods-typography-body-500-font-weight);
+  font-family: var(--ods-typography-body-500-font-family);
+  font-style: var(--ods-typography-body-500-font-style);
+}
+:host([level=body][size="600"]) {
+  line-height: var(--ods-typography-body-600-line-height);
+  letter-spacing: var(--ods-typography-body-600-letter-spacing);
+  font-size: var(--ods-typography-body-600-font-size);
+  font-weight: var(--ods-typography-body-600-font-weight);
+  font-family: var(--ods-typography-body-600-font-family);
+  font-style: var(--ods-typography-body-600-font-style);
+}
+
+:host([level=button][size="100"]) {
+  line-height: var(--ods-typography-button-100-line-height);
+  letter-spacing: var(--ods-typography-button-100-letter-spacing);
+  font-size: var(--ods-typography-button-100-font-size);
+  font-weight: var(--ods-typography-button-100-font-weight);
+  font-family: var(--ods-typography-button-100-font-family);
+  font-style: var(--ods-typography-button-100-font-style);
+}
+
+:host([level=caption][size="100"]) {
+  line-height: var(--ods-typography-caption-100-line-height);
+  letter-spacing: var(--ods-typography-caption-100-letter-spacing);
+  font-size: var(--ods-typography-caption-100-font-size);
+  font-weight: var(--ods-typography-caption-100-font-weight);
+  font-family: var(--ods-typography-caption-100-font-family);
+  font-style: var(--ods-typography-caption-100-font-style);
+}

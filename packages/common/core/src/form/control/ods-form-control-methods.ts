@@ -8,5 +8,5 @@ export interface OdsFormControlMethods<ValidityState extends OdsValidityStateUni
   /**
    * get the validity state
    */
-  getValidity(): Promise<ValidityState>;
+  getValidity(): Promise<ValidityState | undefined>;
 }

@@ -400,72 +400,59 @@ export namespace Components {
     interface OsdsCheckbox {
         /**
           * afterSave input allows to set a function that returns a promise. It is called after each time an update was performed and allowing to manage pessimistic update strategy
-          * @see OdsCheckboxAttribute.afterSave
          */
         "afterSave"?: OdsCheckboxAttributeCbk;
         /**
           * The corresponding aria-label describing its content
-          * @see OdsCheckboxAttribute.ariaLabel
          */
         "ariaLabel": string | null;
         /**
           * ID of the element that labels the input
-          * @see OdsCheckboxAttribute.ariaLabelledby
          */
         "ariaLabelledby"?: string | undefined;
         /**
           * beforeSave input allows to set a function that returns a promise. It is called before each time an update will be performed and allowing to manage pessimistic update strategy
-          * @see OdsCheckboxAttribute.beforeSave
          */
         "beforeSave"?: OdsCheckboxAttributeCbk;
         /**
           * The checked status of the checkbox
-          * @see OdsCheckboxAttribute.checked
          */
         "checked": boolean;
         /**
           * indicate if the checkbox is entirely disabled. it means no interactions (hover, click, focus, etc)
-          * @see OdsCheckboxAttribute.disabled
          */
         "disabled": boolean;
         /**
           * is the checkbox is currently focused
-          * @see OdsCheckboxAttribute.hasFocus
          */
         "hasFocus": boolean;
         /**
           * Label of the input field
-          * @see OdsCheckboxAttribute.label
          */
         "label"?: string;
         /**
           * Name of the input field
-          * @see OdsCheckboxAttribute.name
          */
         "name"?: string;
         /**
           * save input allows to set a function that returns a promise. It is called before each time an update is performed and allowing to manage pessimistic update strategy. the checked state will be updated just after the call.
-          * @see OdsCheckboxAttribute.save
          */
         "save"?: OdsCheckboxAttributeCbk;
         /**
-          * programmatically set the focus on the checkbox. this method has to call OdsCheckboxController.setFocus
-          * @see OdsCheckboxMethod.setFocus
+          * active the focus on the input in order to let the user write something
          */
         "setFocus": () => Promise<void>;
         /**
-          * set the tab index. this method has to call OdsCheckboxController.setTabindex
-          * @see OdsCheckboxMethod.setTabindex
+          * set a custom tab index for easier navigation
+          * @param value - chosen index
          */
         "setTabindex": (index: number) => Promise<void>;
         /**
           * update status indicating if the checked state is being modified. `updating` will be `true` until `beforeSave` or `save` are processed. it is used in `pessimistic` update
-          * @see OdsCheckboxAttribute.updating
          */
         "updating": boolean;
         /**
           * Its corresponding value
-          * @see OdsCheckboxAttribute.value
          */
         "value": string;
     }
@@ -783,176 +770,138 @@ export namespace Components {
     }
     interface OsdsInput {
         /**
-          * Repeat this attribute because it cannot be undefined in osds-input
-          * @see OdsCommonFieldAttribute.ariaLabel
+          * Props
          */
         "ariaLabel": HTMLElement['ariaLabel'];
         /**
           * ID of the element that labels the input
-          * @see OdsCommonFieldAttribute.ariaLabelledby
          */
         "ariaLabelledby"?: string;
         /**
           * empty the value
-          * @see OdsInputMethods.clear
          */
         "clear": () => Promise<void>;
         /**
           * Ability to clear the input value
-          * @see OdsCommonFieldAttribute.clearable
          */
         "clearable"?: boolean;
         /**
           * Main color of the input: see component principles
-          * @see OdsCommonFieldAttribute.color
          */
         "color"?: ODS_THEME_COLOR_INTENT;
         /**
           * Indicates if the input is contrasted or not: see component principles
-          * @see OdsInputAttribute.contrasted
          */
         "contrasted"?: boolean;
         /**
           * Default value of the input
-          * @see OdsInputAttribute.defaultValue
          */
         "defaultValue": OdsInputValue;
         /**
           * Indicates if the input is disabled or not: see component principles
-          * @see OdsCommonFieldAttribute.disabled
          */
         "disabled"?: boolean;
         /**
           * Indicates if the input shows error or not
-          * @see OdsCommonFieldAttribute.error
          */
         "error"?: boolean;
         /**
           * Controls the error state of the input
-          * @see OdsCommonFieldAttribute.errorStateControl
          */
         "errorStateControl"?: OdsErrorStateControl;
         /**
           * Repeat this attribute because it cannot be undefined in osds-input
-          * @see OdsCommonFieldAttribute.forbiddenValues
          */
         "forbiddenValues": OdsFormForbiddenValues<number>;
         /**
           * Control object of the form the input belongs to
-          * @see OdsCommonFieldAttribute.formControl
          */
         "formControl"?: OdsFormControl<OdsCommonFieldValidityState>;
         /**
           * get the validity state
-          * @see OdsInputMethods.getValidity
          */
         "getValidity": () => Promise<OdsCommonFieldValidityState>;
         /**
           * hide or display the value
-          * @see OdsInputMethods.hide
          */
         "hide": () => Promise<void>;
         /**
           * Icon to be used in the input field
-          * @see OdsInputAttribute.icon
          */
         "icon"?: ODS_ICON_NAME;
         /**
           * Indicates if the input is inline or not: see component principles
-          * @see OdsInputAttribute.inline
          */
         "inline"?: boolean;
         /**
           * Label of the input field
-          * @see OdsCommonFieldAttribute.label
          */
         "label"?: string;
         /**
           * Indicates if the input is in loading state or not
-          * @see OdsCommonFieldAttribute.loading
          */
         "loading"?: boolean;
         /**
           * Indicates if the input is masked or not
-          * @see OdsCommonFieldAttribute.masked
          */
         "masked"?: boolean;
         /**
           * Maximum value for the input (type number)
-          * @see OdsInputAttribute.max
          */
         "max"?: number;
         /**
           * Minimum value for the input (type number)
-          * @see OdsInputAttribute.min
          */
         "min"?: number;
         /**
           * Name of the input field
-          * @see OdsCommonFieldAttribute.name
          */
         "name"?: string;
         /**
           * Placeholder text for the input
-          * @see OdsCommonFieldAttribute.placeholder
          */
         "placeholder"?: string;
         /**
           * Text before the input value
-          * @see OdsCommonFieldAttribute.prefixValue
          */
         "prefixValue": string | undefined;
         /**
           * Indicates if the input is read-only or not
-          * @see OdsCommonFieldAttribute.readOnly
          */
         "readOnly"?: boolean;
         /**
           * Indicates if the input is required or not
-          * @see OdsCommonFieldAttribute.required
          */
         "required"?: boolean;
         /**
           * restore the value to the initial state
-          * @see OdsInputMethods.reset
          */
         "reset": () => Promise<void>;
         /**
           * active the focus on the input in order to let the user write something
-          * @see OdsInputMethods.setFocus
          */
         "setFocus": () => Promise<void>;
         /**
           * set a custom tab index for easier navigation
-          * @see OdsInputMethods.setInputTabindex
+          * @param value - chosen index
          */
-        "setInputTabindex": (value: number) => Promise<void>;
+        "setTabindex": (value: number) => Promise<void>;
         /**
           * Size of the input: see component principles
-          * @see OdsCommonFieldAttribute.size
          */
         "size"?: ODS_COMMON_FIELD_SIZE;
         /**
           * Step value for the input
-          * @see OdsCommonFieldAttribute.step
          */
         "step"?: number;
-        /**
-          * @see OdsInputMethods.stepDown
-         */
         "stepDown": () => Promise<void>;
-        /**
-          * @see OdsInputMethods.stepUp
-         */
         "stepUp": () => Promise<void>;
         /**
           * Repeat this attribute because it cannot be undefined in osds-input
-          * @see OdsCommonFieldAttribute.type
          */
         "type": ODS_COMMON_INPUT_TYPE;
         /**
           * Repeat this attribute because it cannot be undefined in osds-input
-          * @see OdsCommonFieldAttribute.value
          */
         "value": OdsInputValue;
     }
@@ -1129,92 +1078,96 @@ export namespace Components {
     interface OsdsPassword {
         /**
           * ariaLabel of the password
-          * @see OdsPasswordAttributes.ariaLabel
          */
         "ariaLabel": HTMLElement['ariaLabel'];
         /**
           * ID of the element that labels the input
-          * @see OdsPasswordAttributes.ariaLabelledby
          */
         "ariaLabelledby"?: string;
         /**
+          * empty the value
+         */
+        "clear": () => Promise<void>;
+        /**
           * Ability to clear the input value
-          * @see OdsPasswordAttributes.clearable
          */
         "clearable"?: boolean;
         /**
           * Main color of the input: see component principles
-          * @see OdsPasswordAttributes.color
          */
         "color"?: ODS_THEME_COLOR_INTENT;
         /**
           * Indicates if the password is contrasted or not: see component principles
-          * @see OdsPasswordAttributes.contrasted
          */
         "contrasted"?: boolean;
         /**
           * Indicates if the input is disabled or not: see component principles
-          * @see OdsPasswordAttributes.disabled
          */
         "disabled"?: boolean;
         /**
           * Indicates if the input shows error or not
-          * @see OdsPasswordAttributes.error
          */
         "error"?: boolean;
         /**
           * List of forbidden values for the password
-          * @see OdsPasswordAttributes.forbiddenValues
          */
         "forbiddenValues": OdsFormForbiddenValues<number>;
         /**
+          * get the validity state
+         */
+        "getValidity": () => Promise<OdsCommonFieldValidityState | undefined>;
+        "hide": () => Promise<void>;
+        /**
           * Indicates if the password is inline or not
-          * @see OdsPasswordAttributes.inline
          */
         "inline"?: boolean;
         /**
           * Label of the input field
-          * @see OdsPasswordAttributes.label
          */
         "label"?: string;
         /**
           * Indicates if the input is in loading state or not
-          * @see OdsPasswordAttributes.loading
          */
         "loading"?: boolean;
         /**
           * Indicates if the input is masked or not
-          * @see OdsPasswordAttributes.masked
          */
         "masked"?: boolean;
         /**
           * Name of the input field
-          * @see OdsPasswordAttributes.name
          */
         "name"?: string;
         /**
           * Placeholder text for the input
-          * @see OdsPasswordAttributes.placeholder
          */
         "placeholder"?: string;
         /**
           * Indicates if the input is read-only or not
-          * @see OdsPasswordAttributes.readOnly
          */
         "readOnly"?: boolean;
         /**
           * Indicates if the input is required or not
-          * @see OdsPasswordAttributes.required
          */
         "required"?: boolean;
         /**
+          * restore the value to the initial state
+         */
+        "reset": () => Promise<void>;
+        /**
+          * active the focus on the input in order to let the user write something
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * set a custom tab index for easier navigation
+          * @param value - chosen index
+         */
+        "setTabindex": (value: number) => Promise<void>;
+        /**
           * Size of the password: see component principles
-          * @see OdsPasswordAttributes.size
          */
         "size"?: ODS_COMMON_FIELD_SIZE;
         /**
           * Current value of the password
-          * @see OdsInputAttributes.value
          */
         "value": string;
     }
@@ -3153,82 +3106,66 @@ declare namespace LocalJSX {
     interface OsdsCheckbox {
         /**
           * afterSave input allows to set a function that returns a promise. It is called after each time an update was performed and allowing to manage pessimistic update strategy
-          * @see OdsCheckboxAttribute.afterSave
          */
         "afterSave"?: OdsCheckboxAttributeCbk;
         /**
           * The corresponding aria-label describing its content
-          * @see OdsCheckboxAttribute.ariaLabel
          */
         "ariaLabel"?: string | null;
         /**
           * ID of the element that labels the input
-          * @see OdsCheckboxAttribute.ariaLabelledby
          */
         "ariaLabelledby"?: string | undefined;
         /**
           * beforeSave input allows to set a function that returns a promise. It is called before each time an update will be performed and allowing to manage pessimistic update strategy
-          * @see OdsCheckboxAttribute.beforeSave
          */
         "beforeSave"?: OdsCheckboxAttributeCbk;
         /**
           * The checked status of the checkbox
-          * @see OdsCheckboxAttribute.checked
          */
         "checked"?: boolean;
         /**
           * indicate if the checkbox is entirely disabled. it means no interactions (hover, click, focus, etc)
-          * @see OdsCheckboxAttribute.disabled
          */
         "disabled"?: boolean;
         /**
           * is the checkbox is currently focused
-          * @see OdsCheckboxAttribute.hasFocus
          */
         "hasFocus"?: boolean;
         /**
           * Label of the input field
-          * @see OdsCheckboxAttribute.label
          */
         "label"?: string;
         /**
           * Name of the input field
-          * @see OdsCheckboxAttribute.name
          */
         "name"?: string;
         /**
           * Event triggered on checkbox blur
-          * @see OdsCheckboxEvent.odsBlur
          */
         "onOdsBlur"?: (event: OsdsCheckboxCustomEvent<OdsCheckboxFocusChangeEventDetail>) => void;
         /**
           * the checked state changed
-          * @see OdsCheckboxEvent.odsCheckedChange
          */
         "onOdsCheckedChange"?: (event: OsdsCheckboxCustomEvent<OdsCheckboxCheckedChangeEventDetail>) => void;
         /**
           * Event triggered on checkbox focus
-          * @see OdsCheckboxEvent.odsFocus
          */
         "onOdsFocus"?: (event: OsdsCheckboxCustomEvent<OdsCheckboxFocusChangeEventDetail>) => void;
         /**
           * the checked state is being changed
-          * @see OdsCheckboxEvent.odsUpdatingChange
          */
         "onOdsUpdatingChange"?: (event: OsdsCheckboxCustomEvent<OdsCheckboxUpdatingChangeEventDetail>) => void;
         /**
           * save input allows to set a function that returns a promise. It is called before each time an update is performed and allowing to manage pessimistic update strategy. the checked state will be updated just after the call.
-          * @see OdsCheckboxAttribute.save
          */
         "save"?: OdsCheckboxAttributeCbk;
         /**
           * update status indicating if the checked state is being modified. `updating` will be `true` until `beforeSave` or `save` are processed. it is used in `pessimistic` update
-          * @see OdsCheckboxAttribute.updating
          */
         "updating"?: boolean;
         /**
           * Its corresponding value
-          * @see OdsCheckboxAttribute.value
          */
         "value"?: string;
     }
@@ -3578,151 +3515,117 @@ declare namespace LocalJSX {
     }
     interface OsdsInput {
         /**
-          * Repeat this attribute because it cannot be undefined in osds-input
-          * @see OdsCommonFieldAttribute.ariaLabel
+          * Props
          */
         "ariaLabel"?: HTMLElement['ariaLabel'];
         /**
           * ID of the element that labels the input
-          * @see OdsCommonFieldAttribute.ariaLabelledby
          */
         "ariaLabelledby"?: string;
         /**
           * Ability to clear the input value
-          * @see OdsCommonFieldAttribute.clearable
          */
         "clearable"?: boolean;
         /**
           * Main color of the input: see component principles
-          * @see OdsCommonFieldAttribute.color
          */
         "color"?: ODS_THEME_COLOR_INTENT;
         /**
           * Indicates if the input is contrasted or not: see component principles
-          * @see OdsInputAttribute.contrasted
          */
         "contrasted"?: boolean;
         /**
           * Default value of the input
-          * @see OdsInputAttribute.defaultValue
          */
         "defaultValue"?: OdsInputValue;
         /**
           * Indicates if the input is disabled or not: see component principles
-          * @see OdsCommonFieldAttribute.disabled
          */
         "disabled"?: boolean;
         /**
           * Indicates if the input shows error or not
-          * @see OdsCommonFieldAttribute.error
          */
         "error"?: boolean;
         /**
           * Controls the error state of the input
-          * @see OdsCommonFieldAttribute.errorStateControl
          */
         "errorStateControl"?: OdsErrorStateControl;
         /**
           * Repeat this attribute because it cannot be undefined in osds-input
-          * @see OdsCommonFieldAttribute.forbiddenValues
          */
         "forbiddenValues"?: OdsFormForbiddenValues<number>;
         /**
           * Control object of the form the input belongs to
-          * @see OdsCommonFieldAttribute.formControl
          */
         "formControl"?: OdsFormControl<OdsCommonFieldValidityState>;
         /**
           * Icon to be used in the input field
-          * @see OdsInputAttribute.icon
          */
         "icon"?: ODS_ICON_NAME;
         /**
           * Indicates if the input is inline or not: see component principles
-          * @see OdsInputAttribute.inline
          */
         "inline"?: boolean;
         /**
           * Label of the input field
-          * @see OdsCommonFieldAttribute.label
          */
         "label"?: string;
         /**
           * Indicates if the input is in loading state or not
-          * @see OdsCommonFieldAttribute.loading
          */
         "loading"?: boolean;
         /**
           * Indicates if the input is masked or not
-          * @see OdsCommonFieldAttribute.masked
          */
         "masked"?: boolean;
         /**
           * Maximum value for the input (type number)
-          * @see OdsInputAttribute.max
          */
         "max"?: number;
         /**
           * Minimum value for the input (type number)
-          * @see OdsInputAttribute.min
          */
         "min"?: number;
         /**
           * Name of the input field
-          * @see OdsCommonFieldAttribute.name
          */
         "name"?: string;
-        /**
-          * @see OdsInputEvents.odsInputBlur
-         */
         "onOdsInputBlur"?: (event: OsdsInputCustomEvent<void>) => void;
-        /**
-          * @see OdsInputEvents.odsInputFocus
-         */
         "onOdsInputFocus"?: (event: OsdsInputCustomEvent<void>) => void;
         /**
-          * the input value changed
-          * @see OdsInputEvents.odsValueChange
+          * Events
          */
         "onOdsValueChange"?: (event: OsdsInputCustomEvent<OdsInputValueChangeEventDetail>) => void;
         /**
           * Placeholder text for the input
-          * @see OdsCommonFieldAttribute.placeholder
          */
         "placeholder"?: string;
         /**
           * Text before the input value
-          * @see OdsCommonFieldAttribute.prefixValue
          */
         "prefixValue"?: string | undefined;
         /**
           * Indicates if the input is read-only or not
-          * @see OdsCommonFieldAttribute.readOnly
          */
         "readOnly"?: boolean;
         /**
           * Indicates if the input is required or not
-          * @see OdsCommonFieldAttribute.required
          */
         "required"?: boolean;
         /**
           * Size of the input: see component principles
-          * @see OdsCommonFieldAttribute.size
          */
         "size"?: ODS_COMMON_FIELD_SIZE;
         /**
           * Step value for the input
-          * @see OdsCommonFieldAttribute.step
          */
         "step"?: number;
         /**
           * Repeat this attribute because it cannot be undefined in osds-input
-          * @see OdsCommonFieldAttribute.type
          */
         "type"?: ODS_COMMON_INPUT_TYPE;
         /**
           * Repeat this attribute because it cannot be undefined in osds-input
-          * @see OdsCommonFieldAttribute.value
          */
         "value"?: OdsInputValue;
     }
@@ -3905,92 +3808,74 @@ declare namespace LocalJSX {
     interface OsdsPassword {
         /**
           * ariaLabel of the password
-          * @see OdsPasswordAttributes.ariaLabel
          */
         "ariaLabel"?: HTMLElement['ariaLabel'];
         /**
           * ID of the element that labels the input
-          * @see OdsPasswordAttributes.ariaLabelledby
          */
         "ariaLabelledby"?: string;
         /**
           * Ability to clear the input value
-          * @see OdsPasswordAttributes.clearable
          */
         "clearable"?: boolean;
         /**
           * Main color of the input: see component principles
-          * @see OdsPasswordAttributes.color
          */
         "color"?: ODS_THEME_COLOR_INTENT;
         /**
           * Indicates if the password is contrasted or not: see component principles
-          * @see OdsPasswordAttributes.contrasted
          */
         "contrasted"?: boolean;
         /**
           * Indicates if the input is disabled or not: see component principles
-          * @see OdsPasswordAttributes.disabled
          */
         "disabled"?: boolean;
         /**
           * Indicates if the input shows error or not
-          * @see OdsPasswordAttributes.error
          */
         "error"?: boolean;
         /**
           * List of forbidden values for the password
-          * @see OdsPasswordAttributes.forbiddenValues
          */
         "forbiddenValues"?: OdsFormForbiddenValues<number>;
         /**
           * Indicates if the password is inline or not
-          * @see OdsPasswordAttributes.inline
          */
         "inline"?: boolean;
         /**
           * Label of the input field
-          * @see OdsPasswordAttributes.label
          */
         "label"?: string;
         /**
           * Indicates if the input is in loading state or not
-          * @see OdsPasswordAttributes.loading
          */
         "loading"?: boolean;
         /**
           * Indicates if the input is masked or not
-          * @see OdsPasswordAttributes.masked
          */
         "masked"?: boolean;
         /**
           * Name of the input field
-          * @see OdsPasswordAttributes.name
          */
         "name"?: string;
         /**
           * Placeholder text for the input
-          * @see OdsPasswordAttributes.placeholder
          */
         "placeholder"?: string;
         /**
           * Indicates if the input is read-only or not
-          * @see OdsPasswordAttributes.readOnly
          */
         "readOnly"?: boolean;
         /**
           * Indicates if the input is required or not
-          * @see OdsPasswordAttributes.required
          */
         "required"?: boolean;
         /**
           * Size of the password: see component principles
-          * @see OdsPasswordAttributes.size
          */
         "size"?: ODS_COMMON_FIELD_SIZE;
         /**
           * Current value of the password
-          * @see OdsInputAttributes.value
          */
         "value"?: string;
     }

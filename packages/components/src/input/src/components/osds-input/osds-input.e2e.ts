@@ -597,7 +597,6 @@ describe('e2e:osds-input', () => {
       `);
       await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
 
-      await page.waitForSelector('osds-input');
       osdsInput = await page.find('osds-input');
       natifInput = await page.find('input[name="natifInput"]');
       resetButton = await page.find('osds-button[type="reset"]');

@@ -409,7 +409,7 @@ export namespace Components {
          */
         "ariaLabel": string | null;
         /**
-          * The id to an external description
+          * ID of the element that labels the input
           * @see OdsCheckboxAttribute.ariaLabelledby
          */
         "ariaLabelledby"?: string | undefined;
@@ -434,12 +434,12 @@ export namespace Components {
          */
         "hasFocus": boolean;
         /**
-          * The corresponding label
+          * Label of the input field
           * @see OdsCheckboxAttribute.label
          */
         "label"?: string;
         /**
-          * name used for the input element. useful for browser and posting forms
+          * Name of the input field
           * @see OdsCheckboxAttribute.name
          */
         "name"?: string;
@@ -634,12 +634,12 @@ export namespace Components {
     }
     interface OsdsDatepicker {
         /**
-          * Defines if the Datepicker should be clearable or not (displays a clear button)
+          * Ability to clear the input value
           * @see OdsDatepickerAttribute.clearable
          */
         "clearable"?: boolean;
         /**
-          * Defines the Datepicker's color (see component principles)
+          * Main color of the input: see component principles
           * @see OdsDatepickerAttribute.color
          */
         "color"?: ODS_THEME_COLOR_INTENT;
@@ -654,12 +654,12 @@ export namespace Components {
          */
         "daysOfWeekDisabled"?: ODS_DATEPICKER_DAY[];
         /**
-          * Defines if the Datepicker should be disabled or not (lower opacity and not interactable)
+          * Indicates if the input is disabled or not: see component principles
           * @see OdsDatepickerAttribute.disabled
          */
         "disabled"?: boolean;
         /**
-          * Defines if the Datepicker should display an error message
+          * Indicates if the input shows error or not
           * @see OdsDatepickerAttribute.error
          */
         "error"?: boolean;
@@ -1133,17 +1133,17 @@ export namespace Components {
          */
         "ariaLabel": HTMLElement['ariaLabel'];
         /**
-          * ID of the element that labels the password
+          * ID of the element that labels the input
           * @see OdsPasswordAttributes.ariaLabelledby
          */
         "ariaLabelledby"?: string;
         /**
-          * Ability to clear the password value
+          * Ability to clear the input value
           * @see OdsPasswordAttributes.clearable
          */
         "clearable"?: boolean;
         /**
-          * Main color of the password: see component principles
+          * Main color of the input: see component principles
           * @see OdsPasswordAttributes.color
          */
         "color"?: ODS_THEME_COLOR_INTENT;
@@ -1153,12 +1153,12 @@ export namespace Components {
          */
         "contrasted"?: boolean;
         /**
-          * Indicates if the password is disabled or not: see component principles
+          * Indicates if the input is disabled or not: see component principles
           * @see OdsPasswordAttributes.disabled
          */
         "disabled"?: boolean;
         /**
-          * Indicates if the password shows error or not
+          * Indicates if the input shows error or not
           * @see OdsPasswordAttributes.error
          */
         "error"?: boolean;
@@ -1173,37 +1173,37 @@ export namespace Components {
          */
         "inline"?: boolean;
         /**
-          * Label of the password field
+          * Label of the input field
           * @see OdsPasswordAttributes.label
          */
         "label"?: string;
         /**
-          * Indicates if the password is in loading state or not
+          * Indicates if the input is in loading state or not
           * @see OdsPasswordAttributes.loading
          */
         "loading"?: boolean;
         /**
-          * Indicates if the password is masked or not
+          * Indicates if the input is masked or not
           * @see OdsPasswordAttributes.masked
          */
         "masked"?: boolean;
         /**
-          * Name of the password field
+          * Name of the input field
           * @see OdsPasswordAttributes.name
          */
         "name"?: string;
         /**
-          * Placeholder text for the password
+          * Placeholder text for the input
           * @see OdsPasswordAttributes.placeholder
          */
         "placeholder"?: string;
         /**
-          * Indicates if the password is read-only or not
+          * Indicates if the input is read-only or not
           * @see OdsPasswordAttributes.readOnly
          */
         "readOnly"?: boolean;
         /**
-          * Indicates if the password is required or not
+          * Indicates if the input is required or not
           * @see OdsPasswordAttributes.required
          */
         "required"?: boolean;
@@ -3162,7 +3162,7 @@ declare namespace LocalJSX {
          */
         "ariaLabel"?: string | null;
         /**
-          * The id to an external description
+          * ID of the element that labels the input
           * @see OdsCheckboxAttribute.ariaLabelledby
          */
         "ariaLabelledby"?: string | undefined;
@@ -3187,12 +3187,12 @@ declare namespace LocalJSX {
          */
         "hasFocus"?: boolean;
         /**
-          * The corresponding label
+          * Label of the input field
           * @see OdsCheckboxAttribute.label
          */
         "label"?: string;
         /**
-          * name used for the input element. useful for browser and posting forms
+          * Name of the input field
           * @see OdsCheckboxAttribute.name
          */
         "name"?: string;
@@ -3414,12 +3414,12 @@ declare namespace LocalJSX {
     }
     interface OsdsDatepicker {
         /**
-          * Defines if the Datepicker should be clearable or not (displays a clear button)
+          * Ability to clear the input value
           * @see OdsDatepickerAttribute.clearable
          */
         "clearable"?: boolean;
         /**
-          * Defines the Datepicker's color (see component principles)
+          * Main color of the input: see component principles
           * @see OdsDatepickerAttribute.color
          */
         "color"?: ODS_THEME_COLOR_INTENT;
@@ -3434,12 +3434,12 @@ declare namespace LocalJSX {
          */
         "daysOfWeekDisabled"?: ODS_DATEPICKER_DAY[];
         /**
-          * Defines if the Datepicker should be disabled or not (lower opacity and not interactable)
+          * Indicates if the input is disabled or not: see component principles
           * @see OdsDatepickerAttribute.disabled
          */
         "disabled"?: boolean;
         /**
-          * Defines if the Datepicker should display an error message
+          * Indicates if the input shows error or not
           * @see OdsDatepickerAttribute.error
          */
         "error"?: boolean;
@@ -3909,17 +3909,17 @@ declare namespace LocalJSX {
          */
         "ariaLabel"?: HTMLElement['ariaLabel'];
         /**
-          * ID of the element that labels the password
+          * ID of the element that labels the input
           * @see OdsPasswordAttributes.ariaLabelledby
          */
         "ariaLabelledby"?: string;
         /**
-          * Ability to clear the password value
+          * Ability to clear the input value
           * @see OdsPasswordAttributes.clearable
          */
         "clearable"?: boolean;
         /**
-          * Main color of the password: see component principles
+          * Main color of the input: see component principles
           * @see OdsPasswordAttributes.color
          */
         "color"?: ODS_THEME_COLOR_INTENT;
@@ -3929,12 +3929,12 @@ declare namespace LocalJSX {
          */
         "contrasted"?: boolean;
         /**
-          * Indicates if the password is disabled or not: see component principles
+          * Indicates if the input is disabled or not: see component principles
           * @see OdsPasswordAttributes.disabled
          */
         "disabled"?: boolean;
         /**
-          * Indicates if the password shows error or not
+          * Indicates if the input shows error or not
           * @see OdsPasswordAttributes.error
          */
         "error"?: boolean;
@@ -3949,37 +3949,37 @@ declare namespace LocalJSX {
          */
         "inline"?: boolean;
         /**
-          * Label of the password field
+          * Label of the input field
           * @see OdsPasswordAttributes.label
          */
         "label"?: string;
         /**
-          * Indicates if the password is in loading state or not
+          * Indicates if the input is in loading state or not
           * @see OdsPasswordAttributes.loading
          */
         "loading"?: boolean;
         /**
-          * Indicates if the password is masked or not
+          * Indicates if the input is masked or not
           * @see OdsPasswordAttributes.masked
          */
         "masked"?: boolean;
         /**
-          * Name of the password field
+          * Name of the input field
           * @see OdsPasswordAttributes.name
          */
         "name"?: string;
         /**
-          * Placeholder text for the password
+          * Placeholder text for the input
           * @see OdsPasswordAttributes.placeholder
          */
         "placeholder"?: string;
         /**
-          * Indicates if the password is read-only or not
+          * Indicates if the input is read-only or not
           * @see OdsPasswordAttributes.readOnly
          */
         "readOnly"?: boolean;
         /**
-          * Indicates if the password is required or not
+          * Indicates if the input is required or not
           * @see OdsPasswordAttributes.required
          */
         "required"?: boolean;

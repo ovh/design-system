@@ -108,7 +108,7 @@ class OdsInputController {
     this.updateInputCustomValidation();
   }
 
-  private validateValue(value?: number) {
+  private validateValue(value?: number): void {
     if (this.component.type !== ODS_INPUT_TYPE.number) {
       return;
     }

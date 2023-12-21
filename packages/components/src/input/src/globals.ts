@@ -8,3 +8,4 @@
 import '../../icon/src';
 import '../../spinner/src';
 import '../../text/src';
+import '../../button/src';

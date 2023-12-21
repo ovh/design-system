@@ -80,13 +80,13 @@ class OdsButtonController {
    * Checking if the button is in a form to add the form submit behaviour on it
    */
   private submitForm(event: MouseEvent | KeyboardEvent) {
-    if (this.component.type && this.component.type === 'submit' && !this.component.disabled) {
+    if (this.component.type && ['reset', 'submit'].includes(this.component.type) && !this.component.disabled) {
       const form = (event.target as HTMLElement).closest('form');
       if (form) {
         event.preventDefault();
 
         const fakeButton = document.createElement('button');
-        fakeButton.type = 'submit';
+        fakeButton.type = this.component.type;
         fakeButton.style.display = 'none';
         form.appendChild(fakeButton);
         fakeButton.click();

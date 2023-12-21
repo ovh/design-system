@@ -8,7 +8,7 @@ import type {
 import type { OdsCheckboxMethod } from './interfaces/methods';
 import type { HTMLStencilElement } from '@stencil/core/internal';
 
-import { OdsCheckboxable, OdsLogger } from '@ovhcloud/ods-common-core';
+import { OdsCheckboxable, OdsCommonFieldMethodController, OdsLogger } from '@ovhcloud/ods-common-core';
 import { Component, Element, Event, EventEmitter, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
 
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
@@ -24,6 +24,7 @@ export class OsdsCheckbox implements OdsCheckboxMethod, OdsCheckboxEvent, OdsChe
   private static checkboxIds = 0;
   /** @see OdsComponent.controller */
   controller = new OdsCheckboxController(this);
+  commonFieldMethodController = new OdsCommonFieldMethodController(this);
   private readonly inputId = `ods-checkbox-${OsdsCheckbox.checkboxIds++}`;
   private readonly logger = new OdsLogger('OsdsCheckbox');
 
@@ -32,38 +33,36 @@ export class OsdsCheckbox implements OdsCheckboxMethod, OdsCheckboxEvent, OdsChe
   checkboxableComponent: (HTMLStencilElement & OdsCheckboxable) | null = null;
   @State() tabindex = 0;
 
-  /** @see OdsCheckboxAttribute.afterSave */
   @Prop() afterSave?: OdsCheckboxAttributeCbk = DEFAULT_ATTRIBUTE.afterSave;
-  /** @see OdsCheckboxAttribute.ariaLabel */
+
   @Prop({ reflect: true }) ariaLabel = DEFAULT_ATTRIBUTE.ariaLabel;
-  /** @see OdsCheckboxAttribute.ariaLabelledby */
+
   @Prop() ariaLabelledby? = DEFAULT_ATTRIBUTE.ariaLabelledby;
-  /** @see OdsCheckboxAttribute.beforeSave */
+
   @Prop() beforeSave?: OdsCheckboxAttributeCbk = DEFAULT_ATTRIBUTE.beforeSave;
-  /** @see OdsCheckboxAttribute.checked */
+
   @Prop({ reflect: true, mutable: true }) checked = DEFAULT_ATTRIBUTE.checked;
-  /** @see OdsCheckboxAttribute.disabled */
+
   @Prop({ reflect: true }) disabled = DEFAULT_ATTRIBUTE.disabled;
-  /** @see OdsCheckboxAttribute.hasFocus */
+
   @Prop({ reflect: true, mutable: true }) hasFocus = DEFAULT_ATTRIBUTE.hasFocus;
-  /** @see OdsCheckboxAttribute.label */
+
   @Prop() label?: string;
-  /** @see OdsCheckboxAttribute.name */
+
   @Prop({ reflect: true }) name?: string = DEFAULT_ATTRIBUTE.name;
-  /** @see OdsCheckboxAttribute.save */
+
   @Prop({ mutable: true }) save?:OdsCheckboxAttributeCbk = DEFAULT_ATTRIBUTE.save;
-  /** @see OdsCheckboxAttribute.updating */
+
   @Prop({ reflect: true, mutable: true }) updating = DEFAULT_ATTRIBUTE.updating;
-  /** @see OdsCheckboxAttribute.value */
+
   @Prop({ reflect: true, mutable: true }) value = DEFAULT_ATTRIBUTE.value;
 
-  /** @see OdsCheckboxEvent.odsBlur */
   @Event() odsBlur!: EventEmitter<OdsCheckboxFocusChangeEventDetail>;
-  /** @see OdsCheckboxEvent.odsCheckedChange */
+
   @Event() odsCheckedChange!: EventEmitter<OdsCheckboxCheckedChangeEventDetail>;
-  /** @see OdsCheckboxEvent.odsFocus */
+
   @Event() odsFocus!: EventEmitter<OdsCheckboxFocusChangeEventDetail>;
-  /** @see OdsCheckboxEvent.odsUpdatingChange */
+
   @Event() odsUpdatingChange!: EventEmitter<OdsCheckboxUpdatingChangeEventDetail>;
 
   afterInit() {
@@ -144,20 +143,14 @@ export class OsdsCheckbox implements OdsCheckboxMethod, OdsCheckboxEvent, OdsChe
     this.controller.propagateHasFocusToChild(hasFocus);
   }
 
-  /**
-   * @see OdsCheckboxMethod.setFocus
-   */
   @Method()
   async setFocus() {
-    this.controller.setFocus();
+    this.commonFieldMethodController.setFocus();
   }
 
-  /**
-   * @see OdsCheckboxMethod.setTabindex
-   */
   @Method()
   async setTabindex(index: number) {
-    this.controller.setTabindex(index);
+    this.commonFieldMethodController.setTabindex(index);
   }
 
   render() {

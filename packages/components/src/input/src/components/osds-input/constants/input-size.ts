@@ -1,10 +1,6 @@
-enum ODS_INPUT_SIZE {
-  md = 'md'
-}
-
-const ODS_INPUT_SIZES = Object.freeze(Object.values(ODS_INPUT_SIZE));
+import { ODS_COMMON_FIELD_SIZES, ODS_COMMON_FIELD_SIZE } from '@ovhcloud/ods-common-core';
 
 export {
-  ODS_INPUT_SIZE,
-  ODS_INPUT_SIZES,
+  ODS_COMMON_FIELD_SIZES as ODS_INPUT_SIZE,
+  ODS_COMMON_FIELD_SIZE as ODS_INPUT_SIZES,
 };

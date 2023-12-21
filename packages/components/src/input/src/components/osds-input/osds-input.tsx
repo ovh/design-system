@@ -8,11 +8,12 @@ import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_ICON_NAME, ODS_ICON_SIZE } from '../../../../icon/src';
 import { ODS_SPINNER_SIZE } from '../../../../spinner/src';
 import { ODS_TEXT_SIZE } from '../../../../text/src';
-import { Component, Element, Event, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
+import { AttachInternals, Component, Element, Event, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsInputController } from './core/controller';
 
 @Component({
+  formAssociated: true,
   shadow: true,
   styleUrl: 'osds-input.scss',
   tag: 'osds-input',
@@ -26,6 +27,8 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
 
   @Element() el!: HTMLElement;
   inputEl?: HTMLInputElement;
+
+  @AttachInternals() internals!: ElementInternals;
 
   /**
    * The tabindex of the input.
@@ -106,11 +109,6 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
     this.controller.onFormControlChange(formControl);
   }
 
-  @Watch('defaultValue')
-  onDefaultValueChange(defaultValue?: OdsInputValue): void {
-    this.controller.onDefaultValueChange(defaultValue);
-  }
-
   @Watch('value')
   onValueChange(value: OdsInputValue, oldValue?: OdsInputValue): void {
     this.controller.onValueChange(value, oldValue);
@@ -133,6 +131,10 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
 
   async componentWillUpdate(): Promise<void> {
     this.internalError = await this.controller.hasError();
+  }
+
+  formResetCallback(): void {
+    this.value = this.defaultValue;
   }
 
   async emitChange(value: OdsInputValue, oldValue?: OdsInputValue): Promise<void> {
@@ -200,8 +202,8 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
     this.controller.onInput(event);
   }
 
-  onChange(/*event: Event*/): void {
-    this.controller.onChange();
+  onFocus(): void {
+    this.controller.onFocus();
   }
 
   private hasPlaceholder(): boolean {
@@ -239,7 +241,6 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
     const isPassword = type === 'password';
 
     return (
-      /** Main styling is applied to Host, so that the icons are integrated inside the component */
       <Host {...{
         class: {
           'ods-error': this.internalError,
@@ -252,7 +253,6 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
           size={this.hasPlaceholder() ? ODS_TEXT_SIZE._300 : ODS_TEXT_SIZE._400}>
           { this.prefixValue }
         </osds-text>
-        {/** Input field with attributes */}
         <input
           {...{
             ariaLabel,
@@ -265,7 +265,6 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
             min,
             name,
             onBlur: () => this.onBlur(),
-            onChange: () => this.onChange(),
             onFocus: () => this.setFocus(),
             onInput: (e) => this.onInput(e),
             placeholder,
@@ -283,7 +282,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
         >
         </input>
 
-        {/** Displaying Spinner if Loading is true */
+        {
           loading && (
             <osds-spinner
               {...{
@@ -295,7 +294,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
           )
         }
 
-        {/** If input type is password, display eye icon to hide input content */
+        {
           isPassword && !loading && (
             <osds-icon
               {...{
@@ -309,7 +308,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
           )
         }
 
-        {/** If Component isn't loading & clearable, display clear icon to clear input content */
+        {
           clearable && !loading && (
             <osds-icon
               {...{
@@ -323,7 +322,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
           )
         }
 
-        {/** If Component isn't loading & icon, display desired icon */
+        {
           icon && !loading && (
             <osds-icon
               {...{

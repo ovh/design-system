@@ -1,4 +1,4 @@
-import { ODS_INPUT_TYPE } from './constants/ods-input-type';
+import { ODS_COMMON_INPUT_TYPE } from './constants/ods-common-input-type';
 import { OdsCommonFieldComponent, OdsCommonFieldMethodController } from './method.controller';
 
 describe('spec:OdsCommonFieldMethodController', () => {
@@ -15,7 +15,7 @@ describe('spec:OdsCommonFieldMethodController', () => {
       } as unknown as HTMLInputElement,
       masked: false,
       tabindex: 0,
-      type: ODS_INPUT_TYPE.text,
+      type: ODS_COMMON_INPUT_TYPE.text,
       value: '',
     }
 

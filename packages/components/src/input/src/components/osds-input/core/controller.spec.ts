@@ -8,7 +8,12 @@ class OdsInputMock {
   constructor(attribute: Partial<OsdsInput>) {
     Object.assign(this, attribute);
   }
-
+  logger = new OdsLogger('OdsInputMock');
+  internals = {
+    setFormValue: jest.fn()
+  };
+  type = ODS_INPUT_TYPE.number;
+  commonFieldMethodController = new OdsCommonFieldMethodController(this);
   emitChange = jest.fn();
   emitFocus = jest.fn();
   emitBlur = jest.fn();
@@ -37,7 +42,7 @@ describe('spec:ods-input-controller', () => {
 
   describe('methods', () => {
     describe('methods:onFormControlChange', () => {
-      const formControl = new OdsFormControl<OdsCommonFieldAttribute>('id');
+      const formControl = new OdsFormControl<OdsCommonFieldValidityState>('id');
 
       beforeEach(() => {
         formControl.register = jest.fn();
@@ -61,7 +66,7 @@ describe('spec:ods-input-controller', () => {
 
     describe('methods:beforeInit', () => {
       it('should call onFormControlChange', () => {
-        const formControl = new OdsFormControl<OdsCommonFieldAttribute>('id');
+        const formControl = new OdsFormControl<OdsCommonFieldValidityState>('id');
         setup({ formControl });
         spyOnOnFormControlChange = jest.spyOn(controller, 'onFormControlChange');
         controller.beforeInit();
@@ -262,7 +267,7 @@ describe('spec:ods-input-controller', () => {
       it('should not change component value if it is disabled', () => {
         const value = '3';
         const inputEl = document.createElement('input');
-        setup({ disabled: true, value, type: ODS_COMMON_INPUT_TYPE.number, inputEl });
+        setup({ disabled: true, value, type: ODS_INPUT_TYPE.number, inputEl });
         controller.onInput(new Event(''));
 
         expect(`${component.value}`).toBe(`${value}`);
@@ -271,7 +276,7 @@ describe('spec:ods-input-controller', () => {
       it('should change the component number value', () => {
         const inputEl = document.createElement('input');
         inputEl.value = '5';
-        setup({ disabled: false, value: '3', type: ODS_COMMON_INPUT_TYPE.number, inputEl });
+        setup({ disabled: false, value: '3', type: ODS_INPUT_TYPE.number, inputEl });
         controller.onInput(new Event(''));
 
         expect(`${component.value}`).toBe(`${inputEl.value}`);
@@ -280,7 +285,7 @@ describe('spec:ods-input-controller', () => {
       it('value should be undefined if no input value', () => {
         const inputEl = document.createElement('input');
         inputEl.value = '';
-        setup({ disabled: false, value: '3', type: ODS_COMMON_INPUT_TYPE.number, inputEl });
+        setup({ disabled: false, value: '3', type: ODS_INPUT_TYPE.number, inputEl });
         controller.onInput(new Event(''));
 
         expect(`${component.value}`).toBe('');

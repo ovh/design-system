@@ -211,7 +211,6 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
           size={this.hasPlaceholder() ? ODS_TEXT_SIZE._300 : ODS_TEXT_SIZE._400}>
           { this.prefixValue }
         </osds-text>
-
         <input
           {...{
             ariaLabel,
@@ -224,7 +223,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
             min,
             name,
             onBlur: () => this.onBlur(),
-            onFocus: () => this.onFocus(),
+            onFocus: () => this.setFocus(),
             onInput: (e) => this.onInput(e),
             placeholder,
             readOnly,

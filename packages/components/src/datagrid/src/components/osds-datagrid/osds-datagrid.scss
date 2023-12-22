@@ -84,8 +84,7 @@ $ods-border-datagrid: solid 1px var(--ods-color-blue-200);
             position: relative;
             border-top: $ods-border-datagrid;
             border-right: none;
-            overflow-x: hidden;
-            overflow-y: visible;
+            overflow: hidden;
 
             &:not(.ods-selectable__input-checkbox) {
                 position: initial;
@@ -103,13 +102,6 @@ $ods-border-datagrid: solid 1px var(--ods-color-blue-200);
                 @include ods-input-checkbox(1);
 
                 padding-left: 9px;
-            }
-
-            osds-menu,
-            osds-popover,
-            osds-select,
-            osds-tooltip {
-                position: absolute;
             }
         }
 

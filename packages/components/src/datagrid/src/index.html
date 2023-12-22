@@ -69,7 +69,7 @@
     datagrid.addEventListener('odsRowSelectedChange', (data) => console.log('odsRowSelectedChange', data))
 
     datagrid.columns = [
-      { title: "First name", field: "firstname", overflow: true, formatter: (cellValue, rowValue) => {
+      { title: "First name", field: "firstname", formatter: (cellValue, rowValue) => {
           return `<osds-menu>
 <osds-button slot="menu-title" color="primary" variant="stroked">
   Action menu
@@ -90,7 +90,7 @@
         }
       },
       { title: "Test", field: "test", formatter: (cellValue, rowValue) => {
-        return `<osds-menu>
+        return `<osds-menu style='position: absolute;'>
     <osds-button slot="menu-title" color="primary" variant="stroked">Menu <osds-icon name='home' size='xs'></osds-icon></osds-button>
     <osds-menu-group>
       <osds-text>Group/Text 1</osds-text>

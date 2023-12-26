@@ -1,14 +1,10 @@
 import type { OdsPaginationAttribute } from './interfaces/attributes';
-import type { OdsPaginationChangedEventDetail } from './interfaces/events';
+import type { OdsPaginationChangedEventDetail, OdsPaginationItemPerPageChangedEventDetail } from './interfaces/events';
 import type { E2EElement, E2EPage } from '@stencil/core/testing';
-
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import { newE2EPage } from '@stencil/core/testing';
-
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_PAGINATION_PER_PAGE_OPTIONS } from './constants/pagination-per-page';
-
-
 
 describe('e2e:osds-pagination', () => {
   const baseAttribute = { current: 0, disabled: false, labelTooltipNext: '', labelTooltipPrevious: '', totalPages: 0 };
@@ -195,7 +191,7 @@ describe('e2e:osds-pagination', () => {
       expect(current).toEqual(5);
     });
 
-    it('should emit when the attribute changes', async() => {
+    it('should emit when current attribute changes', async() => {
       await setup({ attributes: { current: 2, totalPages: 5 } });
 
       const odsPaginationChanged = await el.spyOnEvent('odsPaginationChanged');
@@ -240,6 +236,26 @@ describe('e2e:osds-pagination', () => {
         .map((el) => el.getAttribute('value'))
         .map((attr) => parseInt(attr, 10));
       expect(selectValues).toEqual(ODS_PAGINATION_PER_PAGE_OPTIONS);
+    });
+
+    it('should emit when the itemPerPage attribute changes', async() => {
+      await setup({ attributes: { current: 2, totalItems: 60 } });
+
+      const odsPaginationItemPerPageChanged = await el.spyOnEvent('odsPaginationItemPerPageChanged');
+
+      perPageSelectElement = await page.find('osds-pagination >>> osds-select');
+      perPageSelectElement.setAttribute('value', 50);
+
+      await page.waitForChanges();
+
+      const expected: OdsPaginationItemPerPageChangedEventDetail = {
+        current: 50,
+        currentPage: 1,
+        totalPages: 2,
+      };
+
+      expect(odsPaginationItemPerPageChanged).toHaveReceivedEventDetail(expected);
+      expect(odsPaginationItemPerPageChanged).toHaveReceivedEventTimes(1);
     });
   });
 

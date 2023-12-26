@@ -20,7 +20,7 @@ const defaultStoryParams = {
         return `<osds-icon name="calendar"></osds-icon> <osds-text color="text" size="400">${value}</osds-text>`;
       } },
       { field: 'test', title: 'Button', formatter: () => {
-        return `<osds-menu>
+        return `<osds-menu style='position: absolute;'>
     <osds-button slot="menu-title" color="primary" variant="stroked">Menu <osds-icon name='home' size='xs'></osds-icon></osds-button>
     <osds-menu-group>
       <osds-text>Group/Text 1</osds-text>

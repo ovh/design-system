@@ -55,9 +55,9 @@ describe('spec:ods-tabs-controller', () => {
     });
 
     item1 = document.createElement('osds-tab-bar-item') as OsdsTabBarItem & HTMLElement;
-    item1.panel = '1';
+    item1.setAttribute('panel','1');
     item2 = document.createElement('osds-tab-bar-item') as OsdsTabBarItem & HTMLElement;
-    item2.panel = '2';
+    item2.setAttribute('panel','2');
 
     panel1 = document.createElement('osds-tabs-panel') as OsdsTabsPanel & HTMLElement;
     panel1.name = '1';
@@ -204,8 +204,8 @@ describe('spec:ods-tabs-controller', () => {
         const key = new KeyboardEvent('keypress', { code : 'ArrowRight' });
         controller.handleArrowKey(key);
 
-        expect(item1.getAttribute('active')).toEqual("");
-        expect(item2.getAttribute('active')).toEqual(null);
+        expect(item2.active).toEqual(true);
+        expect(item1.active).toEqual(false);
       });
 
       it('should set active to tab 1', () => {
@@ -215,8 +215,8 @@ describe('spec:ods-tabs-controller', () => {
         const key = new KeyboardEvent('keypress', { code : 'ArrowLeft' });
         controller.handleArrowKey(key);
 
-        expect(item2.getAttribute('active')).toEqual("");
-        expect(item1.getAttribute('active')).toEqual(null);
+        expect(item1.active).toEqual(true);
+        expect(item2.active).toEqual(false);
       });
     });
 

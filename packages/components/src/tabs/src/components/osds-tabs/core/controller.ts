@@ -41,10 +41,10 @@ class OdsTabsController {
   changeActivePanel(panel: string): void {
     const items = this.tabItems;
     // if not item found, select the first one
-    if (!items.find((item) => item.panel === panel) && items.length) {
-      panel = items[0].panel;
+    if (!items.find((item) => item.getAttribute('panel') === panel) && items.length) {
+      panel = items[0].getAttribute('panel')!;
     }
-    items.forEach((item) => item.active = item.panel === panel);
+    items.forEach((item) => item.active = item.getAttribute('panel') === panel);
     this.tabPanels.forEach((tabPanel) => tabPanel.active = tabPanel.name === panel);
     if (this.component.panel !== panel) {
       this.component.panel = panel;

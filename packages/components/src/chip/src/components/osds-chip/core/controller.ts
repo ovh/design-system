@@ -1,8 +1,6 @@
 import type { OsdsChip } from '../osds-chip';
-
 import { OdsLogger, OdsWarnComponentAttribute } from '@ovhcloud/ods-common-core';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-
 import { ODS_CHIP_SIZE } from '../constants/chip-size';
 import { ODS_CHIP_VARIANT } from '../constants/chip-variant';
 

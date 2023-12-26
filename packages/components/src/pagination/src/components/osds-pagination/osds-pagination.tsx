@@ -1,10 +1,8 @@
 import type { OdsPaginationAttribute, OdsPaginationPageList } from './interfaces/attributes';
-import type { OdsPaginationChangedEventDetail, OdsPaginationEvent } from './interfaces/events';
+import type { OdsPaginationChangedEventDetail, OdsPaginationEvent, OdsPaginationItemPerPageChangedEventDetail } from './interfaces/events';
 import type { OdsPaginationMethod } from './interfaces/methods';
 import type { OdsSelectOptionClickEventDetail } from '../../../../select/src';
 import type { HTMLStencilElement } from '@stencil/core/internal';
-
-import { OdsLogger } from '@ovhcloud/ods-common-core';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_BUTTON_SIZE, ODS_BUTTON_VARIANT } from '../../../../button/src';
 import { ODS_ICON_NAME, ODS_ICON_SIZE } from '../../../../icon/src';
@@ -24,12 +22,9 @@ import {
   forceUpdate,
   h,
 } from '@stencil/core';
-
-
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_PAGINATION_PER_PAGE_MIN, ODS_PAGINATION_PER_PAGE_OPTIONS } from './constants/pagination-per-page';
 import { OdsPaginationController } from './core/controller';
-
 
 @Component({
   tag: 'osds-pagination',
@@ -37,7 +32,6 @@ import { OdsPaginationController } from './core/controller';
   shadow: true,
 })
 export class OsdsPagination implements OdsPaginationAttribute, OdsPaginationEvent, OdsPaginationMethod {
-  private logger = new OdsLogger('OsdsPagination');
   private actualTotalPages = DEFAULT_ATTRIBUTE.totalPages;
   controller: OdsPaginationController = new OdsPaginationController(this);
 
@@ -46,26 +40,15 @@ export class OsdsPagination implements OdsPaginationAttribute, OdsPaginationEven
   @State() itemPerPage = ODS_PAGINATION_PER_PAGE_MIN;
   @State() pageList: OdsPaginationPageList = [];
 
-  /** @see OdsPaginationAttributes.current */
   @Prop({ reflect: true, mutable: true }) current: number = DEFAULT_ATTRIBUTE.current;
-
-  /** @see OdsPaginationAttributes.totalItems */
   @Prop({ reflect: true }) totalItems?: number;
-
-  /** @see OdsPaginationAttributes.totalPages */
   @Prop({ reflect: true }) totalPages: number = DEFAULT_ATTRIBUTE.totalPages;
-
-  /** @see OdsPaginationAttributes.disabled */
   @Prop({ reflect: true, mutable: true }) disabled: boolean = DEFAULT_ATTRIBUTE.disabled;
-
-  /** @see OdsPaginationAttributes.labelTooltipPrevious */
   @Prop({ reflect: true }) labelTooltipPrevious: string = DEFAULT_ATTRIBUTE.labelTooltipPrevious;
-
-  /** @see OdsPaginationAttributes.labelTooltipNext */
   @Prop({ reflect: true }) labelTooltipNext: string = DEFAULT_ATTRIBUTE.labelTooltipNext;
 
-  /** @see OdsPaginationEvents.odsPaginationChanged */
   @Event() odsPaginationChanged!: EventEmitter<OdsPaginationChangedEventDetail>;
+  @Event() odsPaginationItemPerPageChanged!: EventEmitter<OdsPaginationItemPerPageChangedEventDetail>;
 
   componentWillLoad() {
     if (this.totalItems) {
@@ -79,6 +62,9 @@ export class OsdsPagination implements OdsPaginationAttribute, OdsPaginationEven
 
   @Listen('odsValueChange')
   odsValueChangeHandler(event: CustomEvent<OdsSelectOptionClickEventDetail>) {
+    event.preventDefault();
+    event.stopPropagation();
+
     const { value } = event.detail;
 
     if (value) {
@@ -94,8 +80,6 @@ export class OsdsPagination implements OdsPaginationAttribute, OdsPaginationEven
 
   @Watch('current')
   async onCurrentChange(current: number, oldCurrent?: number) {
-    this.logger.log(`current: ${this.current}]`, 'current changed. emit new current', { current });
-
     this.updatePageList();
     this.emitChange(current, oldCurrent);
   }
@@ -111,6 +95,12 @@ export class OsdsPagination implements OdsPaginationAttribute, OdsPaginationEven
   @Watch('itemPerPage')
   async onItemPerPageChange() {
     await this.updatePagination();
+
+    this.odsPaginationItemPerPageChanged.emit({
+      current: this.itemPerPage,
+      currentPage: this.current,
+      totalPages: this.actualTotalPages,
+    });
   }
 
   @Watch('totalItems')
@@ -128,8 +118,6 @@ export class OsdsPagination implements OdsPaginationAttribute, OdsPaginationEven
   }
 
   private emitChange(current: number, oldCurrent?: number) {
-    this.logger.debug('emit', { current, oldCurrent });
-
     this.odsPaginationChanged.emit({
       current: current,
       oldCurrent: oldCurrent,

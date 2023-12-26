@@ -1,13 +1,10 @@
 import type { OdsPaginationAttribute } from './interfaces/attributes';
 import type { SpecPage } from '@stencil/core/testing';
-
 import { OdsMockNativeMethod, odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 import { newSpecPage } from '@stencil/core/testing';
-
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_PAGINATION_PER_PAGE_MIN } from './constants/pagination-per-page';
 import { OsdsPagination } from './osds-pagination';
-
 
 describe('spec:osds-pagination', () => {
   const baseAttribute = { current: 0, disabled: false, labelTooltipNext: '', labelTooltipPrevious: '', totalPages: 0 };
@@ -108,12 +105,20 @@ describe('spec:osds-pagination', () => {
   });
 
   describe('odsValueChangeHandler', () => {
+    const mockEvent = {
+      detail: {},
+      preventDefault: jest.fn(),
+      stopPropagation: jest.fn(),
+    }
+
     it('should do nothing if event does not have a value', async() => {
       await setup({ attributes: { disabled: false, current: 2, totalItems: 200 } });
       expect(instance.itemPerPage).toBe(10);
 
       // @ts-ignore for test purpose
-      await instance.odsValueChangeHandler({ detail: {} });
+      await instance.odsValueChangeHandler(mockEvent);
+      expect(mockEvent.preventDefault).toHaveBeenCalled();
+      expect(mockEvent.stopPropagation).toHaveBeenCalled();
       expect(instance.itemPerPage).toBe(10);
     });
 
@@ -123,11 +128,11 @@ describe('spec:osds-pagination', () => {
       expect(instance.itemPerPage).toBe(10);
 
       // @ts-ignore for test purpose
-      await instance.odsValueChangeHandler({ detail: { value: dummyValue } });
+      await instance.odsValueChangeHandler({ ...mockEvent, detail: { value: dummyValue } });
       expect(instance.itemPerPage).toBe(dummyValue);
 
       // @ts-ignore for test purpose
-      await instance.odsValueChangeHandler({ detail: { value: dummyValue.toString() } });
+      await instance.odsValueChangeHandler({ ...mockEvent, detail: { value: dummyValue.toString() } });
       expect(instance.itemPerPage).toBe(dummyValue);
     });
   });

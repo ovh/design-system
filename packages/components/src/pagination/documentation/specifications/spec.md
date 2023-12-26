@@ -24,6 +24,14 @@
 |Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`odsPaginationChanged`** | `EventEmitter<OdsPaginationChangedEventDetail>` | ✴️ |  | Emitted when the value has changed|
+|**`odsPaginationItemPerPageChanged`** | `EventEmitter<OdsPaginationItemPerPageChangedEventDetail>` | ✴️ |  | Emitted when the number of items per page value has changed|
+
+### OdsPaginationItemPerPageChangedEventDetail
+|Name | Type | Required | Default | Description|
+|---|---|:---:|---|---|
+|**`current`** | _number_ | ✴️ |  | |
+|**`currentPage`** | _number_ | ✴️ |  | |
+|**`totalPages`** | _number_ | ✴️ |  | |
 
 ### OdsPaginationMethod
 |Name | Type | Required | Default | Description|

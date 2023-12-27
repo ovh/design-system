@@ -9,7 +9,7 @@ import type { OsdsTabs } from '../osds-tabs';
 class OdsTabsController {
   protected component: OsdsTabs;
 
-  private _tabItems: (Array<OsdsTabBarItem & HTMLElement>) = [];
+  public _tabItems: (Array<OsdsTabBarItem & HTMLElement>) = [];
 
   public get tabItems(): (Array<OsdsTabBarItem & HTMLElement>) {
     return this._tabItems;
@@ -54,9 +54,14 @@ class OdsTabsController {
 
   handleArrowKey(event: KeyboardEvent): void {
     const currentSelectedTabIndex = this.tabItems.findIndex((tab) => tab.hasAttribute('active'));
-    if(currentSelectedTabIndex === 0 && event.code === 'ArrowLeft' ) {
+    if (currentSelectedTabIndex === -1 || typeof currentSelectedTabIndex === 'undefined' ) {
       return;
     }
+
+    if(currentSelectedTabIndex === 0 && event.code === 'ArrowLeft') {
+      return;
+    }
+
     if(currentSelectedTabIndex === this.tabItems.length - 1 && event.code === 'ArrowRight' ) {
       return;
     }

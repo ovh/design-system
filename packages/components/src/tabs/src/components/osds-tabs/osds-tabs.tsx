@@ -129,9 +129,9 @@ export class OsdsTabs implements OdsTabsAttribute, OdsTabsEvent {
       <Host>
         <div class="tabs-nav-wrap"
              onKeyDown={ this.handleArrowKey.bind(this) }>
-          <slot name='top' onSlotchange={(): Promise<void> => this.handleSlotChange() }/>
+          <slot name='top'/>
         </div>
-        <slot />
+        <slot onSlotchange={(): Promise<void> => this.handleSlotChange() }/>
       </Host>
     );
   }

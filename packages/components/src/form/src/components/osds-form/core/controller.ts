@@ -9,7 +9,7 @@ class OdsFormController {
 
   getInitialValues(): Record<string, OdsInputValue> {
     const onError = (): void => {
-      this.component.logger.warn('[OsdsDatagrid] columns string could not be parsed.');
+      this.component.logger.warn('[OsdsForm] initialValues string could not be parsed.');
     };
     return parseStringToRecord(this.component.initialValues, onError);
   }

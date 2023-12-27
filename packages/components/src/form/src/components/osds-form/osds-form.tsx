@@ -1,7 +1,9 @@
 import type { OdsFormAttribute } from './interfaces/attributes';
+import type { OdsFormEvent } from './interfaces/event';
+import type { OdsFormMethod } from './interfaces/methods';
 import type { FunctionalComponent } from '@stencil/core';
 import type { OdsInputValueChangeEventDetail } from '../../../../input/src';
-import { Component, Element, Event, EventEmitter, Host, Listen, Method, Prop, h } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, Host, Listen, Method, Prop, h, Watch } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsInputValue, OdsLogger } from '@ovhcloud/ods-common-core';
 import { OdsFormController } from './core/controller';
@@ -14,7 +16,7 @@ import { OdsFormController } from './core/controller';
   styleUrl: 'osds-form.scss',
   tag: 'osds-form',
 })
-export class OsdsForm implements OdsFormAttribute {
+export class OsdsForm implements OdsFormAttribute, OdsFormEvent, OdsFormMethod {
   readonly logger = new OdsLogger('OdsForm');
   private readonly controller = new OdsFormController(this);
   private readonly internalMap = new Map<string, { value: OdsInputValue, error: boolean }>();
@@ -24,12 +26,12 @@ export class OsdsForm implements OdsFormAttribute {
 
   @Prop({ reflect: true }) public initialValues = DEFAULT_ATTRIBUTE.initialValues;
 
-  @Event() odsOnSubmit!: EventEmitter<Record<string, { value: OdsInputValue, error: boolean }>>
+  @Event() odsOnSubmit!: EventEmitter<Record<string, OdsInputValue>>
   @Event() odsOnReset!: EventEmitter<void>
 
   @Method()
   async isFormValid(): Promise<boolean> {
-    return [...this.internalMap].some(([, { error }]) => error);
+    return ![...this.internalMap].some(([, { error }]) => error);
   }
 
   @Method()
@@ -58,47 +60,70 @@ export class OsdsForm implements OdsFormAttribute {
   }
 
   @Method()
-  async getFormValues(): Promise<Record<string, { value: OdsInputValue, error: boolean }>> {
+  async getFormValues(): Promise<Record<string, OdsInputValue>> {
     return this.getValuesToRecord();
   }
 
   @Method()
+  async getFormErrors(): Promise<Record<string, boolean>> {
+    return this.getErrorsToRecord();
+  }
+
+  @Method()
   async submit(): Promise<void> {
+    if (!await this.isFormValid()) {
+      return;
+    }
     this.formEl?.submit();
   }
 
   @Method()
   async reset(): Promise<void> {
-    return this.onSubmit();
+    console.log('reset')
+    this.onInitialValuesChange();
+    this.formEl?.reset();
+    this.odsOnReset.emit();
   }
 
   componentWillLoad(): void {
     this.onInitialValuesChange();
   }
 
+  @Watch('initialValues')
   onInitialValuesChange(): void {
     const initialValues = this.controller.getInitialValues();
 
-    Object.entries(initialValues).map(([name, value]) => {
+    Object.entries(initialValues).forEach(([name, value]) => {
+      this.setFieldError(name, false);
       this.setFieldValue(name, value);
     });
   }
 
-  onSubmit(event?: Event): void {
+  async onSubmit(event?: Event): Promise<void> {
     event?.preventDefault();
-    console.log('submit')
+    if (!await this.isFormValid()) {
+      return;
+    }
     this.odsOnSubmit.emit(this.getValuesToRecord());
   }
 
   onReset(): void {
-    console.log('reset')
-    this.formEl?.reset();
-    this.odsOnReset.emit();
+    console.log('onReset');
+    this.reset();
   }
 
-  private getValuesToRecord(): Record<string, { value: OdsInputValue, error: boolean }> {
-    console.log('Object.fromEntries(this.internalMap)', Object.fromEntries(this.internalMap));
-    return Object.fromEntries(this.internalMap);
+  private getValuesToRecord(): Record<string, OdsInputValue> {
+    return [...this.internalMap].reduce((acc, [key, { value }]) => {
+      acc[key] = value;
+      return acc;
+    }, {} as Record<string, OdsInputValue>);
+  }
+
+  private getErrorsToRecord(): Record<string, boolean> {
+    return [...this.internalMap].reduce((acc, [key, { error }]) => {
+      acc[key] = error;
+      return acc;
+    }, {} as Record<string, boolean>);
   }
 
   private getSlotElementByName(name: string): Element | undefined {
@@ -114,7 +139,7 @@ export class OsdsForm implements OdsFormAttribute {
   onValueChange({ detail }: CustomEvent<OdsInputValueChangeEventDetail>): void {
     console.log('detail', detail);
     // todo get the event with the name & update internalMap
-    // this.internalMap.set(detail.name, { value: detail.value, error: detail.validity.invalid });
+    this.internalMap.set(detail.name, { value: detail.value, error: detail.validity.invalid });
   }
 
   render(): FunctionalComponent {

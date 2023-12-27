@@ -129,9 +129,9 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
     });
   }
 
-  private formatValue(number: PhoneNumber | null, defaultValue?: string | null): string | undefined {
+  private formatValue(number: PhoneNumber | null, defaultValue?: string | null): string {
     if (this.error || !number) {
-      return defaultValue ?? undefined;
+      return defaultValue ?? '';
     }
     return this.phoneUtils.format(number, PhoneNumberFormat.E164);
   }

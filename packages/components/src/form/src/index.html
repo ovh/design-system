@@ -15,21 +15,22 @@
 </head>
 <body>
   <p>Default</p>
-  <osds-form id="odsForm" initial-values='{"firstName": "Esteves"}'>
-    <osds-form-field>
+  <osds-form id="odsForm" initial-values='{"firstName": "Jean", "test": ""}'>
+    <osds-form-field inline>
       <div slot="label">
         <osds-text level="heading" color="primary">Description</osds-text>
       </div>
       <div slot="visual-hint"><osds-text>150/200</osds-text></div>
-      <osds-input type="text" id="input" value="Just ODS being ahead"></osds-input>
+      <osds-input inline name="test" type="text" required></osds-input>
       <div slot="helper">
         <osds-text>Write a few sentences about you</osds-text>
       </div>
     </osds-form-field>
-    <osds-input name="firstName" inline type="text" value="On Vous Héberge ?" ></osds-input>
 
-    <osds-button type="reset">Reset</osds-button>
-    <osds-button type="submit">Submit</osds-button>
+    <osds-input name="firstName" inline type="text"></osds-input>
+
+    <osds-button type="reset" inline>Reset</osds-button>
+    <osds-button type="submit" inline>Submit</osds-button>
   </osds-form>
 
   <button id="triggerButton">trigger event</button>
@@ -37,10 +38,11 @@
   <script>
     const odsForm = document.getElementById('odsForm');
     const triggerButton = document.getElementById('triggerButton');
+    const inputFirstName = document.querySelector('osds-input[name="firstName"]');
+    inputFirstName.forbiddenValues = ['azerty'];
     triggerButton.addEventListener('click', () => {
-      odsForm?.submit();
+      odsForm?.reset();
     })
-    console.log('odsForm', odsForm);
 
   </script>
 </body>

@@ -1,6 +1,8 @@
 import type { OsdsInput } from '../osds-input';
-import { OdsCommonFieldMethodController, OdsInputValue } from '@ovhcloud/ods-common-core';
+import type { OdsInputValue } from '@ovhcloud/ods-common-core';
+import { OdsCommonFieldMethodController } from '@ovhcloud/ods-common-core';
 import { OdsWarnComponentAttribute } from '@ovhcloud/ods-common-core';
+import { ODS_INPUT_TYPE } from '../constants/input-type';
 
 /**
  * common controller logic for input component used by the different implementations.
@@ -107,6 +109,10 @@ class OdsInputController<T extends OsdsInput> extends OdsCommonFieldMethodContro
   }
 
   private validateValue(value?: number): void {
+    if (this.component.type !== ODS_INPUT_TYPE.number) {
+      return;
+    }
+    
     if (!value && value !== 0) {
       console.warn('[OsdsInput] The value attribute must be a correct number');
     }

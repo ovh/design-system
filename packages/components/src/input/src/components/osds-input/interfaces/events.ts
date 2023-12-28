@@ -1,15 +1,7 @@
-import type { OdsCommonFieldEvent, OdsCommonFieldValueChangeEvent as OdsInputValueChangeEvent, OdsCommonFieldValueChangeEventDetail as OdsInputValueChangeEventDetail } from '@ovhcloud/ods-common-core';
-import type { EventEmitter } from '@stencil/core';
-
-interface OdsInputEvent extends OdsCommonFieldEvent {
-  odsBlur: EventEmitter<void>;
-  odsFocus: EventEmitter<void>;
-  /** the input value changed */
-  odsValueChange: EventEmitter<OdsInputValueChangeEventDetail>;
-}
+import type { OdsCommonFieldEvent as OdsInputEvent, OdsCommonFieldValueChangeEvent as OdsInputValueChangeEvent, OdsCommonFieldValueChangeEventDetail as OdsInputValueChangeEventDetail } from '@ovhcloud/ods-common-core';
 
 export type {
   OdsInputEvent,
   OdsInputValueChangeEvent,
-  OdsInputValueChangeEventDetail,
+  g,
 };

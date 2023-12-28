@@ -96,11 +96,17 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
 
   /** Events */
 
-  @Event() odsValueChange!: EventEmitter<OdsInputValueChangeEventDetail>;
-
   @Event() odsBlur!: EventEmitter<void>;
 
+  @Event() odsClear!: EventEmitter<void>;
+
   @Event() odsFocus!: EventEmitter<void>;
+
+  @Event() odsHide!: EventEmitter<void>;
+
+  @Event() odsReset!: EventEmitter<void>;
+
+  @Event() odsValueChange!: EventEmitter<OdsInputValueChangeEventDetail>;
 
   /** Watch */
 
@@ -140,6 +146,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
   async emitChange(value: OdsInputValue, oldValue?: OdsInputValue): Promise<void> {
     this.logger.debug('emit', { oldValue, value });
     this.odsValueChange.emit({
+      name: this.name,
       oldValue: oldValue == null ? oldValue : `${oldValue}`,
       validity: await this.getValidity(),
       value: value == null ? value : `${value}`,
@@ -167,16 +174,19 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
   @Method()
   async clear(): Promise<void> {
     this.commonFieldMethodController.clear();
+    this.odsClear.emit();
   }
 
   @Method()
   async hide(): Promise<void> {
     this.commonFieldMethodController.hide();
+    this.odsHide.emit();
   }
 
   @Method()
   async reset(): Promise<void> {
     this.commonFieldMethodController.reset();
+    this.odsReset.emit();
   }
 
   @Method()

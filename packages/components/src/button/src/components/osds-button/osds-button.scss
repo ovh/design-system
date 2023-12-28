@@ -63,6 +63,15 @@
       text-overflow: ellipsis;
       white-space: nowrap;
       word-break: break-all;
+
+      // fix safari ellipsis
+      ::after {
+        content: " ";
+        display: block;
+        width: 0;
+        height: 0;
+        line-height: 0;
+      }
     }
   }
 }

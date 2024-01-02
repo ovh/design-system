@@ -80,6 +80,9 @@ class OdsInputController<T extends OsdsInput> extends OdsCommonFieldMethodContro
 
   onValueChange(value: OdsInputValue, oldValue?: OdsInputValue): void {
     this.assertValue(value);
+    if (this.component.inputEl) {
+      this.component.inputEl.value = value?.toString() ?? '';
+    }
     this.component.internals.setFormValue(value?.toString() ?? '');
     this.component.emitChange(value, oldValue);
   }

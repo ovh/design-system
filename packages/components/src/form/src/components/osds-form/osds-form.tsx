@@ -13,7 +13,6 @@ import { OdsFormController } from './core/controller';
  */
 @Component({
   shadow: true,
-  styleUrl: 'osds-form.scss',
   tag: 'osds-form',
 })
 export class OsdsForm implements OdsFormAttribute, OdsFormEvent, OdsFormMethod {
@@ -79,7 +78,6 @@ export class OsdsForm implements OdsFormAttribute, OdsFormEvent, OdsFormMethod {
 
   @Method()
   async reset(): Promise<void> {
-    console.log('reset')
     this.onInitialValuesChange();
     this.formEl?.reset();
     this.odsOnReset.emit();
@@ -108,7 +106,6 @@ export class OsdsForm implements OdsFormAttribute, OdsFormEvent, OdsFormMethod {
   }
 
   onReset(): void {
-    console.log('onReset');
     this.reset();
   }
 
@@ -129,7 +126,7 @@ export class OsdsForm implements OdsFormAttribute, OdsFormEvent, OdsFormMethod {
   private getSlotElementByName(name: string): Element | undefined {
     const element = this.el.querySelector(`[name="${name}"]`);
     if (!element) {
-      this.logger.warn(`Element with name: ${name} not found, the initial value can't be set`);
+      this.logger.warn(`Element with name: ${name} not found`);
       return;
     }
     return element;
@@ -137,8 +134,6 @@ export class OsdsForm implements OdsFormAttribute, OdsFormEvent, OdsFormMethod {
 
   @Listen('odsValueChange')
   onValueChange({ detail }: CustomEvent<OdsInputValueChangeEventDetail>): void {
-    console.log('detail', detail);
-    // todo get the event with the name & update internalMap
     this.internalMap.set(detail.name, { value: detail.value, error: detail.validity.invalid });
   }
 

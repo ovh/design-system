@@ -21,20 +21,5 @@ describe('e2e:osds-form', () => {
     beforeEach(() => {
       variations = [];
     });
-
-    it('should take screenshots of all attributes variations', async() => {
-      ['', 'dummy'].forEach((dummy) => {
-        variations.push(`
-          <osds-form ${odsStringAttributes2Str(odsComponentAttributes2StringAttributes<OdsFormAttribute>({ dummy }, DEFAULT_ATTRIBUTE))}>
-          </osds-form>`
-        );
-      });
-
-      await setup(variations.join(''));
-      await page.waitForChanges();
-
-      const results = await page.compareScreenshot('form', { fullPage: true });
-      expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
-    });
   });
 });

@@ -15,6 +15,7 @@ export * from './datagrid/src';
 export * from './datepicker/src';
 export * from './divider/src';
 export * from './flag/src';
+export * from './form/src';
 export * from './form-field/src';
 export * from './icon/src';
 export * from './input/src';
@@ -43,5 +44,3 @@ export * from './textarea/src';
 export * from './tile/src';
 export * from './toggle/src';
 export * from './tooltip/src';
-
-export * from './form/src';

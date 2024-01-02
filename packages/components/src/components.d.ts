@@ -739,6 +739,49 @@ export namespace Components {
          */
         "src": string | undefined;
     }
+    interface OsdsForm {
+        /**
+          * Get the error for a field
+          * @param name name of the input
+         */
+        "getFieldError": (name: string) => Promise<boolean | undefined>;
+        /**
+          * Get the value for a field
+          * @param name name of the input
+         */
+        "getFieldValue": (name: string) => Promise<OdsInputValue | undefined>;
+        /**
+          * Get all the errors associated with the field
+         */
+        "getFormErrors": () => Promise<Record<string, boolean>>;
+        /**
+          * Get all the values associated with the field
+         */
+        "getFormValues": () => Promise<Record<string, OdsInputValue>>;
+        /**
+          * You can init the input with initialValues The attributes is an object with the input name for key and this value you need to set all the input you want to use
+         */
+        "initialValues": string | Record<string, OdsInputValue>;
+        "isFormValid": () => Promise<boolean>;
+        /**
+          * Reset the form
+         */
+        "reset": () => Promise<void>;
+        /**
+          * Set an error for a field
+          * @param name name of the input to change
+         */
+        "setFieldError": (name: string, error: boolean) => Promise<void>;
+        /**
+          * Set a value for a field
+          * @param name name of the input to change
+         */
+        "setFieldValue": (name: string, value: OdsInputValue) => Promise<void>;
+        /**
+          * Submit the form You can submit only if the form is valid
+         */
+        "submit": () => Promise<void>;
+    }
     interface OsdsFormField {
         /**
           * Indicates if the Form Field shows error or not
@@ -1978,6 +2021,10 @@ export interface OsdsDatepickerCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLOsdsDatepickerElement;
 }
+export interface OsdsFormCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLOsdsFormElement;
+}
 export interface OsdsInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLOsdsInputElement;
@@ -2295,6 +2342,24 @@ declare global {
     var HTMLOsdsFlagElement: {
         prototype: HTMLOsdsFlagElement;
         new (): HTMLOsdsFlagElement;
+    };
+    interface HTMLOsdsFormElementEventMap {
+        "odsOnSubmit": Record<string, OdsInputValue>;
+        "odsOnReset": void;
+    }
+    interface HTMLOsdsFormElement extends Components.OsdsForm, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLOsdsFormElementEventMap>(type: K, listener: (this: HTMLOsdsFormElement, ev: OsdsFormCustomEvent<HTMLOsdsFormElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLOsdsFormElementEventMap>(type: K, listener: (this: HTMLOsdsFormElement, ev: OsdsFormCustomEvent<HTMLOsdsFormElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLOsdsFormElement: {
+        prototype: HTMLOsdsFormElement;
+        new (): HTMLOsdsFormElement;
     };
     interface HTMLOsdsFormFieldElement extends Components.OsdsFormField, HTMLStencilElement {
     }
@@ -2751,6 +2816,7 @@ declare global {
         "osds-datepicker": HTMLOsdsDatepickerElement;
         "osds-divider": HTMLOsdsDividerElement;
         "osds-flag": HTMLOsdsFlagElement;
+        "osds-form": HTMLOsdsFormElement;
         "osds-form-field": HTMLOsdsFormFieldElement;
         "osds-icon": HTMLOsdsIconElement;
         "osds-input": HTMLOsdsInputElement;
@@ -3426,6 +3492,20 @@ declare namespace LocalJSX {
           * override with custom src to the svg file.
          */
         "src"?: string | undefined;
+    }
+    interface OsdsForm {
+        /**
+          * You can init the input with initialValues The attributes is an object with the input name for key and this value you need to set all the input you want to use
+         */
+        "initialValues"?: string | Record<string, OdsInputValue>;
+        /**
+          * Event trigger when the form is reset
+         */
+        "onOdsOnReset"?: (event: OsdsFormCustomEvent<void>) => void;
+        /**
+          * Event trigger when the form is submit
+         */
+        "onOdsOnSubmit"?: (event: OsdsFormCustomEvent<Record<string, OdsInputValue>>) => void;
     }
     interface OsdsFormField {
         /**
@@ -4607,6 +4687,7 @@ declare namespace LocalJSX {
         "osds-datepicker": OsdsDatepicker;
         "osds-divider": OsdsDivider;
         "osds-flag": OsdsFlag;
+        "osds-form": OsdsForm;
         "osds-form-field": OsdsFormField;
         "osds-icon": OsdsIcon;
         "osds-input": OsdsInput;
@@ -4677,6 +4758,7 @@ declare module "@stencil/core" {
             "osds-datepicker": LocalJSX.OsdsDatepicker & JSXBase.HTMLAttributes<HTMLOsdsDatepickerElement>;
             "osds-divider": LocalJSX.OsdsDivider & JSXBase.HTMLAttributes<HTMLOsdsDividerElement>;
             "osds-flag": LocalJSX.OsdsFlag & JSXBase.HTMLAttributes<HTMLOsdsFlagElement>;
+            "osds-form": LocalJSX.OsdsForm & JSXBase.HTMLAttributes<HTMLOsdsFormElement>;
             "osds-form-field": LocalJSX.OsdsFormField & JSXBase.HTMLAttributes<HTMLOsdsFormFieldElement>;
             "osds-icon": LocalJSX.OsdsIcon & JSXBase.HTMLAttributes<HTMLOsdsIconElement>;
             "osds-input": LocalJSX.OsdsInput & JSXBase.HTMLAttributes<HTMLOsdsInputElement>;

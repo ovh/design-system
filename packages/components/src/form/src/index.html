@@ -41,8 +41,12 @@
     const inputFirstName = document.querySelector('osds-input[name="firstName"]');
     inputFirstName.forbiddenValues = ['azerty'];
     triggerButton.addEventListener('click', () => {
-      odsForm?.reset();
-    })
+      odsForm?.setFieldError('test', true);
+    });
+
+    odsForm.addEventListener('odsOnSubmit', (event) => {
+      console.log('event', event)
+    });
 
   </script>
 </body>

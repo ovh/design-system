@@ -12,6 +12,55 @@ import { Meta } from '@storybook/addon-docs';
 
 # What's new ?
 
+## v17.0.0
+
+As it is a major version, you'll have to follow the [migration guide 16.x to 17.x](?path=/story/ovhcloud-design-system-what-s-new-migration-guide-16-x-to-17-x--page)
+
+### Project changes:
+
+Main focus on this version has been on simplifying ODS integration in existing projects (React, Vue, JS, ...).
+
+We now only publish one `ods-components` library that embed all the ODS components.
+
+What this means for your code:
+- `ods-component-xxx` are no longer published and should be removed
+- only one dependency to add to your `package.json`
+```
+"ods-components": "17.0.0"
+```
+
+ODS components can then be either imported using lazy-loading (the code of each component is loaded on demand) or as a module (the code of the component is tree-shaked by your own bundling system).
+
+For more details on how to import ODS components, see:
+- the updated [Get Started documentation](?path=/story/ovhcloud-design-system-get-started--page#how-to-use-ods-components-in-my-project)
+- the 16.x to 17.x [Migration guide](?path=/story/ovhcloud-design-system-what-s-new-migration-guide-16-x-to-17-x--page)
+
+### Documentation improvments
+
+We went through each component to update:
+- the Demo controls to be more relevant
+- the Usage Guidelines, with more examples and the missing properties
+- with React example when relevant (ex: `datagrid` reactFormatter with React 18 or `tabs` with React Router)
+
+### Component changes:
+
+**Pagination**
+* Add `odsPaginationItemPerPageChanged` when the item per page select change
+
+### Bug fixes:
+
+**Datagrid**
+* Overflowing elements can now correctly be displayed (see updated documentation)
+
+**Menu**
+* Ellipsis is now correctly displayed on Safari
+
+**Modal**
+* Inner element with overlay are now correctly displayed
+
+**Tabs**
+* Fix hover rendering
+
 ## v16.6.0
 
 ### Feature update:

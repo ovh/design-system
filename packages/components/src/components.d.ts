@@ -40,7 +40,7 @@ import { ODS_INPUT_TYPE } from "./input/src/components/osds-input/constants/inpu
 import { OdsInputValueChangeEventDetail } from "./input/src/components/osds-input/interfaces/events";
 import { ODS_LINK_REFERRER_POLICY as ODS_LINK_REFERRER_POLICY1 } from "./link/src/components/osds-link/constants/referrer-policies";
 import { ODS_MESSAGE_TYPE } from "./message/src/components/osds-message/constants/message-type";
-import { OdsPaginationChangedEventDetail } from "./pagination/src/components/osds-pagination/interfaces/events";
+import { OdsPaginationChangedEventDetail, OdsPaginationItemPerPageChangedEventDetail } from "./pagination/src/components/osds-pagination/interfaces/events";
 import { ODS_INPUT_SIZE as ODS_INPUT_SIZE1 } from "./input/src";
 import { ODS_PHONE_NUMBER_COUNTRY_PRESET } from "./phone-number/src/components/osds-phone-number/constants/phone-number-countries";
 import { OdsPhoneNumberValueChangeEventDetail } from "./phone-number/src/components/osds-phone-number/interfaces/events";
@@ -105,7 +105,7 @@ export { ODS_INPUT_TYPE } from "./input/src/components/osds-input/constants/inpu
 export { OdsInputValueChangeEventDetail } from "./input/src/components/osds-input/interfaces/events";
 export { ODS_LINK_REFERRER_POLICY as ODS_LINK_REFERRER_POLICY1 } from "./link/src/components/osds-link/constants/referrer-policies";
 export { ODS_MESSAGE_TYPE } from "./message/src/components/osds-message/constants/message-type";
-export { OdsPaginationChangedEventDetail } from "./pagination/src/components/osds-pagination/interfaces/events";
+export { OdsPaginationChangedEventDetail, OdsPaginationItemPerPageChangedEventDetail } from "./pagination/src/components/osds-pagination/interfaces/events";
 export { ODS_INPUT_SIZE as ODS_INPUT_SIZE1 } from "./input/src";
 export { ODS_PHONE_NUMBER_COUNTRY_PRESET } from "./phone-number/src/components/osds-phone-number/constants/phone-number-countries";
 export { OdsPhoneNumberValueChangeEventDetail } from "./phone-number/src/components/osds-phone-number/interfaces/events";
@@ -1103,22 +1103,18 @@ export namespace Components {
     interface OsdsPagination {
         /**
           * Its corresponding current page.
-          * @see OdsPaginationAttributes.current
          */
         "current": number;
         /**
           * indicates if the pagination is entirely disabled. it means no interactions (hover, click, focus, etc)
-          * @see OdsPaginationAttributes.disabled
          */
         "disabled": boolean;
         /**
           * The label of the tooltip on the arrow next
-          * @see OdsPaginationAttributes.labelTooltipNext
          */
         "labelTooltipNext": string;
         /**
           * The label of the tooltip on the arrow previous
-          * @see OdsPaginationAttributes.labelTooltipPrevious
          */
         "labelTooltipPrevious": string;
         /**
@@ -1128,12 +1124,10 @@ export namespace Components {
         "setPageIndex": (current: number) => Promise<void>;
         /**
           * The total number of items.
-          * @see OdsPaginationAttributes.totalItems
          */
         "totalItems"?: number;
         /**
           * The total amount of pages.
-          * @see OdsPaginationAttributes.totalPages
          */
         "totalPages": number;
     }
@@ -2521,6 +2515,7 @@ declare global {
     };
     interface HTMLOsdsPaginationElementEventMap {
         "odsPaginationChanged": OdsPaginationChangedEventDetail;
+        "odsPaginationItemPerPageChanged": OdsPaginationItemPerPageChangedEventDetail;
     }
     interface HTMLOsdsPaginationElement extends Components.OsdsPagination, HTMLStencilElement {
         addEventListener<K extends keyof HTMLOsdsPaginationElementEventMap>(type: K, listener: (this: HTMLOsdsPaginationElement, ev: OsdsPaginationCustomEvent<HTMLOsdsPaginationElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -3883,37 +3878,34 @@ declare namespace LocalJSX {
     interface OsdsPagination {
         /**
           * Its corresponding current page.
-          * @see OdsPaginationAttributes.current
          */
         "current"?: number;
         /**
           * indicates if the pagination is entirely disabled. it means no interactions (hover, click, focus, etc)
-          * @see OdsPaginationAttributes.disabled
          */
         "disabled"?: boolean;
         /**
           * The label of the tooltip on the arrow next
-          * @see OdsPaginationAttributes.labelTooltipNext
          */
         "labelTooltipNext"?: string;
         /**
           * The label of the tooltip on the arrow previous
-          * @see OdsPaginationAttributes.labelTooltipPrevious
          */
         "labelTooltipPrevious"?: string;
         /**
           * Emitted when the value has changed
-          * @see OdsPaginationEvents.odsPaginationChanged
          */
         "onOdsPaginationChanged"?: (event: OsdsPaginationCustomEvent<OdsPaginationChangedEventDetail>) => void;
         /**
+          * Emitted when the number of items per page value has changed
+         */
+        "onOdsPaginationItemPerPageChanged"?: (event: OsdsPaginationCustomEvent<OdsPaginationItemPerPageChangedEventDetail>) => void;
+        /**
           * The total number of items.
-          * @see OdsPaginationAttributes.totalItems
          */
         "totalItems"?: number;
         /**
           * The total amount of pages.
-          * @see OdsPaginationAttributes.totalPages
          */
         "totalPages"?: number;
     }

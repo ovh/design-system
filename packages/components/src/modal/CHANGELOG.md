@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [17.0.0](https://ovh.github.io/design-system/v17.0.0/?path=/docs/design-system-changelog--page) (2024-01-02)
+[compare](https://github.com/ovh/design-system/compare/v16.6.0...v17.0.0)
+
+### Bug Fixes
+
+* **app:** resolve release conflicts && fix doc-api generation ([8d9eb6e](https://github.com/ovh/design-system/commit/8d9eb6e76a3f321a0984e1bc56df43ecc3cd30f5))
+* **modal:** change overflow to allow ocdk-surface correct display ([136db3f](https://github.com/ovh/design-system/commit/136db3f2450c993ba13d3ccede4fb0040e2fd4f1))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

@@ -8,6 +8,50 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [17.0.0](https://ovh.github.io/design-system/v17.0.0/?path=/docs/design-system-changelog--page) (2024-01-02)
+[compare](https://github.com/ovh/design-system/compare/v16.6.0...v17.0.0)
+
+### Bug Fixes
+
+* **app:** resolve release conflicts && fix doc-api generation ([8d9eb6e](https://github.com/ovh/design-system/commit/8d9eb6e76a3f321a0984e1bc56df43ecc3cd30f5))
+* **ci:** disable components-ovh && fix components dependency to ensure build order ([9da5056](https://github.com/ovh/design-system/commit/9da505667b9a2e9a23eb797221f11de29671118b))
+* **ci:** ensure components.d.ts file is present ([f8cfd84](https://github.com/ovh/design-system/commit/f8cfd84a83fdf66379419cb8df40454870c46033))
+* **core:** config version ([adb8464](https://github.com/ovh/design-system/commit/adb8464f6d92300642802d629344d98f0793c08f))
+* **datagrid:** improve documentation ([0a05892](https://github.com/ovh/design-system/commit/0a058926eeecfffa9fbea73dad72efd50596faae))
+* **datagrid:** improve documentation ([717349a](https://github.com/ovh/design-system/commit/717349aadfd3d46b7f7ccaba563b8f6ea7208d9c))
+* **datagrid:** overflowing elements ([c28c054](https://github.com/ovh/design-system/commit/c28c0549fcb958ec17206501ff48b652d7e5541f))
+* **datagrid:** overflowing elements ([4404b48](https://github.com/ovh/design-system/commit/4404b4894e43076537b04534698751186b1cb48b))
+* **datepicker:** add explicit component dependency ([6d9cef7](https://github.com/ovh/design-system/commit/6d9cef7c409ab8f53339d650e9f3e3480220b3af))
+* **doc:** add missing define on menu story ([cfb4bd9](https://github.com/ovh/design-system/commit/cfb4bd97faadad61062351be42bbfd4c01ac6aae))
+* **doc:** fix typo ([befc995](https://github.com/ovh/design-system/commit/befc99545d644ffa9377c61fffcceb0190635d93))
+* **doc:** rm useless slotting in menu usage ([59ba550](https://github.com/ovh/design-system/commit/59ba5500a8cacdbbebb06662e2fddf4d18b81f9c))
+* **doc:** update install doc with new arch ([ab0e6dc](https://github.com/ovh/design-system/commit/ab0e6dc0e367b310889923ac6e194d34151e41b7))
+* **menu:** safari ellipsis ([823bf12](https://github.com/ovh/design-system/commit/823bf120b7f7459f5813f9ab8861eae20502bf67))
+* **modal:** change overflow to allow ocdk-surface correct display ([136db3f](https://github.com/ovh/design-system/commit/136db3f2450c993ba13d3ccede4fb0040e2fd4f1))
+* **stencil:** generate bundled components && fix datagrid components declaration ([fa64b1b](https://github.com/ovh/design-system/commit/fa64b1b5d06ee7f402285a3a345e5e952c80b6a3))
+* **stencil:** use correct plugin order ([446422b](https://github.com/ovh/design-system/commit/446422beee7c65d5148e50ca6f5c15de1b32722c))
+* **tabs:** change margin to padding to handle hover ([aa83601](https://github.com/ovh/design-system/commit/aa83601462623b6c95e7ee7e011688f258ede7c8))
+* **tooltip:** remove useless test and fix closeSurface call ([f15f4d6](https://github.com/ovh/design-system/commit/f15f4d6e9508ba8523a63c812529a250c1fd3e3f))
+
+
+### Features
+
+* **components:** generate updated docs ([62e1526](https://github.com/ovh/design-system/commit/62e1526fac078550b08f83d100611b7499d13312))
+* **doc:** fix message e2e tests ([1dabcb2](https://github.com/ovh/design-system/commit/1dabcb20ea42e0ddf4825f1928c0e8501a9880b2))
+* **doc:** fix wrong imports ([bf49826](https://github.com/ovh/design-system/commit/bf49826df13ba525cae9b99f70a5ac6e8758594b))
+* **doc:** move added usage files to new archi folders ([32be333](https://github.com/ovh/design-system/commit/32be333f41a8469530abe791ca0277d944941943))
+* **doc:** storybook misc fixes & new features ([2bba058](https://github.com/ovh/design-system/commit/2bba0584e89eaf38aa53fc1a97adfcfae58ea4fa))
+* **examples:** add examples project to test ODS integration internally ([76d2a36](https://github.com/ovh/design-system/commit/76d2a364560821c91fed48bd5c10ea2ea7c8fb1e))
+* **pagination:** add odsPaginationItemPerPageChanged on itemPerPage change ([1233a3d](https://github.com/ovh/design-system/commit/1233a3d320b04824858921eff57e59736cfeb616))
+* **scripts:** update component generator for new arch ([bc4141d](https://github.com/ovh/design-system/commit/bc4141d42d1ccd49eb35a68a896a0e9bf67caca0))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [16.6.0](https://ovh.github.io/design-system/v16.6.0/?path=/docs/design-system-changelog--page) (2023-12-13)
 [compare](https://github.com/ovh/design-system/compare/v16.5.0...v16.6.0)
 

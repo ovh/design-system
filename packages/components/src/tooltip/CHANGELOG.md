@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [17.0.0](https://ovh.github.io/design-system/v17.0.0/?path=/docs/design-system-changelog--page) (2024-01-02)
+[compare](https://github.com/ovh/design-system/compare/v16.6.0...v17.0.0)
+
+### Bug Fixes
+
+* **app:** resolve release conflicts && fix doc-api generation ([8d9eb6e](https://github.com/ovh/design-system/commit/8d9eb6e76a3f321a0984e1bc56df43ecc3cd30f5))
+* **tooltip:** remove useless test and fix closeSurface call ([f15f4d6](https://github.com/ovh/design-system/commit/f15f4d6e9508ba8523a63c812529a250c1fd3e3f))
+
+
+### Features
+
+* **doc:** storybook misc fixes & new features ([2bba058](https://github.com/ovh/design-system/commit/2bba0584e89eaf38aa53fc1a97adfcfae58ea4fa))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

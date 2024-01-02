@@ -8,6 +8,36 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [17.0.0](https://ovh.github.io/design-system/v17.0.0/?path=/docs/design-system-changelog--page) (2024-01-02)
+[compare](https://github.com/ovh/design-system/compare/v16.6.0...v17.0.0)
+
+### Bug Fixes
+
+* **app:** resolve release conflicts && fix doc-api generation ([8d9eb6e](https://github.com/ovh/design-system/commit/8d9eb6e76a3f321a0984e1bc56df43ecc3cd30f5))
+* **ci:** disable components-ovh && fix components dependency to ensure build order ([9da5056](https://github.com/ovh/design-system/commit/9da505667b9a2e9a23eb797221f11de29671118b))
+* **ci:** ensure components.d.ts file is present ([f8cfd84](https://github.com/ovh/design-system/commit/f8cfd84a83fdf66379419cb8df40454870c46033))
+* **datagrid:** improve documentation ([0a05892](https://github.com/ovh/design-system/commit/0a058926eeecfffa9fbea73dad72efd50596faae))
+* **doc:** add missing define on menu story ([cfb4bd9](https://github.com/ovh/design-system/commit/cfb4bd97faadad61062351be42bbfd4c01ac6aae))
+* **doc:** fix typo ([befc995](https://github.com/ovh/design-system/commit/befc99545d644ffa9377c61fffcceb0190635d93))
+* **doc:** rm useless slotting in menu usage ([59ba550](https://github.com/ovh/design-system/commit/59ba5500a8cacdbbebb06662e2fddf4d18b81f9c))
+* **doc:** update install doc with new arch ([ab0e6dc](https://github.com/ovh/design-system/commit/ab0e6dc0e367b310889923ac6e194d34151e41b7))
+* **stencil:** use correct plugin order ([446422b](https://github.com/ovh/design-system/commit/446422beee7c65d5148e50ca6f5c15de1b32722c))
+
+
+### Features
+
+* **doc:** fix message e2e tests ([1dabcb2](https://github.com/ovh/design-system/commit/1dabcb20ea42e0ddf4825f1928c0e8501a9880b2))
+* **doc:** fix wrong imports ([bf49826](https://github.com/ovh/design-system/commit/bf49826df13ba525cae9b99f70a5ac6e8758594b))
+* **doc:** storybook misc fixes & new features ([2bba058](https://github.com/ovh/design-system/commit/2bba0584e89eaf38aa53fc1a97adfcfae58ea4fa))
+* **examples:** add examples project to test ODS integration internally ([76d2a36](https://github.com/ovh/design-system/commit/76d2a364560821c91fed48bd5c10ea2ea7c8fb1e))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [16.6.0](https://ovh.github.io/design-system/v16.6.0/?path=/docs/design-system-changelog--page) (2023-12-13)
 [compare](https://github.com/ovh/design-system/compare/v16.5.0...v16.6.0)
 

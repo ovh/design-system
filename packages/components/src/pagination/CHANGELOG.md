@@ -8,6 +8,27 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [17.0.0](https://ovh.github.io/design-system/v17.0.0/?path=/docs/design-system-changelog--page) (2024-01-02)
+[compare](https://github.com/ovh/design-system/compare/v16.6.0...v17.0.0)
+
+### Bug Fixes
+
+* **app:** resolve release conflicts && fix doc-api generation ([8d9eb6e](https://github.com/ovh/design-system/commit/8d9eb6e76a3f321a0984e1bc56df43ecc3cd30f5))
+
+
+### Features
+
+* **components:** generate updated docs ([62e1526](https://github.com/ovh/design-system/commit/62e1526fac078550b08f83d100611b7499d13312))
+* **doc:** storybook misc fixes & new features ([2bba058](https://github.com/ovh/design-system/commit/2bba0584e89eaf38aa53fc1a97adfcfae58ea4fa))
+* **pagination:** add odsPaginationItemPerPageChanged on itemPerPage change ([1233a3d](https://github.com/ovh/design-system/commit/1233a3d320b04824858921eff57e59736cfeb616))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [16.6.0](https://ovh.github.io/design-system/v16.6.0/?path=/docs/design-system-changelog--page) (2023-12-13)
 [compare](https://github.com/ovh/design-system/compare/v16.5.0...v16.6.0)
 

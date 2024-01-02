@@ -8,6 +8,25 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [17.0.0](https://ovh.github.io/design-system/v17.0.0/?path=/docs/design-system-changelog--page) (2024-01-02)
+[compare](https://github.com/ovh/design-system/compare/v16.6.0...v17.0.0)
+
+### Bug Fixes
+
+* **core:** config version ([adb8464](https://github.com/ovh/design-system/commit/adb8464f6d92300642802d629344d98f0793c08f))
+
+
+### Features
+
+* **doc:** storybook misc fixes & new features ([2bba058](https://github.com/ovh/design-system/commit/2bba0584e89eaf38aa53fc1a97adfcfae58ea4fa))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [16.6.0](https://ovh.github.io/design-system/v16.6.0/?path=/docs/design-system-changelog--page) (2023-12-13)
 [compare](https://github.com/ovh/design-system/compare/v16.5.0...v16.6.0)
 

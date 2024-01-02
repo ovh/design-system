@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [17.0.0](https://ovh.github.io/design-system/v17.0.0/?path=/docs/design-system-changelog--page) (2024-01-02)
+[compare](https://github.com/ovh/design-system/compare/v16.6.0...v17.0.0)
+
+### Bug Fixes
+
+* **stencil:** generate bundled components && fix datagrid components declaration ([fa64b1b](https://github.com/ovh/design-system/commit/fa64b1b5d06ee7f402285a3a345e5e952c80b6a3))
+* **stencil:** use correct plugin order ([446422b](https://github.com/ovh/design-system/commit/446422beee7c65d5148e50ca6f5c15de1b32722c))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

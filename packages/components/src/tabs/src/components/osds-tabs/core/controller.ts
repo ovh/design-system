@@ -8,26 +8,8 @@ import type { OsdsTabs } from '../osds-tabs';
  */
 class OdsTabsController {
   protected component: OsdsTabs;
-
-  public _tabItems: (Array<OsdsTabBarItem & HTMLElement>) = [];
-
-  public get tabItems(): (Array<OsdsTabBarItem & HTMLElement>) {
-    return this._tabItems;
-  }
-
-  public set tabItems(value: (Array<OsdsTabBarItem & HTMLElement>)) {
-    this._tabItems = value;
-  }
-
-  private _tabPanels: (Array<OsdsTabsPanel & HTMLElement>) = [];
-
-  public get tabPanels(): (Array<OsdsTabsPanel & HTMLElement>) {
-    return this._tabPanels;
-  }
-
-  public set tabPanels(value: (Array<OsdsTabsPanel & HTMLElement>)) {
-    this._tabPanels = value;
-  }
+  public tabItems: (Array<OsdsTabBarItem & HTMLElement>) = [];
+  public tabPanels: (Array<OsdsTabsPanel & HTMLElement>) = [];
 
   constructor(component: OsdsTabs) {
     this.component = component;
@@ -54,24 +36,25 @@ class OdsTabsController {
 
   handleArrowKey(event: KeyboardEvent): void {
     const currentSelectedTabIndex = this.tabItems.findIndex((tab) => tab.hasAttribute('active'));
-    if (currentSelectedTabIndex === -1 || typeof currentSelectedTabIndex === 'undefined' ) {
+
+    if (currentSelectedTabIndex === -1) {
+      return;
+    }
+    if (currentSelectedTabIndex === 0 && event.code === 'ArrowLeft') {
+      return;
+    }
+    if (currentSelectedTabIndex === this.tabItems.length - 1 && event.code === 'ArrowRight') {
       return;
     }
 
-    if(currentSelectedTabIndex === 0 && event.code === 'ArrowLeft') {
-      return;
-    }
-
-    if(currentSelectedTabIndex === this.tabItems.length - 1 && event.code === 'ArrowRight' ) {
-      return;
-    }
-
-    if(event.code === 'ArrowLeft') {
-      const previousPanel = this.tabItems[currentSelectedTabIndex - 1].getAttribute('panel');
-      this.changeActivePanel(previousPanel!);
-    } else {
-      const nextPanel = this.tabItems[currentSelectedTabIndex + 1].getAttribute('panel');
-      this.changeActivePanel(nextPanel!);
+    if (currentSelectedTabIndex >= 0 && this.tabItems.length > currentSelectedTabIndex - 1) {
+      if (event.code === 'ArrowLeft') {
+        const previousPanel = this.tabItems[currentSelectedTabIndex - 1].getAttribute('panel');
+        this.changeActivePanel(previousPanel!);
+      } else {
+        const nextPanel = this.tabItems[currentSelectedTabIndex + 1].getAttribute('panel');
+        this.changeActivePanel(nextPanel!);
+      }
     }
   }
 

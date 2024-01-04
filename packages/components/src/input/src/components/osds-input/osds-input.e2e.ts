@@ -411,6 +411,7 @@ describe('e2e:osds-input', () => {
 
       beforeEach(() => {
         odsInputValueChangeEventDetailBase = {
+          name: '',
           oldValue: '',
           validity: {
             invalid: false,

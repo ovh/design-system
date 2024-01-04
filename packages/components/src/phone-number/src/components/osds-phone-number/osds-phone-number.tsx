@@ -67,7 +67,7 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
     this.locale = this.controller.getDefaultLocale();
     this.handlerLocale(this.locale);
     if (this.value) {
-      this.handlerInputEvent({ value: this.value, validity: OdsCreateDefaultOdsValidityState() })
+      this.handlerInputEvent({ value: this.value, validity: OdsCreateDefaultOdsValidityState(), name: '' })
     }
   }
 
@@ -115,14 +115,14 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
   }
 
   private handlerInputEvent(event: OdsInputValueChangeEventDetail) {
-    this.value = event.value || '';
+    this.value = (event.value || '') as string;
     this.error = !this.isValidValue(this.value);
-    const number = this.controller.parseNumber(event.value);
-    const oldNumber = this.controller.parseNumber(event.oldValue);
+    const number = this.controller.parseNumber(this.value);
+    const oldNumber = this.controller.parseNumber(event.oldValue as string);
     this.odsValueChange.emit({
       ...event,
-      value: this.formatValue(number, this.value),
-      oldValue: this.formatValue(oldNumber, event.oldValue),
+      value: this.formatValue(number, this.value) ?? '',
+      oldValue: this.formatValue(oldNumber, event.oldValue as string),
       isoCode: this.isoCode,
       validity: {
         ...event.validity,

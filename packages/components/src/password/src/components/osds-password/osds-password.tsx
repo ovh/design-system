@@ -1,5 +1,5 @@
 import type { OdsPasswordAttribute } from './interfaces/attributes';
-import type { OdsFormForbiddenValues, ODS_COMMON_FIELD_SIZE } from '@ovhcloud/ods-common-core';
+import type { OdsFormForbiddenValues, OdsInputValue, ODS_COMMON_FIELD_SIZE } from '@ovhcloud/ods-common-core';
 import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import type { OdsPasswordMethod } from './interfaces/methods';
 import { OdsCommonFieldValidityState, ODS_COMMON_INPUT_TYPE } from '@ovhcloud/ods-common-core';
@@ -30,11 +30,13 @@ export class OsdsPassword implements OdsPasswordAttribute, OdsPasswordMethod  {
 
   @Prop({ reflect: true }) contrasted?: boolean = DEFAULT_ATTRIBUTE.contrasted;
 
-  @Prop({ reflect: true }) disabled?: boolean = DEFAULT_ATTRIBUTE.disabled;
+  @Prop({ reflect: true }) defaultValue: OdsInputValue = DEFAULT_ATTRIBUTE.defaultValue;
 
-  @Prop({ reflect: true }) error?: boolean = DEFAULT_ATTRIBUTE.error;
+  @Prop({ reflect: true }) disabled: boolean = DEFAULT_ATTRIBUTE.disabled;
 
-  @Prop({ reflect: true }) forbiddenValues: OdsFormForbiddenValues<number> = DEFAULT_ATTRIBUTE.forbiddenValues;
+  @Prop({ reflect: true }) error: boolean = DEFAULT_ATTRIBUTE.error;
+
+  @Prop({ reflect: true }) forbiddenValues?: OdsFormForbiddenValues<number | string> = DEFAULT_ATTRIBUTE.forbiddenValues;
 
   @Prop({ reflect: true }) inline?: boolean = DEFAULT_ATTRIBUTE.inline;
 
@@ -44,7 +46,7 @@ export class OsdsPassword implements OdsPasswordAttribute, OdsPasswordMethod  {
 
   @Prop({ reflect: true, mutable: true }) masked?: boolean = DEFAULT_ATTRIBUTE.masked;
 
-  @Prop({ reflect: true }) name?: string = DEFAULT_ATTRIBUTE.name;
+  @Prop({ reflect: true }) name: string = DEFAULT_ATTRIBUTE.name;
 
   @Prop({ reflect: true }) placeholder?: string = DEFAULT_ATTRIBUTE.placeholder;
 
@@ -52,7 +54,7 @@ export class OsdsPassword implements OdsPasswordAttribute, OdsPasswordMethod  {
 
   @Prop({ reflect: true }) required?: boolean = DEFAULT_ATTRIBUTE.required;
 
-  @Prop({ reflect: true }) size?: ODS_COMMON_FIELD_SIZE = DEFAULT_ATTRIBUTE.size;
+  @Prop({ reflect: true }) size: ODS_COMMON_FIELD_SIZE = DEFAULT_ATTRIBUTE.size;
 
   @Prop({ reflect: true, mutable: true }) value = DEFAULT_ATTRIBUTE.value;
 

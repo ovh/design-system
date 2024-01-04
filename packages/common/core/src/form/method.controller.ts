@@ -9,7 +9,7 @@ interface OdsCommonFieldComponent {
   defaultValue?: OdsInputValue | string | Date | HTMLInputElement['value'];
   disabled?: boolean;  
   emitFocus?: () => void;
-  forbiddenValues?: OdsFormForbiddenValues;
+  forbiddenValues?: OdsFormForbiddenValues<string | number>;
   hasFocus?: boolean
   inputEl?: HTMLInputElement;
   masked?: boolean;
@@ -95,7 +95,7 @@ class OdsCommonFieldMethodController implements OdsCommonFieldMethod {
   hasForbiddenValue(): boolean {
     switch (this.component.type) {
     case 'number':
-      return this.component.forbiddenValues?.some((forbiddenValue: number | { min: number, max: number }) => {
+      return this.component.forbiddenValues?.some((forbiddenValue:  string | number | { min: number, max: number }) => {
         if (typeof forbiddenValue === 'number') {
           return forbiddenValue.toString() === this.component.value?.toString();
         }
@@ -114,8 +114,8 @@ class OdsCommonFieldMethodController implements OdsCommonFieldMethod {
     }
   }
 
-  private hasMinMax(value: number | { min: number, max: number }): value is { min: number, max: number } {
-    return typeof value !== 'number' && 'min' in value && 'max' in value;
+  private hasMinMax(value: string | number | { min: number, max: number }): value is { min: number, max: number } {
+    return typeof value !== 'string' && typeof value !== 'number' && 'min' in value && 'max' in value;
   }
 } 
 

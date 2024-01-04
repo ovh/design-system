@@ -151,6 +151,7 @@ describe('e2e:osds-phone-number', () => {
       expect(spyOdsValueChange).toHaveReceivedEventTimes(1);
       expect(spyOdsValueChange).toHaveReceivedEventDetail({
         isoCode: 'fr',
+        name: '',
         value: '+33655998866',
         oldValue: '',
         validity: {
@@ -174,6 +175,7 @@ describe('e2e:osds-phone-number', () => {
       expect(spyOdsValueChange).toHaveReceivedEventTimes(1);
       expect(spyOdsValueChange).toHaveReceivedEventDetail({
         isoCode: 'fr',
+        name: '',
         value: '0',
         oldValue: '',
         validity: {
@@ -197,6 +199,7 @@ describe('e2e:osds-phone-number', () => {
       expect(spyOdsValueChange).toHaveReceivedEventTimes(4);
       expect(spyOdsValueChange).toHaveReceivedEventDetail({
         isoCode: 'fr',
+        name: '',
         value: '0642',
         oldValue: '064',
         validity: {

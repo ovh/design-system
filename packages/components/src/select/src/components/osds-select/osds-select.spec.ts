@@ -203,10 +203,10 @@ describe('spec:osds-select', () => {
       expect(htmlSelect?.value).toBe('');
     });
 
-    it('should call setInputTabindex function and inputTabindex should be set to 4', async() => {
+    it('should call setTabindex function and inputTabindex should be set to 4', async() => {
       await setup({ attributes: { value: 2 } });
       expect(instance).toBeTruthy();
-      await instance.setInputTabindex(4);
+      await instance.setTabindex(4);
       expect(instance?.tabindex).toBe(4);
     });
 

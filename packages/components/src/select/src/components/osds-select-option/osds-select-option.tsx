@@ -4,12 +4,10 @@ import type { OdsSelectOptionMethod } from './interfaces/methods';
 import type { OsdsSelect } from '../osds-select/osds-select';
 import type { OdsInputValue } from '@ovhcloud/ods-common-core';
 import type { HTMLStencilElement } from '@stencil/core/internal';
-
+import type { ODS_SELECT_SIZE } from '../osds-select/constants/select-size';
 import { Component, Element, Event, EventEmitter, Host, Method, Prop, State, h } from '@stencil/core';
-
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { DEFAULT_ATTRIBUTE as SELECT_DEFAULT_ATTRIBUTE } from '../osds-select/constants/default-attributes';
-
 
 /**
  * @slot (unnamed) - Select option content
@@ -35,7 +33,7 @@ export class OsdsSelectOption implements OdsSelectOptionAttribute, OdsSelectOpti
    * The size of the select option
    * @internal
    */
-  @State() size = SELECT_DEFAULT_ATTRIBUTE.size;
+  @State() size: ODS_SELECT_SIZE = SELECT_DEFAULT_ATTRIBUTE.size;
 
   componentWillLoad() {
     this.selectParent = this.el.closest('osds-select') as (HTMLStencilElement & OsdsSelect) | null;

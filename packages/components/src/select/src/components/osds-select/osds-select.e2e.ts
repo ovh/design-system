@@ -5,10 +5,20 @@ import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { newE2EPage } from '@stencil/core/testing';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { ODS_SELECT_SIZE } from './constants/select-size';
 
 describe('e2e:osds-select', () => {
-  const baseAttribute = { ariaLabel: null, ariaLabelledby: '', color: ODS_THEME_COLOR_INTENT.primary, defaultValue: '', disabled: false, inline: false, required: false, size: ODS_SELECT_SIZE.md, value: '' };
+  const baseAttribute = {
+    ariaLabel: null,
+    ariaLabelledby: '',
+    color: ODS_THEME_COLOR_INTENT.primary,
+    defaultValue: '',
+    disabled: false,
+    error: false,
+    inline: false,
+    name: '',
+    required: false,
+    value: '',
+  };
   let page: E2EPage;
   let el: E2EElement;
   let divElement: E2EElement;
@@ -107,10 +117,10 @@ describe('e2e:osds-select', () => {
   // TODO getValidity
   // TODO getSelection
 
-  describe('method:setInputTabindex', () => {
-    it('should set inputTabindex to -1', async() => {
+  describe('method:setTabindex', () => {
+    it('should set tabindex to -1', async() => {
       await setup({ attributes: { } });
-      await el.callMethod('setInputTabindex', '-1');
+      await el.callMethod('setTabindex', '-1');
       await page.waitForChanges();
       const value = el.getAttribute('tabindex');
       expect(value).toBe('-1');
@@ -123,7 +133,7 @@ describe('e2e:osds-select', () => {
       await el.callMethod('clear');
       await page.waitForChanges();
       const value = await el.getProperty('value');
-      expect(value).toBe('');
+      expect(value).toBe(null);
     });
   });
 
@@ -134,7 +144,7 @@ describe('e2e:osds-select', () => {
       await page.waitForChanges();
       const value = await el.getProperty('value');
       await page.waitForChanges();
-      expect(value).toBe(`${DEFAULT_ATTRIBUTE.defaultValue}`);
+      expect(value).toBe(null);
     });
 
     it('should set the value to defaultValue', async() => {
@@ -162,14 +172,21 @@ describe('e2e:osds-select', () => {
 
       beforeEach(() => {
         odsSelectValueChangeEventDetailBase = {
+          name: '',
           oldValue: '',
           validity: {
-            invalid: false,
-            stepMismatch: false,
-            valid: true,
-            valueMissing: false,
+            badInput: false,
             customError: false,
             forbiddenValue: false,
+            patternMismatch: false,
+            rangeOverflow: false,
+            rangeUnderflow: false,
+            stepMismatch: false,
+            tooLong: false,
+            tooShort: false,
+            typeMismatch: false,
+            valid: true,
+            valueMissing: false,
           },
           value: '',
           selection: null,

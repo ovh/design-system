@@ -3,14 +3,25 @@ import type { SpecPage } from '@stencil/core/testing';
 import { OdsLogger } from '@ovhcloud/ods-common-core';
 import { OdsMockNativeMethod, OdsMockPropertyDescriptor } from '@ovhcloud/ods-common-testing';
 import { newSpecPage } from '@stencil/core/testing';
-
 import { OsdsSelectGroup } from './osds-select-group';
-import { DEFAULT_VALIDITY_STATE } from '../osds-select/constants/default-validity-state';
 
 const logger = new OdsLogger('osds-select-group-spec');
 
 // mock validity property that does not exist when stencil mock HTMLInputElement
-OdsMockPropertyDescriptor(HTMLInputElement.prototype, 'validity', () => DEFAULT_VALIDITY_STATE);
+OdsMockPropertyDescriptor(HTMLInputElement.prototype, 'validity', () => ({
+  badInput: false,
+  customError: false,
+  forbiddenValue: false,
+  patternMismatch: false,
+  rangeOverflow: false,
+  rangeUnderflow: false,
+  stepMismatch: false,
+  tooLong: false,
+  tooShort: false,
+  typeMismatch: false,
+  valid: true,
+  valueMissing: false,
+}));
 
 describe('spec:osds-select-group', () => {
   logger.log('init');

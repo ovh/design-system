@@ -34,17 +34,30 @@
   <osds-select-option value="Home"><osds-icon name='home' size='sm'></osds-icon> Home</osds-select-option>
 </osds-select>
 
-<h3>default</h3>
+<h3>default in form</h3>
 <div style="text-align:center">
-  <osds-select id="select1">
-    <osds-select-group>Group title</osds-select-group>
-    <osds-select-option value="1">hezh <strong>Value 1</strong></osds-select-option>
-    <osds-select-option value="2">Value 2</osds-select-option>
-    <osds-select-option value="3">Value 3</osds-select-option>
-  </osds-select>
-  <button onclick="select1Toggle(event)">toggle</button>
+  <form id="formSelect1">
+    <osds-select id="select1">
+      <osds-select-group>Group title</osds-select-group>
+      <osds-select-option value="1">hezh <strong>Value 1</strong></osds-select-option>
+      <osds-select-option value="2">Value 2</osds-select-option>
+      <osds-select-option value="3">Value 3</osds-select-option>
+    </osds-select>
+    <button type="submit" onclick="select1Toggle(event)">toggle</button>
+
+  </form>
   <p id="select1-info"></p>
 </div>
+
+<script>
+  const form = document.getElementById('formSelect1');
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    console.log('event', event);
+    const formData = new FormData(formSelect1);
+    console.log('formData', formData);
+  });
+</script>
 
 <h3>with placeholder</h3>
 <osds-select id="select2">

@@ -1,6 +1,5 @@
-import { OsdsForm } from '../osds-form';
 import { OdsFormController } from './controller';
-
+import { OsdsForm } from '../osds-form';
 
 class OdsFormMock extends OsdsForm {
   constructor(attribute: Partial<OsdsForm>) {
@@ -13,7 +12,7 @@ describe('spec:ods-form-controller', () => {
   let controller: OdsFormController;
   let component: OdsFormMock;
 
-  function setup(attributes: Partial<OdsFormMock> = {}) {
+  function setup(attributes: Partial<OdsFormMock> = {}): void {
     component = new OdsFormMock(attributes);
     controller = new OdsFormController(component);
   }
@@ -23,7 +22,7 @@ describe('spec:ods-form-controller', () => {
   });
 
   it('should parse string initialValues', () => {
-    setup({ initialValues: '{"firstName": "Jean", "test": ""}'});
+    setup({ initialValues: '{"firstName": "Jean", "test": ""}' });
     const initialValues = controller.getInitialValues();
     expect(initialValues).toBeInstanceOf(Object);
     expect(initialValues.firstName).toBe('Jean');
@@ -31,11 +30,10 @@ describe('spec:ods-form-controller', () => {
   });
 
   it('should parse initialValues', () => {
-    setup({ initialValues: {"firstName": "Jean", "test": ""}});
+    setup({ initialValues: { 'firstName': 'Jean', 'test': '' } });
     const initialValues = controller.getInitialValues();
     expect(initialValues).toBeInstanceOf(Object);
     expect(initialValues.firstName).toBe('Jean');
     expect(initialValues.test).toBe('');
-  })
-
+  });
 });

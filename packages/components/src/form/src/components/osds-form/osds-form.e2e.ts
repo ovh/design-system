@@ -10,7 +10,6 @@ describe('e2e:osds-form', () => {
   let buttonReset: E2EElement;
   let buttonSubmit: E2EElement;
   let osdsInput: E2EElement;
-  let inutFirstName: E2EElement;
 
   async function setup({ attributes= {} }: { attributes?: Partial<OdsFormAttribute> }): Promise<void> {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsFormAttribute>(attributes, DEFAULT_ATTRIBUTE);
@@ -39,7 +38,6 @@ describe('e2e:osds-form', () => {
     buttonReset = await page.find('osds-button[type="reset"]');
     buttonSubmit = await page.find('osds-button[type="submit"]');
     osdsInput = await page.find('osds-input[name="osdsInput"]');
-    inutFirstName = await page.find('osds-input[name="firstName"]');
   }
 
   it('should render', async() => {
@@ -49,29 +47,29 @@ describe('e2e:osds-form', () => {
 
   describe('Event', () => {
     it('should reset form field', async() => {
-      await setup({ attributes: { initialValues: { osdsInput: '', firstName: '' } } });
+      await setup({ attributes: { initialValues: { firstName: '', osdsInput: '' } } });
       const resetSpy = await page.spyOnEvent('odsOnReset');
       await osdsInput.type('some test');
       await buttonReset.click();
-      expect(await el.callMethod('getFormValues')).toEqual({ osdsInput: '', firstName: '' });
+      expect(await el.callMethod('getFormValues')).toEqual({ firstName: '', osdsInput: '' });
       expect(resetSpy).toHaveReceivedEventTimes(1);
     });
 
     it('should submit form field', async() => {
-      await setup({ attributes: { initialValues: { osdsInput: '', firstName: '' } } });
+      await setup({ attributes: { initialValues: { firstName: '', osdsInput: '' } } });
       await osdsInput.type('some test');
       const submitSpy = await page.spyOnEvent('odsOnSubmit');
       await buttonSubmit.click();
-      expect(await el.callMethod('getFormValues')).toEqual({ osdsInput: 'some test', firstName: '' });
+      expect(await el.callMethod('getFormValues')).toEqual({ firstName: '', osdsInput: 'some test' });
       expect(submitSpy).toHaveReceivedEventTimes(1);
     });
 
     it('should not submit because of invalid form', async() => {
-      await setup({ attributes: { initialValues: { osdsInput: '', firstName: '' } } });
+      await setup({ attributes: { initialValues: { firstName: '', osdsInput: '' } } });
       const submitSpy = await page.spyOnEvent('odsOnSubmit');
       await el.callMethod('setFieldError', 'osdsInput', true);
       await buttonSubmit.click();
-      expect(await el.callMethod('getFormValues')).toEqual({ osdsInput: '', firstName: '' });
+      expect(await el.callMethod('getFormValues')).toEqual({ firstName: '', osdsInput: '' });
       expect(submitSpy).toHaveReceivedEventTimes(0);
     });
   });

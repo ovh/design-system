@@ -872,6 +872,10 @@ export namespace Components {
         /**
           * Indicates if the input is masked or not
          */
+        "masked"?: boolean;
+        /**
+          * Maximum value for the input (type number)
+         */
         "max"?: number;
         /**
           * Minimum value for the input (type number)
@@ -896,6 +900,10 @@ export namespace Components {
         /**
           * Indicates if the input is required or not
          */
+        "required"?: boolean;
+        /**
+          * restore the value to the initial state
+         */
         "reset": () => Promise<void>;
         /**
           * active the focus on the input in order to let the user write something
@@ -906,6 +914,12 @@ export namespace Components {
           * @param value - chosen index
          */
         "setTabindex": (value: number) => Promise<void>;
+        /**
+          * Step value for the input
+         */
+        "step"?: number;
+        "stepDown": () => Promise<void>;
+        "stepUp": () => Promise<void>;
         /**
           * Step value for the input
          */
@@ -1483,68 +1497,88 @@ export namespace Components {
         "value": string;
     }
     interface OsdsSelect {
+        /**
+          * The corresponding aria-label describing its content
+          * @see OdsSelectAttribute.ariaLabel
+         */
         "ariaLabel": string | null;
         /**
-          * ID of the element that labels the input
+          * The id to an external description
+          * @see OdsSelectAttribute.ariaLabelledby
          */
-        "ariaLabelledby": string | undefined;
+        "ariaLabelledby": string;
         /**
-          * empty the value
+          * erase the current selection
+          * @see OdsSelectMethods.clear
          */
         "clear": () => Promise<void>;
         /**
-          * Main color of the input: see component principles
+          * the primary color of the theme
+          * @see OdsSelectAttribute.color
          */
         "color": ODS_THEME_COLOR_INTENT;
         /**
-          * Default value of the input
+          * Its corresponding default value. It needs to match with one option so the option will be selected
+          * @see OdsSelectAttribute.defaultValue
          */
         "defaultValue": OdsInputValue;
         /**
-          * Indicates if the input is disabled or not: see component principles
+          * indicates if the select is entirely disabled. it means no interactions (hover, click, focus, etc)
+          * @see OdsSelectAttribute.disabled
          */
         "disabled": boolean;
         /**
-          * Indicates if the input shows error or not
+          * indicates if the select has an error.
+          * @see OdsSelectAttribute.error
          */
-        "error": boolean;
+        "error": boolean | undefined;
         /**
           * get the validity state
+          * @see OdsSelectMethods.getValidity
          */
         "getValidity": () => Promise<OdsValidityState>;
         /**
           * full width or not: see component principles
+          * @see OdsSelectAttribute.inline
          */
         "inline": boolean;
         /**
-          * Name of the input field
-         */
-        "name": string;
-        /**
-          * opened or not
+          * Whether or not the select is open
          */
         "opened": boolean;
         /**
-          * Indicates if the input is required or not
+          * indicates if a value has to be selected
+          * @see OdsSelectAttribute.required
          */
-        "required": boolean | undefined;
+        "required": boolean;
+        /**
+          * reset the value to the initial one (default value)
+          * @see OdsSelectMethods.reset
+         */
         "reset": () => Promise<void>;
         /**
-          * active the focus on the input in order to let the user write something
+          * focus the element
+          * @see OdsSelectMethods.setFocus
          */
         "setFocus": () => Promise<void>;
         /**
-          * set a custom tab index for easier navigation
-          * @param value - chosen index
+          * set tab index on the component
+          * @see OdsSelectMethods.setInputTabindex
          */
-        "setTabindex": (value: number) => Promise<void>;
+        "setInputTabindex": (value: number) => Promise<void>;
         /**
-          * Size of the input: see component principles
+          * size: see component principles
+          * @see OdsSelectAttribute.size
          */
         "size": ODS_SELECT_SIZE;
+        /**
+          * check that the select is valid or not. In case of required field, the validation will check the entered value and set the field in error if it is not fulfilled
+          * @see OdsSelectMethods.setInputTabindex
+         */
         "validate": () => Promise<OdsValidityState>;
         /**
-          * Type of the input field
+          * Its corresponding value. It needs to correspond to the value of the option
+          * @see OdsSelectAttribute.value
          */
         "value": OdsInputValue;
     }
@@ -2607,8 +2641,6 @@ declare global {
     interface HTMLOsdsSelectElementEventMap {
         "odsValueChange": OdsSelectValueChangeEventDetail;
         "odsFocus": void;
-        "odsClear": void;
-        "odsReset": void;
         "odsBlur": void;
     }
     interface HTMLOsdsSelectElement extends Components.OsdsSelect, HTMLStencilElement {
@@ -3550,6 +3582,10 @@ declare namespace LocalJSX {
         /**
           * ID of the element that labels the input
          */
+        "ariaLabelledby"?: string;
+        /**
+          * Ability to clear the input value
+         */
         "clearable"?: boolean;
         /**
           * Default value of the input
@@ -4190,54 +4226,73 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface OsdsSelect {
+        /**
+          * The corresponding aria-label describing its content
+          * @see OdsSelectAttribute.ariaLabel
+         */
         "ariaLabel"?: string | null;
         /**
-          * ID of the element that labels the input
+          * The id to an external description
+          * @see OdsSelectAttribute.ariaLabelledby
          */
-        "ariaLabelledby"?: string | undefined;
+        "ariaLabelledby"?: string;
         /**
-          * Main color of the input: see component principles
+          * the primary color of the theme
+          * @see OdsSelectAttribute.color
          */
         "color"?: ODS_THEME_COLOR_INTENT;
         /**
-          * Default value of the input
+          * Its corresponding default value. It needs to match with one option so the option will be selected
+          * @see OdsSelectAttribute.defaultValue
          */
         "defaultValue"?: OdsInputValue;
         /**
-          * Indicates if the input is disabled or not: see component principles
+          * indicates if the select is entirely disabled. it means no interactions (hover, click, focus, etc)
+          * @see OdsSelectAttribute.disabled
          */
         "disabled"?: boolean;
         /**
-          * Indicates if the input shows error or not
+          * indicates if the select has an error.
+          * @see OdsSelectAttribute.error
          */
-        "error"?: boolean;
+        "error"?: boolean | undefined;
         /**
           * full width or not: see component principles
+          * @see OdsSelectAttribute.inline
          */
         "inline"?: boolean;
         /**
-          * Name of the input field
+          * Event triggered on select blur
+          * @see OdsSelectEvents.odsBlur
          */
-        "name"?: string;
         "onOdsBlur"?: (event: OsdsSelectCustomEvent<void>) => void;
-        "onOdsClear"?: (event: OsdsSelectCustomEvent<void>) => void;
+        /**
+          * Event triggered on select focus
+          * @see OdsSelectEvents.odsFocus
+         */
         "onOdsFocus"?: (event: OsdsSelectCustomEvent<void>) => void;
-        "onOdsReset"?: (event: OsdsSelectCustomEvent<void>) => void;
+        /**
+          * Emitted when the value has changed
+          * @see OdsSelectEvent.odsValueChange
+         */
         "onOdsValueChange"?: (event: OsdsSelectCustomEvent<OdsSelectValueChangeEventDetail>) => void;
         /**
-          * opened or not
+          * Whether or not the select is open
          */
         "opened"?: boolean;
         /**
-          * Indicates if the input is required or not
+          * indicates if a value has to be selected
+          * @see OdsSelectAttribute.required
          */
-        "required"?: boolean | undefined;
+        "required"?: boolean;
         /**
-          * Size of the input: see component principles
+          * size: see component principles
+          * @see OdsSelectAttribute.size
          */
         "size"?: ODS_SELECT_SIZE;
         /**
-          * Type of the input field
+          * Its corresponding value. It needs to correspond to the value of the option
+          * @see OdsSelectAttribute.value
          */
         "value"?: OdsInputValue;
     }

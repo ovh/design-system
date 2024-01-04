@@ -1,4 +1,4 @@
-import { OdsInputValue } from '@ovhcloud/ods-common-core';
+import type { OdsInputValue } from '@ovhcloud/ods-common-core';
 
 interface OdsFormMethod {
   /**
@@ -44,5 +44,5 @@ interface OdsFormMethod {
 }
 
 export type {
-    OdsFormMethod,
+  OdsFormMethod,
 };

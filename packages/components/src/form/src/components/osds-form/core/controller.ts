@@ -1,6 +1,6 @@
-import { OdsInputValue, parseStringToRecord } from '@ovhcloud/ods-common-core';
-import { OsdsForm } from '../osds-form';
-
+import type { OsdsForm } from '../osds-form';
+import type { OdsInputValue } from '@ovhcloud/ods-common-core';
+import { parseStringToRecord } from '@ovhcloud/ods-common-core';
 
 class OdsFormController {
   constructor(private readonly component: OsdsForm) {
@@ -13,7 +13,6 @@ class OdsFormController {
     };
     return parseStringToRecord(this.component.initialValues, onError);
   }
- 
 }
 
 export {

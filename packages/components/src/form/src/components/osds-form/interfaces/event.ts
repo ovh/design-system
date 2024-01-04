@@ -1,4 +1,4 @@
-import type { OdsInputValue } from "@ovhcloud/ods-common-core";
+import type { OdsInputValue } from '@ovhcloud/ods-common-core';
 import type { EventEmitter } from '@stencil/core';
 
 interface OdsFormEvent {

@@ -1,33 +1,16 @@
 import type { OsdsSelectOption } from '../../osds-select-option/osds-select-option';
-import type { OdsInputValue, OdsValidityState } from '@ovhcloud/ods-common-core';
-import type { EventEmitter } from '@stencil/core';
+import type { OdsCommonFieldEvent, OdsCommonFieldValueChangeEventDetail } from '@ovhcloud/ods-common-core';
 
-interface OdsSelectValueChangeEventDetail {
-  name?: string,
-  oldValue?: OdsInputValue,
+
+interface OdsSelectValueChangeEventDetail extends OdsCommonFieldValueChangeEventDetail {
   selection: OsdsSelectOption | null,
-  validity: OdsValidityState,
-  value: OdsInputValue,
 }
 
 type OdsSelectValueChangeEvent = CustomEvent<OdsSelectValueChangeEventDetail>;
 
-interface OdsSelectEvent {
-  /**
-   * Event triggered on select blur
-   */
-  odsBlur: EventEmitter<void>;
-  /**
-   * Event triggered on select focus
-   */
-  odsFocus: EventEmitter<void>;
-  /**
-   * Emitted when the value has changed
-   */
-  odsValueChange: EventEmitter<OdsSelectValueChangeEventDetail>;
-}
+type OdsSelectEvent = OdsCommonFieldEvent<OdsSelectValueChangeEventDetail>;
 
-export {
+export type {
   OdsSelectEvent,
   OdsSelectValueChangeEvent,
   OdsSelectValueChangeEventDetail,

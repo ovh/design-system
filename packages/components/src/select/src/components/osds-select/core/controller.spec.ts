@@ -20,7 +20,7 @@ class OdsSelectMock {
 }
 
 describe('spec:ods-select-controller', () => {
-  let controller: OdsSelectController;
+  let controller: OdsSelectController<OsdsSelect>;
   let component: OsdsSelect;
   let item1: OsdsSelectOption & HTMLElement;
   let item2: OsdsSelectOption & HTMLElement;

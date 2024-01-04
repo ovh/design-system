@@ -11,9 +11,9 @@ import { OdsPasswordController } from './core/controller';
 
 @Component({
   formAssociated: true,
-  tag: 'osds-password',
-  styleUrl: 'osds-password.scss',
   shadow: true,
+  styleUrl: 'osds-password.scss',
+  tag: 'osds-password',
 })
 export class OsdsPassword implements OdsPasswordAttribute, OdsPasswordEvent, OdsPasswordMethod {
   private controller = new OdsPasswordController(this);

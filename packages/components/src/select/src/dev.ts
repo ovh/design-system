@@ -104,8 +104,6 @@ export default function() {
 
   (window as any).select5ValidateMySelect = function() {
     logger.log('select5ValidateMySelect');
-    examples.select5.component?.validate()
-      .then((validity) => logger.log('select5 validity', validity));
   };
 
   (window as any).select5Clear = function() {

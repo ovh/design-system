@@ -49,7 +49,6 @@ import { OsdsRadio } from "./radio/src/components/osds-radio/osds-radio";
 import { OdsRangeValue } from "./range/src/components/osds-range/interfaces/value";
 import { OdsRangeValueChangeEventDetail } from "./range/src/components/osds-range/interfaces/events";
 import { OdsSearchbarOption } from "./search-bar/src/components/osds-search-bar/interfaces/attributes";
-import { ODS_SELECT_SIZE } from "./select/src/components/osds-select/constants/select-size";
 import { OdsSelectValueChangeEventDetail } from "./select/src/components/osds-select/interfaces/events";
 import { OdsSelectOptionClickEventDetail } from "./select/src/components/osds-select-option/interfaces/events";
 import { ODS_SKELETON_SIZE } from "./skeleton/src/components/osds-skeleton/constants/skeleton-size";
@@ -112,7 +111,6 @@ export { OsdsRadio } from "./radio/src/components/osds-radio/osds-radio";
 export { OdsRangeValue } from "./range/src/components/osds-range/interfaces/value";
 export { OdsRangeValueChangeEventDetail } from "./range/src/components/osds-range/interfaces/events";
 export { OdsSearchbarOption } from "./search-bar/src/components/osds-search-bar/interfaces/attributes";
-export { ODS_SELECT_SIZE } from "./select/src/components/osds-select/constants/select-size";
 export { OdsSelectValueChangeEventDetail } from "./select/src/components/osds-select/interfaces/events";
 export { OdsSelectOptionClickEventDetail } from "./select/src/components/osds-select-option/interfaces/events";
 export { ODS_SKELETON_SIZE } from "./skeleton/src/components/osds-skeleton/constants/skeleton-size";
@@ -1103,6 +1101,9 @@ export namespace Components {
           * Indicates if the password is in loading state or not
          */
         "loading"?: boolean;
+        /**
+          * Indicates if the input is masked or not
+         */
         "masked"?: boolean;
         /**
           * Name of the password field
@@ -1460,7 +1461,7 @@ export namespace Components {
         /**
           * The id to an external description
          */
-        "ariaLabelledby": string;
+        "ariaLabelledby": string | undefined;
         /**
           * erase the current selection
          */
@@ -1480,15 +1481,15 @@ export namespace Components {
         /**
           * indicates if the select has an error.
          */
-        "error": boolean | undefined;
+        "error": boolean;
         /**
-          * get the validity state
+          * return the element validity
          */
-        "getValidity": () => Promise<OdsValidityState>;
+        "getValidity": () => Promise<OdsCommonFieldValidityState>;
         /**
           * full width or not: see component principles
          */
-        "inline": boolean;
+        "inline": boolean | undefined;
         /**
           * name of the select field
          */
@@ -1504,6 +1505,7 @@ export namespace Components {
         /**
           * reset the value to the initial one (default value)
          */
+        "required": boolean | undefined;
         "reset": () => Promise<void>;
         /**
           * focus the element
@@ -1512,7 +1514,7 @@ export namespace Components {
         /**
           * set tab index on the component
          */
-        "setInputTabindex": (value: number) => Promise<void>;
+        "setTabindex": (value: number) => Promise<void>;
         /**
           * size: see component principles
          */
@@ -2563,6 +2565,8 @@ declare global {
     interface HTMLOsdsSelectElementEventMap {
         "odsValueChange": OdsSelectValueChangeEventDetail;
         "odsFocus": void;
+        "odsClear": void;
+        "odsReset": void;
         "odsBlur": void;
     }
     interface HTMLOsdsSelectElement extends Components.OsdsSelect, HTMLStencilElement {
@@ -3768,6 +3772,9 @@ declare namespace LocalJSX {
           * Indicates if the password is in loading state or not
          */
         "loading"?: boolean;
+        /**
+          * Indicates if the input is masked or not
+         */
         "masked"?: boolean;
         /**
           * Name of the password field
@@ -4159,7 +4166,7 @@ declare namespace LocalJSX {
         /**
           * The id to an external description
          */
-        "ariaLabelledby"?: string;
+        "ariaLabelledby"?: string | undefined;
         /**
           * the primary color of the theme
          */
@@ -4175,11 +4182,11 @@ declare namespace LocalJSX {
         /**
           * indicates if the select has an error.
          */
-        "error"?: boolean | undefined;
+        "error"?: boolean;
         /**
           * full width or not: see component principles
          */
-        "inline"?: boolean;
+        "inline"?: boolean | undefined;
         /**
           * name of the select field
          */
@@ -4187,6 +4194,7 @@ declare namespace LocalJSX {
         /**
           * Event triggered on select blur
          */
+        "name"?: string;
         "onOdsBlur"?: (event: OsdsSelectCustomEvent<void>) => void;
         /**
           * Event triggered on select focus
@@ -4203,17 +4211,29 @@ declare namespace LocalJSX {
         /**
           * indicates if a value has to be selected
          */
-        "required"?: boolean;
+        "required"?: boolean | undefined;
         /**
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
           * size: see component principles
          */
         "size"?: ODS_SELECT_SIZE;
-        /**
           * Its corresponding value. It needs to correspond to the value of the option
+=======
+          * Size of the input: see component principles
+         */
+        "size"?: ODS_SELECT_SIZE;
+=======
+          * Type of the input field
+=======
+          * Value of the input field
+>>>>>>> 6640060e3 (fix(select): add to exemple)
          */
         "value"?: OdsInputValue;
     }
     interface OsdsSelectGroup {
+>>>>>>> 6bb26e8f9 (feat(select): v2 form methods)
     }
     interface OsdsSelectOption {
         /**

@@ -1,21 +1,15 @@
 import type { OdsSelectOptionAttribute } from './interfaces/attributes';
 import type { SpecPage } from '@stencil/core/testing';
-
-import { OdsCreateDefaultValidityState, OdsLogger } from '@ovhcloud/ods-common-core';
+import { OdsCreateDefaultValidityState } from '@ovhcloud/ods-common-core';
 import { OdsMockNativeMethod, OdsMockPropertyDescriptor, odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 import { newSpecPage } from '@stencil/core/testing';
-
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OsdsSelectOption } from './osds-select-option';
-
-
-const logger = new OdsLogger('osds-select-option-spec');
 
 // mock validity property that does not exist when stencil mock HTMLInputElement
 OdsMockPropertyDescriptor(HTMLInputElement.prototype, 'validity', () => OdsCreateDefaultValidityState());
 
 describe('spec:osds-select-option', () => {
-  logger.log('init');
   const baseAttribute = { value: '' };
   let page: SpecPage;
   let instance: OsdsSelectOption;

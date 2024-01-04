@@ -13,6 +13,10 @@
   align-items: center;
   width: fit-content;
 
+  > ::slotted(span) {
+    display: grid;
+  }
+
   .radio-button {
     position:relative;
     border-style: solid;
@@ -42,10 +46,6 @@
   @include osds-radio-button-on-main-element {
     cursor: not-allowed;
   }
-}
-
-slot {
-  display: block;
 }
 
 // apply the theme template for the component

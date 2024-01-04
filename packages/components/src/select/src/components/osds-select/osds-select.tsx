@@ -5,15 +5,12 @@ import type { OdsSelectMethod } from './interfaces/methods';
 import type { OdsSelectOptionClickEventDetail } from '../osds-select-option/interfaces/events';
 import type { OsdsSelectOption } from '../osds-select-option/osds-select-option';
 import type { OcdkSurface } from '@ovhcloud/ods-cdk';
-import type { OdsInputValue, OdsValidityState } from '@ovhcloud/ods-common-core';
 import type { HTMLStencilElement } from '@stencil/core/internal';
-
+import { OdsCommonFieldMethodController, OdsInputValue, OdsValidityState } from '@ovhcloud/ods-common-core';
 import { ocdkAssertEventTargetIsNode, ocdkDefineCustomElements, ocdkIsSurface } from '@ovhcloud/ods-cdk';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_ICON_NAME, ODS_ICON_SIZE } from '../../../../icon/src';
 import { Component, Element, Event, EventEmitter, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
-
-
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { DEFAULT_VALIDITY_STATE } from './constants/default-validity-state';
 import { OdsSelectController } from './core/controller';
@@ -38,6 +35,12 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
   dirty = false;
   selectedLabelSlot: HTMLElement | null = null;
   observer?: MutationObserver;
+  commonFieldMethodController = new OdsCommonFieldMethodController(this);
+  optionSelected: OsdsSelectOption | null = null;
+
+  @State() selectedOptionLabel = '';
+
+  @State() validityState: OdsValidityState = DEFAULT_VALIDITY_STATE;
 
   @Element() el!: HTMLStencilElement;
 
@@ -47,60 +50,42 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
    */
   @State() tabindex = 0;
 
-  /**
-   * Whether or not the select is open
-   */
-  @Prop({ reflect: true, mutable: true }) opened = false;
-
-  /** @see OdsSelectAttribute.ariaLabel */
   @Prop({ reflect: true }) ariaLabel = DEFAULT_ATTRIBUTE.ariaLabel;
 
-  /** @see OdsSelectAttribute.ariaLabelledby */
   @Prop() ariaLabelledby = DEFAULT_ATTRIBUTE.ariaLabelledby;
 
-  /** @see OdsSelectAttribute.color */
   @Prop({ reflect: true }) color: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
 
-  /** @see OdsSelectAttribute.defaultValue */
   @Prop({ reflect: true }) defaultValue: OdsInputValue = DEFAULT_ATTRIBUTE.defaultValue;
 
-  /** @see OdsSelectAttribute.disabled */
   @Prop({ reflect: true, mutable: true }) disabled = DEFAULT_ATTRIBUTE.disabled;
 
-  /** @see OdsSelectAttribute.error */
   @Prop({ reflect: true }) error = DEFAULT_ATTRIBUTE.error;
 
-  /** @see OdsSelectAttribute.inline */
   @Prop({ reflect: true }) inline = DEFAULT_ATTRIBUTE.inline;
 
-  /** @see OdsSelectAttribute.required */
+  @Prop({ reflect: true }) name = DEFAULT_ATTRIBUTE.name;
+
+  @Prop({ reflect: true, mutable: true }) opened = false;
+
   @Prop({ reflect: true, mutable: true }) required = DEFAULT_ATTRIBUTE.required;
 
-  /** @see OdsSelectAttribute.size */
   @Prop({ reflect: true }) size: ODS_SELECT_SIZE = DEFAULT_ATTRIBUTE.size;
 
-  /** @see OdsSelectAttribute.value */
   @Prop({ reflect: true, mutable: true }) value: OdsInputValue = DEFAULT_ATTRIBUTE.value;
 
-  /** @see OdsSelectEvent.odsValueChange */
   @Event() odsValueChange!: EventEmitter<OdsSelectValueChangeEventDetail>;
 
-  optionSelected: OsdsSelectOption | null = null;
-
-  @State() selectedOptionLabel = '';
-
-
-  @State() validityState: OdsValidityState = DEFAULT_VALIDITY_STATE;
-
-  /** @see OdsSelectEvents.odsFocus */
   @Event() odsFocus!: EventEmitter<void>;
   private onFocus() {
     this.odsFocus.emit();
   }
 
-  /** @see OdsSelectEvents.odsBlur */
-  @Event() odsBlur!: EventEmitter<void>;
+  @Event() odsClear!: EventEmitter<void>;
 
+  @Event() odsReset!: EventEmitter<void>;
+
+  @Event() odsBlur!: EventEmitter<void>;
   onBlur() {
     this.odsBlur.emit();
   }
@@ -144,6 +129,7 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
     this.odsValueChange.emit({
       value: value,
       oldValue: oldValue,
+      name: this.name,
       selection: this.optionSelected,
       validity: this.validityState,
     });
@@ -154,58 +140,37 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
     this.controller.handlerKeyDown(event);
   }
 
-  /**
-   * @internal
-   * @see OdsSelectMethods.clear
-   */
   @Method()
   async clear() {
+    this.commonFieldMethodController.clear();
     this.optionSelected = null;
     this.validityState = DEFAULT_VALIDITY_STATE;
-    this.value = '';
+    this.odsClear.emit();
   }
 
-  /**
-   * @internal
-   * @see OdsSelectMethods.getValidity
-   */
   @Method()
   async getValidity() {
     return this.validityState;
   }
 
-  /**
-   * @internal
-   * @see OdsSelectMethods.reset
-   */
   @Method()
   async reset() {
-    this.optionSelected = null;
-    this.value = this.defaultValue || '';
+    this.commonFieldMethodController.reset();
+    await this.updateSelectOptionStates();
     this.validityState = DEFAULT_VALIDITY_STATE;
+    this.odsReset.emit();
   }
 
-  /**
-   * @internal
-   * @see OdsSelectMethods.setFocus
-   */
   @Method()
   async setFocus() {
     this.el.focus();
   }
 
-  /**
-   * @internal
-   * @see OdsSelectMethods.setInputTabindex
-   */
   @Method()
-  async setInputTabindex(value: number) {
-    this.tabindex = value;
+  async setTabindex(value: number) {
+    this.commonFieldMethodController.setTabindex(value);
   }
 
-  /**
-   * @see OdsSelectMethods.setInputTabindex
-   */
   @Method()
   async validate() {
     this.validityState = this.controller.getValidity();

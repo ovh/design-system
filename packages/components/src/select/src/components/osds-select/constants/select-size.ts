@@ -1,10 +1,6 @@
-enum ODS_SELECT_SIZE {
-  md = 'md',
-}
-
-const ODS_SELECT_SIZES = Object.freeze(Object.values(ODS_SELECT_SIZE));
+import { ODS_COMMON_FIELD_SIZE, ODS_COMMON_FIELD_SIZES } from '@ovhcloud/ods-common-core';
 
 export {
-  ODS_SELECT_SIZE,
-  ODS_SELECT_SIZES,
+  ODS_COMMON_FIELD_SIZE as ODS_SELECT_SIZE,
+  ODS_COMMON_FIELD_SIZES as ODS_SELECT_SIZES,
 };

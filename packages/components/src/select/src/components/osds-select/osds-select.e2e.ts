@@ -12,7 +12,19 @@ import { ODS_SELECT_SIZE } from './constants/select-size';
 
 
 describe('e2e:osds-select', () => {
-  const baseAttribute = { ariaLabel: null, ariaLabelledby: '', color: ODS_THEME_COLOR_INTENT.primary, defaultValue: '', disabled: false, inline: false, required: false, size: ODS_SELECT_SIZE.md, value: '' };
+  const baseAttribute = {
+    ariaLabel: null,
+    ariaLabelledby: '',
+    color: ODS_THEME_COLOR_INTENT.primary,
+    defaultValue: '',
+    disabled: false,
+    error: false,
+    inline: false,
+    name: '',
+    required: false,
+    size: ODS_SELECT_SIZE.md,
+    value: '',
+  };
   let page: E2EPage;
   let el: E2EElement;
   let divElement: E2EElement;
@@ -111,10 +123,10 @@ describe('e2e:osds-select', () => {
   // TODO getValidity
   // TODO getSelection
 
-  describe('method:setInputTabindex', () => {
-    it('should set inputTabindex to -1', async() => {
+  describe('method:setTabindex', () => {
+    it('should set tabindex to -1', async() => {
       await setup({ attributes: { } });
-      await el.callMethod('setInputTabindex', '-1');
+      await el.callMethod('setTabindex', '-1');
       await page.waitForChanges();
       const value = el.getAttribute('tabindex');
       expect(value).toBe('-1');
@@ -166,6 +178,7 @@ describe('e2e:osds-select', () => {
 
       beforeEach(() => {
         odsSelectValueChangeEventDetailBase = {
+          name: '',
           oldValue: '',
           validity: {
             invalid: false,

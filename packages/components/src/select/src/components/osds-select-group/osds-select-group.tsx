@@ -1,8 +1,7 @@
 import type { OsdsSelect } from '../osds-select/osds-select';
 import type { HTMLStencilElement } from '@stencil/core/internal';
-
+import type { ODS_SELECT_SIZE } from '../osds-select/constants/select-size';
 import { Component, Element, Host, State, h } from '@stencil/core';
-
 import { DEFAULT_ATTRIBUTE } from '../osds-select/constants/default-attributes';
 
 
@@ -23,7 +22,7 @@ export class OsdsSelectGroup {
    * The size of the select option
    * @internal
    */
-  @State() size = DEFAULT_ATTRIBUTE.size;
+  @State() size: ODS_SELECT_SIZE = DEFAULT_ATTRIBUTE.size;
 
   componentWillLoad() {
     this.selectParent = this.el.closest('osds-select') as (HTMLStencilElement & OsdsSelect) | null;

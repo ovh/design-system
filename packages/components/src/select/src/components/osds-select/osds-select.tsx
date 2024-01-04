@@ -10,7 +10,7 @@ import { OdsCommonFieldMethodController, OdsInputValue, OdsValidityState } from 
 import { ocdkAssertEventTargetIsNode, ocdkDefineCustomElements, ocdkIsSurface } from '@ovhcloud/ods-cdk';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_ICON_NAME, ODS_ICON_SIZE } from '../../../../icon/src';
-import { Component, Element, Event, EventEmitter, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
+import { AttachInternals, Component, Element, Event, EventEmitter, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { DEFAULT_VALIDITY_STATE } from './constants/default-validity-state';
 import { OdsSelectController } from './core/controller';
@@ -23,6 +23,7 @@ ocdkDefineCustomElements();
  * @slot (placeholder) - Select placeholder
  */
 @Component({
+  formAssociated: true,
   tag: 'osds-select',
   styleUrl: 'osds-select.scss',
   shadow: true,
@@ -43,6 +44,8 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
   @State() validityState: OdsValidityState = DEFAULT_VALIDITY_STATE;
 
   @Element() el!: HTMLStencilElement;
+
+  @AttachInternals() internals!: ElementInternals;
 
   /**
    * The tabindex of the input.
@@ -122,6 +125,7 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
   @Watch('value')
   async onValueChange(value: OdsInputValue, oldValue?: OdsInputValue) {
     this.emitChange(value, oldValue);
+    this.internals.setFormValue(value?.toString() ?? '');
     await this.updateSelectOptionStates(value);
   }
 

@@ -19,7 +19,7 @@ const DEFAULT_ATTRIBUTE: OdsInputAttribute = Object.freeze({
   masked: true,
   max: undefined,
   min: undefined,
-  name: undefined,
+  name: '',
   placeholder: undefined,
   prefixValue: undefined,
   readOnly: false,

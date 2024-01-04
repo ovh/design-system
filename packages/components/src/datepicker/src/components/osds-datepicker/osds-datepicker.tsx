@@ -6,7 +6,7 @@ import type { EventEmitter } from '@stencil/core';
 
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_ICON_NAME } from '../../../../icon/src';
-import { ODS_COMMON_INPUT_TYPE } from '@ovhcloud/ods-common-core';
+import { OdsInputValue, ODS_COMMON_FIELD_SIZE, ODS_COMMON_INPUT_TYPE } from '@ovhcloud/ods-common-core';
 import { Component, Element, Event, Host, Listen, Prop, State, Watch, h } from '@stencil/core';
 import { Datepicker } from 'vanillajs-datepicker';
 // @ts-ignore
@@ -60,6 +60,8 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
   private hiddenInput: HTMLInputElement | undefined = undefined;
   private datepickerElement: HTMLElement | undefined = undefined;
 
+  @Prop({ reflect: true }) ariaLabel: HTMLElement['ariaLabel'] = DEFAULT_ATTRIBUTE.ariaLabel;
+
   /** @see OdsDatepickerAttribute.clearable */
   @Prop({ reflect: true }) clearable?: boolean = DEFAULT_ATTRIBUTE.clearable;
 
@@ -73,10 +75,13 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
   @Prop({ reflect: true }) daysOfWeekDisabled?: ODS_DATEPICKER_DAY[] = DEFAULT_ATTRIBUTE.daysOfWeekDisabled;
 
   /** @see OdsDatepickerAttribute.disabled */
-  @Prop({ reflect: true }) disabled?: boolean = DEFAULT_ATTRIBUTE.disabled;
+  @Prop({ reflect: true }) defaultValue: OdsInputValue = DEFAULT_ATTRIBUTE.defaultValue;
+
+  /** @see OdsDatepickerAttribute.disabled */
+  @Prop({ reflect: true }) disabled: boolean = DEFAULT_ATTRIBUTE.disabled;
 
   /** @see OdsDatepickerAttribute.error */
-  @Prop({ reflect: true }) error?: boolean = DEFAULT_ATTRIBUTE.error;
+  @Prop({ reflect: true }) error: boolean = DEFAULT_ATTRIBUTE.error;
 
   /** @see OdsDatepickerAttribute.format */
   @Prop({ reflect: true }) format?: string = DEFAULT_ATTRIBUTE.format;
@@ -93,13 +98,17 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
   /** @see OdsDatepickerAttribute.minDate */
   @Prop({ reflect: true }) minDate?: Date | null = DEFAULT_ATTRIBUTE.minDate;
 
+  @Prop({ reflect: true }) name: string = DEFAULT_ATTRIBUTE.name;
+
   /** @see OdsDatepickerAttribute.placeholder */
   @Prop({ reflect: true }) placeholder?: string = DEFAULT_ATTRIBUTE.placeholder;
 
   @Prop({ reflect: true }) showSiblingsMonthDays?: boolean = DEFAULT_ATTRIBUTE.showSiblingsMonthDays;
 
+  @Prop({ reflect: true }) size: ODS_COMMON_FIELD_SIZE = DEFAULT_ATTRIBUTE.size;
+
   /** @see OdsDatepickerAttribute.value */
-  @Prop({ reflect: true, mutable: true }) value?: Date | null = DEFAULT_ATTRIBUTE.value;
+  @Prop({ reflect: true, mutable: true }) value: OdsInputValue = DEFAULT_ATTRIBUTE.value;
 
   /** Events */
 
@@ -174,7 +183,7 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
   }
 
   onChange(newValue: Date | undefined | null): void {
-    this.controller.onChange(newValue, this.value);
+    this.controller.onChange(newValue, this.value as Date);
   }
 
   onFocus(): void {
@@ -309,8 +318,8 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
     }
   }
 
-  formatDate(date?: Date | undefined | null) {
-    if (this.format && date) {
+  formatDate(date?: OdsInputValue) {
+    if (this.format && date && date instanceof Date) {
       return Datepicker.formatDate(date, this.format);
     } else {
       return '';

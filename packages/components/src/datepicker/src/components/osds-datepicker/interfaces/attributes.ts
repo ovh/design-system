@@ -33,17 +33,9 @@ interface OdsDatepickerAttribute extends OdsCommonFieldAttribute {
    */
   minDate?: Date | undefined | null;
   /**
-   * Defines if the Datepicker should display a placeholder message
-   */
-  placeholder?: string;
-  /**
    * Defines if the Datepicker should display others month days
    */
   showSiblingsMonthDays?: boolean;
-  /**
-   * Defines the Datepicker's value (Date object)
-   */
-  value?: Date | undefined | null;
 }
 
 export type {

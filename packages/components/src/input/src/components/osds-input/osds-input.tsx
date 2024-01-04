@@ -52,13 +52,13 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
 
   @Prop({ reflect: true }) defaultValue: OdsInputValue = DEFAULT_ATTRIBUTE.defaultValue;
 
-  @Prop({ reflect: true }) disabled?: boolean = DEFAULT_ATTRIBUTE.disabled;
+  @Prop({ reflect: true }) disabled: boolean = DEFAULT_ATTRIBUTE.disabled;
 
-  @Prop({ reflect: true }) error?: boolean = DEFAULT_ATTRIBUTE.error;
+  @Prop({ reflect: true }) error: boolean = DEFAULT_ATTRIBUTE.error;
 
   @Prop({ reflect: true }) errorStateControl?: OdsErrorStateControl = DEFAULT_ATTRIBUTE.errorStateControl;
 
-  @Prop({ reflect: true }) forbiddenValues: OdsFormForbiddenValues<number> = DEFAULT_ATTRIBUTE.forbiddenValues;
+  @Prop({ reflect: true }) forbiddenValues?: OdsFormForbiddenValues<string | number> = DEFAULT_ATTRIBUTE.forbiddenValues;
 
   @Prop({ reflect: true }) formControl?: OdsFormControl<OdsCommonFieldValidityState> = DEFAULT_ATTRIBUTE.formControl;
 
@@ -76,7 +76,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
 
   @Prop({ reflect: true }) min?: number = DEFAULT_ATTRIBUTE.min;
 
-  @Prop({ reflect: true }) name?: string = DEFAULT_ATTRIBUTE.name;
+  @Prop({ reflect: true }) name: string = DEFAULT_ATTRIBUTE.name;
 
   @Prop({ reflect: true }) placeholder?: string = DEFAULT_ATTRIBUTE.placeholder;
 
@@ -86,11 +86,11 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
 
   @Prop({ reflect: true }) required?: boolean = DEFAULT_ATTRIBUTE.required;
 
-  @Prop({ reflect: true }) size?: ODS_COMMON_FIELD_SIZE = DEFAULT_ATTRIBUTE.size;
+  @Prop({ reflect: true }) size: ODS_COMMON_FIELD_SIZE = DEFAULT_ATTRIBUTE.size;
 
   @Prop({ reflect: true }) step?: number = DEFAULT_ATTRIBUTE.step;
 
-  @Prop({ reflect: true }) type: ODS_COMMON_INPUT_TYPE = DEFAULT_ATTRIBUTE.type;
+  @Prop({ reflect: true }) type?: ODS_COMMON_INPUT_TYPE = DEFAULT_ATTRIBUTE.type;
 
   @Prop({ mutable: true, reflect: true }) value: OdsInputValue = DEFAULT_ATTRIBUTE.value;
 

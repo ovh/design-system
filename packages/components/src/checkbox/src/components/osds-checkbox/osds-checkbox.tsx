@@ -8,7 +8,7 @@ import type {
 import type { OdsCheckboxMethod } from './interfaces/methods';
 import type { HTMLStencilElement } from '@stencil/core/internal';
 
-import { OdsCheckboxable, OdsCommonFieldMethodController, OdsLogger } from '@ovhcloud/ods-common-core';
+import { OdsCheckboxable, OdsCommonFieldMethodController, OdsInputValue, OdsLogger, ODS_COMMON_FIELD_SIZE } from '@ovhcloud/ods-common-core';
 import { Component, Element, Event, EventEmitter, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
 
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
@@ -35,27 +35,33 @@ export class OsdsCheckbox implements OdsCheckboxMethod, OdsCheckboxEvent, OdsChe
 
   @Prop() afterSave?: OdsCheckboxAttributeCbk = DEFAULT_ATTRIBUTE.afterSave;
 
-  @Prop({ reflect: true }) ariaLabel = DEFAULT_ATTRIBUTE.ariaLabel;
+  @Prop({ reflect: true }) ariaLabel: HTMLElement['ariaLabel'] = DEFAULT_ATTRIBUTE.ariaLabel;
 
-  @Prop() ariaLabelledby? = DEFAULT_ATTRIBUTE.ariaLabelledby;
+  @Prop() ariaLabelledby?: string = DEFAULT_ATTRIBUTE.ariaLabelledby;
 
   @Prop() beforeSave?: OdsCheckboxAttributeCbk = DEFAULT_ATTRIBUTE.beforeSave;
 
-  @Prop({ reflect: true, mutable: true }) checked = DEFAULT_ATTRIBUTE.checked;
+  @Prop({ reflect: true, mutable: true }) checked: boolean = DEFAULT_ATTRIBUTE.checked;
 
-  @Prop({ reflect: true }) disabled = DEFAULT_ATTRIBUTE.disabled;
+  @Prop({ reflect: true }) defaultValue: OdsInputValue = DEFAULT_ATTRIBUTE.defaultValue;
 
-  @Prop({ reflect: true, mutable: true }) hasFocus = DEFAULT_ATTRIBUTE.hasFocus;
+  @Prop({ reflect: true }) disabled: boolean = DEFAULT_ATTRIBUTE.disabled;
+
+  @Prop({ reflect: true }) error: boolean = DEFAULT_ATTRIBUTE.error;
+
+  @Prop({ reflect: true, mutable: true }) hasFocus: boolean = DEFAULT_ATTRIBUTE.hasFocus;
 
   @Prop() label?: string;
 
-  @Prop({ reflect: true }) name?: string = DEFAULT_ATTRIBUTE.name;
+  @Prop({ reflect: true }) name: string = DEFAULT_ATTRIBUTE.name;
 
-  @Prop({ mutable: true }) save?:OdsCheckboxAttributeCbk = DEFAULT_ATTRIBUTE.save;
+  @Prop({ mutable: true }) save?: OdsCheckboxAttributeCbk = DEFAULT_ATTRIBUTE.save;
 
-  @Prop({ reflect: true, mutable: true }) updating = DEFAULT_ATTRIBUTE.updating;
+  @Prop({ reflect: true }) size: ODS_COMMON_FIELD_SIZE = DEFAULT_ATTRIBUTE.size;
 
-  @Prop({ reflect: true, mutable: true }) value = DEFAULT_ATTRIBUTE.value;
+  @Prop({ reflect: true, mutable: true }) updating: boolean = DEFAULT_ATTRIBUTE.updating;
+
+  @Prop({ reflect: true, mutable: true }) value: string = DEFAULT_ATTRIBUTE.value;
 
   @Event() odsBlur!: EventEmitter<OdsCheckboxFocusChangeEventDetail>;
 

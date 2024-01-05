@@ -22,7 +22,7 @@ export class OsdsSelectGroup {
    * The size of the select option
    * @internal
    */
-  @State() size: ODS_SELECT_SIZE = DEFAULT_ATTRIBUTE.size;
+  @State() size?: ODS_SELECT_SIZE = DEFAULT_ATTRIBUTE.size;
 
   componentWillLoad() {
     this.selectParent = this.el.closest('osds-select') as (HTMLStencilElement & OsdsSelect) | null;

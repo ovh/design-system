@@ -33,7 +33,7 @@ export class OsdsSelectOption implements OdsSelectOptionAttribute, OdsSelectOpti
    * The size of the select option
    * @internal
    */
-  @State() size: ODS_SELECT_SIZE = SELECT_DEFAULT_ATTRIBUTE.size;
+  @State() size?: ODS_SELECT_SIZE = SELECT_DEFAULT_ATTRIBUTE.size;
 
   componentWillLoad() {
     this.selectParent = this.el.closest('osds-select') as (HTMLStencilElement & OsdsSelect) | null;

@@ -1550,7 +1550,7 @@ export namespace Components {
         /**
           * Size of the input: see component principles
          */
-        "size": ODS_SELECT_SIZE;
+        "size"?: ODS_SELECT_SIZE;
         "validate": () => Promise<OdsValidityState>;
         /**
           * Type of the input field

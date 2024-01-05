@@ -14,7 +14,7 @@
   cursor: pointer;
   width: fit-content;
 
-  > ::slotted(span) {
+  > ::slotted(*) {
     display: grid;
   }
 

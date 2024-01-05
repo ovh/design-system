@@ -73,7 +73,7 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
 
   @Prop({ reflect: true, mutable: true }) required = DEFAULT_ATTRIBUTE.required;
 
-  @Prop({ reflect: true }) size: ODS_SELECT_SIZE = DEFAULT_ATTRIBUTE.size;
+  @Prop({ reflect: true }) size?: ODS_SELECT_SIZE = DEFAULT_ATTRIBUTE.size;
 
   @Prop({ reflect: true, mutable: true }) value: OdsInputValue = DEFAULT_ATTRIBUTE.value;
 
@@ -124,12 +124,10 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
 
   @Watch('value')
   async onValueChange(value: OdsInputValue, oldValue?: OdsInputValue) {
-    this.emitChange(value, oldValue);
-    this.internals.setFormValue(value?.toString() ?? '');
-    await this.updateSelectOptionStates(value);
+    this.controller.onValueChange(value, oldValue);
   }
 
-  private emitChange(value: OdsInputValue, oldValue?: OdsInputValue) {
+  emitChange(value: OdsInputValue, oldValue?: OdsInputValue): void {
     this.odsValueChange.emit({
       value: value,
       oldValue: oldValue,
@@ -149,7 +147,6 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
     this.commonFieldMethodController.clear();
     this.optionSelected = null;
     this.validityState = DEFAULT_VALIDITY_STATE;
-    this.odsClear.emit();
   }
 
   @Method()
@@ -162,12 +159,11 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
     this.commonFieldMethodController.reset();
     await this.updateSelectOptionStates();
     this.validityState = DEFAULT_VALIDITY_STATE;
-    this.odsReset.emit();
   }
 
   @Method()
   async setFocus() {
-    this.el.focus();
+    this.commonFieldMethodController.setFocus();
   }
 
   @Method()
@@ -181,7 +177,7 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
     return this.validityState;
   }
 
-  private async updateSelectOptionStates(value?: OdsInputValue): Promise<void> {
+  async updateSelectOptionStates(value?: OdsInputValue): Promise<void> {
     let nbSelected = 0;
     for (const selectOption of this.controller.selectOptions) {
       selectOption.selected = (value === selectOption.value) && !nbSelected ;

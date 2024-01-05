@@ -7,9 +7,8 @@ import { OdsSelectController } from './controller';
 import { OsdsSelect } from '../osds-select';
 
 
-class OdsSelectMock extends OsdsSelect {
+class OdsSelectMock {
   constructor(attribute: Partial<OsdsSelect>) {
-    super();
     Object.assign(this, attribute);
   }
 
@@ -26,7 +25,7 @@ describe('spec:ods-select-controller', () => {
   let item2: OsdsSelectOption & HTMLElement;
 
   function setup(attributes: Partial<OsdsSelect> = {}) {
-    component = new OdsSelectMock(attributes);
+    component = new OdsSelectMock(attributes) as unknown as OsdsSelect;
 
     if (component.surface) {
       component.surface.opened = attributes?.opened ?? false;

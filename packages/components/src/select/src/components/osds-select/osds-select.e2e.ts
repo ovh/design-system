@@ -139,7 +139,7 @@ describe('e2e:osds-select', () => {
       await el.callMethod('clear');
       await page.waitForChanges();
       const value = await el.getProperty('value');
-      expect(value).toBe('');
+      expect(value).toBe(null);
     });
   });
 
@@ -150,7 +150,7 @@ describe('e2e:osds-select', () => {
       await page.waitForChanges();
       const value = await el.getProperty('value');
       await page.waitForChanges();
-      expect(value).toBe(`${DEFAULT_ATTRIBUTE.defaultValue}`);
+      expect(value).toBe(null);
     });
 
     it('should set the value to defaultValue', async() => {

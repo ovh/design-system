@@ -1,3 +1,5 @@
+jest.mock('./core/controller'); // keep jest.mock before any
+
 import type { OdsSelectAttribute } from './interfaces/attributes';
 import type { SpecPage } from '@stencil/core/testing';
 
@@ -30,7 +32,19 @@ OdsMockPropertyDescriptor(HTMLInputElement.prototype, 'validity', () => DEFAULT_
 
 describe('spec:osds-select', () => {
   logger.log('init');
-  const baseAttribute = { ariaLabel: null, ariaLabelledby: '', color: ODS_THEME_COLOR_INTENT.primary, defaultValue: '', disabled: false, inline: false, required: false, size: ODS_SELECT_SIZE.md, value: '' };
+  const baseAttribute = {
+    ariaLabel: null,
+    ariaLabelledby: '',
+    color: ODS_THEME_COLOR_INTENT.primary,
+    defaultValue: '',
+    disabled: false,
+    error: false,
+    inline: false,
+    name: '',
+    required: false,
+    size: ODS_SELECT_SIZE.md,
+    value: '',
+  };
   let page: SpecPage;
   let instance: OsdsSelect;
   let slotPlaceholder: HTMLElement | null | undefined;
@@ -52,6 +66,7 @@ describe('spec:osds-select', () => {
     });
 
     instance = page.rootInstance;
+
     slotPlaceholder = page.root?.shadowRoot?.querySelector('slot[name=placeholder]');
     htmlSelect = document.querySelector('osds-select') as HTMLSelectElement;
     htmlSelect && (htmlSelect.focus = jest.fn());
@@ -185,14 +200,14 @@ describe('spec:osds-select', () => {
       await setup({ attributes: { value: 2 } });
       expect(instance).toBeTruthy();
       await instance.reset();
-      expect(instance?.value).toBe('');
+      expect(instance?.value).toBe(null);
     });
 
     it('should call clear function and set value to an empty string', async() => {
       await setup({ attributes: { value: 2 } });
       expect(instance).toBeTruthy();
       await instance.clear();
-      expect(instance?.value).toBe('');
+      expect(instance?.value).toBe(null);
     });
 
     it('should call setFocus function and change the focus state of the component', async() => {

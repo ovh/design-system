@@ -22,8 +22,23 @@ class OdsTimepickerController {
   }
 
   handleTimezones() :void {
-    const check = this.getTimezonesList();
+    const check = this.parseTimezones(this.getTimezonesList());
     this.component.timezonesList = [...check] as ODS_TIMEZONE[] ;
+  }
+
+  parseTimezones(timezones: readonly ODS_TIMEZONE[] | ODS_TIMEZONES_PRESET | string): ODS_TIMEZONE[] {
+    if (typeof timezones === 'string') {
+      try {
+        let parsedTimezones = JSON.parse(timezones);
+        parsedTimezones = parsedTimezones.filter(
+          (parsedTimezone: string) => ODS_TIMEZONES.find((timezone: string) => timezone === parsedTimezone.toUpperCase())).map((parsedTimezone: string) => parsedTimezone.toUpperCase());
+        return parsedTimezones;
+      } catch (err) {
+        this.component.logger.warn('[OsdsTimepicker] timezones string could not be parsed.');
+        return [];
+      }
+    }
+    return [...timezones];
   }
 
   handleCurrentTimezone() : void {
@@ -34,7 +49,7 @@ class OdsTimepickerController {
     }
   }
 
-  private getTimezonesList(): readonly ODS_TIMEZONE[] | ODS_TIMEZONES_PRESET {
+  private getTimezonesList(): readonly ODS_TIMEZONE[] | ODS_TIMEZONES_PRESET | string {
     if (this.component.timezones === undefined || this.component.timezones === ODS_TIMEZONES_PRESET.All) {
       return ODS_TIMEZONES;
     }

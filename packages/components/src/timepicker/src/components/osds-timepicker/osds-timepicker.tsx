@@ -2,8 +2,9 @@ import type { ODS_TIMEZONE } from './constants/timezones';
 import type { ODS_TIMEZONES_PRESET } from './constants/timezones-preset';
 import type { OdsTimepickerAttribute } from './interfaces/attributes';
 import type { OsdsInput } from '../../../../input/src';
-import { Component, Element, Host, Prop, Watch, h } from '@stencil/core';
+import { OdsLogger } from '@ovhcloud/ods-common-core';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+import { Component, Element, Host, Prop, Watch, h } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsTimepickerController } from './core/controller';
 import { ODS_INPUT_TYPE } from '../../../../input/src';
@@ -14,6 +15,8 @@ import { ODS_INPUT_TYPE } from '../../../../input/src';
   tag: 'osds-timepicker',
 })
 export class OsdsTimepicker implements OdsTimepickerAttribute {
+  logger = new OdsLogger('OsdsPhoneNumber');
+
   @Element() el!: HTMLElement;
   input: OsdsInput | HTMLInputElement | null = null;
   timezonesList: ODS_TIMEZONE[] = [];
@@ -35,7 +38,7 @@ export class OsdsTimepicker implements OdsTimepickerAttribute {
   @Prop({ reflect: true }) public inline? = DEFAULT_ATTRIBUTE.inline;
 
   /** @see OdsTimepickerAttribute.timezones */
-  @Prop({ mutable: true, reflect: true }) public timezones?: ODS_TIMEZONE[] | ODS_TIMEZONES_PRESET = DEFAULT_ATTRIBUTE.timezones;
+  @Prop({ mutable: true, reflect: true }) public timezones?: ODS_TIMEZONE[] | ODS_TIMEZONES_PRESET | string = DEFAULT_ATTRIBUTE.timezones;
 
   /** @see OdsTimepickerAttribute.value */
   @Prop({ mutable: true, reflect: true }) public value? = DEFAULT_ATTRIBUTE.value;

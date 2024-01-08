@@ -20,7 +20,7 @@ const sharedStoryParam = {
   },
   inline: {
     category: 'General',
-    defaultValue: false,
+    defaultValue: true,
   },
   value: {
     category: 'Value',
@@ -55,8 +55,8 @@ export default {
 /* Default */
 const TemplateDefault = (args: any) => html`
   <osds-timepicker ...=${getTagAttributes({
-    ...args,
-  })}>
+  ...args,
+})}>
   </osds-timepicker>
 `;
 export const Default = TemplateDefault.bind({});
@@ -68,12 +68,12 @@ Default.args = {
 /* With Timezones Example */
 const TemplateTimezonesExample = (args: any) => html`
   <osds-timepicker ...=${getTagAttributes({
-    ...args,
-  })}>
+  ...args,
+})}>
   </osds-timepicker>
 `;
-export const TimezonesExample = TemplateTimezonesExample.bind({});
+export const WithTimezones = TemplateTimezonesExample.bind({});
 // @ts-ignore
-TimezonesExample.args = {
+WithTimezones.args = {
   ...extractStoryParams({...sharedStoryParam, ...exampleParam}),
 };

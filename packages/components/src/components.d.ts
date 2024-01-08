@@ -1927,7 +1927,7 @@ export namespace Components {
           * Defines the timezones available to show in the select
           * @see OdsTimepickerAttribute.timezones
          */
-        "timezones"?: ODS_TIMEZONE[] | ODS_TIMEZONES_PRESET;
+        "timezones"?: ODS_TIMEZONE[] | ODS_TIMEZONES_PRESET | string;
         /**
           * Defines the Timepicker's value
           * @see OdsTimepickerAttribute.value
@@ -4638,7 +4638,7 @@ declare namespace LocalJSX {
           * Defines the timezones available to show in the select
           * @see OdsTimepickerAttribute.timezones
          */
-        "timezones"?: ODS_TIMEZONE[] | ODS_TIMEZONES_PRESET;
+        "timezones"?: ODS_TIMEZONE[] | ODS_TIMEZONES_PRESET | string;
         /**
           * Defines the Timepicker's value
           * @see OdsTimepickerAttribute.value

@@ -237,36 +237,6 @@ describe('spec:ods-input-controller', () => {
       });
     });
 
-    describe('methods:onFocus', () => {
-      it('should set hasFocus to true', () => {
-        setup({ hasFocus: false });
-        controller.onFocus();
-        expect(component.hasFocus).toEqual(true);
-      });
-
-      it('should call emitFocus', () => {
-        setup();
-        controller.onFocus();
-        expect(component.emitFocus).toHaveBeenCalledTimes(1);
-        expect(component.emitFocus).toHaveBeenCalledWith();
-      });
-    });
-
-    describe('methods:onBlur', () => {
-      it('should set hasFocus to false', () => {
-        setup({ hasFocus: true });
-        controller.onBlur();
-        expect(component.hasFocus).toEqual(false);
-      });
-
-      it('should call emitBlur', () => {
-        setup();
-        controller.onBlur();
-        expect(component.emitBlur).toHaveBeenCalledTimes(1);
-        expect(component.emitBlur).toHaveBeenCalledWith();
-      });
-    });
-
     describe('methods:onInput', () => {
       it('should not change component value if it is disabled', () => {
         const value = '3';

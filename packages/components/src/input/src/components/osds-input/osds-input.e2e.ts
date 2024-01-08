@@ -28,7 +28,16 @@ class FormDataMock {
 global.FormData = FormDataMock;
 
 describe('e2e:osds-input', () => {
-  const baseAttribute = { ariaLabel: null, defaultValue: '', forbiddenValues: [], type: ODS_COMMON_INPUT_TYPE.text, value: '' };
+  const baseAttribute = {
+    ariaLabel: null,
+    defaultValue: '',
+    disabled: false,
+    error: false,
+    forbiddenValues: [],
+    name: '',
+    type: ODS_COMMON_INPUT_TYPE.text,
+    value: '',
+  };
   let page: E2EPage;
   let el: E2EElement;
   let inputElement: E2EElement;
@@ -49,6 +58,7 @@ describe('e2e:osds-input', () => {
     el = await page.find('osds-input');
 
     inputElement = await page.find('osds-input >>> input');
+    await page.waitForChanges();
   }
 
   describe('defaults', () => {
@@ -85,7 +95,7 @@ describe('e2e:osds-input', () => {
       expect(crossIcon).not.toBeNull();
       await crossIcon.click();
       await page.waitForChanges();
-
+      
       // Verify input value is cleared
       const value = await inputElement.getProperty('value');
       expect(value).toBe('');
@@ -287,7 +297,7 @@ describe('e2e:osds-input', () => {
       const value = await inputElement.getProperty('value');
       const elValue = await el.getProperty('value');
       expect(value).toBe('');
-      expect(elValue).toBe('');
+      expect(elValue).toBe(null);
     });
   });
 
@@ -324,8 +334,8 @@ describe('e2e:osds-input', () => {
       const value = await inputElement.getProperty('value');
       const elValue = await el.getProperty('value');
       await page.waitForChanges();
-      expect(value).toBe(`${DEFAULT_ATTRIBUTE.defaultValue}`);
-      expect(elValue).toBe(`${DEFAULT_ATTRIBUTE.defaultValue}`);
+      expect(value).toBe('');
+      expect(elValue).toBe(null);
     });
 
     it('should set the value to defaultValue', async() => {
@@ -335,8 +345,8 @@ describe('e2e:osds-input', () => {
       await page.waitForChanges();
       const value = await inputElement.getProperty('value');
       const elValue = await el.getProperty('value');
-      expect(value).toBe(`${defaultValue}`);
-      expect(elValue).toBe(`${defaultValue}`);
+      expect(value).toBe(defaultValue.toString());
+      expect(elValue).toBe(defaultValue.toString());
     });
   });
 

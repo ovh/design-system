@@ -56,7 +56,7 @@ interface OdsCommonFieldAttribute {
   /** Indicates if the input is required or not */
   required?: boolean;
   /** Size of the input: see component principles */
-  size: ODS_COMMON_FIELD_SIZE;
+  size?: ODS_COMMON_FIELD_SIZE;
   /** Step value for the input */
   step?: number;
   /** Tabindex for the input */

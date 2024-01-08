@@ -107,16 +107,6 @@ class OdsInputController {
     }
   }
 
-  onFocus(): void {
-    this.component.hasFocus = true;
-    this.component.emitFocus();
-  }
-
-  onBlur(): void {
-    this.component.hasFocus = false;
-    this.component.emitBlur();
-  }
-
   onInput(event: Event): void {
     event.preventDefault();
     this.component.inputEl && this.handleInputValue(this.component.inputEl.value);

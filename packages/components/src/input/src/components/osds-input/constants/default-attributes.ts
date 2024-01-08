@@ -27,7 +27,7 @@ const DEFAULT_ATTRIBUTE: OdsInputAttribute = Object.freeze({
   size: ODS_COMMON_FIELD_SIZE.md,
   step: undefined,
   type: ODS_COMMON_INPUT_TYPE.number,
-  value: '',
+  value: null,
 });
 
 export {

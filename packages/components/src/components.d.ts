@@ -21,7 +21,7 @@ import { ODS_CART_SIZE } from "./cart/src/components/osds-cart/constants/cart-si
 import { ODS_CART_ROUNDED } from "./cart/src/components/osds-cart/constants/cart-rounded";
 import { OdsCartManagerFooter, OdsCartManagerSection } from "./cart/src/components/osds-cart-manager/interfaces/attributes";
 import { OdsCheckboxAttributeCbk } from "./checkbox/src/components/osds-checkbox/interfaces/attributes";
-import { OdsCheckboxCheckedChangeEventDetail, OdsCheckboxFocusChangeEventDetail, OdsCheckboxUpdatingChangeEventDetail } from "./checkbox/src/components/osds-checkbox/interfaces/events";
+import { OdsCheckboxCheckedChangeEventDetail, OdsCheckboxUpdatingChangeEventDetail } from "./checkbox/src/components/osds-checkbox/interfaces/events";
 import { ODS_CHECKBOX_BUTTON_SIZE } from "./checkbox-button/src/components/osds-checkbox-button/constants/ods-checkbox-button-size";
 import { ODS_CHIP_SIZE } from "./chip/src/components/osds-chip/constants/chip-size";
 import { ODS_CHIP_VARIANT } from "./chip/src/components/osds-chip/constants/chip-variant";
@@ -82,7 +82,7 @@ export { ODS_CART_SIZE } from "./cart/src/components/osds-cart/constants/cart-si
 export { ODS_CART_ROUNDED } from "./cart/src/components/osds-cart/constants/cart-rounded";
 export { OdsCartManagerFooter, OdsCartManagerSection } from "./cart/src/components/osds-cart-manager/interfaces/attributes";
 export { OdsCheckboxAttributeCbk } from "./checkbox/src/components/osds-checkbox/interfaces/attributes";
-export { OdsCheckboxCheckedChangeEventDetail, OdsCheckboxFocusChangeEventDetail, OdsCheckboxUpdatingChangeEventDetail } from "./checkbox/src/components/osds-checkbox/interfaces/events";
+export { OdsCheckboxCheckedChangeEventDetail, OdsCheckboxUpdatingChangeEventDetail } from "./checkbox/src/components/osds-checkbox/interfaces/events";
 export { ODS_CHECKBOX_BUTTON_SIZE } from "./checkbox-button/src/components/osds-checkbox-button/constants/ods-checkbox-button-size";
 export { ODS_CHIP_SIZE } from "./chip/src/components/osds-chip/constants/chip-size";
 export { ODS_CHIP_VARIANT } from "./chip/src/components/osds-chip/constants/chip-variant";
@@ -456,7 +456,7 @@ export namespace Components {
         /**
           * Size of the input: see component principles
          */
-        "size": ODS_COMMON_FIELD_SIZE;
+        "size"?: ODS_COMMON_FIELD_SIZE;
         /**
           * update status indicating if the checked state is being modified. `updating` will be `true` until `beforeSave` or `save` are processed. it is used in `pessimistic` update
          */
@@ -707,7 +707,7 @@ export namespace Components {
         /**
           * Size of the input: see component principles
          */
-        "size": ODS_COMMON_FIELD_SIZE;
+        "size"?: ODS_COMMON_FIELD_SIZE;
         /**
           * Type of the input field
           * @see OdsDatepickerAttribute.value
@@ -793,9 +793,6 @@ export namespace Components {
         "size"?: ODS_ICON_SIZE;
     }
     interface OsdsInput {
-        /**
-          * Props
-         */
         "ariaLabel": HTMLElement['ariaLabel'];
         /**
           * ID of the element that labels the input
@@ -913,7 +910,7 @@ export namespace Components {
         /**
           * Size of the input: see component principles
          */
-        "size": ODS_COMMON_FIELD_SIZE;
+        "size"?: ODS_COMMON_FIELD_SIZE;
         /**
           * Step value for the input
          */
@@ -1190,7 +1187,7 @@ export namespace Components {
         /**
           * Size of the input: see component principles
          */
-        "size": ODS_COMMON_FIELD_SIZE;
+        "size"?: ODS_COMMON_FIELD_SIZE;
         /**
           * Current value of the password
          */
@@ -2241,9 +2238,9 @@ declare global {
         new (): HTMLOsdsCartTotalElement;
     };
     interface HTMLOsdsCheckboxElementEventMap {
-        "odsBlur": OdsCheckboxFocusChangeEventDetail;
+        "odsBlur": void;
         "odsCheckedChange": OdsCheckboxCheckedChangeEventDetail;
-        "odsFocus": OdsCheckboxFocusChangeEventDetail;
+        "odsFocus": void;
         "odsUpdatingChange": OdsCheckboxUpdatingChangeEventDetail;
     }
     interface HTMLOsdsCheckboxElement extends Components.OsdsCheckbox, HTMLStencilElement {
@@ -3182,7 +3179,7 @@ declare namespace LocalJSX {
         /**
           * Event triggered on checkbox blur
          */
-        "onOdsBlur"?: (event: OsdsCheckboxCustomEvent<OdsCheckboxFocusChangeEventDetail>) => void;
+        "onOdsBlur"?: (event: OsdsCheckboxCustomEvent<void>) => void;
         /**
           * the checked state changed
          */
@@ -3190,7 +3187,7 @@ declare namespace LocalJSX {
         /**
           * Event triggered on checkbox focus
          */
-        "onOdsFocus"?: (event: OsdsCheckboxCustomEvent<OdsCheckboxFocusChangeEventDetail>) => void;
+        "onOdsFocus"?: (event: OsdsCheckboxCustomEvent<void>) => void;
         /**
           * the checked state is being changed
          */
@@ -3571,9 +3568,6 @@ declare namespace LocalJSX {
         "size"?: ODS_ICON_SIZE;
     }
     interface OsdsInput {
-        /**
-          * Props
-         */
         "ariaLabel"?: HTMLElement['ariaLabel'];
         /**
           * ID of the element that labels the input
@@ -3647,9 +3641,6 @@ declare namespace LocalJSX {
           * Name of the input field
          */
         "name"?: string;
-        /**
-          * Events
-         */
         "onOdsBlur"?: (event: OsdsInputCustomEvent<void>) => void;
         "onOdsClear"?: (event: OsdsInputCustomEvent<void>) => void;
         "onOdsFocus"?: (event: OsdsInputCustomEvent<void>) => void;

@@ -1,6 +1,7 @@
 import { addons } from '@storybook/addons';
 import theme from './ods.theme';
 import React from 'react';
+import { parameters } from './preview';
 
 import { releases } from '../public/releases.js';
 
@@ -67,8 +68,54 @@ document.addEventListener('DOMContentLoaded', function() {
     observer.observe(document.getElementById('root'), { childList: true, subtree: true });
   };
 
+  // todo check where to add observer.disconnect
+  // todo rm logs
+  // set background-color to dark when contrasted control is true
+  const observeContrasted = () => {
+    const darkBackground = parameters?.backgrounds?.values.find(bg => bg.name === 'dark').value;
+    let controlContrasted = document.getElementById('control-contrasted');
+
+    const toggleBackground = () => {
+      const storybookWrapper = document.getElementById('storybook-preview-wrapper');
+      if (controlContrasted && controlContrasted.checked) {
+        storybookWrapper.style.backgroundColor = darkBackground;
+      } else {
+        storybookWrapper.style.backgroundColor = '';
+      }
+    };
+
+    const attachClickEvent = () => {
+      controlContrasted = document.getElementById('control-contrasted');
+      if (controlContrasted) {
+        controlContrasted.addEventListener('click', toggleBackground);
+      }
+    };
+
+    const resetContrastedState = () => {
+      const storybookWrapper = document.getElementById('storybook-preview-wrapper');
+      storybookWrapper.style.backgroundColor = '';
+      console.log('controlContrasted in reset', controlContrasted);
+
+      if (controlContrasted.checked === true) {
+        console.log('controlContrasted checked', controlContrasted.checked);
+        storybookWrapper.style.backgroundColor = darkBackground;
+      }
+    };
+
+    attachClickEvent();
+
+    const observer = new MutationObserver(() => {
+      attachClickEvent();
+    });
+    observer.observe(document.getElementById('root'), { childList: true, subtree: true });
+
+    // Reinitialize contrasted state on story change
+    addons.getChannel().addListener('storyChanged', resetContrastedState);
+  };
+
   observeReleaseSelector();
   observeItems();
+  observeContrasted();
 });
 
 addons.setConfig({

@@ -5,7 +5,7 @@ import type { OdsCommonFieldValidityState, OdsErrorStateControl, OdsFormControl,
 import type { EventEmitter } from '@stencil/core';
 import { OdsCommonFieldMethodController, OdsLogger } from '@ovhcloud/ods-common-core';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import { AttachInternals, Component, Element, Event, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
+import { AttachInternals, Component, Element, Event, Host, Method, Prop, State, Watch, h } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsInputController } from './core/controller';
 import { ODS_ICON_NAME, ODS_ICON_SIZE } from '../../../../icon/src';
@@ -35,10 +35,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
    * @internal
    */
   @State() tabindex = 0;
-  @State() hasFocus = false;
   @State() internalError = false;
-
-  /** Props */
 
   @Prop() ariaLabel: HTMLElement['ariaLabel'] = DEFAULT_ATTRIBUTE.ariaLabel;
 
@@ -86,15 +83,13 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
 
   @Prop({ reflect: true }) required?: boolean = DEFAULT_ATTRIBUTE.required;
 
-  @Prop({ reflect: true }) size: ODS_COMMON_FIELD_SIZE = DEFAULT_ATTRIBUTE.size;
+  @Prop({ reflect: true }) size?: ODS_COMMON_FIELD_SIZE = DEFAULT_ATTRIBUTE.size;
 
   @Prop({ reflect: true }) step?: number = DEFAULT_ATTRIBUTE.step;
 
   @Prop({ reflect: true }) type?: ODS_COMMON_INPUT_TYPE = DEFAULT_ATTRIBUTE.type;
 
   @Prop({ mutable: true, reflect: true }) value: OdsInputValue = DEFAULT_ATTRIBUTE.value;
-
-  /** Events */
 
   @Event() odsBlur!: EventEmitter<void>;
 
@@ -120,13 +115,6 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
     this.controller.onValueChange(value, oldValue);
   }
 
-  /** Listen */
-
-  @Listen('focus')
-  focus(): void {
-    this.setFocus.bind(this)();
-  }
-
   beforeInit(): void {
     this.controller.beforeInit();
   }
@@ -140,30 +128,22 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
   }
 
   formResetCallback(): void {
-    this.value = this.defaultValue;
+    this.reset();
   }
 
   async emitChange(value: OdsInputValue, oldValue?: OdsInputValue): Promise<void> {
     this.logger.debug('emit', { oldValue, value });
     this.odsValueChange.emit({
       name: this.name,
-      oldValue: oldValue == null ? oldValue : `${oldValue}`,
+      oldValue: oldValue === null ? oldValue : `${oldValue}`,
       validity: await this.getValidity(),
-      value: value == null ? value : `${value}`,
+      value,
     });
-  }
-
-  emitFocus(): void {
-    this.odsFocus.emit();
-  }
-
-  emitBlur(): void {
-    this.odsBlur.emit();
   }
 
   @Method()
   async setFocus(): Promise<void> {
-    this.inputEl?.focus();
+    this.commonFieldMethodController?.setFocus();
   }
 
   @Method()
@@ -174,19 +154,16 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
   @Method()
   async clear(): Promise<void> {
     this.commonFieldMethodController.clear();
-    this.odsClear.emit();
   }
 
   @Method()
   async hide(): Promise<void> {
     this.commonFieldMethodController.hide();
-    this.odsHide.emit();
   }
 
   @Method()
   async reset(): Promise<void> {
     this.commonFieldMethodController.reset();
-    this.odsReset.emit();
   }
 
   @Method()
@@ -205,15 +182,11 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
   }
 
   onBlur(): void {
-    this.controller.onBlur();
+    this.odsBlur.emit();
   }
 
   onInput(event: Event): void {
     this.controller.onInput(event);
-  }
-
-  onFocus(): void {
-    this.controller.onFocus();
   }
 
   private hasPlaceholder(): boolean {
@@ -228,7 +201,6 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
       color,
       contrasted,
       disabled,
-      hasFocus,
       icon,
       inputId,
       tabindex,
@@ -255,8 +227,8 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
         class: {
           'ods-error': this.internalError,
         },
-        hasFocus,
-        tabindex: tabindex,
+        onFocus: () => this.setFocus(),
+        tabindex,
       }}
       >
         <osds-text color={ODS_THEME_COLOR_INTENT.text}
@@ -275,7 +247,6 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
             min,
             name,
             onBlur: () => this.onBlur(),
-            onFocus: () => this.setFocus(),
             onInput: (e) => this.onInput(e),
             placeholder,
             readOnly,

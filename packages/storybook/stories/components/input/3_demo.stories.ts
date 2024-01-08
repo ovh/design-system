@@ -4,6 +4,7 @@ import { html } from 'lit-html';
 import { InputPlay } from './demo.validation.stories';
 import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 import { ODS_COMMON_INPUT_TYPES, ODS_COMMON_INPUT_TYPE } from '@ovhcloud/ods-common-core';
+import { ODS_ICON_NAMES } from '@ovhcloud/ods-components';
 
 defineCustomElement();
 
@@ -17,13 +18,27 @@ const storyParams = {
   },
   type: {
     category: 'General',
-    default: ODS_COMMON_INPUT_TYPE.text,
+    defaultValue: ODS_COMMON_INPUT_TYPE.text,
     options: ODS_COMMON_INPUT_TYPES,
     control: { type: 'select' },
   },
   placeholder: {
     category: 'General',
     defaultValue: 'placeholder',
+  },
+  defaultValue: {
+    category: 'General',
+    control: { type: 'text' },
+  },
+  value: {
+    category: 'General',
+    control: { type: 'text' },
+  },
+  icon: {
+    category: 'General',
+    defaultValue: '',
+    options: ODS_ICON_NAMES,
+    control: { type: 'select' },
   },
   prefixValue: {
     category: 'General',

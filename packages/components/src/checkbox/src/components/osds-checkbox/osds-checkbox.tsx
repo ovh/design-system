@@ -2,7 +2,6 @@ import type { OdsCheckboxAttribute, OdsCheckboxAttributeCbk } from './interfaces
 import type {
   OdsCheckboxCheckedChangeEventDetail,
   OdsCheckboxEvent,
-  OdsCheckboxFocusChangeEventDetail,
   OdsCheckboxUpdatingChangeEventDetail,
 } from './interfaces/events';
 import type { OdsCheckboxMethod } from './interfaces/methods';
@@ -28,7 +27,7 @@ export class OsdsCheckbox implements OdsCheckboxMethod, OdsCheckboxEvent, OdsChe
   private readonly inputId = `ods-checkbox-${OsdsCheckbox.checkboxIds++}`;
   private readonly logger = new OdsLogger('OsdsCheckbox');
 
-  @Element() hostElement!: HTMLStencilElement;
+  @Element() el!: HTMLStencilElement;
   inputEl?: HTMLInputElement;
   checkboxableComponent: (HTMLStencilElement & OdsCheckboxable) | null = null;
   @State() tabindex = 0;
@@ -57,17 +56,17 @@ export class OsdsCheckbox implements OdsCheckboxMethod, OdsCheckboxEvent, OdsChe
 
   @Prop({ mutable: true }) save?: OdsCheckboxAttributeCbk = DEFAULT_ATTRIBUTE.save;
 
-  @Prop({ reflect: true }) size: ODS_COMMON_FIELD_SIZE = DEFAULT_ATTRIBUTE.size;
+  @Prop({ reflect: true }) size?: ODS_COMMON_FIELD_SIZE = DEFAULT_ATTRIBUTE.size;
 
   @Prop({ reflect: true, mutable: true }) updating: boolean = DEFAULT_ATTRIBUTE.updating;
 
   @Prop({ reflect: true, mutable: true }) value: string = DEFAULT_ATTRIBUTE.value;
 
-  @Event() odsBlur!: EventEmitter<OdsCheckboxFocusChangeEventDetail>;
+  @Event() odsBlur!: EventEmitter<void>;
 
   @Event() odsCheckedChange!: EventEmitter<OdsCheckboxCheckedChangeEventDetail>;
 
-  @Event() odsFocus!: EventEmitter<OdsCheckboxFocusChangeEventDetail>;
+  @Event() odsFocus!: EventEmitter<void>;
 
   @Event() odsUpdatingChange!: EventEmitter<OdsCheckboxUpdatingChangeEventDetail>;
 
@@ -77,13 +76,13 @@ export class OsdsCheckbox implements OdsCheckboxMethod, OdsCheckboxEvent, OdsChe
 
   componentDidLoad() {
     (async() => {
-      this.checkboxableComponent = (this.hostElement.firstElementChild as unknown) as (HTMLStencilElement & OdsCheckboxable);
+      this.checkboxableComponent = (this.el.firstElementChild as unknown) as (HTMLStencilElement & OdsCheckboxable);
       this.afterInit();
     })();
   }
 
   emitBlur() {
-    this.odsBlur.emit({ value: this.value, focus: false });
+    this.odsBlur.emit();
   }
 
   emitChecked() {
@@ -92,7 +91,7 @@ export class OsdsCheckbox implements OdsCheckboxMethod, OdsCheckboxEvent, OdsChe
   }
 
   emitFocus() {
-    this.odsFocus.emit({ value: this.value, focus: true });
+    this.odsFocus.emit();
   }
 
   emitUpdating() {

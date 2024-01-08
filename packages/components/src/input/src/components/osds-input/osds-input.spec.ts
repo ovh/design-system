@@ -16,7 +16,16 @@ OdsMockPropertyDescriptor(HTMLInputElement.prototype, 'validity', () => OdsCreat
 
 describe('spec:osds-input', () => {
 
-  const baseAttribute = { ariaLabel: null, defaultValue: '', forbiddenValues: [], type: ODS_COMMON_INPUT_TYPE.text, value: '' };
+  const baseAttribute = {
+    ariaLabel: null,
+    defaultValue: '',
+    disabled: false,
+    error: false,
+    forbiddenValues: [],
+    name: '',
+    type: ODS_COMMON_INPUT_TYPE.text,
+    value: '',
+  };
   let page: SpecPage;
   let htmlInput: HTMLInputElement | null | undefined;
   let instance: OsdsInput;
@@ -259,13 +268,6 @@ describe('spec:osds-input', () => {
     });
 
     describe('events', () => {
-      it('should call onBlur on blur', async() => {
-        await setup({});
-        instance?.onBlur();
-        expect(controller.onBlur).toHaveBeenCalledTimes(1);
-        expect(controller.onBlur).toHaveBeenCalledWith();
-      });
-
       it('should call onInput on input', async() => {
         const event = new Event('');
         await setup({});

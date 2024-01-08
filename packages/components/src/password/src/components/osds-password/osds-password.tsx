@@ -54,7 +54,7 @@ export class OsdsPassword implements OdsPasswordAttribute, OdsPasswordMethod  {
 
   @Prop({ reflect: true }) required?: boolean = DEFAULT_ATTRIBUTE.required;
 
-  @Prop({ reflect: true }) size: ODS_COMMON_FIELD_SIZE = DEFAULT_ATTRIBUTE.size;
+  @Prop({ reflect: true }) size?: ODS_COMMON_FIELD_SIZE = DEFAULT_ATTRIBUTE.size;
 
   @Prop({ reflect: true, mutable: true }) value = DEFAULT_ATTRIBUTE.value;
 

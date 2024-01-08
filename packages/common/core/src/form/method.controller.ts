@@ -1,21 +1,11 @@
-import type { OdsCommonFieldValidityState } from './interfaces/attributes';
+import type { OdsCommonFieldValidityState, OdsCommonFieldAttribute } from './interfaces/attributes';
 import type { OdsCommonFieldMethod } from './interfaces/methods';
-import type { ODS_COMMON_INPUT_TYPE } from './constants/ods-common-input-type';
-import type { OdsFormForbiddenValues } from './validation/ods-form-forbidden-values';
-import type { OdsInputValue } from './ods-input-value';
+import type { OdsCommonFieldEvent } from './interfaces/events';
 import { OdsGetValidityState } from './validation/ods-get-validity-state';
 
-interface OdsCommonFieldComponent {
-  defaultValue?: OdsInputValue | string | Date | HTMLInputElement['value'];
-  disabled?: boolean;  
-  emitFocus?: () => void;
-  forbiddenValues?: OdsFormForbiddenValues<string | number>;
-  hasFocus?: boolean
+type OdsCommonFieldComponent = OdsCommonFieldAttribute & Partial<OdsCommonFieldEvent> & {
+  el: HTMLElement;
   inputEl?: HTMLInputElement;
-  masked?: boolean;
-  tabindex?: number;
-  type?: ODS_COMMON_INPUT_TYPE;
-  value?: OdsInputValue | string | Date | HTMLInputElement['value'];
 }
 
 class OdsCommonFieldMethodController implements OdsCommonFieldMethod {
@@ -29,10 +19,11 @@ class OdsCommonFieldMethodController implements OdsCommonFieldMethod {
     if (this.component.disabled) {
       return;
     }
-    this.component.value = '';
+    this.component.value = null;
     if (this.component.inputEl) {
       this.component.inputEl.value = '';
     }
+    this.component.odsClear?.emit();
   }
 
   /**
@@ -42,9 +33,12 @@ class OdsCommonFieldMethodController implements OdsCommonFieldMethod {
     if (this.component.disabled) {
       return;
     }
-    this.component.inputEl?.focus();
-    this.component.hasFocus = true;
-    this.component?.emitFocus?.();
+    if (this.component.inputEl) {
+      this.component.inputEl.focus();
+    } else {
+      this.component.el.focus();
+    }
+    this.component.odsFocus?.emit();
   }
 
   /**
@@ -55,13 +49,15 @@ class OdsCommonFieldMethodController implements OdsCommonFieldMethod {
       return;
     }
     this.component.masked = !this.component.masked;
+    this.component.odsHide?.emit();
   }
 
   /**
    * restore the value to the initial state
    */
   async reset(): Promise<void> {
-    this.component.value = this.component.defaultValue ? this.component.defaultValue.toString() : '';
+    this.component.value = this.component.defaultValue ? this.component.defaultValue : null;
+    this.component.odsReset?.emit();
   }
 
   async setTabindex(value: number): Promise<void> {

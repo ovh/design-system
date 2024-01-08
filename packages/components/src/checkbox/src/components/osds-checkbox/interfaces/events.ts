@@ -19,7 +19,7 @@ interface OdsCheckboxEvent {
   /**
    * Event triggered on checkbox blur
    */
-  odsBlur: EventEmitter<OdsCheckboxFocusChangeEventDetail>;
+  odsBlur: EventEmitter<void>;
   /**
    * the checked state changed
    */
@@ -27,7 +27,7 @@ interface OdsCheckboxEvent {
   /**
    * Event triggered on checkbox focus
    */
-  odsFocus: EventEmitter<OdsCheckboxFocusChangeEventDetail>;
+  odsFocus: EventEmitter<void>;
   /**
    * the checked state is being changed
    */

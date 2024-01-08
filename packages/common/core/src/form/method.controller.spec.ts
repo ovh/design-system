@@ -4,8 +4,10 @@ import { OdsCommonFieldComponent, OdsCommonFieldMethodController } from './metho
 describe('spec:OdsCommonFieldMethodController', () => {
     let controller: OdsCommonFieldMethodController;
     let osdsInput = {
+      ariaLabel: '',
       defaultValue: 'defaultValue',
       disabled: false,
+      error: false,
       forbiddenValues: [],
       hasFocus: false,
       inputEl: {
@@ -14,9 +16,13 @@ describe('spec:OdsCommonFieldMethodController', () => {
         validity: { valid: true },
       } as unknown as HTMLInputElement,
       masked: false,
+      name: '',
       tabindex: 0,
       type: ODS_COMMON_INPUT_TYPE.text,
       value: '',
+      el: {
+        focus: jest.fn(),
+      } as unknown as HTMLElement,
     }
 
     afterEach(() => {
@@ -35,6 +41,13 @@ describe('spec:OdsCommonFieldMethodController', () => {
     controller.setFocus();
     expect(osdsInput.inputEl.focus).toHaveBeenCalledTimes(1);
   });
+
+  it('should call focus on el', () => {
+    setup({ inputEl: undefined });
+    controller.setFocus();
+    expect(osdsInput.el.focus).toHaveBeenCalledTimes(1);
+  });
+
 
   it('should not call focus on inputEl because of disabled', () => {
     setup({ disabled: true });

@@ -32,7 +32,7 @@ interface OdsPaginationAttribute {
   totalPages: number;
 }
 
-export {
+export type {
   OdsPaginationAttribute,
   OdsPaginationPageList,
 };

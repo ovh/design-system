@@ -2,34 +2,21 @@ import type { OdsPaginationAttribute, OdsPaginationPageList } from './interfaces
 import type { OdsPaginationChangedEventDetail, OdsPaginationEvent, OdsPaginationItemPerPageChangedEventDetail } from './interfaces/events';
 import type { OdsPaginationMethod } from './interfaces/methods';
 import type { OdsSelectOptionClickEventDetail } from '../../../../select/src';
+import type { EventEmitter } from '@stencil/core';
 import type { HTMLStencilElement } from '@stencil/core/internal';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import { ODS_BUTTON_SIZE, ODS_BUTTON_VARIANT } from '../../../../button/src';
-import { ODS_ICON_NAME, ODS_ICON_SIZE } from '../../../../icon/src';
-import { ODS_TEXT_SIZE } from '../../../../text/src';
-import {
-  Component,
-  Element,
-  Event,
-  EventEmitter,
-  Fragment,
-  Host,
-  Listen,
-  Method,
-  Prop,
-  State,
-  Watch,
-  forceUpdate,
-  h,
-} from '@stencil/core';
+import { Component, Element, Event, Fragment, Host, Listen, Method, Prop, State, Watch, forceUpdate, h } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_PAGINATION_PER_PAGE_MIN, ODS_PAGINATION_PER_PAGE_OPTIONS } from './constants/pagination-per-page';
 import { OdsPaginationController } from './core/controller';
+import { ODS_BUTTON_SIZE, ODS_BUTTON_VARIANT } from '../../../../button/src';
+import { ODS_ICON_NAME, ODS_ICON_SIZE } from '../../../../icon/src';
+import { ODS_TEXT_SIZE } from '../../../../text/src';
 
 @Component({
-  tag: 'osds-pagination',
-  styleUrl: 'osds-pagination.scss',
   shadow: true,
+  styleUrl: 'osds-pagination.scss',
+  tag: 'osds-pagination',
 })
 export class OsdsPagination implements OdsPaginationAttribute, OdsPaginationEvent, OdsPaginationMethod {
   private actualTotalPages = DEFAULT_ATTRIBUTE.totalPages;
@@ -40,17 +27,17 @@ export class OsdsPagination implements OdsPaginationAttribute, OdsPaginationEven
   @State() itemPerPage = ODS_PAGINATION_PER_PAGE_MIN;
   @State() pageList: OdsPaginationPageList = [];
 
-  @Prop({ reflect: true, mutable: true }) current: number = DEFAULT_ATTRIBUTE.current;
+  @Prop({ mutable: true, reflect: true }) current: number = DEFAULT_ATTRIBUTE.current;
   @Prop({ reflect: true }) totalItems?: number;
   @Prop({ reflect: true }) totalPages: number = DEFAULT_ATTRIBUTE.totalPages;
-  @Prop({ reflect: true, mutable: true }) disabled: boolean = DEFAULT_ATTRIBUTE.disabled;
+  @Prop({ mutable: true , reflect: true }) disabled: boolean = DEFAULT_ATTRIBUTE.disabled;
   @Prop({ reflect: true }) labelTooltipPrevious: string = DEFAULT_ATTRIBUTE.labelTooltipPrevious;
   @Prop({ reflect: true }) labelTooltipNext: string = DEFAULT_ATTRIBUTE.labelTooltipNext;
 
   @Event() odsPaginationChanged!: EventEmitter<OdsPaginationChangedEventDetail>;
   @Event() odsPaginationItemPerPageChanged!: EventEmitter<OdsPaginationItemPerPageChangedEventDetail>;
 
-  componentWillLoad() {
+  componentWillLoad(): void {
     if (this.totalItems) {
       this.actualTotalPages = this.controller.computeActualTotalPages(this.itemPerPage);
     } else {
@@ -61,7 +48,7 @@ export class OsdsPagination implements OdsPaginationAttribute, OdsPaginationEven
   }
 
   @Listen('odsValueChange')
-  odsValueChangeHandler(event: CustomEvent<OdsSelectOptionClickEventDetail>) {
+  odsValueChangeHandler(event: CustomEvent<OdsSelectOptionClickEventDetail>): void {
     event.preventDefault();
     event.stopPropagation();
 
@@ -74,18 +61,18 @@ export class OsdsPagination implements OdsPaginationAttribute, OdsPaginationEven
 
   @Watch('labelTooltipNext')
   @Watch('labelTooltipPrevious')
-  updateLabelTooltip() {
+  updateLabelTooltip(): void {
     forceUpdate(this.el);
   }
 
   @Watch('current')
-  async onCurrentChange(current: number, oldCurrent?: number) {
+  async onCurrentChange(current: number, oldCurrent?: number): Promise<void> {
     this.updatePageList();
     this.emitChange(current, oldCurrent);
   }
 
   @Watch('totalPages')
-  async onTotalPagesChange() {
+  async onTotalPagesChange(): Promise<void> {
     if (!this.totalItems) {
       this.actualTotalPages = this.totalPages;
     }
@@ -93,7 +80,7 @@ export class OsdsPagination implements OdsPaginationAttribute, OdsPaginationEven
   }
 
   @Watch('itemPerPage')
-  async onItemPerPageChange() {
+  async onItemPerPageChange(): Promise<void> {
     await this.updatePagination();
 
     this.odsPaginationItemPerPageChanged.emit({
@@ -104,7 +91,7 @@ export class OsdsPagination implements OdsPaginationAttribute, OdsPaginationEven
   }
 
   @Watch('totalItems')
-  async onTotalItemsChange() {
+  async onTotalItemsChange(): Promise<void> {
     await this.updatePagination();
   }
 
@@ -113,23 +100,23 @@ export class OsdsPagination implements OdsPaginationAttribute, OdsPaginationEven
    * @see OdsPaginationMethods.setPageIndex
    */
   @Method()
-  async setPageIndex(current: number) {
+  async setPageIndex(current: number): Promise<void> {
     this.controller.setPageIndex(current);
   }
 
-  private emitChange(current: number, oldCurrent?: number) {
+  private emitChange(current: number, oldCurrent?: number): void {
     this.odsPaginationChanged.emit({
       current: current,
-      oldCurrent: oldCurrent,
       itemPerPage: this.itemPerPage,
+      oldCurrent: oldCurrent,
     });
   }
 
-  private updatePageList() {
+  private updatePageList(): void {
     this.pageList = this.controller.createPageList(this.actualTotalPages, this.current);
   }
 
-  private async updatePagination() {
+  private async updatePagination(): Promise<void> {
     this.actualTotalPages = this.controller.computeActualTotalPages(this.itemPerPage);
 
     if (this.current === 1) {
@@ -142,33 +129,33 @@ export class OsdsPagination implements OdsPaginationAttribute, OdsPaginationEven
 
   // clicks events
 
-  handlePreviousClick(page: number) {
+  handlePreviousClick(page: number): void {
     this.controller.handlePreviousClick(page);
   }
 
-  handleNextClick(page: number) {
+  handleNextClick(page: number): void {
     this.controller.handleNextClick(page);
   }
 
-  handlePageClick(page: number) {
+  handlePageClick(page: number): void {
     this.controller.handlePageClick(page);
   }
 
   // keyDown events
 
-  handlePreviousKeyDown(event: KeyboardEvent, page: number) {
+  handlePreviousKeyDown(event: KeyboardEvent, page: number): void {
     this.controller.handlePreviousKeyDown(event, page);
   }
 
-  handleNextKeyDown(event: KeyboardEvent, page: number) {
+  handleNextKeyDown(event: KeyboardEvent, page: number): void {
     this.controller.handleNextKeyDown(event, page, this.pageList);
   }
 
-  handlePageKeyDown(event: KeyboardEvent, page: number) {
+  handlePageKeyDown(event: KeyboardEvent, page: number): void {
     this.controller.handlePageKeyDown(event, page);
   }
 
-  renderArrows(direction: 'left' | 'right') {
+  renderArrows(direction: 'left' | 'right'): typeof Fragment {
     const { disabled } = this;
     const isLeft = direction === 'left';
     const arrowIcon = isLeft ? ODS_ICON_NAME.CHEVRON_LEFT : ODS_ICON_NAME.CHEVRON_RIGHT;
@@ -188,14 +175,18 @@ export class OsdsPagination implements OdsPaginationAttribute, OdsPaginationEven
             variant={ODS_BUTTON_VARIANT.ghost}
             color={ODS_THEME_COLOR_INTENT.primary}
             disabled={disabled || (isLeft && this.current === 1) || (direction === 'right' && this.current >= this.pageList.length)}
-            onKeyDown={(event: KeyboardEvent) => {
+            onKeyDown={(event: KeyboardEvent): void => {
               if (isLeft) {
                 this.handlePreviousKeyDown(event, Number(this.current));
               } else {
                 this.handleNextKeyDown(event, Number(this.current));
               }
             }}
-            onClick={() => {
+            onClick={(): void => {
+              if (disabled || (isLeft && this.current === 1) || (direction === 'right' && this.current >= this.pageList.length)) {
+                return;
+              }
+
               if (isLeft) {
                 this.handlePreviousClick(Number(this.current));
               } else {
@@ -216,7 +207,7 @@ export class OsdsPagination implements OdsPaginationAttribute, OdsPaginationEven
     );
   }
 
-  renderEllipsis() {
+  renderEllipsis(): typeof Fragment {
     return (
       <li>
         <osds-button color={ODS_THEME_COLOR_INTENT.primary}
@@ -232,7 +223,7 @@ export class OsdsPagination implements OdsPaginationAttribute, OdsPaginationEven
     );
   }
 
-  render() {
+  render(): JSX.Element | undefined {
     if (!this.totalItems && this.actualTotalPages < 2) {
       return;
     }
@@ -290,8 +281,8 @@ export class OsdsPagination implements OdsPaginationAttribute, OdsPaginationEven
                         inline
                         color={ODS_THEME_COLOR_INTENT.primary}
                         size={ODS_BUTTON_SIZE.sm}
-                        onKeyDown={(event: KeyboardEvent) => this.handlePageKeyDown(event, Number(pageId))}
-                        onClick={() => this.handlePageClick(Number(pageId))}>
+                        onKeyDown={(event: KeyboardEvent): void => this.handlePageKeyDown(event, Number(pageId))}
+                        onClick={(): void => this.handlePageClick(Number(pageId))}>
                         {pageId}
                       </osds-button>
                     </li>

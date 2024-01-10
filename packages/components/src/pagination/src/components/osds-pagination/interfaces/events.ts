@@ -27,7 +27,7 @@ interface OdsPaginationEvent {
   odsPaginationItemPerPageChanged: EventEmitter<OdsPaginationItemPerPageChangedEventDetail>;
 }
 
-export {
+export type {
   OdsPaginationCurrentChangeEvent,
   OdsPaginationChangedEventDetail,
   OdsPaginationEvent,

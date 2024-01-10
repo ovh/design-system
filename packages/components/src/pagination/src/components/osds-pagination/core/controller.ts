@@ -13,7 +13,7 @@ class OdsPaginationController {
    * @param itemPerPage - Number of item per page.
    * @returns The number of pages.
    */
-  computeActualTotalPages(itemPerPage: number) {
+  computeActualTotalPages(itemPerPage: number): number {
     if (!this.component.totalItems) {
       return this.component.totalPages;
     }
@@ -27,7 +27,7 @@ class OdsPaginationController {
     @param pageSelected - Selected page number.
     @returns An array of objects representing pages with an array of the size of the number of pages and 'active' (displayed page) properties.
   */
-  createPageList(totalPages: number, pageSelected: number) {
+  createPageList(totalPages: number, pageSelected: number): OdsPaginationPageList {
     const pageList: OdsPaginationPageList = [];
 
     // Create initial pageList with 'active' property set to false for each page.
@@ -77,37 +77,37 @@ class OdsPaginationController {
 
   // click events
 
-  handlePreviousClick(page: number) {
+  handlePreviousClick(page: number): void {
     this.setPageIndex(page - 1);
   }
 
-  handleNextClick(page: number) {
+  handleNextClick(page: number): void {
     this.setPageIndex(page + 1);
   }
 
-  handlePageClick(page: number) {
+  handlePageClick(page: number): void {
     this.setPageIndex(page);
   }
 
   // key events
 
-  handlePreviousKeyDown(event: KeyboardEvent, page: number) {
+  handlePreviousKeyDown(event: KeyboardEvent, page: number): void {
     if (this.component.current > 1) {
       this.onKeyDown(event, page - 1);
     }
   }
 
-  handleNextKeyDown(event: KeyboardEvent, page: number, pageList: OdsPaginationPageList) {
+  handleNextKeyDown(event: KeyboardEvent, page: number, pageList: OdsPaginationPageList): void {
     if (this.component.current < pageList.length) {
       this.onKeyDown(event, page + 1);
     }
   }
 
-  handlePageKeyDown(event: KeyboardEvent, page: number) {
+  handlePageKeyDown(event: KeyboardEvent, page: number): void {
     this.onKeyDown(event, page);
   }
 
-  onKeyDown(event: KeyboardEvent, page: number) {
+  onKeyDown(event: KeyboardEvent, page: number): void {
     if (event.code === 'Enter' || event.code === 'Space') {
       event.preventDefault(); // to avoid space scrolling the page
       this.setPageIndex(page);
@@ -115,7 +115,7 @@ class OdsPaginationController {
   }
 
   // setPageIndex set the page
-  setPageIndex(current: number) {
+  setPageIndex(current: number): void {
     this.component.current = current;
   }
 }

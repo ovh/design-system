@@ -12,7 +12,7 @@ describe('e2e:osds-pagination', () => {
   let el: E2EElement;
   let osdsButtonPaginationPageButtonElement: E2EElement;
 
-  async function setup({ attributes = {}, html = '' }: { attributes?: Partial<OdsPaginationAttribute>, html?: string } = {}) {
+  async function setup({ attributes = {}, html = '' }: { attributes?: Partial<OdsPaginationAttribute>, html?: string } = {}): Promise<void> {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsPaginationAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
@@ -29,7 +29,7 @@ describe('e2e:osds-pagination', () => {
 
   describe('defaults', () => {
     beforeEach(async() => {
-      await setup({ attributes: { totalPages: 10, current: 4 } });
+      await setup({ attributes: { current: 4, totalPages: 10 } });
     });
 
     it('should render', async() => {
@@ -201,9 +201,9 @@ describe('e2e:osds-pagination', () => {
       await page.waitForChanges();
 
       const expected: OdsPaginationChangedEventDetail = {
-        oldCurrent: 2,
         current: 5,
         itemPerPage: 10,
+        oldCurrent: 2,
       };
 
       expect(odsPaginationChanged).toHaveReceivedEventDetail(expected);

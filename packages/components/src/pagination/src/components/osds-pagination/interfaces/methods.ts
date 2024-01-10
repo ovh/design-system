@@ -5,6 +5,6 @@ interface OdsPaginationMethod {
   setPageIndex(value: number): Promise<void>;
 }
 
-export {
+export type {
   OdsPaginationMethod,
 };

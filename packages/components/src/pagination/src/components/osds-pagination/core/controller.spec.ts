@@ -1,11 +1,9 @@
 import type { OdsPaginationPageList } from '../interfaces/attributes';
-
+import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
 import { OdsLogger } from '@ovhcloud/ods-common-core';
-import { OdsClearLoggerSpy, OdsInitializeLoggerSpy, OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
-
+import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
 import { OdsPaginationController } from './controller';
 import { OsdsPagination } from '../osds-pagination';
-
 
 class OdsPaginationMock extends OsdsPagination {
   constructor(attribute: Partial<OsdsPagination>) {
@@ -19,7 +17,7 @@ describe('spec:ods-pagination-controller', () => {
   let component: OsdsPagination;
   let loggerSpyReferences: OdsLoggerSpyReferences;
 
-  function setup(attributes: Partial<OsdsPagination> = {}) {
+  function setup(attributes: Partial<OsdsPagination> = {}): void {
     component = new OdsPaginationMock(attributes);
     controller = new OdsPaginationController(component);
   }
@@ -43,26 +41,26 @@ describe('spec:ods-pagination-controller', () => {
 
       it('should return totalPages if totalItems is not defined', () => {
         const dummyTotalPages = 8;
-        setup({ disabled: false, current: 2, totalPages: dummyTotalPages });
+        setup({ current: 2, disabled: false, totalPages: dummyTotalPages });
 
         expect(controller.computeActualTotalPages(dummyItemPerPage)).toBe(dummyTotalPages);
       });
 
       it('should return the correct amount of pages if totalItems is defined', () => {
-        setup({ disabled: false, current: 2, totalItems: 33, totalPages: 1 });
+        setup({ current: 2, disabled: false, totalItems: 33, totalPages: 1 });
         expect(controller.computeActualTotalPages(dummyItemPerPage)).toBe(4);
 
-        setup({ disabled: false, current: 2, totalItems: 9, totalPages: 1 });
+        setup({ current: 2, disabled: false, totalItems: 9, totalPages: 1 });
         expect(controller.computeActualTotalPages(dummyItemPerPage)).toBe(1);
 
-        setup({ disabled: false, current: 2, totalItems: 9, totalPages: 1 });
+        setup({ current: 2, disabled: false, totalItems: 9, totalPages: 1 });
         expect(controller.computeActualTotalPages(0)).toBe(9);
       });
     });
 
     describe('createPageList', () => {
       it('should generate the correct number of pages', () => {
-        setup({ disabled: false, current: 2, totalPages: 8 });
+        setup({ current: 2, disabled: false, totalPages: 8 });
 
         const pageList = controller.createPageList(component.totalPages, component.current);
 
@@ -70,7 +68,7 @@ describe('spec:ods-pagination-controller', () => {
       });
 
       it('should generate the correct page list', () => {
-        setup({ disabled: false, current: 2, totalPages: 9 });
+        setup({ current: 2, disabled: false, totalPages: 9 });
 
         const pageList: OdsPaginationPageList = controller.createPageList(component.totalPages, component.current);
 
@@ -78,7 +76,7 @@ describe('spec:ods-pagination-controller', () => {
       });
 
       it('should display the correct page list following to the current page 5', () => {
-        setup({ disabled: false, current: 5, totalPages: 12 });
+        setup({ current: 5, disabled: false, totalPages: 12 });
 
         const pageList: OdsPaginationPageList = controller.createPageList(component.totalPages, component.current);
 
@@ -98,7 +96,7 @@ describe('spec:ods-pagination-controller', () => {
       });
 
       it('should display the correct page list following to the current page 2', () => {
-        setup({ disabled: false, current: 2, totalPages: 9 });
+        setup({ current: 2, disabled: false, totalPages: 9 });
 
         const pageList: OdsPaginationPageList = controller.createPageList(component.totalPages, component.current);
 
@@ -115,7 +113,7 @@ describe('spec:ods-pagination-controller', () => {
       });
 
       it('should display the correct page list following to the current page 3', () => {
-        setup({ disabled: false, current: 3, totalPages: 9 });
+        setup({ current: 3, disabled: false, totalPages: 9 });
 
         const pageList: OdsPaginationPageList = controller.createPageList(component.totalPages, component.current);
 
@@ -132,7 +130,7 @@ describe('spec:ods-pagination-controller', () => {
       });
 
       it('should display the correct page list following to the current page 4', () => {
-        setup({ disabled: false, current: 4, totalPages: 9 });
+        setup({ current: 4, disabled: false, totalPages: 9 });
 
         const pageList: OdsPaginationPageList = controller.createPageList(component.totalPages, component.current);
 
@@ -149,7 +147,7 @@ describe('spec:ods-pagination-controller', () => {
       });
 
       it('all pages should be active if there are 5 pages', () => {
-        setup({ disabled: false, current: 4, totalPages: 5 });
+        setup({ current: 4, disabled: false, totalPages: 5 });
 
         const pageList: OdsPaginationPageList = controller.createPageList(component.totalPages, component.current);
 
@@ -162,7 +160,7 @@ describe('spec:ods-pagination-controller', () => {
       });
 
       it('should display the last 5 pages if page 9 on 9 is selected', () => {
-        setup({ disabled: false, current: 9, totalPages: 9 });
+        setup({ current: 9, disabled: false, totalPages: 9 });
 
         const pageList: OdsPaginationPageList = controller.createPageList(component.totalPages, component.current);
 
@@ -179,7 +177,7 @@ describe('spec:ods-pagination-controller', () => {
       });
 
       it('set page to 5 with setPageIndex', () => {
-        setup({ disabled: false, current: 10, totalPages: 12 });
+        setup({ current: 10, disabled: false, totalPages: 12 });
         expect(component.current).toBe(10);
 
         controller.setPageIndex(5);
@@ -187,30 +185,30 @@ describe('spec:ods-pagination-controller', () => {
       });
 
       it('handlePreviousKeyDown', () => {
-        setup({ disabled: false, current: 10, totalPages: 12 });
+        setup({ current: 10, disabled: false, totalPages: 12 });
         expect(component.current).toBe(10);
 
-        const event = new KeyboardEvent('keyDown', { code: 'Space', bubbles: true });
+        const event = new KeyboardEvent('keyDown', { bubbles: true, code: 'Space' });
         controller.handlePreviousKeyDown(event, component.current);
         expect(component.current).toBe(9);
       });
 
       it('handlePageKeyDown', () => {
-        setup({ disabled: false, current: 10, totalPages: 12 });
+        setup({ current: 10, disabled: false, totalPages: 12 });
 
         const pageList: OdsPaginationPageList = controller.createPageList(component.totalPages, component.current);
         expect(component.current).toBe(10);
 
-        const event = new KeyboardEvent('keyDown', { code: 'Space', bubbles: true });
+        const event = new KeyboardEvent('keyDown', { bubbles: true, code: 'Space' });
         controller.handleNextKeyDown(event, component.current, pageList);
         expect(component.current).toBe(11);
       });
 
       it('handlePageKeyDown on page 5', () => {
-        setup({ disabled: false, current: 10, totalPages: 12 });
+        setup({ current: 10, disabled: false, totalPages: 12 });
         expect(component.current).toBe(10);
 
-        const event = new KeyboardEvent('keyDown', { code: 'Space', bubbles: true });
+        const event = new KeyboardEvent('keyDown', { bubbles: true, code: 'Space' });
 
         controller.handlePageKeyDown(event, 6);
         expect(component.current).toBe(6);
@@ -229,7 +227,7 @@ describe('spec:ods-pagination-controller', () => {
       });
 
       it('handlePreviousClick', () => {
-        setup({ disabled: false, current: 10, totalPages: 12 });
+        setup({ current: 10, disabled: false, totalPages: 12 });
 
         expect(component.current).toBe(10);
         controller.handlePreviousClick(component.current);
@@ -239,7 +237,7 @@ describe('spec:ods-pagination-controller', () => {
       });
 
       it('handleNextClick', () => {
-        setup({ disabled: false, current: 10, totalPages: 12 });
+        setup({ current: 10, disabled: false, totalPages: 12 });
 
         expect(component.current).toBe(10);
         controller.handleNextClick(component.current);
@@ -249,7 +247,7 @@ describe('spec:ods-pagination-controller', () => {
       });
 
       it('handlePageClick', () => {
-        setup({ disabled: false, current: 10, totalPages: 12 });
+        setup({ current: 10, disabled: false, totalPages: 12 });
 
         expect(component.current).toBe(10);
         controller.handlePageClick(1);

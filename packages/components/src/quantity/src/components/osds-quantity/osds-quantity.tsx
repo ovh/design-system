@@ -1,5 +1,6 @@
 import type { OdsQuantityAttribute } from './interfaces/attributes';
 import type { OsdsInput } from '../../../../input/src';
+import type { FunctionalComponent } from '@stencil/core';
 import { Component, Element, Host, Listen, Prop, Watch, h } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsQuantityController } from './core/controller';
@@ -35,12 +36,12 @@ export class OsdsQuantity implements OdsQuantityAttribute {
   @Prop({ reflect: true }) public disabled?: boolean = DEFAULT_ATTRIBUTE.disabled;
 
   @Watch('disabled')
-  updateDisableOnChild(disabled: boolean) {
+  updateDisableOnChild(disabled: boolean): void {
     this.controller.setDisabledOnChildren(disabled);
   }
 
   @Listen('odsValueChange')
-  odsValueChangeHandler() {
+  odsValueChangeHandler(): void {
     this.controller.processInputValueChange();
   }
 
@@ -72,19 +73,19 @@ export class OsdsQuantity implements OdsQuantityAttribute {
     this.onDestroy();
   }
 
-  render() {
+  render(): FunctionalComponent {
     return (
       <Host>
         <slot name={'minus'}
           {...{
-            ref: (el: any) => this.minus = el as HTMLSlotElement,
             onClick: () => this.controller.minusClickHandler(),
+            ref: (el: any) => this.minus = el as HTMLSlotElement,
           }}></slot>
         <slot></slot>
         <slot name={'plus'}
           {...{
-            ref: (el: any) => this.plus = el as HTMLSlotElement,
             onClick: () => this.controller.plusClickHandler(),
+            ref: (el: any) => this.plus = el as HTMLSlotElement,
           }}></slot>
       </Host>
     );

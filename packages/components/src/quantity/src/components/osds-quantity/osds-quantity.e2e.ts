@@ -11,7 +11,7 @@ describe('e2e:osds-quantity', () => {
   let plusElement: E2EElement;
   let inputElement: E2EElement;
 
-  async function setup({ attributes = {}, html = '' }: { attributes?: Partial<OdsQuantityAttribute>, html?: string } = {}) {
+  async function setup({ attributes = {}, html = '' }: { attributes?: Partial<OdsQuantityAttribute>, html?: string } = {}): Promise<void> {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsQuantityAttribute>(attributes, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();

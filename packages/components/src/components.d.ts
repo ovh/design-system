@@ -1147,9 +1147,6 @@ export namespace Components {
           * Indicates if the input is in loading state or not
          */
         "loading"?: boolean;
-        /**
-          * Indicates if the input is masked or not
-         */
         "masked"?: boolean;
         /**
           * Name of the input field
@@ -3837,9 +3834,6 @@ declare namespace LocalJSX {
           * Indicates if the input is in loading state or not
          */
         "loading"?: boolean;
-        /**
-          * Indicates if the input is masked or not
-         */
         "masked"?: boolean;
         /**
           * Name of the input field

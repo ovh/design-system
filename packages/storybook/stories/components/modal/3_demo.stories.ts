@@ -28,7 +28,7 @@ const storyParams = {
   },
   actions: {
     category: 'Slot',
-    defaultValue: `<osds-button slot="actions" color="primary" variant='stroked'>Cancel</osds-button>
+    defaultValue: `<osds-button slot="actions" color="primary" variant='stroked' id='cancel'}>Cancel</osds-button>
 <osds-button slot="actions" color="primary">OK</osds-button>`,
   },
   masked: {
@@ -71,6 +71,18 @@ const TemplateDemo = (args: any) => {
   window.onload = locationChangeTrigger;
 
   return html`
+    <script>
+      const cancelButton = document.querySelector('#cancel');
+      cancelButton.addEventListener('click', () => {
+        cancelButton.closest('osds-modal').close();
+      });
+      cancelButton.addEventListener('keyup', (e) => {
+        if(e.key === 'Enter' || e.key === 'Space') {
+          cancelButton.closest('osds-modal').close();
+        }
+      });
+    </script>
+
     <osds-button style='position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);'
                  color='primary'
                  @click=${handleOpenModal}>

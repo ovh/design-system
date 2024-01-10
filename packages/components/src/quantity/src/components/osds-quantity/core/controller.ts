@@ -1,4 +1,3 @@
-import type { OsdsQuantity } from '../osds-quantity';
 import type { OsdsInput } from '../../../../../input/src';
 
 class OdsQuantityController {
@@ -26,7 +25,7 @@ class OdsQuantityController {
     }
   }
 
-  private onBlur() {
+  private onBlur(): void {
     if (this.component.input) {
       const valueAsNb = Number(this.component.input.value);
       const minNb = Number(this.component.input.min);
@@ -35,7 +34,7 @@ class OdsQuantityController {
       let valueToCheck = valueAsNb;
 
       if (stepNb && !Number.isInteger((valueAsNb - minNb) / stepNb)) {
-        valueToCheck = Math.floor( (valueAsNb - minNb) / stepNb) * stepNb + minNb
+        valueToCheck = Math.floor( (valueAsNb - minNb) / stepNb) * stepNb + minNb;
       }
 
       if (this.component.input.min !== '' && valueToCheck < minNb) {
@@ -66,7 +65,7 @@ class OdsQuantityController {
     }
   }
 
-  setDisabledOnChildren(disabled: boolean) {
+  setDisabledOnChildren(disabled: boolean): void {
     if (this.component.minus && this.component.plus && this.component.input) {
       if (disabled) {
         this.setDisabled(this.component.minus, this.component.plus, this.component.input);

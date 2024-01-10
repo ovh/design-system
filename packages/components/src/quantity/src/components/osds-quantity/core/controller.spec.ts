@@ -17,7 +17,7 @@ describe('spec:ods-quantity-controller', () => {
   let spyInputRemoveEventListener: jest.SpyInstance<void>;
   let spyOnProcessInputValueChange: jest.SpyInstance<void, jest.ArgsType<OdsQuantityController['processInputValueChange']>>;
 
-  function setup(attributes: Partial<OsdsQuantity> = {}) {
+  function setup(attributes: Partial<OsdsQuantity> = {}): void {
     component = new OdsQuantityMock(attributes);
     document.body.appendChild(component.el);
     controller = new OdsQuantityController(component);
@@ -112,7 +112,7 @@ describe('spec:ods-quantity-controller', () => {
 
         it('should change value of input if not in a valid step', () => {
           setup();
-          let validInput = "1";
+          const validInput = '1';
           const input = document.createElement('input');
           input.setAttribute('type', 'number');
           input.setAttribute('value', '1.5');

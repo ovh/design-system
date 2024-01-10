@@ -1,17 +1,14 @@
 import type { OdsQuantityAttribute } from './interfaces/attributes';
 import type { E2EElement, E2EPage } from '@stencil/core/testing';
-
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import { newE2EPage } from '@stencil/core/testing';
-
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-
 
 describe('e2e:osds-quantity', () => {
   let page: E2EPage;
   let el: E2EElement;
 
-  async function setup({ attributes = {}, html = '' }: { attributes?: Partial<OdsQuantityAttribute>, html?: string } = {}) {
+  async function setup({ attributes = {}, html = '' }: { attributes?: Partial<OdsQuantityAttribute>, html?: string } = {}): Promise<void> {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsQuantityAttribute>(attributes, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
@@ -23,13 +20,13 @@ describe('e2e:osds-quantity', () => {
 
   const screenshotActions = [
     {
-      actionDescription: 'no action',
-      action: () => {
+      action: (): void => {
         // noop
       },
+      actionDescription: 'no action',
     }, {
+      action: (): void => el.setProperty('disabled', true),
       actionDescription: 'disabled',
-      action: () => el.setProperty('disabled', true),
     },
   ];
 
@@ -48,9 +45,9 @@ describe('e2e:osds-quantity', () => {
 
         await page.evaluate(() => {
           const element = document.querySelector('osds-quantity') as HTMLElement;
-          return { width: element.clientWidth, height: element.clientHeight };
+          return { height: element.clientHeight, width: element.clientWidth };
         });
-        await page.setViewport({ width: 600, height:600 });
+        await page.setViewport({ height: 600, width: 600 });
         const results = await page.compareScreenshot('quantity', { fullPage: false, omitBackground: true });
         expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
       });
@@ -68,9 +65,9 @@ describe('e2e:osds-quantity', () => {
 
         await page.evaluate(() => {
           const element = document.querySelector('osds-quantity') as HTMLElement;
-          return { width: element.clientWidth, height: element.clientHeight };
+          return { height: element.clientHeight, width: element.clientWidth };
         });
-        await page.setViewport({ width: 600, height:600 });
+        await page.setViewport({ height:600, width: 600 });
         const results = await page.compareScreenshot('quantity', { fullPage: false, omitBackground: true });
         expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
       });

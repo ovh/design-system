@@ -1,5 +1,5 @@
-import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
 import type { OsdsInput } from '../../../../../input/src';
+import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
 import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
 import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
 import { OdsQuantityController } from './controller';
@@ -23,7 +23,7 @@ describe('spec:ods-quantity-controller', () => {
 
   Ods.instance().logging(false);
 
-  function setup(attributes: Partial<OsdsQuantity> = {}) {
+  function setup(attributes: Partial<OsdsQuantity> = {}): void {
     component = new OdsQuantityMock(attributes);
     document.body.appendChild(component.el);
     controller = new OdsQuantityController(component);
@@ -123,7 +123,7 @@ describe('spec:ods-quantity-controller', () => {
 
         it('should change value of input if not in a valid step', () => {
           setup();
-          let validInput = "1";
+          const validInput = '1';
           const input = document.createElement('input');
           input.setAttribute('type', 'number');
           input.setAttribute('value', '1.5');

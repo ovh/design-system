@@ -3,14 +3,11 @@ jest.mock('./core/controller'); // keep jest.mock before any
 import type { OdsQuantityAttribute } from './interfaces/attributes';
 import type { AnyHTMLElement } from '@stencil/core/internal';
 import type { SpecPage } from '@stencil/core/testing';
-
 import { OdsMockNativeMethod, odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 import { newSpecPage } from '@stencil/core/testing';
-
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsQuantityController } from './core/controller';
 import { OsdsQuantity } from './osds-quantity';
-
 
 describe('spec:osds-quantity', () => {
   let page: SpecPage;
@@ -24,14 +21,22 @@ describe('spec:osds-quantity', () => {
   let controller: OdsQuantityController;
 
   /** base html template (avoid boilerplate) */
-  const baseHtml = (slots: { minus?: string, unnamed?: string, plus?: string }) =>
-    `
+  // const baseHtml = (slots: { minus?: string, unnamed?: string, plus?: string }): string =>
+  //   `
+  //   ${slots.minus || slots.minus === '' ? slots.minus : '<button slot="minus"></button>'}
+  //   ${slots.unnamed || slots.unnamed === '' ? slots.unnamed : '<input type="number">'}
+  //   ${slots.plus || slots.plus === '' ? slots.plus : '<button slot="plus"></button>'}
+  //   `;
+
+  function baseHtml(slots: { minus?: string, unnamed?: string, plus?: string }): string {
+    return `
     ${slots.minus || slots.minus === '' ? slots.minus : '<button slot="minus"></button>'}
     ${slots.unnamed || slots.unnamed === '' ? slots.unnamed : '<input type="number">'}
     ${slots.plus || slots.plus === '' ? slots.plus : '<button slot="plus"></button>'}
     `;
+  }
 
-  function findElements() {
+  function findElements(): void {
     // note: assigned slot not yet available in HtmlMockedElement of stencil : https://github.com/ionic-team/stencil/issues/2830
     slotMinus = shadowRoot?.querySelector('slot[name=minus]');
     slotPlus = shadowRoot?.querySelector('slot[name=plus]');
@@ -42,7 +47,7 @@ describe('spec:osds-quantity', () => {
     jest.clearAllMocks();
   });
 
-  async function setup({ attributes = {}, html = '' }: { attributes?: Partial<OdsQuantityAttribute>, html?: string } = {}) {
+  async function setup({ attributes = {}, html = '' }: { attributes?: Partial<OdsQuantityAttribute>, html?: string } = {}): Promise<void> {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsQuantityAttribute>(attributes, DEFAULT_ATTRIBUTE);
 
     // mock setCustomValidity method that does not exist when stencil mock HTMLInputElement
@@ -93,11 +98,11 @@ describe('spec:osds-quantity', () => {
 
     describe('disabled', () => {
       odsUnitTestAttribute<OdsQuantityAttribute, 'disabled'>({
-        name: 'disabled',
         defaultValue: DEFAULT_ATTRIBUTE.disabled,
+        name: 'disabled',
         newValue: false,
-        value: true,
         setup: (value) => setup({ attributes: { ['disabled']: value } }),
+        value: true,
         ...config,
       });
     });

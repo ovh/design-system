@@ -1,8 +1,6 @@
-import type { OsdsQuantity } from '../osds-quantity';
 import type { OsdsInput } from '../../../../../input/src';
-
+import type { OsdsQuantity } from '../osds-quantity';
 import { OdsLogger } from '@ovhcloud/ods-common-core';
-
 
 class OdsQuantityController {
   private component: OsdsQuantity;
@@ -30,7 +28,7 @@ class OdsQuantityController {
     }
   }
 
-  private onBlur() {
+  private onBlur(): void {
     if (this.component.input) {
       const valueAsNb = Number(this.component.input.value);
       const minNb = Number(this.component.input.min);
@@ -39,7 +37,7 @@ class OdsQuantityController {
       let valueToCheck = valueAsNb;
 
       if (stepNb && !Number.isInteger((valueAsNb - minNb) / stepNb)) {
-        valueToCheck = Math.floor( (valueAsNb - minNb) / stepNb) * stepNb + minNb
+        valueToCheck = Math.floor( (valueAsNb - minNb) / stepNb) * stepNb + minNb;
       }
 
       if (this.component.input.min !== '' && valueToCheck < minNb) {
@@ -70,7 +68,7 @@ class OdsQuantityController {
     }
   }
 
-  setDisabledOnChildren(disabled: boolean) {
+  setDisabledOnChildren(disabled: boolean): void {
     this.logger.log('disabled changed. update child', { disabled });
     if (this.component.minus && this.component.plus && this.component.input) {
       if (disabled) {

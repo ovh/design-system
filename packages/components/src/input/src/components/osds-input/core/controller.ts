@@ -36,7 +36,6 @@ class OdsInputController {
   }
 
   onFormControlChange(formControl?: OdsFormControl<OdsCommonFieldValidityState>): void {
-    this.logger.log(`[input=${this.component.value}]`, 'onFormControlChange', formControl, formControl && formControl.id);
     if (formControl) {
       formControl.register(this.component);
     }
@@ -52,7 +51,6 @@ class OdsInputController {
   }
 
   onValueChange(value: OdsInputValue, oldValue?: OdsInputValue): void {
-    this.logger.debug(`[input=${this.component.value}]`, 'value changed', { oldValue, value });
     this.assertValue(value);
     this.component.internals.setFormValue(value?.toString() ?? '');
     this.component.emitChange(value, oldValue);
@@ -105,6 +103,14 @@ class OdsInputController {
       this.component.inputEl.stepDown();
       this.component.inputEl.dispatchEvent(inputEvent);
     }
+  }
+
+  hide(): void {
+    if (this.component.disabled) {
+      return;
+    }
+    this.component.masked = !this.component.masked;
+    this.component.odsHide?.emit();
   }
 
   onInput(event: Event): void {

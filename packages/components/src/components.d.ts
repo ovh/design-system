@@ -811,10 +811,6 @@ export namespace Components {
          */
         "color"?: ODS_THEME_COLOR_INTENT;
         /**
-          * Indicates if the input is contrasted or not: see component principles
-         */
-        "contrasted"?: boolean;
-        /**
           * Default value of the input
          */
         "defaultValue": OdsInputValue;
@@ -842,9 +838,6 @@ export namespace Components {
           * get the validity state
          */
         "getValidity": () => Promise<OdsCommonFieldValidityState>;
-        /**
-          * hide or display the value
-         */
         "hide": () => Promise<void>;
         /**
           * Icon to be used in the input field
@@ -1114,10 +1107,6 @@ export namespace Components {
           * Main color of the input: see component principles
          */
         "color"?: ODS_THEME_COLOR_INTENT;
-        /**
-          * Indicates if the password is contrasted or not: see component principles
-         */
-        "contrasted"?: boolean;
         /**
           * Default value of the input
          */
@@ -1476,11 +1465,6 @@ export namespace Components {
         "value": OdsRangeValue;
     }
     interface OsdsSearchBar {
-        /**
-          * Indicates if the search-bar is contrasted or not: see component principles
-          * @see OdsSearchBarAttributes.contrasted
-         */
-        "contrasted"?: boolean;
         /**
           * Indicates if the search-bar is disabled or not: see component principles
           * @see OdsSearchBarAttributes.disabled
@@ -3582,10 +3566,6 @@ declare namespace LocalJSX {
          */
         "color"?: ODS_THEME_COLOR_INTENT;
         /**
-          * Indicates if the input is contrasted or not: see component principles
-         */
-        "contrasted"?: boolean;
-        /**
           * Default value of the input
          */
         "defaultValue"?: OdsInputValue;
@@ -3870,10 +3850,6 @@ declare namespace LocalJSX {
           * Main color of the input: see component principles
          */
         "color"?: ODS_THEME_COLOR_INTENT;
-        /**
-          * Indicates if the password is contrasted or not: see component principles
-         */
-        "contrasted"?: boolean;
         /**
           * Default value of the input
          */
@@ -4216,11 +4192,6 @@ declare namespace LocalJSX {
         "value"?: OdsRangeValue;
     }
     interface OsdsSearchBar {
-        /**
-          * Indicates if the search-bar is contrasted or not: see component principles
-          * @see OdsSearchBarAttributes.contrasted
-         */
-        "contrasted"?: boolean;
         /**
           * Indicates if the search-bar is disabled or not: see component principles
           * @see OdsSearchBarAttributes.disabled

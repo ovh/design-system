@@ -8,15 +8,23 @@ class OdsInputMock {
   constructor(attribute: Partial<OsdsInput>) {
     Object.assign(this, attribute);
   }
-  logger = new OdsLogger('OdsInputMock');
-  internals = {
-    setFormValue: jest.fn()
-  };
-  type = ODS_COMMON_INPUT_TYPE.number;
+  ariaLabel = '';
   commonFieldMethodController = new OdsCommonFieldMethodController(this);
+  defaultValue = null;
+  disabled = false;
+  el = document.createElement('osds-input');
   emitChange = jest.fn();
   emitFocus = jest.fn();
   emitBlur = jest.fn();
+  error = false;
+  internals = {
+    setFormValue: jest.fn()
+  };
+  logger = new OdsLogger('OdsInputMock');
+  masked = false;
+  name = '';
+  type = ODS_COMMON_INPUT_TYPE.number;
+  value = null;
 }
 
 describe('spec:ods-input-controller', () => {
@@ -234,6 +242,22 @@ describe('spec:ods-input-controller', () => {
         controller.stepDown();
         expect(inputEl.dispatchEvent).toHaveBeenCalledTimes(1);
         expect(inputEl.dispatchEvent).toHaveBeenCalledWith(inputEvent);
+      });
+    });
+
+    describe('methods:hide', () => {
+      it('should hide input', () => {
+        setup({ });
+        controller.hide();
+        expect(component.masked).toBe(true);
+        controller.hide();
+        expect(component.masked).toBe(false);
+      });
+    
+      it('should not hide input because of disable', () => {
+        setup({ disabled: true });
+        controller.hide();
+        expect(component.masked).toBe(false);
       });
     });
 

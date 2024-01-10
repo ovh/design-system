@@ -5,8 +5,6 @@ interface OdsSearchbarOption {
 }
 
 interface OdsSearchBarAttribute {
-  /** Indicates if the search-bar is contrasted or not: see component principles */
-  contrasted?: boolean;
   /** Indicates if the search-bar is disabled or not: see component principles */
   disabled?: boolean;
   /** Indicates if the search-bar is in loading state or not */

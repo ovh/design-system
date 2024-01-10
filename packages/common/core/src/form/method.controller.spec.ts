@@ -70,20 +70,6 @@ describe('spec:OdsCommonFieldMethodController', () => {
     expect((controller as any).component.value).toBe(value);
   });
 
-  it('should hide input', () => {
-    setup({ });
-    controller.hide();
-    expect((controller as any).component.masked).toBe(true);
-    controller.hide();
-    expect((controller as any).component.masked).toBe(false);
-  });
-
-  it('should not hide input because of disable', () => {
-    setup({ disabled: true });
-    controller.hide();
-    expect((controller as any).component.masked).toBe(false);
-  });
-
   it('should reset input', () => {
     setup({ value: 'test' });
     controller.reset();

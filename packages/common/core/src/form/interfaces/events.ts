@@ -15,7 +15,6 @@ interface OdsCommonFieldEvent {
   odsBlur: EventEmitter<void>;
   odsClear: EventEmitter<void>;
   odsFocus: EventEmitter<void>;
-  odsHide: EventEmitter<void>;
   odsReset: EventEmitter<void>;
   odsValueChange: EventEmitter<OdsCommonFieldValueChangeEventDetail>;
 }

@@ -11,7 +11,15 @@ import { OsdsPassword } from './osds-password';
 
 
 describe('spec:osds-password', () => {
-  const baseAttribute = { ariaLabel: '', forbiddenValues: [], value: '' };
+  const baseAttribute = {
+    ariaLabel: '',
+    defaultValue: '',
+    disabled: false,
+    error: false,
+    forbiddenValues: [],
+    name: '',
+    value: '',
+  };
   let page: SpecPage;
   let root: HTMLElement | undefined;
   let instance: OsdsPassword;
@@ -64,17 +72,6 @@ describe('spec:osds-password', () => {
         newValue: ODS_THEME_COLOR_INTENT.primary,
         value: ODS_THEME_COLOR_INTENT.default,
         setup: (value) => setup({ attributes: { ['color']: value } }),
-        ...config,
-      });
-    });
-
-    describe('contrasted', () => {
-      odsUnitTestAttribute<OdsPasswordAttribute, 'contrasted'>({
-        name: 'contrasted',
-        defaultValue: DEFAULT_ATTRIBUTE.contrasted,
-        newValue: false,
-        value: true,
-        setup: (value) => setup({ attributes: { ['contrasted']: value } }),
         ...config,
       });
     });

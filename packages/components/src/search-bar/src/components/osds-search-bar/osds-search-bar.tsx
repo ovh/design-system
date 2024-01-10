@@ -23,9 +23,6 @@ export class OsdsSearchBar implements OdsSearchBarAttribute, OdsSearchBarEvent {
 
   @Element() el!: HTMLElement;
 
-  /** @see OdsSearchBarAttributes.contrasted */
-  @Prop({ reflect: true }) public contrasted?: boolean = DEFAULT_ATTRIBUTE.contrasted;
-
   /** @see OdsSearchBarAttributes.disabled */
   @Prop({ reflect: true }) public disabled?: boolean = DEFAULT_ATTRIBUTE.disabled;
 
@@ -90,7 +87,6 @@ export class OsdsSearchBar implements OdsSearchBarAttribute, OdsSearchBarEvent {
           color={ ODS_THEME_COLOR_INTENT.primary }
           type={ ODS_COMMON_INPUT_TYPE.text }
           clearable
-          contrasted={ this.contrasted }
           value={ this.value }
           loading={ this.loading }
           disabled={ this.disabled }
@@ -104,12 +100,10 @@ export class OsdsSearchBar implements OdsSearchBarAttribute, OdsSearchBarEvent {
           onKeyDown={ (event: KeyboardEvent):void => this.handlerOnKeydownInput(event) }
           size={ ODS_BUTTON_SIZE.sm }
           color={ ODS_THEME_COLOR_INTENT.primary }
-          disabled={ this.disabled }
-          contrasted={ this.contrasted }>
+          disabled={ this.disabled }>
           <osds-icon
             color={ ODS_THEME_COLOR_INTENT.primary }
             size={ ODS_ICON_SIZE.sm }
-            contrasted={ !this.contrasted }
             name={ ODS_ICON_NAME.SEARCH } />
         </osds-button>
       </Host>

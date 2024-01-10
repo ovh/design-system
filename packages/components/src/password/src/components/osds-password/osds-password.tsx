@@ -28,8 +28,6 @@ export class OsdsPassword implements OdsPasswordAttribute, OdsPasswordMethod  {
 
   @Prop({ reflect: true }) color?: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
 
-  @Prop({ reflect: true }) contrasted?: boolean = DEFAULT_ATTRIBUTE.contrasted;
-
   @Prop({ reflect: true }) defaultValue: OdsInputValue = DEFAULT_ATTRIBUTE.defaultValue;
 
   @Prop({ reflect: true }) disabled: boolean = DEFAULT_ATTRIBUTE.disabled;
@@ -97,7 +95,6 @@ export class OsdsPassword implements OdsPasswordAttribute, OdsPasswordMethod  {
           ariaLabelledby={this.ariaLabelledby}
           clearable={this.clearable}
           color={this.color}
-          contrasted={this.contrasted}
           disabled={this.disabled}
           error={this.error}
           forbiddenValues={this.forbiddenValues}

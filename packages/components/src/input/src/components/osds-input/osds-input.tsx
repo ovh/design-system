@@ -3,7 +3,7 @@ import type { OdsInputEvent, OdsInputValueChangeEventDetail } from './interfaces
 import type { OdsInputMethod } from './interfaces/methods';
 import type { OdsCommonFieldValidityState, OdsErrorStateControl, OdsFormControl, OdsFormForbiddenValues, OdsInputValue, ODS_COMMON_FIELD_SIZE, ODS_COMMON_INPUT_TYPE } from '@ovhcloud/ods-common-core';
 import type { EventEmitter } from '@stencil/core';
-import { OdsCommonFieldMethodController, OdsLogger } from '@ovhcloud/ods-common-core';
+import { OdsCommonFieldMethodController } from '@ovhcloud/ods-common-core';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { AttachInternals, Component, Element, Event, Host, Method, Prop, State, Watch, h } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
@@ -19,7 +19,6 @@ import { ODS_TEXT_SIZE } from '../../../../text/src';
   tag: 'osds-input',
 })
 export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMethod {
-  private logger = new OdsLogger('OsdsInput');
   private static inputIds = 0;
   private inputId = `ods-input-${OsdsInput.inputIds++}`;
   controller: OdsInputController = new OdsInputController(this);
@@ -44,8 +43,6 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
   @Prop({ reflect: true }) clearable?: boolean = DEFAULT_ATTRIBUTE.clearable;
 
   @Prop({ reflect: true }) color?: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
-
-  @Prop({ reflect: true }) contrasted?: boolean = DEFAULT_ATTRIBUTE.contrasted;
 
   @Prop({ reflect: true }) defaultValue: OdsInputValue = DEFAULT_ATTRIBUTE.defaultValue;
 
@@ -132,7 +129,6 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
   }
 
   async emitChange(value: OdsInputValue, oldValue?: OdsInputValue): Promise<void> {
-    this.logger.debug('emit', { oldValue, value });
     this.odsValueChange.emit({
       name: this.name,
       oldValue: oldValue === null ? oldValue : `${oldValue}`,
@@ -158,7 +154,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
 
   @Method()
   async hide(): Promise<void> {
-    this.commonFieldMethodController.hide();
+    this.controller.hide();
   }
 
   @Method()
@@ -199,7 +195,6 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
       ariaLabelledby,
       clearable,
       color,
-      contrasted,
       disabled,
       icon,
       inputId,
@@ -239,7 +234,6 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
           {...{
             ariaLabel,
             ariaLabelledby: labelId || null,
-            contrasted,
             disabled,
             id: inputId,
             masked,

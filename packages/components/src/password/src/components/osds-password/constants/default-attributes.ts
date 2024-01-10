@@ -7,7 +7,6 @@ const DEFAULT_ATTRIBUTE: OdsPasswordAttribute = Object.freeze({
   ariaLabelledby: undefined,
   clearable: false,
   color: ODS_THEME_COLOR_INTENT.default,
-  contrasted: false,
   defaultValue: '',
   disabled: false,
   error: false,

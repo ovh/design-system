@@ -42,17 +42,6 @@ class OdsCommonFieldMethodController implements OdsCommonFieldMethod {
   }
 
   /**
-   * hide or display the value
-   */
-  async hide(): Promise<void> {
-    if (this.component.disabled) {
-      return;
-    }
-    this.component.masked = !this.component.masked;
-    this.component.odsHide?.emit();
-  }
-
-  /**
    * restore the value to the initial state
    */
   async reset(): Promise<void> {

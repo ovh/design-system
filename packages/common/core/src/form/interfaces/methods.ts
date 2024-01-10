@@ -13,11 +13,6 @@ interface OdsCommonFieldMethod extends OdsFormControlMethods<OdsCommonFieldValid
     setFocus(): Promise<void>;
 
     /**
-     * hide or display the value
-     */
-    hide(): Promise<void>;
-
-    /**
      * restore the value to the initial state
      */
     reset(): Promise<void>;

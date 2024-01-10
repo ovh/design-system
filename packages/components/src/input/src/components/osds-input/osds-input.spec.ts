@@ -98,17 +98,6 @@ describe('spec:osds-input', () => {
       });
     });
 
-    describe('contrasted', () => {
-      odsUnitTestAttribute<OdsInputAttribute, 'contrasted'>({
-        name: 'contrasted',
-        defaultValue: DEFAULT_ATTRIBUTE.contrasted,
-        newValue: false,
-        value: true,
-        setup: (value) => setup({ attributes: { ['contrasted']: value } }),
-        ...config,
-      });
-    });
-
     describe('disabled', () => {
       odsUnitTestAttribute<OdsInputAttribute, 'disabled'>({
         name: 'disabled',
@@ -308,16 +297,16 @@ describe('spec:osds-input', () => {
         await setup({});
         await instance.hide();
 
-        expect(commonFieldMethodController.hide).toHaveBeenCalledTimes(1);
-        expect(commonFieldMethodController.hide).toHaveBeenCalledWith();
+        expect(controller.hide).toHaveBeenCalledTimes(1);
+        expect(controller.hide).toHaveBeenCalledWith();
       });
 
       it('should call hide from hide method but should not display the value if disabled', async() => {
         await setup({ attributes: { type: ODS_COMMON_INPUT_TYPE.password, value: 'Just ODS being ahead', masked: true, disabled: true } });
         await instance.hide();
 
-        expect(commonFieldMethodController.hide).toHaveBeenCalledTimes(1);
-        expect(commonFieldMethodController.hide).toHaveBeenCalledWith();
+        expect(controller.hide).toHaveBeenCalledTimes(1);
+        expect(controller.hide).toHaveBeenCalledWith();
 
         const type = instance.type;
         expect(type).toBe(ODS_COMMON_INPUT_TYPE.password);

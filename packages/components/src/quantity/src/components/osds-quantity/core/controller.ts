@@ -1,4 +1,5 @@
 import type { OsdsInput } from '../../../../../input/src';
+import type { OsdsQuantity } from '../osds-quantity';
 
 class OdsQuantityController {
   private component: OsdsQuantity;

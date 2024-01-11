@@ -298,5 +298,41 @@ describe('e2e:osds-pagination', () => {
       pageItemElements = await page.findAll('osds-pagination >>> ul > li:not([class="arrows"])');
       expect(pageItemElements.length).toBe(1);
     });
+
+    it('should not allow to go to next page if the current page is the last one', async() => {
+      await setup({ attributes: { current: 2, totalItems: 30 } });
+
+      const allArrows = await page.findAll('osds-pagination >>> .arrows >>> osds-button');
+
+      allArrows[1].click();
+      await page.waitForChanges();
+
+      let current = Number(el.getAttribute('current'));
+      expect(current).toEqual(3);
+
+      allArrows[1].click();
+      await page.waitForChanges();
+
+      current = Number(el.getAttribute('current'));
+      expect(current).toEqual(3);
+    });
+
+    it('should not allow to go to previous page if the current page is the first one', async() => {
+      await setup({ attributes: { current: 2, totalItems: 30 } });
+
+      const allArrows = await page.findAll('osds-pagination >>> .arrows >>> osds-button');
+
+      allArrows[0].click();
+      await page.waitForChanges();
+
+      let current = Number(el.getAttribute('current'));
+      expect(current).toEqual(1);
+
+      allArrows[0].click();
+      await page.waitForChanges();
+
+      current = Number(el.getAttribute('current'));
+      expect(current).toEqual(1);
+    });
   });
 });

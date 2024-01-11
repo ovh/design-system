@@ -32,12 +32,9 @@
   "dependencies": {
     "@ovhcloud/ods-common-core": "17.0.0",
     "@ovhcloud/ods-common-stencil": "17.0.0",
-    "@ovhcloud/ods-common-theming": "17.0.0",
-    "@ovhcloud/ods-component-input": "17.0.0",
-    "@ovhcloud/ods-component-select": "17.0.0"
+    "@ovhcloud/ods-common-theming": "17.0.0"
   },
   "devDependencies": {
-    "@ovhcloud/ods-common-scripts": "17.0.0",
     "@ovhcloud/ods-common-testing": "17.0.0",
     "@ovhcloud/ods-stencil-dev": "17.0.0"
   }

@@ -23,7 +23,7 @@ class OdsTimepickerController {
 
   handleTimezones() :void {
     const check = this.parseTimezones(this.getTimezonesList());
-    this.component.timezonesList = [...check] as ODS_TIMEZONE[] ;
+    this.component.timezonesList = check as ODS_TIMEZONE[] ;
   }
 
   parseTimezones(timezones: readonly ODS_TIMEZONE[] | ODS_TIMEZONES_PRESET | string): ODS_TIMEZONE[] {
@@ -38,14 +38,14 @@ class OdsTimepickerController {
         return [];
       }
     }
-    return [...timezones];
+    return timezones as ODS_TIMEZONE[];
   }
 
   handleCurrentTimezone() : void {
     if (!this.component.currentTimezone) {
       const browserTimezone = new Date().getTimezoneOffset() / 60 * -1;
       const parsedTimezone = browserTimezone >= 0 ? `+${browserTimezone}` : browserTimezone.toString();
-      this.component.currentTimezone = ODS_TIMEZONES.find((timezone) => (timezone as string).indexOf(parsedTimezone) > 1);
+      this.component.currentTimezone = ODS_TIMEZONES.find((timezone) => (timezone as string).indexOf(parsedTimezone) > -1);
     }
   }
 

@@ -5427,7 +5427,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-component-input@17.0.0, @ovhcloud/ods-component-input@workspace:packages/components/src/input":
+"@ovhcloud/ods-component-input@workspace:packages/components/src/input":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-input@workspace:packages/components/src/input"
   dependencies:
@@ -5622,7 +5622,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-component-select@17.0.0, @ovhcloud/ods-component-select@workspace:packages/components/src/select":
+"@ovhcloud/ods-component-select@workspace:packages/components/src/select":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-select@workspace:packages/components/src/select"
   dependencies:
@@ -5724,12 +5724,9 @@ __metadata:
   resolution: "@ovhcloud/ods-component-timepicker@workspace:packages/components/src/timepicker"
   dependencies:
     "@ovhcloud/ods-common-core": 17.0.0
-    "@ovhcloud/ods-common-scripts": 17.0.0
     "@ovhcloud/ods-common-stencil": 17.0.0
     "@ovhcloud/ods-common-testing": 17.0.0
     "@ovhcloud/ods-common-theming": 17.0.0
-    "@ovhcloud/ods-component-input": 17.0.0
-    "@ovhcloud/ods-component-select": 17.0.0
     "@ovhcloud/ods-stencil-dev": 17.0.0
   languageName: unknown
   linkType: soft

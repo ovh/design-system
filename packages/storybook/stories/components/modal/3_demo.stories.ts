@@ -76,11 +76,6 @@ const TemplateDemo = (args: any) => {
       cancelButton.addEventListener('click', () => {
         cancelButton.closest('osds-modal').close();
       });
-      cancelButton.addEventListener('keyup', (e) => {
-        if(e.key === 'Enter' || e.key === 'Space') {
-          cancelButton.closest('osds-modal').close();
-        }
-      });
     </script>
 
     <osds-button style='position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);'

@@ -7,7 +7,6 @@ import { ODS_BUTTON_SIZE } from '../constants/button-size';
 import { ODS_BUTTON_TEXT_ALIGN } from '../constants/button-text-align';
 import { ODS_BUTTON_VARIANT } from '../constants/button-variant';
 
-
 /**
  * common controller logic for button component used by the different implementations.
  * it contains all the glue between framework implementation and the third party service.
@@ -27,28 +26,28 @@ class OdsButtonController {
   validateAttributes(): void {
     const logger = this.logger;
     OdsWarnComponentAttribute<ODS_THEME_COLOR_INTENT, OsdsButton>({
-      logger,
-      attributeValues: ODS_THEME_COLOR_INTENT as Record<string, unknown>,
-      attributeName: 'color',
       attribute: this.component.color,
+      attributeName: 'color',
+      attributeValues: ODS_THEME_COLOR_INTENT as Record<string, unknown>,
+      logger,
     });
     OdsWarnComponentAttribute<ODS_BUTTON_SIZE, OsdsButton>({
-      logger,
-      attributeValues: ODS_BUTTON_SIZE as Record<string, unknown>,
-      attributeName: 'size',
       attribute: this.component.size,
+      attributeName: 'size',
+      attributeValues: ODS_BUTTON_SIZE as Record<string, unknown>,
+      logger,
     });
     OdsWarnComponentAttribute<ODS_BUTTON_VARIANT, OsdsButton>({
-      logger,
-      attributeValues: ODS_BUTTON_VARIANT as Record<string, unknown>,
-      attributeName: 'variant',
       attribute: this.component.variant,
+      attributeName: 'variant',
+      attributeValues: ODS_BUTTON_VARIANT as Record<string, unknown>,
+      logger,
     });
     OdsWarnComponentAttribute<ODS_BUTTON_TEXT_ALIGN, OsdsButton>({
-      logger,
-      attributeValues: ODS_BUTTON_TEXT_ALIGN as Record<string, unknown>,
-      attributeName: 'textAlign',
       attribute: this.component.textAlign,
+      attributeName: 'textAlign',
+      attributeValues: ODS_BUTTON_TEXT_ALIGN as Record<string, unknown>,
+      logger,
     });
   }
 
@@ -71,15 +70,14 @@ class OdsButtonController {
 
   handleKey(event: KeyboardEvent): void {
     if(event.key === ' ' || event.key === 'Enter') {
-      this.logger.log('Key on osds-button');
-      this.submitForm(event);
+      this.component.buttonEl?.click();
     }
   }
 
   /**
    * Checking if the button is in a form to add the form submit behaviour on it
    */
-  private submitForm(event: MouseEvent | KeyboardEvent) {
+  private submitForm(event: MouseEvent): void {
     if (this.component.type && this.component.type === 'submit' && !this.component.disabled) {
       const form = (event.target as HTMLElement).closest('form');
       if (form) {

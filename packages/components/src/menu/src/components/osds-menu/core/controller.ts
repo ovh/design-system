@@ -86,10 +86,6 @@ class OdsMenuController {
     case 'ArrowDown':
     case 'Tab':
       return this.handlerKeyArrow(event, selectedMenuItemIndex);
-    case 'Enter':
-    case 'NumpadEnter':
-    case 'Space':
-      return this.handleTriggerClick();
     default:
       break;
     }

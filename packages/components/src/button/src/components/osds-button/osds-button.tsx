@@ -27,6 +27,7 @@ import { OdsButtonController } from './core/controller';
 export class OsdsButton implements OdsButtonAttribute {
   controller: OdsButtonController = new OdsButtonController(this);
   @Element() el!: HTMLStencilElement;
+  buttonEl?: HTMLButtonElement;
 
   /** @see OdsButtonAttributes.color */
   @Prop({ reflect: true }) public color?: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
@@ -119,11 +120,12 @@ export class OsdsButton implements OdsButtonAttribute {
       template = (
         <button {...{
           class: 'button',
-          type: this.type,
           disabled: this.disabled,
           part: 'button',
+          ref: (el):HTMLButtonElement => this.buttonEl = el as HTMLButtonElement,
           role: 'button',
           tabindex: -1,
+          type: this.type,
         }}>
           {content}
         </button>

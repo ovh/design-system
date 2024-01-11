@@ -83,12 +83,6 @@ export class OsdsModal implements OdsModalAttribute, OdsModalMethod, OdsModalEve
     this.handleShownState();
   }
 
-  private handleKeyOnButton(event: KeyboardEvent): void {
-    if (event.key === 'Enter' || event.key === 'Space' ) {
-      this.close();
-    }
-  }
-
   render(): JSX.Element {
     const { color, headline, dismissible, masked } = this;
 
@@ -103,11 +97,7 @@ export class OsdsModal implements OdsModalAttribute, OdsModalMethod, OdsModalEve
           }}>
           <div class="header">
             {dismissible && (
-              <osds-button
-                onClick={(): Promise<void> => this.close()}
-                onKeyUp={this.handleKeyOnButton.bind(this)}
-                color={color} circle
-                variant={ODS_BUTTON_VARIANT.ghost}>
+              <osds-button onClick={(): Promise<void> => this.close()} color={color} circle variant={ODS_BUTTON_VARIANT.ghost}>
                 <osds-icon ariaName={ODS_ICON_NAME.CLOSE + ' icon'} name={ODS_ICON_NAME.CLOSE} size={ODS_ICON_SIZE.sm} color={color}></osds-icon>
               </osds-button>
             )}

@@ -18,7 +18,6 @@
     "doc:accordion": "typedoc src/components/osds-accordion/public-api.ts --out ./docs-api/accordion --json ./docs-api/accordion/typedoc.json",
     "doc:accordion-group": "typedoc src/components/osds-accordion-group/public-api.ts --out ./docs-api/accordion-group --json ./docs-api/accordion-group/typedoc.json",
     "doc:api": "typedoc",
-    "generate:licence": "npx generate-license-file --input package.json --output THIRD-PARTY-LICENCES --overwrite",
     "lint:scss": "stylelint 'src/components/**/*.scss'",
     "FIXME_lint:ts": "eslint 'src/**/*.{js,ts,tsx}'",
     "start": "stencil build --dev --watch --serve",

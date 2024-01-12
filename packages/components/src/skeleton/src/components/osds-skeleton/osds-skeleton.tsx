@@ -1,38 +1,33 @@
 import type { ODS_SKELETON_SIZE } from './constants/skeleton-size';
 import type { OdsSkeletonAttribute } from './interfaces/attributes';
-
 import { Component, Host, Prop, h } from '@stencil/core';
-
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 
-
 @Component({
-  tag: 'osds-skeleton',
-  styleUrl: 'osds-skeleton.scss',
   shadow: true,
+  styleUrl: 'osds-skeleton.scss',
+  tag: 'osds-skeleton',
 })
 export class OsdsSkeleton implements OdsSkeletonAttribute {
-  /** @see OdsSkeletonAttributes.inline */
   @Prop({ reflect: true }) public inline?: boolean = DEFAULT_ATTRIBUTE.inline;
-  /** @see OdsSkeletonAttributes.randomized */
   @Prop({ reflect: true }) public randomized?: boolean = DEFAULT_ATTRIBUTE.randomized;
-  /** @see OdsSkeletonAttributes.size */
   @Prop({ reflect: true }) public size?: ODS_SKELETON_SIZE = DEFAULT_ATTRIBUTE.size;
 
-  private getRandomValue() {
+  private getRandomValue(): number {
     // between 30 and 100
     return Math.floor(Math.random() * (100 - 30)) + 30;
   }
 
-  render() {
+  render(): JSX.Element {
     const { inline, randomized } = this;
+    let width = inline ? '' : '100%';
+
+    if (randomized) {
+      width = `${this.getRandomValue()}%`;
+    }
 
     return (
-      <Host {...{
-        'style': {
-          width: !inline ? '100%' : randomized ? `${this.getRandomValue()}%` : '',
-        },
-      }}>
+      <Host style={{ width }}>
         <div class="loader"></div>
       </Host>
     );

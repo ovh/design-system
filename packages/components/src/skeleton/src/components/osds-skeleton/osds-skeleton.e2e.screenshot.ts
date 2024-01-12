@@ -1,18 +1,14 @@
 import type { OdsSkeletonAttribute } from './interfaces/attributes';
 import type { E2EPage } from '@stencil/core/testing';
-
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import { newE2EPage } from '@stencil/core/testing';
-
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_SKELETON_SIZE } from './constants/skeleton-size';
-
-
 
 describe('e2e:osds-skeleton', () => {
   let page: E2EPage;
 
-  async function setup({ attributes = {} }: { attributes?: Partial<OdsSkeletonAttribute>, html?: string }) {
+  async function setup({ attributes = {} }: { attributes?: Partial<OdsSkeletonAttribute>, html?: string }): Promise<void> {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsSkeletonAttribute>(attributes, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
@@ -32,9 +28,9 @@ describe('e2e:osds-skeleton', () => {
       await page.waitForChanges();
       await page.evaluate(() => {
         const element = document.querySelector('.container') as HTMLElement;
-        return { width: element.clientWidth, height: element.clientHeight };
+        return { height: element.clientHeight, width: element.clientWidth };
       });
-      await page.setViewport({ width: 600, height:600 });
+      await page.setViewport({ height:600, width: 600 });
       const results = await page.compareScreenshot('size auto', { fullPage: false });
       expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
     });
@@ -44,9 +40,9 @@ describe('e2e:osds-skeleton', () => {
       await page.waitForChanges();
       await page.evaluate(() => {
         const element = document.querySelector('.container') as HTMLElement;
-        return { width: element.clientWidth, height: element.clientHeight };
+        return { height: element.clientHeight, width: element.clientWidth };
       });
-      await page.setViewport({ width: 600, height:600 });
+      await page.setViewport({ height:600, width: 600 });
       const results = await page.compareScreenshot('size small', { fullPage: false });
       expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
     });
@@ -56,9 +52,9 @@ describe('e2e:osds-skeleton', () => {
       await page.waitForChanges();
       await page.evaluate(() => {
         const element = document.querySelector('.container') as HTMLElement;
-        return { width: element.clientWidth, height: element.clientHeight };
+        return { height: element.clientHeight, width: element.clientWidth };
       });
-      await page.setViewport({ width: 600, height:600 });
+      await page.setViewport({ height:600, width: 600 });
       const results = await page.compareScreenshot('size medium', { fullPage: false });
       expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
     });
@@ -68,9 +64,9 @@ describe('e2e:osds-skeleton', () => {
       await page.waitForChanges();
       await page.evaluate(() => {
         const element = document.querySelector('.container') as HTMLElement;
-        return { width: element.clientWidth, height: element.clientHeight };
+        return { height: element.clientHeight, width: element.clientWidth };
       });
-      await page.setViewport({ width: 600, height:600 });
+      await page.setViewport({ height:600, width: 600 });
       const results = await page.compareScreenshot('size large', { fullPage: false });
       expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
     });
@@ -80,9 +76,9 @@ describe('e2e:osds-skeleton', () => {
       await page.waitForChanges();
       await page.evaluate(() => {
         const element = document.querySelector('.container') as HTMLElement;
-        return { width: element.clientWidth, height: element.clientHeight };
+        return { height: element.clientHeight, width: element.clientWidth };
       });
-      await page.setViewport({ width: 600, height:600 });
+      await page.setViewport({ height:600, width: 600 });
       const results = await page.compareScreenshot('size extra large', { fullPage: false });
       expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
     });
@@ -93,9 +89,9 @@ describe('e2e:osds-skeleton', () => {
     await page.waitForChanges();
     await page.evaluate(() => {
       const element = document.querySelector('.container') as HTMLElement;
-      return { width: element.clientWidth, height: element.clientHeight };
+      return { height: element.clientHeight, width: element.clientWidth };
     });
-    await page.setViewport({ width: 600, height:600 });
+    await page.setViewport({ height:600, width: 600 });
     const results = await page.compareScreenshot('inline', { fullPage: false });
     expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
   });

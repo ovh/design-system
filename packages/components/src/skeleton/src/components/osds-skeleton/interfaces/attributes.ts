@@ -9,6 +9,6 @@ interface OdsSkeletonAttribute {
   size?: ODS_SKELETON_SIZE
 }
 
-export {
+export type {
   OdsSkeletonAttribute,
 };

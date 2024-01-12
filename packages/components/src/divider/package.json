@@ -16,7 +16,6 @@
     "clean": "rimraf .stencil coverage custom-elements custom-elements-bundle dist docs-api loader screenshot www",
     "doc": "typedoc --json ./docs-api/typedoc.json --pretty && node ../../../../scripts/generate-typedoc-md.js",
     "doc:api": "typedoc",
-    "generate:licence": "npx generate-license-file --input package.json --output THIRD-PARTY-LICENCES --overwrite",
     "lint:scss": "stylelint 'src/components/**/*.scss'",
     "FIXME_lint:ts": "eslint 'src/**/*.{js,ts,tsx}'",
     "start": "stencil build --dev --watch --serve",

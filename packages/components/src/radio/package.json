@@ -17,7 +17,6 @@
     "doc:api": "typedoc",
     "doc:radio": "typedoc src/components/osds-radio/public-api.ts --out ./docs-api/radio --json ./docs-api/radio/typedoc.json",
     "doc:radio-group": "typedoc src/components/osds-radio-group/public-api.ts --out ./docs-api/radio-group --json ./docs-api/radio-group/typedoc.json",
-    "generate:licence": "npx generate-license-file --input package.json --output THIRD-PARTY-LICENCES --overwrite",
     "lint:scss": "stylelint 'src/components/**/*.scss'",
     "FIXME_lint:ts": "eslint 'src/**/*.{js,ts,tsx}'",
     "start": "stencil build --dev --watch --serve",

@@ -1,8 +1,8 @@
 import type { OdsPasswordAttribute } from './interfaces/attributes';
-import type { OdsFormForbiddenValues, OdsInputValue, ODS_COMMON_FIELD_SIZE } from '@ovhcloud/ods-common-core';
+import type { OdsCommonFieldValidityState, OdsInputValue, ODS_COMMON_FIELD_SIZE } from '@ovhcloud/ods-common-core';
 import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import type { OdsPasswordMethod } from './interfaces/methods';
-import { OdsCommonFieldValidityState, ODS_COMMON_INPUT_TYPE } from '@ovhcloud/ods-common-core';
+import { ODS_COMMON_INPUT_TYPE } from '@ovhcloud/ods-common-core';
 import { Component, Element, Host, Prop, h, Method } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OsdsInput } from '../../../../input/src';
@@ -34,7 +34,7 @@ export class OsdsPassword implements OdsPasswordAttribute, OdsPasswordMethod  {
 
   @Prop({ reflect: true }) error: boolean = DEFAULT_ATTRIBUTE.error;
 
-  @Prop({ reflect: true }) forbiddenValues?: OdsFormForbiddenValues<number | string> = DEFAULT_ATTRIBUTE.forbiddenValues;
+  @Prop({ reflect: true }) forbiddenValues?: OdsInputValue[] = DEFAULT_ATTRIBUTE.forbiddenValues;
 
   @Prop({ reflect: true }) inline?: boolean = DEFAULT_ATTRIBUTE.inline;
 
@@ -58,7 +58,7 @@ export class OsdsPassword implements OdsPasswordAttribute, OdsPasswordMethod  {
 
   @Method()
   async getValidity(): Promise<OdsCommonFieldValidityState | undefined> {
-    return this.osdsInput?.getValidity();
+    return this.osdsInput?.getValidity() ?? undefined;
   }
 
   @Method()

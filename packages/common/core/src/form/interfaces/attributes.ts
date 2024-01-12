@@ -1,19 +1,10 @@
 import type { ODS_COMMON_FIELD_SIZE } from '../constants/ods-common-field-size';
 import type { ODS_COMMON_INPUT_TYPE } from '../constants/ods-common-input-type';
-import type { OdsFormControl } from '../control/ods-form-control';
-import type { OdsErrorStateControl } from '../error/ods-error-state-control';
 import type { OdsInputValue } from '../ods-input-value';
-import type { OdsFormForbiddenValues, OdsValidityState } from '../validation/public-api';
 import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 
-interface OdsCommonFieldValidityState extends OdsValidityState {
-  badInput?: boolean;
-  patternMismatch?: boolean;
-  rangeOverflow?: boolean;
-  rangeUnderflow?: boolean;
-  tooLong?: boolean;
-  tooShort?: boolean;
-  typeMismatch?: boolean;
+interface OdsCommonFieldValidityState extends ValidityState {
+  forbiddenValue: boolean;
 }
 
 interface OdsCommonFieldAttribute {
@@ -33,12 +24,8 @@ interface OdsCommonFieldAttribute {
   disabled: boolean;
   /** Indicates if the input shows error or not */
   error: boolean;
-  /** Controls the error state of the input */
-  errorStateControl?: OdsErrorStateControl;
   /** List of forbidden values for the input */
-  forbiddenValues?: OdsFormForbiddenValues<string | number>;
-  /** Control object of the form the input belongs to */
-  formControl?: OdsFormControl<OdsCommonFieldValidityState>;
+  forbiddenValues?: OdsInputValue[];
   /** Label of the input field */
   label?:string;
   /** Indicates if the input is in loading state or not */

@@ -11,7 +11,7 @@ import { OsdsAccordion } from "./accordion/src/components/osds-accordion/osds-ac
 import { OdsBreadcrumbAttributeItem } from "./breadcrumb/src/components/osds-breadcrumb/interfaces/attributes";
 import { ODS_ICON_NAME } from "./icon/src";
 import { ODS_LINK_REFERRER_POLICY } from "./link/src";
-import { ODS_COMMON_FIELD_SIZE, ODS_COMMON_INPUT_TYPE, ODS_COUNTRY_ISO_CODE, ODS_LOCALE, ODS_PERIOD_ISO_CODE, OdsCommonFieldValidityState, OdsErrorStateControl, OdsFormControl, OdsFormForbiddenValues, OdsHTMLAnchorElementRel, OdsHTMLAnchorElementTarget, OdsI18nHook, OdsInputValue, OdsTextAreaValidityState, OdsValidityState } from "@ovhcloud/ods-common-core";
+import { ODS_COMMON_FIELD_SIZE, ODS_COMMON_INPUT_TYPE, ODS_COUNTRY_ISO_CODE, ODS_LOCALE, ODS_PERIOD_ISO_CODE, OdsErrorStateControl, OdsFormControl, OdsFormForbiddenValues, OdsHTMLAnchorElementRel, OdsHTMLAnchorElementTarget, OdsI18nHook, OdsInputValue, OdsTextAreaValidityState, OdsValidityState } from "@ovhcloud/ods-common-core";
 import { OdsBreadcrumbAttributeItem as OdsBreadcrumbAttributeItem1 } from "./breadcrumb/src/components/osds-breadcrumb/public-api";
 import { ODS_BUTTON_SIZE } from "./button/src/components/osds-button/constants/button-size";
 import { ODS_BUTTON_TYPE } from "./button/src/components/osds-button/constants/button-type";
@@ -72,7 +72,7 @@ export { OsdsAccordion } from "./accordion/src/components/osds-accordion/osds-ac
 export { OdsBreadcrumbAttributeItem } from "./breadcrumb/src/components/osds-breadcrumb/interfaces/attributes";
 export { ODS_ICON_NAME } from "./icon/src";
 export { ODS_LINK_REFERRER_POLICY } from "./link/src";
-export { ODS_COMMON_FIELD_SIZE, ODS_COMMON_INPUT_TYPE, ODS_COUNTRY_ISO_CODE, ODS_LOCALE, ODS_PERIOD_ISO_CODE, OdsCommonFieldValidityState, OdsErrorStateControl, OdsFormControl, OdsFormForbiddenValues, OdsHTMLAnchorElementRel, OdsHTMLAnchorElementTarget, OdsI18nHook, OdsInputValue, OdsTextAreaValidityState, OdsValidityState } from "@ovhcloud/ods-common-core";
+export { ODS_COMMON_FIELD_SIZE, ODS_COMMON_INPUT_TYPE, ODS_COUNTRY_ISO_CODE, ODS_LOCALE, ODS_PERIOD_ISO_CODE, OdsErrorStateControl, OdsFormControl, OdsFormForbiddenValues, OdsHTMLAnchorElementRel, OdsHTMLAnchorElementTarget, OdsI18nHook, OdsInputValue, OdsTextAreaValidityState, OdsValidityState } from "@ovhcloud/ods-common-core";
 export { OdsBreadcrumbAttributeItem as OdsBreadcrumbAttributeItem1 } from "./breadcrumb/src/components/osds-breadcrumb/public-api";
 export { ODS_BUTTON_SIZE } from "./button/src/components/osds-button/constants/button-size";
 export { ODS_BUTTON_TYPE } from "./button/src/components/osds-button/constants/button-type";
@@ -444,10 +444,6 @@ export namespace Components {
           * save input allows to set a function that returns a promise. It is called before each time an update is performed and allowing to manage pessimistic update strategy. the checked state will be updated just after the call.
          */
         "save"?: OdsCheckboxAttributeCbk;
-        /**
-          * active the focus on the input in order to let the user write something
-         */
-        "setFocus": () => Promise<void>;
         /**
           * set a custom tab index for easier navigation
           * @param value - chosen index
@@ -823,21 +819,10 @@ export namespace Components {
          */
         "error": boolean;
         /**
-          * Controls the error state of the input
-         */
-        "errorStateControl"?: OdsErrorStateControl;
-        /**
           * List of forbidden values for the input
          */
-        "forbiddenValues"?: OdsFormForbiddenValues<string | number>;
-        /**
-          * Control object of the form the input belongs to
-         */
-        "formControl"?: OdsFormControl<OdsCommonFieldValidityState>;
-        /**
-          * get the validity state
-         */
-        "getValidity": () => Promise<OdsCommonFieldValidityState>;
+        "forbiddenValues"?: OdsInputValue[];
+        "getValidity": () => Promise<ValidityState | undefined>;
         "hide": () => Promise<void>;
         /**
           * Icon to be used in the input field
@@ -1122,11 +1107,8 @@ export namespace Components {
         /**
           * List of forbidden values for the input
          */
-        "forbiddenValues"?: OdsFormForbiddenValues<number | string>;
-        /**
-          * get the validity state
-         */
-        "getValidity": () => Promise<OdsCommonFieldValidityState | undefined>;
+        "forbiddenValues"?: OdsInputValue[];
+        "getValidity": () => Promise<ValidityState | undefined>;
         "hide": () => Promise<void>;
         /**
           * Indicates if the password is inline or not
@@ -3575,17 +3557,9 @@ declare namespace LocalJSX {
          */
         "error"?: boolean;
         /**
-          * Controls the error state of the input
-         */
-        "errorStateControl"?: OdsErrorStateControl;
-        /**
           * List of forbidden values for the input
          */
-        "forbiddenValues"?: OdsFormForbiddenValues<string | number>;
-        /**
-          * Control object of the form the input belongs to
-         */
-        "formControl"?: OdsFormControl<OdsCommonFieldValidityState>;
+        "forbiddenValues"?: OdsInputValue[];
         /**
           * Icon to be used in the input field
          */
@@ -3862,7 +3836,7 @@ declare namespace LocalJSX {
         /**
           * List of forbidden values for the input
          */
-        "forbiddenValues"?: OdsFormForbiddenValues<number | string>;
+        "forbiddenValues"?: OdsInputValue[];
         /**
           * Indicates if the password is inline or not
          */

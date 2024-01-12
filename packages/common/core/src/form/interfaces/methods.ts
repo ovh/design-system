@@ -1,7 +1,6 @@
-import type { OdsCommonFieldValidityState } from './attributes';
-import type { OdsFormControlMethods } from '../control/ods-form-control-methods';
+import type { OdsCommonFieldValidityState } from "./attributes";
 
-interface OdsCommonFieldMethod extends OdsFormControlMethods<OdsCommonFieldValidityState> {
+interface OdsCommonFieldMethod {
     /**
      * empty the value
      */
@@ -10,7 +9,7 @@ interface OdsCommonFieldMethod extends OdsFormControlMethods<OdsCommonFieldValid
     /**
      * active the focus on the input in order to let the user write something
      */
-    setFocus(): Promise<void>;
+    setFocus(elementToFocus: HTMLElement): Promise<void>;
 
     /**
      * restore the value to the initial state
@@ -23,7 +22,7 @@ interface OdsCommonFieldMethod extends OdsFormControlMethods<OdsCommonFieldValid
      */
     setTabindex(value: number): Promise<void>;
 
-    getValidity(): Promise<OdsCommonFieldValidityState | undefined>;
+    getValidity(element: HTMLInputElement): Promise<OdsCommonFieldValidityState | undefined>;
 } 
 
 export {

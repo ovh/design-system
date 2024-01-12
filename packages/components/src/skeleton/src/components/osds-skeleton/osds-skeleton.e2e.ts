@@ -1,18 +1,15 @@
 import type { OdsSkeletonAttribute } from './interfaces/attributes';
 import type { E2EElement, E2EPage } from '@stencil/core/testing';
-
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import { newE2EPage } from '@stencil/core/testing';
-
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-
 
 describe('e2e:osds-skeleton', () => {
   let page: E2EPage;
   let el: E2EElement;
   let skeletonElement: E2EElement;
 
-  async function setup({ attributes }: { attributes: Partial<OdsSkeletonAttribute> }) {
+  async function setup({ attributes }: { attributes: Partial<OdsSkeletonAttribute> }): Promise<void> {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsSkeletonAttribute>(attributes, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();

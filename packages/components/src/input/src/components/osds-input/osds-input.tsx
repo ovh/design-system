@@ -1,9 +1,8 @@
 import type { OdsInputAttribute } from './interfaces/attributes';
 import type { OdsInputEvent, OdsInputValueChangeEventDetail } from './interfaces/events';
 import type { OdsInputMethod } from './interfaces/methods';
-import type { OdsCommonFieldValidityState, OdsErrorStateControl, OdsFormControl, OdsFormForbiddenValues, OdsInputValue, ODS_COMMON_FIELD_SIZE, ODS_COMMON_INPUT_TYPE } from '@ovhcloud/ods-common-core';
+import type { OdsInputValue, ODS_COMMON_FIELD_SIZE, ODS_COMMON_INPUT_TYPE, OdsCommonFieldValidityState } from '@ovhcloud/ods-common-core';
 import type { EventEmitter } from '@stencil/core';
-import { OdsCommonFieldMethodController } from '@ovhcloud/ods-common-core';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { AttachInternals, Component, Element, Event, Host, Method, Prop, State, Watch, h } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
@@ -19,13 +18,12 @@ import { ODS_TEXT_SIZE } from '../../../../text/src';
   tag: 'osds-input',
 })
 export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMethod {
+  controller = new OdsInputController<OsdsInput>(this);
   private static inputIds = 0;
   private inputId = `ods-input-${OsdsInput.inputIds++}`;
-  controller: OdsInputController = new OdsInputController(this);
-  commonFieldMethodController = new OdsCommonFieldMethodController(this);
+  inputEl?: HTMLInputElement;
 
   @Element() el!: HTMLElement;
-  inputEl?: HTMLInputElement;
 
   @AttachInternals() internals!: ElementInternals;
 
@@ -50,11 +48,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
 
   @Prop({ reflect: true }) error: boolean = DEFAULT_ATTRIBUTE.error;
 
-  @Prop({ reflect: true }) errorStateControl?: OdsErrorStateControl = DEFAULT_ATTRIBUTE.errorStateControl;
-
-  @Prop({ reflect: true }) forbiddenValues?: OdsFormForbiddenValues<string | number> = DEFAULT_ATTRIBUTE.forbiddenValues;
-
-  @Prop({ reflect: true }) formControl?: OdsFormControl<OdsCommonFieldValidityState> = DEFAULT_ATTRIBUTE.formControl;
+  @Prop({ reflect: true }) forbiddenValues?: OdsInputValue[] = DEFAULT_ATTRIBUTE.forbiddenValues;
 
   @Prop({ reflect: true }) icon?: ODS_ICON_NAME = DEFAULT_ATTRIBUTE.icon;
 
@@ -100,11 +94,14 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
 
   @Event() odsValueChange!: EventEmitter<OdsInputValueChangeEventDetail>;
 
-  /** Watch */
+  @Method()
+  async clear(): Promise<void> {
+    this.controller.clear();
+  }
 
-  @Watch('formControl')
-  onFormControlChange(formControl?: OdsFormControl<OdsCommonFieldValidityState>): void {
-    this.controller.onFormControlChange(formControl);
+  @Method()
+  async hide(): Promise<void> {
+    this.controller.hide();
   }
 
   @Watch('value')
@@ -112,12 +109,40 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
     this.controller.onValueChange(value, oldValue);
   }
 
-  beforeInit(): void {
-    this.controller.beforeInit();
+  @Method()
+  async setFocus(): Promise<void> {
+    if (this.inputEl) {
+      this.controller?.setFocus(this.inputEl);
+    }
+  }
+
+  @Method()
+  async setTabindex(value: number): Promise<void> {
+    this.controller.setTabindex(value);
+  }
+  
+  @Method()
+  async stepDown(): Promise<void> {
+    this.controller.stepDown();
+  }
+
+  @Method()
+  async stepUp(): Promise<void> {
+    this.controller.stepUp();
+  }
+
+  @Method()
+  async getValidity(): Promise<OdsCommonFieldValidityState | undefined> {
+    return this.inputEl && this.controller.getValidity(this.inputEl) || undefined;
+  }
+
+  @Method()
+  async reset(): Promise<void> {
+    this.controller.reset();
   }
 
   componentWillLoad(): void {
-    this.beforeInit();
+    this.controller.beforeInit();
   }
 
   async componentWillUpdate(): Promise<void> {
@@ -137,44 +162,8 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
     });
   }
 
-  @Method()
-  async setFocus(): Promise<void> {
-    this.commonFieldMethodController?.setFocus();
-  }
-
-  @Method()
-  async getValidity(): Promise<OdsCommonFieldValidityState> {
-    return this.commonFieldMethodController.getValidity();
-  }
-
-  @Method()
-  async clear(): Promise<void> {
-    this.commonFieldMethodController.clear();
-  }
-
-  @Method()
-  async hide(): Promise<void> {
-    this.controller.hide();
-  }
-
-  @Method()
-  async reset(): Promise<void> {
-    this.commonFieldMethodController.reset();
-  }
-
-  @Method()
-  async stepUp(): Promise<void> {
-    this.controller.stepUp();
-  }
-
-  @Method()
-  async stepDown(): Promise<void> {
-    this.controller.stepDown();
-  }
-
-  @Method()
-  async setTabindex(value: number): Promise<void> {
-    this.commonFieldMethodController.setTabindex(value);
+  private hasPlaceholder(): boolean {
+    return !!this.placeholder && !this.value;
   }
 
   onBlur(): void {
@@ -183,10 +172,6 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
 
   onInput(event: Event): void {
     this.controller.onInput(event);
-  }
-
-  private hasPlaceholder(): boolean {
-    return !!this.placeholder && !this.value;
   }
 
   render(): JSX.Element {

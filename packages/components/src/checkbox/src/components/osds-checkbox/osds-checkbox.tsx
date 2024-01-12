@@ -6,10 +6,8 @@ import type {
 } from './interfaces/events';
 import type { OdsCheckboxMethod } from './interfaces/methods';
 import type { HTMLStencilElement } from '@stencil/core/internal';
-
-import { OdsCheckboxable, OdsCommonFieldMethodController, OdsInputValue, OdsLogger, ODS_COMMON_FIELD_SIZE } from '@ovhcloud/ods-common-core';
+import { OdsCheckboxable, OdsInputValue, OdsLogger, ODS_COMMON_FIELD_SIZE } from '@ovhcloud/ods-common-core';
 import { Component, Element, Event, EventEmitter, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
-
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsCheckboxController } from './core/ods-checkbox-controller';
 
@@ -21,9 +19,7 @@ import { OdsCheckboxController } from './core/ods-checkbox-controller';
 })
 export class OsdsCheckbox implements OdsCheckboxMethod, OdsCheckboxEvent, OdsCheckboxAttribute {
   private static checkboxIds = 0;
-  /** @see OdsComponent.controller */
   controller = new OdsCheckboxController(this);
-  commonFieldMethodController = new OdsCommonFieldMethodController(this);
   private readonly inputId = `ods-checkbox-${OsdsCheckbox.checkboxIds++}`;
   private readonly logger = new OdsLogger('OsdsCheckbox');
 
@@ -149,13 +145,8 @@ export class OsdsCheckbox implements OdsCheckboxMethod, OdsCheckboxEvent, OdsChe
   }
 
   @Method()
-  async setFocus() {
-    this.commonFieldMethodController.setFocus();
-  }
-
-  @Method()
   async setTabindex(index: number) {
-    this.commonFieldMethodController.setTabindex(index);
+    this.tabindex = index;
   }
 
   render() {

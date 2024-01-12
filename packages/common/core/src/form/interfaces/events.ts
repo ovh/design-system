@@ -1,12 +1,12 @@
-import type { OdsValidityState } from '../validation/ods-validity-state';
 import type { EventEmitter } from '@stencil/core';
 import type { OdsInputValue } from '../ods-input-value';
+import type { OdsCommonFieldValidityState } from './attributes';
 
 interface OdsCommonFieldValueChangeEventDetail {
   name: string;
-  validity: OdsValidityState;
-  value: OdsInputValue;
   oldValue?: OdsInputValue;
+  validity?: OdsCommonFieldValidityState;
+  value: OdsInputValue;
 }
 
 type OdsCommonFieldValueChangeEvent = CustomEvent<OdsCommonFieldValueChangeEventDetail>;

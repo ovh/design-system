@@ -1,5 +1,4 @@
-import { OdsCommonFieldMethodController, OdsCommonFieldValidityState } from '@ovhcloud/ods-common-core';
-import { Ods, OdsFormControl, ODS_COMMON_INPUT_TYPE, OdsLogger } from '@ovhcloud/ods-common-core';
+import { Ods, ODS_COMMON_INPUT_TYPE, OdsLogger } from '@ovhcloud/ods-common-core';
 import { OdsClearLoggerSpy, OdsInitializeLoggerSpy, OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
 import { OdsInputController } from './controller';
 import { OsdsInput } from '../osds-input';
@@ -9,7 +8,6 @@ class OdsInputMock {
     Object.assign(this, attribute);
   }
   ariaLabel = '';
-  commonFieldMethodController = new OdsCommonFieldMethodController(this);
   defaultValue = null;
   disabled = false;
   el = document.createElement('osds-input');
@@ -23,15 +21,14 @@ class OdsInputMock {
   logger = new OdsLogger('OdsInputMock');
   masked = false;
   name = '';
-  type = ODS_COMMON_INPUT_TYPE.number;
+  type = ODS_COMMON_INPUT_TYPE.text;
   value = null;
 }
 
 describe('spec:ods-input-controller', () => {
-  let controller: OdsInputController;
+  let controller: OdsInputController<OsdsInput>;
   let component: OsdsInput;
-  let spyOnOnFormControlChange: jest.SpyInstance<void, jest.ArgsType<OdsInputController['onFormControlChange']>>;
-  let spyOnAssertValue: jest.SpyInstance<void, jest.ArgsType<OdsInputController['assertValue']>>;
+  let spyOnAssertValue: jest.SpyInstance<void, jest.ArgsType<OdsInputController<OsdsInput>['assertValue']>>;
   let loggerSpyReferences: OdsLoggerSpyReferences;
 
   Ods.instance().logging(false);
@@ -55,40 +52,7 @@ describe('spec:ods-input-controller', () => {
   });
 
   describe('methods', () => {
-    describe('methods:onFormControlChange', () => {
-      const formControl = new OdsFormControl<OdsCommonFieldValidityState>('id');
-
-      beforeEach(() => {
-        formControl.register = jest.fn();
-      });
-
-      it('should not call formControl.register', () => {
-        setup();
-        controller.onFormControlChange();
-
-        expect(formControl.register).not.toHaveBeenCalled();
-      });
-
-      it('should call formControl.register', () => {
-        setup();
-        controller.onFormControlChange(formControl);
-
-        expect(formControl.register).toHaveBeenCalledTimes(1);
-        expect(formControl.register).toHaveBeenCalledWith(component);
-      });
-    });
-
     describe('methods:beforeInit', () => {
-      it('should call onFormControlChange', () => {
-        const formControl = new OdsFormControl<OdsCommonFieldValidityState>('id');
-        setup({ formControl });
-        spyOnOnFormControlChange = jest.spyOn(controller, 'onFormControlChange');
-        controller.beforeInit();
-
-        expect(spyOnOnFormControlChange).toHaveBeenCalledTimes(1);
-        expect(spyOnOnFormControlChange).toHaveBeenCalledWith(formControl);
-      });
-
       it('should call assertValue', () => {
         const value = 'value';
         setup({ value });
@@ -178,10 +142,10 @@ describe('spec:ods-input-controller', () => {
 
         it('should set forbiddenValue (bounded forbiddenValues)', () => {
           const value = 4;
-          const forbiddenValues = [{ min: 3, max: 5 }];
+          const forbiddenValues = ['5'];
           setup({ inputEl, value, forbiddenValues });
 
-          controller.onValueChange('');
+          controller.onValueChange('5');
 
           expect(inputEl.setCustomValidity).toHaveBeenCalledTimes(1);
           expect(inputEl.setCustomValidity).toHaveBeenCalledWith('forbiddenValue');

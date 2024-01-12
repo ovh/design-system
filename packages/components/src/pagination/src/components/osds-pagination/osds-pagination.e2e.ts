@@ -308,13 +308,13 @@ describe('e2e:osds-pagination', () => {
       await page.waitForChanges();
 
       let current = Number(el.getAttribute('current'));
-      expect(current).toEqual(3);
+      expect(current).toBe(3);
 
       allArrows[1].click();
       await page.waitForChanges();
 
       current = Number(el.getAttribute('current'));
-      expect(current).toEqual(3);
+      expect(current).toBe(3);
     });
 
     it('should not allow to go to previous page if the current page is the first one', async() => {
@@ -326,13 +326,13 @@ describe('e2e:osds-pagination', () => {
       await page.waitForChanges();
 
       let current = Number(el.getAttribute('current'));
-      expect(current).toEqual(1);
+      expect(current).toBe(1);
 
       allArrows[0].click();
       await page.waitForChanges();
 
       current = Number(el.getAttribute('current'));
-      expect(current).toEqual(1);
+      expect(current).toBe(1);
     });
   });
 });

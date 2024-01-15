@@ -20,6 +20,10 @@ describe('spec:osds-quantity', () => {
   // let loggerSpyReferences: OdsLoggerSpyReferences;
   let controller: OdsQuantityController;
 
+  const ariaLabel: string = 'Quantity WAI-ARIA label';
+  const errorStatus: boolean = true;
+  const name: string = 'quantity-component';
+
   /** base html template (avoid boilerplate) */
   // const baseHtml = (slots: { minus?: string, unnamed?: string, plus?: string }): string =>
   //   `
@@ -65,30 +69,47 @@ describe('spec:osds-quantity', () => {
     findElements();
   }
 
-  it('should render', async() => {
+  it('should render', async(): Promise<void> => {
     await setup({ attributes: {}, html: baseHtml({}) });
     expect(shadowRoot).toBeTruthy();
     expect(instance).toBeTruthy();
   });
 
-  describe('contents', () => {
-    it('should have a minus slot', async() => {
+  describe('attributes', (): void => {
+    it('should have an ariaLabel attribute', async(): Promise<void> => {
+      await setup({ attributes: { 'ariaLabel': ariaLabel }, html: baseHtml({}) });
+      expect(root).toHaveAttribute('ariaLabel');
+    });
+
+    it('should have an error attribute', async(): Promise<void> => {
+      await setup({ attributes: { 'error': errorStatus }, html: baseHtml({}) });
+      expect(root).toHaveAttribute('error');
+    });
+
+    it('should have a name attribute', async(): Promise<void> => {
+      await setup({ attributes: { 'name': name }, html: baseHtml({}) });
+      expect(root).toHaveAttribute('name');
+    });
+  });
+
+  describe('contents', (): void => {
+    it('should have a minus slot', async(): Promise<void> => {
       await setup({ attributes: {}, html: baseHtml({}) });
       expect(slotMinus).toBeTruthy();
     });
 
-    it('should have a plus slot', async() => {
+    it('should have a plus slot', async(): Promise<void> => {
       await setup({ attributes: {}, html: baseHtml({}) });
       expect(slotPlus).toBeTruthy();
     });
 
-    it('should have an unnamed slot', async() => {
+    it('should have an unnamed slot', async(): Promise<void> => {
       await setup({ attributes: {}, html: baseHtml({}) });
       expect(slotUnnamed).toBeTruthy();
     });
   });
 
-  describe('attributes', () => {
+  describe('attributes', (): void => {
     const config = {
       instance: () => instance,
       page: () => page,
@@ -96,7 +117,7 @@ describe('spec:osds-quantity', () => {
       wait: () => page.waitForChanges(),
     };
 
-    describe('disabled', () => {
+    describe('disabled', (): void => {
       odsUnitTestAttribute<OdsQuantityAttribute, 'disabled'>({
         defaultValue: DEFAULT_ATTRIBUTE.disabled,
         name: 'disabled',
@@ -108,33 +129,33 @@ describe('spec:osds-quantity', () => {
     });
   });
 
-  describe('methods', () => {
-    describe('methods:beforeInit', () => {
-      it('should call controller.initInput', async() => {
+  describe('methods', (): void => {
+    describe('methods:beforeInit', (): void => {
+      it('should call controller.initInput', async(): Promise<void> => {
         await setup();
         expect(controller.initInput).toHaveBeenCalledWith();
         expect(controller.initInput).toHaveBeenCalledTimes(1);
       });
     });
 
-    describe('methods:afterInit', () => {
-      it('should call controller.processInputValueChange', async() => {
+    describe('methods:afterInit', (): void => {
+      it('should call controller.processInputValueChange', async(): Promise<void> => {
         await setup();
         expect(controller.processInputValueChange).toHaveBeenCalledWith();
         expect(controller.processInputValueChange).toHaveBeenCalledTimes(1);
       });
     });
 
-    describe('methods:afterRender', () => {
-      it('should call controller.initSlots', async() => {
+    describe('methods:afterRender', (): void => {
+      it('should call controller.initSlots', async(): Promise<void> => {
         await setup();
         expect(controller.initSlots).toHaveBeenCalledWith();
         expect(controller.initSlots).toHaveBeenCalledTimes(1);
       });
     });
 
-    describe('methods:onDestroy', () => {
-      it('should call controller.clearEventListeners on destroy', async() => {
+    describe('methods:onDestroy', (): void => {
+      it('should call controller.clearEventListeners on destroy', async(): Promise<void> => {
         await setup();
         root?.remove();
         await page.waitForChanges();

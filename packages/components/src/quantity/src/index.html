@@ -14,8 +14,36 @@
   <link rel="stylesheet" href="/build/osds-quantity.css">
 </head>
 <body>
+
+<h2>[Form]</h2>
+
+<form id="formElem" method='get'>
+  <osds-quantity id="quantity-form">
+    <osds-button slot="minus" color="primary" size="sm">-</osds-button>
+    <osds-input type="number" color="primary" min="1" max="10" step="1
+" value="1" name='quantity-input'></osds-input>
+    <osds-button slot="plus" color="primary" size="sm">+</osds-button>
+  </osds-quantity>
+  <osds-button type="submit" size="sm" inline style="margin-top: 5px;">Submit</osds-button>
+</form>
+
+<script>
+  const form = document.getElementById('formElem');
+  form.onsubmit = (event) => {
+    event.preventDefault();
+    const myFormData = new FormData(form);
+    console.group();
+    for (var entry of myFormData) {
+      console.log(entry);
+    }
+    console.groupEnd();
+  };
+</script>
+
+<h2>[Common]</h2>
+
 <p>Quantity using osds-components</p>
-<osds-quantity onclick="globalMethod()" id="quantity-1">
+<osds-quantity id="quantity-1">
   <osds-button slot="minus" color="primary" size="sm">-</osds-button>
   <osds-input type="number" color="primary" min="1" max="10" step="1
 " value="1"></osds-input>
@@ -23,7 +51,7 @@
 </osds-quantity>
 
 <p>Quantity using osds-components (min 0)</p>
-<osds-quantity onclick="globalMethod()" id="quantity-1">
+<osds-quantity id="quantity-1">
   <osds-button slot="minus" color="primary" size="sm">-</osds-button>
   <osds-input type="number" color="primary" min="0" max="10" step="1
 " value="0"></osds-input>
@@ -31,7 +59,7 @@
 </osds-quantity>
 
 <p>Quantity using vanilla elements</p>
-<osds-quantity onclick="globalMethod()" id="quantity-1">
+<osds-quantity id="quantity-1">
   <button slot="minus" color="primary" size="sm">-</button>
   <input style="width: 45px" type="number" color="primary" min="1" max="10" step="1
 " value="1"/>
@@ -39,7 +67,7 @@
 </osds-quantity>
 
 <p>Quantity using osds-icon</p>
-<osds-quantity onclick="globalMethod()" id="quantity-1">
+<osds-quantity id="quantity-1">
   <osds-button slot="minus" size="sm" color="primary">
     <osds-icon size="sm" contrasted name="minus"></osds-icon>
   </osds-button>

@@ -65,13 +65,11 @@ class OdsButtonController {
    * Handle Click and KeyPress Event on the button
    */
   handleClick(event: MouseEvent): void {
-    this.logger.log('Click on osds-button');
     this.submitForm(event);
   }
 
   handleKey(event: KeyboardEvent): void {
     if(event.key === ' ' || event.key === 'Enter') {
-      this.logger.log('Key on osds-button');
       this.submitForm(event);
     }
   }

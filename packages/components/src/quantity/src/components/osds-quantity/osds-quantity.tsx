@@ -1,5 +1,6 @@
 import type { OdsQuantityAttribute } from './interfaces/attributes';
 import type { OsdsInput } from '../../../../input/src';
+import type { OdsInputValue } from '@ovhcloud/ods-common-core';
 import type { FunctionalComponent } from '@stencil/core';
 import { Component, Element, Host, Listen, Prop, Watch, h } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
@@ -21,6 +22,7 @@ import { OdsQuantityController } from './core/controller';
  */
 
 @Component({
+  formAssociated: true,
   shadow: true,
   styleUrl: 'osds-quantity.scss',
   tag: 'osds-quantity',
@@ -33,7 +35,17 @@ export class OsdsQuantity implements OdsQuantityAttribute {
 
   @Element() el!: HTMLElement;
 
-  @Prop({ reflect: true }) public disabled?: boolean = DEFAULT_ATTRIBUTE.disabled;
+  @Prop({ reflect: true }) ariaLabel: HTMLElement['ariaLabel'] = DEFAULT_ATTRIBUTE.ariaLabel;
+
+  @Prop({ mutable: true, reflect: true }) public disabled?: boolean = DEFAULT_ATTRIBUTE.disabled;
+
+  @Prop({ reflect: true }) defaultValue: OdsInputValue = DEFAULT_ATTRIBUTE.defaultValue;
+
+  @Prop({ reflect: true }) error: boolean = DEFAULT_ATTRIBUTE.error;
+
+  @Prop({ reflect: true }) name: string = DEFAULT_ATTRIBUTE.name;
+
+  @Prop({ mutable: true, reflect: true }) value: OdsInputValue = DEFAULT_ATTRIBUTE.value;
 
   @Watch('disabled')
   updateDisableOnChild(disabled: boolean): void {
@@ -75,17 +87,17 @@ export class OsdsQuantity implements OdsQuantityAttribute {
 
   render(): FunctionalComponent {
     return (
-      <Host>
+      <Host ariaLabel={this.ariaLabel}>
         <slot name={'minus'}
           {...{
             onClick: () => this.controller.minusClickHandler(),
-            ref: (el: any) => this.minus = el as HTMLSlotElement,
+            ref: (el?: Element) => this.minus = el as HTMLSlotElement,
           }}></slot>
         <slot></slot>
         <slot name={'plus'}
           {...{
             onClick: () => this.controller.plusClickHandler(),
-            ref: (el: any) => this.plus = el as HTMLSlotElement,
+            ref: (el?: Element) => this.plus = el as HTMLSlotElement,
           }}></slot>
       </Host>
     );

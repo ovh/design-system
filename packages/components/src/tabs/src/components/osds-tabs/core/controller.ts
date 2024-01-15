@@ -51,9 +51,11 @@ class OdsTabsController {
       if (event.code === 'ArrowLeft') {
         const previousPanel = this.tabItems[currentSelectedTabIndex - 1].getAttribute('panel');
         this.changeActivePanel(previousPanel!);
+        this.tabItems.find((tab) => tab.panel === previousPanel )!.focus();
       } else {
         const nextPanel = this.tabItems[currentSelectedTabIndex + 1].getAttribute('panel');
         this.changeActivePanel(nextPanel!);
+        this.tabItems.find((tab) => tab.panel === nextPanel )!.focus();
       }
     }
   }

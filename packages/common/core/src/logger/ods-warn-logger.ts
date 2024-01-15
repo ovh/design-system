@@ -8,7 +8,7 @@ interface OdsWarnComponent<T, Component> {
 }
 
 export interface OdsWarnEnumComponent<T, Component> extends OdsWarnComponent<T, Component> {
-  attributeValues: Record<string, unknown>;
+  attributeValues?: Record<string, unknown>;
 }
 
 export interface OdsWarnRangeComponent<Component> extends OdsWarnComponent<number, Component> {
@@ -19,7 +19,7 @@ export interface OdsWarnRangeComponent<Component> extends OdsWarnComponent<numbe
 type OdsWarnType<T, Component> = T extends number ? OdsWarnRangeComponent<Component> : OdsWarnEnumComponent<T, Component>;
 
 function OdsWarnComponentEnumAttribute<T, Component>(params: OdsWarnEnumComponent<T, Component>): void {
-  if (!odsIsTermInEnum(params.attribute, params.attributeValues)) {
+  if (params.attributeValues && !odsIsTermInEnum(params.attribute, params.attributeValues)) {
     params.logger.warn(`The ${params.attributeName} attribute must have a value from [${Object.values(params.attributeValues).join(', ')}]`);
   }
 }

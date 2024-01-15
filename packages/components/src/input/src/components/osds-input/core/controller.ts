@@ -1,16 +1,15 @@
 import type { OsdsInput } from '../osds-input';
 import { OdsCommonFieldMethodController, OdsInputValue } from '@ovhcloud/ods-common-core';
-import { OdsLogger, OdsWarnComponentAttribute } from '@ovhcloud/ods-common-core';
+import { OdsWarnComponentAttribute } from '@ovhcloud/ods-common-core';
 
 /**
  * common controller logic for input component used by the different implementations.
  * it contains all the glue between framework implementation and the third party service.
  */
 class OdsInputController<T extends OsdsInput> extends OdsCommonFieldMethodController<T> {
-  private readonly logger = new OdsLogger('OdsInputController');
 
   constructor(component: T) {
-    super(component);
+    super(component, 'OdsInputController');
   }
 
   assertValue(value: OdsInputValue): void {
@@ -19,6 +18,7 @@ class OdsInputController<T extends OsdsInput> extends OdsCommonFieldMethodContro
   }
 
   beforeInit(): void {
+    super.beforeInit();
     this.assertValue(this.component.value);
     if (!this.component.value && this.component.value !== 0) {
       this.component.value = this.component.defaultValue;

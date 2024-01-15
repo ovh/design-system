@@ -2,10 +2,23 @@ import type { OdsCommonFieldAttribute, OdsCommonFieldValidityState } from './int
 import type { OdsCommonFieldMethod } from './interfaces/methods';
 import type { OdsCommonFieldEvent } from './interfaces/events';
 import { OdsInputValue } from './ods-input-value';
+import { OdsWarnComponentAttribute } from '../logger/ods-warn-logger';
+import { OdsLogger } from '../logger/ods-logger';
 
 class OdsCommonFieldMethodController<T extends OdsCommonFieldAttribute & OdsCommonFieldEvent> implements OdsCommonFieldMethod {
+  protected logger: OdsLogger;
 
-  constructor(protected readonly component: T) { }
+  constructor(protected readonly component: T, loggerContext: string) {
+    this.logger = new OdsLogger(loggerContext);
+   }
+
+  beforeInit() {
+    OdsWarnComponentAttribute<string, T>({
+      logger: this.logger,
+      attributeName: 'name',
+      attribute: this.component.name,
+    }, true);
+  }
 
   /**
    * empty the value
@@ -21,8 +34,9 @@ class OdsCommonFieldMethodController<T extends OdsCommonFieldAttribute & OdsComm
   async getValidity<T extends { validity: ValidityState }>(element: T): Promise<OdsCommonFieldValidityState> {
     const forbiddenValue = this.hasForbiddenValue();
     const isValid = forbiddenValue ? false : element.validity.valid;
+
     return {
-      ...element.validity,
+      ...this.toValidityState(element.validity),
       forbiddenValue,
       valid: isValid,
     };
@@ -35,6 +49,22 @@ class OdsCommonFieldMethodController<T extends OdsCommonFieldAttribute & OdsComm
    */
   hasForbiddenValue(): boolean {
     return this.component.forbiddenValues?.some((forbiddenValue: OdsInputValue) => forbiddenValue === this.component.value) || false;
+  }
+
+  private toValidityState(state: ValidityState): ValidityState {
+    return {
+      badInput: state.badInput,
+      customError: state.customError,
+      patternMismatch: state.patternMismatch,
+      rangeOverflow: state.rangeOverflow,
+      rangeUnderflow: state.rangeUnderflow,
+      stepMismatch: state.stepMismatch,
+      tooLong: state.tooLong,
+      tooShort: state.tooShort,
+      typeMismatch: state.typeMismatch,
+      valid: state.valid,
+      valueMissing: state.valueMissing,
+    }
   }
 
   /**

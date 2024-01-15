@@ -192,15 +192,6 @@ describe('spec:ods-checkbox-controller', () => {
       });
     });
 
-    describe('onFocus', () => {
-      it('should call setFocus', () => {
-        setup();
-        jest.spyOn(component.commonFieldMethodController, 'setFocus');
-        controller.onFocus();
-        expect(component.commonFieldMethodController.setFocus).toHaveBeenCalledWith();
-      });
-    });
-
     describe('propagateCheckedToChild', () => {
       it('should propagate checked to child', () => {
         testPropagateAttributeToChild('checked', (value) => controller.propagateCheckedToChild(value));

@@ -1,7 +1,7 @@
 import type { OdsInputAttribute } from './interfaces/attributes';
 import type { OdsInputEvent, OdsInputValueChangeEventDetail } from './interfaces/events';
 import type { OdsInputMethod } from './interfaces/methods';
-import type { OdsInputValue, ODS_COMMON_FIELD_SIZE, ODS_COMMON_INPUT_TYPE, OdsCommonFieldValidityState } from '@ovhcloud/ods-common-core';
+import { OdsInputValue, OdsCommonFieldValidityState, ODS_COMMON_FIELD_SIZE } from '@ovhcloud/ods-common-core';
 import type { EventEmitter } from '@stencil/core';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { AttachInternals, Component, Element, Event, Host, Method, Prop, State, Watch, h } from '@stencil/core';
@@ -10,6 +10,7 @@ import { OdsInputController } from './core/controller';
 import { ODS_ICON_NAME, ODS_ICON_SIZE } from '../../../../icon/src';
 import { ODS_SPINNER_SIZE } from '../../../../spinner/src';
 import { ODS_TEXT_SIZE } from '../../../../text/src';
+import { ODS_INPUT_TYPE } from './constants/input-type';
 
 @Component({
   formAssociated: true,
@@ -36,11 +37,9 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
 
   @Prop() ariaLabel: HTMLElement['ariaLabel'] = DEFAULT_ATTRIBUTE.ariaLabel;
 
-  @Prop() ariaLabelledby?: string = DEFAULT_ATTRIBUTE.ariaLabelledby;
+  @Prop() ariaLabelledby?: string;
 
-  @Prop({ reflect: true }) clearable?: boolean = DEFAULT_ATTRIBUTE.clearable;
-
-  @Prop({ reflect: true }) color?: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
+  @Prop({ reflect: true }) clearable?: boolean;
 
   @Prop({ reflect: true }) defaultValue: OdsInputValue = DEFAULT_ATTRIBUTE.defaultValue;
 
@@ -48,37 +47,35 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
 
   @Prop({ reflect: true }) error: boolean = DEFAULT_ATTRIBUTE.error;
 
-  @Prop({ reflect: true }) forbiddenValues?: OdsInputValue[] = DEFAULT_ATTRIBUTE.forbiddenValues;
+  @Prop({ reflect: true }) forbiddenValues?: OdsInputValue[];
 
-  @Prop({ reflect: true }) icon?: ODS_ICON_NAME = DEFAULT_ATTRIBUTE.icon;
+  @Prop({ reflect: true }) icon?: ODS_ICON_NAME;
 
   @Prop({ reflect: true }) inline?: boolean = DEFAULT_ATTRIBUTE.inline;
 
-  @Prop({ reflect: true }) label?: string = DEFAULT_ATTRIBUTE.label;
+  @Prop({ reflect: true }) label?: string;
 
-  @Prop({ reflect: true }) loading?: boolean = DEFAULT_ATTRIBUTE.loading;
+  @Prop({ reflect: true }) loading?: boolean;
 
-  @Prop({ mutable: true, reflect: true }) masked?: boolean = DEFAULT_ATTRIBUTE.masked;
+  @Prop({ mutable: true, reflect: true }) masked?: boolean;
 
-  @Prop({ reflect: true }) max?: number = DEFAULT_ATTRIBUTE.max;
+  @Prop({ reflect: true }) max?: number;
 
-  @Prop({ reflect: true }) min?: number = DEFAULT_ATTRIBUTE.min;
+  @Prop({ reflect: true }) min?: number;
 
   @Prop({ reflect: true }) name: string = DEFAULT_ATTRIBUTE.name;
 
-  @Prop({ reflect: true }) placeholder?: string = DEFAULT_ATTRIBUTE.placeholder;
+  @Prop({ reflect: true }) placeholder?: string;
 
-  @Prop({ reflect: true }) prefixValue = DEFAULT_ATTRIBUTE.prefixValue;
+  @Prop({ reflect: true }) prefixValue? : string;
 
-  @Prop({ reflect: true }) readOnly?: boolean = DEFAULT_ATTRIBUTE.readOnly;
+  @Prop({ reflect: true }) readOnly?: boolean;
 
-  @Prop({ reflect: true }) required?: boolean = DEFAULT_ATTRIBUTE.required;
+  @Prop({ reflect: true }) required?: boolean;
 
-  @Prop({ reflect: true }) size?: ODS_COMMON_FIELD_SIZE = DEFAULT_ATTRIBUTE.size;
+  @Prop({ reflect: true }) step?: number;
 
-  @Prop({ reflect: true }) step?: number = DEFAULT_ATTRIBUTE.step;
-
-  @Prop({ reflect: true }) type?: ODS_COMMON_INPUT_TYPE = DEFAULT_ATTRIBUTE.type;
+  @Prop({ reflect: true }) type?: ODS_INPUT_TYPE = DEFAULT_ATTRIBUTE.type;
 
   @Prop({ mutable: true, reflect: true }) value: OdsInputValue = DEFAULT_ATTRIBUTE.value;
 
@@ -179,7 +176,6 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
       ariaLabel,
       ariaLabelledby,
       clearable,
-      color,
       disabled,
       icon,
       inputId,
@@ -209,6 +205,8 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
         },
         onFocus: () => this.setFocus(),
         tabindex,
+        color: ODS_THEME_COLOR_INTENT.primary,
+        size: ODS_COMMON_FIELD_SIZE.md,
       }}
       >
         <osds-text color={ODS_THEME_COLOR_INTENT.text}
@@ -259,7 +257,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
             <osds-icon
               {...{
                 ariaName: `${masked ? ODS_ICON_NAME.EYE_OPEN : ODS_ICON_NAME.EYE_CLOSED} icon`,
-                color,
+                color: ODS_THEME_COLOR_INTENT.primary,
                 name: masked ? ODS_ICON_NAME.EYE_OPEN : ODS_ICON_NAME.EYE_CLOSED,
                 /** Toggles hide(), which will either hide or display the inputs content by switching masked attribute */
                 onClick: () => this.hide(),
@@ -273,7 +271,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
             <osds-icon
               {...{
                 ariaName: `${ODS_ICON_NAME.CLOSE} icon`,
-                color,
+                color: ODS_THEME_COLOR_INTENT.primary,
                 name: ODS_ICON_NAME.CLOSE,
                 /** Toggles clear(), which will clear the inputs content */
                 onClick: () => this.clear(),
@@ -287,7 +285,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
             <osds-icon
               {...{
                 ariaName: `${icon} icon`,
-                color,
+                color: ODS_THEME_COLOR_INTENT.primary,
                 name: icon,
                 size: ODS_ICON_SIZE.sm,
               }}></osds-icon>

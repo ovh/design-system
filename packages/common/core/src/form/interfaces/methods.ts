@@ -22,7 +22,7 @@ interface OdsCommonFieldMethod {
      */
     setTabindex(value: number): Promise<void>;
 
-    getValidity(element: HTMLInputElement): Promise<OdsCommonFieldValidityState | undefined>;
+    getValidity<T extends { validity: ValidityState }>(element: T): Promise<OdsCommonFieldValidityState | undefined>;
 } 
 
 export {

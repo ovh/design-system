@@ -1,7 +1,5 @@
 import type { ODS_COMMON_FIELD_SIZE } from '../constants/ods-common-field-size';
-import type { ODS_COMMON_INPUT_TYPE } from '../constants/ods-common-input-type';
 import type { OdsInputValue } from '../ods-input-value';
-import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 
 interface OdsCommonFieldValidityState extends ValidityState {
   forbiddenValue: boolean;
@@ -16,8 +14,6 @@ interface OdsCommonFieldAttribute {
   ariaLabelledby?: string;
   /** Ability to clear the input value */
   clearable?: boolean;
-  /** Main color of the input: see component principles */
-  color?: ODS_THEME_COLOR_INTENT;
   /** Default value of the input */
   defaultValue: OdsInputValue;
   /** Indicates if the input is disabled or not: see component principles */
@@ -46,8 +42,6 @@ interface OdsCommonFieldAttribute {
   step?: number;
   /** Tabindex for the input */
   tabindex?: number;
-  /** Type of the input field */
-  type?: ODS_COMMON_INPUT_TYPE;
   /** Type of the input field */
   value: OdsInputValue;
 }

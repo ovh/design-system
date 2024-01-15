@@ -4,12 +4,11 @@ import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from
 import { ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
 import { newE2EPage } from '@stencil/core/testing';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { ODS_COMMON_FIELD_SIZE, ODS_COMMON_INPUT_TYPE } from '@ovhcloud/ods-common-core';
-
-
+import { ODS_COMMON_FIELD_SIZE } from '@ovhcloud/ods-common-core';
+import { ODS_INPUT_TYPE } from './constants/input-type';
 
 describe('e2e:osds-input', () => {
-  const baseAttribute = { ariaLabel: null, defaultValue: '', forbiddenValues: [], type: ODS_COMMON_INPUT_TYPE.text, value: '' };
+  const baseAttribute = { ariaLabel: null, defaultValue: '', forbiddenValues: [], type: ODS_INPUT_TYPE.text, value: '' };
   let page: E2EPage;
   let el: E2EElement;
 
@@ -65,70 +64,70 @@ describe('e2e:osds-input', () => {
       // Will display the input with its type date and a value
       actionDescription: 'type date & value',
       action: () => {
-        el.setProperty('type', ODS_COMMON_INPUT_TYPE.date);
+        el.setProperty('type', ODS_INPUT_TYPE.date);
         el.setProperty('value', '1999-11-02');
       },
     }, {
       // Will display the input with its type email and a value
       actionDescription: 'type email & value',
       action: () => {
-        el.setProperty('type', ODS_COMMON_INPUT_TYPE.email);
+        el.setProperty('type', ODS_INPUT_TYPE.email);
         el.setProperty('value', 'ods@ovhcloud.com');
       },
     }, {
       // Will display the input with its type number and a value
       actionDescription: 'type number & value',
       action: () => {
-        el.setProperty('type', ODS_COMMON_INPUT_TYPE.number);
+        el.setProperty('type', ODS_INPUT_TYPE.number);
         el.setProperty('value', 42);
       },
     }, {
       // Will display the input with its type password and a value
       actionDescription: 'type password & value',
       action: () => {
-        el.setProperty('type', ODS_COMMON_INPUT_TYPE.password);
+        el.setProperty('type', ODS_INPUT_TYPE.password);
         el.setProperty('value', 'ods!!!');
       },
     }, {
       // Will display the input with its type search and a value
       actionDescription: 'type search & value',
       action: () => {
-        el.setProperty('type', ODS_COMMON_INPUT_TYPE.search);
+        el.setProperty('type', ODS_INPUT_TYPE.search);
         el.setProperty('value', 'Why is ODS so awesome?');
       },
     }, {
       // Will display the input with its type tel and a value
       actionDescription: 'type tel & value',
       action: () => {
-        el.setProperty('type', ODS_COMMON_INPUT_TYPE.tel);
+        el.setProperty('type', ODS_INPUT_TYPE.tel);
         el.setProperty('value', '0600000000');
       },
     }, {
       // Will display the input with its type text and a value
       actionDescription: 'type text & value',
       action: () => {
-        el.setProperty('type', ODS_COMMON_INPUT_TYPE.text);
+        el.setProperty('type', ODS_INPUT_TYPE.text);
         el.setProperty('value', 'On Vous Héberge ?');
       },
     }, {
       // Will display the input with its type time and a value
       actionDescription: 'type time & value',
       action: () => {
-        el.setProperty('type', ODS_COMMON_INPUT_TYPE.time);
+        el.setProperty('type', ODS_INPUT_TYPE.time);
         el.setProperty('value', '09:00');
       },
     }, {
       // Will display the input with its type url and a value
       actionDescription: 'type url & value',
       action: () => {
-        el.setProperty('type', ODS_COMMON_INPUT_TYPE.url);
+        el.setProperty('type', ODS_INPUT_TYPE.url);
         el.setProperty('value', 'go/ods/');
       },
     }, {
       // Will display the input with its type text and a value
       actionDescription: 'value & masked',
       action: () => {
-        el.setProperty('type', ODS_COMMON_INPUT_TYPE.text);
+        el.setProperty('type', ODS_INPUT_TYPE.text);
         el.setProperty('value', 'Just ODS being ahead');
         el.setProperty('masked', true);
       },
@@ -136,7 +135,7 @@ describe('e2e:osds-input', () => {
       // Will display the input with its type password and masked being true (so password should be visible)
       actionDescription: 'password & masked',
       action: () => {
-        el.setProperty('type', ODS_COMMON_INPUT_TYPE.password);
+        el.setProperty('type', ODS_INPUT_TYPE.password);
         el.setProperty('value', 'ods!!!');
         el.setProperty('masked', true);
       },
@@ -144,7 +143,7 @@ describe('e2e:osds-input', () => {
       // Will display the input with its type password and clearable being true (so password should be visible)
       actionDescription: 'password & clearable',
       action: () => {
-        el.setProperty('type', ODS_COMMON_INPUT_TYPE.password);
+        el.setProperty('type', ODS_INPUT_TYPE.password);
         el.setProperty('value', 'ods!!!');
         el.setProperty('clearable', true);
       },
@@ -215,7 +214,7 @@ describe('e2e:osds-input', () => {
       actionDescription: 'disabled & value (type text)',
       action: () => {
         el.setProperty('disabled', true);
-        el.setProperty('type', ODS_COMMON_INPUT_TYPE.text);
+        el.setProperty('type', ODS_INPUT_TYPE.text);
         el.setProperty('value', 'Just ODS being ahead');
       },
     }, {

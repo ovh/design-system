@@ -1,5 +1,6 @@
 import type { ODS_ICON_NAME } from '../../../../../icon/src';
 import type { OdsCommonFieldAttribute } from '@ovhcloud/ods-common-core';
+import type { ODS_INPUT_TYPE } from '../public-api';
 
 interface OdsInputAttribute extends OdsCommonFieldAttribute {
   /** Icon to be used in the input field */
@@ -12,6 +13,8 @@ interface OdsInputAttribute extends OdsCommonFieldAttribute {
   max?: number;
   /** Minimum value for the input (type number) */
   min?: number;
+  /** Type of the input field */
+  type?: ODS_INPUT_TYPE;
 }
 
 export type {

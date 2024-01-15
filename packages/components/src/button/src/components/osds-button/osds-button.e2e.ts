@@ -20,6 +20,7 @@ describe('e2e:osds-button', () => {
   let linkElement: E2EElement;
   let buttonElement: E2EElement;
   let checkSubmit: jest.Mock;
+  let checkClick: jest.Mock;
 
   afterEach(() => {
     jest.clearAllMocks();
@@ -33,7 +34,7 @@ describe('e2e:osds-button', () => {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsButtonAttribute>(attributes, DEFAULT_ATTRIBUTE);
 
     let content = '';
-    const button = `<osds-button ${odsStringAttributes2Str(stringAttributes)}>
+    const button = `<osds-button onclick='onClick()' ${odsStringAttributes2Str(stringAttributes)}>
           ${html}
         </osds-button>`;
 
@@ -50,7 +51,10 @@ describe('e2e:osds-button', () => {
     }
 
     checkSubmit = jest.fn();
-    await page.exposeFunction('onSubmit', checkSubmit);
+    await page.exposeFunction('onSubmit', checkSubmit)
+
+    checkClick = jest.fn();
+    await page.exposeFunction('onClick', checkClick);
 
     await page.setContent(content);
     await page.evaluate(() => document.body.style.setProperty('margin', '4px'));
@@ -246,6 +250,14 @@ describe('e2e:osds-button', () => {
     it('should submit a form with Space key when type is submit', async() => {
       await el.press(' ');
       expect(checkSubmit).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe('key behaviour', () => {
+    it('should call a click with Space key', async() => {
+      await setup({});
+      await el.click();
+      expect(checkClick).toHaveBeenCalledTimes(1);
     });
   });
 });

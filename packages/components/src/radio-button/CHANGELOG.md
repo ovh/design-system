@@ -8,6 +8,21 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [17.0.1](https://ovh.github.io/design-system/v17.0.1/?path=/docs/design-system-changelog--page) (2024-01-15)
+[compare](https://github.com/ovh/design-system/compare/v17.0.0...v17.0.1)
+
+### Bug Fixes
+
+* **checkbox-radio-buttons:** fix reviews ([e60803c](https://github.com/ovh/design-system/commit/e60803cff5f8877e7d916143e0c2d2ba9601f9c0))
+* **checkbox-radio-buttons:** fix slots display to align smaller texts vertically ([c539787](https://github.com/ovh/design-system/commit/c539787b9de88ed5e70a4f06fa5d8872113731ff))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [17.0.0](https://ovh.github.io/design-system/v17.0.0/?path=/docs/design-system-changelog--page) (2024-01-02)
 [compare](https://github.com/ovh/design-system/compare/v16.6.0...v17.0.0)
 

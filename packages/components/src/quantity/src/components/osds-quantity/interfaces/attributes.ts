@@ -1,10 +1,3 @@
-interface OdsQuantityAttribute {
-  /**
-   * Quantity is disabled or not
-   */
-  disabled?: boolean
-}
+import type { OdsCommonFieldAttribute } from '@ovhcloud/ods-common-core';
 
-export {
-  OdsQuantityAttribute,
-};
+export type { OdsCommonFieldAttribute as OdsQuantityAttribute };

@@ -11,12 +11,16 @@ describe('e2e:osds-quantity', () => {
   let plusElement: E2EElement;
   let inputElement: E2EElement;
 
+  const ariaLabel: string = 'Quantity WAI-ARIA label';
+  const errorStatus: boolean = true;
+  const name: string = 'quantity-component';
+
   async function setup({ attributes = {}, html = '' }: { attributes?: Partial<OdsQuantityAttribute>, html?: string } = {}): Promise<void> {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsQuantityAttribute>(attributes, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
     await page.setContent(`
-      <osds-quantity ${odsStringAttributes2Str(stringAttributes)}>
+      <osds-quantity ${odsStringAttributes2Str(stringAttributes)} ariaLabel="${ariaLabel}" error="${errorStatus}" name="${name}">
         ${html}
       </osds-quantity>
     `);
@@ -28,23 +32,35 @@ describe('e2e:osds-quantity', () => {
     plusElement = await el.find('[slot=plus]');
   }
 
-  describe('defaults', () => {
-    beforeEach(async() => {
+  describe('defaults', (): void => {
+    beforeEach(async(): Promise<void> => {
       await setup();
     });
 
-    it('should render', async() => {
+    it('should render', async(): Promise<void> => {
       expect(el).not.toBeNull();
       expect(el).toHaveClass('hydrated');
+    });
+
+    it('should have an ariaLabel attribute', async(): Promise<void> => {
+      expect(el).toHaveAttribute('ariaLabel')
+    });
+
+    it('should have a name attribute', async(): Promise<void> => {
+      expect(el).toHaveAttribute('name')
+    });
+
+    it('should have an error attribute', async(): Promise<void> => {
+      expect(el).toHaveAttribute('error')
     });
   });
 
   const template = `
-<osds-quantity id="quantity-1">
-  <osds-button slot="minus" color="primary" size="sm">-  </osds-button>
-    <osds-input type="number" color="primary" min="1" max="3" step="1" value="2"></osds-input>
-  <osds-button slot="plus" color="primary" size="sm">+</osds-button>
-</osds-quantity>`;
+  <osds-quantity id="quantity-1">
+    <osds-button slot="minus" color="primary" size="sm">-</osds-button>
+      <osds-input type="number" color="primary" min="1" max="3" step="1" value="2"></osds-input>
+    <osds-button slot="plus" color="primary" size="sm">+</osds-button>
+  </osds-quantity>`;
 
   describe('disabled attribute on children', () => {
     beforeEach(async() => {
@@ -52,6 +68,7 @@ describe('e2e:osds-quantity', () => {
       el.setAttribute('disabled', 'disabled');
       await page.waitForChanges();
     });
+
     it('should have disabled attribute on input', async() => {
       expect(inputElement).toHaveAttribute('disabled');
     });

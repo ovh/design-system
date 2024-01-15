@@ -8,6 +8,28 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [17.0.1](https://ovh.github.io/design-system/v17.0.1/?path=/docs/design-system-changelog--page) (2024-01-15)
+[compare](https://github.com/ovh/design-system/compare/v17.0.0...v17.0.1)
+
+### Bug Fixes
+
+* **button:** order correctly css props ([798d1ad](https://github.com/ovh/design-system/commit/798d1adb36e4d794a1fd357be654b38f355583c3))
+* **checkbox-radio-buttons:** fix reviews ([e60803c](https://github.com/ovh/design-system/commit/e60803cff5f8877e7d916143e0c2d2ba9601f9c0))
+* **checkbox-radio-buttons:** fix slots display to align smaller texts vertically ([c539787](https://github.com/ovh/design-system/commit/c539787b9de88ed5e70a4f06fa5d8872113731ff))
+* **pagination:** adding e2e tests ([7fb92e8](https://github.com/ovh/design-system/commit/7fb92e8484fd24e15a2d4aae2496bbcf1dd65b79))
+* **pagination:** goes out of bounds ([9384a95](https://github.com/ovh/design-system/commit/9384a95bb76b68b89a9c27b3aab37b830227cd4a))
+* **pagination:** goes out of bounds ([420405b](https://github.com/ovh/design-system/commit/420405bcb95f8f14f9beb23d5291e62f0c4f4e7d))
+* **pagination:** improving e2e tests ([1ef6aa4](https://github.com/ovh/design-system/commit/1ef6aa454304ea2544baa038d5297da45e69fd61))
+* **theme:** fix font-weight import in 600 ([4fe489d](https://github.com/ovh/design-system/commit/4fe489dfb0cbbdd7289ef24f2d72abde16d26295))
+* **theme:** fixing fonts on Safari ([b72fb78](https://github.com/ovh/design-system/commit/b72fb78110ddb6218cfd961326213b5676b1af96))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [17.0.0](https://ovh.github.io/design-system/v17.0.0/?path=/docs/design-system-changelog--page) (2024-01-02)
 [compare](https://github.com/ovh/design-system/compare/v16.6.0...v17.0.0)
 

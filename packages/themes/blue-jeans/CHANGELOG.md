@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [17.0.1](https://ovh.github.io/design-system/v17.0.1/?path=/docs/design-system-changelog--page) (2024-01-15)
+[compare](https://github.com/ovh/design-system/compare/v17.0.0...v17.0.1)
+
+### Bug Fixes
+
+* **theme:** fix font-weight import in 600 ([4fe489d](https://github.com/ovh/design-system/commit/4fe489dfb0cbbdd7289ef24f2d72abde16d26295))
+* **theme:** fixing fonts on Safari ([b72fb78](https://github.com/ovh/design-system/commit/b72fb78110ddb6218cfd961326213b5676b1af96))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

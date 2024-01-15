@@ -8,6 +8,20 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [17.0.1](https://ovh.github.io/design-system/v17.0.1/?path=/docs/design-system-changelog--page) (2024-01-15)
+[compare](https://github.com/ovh/design-system/compare/v17.0.0...v17.0.1)
+
+### Bug Fixes
+
+* **button:** order correctly css props ([798d1ad](https://github.com/ovh/design-system/commit/798d1adb36e4d794a1fd357be654b38f355583c3))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [17.0.0](https://ovh.github.io/design-system/v17.0.0/?path=/docs/design-system-changelog--page) (2024-01-02)
 [compare](https://github.com/ovh/design-system/compare/v16.6.0...v17.0.0)
 

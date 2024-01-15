@@ -1,0 +1,198 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"/><title>Webpack App</title><meta name="viewport" content="width=device-width,initial-scale=1"/><style>html, body {
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  * {
+    box-sizing: border-box;
+  }</style><script>/* globals window */
+  /* eslint-disable no-underscore-dangle */
+  try {
+    if (window.top !== window) {
+      window.__REACT_DEVTOOLS_GLOBAL_HOOK__ = window.top.__REACT_DEVTOOLS_GLOBAL_HOOK__;
+    }
+  } catch (e) {
+    // eslint-disable-next-line no-console
+    console.warn('unable to connect to top frame for connecting dev tools');
+  }
+
+  window.onerror = function onerror(message, source, line, column, err) {
+    if (window.CONFIG_TYPE !== 'DEVELOPMENT') return;
+    // eslint-disable-next-line no-var, vars-on-top
+    var xhr = new window.XMLHttpRequest();
+    xhr.open('POST', '/runtime-error');
+    xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+    xhr.send(
+      JSON.stringify({
+        /* eslint-disable object-shorthand */
+        message: message,
+        source: source,
+        line: line,
+        column: column,
+        error: err && { message: err.message, name: err.name, stack: err.stack },
+        origin: 'manager',
+        /* eslint-enable object-shorthand */
+      })
+    );
+  };</script><style>body {
+        letter-spacing: 0.03rem;
+    }
+
+    #root > div {
+        margin: -10px 0;
+        width: calc(100vw + 10px);
+        height: calc(100vh + 20px);
+    }
+
+    a[title*="Design System"] {
+        margin-left: 15%;
+        margin-bottom: -5px;
+        padding: 0;
+        max-width: 75%;
+    }
+
+    button[title="Shortcuts"] {
+        display: none;
+    }
+
+    #storybook-explorer-searchfield {
+        margin-bottom: -1em;
+    }
+
+    .sidebar-subheading.sidebar-subheading {
+        font-size: 1em;
+        font-weight: bold;
+        letter-spacing: normal;
+        text-transform: none;
+        color: #00175C;
+    }
+
+    .sidebar-item[id*="components-"][data-nodetype="group"]:not([id="ods-components-layout"]) > svg[color='primary'] {
+        display: none;
+    }
+
+    .sidebar-item[id*="components-"][data-nodetype="group"]:not([id*="quark"]):not([id*="atom"]):not([id*="molecule"]):not([id*="organism"]):not([id*="layout"]):not([id*="template"]):not([id*="meta"]):not([id*="deprecated"]):not([id*="new"]) > svg {
+        display: initial;
+    }
+
+    .sidebar-item [class^='badge-']::before {
+        border-radius: .5em;
+        content: attr(badge-type);
+        display: inline-block;
+        font-size: .8em;
+        font-weight: 600;
+        margin-right: .5em;
+        min-width: 4.3em;
+        padding: 0 .3em;
+        text-align: center;
+        text-transform: capitalize;
+        border: solid 1px transparent;
+    }
+
+    .sidebar-item > .badge-quark::before {
+        background-color: #00175C;
+        color: #FFF;
+    }
+
+    .sidebar-item > .badge-atom::before {
+        background-color: #000D9E;
+        color: #FFF;
+    }
+
+    .sidebar-item > .badge-molecule::before {
+        background-color: #004FD6;
+        color: #FFF;
+    }
+
+    .sidebar-item > .badge-organism::before {
+        background-color: #4CB2F6;
+        color: #000D1F;
+        text-shadow: 0 0 2px #FFF, 0 0 2px #FFF;
+    }
+
+    .sidebar-item > .badge-layout::before {
+        background-color: #BDF1FF;
+        color: #000D9E;
+        border-color: #4CB2F6;
+    }
+
+    .sidebar-item > .badge-template::before {
+        background-color: #FFF;
+        color: #000D9E;
+        border-color: #4CB2F6;
+    }
+
+    .sidebar-item > .badge-meta::before {
+        background-color: #000D1F;
+        color: #FFF;
+        font-style: italic;
+    }
+
+    .sidebar-item > .badge-deprecated::before {
+      background-color: #C11B1B;
+      color: #FFF;
+    }
+
+    .sidebar-item > .badge-new::before {
+      background-color: #268403;
+      color: #FFF;
+    }
+
+    /*
+     * Avoid padding on APIs iframes
+     */
+    .addon-notes-container #panel-tab-content [class^='css-'] {
+        box-sizing: border-box;
+        margin: 0;
+        max-width: inherit;
+        min-height: 85vh;
+        padding: 0;
+    }
+
+    div[role="main"] > div {
+        box-shadow: none;
+        border-left: solid 1px #008fd4;
+    }
+
+    #release-selector {
+        background: none;
+        border-radius: .3em;
+        border: none;
+        color: #000E9C;
+        display: block;
+        font-weight: 600;
+        margin: .3em auto -.5em auto;
+        text-align: center;
+        transition: all ease-in-out .2s;
+    }
+
+    select#release-selector {
+        cursor: pointer;
+    }
+
+    select#release-selector:hover,
+    select#release-selector:focus {
+        background: #bdf1ff;
+    }</style><link rel="shortcut icon" href="./favicon.ico"><link rel="icon" type="image/png" href="./favicon.png" sizes="192x192"><style>#root[hidden],
+      #docs-root[hidden] {
+        display: none !important;
+      }</style></head><body><div id="root"></div><div id="docs-root"></div><script>window['CONFIG_TYPE'] = "PRODUCTION";
+          
+      
+          
+            window['LOGLEVEL'] = "info";
+          
+      
+          
+            window['FEATURES'] = {"postcss":false,"emotionAlias":true,"warnOnLegacyHierarchySeparator":true,"buildStoriesJson":true};
+          
+      
+          
+      
+          
+      
+          
+            window['DOCS_MODE'] = false;</script><script src="runtime~main.c57417f8cd37d1aab9ed.manager.bundle.js"></script><script src="vendors~main.9997df65219035daeec4.manager.bundle.js"></script><script src="main.51b3ffa6f26dc11e8110.manager.bundle.js"></script></body></html>

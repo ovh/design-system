@@ -9,7 +9,7 @@
     @include osds-input-on-selected-host {
       border-color: $border;
     }
-
+    
     @include osds-input-on-focus {
       border-color: $border;
     }
@@ -61,22 +61,6 @@
   [disabled]:focus {
     @include osds-input-on-selected-host {
       opacity: .5;
-    }
-  }
-
-  [contrasted] {
-    @include ods-all-hue-foreach-theme-color((
-      background-color: '100-contrasted',
-      border-color: '200-contrasted'
-    )) using($colors) {
-      @include osds-input-on-selected-host {
-        border-color: map_get($colors, border-color);
-      }
-
-      @include osds-input-on-focus {
-        border-color: map_get($colors, border-color);
-        background-color: map_get($colors, background-color);
-      }
     }
   }
 }

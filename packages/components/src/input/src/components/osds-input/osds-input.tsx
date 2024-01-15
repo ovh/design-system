@@ -34,6 +34,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
    */
   @State() tabindex = 0;
   @State() internalError = false;
+  @State() hasFocus = false;
 
   @Prop() ariaLabel: HTMLElement['ariaLabel'] = DEFAULT_ATTRIBUTE.ariaLabel;
 
@@ -110,6 +111,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
   async setFocus(): Promise<void> {
     if (this.inputEl) {
       this.controller?.setFocus(this.inputEl);
+      this.hasFocus = true;
     }
   }
 
@@ -165,6 +167,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
 
   onBlur(): void {
     this.odsBlur.emit();
+    this.hasFocus = false;
   }
 
   onInput(event: Event): void {
@@ -177,6 +180,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
       ariaLabelledby,
       clearable,
       disabled,
+      hasFocus,
       icon,
       inputId,
       tabindex,
@@ -207,6 +211,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
         tabindex,
         color: ODS_THEME_COLOR_INTENT.primary,
         size: ODS_COMMON_FIELD_SIZE.md,
+        hasFocus,
       }}
       >
         <osds-text color={ODS_THEME_COLOR_INTENT.text}

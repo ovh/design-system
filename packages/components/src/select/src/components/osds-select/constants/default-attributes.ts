@@ -1,22 +1,18 @@
 import type { OdsSelectAttribute } from '../interfaces/attributes';
-
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-
-import { ODS_SELECT_SIZE } from './select-size';
 
 const DEFAULT_ATTRIBUTE: OdsSelectAttribute = Object.freeze({
   ariaLabel: null,
   ariaLabelledby: '',
   color: ODS_THEME_COLOR_INTENT.primary,
-  defaultValue: '',
+  defaultValue: null,
   disabled: false,
   error: false,
   inline: false,
   name: '',
   opened: false,
   required: false,
-  size: ODS_SELECT_SIZE.md,
-  value: '',
+  value: null,
 });
 
 export {

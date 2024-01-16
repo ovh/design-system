@@ -1,8 +1,6 @@
 import type { OsdsSelectOption } from '../../osds-select-option/osds-select-option';
 import type { OcdkSurface } from '@ovhcloud/ods-cdk';
-
 import { OcdkSurfaceMock } from '@ovhcloud/ods-cdk';
-
 import { OdsSelectController } from './controller';
 import { OsdsSelect } from '../osds-select';
 
@@ -19,7 +17,7 @@ class OdsSelectMock {
 }
 
 describe('spec:ods-select-controller', () => {
-  let controller: OdsSelectController;
+  let controller: OdsSelectController<OsdsSelect>;
   let component: OsdsSelect;
   let item1: OsdsSelectOption & HTMLElement;
   let item2: OsdsSelectOption & HTMLElement;

@@ -6,7 +6,7 @@ import type {
 } from './interfaces/events';
 import type { OdsCheckboxMethod } from './interfaces/methods';
 import type { HTMLStencilElement } from '@stencil/core/internal';
-import { OdsCheckboxable, OdsInputValue, OdsLogger, ODS_COMMON_FIELD_SIZE } from '@ovhcloud/ods-common-core';
+import { OdsCheckboxable, OdsInputValue, OdsLogger } from '@ovhcloud/ods-common-core';
 import { Component, Element, Event, EventEmitter, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsCheckboxController } from './core/ods-checkbox-controller';
@@ -51,8 +51,6 @@ export class OsdsCheckbox implements OdsCheckboxMethod, OdsCheckboxEvent, OdsChe
   @Prop({ reflect: true }) name: string = DEFAULT_ATTRIBUTE.name;
 
   @Prop({ mutable: true }) save?: OdsCheckboxAttributeCbk = DEFAULT_ATTRIBUTE.save;
-
-  @Prop({ reflect: true }) size?: ODS_COMMON_FIELD_SIZE = DEFAULT_ATTRIBUTE.size;
 
   @Prop({ reflect: true, mutable: true }) updating: boolean = DEFAULT_ATTRIBUTE.updating;
 
@@ -160,6 +158,7 @@ export class OsdsCheckbox implements OdsCheckboxMethod, OdsCheckboxEvent, OdsChe
       }}
       role="checkbox"
       aria-checked={`${checked}`}
+      size='md'
       >
         <label>
           <input {...{

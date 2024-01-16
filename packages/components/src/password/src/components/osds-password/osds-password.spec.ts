@@ -1,11 +1,7 @@
 import type { OdsPasswordAttribute } from './interfaces/attributes';
 import type { SpecPage } from '@stencil/core/testing';
-
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
-import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import { ODS_COMMON_FIELD_SIZE } from '@ovhcloud/ods-common-core';
 import { newSpecPage } from '@stencil/core/testing';
-
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OsdsPassword } from './osds-password';
 
@@ -65,17 +61,6 @@ describe('spec:osds-password', () => {
       });
     });
 
-    describe('color', () => {
-      odsUnitTestAttribute<OdsPasswordAttribute, 'color'>({
-        name: 'color',
-        defaultValue: DEFAULT_ATTRIBUTE.color,
-        newValue: ODS_THEME_COLOR_INTENT.primary,
-        value: ODS_THEME_COLOR_INTENT.default,
-        setup: (value) => setup({ attributes: { ['color']: value } }),
-        ...config,
-      });
-    });
-
     describe('disabled', () => {
       odsUnitTestAttribute<OdsPasswordAttribute, 'disabled'>({
         name: 'disabled',
@@ -127,17 +112,6 @@ describe('spec:osds-password', () => {
         newValue: 'ovh',
         value: 'ipsum',
         setup: (value) => setup({ attributes: { ['placeholder']: value } }),
-        ...config,
-      });
-    });
-
-    describe('size', () => {
-      odsUnitTestAttribute<OdsPasswordAttribute, 'size'>({
-        name: 'size',
-        defaultValue: DEFAULT_ATTRIBUTE.size,
-        newValue: ODS_COMMON_FIELD_SIZE.md,
-        value: ODS_COMMON_FIELD_SIZE.md,
-        setup: (value) => setup({ attributes: { ['size']: value } }),
         ...config,
       });
     });

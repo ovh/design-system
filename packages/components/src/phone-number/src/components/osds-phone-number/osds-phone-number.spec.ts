@@ -252,7 +252,6 @@ describe('spec:osds-phone-number', () => {
           value: '+33653535353',
           isoCode: 'fr',
           validity: {
-            invalid: false,
             valid: true,
           },
         });
@@ -270,7 +269,6 @@ describe('spec:osds-phone-number', () => {
           value: '065353qsd5353',
           isoCode: 'fr',
           validity: {
-            invalid: true,
             valid: false,
           },
         });
@@ -288,7 +286,6 @@ describe('spec:osds-phone-number', () => {
           value: '',
           isoCode: 'fr',
           validity: {
-            invalid: false,
             valid: true,
           },
         });
@@ -305,7 +302,6 @@ describe('spec:osds-phone-number', () => {
           oldValue: '+330612345',
           isoCode: 'fr',
           validity: {
-            invalid: false,
             valid: true,
           },
         });

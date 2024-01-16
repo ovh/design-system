@@ -1,7 +1,6 @@
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_DATEPICKER_LOCALE } from '../constants/datepicker-locale';
 import { OdsDatepickerAttribute } from '../interfaces/attributes';
-import { ODS_COMMON_FIELD_SIZE } from '@ovhcloud/ods-common-core';
 
 const DEFAULT_ATTRIBUTE: OdsDatepickerAttribute = Object.freeze({
   ariaLabel: null,
@@ -20,7 +19,6 @@ const DEFAULT_ATTRIBUTE: OdsDatepickerAttribute = Object.freeze({
   name: '',
   placeholder: '',
   showSiblingsMonthDays: true,
-  size: ODS_COMMON_FIELD_SIZE.md,
   value: null,
 });
 

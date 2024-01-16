@@ -1,8 +1,8 @@
 import type { OdsInputAttribute } from './interfaces/attributes';
 import type { OdsInputEvent, OdsInputValueChangeEventDetail } from './interfaces/events';
 import type { OdsInputMethod } from './interfaces/methods';
-import { OdsInputValue, OdsCommonFieldValidityState, ODS_COMMON_FIELD_SIZE } from '@ovhcloud/ods-common-core';
 import type { EventEmitter } from '@stencil/core';
+import { OdsInputValue, OdsCommonFieldValidityState } from '@ovhcloud/ods-common-core';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { AttachInternals, Component, Element, Event, Host, Method, Prop, State, Watch, h } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
@@ -10,6 +10,7 @@ import { OdsInputController } from './core/controller';
 import { ODS_ICON_NAME, ODS_ICON_SIZE } from '../../../../icon/src';
 import { ODS_SPINNER_SIZE } from '../../../../spinner/src';
 import { ODS_TEXT_SIZE } from '../../../../text/src';
+import { ODS_INPUT_SIZE } from './constants/input-size';
 import { ODS_INPUT_TYPE } from './constants/input-type';
 
 @Component({
@@ -36,35 +37,35 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
   @State() internalError = false;
   @State() hasFocus = false;
 
-  @Prop() ariaLabel: HTMLElement['ariaLabel'] = DEFAULT_ATTRIBUTE.ariaLabel;
+  @Prop() ariaLabel = DEFAULT_ATTRIBUTE.ariaLabel;
 
   @Prop() ariaLabelledby?: string;
 
   @Prop({ reflect: true }) clearable?: boolean;
 
-  @Prop({ reflect: true }) defaultValue: OdsInputValue = DEFAULT_ATTRIBUTE.defaultValue;
+  @Prop({ reflect: true }) defaultValue = DEFAULT_ATTRIBUTE.defaultValue;
 
-  @Prop({ reflect: true }) disabled: boolean = DEFAULT_ATTRIBUTE.disabled;
+  @Prop({ reflect: true }) disabled = DEFAULT_ATTRIBUTE.disabled;
 
-  @Prop({ reflect: true }) error: boolean = DEFAULT_ATTRIBUTE.error;
+  @Prop({ reflect: true }) error = DEFAULT_ATTRIBUTE.error;
 
   @Prop({ reflect: true }) forbiddenValues?: OdsInputValue[];
 
   @Prop({ reflect: true }) icon?: ODS_ICON_NAME;
 
-  @Prop({ reflect: true }) inline?: boolean = DEFAULT_ATTRIBUTE.inline;
+  @Prop({ reflect: true }) inline? = DEFAULT_ATTRIBUTE.inline;
 
   @Prop({ reflect: true }) label?: string;
 
   @Prop({ reflect: true }) loading?: boolean;
 
-  @Prop({ mutable: true, reflect: true }) masked?: boolean;
+  @Prop({ mutable: true, reflect: true }) masked?: boolean = DEFAULT_ATTRIBUTE.masked;
 
   @Prop({ reflect: true }) max?: number;
 
   @Prop({ reflect: true }) min?: number;
 
-  @Prop({ reflect: true }) name: string = DEFAULT_ATTRIBUTE.name;
+  @Prop({ reflect: true }) name = DEFAULT_ATTRIBUTE.name;
 
   @Prop({ reflect: true }) placeholder?: string;
 
@@ -78,7 +79,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
 
   @Prop({ reflect: true }) type?: ODS_INPUT_TYPE = DEFAULT_ATTRIBUTE.type;
 
-  @Prop({ mutable: true, reflect: true }) value: OdsInputValue = DEFAULT_ATTRIBUTE.value;
+  @Prop({ mutable: true, reflect: true }) value = DEFAULT_ATTRIBUTE.value;
 
   @Event() odsBlur!: EventEmitter<void>;
 
@@ -210,7 +211,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
         onFocus: () => this.setFocus(),
         tabindex,
         color: ODS_THEME_COLOR_INTENT.primary,
-        size: ODS_COMMON_FIELD_SIZE.md,
+        size: ODS_INPUT_SIZE.md,
         hasFocus,
       }}
       >

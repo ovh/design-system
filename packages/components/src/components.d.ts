@@ -11,7 +11,7 @@ import { OsdsAccordion } from "./accordion/src/components/osds-accordion/osds-ac
 import { OdsBreadcrumbAttributeItem } from "./breadcrumb/src/components/osds-breadcrumb/interfaces/attributes";
 import { ODS_ICON_NAME } from "./icon/src";
 import { ODS_LINK_REFERRER_POLICY } from "./link/src";
-import { ODS_COMMON_FIELD_SIZE, ODS_COMMON_INPUT_TYPE, ODS_COUNTRY_ISO_CODE, ODS_LOCALE, ODS_PERIOD_ISO_CODE, OdsErrorStateControl, OdsFormControl, OdsFormForbiddenValues, OdsHTMLAnchorElementRel, OdsHTMLAnchorElementTarget, OdsI18nHook, OdsInputValue, OdsTextAreaValidityState, OdsValidityState } from "@ovhcloud/ods-common-core";
+import { ODS_COUNTRY_ISO_CODE, ODS_LOCALE, ODS_PERIOD_ISO_CODE, OdsCommonFieldValidityState, OdsErrorStateControl, OdsFormControl, OdsFormForbiddenValues, OdsHTMLAnchorElementRel, OdsHTMLAnchorElementTarget, OdsI18nHook, OdsInputValue, OdsTextAreaValidityState, OdsValidityState } from "@ovhcloud/ods-common-core";
 import { OdsBreadcrumbAttributeItem as OdsBreadcrumbAttributeItem1 } from "./breadcrumb/src/components/osds-breadcrumb/public-api";
 import { ODS_BUTTON_SIZE } from "./button/src/components/osds-button/constants/button-size";
 import { ODS_BUTTON_TYPE } from "./button/src/components/osds-button/constants/button-type";
@@ -34,6 +34,7 @@ import { ODS_DIVIDER_SIZE } from "./divider/src/components/osds-divider/constant
 import { ODS_FLAG_ISO_CODE_UNION } from "./flag/src/components/osds-flag/constants/flag-iso-code";
 import { ODS_ICON_NAME as ODS_ICON_NAME1 } from "./icon/src/components/osds-icon/constants/icon-name";
 import { ODS_ICON_SIZE } from "./icon/src/components/osds-icon/constants/icon-size";
+import { ODS_INPUT_TYPE } from "./input/src/components/osds-input/constants/input-type";
 import { OdsInputValueChangeEventDetail } from "./input/src/components/osds-input/interfaces/events";
 import { ODS_LINK_REFERRER_POLICY as ODS_LINK_REFERRER_POLICY1 } from "./link/src/components/osds-link/constants/referrer-policies";
 import { ODS_MESSAGE_TYPE } from "./message/src/components/osds-message/constants/message-type";
@@ -72,7 +73,7 @@ export { OsdsAccordion } from "./accordion/src/components/osds-accordion/osds-ac
 export { OdsBreadcrumbAttributeItem } from "./breadcrumb/src/components/osds-breadcrumb/interfaces/attributes";
 export { ODS_ICON_NAME } from "./icon/src";
 export { ODS_LINK_REFERRER_POLICY } from "./link/src";
-export { ODS_COMMON_FIELD_SIZE, ODS_COMMON_INPUT_TYPE, ODS_COUNTRY_ISO_CODE, ODS_LOCALE, ODS_PERIOD_ISO_CODE, OdsErrorStateControl, OdsFormControl, OdsFormForbiddenValues, OdsHTMLAnchorElementRel, OdsHTMLAnchorElementTarget, OdsI18nHook, OdsInputValue, OdsTextAreaValidityState, OdsValidityState } from "@ovhcloud/ods-common-core";
+export { ODS_COUNTRY_ISO_CODE, ODS_LOCALE, ODS_PERIOD_ISO_CODE, OdsCommonFieldValidityState, OdsErrorStateControl, OdsFormControl, OdsFormForbiddenValues, OdsHTMLAnchorElementRel, OdsHTMLAnchorElementTarget, OdsI18nHook, OdsInputValue, OdsTextAreaValidityState, OdsValidityState } from "@ovhcloud/ods-common-core";
 export { OdsBreadcrumbAttributeItem as OdsBreadcrumbAttributeItem1 } from "./breadcrumb/src/components/osds-breadcrumb/public-api";
 export { ODS_BUTTON_SIZE } from "./button/src/components/osds-button/constants/button-size";
 export { ODS_BUTTON_TYPE } from "./button/src/components/osds-button/constants/button-type";
@@ -95,6 +96,7 @@ export { ODS_DIVIDER_SIZE } from "./divider/src/components/osds-divider/constant
 export { ODS_FLAG_ISO_CODE_UNION } from "./flag/src/components/osds-flag/constants/flag-iso-code";
 export { ODS_ICON_NAME as ODS_ICON_NAME1 } from "./icon/src/components/osds-icon/constants/icon-name";
 export { ODS_ICON_SIZE } from "./icon/src/components/osds-icon/constants/icon-size";
+export { ODS_INPUT_TYPE } from "./input/src/components/osds-input/constants/input-type";
 export { OdsInputValueChangeEventDetail } from "./input/src/components/osds-input/interfaces/events";
 export { ODS_LINK_REFERRER_POLICY as ODS_LINK_REFERRER_POLICY1 } from "./link/src/components/osds-link/constants/referrer-policies";
 export { ODS_MESSAGE_TYPE } from "./message/src/components/osds-message/constants/message-type";
@@ -450,10 +452,6 @@ export namespace Components {
          */
         "setTabindex": (index: number) => Promise<void>;
         /**
-          * Size of the input: see component principles
-         */
-        "size"?: ODS_COMMON_FIELD_SIZE;
-        /**
           * update status indicating if the checked state is being modified. `updating` will be `true` until `beforeSave` or `save` are processed. it is used in `pessimistic` update
          */
         "updating": boolean;
@@ -633,11 +631,6 @@ export namespace Components {
          */
         "clearable"?: boolean;
         /**
-          * Main color of the input: see component principles
-          * @see OdsDatepickerAttribute.color
-         */
-        "color"?: ODS_THEME_COLOR_INTENT;
-        /**
           * Defines the Datepicker's disabled dates
           * @see OdsDatepickerAttribute.datesDisabled
          */
@@ -700,10 +693,6 @@ export namespace Components {
           * Defines if the Datepicker should display others month days
          */
         "showSiblingsMonthDays"?: boolean;
-        /**
-          * Size of the input: see component principles
-         */
-        "size"?: ODS_COMMON_FIELD_SIZE;
         /**
           * Type of the input field
           * @see OdsDatepickerAttribute.value
@@ -789,7 +778,7 @@ export namespace Components {
         "size"?: ODS_ICON_SIZE;
     }
     interface OsdsInput {
-        "ariaLabel": HTMLElement['ariaLabel'];
+        "ariaLabel": string | null;
         /**
           * ID of the element that labels the input
          */
@@ -803,13 +792,9 @@ export namespace Components {
          */
         "clearable"?: boolean;
         /**
-          * Main color of the input: see component principles
-         */
-        "color"?: ODS_THEME_COLOR_INTENT;
-        /**
           * Default value of the input
          */
-        "defaultValue": OdsInputValue;
+        "defaultValue": string | number | Date | null;
         /**
           * Indicates if the input is disabled or not: see component principles
          */
@@ -822,7 +807,7 @@ export namespace Components {
           * List of forbidden values for the input
          */
         "forbiddenValues"?: OdsInputValue[];
-        "getValidity": () => Promise<ValidityState | undefined>;
+        "getValidity": () => Promise<OdsCommonFieldValidityState | undefined>;
         "hide": () => Promise<void>;
         /**
           * Icon to be used in the input field
@@ -831,7 +816,7 @@ export namespace Components {
         /**
           * Indicates if the input is inline or not: see component principles
          */
-        "inline"?: boolean;
+        "inline"?: boolean | undefined;
         /**
           * Label of the input field
          */
@@ -863,7 +848,7 @@ export namespace Components {
         /**
           * Text before the input value
          */
-        "prefixValue": string | undefined;
+        "prefixValue"?: string;
         /**
           * Indicates if the input is read-only or not
          */
@@ -886,10 +871,6 @@ export namespace Components {
          */
         "setTabindex": (value: number) => Promise<void>;
         /**
-          * Size of the input: see component principles
-         */
-        "size"?: ODS_COMMON_FIELD_SIZE;
-        /**
           * Step value for the input
          */
         "step"?: number;
@@ -898,11 +879,11 @@ export namespace Components {
         /**
           * Type of the input field
          */
-        "type"?: ODS_COMMON_INPUT_TYPE;
+        "type"?: ODS_INPUT_TYPE;
         /**
           * Type of the input field
          */
-        "value": OdsInputValue;
+        "value": string | number | Date | null;
     }
     interface OsdsLink {
         /**
@@ -1089,10 +1070,6 @@ export namespace Components {
          */
         "clearable"?: boolean;
         /**
-          * Main color of the input: see component principles
-         */
-        "color"?: ODS_THEME_COLOR_INTENT;
-        /**
           * Default value of the input
          */
         "defaultValue": OdsInputValue;
@@ -1108,7 +1085,7 @@ export namespace Components {
           * List of forbidden values for the input
          */
         "forbiddenValues"?: OdsInputValue[];
-        "getValidity": () => Promise<ValidityState | undefined>;
+        "getValidity": () => Promise<OdsCommonFieldValidityState | undefined>;
         "hide": () => Promise<void>;
         /**
           * Indicates if the password is inline or not
@@ -1155,10 +1132,6 @@ export namespace Components {
           * @param value - chosen index
          */
         "setTabindex": (value: number) => Promise<void>;
-        /**
-          * Size of the input: see component principles
-         */
-        "size"?: ODS_COMMON_FIELD_SIZE;
         /**
           * Current value of the password
          */
@@ -3160,10 +3133,6 @@ declare namespace LocalJSX {
          */
         "save"?: OdsCheckboxAttributeCbk;
         /**
-          * Size of the input: see component principles
-         */
-        "size"?: ODS_COMMON_FIELD_SIZE;
-        /**
           * update status indicating if the checked state is being modified. `updating` will be `true` until `beforeSave` or `save` are processed. it is used in `pessimistic` update
          */
         "updating"?: boolean;
@@ -3360,11 +3329,6 @@ declare namespace LocalJSX {
          */
         "clearable"?: boolean;
         /**
-          * Main color of the input: see component principles
-          * @see OdsDatepickerAttribute.color
-         */
-        "color"?: ODS_THEME_COLOR_INTENT;
-        /**
           * Defines the Datepicker's disabled dates
           * @see OdsDatepickerAttribute.datesDisabled
          */
@@ -3442,10 +3406,6 @@ declare namespace LocalJSX {
           * Defines if the Datepicker should display others month days
          */
         "showSiblingsMonthDays"?: boolean;
-        /**
-          * Size of the input: see component principles
-         */
-        "size"?: ODS_COMMON_FIELD_SIZE;
         /**
           * Type of the input field
           * @see OdsDatepickerAttribute.value
@@ -3531,7 +3491,7 @@ declare namespace LocalJSX {
         "size"?: ODS_ICON_SIZE;
     }
     interface OsdsInput {
-        "ariaLabel"?: HTMLElement['ariaLabel'];
+        "ariaLabel"?: string | null;
         /**
           * ID of the element that labels the input
          */
@@ -3541,13 +3501,9 @@ declare namespace LocalJSX {
          */
         "clearable"?: boolean;
         /**
-          * Main color of the input: see component principles
-         */
-        "color"?: ODS_THEME_COLOR_INTENT;
-        /**
           * Default value of the input
          */
-        "defaultValue"?: OdsInputValue;
+        "defaultValue"?: string | number | Date | null;
         /**
           * Indicates if the input is disabled or not: see component principles
          */
@@ -3567,7 +3523,7 @@ declare namespace LocalJSX {
         /**
           * Indicates if the input is inline or not: see component principles
          */
-        "inline"?: boolean;
+        "inline"?: boolean | undefined;
         /**
           * Label of the input field
          */
@@ -3605,7 +3561,7 @@ declare namespace LocalJSX {
         /**
           * Text before the input value
          */
-        "prefixValue"?: string | undefined;
+        "prefixValue"?: string;
         /**
           * Indicates if the input is read-only or not
          */
@@ -3615,21 +3571,17 @@ declare namespace LocalJSX {
          */
         "required"?: boolean;
         /**
-          * Size of the input: see component principles
-         */
-        "size"?: ODS_COMMON_FIELD_SIZE;
-        /**
           * Step value for the input
          */
         "step"?: number;
         /**
           * Type of the input field
          */
-        "type"?: ODS_COMMON_INPUT_TYPE;
+        "type"?: ODS_INPUT_TYPE;
         /**
           * Type of the input field
          */
-        "value"?: OdsInputValue;
+        "value"?: string | number | Date | null;
     }
     interface OsdsLink {
         /**
@@ -3818,10 +3770,6 @@ declare namespace LocalJSX {
          */
         "clearable"?: boolean;
         /**
-          * Main color of the input: see component principles
-         */
-        "color"?: ODS_THEME_COLOR_INTENT;
-        /**
           * Default value of the input
          */
         "defaultValue"?: OdsInputValue;
@@ -3869,10 +3817,6 @@ declare namespace LocalJSX {
           * Indicates if the input is required or not
          */
         "required"?: boolean;
-        /**
-          * Size of the input: see component principles
-         */
-        "size"?: ODS_COMMON_FIELD_SIZE;
         /**
           * Current value of the password
          */

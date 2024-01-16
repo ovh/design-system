@@ -1,10 +1,10 @@
 import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
 import type { OsdsInput } from '../../../../../input/src';
-
-import { Ods, ODS_COMMON_INPUT_TYPE, OdsLogger } from '@ovhcloud/ods-common-core';
+import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
 import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
 import { OdsQuantityController } from './controller';
 import { OsdsQuantity } from '../osds-quantity';
+import { ODS_INPUT_TYPE } from '../../../../../input/src';
 
 class OdsQuantityMock extends OsdsQuantity {
   constructor(attribute: Partial<OsdsQuantity>) {
@@ -142,7 +142,7 @@ describe('spec:ods-quantity-controller', () => {
         it('should change value of osds-input if inferior to min on Blur', () => {
           setup();
           const input = document.createElement('osds-input') as (OsdsInput & HTMLElement);
-          input.type = ODS_COMMON_INPUT_TYPE.number;
+          input.type = ODS_INPUT_TYPE.number;
           input.setAttribute('type', 'number');
           input.tabIndex = 0;
           input.setAttribute('tabindex', '0');
@@ -164,7 +164,7 @@ describe('spec:ods-quantity-controller', () => {
         it('should change value of osds-input if superior to max on Blur', () => {
           setup();
           const input = document.createElement('osds-input') as (OsdsInput & HTMLElement);
-          input.type = ODS_COMMON_INPUT_TYPE.number;
+          input.type = ODS_INPUT_TYPE.number;
           input.setAttribute('type', 'number');
           input.tabIndex = 0;
           input.setAttribute('tabindex', '0');

@@ -335,7 +335,7 @@ describe('e2e:osds-input', () => {
       const elValue = await el.getProperty('value');
       await page.waitForChanges();
       expect(value).toBe('');
-      expect(elValue).toBe(null);
+      expect(elValue).toBe('');
     });
 
     it('should set the value to defaultValue', async() => {
@@ -424,12 +424,18 @@ describe('e2e:osds-input', () => {
           name: '',
           oldValue: '',
           validity: {
-            invalid: false,
-            stepMismatch: false,
-            valid: true,
-            valueMissing: false,
+            badInput: false,
             customError: false,
             forbiddenValue: false,
+            patternMismatch: false,
+            rangeOverflow: false,
+            rangeUnderflow: false,
+            stepMismatch: false,
+            tooLong: false,
+            tooShort: false,
+            typeMismatch: false,
+            valid: true,
+            valueMissing: false,
           },
           value: '',
         };

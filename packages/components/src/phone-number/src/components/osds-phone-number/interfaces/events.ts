@@ -1,8 +1,7 @@
-import type { ODS_COUNTRY_ISO_CODE } from '@ovhcloud/ods-common-core';
-import type { OdsInputValueChangeEventDetail } from '../../../../../input/src';
+import type { OdsCommonFieldValueChangeEventDetail, ODS_COUNTRY_ISO_CODE } from '@ovhcloud/ods-common-core';
 import type { EventEmitter } from '@stencil/core';
 
-interface OdsPhoneNumberValueChangeEventDetail extends OdsInputValueChangeEventDetail {
+interface OdsPhoneNumberValueChangeEventDetail extends OdsCommonFieldValueChangeEventDetail {
   isoCode?: ODS_COUNTRY_ISO_CODE
 }
 

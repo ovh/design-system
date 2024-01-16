@@ -28,7 +28,7 @@ class OdsCommonFieldMethodController<T extends OdsCommonFieldAttribute & OdsComm
       return;
     }
     this.component.value = null;
-    this.component.odsClear?.emit();
+    this.component.odsClear.emit();
   }
 
   async getValidity<T extends { validity: ValidityState }>(element: T): Promise<OdsCommonFieldValidityState> {
@@ -75,7 +75,7 @@ class OdsCommonFieldMethodController<T extends OdsCommonFieldAttribute & OdsComm
       return;
     }
     elementToFocus.focus();
-    this.component.odsFocus?.emit();
+    this.component.odsFocus.emit();
   }
 
   async setTabindex(value: number): Promise<void> {
@@ -87,7 +87,7 @@ class OdsCommonFieldMethodController<T extends OdsCommonFieldAttribute & OdsComm
    */
   async reset(): Promise<void> {
     this.component.value = this.component.defaultValue ?? null;
-    this.component.odsReset?.emit();
+    this.component.odsReset.emit();
   }
 } 
 

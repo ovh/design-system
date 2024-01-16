@@ -2,17 +2,15 @@ import type { OdsPhoneNumberAttribute } from './interfaces/attributes';
 import type { OdsPhoneNumberEvent, OdsPhoneNumberValueChangeEventDetail } from './interfaces/events';
 import type { OdsInputValueChangeEventDetail } from '../../../../input/src';
 import type { OdsSelectValueChangeEventDetail } from '../../../../select/src';
-
-import { ODS_COUNTRY_ISO_CODE, ODS_COUNTRY_ISO_CODES, ODS_LOCALE, OdsLogger, OdsCreateDefaultOdsValidityState } from '@ovhcloud/ods-common-core';
+import { ODS_COUNTRY_ISO_CODE, ODS_COUNTRY_ISO_CODES, ODS_LOCALE, OdsLogger, OdsCommonFieldValidityState } from '@ovhcloud/ods-common-core';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import { ODS_COMMON_INPUT_TYPE } from '@ovhcloud/ods-common-core';
 import { ODS_TEXT_LEVEL, ODS_TEXT_SIZE } from '../../../../text/src';
 import { Component, Event, EventEmitter, Host, Listen, Prop, State, Watch, h } from '@stencil/core';
 import { PhoneNumber, PhoneNumberFormat, PhoneNumberUtil } from 'google-libphonenumber';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_PHONE_NUMBER_COUNTRY_PRESET } from './constants/phone-number-countries';
 import { OdsPhoneNumberController } from './core/controller';
-
+import { ODS_INPUT_TYPE } from '../../../../input/src';
 
 /**
  * @slot (unnamed) - Phone Number content
@@ -67,7 +65,7 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
     this.locale = this.controller.getDefaultLocale();
     this.handlerLocale(this.locale);
     if (this.value) {
-      this.handlerInputEvent({ value: this.value, validity: OdsCreateDefaultOdsValidityState(), name: '' })
+      this.handlerInputEvent({ value: this.value, validity: {} as OdsCommonFieldValidityState , name: '' })
     }
   }
 
@@ -125,8 +123,7 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
       oldValue: this.formatValue(oldNumber, event.oldValue as string),
       isoCode: this.isoCode,
       validity: {
-        ...event.validity,
-        invalid: this.error,
+        ...event.validity!,
         valid: !this.error,
       },
     });
@@ -225,7 +222,7 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
           prefix-value={this.getPrefix()}
           placeholder={this.getPlaceholder()}
           color={ODS_THEME_COLOR_INTENT.primary}
-          type={ODS_COMMON_INPUT_TYPE.tel}
+          type={ODS_INPUT_TYPE.tel}
           clearable={this.clearable}
           disabled={this.disabled}
           error={this.error}

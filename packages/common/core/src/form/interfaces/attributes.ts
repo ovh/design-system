@@ -1,4 +1,3 @@
-import type { ODS_COMMON_FIELD_SIZE } from '../constants/ods-common-field-size';
 import type { OdsInputValue } from '../ods-input-value';
 
 interface OdsCommonFieldValidityState extends ValidityState {
@@ -36,8 +35,6 @@ interface OdsCommonFieldAttribute {
   readOnly?: boolean;
   /** Indicates if the input is required or not */
   required?: boolean;
-  /** Size of the input: see component principles */
-  size?: ODS_COMMON_FIELD_SIZE;
   /** Step value for the input */
   step?: number;
   /** Tabindex for the input */

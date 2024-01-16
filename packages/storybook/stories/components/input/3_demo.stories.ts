@@ -3,8 +3,7 @@ import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/os
 import { html } from 'lit-html';
 import { InputPlay } from './demo.validation.stories';
 import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
-import { ODS_COMMON_INPUT_TYPES, ODS_COMMON_INPUT_TYPE } from '@ovhcloud/ods-common-core';
-import { ODS_ICON_NAMES } from '@ovhcloud/ods-components';
+import { ODS_ICON_NAMES, ODS_INPUT_TYPES, ODS_INPUT_TYPE } from '@ovhcloud/ods-components';
 
 defineCustomElement();
 
@@ -18,8 +17,8 @@ const storyParams = {
   },
   type: {
     category: 'General',
-    defaultValue: ODS_COMMON_INPUT_TYPE.text,
-    options: ODS_COMMON_INPUT_TYPES,
+    defaultValue: ODS_INPUT_TYPE.text,
+    options: ODS_INPUT_TYPES,
     control: { type: 'select' },
   },
   placeholder: {

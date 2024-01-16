@@ -7,6 +7,7 @@ const DEFAULT_ATTRIBUTE: OdsInputAttribute = Object.freeze({
   disabled: false,
   error: false,
   inline: false,
+  masked: true,
   name: '',
   type: ODS_INPUT_TYPE.text,
   value: null,

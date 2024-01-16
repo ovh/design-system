@@ -1,5 +1,4 @@
 import type { OdsCheckboxAttribute } from '../interfaces/attributes';
-import { ODS_COMMON_FIELD_SIZE } from '@ovhcloud/ods-common-core';
 
 const DEFAULT_ATTRIBUTE: OdsCheckboxAttribute = Object.freeze({
   afterSave: undefined,
@@ -14,7 +13,6 @@ const DEFAULT_ATTRIBUTE: OdsCheckboxAttribute = Object.freeze({
   label: undefined,
   name: '',
   save: undefined,
-  size: ODS_COMMON_FIELD_SIZE.md,
   updating: false,
   value: '',
 });

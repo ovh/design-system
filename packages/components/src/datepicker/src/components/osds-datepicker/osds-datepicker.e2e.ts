@@ -1,15 +1,11 @@
 import type { OdsDatepickerAttribute } from './interfaces/attributes';
 import type { OsdsDatepicker } from './osds-datepicker';
 import type { E2EElement, E2EPage } from '@stencil/core/testing';
-
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import { newE2EPage } from '@stencil/core/testing';
-
 import { ODS_DATEPICKER_DAY } from './constants/datepicker-day';
 import { ODS_DATEPICKER_LOCALE } from './constants/datepicker-locale';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-
-
 
 describe('e2e:osds-datepicker', () => {
   let page: E2EPage;
@@ -43,14 +39,14 @@ describe('e2e:osds-datepicker', () => {
       JSON.stringify(attributes.daysOfWeekDisabled),
       JSON.stringify(attributes.maxDate?.toISOString()),
       JSON.stringify(attributes.minDate?.toISOString()),
-      JSON.stringify(attributes.value?.toISOString()),
+      JSON.stringify((attributes.value as Date)?.toISOString()),
     );
   }
 
   async function getDatepickerValue(): Promise<Date | null> {
     const value = await page.evaluate(() => {
       const datepicker = document.querySelector('osds-datepicker') as unknown as OsdsDatepicker;
-      return datepicker.value?.toISOString();
+      return (datepicker.value as Date)?.toISOString();
     });
     return value ? new Date(value) : null;
   }

@@ -3,10 +3,9 @@ import type { ODS_DATEPICKER_LOCALE } from './constants/datepicker-locale';
 import type { OdsDatepickerAttribute } from './interfaces/attributes';
 import type { OdsDatepickerEvent, OdsDatepickerValueChangeEventDetail } from './interfaces/events';
 import type { EventEmitter } from '@stencil/core';
-
-import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_ICON_NAME } from '../../../../icon/src';
-import { OdsInputValue, ODS_COMMON_FIELD_SIZE, ODS_COMMON_INPUT_TYPE } from '@ovhcloud/ods-common-core';
+import { ODS_INPUT_TYPE } from '../../../../input/src';
+import { OdsInputValue } from '@ovhcloud/ods-common-core';
 import { Component, Element, Event, Host, Listen, Prop, State, Watch, h } from '@stencil/core';
 import { Datepicker } from 'vanillajs-datepicker';
 // @ts-ignore
@@ -23,8 +22,6 @@ import nl from 'vanillajs-datepicker/js/i18n/locales/nl';
 import pl from 'vanillajs-datepicker/js/i18n/locales/pl';
 // @ts-ignore
 import pt from 'vanillajs-datepicker/js/i18n/locales/pt';
-
-
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsDatepickerController } from './core/controller';
 
@@ -65,9 +62,6 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
   /** @see OdsDatepickerAttribute.clearable */
   @Prop({ reflect: true }) clearable?: boolean = DEFAULT_ATTRIBUTE.clearable;
 
-  /** @see OdsDatepickerAttribute.color */
-  @Prop({ reflect: true }) color?: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
-
   /** @see OdsDatepickerAttribute.datesDisabled */
   @Prop({ reflect: true }) datesDisabled?: Date[] = DEFAULT_ATTRIBUTE.datesDisabled;
 
@@ -104,8 +98,6 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
   @Prop({ reflect: true }) placeholder?: string = DEFAULT_ATTRIBUTE.placeholder;
 
   @Prop({ reflect: true }) showSiblingsMonthDays?: boolean = DEFAULT_ATTRIBUTE.showSiblingsMonthDays;
-
-  @Prop({ reflect: true }) size?: ODS_COMMON_FIELD_SIZE = DEFAULT_ATTRIBUTE.size;
 
   /** @see OdsDatepickerAttribute.value */
   @Prop({ reflect: true, mutable: true }) value: OdsInputValue = DEFAULT_ATTRIBUTE.value;
@@ -221,8 +213,8 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
       minDate: this.minDate
         ? this.minDate
         : undefined,
-      nextArrow: `<osds-icon name="triangle-right" size="sm" color=${this.color}></osds-icon>`,
-      prevArrow: `<osds-icon name="triangle-left" size="sm" color=${this.color}></osds-icon>`,
+      nextArrow: `<osds-icon name="triangle-right" size="sm" color="primary"></osds-icon>`,
+      prevArrow: `<osds-icon name="triangle-left" size="sm" color="primary"></osds-icon>`,
     });
 
     this.datepickerElement = this.el.shadowRoot.querySelector('.datepicker-picker') as HTMLElement;
@@ -249,7 +241,7 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
     const viewSwitch = this.el.shadowRoot.querySelector('.view-switch') as HTMLElement;
     const chevron = document.createElement('osds-icon');
     chevron.setAttribute('name', 'chevron-down');
-    chevron.setAttribute('color', `${this.color}`);
+    chevron.setAttribute('color', 'primary');
     chevron.setAttribute('size', 'xs');
     viewSwitch.appendChild(chevron);
 
@@ -329,7 +321,6 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
   render() {
     const {
       clearable,
-      color,
       disabled,
       error,
       hasFocus,
@@ -350,12 +341,11 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
         <osds-input
           onClick={ () => this.onClick() }
           clearable={clearable}
-          color={color}
           disabled={disabled}
           error={error}
           icon={ODS_ICON_NAME.CALENDAR}
           placeholder={placeholder}
-          type={ODS_COMMON_INPUT_TYPE.text}
+          type={ODS_INPUT_TYPE.text}
           value={this.formatDate(value)}
         ></osds-input>
         <input

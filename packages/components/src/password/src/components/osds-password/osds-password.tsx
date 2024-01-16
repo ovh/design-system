@@ -1,11 +1,9 @@
 import type { OdsPasswordAttribute } from './interfaces/attributes';
-import type { OdsCommonFieldValidityState, OdsInputValue, ODS_COMMON_FIELD_SIZE } from '@ovhcloud/ods-common-core';
-import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+import type { OdsCommonFieldValidityState, OdsInputValue } from '@ovhcloud/ods-common-core';
 import type { OdsPasswordMethod } from './interfaces/methods';
-import { ODS_COMMON_INPUT_TYPE } from '@ovhcloud/ods-common-core';
 import { Component, Element, Host, Prop, h, Method } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { OsdsInput } from '../../../../input/src';
+import { ODS_INPUT_TYPE, OsdsInput } from '../../../../input/src';
 
 /**
  * @slot (unnamed) - Password content
@@ -25,8 +23,6 @@ export class OsdsPassword implements OdsPasswordAttribute, OdsPasswordMethod  {
   @Prop() ariaLabelledby?: string = DEFAULT_ATTRIBUTE.ariaLabelledby;
 
   @Prop({ reflect: true }) clearable?: boolean = DEFAULT_ATTRIBUTE.clearable;
-
-  @Prop({ reflect: true }) color?: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
 
   @Prop({ reflect: true }) defaultValue: OdsInputValue = DEFAULT_ATTRIBUTE.defaultValue;
 
@@ -51,8 +47,6 @@ export class OsdsPassword implements OdsPasswordAttribute, OdsPasswordMethod  {
   @Prop({ reflect: true }) readOnly?: boolean = DEFAULT_ATTRIBUTE.readOnly;
 
   @Prop({ reflect: true }) required?: boolean = DEFAULT_ATTRIBUTE.required;
-
-  @Prop({ reflect: true }) size?: ODS_COMMON_FIELD_SIZE = DEFAULT_ATTRIBUTE.size;
 
   @Prop({ reflect: true, mutable: true }) value = DEFAULT_ATTRIBUTE.value;
 
@@ -90,11 +84,10 @@ export class OsdsPassword implements OdsPasswordAttribute, OdsPasswordMethod  {
       <Host>
         <osds-input
           ref={ (el?: HTMLElement): OsdsInput => this.osdsInput = el as OsdsInput & HTMLElement }
-          type={ODS_COMMON_INPUT_TYPE.password}
+          type={ODS_INPUT_TYPE.password}
           ariaLabel={this.ariaLabel}
           ariaLabelledby={this.ariaLabelledby}
           clearable={this.clearable}
-          color={this.color}
           disabled={this.disabled}
           error={this.error}
           forbiddenValues={this.forbiddenValues}
@@ -106,7 +99,6 @@ export class OsdsPassword implements OdsPasswordAttribute, OdsPasswordMethod  {
           placeholder={this.placeholder}
           readOnly={this.readOnly}
           required={this.required}
-          size={this.size}
           value={this.value}
         ></osds-input>
       </Host>

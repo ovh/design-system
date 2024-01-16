@@ -1,4 +1,3 @@
-import { ODS_COMMON_INPUT_TYPE } from './constants/ods-common-input-type';
 import { OdsCommonFieldAttribute } from './interfaces/attributes';
 import { OdsCommonFieldEvent } from './interfaces/events';
 import { OdsCommonFieldMethodController } from './method.controller';
@@ -20,7 +19,7 @@ describe('spec:OdsCommonFieldMethodController', () => {
     odsReset: { emit: jest.fn() },
     odsValueChange: { emit: jest.fn() },
     tabindex: 0,
-    type: ODS_COMMON_INPUT_TYPE.text,
+    type: 'text',
     value: '',
   }
   let controller: OdsCommonFieldMethodController<typeof osdsInput>;
@@ -54,7 +53,7 @@ describe('spec:OdsCommonFieldMethodController', () => {
     controller = new OdsCommonFieldMethodController<typeof osdsInput>({
         ...osdsInput,
         ...attributes,
-    } as typeof osdsInput);
+    } as typeof osdsInput, '');
   }
 
   it('should call focus on inputEl', () => {

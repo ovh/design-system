@@ -119,9 +119,9 @@ export class OsdsTabs implements OdsTabsAttribute, OdsTabsEvent {
   }
 
   componentDidLoad(): void {
-    this.controller.changeActivePanel(this.panel);
     this.setTabItems();
     this.setTabPanels();
+    this.controller.changeActivePanel(this.panel);
   }
 
   render(): JSX.Element {

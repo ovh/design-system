@@ -1,5 +1,4 @@
 import type { OsdsSelectOption } from '../../osds-select-option/osds-select-option';
-import type { EventEmitter } from '@stencil/core';
 import type { OdsCommonFieldEvent, OdsCommonFieldValueChangeEventDetail } from '@ovhcloud/ods-common-core';
 
 
@@ -9,9 +8,7 @@ interface OdsSelectValueChangeEventDetail extends OdsCommonFieldValueChangeEvent
 
 type OdsSelectValueChangeEvent = CustomEvent<OdsSelectValueChangeEventDetail>;
 
-type OdsSelectEvent = Omit<OdsCommonFieldEvent, 'odsValueChange' | 'odsHide'> & {
-  odsValueChange: EventEmitter<OdsSelectValueChangeEventDetail>;
-}
+type OdsSelectEvent = OdsCommonFieldEvent<OdsSelectValueChangeEventDetail>;
 
 export type {
   OdsSelectEvent,

@@ -47,7 +47,6 @@ import { OsdsRadio } from "./radio/src/components/osds-radio/osds-radio";
 import { OdsRangeValue } from "./range/src/components/osds-range/interfaces/value";
 import { OdsRangeValueChangeEventDetail } from "./range/src/components/osds-range/interfaces/events";
 import { OdsSearchbarOption } from "./search-bar/src/components/osds-search-bar/interfaces/attributes";
-import { ODS_SELECT_SIZE } from "./select/src/components/osds-select/constants/select-size";
 import { OdsSelectValueChangeEventDetail } from "./select/src/components/osds-select/interfaces/events";
 import { OdsSelectOptionClickEventDetail } from "./select/src/components/osds-select-option/interfaces/events";
 import { ODS_SKELETON_SIZE } from "./skeleton/src/components/osds-skeleton/constants/skeleton-size";
@@ -108,7 +107,6 @@ export { OsdsRadio } from "./radio/src/components/osds-radio/osds-radio";
 export { OdsRangeValue } from "./range/src/components/osds-range/interfaces/value";
 export { OdsRangeValueChangeEventDetail } from "./range/src/components/osds-range/interfaces/events";
 export { OdsSearchbarOption } from "./search-bar/src/components/osds-search-bar/interfaces/attributes";
-export { ODS_SELECT_SIZE } from "./select/src/components/osds-select/constants/select-size";
 export { OdsSelectValueChangeEventDetail } from "./select/src/components/osds-select/interfaces/events";
 export { OdsSelectOptionClickEventDetail } from "./select/src/components/osds-select-option/interfaces/events";
 export { ODS_SKELETON_SIZE } from "./skeleton/src/components/osds-skeleton/constants/skeleton-size";
@@ -1147,6 +1145,9 @@ export namespace Components {
           * Indicates if the input is in loading state or not
          */
         "loading"?: boolean;
+        /**
+          * Indicates if the input is masked or not
+         */
         "masked"?: boolean;
         /**
           * Name of the input field
@@ -1502,10 +1503,6 @@ export namespace Components {
          */
         "clear": () => Promise<void>;
         /**
-          * Main color of the input: see component principles
-         */
-        "color": ODS_THEME_COLOR_INTENT;
-        /**
           * Default value of the input
          */
         "defaultValue": OdsInputValue;
@@ -1517,14 +1514,11 @@ export namespace Components {
           * Indicates if the input shows error or not
          */
         "error": boolean;
-        /**
-          * get the validity state
-         */
-        "getValidity": () => Promise<OdsValidityState>;
+        "getValidity": () => Promise<OdsCommonFieldValidityState>;
         /**
           * full width or not: see component principles
          */
-        "inline": boolean;
+        "inline": boolean | undefined;
         /**
           * Name of the input field
          */
@@ -1547,11 +1541,6 @@ export namespace Components {
           * @param value - chosen index
          */
         "setTabindex": (value: number) => Promise<void>;
-        /**
-          * Size of the input: see component principles
-         */
-        "size"?: ODS_SELECT_SIZE;
-        "validate": () => Promise<OdsValidityState>;
         /**
           * Type of the input field
          */
@@ -3816,6 +3805,9 @@ declare namespace LocalJSX {
           * Indicates if the input is in loading state or not
          */
         "loading"?: boolean;
+        /**
+          * Indicates if the input is masked or not
+         */
         "masked"?: boolean;
         /**
           * Name of the input field
@@ -4161,10 +4153,6 @@ declare namespace LocalJSX {
          */
         "ariaLabelledby"?: string | undefined;
         /**
-          * Main color of the input: see component principles
-         */
-        "color"?: ODS_THEME_COLOR_INTENT;
-        /**
           * Default value of the input
          */
         "defaultValue"?: OdsInputValue;
@@ -4179,7 +4167,7 @@ declare namespace LocalJSX {
         /**
           * full width or not: see component principles
          */
-        "inline"?: boolean;
+        "inline"?: boolean | undefined;
         /**
           * Name of the input field
          */
@@ -4197,10 +4185,6 @@ declare namespace LocalJSX {
           * Indicates if the input is required or not
          */
         "required"?: boolean | undefined;
-        /**
-          * Size of the input: see component principles
-         */
-        "size"?: ODS_SELECT_SIZE;
         /**
           * Type of the input field
          */

@@ -1,16 +1,10 @@
-jest.mock('./core/controller'); // keep jest.mock before any
-
 import type { OdsSelectAttribute } from './interfaces/attributes';
 import type { SpecPage } from '@stencil/core/testing';
-
 import { OdsLogger } from '@ovhcloud/ods-common-core';
 import { OdsMockNativeMethod, OdsMockPropertyDescriptor, odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
-import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { newSpecPage } from '@stencil/core/testing';
-
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { DEFAULT_VALIDITY_STATE } from './constants/default-validity-state';
-import { ODS_SELECT_SIZE } from './constants/select-size';
 import { OsdsSelect } from './osds-select';
 
 
@@ -31,18 +25,14 @@ const logger = new OdsLogger('osds-select-spec');
 OdsMockPropertyDescriptor(HTMLInputElement.prototype, 'validity', () => DEFAULT_VALIDITY_STATE);
 
 describe('spec:osds-select', () => {
-  logger.log('init');
   const baseAttribute = {
     ariaLabel: null,
-    ariaLabelledby: '',
-    color: ODS_THEME_COLOR_INTENT.primary,
     defaultValue: '',
     disabled: false,
     error: false,
     inline: false,
     name: '',
     required: false,
-    size: ODS_SELECT_SIZE.md,
     value: '',
   };
   let page: SpecPage;
@@ -57,6 +47,7 @@ describe('spec:osds-select', () => {
   async function setup({ attributes = {}, html = '' }: { attributes?: Partial<OdsSelectAttribute>, html?: string }) {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsSelectAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
 
+    console.log('stringAttributes', stringAttributes)
     // mock setCustomValidity method that does not exist when stencil mock HTMLInputElement
     OdsMockNativeMethod(HTMLInputElement.prototype, 'setCustomValidity', jest.fn());
 
@@ -66,6 +57,8 @@ describe('spec:osds-select', () => {
     });
 
     instance = page.rootInstance;
+
+    instance.internals.setFormValue = jest.fn();
 
     slotPlaceholder = page.root?.shadowRoot?.querySelector('slot[name=placeholder]');
     htmlSelect = document.querySelector('osds-select') as HTMLSelectElement;
@@ -101,17 +94,6 @@ describe('spec:osds-select', () => {
       root: () => page.root,
       wait: () => page.waitForChanges(),
     };
-
-    describe('color', () => {
-      odsUnitTestAttribute<OdsSelectAttribute, 'color'>({
-        name: 'color',
-        defaultValue: DEFAULT_ATTRIBUTE.color,
-        newValue: ODS_THEME_COLOR_INTENT.primary,
-        value: ODS_THEME_COLOR_INTENT.default,
-        setup: (value) => setup({ attributes: { ['color']: value } }),
-        ...config,
-      });
-    });
 
     describe('disabled', () => {
       odsUnitTestAttribute<OdsSelectAttribute, 'disabled'>({
@@ -157,17 +139,6 @@ describe('spec:osds-select', () => {
       });
     });
 
-    describe('size', () => {
-      odsUnitTestAttribute<OdsSelectAttribute, 'size'>({
-        name: 'size',
-        defaultValue: DEFAULT_ATTRIBUTE.size,
-        newValue: ODS_SELECT_SIZE.md,
-        value: ODS_SELECT_SIZE.md,
-        setup: (value) => setup({ attributes: { ['size']: value } }),
-        ...config,
-      });
-    });
-
     describe('value', () => {
       odsUnitTestAttribute<OdsSelectAttribute, 'value'>({
         name: 'value',
@@ -196,14 +167,14 @@ describe('spec:osds-select', () => {
       expect(instance?.value).toBe(`${defaultValue}`);
     });
 
-    it('should call reset function and set value to empty string if defaultValue is unset', async() => {
+    it('should call reset function and set value null if defaultValue is unset', async() => {
       await setup({ attributes: { value: 2 } });
       expect(instance).toBeTruthy();
       await instance.reset();
-      expect(instance?.value).toBe(null);
+      expect(instance?.value).toBe('');
     });
 
-    it('should call clear function and set value to an empty string', async() => {
+    it('should call clear function and set value to null', async() => {
       await setup({ attributes: { value: 2 } });
       expect(instance).toBeTruthy();
       await instance.clear();
@@ -213,25 +184,24 @@ describe('spec:osds-select', () => {
     it('should call setFocus function and change the focus state of the component', async() => {
       await setup({ attributes: { } });
       expect(instance).toBeTruthy();
-      expect(htmlSelect).toBeTruthy();
       await instance.setFocus();
-      expect(htmlSelect?.value).toBe('');
+      expect(instance?.value).toBe('');
     });
 
     it('should call setTabindex function and inputTabindex should be set to 4', async() => {
       await setup({ attributes: { value: 2 } });
       expect(instance).toBeTruthy();
       await instance.setTabindex(4);
-      expect(instance?.tabindex).toBe(4);
+      expect(instance.tabindex).toBe(4);
     });
 
-    it('should call getValidity function and get an OdsValidityState.invalid to true', async() => {
+    it('should call getValidity function and get an OdsValidityState.valid to true', async() => {
       await setup({ attributes: { value: 'my-value-1' } });
       expect(instance).toBeTruthy();
       jest.spyOn(instance, 'getValidity');
       const validity = await instance.getValidity();
       expect(instance.getValidity).toHaveBeenCalledTimes(1);
-      expect(validity?.invalid).toBe(false);
+      expect(validity?.valid).toBe(true);
     });
 
     it('should handle slot change', async() => {

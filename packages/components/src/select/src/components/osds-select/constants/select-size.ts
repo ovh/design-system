@@ -1,6 +1,0 @@
-import { ODS_COMMON_FIELD_SIZE, ODS_COMMON_FIELD_SIZES } from '@ovhcloud/ods-common-core';
-
-export {
-  ODS_COMMON_FIELD_SIZE as ODS_SELECT_SIZE,
-  ODS_COMMON_FIELD_SIZES as ODS_SELECT_SIZES,
-};

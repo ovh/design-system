@@ -1,13 +1,10 @@
 import type { OdsSelectAttribute } from './interfaces/attributes';
 import type { OdsSelectValueChangeEventDetail } from './interfaces/events';
 import type { E2EElement, E2EPage } from '@stencil/core/testing';
-
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { newE2EPage } from '@stencil/core/testing';
-
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { ODS_SELECT_SIZE } from './constants/select-size';
 
 
 
@@ -22,7 +19,6 @@ describe('e2e:osds-select', () => {
     inline: false,
     name: '',
     required: false,
-    size: ODS_SELECT_SIZE.md,
     value: '',
   };
   let page: E2EPage;
@@ -181,12 +177,18 @@ describe('e2e:osds-select', () => {
           name: '',
           oldValue: '',
           validity: {
-            invalid: false,
-            stepMismatch: false,
-            valid: true,
-            valueMissing: false,
+            badInput: false,
             customError: false,
             forbiddenValue: false,
+            patternMismatch: false,
+            rangeOverflow: false,
+            rangeUnderflow: false,
+            stepMismatch: false,
+            tooLong: false,
+            tooShort: false,
+            typeMismatch: false,
+            valid: true,
+            valueMissing: false,
           },
           value: '',
           selection: null,

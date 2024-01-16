@@ -1,14 +1,13 @@
-
 import type { OdsSelectOptionClickEventDetail, OsdsSelectOption } from '../../osds-select-option/public-api';
 import type { OsdsSelect } from '../osds-select';
-import type { OdsInputValue, OdsValidityState } from '@ovhcloud/ods-common-core';
+import type { OdsSelectValueChangeEventDetail } from '../interfaces/events';
+import { OdsCommonFieldMethodController, OdsCommonFieldValidityState, OdsInputValue } from '@ovhcloud/ods-common-core';
 
 /**
  * common controller logic for select component used by the different implementations.
  * it contains all the glue between framework implementation and the third party service.
  */
-class OdsSelectController {
-  private component: OsdsSelect;
+class OdsSelectController<T extends OsdsSelect> extends OdsCommonFieldMethodController<T, OdsSelectValueChangeEventDetail> {
   private _selectOptions: (HTMLElement & OsdsSelectOption)[] = [];
 
   public get selectOptions(): (HTMLElement & OsdsSelectOption)[] {
@@ -19,8 +18,18 @@ class OdsSelectController {
     this._selectOptions = value;
   }
 
-  constructor(component: OsdsSelect) {
-    this.component = component;
+  constructor(component: T) {
+    super(component);
+  }
+
+  override beforeInit(): void {
+    super.beforeInit();
+    if (!this.component.value && this.component.defaultValue) {
+      console.log('pass', )
+      this.component.value = this.component.defaultValue;
+    }
+    this.component.openedChanged(this.component.opened);
+    this.component.selectedLabelSlot = this.component.el.querySelector('[slot="selectedLabel"]');
   }
 
   async onValueChange(value: OdsInputValue, oldValue?: OdsInputValue): Promise<void> {
@@ -34,15 +43,21 @@ class OdsSelectController {
    * it is based on the validity state of the vanilla select.
    * in case of no vanilla select passed, it returns the default value for each property
    */
-  getValidity(): OdsValidityState {
+  override async getValidity(): Promise<OdsCommonFieldValidityState> {
     const requiredError = this.hasRequiredError();
     return {
-      valid: !requiredError,
-      invalid: requiredError,
-      forbiddenValue: false,
-      valueMissing: requiredError,
-      stepMismatch: false,
+      badInput: false,
       customError: false,
+      forbiddenValue: false,
+      patternMismatch: false,
+      rangeOverflow: false,
+      rangeUnderflow: false,
+      stepMismatch: false,
+      tooLong: false,
+      tooShort: false,
+      typeMismatch: false,
+      valid: !requiredError,
+      valueMissing: requiredError,
     };
   }
 

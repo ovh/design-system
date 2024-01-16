@@ -1,13 +1,10 @@
 import type { OdsSelectOptionAttribute } from './interfaces/attributes';
 import type { OdsSelectOptionClickEventDetail, OdsSelectOptionEvent } from './interfaces/events';
 import type { OdsSelectOptionMethod } from './interfaces/methods';
-import type { OsdsSelect } from '../osds-select/osds-select';
 import type { OdsInputValue } from '@ovhcloud/ods-common-core';
 import type { HTMLStencilElement } from '@stencil/core/internal';
-import type { ODS_SELECT_SIZE } from '../osds-select/constants/select-size';
 import { Component, Element, Event, EventEmitter, Host, Method, Prop, State, h } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { DEFAULT_ATTRIBUTE as SELECT_DEFAULT_ATTRIBUTE } from '../osds-select/constants/default-attributes';
 
 /**
  * @slot (unnamed) - Select option content
@@ -18,8 +15,6 @@ import { DEFAULT_ATTRIBUTE as SELECT_DEFAULT_ATTRIBUTE } from '../osds-select/co
   shadow: true,
 })
 export class OsdsSelectOption implements OdsSelectOptionAttribute, OdsSelectOptionEvent, OdsSelectOptionMethod {
-  private selectParent: (HTMLStencilElement & OsdsSelect) | null = null;
-
   @Element() el!: HTMLStencilElement;
 
   /**
@@ -28,19 +23,6 @@ export class OsdsSelectOption implements OdsSelectOptionAttribute, OdsSelectOpti
    * @internal
    */
   @Prop({ reflect: true }) selected?: boolean = false;
-
-  /**
-   * The size of the select option
-   * @internal
-   */
-  @State() size?: ODS_SELECT_SIZE = SELECT_DEFAULT_ATTRIBUTE.size;
-
-  componentWillLoad() {
-    this.selectParent = this.el.closest('osds-select') as (HTMLStencilElement & OsdsSelect) | null;
-    if (this.selectParent) {
-      this.size = this.selectParent.size;
-    }
-  }
 
   /**
    * The tabindex of the select option
@@ -85,7 +67,6 @@ export class OsdsSelectOption implements OdsSelectOptionAttribute, OdsSelectOpti
     const {
       selected,
       tabindex,
-      size,
     } = this;
 
     return (
@@ -93,7 +74,7 @@ export class OsdsSelectOption implements OdsSelectOptionAttribute, OdsSelectOpti
         'aria-labelledby': this.el.innerText,
         tabindex,
         onClick: this.handleClick.bind(this),
-        size,
+        size: 'md',
       }}
       >
         <div {...{

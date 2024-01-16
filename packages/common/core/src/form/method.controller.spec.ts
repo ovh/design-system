@@ -53,7 +53,7 @@ describe('spec:OdsCommonFieldMethodController', () => {
     controller = new OdsCommonFieldMethodController<typeof osdsInput>({
         ...osdsInput,
         ...attributes,
-    } as typeof osdsInput);
+    } as typeof osdsInput, '');
   }
 
   it('should call focus on inputEl', () => {

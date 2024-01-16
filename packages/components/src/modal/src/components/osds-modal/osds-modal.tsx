@@ -58,6 +58,7 @@ export class OsdsModal implements OdsModalAttribute, OdsModalMethod, OdsModalEve
     if (this.masked) {
       return this.modal.close?.();
     }
+    document.body.style.overflow = 'hidden';
     return this.modal.showModal?.();
   }
 

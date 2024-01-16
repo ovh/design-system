@@ -66,12 +66,6 @@
   display: none;
 }
 
-.osds-modal {
-  &--opened {
-    overflow: hidden;
-  }
-}
-
 // apply the theme template for the component
 @include ods-theme-component {
   @include osds-modal-theme-color;

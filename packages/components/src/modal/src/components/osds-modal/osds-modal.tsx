@@ -66,7 +66,7 @@ export class OsdsModal implements OdsModalAttribute, OdsModalMethod, OdsModalEve
    */
   @Method()
   async close(): Promise<void> {
-    document.body.classList.remove('osds-modal--opened');
+    document.body.style.removeProperty('overflow');
     this.masked = true;
     this.odsModalClose.emit();
   }
@@ -76,7 +76,7 @@ export class OsdsModal implements OdsModalAttribute, OdsModalMethod, OdsModalEve
    */
   @Method()
   async open(): Promise<void> {
-    document.body.classList.add('osds-modal--opened');
+    document.body.style.overflow = 'hidden';
     this.masked = false;
     this.odsModalOpen.emit();
   }

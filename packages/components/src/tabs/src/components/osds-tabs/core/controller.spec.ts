@@ -121,12 +121,12 @@ describe('spec:ods-tabs-controller', () => {
           controller.changeActivePanel('');
         });
         it('should set active on the first item', () => {
-          expect(item1.active).toEqual(true);
-          expect(item2.active).toEqual(false);
+          expect(item1.active).toBe(true);
+          expect(item2.active).toBe(false);
         });
         it('should set active ont the first panel', () => {
-          expect(panel1.active).toEqual(true);
-          expect(panel2.active).toEqual(false);
+          expect(panel1.active).toBe(true);
+          expect(panel2.active).toBe(false);
         });
         it('should set default panel to first one in component', () => {
           expect(component.panel).toEqual('1');
@@ -141,12 +141,12 @@ describe('spec:ods-tabs-controller', () => {
           controller.changeActivePanel('2');
         });
         it('should set active on the right item', () => {
-          expect(item1.active).toEqual(false);
-          expect(item2.active).toEqual(true);
+          expect(item1.active).toBe(false);
+          expect(item2.active).toBe(true);
         });
         it('should set active ont the right panel', () => {
-          expect(panel1.active).toEqual(false);
-          expect(panel2.active).toEqual(true);
+          expect(panel1.active).toBe(false);
+          expect(panel2.active).toBe(true);
         });
         it('should set default panel to right one in component', () => {
           expect(component.panel).toEqual('2');
@@ -182,7 +182,7 @@ describe('spec:ods-tabs-controller', () => {
         controller.handleArrowKey(key);
 
         expect(item1.getAttribute('active')).toEqual("");
-        expect(item2.getAttribute('active')).toEqual(null);
+        expect(item2.getAttribute('active')).toBe(null);
       });
 
       it('should do nothing if arrowRight is pressed on last tab', () => {
@@ -204,8 +204,8 @@ describe('spec:ods-tabs-controller', () => {
         const key = new KeyboardEvent('keypress', { code : 'ArrowRight' });
         controller.handleArrowKey(key);
 
-        expect(item2.active).toEqual(true);
-        expect(item1.active).toEqual(false);
+        expect(item2.active).toBe(true);
+        expect(item1.active).toBe(false);
       });
 
       it('should set active to tab 1', () => {
@@ -215,8 +215,8 @@ describe('spec:ods-tabs-controller', () => {
         const key = new KeyboardEvent('keypress', { code : 'ArrowLeft' });
         controller.handleArrowKey(key);
 
-        expect(item1.active).toEqual(true);
-        expect(item2.active).toEqual(false);
+        expect(item1.active).toBe(true);
+        expect(item2.active).toBe(false);
       });
     });
 
@@ -227,16 +227,16 @@ describe('spec:ods-tabs-controller', () => {
 
       it('should set contrasted on all items', () => {
         controller.propagateContrastedToItems(true);
-        expect(item1.contrasted).toEqual(true);
-        expect(item2.contrasted).toEqual(true);
+        expect(item1.contrasted).toBe(true);
+        expect(item2.contrasted).toBe(true);
       });
 
       it('should set not contrasted on all items', () => {
         item1.contrasted = true;
         item2.contrasted = true;
         controller.propagateContrastedToItems(false);
-        expect(item1.contrasted).toEqual(false);
-        expect(item2.contrasted).toEqual(false);
+        expect(item1.contrasted).toBe(false);
+        expect(item2.contrasted).toBe(false);
       });
     });
 

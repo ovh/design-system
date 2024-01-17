@@ -1,26 +1,22 @@
 import type { ODS_CODE_SIZE } from './constants/code-size';
 import type { OdsCodeAttribute } from './interfaces/attributes';
 import type { OdsCodeEvent } from './interfaces/events';
-import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import type { OsdsButton } from '../../../../button/src';
 import type { OsdsIcon } from '../../../../icon/src';
+import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import type { EventEmitter, HTMLStencilElement } from '@stencil/core/internal';
-
-import { Component, Element, Event, Host, Prop, h } from '@stencil/core';
-
+import { Component, Element, Event, Host, Prop, Watch, h } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsCodeController } from './core/controller';
-
-
 
 /**
  * @slot (unnamed) - Code content
  * @slot (copy) - Copy action zone
  */
 @Component({
-  tag: 'osds-code',
-  styleUrl: 'osds-code.scss',
   shadow: true,
+  styleUrl: 'osds-code.scss',
+  tag: 'osds-code',
 })
 export class OsdsCode implements OdsCodeAttribute, OdsCodeEvent {
   controller: OdsCodeController = new OdsCodeController(this);
@@ -50,7 +46,7 @@ export class OsdsCode implements OdsCodeAttribute, OdsCodeEvent {
   }
 
   /** @see OdsCodeBehavior.createCopyIconElement */
-  createCopyIconElement() {
+  createCopyIconElement(): HTMLElement {
     return document.createElement('osds-icon') as HTMLElement;
   }
 
@@ -68,16 +64,21 @@ export class OsdsCode implements OdsCodeAttribute, OdsCodeEvent {
     this.controller.copyCode();
   }
 
-  render() {
+  @Watch('contrasted')
+  handleContrastedState(): void {
+    this.controller.handleContrastedState();
+  }
+
+  render(): JSX.Element {
     return (
       <Host>
         <pre class={'code__wrapper'}>
-          <code class={'code_container'} ref={(el) => this.codeEl = el as HTMLElement}>
+          <code class={'code_container'} ref={(el): HTMLElement => this.codeEl = el as HTMLElement}>
             <slot></slot>
           </code>
           <slot {...{
             name: 'copy',
-            onClick: () => this.onCopyClick(),
+            onClick: (): void => this.onCopyClick(),
           }}></slot>
         </pre>
       </Host>

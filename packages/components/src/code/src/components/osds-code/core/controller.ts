@@ -1,11 +1,9 @@
-import type { OsdsCode } from '../osds-code';
 import type { OsdsButton } from '../../../../../button/src';
 import type { OsdsIcon } from '../../../../../icon/src';
-
+import type { OsdsCode } from '../osds-code';
 import { OdsLogger } from '@ovhcloud/ods-common-core';
 import { ODS_BUTTON_SIZE, ODS_BUTTON_VARIANT } from '../../../../../button/src';
 import { ODS_ICON_NAME, ODS_ICON_SIZE } from '../../../../../icon/src';
-
 
 /**
  * common controller logic for code component used by the different implementations.
@@ -61,22 +59,32 @@ class OdsCodeController {
     this.logger.log('Code has been copied into clipboard');
   }
 
-  private createCopyIcon(button: (HTMLSlotElement & OsdsButton)) {
+  private createCopyIcon(button: (HTMLSlotElement & OsdsButton)): void {
     const icon = this.component.createCopyIconElement() as (HTMLElement & OsdsIcon);
     icon[ 'name' ] = ODS_ICON_NAME.COPY;
     this.setCopyIconAttributes(icon);
     button.appendChild(icon);
   }
 
-  private setCopyButtonAttributes(button: (HTMLSlotElement & OsdsButton)) {
+  private setCopyButtonAttributes(button: (HTMLSlotElement & OsdsButton)): void {
     button[ 'size' ] = this.buttonSize;
     button[ 'variant' ] = button.getAttribute('variant') as ODS_BUTTON_VARIANT || ODS_BUTTON_VARIANT.ghost;
     button[ 'contrasted' ] = !this.component.contrasted;
   }
 
-  private setCopyIconAttributes(icon: (HTMLElement & OsdsIcon)) {
+  private setCopyIconAttributes(icon: (HTMLElement & OsdsIcon)): void {
     icon[ 'size' ] = this.iconSize;
     icon[ 'contrasted' ] = !this.component.contrasted;
+  }
+
+  handleContrastedState(): void {
+    const icon = this.component.el.querySelector('osds-icon');
+    if(!icon) {
+      return;
+    }
+    this.component.contrasted
+      ? icon.removeAttribute('contrasted')
+      : icon.setAttribute('contrasted', '');
   }
 }
 

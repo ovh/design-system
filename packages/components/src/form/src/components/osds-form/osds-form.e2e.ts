@@ -11,20 +11,24 @@ describe('e2e:osds-form', () => {
   let buttonSubmit: E2EElement;
   let osdsInput: E2EElement;
 
+  afterEach(() => {
+    jest.clearAllMocks();
+  })
+
   async function setup({ attributes= {} }: { attributes?: Partial<OdsFormAttribute> }): Promise<void> {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsFormAttribute>(attributes, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
     await page.setContent(`<osds-form ${odsStringAttributes2Str(stringAttributes)}>
       <osds-form-field inline>
-      <div slot="label">
-        <osds-text level="heading" color="primary">Description</osds-text>
-      </div>
-      <div slot="visual-hint"><osds-text>150/200</osds-text></div>
-      <osds-input inline name="osdsInput" type="text"></osds-input>
-      <div slot="helper">
-        <osds-text>Write a few sentences about you</osds-text>
-      </div>
+        <div slot="label">
+          <osds-text level="heading" color="primary">Description</osds-text>
+        </div>
+        <div slot="visual-hint"><osds-text>150/200</osds-text></div>
+        <osds-input inline name="osdsInput" type="text"></osds-input>
+        <div slot="helper">
+          <osds-text>Write a few sentences about you</osds-text>
+        </div>
       </osds-form-field>
 
       <osds-input name="firstName" inline type="text"></osds-input>

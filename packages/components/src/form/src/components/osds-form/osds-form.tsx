@@ -29,7 +29,9 @@ export class OsdsForm implements OdsFormAttribute, OdsFormEvent, OdsFormMethod {
 
   @Method()
   async isFormValid(): Promise<boolean> {
-    return ![...this.internalMap].some(([, { error }]) => error);
+    return ![...this.internalMap].some(([, { error }]) => {
+      return error;
+    });
   }
 
   @Method()
@@ -134,7 +136,8 @@ export class OsdsForm implements OdsFormAttribute, OdsFormEvent, OdsFormMethod {
 
   @Listen('odsValueChange')
   onValueChange({ detail }: CustomEvent<OdsInputValueChangeEventDetail>): void {
-    this.internalMap.set(detail.name, { error: !detail.validity?.valid, value: detail.value });
+    const error = detail.validity ? !detail.validity.valid : false;
+    this.internalMap.set(detail.name, { error, value: detail.value });
   }
 
   render(): FunctionalComponent {

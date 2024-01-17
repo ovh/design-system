@@ -89,7 +89,7 @@ class OdsMenuController {
     case 'Enter':
     case 'NumpadEnter':
     case 'Space': {
-      if((event.target as HTMLElement)?.tagName != 'OSDS-BUTTON' ) {
+      if((event.target as HTMLElement)?.tagName !== 'OSDS-BUTTON' ) {
         this.handleTriggerClick();
       }
       return;

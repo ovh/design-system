@@ -1,5 +1,4 @@
-import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
-import { OdsClearLoggerSpy, OdsInitializeLoggerSpy, OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
+import { Ods } from '@ovhcloud/ods-common-core';
 import { OdsInputController } from './controller';
 import { OsdsInput } from '../osds-input';
 import { ODS_INPUT_TYPE } from '../constants/input-type';
@@ -19,7 +18,6 @@ class OdsInputMock {
   internals = {
     setFormValue: jest.fn()
   };
-  logger = new OdsLogger('OdsInputMock');
   masked = false;
   name = '';
   type = ODS_INPUT_TYPE.text;
@@ -30,7 +28,7 @@ describe('spec:ods-input-controller', () => {
   let controller: OdsInputController<OsdsInput>;
   let component: OsdsInput;
   let spyOnAssertValue: jest.SpyInstance<void, jest.ArgsType<OdsInputController<OsdsInput>['assertValue']>>;
-  let loggerSpyReferences: OdsLoggerSpyReferences;
+  let consoleWarnSpy: jest.SpyInstance;
 
   Ods.instance().logging(false);
 
@@ -40,15 +38,11 @@ describe('spec:ods-input-controller', () => {
   }
 
   beforeEach(() => {
-    const loggerMocked = new OdsLogger('myLoggerMocked');
-    loggerSpyReferences = OdsInitializeLoggerSpy({
-      loggerMocked: loggerMocked as never,
-      spiedClass: OdsInputController,
-    });
+    consoleWarnSpy = jest.spyOn(console, 'warn');
+
   });
 
   afterEach(() => {
-    OdsClearLoggerSpy(loggerSpyReferences);
     jest.clearAllMocks();
   });
 
@@ -78,8 +72,8 @@ describe('spec:ods-input-controller', () => {
         it('should warn if value is empty string', () => {
           setup();
           controller.onValueChange('');
-          expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledTimes(1);
-          expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledWith('[OsdsInput] The value attribute must be a correct number');
+          expect(consoleWarnSpy).toHaveBeenCalledTimes(1);
+          expect(consoleWarnSpy).toHaveBeenCalledWith('[OsdsInput] The value attribute must be a correct number');
         });
 
         it('should warn if value is out of min/max bounds (min case)', () => {
@@ -89,8 +83,8 @@ describe('spec:ods-input-controller', () => {
           setup({ min, max, value, step: 1 });
           controller.onValueChange(value);
 
-          expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledTimes(1);
-          expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledWith(`The value attribute must be in bounds of [${[min, max].join(', ')}]`);
+          expect(consoleWarnSpy).toHaveBeenCalledTimes(1);
+          expect(consoleWarnSpy).toHaveBeenCalledWith(`The value attribute must be in bounds of [${[min, max].join(', ')}]`);
         });
 
         it('should warn if value is out of min/max bounds (max case)', () => {
@@ -100,8 +94,8 @@ describe('spec:ods-input-controller', () => {
           setup({ min, max, value, step: 1 });
           controller.onValueChange(value);
 
-          expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledTimes(1);
-          expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledWith(`The value attribute must be in bounds of [${[min, max].join(', ')}]`);
+          expect(consoleWarnSpy).toHaveBeenCalledTimes(1);
+          expect(consoleWarnSpy).toHaveBeenCalledWith(`The value attribute must be in bounds of [${[min, max].join(', ')}]`);
         });
 
         it('should warn if value is not a multiple of step', () => {
@@ -110,8 +104,8 @@ describe('spec:ods-input-controller', () => {
           setup({ min: 0, max: 10, value, step });
           controller.onValueChange(value);
 
-          expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledTimes(1);
-          expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledWith(`[OsdsInput] The value attribute must be a multiple of ${step}`);
+          expect(consoleWarnSpy).toHaveBeenCalledTimes(1);
+          expect(consoleWarnSpy).toHaveBeenCalledWith(`[OsdsInput] The value attribute must be a multiple of ${step}`);
         });
       });
 

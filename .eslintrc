@@ -84,7 +84,7 @@
     "newline-per-chained-call": "off",
     "no-array-constructor": "error",
     "no-await-in-loop": "error",
-    "no-console": "error",
+    "no-console": ["error", { "allow": ["warn", "error"] }],
     "no-extra-bind": "error",
     "no-magic-numbers": "off",
     "no-multi-spaces": "error",

@@ -67,9 +67,7 @@ export class OsdsTile implements OdsTileAttribute {
 
   render() {
     return (
-      <Host {...{
-        onClick: () => this.controller.handleClick(),
-      }}
+      <Host
         class={{
           'osds-tile' : true,
           'osds-tile--checking' : this.checking || false,

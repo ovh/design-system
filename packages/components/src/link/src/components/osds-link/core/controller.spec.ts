@@ -1,9 +1,5 @@
-import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
-
-import { Ods, OdsHTMLAnchorElementRel, OdsHTMLAnchorElementTarget, OdsLogger } from '@ovhcloud/ods-common-core';
-import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
+import { Ods, OdsHTMLAnchorElementRel, OdsHTMLAnchorElementTarget } from '@ovhcloud/ods-common-core';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-
 import { OdsLinkController } from './controller';
 import { ODS_LINK_REFERRER_POLICY } from '../constants/referrer-policies';
 import { OsdsLink } from '../osds-link';
@@ -19,7 +15,7 @@ class OdsLinkMock extends OsdsLink {
 describe('spec:ods-link-controller', () => {
   let controller: OdsLinkController;
   let component: OsdsLink;
-  let loggerSpyReferences: OdsLoggerSpyReferences;
+  let consoleWarnSpy: jest.SpyInstance;
 
   Ods.instance().logging(false);
 
@@ -29,15 +25,10 @@ describe('spec:ods-link-controller', () => {
   }
 
   beforeEach(() => {
-    const loggerMocked = new OdsLogger('myLoggerMocked');
-    loggerSpyReferences = OdsInitializeLoggerSpy({
-      loggerMocked: loggerMocked as never,
-      spiedClass: OdsLinkController,
-    });
+    consoleWarnSpy = jest.spyOn(console, 'warn');
   });
 
   afterEach(() => {
-    OdsClearLoggerSpy(loggerSpyReferences);
     jest.clearAllMocks();
   });
 
@@ -54,7 +45,7 @@ describe('spec:ods-link-controller', () => {
     describe('methods:validateAttributes', () => {
       it('should not call console.warn', () => {
         controller.validateAttributes();
-        expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledTimes(0);
+        expect(consoleWarnSpy).toHaveBeenCalledTimes(0);
       });
 
       it('should call console.warn with wrong color', () => {
@@ -63,8 +54,8 @@ describe('spec:ods-link-controller', () => {
 
         controller.validateAttributes();
 
-        expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledWith(expected);
-        expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledTimes(1);
+        expect(consoleWarnSpy).toHaveBeenCalledWith(expected);
+        expect(consoleWarnSpy).toHaveBeenCalledTimes(1);
       });
 
       it('should call console.warn with wrong target if href not empty', () => {
@@ -74,8 +65,8 @@ describe('spec:ods-link-controller', () => {
 
         controller.validateAttributes();
 
-        expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledWith(expected);
-        expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledTimes(1);
+        expect(consoleWarnSpy).toHaveBeenCalledWith(expected);
+        expect(consoleWarnSpy).toHaveBeenCalledTimes(1);
       });
 
       it('should not call console.warn with wrong target if href empty', () => {
@@ -83,7 +74,7 @@ describe('spec:ods-link-controller', () => {
 
         controller.validateAttributes();
 
-        expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledTimes(0);
+        expect(consoleWarnSpy).toHaveBeenCalledTimes(0);
       });
     });
   });

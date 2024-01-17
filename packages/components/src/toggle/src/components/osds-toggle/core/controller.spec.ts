@@ -1,9 +1,4 @@
-import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
-
-import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
-import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-
 import { OdsToggleController } from './controller';
 import { OsdsToggle } from '../osds-toggle';
 
@@ -20,9 +15,7 @@ class OdsToggleMock extends OsdsToggle {
 describe('spec:ods-toggle-controller', () => {
   let controller: OdsToggleController;
   let component: OsdsToggle;
-  let loggerSpyReferences: OdsLoggerSpyReferences;
-
-  Ods.instance().logging(false);
+  let consoleWarnSpy: jest.SpyInstance;
 
   function setup(attributes: Partial<OsdsToggle> = {}) {
     component = new OdsToggleMock(attributes);
@@ -30,15 +23,11 @@ describe('spec:ods-toggle-controller', () => {
   }
 
   beforeEach(() => {
-    const loggerMocked = new OdsLogger('myLoggerMocked');
-    loggerSpyReferences = OdsInitializeLoggerSpy({
-      loggerMocked: loggerMocked as never,
-      spiedClass: OdsToggleController,
-    });
+    consoleWarnSpy = jest.spyOn(console, 'warn');
   });
 
   afterEach(() => {
-    OdsClearLoggerSpy(loggerSpyReferences);
+    jest.clearAllMocks();
   });
 
   describe('methods', () => {
@@ -51,7 +40,7 @@ describe('spec:ods-toggle-controller', () => {
     describe('methods:validateAttributes', () => {
       it('should not call console.warn', () => {
         controller.validateAttributes();
-        expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledTimes(0);
+        expect(consoleWarnSpy).toHaveBeenCalledTimes(0);
       });
 
       it('should call console.warn with wrong color', () => {
@@ -59,8 +48,8 @@ describe('spec:ods-toggle-controller', () => {
         component.color = 'color' as ODS_THEME_COLOR_INTENT;
 
         controller.validateAttributes();
-        expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledWith(expected);
-        expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledTimes(1);
+        expect(consoleWarnSpy).toHaveBeenCalledWith(expected);
+        expect(consoleWarnSpy).toHaveBeenCalledTimes(1);
       });
     });
   });

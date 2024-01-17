@@ -3,7 +3,6 @@ jest.mock('./core/controller'); // keep jest.mock before any
 import type { OdsRangeAttribute } from './interfaces/attributes';
 import type { OdsRangeValueChangeEventDetail } from './interfaces/events';
 import type { SpecPage } from '@stencil/core/testing';
-
 import { OdsCreateDefaultValidityState, OdsFormControl } from '@ovhcloud/ods-common-core';
 import {
   OdsMockNativeMethod,
@@ -15,7 +14,6 @@ import {
 } from '@ovhcloud/ods-common-testing';
 import { ODS_THEME_COLOR_INTENT, ODS_THEME_COLOR_INTENTS } from '@ovhcloud/ods-common-theming';
 import { newSpecPage } from '@stencil/core/testing';
-
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsRangeController } from './core/controller';
 import { OsdsRange } from './osds-range';
@@ -218,14 +216,6 @@ describe('spec:osds-range', () => {
 
         expect(controller.onKeyup).toHaveBeenCalledTimes(1);
         expect(controller.onKeyup).toHaveBeenCalledWith(event, inputEl, false);
-      });
-
-      it('should call handleClick on click', async() => {
-        await setup({});
-        instance?.handleClick();
-
-        expect(controller.handleClick).toHaveBeenCalledTimes(1);
-        expect(controller.handleClick).toHaveBeenCalledWith();
       });
 
       it('should emit change', () => {

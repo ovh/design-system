@@ -1,9 +1,5 @@
-import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
-
-import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
-import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
+import { Ods } from '@ovhcloud/ods-common-core';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-
 import { OdsTileController } from './controller';
 import { ODS_TILE_SIZE } from '../constants/tile-size';
 import { ODS_TILE_VARIANT } from '../constants/tile-variant';
@@ -20,7 +16,7 @@ class OsdsTileMock extends OsdsTile {
 describe('spec:ods-tile-controller', () => {
   let controller: OdsTileController;
   let component: OsdsTile;
-  let loggerSpyReferences: OdsLoggerSpyReferences;
+  let consoleWarnSpy: jest.SpyInstance;
 
   Ods.instance().logging(false);
 
@@ -30,15 +26,11 @@ describe('spec:ods-tile-controller', () => {
   }
 
   beforeEach(() => {
-    const loggerMocked = new OdsLogger('myLoggerMocked');
-    loggerSpyReferences = OdsInitializeLoggerSpy({
-      loggerMocked: loggerMocked as never,
-      spiedClass: OdsTileController,
-    });
+    consoleWarnSpy = jest.spyOn(console, 'warn');
   });
 
   afterEach(() => {
-    OdsClearLoggerSpy(loggerSpyReferences);
+    jest.clearAllMocks();
   });
 
   describe('methods', () => {
@@ -53,7 +45,7 @@ describe('spec:ods-tile-controller', () => {
 
       it('should not call console.warn', () => {
         controller.validateAttributes();
-        expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledTimes(0);
+        expect(consoleWarnSpy).toHaveBeenCalledTimes(0);
       });
 
       it('should call console.warn with wrong color', () => {
@@ -62,8 +54,8 @@ describe('spec:ods-tile-controller', () => {
 
         controller.validateAttributes();
 
-        expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledWith(expected);
-        expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledTimes(1);
+        expect(consoleWarnSpy).toHaveBeenCalledWith(expected);
+        expect(consoleWarnSpy).toHaveBeenCalledTimes(1);
       });
 
       it('should call console.warn with wrong size', () => {
@@ -72,8 +64,8 @@ describe('spec:ods-tile-controller', () => {
 
         controller.validateAttributes();
 
-        expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledWith(expected);
-        expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledTimes(1);
+        expect(consoleWarnSpy).toHaveBeenCalledWith(expected);
+        expect(consoleWarnSpy).toHaveBeenCalledTimes(1);
       });
 
       it('should call console.warn with wrong color', () => {
@@ -82,19 +74,8 @@ describe('spec:ods-tile-controller', () => {
 
         controller.validateAttributes();
 
-        expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledWith(expected);
-        expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledTimes(1);
-      });
-    });
-
-    describe('methods:handleClick', () => {
-      it('should call console.log', () => {
-        setup();
-
-        controller.handleClick();
-
-        expect(loggerSpyReferences.methodSpies.log).toHaveBeenCalledWith('[tile]', 'clicked');
-        expect(loggerSpyReferences.methodSpies.log).toHaveBeenCalledTimes(1);
+        expect(consoleWarnSpy).toHaveBeenCalledWith(expected);
+        expect(consoleWarnSpy).toHaveBeenCalledTimes(1);
       });
     });
   });

@@ -1,9 +1,5 @@
-import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
-
-import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
-import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
+import { Ods } from '@ovhcloud/ods-common-core';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-
 import { OdsChipController } from './controller';
 import { ODS_CHIP_SIZE } from '../constants/chip-size';
 import { ODS_CHIP_VARIANT } from '../constants/chip-variant';
@@ -20,7 +16,7 @@ class OdsChipMock extends OsdsChip {
 describe('spec:ods-chip-controller', () => {
   let controller: OdsChipController;
   let component: OsdsChip;
-  let loggerSpyReferences: OdsLoggerSpyReferences;
+  let consoleWarnSpy: jest.SpyInstance;
 
   Ods.instance().logging(false);
 
@@ -30,15 +26,10 @@ describe('spec:ods-chip-controller', () => {
   }
 
   beforeEach(() => {
-    const loggerMocked = new OdsLogger('myLoggerMocked');
-    loggerSpyReferences = OdsInitializeLoggerSpy({
-      loggerMocked: loggerMocked as never,
-      spiedClass: OdsChipController,
-    });
+    consoleWarnSpy = jest.spyOn(console, 'warn');
   });
 
   afterEach(() => {
-    OdsClearLoggerSpy(loggerSpyReferences);
     jest.clearAllMocks();
   });
 
@@ -53,7 +44,7 @@ describe('spec:ods-chip-controller', () => {
     describe('methods:validateAttributes', () => {
       it('should not call console.warn', () => {
         controller.validateAttributes();
-        expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledTimes(0);
+        expect(consoleWarnSpy).toHaveBeenCalledTimes(0);
       });
 
       it('should call console.warn with wrong color', () => {
@@ -62,8 +53,8 @@ describe('spec:ods-chip-controller', () => {
 
         controller.validateAttributes();
 
-        expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledWith(expected);
-        expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledTimes(1);
+        expect(consoleWarnSpy).toHaveBeenCalledWith(expected);
+        expect(consoleWarnSpy).toHaveBeenCalledTimes(1);
       });
 
       it('should call console.warn with wrong size', () => {
@@ -72,8 +63,8 @@ describe('spec:ods-chip-controller', () => {
 
         controller.validateAttributes();
 
-        expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledWith(expected);
-        expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledTimes(1);
+        expect(consoleWarnSpy).toHaveBeenCalledWith(expected);
+        expect(consoleWarnSpy).toHaveBeenCalledTimes(1);
       });
 
       it('should call console.warn with wrong variant', () => {
@@ -82,8 +73,8 @@ describe('spec:ods-chip-controller', () => {
 
         controller.validateAttributes();
 
-        expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledWith(expected);
-        expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledTimes(1);
+        expect(consoleWarnSpy).toHaveBeenCalledWith(expected);
+        expect(consoleWarnSpy).toHaveBeenCalledTimes(1);
       });
     });
   });

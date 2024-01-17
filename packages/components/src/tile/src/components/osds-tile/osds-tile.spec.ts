@@ -202,14 +202,5 @@ describe('spec:osds-tile', () => {
       expect(controller.validateAttributes).toHaveBeenCalledWith();
       expect(controller.validateAttributes).toHaveBeenCalledTimes(1);
     });
-
-    it('should call controller.handleClick on component click', async() => {
-      await setup();
-      root?.click();
-      await page.waitForChanges();
-
-      expect(controller.handleClick).toHaveBeenCalledWith();
-      expect(controller.handleClick).toHaveBeenCalledTimes(1);
-    });
   });
 });

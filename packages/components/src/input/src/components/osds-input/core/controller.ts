@@ -1,5 +1,5 @@
 import type { OsdsInput } from '../osds-input';
-import { OdsCommonFieldMethodController, OdsInputValue, OdsLogger } from '@ovhcloud/ods-common-core';
+import { OdsCommonFieldMethodController, OdsInputValue } from '@ovhcloud/ods-common-core';
 import { OdsWarnComponentAttribute } from '@ovhcloud/ods-common-core';
 
 /**
@@ -7,8 +7,6 @@ import { OdsWarnComponentAttribute } from '@ovhcloud/ods-common-core';
  * it contains all the glue between framework implementation and the third party service.
  */
 class OdsInputController<T extends OsdsInput> extends OdsCommonFieldMethodController<T> {
-
-  private logger = new OdsLogger('OdsInputController');
 
   constructor(component: T) {
     super(component);
@@ -110,18 +108,17 @@ class OdsInputController<T extends OsdsInput> extends OdsCommonFieldMethodContro
 
   private validateValue(value?: number): void {
     if (!value && value !== 0) {
-      this.logger.warn('[OsdsInput] The value attribute must be a correct number');
+      console.warn('[OsdsInput] The value attribute must be a correct number');
     }
     if ((value || value === 0) && (this.component.min || this.component.min === 0) && (this.component.max || this.component.max === 0) && this.component.step) {
       OdsWarnComponentAttribute<number, OsdsInput>({
         attribute: +value,
         attributeName: 'value',
-        logger: this.logger,
         max: this.component.max,
         min: this.component.min,
       });
       if (value && ((value - this.component.min) % this.component.step)) {
-        this.logger.warn(
+        console.warn(
           `[OsdsInput] The value attribute must be a multiple of ${this.component.step}`,
         );
       }

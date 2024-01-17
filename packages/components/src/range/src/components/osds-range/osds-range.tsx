@@ -2,11 +2,8 @@ import type { OdsRangeAttribute } from './interfaces/attributes';
 import type { OdsRangeEvent, OdsRangeValueChangeEventDetail } from './interfaces/events';
 import type { OdsRangeValue } from './interfaces/value';
 import type { OdsErrorStateControl, OdsFormControl, OdsFormForbiddenValues, OdsValidityState } from '@ovhcloud/ods-common-core';
-
-import { OdsLogger } from '@ovhcloud/ods-common-core';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { Component, Element, Event, EventEmitter, Host, Method, Prop, Watch, h } from '@stencil/core';
-
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsRangeController } from './core/controller';
 
@@ -21,7 +18,6 @@ import { OdsRangeController } from './core/controller';
   shadow: true,
 })
 export class OsdsRange implements OdsRangeAttribute, OdsRangeEvent {
-  private logger = new OdsLogger('OsdsRange');
   private static inputIds = 0;
   private readonly inputIdNumber = OsdsRange.inputIds++;
   private readonly inputId = `ods-input-${this.inputIdNumber}`;
@@ -122,7 +118,6 @@ export class OsdsRange implements OdsRangeAttribute, OdsRangeEvent {
    * @see OdsRangeBehavior.emitChange
    */
   emitChange(newValue: OdsRangeValue, oldValue?: OdsRangeValue): void {
-    this.logger.log('emit', { newValue, oldValue });
     this.odsValueChange.emit({
       value: newValue,
       oldValue: oldValue,
@@ -144,10 +139,6 @@ export class OsdsRange implements OdsRangeAttribute, OdsRangeEvent {
     this.controller.onKeyup(event, inputEl, dual);
   }
 
-  handleClick(): void {
-    this.controller.handleClick();
-  }
-
   hasError(): boolean {
     return this.controller.hasError();
   }
@@ -166,9 +157,7 @@ export class OsdsRange implements OdsRangeAttribute, OdsRangeEvent {
     }
 
     return (
-      <Host {...{
-        onclick: this.handleClick.bind(this),
-      }}
+      <Host
       class={{
         'ods-error': this.hasError(),
         'dual-range': this.controller.isDualRange(),

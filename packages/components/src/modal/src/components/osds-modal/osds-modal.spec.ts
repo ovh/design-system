@@ -38,7 +38,7 @@ describe('spec:osds-modal', () => {
     const config = {
       instance: (): OsdsModal => instance,
       page: (): SpecPage => page,
-      root: (): HTMLElement | undefined => page.root,
+      root: (): SpecPage['root'] => page.root,
       wait: (): Promise<void> => page.waitForChanges(),
     };
 

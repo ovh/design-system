@@ -4,7 +4,6 @@ import type { OdsFormMethod } from './interfaces/methods';
 import type { OdsInputValueChangeEventDetail } from '../../../../input/src';
 import type { OdsInputValue } from '@ovhcloud/ods-common-core';
 import type { EventEmitter, FunctionalComponent } from '@stencil/core';
-import { OdsLogger } from '@ovhcloud/ods-common-core';
 import { Component, Element, Event, Host, Listen, Method, Prop, Watch, h } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsFormController } from './core/controller';
@@ -17,7 +16,6 @@ import { OdsFormController } from './core/controller';
   tag: 'osds-form',
 })
 export class OsdsForm implements OdsFormAttribute, OdsFormEvent, OdsFormMethod {
-  readonly logger = new OdsLogger('OdsForm');
   private readonly controller = new OdsFormController(this);
   private readonly internalMap = new Map<string, { value: OdsInputValue, error: boolean }>();
   private formEl?: HTMLFormElement;
@@ -128,7 +126,7 @@ export class OsdsForm implements OdsFormAttribute, OdsFormEvent, OdsFormMethod {
   private getSlotElementByName(name: string): Element | undefined {
     const element = this.el.querySelector(`[name="${name}"]`);
     if (!element) {
-      this.logger.warn(`Element with name: ${name} not found`);
+      console.warn(`Element with name: ${name} not found`);
       return;
     }
     return element;
@@ -136,7 +134,7 @@ export class OsdsForm implements OdsFormAttribute, OdsFormEvent, OdsFormMethod {
 
   @Listen('odsValueChange')
   onValueChange({ detail }: CustomEvent<OdsInputValueChangeEventDetail>): void {
-    this.internalMap.set(detail.name, { error: detail.validity.invalid, value: detail.value });
+    this.internalMap.set(detail.name, { error: !detail.validity?.valid, value: detail.value });
   }
 
   render(): FunctionalComponent {

@@ -2,22 +2,16 @@ import type { OdsCommonFieldAttribute, OdsCommonFieldValidityState } from './int
 import type { OdsCommonFieldMethod } from './interfaces/methods';
 import type { OdsCommonFieldEvent } from './interfaces/events';
 import { OdsInputValue } from './ods-input-value';
-import { OdsWarnComponentAttribute } from '../logger/ods-warn-logger';
-import { OdsLogger } from '../logger/ods-logger';
 
 class OdsCommonFieldMethodController<T extends OdsCommonFieldAttribute & OdsCommonFieldEvent> implements OdsCommonFieldMethod {
-  protected logger: OdsLogger;
 
-  constructor(protected readonly component: T, loggerContext: string) {
-    this.logger = new OdsLogger(loggerContext);
+  constructor(protected readonly component: T) {
    }
 
   beforeInit() {
-    OdsWarnComponentAttribute<string, T>({
-      logger: this.logger,
-      attributeName: 'name',
-      attribute: this.component.name,
-    }, true);
+    if (!this.component.name) {
+      return console.warn(`Attribute name is required.`);
+    }
   }
 
   /**

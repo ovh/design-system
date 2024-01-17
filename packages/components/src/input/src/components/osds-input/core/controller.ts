@@ -1,5 +1,5 @@
 import type { OsdsInput } from '../osds-input';
-import { OdsCommonFieldMethodController, OdsInputValue } from '@ovhcloud/ods-common-core';
+import { OdsCommonFieldMethodController, OdsInputValue, OdsLogger } from '@ovhcloud/ods-common-core';
 import { OdsWarnComponentAttribute } from '@ovhcloud/ods-common-core';
 
 /**
@@ -8,8 +8,10 @@ import { OdsWarnComponentAttribute } from '@ovhcloud/ods-common-core';
  */
 class OdsInputController<T extends OsdsInput> extends OdsCommonFieldMethodController<T> {
 
+  private logger = new OdsLogger('OdsInputController');
+
   constructor(component: T) {
-    super(component, 'OdsInputController');
+    super(component);
   }
 
   assertValue(value: OdsInputValue): void {

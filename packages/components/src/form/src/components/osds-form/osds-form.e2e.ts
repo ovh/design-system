@@ -13,7 +13,7 @@ describe('e2e:osds-form', () => {
 
   afterEach(() => {
     jest.clearAllMocks();
-  })
+  });
 
   async function setup({ attributes= {} }: { attributes?: Partial<OdsFormAttribute> }): Promise<void> {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsFormAttribute>(attributes, DEFAULT_ATTRIBUTE);

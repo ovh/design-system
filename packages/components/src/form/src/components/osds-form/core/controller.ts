@@ -8,9 +8,9 @@ class OdsFormController {
   }
 
   getInitialValues(): Record<string, OdsInputValue> {
-    const onError = (): void => {
+    function onError(): void {
       console.warn('[OsdsForm] initialValues string could not be parsed.');
-    };
+    }
     return parseStringToRecord(this.component.initialValues, onError);
   }
 }

@@ -12,7 +12,7 @@ interface OdsSwitchEvent {
     odsSwitchChanged: EventEmitter<OdsSwitchChangedEventDetail>;
 }
 
-export {
+export type {
   OdsSwitchChangedEventDetail,
   OdsSwitchEvent,
 };

@@ -1,20 +1,16 @@
 import type { OdsSwitchAttribute } from './interfaces/attributes';
 import type { E2EElement, E2EPage } from '@stencil/core/testing';
-
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { newE2EPage } from '@stencil/core/testing';
-
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_SWITCH_SIZES } from './constants/switch-size';
-
-
 
 describe('e2e:osds-switch', () => {
   let page: E2EPage;
   let el: E2EElement;
 
-  async function setup({ attributes = {} }: { attributes?: Partial<OdsSwitchAttribute> } = {}) {
+  async function setup({ attributes = {} }: { attributes?: Partial<OdsSwitchAttribute> } = {}): Promise<void> {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsSwitchAttribute>(attributes, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
@@ -30,8 +26,8 @@ describe('e2e:osds-switch', () => {
   }
 
   describe('screenshots', () => {
-    [() => { }, () => el.setProperty('disabled', true)].forEach((setDisabled) => {
-      [() => { }, () => el.setProperty('contrasted', true)].forEach((setContrasted) => {
+    [(): void => { }, (): void => el.setProperty('disabled', true)].forEach((setDisabled): void => {
+      [(): void => { }, (): void => el.setProperty('contrasted', true)].forEach((setContrasted): void => {
         [undefined, ODS_THEME_COLOR_INTENT.primary].forEach((color) => {
           [undefined, 'Switch content'].forEach((content) => {
             ODS_SWITCH_SIZES.forEach((size) => {
@@ -48,9 +44,9 @@ describe('e2e:osds-switch', () => {
 
                 await page.evaluate(() => {
                   const element = document.querySelector('osds-switch') as HTMLElement;
-                  return { width: element.clientWidth, height: element.clientHeight };
+                  return { height: element.clientHeight, width: element.clientWidth };
                 });
-                await page.setViewport({ width: 600, height:600 });
+                await page.setViewport({ height: 600, width: 600 });
                 const results = await page.compareScreenshot('switch', { fullPage: false, omitBackground: true });
                 expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
               });

@@ -13,6 +13,6 @@ interface OdsSwitchItemAttribute {
   value: HTMLInputElement['value'];
 }
 
-export {
+export type {
   OdsSwitchItemAttribute,
 };

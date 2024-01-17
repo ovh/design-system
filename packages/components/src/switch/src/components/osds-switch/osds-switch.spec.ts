@@ -2,17 +2,14 @@ jest.mock('./core/controller'); // keep jest.mock before any
 
 import type { OdsSwitchAttribute } from './interfaces/attributes';
 import type { SpecPage } from '@stencil/core/testing';
-
 import { OdsUnitTestAttributeType, odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { newSpecPage } from '@stencil/core/testing';
-
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_SWITCH_SIZE } from './constants/switch-size';
 import { ODS_SWITCH_VARIANT } from './constants/switch-variant';
 import { OdsSwitchController } from './core/controller';
 import { OsdsSwitch } from './osds-switch';
-
 
 describe('spec:osds-switch', () => {
   let page: SpecPage;
@@ -25,7 +22,7 @@ describe('spec:osds-switch', () => {
     jest.clearAllMocks();
   });
 
-  async function setup({ attributes = {} }: { attributes?: Partial<OdsSwitchAttribute> } = {}) {
+  async function setup({ attributes = {} }: { attributes?: Partial<OdsSwitchAttribute> } = {}): Promise<void> {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsSwitchAttribute>(attributes, DEFAULT_ATTRIBUTE);
 
     page = await newSpecPage({
@@ -49,7 +46,7 @@ describe('spec:osds-switch', () => {
     expect(instance).toBeTruthy();
   });
 
-  describe('attributes', () => {
+  describe('attributes', (): void => {
     const config = {
       instance: () => instance,
       page: () => page,
@@ -59,57 +56,57 @@ describe('spec:osds-switch', () => {
 
     describe('color', () => {
       odsUnitTestAttribute<OdsSwitchAttribute, 'color'>({
+        defaultValue: DEFAULT_ATTRIBUTE.color,
         name: 'color',
         newValue: ODS_THEME_COLOR_INTENT.default,
-        value: ODS_THEME_COLOR_INTENT.primary,
         setup: (value) => setup({ attributes: { ['color']: value } }),
-        defaultValue: DEFAULT_ATTRIBUTE.color,
+        value: ODS_THEME_COLOR_INTENT.primary,
         ...config,
       });
     });
 
     describe('contrasted', () => {
       odsUnitTestAttribute<OdsSwitchAttribute, 'contrasted'>({
+        defaultValue: DEFAULT_ATTRIBUTE.contrasted,
         name: 'contrasted',
         newValue: false,
-        value: true,
         setup: (value) => setup({ attributes: { ['contrasted']: value } }),
-        defaultValue: DEFAULT_ATTRIBUTE.contrasted,
+        value: true,
         ...config,
       });
     });
 
     describe('disabled', () => {
       odsUnitTestAttribute<OdsSwitchAttribute, 'disabled'>({
+        defaultValue: DEFAULT_ATTRIBUTE.disabled,
         name: 'disabled',
         newValue: false,
-        value: true,
-        defaultValue: DEFAULT_ATTRIBUTE.disabled,
         setup: (value) => setup({ attributes: { ['disabled']: value } }),
+        value: true,
         ...config,
       });
     });
 
     describe('size', () => {
       odsUnitTestAttribute<OdsSwitchAttribute, 'size'>({
+        defaultValue: DEFAULT_ATTRIBUTE.size,
         name: 'size',
         newValue: ODS_SWITCH_SIZE.sm,
-        value: ODS_SWITCH_SIZE.md,
         setup: (value) => setup({ attributes: { ['size']: value } }),
-        defaultValue: DEFAULT_ATTRIBUTE.size,
+        value: ODS_SWITCH_SIZE.md,
         ...config,
       });
     });
 
     describe('variant', () => {
       odsUnitTestAttribute<OdsSwitchAttribute, 'variant'>({
+        defaultValue: DEFAULT_ATTRIBUTE.variant,
+        exclude: [OdsUnitTestAttributeType.REFLECTED, OdsUnitTestAttributeType.MUTABLE],
         name: 'variant',
         newValue: ODS_SWITCH_VARIANT.flat,
-        value: undefined,
         setup: (value) => setup({ attributes: { ['variant']: value } }),
-        defaultValue: DEFAULT_ATTRIBUTE.variant,
+        value: undefined,
         ...config,
-        exclude: [OdsUnitTestAttributeType.REFLECTED, OdsUnitTestAttributeType.MUTABLE],
       });
     });
   });

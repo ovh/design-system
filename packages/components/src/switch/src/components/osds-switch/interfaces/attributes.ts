@@ -16,6 +16,6 @@ interface OdsSwitchAttribute {
   variant?: ODS_SWITCH_VARIANT;
 }
 
-export {
+export type {
   OdsSwitchAttribute,
 };

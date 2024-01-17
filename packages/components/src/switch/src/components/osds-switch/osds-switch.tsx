@@ -2,20 +2,17 @@ import type { ODS_SWITCH_SIZE } from './constants/switch-size';
 import type { ODS_SWITCH_VARIANT } from './constants/switch-variant';
 import type{ OdsSwitchAttribute } from './interfaces/attributes';
 import type { OdsSwitchChangedEventDetail, OdsSwitchEvent } from './interfaces/events';
-import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import type { OdsRadioGroupValueChangeEvent } from '../../../../radio/src';
-
-import { Component, Element, Event, EventEmitter, Host, Listen, Prop, State, h } from '@stencil/core';
-
+import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+import type { EventEmitter, FunctionalComponent } from '@stencil/core';
+import { Component, Element, Event, Host, Listen, Prop, State, h } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsSwitchController } from './core/controller';
 
-
-
 @Component({
-  tag: 'osds-switch',
-  styleUrl: 'osds-switch.scss',
   shadow: true,
+  styleUrl: 'osds-switch.scss',
+  tag: 'osds-switch',
 })
 export class OsdsSwitch implements OdsSwitchAttribute, OdsSwitchEvent {
   controller = new OdsSwitchController(this);
@@ -36,7 +33,7 @@ export class OsdsSwitch implements OdsSwitchAttribute, OdsSwitchEvent {
   @Event() odsSwitchChanged!: EventEmitter<OdsSwitchChangedEventDetail>;
 
   @Listen('odsValueChange')
-  handlerSwitchItemClick(event: OdsRadioGroupValueChangeEvent | CustomEvent<{ value: string }>) {
+  handlerSwitchItemClick(event: OdsRadioGroupValueChangeEvent | CustomEvent<{ value: string }>): void {
     if (this.disabled) {
       return;
     }
@@ -54,12 +51,10 @@ export class OsdsSwitch implements OdsSwitchAttribute, OdsSwitchEvent {
   handlerOnKeyDown(event: KeyboardEvent): void {
     switch (event.code) {
     case 'ArrowLeft':
-      const previosSwitchItem = this.controller.findPreviousSwitchItem();
-      previosSwitchItem?.setFocus();
+      this.controller.findPreviousSwitchItem()?.setFocus();
       break;
     case 'ArrowRight':
-      const nextSwitchItem = this.controller.findNextSwitchItem();
-      nextSwitchItem?.setFocus();
+      this.controller.findNextSwitchItem()?.setFocus();
       break;
     default:
       break;
@@ -70,19 +65,19 @@ export class OsdsSwitch implements OdsSwitchAttribute, OdsSwitchEvent {
     this.odsSwitchChanged.emit({ current, previous });
   }
 
-  render() {
+  render(): FunctionalComponent {
     const { variant, color, contrasted, disabled, size, tabindex } = this;
 
     return (
       <Host {...{
-        variant,
         color,
         contrasted,
         disabled,
-        size,
-        tabindex,
         onFocus: () => this.handlerFocus(),
         onKeyDown: (event: KeyboardEvent) => this.handlerOnKeyDown(event),
+        size,
+        tabindex,
+        variant,
       }}>
         <osds-radio-group disabled={disabled}>
           <slot></slot>

@@ -1,9 +1,7 @@
 import type { OdsSwitchItemAttribute } from './interfaces/attributes';
 import type { SpecPage } from '@stencil/core/testing';
-
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 import { newSpecPage } from '@stencil/core/testing';
-
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OsdsSwitchItem } from './osds-switch-item';
 
@@ -11,14 +9,13 @@ describe('spec:osds-switch-item', () => {
   let page: SpecPage;
   let root: HTMLElement | undefined;
   let instance: OsdsSwitchItem;
-  let radio: HTMLElement;
   const baseAttribute = { checked: false, id: '', value: '' };
 
   afterEach(() => {
     jest.clearAllMocks();
   });
 
-  async function setup({ attributes = {} }: { attributes?: Partial<OdsSwitchItemAttribute> } = {}) {
+  async function setup({ attributes = {} }: { attributes?: Partial<OdsSwitchItemAttribute> } = {}): Promise<void> {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsSwitchItemAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
 
     page = await newSpecPage({
@@ -28,8 +25,6 @@ describe('spec:osds-switch-item', () => {
 
     root = page.root;
     instance = page.rootInstance;
-    const htmlSwitchItem = document.querySelector('osds-switch-item') as HTMLElement;
-    radio = htmlSwitchItem?.shadowRoot?.querySelector('osds-radio');
   }
 
   it('should render', async() => {
@@ -38,7 +33,7 @@ describe('spec:osds-switch-item', () => {
     expect(instance).toBeTruthy();
   });
 
-  describe('attributes', () => {
+  describe('attributes', (): void => {
     const config = {
       instance: () => instance,
       page: () => page,
@@ -48,11 +43,11 @@ describe('spec:osds-switch-item', () => {
 
     describe('checked', () => {
       odsUnitTestAttribute<OdsSwitchItemAttribute, 'checked'>({
-        name: 'checked',
         defaultValue: DEFAULT_ATTRIBUTE.checked,
+        name: 'checked',
         newValue: false,
-        value: true,
         setup: (value) => setup({ attributes: { ['checked']: value } }),
+        value: true,
         ...config,
       });
     });

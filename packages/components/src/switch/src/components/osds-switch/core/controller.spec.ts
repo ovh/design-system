@@ -1,5 +1,4 @@
 import type { OsdsSwitchItem } from '../../osds-switch-item/osds-switch-item';
-
 import { OdsSwitchController } from './controller';
 import { OsdsSwitch } from '../osds-switch';
 
@@ -16,7 +15,7 @@ describe('spec:ods-switch-controller', () => {
   let item1: OsdsSwitchItem & HTMLElement;
   let item2: OsdsSwitchItem & HTMLElement;
 
-  function setup(attributes: Partial<OsdsSwitch> = {}) {
+  function setup(attributes: Partial<OsdsSwitch> = {}): void {
     component = new OdsSwitchMock(attributes);
     controller = new OdsSwitchController(component);
     item1 = document.createElement('osds-switch-item') as OsdsSwitchItem & HTMLElement;

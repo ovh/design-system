@@ -1,14 +1,13 @@
 import type { OdsSwitchItemAttribute } from './interfaces/attributes';
 import type { OsdsRadio } from '../../../../radio/src';
-
+import type { FunctionalComponent } from '@stencil/core';
 import { Component, Element, Host, Method, Prop, State, h } from '@stencil/core';
-
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 
 @Component({
-  tag: 'osds-switch-item',
-  styleUrl: 'osds-switch-item.scss',
   shadow: true,
+  styleUrl: 'osds-switch-item.scss',
+  tag: 'osds-switch-item',
 })
 export class OsdsSwitchItem implements OdsSwitchItemAttribute {
   private radio?: OsdsRadio;
@@ -27,11 +26,11 @@ export class OsdsSwitchItem implements OdsSwitchItemAttribute {
     this.radio?.setFocus();
   }
 
-  componentWillLoad() {
+  componentWillLoad(): void {
     this.radio?.setButtonTabindex(this.tabindex);
   }
 
-  render() {
+  render(): FunctionalComponent {
     const { checked, id, value } = this;
 
     return (
@@ -39,8 +38,8 @@ export class OsdsSwitchItem implements OdsSwitchItemAttribute {
         <osds-radio {...{
           checked,
           id,
-          value,
           ref: (el: unknown) => this.radio = el as OsdsRadio,
+          value,
         }}>
           <slot></slot>
         </osds-radio>

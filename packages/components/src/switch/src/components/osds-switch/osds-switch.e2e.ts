@@ -1,18 +1,15 @@
 import type { OdsSwitchAttribute } from './interfaces/attributes';
 import type { E2EElement, E2EPage } from '@stencil/core/testing';
-
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import { newE2EPage } from '@stencil/core/testing';
-
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-
 
 describe('e2e:osds-switch', () => {
   let page: E2EPage;
   let el: E2EElement;
   let switchItems: E2EElement[];
 
-  async function setup({ attributes }: { attributes: Partial<OdsSwitchAttribute> }) {
+  async function setup({ attributes }: { attributes: Partial<OdsSwitchAttribute> }): Promise<void> {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsSwitchAttribute>(attributes, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();

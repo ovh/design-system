@@ -18,7 +18,7 @@ describe('e2e:osds-password', () => {
   let page: E2EPage;
   let el: E2EElement;
 
-  async function setup({ attributes }: { attributes: Partial<OdsPasswordAttribute> }) {
+  async function setup({ attributes }: { attributes: Partial<OdsPasswordAttribute> }): Promise<void> {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsPasswordAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();

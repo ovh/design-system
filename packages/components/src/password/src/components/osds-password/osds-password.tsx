@@ -1,19 +1,20 @@
 import type { OdsPasswordAttribute } from './interfaces/attributes';
-import type { OdsCommonFieldValidityState, OdsInputValue } from '@ovhcloud/ods-common-core';
 import type { OdsPasswordMethod } from './interfaces/methods';
-import { Component, Element, Host, Prop, h, Method } from '@stencil/core';
+import type { OsdsInput } from '../../../../input/src';
+import type { OdsCommonFieldValidityState, OdsInputValue } from '@ovhcloud/ods-common-core';
+import { Component, Element, Host, Method, Prop, h } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { ODS_INPUT_TYPE, OsdsInput } from '../../../../input/src';
+import { ODS_INPUT_TYPE } from '../../../../input/src';
 
 /**
  * @slot (unnamed) - Password content
  */
 @Component({
-  tag: 'osds-password',
-  styleUrl: 'osds-password.scss',
   shadow: true,
+  styleUrl: 'osds-password.scss',
+  tag: 'osds-password',
 })
-export class OsdsPassword implements OdsPasswordAttribute, OdsPasswordMethod  {
+export class OsdsPassword implements OdsPasswordAttribute, OdsPasswordMethod {
   private osdsInput?: OsdsInput & HTMLElement;
 
   @Element() el!: HTMLElement;
@@ -38,7 +39,7 @@ export class OsdsPassword implements OdsPasswordAttribute, OdsPasswordMethod  {
 
   @Prop({ reflect: true }) loading?: boolean = DEFAULT_ATTRIBUTE.loading;
 
-  @Prop({ reflect: true, mutable: true }) masked?: boolean = DEFAULT_ATTRIBUTE.masked;
+  @Prop({ mutable: true, reflect: true }) masked?: boolean = DEFAULT_ATTRIBUTE.masked;
 
   @Prop({ reflect: true }) name: string = DEFAULT_ATTRIBUTE.name;
 
@@ -48,7 +49,7 @@ export class OsdsPassword implements OdsPasswordAttribute, OdsPasswordMethod  {
 
   @Prop({ reflect: true }) required?: boolean = DEFAULT_ATTRIBUTE.required;
 
-  @Prop({ reflect: true, mutable: true }) value = DEFAULT_ATTRIBUTE.value;
+  @Prop({ mutable: true, reflect: true }) value = DEFAULT_ATTRIBUTE.value;
 
   @Method()
   async getValidity(): Promise<OdsCommonFieldValidityState | undefined> {
@@ -84,7 +85,7 @@ export class OsdsPassword implements OdsPasswordAttribute, OdsPasswordMethod  {
     this.reset();
   }
 
-  render() {
+  render(): JSX.Element {
     return (
       <Host>
         <osds-input

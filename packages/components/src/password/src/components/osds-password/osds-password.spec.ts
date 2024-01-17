@@ -5,7 +5,6 @@ import { newSpecPage } from '@stencil/core/testing';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OsdsPassword } from './osds-password';
 
-
 describe('spec:osds-password', () => {
   const baseAttribute = {
     ariaLabel: '',
@@ -24,7 +23,7 @@ describe('spec:osds-password', () => {
     jest.clearAllMocks();
   });
 
-  async function setup({ attributes = {} }: { attributes?: Partial<OdsPasswordAttribute> } = {}) {
+  async function setup({ attributes = {} }: { attributes?: Partial<OdsPasswordAttribute> } = {}): Promise<void> {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsPasswordAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
 
     page = await newSpecPage({
@@ -44,74 +43,74 @@ describe('spec:osds-password', () => {
 
   describe('attributes', () => {
     const config = {
-      instance: () => instance,
-      page: () => page,
-      root: () => page.root,
-      wait: () => page.waitForChanges(),
+      instance: (): OsdsPassword => instance,
+      page: (): SpecPage => page,
+      root: (): SpecPage['root'] => page.root,
+      wait: (): Promise<void> => page.waitForChanges(),
     };
 
     describe('clearable', () => {
       odsUnitTestAttribute<OdsPasswordAttribute, 'clearable'>({
-        name: 'clearable',
         defaultValue: DEFAULT_ATTRIBUTE.clearable,
+        name: 'clearable',
         newValue: false,
-        value: true,
         setup: (value) => setup({ attributes: { ['clearable']: value } }),
+        value: true,
         ...config,
       });
     });
 
     describe('disabled', () => {
       odsUnitTestAttribute<OdsPasswordAttribute, 'disabled'>({
-        name: 'disabled',
         defaultValue: DEFAULT_ATTRIBUTE.disabled,
+        name: 'disabled',
         newValue: false,
-        value: true,
         setup: (value) => setup({ attributes: { ['disabled']: value } }),
+        value: true,
         ...config,
       });
     });
 
     describe('inline', () => {
       odsUnitTestAttribute<OdsPasswordAttribute, 'inline'>({
-        name: 'inline',
         defaultValue: DEFAULT_ATTRIBUTE.inline,
+        name: 'inline',
         newValue: false,
-        value: true,
         setup: (value) => setup({ attributes: { ['inline']: value } }),
+        value: true,
         ...config,
       });
     });
 
     describe('loading', () => {
       odsUnitTestAttribute<OdsPasswordAttribute, 'loading'>({
-        name: 'loading',
         defaultValue: DEFAULT_ATTRIBUTE.loading,
+        name: 'loading',
         newValue: false,
-        value: true,
         setup: (value) => setup({ attributes: { ['loading']: value } }),
+        value: true,
         ...config,
       });
     });
 
     describe('masked', () => {
       odsUnitTestAttribute<OdsPasswordAttribute, 'masked'>({
-        name: 'masked',
         defaultValue: DEFAULT_ATTRIBUTE.masked,
+        name: 'masked',
         newValue: false,
-        value: true,
         setup: (value) => setup({ attributes: { ['masked']: value } }),
+        value: true,
         ...config,
       });
     });
 
     describe('placeholder', () => {
       odsUnitTestAttribute<OdsPasswordAttribute, 'placeholder'>({
-        name: 'placeholder',
         defaultValue: DEFAULT_ATTRIBUTE.placeholder,
+        name: 'placeholder',
         newValue: 'ovh',
-        value: 'ipsum',
         setup: (value) => setup({ attributes: { ['placeholder']: value } }),
+        value: 'ipsum',
         ...config,
       });
     });

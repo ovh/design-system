@@ -1,19 +1,16 @@
 import type { OdsModalAttribute } from './interfaces/attributes';
 import type { E2EElement, E2EPage } from '@stencil/core/testing';
-
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { newE2EPage } from '@stencil/core/testing';
-
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-
 
 describe('e2e:osds-modal', () => {
   const baseAttribute = { color: ODS_THEME_COLOR_INTENT.info, dismissible: false, headline: '', masked: false };
   let page: E2EPage;
   let el: E2EElement;
 
-  async function setup({ attributes }: { attributes: Partial<OdsModalAttribute> }) {
+  async function setup({ attributes }: { attributes: Partial<OdsModalAttribute> }): Promise<void> {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsModalAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
@@ -172,7 +169,7 @@ describe('e2e:osds-modal', () => {
   });
 
   describe('Event', () => {
-    it('should receive event odsModalOpen', async () => {
+    it('should receive event odsModalOpen', async() => {
       await setup({ attributes: { dismissible: true, masked: true } });
 
       const odsModalOpen = await el.spyOnEvent('odsModalOpen');
@@ -182,7 +179,7 @@ describe('e2e:osds-modal', () => {
       expect(odsModalOpen).toHaveReceivedEventTimes(1);
     });
 
-    it('should receive event odsModalOpen', async () => {
+    it('should receive event odsModalOpen', async() => {
       await setup({ attributes: { dismissible: true, masked: false } });
 
       const odsModalClose = await el.spyOnEvent('odsModalClose');
@@ -215,8 +212,11 @@ describe('e2e:osds-modal', () => {
       await el.callMethod('open');
       await page.waitForChanges();
       outsideButton = await page.find('#outsideButton');
+      expect(outsideButton).not.toBeNull();
       insideModalButton1 = await page.find('#insideModalButton1');
+      expect(insideModalButton1).not.toBeNull();
       insideModalButton2 = await page.find('#insideModalButton2');
+      expect(insideModalButton2).not.toBeNull();
     });
 
     it('should move focus to first button inside modal on first tab press', async() => {

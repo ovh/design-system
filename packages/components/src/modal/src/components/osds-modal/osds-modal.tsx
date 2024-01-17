@@ -3,11 +3,11 @@ import type { OdsModalEvent } from './interfaces/events';
 import type { OdsModalMethod } from './interfaces/methods';
 import type { EventEmitter } from '@stencil/core';
 import { ODS_THEME_COLOR_INTENT, ODS_THEME_TYPOGRAPHY_SIZE } from '@ovhcloud/ods-common-theming';
+import { Component, Element, Event, Host, Listen, Method, Prop, Watch, h } from '@stencil/core';
+import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_BUTTON_VARIANT } from '../../../../button/src';
 import { ODS_ICON_NAME, ODS_ICON_SIZE } from '../../../../icon/src';
 import { ODS_TEXT_LEVEL } from '../../../../text/src';
-import { Component, Element, Event, Host, Listen, Method, Prop, Watch, h } from '@stencil/core';
-import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 
 /**
  * @slot (unnamed) - Modal content

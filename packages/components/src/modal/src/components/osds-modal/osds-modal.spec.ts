@@ -1,10 +1,8 @@
 import type { OdsModalAttribute } from './interfaces/attributes';
 import type { SpecPage } from '@stencil/core/testing';
-
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { newSpecPage } from '@stencil/core/testing';
-
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OsdsModal } from './osds-modal';
 
@@ -18,7 +16,7 @@ describe('spec:osds-modal', () => {
     jest.clearAllMocks();
   });
 
-  async function setup({ attributes = {} }: { attributes?: Partial<OdsModalAttribute> } = {}) {
+  async function setup({ attributes = {} }: { attributes?: Partial<OdsModalAttribute> } = {}): Promise<void> {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsModalAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
 
     page = await newSpecPage({
@@ -38,52 +36,52 @@ describe('spec:osds-modal', () => {
 
   describe('attributes', () => {
     const config = {
-      instance: () => instance,
-      page: () => page,
-      root: () => page.root,
-      wait: () => page.waitForChanges(),
+      instance: (): OsdsModal => instance,
+      page: (): SpecPage => page,
+      root: (): HTMLElement | undefined => page.root,
+      wait: (): Promise<void> => page.waitForChanges(),
     };
 
     describe('color', () => {
       odsUnitTestAttribute<OdsModalAttribute, 'color'>({
-        name: 'color',
         defaultValue: DEFAULT_ATTRIBUTE.color,
+        name: 'color',
         newValue: ODS_THEME_COLOR_INTENT.primary,
-        value: ODS_THEME_COLOR_INTENT.default,
         setup: (value) => setup({ attributes: { ['color']: value } }),
+        value: ODS_THEME_COLOR_INTENT.default,
         ...config,
       });
     });
 
     describe('dismissible', () => {
       odsUnitTestAttribute<OdsModalAttribute, 'dismissible'>({
-        name: 'dismissible',
         defaultValue: DEFAULT_ATTRIBUTE.dismissible,
+        name: 'dismissible',
         newValue: false,
-        value: true,
         setup: (value) => setup({ attributes: { ['dismissible']: value } }),
+        value: true,
         ...config,
       });
     });
 
     describe('headline', () => {
       odsUnitTestAttribute<OdsModalAttribute, 'headline'>({
-        name: 'headline',
         defaultValue: DEFAULT_ATTRIBUTE.headline,
+        name: 'headline',
         newValue: 'OVH',
-        value: 'On Vous Héberge ?',
         setup: (value) => setup({ attributes: { ['headline']: value } }),
+        value: 'On Vous Héberge ?',
         ...config,
       });
     });
 
     describe('masked', () => {
       odsUnitTestAttribute<OdsModalAttribute, 'masked'>({
-        name: 'masked',
         defaultValue: DEFAULT_ATTRIBUTE.masked,
+        name: 'masked',
         newValue: false,
-        value: true,
         setup: (value) => setup({ attributes: { ['masked']: value } }),
+        value: true,
         ...config,
       });
     });

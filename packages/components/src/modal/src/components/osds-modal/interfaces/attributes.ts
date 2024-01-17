@@ -11,6 +11,6 @@ interface OdsModalAttribute {
   masked?: boolean;
 }
 
-export {
+export type {
   OdsModalAttribute,
 };

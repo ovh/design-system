@@ -6,6 +6,11 @@ interface OdsInputMethod extends OdsCommonFieldMethod {
   stepUp(): Promise<ReturnType<HTMLInputElement['stepUp']>>;
 
   stepDown(): Promise<ReturnType<HTMLInputElement['stepDown']>>;
+
+  /**
+   * @internal
+   */
+  getInputEl(): Promise<HTMLInputElement | undefined>;
 }
 
 export type {

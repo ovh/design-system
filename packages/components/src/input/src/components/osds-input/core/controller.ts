@@ -68,7 +68,7 @@ class OdsInputController<T extends OsdsInput> extends OdsCommonFieldMethodContro
       return;
     }
     this.component.masked = !this.component.masked;
-    this.component.odsHide?.emit();
+    this.component.odsHide.emit();
   }
 
   onInput(event: Event): void {

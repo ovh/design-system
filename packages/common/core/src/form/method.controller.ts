@@ -80,6 +80,9 @@ class OdsCommonFieldMethodController<T extends OdsCommonFieldAttribute & OdsComm
    * restore the value to the initial state
    */
   async reset(): Promise<void> {
+    if (this.component.disabled) {
+      return;
+    }
     this.component.value = this.component.defaultValue ?? null;
     this.component.odsReset.emit();
   }

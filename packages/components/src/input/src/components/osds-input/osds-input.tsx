@@ -4,7 +4,7 @@ import type { OdsInputMethod } from './interfaces/methods';
 import type { EventEmitter } from '@stencil/core';
 import { OdsInputValue, OdsCommonFieldValidityState } from '@ovhcloud/ods-common-core';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import { AttachInternals, Component, Element, Event, Host, Method, Prop, State, Watch, h } from '@stencil/core';
+import { AttachInternals, Component, Element, Event, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsInputController } from './core/controller';
 import { ODS_ICON_NAME, ODS_ICON_SIZE } from '../../../../icon/src';
@@ -111,8 +111,8 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
   @Method()
   async setFocus(): Promise<void> {
     if (this.inputEl) {
-      this.controller?.setFocus(this.inputEl);
       this.hasFocus = true;
+      this.controller.setFocus(this.inputEl);
     }
   }
 
@@ -139,6 +139,11 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
   @Method()
   async reset(): Promise<void> {
     this.controller.reset();
+  }
+
+  @Method()
+  async getInputEl(): Promise<HTMLInputElement | undefined> {
+    return this.inputEl; 
   }
 
   componentWillLoad(): void {
@@ -175,6 +180,13 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
     this.controller.onInput(event);
   }
 
+  @Listen('focus')
+  focus() {
+    if (!this.hasFocus) {
+      this.odsFocus.emit();
+    }
+  }
+
   render(): JSX.Element {
     const {
       ariaLabel,
@@ -208,7 +220,6 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
         class: {
           'ods-error': this.internalError,
         },
-        onFocus: () => this.setFocus(),
         tabindex,
         color: ODS_THEME_COLOR_INTENT.primary,
         size: ODS_INPUT_SIZE.md,

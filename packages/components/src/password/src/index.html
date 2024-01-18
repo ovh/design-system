@@ -14,12 +14,40 @@
   <link rel="stylesheet" href="/build/osds-password.css">
 </head>
 <body>
-  <osds-password color="primary" clearable placeholder="Just ODS being ahead" value="On Vous Héberge ?"></osds-password>
-  <osds-password color="primary" clearable masked="false"></osds-password>
+  <form id="form1">
+    <osds-password name="password1234" color="primary" clearable placeholder="Just ODS being ahead" value="On Vous Héberge ?" id="password1"></osds-password>
+    <input type="password" name="natifInput">
 
+    <osds-button type="reset">Reset</osds-button>
+    <osds-button type="submit">Submit</osds-button>
+  </form>
+
+  <osds-password color="primary" clearable masked="false"></osds-password>
+  <button id="button1">trigger methods</button>
   <div>
     <h3>Inline</h3>
     <osds-password color="primary" inline clearable masked="false"></osds-password>
   </div>
+
+  <script>
+    const form = document.getElementById('form1');
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        console.log('event', event);
+        const formData = new FormData(form);
+        console.log('formData', formData);
+    });
+    const password = document.getElementById('password1');
+    ['odsHide', 'odsBlur', 'odsClear', 'odsFocus', 'odsReset', 'odsValueChange'].forEach((event) => {
+      password.addEventListener(event, (ev) => {
+        console.log('ev', ev);
+        console.log('ods event name ', event);
+      })
+    });
+    const button = document.getElementById('button1');
+    button.addEventListener('click', async () => {
+      await password.setFocus();
+    });
+  </script>
 </body>
 </html>

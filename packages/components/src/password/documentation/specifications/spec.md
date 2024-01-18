@@ -18,9 +18,35 @@
 |**`masked`** | _boolean_ |  |  | Indicates if the input is masked or not|
 |**`name`** | _string_ | ✴️ |  | Name of the input field|
 |**`placeholder`** | _string_ |  |  | Placeholder text for the input|
-|**`prefixValue`** | _string_ |  |  | Text before the input value|
 |**`readOnly`** | _boolean_ |  |  | Indicates if the input is read-only or not|
 |**`required`** | _boolean_ |  |  | Indicates if the input is required or not|
-|**`step`** | _number_ |  |  | Step value for the input|
 |**`tabindex`** | _number_ |  |  | Tabindex for the input|
-|**`value`** | _string_ | ✴️ |  | Current value of the password|
+|**`value`** | `OdsInputValue` | ✴️ |  | Type of the input field|
+
+### OdsPasswordEvent
+|Name | Type | Required | Default | Description|
+|---|---|:---:|---|---|
+|**`odsBlur`** | `EventEmitter<void>` | ✴️ |  | |
+|**`odsClear`** | `EventEmitter<void>` | ✴️ |  | |
+|**`odsFocus`** | `EventEmitter<void>` | ✴️ |  | |
+|**`odsHide`** | `EventEmitter<void>` | ✴️ |  | |
+|**`odsReset`** | `EventEmitter<void>` | ✴️ |  | |
+|**`odsValueChange`** | `EventEmitter<OdsCommonFieldValueChangeEventDetail>` | ✴️ |  | |
+
+### OdsPasswordMethod
+|Name | Type | Required | Default | Description|
+|---|---|:---:|---|---|
+|**`clear`** | `Promise<void>` | ✴️ |  | empty the value|
+|**`getValidity`** | `Promise<union>` | ✴️ |  | |
+|**`hide`** | `Promise<void>` | ✴️ |  | |
+|**`reset`** | `Promise<void>` | ✴️ |  | restore the value to the initial state|
+|**`setFocus`** | `Promise<void>` | ✴️ |  | active the focus on the input in order to let the user write something|
+|**`setTabindex`** | `Promise<void>` | ✴️ |  | set a custom tab index for easier navigation|
+
+### OdsPasswordValueChangeEventDetail
+|Name | Type | Required | Default | Description|
+|---|---|:---:|---|---|
+|**`name`** | _string_ | ✴️ |  | |
+|**`oldValue`** | `OdsInputValue` |  |  | |
+|**`validity`** | `OdsCommonFieldValidityState` |  |  | |
+|**`value`** | `OdsInputValue` | ✴️ |  | |

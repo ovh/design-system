@@ -173,7 +173,7 @@ describe('e2e:osds-phone-number', () => {
 
       const spyOdsValueChange = await page.spyOnEvent('odsValueChange');
 
-      await input.type('0');
+      input.setAttribute('value', '0');
       await page.waitForChanges();
       expect(spyOdsValueChange).toHaveReceivedEventTimes(1);
       expect(spyOdsValueChange).toHaveReceivedEventDetail({
@@ -203,7 +203,10 @@ describe('e2e:osds-phone-number', () => {
 
       const spyOdsValueChange = await page.spyOnEvent('odsValueChange');
 
-      await input.type('0642');
+      input.setAttribute('value', '0');
+      input.setAttribute('value', '06');
+      input.setAttribute('value', '064');
+      input.setAttribute('value', '0642');
       await page.waitForChanges();
       expect(spyOdsValueChange).toHaveReceivedEventTimes(4);
       expect(spyOdsValueChange).toHaveReceivedEventDetail({

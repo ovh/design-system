@@ -20,6 +20,7 @@ class OdsInputMock {
   };
   masked = false;
   name = '';
+  odsHide = { emit: jest.fn() };
   type = ODS_INPUT_TYPE.text;
   value = null;
 }
@@ -39,7 +40,6 @@ describe('spec:ods-input-controller', () => {
 
   beforeEach(() => {
     consoleWarnSpy = jest.spyOn(console, 'warn');
-
   });
 
   afterEach(() => {

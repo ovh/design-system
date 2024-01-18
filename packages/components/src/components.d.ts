@@ -807,6 +807,7 @@ export namespace Components {
           * List of forbidden values for the input
          */
         "forbiddenValues"?: OdsInputValue[];
+        "getInputEl": () => Promise<HTMLInputElement | undefined>;
         "getValidity": () => Promise<OdsCommonFieldValidityState | undefined>;
         "hide": () => Promise<void>;
         /**

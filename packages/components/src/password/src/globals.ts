@@ -6,3 +6,4 @@
  *   import '../../text/src';
  */
 import '../../input/src';
+import '../../button/src';

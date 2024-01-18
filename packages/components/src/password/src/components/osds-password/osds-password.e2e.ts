@@ -12,7 +12,7 @@ describe('e2e:osds-password', () => {
     disabled: false,
     error: false,
     forbiddenValues: [],
-    name: '',
+    name: 'odsPassword',
     value: '',
   };
   let page: E2EPage;
@@ -26,6 +26,7 @@ describe('e2e:osds-password', () => {
     await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
 
     el = await page.find('osds-password');
+    await page.waitForChanges();
   }
 
   it('should render', async() => {
@@ -66,6 +67,87 @@ describe('e2e:osds-password', () => {
 
       const eyeIcon = await page.find('osds-password >>> osds-input >>> osds-icon[name="eye-close"]');
       expect(eyeIcon).not.toBeNull();
+    });
+  });
+
+  describe('Events', () => {
+    it('should call clear', async() => {
+      await setup({ attributes: { value: 'myPassword' } });
+      const clearSpy = await page.spyOnEvent('odsClear');
+      await el.callMethod('clear');
+      await page.waitForChanges();
+
+      expect(await el.getProperty('value')).toBe(null);
+      expect(clearSpy).toHaveReceivedEventTimes(1);
+    });
+
+    it('should not call clear because of disabled', async() => {
+      await setup({ attributes: { disabled: true, value: 'myPassword' } });
+      const clearSpy = await page.spyOnEvent('odsClear');
+      await el.callMethod('clear');
+      await page.waitForChanges();
+
+      expect(await el.getProperty('value')).toBe('myPassword');
+      expect(clearSpy).toHaveReceivedEventTimes(0);
+    });
+
+    it('should call reset', async() => {
+      await setup({ attributes: { defaultValue: 'myPassword' } });
+      const resetSpy = await page.spyOnEvent('odsReset');
+      await el.type('newPassword');
+      await el.callMethod('reset');
+      await page.waitForChanges();
+
+      expect(await el.getProperty('value')).toBe('myPassword');
+      expect(resetSpy).toHaveReceivedEventTimes(1);
+    });
+
+    it('should not call reset because of disabled', async() => {
+      await setup({ attributes: { defaultValue: 'myPassword', disabled: true } });
+      const resetSpy = await page.spyOnEvent('odsReset');
+      await el.callMethod('reset');
+      await page.waitForChanges();
+
+      expect(await el.getProperty('value')).toBe('myPassword');
+      expect(resetSpy).toHaveReceivedEventTimes(0);
+    });
+
+    it('should call setFocus', async() => {
+      await setup({ attributes: { } });
+      const focusSpy = await page.spyOnEvent('odsFocus');
+      await el.callMethod('setFocus');
+      await page.waitForChanges();
+
+      expect(await el.getProperty('value')).toBe('');
+      expect(focusSpy).toHaveReceivedEventTimes(1);
+    });
+
+    it('should call setTabindex', async() => {
+      await setup({ attributes: { } });
+      await el.callMethod('setTabindex', '1');
+      await page.waitForChanges();
+
+      expect(el.getAttribute('tabindex')).toBe('1');
+    });
+
+    it('should call hide', async() => {
+      await setup({ attributes: { masked: true } });
+      const hideSpy = await page.spyOnEvent('odsHide');
+      await el.callMethod('hide');
+      await page.waitForChanges();
+
+      expect(await el.getProperty('masked')).toBe(false);
+      expect(hideSpy).toHaveReceivedEventTimes(1);
+    });
+
+    it('should not call hide because of disabled', async() => {
+      await setup({ attributes: { disabled: true, masked: true } });
+      const hideSpy = await page.spyOnEvent('odsHide');
+      await el.callMethod('hide');
+      await page.waitForChanges();
+
+      expect(await el.getProperty('masked')).toBe(true);
+      expect(hideSpy).toHaveReceivedEventTimes(0);
     });
   });
 });

@@ -1,7 +1,7 @@
 {
   "entryPoints": ["src/index.ts"],
   "out": "docs-api/",
-  "tsconfig":"tsconfig.prod.json",
+  "tsconfig":"tsconfig.json",
   "plugin": ["none"],
   "excludeInternal": true,
   "excludePrivate": true,

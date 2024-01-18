@@ -1647,17 +1647,14 @@ export namespace Components {
     interface OsdsSkeleton {
         /**
           * inline or not: see component principles
-          * @see OdsSkeletonAttributes.inline
          */
         "inline"?: boolean;
         /**
           * whether or not skeleton size is randomized
-          * @see OdsSkeletonAttributes.randomized
          */
         "randomized"?: boolean;
         /**
           * skeleton size
-          * @see OdsSkeletonAttributes.size
          */
         "size"?: ODS_SKELETON_SIZE;
     }
@@ -4413,17 +4410,14 @@ declare namespace LocalJSX {
     interface OsdsSkeleton {
         /**
           * inline or not: see component principles
-          * @see OdsSkeletonAttributes.inline
          */
         "inline"?: boolean;
         /**
           * whether or not skeleton size is randomized
-          * @see OdsSkeletonAttributes.randomized
          */
         "randomized"?: boolean;
         /**
           * skeleton size
-          * @see OdsSkeletonAttributes.size
          */
         "size"?: ODS_SKELETON_SIZE;
     }

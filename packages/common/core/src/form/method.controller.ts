@@ -93,5 +93,5 @@ class OdsCommonFieldMethodController<T extends OdsCommonFieldAttribute & OdsComm
 }
 
 export {
-    OdsCommonFieldMethodController,
+  OdsCommonFieldMethodController,
 };

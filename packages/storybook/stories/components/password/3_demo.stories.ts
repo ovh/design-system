@@ -1,64 +1,89 @@
-import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-password';
 import { html } from 'lit-html';
+import { ODS_ICON_NAMES } from '@ovhcloud/ods-components';
 import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
+import { CONTROL_CATEGORY, orderControls } from '../../controls';
 
 defineCustomElement();
 
 /* Demo story parameters  */
-const storyParams = {
-  color: {
-    category: 'General',
-    defaultValue: ODS_THEME_COLOR_INTENT.primary,
-    options: [ODS_THEME_COLOR_INTENT.primary, ODS_THEME_COLOR_INTENT.error],
-    control: { type: 'select' },
+const storyParams = orderControls({
+  ariaLabel: {
+    category: CONTROL_CATEGORY.accessibility,
+    defaultValue: '',
   },
-  placeholder: {
-    category: 'General',
-    defaultValue: 'Placeholder',
-  },
-  value: {
-    category: 'General',
-    control: { type: 'text' },
-  },
-  masked: {
-    category: 'General',
-    defaultValue: true,
+  ariaLabelledby: {
+    category: CONTROL_CATEGORY.accessibility,
+    defaultValue: '',
   },
   clearable: {
-    category: 'General',
+    category: CONTROL_CATEGORY.general,
     defaultValue: false,
   },
-  loading: {
-    category: 'General',
-    defaultValue: false,
+  defaultValue: {
+    category: CONTROL_CATEGORY.general,
+    defaultValue: 'Default value',
   },
   disabled: {
-    category: 'Misc',
+    category: CONTROL_CATEGORY.general,
     defaultValue: false,
-  },
-  inline: {
-    category: 'Misc',
-    defaultValue: true,
   },
   error: {
-    category: 'Misc',
-    defaultValue: false,
-  },
-  name: {
-    category: 'Development',
-    defaultValue: 'my-password',
-  },
-  required: {
-    category: 'Development',
+    category: CONTROL_CATEGORY.general,
     defaultValue: false,
   },
   forbiddenValues: {
-    category: 'Development',
+    category: CONTROL_CATEGORY.general,
     defaultValue: [],
     control: { type: 'array' },
   },
-};
+  icon: {
+    category: CONTROL_CATEGORY.general,
+    defaultValue: '',
+    options: ODS_ICON_NAMES,
+    control: { type: 'select' },
+  },
+  inline: {
+    category: CONTROL_CATEGORY.general,
+    defaultValue: true,
+  },
+  label: {
+    category: CONTROL_CATEGORY.general,
+    defaultValue: '',
+  },
+  loading: {
+    category: CONTROL_CATEGORY.general,
+    defaultValue: false,
+  },
+  masked: {
+    category: CONTROL_CATEGORY.general,
+    defaultValue: true,
+  },
+  name: {
+    category: CONTROL_CATEGORY.general,
+    defaultValue: 'myTextArea',
+  },
+  placeholder: {
+    category: CONTROL_CATEGORY.general,
+    defaultValue: 'placeholder',
+  },
+  prefixValue: {
+    category: CONTROL_CATEGORY.general,
+    control: { type: 'text' },
+  },
+  readOnly: {
+    category: CONTROL_CATEGORY.general,
+    defaultValue: false,
+  },
+  required: {
+    category: CONTROL_CATEGORY.general,
+    defaultValue: false,
+  },
+  value: {
+    category: CONTROL_CATEGORY.general,
+    control: { type: 'text' },
+  },
+});
 
 export default {
   title: 'ODS Components/Form/Password [molecule]/Demo',

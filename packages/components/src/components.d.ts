@@ -1071,7 +1071,7 @@ export namespace Components {
         /**
           * Default value of the input
          */
-        "defaultValue": string;
+        "defaultValue": string | null;
         /**
           * Indicates if the password is disabled or not: see component principles
          */
@@ -1114,7 +1114,11 @@ export namespace Components {
          */
         "placeholder"?: string;
         /**
-          * Indicates if the password is read-only or not
+          * Text before the input value
+         */
+        "prefixValue"?: string;
+        /**
+          * Indicates if the input is read-only or not
          */
         "readOnly"?: boolean;
         /**
@@ -1137,7 +1141,7 @@ export namespace Components {
         /**
           * Current value of the password
          */
-        "value": string;
+        "value": string | null;
     }
     interface OsdsPhoneNumber {
         /**
@@ -2403,8 +2407,11 @@ declare global {
     };
     interface HTMLOsdsPasswordElementEventMap {
         "odsBlur": void;
+        "odsClear": void;
         "odsFocus": void;
-        "odsValueChange": OdsInputValueChangeEventDetail1;
+        "odsHide": void;
+        "odsReset": void;
+        "odsValueChange": OdsPasswordValueChangeEventDetail;
     }
     interface HTMLOsdsPasswordElement extends Components.OsdsPassword, HTMLStencilElement {
         addEventListener<K extends keyof HTMLOsdsPasswordElementEventMap>(type: K, listener: (this: HTMLOsdsPasswordElement, ev: OsdsPasswordCustomEvent<HTMLOsdsPasswordElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -3747,7 +3754,7 @@ declare namespace LocalJSX {
         /**
           * Default value of the input
          */
-        "defaultValue"?: string;
+        "defaultValue"?: string | null;
         /**
           * Indicates if the password is disabled or not: see component principles
          */
@@ -3780,6 +3787,12 @@ declare namespace LocalJSX {
           * Name of the password field
          */
         "name"?: string;
+        "onOdsBlur"?: (event: OsdsPasswordCustomEvent<void>) => void;
+        "onOdsClear"?: (event: OsdsPasswordCustomEvent<void>) => void;
+        "onOdsFocus"?: (event: OsdsPasswordCustomEvent<void>) => void;
+        "onOdsHide"?: (event: OsdsPasswordCustomEvent<void>) => void;
+        "onOdsReset"?: (event: OsdsPasswordCustomEvent<void>) => void;
+        "onOdsValueChange"?: (event: OsdsPasswordCustomEvent<OdsPasswordValueChangeEventDetail>) => void;
         /**
           * Event triggered on textarea blur
          */
@@ -3797,7 +3810,11 @@ declare namespace LocalJSX {
          */
         "placeholder"?: string;
         /**
-          * Indicates if the password is read-only or not
+          * Text before the input value
+         */
+        "prefixValue"?: string;
+        /**
+          * Indicates if the input is read-only or not
          */
         "readOnly"?: boolean;
         /**
@@ -3807,7 +3824,7 @@ declare namespace LocalJSX {
         /**
           * Current value of the password
          */
-        "value"?: string;
+        "value"?: string | null;
     }
     interface OsdsPhoneNumber {
         /**

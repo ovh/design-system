@@ -12,19 +12,31 @@ import { Meta } from '@storybook/addon-docs';
 
 # What's new ?
 
+## v17.0.2
+
+### Bug fixes:
+
+**Modal**
+
+- Added `enter` and `space` keys binding on the close button + cancel button on Storybook
+- Fixed display problems within the modal that could lead to some elements getting shrunk
+- Scroll is now prevented when a modal is open
+
 ## v17.0.1
 
 ### Bug fixes:
 
 **Pagination**
-* Next & previous buttons have been fixed on Chrome & Safari where they could allow the user to go out of bound.
+
+- Next & previous buttons have been fixed on Chrome & Safari where they could allow the user to go out of bound.
 
 **Radio-Button**
-* Smaller text has been fixed and is now aligning vertically as well.
+
+- Smaller text has been fixed and is now aligning vertically as well.
 
 **Fonts**
-* Fonts have been fixed to display the correct font on Safari. 
 
+- Fonts have been fixed to display the correct font on Safari.
 
 ## v17.0.0
 
@@ -37,8 +49,10 @@ Main focus on this version has been on simplifying ODS integration in existing p
 We now only publish one `ods-components` library that embed all the ODS components.
 
 What this means for your code:
+
 - `ods-component-xxx` are no longer published and should be removed
 - only one dependency to add to your `package.json`
+
 ```
 "ods-components": "17.0.0"
 ```
@@ -46,12 +60,14 @@ What this means for your code:
 ODS components can then be either imported using lazy-loading (the code of each component is loaded on demand) or as a module (the code of the component is tree-shaked by your own bundling system).
 
 For more details on how to import ODS components, see:
+
 - the updated [Get Started documentation](?path=/story/ovhcloud-design-system-get-started--page#how-to-use-ods-components-in-my-project)
 - the 16.x to 17.x [Migration guide](?path=/story/ovhcloud-design-system-what-s-new-migration-guide-16-x-to-17-x--page)
 
 ### Documentation improvments
 
 We went through each component to update:
+
 - the Demo controls to be more relevant
 - the Usage Guidelines, with more examples and the missing properties
 - with React example when relevant (ex: `datagrid` reactFormatter with React 18 or `tabs` with React Router)
@@ -59,21 +75,26 @@ We went through each component to update:
 ### Component changes:
 
 **Pagination**
-* Add `odsPaginationItemPerPageChanged` when the item per page select change
+
+- Add `odsPaginationItemPerPageChanged` when the item per page select change
 
 ### Bug fixes:
 
 **Datagrid**
-* Overflowing elements can now correctly be displayed (see updated documentation)
+
+- Overflowing elements can now correctly be displayed (see updated documentation)
 
 **Menu**
-* Ellipsis is now correctly displayed on Safari
+
+- Ellipsis is now correctly displayed on Safari
 
 **Modal**
-* Inner element with overlay are now correctly displayed
+
+- Inner element with overlay are now correctly displayed
 
 **Tabs**
-* Fix hover rendering
+
+- Fix hover rendering
 
 ## v16.6.0
 
@@ -81,38 +102,38 @@ We went through each component to update:
 
 ** Breadcrumb **
 
-* Add attributes on `breadcrumItem` : `disabled`, `rel`, `referrerpolicy`, `target`
-* Add event on `breadcrumItem` : `odsBreadcrumbItemClick`
-* Update `OdsHTMLAnchorElementRel` type
+- Add attributes on `breadcrumItem` : `disabled`, `rel`, `referrerpolicy`, `target`
+- Add event on `breadcrumItem` : `odsBreadcrumbItemClick`
+- Update `OdsHTMLAnchorElementRel` type
 
 ** Chip **
 
-* Added `odsChipRemoval` event
-* If `OsdsChip` is removable and is clicked, it will emit event `odsChipRemoval`
-* If `OsdsChip` is removable, focused on and key Enter is pressed, it will emit event `odsChipRemoval`
+- Added `odsChipRemoval` event
+- If `OsdsChip` is removable and is clicked, it will emit event `odsChipRemoval`
+- If `OsdsChip` is removable, focused on and key Enter is pressed, it will emit event `odsChipRemoval`
 
 ### Bug fixes:
 
 ** Button **
 
-* Fix position of end slot when start slot is empty in `OsdsButton`
+- Fix position of end slot when start slot is empty in `OsdsButton`
 
 ** Datagrid **
 
-* If the `OsdsDatagrid` contains an overflowing on-interaction element (such as `OsdsMenu`, `OsdsTooltip`, `OsdsSelect` or `OsdsPopover`), the element is either being displayed at the top left corner of the `OsdsDatagrid` (native) or beneath the element, making it unvisible (React). This fix intends to correct this problem in both environments.
+- If the `OsdsDatagrid` contains an overflowing on-interaction element (such as `OsdsMenu`, `OsdsTooltip`, `OsdsSelect` or `OsdsPopover`), the element is either being displayed at the top left corner of the `OsdsDatagrid` (native) or beneath the element, making it unvisible (React). This fix intends to correct this problem in both environments.
 
 ** Pagination **
 
-* Add `itemPerPage` in payload event `odsPaginationChanged`
-* Watch `totalPages` & update it
+- Add `itemPerPage` in payload event `odsPaginationChanged`
+- Watch `totalPages` & update it
 
 ** PhoneNumber **
 
-*  Fix shadow of flag icon in the select that was cut behind overflow
+- Fix shadow of flag icon in the select that was cut behind overflow
 
 ** Components **
 
-* Some components were missing from package.json of components: `medium`, `range`, `toggle`
+- Some components were missing from package.json of components: `medium`, `range`, `toggle`
 
 ## v16.5.0
 
@@ -120,33 +141,33 @@ We went through each component to update:
 
 **Documentation**
 
-* Multiple updates to clarify documentation. (Welcome page, Get started, Design tokens, Code, Contributing & libraries)
-* Removing Starter documentation, as it is deprecated for now.
+- Multiple updates to clarify documentation. (Welcome page, Get started, Design tokens, Code, Contributing & libraries)
+- Removing Starter documentation, as it is deprecated for now.
 
 ### Bug fixes:
 
 **Datagrid**
 
-* `OsdsDatagrid` now emits the event `onBottomScroll`.
-* `OsdsDatagrid` now supports React Formatters.
-* [See React Documentation](/?path=/story/ods-components-layout-datagrid-organism-usage-react--page)
-* Row change has been fixed.
+- `OsdsDatagrid` now emits the event `onBottomScroll`.
+- `OsdsDatagrid` now supports React Formatters.
+- [See React Documentation](/?path=/story/ods-components-layout-datagrid-organism-usage-react--page)
+- Row change has been fixed.
 
 **Modal**
 
-* `OsdsModal` is now using a `HTMLDialogElement`,
+- `OsdsModal` is now using a `HTMLDialogElement`,
 
 **Phone number**
 
-* Flags have been fixed to be displayed with proper width & height.
+- Flags have been fixed to be displayed with proper width & height.
 
 **Select**
 
-* Enhanced React support for `OsdsSelect`.
+- Enhanced React support for `OsdsSelect`.
 
 **Storybook**
 
-* Storybook errors with displaying `OsdsPhoneNumber` & `OsdsSearchBar` inputs has been fixed.
+- Storybook errors with displaying `OsdsPhoneNumber` & `OsdsSearchBar` inputs has been fixed.
 
 ## v16.4.0
 
@@ -154,23 +175,23 @@ We went through each component to update:
 
 **Datagrid**
 
-* [See Documentation](?path=/story/datagrid—default)
+- [See Documentation](?path=/story/datagrid—default)
 
 ### Bug fixes:
 
 **Phone number**
 
-* Now consistently triggers `odsValueChange` event on type.
+- Now consistently triggers `odsValueChange` event on type.
 
 **Storybook**
 
-* The release list now correctly displays the name of the latest version.
+- The release list now correctly displays the name of the latest version.
 
 ### Feature update:
 
 **Component Generator**
 
-* Component Generator has been upgraded to align with the new architecture (introduced in version 16.0.0).
+- Component Generator has been upgraded to align with the new architecture (introduced in version 16.0.0).
 
 ## v16.3.2
 
@@ -182,146 +203,175 @@ We went through each component to update:
 ### Bug fixes:
 
 **Phone number**
-* Emit event when the value is valid
+
+- Emit event when the value is valid
 
 **Accordion**
-* Can't open when the component is disabled
+
+- Can't open when the component is disabled
 
 **Quantity**
-* Change the value onblur to be valid with step
+
+- Change the value onblur to be valid with step
 
 **Modal**
-* Add event open & close (odsModalOpen, odsModalClose)
+
+- Add event open & close (odsModalOpen, odsModalClose)
 
 ## v16.3.1
 
 ### Bug fixes:
 
 **Datepicker**
-* The siblings months days are now updated after the datepicker was updated
+
+- The siblings months days are now updated after the datepicker was updated
 
 **Select**
-* Keyboard navigation correction
+
+- Keyboard navigation correction
 
 ## v16.3.0
 
 ### Component changes:
 
 **Button**
-* Each variant now display correctly when using circle button
-> ⚠️️ **Breaking change**
-* Circle button may render differently regarding the variant you're using
+
+- Each variant now display correctly when using circle button
+  > ⚠️️ **Breaking change**
+- Circle button may render differently regarding the variant you're using
 
 **Datepicker**
-* Component now close itself when value is selected
-* You can now hide adjacent month days with the attributes `showSiblingsMonthDays`
+
+- Component now close itself when value is selected
+- You can now hide adjacent month days with the attributes `showSiblingsMonthDays`
 
 **Flag**
-* Component has been refactored internally, but this should not have any impacts
+
+- Component has been refactored internally, but this should not have any impacts
 
 **Icon**
-* Component has been refactored internally, but this should not have any impacts
+
+- Component has been refactored internally, but this should not have any impacts
 
 ### Bug fixes:
+
 **Menu**
-* Now correctly work when used with React
+
+- Now correctly work when used with React
 
 **Select**
-* On Safari the component is displayed correctly when using flex
+
+- On Safari the component is displayed correctly when using flex
 
 **Textarea**
-* On Safari the component is displayed correctly when using flex
+
+- On Safari the component is displayed correctly when using flex
 
 **Tile**
-* On Safari the component is displayed correctly when using flex
+
+- On Safari the component is displayed correctly when using flex
 
 ### Project changes:
-* The whole project is now built using Stenciljs v4.7
-> ⚠️️ **Breaking change**
-* We don't generate the bundle `custom-elements-bundle` anymore
+
+- The whole project is now built using Stenciljs v4.7
+  > ⚠️️ **Breaking change**
+- We don't generate the bundle `custom-elements-bundle` anymore
 
 ## v16.2.1
 
 ### Component changes:
 
 **Datepicker**
-* New attribute `locale` to manage internationalization, accepted locales are for now:
-- French
-- English
-- German
-- Spanish
-- Italian
-- Polish
-- Portuguese
-- Dutch
+
+- New attribute `locale` to manage internationalization, accepted locales are for now:
+
+* French
+* English
+* German
+* Spanish
+* Italian
+* Polish
+* Portuguese
+* Dutch
 
 **Text**
-* Component has been refactored internally, but this should not have any impacts
+
+- Component has been refactored internally, but this should not have any impacts
 
 ### Bug fixes:
 
 **Datepicker**
-* Add missing constants and types exports
+
+- Add missing constants and types exports
 
 **Modal**
-* Is now correctly destroyed on page change
+
+- Is now correctly destroyed on page change
 
 **Popover**
-* Now correctly work when used with React
+
+- Now correctly work when used with React
 
 **Select**
-* Selected value is now correctly updated on cnange (ex: translation change)
+
+- Selected value is now correctly updated on cnange (ex: translation change)
 
 ## v16.2.0
 
 ### New component:
 
-* **Datepicker**: [See Documentation](?path=/story/datepicker--default)
+- **Datepicker**: [See Documentation](?path=/story/datepicker--default)
 
 ### Component changes:
 
 **Clipboard**
-* Added tooltip confirmation message on paste
+
+- Added tooltip confirmation message on paste
 
 ### Bug fixes:
 
 **Textarea**
-* Correctly emit `odsValueChange` event on value change.
+
+- Correctly emit `odsValueChange` event on value change.
 
 ### Documentation changes:
 
-* Improve typedoc documentation
+- Improve typedoc documentation
 
 ## v16.1.1
 
 ### Documentation fixes:
 
-* Component specification pages now displays correct information
-* Tile sandbox now uses correct list of commands
+- Component specification pages now displays correct information
+- Tile sandbox now uses correct list of commands
 
 ## v16.1.0
 
 ### New component:
 
-* **Phone Number**: [See Documentation](?path=/story/phone-number--default)
+- **Phone Number**: [See Documentation](?path=/story/phone-number--default)
 
 ### Component changes:
 
 **Input**
-* New attribute `prefixValue` that allow to display a fixed prefix in front of the input value.
+
+- New attribute `prefixValue` that allow to display a fixed prefix in front of the input value.
 
 **Progress Bar**
+
 > ⚠️️ **Breaking change**
-* `max` and `value` attributes are now `number` and won`t accept `string` anymore.
+
+- `max` and `value` attributes are now `number` and won`t accept `string` anymore.
 
 ### Bug fixes:
 
 **Code**
-* Contrasted version have now the right color.
+
+- Contrasted version have now the right color.
 
 ### Project changes:
 
-* The whole project is now built using node 18.
+- The whole project is now built using node 18.
 
 ## v16.0.1
 
@@ -342,6 +392,7 @@ As it is a major version, you'll have to follow the [migration guide 15.x to 16.
 This version embed the whole new project architecture (initiated with the v15).
 
 We now have seperations between:
+
 - `cdk` (@ovhcloud/ods-cdk) which provides public non component related utilities.
 - `common` libs (@ovhcloud/ods-common-[core|stencil|testing|theming]) which provides internal helpers.
 - `components` (@ovhcloud/ods-components or @ovhcloud/ods-component-`<component-name>`) which provide the agnostic components and their React, Vue wrapped versions.
@@ -353,28 +404,29 @@ We now have seperations between:
 ### Component changes:
 
 **All Components**
-* `@ovhcloud/ods-stencil` package does not exists anymore.
-* Components are now accessible by adding either `@ovhcloud/ods-component-<component>` or `@ovhcloud/ods-components` dependency.
-* All `@ovhcloud/ods-stencil-<component>` libs have been replaced by `@ovhcloud/ods-component-<component>`.
-* All `@ovhcloud/ods-stencil-<component>-react` libs have been replaced by `@ovhcloud/ods-component-<component>-react`.
-* All `@ovhcloud/ods-stencil-<component>-vue` libs have been replaced by `@ovhcloud/ods-component-<component>- vue`.
 
-* Constants/Enums have been renamed to follow new naming convention:
-  * All constants are now in UPPER_SNAKE_CASE.
-  * All objects are now in singular form.
-  * All lists are now in plural form.
+- `@ovhcloud/ods-stencil` package does not exists anymore.
+- Components are now accessible by adding either `@ovhcloud/ods-component-<component>` or `@ovhcloud/ods-components` dependency.
+- All `@ovhcloud/ods-stencil-<component>` libs have been replaced by `@ovhcloud/ods-component-<component>`.
+- All `@ovhcloud/ods-stencil-<component>-react` libs have been replaced by `@ovhcloud/ods-component-<component>-react`.
+- All `@ovhcloud/ods-stencil-<component>-vue` libs have been replaced by `@ovhcloud/ods-component-<component>- vue`.
+
+- Constants/Enums have been renamed to follow new naming convention:
+  - All constants are now in UPPER_SNAKE_CASE.
+  - All objects are now in singular form.
+  - All lists are now in plural form.
 
 Ex:
 `OdsSpinnerSize` is now `ODS_SPINNER_SIZE`.
 `OdsSpinnerSizeList` is now `ODS_SPINNER_SIZES`.
 `OdsSpinnerSizeUnion` has been removed.
 
-* Exported types follow also the same naming convention, thus most of them are now in singular form.
+- Exported types follow also the same naming convention, thus most of them are now in singular form.
 
 Ex:
 `OdsSpinnerAttributes` is now `OdsSpinnerAttribute`.
 
-* A lot of empty types who were exported previously have been removed.
+- A lot of empty types who were exported previously have been removed.
 
 Ex:
 `OdsSpinnerEvents` have been removed, as the component does not handle any events.
@@ -382,31 +434,35 @@ Ex:
 
 ### New component:
 
-* **Clipboard**: [See Documentation](?path=/story/ui-components-clipboard-atom-web-component--default)
-* **Menu**: [See Documentation](?path=/story/menu--default)
-* **Modal**: [See Documentation](?path=/story/modal--default)
-* **Search Bar**: [See Documentation](?path=/story/ui-components-search-bar-atom-web-component--default)
+- **Clipboard**: [See Documentation](?path=/story/ui-components-clipboard-atom-web-component--default)
+- **Menu**: [See Documentation](?path=/story/menu--default)
+- **Modal**: [See Documentation](?path=/story/modal--default)
+- **Search Bar**: [See Documentation](?path=/story/ui-components-search-bar-atom-web-component--default)
 
 ### Features changes:
 
 **Button**
-* Add a new attribute `textAlign` which allows to choose the button text alignement between `center`, `end` and `start`.
+
+- Add a new attribute `textAlign` which allows to choose the button text alignement between `center`, `end` and `start`.
 
 ### Bug fixes:
 
 **Button**
-* Main slot is now correctly aligned vertically (visible when using icon).
+
+- Main slot is now correctly aligned vertically (visible when using icon).
 
 **Flag**
-* Flags are now correctly displayed in the documentation.
+
+- Flags are now correctly displayed in the documentation.
 
 **Link**
-* Outline is now correctly updated on viewport change.
+
+- Outline is now correctly updated on viewport change.
 
 ## v15.0.1
 
-  * Fix new packages release process.
-  * Update documentation.
+- Fix new packages release process.
+- Update documentation.
 
 ## v15.0.0
 
@@ -416,6 +472,7 @@ As it is a major version, you have to do the [migration guide 14.x to 15.x](?pat
 
 This version is the first step towards the new ODS internal architecture.
 The goal of this refactoring is to simplify and improve the whole project to:
+
 - provide a better developer experience and thus reduce development time
 - normalize all components behavior / design / attributes
 - have better control on dependencies and lib version upgrade
@@ -429,79 +486,89 @@ All other components will follow on next version.
 Then common ODS lib and theming will be refactored on next version.
 
 ### Features changes:
-* **Text**
-* `OsdsText` is no longer part of `@ovhcloud/ods-stencil` package.
-* `OsdsText` is now accessible by adding either `@ovhcloud/ods-component-text` or `@ovhcloud/ods-components` dependency.
-* `@ovhcloud/ods-stencil-text` lib has been replaced by `@ovhcloud/ods-component-text`.
-* `@ovhcloud/ods-stencil-text-react` lib has been replaced by `@ovhcloud/ods-component-text-react`.
-* `@ovhcloud/ods-stencil-text-vue` lib has been replaced by `@ovhcloud/ods-component-text- vue`.
-* `OdsTextSize` has been removed from `@ovhcloud/ods-core` and has been replaced by `ODS_TEXT_SIZE` from `@ovhcloud/ods-component-text`.
-* `OdsTextSizeList` has been removed from `@ovhcloud/ods-core` and is replaced by `ODS_TEXT_SIZES` from `@ovhcloud/ods-component-text`.
-* `OdsTextSizeUnion` has been removed from `@ovhcloud/ods-core`.
-* `OdsTextLevel` has been removed from `@ovhcloud/ods-core` and has been replaced by `ODS_TEXT_LEVEL` from `@ovhcloud/ods-component-text`.
-* `OdsTextLevelList` has been removed from `@ovhcloud/ods-core` and is replaced by `ODS_TEXT_LEVELS` from `@ovhcloud/ods-component-text`.
-* `OdsTextLevelUnion` has been removed from `@ovhcloud/ods-core`.
-* `@ovhcloud/ods-component-text` exports only `OdsTextAttribute` as component interface.
 
-* **Textarea**
-* `OsdsTextarea` is no longer part of `@ovhcloud/ods-stencil` package.
-* `OsdsTextarea` is now accessible by adding either `@ovhcloud/ods-component-textarea` or `@ovhcloud/ods-components` dependency.
-* `@ovhcloud/ods-stencil-textarea` lib has been replaced by `@ovhcloud/ods-component-textarea`.
-* `@ovhcloud/ods-stencil-textarea-react` lib has been replaced by `@ovhcloud/ods-component-textarea-react`.
-* `@ovhcloud/ods-stencil-textarea-vue` lib has been replaced by `@ovhcloud/ods-component-textarea- vue`.
-* `OdsTextAreaSize` has been removed from `@ovhcloud/ods-core` and is replaced by `ODS_TEXTAREA_SIZE` from `@ovhcloud/ods-component-textarea`.
-* `OdsTextAreaSizeList` has been removed from `@ovhcloud/ods-core` and is replaced by `ODS_TEXTAREA_SIZES` from `@ovhcloud/ods-component-textarea`.
-* `OdsTextAreaSizeUnion` has been removed from `@ovhcloud/ods-core`.
-* `@ovhcloud/ods-component-textarea` exports only `OdsTextAttribute`, `OdsTextAreaEvent` and `OdsTextAreaValueChangeEvent` as component interfaces.
-* `OsdsTextarea` is now displayed as flex by default.
-* `OsdsTextarea` `flex` attribute has been removed.
-* `OsdsTextarea` `inline` attribute has been added.
+- **Text**
+- `OsdsText` is no longer part of `@ovhcloud/ods-stencil` package.
+- `OsdsText` is now accessible by adding either `@ovhcloud/ods-component-text` or `@ovhcloud/ods-components` dependency.
+- `@ovhcloud/ods-stencil-text` lib has been replaced by `@ovhcloud/ods-component-text`.
+- `@ovhcloud/ods-stencil-text-react` lib has been replaced by `@ovhcloud/ods-component-text-react`.
+- `@ovhcloud/ods-stencil-text-vue` lib has been replaced by `@ovhcloud/ods-component-text- vue`.
+- `OdsTextSize` has been removed from `@ovhcloud/ods-core` and has been replaced by `ODS_TEXT_SIZE` from `@ovhcloud/ods-component-text`.
+- `OdsTextSizeList` has been removed from `@ovhcloud/ods-core` and is replaced by `ODS_TEXT_SIZES` from `@ovhcloud/ods-component-text`.
+- `OdsTextSizeUnion` has been removed from `@ovhcloud/ods-core`.
+- `OdsTextLevel` has been removed from `@ovhcloud/ods-core` and has been replaced by `ODS_TEXT_LEVEL` from `@ovhcloud/ods-component-text`.
+- `OdsTextLevelList` has been removed from `@ovhcloud/ods-core` and is replaced by `ODS_TEXT_LEVELS` from `@ovhcloud/ods-component-text`.
+- `OdsTextLevelUnion` has been removed from `@ovhcloud/ods-core`.
+- `@ovhcloud/ods-component-text` exports only `OdsTextAttribute` as component interface.
 
+- **Textarea**
+- `OsdsTextarea` is no longer part of `@ovhcloud/ods-stencil` package.
+- `OsdsTextarea` is now accessible by adding either `@ovhcloud/ods-component-textarea` or `@ovhcloud/ods-components` dependency.
+- `@ovhcloud/ods-stencil-textarea` lib has been replaced by `@ovhcloud/ods-component-textarea`.
+- `@ovhcloud/ods-stencil-textarea-react` lib has been replaced by `@ovhcloud/ods-component-textarea-react`.
+- `@ovhcloud/ods-stencil-textarea-vue` lib has been replaced by `@ovhcloud/ods-component-textarea- vue`.
+- `OdsTextAreaSize` has been removed from `@ovhcloud/ods-core` and is replaced by `ODS_TEXTAREA_SIZE` from `@ovhcloud/ods-component-textarea`.
+- `OdsTextAreaSizeList` has been removed from `@ovhcloud/ods-core` and is replaced by `ODS_TEXTAREA_SIZES` from `@ovhcloud/ods-component-textarea`.
+- `OdsTextAreaSizeUnion` has been removed from `@ovhcloud/ods-core`.
+- `@ovhcloud/ods-component-textarea` exports only `OdsTextAttribute`, `OdsTextAreaEvent` and `OdsTextAreaValueChangeEvent` as component interfaces.
+- `OsdsTextarea` is now displayed as flex by default.
+- `OsdsTextarea` `flex` attribute has been removed.
+- `OsdsTextarea` `inline` attribute has been added.
 
 ## v14.1.0
+
 ### New features:
-* **CDK**
-* Manage surface position when located on the edge.
-* The surface can now be centered at the top or bottom of the trigger. [See CDK Documentation](?path=/story/libraries-cdk-overlay-strategies-symmetry--page)
+
+- **CDK**
+- Manage surface position when located on the edge.
+- The surface can now be centered at the top or bottom of the trigger. [See CDK Documentation](?path=/story/libraries-cdk-overlay-strategies-symmetry--page)
 
 We added the following components:
-* **Form Field**: [See Form Field Documentation](?path=/story/form-field--default)
-* **Switch**: [See Form Field Documentation](?path=/story/switch--default)
+
+- **Form Field**: [See Form Field Documentation](?path=/story/form-field--default)
+- **Switch**: [See Form Field Documentation](?path=/story/switch--default)
 
 ### Features changes:
-* **Pagination**
-* Add tooltip to the arrows.
-* Can now show pages according to a numbers of items shown by page.
-> For more information, check our documentation [See Pagination Documentation](?path=/story/ui-components-pagination-molecule-specifications--page)
 
-* **Location-tile**
-* Component is now deprecated and won't be supported anymore. It will be deleted in a future release.
-> For more information, check our replacement guide [See Location Tile Documentation](?path=/story/ui-components-location-tile-deprecated-remplacement--page)
+- **Pagination**
+- Add tooltip to the arrows.
+- Can now show pages according to a numbers of items shown by page.
+
+  > For more information, check our documentation [See Pagination Documentation](?path=/story/ui-components-pagination-molecule-specifications--page)
+
+- **Location-tile**
+- Component is now deprecated and won't be supported anymore. It will be deleted in a future release.
+  > For more information, check our replacement guide [See Location Tile Documentation](?path=/story/ui-components-location-tile-deprecated-remplacement--page)
 
 ### Bug fixes:
-* **Radio**:
-* Radio button is now unfocusable when disabled
 
-* **Input**:
-* cursor is set to not-allowed when disabled
+- **Radio**:
+- Radio button is now unfocusable when disabled
+
+- **Input**:
+- cursor is set to not-allowed when disabled
 
 ## v14.0.0
+
 As it is a major version, you have to do the [migration guide 13.x to 14.x](?path=/story/ovhcloud-design-system-what-s-new-migration-guide-13-x-to-14-x--page)
 
 ### New features:
+
 We added the following components:
-* **Progress Bar**: [See Progress Bar Documentation](?path=/story/progress-bar--default)
-* **Popover**: [See Popover Documentation](?path=/story/popover--default)
-* **Tooltip**: [See Popover Documentation](?path=/story/tooltip--default)
+
+- **Progress Bar**: [See Progress Bar Documentation](?path=/story/progress-bar--default)
+- **Popover**: [See Popover Documentation](?path=/story/popover--default)
+- **Tooltip**: [See Popover Documentation](?path=/story/tooltip--default)
 
 Components version 2:
-* **Input V2**: [See Input Documentation](?path=/story/input--default)
-* new properties have been added
-* `loading`: it displays a Spinner
-* `clearable`: it clears the input value on click
-* `masked`: it indicates if the input value is hidden or not (to be used with password type)
-* new types have been added: `date`, `email`, `password`, `search`, `tel`, `text`, `time` and `url`
-* **Select V2**: it is now connected to our CDK and keyboard navigation has been added [See Select Documentation](?path=/story/select--default)
+
+- **Input V2**: [See Input Documentation](?path=/story/input--default)
+- new properties have been added
+- `loading`: it displays a Spinner
+- `clearable`: it clears the input value on click
+- `masked`: it indicates if the input value is hidden or not (to be used with password type)
+- new types have been added: `date`, `email`, `password`, `search`, `tel`, `text`, `time` and `url`
+- **Select V2**: it is now connected to our CDK and keyboard navigation has been added [See Select Documentation](?path=/story/select--default)
 
 **Quantity** component accepts four digits in the input field:
 [See Quantity Documentation](?path=/story/quantity--default)
@@ -510,57 +577,59 @@ Components version 2:
 [See CDK Documentation](?path=/story/libraries-cdk-overlay-introduction--page)
 
 ### Bug fixes:
-* **Tile**:
-* `hoverable` attribute has been added to avoid double focus
-* `interactive` attribute has been removed
-> ⚠️️ **Breaking change**<br />
-  > For more information, check our migration guide
-* **Link**:
-* add missing color for active state
-* fix Link host container size to match its content
-* **Icon**: add `hoverable` attribute so component color can change when in selectable parent
-* **Checkbox Button**: aspect ratio has been added
-* **Quantity**: icons alignment has been fixed
-* **Textarea**: when component is resized and `flex` attribute is set to `true` and then, set back to `false`, Textarea width is no more blocked to 100%
 
+- **Tile**:
+- `hoverable` attribute has been added to avoid double focus
+- `interactive` attribute has been removed
+  > ⚠️️ **Breaking change**<br />
+  > For more information, check our migration guide
+- **Link**:
+- add missing color for active state
+- fix Link host container size to match its content
+- **Icon**: add `hoverable` attribute so component color can change when in selectable parent
+- **Checkbox Button**: aspect ratio has been added
+- **Quantity**: icons alignment has been fixed
+- **Textarea**: when component is resized and `flex` attribute is set to `true` and then, set back to `false`, Textarea width is no more blocked to 100%
 
 ## v13.0.0
 
 As it is a major version, you have to do the [migration guide 12.x to 13.x](?path=/story/ovhcloud-design-system-what-s-new-migration-guide-12-x-to-13-x--page)
 
 ### New features:
+
 We added the following components:
-* Breadcrumb: [See Breadcrumb Documentation](?path=/story/breadcrumb--default)
-* Collapsible: [See Collapsible Documentation](?path=/story/collapsible--default)
-* Pagination: [See Pagination Documentation](?path=/story/pagination--default)
-* Spinner: [See Spinner Documentation](?path=/story/spinner--default)
+
+- Breadcrumb: [See Breadcrumb Documentation](?path=/story/breadcrumb--default)
+- Collapsible: [See Collapsible Documentation](?path=/story/collapsible--default)
+- Pagination: [See Pagination Documentation](?path=/story/pagination--default)
+- Spinner: [See Spinner Documentation](?path=/story/spinner--default)
 
 [Circle-shaped button](?path=/story/button--default) has been added to Button Component (circle attribute)
 
 ### Bug fixes:
-* Button: `button' and `link` roles have been added (switching to `link` role when Button has a href property)
 
-* Chip: expected style on Chip focus has been applied
+- Button: `button' and `link`roles have been added (switching to`link` role when Button has a href property)
 
-* Icon: missing download icon has been added
+- Chip: expected style on Chip focus has been applied
 
-* Input: odsValueChange event won't emit on component init
+- Icon: missing download icon has been added
 
-* Link:
-* all content in Link is now aligned as expected
-* href and target attributes are optional
+- Input: odsValueChange event won't emit on component init
 
-* Select :
-* check for outside click target inside its DOM
-* fixed width on non flex Select has been removed
-> ⚠️️ **Breaking change**<br />
+- Link:
+- all content in Link is now aligned as expected
+- href and target attributes are optional
+
+- Select :
+- check for outside click target inside its DOM
+- fixed width on non flex Select has been removed
+  > ⚠️️ **Breaking change**<br />
   > For more information, check our migration guide
-
-
 
 ## v12.1.0
 
 ### New features:
+
 We added the Tabs component.<br />
 [See Tabs Documentation](?path=/story/ui-components-tabs-atom-specifications--page)
 
@@ -571,11 +640,13 @@ A coding Style has also been added so you can check our guidelines and how to wr
 [See Component Coding Style Rules](?path=/story/code-our-principles-coding-style--page)
 
 The [Contributing Documentation](?path=/story/contributing-get-started--page) has been updated:
-* How to use a component in an other one
-* Theming: how to customize a style
-* some warning about pushing any sensitive content
+
+- How to use a component in an other one
+- Theming: how to customize a style
+- some warning about pushing any sensitive content
 
 ### Bug fixes:
+
 Range component color when in error has been fixed.
 
 Some width issue on Button component has been fixed.<br />
@@ -584,6 +655,7 @@ When in flex, a Button can now display an ellipsis for text content when necessa
 ## v12.0.5
 
 ### Bug fixes:
+
 Button component of type submit in a form will now submit the form as expected (by click or Enter / Space keys).
 
 Quantity component issue has been fixed regarding minus control that should be disabled when the input `min` attribute is equal to 0 and its value has reached 0 too.
@@ -644,6 +716,7 @@ We added the select component (version 1).
 ## v10.0.0
 
 We updated a lot of third dependencies (stencilJs, typescript, jest, puppeteer, ...):
+
 ```text
 @stencil/core ~2.6.0 to ~2.18.1
 @stencil/sass ~1.4.1 to ~2.0.0
@@ -659,6 +732,7 @@ yarn-2.4.2 to yarn-3.2.4
 node-fetch ~2.6.6 to ~2.6.7
 ts-node ~9.1.1 to ~10.7.0
 ```
+
 > If you are an `ODS` contributor, you may need to do some changes
 
 We now build all of our components for `React` and `Vue` frameworks.
@@ -684,6 +758,7 @@ As it is a major version, you have to do the [migration guide 9.x to 10.x](?path
 ## v9.1.0
 
 Adding 2 new components :
+
 - accordion: display a content that can be collapsed
 - code: display a snippet of code and copy it into the clipboard
 
@@ -691,15 +766,17 @@ If you already have customized themes, you have to declare the variables for thi
 see more in the migration guide 9.x
 
 ## February 2022
+
 The V1 **Design System** graphical charter is finalized. This charter contains :
-* Multiple color palettes (blue, gray, red, orange, green, availability & promotion extra colors)
-* A Typography system
-* All spacing options
-* Components:
-* **Buttons**
-* **Form items** (inputs, dropdowns, checkboxes, radios, radio buttons, toggle buttons, range, textarea, etc.)
-* **Chips & Badges**
-* **Cards**
-* **Cart**
+
+- Multiple color palettes (blue, gray, red, orange, green, availability & promotion extra colors)
+- A Typography system
+- All spacing options
+- Components:
+- **Buttons**
+- **Form items** (inputs, dropdowns, checkboxes, radios, radio buttons, toggle buttons, range, textarea, etc.)
+- **Chips & Badges**
+- **Cards**
+- **Cart**
 
 [It is visible here](https://xd.adobe.com/view/031606c8-8f2f-4163-a2c2-f037d64bb294-5645)

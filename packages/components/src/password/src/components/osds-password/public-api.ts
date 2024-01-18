@@ -1,3 +1,4 @@
 export type { OdsPasswordAttribute } from './interfaces/attributes';
-export type { OdsPasswordEvent } from './interfaces/events';
+export type { OdsPasswordEvent, OdsPasswordValueChangeEvent, OdsPasswordValueChangeEventDetail } from './interfaces/events';
+export type { OdsPasswordMethod } from './interfaces/methods';
 export { OsdsPassword } from './osds-password';

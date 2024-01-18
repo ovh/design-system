@@ -61,7 +61,7 @@ describe('e2e:osds-form', () => {
 
     it('should submit form field', async() => {
       await setup({ attributes: { initialValues: { firstName: '', osdsInput: '' } } });
-      await osdsInput.type('some test');
+      osdsInput.setAttribute('value', 'some test');
       const submitSpy = await page.spyOnEvent('odsOnSubmit');
       await buttonSubmit.click();
       expect(await el.callMethod('getFormValues')).toEqual({ firstName: '', osdsInput: 'some test' });

@@ -921,12 +921,6 @@ export namespace Components {
         "stepDown": () => Promise<void>;
         "stepUp": () => Promise<void>;
         /**
-          * Step value for the input
-         */
-        "step"?: number;
-        "stepDown": () => Promise<void>;
-        "stepUp": () => Promise<void>;
-        /**
           * Type of the input field
          */
         "type"?: ODS_INPUT_TYPE;

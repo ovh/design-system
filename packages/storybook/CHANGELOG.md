@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [17.0.2](https://ovh.github.io/design-system/v17.0.2/?path=/docs/design-system-changelog--page) (2024-01-18)
+[compare](https://github.com/ovh/design-system/compare/v17.0.1...v17.0.2)
+
+### Bug Fixes
+
+* **modal:** add key behaviour on storybook and close button ([e1e3e1f](https://github.com/ovh/design-system/commit/e1e3e1f8a8381682784d10be03216db81a84399e))
+* **modal:** change button key behaviour to dispatch click ([ba71bea](https://github.com/ovh/design-system/commit/ba71bead537601c80c2c838f6fe12da3d6dde737))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

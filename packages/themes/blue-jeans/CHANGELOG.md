@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [17.0.2](https://ovh.github.io/design-system/v17.0.2/?path=/docs/design-system-changelog--page) (2024-01-18)
+[compare](https://github.com/ovh/design-system/compare/v17.0.1...v17.0.2)
+
+**Note:** Version bump only for package @ovhcloud/ods-theme-blue-jeans
+
+
+
+
+
 
 
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)

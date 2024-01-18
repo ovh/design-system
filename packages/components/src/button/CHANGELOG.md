@@ -8,6 +8,23 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [17.0.2](https://ovh.github.io/design-system/v17.0.2/?path=/docs/design-system-changelog--page) (2024-01-18)
+[compare](https://github.com/ovh/design-system/compare/v17.0.1...v17.0.2)
+
+### Bug Fixes
+
+* **components:** prevent generated files to be commited && clean unused files ([e4fdb6c](https://github.com/ovh/design-system/commit/e4fdb6cf35a50023579a5c16d7a398eef4cfac4d))
+* **doc:** update tsconfig used ([e308069](https://github.com/ovh/design-system/commit/e308069048e94706223a5695cd09991b13f83cf2))
+* **menu:** fix double click behaviour ([50a17cc](https://github.com/ovh/design-system/commit/50a17ccf63150a6442e97dcf78abdd0798997a62))
+* **modal:** change button key behaviour to dispatch click ([ba71bea](https://github.com/ovh/design-system/commit/ba71bead537601c80c2c838f6fe12da3d6dde737))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [17.0.1](https://ovh.github.io/design-system/v17.0.1/?path=/docs/design-system-changelog--page) (2024-01-15)
 [compare](https://github.com/ovh/design-system/compare/v17.0.0...v17.0.1)
 

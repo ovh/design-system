@@ -8,6 +8,44 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [17.0.2](https://ovh.github.io/design-system/v17.0.2/?path=/docs/design-system-changelog--page) (2024-01-18)
+[compare](https://github.com/ovh/design-system/compare/v17.0.1...v17.0.2)
+
+### Bug Fixes
+
+* **chip:** prevent generated files to be commited && clean unused files ([723d08b](https://github.com/ovh/design-system/commit/723d08b47b45e061fa09524f4ce8e3cee1ab05c5))
+* **components:** prevent generated files to be commited && clean unused files ([e4fdb6c](https://github.com/ovh/design-system/commit/e4fdb6cf35a50023579a5c16d7a398eef4cfac4d))
+* **doc:** update tsconfig used ([e308069](https://github.com/ovh/design-system/commit/e308069048e94706223a5695cd09991b13f83cf2))
+* **menu:** fix double click behaviour ([50a17cc](https://github.com/ovh/design-system/commit/50a17ccf63150a6442e97dcf78abdd0798997a62))
+* **menu:** fix tests ([774eda5](https://github.com/ovh/design-system/commit/774eda5d8517abde9c434f67cb30242423ae50aa))
+* **modal:** add class to body to hide overflow ([f0c079a](https://github.com/ovh/design-system/commit/f0c079a348328f82162c63a13315f93dc9ac93f0))
+* **modal:** add key behaviour on storybook and close button ([e1e3e1f](https://github.com/ovh/design-system/commit/e1e3e1f8a8381682784d10be03216db81a84399e))
+* **modal:** addressing changes ([07e2e60](https://github.com/ovh/design-system/commit/07e2e6042f4ce6027ecc1481c6355e55223c10e3))
+* **modal:** change button key behaviour to dispatch click ([ba71bea](https://github.com/ovh/design-system/commit/ba71bead537601c80c2c838f6fe12da3d6dde737))
+* **modal:** fix position when trigger is not centered ([1a520d4](https://github.com/ovh/design-system/commit/1a520d4402a00390d2a1038f3b99960123329d5d))
+* **modal:** hide overflow when modal is opened automatically ([16d236c](https://github.com/ovh/design-system/commit/16d236c819026acd4839113181d6ce1e56351312))
+* **modal:** inputs are shrunk ([1fd9016](https://github.com/ovh/design-system/commit/1fd9016cba9a48d8c7ae51019fd40feb930bc004))
+* **modal:** prevent scroll when modal is open ([e72a018](https://github.com/ovh/design-system/commit/e72a018233656c9aee2674d163056b11e4757037))
+* **tabs:** add accessibility tests ([82b3e5d](https://github.com/ovh/design-system/commit/82b3e5d943675144b5059dcb7d2c748477a4048d))
+* **tabs:** add behaviour of keys arrow ([b44b79e](https://github.com/ovh/design-system/commit/b44b79e4f874ffea8a7b0f010e5cab99bcd81a41))
+* **tabs:** change focus with key arrow ([006d4f6](https://github.com/ovh/design-system/commit/006d4f63d6b3abf2220ef2389f3670b61d397e16))
+* **tabs:** fix controller test ([6a20fac](https://github.com/ovh/design-system/commit/6a20fac837052d4976ff8d829b039b57b172e084))
+* **tabs:** fix handleArrowKey func when no tab are active ([6c70007](https://github.com/ovh/design-system/commit/6c70007b7ae7b05ccf6b64dd82e31f53436bdcab))
+* **tabs:** fix handlearrowkey test ([1e1eb3d](https://github.com/ovh/design-system/commit/1e1eb3dd70bd055341f869d6298bef763b29feda))
+* **tabs:** fix tests ([7a959d6](https://github.com/ovh/design-system/commit/7a959d66b8a2ef5f3e28d413cc302f6d48b6d7c7))
+
+
+### Reverts
+
+* Revert "fix(modal): add class to body to hide overflow" ([cbf47f8](https://github.com/ovh/design-system/commit/cbf47f8a73e9f741b65fe38690ae8520795a83d4))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [17.0.1](https://ovh.github.io/design-system/v17.0.1/?path=/docs/design-system-changelog--page) (2024-01-15)
 [compare](https://github.com/ovh/design-system/compare/v17.0.0...v17.0.1)
 

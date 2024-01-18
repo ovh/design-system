@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [17.0.2](https://ovh.github.io/design-system/v17.0.2/?path=/docs/design-system-changelog--page) (2024-01-18)
+[compare](https://github.com/ovh/design-system/compare/v17.0.1...v17.0.2)
+
+### Bug Fixes
+
+* **components:** prevent generated files to be commited && clean unused files ([e4fdb6c](https://github.com/ovh/design-system/commit/e4fdb6cf35a50023579a5c16d7a398eef4cfac4d))
+* **doc:** update tsconfig used ([e308069](https://github.com/ovh/design-system/commit/e308069048e94706223a5695cd09991b13f83cf2))
+* **modal:** add class to body to hide overflow ([f0c079a](https://github.com/ovh/design-system/commit/f0c079a348328f82162c63a13315f93dc9ac93f0))
+* **modal:** add key behaviour on storybook and close button ([e1e3e1f](https://github.com/ovh/design-system/commit/e1e3e1f8a8381682784d10be03216db81a84399e))
+* **modal:** addressing changes ([07e2e60](https://github.com/ovh/design-system/commit/07e2e6042f4ce6027ecc1481c6355e55223c10e3))
+* **modal:** change button key behaviour to dispatch click ([ba71bea](https://github.com/ovh/design-system/commit/ba71bead537601c80c2c838f6fe12da3d6dde737))
+* **modal:** fix position when trigger is not centered ([1a520d4](https://github.com/ovh/design-system/commit/1a520d4402a00390d2a1038f3b99960123329d5d))
+* **modal:** hide overflow when modal is opened automatically ([16d236c](https://github.com/ovh/design-system/commit/16d236c819026acd4839113181d6ce1e56351312))
+* **modal:** inputs are shrunk ([1fd9016](https://github.com/ovh/design-system/commit/1fd9016cba9a48d8c7ae51019fd40feb930bc004))
+* **modal:** prevent scroll when modal is open ([e72a018](https://github.com/ovh/design-system/commit/e72a018233656c9aee2674d163056b11e4757037))
+
+
+### Reverts
+
+* Revert "fix(modal): add class to body to hide overflow" ([cbf47f8](https://github.com/ovh/design-system/commit/cbf47f8a73e9f741b65fe38690ae8520795a83d4))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

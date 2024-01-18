@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [17.0.2](https://ovh.github.io/design-system/v17.0.2/?path=/docs/design-system-changelog--page) (2024-01-18)
+[compare](https://github.com/ovh/design-system/compare/v17.0.1...v17.0.2)
+
+### Bug Fixes
+
+* **components:** prevent generated files to be commited && clean unused files ([e4fdb6c](https://github.com/ovh/design-system/commit/e4fdb6cf35a50023579a5c16d7a398eef4cfac4d))
+* **doc:** update tsconfig used ([e308069](https://github.com/ovh/design-system/commit/e308069048e94706223a5695cd09991b13f83cf2))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

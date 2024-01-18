@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [17.0.2](https://ovh.github.io/design-system/v17.0.2/?path=/docs/design-system-changelog--page) (2024-01-18)
+[compare](https://github.com/ovh/design-system/compare/v17.0.1...v17.0.2)
+
+### Bug Fixes
+
+* **components:** prevent generated files to be commited && clean unused files ([e4fdb6c](https://github.com/ovh/design-system/commit/e4fdb6cf35a50023579a5c16d7a398eef4cfac4d))
+* **doc:** update tsconfig used ([e308069](https://github.com/ovh/design-system/commit/e308069048e94706223a5695cd09991b13f83cf2))
+* **tabs:** add accessibility tests ([82b3e5d](https://github.com/ovh/design-system/commit/82b3e5d943675144b5059dcb7d2c748477a4048d))
+* **tabs:** add behaviour of keys arrow ([b44b79e](https://github.com/ovh/design-system/commit/b44b79e4f874ffea8a7b0f010e5cab99bcd81a41))
+* **tabs:** change focus with key arrow ([006d4f6](https://github.com/ovh/design-system/commit/006d4f63d6b3abf2220ef2389f3670b61d397e16))
+* **tabs:** fix controller test ([6a20fac](https://github.com/ovh/design-system/commit/6a20fac837052d4976ff8d829b039b57b172e084))
+* **tabs:** fix handleArrowKey func when no tab are active ([6c70007](https://github.com/ovh/design-system/commit/6c70007b7ae7b05ccf6b64dd82e31f53436bdcab))
+* **tabs:** fix handlearrowkey test ([1e1eb3d](https://github.com/ovh/design-system/commit/1e1eb3dd70bd055341f869d6298bef763b29feda))
+* **tabs:** fix tests ([7a959d6](https://github.com/ovh/design-system/commit/7a959d66b8a2ef5f3e28d413cc302f6d48b6d7c7))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

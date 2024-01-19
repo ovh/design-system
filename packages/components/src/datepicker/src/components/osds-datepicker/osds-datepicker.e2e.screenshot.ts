@@ -1,20 +1,17 @@
 import type { OdsDatepickerAttribute } from './interfaces/attributes';
 import type { OsdsDatepicker } from './osds-datepicker';
 import type { E2EPage } from '@stencil/core/testing';
-
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import { newE2EPage } from '@stencil/core/testing';
-
 import { ODS_DATEPICKER_DAY } from './constants/datepicker-day';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 
-
-
 describe('e2e:osds-datepicker', () => {
+  const baseAttribute = { ariaLabel: null, defaultValue: null, disabled: false, error: false, name: '', value: null };
   let page: E2EPage;
 
-  async function setup({ attributes = {} }: { attributes?: Partial<OdsDatepickerAttribute>, html?: string } = {}) {
-    const stringAttributes = odsComponentAttributes2StringAttributes<OdsDatepickerAttribute>(attributes, DEFAULT_ATTRIBUTE);
+  async function setup({ attributes = {} }: { attributes?: Partial<OdsDatepickerAttribute>, html?: string } = {}): Promise<void> {
+    const stringAttributes = odsComponentAttributes2StringAttributes<OdsDatepickerAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
     await page.setContent(`
@@ -30,7 +27,7 @@ describe('e2e:osds-datepicker', () => {
     await page.emulateTimezone('Europe/London');
 
     await page.evaluate(
-      (datesDisabledJSON, daysOfWeekDisabledJSON, maxDateJSON, minDateJSON, valueJSON) => {
+      (datesDisabledJSON, daysOfWeekDisabledJSON, maxDateJSON, minDateJSON, valueJSON) => { // eslint-disable-line max-params
         const datepicker = document.querySelector('osds-datepicker') as unknown as OsdsDatepicker;
         datesDisabledJSON && (datepicker.datesDisabled = JSON.parse(datesDisabledJSON).map((str: string) => new Date(str)));
         daysOfWeekDisabledJSON && (datepicker.daysOfWeekDisabled = JSON.parse(daysOfWeekDisabledJSON));
@@ -98,7 +95,7 @@ describe('e2e:osds-datepicker', () => {
 
           await page.waitForChanges();
 
-          await page.setViewport({ width: 600, height: 600 });
+          await page.setViewport({ height: 600, width: 600 });
 
           const results = await page.compareScreenshot('datepicker', { fullPage: false, omitBackground: true });
           expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });

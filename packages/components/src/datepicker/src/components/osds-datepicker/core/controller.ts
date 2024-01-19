@@ -1,54 +1,77 @@
-import type { OdsInputValue } from '@ovhcloud/ods-common-core';
+import type { OdsDatepickerValueChangeEventDetail } from '../interfaces/events';
 import type { OsdsDatepicker } from '../osds-datepicker';
+import { OdsCommonFieldMethodController } from '@ovhcloud/ods-common-core';
+import { Datepicker } from 'vanillajs-datepicker';
 
-/**
- * common controller logic for input component used by the different implementations.
- * it contains all the glue between framework implementation and the third party service.
- */
-class OdsDatepickerController {
-  private readonly component: OsdsDatepicker;
-
-  constructor(component: OsdsDatepicker) {
-    this.component = component;
+class OdsDatepickerController<T extends OsdsDatepicker> extends OdsCommonFieldMethodController<T, OdsDatepickerValueChangeEventDetail>{
+  beforeInit(): void {
+    if (!this.component.value) {
+      this.component.value = this.component.defaultValue ?? null;
+    }
+    this.component.internals.setFormValue(this.formatDate(this.component.value, this.component.format));
   }
 
-  onFocus(): void {
-    if (!this.component.disabled) {
-      this.component.hasFocus = true;
-      this.component.emitFocus();
+  formatDate(date?: Date | null, format?: string): string {
+    if (format && date && this.isDate(date)) {
+      return Datepicker.formatDate(date, format);
+    } else {
+      return '';
     }
   }
 
-  onChange(newValue: Date | undefined | null, oldValue?: Date | null): void {
-    if(!this.component.disabled) {
-      if (!this.validateValue(newValue)) {
-        this.component.value = null;
-        this.component.datepickerInstanceAccessor?.setDate({ clear: true });
-        this.component.emitDatepickerValueChange(null, oldValue ? oldValue : null);
-      } else {
-        this.component.value = newValue as OdsInputValue;
-        this.component.datepickerInstanceAccessor?.setDate(newValue);
-        this.component.emitDatepickerValueChange(newValue, oldValue ? oldValue : null);
-      }
-      this.component.hasFocus = false;
+  formatDates(dates?: Date[], format?: string): string[] | undefined {
+    if (!dates) {
+      return undefined;
     }
-  }
 
-  onBlur(): void {
-    this.component.hasFocus = false;
-    this.component.emitBlur();
-  }
+    return dates
+      .map((date) => {
+        if (!this.isDate(date)) {
+          console.warn('One of the date argument is not a valid Date object!', date);
+        }
 
-  onClick(): void {
-    this.component.hasFocus = true;
+        return this.formatDate(date, format || 'dd/mm/yyyy');
+      })
+      .filter((formattedDate) => !!formattedDate);
   }
 
   private getMidnightDate(date: Date): Date {
     return new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
   }
 
+  isDate(date: Date): boolean {
+    // Needed as value from runtime are not TS problem anymore
+    return date instanceof Date && !isNaN(date.valueOf());
+  }
+
+  onChange(newValue: Date | null): void {
+    if (!this.component.disabled) {
+      this.component.value = this.updateDatepickerDate(newValue);
+      this.component.internals.setFormValue(this.formatDate(this.component.value, this.component.format));
+      this.component.hasFocus = false;
+    }
+  }
+
+  onOdsValueChange(value: string | null): void {
+    if (this.component.format) {
+      this.updateDatepickerDate(value ? new Date(Datepicker.parseDate(value, this.component.format)) : null);
+    }
+
+    this.component.internals.setFormValue(value);
+  }
+
+  private updateDatepickerDate(date: Date | null): Date | null {
+    if (this.validateValue(date)) {
+      this.component.datepickerInstanceAccessor?.setDate(date);
+      return date;
+    }
+
+    this.component.datepickerInstanceAccessor?.setDate({ clear: true });
+    return null;
+  }
+
   private validateValue(value?: Date | null | undefined): boolean {
-    if (!value || value === null || isNaN(value.getTime())) {
+    if (!value || !this.isDate(value)) {
       return false;
     }
 

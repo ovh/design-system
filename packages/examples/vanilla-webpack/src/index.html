@@ -40,7 +40,7 @@
 <body>
   <osds-form class="form"
              id="osds-form"
-             initial-values='{ "user": "", "password": "", "textarea": "", "country": "" }'>
+             initial-values='{ "user": "", "password": "", "textarea": "", "country": "", "date": "" }'>
     <div class="form__fields">
       <div class="form__fields__field">
         <osds-text>
@@ -91,6 +91,18 @@
           <osds-select-option value="gb">GB</osds-select-option>
           <osds-select-option value="pt">PT</osds-select-option>
         </osds-select>
+      </div>
+
+      <div class="form__fields__field">
+        <osds-text>
+          Datepicker
+        </osds-text>
+
+        <osds-datepicker format="yyyy-mm-dd"
+                         inline
+                         name="date"
+                         required>
+        </osds-datepicker>
       </div>
     </div>
 

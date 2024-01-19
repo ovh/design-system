@@ -8,16 +8,7 @@ import { OdsCommonFieldMethodController, OdsCommonFieldValidityState, OdsInputVa
  * it contains all the glue between framework implementation and the third party service.
  */
 class OdsSelectController<T extends OsdsSelect> extends OdsCommonFieldMethodController<T, OdsSelectValueChangeEventDetail> {
-  //private _selectOptions: (HTMLElement & OsdsSelectOption)[] = [];
   public selectOptions: (HTMLElement & OsdsSelectOption)[] = [];
-
-  // public get selectOptions(): (HTMLElement & OsdsSelectOption)[] {
-  //   return this._selectOptions;
-  // }
-  //
-  // public set selectOptions(value: (HTMLElement & OsdsSelectOption)[]) {
-  //   this._selectOptions = value;
-  // }
 
   constructor(component: T) {
     super(component);
@@ -138,7 +129,6 @@ class OdsSelectController<T extends OsdsSelect> extends OdsCommonFieldMethodCont
 
   async hasError(): Promise<boolean> {
     const validity = await this.getValidity();
-    console.log(validity)
     return this.component.error || !validity.valid;
   }
 

@@ -444,10 +444,6 @@ export namespace Components {
           * save input allows to set a function that returns a promise. It is called before each time an update is performed and allowing to manage pessimistic update strategy. the checked state will be updated just after the call.
          */
         "save"?: OdsCheckboxAttributeCbk;
-        /**
-          * set a custom tab index for easier navigation
-          * @param value - chosen index
-         */
         "setTabindex": (index: number) => Promise<void>;
         /**
           * update status indicating if the checked state is being modified. `updating` will be `true` until `beforeSave` or `save` are processed. it is used in `pessimistic` update
@@ -622,80 +618,95 @@ export namespace Components {
         "rows": OdsDatagridRow[] | string;
     }
     interface OsdsDatepicker {
-        "ariaLabel": HTMLElement['ariaLabel'];
+        "ariaLabel": string | null;
+        /**
+          * ID of the element that labels the input
+         */
+        "ariaLabelledby"?: string;
+        /**
+          * empty the value
+         */
+        "clear": () => Promise<void>;
         /**
           * Ability to clear the input value
-          * @see OdsDatepickerAttribute.clearable
          */
         "clearable"?: boolean;
         /**
           * Defines the Datepicker's disabled dates
-          * @see OdsDatepickerAttribute.datesDisabled
          */
         "datesDisabled"?: Date[];
         /**
           * Defines the Datepicker's disabled days of the week (monday, tuesday...)
-          * @see OdsDatepickerAttribute.daysOfWeekDisabled
          */
         "daysOfWeekDisabled"?: ODS_DATEPICKER_DAY[];
         /**
-          * Default value of the input
-          * @see OdsDatepickerAttribute.disabled
+          * Value of the Datepicker field
          */
-        "defaultValue": OdsInputValue;
+        "defaultValue": Date | null;
         /**
           * Indicates if the input is disabled or not: see component principles
-          * @see OdsDatepickerAttribute.disabled
          */
         "disabled": boolean;
         /**
           * Indicates if the input shows error or not
-          * @see OdsDatepickerAttribute.error
          */
         "error": boolean;
         /**
           * Defines which format the Datepicker should be applying (supported formats: https://mymth.github.io/vanillajs-datepicker/#/date-string+format?id=date-format)
-          * @see OdsDatepickerAttribute.format
          */
         "format"?: string;
         /**
+          * return the element validity
+         */
+        "getValidity": () => Promise<OdsCommonFieldValidityState | undefined>;
+        /**
           * Defines if the Datepicker should be displayed inline or not
-          * @see OdsDatepickerAttribute.inline
          */
         "inline"?: boolean;
         /**
           * Defines the locale to use
-          * @see OdsDatepickerAttribute.locale
          */
         "locale"?: ODS_DATEPICKER_LOCALE;
         /**
           * Defines the Datepicker's maximum selectable date
-          * @see OdsDatepickerAttribute.maxDate
          */
-        "maxDate"?: Date | null;
+        "maxDate"?: Date;
         /**
           * Defines the Datepicker's minimum selectable date
-          * @see OdsDatepickerAttribute.minDate
          */
-        "minDate"?: Date | null;
+        "minDate"?: Date;
         /**
           * Name of the input field
          */
         "name": string;
         /**
           * Placeholder text for the input
-          * @see OdsDatepickerAttribute.placeholder
          */
         "placeholder"?: string;
+        /**
+          * Indicates if the input is read-only or not
+         */
+        "readOnly"?: boolean;
+        /**
+          * Indicates if the input is required or not
+         */
+        "required"?: boolean;
+        /**
+          * restore the value to the initial state
+         */
+        "reset": () => Promise<void>;
+        /**
+          * active the focus on the input in order to let the user write something
+         */
+        "setFocus": () => Promise<void>;
         /**
           * Defines if the Datepicker should display others month days
          */
         "showSiblingsMonthDays"?: boolean;
         /**
-          * Value of the input field
-          * @see OdsDatepickerAttribute.value
+          * Value of the Datepicker field
          */
-        "value": OdsInputValue;
+        "value": Date | null;
     }
     interface OsdsDivider {
         /**
@@ -910,11 +921,6 @@ export namespace Components {
           * active the focus on the input in order to let the user write something
          */
         "setFocus": () => Promise<void>;
-        /**
-          * set a custom tab index for easier navigation
-          * @param value - chosen index
-         */
-        "setTabindex": (value: number) => Promise<void>;
         /**
           * Step value for the input
          */
@@ -1179,11 +1185,6 @@ export namespace Components {
           * active the focus on the input in order to let the user write something
          */
         "setFocus": () => Promise<void>;
-        /**
-          * set a custom tab index for easier navigation
-          * @param value - chosen index
-         */
-        "setTabindex": (value: number) => Promise<void>;
         /**
           * Current value of the password
          */
@@ -1525,7 +1526,7 @@ export namespace Components {
          */
         "getValidity": () => Promise<OdsCommonFieldValidityState>;
         /**
-          * full width or not: see component principles
+          * Indicates if the select is inline or not: see component principles
          */
         "inline": boolean | undefined;
         /**
@@ -1533,7 +1534,7 @@ export namespace Components {
          */
         "name": string;
         /**
-          * opened or not
+          * Indicates if the select is open or not
          */
         "opened": boolean;
         /**
@@ -1546,11 +1547,6 @@ export namespace Components {
          */
         "setFocus": () => Promise<void>;
         /**
-          * set a custom tab index for easier navigation
-          * @param value - chosen index
-         */
-        "setTabindex": (value: number) => Promise<void>;
-        /**
           * Value of the input field
          */
         "value": OdsInputValue;
@@ -1560,20 +1556,9 @@ export namespace Components {
     interface OsdsSelectOption {
         /**
           * get label of the element
-          * @see OdsSelectOptionMethods.getLabel
          */
         "getLabel": () => Promise<string>;
-        /**
-          * Whether or not it is the selected value (fetched from parent). UI only purpose
-         */
         "selected"?: boolean;
-        /**
-          * @see OdsSelectOptionMethods.setTabIndex
-         */
-        "setTabIndex": (value: number) => Promise<void>;
-        /**
-          * @see OdsSelectOptionAttributes.value
-         */
         "value": OdsInputValue;
     }
     interface OsdsSkeleton {
@@ -1818,11 +1803,6 @@ export namespace Components {
           * active the focus on the input in order to let the user write something
          */
         "setFocus": () => Promise<void>;
-        /**
-          * set a custom tab index for easier navigation
-          * @param value - chosen index
-         */
-        "setTabindex": (value: number) => Promise<void>;
         /**
           * Define if the spelling of the value should be check
          */
@@ -2277,9 +2257,11 @@ declare global {
         new (): HTMLOsdsDatagridElement;
     };
     interface HTMLOsdsDatepickerElementEventMap {
-        "odsDatepickerBlur": void;
-        "odsDatepickerFocus": void;
-        "odsDatepickerValueChange": OdsDatepickerValueChangeEventDetail;
+        "odsBlur": void;
+        "odsClear": void;
+        "odsFocus": void;
+        "odsReset": void;
+        "odsValueChange": OdsDatepickerValueChangeEventDetail;
     }
     interface HTMLOsdsDatepickerElement extends Components.OsdsDatepicker, HTMLStencilElement {
         addEventListener<K extends keyof HTMLOsdsDatepickerElementEventMap>(type: K, listener: (this: HTMLOsdsDatepickerElement, ev: OsdsDatepickerCustomEvent<HTMLOsdsDatepickerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2585,11 +2567,11 @@ declare global {
         new (): HTMLOsdsSearchBarElement;
     };
     interface HTMLOsdsSelectElementEventMap {
-        "odsValueChange": OdsSelectValueChangeEventDetail;
-        "odsFocus": void;
-        "odsClear": void;
-        "odsReset": void;
         "odsBlur": void;
+        "odsClear": void;
+        "odsFocus": void;
+        "odsReset": void;
+        "odsValueChange": OdsSelectValueChangeEventDetail;
     }
     interface HTMLOsdsSelectElement extends Components.OsdsSelect, HTMLStencilElement {
         addEventListener<K extends keyof HTMLOsdsSelectElementEventMap>(type: K, listener: (this: HTMLOsdsSelectElement, ev: OsdsSelectCustomEvent<HTMLOsdsSelectElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -3345,95 +3327,84 @@ declare namespace LocalJSX {
         "rows"?: OdsDatagridRow[] | string;
     }
     interface OsdsDatepicker {
-        "ariaLabel"?: HTMLElement['ariaLabel'];
+        "ariaLabel"?: string | null;
+        /**
+          * ID of the element that labels the input
+         */
+        "ariaLabelledby"?: string;
         /**
           * Ability to clear the input value
-          * @see OdsDatepickerAttribute.clearable
          */
         "clearable"?: boolean;
         /**
           * Defines the Datepicker's disabled dates
-          * @see OdsDatepickerAttribute.datesDisabled
          */
         "datesDisabled"?: Date[];
         /**
           * Defines the Datepicker's disabled days of the week (monday, tuesday...)
-          * @see OdsDatepickerAttribute.daysOfWeekDisabled
          */
         "daysOfWeekDisabled"?: ODS_DATEPICKER_DAY[];
         /**
-          * Default value of the input
-          * @see OdsDatepickerAttribute.disabled
+          * Value of the Datepicker field
          */
-        "defaultValue"?: OdsInputValue;
+        "defaultValue"?: Date | null;
         /**
           * Indicates if the input is disabled or not: see component principles
-          * @see OdsDatepickerAttribute.disabled
          */
         "disabled"?: boolean;
         /**
           * Indicates if the input shows error or not
-          * @see OdsDatepickerAttribute.error
          */
         "error"?: boolean;
         /**
           * Defines which format the Datepicker should be applying (supported formats: https://mymth.github.io/vanillajs-datepicker/#/date-string+format?id=date-format)
-          * @see OdsDatepickerAttribute.format
          */
         "format"?: string;
         /**
           * Defines if the Datepicker should be displayed inline or not
-          * @see OdsDatepickerAttribute.inline
          */
         "inline"?: boolean;
         /**
           * Defines the locale to use
-          * @see OdsDatepickerAttribute.locale
          */
         "locale"?: ODS_DATEPICKER_LOCALE;
         /**
           * Defines the Datepicker's maximum selectable date
-          * @see OdsDatepickerAttribute.maxDate
          */
-        "maxDate"?: Date | null;
+        "maxDate"?: Date;
         /**
           * Defines the Datepicker's minimum selectable date
-          * @see OdsDatepickerAttribute.minDate
          */
-        "minDate"?: Date | null;
+        "minDate"?: Date;
         /**
           * Name of the input field
          */
         "name"?: string;
-        /**
-          * Triggered on blur
-          * @see OdsDatepickerEvent.odsDatepickerBlur
-         */
-        "onOdsDatepickerBlur"?: (event: OsdsDatepickerCustomEvent<void>) => void;
-        /**
-          * Triggered on focus
-          * @see OdsDatepickerEvent.odsDatepickerFocus
-         */
-        "onOdsDatepickerFocus"?: (event: OsdsDatepickerCustomEvent<void>) => void;
-        /**
-          * Triggered on value change
-          * @see OdsDatepickerEvent.odsDatepickerValueChange
-         */
-        "onOdsDatepickerValueChange"?: (event: OsdsDatepickerCustomEvent<OdsDatepickerValueChangeEventDetail>) => void;
+        "onOdsBlur"?: (event: OsdsDatepickerCustomEvent<void>) => void;
+        "onOdsClear"?: (event: OsdsDatepickerCustomEvent<void>) => void;
+        "onOdsFocus"?: (event: OsdsDatepickerCustomEvent<void>) => void;
+        "onOdsReset"?: (event: OsdsDatepickerCustomEvent<void>) => void;
+        "onOdsValueChange"?: (event: OsdsDatepickerCustomEvent<OdsDatepickerValueChangeEventDetail>) => void;
         /**
           * Placeholder text for the input
-          * @see OdsDatepickerAttribute.placeholder
          */
         "placeholder"?: string;
+        /**
+          * Indicates if the input is read-only or not
+         */
+        "readOnly"?: boolean;
+        /**
+          * Indicates if the input is required or not
+         */
+        "required"?: boolean;
         /**
           * Defines if the Datepicker should display others month days
          */
         "showSiblingsMonthDays"?: boolean;
         /**
-          * Value of the input field
-          * @see OdsDatepickerAttribute.value
+          * Value of the Datepicker field
          */
-        "value"?: OdsInputValue;
+        "value"?: Date | null;
     }
     interface OsdsDivider {
         /**
@@ -4204,7 +4175,7 @@ declare namespace LocalJSX {
          */
         "error"?: boolean;
         /**
-          * full width or not: see component principles
+          * Indicates if the select is inline or not: see component principles
          */
         "inline"?: boolean | undefined;
         /**
@@ -4217,7 +4188,7 @@ declare namespace LocalJSX {
         "onOdsReset"?: (event: OsdsSelectCustomEvent<void>) => void;
         "onOdsValueChange"?: (event: OsdsSelectCustomEvent<OdsSelectValueChangeEventDetail>) => void;
         /**
-          * opened or not
+          * Indicates if the select is open or not
          */
         "opened"?: boolean;
         /**
@@ -4234,16 +4205,9 @@ declare namespace LocalJSX {
     interface OsdsSelectOption {
         /**
           * the select value changed
-          * @see OdsSelectOptionEvents.odsSelectOptionClickEventDetail
          */
         "onOdsSelectOptionClick"?: (event: OsdsSelectOptionCustomEvent<OdsSelectOptionClickEventDetail>) => void;
-        /**
-          * Whether or not it is the selected value (fetched from parent). UI only purpose
-         */
         "selected"?: boolean;
-        /**
-          * @see OdsSelectOptionAttributes.value
-         */
         "value"?: OdsInputValue;
     }
     interface OsdsSkeleton {

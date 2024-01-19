@@ -8,11 +8,12 @@ import { ODS_DATEPICKER_LOCALE } from './constants/datepicker-locale';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 
 describe('e2e:osds-datepicker', () => {
+  const baseAttribute = { ariaLabel: null, defaultValue: null, disabled: false, error: false, name: '', value: null };
   let page: E2EPage;
   let el: E2EElement;
 
-  async function setup({ attributes }: { attributes: Partial<OdsDatepickerAttribute> }) {
-    const stringAttributes = odsComponentAttributes2StringAttributes<OdsDatepickerAttribute>(attributes, DEFAULT_ATTRIBUTE);
+  async function setup({ attributes }: { attributes: Partial<OdsDatepickerAttribute> }): Promise<void> {
+    const stringAttributes = odsComponentAttributes2StringAttributes<OdsDatepickerAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
     await page.setContent(`<osds-datepicker ${odsStringAttributes2Str(stringAttributes)}></osds-datepicker>`);
@@ -27,7 +28,7 @@ describe('e2e:osds-datepicker', () => {
     await page.emulateTimezone('Europe/London');
 
     await page.evaluate(
-      (datesDisabledJSON, daysOfWeekDisabledJSON, maxDateJSON, minDateJSON, valueJSON) => {
+      (datesDisabledJSON, daysOfWeekDisabledJSON, maxDateJSON, minDateJSON, valueJSON) => { // eslint-disable-line max-params
         const datepicker = document.querySelector('osds-datepicker') as unknown as OsdsDatepicker;
         datesDisabledJSON && (datepicker.datesDisabled = JSON.parse(datesDisabledJSON).map((str: string) => new Date(str)));
         daysOfWeekDisabledJSON && (datepicker.daysOfWeekDisabled = JSON.parse(daysOfWeekDisabledJSON));
@@ -54,6 +55,7 @@ describe('e2e:osds-datepicker', () => {
   it('should render', async() => {
     await setup({ attributes: {} });
     await page.waitForChanges();
+
     expect(el).not.toBeNull();
     expect(el).toHaveClass('hydrated');
   });
@@ -62,16 +64,20 @@ describe('e2e:osds-datepicker', () => {
     const date = new Date('1999-11-02');
     await setup({ attributes: { value: date } });
     await page.waitForChanges();
+
     expect(el).not.toBeNull();
     expect(el).toHaveClass('hydrated');
+
     const value = await getDatepickerValue();
     expect(value).toEqual(date);
   });
 
   it('should display a datepicker when focused', async() => {
     await setup({ attributes: {} });
+
     await el.click();
     await page.waitForChanges();
+
     const datepicker = await page.find('osds-datepicker >>> .datepicker');
     expect(datepicker).not.toBeNull();
   });
@@ -81,11 +87,14 @@ describe('e2e:osds-datepicker', () => {
     await setup({ attributes: { clearable: true, value: date } });
     await el.click();
     await page.waitForChanges();
+
     let value = await getDatepickerValue();
     expect(value).toEqual(date);
+
     const clearButton = await page.find('osds-datepicker >>> osds-input >>> osds-icon[name="close"]');
     await clearButton.click();
     await page.waitForChanges();
+
     value = await getDatepickerValue();
     expect(value).toEqual(date);
   });
@@ -100,13 +109,17 @@ describe('e2e:osds-datepicker', () => {
   it('should update the value when date is selected from the datepicker', async() => {
     await setup({ attributes: {} });
     await page.waitForChanges();
+
     let value = await getDatepickerValue();
     expect(value).toBe(null);
+
     await el.click();
     await page.waitForChanges();
+
     const dateButton = await page.find('osds-datepicker >>> .datepicker .datepicker-grid .datepicker-cell:first-child');
     await dateButton.click();
     await page.waitForChanges();
+
     value = await getDatepickerValue();
     expect(value).toBeInstanceOf(Date);
   });
@@ -115,9 +128,11 @@ describe('e2e:osds-datepicker', () => {
     await setup({ attributes: { format: 'yyyy/mm/dd' } });
     await el.click();
     await page.waitForChanges();
+
     const dateButton = await page.find('osds-datepicker >>> .datepicker .datepicker-grid .datepicker-cell:first-child');
     await dateButton.click();
     await page.waitForChanges();
+
     const inputElement = await page.find('osds-datepicker >>> osds-input');
     const inputValue = await inputElement.getProperty('value');
     expect(inputValue).toMatch(/^\d{4}\/\d{2}\/\d{2}$/);
@@ -127,9 +142,11 @@ describe('e2e:osds-datepicker', () => {
     await setup({ attributes: {} });
     await el.click();
     await page.waitForChanges();
+
     const dateButton = await page.find('osds-datepicker >>> .datepicker .datepicker-grid .datepicker-cell:first-child');
     await dateButton.click();
     await page.waitForChanges();
+
     const selectedDate = await page.find('osds-datepicker >>> .datepicker .datepicker-grid .datepicker-cell.selected');
     expect(selectedDate).not.toBeNull();
   });
@@ -138,9 +155,11 @@ describe('e2e:osds-datepicker', () => {
     await setup({ attributes: {} });
     await el.click();
     await page.waitForChanges();
+
     const viewSwitch = await page.find('osds-datepicker >>> .datepicker .datepicker-controls .view-switch');
     await viewSwitch.click();
     await page.waitForChanges();
+
     const monthGrid = await page.find('osds-datepicker >>> .datepicker .months');
     expect(monthGrid).not.toBeNull();
   });
@@ -149,11 +168,14 @@ describe('e2e:osds-datepicker', () => {
     await setup({ attributes: {} });
     await el.click();
     await page.waitForChanges();
+
     const viewSwitch = await page.find('osds-datepicker >>> .datepicker .datepicker-controls .view-switch');
     await viewSwitch.click();
     await page.waitForChanges();
+
     await viewSwitch.click();
     await page.waitForChanges();
+
     const yearGrid = await page.find('osds-datepicker >>> .datepicker .years');
     expect(yearGrid).not.toBeNull();
   });
@@ -162,13 +184,17 @@ describe('e2e:osds-datepicker', () => {
     await setup({ attributes: {} });
     await el.click();
     await page.waitForChanges();
+
     const viewSwitch = await page.find('osds-datepicker >>> .datepicker .datepicker-controls .view-switch');
     await viewSwitch.click();
     await page.waitForChanges();
+
     await viewSwitch.click();
     await page.waitForChanges();
+
     await viewSwitch.click();
     await page.waitForChanges();
+
     const decadeGrid = await page.find('osds-datepicker >>> .datepicker .decades');
     expect(decadeGrid).toBeNull();
   });
@@ -177,8 +203,10 @@ describe('e2e:osds-datepicker', () => {
     await setup({ attributes: { daysOfWeekDisabled: [ODS_DATEPICKER_DAY.saturday, ODS_DATEPICKER_DAY.sunday] } });
     await el.click();
     await page.waitForChanges();
+
     let dateButton = await page.find('osds-datepicker >>> .datepicker .datepicker-grid .datepicker-cell:nth-child(3)');
     expect(dateButton).not.toHaveClass('disabled');
+
     dateButton = await page.find('osds-datepicker >>> .datepicker .datepicker-grid .datepicker-cell:first-child');
     expect(dateButton).toHaveClass('disabled');
   });
@@ -193,14 +221,19 @@ describe('e2e:osds-datepicker', () => {
       value: date,
     } });
     await page.waitForChanges();
+
     await el.click();
     await page.waitForChanges();
+
     let value = await getDatepickerValue();
     expect(value).toEqual(date);
+
     const dateButton = await page.find('osds-datepicker >>> .datepicker .datepicker-grid .datepicker-cell:nth-child(7)');
     expect(dateButton).toHaveClass('disabled');
+
     await dateButton.click();
     await page.waitForChanges();
+
     value = await getDatepickerValue();
     expect(value).toEqual(date);
   });
@@ -215,59 +248,76 @@ describe('e2e:osds-datepicker', () => {
       value: date,
     } });
     await page.waitForChanges();
+
     await el.click();
     await page.waitForChanges();
+
     let value = await getDatepickerValue();
     expect(value).toEqual(date);
+
     const dateButton = await page.find('osds-datepicker >>> .datepicker .datepicker-grid .datepicker-cell:nth-child(17)');
     expect(dateButton).not.toHaveClass('disabled');
+
     await dateButton.click();
     await page.waitForChanges();
+
     value = await getDatepickerValue();
     expect(value).toEqual(new Date('2024-01-16'));
   });
 
   it('should disable dates before the minDate', async() => {
-    await setup({ attributes: { minDate: new Date('2023-05-10'), value: new Date('2023-05-15') } });
+    await setup({ attributes: { minDate: new Date('2023-10-02'), value: new Date('2023-10-15') } });
+
     await el.click();
     await page.waitForChanges();
+
     const beforeMinDateButton = await page.find('osds-datepicker >>> .datepicker .datepicker-grid .datepicker-cell:first-child');
     expect(beforeMinDateButton).toHaveClass('disabled');
   });
 
   it('should disable dates after the maxDate', async() => {
     await setup({ attributes: { maxDate: new Date('2023-05-20'), value: new Date('2023-05-15') } });
+
     await el.click();
     await page.waitForChanges();
+
     const afterMaxDateButton = await page.find('osds-datepicker >>> .datepicker .datepicker-grid .datepicker-cell:last-child');
     expect(afterMaxDateButton).toHaveClass('disabled');
   });
 
   it('should change the displayed locale', async() => {
     await setup({ attributes: { locale: ODS_DATEPICKER_LOCALE.FR, value: new Date('2023-05-15') } });
+
     await el.click();
     await page.waitForChanges();
+
     const monthSelector = await page.find('osds-datepicker >>> .datepicker-controls .view-switch');
     expect(monthSelector.innerText).toBe('mai 2023');
   });
 
   it('should displayed sibling month days', async() => {
     await setup({ attributes: { showSiblingsMonthDays: true, value: new Date('2023-05-15') } });
+
     await el.click();
     await page.waitForChanges();
+
     const datepickerNextDays = await page.findAll('osds-datepicker >>> .datepicker-grid .day.next');
     expect(datepickerNextDays).not.toHaveLength(0);
+
     const datepickerPrevDays = await page.findAll('osds-datepicker >>> .datepicker-grid .day.prev');
     expect(datepickerPrevDays).not.toHaveLength(0);
   });
 
   it('should not displayed sibling month days', async() => {
     await setup({ attributes: { showSiblingsMonthDays: false, value: new Date('2023-05-15') } });
+
     await el.click();
     await page.waitForChanges();
+
     const datepickerNextDays = await page.findAll('osds-datepicker >>> .datepicker-grid .day.next');
     const datepickerNextDaysNotDisplayed = datepickerNextDays.every((day) => day.classList.contains('no-displayed'));
     expect(datepickerNextDaysNotDisplayed).toBe(true);
+
     const datepickerPrevDays = await page.findAll('osds-datepicker >>> .datepicker-grid .day.prev');
     const datepickerPrevDaysNotDisplayed = datepickerPrevDays.every((day) => day.classList.contains('no-displayed'));
     expect(datepickerPrevDaysNotDisplayed).toBe(true);
@@ -275,12 +325,15 @@ describe('e2e:osds-datepicker', () => {
 
   it('should not displayed sibling month days after updating datepicker', async() => {
     await setup({ attributes: { showSiblingsMonthDays: false, value: new Date('2023-05-15') } });
+
     await el.click();
     await page.waitForChanges();
     await el.setProperty('daysOfWeekDisabled', [ODS_DATEPICKER_DAY.saturday, ODS_DATEPICKER_DAY.sunday]);
+
     const datepickerNextDays = await page.findAll('osds-datepicker >>> .datepicker-grid .day.next');
     const datepickerNextDaysNotDisplayed = datepickerNextDays.every((day) => day.classList.contains('no-displayed'));
     expect(datepickerNextDaysNotDisplayed).toBe(true);
+
     const datepickerPrevDays = await page.findAll('osds-datepicker >>> .datepicker-grid .day.prev');
     const datepickerPrevDaysNotDisplayed = datepickerPrevDays.every((day) => day.classList.contains('no-displayed'));
     expect(datepickerPrevDaysNotDisplayed).toBe(true);
@@ -288,12 +341,14 @@ describe('e2e:osds-datepicker', () => {
 
   it('should not navigate on hidden sibling month days', async() => {
     await setup({ attributes: { showSiblingsMonthDays: false, value: new Date('2023-05-15') } });
+
     await el.click();
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
+
     const value = await getDatepickerValue();
     expect(value).toEqual(new Date('2023-04-30T23:00:00.000Z'));
   });

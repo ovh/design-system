@@ -14,5 +14,16 @@
     height="300"
     is-selectable>
   </osds-datagrid>
+
+  <osds-form id="osdsForm" initial-values='{ "user": "test", "password": "" }'>
+    <div>
+      <osds-input name="user" inline type="text" clearable required>
+      </osds-input>
+
+      <osds-input type="text" name="password" inline></osds-input>
+    </div>
+    <osds-button type="reset" inline>Reset</osds-button>
+    <osds-button type="submit" inline>Submit</osds-button>
+  </osds-form>
 </body>
 </html>

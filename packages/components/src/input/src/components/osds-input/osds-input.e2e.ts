@@ -456,6 +456,7 @@ describe('e2e:osds-input', () => {
             valueMissing: false,
           },
           value: '',
+          name: '',
         };
       });
 

@@ -1,336 +1,319 @@
 jest.mock('./core/controller'); // keep jest.mock before any
 
-import type { OdsTextAreaAttribute } from './interfaces/attributes';
+import type { OdsTextareaAttribute } from './interfaces/attributes';
 import type { SpecPage } from '@stencil/core/testing';
-import { OdsFormControl } from '@ovhcloud/ods-common-core';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
-import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { newSpecPage } from '@stencil/core/testing';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { ODS_TEXTAREA_SIZE } from './constants/textarea-size';
 import { OdsTextAreaController } from './core/controller';
 import { OsdsTextArea } from './osds-textarea';
 
 describe('spec:osds-textarea', () => {
-  const baseAttribute = { ariaLabel: null, hasFocus: false, spellcheck: false, value: '' };
+  const baseAttribute = { ariaLabel: null, defaultValue: null, disabled: false, error: false, name: '', spellcheck: false, value: null };
   let page: SpecPage;
-  let htmlTextArea: HTMLTextAreaElement | null | undefined;
+  let htmlTextarea: HTMLTextAreaElement | null | undefined;
   let instance: OsdsTextArea;
-  let controller: OdsTextAreaController;
+  let controller: OdsTextAreaController<OsdsTextArea>;
 
   afterEach(() => {
     jest.clearAllMocks();
   });
 
-  async function setup({ attributes = {} }: { attributes?: Partial<OdsTextAreaAttribute> } = {}) {
-    const stringAttributes = odsComponentAttributes2StringAttributes<OdsTextAreaAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
+  async function setup({ attributes = {} }: { attributes?: Partial<OdsTextareaAttribute> } = {}): Promise<void> {
+    const stringAttributes = odsComponentAttributes2StringAttributes<OdsTextareaAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
 
     page = await newSpecPage({
       components: [OsdsTextArea],
       html: `<osds-textarea ${odsStringAttributes2Str(stringAttributes)}></osds-textarea>`,
     });
 
-    htmlTextArea = page.root?.shadowRoot?.querySelector('textarea');
     instance = page.rootInstance;
-    controller = (OdsTextAreaController as unknown as jest.SpyInstance<OdsTextAreaController, unknown[]>).mock.instances[0];
+    htmlTextarea = page.root?.shadowRoot?.querySelector('textarea');
+    controller = (OdsTextAreaController as unknown as jest.SpyInstance<OdsTextAreaController<OsdsTextArea>, unknown[]>).mock.instances[0];
   }
 
   it('should render', async() => {
     await setup();
+
     expect(page.root?.shadowRoot).toBeTruthy();
     expect(instance).toBeTruthy();
   });
 
   it('should use an html textarea', async() => {
     await setup();
-    expect(htmlTextArea).toBeTruthy();
+
+    expect(htmlTextarea).toBeTruthy();
   });
 
   describe('attributes', () => {
     const config = {
-      instance: () => instance,
-      page: () => page,
-      root: () => page.root,
-      wait: () => page.waitForChanges(),
+      instance: (): OsdsTextArea => instance,
+      page: (): SpecPage => page,
+      root: (): SpecPage['root'] => page.root,
+      wait: (): Promise<void> => page.waitForChanges(),
     };
 
-    describe('color', () => {
-      odsUnitTestAttribute<OdsTextAreaAttribute, 'color'>({
-        name: 'color',
-        defaultValue: DEFAULT_ATTRIBUTE.color,
-        newValue: ODS_THEME_COLOR_INTENT.primary,
-        value: ODS_THEME_COLOR_INTENT.default,
-        setup: (value) => setup({ attributes: { ['color']: value } }),
-        ...config,
-      });
-    });
-
-    describe('contrasted', () => {
-      odsUnitTestAttribute<OdsTextAreaAttribute, 'contrasted'>({
-        name: 'contrasted',
-        defaultValue: DEFAULT_ATTRIBUTE.contrasted,
-        newValue: false,
-        value: true,
-        setup: (value) => setup({ attributes: { ['contrasted']: value } }),
-        ...config,
-      });
-    });
-
-    describe('disabled', () => {
-      odsUnitTestAttribute<OdsTextAreaAttribute, 'disabled'>({
-        name: 'disabled',
-        defaultValue: DEFAULT_ATTRIBUTE.disabled,
-        newValue: false,
-        value: true,
-        setup: (value) => setup({ attributes: { ['disabled']: value } }),
-        ...config,
-      });
-    });
-
-    describe('inline', () => {
-      odsUnitTestAttribute<OdsTextAreaAttribute, 'inline'>({
-        name: 'inline',
-        defaultValue: DEFAULT_ATTRIBUTE.inline,
-        newValue: false,
-        value: true,
-        setup: (value) => setup({ attributes: { ['inline']: value } }),
-        ...config,
-      });
-    });
-
-    describe('placeholder', () => {
-      odsUnitTestAttribute<OdsTextAreaAttribute, 'placeholder'>({
-        name: 'placeholder',
-        defaultValue: DEFAULT_ATTRIBUTE.placeholder,
+    describe('ariaLabel', () => {
+      odsUnitTestAttribute<OdsTextareaAttribute, 'ariaLabel'>({
+        defaultValue: DEFAULT_ATTRIBUTE.ariaLabel,
+        name: 'ariaLabel',
         newValue: 'oles',
+        setup: (value) => setup({ attributes: { ['ariaLabel']: value } }),
         value: 'ipsum',
-        setup: (value) => setup({ attributes: { ['placeholder']: value } }),
         ...config,
       });
     });
 
-    describe('defaultValue', () => {
-      odsUnitTestAttribute<OdsTextAreaAttribute, 'defaultValue'>({
-        name: 'defaultValue',
-        defaultValue: DEFAULT_ATTRIBUTE.defaultValue,
+    describe('ariaLabelledby', () => {
+      odsUnitTestAttribute<OdsTextareaAttribute, 'ariaLabelledby'>({
+        defaultValue: undefined,
+        name: 'ariaLabelledby',
         newValue: 'oles',
+        setup: (value) => setup({ attributes: { ['ariaLabelledby']: value } }),
         value: 'ipsum',
-        setup: (value) => setup({ attributes: { ['defaultValue']: value } }),
         ...config,
       });
     });
 
     describe('cols', () => {
-      odsUnitTestAttribute<OdsTextAreaAttribute, 'cols'>({
+      odsUnitTestAttribute<OdsTextareaAttribute, 'cols'>({
+        defaultValue: undefined,
         name: 'cols',
-        defaultValue: DEFAULT_ATTRIBUTE.cols,
         newValue: 1,
-        value: 0,
         setup: (value) => setup({ attributes: { ['cols']: value } }),
+        value: 2,
         ...config,
       });
     });
 
-    describe('rows', () => {
-      odsUnitTestAttribute<OdsTextAreaAttribute, 'rows'>({
-        name: 'rows',
-        defaultValue: DEFAULT_ATTRIBUTE.rows,
-        newValue: 1,
-        value: 0,
-        setup: (value) => setup({ attributes: { ['rows']: value } }),
-        ...config,
-      });
-    });
-
-    describe('size', () => {
-      odsUnitTestAttribute<OdsTextAreaAttribute, 'size'>({
-        name: 'size',
-        defaultValue: DEFAULT_ATTRIBUTE.size,
-        newValue: ODS_TEXTAREA_SIZE.md,
-        value: ODS_TEXTAREA_SIZE.md,
-        setup: (value) => setup({ attributes: { ['size']: value } }),
-        ...config,
-      });
-    });
-
-    describe('spellcheck', () => {
-      odsUnitTestAttribute<OdsTextAreaAttribute, 'spellcheck'>({
-        name: 'spellcheck',
-        defaultValue: DEFAULT_ATTRIBUTE.spellcheck,
-        newValue: false,
-        value: true,
-        setup: (value) => setup({ attributes: { ['spellcheck']: value } }),
-        ...config,
-      });
-    });
-
-    describe('readOnly', () => {
-      odsUnitTestAttribute<OdsTextAreaAttribute, 'readOnly'>({
-        name: 'readOnly',
-        defaultValue: DEFAULT_ATTRIBUTE.readOnly,
-        newValue: false,
-        value: true,
-        setup: (value) => setup({ attributes: { ['readOnly']: value } }),
-        ...config,
-      });
-    });
-
-    describe('required', () => {
-      odsUnitTestAttribute<OdsTextAreaAttribute, 'required'>({
-        name: 'required',
-        defaultValue: DEFAULT_ATTRIBUTE.required,
-        newValue: false,
-        value: true,
-        setup: (value) => setup({ attributes: { ['required']: value } }),
-        ...config,
-      });
-    });
-
-    describe('resizable', () => {
-      odsUnitTestAttribute<OdsTextAreaAttribute, 'resizable'>({
-        name: 'resizable',
-        defaultValue: DEFAULT_ATTRIBUTE.resizable,
-        newValue: false,
-        value: true,
-        setup: (value) => setup({ attributes: { ['resizable']: value } }),
-        ...config,
-      });
-    });
-
-    describe('value', () => {
-      odsUnitTestAttribute<OdsTextAreaAttribute, 'value'>({
-        name: 'value',
-        defaultValue: DEFAULT_ATTRIBUTE.value,
+    describe('defaultValue', () => {
+      odsUnitTestAttribute<OdsTextareaAttribute, 'defaultValue'>({
+        defaultValue: DEFAULT_ATTRIBUTE.defaultValue,
+        name: 'defaultValue',
         newValue: 'oles',
+        setup: (value) => setup({ attributes: { ['defaultValue']: value } }),
         value: 'ipsum',
-        setup: (value) => setup({ attributes: { ['value']: value } }),
+        ...config,
+      });
+    });
+
+    describe('disabled', () => {
+      odsUnitTestAttribute<OdsTextareaAttribute, 'disabled'>({
+        defaultValue: DEFAULT_ATTRIBUTE.disabled,
+        name: 'disabled',
+        newValue: false,
+        setup: (value) => setup({ attributes: { ['disabled']: value } }),
+        value: true,
+        ...config,
+      });
+    });
+
+    describe('error', () => {
+      odsUnitTestAttribute<OdsTextareaAttribute, 'error'>({
+        defaultValue: DEFAULT_ATTRIBUTE.error,
+        name: 'error',
+        newValue: false,
+        setup: (value) => setup({ attributes: { ['error']: value } }),
+        value: true,
+        ...config,
+      });
+    });
+
+    describe('inline', () => {
+      odsUnitTestAttribute<OdsTextareaAttribute, 'inline'>({
+        defaultValue: DEFAULT_ATTRIBUTE.inline,
+        name: 'inline',
+        newValue: false,
+        setup: (value) => setup({ attributes: { ['inline']: value } }),
+        value: true,
         ...config,
       });
     });
 
     describe('name', () => {
-      odsUnitTestAttribute<OdsTextAreaAttribute, 'name'>({
-        name: 'name',
+      odsUnitTestAttribute<OdsTextareaAttribute, 'name'>({
         defaultValue: DEFAULT_ATTRIBUTE.name,
+        name: 'name',
         newValue: 'oles',
-        value: 'ipsum',
         setup: (value) => setup({ attributes: { ['name']: value } }),
+        value: 'ipsum',
+        ...config,
+      });
+    });
+
+    describe('placeholder', () => {
+      odsUnitTestAttribute<OdsTextareaAttribute, 'placeholder'>({
+        defaultValue: undefined,
+        name: 'placeholder',
+        newValue: 'oles',
+        setup: (value) => setup({ attributes: { ['placeholder']: value } }),
+        value: 'ipsum',
+        ...config,
+      });
+    });
+
+    describe('readOnly', () => {
+      odsUnitTestAttribute<OdsTextareaAttribute, 'readOnly'>({
+        defaultValue: undefined,
+        name: 'readOnly',
+        newValue: false,
+        setup: (value) => setup({ attributes: { ['readOnly']: value } }),
+        value: true,
+        ...config,
+      });
+    });
+
+    describe('required', () => {
+      odsUnitTestAttribute<OdsTextareaAttribute, 'required'>({
+        defaultValue: undefined,
+        name: 'required',
+        newValue: false,
+        setup: (value) => setup({ attributes: { ['required']: value } }),
+        value: true,
+        ...config,
+      });
+    });
+
+    describe('resizable', () => {
+      odsUnitTestAttribute<OdsTextareaAttribute, 'resizable'>({
+        defaultValue: DEFAULT_ATTRIBUTE.resizable,
+        name: 'resizable',
+        newValue: false,
+        setup: (value) => setup({ attributes: { ['resizable']: value } }),
+        value: true,
+        ...config,
+      });
+    });
+
+    describe('rows', () => {
+      odsUnitTestAttribute<OdsTextareaAttribute, 'rows'>({
+        defaultValue: undefined,
+        name: 'rows',
+        newValue: 1,
+        setup: (value) => setup({ attributes: { ['rows']: value } }),
+        value: 2,
+        ...config,
+      });
+    });
+
+    describe('spellcheck', () => {
+      odsUnitTestAttribute<OdsTextareaAttribute, 'spellcheck'>({
+        defaultValue: DEFAULT_ATTRIBUTE.spellcheck,
+        name: 'spellcheck',
+        newValue: true,
+        setup: (value) => setup({ attributes: { ['spellcheck']: value } }),
+        value: false,
+        ...config,
+      });
+    });
+
+    describe('textAreaId', () => {
+      odsUnitTestAttribute<OdsTextareaAttribute, 'textAreaId'>({
+        defaultValue: undefined,
+        name: 'textAreaId',
+        newValue: '1',
+        setup: (value) => setup({ attributes: { ['textAreaId']: value } }),
+        value: '2',
+        ...config,
+      });
+    });
+
+    describe('value', () => {
+      odsUnitTestAttribute<OdsTextareaAttribute, 'value'>({
+        defaultValue: DEFAULT_ATTRIBUTE.value,
+        name: 'value',
+        newValue: 'oles',
+        setup: (value) => setup({ attributes: { ['value']: value } }),
+        value: 'ipsum',
         ...config,
       });
     });
   });
 
   describe('events', () => {
-    it('odsValueChange', async() => {
+    it('should have all expected event emitters', async() => {
       await setup();
-      expect(instance.odsValueChange).toBeTruthy();
-    });
 
-    it('odsBlur', async() => {
-      await setup();
-      expect(instance.odsBlur).toBeTruthy();
-    });
-
-    it('odsFocus', async() => {
-      await setup();
-      expect(instance.odsFocus).toBeTruthy();
+      expect(instance.odsBlur).toBeDefined();
+      expect(instance.odsClear).toBeDefined();
+      expect(instance.odsFocus).toBeDefined();
+      expect(instance.odsReset).toBeDefined();
+      expect(instance.odsValueChange).toBeDefined();
     });
   });
 
-  describe('controller', () => {
-    describe('watchers', () => {
-      it('should call registerFormControl on formControl change', async() => {
-        const formControl = new OdsFormControl('id');
+  describe('methods', () => {
+    describe('clear', () => {
+      it('should call controller clear method', async() => {
         await setup();
-        instance.formControl = formControl;
-        await page.waitForChanges();
 
-        expect(controller.registerFormControl).toHaveBeenCalledTimes(1);
-        expect(controller.registerFormControl).toHaveBeenCalledWith(formControl);
-      });
-
-      it('should call onValueChange on value change', async() => {
-        const value = 'Text area';
-        const oldValue = 'Old value';
-        await setup({ attributes: { value: oldValue } });
-        instance.value = value;
-        await page.waitForChanges();
-
-        expect(controller.onValueChange).toHaveBeenCalledTimes(1);
-        expect(controller.onValueChange).toHaveBeenCalledWith(value, oldValue);
-      });
-    });
-
-    describe('lifecycle', () => {
-      it('should call beforeInit on init', async() => {
-        await setup();
-        expect(controller.beforeInit).toHaveBeenCalledTimes(1);
-        expect(controller.beforeInit).toHaveBeenCalledWith();
-      });
-    });
-
-    describe('events', () => {
-      it('should call onBlur when blur', async() => {
-        await setup();
-        instance?.onBlur();
-
-        expect(controller.onBlur).toHaveBeenCalledTimes(1);
-        expect(controller.onBlur).toHaveBeenCalledWith();
-      });
-
-      it('should call onInput when input', async() => {
-        const event = new Event('');
-        await setup();
-        instance?.onInput(event);
-
-        expect(controller.onInput).toHaveBeenCalledTimes(1);
-        expect(controller.onInput).toHaveBeenCalledWith(event);
-      });
-
-      it('should call onFocus when focus', async() => {
-        await setup();
-        if (htmlTextArea) {
-          htmlTextArea.focus = jest.fn();
-        }
-        instance?.onFocus();
-
-        expect(controller.onFocus).toHaveBeenCalledTimes(1);
-        expect(controller.onFocus).toHaveBeenCalledWith();
-      });
-    });
-
-    describe('methods', () => {
-      it('should call getTextAreaValidity from getValidity method', async() => {
-        await setup();
-        await instance?.getValidity();
-
-        expect(controller.getTextAreaValidity).toHaveBeenCalledTimes(1);
-        expect(controller.getTextAreaValidity).toHaveBeenCalledWith();
-      });
-
-      it('should call clear from clear method', async() => {
-        await setup();
-        await instance?.clear();
-
-        expect(controller.clear).toHaveBeenCalledTimes(1);
+        await instance.clear();
         expect(controller.clear).toHaveBeenCalled();
       });
+    });
 
-      it('should call reset from reset method', async() => {
+    describe('getValidity', () => {
+      it('should return undefined if textareElement is not defined', async() => {
         await setup();
-        await instance?.reset();
+        delete instance.textareaElement;
 
-        expect(controller.reset).toHaveBeenCalledTimes(1);
-        expect(controller.reset).toHaveBeenCalled();
+        const validity = await instance.getValidity();
+
+        expect(validity).toBe(undefined);
+        expect(controller.getValidity).not.toHaveBeenCalled();
       });
 
-      it('should call setTextAreaTabindex from setTextAreaTabindex method', async() => {
-        const n = 1;
+      it('should call controller getValidity method', async() => {
         await setup();
-        await instance?.setTextAreaTabindex(n);
 
-        expect(controller.setTextAreaTabindex).toHaveBeenCalledTimes(1);
-        expect(controller.setTextAreaTabindex).toHaveBeenCalledWith(n);
+        await instance.getValidity();
+
+        expect(controller.getValidity).toHaveBeenCalledWith(instance.textareaElement);
+      });
+    });
+
+    describe('reset', () => {
+      it('should call controller reset method', async() => {
+        await setup();
+
+        await instance.reset();
+
+        expect(controller.reset).toHaveBeenCalled();
+      });
+    });
+
+    describe('setFocus', () => {
+      it('should call controller setFocus method', async() => {
+        await setup();
+
+        await instance.setFocus();
+
+        expect(controller.setFocus).toHaveBeenCalledWith(instance.textareaElement);
+      });
+    });
+
+    describe('setTabindex', () => {
+      it('should call controller setTabindex method', async() => {
+        const dummyValue = 42;
+        await setup();
+
+        await instance.setTabindex(dummyValue);
+
+        expect(controller.setTabindex).toHaveBeenCalledWith(dummyValue);
+      });
+    });
+  });
+
+  describe('watchers', () => {
+    describe('value', () => {
+      it('should call controller onValueChange method', async() => {
+        const dummyValue = 'dummy value';
+        const dummyNewValue = 'dummy new value';
+        await setup({ attributes: { value: dummyValue } });
+
+        instance.value = dummyNewValue;
+
+        expect(controller.onValueChange).toHaveBeenCalledWith(dummyNewValue, dummyValue);
       });
     });
   });

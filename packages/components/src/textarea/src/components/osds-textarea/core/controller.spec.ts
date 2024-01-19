@@ -1,7 +1,6 @@
-import type { OdsTextAreaValidityState, OdsValidityStateUnion } from '@ovhcloud/ods-common-core';
-import { OdsFormControl } from '@ovhcloud/ods-common-core';
+import type { OsdsTextArea } from '../osds-textarea';
+import type { OdsCommonFieldValidityState } from '@ovhcloud/ods-common-core';
 import { OdsTextAreaController } from './controller';
-import { OsdsTextArea } from '../osds-textarea';
 
 class OdsTextAreaMock {
   constructor(attribute: Partial<OsdsTextArea>) {
@@ -20,24 +19,22 @@ class OdsTextAreaMock {
   onInput = jest.fn();
   reset = jest.fn();
   setFocus = jest.fn();
-  setTextAreaTabindex = jest.fn();
+  setTabindex = jest.fn();
 
   internals = {
     setFormValue: jest.fn()
   };
+
+  textareaElement = {
+    setCustomValidity: jest.fn(),
+  };
 }
 
 describe('ods-textarea-controller', () => {
-  let controller: OdsTextAreaController;
+  let controller: OdsTextAreaController<OsdsTextArea>;
   let component: OsdsTextArea;
-  let spyOnHandleTextAreaValue: jest.SpyInstance<void, jest.ArgsType<OdsTextAreaController['handleTextAreaValue']>>;
-  let spyOnRegisterFormControl: jest.SpyInstance<void, jest.ArgsType<OdsTextAreaController['registerFormControl']>>;
-  let spyOnEmitBlur: jest.SpyInstance<void, jest.ArgsType<OsdsTextArea['emitBlur']>>;
-  let spyOnEmitFocus: jest.SpyInstance<void, jest.ArgsType<OsdsTextArea['emitFocus']>>;
-  let spyOnEmitChange: jest.SpyInstance<void, jest.ArgsType<OsdsTextArea['emitChange']>>;
-  let spyOnRegister: jest.SpyInstance<void, jest.ArgsType<OdsFormControl<OdsValidityStateUnion>['register']>>;
 
-  function setup(attributes: Partial<OsdsTextArea> = {}) {
+  function setup(attributes: Partial<OsdsTextArea> = {}): void {
     component = new OdsTextAreaMock(attributes) as unknown as OsdsTextArea;
     controller = new OdsTextAreaController(component);
   }
@@ -46,215 +43,127 @@ describe('ods-textarea-controller', () => {
     jest.clearAllMocks();
   });
 
-  describe('methods', () => {
-    describe('handleTextareaValue', () => {
-      it('should reset component value if new value is empty', () => {
-        const value = 'Text area';
-        setup({ value });
-        expect(component.value).toBe(value);
-        controller.handleTextAreaValue('');
+  describe('beforeInit', () => {
+    it('should set value with defaultValue if value is undefined', () => {
+      const defaultValue = 'default';
+      setup({ defaultValue });
 
-        expect(component.value).toBe('');
-      });
+      controller.beforeInit();
 
-      it('should not change component value if component is disabled', () => {
-        const value = 'Text area';
-        setup({ disabled: true, value });
-        expect(component.value).toBe(value);
-        controller.handleTextAreaValue('');
-
-        expect(component.value).toBe(value);
-      });
-
-      it('should not change component value if component is not empty', () => {
-        const value = 'Text area';
-        setup({ disabled: true, value });
-        expect(component.value).toBe(value);
-        controller.handleTextAreaValue('New value');
-
-        expect(component.value).toBe(value);
-      });
+      expect(component.value).toBe(defaultValue);
+      expect(component.internals.setFormValue).toHaveBeenCalledWith(defaultValue);
     });
 
-    describe('getTextAreaValidity', () => {
-      it('should return default OdsTextAreaValidityState', () => {
-        const defaultValidityState: OdsTextAreaValidityState = {
-          valid: true,
-          valueMissing: false,
-          invalid: false,
-          customError: false,
-        };
-        setup();
-        const validity = controller.getTextAreaValidity();
+    it('should set value as null if value and defaultValue are undefined', () => {
+      setup();
 
-        expect(validity).toEqual(defaultValidityState);
-      });
+      controller.beforeInit();
 
-      it('should return textarea validity (valid case)', () => {
-        const textAreaEl = { validity: { valid: true } } as HTMLTextAreaElement;
-        setup();
-        const validity = controller.getTextAreaValidity(textAreaEl);
+      expect(component.value).toBe(null);
+      expect(component.internals.setFormValue).toHaveBeenCalledWith('');
+    });
+  });
 
-        expect(validity).toEqual({
-          valid: true,
-          valueMissing: undefined,
-          customError: undefined,
-          invalid: false,
-        });
-      });
+  describe('hasError', (): void => {
+    it('should return false if the texteara element is not defined', async() => {
+      setup();
+      delete component.textareaElement;
 
-      it('should return textarea validity (invalid case)', () => {
-        const textAreaEl = { validity: { valid: false } } as HTMLTextAreaElement;
-        setup();
-        const validity = controller.getTextAreaValidity(textAreaEl);
-
-        expect(validity).toEqual({
-          valid: false,
-          valueMissing: undefined,
-          customError: undefined,
-          invalid: true,
-        });
-      });
+      expect(await controller.hasError()).toBe(false);
     });
 
-    describe('onInput', () => {
-      it('should call handleTextAreaValue', () => {
-        const textInputEl = document.createElement('textarea');
-        textInputEl.value = 'Text area';
-        setup({ textInputEl });
-        spyOnHandleTextAreaValue = jest.spyOn(controller, 'handleTextAreaValue');
-        controller.onInput(new Event(''));
+    it('should return false if the component validity is true', async() => {
+      setup();
+      jest.spyOn(controller, 'getValidity').mockResolvedValue({ valid: true } as unknown as OdsCommonFieldValidityState);
 
-        expect(spyOnHandleTextAreaValue).toHaveBeenCalledTimes(1);
-        expect(spyOnHandleTextAreaValue).toHaveBeenCalledWith('Text area');
-      });
-
-      it('should not call handleTextAreaValue if textInputEl is undefined', () => {
-        setup();
-        controller.onInput(new Event(''));
-
-        expect(spyOnHandleTextAreaValue).not.toHaveBeenCalled();
-      });
+      expect(await controller.hasError()).toBe(false);
     });
 
-    describe('onBlur', () => {
-      it('should call emitBlur', () => {
-        setup();
-        spyOnEmitBlur = jest.spyOn(component, 'emitBlur');
-        controller.onBlur();
+    it('should return true if the component error prop is true', async() => {
+      setup({ error: true });
+      jest.spyOn(controller, 'getValidity').mockResolvedValue({} as unknown as OdsCommonFieldValidityState);
 
-        expect(spyOnEmitBlur).toHaveBeenCalledTimes(1);
-        expect(spyOnEmitBlur).toHaveBeenCalledWith();
-      });
-
-      it('should have hasFocus to false', () => {
-        setup({ hasFocus: true });
-        controller.onBlur();
-
-        expect(component.hasFocus).toBe(false);
-      });
+      expect(await controller.hasError()).toBe(true);
     });
 
-    describe('onFocus', () => {
-      it('should call emitFocus', () => {
-        setup();
-        spyOnEmitFocus = jest.spyOn(component, 'emitFocus');
-        controller.onFocus();
+    it('should return true if the component validity is false', async() => {
+      setup();
+      jest.spyOn(controller, 'getValidity').mockResolvedValue({ valid: false } as unknown as OdsCommonFieldValidityState);
 
-        expect(spyOnEmitFocus).toHaveBeenCalledTimes(1);
-        expect(spyOnEmitFocus).toHaveBeenCalledWith();
-      });
+      expect(await controller.hasError()).toBe(true);
+    });
+  });
+
+  describe('onInput', (): void => {
+    const dummyEvent = { preventDefault: (): void => {} };
+    const dummyValue = 'dummy value';
+
+    beforeEach(() => {
+      jest.spyOn(dummyEvent, 'preventDefault');
     });
 
-    describe('registerFormControl', () => {
-      it('should call formControl.register', () => {
-        const formControl = new OdsFormControl('id');
-        setup();
-        spyOnRegister = jest.spyOn(formControl, 'register');
-        controller.registerFormControl(formControl);
+    it('should do nothing if component is disabled', () => {
+      setup({ disabled: true, value: dummyValue });
 
-        expect(spyOnRegister).toHaveBeenCalledTimes(1);
-        expect(spyOnRegister).toHaveBeenCalledWith(component);
-      });
+      controller.onInput(dummyEvent as Event);
+
+      expect(dummyEvent.preventDefault).toHaveBeenCalled();
+      expect(component.value).toBe(dummyValue);
     });
 
-    describe('emitValue', () => {
-      it('should call formControl.register', () => {
-        setup();
-        spyOnEmitChange = jest.spyOn(component, 'emitChange');
-        controller.emitValue('New value', 'Old value');
+    it('should update component value with textarea element value', () => {
+      const textareaElement = document.createElement('textarea');
+      textareaElement.value = dummyValue;
+      setup({ textareaElement });
 
-        expect(spyOnEmitChange).toHaveBeenCalledTimes(1);
-        expect(spyOnEmitChange).toHaveBeenCalledWith('New value', 'Old value');
-      });
+      controller.onInput(dummyEvent as Event);
+
+      expect(dummyEvent.preventDefault).toHaveBeenCalled();
+      expect(component.value).toBe(dummyValue);
     });
 
-    describe('hasError', () => {
-      it('should return true if component.error is true', () => {
-        const error = true;
-        setup({ error });
-        const hasError = controller.hasError();
+    it('should update component value with null value if textarea element is not defined', () => {
+      setup();
 
-        expect(hasError).toBe(true);
-      });
+      controller.onInput(dummyEvent as Event);
 
-      it('should return true if OdsTextAreaValidityState.invalid is true', () => {
-        setup();
-        controller.getTextAreaValidity = jest.fn().mockImplementation(() => {
-          return { invalid: true };
-        });
-        const hasError = controller.hasError();
+      expect(dummyEvent.preventDefault).toHaveBeenCalled();
+      expect(component.value).toBe(null);
+    });
+  });
 
-        expect(hasError).toBe(true);
-      });
+  describe('onValueChange', () => {
+    const dummyOldValue = 'dummy old value';
+    const dummyValue = 'dummy value';
 
-      it('should return false if component.error and OdsTextAreaValidityState.invalid are false', () => {
-        const error = false;
-        setup({ error });
-        controller.getTextAreaValidity = jest.fn().mockImplementation(() => {
-          return { invalid: false };
-        });
-        const hasError = controller.hasError();
+    it('should set set form value, no custom validity and emit change if no textarea element is defined', () => {
+      delete component.textareaElement;
 
-        expect(hasError).toBe(false);
-      });
+      controller.onValueChange(dummyValue, dummyOldValue);
+
+      expect(component.internals.setFormValue).toHaveBeenCalledWith(dummyValue);
+      expect(component.emitChange).toHaveBeenCalledWith(dummyValue, dummyOldValue);
     });
 
-    describe('beforeInit', () => {
-      it('should call registerFormControl', () => {
-        const formControl = new OdsFormControl('id');
-        setup({ formControl });
-        spyOnRegisterFormControl = jest.spyOn(controller, 'registerFormControl');
-        controller.beforeInit();
+    it('should set set form value, empty custom validity and emit change if no forbidden values', () => {
+      setup();
 
-        expect(spyOnRegisterFormControl).toHaveBeenCalledTimes(1);
-        expect(spyOnRegisterFormControl).toHaveBeenCalledWith(formControl);
-      });
+      controller.onValueChange(dummyValue, dummyOldValue);
 
-      it('should set value with defaultValue if value is undefined', () => {
-        const defaultValue = 'default';
-        setup({ defaultValue });
-        controller.beforeInit();
-
-        expect(component.value).toBe(defaultValue);
-      });
-
-      it('should set value with empty string if value and defaultValue are undefined', () => {
-        setup();
-        controller.beforeInit();
-
-        expect(component.value).toBe('');
-      });
+      expect(component.textareaElement?.setCustomValidity).toHaveBeenCalledWith('');
+      expect(component.internals.setFormValue).toHaveBeenCalledWith(dummyValue);
+      expect(component.emitChange).toHaveBeenCalledWith(dummyValue, dummyOldValue);
     });
 
-    describe('setTextAreaTabindex', () => {
-      it('should set textInputTabIndex value', () => {
-        const n = 1 + Math.round(Math.random() * 5);
-        setup();
-        controller.setTextAreaTabindex(n);
+    it('should set set form value, custom validity and emit change if forbidden values are found', () => {
+      setup();
+      spyOn(controller, 'hasForbiddenValue').and.returnValue(true);
 
-        expect(component.textInputTabIndex).toBe(n);
-      });
+      controller.onValueChange(dummyValue, dummyOldValue);
+
+      expect(component.textareaElement?.setCustomValidity).toHaveBeenCalledWith('forbiddenValue');
+      expect(component.internals.setFormValue).toHaveBeenCalledWith(dummyValue);
+      expect(component.emitChange).toHaveBeenCalledWith(dummyValue, dummyOldValue);
     });
 
     describe('methods:reset', () => {

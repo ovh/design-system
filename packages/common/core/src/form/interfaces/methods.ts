@@ -1,32 +1,35 @@
-import type { OdsCommonFieldValidityState } from "./attributes";
+import type { OdsCommonFieldValidityState } from './attributes';
 
 interface OdsCommonFieldMethod {
-    /**
-     * empty the value
-     */
-    clear(): Promise<void>;
+  /**
+   * empty the value
+   */
+  clear(): Promise<void>;
 
-    formResetCallback(): void;
+  formResetCallback(): void;
 
-    /**
-     * active the focus on the input in order to let the user write something
-     */
-    setFocus(): Promise<void>;
+  /**
+   * return the element validity
+   */
+  getValidity(): Promise<OdsCommonFieldValidityState | undefined>;
 
-    /**
-     * restore the value to the initial state
-     */
-    reset(): Promise<void>;
+  /**
+   * restore the value to the initial state
+   */
+  reset(): Promise<void>;
 
-    /**
-     * set a custom tab index for easier navigation
-     * @param value - chosen index
-     */
-    setTabindex(value: number): Promise<void>;
+  /**
+   * active the focus on the input in order to let the user write something
+   */
+  setFocus(): Promise<void>;
 
-    getValidity(): Promise<OdsCommonFieldValidityState | undefined>;
-} 
+  /**
+   * set a custom tab index for easier navigation
+   * @param value - chosen index
+   */
+  setTabindex(value: number): Promise<void>;
+}
 
 export {
-    OdsCommonFieldMethod,
-}
+  OdsCommonFieldMethod,
+};

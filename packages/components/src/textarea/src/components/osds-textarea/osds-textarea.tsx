@@ -1,13 +1,11 @@
-import type { OdsTextAreaAttribute } from './interfaces/attributes';
-import type { OdsTextAreaEvent, OdsTextAreaValueChangeEvent } from './interfaces/events';
-import type { OdsTextAreaMethod } from './interfaces/methods';
-import type { OdsErrorStateControl, OdsFormControl, OdsTextAreaValidityState } from '@ovhcloud/ods-common-core';
-import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import type { EventEmitter } from '@stencil/core';
+import type { OdsTextareaAttribute } from './interfaces/attributes';
+import type { OdsTextareaEvent, OdsTextareaValueChangeEventDetail } from './interfaces/events';
+import type { OdsTextareaMethod } from './interfaces/methods';
+import type { OdsCommonFieldValidityState } from '@ovhcloud/ods-common-core';
+import type { EventEmitter, FunctionalComponent } from '@stencil/core';
 import { AttachInternals, Component, Element, Event, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { ODS_TEXTAREA_SIZE } from './constants/textarea-size';
-import { OdsTextAreaController } from './core/controller';
+import { OdsTextareaController } from './core/controller';
 
 @Component({
   formAssociated: true,
@@ -15,180 +13,127 @@ import { OdsTextAreaController } from './core/controller';
   styleUrl: 'osds-textarea.scss',
   tag: 'osds-textarea',
 })
-export class OsdsTextArea implements OdsTextAreaAttribute, OdsTextAreaEvent, OdsTextAreaMethod {
-  controller = new OdsTextAreaController(this);
-  textInputEl?: HTMLTextAreaElement;
+export class OsdsTextArea implements OdsTextareaAttribute, OdsTextareaEvent, OdsTextareaMethod {
+  private static internalIdCount = 0;
+  private internalId = `ods-textarea-${OsdsTextArea.internalIdCount++}`;
+  controller = new OdsTextareaController<OsdsTextArea>(this);
+  textareaElement?: HTMLTextAreaElement;
 
   @Element() el!: HTMLElement;
 
   @AttachInternals() internals!: ElementInternals;
 
-  @State() hasFocus = false;
-  @State() textInputTabIndex = 0;
-
-  @Prop() textAreaId?: string = DEFAULT_ATTRIBUTE.textAreaId;
-  @Prop() ariaLabel: HTMLElement['ariaLabel'] = DEFAULT_ATTRIBUTE.ariaLabel;
-  @Prop() ariaLabelledby?: string = DEFAULT_ATTRIBUTE.ariaLabelledby;
-  @Prop({ reflect: true }) color?: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
-  @Prop({ reflect: true }) cols?: number = DEFAULT_ATTRIBUTE.cols;
-  @Prop({ reflect: true }) contrasted?: boolean = DEFAULT_ATTRIBUTE.contrasted;
-  @Prop({ reflect: true }) defaultValue?: string = DEFAULT_ATTRIBUTE.defaultValue;
-  @Prop({ reflect: true }) disabled?: boolean = DEFAULT_ATTRIBUTE.disabled;
-  @Prop({ reflect: true }) error?: boolean = DEFAULT_ATTRIBUTE.error;
-  @Prop({ reflect: true }) errorStateControl?: OdsErrorStateControl = DEFAULT_ATTRIBUTE.errorStateControl;
-  @Prop({ reflect: true }) formControl?: OdsFormControl<OdsTextAreaValidityState> = DEFAULT_ATTRIBUTE.formControl;
+  @Prop() ariaLabel: string | null = DEFAULT_ATTRIBUTE.ariaLabel;
+  @Prop() ariaLabelledby?: string;
+  @Prop({ reflect: true }) cols?: number;
+  @Prop({ reflect: true }) defaultValue: string | null = DEFAULT_ATTRIBUTE.defaultValue;
+  @Prop({ reflect: true }) disabled: boolean = DEFAULT_ATTRIBUTE.disabled;
+  @Prop({ reflect: true }) error: boolean = DEFAULT_ATTRIBUTE.error;
   @Prop({ reflect: true }) inline?: boolean = DEFAULT_ATTRIBUTE.inline;
-  @Prop({ reflect: true }) name?: string = DEFAULT_ATTRIBUTE.name;
-  @Prop({ reflect: true }) placeholder?: string = DEFAULT_ATTRIBUTE.placeholder;
-  @Prop({ reflect: true }) readOnly?: boolean = DEFAULT_ATTRIBUTE.readOnly;
-  @Prop({ reflect: true }) required?: boolean = DEFAULT_ATTRIBUTE.required;
+  @Prop({ reflect: true }) name: string = DEFAULT_ATTRIBUTE.name;
+  @Prop({ reflect: true }) placeholder?: string;
+  @Prop({ reflect: true }) readOnly?: boolean;
+  @Prop({ reflect: true }) required?: boolean;
   @Prop({ reflect: true }) resizable?: boolean = DEFAULT_ATTRIBUTE.resizable;
-  @Prop({ reflect: true }) rows?: number = DEFAULT_ATTRIBUTE.rows;
-  @Prop({ reflect: true }) size?: ODS_TEXTAREA_SIZE = DEFAULT_ATTRIBUTE.size;
-  @Prop({ reflect: true }) spellcheck: HTMLElement['spellcheck'] = DEFAULT_ATTRIBUTE.spellcheck;
-  @Prop({ reflect: true, mutable: true }) value: string = DEFAULT_ATTRIBUTE.value;
+  @Prop({ reflect: true }) rows?: number;
+  @Prop({ reflect: true }) spellcheck: boolean = DEFAULT_ATTRIBUTE.spellcheck;
+  @Prop() textAreaId?: string;
+  @Prop({ mutable: true, reflect: true }) value: string | null = DEFAULT_ATTRIBUTE.value;
+
+  @State() internalError = this.error;
+  @State() tabindex: number = 0;
 
   @Event() odsBlur!: EventEmitter<void>;
+  @Event() odsClear!: EventEmitter<void>;
   @Event() odsFocus!: EventEmitter<void>;
-  @Event() odsValueChange!: EventEmitter<OdsTextAreaValueChangeEvent>;
+  @Event() odsReset!: EventEmitter<void>;
+  @Event() odsValueChange!: EventEmitter<OdsTextareaValueChangeEventDetail>;
 
-  @Watch('formControl')
-  onFormControlChange(formControl?: OdsFormControl<OdsTextAreaValidityState>): void {
-    this.controller.registerFormControl(formControl);
+  @Method()
+  async clear(): Promise<void> {
+    return this.controller.clear();
   }
 
-  @Watch('inline')
-  onInlineChange(inline: boolean) {
-    if (!inline) {
-      this.textInputEl?.style.removeProperty('width');
-    }
+  @Method()
+  async getValidity(): Promise<OdsCommonFieldValidityState | undefined> {
+    return this.textareaElement && await this.controller.getValidity(this.textareaElement) || undefined;
+  }
+
+  @Method()
+  async reset(): Promise<void> {
+    return this.controller.reset();
+  }
+
+  @Listen('focus')
+  @Method()
+  async setFocus(): Promise<void> {
+    return this.controller.setFocus(this.textareaElement as HTMLElement);
+  }
+
+  @Method()
+  async setTabindex(value: number): Promise<void> {
+    return this.controller.setTabindex(value);
   }
 
   @Watch('value')
-  onValueChange(value: HTMLTextAreaElement['value'], oldValue?: HTMLTextAreaElement['value']): void {
-    this.controller.onValueChange(value, oldValue);
+  async onValueChange(value: string, oldValue?: string): Promise<void> {
+    return this.controller.onValueChange(value, oldValue);
   }
 
   componentWillLoad(): void {
-    this.beforeInit();
-  }
-
-  formResetCallback(): void {
-    this.value = this.defaultValue ?? '';
-  }
-
-  beforeInit(): void {
     this.controller.beforeInit();
   }
 
-  emitChange(value: HTMLTextAreaElement['value'], oldValue?: HTMLTextAreaElement['value']): void {
+  async componentWillUpdate(): Promise<void> {
+    this.internalError = await this.controller.hasError();
+  }
+
+  formResetCallback(): Promise<void> {
+    return this.reset();
+  }
+
+  async emitChange(value: string, oldValue?: string): Promise<void> {
     this.odsValueChange.emit({
       name: this.name,
-      oldValue: oldValue === null ? oldValue : `${oldValue}`,
-      validity: this.controller.getTextAreaValidity(),
-      value: value === null ? value : `${value}`,
+      oldValue: oldValue,
+      validity: await this.getValidity(),
+      value,
     });
   }
 
-  emitBlur(): void {
-    this.odsBlur.emit();
-  }
-
-  emitFocus(): void {
-    this.odsFocus.emit();
-  }
-
   onBlur(): void {
-    this.controller.onBlur();
+    this.odsBlur.emit();
   }
 
   onInput(event: Event): void {
     this.controller.onInput(event);
   }
 
-  @Listen('focus')
-  onFocus(): void {
-    this.controller.onFocus();
-    this.setFocus.bind(this)();
-  }
-
-  @Method()
-   async setFocus(): Promise<void> {
-     this.textInputEl?.focus();
-     this.hasFocus = true;
-   }
-
-  @Method()
-  async getValidity(): Promise<OdsTextAreaValidityState> {
-    return this.controller.getTextAreaValidity();
-  }
-
-  @Method()
-  async clear(): Promise<void> {
-    this.controller.clear();
-  }
-
-  @Method()
-  async reset(): Promise<void> {
-    this.controller.reset();
-  }
-
-  @Method()
-  async setTextAreaTabindex(value: number): Promise<void> {
-    this.controller.setTextAreaTabindex(value);
-  }
-
-  render() {
-    const {
-      textAreaId,
-      ariaLabel,
-      ariaLabelledby,
-      cols,
-      disabled,
-      hasFocus,
-      textInputTabIndex,
-      name,
-      placeholder,
-      readOnly,
-      required,
-      rows,
-      spellcheck,
-      value,
-    } = this;
-
-    const labelId = ariaLabelledby || `${textAreaId}-label`;
-
+  render(): FunctionalComponent {
     return (
-      <Host {...{
-        class: {
-          'ods-error': Boolean(this.controller.hasError()),
-        },
-        tabindex: textInputTabIndex,
-        hasFocus,
-      }}
-      >
+      <Host
+        class={{ 'ods-error': this.internalError }}
+        tabindex={ this.tabindex }>
         <textarea
-          {...{
-            ariaLabel,
-            ariaLabelledby: labelId || null,
-            disabled,
-            id: textAreaId,
-            name,
-            onBlur: () => this.onBlur(),
-            onFocus: () => this.onFocus(),
-            onInput: (e) => this.onInput(e),
-            placeholder,
-            readOnly,
-            ref: (el) => this.textInputEl = el as HTMLTextAreaElement,
-            required,
-            tabindex: '-1',
-            cols,
-            rows,
-            defaultValue: value,
-            value: value?.toString() || '',
-          }}
-          spellcheck={spellcheck}
-        >
+          aria-label={ this.ariaLabel }
+          aria-labelledby={ this.ariaLabelledby || `${this.internalId}-label` }
+          aria-multiline={ true }
+          cols={ this.cols }
+          id={ this.textAreaId }
+          disabled={ this.disabled }
+          name={ this.name }
+          onBlur={ (): void => this.onBlur() }
+          onFocus={ (): Promise<void> => this.setFocus() }
+          onInput={ (e): void => this.onInput(e) }
+          placeholder={ this.placeholder }
+          readOnly={ this.readOnly }
+          ref={ (el): HTMLTextAreaElement => this.textareaElement = el as HTMLTextAreaElement }
+          required={ this.required }
+          role="textbox"
+          rows={ this.rows }
+          spellcheck={ this.spellcheck }
+          tabindex="-1"
+          value={ this.value || '' }>
         </textarea>
       </Host>
     );

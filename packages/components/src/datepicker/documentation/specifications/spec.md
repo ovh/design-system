@@ -6,8 +6,9 @@
 ### OdsDatepickerAttribute
 |Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
-|**`clearable`** | _boolean_ |  |  | Defines if the Datepicker should be clearable or not (displays a clear button)|
-|**`color`** | `ODS_THEME_COLOR_INTENT` |  |  | Defines the Datepicker's color (see component principles)|
+|**`ariaLabel`** | `undefined` \| `string` | ✴️ |  | |
+|**`ariaLabelledby`** | _string_ |  |  | ID of the element that labels the input|
+|**`clearable`** | _boolean_ |  |  | Ability to clear the input value|
 |**`datesDisabled`** | Date[] |  |  | Defines the Datepicker's disabled dates|
 |**`daysOfWeekDisabled`** | ODS_DATEPICKER_DAY[] |  |  | Defines the Datepicker's disabled days of the week (monday, tuesday...)|
 |**`defaultValue`** | `undefined` \| `Date` |  |  | Default value of the input|
@@ -15,13 +16,20 @@
 |**`error`** | _boolean_ |  |  | Defines if the Datepicker should display an error message|
 |**`format`** | _string_ |  |  | Defines which format the Datepicker should be applying (supported formats: https://mymth.github.io/vanillajs-datepicker/#/date-string+format?id=date-format)|
 |**`inline`** | _boolean_ |  |  | Defines if the Datepicker should be displayed inline or not|
+|**`label`** | _string_ |  |  | Label of the input field|
+|**`loading`** | _boolean_ |  |  | Indicates if the input is in loading state or not|
 |**`locale`** | `ODS_LOCALE` |  |  | Defines the locale to use|
 |**`maxDate`** | `undefined` \| `Date` |  |  | Defines the Datepicker's maximum selectable date|
 |**`minDate`** | `undefined` \| `Date` |  |  | Defines the Datepicker's minimum selectable date|
-|**`name`** | _string_ |  |  | Name of the datepicker field|
-|**`placeholder`** | _string_ |  |  | Defines if the Datepicker should display a placeholder message|
+|**`name`** | _string_ | ✴️ |  | Name of the input field|
+|**`placeholder`** | _string_ |  |  | Placeholder text for the input|
+|**`prefixValue`** | _string_ |  |  | Text before the input value|
+|**`readOnly`** | _boolean_ |  |  | Indicates if the input is read-only or not|
+|**`required`** | _boolean_ |  |  | Indicates if the input is required or not|
 |**`showSiblingsMonthDays`** | _boolean_ |  |  | Defines if the Datepicker should display others month days|
-|**`value`** | `undefined` \| `Date` |  |  | Defines the Datepicker's value (Date object)|
+|**`step`** | _number_ |  |  | Step value for the input|
+|**`tabindex`** | _number_ |  |  | Tabindex for the input|
+|**`value`** | `OdsInputValue` | ✴️ |  | Value of the input field|
 
 ### OdsDatepickerEvent
 |Name | Type | Required | Default | Description|

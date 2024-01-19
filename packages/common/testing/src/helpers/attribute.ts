@@ -1,8 +1,10 @@
-function odsComponentAttributes2StringAttributes<T>(attributes: { [K in keyof T]: T[K] }, defaultValues: { [K in keyof T]: T[K] }):Record<string, string | undefined> {
-  const parameters: Record<string, string | undefined> = {};
+function odsComponentAttributes2StringAttributes<T>(attributes: { [K in keyof T]: T[K] }, defaultValues: { [K in keyof T]: T[K] }):Record<string, string | null | undefined> {
+  const parameters: Record<string, string | null | undefined> = {};
   Object.entries(attributes)
     .map(([name, value]) => {
-      if (typeof value === 'boolean') {
+      if (value === null) {
+        parameters[name] = null;
+      } else if (typeof value === 'boolean') {
         if (value) {
           parameters[name] = 'true';
         } else if (!value && defaultValues[(name as keyof { [K in keyof T]: T[K] })]) {
@@ -26,13 +28,13 @@ function odsComponentAttributes2StringAttributes<T>(attributes: { [K in keyof T]
  * get a list of attributes as a string in order to integrate it into a HTML element.
  * In case of undefined value of the attribute, only the attribute name is output, not the value.
  */
-function odsStringAttributes2Str(attributes: Record<string, string | undefined>): string {
+function odsStringAttributes2Str(attributes: Record<string, string | null | undefined>): string {
   return Object.entries(attributes)
     .map(([name, value]) => {
       const kebabName = name.replace(/([a-z])([A-Z])/g, '$1-$2')
         .replace(/[\s_]+/g, '-')
         .toLowerCase();
-      return value === undefined ? `${kebabName}` : `${kebabName}='${value}'`;
+      return (value === undefined || value === null) ? `${kebabName}` : `${kebabName}='${value}'`;
     })
     .join(' ');
 }

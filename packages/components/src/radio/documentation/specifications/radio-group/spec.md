@@ -17,13 +17,13 @@
 ### OdsRadioGroupEvent
 |Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
-|**`odsDisabledChange`** | `EventEmitter<reflection>` | ✴️ |  | |
-|**`odsValueChange`** | `EventEmitter<reflection>` | ✴️ |  | Emitted when the value has changed.|
+|**`odsDisabledChange`** | `EventEmitter<unknown>` | ✴️ |  | |
+|**`odsValueChange`** | `EventEmitter<unknown>` | ✴️ |  | Emitted when the value has changed.|
 
 ### OdsRadioGroupMethod
 |Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
-|**`getRadios`** | `Promise<array>` | ✴️ |  | |
+|**`getRadios`** | `Promise<OsdsRadio[]>` | ✴️ |  | |
 
 ### OdsRadioGroupValueChangeEventDetail
 |Name | Type | Required | Default | Description|

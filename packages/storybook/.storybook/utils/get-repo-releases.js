@@ -45,7 +45,7 @@ const file = './public/releases.js';
       console.error(`some errors happened. only latest will be available in ${file}`, {availableVersions});
       process.exit(1);
     } else {
-      console.log(`${file} written with success`, {availableVersions});
+      console.log(`${file} written with success`);
     }
   });
 })();

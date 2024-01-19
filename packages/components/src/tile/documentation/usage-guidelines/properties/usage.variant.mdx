@@ -1,27 +1,56 @@
-<div class="container">
-  <osds-tile variant='flat'>
-    Flat
-  </osds-tile>
-
-  <osds-tile variant='stroked'>
-    Stroked
-  </osds-tile>
-
-  <osds-tile variant='ghost'>
-    Ghost
-  </osds-tile>
+#### Flat
+Flat Tile is filled with a white background, no border nor shadow attached
+<div class='spacing contrasted'>
+  <osds-tile color='primary' variant='flat'>Flat</osds-tile>
+  <osds-tile color='primary' variant='flat' hoverable>Hoverable Flat</osds-tile>
 </div>
 
 ```html
-<osds-tile variant='flat'>
-  Flat
-</osds-tile>
-
-<osds-tile variant='stroked'>
-  Stroked
-</osds-tile>
-
-<osds-tile variant='ghost'>
-  Ghost
-</osds-tile>
+<osds-tile color='primary' variant='flat'>Flat</osds-tile>
+<osds-tile color='primary' variant='flat' hoverable>Hoverable Flat</osds-tile>
 ```
+
+#### Stroked
+Stroked Tile is filled with a white background and a main colored border, no shadow attached
+<div class='spacing contrasted'>
+  <osds-tile color='primary' variant='stroked'>Stroked</osds-tile>
+  <osds-tile color='primary' variant='stroked' hoverable>Hoverable Stroked</osds-tile>
+</div>
+
+```html
+<osds-tile color='primary' variant='stroked'>Stroked</osds-tile>
+<osds-tile color='primary' variant='stroked' hoverable>Hoverable Stroked</osds-tile>
+```
+
+#### Ghost
+Ghost variant is a Tile with a transparent background, no border nor shadow attached
+<div class='spacing contrasted'>
+  <osds-tile color='primary' variant='ghost'>Ghost</osds-tile>
+  <osds-tile color='primary' variant='ghost' hoverable>Hoverable Ghost</osds-tile>
+</div>
+
+```html
+<osds-tile color='primary' variant='ghost'>Ghost</osds-tile>
+<osds-tile color='primary' variant='ghost' hoverable>Hoverable Ghost</osds-tile>
+```
+
+#### Hollow
+Hollow variant is a Tile with a transparent background and a main colored border, no shadow attached
+<div class='spacing contrasted'>
+  <osds-tile color='primary' variant='hollow'>Hollow</osds-tile>
+  <osds-tile color='primary' variant='hollow' hoverable>Hoverable Hollow</osds-tile>
+</div>
+
+```html
+<osds-tile color='primary' variant='hollow'>Hollow</osds-tile>
+<osds-tile color='primary' variant='hollow' hoverable>Hoverable Hollow</osds-tile>
+```
+
+<style>
+  {`
+    .bg {
+      background-color: #000e9c;
+      padding: 10px;
+      }
+  `}
+</style>

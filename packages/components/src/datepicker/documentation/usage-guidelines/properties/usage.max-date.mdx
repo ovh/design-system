@@ -1,0 +1,19 @@
+export const displayMaxDateDatepicker = () => {
+    setTimeout(() => {
+        const datepickerMaxDateUsage = document.querySelector('#max-datepicker');
+        datepickerMaxDateUsage.maxDate = new Date();
+    }, 0);
+};
+
+<osds-datepicker id='max-datepicker' inline></osds-datepicker>
+
+<>{ displayMaxDateDatepicker() }</>
+
+```html
+<osds-datepicker id='max-datepicker' inline></osds-datepicker>
+
+<script>
+  const datepickerMaxDateUsage = document.querySelector('#max-datepicker');
+  datepickerMaxDateUsage.maxDate = new Date();
+</script>
+```

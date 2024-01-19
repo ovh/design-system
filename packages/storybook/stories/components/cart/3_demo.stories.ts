@@ -25,7 +25,7 @@ defineCartTotal();
 
 /* Default story parameters  */
 const storyParams = {
-  flex: {
+  inline: {
     category: 'General',
     defaultValue: false,
     control: { type: 'boolean' },
@@ -182,7 +182,7 @@ Default.parameters = parametersSmallCartViewport;
 Default.args = {
   ...extractStoryParams(storyParams),
   button: '<osds-button \n'
-    + '         flex \n'
+    + '         inline \n'
     + '         color="primary"\n'
     + '         contrasted="true"\n'
     + '         variant="stroked">\n'
@@ -231,7 +231,7 @@ CartManager.args = {
   ...extractStoryParams(storyParams),
   vatMode: false,
   button: '<osds-button \n'
-    + '         flex \n'
+    + '         inline \n'
     + '         color="primary"\n'
     + '         contrasted="true"\n'
     + '         variant="stroked">\n'
@@ -381,7 +381,7 @@ export const Responsive = TemplateResponsive.bind({});
 Responsive.parameters = parametersResponsiveCartViewport;
 // @ts-ignore
 Responsive.args = {
-  flex: true,
+  inline: true,
   rounded: 'top',
   collapsed: true,
   collapsible: true,

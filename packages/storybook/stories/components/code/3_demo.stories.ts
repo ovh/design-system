@@ -15,6 +15,10 @@ const storyParams = {
     category: 'Misc',
     defaultValue: false,
   },
+  copy: {
+    category: 'Slot',
+    defaultValue: `<osds-button color="default" contrasted size="sm" variant="ghost"><osds-icon name="copy" size="xs" contrasted></osds-icon></osds-button>`,
+  },
 };
 
 export default {
@@ -36,7 +40,7 @@ Default.args = {
 };
 
 const TemplateCopyingCode = (args: any) => html`
-<osds-code ...=${getTagAttributes(args)}><span slot="copy"><osds-button color="default" contrasted size="sm" variant="ghost"><osds-icon name="copy" size="xs" contrasted></osds-icon></osds-button></span>${unsafeHTML(args.codeContent)}</osds-code>
+<osds-code ...=${getTagAttributes(args)}><span slot="copy">${unsafeHTML(args.copy)}</span>${unsafeHTML(args.codeContent)}</osds-code>
 `;
 export const CopyingCode = TemplateCopyingCode.bind({});
 // @ts-ignore

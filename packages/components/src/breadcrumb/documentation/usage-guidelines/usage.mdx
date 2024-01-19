@@ -1,16 +1,101 @@
+import ContrastedProperty from './properties/breadcrumb/usage.contrasted.mdx';
+import DisabledProperty from './properties/breadcrumb-item/usage.disabled.mdx';
 import GenericStyle from '@ovhcloud/ods-common-core/docs/generic-style.mdx';
 
 <GenericStyle />
 
 ## Usage
 
+## Breadcrumb
 ### Default
+
+export const displayBreadcrumb = () => {
+    setTimeout(() => {
+        const defaultBreadcrumbUsage = document.querySelector('#default-breadcrumb');
+        defaultBreadcrumbUsage.items = JSON.stringify([
+          { href: "#home", label: "Home" },
+          { href: "#services", label: "Services" },
+          { href: "#products", label: "Products" },
+          { href: "#web", label: "Web" },
+        ]);
+    }, 0);
+};
+
+<osds-breadcrumb id="default-breadcrumb"></osds-breadcrumb>
+<>{ displayBreadcrumb() }</>
 
 ```html
 <osds-breadcrumb id="default-breadcrumb"></osds-breadcrumb>
 <script>
 document.querySelector('#default-breadcrumb').items = JSON.stringify([
   { href: "#home", label: "Home" },
+  { href: "#services", label: "Services" },
+  { href: "#products", label: "Products" },
+  { href: "#web", label: "Web" },
+]);
+</script>
+```
+
+### Contrasted
+<ContrastedProperty />
+
+### Collapsed breadcrumb
+
+export const displayCollapseBreadcrumb = () => {
+    setTimeout(() => {
+        const iconBreadcrumbItemUsage = document.querySelector('#collapse-breadcrumb');
+        iconBreadcrumbItemUsage.items = JSON.stringify([
+          { href: "#home", label: "Home" },
+          { href: "#services", label: "Services" },
+          { href: "#productsd", label: "Products" },
+          { href: "#web", label: "Web" },
+          { href: "#domains", label: "Domains" },
+        ]);
+    }, 0);
+};
+
+<osds-breadcrumb id="collapse-breadcrumb"></osds-breadcrumb>
+<>{ displayCollapseBreadcrumb() }</>
+
+```html
+<osds-breadcrumb id="collapse-breadcrumb"></osds-breadcrumb>
+<script>
+document.querySelector('#collapse-breadcrumb').items = JSON.stringify([
+  { href: "#home", label: "Home" },
+  { href: "#services", label: "Services" },
+  { href: "#products", label: "Products" },
+  { href: "#web", label: "Web" },
+  { href: "#domains", label: "Domains" },
+]);
+</script>
+```
+
+## Breadcrumb item
+### Disabled
+<DisabledProperty />
+
+### Breadcrumb item with an Icon
+
+export const displayIconBreadcrumbItem = () => {
+    setTimeout(() => {
+        const iconBreadcrumbItemUsage = document.querySelector('#icon-breadcrumb-item');
+        iconBreadcrumbItemUsage.items = JSON.stringify([
+          { href: "#home", icon: "home" },
+          { href: "#services", label: "Services" },
+          { href: "#productsd", label: "Products" },
+          { href: "#web", label: "Web" },
+        ]);
+    }, 0);
+};
+
+<osds-breadcrumb id="icon-breadcrumb-item"></osds-breadcrumb>
+<>{ displayIconBreadcrumbItem() }</>
+
+```html
+<osds-breadcrumb id="icon-breadcrumb-item"></osds-breadcrumb>
+<script>
+document.querySelector('#icon-breadcrumb-item').items = JSON.stringify([
+  { href: "#home", icon: "home" },
   { href: "#services", label: "Services" },
   { href: "#products", label: "Products" },
   { href: "#web", label: "Web" },

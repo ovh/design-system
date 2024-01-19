@@ -1,6 +1,7 @@
 import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-popover';
 import { applyContentText, positionParams } from '../../../core/commonPositionStoryParams';
 import { html } from 'lit-html';
+import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 import { styleMap } from 'lit-html/directives/style-map';
 import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 
@@ -8,7 +9,10 @@ defineCustomElement();
 
 /* Demo story parameters  */
 const storyParams = {
-
+  popoverTrigger: {
+    category: 'Slot',
+    defaultValue: `<osds-button variant='flat' color='primary' size='sm'><osds-icon name='home' size='xs' contrasted='true'></osds-icon></osds-button>`,
+  },
 };
 
 export default {
@@ -52,8 +56,8 @@ const TemplateDemo = (args:any) => {
   return html`
     <osds-popover ...=${getTagAttributes(args)}>
       <span slot="popover-trigger">
-            <osds-button variant='flat' color='primary' size='sm'><osds-icon name='home' size='xs' contrasted='true'></osds-icon></osds-button>
-          </span>
+        ${unsafeHTML(args.popoverTrigger)}
+      </span>
       <osds-popover-content>
         <span slot="popover-header">My popover title</span>
         <osds-text color='text'>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam</osds-text>
@@ -88,8 +92,8 @@ const TemplatePosition = ({ ...args }) => {
     <p>${args.applyContent ? applyContentText : ''}</p>
     <osds-popover ...=${getTagAttributes(args)}, dir="${args.applyDirection}">
       <span slot="popover-trigger">
-            <osds-button variant='flat' color='primary' size='sm'><osds-icon name='home' size='xs' contrasted='true'></osds-icon></osds-button>
-          </span>
+        ${unsafeHTML(args.popoverTrigger)}
+      </span>
       <osds-popover-content>
         <span slot="popover-header">My popover title</span>
         <osds-text color='text'>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam</osds-text>

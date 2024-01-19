@@ -1,6 +1,6 @@
 interface OdsTabPanelAttribute {
     /**
-     *  is the panel is active or nor
+     *  is the panel active or not
      */
     active: boolean;
     /**

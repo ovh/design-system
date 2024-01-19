@@ -47,6 +47,10 @@ const defaultStoryParams = {
     category: 'General',
     defaultValue: true,
   },
+  hideableColumns: {
+    category: 'General',
+    defaultValue: ['firstname'],
+  },
   isSelectable: {
     category: 'General',
     defaultValue: false,

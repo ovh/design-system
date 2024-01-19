@@ -1,0 +1,25 @@
+You can `disabled` some tab items, but you cannot disable the entire `tabs`.
+
+<osds-tabs>
+  <osds-tab-bar slot='top'>
+    <osds-tab-bar-item panel='tab1'>Tab 1</osds-tab-bar-item>
+    <osds-tab-bar-item panel='tab2' disabled>Tab 2</osds-tab-bar-item>
+    <osds-tab-bar-item panel='tab3'>Tab 3</osds-tab-bar-item>
+  </osds-tab-bar>
+  <osds-tab-panel name='tab1'>Content for Tab 1</osds-tab-panel>
+  <osds-tab-panel name='tab2'>Content for Tab 2</osds-tab-panel>
+  <osds-tab-panel name='tab3'>Content for Tab 3</osds-tab-panel>
+</osds-tabs>
+
+```html
+<osds-tabs>
+  <osds-tab-bar slot='top'>
+    <osds-tab-bar-item panel='tab1'>Tab 1</osds-tab-bar-item>
+    <osds-tab-bar-item panel='tab2' disabled>Tab 2</osds-tab-bar-item>
+    <osds-tab-bar-item panel='tab3'>Tab 3</osds-tab-bar-item>
+  </osds-tab-bar>
+  <osds-tab-panel name='tab1'>Content for Tab 1</osds-tab-panel>
+  <osds-tab-panel name='tab2'>Content for Tab 2</osds-tab-panel>
+  <osds-tab-panel name='tab3'>Content for Tab 3</osds-tab-panel>
+</osds-tabs>
+```

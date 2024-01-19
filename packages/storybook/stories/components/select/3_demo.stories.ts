@@ -3,6 +3,7 @@ import { defineCustomElement as defineSelectGroup } from '@ovhcloud/ods-componen
 import { defineCustomElement as defineSelectOption } from '@ovhcloud/ods-components/dist/components/osds-select-option';
 import { positionParams, applyContentText } from '../../../core/commonPositionStoryParams';
 import { html } from 'lit-html';
+import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 import { styleMap } from 'lit-html/directives/style-map';
 import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 
@@ -21,6 +22,10 @@ const storyParams = {
       max: 10,
       step: 1,
     },
+  },
+  placeholder: {
+    category: 'Slot',
+    defaultValue: 'Select option',
   },
   disabled: {
     category: 'Misc',
@@ -50,7 +55,9 @@ const TemplateDefault = ({ ...args }) => {
 
   return html`
   <osds-select ...=${getTagAttributes(args)}>
-    <span slot="placeholder">Select option</span>
+    <span slot="placeholder">
+      ${unsafeHTML(args.placeholder)}
+    </span>
     ${selectOptions}
   </osds-select>
 `;

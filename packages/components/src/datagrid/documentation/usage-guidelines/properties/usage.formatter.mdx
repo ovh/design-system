@@ -1,0 +1,111 @@
+export const datagridFormatter = () => {
+  setTimeout(() => {
+    const datagrid = document.getElementById('datagridWithFormatter');
+    if (!datagrid) {
+      return;
+    }
+    datagrid.columns = [
+      { title: "Name", field: "name", isSortable: true },
+      { title: "Firstname", field: "firstname" },
+      { title: "Gender", field: "gender" },
+      { title: "Date Of Birth", field: "dob", formatter: (value) => {
+          return '<osds-icon name="calendar"></osds-icon> <osds-text color="text" size="400">' + value + '</osds-text>'
+        }
+      },
+    ];
+    datagrid.rows = [
+      { name: "Dupont", firstname: "Antoine", gender: "male", dob: "15/11/1996" },
+      { name: "Garnbret", firstname: "Janja", gender: "female", dob: "12/03/1999" },
+    ];
+    datagrid.height = 200;
+  }, 1000);
+};
+
+<osds-datagrid id="datagridWithFormatter">
+</osds-datagrid>
+
+<>{ datagridFormatter() }</>
+
+```html
+<osds-datagrid id="datagrid"></osds-datagrid>
+
+<script>
+    const datagrid = document.querySelector('#datagrid')
+    datagrid.columns = [
+      { title: "Name", field: "name", isSortable: true },
+      { title: "Firstname", field: "firstname" },
+      { title: "Gender", field: "gender" },
+      { title: "Date Of Birth", field: "dob", formatter: (value) => {
+          return '<osds-icon name="calendar"></osds-icon> <osds-text color="text" size="400"> ' + value + '</osds-text>'
+        }
+      },
+    ];
+    datagrid.rows = [
+      { name: "Dupont", firstname: "Antoine", gender: "male", dob: "15/11/1996" },
+      { name: "Garnbret", firstname: "Janja", gender: "female", dob: "12/03/1999" },
+    ];
+    datagrid.height = 200;
+</script>
+```
+
+
+### Overflowing elements
+
+You can add a `position: absolute` styling if you want to allow the formatted elements in your row to overflow.
+
+export const overflowingElementsFormatter = () => {
+  setTimeout(() => {
+    const datagrid = document.getElementById('overflowingElements');
+    if (!datagrid) {
+      return;
+    }
+    datagrid.columns = [
+      { title: "Without overflow", field: "nooverflow", formatter: (value) => {
+          return '<osds-menu><osds-button slot="menu-title" color="error" variant="stroked">I can&apos;t overflow<osds-icon color="error" name="close" size="xs"></osds-icon></osds-button><osds-menu-item><osds-buttoncolor="primary"size="sm"variant="ghost"text-align="start"flex=""><span>Action 1</span></osds-button></osds-menu-item><osds-menu-item><osds-buttoncolor="primary"size="sm"variant="ghost"text-align="start"flex=""><span>Action 2</span></osds-button></osds-menu-item><osds-menu-item><osds-buttoncolor="primary"size="sm"variant="ghost"text-align="start"flex=""><span>Action 3</span></osds-button></osds-menu-item></osds-menu>'
+        }
+      },
+        { title: "With overflow", field: "overflow", formatter: (value) => {
+          return '<osds-menu style="position: absolute;"><osds-button slot="menu-title" color="primary" variant="stroked">I can overflow<osds-icon color="primary" name="ok" size="xs"></osds-icon></osds-button><osds-menu-item><osds-buttoncolor="primary"size="sm"variant="ghost"text-align="start"flex=""><span>Action 1</span></osds-button></osds-menu-item><osds-menu-item><osds-buttoncolor="primary"size="sm"variant="ghost"text-align="start"flex=""><span>Action 2</span></osds-button></osds-menu-item><osds-menu-item><osds-buttoncolor="primary"size="sm"variant="ghost"text-align="start"flex=""><span>Action 3</span></osds-button></osds-menu-item></osds-menu>'
+        }
+      },
+    ];
+    datagrid.rows = [
+      { nooverflow: "", overflow: ""},
+      { nooverflow: "", overflow: ""},
+      { nooverflow: "", overflow: ""},
+    ];
+    datagrid.height = 150;
+  }, 1000);
+};
+
+<osds-datagrid id="overflowingElements">
+</osds-datagrid>
+
+<>{ overflowingElementsFormatter() }</>
+
+```html
+<osds-datagrid id="datagrid"></osds-datagrid>
+
+<script>
+    const datagrid = document.getElementById('datagrid');
+    if (!datagrid) {
+      return;
+    }
+    datagrid.columns = [
+      { title: "Without overflow", field: "nooverflow", formatter: (value) => {
+          return '<osds-menu><osds-button slot="menu-title" color="error" variant="stroked">I can&apos;t overflow<osds-icon color="error" name="close" size="xs"></osds-icon></osds-button><osds-menu-item><osds-buttoncolor="primary"size="sm"variant="ghost"text-align="start"flex=""><span>Action 1</span></osds-button></osds-menu-item><osds-menu-item><osds-buttoncolor="primary"size="sm"variant="ghost"text-align="start"flex=""><span>Action 2</span></osds-button></osds-menu-item><osds-menu-item><osds-buttoncolor="primary"size="sm"variant="ghost"text-align="start"flex=""><span>Action 3</span></osds-button></osds-menu-item></osds-menu>'
+        }
+      },
+        { title: "With overflow", field: "overflow", formatter: (value) => {
+          return '<osds-menu style="position: absolute;"><osds-button slot="menu-title" color="primary" variant="stroked">I can overflow<osds-icon color="primary" name="ok" size="xs"></osds-icon></osds-button><osds-menu-item><osds-buttoncolor="primary"size="sm"variant="ghost"text-align="start"flex=""><span>Action 1</span></osds-button></osds-menu-item><osds-menu-item><osds-buttoncolor="primary"size="sm"variant="ghost"text-align="start"flex=""><span>Action 2</span></osds-button></osds-menu-item><osds-menu-item><osds-buttoncolor="primary"size="sm"variant="ghost"text-align="start"flex=""><span>Action 3</span></osds-button></osds-menu-item></osds-menu>'
+        }
+      },
+    ];
+    datagrid.rows = [
+      { nooverflow: "", overflow: ""},
+      { nooverflow: "", overflow: ""},
+      { nooverflow: "", overflow: ""},
+    ];
+    datagrid.height = 150;
+</script>
+```

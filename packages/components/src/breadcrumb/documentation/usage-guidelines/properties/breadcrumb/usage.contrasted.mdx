@@ -1,0 +1,28 @@
+export const displayContrastedBreadcrumb = () => {
+    setTimeout(() => {
+        const contrastedBreadcrumbUsage = document.querySelector('#contrasted-breadcrumb');
+        contrastedBreadcrumbUsage.items = JSON.stringify([
+          { href: "#home", label: "Home" },
+          { href: "#services", label: "Services" },
+          { href: "#products", label: "Products" },
+          { href: "#web", label: "Web" },
+        ]);
+    }, 0);
+};
+
+<div class='contrasted'>
+  <osds-breadcrumb id="contrasted-breadcrumb" contrasted></osds-breadcrumb>
+</div>
+<>{ displayContrastedBreadcrumb() }</>
+
+```html
+<osds-breadcrumb id="contrasted-breadcrumb" contrasted></osds-breadcrumb>
+<script>
+document.querySelector('#contrasted-breadcrumb').items = JSON.stringify([
+  { href: "#home", label: "Home" },
+  { href: "#services", label: "Services" },
+  { href: "#products", label: "Products" },
+  { href: "#web", label: "Web" },
+]);
+</script>
+```

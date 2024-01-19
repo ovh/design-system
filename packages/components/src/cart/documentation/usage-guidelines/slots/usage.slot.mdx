@@ -1,0 +1,51 @@
+#### Header
+
+<osds-cart>
+  <osds-cart-header slot='header'>
+    Header
+  </osds-cart-header>
+</osds-cart>
+
+```html
+<osds-cart>
+  <osds-cart-header slot='header'>
+    Header
+  </osds-cart-header>
+</osds-cart>
+```
+
+#### Footer
+
+<osds-cart>
+  <osds-cart-footer slot='footer'>
+    <osds-cart-total>
+      <span slot='total'>Total</span>
+      <span slot='price'>Price</span>
+    </osds-cart-total>
+  </osds-cart-footer>
+</osds-cart>
+
+```html
+<osds-cart>
+  <osds-cart-footer slot='footer'>
+    <osds-cart-total>
+      <span slot='total'>Total</span>
+      <span slot='price'>Price</span>
+    </osds-cart-total>
+  </osds-cart-footer>
+</osds-cart>
+```
+
+#### Empty
+Add slot `empty` so its content will be displayed if there is no `<osds-cart-item></osds-cart-item>`
+or no `<osds-cart-item-option></osds-cart-item-option>`.
+
+<osds-cart>
+  <span slot='empty'>Cart is empty</span>
+</osds-cart>
+
+```html
+<osds-cart>
+  <span slot='empty'>Empty !</span>
+</osds-cart>
+```

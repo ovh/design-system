@@ -1,3 +1,9 @@
+import ClearableProperty from './properties/usage.clearable.mdx';
+import CountriesProperty from './properties/usage.countries.mdx';
+import DisabledProperty from './properties/usage.disabled.mdx';
+import ErrorProperty from './properties/usage.error.mdx';
+import IsoCodeProperty from './properties/usage.isoCode.mdx';
+import LocaleProperty from './properties/usage.locale.mdx';
 import GenericStyle from '@ovhcloud/ods-common-core/docs/generic-style.mdx';
 
 <GenericStyle />
@@ -11,18 +17,20 @@ import GenericStyle from '@ovhcloud/ods-common-core/docs/generic-style.mdx';
 <osds-phone-number></osds-phone-number>
 ```
 
-### With all countries
-<osds-phone-number countries="all"></osds-phone-number>
+### Countries
+<CountriesProperty />
 
-```html
-<osds-phone-number countries="all"></osds-phone-number>
-```
+### isoCode
+<IsoCodeProperty />
 
+### Locale
+<LocaleProperty />
 
-### With specific countries
-<osds-phone-number countries='["us", "fr", "de"]'></osds-phone-number>
+### Clearable
+<ClearableProperty />
 
-```html
-<osds-phone-number countries='["us", "fr", "de"]'></osds-phone-number>
+### Disabled
+<DisabledProperty />
 
-```
+### Error
+<ErrorProperty />

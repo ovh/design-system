@@ -100,6 +100,7 @@ export class OsdsForm implements OdsFormAttribute, OdsFormEvent, OdsFormMethod {
   }
 
   async onSubmit(event?: Event): Promise<void> {
+    console.log('onsubmit', )
     event?.preventDefault();
     const initialValues = this.controller.getInitialValues();
     Object.entries(initialValues).forEach(async([name]) => {

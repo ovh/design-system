@@ -147,7 +147,8 @@ describe('spec:osds-datepicker', () => {
         name: 'maxDate',
         defaultValue: DEFAULT_ATTRIBUTE.maxDate,
         newValue: new Date('1999-11-02'),
-        value: null,
+        // @ts-ignore enforce as HTML attribute will return '' instead of null
+        value: '',
         setup: (value) => setup({ attributes: { ['maxDate']: value } }),
         ...config,
       });
@@ -158,7 +159,8 @@ describe('spec:osds-datepicker', () => {
         name: 'minDate',
         defaultValue: DEFAULT_ATTRIBUTE.minDate,
         newValue: new Date('1999-11-02'),
-        value: null,
+        // @ts-ignore enforce as HTML attribute will return '' instead of null
+        value: '',
         setup: (value) => setup({ attributes: { ['minDate']: value } }),
         ...config,
       });
@@ -180,7 +182,7 @@ describe('spec:osds-datepicker', () => {
         name: 'value',
         defaultValue: DEFAULT_ATTRIBUTE.value,
         newValue: new Date('1999-11-02'),
-        value: null,
+        value: '',
         setup: (value) => setup({ attributes: { ['value']: value } }),
         ...config,
       });

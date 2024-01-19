@@ -1,61 +1,45 @@
 * [**Interfaces**](#interfaces)
-* [**Types**](#types)
 
 ## Interfaces
 
-### OdsTextAreaAttribute
+### OdsTextareaAttribute
 |Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
-|**`ariaLabel`** | `undefined` \| `string` | ✴️ |  | ariaLabel: see component principles|
-|**`ariaLabelledby`** | _string_ |  |  | ariaLabelledby: see component principles|
-|**`color`** | `ODS_THEME_COLOR_INTENT` |  |  | main color: see component principles|
-|**`cols`** | _number_ |  |  | cols: see component principles|
-|**`contrasted`** | _boolean_ |  |  | contrasted: see component principles|
-|**`defaultValue`** | _string_ |  |  | defaultValue: see component principles|
-|**`disabled`** | _boolean_ |  |  | cols: see component principles|
-|**`error`** | _boolean_ |  |  | on error or not|
-|**`errorStateControl`** | `OdsErrorStateControl` |  |  | |
-|**`formControl`** | `OdsFormControl` |  |  | textarea form control|
-|**`hasFocus`** | _boolean_ | ✴️ |  | hasFocus or not|
-|**`inline`** | _boolean_ |  |  | inline or not: see component principles|
-|**`name`** | _string_ |  |  | name : see component principles|
-|**`placeholder`** | _string_ |  |  | placeholder : see component principles|
-|**`readOnly`** | _boolean_ |  |  | readOnly or not : see component principles|
-|**`required`** | _boolean_ |  |  | required or not : see component principles|
-|**`resizable`** | _boolean_ |  |  | resizable or not : see component principles|
-|**`rows`** | _number_ |  |  | row: see component principles|
-|**`size`** | `md` |  |  | textarea size|
-|**`spellcheck`** | _boolean_ | ✴️ |  | spellcheck: see component principles|
-|**`textAreaId`** | _string_ |  |  | textarea id|
-|**`value`** | _string_ | ✴️ |  | value: see component principles|
+|**`ariaLabel`** | `undefined` \| `string` | ✴️ |  | |
+|**`ariaLabelledby`** | _string_ |  |  | ID of the element that labels the input|
+|**`cols`** | _number_ |  |  | The visible width of the text control, in average character widths|
+|**`defaultValue`** | `undefined` \| `string` | ✴️ |  | Default value of the textarea|
+|**`disabled`** | _boolean_ | ✴️ |  | Indicates if the input is disabled or not: see component principles|
+|**`error`** | _boolean_ | ✴️ |  | Indicates if the input shows error or not|
+|**`forbiddenValues`** | OdsInputValue[] |  |  | List of forbidden values for the input|
+|**`inline`** | _boolean_ |  |  | Indicates if the textarea is inline or not: see component principles|
+|**`label`** | _string_ |  |  | Label of the input field|
+|**`name`** | _string_ | ✴️ |  | Name of the input field|
+|**`placeholder`** | _string_ |  |  | Placeholder text for the input|
+|**`readOnly`** | _boolean_ |  |  | Indicates if the input is read-only or not|
+|**`required`** | _boolean_ |  |  | Indicates if the input is required or not|
+|**`resizable`** | _boolean_ |  |  | Indicates that the user can resize the control|
+|**`rows`** | _number_ |  |  | The number of visible text lines for the control|
+|**`spellcheck`** | _boolean_ | ✴️ |  | Define if the spelling of the value should be check|
+|**`tabindex`** | _number_ |  |  | Tabindex for the input|
+|**`textAreaId`** | _string_ |  |  | The native textarea element id|
+|**`value`** | `undefined` \| `string` | ✴️ |  | Value of the textarea field|
 
-### OdsTextAreaEvent
+### OdsTextareaEvent
 |Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
-|**`odsBlur`** | `EventEmitter<void>` | ✴️ |  | Event triggered on textarea blur|
-|**`odsFocus`** | `EventEmitter<void>` | ✴️ |  | Event triggered on textarea focus|
-|**`odsValueChange`** | `EventEmitter<OdsTextAreaValueChangeEvent>` | ✴️ |  | The textarea value changed|
+|**`odsBlur`** | `EventEmitter<void>` | ✴️ |  | |
+|**`odsClear`** | `EventEmitter<void>` | ✴️ |  | |
+|**`odsFocus`** | `EventEmitter<void>` | ✴️ |  | |
+|**`odsReset`** | `EventEmitter<void>` | ✴️ |  | |
+|**`odsValueChange`** | `EventEmitter<T>` | ✴️ |  | |
 
-### OdsTextAreaMethod
+### OdsTextareaMethod
 |Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`clear`** | `Promise<void>` | ✴️ |  | empty the value|
-|**`getValidity`** | `Promise<OdsTextAreaValidityState>` | ✴️ |  | get the validity state|
+|**`formResetCallback`** | _void_ | ✴️ |  | |
+|**`getValidity`** | `Promise<undefined` \| `OdsCommonFieldValidityState>` | ✴️ |  | return the element validity|
 |**`reset`** | `Promise<void>` | ✴️ |  | restore the value to the initial state|
-|**`setFocus`** | `Promise<void>` | ✴️ |  | active the focus on the textarea in order to let the user write something|
-|**`setTextAreaTabindex`** | `Promise<void>` | ✴️ |  | set a custom tab index for easier navigation|
-
-### OdsTextAreaValueChangeEvent
-|Name | Type | Required | Default | Description|
-|---|---|:---:|---|---|
-|**`name`** | _string_ |  |  | |
-|**`oldValue`** | `undefined` \| `string` |  |  | |
-|**`validity`** | `OdsTextAreaValidityState` |  |  | |
-|**`value`** | `undefined` \| `string` |  |  | |
-
-## Types
-
-### ODS_TEXTAREA_SIZE
-|  |
-|:---:|
-| `md` |
+|**`setFocus`** | `Promise<void>` | ✴️ |  | active the focus on the input in order to let the user write something|
+|**`setTabindex`** | `Promise<void>` | ✴️ |  | set a custom tab index for easier navigation|

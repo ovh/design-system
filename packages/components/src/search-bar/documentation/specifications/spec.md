@@ -5,7 +5,6 @@
 ### OdsSearchBarAttribute
 |Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
-|**`contrasted`** | _boolean_ |  |  | Indicates if the search-bar is contrasted or not: see component principles|
 |**`disabled`** | _boolean_ |  |  | Indicates if the search-bar is disabled or not: see component principles|
 |**`loading`** | _boolean_ |  |  | Indicates if the search-bar is in loading state or not|
 |**`options`** | OdsSearchbarOption[] |  |  | List of the options on the select|

@@ -39,7 +39,7 @@ interface OdsCommonFieldAttribute {
   step?: number;
   /** Tabindex for the input */
   tabindex?: number;
-  /** Type of the input field */
+  /** Value of the input field */
   value: OdsInputValue;
 }
 

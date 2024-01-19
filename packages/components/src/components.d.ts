@@ -11,7 +11,7 @@ import { OsdsAccordion } from "./accordion/src/components/osds-accordion/osds-ac
 import { OdsBreadcrumbAttributeItem } from "./breadcrumb/src/components/osds-breadcrumb/interfaces/attributes";
 import { ODS_ICON_NAME } from "./icon/src";
 import { ODS_LINK_REFERRER_POLICY } from "./link/src";
-import { ODS_COUNTRY_ISO_CODE, ODS_LOCALE, ODS_PERIOD_ISO_CODE, OdsCommonFieldValidityState, OdsErrorStateControl, OdsFormControl, OdsFormForbiddenValues, OdsHTMLAnchorElementRel, OdsHTMLAnchorElementTarget, OdsI18nHook, OdsInputValue, OdsTextAreaValidityState, OdsValidityState } from "@ovhcloud/ods-common-core";
+import { ODS_COUNTRY_ISO_CODE, ODS_LOCALE, ODS_PERIOD_ISO_CODE, OdsCommonFieldValidityState, OdsErrorStateControl, OdsFormControl, OdsFormForbiddenValues, OdsHTMLAnchorElementRel, OdsHTMLAnchorElementTarget, OdsI18nHook, OdsInputValue, OdsValidityState } from "@ovhcloud/ods-common-core";
 import { OdsBreadcrumbAttributeItem as OdsBreadcrumbAttributeItem1 } from "./breadcrumb/src/components/osds-breadcrumb/public-api";
 import { ODS_BUTTON_SIZE } from "./button/src/components/osds-button/constants/button-size";
 import { ODS_BUTTON_TYPE } from "./button/src/components/osds-button/constants/button-type";
@@ -64,8 +64,7 @@ import { OdsTabsChangeEventDetail } from "./tabs/src/components/osds-tabs/interf
 import { ODS_TEXT_COLOR_HUE, ODS_TEXT_COLOR_INTENT } from "./text/src/components/osds-text/constants/text-color";
 import { ODS_TEXT_SIZE } from "./text/src/components/osds-text/constants/text-size";
 import { ODS_TEXT_LEVEL } from "./text/src/components/osds-text/constants/text-level";
-import { ODS_TEXTAREA_SIZE } from "./textarea/src/components/osds-textarea/constants/textarea-size";
-import { OdsTextAreaValueChangeEvent } from "./textarea/src/components/osds-textarea/interfaces/events";
+import { OdsTextareaValueChangeEventDetail } from "./textarea/src/components/osds-textarea/interfaces/events";
 import { ODS_TILE_SIZE } from "./tile/src/components/osds-tile/constants/tile-size";
 import { ODS_TILE_VARIANT } from "./tile/src/components/osds-tile/constants/tile-variant";
 import { ODS_TOOLTIP_VARIANT } from "./tooltip/src/components/osds-tooltip/constants/tooltip-variant";
@@ -75,7 +74,7 @@ export { OsdsAccordion } from "./accordion/src/components/osds-accordion/osds-ac
 export { OdsBreadcrumbAttributeItem } from "./breadcrumb/src/components/osds-breadcrumb/interfaces/attributes";
 export { ODS_ICON_NAME } from "./icon/src";
 export { ODS_LINK_REFERRER_POLICY } from "./link/src";
-export { ODS_COUNTRY_ISO_CODE, ODS_LOCALE, ODS_PERIOD_ISO_CODE, OdsCommonFieldValidityState, OdsErrorStateControl, OdsFormControl, OdsFormForbiddenValues, OdsHTMLAnchorElementRel, OdsHTMLAnchorElementTarget, OdsI18nHook, OdsInputValue, OdsTextAreaValidityState, OdsValidityState } from "@ovhcloud/ods-common-core";
+export { ODS_COUNTRY_ISO_CODE, ODS_LOCALE, ODS_PERIOD_ISO_CODE, OdsCommonFieldValidityState, OdsErrorStateControl, OdsFormControl, OdsFormForbiddenValues, OdsHTMLAnchorElementRel, OdsHTMLAnchorElementTarget, OdsI18nHook, OdsInputValue, OdsValidityState } from "@ovhcloud/ods-common-core";
 export { OdsBreadcrumbAttributeItem as OdsBreadcrumbAttributeItem1 } from "./breadcrumb/src/components/osds-breadcrumb/public-api";
 export { ODS_BUTTON_SIZE } from "./button/src/components/osds-button/constants/button-size";
 export { ODS_BUTTON_TYPE } from "./button/src/components/osds-button/constants/button-type";
@@ -128,8 +127,7 @@ export { OdsTabsChangeEventDetail } from "./tabs/src/components/osds-tabs/interf
 export { ODS_TEXT_COLOR_HUE, ODS_TEXT_COLOR_INTENT } from "./text/src/components/osds-text/constants/text-color";
 export { ODS_TEXT_SIZE } from "./text/src/components/osds-text/constants/text-size";
 export { ODS_TEXT_LEVEL } from "./text/src/components/osds-text/constants/text-level";
-export { ODS_TEXTAREA_SIZE } from "./textarea/src/components/osds-textarea/constants/textarea-size";
-export { OdsTextAreaValueChangeEvent } from "./textarea/src/components/osds-textarea/interfaces/events";
+export { OdsTextareaValueChangeEventDetail } from "./textarea/src/components/osds-textarea/interfaces/events";
 export { ODS_TILE_SIZE } from "./tile/src/components/osds-tile/constants/tile-size";
 export { ODS_TILE_VARIANT } from "./tile/src/components/osds-tile/constants/tile-variant";
 export { ODS_TOOLTIP_VARIANT } from "./tooltip/src/components/osds-tooltip/constants/tooltip-variant";
@@ -678,7 +676,7 @@ export namespace Components {
          */
         "showSiblingsMonthDays"?: boolean;
         /**
-          * Type of the input field
+          * Value of the input field
           * @see OdsDatepickerAttribute.value
          */
         /**
@@ -827,6 +825,9 @@ export namespace Components {
          */
         "forbiddenValues"?: OdsInputValue[];
         "getInputEl": () => Promise<HTMLInputElement | undefined>;
+        /**
+          * return the element validity
+         */
         "getValidity": () => Promise<OdsCommonFieldValidityState | undefined>;
         "hide": () => Promise<void>;
         /**
@@ -889,8 +890,7 @@ export namespace Components {
         /**
           * Step value for the input
         /**
-          * Type of the input field
-          * Current value of the input
+          * Value of the input field
          */
         "value": string | number | Date | null;
     }
@@ -1085,6 +1085,9 @@ export namespace Components {
           * List of forbidden values for the input
          */
         "forbiddenValues"?: OdsInputValue[];
+        /**
+          * return the element validity
+         */
         "getValidity": () => Promise<OdsCommonFieldValidityState | undefined>;
         "hide": () => Promise<void>;
         /**
@@ -1720,12 +1723,9 @@ export namespace Components {
         "size"?: ODS_TEXT_SIZE;
     }
     interface OsdsTextarea {
+        "ariaLabel": string | null;
         /**
-          * ariaLabel: see component principles
-         */
-        "ariaLabel": HTMLElement['ariaLabel'];
-        /**
-          * ariaLabelledby: see component principles
+          * ID of the element that labels the input
          */
         "ariaLabelledby"?: string;
         /**
@@ -1733,56 +1733,43 @@ export namespace Components {
          */
         "clear": () => Promise<void>;
         /**
-          * main color: see component principles
-         */
-        "color"?: ODS_THEME_COLOR_INTENT;
-        /**
-          * cols: see component principles
+          * The visible width of the text control, in average character widths
          */
         "cols"?: number;
         /**
-          * contrasted: see component principles
+          * Default value of the textarea
          */
-        "contrasted"?: boolean;
+        "defaultValue": string | null;
         /**
-          * defaultValue: see component principles
+          * Indicates if the input is disabled or not: see component principles
          */
-        "defaultValue"?: string;
+        "disabled": boolean;
         /**
-          * cols: see component principles
+          * Indicates if the input shows error or not
          */
-        "disabled"?: boolean;
+        "error": boolean;
         /**
-          * on error or not
+          * return the element validity
          */
-        "error"?: boolean;
-        "errorStateControl"?: OdsErrorStateControl;
+        "getValidity": () => Promise<OdsCommonFieldValidityState | undefined>;
         /**
-          * textarea form control
-         */
-        "formControl"?: OdsFormControl<OdsTextAreaValidityState>;
-        /**
-          * get the validity state
-         */
-        "getValidity": () => Promise<OdsTextAreaValidityState>;
-        /**
-          * inline or not: see component principles
+          * Indicates if the textarea is inline or not: see component principles
          */
         "inline"?: boolean;
         /**
-          * name : see component principles
+          * Name of the input field
          */
-        "name"?: string;
+        "name": string;
         /**
-          * placeholder : see component principles
+          * Placeholder text for the input
          */
         "placeholder"?: string;
         /**
-          * readOnly or not : see component principles
+          * Indicates if the input is read-only or not
          */
         "readOnly"?: boolean;
         /**
-          * required or not : see component principles
+          * Indicates if the input is required or not
          */
         "required"?: boolean;
         /**
@@ -1790,38 +1777,34 @@ export namespace Components {
          */
         "reset": () => Promise<void>;
         /**
-          * resizable or not : see component principles
+          * Indicates that the user can resize the control
          */
         "resizable"?: boolean;
         /**
-          * row: see component principles
+          * The number of visible text lines for the control
          */
         "rows"?: number;
         /**
-          * active the focus on the textarea in order to let the user write something
+          * active the focus on the input in order to let the user write something
          */
         "setFocus": () => Promise<void>;
         /**
           * set a custom tab index for easier navigation
           * @param value - chosen index
          */
-        "setTextAreaTabindex": (value: number) => Promise<void>;
+        "setTabindex": (value: number) => Promise<void>;
         /**
-          * textarea size
+          * Define if the spelling of the value should be check
          */
-        "size"?: ODS_TEXTAREA_SIZE;
+        "spellcheck": boolean;
         /**
-          * spellcheck: see component principles
-         */
-        "spellcheck": HTMLElement['spellcheck'];
-        /**
-          * textarea id
+          * The native textarea element id
          */
         "textAreaId"?: string;
         /**
-          * value: see component principles
+          * Value of the textarea field
          */
-        "value": string;
+        "value": string | null;
     }
     interface OsdsTile {
         /**
@@ -2722,8 +2705,10 @@ declare global {
     };
     interface HTMLOsdsTextareaElementEventMap {
         "odsBlur": void;
+        "odsClear": void;
         "odsFocus": void;
-        "odsValueChange": OdsTextAreaValueChangeEvent;
+        "odsReset": void;
+        "odsValueChange": OdsTextareaValueChangeEventDetail;
     }
     interface HTMLOsdsTextareaElement extends Components.OsdsTextarea, HTMLStencilElement {
         addEventListener<K extends keyof HTMLOsdsTextareaElementEventMap>(type: K, listener: (this: HTMLOsdsTextareaElement, ev: OsdsTextareaCustomEvent<HTMLOsdsTextareaElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -3391,7 +3376,7 @@ declare namespace LocalJSX {
          */
         "showSiblingsMonthDays"?: boolean;
         /**
-          * Type of the input field
+          * Value of the input field
           * @see OdsDatepickerAttribute.value
          */
         "value"?: OdsInputValue;
@@ -3572,7 +3557,7 @@ declare namespace LocalJSX {
          */
         "type"?: ODS_INPUT_TYPE;
         /**
-          * Type of the input field
+          * Value of the input field
          */
         "value"?: string | number | Date | null;
     }
@@ -4431,99 +4416,72 @@ declare namespace LocalJSX {
         "size"?: ODS_TEXT_SIZE;
     }
     interface OsdsTextarea {
+        "ariaLabel"?: string | null;
         /**
-          * ariaLabel: see component principles
-         */
-        "ariaLabel"?: HTMLElement['ariaLabel'];
-        /**
-          * ariaLabelledby: see component principles
+          * ID of the element that labels the input
          */
         "ariaLabelledby"?: string;
         /**
-          * main color: see component principles
-         */
-        "color"?: ODS_THEME_COLOR_INTENT;
-        /**
-          * cols: see component principles
+          * The visible width of the text control, in average character widths
          */
         "cols"?: number;
         /**
-          * contrasted: see component principles
+          * Default value of the textarea
          */
-        "contrasted"?: boolean;
+        "defaultValue"?: string | null;
         /**
-          * defaultValue: see component principles
-         */
-        "defaultValue"?: string;
-        /**
-          * cols: see component principles
+          * Indicates if the input is disabled or not: see component principles
          */
         "disabled"?: boolean;
         /**
-          * on error or not
+          * Indicates if the input shows error or not
          */
         "error"?: boolean;
-        "errorStateControl"?: OdsErrorStateControl;
         /**
-          * textarea form control
-         */
-        "formControl"?: OdsFormControl<OdsTextAreaValidityState>;
-        /**
-          * inline or not: see component principles
+          * Indicates if the textarea is inline or not: see component principles
          */
         "inline"?: boolean;
         /**
-          * name : see component principles
+          * Name of the input field
          */
         "name"?: string;
-        /**
-          * Event triggered on textarea blur
-         */
         "onOdsBlur"?: (event: OsdsTextareaCustomEvent<void>) => void;
-        /**
-          * Event triggered on textarea focus
-         */
+        "onOdsClear"?: (event: OsdsTextareaCustomEvent<void>) => void;
         "onOdsFocus"?: (event: OsdsTextareaCustomEvent<void>) => void;
+        "onOdsReset"?: (event: OsdsTextareaCustomEvent<void>) => void;
+        "onOdsValueChange"?: (event: OsdsTextareaCustomEvent<OdsTextareaValueChangeEventDetail>) => void;
         /**
-          * The textarea value changed
-         */
-        "onOdsValueChange"?: (event: OsdsTextareaCustomEvent<OdsTextAreaValueChangeEvent>) => void;
-        /**
-          * placeholder : see component principles
+          * Placeholder text for the input
          */
         "placeholder"?: string;
         /**
-          * readOnly or not : see component principles
+          * Indicates if the input is read-only or not
          */
         "readOnly"?: boolean;
         /**
-          * required or not : see component principles
+          * Indicates if the input is required or not
          */
         "required"?: boolean;
         /**
-          * resizable or not : see component principles
+          * Indicates that the user can resize the control
          */
         "resizable"?: boolean;
         /**
-          * row: see component principles
+          * The number of visible text lines for the control
          */
         "rows"?: number;
         /**
-          * textarea size
+          * Define if the spelling of the value should be check
          */
-        "size"?: ODS_TEXTAREA_SIZE;
+        "spellcheck"?: boolean;
         /**
-          * spellcheck: see component principles
-         */
-        "spellcheck"?: HTMLElement['spellcheck'];
-        /**
-          * textarea id
+          * The native textarea element id
          */
         "textAreaId"?: string;
         /**
-          * value: see component principles
+          * Value of the textarea field
          */
-        "value"?: string;
+        "value"?: string | null;
     }
     interface OsdsTile {
         /**

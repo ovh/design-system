@@ -34,5 +34,5 @@
 ### OdsBreadcrumbItemEvent
 |Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
-|**`odsBreadcrumbItemClick`** | `EventEmitter<intersection>` | ✴️ |  | Event triggered item click|
+|**`odsBreadcrumbItemClick`** | `EventEmitter<unknown>` | ✴️ |  | Event triggered item click|
 |**`odsBreadcrumbItemCollapsedClick`** | `EventEmitter<void>` | ✴️ |  | Event triggered on collapsed item click|

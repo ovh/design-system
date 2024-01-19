@@ -6,108 +6,104 @@
   <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0' />
   <title>Dev osds-textarea</title>
 
-  <script type="module">
-    !window.ods && (window.ods = { config: { logging: { active: true } } });
-  </script>
-
   <script type='module' src='/build/osds-textarea.esm.js'></script>
   <script nomodule src='/build/osds-textarea.js'></script>
   <link rel="stylesheet" href="/build/osds-textarea.css">
-  <style>
-    .error-msg {
-      display: none;
-      background: gray;
-    }
-  </style>
 </head>
 
 <body>
-
   <section>
     <article>
       <h2>[METHODS]</h2>
-      <osds-textarea id="odsTextarea-1" placeholder="placeholder" default-value="defaultValue">
+      <osds-textarea id="odsTextarea-1"
+                     default-value="defaultValue"
+                     name="textarea-1"
+                     placeholder="placeholder" resizable="false"
+                     required>
       </osds-textarea>
+
       <div>
-        <button id="odsTextarea-reset">reset</button>
         <button id="odsTextarea-clear">clear</button>
+        <button id="odsTextarea-focus">focus</button>
+        <button id="odsTextarea-reset">reset</button>
       </div>
     </article>
-  </section>
 
-  <section>
+    <article>
+      <h2>[value]</h2>
+
+      <osds-textarea name="value" placeholder="default" value="My value">
+      </osds-textarea>
+    </article>
 
     <article>
       <h2>[default value]</h2>
-      <osds-textarea placeholder="default" default-value="defaultValue">
+
+      <osds-textarea name="default-value" placeholder="default" default-value="defaultValue">
       </osds-textarea>
     </article>
 
     <article>
       <h2>[default value + value]</h2>
-      <osds-textarea placeholder="default" default-value="defaultValue" value="value">
+
+      <osds-textarea name="all-value" placeholder="default" default-value="defaultValue" value="value">
       </osds-textarea>
     </article>
 
     <article>
       <h2>[default]</h2>
-      <osds-textarea placeholder="default">
+
+      <osds-textarea name="default" placeholder="default">
       </osds-textarea>
     </article>
 
     <article>
-      <h2>[default disabled]</h2>
-      <osds-textarea placeholder="default disabled" disabled>
+      <h2>[disabled]</h2>
+
+      <osds-textarea name="disabled" placeholder="default disabled" disabled>
       </osds-textarea>
     </article>
-
 
     <article>
       <h2>[error]</h2>
-      <osds-textarea placeholder="error" error>
+
+      <osds-textarea name="error" placeholder="error" error>
       </osds-textarea>
     </article>
 
     <article>
       <h2>[inline]</h2>
-      <osds-textarea placeholder="inline" inline>
+
+      <osds-textarea name="inline" placeholder="inline" inline>
       </osds-textarea>
     </article>
   </section>
 
-
   <script>
-  const odsTextArea1 = document.querySelector('osds-textarea#odsTextarea-1');
-  const odsTextAreaReset = document.querySelector('#odsTextarea-reset');
-  const odsTextAreaClear = document.querySelector('#odsTextarea-clear');
+    const odsTextarea1 = document.querySelector('osds-textarea#odsTextarea-1');
+    const odsTextareaClear = document.querySelector('#odsTextarea-clear');
+    const odsTextareaFocus = document.querySelector('#odsTextarea-focus');
+    const odsTextareaReset = document.querySelector('#odsTextarea-reset');
 
+    odsTextarea1.addEventListener('odsValueChange', (event) => {
+      console.log('🟡 odsValueChange event', event.detail);
 
-  let logger;
-  document.addEventListener('odsInitialized', ({detail}) => {
-    const instance = detail.instance;
-    instance.logging(true);
-    logger = new instance.logger('www');
-    logger.log('odsInitialized received');
-  })
+      odsTextarea1.getValidity().then((validity) => {
+        console.log('🟡 getValidity odsTextarea-1 from Event', validity);
+      });
+    })
 
-  odsTextArea1.addEventListener('odsValueChange', (event) => {
-    logger && logger.log("🟡 odsValueChange event", event.detail);
-
-    odsTextArea1.getValidity().then((validity) => {
-      logger && logger.log("🟡 getValidity odsTextarea-1 from Event", validity);
+    odsTextareaClear.addEventListener('click', event => {
+      odsTextarea1.clear();
     });
-  })
 
-  odsTextAreaReset.addEventListener('click', event => {
-    odsTextArea1.reset();
-  });
+    odsTextareaFocus.addEventListener('click', event => {
+      odsTextarea1.setFocus();
+    });
 
-  odsTextAreaClear.addEventListener('click', event => {
-    odsTextArea1.clear();
-  });
-
+    odsTextareaReset.addEventListener('click', event => {
+      odsTextarea1.reset();
+    });
   </script>
-
 </body>
-
 </html>

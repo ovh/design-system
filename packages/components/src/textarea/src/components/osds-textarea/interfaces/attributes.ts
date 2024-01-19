@@ -1,54 +1,24 @@
-import type { ODS_TEXTAREA_SIZE } from '../constants/textarea-size';
-import type { OdsErrorStateControl, OdsFormControl, OdsTextAreaValidityState } from '@ovhcloud/ods-common-core';
-import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+import type { OdsCommonFieldAttribute } from '@ovhcloud/ods-common-core';
 
-
-interface OdsTextAreaAttribute {
-  /** ariaLabel: see component principles */
-  ariaLabel: HTMLElement['ariaLabel'];
-  /** ariaLabelledby: see component principles */
-  ariaLabelledby?:string;
-  /** main color: see component principles */
-  color?: ODS_THEME_COLOR_INTENT;
-  /** cols: see component principles */
+interface OdsTextareaAttribute extends Omit<OdsCommonFieldAttribute, 'clearable' | 'loading' | 'prefixValue' | 'step'> {
+  /** The visible width of the text control, in average character widths */
   cols?: number;
-  /** contrasted: see component principles */
-  contrasted?: boolean;
-  /** defaultValue: see component principles */
-  defaultValue?: HTMLTextAreaElement['defaultValue'];
-  /** cols: see component principles */
-  disabled?: boolean;
-  /** on error or not */
-  error?: boolean;
-  errorStateControl?: OdsErrorStateControl;
-  /** inline or not: see component principles */
+  /** Default value of the textarea */
+  defaultValue: string | null;
+  /** Indicates if the textarea is inline or not: see component principles */
   inline?: boolean;
-  /** textarea form control */
-  formControl?: OdsFormControl<OdsTextAreaValidityState>;
-  /** hasFocus or not */
-  hasFocus: boolean;
-  /** name : see component principles */
-  name?: HTMLTextAreaElement['name'];
-  /** placeholder : see component principles */
-  placeholder?: string;
-  /** readOnly or not : see component principles */
-  readOnly?: boolean;
-  /** required or not : see component principles */
-  required?: boolean;
-  /** resizable or not : see component principles */
+  /** Indicates that the user can resize the control */
   resizable?: boolean;
-  /** row: see component principles */
+  /** The number of visible text lines for the control */
   rows?: number;
-  /** textarea size */
-  size?: ODS_TEXTAREA_SIZE;
-  /** spellcheck: see component principles */
+  /** Define if the spelling of the value should be check */
   spellcheck: HTMLElement['spellcheck'];
-  /** textarea id */
+  /** The native textarea element id */
   textAreaId?: string;
-  /** value: see component principles */
-  value: HTMLTextAreaElement['value'];
+  /** Value of the textarea field */
+  value: string | null
 }
 
-export {
-  OdsTextAreaAttribute,
+export type {
+  OdsTextareaAttribute,
 };

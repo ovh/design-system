@@ -34,7 +34,7 @@
   text-align: var(--ods-textarea-text-align, left);
 }
 
-:not([resizable]) {
+:host([resizable="false"]) {
   @include osds-textarea-on-selected-host {
     @include osds-textarea-on-main-element {
       resize: none;

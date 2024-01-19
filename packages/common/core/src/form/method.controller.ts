@@ -10,7 +10,7 @@ class OdsCommonFieldMethodController<T extends OdsCommonFieldAttribute & OdsComm
 
   beforeInit() {
     if (!this.component.name) {
-      return console.warn(`Attribute name is required.`);
+      return console.warn('Attribute name is required.');
     }
   }
 
@@ -90,8 +90,8 @@ class OdsCommonFieldMethodController<T extends OdsCommonFieldAttribute & OdsComm
     this.component.value = this.component.defaultValue ?? null;
     this.component.odsReset.emit();
   }
-} 
+}
 
 export {
     OdsCommonFieldMethodController,
-}
+};

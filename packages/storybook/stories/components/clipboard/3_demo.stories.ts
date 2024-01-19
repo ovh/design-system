@@ -1,5 +1,6 @@
 import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-clipboard';
 import { html } from 'lit-html';
+import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 
 defineCustomElement();
@@ -9,6 +10,14 @@ const storyParams = {
   value: {
     category: 'General',
     defaultValue: '',
+  },
+  successMessage: {
+    category: 'Slot',
+    defaultValue: 'Success',
+  },
+  errorMessage: {
+    category: 'Slot',
+    defaultValue: 'Error',
   },
   disabled: {
     category: 'Misc',
@@ -30,8 +39,8 @@ const TemplateDemo = (args:any) => {
   return html`
     <osds-clipboard ...=${getTagAttributes(args)} @keydown=${(e: KeyboardEvent) => e.stopPropagation()}>
       Clipboard
-      <span slot='success-message'>Success</span>
-      <span slot='error-message'>Error</span>
+      <span slot='success-message'>${unsafeHTML(args.successMessage)}</span>
+      <span slot='error-message'>${unsafeHTML(args.successMessage)}</span>
     </osds-clipboard>
   `;
 };

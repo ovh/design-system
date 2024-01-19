@@ -1,0 +1,28 @@
+You can `disabled` some items, but you cannot disable the entire `breadcrumb`.
+
+export const displayBreadcrumbItem = () => {
+    setTimeout(() => {
+        const disabledBreadcrumbItemUsage = document.querySelector('#disabled-breadcrumb-item');
+        disabledBreadcrumbItemUsage.items = JSON.stringify([
+          { href: "#home", label: "Home" },
+          { href: "#services", label: "Services", disabled: true },
+          { href: "#productsd", label: "Products" },
+          { href: "#web", label: "Web" },
+        ]);
+    }, 0);
+};
+
+<osds-breadcrumb id="disabled-breadcrumb-item"></osds-breadcrumb>
+<>{ displayBreadcrumbItem() }</>
+
+```html
+<osds-breadcrumb id="disabled-breadcrumb-item"></osds-breadcrumb>
+<script>
+document.querySelector('#disabled-breadcrumb-item').items = JSON.stringify([
+  { href: "#home", label: "Home" },
+  { href: "#services", label: "Services", disabled: true },
+  { href: "#products", label: "Products" },
+  { href: "#web", label: "Web" },
+]);
+</script>
+```

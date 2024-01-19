@@ -16,24 +16,29 @@ document.addEventListener('DOMContentLoaded', function() {
           const selector = document.querySelector('.sidebar-header');
             let element;
             if (urlVersionRegex.test(location.href)) {
+              const container = document.createElement('div');
+              container.style.display = 'flex';
               const releasesSelector = document.createElement('select');
               releasesSelector.id = 'release-selector';
+              releasesSelector.style.margin = 'auto 0';
               Object.entries(releases).forEach((value) => {
                 const option = document.createElement('option');
                 option.text = value[0];
                 option.value = value[1];
                 releasesSelector.appendChild(option);
               });
-              element = releasesSelector;
+              container.appendChild(releasesSelector);
+              container.appendChild(createGithubImageElement());
+              element = container;
 
               releasesSelector.onchange = (selection) => {
                 const version = selection.target.value === 'latest' ? '/latest/' : `/v${selection.target.value}/`;
                 location.pathname = location.pathname.replace(urlVersionRegex, version);
               };
-              element.appendChild(createGithubImageElement());
             } else {
               const version = document.createElement('div');
               version.id = 'release-selector';
+              version.style.margin = '16px 0';
               version.innerText = Object.keys(releases)[0];
               element = version;
               element.appendChild(createGithubImageElement());
@@ -54,9 +59,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const callback = function(mutationsList) {
       for (let i = 0, len = mutationsList.length; i < len; i++) {
         if (mutationsList[i].type === 'childList') {
-          let items = Array.from(document.querySelectorAll(".sidebar-item[id*='ods-components-'][data-nodetype='group']"));
+          const items = Array.from(document.querySelectorAll(".sidebar-item[id*='ods-components-'][data-nodetype='group']"));
           if (items.length > 0) {
-            items.forEach(item => item.click());
+            items.forEach(item => {
+              item.click();
+              const isOpen = item.getAttribute('aria-expanded') === 'true';
+              if (!isOpen) {
+                item.click();
+              }
+            });
             observer.disconnect();
           }
           break;
@@ -68,12 +79,10 @@ document.addEventListener('DOMContentLoaded', function() {
     observer.observe(document.getElementById('root'), { childList: true, subtree: true });
   };
 
-  // todo check where to add observer.disconnect
-  // todo rm logs
   // set background-color to dark when contrasted control is true
   const observeContrasted = () => {
     const darkBackground = parameters?.backgrounds?.values.find(bg => bg.name === 'dark').value;
-    let controlContrasted = document.getElementById('control-contrasted');
+    let controlContrasted = null;
 
     const toggleBackground = () => {
       const storybookWrapper = document.getElementById('storybook-preview-wrapper');
@@ -85,7 +94,6 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     const attachClickEvent = () => {
-      controlContrasted = document.getElementById('control-contrasted');
       if (controlContrasted) {
         controlContrasted.addEventListener('click', toggleBackground);
       }
@@ -94,10 +102,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const resetContrastedState = () => {
       const storybookWrapper = document.getElementById('storybook-preview-wrapper');
       storybookWrapper.style.backgroundColor = '';
-      console.log('controlContrasted in reset', controlContrasted);
 
-      if (controlContrasted.checked === true) {
-        console.log('controlContrasted checked', controlContrasted.checked);
+      if (controlContrasted && controlContrasted.checked === true) {
         storybookWrapper.style.backgroundColor = darkBackground;
       }
     };
@@ -105,6 +111,7 @@ document.addEventListener('DOMContentLoaded', function() {
     attachClickEvent();
 
     const observer = new MutationObserver(() => {
+      controlContrasted = document.getElementById('control-contrasted');
       attachClickEvent();
     });
     observer.observe(document.getElementById('root'), { childList: true, subtree: true });

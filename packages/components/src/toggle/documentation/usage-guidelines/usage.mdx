@@ -1,7 +1,9 @@
 import CheckedProperty from './properties/usage.checked.mdx';
-import InteractiveProperty from './properties/usage.interactive.mdx';
-import DisabledProperty from './properties/usage.disabled.mdx';
 import ColorProperty from './properties/usage.color.mdx';
+import ContrastedProperty from './properties/usage.contrasted.mdx';
+import DisabledProperty from './properties/usage.disabled.mdx';
+import InteractiveProperty from './properties/usage.interactive.mdx';
+import Slot from './slots/usage.slot.mdx';
 import GenericStyle from '@ovhcloud/ods-common-core/docs/generic-style.mdx';
 
 <GenericStyle />
@@ -15,14 +17,31 @@ import GenericStyle from '@ovhcloud/ods-common-core/docs/generic-style.mdx';
 <osds-toggle></osds-toggle>
 ```
 
+### Slot
+<Slot />
+
+### Color
+<ColorProperty />
+
 ### Checked
 <CheckedProperty />
 
 ### Disabled
 <DisabledProperty />
 
+### Contrasted
+<ContrastedProperty />
+
 ### Interactive
 <InteractiveProperty />
 
-### Color
-<ColorProperty />
+### With Checkbox wrapper
+<osds-checkbox>
+  <osds-toggle></osds-toggle>
+</osds-checkbox>
+
+```html
+<osds-checkbox>
+  <osds-toggle></osds-toggle>
+</osds-checkbox>
+```

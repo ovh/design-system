@@ -30,12 +30,12 @@ const TemplateDefault = (args: any) => html`
   </style>
   <h3>Non-selected</h3>
   <osds-radio ...=${getTagAttributes(args)} value="radio-a">
-    <osds-tile interactive>Lorem ipsum dolor sit amet, consectetur adipiscing elit</osds-tile>
+    <osds-tile>Lorem ipsum dolor sit amet, consectetur adipiscing elit</osds-tile>
   </osds-radio>
   <h3>Selected</h3>
   <osds-radio ...=${getTagAttributes(args)}  value="radio-b"
               checked>
-    <osds-tile interactive>Lorem ipsum dolor sit amet, consectetur adipiscing elit</osds-tile>
+    <osds-tile>Lorem ipsum dolor sit amet, consectetur adipiscing elit</osds-tile>
   </osds-radio>
 `;
 export const Default = TemplateDefault.bind({});

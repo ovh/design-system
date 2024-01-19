@@ -1,27 +1,72 @@
-import Basic from './properties/usage.basic.mdx';
-import Contrasted from './properties/usage.contrasted.mdx';
-import Disabled from './properties/usage.disabled.mdx';
-import Panel from './properties/usage.panel.mdx';
+import ActiveProperty from './properties/tab-panel/usage.active.mdx';
+import ContrastedProperty from './properties/tabs/usage.contrasted.mdx';
+import DisabledProperty from './properties/tab-bar-item/usage.disabled.mdx';
+import NameProperty from './properties/tab-panel/usage.name.mdx';
+import PanelTabBarItemProperty from './properties/tab-bar-item/usage.panel.mdx';
+import PanelTabsProperty from './properties/tabs/usage.panel.mdx';
+import Slot from './slots/usage.slot.mdx';
 import ReactExample from './usage.react.mdx';
+import GenericStyle from '@ovhcloud/ods-common-core/docs/generic-style.mdx';
+
+<GenericStyle />
 
 ## Usage
 
-### Basic
+## Tabs
+### Default
+<osds-tabs>
+  <osds-tab-bar slot='top'>
+    <osds-tab-bar-item panel='tab1'>Tab 1</osds-tab-bar-item>
+    <osds-tab-bar-item panel='tab2'>Tab 2</osds-tab-bar-item>
+    <osds-tab-bar-item panel='tab3'>Tab 3</osds-tab-bar-item>
+  </osds-tab-bar>
+  <osds-tab-panel name='tab1'>Content for Tab 1</osds-tab-panel>
+  <osds-tab-panel name='tab2'>Content for Tab 2</osds-tab-panel>
+  <osds-tab-panel name='tab3'>Content for Tab 3</osds-tab-panel>
+</osds-tabs>
 
-<Basic />
-
-### Contrasted
-
-<Contrasted />
-
-### Disabled
-
-<Disabled />
+```html
+<osds-tabs>
+  <osds-tab-bar slot='top'>
+    <osds-tab-bar-item panel='tab1'>Tab 1</osds-tab-bar-item>
+    <osds-tab-bar-item panel='tab2'>Tab 2</osds-tab-bar-item>
+    <osds-tab-bar-item panel='tab3'>Tab 3</osds-tab-bar-item>
+  </osds-tab-bar>
+  <osds-tab-panel name='tab1'>Content for Tab 1</osds-tab-panel>
+  <osds-tab-panel name='tab2'>Content for Tab 2</osds-tab-panel>
+  <osds-tab-panel name='tab3'>Content for Tab 3</osds-tab-panel>
+</osds-tabs>
+```
 
 ### Panel
+<PanelTabsProperty />
 
-<Panel />
+### Contrasted
+<ContrastedProperty />
 
-### In React
+## Tab Bar
+### Slot
+#### Top
+<Slot />
 
+## Panel
+### Active
+It indicates the active panel, paired with the active tab bar item.
+<ActiveProperty />
+
+### Name
+<NameProperty />
+
+## Tab Bar Item
+### Disabled
+<DisabledProperty />
+
+### Panel
+<PanelTabBarItemProperty />
+
+### Active
+It indicates the active tab bar item, paired with the active panel.
+<ActiveProperty />
+
+## In React
 <ReactExample />

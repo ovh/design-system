@@ -1,16 +1,38 @@
 The nominal way to use it is with another component that will manage all the visual aspect only.
 
-*with `tile` component*
+#### With Tile component
 
 <osds-checkbox value="my-value" name="my-input-name">
-  <osds-tile interactive>Radio with Tile in it</osds-tile>
+  <osds-tile hoverable>Radio with Tile in it</osds-tile>
 </osds-checkbox>
 
 ```html
-
 <osds-checkbox value="my-value" name="my-input-name">
-  <osds-tile interactive>Radio with Tile in it</osds-tile>
+  <osds-tile hoverable>Radio with Tile in it</osds-tile>
 </osds-checkbox>
 ```
 
-> here we use the `tile` in an interactive way in order to have the styles of interactions (focus, hover, active, etc)
+> Here the Tile with hoverable attribute to have the styles of interactions (focus, hover, active and so on).
+
+#### With Checkbox Button
+<osds-checkbox>
+  <osds-checkbox-button></osds-checkbox-button>
+</osds-checkbox>
+
+```html
+<osds-checkbox>
+  <osds-checkbox-button></osds-checkbox-button>
+</osds-checkbox>
+```
+
+#### With Toggle
+
+<osds-checkbox>
+  <osds-toggle></osds-toggle>
+</osds-checkbox>
+
+```html
+<osds-checkbox>
+  <osds-toggle></osds-toggle>
+</osds-checkbox>
+```

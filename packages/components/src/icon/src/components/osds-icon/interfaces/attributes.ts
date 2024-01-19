@@ -13,11 +13,11 @@ interface OdsIconAttribute {
    */
   color?: ODS_THEME_COLOR_INTENT
   /**
-   * Icon if contrasted or not
+   * Icon is contrasted or not
    */
   contrasted?: boolean
   /**
-   * Icon if hoverabled or not
+   * Icon is hoverabled or not
    */
   hoverable?: boolean
   /**

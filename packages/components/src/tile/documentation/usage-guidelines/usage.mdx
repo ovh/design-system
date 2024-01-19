@@ -1,8 +1,14 @@
 import CheckedProperty from './properties/usage.checked.mdx';
+import CheckingProperty from './properties/usage.checking.mdx';
+import ColorProperty from './properties/usage.color.mdx';
 import DisabledProperty from './properties/usage.disabled.mdx';
+import HoverableProperty from './properties/usage.hoverable.mdx';
+import InlineProperty from './properties/usage.inline.mdx';
+import LoadingProperty from './properties/usage.loading.mdx';
 import SizeProperty from './properties/usage.size.mdx';
 import VariantProperty from './properties/usage.variant.mdx';
 import RoundedProperty from './properties/usage.rounded.mdx';
+import Slot from './slots/usage.slot.mdx';
 import GenericStyle from '@ovhcloud/ods-common-core/docs/generic-style.mdx';
 
 <GenericStyle />
@@ -16,23 +22,21 @@ import GenericStyle from '@ovhcloud/ods-common-core/docs/generic-style.mdx';
 ```html
 <osds-tile></osds-tile>
 ```
-<div class="container">
-  <osds-tile>Default slot</osds-tile>
-  <osds-tile>
-    <span slot="start">Start</span>
-    <span slot="end">End</span>
-    Default slot
-  </osds-tile>
-</div>
 
-```html
-<osds-tile>Default slot</osds-tile>
-<osds-tile>
-  <span slot="start">Start</span>
-  <span slot="end">End</span>
-  Default slot
-</osds-tile>
-```
+### Slot
+<Slot />
+
+### Inline
+<InlineProperty />
+
+### Hoverable
+<HoverableProperty />
+
+### Color
+<ColorProperty />
+
+### Size
+<SizeProperty />
 
 ### Variant
 <VariantProperty />
@@ -40,14 +44,17 @@ import GenericStyle from '@ovhcloud/ods-common-core/docs/generic-style.mdx';
 ### Rounded
 <RoundedProperty />
 
-### Size
-<SizeProperty />
-
 ### Checked
 <CheckedProperty />
 
+### Checking
+<CheckingProperty />
+
 ### Disabled
 <DisabledProperty />
+
+### Loading
+<LoadingProperty />
 
 ### Tile with external click behaviour
 

@@ -1,0 +1,139 @@
+When `collapsible`, a handle is displayed.
+
+<osds-cart inline collapsible>
+  <osds-cart-header slot='header'>
+    Header
+  </osds-cart-header>
+
+  <osds-cart-section>
+      <osds-cart-item>
+        <span slot='subhead'>Subhead</span>
+        <span slot='title'>Title</span>
+        <span slot='price'>Price</span>
+        <span slot='extra'>Extra</span>
+      </osds-cart-item>
+      <osds-divider color='primary' size='0' separator='true'></osds-divider>
+      <osds-cart-item-option>
+        <span slot='subhead'>Subhead</span>
+        <span slot='title'>Title</span>
+        <span slot='price'>Price</span>
+        <span slot='extra'>Extra</span>
+      </osds-cart-item-option>
+    </osds-cart-section>
+    <osds-cart-footer slot='footer'>
+      <osds-cart-footer-item>
+        <span slot='subhead'>Subhead</span>
+        <span slot='title'>Title</span>
+        <span slot='price'>Price</span>
+        <span slot='extra'>Extra</span>
+      </osds-cart-footer-item>
+      <osds-cart-total>
+        <span slot='total'>Total</span>
+        <span slot='info'>Info</span>
+        <span slot='price'>Price</span>
+        <span slot='extra'>Extra</span>
+      </osds-cart-total>
+    </osds-cart-footer>
+</osds-cart>
+
+```html
+<osds-cart inline collapsible>
+  <osds-cart-header slot='header'>
+    Header
+  </osds-cart-header>
+
+  <osds-cart-section>
+      <osds-cart-item>
+        <span slot='subhead'>Subhead</span>
+        <span slot='title'>Title</span>
+        <span slot='price'>Price</span>
+        <span slot='extra'>Extra</span>
+      </osds-cart-item>
+      <osds-divider color='primary' size='0' separator='true'></osds-divider>
+      <osds-cart-item-option>
+        <span slot='subhead'>Subhead</span>
+        <span slot='title'>Title</span>
+        <span slot='price'>Price</span>
+        <span slot='extra'>Extra</span>
+      </osds-cart-item-option>
+    </osds-cart-section>
+
+    <osds-cart-footer slot='footer'>
+      <osds-cart-footer-item>
+        <span slot='subhead'>Subhead</span>
+        <span slot='title'>Title</span>
+        <span slot='price'>Price</span>
+        <span slot='extra'>Extra</span>
+      </osds-cart-footer-item>
+      <osds-cart-total>
+        <span slot='total'>Total</span>
+        <span slot='info'>Info</span>
+        <span slot='price'>Price</span>
+        <span slot='extra'>Extra</span>
+      </osds-cart-total>
+    </osds-cart-footer>
+</osds-cart>
+```
+
+If the cart section has too much content to fit the cart height, it will scroll while the cart is `collapsible`.
+
+<osds-cart inline collapsible id='small-cart'>
+  <osds-cart-header slot='header'>
+    Header
+  </osds-cart-header>
+  <osds-cart-section>
+      <osds-cart-item>
+        <span slot='subhead'>Subhead</span>
+        <span slot='title'>Title</span>
+        <span slot='price'>Price</span>
+        <span slot='extra'>Extra</span>
+      </osds-cart-item>
+      <osds-cart-item>
+        <span slot='subhead'>Subhead</span>
+        <span slot='title'>Title</span>
+        <span slot='price'>Price</span>
+        <span slot='extra'>Extra</span>
+      </osds-cart-item>
+      <osds-cart-item>
+        <span slot='subhead'>Subhead</span>
+        <span slot='title'>Title</span>
+        <span slot='price'>Price</span>
+        <span slot='extra'>Extra</span>
+      </osds-cart-item>
+      <osds-cart-item>
+        <span slot='subhead'>Subhead</span>
+        <span slot='title'>Title</span>
+        <span slot='price'>Price</span>
+        <span slot='extra'>Extra</span>
+      </osds-cart-item>
+      <osds-divider color='primary' size='0' separator='true'></osds-divider>
+      <osds-cart-item-option>
+        <span slot='subhead'>Subhead</span>
+        <span slot='title'>Title</span>
+        <span slot='price'>Price</span>
+        <span slot='extra'>Extra</span>
+      </osds-cart-item-option>
+    </osds-cart-section>
+    <osds-cart-footer slot='footer'>
+      <osds-cart-footer-item>
+        <span slot='subhead'>Subhead</span>
+        <span slot='title'>Title</span>
+        <span slot='price'>Price</span>
+        <span slot='extra'>Extra</span>
+      </osds-cart-footer-item>
+      <osds-cart-total>
+        <span slot='total'>Total</span>
+        <span slot='info'>Info</span>
+        <span slot='price'>Price</span>
+        <span slot='extra'>Extra</span>
+      </osds-cart-total>
+    </osds-cart-footer>
+</osds-cart>
+
+<style>
+{`
+  #small-cart {
+    height: 350px;
+  }
+`}
+</style>

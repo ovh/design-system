@@ -1,0 +1,19 @@
+export const displayMinDateDatepicker = () => {
+    setTimeout(() => {
+        const datepickerMinDateUsage = document.querySelector('#min-datepicker');
+        datepickerMinDateUsage.minDate = new Date();
+    }, 0);
+};
+
+<osds-datepicker id='min-datepicker' inline></osds-datepicker>
+
+<>{ displayMinDateDatepicker() }</>
+
+```html
+<osds-datepicker id='min-datepicker' inline></osds-datepicker>
+
+<script>
+  const datepickerMinDateUsage = document.querySelector('#min-datepicker');
+  datepickerMinDateUsage.minDate = new Date();
+</script>
+```

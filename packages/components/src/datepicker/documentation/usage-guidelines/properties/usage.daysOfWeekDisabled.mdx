@@ -1,0 +1,21 @@
+From 0 (Sunday) to 7 (Monday):
+
+export const displayDaysOfWeekDisabledDatepicker = () => {
+    setTimeout(() => {
+        const datepickerDaysOfWeekDisabledUsage = document.querySelector('#datepicker-days-of-week-disabled');
+        datepickerDaysOfWeekDisabledUsage.daysOfWeekDisabled = [0];
+    }, 0);
+};
+
+<osds-datepicker id='datepicker-days-of-week-disabled' inline></osds-datepicker>
+
+<>{ displayDaysOfWeekDisabledDatepicker() }</>
+
+```html
+<osds-datepicker id='datepicker-days-of-week-disabled' inline></osds-datepicker>
+
+<script>
+  const datepickerDaysOfWeekDisabledUsage = document.querySelector('#datepicker-days-of-week-disabled');
+  datepickerDaysOfWeekDisabledUsage.datesDisabled = [0];
+</script>
+```

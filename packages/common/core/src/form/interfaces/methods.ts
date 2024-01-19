@@ -6,10 +6,12 @@ interface OdsCommonFieldMethod {
      */
     clear(): Promise<void>;
 
+    formResetCallback(): void;
+
     /**
      * active the focus on the input in order to let the user write something
      */
-    setFocus(elementToFocus: HTMLElement): Promise<void>;
+    setFocus(): Promise<void>;
 
     /**
      * restore the value to the initial state
@@ -22,7 +24,7 @@ interface OdsCommonFieldMethod {
      */
     setTabindex(value: number): Promise<void>;
 
-    getValidity<T extends { validity: ValidityState }>(element: T): Promise<OdsCommonFieldValidityState | undefined>;
+    getValidity(): Promise<OdsCommonFieldValidityState | undefined>;
 } 
 
 export {

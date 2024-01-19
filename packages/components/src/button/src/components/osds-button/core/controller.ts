@@ -67,8 +67,8 @@ class OdsButtonController {
    * Checking if the button is in a form to add the form submit behaviour on it
    */
   private submitForm(event: MouseEvent | KeyboardEvent): void {
-    if (this.component.type && ['reset', 'submit'].includes(this.component.type) && !this.component.disabled) {
-      const form = (event.target as HTMLElement).closest('form');
+    if (this.component.type && ['submit', 'reset'].includes(this.component.type) && !this.component.disabled) {
+      const form = event.composedPath().find((el) => (el as HTMLElement).tagName === 'FORM') as HTMLElement;
       if (form) {
         event.preventDefault();
 

@@ -72,14 +72,10 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
     this.controller.hide();
   }
 
-  @Watch('value')
-  onValueChange(value: OdsInputValue, oldValue?: OdsInputValue): void {
-    this.controller.onValueChange(value, oldValue);
-  }
-
+  @Listen('focus')
   @Method()
   async setFocus(): Promise<void> {
-    if (this.inputEl) {
+    if (!this.hasFocus && this.inputEl) {
       this.hasFocus = true;
       this.controller.setFocus(this.inputEl);
     }
@@ -115,6 +111,11 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
     return this.inputEl; 
   }
 
+  @Watch('value')
+  onValueChange(value: OdsInputValue, oldValue?: OdsInputValue): void {
+    this.controller.onValueChange(value, oldValue);
+  }
+
   componentWillLoad(): void {
     this.controller.beforeInit();
   }
@@ -147,13 +148,6 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
 
   onInput(event: Event): void {
     this.controller.onInput(event);
-  }
-
-  @Listen('focus')
-  focus() {
-    if (!this.hasFocus) {
-      this.odsFocus.emit();
-    }
   }
 
   render(): JSX.Element {

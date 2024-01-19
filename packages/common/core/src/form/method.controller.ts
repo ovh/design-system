@@ -1,9 +1,9 @@
 import type { OdsCommonFieldAttribute, OdsCommonFieldValidityState } from './interfaces/attributes';
 import type { OdsCommonFieldMethod } from './interfaces/methods';
-import type { OdsCommonFieldEvent } from './interfaces/events';
+import type { OdsCommonFieldEvent, OdsCommonFieldValueChangeEventDetail } from './interfaces/events';
 import { OdsInputValue } from './ods-input-value';
 
-class OdsCommonFieldMethodController<T extends OdsCommonFieldAttribute & OdsCommonFieldEvent> implements OdsCommonFieldMethod {
+class OdsCommonFieldMethodController<T extends OdsCommonFieldAttribute & OdsCommonFieldEvent<U>, U extends OdsCommonFieldValueChangeEventDetail = OdsCommonFieldValueChangeEventDetail> implements Omit<OdsCommonFieldMethod, 'getValidity' | 'setFocus'> {
 
   constructor(protected readonly component: T) {
    }
@@ -23,6 +23,10 @@ class OdsCommonFieldMethodController<T extends OdsCommonFieldAttribute & OdsComm
     }
     this.component.value = null;
     this.component.odsClear.emit();
+  }
+
+  formResetCallback(): void {
+    throw new Error('You need to implementation formResetCallback');
   }
 
   async getValidity<T extends { validity: ValidityState }>(element: T): Promise<OdsCommonFieldValidityState> {
@@ -45,7 +49,7 @@ class OdsCommonFieldMethodController<T extends OdsCommonFieldAttribute & OdsComm
     return this.component.forbiddenValues?.some((forbiddenValue: OdsInputValue) => forbiddenValue === this.component.value) || false;
   }
 
-  private toValidityState(state: ValidityState): ValidityState {
+  toValidityState(state: ValidityState): ValidityState {
     return {
       badInput: state.badInput,
       customError: state.customError,

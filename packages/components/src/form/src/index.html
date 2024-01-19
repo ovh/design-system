@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html dir='ltr' lang='en'>
+<head>
+  <meta charset='utf-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0' />
+  <title>Dev osds-form</title>
+
+  <script type="module">
+    !window.ods && (window.ods = {config: {logging: {active:true}}});
+  </script>
+
+  <script type='module' src='/build/osds-form.esm.js'></script>
+  <script nomodule src='/build/osds-form.js'></script>
+  <link rel="stylesheet" href="/build/osds-form.css">
+</head>
+<body>
+  <p>Default</p>
+  <osds-form id="odsForm" initial-values='{"firstName": "Jean", "test": ""}'>
+    <osds-form-field inline>
+      <div slot="label">
+        <osds-text level="heading" color="primary">Description</osds-text>
+      </div>
+      <div slot="visual-hint"><osds-text>150/200</osds-text></div>
+      <osds-input inline name="test" type="text" required></osds-input>
+      <div slot="helper">
+        <osds-text>Write a few sentences about you</osds-text>
+      </div>
+    </osds-form-field>
+
+    <osds-input name="firstName" inline type="text" required></osds-input>
+
+    <osds-button type="reset" inline>Reset</osds-button>
+    <osds-button type="submit" inline>Submit</osds-button>
+  </osds-form>
+
+  <button id="triggerButton">trigger event</button>
+
+  <script>
+    const odsForm = document.getElementById('odsForm');
+    const triggerButton = document.getElementById('triggerButton');
+    const inputFirstName = document.querySelector('osds-input[name="firstName"]');
+    inputFirstName.forbiddenValues = ['azerty'];
+    triggerButton.addEventListener('click', () => {
+      odsForm?.setFieldError('test', true);
+    });
+
+    odsForm.addEventListener('odsOnSubmit', (event) => {
+      console.log('event', event)
+    });
+
+  </script>
+</body>
+</html>

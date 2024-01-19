@@ -70,7 +70,7 @@ describe('spec:ods-input-controller', () => {
     describe('methods:onValueChange', () => {
       describe('validateValue', () => {
         it('should warn if value is empty string', () => {
-          setup();
+          setup({ type: ODS_INPUT_TYPE.number });
           controller.onValueChange('');
           expect(consoleWarnSpy).toHaveBeenCalledTimes(1);
           expect(consoleWarnSpy).toHaveBeenCalledWith('[OsdsInput] The value attribute must be a correct number');
@@ -80,7 +80,7 @@ describe('spec:ods-input-controller', () => {
           const min = 5;
           const max = 10;
           const value = 3;
-          setup({ min, max, value, step: 1 });
+          setup({ min, max, value, step: 1, type: ODS_INPUT_TYPE.number });
           controller.onValueChange(value);
 
           expect(consoleWarnSpy).toHaveBeenCalledTimes(1);
@@ -91,7 +91,7 @@ describe('spec:ods-input-controller', () => {
           const min = 5;
           const max = 10;
           const value = 12;
-          setup({ min, max, value, step: 1 });
+          setup({ min, max, value, step: 1, type: ODS_INPUT_TYPE.number });
           controller.onValueChange(value);
 
           expect(consoleWarnSpy).toHaveBeenCalledTimes(1);
@@ -101,7 +101,7 @@ describe('spec:ods-input-controller', () => {
         it('should warn if value is not a multiple of step', () => {
           const value = 5;
           const step = 2;
-          setup({ min: 0, max: 10, value, step });
+          setup({ min: 0, max: 10, value, step, type: ODS_INPUT_TYPE.number });
           controller.onValueChange(value);
 
           expect(consoleWarnSpy).toHaveBeenCalledTimes(1);

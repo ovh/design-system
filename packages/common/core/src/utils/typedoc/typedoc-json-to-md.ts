@@ -113,17 +113,22 @@ function printType(typeObject?: SomeType | unknown): string {
     case 'literal':
       return `_${getTypeValue(someType)}_`;
     case 'reference': {
-      if (someType.name === 'Promise' || someType.name === 'EventEmitter') {
-        return `\`${someType.name}<${getTypeValue(someType.typeArguments?.[0] as IntrinsicType)}>\``;
+      if (['Promise', 'EventEmitter', 'Record'].includes(someType.name)) {
+        const typeArguments = someType.typeArguments?.map((typeArgument) => removeMarkdown(printType(typeArgument)))
+        return `\`${someType.name}<${typeArguments?.join(', ')}>\``;
       }
       return `\`${someType.name}\``;
     }
     case 'array':
-      return `${printType(someType.elementType).replace(/^(_|`)|(_|`)$/g, '')}[]`;
+      return `${removeMarkdown(printType(someType.elementType))}[]`;
     case 'union':
-      return someType.types.map((tObj) => `\`${printType(tObj).replace(/^(_|`)|(_|`)$/g, '')}\``).join(' \\| ')
+      return someType.types.map((tObj) => `\`${removeMarkdown(printType(tObj))}\``).join(' \\| ')
       ;
     }
   }
   return '_unknown_';
+}
+
+function removeMarkdown(value: string): string {
+  return value.replace(/^(_|`)|(_|`)$/g, '')
 }

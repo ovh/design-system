@@ -15,6 +15,7 @@ export * from './datagrid/src';
 export * from './datepicker/src';
 export * from './divider/src';
 export * from './flag/src';
+export * from './form/src';
 export * from './form-field/src';
 export * from './icon/src';
 export * from './input/src';

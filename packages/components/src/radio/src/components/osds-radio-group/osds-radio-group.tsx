@@ -106,7 +106,9 @@ export class OsdsRadioGroup implements OdsRadioGroupAttribute, OdsRadioGroupEven
   }
 
   private handleLabelClick(event: PointerEvent) {
-    this.controller.handleLabelClick(event);
+    if (!this.disabled) {
+      this.controller.handleLabelClick(event);
+    }
   }
 
   render() {

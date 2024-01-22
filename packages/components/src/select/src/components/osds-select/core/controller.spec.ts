@@ -194,5 +194,15 @@ describe('spec:ods-select-controller', () => {
         expect(item2.getAttribute('selected')).toBe(null);
       });
     });
+
+    describe('methods:checkUniqueOption', () => {
+      it('should select the only one option', () => {
+        setup();
+        controller.selectOptions = [item1];
+        controller.checkUniqueOption()
+        expect(item1.getAttribute('selected')).toBe('');
+      });
+    });
+
   });
 });

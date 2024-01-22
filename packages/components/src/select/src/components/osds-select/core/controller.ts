@@ -1,4 +1,3 @@
-
 import type { OdsSelectOptionClickEventDetail, OsdsSelectOption } from '../../osds-select-option/public-api';
 import type { OsdsSelect } from '../osds-select';
 import type { OdsValidityState } from '@ovhcloud/ods-common-core';
@@ -31,12 +30,12 @@ class OdsSelectController {
   getValidity(): OdsValidityState {
     const requiredError = this.hasRequiredError();
     return {
-      valid: !requiredError,
-      invalid: requiredError,
-      forbiddenValue: false,
-      valueMissing: requiredError,
-      stepMismatch: false,
       customError: false,
+      forbiddenValue: false,
+      invalid: requiredError,
+      stepMismatch: false,
+      valid: !requiredError,
+      valueMissing: requiredError,
     };
   }
 
@@ -99,11 +98,18 @@ class OdsSelectController {
     }
   }
 
+  checkUniqueOption(): void {
+    if(this.selectOptions.length === 1) {
+      this.component.value = this.selectOptions[0].value;
+      this.selectOptions[0].setAttribute('selected', '');
+    }
+  }
+
   private handlerKeyArrow(event: KeyboardEvent, selectedSelectOptionIndex: number): void {
     if (!this.component.opened) {
       return;
     }
-    const focusSelectOption = (index: number) => {
+    const focusSelectOption = (index: number): void => {
       this.selectOptions[index].focus();
       this.selectOptions[index].setAttribute('selected', '');
       event.preventDefault();

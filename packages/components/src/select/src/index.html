@@ -34,6 +34,14 @@
   <osds-select-option value="Home"><osds-icon name='home' size='sm'></osds-icon> Home</osds-select-option>
 </osds-select>
 
+<h3>With only one option</h3>
+<div style="text-align:center">
+  <osds-select id="withOneOption">
+    <osds-select-group>Group title</osds-select-group>
+    <osds-select-option value="unique">unique Value</osds-select-option>
+  </osds-select>
+</div>
+
 <h3>default</h3>
 <div style="text-align:center">
   <osds-select id="select1">
@@ -196,7 +204,7 @@
     slotSelectedLabel.appendChild(icon);
     slotSelectedLabel.appendChild(span);
   });
- 
+
 
   const button = document.getElementById('add-option');
   const select = document.getElementById('select12');

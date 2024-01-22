@@ -113,7 +113,9 @@ export class OsdsRange implements OdsRangeAttribute, OdsRangeEvent {
   }
 
   onKeyup(event: KeyboardEvent, inputEl: HTMLInputElement, dual = false): void {
-    this.controller.onKeyup(event, inputEl, dual);
+    if (!this.disabled) {
+      this.controller.onKeyup(event, inputEl, dual);
+    }
   }
 
   hasError(): boolean {

@@ -1,17 +1,17 @@
+import type { ODS_INPUT_TYPE } from './constants/input-type';
 import type { OdsInputAttribute } from './interfaces/attributes';
 import type { OdsInputEvent, OdsInputValueChangeEventDetail } from './interfaces/events';
 import type { OdsInputMethod } from './interfaces/methods';
+import type { OdsCommonFieldValidityState, OdsInputValue } from '@ovhcloud/ods-common-core';
 import type { EventEmitter } from '@stencil/core';
-import { OdsInputValue, OdsCommonFieldValidityState } from '@ovhcloud/ods-common-core';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { AttachInternals, Component, Element, Event, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { ODS_INPUT_SIZE } from './constants/input-size';
 import { OdsInputController } from './core/controller';
 import { ODS_ICON_NAME, ODS_ICON_SIZE } from '../../../../icon/src';
 import { ODS_SPINNER_SIZE } from '../../../../spinner/src';
 import { ODS_TEXT_SIZE } from '../../../../text/src';
-import { ODS_INPUT_SIZE } from './constants/input-size';
-import { ODS_INPUT_TYPE } from './constants/input-type';
 
 @Component({
   formAssociated: true,
@@ -19,6 +19,7 @@ import { ODS_INPUT_TYPE } from './constants/input-type';
   styleUrl: 'osds-input.scss',
   tag: 'osds-input',
 })
+
 export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMethod {
   controller = new OdsInputController<OsdsInput>(this);
   private static inputIds = 0;
@@ -120,7 +121,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
   async setTabindex(value: number): Promise<void> {
     this.controller.setTabindex(value);
   }
-  
+
   @Method()
   async stepDown(): Promise<void> {
     this.controller.stepDown();
@@ -143,7 +144,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
 
   @Method()
   async getInputEl(): Promise<HTMLInputElement | undefined> {
-    return this.inputEl; 
+    return this.inputEl;
   }
 
   componentWillLoad(): void {
@@ -181,9 +182,21 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
   }
 
   @Listen('focus')
-  focus() {
+  focus(): void {
     if (!this.hasFocus) {
       this.odsFocus.emit();
+    }
+  }
+
+  private async handleKeyOnClearButton(event: KeyboardEvent): Promise<void> {
+    if(event.key === 'Space') {
+      await this.clear();
+    }
+  }
+
+  private async handleKeyOnPasswordButton(event: KeyboardEvent): Promise<void> {
+    if(event.key === 'Space') {
+      await this.hide();
     }
   }
 
@@ -220,10 +233,10 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
         class: {
           'ods-error': this.internalError,
         },
-        tabindex,
         color: ODS_THEME_COLOR_INTENT.primary,
-        size: ODS_INPUT_SIZE.md,
         hasFocus,
+        size: ODS_INPUT_SIZE.md,
+        tabindex,
       }}
       >
         <osds-text color={ODS_THEME_COLOR_INTENT.text}
@@ -271,29 +284,42 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
 
         {
           isPassword && !loading && (
-            <osds-icon
+            <button
               {...{
-                ariaName: `${masked ? ODS_ICON_NAME.EYE_OPEN : ODS_ICON_NAME.EYE_CLOSED} icon`,
-                color: ODS_THEME_COLOR_INTENT.primary,
-                name: masked ? ODS_ICON_NAME.EYE_OPEN : ODS_ICON_NAME.EYE_CLOSED,
-                /** Toggles hide(), which will either hide or display the inputs content by switching masked attribute */
-                onClick: () => this.hide(),
-                size: ODS_ICON_SIZE.sm,
-              }}></osds-icon>
+                class: 'osds-input__icon-button',
+                /** Toggles clear(), which will clear the inputs content */
+                onClick: (): Promise<void> => this.hide(),
+                onKeyUp: (event: KeyboardEvent): Promise<void> => this.handleKeyOnPasswordButton(event),
+              }}>
+              <osds-icon
+                {...{
+                  ariaName: `${masked ? ODS_ICON_NAME.EYE_OPEN : ODS_ICON_NAME.EYE_CLOSED} icon`,
+                  color: ODS_THEME_COLOR_INTENT.primary,
+                  name: masked ? ODS_ICON_NAME.EYE_OPEN : ODS_ICON_NAME.EYE_CLOSED,
+                  /** Toggles hide(), which will either hide or display the inputs content by switching masked attribute */
+                  size: ODS_ICON_SIZE.sm,
+                }}></osds-icon>
+            </button>
           )
         }
 
         {
           clearable && !loading && (
-            <osds-icon
+            <button
               {...{
-                ariaName: `${ODS_ICON_NAME.CLOSE} icon`,
-                color: ODS_THEME_COLOR_INTENT.primary,
-                name: ODS_ICON_NAME.CLOSE,
+                class: 'osds-input__icon-button',
                 /** Toggles clear(), which will clear the inputs content */
-                onClick: () => this.clear(),
-                size: ODS_ICON_SIZE.sm,
-              }}></osds-icon>
+                onClick: (): Promise<void> => this.clear(),
+                onKeyUp: (event: KeyboardEvent): Promise<void> => this.handleKeyOnClearButton(event),
+              }}>
+              <osds-icon
+                {...{
+                  ariaName: `${ODS_ICON_NAME.CLOSE} icon`,
+                  color: ODS_THEME_COLOR_INTENT.primary,
+                  name: ODS_ICON_NAME.CLOSE,
+                  size: ODS_ICON_SIZE.sm,
+                }}></osds-icon>
+            </button>
           )
         }
 

@@ -107,16 +107,12 @@ export class OsdsPassword implements OdsPasswordAttribute, OdsPasswordEvent, Ods
   }
 
   @Listen('odsValueChange')
-  onValueChange({ detail }: OdsInputValueChangeEvent): void {
-    this.value = detail.value;
-    this.internals.setFormValue(this.value?.toString() ?? '');
+  onValueChange(event: OdsInputValueChangeEvent): void {
+    this.controller.onValueChange(event);
   }
 
   componentWillLoad(): void {
-    if (!this.value && this.value !== 0) {
-      this.value = this.defaultValue;
-    }
-    this.internals.setFormValue(this.value?.toString() ?? '');
+    this.controller.beforeInit();
   }
 
   formResetCallback(): void {
@@ -136,6 +132,7 @@ export class OsdsPassword implements OdsPasswordAttribute, OdsPasswordEvent, Ods
           ariaLabel={this.ariaLabel}
           ariaLabelledby={this.ariaLabelledby}
           clearable={this.clearable}
+          defaultValue={this.defaultValue}
           disabled={this.disabled}
           error={this.error}
           forbiddenValues={this.forbiddenValues}

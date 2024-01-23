@@ -1,3 +1,5 @@
+jest.mock('./core/controller');
+
 import type { OdsPasswordAttribute } from './interfaces/attributes';
 import type { SpecPage } from '@stencil/core/testing';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';

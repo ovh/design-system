@@ -39,6 +39,7 @@ import { OdsInputValueChangeEventDetail } from "./input/src/components/osds-inpu
 import { ODS_LINK_REFERRER_POLICY as ODS_LINK_REFERRER_POLICY1 } from "./link/src/components/osds-link/constants/referrer-policies";
 import { ODS_MESSAGE_TYPE } from "./message/src/components/osds-message/constants/message-type";
 import { OdsPaginationChangedEventDetail, OdsPaginationItemPerPageChangedEventDetail } from "./pagination/src/components/osds-pagination/interfaces/events";
+import { OdsPasswordValueChangeEventDetail } from "./password/src/components/osds-password/interfaces/events";
 import { ODS_PHONE_NUMBER_COUNTRY_PRESET } from "./phone-number/src/components/osds-phone-number/constants/phone-number-countries";
 import { OdsPhoneNumberValueChangeEventDetail } from "./phone-number/src/components/osds-phone-number/interfaces/events";
 import { OdsRadioCheckedChangeEventDetail, OdsRadioCheckingChangeEventDetail } from "./radio/src/components/osds-radio/interfaces/events";
@@ -99,6 +100,7 @@ export { OdsInputValueChangeEventDetail } from "./input/src/components/osds-inpu
 export { ODS_LINK_REFERRER_POLICY as ODS_LINK_REFERRER_POLICY1 } from "./link/src/components/osds-link/constants/referrer-policies";
 export { ODS_MESSAGE_TYPE } from "./message/src/components/osds-message/constants/message-type";
 export { OdsPaginationChangedEventDetail, OdsPaginationItemPerPageChangedEventDetail } from "./pagination/src/components/osds-pagination/interfaces/events";
+export { OdsPasswordValueChangeEventDetail } from "./password/src/components/osds-password/interfaces/events";
 export { ODS_PHONE_NUMBER_COUNTRY_PRESET } from "./phone-number/src/components/osds-phone-number/constants/phone-number-countries";
 export { OdsPhoneNumberValueChangeEventDetail } from "./phone-number/src/components/osds-phone-number/interfaces/events";
 export { OdsRadioCheckedChangeEventDetail, OdsRadioCheckingChangeEventDetail } from "./radio/src/components/osds-radio/interfaces/events";
@@ -1179,9 +1181,9 @@ export namespace Components {
          */
         "setTabindex": (value: number) => Promise<void>;
         /**
-          * Current value of the password
+          * Type of the input field
          */
-        "value": string;
+        "value": string | number | Date | null;
     }
     interface OsdsPhoneNumber {
         /**
@@ -1995,6 +1997,10 @@ export interface OsdsPaginationCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLOsdsPaginationElement;
 }
+export interface OsdsPasswordCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLOsdsPasswordElement;
+}
 export interface OsdsPhoneNumberCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLOsdsPhoneNumberElement;
@@ -2432,7 +2438,23 @@ declare global {
         prototype: HTMLOsdsPaginationElement;
         new (): HTMLOsdsPaginationElement;
     };
+    interface HTMLOsdsPasswordElementEventMap {
+        "odsBlur": void;
+        "odsClear": void;
+        "odsFocus": void;
+        "odsHide": void;
+        "odsReset": void;
+        "odsValueChange": OdsPasswordValueChangeEventDetail;
+    }
     interface HTMLOsdsPasswordElement extends Components.OsdsPassword, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLOsdsPasswordElementEventMap>(type: K, listener: (this: HTMLOsdsPasswordElement, ev: OsdsPasswordCustomEvent<HTMLOsdsPasswordElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLOsdsPasswordElementEventMap>(type: K, listener: (this: HTMLOsdsPasswordElement, ev: OsdsPasswordCustomEvent<HTMLOsdsPasswordElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLOsdsPasswordElement: {
         prototype: HTMLOsdsPasswordElement;
@@ -3816,6 +3838,12 @@ declare namespace LocalJSX {
           * Name of the input field
          */
         "name"?: string;
+        "onOdsBlur"?: (event: OsdsPasswordCustomEvent<void>) => void;
+        "onOdsClear"?: (event: OsdsPasswordCustomEvent<void>) => void;
+        "onOdsFocus"?: (event: OsdsPasswordCustomEvent<void>) => void;
+        "onOdsHide"?: (event: OsdsPasswordCustomEvent<void>) => void;
+        "onOdsReset"?: (event: OsdsPasswordCustomEvent<void>) => void;
+        "onOdsValueChange"?: (event: OsdsPasswordCustomEvent<OdsPasswordValueChangeEventDetail>) => void;
         /**
           * Placeholder text for the input
          */
@@ -3829,9 +3857,9 @@ declare namespace LocalJSX {
          */
         "required"?: boolean;
         /**
-          * Current value of the password
+          * Type of the input field
          */
-        "value"?: string;
+        "value"?: string | number | Date | null;
     }
     interface OsdsPhoneNumber {
         /**

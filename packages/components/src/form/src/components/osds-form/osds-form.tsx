@@ -1,8 +1,8 @@
 import type { OdsFormAttribute } from './interfaces/attributes';
 import type { OdsFormEvent } from './interfaces/event';
 import type { OdsFormMethod } from './interfaces/methods';
-import type { OdsInputValueChangeEventDetail } from '../../../../input/src';
-import type { OdsInputValue } from '@ovhcloud/ods-common-core';
+import type { OdsInputValueChangeEventDetail, OsdsInput } from '../../../../input/src';
+import type { OdsCommonFieldMethod, OdsInputValue } from '@ovhcloud/ods-common-core';
 import type { EventEmitter, FunctionalComponent } from '@stencil/core';
 import { Component, Element, Event, Host, Listen, Method, Prop, Watch, h } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
@@ -101,6 +101,16 @@ export class OsdsForm implements OdsFormAttribute, OdsFormEvent, OdsFormMethod {
 
   async onSubmit(event?: Event): Promise<void> {
     event?.preventDefault();
+    const initialValues = this.controller.getInitialValues();
+    Object.entries(initialValues).forEach(async([name]) => {
+      const element = this.getSlotElementByName(name);
+      if (!element) {
+        return;
+      }
+      const inputEl = await (element as unknown as OsdsInput).getInputEl();
+      const validity = inputEl && await element?.getValidity(inputEl);
+      this.setFieldError(name, !validity?.valid ?? false);
+    });
     if (!await this.isFormValid()) {
       return;
     }
@@ -125,13 +135,13 @@ export class OsdsForm implements OdsFormAttribute, OdsFormEvent, OdsFormMethod {
     }, {} as Record<string, boolean>);
   }
 
-  private getSlotElementByName(name: string): Element | undefined {
+  private getSlotElementByName(name: string): (Element & OdsCommonFieldMethod) | undefined {
     const element = this.el.querySelector(`[name="${name}"]`);
     if (!element) {
       console.warn(`Element with name: ${name} not found`);
       return;
     }
-    return element;
+    return element as Element & OdsCommonFieldMethod;
   }
 
   @Listen('odsValueChange')

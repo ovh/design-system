@@ -1,3 +1,4 @@
+import type { ODS_PAGINATION_PER_PAGE } from './constants/pagination-per-page';
 import type { OdsPaginationAttribute, OdsPaginationPageList } from './interfaces/attributes';
 import type { OdsPaginationChangedEventDetail, OdsPaginationEvent, OdsPaginationItemPerPageChangedEventDetail } from './interfaces/events';
 import type { OdsPaginationMethod } from './interfaces/methods';
@@ -24,15 +25,16 @@ export class OsdsPagination implements OdsPaginationAttribute, OdsPaginationEven
 
   @Element() el!: HTMLStencilElement;
 
-  @State() itemPerPage = ODS_PAGINATION_PER_PAGE_MIN;
-  @State() pageList: OdsPaginationPageList = [];
-
   @Prop({ mutable: true, reflect: true }) current: number = DEFAULT_ATTRIBUTE.current;
   @Prop({ reflect: true }) totalItems?: number;
+  @Prop({ reflect: true }) defaultItemsPerPage: ODS_PAGINATION_PER_PAGE = DEFAULT_ATTRIBUTE.defaultItemsPerPage;
   @Prop({ reflect: true }) totalPages: number = DEFAULT_ATTRIBUTE.totalPages;
   @Prop({ mutable: true , reflect: true }) disabled: boolean = DEFAULT_ATTRIBUTE.disabled;
   @Prop({ reflect: true }) labelTooltipPrevious: string = DEFAULT_ATTRIBUTE.labelTooltipPrevious;
   @Prop({ reflect: true }) labelTooltipNext: string = DEFAULT_ATTRIBUTE.labelTooltipNext;
+
+  @State() itemPerPage = this.defaultItemsPerPage ? this.defaultItemsPerPage : ODS_PAGINATION_PER_PAGE_MIN;
+  @State() pageList: OdsPaginationPageList = [];
 
   @Event() odsPaginationChanged!: EventEmitter<OdsPaginationChangedEventDetail>;
   @Event() odsPaginationItemPerPageChanged!: EventEmitter<OdsPaginationItemPerPageChangedEventDetail>;

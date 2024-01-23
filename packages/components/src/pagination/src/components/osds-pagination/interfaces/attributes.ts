@@ -1,3 +1,5 @@
+import type { ODS_PAGINATION_PER_PAGE } from '../constants/pagination-per-page';
+
 interface OdsPaginationPageContent {
   active: boolean;
 }
@@ -9,6 +11,10 @@ interface OdsPaginationAttribute {
    * Its corresponding current page.
    */
   current: number;
+  /**
+   * Default items per page.
+   */
+  defaultItemsPerPage: ODS_PAGINATION_PER_PAGE;
   /**
    * indicates if the pagination is entirely disabled.
    * it means no interactions (hover, click, focus, etc)

@@ -79,6 +79,11 @@ export class OsdsPassword implements OdsPasswordAttribute, OdsPasswordMethod  {
   async setTabindex(value: number): Promise<void> {
     this.osdsInput?.setTabindex(value);
   }
+
+  formResetCallback(): void {
+    this.reset();
+  }
+
   render() {
     return (
       <Host>

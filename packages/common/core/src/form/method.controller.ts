@@ -25,6 +25,10 @@ class OdsCommonFieldMethodController<T extends OdsCommonFieldAttribute & OdsComm
     this.component.odsClear.emit();
   }
 
+  formResetCallback(): void {
+    throw new Error('You need to implementation formResetCallback');
+  }
+
   async getValidity<T extends { validity: ValidityState }>(element: T): Promise<OdsCommonFieldValidityState> {
     const forbiddenValue = this.hasForbiddenValue();
     const isValid = forbiddenValue ? false : element.validity.valid;

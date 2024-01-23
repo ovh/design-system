@@ -6,6 +6,8 @@ interface OdsCommonFieldMethod {
      */
     clear(): Promise<void>;
 
+    formResetCallback(): void;
+
     /**
      * active the focus on the input in order to let the user write something
      */

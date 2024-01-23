@@ -33,7 +33,7 @@ export class OsdsPagination implements OdsPaginationAttribute, OdsPaginationEven
   @Prop({ reflect: true }) labelTooltipPrevious: string = DEFAULT_ATTRIBUTE.labelTooltipPrevious;
   @Prop({ reflect: true }) labelTooltipNext: string = DEFAULT_ATTRIBUTE.labelTooltipNext;
 
-  @State() itemPerPage = this.defaultItemsPerPage ? this.defaultItemsPerPage : ODS_PAGINATION_PER_PAGE_MIN;
+  @State() itemPerPage = this.defaultItemsPerPage || ODS_PAGINATION_PER_PAGE_MIN;
   @State() pageList: OdsPaginationPageList = [];
 
   @Event() odsPaginationChanged!: EventEmitter<OdsPaginationChangedEventDetail>;

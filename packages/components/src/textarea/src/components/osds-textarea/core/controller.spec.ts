@@ -1,4 +1,5 @@
 import type { OsdsTextarea } from '../osds-textarea';
+import type { OdsCommonFieldValidityState } from '@ovhcloud/ods-common-core';
 import { OdsTextareaController } from './controller';
 
 class OdsTextareaMock {
@@ -10,6 +11,9 @@ class OdsTextareaMock {
   emitChange = jest.fn();
   internals = {
     setFormValue: jest.fn(),
+  };
+  textareaElement = {
+    setCustomValidity: jest.fn(),
   };
 }
 
@@ -44,6 +48,36 @@ describe('ods-textarea-controller', () => {
 
       expect(component.value).toBe(null);
       expect(component.internals.setFormValue).toHaveBeenCalledWith('');
+    });
+  });
+
+  describe('hasError', (): void => {
+    it('should return false if the texteara element is not defined', async() => {
+      setup();
+      delete component.textareaElement;
+
+      expect(await controller.hasError()).toBe(false);
+    });
+
+    it('should return false if the component validity is true', async() => {
+      setup();
+      jest.spyOn(controller, 'getValidity').mockResolvedValue({ valid: true } as unknown as OdsCommonFieldValidityState);
+
+      expect(await controller.hasError()).toBe(false);
+    });
+
+    it('should return true if the component error prop is true', async() => {
+      setup({ error: true });
+      jest.spyOn(controller, 'getValidity').mockResolvedValue({} as unknown as OdsCommonFieldValidityState);
+
+      expect(await controller.hasError()).toBe(true);
+    });
+
+    it('should return true if the component validity is false', async() => {
+      setup();
+      jest.spyOn(controller, 'getValidity').mockResolvedValue({ valid: false } as unknown as OdsCommonFieldValidityState);
+
+      expect(await controller.hasError()).toBe(true);
     });
   });
 
@@ -88,35 +122,33 @@ describe('ods-textarea-controller', () => {
   describe('onValueChange', () => {
     const dummyOldValue = 'dummy old value';
     const dummyValue = 'dummy value';
-    const mockTextareaElement = {
-      setCustomValidity: jest.fn(),
-    };
 
     it('should set set form value, no custom validity and emit change if no textarea element is defined', () => {
+      delete component.textareaElement;
+
       controller.onValueChange(dummyValue, dummyOldValue);
 
-      expect(mockTextareaElement.setCustomValidity).not.toHaveBeenCalled();
       expect(component.internals.setFormValue).toHaveBeenCalledWith(dummyValue);
       expect(component.emitChange).toHaveBeenCalledWith(dummyValue, dummyOldValue);
     });
 
     it('should set set form value, empty custom validity and emit change if no forbidden values', () => {
-      setup({ textareaElement: mockTextareaElement as unknown as HTMLTextAreaElement });
+      setup();
 
       controller.onValueChange(dummyValue, dummyOldValue);
 
-      expect(mockTextareaElement.setCustomValidity).toHaveBeenCalledWith('');
+      expect(component.textareaElement?.setCustomValidity).toHaveBeenCalledWith('');
       expect(component.internals.setFormValue).toHaveBeenCalledWith(dummyValue);
       expect(component.emitChange).toHaveBeenCalledWith(dummyValue, dummyOldValue);
     });
 
     it('should set set form value, custom validity and emit change if forbidden values are found', () => {
-      setup({ textareaElement: mockTextareaElement as unknown as HTMLTextAreaElement });
+      setup();
       spyOn(controller, 'hasForbiddenValue').and.returnValue(true);
 
       controller.onValueChange(dummyValue, dummyOldValue);
 
-      expect(mockTextareaElement.setCustomValidity).toHaveBeenCalledWith('forbiddenValue');
+      expect(component.textareaElement?.setCustomValidity).toHaveBeenCalledWith('forbiddenValue');
       expect(component.internals.setFormValue).toHaveBeenCalledWith(dummyValue);
       expect(component.emitChange).toHaveBeenCalledWith(dummyValue, dummyOldValue);
     });

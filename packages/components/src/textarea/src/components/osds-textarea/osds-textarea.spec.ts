@@ -55,7 +55,7 @@ describe('spec:osds-textarea', () => {
 
     describe('ariaLabel', () => {
       odsUnitTestAttribute<OdsTextareaAttribute, 'ariaLabel'>({
-        defaultValue: DEFAULT_ATTRIBUTE.defaultValue,
+        defaultValue: DEFAULT_ATTRIBUTE.ariaLabel,
         name: 'ariaLabel',
         newValue: 'oles',
         setup: (value) => setup({ attributes: { ['ariaLabel']: value } }),

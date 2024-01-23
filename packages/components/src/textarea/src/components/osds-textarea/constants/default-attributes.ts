@@ -2,14 +2,14 @@ import type { OdsTextareaAttribute } from '../interfaces/attributes';
 
 const DEFAULT_ATTRIBUTE: OdsTextareaAttribute = Object.freeze({
   ariaLabel: null,
-  defaultValue: null,
+  defaultValue: '',
   disabled: false,
   error: false,
   inline: false,
   name: '',
   resizable: true,
   spellcheck: false,
-  value: null,
+  value: '',
 });
 
 export {

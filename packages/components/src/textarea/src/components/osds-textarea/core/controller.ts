@@ -21,6 +21,14 @@ class OdsTextareaController<T extends OsdsTextarea> extends OdsCommonFieldMethod
     this.component.internals.setFormValue(this.component.value ?? '');
   }
 
+  async hasError(): Promise<boolean> {
+    if (!this.component.textareaElement) {
+      return false;
+    }
+    const validity = await this.getValidity(this.component.textareaElement);
+    return this.component.error || !validity.valid;
+  }
+
   onInput(event: Event): void {
     event.preventDefault();
 

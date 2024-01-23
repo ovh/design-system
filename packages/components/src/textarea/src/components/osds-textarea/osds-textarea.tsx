@@ -23,8 +23,6 @@ export class OsdsTextarea implements OdsTextareaAttribute, OdsTextareaEvent, Ods
 
   @AttachInternals() internals!: ElementInternals;
 
-  @State() tabindex: number = 0;
-
   @Prop() ariaLabel: string | null = DEFAULT_ATTRIBUTE.ariaLabel;
   @Prop() ariaLabelledby?: string;
   @Prop({ reflect: true }) cols?: number;
@@ -41,6 +39,9 @@ export class OsdsTextarea implements OdsTextareaAttribute, OdsTextareaEvent, Ods
   @Prop({ reflect: true }) spellcheck: boolean = DEFAULT_ATTRIBUTE.spellcheck;
   @Prop() textAreaId?: string;
   @Prop({ mutable: true, reflect: true }) value: string | null = DEFAULT_ATTRIBUTE.value;
+
+  @State() internalError = this.error;
+  @State() tabindex: number = 0;
 
   @Event() odsBlur!: EventEmitter<void>;
   @Event() odsClear!: EventEmitter<void>;
@@ -82,6 +83,10 @@ export class OsdsTextarea implements OdsTextareaAttribute, OdsTextareaEvent, Ods
     this.controller.beforeInit();
   }
 
+  async componentWillUpdate(): Promise<void> {
+    this.internalError = await this.controller.hasError();
+  }
+
   async emitChange(value: string, oldValue?: string): Promise<void> {
     this.odsValueChange.emit({
       name: this.name,
@@ -89,6 +94,10 @@ export class OsdsTextarea implements OdsTextareaAttribute, OdsTextareaEvent, Ods
       validity: await this.getValidity(),
       value,
     });
+  }
+
+  formResetCallback(): Promise<void> {
+    return this.reset();
   }
 
   onBlur(): void {
@@ -101,7 +110,8 @@ export class OsdsTextarea implements OdsTextareaAttribute, OdsTextareaEvent, Ods
 
   render(): FunctionalComponent {
     return (
-      <Host tabindex={ this.tabindex }>
+      <Host class={{ 'ods-error': this.internalError }}
+            tabindex={ this.tabindex }>
         <textarea
           aria-label={ this.ariaLabel }
           aria-labelledby={ this.ariaLabelledby || `${this.internalId}-label` }
@@ -121,7 +131,7 @@ export class OsdsTextarea implements OdsTextareaAttribute, OdsTextareaEvent, Ods
           rows={ this.rows }
           spellcheck={ this.spellcheck }
           tabindex="-1"
-          value={ this.value || undefined }>
+          value={ this.value || '' }>
         </textarea>
       </Host>
     );

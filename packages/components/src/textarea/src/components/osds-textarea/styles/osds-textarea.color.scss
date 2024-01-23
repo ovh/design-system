@@ -23,7 +23,7 @@
       }
     }
 
-    &[error] {
+    &.ods-error {
       @include osds-textarea-on-selected-host {
         @include osds-textarea-on-main-element {
           border-color: var(--ods-color-error-500);

@@ -60,6 +60,13 @@ describe('spec:osds-pagination', () => {
       expect(instance?.current).toBe(2);
       expect(instance.itemPerPage).toBe(ODS_PAGINATION_PER_PAGE_MIN);
     });
+
+    it('if the defaultItemsPerPage is defined to 25, itemPerPage should be also', async() => {
+      await setup({ attributes: { current: 2, defaultItemsPerPage: 25, totalItems: 50 } });
+
+      expect(instance?.current).toBe(2);
+      expect(instance.itemPerPage).toBe('25');
+    });
   });
 
   describe('methods', () => {
@@ -232,6 +239,17 @@ describe('spec:osds-pagination', () => {
         newValue: 100,
         setup: (value) => setup({ attributes: { ['current']: value } }),
         value: 1,
+        ...config,
+      });
+    });
+
+    describe('defaultItemsPerPage 10->100 with odsUnitTestAttribute', () => {
+      odsUnitTestAttribute<OdsPaginationAttribute, 'defaultItemsPerPage'>({
+        defaultValue: DEFAULT_ATTRIBUTE.defaultItemsPerPage,
+        name: 'defaultItemsPerPage',
+        newValue: 100,
+        setup: (value) => setup({ attributes: { ['defaultItemsPerPage']: value } }),
+        value: 10,
         ...config,
       });
     });

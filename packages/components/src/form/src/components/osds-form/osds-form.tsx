@@ -1,7 +1,7 @@
 import type { OdsFormAttribute } from './interfaces/attributes';
 import type { OdsFormEvent } from './interfaces/event';
 import type { OdsFormMethod } from './interfaces/methods';
-import type { OdsInputValueChangeEventDetail, OsdsInput } from '../../../../input/src';
+import type { OdsInputValueChangeEventDetail } from '../../../../input/src';
 import type { OdsCommonFieldMethod, OdsInputValue } from '@ovhcloud/ods-common-core';
 import type { EventEmitter, FunctionalComponent } from '@stencil/core';
 import { Component, Element, Event, Host, Listen, Method, Prop, Watch, h } from '@stencil/core';
@@ -107,8 +107,7 @@ export class OsdsForm implements OdsFormAttribute, OdsFormEvent, OdsFormMethod {
       if (!element) {
         return;
       }
-      const inputEl = await (element as unknown as OsdsInput).getInputEl();
-      const validity = inputEl && await element?.getValidity(inputEl);
+      const validity = await element?.getValidity();
       this.setFieldError(name, !validity?.valid ?? false);
     });
     if (!await this.isFormValid()) {

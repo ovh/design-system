@@ -3,7 +3,7 @@ import type { OdsCommonFieldMethod } from './interfaces/methods';
 import type { OdsCommonFieldEvent, OdsCommonFieldValueChangeEventDetail } from './interfaces/events';
 import { OdsInputValue } from './ods-input-value';
 
-class OdsCommonFieldMethodController<T extends OdsCommonFieldAttribute & OdsCommonFieldEvent<U>, U extends OdsCommonFieldValueChangeEventDetail = OdsCommonFieldValueChangeEventDetail> implements OdsCommonFieldMethod {
+class OdsCommonFieldMethodController<T extends OdsCommonFieldAttribute & OdsCommonFieldEvent<U>, U extends OdsCommonFieldValueChangeEventDetail = OdsCommonFieldValueChangeEventDetail> implements Omit<OdsCommonFieldMethod, 'getValidity' | 'setFocus'> {
 
   constructor(protected readonly component: T) {
    }

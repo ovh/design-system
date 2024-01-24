@@ -1,9 +1,9 @@
 import type { OdsCommonFieldAttribute, OdsCommonFieldValidityState } from './interfaces/attributes';
 import type { OdsCommonFieldMethod } from './interfaces/methods';
-import type { OdsCommonFieldEvent } from './interfaces/events';
+import type { OdsCommonFieldEvent, OdsCommonFieldValueChangeEventDetail } from './interfaces/events';
 import { OdsInputValue } from './ods-input-value';
 
-class OdsCommonFieldMethodController<T extends OdsCommonFieldAttribute & OdsCommonFieldEvent> implements OdsCommonFieldMethod {
+class OdsCommonFieldMethodController<T extends OdsCommonFieldAttribute & OdsCommonFieldEvent<U>, U extends OdsCommonFieldValueChangeEventDetail = OdsCommonFieldValueChangeEventDetail> implements OdsCommonFieldMethod {
 
   constructor(protected readonly component: T) {
    }
@@ -49,7 +49,7 @@ class OdsCommonFieldMethodController<T extends OdsCommonFieldAttribute & OdsComm
     return this.component.forbiddenValues?.some((forbiddenValue: OdsInputValue) => forbiddenValue === this.component.value) || false;
   }
 
-  private toValidityState(state: ValidityState): ValidityState {
+  toValidityState(state: ValidityState): ValidityState {
     return {
       badInput: state.badInput,
       customError: state.customError,

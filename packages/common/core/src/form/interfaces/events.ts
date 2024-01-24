@@ -11,12 +11,12 @@ interface OdsCommonFieldValueChangeEventDetail {
 
 type OdsCommonFieldValueChangeEvent = CustomEvent<OdsCommonFieldValueChangeEventDetail>;
 
-interface OdsCommonFieldEvent {
+interface OdsCommonFieldEvent<T extends OdsCommonFieldValueChangeEventDetail = OdsCommonFieldValueChangeEventDetail> {
   odsBlur: EventEmitter<void>;
   odsClear: EventEmitter<void>;
   odsFocus: EventEmitter<void>;
   odsReset: EventEmitter<void>;
-  odsValueChange: EventEmitter<OdsCommonFieldValueChangeEventDetail>;
+  odsValueChange: EventEmitter<T>;
 }
 
 export type {

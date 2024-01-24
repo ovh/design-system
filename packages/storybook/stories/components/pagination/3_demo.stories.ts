@@ -1,3 +1,4 @@
+import { ODS_PAGINATION_PER_PAGE_OPTIONS } from '@ovhcloud/ods-components';
 import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-pagination';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
@@ -28,6 +29,10 @@ const totalItemsParam = {
   totalItems: {
     category: 'General',
     defaultValue: 60,
+  },
+  defaultItemsPerPage: {
+    category: 'General',
+    defaultValue: ODS_PAGINATION_PER_PAGE_OPTIONS[1],
   },
   beforeTotalItems: {
     category: 'Slots',

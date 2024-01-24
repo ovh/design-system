@@ -1,19 +1,19 @@
 import '@ovhcloud/ods-theme-blue-jeans';
 
 // Use this configuration to test the lazy loader
-// import { defineCustomElements } from '@ovhcloud/ods-components/dist/loader';
-// defineCustomElements();
+import { defineCustomElements } from '@ovhcloud/ods-components/dist/loader';
+defineCustomElements();
 
 // Use this configuration to test the "per-component" import
-import { defineCustomElement as defineDatagrid } from '@ovhcloud/ods-components/dist/components/osds-datagrid';
-import { defineCustomElement as defineForm } from '@ovhcloud/ods-components/dist/components/osds-form';
-import { defineCustomElement as defineInput } from '@ovhcloud/ods-components/dist/components/osds-input';
-import { defineCustomElement as defineButton } from '@ovhcloud/ods-components/dist/components/osds-button';
+// import { defineCustomElement as defineButton } from '@ovhcloud/ods-components/dist/components/osds-button';
+// import { defineCustomElement as defineForm } from '@ovhcloud/ods-components/dist/components/osds-form';
+// import { defineCustomElement as defineInput } from '@ovhcloud/ods-components/dist/components/osds-input';
+// import { defineCustomElement as defineTextarea } from '@ovhcloud/ods-components/dist/components/osds-textarea';
 
-defineDatagrid();
-defineForm();
-defineInput();
-defineButton();
+// defineButton();
+// defineInput();
+// defineForm();
+// defineTextarea();
 
 const form = document.getElementById('osdsForm') as HTMLFormElement;
 const odsInput = document.querySelector('[name="odsInput"]');

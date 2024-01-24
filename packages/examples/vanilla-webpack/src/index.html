@@ -4,26 +4,109 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title><%= htmlWebpackPlugin.options.title %></title>
+
+  <style>
+    body {
+      margin: 0;
+    }
+
+    .form {
+      display: block;
+      padding: 2rem;
+    }
+
+    .form__fields {
+      display: flex;
+      flex-flow: column;
+      grid-row-gap: 1rem;
+    }
+
+    .form__fields__field {
+      display: flex;
+      flex-flow: column;
+      grid-row-gap: .5rem;
+    }
+
+    .form__actions {
+      display: flex;
+      flex-flow: row;
+      grid-column-gap: 1rem;
+      justify-content: flex-end;
+      margin-top: 1rem;
+    }
+  </style>
 </head>
 
 <body>
-  <osds-datagrid
-    id="datagridFormatter"
-    columns='[{"title":"First name", "field":"firstname", "isSortable": true}, {"title":"Last name", "field":"lastname", "isSortable": true}, {"title":"Gender", "field":"gender"}]'
-    rows='[{"firstname":"Homer", "lastname":"Simpson", "gender": "Male"}, {"firstname":"Marge", "lastname":"Simpson", "gender": "Female"}]'
-    height="300"
-    is-selectable>
-  </osds-datagrid>
+  <osds-form class="form"
+             id="osds-form"
+             initial-values='{ "user": "test", "password": "", "textarea": "" }'>
+    <div class="form__fields">
+      <div class="form__fields__field">
+        <osds-text>
+          Input Text
+        </osds-text>
 
-  <osds-form id="osdsForm" initial-values='{ "user": "test", "password": "" }'>
-    <div>
-      <osds-input name="user" inline type="text" clearable required>
-      </osds-input>
+        <osds-input clearable
+                    inline
+                    name="user"
+                    type="text">
+        </osds-input>
+      </div>
 
-      <osds-input type="text" name="password" inline></osds-input>
+      <div class="form__fields__field">
+        <osds-text>
+          Input Password
+        </osds-text>
+
+        <osds-input inline
+                    name="password"
+                    type="text"
+                    required>
+        </osds-input>
+      </div>
+
+      <div class="form__fields__field">
+        <osds-text>
+          Textarea
+        </osds-text>
+
+        <osds-textarea inline
+                       name="textarea"
+                       required>
+        </osds-textarea>
+      </div>
     </div>
-    <osds-button type="reset" inline>Reset</osds-button>
-    <osds-button type="submit" inline>Submit</osds-button>
+
+    <div class="form__actions">
+      <osds-button inline
+                   type="reset"
+                   variant="stroked">
+        Reset
+      </osds-button>
+
+      <osds-button inline
+                   type="submit">
+        Submit
+      </osds-button>
+
+      <osds-button inline
+                   id="log-btn"
+                   type="button">
+        Log form validity
+      </osds-button>
+    </div>
   </osds-form>
+
+  <script>
+    const form = document.querySelector('#osds-form');
+    const logBtn = document.querySelector('#log-btn');
+
+    logBtn.addEventListener('click', () => {
+      form.getFormErrors().then((error) => {
+        console.log(error);
+      });
+    });
+  </script>
 </body>
 </html>

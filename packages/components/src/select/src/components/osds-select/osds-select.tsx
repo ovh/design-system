@@ -170,6 +170,10 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
     this.observer?.disconnect();
   }
 
+  formResetCallback(): void {
+    this.reset();
+  }
+
   changeValue(value: OdsInputValue): void {
     this.value = value;
   }

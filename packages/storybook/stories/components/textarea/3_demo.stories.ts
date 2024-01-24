@@ -1,58 +1,92 @@
 import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-textarea';
 import { html } from 'lit-html';
+import { CONTROL_CATEGORY, orderControls } from '../../controls';
 import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 
 defineCustomElement();
 
-/* Demo story parameters  */
-const storyParams = {
+const storyParams = orderControls({
+  ariaLabel: {
+    category: CONTROL_CATEGORY.accessibility,
+    defaultValue: '',
+  },
+  ariaLabelledby: {
+    category: CONTROL_CATEGORY.accessibility,
+    defaultValue: '',
+  },
+  cols: {
+    category: CONTROL_CATEGORY.general,
+    defaultValue: undefined,
+    control: { type: 'number' },
+  },
   defaultValue: {
-    category: 'General',
-    defaultValue: '',
-  },
-  value: {
-    category: 'General',
-    defaultValue: '',
-  },
-  placeholder: {
-    category: 'General',
-    defaultValue: 'placeholder',
-  },
-  contrasted: {
-    category: 'Misc',
-    defaultValue: false,
+    category: CONTROL_CATEGORY.general,
+    defaultValue: 'Default value',
   },
   disabled: {
-    category: 'Misc',
+    category: CONTROL_CATEGORY.general,
     defaultValue: false,
   },
+  error: {
+    category: CONTROL_CATEGORY.general,
+    defaultValue: false,
+  },
+  forbiddenValues: {
+    category: CONTROL_CATEGORY.general,
+    defaultValue: [],
+    control: { type: 'array' },
+  },
   inline: {
-    category: 'Misc',
+    category: CONTROL_CATEGORY.general,
     defaultValue: true,
   },
-  error: {
-    category: 'Misc',
+  label: {
+    category: CONTROL_CATEGORY.general,
+    defaultValue: '',
+  },
+  name: {
+    category: CONTROL_CATEGORY.general,
+    defaultValue: 'myTextArea',
+  },
+  placeholder: {
+    category: CONTROL_CATEGORY.general,
+    defaultValue: 'placeholder',
+  },
+  readOnly: {
+    category: CONTROL_CATEGORY.general,
+    defaultValue: false,
+  },
+  required: {
+    category: CONTROL_CATEGORY.general,
     defaultValue: false,
   },
   resizable: {
-    category: 'Misc',
+    category: CONTROL_CATEGORY.general,
     defaultValue: true,
   },
-  name: {
-    category: 'Development',
-    defaultValue: 'myTextArea',
-  },
-  cols: {
-    category: 'Development',
-    defaultValue: undefined,
-    control: { type: 'number' },
-  },
   rows: {
-    category: 'Development',
+    category: CONTROL_CATEGORY.general,
     defaultValue: undefined,
     control: { type: 'number' },
   },
-};
+  spellcheck: {
+    category: CONTROL_CATEGORY.general,
+    defaultValue: false,
+  },
+  tabindex: {
+    category: CONTROL_CATEGORY.general,
+    defaultValue: undefined,
+    control: { type: 'number' },
+  },
+  textAreaId: {
+    category: CONTROL_CATEGORY.general,
+    defaultValue: '',
+  },
+  value: {
+    category: CONTROL_CATEGORY.general,
+    control: { type: 'text' },
+  },
+});
 
 export default {
   title: 'ODS Components/Form/Textarea [atom]/Demo',

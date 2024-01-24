@@ -12,6 +12,7 @@ class OdsTextareaMock {
   internals = {
     setFormValue: jest.fn(),
   };
+
   textareaElement = {
     setCustomValidity: jest.fn(),
   };

@@ -110,8 +110,7 @@ export class OsdsTextarea implements OdsTextareaAttribute, OdsTextareaEvent, Ods
 
   render(): FunctionalComponent {
     return (
-      <Host class={{ 'ods-error': this.internalError }}
-            tabindex={ this.tabindex }>
+      <Host class={{ 'ods-error': this.internalError }}>
         <textarea
           aria-label={ this.ariaLabel }
           aria-labelledby={ this.ariaLabelledby || `${this.internalId}-label` }
@@ -130,7 +129,7 @@ export class OsdsTextarea implements OdsTextareaAttribute, OdsTextareaEvent, Ods
           role="textbox"
           rows={ this.rows }
           spellcheck={ this.spellcheck }
-          tabindex="-1"
+          tabindex={ this.tabindex }
           value={ this.value || '' }>
         </textarea>
       </Host>

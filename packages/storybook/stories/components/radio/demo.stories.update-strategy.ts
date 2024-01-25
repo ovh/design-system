@@ -1,6 +1,5 @@
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
-
 import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 
 const slotJs = `
@@ -12,12 +11,12 @@ const slotJs = `
 
   function myAsyncAction({checked, value}) {
     const max = 1, min = 0, delay = 1000;
-    logger.log('simulate xhr call...', {checked, value});
+    console.log('simulate xhr call...', {checked, value});
     return new Promise(
       (resolve, reject) => {
           const isSuccess = Math.floor(Math.random() * (max - min + 1) + min)
-          if (isSuccess) {setTimeout(() => {logger.log('xhr call success');resolve("backend updated")}, delay)}
-          else {setTimeout(() => {logger.log('xhr call failed');reject(new Error("backend failed!"))}, delay)}
+          if (isSuccess) {setTimeout(() => {console.log('xhr call success');resolve("backend updated")}, delay)}
+          else {setTimeout(() => {console.log('xhr call failed');reject(new Error("backend failed!"))}, delay)}
       }
     );
   }
@@ -29,20 +28,20 @@ const slotJs = `
     radio5.save = ({checked, value}) => myAsyncAction({checked, value})
     .catch((error) => {radioMsg5.innerText = 'error updating value. try again'; throw error;});
     radio5.addEventListener('odsValueChange', (event) => {
-        logger.log('radio5 value change', {detail: event.detail});
+        console.log('radio5 value change', {detail: event.detail});
     });
     radio5.addEventListener('odsCheckedChange', (event) => {
-        logger.log('radio5 Checked change', {detail: event.detail});
+        console.log('radio5 Checked change', {detail: event.detail});
     });
   }
 
   // optimistic
   if(radio4) {
     radio4.addEventListener('odsValueChange', (event) => {
-        logger.log('radio4 value change', {detail: event.detail});
+        console.log('radio4 value change', {detail: event.detail});
     });
     radio4.addEventListener('odsCheckedChange', (event) => {
-        logger.log('radio4 Checked change', {detail: event.detail}, 'calling async action...');
+        console.log('radio4 Checked change', {detail: event.detail}, 'calling async action...');
         radioMsg4.innerText = '';
         myAsyncAction({checked: event.detail.checked, value: event.detail.value})
         .catch(() => {radioMsg4.innerText = 'error updating value. try again';radio4.checked = false})

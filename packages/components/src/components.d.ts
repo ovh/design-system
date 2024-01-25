@@ -1160,6 +1160,10 @@ export namespace Components {
          */
         "placeholder"?: string;
         /**
+          * Text before the input value
+         */
+        "prefixValue"?: string;
+        /**
           * Indicates if the input is read-only or not
          */
         "readOnly"?: boolean;
@@ -3848,6 +3852,10 @@ declare namespace LocalJSX {
           * Placeholder text for the input
          */
         "placeholder"?: string;
+        /**
+          * Text before the input value
+         */
+        "prefixValue"?: string;
         /**
           * Indicates if the input is read-only or not
          */

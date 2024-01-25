@@ -1,29 +1,21 @@
-import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-password';
 import { html } from 'lit-html';
+import { ODS_ICON_NAMES } from '@ovhcloud/ods-components';
 import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 
 defineCustomElement();
 
 /* Demo story parameters  */
 const storyParams = {
-  color: {
+  icon: {
     category: 'General',
-    defaultValue: ODS_THEME_COLOR_INTENT.primary,
-    options: [ODS_THEME_COLOR_INTENT.primary, ODS_THEME_COLOR_INTENT.error],
+    defaultValue: '',
+    options: ODS_ICON_NAMES,
     control: { type: 'select' },
   },
-  placeholder: {
-    category: 'General',
-    defaultValue: 'Placeholder',
-  },
-  value: {
+  prefixValue: {
     category: 'General',
     control: { type: 'text' },
-  },
-  masked: {
-    category: 'General',
-    defaultValue: true,
   },
   clearable: {
     category: 'General',
@@ -47,11 +39,27 @@ const storyParams = {
   },
   name: {
     category: 'Development',
-    defaultValue: 'my-password',
+    defaultValue: 'myInputNumber',
+  },
+  readonly: {
+    category: 'Development',
+    defaultValue: false,
   },
   required: {
     category: 'Development',
     defaultValue: false,
+  },
+  masked: {
+    category: 'Development',
+    defaultValue: true,
+  },
+  placeholder: {
+    category: 'General',
+    defaultValue: 'Placeholder',
+  },
+  value: {
+    category: 'General',
+    control: { type: 'text' },
   },
   forbiddenValues: {
     category: 'Development',

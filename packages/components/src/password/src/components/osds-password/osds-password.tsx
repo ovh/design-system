@@ -54,6 +54,8 @@ export class OsdsPassword implements OdsPasswordAttribute, OdsPasswordEvent, Ods
 
   @Prop({ reflect: true }) placeholder?: string;
 
+  @Prop({ reflect: true }) prefixValue?: string;
+
   @Prop({ reflect: true }) readOnly?: boolean;
 
   @Prop({ reflect: true }) required?: boolean;
@@ -96,6 +98,7 @@ export class OsdsPassword implements OdsPasswordAttribute, OdsPasswordEvent, Ods
     return this.controller.reset();
   }
 
+  @Listen('focus')
   @Method()
   async setFocus(): Promise<void> {
     return this.osdsInput?.setFocus();
@@ -113,10 +116,6 @@ export class OsdsPassword implements OdsPasswordAttribute, OdsPasswordEvent, Ods
 
   componentWillLoad(): void {
     this.controller.beforeInit();
-  }
-
-  formResetCallback(): void {
-    this.reset();
   }
 
   formResetCallback(): void {
@@ -142,6 +141,7 @@ export class OsdsPassword implements OdsPasswordAttribute, OdsPasswordEvent, Ods
           masked={this.masked}
           name={this.name}
           placeholder={this.placeholder}
+          prefixValue={this.prefixValue}
           readOnly={this.readOnly}
           required={this.required}
           value={this.value}

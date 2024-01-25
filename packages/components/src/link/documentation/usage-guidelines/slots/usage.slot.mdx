@@ -1,8 +1,12 @@
+import { Preview } from '@storybook/addon-docs/blocks';
+
 #### Start
-<osds-link>
-  <span slot='start'>Start</span>
-  LinkMainContent
-</osds-link>
+<Preview>
+  <osds-link>
+    <span slot='start'>Start</span>
+    LinkMainContent
+  </osds-link>
+</Preview>
 
 ```html
 <osds-link>
@@ -12,10 +16,12 @@
 ```
 
 #### End
-<osds-link>
-  LinkMainContent
-  <span slot='end'>End</span>
-</osds-link>
+<Preview>
+  <osds-link>
+    LinkMainContent
+    <span slot='end'>End</span>
+  </osds-link>
+</Preview>
 
 ```html
 <osds-link>
@@ -29,15 +35,17 @@
 > ⚠️️ **Please note**<br />
 > Icon is hoverable so its color will synchronize with the Link
 
-<osds-link>
-  With prefix icon
-  <span slot='start'><osds-icon name="arrow-left" size="xs" hoverable></osds-icon></span>
-</osds-link>
-<br/>
-<osds-link>
-  With suffix icon
-  <span slot='end'><osds-icon name="arrow-right" size="xs" hoverable></osds-icon></span>
-</osds-link>
+<Preview>
+  <osds-link>
+    With prefix icon
+    <span slot='start'><osds-icon name="arrow-left" size="xs" hoverable></osds-icon></span>
+  </osds-link>
+  <br/>
+  <osds-link>
+    With suffix icon
+    <span slot='end'><osds-icon name="arrow-right" size="xs" hoverable></osds-icon></span>
+  </osds-link>
+</Preview>
 
 ```html
 <osds-link>

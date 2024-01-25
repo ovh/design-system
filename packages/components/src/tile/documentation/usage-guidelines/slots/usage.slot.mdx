@@ -1,8 +1,12 @@
+import { Preview } from '@storybook/addon-docs/blocks';
+
 #### Start
-<osds-tile>
-  <span slot='start'>Start</span>
-  Default slot
-</osds-tile>
+<Preview withSource="none">
+  <osds-tile>
+    <span slot='start'>Start</span>
+    Default slot
+  </osds-tile>
+</Preview>
 
 ```html
 <osds-tile>
@@ -12,10 +16,12 @@
 ```
 
 #### End
-<osds-tile>
-  Default slot
-  <span slot='end'>End</span>
-</osds-tile>
+<Preview withSource="none">
+  <osds-tile>
+    Default slot
+    <span slot='end'>End</span>
+  </osds-tile>
+</Preview>
 
 ```html
 <osds-tile>
@@ -25,11 +31,13 @@
 ```
 
 #### Start and end
-<osds-tile>
-  <span slot='start'>Start</span>
-  Default slot
-  <span slot='end'>End</span>
-</osds-tile>
+<Preview withSource="none">
+  <osds-tile>
+    <span slot='start'>Start</span>
+    Default slot
+    <span slot='end'>End</span>
+  </osds-tile>
+</Preview>
 
 ```html
 <osds-tile>

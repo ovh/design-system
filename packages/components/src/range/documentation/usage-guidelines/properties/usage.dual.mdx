@@ -1,3 +1,14 @@
+export const displayDualRange = () => {
+    setTimeout(() => {
+        const range = document.querySelector('#dual-range');
+        range.value = [20, 40];
+    }, 0);
+};
+
+<osds-range id="dual-range" min="0" max="60"></osds-range>
+
+<>{ displayDualRange() }</>
+
 ```html
 <osds-range id="dual-range" min="0" max="60"></osds-range>
 <script>

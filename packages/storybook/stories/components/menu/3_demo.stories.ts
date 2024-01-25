@@ -2,7 +2,7 @@ import { defineCustomElement as defineMenu } from '@ovhcloud/ods-components/dist
 import { defineCustomElement as defineMenuGroup } from '@ovhcloud/ods-components/dist/components/osds-menu-group';
 import { defineCustomElement as defineMenuItem } from '@ovhcloud/ods-components/dist/components/osds-menu-item';
 import { html } from 'lit-html';
-import { extractArgTypes, extractStoryParams } from '../../../core/componentHTMLUtils';
+import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 import { applyContentText, positionParams } from '../../../core/commonPositionStoryParams';
 import { styleMap } from 'lit-html/directives/style-map';
 
@@ -11,14 +11,23 @@ defineMenu();
 defineMenuGroup();
 defineMenuItem();
 
+/* Demo story parameters  */
+const storyParams = {
+  disabled: {
+    category: 'Misc',
+    defaultValue: false,
+  },
+};
+
 export default {
   title: 'ODS Components/Actions/Menu [atom]/Demo',
   id: 'menu',
+  argTypes: extractArgTypes(storyParams)
 };
 
 /* Default */
-const TemplateDemo = () => html`
-  <osds-menu>
+const TemplateDemo = (args: Record<string, unknown>) => html`
+  <osds-menu ...=${getTagAttributes(args)}>
     <osds-button slot='menu-title' color='primary' variant='stroked'>Menu <osds-icon name='home' size='xs'></osds-icon></osds-button>
     <osds-menu-group>
       <osds-text>Group/Text 1</osds-text>
@@ -42,6 +51,10 @@ const TemplateDemo = () => html`
   </osds-menu>
 `;
 export const Demo = TemplateDemo.bind({});
+// @ts-ignore
+Demo.args = {
+  ...extractStoryParams(storyParams),
+};
 
 /* Position */
 const TemplatePosition = ({ ...args }) => {

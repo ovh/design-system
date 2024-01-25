@@ -1,16 +1,9 @@
-import ErrorProperty from './properties/usage.error.mdx';
-import InlineProperty from './properties/usage.inline.mdx';
-import GenericStyle from '@ovhcloud/ods-common-core/docs/generic-style.mdx';
 import { Preview } from '@storybook/addon-docs/blocks';
 
-<GenericStyle />
+`error` text will replace slot `helper`:
 
-## Usage
-
-### Default
-#### Slot
 <Preview withSource="none">
-  <osds-form-field>
+  <osds-form-field error='Error'>
     <osds-text slot='label' color='text'>Label</osds-text>
     <osds-text slot='visual-hint'>Visual hint</osds-text>
     <osds-input type='text' value='Input'></osds-input>
@@ -19,16 +12,10 @@ import { Preview } from '@storybook/addon-docs/blocks';
 </Preview>
 
 ```html
-<osds-form-field>
-  <osds-text slot='label' color='text'>Label</osds-text>
+<osds-form-field error='Error'>
+  <span slot='label'>Label</span>
   <osds-text slot='visual-hint'>Visual hint</osds-text>
   <osds-input type='text' value='Input'></osds-input>
   <osds-text slot='helper'>Helper</osds-text>
 </osds-form-field>
 ```
-
-### Inline
-<InlineProperty />
-
-### Error
-<ErrorProperty />

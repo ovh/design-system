@@ -1,4 +1,5 @@
 import GenericStyle from '@ovhcloud/ods-common-core/docs/generic-style.mdx';
+import { Preview } from '@storybook/addon-docs/blocks';
 
 <GenericStyle />
 
@@ -6,27 +7,28 @@ import GenericStyle from '@ovhcloud/ods-common-core/docs/generic-style.mdx';
 
 ### Default
 
-<osds-accordion-group>
-  <osds-accordion>
-    <span slot="summary">
-      Lorem ipsum
-    </span>
-    Vestibulum placerat neque vitae elit vulputate aliquam.
-    Fusce et nisi quis tellus porttitor pharetra facilisis id arcu.
-    Nulla mollis tortor sed pretium mollis.
-  </osds-accordion>
-  <osds-accordion>
-    <span slot="summary">
-      pretium mollis
-    </span>
-    Vestibulum placerat neque vitae elit vulputate aliquam.
-    Fusce et nisi quis tellus porttitor pharetra facilisis id arcu.
-    Nulla mollis tortor sed pretium mollis.
-  </osds-accordion>
-</osds-accordion-group>
+<Preview withSource="none">
+  <osds-accordion-group>
+    <osds-accordion>
+      <span slot="summary">
+        Lorem ipsum
+      </span>
+      Vestibulum placerat neque vitae elit vulputate aliquam.
+      Fusce et nisi quis tellus porttitor pharetra facilisis id arcu.
+      Nulla mollis tortor sed pretium mollis.
+    </osds-accordion>
+    <osds-accordion>
+      <span slot="summary">
+        pretium mollis
+      </span>
+      Vestibulum placerat neque vitae elit vulputate aliquam.
+      Fusce et nisi quis tellus porttitor pharetra facilisis id arcu.
+      Nulla mollis tortor sed pretium mollis.
+    </osds-accordion>
+  </osds-accordion-group>
+</Preview>
 
 ```html
-
 <osds-accordion-group>
   <osds-accordion>
     <span slot="summary">

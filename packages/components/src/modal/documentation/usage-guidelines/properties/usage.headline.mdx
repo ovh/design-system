@@ -1,4 +1,18 @@
-![Headline](assets/modal-headline.png)
+export const displayDismissibleModal = () => {
+  setTimeout(() => {
+    const toggleModal = document.getElementById('toggle-modal-7');
+    const modal = document.getElementById('modal-headline');
+    toggleModal.addEventListener('click', () => {
+      modal.open();
+    });
+  }, 0);
+};
+
+<osds-button id="toggle-modal-7" color='primary' inline>Toggle modal with headline</osds-button>
+
+<osds-modal id="modal-headline" masked headline='Headline'>Modal</osds-modal>
+
+<>{ displayDismissibleModal() }</>
 
 ```html
 <osds-modal headline='Headline'>Modal</osds-modal>

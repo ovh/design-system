@@ -1,34 +1,42 @@
+import { Preview } from '@storybook/addon-docs/blocks';
+
 #### Start
-<osds-toggle>
-  <span slot='start'>Start</span>
-</osds-toggle>
+<Preview withSource="none">
+  <osds-toggle>
+    <osds-text slot='start' color="text" level="body" size="500">Start</osds-text>
+  </osds-toggle>
+</Preview>
 
 ```html
 <osds-toggle>
-  <span slot='start'>Start</span>
+  <osds-text slot='start' color="text" level="body" size="500">Start</osds-text>
 </osds-toggle>
 ```
 
 #### End
-<osds-toggle>
-  <span slot='end'>End</span>
-</osds-toggle>
+<Preview withSource="none">
+  <osds-toggle>
+    <osds-text slot='end' color="text" level="body" size="500">End</osds-text>
+  </osds-toggle>
+</Preview>
 
 ```html
 <osds-toggle>
-  <span slot='end'>End</span>
+  <osds-text slot='end' color="text" level="body" size="500">End</osds-text>
 </osds-toggle>
 ```
 
 #### Start and end
-<osds-toggle>
-  <span slot='start'>Start</span>
-  <span slot='end'>End</span>
-</osds-toggle>
+<Preview withSource="none">
+  <osds-toggle>
+    <osds-text slot='start' color="text" level="body" size="500">Start</osds-text>
+    <osds-text slot='end' color="text" level="body" size="500">End</osds-text>
+  </osds-toggle>
+</Preview>
 
 ```html
 <osds-toggle>
-  <span slot='start'>Start</span>
-  <span slot='end'>End</span>
+  <osds-text slot='start' color="text" level="body" size="500">Start</osds-text>
+  <osds-text slot='end' color="text" level="body" size="500">End</osds-text>
 </osds-toggle>
 ```

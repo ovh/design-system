@@ -1,5 +1,40 @@
-![Dismissible](assets/modal-dismissible.png)
+A Modal can be undismissible:
+
+export const displayDismissibleModal = () => {
+  setTimeout(() => {
+    const toggleModal = document.getElementById('toggle-modal-6');
+    const modal = document.getElementById('modal-dismissible');
+    toggleModal.addEventListener('click', () => {
+      modal.open();
+    });
+    const closeBtn = document.getElementById('close-button');
+    closeBtn.addEventListener('click', () => {
+          modal.close();
+        });
+  }, 0);
+};
+
+<osds-button id="toggle-modal-6" color='primary' inline>Toggle dismissible modal</osds-button>
+
+<osds-modal id="modal-dismissible" masked dismissible='false'>
+  Modal
+  <osds-button slot='actions' color='primary' variant='stroked' id='close-button'>Close modal</osds-button>
+</osds-modal>
+
+<>{ displayDismissibleModal() }</>
 
 ```html
-<osds-modal dismissible='false'>Modal</osds-modal>
+<osds-modal id='modal' dismissible='false'>
+  Modal
+  <osds-button id='close-button' slot='actions' color='primary' variant='stroked'>Close modal</osds-button>
+</osds-modal>
+
+<script>
+  // Close the Modal for this undismissible Modal example in Usage Guidelines
+  const modal = document.querySelector('#modal');
+  const closeBtn = document.querySelector('#close-button');
+    closeBtn.addEventListener('click', () => {
+      modal.close();
+    });
+</script>
 ```

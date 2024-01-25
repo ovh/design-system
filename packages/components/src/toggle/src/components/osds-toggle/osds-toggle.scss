@@ -25,6 +25,7 @@
 @include osds-toggle-on-container-element {
   display: inline-block;
   position: relative;
+  flex-shrink: 0;
 }
 
 @include osds-toggle-on-slider-element {

@@ -16,10 +16,10 @@ function orderControls(control: Record<string, any>) {
   try {
     return Object.entries(control)
       .sort((a, b) => {
-        return orderedControlCategories.indexOf(a[ 1 ].category) - orderedControlCategories.indexOf(b[ 1 ].category);
+        return orderedControlCategories.indexOf(a[1].category) - orderedControlCategories.indexOf(b[1].category);
       })
       .reduce((res, entry) => {
-        res[ entry[ 0 ] ] = entry[ 1 ];
+        res[entry[0]] = entry[1];
         return res;
       }, {} as Record<string, any>);
   } catch {

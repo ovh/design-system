@@ -5,21 +5,22 @@
 ### OdsPasswordAttribute
 |Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
-|**`ariaLabel`** | `undefined` \| `string` | ✴️ |  | ariaLabel of the password|
-|**`ariaLabelledby`** | _string_ |  |  | ID of the element that labels the password|
-|**`clearable`** | _boolean_ |  |  | Ability to clear the password value|
-|**`color`** | `ODS_THEME_COLOR_INTENT` |  |  | Main color of the password: see component principles|
-|**`contrasted`** | _boolean_ |  |  | Indicates if the password is contrasted or not: see component principles|
-|**`disabled`** | _boolean_ |  |  | Indicates if the password is disabled or not: see component principles|
-|**`error`** | _boolean_ |  |  | Indicates if the password shows error or not|
-|**`forbiddenValues`** | `OdsFormForbiddenValues` | ✴️ |  | List of forbidden values for the password|
+|**`ariaLabel`** | `undefined` \| `string` | ✴️ |  | |
+|**`ariaLabelledby`** | _string_ |  |  | ID of the element that labels the input|
+|**`clearable`** | _boolean_ |  |  | Ability to clear the input value|
+|**`defaultValue`** | `OdsInputValue` | ✴️ |  | Default value of the input|
+|**`disabled`** | _boolean_ | ✴️ |  | Indicates if the input is disabled or not: see component principles|
+|**`error`** | _boolean_ | ✴️ |  | Indicates if the input shows error or not|
+|**`forbiddenValues`** | OdsInputValue[] |  |  | List of forbidden values for the input|
 |**`inline`** | _boolean_ |  |  | Indicates if the password is inline or not|
-|**`label`** | _string_ |  |  | Label of the password field|
-|**`loading`** | _boolean_ |  |  | Indicates if the password is in loading state or not|
-|**`masked`** | _boolean_ |  |  | Indicates if the password is masked or not|
-|**`name`** | _string_ |  |  | Name of the password field|
-|**`placeholder`** | _string_ |  |  | Placeholder text for the password|
-|**`readOnly`** | _boolean_ |  |  | Indicates if the password is read-only or not|
-|**`required`** | _boolean_ |  |  | Indicates if the password is required or not|
-|**`size`** | `md` |  |  | Size of the password: see component principles|
+|**`label`** | _string_ |  |  | Label of the input field|
+|**`loading`** | _boolean_ |  |  | Indicates if the input is in loading state or not|
+|**`masked`** | _boolean_ |  |  | Indicates if the input is masked or not|
+|**`name`** | _string_ | ✴️ |  | Name of the input field|
+|**`placeholder`** | _string_ |  |  | Placeholder text for the input|
+|**`prefixValue`** | _string_ |  |  | Text before the input value|
+|**`readOnly`** | _boolean_ |  |  | Indicates if the input is read-only or not|
+|**`required`** | _boolean_ |  |  | Indicates if the input is required or not|
+|**`step`** | _number_ |  |  | Step value for the input|
+|**`tabindex`** | _number_ |  |  | Tabindex for the input|
 |**`value`** | _string_ | ✴️ |  | Current value of the password|

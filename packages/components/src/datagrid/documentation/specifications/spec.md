@@ -26,5 +26,5 @@
 |Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`odsBottomScroll`** | `EventEmitter<void>` | ✴️ |  | |
-|**`odsRowSelectionChange`** | `EventEmitter<reflection>` | ✴️ |  | |
-|**`odsSortChange`** | `EventEmitter<reflection>` | ✴️ |  | |
+|**`odsRowSelectionChange`** | `EventEmitter<unknown>` | ✴️ |  | |
+|**`odsSortChange`** | `EventEmitter<unknown>` | ✴️ |  | |

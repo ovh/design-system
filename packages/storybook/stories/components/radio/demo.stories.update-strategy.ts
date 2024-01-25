@@ -51,14 +51,14 @@ const slotJs = `
     `;
 
 const storyParams = {
-  slotJs: {
-    defaultValue: slotJs,
-  },
   disabled: {
     defaultValue: false,
   },
   required: {
     defaultValue: false,
+  },
+  slotJs: {
+    defaultValue: slotJs,
   },
 };
 
@@ -97,4 +97,3 @@ UpdateStrategy.args = {
 };
 // @ts-ignore
 UpdateStrategy.argTypes = extractArgTypes(storyParams);
-

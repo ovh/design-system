@@ -8,11 +8,20 @@ defineCustomElement();
 
 /* Demo story parameters  */
 const storyParams = {
+  actions: {
+    category: 'Slot',
+    defaultValue: `<osds-button slot="actions" color="primary" variant='stroked' id='cancel'}>Cancel</osds-button>
+<osds-button slot="actions" color="primary">OK</osds-button>`,
+  },
   color: {
     category: 'General',
+    control: { type: 'select' },
     defaultValue: ODS_THEME_COLOR_INTENT.info,
     options: [ODS_THEME_COLOR_INTENT.info, ODS_THEME_COLOR_INTENT.success, ODS_THEME_COLOR_INTENT.warning, ODS_THEME_COLOR_INTENT.error],
-    control: { type: 'select' },
+  },
+  content: {
+    category: 'Slot',
+    defaultValue: '<osds-text color="text">Modal Content</osds-text>',
   },
   dismissible: {
     category: 'General',
@@ -22,15 +31,6 @@ const storyParams = {
     category: 'General',
     defaultValue: 'Modal Title',
   },
-  content: {
-    category: 'Slot',
-    defaultValue: '<osds-text color="text">Modal Content</osds-text>',
-  },
-  actions: {
-    category: 'Slot',
-    defaultValue: `<osds-button slot="actions" color="primary" variant='stroked' id='cancel'}>Cancel</osds-button>
-<osds-button slot="actions" color="primary">OK</osds-button>`,
-  },
   masked: {
     category: 'Development',
     defaultValue: true,
@@ -38,9 +38,9 @@ const storyParams = {
 };
 
 export default {
-  title: 'ODS Components/User feedback/Modal [molecule]/Demo',
-  id: 'modal',
   argTypes: extractArgTypes(storyParams),
+  id: 'modal',
+  title: 'ODS Components/User feedback/Modal [molecule]/Demo',
 };
 
 const TemplateDemo = (args: any) => {

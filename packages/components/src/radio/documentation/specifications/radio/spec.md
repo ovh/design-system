@@ -36,7 +36,7 @@
 |**`odsCheckedChange`** | `EventEmitter<OdsRadioCheckedChangeEventDetail>` | ✴️ |  | the checked state changed|
 |**`odsCheckingChange`** | `EventEmitter<OdsRadioCheckingChangeEventDetail>` | ✴️ |  | the checked state is being changed|
 |**`odsFocus`** | `EventEmitter<void>` | ✴️ |  | Event triggered on radio focus|
-|**`odsValueChange`** | `EventEmitter<reflection>` | ✴️ |  | the radio value changed|
+|**`odsValueChange`** | `EventEmitter<unknown>` | ✴️ |  | the radio value changed|
 
 ### OdsRadioMethod
 |Name | Type | Required | Default | Description|

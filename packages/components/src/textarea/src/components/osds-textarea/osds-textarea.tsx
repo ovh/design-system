@@ -3,7 +3,7 @@ import type { OdsTextareaEvent, OdsTextareaValueChangeEventDetail } from './inte
 import type { OdsTextareaMethod } from './interfaces/methods';
 import type { OdsCommonFieldValidityState } from '@ovhcloud/ods-common-core';
 import type { EventEmitter, FunctionalComponent } from '@stencil/core';
-import { AttachInternals, Component, Element, Event, Host, Method, Prop, State, Watch, h } from '@stencil/core';
+import { AttachInternals, Component, Element, Event, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsTextareaController } from './core/controller';
 
@@ -64,6 +64,7 @@ export class OsdsTextarea implements OdsTextareaAttribute, OdsTextareaEvent, Ods
     return this.controller.reset();
   }
 
+  @Listen('focus')
   @Method()
   async setFocus(): Promise<void> {
     return this.controller.setFocus(this.textareaElement as HTMLElement);
@@ -110,7 +111,9 @@ export class OsdsTextarea implements OdsTextareaAttribute, OdsTextareaEvent, Ods
 
   render(): FunctionalComponent {
     return (
-      <Host class={{ 'ods-error': this.internalError }}>
+      <Host
+        class={{ 'ods-error': this.internalError }}
+        tabindex={ this.tabindex }>
         <textarea
           aria-label={ this.ariaLabel }
           aria-labelledby={ this.ariaLabelledby || `${this.internalId}-label` }
@@ -129,7 +132,7 @@ export class OsdsTextarea implements OdsTextareaAttribute, OdsTextareaEvent, Ods
           role="textbox"
           rows={ this.rows }
           spellcheck={ this.spellcheck }
-          tabindex={ this.tabindex }
+          tabindex="-1"
           value={ this.value || '' }>
         </textarea>
       </Host>

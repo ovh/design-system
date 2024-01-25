@@ -20,6 +20,7 @@
   textarea {
     box-sizing: border-box;
     width: 100%;
+    resize: none;
   }
 }
 
@@ -32,6 +33,14 @@
   position: relative;
   border-style: solid;
   text-align: var(--ods-textarea-text-align, left);
+}
+
+:host([resizable]) {
+  @include osds-textarea-on-selected-host {
+    @include osds-textarea-on-main-element {
+      resize: both;
+    }
+  }
 }
 
 :host([resizable="false"]) {

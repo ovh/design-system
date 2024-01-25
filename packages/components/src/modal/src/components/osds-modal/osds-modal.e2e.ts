@@ -47,7 +47,10 @@ describe('e2e:osds-modal', () => {
     });
 
     it('should set display styling to none when clicked', async() => {
-      await setup({ attributes: { dismissible: true } });
+      await setup({ attributes: { dismissible: true, masked: true } });
+
+      await el.callMethod('open');
+      await page.waitForChanges();
 
       const closeIcon = await page.find('osds-modal >>> osds-icon[name="close"]');
       expect(closeIcon).not.toBeNull();
@@ -80,7 +83,10 @@ describe('e2e:osds-modal', () => {
 
   describe('attribute:masked', () => {
     it('should display a modal', async() => {
-      await setup({ attributes: { masked: false } });
+      await setup({ attributes: { masked: true } });
+
+      await el.callMethod('open');
+      await page.waitForChanges();
 
       const display = await page.evaluate(() => {
         const modal = document.querySelector('osds-modal');
@@ -237,6 +243,7 @@ describe('e2e:osds-modal', () => {
 
       await el.callMethod('open');
       await page.waitForChanges();
+
       outsideButton = await page.find('#outsideButton');
       expect(outsideButton).not.toBeNull();
       insideModalButton1 = await page.find('#insideModalButton1');
@@ -247,9 +254,11 @@ describe('e2e:osds-modal', () => {
 
     it('should move focus to first button inside modal on first tab press', async() => {
       await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
       await page.waitForChanges();
 
       const focusedElementId = await page.evaluate(() => document.activeElement?.id);
+      console.log(focusedElementId)
       expect(focusedElementId).toBe('insideModalButton1');
     });
 

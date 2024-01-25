@@ -5,7 +5,7 @@ const DEFAULT_ATTRIBUTE: OdsModalAttribute = Object.freeze({
   color: ODS_THEME_COLOR_INTENT.info,
   dismissible: true,
   headline: '',
-  masked: false,
+  masked: true,
 });
 
 export {

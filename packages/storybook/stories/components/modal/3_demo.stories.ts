@@ -33,7 +33,7 @@ const storyParams = {
   },
   masked: {
     category: 'Development',
-    defaultValue: false,
+    defaultValue: true,
   },
 };
 

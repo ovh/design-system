@@ -93,11 +93,15 @@
     width: var(--width);
   }
 
-  :host(&:not(&--inline)){
+  :host(&:not(&--inline):has([slot])){
     @include osds-tile-on-selected-host {
-      display: grid;
-      grid-template-columns: auto 1fr auto;
+      display: inline-grid;
+      grid-template: "start center end" / auto 1fr auto;
       width: 100%;
+    }
+
+    slot {
+      display: inline;
     }
   }
 

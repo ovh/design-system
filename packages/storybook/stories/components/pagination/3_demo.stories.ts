@@ -26,13 +26,13 @@ const storyParams = {
 };
 
 const totalItemsParam = {
-  totalItems: {
-    category: 'General',
-    defaultValue: 60,
-  },
   defaultItemsPerPage: {
     category: 'General',
     defaultValue: ODS_PAGINATION_PER_PAGE_OPTIONS[1],
+  },
+  totalItems: {
+    category: 'General',
+    defaultValue: 60,
   },
   beforeTotalItems: {
     category: 'Slots',

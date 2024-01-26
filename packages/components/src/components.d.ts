@@ -40,6 +40,7 @@ import { ODS_INPUT_TYPE } from "./input/src/components/osds-input/constants/inpu
 import { OdsInputValueChangeEventDetail } from "./input/src/components/osds-input/interfaces/events";
 import { ODS_LINK_REFERRER_POLICY as ODS_LINK_REFERRER_POLICY1 } from "./link/src/components/osds-link/constants/referrer-policies";
 import { ODS_MESSAGE_TYPE } from "./message/src/components/osds-message/constants/message-type";
+import { ODS_PAGINATION_PER_PAGE } from "./pagination/src/components/osds-pagination/constants/pagination-per-page";
 import { OdsPaginationChangedEventDetail, OdsPaginationItemPerPageChangedEventDetail } from "./pagination/src/components/osds-pagination/interfaces/events";
 import { ODS_INPUT_SIZE as ODS_INPUT_SIZE1 } from "./input/src";
 import { ODS_PHONE_NUMBER_COUNTRY_PRESET } from "./phone-number/src/components/osds-phone-number/constants/phone-number-countries";
@@ -105,6 +106,7 @@ export { ODS_INPUT_TYPE } from "./input/src/components/osds-input/constants/inpu
 export { OdsInputValueChangeEventDetail } from "./input/src/components/osds-input/interfaces/events";
 export { ODS_LINK_REFERRER_POLICY as ODS_LINK_REFERRER_POLICY1 } from "./link/src/components/osds-link/constants/referrer-policies";
 export { ODS_MESSAGE_TYPE } from "./message/src/components/osds-message/constants/message-type";
+export { ODS_PAGINATION_PER_PAGE } from "./pagination/src/components/osds-pagination/constants/pagination-per-page";
 export { OdsPaginationChangedEventDetail, OdsPaginationItemPerPageChangedEventDetail } from "./pagination/src/components/osds-pagination/interfaces/events";
 export { ODS_INPUT_SIZE as ODS_INPUT_SIZE1 } from "./input/src";
 export { ODS_PHONE_NUMBER_COUNTRY_PRESET } from "./phone-number/src/components/osds-phone-number/constants/phone-number-countries";
@@ -1105,6 +1107,10 @@ export namespace Components {
           * Its corresponding current page.
          */
         "current": number;
+        /**
+          * Default items per page.
+         */
+        "defaultItemsPerPage": ODS_PAGINATION_PER_PAGE;
         /**
           * indicates if the pagination is entirely disabled. it means no interactions (hover, click, focus, etc)
          */
@@ -3877,6 +3883,10 @@ declare namespace LocalJSX {
           * Its corresponding current page.
          */
         "current"?: number;
+        /**
+          * Default items per page.
+         */
+        "defaultItemsPerPage"?: ODS_PAGINATION_PER_PAGE;
         /**
           * indicates if the pagination is entirely disabled. it means no interactions (hover, click, focus, etc)
          */

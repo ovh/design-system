@@ -35,11 +35,14 @@ export class OsdsPagination implements OdsPaginationAttribute, OdsPaginationEven
 
   @State() itemPerPage = this.defaultItemsPerPage || ODS_PAGINATION_PER_PAGE_MIN;
   @State() pageList: OdsPaginationPageList = [];
+  @State() private isFirstLoad: boolean = true;
 
   @Event() odsPaginationChanged!: EventEmitter<OdsPaginationChangedEventDetail>;
   @Event() odsPaginationItemPerPageChanged!: EventEmitter<OdsPaginationItemPerPageChangedEventDetail>;
 
   componentWillLoad(): void {
+    this.itemPerPage = this.defaultItemsPerPage || ODS_PAGINATION_PER_PAGE_MIN;
+
     if (this.totalItems) {
       this.actualTotalPages = this.controller.computeActualTotalPages(this.itemPerPage);
     } else {
@@ -47,6 +50,7 @@ export class OsdsPagination implements OdsPaginationAttribute, OdsPaginationEven
     }
 
     this.updatePageList();
+    this.isFirstLoad = false;
   }
 
   @Listen('odsValueChange')
@@ -83,13 +87,15 @@ export class OsdsPagination implements OdsPaginationAttribute, OdsPaginationEven
 
   @Watch('itemPerPage')
   async onItemPerPageChange(): Promise<void> {
-    await this.updatePagination();
+    if (!this.isFirstLoad) {
+      await this.updatePagination();
 
-    this.odsPaginationItemPerPageChanged.emit({
-      current: this.itemPerPage,
-      currentPage: this.current,
-      totalPages: this.actualTotalPages,
-    });
+      this.odsPaginationItemPerPageChanged.emit({
+        current: this.itemPerPage,
+        currentPage: this.current,
+        totalPages: this.actualTotalPages,
+      });
+    }
   }
 
   @Watch('totalItems')

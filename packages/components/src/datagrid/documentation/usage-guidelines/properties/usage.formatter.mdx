@@ -1,3 +1,5 @@
+import { Canvas } from '@storybook/addon-docs';
+
 export const datagridFormatter = () => {
   setTimeout(() => {
     const datagrid = document.getElementById('datagridWithFormatter');
@@ -21,8 +23,11 @@ export const datagridFormatter = () => {
   }, 1000);
 };
 
-<osds-datagrid id="datagridWithFormatter">
-</osds-datagrid>
+<Canvas withSource="none">
+  <div style={{ height: '200px' }}>
+    <osds-datagrid id="datagridWithFormatter"></osds-datagrid>
+  </div>
+</Canvas>
 
 <>{ datagridFormatter() }</>
 
@@ -78,8 +83,11 @@ export const overflowingElementsFormatter = () => {
   }, 1000);
 };
 
-<osds-datagrid id="overflowingElements">
-</osds-datagrid>
+<Canvas withSource="none">
+  <div style={{ height: '200px' }}>
+    <osds-datagrid id="overflowingElements"></osds-datagrid>
+  </div>
+</Canvas>
 
 <>{ overflowingElementsFormatter() }</>
 

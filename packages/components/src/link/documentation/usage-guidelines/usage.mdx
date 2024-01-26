@@ -2,6 +2,7 @@ import ContrastedProperty from './properties/usage.contrasted.mdx';
 import DisabledProperty from './properties/usage.disabled.mdx';
 import Slot from './slots/usage.slot.mdx';
 import GenericStyle from '@ovhcloud/ods-common-core/docs/generic-style.mdx';
+import { Canvas } from '@storybook/addon-docs';
 
 <GenericStyle />
 
@@ -10,7 +11,13 @@ import GenericStyle from '@ovhcloud/ods-common-core/docs/generic-style.mdx';
 When the Link doesn't have the property `href` then, the Link acts like a button.
 
 ### Default
+<Canvas withSource="none">
+  <osds-link>Link</osds-link>
+</Canvas >
+
+```html
 <osds-link>Link</osds-link>
+```
 
 ### Slot
 <Slot />

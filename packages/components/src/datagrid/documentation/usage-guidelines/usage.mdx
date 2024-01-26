@@ -6,6 +6,7 @@ import IsSortableProperty from './properties/usage.is-sortable.mdx';
 import NoResultLabelProperty from './properties/usage.no-result-label.mdx';
 import RowHeightProperty from './properties/usage.row-height.mdx';
 import GenericStyle from '@ovhcloud/ods-common-core/docs/generic-style.mdx';
+import { Canvas } from '@storybook/addon-docs';
 
 <GenericStyle />
 
@@ -16,10 +17,14 @@ The structure of a Datagrid is composed of `columns`, `rows` and `height`.
 `columns` are made of `title` and `field`.
 The keys for `rows` and `columns` `field` corresponds to each other.
 #### Default with string
-<osds-datagrid columns='[{"title":"Name","field":"name"},{"title":"Firstname","field":"firstname"},{"title":"Gender","field":"gender"},{"title":"Date Of Birth","field":"dob"}]'
-    rows='[{"name":"Dupont","firstname":"Antoine","gender":"male","dob":"15/11/1996"},{"name":"Garnbret","firstname":"Janja","gender":"female","dob":"12/03/1999"}]'
-    height="200">
-</osds-datagrid>
+<Canvas withSource="none">
+  <div style={{ height: '200px' }}>
+    <osds-datagrid columns='[{"title":"Name","field":"name"},{"title":"Firstname","field":"firstname"},{"title":"Gender","field":"gender"},{"title":"Date Of Birth","field":"dob"}]'
+        rows='[{"name":"Dupont","firstname":"Antoine","gender":"male","dob":"15/11/1996"},{"name":"Garnbret","firstname":"Janja","gender":"female","dob":"12/03/1999"}]'
+        height="200">
+    </osds-datagrid>
+  </div>
+</Canvas >
 
 ```html
 <!-- Attributes need to be stringify -->
@@ -30,10 +35,14 @@ The keys for `rows` and `columns` `field` corresponds to each other.
 ```
 
 #### Default with js
-<osds-datagrid columns='[{"title":"Name","field":"name"},{"title":"Firstname","field":"firstname"},{"title":"Gender","field":"gender"},{"title":"Date Of Birth","field":"dob"}]'
-    rows='[{"name":"Dupont","firstname":"Antoine","gender":"male","dob":"15/11/1996"},{"name":"Garnbret","firstname":"Janja","gender":"female","dob":"12/03/1999"}]'
-    height="200">
-</osds-datagrid>
+<Canvas withSource="none">
+  <div style={{ height: '200px' }}>
+    <osds-datagrid columns='[{"title":"Name","field":"name"},{"title":"Firstname","field":"firstname"},{"title":"Gender","field":"gender"},{"title":"Date Of Birth","field":"dob"}]'
+        rows='[{"name":"Dupont","firstname":"Antoine","gender":"male","dob":"15/11/1996"},{"name":"Garnbret","firstname":"Janja","gender":"female","dob":"12/03/1999"}]'
+        height="200">
+    </osds-datagrid>
+  </div>
+</Canvas >
 
 ```html
 <osds-datagrid id="datagrid"></osds-datagrid>

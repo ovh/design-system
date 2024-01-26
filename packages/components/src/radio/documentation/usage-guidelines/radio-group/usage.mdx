@@ -1,5 +1,6 @@
 import DisabledProperty from './properties/usage.disabled.mdx';
 import GenericStyle from '@ovhcloud/ods-common-core/docs/generic-style.mdx';
+import { Canvas } from '@storybook/addon-docs';
 
 <GenericStyle />
 
@@ -7,14 +8,16 @@ import GenericStyle from '@ovhcloud/ods-common-core/docs/generic-style.mdx';
 
 ### Default
 #### With Tile
-<osds-radio-group>
-    <osds-radio value="A">
-        <osds-tile hoverable>Radio-group with Radio & Tile in it</osds-tile>
-    </osds-radio>
-    <osds-radio value="B">
-        <osds-tile hoverable>Radio-group with Radio & Tile in it</osds-tile>
-    </osds-radio>
-</osds-radio-group>
+<Canvas withSource="none">
+  <osds-radio-group>
+      <osds-radio value="A">
+          <osds-tile hoverable>Radio-group with Radio & Tile in it</osds-tile>
+      </osds-radio>
+      <osds-radio value="B">
+          <osds-tile hoverable>Radio-group with Radio & Tile in it</osds-tile>
+      </osds-radio>
+  </osds-radio-group>
+</Canvas >
 
 ```html
 <osds-radio-group>
@@ -28,14 +31,16 @@ import GenericStyle from '@ovhcloud/ods-common-core/docs/generic-style.mdx';
 ```
 
 #### With Radio Button
-<osds-radio-group>
-    <osds-radio value="A">
-        <osds-radio-button></osds-radio-button>
-    </osds-radio>
-    <osds-radio value="B">
-        <osds-radio-button></osds-radio-button>
-    </osds-radio>
-</osds-radio-group>
+<Canvas withSource="none">
+  <osds-radio-group>
+      <osds-radio value="A">
+          <osds-radio-button></osds-radio-button>
+      </osds-radio>
+      <osds-radio value="B">
+          <osds-radio-button></osds-radio-button>
+      </osds-radio>
+  </osds-radio-group>
+</Canvas >
 
 ```html
 <osds-radio-group>

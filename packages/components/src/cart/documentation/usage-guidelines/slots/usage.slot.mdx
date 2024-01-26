@@ -1,10 +1,13 @@
-#### Header
+import { Canvas } from '@storybook/addon-docs';
 
-<osds-cart>
-  <osds-cart-header slot='header'>
-    Header
-  </osds-cart-header>
-</osds-cart>
+#### Header
+<Canvas withSource="none">
+  <osds-cart>
+    <osds-cart-header slot='header'>
+      Header
+    </osds-cart-header>
+  </osds-cart>
+</Canvas >
 
 ```html
 <osds-cart>
@@ -15,15 +18,16 @@
 ```
 
 #### Footer
-
-<osds-cart>
-  <osds-cart-footer slot='footer'>
-    <osds-cart-total>
-      <span slot='total'>Total</span>
-      <span slot='price'>Price</span>
-    </osds-cart-total>
-  </osds-cart-footer>
-</osds-cart>
+<Canvas withSource="none">
+  <osds-cart>
+    <osds-cart-footer slot='footer'>
+      <osds-cart-total>
+        <span slot='total'>Total</span>
+        <span slot='price'>Price</span>
+      </osds-cart-total>
+    </osds-cart-footer>
+  </osds-cart>
+</Canvas >
 
 ```html
 <osds-cart>
@@ -40,9 +44,11 @@
 Add slot `empty` so its content will be displayed if there is no `<osds-cart-item></osds-cart-item>`
 or no `<osds-cart-item-option></osds-cart-item-option>`.
 
-<osds-cart>
-  <span slot='empty'>Cart is empty</span>
-</osds-cart>
+<Canvas withSource="none">
+  <osds-cart>
+    <span slot='empty'>Cart is empty</span>
+  </osds-cart>
+</Canvas >
 
 ```html
 <osds-cart>

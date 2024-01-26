@@ -1,13 +1,17 @@
-<osds-tabs>
-  <osds-tab-bar slot='top'>
-    <osds-tab-bar-item panel='tab1' active>Tab 1</osds-tab-bar-item>
-    <osds-tab-bar-item panel='tab2'>Tab 2</osds-tab-bar-item>
-    <osds-tab-bar-item panel='tab3'>Tab 3</osds-tab-bar-item>
-  </osds-tab-bar>
-  <osds-tab-panel name='tab1' active>Content for Tab 1</osds-tab-panel>
-  <osds-tab-panel name='tab2'>Content for Tab 2</osds-tab-panel>
-  <osds-tab-panel name='tab3'>Content for Tab 3</osds-tab-panel>
-</osds-tabs>
+import { Canvas } from '@storybook/addon-docs';
+
+<Canvas withSource="none">
+  <osds-tabs>
+    <osds-tab-bar slot='top'>
+      <osds-tab-bar-item panel='tab1' active>Tab 1</osds-tab-bar-item>
+      <osds-tab-bar-item panel='tab2'>Tab 2</osds-tab-bar-item>
+      <osds-tab-bar-item panel='tab3'>Tab 3</osds-tab-bar-item>
+    </osds-tab-bar>
+    <osds-tab-panel name='tab1' active>Content for Tab 1</osds-tab-panel>
+    <osds-tab-panel name='tab2'>Content for Tab 2</osds-tab-panel>
+    <osds-tab-panel name='tab3'>Content for Tab 3</osds-tab-panel>
+  </osds-tabs>
+</Canvas >
 
 ```html
 <osds-tabs>

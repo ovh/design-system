@@ -1,3 +1,5 @@
+import { Canvas } from '@storybook/addon-docs';
+
 #### Info (default)
 export const displayInfoModal = () => {
   setTimeout(() => {
@@ -9,7 +11,9 @@ export const displayInfoModal = () => {
   }, 0);
 };
 
-<osds-button id="toggle-modal-2" color='primary' inline>Toggle Modal in info</osds-button>
+<Canvas withSource="none">
+  <osds-button id="toggle-modal-2" color='primary' inline>Toggle Modal in info</osds-button>
+</Canvas >
 
 <osds-modal id="modal-info" masked color='info'>Modal</osds-modal>
 
@@ -30,7 +34,9 @@ export const displaySuccessModal = () => {
   }, 0);
 };
 
-<osds-button id="toggle-modal-3" color='primary' inline>Toggle Modal in success</osds-button>
+<Canvas withSource="none">
+  <osds-button id="toggle-modal-3" color='primary' inline>Toggle Modal in success</osds-button>
+</Canvas >
 
 <osds-modal id="modal-success" masked color='success'>Modal</osds-modal>
 
@@ -51,7 +57,9 @@ export const displayWarningModal = () => {
   }, 0);
 };
 
-<osds-button id="toggle-modal-4" color='primary' inline>Toggle Modal in warning</osds-button>
+<Canvas withSource="none">
+  <osds-button id="toggle-modal-4" color='primary' inline>Toggle Modal in warning</osds-button>
+</Canvas >
 
 <osds-modal id="modal-warning" masked color='warning'>Modal</osds-modal>
 
@@ -72,7 +80,9 @@ export const displayErrorModal = () => {
   }, 0);
 };
 
-<osds-button id="toggle-modal-5" color='primary' inline>Toggle Modal in error</osds-button>
+<Canvas withSource="none">
+  <osds-button id="toggle-modal-5" color='primary' inline>Toggle Modal in error</osds-button>
+</Canvas >
 
 <osds-modal id="modal-error" masked color='error'>Modal</osds-modal>
 

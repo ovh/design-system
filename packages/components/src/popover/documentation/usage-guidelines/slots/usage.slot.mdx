@@ -1,13 +1,16 @@
-#### Popover trigger
+import { Canvas } from '@storybook/addon-docs';
 
-<osds-popover>
-  <span slot="popover-trigger">
-    <osds-text>Trigger</osds-text>
-  </span>
-  <osds-popover-content>
-    Lorem ipsum
-  </osds-popover-content>
-</osds-popover>
+#### Popover trigger
+<Canvas withSource="none">
+  <osds-popover>
+    <span slot="popover-trigger">
+      <osds-text>Trigger</osds-text>
+    </span>
+    <osds-popover-content>
+      Lorem ipsum
+    </osds-popover-content>
+  </osds-popover>
+</Canvas>
 
 ```html
 <osds-popover>
@@ -21,16 +24,17 @@
 ```
 
 #### Popover header
-
-<osds-popover>
-  <span slot="popover-trigger">
-    <osds-text>Trigger</osds-text>
-  </span>
-  <osds-popover-content>
-    <span slot="popover-header"><osds-text>Header</osds-text></span>
-    Lorem ipsum
-  </osds-popover-content>
-</osds-popover>
+<Canvas withSource="none">
+  <osds-popover>
+    <span slot="popover-trigger">
+      <osds-text>Trigger</osds-text>
+    </span>
+    <osds-popover-content>
+      <span slot="popover-header"><osds-text>Header</osds-text></span>
+      Lorem ipsum
+    </osds-popover-content>
+  </osds-popover>
+</Canvas>
 
 ```html
 <osds-popover>
@@ -45,19 +49,22 @@
 ```
 
 #### Popover footer
-
-<osds-popover>
-  <span slot="popover-trigger">
-    <osds-text>Trigger</osds-text>
-  </span>
-  <osds-popover-content>
-    Lorem ipsum
-    <span slot="popover-footer">
-      <osds-button size='sm'>Dismiss</osds-button>
-      <osds-button size='sm'>Action</osds-button>
-    </span>
-  </osds-popover-content>
-</osds-popover>
+<Canvas withSource="none">
+  <div style={{ height: '100px' }}>
+    <osds-popover>
+      <span slot="popover-trigger">
+        <osds-text>Trigger</osds-text>
+      </span>
+      <osds-popover-content>
+        Lorem ipsum
+        <span slot="popover-footer">
+          <osds-button size='sm'>Dismiss</osds-button>
+          <osds-button size='sm'>Action</osds-button>
+        </span>
+      </osds-popover-content>
+    </osds-popover>
+  </div>
+</Canvas>
 
 ```html
 <osds-popover>

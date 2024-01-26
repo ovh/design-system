@@ -1,3 +1,5 @@
+import { Canvas } from '@storybook/addon-docs';
+
 You can `disabled` some items, but you cannot disable the entire `breadcrumb`.
 
 export const displayBreadcrumbItem = () => {
@@ -12,7 +14,10 @@ export const displayBreadcrumbItem = () => {
     }, 0);
 };
 
-<osds-breadcrumb id="disabled-breadcrumb-item"></osds-breadcrumb>
+<Canvas withSource="none">
+  <osds-breadcrumb id="disabled-breadcrumb-item"></osds-breadcrumb>
+</Canvas >
+
 <>{ displayBreadcrumbItem() }</>
 
 ```html

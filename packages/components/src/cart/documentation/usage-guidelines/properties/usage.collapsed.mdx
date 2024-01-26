@@ -1,40 +1,43 @@
+import { Canvas } from '@storybook/addon-docs';
+
 When `collapsible` and `collapsed` attributes are added to the Cart, content from the header and the footer is displayed but cart items and options won't be displayed anymore.
 
-<osds-cart inline collapsible collapsed>
-  <osds-cart-header slot='header'>
-    Header
-  </osds-cart-header>
-
-  <osds-cart-section>
-      <osds-cart-item>
-        <span slot='subhead'>Subhead</span>
-        <span slot='title'>Title</span>
-        <span slot='price'>Price</span>
-        <span slot='extra'>Extra</span>
-      </osds-cart-item>
-      <osds-divider color='primary' size='0' separator='true'></osds-divider>
-      <osds-cart-item-option>
-        <span slot='subhead'>Subhead</span>
-        <span slot='title'>Title</span>
-        <span slot='price'>Price</span>
-        <span slot='extra'>Extra</span>
-      </osds-cart-item-option>
-    </osds-cart-section>
-    <osds-cart-footer slot='footer'>
-      <osds-cart-footer-item>
-        <span slot='subhead'>Subhead</span>
-        <span slot='title'>Title</span>
-        <span slot='price'>Price</span>
-        <span slot='extra'>Extra</span>
-      </osds-cart-footer-item>
-      <osds-cart-total>
-        <span slot='total'>Total</span>
-        <span slot='info'>Info</span>
-        <span slot='price'>Price</span>
-        <span slot='extra'>Extra</span>
-      </osds-cart-total>
-    </osds-cart-footer>
-</osds-cart>
+<Canvas withSource="none">
+  <osds-cart inline collapsible collapsed>
+    <osds-cart-header slot='header'>
+      Header
+    </osds-cart-header>
+    <osds-cart-section>
+        <osds-cart-item>
+          <span slot='subhead'>Subhead</span>
+          <span slot='title'>Title</span>
+          <span slot='price'>Price</span>
+          <span slot='extra'>Extra</span>
+        </osds-cart-item>
+        <osds-divider color='primary' size='0' separator='true'></osds-divider>
+        <osds-cart-item-option>
+          <span slot='subhead'>Subhead</span>
+          <span slot='title'>Title</span>
+          <span slot='price'>Price</span>
+          <span slot='extra'>Extra</span>
+        </osds-cart-item-option>
+      </osds-cart-section>
+      <osds-cart-footer slot='footer'>
+        <osds-cart-footer-item>
+          <span slot='subhead'>Subhead</span>
+          <span slot='title'>Title</span>
+          <span slot='price'>Price</span>
+          <span slot='extra'>Extra</span>
+        </osds-cart-footer-item>
+        <osds-cart-total>
+          <span slot='total'>Total</span>
+          <span slot='info'>Info</span>
+          <span slot='price'>Price</span>
+          <span slot='extra'>Extra</span>
+        </osds-cart-total>
+      </osds-cart-footer>
+  </osds-cart>
+</Canvas >
 
 ```html
 <osds-cart inline collapsible collapsed>
@@ -86,41 +89,42 @@ export const displayHeader = () => {
     }, 0);
 };
 
-<osds-cart inline collapsible collapsed>
-  <osds-cart-header slot='header' id='cart-header'>
-    Header
-  </osds-cart-header>
-
-  <osds-cart-section>
-      <osds-cart-item>
-        <span slot='subhead'>Subhead</span>
-        <span slot='title'>Title</span>
-        <span slot='price'>Price</span>
-        <span slot='extra'>Extra</span>
-      </osds-cart-item>
-      <osds-divider color='primary' size='0' separator='true'></osds-divider>
-      <osds-cart-item-option>
-        <span slot='subhead'>Subhead</span>
-        <span slot='title'>Title</span>
-        <span slot='price'>Price</span>
-        <span slot='extra'>Extra</span>
-      </osds-cart-item-option>
-    </osds-cart-section>
-    <osds-cart-footer slot='footer'>
-      <osds-cart-footer-item>
-        <span slot='subhead'>Subhead</span>
-        <span slot='title'>Title</span>
-        <span slot='price'>Price</span>
-        <span slot='extra'>Extra</span>
-      </osds-cart-footer-item>
-      <osds-cart-total>
-        <span slot='total'>Total</span>
-        <span slot='info'>Info</span>
-        <span slot='price'>Price</span>
-        <span slot='extra'>Extra</span>
-      </osds-cart-total>
-    </osds-cart-footer>
-</osds-cart>
+<Canvas withSource="none">
+  <osds-cart inline collapsible collapsed>
+    <osds-cart-header slot='header' id='cart-header'>
+      Header
+    </osds-cart-header>
+    <osds-cart-section>
+        <osds-cart-item>
+          <span slot='subhead'>Subhead</span>
+          <span slot='title'>Title</span>
+          <span slot='price'>Price</span>
+          <span slot='extra'>Extra</span>
+        </osds-cart-item>
+        <osds-divider color='primary' size='0' separator='true'></osds-divider>
+        <osds-cart-item-option>
+          <span slot='subhead'>Subhead</span>
+          <span slot='title'>Title</span>
+          <span slot='price'>Price</span>
+          <span slot='extra'>Extra</span>
+        </osds-cart-item-option>
+      </osds-cart-section>
+      <osds-cart-footer slot='footer'>
+        <osds-cart-footer-item>
+          <span slot='subhead'>Subhead</span>
+          <span slot='title'>Title</span>
+          <span slot='price'>Price</span>
+          <span slot='extra'>Extra</span>
+        </osds-cart-footer-item>
+        <osds-cart-total>
+          <span slot='total'>Total</span>
+          <span slot='info'>Info</span>
+          <span slot='price'>Price</span>
+          <span slot='extra'>Extra</span>
+        </osds-cart-total>
+      </osds-cart-footer>
+  </osds-cart>
+</Canvas >
 
 <>{ displayHeader() }</>
 

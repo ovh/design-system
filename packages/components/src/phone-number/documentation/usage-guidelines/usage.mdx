@@ -5,27 +5,16 @@ import ErrorProperty from './properties/usage.error.mdx';
 import IsoCodeProperty from './properties/usage.isoCode.mdx';
 import LocaleProperty from './properties/usage.locale.mdx';
 import GenericStyle from '@ovhcloud/ods-common-core/docs/generic-style.mdx';
+import { Canvas } from '@storybook/addon-docs';
 
 <GenericStyle />
 
 ## Usage
 
 ### Default
-export const displayPhoneNumber = () => {
-    setTimeout(() => {
-        const phone = document.querySelector('#phone');
-        if (phone) {
-          phone.addEventListener('keydown', (e) => {
-            e.stopPropagation();
-          });
-      }
-    }, 0);
-};
-
-<osds-phone-number id='phone'></osds-phone-number>
-
-<>{ displayPhoneNumber() }</>
-
+<Canvas withSource="none">
+  <osds-phone-number></osds-phone-number>
+</Canvas >
 
 ```html
 <osds-phone-number></osds-phone-number>

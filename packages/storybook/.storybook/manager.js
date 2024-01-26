@@ -127,6 +127,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 addons.setConfig({
   theme,
+  enableShortcuts: false,
   sidebar: {
     renderLabel: item => {
       const badge = item.name

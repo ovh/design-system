@@ -1,12 +1,17 @@
+import MaxProperty from './properties/usage.max.mdx';
+import ValueProperty from './properties/usage.value.mdx';
 import Slot from './slots/usage.slot.mdx';
 import GenericStyle from '@ovhcloud/ods-common-core/docs/generic-style.mdx';
+import { Canvas } from '@storybook/addon-docs';
 
 <GenericStyle />
 
 ## Usage
 
 ### Default
-<osds-progress-bar></osds-progress-bar>
+<Canvas withSource="none">
+  <osds-progress-bar></osds-progress-bar>
+</Canvas >
 
 ```html
 <osds-progress-bar></osds-progress-bar>
@@ -16,15 +21,7 @@ import GenericStyle from '@ovhcloud/ods-common-core/docs/generic-style.mdx';
 <Slot />
 
 ### Value
-<osds-progress-bar value="50"></osds-progress-bar>
-
-```html
-<osds-progress-bar value="50"></osds-progress-bar>
-```
+<ValueProperty />
 
 ### Max value
-<osds-progress-bar value="27" max="40"></osds-progress-bar>
-
-```html
-<osds-progress-bar value="27" max="40"></osds-progress-bar>
-```
+<MaxProperty />

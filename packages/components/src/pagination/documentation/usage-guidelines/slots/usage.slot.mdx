@@ -1,7 +1,11 @@
+import { Canvas } from '@storybook/addon-docs';
+
 ### Before total items
-<osds-pagination current='1' total-items='5'>
-  <span slot='before-total-items'>of </span>
-</osds-pagination>
+<Canvas withSource="none">
+  <osds-pagination current='1' total-items='5'>
+    <span slot='before-total-items'>of </span>
+  </osds-pagination>
+</Canvas >
 
 ```html
 <osds-pagination current='1' total-items='5'>
@@ -10,9 +14,11 @@
 ```
 
 ### After total items
-<osds-pagination current='1' total-items='5'>
-  <span slot='after-total-items'> results</span>
-</osds-pagination>
+<Canvas withSource="none">
+  <osds-pagination current='1' total-items='5'>
+    <span slot='after-total-items'> results</span>
+  </osds-pagination>
+</Canvas >
 
 ```html
 <osds-pagination current='1' total-items='5'>
@@ -21,10 +27,12 @@
 ```
 
 ### Before and after total items
-<osds-pagination current='1' total-items='5'>
-  <span slot='before-total-items'>of </span>
-  <span slot='after-total-items'> results</span>
-</osds-pagination>
+<Canvas withSource="none">
+  <osds-pagination current='1' total-items='5'>
+    <span slot='before-total-items'>of </span>
+    <span slot='after-total-items'> results</span>
+  </osds-pagination>
+</Canvas >
 
 ```html
 <osds-pagination current='1' total-items='5'>

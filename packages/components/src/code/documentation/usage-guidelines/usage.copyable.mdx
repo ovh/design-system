@@ -1,9 +1,12 @@
-##### Basic Copyable
+import { Canvas } from '@storybook/addon-docs';
 
-<osds-code>
-  <osds-button slot="copy" title="copy text"></osds-button>
-  $ mongo
-</osds-code>
+##### Basic Copyable
+<Canvas withSource="none">
+  <osds-code>
+    <osds-button slot="copy" title="copy text"></osds-button>
+    $ mongo
+  </osds-code>
+</Canvas >
 
 ```html
 <osds-code>
@@ -13,11 +16,12 @@
 ```
 
 ##### Copyable with `osds-button` customization
-
-<osds-code>
-  <osds-button slot="copy" variant="stroked" title="copy text"></osds-button>
-  $ mongo
-</osds-code>
+<Canvas withSource="none">
+  <osds-code>
+    <osds-button slot="copy" variant="stroked" title="copy text"></osds-button>
+    $ mongo
+  </osds-code>
+</Canvas >
 
 ```html
 <osds-code>
@@ -27,13 +31,14 @@
 ```
 
 ##### Copyable with `osds-icon` customization
-
-<osds-code>
-  <osds-button slot="copy" title="copy text">
-    <osds-icon name="file" size="md"></osds-icon>
-  </osds-button>
-  $ mongo
-</osds-code>
+<Canvas withSource="none">
+  <osds-code>
+    <osds-button slot="copy" title="copy text">
+      <osds-icon name="file" size="md"></osds-icon>
+    </osds-button>
+    $ mongo
+  </osds-code>
+</Canvas >
 
 ```html
 <osds-code>
@@ -45,11 +50,12 @@
 ```
 
 ##### Copyable with `vanilla button` customization
-
-<osds-code>
-  <button slot="copy" title="copy text">Copy</button>
-  $ mongo
-</osds-code>
+<Canvas withSource="none">
+  <osds-code>
+    <button slot="copy" title="copy text">Copy</button>
+    $ mongo
+  </osds-code>
+</Canvas >
 
 ```html
 <osds-code>
@@ -59,13 +65,14 @@
 ```
 
 ##### Copyable Multiline
-
-<osds-code>
-  <osds-button slot="copy" title="copy text"></osds-button>
-  MongoDB shell version v4.4.6
-  connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
-  MongoDB server version: 4.4.6
-</osds-code>
+<Canvas withSource="none">
+  <osds-code>
+    <osds-button slot="copy" title="copy text"></osds-button>
+    MongoDB shell version v4.4.6
+    connecting to: mongodb://127.0.0.1:27017/?compressors=disabled&gssapiServiceName=mongodb
+    MongoDB server version: 4.4.6
+  </osds-code>
+</Canvas >
 
 ```html
 <osds-code>

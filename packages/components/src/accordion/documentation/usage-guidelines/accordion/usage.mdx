@@ -3,7 +3,7 @@ import DisabledProperty from './properties/usage.disabled.mdx';
 import OpenedProperty from './properties/usage.opened.mdx';
 import Slot from './slots/usage.slot.mdx';
 import GenericStyle from '@ovhcloud/ods-common-core/docs/generic-style.mdx';
-import { Preview } from '@storybook/addon-docs/blocks';
+import { Canvas } from '@storybook/addon-docs';
 
 <GenericStyle />
 
@@ -11,7 +11,7 @@ import { Preview } from '@storybook/addon-docs/blocks';
 
 ### Default
 
-<Preview withSource="none">
+<Canvas withSource="none">
   <osds-accordion>
     <span slot='summary'>
       Lorem ipsum
@@ -20,7 +20,7 @@ import { Preview } from '@storybook/addon-docs/blocks';
     Fusce et nisi quis tellus porttitor pharetra facilisis id arcu.
     Nulla mollis tortor sed pretium mollis.
   </osds-accordion>
-</Preview>
+</Canvas >
 
 ```html
 <osds-accordion>

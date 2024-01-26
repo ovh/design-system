@@ -1,6 +1,7 @@
 import ContrastedProperty from './properties/breadcrumb/usage.contrasted.mdx';
 import DisabledProperty from './properties/breadcrumb-item/usage.disabled.mdx';
 import GenericStyle from '@ovhcloud/ods-common-core/docs/generic-style.mdx';
+import { Canvas } from '@storybook/addon-docs';
 
 <GenericStyle />
 
@@ -8,7 +9,6 @@ import GenericStyle from '@ovhcloud/ods-common-core/docs/generic-style.mdx';
 
 ## Breadcrumb
 ### Default
-
 export const displayBreadcrumb = () => {
     setTimeout(() => {
         const defaultBreadcrumbUsage = document.querySelector('#default-breadcrumb');
@@ -21,7 +21,10 @@ export const displayBreadcrumb = () => {
     }, 0);
 };
 
-<osds-breadcrumb id="default-breadcrumb"></osds-breadcrumb>
+<Canvas withSource="none">
+  <osds-breadcrumb id="default-breadcrumb"></osds-breadcrumb>
+</Canvas >
+
 <>{ displayBreadcrumb() }</>
 
 ```html
@@ -54,7 +57,10 @@ export const displayCollapseBreadcrumb = () => {
     }, 0);
 };
 
-<osds-breadcrumb id="collapse-breadcrumb"></osds-breadcrumb>
+<Canvas withSource="none">
+  <osds-breadcrumb id="collapse-breadcrumb"></osds-breadcrumb>
+</Canvas >
+
 <>{ displayCollapseBreadcrumb() }</>
 
 ```html
@@ -88,7 +94,10 @@ export const displayIconBreadcrumbItem = () => {
     }, 0);
 };
 
-<osds-breadcrumb id="icon-breadcrumb-item"></osds-breadcrumb>
+<Canvas withSource="none">
+  <osds-breadcrumb id="icon-breadcrumb-item"></osds-breadcrumb>
+</Canvas >
+
 <>{ displayIconBreadcrumbItem() }</>
 
 ```html

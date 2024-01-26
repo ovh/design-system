@@ -5,6 +5,7 @@ import RoundedProperty from './properties/usage.rounded.mdx';
 import Slot from './slots/usage.slot.mdx';
 import CartManager from './usage.cart-manager.mdx';
 import GenericStyle from '@ovhcloud/ods-common-core/docs/generic-style.mdx';
+import { Canvas } from '@storybook/addon-docs';
 
 <GenericStyle />
 
@@ -12,50 +13,53 @@ import GenericStyle from '@ovhcloud/ods-common-core/docs/generic-style.mdx';
 
 ## Cart
 ### Default
-<osds-cart></osds-cart>
+<Canvas withSource="none">
+  <osds-cart></osds-cart>
+</Canvas >
 
-```
+```html
 <osds-cart></osds-cart>
 ```
 
 ### Global rendering
 Here is a complete example of a Cart using `osds-header`, `osds-section`, `osds-cart-item`, `osds-cart-item-option`, `osds-cart-footer`, `osds-cart-footer-item`, `osds-cart-total`.
 
-<osds-cart>
-  <osds-cart-header slot='header'>
-    Header
-  </osds-cart-header>
-
-  <osds-cart-section>
-    <osds-cart-item>
-      <span slot='subhead'>Subhead</span>
-      <span slot='title'>Title</span>
-      <span slot='price'>Price</span>
-      <span slot='extra'>Extra</span>
-    </osds-cart-item>
-    <osds-divider color='primary' size='0' separator='true'></osds-divider>
-    <osds-cart-item-option>
-      <span slot='subhead'>Subhead</span>
-      <span slot='title'>Title</span>
-      <span slot='price'>Price</span>
-      <span slot='extra'>Extra</span>
-    </osds-cart-item-option>
-  </osds-cart-section>
-  <osds-cart-footer slot='footer'>
-    <osds-cart-footer-item>
-      <span slot='subhead'>Subhead</span>
-      <span slot='title'>Title</span>
-      <span slot='price'>Price</span>
-      <span slot='extra'>Extra</span>
-    </osds-cart-footer-item>
-    <osds-cart-total>
-      <span slot='total'>Total</span>
-      <span slot='info'>Info</span>
-      <span slot='price'>Price</span>
-      <span slot='extra'>Extra</span>
-    </osds-cart-total>
-  </osds-cart-footer>
-</osds-cart>
+<Canvas withSource="none">
+  <osds-cart>
+    <osds-cart-header slot='header'>
+      Header
+    </osds-cart-header>
+    <osds-cart-section>
+      <osds-cart-item>
+        <span slot='subhead'>Subhead</span>
+        <span slot='title'>Title</span>
+        <span slot='price'>Price</span>
+        <span slot='extra'>Extra</span>
+      </osds-cart-item>
+      <osds-divider color='primary' size='0' separator='true'></osds-divider>
+      <osds-cart-item-option>
+        <span slot='subhead'>Subhead</span>
+        <span slot='title'>Title</span>
+        <span slot='price'>Price</span>
+        <span slot='extra'>Extra</span>
+      </osds-cart-item-option>
+    </osds-cart-section>
+    <osds-cart-footer slot='footer'>
+      <osds-cart-footer-item>
+        <span slot='subhead'>Subhead</span>
+        <span slot='title'>Title</span>
+        <span slot='price'>Price</span>
+        <span slot='extra'>Extra</span>
+      </osds-cart-footer-item>
+      <osds-cart-total>
+        <span slot='total'>Total</span>
+        <span slot='info'>Info</span>
+        <span slot='price'>Price</span>
+        <span slot='extra'>Extra</span>
+      </osds-cart-total>
+    </osds-cart-footer>
+  </osds-cart>
+</Canvas >
 
 ```html
 <osds-cart>
@@ -114,38 +118,39 @@ Here is a complete example of a Cart using `osds-header`, `osds-section`, `osds-
 <RoundedProperty />
 
 ### With Button component
-<osds-cart inline>
-  <osds-cart-section>
-    <osds-cart-item>
-      <span slot='subhead'>Subhead</span>
-      <span slot='title'>Title</span>
-      <span slot='price'>Price</span>
-      <span slot='extra'>Extra</span>
-    </osds-cart-item>
-    <osds-cart-item-option>
-      <span slot='subhead'>Subhead</span>
-      <span slot='title'>Title</span>
-      <span slot='price'>Price</span>
-      <span slot='extra'>Extra</span>
-    </osds-cart-item-option>
-  </osds-cart-section>
-
-  <osds-cart-footer>
-    <osds-cart-footer-item>
-      <span slot='subhead'>Subhead</span>
-      <span slot='title'>Title</span>
-      <span slot='price'>Price</span>
-      <span slot='extra'>Extra</span>
-    </osds-cart-footer-item>
-    <osds-cart-total>
-      <span slot='total'>Total</span>
-      <span slot='info'>Info</span>
-      <span slot='price'>Price</span>
-      <span slot='extra'>Extra</span>
-    </osds-cart-total>
-    <osds-button inline color='primary' contrasted='true' variant='stroked'> Button </osds-button>
-  </osds-cart-footer>
-</osds-cart>
+<Canvas withSource="none">
+  <osds-cart inline>
+    <osds-cart-section>
+      <osds-cart-item>
+        <span slot='subhead'>Subhead</span>
+        <span slot='title'>Title</span>
+        <span slot='price'>Price</span>
+        <span slot='extra'>Extra</span>
+      </osds-cart-item>
+      <osds-cart-item-option>
+        <span slot='subhead'>Subhead</span>
+        <span slot='title'>Title</span>
+        <span slot='price'>Price</span>
+        <span slot='extra'>Extra</span>
+      </osds-cart-item-option>
+    </osds-cart-section>
+    <osds-cart-footer>
+      <osds-cart-footer-item>
+        <span slot='subhead'>Subhead</span>
+        <span slot='title'>Title</span>
+        <span slot='price'>Price</span>
+        <span slot='extra'>Extra</span>
+      </osds-cart-footer-item>
+      <osds-cart-total>
+        <span slot='total'>Total</span>
+        <span slot='info'>Info</span>
+        <span slot='price'>Price</span>
+        <span slot='extra'>Extra</span>
+      </osds-cart-total>
+      <osds-button inline color='primary' contrasted='true' variant='stroked'> Button </osds-button>
+    </osds-cart-footer>
+  </osds-cart>
+</Canvas >
 
 ```html
 <osds-cart inline>
@@ -185,38 +190,40 @@ Here is a complete example of a Cart using `osds-header`, `osds-section`, `osds-
 ```
 
 ### With Divider component
-<osds-cart inline>
-  <osds-cart-section>
-    <osds-cart-item>
-      <span slot='subhead'>Subhead</span>
-      <span slot='title'>Title</span>
-      <span slot='price'>Price</span>
-      <span slot='extra'>Extra</span>
-    </osds-cart-item>
-    <osds-divider color='primary' size='0' separator='true'></osds-divider>
-    <osds-cart-item-option>
-      <span slot='subhead'>Subhead</span>
-      <span slot='title'>Title</span>
-      <span slot='price'>Price</span>
-      <span slot='extra'>Extra</span>
-    </osds-cart-item-option>
-  </osds-cart-section>
-  <osds-cart-footer>
-    <osds-cart-footer-item>
-      <span slot='subhead'>Subhead</span>
-      <span slot='title'>Title</span>
-      <span slot='price'>Price</span>
-      <span slot='extra'>Extra</span>
-    </osds-cart-footer-item>
-    <osds-divider color='primary' size='6' separator='true' contrasted='true'></osds-divider>
-    <osds-cart-total>
-      <span slot='total'>Total</span>
-      <span slot='info'>Info</span>
-      <span slot='price'>Price</span>
-      <span slot='extra'>Extra</span>
-    </osds-cart-total>
-  </osds-cart-footer>
-</osds-cart>
+<Canvas withSource="none">
+  <osds-cart inline>
+    <osds-cart-section>
+      <osds-cart-item>
+        <span slot='subhead'>Subhead</span>
+        <span slot='title'>Title</span>
+        <span slot='price'>Price</span>
+        <span slot='extra'>Extra</span>
+      </osds-cart-item>
+      <osds-divider color='primary' size='0' separator='true'></osds-divider>
+      <osds-cart-item-option>
+        <span slot='subhead'>Subhead</span>
+        <span slot='title'>Title</span>
+        <span slot='price'>Price</span>
+        <span slot='extra'>Extra</span>
+      </osds-cart-item-option>
+    </osds-cart-section>
+    <osds-cart-footer>
+      <osds-cart-footer-item>
+        <span slot='subhead'>Subhead</span>
+        <span slot='title'>Title</span>
+        <span slot='price'>Price</span>
+        <span slot='extra'>Extra</span>
+      </osds-cart-footer-item>
+      <osds-divider color='primary' size='6' separator='true' contrasted='true'></osds-divider>
+      <osds-cart-total>
+        <span slot='total'>Total</span>
+        <span slot='info'>Info</span>
+        <span slot='price'>Price</span>
+        <span slot='extra'>Extra</span>
+      </osds-cart-total>
+    </osds-cart-footer>
+  </osds-cart>
+</Canvas >
 
 ```html
 <osds-cart inline>

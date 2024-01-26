@@ -1,4 +1,5 @@
 import GenericStyle from '@ovhcloud/ods-common-core/docs/generic-style.mdx';
+import { Canvas } from '@storybook/addon-docs';
 import ColorProperty from './properties/usage.color.mdx';
 import ContrastedProperty from './properties/usage.contrasted.mdx';
 import HueProperty from './properties/usage.hue.mdx';
@@ -14,7 +15,9 @@ import SizeButtonProperty from './properties/sizes/usage.button.mdx';
 ## Usage
 
 ### Default
-<osds-text>Text</osds-text>
+<Canvas withSource="none">
+  <osds-text>Text</osds-text>
+</Canvas >
 
 ```html
 <osds-text>Text</osds-text>

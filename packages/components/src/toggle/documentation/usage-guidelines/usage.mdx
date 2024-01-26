@@ -5,13 +5,16 @@ import DisabledProperty from './properties/usage.disabled.mdx';
 import InteractiveProperty from './properties/usage.interactive.mdx';
 import Slot from './slots/usage.slot.mdx';
 import GenericStyle from '@ovhcloud/ods-common-core/docs/generic-style.mdx';
+import { Canvas } from '@storybook/addon-docs';
 
 <GenericStyle />
 
 ## Usage
 
 ### Default
-<osds-toggle></osds-toggle>
+<Canvas withSource="none">
+  <osds-toggle></osds-toggle>
+</Canvas >
 
 ```html
 <osds-toggle></osds-toggle>
@@ -36,9 +39,11 @@ import GenericStyle from '@ovhcloud/ods-common-core/docs/generic-style.mdx';
 <InteractiveProperty />
 
 ### With Checkbox wrapper
-<osds-checkbox>
-  <osds-toggle></osds-toggle>
-</osds-checkbox>
+<Canvas withSource="none">
+  <osds-checkbox>
+    <osds-toggle></osds-toggle>
+  </osds-checkbox>
+</Canvas >
 
 ```html
 <osds-checkbox>

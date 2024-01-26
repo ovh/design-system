@@ -1,3 +1,5 @@
+import { Canvas } from '@storybook/addon-docs';
+
 export const displayDualRange = () => {
     setTimeout(() => {
         const range = document.querySelector('#dual-range');
@@ -5,7 +7,9 @@ export const displayDualRange = () => {
     }, 0);
 };
 
-<osds-range id="dual-range" min="0" max="60"></osds-range>
+<Canvas withSource="none">
+  <osds-range id="dual-range" min="0" max="60"></osds-range>
+</Canvas >
 
 <>{ displayDualRange() }</>
 

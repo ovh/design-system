@@ -17,6 +17,10 @@
   overflow: hidden;
 }
 
+:host osds-icon {
+  flex-shrink: 0;
+}
+
 :host(:not([disabled])) osds-icon {
   cursor: var(--ods-input-icon-cursor, default);
 }

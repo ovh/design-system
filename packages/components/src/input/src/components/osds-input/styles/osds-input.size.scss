@@ -9,13 +9,6 @@
       padding: var(--ods-input-padding, ods-get-size-property($sizes, padding));
       height: ods-get-size-property($sizes, height);
 
-      osds-icon {
-        min-width: ods-get-size-property($sizes, icon-width);
-        max-width: ods-get-size-property($sizes, icon-width);
-        min-height: ods-get-size-property($sizes, icon-height);
-        max-height: ods-get-size-property($sizes, icon-height);
-      }
-
       osds-icon:not(:first-of-type) {
         margin-left: var(--ods-size-03);
       }

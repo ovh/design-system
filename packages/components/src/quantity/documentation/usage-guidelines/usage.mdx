@@ -1,4 +1,5 @@
 import GenericStyle from '@ovhcloud/ods-common-core/docs/generic-style.mdx';
+import { Canvas } from '@storybook/addon-docs';
 import DisabledProperty from './properties/usage.disabled.mdx';
 
 <GenericStyle />
@@ -7,15 +8,17 @@ import DisabledProperty from './properties/usage.disabled.mdx';
 
 ### Default - Slots Minus and Plus
 #### Using ODS components
-<osds-quantity>
-  <osds-button slot='minus' color='primary' size='sm'>
-    <osds-icon size='sm' contrasted name='minus'></osds-icon>
-  </osds-button>
-  <osds-input type='number' color='primary' min='1' max='10' step='1' value='1'></osds-input>
-  <osds-button slot='plus' color='primary' size='sm'>
-    <osds-icon size='sm' contrasted name='plus'></osds-icon>
-  </osds-button>
-</osds-quantity>
+<Canvas withSource="none">
+  <osds-quantity>
+    <osds-button slot='minus' color='primary' size='sm'>
+      <osds-icon size='sm' contrasted name='minus'></osds-icon>
+    </osds-button>
+    <osds-input type='number' color='primary' min='1' max='10' step='1' value='1'></osds-input>
+    <osds-button slot='plus' color='primary' size='sm'>
+      <osds-icon size='sm' contrasted name='plus'></osds-icon>
+    </osds-button>
+  </osds-quantity>
+</Canvas >
 
 ```html
 <osds-quantity disabled>
@@ -30,11 +33,13 @@ import DisabledProperty from './properties/usage.disabled.mdx';
 ```
 
 #### Using vanilla elements
-<osds-quantity>
-  <button slot='minus'>-</button>
-  <input type='number' min='1' max='10' step='1' value='1'/>
-  <button slot='plus'>+</button>
-</osds-quantity>
+<Canvas withSource="none">
+  <osds-quantity>
+    <button slot='minus'>-</button>
+    <input type='number' min='1' max='10' step='1' value='1'/>
+    <button slot='plus'>+</button>
+  </osds-quantity>
+</Canvas >
 
 ```html
 <osds-quantity>

@@ -1,4 +1,5 @@
 import GenericStyle from '@ovhcloud/ods-common-core/docs/generic-style.mdx';
+import { Canvas } from '@storybook/addon-docs';
 
 <GenericStyle />
 
@@ -10,18 +11,22 @@ For more details about assets, see [Get Started - Assets](?path=/story/ovhcloud-
 
 ### Default
 It will set `fr` flag by default:
-<div style={{width: '100px'}}>
-  <osds-flag></osds-flag>
-</div>
+<Canvas withSource="none">
+  <div style={{width: '100px'}}>
+    <osds-flag></osds-flag>
+  </div>
+</Canvas >
 
 ```html
 <osds-flag></osds-flag>
 ```
 
 ### ISO
-<div style={{width: '100px'}}>
-  <osds-flag iso='de'></osds-flag>
-</div>
+<Canvas withSource="none">
+  <div style={{width: '100px'}}>
+    <osds-flag iso='de'></osds-flag>
+  </div>
+</Canvas >
 
 ```html
 <osds-flag iso='de'></osds-flag>
@@ -29,9 +34,11 @@ It will set `fr` flag by default:
 
 ### Custom asset path
 For some cases, you may want to use a custom path that will override the ODS path:
-<div style={{width: '100px'}}>
-  <osds-flag iso="de" asset-path="./custom-flags/"></osds-flag>
-</div>
+<Canvas withSource="none">
+  <div style={{width: '100px'}}>
+    <osds-flag iso="de" asset-path="./custom-flags/"></osds-flag>
+  </div>
+</Canvas >
 
 ```html
 <osds-flag iso="de" asset-path="./custom-flags/"></osds-flag>
@@ -39,9 +46,11 @@ For some cases, you may want to use a custom path that will override the ODS pat
 
 ### Custom src file
 Same goes with `src` attribute when you want to point at your own SVG:
-<div style={{width: '100px'}}>
-  <osds-flag iso="de" src="./custom-flags/it.svg"></osds-flag>
-</div>
+<Canvas withSource="none">
+  <div style={{width: '100px'}}>
+    <osds-flag iso="de" src="./custom-flags/it.svg"></osds-flag>
+  </div>
+</Canvas >
 
 ```html
   <osds-flag iso="de" src="./custom-flags/it.svg"></osds-flag>
@@ -49,9 +58,11 @@ Same goes with `src` attribute when you want to point at your own SVG:
 
 ### Lazy loading
 It will load the Flag only when it is visible in the viewport
-<div style={{width: '100px'}}>
-  <osds-flag iso="gb" lazy></osds-flag>
-</div>
+<Canvas withSource="none">
+  <div style={{width: '100px'}}>
+    <osds-flag iso="gb" lazy></osds-flag>
+  </div>
+</Canvas >
 
 ```html
   <osds-flag iso="gb" lazy></osds-flag>

@@ -1,14 +1,18 @@
+import { Canvas } from '@storybook/addon-docs';
+
 Add `disabled` attribute to osds-quantity.
 
-<osds-quantity disabled>
-  <osds-button slot='minus' color='primary' size='sm'>
-    <osds-icon size='sm' contrasted name='minus'></osds-icon>
-  </osds-button>
-  <osds-input type='number' color='primary' min='1' max='10' step='1' value='1'></osds-input>
-  <osds-button slot='plus' color='primary' size='sm'>
-    <osds-icon size='sm' contrasted name='plus'></osds-icon>
-  </osds-button>
-</osds-quantity>
+<Canvas withSource="none">
+  <osds-quantity disabled>
+    <osds-button slot='minus' color='primary' size='sm'>
+      <osds-icon size='sm' contrasted name='minus'></osds-icon>
+    </osds-button>
+    <osds-input type='number' color='primary' min='1' max='10' step='1' value='1'></osds-input>
+    <osds-button slot='plus' color='primary' size='sm'>
+      <osds-icon size='sm' contrasted name='plus'></osds-icon>
+    </osds-button>
+  </osds-quantity>
+</Canvas >
 
 
 ```html

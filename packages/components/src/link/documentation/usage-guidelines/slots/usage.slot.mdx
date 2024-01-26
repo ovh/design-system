@@ -1,12 +1,12 @@
-import { Preview } from '@storybook/addon-docs/blocks';
+import { Canvas } from '@storybook/addon-docs';
 
 #### Start
-<Preview>
+<Canvas withSource="none">
   <osds-link>
     <span slot='start'>Start</span>
     LinkMainContent
   </osds-link>
-</Preview>
+</Canvas >
 
 ```html
 <osds-link>
@@ -16,12 +16,12 @@ import { Preview } from '@storybook/addon-docs/blocks';
 ```
 
 #### End
-<Preview>
+<Canvas withSource="none">
   <osds-link>
     LinkMainContent
     <span slot='end'>End</span>
   </osds-link>
-</Preview>
+</Canvas >
 
 ```html
 <osds-link>
@@ -35,7 +35,7 @@ import { Preview } from '@storybook/addon-docs/blocks';
 > ⚠️️ **Please note**<br />
 > Icon is hoverable so its color will synchronize with the Link
 
-<Preview>
+<Canvas withSource="none">
   <osds-link>
     With prefix icon
     <span slot='start'><osds-icon name="arrow-left" size="xs" hoverable></osds-icon></span>
@@ -45,7 +45,7 @@ import { Preview } from '@storybook/addon-docs/blocks';
     With suffix icon
     <span slot='end'><osds-icon name="arrow-right" size="xs" hoverable></osds-icon></span>
   </osds-link>
-</Preview>
+</Canvas >
 
 ```html
 <osds-link>

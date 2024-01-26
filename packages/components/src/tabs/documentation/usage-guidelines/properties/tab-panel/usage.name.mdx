@@ -1,10 +1,15 @@
+import { Canvas } from '@storybook/addon-docs';
+
 Name is the identifier of the panel.
-<osds-tabs>
-  <osds-tab-bar slot='top'>
-    <osds-tab-bar-item panel='tab1'>Tab 1</osds-tab-bar-item>
-  </osds-tab-bar>
-  <osds-tab-panel name='tab1'>Content for Tab 1</osds-tab-panel>
-</osds-tabs>
+
+<Canvas withSource="none">
+  <osds-tabs>
+    <osds-tab-bar slot='top'>
+      <osds-tab-bar-item panel='tab1'>Tab 1</osds-tab-bar-item>
+    </osds-tab-bar>
+    <osds-tab-panel name='tab1'>Content for Tab 1</osds-tab-panel>
+  </osds-tabs>
+</Canvas >
 
 ```html
 <osds-tabs>

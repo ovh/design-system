@@ -5,7 +5,13 @@ export const displayDatesDisabledDatepicker = () => {
     }, 0);
 };
 
-<osds-datepicker id='datepicker-dates-disabled' inline></osds-datepicker>
+import { Canvas } from '@storybook/addon-docs';
+
+<Canvas withSource="none">
+  <div style={{ height: '300px' }}>
+    <osds-datepicker id='datepicker-dates-disabled' inline></osds-datepicker>
+  </div>
+</Canvas>
 
 <>{ displayDatesDisabledDatepicker() }</>
 

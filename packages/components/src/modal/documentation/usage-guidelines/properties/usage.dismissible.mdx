@@ -1,3 +1,5 @@
+import { Canvas } from '@storybook/addon-docs';
+
 A Modal can be undismissible:
 
 export const displayDismissibleModal = () => {
@@ -14,7 +16,9 @@ export const displayDismissibleModal = () => {
   }, 0);
 };
 
-<osds-button id="toggle-modal-6" color='primary' inline>Toggle dismissible modal</osds-button>
+<Canvas withSource="none">
+  <osds-button id="toggle-modal-6" color='primary' inline>Toggle dismissible modal</osds-button>
+</Canvas >
 
 <osds-modal id="modal-dismissible" masked dismissible='false'>
   Modal

@@ -1,4 +1,5 @@
 import GenericStyle from '@ovhcloud/ods-common-core/docs/generic-style.mdx';
+import { Canvas } from '@storybook/addon-docs';
 import CheckedProperty from './properties/usage.checked.mdx';
 import ColorProperty from './properties/usage.color.mdx';
 import DisabledProperty from './properties/usage.disabled.mdx';
@@ -10,9 +11,10 @@ import Slot from './slots/usage.slot.mdx';
 ## Usage
 
 ### Default
-
-<osds-radio-button></osds-radio-button>
-<osds-radio-button checked></osds-radio-button>
+<Canvas withSource="none">
+  <osds-radio-button></osds-radio-button>
+  <osds-radio-button checked></osds-radio-button>
+</Canvas >
 
 ```html
 <osds-radio-button></osds-radio-button>
@@ -35,9 +37,11 @@ import Slot from './slots/usage.slot.mdx';
 <DisabledProperty />
 
 ### With Radio wrapper
-<osds-radio>
-  <osds-radio-button color='primary' size='sm'></osds-radio-button>
-</osds-radio>
+<Canvas withSource="none">
+  <osds-radio>
+    <osds-radio-button color='primary' size='sm'></osds-radio-button>
+  </osds-radio>
+</Canvas >
 
 ```html
 <osds-radio>
@@ -46,14 +50,16 @@ import Slot from './slots/usage.slot.mdx';
 ```
 
 ### With Radio Group and Radio wrappers
-<osds-radio-group>
-    <osds-radio value="A">
-        <osds-radio-button color='primary' size='sm'></osds-radio-button>
-    </osds-radio>
-    <osds-radio value="B">
-        <osds-radio-button color='primary' size='sm'></osds-radio-button>
-    </osds-radio>
-</osds-radio-group>
+<Canvas withSource="none">
+  <osds-radio-group>
+      <osds-radio value="A">
+          <osds-radio-button color='primary' size='sm'></osds-radio-button>
+      </osds-radio>
+      <osds-radio value="B">
+          <osds-radio-button color='primary' size='sm'></osds-radio-button>
+      </osds-radio>
+  </osds-radio-group>
+</Canvas >
 
 ```html
 <osds-radio-group>

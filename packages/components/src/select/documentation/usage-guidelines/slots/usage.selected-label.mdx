@@ -1,3 +1,5 @@
+import { Canvas } from '@storybook/addon-docs';
+
 export const selectedLabel = () => {
     setTimeout(() => {
         const selectWithSelectedlabel = document.getElementById('withSelectedlabel');
@@ -18,12 +20,13 @@ export const selectedLabel = () => {
     }, 0);
 };
 
-<osds-select id="withSelectedlabel">
-  <span slot="selectedLabel"></span>
-  <osds-select-option value="1">Value 1</osds-select-option>
-  <osds-select-option value="2">Value 2</osds-select-option>
-  <osds-select-option value="3">Value 3</osds-select-option>
-</osds-select>
+<Canvas withSource="none">
+  <osds-select id="withSelectedlabel">
+    <span slot="selectedLabel"></span>
+    <osds-select-option value="1">Value 1</osds-select-option>
+  </osds-select>
+</Canvas>
+
 <>{ selectedLabel() }</>
 
 
@@ -31,8 +34,6 @@ export const selectedLabel = () => {
 <osds-select id="withSelectedlabel">
   <span slot="selectedLabel" class="selectedLabel--center"></span>
   <osds-select-option value="1">Value 1</osds-select-option>
-  <osds-select-option value="2">Value 2</osds-select-option>
-  <osds-select-option value="3">Value 3</osds-select-option>
 </osds-select>
 
 <script>

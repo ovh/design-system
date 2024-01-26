@@ -1,3 +1,5 @@
+import { Canvas } from '@storybook/addon-docs';
+
 export const displayDismissibleModal = () => {
   setTimeout(() => {
     const toggleModal = document.getElementById('toggle-modal-7');
@@ -8,7 +10,9 @@ export const displayDismissibleModal = () => {
   }, 0);
 };
 
-<osds-button id="toggle-modal-7" color='primary' inline>Toggle modal with headline</osds-button>
+<Canvas withSource="none">
+  <osds-button id="toggle-modal-7" color='primary' inline>Toggle modal with headline</osds-button>
+</Canvas >
 
 <osds-modal id="modal-headline" masked headline='Headline'>Modal</osds-modal>
 

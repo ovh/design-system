@@ -12,13 +12,18 @@ import PlaceholderProperty from './properties/usage.placeholder.mdx';
 import ShowSiblingsMonthDaysProperty from './properties/usage.showSiblingsMonthDays.mdx';
 import ValueProperty from './properties/usage.value.mdx';
 import GenericStyle from '@ovhcloud/ods-common-core/docs/generic-style.mdx';
+import { Canvas } from '@storybook/addon-docs';
 
 <GenericStyle />
 
 ## Usage
 
 ### Default
-<osds-datepicker></osds-datepicker>
+<Canvas withSource="none">
+  <div style={{ height: '300px' }}>
+    <osds-datepicker></osds-datepicker>
+  </div>
+</Canvas >
 
 ```html
 <osds-datepicker></osds-datepicker>

@@ -1,3 +1,5 @@
+import { Canvas } from '@storybook/addon-docs';
+
 export const displayContrastedBreadcrumb = () => {
     setTimeout(() => {
         const contrastedBreadcrumbUsage = document.querySelector('#contrasted-breadcrumb');
@@ -10,9 +12,10 @@ export const displayContrastedBreadcrumb = () => {
     }, 0);
 };
 
-<div class='contrasted'>
-  <osds-breadcrumb id="contrasted-breadcrumb" contrasted></osds-breadcrumb>
-</div>
+<Canvas withSource="none" className='contrasted'>
+    <osds-breadcrumb id="contrasted-breadcrumb" contrasted></osds-breadcrumb>
+</Canvas >
+
 <>{ displayContrastedBreadcrumb() }</>
 
 ```html

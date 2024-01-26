@@ -1,4 +1,6 @@
-<div class='contrasted'>
+import { Canvas } from '@storybook/addon-docs';
+
+<Canvas withSource="none" className="contrasted">
   <osds-tabs contrasted>
     <osds-tab-bar slot="top">
       <osds-tab-bar-item panel="tab1">Tab 1</osds-tab-bar-item>
@@ -9,7 +11,7 @@
     <osds-tab-panel name="tab2">Content for Tab 2</osds-tab-panel>
     <osds-tab-panel name="tab3">Content for Tab 3</osds-tab-panel>
   </osds-tabs>
-</div>
+</Canvas >
 
 ```html
 <osds-tabs contrasted>

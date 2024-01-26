@@ -5,7 +5,13 @@ export const displayMinDateDatepicker = () => {
     }, 0);
 };
 
-<osds-datepicker id='min-datepicker' inline></osds-datepicker>
+import { Canvas } from '@storybook/addon-docs';
+
+<Canvas withSource="none">
+  <div style={{ height: '300px' }}>
+    <osds-datepicker id='min-datepicker' inline></osds-datepicker>
+  </div>
+</Canvas>
 
 <>{ displayMinDateDatepicker() }</>
 

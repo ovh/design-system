@@ -5,6 +5,7 @@ import ErrorProperty from './properties/usage.error.mdx';
 import InlineProperty from './properties/usage.inline.mdx';
 import Slot from './slots/usage.slot.mdx';
 import GenericStyle from '@ovhcloud/ods-common-core/docs/generic-style.mdx';
+import { Canvas } from '@storybook/addon-docs';
 
 import Events from './events-methods/usage.events.mdx';
 
@@ -13,7 +14,9 @@ import Events from './events-methods/usage.events.mdx';
 ## Usage
 
 ### Default
-<osds-range></osds-range>
+<Canvas withSource="none">
+  <osds-range></osds-range>
+</Canvas>
 
 ```html
 <osds-range></osds-range>
@@ -23,7 +26,9 @@ import Events from './events-methods/usage.events.mdx';
 <Slot />
 
 ### Simple value
-<osds-range min="0" max="60" value="42"></osds-range>
+<Canvas withSource="none">
+  <osds-range min="0" max="60" value="42"></osds-range>
+</Canvas>
 
 ```html
 <osds-range min="0" max="60" value="42"></osds-range>

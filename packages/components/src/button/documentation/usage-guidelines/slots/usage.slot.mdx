@@ -1,14 +1,12 @@
-import { Preview } from '@storybook/addon-docs/blocks';
+import { Canvas } from '@storybook/addon-docs';
 
 #### Start
-<Preview withSource="none">
-  <div class="container">
-    <osds-button>
-      <span slot='start'>Start</span>
-      MainContent
-    </osds-button>
-  </div>
-</Preview>
+<Canvas withSource="none">
+  <osds-button>
+    <span slot='start'>Start</span>
+    MainContent
+  </osds-button>
+</Canvas >
 
 ```html
 <osds-button>
@@ -18,14 +16,12 @@ import { Preview } from '@storybook/addon-docs/blocks';
 ```
 
 #### End
-<Preview withSource="none">
-  <div class="container">
-    <osds-button>
-      MainContent
-      <span slot='end'>End</span>
-    </osds-button>
-  </div>
-</Preview>
+<Canvas withSource="none">
+  <osds-button>
+    MainContent
+    <span slot='end'>End</span>
+  </osds-button>
+</Canvas >
 
 ```html
 <osds-button>
@@ -35,15 +31,13 @@ import { Preview } from '@storybook/addon-docs/blocks';
 ```
 
 #### Start and end
-<Preview withSource="none">
-  <div class="container">
-    <osds-button>
-      <span slot='start'>Start</span>
-      MainContent
-      <span slot='end'>End</span>
-    </osds-button>
-  </div>
-</Preview>
+<Canvas withSource="none">
+  <osds-button>
+    <span slot='start'>Start</span>
+    MainContent
+    <span slot='end'>End</span>
+  </osds-button>
+</Canvas >
 
 ```html
 <osds-button>

@@ -10,7 +10,6 @@ import { ocdkAssertEventTargetIsNode, ocdkDefineCustomElements, ocdkIsSurface } 
 import { ODS_ICON_NAME, ODS_ICON_SIZE } from '../../../../icon/src';
 import { AttachInternals, Component, Element, Event, EventEmitter, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { DEFAULT_VALIDITY_STATE } from './constants/default-validity-state';
 import { OdsSelectController } from './core/controller';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 
@@ -37,7 +36,7 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
   optionSelected: OsdsSelectOption | null = null;
 
   @State() selectedOptionLabel = '';
-  @State() validityState: OdsCommonFieldValidityState = DEFAULT_VALIDITY_STATE;
+  @State() internalError = false;
   @State() tabindex = 0;
 
   @Element() el!: HTMLStencilElement;
@@ -109,10 +108,6 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
         option.removeAttribute('selected');
       }
     });
-
-    if (this.dirty) {
-      this.validityState = await this.controller.getValidity();
-    }
   }
 
   @Listen('odsSelectOptionClick')
@@ -125,7 +120,6 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
   async clear(): Promise<void> {
     this.controller.clear();
     this.optionSelected = null;
-    this.validityState = DEFAULT_VALIDITY_STATE;
   }
 
   @Method()
@@ -135,11 +129,8 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
 
   @Method()
   async reset(): Promise<void> {
-    console.log('this.defaultValue', this.defaultValue?.toString())
     this.controller.reset();
-    console.log('value', `${this.value}`)
     await this.updateSelectOptionStates();
-    this.validityState = DEFAULT_VALIDITY_STATE;
   }
 
   @Method()
@@ -166,6 +157,11 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
     await this.updateSelectOptionStates(this.value);
   }
 
+  async componentUpdated(): Promise<void> {
+    const validity = await this.controller.getValidity()
+    this.internalError =  this.error || !validity.valid;
+  }
+
   disconnectedCallback(): void {
     this.observer?.disconnect();
   }
@@ -178,13 +174,13 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
     this.value = value;
   }
 
-  emitChange(value: OdsInputValue, oldValue?: OdsInputValue): void {
-    this.odsValueChange.emit({
+  async emitChange(value: OdsInputValue, oldValue?: OdsInputValue): Promise<CustomEvent<OdsSelectValueChangeEventDetail>> {
+    return this.odsValueChange.emit({
       value: value,
       oldValue: oldValue,
       name: this.name,
       selection: this.optionSelected,
-      validity: this.validityState,
+      validity: await this.controller.getValidity(),
     });
   }
 
@@ -213,10 +209,6 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
   async handleSlotChange(): Promise<void> {
     this.setSelectOptions();
     await this.updateSelectOptionStates();
-  }
-
-  private hasError(): boolean {
-    return this.error || !this.validityState.valid;
   }
 
   onBlur(): void {
@@ -268,7 +260,11 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
 
     return (
       <Host {...{
-        class: `${disabled ? 'disabled' : ''}${this.opened ? ' opened' : ''}${this.hasError() ? ' ods-error' : ''}`,
+        class: {
+          disabled,
+          opened: this.opened,
+          'ods-error': this.internalError,
+        },
         ariaLabel,
         'aria-labelledby': ariaLabelledby,
         inline,
@@ -286,7 +282,11 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
       }}
       >
         <div {...{
-          class: `select-trigger${this.opened ? ' opened' : ''}${this.hasError() ? ' error' : ''}`,
+          class: {
+            'select-trigger': true,
+            opened: this.opened,
+            error: this.internalError,
+          }
         }}>
           <div class="select-trigger__label">
             { this.renderLabel() }

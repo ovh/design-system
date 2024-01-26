@@ -25,7 +25,6 @@ class OdsSelectController<T extends OsdsSelect> extends OdsCommonFieldMethodCont
   override beforeInit(): void {
     super.beforeInit();
     if (!this.component.value && this.component.defaultValue) {
-      console.log('pass', )
       this.component.value = this.component.defaultValue;
     }
     this.component.openedChanged(this.component.opened);

@@ -2,71 +2,88 @@ import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/os
 import { html } from 'lit-html';
 import { ODS_ICON_NAMES } from '@ovhcloud/ods-components';
 import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
+import { CONTROL_CATEGORY, orderControls } from '../../controls';
 
 defineCustomElement();
 
 /* Demo story parameters  */
-const storyParams = {
+const storyParams = orderControls({
+  ariaLabel: {
+    category: CONTROL_CATEGORY.accessibility,
+    defaultValue: '',
+  },
+  ariaLabelledby: {
+    category: CONTROL_CATEGORY.accessibility,
+    defaultValue: '',
+  },
+  clearable: {
+    category: CONTROL_CATEGORY.general,
+    defaultValue: false,
+  },
+  defaultValue: {
+    category: CONTROL_CATEGORY.general,
+    defaultValue: 'Default value',
+  },
+  disabled: {
+    category: CONTROL_CATEGORY.general,
+    defaultValue: false,
+  },
+  error: {
+    category: CONTROL_CATEGORY.general,
+    defaultValue: false,
+  },
+  forbiddenValues: {
+    category: CONTROL_CATEGORY.general,
+    defaultValue: [],
+    control: { type: 'array' },
+  },
   icon: {
-    category: 'General',
+    category: CONTROL_CATEGORY.general,
     defaultValue: '',
     options: ODS_ICON_NAMES,
     control: { type: 'select' },
   },
-  prefixValue: {
-    category: 'General',
-    control: { type: 'text' },
-  },
-  clearable: {
-    category: 'General',
-    defaultValue: false,
-  },
-  loading: {
-    category: 'General',
-    defaultValue: false,
-  },
-  disabled: {
-    category: 'Misc',
-    defaultValue: false,
-  },
   inline: {
-    category: 'Misc',
+    category: CONTROL_CATEGORY.general,
     defaultValue: true,
   },
-  error: {
-    category: 'Misc',
-    defaultValue: false,
+  label: {
+    category: CONTROL_CATEGORY.general,
+    defaultValue: '',
   },
-  name: {
-    category: 'Development',
-    defaultValue: 'myInputNumber',
-  },
-  readonly: {
-    category: 'Development',
-    defaultValue: false,
-  },
-  required: {
-    category: 'Development',
+  loading: {
+    category: CONTROL_CATEGORY.general,
     defaultValue: false,
   },
   masked: {
-    category: 'Development',
+    category: CONTROL_CATEGORY.general,
     defaultValue: true,
   },
-  placeholder: {
-    category: 'General',
-    defaultValue: 'Placeholder',
+  name: {
+    category: CONTROL_CATEGORY.general,
+    defaultValue: 'myTextArea',
   },
-  value: {
-    category: 'General',
+  placeholder: {
+    category: CONTROL_CATEGORY.general,
+    defaultValue: 'placeholder',
+  },
+  prefixValue: {
+    category: CONTROL_CATEGORY.general,
     control: { type: 'text' },
   },
-  forbiddenValues: {
-    category: 'Development',
-    defaultValue: [],
-    control: { type: 'array' },
+  readOnly: {
+    category: CONTROL_CATEGORY.general,
+    defaultValue: false,
   },
-};
+  required: {
+    category: CONTROL_CATEGORY.general,
+    defaultValue: false,
+  },
+  value: {
+    category: CONTROL_CATEGORY.general,
+    control: { type: 'text' },
+  },
+});
 
 export default {
   title: 'ODS Components/Form/Password [molecule]/Demo',

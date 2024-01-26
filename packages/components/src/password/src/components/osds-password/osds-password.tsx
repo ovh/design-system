@@ -34,7 +34,7 @@ export class OsdsPassword implements OdsPasswordAttribute, OdsPasswordEvent, Ods
 
   @Prop({ reflect: true }) clearable?: boolean;
 
-  @Prop({ reflect: true }) defaultValue: OdsInputValue = DEFAULT_ATTRIBUTE.defaultValue;
+  @Prop({ reflect: true }) defaultValue: string | null = DEFAULT_ATTRIBUTE.defaultValue;
 
   @Prop({ reflect: true }) disabled: boolean = DEFAULT_ATTRIBUTE.disabled;
 
@@ -42,7 +42,7 @@ export class OsdsPassword implements OdsPasswordAttribute, OdsPasswordEvent, Ods
 
   @Prop({ reflect: true }) forbiddenValues?: OdsInputValue[];
 
-  @Prop({ reflect: true }) inline?: boolean;
+  @Prop({ reflect: true }) inline?: boolean = DEFAULT_ATTRIBUTE.inline;
 
   @Prop({ reflect: true }) label?: string;
 

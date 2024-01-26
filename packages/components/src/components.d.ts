@@ -1117,7 +1117,7 @@ export namespace Components {
         /**
           * Default value of the input
          */
-        "defaultValue": OdsInputValue;
+        "defaultValue": string | null;
         /**
           * Indicates if the input is disabled or not: see component principles
          */
@@ -1185,9 +1185,9 @@ export namespace Components {
          */
         "setTabindex": (value: number) => Promise<void>;
         /**
-          * Type of the input field
+          * Current value of the password
          */
-        "value": string | number | Date | null;
+        "value": string | null;
     }
     interface OsdsPhoneNumber {
         /**
@@ -3809,7 +3809,7 @@ declare namespace LocalJSX {
         /**
           * Default value of the input
          */
-        "defaultValue"?: OdsInputValue;
+        "defaultValue"?: string | null;
         /**
           * Indicates if the input is disabled or not: see component principles
          */
@@ -3865,9 +3865,9 @@ declare namespace LocalJSX {
          */
         "required"?: boolean;
         /**
-          * Type of the input field
+          * Current value of the password
          */
-        "value"?: string | number | Date | null;
+        "value"?: string | null;
     }
     interface OsdsPhoneNumber {
         /**

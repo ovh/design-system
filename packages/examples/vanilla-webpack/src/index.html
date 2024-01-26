@@ -40,7 +40,7 @@
 <body>
   <osds-form class="form"
              id="osds-form"
-             initial-values='{ "user": "test", "password": "", "textarea": "" }'>
+             initial-values='{ "user": "test", "password": "", "textarea": "", "country": "fr" }'>
     <div class="form__fields">
       <div class="form__fields__field">
         <osds-text>
@@ -75,6 +75,19 @@
                        name="textarea"
                        required>
         </osds-textarea>
+      </div>
+
+      <div class="form__fields__field">
+        <osds-text>
+          Select
+        </osds-text>
+
+        <osds-select id="country" name="country">
+          <span slot="placeholder"><i>Select</i> Country</span>
+          <osds-select-option value="fr">FR</osds-select-option>
+          <osds-select-option value="gb">GB</osds-select-option>
+          <osds-select-option value="pt">PT</osds-select-option>
+        </osds-select>
       </div>
     </div>
 

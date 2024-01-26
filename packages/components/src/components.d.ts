@@ -1514,6 +1514,9 @@ export namespace Components {
           * Indicates if the input shows error or not
          */
         "error": boolean;
+        /**
+          * return the element validity
+         */
         "getValidity": () => Promise<OdsCommonFieldValidityState>;
         /**
           * full width or not: see component principles
@@ -1542,7 +1545,7 @@ export namespace Components {
          */
         "setTabindex": (value: number) => Promise<void>;
         /**
-          * Type of the input field
+          * Value of the input field
          */
         "value": OdsInputValue;
     }
@@ -4186,7 +4189,7 @@ declare namespace LocalJSX {
          */
         "required"?: boolean | undefined;
         /**
-          * Type of the input field
+          * Value of the input field
          */
         "value"?: OdsInputValue;
     }

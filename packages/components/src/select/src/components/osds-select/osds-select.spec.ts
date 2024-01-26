@@ -4,7 +4,6 @@ import { OdsLogger } from '@ovhcloud/ods-common-core';
 import { OdsMockNativeMethod, OdsMockPropertyDescriptor, odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 import { newSpecPage } from '@stencil/core/testing';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { DEFAULT_VALIDITY_STATE } from './constants/default-validity-state';
 import { OsdsSelect } from './osds-select';
 
 
@@ -22,7 +21,20 @@ global.MutationObserver = mutationObserverMock;
 const logger = new OdsLogger('osds-select-spec');
 
 // mock validity property that does not exist when stencil mock HTMLInputElement
-OdsMockPropertyDescriptor(HTMLInputElement.prototype, 'validity', () => DEFAULT_VALIDITY_STATE);
+OdsMockPropertyDescriptor(HTMLInputElement.prototype, 'validity', () => ({
+  badInput: false,
+  customError: false,
+  forbiddenValue: false,
+  patternMismatch: false,
+  rangeOverflow: false,
+  rangeUnderflow: false,
+  stepMismatch: false,
+  tooLong: false,
+  tooShort: false,
+  typeMismatch: false,
+  valid: true,
+  valueMissing: false,
+}));
 
 describe('spec:osds-select', () => {
   const baseAttribute = {

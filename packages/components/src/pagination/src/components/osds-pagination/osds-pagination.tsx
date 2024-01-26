@@ -25,6 +25,11 @@ export class OsdsPagination implements OdsPaginationAttribute, OdsPaginationEven
 
   @Element() el!: HTMLStencilElement;
 
+  @State() itemPerPage = ODS_PAGINATION_PER_PAGE_MIN;
+  @State() pageList: OdsPaginationPageList = [];
+
+  private isFirstLoad: boolean = true;
+
   @Prop({ mutable: true, reflect: true }) current: number = DEFAULT_ATTRIBUTE.current;
   @Prop({ reflect: true }) totalItems?: number;
   @Prop({ reflect: true }) defaultItemsPerPage: ODS_PAGINATION_PER_PAGE = DEFAULT_ATTRIBUTE.defaultItemsPerPage;
@@ -32,10 +37,6 @@ export class OsdsPagination implements OdsPaginationAttribute, OdsPaginationEven
   @Prop({ mutable: true , reflect: true }) disabled: boolean = DEFAULT_ATTRIBUTE.disabled;
   @Prop({ reflect: true }) labelTooltipPrevious: string = DEFAULT_ATTRIBUTE.labelTooltipPrevious;
   @Prop({ reflect: true }) labelTooltipNext: string = DEFAULT_ATTRIBUTE.labelTooltipNext;
-
-  @State() itemPerPage = this.defaultItemsPerPage || ODS_PAGINATION_PER_PAGE_MIN;
-  @State() pageList: OdsPaginationPageList = [];
-  @State() private isFirstLoad: boolean = true;
 
   @Event() odsPaginationChanged!: EventEmitter<OdsPaginationChangedEventDetail>;
   @Event() odsPaginationItemPerPageChanged!: EventEmitter<OdsPaginationItemPerPageChangedEventDetail>;

@@ -1,11 +1,10 @@
 import type { OdsSelectAttribute } from './interfaces/attributes';
 import type { SpecPage } from '@stencil/core/testing';
-import { OdsLogger } from '@ovhcloud/ods-common-core';
 import { OdsMockNativeMethod, OdsMockPropertyDescriptor, odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 import { newSpecPage } from '@stencil/core/testing';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OsdsSelect } from './osds-select';
-
+import { OdsSelectController } from './core/controller';
 
 const mutationObserverMock = jest.fn(function MutationObserver(callback) {
   this.observe = jest.fn();
@@ -17,8 +16,6 @@ const mutationObserverMock = jest.fn(function MutationObserver(callback) {
 });
 // @ts-ignore
 global.MutationObserver = mutationObserverMock;
-
-const logger = new OdsLogger('osds-select-spec');
 
 // mock validity property that does not exist when stencil mock HTMLInputElement
 OdsMockPropertyDescriptor(HTMLInputElement.prototype, 'validity', () => ({
@@ -43,7 +40,7 @@ describe('spec:osds-select', () => {
     disabled: false,
     error: false,
     inline: false,
-    name: '',
+    name: 'OsdsSelect',
     required: false,
     value: '',
   };
@@ -59,9 +56,9 @@ describe('spec:osds-select', () => {
   async function setup({ attributes = {}, html = '' }: { attributes?: Partial<OdsSelectAttribute>, html?: string }) {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsSelectAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
 
-    console.log('stringAttributes', stringAttributes)
     // mock setCustomValidity method that does not exist when stencil mock HTMLInputElement
     OdsMockNativeMethod(HTMLInputElement.prototype, 'setCustomValidity', jest.fn());
+    jest.spyOn(OdsSelectController.prototype, 'onValueChange').mockReturnThis();
 
     page = await newSpecPage({
       components: [OsdsSelect],

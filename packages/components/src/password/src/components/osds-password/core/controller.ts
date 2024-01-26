@@ -3,12 +3,8 @@ import type { OsdsPassword } from '../osds-password';
 import { OdsCommonFieldMethodController } from '@ovhcloud/ods-common-core';
 
 class OdsPasswordController<T extends OsdsPassword> extends OdsCommonFieldMethodController<T> {
-  constructor(component: T) {
-    super(component);
-  }
-
   beforeInit(): void {
-    if (!this.component.value && this.component.value !== 0) {
+    if (!this.component.value && this.component.defaultValue) {
       this.component.value = this.component.defaultValue;
     }
     this.component.internals.setFormValue(this.component.value?.toString() ?? '');
@@ -23,7 +19,7 @@ class OdsPasswordController<T extends OsdsPassword> extends OdsCommonFieldMethod
   }
 
   onValueChange({ detail }: OdsInputValueChangeEvent): void {
-    this.component.value = detail.value;
+    this.component.value = detail.value?.toString() ?? null;
     this.component.internals?.setFormValue?.(this.component.value?.toString() ?? '');
   }
 }

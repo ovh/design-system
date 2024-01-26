@@ -18,6 +18,7 @@
 |**`masked`** | _boolean_ |  |  | Indicates if the input is masked or not|
 |**`name`** | _string_ | ✴️ |  | Name of the input field|
 |**`placeholder`** | _string_ |  |  | Placeholder text for the input|
+|**`prefixValue`** | _string_ |  |  | Text before the input value|
 |**`readOnly`** | _boolean_ |  |  | Indicates if the input is read-only or not|
 |**`required`** | _boolean_ |  |  | Indicates if the input is required or not|
 |**`tabindex`** | _number_ |  |  | Tabindex for the input|
@@ -37,7 +38,8 @@
 |Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`clear`** | `Promise<void>` | ✴️ |  | empty the value|
-|**`getValidity`** | `Promise<union>` | ✴️ |  | |
+|**`formResetCallback`** | _void_ | ✴️ |  | |
+|**`getValidity`** | `Promise<undefined` \| `OdsCommonFieldValidityState>` | ✴️ |  | |
 |**`hide`** | `Promise<void>` | ✴️ |  | |
 |**`reset`** | `Promise<void>` | ✴️ |  | restore the value to the initial state|
 |**`setFocus`** | `Promise<void>` | ✴️ |  | active the focus on the input in order to let the user write something|

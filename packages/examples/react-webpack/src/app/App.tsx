@@ -1,5 +1,5 @@
 import React from 'react';
-import { OsdsDatagrid, OsdsInput, OsdsForm, OsdsButton, OsdsSelect, OsdsSelectOption } from '@ovhcloud/ods-components/react';
+import { OsdsDatagrid, OsdsInput, OsdsForm, OsdsButton, OsdsSelect, OsdsSelectOption, OsdsPassword } from '@ovhcloud/ods-components/react';
 import { ODS_INPUT_TYPE, ODS_BUTTON_TYPE } from '@ovhcloud/ods-components';
 import './App.css';
 
@@ -28,7 +28,7 @@ const App = () => {
           </OsdsInput>
 
           <label htmlFor="password">Password</label>
-          <OsdsInput id="password" type={ODS_INPUT_TYPE.password} name="password" inline></OsdsInput>
+          <OsdsPassword name="password" inline></OsdsPassword>
 
           <label htmlFor="country">Country</label>
           <OsdsSelect id="country" name="country" inline>

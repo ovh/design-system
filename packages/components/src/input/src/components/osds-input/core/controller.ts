@@ -24,7 +24,7 @@ class OdsInputController<T extends OsdsInput> extends OdsCommonFieldMethodContro
       inputEl.value = '';
     }
 
-    return super.clear()
+    return super.clear();
   }
 
   /**

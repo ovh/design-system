@@ -1,3 +1,4 @@
+/* eslint-disable */
 import type { OdsInputValueChangeEvent } from './components/osds-input/interfaces/events';
 import type { OsdsInput } from './components/osds-input/osds-input';
 import './globals';

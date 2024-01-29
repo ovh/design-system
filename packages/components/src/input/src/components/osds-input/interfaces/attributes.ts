@@ -1,6 +1,6 @@
 import type { ODS_ICON_NAME } from '../../../../../icon/src';
-import type { OdsCommonFieldAttribute } from '@ovhcloud/ods-common-core';
 import type { ODS_INPUT_TYPE } from '../constants/input-type';
+import type { OdsCommonFieldAttribute } from '@ovhcloud/ods-common-core';
 
 interface OdsInputAttribute extends OdsCommonFieldAttribute {
   /** Icon to be used in the input field */

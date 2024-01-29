@@ -67,6 +67,7 @@ import { ODS_TILE_SIZE } from "./tile/src/components/osds-tile/constants/tile-si
 import { ODS_TILE_VARIANT } from "./tile/src/components/osds-tile/constants/tile-variant";
 import { ODS_TIMEZONE } from "./timepicker/src/components/osds-timepicker/constants/timezones";
 import { ODS_TIMEZONES_PRESET } from "./timepicker/src/components/osds-timepicker/constants/timezones-preset";
+import { OdsTimepickerValueChangeEventDetail } from "./timepicker/src/components/osds-timepicker/interfaces/events";
 import { ODS_TOOLTIP_VARIANT } from "./tooltip/src/components/osds-tooltip/constants/tooltip-variant";
 export { ODS_THEME_COLOR_INTENT } from "@ovhcloud/ods-common-theming";
 export { ODS_ACCORDION_SIZE } from "./accordion/src/components/osds-accordion/constants/accordion-size";
@@ -130,6 +131,7 @@ export { ODS_TILE_SIZE } from "./tile/src/components/osds-tile/constants/tile-si
 export { ODS_TILE_VARIANT } from "./tile/src/components/osds-tile/constants/tile-variant";
 export { ODS_TIMEZONE } from "./timepicker/src/components/osds-timepicker/constants/timezones";
 export { ODS_TIMEZONES_PRESET } from "./timepicker/src/components/osds-timepicker/constants/timezones-preset";
+export { OdsTimepickerValueChangeEventDetail } from "./timepicker/src/components/osds-timepicker/interfaces/events";
 export { ODS_TOOLTIP_VARIANT } from "./tooltip/src/components/osds-tooltip/constants/tooltip-variant";
 export namespace Components {
     interface OsdsAccordion {
@@ -448,10 +450,6 @@ export namespace Components {
           * save input allows to set a function that returns a promise. It is called before each time an update is performed and allowing to manage pessimistic update strategy. the checked state will be updated just after the call.
          */
         "save"?: OdsCheckboxAttributeCbk;
-        /**
-          * set a custom tab index for easier navigation
-          * @param value - chosen index
-         */
         "setTabindex": (index: number) => Promise<void>;
         /**
           * update status indicating if the checked state is being modified. `updating` will be `true` until `beforeSave` or `save` are processed. it is used in `pessimistic` update
@@ -915,11 +913,6 @@ export namespace Components {
          */
         "setFocus": () => Promise<void>;
         /**
-          * set a custom tab index for easier navigation
-          * @param value - chosen index
-         */
-        "setTabindex": (value: number) => Promise<void>;
-        /**
           * Step value for the input
          */
         "step"?: number;
@@ -1183,11 +1176,6 @@ export namespace Components {
           * active the focus on the input in order to let the user write something
          */
         "setFocus": () => Promise<void>;
-        /**
-          * set a custom tab index for easier navigation
-          * @param value - chosen index
-         */
-        "setTabindex": (value: number) => Promise<void>;
         /**
           * Current value of the password
          */
@@ -1529,7 +1517,7 @@ export namespace Components {
          */
         "getValidity": () => Promise<OdsCommonFieldValidityState>;
         /**
-          * full width or not: see component principles
+          * Indicates if the select is inline or not: see component principles
          */
         "inline": boolean | undefined;
         /**
@@ -1537,7 +1525,7 @@ export namespace Components {
          */
         "name": string;
         /**
-          * opened or not
+          * Indicates if the select is open or not
          */
         "opened": boolean;
         /**
@@ -1550,11 +1538,6 @@ export namespace Components {
          */
         "setFocus": () => Promise<void>;
         /**
-          * set a custom tab index for easier navigation
-          * @param value - chosen index
-         */
-        "setTabindex": (value: number) => Promise<void>;
-        /**
           * Value of the input field
          */
         "value": OdsInputValue;
@@ -1564,20 +1547,9 @@ export namespace Components {
     interface OsdsSelectOption {
         /**
           * get label of the element
-          * @see OdsSelectOptionMethods.getLabel
          */
         "getLabel": () => Promise<string>;
-        /**
-          * Whether or not it is the selected value (fetched from parent). UI only purpose
-         */
         "selected"?: boolean;
-        /**
-          * @see OdsSelectOptionMethods.setTabIndex
-         */
-        "setTabIndex": (value: number) => Promise<void>;
-        /**
-          * @see OdsSelectOptionAttributes.value
-         */
         "value": OdsInputValue;
     }
     interface OsdsSkeleton {
@@ -1823,11 +1795,6 @@ export namespace Components {
          */
         "setFocus": () => Promise<void>;
         /**
-          * set a custom tab index for easier navigation
-          * @param value - chosen index
-         */
-        "setTabindex": (value: number) => Promise<void>;
-        /**
           * Define if the spelling of the value should be check
          */
         "spellcheck": boolean;
@@ -1898,8 +1865,13 @@ export namespace Components {
         "variant"?: ODS_TILE_VARIANT;
     }
     interface OsdsTimepicker {
+        "ariaLabel": HTMLElement['ariaLabel'];
         /**
-          * Defines if the Timepicker should be clearable or not (displays a clear button)
+          * empty the value
+         */
+        "clear": () => Promise<void>;
+        /**
+          * Ability to clear the input value
           * @see OdsTimepickerAttribute.clearable
          */
         "clearable"?: boolean | undefined;
@@ -1909,30 +1881,46 @@ export namespace Components {
          */
         "currentTimezone"?: ODS_TIMEZONE;
         /**
-          * Defines the Timepicker's disabled state
+          * Default value of the input
+         */
+        "defaultValue": string | null;
+        /**
+          * Indicates if the input is disabled or not: see component principles
           * @see OdsTimepickerAttribute.disabled
          */
-        "disabled"?: boolean | undefined;
+        "disabled": boolean;
         /**
-          * Defines the Timepicker's error state
+          * Indicates if the input shows error or not
           * @see OdsTimepickerAttribute.error
          */
-        "error"?: boolean | undefined;
+        "error": boolean;
+        /**
+          * return the element validity
+         */
+        "getValidity": () => Promise<OdsCommonFieldValidityState | undefined>;
         /**
           * Defines if the Timepicker should be displayed inline or not
           * @see OdsTimepickerAttribute.inline
          */
         "inline"?: boolean | undefined;
         /**
+          * Name of the input field
+         */
+        "name": string;
+        /**
+          * restore the value to the initial state
+         */
+        "reset": () => Promise<void>;
+        /**
           * Defines the timezones available to show in the select
           * @see OdsTimepickerAttribute.timezones
          */
         "timezones"?: ODS_TIMEZONE[] | ODS_TIMEZONES_PRESET | string;
         /**
-          * Defines the Timepicker's value
+          * Value of the input field
           * @see OdsTimepickerAttribute.value
          */
-        "value"?: string | null | undefined;
+        "value": OdsInputValue;
         /**
           * Defines if the Timepicker should be displayed seconds or not
           * @see OdsTimepickerAttribute.withSeconds
@@ -2094,6 +2082,10 @@ export interface OsdsTabsCustomEvent<T> extends CustomEvent<T> {
 export interface OsdsTextareaCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLOsdsTextareaElement;
+}
+export interface OsdsTimepickerCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLOsdsTimepickerElement;
 }
 declare global {
     interface HTMLOsdsAccordionElementEventMap {
@@ -2631,11 +2623,11 @@ declare global {
         new (): HTMLOsdsSearchBarElement;
     };
     interface HTMLOsdsSelectElementEventMap {
-        "odsValueChange": OdsSelectValueChangeEventDetail;
-        "odsFocus": void;
-        "odsClear": void;
-        "odsReset": void;
         "odsBlur": void;
+        "odsClear": void;
+        "odsFocus": void;
+        "odsReset": void;
+        "odsValueChange": OdsSelectValueChangeEventDetail;
     }
     interface HTMLOsdsSelectElement extends Components.OsdsSelect, HTMLStencilElement {
         addEventListener<K extends keyof HTMLOsdsSelectElementEventMap>(type: K, listener: (this: HTMLOsdsSelectElement, ev: OsdsSelectCustomEvent<HTMLOsdsSelectElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2800,7 +2792,22 @@ declare global {
         prototype: HTMLOsdsTileElement;
         new (): HTMLOsdsTileElement;
     };
+    interface HTMLOsdsTimepickerElementEventMap {
+        "odsBlur": void;
+        "odsClear": void;
+        "odsFocus": void;
+        "odsReset": void;
+        "odsValueChange": OdsTimepickerValueChangeEventDetail;
+    }
     interface HTMLOsdsTimepickerElement extends Components.OsdsTimepicker, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLOsdsTimepickerElementEventMap>(type: K, listener: (this: HTMLOsdsTimepickerElement, ev: OsdsTimepickerCustomEvent<HTMLOsdsTimepickerElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLOsdsTimepickerElementEventMap>(type: K, listener: (this: HTMLOsdsTimepickerElement, ev: OsdsTimepickerCustomEvent<HTMLOsdsTimepickerElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLOsdsTimepickerElement: {
         prototype: HTMLOsdsTimepickerElement;
@@ -4257,7 +4264,7 @@ declare namespace LocalJSX {
          */
         "error"?: boolean;
         /**
-          * full width or not: see component principles
+          * Indicates if the select is inline or not: see component principles
          */
         "inline"?: boolean | undefined;
         /**
@@ -4270,7 +4277,7 @@ declare namespace LocalJSX {
         "onOdsReset"?: (event: OsdsSelectCustomEvent<void>) => void;
         "onOdsValueChange"?: (event: OsdsSelectCustomEvent<OdsSelectValueChangeEventDetail>) => void;
         /**
-          * opened or not
+          * Indicates if the select is open or not
          */
         "opened"?: boolean;
         /**
@@ -4287,16 +4294,9 @@ declare namespace LocalJSX {
     interface OsdsSelectOption {
         /**
           * the select value changed
-          * @see OdsSelectOptionEvents.odsSelectOptionClickEventDetail
          */
         "onOdsSelectOptionClick"?: (event: OsdsSelectOptionCustomEvent<OdsSelectOptionClickEventDetail>) => void;
-        /**
-          * Whether or not it is the selected value (fetched from parent). UI only purpose
-         */
         "selected"?: boolean;
-        /**
-          * @see OdsSelectOptionAttributes.value
-         */
         "value"?: OdsInputValue;
     }
     interface OsdsSkeleton {
@@ -4609,8 +4609,9 @@ declare namespace LocalJSX {
         "variant"?: ODS_TILE_VARIANT;
     }
     interface OsdsTimepicker {
+        "ariaLabel"?: HTMLElement['ariaLabel'];
         /**
-          * Defines if the Timepicker should be clearable or not (displays a clear button)
+          * Ability to clear the input value
           * @see OdsTimepickerAttribute.clearable
          */
         "clearable"?: boolean | undefined;
@@ -4620,30 +4621,43 @@ declare namespace LocalJSX {
          */
         "currentTimezone"?: ODS_TIMEZONE;
         /**
-          * Defines the Timepicker's disabled state
+          * Default value of the input
+         */
+        "defaultValue"?: string | null;
+        /**
+          * Indicates if the input is disabled or not: see component principles
           * @see OdsTimepickerAttribute.disabled
          */
-        "disabled"?: boolean | undefined;
+        "disabled"?: boolean;
         /**
-          * Defines the Timepicker's error state
+          * Indicates if the input shows error or not
           * @see OdsTimepickerAttribute.error
          */
-        "error"?: boolean | undefined;
+        "error"?: boolean;
         /**
           * Defines if the Timepicker should be displayed inline or not
           * @see OdsTimepickerAttribute.inline
          */
         "inline"?: boolean | undefined;
         /**
+          * Name of the input field
+         */
+        "name"?: string;
+        "onOdsBlur"?: (event: OsdsTimepickerCustomEvent<void>) => void;
+        "onOdsClear"?: (event: OsdsTimepickerCustomEvent<void>) => void;
+        "onOdsFocus"?: (event: OsdsTimepickerCustomEvent<void>) => void;
+        "onOdsReset"?: (event: OsdsTimepickerCustomEvent<void>) => void;
+        "onOdsValueChange"?: (event: OsdsTimepickerCustomEvent<OdsTimepickerValueChangeEventDetail>) => void;
+        /**
           * Defines the timezones available to show in the select
           * @see OdsTimepickerAttribute.timezones
          */
         "timezones"?: ODS_TIMEZONE[] | ODS_TIMEZONES_PRESET | string;
         /**
-          * Defines the Timepicker's value
+          * Value of the input field
           * @see OdsTimepickerAttribute.value
          */
-        "value"?: string | null | undefined;
+        "value"?: OdsInputValue;
         /**
           * Defines if the Timepicker should be displayed seconds or not
           * @see OdsTimepickerAttribute.withSeconds

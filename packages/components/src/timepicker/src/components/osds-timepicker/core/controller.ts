@@ -1,13 +1,11 @@
+import type { OdsInputValueChangeEvent } from '../../../../../input/src';
 import type { ODS_TIMEZONE } from '../constants/timezones';
 import type { OsdsTimepicker } from '../osds-timepicker';
+import { OdsCommonFieldMethodController } from '@ovhcloud/ods-common-core';
 import { ODS_TIMEZONES } from '../constants/timezones';
 import { ODS_TIMEZONES_PRESET } from '../constants/timezones-preset';
 
-class OdsTimepickerController {
-
-  constructor(private readonly component: OsdsTimepicker) {
-  }
-
+class OdsTimepickerController<T extends OsdsTimepicker> extends OdsCommonFieldMethodController<T> {
   formatValue(value: string, withSeconds: boolean): string {
     if (withSeconds === false && value.match(/:/g)?.length === 2) {
       const inputValue = value.split(':');
@@ -47,6 +45,11 @@ class OdsTimepickerController {
       const parsedTimezone = browserTimezone >= 0 ? `+${browserTimezone}` : browserTimezone.toString();
       this.component.currentTimezone = ODS_TIMEZONES.find((timezone) => timezone.indexOf(parsedTimezone) > -1);
     }
+  }
+
+  onValueChange({ detail }: OdsInputValueChangeEvent): void {
+    this.component.value = detail.value?.toString() ?? null;
+    this.component.internals?.setFormValue?.(this.component.value?.toString() ?? '');
   }
 
   private getTimezonesList(): readonly ODS_TIMEZONE[] | ODS_TIMEZONES_PRESET | string {

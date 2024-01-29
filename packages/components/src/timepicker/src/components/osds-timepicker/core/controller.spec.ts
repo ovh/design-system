@@ -1,16 +1,15 @@
+import type { OsdsTimepicker } from '../osds-timepicker';
 import { OdsTimepickerController } from './controller';
 import { ODS_TIMEZONE, ODS_TIMEZONES } from '../constants/timezones';
-import { OsdsTimepicker } from '../osds-timepicker';
 
-class OdsTimepickerMock extends OsdsTimepicker {
+class OdsTimepickerMock {
   constructor(attribute: Partial<OsdsTimepicker>) {
-    super();
     Object.assign(this, attribute);
   }
 }
 
 describe('spec:ods-timepicker-controller', () => {
-  let controller: OdsTimepickerController;
+  let controller: OdsTimepickerController<OsdsTimepicker>;
   let component: OsdsTimepicker;
 
   function setup(attributes: Partial<OsdsTimepicker> = {}): void {

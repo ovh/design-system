@@ -1,47 +1,60 @@
 import { html } from 'lit-html';
 import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-timepicker';
 import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
+import { CONTROL_CATEGORY, orderControls } from '../../controls';
 
 defineCustomElement();
 
 /* Default story parameters  */
-const sharedStoryParam = {
+const sharedStoryParam = orderControls({
+  ariaLabel: {
+    category: CONTROL_CATEGORY.accessibility,
+    defaultValue: '',
+  },
+  ariaLabelledby: {
+    category: CONTROL_CATEGORY.accessibility,
+    defaultValue: '',
+  },
   clearable: {
-    category: 'General',
+    category: CONTROL_CATEGORY.general,
     defaultValue: false,
   },
+  defaultValue: {
+    category: CONTROL_CATEGORY.general,
+    defaultValue: '00:00',
+  },
   disabled: {
-    category: 'General',
+    category: CONTROL_CATEGORY.general,
     defaultValue: false,
   },
   error: {
-    category: 'General',
+    category: CONTROL_CATEGORY.general,
     defaultValue: false,
   },
   inline: {
-    category: 'General',
+    category: CONTROL_CATEGORY.general,
     defaultValue: true,
   },
   value: {
-    category: 'Value',
+    category: CONTROL_CATEGORY.general,
     defaultValue: '',
   },
   withSeconds: {
-    category: 'General',
+    category: CONTROL_CATEGORY.general,
     defaultValue: false,
   },
-};
+});
 
 const defaultParam = {
   timezones: {
-    category: 'Timezones',
+    category: CONTROL_CATEGORY.general,
     defaultValue: [],
   },
 };
 
 const exampleParam = {
   timezones: {
-    category: 'Timezones',
+    category: CONTROL_CATEGORY.general,
     defaultValue: ['UTC-0', 'UTC-1', 'UTC-2'],
   },
 };

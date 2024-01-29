@@ -42,4 +42,3 @@
 |**`getValidity`** | `Promise<undefined` \| `OdsCommonFieldValidityState>` | ✴️ |  | return the element validity|
 |**`reset`** | `Promise<void>` | ✴️ |  | restore the value to the initial state|
 |**`setFocus`** | `Promise<void>` | ✴️ |  | active the focus on the input in order to let the user write something|
-|**`setTabindex`** | `Promise<void>` | ✴️ |  | set a custom tab index for easier navigation|

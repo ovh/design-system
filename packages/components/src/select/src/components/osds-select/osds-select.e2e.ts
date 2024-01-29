@@ -6,8 +6,6 @@ import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { newE2EPage } from '@stencil/core/testing';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 
-
-
 describe('e2e:osds-select', () => {
   const baseAttribute = {
     ariaLabel: null,
@@ -118,16 +116,6 @@ describe('e2e:osds-select', () => {
 
   // TODO getValidity
   // TODO getSelection
-
-  describe('method:setTabindex', () => {
-    it('should set tabindex to -1', async() => {
-      await setup({ attributes: { } });
-      await el.callMethod('setTabindex', '-1');
-      await page.waitForChanges();
-      const value = el.getAttribute('tabindex');
-      expect(value).toBe('-1');
-    });
-  });
 
   describe('method:clear', () => {
     it('should clear the value', async() => {

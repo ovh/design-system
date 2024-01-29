@@ -3,7 +3,7 @@ import type { OdsTextareaEvent, OdsTextareaValueChangeEventDetail } from './inte
 import type { OdsTextareaMethod } from './interfaces/methods';
 import type { OdsCommonFieldValidityState } from '@ovhcloud/ods-common-core';
 import type { EventEmitter, FunctionalComponent } from '@stencil/core';
-import { AttachInternals, Component, Element, Event, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
+import { AttachInternals, Component, Element, Event, Host, Method, Prop, State, Watch, h } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsTextareaController } from './core/controller';
 
@@ -41,7 +41,6 @@ export class OsdsTextarea implements OdsTextareaAttribute, OdsTextareaEvent, Ods
   @Prop({ mutable: true, reflect: true }) value: string | null = DEFAULT_ATTRIBUTE.value;
 
   @State() internalError = this.error;
-  @State() tabindex: number = 0;
 
   @Event() odsBlur!: EventEmitter<void>;
   @Event() odsClear!: EventEmitter<void>;
@@ -64,28 +63,23 @@ export class OsdsTextarea implements OdsTextareaAttribute, OdsTextareaEvent, Ods
     return this.controller.reset();
   }
 
-  @Listen('focus')
   @Method()
   async setFocus(): Promise<void> {
-    return this.controller.setFocus(this.textareaElement as HTMLElement);
-  }
-
-  @Method()
-  async setTabindex(value: number): Promise<void> {
-    return this.controller.setTabindex(value);
+    this.textareaElement?.focus();
   }
 
   @Watch('value')
   async onValueChange(value: string, oldValue?: string): Promise<void> {
-    return this.controller.onValueChange(value, oldValue);
+    await this.controller.onValueChange(value, oldValue);
+    this.internalError = await this.controller.hasError();
   }
 
   componentWillLoad(): void {
     this.controller.beforeInit();
   }
 
-  async componentWillUpdate(): Promise<void> {
-    this.internalError = await this.controller.hasError();
+  formResetCallback(): Promise<void> {
+    return this.reset();
   }
 
   async emitChange(value: string, oldValue?: string): Promise<void> {
@@ -97,12 +91,12 @@ export class OsdsTextarea implements OdsTextareaAttribute, OdsTextareaEvent, Ods
     });
   }
 
-  formResetCallback(): Promise<void> {
-    return this.reset();
-  }
-
   onBlur(): void {
     this.odsBlur.emit();
+  }
+
+  onFocus(): void {
+    this.odsFocus.emit();
   }
 
   onInput(event: Event): void {
@@ -111,19 +105,17 @@ export class OsdsTextarea implements OdsTextareaAttribute, OdsTextareaEvent, Ods
 
   render(): FunctionalComponent {
     return (
-      <Host
-        class={{ 'ods-error': this.internalError }}
-        tabindex={ this.tabindex }>
+      <Host class={{ 'ods-error': this.internalError }}>
         <textarea
           aria-label={ this.ariaLabel }
           aria-labelledby={ this.ariaLabelledby || `${this.internalId}-label` }
           aria-multiline={ true }
           cols={ this.cols }
-          id={ this.textAreaId }
           disabled={ this.disabled }
+          id={ this.textAreaId }
           name={ this.name }
           onBlur={ (): void => this.onBlur() }
-          onFocus={ (): Promise<void> => this.setFocus() }
+          onFocus={ (): void => this.onFocus() }
           onInput={ (e): void => this.onInput(e) }
           placeholder={ this.placeholder }
           readOnly={ this.readOnly }
@@ -132,7 +124,6 @@ export class OsdsTextarea implements OdsTextareaAttribute, OdsTextareaEvent, Ods
           role="textbox"
           rows={ this.rows }
           spellcheck={ this.spellcheck }
-          tabindex="-1"
           value={ this.value || '' }>
         </textarea>
       </Host>

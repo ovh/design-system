@@ -3,15 +3,12 @@ import type { OdsPasswordEvent, OdsPasswordValueChangeEventDetail } from './inte
 import type { OdsPasswordMethod } from './interfaces/methods';
 import type { OdsInputValueChangeEvent, OsdsInput } from '../../../../input/src';
 import type { OdsCommonFieldValidityState, OdsInputValue } from '@ovhcloud/ods-common-core';
-import type { EventEmitter } from '@stencil/core';
-import { AttachInternals, Component, Element, Event, Host, Listen, Method, Prop, State, h } from '@stencil/core';
+import type { EventEmitter, FunctionalComponent } from '@stencil/core';
+import { AttachInternals, Component, Element, Event, Host, Listen, Method, Prop, h } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsPasswordController } from './core/controller';
 import { ODS_INPUT_TYPE } from '../../../../input/src';
 
-/**
- * @slot (unnamed) - Password content
- */
 @Component({
   formAssociated: true,
   shadow: true,
@@ -22,57 +19,39 @@ export class OsdsPassword implements OdsPasswordAttribute, OdsPasswordEvent, Ods
   private controller = new OdsPasswordController(this);
   private osdsInput?: OsdsInput;
 
-  @State() tabindex?: number;
-
   @Element() el!: HTMLElement;
 
   @AttachInternals() internals!: ElementInternals;
 
   @Prop() ariaLabel: HTMLElement['ariaLabel'] = DEFAULT_ATTRIBUTE.ariaLabel;
-
   @Prop() ariaLabelledby?: string;
-
   @Prop({ reflect: true }) clearable?: boolean;
-
   @Prop({ reflect: true }) defaultValue: string | null = DEFAULT_ATTRIBUTE.defaultValue;
-
   @Prop({ reflect: true }) disabled: boolean = DEFAULT_ATTRIBUTE.disabled;
-
   @Prop({ reflect: true }) error: boolean = DEFAULT_ATTRIBUTE.error;
-
   @Prop({ reflect: true }) forbiddenValues?: OdsInputValue[];
-
   @Prop({ reflect: true }) inline?: boolean = DEFAULT_ATTRIBUTE.inline;
-
   @Prop({ reflect: true }) label?: string;
-
   @Prop({ reflect: true }) loading?: boolean;
-
   @Prop({ mutable: true, reflect: true }) masked?: boolean = DEFAULT_ATTRIBUTE.masked;
-
   @Prop({ reflect: true }) name: string = DEFAULT_ATTRIBUTE.name;
-
   @Prop({ reflect: true }) placeholder?: string;
-
   @Prop({ reflect: true }) prefixValue?: string;
-
   @Prop({ reflect: true }) readOnly?: boolean;
-
   @Prop({ reflect: true }) required?: boolean;
-
   @Prop({ mutable: true, reflect: true }) value = DEFAULT_ATTRIBUTE.value;
 
   @Event() odsBlur!: EventEmitter<void>;
-
   @Event() odsClear!: EventEmitter<void>;
-
   @Event() odsFocus!: EventEmitter<void>;
-
   @Event() odsHide!: EventEmitter<void>;
-
   @Event() odsReset!: EventEmitter<void>;
-
   @Event() odsValueChange!: EventEmitter<OdsPasswordValueChangeEventDetail>;
+
+  @Method()
+  async clear(): Promise<void> {
+    return this.controller.clear();
+  }
 
   @Method()
   async getValidity(): Promise<OdsCommonFieldValidityState | undefined> {
@@ -81,11 +60,6 @@ export class OsdsPassword implements OdsPasswordAttribute, OdsPasswordEvent, Ods
       return this.controller.getValidity(inputEl);
     }
     return undefined;
-  }
-
-  @Method()
-  async clear(): Promise<void> {
-    return this.controller.clear();
   }
 
   @Method()
@@ -98,15 +72,9 @@ export class OsdsPassword implements OdsPasswordAttribute, OdsPasswordEvent, Ods
     return this.controller.reset();
   }
 
-  @Listen('focus')
   @Method()
   async setFocus(): Promise<void> {
     return this.osdsInput?.setFocus();
-  }
-
-  @Method()
-  async setTabindex(value: number): Promise<void> {
-    return this.controller.setTabindex(value);
   }
 
   @Listen('odsValueChange')
@@ -118,34 +86,34 @@ export class OsdsPassword implements OdsPasswordAttribute, OdsPasswordEvent, Ods
     this.controller.beforeInit();
   }
 
-  formResetCallback(): void {
-    this.reset();
+  formResetCallback(): Promise<void> {
+    return this.reset();
   }
 
-  render(): JSX.Element {
+  render(): FunctionalComponent {
     return (
-      <Host tabindex={this.tabindex}>
+      <Host>
         <osds-input
+          ariaLabel={ this.ariaLabel }
+          ariaLabelledby={ this.ariaLabelledby }
+          clearable={ this.clearable }
+          defaultValue={ this.defaultValue }
+          disabled={ this.disabled }
+          error={ this.error }
+          forbiddenValues={ this.forbiddenValues }
+          inline={ this.inline }
+          label={ this.label }
+          loading={ this.loading }
+          masked={ this.masked }
+          name={ this.name }
           ref={ (el?: HTMLElement): OsdsInput => this.osdsInput = el as OsdsInput & HTMLElement }
-          type={ODS_INPUT_TYPE.password}
-          ariaLabel={this.ariaLabel}
-          ariaLabelledby={this.ariaLabelledby}
-          clearable={this.clearable}
-          defaultValue={this.defaultValue}
-          disabled={this.disabled}
-          error={this.error}
-          forbiddenValues={this.forbiddenValues}
-          inline={this.inline}
-          label={this.label}
-          loading={this.loading}
-          masked={this.masked}
-          name={this.name}
-          placeholder={this.placeholder}
-          prefixValue={this.prefixValue}
-          readOnly={this.readOnly}
-          required={this.required}
-          value={this.value}
-        ></osds-input>
+          placeholder={ this.placeholder }
+          prefixValue={ this.prefixValue }
+          readOnly={ this.readOnly }
+          required={ this.required }
+          type={ ODS_INPUT_TYPE.password }
+          value={ this.value }>
+        </osds-input>
       </Host>
     );
   }

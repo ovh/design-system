@@ -21,11 +21,17 @@
 </head>
 <body style="margin: 0;">
   <h2>[Form]</h2>
+
   <form id="formElem">
-    <osds-input name="odsInput" inline type="text" value="On Vous Héberge ?" clearable></osds-input>
-    <input type="text" name="natifInput">
+    <osds-input name="odsInput"
+                inline
+                type="text"
+                clearable
+                required
+    ></osds-input>
+<!--    <input type="text" name="natifInput">-->
 
-
+    <br /><br />
     <osds-button type="reset">Reset</osds-button>
     <osds-button type="submit">Submit</osds-button>
   </form>
@@ -51,7 +57,7 @@
       console.log('onSubmit', new FormData(form))
     };
   </script>
-<!-- 
+<!--
   <h2>[Common]</h2>
   <osds-input inline type="text" value="On Vous Héberge ?" disabled clearable></osds-input>
   <osds-input inline type="password" value="On Vous Héberge ?" disabled clearable></osds-input>

@@ -284,23 +284,13 @@ describe('spec:osds-textarea', () => {
     });
 
     describe('setFocus', () => {
-      it('should call controller setFocus method', async() => {
+      it('should call focusable element focus method', async() => {
         await setup();
+        jest.spyOn(htmlTextarea!, 'focus');
 
         await instance.setFocus();
 
-        expect(controller.setFocus).toHaveBeenCalledWith(instance.textareaElement);
-      });
-    });
-
-    describe('setTabindex', () => {
-      it('should call controller setTabindex method', async() => {
-        const dummyValue = 42;
-        await setup();
-
-        await instance.setTabindex(dummyValue);
-
-        expect(controller.setTabindex).toHaveBeenCalledWith(dummyValue);
+        expect(htmlTextarea?.focus).toHaveBeenCalled();
       });
     });
   });

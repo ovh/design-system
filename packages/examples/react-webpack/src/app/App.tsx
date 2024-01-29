@@ -1,21 +1,21 @@
 import React from 'react';
-import { OsdsDatagrid, OsdsInput, OsdsForm, OsdsButton, OsdsSelect, OsdsSelectOption, OsdsPassword } from '@ovhcloud/ods-components/react';
+import { OsdsInput, OsdsForm, OsdsButton, OsdsSelect, OsdsSelectOption, OsdsPassword, OsdsTextarea } from '@ovhcloud/ods-components/react';
 import { ODS_INPUT_TYPE, ODS_BUTTON_TYPE } from '@ovhcloud/ods-components';
 import './App.css';
+
+const initialValue = {
+  country: '',
+  password: '',
+  textarea: '',
+  user: '',
+}
 
 const App = () => {
   return (
     <div>
-      <OsdsDatagrid
-        id="datagridFormatter"
-        isSelectable={ true }
-        columns='[{"title":"First name", "field":"firstname", "isSortable": true}, {"title":"Last name", "field":"lastname", "isSortable": true}, {"title":"Gender", "field":"gender"}]'
-        rows='[{"firstname":"Homer", "lastname":"Simpson", "gender": "Male"}, {"firstname":"Marge", "lastname":"Simpson", "gender": "Female"}]'
-        height={ 300 }>
-      </OsdsDatagrid>
       <OsdsForm
         id="osdsForm"
-        initial-values='{ "user": "test", "password": "", "country": "fr" }'
+        initialValues={ initialValue }
         onOdsOnSubmit={(event) => {
           console.log('OdsOnSubmit', event.detail);
         }}
@@ -23,23 +23,56 @@ const App = () => {
           console.log('OdsOnReset');
         }}>
         <div className="form-content">
-          <label htmlFor="user">User</label>
-          <OsdsInput id="user" name="user" inline type={ODS_INPUT_TYPE.text} clearable required>
+          <label htmlFor="user">
+            User
+          </label>
+          <OsdsInput
+            clearable
+            id="user"
+            inline
+            name="user"
+            type={ ODS_INPUT_TYPE.text }
+            required>
           </OsdsInput>
 
-          <label htmlFor="password">Password</label>
-          <OsdsPassword name="password" inline></OsdsPassword>
+          <label htmlFor="password">
+            Password
+          </label>
+          <OsdsPassword
+            inline
+            name="password"
+            required>
+          </OsdsPassword>
 
-          <label htmlFor="country">Country</label>
-          <OsdsSelect id="country" name="country" inline>
+          <label htmlFor="textarea">
+            Textarea
+          </label>
+          <OsdsTextarea
+            inline
+            name="textarea"
+            required>
+          </OsdsTextarea>
+
+          <label htmlFor="country">
+            Country
+          </label>
+          <OsdsSelect
+            inline
+            name="country"
+            required>
             <span slot="placeholder"><i>Select</i> Country</span>
             <OsdsSelectOption value="fr">FR</OsdsSelectOption>
             <OsdsSelectOption value="gb">GB</OsdsSelectOption>
             <OsdsSelectOption value="pt">PT</OsdsSelectOption>
           </OsdsSelect>
         </div>
-        <OsdsButton type={ODS_BUTTON_TYPE.reset} inline>Reset</OsdsButton>
-        <OsdsButton type={ODS_BUTTON_TYPE.submit} inline>Submit</OsdsButton>
+
+        <OsdsButton type={ ODS_BUTTON_TYPE.reset } inline>
+          Reset
+        </OsdsButton>
+        <OsdsButton type={ ODS_BUTTON_TYPE.submit } inline>
+          Submit
+        </OsdsButton>
       </OsdsForm>
     </div>
   );

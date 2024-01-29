@@ -1,10 +1,9 @@
 import type { OdsCommonFieldAttribute } from '@ovhcloud/ods-common-core';
 
-
 interface OdsSelectAttribute extends OdsCommonFieldAttribute {
-  /** full width or not: see component principles */
+  /** Indicates if the select is inline or not: see component principles */
   inline?: boolean;
-  /** opened or not */
+  /** Indicates if the select is open or not */
   opened?: boolean;
 }
 

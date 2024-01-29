@@ -102,8 +102,9 @@ export default function() {
     examples.select6.component?.clear();
   };
 
-  (window as any).select5ValidateMySelect = function() {
-    logger.log('select5ValidateMySelect');
+  (window as any).select5Focus = function() {
+    logger.log('select5Focus');
+    examples.select5.component?.setFocus();
   };
 
   (window as any).select5Clear = function() {

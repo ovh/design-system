@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-component-pagination",
-  "version": "17.0.2",
+  "version": "17.0.3-alpha.0",
   "private": true,
   "description": "ODS Pagination component",
   "author": "OVH SAS",
@@ -29,12 +29,12 @@
     "FIXME_test:e2e:ci:screenshot:update": "stencil test --config stencil.config.ts --e2e --ci --screenshot --update-screenshot --passWithNoTests"
   },
   "dependencies": {
-    "@ovhcloud/ods-common-core": "17.0.2",
-    "@ovhcloud/ods-common-stencil": "17.0.2",
-    "@ovhcloud/ods-common-theming": "17.0.2"
+    "@ovhcloud/ods-common-core": "17.0.3-alpha.0",
+    "@ovhcloud/ods-common-stencil": "17.0.3-alpha.0",
+    "@ovhcloud/ods-common-theming": "17.0.3-alpha.0"
   },
   "devDependencies": {
-    "@ovhcloud/ods-common-testing": "17.0.2",
-    "@ovhcloud/ods-stencil-dev": "17.0.2"
+    "@ovhcloud/ods-common-testing": "17.0.3-alpha.0",
+    "@ovhcloud/ods-stencil-dev": "17.0.3-alpha.0"
   }
 }

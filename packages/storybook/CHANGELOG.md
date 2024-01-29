@@ -8,6 +8,21 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [17.0.3-alpha.0](https://ovh.github.io/design-system/v17.0.3-alpha.0/?path=/docs/design-system-changelog--page) (2024-01-29)
+[compare](https://github.com/ovh/design-system/compare/v17.0.2...v17.0.3-alpha.0)
+
+### Bug Fixes
+
+* **radio:** fix log issue in radio button story ([3610d3c](https://github.com/ovh/design-system/commit/3610d3c206e803161a80757ca514b4fe6e7be243))
+* **radio-group:** fix log error in storybook ([0d54745](https://github.com/ovh/design-system/commit/0d54745c07e3e12c85cc3519edbe282d2c83b633))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [17.0.2](https://ovh.github.io/design-system/v17.0.2/?path=/docs/design-system-changelog--page) (2024-01-18)
 [compare](https://github.com/ovh/design-system/compare/v17.0.1...v17.0.2)
 

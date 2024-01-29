@@ -1,16 +1,18 @@
 import type { OdsInputAttribute } from './interfaces/attributes';
 import type { OdsInputEvent, OdsInputValueChangeEventDetail } from './interfaces/events';
 import type { OdsInputMethod } from './interfaces/methods';
-import type { EventEmitter } from '@stencil/core';
-import { OdsInputValue, OdsCommonFieldValidityState } from '@ovhcloud/ods-common-core';
+import type { EventEmitter, FunctionalComponent } from '@stencil/core';
+import { AttachInternals, Component, Element, Event, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+import { OdsCommonFieldValidityState, OdsInputValue } from '@ovhcloud/ods-common-core';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import { AttachInternals, Component, Element, Event, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
-import { ODS_INPUT_TYPE } from './constants/input-type';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsInputController } from './core/controller';
 import { ODS_ICON_NAME, ODS_ICON_SIZE } from '../../../../icon/src';
 import { ODS_SPINNER_SIZE } from '../../../../spinner/src';
 import { ODS_TEXT_SIZE } from '../../../../text/src';
+
+// TODO when refactorig style
+//  - hasFocus State could be removed to style from native foucs css attribute instead
 
 @Component({
   formAssociated: true,
@@ -19,20 +21,16 @@ import { ODS_TEXT_SIZE } from '../../../../text/src';
   tag: 'osds-input',
 })
 export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMethod {
-  controller = new OdsInputController<OsdsInput>(this);
   private static inputIds = 0;
   private inputId = `ods-input-${OsdsInput.inputIds++}`;
+  controller = new OdsInputController<OsdsInput>(this);
   inputEl?: HTMLInputElement;
 
   @Element() el!: HTMLElement;
 
   @AttachInternals() internals!: ElementInternals;
 
-  @State() tabindex = 0;
-  @State() internalError = false;
-  @State() hasFocus = false;
-
-  @Prop() ariaLabel = DEFAULT_ATTRIBUTE.ariaLabel;
+  @Prop() ariaLabel = DEFAULT_ATTRIBUTE.ariaLabel
   @Prop() ariaLabelledby?: string;
   @Prop({ reflect: true }) clearable?: boolean;
   @Prop({ reflect: true }) defaultValue = DEFAULT_ATTRIBUTE.defaultValue;
@@ -55,6 +53,9 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
   @Prop({ reflect: true }) type?: ODS_INPUT_TYPE = DEFAULT_ATTRIBUTE.type;
   @Prop({ mutable: true, reflect: true }) value = DEFAULT_ATTRIBUTE.value;
 
+  @State() internalError = false;
+  @State() hasFocus = false;
+
   @Event() odsBlur!: EventEmitter<void>;
   @Event() odsClear!: EventEmitter<void>;
   @Event() odsFocus!: EventEmitter<void>;
@@ -64,68 +65,60 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
 
   @Method()
   async clear(): Promise<void> {
-    this.controller.clear();
-  }
-
-  @Method()
-  async hide(): Promise<void> {
-    this.controller.hide();
-  }
-
-  @Listen('focus')
-  @Method()
-  async setFocus(): Promise<void> {
-    if (!this.hasFocus && this.inputEl) {
-      this.hasFocus = true;
-      this.controller.setFocus(this.inputEl);
-    }
-  }
-
-  @Method()
-  async setTabindex(value: number): Promise<void> {
-    this.controller.setTabindex(value);
-  }
-  
-  @Method()
-  async stepDown(): Promise<void> {
-    this.controller.stepDown();
-  }
-
-  @Method()
-  async stepUp(): Promise<void> {
-    this.controller.stepUp();
-  }
-
-  @Method()
-  async getValidity(): Promise<OdsCommonFieldValidityState | undefined> {
-    return this.inputEl && this.controller.getValidity(this.inputEl) || undefined;
-  }
-
-  @Method()
-  async reset(): Promise<void> {
-    this.controller.reset();
+    return this.controller.clear();
   }
 
   @Method()
   async getInputEl(): Promise<HTMLInputElement | undefined> {
-    return this.inputEl; 
+    return this.inputEl;
+  }
+
+  @Method()
+  async getValidity(): Promise<OdsCommonFieldValidityState | undefined> {
+    return this.inputEl && await this.controller.getValidity(this.inputEl) || undefined;
+  }
+
+  @Method()
+  async hide(): Promise<void> {
+    return this.controller.hide();
+  }
+
+  @Method()
+  async reset(): Promise<void> {
+    return this.controller.reset();
+  }
+
+  @Method()
+  async setFocus(): Promise<void> {
+    // if (!this.hasFocus && this.inputEl) {
+    //   this.hasFocus = true;
+    //   return this.controller.setFocus(this.inputEl);
+    // }
+    this.inputEl?.focus();
+  }
+
+  @Method()
+  async stepDown(): Promise<void> {
+    return this.controller.stepDown();
+  }
+
+  @Method()
+  async stepUp(): Promise<void> {
+    return this.controller.stepUp();
   }
 
   @Watch('value')
-  onValueChange(value: OdsInputValue, oldValue?: OdsInputValue): void {
+  async onValueChange(value: OdsInputValue, oldValue?: OdsInputValue): Promise<void> {
     this.controller.onValueChange(value, oldValue);
+    this.internalError = await this.controller.hasError();
   }
 
   componentWillLoad(): void {
     this.controller.beforeInit();
   }
-  
-  async componentWillUpdate(): Promise<void> {
-    this.internalError = await this.controller.hasError();
-  }
 
-  formResetCallback(): void {
-    this.reset();
+  formResetCallback(): Promise<void> {
+    return this.reset();
   }
 
   async emitChange(value: OdsInputValue, oldValue?: OdsInputValue): Promise<void> {
@@ -146,126 +139,92 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
     this.hasFocus = false;
   }
 
+  onFocus(): void {
+    this.odsFocus.emit();
+    this.hasFocus = true;
+  }
+
   onInput(event: Event): void {
     this.controller.onInput(event);
   }
 
-  render(): JSX.Element {
-    const {
-      ariaLabel,
-      ariaLabelledby,
-      clearable,
-      disabled,
-      hasFocus,
-      icon,
-      inputId,
-      tabindex,
-      loading,
-      masked,
-      max,
-      min,
-      name,
-      placeholder,
-      readOnly,
-      required,
-      step,
-      type,
-      value,
-    } = this;
-
-    /** Using `ariaLabelledby` if it's defined, else create a new ID based on `inputId` */
-    const labelId = ariaLabelledby ? ariaLabelledby : `${inputId}-label`;
-
-    const isPassword = type === 'password';
+  render(): FunctionalComponent {
+    const isPassword = this.type === ODS_INPUT_TYPE.password;
 
     return (
-      <Host {...{
-        class: {
-          'ods-error': this.internalError,
-        },
-        tabindex,
-        color: ODS_THEME_COLOR_INTENT.primary,
-        size: 'md',
-        hasFocus,
-      }}
-      >
-        <osds-text color={ODS_THEME_COLOR_INTENT.text}
-          size={this.hasPlaceholder() ? ODS_TEXT_SIZE._300 : ODS_TEXT_SIZE._400}>
+      <Host
+        class={{ 'ods-error': this.internalError }}
+        color={ ODS_THEME_COLOR_INTENT.primary }
+        hasFocus={ this.hasFocus }
+        size={ ODS_INPUT_SIZE.md }>
+        <osds-text
+          color={ ODS_THEME_COLOR_INTENT.text }
+          size={ this.hasPlaceholder() ? ODS_TEXT_SIZE._300 : ODS_TEXT_SIZE._400 }>
           { this.prefixValue }
         </osds-text>
+
         <input
-          {...{
-            ariaLabel,
-            ariaLabelledby: labelId || null,
-            disabled,
-            id: inputId,
-            masked,
-            max,
-            min,
-            name,
-            onBlur: () => this.onBlur(),
-            onInput: (e) => this.onInput(e),
-            placeholder,
-            readOnly,
-            ref: (el) => this.inputEl = el as HTMLInputElement,
-            required,
-            step,
-            tabindex: '-1',
-            type: isPassword && !masked
-              ? 'text'
-              : type,
-            value: value?.toString() || '',
-          }}
-        >
+          aria-label={ this.ariaLabel }
+          aria-labelledby={ this.ariaLabelledby || `${this.inputId}-label` }
+          disabled={ this.disabled }
+          id={ this.inputId }
+          max={ this.max }
+          min={ this.min }
+          name={ this.name }
+          onBlur={ (): void => this.onBlur() }
+          onFocus={ (): void => this.onFocus() }
+          onInput={ (e): void => this.onInput(e) }
+          placeholder={ this.placeholder }
+          readOnly={ this.readOnly }
+          ref={ (el): HTMLInputElement => this.inputEl = el as HTMLInputElement }
+          required={ this.required }
+          step={ this.step }
+          type={ isPassword && !this.masked ? ODS_INPUT_TYPE.text : this.type }
+          value={ this.value?.toString() || '' }>
         </input>
 
         {
-          loading && (
+          this.loading && (
             <osds-spinner
-              {...{
-                contrasted: false,
-                inline: true,
-                size: ODS_SPINNER_SIZE.sm,
-              }}>
+              contrasted={ false }
+              inline={ true }
+              size={ ODS_SPINNER_SIZE.sm } >
             </osds-spinner>
           )
         }
 
         {
-          isPassword && !loading && (
+          isPassword && !this.loading && (
             <osds-icon
-              {...{
-                ariaName: `${masked ? ODS_ICON_NAME.EYE_OPEN : ODS_ICON_NAME.EYE_CLOSED} icon`,
-                color: ODS_THEME_COLOR_INTENT.primary,
-                name: masked ? ODS_ICON_NAME.EYE_OPEN : ODS_ICON_NAME.EYE_CLOSED,
-                onClick: () => this.hide(),
-                size: ODS_ICON_SIZE.sm,
-              }}></osds-icon>
+              ariaName={ `${this.masked ? ODS_ICON_NAME.EYE_OPEN : ODS_ICON_NAME.EYE_CLOSED} icon` }
+              color={ ODS_THEME_COLOR_INTENT.primary }
+              name={ this.masked ? ODS_ICON_NAME.EYE_OPEN : ODS_ICON_NAME.EYE_CLOSED }
+              onClick={ (): Promise<void> => this.hide() }
+              size={ ODS_ICON_SIZE.sm }>
+            </osds-icon>
           )
         }
 
         {
-          clearable && !loading && (
+          this.clearable && !this.loading && (
             <osds-icon
-              {...{
-                ariaName: `${ODS_ICON_NAME.CLOSE} icon`,
-                color: ODS_THEME_COLOR_INTENT.primary,
-                name: ODS_ICON_NAME.CLOSE,
-                onClick: () => this.clear(),
-                size: ODS_ICON_SIZE.sm,
-              }}></osds-icon>
+              ariaName={ `${ODS_ICON_NAME.CLOSE} icon` }
+              color={ ODS_THEME_COLOR_INTENT.primary }
+              name={ ODS_ICON_NAME.CLOSE }
+              onClick={ (): Promise<void> => this.clear() }
+              size={ ODS_ICON_SIZE.sm }>
+            </osds-icon>
           )
         }
 
         {
-          icon && !loading && (
+          this.icon && !this.loading && (
             <osds-icon
-              {...{
-                ariaName: `${icon} icon`,
-                color: ODS_THEME_COLOR_INTENT.primary,
-                name: icon,
-                size: ODS_ICON_SIZE.sm,
-              }}></osds-icon>
+                ariaName={ `${this.icon} icon` }
+                color={ ODS_THEME_COLOR_INTENT.primary }
+                name={ this.icon }
+                size={ ODS_ICON_SIZE.sm }>
+            </osds-icon>
           )
         }
       </Host>

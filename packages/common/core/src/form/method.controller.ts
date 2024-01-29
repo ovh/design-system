@@ -4,7 +4,6 @@ import type { OdsCommonFieldEvent, OdsCommonFieldValueChangeEventDetail } from '
 import { OdsInputValue } from './ods-input-value';
 
 class OdsCommonFieldMethodController<T extends OdsCommonFieldAttribute & OdsCommonFieldEvent<U>, U extends OdsCommonFieldValueChangeEventDetail = OdsCommonFieldValueChangeEventDetail> implements Omit<OdsCommonFieldMethod, 'getValidity' | 'setFocus'> {
-
   constructor(protected readonly component: T) {
    }
 
@@ -74,10 +73,6 @@ class OdsCommonFieldMethodController<T extends OdsCommonFieldAttribute & OdsComm
     }
     elementToFocus.focus();
     this.component.odsFocus.emit();
-  }
-
-  async setTabindex(value: number): Promise<void> {
-    this.component.tabindex = value;
   }
 
   /**

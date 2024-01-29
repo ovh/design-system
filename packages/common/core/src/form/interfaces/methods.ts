@@ -22,12 +22,6 @@ interface OdsCommonFieldMethod {
    * active the focus on the input in order to let the user write something
    */
   setFocus(): Promise<void>;
-
-  /**
-   * set a custom tab index for easier navigation
-   * @param value - chosen index
-   */
-  setTabindex(value: number): Promise<void>;
 }
 
 export {

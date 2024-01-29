@@ -1,40 +1,29 @@
 * [**Interfaces**](#interfaces)
-* [**Types**](#types)
 
 ## Interfaces
 
 ### OdsSelectAttribute
 |Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
-|**`ariaLabel`** | `undefined` \| `string` | ✴️ |  | The corresponding aria-label describing its content|
-|**`ariaLabelledby`** | _string_ | ✴️ |  | The id to an external description|
-|**`color`** | `ODS_THEME_COLOR_INTENT` | ✴️ |  | the primary color of the theme|
-|**`defaultValue`** | `OdsInputValue` | ✴️ |  | Its corresponding default value. It needs to match with one option so the option will be selected|
-|**`disabled`** | _boolean_ | ✴️ |  | indicates if the select is entirely disabled.it means no interactions (hover, click, focus, etc)|
-|**`error`** | _boolean_ |  |  | indicates if the select has an error.|
-|**`inline`** | _boolean_ | ✴️ |  | full width or not: see component principles|
-|**`name`** | _string_ |  |  | name of the select field|
-|**`opened`** | _boolean_ |  |  | opened or not|
-|**`required`** | _boolean_ | ✴️ |  | indicates if a value has to be selected|
-|**`size`** | `md` | ✴️ |  | size: see component principles|
-|**`value`** | `OdsInputValue` | ✴️ |  | Its corresponding value. It needs to correspond to the value of the option|
-
-### OdsSelectEvent
-|Name | Type | Required | Default | Description|
-|---|---|:---:|---|---|
-|**`odsBlur`** | `EventEmitter<void>` | ✴️ |  | Event triggered on select blur|
-|**`odsFocus`** | `EventEmitter<void>` | ✴️ |  | Event triggered on select focus|
-|**`odsValueChange`** | `EventEmitter<OdsSelectValueChangeEventDetail>` | ✴️ |  | Emitted when the value has changed|
-
-### OdsSelectMethod
-|Name | Type | Required | Default | Description|
-|---|---|:---:|---|---|
-|**`clear`** | `Promise<void>` | ✴️ |  | erase the current selection|
-|**`getValidity`** | `Promise<OdsValidityState>` | ✴️ |  | get the validity state|
-|**`reset`** | `Promise<void>` | ✴️ |  | reset the value to the initial one (default value)|
-|**`setFocus`** | `Promise<void>` | ✴️ |  | focus the element|
-|**`setInputTabindex`** | `Promise<void>` | ✴️ |  | set tab index on the component|
-|**`validate`** | `Promise<OdsValidityState>` | ✴️ |  | check that the select is valid or not.In case of required field, the validation will check the entered valueand set the field in error if it is not fulfilled|
+|**`ariaLabel`** | `undefined` \| `string` | ✴️ |  | |
+|**`ariaLabelledby`** | _string_ |  |  | ID of the element that labels the input|
+|**`clearable`** | _boolean_ |  |  | Ability to clear the input value|
+|**`defaultValue`** | `OdsInputValue` | ✴️ |  | Default value of the input|
+|**`disabled`** | _boolean_ | ✴️ |  | Indicates if the input is disabled or not: see component principles|
+|**`error`** | _boolean_ | ✴️ |  | Indicates if the input shows error or not|
+|**`forbiddenValues`** | OdsInputValue[] |  |  | List of forbidden values for the input|
+|**`inline`** | _boolean_ |  |  | Indicates if the select is inline or not: see component principles|
+|**`label`** | _string_ |  |  | Label of the input field|
+|**`loading`** | _boolean_ |  |  | Indicates if the input is in loading state or not|
+|**`name`** | _string_ | ✴️ |  | Name of the input field|
+|**`opened`** | _boolean_ |  |  | Indicates if the select is open or not|
+|**`placeholder`** | _string_ |  |  | Placeholder text for the input|
+|**`prefixValue`** | _string_ |  |  | Text before the input value|
+|**`readOnly`** | _boolean_ |  |  | Indicates if the input is read-only or not|
+|**`required`** | _boolean_ |  |  | Indicates if the input is required or not|
+|**`step`** | _number_ |  |  | Step value for the input|
+|**`tabindex`** | _number_ |  |  | Tabindex for the input|
+|**`value`** | `OdsInputValue` | ✴️ |  | Value of the input field|
 
 ### OdsSelectOptionAttribute
 |Name | Type | Required | Default | Description|
@@ -60,15 +49,8 @@
 ### OdsSelectValueChangeEventDetail
 |Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
-|**`name`** | _string_ |  |  | |
+|**`name`** | _string_ | ✴️ |  | |
 |**`oldValue`** | `OdsInputValue` |  |  | |
 |**`selection`** | `undefined` \| `OsdsSelectOption` | ✴️ |  | |
-|**`validity`** | `OdsValidityState` | ✴️ |  | |
+|**`validity`** | `OdsCommonFieldValidityState` |  |  | |
 |**`value`** | `OdsInputValue` | ✴️ |  | |
-
-## Types
-
-### ODS_SELECT_SIZE
-|  |
-|:---:|
-| `md` |

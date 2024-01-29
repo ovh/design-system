@@ -311,15 +311,6 @@ describe('spec:osds-input', () => {
         expect(controller.stepDown).toHaveBeenCalledTimes(1);
         expect(controller.stepDown).toHaveBeenCalledWith();
       });
-
-      it('should call setTabindex from setTabindex method', async() => {
-        const tabIndex = 1;
-        await setup({});
-        await instance.setTabindex(tabIndex);
-
-        expect(controller.setTabindex).toHaveBeenCalledTimes(1);
-        expect(controller.setTabindex).toHaveBeenCalledWith(tabIndex);
-      });
     });
 
     describe('watchers', () => {

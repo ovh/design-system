@@ -4,6 +4,7 @@ import type { OdsSelectMethod } from './interfaces/methods';
 import type { OdsSelectOptionClickEventDetail } from '../osds-select-option/interfaces/events';
 import type { OsdsSelectOption } from '../osds-select-option/osds-select-option';
 import type { OcdkSurface } from '@ovhcloud/ods-cdk';
+import type { FunctionalComponent } from '@stencil/core';
 import type { HTMLStencilElement } from '@stencil/core/internal';
 import { OdsCommonFieldValidityState, OdsInputValue, OdsValidityState } from '@ovhcloud/ods-common-core';
 import { ocdkAssertEventTargetIsNode, ocdkDefineCustomElements, ocdkIsSurface } from '@ovhcloud/ods-cdk';
@@ -16,6 +17,9 @@ import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 // define custom elements from CDK
 ocdkDefineCustomElements();
 
+// TODO setFocus does not display focus style
+//  - should be refactord so that the trigger is focused instead of the Host (move tabindex && update style)
+
 @Component({
   formAssociated: true,
   shadow: true,
@@ -23,8 +27,8 @@ ocdkDefineCustomElements();
   tag: 'osds-select',
 })
 export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelectMethod {
-  controller = new OdsSelectController<OsdsSelect>(this);
   anchor!: HTMLElement;
+  controller = new OdsSelectController<OsdsSelect>(this);
   dirty = false;
   observer?: MutationObserver;
   optionSelected: OsdsSelectOption | null = null;
@@ -35,11 +39,6 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
 
   @AttachInternals() internals!: ElementInternals;
 
-  @State() selectedOptionLabel = '';
-  @State() tabindex = 0;
-  @State() validityState: OdsValidityState = DEFAULT_VALIDITY_STATE;
-
-  @Prop({ reflect: true, mutable: true }) opened = false;
   @Prop({ reflect: true }) ariaLabel = DEFAULT_ATTRIBUTE.ariaLabel;
   @Prop() ariaLabelledby = DEFAULT_ATTRIBUTE.ariaLabelledby;
   @Prop({ reflect: true }) defaultValue: OdsInputValue = DEFAULT_ATTRIBUTE.defaultValue;
@@ -47,8 +46,12 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
   @Prop({ reflect: true }) error = DEFAULT_ATTRIBUTE.error;
   @Prop({ reflect: true }) inline = DEFAULT_ATTRIBUTE.inline;
   @Prop({ reflect: true }) name = DEFAULT_ATTRIBUTE.name;
+  @Prop({ reflect: true, mutable: true }) opened = false;
   @Prop({ reflect: true, mutable: true }) required = DEFAULT_ATTRIBUTE.required;
   @Prop({ reflect: true, mutable: true }) value: OdsInputValue = DEFAULT_ATTRIBUTE.value;
+
+  @State() internalError = false;
+  @State() selectedOptionLabel = '';
 
   @Event() odsBlur!: EventEmitter<void>;
   @Event() odsClear!: EventEmitter<void>;
@@ -56,26 +59,28 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
   @Event() odsReset!: EventEmitter<void>;
   @Event() odsValueChange!: EventEmitter<OdsSelectValueChangeEventDetail>;
 
-  @Watch('disabled')
-  closeWhenDisabled(disabled?: boolean): void {
-    if (disabled) {
-      this.controller.closeSurface();
-    }
+  @Method()
+  async clear(): Promise<void> {
+    this.controller.clear();
+    this.optionSelected = null;
   }
 
-  @Watch('value')
-  async onValueChange(value: OdsInputValue, oldValue?: OdsInputValue) {
-    this.controller.onValueChange(value, oldValue);
+  @Method()
+  async getValidity(): Promise<OdsCommonFieldValidityState> {
+    return this.controller.getValidity()
   }
 
-  @Watch('opened')
-  openedChanged(opened: boolean) {
-    if (this.surface) {
-      this.surface.opened = opened;
-    }
+  @Method()
+  async reset(): Promise<void> {
+    this.controller.reset();
+    await this.updateSelectOptionStates();
   }
 
-  // Hide overlay when we click anywhere else in the window.
+  @Method()
+  async setFocus(): Promise<void> {
+    return this.controller.setFocus(this.el);
+  }
+
   @Listen('click', { target: 'window' })
   async checkForClickOutside(ev: any): Promise<void> {
     ocdkAssertEventTargetIsNode(ev.target);
@@ -99,31 +104,24 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
     this.controller.closeSurface();
   }
 
-  @Method()
-  async clear(): Promise<void> {
-    this.controller.clear();
-    this.optionSelected = null;
+  @Watch('disabled')
+  closeWhenDisabled(disabled?: boolean): void {
+    if (disabled) {
+      this.controller.closeSurface();
+    }
   }
 
-  @Method()
-  async getValidity(): Promise<OdsCommonFieldValidityState> {
-    return this.controller.getValidity()
+  @Watch('value')
+  async onValueChange(value: OdsInputValue, oldValue?: OdsInputValue): Promise<void> {
+    await this.controller.onValueChange(value, oldValue);
+    this.internalError = await this.controller.hasError();
   }
 
-  @Method()
-  async reset(): Promise<void> {
-    this.controller.reset();
-    await this.updateSelectOptionStates();
-  }
-
-  @Method()
-  async setFocus(): Promise<void> {
-    this.controller.setFocus(this.el);
-  }
-
-  @Method()
-  async setTabindex(value: number): Promise<void> {
-    this.controller.setTabindex(value);
+  @Watch('opened')
+  openedChanged(opened: boolean) {
+    if (this.surface) {
+      this.surface.opened = opened;
+    }
   }
 
   componentWillLoad(): void {
@@ -140,17 +138,12 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
     await this.updateSelectOptionStates(this.value);
   }
 
-  async componentUpdated(): Promise<void> {
-    const validity = await this.controller.getValidity()
-    this.internalError =  this.error || !validity.valid;
-  }
-
   disconnectedCallback(): void {
     this.observer?.disconnect();
   }
 
-  formResetCallback(): void {
-    this.reset();
+  formResetCallback(): Promise<void> {
+    return this.reset();
   }
 
   changeValue(value: OdsInputValue): void {
@@ -194,12 +187,18 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
     await this.updateSelectOptionStates();
   }
 
-  onBlur(): void {
+  async onBlur() {
     this.odsBlur.emit();
+    this.internalError = await this.controller.hasError();
   }
 
-  private onFocus() {
-    this.odsFocus.emit();
+  setSelectOptions(): void {
+    this.controller.selectOptions = this.getSelectOptionList();
+    this.controller.selectOptions.forEach((option) => this.observer?.observe(option, { childList: true, attributes: true, subtree: true }));
+  }
+
+  syncReferences(): void {
+    this.controller.syncReferences();
   }
 
   async updateSelectOptionStates(value?: OdsInputValue): Promise<void> {
@@ -214,16 +213,7 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
     }
   }
 
-  syncReferences(): void {
-    this.controller.syncReferences();
-  }
-
-  setSelectOptions(): void {
-    this.controller.selectOptions = this.getSelectOptionList();
-    this.controller.selectOptions.forEach((option) => this.observer?.observe(option, { childList: true, attributes: true, subtree: true }));
-  }
-
-  private renderLabel(): JSX.Element {
+  private renderLabel(): FunctionalComponent {
     if (!this.value) {
       return (<slot name="placeholder" key="placeholder"></slot>);
     }
@@ -233,58 +223,50 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
     return (<span key="default">{ this.selectedOptionLabel }</span>);
   }
 
-  render() {
-    const {
-      ariaLabel,
-      ariaLabelledby,
-      disabled,
-      inline,
-    } = this;
-
+  render(): FunctionalComponent {
     return (
-      <Host {...{
-        class: {
-          disabled,
+      <Host
+        aria-label={ this.ariaLabel }
+        aria-labelledby={ this.ariaLabelledby }
+        class={{
+          disabled: this.disabled,
           opened: this.opened,
           'ods-error': this.internalError,
-        },
-        ariaLabel,
-        'aria-labelledby': ariaLabelledby,
-        inline,
-        onFocus: this.onFocus.bind(this),
-        onBlur: this.onBlur.bind(this),
-        onClick: this.handleSelectClick.bind(this),
-        onKeyDown: this.handleKeyDown.bind(this),
-        tabindex: this.disabled ? -1 : this.tabindex,
-        ref: (el?: HTMLElement | null) => {
+        }}
+        color="primary"
+        onBlur={ () => this.onBlur() }
+        onClick={ () => this.handleSelectClick() }
+        onKeyDown={ (e: KeyboardEvent): void => this.handleKeyDown(e) }
+        ref={ (el?: HTMLElement | null) => {
           this.anchor = el as HTMLElement;
           this.syncReferences();
-        },
-        color: 'primary',
-        size: 'md',
-      }}
-      >
-        <div {...{
-          class: {
-            'select-trigger': true,
-            opened: this.opened,
-            error: this.internalError,
-          }
+        }}
+        size="md"
+        tabindex={ this.disabled ? -1 : 0 }>
+        <div class={{
+          error: this.internalError,
+          opened: this.opened,
+          'select-trigger': true,
         }}>
           <div class="select-trigger__label">
             { this.renderLabel() }
           </div>
-          <osds-icon size={ODS_ICON_SIZE.sm} color={ODS_THEME_COLOR_INTENT.primary} name={ODS_ICON_NAME.CHEVRON_DOWN}></osds-icon>
+
+          <osds-icon color={ ODS_THEME_COLOR_INTENT.primary }
+                     name={ ODS_ICON_NAME.CHEVRON_DOWN }
+                     size={ ODS_ICON_SIZE.sm } >
+          </osds-icon>
         </div>
+
         <ocdk-surface
           class="overlay"
-          ref={(el: HTMLElement) => {
+          ref={ (el: HTMLElement) => {
             if (ocdkIsSurface(el)) {
               this.surface = el as OcdkSurface;
               this.syncReferences();
             }
           }}>
-          <slot onSlotchange={() => this.handleSlotChange()}></slot>
+          <slot onSlotchange={ () => this.handleSlotChange() }></slot>
         </ocdk-surface>
       </Host>
     );

@@ -4,15 +4,16 @@ import type { OdsSelectValueChangeEventDetail } from '../interfaces/events';
 import { OdsCommonFieldMethodController, OdsCommonFieldValidityState, OdsInputValue } from '@ovhcloud/ods-common-core';
 
 class OdsSelectController<T extends OsdsSelect> extends OdsCommonFieldMethodController<T, OdsSelectValueChangeEventDetail> {
-  private _selectOptions: (HTMLElement & OsdsSelectOption)[] = [];
+  //private _selectOptions: (HTMLElement & OsdsSelectOption)[] = [];
+  public selectOptions: (HTMLElement & OsdsSelectOption)[] = [];
 
-  public get selectOptions(): (HTMLElement & OsdsSelectOption)[] {
-    return this._selectOptions;
-  }
-
-  public set selectOptions(value: (HTMLElement & OsdsSelectOption)[]) {
-    this._selectOptions = value;
-  }
+  // public get selectOptions(): (HTMLElement & OsdsSelectOption)[] {
+  //   return this._selectOptions;
+  // }
+  //
+  // public set selectOptions(value: (HTMLElement & OsdsSelectOption)[]) {
+  //   this._selectOptions = value;
+  // }
 
   constructor(component: T) {
     super(component);
@@ -28,9 +29,11 @@ class OdsSelectController<T extends OsdsSelect> extends OdsCommonFieldMethodCont
     this.component.selectedLabelSlot = this.component.el.querySelector('[slot="selectedLabel"]');
   }
 
-  changeValue(value: OdsInputValue) {
-    this.component.value = value;
-    this.component.internals.setFormValue(value?.toString() ?? '');
+  closeSurface(): void {
+    if (this.component.surface?.opened) {
+      this.component.surface.close();
+      this.component.opened = false;
+    }
   }
 
   /**
@@ -54,65 +57,6 @@ class OdsSelectController<T extends OsdsSelect> extends OdsCommonFieldMethodCont
       valid: !requiredError,
       valueMissing: requiredError,
     };
-  }
-
-  syncReferences(): void {
-    if (this.component.surface && this.component.anchor) {
-      this.component.surface.setAnchorElement(this.component.anchor);
-      this.component.surface.setAnchorMargin({ bottom: 0 });
-    }
-  }
-
-  /**
-   * Method to close the surface
-   */
-  closeSurface(): void {
-    if (this.component.surface?.opened) {
-      this.component.surface.close();
-      this.component.opened = false;
-    }
-  }
-
-  /**
-   * Method to open the surface
-   */
-  openSurface(): void {
-    if (this.component.surface) {
-      this.component.surface.open();
-      this.component.opened = true;
-    }
-  }
-
-  /**
-   * if the value of the component is required:
-   * it returns true if the value is undefined.
-   * it returns false if the value is set.
-   */
-  hasRequiredError(): boolean {
-    if (this.component.required) {
-      return !this.component.value;
-    }
-    return false;
-  }
-
-  handlerKeyDown(event: KeyboardEvent): void {
-    const selectedSelectOptionIndex = this.selectOptions.findIndex((select) => select.getAttribute('selected') !== null || document.activeElement === select);
-    switch (event.code) {
-    case 'Escape': {
-      this.selectOptions.forEach((s) => s.removeAttribute('selected'));
-      this.selectOptions.find((s) => s.value === this.component.value)?.setAttribute('selected', '');
-      return this.closeSurface();
-    }
-    case 'ArrowUp':
-    case 'ArrowDown':
-    case 'Tab':
-      return this.handlerKeyArrow(event, selectedSelectOptionIndex);
-    case 'Enter':
-    case 'NumpadEnter':
-      return this.handlerKeyEnter(this.selectOptions[selectedSelectOptionIndex]);
-    default:
-      break;
-    }
   }
 
   private handlerKeyArrow(event: KeyboardEvent, selectedSelectOptionIndex: number): void {
@@ -157,6 +101,26 @@ class OdsSelectController<T extends OsdsSelect> extends OdsCommonFieldMethodCont
     }
   }
 
+  handlerKeyDown(event: KeyboardEvent): void {
+    const selectedSelectOptionIndex = this.selectOptions.findIndex((select) => select.getAttribute('selected') !== null || document.activeElement === select);
+    switch (event.code) {
+      case 'Escape': {
+        this.selectOptions.forEach((s) => s.removeAttribute('selected'));
+        this.selectOptions.find((s) => s.value === this.component.value)?.setAttribute('selected', '');
+        return this.closeSurface();
+      }
+      case 'ArrowUp':
+      case 'ArrowDown':
+      case 'Tab':
+        return this.handlerKeyArrow(event, selectedSelectOptionIndex);
+      case 'Enter':
+      case 'NumpadEnter':
+        return this.handlerKeyEnter(this.selectOptions[selectedSelectOptionIndex]);
+      default:
+        break;
+    }
+  }
+
   private handlerKeyEnter(selectOption?: OsdsSelectOption): void {
     if (!this.component.opened || !selectOption) {
       return this.component.handleSelectClick();
@@ -169,9 +133,37 @@ class OdsSelectController<T extends OsdsSelect> extends OdsCommonFieldMethodCont
     this.component.setFocus();
   }
 
-  onValueChange(value: OdsInputValue, oldValue?: OdsInputValue): void {
-    this.component.internals.setFormValue(value?.toString() ?? '');
+  async hasError(): Promise<boolean> {
+    const validity = await this.getValidity();
+    console.log(validity)
+    return this.component.error || !validity.valid;
+  }
+
+  hasRequiredError(): boolean {
+    if (this.component.required) {
+      return !this.component.value;
+    }
+    return false;
+  }
+
+  async onValueChange(value: OdsInputValue, oldValue?: OdsInputValue): Promise<void> {
     this.component.emitChange(value, oldValue);
+    this.component.internals?.setFormValue?.(value?.toString() ?? '');
+    await this.component.updateSelectOptionStates(value);
+  }
+
+  openSurface(): void {
+    if (this.component.surface) {
+      this.component.surface.open();
+      this.component.opened = true;
+    }
+  }
+
+  syncReferences(): void {
+    if (this.component.surface && this.component.anchor) {
+      this.component.surface.setAnchorElement(this.component.anchor);
+      this.component.surface.setAnchorMargin({ bottom: 0 });
+    }
   }
 }
 

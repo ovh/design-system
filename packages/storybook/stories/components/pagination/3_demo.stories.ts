@@ -29,6 +29,8 @@ const totalItemsParam = {
   defaultItemsPerPage: {
     category: 'General',
     defaultValue: ODS_PAGINATION_PER_PAGE_OPTIONS[1],
+    control: 'select',
+    options: ODS_PAGINATION_PER_PAGE_OPTIONS,
   },
   totalItems: {
     category: 'General',

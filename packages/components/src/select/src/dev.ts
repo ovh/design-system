@@ -1,4 +1,4 @@
-
+/* eslint-disable */
 import type { OdsSelectValueChangeEvent } from './components/osds-select/interfaces/events';
 import type { OsdsSelect } from './components/osds-select/osds-select';
 

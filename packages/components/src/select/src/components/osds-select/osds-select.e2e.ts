@@ -25,7 +25,7 @@ describe('e2e:osds-select', () => {
   let optionElement: E2EElement;
   let optionDivElement: E2EElement;
 
-  async function setup({ attributes = {}, html, onPage }: { attributes?: Partial<OdsSelectAttribute>, html?: string, onPage?: ({ page }: { page: E2EPage }) => void } = {}) {
+  async function setup({ attributes = {}, html, onPage }: { attributes?: Partial<OdsSelectAttribute>, html?: string, onPage?: ({ page }: { page: E2EPage }) => void } = {}): Promise<void> {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsSelectAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
@@ -129,7 +129,7 @@ describe('e2e:osds-select', () => {
 
   describe('method:reset', () => {
     it('should not reset the value because defaultValue is missing', async() => {
-      await setup({ attributes: { value: 3, defaultValue: undefined } });
+      await setup({ attributes: { defaultValue: undefined, value: 3 } });
       await el.callMethod('reset');
       await page.waitForChanges();
       const value = await el.getProperty('value');
@@ -139,7 +139,7 @@ describe('e2e:osds-select', () => {
 
     it('should set the value to defaultValue', async() => {
       const defaultValue = 6;
-      await setup({ attributes: { value: 3, defaultValue } });
+      await setup({ attributes: { defaultValue, value: 3 } });
       await el.callMethod('reset');
       await page.waitForChanges();
       const value = await el.getProperty('value');
@@ -164,6 +164,7 @@ describe('e2e:osds-select', () => {
         odsSelectValueChangeEventDetailBase = {
           name: '',
           oldValue: '',
+          selection: null,
           validity: {
             badInput: false,
             customError: false,
@@ -179,7 +180,6 @@ describe('e2e:osds-select', () => {
             valueMissing: false,
           },
           value: '',
-          selection: null,
         };
       });
 
@@ -260,7 +260,7 @@ console.log('before clicks');
       });
     }
 
-    async function setupForClickOutside() {
+    async function setupForClickOutside(): Promise<void> {
       const stringAttributes = odsComponentAttributes2StringAttributes<OdsSelectAttribute>(baseAttribute, DEFAULT_ATTRIBUTE);
 
       page = await newE2EPage();

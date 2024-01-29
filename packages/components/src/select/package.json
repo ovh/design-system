@@ -16,7 +16,7 @@
     "doc": "typedoc --json ./docs-api/typedoc.json --pretty && node ../../../../scripts/generate-typedoc-md.js",
     "doc:api": "typedoc",
     "lint:scss": "stylelint 'src/components/**/*.scss'",
-    "FIXME_lint:ts": "eslint 'src/**/*.{js,ts,tsx}'",
+    "lint:ts": "eslint 'src/**/*.{js,ts,tsx}'",
     "start": "stencil build --dev --watch --serve",
     "test:e2e": "stencil test --e2e --config stencil.config.ts",
     "test:e2e:ci": "stencil test --config stencil.config.ts --e2e --ci",

@@ -1,3 +1,4 @@
+import type { FunctionalComponent } from '@stencil/core';
 import type { HTMLStencilElement } from '@stencil/core/internal';
 import { Component, Element, Host, h } from '@stencil/core';
 
@@ -9,7 +10,7 @@ import { Component, Element, Host, h } from '@stencil/core';
 export class OsdsSelectGroup {
   @Element() el!: HTMLStencilElement;
 
-  render() {
+  render(): FunctionalComponent {
     return (
       <Host
         aria-labelledby={ this.el.innerText }

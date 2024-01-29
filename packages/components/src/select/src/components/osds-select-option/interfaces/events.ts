@@ -10,7 +10,7 @@ interface OdsSelectOptionEvent {
   odsSelectOptionClick: EventEmitter<OdsSelectOptionClickEventDetail>;
 }
 
-export {
+export type {
   OdsSelectOptionEvent,
   OdsSelectOptionClickEventDetail,
 };

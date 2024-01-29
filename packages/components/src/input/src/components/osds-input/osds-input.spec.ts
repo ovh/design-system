@@ -7,9 +7,9 @@ import { OdsCreateDefaultValidityState } from '@ovhcloud/ods-common-core';
 import { OdsMockNativeMethod, OdsMockPropertyDescriptor, odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 import { newSpecPage } from '@stencil/core/testing';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { ODS_INPUT_TYPE } from './constants/input-type';
 import { OdsInputController } from './core/controller';
 import { OsdsInput } from './osds-input';
-import { ODS_INPUT_TYPE } from './constants/input-type';
 
 // mock validity property that does not exist when stencil mock HTMLInputElement
 OdsMockPropertyDescriptor(HTMLInputElement.prototype, 'validity', () => OdsCreateDefaultValidityState());
@@ -35,7 +35,7 @@ describe('spec:osds-input', () => {
     jest.clearAllMocks();
   });
 
-  async function setup({ attributes = {}, html = '' }: { attributes?: Partial<OdsInputAttribute>, html?: string } = {}) {
+  async function setup({ attributes = {}, html = '' }: { attributes?: Partial<OdsInputAttribute>, html?: string } = {}): Promise<void> {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsInputAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
 
     // mock setCustomValidity method that does not exist when stencil mock HTMLInputElement
@@ -68,129 +68,129 @@ describe('spec:osds-input', () => {
 
   describe('attributes', () => {
     const config = {
-      instance: () => instance,
-      page: () => page,
-      root: () => page.root,
-      wait: () => page.waitForChanges(),
+      instance: (): OsdsInput => instance,
+      page: (): SpecPage => page,
+      root: (): SpecPage['root'] => page.root,
+      wait: (): Promise<void> => page.waitForChanges(),
     };
 
     describe('clearable', () => {
       odsUnitTestAttribute<OdsInputAttribute, 'clearable'>({
-        name: 'clearable',
         defaultValue: DEFAULT_ATTRIBUTE.clearable,
+        name: 'clearable',
         newValue: false,
-        value: true,
         setup: (value) => setup({ attributes: { ['clearable']: value } }),
+        value: true,
         ...config,
       });
     });
 
     describe('disabled', () => {
       odsUnitTestAttribute<OdsInputAttribute, 'disabled'>({
-        name: 'disabled',
         defaultValue: DEFAULT_ATTRIBUTE.disabled,
+        name: 'disabled',
         newValue: false,
-        value: true,
         setup: (value) => setup({ attributes: { ['disabled']: value } }),
+        value: true,
         ...config,
       });
     });
 
     describe('inline', () => {
       odsUnitTestAttribute<OdsInputAttribute, 'inline'>({
-        name: 'inline',
         defaultValue: DEFAULT_ATTRIBUTE.inline,
+        name: 'inline',
         newValue: false,
-        value: true,
         setup: (value) => setup({ attributes: { ['inline']: value } }),
+        value: true,
         ...config,
       });
     });
 
     describe('loading', () => {
       odsUnitTestAttribute<OdsInputAttribute, 'loading'>({
-        name: 'loading',
         defaultValue: DEFAULT_ATTRIBUTE.loading,
+        name: 'loading',
         newValue: false,
-        value: true,
         setup: (value) => setup({ attributes: { ['loading']: value } }),
+        value: true,
         ...config,
       });
     });
 
     describe('masked', () => {
       odsUnitTestAttribute<OdsInputAttribute, 'masked'>({
-        name: 'masked',
         defaultValue: DEFAULT_ATTRIBUTE.masked,
+        name: 'masked',
         newValue: false,
-        value: true,
         setup: (value) => setup({ attributes: { ['masked']: value } }),
+        value: true,
         ...config,
       });
     });
 
     describe('max', () => {
       odsUnitTestAttribute<OdsInputAttribute, 'max'>({
-        name: 'max',
         defaultValue: DEFAULT_ATTRIBUTE.max,
+        name: 'max',
         newValue: 3,
-        value: 6,
         setup: (value) => setup({ attributes: { ['max']: value } }),
+        value: 6,
         ...config,
       });
     });
 
     describe('min', () => {
       odsUnitTestAttribute<OdsInputAttribute, 'min'>({
-        name: 'min',
         defaultValue: DEFAULT_ATTRIBUTE.min,
+        name: 'min',
         newValue: 3,
-        value: 6,
         setup: (value) => setup({ attributes: { ['min']: value } }),
+        value: 6,
         ...config,
       });
     });
 
     describe('placeholder', () => {
       odsUnitTestAttribute<OdsInputAttribute, 'placeholder'>({
-        name: 'placeholder',
         defaultValue: DEFAULT_ATTRIBUTE.placeholder,
+        name: 'placeholder',
         newValue: 'oles',
-        value: 'ipsum',
         setup: (value) => setup({ attributes: { ['placeholder']: value } }),
+        value: 'ipsum',
         ...config,
       });
     });
 
     describe('prefixValue', () => {
       odsUnitTestAttribute<OdsInputAttribute, 'prefixValue'>({
-        name: 'prefixValue',
         defaultValue: DEFAULT_ATTRIBUTE.prefixValue,
+        name: 'prefixValue',
         newValue: 'prefix',
-        value: '',
         setup: (value) => setup({ attributes: { ['prefixValue']: value } }),
+        value: '',
         ...config,
       });
     });
 
     describe('step', () => {
       odsUnitTestAttribute<OdsInputAttribute, 'step'>({
-        name: 'step',
         defaultValue: DEFAULT_ATTRIBUTE.step,
+        name: 'step',
         newValue: 1,
-        value: 2,
         setup: (value) => setup({ attributes: { ['step']: value } }),
+        value: 2,
         ...config,
       });
     });
 
     describe('value', () => {
       odsUnitTestAttribute<OdsInputAttribute, 'value'>({
-        name: 'value',
         defaultValue: DEFAULT_ATTRIBUTE.value,
+        name: 'value',
         newValue: 1,
-        value: 2,
         setup: (value) => setup({ attributes: { ['value']: value } }),
+        value: 2,
         ...config,
       });
     });
@@ -259,7 +259,7 @@ describe('spec:osds-input', () => {
       });
 
       it('should call clear from clear method but should not change the value if disabled', async() => {
-        await setup({ attributes: { type: ODS_INPUT_TYPE.password, value: 'Just ODS being ahead', masked: false, disabled: true } });
+        await setup({ attributes: { disabled: true, masked: false, type: ODS_INPUT_TYPE.password, value: 'Just ODS being ahead' } });
         await instance.clear();
 
         expect(controller.clear).toHaveBeenCalledTimes(1);
@@ -278,7 +278,7 @@ describe('spec:osds-input', () => {
       });
 
       it('should call hide from hide method but should not display the value if disabled', async() => {
-        await setup({ attributes: { type: ODS_INPUT_TYPE.password, value: 'Just ODS being ahead', masked: true, disabled: true } });
+        await setup({ attributes: { disabled: true, masked: true, type: ODS_INPUT_TYPE.password, value: 'Just ODS being ahead' } });
         await instance.hide();
 
         expect(controller.hide).toHaveBeenCalledTimes(1);

@@ -19,7 +19,7 @@ describe('spec:osds-select-option', () => {
     jest.clearAllMocks();
   });
 
-  async function setup({ attributes = {}, html = '' }: { attributes?: Partial<OdsSelectOptionAttribute>, html?: string } = {}) {
+  async function setup({ attributes = {}, html = '' }: { attributes?: Partial<OdsSelectOptionAttribute>, html?: string } = {}): Promise<void> {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsSelectOptionAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
 
     // mock setCustomValidity method that does not exist when stencil mock HTMLInputElement
@@ -49,19 +49,19 @@ describe('spec:osds-select-option', () => {
 
   describe('attributes', () => {
     const config = {
-      instance: () => instance,
-      page: () => page,
-      root: () => page.root,
-      wait: () => page.waitForChanges(),
+      instance: (): OsdsSelectOption => instance,
+      page: (): SpecPage => page,
+      root: (): SpecPage['root'] => page.root,
+      wait: (): Promise<void> => page.waitForChanges(),
     };
 
     describe('value', () => {
       odsUnitTestAttribute<OdsSelectOptionAttribute, 'value'>({
-        name: 'value',
         defaultValue: DEFAULT_ATTRIBUTE.value,
+        name: 'value',
         newValue: 3,
-        value: 4,
         setup: (value) => setup({ attributes: { ['value']: value } }),
+        value: 4,
         ...config,
       });
     });

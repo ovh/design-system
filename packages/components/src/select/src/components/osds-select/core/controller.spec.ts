@@ -1,8 +1,8 @@
 import type { OsdsSelectOption } from '../../osds-select-option/osds-select-option';
+import type { OsdsSelect } from '../osds-select';
 import type { OcdkSurface } from '@ovhcloud/ods-cdk';
 import { OcdkSurfaceMock } from '@ovhcloud/ods-cdk';
 import { OdsSelectController } from './controller';
-import { OsdsSelect } from '../osds-select';
 
 class OdsSelectMock {
   constructor(attribute: Partial<OsdsSelect>) {
@@ -25,7 +25,7 @@ describe('spec:ods-select-controller', () => {
   let item1: OsdsSelectOption & HTMLElement;
   let item2: OsdsSelectOption & HTMLElement;
 
-  function setup(attributes: Partial<OsdsSelect> = {}) {
+  function setup(attributes: Partial<OsdsSelect> = {}): void {
     component = new OdsSelectMock(attributes) as unknown as OsdsSelect;
 
     if (component.surface) {

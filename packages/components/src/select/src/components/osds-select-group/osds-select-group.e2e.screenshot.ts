@@ -1,12 +1,11 @@
 import type { E2EElement, E2EPage } from '@stencil/core/testing';
-
 import { newE2EPage } from '@stencil/core/testing';
 
 describe('e2e:osds-select-group', () => {
   let page: E2EPage;
   let el: E2EElement;
 
-  async function setup() {
+  async function setup(): Promise<void> {
     page = await newE2EPage();
 
     await page.setContent(`
@@ -21,15 +20,15 @@ describe('e2e:osds-select-group', () => {
 
   const screenshotActions = [
     {
-      actionDescription: 'no action',
-      action: () => {
+      action: (): void => {
         // noop
       },
+      actionDescription: 'no action',
     }, {
-      actionDescription: 'displays osds-text',
-      action: () => {
+      action: (): void => {
         el.innerHTML = '<osds-text>My group title</osds-text>';
       },
+      actionDescription: 'displays osds-text',
     },
   ];
 
@@ -43,9 +42,9 @@ describe('e2e:osds-select-group', () => {
 
         await page.evaluate(() => {
           const element = document.querySelector('osds-select-group') as HTMLElement;
-          return { width: element.clientWidth, height: element.clientHeight };
+          return { height: element.clientHeight, width: element.clientWidth };
         });
-        await page.setViewport({ width: 600, height:600 });
+        await page.setViewport({ height:600, width: 600 });
         const results = await page.compareScreenshot('select-group', { fullPage: false, omitBackground: true });
         expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
       });

@@ -1,9 +1,8 @@
-import type { E2EPage } from '@stencil/core/testing';
+import type { OdsSelectAttribute } from './interfaces/attributes';
+import type { E2EElement, E2EPage } from '@stencil/core/testing';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
-import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import { E2EElement, newE2EPage } from '@stencil/core/testing';
+import { newE2EPage } from '@stencil/core/testing';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { OdsSelectAttribute } from './interfaces/attributes';
 
 describe('e2e:osds-select', () => {
   let page: E2EPage;
@@ -18,7 +17,7 @@ describe('e2e:osds-select', () => {
     value: '',
   };
 
-  async function setup({ attributes = {}, html = '' }: { attributes?: Partial<OdsSelectAttribute>, html?: string } = {}) {
+  async function setup({ attributes = {}, html = '' }: { attributes?: Partial<OdsSelectAttribute>, html?: string } = {}): Promise<void> {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsSelectAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
@@ -32,22 +31,22 @@ describe('e2e:osds-select', () => {
 
   const screenshotActions = [
     {
-      actionDescription: 'no action',
-      action: () => {
+      action: (): void => {
         // noop
       },
+      actionDescription: 'no action',
     },
     {
+      action: (): Promise<void> => el.click(),
       actionDescription: 'surface visible',
-      action: () => el.click(),
     },
     {
+      action: (): void => el.setProperty('disabled', true),
       actionDescription: 'disabled',
-      action: () => el.setProperty('disabled', true),
     },
     {
+      action: (): Promise<void> => el.hover(),
       actionDescription: 'hovered',
-      action: () => el.hover(),
     },
   ];
 
@@ -55,7 +54,6 @@ describe('e2e:osds-select', () => {
     // Todo : add active behaviour on top of hover and focus
     screenshotActions.forEach(({ actionDescription, action }) => {
       it(actionDescription, async() => {
-
         await setup({
           html: `
           <span slot="placeholder">Select country</span>
@@ -70,9 +68,9 @@ describe('e2e:osds-select', () => {
 
         await page.evaluate(() => {
           const element = document.querySelector('osds-select') as HTMLElement;
-          return { width: element.clientWidth, height: element.clientHeight };
+          return { height: element.clientHeight, width: element.clientWidth };
         });
-        await page.setViewport({ width: 600, height:600 });
+        await page.setViewport({ height:600, width: 600 });
         const results = await page.compareScreenshot('select', { fullPage: false, omitBackground: true });
         expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
       });
@@ -83,7 +81,6 @@ describe('e2e:osds-select', () => {
     // Todo : add active behaviour on top of hover and focus
     screenshotActions.forEach(({ actionDescription, action }) => {
       it(actionDescription, async() => {
-
         await setup({
           attributes: {
             inline: true,
@@ -101,9 +98,9 @@ describe('e2e:osds-select', () => {
 
         await page.evaluate(() => {
           const element = document.querySelector('osds-select') as HTMLElement;
-          return { width: element.clientWidth, height: element.clientHeight };
+          return { height: element.clientHeight, width: element.clientWidth };
         });
-        await page.setViewport({ width: 600, height:600 });
+        await page.setViewport({ height:600, width: 600 });
         const results = await page.compareScreenshot('select', { fullPage: false, omitBackground: true });
         expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
       });

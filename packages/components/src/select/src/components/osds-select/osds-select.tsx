@@ -4,15 +4,15 @@ import type { OdsSelectMethod } from './interfaces/methods';
 import type { OdsSelectOptionClickEventDetail } from '../osds-select-option/interfaces/events';
 import type { OsdsSelectOption } from '../osds-select-option/osds-select-option';
 import type { OcdkSurface } from '@ovhcloud/ods-cdk';
-import type { FunctionalComponent } from '@stencil/core';
+import type { OdsCommonFieldValidityState, OdsInputValue } from '@ovhcloud/ods-common-core';
+import type { EventEmitter, FunctionalComponent } from '@stencil/core';
 import type { HTMLStencilElement } from '@stencil/core/internal';
-import { OdsCommonFieldValidityState, OdsInputValue, OdsValidityState } from '@ovhcloud/ods-common-core';
 import { ocdkAssertEventTargetIsNode, ocdkDefineCustomElements, ocdkIsSurface } from '@ovhcloud/ods-cdk';
-import { ODS_ICON_NAME, ODS_ICON_SIZE } from '../../../../icon/src';
-import { AttachInternals, Component, Element, Event, EventEmitter, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+import { AttachInternals, Component, Element, Event, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsSelectController } from './core/controller';
-import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+import { ODS_ICON_NAME, ODS_ICON_SIZE } from '../../../../icon/src';
 
 // define custom elements from CDK
 ocdkDefineCustomElements();
@@ -42,13 +42,13 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
   @Prop({ reflect: true }) ariaLabel = DEFAULT_ATTRIBUTE.ariaLabel;
   @Prop() ariaLabelledby = DEFAULT_ATTRIBUTE.ariaLabelledby;
   @Prop({ reflect: true }) defaultValue: OdsInputValue = DEFAULT_ATTRIBUTE.defaultValue;
-  @Prop({ reflect: true, mutable: true }) disabled = DEFAULT_ATTRIBUTE.disabled;
+  @Prop({ mutable: true, reflect: true }) disabled = DEFAULT_ATTRIBUTE.disabled;
   @Prop({ reflect: true }) error = DEFAULT_ATTRIBUTE.error;
   @Prop({ reflect: true }) inline = DEFAULT_ATTRIBUTE.inline;
   @Prop({ reflect: true }) name = DEFAULT_ATTRIBUTE.name;
-  @Prop({ reflect: true, mutable: true }) opened = false;
-  @Prop({ reflect: true, mutable: true }) required = DEFAULT_ATTRIBUTE.required;
-  @Prop({ reflect: true, mutable: true }) value: OdsInputValue = DEFAULT_ATTRIBUTE.value;
+  @Prop({ mutable: true, reflect: true }) opened = false;
+  @Prop({ mutable: true, reflect: true }) required = DEFAULT_ATTRIBUTE.required;
+  @Prop({ mutable: true, reflect: true }) value: OdsInputValue = DEFAULT_ATTRIBUTE.value;
 
   @State() internalError = false;
   @State() selectedOptionLabel = '';
@@ -67,7 +67,7 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
 
   @Method()
   async getValidity(): Promise<OdsCommonFieldValidityState> {
-    return this.controller.getValidity()
+    return this.controller.getValidity();
   }
 
   @Method()
@@ -82,7 +82,7 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
   }
 
   @Listen('click', { target: 'window' })
-  async checkForClickOutside(ev: any): Promise<void> {
+  async checkForClickOutside(ev: MouseEvent): Promise<void> {
     ocdkAssertEventTargetIsNode(ev.target);
     if (!this.dirty || this.surface?.isClickOutsideSurface(ev)) {
       return;
@@ -118,7 +118,7 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
   }
 
   @Watch('opened')
-  openedChanged(opened: boolean) {
+  openedChanged(opened: boolean): void {
     if (this.surface) {
       this.surface.opened = opened;
     }
@@ -152,11 +152,11 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
 
   async emitChange(value: OdsInputValue, oldValue?: OdsInputValue): Promise<CustomEvent<OdsSelectValueChangeEventDetail>> {
     return this.odsValueChange.emit({
-      value: value,
-      oldValue: oldValue,
       name: this.name,
+      oldValue: oldValue,
       selection: this.optionSelected,
       validity: await this.controller.getValidity(),
+      value: value,
     });
   }
 
@@ -187,14 +187,14 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
     await this.updateSelectOptionStates();
   }
 
-  async onBlur() {
+  async onBlur(): Promise<void> {
     this.odsBlur.emit();
     this.internalError = await this.controller.hasError();
   }
 
   setSelectOptions(): void {
     this.controller.selectOptions = this.getSelectOptionList();
-    this.controller.selectOptions.forEach((option) => this.observer?.observe(option, { childList: true, attributes: true, subtree: true }));
+    this.controller.selectOptions.forEach((option) => this.observer?.observe(option, { attributes: true, childList: true, subtree: true }));
   }
 
   syncReferences(): void {
@@ -208,7 +208,7 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
       if (selectOption.selected) {
         this.optionSelected = selectOption;
         nbSelected++;
-        this.selectedOptionLabel = await selectOption.getLabel();
+        this.selectedOptionLabel = await selectOption.getLabel(); // eslint-disable-line no-await-in-loop
       }
     }
   }
@@ -230,14 +230,14 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
         aria-labelledby={ this.ariaLabelledby }
         class={{
           disabled: this.disabled,
-          opened: this.opened,
           'ods-error': this.internalError,
+          opened: this.opened,
         }}
         color="primary"
-        onBlur={ () => this.onBlur() }
-        onClick={ () => this.handleSelectClick() }
+        onBlur={ (): Promise<void> => this.onBlur() }
+        onClick={ (): void => this.handleSelectClick() }
         onKeyDown={ (e: KeyboardEvent): void => this.handleKeyDown(e) }
-        ref={ (el?: HTMLElement | null) => {
+        ref={ (el?: HTMLElement | null): void => {
           this.anchor = el as HTMLElement;
           this.syncReferences();
         }}
@@ -252,21 +252,22 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
             { this.renderLabel() }
           </div>
 
-          <osds-icon color={ ODS_THEME_COLOR_INTENT.primary }
-                     name={ ODS_ICON_NAME.CHEVRON_DOWN }
-                     size={ ODS_ICON_SIZE.sm } >
+          <osds-icon
+            color={ ODS_THEME_COLOR_INTENT.primary }
+            name={ ODS_ICON_NAME.CHEVRON_DOWN }
+            size={ ODS_ICON_SIZE.sm }>
           </osds-icon>
         </div>
 
         <ocdk-surface
           class="overlay"
-          ref={ (el: HTMLElement) => {
+          ref={ (el: HTMLElement): void => {
             if (ocdkIsSurface(el)) {
               this.surface = el as OcdkSurface;
               this.syncReferences();
             }
           }}>
-          <slot onSlotchange={ () => this.handleSlotChange() }></slot>
+          <slot onSlotchange={ (): Promise<void> => this.handleSlotChange() }></slot>
         </ocdk-surface>
       </Host>
     );

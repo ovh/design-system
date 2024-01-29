@@ -58,7 +58,6 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
 
   @State() hasFocus = false;
   @State() internalError = false;
-  @State() hasFocus = false;
 
   @Event() odsBlur!: EventEmitter<void>;
   @Event() odsClear!: EventEmitter<void>;
@@ -94,10 +93,11 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
 
   @Method()
   async setFocus(): Promise<void> {
-    if (this.inputEl) {
-      this.hasFocus = true;
-      this.controller.setFocus(this.inputEl);
-    }
+    // if (!this.hasFocus && this.inputEl) {
+    //   this.hasFocus = true;
+    //   return this.controller.setFocus(this.inputEl);
+    // }
+    this.inputEl?.focus();
   }
 
   @Method()

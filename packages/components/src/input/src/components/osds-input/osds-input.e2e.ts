@@ -153,7 +153,7 @@ describe('e2e:osds-input', () => {
       expect(crossIcon).not.toBeNull();
       await crossIcon.click();
       await page.waitForChanges();
-      
+
       // Verify input value is cleared
       const value = await inputElement.getProperty('value');
       expect(value).toBe('');

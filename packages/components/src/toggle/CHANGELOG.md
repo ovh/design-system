@@ -8,6 +8,21 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [17.0.3-alpha.0](https://ovh.github.io/design-system/v17.0.3-alpha.0/?path=/docs/design-system-changelog--page) (2024-01-29)
+[compare](https://github.com/ovh/design-system/compare/v17.0.2...v17.0.3-alpha.0)
+
+### Bug Fixes
+
+* **toggle:** auto adapt slot container when content is too long ([74ddb45](https://github.com/ovh/design-system/commit/74ddb45f50e053b9039f91a8aad4f819b410debf))
+* **toggle:** fix toggle shrink when slot are too big ([ae65809](https://github.com/ovh/design-system/commit/ae65809804f8a759b3805c689863f53d94a21f9f))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [17.0.2](https://ovh.github.io/design-system/v17.0.2/?path=/docs/design-system-changelog--page) (2024-01-18)
 [compare](https://github.com/ovh/design-system/compare/v17.0.1...v17.0.2)
 

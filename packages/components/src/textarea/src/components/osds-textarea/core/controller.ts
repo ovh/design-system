@@ -23,7 +23,7 @@ class OdsTextAreaController<T extends OsdsTextArea> extends OdsCommonFieldMethod
 
   async hasError(): Promise<boolean> {
     if (!this.component.textareaElement) {
-      return false;
+      return this.component.error;
     }
     const validity = await this.getValidity(this.component.textareaElement);
     return this.component.error || !validity.valid;

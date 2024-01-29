@@ -1,11 +1,13 @@
 import type { OdsInputAttribute } from './interfaces/attributes';
 import type { OdsInputEvent, OdsInputValueChangeEventDetail } from './interfaces/events';
 import type { OdsInputMethod } from './interfaces/methods';
+import type { OdsCommonFieldValidityState, OdsInputValue } from '@ovhcloud/ods-common-core';
 import type { EventEmitter, FunctionalComponent } from '@stencil/core';
-import { AttachInternals, Component, Element, Event, h, Host, Method, Prop, State, Watch } from '@stencil/core';
-import { OdsCommonFieldValidityState, OdsInputValue } from '@ovhcloud/ods-common-core';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+import { AttachInternals, Component, Element, Event, Host, Method, Prop, State, Watch, h } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
+import { ODS_INPUT_SIZE } from './constants/input-size';
+import { ODS_INPUT_TYPE } from './constants/input-type';
 import { OdsInputController } from './core/controller';
 import { ODS_ICON_NAME, ODS_ICON_SIZE } from '../../../../icon/src';
 import { ODS_SPINNER_SIZE } from '../../../../spinner/src';
@@ -30,7 +32,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
 
   @AttachInternals() internals!: ElementInternals;
 
-  @Prop() ariaLabel = DEFAULT_ATTRIBUTE.ariaLabel
+  @Prop() ariaLabel = DEFAULT_ATTRIBUTE.ariaLabel;
   @Prop() ariaLabelledby?: string;
   @Prop({ reflect: true }) clearable?: boolean;
   @Prop({ reflect: true }) defaultValue = DEFAULT_ATTRIBUTE.defaultValue;
@@ -90,10 +92,6 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
 
   @Method()
   async setFocus(): Promise<void> {
-    // if (!this.hasFocus && this.inputEl) {
-    //   this.hasFocus = true;
-    //   return this.controller.setFocus(this.inputEl);
-    // }
     this.inputEl?.focus();
   }
 
@@ -220,10 +218,10 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
         {
           this.icon && !this.loading && (
             <osds-icon
-                ariaName={ `${this.icon} icon` }
-                color={ ODS_THEME_COLOR_INTENT.primary }
-                name={ this.icon }
-                size={ ODS_ICON_SIZE.sm }>
+              ariaName={ `${this.icon} icon` }
+              color={ ODS_THEME_COLOR_INTENT.primary }
+              name={ this.icon }
+              size={ ODS_ICON_SIZE.sm }>
             </osds-icon>
           )
         }

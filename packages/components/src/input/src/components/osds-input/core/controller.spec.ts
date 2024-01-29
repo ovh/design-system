@@ -1,11 +1,12 @@
 import { OdsInputController } from './controller';
-import { OsdsInput } from '../osds-input';
 import { ODS_INPUT_TYPE } from '../constants/input-type';
+import { OsdsInput } from '../osds-input';
 
 class OdsInputMock {
   constructor(attribute: Partial<OsdsInput>) {
     Object.assign(this, attribute);
   }
+
   ariaLabel = '';
   defaultValue = null;
   disabled = false;
@@ -15,8 +16,9 @@ class OdsInputMock {
   emitBlur = jest.fn();
   error = false;
   internals = {
-    setFormValue: jest.fn()
+    setFormValue: jest.fn(),
   };
+
   masked = false;
   name = '';
   odsHide = { emit: jest.fn() };
@@ -27,7 +29,7 @@ class OdsInputMock {
 describe('spec:ods-input-controller', () => {
   let controller: OdsInputController<OsdsInput>;
   let component: OsdsInput;
-  let spyOnAssertValue: jest.SpyInstance<void, jest.ArgsType<OdsInputController['assertValue']>>;
+  let spyOnAssertValue: jest.SpyInstance<void, jest.ArgsType<OdsInputController<OsdsInput>['assertValue']>>;
 
   function setup(attributes: Partial<OsdsInput> = {}) {
     component = new OdsInputMock(attributes) as unknown as OsdsInput;
@@ -76,7 +78,7 @@ describe('spec:ods-input-controller', () => {
           const min = 5;
           const max = 10;
           const value = 3;
-          setup({ min, max, value, step: 1, type: ODS_INPUT_TYPE.number });
+          setup({ max, min, step: 1, type: ODS_INPUT_TYPE.number, value });
           controller.onValueChange(value);
 
           expect(console.warn).toHaveBeenCalledTimes(1);
@@ -87,7 +89,7 @@ describe('spec:ods-input-controller', () => {
           const min = 5;
           const max = 10;
           const value = 12;
-          setup({ min, max, value, step: 1, type: ODS_INPUT_TYPE.number });
+          setup({ max, min, step: 1, type: ODS_INPUT_TYPE.number, value });
           controller.onValueChange(value);
 
           expect(console.warn).toHaveBeenCalledTimes(1);
@@ -97,7 +99,7 @@ describe('spec:ods-input-controller', () => {
         it('should warn if value is not a multiple of step', () => {
           const value = 5;
           const step = 2;
-          setup({ min: 0, max: 10, value, step, type: ODS_INPUT_TYPE.number });
+          setup({ max: 10, min: 0, step, type: ODS_INPUT_TYPE.number, value });
           controller.onValueChange(value);
 
           expect(console.warn).toHaveBeenCalledTimes(1);
@@ -122,7 +124,7 @@ describe('spec:ods-input-controller', () => {
         it('should set forbiddenValue (flat forbiddenValues)', () => {
           const value = 5;
           const forbiddenValues = [value];
-          setup({ inputEl, value, forbiddenValues });
+          setup({ forbiddenValues, inputEl, value });
 
           controller.onValueChange('');
 
@@ -205,7 +207,7 @@ describe('spec:ods-input-controller', () => {
         controller.hide();
         expect(component.masked).toBe(false);
       });
-    
+
       it('should not hide input because of disable', () => {
         setup({ disabled: true });
         controller.hide();
@@ -217,7 +219,7 @@ describe('spec:ods-input-controller', () => {
       it('should not change component value if it is disabled', () => {
         const value = '3';
         const inputEl = document.createElement('input');
-        setup({ disabled: true, value, type: ODS_INPUT_TYPE.number, inputEl });
+        setup({ disabled: true, inputEl, type: ODS_INPUT_TYPE.number, value });
         controller.onInput(new Event(''));
 
         expect(`${component.value}`).toBe(`${value}`);
@@ -226,7 +228,7 @@ describe('spec:ods-input-controller', () => {
       it('should change the component number value', () => {
         const inputEl = document.createElement('input');
         inputEl.value = '5';
-        setup({ disabled: false, value: '3', type: ODS_INPUT_TYPE.number, inputEl });
+        setup({ disabled: false, inputEl, type: ODS_INPUT_TYPE.number, value: '3' });
         controller.onInput(new Event(''));
 
         expect(`${component.value}`).toBe(`${inputEl.value}`);
@@ -235,7 +237,7 @@ describe('spec:ods-input-controller', () => {
       it('value should be undefined if no input value', () => {
         const inputEl = document.createElement('input');
         inputEl.value = '';
-        setup({ disabled: false, value: '3', type: ODS_INPUT_TYPE.number, inputEl });
+        setup({ disabled: false, inputEl, type: ODS_INPUT_TYPE.number, value: '3' });
         controller.onInput(new Event(''));
 
         expect(`${component.value}`).toBe('');
@@ -244,7 +246,7 @@ describe('spec:ods-input-controller', () => {
       it('should change the component text value', () => {
         const inputEl = document.createElement('input');
         inputEl.value = 'ipsum';
-        setup({ disabled: false, value: '3', type: 'oles' as any, inputEl });
+        setup({ disabled: false, inputEl, type: 'oles' as unknown as ODS_INPUT_TYPE, value: '3' });
         controller.onInput(new Event(''));
 
         expect(`${component.value}`).toBe(`${inputEl.value}`);

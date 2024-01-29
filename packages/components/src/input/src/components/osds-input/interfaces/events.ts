@@ -7,7 +7,7 @@ import type { EventEmitter } from '@stencil/core';
 
 interface OdsInputEvent extends OdsCommonFieldEvent {
   odsHide: EventEmitter<void>;
-};
+}
 
 export type {
   OdsInputEvent,

@@ -24,7 +24,7 @@ class OdsInputController<T extends OsdsInput> extends OdsCommonFieldMethodContro
       inputEl.value = '';
     }
 
-    return super.clear()
+    return super.clear();
   }
 
   /**
@@ -38,11 +38,11 @@ class OdsInputController<T extends OsdsInput> extends OdsCommonFieldMethodContro
         this.component.value = newValue;
       } else {
         switch (this.component.type) {
-        case 'number':
-          this.component.value = Number(newValue);
-          break;
-        default:
-          this.component.value = newValue;
+          case 'number':
+            this.component.value = Number(newValue);
+            break;
+          default:
+            this.component.value = newValue;
         }
       }
     }
@@ -50,7 +50,7 @@ class OdsInputController<T extends OsdsInput> extends OdsCommonFieldMethodContro
 
   async hasError(): Promise<boolean> {
     if (!this.component.inputEl) {
-      return false;
+      return this.component.error;
     }
     const validity = await this.getValidity(this.component.inputEl);
     return this.component.error || !validity.valid;

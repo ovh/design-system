@@ -7,6 +7,6 @@ interface OdsSelectAttribute extends OdsCommonFieldAttribute {
   opened?: boolean;
 }
 
-export {
+export type {
   OdsSelectAttribute,
 };

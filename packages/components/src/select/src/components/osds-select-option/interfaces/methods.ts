@@ -5,6 +5,6 @@ interface OdsSelectOptionMethod {
   getLabel(): Promise<string>;
 }
 
-export {
+export type {
   OdsSelectOptionMethod,
 };

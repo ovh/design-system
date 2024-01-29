@@ -8,6 +8,20 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [17.0.3-alpha.0](https://ovh.github.io/design-system/v17.0.3-alpha.0/?path=/docs/design-system-changelog--page) (2024-01-29)
+[compare](https://github.com/ovh/design-system/compare/v17.0.2...v17.0.3-alpha.0)
+
+### Bug Fixes
+
+* **quantity:** fix arrow showing in safari ([e826c42](https://github.com/ovh/design-system/commit/e826c4236d79ace3153d3421d5ef29d0fce41075))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [17.0.2](https://ovh.github.io/design-system/v17.0.2/?path=/docs/design-system-changelog--page) (2024-01-18)
 [compare](https://github.com/ovh/design-system/compare/v17.0.1...v17.0.2)
 

@@ -8,6 +8,20 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [17.0.3-alpha.0](https://ovh.github.io/design-system/v17.0.3-alpha.0/?path=/docs/design-system-changelog--page) (2024-01-29)
+[compare](https://github.com/ovh/design-system/compare/v17.0.2...v17.0.3-alpha.0)
+
+### Bug Fixes
+
+* **tile:** rounded border on safari ([915acfd](https://github.com/ovh/design-system/commit/915acfdfc33fd4b3dbb24c79ad549494d5f120c2))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [17.0.2](https://ovh.github.io/design-system/v17.0.2/?path=/docs/design-system-changelog--page) (2024-01-18)
 [compare](https://github.com/ovh/design-system/compare/v17.0.1...v17.0.2)
 

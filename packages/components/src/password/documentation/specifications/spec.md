@@ -8,7 +8,7 @@
 |**`ariaLabel`** | `undefined` \| `string` | ✴️ |  | |
 |**`ariaLabelledby`** | _string_ |  |  | ID of the element that labels the input|
 |**`clearable`** | _boolean_ |  |  | Ability to clear the input value|
-|**`defaultValue`** | `OdsInputValue` | ✴️ |  | Default value of the input|
+|**`defaultValue`** | `undefined` \| `string` | ✴️ |  | |
 |**`disabled`** | _boolean_ | ✴️ |  | Indicates if the input is disabled or not: see component principles|
 |**`error`** | _boolean_ | ✴️ |  | Indicates if the input shows error or not|
 |**`forbiddenValues`** | OdsInputValue[] |  |  | List of forbidden values for the input|
@@ -22,7 +22,7 @@
 |**`readOnly`** | _boolean_ |  |  | Indicates if the input is read-only or not|
 |**`required`** | _boolean_ |  |  | Indicates if the input is required or not|
 |**`tabindex`** | _number_ |  |  | Tabindex for the input|
-|**`value`** | `OdsInputValue` | ✴️ |  | Type of the input field|
+|**`value`** | `undefined` \| `string` | ✴️ |  | Current value of the password|
 
 ### OdsPasswordEvent
 |Name | Type | Required | Default | Description|
@@ -39,11 +39,10 @@
 |---|---|:---:|---|---|
 |**`clear`** | `Promise<void>` | ✴️ |  | empty the value|
 |**`formResetCallback`** | _void_ | ✴️ |  | |
-|**`getValidity`** | `Promise<undefined` \| `OdsCommonFieldValidityState>` | ✴️ |  | |
+|**`getValidity`** | `Promise<undefined` \| `OdsCommonFieldValidityState>` | ✴️ |  | return the element validity|
 |**`hide`** | `Promise<void>` | ✴️ |  | |
 |**`reset`** | `Promise<void>` | ✴️ |  | restore the value to the initial state|
 |**`setFocus`** | `Promise<void>` | ✴️ |  | active the focus on the input in order to let the user write something|
-|**`setTabindex`** | `Promise<void>` | ✴️ |  | set a custom tab index for easier navigation|
 
 ### OdsPasswordValueChangeEventDetail
 |Name | Type | Required | Default | Description|

@@ -4,16 +4,7 @@ import { OdsCommonFieldMethodController } from '@ovhcloud/ods-common-core';
 import { OdsWarnComponentAttribute } from '@ovhcloud/ods-common-core';
 import { ODS_INPUT_TYPE } from '../constants/input-type';
 
-/**
- * common controller logic for input component used by the different implementations.
- * it contains all the glue between framework implementation and the third party service.
- */
 class OdsInputController<T extends OsdsInput> extends OdsCommonFieldMethodController<T> {
-
-  constructor(component: T) {
-    super(component);
-  }
-
   assertValue(value: OdsInputValue): void {
     this.validateValue(value as number);
     this.updateInputCustomValidation();
@@ -78,13 +69,13 @@ class OdsInputController<T extends OsdsInput> extends OdsCommonFieldMethodContro
     this.component.inputEl && this.handleInputValue(this.component.inputEl.value);
   }
 
-  onValueChange(value: OdsInputValue, oldValue?: OdsInputValue): void {
+  async onValueChange(value: OdsInputValue, oldValue?: OdsInputValue): Promise<void> {
     this.assertValue(value);
     if (this.component.inputEl) {
       this.component.inputEl.value = value?.toString() ?? '';
     }
     this.component.internals.setFormValue(value?.toString() ?? '');
-    this.component.emitChange(value, oldValue);
+    return this.component.emitChange(value, oldValue);
   }
 
   private updateInputCustomValidation(): void {

@@ -190,13 +190,6 @@ describe('spec:osds-select', () => {
       expect(instance?.value).toBe('');
     });
 
-    it('should call setTabindex function and inputTabindex should be set to 4', async() => {
-      await setup({ attributes: { value: 2 } });
-      expect(instance).toBeTruthy();
-      await instance.setTabindex(4);
-      expect(instance.tabindex).toBe(4);
-    });
-
     it('should call getValidity function and get an OdsValidityState.valid to true', async() => {
       await setup({ attributes: { value: 'my-value-1' } });
       expect(instance).toBeTruthy();

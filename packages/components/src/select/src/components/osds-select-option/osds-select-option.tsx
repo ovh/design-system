@@ -7,38 +7,20 @@ import { Component, Element, Event, EventEmitter, Host, Method, Prop, State, h }
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 
 @Component({
-  tag: 'osds-select-option',
-  styleUrl: 'osds-select-option.scss',
   shadow: true,
+  styleUrl: 'osds-select-option.scss',
+  tag: 'osds-select-option',
 })
 export class OsdsSelectOption implements OdsSelectOptionAttribute, OdsSelectOptionEvent, OdsSelectOptionMethod {
   @Element() el!: HTMLStencilElement;
 
-  @State() tabindex = 0;
-
-  /**
-   * Whether or not it is the selected value (fetched from parent).
-   * UI only purpose
-   * @internal
-   */
   @Prop({ reflect: true }) selected?: boolean = false;
   @Prop({ reflect: true }) value: OdsInputValue = DEFAULT_ATTRIBUTE.value;
 
+  @State() tabindex = 0;
+
   @Event() odsSelectOptionClick!: EventEmitter<OdsSelectOptionClickEventDetail>;
 
-  /**
-   * @internal
-   * @see OdsSelectOptionMethods.setTabIndex
-   */
-  @Method()
-  async setTabIndex(value: number) {
-    this.tabindex = value;
-  }
-
-  /**
-   * @internal
-   * @see OdsSelectOptionMethods.getLabel
-   */
   @Method()
   async getLabel() {
     return this.el.innerText;
@@ -48,29 +30,22 @@ export class OsdsSelectOption implements OdsSelectOptionAttribute, OdsSelectOpti
     this.odsSelectOptionClick.emit({ value });
   }
 
-  handleClick(event: MouseEvent) {
+  handleClick(event: MouseEvent): void {
     event.stopPropagation();
     this.emitClick(this.value);
   }
 
   render() {
-    const {
-      selected,
-      tabindex,
-    } = this;
-
     return (
-      <Host {...{
-        'aria-labelledby': this.el.innerText,
-        tabindex,
-        onClick: this.handleClick.bind(this),
-        size: 'md',
-      }}
-      >
-        <div {...{
-          class: `option${selected ? ' selected' : ''}`,
+      <Host
+        aria-labelledby={ this.el.innerText }
+        onClick={ (e: MouseEvent): void => this.handleClick(e) }
+        size="md">
+        <div class={{
+          option: true,
+          selected: !!this.selected,
         }}>
-          <span class={'truncated'}>
+          <span class="truncated">
             <slot></slot>
           </span>
         </div>

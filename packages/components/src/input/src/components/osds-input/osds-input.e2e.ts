@@ -9,9 +9,10 @@ import { ODS_INPUT_TYPE } from './constants/input-type';
 class FormDataMock {
   private formMap = new Map();
   constructor(form?: HTMLFormElement) {
+    // @ts-ignore
     for (const child of form?.children || []) {
       this.formMap.set(child.getAttribute('name'), child.getAttribute('value') || '')
-    }    
+    }
   }
   [Symbol.iterator] = this.formMap[Symbol.iterator];
   entries = this.formMap.entries;
@@ -95,7 +96,7 @@ describe('e2e:osds-input', () => {
       expect(crossIcon).not.toBeNull();
       await crossIcon.click();
       await page.waitForChanges();
-      
+
       // Verify input value is cleared
       const value = await inputElement.getProperty('value');
       expect(value).toBe('');
@@ -350,21 +351,10 @@ describe('e2e:osds-input', () => {
     });
   });
 
-  describe('method:setTabindex', () => {
-
-    it('should set tabindex to -1', async() => {
-      await setup({ attributes: { type: ODS_INPUT_TYPE.number } });
-      await el.callMethod('setTabindex', '-1');
-      await page.waitForChanges();
-      const value = el.getAttribute('tabindex');
-      expect(value).toBe('-1');
-    });
-  });
-
   describe('method:setFocus', () => {
     it('should be focusable', async() => {
       await setup({ attributes: { type: ODS_INPUT_TYPE.number } });
-      const focusSpy = await page.spyOnEvent('odsFocus'); 
+      const focusSpy = await page.spyOnEvent('odsFocus');
 
       await el.callMethod('setFocus');
       await page.waitForChanges();
@@ -379,7 +369,7 @@ describe('e2e:osds-input', () => {
 
     it('should be focusable with tab', async() => {
       await setup({ attributes: { type: ODS_INPUT_TYPE.number } });
-      const focusSpy = await page.spyOnEvent('odsFocus'); 
+      const focusSpy = await page.spyOnEvent('odsFocus');
 
       // First, we set the focus to another element
       await page.focus('#anotherInput');
@@ -398,7 +388,7 @@ describe('e2e:osds-input', () => {
 
     it('should be focusable with click', async() => {
       await setup({ attributes: { type: ODS_INPUT_TYPE.number } });
-      const focusSpy = await page.spyOnEvent('odsFocus'); 
+      const focusSpy = await page.spyOnEvent('odsFocus');
 
       // First, we set the focus to another element
       await el.click();
@@ -414,7 +404,7 @@ describe('e2e:osds-input', () => {
 
     it('should not be focusable when disabled', async() => {
       await setup({ attributes: { type: ODS_INPUT_TYPE.number, disabled: true } });
-      const focusSpy = await page.spyOnEvent('odsFocus'); 
+      const focusSpy = await page.spyOnEvent('odsFocus');
 
       await el.callMethod('setFocus');
       await page.waitForChanges();
@@ -456,7 +446,6 @@ describe('e2e:osds-input', () => {
             valueMissing: false,
           },
           value: '',
-          name: '',
         };
       });
 
@@ -585,7 +574,7 @@ describe('e2e:osds-input', () => {
     let natifInput: E2EElement;
     let form: E2EElement;
 
-    async function setupForm(formAttributes = {}) { 
+    async function setupForm(formAttributes = {}) {
       page = await newE2EPage();
       await page.setContent(`
         <form ${odsStringAttributes2Str(formAttributes)}>

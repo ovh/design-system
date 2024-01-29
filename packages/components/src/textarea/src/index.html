@@ -86,6 +86,14 @@
     const odsTextareaFocus = document.querySelector('#odsTextarea-focus');
     const odsTextareaReset = document.querySelector('#odsTextarea-reset');
 
+    odsTextarea1.addEventListener('odsBlur', (event) => {
+      console.log('blur event');
+    });
+
+    odsTextarea1.addEventListener('odsFocus', (event) => {
+      console.log('focus event');
+    });
+
     odsTextarea1.addEventListener('odsValueChange', (event) => {
       console.log('🟡 odsValueChange event', event.detail);
 

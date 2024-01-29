@@ -91,19 +91,6 @@ describe('e2e:osds-textarea', () => {
         expect(activeElementId).toBe(undefined);
       });
     });
-
-    describe('setTabindex', () => {
-      it('should set host tabindex and keep textarea tabindex to -1', async() => {
-        const dummyTabindex = 33;
-        await setup();
-
-        await el.callMethod('setTabindex', dummyTabindex);
-        await page.waitForChanges();
-
-        expect(el.getAttribute('tabindex')).toBe(dummyTabindex.toString());
-        expect(textareaElement.getAttribute('tabindex')).toBe('-1');
-      });
-    });
   });
 
   describe('events', () => {

@@ -122,14 +122,6 @@ describe('e2e:osds-password', () => {
       expect(focusSpy).toHaveReceivedEventTimes(1);
     });
 
-    it('should call setTabindex', async() => {
-      await setup({ attributes: { } });
-      await el.callMethod('setTabindex', '1');
-      await page.waitForChanges();
-
-      expect(el.getAttribute('tabindex')).toBe('1');
-    });
-
     it('should call hide', async() => {
       await setup({ attributes: { masked: true } });
       const hideSpy = await page.spyOnEvent('odsHide');

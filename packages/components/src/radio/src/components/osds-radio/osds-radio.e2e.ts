@@ -122,6 +122,16 @@ describe('e2e:osds-radio', () => {
         expect(odsBlur).toHaveReceivedEvent();
       });
     });
+
+    describe('disabled', () => {
+      it('should not emit when user has checked the radio', async() => {
+        await setup({ attributes: { disabled: true } });
+        const odsCheckedChange = await el.spyOnEvent('odsCheckedChange');
+        await toggleByClick();
+
+        expect(odsCheckedChange).not.toHaveReceivedEvent();
+      });
+    });
   });
 });
 

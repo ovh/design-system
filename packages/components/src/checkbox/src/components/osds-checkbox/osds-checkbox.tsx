@@ -104,10 +104,7 @@ export class OsdsCheckbox implements OdsCheckboxMethod, OdsCheckboxEvent, OdsChe
    */
   @Listen('click')
   async handleToggleByClick(event: MouseEvent) {
-    if (!this.disabled) {
-      this.logger.log(`[checkbox=${this.inputId}]`, 'click');
-      await this.controller.handleToggleByClick(event);
-    }
+    await this.controller.handleToggleByClick(event);
   }
 
   /**
@@ -117,10 +114,7 @@ export class OsdsCheckbox implements OdsCheckboxMethod, OdsCheckboxEvent, OdsChe
    */
   @Listen('keydown')
   async handleToggleByKeyEvent(event: KeyboardEvent) {
-    if (!this.disabled) {
-      this.logger.log(`[checkbox=${this.inputId}]`, 'key event', { event });
-      await this.controller.handleToggleByKeyEvent(event);
-    }
+    await this.controller.handleToggleByKeyEvent(event);
   }
 
   @Listen('blur')

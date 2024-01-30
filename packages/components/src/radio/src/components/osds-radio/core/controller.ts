@@ -163,9 +163,10 @@ class OdsRadioController {
    * @param event
    */
   async handleLabelKeyEvent(event: KeyboardEvent) {
-    this.logger.log(`[radio=${this.component.value}]`, 'key event', { event });
-    if (event.code === 'Space' || event.code.includes('Enter')) {
-      await this.handleLabelEvent();
+    if (!this.component.disabled) {
+      if (event.code === 'Space' || event.code.includes('Enter')) {
+        await this.handleLabelEvent();
+      }
     }
   }
 

@@ -61,16 +61,12 @@ export class OsdsButton implements OdsButtonAttribute {
 
   @Listen('keyup')
   handleKey(event: KeyboardEvent) {
-    if (!this.disabled) {
-      this.controller.handleKey(event);
-    }
+    this.controller.handleKey(event);
   }
 
   @Listen('click')
   handleClick(event: MouseEvent) {
-    if (!this.disabled) {
-      this.controller.handleClick(event);
-    }
+    this.controller.handleClick(event);
   }
 
   /** @see OdsButtonBehavior.beforeRender */

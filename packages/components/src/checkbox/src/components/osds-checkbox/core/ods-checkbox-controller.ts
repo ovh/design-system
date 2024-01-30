@@ -40,15 +40,19 @@ class OdsCheckboxController {
   }
 
   async handleToggleByClick(event: MouseEvent): Promise<void> {
-    this.logger.log(`[checkbox=${this.component.value}]`, 'click event', { event });
-    event.preventDefault();
-    await this.toggleCheck();
+    if (!this.component.disabled) {
+      this.logger.log(`[checkbox=${this.component.value}]`, 'click event', { event });
+      event.preventDefault();
+      await this.toggleCheck();
+    }
   }
 
   async handleToggleByKeyEvent(event: KeyboardEvent): Promise<void> {
-    this.logger.log(`[checkbox=${this.component.value}]`, 'key event', { event });
-    if (event.code === 'Space' || event.code.includes('Enter')) {
-      await this.toggleCheck();
+    if (!this.component.disabled) {
+      this.logger.log(`[checkbox=${this.component.value}]`, 'key event', { event });
+      if (event.code === 'Space' || event.code.includes('Enter')) {
+        await this.toggleCheck();
+      }
     }
   }
 

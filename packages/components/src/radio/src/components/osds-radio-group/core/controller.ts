@@ -95,10 +95,6 @@ class OdsRadioGroupController {
     }
   }
 
-  handleLabelClick(event: PointerEvent): void {
-    this.logger.log(`[radio-group=${this.component.value}]`, 'click', event);
-  }
-
   onValueChange(newValue: string, previousValue: string): void {
     this.logger.log(`[radio-group=${this.component.inputId}]`, 'value changed', { newValue, previousValue });
     if (this.component.radios) {

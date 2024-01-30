@@ -5,6 +5,6 @@ interface OdsSelectOptionAttribute {
   value: OdsInputValue;
 }
 
-export {
+export type {
   OdsSelectOptionAttribute,
 };

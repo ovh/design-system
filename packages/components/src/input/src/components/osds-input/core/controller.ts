@@ -38,11 +38,11 @@ class OdsInputController<T extends OsdsInput> extends OdsCommonFieldMethodContro
         this.component.value = newValue;
       } else {
         switch (this.component.type) {
-        case 'number':
-          this.component.value = Number(newValue);
-          break;
-        default:
-          this.component.value = newValue;
+          case 'number':
+            this.component.value = Number(newValue);
+            break;
+          default:
+            this.component.value = newValue;
         }
       }
     }

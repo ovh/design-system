@@ -3,18 +3,18 @@ import type { SpecPage } from '@stencil/core/testing';
 import { OdsMockNativeMethod, OdsMockPropertyDescriptor, odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 import { newSpecPage } from '@stencil/core/testing';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { OsdsSelect } from './osds-select';
 import { OdsSelectController } from './core/controller';
+import { OsdsSelect } from './osds-select';
 
 const mutationObserverMock = jest.fn(function MutationObserver(callback) {
   this.observe = jest.fn();
   this.disconnect = jest.fn();
   // Optionally add a trigger() method to manually trigger a change
-  this.trigger = (mockedMutationsList) => {
+  this.trigger = (mockedMutationsList): void => {
     callback(mockedMutationsList, this);
   };
 });
-// @ts-ignore
+// @ts-ignore for test purpose
 global.MutationObserver = mutationObserverMock;
 
 // mock validity property that does not exist when stencil mock HTMLInputElement
@@ -53,7 +53,7 @@ describe('spec:osds-select', () => {
     jest.clearAllMocks();
   });
 
-  async function setup({ attributes = {}, html = '' }: { attributes?: Partial<OdsSelectAttribute>, html?: string }) {
+  async function setup({ attributes = {}, html = '' }: { attributes?: Partial<OdsSelectAttribute>, html?: string }): Promise<void> {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsSelectAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
 
     // mock setCustomValidity method that does not exist when stencil mock HTMLInputElement
@@ -98,63 +98,63 @@ describe('spec:osds-select', () => {
 
   describe('attributes', () => {
     const config = {
-      instance: () => instance,
-      page: () => page,
-      root: () => page.root,
-      wait: () => page.waitForChanges(),
+      instance: (): OsdsSelect => instance,
+      page: (): SpecPage => page,
+      root: (): SpecPage['root'] => page.root,
+      wait: (): Promise<void> => page.waitForChanges(),
     };
 
     describe('disabled', () => {
       odsUnitTestAttribute<OdsSelectAttribute, 'disabled'>({
-        name: 'disabled',
         defaultValue: DEFAULT_ATTRIBUTE.disabled,
+        name: 'disabled',
         newValue: false,
-        value: true,
         setup: (value) => setup({ attributes: { ['disabled']: value } }),
+        value: true,
         ...config,
       });
     });
 
     describe('error', () => {
       odsUnitTestAttribute<OdsSelectAttribute, 'error'>({
-        name: 'error',
         defaultValue: DEFAULT_ATTRIBUTE.error,
+        name: 'error',
         newValue: false,
-        value: true,
         setup: (value) => setup({ attributes: { ['error']: value } }),
+        value: true,
         ...config,
       });
     });
 
     describe('inline', () => {
       odsUnitTestAttribute<OdsSelectAttribute, 'inline'>({
-        name: 'inline',
         defaultValue: DEFAULT_ATTRIBUTE.inline,
+        name: 'inline',
         newValue: false,
-        value: true,
         setup: (value) => setup({ attributes: { ['inline']: value } }),
+        value: true,
         ...config,
       });
     });
 
     describe('required', () => {
       odsUnitTestAttribute<OdsSelectAttribute, 'required'>({
-        name: 'required',
         defaultValue: DEFAULT_ATTRIBUTE.required,
+        name: 'required',
         newValue: false,
-        value: true,
         setup: (value) => setup({ attributes: { ['required']: value } }),
+        value: true,
         ...config,
       });
     });
 
     describe('value', () => {
       odsUnitTestAttribute<OdsSelectAttribute, 'value'>({
-        name: 'value',
         defaultValue: DEFAULT_ATTRIBUTE.value,
+        name: 'value',
         newValue: 3,
-        value: 4,
         setup: (value) => setup({ attributes: { ['value']: value } }),
+        value: 4,
         ...config,
       });
     });

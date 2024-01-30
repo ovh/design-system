@@ -1,18 +1,15 @@
 import type { OdsSelectOptionAttribute } from './interfaces/attributes';
 import type { E2EElement, E2EPage } from '@stencil/core/testing';
-
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import { newE2EPage } from '@stencil/core/testing';
-
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-
 
 describe('e2e:osds-select-option', () => {
   const baseAttribute = { value: '' };
   let page: E2EPage;
   let el: E2EElement;
 
-  async function setup({ attributes = {}, onPage }: { attributes?: Partial<OdsSelectOptionAttribute>, html?: string, onPage?: ({ page }: { page: E2EPage }) => void } = {}) {
+  async function setup({ attributes = {}, onPage }: { attributes?: Partial<OdsSelectOptionAttribute>, onPage?: ({ page }: { page: E2EPage }) => void } = {}): Promise<void> {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsSelectOptionAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
@@ -30,30 +27,30 @@ describe('e2e:osds-select-option', () => {
 
   const screenshotActions = [
     {
-      actionDescription: 'no action',
-      action: () => {
+      action: (): void => {
         // noop
       },
+      actionDescription: 'no action',
     }, {
-      actionDescription: 'value',
-      action: () => {
+      action: (): void => {
         el.setProperty('value', 42);
       },
+      actionDescription: 'value',
     },
   ];
 
   const screenshotBehaviours = [
     {
-      behaviourDescription: 'no behaviour',
-      behaviour: () => {
+      behaviour: (): void => {
         // noop
       },
+      behaviourDescription: 'no behaviour',
     }, {
+      behaviour: (): Promise<void> => el.hover(),
       behaviourDescription: 'hover',
-      behaviour: () => el.hover(),
     }, {
+      behaviour: (): Promise<void> => el.focus(),
       behaviourDescription: 'focus',
-      behaviour: () => el.focus(),
     },
   ];
 
@@ -69,9 +66,9 @@ describe('e2e:osds-select-option', () => {
 
           await page.evaluate(() => {
             const element = document.querySelector('osds-select-option') as HTMLElement;
-            return { width: element.clientWidth, height: element.clientHeight };
+            return { height: element.clientHeight, width: element.clientWidth };
           });
-          await page.setViewport({ width: 600, height:600 });
+          await page.setViewport({ height:600, width: 600 });
           const results = await page.compareScreenshot('select-option', { fullPage: false, omitBackground: true });
           expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
         });

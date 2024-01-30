@@ -1,23 +1,15 @@
 import type { OdsSelectOptionClickEventDetail, OsdsSelectOption } from '../../osds-select-option/public-api';
-import type { OsdsSelect } from '../osds-select';
 import type { OdsSelectValueChangeEventDetail } from '../interfaces/events';
-import { OdsCommonFieldMethodController, OdsCommonFieldValidityState, OdsInputValue } from '@ovhcloud/ods-common-core';
+import type { OsdsSelect } from '../osds-select';
+import type { OdsCommonFieldValidityState, OdsInputValue } from '@ovhcloud/ods-common-core';
+import { OdsCommonFieldMethodController } from '@ovhcloud/ods-common-core';
 
 /**
  * common controller logic for select component used by the different implementations.
  * it contains all the glue between framework implementation and the third party service.
  */
 class OdsSelectController<T extends OsdsSelect> extends OdsCommonFieldMethodController<T, OdsSelectValueChangeEventDetail> {
-  //private _selectOptions: (HTMLElement & OsdsSelectOption)[] = [];
   public selectOptions: (HTMLElement & OsdsSelectOption)[] = [];
-
-  // public get selectOptions(): (HTMLElement & OsdsSelectOption)[] {
-  //   return this._selectOptions;
-  // }
-  //
-  // public set selectOptions(value: (HTMLElement & OsdsSelectOption)[]) {
-  //   this._selectOptions = value;
-  // }
 
   constructor(component: T) {
     super(component);
@@ -66,7 +58,7 @@ class OdsSelectController<T extends OsdsSelect> extends OdsCommonFieldMethodCont
     if (!this.component.opened) {
       return;
     }
-    const focusSelectOption = (index: number) => {
+    const focusSelectOption = (index: number): void => {
       this.selectOptions[index].focus();
       this.selectOptions[index].setAttribute('selected', '');
       event.preventDefault();
@@ -138,7 +130,6 @@ class OdsSelectController<T extends OsdsSelect> extends OdsCommonFieldMethodCont
 
   async hasError(): Promise<boolean> {
     const validity = await this.getValidity();
-    console.log(validity)
     return this.component.error || !validity.valid;
   }
 

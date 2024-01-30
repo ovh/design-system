@@ -285,6 +285,20 @@ describe('e2e:osds-pagination', () => {
   describe('per page change', () => {
     let pageItemElements: E2EElement[];
 
+    it('should have a default step of 10', async() => {
+      await setup({ attributes: { current: 1, totalItems: 20 } });
+
+      pageItemElements = await page.findAll('osds-pagination >>> ul > li:not([class="arrows"])');
+      expect(pageItemElements.length).toBe(2);
+    });
+
+    it('should adapt to default step of 25 if defaultItemsPerPage', async() => {
+      await setup({ attributes: { current: 1, totalItems: 20, defaultItemsPerPage: 25 } });
+
+      pageItemElements = await page.findAll('osds-pagination >>> ul > li:not([class="arrows"])');
+      expect(pageItemElements.length).toBe(1);
+    });
+
     it('should change the totalPages according to the selected step', async() => {
       await setup({ attributes: { current: 1, totalItems: 20 } });
 

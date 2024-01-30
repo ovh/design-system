@@ -42,7 +42,7 @@ export class OsdsPagination implements OdsPaginationAttribute, OdsPaginationEven
   @Event() odsPaginationItemPerPageChanged!: EventEmitter<OdsPaginationItemPerPageChangedEventDetail>;
 
   componentWillLoad(): void {
-    this.itemPerPage = this.defaultItemsPerPage || ODS_PAGINATION_PER_PAGE_MIN;
+    this.itemPerPage = ODS_PAGINATION_PER_PAGE_OPTIONS.includes(this.defaultItemsPerPage) && this.defaultItemsPerPage || ODS_PAGINATION_PER_PAGE_MIN;
 
     if (this.totalItems) {
       this.actualTotalPages = this.controller.computeActualTotalPages(this.itemPerPage);

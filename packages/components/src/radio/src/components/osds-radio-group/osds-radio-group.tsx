@@ -105,12 +105,6 @@ export class OsdsRadioGroup implements OdsRadioGroupAttribute, OdsRadioGroupEven
     this.onDestroy();
   }
 
-  private handleLabelClick(event: PointerEvent) {
-    if (!this.disabled) {
-      this.controller.handleLabelClick(event);
-    }
-  }
-
   render() {
     const { label, labelId, name } = this;
 
@@ -120,7 +114,6 @@ export class OsdsRadioGroup implements OdsRadioGroupAttribute, OdsRadioGroupEven
         name,
         role: 'radiogroup',
       }}
-      onClick={this.handleLabelClick.bind(this)}
       >
         <slot></slot>
       </Host>

@@ -179,15 +179,11 @@ export class OsdsRadio implements OdsRadioAttribute, OdsRadioEvent, OdsRadioMeth
   }
 
   private async handleLabelClick(event: MouseEvent) {
-    if (!this.disabled) {
-      await this.controller.handleLabelClick(event);
-    }
+    await this.controller.handleLabelClick(event);
   }
 
   private async handleLabelKeyEvent(event: KeyboardEvent) {
-    if (!this.disabled) {
-      await this.controller.handleLabelKeyEvent(event);
-    }
+    await this.controller.handleLabelKeyEvent(event);
   }
 
   /**

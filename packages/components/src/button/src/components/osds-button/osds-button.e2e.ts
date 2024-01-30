@@ -180,6 +180,12 @@ describe('e2e:osds-button', () => {
       await el.click();
       expect(checkSubmit).not.toHaveBeenCalled();
     });
+
+    it('should not submit the form with Enter key', async() => {
+      await setup({ attributes: { disabled: true, type: ODS_BUTTON_TYPE.submit }, html: 'submit', inForm: true });
+      await el.press('Enter');
+      expect(checkSubmit).not.toHaveBeenCalled();
+    });
   });
 
   describe('variants', () => {

@@ -209,6 +209,17 @@ describe('e2e:osds-checkbox', () => {
       expect(checkedProperty).toEqual(false);
       expect(inputCheckedProperty).toEqual(false);
     });
+
+    it('should NOT check or uncheck and its child on click if disabled', async() => {
+      await setup({ attributes: { checked: false, disabled: true } });
+      await page.waitForChanges();
+
+      // should NOT be checked after click
+      await toggleByClick();
+      await updateReferences();
+      expect(checkedProperty).toEqual(false);
+      expect(inputCheckedProperty).toEqual(false);
+    });
   });
 
 

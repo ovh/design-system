@@ -114,14 +114,14 @@ describe('e2e:osds-checkbox', () => {
         await setup({ attributes: { hasFocus: false } });
         await page.waitForChanges();
         await updateReferences();
-        expect(hasFocusProperty).toEqual(false);
-        expect(hasFocusPropertyOnChild).toEqual(false);
+        expect(hasFocusProperty).toBe(false);
+        expect(hasFocusPropertyOnChild).toBe(false);
 
         await el.callMethod('setFocus');
         await page.waitForChanges();
         await updateReferences();
-        expect(hasFocusProperty).toEqual(true);
-        expect(hasFocusPropertyOnChild).toEqual(true);
+        expect(hasFocusProperty).toBe(true);
+        expect(hasFocusPropertyOnChild).toBe(true);
       });
     });
   });
@@ -133,15 +133,15 @@ describe('e2e:osds-checkbox', () => {
       await setup(options);
       await page.waitForChanges();
       await updateReferences();
-      expect(hasFocusProperty).toEqual(false);
-      expect(hasFocusPropertyOnChild).toEqual(false);
+      expect(hasFocusProperty).toBe(false);
+      expect(hasFocusPropertyOnChild).toBe(false);
       expect(activeElementId).toEqual('');
 
       await el.focus();
       await page.waitForChanges();
       await updateReferences();
-      expect(hasFocusProperty).toEqual(true);
-      expect(hasFocusPropertyOnChild).toEqual(true);
+      expect(hasFocusProperty).toBe(true);
+      expect(hasFocusPropertyOnChild).toBe(true);
       expect(activeElementId).toEqual(options.nativeAttributes.id);
     });
 
@@ -153,8 +153,8 @@ describe('e2e:osds-checkbox', () => {
       await el.focus();
       await page.waitForChanges();
       await updateReferences();
-      expect(hasFocusProperty).toEqual(false);
-      expect(hasFocusPropertyOnChild).toEqual(false);
+      expect(hasFocusProperty).toBe(false);
+      expect(hasFocusPropertyOnChild).toBe(false);
     });
 
     xit('should be focusable with tab', async() => {
@@ -167,9 +167,9 @@ describe('e2e:osds-checkbox', () => {
       await page.waitForChanges();
       await updateReferences();
 
-      expect(hasFocusProperty).toEqual(true);
-      expect(hasFocusPropertyOnChild).toEqual(true);
-      expect(activeElementId).toEqual(options.nativeAttributes.id);
+      expect(hasFocusProperty).toBe(true);
+      expect(hasFocusPropertyOnChild).toBe(true);
+      expect(activeElementId).toBe(options.nativeAttributes.id);
     });
   });
 
@@ -181,14 +181,14 @@ describe('e2e:osds-checkbox', () => {
       // should be checked after click
       await toggleByClick();
       await updateReferences();
-      expect(checkedProperty).toEqual(true);
-      expect(inputCheckedProperty).toEqual(true);
+      expect(checkedProperty).toBe(true);
+      expect(inputCheckedProperty).toBe(true);
 
       // should NOT be checked after a second click
       await toggleByClick();
       await updateReferences();
-      expect(checkedProperty).toEqual(false);
-      expect(inputCheckedProperty).toEqual(false);
+      expect(checkedProperty).toBe(false);
+      expect(inputCheckedProperty).toBe(false);
     });
 
     it('should check or uncheck and its child on keyboard event', async() => {
@@ -199,15 +199,15 @@ describe('e2e:osds-checkbox', () => {
       await el.press('Enter');
       await page.waitForChanges();
       await updateReferences();
-      expect(checkedProperty).toEqual(true);
-      expect(inputCheckedProperty).toEqual(true);
+      expect(checkedProperty).toBe(true);
+      expect(inputCheckedProperty).toBe(true);
 
       // should NOT be checked after key event
       await el.press('Space');
       await page.waitForChanges();
       await updateReferences();
-      expect(checkedProperty).toEqual(false);
-      expect(inputCheckedProperty).toEqual(false);
+      expect(checkedProperty).toBe(false);
+      expect(inputCheckedProperty).toBe(false);
     });
 
     it('should NOT check or uncheck and its child on click if disabled', async() => {
@@ -217,8 +217,8 @@ describe('e2e:osds-checkbox', () => {
       // should NOT be checked after click
       await toggleByClick();
       await updateReferences();
-      expect(checkedProperty).toEqual(false);
-      expect(inputCheckedProperty).toEqual(false);
+      expect(checkedProperty).toBe(false);
+      expect(inputCheckedProperty).toBe(false);
     });
   });
 

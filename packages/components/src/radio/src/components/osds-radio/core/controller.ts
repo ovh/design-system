@@ -153,9 +153,10 @@ class OdsRadioController {
    * @param event
    */
   async handleLabelClick(event: MouseEvent) {
-    this.logger.log(`[radio=${this.component.value}]`, 'click');
     event.preventDefault();
-    await this.handleLabelEvent();
+    if (!this.component.disabled) {
+      await this.handleLabelEvent();
+    }
   }
 
   /**

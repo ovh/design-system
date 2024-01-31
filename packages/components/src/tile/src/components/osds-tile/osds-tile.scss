@@ -13,10 +13,16 @@
   }
 
   slot[name="start"] {
+    grid-area: start;
     justify-content: flex-start;
   }
 
+  span:not([slot]) {
+    grid-area:center;
+  }
+
   slot[name="end"] {
+    grid-area: end;
     justify-content: flex-end;
   }
 
@@ -102,6 +108,18 @@
 
     slot {
       display: inline;
+    }
+
+    slot[name="start"] {
+      grid-area: start;
+    }
+
+    span:not([slot]) {
+      grid-area:center;
+    }
+
+    slot[name="end"] {
+      grid-area: end;
     }
   }
 

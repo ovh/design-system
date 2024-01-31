@@ -86,6 +86,10 @@ export class OsdsModal implements OdsModalAttribute, OdsModalMethod, OdsModalEve
     this.handleShownState();
   }
 
+  disconnectedCallback(): void {
+    this.modal?.close();
+  }
+
   render(): JSX.Element {
     const { color, headline, dismissible, masked } = this;
 

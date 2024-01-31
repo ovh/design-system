@@ -168,6 +168,32 @@ describe('e2e:osds-modal', () => {
     });
   });
 
+  describe('lifecycle:disconnectCallBack', () => {
+    it('should close modal on disconnect', async() => {
+      await setup({ attributes: { dismissible: true, masked: true } });
+
+      await el.callMethod('open');
+      await page.waitForChanges();
+
+      let overflow = await page.evaluate(() => {
+        return document.body.style.overflow;
+      });
+
+      expect(overflow).toBe('hidden');
+
+      await page.evaluate(() => {
+        document.querySelector('osds-modal')!.remove();
+      });
+      await page.waitForChanges();
+
+      overflow = await page.evaluate(() => {
+        return document.body.style.overflow;
+      });
+
+      expect(overflow).toBe("");
+    });
+  })
+
   describe('Event', () => {
     it('should receive event odsModalOpen', async() => {
       await setup({ attributes: { dismissible: true, masked: true } });

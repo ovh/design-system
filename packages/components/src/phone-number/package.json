@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-component-phone-number",
-  "version": "17.0.3-alpha.1",
+  "version": "17.0.3",
   "private": true,
   "description": "ODS Phone number component",
   "author": "OVH SAS",
@@ -29,14 +29,14 @@
     "FIXME_test:e2e:ci:screenshot:update": "stencil test --config stencil.config.ts --e2e --ci --screenshot --update-screenshot --passWithNoTests"
   },
   "dependencies": {
-    "@ovhcloud/ods-common-core": "17.0.3-alpha.1",
-    "@ovhcloud/ods-common-stencil": "17.0.3-alpha.1",
-    "@ovhcloud/ods-common-theming": "17.0.3-alpha.1",
+    "@ovhcloud/ods-common-core": "17.0.3",
+    "@ovhcloud/ods-common-stencil": "17.0.3",
+    "@ovhcloud/ods-common-theming": "17.0.3",
     "google-libphonenumber": "3.2.33"
   },
   "devDependencies": {
-    "@ovhcloud/ods-common-testing": "17.0.3-alpha.1",
-    "@ovhcloud/ods-stencil-dev": "17.0.3-alpha.1",
+    "@ovhcloud/ods-common-testing": "17.0.3",
+    "@ovhcloud/ods-stencil-dev": "17.0.3",
     "@types/google-libphonenumber": "7.4.26"
   }
 }

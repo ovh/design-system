@@ -113,17 +113,6 @@ describe('spec:osds-radio-group', () => {
       });
     });
 
-    describe('events', () => {
-      it('should call controller.handleLabelClick on click', async() => {
-        const event = new Event('click');
-        await setup({});
-        instance.el?.dispatchEvent(event);
-
-        expect(controller.handleLabelClick).toHaveBeenCalledTimes(1);
-        expect(controller.handleLabelClick).toHaveBeenCalledWith(event);
-      });
-    });
-
     describe('methods', () => {
       it('should call controller.registerRadio from registerRadio method', async() => {
         const radio = new OdsRadioMock();

@@ -297,18 +297,6 @@ describe('spec:ods-radio-group-controller', () => {
       });
     });
 
-    describe('methods:handleLabelClick', () => {
-      it('should log event', () => {
-        const value = 'value';
-        const event = {} as PointerEvent;
-        setup({ value });
-        controller.handleLabelClick(event);
-
-        expect(loggerSpyReferences.methodSpies.log).toHaveBeenCalledTimes(1);
-        expect(loggerSpyReferences.methodSpies.log).toHaveBeenCalledWith(`[radio-group=${component.value}]`, 'click', event);
-      });
-    });
-
     describe('methods:onValueChange', () => {
       it('should call updateState for all radios', () => {
         const n = 1 + Math.round(Math.random() * 5);

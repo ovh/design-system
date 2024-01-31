@@ -50,7 +50,7 @@ class OdsInputController<T extends OsdsInput> extends OdsCommonFieldMethodContro
 
   async hasError(): Promise<boolean> {
     if (!this.component.inputEl) {
-      return false;
+      return this.component.error;
     }
     const validity = await this.getValidity(this.component.inputEl);
     return this.component.error || !validity.valid;

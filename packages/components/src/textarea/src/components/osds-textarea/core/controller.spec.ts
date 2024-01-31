@@ -53,8 +53,8 @@ describe('ods-textarea-controller', () => {
   });
 
   describe('hasError', (): void => {
-    it('should return false if the texteara element is not defined', async() => {
-      setup();
+    it('should return error attribute if the texteara element is not defined', async() => {
+      setup({ error: false });
       delete component.textareaElement;
 
       expect(await controller.hasError()).toBe(false);

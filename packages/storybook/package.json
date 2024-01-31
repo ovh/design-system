@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-storybook",
-  "version": "17.0.3-alpha.1",
+  "version": "17.0.3",
   "description": "ODS Storybook",
   "author": "OVH SAS",
   "license": "Apache-2.0",
@@ -14,13 +14,13 @@
     "start:quiet": "yarn list:releases && start-storybook -p 6006 --quiet"
   },
   "dependencies": {
-    "@ovhcloud/ods-cdk": "17.0.3-alpha.1",
-    "@ovhcloud/ods-cdk-dev": "17.0.3-alpha.1",
-    "@ovhcloud/ods-common-core": "17.0.3-alpha.1",
-    "@ovhcloud/ods-common-stencil": "17.0.3-alpha.1",
-    "@ovhcloud/ods-common-theming": "17.0.3-alpha.1",
-    "@ovhcloud/ods-components": "17.0.3-alpha.1",
-    "@ovhcloud/ods-theme-blue-jeans": "17.0.3-alpha.1",
+    "@ovhcloud/ods-cdk": "17.0.3",
+    "@ovhcloud/ods-cdk-dev": "17.0.3",
+    "@ovhcloud/ods-common-core": "17.0.3",
+    "@ovhcloud/ods-common-stencil": "17.0.3",
+    "@ovhcloud/ods-common-theming": "17.0.3",
+    "@ovhcloud/ods-components": "17.0.3",
+    "@ovhcloud/ods-theme-blue-jeans": "17.0.3",
     "react": "16.14.0"
   },
   "devDependencies": {

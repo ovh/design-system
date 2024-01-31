@@ -1,12 +1,12 @@
 {
   "name": "@ovhcloud/ods-stencil-dev",
-  "version": "17.0.3-alpha.0",
+  "version": "17.0.3-alpha.1",
   "private": true,
   "description": "ODS common Stencil dev dependencies",
   "license": "Apache-2.0",
   "dependencies": {
-    "@ovhcloud/ods-dev": "17.0.3-alpha.0",
-    "@ovhcloud/ods-style-dev": "17.0.3-alpha.0",
+    "@ovhcloud/ods-dev": "17.0.3-alpha.1",
+    "@ovhcloud/ods-style-dev": "17.0.3-alpha.1",
     "@stencil-community/postcss": "2.2.0",
     "@stencil/react-output-target": "0.5.3",
     "@stencil/sass": "3.0.6",

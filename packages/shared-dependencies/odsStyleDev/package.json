@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-style-dev",
-  "version": "17.0.3-alpha.0",
+  "version": "17.0.3-alpha.1",
   "private": true,
   "description": "ODS common Style dev dependencies",
   "license": "Apache-2.0",

@@ -1,9 +1,5 @@
 import type { OcdkSurface } from '@ovhcloud/ods-cdk';
-
 import { OcdkSurfaceMock } from '@ovhcloud/ods-cdk';
-import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
-import { OdsClearLoggerSpy, OdsInitializeLoggerSpy, OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
-
 import { OdsTooltipController } from './controller';
 import { ODS_TOOLTIP_VARIANT } from '../constants/tooltip-variant';
 import { OsdsTooltip } from '../osds-tooltip';
@@ -18,9 +14,6 @@ class OdsTooltipMock extends OsdsTooltip {
 describe('ods-tooltip-controller', () => {
   let controller: OdsTooltipController;
   let component: OsdsTooltip;
-  let loggerSpyReferences: OdsLoggerSpyReferences;
-
-  Ods.instance().logging(false);
 
   function setup(attributes: Partial<OsdsTooltip> = {}) {
     component = new OdsTooltipMock(attributes);
@@ -28,15 +21,10 @@ describe('ods-tooltip-controller', () => {
   }
 
   beforeEach(() => {
-    const loggerMocked = new OdsLogger('myLoggerMocked');
-    loggerSpyReferences = OdsInitializeLoggerSpy({
-      loggerMocked: loggerMocked as never,
-      spiedClass: OdsTooltipController,
-    });
+    jest.spyOn(console, 'warn');
   });
 
   afterEach(() => {
-    OdsClearLoggerSpy(loggerSpyReferences);
     jest.clearAllMocks();
   });
 
@@ -257,7 +245,7 @@ describe('ods-tooltip-controller', () => {
       it('should not call console.warn', () => {
         controller.validateAttributes();
 
-        expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledTimes(0);
+        expect(console.warn).toHaveBeenCalledTimes(0);
       });
 
       it('should call console.warn with wrong variant', () => {
@@ -266,8 +254,8 @@ describe('ods-tooltip-controller', () => {
 
         controller.validateAttributes();
 
-        expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledTimes(1);
-        expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledWith(expected);
+        expect(console.warn).toHaveBeenCalledTimes(1);
+        expect(console.warn).toHaveBeenCalledWith(expected);
       });
     });
   });

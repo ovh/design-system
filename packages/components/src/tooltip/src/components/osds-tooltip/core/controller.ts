@@ -1,12 +1,9 @@
 import type { OsdsTooltip } from '../osds-tooltip';
-
-import { OdsLogger, OdsWarnComponentAttribute } from '@ovhcloud/ods-common-core';
-
+import { OdsWarnComponentAttribute } from '@ovhcloud/ods-common-core';
 import { ODS_TOOLTIP_VARIANT } from '../constants/tooltip-variant';
 
 class OdsTooltipController {
   private component: OsdsTooltip;
-  private readonly logger = new OdsLogger('OdsTooltipController');
 
   constructor(component: OsdsTooltip) {
     this.component = component;
@@ -78,7 +75,6 @@ class OdsTooltipController {
    */
   validateAttributes(): void {
     OdsWarnComponentAttribute<ODS_TOOLTIP_VARIANT, OsdsTooltip>({
-      logger: this.logger,
       attributeValues: ODS_TOOLTIP_VARIANT as Record<string, unknown>,
       attributeName: 'variant',
       attribute: this.component.variant,

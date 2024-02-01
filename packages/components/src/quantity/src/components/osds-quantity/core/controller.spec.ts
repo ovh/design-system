@@ -1,10 +1,5 @@
-import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
 import type { OsdsInput } from '../../../../../input/src';
-
-import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
-import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
 import { ODS_INPUT_TYPE } from '../../../../../input/src';
-
 import { OdsQuantityController } from './controller';
 import { OsdsQuantity } from '../osds-quantity';
 
@@ -21,9 +16,6 @@ describe('spec:ods-quantity-controller', () => {
   let spyInputAddEventListener: jest.SpyInstance<void>;
   let spyInputRemoveEventListener: jest.SpyInstance<void>;
   let spyOnProcessInputValueChange: jest.SpyInstance<void, jest.ArgsType<OdsQuantityController['processInputValueChange']>>;
-  let loggerSpyReferences: OdsLoggerSpyReferences;
-
-  Ods.instance().logging(false);
 
   function setup(attributes: Partial<OsdsQuantity> = {}) {
     component = new OdsQuantityMock(attributes);
@@ -32,15 +24,10 @@ describe('spec:ods-quantity-controller', () => {
   }
 
   beforeEach(() => {
-    const loggerMocked = new OdsLogger('myLoggerMocked');
-    loggerSpyReferences = OdsInitializeLoggerSpy({
-      loggerMocked: loggerMocked as never,
-      spiedClass: OdsQuantityController,
-    });
+    jest.spyOn(console, 'warn');
   });
 
   afterEach(() => {
-    OdsClearLoggerSpy(loggerSpyReferences);
     jest.clearAllMocks();
   });
 
@@ -195,8 +182,8 @@ describe('spec:ods-quantity-controller', () => {
           controller.initInput();
 
           expect(component.input).toBe(null);
-          expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledWith(warnExpected);
-          expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledTimes(1);
+          expect(console.warn).toHaveBeenCalledWith(warnExpected);
+          expect(console.warn).toHaveBeenCalledTimes(1);
         });
 
         it('should not init input if osds-input type is not number', () => {
@@ -208,8 +195,8 @@ describe('spec:ods-quantity-controller', () => {
           controller.initInput();
 
           expect(component.input).toBe(null);
-          expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledWith(warnExpected);
-          expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledTimes(1);
+          expect(console.warn).toHaveBeenCalledWith(warnExpected);
+          expect(console.warn).toHaveBeenCalledTimes(1);
         });
 
         it('should not init input if vanilla input type is not number', () => {
@@ -221,8 +208,8 @@ describe('spec:ods-quantity-controller', () => {
           controller.initInput();
 
           expect(component.input).toBe(null);
-          expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledWith(warnExpected);
-          expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledTimes(1);
+          expect(console.warn).toHaveBeenCalledWith(warnExpected);
+          expect(console.warn).toHaveBeenCalledTimes(1);
         });
       });
     });
@@ -435,8 +422,8 @@ describe('spec:ods-quantity-controller', () => {
 
         expect(component.minus).toBe(null);
         expect(component.plus).toBe(null);
-        expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledWith(warnExpected);
-        expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledTimes(1);
+        expect(console.warn).toHaveBeenCalledWith(warnExpected);
+        expect(console.warn).toHaveBeenCalledTimes(1);
       });
 
       it('should not init component.plus if slot is not set', () => {
@@ -450,8 +437,8 @@ describe('spec:ods-quantity-controller', () => {
 
         expect(component.minus).toBe(null);
         expect(component.plus).toBe(null);
-        expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledWith(warnExpected);
-        expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledTimes(1);
+        expect(console.warn).toHaveBeenCalledWith(warnExpected);
+        expect(console.warn).toHaveBeenCalledTimes(1);
       });
     });
   });

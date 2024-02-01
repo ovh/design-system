@@ -1,12 +1,8 @@
 import type { OsdsQuantity } from '../osds-quantity';
 import type { OsdsInput } from '../../../../../input/src';
 
-import { OdsLogger } from '@ovhcloud/ods-common-core';
-
-
 class OdsQuantityController {
   private component: OsdsQuantity;
-  private readonly logger = new OdsLogger('OsdsQuantityController');
 
   constructor(component: OsdsQuantity) {
     this.component = component;
@@ -25,7 +21,7 @@ class OdsQuantityController {
         this.component.input.addEventListener('change', this.processInputValueChange.bind(this));
         this.component.input.addEventListener('blur', this.onBlur.bind(this));
       } else {
-        this.logger.warn('An input of type number is mandatory.');
+        console.warn('An input of type number is mandatory.');
       }
     }
   }
@@ -71,7 +67,6 @@ class OdsQuantityController {
   }
 
   setDisabledOnChildren(disabled: boolean) {
-    this.logger.log('disabled changed. update child', { disabled });
     if (this.component.minus && this.component.plus && this.component.input) {
       if (disabled) {
         this.setDisabled(this.component.minus, this.component.plus, this.component.input);
@@ -110,7 +105,7 @@ class OdsQuantityController {
       this.component.minus = minus;
       this.component.plus = plus;
     } else {
-      this.logger.warn('Minus and plus control are mandatory.');
+      console.warn('Minus and plus control are mandatory.');
     }
   }
 

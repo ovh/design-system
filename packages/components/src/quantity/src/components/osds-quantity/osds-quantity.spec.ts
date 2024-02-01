@@ -3,14 +3,11 @@ jest.mock('./core/controller'); // keep jest.mock before any
 import type { OdsQuantityAttribute } from './interfaces/attributes';
 import type { AnyHTMLElement } from '@stencil/core/internal';
 import type { SpecPage } from '@stencil/core/testing';
-
 import { OdsMockNativeMethod, odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 import { newSpecPage } from '@stencil/core/testing';
-
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsQuantityController } from './core/controller';
 import { OsdsQuantity } from './osds-quantity';
-
 
 describe('spec:osds-quantity', () => {
   let page: SpecPage;
@@ -20,7 +17,6 @@ describe('spec:osds-quantity', () => {
   let slotPlus: HTMLSlotElement | null | undefined;
   let slotUnnamed: HTMLSlotElement | null | undefined;
   let instance: OsdsQuantity;
-  // let loggerSpyReferences: OdsLoggerSpyReferences;
   let controller: OdsQuantityController;
 
   /** base html template (avoid boilerplate) */

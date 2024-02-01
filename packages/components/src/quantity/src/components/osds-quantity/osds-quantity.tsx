@@ -1,11 +1,8 @@
 import type { OdsQuantityAttribute } from './interfaces/attributes';
 import type { OsdsInput } from '../../../../input/src';
-
 import { Component, Element, Host, Listen, Prop, Watch, h } from '@stencil/core';
-
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsQuantityController } from './core/controller';
-
 
 /**
  * create type that correspond to our input component.
@@ -22,30 +19,29 @@ import { OdsQuantityController } from './core/controller';
  * with this, we cannot build @ovhcloud/ods-components ("Component Tag Name "osds-input" Must Be Unique" error)
  */
 
-/**
- * @slot minus - minus control
- * @slot (unnamed) - input
- * @slot plus - plus control
- */
 @Component({
-  tag: 'osds-quantity',
-  styleUrl: 'osds-quantity.scss',
   shadow: true,
+  styleUrl: 'osds-quantity.scss',
+  tag: 'osds-quantity',
 })
 export class OsdsQuantity implements OdsQuantityAttribute {
-  @Element() el!: HTMLElement;
-
   controller: OdsQuantityController = new OdsQuantityController(this);
   input: (OsdsInput & HTMLElement) | HTMLInputElement | null = null;
   minus: HTMLSlotElement | null = null;
   plus: HTMLSlotElement | null = null;
 
-  /** @see OdsQuantityAttributes.disabled */
+  @Element() el!: HTMLElement;
+
   @Prop({ reflect: true }) public disabled?: boolean = DEFAULT_ATTRIBUTE.disabled;
 
   @Watch('disabled')
   updateDisableOnChild(disabled: boolean) {
     this.controller.setDisabledOnChildren(disabled);
+  }
+
+  @Listen('odsValueChange')
+  odsValueChangeHandler() {
+    this.controller.processInputValueChange();
   }
 
   /** @see OdsQuantityBehavior.afterInit */
@@ -74,11 +70,6 @@ export class OsdsQuantity implements OdsQuantityAttribute {
 
   disconnectedCallback(): void {
     this.onDestroy();
-  }
-
-  @Listen('odsValueChange')
-  odsValueChangeHandler() {
-    this.controller.processInputValueChange();
   }
 
   render() {

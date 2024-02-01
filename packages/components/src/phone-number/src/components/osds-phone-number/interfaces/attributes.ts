@@ -7,6 +7,9 @@ interface OdsPhoneNumberAttribute {
   clearable?: boolean;
   /** A specific subset of countries to display in the select instead of the whole list  */
   countries?: ODS_COUNTRY_ISO_CODE[] | ODS_PHONE_NUMBER_COUNTRY_PRESET | string;
+  /** Default value of the phone number */
+  defaultValue: string | null;
+  /** Indicates if the phone number is disabled or not */
   disabled?: boolean;
   /** Indicates if the phone number shows error or not */
   error?: boolean;
@@ -14,6 +17,8 @@ interface OdsPhoneNumberAttribute {
   isoCode?: ODS_COUNTRY_ISO_CODE;
   /** This is the locale to use to translate the countries names */
   locale?: ODS_LOCALE;
+  /** Name of the phone number field */
+  name?: string;
   /** Current value of the phone number */
   value: string | null;
 }

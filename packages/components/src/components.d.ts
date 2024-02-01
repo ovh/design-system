@@ -1161,36 +1161,38 @@ export namespace Components {
     interface OsdsPhoneNumber {
         /**
           * Ability to clear the phone number value
-          * @see OdsPhoneNumberAttribute.clearable
          */
         "clearable"?: boolean;
         /**
           * A specific subset of countries to display in the select instead of the whole list
-          * @see OdsPhoneNumberAttribute.countries
          */
         "countries"?: ODS_COUNTRY_ISO_CODE[] | ODS_PHONE_NUMBER_COUNTRY_PRESET | string;
         /**
-          * @see OdsPhoneNumberAttribute.disabled
+          * Default value of the phone number
+         */
+        "defaultValue": string | null;
+        /**
+          * Indicates if the phone number is disabled or not
          */
         "disabled"?: boolean;
         /**
           * Indicates if the phone number shows error or not
-          * @see OdsPhoneNumberAttribute.error
          */
         "error"?: boolean;
         /**
           * Select value
-          * @see OdsPhoneNumberAttribute.isoCode
          */
         "isoCode"?: ODS_COUNTRY_ISO_CODE;
         /**
           * This is the locale to use to translate the countries names
-          * @see OdsPhoneNumberAttribute.locale
          */
         "locale"?: ODS_LOCALE;
         /**
+          * Name of the phone number field
+         */
+        "name"?: string;
+        /**
           * Current value of the phone number
-          * @see OdsPhoneNumberAttribute.value
          */
         "value": string | null;
     }
@@ -3803,41 +3805,42 @@ declare namespace LocalJSX {
     interface OsdsPhoneNumber {
         /**
           * Ability to clear the phone number value
-          * @see OdsPhoneNumberAttribute.clearable
          */
         "clearable"?: boolean;
         /**
           * A specific subset of countries to display in the select instead of the whole list
-          * @see OdsPhoneNumberAttribute.countries
          */
         "countries"?: ODS_COUNTRY_ISO_CODE[] | ODS_PHONE_NUMBER_COUNTRY_PRESET | string;
         /**
-          * @see OdsPhoneNumberAttribute.disabled
+          * Default value of the phone number
+         */
+        "defaultValue"?: string | null;
+        /**
+          * Indicates if the phone number is disabled or not
          */
         "disabled"?: boolean;
         /**
           * Indicates if the phone number shows error or not
-          * @see OdsPhoneNumberAttribute.error
          */
         "error"?: boolean;
         /**
           * Select value
-          * @see OdsPhoneNumberAttribute.isoCode
          */
         "isoCode"?: ODS_COUNTRY_ISO_CODE;
         /**
           * This is the locale to use to translate the countries names
-          * @see OdsPhoneNumberAttribute.locale
          */
         "locale"?: ODS_LOCALE;
         /**
+          * Name of the phone number field
+         */
+        "name"?: string;
+        /**
           * Send event with the input & the selected isoCode when the select value or the input value change
-          * @see OdsPhoneNumberEvent.odsValueChange
          */
         "onOdsValueChange"?: (event: OsdsPhoneNumberCustomEvent<OdsPhoneNumberValueChangeEventDetail>) => void;
         /**
           * Current value of the phone number
-          * @see OdsPhoneNumberAttribute.value
          */
         "value"?: string | null;
     }

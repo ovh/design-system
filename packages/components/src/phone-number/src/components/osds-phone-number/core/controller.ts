@@ -1,16 +1,24 @@
 import type { OsdsPhoneNumber } from '../osds-phone-number';
 import type { ODS_COUNTRY_ISO_CODE } from '@ovhcloud/ods-common-core';
 import type { PhoneNumber } from 'google-libphonenumber';
-
 import { ODS_COUNTRY_ISO_CODES, ODS_LOCALE, ODS_LOCALES } from '@ovhcloud/ods-common-core';
 import countriesTranslationEn from '@ovhcloud/ods-common-core/src/i18n/countries/en.json';
 import countriesTranslationFr from '@ovhcloud/ods-common-core/src/i18n/countries/fr.json';
-
 import { ODS_PHONE_NUMBER_COUNTRY_PRESET } from '../constants/phone-number-countries';
 
 class OdsPhoneNumberController {
-
   constructor(private readonly component: OsdsPhoneNumber) { }
+
+  beforeInit() {
+    if (!this.component.value) {
+      this.component.value = this.component.defaultValue;
+    }
+    this.component.internals.setFormValue(this.component.value?.toString() ?? '');
+  }
+
+  onValueChange(value: string) {
+    this.component.internals.setFormValue(value.toString() ?? '');
+  }
 
   getDefaultLocale(): ODS_LOCALE {
     return this.getValueOrNavigatorOrDefault({
@@ -50,7 +58,7 @@ class OdsPhoneNumberController {
       try {
         return JSON.parse(countries);
       } catch (err) {
-        this.component.logger.warn('[OsdsPhoneNumber] countries string could not be parsed.');
+        console.warn('[OsdsPhoneNumber] countries string could not be parsed.');
         return [];
       }
     }
@@ -64,7 +72,7 @@ class OdsPhoneNumberController {
     try {
       return this.component.phoneUtils.parseAndKeepRawInput(number, this.component.isoCode);
     } catch {
-      this.component.logger.warn('[OsdsPhoneNumber] value could not be parsed as a phone number.');
+      console.warn('[OsdsPhoneNumber] value could not be parsed as a phone number.');
       return null;
     }
   }
@@ -87,7 +95,6 @@ class OdsPhoneNumberController {
   private getNavigatorLang(index: number = 0): string | undefined {
     return navigator.language?.split('-')[index]?.toLocaleLowerCase();
   }
-
 
   private isOdsCountryCode(value: string | ODS_COUNTRY_ISO_CODE | undefined): value is ODS_COUNTRY_ISO_CODE {
     return !!value && ODS_COUNTRY_ISO_CODES.includes(value as ODS_COUNTRY_ISO_CODE);

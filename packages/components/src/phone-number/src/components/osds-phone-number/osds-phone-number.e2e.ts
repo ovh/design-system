@@ -13,7 +13,7 @@ import { ODS_PHONE_NUMBER_COUNTRY_PRESET } from './constants/phone-number-countr
 
 
 describe('e2e:osds-phone-number', () => {
-  const baseAttribute = { value: '' };
+  const baseAttribute = { defaultValue: '', value: '' };
   let page: E2EPage;
   let el: E2EElement;
   let select: E2EElement;
@@ -114,7 +114,7 @@ describe('e2e:osds-phone-number', () => {
       attributes: { value: '06123456dfsdf2', isoCode: ODS_COUNTRY_ISO_CODE.FR },
       cbkInterceptorRequest: myCbk,
     });
-    
+
     expect(await el.getProperty('error')).toBe(true);
   });
 

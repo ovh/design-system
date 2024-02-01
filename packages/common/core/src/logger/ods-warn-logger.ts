@@ -1,8 +1,6 @@
-import { OdsLogger } from './ods-logger';
 import { odsIsTermInEnum } from '../types/guard/ods-is-term-in-enum';
 
 interface OdsWarnComponent<T, Component> {
-  logger?: OdsLogger; // TODO remove
   attributeName: string & keyof Component;
   attribute: T | undefined;
 }

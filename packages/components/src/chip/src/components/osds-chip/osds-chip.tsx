@@ -9,9 +9,6 @@ import { Component, Element, Event, Host, Listen, Prop, h } from '@stencil/core'
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsChipController } from './core/controller';
 
-/**
- * @slot (unnamed) - Chip content
- */
 @Component({
   shadow: true,
   styleUrl: 'osds-chip.scss',
@@ -19,33 +16,18 @@ import { OdsChipController } from './core/controller';
 })
 export class OsdsChip implements OdsChipAttribute, OdsChipEvent {
   controller: OdsChipController = new OdsChipController(this);
+
   @Element() el!: HTMLElement;
 
-  /** @see OdsChipAttributes.color */
   @Prop({ reflect: true }) public color?: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
-
-  /** @see OdsChipAttributes.contrasted */
   @Prop({ reflect: true }) public contrasted?: boolean = DEFAULT_ATTRIBUTE.contrasted;
-
-  /** @see OdsChipAttributes.disabled */
   @Prop({ reflect: true }) public disabled?: boolean = DEFAULT_ATTRIBUTE.disabled;
-
-  /** @see OdsChipAttributes.inline */
   @Prop({ reflect: true }) public inline?: boolean = DEFAULT_ATTRIBUTE.inline;
-
-  /** @see OdsChipAttributes.removable */
   @Prop({ reflect: true }) public removable?: boolean = DEFAULT_ATTRIBUTE.removable;
-
-  /** @see OdsChipAttributes.selectable */
   @Prop({ reflect: true }) public selectable?: boolean = DEFAULT_ATTRIBUTE.selectable;
-
-  /** @see OdsChipAttributes.size */
   @Prop({ reflect: true }) public size?: ODS_CHIP_SIZE = DEFAULT_ATTRIBUTE.size;
-
-  /** @see OdsChipAttributes.variant */
   @Prop({ reflect: true }) public variant?: ODS_CHIP_VARIANT = DEFAULT_ATTRIBUTE.variant;
 
-  /** @see OdsChipEvents.odsChipRemoval */
   @Event() odsChipRemoval!: EventEmitter<void>;
 
   @Listen('keydown', { capture: true })
@@ -56,9 +38,6 @@ export class OsdsChip implements OdsChipAttribute, OdsChipEvent {
     }
   }
 
-  /**
-   * @see OdsChipBehavior.beforeRender
-   */
   beforeRender(): void {
     this.controller.validateAttributes();
   }

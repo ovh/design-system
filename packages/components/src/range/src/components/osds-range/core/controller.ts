@@ -1,17 +1,10 @@
 import type { OdsRangeValue } from '../interfaces/value';
 import type { OdsFormControl, OdsValidityState } from '@ovhcloud/ods-common-core';
-
-import { OdsGetValidityState, OdsLogger, OdsWarnComponentAttribute } from '@ovhcloud/ods-common-core';
+import { OdsGetValidityState, OdsWarnComponentAttribute } from '@ovhcloud/ods-common-core';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-
 import { OsdsRange } from '../osds-range';
 
-/**
- * common controller logic for range component used by the different implementations.
- * it contains all the glue between framework implementation and the third party service.
- */
 class OdsRangeController {
-  private readonly logger = new OdsLogger('OdsRangeController');
   protected component: OsdsRange;
 
   constructor(component: OsdsRange) {
@@ -88,7 +81,6 @@ class OdsRangeController {
 
   validateAttributes(): void {
     OdsWarnComponentAttribute<ODS_THEME_COLOR_INTENT, OsdsRange>({
-      logger: this.logger,
       attributeValues: ODS_THEME_COLOR_INTENT as Record<string, unknown>,
       attributeName: 'color',
       attribute: this.component.color,
@@ -96,7 +88,6 @@ class OdsRangeController {
   }
 
   onFormControlChange(formControl?: OdsFormControl<OdsValidityState>) {
-    this.logger.log(`[range=${this.component.value}]`, 'onFormControlChange', formControl, formControl && formControl.id);
     if (formControl) {
       formControl.register(this.component);
     }
@@ -118,12 +109,10 @@ class OdsRangeController {
       if(this.isDualRange()) {
         const val = this.asDualValues();
         if (`${val[0]}` !== this.component.inputEl?.value || `${val[1]}` !== this.component.dualInputEl?.value) {
-          this.logger.warn(`Value [${val}] is not valid. New value has been set to [${this.component.inputEl?.value},${this.component.dualInputEl?.value}]`);
           this.component.value = [Number(this.component.inputEl?.value), Number(this.component.dualInputEl?.value)];
         }
       } else {
         if (`${this.component.value}` !== this.component.inputEl?.value) {
-          this.logger.warn(`Value ${this.component.value} is not valid. New value has been set to ${this.component.inputEl?.value}`);
           this.component.value = this.component.inputEl?.value || null;
         }
       }
@@ -132,11 +121,11 @@ class OdsRangeController {
 
   validateValue(value?: OdsRangeValue): void {
     if (value && isNaN(Number(value)) && !this.isDualRange()) {
-      this.logger.warn('[OsdsRange] The value attribute must a correct number or a tuple [1, 2]');
+      console.warn('[OsdsRange] The value attribute must a correct number or a tuple [1, 2]');
     }
+
     if (this.component.min && this.component.max && this.component.step && typeof value === 'number') {
       OdsWarnComponentAttribute<number, OsdsRange>({
-        logger: this.logger,
         attributeName: 'value',
         attribute: value,
         min: this.component.min,
@@ -168,12 +157,7 @@ class OdsRangeController {
     inputEl && this.handleInputValue(inputEl.value, dual);
   }
 
-  handleClick() {
-    this.logger.log('[range]', 'clicked');
-  }
-
   hasError(): boolean {
-    this.logger.log('hasError', this.getRangeValidity().invalid);
     return this.component.error || this.getRangeValidity().invalid;
   }
 }

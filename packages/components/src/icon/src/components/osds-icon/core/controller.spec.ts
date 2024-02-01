@@ -1,6 +1,3 @@
-import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing/src';
-import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
-import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing/src';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { OdsIconController } from './controller';
 import { ODS_ICON_SIZE } from '../constants/icon-size';
@@ -16,30 +13,21 @@ class OsdsIconMock extends OsdsIcon {
 describe('spec:ods-icon-controller', () => {
   let controller: OdsIconController;
   let component: OsdsIcon;
-  let loggerSpyReferences: OdsLoggerSpyReferences;
-
-  Ods.instance().logging(false);
 
   function setup(attributes: Partial<OsdsIcon> = {}): void {
     component = new OsdsIconMock(attributes);
     controller = new OdsIconController(component);
   }
 
-  beforeEach(() => {
-    const loggerMocked = new OdsLogger('myLoggerMocked');
-    loggerSpyReferences = OdsInitializeLoggerSpy({
-      loggerMocked: loggerMocked as never,
-      spiedClass: OdsIconController,
-    });
-  });
-
   afterEach(() => {
-    OdsClearLoggerSpy(loggerSpyReferences);
+    jest.clearAllMocks();
   });
 
   describe('methods', () => {
     describe('methods:validateAttributes', () => {
       beforeEach(() => {
+        jest.spyOn(console, 'warn');
+
         setup({
           color: ODS_THEME_COLOR_INTENT.default,
           size: ODS_ICON_SIZE.md,
@@ -48,7 +36,7 @@ describe('spec:ods-icon-controller', () => {
 
       it('should not call console.warn', () => {
         controller.validateAttributes();
-        expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledTimes(0);
+        expect(console.warn).toHaveBeenCalledTimes(0);
       });
 
       it('should call console.warn with wrong color', () => {
@@ -57,8 +45,8 @@ describe('spec:ods-icon-controller', () => {
 
         controller.validateAttributes();
 
-        expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledWith(expected);
-        expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledTimes(1);
+        expect(console.warn).toHaveBeenCalledWith(expected);
+        expect(console.warn).toHaveBeenCalledTimes(1);
       });
 
       it('should call console.warn with wrong size', () => {
@@ -67,8 +55,8 @@ describe('spec:ods-icon-controller', () => {
 
         controller.validateAttributes();
 
-        expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledWith(expected);
-        expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledTimes(1);
+        expect(console.warn).toHaveBeenCalledWith(expected);
+        expect(console.warn).toHaveBeenCalledTimes(1);
       });
     });
 
@@ -79,7 +67,7 @@ describe('spec:ods-icon-controller', () => {
 
       it('should not call console.warn', () => {
         controller.validateAriaName('ariaName');
-        expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledTimes(0);
+        expect(console.warn).toHaveBeenCalledTimes(0);
       });
 
       it('should call console.warn with empty ariaName', () => {
@@ -87,8 +75,8 @@ describe('spec:ods-icon-controller', () => {
 
         controller.validateAriaName('');
 
-        expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledWith(expected);
-        expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledTimes(1);
+        expect(console.warn).toHaveBeenCalledWith(expected);
+        expect(console.warn).toHaveBeenCalledTimes(1);
       });
     });
   });

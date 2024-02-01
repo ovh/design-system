@@ -1,7 +1,7 @@
 import React, { FormEvent, useRef } from 'react';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_BUTTON_SIZE, ODS_BUTTON_TYPE, ODS_BUTTON_VARIANT, ODS_INPUT_SIZE, ODS_INPUT_TYPE } from '@ovhcloud/ods-components';
-import { OsdsButton, OsdsInput, OsdsTextarea } from '@ovhcloud/ods-components/react';
+import { OsdsButton, OsdsInput, OsdsPassword, OsdsTextarea } from '@ovhcloud/ods-components/react';
 
 const App = () => {
   const formRef = useRef(null);
@@ -23,7 +23,6 @@ const App = () => {
           onReset={ onReset }
           onSubmit={ onSubmit }>
       <OsdsInput defaultValue="some text"
-                 id="input"
                  name="input"
                  placeholder="Type your some text"
                  required
@@ -32,6 +31,11 @@ const App = () => {
                  value="" />
 
       <br/>
+
+      <OsdsPassword name="password"
+                    required />
+
+      <br />
 
       <OsdsTextarea name="textarea"
                     required />

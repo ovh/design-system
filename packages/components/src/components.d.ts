@@ -1100,92 +1100,78 @@ export namespace Components {
     interface OsdsPassword {
         /**
           * ariaLabel of the password
-          * @see OdsPasswordAttributes.ariaLabel
          */
         "ariaLabel": HTMLElement['ariaLabel'];
         /**
           * ID of the element that labels the password
-          * @see OdsPasswordAttributes.ariaLabelledby
          */
         "ariaLabelledby"?: string;
         /**
           * Ability to clear the password value
-          * @see OdsPasswordAttributes.clearable
          */
         "clearable"?: boolean;
         /**
           * Main color of the password: see component principles
-          * @see OdsPasswordAttributes.color
          */
         "color"?: ODS_THEME_COLOR_INTENT;
         /**
           * Indicates if the password is contrasted or not: see component principles
-          * @see OdsPasswordAttributes.contrasted
          */
         "contrasted"?: boolean;
         /**
+          * Default value of the password
+         */
+        "defaultValue": string;
+        /**
           * Indicates if the password is disabled or not: see component principles
-          * @see OdsPasswordAttributes.disabled
          */
         "disabled"?: boolean;
         /**
           * Indicates if the password shows error or not
-          * @see OdsPasswordAttributes.error
          */
         "error"?: boolean;
         /**
           * List of forbidden values for the password
-          * @see OdsPasswordAttributes.forbiddenValues
          */
         "forbiddenValues": OdsFormForbiddenValues<number>;
         /**
           * Indicates if the password is inline or not
-          * @see OdsPasswordAttributes.inline
          */
         "inline"?: boolean;
         /**
           * Label of the password field
-          * @see OdsPasswordAttributes.label
          */
         "label"?: string;
         /**
           * Indicates if the password is in loading state or not
-          * @see OdsPasswordAttributes.loading
          */
         "loading"?: boolean;
         /**
           * Indicates if the password is masked or not
-          * @see OdsPasswordAttributes.masked
          */
         "masked"?: boolean;
         /**
           * Name of the password field
-          * @see OdsPasswordAttributes.name
          */
         "name"?: string;
         /**
           * Placeholder text for the password
-          * @see OdsPasswordAttributes.placeholder
          */
         "placeholder"?: string;
         /**
           * Indicates if the password is read-only or not
-          * @see OdsPasswordAttributes.readOnly
          */
         "readOnly"?: boolean;
         /**
           * Indicates if the password is required or not
-          * @see OdsPasswordAttributes.required
          */
         "required"?: boolean;
         /**
           * Size of the password: see component principles
-          * @see OdsPasswordAttributes.size
          */
         "size"?: ODS_INPUT_SIZE1;
         /**
           * Current value of the password
-          * @see OdsInputAttributes.value
          */
         "value": string;
     }
@@ -3816,92 +3802,78 @@ declare namespace LocalJSX {
     interface OsdsPassword {
         /**
           * ariaLabel of the password
-          * @see OdsPasswordAttributes.ariaLabel
          */
         "ariaLabel"?: HTMLElement['ariaLabel'];
         /**
           * ID of the element that labels the password
-          * @see OdsPasswordAttributes.ariaLabelledby
          */
         "ariaLabelledby"?: string;
         /**
           * Ability to clear the password value
-          * @see OdsPasswordAttributes.clearable
          */
         "clearable"?: boolean;
         /**
           * Main color of the password: see component principles
-          * @see OdsPasswordAttributes.color
          */
         "color"?: ODS_THEME_COLOR_INTENT;
         /**
           * Indicates if the password is contrasted or not: see component principles
-          * @see OdsPasswordAttributes.contrasted
          */
         "contrasted"?: boolean;
         /**
+          * Default value of the password
+         */
+        "defaultValue"?: string;
+        /**
           * Indicates if the password is disabled or not: see component principles
-          * @see OdsPasswordAttributes.disabled
          */
         "disabled"?: boolean;
         /**
           * Indicates if the password shows error or not
-          * @see OdsPasswordAttributes.error
          */
         "error"?: boolean;
         /**
           * List of forbidden values for the password
-          * @see OdsPasswordAttributes.forbiddenValues
          */
         "forbiddenValues"?: OdsFormForbiddenValues<number>;
         /**
           * Indicates if the password is inline or not
-          * @see OdsPasswordAttributes.inline
          */
         "inline"?: boolean;
         /**
           * Label of the password field
-          * @see OdsPasswordAttributes.label
          */
         "label"?: string;
         /**
           * Indicates if the password is in loading state or not
-          * @see OdsPasswordAttributes.loading
          */
         "loading"?: boolean;
         /**
           * Indicates if the password is masked or not
-          * @see OdsPasswordAttributes.masked
          */
         "masked"?: boolean;
         /**
           * Name of the password field
-          * @see OdsPasswordAttributes.name
          */
         "name"?: string;
         /**
           * Placeholder text for the password
-          * @see OdsPasswordAttributes.placeholder
          */
         "placeholder"?: string;
         /**
           * Indicates if the password is read-only or not
-          * @see OdsPasswordAttributes.readOnly
          */
         "readOnly"?: boolean;
         /**
           * Indicates if the password is required or not
-          * @see OdsPasswordAttributes.required
          */
         "required"?: boolean;
         /**
           * Size of the password: see component principles
-          * @see OdsPasswordAttributes.size
          */
         "size"?: ODS_INPUT_SIZE1;
         /**
           * Current value of the password
-          * @see OdsInputAttributes.value
          */
         "value"?: string;
     }

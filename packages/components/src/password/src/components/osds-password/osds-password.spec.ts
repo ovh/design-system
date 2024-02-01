@@ -1,17 +1,16 @@
+jest.mock('./core/controller'); // keep jest.mock before any
+
 import type { OdsPasswordAttribute } from './interfaces/attributes';
 import type { SpecPage } from '@stencil/core/testing';
-
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_INPUT_SIZE } from '../../../../input/src';
 import { newSpecPage } from '@stencil/core/testing';
-
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OsdsPassword } from './osds-password';
 
-
 describe('spec:osds-password', () => {
-  const baseAttribute = { ariaLabel: '', forbiddenValues: [], value: '' };
+  const baseAttribute = { ariaLabel: '', defaultValue: '', forbiddenValues: [], value: '' };
   let page: SpecPage;
   let root: HTMLElement | undefined;
   let instance: OsdsPassword;

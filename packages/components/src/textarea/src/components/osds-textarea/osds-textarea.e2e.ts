@@ -1,12 +1,9 @@
 import type { OdsTextAreaAttribute } from './interfaces/attributes';
 import type { OdsTextAreaValueChangeEvent } from './interfaces/events';
 import type { E2EElement, E2EPage } from '@stencil/core/testing';
-
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import { newE2EPage } from '@stencil/core/testing';
-
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-
 
 describe('e2e:osds-textarea', () => {
   const baseAttribute = { ariaLabel: null, hasFocus: false, spellcheck: false, value: '' };
@@ -103,11 +100,11 @@ describe('e2e:osds-textarea', () => {
       });
 
       it('should emit if we write inside the textarea', async() => {
-        const newValue = 'Lorem';
+        const newValue = 'ipsum';
         await setup();
         const odsValueChange = await el.spyOnEvent('odsValueChange');
 
-        el.setProperty('value', ' ipsum');
+        el.setProperty('value', 'Lorem ');
         await page.waitForChanges();
 
         el.callMethod('setFocus');
@@ -116,7 +113,7 @@ describe('e2e:osds-textarea', () => {
 
         const expected: OdsTextAreaValueChangeEvent = {
           ...odsTextAreaValueChangeEventDetailBase,
-          oldValue: 'Lore ipsum',
+          oldValue: 'Lorem ipsu',
           value: 'Lorem ipsum',
         };
 

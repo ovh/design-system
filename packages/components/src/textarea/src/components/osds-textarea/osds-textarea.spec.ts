@@ -2,17 +2,14 @@ jest.mock('./core/controller'); // keep jest.mock before any
 
 import type { OdsTextAreaAttribute } from './interfaces/attributes';
 import type { SpecPage } from '@stencil/core/testing';
-
 import { OdsFormControl } from '@ovhcloud/ods-common-core';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { newSpecPage } from '@stencil/core/testing';
-
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_TEXTAREA_SIZE } from './constants/textarea-size';
 import { OdsTextAreaController } from './core/controller';
 import { OsdsTextArea } from './osds-textarea';
-
 
 describe('spec:osds-textarea', () => {
   const baseAttribute = { ariaLabel: null, hasFocus: false, spellcheck: false, value: '' };
@@ -252,25 +249,15 @@ describe('spec:osds-textarea', () => {
         expect(controller.registerFormControl).toHaveBeenCalledWith(formControl);
       });
 
-      it('should call onDefaultValueChange on defaultValue change', async() => {
-        const defaultValue = 'Text area';
-        await setup();
-        instance.defaultValue = defaultValue;
-        await page.waitForChanges();
-
-        expect(controller.onDefaultValueChange).toHaveBeenCalledTimes(1);
-        expect(controller.onDefaultValueChange).toHaveBeenCalledWith(defaultValue);
-      });
-
-      it('should call emitValue on value change', async() => {
+      it('should call onValueChange on value change', async() => {
         const value = 'Text area';
         const oldValue = 'Old value';
         await setup({ attributes: { value: oldValue } });
         instance.value = value;
         await page.waitForChanges();
 
-        expect(controller.emitValue).toHaveBeenCalledTimes(1);
-        expect(controller.emitValue).toHaveBeenCalledWith(value, oldValue);
+        expect(controller.onValueChange).toHaveBeenCalledTimes(1);
+        expect(controller.onValueChange).toHaveBeenCalledWith(value, oldValue);
       });
     });
 
@@ -300,14 +287,6 @@ describe('spec:osds-textarea', () => {
         expect(controller.onInput).toHaveBeenCalledWith(event);
       });
 
-      it('should call onChange when change', async() => {
-        await setup();
-        instance?.onChange();
-
-        expect(controller.onChange).toHaveBeenCalledTimes(1);
-        expect(controller.onChange).toHaveBeenCalledWith();
-      });
-
       it('should call onFocus when focus', async() => {
         await setup();
         if (htmlTextArea) {
@@ -329,29 +308,20 @@ describe('spec:osds-textarea', () => {
         expect(controller.getTextAreaValidity).toHaveBeenCalledWith();
       });
 
-      it('should call setValue from clear method', async() => {
+      it('should call clear from clear method', async() => {
         await setup();
         await instance?.clear();
 
-        expect(controller.setValue).toHaveBeenCalledTimes(1);
-        expect(controller.setValue).toHaveBeenCalledWith();
+        expect(controller.clear).toHaveBeenCalledTimes(1);
+        expect(controller.clear).toHaveBeenCalled();
       });
 
-      it('should call setValue from reset method', async() => {
+      it('should call reset from reset method', async() => {
         await setup();
         await instance?.reset();
 
-        expect(controller.setValue).toHaveBeenCalledTimes(1);
-        expect(controller.setValue).toHaveBeenCalledWith('');
-      });
-
-      it('should call setValue from reset method (defaultValue case)', async() => {
-        const defaultValue = 'default';
-        await setup({ attributes: { defaultValue } });
-        await instance?.reset();
-
-        expect(controller.setValue).toHaveBeenCalledTimes(1);
-        expect(controller.setValue).toHaveBeenCalledWith(defaultValue);
+        expect(controller.reset).toHaveBeenCalledTimes(1);
+        expect(controller.reset).toHaveBeenCalled();
       });
 
       it('should call setTextAreaTabindex from setTextAreaTabindex method', async() => {

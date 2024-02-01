@@ -1783,131 +1783,104 @@ export namespace Components {
     interface OsdsTextarea {
         /**
           * ariaLabel: see component principles
-          * @see OdsTextAreaAttributes.ariaLabel
          */
         "ariaLabel": HTMLElement['ariaLabel'];
         /**
           * ariaLabelledby: see component principles
-          * @see OdsTextAreaAttributes.ariaLabelledby
          */
         "ariaLabelledby"?: string;
         /**
           * empty the value
-          * @see OdsTextAreaMethods.clear
          */
         "clear": () => Promise<void>;
         /**
           * main color: see component principles
-          * @see OdsTextAreaAttributes.color
          */
         "color"?: ODS_THEME_COLOR_INTENT;
         /**
           * cols: see component principles
-          * @see OdsTextAreaAttributes.cols
          */
         "cols"?: number;
         /**
           * contrasted: see component principles
-          * @see OdsTextAreaAttributes.contrasted
          */
         "contrasted"?: boolean;
         /**
           * defaultValue: see component principles
-          * @see OdsTextAreaAttributes.defaultValue
          */
         "defaultValue"?: string;
         /**
           * cols: see component principles
-          * @see OdsTextAreaAttributes.disabled
          */
         "disabled"?: boolean;
         /**
           * on error or not
-          * @see OdsTextAreaAttributes.error
          */
         "error"?: boolean;
-        /**
-          * @see OdsTextAreaAttributes.errorStateControl
-         */
         "errorStateControl"?: OdsErrorStateControl;
         /**
           * textarea form control
-          * @see OdsTextAreaAttributes.formControl
          */
         "formControl"?: OdsFormControl<OdsTextAreaValidityState>;
         /**
           * get the validity state
-          * @see OdsTextAreaMethods.getValidity
          */
         "getValidity": () => Promise<OdsTextAreaValidityState>;
         /**
           * inline or not: see component principles
-          * @see OdsTextAreaAttributes.inline
          */
         "inline"?: boolean;
         /**
           * name : see component principles
-          * @see OdsTextAreaAttributes.name
          */
         "name"?: string;
         /**
           * placeholder : see component principles
-          * @see OdsTextAreaAttributes.placeholder
          */
         "placeholder"?: string;
         /**
           * readOnly or not : see component principles
-          * @see OdsTextAreaAttributes.readOnly
          */
         "readOnly"?: boolean;
         /**
           * required or not : see component principles
-          * @see OdsTextAreaAttributes.required
          */
         "required"?: boolean;
         /**
           * restore the value to the initial state
-          * @see OdsTextAreaMethods.reset
          */
         "reset": () => Promise<void>;
         /**
           * resizable or not : see component principles
-          * @see OdsTextAreaAttributes.resizable
          */
         "resizable"?: boolean;
         /**
           * row: see component principles
-          * @see OdsTextAreaAttributes.rows
          */
         "rows"?: number;
         /**
           * active the focus on the textarea in order to let the user write something
-          * @see OdsTextAreaMethods.setFocus
          */
         "setFocus": () => Promise<void>;
         /**
           * set a custom tab index for easier navigation
-          * @see OdsTextAreaMethods.setTextAreaTabindex
+          * @param value - chosen index
          */
         "setTextAreaTabindex": (value: number) => Promise<void>;
         /**
           * textarea size
-          * @see OdsTextAreaAttributes.size
          */
         "size"?: ODS_TEXTAREA_SIZE;
         /**
           * spellcheck: see component principles
-          * @see OdsTextAreaAttributes.spellcheck
          */
         "spellcheck": HTMLElement['spellcheck'];
         /**
           * textarea id
-          * @see OdsTextAreaAttributes.textAreaId
          */
         "textAreaId"?: string;
         /**
           * value: see component principles
-          * @see OdsTextAreaAttributes.value
          */
         "value": string;
     }
@@ -4518,121 +4491,95 @@ declare namespace LocalJSX {
     interface OsdsTextarea {
         /**
           * ariaLabel: see component principles
-          * @see OdsTextAreaAttributes.ariaLabel
          */
         "ariaLabel"?: HTMLElement['ariaLabel'];
         /**
           * ariaLabelledby: see component principles
-          * @see OdsTextAreaAttributes.ariaLabelledby
          */
         "ariaLabelledby"?: string;
         /**
           * main color: see component principles
-          * @see OdsTextAreaAttributes.color
          */
         "color"?: ODS_THEME_COLOR_INTENT;
         /**
           * cols: see component principles
-          * @see OdsTextAreaAttributes.cols
          */
         "cols"?: number;
         /**
           * contrasted: see component principles
-          * @see OdsTextAreaAttributes.contrasted
          */
         "contrasted"?: boolean;
         /**
           * defaultValue: see component principles
-          * @see OdsTextAreaAttributes.defaultValue
          */
         "defaultValue"?: string;
         /**
           * cols: see component principles
-          * @see OdsTextAreaAttributes.disabled
          */
         "disabled"?: boolean;
         /**
           * on error or not
-          * @see OdsTextAreaAttributes.error
          */
         "error"?: boolean;
-        /**
-          * @see OdsTextAreaAttributes.errorStateControl
-         */
         "errorStateControl"?: OdsErrorStateControl;
         /**
           * textarea form control
-          * @see OdsTextAreaAttributes.formControl
          */
         "formControl"?: OdsFormControl<OdsTextAreaValidityState>;
         /**
           * inline or not: see component principles
-          * @see OdsTextAreaAttributes.inline
          */
         "inline"?: boolean;
         /**
           * name : see component principles
-          * @see OdsTextAreaAttributes.name
          */
         "name"?: string;
         /**
           * Event triggered on textarea blur
-          * @see OdsTextAreaEvents.odsBlur
          */
         "onOdsBlur"?: (event: OsdsTextareaCustomEvent<void>) => void;
         /**
           * Event triggered on textarea focus
-          * @see OdsTextAreaEvents.odsFocus
          */
         "onOdsFocus"?: (event: OsdsTextareaCustomEvent<void>) => void;
         /**
           * The textarea value changed
-          * @see OdsTextAreaEvents.odsValueChange
          */
         "onOdsValueChange"?: (event: OsdsTextareaCustomEvent<OdsTextAreaValueChangeEvent>) => void;
         /**
           * placeholder : see component principles
-          * @see OdsTextAreaAttributes.placeholder
          */
         "placeholder"?: string;
         /**
           * readOnly or not : see component principles
-          * @see OdsTextAreaAttributes.readOnly
          */
         "readOnly"?: boolean;
         /**
           * required or not : see component principles
-          * @see OdsTextAreaAttributes.required
          */
         "required"?: boolean;
         /**
           * resizable or not : see component principles
-          * @see OdsTextAreaAttributes.resizable
          */
         "resizable"?: boolean;
         /**
           * row: see component principles
-          * @see OdsTextAreaAttributes.rows
          */
         "rows"?: number;
         /**
           * textarea size
-          * @see OdsTextAreaAttributes.size
          */
         "size"?: ODS_TEXTAREA_SIZE;
         /**
           * spellcheck: see component principles
-          * @see OdsTextAreaAttributes.spellcheck
          */
         "spellcheck"?: HTMLElement['spellcheck'];
         /**
           * textarea id
-          * @see OdsTextAreaAttributes.textAreaId
          */
         "textAreaId"?: string;
         /**
           * value: see component principles
-          * @see OdsTextAreaAttributes.value
          */
         "value"?: string;
     }

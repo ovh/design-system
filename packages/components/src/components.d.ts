@@ -521,42 +521,34 @@ export namespace Components {
     interface OsdsChip {
         /**
           * Chip color theme
-          * @see OdsChipAttributes.color
          */
         "color"?: ODS_THEME_COLOR_INTENT;
         /**
           * Chip is in contrasterd mode or not
-          * @see OdsChipAttributes.contrasted
          */
         "contrasted"?: boolean;
         /**
           * Chip is disabled or not
-          * @see OdsChipAttributes.disabled
          */
         "disabled"?: boolean;
         /**
           * Chip as inline
-          * @see OdsChipAttributes.inline
          */
         "inline"?: boolean;
         /**
           * If the chip can be removed or not
-          * @see OdsChipAttributes.removable
          */
         "removable"?: boolean;
         /**
           * If the chip can be selected or not
-          * @see OdsChipAttributes.selectable
          */
         "selectable"?: boolean;
         /**
           * Chip size
-          * @see OdsChipAttributes.size
          */
         "size"?: ODS_CHIP_SIZE;
         /**
           * Chip variant
-          * @see OdsChipAttributes.variant
          */
         "variant"?: ODS_CHIP_VARIANT;
     }
@@ -926,47 +918,38 @@ export namespace Components {
     interface OsdsLink {
         /**
           * Link color theme
-          * @see OdsLinkAttributes.color
          */
         "color"?: ODS_THEME_COLOR_INTENT;
         /**
           * Link design as contrasted version
-          * @see OdsLinkAttributes.contrasted
          */
         "contrasted"?: boolean;
         /**
           * Link should be disabled or not
-          * @see OdsLinkAttributes.disabled
          */
         "disabled"?: boolean;
         /**
           * Link as download source
-          * @see OdsLinkAttributes.download
          */
         "download"?: HTMLAnchorElement['download'];
         /**
           * Link URL
-          * @see OdsLinkAttributes.href
          */
         "href"?: string;
         /**
           * Link referrer policy
-          * @see OdsLinkAttributes.referrerpolicy
          */
         "referrerpolicy"?: ODS_LINK_REFERRER_POLICY1;
         /**
           * Link relationship
-          * @see OdsLinkAttributes.rel
          */
         "rel"?: OdsHTMLAnchorElementRel;
         /**
           * Link target type If href is set the default value `_self` is set
-          * @see OdsLinkAttributes.target
          */
         "target"?: OdsHTMLAnchorElementTarget;
         /**
           * Link type (for download source)
-          * @see OdsLinkAttributes.type
          */
         "type"?: string;
     }
@@ -1399,61 +1382,47 @@ export namespace Components {
     interface OsdsRange {
         /**
           * Range color theme
-          * @see OdsRangeAttributes.color
          */
         "color"?: ODS_THEME_COLOR_INTENT;
         /**
           * Indicate if the range is entirely disabled. It means no interaction is possible (hover, click, focus, etc)
-          * @see OdsRangeAttributes.disabled
          */
         "disabled"?: boolean;
         /**
           * If the range is in error or not
-          * @see OdsRangeAttributes.error
          */
         "error"?: boolean;
         /**
           * Check range error state
-          * @see OdsRangeAttributes.errorStateControl
          */
         "errorStateControl"?: OdsErrorStateControl;
         /**
           * The range forbidden values
-          * @see OdsRangeAttributes.forbiddenValues
          */
         "forbiddenValues": OdsFormForbiddenValues<number>;
         /**
           * The form control for range
-          * @see OdsRangeAttributes.formControl
          */
         "formControl"?: OdsFormControl<OdsValidityState>;
-        /**
-          * @see OdsRangeMethods.getValidity
-         */
         "getValidity": () => Promise<OdsValidityState>;
         /**
           * inline unit for range width
-          * @see OdsRangeAttributes.inline
          */
         "inline"?: boolean;
         /**
           * The range maximum value
-          * @see OdsRangeAttributes.max
          */
         "max"?: number;
         /**
           * The range minimum value
-          * @see OdsRangeAttributes.min
          */
         "min"?: number;
         /**
           * The range step value
-          * @see OdsRangeAttributes.step
          */
         "step"?: number;
         /**
           * The range value
-          * @see OdsRangeAttributes.value
          */
         "value": OdsRangeValue;
     }
@@ -1492,86 +1461,74 @@ export namespace Components {
     interface OsdsSelect {
         /**
           * The corresponding aria-label describing its content
-          * @see OdsSelectAttribute.ariaLabel
          */
         "ariaLabel": string | null;
         /**
           * The id to an external description
-          * @see OdsSelectAttribute.ariaLabelledby
          */
         "ariaLabelledby": string;
         /**
           * erase the current selection
-          * @see OdsSelectMethods.clear
          */
         "clear": () => Promise<void>;
         /**
           * the primary color of the theme
-          * @see OdsSelectAttribute.color
          */
         "color": ODS_THEME_COLOR_INTENT;
         /**
           * Its corresponding default value. It needs to match with one option so the option will be selected
-          * @see OdsSelectAttribute.defaultValue
          */
         "defaultValue": OdsInputValue;
         /**
           * indicates if the select is entirely disabled. it means no interactions (hover, click, focus, etc)
-          * @see OdsSelectAttribute.disabled
          */
         "disabled": boolean;
         /**
           * indicates if the select has an error.
-          * @see OdsSelectAttribute.error
          */
         "error": boolean | undefined;
         /**
           * get the validity state
-          * @see OdsSelectMethods.getValidity
          */
         "getValidity": () => Promise<OdsValidityState>;
         /**
           * full width or not: see component principles
-          * @see OdsSelectAttribute.inline
          */
         "inline": boolean;
         /**
-          * Whether or not the select is open
+          * name of the select field
+         */
+        "name"?: string;
+        /**
+          * opened or not
          */
         "opened": boolean;
         /**
           * indicates if a value has to be selected
-          * @see OdsSelectAttribute.required
          */
         "required": boolean;
         /**
           * reset the value to the initial one (default value)
-          * @see OdsSelectMethods.reset
          */
         "reset": () => Promise<void>;
         /**
           * focus the element
-          * @see OdsSelectMethods.setFocus
          */
         "setFocus": () => Promise<void>;
         /**
           * set tab index on the component
-          * @see OdsSelectMethods.setInputTabindex
          */
         "setInputTabindex": (value: number) => Promise<void>;
         /**
           * size: see component principles
-          * @see OdsSelectAttribute.size
          */
         "size": ODS_SELECT_SIZE;
         /**
           * check that the select is valid or not. In case of required field, the validation will check the entered value and set the field in error if it is not fulfilled
-          * @see OdsSelectMethods.setInputTabindex
          */
         "validate": () => Promise<OdsValidityState>;
         /**
           * Its corresponding value. It needs to correspond to the value of the option
-          * @see OdsSelectAttribute.value
          */
         "value": OdsInputValue;
     }
@@ -1591,9 +1548,6 @@ export namespace Components {
           * @see OdsSelectOptionMethods.setTabIndex
          */
         "setTabIndex": (value: number) => Promise<void>;
-        /**
-          * @see OdsSelectOptionAttributes.value
-         */
         "value": OdsInputValue;
     }
     interface OsdsSkeleton {
@@ -1879,57 +1833,46 @@ export namespace Components {
     interface OsdsTile {
         /**
           * If the tile is selected or not
-          * @see OdsTileAttributes.checked
          */
         "checked"?: boolean;
         /**
           * awaiting a change of checked state
-          * @see OdsTileAttributes.checking
          */
         "checking"?: boolean;
         /**
           * Tile color theme
-          * @see OdsTileAttributes.color
          */
         "color"?: ODS_THEME_COLOR_INTENT;
         /**
           * disabled or not: see component principles
-          * @see OdsTileAttributes.disabled
          */
         "disabled"?: boolean;
         /**
           * indicate if the tile has to be displayed in focused state
-          * @see OdsTileAttributes.hasFocus
          */
         "hasFocus"?: boolean;
         /**
           * If the tile can have hoverable pseudo-classes or not
-          * @see OdsTileAttributes.hoverable
          */
         "hoverable"?: boolean;
         /**
           * inline or not: see component principles
-          * @see OdsTileAttributes.inline
          */
         "inline"?: boolean | undefined;
         /**
           * loading content state
-          * @see OdsTileAttributes.loading
          */
         "loading"?: boolean;
         /**
           * If the tile is rounded or not
-          * @see OdsTileAttributes.rounded
          */
         "rounded"?: boolean;
         /**
           * Tile size
-          * @see OdsTileAttributes.size
          */
         "size"?: ODS_TILE_SIZE;
         /**
           * Tile variant
-          * @see OdsTileAttributes.variant
          */
         "variant"?: ODS_TILE_VARIANT;
     }
@@ -3206,46 +3149,35 @@ declare namespace LocalJSX {
     interface OsdsChip {
         /**
           * Chip color theme
-          * @see OdsChipAttributes.color
          */
         "color"?: ODS_THEME_COLOR_INTENT;
         /**
           * Chip is in contrasterd mode or not
-          * @see OdsChipAttributes.contrasted
          */
         "contrasted"?: boolean;
         /**
           * Chip is disabled or not
-          * @see OdsChipAttributes.disabled
          */
         "disabled"?: boolean;
         /**
           * Chip as inline
-          * @see OdsChipAttributes.inline
          */
         "inline"?: boolean;
-        /**
-          * @see OdsChipEvents.odsChipRemoval
-         */
         "onOdsChipRemoval"?: (event: OsdsChipCustomEvent<void>) => void;
         /**
           * If the chip can be removed or not
-          * @see OdsChipAttributes.removable
          */
         "removable"?: boolean;
         /**
           * If the chip can be selected or not
-          * @see OdsChipAttributes.selectable
          */
         "selectable"?: boolean;
         /**
           * Chip size
-          * @see OdsChipAttributes.size
          */
         "size"?: ODS_CHIP_SIZE;
         /**
           * Chip variant
-          * @see OdsChipAttributes.variant
          */
         "variant"?: ODS_CHIP_VARIANT;
     }
@@ -3622,47 +3554,38 @@ declare namespace LocalJSX {
     interface OsdsLink {
         /**
           * Link color theme
-          * @see OdsLinkAttributes.color
          */
         "color"?: ODS_THEME_COLOR_INTENT;
         /**
           * Link design as contrasted version
-          * @see OdsLinkAttributes.contrasted
          */
         "contrasted"?: boolean;
         /**
           * Link should be disabled or not
-          * @see OdsLinkAttributes.disabled
          */
         "disabled"?: boolean;
         /**
           * Link as download source
-          * @see OdsLinkAttributes.download
          */
         "download"?: HTMLAnchorElement['download'];
         /**
           * Link URL
-          * @see OdsLinkAttributes.href
          */
         "href"?: string;
         /**
           * Link referrer policy
-          * @see OdsLinkAttributes.referrerpolicy
          */
         "referrerpolicy"?: ODS_LINK_REFERRER_POLICY1;
         /**
           * Link relationship
-          * @see OdsLinkAttributes.rel
          */
         "rel"?: OdsHTMLAnchorElementRel;
         /**
           * Link target type If href is set the default value `_self` is set
-          * @see OdsLinkAttributes.target
          */
         "target"?: OdsHTMLAnchorElementTarget;
         /**
           * Link type (for download source)
-          * @see OdsLinkAttributes.type
          */
         "type"?: string;
     }
@@ -4102,62 +4025,50 @@ declare namespace LocalJSX {
     interface OsdsRange {
         /**
           * Range color theme
-          * @see OdsRangeAttributes.color
          */
         "color"?: ODS_THEME_COLOR_INTENT;
         /**
           * Indicate if the range is entirely disabled. It means no interaction is possible (hover, click, focus, etc)
-          * @see OdsRangeAttributes.disabled
          */
         "disabled"?: boolean;
         /**
           * If the range is in error or not
-          * @see OdsRangeAttributes.error
          */
         "error"?: boolean;
         /**
           * Check range error state
-          * @see OdsRangeAttributes.errorStateControl
          */
         "errorStateControl"?: OdsErrorStateControl;
         /**
           * The range forbidden values
-          * @see OdsRangeAttributes.forbiddenValues
          */
         "forbiddenValues"?: OdsFormForbiddenValues<number>;
         /**
           * The form control for range
-          * @see OdsRangeAttributes.formControl
          */
         "formControl"?: OdsFormControl<OdsValidityState>;
         /**
           * inline unit for range width
-          * @see OdsRangeAttributes.inline
          */
         "inline"?: boolean;
         /**
           * The range maximum value
-          * @see OdsRangeAttributes.max
          */
         "max"?: number;
         /**
           * The range minimum value
-          * @see OdsRangeAttributes.min
          */
         "min"?: number;
         /**
           * the range value changed
-          * @see OdsRangeEvents.odsValueChange
          */
         "onOdsValueChange"?: (event: OsdsRangeCustomEvent<OdsRangeValueChangeEventDetail>) => void;
         /**
           * The range step value
-          * @see OdsRangeAttributes.step
          */
         "step"?: number;
         /**
           * The range value
-          * @see OdsRangeAttributes.value
          */
         "value"?: OdsRangeValue;
     }
@@ -4201,71 +4112,62 @@ declare namespace LocalJSX {
     interface OsdsSelect {
         /**
           * The corresponding aria-label describing its content
-          * @see OdsSelectAttribute.ariaLabel
          */
         "ariaLabel"?: string | null;
         /**
           * The id to an external description
-          * @see OdsSelectAttribute.ariaLabelledby
          */
         "ariaLabelledby"?: string;
         /**
           * the primary color of the theme
-          * @see OdsSelectAttribute.color
          */
         "color"?: ODS_THEME_COLOR_INTENT;
         /**
           * Its corresponding default value. It needs to match with one option so the option will be selected
-          * @see OdsSelectAttribute.defaultValue
          */
         "defaultValue"?: OdsInputValue;
         /**
           * indicates if the select is entirely disabled. it means no interactions (hover, click, focus, etc)
-          * @see OdsSelectAttribute.disabled
          */
         "disabled"?: boolean;
         /**
           * indicates if the select has an error.
-          * @see OdsSelectAttribute.error
          */
         "error"?: boolean | undefined;
         /**
           * full width or not: see component principles
-          * @see OdsSelectAttribute.inline
          */
         "inline"?: boolean;
         /**
+          * name of the select field
+         */
+        "name"?: string;
+        /**
           * Event triggered on select blur
-          * @see OdsSelectEvents.odsBlur
          */
         "onOdsBlur"?: (event: OsdsSelectCustomEvent<void>) => void;
         /**
           * Event triggered on select focus
-          * @see OdsSelectEvents.odsFocus
          */
         "onOdsFocus"?: (event: OsdsSelectCustomEvent<void>) => void;
         /**
           * Emitted when the value has changed
-          * @see OdsSelectEvent.odsValueChange
          */
         "onOdsValueChange"?: (event: OsdsSelectCustomEvent<OdsSelectValueChangeEventDetail>) => void;
         /**
-          * Whether or not the select is open
+          * opened or not
          */
         "opened"?: boolean;
         /**
           * indicates if a value has to be selected
-          * @see OdsSelectAttribute.required
          */
         "required"?: boolean;
         /**
           * size: see component principles
-          * @see OdsSelectAttribute.size
          */
         "size"?: ODS_SELECT_SIZE;
         /**
           * Its corresponding value. It needs to correspond to the value of the option
-          * @see OdsSelectAttribute.value
          */
         "value"?: OdsInputValue;
     }
@@ -4274,16 +4176,12 @@ declare namespace LocalJSX {
     interface OsdsSelectOption {
         /**
           * the select value changed
-          * @see OdsSelectOptionEvents.odsSelectOptionClickEventDetail
          */
         "onOdsSelectOptionClick"?: (event: OsdsSelectOptionCustomEvent<OdsSelectOptionClickEventDetail>) => void;
         /**
           * Whether or not it is the selected value (fetched from parent). UI only purpose
          */
         "selected"?: boolean;
-        /**
-          * @see OdsSelectOptionAttributes.value
-         */
         "value"?: OdsInputValue;
     }
     interface OsdsSkeleton {
@@ -4568,57 +4466,46 @@ declare namespace LocalJSX {
     interface OsdsTile {
         /**
           * If the tile is selected or not
-          * @see OdsTileAttributes.checked
          */
         "checked"?: boolean;
         /**
           * awaiting a change of checked state
-          * @see OdsTileAttributes.checking
          */
         "checking"?: boolean;
         /**
           * Tile color theme
-          * @see OdsTileAttributes.color
          */
         "color"?: ODS_THEME_COLOR_INTENT;
         /**
           * disabled or not: see component principles
-          * @see OdsTileAttributes.disabled
          */
         "disabled"?: boolean;
         /**
           * indicate if the tile has to be displayed in focused state
-          * @see OdsTileAttributes.hasFocus
          */
         "hasFocus"?: boolean;
         /**
           * If the tile can have hoverable pseudo-classes or not
-          * @see OdsTileAttributes.hoverable
          */
         "hoverable"?: boolean;
         /**
           * inline or not: see component principles
-          * @see OdsTileAttributes.inline
          */
         "inline"?: boolean | undefined;
         /**
           * loading content state
-          * @see OdsTileAttributes.loading
          */
         "loading"?: boolean;
         /**
           * If the tile is rounded or not
-          * @see OdsTileAttributes.rounded
          */
         "rounded"?: boolean;
         /**
           * Tile size
-          * @see OdsTileAttributes.size
          */
         "size"?: ODS_TILE_SIZE;
         /**
           * Tile variant
-          * @see OdsTileAttributes.variant
          */
         "variant"?: ODS_TILE_VARIANT;
     }

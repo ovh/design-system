@@ -1,15 +1,11 @@
 import type { OsdsSelectOption } from '../../osds-select-option/osds-select-option';
 import type { OcdkSurface } from '@ovhcloud/ods-cdk';
-
 import { OcdkSurfaceMock } from '@ovhcloud/ods-cdk';
-
 import { OdsSelectController } from './controller';
 import { OsdsSelect } from '../osds-select';
 
-
-class OdsSelectMock extends OsdsSelect {
+class OdsSelectMock {
   constructor(attribute: Partial<OsdsSelect>) {
-    super();
     Object.assign(this, attribute);
   }
 
@@ -17,6 +13,10 @@ class OdsSelectMock extends OsdsSelect {
   handleSelectClick = jest.fn();
   handleValueChange = jest.fn();
   setFocus = jest.fn();
+
+  internals = {
+    setFormValue: jest.fn()
+  };
 }
 
 describe('spec:ods-select-controller', () => {
@@ -26,7 +26,7 @@ describe('spec:ods-select-controller', () => {
   let item2: OsdsSelectOption & HTMLElement;
 
   function setup(attributes: Partial<OsdsSelect> = {}) {
-    component = new OdsSelectMock(attributes);
+    component = new OdsSelectMock(attributes) as unknown as OsdsSelect;
 
     if (component.surface) {
       component.surface.opened = attributes?.opened ?? false;

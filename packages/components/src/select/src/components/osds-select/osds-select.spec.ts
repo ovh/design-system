@@ -1,16 +1,14 @@
+jest.mock('./core/controller'); // keep jest.mock before any
+
 import type { OdsSelectAttribute } from './interfaces/attributes';
 import type { SpecPage } from '@stencil/core/testing';
-
-import { OdsLogger } from '@ovhcloud/ods-common-core';
 import { OdsMockNativeMethod, OdsMockPropertyDescriptor, odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { newSpecPage } from '@stencil/core/testing';
-
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { DEFAULT_VALIDITY_STATE } from './constants/default-validity-state';
 import { ODS_SELECT_SIZE } from './constants/select-size';
 import { OsdsSelect } from './osds-select';
-
 
 const mutationObserverMock = jest.fn(function MutationObserver(callback) {
   this.observe = jest.fn();
@@ -23,13 +21,10 @@ const mutationObserverMock = jest.fn(function MutationObserver(callback) {
 // @ts-ignore
 global.MutationObserver = mutationObserverMock;
 
-const logger = new OdsLogger('osds-select-spec');
-
 // mock validity property that does not exist when stencil mock HTMLInputElement
 OdsMockPropertyDescriptor(HTMLInputElement.prototype, 'validity', () => DEFAULT_VALIDITY_STATE);
 
 describe('spec:osds-select', () => {
-  logger.log('init');
   const baseAttribute = { ariaLabel: null, ariaLabelledby: '', color: ODS_THEME_COLOR_INTENT.primary, defaultValue: '', disabled: false, inline: false, required: false, size: ODS_SELECT_SIZE.md, value: '' };
   let page: SpecPage;
   let instance: OsdsSelect;
@@ -166,13 +161,6 @@ describe('spec:osds-select', () => {
   });
 
   describe('methods', () => {
-    it('should have defaultValue as value if set', async() => {
-      const defaultValue = 4;
-      await setup({ attributes: { defaultValue } });
-      expect(instance).toBeTruthy();
-      expect(instance?.value).toBe(`${defaultValue}`);
-    });
-
     it('should call reset function and set value to defaultValue', async() => {
       const defaultValue = 4;
       await setup({ attributes: { defaultValue, value: 2 } });

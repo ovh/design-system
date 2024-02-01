@@ -93,6 +93,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
 
   emitChange(value: OdsInputValue, oldValue?: OdsInputValue) {
     this.odsValueChange.emit({
+      name: this.name,
       value: value == null ? value : `${value}`,
       oldValue: oldValue == null ? oldValue : `${oldValue}`,
       validity: this.controller.getInputValidity(),

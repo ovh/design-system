@@ -2,8 +2,8 @@ import type { OsdsSelectOption } from '../../osds-select-option/osds-select-opti
 import type { OdsInputValue, OdsValidityState } from '@ovhcloud/ods-common-core';
 import type { EventEmitter } from '@stencil/core';
 
-
 interface OdsSelectValueChangeEventDetail {
+  name?: string,
   oldValue?: OdsInputValue,
   selection: OsdsSelectOption | null,
   validity: OdsValidityState,

@@ -38,9 +38,7 @@ export class OsdsTile implements OdsTileAttribute {
 
   render() {
     return (
-      <Host {...{
-        onClick: () => this.controller.handleClick(),
-      }}
+      <Host
         class={{
           'osds-tile' : true,
           'osds-tile--checking' : this.checking || false,
@@ -48,8 +46,7 @@ export class OsdsTile implements OdsTileAttribute {
           'osds-tile--hoverable' : this.hoverable || false,
           'osds-tile--inline' : this.inline || false,
           'osds-tile--rounded' : this.rounded || false
-        }}
-      >
+        }}>
         <slot name={'start'}></slot>
         <span>
           <slot></slot>

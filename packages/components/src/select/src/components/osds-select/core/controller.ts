@@ -1,12 +1,7 @@
-
 import type { OdsSelectOptionClickEventDetail, OsdsSelectOption } from '../../osds-select-option/public-api';
 import type { OsdsSelect } from '../osds-select';
-import type { OdsValidityState } from '@ovhcloud/ods-common-core';
+import type { OdsInputValue, OdsValidityState } from '@ovhcloud/ods-common-core';
 
-/**
- * common controller logic for select component used by the different implementations.
- * it contains all the glue between framework implementation and the third party service.
- */
 class OdsSelectController {
   private component: OsdsSelect;
   private _selectOptions: (HTMLElement & OsdsSelectOption)[] = [];
@@ -21,6 +16,20 @@ class OdsSelectController {
 
   constructor(component: OsdsSelect) {
     this.component = component;
+  }
+
+  beforeInit(): void {
+    if (this.component.value === '' && this.component.defaultValue !== undefined) {
+      this.component.value = this.component.defaultValue;
+    }
+    this.component.internals.setFormValue(this.component.value?.toString() ?? '');
+    this.component.openedChanged(this.component.opened);
+    this.component.selectedLabelSlot = this.component.el.querySelector('[slot="selectedLabel"]');
+  }
+
+  changeValue(value: OdsInputValue) {
+    this.component.value = value;
+    this.component.internals.setFormValue(value?.toString() ?? '');
   }
 
   /**
@@ -151,6 +160,11 @@ class OdsSelectController {
       },
     }));
     this.component.setFocus();
+  }
+
+  onValueChange(value: OdsInputValue, oldValue?: OdsInputValue): void {
+    this.component.internals.setFormValue(value?.toString() ?? '');
+    this.component.emitChange(value, oldValue);
   }
 }
 

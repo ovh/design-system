@@ -6,19 +6,10 @@ import type { OdsButtonAttribute } from './interfaces/attributes';
 import type { OdsHTMLAnchorElementRel, OdsHTMLAnchorElementTarget } from '@ovhcloud/ods-common-core';
 import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import type { HTMLStencilElement } from '@stencil/core/internal';
-
 import { Component, Element, Host, Listen, Prop, h } from '@stencil/core';
-
-
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsButtonController } from './core/controller';
 
-
-/**
- * @slot start - Fixed start button content
- * @slot (unnamed) - Button content
- * @slot end - Fixed end button content
- */
 @Component({
   tag: 'osds-button',
   styleUrl: 'osds-button.scss',

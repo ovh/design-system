@@ -76,7 +76,7 @@
         }
       }
     ],
-    "indent": ["error", 2],
+    "indent": ["error", 2, { "SwitchCase": 1 }],
     "lines-between-class-members": ["error", "always", { "exceptAfterSingleLine": true }],
     "max-depth": ["error", {"max": 4}],
     "max-len": ["error", { "code": 300 }],
@@ -84,7 +84,7 @@
     "newline-per-chained-call": "off",
     "no-array-constructor": "error",
     "no-await-in-loop": "error",
-    "no-console": "error",
+    "no-console": ["error", { "allow": ["warn", "error"] }],
     "no-extra-bind": "error",
     "no-magic-numbers": "off",
     "no-multi-spaces": "error",

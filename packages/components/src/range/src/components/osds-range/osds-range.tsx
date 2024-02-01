@@ -93,10 +93,6 @@ export class OsdsRange implements OdsRangeAttribute, OdsRangeEvent {
     this.controller.onKeyup(event, inputEl, dual);
   }
 
-  handleClick(): void {
-    this.controller.handleClick();
-  }
-
   hasError(): boolean {
     return this.controller.hasError();
   }
@@ -115,13 +111,11 @@ export class OsdsRange implements OdsRangeAttribute, OdsRangeEvent {
     }
 
     return (
-      <Host {...{
-        onclick: this.handleClick.bind(this),
-      }}
-      class={{
-        'ods-error': this.hasError(),
-        'dual-range': this.controller.isDualRange(),
-      }}
+      <Host
+        class={{
+          'ods-error': this.hasError(),
+          'dual-range': this.controller.isDualRange(),
+        }}
       >
         <span {...{
           class: 'range-bounds',

@@ -29,6 +29,8 @@ interface OdsSelectAttribute {
   error?: boolean;
   /** full width or not: see component principles */
   inline: boolean;
+  /** name of the select field */
+  name?: string;
   /** opened or not */
   opened?: boolean;
   /**

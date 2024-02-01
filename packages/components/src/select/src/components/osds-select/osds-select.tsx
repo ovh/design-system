@@ -7,114 +7,75 @@ import type { OsdsSelectOption } from '../osds-select-option/osds-select-option'
 import type { OcdkSurface } from '@ovhcloud/ods-cdk';
 import type { OdsInputValue, OdsValidityState } from '@ovhcloud/ods-common-core';
 import type { HTMLStencilElement } from '@stencil/core/internal';
-
 import { ocdkAssertEventTargetIsNode, ocdkDefineCustomElements, ocdkIsSurface } from '@ovhcloud/ods-cdk';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_ICON_NAME, ODS_ICON_SIZE } from '../../../../icon/src';
-import { Component, Element, Event, EventEmitter, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
-
-
+import { AttachInternals, Component, Element, Event, EventEmitter, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { DEFAULT_VALIDITY_STATE } from './constants/default-validity-state';
 import { OdsSelectController } from './core/controller';
 
-
 // define custom elements from CDK
 ocdkDefineCustomElements();
 
-/**
- * @slot (placeholder) - Select placeholder
- */
 @Component({
-  tag: 'osds-select',
-  styleUrl: 'osds-select.scss',
+  formAssociated: true,
   shadow: true,
+  styleUrl: 'osds-select.scss',
+  tag: 'osds-select',
 })
 export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelectMethod {
-  controller: OdsSelectController = new OdsSelectController(this);
   anchor!: HTMLElement;
-  surface: OcdkSurface | undefined = undefined;
-  /** is the select was touched by the user */
+  controller: OdsSelectController = new OdsSelectController(this);
   dirty = false;
-  selectedLabelSlot: HTMLElement | null = null;
   observer?: MutationObserver;
+  optionSelected: OsdsSelectOption | null = null;
+  selectedLabelSlot: HTMLElement | null = null;
+  surface: OcdkSurface | undefined = undefined;
 
   @Element() el!: HTMLStencilElement;
 
-  /**
-   * The tabindex of the input.
-   * @internal
-   */
-  @State() tabindex = 0;
-
-  /**
-   * Whether or not the select is open
-   */
-  @Prop({ reflect: true, mutable: true }) opened = false;
-
-  /** @see OdsSelectAttribute.ariaLabel */
-  @Prop({ reflect: true }) ariaLabel = DEFAULT_ATTRIBUTE.ariaLabel;
-
-  /** @see OdsSelectAttribute.ariaLabelledby */
-  @Prop() ariaLabelledby = DEFAULT_ATTRIBUTE.ariaLabelledby;
-
-  /** @see OdsSelectAttribute.color */
-  @Prop({ reflect: true }) color: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
-
-  /** @see OdsSelectAttribute.defaultValue */
-  @Prop({ reflect: true }) defaultValue: OdsInputValue = DEFAULT_ATTRIBUTE.defaultValue;
-
-  /** @see OdsSelectAttribute.disabled */
-  @Prop({ reflect: true, mutable: true }) disabled = DEFAULT_ATTRIBUTE.disabled;
-
-  /** @see OdsSelectAttribute.error */
-  @Prop({ reflect: true }) error = DEFAULT_ATTRIBUTE.error;
-
-  /** @see OdsSelectAttribute.inline */
-  @Prop({ reflect: true }) inline = DEFAULT_ATTRIBUTE.inline;
-
-  /** @see OdsSelectAttribute.required */
-  @Prop({ reflect: true, mutable: true }) required = DEFAULT_ATTRIBUTE.required;
-
-  /** @see OdsSelectAttribute.size */
-  @Prop({ reflect: true }) size: ODS_SELECT_SIZE = DEFAULT_ATTRIBUTE.size;
-
-  /** @see OdsSelectAttribute.value */
-  @Prop({ reflect: true, mutable: true }) value: OdsInputValue = DEFAULT_ATTRIBUTE.value;
-
-  /** @see OdsSelectEvent.odsValueChange */
-  @Event() odsValueChange!: EventEmitter<OdsSelectValueChangeEventDetail>;
-
-  optionSelected: OsdsSelectOption | null = null;
+  @AttachInternals() internals!: ElementInternals;
 
   @State() selectedOptionLabel = '';
-
-
+  @State() tabindex = 0;
   @State() validityState: OdsValidityState = DEFAULT_VALIDITY_STATE;
 
-  /** @see OdsSelectEvents.odsFocus */
+  @Prop({ reflect: true, mutable: true }) opened = false;
+  @Prop({ reflect: true }) ariaLabel = DEFAULT_ATTRIBUTE.ariaLabel;
+  @Prop() ariaLabelledby = DEFAULT_ATTRIBUTE.ariaLabelledby;
+  @Prop({ reflect: true }) color: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
+  @Prop({ reflect: true }) defaultValue: OdsInputValue = DEFAULT_ATTRIBUTE.defaultValue;
+  @Prop({ reflect: true, mutable: true }) disabled = DEFAULT_ATTRIBUTE.disabled;
+  @Prop({ reflect: true }) error = DEFAULT_ATTRIBUTE.error;
+  @Prop({ reflect: true }) inline = DEFAULT_ATTRIBUTE.inline;
+  @Prop({ reflect: true }) name?: string = DEFAULT_ATTRIBUTE.name;
+  @Prop({ reflect: true, mutable: true }) required = DEFAULT_ATTRIBUTE.required;
+  @Prop({ reflect: true }) size: ODS_SELECT_SIZE = DEFAULT_ATTRIBUTE.size;
+  @Prop({ reflect: true, mutable: true }) value: OdsInputValue = DEFAULT_ATTRIBUTE.value;
+
+  @Event() odsValueChange!: EventEmitter<OdsSelectValueChangeEventDetail>;
   @Event() odsFocus!: EventEmitter<void>;
+  @Event() odsBlur!: EventEmitter<void>;
+
   private onFocus() {
     this.odsFocus.emit();
   }
-
-  /** @see OdsSelectEvents.odsBlur */
-  @Event() odsBlur!: EventEmitter<void>;
 
   onBlur() {
     this.odsBlur.emit();
   }
 
   componentWillLoad() {
-    if (this.value === '' && this.defaultValue !== undefined) {
-      this.value = this.defaultValue;
-    }
-    this.openedChanged(this.opened);
-    this.selectedLabelSlot = this.el.querySelector('[slot="selectedLabel"]');
+    this.controller.beforeInit();
   }
 
   disconnectedCallback(): void {
     this.observer?.disconnect();
+  }
+
+  formResetCallback(): void {
+    this.value = this.defaultValue;
   }
 
   /**
@@ -136,16 +97,17 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
 
   @Watch('value')
   async onValueChange(value: OdsInputValue, oldValue?: OdsInputValue) {
-    this.emitChange(value, oldValue);
+    this.controller.onValueChange(value, oldValue);
     await this.updateSelectOptionStates(value);
   }
 
-  private emitChange(value: OdsInputValue, oldValue?: OdsInputValue) {
+  emitChange(value: OdsInputValue, oldValue?: OdsInputValue) {
     this.odsValueChange.emit({
-      value: value,
+      name: this.name,
       oldValue: oldValue,
       selection: this.optionSelected,
       validity: this.validityState,
+      value: value,
     });
   }
 
@@ -154,10 +116,6 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
     this.controller.handlerKeyDown(event);
   }
 
-  /**
-   * @internal
-   * @see OdsSelectMethods.clear
-   */
   @Method()
   async clear() {
     this.optionSelected = null;
@@ -165,19 +123,11 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
     this.value = '';
   }
 
-  /**
-   * @internal
-   * @see OdsSelectMethods.getValidity
-   */
   @Method()
   async getValidity() {
     return this.validityState;
   }
 
-  /**
-   * @internal
-   * @see OdsSelectMethods.reset
-   */
   @Method()
   async reset() {
     this.optionSelected = null;
@@ -185,27 +135,16 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
     this.validityState = DEFAULT_VALIDITY_STATE;
   }
 
-  /**
-   * @internal
-   * @see OdsSelectMethods.setFocus
-   */
   @Method()
   async setFocus() {
     this.el.focus();
   }
 
-  /**
-   * @internal
-   * @see OdsSelectMethods.setInputTabindex
-   */
   @Method()
   async setInputTabindex(value: number) {
     this.tabindex = value;
   }
 
-  /**
-   * @see OdsSelectMethods.setInputTabindex
-   */
   @Method()
   async validate() {
     this.validityState = this.controller.getValidity();
@@ -222,10 +161,6 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
         this.selectedOptionLabel = await selectOption.getLabel();
       }
     }
-  }
-
-  changeValue(value: OdsInputValue) {
-    this.value = value;
   }
 
   // Toggle overlay when we click on the Select.
@@ -265,7 +200,7 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
 
   @Listen('odsSelectOptionClick')
   handleValueChange(event: CustomEvent<OdsSelectOptionClickEventDetail>): void {
-    this.changeValue(event.detail.value);
+    this.controller.changeValue(event.detail.value);
     this.controller.closeSurface();
   }
 

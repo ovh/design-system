@@ -4,16 +4,10 @@ import type { OdsSelectOptionMethod } from './interfaces/methods';
 import type { OsdsSelect } from '../osds-select/osds-select';
 import type { OdsInputValue } from '@ovhcloud/ods-common-core';
 import type { HTMLStencilElement } from '@stencil/core/internal';
-
 import { Component, Element, Event, EventEmitter, Host, Method, Prop, State, h } from '@stencil/core';
-
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { DEFAULT_ATTRIBUTE as SELECT_DEFAULT_ATTRIBUTE } from '../osds-select/constants/default-attributes';
 
-
-/**
- * @slot (unnamed) - Select option content
- */
 @Component({
   tag: 'osds-select-option',
   styleUrl: 'osds-select-option.scss',
@@ -30,12 +24,10 @@ export class OsdsSelectOption implements OdsSelectOptionAttribute, OdsSelectOpti
    * @internal
    */
   @Prop({ reflect: true }) selected?: boolean = false;
+  @Prop({ reflect: true }) value: OdsInputValue = DEFAULT_ATTRIBUTE.value;
 
-  /**
-   * The size of the select option
-   * @internal
-   */
   @State() size = SELECT_DEFAULT_ATTRIBUTE.size;
+  @State() tabindex = 0;
 
   componentWillLoad() {
     this.selectParent = this.el.closest('osds-select') as (HTMLStencilElement & OsdsSelect) | null;
@@ -44,16 +36,6 @@ export class OsdsSelectOption implements OdsSelectOptionAttribute, OdsSelectOpti
     }
   }
 
-  /**
-   * The tabindex of the select option
-   * @internal
-   */
-  @State() tabindex = 0;
-
-  /** @see OdsSelectOptionAttributes.value */
-  @Prop({ reflect: true }) value: OdsInputValue = DEFAULT_ATTRIBUTE.value;
-
-  /** @see OdsSelectOptionEvents.odsSelectOptionClickEventDetail */
   @Event() odsSelectOptionClick!: EventEmitter<OdsSelectOptionClickEventDetail>;
 
   /**

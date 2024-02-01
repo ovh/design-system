@@ -2,6 +2,7 @@ import type { OdsTextAreaValidityState } from '@ovhcloud/ods-common-core';
 import type { EventEmitter } from '@stencil/core';
 
 interface OdsTextAreaValueChangeEvent {
+  name?: string,
   oldValue?: string | null;
   validity?: OdsTextAreaValidityState;
   value?: string | null;

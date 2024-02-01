@@ -1,7 +1,7 @@
 import React, { FormEvent, useRef } from 'react';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_BUTTON_SIZE, ODS_BUTTON_TYPE, ODS_BUTTON_VARIANT, ODS_INPUT_SIZE, ODS_INPUT_TYPE } from '@ovhcloud/ods-components';
-import { OsdsButton, OsdsInput, OsdsPassword, OsdsTextarea } from '@ovhcloud/ods-components/react';
+import { OsdsButton, OsdsDivider, OsdsInput, OsdsPassword, OsdsSelect, OsdsSelectOption, OsdsTextarea } from '@ovhcloud/ods-components/react';
 
 const App = () => {
   const formRef = useRef(null);
@@ -30,21 +30,30 @@ const App = () => {
                  type={ ODS_INPUT_TYPE.text }
                  value="" />
 
-      <br/>
+      <OsdsDivider />
 
       <OsdsPassword name="password"
                     required />
 
-      <br />
+      <OsdsDivider />
 
       <OsdsTextarea name="textarea"
                     required />
+
+      <OsdsDivider />
+
+      <OsdsSelect name="select"
+                  required>
+        <OsdsSelectOption value="option1">Option 1</OsdsSelectOption>
+        <OsdsSelectOption value="option2">Option 2</OsdsSelectOption>
+        <OsdsSelectOption value="option3">Option 3</OsdsSelectOption>
+      </OsdsSelect>
 
       <input name="hidden-input"
              type="hidden"
              value="should be present in form data" />
 
-      <br/><br/>
+      <OsdsDivider />
 
       <OsdsButton inline
                   size={ ODS_BUTTON_SIZE.sm }

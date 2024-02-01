@@ -1,17 +1,56 @@
-import React from 'react';
-import { OsdsDatagrid } from '@ovhcloud/ods-components/react';
+import React, { FormEvent, useRef } from 'react';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
+import { ODS_BUTTON_SIZE, ODS_BUTTON_TYPE, ODS_BUTTON_VARIANT, ODS_INPUT_SIZE, ODS_INPUT_TYPE } from '@ovhcloud/ods-components';
+import { OsdsButton, OsdsInput } from '@ovhcloud/ods-components/react';
 
 const App = () => {
+  const formRef = useRef(null);
+
+  function onSubmit(event: FormEvent) {
+    event.preventDefault();
+    if (formRef.current) {
+      const formData = new FormData(formRef.current);
+      console.log(formData)
+    }
+  }
+
+  function onReset() {
+    console.log('form reset')
+  }
+
   return (
-    <div>
-      <OsdsDatagrid
-        id="datagridFormatter"
-        isSelectable={ true }
-        columns='[{"title":"First name", "field":"firstname", "isSortable": true}, {"title":"Last name", "field":"lastname", "isSortable": true}, {"title":"Gender", "field":"gender"}]'
-        rows='[{"firstname":"Homer", "lastname":"Simpson", "gender": "Male"}, {"firstname":"Marge", "lastname":"Simpson", "gender": "Female"}]'
-        height={ 300 }>
-      </OsdsDatagrid>
-    </div>
+    <form ref={ formRef }
+          onReset={ onReset }
+          onSubmit={ onSubmit }>
+      <OsdsInput defaultValue="some text"
+                 id="input"
+                 name="input"
+                 placeholder="Type your some text"
+                 required
+                 size={ ODS_INPUT_SIZE.md }
+                 type={ ODS_INPUT_TYPE.text }
+                 value="" />
+
+      <input name="hidden-input"
+             type="hidden"
+             value="should be present in form data" />
+
+      <br/><br/>
+
+      <OsdsButton inline
+                  size={ ODS_BUTTON_SIZE.sm }
+                  type={ ODS_BUTTON_TYPE.reset }
+                  variant={ ODS_BUTTON_VARIANT.stroked }>
+        Reset
+      </OsdsButton>
+
+      <OsdsButton color={ ODS_THEME_COLOR_INTENT.primary }
+                  inline
+                  size={ ODS_BUTTON_SIZE.sm }
+                  type={ ODS_BUTTON_TYPE.submit }>
+        Submit
+      </OsdsButton>
+    </form>
   );
 };
 

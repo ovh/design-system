@@ -5177,7 +5177,7 @@ __metadata:
     "@ovhcloud/ods-stencil-dev": 17.0.3
     "@ovhcloud/ods-style-dev": 17.0.3
     "@ovhcloud/ods-theme-blue-jeans": 17.0.3
-    "@stencil/core": 4.7.0
+    "@stencil/core": 4.12.0
   languageName: unknown
   linkType: soft
 
@@ -5965,12 +5965,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@stencil/core@npm:4.7.0":
-  version: 4.7.0
-  resolution: "@stencil/core@npm:4.7.0"
+"@stencil/core@npm:4.12.0":
+  version: 4.12.0
+  resolution: "@stencil/core@npm:4.12.0"
   bin:
     stencil: bin/stencil
-  checksum: 53842a15a8f620cce0b5b9cded462f460b6082fbd7afcd337716b8523d0fc121b950b7acc904674a2ae2638841a0d80dfad1a7c55020448959ffed0d952d8efc
+  checksum: 4a2087593c01f9d78d4dbe173195ef3a881aa139100788b160a5bbe931bc57f7245fffef00a509ea0938c3835acfb49e095f3523d3fefcde3e03b87e3d931e25
   languageName: node
   linkType: hard
 

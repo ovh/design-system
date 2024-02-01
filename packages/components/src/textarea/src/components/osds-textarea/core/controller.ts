@@ -1,15 +1,8 @@
 import type { OsdsTextArea } from '../osds-textarea';
 import type { OdsTextAreaValidityState } from '@ovhcloud/ods-common-core';
+import { OdsFormControl, OdsTextAreaGetValidityState } from '@ovhcloud/ods-common-core';
 
-import { OdsFormControl, OdsLogger, OdsTextAreaGetValidityState } from '@ovhcloud/ods-common-core';
-
-
-/**
- * common controller logic for textarea component used by the different implementations.
- * it contains all the glue between framework implementation and the third party service.
- */
 class OdsTextAreaController {
-  private readonly logger = new OdsLogger('OdsTextAreaController');
   protected component: OsdsTextArea;
 
   constructor(component: OsdsTextArea) {
@@ -21,7 +14,7 @@ class OdsTextAreaController {
    * @param newValue - value of the HTML textarea
    */
   handleTextAreaValue(newValue: HTMLTextAreaElement['value']): void {
-    if(!this.component.disabled) {
+    if (!this.component.disabled) {
       this.component.value = newValue;
     }
   }
@@ -48,7 +41,6 @@ class OdsTextAreaController {
 
   onInput(event: Event): void {
     event.preventDefault();
-    this.logger.debug('oninput', this.component.textInputEl?.value);
     this.component.textInputEl && this.handleTextAreaValue(this.component.textInputEl.value);
   }
 
@@ -61,24 +53,14 @@ class OdsTextAreaController {
     this.component.emitFocus();
   }
 
-  onChange(): void {
-    this.logger.debug('onChange', this.component.textInputEl?.value);
-  }
-
   registerFormControl(formControl?: OdsFormControl<OdsTextAreaValidityState>): void {
-    this.logger.log(`[textarea=${this.component.value}]`, 'onFormControlChange', formControl, formControl && formControl.id);
     if (formControl) {
       formControl.register(this.component);
     }
   }
 
   emitValue(value: HTMLTextAreaElement['value'], oldValue?: HTMLTextAreaElement['value']): void {
-    this.logger.debug(`[textarea=${this.component.value}]`, 'value changed', { value, oldValue });
     this.component.emitChange(value, oldValue);
-  }
-
-  onDefaultValueChange(defaultValue?: HTMLTextAreaElement['defaultValue']) {
-    this.logger.debug(`[textarea=${this.component.value}]`, 'defaultValue', defaultValue);
   }
 
   setFocus(): void {
@@ -90,11 +72,17 @@ class OdsTextAreaController {
     }
   }
 
-  setValue(value = ''): void {
-    if (this.component.textInputEl) {
-      this.component.textInputEl.value = value;
+  reset() {
+    this.component.value = this.component.defaultValue ? `${this.component.defaultValue}` : '';
+  }
+
+  clear() {
+    if (!this.component.disabled) {
+      this.component.value = '';
+      if (this.component.textInputEl) {
+        this.component.textInputEl.value = '';
+      }
     }
-    this.component.value = value;
   }
 
   hasError(): boolean {
@@ -103,15 +91,19 @@ class OdsTextAreaController {
 
   beforeInit(): void {
     this.registerFormControl(this.component.formControl);
-    this.emitValue(this.component.value);
-    this.onDefaultValueChange(this.component.defaultValue);
     if (!this.component.value) {
       this.component.value = this.component.defaultValue || '';
     }
+    this.component.internals.setFormValue(this.component.value?.toString() ?? '');
   }
 
   setTextAreaTabindex(value: number): void {
     this.component.textInputTabIndex = value;
+  }
+
+  onValueChange(value: string, oldValue?: string): void {
+    this.component.internals.setFormValue(value?.toString() ?? '');
+    this.component.emitChange(value, oldValue);
   }
 }
 

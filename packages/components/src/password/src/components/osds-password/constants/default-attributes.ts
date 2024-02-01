@@ -10,6 +10,7 @@ const DEFAULT_ATTRIBUTE: OdsPasswordAttribute = Object.freeze({
   clearable: false,
   color: ODS_THEME_COLOR_INTENT.default,
   contrasted: false,
+  defaultValue: '',
   disabled: false,
   error: false,
   forbiddenValues: [],

@@ -13,6 +13,8 @@ interface OdsPasswordAttribute {
   color?: ODS_THEME_COLOR_INTENT;
   /** Indicates if the password is contrasted or not: see component principles */
   contrasted?: boolean;
+  /** Default value of the password */
+  defaultValue: string;
   /** Indicates if the password is disabled or not: see component principles */
   disabled?: boolean;
   /** Indicates if the password shows error or not */

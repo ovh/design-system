@@ -1211,10 +1211,24 @@ export namespace Components {
          */
         "value"?: number | undefined;
     }
+    /**
+     * create type that correspond to our input component.
+     * doesn't work with :
+     * ```
+     * // not working
+     * import '@ovhcloud/ods-stencil/components/button';
+     * // not working
+     * import '@ovhcloud/ods-stencil/components/input/dist/types/components';
+     * // OK!
+     * import { OsdsInput } from '@ovhcloud/ods-stencil/components/input/dist/types';
+     * type HTMLOsdsInputElement = (OsdsInput & HTMLElement);
+     * ```
+     * with this, we cannot build
+     * @ovhcloud /ods-components ("Component Tag Name "osds-input" Must Be Unique" error)
+     */
     interface OsdsQuantity {
         /**
           * Quantity is disabled or not
-          * @see OdsQuantityAttributes.disabled
          */
         "disabled"?: boolean;
     }
@@ -2433,6 +2447,21 @@ declare global {
         prototype: HTMLOsdsProgressBarElement;
         new (): HTMLOsdsProgressBarElement;
     };
+    /**
+     * create type that correspond to our input component.
+     * doesn't work with :
+     * ```
+     * // not working
+     * import '@ovhcloud/ods-stencil/components/button';
+     * // not working
+     * import '@ovhcloud/ods-stencil/components/input/dist/types/components';
+     * // OK!
+     * import { OsdsInput } from '@ovhcloud/ods-stencil/components/input/dist/types';
+     * type HTMLOsdsInputElement = (OsdsInput & HTMLElement);
+     * ```
+     * with this, we cannot build
+     * @ovhcloud /ods-components ("Component Tag Name "osds-input" Must Be Unique" error)
+     */
     interface HTMLOsdsQuantityElement extends Components.OsdsQuantity, HTMLStencilElement {
     }
     var HTMLOsdsQuantityElement: {
@@ -3850,10 +3879,24 @@ declare namespace LocalJSX {
          */
         "value"?: number | undefined;
     }
+    /**
+     * create type that correspond to our input component.
+     * doesn't work with :
+     * ```
+     * // not working
+     * import '@ovhcloud/ods-stencil/components/button';
+     * // not working
+     * import '@ovhcloud/ods-stencil/components/input/dist/types/components';
+     * // OK!
+     * import { OsdsInput } from '@ovhcloud/ods-stencil/components/input/dist/types';
+     * type HTMLOsdsInputElement = (OsdsInput & HTMLElement);
+     * ```
+     * with this, we cannot build
+     * @ovhcloud /ods-components ("Component Tag Name "osds-input" Must Be Unique" error)
+     */
     interface OsdsQuantity {
         /**
           * Quantity is disabled or not
-          * @see OdsQuantityAttributes.disabled
          */
         "disabled"?: boolean;
     }
@@ -4655,6 +4698,21 @@ declare module "@stencil/core" {
             "osds-popover": LocalJSX.OsdsPopover & JSXBase.HTMLAttributes<HTMLOsdsPopoverElement>;
             "osds-popover-content": LocalJSX.OsdsPopoverContent & JSXBase.HTMLAttributes<HTMLOsdsPopoverContentElement>;
             "osds-progress-bar": LocalJSX.OsdsProgressBar & JSXBase.HTMLAttributes<HTMLOsdsProgressBarElement>;
+            /**
+             * create type that correspond to our input component.
+             * doesn't work with :
+             * ```
+             * // not working
+             * import '@ovhcloud/ods-stencil/components/button';
+             * // not working
+             * import '@ovhcloud/ods-stencil/components/input/dist/types/components';
+             * // OK!
+             * import { OsdsInput } from '@ovhcloud/ods-stencil/components/input/dist/types';
+             * type HTMLOsdsInputElement = (OsdsInput & HTMLElement);
+             * ```
+             * with this, we cannot build
+             * @ovhcloud /ods-components ("Component Tag Name "osds-input" Must Be Unique" error)
+             */
             "osds-quantity": LocalJSX.OsdsQuantity & JSXBase.HTMLAttributes<HTMLOsdsQuantityElement>;
             "osds-radio": LocalJSX.OsdsRadio & JSXBase.HTMLAttributes<HTMLOsdsRadioElement>;
             "osds-radio-button": LocalJSX.OsdsRadioButton & JSXBase.HTMLAttributes<HTMLOsdsRadioButtonElement>;

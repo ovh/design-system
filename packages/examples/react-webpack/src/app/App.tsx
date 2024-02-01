@@ -2,7 +2,7 @@ import React, { FormEvent, useRef } from 'react';
 import { ODS_COUNTRY_ISO_CODE, ODS_LOCALE } from '@ovhcloud/ods-common-core';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_BUTTON_SIZE, ODS_BUTTON_TYPE, ODS_BUTTON_VARIANT, ODS_INPUT_SIZE, ODS_INPUT_TYPE } from '@ovhcloud/ods-components';
-import { OsdsButton, OsdsDivider, OsdsInput, OsdsPassword, OsdsPhoneNumber, OsdsSelect, OsdsSelectOption, OsdsTextarea } from '@ovhcloud/ods-components/react';
+import { OsdsButton, OsdsDivider, OsdsInput, OsdsPassword, OsdsPhoneNumber, OsdsQuantity, OsdsSelect, OsdsSelectOption, OsdsTextarea } from '@ovhcloud/ods-components/react';
 
 const App = () => {
   const formRef = useRef(null);
@@ -55,6 +55,23 @@ const App = () => {
       <OsdsPhoneNumber isoCode={ ODS_COUNTRY_ISO_CODE.FR }
                        locale={ ODS_LOCALE.FR }
                        name="phone-number" />
+
+      <OsdsDivider />
+
+      <OsdsQuantity>
+        <OsdsButton slot="minus"
+                    type={ ODS_BUTTON_TYPE.button }>
+          -
+        </OsdsButton>
+
+        <OsdsInput name="quantity"
+                   type={ ODS_INPUT_TYPE.number } />
+
+        <OsdsButton slot="plus"
+                    type={ ODS_BUTTON_TYPE.button }>
+          +
+        </OsdsButton>
+      </OsdsQuantity>
 
       <input name="hidden-input"
              type="hidden"

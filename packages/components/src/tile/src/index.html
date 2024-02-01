@@ -48,10 +48,16 @@
   <span slot="end">-End</span>
 </osds-tile>
 
+<p>No End Slot</p>
+<osds-tile size='md'>
+  <span slot="start">Start</span>
+  <span>tileContent</span>
+</osds-tile>
+
 <p>No Start Slot</p>
 <osds-tile size='md'>
   <span>tileContent</span>
-  <span slot="end">-End</span>
+  <span slot="end">End</span>
 </osds-tile>
 
 
@@ -64,7 +70,6 @@
 <osds-tile size='md' color='success'>Success</osds-tile>
 <osds-tile size='md' color='info'>Info</osds-tile>
 <osds-tile size='md' color='promotion'>Promotion</osds-tile>
-
 
 <script>
   document.querySelectorAll('ods-tile').forEach((elem) => {});

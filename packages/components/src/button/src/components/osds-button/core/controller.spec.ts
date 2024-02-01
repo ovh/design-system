@@ -1,12 +1,8 @@
-import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
-import { OdsClearLoggerSpy, OdsInitializeLoggerSpy, OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-
 import { OdsButtonController } from './controller';
 import { ODS_BUTTON_SIZE } from '../constants/button-size';
 import { ODS_BUTTON_VARIANT } from '../constants/button-variant';
 import { OsdsButton } from '../osds-button';
-
 
 class OdsButtonMock extends OsdsButton {
   constructor(attribute: Partial<OsdsButton>) {
@@ -18,30 +14,21 @@ class OdsButtonMock extends OsdsButton {
 describe('spec:ods-button-controller', () => {
   let controller: OdsButtonController;
   let component: OsdsButton;
-  let loggerSpyReferences: OdsLoggerSpyReferences;
-
-  Ods.instance().logging(false);
 
   function setup(attributes: Partial<OsdsButton> = {}) {
     component = new OdsButtonMock(attributes);
     controller = new OdsButtonController(component);
   }
 
-  beforeEach(() => {
-    const loggerMocked = new OdsLogger('myLoggerMocked');
-    loggerSpyReferences = OdsInitializeLoggerSpy({
-      loggerMocked: loggerMocked as never,
-      spiedClass: OdsButtonController,
-    });
-  });
-
   afterEach(() => {
-    OdsClearLoggerSpy(loggerSpyReferences);
+    jest.clearAllMocks();
   });
 
   describe('methods', () => {
     describe('methods:validateAttributes', () => {
       beforeEach(() => {
+        jest.spyOn(console, 'warn');
+
         setup({
           color: ODS_THEME_COLOR_INTENT.default,
           size: ODS_BUTTON_SIZE.md,
@@ -52,7 +39,7 @@ describe('spec:ods-button-controller', () => {
       it('should not call console.warn', () => {
         controller.validateAttributes();
 
-        expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledTimes(0);
+        expect(console.warn).toHaveBeenCalledTimes(0);
       });
 
       it('should call console.warn with wrong color', () => {
@@ -61,8 +48,8 @@ describe('spec:ods-button-controller', () => {
 
         controller.validateAttributes();
 
-        expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledWith(expected);
-        expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledTimes(1);
+        expect(console.warn).toHaveBeenCalledWith(expected);
+        expect(console.warn).toHaveBeenCalledTimes(1);
       });
 
       it('should call console.warn with wrong size', () => {
@@ -71,8 +58,8 @@ describe('spec:ods-button-controller', () => {
 
         controller.validateAttributes();
 
-        expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledWith(expected);
-        expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledTimes(1);
+        expect(console.warn).toHaveBeenCalledWith(expected);
+        expect(console.warn).toHaveBeenCalledTimes(1);
       });
 
       it('should call console.warn with wrong variant', () => {
@@ -81,10 +68,11 @@ describe('spec:ods-button-controller', () => {
 
         controller.validateAttributes();
 
-        expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledWith(expected);
-        expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledTimes(1);
+        expect(console.warn).toHaveBeenCalledWith(expected);
+        expect(console.warn).toHaveBeenCalledTimes(1);
       });
     });
+
     describe('methods:mutateAttributes', () => {
       beforeEach(() => {
         setup({

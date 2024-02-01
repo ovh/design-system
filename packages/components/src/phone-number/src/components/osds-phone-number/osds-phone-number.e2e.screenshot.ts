@@ -9,7 +9,7 @@ import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 
 
 describe('e2e:osds-phone-number', () => {
-  const baseAttribute = { ariaLabel: '', forbiddenValues: [], value: '' };
+  const baseAttribute = { ariaLabel: '', defaultValue: '', forbiddenValues: [], value: '' };
   let page: E2EPage;
   let el: E2EElement;
 

@@ -1,14 +1,12 @@
 import { ODS_COUNTRY_ISO_CODE, ODS_COUNTRY_ISO_CODES, ODS_LOCALE } from '@ovhcloud/ods-common-core';
 import countriesTranslationEn from '@ovhcloud/ods-common-core/src/i18n/countries/en.json';
 import countriesTranslationFr from '@ovhcloud/ods-common-core/src/i18n/countries/fr.json';
-
 import { OdsPhoneNumberController } from './controller';
 import { ODS_PHONE_NUMBER_COUNTRY_PRESET } from '../constants/phone-number-countries';
 import { OsdsPhoneNumber } from '../osds-phone-number';
 
-class OdsPhoneNumberMock extends OsdsPhoneNumber {
+class OdsPhoneNumberMock {
   constructor(attribute: Partial<OsdsPhoneNumber>) {
-    super();
     Object.assign(this, attribute);
   }
 
@@ -16,6 +14,14 @@ class OdsPhoneNumberMock extends OsdsPhoneNumber {
   emitFocus = jest.fn();
   emitBlur = jest.fn();
   parsedCountries = ODS_COUNTRY_ISO_CODES as ODS_COUNTRY_ISO_CODE[];
+
+  phoneUtils = {
+    parseAndKeepRawInput: jest.fn(),
+  }
+
+  internals = {
+    setFormValue: jest.fn(),
+  };
 }
 
 describe('spec:ods-phone-number-controller', () => {
@@ -23,7 +29,7 @@ describe('spec:ods-phone-number-controller', () => {
   let component: OsdsPhoneNumber;
 
   function setup(attributes: Partial<OsdsPhoneNumber> = {}, language?: string) {
-    component = new OdsPhoneNumberMock(attributes);
+    component = new OdsPhoneNumberMock(attributes) as unknown as OsdsPhoneNumber;
     controller = new OdsPhoneNumberController(component);
     global.navigator = {
       ...global.navigator,
@@ -179,8 +185,8 @@ describe('spec:ods-phone-number-controller', () => {
       it('should return a Phone Number', async() => {
         await setup({ isoCode: ODS_COUNTRY_ISO_CODE.FR });
         const number = '0658585858';
-        const parsedNumber = await controller.parseNumber(number);
-        expect(parsedNumber?.getRawInput()).toBe(number);
+        await controller.parseNumber(number);
+        expect(component.phoneUtils.parseAndKeepRawInput).toHaveBeenCalledWith(number, ODS_COUNTRY_ISO_CODE.FR);
       });
 
       it('should return a null because of an empty string', async() => {

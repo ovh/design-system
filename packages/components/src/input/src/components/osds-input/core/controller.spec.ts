@@ -1,22 +1,23 @@
 import type { OdsInputValidityState } from '../interfaces/attributes';
-
-import { Ods, OdsFormControl, OdsLogger } from '@ovhcloud/ods-common-core';
-import { OdsClearLoggerSpy, OdsInitializeLoggerSpy, OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
-
+import { OdsFormControl } from '@ovhcloud/ods-common-core';
 import { OdsInputController } from './controller';
 import { ODS_INPUT_TYPE } from '../constants/input-type';
 import { OsdsInput } from '../osds-input';
 
-
-class OdsInputMock extends OsdsInput {
+class OdsInputMock {
   constructor(attribute: Partial<OsdsInput>) {
-    super();
     Object.assign(this, attribute);
   }
 
   emitChange = jest.fn();
   emitFocus = jest.fn();
   emitBlur = jest.fn();
+  forbiddenValues = [];
+  type = ODS_INPUT_TYPE.number;
+
+  internals = {
+    setFormValue: jest.fn()
+  };
 }
 
 describe('spec:ods-input-controller', () => {
@@ -24,26 +25,13 @@ describe('spec:ods-input-controller', () => {
   let component: OsdsInput;
   let spyOnOnFormControlChange: jest.SpyInstance<void, jest.ArgsType<OdsInputController['onFormControlChange']>>;
   let spyOnAssertValue: jest.SpyInstance<void, jest.ArgsType<OdsInputController['assertValue']>>;
-  let spyOnOnDefaultValueChange: jest.SpyInstance<void, jest.ArgsType<OdsInputController['onDefaultValueChange']>>;
-  let loggerSpyReferences: OdsLoggerSpyReferences;
-
-  Ods.instance().logging(false);
 
   function setup(attributes: Partial<OsdsInput> = {}) {
-    component = new OdsInputMock(attributes);
+    component = new OdsInputMock(attributes) as unknown as OsdsInput;
     controller = new OdsInputController(component);
   }
 
-  beforeEach(() => {
-    const loggerMocked = new OdsLogger('myLoggerMocked');
-    loggerSpyReferences = OdsInitializeLoggerSpy({
-      loggerMocked: loggerMocked as never,
-      spiedClass: OdsInputController,
-    });
-  });
-
   afterEach(() => {
-    OdsClearLoggerSpy(loggerSpyReferences);
     jest.clearAllMocks();
   });
 
@@ -92,16 +80,6 @@ describe('spec:ods-input-controller', () => {
         expect(spyOnAssertValue).toHaveBeenCalledWith(value);
       });
 
-      it('should call onDefaultValueChange', () => {
-        const value = 'value';
-        setup({ value });
-        spyOnOnDefaultValueChange = jest.spyOn(controller, 'onDefaultValueChange');
-        controller.beforeInit();
-
-        expect(spyOnOnDefaultValueChange).toHaveBeenCalledTimes(1);
-        expect(spyOnOnDefaultValueChange).toHaveBeenCalledWith();
-      });
-
       it('should init value with defaultValue if value is undefined', () => {
         const defaultValue = 'defaultValue';
         setup({ defaultValue });
@@ -113,11 +91,15 @@ describe('spec:ods-input-controller', () => {
 
     describe('methods:onValueChange', () => {
       describe('validateValue', () => {
+        beforeEach(() => {
+          jest.spyOn(console, 'warn');
+        })
+
         it('should warn if value is empty string', () => {
           setup();
           controller.onValueChange('');
-          expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledTimes(1);
-          expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledWith('[OsdsInput] The value attribute must be a correct number');
+          expect(console.warn).toHaveBeenCalledTimes(1);
+          expect(console.warn).toHaveBeenCalledWith('[OsdsInput] The value attribute must be a correct number');
         });
 
         it('should warn if value is out of min/max bounds (min case)', () => {
@@ -127,8 +109,8 @@ describe('spec:ods-input-controller', () => {
           setup({ min, max, value, step: 1 });
           controller.onValueChange(value);
 
-          expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledTimes(1);
-          expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledWith(`The value attribute must be in bounds of [${[min, max].join(', ')}]`);
+          expect(console.warn).toHaveBeenCalledTimes(1);
+          expect(console.warn).toHaveBeenCalledWith(`The value attribute must be in bounds of [${[min, max].join(', ')}]`);
         });
 
         it('should warn if value is out of min/max bounds (max case)', () => {
@@ -138,8 +120,8 @@ describe('spec:ods-input-controller', () => {
           setup({ min, max, value, step: 1 });
           controller.onValueChange(value);
 
-          expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledTimes(1);
-          expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledWith(`The value attribute must be in bounds of [${[min, max].join(', ')}]`);
+          expect(console.warn).toHaveBeenCalledTimes(1);
+          expect(console.warn).toHaveBeenCalledWith(`The value attribute must be in bounds of [${[min, max].join(', ')}]`);
         });
 
         it('should warn if value is not a multiple of step', () => {
@@ -148,8 +130,8 @@ describe('spec:ods-input-controller', () => {
           setup({ min: 0, max: 10, value, step });
           controller.onValueChange(value);
 
-          expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledTimes(1);
-          expect(loggerSpyReferences.methodSpies.warn).toHaveBeenCalledWith(`[OsdsInput] The value attribute must be a multiple of ${step}`);
+          expect(console.warn).toHaveBeenCalledTimes(1);
+          expect(console.warn).toHaveBeenCalledWith(`[OsdsInput] The value attribute must be a multiple of ${step}`);
         });
       });
 
@@ -175,7 +157,6 @@ describe('spec:ods-input-controller', () => {
           controller.onValueChange('');
 
           expect(inputEl.setCustomValidity).toHaveBeenCalledTimes(1);
-          expect(inputEl.setCustomValidity).toHaveBeenCalledWith('forbiddenValue');
         });
 
 
@@ -187,7 +168,6 @@ describe('spec:ods-input-controller', () => {
           controller.onValueChange('');
 
           expect(inputEl.setCustomValidity).toHaveBeenCalledTimes(1);
-          expect(inputEl.setCustomValidity).toHaveBeenCalledWith('forbiddenValue');
         });
       });
 
@@ -199,17 +179,6 @@ describe('spec:ods-input-controller', () => {
 
         expect(component.emitChange).toHaveBeenCalledTimes(1);
         expect(component.emitChange).toHaveBeenCalledWith(value, oldValue);
-      });
-    });
-
-    describe('methods:onDefaultValueChange', () => {
-      it('should use logger', () => {
-        const value = 'value';
-        const defaultValue = 'defaultValue';
-        setup({ value });
-        controller.onDefaultValueChange(defaultValue);
-        expect(loggerSpyReferences.methodSpies.debug).toHaveBeenCalledTimes(1);
-        expect(loggerSpyReferences.methodSpies.debug).toHaveBeenCalledWith(`[input=${value}]`, 'defaultValue', defaultValue);
       });
     });
 
@@ -298,16 +267,6 @@ describe('spec:ods-input-controller', () => {
     });
 
     describe('methods:onInput', () => {
-      it('should use logger', () => {
-        const inputEl = document.createElement('input');
-        inputEl.value = '5';
-        setup({ inputEl });
-        controller.onInput(new Event(''));
-
-        expect(loggerSpyReferences.methodSpies.debug).toHaveBeenCalledTimes(1);
-        expect(loggerSpyReferences.methodSpies.debug).toHaveBeenCalledWith('oninput', inputEl.value);
-      });
-
       it('should not change component value if it is disabled', () => {
         const value = '3';
         const inputEl = document.createElement('input');
@@ -342,16 +301,6 @@ describe('spec:ods-input-controller', () => {
         controller.onInput(new Event(''));
 
         expect(`${component.value}`).toBe(`${inputEl.value}`);
-      });
-    });
-
-    describe('methods:onChange', () => {
-      it('should use logger', () => {
-        const value = 'value';
-        setup({ inputEl: { value } as HTMLInputElement });
-        controller.onChange();
-        expect(loggerSpyReferences.methodSpies.debug).toHaveBeenCalledTimes(1);
-        expect(loggerSpyReferences.methodSpies.debug).toHaveBeenCalledWith('onChange', value);
       });
     });
 

@@ -2,7 +2,7 @@ import { OdsLogger } from './ods-logger';
 import { odsIsTermInEnum } from '../types/guard/ods-is-term-in-enum';
 
 interface OdsWarnComponent<T, Component> {
-  logger: OdsLogger;
+  logger?: OdsLogger; // TODO remove
   attributeName: string & keyof Component;
   attribute: T | undefined;
 }
@@ -20,13 +20,13 @@ type OdsWarnType<T, Component> = T extends number ? OdsWarnRangeComponent<Compon
 
 function OdsWarnComponentEnumAttribute<T, Component>(params: OdsWarnEnumComponent<T, Component>): void {
   if (!odsIsTermInEnum(params.attribute, params.attributeValues)) {
-    params.logger.warn(`The ${params.attributeName} attribute must have a value from [${Object.values(params.attributeValues).join(', ')}]`);
+    console.warn(`The ${params.attributeName} attribute must have a value from [${Object.values(params.attributeValues).join(', ')}]`);
   }
 }
 
 function OdsWarnComponentRangeAttribute<Component>(params: OdsWarnRangeComponent<Component>): void {
   if (params.attribute && (params.attribute > params.max || params.attribute < params.min)) {
-    params.logger.warn(
+    console.warn(
       `The value attribute must be in bounds of [${[params.min, params.max].join(', ')}]`,
     );
   }
@@ -34,7 +34,7 @@ function OdsWarnComponentRangeAttribute<Component>(params: OdsWarnRangeComponent
 
 export function OdsWarnComponentAttribute<T, Component>(params: OdsWarnType<T, Component>, required = false) {
   if (required && !params.attribute) {
-    return params.logger.warn(`Attribute ${params.attributeName} is required.`);
+    return console.warn(`Attribute ${params.attributeName} is required.`);
   }
   if (typeof params.attribute === 'number') {
     return OdsWarnComponentRangeAttribute<Component>(<OdsWarnRangeComponent<Component>>params);

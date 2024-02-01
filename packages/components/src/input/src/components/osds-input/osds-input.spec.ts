@@ -2,26 +2,20 @@ jest.mock('./core/controller'); // keep jest.mock before any
 
 import type { OdsInputAttribute } from './interfaces/attributes';
 import type { SpecPage } from '@stencil/core/testing';
-
-import { OdsCreateDefaultValidityState, OdsFormControl, OdsLogger } from '@ovhcloud/ods-common-core';
+import { OdsCreateDefaultValidityState, OdsFormControl } from '@ovhcloud/ods-common-core';
 import { OdsMockNativeMethod, OdsMockPropertyDescriptor, odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { newSpecPage } from '@stencil/core/testing';
-
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_INPUT_SIZE } from './constants/input-size';
 import { ODS_INPUT_TYPE } from './constants/input-type';
 import { OdsInputController } from './core/controller';
 import { OsdsInput } from './osds-input';
 
-
-const logger = new OdsLogger('osds-input-spec');
-
 // mock validity property that does not exist when stencil mock HTMLInputElement
 OdsMockPropertyDescriptor(HTMLInputElement.prototype, 'validity', () => OdsCreateDefaultValidityState());
 
 describe('spec:osds-input', () => {
-  logger.log('init');
   const baseAttribute = { ariaLabel: null, defaultValue: '', forbiddenValues: [], type: ODS_INPUT_TYPE.text, value: '' };
   let page: SpecPage;
   let htmlInput: HTMLInputElement | null | undefined;
@@ -284,13 +278,6 @@ describe('spec:osds-input', () => {
         expect(controller.onInput).toHaveBeenCalledTimes(1);
         expect(controller.onInput).toHaveBeenCalledWith(event);
       });
-
-      it('should call onChange on change', async() => {
-        await setup({});
-        instance?.onChange();
-        expect(controller.onChange).toHaveBeenCalledTimes(1);
-        expect(controller.onChange).toHaveBeenCalledWith();
-      });
     });
 
     describe('methods', () => {
@@ -381,15 +368,6 @@ describe('spec:osds-input', () => {
 
         expect(controller.onFormControlChange).toHaveBeenCalledTimes(1);
         expect(controller.onFormControlChange).toHaveBeenCalledWith(formControl);
-      });
-
-      it('should call onDefaultValueChange on defaultValue change', async() => {
-        const defaultValue = 'defaultValue';
-        await setup({ attributes: { defaultValue: '' } });
-        instance.defaultValue = defaultValue;
-
-        expect(controller.onDefaultValueChange).toHaveBeenCalledTimes(1);
-        expect(controller.onDefaultValueChange).toHaveBeenCalledWith(defaultValue);
       });
 
       it('should call onValueChange on value change', async() => {

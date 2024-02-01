@@ -1,17 +1,11 @@
 import type { OdsInputValidityState } from '../interfaces/attributes';
 import type { OsdsInput } from '../osds-input';
 import type { OdsFormControl, OdsInputValue } from '@ovhcloud/ods-common-core';
+import { OdsGetValidityState, OdsWarnComponentAttribute } from '@ovhcloud/ods-common-core';
+import { ODS_INPUT_TYPE } from '../constants/input-type';
 
-import { OdsGetValidityState, OdsLogger, OdsWarnComponentAttribute } from '@ovhcloud/ods-common-core';
-
-
-/**
- * common controller logic for input component used by the different implementations.
- * it contains all the glue between framework implementation and the third party service.
- */
 class OdsInputController {
   private readonly component: OsdsInput;
-  private readonly logger = new OdsLogger('OdsInputController');
 
   constructor(component: OsdsInput) {
     this.component = component;
@@ -90,7 +84,6 @@ class OdsInputController {
   }
 
   onFormControlChange(formControl?: OdsFormControl<OdsInputValidityState>) {
-    this.logger.log(`[input=${this.component.value}]`, 'onFormControlChange', formControl, formControl && formControl.id);
     if (formControl) {
       formControl.register(this.component);
     }
@@ -99,15 +92,15 @@ class OdsInputController {
   beforeInit(): void {
     this.onFormControlChange(this.component.formControl);
     this.assertValue(this.component.value);
-    this.onDefaultValueChange(/*this.defaultValue*/);
     if (!this.component.value && this.component.value !== 0) {
       this.component.value = this.component.defaultValue;
     }
+    this.component.internals.setFormValue(this.component.value?.toString() ?? '');
   }
 
   onValueChange(value: OdsInputValue, oldValue?: OdsInputValue): void {
-    this.logger.debug(`[input=${this.component.value}]`, 'value changed', { value, oldValue });
     this.assertValue(value);
+    this.component.internals.setFormValue(value?.toString() ?? '');
     this.component.emitChange(value, oldValue);
   }
 
@@ -116,24 +109,23 @@ class OdsInputController {
     this.updateInputCustomValidation();
   }
 
-  onDefaultValueChange(defaultValue?: OdsInputValue) {
-    this.logger.debug(`[input=${this.component.value}]`, 'defaultValue', defaultValue);
-  }
-
   private validateValue(value?: number) {
+    if (this.component.type !== ODS_INPUT_TYPE.number) {
+      return;
+    }
+
     if (!value && value !== 0) {
-      this.logger.warn('[OsdsInput] The value attribute must be a correct number');
+      console.warn('[OsdsInput] The value attribute must be a correct number');
     }
     if ((value || value === 0) && (this.component.min || this.component.min === 0) && (this.component.max || this.component.max === 0) && this.component.step) {
       OdsWarnComponentAttribute<number, OsdsInput>({
-        logger: this.logger,
         attributeName: 'value',
         attribute: +value,
         min: this.component.min,
         max: this.component.max,
       });
       if (value && ((value - this.component.min) % this.component.step)) {
-        this.logger.warn(
+        console.warn(
           `[OsdsInput] The value attribute must be a multiple of ${this.component.step}`,
         );
       }
@@ -179,13 +171,8 @@ class OdsInputController {
   }
 
   onInput(event: Event) {
-    this.logger.debug('oninput', this.component.inputEl?.value);
     event.preventDefault();
     this.component.inputEl && this.handleInputValue(this.component.inputEl.value);
-  }
-
-  onChange() {
-    this.logger.debug('onChange', this.component.inputEl?.value);
   }
 
   hasError(): boolean {
@@ -193,13 +180,11 @@ class OdsInputController {
   }
 
   reset() {
-    this.logger.debug('reset this.inputEl', this.component.inputEl, 'this.defaultValue', this.component.defaultValue);
     this.component.value = this.component.defaultValue ? `${this.component.defaultValue}` : '';
   }
 
   clear() {
     if (!this.component.disabled) {
-      this.logger.debug('clear', this.component.inputEl?.value);
       this.component.value = '';
       if (this.component.inputEl) {
         this.component.inputEl.value = '';

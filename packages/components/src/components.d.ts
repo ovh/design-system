@@ -771,11 +771,11 @@ export namespace Components {
          */
         "color"?: ODS_THEME_COLOR_INTENT;
         /**
-          * Icon if contrasted or not
+          * Icon is contrasted or not
          */
         "contrasted"?: boolean;
         /**
-          * Icon if hoverabled or not
+          * Icon is hoverabled or not
          */
         "hoverable"?: boolean;
         /**
@@ -788,176 +788,136 @@ export namespace Components {
         "size"?: ODS_ICON_SIZE;
     }
     interface OsdsInput {
-        /**
-          * @see OdsInputAttribute.ariaLabel
-         */
         "ariaLabel": HTMLElement['ariaLabel'];
         /**
           * ID of the element that labels the input
-          * @see OdsInputAttribute.ariaLabelledby
          */
         "ariaLabelledby"?: string;
         /**
           * empty the value
-          * @see OdsInputMethods.clear
          */
         "clear": () => Promise<void>;
         /**
           * Ability to clear the input value
-          * @see OdsInputAttribute.clearable
          */
         "clearable"?: boolean;
         /**
           * Main color of the input: see component principles
-          * @see OdsInputAttribute.color
          */
         "color"?: ODS_THEME_COLOR_INTENT;
         /**
           * Indicates if the input is contrasted or not: see component principles
-          * @see OdsInputAttribute.contrasted
          */
         "contrasted"?: boolean;
         /**
           * Default value of the input
-          * @see OdsInputAttribute.defaultValue
          */
         "defaultValue": OdsInputValue;
         /**
           * Indicates if the input is disabled or not: see component principles
-          * @see OdsInputAttribute.disabled
          */
         "disabled"?: boolean;
         /**
           * Indicates if the input shows error or not
-          * @see OdsInputAttribute.error
          */
         "error"?: boolean;
         /**
           * Controls the error state of the input
-          * @see OdsInputAttribute.errorStateControl
          */
         "errorStateControl"?: OdsErrorStateControl;
         /**
           * List of forbidden values for the input
-          * @see OdsInputAttribute.forbiddenValues
          */
         "forbiddenValues": OdsFormForbiddenValues<number>;
         /**
           * Control object of the form the input belongs to
-          * @see OdsInputAttribute.formControl
          */
         "formControl"?: OdsFormControl<OdsInputValidityState>;
         /**
           * get the validity state
-          * @see OdsInputMethods.getValidity
          */
         "getValidity": () => Promise<OdsInputValidityState>;
         /**
           * hide or display the value
-          * @see OdsInputMethods.hide
          */
         "hide": () => Promise<void>;
         /**
           * Icon to be used in the input field
-          * @see OdsInputAttribute.icon
          */
         "icon"?: ODS_ICON_NAME;
         /**
           * Indicates if the input is inline or not: see component principles
-          * @see OdsInputAttribute.inline
          */
         "inline"?: boolean;
         /**
           * Label of the input field
-          * @see OdsInputAttribute.label
          */
         "label"?: string;
         /**
           * Indicates if the input is in loading state or not
-          * @see OdsInputAttribute.loading
          */
         "loading"?: boolean;
         /**
           * Indicates if the input is masked or not
-          * @see OdsInputAttribute.masked
          */
         "masked"?: boolean;
         /**
           * Maximum value for the input (type number)
-          * @see OdsInputAttribute.max
          */
         "max"?: number;
         /**
           * Minimum value for the input (type number)
-          * @see OdsInputAttribute.min
          */
         "min"?: number;
         /**
           * Name of the input field
-          * @see OdsInputAttribute.name
          */
         "name"?: string;
         /**
           * Placeholder text for the input
-          * @see OdsInputAttribute.placeholder
          */
         "placeholder"?: string;
         /**
           * Text before the input value
-          * @see OdsInputAttribute.prefixValue
          */
         "prefixValue": string | undefined;
         /**
           * Indicates if the input is read-only or not
-          * @see OdsInputAttribute.readOnly
          */
         "readOnly"?: boolean;
         /**
           * Indicates if the input is required or not
-          * @see OdsInputAttribute.required
          */
         "required"?: boolean;
         /**
           * restore the value to the initial state
-          * @see OdsInputMethods.reset
          */
         "reset": () => Promise<void>;
         /**
           * active the focus on the input in order to let the user write something
-          * @see OdsInputMethods.setFocus
          */
         "setFocus": () => Promise<void>;
         /**
           * set a custom tab index for easier navigation
-          * @see OdsInputMethods.setInputTabindex
+          * @param value - chosen index
          */
         "setInputTabindex": (value: number) => Promise<void>;
         /**
           * Size of the input: see component principles
-          * @see OdsInputAttribute.size
          */
         "size"?: ODS_INPUT_SIZE;
         /**
           * Step value for the input
-          * @see OdsInputAttribute.step
          */
         "step"?: number;
-        /**
-          * @see OdsInputMethods.stepDown
-         */
         "stepDown": () => Promise<void>;
-        /**
-          * @see OdsInputMethods.stepUp
-         */
         "stepUp": () => Promise<void>;
         /**
           * Type of the input field
-          * @see OdsInputAttribute.type
          */
         "type": ODS_INPUT_TYPE;
         /**
           * Current value of the input
-          * @see OdsInputAttribute.value
          */
         "value": OdsInputValue;
     }
@@ -1758,7 +1718,7 @@ export namespace Components {
      */
     interface OsdsTabPanel {
         /**
-          * is the panel is active or nor
+          * is the panel active or not
           * @see OdsTabPanelAttributes.active
          */
         "active": boolean;
@@ -3565,11 +3525,11 @@ declare namespace LocalJSX {
          */
         "color"?: ODS_THEME_COLOR_INTENT;
         /**
-          * Icon if contrasted or not
+          * Icon is contrasted or not
          */
         "contrasted"?: boolean;
         /**
-          * Icon if hoverabled or not
+          * Icon is hoverabled or not
          */
         "hoverable"?: boolean;
         /**
@@ -3582,151 +3542,115 @@ declare namespace LocalJSX {
         "size"?: ODS_ICON_SIZE;
     }
     interface OsdsInput {
-        /**
-          * @see OdsInputAttribute.ariaLabel
-         */
         "ariaLabel"?: HTMLElement['ariaLabel'];
         /**
           * ID of the element that labels the input
-          * @see OdsInputAttribute.ariaLabelledby
          */
         "ariaLabelledby"?: string;
         /**
           * Ability to clear the input value
-          * @see OdsInputAttribute.clearable
          */
         "clearable"?: boolean;
         /**
           * Main color of the input: see component principles
-          * @see OdsInputAttribute.color
          */
         "color"?: ODS_THEME_COLOR_INTENT;
         /**
           * Indicates if the input is contrasted or not: see component principles
-          * @see OdsInputAttribute.contrasted
          */
         "contrasted"?: boolean;
         /**
           * Default value of the input
-          * @see OdsInputAttribute.defaultValue
          */
         "defaultValue"?: OdsInputValue;
         /**
           * Indicates if the input is disabled or not: see component principles
-          * @see OdsInputAttribute.disabled
          */
         "disabled"?: boolean;
         /**
           * Indicates if the input shows error or not
-          * @see OdsInputAttribute.error
          */
         "error"?: boolean;
         /**
           * Controls the error state of the input
-          * @see OdsInputAttribute.errorStateControl
          */
         "errorStateControl"?: OdsErrorStateControl;
         /**
           * List of forbidden values for the input
-          * @see OdsInputAttribute.forbiddenValues
          */
         "forbiddenValues"?: OdsFormForbiddenValues<number>;
         /**
           * Control object of the form the input belongs to
-          * @see OdsInputAttribute.formControl
          */
         "formControl"?: OdsFormControl<OdsInputValidityState>;
         /**
           * Icon to be used in the input field
-          * @see OdsInputAttribute.icon
          */
         "icon"?: ODS_ICON_NAME;
         /**
           * Indicates if the input is inline or not: see component principles
-          * @see OdsInputAttribute.inline
          */
         "inline"?: boolean;
         /**
           * Label of the input field
-          * @see OdsInputAttribute.label
          */
         "label"?: string;
         /**
           * Indicates if the input is in loading state or not
-          * @see OdsInputAttribute.loading
          */
         "loading"?: boolean;
         /**
           * Indicates if the input is masked or not
-          * @see OdsInputAttribute.masked
          */
         "masked"?: boolean;
         /**
           * Maximum value for the input (type number)
-          * @see OdsInputAttribute.max
          */
         "max"?: number;
         /**
           * Minimum value for the input (type number)
-          * @see OdsInputAttribute.min
          */
         "min"?: number;
         /**
           * Name of the input field
-          * @see OdsInputAttribute.name
          */
         "name"?: string;
-        /**
-          * @see OdsInputEvents.odsInputBlur
-         */
         "onOdsInputBlur"?: (event: OsdsInputCustomEvent<void>) => void;
-        /**
-          * @see OdsInputEvents.odsInputFocus
-         */
         "onOdsInputFocus"?: (event: OsdsInputCustomEvent<void>) => void;
         /**
           * the input value changed
-          * @see OdsInputEvents.odsValueChange
          */
         "onOdsValueChange"?: (event: OsdsInputCustomEvent<OdsInputValueChangeEventDetail>) => void;
         /**
           * Placeholder text for the input
-          * @see OdsInputAttribute.placeholder
          */
         "placeholder"?: string;
         /**
           * Text before the input value
-          * @see OdsInputAttribute.prefixValue
          */
         "prefixValue"?: string | undefined;
         /**
           * Indicates if the input is read-only or not
-          * @see OdsInputAttribute.readOnly
          */
         "readOnly"?: boolean;
         /**
           * Indicates if the input is required or not
-          * @see OdsInputAttribute.required
          */
         "required"?: boolean;
         /**
           * Size of the input: see component principles
-          * @see OdsInputAttribute.size
          */
         "size"?: ODS_INPUT_SIZE;
         /**
           * Step value for the input
-          * @see OdsInputAttribute.step
          */
         "step"?: number;
         /**
           * Type of the input field
-          * @see OdsInputAttribute.type
          */
         "type"?: ODS_INPUT_TYPE;
         /**
           * Current value of the input
-          * @see OdsInputAttribute.value
          */
         "value"?: OdsInputValue;
     }
@@ -4524,7 +4448,7 @@ declare namespace LocalJSX {
      */
     interface OsdsTabPanel {
         /**
-          * is the panel is active or nor
+          * is the panel active or not
           * @see OdsTabPanelAttributes.active
          */
         "active"?: boolean;

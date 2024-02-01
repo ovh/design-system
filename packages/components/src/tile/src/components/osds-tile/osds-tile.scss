@@ -6,35 +6,9 @@
 @import '~@ovhcloud/ods-common-theming/ods-theme';
 
 .osds-tile {
-  slot[name="start"],
-  slot[name="end"],
-  &__text--center {
-    display: inline-flex;
-  }
-
-  slot[name="start"] {
-    grid-area: start;
-    justify-content: flex-start;
-  }
-
-  span:not([slot]) {
-    grid-area:center;
-  }
-
-  slot[name="end"] {
-    grid-area: end;
-    justify-content: flex-end;
-  }
-
-  &__text--center {
-    justify-content: center;
-  }
-
   :host(&) {
     box-sizing: border-box;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
     border: solid var(--ods-size-inset-02);
   }
 
@@ -99,27 +73,30 @@
     width: var(--width);
   }
 
-  :host(&:not(&--inline):has([slot])){
-    @include osds-tile-on-selected-host {
-      display: inline-grid;
-      grid-template: "start center end" / auto 1fr auto;
-      width: 100%;
-    }
+  :host(&:not(&--inline)){
+    display: inline-grid;
+    grid-template: "start center end" / auto 1fr auto;
+    width: 100%;
 
-    slot {
-      display: inline;
+    slot[name="start"],
+    span:not([slot]),
+    slot[name="end"] {
+      display: inline-flex;
     }
 
     slot[name="start"] {
       grid-area: start;
+      justify-content: flex-start;
     }
 
     span:not([slot]) {
-      grid-area:center;
+      grid-area: center;
+      justify-content: center;
     }
 
     slot[name="end"] {
       grid-area: end;
+      justify-content: flex-end;
     }
   }
 

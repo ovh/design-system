@@ -80,7 +80,7 @@ export class OsdsTile implements OdsTileAttribute {
         }}
       >
         <slot name={'start'}></slot>
-        <span class={'osds-tile__text--center'}>
+        <span>
           <slot></slot>
         </span>
         <slot name={'end'}></slot>

@@ -30,7 +30,7 @@
 ### OdsTabPanelAttribute
 |Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
-|**`active`** | _boolean_ | ✴️ |  |  is the panel is active or nor|
+|**`active`** | _boolean_ | ✴️ |  |  is the panel active or not|
 |**`name`** | _string_ | ✴️ |  | identifier name of the panel|
 
 ### OdsTabsAttribute

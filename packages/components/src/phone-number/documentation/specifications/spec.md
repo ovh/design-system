@@ -8,10 +8,12 @@
 |---|---|:---:|---|---|
 |**`clearable`** | _boolean_ |  |  | Ability to clear the phone number value|
 |**`countries`** | `string` \| `ODS_COUNTRY_ISO_CODE[]` |  |  | A specific subset of countries to display in the select instead of the whole list|
-|**`disabled`** | _boolean_ |  |  | |
+|**`defaultValue`** | `undefined` \| `string` | ✴️ |  | Default value of the phone number|
+|**`disabled`** | _boolean_ |  |  | Indicates if the phone number is disabled or not|
 |**`error`** | _boolean_ |  |  | Indicates if the phone number shows error or not|
 |**`isoCode`** | `ODS_COUNTRY_ISO_CODE` |  |  | Select value|
 |**`locale`** | `ODS_LOCALE` |  |  | This is the locale to use to translate the countries names|
+|**`name`** | _string_ |  |  | Name of the phone number field|
 |**`value`** | `undefined` \| `string` | ✴️ |  | Current value of the phone number|
 
 ## Types

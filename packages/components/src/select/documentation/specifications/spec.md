@@ -13,6 +13,7 @@
 |**`disabled`** | _boolean_ | ✴️ |  | indicates if the select is entirely disabled.it means no interactions (hover, click, focus, etc)|
 |**`error`** | _boolean_ |  |  | indicates if the select has an error.|
 |**`inline`** | _boolean_ | ✴️ |  | full width or not: see component principles|
+|**`name`** | _string_ |  |  | name of the select field|
 |**`opened`** | _boolean_ |  |  | opened or not|
 |**`required`** | _boolean_ | ✴️ |  | indicates if a value has to be selected|
 |**`size`** | `md` | ✴️ |  | size: see component principles|
@@ -59,6 +60,7 @@
 ### OdsSelectValueChangeEventDetail
 |Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
+|**`name`** | _string_ |  |  | |
 |**`oldValue`** | `OdsInputValue` |  |  | |
 |**`selection`** | `undefined` \| `OsdsSelectOption` | ✴️ |  | |
 |**`validity`** | `OdsValidityState` | ✴️ |  | |

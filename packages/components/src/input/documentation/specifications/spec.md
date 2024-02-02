@@ -73,6 +73,7 @@
 ### OdsInputValueChangeEventDetail
 |Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
+|**`name`** | _string_ |  |  | |
 |**`oldValue`** | `undefined` \| `string` |  |  | |
 |**`validity`** | `OdsValidityState` | ✴️ |  | |
 |**`value`** | `undefined` \| `undefined` \| `string` | ✴️ |  | |

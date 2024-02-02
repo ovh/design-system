@@ -48,6 +48,7 @@
 ### OdsTextAreaValueChangeEvent
 |Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
+|**`name`** | _string_ |  |  | |
 |**`oldValue`** | `undefined` \| `string` |  |  | |
 |**`validity`** | `OdsTextAreaValidityState` |  |  | |
 |**`value`** | `undefined` \| `string` |  |  | |

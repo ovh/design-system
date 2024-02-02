@@ -2,11 +2,9 @@ jest.mock('./core/controller');
 
 import type { OdsDatepickerAttribute } from './interfaces/attributes';
 import type { SpecPage } from '@stencil/core/testing';
-
 import { OdsUnitTestAttributeType, odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { newSpecPage } from '@stencil/core/testing';
-
 import { ODS_DATEPICKER_DAY } from './constants/datepicker-day';
 import { ODS_DATEPICKER_LOCALE } from './constants/datepicker-locale';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
@@ -14,7 +12,6 @@ import { OdsDatepickerController } from './core/controller';
 import { OsdsDatepicker } from './osds-datepicker';
 // @ts-ignore
 import { Datepicker } from '../../jestStub';
-
 
 describe('spec:osds-datepicker', () => {
   let page: SpecPage;
@@ -308,6 +305,7 @@ describe('spec:osds-datepicker', () => {
     });
 
     describe('emitDatepickerValueChange', () => {
+      const name = 'name';
       let mockFormatDate: jest.SpyInstance;
 
       beforeAll(() => {
@@ -323,7 +321,7 @@ describe('spec:osds-datepicker', () => {
       });
 
       beforeEach(async() => {
-        await setup({});
+        await setup({ attributes: { name } });
       });
 
       it('should emit odsDatepickerValueChange event with newValue and oldValue', () => {
@@ -331,7 +329,7 @@ describe('spec:osds-datepicker', () => {
         const newValue = new Date('2023-10-03');
         const oldValue = new Date('2023-10-02');
         instance.emitDatepickerValueChange(newValue, oldValue);
-        expect(spy).toHaveBeenCalledWith({ value: newValue, oldValue: oldValue, formattedValue: `${newValue} dd/mm/yyyy` });
+        expect(spy).toHaveBeenCalledWith({ name, value: newValue, oldValue: oldValue, formattedValue: `${newValue} dd/mm/yyyy` });
       });
 
       it('should call Datepicker.formatDate when format is defined', () => {
@@ -350,7 +348,7 @@ describe('spec:osds-datepicker', () => {
         const spy = jest.spyOn(instance.odsDatepickerValueChange, 'emit');
         instance.emitDatepickerValueChange(testDate);
 
-        expect(spy).toHaveBeenCalledWith({ value: testDate, oldValue: undefined, formattedValue: undefined });
+        expect(spy).toHaveBeenCalledWith({ name, value: testDate, oldValue: undefined, formattedValue: undefined });
       });
     });
   });

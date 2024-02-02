@@ -39,6 +39,8 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
   @Prop({ reflect: true }) name?: string = DEFAULT_ATTRIBUTE.name;
   @Prop({ reflect: true, mutable: true }) value: string | null = DEFAULT_ATTRIBUTE.value;
 
+  @Event() odsBlur!: EventEmitter<void>;
+  @Event() odsFocus!: EventEmitter<void>;
   @Event() odsValueChange!: EventEmitter<OdsPhoneNumberValueChangeEventDetail>;
 
   componentWillLoad(): void {
@@ -82,6 +84,16 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
       return;
     }
     this.slotSelectedLabel.innerHTML = `<osds-flag lazy iso=${this.isoCode}></osds-flag>`;
+  }
+
+  @Listen('odsInputBlur')
+  onInputBlur() {
+    this.odsBlur.emit();
+  }
+
+  @Listen('odsInputFocus')
+  onInputFocus() {
+    this.odsFocus.emit();
   }
 
   @Listen('odsValueChange')

@@ -11,6 +11,13 @@ class OdsDatepickerController {
     this.component = component;
   }
 
+  beforeInit() {
+    if (!this.component.value) {
+      this.component.value = this.component.defaultValue;
+    }
+    this.component.internals.setFormValue(this.component.formatDate(this.component.value) ?? '');
+  }
+
   onFocus(): void {
     if (!this.component.disabled) {
       this.component.hasFocus = true;
@@ -24,10 +31,12 @@ class OdsDatepickerController {
         this.component.value = null;
         this.component.datepickerInstanceAccessor?.setDate({ clear: true });
         this.component.emitDatepickerValueChange(null, oldValue ? oldValue : null);
+        this.component.internals.setFormValue('');
       } else {
         this.component.value = newValue;
         this.component.datepickerInstanceAccessor?.setDate(newValue);
         this.component.emitDatepickerValueChange(newValue, oldValue ? oldValue : null);
+        this.component.internals.setFormValue(this.component.formatDate(newValue) ?? '');
       }
       this.component.hasFocus = false;
     }

@@ -1,14 +1,10 @@
 import type { OdsDatepickerAttribute } from './interfaces/attributes';
 import type { OsdsDatepicker } from './osds-datepicker';
 import type { E2EPage } from '@stencil/core/testing';
-
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import { newE2EPage } from '@stencil/core/testing';
-
 import { ODS_DATEPICKER_DAY } from './constants/datepicker-day';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-
-
 
 describe('e2e:osds-datepicker', () => {
   let page: E2EPage;

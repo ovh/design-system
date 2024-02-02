@@ -3,11 +3,10 @@ import type { ODS_DATEPICKER_LOCALE } from './constants/datepicker-locale';
 import type { OdsDatepickerAttribute } from './interfaces/attributes';
 import type { OdsDatepickerEvent, OdsDatepickerValueChangeEventDetail } from './interfaces/events';
 import type { EventEmitter } from '@stencil/core';
-
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_ICON_NAME } from '../../../../icon/src';
 import { ODS_INPUT_TYPE } from '../../../../input/src';
-import { Component, Element, Event, Host, Listen, Prop, State, Watch, h } from '@stencil/core';
+import { AttachInternals, Component, Element, Event, Host, Listen, Prop, State, Watch, h } from '@stencil/core';
 import { Datepicker } from 'vanillajs-datepicker';
 // @ts-ignore
 import de from 'vanillajs-datepicker/js/i18n/locales/de';
@@ -23,11 +22,8 @@ import nl from 'vanillajs-datepicker/js/i18n/locales/nl';
 import pl from 'vanillajs-datepicker/js/i18n/locales/pl';
 // @ts-ignore
 import pt from 'vanillajs-datepicker/js/i18n/locales/pt';
-
-
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsDatepickerController } from './core/controller';
-
 
 Object.assign(Datepicker.locales, de);
 Object.assign(Datepicker.locales, es);
@@ -37,82 +33,49 @@ Object.assign(Datepicker.locales, nl);
 Object.assign(Datepicker.locales, pl);
 Object.assign(Datepicker.locales, pt);
 
-/**
- * @slot (unnamed) - Datepicker content
- */
 @Component({
-  tag: 'osds-datepicker',
-  styleUrl: 'osds-datepicker.scss',
+  formAssociated: true,
   shadow: true,
+  styleUrl: 'osds-datepicker.scss',
+  tag: 'osds-datepicker',
 })
 export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEvent {
   controller: OdsDatepickerController = new OdsDatepickerController(this);
-
-  @Element() el!: HTMLElement;
-
-  @State() hasFocus = false;
-
   private datepickerInstance: Datepicker | undefined = undefined;
+  private hiddenInput: HTMLInputElement | undefined = undefined;
+  private datepickerElement: HTMLElement | undefined = undefined;
+
   get datepickerInstanceAccessor(): Datepicker | undefined {
     return this.datepickerInstance;
   }
 
-  private hiddenInput: HTMLInputElement | undefined = undefined;
-  private datepickerElement: HTMLElement | undefined = undefined;
+  @Element() el!: HTMLElement;
 
-  /** @see OdsDatepickerAttribute.clearable */
+  @AttachInternals() internals!: ElementInternals;
+
+  @State() hasFocus = false;
+
   @Prop({ reflect: true }) clearable?: boolean = DEFAULT_ATTRIBUTE.clearable;
-
-  /** @see OdsDatepickerAttribute.color */
   @Prop({ reflect: true }) color?: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
-
-  /** @see OdsDatepickerAttribute.datesDisabled */
   @Prop({ reflect: true }) datesDisabled?: Date[] = DEFAULT_ATTRIBUTE.datesDisabled;
-
-  /** @see OdsDatepickerAttribute.daysOfWeekDisabled */
   @Prop({ reflect: true }) daysOfWeekDisabled?: ODS_DATEPICKER_DAY[] = DEFAULT_ATTRIBUTE.daysOfWeekDisabled;
-
-  /** @see OdsDatepickerAttribute.disabled */
+  @Prop({ reflect: true }) defaultValue?: Date | null = DEFAULT_ATTRIBUTE.value;
   @Prop({ reflect: true }) disabled?: boolean = DEFAULT_ATTRIBUTE.disabled;
-
-  /** @see OdsDatepickerAttribute.error */
   @Prop({ reflect: true }) error?: boolean = DEFAULT_ATTRIBUTE.error;
-
-  /** @see OdsDatepickerAttribute.format */
   @Prop({ reflect: true }) format?: string = DEFAULT_ATTRIBUTE.format;
-
-  /** @see OdsDatepickerAttribute.inline */
   @Prop({ reflect: true }) inline?: boolean = DEFAULT_ATTRIBUTE.inline;
-
-  /** @see OdsDatepickerAttribute.locale */
   @Prop({ reflect: true }) locale?: ODS_DATEPICKER_LOCALE = DEFAULT_ATTRIBUTE.locale;
-
-  /** @see OdsDatepickerAttribute.maxDate */
   @Prop({ reflect: true }) maxDate?: Date | null = DEFAULT_ATTRIBUTE.maxDate;
-
-  /** @see OdsDatepickerAttribute.minDate */
   @Prop({ reflect: true }) minDate?: Date | null = DEFAULT_ATTRIBUTE.minDate;
-
-  /** @see OdsDatepickerAttribute.placeholder */
+  @Prop({ reflect: true }) name?: string = DEFAULT_ATTRIBUTE.format;
   @Prop({ reflect: true }) placeholder?: string = DEFAULT_ATTRIBUTE.placeholder;
-
   @Prop({ reflect: true }) showSiblingsMonthDays?: boolean = DEFAULT_ATTRIBUTE.showSiblingsMonthDays;
-
-  /** @see OdsDatepickerAttribute.value */
   @Prop({ reflect: true, mutable: true }) value?: Date | null = DEFAULT_ATTRIBUTE.value;
 
-  /** Events */
-
-  /** @see OdsDatepickerEvent.odsDatepickerBlur */
   @Event() odsDatepickerBlur!: EventEmitter<void>;
-
-  /** @see OdsDatepickerEvent.odsDatepickerFocus */
   @Event() odsDatepickerFocus!: EventEmitter<void>;
-
-  /** @see OdsDatepickerEvent.odsDatepickerValueChange */
   @Event() odsDatepickerValueChange!: EventEmitter<OdsDatepickerValueChangeEventDetail>;
 
-  /** Listening to user's manual input */
   @Listen('odsValueChange')
   handleInputValueChange(event: CustomEvent) {
     if (this.format && event.detail.value.length === this.format.length) {
@@ -155,6 +118,12 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
     // thus Stencil does not detect them correctly and they're not embedded in the build,
     // so we have to manually declare their usage here
     h('osds-icon');
+
+    this.controller.beforeInit();
+  }
+
+  formResetCallback(): void {
+    this.value = this.defaultValue;
   }
 
   emitBlur(): void {
@@ -166,7 +135,12 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
   }
 
   emitDatepickerValueChange(newValue: Date | undefined | null, oldValue?: Date | undefined | null): void {
-    this.odsDatepickerValueChange.emit({ value: newValue, oldValue: oldValue, formattedValue: newValue && this.format ? Datepicker.formatDate(newValue, this.format) : undefined });
+    this.odsDatepickerValueChange.emit({
+      formattedValue: newValue && this.format ? Datepicker.formatDate(newValue, this.format) : undefined,
+      name: this.name,
+      oldValue: oldValue,
+      value: newValue
+    });
   }
 
   onBlur(): void {

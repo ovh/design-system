@@ -1,4 +1,3 @@
-
 import type { ODS_DATEPICKER_DAY } from '../constants/datepicker-day';
 import type { ODS_DATEPICKER_LOCALE } from '../constants/datepicker-locale';
 import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
@@ -20,6 +19,10 @@ interface OdsDatepickerAttribute {
    * Defines the Datepicker's disabled days of the week (monday, tuesday...)
    */
   daysOfWeekDisabled?: ODS_DATEPICKER_DAY[];
+  /**
+   * Default value of the input
+   */
+  defaultValue?: Date | undefined | null;
   /**
    * Defines if the Datepicker should be disabled or not (lower opacity and not interactable)
    */
@@ -49,6 +52,10 @@ interface OdsDatepickerAttribute {
    */
   minDate?: Date | undefined | null;
   /**
+   * Name of the datepicker field
+   */
+  name?: string;
+  /**
    * Defines if the Datepicker should display a placeholder message
    */
   placeholder?: string;
@@ -62,6 +69,6 @@ interface OdsDatepickerAttribute {
   value?: Date | undefined | null;
 }
 
-export {
+export type {
   OdsDatepickerAttribute,
 };

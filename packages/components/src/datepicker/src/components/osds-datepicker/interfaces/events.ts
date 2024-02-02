@@ -1,9 +1,10 @@
 import type { EventEmitter } from '@stencil/core';
 
 interface OdsDatepickerValueChangeEventDetail {
-  value?: Date | null;
-  oldValue?: Date | null;
+  name?: string;
   formattedValue?: string;
+  oldValue?: Date | null;
+  value?: Date | null;
 }
 
 type OdsDatepickerValueChangeEvent = CustomEvent<OdsDatepickerValueChangeEventDetail>;

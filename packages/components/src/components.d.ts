@@ -635,62 +635,58 @@ export namespace Components {
     interface OsdsDatepicker {
         /**
           * Defines if the Datepicker should be clearable or not (displays a clear button)
-          * @see OdsDatepickerAttribute.clearable
          */
         "clearable"?: boolean;
         /**
           * Defines the Datepicker's color (see component principles)
-          * @see OdsDatepickerAttribute.color
          */
         "color"?: ODS_THEME_COLOR_INTENT;
         /**
           * Defines the Datepicker's disabled dates
-          * @see OdsDatepickerAttribute.datesDisabled
          */
         "datesDisabled"?: Date[];
         /**
           * Defines the Datepicker's disabled days of the week (monday, tuesday...)
-          * @see OdsDatepickerAttribute.daysOfWeekDisabled
          */
         "daysOfWeekDisabled"?: ODS_DATEPICKER_DAY[];
         /**
+          * Default value of the input
+         */
+        "defaultValue"?: Date | null;
+        /**
           * Defines if the Datepicker should be disabled or not (lower opacity and not interactable)
-          * @see OdsDatepickerAttribute.disabled
          */
         "disabled"?: boolean;
         /**
           * Defines if the Datepicker should display an error message
-          * @see OdsDatepickerAttribute.error
          */
         "error"?: boolean;
         /**
           * Defines which format the Datepicker should be applying (supported formats: https://mymth.github.io/vanillajs-datepicker/#/date-string+format?id=date-format)
-          * @see OdsDatepickerAttribute.format
          */
         "format"?: string;
         /**
           * Defines if the Datepicker should be displayed inline or not
-          * @see OdsDatepickerAttribute.inline
          */
         "inline"?: boolean;
         /**
           * Defines the locale to use
-          * @see OdsDatepickerAttribute.locale
          */
         "locale"?: ODS_DATEPICKER_LOCALE;
         /**
           * Defines the Datepicker's maximum selectable date
-          * @see OdsDatepickerAttribute.maxDate
          */
         "maxDate"?: Date | null;
         /**
           * Defines the Datepicker's minimum selectable date
-          * @see OdsDatepickerAttribute.minDate
          */
         "minDate"?: Date | null;
         /**
+          * Name of the datepicker field
+         */
+        "name"?: string;
+        /**
           * Defines if the Datepicker should display a placeholder message
-          * @see OdsDatepickerAttribute.placeholder
          */
         "placeholder"?: string;
         /**
@@ -699,7 +695,6 @@ export namespace Components {
         "showSiblingsMonthDays"?: boolean;
         /**
           * Defines the Datepicker's value (Date object)
-          * @see OdsDatepickerAttribute.value
          */
         "value"?: Date | null;
     }
@@ -3316,77 +3311,70 @@ declare namespace LocalJSX {
     interface OsdsDatepicker {
         /**
           * Defines if the Datepicker should be clearable or not (displays a clear button)
-          * @see OdsDatepickerAttribute.clearable
          */
         "clearable"?: boolean;
         /**
           * Defines the Datepicker's color (see component principles)
-          * @see OdsDatepickerAttribute.color
          */
         "color"?: ODS_THEME_COLOR_INTENT;
         /**
           * Defines the Datepicker's disabled dates
-          * @see OdsDatepickerAttribute.datesDisabled
          */
         "datesDisabled"?: Date[];
         /**
           * Defines the Datepicker's disabled days of the week (monday, tuesday...)
-          * @see OdsDatepickerAttribute.daysOfWeekDisabled
          */
         "daysOfWeekDisabled"?: ODS_DATEPICKER_DAY[];
         /**
+          * Default value of the input
+         */
+        "defaultValue"?: Date | null;
+        /**
           * Defines if the Datepicker should be disabled or not (lower opacity and not interactable)
-          * @see OdsDatepickerAttribute.disabled
          */
         "disabled"?: boolean;
         /**
           * Defines if the Datepicker should display an error message
-          * @see OdsDatepickerAttribute.error
          */
         "error"?: boolean;
         /**
           * Defines which format the Datepicker should be applying (supported formats: https://mymth.github.io/vanillajs-datepicker/#/date-string+format?id=date-format)
-          * @see OdsDatepickerAttribute.format
          */
         "format"?: string;
         /**
           * Defines if the Datepicker should be displayed inline or not
-          * @see OdsDatepickerAttribute.inline
          */
         "inline"?: boolean;
         /**
           * Defines the locale to use
-          * @see OdsDatepickerAttribute.locale
          */
         "locale"?: ODS_DATEPICKER_LOCALE;
         /**
           * Defines the Datepicker's maximum selectable date
-          * @see OdsDatepickerAttribute.maxDate
          */
         "maxDate"?: Date | null;
         /**
           * Defines the Datepicker's minimum selectable date
-          * @see OdsDatepickerAttribute.minDate
          */
         "minDate"?: Date | null;
         /**
+          * Name of the datepicker field
+         */
+        "name"?: string;
+        /**
           * Triggered on blur
-          * @see OdsDatepickerEvent.odsDatepickerBlur
          */
         "onOdsDatepickerBlur"?: (event: OsdsDatepickerCustomEvent<void>) => void;
         /**
           * Triggered on focus
-          * @see OdsDatepickerEvent.odsDatepickerFocus
          */
         "onOdsDatepickerFocus"?: (event: OsdsDatepickerCustomEvent<void>) => void;
         /**
           * Triggered on value change
-          * @see OdsDatepickerEvent.odsDatepickerValueChange
          */
         "onOdsDatepickerValueChange"?: (event: OsdsDatepickerCustomEvent<OdsDatepickerValueChangeEventDetail>) => void;
         /**
           * Defines if the Datepicker should display a placeholder message
-          * @see OdsDatepickerAttribute.placeholder
          */
         "placeholder"?: string;
         /**
@@ -3395,7 +3383,6 @@ declare namespace LocalJSX {
         "showSiblingsMonthDays"?: boolean;
         /**
           * Defines the Datepicker's value (Date object)
-          * @see OdsDatepickerAttribute.value
          */
         "value"?: Date | null;
     }

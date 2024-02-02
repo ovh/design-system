@@ -10,6 +10,7 @@
 |**`color`** | `ODS_THEME_COLOR_INTENT` |  |  | Defines the Datepicker's color (see component principles)|
 |**`datesDisabled`** | Date[] |  |  | Defines the Datepicker's disabled dates|
 |**`daysOfWeekDisabled`** | ODS_DATEPICKER_DAY[] |  |  | Defines the Datepicker's disabled days of the week (monday, tuesday...)|
+|**`defaultValue`** | `undefined` \| `Date` |  |  | Default value of the input|
 |**`disabled`** | _boolean_ |  |  | Defines if the Datepicker should be disabled or not (lower opacity and not interactable)|
 |**`error`** | _boolean_ |  |  | Defines if the Datepicker should display an error message|
 |**`format`** | _string_ |  |  | Defines which format the Datepicker should be applying (supported formats: https://mymth.github.io/vanillajs-datepicker/#/date-string+format?id=date-format)|
@@ -17,6 +18,7 @@
 |**`locale`** | `ODS_LOCALE` |  |  | Defines the locale to use|
 |**`maxDate`** | `undefined` \| `Date` |  |  | Defines the Datepicker's maximum selectable date|
 |**`minDate`** | `undefined` \| `Date` |  |  | Defines the Datepicker's minimum selectable date|
+|**`name`** | _string_ |  |  | Name of the datepicker field|
 |**`placeholder`** | _string_ |  |  | Defines if the Datepicker should display a placeholder message|
 |**`showSiblingsMonthDays`** | _boolean_ |  |  | Defines if the Datepicker should display others month days|
 |**`value`** | `undefined` \| `Date` |  |  | Defines the Datepicker's value (Date object)|
@@ -32,6 +34,7 @@
 |Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
 |**`formattedValue`** | _string_ |  |  | |
+|**`name`** | _string_ |  |  | |
 |**`oldValue`** | `undefined` \| `Date` |  |  | |
 |**`value`** | `undefined` \| `Date` |  |  | |
 

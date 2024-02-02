@@ -8,8 +8,8 @@
 |---|---|:---:|---|---|
 |**`ariaName`** | _string_ | ✴️ |  | Icon ARIA name|
 |**`color`** | `ODS_THEME_COLOR_INTENT` |  |  | Icon color theme|
-|**`contrasted`** | _boolean_ |  |  | Icon if contrasted or not|
-|**`hoverable`** | _boolean_ |  |  | Icon if hoverabled or not|
+|**`contrasted`** | _boolean_ |  |  | Icon is contrasted or not|
+|**`hoverable`** | _boolean_ |  |  | Icon is hoverabled or not|
 |**`name`** | `ODS_ICON_NAME` |  |  | Icon name|
 |**`size`** | `ODS_ICON_SIZE` |  |  | Icon size|
 

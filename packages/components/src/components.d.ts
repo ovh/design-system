@@ -41,7 +41,7 @@ import { OdsInputValueChangeEventDetail } from "./input/src/components/osds-inpu
 import { ODS_LINK_REFERRER_POLICY as ODS_LINK_REFERRER_POLICY1 } from "./link/src/components/osds-link/constants/referrer-policies";
 import { ODS_MESSAGE_TYPE } from "./message/src/components/osds-message/constants/message-type";
 import { OdsPaginationChangedEventDetail, OdsPaginationItemPerPageChangedEventDetail } from "./pagination/src/components/osds-pagination/interfaces/events";
-import { ODS_INPUT_SIZE as ODS_INPUT_SIZE1 } from "./input/src";
+import { ODS_INPUT_SIZE as ODS_INPUT_SIZE1, OdsInputValueChangeEvent } from "./input/src";
 import { ODS_PHONE_NUMBER_COUNTRY_PRESET } from "./phone-number/src/components/osds-phone-number/constants/phone-number-countries";
 import { OdsPhoneNumberValueChangeEventDetail } from "./phone-number/src/components/osds-phone-number/interfaces/events";
 import { OdsRadioCheckedChangeEventDetail, OdsRadioCheckingChangeEventDetail } from "./radio/src/components/osds-radio/interfaces/events";
@@ -106,7 +106,7 @@ export { OdsInputValueChangeEventDetail } from "./input/src/components/osds-inpu
 export { ODS_LINK_REFERRER_POLICY as ODS_LINK_REFERRER_POLICY1 } from "./link/src/components/osds-link/constants/referrer-policies";
 export { ODS_MESSAGE_TYPE } from "./message/src/components/osds-message/constants/message-type";
 export { OdsPaginationChangedEventDetail, OdsPaginationItemPerPageChangedEventDetail } from "./pagination/src/components/osds-pagination/interfaces/events";
-export { ODS_INPUT_SIZE as ODS_INPUT_SIZE1 } from "./input/src";
+export { ODS_INPUT_SIZE as ODS_INPUT_SIZE1, OdsInputValueChangeEvent } from "./input/src";
 export { ODS_PHONE_NUMBER_COUNTRY_PRESET } from "./phone-number/src/components/osds-phone-number/constants/phone-number-countries";
 export { OdsPhoneNumberValueChangeEventDetail } from "./phone-number/src/components/osds-phone-number/interfaces/events";
 export { OdsRadioCheckedChangeEventDetail, OdsRadioCheckingChangeEventDetail } from "./radio/src/components/osds-radio/interfaces/events";
@@ -1442,32 +1442,26 @@ export namespace Components {
     interface OsdsSearchBar {
         /**
           * Indicates if the search-bar is contrasted or not: see component principles
-          * @see OdsSearchBarAttributes.contrasted
          */
         "contrasted"?: boolean;
         /**
           * Indicates if the search-bar is disabled or not: see component principles
-          * @see OdsSearchBarAttributes.disabled
          */
         "disabled"?: boolean;
         /**
           * Indicates if the search-bar is in loading state or not
-          * @see OdsSearchBarAttributes.loading
          */
         "loading"?: boolean;
         /**
           * List of the options on the select
-          * @see OdsSearchBarAttributes.options
          */
         "options"?: OdsSearchbarOption[];
         /**
           * Placeholder text for the search-bar
-          * @see OdsSearchBarAttributes.placeholder
          */
         "placeholder"?: string;
         /**
           * Current value of the search-bar
-          * @see OdsSearchBarAttributes.value
          */
         "value": string;
     }
@@ -1993,6 +1987,10 @@ export interface OsdsPaginationCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLOsdsPaginationElement;
 }
+export interface OsdsPasswordCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLOsdsPasswordElement;
+}
 export interface OsdsPhoneNumberCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLOsdsPhoneNumberElement;
@@ -2409,13 +2407,28 @@ declare global {
         prototype: HTMLOsdsPaginationElement;
         new (): HTMLOsdsPaginationElement;
     };
+    interface HTMLOsdsPasswordElementEventMap {
+        "odsBlur": void;
+        "odsFocus": void;
+        "odsValueChange": OdsInputValueChangeEvent;
+    }
     interface HTMLOsdsPasswordElement extends Components.OsdsPassword, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLOsdsPasswordElementEventMap>(type: K, listener: (this: HTMLOsdsPasswordElement, ev: OsdsPasswordCustomEvent<HTMLOsdsPasswordElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLOsdsPasswordElementEventMap>(type: K, listener: (this: HTMLOsdsPasswordElement, ev: OsdsPasswordCustomEvent<HTMLOsdsPasswordElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLOsdsPasswordElement: {
         prototype: HTMLOsdsPasswordElement;
         new (): HTMLOsdsPasswordElement;
     };
     interface HTMLOsdsPhoneNumberElementEventMap {
+        "odsBlur": void;
+        "odsFocus": void;
         "odsValueChange": OdsPhoneNumberValueChangeEventDetail;
     }
     interface HTMLOsdsPhoneNumberElement extends Components.OsdsPhoneNumber, HTMLStencilElement {
@@ -2517,6 +2530,8 @@ declare global {
         new (): HTMLOsdsRadioGroupElement;
     };
     interface HTMLOsdsRangeElementEventMap {
+        "odsBlur": void;
+        "odsFocus": void;
         "odsValueChange": OdsRangeValueChangeEventDetail;
     }
     interface HTMLOsdsRangeElement extends Components.OsdsRange, HTMLStencilElement {
@@ -2534,7 +2549,10 @@ declare global {
         new (): HTMLOsdsRangeElement;
     };
     interface HTMLOsdsSearchBarElementEventMap {
+        "odsBlur": void;
+        "odsFocus": void;
         "odsSearchSubmit": { optionValue: string; inputValue: string };
+        "odsValueChange": OdsInputValueChangeEvent;
     }
     interface HTMLOsdsSearchBarElement extends Components.OsdsSearchBar, HTMLStencilElement {
         addEventListener<K extends keyof HTMLOsdsSearchBarElementEventMap>(type: K, listener: (this: HTMLOsdsSearchBarElement, ev: OsdsSearchBarCustomEvent<HTMLOsdsSearchBarElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -3796,6 +3814,18 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
+          * Event triggered on textarea blur
+         */
+        "onOdsBlur"?: (event: OsdsPasswordCustomEvent<void>) => void;
+        /**
+          * Event triggered on textarea focus
+         */
+        "onOdsFocus"?: (event: OsdsPasswordCustomEvent<void>) => void;
+        /**
+          * The textarea value changed
+         */
+        "onOdsValueChange"?: (event: OsdsPasswordCustomEvent<OdsInputValueChangeEvent>) => void;
+        /**
           * Placeholder text for the password
          */
         "placeholder"?: string;
@@ -3849,6 +3879,14 @@ declare namespace LocalJSX {
           * Name of the phone number field
          */
         "name"?: string;
+        /**
+          * Event triggered on textarea blur
+         */
+        "onOdsBlur"?: (event: OsdsPhoneNumberCustomEvent<void>) => void;
+        /**
+          * Event triggered on textarea focus
+         */
+        "onOdsFocus"?: (event: OsdsPhoneNumberCustomEvent<void>) => void;
         /**
           * Send event with the input & the selected isoCode when the select value or the input value change
          */
@@ -4099,6 +4137,14 @@ declare namespace LocalJSX {
          */
         "name"?: string;
         /**
+          * Event triggered on textarea blur
+         */
+        "onOdsBlur"?: (event: OsdsRangeCustomEvent<void>) => void;
+        /**
+          * Event triggered on textarea focus
+         */
+        "onOdsFocus"?: (event: OsdsRangeCustomEvent<void>) => void;
+        /**
           * the range value changed
          */
         "onOdsValueChange"?: (event: OsdsRangeCustomEvent<OdsRangeValueChangeEventDetail>) => void;
@@ -4114,37 +4160,42 @@ declare namespace LocalJSX {
     interface OsdsSearchBar {
         /**
           * Indicates if the search-bar is contrasted or not: see component principles
-          * @see OdsSearchBarAttributes.contrasted
          */
         "contrasted"?: boolean;
         /**
           * Indicates if the search-bar is disabled or not: see component principles
-          * @see OdsSearchBarAttributes.disabled
          */
         "disabled"?: boolean;
         /**
           * Indicates if the search-bar is in loading state or not
-          * @see OdsSearchBarAttributes.loading
          */
         "loading"?: boolean;
         /**
+          * Event triggered on textarea blur
+         */
+        "onOdsBlur"?: (event: OsdsSearchBarCustomEvent<void>) => void;
+        /**
+          * Event triggered on textarea focus
+         */
+        "onOdsFocus"?: (event: OsdsSearchBarCustomEvent<void>) => void;
+        /**
           * Send event with the input value when click on button search ou with keyboard navigation
-          * @see OdsSearchBarEvents.odsSearchSubmit
          */
         "onOdsSearchSubmit"?: (event: OsdsSearchBarCustomEvent<{ optionValue: string; inputValue: string }>) => void;
         /**
+          * The textarea value changed
+         */
+        "onOdsValueChange"?: (event: OsdsSearchBarCustomEvent<OdsInputValueChangeEvent>) => void;
+        /**
           * List of the options on the select
-          * @see OdsSearchBarAttributes.options
          */
         "options"?: OdsSearchbarOption[];
         /**
           * Placeholder text for the search-bar
-          * @see OdsSearchBarAttributes.placeholder
          */
         "placeholder"?: string;
         /**
           * Current value of the search-bar
-          * @see OdsSearchBarAttributes.value
          */
         "value"?: string;
     }

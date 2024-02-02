@@ -1,7 +1,7 @@
 import type { OdsInputValueChangeEvent } from '../../../../../input/src';
 import type { EventEmitter } from '@stencil/core';
 
-interface OdsSearchBarEvent {
+interface OdsPasswordEvent {
   /**
    * Event triggered on textarea blur
    */
@@ -10,8 +10,6 @@ interface OdsSearchBarEvent {
    * Event triggered on textarea focus
    */
   odsFocus: EventEmitter<void>;
-  /** Send event with the input value when click on button search ou with keyboard navigation */
-  odsSearchSubmit: EventEmitter<{ optionValue: string; inputValue: string }>,
   /**
    * The textarea value changed
    */
@@ -19,5 +17,5 @@ interface OdsSearchBarEvent {
 }
 
 export type {
-  OdsSearchBarEvent,
+  OdsPasswordEvent,
 };

@@ -1401,6 +1401,10 @@ export namespace Components {
          */
         "color"?: ODS_THEME_COLOR_INTENT;
         /**
+          * Default value of the range
+         */
+        "defaultValue": OdsRangeValue;
+        /**
           * Indicate if the range is entirely disabled. It means no interaction is possible (hover, click, focus, etc)
          */
         "disabled"?: boolean;
@@ -1433,6 +1437,10 @@ export namespace Components {
           * The range minimum value
          */
         "min"?: number;
+        /**
+          * Name of the range field
+         */
+        "name"?: string;
         /**
           * The range step value
          */
@@ -4074,6 +4082,10 @@ declare namespace LocalJSX {
          */
         "color"?: ODS_THEME_COLOR_INTENT;
         /**
+          * Default value of the range
+         */
+        "defaultValue"?: OdsRangeValue;
+        /**
           * Indicate if the range is entirely disabled. It means no interaction is possible (hover, click, focus, etc)
          */
         "disabled"?: boolean;
@@ -4105,6 +4117,10 @@ declare namespace LocalJSX {
           * The range minimum value
          */
         "min"?: number;
+        /**
+          * Name of the range field
+         */
+        "name"?: string;
         /**
           * the range value changed
          */

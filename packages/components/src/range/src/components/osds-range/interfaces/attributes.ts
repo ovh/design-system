@@ -2,12 +2,15 @@ import type { OdsRangeValue } from './value';
 import type { OdsErrorStateControl, OdsFormControl, OdsFormForbiddenValues, OdsValidityState } from '@ovhcloud/ods-common-core';
 import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 
-
 interface OdsRangeAttribute {
   /**
    * Range color theme
    */
   color?: ODS_THEME_COLOR_INTENT;
+  /**
+   * Default value of the range
+   */
+  defaultValue: OdsRangeValue;
   /**
    * Indicate if the range is entirely disabled.
    * It means no interaction is possible (hover, click, focus, etc)
@@ -38,6 +41,10 @@ interface OdsRangeAttribute {
    */
   min?: number;
   /**
+   * Name of the range field
+   */
+  name?: string;
+  /**
    * The range step value
    */
   step?: number;
@@ -55,4 +62,4 @@ interface OdsRangeAttribute {
   formControl?: OdsFormControl<OdsValidityState>;
 }
 
-export { OdsRangeAttribute };
+export type { OdsRangeAttribute };

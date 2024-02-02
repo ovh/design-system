@@ -28,18 +28,18 @@ describe('spec:osds-range', () => {
   let controller: OdsRangeController;
   const baseAttribute = {
     color: ODS_THEME_COLOR_INTENT.default,
+    defaultValue: '',
     disabled: false,
     error: undefined,
     errorStateControl: undefined,
+    forbiddenValues: [],
+    formControl: undefined,
     inline: false,
     max: 100,
     min: 0,
     step: 1,
     value: '',
-    forbiddenValues: [],
-    formControl: undefined,
   };
-
 
   async function setup({ attributes = {} }: { attributes?: Partial<OdsRangeAttribute> } = {}) {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsRangeAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
@@ -217,15 +217,17 @@ describe('spec:osds-range', () => {
         expect(controller.onKeyup).toHaveBeenCalledWith(event, inputEl, false);
       });
 
-      it('should emit change', () => {
+      it('should emit change', async() => {
+        const name = 'name'
         const newValue = 2;
         const oldValue = 3;
         const expected: OdsRangeValueChangeEventDetail = {
-          value: newValue,
+          name,
           oldValue,
           validity: undefined,
+          value: newValue,
         };
-        setup({});
+        await setup({ attributes: { name } });
         const spy = jest.spyOn(instance?.odsValueChange, 'emit');
         instance?.emitChange(newValue, oldValue);
 

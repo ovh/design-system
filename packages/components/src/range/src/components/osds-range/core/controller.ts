@@ -95,12 +95,16 @@ class OdsRangeController {
 
   beforeInit(): void {
     this.onFormControlChange(this.component.formControl);
-    this.onValueChange(this.component.value);
+    if (!this.component.value) {
+      this.component.value = this.component.defaultValue;
+    }
+    this.component.internals.setFormValue(this.component.value?.toString() ?? '');
   }
 
   onValueChange(newValue: OdsRangeValue, oldValue?: OdsRangeValue) {
     this.validateValue(newValue);
     this.updateInputCustomValidation(this.component.inputEl);
+    this.component.internals.setFormValue(newValue?.toString() ?? '');
     this.component.emitChange(newValue, oldValue);
   }
 

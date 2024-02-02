@@ -773,11 +773,11 @@ export namespace Components {
          */
         "color"?: ODS_THEME_COLOR_INTENT;
         /**
-          * Icon if contrasted or not
+          * Icon is contrasted or not
          */
         "contrasted"?: boolean;
         /**
-          * Icon if hoverabled or not
+          * Icon is hoverabled or not
          */
         "hoverable"?: boolean;
         /**
@@ -1764,7 +1764,7 @@ export namespace Components {
      */
     interface OsdsTabPanel {
         /**
-          * is the panel is active or nor
+          * is the panel active or not
           * @see OdsTabPanelAttributes.active
          */
         "active": boolean;
@@ -3571,11 +3571,11 @@ declare namespace LocalJSX {
          */
         "color"?: ODS_THEME_COLOR_INTENT;
         /**
-          * Icon if contrasted or not
+          * Icon is contrasted or not
          */
         "contrasted"?: boolean;
         /**
-          * Icon if hoverabled or not
+          * Icon is hoverabled or not
          */
         "hoverable"?: boolean;
         /**
@@ -4534,7 +4534,7 @@ declare namespace LocalJSX {
      */
     interface OsdsTabPanel {
         /**
-          * is the panel is active or nor
+          * is the panel active or not
           * @see OdsTabPanelAttributes.active
          */
         "active"?: boolean;

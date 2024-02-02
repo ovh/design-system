@@ -2,8 +2,9 @@ import type { OdsRangeAttribute } from './interfaces/attributes';
 import type { OdsRangeEvent, OdsRangeValueChangeEventDetail } from './interfaces/events';
 import type { OdsRangeValue } from './interfaces/value';
 import type { OdsErrorStateControl, OdsFormControl, OdsFormForbiddenValues, OdsValidityState } from '@ovhcloud/ods-common-core';
+import type { EventEmitter } from '@stencil/core';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import { AttachInternals, Component, Element, Event, EventEmitter, Host, Method, Prop, Watch, h } from '@stencil/core';
+import { AttachInternals, Component, Element, Event, Host, Listen, Method, Prop, Watch, h } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsRangeController } from './core/controller';
 
@@ -41,7 +42,19 @@ export class OsdsRange implements OdsRangeAttribute, OdsRangeEvent {
   @Prop({ reflect: true }) error?: boolean = DEFAULT_ATTRIBUTE.error;
   @Prop({ reflect: true }) forbiddenValues: OdsFormForbiddenValues<number> = DEFAULT_ATTRIBUTE.forbiddenValues;
 
+  @Event() odsBlur!: EventEmitter<void>;
+  @Event() odsFocus!: EventEmitter<void>;
   @Event() odsValueChange!: EventEmitter<OdsRangeValueChangeEventDetail>;
+
+  @Listen('blur')
+  onInputBlur() {
+    this.odsBlur.emit();
+  }
+
+  @Listen('focus')
+  onInputFocus() {
+    this.odsFocus.emit();
+  }
 
   @Watch('formControl')
   onFormControlChange(formControl?: OdsFormControl<OdsValidityState>): void {

@@ -12,6 +12,14 @@ interface OdsRangeValueChangeEventDetail {
 type OdsRangeValueChangeEvent = CustomEvent<OdsRangeValueChangeEventDetail>;
 
 interface OdsRangeEvent {
+  /**
+   * Event triggered on textarea blur
+   */
+  odsBlur: EventEmitter<void>;
+  /**
+   * Event triggered on textarea focus
+   */
+  odsFocus: EventEmitter<void>;
   /** the range value changed */
   odsValueChange: EventEmitter<OdsRangeValueChangeEventDetail>;
 }

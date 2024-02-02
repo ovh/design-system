@@ -1,9 +1,11 @@
 import type { OdsPasswordAttribute } from './interfaces/attributes';
+import type { OdsPasswordEvent } from './interfaces/events';
+import type { ODS_INPUT_SIZE, OdsInputValueChangeEvent } from '../../../../input/src';
 import type { OdsFormForbiddenValues } from '@ovhcloud/ods-common-core';
 import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import type { ODS_INPUT_SIZE, OdsInputValueChangeEvent } from '../../../../input/src';
+import type { EventEmitter } from '@stencil/core';
 import { ODS_INPUT_TYPE } from '../../../../input/src';
-import { AttachInternals, Component, Element, Host, Listen, Prop, h } from '@stencil/core';
+import { AttachInternals, Component, Element, Event, Host, Listen, Prop, h } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsPasswordController } from './core/controller';
 
@@ -13,7 +15,7 @@ import { OdsPasswordController } from './core/controller';
   styleUrl: 'osds-password.scss',
   shadow: true,
 })
-export class OsdsPassword implements OdsPasswordAttribute {
+export class OsdsPassword implements OdsPasswordAttribute, OdsPasswordEvent {
   private controller = new OdsPasswordController(this);
 
   @Element() el!: HTMLElement;
@@ -39,6 +41,20 @@ export class OsdsPassword implements OdsPasswordAttribute {
   @Prop({ reflect: true }) required?: boolean = DEFAULT_ATTRIBUTE.required;
   @Prop({ reflect: true }) size?: ODS_INPUT_SIZE = DEFAULT_ATTRIBUTE.size;
   @Prop({ reflect: true, mutable: true }) value = DEFAULT_ATTRIBUTE.value;
+
+  @Event() odsBlur!: EventEmitter<void>;
+  @Event() odsFocus!: EventEmitter<void>;
+  @Event() odsValueChange!: EventEmitter<OdsInputValueChangeEvent>;
+
+  @Listen('odsInputBlur')
+  onInputBlur() {
+    this.odsBlur.emit();
+  }
+
+  @Listen('odsInputFocus')
+  onInputFocus() {
+    this.odsFocus.emit();
+  }
 
   @Listen('odsValueChange')
   onValueChange(event: OdsInputValueChangeEvent): void {

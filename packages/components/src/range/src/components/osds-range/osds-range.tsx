@@ -3,14 +3,15 @@ import type { OdsRangeEvent, OdsRangeValueChangeEventDetail } from './interfaces
 import type { OdsRangeValue } from './interfaces/value';
 import type { OdsErrorStateControl, OdsFormControl, OdsFormForbiddenValues, OdsValidityState } from '@ovhcloud/ods-common-core';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import { Component, Element, Event, EventEmitter, Host, Method, Prop, Watch, h } from '@stencil/core';
+import { AttachInternals, Component, Element, Event, EventEmitter, Host, Method, Prop, Watch, h } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsRangeController } from './core/controller';
 
 @Component({
-  tag: 'osds-range',
-  styleUrl: 'osds-range.scss',
+  formAssociated: true,
   shadow: true,
+  styleUrl: 'osds-range.scss',
+  tag: 'osds-range',
 })
 export class OsdsRange implements OdsRangeAttribute, OdsRangeEvent {
   private static inputIds = 0;
@@ -24,11 +25,15 @@ export class OsdsRange implements OdsRangeAttribute, OdsRangeEvent {
 
   @Element() el!: HTMLElement;
 
+  @AttachInternals() internals!: ElementInternals;
+
   @Prop({ reflect: true }) public color?: ODS_THEME_COLOR_INTENT = DEFAULT_ATTRIBUTE.color;
+  @Prop({ reflect: true }) defaultValue: OdsRangeValue = DEFAULT_ATTRIBUTE.defaultValue;
   @Prop({ reflect: true }) public disabled?: boolean = DEFAULT_ATTRIBUTE.disabled;
   @Prop({ reflect: true }) public inline?: boolean = DEFAULT_ATTRIBUTE.inline;
   @Prop({ reflect: true }) public max?: number = DEFAULT_ATTRIBUTE.max;
   @Prop({ reflect: true }) public min?: number = DEFAULT_ATTRIBUTE.min;
+  @Prop({ reflect: true }) name?: string = DEFAULT_ATTRIBUTE.name;
   @Prop({ reflect: true }) public step?: number = DEFAULT_ATTRIBUTE.step;
   @Prop({ reflect: true, mutable: true }) public value: OdsRangeValue = DEFAULT_ATTRIBUTE.value;
   @Prop({ reflect: true }) formControl?: OdsFormControl<OdsValidityState> = DEFAULT_ATTRIBUTE.formControl;
@@ -72,6 +77,10 @@ export class OsdsRange implements OdsRangeAttribute, OdsRangeEvent {
     this.afterRender();
   }
 
+  formResetCallback(): void {
+    this.value = this.defaultValue;
+  }
+
   @Method()
   async getValidity() {
     return this.controller.getRangeValidity();
@@ -79,9 +88,10 @@ export class OsdsRange implements OdsRangeAttribute, OdsRangeEvent {
 
   emitChange(newValue: OdsRangeValue, oldValue?: OdsRangeValue): void {
     this.odsValueChange.emit({
-      value: newValue,
+      name: this.name,
       oldValue: oldValue,
       validity: this.controller.getRangeValidity(),
+      value: newValue,
     });
   }
 

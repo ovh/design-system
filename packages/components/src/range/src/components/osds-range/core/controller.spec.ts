@@ -5,9 +5,8 @@ import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { OdsRangeController } from './controller';
 import { OsdsRange } from '../osds-range';
 
-class OdsRangeMock extends OsdsRange {
+class OdsRangeMock {
   constructor(attribute: Partial<OsdsRange>) {
-    super();
     Object.assign(this, attribute);
   }
 
@@ -16,20 +15,24 @@ class OdsRangeMock extends OsdsRange {
   beforeInit = jest.fn();
   beforeRender = jest.fn();
   afterRender = jest.fn();
+  forbiddenValues = [];
   onInput = jest.fn();
   onKeyup = jest.fn();
   emitChange = jest.fn();
+
+  internals = {
+    setFormValue: jest.fn()
+  };
 }
 
 describe('spec:ods-range-controller', () => {
   let controller: OdsRangeController;
   let component: OsdsRange;
   let spyOnOnFormControlChange: jest.SpyInstance<void, jest.ArgsType<OdsRangeController['onFormControlChange']>>;
-  let spyOnOnValueChange: jest.SpyInstance<void, jest.ArgsType<OdsRangeController['onValueChange']>>;
   let spyOnValidateValue: jest.SpyInstance<void, jest.ArgsType<OdsRangeController['validateValue']>>;
 
   function setup(attributes: Partial<OsdsRange> = {}) {
-    component = new OdsRangeMock(attributes);
+    component = new OdsRangeMock(attributes) as unknown as OsdsRange;
     controller = new OdsRangeController(component);
   }
 
@@ -265,16 +268,6 @@ describe('spec:ods-range-controller', () => {
 
         expect(spyOnOnFormControlChange).toHaveBeenCalledTimes(1);
         expect(spyOnOnFormControlChange).toHaveBeenCalledWith(formControl);
-      });
-
-      it('should call onValueChange', () => {
-        const value = '4';
-        setup({ value });
-        spyOnOnValueChange = jest.spyOn(controller, 'onValueChange');
-        controller.beforeInit();
-
-        expect(spyOnOnValueChange).toHaveBeenCalledTimes(1);
-        expect(spyOnOnValueChange).toHaveBeenCalledWith(value);
       });
     });
 

@@ -2,8 +2,8 @@ import type { OdsRangeValue } from './value';
 import type { OdsValidityState } from '@ovhcloud/ods-common-core';
 import type { EventEmitter } from '@stencil/core';
 
-
 interface OdsRangeValueChangeEventDetail {
+  name?: string,
   validity: OdsValidityState;
   value?: OdsRangeValue;
   oldValue?: OdsRangeValue;
@@ -16,7 +16,7 @@ interface OdsRangeEvent {
   odsValueChange: EventEmitter<OdsRangeValueChangeEventDetail>;
 }
 
-export {
+export type {
   OdsRangeValueChangeEventDetail,
   OdsRangeValueChangeEvent,
   OdsRangeEvent,

@@ -10,6 +10,7 @@
 |**`clearable`** | _boolean_ |  |  | Ability to clear the password value|
 |**`color`** | `ODS_THEME_COLOR_INTENT` |  |  | Main color of the password: see component principles|
 |**`contrasted`** | _boolean_ |  |  | Indicates if the password is contrasted or not: see component principles|
+|**`defaultValue`** | _string_ | ✴️ |  | Default value of the password|
 |**`disabled`** | _boolean_ |  |  | Indicates if the password is disabled or not: see component principles|
 |**`error`** | _boolean_ |  |  | Indicates if the password shows error or not|
 |**`forbiddenValues`** | `OdsFormForbiddenValues` | ✴️ |  | List of forbidden values for the password|
@@ -23,3 +24,10 @@
 |**`required`** | _boolean_ |  |  | Indicates if the password is required or not|
 |**`size`** | `md` |  |  | Size of the password: see component principles|
 |**`value`** | _string_ | ✴️ |  | Current value of the password|
+
+### OdsPasswordEvent
+|Name | Type | Required | Default | Description|
+|---|---|:---:|---|---|
+|**`odsBlur`** | `EventEmitter<void>` | ✴️ |  | Event triggered on textarea blur|
+|**`odsFocus`** | `EventEmitter<void>` | ✴️ |  | Event triggered on textarea focus|
+|**`odsValueChange`** | `EventEmitter<OdsInputValueChangeEvent>` | ✴️ |  | The textarea value changed|

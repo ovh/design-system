@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [17.1.0-alpha.0](https://ovh.github.io/design-system/v17.1.0-alpha.0/?path=/docs/design-system-changelog--page) (2024-02-05)
+[compare](https://github.com/ovh/design-system/compare/v17.0.3...v17.1.0-alpha.0)
+
+### Bug Fixes
+
+* **pagination:** fix TS linters ([d2a5379](https://github.com/ovh/design-system/commit/d2a5379e19aa4e4f482d6d3e9607171037e92fd1))
+
+
+### Features
+
+* **doc:** add Canvas tag to all components & disable shortcuts ([22e47ab](https://github.com/ovh/design-system/commit/22e47ab4fb20d54b8033558a221f265f5b2e997b))
+* **doc:** rework usage guidelines & add slots ([941559a](https://github.com/ovh/design-system/commit/941559a82d642d2a353fa9cf9e97ba6fe277b1ff))
+* **pagination:** add defaultItemsPerPage attribute ([512c11d](https://github.com/ovh/design-system/commit/512c11d1bdbdce22c3cd9fd2e96547eab7beb0c7))
+* **pagination:** address changes ([f9112fe](https://github.com/ovh/design-system/commit/f9112fe4b6a8c9a11955d6e4b00f826ef18503aa))
+* **pagination:** address changes ([e5ed5b8](https://github.com/ovh/design-system/commit/e5ed5b83ec728a576af072e02dbe79f879c43513))
+* **pagination:** address changes ([f861003](https://github.com/ovh/design-system/commit/f86100346cd1d205c0294890239df53831af91f6))
+* **pagination:** address changes ([bab3bdd](https://github.com/ovh/design-system/commit/bab3bddc6305e47e158b98e2f1f88a755784b379))
+* **pagination:** address changes & fix storybook ([ec84674](https://github.com/ovh/design-system/commit/ec84674eb65bf1a213acae23d68e8d9cd8258b39))
+* **pagination:** rebase ([9929597](https://github.com/ovh/design-system/commit/992959733459d4e05480081a38ef320f36ecae54))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

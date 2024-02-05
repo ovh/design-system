@@ -3,6 +3,52 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [17.1.0-alpha.0](https://ovh.github.io/design-system/v17.1.0-alpha.0/?path=/docs/design-system-changelog--page) (2024-02-05)
+[compare](https://github.com/ovh/design-system/compare/v17.0.3...v17.1.0-alpha.0)
+
+### Bug Fixes
+
+* **lint:** use correct config ([fbb9713](https://github.com/ovh/design-system/commit/fbb9713ffd33c74dea1790b9b134c735942725de))
+* **modal:** add tests for disconnectCallback ([04ee656](https://github.com/ovh/design-system/commit/04ee65695dbdba13fba9424c28799b6a014b1348))
+* **modal:** close on disconnect ([8655b3c](https://github.com/ovh/design-system/commit/8655b3cb2d59909d6faadbcc045149349893076c))
+* **pagination:** fix TS linters ([d2a5379](https://github.com/ovh/design-system/commit/d2a5379e19aa4e4f482d6d3e9607171037e92fd1))
+* **tile:** end slot position when there is no start slot ([3a25c67](https://github.com/ovh/design-system/commit/3a25c6770ef1db209dea51b1cc0050c7878e9ef2))
+* **tile:** fix position for chrome ([10c9432](https://github.com/ovh/design-system/commit/10c9432ac80a236697115bbecb36fa1e0d621391))
+* **tile:** set grid-area for chromium ([2256bd6](https://github.com/ovh/design-system/commit/2256bd64e76fe187b3675a3d33f8c91336672da3))
+
+
+### Features
+
+* **datepicker:** add form integration ([1120d85](https://github.com/ovh/design-system/commit/1120d8516d305738b6a75f24ebe94664b1687f9e))
+* **doc:** add Canvas tag to all components & disable shortcuts ([22e47ab](https://github.com/ovh/design-system/commit/22e47ab4fb20d54b8033558a221f265f5b2e997b))
+* **doc:** dark background when contrasted is true ([bd014be](https://github.com/ovh/design-system/commit/bd014be575ea48028b10becc8bce3d106bafd9f0))
+* **doc:** fix misc. feedback review ([41ca17d](https://github.com/ovh/design-system/commit/41ca17dc14583be638fce2b08ff3ac90a6d74008))
+* **doc:** rework usage guidelines & add slots ([941559a](https://github.com/ovh/design-system/commit/941559a82d642d2a353fa9cf9e97ba6fe277b1ff))
+* **doc:** test Preview ([c0c7bef](https://github.com/ovh/design-system/commit/c0c7bef38b5fd010b55e3d4d3ee853693170ffa1))
+* **form-elements:** add missing events ([4a37bc5](https://github.com/ovh/design-system/commit/4a37bc558b41c3415fd5e006da4b46f9e1389798))
+* **input:** add form integration ([50fdcfa](https://github.com/ovh/design-system/commit/50fdcfa43ca51e6d278c315a090a8fd888929d5a))
+* **pagination:** add defaultItemsPerPage attribute ([512c11d](https://github.com/ovh/design-system/commit/512c11d1bdbdce22c3cd9fd2e96547eab7beb0c7))
+* **pagination:** address changes ([f9112fe](https://github.com/ovh/design-system/commit/f9112fe4b6a8c9a11955d6e4b00f826ef18503aa))
+* **pagination:** address changes ([1c39b36](https://github.com/ovh/design-system/commit/1c39b36f3d80c128e10c647d5473c8b516715afa))
+* **pagination:** address changes ([e5ed5b8](https://github.com/ovh/design-system/commit/e5ed5b83ec728a576af072e02dbe79f879c43513))
+* **pagination:** address changes ([f861003](https://github.com/ovh/design-system/commit/f86100346cd1d205c0294890239df53831af91f6))
+* **pagination:** address changes ([bab3bdd](https://github.com/ovh/design-system/commit/bab3bddc6305e47e158b98e2f1f88a755784b379))
+* **pagination:** address changes & fix storybook ([ec84674](https://github.com/ovh/design-system/commit/ec84674eb65bf1a213acae23d68e8d9cd8258b39))
+* **pagination:** rebase ([9929597](https://github.com/ovh/design-system/commit/992959733459d4e05480081a38ef320f36ecae54))
+* **password:** add form integration ([05f396d](https://github.com/ovh/design-system/commit/05f396d830b72e3fe5481ea2f753120e60d07301))
+* **phone-number:** add form integration ([eda5b17](https://github.com/ovh/design-system/commit/eda5b17f6ef7c9e815623567c4e96c349da05e57))
+* **quantity:** update formatting ([6c4f421](https://github.com/ovh/design-system/commit/6c4f4216a9930c0086b1d4ca4445ff1e7890c8c9))
+* **range:** add form integration ([57412bf](https://github.com/ovh/design-system/commit/57412bf0e869f8b720079fc287c3c8f2000bf5fa))
+* **select:** add form integration ([62fa493](https://github.com/ovh/design-system/commit/62fa4934a361aa4741fb43d1a4c2f172a446b3b1))
+* **textarea:** add form integration ([5751632](https://github.com/ovh/design-system/commit/5751632f05028fdc2f9df61c0055506c84938af3))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

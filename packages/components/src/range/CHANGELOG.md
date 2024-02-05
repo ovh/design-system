@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [17.1.0-alpha.0](https://ovh.github.io/design-system/v17.1.0-alpha.0/?path=/docs/design-system-changelog--page) (2024-02-05)
+[compare](https://github.com/ovh/design-system/compare/v17.0.3...v17.1.0-alpha.0)
+
+### Features
+
+* **doc:** add Canvas tag to all components & disable shortcuts ([22e47ab](https://github.com/ovh/design-system/commit/22e47ab4fb20d54b8033558a221f265f5b2e997b))
+* **doc:** fix misc. feedback review ([41ca17d](https://github.com/ovh/design-system/commit/41ca17dc14583be638fce2b08ff3ac90a6d74008))
+* **doc:** rework usage guidelines & add slots ([941559a](https://github.com/ovh/design-system/commit/941559a82d642d2a353fa9cf9e97ba6fe277b1ff))
+* **form-elements:** add missing events ([4a37bc5](https://github.com/ovh/design-system/commit/4a37bc558b41c3415fd5e006da4b46f9e1389798))
+* **range:** add form integration ([57412bf](https://github.com/ovh/design-system/commit/57412bf0e869f8b720079fc287c3c8f2000bf5fa))
+* **select:** add form integration ([62fa493](https://github.com/ovh/design-system/commit/62fa4934a361aa4741fb43d1a4c2f172a446b3b1))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

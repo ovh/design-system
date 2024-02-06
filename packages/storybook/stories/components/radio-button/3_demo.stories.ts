@@ -80,7 +80,7 @@ const TemplateInRadioGroup = (args: any) => html`
     Meta components adds behavior to these Radio Buttons
   </osds-text>
   <osds-divider separator></osds-divider>
-  <osds-radio-group id="radio-group-a">
+  <osds-radio-group id="radio-group-a" disabled=${args.disabled}>
     <osds-radio id="radio-A" value="val-tile-A" checked>
       <osds-radio-button ...=${getTagAttributes(args)}>
         <span slot='start'>${unsafeHTML(args.start)}</span>

@@ -67,8 +67,7 @@ export class OsdsModal implements OdsModalAttribute, OdsModalMethod, OdsModalEve
    */
   @Method()
   async close(): Promise<void> {
-    document.body.style.removeProperty('overflow');
-    this.masked = true;
+    this.closeModal();
     this.odsModalClose.emit();
   }
 
@@ -82,13 +81,17 @@ export class OsdsModal implements OdsModalAttribute, OdsModalMethod, OdsModalEve
     this.odsModalOpen.emit();
   }
 
+  private closeModal(): void {
+    document.body.style.removeProperty('overflow');
+    this.masked = true;
+  }
+
   componentDidLoad(): void {
     this.handleShownState();
   }
 
   disconnectedCallback(): void {
-    document.body.style.removeProperty('overflow');
-    this.masked = true;
+    this.closeModal();
   }
 
   render(): JSX.Element {

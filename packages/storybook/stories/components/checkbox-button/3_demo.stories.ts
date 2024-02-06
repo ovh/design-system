@@ -87,12 +87,12 @@ const OsdsCheckboxButtonCheckboxWrapper = (args: Record< string, unknown>) => ht
     Meta component adds behavior to this Checkbox Button
   </osds-text>
   <osds-divider separator></osds-divider>
-  <osds-checkbox>
-      <osds-checkbox-button ...=${getTagAttributes(args)}>
-        <span slot='start'>${unsafeHTML(args.start)}</span>
-        <span slot='end'>${unsafeHTML(args.end)}</span>
-      </osds-checkbox-button>
-    </osds-checkbox>
+  <osds-checkbox checked=${args.checked} disabled=${args.disabled} hasFocus=${args.hasFocus}>
+    <osds-checkbox-button color=${args.color} size=${args.size} interactive=${args.interactive} checking=${args.checking} indeterminate=${args.indeterminate}>
+      <span slot='start'>${unsafeHTML(args.start)}</span>
+      <span slot='end'>${unsafeHTML(args.end)}</span>
+    </osds-checkbox-button>
+  </osds-checkbox>
 `;
 const TemplateCheckboxWrapper = (args: Record< string, unknown>) => OsdsCheckboxButtonCheckboxWrapper(args);
 export const CheckboxWrapper = TemplateCheckboxWrapper.bind({});

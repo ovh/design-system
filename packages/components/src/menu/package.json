@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-component-menu",
-  "version": "17.1.0-alpha.0",
+  "version": "17.1.0-alpha.1",
   "private": true,
   "description": "ODS Menu component",
   "author": "OVH SAS",
@@ -29,12 +29,12 @@
     "FIXME_test:e2e:ci:screenshot:update": "stencil test --config stencil.config.ts --e2e --ci --screenshot --update-screenshot --passWithNoTests"
   },
   "dependencies": {
-    "@ovhcloud/ods-cdk": "17.1.0-alpha.0",
-    "@ovhcloud/ods-common-core": "17.1.0-alpha.0",
-    "@ovhcloud/ods-common-stencil": "17.1.0-alpha.0"
+    "@ovhcloud/ods-cdk": "17.1.0-alpha.1",
+    "@ovhcloud/ods-common-core": "17.1.0-alpha.1",
+    "@ovhcloud/ods-common-stencil": "17.1.0-alpha.1"
   },
   "devDependencies": {
-    "@ovhcloud/ods-common-testing": "17.1.0-alpha.0",
-    "@ovhcloud/ods-stencil-dev": "17.1.0-alpha.0"
+    "@ovhcloud/ods-common-testing": "17.1.0-alpha.1",
+    "@ovhcloud/ods-stencil-dev": "17.1.0-alpha.1"
   }
 }

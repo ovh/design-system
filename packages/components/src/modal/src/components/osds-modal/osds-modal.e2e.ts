@@ -190,9 +190,9 @@ describe('e2e:osds-modal', () => {
         return document.body.style.overflow;
       });
 
-      expect(overflow).toBe("");
+      expect(overflow).toBe('');
     });
-  })
+  });
 
   describe('Event', () => {
     it('should receive event odsModalOpen', async() => {

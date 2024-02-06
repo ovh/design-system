@@ -7,6 +7,9 @@ interface OdsTimepickerAttribute extends OdsCommonFieldAttribute {
    * Defines the timezone to show by default in the select
    */
   currentTimezone?: ODS_TIMEZONE,
+  /**
+   * Defines the default value
+   */
   defaultValue: string | null,
   /**
    * Defines if the Timepicker should be displayed inline or not

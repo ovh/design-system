@@ -87,7 +87,8 @@ export class OsdsModal implements OdsModalAttribute, OdsModalMethod, OdsModalEve
   }
 
   disconnectedCallback(): void {
-    this.close();
+    document.body.style.removeProperty('overflow');
+    this.masked = true;
   }
 
   render(): JSX.Element {

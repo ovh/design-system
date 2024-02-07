@@ -884,6 +884,10 @@ export namespace Components {
         /**
           * Indicates if the input is required or not
          */
+        "required"?: boolean;
+        /**
+          * restore the value to the initial state
+         */
         "reset": () => Promise<void>;
         /**
           * active the focus on the input in order to let the user write something
@@ -891,6 +895,14 @@ export namespace Components {
         "setFocus": () => Promise<void>;
         /**
           * Step value for the input
+         */
+        "step"?: number;
+        "stepDown": () => Promise<void>;
+        "stepUp": () => Promise<void>;
+        /**
+          * Type of the input field
+         */
+        "type"?: ODS_INPUT_TYPE;
         /**
           * Type of the input field
          */
@@ -3575,6 +3587,14 @@ declare namespace LocalJSX {
         "label"?: string;
         /**
           * Indicates if the input is in loading state or not
+         */
+        "loading"?: boolean;
+        /**
+          * Indicates if the input is masked or not
+         */
+        "masked"?: boolean;
+        /**
+          * Maximum value for the input (type number)
          */
         "max"?: number;
         /**

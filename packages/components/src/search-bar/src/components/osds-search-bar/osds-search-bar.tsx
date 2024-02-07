@@ -1,6 +1,6 @@
 import type { OdsSearchBarAttribute, OdsSearchbarOption } from './interfaces/attributes';
 import type { OdsSearchBarEvent } from './interfaces/events';
-import type { OdsInputValueChangeEvent } from '../../../../input/src';
+import type { OdsInputValueChangeEvent, OdsInputValueChangeEventDetail } from '../../../../input/src';
 import type { OdsSelectValueChangeEvent } from '../../../../select/src';
 import type { EventEmitter } from '@stencil/core';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
@@ -29,7 +29,7 @@ export class OsdsSearchBar implements OdsSearchBarAttribute, OdsSearchBarEvent {
   @Event() odsBlur!: EventEmitter<void>;
   @Event() odsFocus!: EventEmitter<void>;
   @Event() odsSearchSubmit!: EventEmitter<{ optionValue: string; inputValue: string }>;
-  @Event() odsValueChange!: EventEmitter<OdsInputValueChangeEvent>;
+  @Event() odsValueChange!: EventEmitter<OdsInputValueChangeEventDetail>;
 
   @Listen('odsInputBlur')
   onInputBlur() {

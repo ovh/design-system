@@ -1,6 +1,6 @@
+import type { OsdsInput } from '../osds-input';
 import { OdsInputController } from './controller';
 import { ODS_INPUT_TYPE } from '../constants/input-type';
-import { OsdsInput } from '../osds-input';
 
 class OdsInputMock {
   constructor(attribute: Partial<OsdsInput>) {
@@ -12,16 +12,18 @@ class OdsInputMock {
   disabled = false;
   el = document.createElement('osds-input');
   emitChange = jest.fn();
-  emitFocus = jest.fn();
-  emitBlur = jest.fn();
   error = false;
   internals = {
     setFormValue: jest.fn(),
   };
 
   masked = false;
-  name = '';
+  name = 'OsdsInput';
+  odsBlur = { emit: jest.fn() };
+  odsClear = { emit: jest.fn() };
+  odsFocus = { emit: jest.fn() };
   odsHide = { emit: jest.fn() };
+  odsReset = { emit: jest.fn() };
   type = ODS_INPUT_TYPE.text;
   value = null;
 }
@@ -31,7 +33,7 @@ describe('spec:ods-input-controller', () => {
   let component: OsdsInput;
   let spyOnAssertValue: jest.SpyInstance<void, jest.ArgsType<OdsInputController<OsdsInput>['assertValue']>>;
 
-  function setup(attributes: Partial<OsdsInput> = {}) {
+  function setup(attributes: Partial<OsdsInput> = {}): void {
     component = new OdsInputMock(attributes) as unknown as OsdsInput;
     controller = new OdsInputController(component);
   }
@@ -65,7 +67,7 @@ describe('spec:ods-input-controller', () => {
       describe('validateValue', () => {
         beforeEach(() => {
           jest.spyOn(console, 'warn');
-        })
+        });
 
         it('should warn if value is empty string', () => {
           setup({ type: ODS_INPUT_TYPE.number });
@@ -134,7 +136,7 @@ describe('spec:ods-input-controller', () => {
         it('should set forbiddenValue (bounded forbiddenValues)', () => {
           const value = 4;
           const forbiddenValues = ['5'];
-          setup({ inputEl, value, forbiddenValues });
+          setup({ forbiddenValues, inputEl, value });
 
           controller.onValueChange('5');
 
@@ -254,27 +256,30 @@ describe('spec:ods-input-controller', () => {
     });
 
     describe('methods:hasError', () => {
-      it('should return false', () => {
+      it('should return false', async() => {
         setup({ error: false });
         controller.getValidity = jest.fn().mockImplementation(() => {
           return { valid: true };
         });
-        const hasError = controller.hasError();
+        const hasError = await controller.hasError();
         expect(hasError).toEqual(false);
       });
 
-      it('should return true if component.error', () => {
-        setup({ error: true });
-        const hasError = controller.hasError();
+      it('should return true if component.error', async() => {
+        setup({ error: true, inputEl: document.createElement('input') });
+        controller.getValidity = jest.fn().mockImplementation(() => {
+          return { valid: true };
+        });
+        const hasError = await controller.hasError();
         expect(hasError).toEqual(true);
       });
 
-      it('should return true if getInputValidity.invalid', () => {
-        setup({ error: false });
+      it('should return true if getValidity.valid', async() => {
+        setup({ error: false, inputEl: document.createElement('input') });
         controller.getValidity = jest.fn().mockImplementation(() => {
           return { valid: false };
         });
-        const hasError = controller.hasError();
+        const hasError = await controller.hasError();
         expect(hasError).toEqual(true);
       });
     });
@@ -283,21 +288,21 @@ describe('spec:ods-input-controller', () => {
       it('should clear value', () => {
         setup({ value: '5' });
         controller.reset();
-        expect(component.value).toBe('');
+        expect(component.value).toBe(null);
       });
 
       it('should reset value with default', () => {
-        setup({ value: '5', defaultValue: '10' });
+        setup({ defaultValue: '10', value: '5' });
         controller.reset();
         expect(component.value).toBe('10');
       });
     });
 
     describe('methods:clear', () => {
-      it('should clear value', () => {
+      it('should clear value', async() => {
         setup({ value: '5' });
-        controller.clear();
-        expect(component.value).toBe('');
+        await controller.clear();
+        expect(component.value).toBe(null);
       });
     });
   });

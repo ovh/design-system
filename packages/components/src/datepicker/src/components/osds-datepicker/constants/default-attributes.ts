@@ -16,7 +16,7 @@ const DEFAULT_ATTRIBUTE: OdsDatepickerAttribute = Object.freeze({
   locale: ODS_DATEPICKER_LOCALE.EN,
   maxDate: null,
   minDate: null,
-  name: undefined,
+  name: '',
   placeholder: '',
   showSiblingsMonthDays: true,
   value: null,

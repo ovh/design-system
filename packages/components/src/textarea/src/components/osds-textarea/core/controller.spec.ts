@@ -7,12 +7,14 @@ class OdsTextAreaMock {
     Object.assign(this, attribute);
   }
 
-  beforeInit = jest.fn();
   clear = jest.fn();
-  emitBlur = jest.fn();
   emitChange = jest.fn();
-  emitFocus = jest.fn();
   getValidity = jest.fn();
+  odsBlur = { emit: jest.fn() };
+  odsClear = { emit: jest.fn() };
+  odsFocus = { emit: jest.fn() };
+  odsReset = { emit: jest.fn() };
+  odsValueChange = { emit: jest.fn() };
   onBlur = jest.fn();
   onChange = jest.fn();
   onFocus = jest.fn();
@@ -22,7 +24,7 @@ class OdsTextAreaMock {
   setTabindex = jest.fn();
 
   internals = {
-    setFormValue: jest.fn()
+    setFormValue: jest.fn(),
   };
 
   textareaElement = {
@@ -170,11 +172,11 @@ describe('ods-textarea-controller', () => {
       it('should clear value', () => {
         setup({ value: '5' });
         controller.reset();
-        expect(component.value).toBe('');
+        expect(component.value).toBe(null);
       });
 
       it('should reset value with default', () => {
-        setup({ value: '5', defaultValue: '10' });
+        setup({ defaultValue: '10', value: '5' });
         controller.reset();
         expect(component.value).toBe('10');
       });
@@ -184,7 +186,7 @@ describe('ods-textarea-controller', () => {
       it('should clear value', () => {
         setup({ value: '5' });
         controller.clear();
-        expect(component.value).toBe('');
+        expect(component.value).toBe(null);
       });
     });
   });

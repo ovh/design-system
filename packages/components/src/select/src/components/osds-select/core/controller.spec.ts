@@ -15,7 +15,7 @@ class OdsSelectMock {
   setFocus = jest.fn();
 
   internals = {
-    setFormValue: jest.fn()
+    setFormValue: jest.fn(),
   };
 }
 

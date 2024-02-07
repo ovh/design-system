@@ -8,9 +8,6 @@ import { Component, Element, Event, Host, Listen, Method, Prop, Watch, h } from 
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsFormController } from './core/controller';
 
-/**
- * @slot (unnamed) - Form content
- */
 @Component({
   shadow: true,
   tag: 'osds-form',

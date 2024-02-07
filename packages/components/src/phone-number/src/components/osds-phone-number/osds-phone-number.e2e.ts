@@ -10,7 +10,14 @@ import { ODS_PHONE_NUMBER_COUNTRY_PRESET } from './constants/phone-number-countr
 
 
 describe('e2e:osds-phone-number', () => {
-  const baseAttribute = { defaultValue: '', value: '' };
+  const baseAttribute = {
+    ariaLabel: '',
+    defaultValue: '',
+    error: false, 
+    name: 'OsdsPhoneNumber',
+    forbiddenValues: [],
+    value: '',
+  };
   let page: E2EPage;
   let el: E2EElement;
   let select: E2EElement;
@@ -148,7 +155,7 @@ describe('e2e:osds-phone-number', () => {
       expect(spyOdsValueChange).toHaveReceivedEventTimes(1);
       expect(spyOdsValueChange).toHaveReceivedEventDetail({
         isoCode: 'fr',
-        name: '',
+        name: 'OsdsPhoneNumber',
         value: '+33655998866',
         oldValue: '',
         validity: {
@@ -178,7 +185,7 @@ describe('e2e:osds-phone-number', () => {
       expect(spyOdsValueChange).toHaveReceivedEventTimes(1);
       expect(spyOdsValueChange).toHaveReceivedEventDetail({
         isoCode: 'fr',
-        name: '',
+        name: 'OsdsPhoneNumber',
         value: '0',
         oldValue: '',
         validity: {
@@ -211,7 +218,7 @@ describe('e2e:osds-phone-number', () => {
       expect(spyOdsValueChange).toHaveReceivedEventTimes(4);
       expect(spyOdsValueChange).toHaveReceivedEventDetail({
         isoCode: 'fr',
-        name: '',
+        name: 'OsdsPhoneNumber',
         value: '0642',
         oldValue: '064',
         validity: {

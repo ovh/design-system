@@ -1,4 +1,4 @@
-jest.mock('./core/controller'); // keep jest.mock before any
+// jest.mock('./core/controller'); // keep jest.mock before any
 
 // FIXME tests where using real controller value, which cause issues with internals
 import type { OdsPhoneNumberAttribute } from './interfaces/attributes';
@@ -11,9 +11,17 @@ import { newSpecPage } from '@stencil/core/testing';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OsdsPhoneNumber } from './osds-phone-number';
 import { ODS_PHONE_NUMBER_COUNTRY_PRESET } from './constants/phone-number-countries';
+import { OdsPhoneNumberController } from './core/controller';
 
 describe('spec:osds-phone-number', () => {
-  const baseAttribute = { ariaLabel: '', forbiddenValues: [], value: '' };
+  const baseAttribute = {
+    ariaLabel: '',
+    defaultValue: '',
+    error: false, 
+    name: 'OsdsPhoneNumber',
+    forbiddenValues: [],
+    value: '',
+  };
   let page: SpecPage;
   let root: HTMLElement | undefined;
   let instance: OsdsPhoneNumber;
@@ -25,6 +33,10 @@ describe('spec:osds-phone-number', () => {
 
   async function setup({ attributes = {} }: { attributes?: Partial<OdsPhoneNumberAttribute> } = {}) {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsPhoneNumberAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
+
+    jest.spyOn(OdsPhoneNumberController.prototype, 'onValueChange').mockReturnValue();
+    jest.spyOn(OdsPhoneNumberController.prototype, 'beforeInit').mockReturnValue();
+
     page = await newSpecPage({
       components: [OsdsPhoneNumber],
       html: `<osds-phone-number ${odsStringAttributes2Str(stringAttributes)}></osds-phone-number>`,
@@ -200,14 +212,14 @@ describe('spec:osds-phone-number', () => {
     describe('methods:getPlaceholder', () => {
       it('should get placeholder without isoCode', async() => {
         await setup();
-        const placehoslder = instance.getPlaceholder();
-        expect(placehoslder).toBe('');
+        const placeholder = instance.getPlaceholder();
+        expect(placeholder).toBe('');
       });
 
       it('should get placeholder with isoCode', async() => {
         await setup({ attributes: { isoCode: ODS_COUNTRY_ISO_CODE.FR } });
-        const placehoslder = instance.getPlaceholder();
-        expect(placehoslder).toBe('01 23 45 67 89');
+        const placeholder = instance.getPlaceholder();
+        expect(placeholder).toBe('01 23 45 67 89');
       });
     });
 
@@ -238,6 +250,7 @@ describe('spec:osds-phone-number', () => {
         expect(spyEmitOdsValueChange).toHaveBeenCalledWith({
           value: '+33653535353',
           isoCode: 'fr',
+          name: 'OsdsPhoneNumber',
           validity: {
             valid: true,
           },
@@ -255,6 +268,7 @@ describe('spec:osds-phone-number', () => {
         expect(spyEmitOdsValueChange).toHaveBeenCalledWith({
           value: '065353qsd5353',
           isoCode: 'fr',
+          name: 'OsdsPhoneNumber',
           validity: {
             valid: false,
           },
@@ -272,6 +286,7 @@ describe('spec:osds-phone-number', () => {
         expect(spyEmitOdsValueChange).toHaveBeenCalledWith({
           value: '',
           isoCode: 'fr',
+          name: 'OsdsPhoneNumber',
           validity: {
             valid: true,
           },
@@ -288,6 +303,7 @@ describe('spec:osds-phone-number', () => {
           value: '+33653535353',
           oldValue: '+330612345',
           isoCode: 'fr',
+          name: 'OsdsPhoneNumber',
           validity: {
             valid: true,
           },

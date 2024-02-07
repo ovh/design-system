@@ -9,15 +9,11 @@ import { ODS_PHONE_NUMBER_COUNTRY_PRESET } from '../constants/phone-number-count
 class OdsPhoneNumberController {
   constructor(private readonly component: OsdsPhoneNumber) { }
 
-  beforeInit() {
+  beforeInit(): void {
     if (!this.component.value) {
       this.component.value = this.component.defaultValue;
     }
     this.component.internals.setFormValue(this.component.value?.toString() ?? '');
-  }
-
-  onValueChange(value: string) {
-    this.component.internals.setFormValue(value.toString() ?? '');
   }
 
   getDefaultLocale(): ODS_LOCALE {
@@ -52,6 +48,9 @@ class OdsPhoneNumberController {
     return countriesTranslationFr;
   }
 
+  onValueChange(value: string): void {
+    this.component.internals.setFormValue(value.toString() ?? '');
+  }
 
   parseCountries(countries: readonly ODS_COUNTRY_ISO_CODE[] | string): ODS_COUNTRY_ISO_CODE[] {
     if (typeof countries === 'string') {

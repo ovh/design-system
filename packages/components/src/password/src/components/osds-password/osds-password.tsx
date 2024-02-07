@@ -1,7 +1,7 @@
 import type { OdsPasswordAttribute } from './interfaces/attributes';
 import type { OdsPasswordEvent, OdsPasswordValueChangeEventDetail } from './interfaces/events';
 import type { OdsPasswordMethod } from './interfaces/methods';
-import type { OdsInputValueChangeEvent, ODS_INPUT_SIZE, OsdsInput } from '../../../../input/src';
+import type { OdsInputValueChangeEvent, OsdsInput } from '../../../../input/src';
 import type { OdsCommonFieldValidityState, OdsInputValue } from '@ovhcloud/ods-common-core';
 import type { EventEmitter, FunctionalComponent } from '@stencil/core';
 import { AttachInternals, Component, Element, Event, Host, Listen, Method, Prop, h } from '@stencil/core';

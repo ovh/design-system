@@ -16,9 +16,14 @@ class OdsSelectController<T extends OsdsSelect> extends OdsCommonFieldMethodCont
     if (!this.component.value && this.component.defaultValue) {
       this.component.value = this.component.defaultValue;
     }
-    this.component.internals.setFormValue(this.component.value?.toString() ?? '');
+    this.setFormValue(this.component.value);
     this.component.openedChanged(this.component.opened);
     this.component.selectedLabelSlot = this.component.el.querySelector('[slot="selectedLabel"]');
+  }
+
+  changeValue(value: OdsInputValue): void {
+    this.component.value = value;
+    this.setFormValue(value);
   }
 
   closeSurface(): void {
@@ -139,7 +144,7 @@ class OdsSelectController<T extends OsdsSelect> extends OdsCommonFieldMethodCont
 
   async onValueChange(value: OdsInputValue, oldValue?: OdsInputValue): Promise<void> {
     this.component.emitChange(value, oldValue);
-    this.component.internals?.setFormValue?.(value?.toString() ?? '');
+    this.setFormValue(value);
     await this.component.updateSelectOptionStates(value);
   }
 
@@ -148,6 +153,10 @@ class OdsSelectController<T extends OsdsSelect> extends OdsCommonFieldMethodCont
       this.component.surface.open();
       this.component.opened = true;
     }
+  }
+
+  setFormValue(value: OdsInputValue): void {
+    this.component.internals?.setFormValue?.(value?.toString() ?? '');
   }
 
   syncReferences(): void {

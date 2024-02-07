@@ -18,7 +18,7 @@ interface OdsPhoneNumberAttribute {
   /** This is the locale to use to translate the countries names */
   locale?: ODS_LOCALE;
   /** Name of the phone number field */
-  name?: string;
+  name: string;
   /** Current value of the phone number */
   value: string | null;
 }

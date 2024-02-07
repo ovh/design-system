@@ -1,10 +1,6 @@
 import type { OdsInputValue } from '@ovhcloud/ods-common-core';
 import type { OsdsDatepicker } from '../osds-datepicker';
 
-/**
- * common controller logic for input component used by the different implementations.
- * it contains all the glue between framework implementation and the third party service.
- */
 class OdsDatepickerController {
   private readonly component: OsdsDatepicker;
 

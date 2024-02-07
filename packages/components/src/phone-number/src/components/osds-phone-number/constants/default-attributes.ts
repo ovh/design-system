@@ -8,7 +8,7 @@ const DEFAULT_ATTRIBUTE: OdsPhoneNumberAttribute = Object.freeze({
   error: false,
   isoCode: undefined,
   locale: undefined,
-  name: undefined,
+  name: '',
   value: '',
 });
 

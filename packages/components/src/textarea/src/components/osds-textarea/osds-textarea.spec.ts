@@ -9,7 +9,7 @@ import { OdsTextAreaController } from './core/controller';
 import { OsdsTextArea } from './osds-textarea';
 
 describe('spec:osds-textarea', () => {
-  const baseAttribute = { ariaLabel: null, defaultValue: null, disabled: false, error: false, name: '', spellcheck: false, value: null };
+  const baseAttribute = { ariaLabel: null, defaultValue: null, disabled: false, error: false, name: 'OsdsTextArea', spellcheck: false, value: null };
   let page: SpecPage;
   let htmlTextarea: HTMLTextAreaElement | null | undefined;
   let instance: OsdsTextArea;

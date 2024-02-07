@@ -7,7 +7,7 @@ const DEFAULT_ATTRIBUTE: OdsSelectAttribute = Object.freeze({
   disabled: false,
   error: false,
   inline: false,
-  name: undefined,
+  name: '',
   opened: false,
   required: false,
   value: null,

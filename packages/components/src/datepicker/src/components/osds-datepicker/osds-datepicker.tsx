@@ -23,6 +23,7 @@ import pl from 'vanillajs-datepicker/js/i18n/locales/pl';
 import pt from 'vanillajs-datepicker/js/i18n/locales/pt';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsDatepickerController } from './core/controller';
+import { OdsInputValue } from '@ovhcloud/ods-common-core';
 
 Object.assign(Datepicker.locales, de);
 Object.assign(Datepicker.locales, es);
@@ -58,7 +59,7 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
   @Prop({ reflect: true }) clearable?: boolean = DEFAULT_ATTRIBUTE.clearable;
   @Prop({ reflect: true }) datesDisabled?: Date[] = DEFAULT_ATTRIBUTE.datesDisabled;
   @Prop({ reflect: true }) daysOfWeekDisabled?: ODS_DATEPICKER_DAY[] = DEFAULT_ATTRIBUTE.daysOfWeekDisabled;
-  @Prop({ reflect: true }) defaultValue: Date | null = DEFAULT_ATTRIBUTE.value;
+  @Prop({ reflect: true }) defaultValue: OdsInputValue = DEFAULT_ATTRIBUTE.value;
   @Prop({ reflect: true }) disabled: boolean = DEFAULT_ATTRIBUTE.disabled;
   @Prop({ reflect: true }) error: boolean = DEFAULT_ATTRIBUTE.error;
   @Prop({ reflect: true }) format?: string = DEFAULT_ATTRIBUTE.format;
@@ -66,10 +67,10 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
   @Prop({ reflect: true }) locale?: ODS_DATEPICKER_LOCALE = DEFAULT_ATTRIBUTE.locale;
   @Prop({ reflect: true }) maxDate?: Date | null = DEFAULT_ATTRIBUTE.maxDate;
   @Prop({ reflect: true }) minDate?: Date | null = DEFAULT_ATTRIBUTE.minDate;
-  @Prop({ reflect: true }) name: string = DEFAULT_ATTRIBUTE.format;
+  @Prop({ reflect: true }) name: string = DEFAULT_ATTRIBUTE.name;
   @Prop({ reflect: true }) placeholder?: string = DEFAULT_ATTRIBUTE.placeholder;
   @Prop({ reflect: true }) showSiblingsMonthDays?: boolean = DEFAULT_ATTRIBUTE.showSiblingsMonthDays;
-  @Prop({ reflect: true, mutable: true }) value?: Date | null = DEFAULT_ATTRIBUTE.value;
+  @Prop({ reflect: true, mutable: true }) value: OdsInputValue  = DEFAULT_ATTRIBUTE.value;
 
   @Event() odsDatepickerBlur!: EventEmitter<void>;
   @Event() odsDatepickerFocus!: EventEmitter<void>;
@@ -275,7 +276,7 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
     }
   }
 
-  formatDate(date?: Date | null) {
+  formatDate(date?: OdsInputValue) {
     if (this.format && date && date instanceof Date) {
       return Datepicker.formatDate(date, this.format);
     } else {

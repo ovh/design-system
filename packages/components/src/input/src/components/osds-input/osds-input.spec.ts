@@ -22,7 +22,7 @@ describe('spec:osds-input', () => {
     disabled: false,
     error: false,
     forbiddenValues: [],
-    name: '',
+    name: 'OsdsInput',
     type: ODS_INPUT_TYPE.text,
     value: '',
   };

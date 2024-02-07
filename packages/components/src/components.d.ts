@@ -42,7 +42,7 @@ import { ODS_LINK_REFERRER_POLICY as ODS_LINK_REFERRER_POLICY1 } from "./link/sr
 import { ODS_MESSAGE_TYPE } from "./message/src/components/osds-message/constants/message-type";
 import { ODS_PAGINATION_PER_PAGE } from "./pagination/src/components/osds-pagination/constants/pagination-per-page";
 import { OdsPaginationChangedEventDetail, OdsPaginationItemPerPageChangedEventDetail } from "./pagination/src/components/osds-pagination/interfaces/events";
-import { ODS_INPUT_SIZE as ODS_INPUT_SIZE1, OdsInputValueChangeEvent } from "./input/src";
+import { ODS_INPUT_SIZE as ODS_INPUT_SIZE1, OdsInputValueChangeEventDetail as OdsInputValueChangeEventDetail1 } from "./input/src";
 import { ODS_PHONE_NUMBER_COUNTRY_PRESET } from "./phone-number/src/components/osds-phone-number/constants/phone-number-countries";
 import { OdsPhoneNumberValueChangeEventDetail } from "./phone-number/src/components/osds-phone-number/interfaces/events";
 import { OdsRadioCheckedChangeEventDetail, OdsRadioCheckingChangeEventDetail } from "./radio/src/components/osds-radio/interfaces/events";
@@ -108,7 +108,7 @@ export { ODS_LINK_REFERRER_POLICY as ODS_LINK_REFERRER_POLICY1 } from "./link/sr
 export { ODS_MESSAGE_TYPE } from "./message/src/components/osds-message/constants/message-type";
 export { ODS_PAGINATION_PER_PAGE } from "./pagination/src/components/osds-pagination/constants/pagination-per-page";
 export { OdsPaginationChangedEventDetail, OdsPaginationItemPerPageChangedEventDetail } from "./pagination/src/components/osds-pagination/interfaces/events";
-export { ODS_INPUT_SIZE as ODS_INPUT_SIZE1, OdsInputValueChangeEvent } from "./input/src";
+export { ODS_INPUT_SIZE as ODS_INPUT_SIZE1, OdsInputValueChangeEventDetail as OdsInputValueChangeEventDetail1 } from "./input/src";
 export { ODS_PHONE_NUMBER_COUNTRY_PRESET } from "./phone-number/src/components/osds-phone-number/constants/phone-number-countries";
 export { OdsPhoneNumberValueChangeEventDetail } from "./phone-number/src/components/osds-phone-number/interfaces/events";
 export { OdsRadioCheckedChangeEventDetail, OdsRadioCheckingChangeEventDetail } from "./radio/src/components/osds-radio/interfaces/events";
@@ -2416,7 +2416,7 @@ declare global {
     interface HTMLOsdsPasswordElementEventMap {
         "odsBlur": void;
         "odsFocus": void;
-        "odsValueChange": OdsInputValueChangeEvent;
+        "odsValueChange": OdsInputValueChangeEventDetail1;
     }
     interface HTMLOsdsPasswordElement extends Components.OsdsPassword, HTMLStencilElement {
         addEventListener<K extends keyof HTMLOsdsPasswordElementEventMap>(type: K, listener: (this: HTMLOsdsPasswordElement, ev: OsdsPasswordCustomEvent<HTMLOsdsPasswordElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -2558,7 +2558,7 @@ declare global {
         "odsBlur": void;
         "odsFocus": void;
         "odsSearchSubmit": { optionValue: string; inputValue: string };
-        "odsValueChange": OdsInputValueChangeEvent;
+        "odsValueChange": OdsInputValueChangeEventDetail1;
     }
     interface HTMLOsdsSearchBarElement extends Components.OsdsSearchBar, HTMLStencilElement {
         addEventListener<K extends keyof HTMLOsdsSearchBarElementEventMap>(type: K, listener: (this: HTMLOsdsSearchBarElement, ev: OsdsSearchBarCustomEvent<HTMLOsdsSearchBarElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -3834,7 +3834,7 @@ declare namespace LocalJSX {
         /**
           * The textarea value changed
          */
-        "onOdsValueChange"?: (event: OsdsPasswordCustomEvent<OdsInputValueChangeEvent>) => void;
+        "onOdsValueChange"?: (event: OsdsPasswordCustomEvent<OdsInputValueChangeEventDetail1>) => void;
         /**
           * Placeholder text for the password
          */
@@ -4195,7 +4195,7 @@ declare namespace LocalJSX {
         /**
           * The textarea value changed
          */
-        "onOdsValueChange"?: (event: OsdsSearchBarCustomEvent<OdsInputValueChangeEvent>) => void;
+        "onOdsValueChange"?: (event: OsdsSearchBarCustomEvent<OdsInputValueChangeEventDetail1>) => void;
         /**
           * List of the options on the select
          */

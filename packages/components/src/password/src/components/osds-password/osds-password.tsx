@@ -1,6 +1,6 @@
 import type { OdsPasswordAttribute } from './interfaces/attributes';
 import type { OdsPasswordEvent } from './interfaces/events';
-import type { ODS_INPUT_SIZE, OdsInputValueChangeEvent } from '../../../../input/src';
+import type { ODS_INPUT_SIZE, OdsInputValueChangeEvent, OdsInputValueChangeEventDetail } from '../../../../input/src';
 import type { OdsFormForbiddenValues } from '@ovhcloud/ods-common-core';
 import type { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import type { EventEmitter } from '@stencil/core';
@@ -44,7 +44,7 @@ export class OsdsPassword implements OdsPasswordAttribute, OdsPasswordEvent {
 
   @Event() odsBlur!: EventEmitter<void>;
   @Event() odsFocus!: EventEmitter<void>;
-  @Event() odsValueChange!: EventEmitter<OdsInputValueChangeEvent>;
+  @Event() odsValueChange!: EventEmitter<OdsInputValueChangeEventDetail>;
 
   @Listen('odsInputBlur')
   onInputBlur() {

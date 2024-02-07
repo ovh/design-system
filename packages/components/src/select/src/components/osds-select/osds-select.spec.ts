@@ -58,7 +58,7 @@ describe('spec:osds-select', () => {
 
     // mock setCustomValidity method that does not exist when stencil mock HTMLInputElement
     OdsMockNativeMethod(HTMLInputElement.prototype, 'setCustomValidity', jest.fn());
-    jest.spyOn(OdsSelectController.prototype, 'onValueChange').mockReturnThis();
+    jest.spyOn(OdsSelectController.prototype, 'setFormValue').mockReturnValue();
 
     page = await newSpecPage({
       components: [OsdsSelect],

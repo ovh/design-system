@@ -146,10 +146,6 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
     return this.reset();
   }
 
-  changeValue(value: OdsInputValue): void {
-    this.value = value;
-  }
-
   async emitChange(value: OdsInputValue, oldValue?: OdsInputValue): Promise<CustomEvent<OdsSelectValueChangeEventDetail>> {
     return this.odsValueChange.emit({
       name: this.name,

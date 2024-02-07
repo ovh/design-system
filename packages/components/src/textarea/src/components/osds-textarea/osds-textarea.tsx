@@ -5,7 +5,7 @@ import type { OdsCommonFieldValidityState } from '@ovhcloud/ods-common-core';
 import type { EventEmitter, FunctionalComponent } from '@stencil/core';
 import { AttachInternals, Component, Element, Event, Host, Method, Prop, State, Watch, h } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-import { OdsTextareaController } from './core/controller';
+import { OdsTextAreaController } from './core/controller';
 
 @Component({
   formAssociated: true,
@@ -16,7 +16,7 @@ import { OdsTextareaController } from './core/controller';
 export class OsdsTextArea implements OdsTextareaAttribute, OdsTextareaEvent, OdsTextareaMethod {
   private static internalIdCount = 0;
   private internalId = `ods-textarea-${OsdsTextArea.internalIdCount++}`;
-  controller = new OdsTextareaController<OsdsTextArea>(this);
+  controller = new OdsTextAreaController<OsdsTextArea>(this);
   textareaElement?: HTMLTextAreaElement;
 
   @Element() el!: HTMLElement;
@@ -76,10 +76,6 @@ export class OsdsTextArea implements OdsTextareaAttribute, OdsTextareaEvent, Ods
 
   componentWillLoad(): void {
     this.controller.beforeInit();
-  }
-
-  formResetCallback(): Promise<void> {
-    return this.reset();
   }
 
   formResetCallback(): Promise<void> {

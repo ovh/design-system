@@ -16,8 +16,8 @@
 |---|---|:---:|---|---|
 |**`odsBlur`** | `EventEmitter<void>` | ✴️ |  | Event triggered on textarea blur|
 |**`odsFocus`** | `EventEmitter<void>` | ✴️ |  | Event triggered on textarea focus|
-|**`odsSearchSubmit`** | `EventEmitter<reflection>` | ✴️ |  | Send event with the input value when click on button search ou with keyboard navigation|
-|**`odsValueChange`** | `EventEmitter<OdsInputValueChangeEvent>` | ✴️ |  | The textarea value changed|
+|**`odsSearchSubmit`** | `EventEmitter<unknown>` | ✴️ |  | Send event with the input value when click on button search ou with keyboard navigation|
+|**`odsValueChange`** | `EventEmitter<OdsCommonFieldValueChangeEvent>` | ✴️ |  | The textarea value changed|
 
 ### OdsSearchbarOption
 |Name | Type | Required | Default | Description|

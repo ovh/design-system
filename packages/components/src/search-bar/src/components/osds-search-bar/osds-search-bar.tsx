@@ -6,7 +6,6 @@ import type { EventEmitter } from '@stencil/core';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_BUTTON_SIZE } from '../../../../button/src';
 import { ODS_ICON_NAME, ODS_ICON_SIZE } from '../../../../icon/src';
-import { ODS_INPUT_TYPE } from '../../../../input/src';
 import { Component, Element, Event, Host, Listen, Prop, h } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_INPUT_TYPE } from '../../../../input/src';

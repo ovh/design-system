@@ -5,7 +5,7 @@ import type { OdsSelectValueChangeEventDetail } from '../../../../select/src';
 import { ODS_COUNTRY_ISO_CODE, ODS_COUNTRY_ISO_CODES, ODS_LOCALE, OdsCommonFieldValidityState } from '@ovhcloud/ods-common-core';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_TEXT_LEVEL, ODS_TEXT_SIZE } from '../../../../text/src';
-import { AttachInternals, Component, Event, EventEmitter, Host, Listen, Prop, State, Watch, h } from '@stencil/core';
+import { AttachInternals, Component, Element, Event, EventEmitter, Host, Listen, Prop, State, Watch, h } from '@stencil/core';
 import { PhoneNumber, PhoneNumberFormat, PhoneNumberUtil } from 'google-libphonenumber';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_PHONE_NUMBER_COUNTRY_PRESET } from './constants/phone-number-countries';
@@ -23,11 +23,12 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
   parsedCountries: ODS_COUNTRY_ISO_CODE[] = [];
   phoneUtils = PhoneNumberUtil.getInstance();
 
+  @Element() el!: HTMLElement;
+
   @AttachInternals() internals!: ElementInternals;
 
   @State() hasCountries: boolean = false;
   @State() i18nCountriesMap!: Map<string, { isoCode: string , name: string, countryCode?: number }>;
-  @State() slotSelectedLabel?: HTMLSpanElement;
 
   @Prop({ reflect: true }) clearable?: boolean = DEFAULT_ATTRIBUTE.clearable;
   @Prop({ reflect: true, mutable: true }) countries?: ODS_COUNTRY_ISO_CODE[] | ODS_PHONE_NUMBER_COUNTRY_PRESET | string = DEFAULT_ATTRIBUTE.countries;
@@ -36,7 +37,7 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
   @Prop({ reflect: true, mutable: true }) error?: boolean = DEFAULT_ATTRIBUTE.error;
   @Prop({ reflect: true, mutable: true }) isoCode?: ODS_COUNTRY_ISO_CODE = DEFAULT_ATTRIBUTE.isoCode;
   @Prop({ reflect: true, mutable: true }) locale?: ODS_LOCALE = DEFAULT_ATTRIBUTE.locale;
-  @Prop({ reflect: true }) name?: string = DEFAULT_ATTRIBUTE.name;
+  @Prop({ reflect: true }) name: string = DEFAULT_ATTRIBUTE.name;
   @Prop({ reflect: true, mutable: true }) value: string | null = DEFAULT_ATTRIBUTE.value;
 
   @Event() odsBlur!: EventEmitter<void>;
@@ -77,15 +78,6 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
     this.hasCountries = !!this.parsedCountries?.length;
   }
 
-  @Watch('isoCode')
-  @Watch('slotSelectedLabel')
-  onIsoCodeChange(): void {
-    if (!this.slotSelectedLabel || !this.isoCode) {
-      return;
-    }
-    this.slotSelectedLabel.innerHTML = `<osds-flag lazy iso=${this.isoCode}></osds-flag>`;
-  }
-
   @Listen('odsInputBlur')
   onInputBlur() {
     this.odsBlur.emit();
@@ -113,7 +105,7 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
   }
 
   private handlerInputEvent(event: OdsInputValueChangeEventDetail) {
-    this.value = event.value || '';
+    this.value = (event.value || '') as string;
     this.controller.onValueChange(this.value);
     this.error = !this.isValidValue(this.value);
     const number = this.controller.parseNumber(this.value);
@@ -122,12 +114,12 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
       ...event,
       isoCode: this.isoCode,
       name: this.name,
-      oldValue: this.formatValue(oldNumber, event.oldValue),
+      oldValue: this.formatValue(oldNumber, event.oldValue as string),
       validity: {
         ...event.validity!,
         valid: !this.error,
       },
-      value: this.formatValue(number, this.value),
+      value: this.formatValue(number, this.value) ?? '',
     });
   }
 
@@ -189,15 +181,13 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberE
             class="phone-number__select"
             disabled={ this.disabled }
             error={ this.error }
+            name={ this.name }
             value={ this.isoCode }>
-            <span ref={ (el?: HTMLSpanElement) => {
-              if (!el) {
-                return;
-              }
-              setTimeout(() => this.slotSelectedLabel = el, 0);
-            }}
+            <span
             slot="selectedLabel"
-            class="phone-number__select-label" />
+            class="phone-number__select-label">
+              <osds-flag lazy iso={this.isoCode}></osds-flag>
+            </span>
             { this.parsedCountries.map((country) => {
               const i18nCountry = this.i18nCountriesMap?.get(country);
               return <osds-select-option value={ country } key={ country }>

@@ -13,7 +13,7 @@
 |**`error`** | _boolean_ |  |  | Indicates if the phone number shows error or not|
 |**`isoCode`** | `ODS_COUNTRY_ISO_CODE` |  |  | Select value|
 |**`locale`** | `ODS_LOCALE` |  |  | This is the locale to use to translate the countries names|
-|**`name`** | _string_ |  |  | Name of the phone number field|
+|**`name`** | _string_ | ✴️ |  | Name of the phone number field|
 |**`value`** | `undefined` \| `string` | ✴️ |  | Current value of the phone number|
 
 ## Types

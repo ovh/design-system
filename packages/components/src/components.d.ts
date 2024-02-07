@@ -40,7 +40,7 @@ import { ODS_LINK_REFERRER_POLICY as ODS_LINK_REFERRER_POLICY1 } from "./link/sr
 import { ODS_MESSAGE_TYPE } from "./message/src/components/osds-message/constants/message-type";
 import { ODS_PAGINATION_PER_PAGE } from "./pagination/src/components/osds-pagination/constants/pagination-per-page";
 import { OdsPaginationChangedEventDetail, OdsPaginationItemPerPageChangedEventDetail } from "./pagination/src/components/osds-pagination/interfaces/events";
-import { ODS_INPUT_SIZE as ODS_INPUT_SIZE1, OdsInputValueChangeEvent } from "./input/src";
+import { OdsPasswordValueChangeEventDetail } from "./password/src/components/osds-password/interfaces/events";
 import { ODS_PHONE_NUMBER_COUNTRY_PRESET } from "./phone-number/src/components/osds-phone-number/constants/phone-number-countries";
 import { OdsPhoneNumberValueChangeEventDetail } from "./phone-number/src/components/osds-phone-number/interfaces/events";
 import { OdsRadioCheckedChangeEventDetail, OdsRadioCheckingChangeEventDetail } from "./radio/src/components/osds-radio/interfaces/events";
@@ -49,6 +49,7 @@ import { OsdsRadio } from "./radio/src/components/osds-radio/osds-radio";
 import { OdsRangeValue } from "./range/src/components/osds-range/interfaces/value";
 import { OdsRangeValueChangeEventDetail } from "./range/src/components/osds-range/interfaces/events";
 import { OdsSearchbarOption } from "./search-bar/src/components/osds-search-bar/interfaces/attributes";
+import { OdsInputValueChangeEvent } from "./input/src";
 import { OdsSelectValueChangeEventDetail } from "./select/src/components/osds-select/interfaces/events";
 import { OdsSelectOptionClickEventDetail } from "./select/src/components/osds-select-option/interfaces/events";
 import { ODS_SKELETON_SIZE } from "./skeleton/src/components/osds-skeleton/constants/skeleton-size";
@@ -102,7 +103,7 @@ export { ODS_LINK_REFERRER_POLICY as ODS_LINK_REFERRER_POLICY1 } from "./link/sr
 export { ODS_MESSAGE_TYPE } from "./message/src/components/osds-message/constants/message-type";
 export { ODS_PAGINATION_PER_PAGE } from "./pagination/src/components/osds-pagination/constants/pagination-per-page";
 export { OdsPaginationChangedEventDetail, OdsPaginationItemPerPageChangedEventDetail } from "./pagination/src/components/osds-pagination/interfaces/events";
-export { ODS_INPUT_SIZE as ODS_INPUT_SIZE1, OdsInputValueChangeEvent } from "./input/src";
+export { OdsPasswordValueChangeEventDetail } from "./password/src/components/osds-password/interfaces/events";
 export { ODS_PHONE_NUMBER_COUNTRY_PRESET } from "./phone-number/src/components/osds-phone-number/constants/phone-number-countries";
 export { OdsPhoneNumberValueChangeEventDetail } from "./phone-number/src/components/osds-phone-number/interfaces/events";
 export { OdsRadioCheckedChangeEventDetail, OdsRadioCheckingChangeEventDetail } from "./radio/src/components/osds-radio/interfaces/events";
@@ -111,6 +112,7 @@ export { OsdsRadio } from "./radio/src/components/osds-radio/osds-radio";
 export { OdsRangeValue } from "./range/src/components/osds-range/interfaces/value";
 export { OdsRangeValueChangeEventDetail } from "./range/src/components/osds-range/interfaces/events";
 export { OdsSearchbarOption } from "./search-bar/src/components/osds-search-bar/interfaces/attributes";
+export { OdsInputValueChangeEvent } from "./input/src";
 export { OdsSelectValueChangeEventDetail } from "./select/src/components/osds-select/interfaces/events";
 export { OdsSelectOptionClickEventDetail } from "./select/src/components/osds-select-option/interfaces/events";
 export { ODS_SKELETON_SIZE } from "./skeleton/src/components/osds-skeleton/constants/skeleton-size";
@@ -446,10 +448,6 @@ export namespace Components {
           * save input allows to set a function that returns a promise. It is called before each time an update is performed and allowing to manage pessimistic update strategy. the checked state will be updated just after the call.
          */
         "save"?: OdsCheckboxAttributeCbk;
-        /**
-          * set a custom tab index for easier navigation
-          * @param value - chosen index
-         */
         "setTabindex": (index: number) => Promise<void>;
         /**
           * update status indicating if the checked state is being modified. `updating` will be `true` until `beforeSave` or `save` are processed. it is used in `pessimistic` update
@@ -618,7 +616,7 @@ export namespace Components {
     interface OsdsDatepicker {
         "ariaLabel": HTMLElement['ariaLabel'];
         /**
-          * Defines if the Datepicker should be clearable or not (displays a clear button)
+          * Ability to clear the input value
          */
         "clearable"?: boolean;
         /**
@@ -632,13 +630,13 @@ export namespace Components {
         /**
           * Default value of the input
          */
-        "defaultValue"?: Date | null;
+        "defaultValue": OdsInputValue;
         /**
-          * Defines if the Datepicker should be disabled or not (lower opacity and not interactable)
+          * Indicates if the input is disabled or not: see component principles
          */
         "disabled": boolean;
         /**
-          * Defines if the Datepicker should display an error message
+          * Indicates if the input shows error or not
          */
         "error": boolean;
         /**
@@ -662,11 +660,11 @@ export namespace Components {
          */
         "minDate"?: Date | null;
         /**
-          * Name of the datepicker field
+          * Name of the input field
          */
-        "name"?: string;
+        "name": string;
         /**
-          * Defines if the Datepicker should display a placeholder message
+          * Placeholder text for the input
          */
         "placeholder"?: string;
         /**
@@ -675,8 +673,15 @@ export namespace Components {
         "showSiblingsMonthDays"?: boolean;
         /**
           * Value of the input field
-          * @see OdsDatepickerAttribute.value
          */
+        "value": OdsInputValue;
+    }
+    interface OsdsDivider {
+        /**
+          * Divider color theme
+          * @see OdsDividerAttributes.color
+         */
+        "color"?: ODS_THEME_COLOR_INTENT;
         /**
           * Divider design as contrasted version
           * @see OdsDividerAttributes.contrasted
@@ -875,18 +880,25 @@ export namespace Components {
         /**
           * Indicates if the input is required or not
          */
+        "required"?: boolean;
+        /**
+          * restore the value to the initial state
+         */
         "reset": () => Promise<void>;
         /**
           * active the focus on the input in order to let the user write something
          */
         "setFocus": () => Promise<void>;
         /**
-          * set a custom tab index for easier navigation
-          * @param value - chosen index
-         */
-        "setTabindex": (value: number) => Promise<void>;
-        /**
           * Step value for the input
+         */
+        "step"?: number;
+        "stepDown": () => Promise<void>;
+        "stepUp": () => Promise<void>;
+        /**
+          * Type of the input field
+         */
+        "type"?: ODS_INPUT_TYPE;
         /**
           * Value of the input field
          */
@@ -1060,11 +1072,15 @@ export namespace Components {
     interface OsdsPassword {
         "ariaLabel": HTMLElement['ariaLabel'];
         /**
-          * ID of the element that labels the password
+          * ID of the element that labels the input
          */
         "ariaLabelledby"?: string;
         /**
-          * Ability to clear the password value
+          * empty the value
+         */
+        "clear": () => Promise<void>;
+        /**
+          * Ability to clear the input value
          */
         "clearable"?: boolean;
         /**
@@ -1072,11 +1088,11 @@ export namespace Components {
          */
         "defaultValue": string | null;
         /**
-          * Indicates if the password is disabled or not: see component principles
+          * Indicates if the input is disabled or not: see component principles
          */
         "disabled": boolean;
         /**
-          * Indicates if the password shows error or not
+          * Indicates if the input shows error or not
          */
         "error": boolean;
         /**
@@ -1093,11 +1109,11 @@ export namespace Components {
          */
         "inline"?: boolean;
         /**
-          * Label of the password field
+          * Label of the input field
          */
         "label"?: string;
         /**
-          * Indicates if the password is in loading state or not
+          * Indicates if the input is in loading state or not
          */
         "loading"?: boolean;
         /**
@@ -1105,11 +1121,11 @@ export namespace Components {
          */
         "masked"?: boolean;
         /**
-          * Name of the password field
+          * Name of the input field
          */
         "name": string;
         /**
-          * Placeholder text for the password
+          * Placeholder text for the input
          */
         "placeholder"?: string;
         /**
@@ -1121,7 +1137,7 @@ export namespace Components {
          */
         "readOnly"?: boolean;
         /**
-          * Indicates if the password is required or not
+          * Indicates if the input is required or not
          */
         "required"?: boolean;
         /**
@@ -1132,11 +1148,6 @@ export namespace Components {
           * active the focus on the input in order to let the user write something
          */
         "setFocus": () => Promise<void>;
-        /**
-          * set a custom tab index for easier navigation
-          * @param value - chosen index
-         */
-        "setTabindex": (value: number) => Promise<void>;
         /**
           * Current value of the password
          */
@@ -1174,7 +1185,7 @@ export namespace Components {
         /**
           * Name of the phone number field
          */
-        "name"?: string;
+        "name": string;
         /**
           * Current value of the phone number
          */
@@ -1457,32 +1468,25 @@ export namespace Components {
         "value": string;
     }
     interface OsdsSelect {
-        /**
-          * The corresponding aria-label describing its content
-         */
         "ariaLabel": string | null;
         /**
-          * The id to an external description
+          * ID of the element that labels the input
          */
         "ariaLabelledby": string | undefined;
         /**
-          * erase the current selection
+          * empty the value
          */
         "clear": () => Promise<void>;
         /**
-          * the primary color of the theme
-         */
-        "color": ODS_THEME_COLOR_INTENT;
-        /**
-          * Its corresponding default value. It needs to match with one option so the option will be selected
+          * Default value of the input
          */
         "defaultValue": OdsInputValue;
         /**
-          * indicates if the select is entirely disabled. it means no interactions (hover, click, focus, etc)
+          * Indicates if the input is disabled or not: see component principles
          */
         "disabled": boolean;
         /**
-          * indicates if the select has an error.
+          * Indicates if the input shows error or not
          */
         "error": boolean;
         /**
@@ -1490,44 +1494,28 @@ export namespace Components {
          */
         "getValidity": () => Promise<OdsCommonFieldValidityState>;
         /**
-          * full width or not: see component principles
+          * Indicates if the select is inline or not: see component principles
          */
         "inline": boolean | undefined;
         /**
-          * name of the select field
+          * Name of the input field
          */
-        "name"?: string;
+        "name": string;
         /**
-          * opened or not
+          * Indicates if the select is open or not
          */
         "opened": boolean;
         /**
-          * indicates if a value has to be selected
-         */
-        "required": boolean;
-        /**
-          * reset the value to the initial one (default value)
+          * Indicates if the input is required or not
          */
         "required": boolean | undefined;
         "reset": () => Promise<void>;
         /**
-          * focus the element
+          * active the focus on the input in order to let the user write something
          */
         "setFocus": () => Promise<void>;
         /**
-          * set tab index on the component
-         */
-        "setTabindex": (value: number) => Promise<void>;
-        /**
-          * size: see component principles
-         */
-        "size": ODS_SELECT_SIZE;
-        /**
-          * check that the select is valid or not. In case of required field, the validation will check the entered value and set the field in error if it is not fulfilled
-         */
-        "validate": () => Promise<OdsValidityState>;
-        /**
-          * Its corresponding value. It needs to correspond to the value of the option
+          * Value of the input field
          */
         "value": OdsInputValue;
     }
@@ -1536,17 +1524,9 @@ export namespace Components {
     interface OsdsSelectOption {
         /**
           * get label of the element
-          * @see OdsSelectOptionMethods.getLabel
          */
         "getLabel": () => Promise<string>;
-        /**
-          * Whether or not it is the selected value (fetched from parent). UI only purpose
-         */
         "selected"?: boolean;
-        /**
-          * @see OdsSelectOptionMethods.setTabIndex
-         */
-        "setTabIndex": (value: number) => Promise<void>;
         "value": OdsInputValue;
     }
     interface OsdsSkeleton {
@@ -1791,11 +1771,6 @@ export namespace Components {
           * active the focus on the input in order to let the user write something
          */
         "setFocus": () => Promise<void>;
-        /**
-          * set a custom tab index for easier navigation
-          * @param value - chosen index
-         */
-        "setTabindex": (value: number) => Promise<void>;
         /**
           * Define if the spelling of the value should be check
          */
@@ -2569,11 +2544,11 @@ declare global {
         new (): HTMLOsdsSearchBarElement;
     };
     interface HTMLOsdsSelectElementEventMap {
-        "odsValueChange": OdsSelectValueChangeEventDetail;
-        "odsFocus": void;
-        "odsClear": void;
-        "odsReset": void;
         "odsBlur": void;
+        "odsClear": void;
+        "odsFocus": void;
+        "odsReset": void;
+        "odsValueChange": OdsSelectValueChangeEventDetail;
     }
     interface HTMLOsdsSelectElement extends Components.OsdsSelect, HTMLStencilElement {
         addEventListener<K extends keyof HTMLOsdsSelectElementEventMap>(type: K, listener: (this: HTMLOsdsSelectElement, ev: OsdsSelectCustomEvent<HTMLOsdsSelectElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -3320,7 +3295,7 @@ declare namespace LocalJSX {
     interface OsdsDatepicker {
         "ariaLabel"?: HTMLElement['ariaLabel'];
         /**
-          * Defines if the Datepicker should be clearable or not (displays a clear button)
+          * Ability to clear the input value
          */
         "clearable"?: boolean;
         /**
@@ -3334,13 +3309,13 @@ declare namespace LocalJSX {
         /**
           * Default value of the input
          */
-        "defaultValue"?: Date | null;
+        "defaultValue"?: OdsInputValue;
         /**
-          * Defines if the Datepicker should be disabled or not (lower opacity and not interactable)
+          * Indicates if the input is disabled or not: see component principles
          */
         "disabled"?: boolean;
         /**
-          * Defines if the Datepicker should display an error message
+          * Indicates if the input shows error or not
          */
         "error"?: boolean;
         /**
@@ -3364,7 +3339,7 @@ declare namespace LocalJSX {
          */
         "minDate"?: Date | null;
         /**
-          * Name of the datepicker field
+          * Name of the input field
          */
         "name"?: string;
         /**
@@ -3380,12 +3355,15 @@ declare namespace LocalJSX {
          */
         "onOdsDatepickerValueChange"?: (event: OsdsDatepickerCustomEvent<OdsDatepickerValueChangeEventDetail>) => void;
         /**
-          * Defines if the Datepicker should display a placeholder message
+          * Placeholder text for the input
+         */
+        "placeholder"?: string;
+        /**
+          * Defines if the Datepicker should display others month days
          */
         "showSiblingsMonthDays"?: boolean;
         /**
           * Value of the input field
-          * @see OdsDatepickerAttribute.value
          */
         "value"?: OdsInputValue;
     }
@@ -3522,6 +3500,14 @@ declare namespace LocalJSX {
         /**
           * Indicates if the input is in loading state or not
          */
+        "loading"?: boolean;
+        /**
+          * Indicates if the input is masked or not
+         */
+        "masked"?: boolean;
+        /**
+          * Maximum value for the input (type number)
+         */
         "max"?: number;
         /**
           * Minimum value for the input (type number)
@@ -3531,9 +3517,6 @@ declare namespace LocalJSX {
           * Name of the input field
          */
         "name"?: string;
-        /**
-          * the input value changed
-         */
         "onOdsBlur"?: (event: OsdsInputCustomEvent<void>) => void;
         "onOdsClear"?: (event: OsdsInputCustomEvent<void>) => void;
         "onOdsFocus"?: (event: OsdsInputCustomEvent<void>) => void;
@@ -3743,11 +3726,11 @@ declare namespace LocalJSX {
     interface OsdsPassword {
         "ariaLabel"?: HTMLElement['ariaLabel'];
         /**
-          * ID of the element that labels the password
+          * ID of the element that labels the input
          */
         "ariaLabelledby"?: string;
         /**
-          * Ability to clear the password value
+          * Ability to clear the input value
          */
         "clearable"?: boolean;
         /**
@@ -3755,11 +3738,11 @@ declare namespace LocalJSX {
          */
         "defaultValue"?: string | null;
         /**
-          * Indicates if the password is disabled or not: see component principles
+          * Indicates if the input is disabled or not: see component principles
          */
         "disabled"?: boolean;
         /**
-          * Indicates if the password shows error or not
+          * Indicates if the input shows error or not
          */
         "error"?: boolean;
         /**
@@ -3771,11 +3754,11 @@ declare namespace LocalJSX {
          */
         "inline"?: boolean;
         /**
-          * Label of the password field
+          * Label of the input field
          */
         "label"?: string;
         /**
-          * Indicates if the password is in loading state or not
+          * Indicates if the input is in loading state or not
          */
         "loading"?: boolean;
         /**
@@ -3783,7 +3766,7 @@ declare namespace LocalJSX {
          */
         "masked"?: boolean;
         /**
-          * Name of the password field
+          * Name of the input field
          */
         "name"?: string;
         "onOdsBlur"?: (event: OsdsPasswordCustomEvent<void>) => void;
@@ -3793,19 +3776,7 @@ declare namespace LocalJSX {
         "onOdsReset"?: (event: OsdsPasswordCustomEvent<void>) => void;
         "onOdsValueChange"?: (event: OsdsPasswordCustomEvent<OdsPasswordValueChangeEventDetail>) => void;
         /**
-          * Event triggered on textarea blur
-         */
-        "onOdsBlur"?: (event: OsdsPasswordCustomEvent<void>) => void;
-        /**
-          * Event triggered on textarea focus
-         */
-        "onOdsFocus"?: (event: OsdsPasswordCustomEvent<void>) => void;
-        /**
-          * The textarea value changed
-         */
-        "onOdsValueChange"?: (event: OsdsPasswordCustomEvent<OdsInputValueChangeEvent>) => void;
-        /**
-          * Placeholder text for the password
+          * Placeholder text for the input
          */
         "placeholder"?: string;
         /**
@@ -3817,7 +3788,7 @@ declare namespace LocalJSX {
          */
         "readOnly"?: boolean;
         /**
-          * Indicates if the password is required or not
+          * Indicates if the input is required or not
          */
         "required"?: boolean;
         /**
@@ -4175,90 +4146,56 @@ declare namespace LocalJSX {
         "value"?: string;
     }
     interface OsdsSelect {
-        /**
-          * The corresponding aria-label describing its content
-         */
         "ariaLabel"?: string | null;
         /**
-          * The id to an external description
+          * ID of the element that labels the input
          */
         "ariaLabelledby"?: string | undefined;
         /**
-          * the primary color of the theme
-         */
-        "color"?: ODS_THEME_COLOR_INTENT;
-        /**
-          * Its corresponding default value. It needs to match with one option so the option will be selected
+          * Default value of the input
          */
         "defaultValue"?: OdsInputValue;
         /**
-          * indicates if the select is entirely disabled. it means no interactions (hover, click, focus, etc)
+          * Indicates if the input is disabled or not: see component principles
          */
         "disabled"?: boolean;
         /**
-          * indicates if the select has an error.
+          * Indicates if the input shows error or not
          */
         "error"?: boolean;
         /**
-          * full width or not: see component principles
+          * Indicates if the select is inline or not: see component principles
          */
         "inline"?: boolean | undefined;
         /**
-          * name of the select field
-         */
-        "name"?: string;
-        /**
-          * Event triggered on select blur
+          * Name of the input field
          */
         "name"?: string;
         "onOdsBlur"?: (event: OsdsSelectCustomEvent<void>) => void;
-        /**
-          * Event triggered on select focus
-         */
+        "onOdsClear"?: (event: OsdsSelectCustomEvent<void>) => void;
         "onOdsFocus"?: (event: OsdsSelectCustomEvent<void>) => void;
-        /**
-          * Emitted when the value has changed
-         */
+        "onOdsReset"?: (event: OsdsSelectCustomEvent<void>) => void;
         "onOdsValueChange"?: (event: OsdsSelectCustomEvent<OdsSelectValueChangeEventDetail>) => void;
         /**
-          * opened or not
+          * Indicates if the select is open or not
          */
         "opened"?: boolean;
         /**
-          * indicates if a value has to be selected
+          * Indicates if the input is required or not
          */
         "required"?: boolean | undefined;
         /**
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-          * size: see component principles
-         */
-        "size"?: ODS_SELECT_SIZE;
-          * Its corresponding value. It needs to correspond to the value of the option
-=======
-          * Size of the input: see component principles
-         */
-        "size"?: ODS_SELECT_SIZE;
-=======
-          * Type of the input field
-=======
           * Value of the input field
->>>>>>> 6640060e3 (fix(select): add to exemple)
          */
         "value"?: OdsInputValue;
     }
     interface OsdsSelectGroup {
->>>>>>> 6bb26e8f9 (feat(select): v2 form methods)
     }
     interface OsdsSelectOption {
         /**
           * the select value changed
          */
         "onOdsSelectOptionClick"?: (event: OsdsSelectOptionCustomEvent<OdsSelectOptionClickEventDetail>) => void;
-        /**
-          * Whether or not it is the selected value (fetched from parent). UI only purpose
-         */
         "selected"?: boolean;
         "value"?: OdsInputValue;
     }

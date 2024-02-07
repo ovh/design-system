@@ -25,7 +25,7 @@ const App = () => {
           onSubmit={ onSubmit }>
       <OsdsSearchBar onOdsBlur={() => console.log('blur search bar')}
                      onOdsFocus={() => console.log('focus search bar')}
-                     onOdsValueChange={() => console.log('value change search bar')} />
+                     onOdsValueChange={(event) => console.log('value change search bar', event)} />
 
       <OsdsDivider />
 

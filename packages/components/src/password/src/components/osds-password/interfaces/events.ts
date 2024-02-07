@@ -1,4 +1,4 @@
-import type { OdsInputValueChangeEvent } from '../../../../../input/src';
+import type { OdsInputValueChangeEventDetail } from '../../../../../input/src';
 import type { EventEmitter } from '@stencil/core';
 
 interface OdsPasswordEvent {
@@ -13,7 +13,7 @@ interface OdsPasswordEvent {
   /**
    * The textarea value changed
    */
-  odsValueChange: EventEmitter<OdsInputValueChangeEvent>;
+  odsValueChange: EventEmitter<OdsInputValueChangeEventDetail>;
 }
 
 export type {

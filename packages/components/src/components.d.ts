@@ -1881,7 +1881,7 @@ export namespace Components {
          */
         "currentTimezone"?: ODS_TIMEZONE;
         /**
-          * Default value of the input
+          * Defines the default value
          */
         "defaultValue": string | null;
         /**
@@ -4621,7 +4621,7 @@ declare namespace LocalJSX {
          */
         "currentTimezone"?: ODS_TIMEZONE;
         /**
-          * Default value of the input
+          * Defines the default value
          */
         "defaultValue"?: string | null;
         /**

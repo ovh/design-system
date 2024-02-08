@@ -2,6 +2,7 @@ import { html } from 'lit-html';
 import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-timepicker';
 import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 import { CONTROL_CATEGORY, orderControls } from '../../controls';
+import { ODS_TIMEZONES } from '@ovhcloud/ods-components';
 
 defineCustomElement();
 
@@ -18,6 +19,12 @@ const sharedStoryParam = orderControls({
   clearable: {
     category: CONTROL_CATEGORY.general,
     defaultValue: false,
+  },
+  currentTimezone: {
+    category: CONTROL_CATEGORY.general,
+    control: { type: 'select' },
+    defaultValue: null,
+    options: ODS_TIMEZONES,
   },
   defaultValue: {
     category: CONTROL_CATEGORY.general,
@@ -55,7 +62,7 @@ const defaultParam = {
 const exampleParam = {
   timezones: {
     category: CONTROL_CATEGORY.general,
-    defaultValue: ['UTC-0', 'UTC-1', 'UTC-2'],
+    defaultValue: ['UTC+0', 'UTC-1', 'UTC-2'],
   },
 };
 

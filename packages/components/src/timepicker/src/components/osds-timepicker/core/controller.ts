@@ -48,6 +48,11 @@ class OdsTimepickerController<T extends OsdsTimepicker> extends OdsCommonFieldMe
   }
 
   onValueChange({ detail }: OdsInputValueChangeEvent): void {
+    if((detail.value as string)?.indexOf('UTC') > -1) {
+      this.component.currentTimezone = ODS_TIMEZONES.find((timezone: string) => timezone === detail.value?.toString());
+      return;
+    }
+
     this.component.value = detail.value?.toString() ?? null;
     this.component.internals?.setFormValue?.(this.component.value?.toString() ?? '');
   }

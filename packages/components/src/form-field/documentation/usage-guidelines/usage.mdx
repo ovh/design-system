@@ -32,3 +32,30 @@ import { Canvas } from '@storybook/addon-docs';
 
 ### Error
 <ErrorProperty />
+
+### Accessibility
+
+The usage of a `<label>` tag for the label slots adds a native browser behaviour:
+On click on the label, the browser sets the focus on any native input linked using the `for` attribute.
+
+<Canvas withSource="none">
+  <osds-form-field>
+    <label for="midable" slot="label">
+      <osds-text level='heading' color="primary">
+        An accessible label
+      </osds-text>
+    </label>
+    <osds-input type="text" id="midable"></osds-input>
+  </osds-form-field>
+</Canvas >
+
+```html
+<osds-form-field>
+  <label for="midable" slot="label">
+    <osds-text level='heading' color="primary">
+      An accessible label
+    </osds-text>
+  </label>
+  <osds-input type="text" id="midable"></osds-input>
+</osds-form-field>
+```

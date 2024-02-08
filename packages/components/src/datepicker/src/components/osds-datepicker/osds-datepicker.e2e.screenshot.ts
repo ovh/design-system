@@ -8,9 +8,10 @@ import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 
 describe('e2e:osds-datepicker', () => {
   let page: E2EPage;
+  const baseAttribute = { ariaLabel: null, defaultValue: null, disabled: false, error: false, name: '', value: null };
 
-  async function setup({ attributes = {} }: { attributes?: Partial<OdsDatepickerAttribute>, html?: string } = {}) {
-    const stringAttributes = odsComponentAttributes2StringAttributes<OdsDatepickerAttribute>(attributes, DEFAULT_ATTRIBUTE);
+  async function setup({ attributes = {} }: { attributes?: Partial<OdsDatepickerAttribute>, html?: string } = {}): Promise<void> {
+    const stringAttributes = odsComponentAttributes2StringAttributes<OdsDatepickerAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
     await page.setContent(`
@@ -26,6 +27,7 @@ describe('e2e:osds-datepicker', () => {
     await page.emulateTimezone('Europe/London');
 
     await page.evaluate(
+      // eslint-disable-next-line max-params
       (datesDisabledJSON, daysOfWeekDisabledJSON, maxDateJSON, minDateJSON, valueJSON) => {
         const datepicker = document.querySelector('osds-datepicker') as unknown as OsdsDatepicker;
         datesDisabledJSON && (datepicker.datesDisabled = JSON.parse(datesDisabledJSON).map((str: string) => new Date(str)));
@@ -94,7 +96,7 @@ describe('e2e:osds-datepicker', () => {
 
           await page.waitForChanges();
 
-          await page.setViewport({ width: 600, height: 600 });
+          await page.setViewport({ height: 600, width: 600 });
 
           const results = await page.compareScreenshot('datepicker', { fullPage: false, omitBackground: true });
           expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });

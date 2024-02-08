@@ -10,9 +10,10 @@ import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 describe('e2e:osds-datepicker', () => {
   let page: E2EPage;
   let el: E2EElement;
+  const baseAttribute = { ariaLabel: null, defaultValue: null, disabled: false, error: false, name: '', value: null };
 
-  async function setup({ attributes }: { attributes: Partial<OdsDatepickerAttribute> }) {
-    const stringAttributes = odsComponentAttributes2StringAttributes<OdsDatepickerAttribute>(attributes, DEFAULT_ATTRIBUTE);
+  async function setup({ attributes }: { attributes: Partial<OdsDatepickerAttribute> }): Promise<void> {
+    const stringAttributes = odsComponentAttributes2StringAttributes<OdsDatepickerAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
     await page.setContent(`<osds-datepicker ${odsStringAttributes2Str(stringAttributes)}></osds-datepicker>`);
@@ -27,6 +28,7 @@ describe('e2e:osds-datepicker', () => {
     await page.emulateTimezone('Europe/London');
 
     await page.evaluate(
+      // eslint-disable-next-line max-params
       (datesDisabledJSON, daysOfWeekDisabledJSON, maxDateJSON, minDateJSON, valueJSON) => {
         const datepicker = document.querySelector('osds-datepicker') as unknown as OsdsDatepicker;
         datesDisabledJSON && (datepicker.datesDisabled = JSON.parse(datesDisabledJSON).map((str: string) => new Date(str)));

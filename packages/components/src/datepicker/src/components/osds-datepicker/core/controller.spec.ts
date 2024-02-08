@@ -1,5 +1,5 @@
+import type { OsdsDatepicker } from '../osds-datepicker';
 import { OdsDatepickerController } from './controller';
-import { OsdsDatepicker } from '../osds-datepicker';
 
 class OsdsDatepickerMock {
   constructor(attribute: Partial<OsdsDatepicker>) {
@@ -12,7 +12,7 @@ class OsdsDatepickerMock {
   formatDate = jest.fn();
 
   internals = {
-    setFormValue: jest.fn()
+    setFormValue: jest.fn(),
   };
 }
 
@@ -20,7 +20,7 @@ describe('spec:ods-datepicker-controller', () => {
   let controller: OdsDatepickerController;
   let component: OsdsDatepicker;
 
-  function setup(attributes: Partial<OsdsDatepicker> = {}) {
+  function setup(attributes: Partial<OsdsDatepicker> = {}): void {
     component = new OsdsDatepickerMock(attributes) as unknown as OsdsDatepicker;
     controller = new OdsDatepickerController(component);
   }

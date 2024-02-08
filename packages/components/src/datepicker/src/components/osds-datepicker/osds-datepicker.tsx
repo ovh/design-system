@@ -2,28 +2,28 @@ import type { ODS_DATEPICKER_DAY } from './constants/datepicker-day';
 import type { ODS_DATEPICKER_LOCALE } from './constants/datepicker-locale';
 import type { OdsDatepickerAttribute } from './interfaces/attributes';
 import type { OdsDatepickerEvent, OdsDatepickerValueChangeEventDetail } from './interfaces/events';
-import type { EventEmitter } from '@stencil/core';
-import { ODS_ICON_NAME } from '../../../../icon/src';
-import { ODS_INPUT_TYPE } from '../../../../input/src';
+import type { OdsInputValue } from '@ovhcloud/ods-common-core';
+import type { EventEmitter,FunctionalComponent } from '@stencil/core';
 import { AttachInternals, Component, Element, Event, Host, Listen, Prop, State, Watch, h } from '@stencil/core';
 import { Datepicker } from 'vanillajs-datepicker';
-// @ts-ignore
-import de from 'vanillajs-datepicker/js/i18n/locales/de';
-// @ts-ignore
-import es from 'vanillajs-datepicker/js/i18n/locales/es';
-// @ts-ignore
-import fr from 'vanillajs-datepicker/js/i18n/locales/fr';
-// @ts-ignore
-import it from 'vanillajs-datepicker/js/i18n/locales/it';
-// @ts-ignore
-import nl from 'vanillajs-datepicker/js/i18n/locales/nl';
-// @ts-ignore
-import pl from 'vanillajs-datepicker/js/i18n/locales/pl';
-// @ts-ignore
-import pt from 'vanillajs-datepicker/js/i18n/locales/pt';
+// @ts-ignore no declaration file
+import de from 'vanillajs-datepicker/js/i18n/locales/de'; // eslint-disable-line import/no-unresolved
+// @ts-ignore no declaration file
+import es from 'vanillajs-datepicker/js/i18n/locales/es'; // eslint-disable-line import/no-unresolved
+// @ts-ignore no declaration file
+import fr from 'vanillajs-datepicker/js/i18n/locales/fr'; // eslint-disable-line import/no-unresolved
+// @ts-ignore no declaration file
+import it from 'vanillajs-datepicker/js/i18n/locales/it'; // eslint-disable-line import/no-unresolved
+// @ts-ignore no declaration file
+import nl from 'vanillajs-datepicker/js/i18n/locales/nl'; // eslint-disable-line import/no-unresolved
+// @ts-ignore no declaration file
+import pl from 'vanillajs-datepicker/js/i18n/locales/pl'; // eslint-disable-line import/no-unresolved
+// @ts-ignore no declaration file
+import pt from 'vanillajs-datepicker/js/i18n/locales/pt'; // eslint-disable-line import/no-unresolved
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsDatepickerController } from './core/controller';
-import { OdsInputValue } from '@ovhcloud/ods-common-core';
+import { ODS_ICON_NAME } from '../../../../icon/src';
+import { ODS_INPUT_TYPE } from '../../../../input/src';
 
 Object.assign(Datepicker.locales, de);
 Object.assign(Datepicker.locales, es);
@@ -70,14 +70,14 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
   @Prop({ reflect: true }) name: string = DEFAULT_ATTRIBUTE.name;
   @Prop({ reflect: true }) placeholder?: string = DEFAULT_ATTRIBUTE.placeholder;
   @Prop({ reflect: true }) showSiblingsMonthDays?: boolean = DEFAULT_ATTRIBUTE.showSiblingsMonthDays;
-  @Prop({ reflect: true, mutable: true }) value: OdsInputValue  = DEFAULT_ATTRIBUTE.value;
+  @Prop({ mutable: true, reflect: true }) value: OdsInputValue = DEFAULT_ATTRIBUTE.value;
 
   @Event() odsDatepickerBlur!: EventEmitter<void>;
   @Event() odsDatepickerFocus!: EventEmitter<void>;
   @Event() odsDatepickerValueChange!: EventEmitter<OdsDatepickerValueChangeEventDetail>;
 
   @Listen('odsValueChange')
-  handleInputValueChange(event: CustomEvent) {
+  handleInputValueChange(event: CustomEvent): void {
     if (this.format && event.detail.value.length === this.format.length) {
       this.onChange(new Date(Datepicker.parseDate(event.detail.value, this.format)));
     } else if (event.detail.value.length === 0) {
@@ -91,7 +91,7 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
   @Watch('locale')
   @Watch('maxDate')
   @Watch('minDate')
-  updateDatepicker() {
+  updateDatepicker(): void {
     if (!this.datepickerInstance) {
       return;
     }
@@ -139,7 +139,7 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
       formattedValue: newValue && this.format ? Datepicker.formatDate(newValue, this.format) : undefined,
       name: this.name,
       oldValue: oldValue,
-      value: newValue
+      value: newValue,
     });
   }
 
@@ -186,8 +186,8 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
       minDate: this.minDate
         ? this.minDate
         : undefined,
-      nextArrow: `<osds-icon name="triangle-right" size="sm" color="primary"></osds-icon>`,
-      prevArrow: `<osds-icon name="triangle-left" size="sm" color="primary"></osds-icon>`,
+      nextArrow: '<osds-icon name="triangle-right" size="sm" color="primary"></osds-icon>',
+      prevArrow: '<osds-icon name="triangle-left" size="sm" color="primary"></osds-icon>',
     });
 
     this.datepickerElement = this.el.shadowRoot.querySelector('.datepicker-picker') as HTMLElement;
@@ -276,7 +276,7 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
     }
   }
 
-  formatDate(date?: OdsInputValue) {
+  formatDate(date?: OdsInputValue): string {
     if (this.format && date && date instanceof Date) {
       return Datepicker.formatDate(date, this.format);
     } else {
@@ -284,40 +284,30 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
     }
   }
 
-  render() {
-    const {
-      clearable,
-      disabled,
-      error,
-      hasFocus,
-      inline,
-      placeholder,
-      value,
-    } = this;
-
+  render(): FunctionalComponent {
     return (
-      <Host {...{
-        error,
-        disabled,
-        hasFocus,
-        inline,
-        onBlur: () => this.onBlur(),
-        onFocus: () => this.onFocus(),
-      }}>
+      <Host
+        disabled={ this.disabled }
+        error={ this.error }
+        hasFocus={ this.hasFocus }
+        inline={ this.inline }
+        onBlur={ (): void => this.onBlur() }
+        onFocus={ (): void => this.onFocus() }
+      >
         <osds-input
-          onClick={ () => this.onClick() }
-          clearable={clearable}
-          disabled={disabled}
-          error={error}
+          clearable={ this.clearable }
+          disabled={ this.disabled }
+          error={ this.error }
           icon={ODS_ICON_NAME.CALENDAR}
-          placeholder={placeholder}
+          onClick={ (): void => this.onClick() }
+          placeholder={ this.placeholder }
           type={ODS_INPUT_TYPE.text}
-          value={this.formatDate(value)}
+          value={ this.formatDate(this.value) }
         ></osds-input>
         <input
-          tabindex={-1}
+          tabindex={ -1 }
           class="osds-datepicker__hidden-input"
-          ref={(el?: HTMLInputElement) => this.hiddenInput = el || this.hiddenInput}
+          ref={ (el?: HTMLInputElement): HTMLInputElement | undefined => this.hiddenInput = el || this.hiddenInput }
         ></input>
       </Host>
     );

@@ -1,5 +1,5 @@
-import type { OdsInputValue } from '@ovhcloud/ods-common-core';
 import type { OsdsDatepicker } from '../osds-datepicker';
+import type { OdsInputValue } from '@ovhcloud/ods-common-core';
 
 class OdsDatepickerController {
   private readonly component: OsdsDatepicker;
@@ -8,7 +8,7 @@ class OdsDatepickerController {
     this.component = component;
   }
 
-  beforeInit() {
+  beforeInit(): void {
     if (!this.component.value) {
       this.component.value = this.component.defaultValue;
     }

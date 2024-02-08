@@ -18,7 +18,7 @@ interface OdsDatepickerEvent {
   odsDatepickerValueChange: EventEmitter<OdsDatepickerValueChangeEventDetail>;
 }
 
-export {
+export type {
   OdsDatepickerEvent,
   OdsDatepickerValueChangeEvent,
   OdsDatepickerValueChangeEventDetail,

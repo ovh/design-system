@@ -61,3 +61,27 @@ import Methods from './events-methods/usage.methods.mdx';
 
 ### How to use Methods
 <Methods />
+
+### Accessibility
+
+The usage of a `<label>` tag for the label slots adds a native browser behaviour:
+On click on the label, the browser sets the focus on any native input linked using the `for` attribute.
+
+<Canvas withSource="none">
+    <label for="midable">
+      <osds-text level='heading' color="primary">
+        An accessible label
+      </osds-text>
+    </label>
+    <osds-input type="text" id="midable"></osds-input>
+</Canvas >
+
+```html
+<label for="midable">
+  <osds-text level='heading' color="primary">
+    An accessible label
+  </osds-text>
+</label>
+<osds-input type="text" id="midable"></osds-input>
+```
+

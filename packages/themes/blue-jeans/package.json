@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-theme-blue-jeans",
-  "version": "17.1.0-alpha.2",
+  "version": "17.1.0",
   "description": "Blue Jeans theme, containing color variables & fonts",
   "license": "Apache-2.0",
   "main": "dist/index.css",
@@ -16,10 +16,10 @@
     "lint:scss": "stylelint 'src/**/*.scss'"
   },
   "dependencies": {
-    "@ovhcloud/ods-common-theming": "17.1.0-alpha.2"
+    "@ovhcloud/ods-common-theming": "17.1.0"
   },
   "devDependencies": {
-    "@ovhcloud/ods-style-dev": "17.1.0-alpha.2"
+    "@ovhcloud/ods-style-dev": "17.1.0"
   },
   "browserslist": [
     "last 4 version",

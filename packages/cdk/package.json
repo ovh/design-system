@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-cdk",
-  "version": "17.1.0-alpha.2",
+  "version": "17.1.0",
   "description": "OvhCloud Component Development Kit",
   "author": "OVH SAS",
   "license": "Apache-2.0",
@@ -22,9 +22,9 @@
     "watch": "tsc -w -p tsconfig.esm.json"
   },
   "dependencies": {
-    "@ovhcloud/ods-common-theming": "17.1.0-alpha.2"
+    "@ovhcloud/ods-common-theming": "17.1.0"
   },
   "devDependencies": {
-    "@ovhcloud/ods-dev": "17.1.0-alpha.2"
+    "@ovhcloud/ods-dev": "17.1.0"
   }
 }

@@ -37,7 +37,7 @@ export class OsdsQuantity implements OdsQuantityAttribute {
 
   @Prop({ reflect: true }) ariaLabel: HTMLElement['ariaLabel'] = DEFAULT_ATTRIBUTE.ariaLabel;
 
-  @Prop({ mutable: true, reflect: true }) public disabled?: boolean = DEFAULT_ATTRIBUTE.disabled;
+  @Prop({ mutable: true, reflect: true }) public disabled: boolean = DEFAULT_ATTRIBUTE.disabled;
 
   @Prop({ reflect: true }) defaultValue: OdsInputValue = DEFAULT_ATTRIBUTE.defaultValue;
 

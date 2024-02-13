@@ -43,15 +43,15 @@ describe('e2e:osds-quantity', () => {
     });
 
     it('should have an ariaLabel attribute', async(): Promise<void> => {
-      expect(el).toHaveAttribute('ariaLabel')
+      expect(el).toHaveAttribute('ariaLabel');
     });
 
     it('should have a name attribute', async(): Promise<void> => {
-      expect(el).toHaveAttribute('name')
+      expect(el).toHaveAttribute('name');
     });
 
     it('should have an error attribute', async(): Promise<void> => {
-      expect(el).toHaveAttribute('error')
+      expect(el).toHaveAttribute('error');
     });
   });
 

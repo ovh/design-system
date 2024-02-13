@@ -1,7 +1,7 @@
 import type { OsdsInput } from '../../../../../input/src';
 import { OdsQuantityController } from './controller';
-import { OsdsQuantity } from '../osds-quantity';
 import { ODS_INPUT_TYPE } from '../../../../../input/src';
+import { OsdsQuantity } from '../osds-quantity';
 
 class OdsQuantityMock extends OsdsQuantity {
   constructor(attribute: Partial<OsdsQuantity>) {
@@ -341,7 +341,7 @@ describe('spec:ods-quantity-controller', () => {
         setup();
         component.input = {
           stepDown: jest.fn(),
-        } as any;
+        } as unknown as (OsdsInput & HTMLElement);
       });
 
       it('should call input.stepDown', () => {
@@ -365,7 +365,7 @@ describe('spec:ods-quantity-controller', () => {
         setup();
         component.input = {
           stepUp: jest.fn(),
-        } as any;
+        } as unknown as (OsdsInput & HTMLElement);
       });
 
       it('should call input.stepUp', () => {

@@ -8,3 +8,6 @@
 import '../../icon/src';
 import '../../input/src';
 import '../../text/src';
+import '../../form/src';
+import '../../button/src';
+import '../../input/src';

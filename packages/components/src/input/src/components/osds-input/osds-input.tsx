@@ -93,10 +93,6 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
 
   @Method()
   async setFocus(): Promise<void> {
-    // if (!this.hasFocus && this.inputEl) {
-    //   this.hasFocus = true;
-    //   return this.controller.setFocus(this.inputEl);
-    // }
     this.inputEl?.focus();
   }
 

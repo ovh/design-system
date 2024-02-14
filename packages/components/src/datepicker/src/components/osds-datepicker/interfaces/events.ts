@@ -1,22 +1,14 @@
-import type { EventEmitter } from '@stencil/core';
+import type { OdsCommonFieldEvent, OdsCommonFieldValueChangeEventDetail } from '@ovhcloud/ods-common-core';
 
-interface OdsDatepickerValueChangeEventDetail {
-  name?: string;
+interface OdsDatepickerValueChangeEventDetail extends OdsCommonFieldValueChangeEventDetail {
   formattedValue?: string;
   oldValue?: Date | null;
-  value?: Date | null;
+  value: Date | null;
 }
 
 type OdsDatepickerValueChangeEvent = CustomEvent<OdsDatepickerValueChangeEventDetail>;
 
-interface OdsDatepickerEvent {
-  /** Triggered on blur */
-  odsDatepickerBlur: EventEmitter<void>;
-  /** Triggered on focus */
-  odsDatepickerFocus: EventEmitter<void>;
-  /** Triggered on value change */
-  odsDatepickerValueChange: EventEmitter<OdsDatepickerValueChangeEventDetail>;
-}
+interface OdsDatepickerEvent extends OdsCommonFieldEvent<OdsDatepickerValueChangeEventDetail> {}
 
 export type {
   OdsDatepickerEvent,

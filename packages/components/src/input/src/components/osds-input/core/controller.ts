@@ -52,8 +52,6 @@ class OdsInputController<T extends OsdsInput> extends OdsCommonFieldMethodContro
     if(event.key === 'Space') {
       await callback();
     }
-    this.component.masked = !this.component.masked;
-    this.component.odsHide.emit();
   }
 
   async hasError(): Promise<boolean> {

@@ -53,9 +53,7 @@ export class OsdsSearchBar implements OdsSearchBarAttribute, OdsSearchBarEvent {
 
   // should by handler by the button and just listen the click event
   handlerOnKeydownInput(event: KeyboardEvent): void {
-    const isEnter = event.code.includes('Enter');
-    const isSpace = event.code.includes('Space');
-    if (isEnter || isSpace) {
+    if (event.code.includes('Enter')) {
       this.handlerOnClickSearchButton();
     }
   }
@@ -88,6 +86,7 @@ export class OsdsSearchBar implements OdsSearchBarAttribute, OdsSearchBarEvent {
           type={ ODS_INPUT_TYPE.text }
           clearable
           contrasted={ this.contrasted }
+          onKeyDown={ (event: KeyboardEvent): void => this.handlerOnKeydownInput(event) }
           value={ this.value }
           loading={ this.loading }
           disabled={ this.disabled }
@@ -98,7 +97,6 @@ export class OsdsSearchBar implements OdsSearchBarAttribute, OdsSearchBarEvent {
         <osds-button
           tabindex="2"
           onClick={ () => this.handlerOnClickSearchButton() }
-          onKeyDown={ (event: KeyboardEvent) => this.handlerOnKeydownInput(event) }
           size={ ODS_BUTTON_SIZE.sm }
           color={ ODS_THEME_COLOR_INTENT.primary }
           disabled={ this.disabled }

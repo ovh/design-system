@@ -17,6 +17,13 @@
   }
 
   :host textarea::placeholder {
-    font-style: italic;
+    $typography-properties: ods-get-typography-properties(body, '300');
+
+    line-height: ods-get-typography-property($typography-properties, line-height);
+    letter-spacing: ods-get-typography-property($typography-properties, letter-spacing);
+    font-family: ods-get-typography-property($typography-properties, font-family);
+    font-size: ods-get-typography-property($typography-properties, font-size);
+    font-weight: ods-get-typography-property($typography-properties, font-weight);
+    font-style: ods-get-typography-property($typography-properties, font-style);
   }
 }

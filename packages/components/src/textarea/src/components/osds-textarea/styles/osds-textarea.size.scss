@@ -9,6 +9,7 @@
 
   :host {
     @include osds-textarea-on-main-element {
+      border-width: ods-get-size-property($size-properties, border-width);
       border-radius: ods-get-size-property($size-properties, border-radius);
       padding: ods-get-size-property($size-properties, padding);
     }

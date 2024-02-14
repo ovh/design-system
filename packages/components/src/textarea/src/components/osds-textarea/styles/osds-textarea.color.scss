@@ -13,7 +13,8 @@
         color: map_get($colors, color);
 
         &::placeholder {
-          color: map_get($colors, color);
+          opacity: 1;
+          color: ods-get-color-variable($intent-name: text, $hue: '500');
         }
 
         &:active,

@@ -309,24 +309,24 @@ describe('e2e:osds-pagination', () => {
     });
 
     it('should adapt to default step of 25 if defaultItemsPerPage', async() => {
-      await setup({ attributes: { defaultCurrentPage: 1, defaultItemsPerPage: 25 , totalItems: 20 } });
-
-      pageItemElements = await page.findAll('osds-pagination >>> ul > li:not([class="arrows"])');
-      expect(pageItemElements.length).toBe(1);
-    });
-
-    it('should change the totalPages according to the selected step', async() => {
-      await setup({ attributes: { defaultCurrentPage: 1, totalItems: 20 } });
+      await setup({ attributes: { defaultCurrentPage: 1, defaultItemsPerPage: 25 , totalItems: 30 } });
 
       pageItemElements = await page.findAll('osds-pagination >>> ul > li:not([class="arrows"])');
       expect(pageItemElements.length).toBe(2);
+    });
+
+    it('should change the totalPages according to the selected step', async() => {
+      await setup({ attributes: { defaultCurrentPage: 1, totalItems: 30 } });
+
+      pageItemElements = await page.findAll('osds-pagination >>> ul > li:not([class="arrows"])');
+      expect(pageItemElements.length).toBe(3);
 
       const selectElement = await page.find('osds-pagination >>> osds-select');
       selectElement.setProperty('value', 20);
       await page.waitForChanges();
 
       pageItemElements = await page.findAll('osds-pagination >>> ul > li:not([class="arrows"])');
-      expect(pageItemElements.length).toBe(1);
+      expect(pageItemElements.length).toBe(2);
     });
 
     it('should not allow to go to next page if the current page is the last one', async() => {
@@ -367,6 +367,13 @@ describe('e2e:osds-pagination', () => {
       current = await el.callMethod('getCurrentPage');
       await page.waitForChanges();
       expect(current).toBe(1);
+    });
+
+    it('should hide arrows navigation if total items is lower than item per page', async() => {
+      await setup({ attributes: { current: 1, defaultItemsPerPage: 25 , totalItems: 20 } });
+
+      pageItemElements = await page.findAll('osds-pagination >>> ul > li:not([class="arrows"])');
+      expect(pageItemElements.length).toBe(0);
     });
   });
 });

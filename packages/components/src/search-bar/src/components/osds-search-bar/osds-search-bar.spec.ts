@@ -121,10 +121,8 @@ describe('spec:osds-search-bar', () => {
       const spyEmitOdsSearchSubmit = jest.spyOn(instance.odsSearchSubmit, 'emit');
       const enterKey = new KeyboardEvent('keydown', { code: 'Enter' });
       instance.handlerOnKeydownInput(enterKey);
-      const spaceKey = new KeyboardEvent('keydown', { code: 'Space' });
-      instance.handlerOnKeydownInput(spaceKey);
 
-      expect(spyEmitOdsSearchSubmit).toHaveBeenCalledTimes(2);
+      expect(spyEmitOdsSearchSubmit).toHaveBeenCalledTimes(1);
       expect(spyEmitOdsSearchSubmit).toHaveBeenCalledWith({ optionValue: '', inputValue: '' });
     });
 

@@ -4,13 +4,13 @@
     @return (
       padding: var(--ods-size-textarea-#{$size-name}-padding),
       border-radius: var(--ods-size-textarea-#{$size-name}-border-radius),
+      border-width: var(--ods-size-textarea-#{$size-name}-border-width),
     );
   }
-  
+
   /// @access private
   @function ods-get-textarea-component-size-definition() {
     @return (
       md: ods-get-textarea-size-properties(md),
     );
   }
-  

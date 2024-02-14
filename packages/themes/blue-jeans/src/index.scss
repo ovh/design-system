@@ -442,8 +442,9 @@
         ),
         $textarea: (
           md: (
+            border-width: var(--ods-size-inset-01),
+            border-radius: var(--ods-size-border-radius-01),
             padding: var(--ods-size-inset-04),
-            border-radius: var(--ods-size-03),
           ),
         ),
         $tile: (

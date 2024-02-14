@@ -12,6 +12,10 @@ interface OdsDatepickerAttribute extends Omit<OdsCommonFieldAttribute, 'pattern'
    */
   daysOfWeekDisabled?: ODS_DATEPICKER_DAY[];
   /**
+   * Value of the Datepicker field
+   */
+  defaultValue: Date | null
+  /**
    * Defines which format the Datepicker should be applying (supported formats: https://mymth.github.io/vanillajs-datepicker/#/date-string+format?id=date-format)
    */
   format?: string;
@@ -26,15 +30,19 @@ interface OdsDatepickerAttribute extends Omit<OdsCommonFieldAttribute, 'pattern'
   /**
    * Defines the Datepicker's maximum selectable date
    */
-  maxDate?: Date | undefined | null;
+  maxDate?: Date;
   /**
    * Defines the Datepicker's minimum selectable date
    */
-  minDate?: Date | undefined | null;
+  minDate?: Date;
   /**
    * Defines if the Datepicker should display others month days
    */
   showSiblingsMonthDays?: boolean;
+  /**
+   * Value of the Datepicker field
+   */
+  value: Date | null
 }
 
 export type {

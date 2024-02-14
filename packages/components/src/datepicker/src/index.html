@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html dir='ltr' lang='en'>
+
 <head>
   <meta charset='utf-8' />
   <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0' />
   <title>Dev ods-datepicker</title>
 
   <script type="module">
-    !window.ods && ( window.ods = { config: { logging: { active:true } } } );
+    !window.ods && (window.ods = { config: { logging: { active: true } } });
   </script>
 
   <script type='module' src='/build/osds-datepicker.esm.js'></script>
   <script nomodule src='/build/osds-datepicker.js'></script>
   <link rel="stylesheet" href="/build/osds-datepicker.css">
 </head>
+
 <body>
 
-<osds-datepicker placeholder="dd/mm/yyyy" clearable id="datepicker1" show-siblings-month-days="false"></osds-datepicker>
+  <!-- <osds-datepicker placeholder="dd/mm/yyyy" clearable id="datepicker1" show-siblings-month-days="false"></osds-datepicker>
 <div style="width:100%; height: 50px; background: rgb(220, 220, 220); margin: 20px 0;"></div>
 <osds-datepicker placeholder="dd/mm/yyyy" clearable show-siblings-month-days="false" error=""></osds-datepicker>
 <div style="width:100%; height: 50px; background: rgb(220, 220, 220); margin: 20px 0;"></div>
@@ -29,23 +31,55 @@
 <div style="width:100%; height: 50px; background: rgb(220, 220, 220); margin: 20px 0;"></div>
 <osds-datepicker placeholder="dd/mm/yyyy" inline locale="fr"></osds-datepicker>
 <div style="width:100%; height: 50px; background: rgb(220, 220, 220); margin: 20px 0;"></div>
-<osds-datepicker placeholder="dd/mm/yyyy" id="datepicker2"></osds-datepicker>
+<osds-datepicker placeholder="dd/mm/yyyy" id="datepicker2"></osds-datepicker> -->
+<osds-form initial-values='{"test": "", "input": ""}'>
+  <osds-input clearable name="input">
+  </osds-input>
 
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const datepicker = document.querySelector('#datepicker1');
-    datepicker.value = new Date('2024-01-15');
-    datepicker.maxDate = new Date('2024-01-20');
+  <osds-datepicker clearable id="datepicker1" name="test" placeholder="dd/mm/yyyy" required
+    show-siblings-month-days="false">
+  </osds-datepicker>  
 
-    const datepicker2 = document.querySelector('#datepicker2');
-    datepicker2.datesDisabled = [];
-    datepicker2.datesDisabled.push(new Date('2023-12-25'));
+  <osds-button type="reset">reset</osds-button>  
+  <osds-button type="submit">submit</osds-button>  
+</osds-form>
 
-    setTimeout(() => {
-      console.log(datepicker.value);
-      console.log(datepicker2.datesDisabled);
-    }, 500);
-  });
-</script>
+  <div>
+    <button id="ods-clear">clear</button>
+    <button id="ods-focus">focus</button>
+    <button id="ods-reset">reset</button>
+  </div>
+  <script>
+    const odsDatepicker = document.querySelector('#datepicker1');
+    const odsClearBtn = document.querySelector('#ods-clear');
+    const odsFocusBtn = document.querySelector('#ods-focus');
+    const odsResetBtn = document.querySelector('#ods-reset');
+
+    odsDatepicker.addEventListener('odsBlur', (event) => console.log('odsBlur event'))
+    odsDatepicker.addEventListener('odsClear', (event) => console.log('odsClear event'))
+    odsDatepicker.addEventListener('odsFocus', (event) => console.log('odsFocus event'))
+    odsDatepicker.addEventListener('odsReset', (event) => console.log('odsReset event'))
+
+    odsDatepicker.addEventListener('odsValueChange', (event) => {
+      console.log('🟡 odsValueChange event', event.detail);
+
+      // odsDatepicker.getValidity().then((validity) => {
+      //   console.log('🟡 getValidity odsDatepicker from Event', validity);
+      // });
+    });
+
+    odsClearBtn.addEventListener('click', event => {
+      odsDatepicker.clear();
+    });
+
+    odsFocusBtn.addEventListener('click', event => {
+      odsDatepicker.setFocus();
+    });
+
+    odsResetBtn.addEventListener('click', event => {
+      odsDatepicker.reset();
+    });
+  </script>
 </body>
+
 </html>

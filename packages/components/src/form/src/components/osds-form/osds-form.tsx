@@ -78,7 +78,9 @@ export class OsdsForm implements OdsFormAttribute, OdsFormEvent, OdsFormMethod {
 
   @Method()
   async reset(): Promise<void> {
-    this.onInitialValuesChange();
+    this.onInitialValuesChange((element) => {
+      element?.reset?.();
+    });
     this.formEl?.reset();
     this.odsOnReset.emit();
   }
@@ -89,10 +91,12 @@ export class OsdsForm implements OdsFormAttribute, OdsFormEvent, OdsFormMethod {
   }
 
   @Watch('initialValues')
-  onInitialValuesChange(): void {
+  onInitialValuesChange(callback?: (element?: Element & OdsCommonFieldMethod) => void): void {
     const initialValues = this.controller.getInitialValues();
 
     Object.entries(initialValues).forEach(([name, value]) => {
+      const element = this.getSlotElementByName(name);
+      callback?.(element);
       this.setFieldError(name, false);
       (!this.init || value) && this.setFieldValue(name, value);
     });

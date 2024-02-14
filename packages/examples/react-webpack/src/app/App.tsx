@@ -1,10 +1,11 @@
 import React, { FormEvent, useRef } from 'react';
-import { OsdsInput, OsdsForm, OsdsButton, OsdsSelect, OsdsSelectOption, OsdsPassword, OsdsTextarea } from '@ovhcloud/ods-components/react';
+import { OsdsInput, OsdsForm, OsdsButton, OsdsSelect, OsdsSelectOption, OsdsPassword, OsdsTextarea, OsdsDatepicker } from '@ovhcloud/ods-components/react';
 import { ODS_INPUT_TYPE, ODS_BUTTON_TYPE } from '@ovhcloud/ods-components';
 import './App.css';
 
 const initialValue = {
   country: '',
+  date: null,
   password: '',
   textarea: '',
   user: '',
@@ -79,6 +80,14 @@ const App = () => {
             <OsdsSelectOption value="gb">GB</OsdsSelectOption>
             <OsdsSelectOption value="pt">PT</OsdsSelectOption>
           </OsdsSelect>
+
+          <label htmlFor="date">
+            Date
+          </label>
+          <OsdsDatepicker inline
+                          name="date"
+                          required>
+          </OsdsDatepicker>
         </div>
 
         <OsdsButton type={ ODS_BUTTON_TYPE.reset } inline>

@@ -2,7 +2,7 @@ import type { OdsPaginationAttribute } from '../interfaces/attributes';
 import { ODS_PAGINATION_PER_PAGE_MIN } from './pagination-per-page';
 
 const DEFAULT_ATTRIBUTE: OdsPaginationAttribute = Object.freeze({
-  current: 1,
+  defaultCurrentPage: 1,
   defaultItemsPerPage: ODS_PAGINATION_PER_PAGE_MIN,
   disabled: false,
   labelTooltipNext: '',

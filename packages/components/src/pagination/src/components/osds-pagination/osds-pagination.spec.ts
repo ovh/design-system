@@ -7,7 +7,7 @@ import { ODS_PAGINATION_PER_PAGE_MIN } from './constants/pagination-per-page';
 import { OsdsPagination } from './osds-pagination';
 
 describe('spec:osds-pagination', () => {
-  const baseAttribute = { current: 0, disabled: false, labelTooltipNext: '', labelTooltipPrevious: '', totalPages: 0 };
+  const baseAttribute = { defaultCurrentPage: 0, disabled: false, labelTooltipNext: '', labelTooltipPrevious: '', totalPages: 0 };
   let page: SpecPage;
   let instance: OsdsPagination;
   let htmlPagination: HTMLElement | null | undefined;
@@ -40,53 +40,63 @@ describe('spec:osds-pagination', () => {
   });
 
   describe('attributes', () => {
-    it('if the current of the pagination is 6, then page index should be 6', async() => {
-      await setup({ attributes: { current: 6, totalPages: 10 } });
+    it('if the defaultCurrentPage of the pagination is 6, then page index should be 6', async() => {
+      await setup({ attributes: { defaultCurrentPage: 6, totalPages: 10 } });
 
-      expect(instance.current).toBe(6);
+      expect(instance.defaultCurrentPage).toBe(6);
       expect(instance.itemPerPage).toBe(ODS_PAGINATION_PER_PAGE_MIN);
     });
 
-    it('if the current of the pagination is 2, then page index should be 2', async() => {
-      await setup({ attributes: { current: 2, totalPages: 10 } });
+    it('if the defaultCurrentPage of the pagination is 2, then page index should be 2', async() => {
+      await setup({ attributes: { defaultCurrentPage: 2, totalPages: 10 } });
 
-      expect(instance.current).toBe(2);
+      expect(instance.defaultCurrentPage).toBe(2);
       expect(instance.itemPerPage).toBe(ODS_PAGINATION_PER_PAGE_MIN);
     });
 
     it('if the totalItems is defined itemPerPage should be also', async() => {
-      await setup({ attributes: { current: 2, totalItems: 20 } });
+      await setup({ attributes: { defaultCurrentPage: 2, totalItems: 20 } });
 
-      expect(instance?.current).toBe(2);
+      expect(instance?.defaultCurrentPage).toBe(2);
       expect(instance.itemPerPage).toBe(ODS_PAGINATION_PER_PAGE_MIN);
     });
   });
 
   describe('methods', () => {
     it('should call setPageIndex function and the page index should be set to 4', async() => {
-      await setup({ attributes: { current: 2, totalPages: 10 } });
+      await setup({ attributes: { defaultCurrentPage: 2, totalPages: 10 } });
       expect(instance).toBeTruthy();
 
       await instance.setPageIndex(4);
       expect(instance.current).toBe(4);
     });
+
+    describe('getCurrentPage', () => {
+      it('should return the current page index', async() => {
+        await setup({ attributes: { defaultCurrentPage: 2, totalPages: 10 } });
+
+        await instance.setPageIndex(4);
+        const current = await instance.getCurrentPage();
+        expect(current).toBe(4);
+      });
+    });
   });
 
   describe('disabled', () => {
     it('should disabled attributes is false by default', async() => {
-      await setup({ attributes: { current: 2, totalPages: 10 } });
+      await setup({ attributes: { defaultCurrentPage: 2, totalPages: 10 } });
       expect(page.root?.disabled).toBe(false);
     });
 
     it('should disabled attributes is true', async() => {
-      await setup({ attributes: { current: 2, disabled: true, totalPages: 10 } });
+      await setup({ attributes: { defaultCurrentPage: 2, disabled: true, totalPages: 10 } });
       expect(page.root?.disabled).toBeDefined();
     });
   });
 
   describe('page list', () => {
     it('should set the correct page number', async() => {
-      await setup({ attributes: { current: 2, disabled: false, totalPages: 8 } });
+      await setup({ attributes: { defaultCurrentPage: 2, disabled: false, totalPages: 8 } });
 
       await instance.setPageIndex(3);
 
@@ -95,7 +105,7 @@ describe('spec:osds-pagination', () => {
   });
 
   it('onCurrentChange', async() => {
-    await setup({ attributes: { current: 2, totalPages: 10 } });
+    await setup({ attributes: { defaultCurrentPage: 2, totalPages: 10 } });
 
     const componentDidUpdateSpy = jest.spyOn(instance, 'onCurrentChange');
 
@@ -112,7 +122,7 @@ describe('spec:osds-pagination', () => {
     };
 
     it('should do nothing if event does not have a value', async() => {
-      await setup({ attributes: { current: 2, disabled: false, totalItems: 200 } });
+      await setup({ attributes: { defaultCurrentPage: 2, disabled: false, totalItems: 200 } });
       expect(instance.itemPerPage).toBe(10);
 
       // @ts-ignore for test purpose
@@ -124,7 +134,7 @@ describe('spec:osds-pagination', () => {
 
     it('should do update item per page value', async() => {
       const dummyValue = 50;
-      await setup({ attributes: { current: 2, disabled: false, totalItems: 200 } });
+      await setup({ attributes: { defaultCurrentPage: 2, disabled: false, totalItems: 200 } });
       expect(instance.itemPerPage).toBe(10);
 
       // @ts-ignore for test purpose
@@ -139,8 +149,8 @@ describe('spec:osds-pagination', () => {
 
   describe('Watch', () => {
     describe('onItemPerPageChange', () => {
-      it('should update page list and reset current to 1', async() => {
-        await setup({ attributes: { current: 2, disabled: false, totalItems: 200 } });
+      it('should update page list and reset defaultCurrentPage to 1', async() => {
+        await setup({ attributes: { defaultCurrentPage: 2, disabled: false, totalItems: 200 } });
         const initialPageList = [...instance.pageList];
 
         instance.itemPerPage = 20;
@@ -149,8 +159,8 @@ describe('spec:osds-pagination', () => {
         expect(instance.pageList).not.toEqual(initialPageList);
       });
 
-      it('should update page list without changing current if it is already 1', async() => {
-        await setup({ attributes: { current: 1, disabled: false, totalItems: 200 } });
+      it('should update page list without changing defaultCurrentPage if it is already 1', async() => {
+        await setup({ attributes: { defaultCurrentPage: 1, disabled: false, totalItems: 200 } });
         const initialPageList = [...instance.pageList];
 
         instance.itemPerPage = 20;
@@ -161,8 +171,8 @@ describe('spec:osds-pagination', () => {
     });
 
     describe('onTotalItemsChange', () => {
-      it('should update page list and reset current to 1', async() => {
-        await setup({ attributes: { current: 2, disabled: false, totalItems: 200 } });
+      it('should update page list and reset defaultCurrentPage to 1', async() => {
+        await setup({ attributes: { defaultCurrentPage: 2, disabled: false, totalItems: 200 } });
         const initialPageList = [...instance.pageList];
 
         instance.totalItems = 100;
@@ -171,8 +181,8 @@ describe('spec:osds-pagination', () => {
         expect(instance.pageList).not.toEqual(initialPageList);
       });
 
-      it('should update page list without changing current if it is already 1', async() => {
-        await setup({ attributes: { current: 1, disabled: false, totalItems: 200 } });
+      it('should update page list without changing defaultCurrentPage if it is already 1', async() => {
+        await setup({ attributes: { defaultCurrentPage: 1, disabled: false, totalItems: 200 } });
         const initialPageList = [...instance.pageList];
 
         instance.totalItems = 100;
@@ -225,12 +235,12 @@ describe('spec:osds-pagination', () => {
       });
     });
 
-    describe('current 1->100 with odsUnitTestAttribute', () => {
-      odsUnitTestAttribute<OdsPaginationAttribute, 'current'>({
-        defaultValue: DEFAULT_ATTRIBUTE.current,
-        name: 'current',
+    describe('defaultCurrentPage 1->100 with odsUnitTestAttribute', () => {
+      odsUnitTestAttribute<OdsPaginationAttribute, 'defaultCurrentPage'>({
+        defaultValue: DEFAULT_ATTRIBUTE.defaultCurrentPage,
+        name: 'defaultCurrentPage',
         newValue: 100,
-        setup: (value) => setup({ attributes: { ['current']: value } }),
+        setup: (value) => setup({ attributes: { ['defaultCurrentPage']: value } }),
         value: 1,
         ...config,
       });
@@ -297,17 +307,17 @@ describe('spec:osds-pagination', () => {
    */
 
   it('handlePreviousKeyDown', async() => {
-    await setup({ attributes: { current: 2, totalPages: 10 } });
+    await setup({ attributes: { defaultCurrentPage: 2, totalPages: 10 } });
     expect(instance.handlePreviousKeyDown).toBeTruthy();
 
     const event = new KeyboardEvent('keyDown', { bubbles: true, code: 'Space' });
-    instance.handlePreviousKeyDown(event, instance.current);
+    instance.handlePreviousKeyDown(event, instance.defaultCurrentPage);
 
     expect(instance.current).toBe(1);
   });
 
   it('handlePreviousKeyDown controller', async() => {
-    await setup({ attributes: { current: 2, totalPages: 10 } });
+    await setup({ attributes: { defaultCurrentPage: 2, totalPages: 10 } });
     instance.controller.handlePreviousKeyDown = jest.fn();
 
     instance.handlePreviousKeyDown(new KeyboardEvent('keydown', { key: 'Enter' }), instance.current);
@@ -317,15 +327,15 @@ describe('spec:osds-pagination', () => {
   });
 
   it('handlePreviousClick', async() => {
-    await setup({ attributes: { current: 2, totalPages: 10 } });
+    await setup({ attributes: { defaultCurrentPage: 2, totalPages: 10 } });
     expect(instance.handlePreviousClick).toBeTruthy();
 
-    instance.handlePreviousClick(instance.current);
+    instance.handlePreviousClick(instance.defaultCurrentPage);
     expect(instance.current).toBe(1);
   });
 
   it('handlePageKeyDown', async() => {
-    await setup({ attributes: { current: 2, totalPages: 10 } });
+    await setup({ attributes: { defaultCurrentPage: 2, totalPages: 10 } });
     expect(instance.handlePageKeyDown).toBeTruthy();
 
     const event = new KeyboardEvent('keyDown', { bubbles: true, code: 'Space' });
@@ -335,7 +345,7 @@ describe('spec:osds-pagination', () => {
   });
 
   it('handlePageKeyDown controller', async() => {
-    await setup({ attributes: { current: 2, totalPages: 10 } });
+    await setup({ attributes: { defaultCurrentPage: 2, totalPages: 10 } });
 
     instance.controller.handlePageKeyDown = jest.fn();
     instance.handlePageKeyDown(new KeyboardEvent('keydown', { key: 'Enter' }), 5);
@@ -345,7 +355,7 @@ describe('spec:osds-pagination', () => {
   });
 
   it('handlePageClick', async() => {
-    await setup({ attributes: { current: 2, totalPages: 10 } });
+    await setup({ attributes: { defaultCurrentPage: 2, totalPages: 10 } });
     expect(instance.handlePageClick).toBeTruthy();
 
     instance.handlePageClick(5);
@@ -353,17 +363,17 @@ describe('spec:osds-pagination', () => {
   });
 
   it('handleNextKeyDown', async() => {
-    await setup({ attributes: { current: 2, totalPages: 10 } });
+    await setup({ attributes: { defaultCurrentPage: 2, totalPages: 10 } });
     expect(instance.handleNextKeyDown).toBeTruthy();
 
     const event = new KeyboardEvent('keyDown', { bubbles: true, code: 'Space' });
-    instance.handleNextKeyDown(event, instance.current);
+    instance.handleNextKeyDown(event, instance.defaultCurrentPage);
 
     expect(instance.current).toBe(3);
   });
 
   it('handleNextKeyDown controller', async() => {
-    await setup({ attributes: { current: 2, totalPages: 10 } });
+    await setup({ attributes: { defaultCurrentPage: 2, totalPages: 10 } });
 
     instance.controller.handleNextKeyDown = jest.fn();
     instance.handleNextKeyDown(new KeyboardEvent('keydown', { key: 'Enter' }), instance.current);
@@ -373,16 +383,18 @@ describe('spec:osds-pagination', () => {
   });
 
   it('handleNextClick', async() => {
-    await setup({ attributes: { current: 2, totalPages: 10 } });
+    await setup({ attributes: { defaultCurrentPage: 2, totalPages: 10 } });
     expect(instance.handleNextClick).toBeTruthy();
 
-    instance.handleNextClick(instance.current);
+    instance.handleNextClick(instance.defaultCurrentPage);
     expect(instance.current).toBe(3);
   });
 
   it('left arrow click', async() => {
-    await setup({ attributes: { current: 2, totalPages: 10 } });
+    await setup({ attributes: { defaultCurrentPage: 2, totalPages: 10 } });
     const buttons = htmlPagination?.shadowRoot?.querySelectorAll('osds-button');
+
+    expect(instance.current).toBe(2);
 
     expect(buttons?.[0]).toBeDefined();
 
@@ -393,7 +405,7 @@ describe('spec:osds-pagination', () => {
   });
 
   it('left arrow keyDown', async() => {
-    await setup({ attributes: { current: 2, totalPages: 10 } });
+    await setup({ attributes: { defaultCurrentPage: 2, totalPages: 10 } });
     const buttons = htmlPagination?.shadowRoot?.querySelectorAll('osds-button');
 
     expect(buttons?.[0]).toBeDefined();
@@ -411,7 +423,7 @@ describe('spec:osds-pagination', () => {
   });
 
   it('right arrow click', async() => {
-    await setup({ attributes: { current: 2, totalPages: 10 } });
+    await setup({ attributes: { defaultCurrentPage: 2, totalPages: 10 } });
     const buttons = htmlPagination?.shadowRoot?.querySelectorAll('osds-button');
 
     expect(buttons?.[8]).toBeDefined();
@@ -423,7 +435,7 @@ describe('spec:osds-pagination', () => {
   });
 
   it('right arrow keyDown', async() => {
-    await setup({ attributes: { current: 2, totalPages: 10 } });
+    await setup({ attributes: { defaultCurrentPage: 2, totalPages: 10 } });
     const buttons = htmlPagination?.shadowRoot?.querySelectorAll('osds-button');
 
     expect(buttons?.[8]).toBeDefined();
@@ -441,7 +453,7 @@ describe('spec:osds-pagination', () => {
   });
 
   it('page click on 10', async() => {
-    await setup({ attributes: { current: 2, totalPages: 10 } });
+    await setup({ attributes: { defaultCurrentPage: 2, totalPages: 10 } });
     const buttons = htmlPagination?.shadowRoot?.querySelectorAll('osds-button');
 
     expect(buttons?.[7]).toBeDefined();
@@ -453,7 +465,7 @@ describe('spec:osds-pagination', () => {
   });
 
   it('page keyDown', async() => {
-    await setup({ attributes: { current: 2, totalPages: 10 } });
+    await setup({ attributes: { defaultCurrentPage: 2, totalPages: 10 } });
     const buttons = htmlPagination?.shadowRoot?.querySelectorAll('osds-button');
 
     expect(buttons?.[7]).toBeDefined();

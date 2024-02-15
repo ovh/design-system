@@ -7,9 +7,9 @@ import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../
 defineCustomElement();
 
 const storyParams = {
-  current: {
+  defaultCurrentPage: {
     category: 'General',
-    defaultValue: 5,
+    defaultValue: 4,
   },
   disabled: {
     category: 'Misc',

@@ -31,58 +31,58 @@
 <body>
   <h3>3rd page and previous</h3>
   <div class="row">
-    <osds-pagination current=3 total-pages=21></osds-pagination>
-    <p class="description">21 pages to display, current page 3</p>
+    <osds-pagination default-current-page=3 total-pages=21></osds-pagination>
+    <p class="description">21 pages to display, default current page 3</p>
   </div>
 
   <h3>Between 3rd and antepenultimate page</h3>
   <div class="row">
-    <osds-pagination current=2 total-pages=4></osds-pagination>
-    <p class="description">4 pages to display, current page 1</p>
+    <osds-pagination default-current-page=2 total-pages=4></osds-pagination>
+    <p class="description">4 pages to display, default current page 1</p>
     </div>
 
   <div class="row">
-    <osds-pagination current=5 total-pages=5></osds-pagination>
-    <p class="description">5 pages to display, current page 5</p>
+    <osds-pagination default-current-page=5 total-pages=5></osds-pagination>
+    <p class="description">5 pages to display, default current page 5</p>
   </div>
 
   <h3>Antepenultimate page and after</h3>
   <div class="row">
-    <osds-pagination current=5 total-pages=6></osds-pagination>
-    <p class="description">6 pages to display, current page 5</p>
+    <osds-pagination default-current-page=5 total-pages=6></osds-pagination>
+    <p class="description">6 pages to display, default current page 5</p>
   </div>
 
   <div class="row">
-    <osds-pagination current=5 total-pages=7></osds-pagination>
-    <p class="description">7 pages to display, current page 5</p>
+    <osds-pagination default-current-page=5 total-pages=7></osds-pagination>
+    <p class="description">7 pages to display, default current page 5</p>
   </div>
 
   <div class="row">
-    <osds-pagination current=5 total-pages=9></osds-pagination>
-    <p class="description">9 pages to display, current page 5</p>
+    <osds-pagination default-current-page=5 total-pages=9></osds-pagination>
+    <p class="description">9 pages to display, default current page 5</p>
   </div>
 
   <h3>disabled</h3>
   <div class="row">
-    <osds-pagination current=1 total-pages=6 disabled></osds-pagination>
+    <osds-pagination default-current-page=1 total-pages=6 disabled></osds-pagination>
     <p class="description"></p>
   </div>
 
   <h3>With background with over 9000 pages</h3>
   <div class="row">
-    <osds-pagination current=1 total-pages=9001 ></osds-pagination>
+    <osds-pagination default-current-page=1 total-pages=9001 ></osds-pagination>
     <p class="description">It's over 9000</p>
   </div>
 
   <h3>Less than two pages</h3>
   <div class="row">
-    <osds-pagination current=1 total-pages=1></osds-pagination>
+    <osds-pagination default-current-page=1 total-pages=1></osds-pagination>
     <p class="description">Pagination should not appear</p>
   </div>
 
   <h3>Total items < 10</h3>
   <div class="row">
-    <osds-pagination current=1 total-items=5>
+    <osds-pagination default-current-page=1 total-items=5>
       <span slot="after-total-items">&nbsp;results</span>
     </osds-pagination>
     <p class="description">Select should not appear</p>
@@ -90,7 +90,7 @@
 
   <h3>Total items between 10 and 300</h3>
   <div class="row">
-    <osds-pagination current=2 total-items=60  default-items-per-page=77>
+    <osds-pagination default-current-page=2 total-items=60  default-items-per-page=77>
       <span slot="before-total-items">of&nbsp;</span>
       <span slot="after-total-items">&nbsp;results</span>
     </osds-pagination>
@@ -99,7 +99,7 @@
 
   <h3>Total items above 300</h3>
   <div class="row">
-    <osds-pagination id="paginationAddLabel" current=2 total-items=500 default-items-per-page=50>
+    <osds-pagination id="paginationAddLabel" default-current-page=10 total-items=500 default-items-per-page=50>
       <span slot="before-total-items">of&nbsp;</span>
       <span slot="after-total-items">&nbsp;results</span>
     </osds-pagination>
@@ -108,13 +108,13 @@
 
   <h3>Total items disabled</h3>
   <div class="row">
-    <osds-pagination current=3 total-items=60 disabled></osds-pagination>
+    <osds-pagination default-current-page=3 total-items=60 disabled></osds-pagination>
     <p class="description">All disabled</p>
   </div>
 
   <h3>Change label tooltip</h3>
   <div class="row">
-    <osds-pagination id="paginationEditLabel" current=3 total-pages=21 label-tooltip-previous="Précédent" label-tooltip-next="Suivant"></osds-pagination>
+    <osds-pagination id="paginationEditLabel" default-current-page=3 total-pages=21 label-tooltip-previous="Précédent" label-tooltip-next="Suivant"></osds-pagination>
     <p class="description">labelTooltipPrevious & labelTooltipNext will change after 5 secondes</p>
   </div>
   <script>

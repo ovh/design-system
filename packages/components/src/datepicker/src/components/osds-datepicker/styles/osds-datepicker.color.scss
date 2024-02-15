@@ -124,4 +124,12 @@
   :not([variant]) {
     @include osds-datepicker-theme-color-variant-default;
   }
+
+  :host(:not(variant)[error][color]) {
+    .datepicker {
+      .datepicker-picker {
+        border-color: ods-get-color-variable($intent-name: error, $hue: '500');
+      }
+    }
+  }
 }

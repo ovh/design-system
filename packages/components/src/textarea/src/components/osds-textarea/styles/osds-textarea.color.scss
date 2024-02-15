@@ -17,7 +17,7 @@
           color: ods-get-color-variable($intent-name: text, $hue: '500');
         }
 
-        &:active,
+        &:active:not([disabled]),
         &:focus {
           background-color: var(--ods-color-primary-100);
         }

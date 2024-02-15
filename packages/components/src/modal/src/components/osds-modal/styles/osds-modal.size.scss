@@ -19,8 +19,7 @@
     .wrapper {
       border-radius: var(--ods-size-04);
       padding: 0;
-      width: 512px;
-      min-width: 50%;
+      width: 100%;
       max-width: 512px;
 
       .header {
@@ -42,10 +41,6 @@
           margin-top: var(--ods-size-07);
           width: 100%;
         }
-      }
-
-      @media (width < 786px) {
-        width: 100%
       }
     }
   }

@@ -10,7 +10,7 @@ interface OdsPaginationAttribute {
   /**
    * Its corresponding current page.
    */
-  current: number;
+  defaultCurrentPage: number;
   /**
    * Default items per page.
    */

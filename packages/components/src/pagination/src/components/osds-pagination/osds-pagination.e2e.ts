@@ -7,7 +7,7 @@ import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_PAGINATION_PER_PAGE_OPTIONS } from './constants/pagination-per-page';
 
 describe('e2e:osds-pagination', () => {
-  const baseAttribute = { current: 0, disabled: false, labelTooltipNext: '', labelTooltipPrevious: '', totalPages: 0 };
+  const baseAttribute = { defaultCurrentPage: 0, disabled: false, labelTooltipNext: '', labelTooltipPrevious: '', totalPages: 0 };
   let page: E2EPage;
   let el: E2EElement;
   let osdsButtonPaginationPageButtonElement: E2EElement;
@@ -29,7 +29,7 @@ describe('e2e:osds-pagination', () => {
 
   describe('defaults', () => {
     beforeEach(async() => {
-      await setup({ attributes: { current: 4, totalPages: 10 } });
+      await setup({ attributes: { defaultCurrentPage: 4, totalPages: 10 } });
     });
 
     it('should render', async() => {
@@ -58,68 +58,68 @@ describe('e2e:osds-pagination', () => {
 
   describe('check the pagination structure', () => {
     it('should not render if total pages is less than 2', async() => {
-      await setup({ attributes: { current: 1, totalPages: 1 } });
+      await setup({ attributes: { defaultCurrentPage: 1, totalPages: 1 } });
       expect(el.shadowRoot.innerHTML).toBe('');
     });
 
     it('< 1 2 > should have 4 osds-button', async() => {
-      await setup({ attributes: { current: 1, totalPages: 2 } });
+      await setup({ attributes: { defaultCurrentPage: 1, totalPages: 2 } });
 
       const buttonList = await page.findAll('osds-pagination >>> li >>> osds-button');
       expect(buttonList.length).toBe(4);
     });
 
     it('< 1 2 3 > should have 5 osds-button', async() => {
-      await setup({ attributes: { current: 1, totalPages: 3 } });
+      await setup({ attributes: { defaultCurrentPage: 1, totalPages: 3 } });
 
       const buttonList = await page.findAll('osds-pagination >>> li >>> osds-button');
       expect(buttonList.length).toBe(5);
     });
 
     it('< 1 2 3 4 > should have 6 osds-button', async() => {
-      await setup({ attributes: { current: 1, totalPages: 4 } });
+      await setup({ attributes: { defaultCurrentPage: 1, totalPages: 4 } });
 
       const buttonList = await page.findAll('osds-pagination >>> li >>> osds-button');
       expect(buttonList.length).toBe(6);
     });
 
     it('< 1 2 3 4 5 > should have 7 osds-button', async() => {
-      await setup({ attributes: { current: 1, totalPages: 5 } });
+      await setup({ attributes: { defaultCurrentPage: 1, totalPages: 5 } });
 
       const buttonList = await page.findAll('osds-pagination >>> li >>> osds-button');
       expect(buttonList.length).toBe(7);
     });
 
     it('< 1 2 3 4 5 6 > should have 8 osds-button', async() => {
-      await setup({ attributes: { current: 1, totalPages: 6 } });
+      await setup({ attributes: { defaultCurrentPage: 1, totalPages: 6 } });
 
       const buttonList = await page.findAll('osds-pagination >>> li >>> osds-button');
       expect(buttonList.length).toBe(8);
     });
 
     it('< 1 2 3 4 5 … 7 > should have 9 osds-button', async() => {
-      await setup({ attributes: { current: 1, totalPages: 7 } });
+      await setup({ attributes: { defaultCurrentPage: 1, totalPages: 7 } });
 
       const buttonList = await page.findAll('osds-pagination >>> li >>> osds-button');
       expect(buttonList.length).toBe(9);
     });
 
     it('< 1 2 3 4 5 … 8 > should have 9 osds-button', async() => {
-      await setup({ attributes: { current: 1, totalPages: 8 } });
+      await setup({ attributes: { defaultCurrentPage: 1, totalPages: 8 } });
 
       const buttonList = await page.findAll('osds-pagination >>> li >>> osds-button');
       expect(buttonList.length).toBe(9);
     });
 
     it('< 1 … 4 5 6 … 21 > should have 9 osds-button', async() => {
-      await setup({ attributes: { current: 5, totalPages: 21 } });
+      await setup({ attributes: { defaultCurrentPage: 5, totalPages: 21 } });
 
       const buttonList = await page.findAll('osds-pagination >>> li >>> osds-button');
       expect(buttonList.length).toBe(9);
     });
 
     it('< 1 … 4 5 6 … 9000 > should have 9 osds-button', async() => {
-      await setup({ attributes: { current: 5, totalPages: 9000 } });
+      await setup({ attributes: { defaultCurrentPage: 5, totalPages: 9000 } });
 
       const buttonList = await page.findAll('osds-pagination >>> li >>> osds-button');
       expect(buttonList.length).toBe(9);
@@ -127,76 +127,78 @@ describe('e2e:osds-pagination', () => {
   });
 
   describe('should change page if we click', () => {
-    it('current from 2 to 1 by button click', async() => {
-      await setup({ attributes: { current: 2, totalPages: 5 } });
+    it('switch current page from 2 to 1 by button click', async() => {
+      await setup({ attributes: { defaultCurrentPage: 2, totalPages: 5 } });
 
       const buttonList = await page.findAll('osds-pagination >>> li >>> osds-button');
 
-      const indexBeforeClick = Number(el.getAttribute('current'));
+      const indexBeforeClick = await el.callMethod('getCurrentPage');
       expect(indexBeforeClick).toEqual(2);
 
       await buttonList[1].click();
 
       await page.waitForChanges();
 
-      const current = Number(el.getAttribute('current'));
+      const current = await el.callMethod('getCurrentPage');
       expect(current).toEqual(1);
     });
 
-    it('current from 2 to 3 by button click', async() => {
-      await setup({ attributes: { current: 2, totalPages: 5 } });
+    it('switch current page from 2 to 3 by button click', async() => {
+      await setup({ attributes: { defaultCurrentPage: 2, totalPages: 5 } });
 
       const buttonList = await page.findAll('osds-pagination >>> li >>> osds-button');
 
-      const indexBeforeClick = Number(el.getAttribute('current'));
+      const indexBeforeClick = await el.callMethod('getCurrentPage');
       expect(indexBeforeClick).toEqual(2);
 
       await buttonList[3].click();
 
       await page.waitForChanges();
 
-      const current = Number(el.getAttribute('current'));
+      const current = await el.callMethod('getCurrentPage');
       expect(current).toEqual(3);
     });
 
-    it('current from 2 to 4 by button click', async() => {
-      await setup({ attributes: { current: 2, totalPages: 5 } });
+    it('switch current page from 2 to 4 by button click', async() => {
+      await setup({ attributes: { defaultCurrentPage: 2, totalPages: 5 } });
 
       const buttonList = await page.findAll('osds-pagination >>> li >>> osds-button');
 
-      const indexBeforeClick = Number(el.getAttribute('current'));
+      const indexBeforeClick = await el.callMethod('getCurrentPage');
       expect(indexBeforeClick).toEqual(2);
 
       await buttonList[4].click();
 
       await page.waitForChanges();
 
-      const current = Number(el.getAttribute('current'));
+      const current = await el.callMethod('getCurrentPage');
       expect(current).toEqual(4);
     });
 
-    it('current from 2 to 5 by button click', async() => {
-      await setup({ attributes: { current: 2, totalPages: 5 } });
+    it('switch current page from 2 to 5 by button click', async() => {
+      await setup({ attributes: { defaultCurrentPage: 2, totalPages: 5 } });
 
       const buttonList = await page.findAll('osds-pagination >>> li >>> osds-button');
 
-      const indexBeforeClick = Number(el.getAttribute('current'));
+      const indexBeforeClick = await el.callMethod('getCurrentPage');
       expect(indexBeforeClick).toEqual(2);
 
       await buttonList[5].click();
 
       await page.waitForChanges();
 
-      const current = Number(el.getAttribute('current'));
+      const current = await el.callMethod('getCurrentPage');
       expect(current).toEqual(5);
     });
 
-    it('should emit when current attribute changes', async() => {
-      await setup({ attributes: { current: 2, totalPages: 5 } });
+    it('should emit when current page changes', async() => {
+      await setup({ attributes: { defaultCurrentPage: 2, totalPages: 5 } });
+
+      const buttonList = await page.findAll('osds-pagination >>> li >>> osds-button');
 
       const odsPaginationChanged = await el.spyOnEvent('odsPaginationChanged');
 
-      el.setAttribute('current', 5);
+      await buttonList[5].click();
 
       await page.waitForChanges();
 
@@ -215,7 +217,7 @@ describe('e2e:osds-pagination', () => {
     let perPageSelectElement: E2EElement;
 
     it('should not show the select if the totalItems < 10', async() => {
-      await setup({ attributes: { current: 1, totalItems: 5 } });
+      await setup({ attributes: { defaultCurrentPage: 1, totalItems: 5 } });
 
       perPageSelectElement = await page.find('osds-pagination >>> osds-select');
 
@@ -223,7 +225,7 @@ describe('e2e:osds-pagination', () => {
     });
 
     it('should show all the default step', async() => {
-      await setup({ attributes: { current: 1, totalItems: 500 } });
+      await setup({ attributes: { defaultCurrentPage: 1, totalItems: 500 } });
 
       perPageSelectElement = await page.find('osds-pagination >>> osds-select');
       expect(perPageSelectElement).toBeDefined();
@@ -239,7 +241,7 @@ describe('e2e:osds-pagination', () => {
     });
 
     it('should emit when the itemPerPage attribute changes', async() => {
-      await setup({ attributes: { current: 2, totalItems: 60 } });
+      await setup({ attributes: { defaultCurrentPage: 2, totalItems: 60 } });
 
       const odsPaginationItemPerPageChanged = await el.spyOnEvent('odsPaginationItemPerPageChanged');
 
@@ -266,7 +268,7 @@ describe('e2e:osds-pagination', () => {
 
     it('should show both slots and the totalItems number', async() => {
       await setup({
-        attributes: { current: 1, totalItems: dummyTotalItems },
+        attributes: { defaultCurrentPage: 1, totalItems: dummyTotalItems },
         html: `
           <span slot="before-total-items">of&nbsp;</span>
           <span slot="after-total-items">&nbsp;results</span>
@@ -286,21 +288,21 @@ describe('e2e:osds-pagination', () => {
     let pageItemElements: E2EElement[];
 
     it('should have a default step of 10', async() => {
-      await setup({ attributes: { current: 1, totalItems: 20 } });
+      await setup({ attributes: { defaultCurrentPage: 1, totalItems: 20 } });
 
       pageItemElements = await page.findAll('osds-pagination >>> ul > li:not([class="arrows"])');
       expect(pageItemElements.length).toBe(2);
     });
 
     it('should adapt to default step of 25 if defaultItemsPerPage', async() => {
-      await setup({ attributes: { current: 1, defaultItemsPerPage: 25 , totalItems: 20 } });
+      await setup({ attributes: { defaultCurrentPage: 1, defaultItemsPerPage: 25 , totalItems: 20 } });
 
       pageItemElements = await page.findAll('osds-pagination >>> ul > li:not([class="arrows"])');
       expect(pageItemElements.length).toBe(1);
     });
 
     it('should change the totalPages according to the selected step', async() => {
-      await setup({ attributes: { current: 1, totalItems: 20 } });
+      await setup({ attributes: { defaultCurrentPage: 1, totalItems: 20 } });
 
       pageItemElements = await page.findAll('osds-pagination >>> ul > li:not([class="arrows"])');
       expect(pageItemElements.length).toBe(2);
@@ -314,38 +316,42 @@ describe('e2e:osds-pagination', () => {
     });
 
     it('should not allow to go to next page if the current page is the last one', async() => {
-      await setup({ attributes: { current: 2, totalItems: 30 } });
+      await setup({ attributes: { defaultCurrentPage: 2, totalItems: 30 } });
 
       const allArrows = await page.findAll('osds-pagination >>> .arrows >>> osds-button');
 
       allArrows[1].click();
       await page.waitForChanges();
 
-      let current = Number(el.getAttribute('current'));
+      let current = await el.callMethod('getCurrentPage');
       expect(current).toBe(3);
 
       allArrows[1].click();
       await page.waitForChanges();
 
-      current = Number(el.getAttribute('current'));
+      current = await el.callMethod('getCurrentPage');
       expect(current).toBe(3);
     });
 
     it('should not allow to go to previous page if the current page is the first one', async() => {
-      await setup({ attributes: { current: 2, totalItems: 30 } });
+      await setup({ attributes: { defaultCurrentPage: 2, totalItems: 30 } });
+
+      await page.waitForChanges();
 
       const allArrows = await page.findAll('osds-pagination >>> .arrows >>> osds-button');
 
       allArrows[0].click();
       await page.waitForChanges();
 
-      let current = Number(el.getAttribute('current'));
+      let current = await el.callMethod('getCurrentPage');
+      await page.waitForChanges();
       expect(current).toBe(1);
 
       allArrows[0].click();
       await page.waitForChanges();
 
-      current = Number(el.getAttribute('current'));
+      current = await el.callMethod('getCurrentPage');
+      await page.waitForChanges();
       expect(current).toBe(1);
     });
   });

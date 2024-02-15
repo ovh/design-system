@@ -5,10 +5,10 @@ import { newE2EPage } from '@stencil/core/testing';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 
 describe('e2e:osds-pagination', () => {
-  const baseAttribute = { current: 0, disabled: false, labelTooltipNext: '', labelTooltipPrevious: '', totalPages: 0 };
+  const baseAttribute = { defaultCurrentPage: 0, disabled: false, labelTooltipNext: '', labelTooltipPrevious: '', totalPages: 0 };
   let page: E2EPage;
 
-  async function setup({ attributes = { current: 5, totalPages: 21 }, html = '' }: { attributes?: Partial<OdsPaginationAttribute>; html?: string } = {}): Promise<void> {
+  async function setup({ attributes = { defaultCurrentPage: 5, totalPages: 21 }, html = '' }: { attributes?: Partial<OdsPaginationAttribute>; html?: string } = {}): Promise<void> {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsPaginationAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
@@ -21,18 +21,18 @@ describe('e2e:osds-pagination', () => {
   }
 
   describe('screenshots of totalPages of 21', () => {
-    for (let current = 1; current <= 21; current++) {
+    for (let defaultCurrentPage = 1; defaultCurrentPage <= 21; defaultCurrentPage++) {
       const screenshotActions = [
         {
           action: (): void => {},
-          actionDescription: `page ${current} on 21`,
+          actionDescription: `page ${defaultCurrentPage} on 21`,
         },
       ];
       screenshotActions.forEach(({ action, actionDescription }) => {
         it(actionDescription, async() => {
           await setup({
             attributes: {
-              current,
+              defaultCurrentPage,
               totalPages: 21,
             },
           });
@@ -52,18 +52,18 @@ describe('e2e:osds-pagination', () => {
   });
 
   describe('screenshots of totalPages of 21 and disabled', () => {
-    for (let current = 1; current <= 21; current++) {
+    for (let defaultCurrentPage = 1; defaultCurrentPage <= 21; defaultCurrentPage++) {
       const screenshotActions = [
         {
           action: (): void => {},
-          actionDescription: `page ${current} on 21 and disabled`,
+          actionDescription: `page ${defaultCurrentPage} on 21 and disabled`,
         },
       ];
       screenshotActions.forEach(({ actionDescription, action }) => {
         it(actionDescription, async() => {
           await setup({
             attributes: {
-              current,
+              defaultCurrentPage,
               disabled: true,
               totalPages: 21,
             },
@@ -85,14 +85,14 @@ describe('e2e:osds-pagination', () => {
 
   describe('screenshots with total items', () => {
     it('should not display the per-page select if less than 10 items', async() => {
-      await setup({ attributes: { current: 1, totalItems: 5 } });
+      await setup({ attributes: { defaultCurrentPage: 1, totalItems: 5 } });
 
       const results = await page.compareScreenshot('pagination', { fullPage: false, omitBackground: true });
       expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });
     });
 
     it('should render the per-page select if more than 10 items', async() => {
-      await setup({ attributes: { current: 1, totalItems: 25 } });
+      await setup({ attributes: { defaultCurrentPage: 1, totalItems: 25 } });
 
       const results = await page.compareScreenshot('pagination', { fullPage: false, omitBackground: true });
       expect(results).toMatchScreenshot({ allowableMismatchedRatio: 0 });

@@ -27,10 +27,11 @@ export class OsdsPagination implements OdsPaginationAttribute, OdsPaginationEven
 
   @State() itemPerPage = ODS_PAGINATION_PER_PAGE_MIN;
   @State() pageList: OdsPaginationPageList = [];
+  @State() current: number = 1;
 
   private isFirstLoad: boolean = true;
 
-  @Prop({ mutable: true, reflect: true }) current: number = DEFAULT_ATTRIBUTE.current;
+  @Prop({ reflect: true }) defaultCurrentPage: number = DEFAULT_ATTRIBUTE.defaultCurrentPage;
   @Prop({ reflect: true }) totalItems?: number;
   @Prop({ reflect: true }) defaultItemsPerPage: ODS_PAGINATION_PER_PAGE = DEFAULT_ATTRIBUTE.defaultItemsPerPage;
   @Prop({ reflect: true }) totalPages: number = DEFAULT_ATTRIBUTE.totalPages;
@@ -43,6 +44,7 @@ export class OsdsPagination implements OdsPaginationAttribute, OdsPaginationEven
 
   componentWillLoad(): void {
     this.itemPerPage = ODS_PAGINATION_PER_PAGE_OPTIONS.includes(this.defaultItemsPerPage) && this.defaultItemsPerPage || ODS_PAGINATION_PER_PAGE_MIN;
+    this.current = this.defaultCurrentPage || this.current;
 
     if (this.totalItems) {
       this.actualTotalPages = this.controller.computeActualTotalPages(this.itemPerPage);
@@ -111,6 +113,11 @@ export class OsdsPagination implements OdsPaginationAttribute, OdsPaginationEven
   @Method()
   async setPageIndex(current: number): Promise<void> {
     this.controller.setPageIndex(current);
+  }
+
+  @Method()
+  async getCurrentPage(): Promise<number> {
+    return this.current;
   }
 
   private emitChange(current: number, oldCurrent?: number): void {

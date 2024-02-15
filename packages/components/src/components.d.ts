@@ -1044,7 +1044,7 @@ export namespace Components {
         /**
           * Its corresponding current page.
          */
-        "current": number;
+        "defaultCurrentPage": number;
         /**
           * Default items per page.
          */
@@ -1053,6 +1053,7 @@ export namespace Components {
           * indicates if the pagination is entirely disabled. it means no interactions (hover, click, focus, etc)
          */
         "disabled": boolean;
+        "getCurrentPage": () => Promise<number>;
         /**
           * The label of the tooltip on the arrow next
          */
@@ -3732,7 +3733,7 @@ declare namespace LocalJSX {
         /**
           * Its corresponding current page.
          */
-        "current"?: number;
+        "defaultCurrentPage"?: number;
         /**
           * Default items per page.
          */

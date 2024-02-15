@@ -6,7 +6,7 @@
 ### OdsPaginationAttribute
 |Name | Type | Required | Default | Description|
 |---|---|:---:|---|---|
-|**`current`** | _number_ | ✴️ |  | Its corresponding current page.|
+|**`defaultCurrentPage`** | _number_ | ✴️ |  | Its corresponding current page.|
 |**`defaultItemsPerPage`** | `ODS_PAGINATION_PER_PAGE` | ✴️ |  | Default items per page.|
 |**`disabled`** | _boolean_ | ✴️ |  | indicates if the pagination is entirely disabled.it means no interactions (hover, click, focus, etc)|
 |**`labelTooltipNext`** | _string_ | ✴️ |  | The label of the tooltip on the arrow next|

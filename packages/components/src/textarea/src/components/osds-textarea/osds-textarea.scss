@@ -23,6 +23,12 @@
   }
 }
 
+:host([disabled]) {
+  textarea {
+    cursor: not-allowed;
+  }
+}
+
 :host([inline]) {
   display: inline-flex;
   width: var(--width);

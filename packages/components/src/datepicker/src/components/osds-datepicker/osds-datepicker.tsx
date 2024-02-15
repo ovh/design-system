@@ -204,13 +204,6 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
       element.removeAttribute('tabindex');
     });
 
-    const datepickerDayNames = this.el.shadowRoot.querySelectorAll('.dow');
-    datepickerDayNames.forEach((day) => {
-      if (day.textContent) {
-        day.textContent = day.textContent.trim().charAt(0);
-      }
-    });
-
     const viewSwitch = this.el.shadowRoot.querySelector('.view-switch') as HTMLElement;
     const chevron = document.createElement('osds-icon');
     chevron.setAttribute('name', 'chevron-down');

@@ -16,6 +16,7 @@ export class OsdsForm implements OdsFormAttribute, OdsFormEvent, OdsFormMethod {
   private readonly controller = new OdsFormController(this);
   private readonly internalMap = new Map<string, { value: OdsInputValue, error: boolean }>();
   private formEl?: HTMLFormElement;
+  private init = true;
 
   @Element() el!: HTMLElement;
 
@@ -84,6 +85,7 @@ export class OsdsForm implements OdsFormAttribute, OdsFormEvent, OdsFormMethod {
 
   componentWillLoad(): void {
     this.onInitialValuesChange();
+    this.init = false;
   }
 
   @Watch('initialValues')
@@ -92,7 +94,7 @@ export class OsdsForm implements OdsFormAttribute, OdsFormEvent, OdsFormMethod {
 
     Object.entries(initialValues).forEach(([name, value]) => {
       this.setFieldError(name, false);
-      this.setFieldValue(name, value);
+      (!this.init || value) && this.setFieldValue(name, value);
     });
   }
 

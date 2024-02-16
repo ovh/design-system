@@ -48,6 +48,12 @@ class OdsInputController<T extends OsdsInput> extends OdsCommonFieldMethodContro
     }
   }
 
+  async handleKeySpace(event: KeyboardEvent, callback: () => Promise<void>): Promise<void> {
+    if(event.key === 'Space') {
+      await callback();
+    }
+  }
+
   async hasError(): Promise<boolean> {
     if (!this.component.inputEl) {
       return this.component.error;

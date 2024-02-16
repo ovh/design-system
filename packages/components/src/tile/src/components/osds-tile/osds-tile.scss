@@ -13,59 +13,51 @@
   }
 
   :host(&--checking){
-    @include osds-tile-on-selected-host {
-      position: relative;
-      overflow: visible;
+    position: relative;
+    overflow: visible;
 
-      &::after {
-        position: absolute;
-        top: -2px;
-        left: -2px;
-        z-index: -1;
-        background-size: 400%;
-        width: calc(100% + 4px);
-        height: calc(100% + 4px);
-        animation: steam 3s linear infinite;
-        content: '';
-        filter: blur(5px);
+    &::after {
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      z-index: -1;
+      background-size: 400%;
+      width: calc(100% + 4px);
+      height: calc(100% + 4px);
+      animation: steam 3s linear infinite;
+      content: '';
+      filter: blur(5px);
+    }
+
+    @keyframes steam {
+      0% {
+        background-position: 0 0;
       }
 
-      @keyframes steam {
-        0% {
-          background-position: 0 0;
-        }
+      50% {
+        background-position: 100% 0;
+      }
 
-        50% {
-          background-position: 100% 0;
-        }
-
-        100% {
-          background-position: 0 0;
-        }
+      100% {
+        background-position: 0 0;
       }
     }
   }
 
   :host(&--disabled){
-    @include osds-tile-on-selected-host {
-      cursor: not-allowed;
+    cursor: not-allowed;
 
-      * {
-        pointer-events: none;
-      }
+    * {
+      pointer-events: none;
     }
   }
 
   :host(&--disabled:not(&--checking)){
-    @include osds-tile-on-selected-host {
-      opacity: .5;
-    }
+    opacity: .5;
   }
 
   :host(&--hoverable:not(&--disabled)) {
-    @include osds-tile-on-selected-host {
-      cursor: pointer;
-    }
+    cursor: pointer;
   }
 
   :host(&--inline){

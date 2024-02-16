@@ -194,25 +194,33 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
 
         {
           isPassword && !this.loading && (
-            <osds-icon
-              ariaName={ `${this.masked ? ODS_ICON_NAME.EYE_OPEN : ODS_ICON_NAME.EYE_CLOSED} icon` }
-              color={ ODS_THEME_COLOR_INTENT.primary }
-              name={ this.masked ? ODS_ICON_NAME.EYE_OPEN : ODS_ICON_NAME.EYE_CLOSED }
+            <button
+              class="osds-input__icon-button"
               onClick={ (): Promise<void> => this.hide() }
-              size={ ODS_ICON_SIZE.sm }>
-            </osds-icon>
+              onKeyUp={ (event: KeyboardEvent): Promise<void> => this.controller.handleKeySpace(event, this.hide) }>
+              <osds-icon
+                ariaName={ `${this.masked ? ODS_ICON_NAME.EYE_OPEN : ODS_ICON_NAME.EYE_CLOSED} icon` }
+                color={ ODS_THEME_COLOR_INTENT.primary }
+                name={ this.masked ? ODS_ICON_NAME.EYE_OPEN : ODS_ICON_NAME.EYE_CLOSED }
+                size={ ODS_ICON_SIZE.sm }>
+              </osds-icon>
+            </button>
           )
         }
 
         {
           this.clearable && !this.loading && (
-            <osds-icon
-              ariaName={ `${ODS_ICON_NAME.CLOSE} icon` }
-              color={ ODS_THEME_COLOR_INTENT.primary }
-              name={ ODS_ICON_NAME.CLOSE }
+            <button
+              class="osds-input__icon-button"
               onClick={ (): Promise<void> => this.clear() }
-              size={ ODS_ICON_SIZE.sm }>
-            </osds-icon>
+              onKeyUp={ (event: KeyboardEvent): Promise<void> => this.controller.handleKeySpace(event, this.clear) }>
+              <osds-icon
+                ariaName={ `${ODS_ICON_NAME.CLOSE} icon` }
+                color={ ODS_THEME_COLOR_INTENT.primary }
+                name={ ODS_ICON_NAME.CLOSE }
+                size={ ODS_ICON_SIZE.sm }>
+              </osds-icon>
+            </button>
           )
         }
 

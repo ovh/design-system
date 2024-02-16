@@ -6,6 +6,15 @@
 @import '~@ovhcloud/ods-common-theming/reset/ods-theming-reset.input';
 @import '~@ovhcloud/ods-common-theming/ods-theme';
 
+.osds-input {
+  &__icon-button {
+    display: inline-flex;
+    border: none;
+    background: none;
+    padding: 0;
+  }
+}
+
 :host {
   box-sizing: border-box;
   display: flex;

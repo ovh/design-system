@@ -44,7 +44,7 @@
 
 :not([disabled]) {
   :host(&:hover),
-  :host(&:focus) {
+  :host(&:focus-within) {
     @include osds-link-on-text-content {
       transition: background-size .2s ease-out;
       background-size: 100% var(--ods-size-02);

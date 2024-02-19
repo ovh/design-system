@@ -1,0 +1,28 @@
+{
+  "name": "@ovhcloud/ods-components-react",
+  "version": "17.1.0",
+  "private": true,
+  "description": "React specific wrapper for ods",
+  "keywords": [],
+  "author": "OVH SAS",
+  "license": "Apache-2.0",
+  "scripts": {
+    "build": "npm run clean && npm run compile",
+    "clean": "rimraf dist",
+    "compile": "npm run compile:esm && npm run compile:cjs",
+    "compile:esm": "tsc -p tsconfig.json",
+    "compile:cjs": "tsc -p tsconfig.cjs.json",
+    "test:e2e": "concurrently -s first -k \"npm run start --prefix tests/_app\" \"jest -c tests/jest.config.js\"",
+    "test:e2e:ci": "npm run test:e2e"
+  },
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "files": [
+    "dist/"
+  ],
+  "peerDependencies": {
+    "react": ">=16.8.6",
+    "react-dom": ">=16.8.6"
+  }
+}

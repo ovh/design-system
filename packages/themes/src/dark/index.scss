@@ -1,0 +1,5 @@
+@use '../default';
+
+:root[data-theme='dark'] {
+  --ods-text-background-color: var(--ods-color-gray-900);
+}

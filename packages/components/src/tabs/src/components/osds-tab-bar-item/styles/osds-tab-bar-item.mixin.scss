@@ -1,5 +1,0 @@
-@mixin osds-tab-bar-item-on-selected-host() {
-    :host(&) {
-      @content;
-    }
-}

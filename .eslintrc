@@ -3,22 +3,22 @@
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended"
   ],
-  "ignorePatterns": [
-    "**/.yarn/**",
-    "**/assets/**",
-    "**/docs/**",
-    "**/packages/**/dist/**",
-    "**/packages/**/doc/**",
-    "**/packages/themes/**",
-    "**/packages/components/**/custom-elements",
-    "**/packages/components/**/custom-elements-bundle",
-    "**/packages/components/**/documentation",
-    "**/packages/components/**/loader",
-    "**/packages/components/**/react",
-    "**/packages/components/**/vue",
-    "**/packages/components/**/www",
-    "**/*.d.ts"
-  ],
+//  "ignorePatterns": [
+//    "**/.yarn/**",
+//    "**/assets/**",
+//    "**/docs/**",
+//    "**/packages/**/dist/**",
+//    "**/packages/**/doc/**",
+//    "**/packages/themes/**",
+////    "**/packages/components/**/custom-elements",
+////    "**/packages/components/**/custom-elements-bundle",
+////    "**/packages/components/**/documentation",
+////    "**/packages/components/**/loader",
+////    "**/packages/components/**/react",
+////    "**/packages/components/**/vue",
+//    "**/packages/**/www",
+//    "**/*.d.ts"
+//  ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 2020,
@@ -69,9 +69,7 @@
         ],
         "newlines-between": "never",
         "alphabetize": {
-          /* sort in ascending order. Options: ["ignore", "asc", "desc"] */
           "order": "asc",
-          /* ignore case. Options: [true, false] */
           "caseInsensitive": true
         }
       }

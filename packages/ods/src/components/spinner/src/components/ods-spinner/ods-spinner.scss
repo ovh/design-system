@@ -1,0 +1,49 @@
+$spinner-size-sm: 20px;
+$spinner-size-md: 40px;
+$spinner-size-lg: 60px;
+
+:host(.ods-spinner) {
+  display: block;
+  height: 100%;
+}
+
+:host(.ods-spinner--inline) {
+  display: inline-block;
+}
+
+.ods-spinner {
+  &__container {
+    height: 100%;
+
+    &--sm {
+      height: $spinner-size-sm;
+    }
+
+    &--md {
+      height: $spinner-size-md;
+    }
+
+    &--lg {
+      height: $spinner-size-lg;
+    }
+
+    &--primary {
+      fill: var(--ods-color-primary-500);
+    }
+
+    > svg {
+      height: 100%;
+      animation: rotate 0.8s infinite linear;
+    }
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

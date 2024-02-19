@@ -1,0 +1,32 @@
+.ods-textarea__textarea {
+  box-sizing: border-box;
+  border: var(--ods-border-width-sm) solid var(--ods-form-element-border-color-default);
+  border-radius: var(--ods-border-radius-sm);
+  padding: 4px 8px;
+  height: 32px;
+  color: var(--ods-color-text);
+  font-size: 1rem;
+  height: auto;
+  resize: none;
+}
+.ods-textarea__textarea:focus {
+  outline: var(--ods-outline-style) var(--ods-outline-width) var(--ods-color-primary-700);
+  outline-offset: var(--ods-outline-offset);
+}
+.ods-textarea__textarea:disabled {
+  background-color: var(--ods-color-neutral-100);
+  cursor: not-allowed;
+  color: var(--ods-form-element-foreground-color-disabled);
+}
+.ods-textarea__textarea:-moz-read-only {
+  color: var(--ods-form-element-foreground-color-readonly);
+}
+.ods-textarea__textarea:read-only {
+  color: var(--ods-form-element-foreground-color-readonly);
+}
+.ods-textarea__textarea--error {
+  border-color: var(--ods-form-element-border-color-critical);
+}
+.ods-textarea__textarea--resizable {
+  resize: both;
+}

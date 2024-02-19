@@ -1,5 +1,0 @@
-@import '~@ovhcloud/ods-common-theming/color/ods-component-color';
-
-::slotted(*) {
-  color: ods-get-color-variable($intent-name: primary, $hue: '800');
-}

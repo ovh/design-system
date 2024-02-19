@@ -90,7 +90,7 @@ Then, in your view, you can start using ODS components. For instance:
 For more detail, see our global [Get Started](https://ovh.github.io/design-system/latest/?path=/story/ovhcloud-design-system-get-started--page) guide
 
 ## Contribute
-You've developed a new cool feature ? Fixed an annoying bug ? We'd be happy to hear from you !
+You've developed a new cool feature? Fixed an annoying bug? We'd be happy to hear from you!
 
 Please read [Get Started](https://ovh.github.io/design-system/latest/?path=/story/contributing-get-started--page) guide for contributing and [CONTRIBUTING.md](https://github.com/ovh/design-system/blob/master/CONTRIBUTING.md) 😃
 

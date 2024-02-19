@@ -1,9 +1,0 @@
-@import '~@ovhcloud/ods-common-theming/color/ods-component-color';
-
-@mixin osds-menu-theme-color() {
-  ocdk-surface {
-    box-shadow: 0 0 6px #00000026;
-    background: var(--white) 0% 0% no-repeat padding-box;
-    background: #FFF 0% 0% no-repeat padding-box;
-  }
-}

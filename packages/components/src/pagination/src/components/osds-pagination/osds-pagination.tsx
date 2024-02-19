@@ -71,7 +71,7 @@ export class OsdsPagination implements OdsPaginationAttribute, OdsPaginationEven
     const { value } = event.detail;
 
     if (value) {
-      this.itemPerPage = typeof value === 'number' ? value : parseInt(value, 10);
+      this.itemPerPage = typeof value === 'number' ? value : parseInt(value.toString(), 10);
     }
   }
 
@@ -256,23 +256,18 @@ export class OsdsPagination implements OdsPaginationAttribute, OdsPaginationEven
         {
           !!this.totalItems
           && <>
-            {
-              this.totalItems >= ODS_PAGINATION_PER_PAGE_MIN
-              && <>
-                <osds-select disabled={this.disabled}
-                  value={this.itemPerPage}>
-                  {
-                    ODS_PAGINATION_PER_PAGE_OPTIONS.map((option) => (
-                      <osds-select-option key={option}
-                        value={option}>
-                        {option}
-                      </osds-select-option>
-                    ))
-                  }
-                </osds-select>
-                &nbsp;
-              </>
-            }
+            <osds-select disabled={this.disabled}
+              value={this.itemPerPage}>
+              {
+                ODS_PAGINATION_PER_PAGE_OPTIONS.map((option) => (
+                  <osds-select-option key={option}
+                    value={option}>
+                    {option}
+                  </osds-select-option>
+                ))
+              }
+            </osds-select>
+            &nbsp;
             <osds-text color={ODS_THEME_COLOR_INTENT.primary}
               size={ODS_TEXT_SIZE._500}>
               <slot name="before-total-items"></slot>
@@ -283,44 +278,42 @@ export class OsdsPagination implements OdsPaginationAttribute, OdsPaginationEven
         }
 
         {
-          ( !this.totalItems || this.totalItems > this.itemPerPage) && (
-            <ul>
-              {this.renderArrows('left')}
+          <ul>
+            { this.renderArrows('left') }
 
-              {
-                this.pageList
-                  .filter((page) => page.active)
-                  .map((page) => {
-                    const pageId = this.pageList.indexOf(page) + 1;
+            {
+              this.pageList
+                .filter((page) => page.active)
+                .map((page) => {
+                  const pageId = this.pageList.indexOf(page) + 1;
 
-                    return (
-                      <>
-                        {this.pageList.length > 6 && this.pageList.length - this.current > 3 && pageId === this.pageList.length && this.renderEllipsis()}
+                  return (
+                    <>
+                      {this.pageList.length > 6 && this.pageList.length - this.current > 3 && pageId === this.pageList.length && this.renderEllipsis()}
 
-                        <li>
-                          <osds-button
-                            key={pageId}
-                            class={`${this.current === pageId ? 'selected-page' : ''}`}
-                            variant={this.current === pageId ? ODS_BUTTON_VARIANT.flat : ODS_BUTTON_VARIANT.ghost}
-                            disabled={this.disabled}
-                            inline
-                            color={ODS_THEME_COLOR_INTENT.primary}
-                            size={ODS_BUTTON_SIZE.sm}
-                            onKeyDown={(event: KeyboardEvent): void => this.handlePageKeyDown(event, Number(pageId))}
-                            onClick={(): void => this.handlePageClick(Number(pageId))}>
-                            {pageId}
-                          </osds-button>
-                        </li>
+                      <li>
+                        <osds-button
+                          key={pageId}
+                          class={`${this.current === pageId ? 'selected-page' : ''}`}
+                          variant={this.current === pageId ? ODS_BUTTON_VARIANT.flat : ODS_BUTTON_VARIANT.ghost}
+                          disabled={this.disabled}
+                          inline
+                          color={ODS_THEME_COLOR_INTENT.primary}
+                          size={ODS_BUTTON_SIZE.sm}
+                          onKeyDown={(event: KeyboardEvent): void => this.handlePageKeyDown(event, Number(pageId))}
+                          onClick={(): void => this.handlePageClick(Number(pageId))}>
+                          {pageId}
+                        </osds-button>
+                      </li>
 
-                        {this.pageList.length > 6 && this.current > 4 && pageId === 1 && this.renderEllipsis()}
-                      </>
-                    );
-                  })
-              }
+                      {this.pageList.length > 6 && this.current > 4 && pageId === 1 && this.renderEllipsis()}
+                    </>
+                  );
+                })
+            }
 
-              {this.renderArrows('right')}
-            </ul>
-          )
+            { this.renderArrows('right') }
+          </ul>
         }
       </Host>
     );

@@ -230,14 +230,6 @@ describe('e2e:osds-pagination', () => {
   describe('render with totalItems set', () => {
     let perPageSelectElement: E2EElement;
 
-    it('should not show the select if the totalItems < 10', async() => {
-      await setup({ attributes: { defaultCurrentPage: 1, totalItems: 5 } });
-
-      perPageSelectElement = await page.find('osds-pagination >>> osds-select');
-
-      expect(perPageSelectElement).toBe(null);
-    });
-
     it('should show all the default step', async() => {
       await setup({ attributes: { defaultCurrentPage: 1, totalItems: 500 } });
 
@@ -367,13 +359,6 @@ describe('e2e:osds-pagination', () => {
       current = await el.callMethod('getCurrentPage');
       await page.waitForChanges();
       expect(current).toBe(1);
-    });
-
-    it('should hide arrows navigation if total items is lower than item per page', async() => {
-      await setup({ attributes: { current: 1, defaultItemsPerPage: 25 , totalItems: 20 } });
-
-      pageItemElements = await page.findAll('osds-pagination >>> ul > li:not([class="arrows"])');
-      expect(pageItemElements.length).toBe(0);
     });
   });
 });

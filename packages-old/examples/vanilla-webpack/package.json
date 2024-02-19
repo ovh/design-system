@@ -1,0 +1,35 @@
+{
+  "name": "vanilla-webpack",
+  "version": "17.1.0",
+  "private": true,
+  "description": "Example of how to use ODS with vanilla JS",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "start": "webpack serve --config webpack.config.js --mode=development"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@ovhcloud/ods-components": "17.1.0",
+    "@ovhcloud/ods-theme-blue-jeans": "17.1.0"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-runtime": "7.19.6",
+    "@babel/preset-env": "7.20.2",
+    "@babel/preset-typescript": "7.22.5",
+    "@ovhcloud/ods-dev": "17.1.0",
+    "@types/webpack": "5.28.5",
+    "babel-loader": "9.1.2",
+    "css-loader": "6.7.3",
+    "html-webpack-plugin": "5.5.0",
+    "mini-css-extract-plugin": "2.7.2",
+    "node-sass": "8.0.0",
+    "postcss-loader": "7.0.2",
+    "resolve-url-loader": "5.0.0",
+    "sass-loader": "13.2.0",
+    "webpack": "5.76.2",
+    "webpack-cli": "5.0.1",
+    "webpack-dev-server": "4.11.1"
+  }
+}

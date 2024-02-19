@@ -1,0 +1,32 @@
+{
+  "name": "@ovhcloud/ods-components-old",
+  "version": "17.1.0",
+  "description": "ODS Components",
+  "author": "OVH SAS",
+  "license": "Apache-2.0",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.js",
+  "es2015": "dist/esm/index.js",
+  "es2017": "dist/esm/index.js",
+  "jsnext:main": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "collection": "dist/collection/collection-manifest.json",
+  "collection:main": "dist/collection/index.js",
+  "scripts": {
+    "build:ci": "npm run build:prod",
+    "build:prod": "build-stencil",
+    "build:stencil": "stencil build --prod --config stencil.config.ts",
+    "build:react": "npm --prefix react run build",
+    "build:vue": "npm --prefix vue run build"
+  },
+  "dependencies": {
+    "@ovhcloud/ods-common-core": "17.1.0",
+    "@ovhcloud/ods-common-stencil": "17.1.0",
+    "@ovhcloud/ods-common-theming": "17.1.0"
+  },
+  "devDependencies": {
+    "@ovhcloud/ods-common-scripts": "17.1.0",
+    "@ovhcloud/ods-common-testing": "17.1.0",
+    "@ovhcloud/ods-stencil-dev": "17.1.0"
+  }
+}

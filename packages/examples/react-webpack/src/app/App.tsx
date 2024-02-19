@@ -1,137 +1,122 @@
-import React, { FormEvent, useRef } from 'react';
-import { ODS_COUNTRY_ISO_CODE, ODS_LOCALE } from '@ovhcloud/ods-common-core';
-import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
-import { ODS_BUTTON_SIZE, ODS_BUTTON_TYPE, ODS_BUTTON_VARIANT, ODS_INPUT_SIZE, ODS_INPUT_TYPE } from '@ovhcloud/ods-components';
-import { OsdsButton, OsdsDatepicker, OsdsDivider, OsdsInput, OsdsPassword, OsdsPhoneNumber, OsdsQuantity, OsdsRange, OsdsSearchBar, OsdsSelect, OsdsSelectOption, OsdsTextarea } from '@ovhcloud/ods-components/react';
+// import type { Components } from '@ovhcloud/ods-components';
+import React, { useEffect, useState } from 'react';
+import { ODS_SPINNER_SIZE, ODS_TEXT_PRESET } from '@ovhcloud/ods-components';
+import { OdsSpinner, OdsText } from '@ovhcloud/ods-components/react';
+import { ODS_THEME } from '@ovhcloud/ods-themes';
+import { OText } from './OText';
+import styles from './app.scss';
+
+// interface MyTextProp extends Omit<Components.OdsText, 'getFormattedText'> {}
+//
+// const MyText = (props: MyTextProp) => {
+//   return (
+//     <OdsText neededFlag={ props.neededFlag }>
+//       Custom text with preset: { props.preset }
+//     </OdsText>
+//   )
+// }
 
 const App = () => {
-  const formRef = useRef(null);
+  const [theme, setTheme] = useState<string>()
 
-  function onSubmit(event: FormEvent) {
-    event.preventDefault();
-    if (formRef.current) {
-      const formData = new FormData(formRef.current);
-      console.log(formData)
-    }
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme || '')
+  }, [theme])
+
+  function onBasicThemeClick() {
+    setTheme('basic')
   }
 
-  function onReset() {
-    console.log('form reset')
+  function onDarkThemeClick() {
+    setTheme(ODS_THEME.dark)
+  }
+
+  function onNoThemeClick() {
+    setTheme('')
   }
 
   return (
-    <form ref={ formRef }
-          onReset={ onReset }
-          onSubmit={ onSubmit }>
-      <OsdsSearchBar onOdsBlur={() => console.log('blur search bar')}
-                     onOdsFocus={() => console.log('focus search bar')}
-                     onOdsValueChange={(event) => console.log('value change search bar', event)} />
+    <div>
+      <h1 className={ styles['app__title'] }>
+        Headline with ODS mixin
+      </h1>
 
-      <OsdsDivider />
+      <OdsText preset={ ODS_TEXT_PRESET.headline }
+               onFocusEvent={ (e) => console.log(e) }
+               neededFlag={ true }>
+        ODS Text Headline
+      </OdsText>
 
-      <OsdsInput defaultValue="some text"
-                 name="input"
-                 onOdsInputBlur={() => console.log('blur input')}
-                 onOdsInputFocus={() => console.log('focus input')}
-                 onOdsValueChange={() => console.log('value change input')}
-                 placeholder="Type your some text"
-                 required
-                 size={ ODS_INPUT_SIZE.md }
-                 type={ ODS_INPUT_TYPE.text }
-                 value="" />
+      {/*<MyText neededFlag={ true } />*/}
+      <OText preset={ ODS_TEXT_PRESET.headline }
+             neededFlag={ true } />
 
-      <OsdsDivider />
+      <OdsSpinner size={ ODS_SPINNER_SIZE.sm } />
 
-      <OsdsPassword name="password"
-                    onOdsBlur={() => console.log('blur password')}
-                    onOdsFocus={() => console.log('focus password')}
-                    onOdsValueChange={() => console.log('value change password')}
-                    required />
+      <br />
 
-      <OsdsDivider />
+      <div>
+        <button onClick={ onBasicThemeClick }>
+          Theme basic
+        </button>
 
-      <OsdsTextarea name="textarea"
-                    onOdsBlur={() => console.log('blur textarea')}
-                    onOdsFocus={() => console.log('focus textarea')}
-                    onOdsValueChange={() => console.log('value change textarea')}
-                    required />
+        <button onClick={ onDarkThemeClick }>
+          Theme dark
+        </button>
 
-      <OsdsDivider />
-
-      <OsdsSelect name="select"
-                  onOdsBlur={() => console.log('blur select')}
-                  onOdsFocus={() => console.log('focus select')}
-                  onOdsValueChange={() => console.log('value change select')}
-                  required>
-        <OsdsSelectOption value="option1">Option 1</OsdsSelectOption>
-        <OsdsSelectOption value="option2">Option 2</OsdsSelectOption>
-        <OsdsSelectOption value="option3">Option 3</OsdsSelectOption>
-      </OsdsSelect>
-
-      <OsdsDivider />
-
-      <OsdsPhoneNumber isoCode={ ODS_COUNTRY_ISO_CODE.FR }
-                       locale={ ODS_LOCALE.FR }
-                       name="phone-number"
-                       onOdsBlur={() => console.log('blur phone number')}
-                       onOdsFocus={() => console.log('focus phone number')}
-                       onOdsValueChange={() => console.log('value change phone number')} />
-
-      <OsdsDivider />
-
-      <OsdsQuantity>
-        <OsdsButton slot="minus"
-                    type={ ODS_BUTTON_TYPE.button }>
-          -
-        </OsdsButton>
-
-        <OsdsInput name="quantity"
-                   onOdsInputBlur={() => console.log('blur input quantity')}
-                   onOdsInputFocus={() => console.log('focus input quantity')}
-                   onOdsValueChange={() => console.log('value change input quantity')}
-                   type={ ODS_INPUT_TYPE.number } />
-
-        <OsdsButton slot="plus"
-                    type={ ODS_BUTTON_TYPE.button }>
-          +
-        </OsdsButton>
-      </OsdsQuantity>
-
-      <OsdsDivider />
-
-      <OsdsRange name="range"
-                 onOdsBlur={() => console.log('blur range')}
-                 onOdsFocus={() => console.log('focus range')}
-                 onOdsValueChange={() => console.log('value change range')}  />
-
-      <OsdsDivider />
-
-      <OsdsDatepicker name="datepicker"
-                      onOdsDatepickerBlur={() => console.log('blur datepicker')}
-                      onOdsDatepickerFocus={() => console.log('focus datepicker')}
-                      onOdsDatepickerValueChange={() => console.log('value change datepicker')} />
-
-      <input name="hidden-input"
-             type="hidden"
-             value="should be present in form data" />
-
-      <OsdsDivider />
-
-      <OsdsButton inline
-                  size={ ODS_BUTTON_SIZE.sm }
-                  type={ ODS_BUTTON_TYPE.reset }
-                  variant={ ODS_BUTTON_VARIANT.stroked }>
-        Reset
-      </OsdsButton>
-
-      <OsdsButton color={ ODS_THEME_COLOR_INTENT.primary }
-                  inline
-                  size={ ODS_BUTTON_SIZE.sm }
-                  type={ ODS_BUTTON_TYPE.submit }>
-        Submit
-      </OsdsButton>
-    </form>
-  );
+        <button onClick={ onNoThemeClick }>
+          No theme
+        </button>
+      </div>
+    </div>
+  )
+  // const formRef = useRef(null);
+  // const textRef = useRef<TextType>(null);
+  //
+  // function onSubmit(event: FormEvent) {
+  //   event.preventDefault();
+  //   if (formRef.current) {
+  //     const formData = new FormData(formRef.current);
+  //     console.log(formData)
+  //   }
+  // }
+  //
+  // function onReset() {
+  //   console.log(textRef.current?.formatText())
+  //   console.log('form reset')
+  // }
+  //
+  // return (
+  //   <form ref={ formRef }
+  //         onReset={ onReset }
+  //         onSubmit={ onSubmit }>
+  //     <OdsText ref={ textRef }
+  //              text="Welcome" />
+  //
+  //     <OdsInput name="input"
+  //                // onOdsInputBlur={() => console.log('blur input')}
+  //                // onOdsInputFocus={() => console.log('focus input')}
+  //                // onOdsValueChange={() => console.log('value change input')}
+  //                // placeholder="Type your some text"
+  //                // required
+  //                // size={ ODS_INPUT_SIZE.md }
+  //                // type={ ODS_INPUT_TYPE.text }
+  //                // value=""
+  //     />
+  //
+  //     <input name="hidden-input"
+  //            type="hidden"
+  //            value="should be present in form data" />
+  //
+  //     <button type="reset">
+  //       Reset
+  //     </button>
+  //
+  //     <button type="submit">
+  //       Submit
+  //     </button>
+  //   </form>
+  // );
 };
 
 export { App };

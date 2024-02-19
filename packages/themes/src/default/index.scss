@@ -1,0 +1,15 @@
+$ods-color-primary-000: #fff;
+$ods-color-primary-050: #e6faff;
+$ods-color-primary-100: #bef1ff;
+$ods-color-primary-200: #85d9fd;
+$ods-color-primary-300: #4bb2f6;
+$ods-color-primary-400: #157eea;
+$ods-color-primary-500: #0050d7;
+$ods-color-primary-600: #002dbe;
+$ods-color-primary-700: #000e9c;
+$ods-color-primary-800: #00185e;
+$ods-color-primary-900: #000d1f;
+
+:root {
+  --ods-color-primary-500: #{$ods-color-primary-500};
+}

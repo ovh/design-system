@@ -1,0 +1,17 @@
+{
+  "name": "@ovhcloud/ods-components-style",
+  "version": "17.1.0",
+  "private": true,
+  "description": "Style helpers for ODS",
+  "keywords": [],
+  "author": "OVH SAS",
+  "license": "Apache-2.0",
+  "main": "./dist/index.scss",
+  "scripts": {
+    "build": "shx cp -r ../src/style ./dist",
+    "clean": "rimraf dist"
+  },
+  "devDependencies": {
+    "shx": "0.3.4"
+  }
+}

@@ -15,18 +15,18 @@ Example of entry in the migration guide:
 **before**
 ``typescript
 // ExampleCode.ts
-export interface ExampleCode {a: string};
+export interface ExampleCode { a: string };
 
 // Example of use
-const exampleCode: ExampleCode = {a: 'a'}
+const exampleCode: ExampleCode = { a: 'a' }
 ``
 **after**
 ``typescript
 // ExampleCode.ts
-export interface ExampleCode {ha: string};
+export interface ExampleCode { ha: string };
 
 // Example of use
-const exampleCode: ExampleCode = {ha: 'a'}
+const exampleCode: ExampleCode = { ha: 'a' }
 ``
 
 ```

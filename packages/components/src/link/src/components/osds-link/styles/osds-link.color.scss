@@ -17,7 +17,7 @@
           border-color: '700',
   )) using($colors) {
     :host(&:hover),
-    :host(&:focus) {
+    :host(&:focus-within) {
       @include osds-link-on-link-container {
         color: map_get($colors, color);
       }

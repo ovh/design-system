@@ -5407,11 +5407,11 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-form@workspace:packages/components/src/form"
   dependencies:
-    "@ovhcloud/ods-common-core": 17.0.3
-    "@ovhcloud/ods-common-stencil": 17.0.3
-    "@ovhcloud/ods-common-testing": 17.0.3
-    "@ovhcloud/ods-common-theming": 17.0.3
-    "@ovhcloud/ods-stencil-dev": 17.0.3
+    "@ovhcloud/ods-common-core": 17.1.0
+    "@ovhcloud/ods-common-stencil": 17.1.0
+    "@ovhcloud/ods-common-testing": 17.1.0
+    "@ovhcloud/ods-common-theming": 17.1.0
+    "@ovhcloud/ods-stencil-dev": 17.1.0
   languageName: unknown
   linkType: soft
 

@@ -44,12 +44,19 @@ export class OsdsPagination implements OdsPaginationAttribute, OdsPaginationEven
 
   componentWillLoad(): void {
     this.itemPerPage = ODS_PAGINATION_PER_PAGE_OPTIONS.includes(this.defaultItemsPerPage) && this.defaultItemsPerPage || ODS_PAGINATION_PER_PAGE_MIN;
-    this.current = this.defaultCurrentPage || this.current;
 
     if (this.totalItems) {
       this.actualTotalPages = this.controller.computeActualTotalPages(this.itemPerPage);
     } else {
       this.actualTotalPages = this.totalPages;
+    }
+
+    if (this.defaultCurrentPage > this.actualTotalPages) {
+      this.current = this.actualTotalPages;
+    } else if (this.defaultCurrentPage < 1) {
+      this.current = 1;
+    } else {
+      this.current = this.defaultCurrentPage || this.current;
     }
 
     this.updatePageList();

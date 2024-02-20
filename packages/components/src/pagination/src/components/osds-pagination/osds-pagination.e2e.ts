@@ -124,6 +124,20 @@ describe('e2e:osds-pagination', () => {
       const buttonList = await page.findAll('osds-pagination >>> li >>> osds-button');
       expect(buttonList.length).toBe(9);
     });
+
+    it('should not allow for a defaultCurrentPage lower than 1', async() => {
+      await setup({ attributes: { defaultCurrentPage: -5, totalPages: 5 } });
+
+      const current = await el.callMethod('getCurrentPage');
+      expect(current).toEqual(1);
+    });
+
+    it('should not allow for a defaultCurrentPage higher than total number of pages', async() => {
+      await setup({ attributes: { defaultCurrentPage: 10, totalPages: 5 } });
+
+      const current = await el.callMethod('getCurrentPage');
+      expect(current).toEqual(5);
+    });
   });
 
   describe('should change page if we click', () => {

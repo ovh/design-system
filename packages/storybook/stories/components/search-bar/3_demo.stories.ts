@@ -26,6 +26,10 @@ const storyParams = {
     category: 'Misc',
     defaultValue: false,
   },
+  pattern: {
+    category: 'General',
+    control: { type: 'text' },
+  },
 };
 
 const selectParams = {

@@ -19,12 +19,13 @@
 |**`loading`** | _boolean_ |  |  | Indicates if the input is in loading state or not|
 |**`locale`** | `ODS_LOCALE` |  |  | This is the locale to use to translate the countries names|
 |**`name`** | _string_ | ✴️ |  | Name of the input field|
+|**`pattern`** | _string_ |  |  | The pattern attribute specifies a regular expression the form control's value should match.|
 |**`placeholder`** | _string_ |  |  | Placeholder text for the input|
 |**`prefixValue`** | _string_ |  |  | Text before the input value|
 |**`readOnly`** | _boolean_ |  |  | Indicates if the input is read-only or not|
 |**`required`** | _boolean_ |  |  | Indicates if the input is required or not|
 |**`tabindex`** | _number_ |  |  | Tabindex for the input|
-|**`value`** | `OdsInputValue` | ✴️ |  | Type of the input field|
+|**`value`** | `OdsInputValue` | ✴️ |  | Value of the input field|
 
 ### OdsPhoneNumberEvent
 |Name | Type | Required | Default | Description|
@@ -40,7 +41,7 @@
 |---|---|:---:|---|---|
 |**`clear`** | `Promise<void>` | ✴️ |  | empty the value|
 |**`formResetCallback`** | _void_ | ✴️ |  | |
-|**`getValidity`** | `Promise<undefined` \| `OdsCommonFieldValidityState>` | ✴️ |  | |
+|**`getValidity`** | `Promise<undefined` \| `OdsCommonFieldValidityState>` | ✴️ |  | return the element validity|
 |**`reset`** | `Promise<void>` | ✴️ |  | restore the value to the initial state|
 |**`setFocus`** | `Promise<void>` | ✴️ |  | active the focus on the input in order to let the user write something|
 

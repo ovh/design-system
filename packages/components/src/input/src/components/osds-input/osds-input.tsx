@@ -47,6 +47,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
   @Prop({ reflect: true }) max?: number;
   @Prop({ reflect: true }) min?: number;
   @Prop({ reflect: true }) name = DEFAULT_ATTRIBUTE.name;
+  @Prop({ reflect: true }) pattern?: string;
   @Prop({ reflect: true }) placeholder?: string;
   @Prop({ reflect: true }) prefixValue? : string;
   @Prop({ reflect: true }) readOnly?: boolean;
@@ -173,6 +174,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
           onBlur={ (): void => this.onBlur() }
           onFocus={ (): void => this.onFocus() }
           onInput={ (e): void => this.onInput(e) }
+          pattern={ this.pattern }
           placeholder={ this.placeholder }
           readOnly={ this.readOnly }
           ref={ (el): HTMLInputElement => this.inputEl = el as HTMLInputElement }

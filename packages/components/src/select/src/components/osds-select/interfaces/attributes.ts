@@ -1,6 +1,6 @@
 import type { OdsCommonFieldAttribute } from '@ovhcloud/ods-common-core';
 
-interface OdsSelectAttribute extends OdsCommonFieldAttribute {
+interface OdsSelectAttribute extends Omit<OdsCommonFieldAttribute, 'pattern'> {
   /** Indicates if the select is inline or not: see component principles */
   inline?: boolean;
   /** Indicates if the select is open or not */

@@ -866,6 +866,10 @@ export namespace Components {
          */
         "name": string;
         /**
+          * The pattern attribute specifies a regular expression the form control's value should match.
+         */
+        "pattern"?: string;
+        /**
           * Placeholder text for the input
          */
         "placeholder"?: string;
@@ -1136,6 +1140,10 @@ export namespace Components {
          */
         "name": string;
         /**
+          * The pattern attribute specifies a regular expression the form control's value should match.
+         */
+        "pattern"?: string;
+        /**
           * Placeholder text for the input
          */
         "placeholder"?: string;
@@ -1223,6 +1231,10 @@ export namespace Components {
           * Name of the input field
          */
         "name": string;
+        /**
+          * The pattern attribute specifies a regular expression the form control's value should match.
+         */
+        "pattern"?: string;
         /**
           * Placeholder text for the input
          */
@@ -1519,6 +1531,7 @@ export namespace Components {
           * List of the options on the select
          */
         "options"?: OdsSearchbarOption[];
+        "pattern"?: string;
         /**
           * Placeholder text for the search-bar
          */
@@ -3584,6 +3597,10 @@ declare namespace LocalJSX {
         "onOdsReset"?: (event: OsdsInputCustomEvent<void>) => void;
         "onOdsValueChange"?: (event: OsdsInputCustomEvent<OdsInputValueChangeEventDetail>) => void;
         /**
+          * The pattern attribute specifies a regular expression the form control's value should match.
+         */
+        "pattern"?: string;
+        /**
           * Placeholder text for the input
          */
         "placeholder"?: string;
@@ -3836,6 +3853,10 @@ declare namespace LocalJSX {
         "onOdsReset"?: (event: OsdsPasswordCustomEvent<void>) => void;
         "onOdsValueChange"?: (event: OsdsPasswordCustomEvent<OdsPasswordValueChangeEventDetail>) => void;
         /**
+          * The pattern attribute specifies a regular expression the form control's value should match.
+         */
+        "pattern"?: string;
+        /**
           * Placeholder text for the input
          */
         "placeholder"?: string;
@@ -3913,6 +3934,10 @@ declare namespace LocalJSX {
         "onOdsHide"?: (event: OsdsPhoneNumberCustomEvent<void>) => void;
         "onOdsReset"?: (event: OsdsPhoneNumberCustomEvent<void>) => void;
         "onOdsValueChange"?: (event: OsdsPhoneNumberCustomEvent<OdsPhoneNumberValueChangeEventDetail>) => void;
+        /**
+          * The pattern attribute specifies a regular expression the form control's value should match.
+         */
+        "pattern"?: string;
         /**
           * Placeholder text for the input
          */
@@ -4224,6 +4249,7 @@ declare namespace LocalJSX {
           * List of the options on the select
          */
         "options"?: OdsSearchbarOption[];
+        "pattern"?: string;
         /**
           * Placeholder text for the search-bar
          */

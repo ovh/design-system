@@ -22,6 +22,7 @@ export class OsdsSearchBar implements OdsSearchBarAttribute, OdsSearchBarEvent {
 
   @Prop({ reflect: true }) public disabled?: boolean = DEFAULT_ATTRIBUTE.disabled;
   @Prop({ reflect: true }) public loading?: boolean = DEFAULT_ATTRIBUTE.loading;
+  @Prop({ reflect: true }) pattern?: string;
   @Prop({ reflect: true }) public placeholder?: string = DEFAULT_ATTRIBUTE.placeholder;
   @Prop({ reflect: true }) public options?: OdsSearchbarOption[] = DEFAULT_ATTRIBUTE.options;
   @Prop({ mutable: true, reflect: true }) public value: string = DEFAULT_ATTRIBUTE.value;
@@ -89,6 +90,7 @@ export class OsdsSearchBar implements OdsSearchBarAttribute, OdsSearchBarEvent {
           value={ this.value }
           loading={ this.loading }
           disabled={ this.disabled }
+          pattern={ this.pattern }
           placeholder={ this.placeholder }
           class={{ 'first': !hasSelect }}>
         </osds-input>

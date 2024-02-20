@@ -1,6 +1,6 @@
 import type { OdsCommonFieldAttribute } from '@ovhcloud/ods-common-core';
 
-interface OdsTextareaAttribute extends Omit<OdsCommonFieldAttribute, 'clearable' | 'loading' | 'prefixValue' | 'step'> {
+interface OdsTextareaAttribute extends Omit<OdsCommonFieldAttribute, 'clearable' | 'loading' | 'pattern' | 'prefixValue' | 'step'> {
   /** The visible width of the text control, in average character widths */
   cols?: number;
   /** Default value of the textarea */

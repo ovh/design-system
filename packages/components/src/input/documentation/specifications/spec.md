@@ -21,6 +21,7 @@
 |**`max`** | _number_ |  |  | Maximum value for the input (type number)|
 |**`min`** | _number_ |  |  | Minimum value for the input (type number)|
 |**`name`** | _string_ | ✴️ |  | Name of the input field|
+|**`pattern`** | _string_ |  |  | The pattern attribute specifies a regular expression the form control's value should match.|
 |**`placeholder`** | _string_ |  |  | Placeholder text for the input|
 |**`prefixValue`** | _string_ |  |  | Text before the input value|
 |**`readOnly`** | _boolean_ |  |  | Indicates if the input is read-only or not|

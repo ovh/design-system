@@ -50,6 +50,7 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberM
   @Prop({ mutable: true, reflect: true }) isoCode?: ODS_COUNTRY_ISO_CODE = DEFAULT_ATTRIBUTE.isoCode;
   @Prop({ mutable: true, reflect: true }) locale?: ODS_LOCALE = DEFAULT_ATTRIBUTE.locale;
   @Prop({ reflect: true }) name: string = DEFAULT_ATTRIBUTE.name;
+  @Prop({ reflect: true }) pattern?: string;
   @Prop({ reflect: true }) placeholder?: string;
   @Prop({ reflect: true }) prefixValue?: string;
   @Prop({ reflect: true }) readOnly?: boolean;
@@ -240,6 +241,7 @@ export class OsdsPhoneNumber implements OdsPhoneNumberAttribute, OdsPhoneNumberM
           label={ this.label }
           loading={ this.loading }
           onOdsValueChange={ (event: CustomEvent<OdsInputValueChangeEventDetail>): void => this.handlerOdsValueChange(event) }
+          pattern={ this.pattern }
           placeholder={ this.getPlaceholder() }
           prefix-value={ this.getPrefix() }
           readOnly={ this.readOnly }

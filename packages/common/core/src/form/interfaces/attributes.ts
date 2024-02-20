@@ -27,6 +27,8 @@ interface OdsCommonFieldAttribute {
   loading?: boolean;
   /** Name of the input field */
   name: string;
+  /** The pattern attribute specifies a regular expression the form control's value should match. */
+  pattern?: string;
   /** Placeholder text for the input */
   placeholder?: string;
   /** Text before the input value */

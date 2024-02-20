@@ -35,8 +35,7 @@ describe('e2e:osds-input', () => {
     defaultValue: '',
     disabled: false,
     error: false,
-    forbiddenValues: [],
-    name: '',
+    name: 'OsdsInput',
     type: ODS_INPUT_TYPE.text,
     value: '',
   };
@@ -75,6 +74,49 @@ describe('e2e:osds-input', () => {
 
     it('should have a input element', async() => {
       expect(inputElement).not.toBeNull();
+    });
+  });
+
+  describe('attribute:pattern', () => {
+    const baseEvent = {
+      name: 'OsdsInput',
+      oldValue: '',
+      validity: {
+        badInput: false,
+        customError: false,
+        forbiddenValue: false,
+        patternMismatch: false,
+        rangeOverflow: false,
+        rangeUnderflow: false,
+        stepMismatch: false,
+        tooLong: false,
+        tooShort: false,
+        typeMismatch: false,
+        valid: true,
+        valueMissing: false,
+      },
+      value: '',
+    };
+
+    it('should return an error because pattern not match', async() => {
+      // eslint-disable-next-line no-useless-escape
+      await setup({ attributes: { defaultValue: 'Just ODS being ahead', pattern: '\d{4,4}', type: ODS_INPUT_TYPE.text } });
+      const odsValueChange = await el.spyOnEvent('odsValueChange');
+
+      el.setProperty('value', 'no the good pattern');
+      await page.waitForChanges();
+
+      expect(odsValueChange).toHaveReceivedEventTimes(1);
+      expect(odsValueChange).toHaveReceivedEventDetail({
+        ...baseEvent,
+        oldValue: 'Just ODS being ahead',
+        validity: {
+          ...baseEvent.validity,
+          patternMismatch: true,
+          valid: false,
+        },
+        value: 'no the good pattern',
+      });
     });
   });
 
@@ -430,7 +472,7 @@ describe('e2e:osds-input', () => {
 
       beforeEach(() => {
         odsInputValueChangeEventDetailBase = {
-          name: '',
+          name: 'OsdsInput',
           oldValue: '',
           validity: {
             badInput: false,

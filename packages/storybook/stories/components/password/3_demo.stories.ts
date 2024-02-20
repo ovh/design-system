@@ -83,6 +83,10 @@ const storyParams = orderControls({
     category: CONTROL_CATEGORY.general,
     control: { type: 'text' },
   },
+  pattern: {
+    category: 'General',
+    control: { type: 'text' },
+  },
 });
 
 export default {

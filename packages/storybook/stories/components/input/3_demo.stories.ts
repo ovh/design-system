@@ -97,6 +97,10 @@ const storyParams = {
     defaultValue: [],
     control: { type: 'array' },
   },
+  pattern: {
+    category: 'General',
+    control: { type: 'text' },
+  },
 };
 
 export default {

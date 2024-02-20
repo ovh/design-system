@@ -27,9 +27,10 @@
                 inline
                 type="text"
                 clearable
-                required
+                pattern="\d{4,4}"
+                value="test"
     ></osds-input>
-<!--    <input type="text" name="natifInput">-->
+<!-- <input type="text" name="natifInput"> -->
 
     <br /><br />
     <osds-button type="reset">Reset</osds-button>
@@ -42,19 +43,19 @@
     const form = document.getElementById('formElem');
     const button = document.getElementById('buttonTrigger');
     const odsInput = document.querySelector('[name="odsInput"]');
-    odsInput.addEventListener('odsFocus', () => {
-      console.log('focus event', )
+    odsInput.addEventListener('odsValueChange', (e) => {
+      console.log('odsValueChange', e)
     });
     odsInput.addEventListener('odsBlur', () => {
       console.log('blur event', )
     });
     button.addEventListener('click', () => {
       odsInput.setFocus();
-    })
+    });
 
     form.onsubmit = (event) => {
       event.preventDefault();
-      console.log('onSubmit', new FormData(form))
+      console.log('onSubmit', new FormData(form), event)
     };
   </script>
 <!--

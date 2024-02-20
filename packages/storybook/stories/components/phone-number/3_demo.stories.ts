@@ -72,6 +72,10 @@ const storyParams = orderControls({
     defaultValue: [],
     control: { type: 'array' },
   },
+  pattern: {
+    category: 'General',
+    control: { type: 'text' },
+  },
 });
 
 const countriesParams = {

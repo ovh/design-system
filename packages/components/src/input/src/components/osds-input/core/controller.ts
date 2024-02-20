@@ -13,7 +13,7 @@ class OdsInputController<T extends OsdsInput> extends OdsCommonFieldMethodContro
   beforeInit(): void {
     super.beforeInit();
     this.assertValue(this.component.value);
-    if (!this.component.value && this.component.value !== 0) {
+    if (!this.component.value) {
       this.component.value = this.component.defaultValue;
     }
     this.component.internals.setFormValue(this.component.value?.toString() ?? '');

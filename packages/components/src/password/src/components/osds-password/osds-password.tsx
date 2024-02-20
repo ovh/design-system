@@ -35,6 +35,7 @@ export class OsdsPassword implements OdsPasswordAttribute, OdsPasswordEvent, Ods
   @Prop({ reflect: true }) loading?: boolean;
   @Prop({ mutable: true, reflect: true }) masked?: boolean = DEFAULT_ATTRIBUTE.masked;
   @Prop({ reflect: true }) name: string = DEFAULT_ATTRIBUTE.name;
+  @Prop({ reflect: true }) pattern?: string;
   @Prop({ reflect: true }) placeholder?: string;
   @Prop({ reflect: true }) prefixValue?: string;
   @Prop({ reflect: true }) readOnly?: boolean;
@@ -107,6 +108,7 @@ export class OsdsPassword implements OdsPasswordAttribute, OdsPasswordEvent, Ods
           masked={ this.masked }
           name={ this.name }
           ref={ (el?: HTMLElement): OsdsInput => this.osdsInput = el as OsdsInput & HTMLElement }
+          pattern={ this.pattern }
           placeholder={ this.placeholder }
           prefixValue={ this.prefixValue }
           readOnly={ this.readOnly }

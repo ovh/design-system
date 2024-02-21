@@ -20,6 +20,7 @@
       position: absolute;
       top: -2px;
       left: -2px;
+      transform: translate3d(0, 0, 0);
       z-index: -1;
       background-size: 400%;
       width: calc(100% + 4px);

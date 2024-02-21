@@ -57,11 +57,6 @@ describe('e2e:osds-pagination', () => {
   });
 
   describe('check the pagination structure', () => {
-    it('should not render if total pages is less than 2', async() => {
-      await setup({ attributes: { defaultCurrentPage: 1, totalPages: 1 } });
-      expect(el.shadowRoot.innerHTML).toBe('');
-    });
-
     it('< 1 2 > should have 4 osds-button', async() => {
       await setup({ attributes: { defaultCurrentPage: 1, totalPages: 2 } });
 

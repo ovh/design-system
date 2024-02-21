@@ -4,6 +4,6 @@ interface OdsClipboardEvent {
     odsClipboardCopied: EventEmitter<string>;
 }
 
-export {
+export type {
   OdsClipboardEvent,
 };

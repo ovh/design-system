@@ -29,12 +29,12 @@ class OdsClipboardController {
     try {
       await writeOnClipboard(value);
       this.component.surfaceMessage = successMessage;
-      if (this.component.surface && this.component.surfaceMessage !== '') {
+      if (this.component.surface && this.component.surfaceMessage) {
         this.component.surface.opened = !this.component.surface.opened;
       }
     } catch (error) {
       this.component.surfaceMessage = errorMessage;
-      if (this.component.surface && this.component.surfaceMessage !== '') {
+      if (this.component.surface && this.component.surfaceMessage) {
         this.component.surface.opened = !this.component.surface.opened;
       }
       throw error;

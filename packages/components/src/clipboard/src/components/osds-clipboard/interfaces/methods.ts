@@ -5,6 +5,6 @@ interface OdsClipboardMethod {
   closeSurface(): Promise<void>;
 }
 
-export {
+export type {
   OdsClipboardMethod,
 };

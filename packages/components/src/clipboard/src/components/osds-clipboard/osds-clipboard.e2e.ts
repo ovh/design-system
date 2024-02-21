@@ -1,11 +1,8 @@
 import type { OdsClipboardAttribute } from './interfaces/attributes';
 import type { E2EElement, E2EPage } from '@stencil/core/testing';
-
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str } from '@ovhcloud/ods-common-testing';
 import { newE2EPage } from '@stencil/core/testing';
-
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
-
 
 describe('e2e:osds-clipboard', () => {
   const baseAttribute = { value: '' };
@@ -18,15 +15,16 @@ describe('e2e:osds-clipboard', () => {
     await page.evaluate(() => {
       let clipboardText = '';
       const clipboard = {
-        writeText: (text: string) => new Promise((resolve) => resolve(clipboardText = text)),
         readText: () => new Promise((resolve) => resolve(clipboardText)),
+        writeText: (text: string) => new Promise((resolve) => resolve(clipboardText = text)),
       };
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       (window['navigator'] as any)['clipboard'] = clipboard;
       Object.defineProperty(navigator, 'clipboard', { value: clipboard });
     });
   }
 
-  async function setup({ attributes = {}, html = '' }: { attributes?: Partial<OdsClipboardAttribute>, html?: string } = {}) {
+  async function setup({ attributes = {}, html = '' }: { attributes?: Partial<OdsClipboardAttribute>, html?: string } = {}): Promise<void> {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsClipboardAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
 
     page = await newE2EPage();
@@ -78,7 +76,7 @@ describe('e2e:osds-clipboard', () => {
 
   it('should not copy the input value because of disabled', async() => {
     const value = 'text to copy';
-    await setup({ attributes: { value, disabled: true } });
+    await setup({ attributes: { disabled: true, value } });
     await page.evaluate(() => navigator.clipboard.writeText(''));
 
     await input.click();
@@ -86,10 +84,10 @@ describe('e2e:osds-clipboard', () => {
     expect(await page.evaluate(() => navigator.clipboard.readText())).toBe('');
   });
 
-  it('should noy copy the input value with keyboard', async() => {
+  it('should not copy the input value with keyboard', async() => {
     const value = 'text to copy';
 
-    await setup({ attributes: { value, disabled: true } });
+    await setup({ attributes: { disabled: true, value } });
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');

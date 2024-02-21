@@ -1,9 +1,8 @@
+import type { OcdkSurface } from '@ovhcloud/ods-cdk';
 import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
-
-import { OcdkSurface, OcdkSurfaceMock } from '@ovhcloud/ods-cdk';
+import { OcdkSurfaceMock } from '@ovhcloud/ods-cdk';
 import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
 import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
-
 import { OdsClipboardController } from './controller';
 import { OsdsClipboard } from '../osds-clipboard';
 
@@ -21,7 +20,7 @@ describe('spec:ods-clipboard-controller', () => {
 
   Ods.instance().logging(false);
 
-  function setup(attributes: Partial<OsdsClipboard> = {}) {
+  function setup(attributes: Partial<OsdsClipboard> = {}): void {
     component = new OdsClipboardMock(attributes);
     controller = new OdsClipboardController(component);
   }
@@ -44,7 +43,7 @@ describe('spec:ods-clipboard-controller', () => {
     expect(controller).toBeTruthy();
   });
 
-  describe('method: checkForClickOutside', () => {
+  describe('method:checkForClickOutside', () => {
     it('should do nothing if there is no surface', async() => {
       setup();
 
@@ -56,7 +55,6 @@ describe('spec:ods-clipboard-controller', () => {
 
       const target = document.createElement('OSDS-BUTTON');
       Object.defineProperty(event, 'target', { value: target });
-
 
       expect(() => {
         controller.checkForClickOutside(event);
@@ -123,7 +121,7 @@ describe('spec:ods-clipboard-controller', () => {
     });
   });
 
-  describe('method: closeSurface', () => {
+  describe('method:closeSurface', () => {
     it('should do nothing if there is no surface', async() => {
       setup();
 
@@ -132,6 +130,7 @@ describe('spec:ods-clipboard-controller', () => {
       }).not.toThrow();
       expect(component.surface).toBeUndefined();
     });
+
     it('should do nothing if surface is closed', async() => {
       setup(component);
       component.surface = new OcdkSurfaceMock() as unknown as OcdkSurface;
@@ -142,8 +141,8 @@ describe('spec:ods-clipboard-controller', () => {
       }).not.toThrow();
       expect(component.surface.opened).toBe(false);
       expect(component.surface.close).toHaveBeenCalledTimes(0);
-
     });
+
     it('should close the surface', async() => {
       setup(component);
       component.surface = new OcdkSurfaceMock() as unknown as OcdkSurface;

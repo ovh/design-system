@@ -3,15 +3,12 @@ jest.mock('./core/controller'); // keep jest.mock before any
 
 import type { OdsClipboardAttribute } from './interfaces/attributes';
 import type { SpecPage } from '@stencil/core/testing';
-
 import { ocdkIsSurface } from '@ovhcloud/ods-cdk';
 import { odsComponentAttributes2StringAttributes, odsStringAttributes2Str, odsUnitTestAttribute } from '@ovhcloud/ods-common-testing';
 import { newSpecPage } from '@stencil/core/testing';
-
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { OdsClipboardController } from './core/controller';
 import { OsdsClipboard } from './osds-clipboard';
-
 
 describe('spec:osds-clipboard', () => {
   const baseAttribute = { value: '' };
@@ -25,11 +22,11 @@ describe('spec:osds-clipboard', () => {
     jest.clearAllMocks();
   });
 
-  function mockSurfaceElements() {
+  function mockSurfaceElements(): void {
     (ocdkIsSurface as unknown as jest.Mock).mockImplementation(() => true);
   }
 
-  async function setup({ attributes = {} }: { attributes?: Partial<OdsClipboardAttribute> } = {}) {
+  async function setup({ attributes = {} }: { attributes?: Partial<OdsClipboardAttribute> } = {}): Promise<void> {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsClipboardAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
 
     page = await newSpecPage({
@@ -104,41 +101,41 @@ describe('spec:osds-clipboard', () => {
 
   describe('attributes', () => {
     const config = {
-      instance: () => instance,
-      page: () => page,
-      root: () => page.root,
-      wait: () => page.waitForChanges(),
+      instance: (): OsdsClipboard => instance,
+      page: (): SpecPage => page,
+      root: (): SpecPage['root'] => page.root,
+      wait: (): Promise<void> => page.waitForChanges(),
     };
 
     describe('inline', () => {
       odsUnitTestAttribute<OdsClipboardAttribute, 'inline'>({
-        name: 'inline',
         defaultValue: DEFAULT_ATTRIBUTE.inline,
+        name: 'inline',
         newValue: false,
-        value: true,
         setup: (value) => setup({ attributes: { ['inline']: value } }),
+        value: true,
         ...config,
       });
     });
 
     describe('disabled', () => {
       odsUnitTestAttribute<OdsClipboardAttribute, 'disabled'>({
-        name: 'disabled',
         defaultValue: DEFAULT_ATTRIBUTE.disabled,
+        name: 'disabled',
         newValue: false,
-        value: true,
         setup: (value) => setup({ attributes: { ['disabled']: value } }),
+        value: true,
         ...config,
       });
     });
 
     describe('value', () => {
       odsUnitTestAttribute<OdsClipboardAttribute, 'value'>({
-        name: 'value',
         defaultValue: DEFAULT_ATTRIBUTE.value,
+        name: 'value',
         newValue: 'value',
-        value: 'new value',
         setup: (value) => setup({ attributes: { ['value']: value } }),
+        value: 'new value',
         ...config,
       });
     });

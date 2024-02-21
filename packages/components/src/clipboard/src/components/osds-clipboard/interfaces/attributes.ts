@@ -9,6 +9,6 @@ interface OdsClipboardAttribute {
   value: string;
 }
 
-export {
+export type {
   OdsClipboardAttribute,
 };

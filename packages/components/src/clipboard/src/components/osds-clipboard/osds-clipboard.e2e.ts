@@ -115,4 +115,13 @@ describe('e2e:osds-clipboard', () => {
     await el.click();
     expect(clipboardSurface).not.toHaveClass('ocdk-surface--open');
   });
+
+  it('should not show the surface because of no slot', async() => {
+    const value = 'text to copy';
+
+    await setup({ attributes: { value } });
+
+    await input.click();
+    expect(clipboardSurface).not.toHaveClass('ocdk-surface--open');
+  });
 });

@@ -247,10 +247,6 @@ export class OsdsPagination implements OdsPaginationAttribute, OdsPaginationEven
   }
 
   render(): JSX.Element | undefined {
-    if (!this.totalItems && this.actualTotalPages < 2) {
-      return;
-    }
-
     return (
       <Host>
         {

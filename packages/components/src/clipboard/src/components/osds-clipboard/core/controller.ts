@@ -28,17 +28,19 @@ class OdsClipboardController {
 
     try {
       await writeOnClipboard(value);
-      this.component.surfaceMessage = successMessage;
-      if (this.component.surface && this.component.surfaceMessage) {
-        this.component.surface.opened = !this.component.surface.opened;
-      }
+      this.openSurfaceWithMessage(successMessage);
     } catch (error) {
-      this.component.surfaceMessage = errorMessage;
-      if (this.component.surface && this.component.surfaceMessage) {
-        this.component.surface.opened = !this.component.surface.opened;
-      }
+      this.openSurfaceWithMessage(errorMessage);
       throw error;
     }
+  }
+
+  private openSurfaceWithMessage(message: string | undefined): void {
+    if (!message || !this.component.surface) {
+      return;
+    }
+    this.component.surfaceMessage = message;
+    this.component.surface.opened = !this.component.surface.opened;
   }
 
   syncReferences(): void {

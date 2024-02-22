@@ -38,6 +38,7 @@ export * from './skeleton/src';
 export * from './spinner/src';
 export * from './switch/src';
 export * from './tabs/src';
+export * from './table/src';
 export * from './text/src';
 export * from './textarea/src';
 export * from './tile/src';

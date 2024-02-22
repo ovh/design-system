@@ -1,0 +1,190 @@
+import GenericStyle from '@ovhcloud/ods-common-core/docs/generic-style.mdx';
+import { Canvas } from '@storybook/addon-docs';
+import SizeProperty from './properties/usage.size.mdx';
+import VariantProperty from './properties/usage.variant.mdx';
+
+<GenericStyle />
+
+## Usage
+
+### Default
+
+<Canvas withSource="none">
+  <div style={{ height: '200px' }}>
+    <osds-table>
+      <table>
+        <caption>
+          Front-end web developer course 2021
+        </caption>
+        <thead>
+        <tr>
+          <th scope="col">Person</th>
+          <th scope="col">Most interest in</th>
+          <th scope="col">Age</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th scope="row">Chris</th>
+          <td>HTML tables</td>
+          <td>22</td>
+        </tr>
+        <tr>
+          <th scope="row">Dennis</th>
+          <td>Web accessibility</td>
+          <td>45</td>
+        </tr>
+        <tr>
+          <th scope="row">Sarah</th>
+          <td>JavaScript frameworks</td>
+          <td>29</td>
+        </tr>
+        <tr>
+          <th scope="row">Karen</th>
+          <td>Web performance</td>
+          <td>36</td>
+        </tr>
+        </tbody>
+      </table>
+    </osds-table>
+  </div>
+</Canvas>
+
+```html
+<osds-table>
+    <table>
+      <caption>
+        Front-end web developer course 2021
+      </caption>
+      <thead>
+      <tr>
+        <th scope="col">Person</th>
+        <th scope="col">Most interest in</th>
+        <th scope="col">Age</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <th scope="row">Chris</th>
+        <td>HTML tables</td>
+        <td>22</td>
+      </tr>
+      <tr>
+        <th scope="row">Dennis</th>
+        <td>Web accessibility</td>
+        <td>45</td>
+      </tr>
+      </tbody>
+    </table>
+</osds-table>
+```
+
+### Size
+<SizeProperty />
+
+### Width
+<VariantProperty />
+
+### Accessibility
+
+Tabulation can be used to navigate through focusable elements added to rows.
+
+- Table header `<th>`
+- `<th scope="col">`
+- `<th scope="row">`
+- Add a `<caption>` inside the `<table>`
+
+More on [WAI ARIA documentation from W3C for tables](https://www.w3.org/WAI/tutorials/tables/)
+
+# Recommendations
+
+## Content alignment
+We recommend to align column content depending on the usage:
+
+**Left alignment**
+All cells whose content is alphabetical (e.g. Text, Link, Chip...) or alphanumeric (e.g. date).
+
+**Right alignment**
+Only numeric content (e.g. number, quantity, price, id, size...) and its unit when necessary (e.g. €, GB...)
+
+## Large content on small spaces
+
+Keep the Table headers visible while scrolling by setting <th> elements to a sticky position.
+
+```scss
+table {
+  position: relative;
+}
+
+thead {
+  tr {
+    th {
+      background-color: #fff;
+      position: sticky;
+      top: 0;
+    }
+  }
+}
+```
+
+Keep the first column sticky while scrolling:
+
+```scss
+table {
+  position: relative;
+}
+
+tbody {
+  tr {
+    th,
+    td {
+      background-color: #fff;
+
+      &:first-child {
+        left: 0;
+        position: sticky;
+      }
+    }
+  }
+}
+```
+
+Or keep both sticky:
+
+```scss
+table {
+  position: relative;
+}
+
+thead {
+  tr {
+    th {
+      background-color: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+
+      &:first-child {
+        left: 0;
+        z-index: 3;
+      }
+    }
+  }
+}
+
+tbody {
+  tr {
+    th,
+    td {
+      background-color: #fff;
+
+      &:first-child {
+        left: 0;
+        position: sticky;
+      }
+    }
+  }
+}
+```
+
+More recommendations on [MDN documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table#displaying_large_tables_in_small_spaces).

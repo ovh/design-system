@@ -28,15 +28,16 @@ class OdsClipboardController {
 
     try {
       await writeOnClipboard(value);
-      this.openSurfaceWithMessage(successMessage);
+      this.openSurfaceWithMessage(successMessage, 'Slot "success-message" is not defined. If you want a tooltip with a success message you need to defined it.');
     } catch (error) {
-      this.openSurfaceWithMessage(errorMessage);
+      this.openSurfaceWithMessage(errorMessage, 'Slot "error-message" is not defined. If you want a tooltip with a error message you need to defined it.');
       throw error;
     }
   }
 
-  private openSurfaceWithMessage(message: string | undefined): void {
+  private openSurfaceWithMessage(message: string | undefined, warnMessage: string): void {
     if (!message || !this.component.surface) {
+      console.warn(warnMessage);
       return;
     }
     this.component.surfaceMessage = message;

@@ -60,6 +60,8 @@ import { ODS_SPINNER_SIZE } from "./spinner/src/components/osds-spinner/constant
 import { ODS_SWITCH_VARIANT } from "./switch/src/components/osds-switch/constants/switch-variant";
 import { ODS_SWITCH_SIZE } from "./switch/src/components/osds-switch/constants/switch-size";
 import { OdsSwitchChangedEventDetail } from "./switch/src/components/osds-switch/interfaces/events";
+import { ODS_TABLE_SIZE } from './table/src/components/osds-table/constants/table-size';
+import { ODS_TABLE_VARIANT } from './table/src/components/osds-table/constants/table-variant';
 import { ODS_TABS_SIZE } from "./tabs/src/components/osds-tabs/constants/tabs-size";
 import { OdsTabItemSelectEventDetail } from "./tabs/src/components/osds-tab-bar-item/interfaces/events";
 import { OdsTabsChangeEventDetail } from "./tabs/src/components/osds-tabs/interfaces/events";
@@ -4427,6 +4429,21 @@ declare namespace LocalJSX {
           * @see OdsTabsAttributes.size
          */
         "size"?: ODS_TABS_SIZE;
+    }
+    /**
+     * Main table component
+     */
+    interface OsdsTable {
+        /**
+          * Table size
+          * @see OdsTableAttributes.size
+         */
+        "size"?: ODS_TABLE_SIZE;
+        /**
+          * Table variant
+          * @see OdsTableAttributes.variant
+         */
+        "variant"?: ODS_TABLE_VARIANT;
     }
     interface OsdsText {
         /**

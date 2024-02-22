@@ -1,6 +1,6 @@
 import { ODS_COUNTRY_ISO_CODE } from '@ovhcloud/ods-common-core';
 import { ODS_THEME_COLOR_INTENT, ODS_THEME_TYPOGRAPHY_LEVEL, ODS_THEME_TYPOGRAPHY_SIZE } from '@ovhcloud/ods-common-theming';
-import { ODS_CHECKBOX_BUTTON_SIZE, ODS_DIVIDER_SIZE, ODS_ICON_NAME, ODS_RADIO_BUTTON_SIZE } from '@ovhcloud/ods-components';
+import { ODS_CHECKBOX_BUTTON_SIZE, ODS_DIVIDER_SIZE, ODS_ICON_NAME, ODS_RADIO_BUTTON_SIZE, ODS_TABLE_SIZE } from '@ovhcloud/ods-components';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 
@@ -77,6 +77,15 @@ const ODSComponents = {
       attributes: {
         color: ODS_THEME_COLOR_INTENT.primary,
         name: ODS_ICON_NAME.HOME,
+      },
+    },
+    {
+      name: 'Table',
+      tag: 'osds-table',
+      url: parent.location.href.replace(parent.location.search, '?path=/story/table--default'),
+      attributes: {
+        size: ODS_TABLE_SIZE,
+        variant: 'Textarea',
       },
     },
     {

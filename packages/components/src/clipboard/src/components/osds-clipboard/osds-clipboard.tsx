@@ -26,7 +26,7 @@ export class OsdsClipboard implements OdsClipboardAttribute, OdsClipboardEvent, 
 
   @Element() el!: HTMLStencilElement;
 
-  @State() surfaceMessage: string | undefined = '';
+  @State() surfaceMessage: string = '';
 
   @Prop({ reflect: true }) public disabled?: boolean = DEFAULT_ATTRIBUTE.disabled;
   @Prop({ reflect: true }) public inline?: boolean = DEFAULT_ATTRIBUTE.inline;

@@ -559,17 +559,14 @@ export namespace Components {
         "closeSurface": () => Promise<void>;
         /**
           * Disabled the input, the focus, and the tooltip
-          * @see OdsClipboardAttributes.disabled
          */
         "disabled"?: boolean;
         /**
           * Indicates if the input is full width or not: see component principles
-          * @see OdsClipboardAttributes.inline
          */
         "inline"?: boolean;
         /**
           * Input text value
-          * @see OdsClipboardAttributes.value
          */
         "value": string;
     }
@@ -3237,21 +3234,15 @@ declare namespace LocalJSX {
     interface OsdsClipboard {
         /**
           * Disabled the input, the focus, and the tooltip
-          * @see OdsClipboardAttributes.disabled
          */
         "disabled"?: boolean;
         /**
           * Indicates if the input is full width or not: see component principles
-          * @see OdsClipboardAttributes.inline
          */
         "inline"?: boolean;
-        /**
-          * @see OdsClipboardEvents.odsClipboardCopied
-         */
         "onOdsClipboardCopied"?: (event: OsdsClipboardCustomEvent<string>) => void;
         /**
           * Input text value
-          * @see OdsClipboardAttributes.value
          */
         "value"?: string;
     }

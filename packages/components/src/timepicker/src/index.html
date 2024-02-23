@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html dir='ltr' lang='en'>
+<head>
+  <meta charset='utf-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0' />
+  <title>Dev osds-timepicker</title>
+
+  <script type="module">
+    !window.ods && (window.ods = {config: {logging: {active:true}}});
+  </script>
+
+  <script type='module' src='/build/osds-timepicker.esm.js'></script>
+  <script nomodule src='/build/osds-timepicker.js'></script>
+  <link rel="stylesheet" href="/build/osds-timepicker.css">
+</head>
+<body>
+  <p>Default</p>
+  <osds-timepicker></osds-timepicker>
+
+  <p>clearable</p>
+  <osds-timepicker clearable=''></osds-timepicker>
+
+  <p>With Seconds</p>
+  <osds-timepicker with-seconds=''></osds-timepicker>
+
+  <p>With preset value</p>
+  <osds-timepicker value='11:11'></osds-timepicker>
+
+  <p>In Error</p>
+  <osds-timepicker error=''></osds-timepicker>
+
+  <p>With Seconds in Error</p>
+  <osds-timepicker with-seconds='' error=''></osds-timepicker>
+
+  <p>Inline</p>
+  <osds-timepicker inline=''></osds-timepicker>
+
+  <p>Disabled</p>
+  <osds-timepicker disabled=''></osds-timepicker>
+
+  <p>Disabled With Seconds</p>
+  <osds-timepicker disabled='' with-seconds=''></osds-timepicker>
+
+  <p>with current Timezone</p>
+  <osds-timepicker current-timezone='UTC+4'></osds-timepicker>
+
+  <p>Disabled with current Timezone</p>
+  <osds-timepicker current-timezone='UTC+4' disabled=''></osds-timepicker>
+
+  <p>Error with current Timezone</p>
+  <osds-timepicker current-timezone='UTC+4' error=''></osds-timepicker>
+
+  <p>with Timezones</p>
+  <osds-timepicker timezones='["utc-2", "utc+2", "utc+30"]'></osds-timepicker>
+
+  <p>Inline with Timezones</p>
+  <osds-timepicker inline='' timezones='all'></osds-timepicker>
+
+  <p>In Error with timezones</p>
+  <osds-timepicker error='' timezones='all'></osds-timepicker>
+
+  <p>Disabled with timezones</p>
+  <osds-timepicker disabled='' timezones='all'></osds-timepicker>
+</body>
+</html>

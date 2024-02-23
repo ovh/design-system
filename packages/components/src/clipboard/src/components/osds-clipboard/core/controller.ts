@@ -35,13 +35,19 @@ class OdsClipboardController {
     }
   }
 
-  private openSurfaceWithMessage(message: string | undefined, warnMessage: string): void {
-    if (!message || !this.component.surface) {
+  private openSurfaceWithMessage(html: string | undefined, warnMessage: string): void {
+    if (!html || !this.getTextContent(html) || !this.component.surface) {
       console.warn(warnMessage);
       return;
     }
-    this.component.surfaceMessage = message;
+    this.component.surfaceMessage = html;
     this.component.surface.opened = !this.component.surface.opened;
+  }
+
+  private getTextContent(html: string): string | null {
+    return new DOMParser()
+      .parseFromString(html, 'text/html')
+      .documentElement.textContent;
   }
 
   syncReferences(): void {

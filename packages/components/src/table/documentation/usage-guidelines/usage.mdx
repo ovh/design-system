@@ -10,7 +10,7 @@ import VariantProperty from './properties/usage.variant.mdx';
 ### Default
 
 <Canvas withSource="none">
-  <div style={{ height: '200px' }}>
+  <div>
     <osds-table>
       <table>
         <caption>
@@ -52,30 +52,30 @@ import VariantProperty from './properties/usage.variant.mdx';
 
 ```html
 <osds-table>
-    <table>
-      <caption>
-        Front-end web developer course 2021
-      </caption>
-      <thead>
-      <tr>
-        <th scope="col">Person</th>
-        <th scope="col">Most interest in</th>
-        <th scope="col">Age</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <th scope="row">Chris</th>
-        <td>HTML tables</td>
-        <td>22</td>
-      </tr>
-      <tr>
-        <th scope="row">Dennis</th>
-        <td>Web accessibility</td>
-        <td>45</td>
-      </tr>
-      </tbody>
-    </table>
+  <table>
+    <caption>
+      Front-end web developer course 2021
+    </caption>
+    <thead>
+    <tr>
+      <th scope="col">Person</th>
+      <th scope="col">Most interest in</th>
+      <th scope="col">Age</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <th scope="row">Chris</th>
+      <td>HTML tables</td>
+      <td>22</td>
+    </tr>
+    <tr>
+      <th scope="row">Dennis</th>
+      <td>Web accessibility</td>
+      <td>45</td>
+    </tr>
+    </tbody>
+  </table>
 </osds-table>
 ```
 
@@ -96,20 +96,9 @@ Tabulation can be used to navigate through focusable elements added to rows.
 
 More on [WAI ARIA documentation from W3C for tables](https://www.w3.org/WAI/tutorials/tables/)
 
-# Recommendations
+*Large content on small spaces*
 
-## Content alignment
-We recommend to align column content depending on the usage:
-
-**Left alignment**
-All cells whose content is alphabetical (e.g. Text, Link, Chip...) or alphanumeric (e.g. date).
-
-**Right alignment**
-Only numeric content (e.g. number, quantity, price, id, size...) and its unit when necessary (e.g. €, GB...)
-
-## Large content on small spaces
-
-Keep the Table headers visible while scrolling by setting <th> elements to a sticky position.
+Keep the Table headers visible while scrolling by setting `<th>` elements to a sticky position.
 
 ```scss
 table {

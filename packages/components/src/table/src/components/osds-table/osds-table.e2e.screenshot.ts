@@ -21,16 +21,16 @@ describe('e2e:osds-table', () => {
 
     it('should take screenshots of all attributes variations', async() => {
       variations.push(`
-        <osds-table size='sm''></osds-table>
+        <osds-table size='sm'></osds-table>
       `);
       variations.push(`
-        <osds-table size='md''></osds-table>
+        <osds-table size='md'></osds-table>
       `);
       variations.push(`
-        <osds-table size='lg''></osds-table>
+        <osds-table size='lg'></osds-table>
       `);
       variations.push(`
-        <osds-table size='striped''></osds-table>
+        <osds-table size='striped'></osds-table>
       `);
 
       await setup(variations.join(''));

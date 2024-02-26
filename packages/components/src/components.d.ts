@@ -60,8 +60,6 @@ import { ODS_SPINNER_SIZE } from "./spinner/src/components/osds-spinner/constant
 import { ODS_SWITCH_VARIANT } from "./switch/src/components/osds-switch/constants/switch-variant";
 import { ODS_SWITCH_SIZE } from "./switch/src/components/osds-switch/constants/switch-size";
 import { OdsSwitchChangedEventDetail } from "./switch/src/components/osds-switch/interfaces/events";
-import { ODS_TABLE_SIZE } from './table/src/components/osds-table/constants/table-size';
-import { ODS_TABLE_VARIANT } from './table/src/components/osds-table/constants/table-variant';
 import { ODS_TABS_SIZE } from "./tabs/src/components/osds-tabs/constants/tabs-size";
 import { OdsTabItemSelectEventDetail } from "./tabs/src/components/osds-tab-bar-item/interfaces/events";
 import { OdsTabsChangeEventDetail } from "./tabs/src/components/osds-tabs/interfaces/events";
@@ -1687,6 +1685,16 @@ export namespace Components {
          */
         "name": string;
     }
+    interface OsdsTable {
+        /**
+          * Table size
+         */
+        "size"?: string;
+        /**
+          * Table variant
+         */
+        "variant"?: string;
+    }
     /**
      * Main tabs component
      */
@@ -2689,6 +2697,12 @@ declare global {
         prototype: HTMLOsdsTabPanelElement;
         new (): HTMLOsdsTabPanelElement;
     };
+    interface HTMLOsdsTableElement extends Components.OsdsTable, HTMLStencilElement {
+    }
+    var HTMLOsdsTableElement: {
+        prototype: HTMLOsdsTableElement;
+        new (): HTMLOsdsTableElement;
+    };
     interface HTMLOsdsTabsElementEventMap {
         "odsTabsChanged": OdsTabsChangeEventDetail;
     }
@@ -2816,6 +2830,7 @@ declare global {
         "osds-tab-bar": HTMLOsdsTabBarElement;
         "osds-tab-bar-item": HTMLOsdsTabBarItemElement;
         "osds-tab-panel": HTMLOsdsTabPanelElement;
+        "osds-table": HTMLOsdsTableElement;
         "osds-tabs": HTMLOsdsTabsElement;
         "osds-text": HTMLOsdsTextElement;
         "osds-textarea": HTMLOsdsTextareaElement;
@@ -4405,6 +4420,16 @@ declare namespace LocalJSX {
          */
         "name"?: string;
     }
+    interface OsdsTable {
+        /**
+          * Table size
+         */
+        "size"?: string;
+        /**
+          * Table variant
+         */
+        "variant"?: string;
+    }
     /**
      * Main tabs component
      */
@@ -4429,21 +4454,6 @@ declare namespace LocalJSX {
           * @see OdsTabsAttributes.size
          */
         "size"?: ODS_TABS_SIZE;
-    }
-    /**
-     * Main table component
-     */
-    interface OsdsTable {
-        /**
-          * Table size
-          * @see OdsTableAttributes.size
-         */
-        "size"?: ODS_TABLE_SIZE;
-        /**
-          * Table variant
-          * @see OdsTableAttributes.variant
-         */
-        "variant"?: ODS_TABLE_VARIANT;
     }
     interface OsdsText {
         /**
@@ -4717,6 +4727,7 @@ declare namespace LocalJSX {
         "osds-tab-bar": OsdsTabBar;
         "osds-tab-bar-item": OsdsTabBarItem;
         "osds-tab-panel": OsdsTabPanel;
+        "osds-table": OsdsTable;
         "osds-tabs": OsdsTabs;
         "osds-text": OsdsText;
         "osds-textarea": OsdsTextarea;
@@ -4811,6 +4822,7 @@ declare module "@stencil/core" {
              * Panel with content that has to be displayed when active
              */
             "osds-tab-panel": LocalJSX.OsdsTabPanel & JSXBase.HTMLAttributes<HTMLOsdsTabPanelElement>;
+            "osds-table": LocalJSX.OsdsTable & JSXBase.HTMLAttributes<HTMLOsdsTableElement>;
             /**
              * Main tabs component
              */

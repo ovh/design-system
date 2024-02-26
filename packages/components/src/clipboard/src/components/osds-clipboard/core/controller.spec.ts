@@ -1,8 +1,5 @@
 import type { OcdkSurface } from '@ovhcloud/ods-cdk';
-import type { OdsLoggerSpyReferences } from '@ovhcloud/ods-common-testing';
 import { OcdkSurfaceMock } from '@ovhcloud/ods-cdk';
-import { Ods, OdsLogger } from '@ovhcloud/ods-common-core';
-import { OdsClearLoggerSpy, OdsInitializeLoggerSpy } from '@ovhcloud/ods-common-testing';
 import { OdsClipboardController } from './controller';
 import { OsdsClipboard } from '../osds-clipboard';
 
@@ -16,9 +13,6 @@ class OdsClipboardMock extends OsdsClipboard {
 describe('spec:ods-clipboard-controller', () => {
   let controller: OdsClipboardController;
   let component: OsdsClipboard;
-  let loggerSpyReferences: OdsLoggerSpyReferences;
-
-  Ods.instance().logging(false);
 
   function setup(attributes: Partial<OsdsClipboard> = {}): void {
     component = new OdsClipboardMock(attributes);
@@ -26,15 +20,10 @@ describe('spec:ods-clipboard-controller', () => {
   }
 
   beforeEach(() => {
-    const loggerMocked = new OdsLogger('myLoggerMocked');
-    loggerSpyReferences = OdsInitializeLoggerSpy({
-      loggerMocked: loggerMocked as never,
-      spiedClass: OdsClipboardController,
-    });
+    jest.spyOn(console, 'warn');
   });
 
   afterEach(() => {
-    OdsClearLoggerSpy(loggerSpyReferences);
     jest.clearAllMocks();
   });
 
@@ -150,6 +139,75 @@ describe('spec:ods-clipboard-controller', () => {
 
       await controller.closeSurface();
       expect(component.surface.close).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe('method:getTextContent', () => {
+    it('should get content text with p', async() => {
+      setup();
+      const content = 'some content';
+      const text = controller.getTextContent(`<p>${content}</p>`);
+      expect(text).toBe(content);
+    });
+
+    it('should get content text', async() => {
+      setup();
+      const content = 'some content';
+      const text = controller.getTextContent(`${content}`);
+      expect(text).toBe(content);
+    });
+
+    it('should get content text empty with comment', async() => {
+      setup();
+      const text = controller.getTextContent('<!-- -->');
+      expect(text).toBe('');
+    });
+
+    it('should get content text with table', async() => {
+      setup();
+      const text = controller.getTextContent('<table><tr><th>Company</th><th>Contact</th><th>Country</th></tr></table>');
+      expect(text).toBe('CompanyContactCountry');
+    });
+
+    it('should get content text with empty string', async() => {
+      setup();
+      const text = controller.getTextContent('');
+      expect(text).toBe('');
+    });
+  });
+
+  describe('method:openSurfaceWithMessage', () => {
+    it('should open surface', async() => {
+      setup();
+      component.surface = new OcdkSurfaceMock() as unknown as OcdkSurface;
+      component.surface!.opened = false;
+
+      controller.openSurfaceWithMessage('message', 'warn message');
+      expect(console.warn).not.toHaveBeenCalled();
+      expect(component.surface?.opened).toBe(true);
+      expect(component.surfaceMessage).toBe('message');
+    });
+
+    it('should not open surface because of empty value', async() => {
+      setup();
+      component.surface = new OcdkSurfaceMock() as unknown as OcdkSurface;
+      component.surface!.opened = false;
+
+      controller.openSurfaceWithMessage('', 'warn message');
+      expect(console.warn).toHaveBeenNthCalledWith(1, 'warn message');
+      expect(component.surface?.opened).toBe(false);
+      expect(component.surfaceMessage).toBe('');
+    });
+
+    it('should not open surface because of value without content', async() => {
+      setup();
+      component.surface = new OcdkSurfaceMock() as unknown as OcdkSurface;
+      component.surface!.opened = false;
+
+      controller.openSurfaceWithMessage('<!--No content-->', 'warn message');
+      expect(console.warn).toHaveBeenNthCalledWith(1, 'warn message');
+      expect(component.surface?.opened).toBe(false);
+      expect(component.surfaceMessage).toBe('');
     });
   });
 });

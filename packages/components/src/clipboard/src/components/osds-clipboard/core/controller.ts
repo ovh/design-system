@@ -35,7 +35,7 @@ class OdsClipboardController {
     }
   }
 
-  private openSurfaceWithMessage(html: string | undefined, warnMessage: string): void {
+  openSurfaceWithMessage(html: string | undefined, warnMessage: string): void {
     if (!html || !this.getTextContent(html) || !this.component.surface) {
       console.warn(warnMessage);
       return;
@@ -44,7 +44,7 @@ class OdsClipboardController {
     this.component.surface.opened = !this.component.surface.opened;
   }
 
-  private getTextContent(html: string): string | null {
+  getTextContent(html: string): string | null {
     return new DOMParser()
       .parseFromString(html, 'text/html')
       .documentElement.textContent;

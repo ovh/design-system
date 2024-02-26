@@ -20,8 +20,7 @@
 <form id="formElem" method='get'>
   <osds-quantity id="quantity-form">
     <osds-button slot="minus" color="primary" size="sm">-</osds-button>
-    <osds-input type="number" color="primary" min="1" max="10" step="1
-" value="1" name='quantity-input'></osds-input>
+    <osds-input type="number" color="primary" min="1" max="10" step="1" value="1" name='quantity-form-input'></osds-input>
     <osds-button slot="plus" color="primary" size="sm">+</osds-button>
   </osds-quantity>
   <osds-button type="submit" size="sm" inline style="margin-top: 5px;">Submit</osds-button>
@@ -43,35 +42,35 @@
 <h2>[Common]</h2>
 
 <p>Quantity using osds-components</p>
-<osds-quantity id="quantity-1">
+<osds-quantity id="quantity-ods-components">
   <osds-button slot="minus" color="primary" size="sm">-</osds-button>
   <osds-input type="number" color="primary" min="1" max="10" step="1
-" value="1"></osds-input>
+" value="1" name='quantity-ods-components-input'></osds-input>
   <osds-button slot="plus" color="primary" size="sm">+</osds-button>
 </osds-quantity>
 
 <p>Quantity using osds-components (min 0)</p>
-<osds-quantity id="quantity-1">
+<osds-quantity id="quantity-ods-components-min-0">
   <osds-button slot="minus" color="primary" size="sm">-</osds-button>
   <osds-input type="number" color="primary" min="0" max="10" step="1
-" value="0"></osds-input>
+" value="0" name='quantity-ods-components-min-0-input'></osds-input>
   <osds-button slot="plus" color="primary" size="sm">+</osds-button>
 </osds-quantity>
 
 <p>Quantity using vanilla elements</p>
-<osds-quantity id="quantity-1">
+<osds-quantity id="quantity-vanilla">
   <button slot="minus" color="primary" size="sm">-</button>
   <input style="width: 45px" type="number" color="primary" min="1" max="10" step="1
-" value="1"/>
+" value="1" name='quantity-vanilla-input'/>
   <button slot="plus" color="primary" size="sm">+</button>
 </osds-quantity>
 
 <p>Quantity using osds-icon</p>
-<osds-quantity id="quantity-1">
+<osds-quantity id="quantity-ods-icon">
   <osds-button slot="minus" size="sm" color="primary">
     <osds-icon size="sm" contrasted name="minus"></osds-icon>
   </osds-button>
-  <osds-input type="number" color="primary" min="1" max="10" step="1" value="1"></osds-input>
+  <osds-input type="number" color="primary" min="1" max="10" step="1" value="1" name='quantity-ods-icon-input'></osds-input>
   <osds-button slot="plus" size="sm" color="primary">
     <osds-icon size="sm" contrasted name="plus"></osds-icon>
   </osds-button>

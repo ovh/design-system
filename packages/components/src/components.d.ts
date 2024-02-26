@@ -904,10 +904,6 @@ export namespace Components {
          */
         "type"?: ODS_INPUT_TYPE;
         /**
-          * Type of the input field
-         */
-        "type"?: ODS_INPUT_TYPE;
-        /**
           * Value of the input field
          */
         "value": string | number | Date | null;
@@ -1114,12 +1110,6 @@ export namespace Components {
         "getValidity": () => Promise<OdsCommonFieldValidityState | undefined>;
         "hide": () => Promise<void>;
         /**
-          * get the validity state
-         */
-        "forbiddenValues"?: OdsInputValue[];
-        "getValidity": () => Promise<OdsCommonFieldValidityState | undefined>;
-        "hide": () => Promise<void>;
-        /**
           * Indicates if the password is inline or not
          */
         "inline"?: boolean;
@@ -1301,10 +1291,31 @@ export namespace Components {
      * @ovhcloud /ods-components ("Component Tag Name "osds-input" Must Be Unique" error)
      */
     interface OsdsQuantity {
+        "ariaLabel": HTMLElement['ariaLabel'];
         /**
-          * Quantity is disabled or not
+          * ID of the element that labels the input
          */
-        "disabled"?: boolean;
+        "ariaLabelledby"?: string;
+        /**
+          * Default value of the input
+         */
+        "defaultValue": OdsInputValue;
+        /**
+          * Indicates if the input is disabled or not: see component principles
+         */
+        "disabled": boolean;
+        /**
+          * Indicates if the input shows error or not
+         */
+        "error": boolean;
+        /**
+          * Name of the input field
+         */
+        "name": string;
+        /**
+          * Value of the input field
+         */
+        "value": OdsInputValue;
     }
     interface OsdsRadio {
         /**
@@ -3434,6 +3445,10 @@ declare namespace LocalJSX {
         /**
           * Placeholder text for the input
          */
+        "placeholder"?: string;
+        /**
+          * Defines if the Datepicker should display others month days
+         */
         "showSiblingsMonthDays"?: boolean;
         /**
           * Value of the input field
@@ -3991,10 +4006,31 @@ declare namespace LocalJSX {
      * @ovhcloud /ods-components ("Component Tag Name "osds-input" Must Be Unique" error)
      */
     interface OsdsQuantity {
+        "ariaLabel"?: HTMLElement['ariaLabel'];
         /**
-          * Quantity is disabled or not
+          * ID of the element that labels the input
+         */
+        "ariaLabelledby"?: string;
+        /**
+          * Default value of the input
+         */
+        "defaultValue"?: OdsInputValue;
+        /**
+          * Indicates if the input is disabled or not: see component principles
          */
         "disabled"?: boolean;
+        /**
+          * Indicates if the input shows error or not
+         */
+        "error"?: boolean;
+        /**
+          * Name of the input field
+         */
+        "name"?: string;
+        /**
+          * Value of the input field
+         */
+        "value"?: OdsInputValue;
     }
     interface OsdsRadio {
         /**

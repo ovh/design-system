@@ -20,16 +20,9 @@ describe('spec:osds-quantity', () => {
   let controller: OdsQuantityController;
 
   const ariaLabel: string = 'Quantity WAI-ARIA label';
+  const ariaLabelledby: string = 'Quantity WAI-ARIA labelledby';
   const errorStatus: boolean = true;
   const name: string = 'quantity-component';
-
-  /** base html template (avoid boilerplate) */
-  // const baseHtml = (slots: { minus?: string, unnamed?: string, plus?: string }): string =>
-  //   `
-  //   ${slots.minus || slots.minus === '' ? slots.minus : '<button slot="minus"></button>'}
-  //   ${slots.unnamed || slots.unnamed === '' ? slots.unnamed : '<input type="number">'}
-  //   ${slots.plus || slots.plus === '' ? slots.plus : '<button slot="plus"></button>'}
-  //   `;
 
   function baseHtml(slots: { minus?: string, unnamed?: string, plus?: string }): string {
     return `
@@ -51,7 +44,8 @@ describe('spec:osds-quantity', () => {
   });
 
   async function setup({ attributes = {}, html = '' }: { attributes?: Partial<OdsQuantityAttribute>, html?: string } = {}): Promise<void> {
-    const stringAttributes = odsComponentAttributes2StringAttributes<OdsQuantityAttribute>(attributes, DEFAULT_ATTRIBUTE);
+    const baseAttributes = { ariaLabel: '', ariaLabelledby: '' };
+    const stringAttributes = odsComponentAttributes2StringAttributes<OdsQuantityAttribute>({ ...baseAttributes, ...attributes }, DEFAULT_ATTRIBUTE);
 
     // mock setCustomValidity method that does not exist when stencil mock HTMLInputElement
     OdsMockNativeMethod(HTMLInputElement.prototype, 'setCustomValidity', jest.fn());
@@ -77,7 +71,12 @@ describe('spec:osds-quantity', () => {
   describe('attributes', (): void => {
     it('should have an ariaLabel attribute', async(): Promise<void> => {
       await setup({ attributes: { 'ariaLabel': ariaLabel }, html: baseHtml({}) });
-      expect(root).toHaveAttribute('ariaLabel');
+      expect(root).toHaveAttribute('aria-label');
+    });
+
+    it('should have an ariaLabelledby attribute', async(): Promise<void> => {
+      await setup({ attributes: { 'ariaLabelledby': ariaLabelledby }, html: baseHtml({}) });
+      expect(root).toHaveAttribute('aria-labelledby');
     });
 
     it('should have an error attribute', async(): Promise<void> => {

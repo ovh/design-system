@@ -30,4 +30,4 @@
 |---|---|:---:|---|---|
 |**`odsBlur`** | `EventEmitter<void>` | ✴️ |  | Event triggered on textarea blur|
 |**`odsFocus`** | `EventEmitter<void>` | ✴️ |  | Event triggered on textarea focus|
-|**`odsValueChange`** | `EventEmitter<OdsInputValueChangeEvent>` | ✴️ |  | The textarea value changed|
+|**`odsValueChange`** | `EventEmitter<OdsInputValueChangeEventDetail>` | ✴️ |  | The textarea value changed|

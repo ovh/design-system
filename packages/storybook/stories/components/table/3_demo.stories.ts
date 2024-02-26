@@ -1,8 +1,4 @@
-import {
-  DEFAULT_ATTRIBUTE
-} from '@ovhcloud/ods-component-table/src/components/osds-table/constants/default-attributes';
-import { ODS_TABLE_SIZES } from '@ovhcloud/ods-component-table/src/components/osds-table/constants/table-size';
-import { ODS_TABLE_VARIANTS } from '@ovhcloud/ods-component-table/src/components/osds-table/constants/table-variant';
+import { ODS_TABLE_SIZE, ODS_TABLE_SIZES, ODS_TABLE_VARIANT, ODS_TABLE_VARIANTS } from '@ovhcloud/ods-components';
 import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/osds-table';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
@@ -13,21 +9,59 @@ defineCustomElement();
 /* Demo story parameters  */
 const storyParams = {
   size: {
-    category: 'Size',
+    category: 'General',
     control: { type: 'select' },
-    defaultValue: DEFAULT_ATTRIBUTE.size,
+    defaultValue: ODS_TABLE_SIZE.md,
     options: ODS_TABLE_SIZES,
   },
+  tableContent: {
+    category: 'Slot',
+    defaultValue: '\n' +
+      '    <table>\n' +
+      '      <caption>\n' +
+      '        Front-end web developer course 2021\n' +
+      '      </caption>\n' +
+      '      <thead>\n' +
+      '      <tr>\n' +
+      '        <th scope="col">Person</th>\n' +
+      '        <th scope="col">Most interest in</th>\n' +
+      '        <th scope="col">Age</th>\n' +
+      '      </tr>\n' +
+      '      </thead>\n' +
+      '      <tbody>\n' +
+      '      <tr>\n' +
+      '        <th scope="row">Chris</th>\n' +
+      '        <td>HTML tables</td>\n' +
+      '        <td>22</td>\n' +
+      '      </tr>\n' +
+      '      <tr>\n' +
+      '        <th scope="row">Dennis</th>\n' +
+      '        <td>Web accessibility</td>\n' +
+      '        <td>45</td>\n' +
+      '      </tr>\n' +
+      '      <tr>\n' +
+      '        <th scope="row">Sarah</th>\n' +
+      '        <td>JavaScript frameworks</td>\n' +
+      '        <td>29</td>\n' +
+      '      </tr>\n' +
+      '      <tr>\n' +
+      '        <th scope="row">Karen</th>\n' +
+      '        <td>Web performance</td>\n' +
+      '        <td>36</td>\n' +
+      '      </tr>\n' +
+      '      </tbody>\n' +
+      '    </table>',
+  },
   variant: {
-    category: 'Variants',
+    category: 'Misc',
     control: { type: 'select' },
-    defaultValue: DEFAULT_ATTRIBUTE.variant,
+    defaultValue: ODS_TABLE_VARIANT.striped,
     options: ODS_TABLE_VARIANTS,
   },
 };
 
 export default {
-  title: 'ODS Components/Content/Table [organism]/Demo',
+  title: 'ODS Components/Layout/Table [organism]/Demo',
   id: 'table',
   argTypes: extractArgTypes(storyParams),
 };

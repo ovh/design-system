@@ -37,6 +37,8 @@ export class OsdsQuantity implements OdsQuantityAttribute {
 
   @Prop({ reflect: true }) ariaLabel: HTMLElement['ariaLabel'] = DEFAULT_ATTRIBUTE.ariaLabel;
 
+  @Prop({ reflect: true }) ariaLabelledby?: string = DEFAULT_ATTRIBUTE.ariaLabelledby;
+
   @Prop({ mutable: true, reflect: true }) public disabled: boolean = DEFAULT_ATTRIBUTE.disabled;
 
   @Prop({ reflect: true }) defaultValue: OdsInputValue = DEFAULT_ATTRIBUTE.defaultValue;
@@ -87,7 +89,7 @@ export class OsdsQuantity implements OdsQuantityAttribute {
 
   render(): FunctionalComponent {
     return (
-      <Host ariaLabel={this.ariaLabel}>
+      <Host>
         <slot name={'minus'}
           {...{
             onClick: () => this.controller.minusClickHandler(),

@@ -44,6 +44,14 @@ describe('e2e:osds-clipboard', () => {
     await page.waitForChanges();
   }
 
+  beforeEach(() => {
+    jest.spyOn(console, 'warn');
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('should render', async() => {
     await setup({ attributes: {} });
     expect(el).not.toBeNull();
@@ -122,6 +130,19 @@ describe('e2e:osds-clipboard', () => {
     await setup({ attributes: { value } });
 
     await input.click();
+    expect(console.warn).toHaveBeenCalledTimes(1);
+    expect(clipboardSurface).not.toHaveClass('ocdk-surface--open');
+  });
+
+  it('should not show the surface because of slot without content', async() => {
+    const value = 'text to copy';
+    const messages = '<span slot=\'success-message\'><!--This is a test with slot without content--></span>';
+
+    await setup({ attributes: { value }, html: messages });
+
+    await input.click();
+
+    expect(console.warn).toHaveBeenCalledTimes(1);
     expect(clipboardSurface).not.toHaveClass('ocdk-surface--open');
   });
 });

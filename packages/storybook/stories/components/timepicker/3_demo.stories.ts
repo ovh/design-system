@@ -20,12 +20,6 @@ const sharedStoryParam = orderControls({
     category: CONTROL_CATEGORY.general,
     defaultValue: false,
   },
-  currentTimezone: {
-    category: CONTROL_CATEGORY.general,
-    control: { type: 'select' },
-    defaultValue: null,
-    options: ODS_TIMEZONES,
-  },
   defaultValue: {
     category: CONTROL_CATEGORY.general,
     defaultValue: '00:00',
@@ -52,22 +46,21 @@ const sharedStoryParam = orderControls({
   },
 });
 
-const defaultParam = {
-  timezones: {
+const exampleParam = orderControls({
+  currentTimezone: {
     category: CONTROL_CATEGORY.general,
-    defaultValue: [],
+    control: { type: 'select' },
+    defaultValue: null,
+    options: ODS_TIMEZONES,
   },
-};
-
-const exampleParam = {
   timezones: {
     category: CONTROL_CATEGORY.general,
     defaultValue: ['UTC+0', 'UTC-1', 'UTC-2'],
   },
-};
+});
 
 export default {
-  argTypes: extractArgTypes({ ...sharedStoryParam, ...defaultParam, ...exampleParam }),
+  argTypes: extractArgTypes(sharedStoryParam),
   id: 'timepicker',
   title: 'ODS Components/Form/Timepicker [molecule]/Web Component',
 };
@@ -82,7 +75,7 @@ const TemplateDefault = (args: any) => html`
 export const Default = TemplateDefault.bind({});
 // @ts-ignore
 Default.args = {
-  ...extractStoryParams({...sharedStoryParam, ...defaultParam}),
+  ...extractStoryParams({...sharedStoryParam}),
 };
 
 /* With Timezones Example */
@@ -97,3 +90,5 @@ export const WithTimezones = TemplateTimezonesExample.bind({});
 WithTimezones.args = {
   ...extractStoryParams({...sharedStoryParam, ...exampleParam}),
 };
+// @ts-ignore
+WithTimezones.argTypes = extractArgTypes(exampleParam);

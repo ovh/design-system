@@ -5,7 +5,7 @@ import type { OdsDatepickerEvent, OdsDatepickerValueChangeEventDetail } from './
 import type { OdsDatepickerMethod } from './interfaces/methods';
 import type { OdsInputValueChangeEvent, OsdsInput } from '../../../../input/src';
 import type { OdsCommonFieldValidityState } from '@ovhcloud/ods-common-core';
-import type { EventEmitter,FunctionalComponent } from '@stencil/core';
+import type { EventEmitter, FunctionalComponent } from '@stencil/core';
 import { AttachInternals, Component, Element, Event, Host, Method, Prop, State, Watch, h } from '@stencil/core';
 import { Datepicker } from 'vanillajs-datepicker';
 // @ts-ignore no declaration file
@@ -35,12 +35,6 @@ Object.assign(Datepicker.locales, nl);
 Object.assign(Datepicker.locales, pl);
 Object.assign(Datepicker.locales, pt);
 
-// TODO prevent onBlur when tabbing from input to datepicker? => quid clearable?
-// TODO test on ods-form
-//  - issue with required
-//  - issue with reset => OK with form / OK with osds-form
-// TODO test on react example => OK
-// TODO shall we trigger value event when value is not a valid date? => see pattern
 @Component({
   formAssociated: true,
   shadow: true,
@@ -71,7 +65,7 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
   @Prop({ reflect: true }) daysOfWeekDisabled?: ODS_DATEPICKER_DAY[];
   @Prop({ reflect: true }) defaultValue: Date | null = DEFAULT_ATTRIBUTE.value;
   @Prop({ reflect: true }) disabled: boolean = DEFAULT_ATTRIBUTE.disabled;
-  @Prop({ reflect: true }) error: boolean = DEFAULT_ATTRIBUTE.error;
+  @Prop({ mutable: true, reflect: true }) error: boolean = DEFAULT_ATTRIBUTE.error;
   @Prop({ reflect: true }) format?: string = DEFAULT_ATTRIBUTE.format;
   @Prop({ reflect: true }) inline?: boolean = DEFAULT_ATTRIBUTE.inline;
   @Prop({ reflect: true }) locale?: ODS_DATEPICKER_LOCALE = DEFAULT_ATTRIBUTE.locale;
@@ -177,7 +171,7 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
   }
 
   initializeDatepicker(): void {
-    if(!this.el.shadowRoot || this.datepickerInstance) {
+    if (!this.el.shadowRoot || this.datepickerInstance) {
       return;
     }
 
@@ -303,6 +297,7 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
           name={ this.name }
           onClick={ (): void => this.onInputClick() }
           onOdsValueChange={ (event: OdsInputValueChangeEvent): void => this.onOdsValueChange(event) }
+          pattern={ this.controller.getPattern(this.format) }
           placeholder={ this.placeholder }
           readOnly={ this.readOnly }
           ref={ (el?: HTMLElement): OsdsInput => this.osdsInput = el as OsdsInput & HTMLElement }

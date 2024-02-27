@@ -36,7 +36,7 @@
   <osds-input clearable name="input">
   </osds-input>
 
-  <osds-datepicker clearable id="datepicker1" name="test" placeholder="dd/mm/yyyy" required
+  <osds-datepicker clearable id="datepicker1" name="test" format="azerty" required disabled
     show-siblings-month-days="false">
   </osds-datepicker>  
 
@@ -45,13 +45,13 @@
 </osds-form>
 
   <div>
-    <button id="ods-clear">clear</button>
+    <button id="ods-getValidity">getValidity</button>
     <button id="ods-focus">focus</button>
     <button id="ods-reset">reset</button>
   </div>
   <script>
     const odsDatepicker = document.querySelector('#datepicker1');
-    const odsClearBtn = document.querySelector('#ods-clear');
+    const odsGetValidityBtn = document.querySelector('#ods-getValidity');
     const odsFocusBtn = document.querySelector('#ods-focus');
     const odsResetBtn = document.querySelector('#ods-reset');
 
@@ -68,8 +68,8 @@
       // });
     });
 
-    odsClearBtn.addEventListener('click', event => {
-      odsDatepicker.clear();
+    odsGetValidityBtn.addEventListener('click', async(event) => {
+      console.log(await odsDatepicker.getValidity());
     });
 
     odsFocusBtn.addEventListener('click', event => {

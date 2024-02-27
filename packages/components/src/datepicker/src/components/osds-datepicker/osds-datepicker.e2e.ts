@@ -10,7 +10,7 @@ import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 describe('e2e:osds-datepicker', () => {
   let page: E2EPage;
   let el: E2EElement;
-  const baseAttribute = { ariaLabel: null, defaultValue: null, disabled: false, error: false, name: '', value: null };
+  const baseAttribute = { ariaLabel: null, defaultValue: null, disabled: false, error: false, name: 'odsDatepicker', value: null };
 
   async function setup({ attributes }: { attributes: Partial<OdsDatepickerAttribute> }): Promise<void> {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsDatepickerAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);
@@ -25,6 +25,7 @@ describe('e2e:osds-datepicker', () => {
     });
 
     el = await page.find('osds-datepicker');
+
     await page.emulateTimezone('Europe/London');
 
     await page.evaluate(
@@ -124,6 +125,37 @@ describe('e2e:osds-datepicker', () => {
     const inputValue = await inputElement.getProperty('value');
     expect(inputValue).toMatch(/^\d{4}\/\d{2}\/\d{2}$/);
   });
+
+  it('should get error according to format attribute', async() => {
+    await setup({ attributes: { format: 'yyyy/mm/dd' } });
+    await el.click();
+    await page.waitForChanges();
+    const dateButton = await page.find('osds-datepicker >>> .datepicker .datepicker-grid .datepicker-cell:first-child');
+    await dateButton.click();
+    await page.waitForChanges();
+    await el.type('test');
+    expect(await el.getProperty('error')).toBe(true);
+  });
+
+  // it('should get error according to format attribute with wrong separators', async() => {
+  //   await setup({ attributes: { format: 'yyyy/mm/dd' } });
+  //   await el.click();
+  //   await page.waitForChanges();
+  //   await el.type('2024-02-27');
+  //   await page.waitForChanges();
+  //   expect(await el.getProperty('error')).toBe(true);
+  // });
+
+  // it('should get error according to format attribute with wrong format', async() => {
+  //   await setup({ attributes: { format: 'yyyy/mm/dd' } });
+  //   await el.click();
+  //   await page.waitForChanges();
+  //   await page.waitForTimeout(5000);
+  //   await inputNatif.type('27/02/2024');
+  //   await page.waitForChanges();
+  //   await page.waitForTimeout(5000);
+  //   expect(await el.getProperty('error')).toBe(true);
+  // });
 
   it('should display a datepicker with a selected date when value is updated', async() => {
     await setup({ attributes: {} });

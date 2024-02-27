@@ -117,6 +117,10 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
     this.internalError = await this.controller.hasError();
   }
 
+  async componentWillUpdate(): Promise<void> {
+    this.internalError = await this.controller.hasError();
+  }
+
   formResetCallback(): Promise<void> {
     return this.reset();
   }

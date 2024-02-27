@@ -120,6 +120,20 @@ describe('e2e:osds-input', () => {
     });
   });
 
+  describe('attribute:error', () => {
+    it('should has error', async() => {
+      await setup({ attributes: { error: true, type: ODS_INPUT_TYPE.text, value: 'Just ODS being ahead' } });
+      expect(el.classList.contains('ods-error')).toBe(true);
+    });
+
+    it('should change error ', async() => {
+      await setup({ attributes: { error: false, type: ODS_INPUT_TYPE.text, value: 'Just ODS being ahead' } });
+      el.setProperty('error', true);
+      await page.waitForChanges();
+      expect(el.classList.contains('ods-error')).toBe(true);
+    });
+  });
+
   describe('attribute:clearable', () => {
 
     it('should display cross icon/button', async() => {

@@ -932,19 +932,19 @@ export namespace Components {
          */
         "type"?: ODS_INPUT_TYPE;
         /**
-          * Type of the input field
-         */
-        "type"?: ODS_INPUT_TYPE;
-        /**
           * Value of the input field
          */
         "value": string | number | Date | null;
     }
     interface OsdsLink {
+        /**
           * Link color theme
          */
         "color"?: ODS_THEME_COLOR_INTENT;
         /**
+          * Link design as contrasted version
+         */
+        "contrasted"?: boolean;
         /**
           * Link should be disabled or not
          */
@@ -3473,6 +3473,14 @@ declare namespace LocalJSX {
           * Placeholder text for the input
          */
         "placeholder"?: string;
+        /**
+          * Indicates if the input is read-only or not
+         */
+        "readOnly"?: boolean;
+        /**
+          * Indicates if the input is required or not
+         */
+        "required"?: boolean;
         /**
           * Defines if the Datepicker should display others month days
          */

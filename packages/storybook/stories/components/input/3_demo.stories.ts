@@ -28,7 +28,17 @@ const storyParams = {
   },
   defaultValue: {
     category: 'General',
+    control: { type: 'text' },
+  },
+  value: {
+    category: 'General',
+    control: { type: 'text' },
+  },
+  icon: {
+    category: 'General',
     defaultValue: '',
+    options: ODS_ICON_NAMES,
+    control: { type: 'select' },
   },
   prefixValue: {
     category: 'General',

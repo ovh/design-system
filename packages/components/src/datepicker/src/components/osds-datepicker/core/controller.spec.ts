@@ -57,6 +57,40 @@ describe('spec:ods-datepicker-controller', () => {
       });
     });
 
+    describe('getPattern', () => {
+      it('should get patter', () => {
+        setup();
+
+        const patternEmpty = controller.getPattern();
+        expect(patternEmpty).toBe(undefined);
+
+        const patternEmpty2 = controller.getPattern('');
+        expect(patternEmpty2).toBe(undefined);
+
+        const pattern1 = controller.getPattern('d/m/y');
+        expect(pattern1).toBe('[0-9]{1,2}/[0-9]{1,2}/[1-9]([0-9]{1,3})?');
+
+        const pattern2 = controller.getPattern('dd-mm-yy');
+        expect(pattern2).toBe('[0-9]{2}-[0-9]{2}-[0-9]{2}');
+
+        const pattern3 = controller.getPattern('D M yyyy');
+        expect(pattern3).toBe('[A-Za-z]{3} [A-Za-z]{3} [0-9]{4}');
+
+        const pattern4 = controller.getPattern('MM/DD/yyyy');
+        expect(pattern4).toBe('[A-Za-z]*/[A-Za-z]*/[0-9]{4}');
+
+        const pattern5 = controller.getPattern('MM/DD/yyyy');
+        expect(pattern5).toBe('[A-Za-z]*/[A-Za-z]*/[0-9]{4}');
+
+        const pattern6 = controller.getPattern('dd/mm-yyyy');
+        expect(pattern6).toBe('[0-9]{2}/[0-9]{2}-[0-9]{4}');
+
+        // bug in the lib ? It's work because of the 'y'
+        const pattern7 = controller.getPattern('azerty');
+        expect(pattern7).toBe('azert[1-9]([0-9]{1,3})?');
+      });
+    });
+
     describe('formatDate', () => {
       const dummyFormat = 'dd/mm/yyyy';
 

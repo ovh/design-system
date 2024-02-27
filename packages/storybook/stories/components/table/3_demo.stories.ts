@@ -6,6 +6,11 @@ import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../
 
 defineCustomElement();
 
+const variants = {
+  default: '',
+  striped: ODS_TABLE_VARIANT.striped,
+} as const;
+
 /* Demo story parameters  */
 const storyParams = {
   size: {
@@ -55,8 +60,8 @@ const storyParams = {
   variant: {
     category: 'Misc',
     control: { type: 'select' },
-    defaultValue: ODS_TABLE_VARIANT.striped,
-    options: ODS_TABLE_VARIANTS,
+    defaultValue: variants.default,
+    options: variants,
   },
 };
 

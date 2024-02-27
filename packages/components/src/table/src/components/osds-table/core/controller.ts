@@ -4,10 +4,6 @@ import type { OsdsTable } from '../osds-table';
 import { ODS_TABLE_SIZES } from '../constants/table-size';
 import { ODS_TABLE_VARIANTS } from '../constants/table-variant';
 
-/**
- * common controller logic for table component used by the different implementations.
- * it contains all the glue between framework implementation and the third party service.
- */
 class OdsTableController {
   protected component: OsdsTable;
 

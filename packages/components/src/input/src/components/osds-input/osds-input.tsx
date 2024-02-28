@@ -121,6 +121,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
   @Method()
   async clear() {
     this.controller.clear();
+    return this.setFocus();
   }
 
   @Method()

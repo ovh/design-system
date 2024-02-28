@@ -15,7 +15,7 @@ describe('e2e:osds-select', () => {
     disabled: false,
     error: false,
     inline: false,
-    name: '',
+    name: 'OsdsSelect',
     required: false,
     value: '',
   };
@@ -114,6 +114,24 @@ describe('e2e:osds-select', () => {
     });
   });
 
+  describe('attribute:error', () => {
+    it('should has error', async() => {
+      await setup({ attributes: { error: true, value: '42' } });
+      await page.waitForChanges();
+
+      expect(el.classList.contains('ods-error')).toBe(true);
+    });
+
+    it('should change error ', async() => {
+      await setup({ attributes: { error: false, value: '42' } });
+      await page.waitForChanges();
+
+      el.setProperty('error', true);
+      await page.waitForChanges();
+      expect(el.classList.contains('ods-error')).toBe(true);
+    });
+  });
+
   // TODO getValidity
   // TODO getSelection
 
@@ -162,7 +180,7 @@ describe('e2e:osds-select', () => {
 
       beforeEach(() => {
         odsSelectValueChangeEventDetailBase = {
-          name: '',
+          name: 'OsdsSelect',
           oldValue: '',
           selection: null,
           validity: {

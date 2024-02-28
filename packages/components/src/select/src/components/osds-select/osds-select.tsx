@@ -114,6 +114,11 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
   @Watch('value')
   async onValueChange(value: OdsInputValue, oldValue?: OdsInputValue): Promise<void> {
     await this.controller.onValueChange(value, oldValue);
+    await this.onErrorChange();
+  }
+
+  @Watch('error')
+  async onErrorChange(): Promise<void> {
     this.internalError = await this.controller.hasError();
   }
 
@@ -124,8 +129,9 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
     }
   }
 
-  componentWillLoad(): void {
+  async componentWillLoad(): Promise<void> {
     this.controller.beforeInit();
+    await this.onErrorChange();
   }
 
   /**
@@ -192,7 +198,7 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
 
   async onBlur(): Promise<void> {
     this.odsBlur.emit();
-    this.internalError = await this.controller.hasError();
+    await this.onErrorChange();
   }
 
   setSelectOptions(): void {

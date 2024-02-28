@@ -904,10 +904,6 @@ export namespace Components {
          */
         "type"?: ODS_INPUT_TYPE;
         /**
-          * Type of the input field
-         */
-        "type"?: ODS_INPUT_TYPE;
-        /**
           * Value of the input field
          */
         "value": string | number | Date | null;
@@ -1111,12 +1107,6 @@ export namespace Components {
         /**
           * return the element validity
          */
-        "getValidity": () => Promise<OdsCommonFieldValidityState | undefined>;
-        "hide": () => Promise<void>;
-        /**
-          * get the validity state
-         */
-        "forbiddenValues"?: OdsInputValue[];
         "getValidity": () => Promise<OdsCommonFieldValidityState | undefined>;
         "hide": () => Promise<void>;
         /**
@@ -3433,6 +3423,10 @@ declare namespace LocalJSX {
         "onOdsDatepickerValueChange"?: (event: OsdsDatepickerCustomEvent<OdsDatepickerValueChangeEventDetail>) => void;
         /**
           * Placeholder text for the input
+         */
+        "placeholder"?: string;
+        /**
+          * Defines if the Datepicker should display others month days
          */
         "showSiblingsMonthDays"?: boolean;
         /**

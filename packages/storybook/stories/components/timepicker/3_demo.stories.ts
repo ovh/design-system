@@ -22,7 +22,7 @@ const sharedStoryParam = orderControls({
   },
   defaultValue: {
     category: CONTROL_CATEGORY.general,
-    defaultValue: '00:00',
+    control: { type: 'text' },
   },
   disabled: {
     category: CONTROL_CATEGORY.general,
@@ -38,7 +38,7 @@ const sharedStoryParam = orderControls({
   },
   value: {
     category: CONTROL_CATEGORY.general,
-    defaultValue: '',
+    control: { type: 'text' },
   },
   withSeconds: {
     category: CONTROL_CATEGORY.general,

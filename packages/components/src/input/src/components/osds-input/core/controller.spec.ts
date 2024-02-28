@@ -59,6 +59,26 @@ describe('spec:ods-input-controller', () => {
       });
     });
 
+    describe('methods:handleKeySpace', () => {
+      it('should call the callback', () => {
+        const keyEvent = new KeyboardEvent('keydown', { key: 'Space' });
+        const callback = jest.fn();
+        setup({ });
+        controller.handleKeySpace(keyEvent, callback);
+        expect(callback).toHaveBeenCalledTimes(1);
+      });
+
+      it('should not call the callback because of not a space', () => {
+        const keyEvent = new KeyboardEvent('keydown', { key: 'Spacesqsd' });
+        const callback = jest.fn();
+        setup({ });
+        controller.handleKeySpace(keyEvent, callback);
+        const keyEventEnter = new KeyboardEvent('keydown', { key: 'Enter' });
+        controller.handleKeySpace(keyEventEnter, callback);
+        expect(callback).not.toHaveBeenCalledTimes(1);
+      });
+    });
+
     describe('methods:beforeInit', () => {
       it('should call onFormControlChange', () => {
         const formControl = new OdsFormControl<OdsInputValidityState>('id');

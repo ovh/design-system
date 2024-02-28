@@ -32,6 +32,12 @@ class OdsInputController {
     }
   }
 
+  async handleKeySpace(event: KeyboardEvent, callback: () => Promise<void>): Promise<void> {
+    if(event.key === 'Space') {
+      await callback();
+    }
+  }
+
   /**
    * get the validity object properties of the component.
    * it is based on the validity state of the vanilla input.

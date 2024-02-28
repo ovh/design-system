@@ -109,16 +109,17 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
   @Watch('value')
   async onValueChange(value: OdsInputValue, oldValue?: OdsInputValue): Promise<void> {
     this.controller.onValueChange(value, oldValue);
+    await this.onErrorChange();
+  }
+
+  @Watch('error')
+  async onErrorChange(): Promise<void> {
     this.internalError = await this.controller.hasError();
   }
 
   async componentWillLoad(): Promise<void> {
     this.controller.beforeInit();
-    this.internalError = await this.controller.hasError();
-  }
-
-  async componentWillUpdate(): Promise<void> {
-    this.internalError = await this.controller.hasError();
+    await this.onErrorChange();
   }
 
   formResetCallback(): Promise<void> {

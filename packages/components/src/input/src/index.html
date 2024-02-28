@@ -27,8 +27,8 @@
                 inline
                 type="text"
                 clearable
-                pattern="\d{4,4}"
                 value="test"
+                error
     ></osds-input>
 <!-- <input type="text" name="natifInput"> -->
 
@@ -50,7 +50,7 @@
       console.log('blur event', )
     });
     button.addEventListener('click', () => {
-      odsInput.setFocus();
+      odsInput.error = !odsInput.error;
     });
 
     form.onsubmit = (event) => {

@@ -268,6 +268,20 @@ describe('e2e:osds-input', () => {
       expect(value).toBe('');
       expect(elValue).toBe('');
     });
+
+    it('should focus input after clear', async() => {
+      await setup({ attributes: { type: ODS_INPUT_TYPE.number } });
+      await page.waitForChanges();
+
+      await el.callMethod('clear');
+      await page.waitForChanges();
+
+      const isFocused = await page.evaluate(() => {
+        const element = document.querySelector('osds-input');
+        return document.activeElement === element;
+      });
+      expect(isFocused).toBe(true);
+    });
   });
 
   describe('method:hide', () => {

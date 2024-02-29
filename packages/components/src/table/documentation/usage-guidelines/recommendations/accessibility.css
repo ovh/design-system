@@ -1,0 +1,63 @@
+/* Sticky header */
+
+.sticky-header .ods-table {
+  position: relative;
+  height: 200px;
+}
+
+.sticky-header .ods-table table thead tr th {
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+}
+
+/* Sticky first column */
+
+.sticky-first-column .ods-table {
+  position: relative;
+  width: 150px;
+}
+
+.sticky-first-column .ods-table table thead tr th,
+.sticky-first-column .ods-table table tbody tr th {
+  background-color: #fff;
+}
+
+.sticky-first-column .ods-table table thead tr th:first-child,
+.sticky-first-column .ods-table table tbody tr th:first-child {
+  position: sticky;
+  left: 0;
+}
+
+/* Sticky header and first column */
+
+.sticky-header-and-first-column .ods-table {
+  position: relative;
+  width: 150px;
+  height: 200px;
+}
+
+.sticky-header-and-first-column .ods-table table thead tr th,
+.sticky-header-and-first-column .ods-table table tbody tr th {
+  background-color: #fff;
+}
+
+.sticky-header-and-first-column .ods-table table thead tr th {
+  position: sticky;
+  top: 0;
+}
+
+.sticky-header-and-first-column .ods-table table thead tr th {
+  top: 0;
+  z-index: 2;
+}
+
+.sticky-header-and-first-column .ods-table table thead tr th:first-child {
+  left: 0;
+  z-index: 3;
+}
+
+.sticky-header-and-first-column .ods-table table tbody tr th:first-child {
+  position: sticky;
+  left: 0;
+}

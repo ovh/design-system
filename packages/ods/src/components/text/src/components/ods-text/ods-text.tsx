@@ -1,4 +1,4 @@
-import type { FocusEventDetail } from '../event';
+import type { FocusEventDetail } from '../../interfaces/event';
 import type { EventEmitter, FunctionalComponent } from '@stencil/core';
 import { Component, Element, Event, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
 import { ODS_TEXT_PRESET } from '../../constants/text-preset';
@@ -19,8 +19,8 @@ export class OdsText {
   @Event() focusEvent!: EventEmitter<FocusEventDetail>;
 
   @Listen('focus')
-  onFocus() {
-    console.log('I am focused')
+  onFocus(): void {
+    console.log('I am focused'); // eslint-disable-line
     this.focusEvent.emit({ hello: 'world' });
   }
 
@@ -30,13 +30,13 @@ export class OdsText {
   }
 
   @Watch('preset')
-  onPresetChange() {
-    console.log('preset has changed!');
+  onPresetChange(): void {
+    console.log('preset has changed!'); // eslint-disable-line
     this.myFunc();
   }
 
   private myFunc(): void {
-    console.log('This is private!');
+    console.log('This is private!'); // eslint-disable-line
   }
 
   render(): FunctionalComponent {

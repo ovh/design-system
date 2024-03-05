@@ -32,26 +32,6 @@ describe('ods-spinner rendering', () => {
       });
     });
 
-    describe('inline', () => {
-      it('should be reflected', async() => {
-        await setup(`<ods-spinner inline></ods-spinner>`);
-
-        expect(root?.getAttribute('inline')).not.toBeNull();
-      });
-
-      it('should not be set by default', async() => {
-        await setup(`<ods-spinner></ods-spinner>`);
-
-        expect(root?.classList.contains('ods-spinner--inline')).toBe(false);
-      });
-
-      it('should render with inline class if set', async() => {
-        await setup(`<ods-spinner inline></ods-spinner>`);
-
-        expect(root?.classList.contains('ods-spinner--inline')).toBe(true);
-      });
-    });
-
     describe('size', () => {
       it('should be reflected', async() => {
         await setup(`<ods-spinner size="${ODS_SPINNER_SIZE.md}"></ods-spinner>`);

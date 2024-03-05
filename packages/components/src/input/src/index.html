@@ -22,13 +22,13 @@
 <body style="margin: 0;">
   <button>1</button>
   <button>2</button>
-  <osds-input inline type="text" value="On Vous Héberge ?" clearable id="input"></osds-input>
+  <osds-input inline type="text" value="On Vous Héberge ?" clearable id="input" disabled></osds-input>
   <button>3</button>
 
   <script>
     const input = document.getElementById('input');
     input.addEventListener('focus', () => {
-      console.log('osds-input focus')
+      console.log('osds-input focus');
     })
   </script>
   <!-- <osds-input inline type="password" value="On Vous Héberge ?" disabled clearable></osds-input>

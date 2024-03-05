@@ -250,6 +250,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
           isPassword && !loading && (
             <button
               class="osds-input__icon-button"
+              disabled={ this.disabled }
               onClick={ (): Promise<void> => this.hide() }
               onKeyUp={ (event: KeyboardEvent): Promise<void> => this.controller.handleKeySpace(event, this.hide) }>
               <osds-icon
@@ -266,6 +267,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
           clearable && !loading && (
             <button
               class="osds-input__icon-button"
+              disabled={ this.disabled }
               onClick={ (): Promise<void> => this.clear() }
               onKeyUp={ (event: KeyboardEvent): Promise<void> => this.controller.handleKeySpace(event, this.clear) }>
               <osds-icon

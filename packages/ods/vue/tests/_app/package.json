@@ -1,0 +1,19 @@
+{
+  "name": "ods-components-vue-test-app",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "start": "vue-cli-service serve"
+  },
+  "dependencies": {
+    "core-js": "3.36.0",
+    "vue": "3.4.21",
+    "vue-router": "4.3.0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "5.0.8",
+    "@vue/cli-plugin-router": "5.0.8",
+    "@vue/cli-plugin-typescript": "5.0.8",
+    "@vue/cli-service": "5.0.8"
+  }
+}

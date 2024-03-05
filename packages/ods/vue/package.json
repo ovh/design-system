@@ -11,7 +11,9 @@
     "clean": "rimraf dist",
     "compile": "npm run compile:esm && npm run compile:cjs",
     "compile:esm": "tsc -p tsconfig.json",
-    "compile:cjs": "tsc -p tsconfig.cjs.json"
+    "compile:cjs": "tsc -p tsconfig.cjs.json",
+    "test:e2e": "concurrently -s first -k \"npm run start --prefix tests/_app\" \"jest -c tests/jest.config.js\"",
+    "test:e2e:ci": "npm run test:e2e"
   },
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",

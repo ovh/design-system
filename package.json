@@ -13,6 +13,7 @@
     "packages/ods/src/components/!(dist|loader)*",
     "packages/ods/style",
     "packages/ods/vue",
+    "packages/ods/vue/tests/*",
     "packages/storybook",
     "packages/themes"
   ],

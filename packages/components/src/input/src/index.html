@@ -20,8 +20,18 @@
   </style>
 </head>
 <body style="margin: 0;">
-  <osds-input inline type="text" value="On Vous Héberge ?" disabled clearable></osds-input>
-  <osds-input inline type="password" value="On Vous Héberge ?" disabled clearable></osds-input>
+  <button>1</button>
+  <button>2</button>
+  <osds-input inline type="text" value="On Vous Héberge ?" clearable id="input"></osds-input>
+  <button>3</button>
+
+  <script>
+    const input = document.getElementById('input');
+    input.addEventListener('focus', () => {
+      console.log('osds-input focus')
+    })
+  </script>
+  <!-- <osds-input inline type="password" value="On Vous Héberge ?" disabled clearable></osds-input>
   <osds-input inline type="text" value="On Vous Héberge ?" clearable></osds-input>
   <osds-input inline type="password" value="On Vous Héberge ?" clearable></osds-input>
 
@@ -167,6 +177,6 @@
     <span class="error-msg value-missing">Value required please</span>
     <span class="error-msg step-mismatch">Please insert a value by step 2, starting from 1</span>
     <span class="error-msg valid">Not valid</span>
-  </article>
+  </article> -->
 </body>
 </html>

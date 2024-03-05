@@ -333,17 +333,6 @@ describe('e2e:osds-input', () => {
     });
   });
 
-  describe('method:setInputTabindex', () => {
-
-    it('should set inputTabindex to -1', async() => {
-      await setup({ attributes: { type: ODS_INPUT_TYPE.number } });
-      await el.callMethod('setInputTabindex', '-1');
-      await page.waitForChanges();
-      const value = el.getAttribute('tabindex');
-      expect(value).toBe('-1');
-    });
-  });
-
   describe('method:setFocus', () => {
     it('should be focusable', async() => {
       await setup({ attributes: { type: ODS_INPUT_TYPE.number } });

@@ -7,7 +7,7 @@ import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { ODS_ICON_NAME, ODS_ICON_SIZE } from '../../../../icon/src';
 import { ODS_SPINNER_SIZE } from '../../../../spinner/src';
 import { ODS_TEXT_SIZE } from '../../../../text/src';
-import { AttachInternals, Component, Element, Event, Host, Listen, Method, Prop, State, Watch, h } from '@stencil/core';
+import { AttachInternals, Component, Element, Event, Host, Method, Prop, State, Watch, h } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { ODS_INPUT_SIZE } from './constants/input-size';
 import { ODS_INPUT_TYPE } from './constants/input-type';
@@ -29,7 +29,7 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
 
   @AttachInternals() internals!: ElementInternals;
 
-  @State() inputTabindex = 0;
+  @State() inputTabindex?: number;
   @State() hasFocus = false;
 
   @Prop() ariaLabel: HTMLElement['ariaLabel'] = DEFAULT_ATTRIBUTE.ariaLabel;
@@ -72,11 +72,6 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
   @Watch('value')
   onValueChange(value: OdsInputValue, oldValue?: OdsInputValue) {
     this.controller.onValueChange(value, oldValue);
-  }
-
-  @Listen('focus')
-  focus() {
-    this.setFocus.bind(this)();
   }
 
   beforeInit() {
@@ -181,7 +176,6 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
       hasFocus,
       icon,
       inputId,
-      inputTabindex,
       loading,
       masked,
       max,
@@ -205,7 +199,6 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
         class: {
           'ods-error': Boolean(hasError.bind(this)()),
         },
-        tabindex: inputTabindex,
         hasFocus,
       }}
       >
@@ -233,7 +226,6 @@ export class OsdsInput implements OdsInputAttribute, OdsInputEvent, OdsInputMeth
             ref: (el) => this.inputEl = el as HTMLInputElement,
             required,
             step,
-            tabindex: '-1',
             type: isPassword && !masked
               ? 'text'
               : type,

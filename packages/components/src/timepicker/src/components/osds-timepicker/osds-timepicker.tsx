@@ -21,13 +21,25 @@ import { ODS_INPUT_TYPE } from '../../../../input/src';
 })
 export class OsdsTimepicker implements OdsTimepickerAttribute, OdsTimepickerEvent, OdsTimepickerMethod {
   logger = new OdsLogger('OsdsTimepicker');
-
-  @Element() el!: HTMLElement;
   private osdsInput?: OsdsInput;
   timezonesList: ODS_TIMEZONE[] = [];
   controller = new OdsTimepickerController(this);
 
+  @Element() el!: HTMLElement;
+
   @AttachInternals() internals!: ElementInternals;
+
+  @Prop() ariaLabel: HTMLElement['ariaLabel'] = DEFAULT_ATTRIBUTE.ariaLabel;
+  @Prop({ reflect: true }) public clearable? = DEFAULT_ATTRIBUTE.clearable;
+  @Prop({ mutable: true, reflect: true }) public currentTimezone?: ODS_TIMEZONE = DEFAULT_ATTRIBUTE.currentTimezone;
+  @Prop({ reflect: true }) defaultValue: string | null = DEFAULT_ATTRIBUTE.defaultValue;
+  @Prop({ reflect: true }) public disabled = DEFAULT_ATTRIBUTE.disabled;
+  @Prop({ reflect: true }) public error = DEFAULT_ATTRIBUTE.error;
+  @Prop({ reflect: true }) public inline? = DEFAULT_ATTRIBUTE.inline;
+  @Prop({ reflect: true }) name: string = DEFAULT_ATTRIBUTE.name;
+  @Prop({ mutable: true, reflect: true }) public timezones?: ODS_TIMEZONE[] | ODS_TIMEZONES_PRESET | string = DEFAULT_ATTRIBUTE.timezones;
+  @Prop({ mutable: true, reflect: true }) public value: OdsInputValue = DEFAULT_ATTRIBUTE.value;
+  @Prop({ mutable: true, reflect: true }) public withSeconds? = DEFAULT_ATTRIBUTE.withSeconds;
 
   @Event() odsBlur!: EventEmitter<void>;
   @Event() odsClear!: EventEmitter<void>;
@@ -59,36 +71,6 @@ export class OsdsTimepicker implements OdsTimepickerAttribute, OdsTimepickerEven
     this.controller.onValueChange(event);
   }
 
-  @Prop() ariaLabel: HTMLElement['ariaLabel'] = DEFAULT_ATTRIBUTE.ariaLabel;
-
-  /** @see OdsTimepickerAttribute.clearable */
-  @Prop({ reflect: true }) public clearable? = DEFAULT_ATTRIBUTE.clearable;
-
-  /** @see OdsTimepickerAttribute.currentTimezone */
-  @Prop({ mutable: true, reflect: true }) public currentTimezone?: ODS_TIMEZONE = DEFAULT_ATTRIBUTE.currentTimezone;
-
-  @Prop({ reflect: true }) defaultValue: string | null = DEFAULT_ATTRIBUTE.defaultValue;
-
-  /** @see OdsTimepickerAttribute.disabled */
-  @Prop({ reflect: true }) public disabled = DEFAULT_ATTRIBUTE.disabled;
-
-  /** @see OdsTimepickerAttribute.error */
-  @Prop({ reflect: true }) public error = DEFAULT_ATTRIBUTE.error;
-
-  /** @see OdsTimepickerAttribute.inline */
-  @Prop({ reflect: true }) public inline? = DEFAULT_ATTRIBUTE.inline;
-
-  @Prop({ reflect: true }) name: string = DEFAULT_ATTRIBUTE.name;
-
-  /** @see OdsTimepickerAttribute.timezones */
-  @Prop({ mutable: true, reflect: true }) public timezones?: ODS_TIMEZONE[] | ODS_TIMEZONES_PRESET | string = DEFAULT_ATTRIBUTE.timezones;
-
-  /** @see OdsTimepickerAttribute.value */
-  @Prop({ mutable: true, reflect: true }) public value: OdsInputValue = DEFAULT_ATTRIBUTE.value;
-
-  /** @see OdsTimepickerAttribute.withSeconds */
-  @Prop({ mutable: true, reflect: true }) public withSeconds? = DEFAULT_ATTRIBUTE.withSeconds;
-
   @Watch('timezones')
   @Watch('currentTimezone')
   handleTimezones(): void {
@@ -109,15 +91,15 @@ export class OsdsTimepicker implements OdsTimepickerAttribute, OdsTimepickerEven
     this.initTimezones();
   }
 
+  formResetCallback(): void {
+    this.reset();
+  }
+
   initTimezones(): void {
     if (this.currentTimezone || (this.timezones && this.timezones.length > 0 )) {
       this.controller.handleCurrentTimezone();
       this.controller.handleTimezones();
     }
-  }
-
-  formResetCallback(): void {
-    this.reset();
   }
 
   render(): void {
@@ -135,10 +117,11 @@ export class OsdsTimepicker implements OdsTimepickerAttribute, OdsTimepickerEven
       withSeconds,
     } = this;
 
-    const hostClasses = `osds-timepicker ${ inline ? 'osds-timepicker--inline' : '' }`;
-
     return (
-      <Host class={ hostClasses }>
+      <Host class={{
+        'osds-timepicker': true,
+        'osds-timepicker--inline': inline ?? false,
+      }}>
         <osds-input class="osds-timepicker__time"
           ariaLabel={ ariaLabel }
           clearable={ clearable }

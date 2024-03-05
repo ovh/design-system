@@ -11,16 +11,12 @@ import { ODS_SPINNER_COLOR } from '../../constants/spinner-color';
 })
 export class OdsSpinner {
   @Prop({ reflect: true }) color: ODS_SPINNER_COLOR = ODS_SPINNER_COLOR.primary;
-  @Prop({ reflect: true }) inline?: boolean; // TODO remove / replace with custom class?
   @Prop({ reflect: true }) size?: ODS_SPINNER_SIZE;
 
   render(): FunctionalComponent {
     return (
       <Host
-        class={{
-          'ods-spinner': true,
-          'ods-spinner--inline': !!this.inline,
-        }}
+        class="ods-spinner"
         role="progressbar">
         <div
           class={{

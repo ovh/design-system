@@ -2,4 +2,6 @@ interface FocusEventDetail {
   hello: string
 }
 
-export { FocusEventDetail }
+export type {
+  FocusEventDetail,
+};

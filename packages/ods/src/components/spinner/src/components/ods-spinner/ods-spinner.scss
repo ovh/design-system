@@ -7,10 +7,6 @@ $spinner-size-lg: 60px;
   height: 100%;
 }
 
-:host(.ods-spinner--inline) {
-  display: inline-block;
-}
-
 .ods-spinner {
   &__container {
     height: 100%;

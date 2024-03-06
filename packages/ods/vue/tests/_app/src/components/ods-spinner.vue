@@ -7,7 +7,7 @@ import { defineComponent } from 'vue';
 import { OdsSpinner } from '@ovhcloud/ods-components/vue';
 
 export default defineComponent({
-  name: 'App',
+  name: 'Spinner',
   components: {
     OdsSpinner,
   },

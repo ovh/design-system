@@ -11,7 +11,7 @@ import { ODS_TEXT_PRESET } from '../../constants/text-preset';
 export class OdsText {
   @Element() el!: HTMLElement;
 
-  @Prop({ reflect: true }) neededFlag!: boolean;
+  // @Prop({ reflect: true }) neededFlag!: boolean;
   @Prop({ reflect: true }) preset? = ODS_TEXT_PRESET.text;
 
   @State() hasFocus = false;

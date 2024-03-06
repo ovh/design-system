@@ -7,7 +7,7 @@ import { defineComponent } from 'vue';
 import { OdsText } from '@ovhcloud/ods-components/vue';
 
 export default defineComponent({
-  name: 'App',
+  name: 'Text',
   components: {
     OdsText,
   },

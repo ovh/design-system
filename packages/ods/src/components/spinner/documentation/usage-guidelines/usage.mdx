@@ -1,0 +1,27 @@
+import { Canvas } from '@storybook/addon-docs';
+import ColorProperty from './properties/usage.color.mdx';
+import SizeProperty from './properties/usage.size.mdx';
+
+## Usage
+
+### Default
+
+<Canvas sourceState="none">
+  <div style={{ height: '300px', display: 'inline-flex'}}>
+    <ods-spinner></ods-spinner>
+  </div>
+</Canvas>
+
+```html
+<div style='height: 300px; display: inline-flex'>
+  <ods-spinner></ods-spinner>
+</div>
+```
+
+### Color
+
+<ColorProperty />
+
+### Size
+
+<SizeProperty />

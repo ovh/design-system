@@ -6,6 +6,7 @@ import type { OdsDatepickerMethod } from './interfaces/methods';
 import type { OdsInputValueChangeEvent, OsdsInput } from '../../../../input/src';
 import type { OdsCommonFieldValidityState } from '@ovhcloud/ods-common-core';
 import type { EventEmitter, FunctionalComponent } from '@stencil/core';
+import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { AttachInternals, Component, Element, Event, Host, Method, Prop, State, Watch, h } from '@stencil/core';
 import { Datepicker } from 'vanillajs-datepicker';
 // @ts-ignore no declaration file
@@ -57,6 +58,7 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
   @AttachInternals() internals!: ElementInternals;
 
   @State() hasFocus = false;
+  @State() internalError = false;
 
   @Prop({ reflect: true }) ariaLabel: HTMLElement['ariaLabel'] = DEFAULT_ATTRIBUTE.ariaLabel;
   @Prop() ariaLabelledby?: string;
@@ -65,7 +67,7 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
   @Prop({ reflect: true }) daysOfWeekDisabled?: ODS_DATEPICKER_DAY[];
   @Prop({ reflect: true }) defaultValue: Date | null = DEFAULT_ATTRIBUTE.value;
   @Prop({ reflect: true }) disabled: boolean = DEFAULT_ATTRIBUTE.disabled;
-  @Prop({ mutable: true, reflect: true }) error: boolean = DEFAULT_ATTRIBUTE.error;
+  @Prop({ reflect: true }) error: boolean = DEFAULT_ATTRIBUTE.error;
   @Prop({ reflect: true }) format?: string = DEFAULT_ATTRIBUTE.format;
   @Prop({ reflect: true }) inline?: boolean = DEFAULT_ATTRIBUTE.inline;
   @Prop({ reflect: true }) locale?: ODS_DATEPICKER_LOCALE = DEFAULT_ATTRIBUTE.locale;
@@ -153,11 +155,16 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
     }
   }
 
+  @Watch('error')
+  async onErrorChange(): Promise<void> {
+    this.internalError = await this.controller.hasError();
+  }
+
   componentDidLoad(): void {
     this.initializeDatepicker();
   }
 
-  componentWillLoad(): void {
+  async componentWillLoad(): Promise<void> {
     // Those components are used in some string templates, not JSX,
     // thus Stencil does not detect them correctly and they're not embedded in the build,
     // so we have to manually declare their usage here
@@ -267,36 +274,35 @@ export class OsdsDatepicker implements OdsDatepickerAttribute, OdsDatepickerEven
     this.osdsInput?.setFocus(); // needed to focus the input when selecting using keyboard
   }
 
-  onInputClick(): void {
-    this.hasFocus = true;
-  }
-
-  onOdsValueChange(event: OdsInputValueChangeEvent): void {
+  async onOdsValueChange(event: OdsInputValueChangeEvent): Promise<void> {
     event.preventDefault();
     event.stopPropagation();
     if ('formattedValue' in event.detail) {
       return;
     }
-    this.controller.onOdsValueChange(event.detail);
+    await this.controller.onOdsValueChange(event.detail);
   }
 
   render(): FunctionalComponent {
     return (
       <Host
+        class={{ 'ods-error': this.internalError }}
         hasFocus={ this.hasFocus }
         onBlur={ (): void => this.onBlur() }
         onFocus={ (): Promise<void> => this.setFocus() }
+        color={ ODS_THEME_COLOR_INTENT.primary }
       >
         <osds-input
           ariaLabel={ this.ariaLabel }
           ariaLabelledby={ this.ariaLabelledby }
+          color={ ODS_THEME_COLOR_INTENT.primary }
           clearable={ this.clearable }
           disabled={ this.disabled }
-          error={ this.error }
+          error={ this.internalError || this.error }
           icon={ ODS_ICON_NAME.CALENDAR }
           name={ this.name }
-          onClick={ (): void => this.onInputClick() }
-          onOdsValueChange={ (event: OdsInputValueChangeEvent): void => this.onOdsValueChange(event) }
+          onClick={ (): Promise<void> => this.setFocus() }
+          onOdsValueChange={ (event: OdsInputValueChangeEvent): Promise<void> => this.onOdsValueChange(event) }
           pattern={ this.controller.getPattern(this.format) }
           placeholder={ this.placeholder }
           readOnly={ this.readOnly }

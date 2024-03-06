@@ -74,6 +74,11 @@ class OdsDatepickerController<T extends OsdsDatepicker> extends OdsCommonFieldMe
     }).reduce((acc, current, index) => acc = `${acc}${separators[index]}${current}`, '' as string);
   }
 
+  async hasError(): Promise<boolean> {
+    const validity = await this.component.getValidity();
+    return this.component.error || !validity?.valid;
+  }
+
   isDate(date: Date): boolean {
     // Needed as value from runtime are not TS problem anymore
     return date instanceof Date && !isNaN(date.valueOf());
@@ -87,7 +92,7 @@ class OdsDatepickerController<T extends OsdsDatepicker> extends OdsCommonFieldMe
     }
   }
 
-  onOdsValueChange(detail: OdsInputValueChangeEventDetail): void {
+  async onOdsValueChange(detail: OdsInputValueChangeEventDetail): Promise<void> {
     if (this.component.format) {
       const date = this.updateDatepickerDate(detail.value ? new Date(Datepicker.parseDate(detail.value, this.component.format)) : null);
       const formattedValue = this.formatDate(date, this.component.format);
@@ -98,7 +103,7 @@ class OdsDatepickerController<T extends OsdsDatepicker> extends OdsCommonFieldMe
         value: date,
       });
     }
-    this.component.error = !detail.validity?.valid;
+    this.component.internalError = await this.hasError();
     this.component.internals.setFormValue(detail.value?.toString() ?? '');
   }
 

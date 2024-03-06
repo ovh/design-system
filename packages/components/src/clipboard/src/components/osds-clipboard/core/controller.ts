@@ -42,6 +42,8 @@ class OdsClipboardController {
     }
     this.component.surfaceMessage = html;
     this.component.surface.opened = !this.component.surface.opened;
+
+    setTimeout(() => this.closeSurface(), 3000);
   }
 
   getTextContent(html: string): string | null {

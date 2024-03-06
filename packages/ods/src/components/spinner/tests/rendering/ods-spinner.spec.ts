@@ -7,7 +7,7 @@ describe('ods-spinner rendering', () => {
   let page: SpecPage;
   let root: HTMLElement | undefined;
 
-  async function setup(html: string) {
+  async function setup(html: string): Promise<void> {
     page = await newSpecPage({
       components: [OdsSpinner],
       html,

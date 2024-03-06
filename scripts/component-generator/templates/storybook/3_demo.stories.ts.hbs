@@ -1,0 +1,22 @@
+import { defineCustomElement } from '@ovhcloud/ods-{{> component-dir}}/dist/components/ods-{{> component-name }}';
+import { html } from 'lit-html';
+
+defineCustomElement();
+
+export default {
+  title: 'ODS Components/TODO/{{> ComponentName }} [{{ level }}]/Demo',
+  render: (args) => html`
+    <ods-{{> component-name }} dummy="${args.dummy}">
+    </ods-{{> component-name }}>
+  `,
+  argTypes: {
+    dummy: {
+      control: { type: 'text' },
+    },
+  },
+  args: {},
+};
+
+export const Default = {
+  args: {},
+};

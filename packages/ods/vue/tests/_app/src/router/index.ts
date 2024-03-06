@@ -1,20 +1,11 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
-import SpinnerView from '../views/Spinner.vue';
-import TextView from '../views/Text.vue';
+import { componentNames } from '../components';
 
-// TODO generate
-const routes: Array<RouteRecordRaw> = [
-  {
-    path: '/ods-spinner',
-    name: 'ods-spinner',
-    component: SpinnerView,
-  },
-  {
-    path: '/ods-text',
-    name: 'ods-text',
-    component: TextView,
-  },
-];
+const routes: Array<RouteRecordRaw> = componentNames.map((componentName) => ({
+  component: () => import(`../components/ods-${componentName}.vue`),
+  path: `/ods-${componentName}`,
+  name: `ods-${componentName}`,
+}))
 
 const router = createRouter({
   history: createWebHashHistory(),

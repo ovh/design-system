@@ -15,6 +15,7 @@ class OsdsDatepickerMock {
   emitBlur = jest.fn();
   emitDatepickerValueChange = jest.fn();
   formatDate = jest.fn();
+  getValidity = jest.fn();
 
   internals = {
     setFormValue: jest.fn(),
@@ -257,11 +258,11 @@ describe('spec:ods-datepicker-controller', () => {
     });
 
     describe('onOdsValueChange', () => {
-      it('should set internal form value', () => {
+      it('should set internal form value', async() => {
         const dummyValue = '01/01/2024';
         setup();
 
-        controller.onOdsValueChange({ value: dummyValue });
+        await controller.onOdsValueChange({ name: 'odsDatepicker', value: dummyValue });
 
         expect(component.internals.setFormValue).toHaveBeenCalledWith(dummyValue);
       });

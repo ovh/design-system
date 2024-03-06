@@ -125,7 +125,7 @@
     @include osds-datepicker-theme-color-variant-default;
   }
 
-  :host([error][color]) {
+  :host(.ods-error[color]) {
     .datepicker {
       .datepicker-picker {
         border-color: ods-get-color-variable($intent-name: error, $hue: '500');

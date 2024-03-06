@@ -134,7 +134,7 @@ describe('e2e:osds-datepicker', () => {
     await dateButton.click();
     await page.waitForChanges();
     await el.type('test');
-    expect(await el.getProperty('error')).toBe(true);
+    expect(el.classList.contains('ods-error')).toBe(true);
   });
 
   // it('should get error according to format attribute with wrong separators', async() => {

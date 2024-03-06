@@ -113,6 +113,20 @@ describe('e2e:osds-clipboard', () => {
     expect(clipboardSurface).toHaveClass('ocdk-surface--open');
   });
 
+  it('should hide the surface after 3 seconds', async() => {
+    const value = 'text to copy';
+    const messages = '<span slot=\'success-message\'>Copied</span><span slot=\'error-message\'>Error</span>';
+
+    await setup({ attributes: { value }, html: messages });
+
+    await input.click();
+    expect(clipboardSurface).toHaveClass('ocdk-surface--open');
+
+    new Promise((resolve) => setTimeout(resolve, 3000)).then(() => {
+      expect(clipboardSurface).not.toHaveClass('ocdk-surface--open');
+    });
+  });
+
   it('should hide the surface when a click happened outside of the surface', async() => {
     const value = 'text to copy';
     const messages = '<span slot=\'success-message\'>Copied</span><span slot=\'error-message\'>Error</span>';

@@ -5,7 +5,7 @@ import { html } from 'lit-html';
 defineCustomElement();
 
 export default {
-  title: 'ODS Components/User feedback/Spinner [atom]/Demo',
+  title: 'ODS Components/User feedback/Spinner Demo',
   render: (args) => html`
     <ods-spinner color="${args.color}"
                  size="${args.size}">

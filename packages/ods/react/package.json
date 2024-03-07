@@ -12,7 +12,7 @@
     "compile": "npm run compile:esm && npm run compile:cjs",
     "compile:esm": "tsc -p tsconfig.json",
     "compile:cjs": "tsc -p tsconfig.cjs.json",
-    "test:e2e": "concurrently -s first -k \"npm run start --prefix tests/_app\" \"jest -c tests/jest.config.js\"",
+    "test:e2e": "concurrently -s first -k \"npm run start --prefix tests/_app\" \"wait-on http://localhost:3000 && jest -c tests/jest.config.js\"",
     "test:e2e:ci": "npm run test:e2e"
   },
   "main": "dist/cjs/index.js",

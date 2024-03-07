@@ -4,4 +4,10 @@
   &__title {
     @extend %ods-headline;
   }
+
+  &__spinner {
+    &::part(spinner) {
+      height: 100px;
+    }
+  }
 }

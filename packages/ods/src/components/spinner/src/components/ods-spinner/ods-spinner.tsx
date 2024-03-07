@@ -1,8 +1,10 @@
-import type { ODS_SPINNER_SIZE } from '../../constants/spinner-size';
+import type { OdsSpinnerColor } from '../../constants/spinner-color';
+import type { OdsSpinnerSize } from '../../constants/spinner-size';
 import type { FunctionalComponent } from '@stencil/core';
 import { Component, Host, Prop, h } from '@stencil/core';
 import SpinnerSVG from '../../assets/default.svg';
 import { ODS_SPINNER_COLOR } from '../../constants/spinner-color';
+import { ODS_SPINNER_SIZE } from '../../constants/spinner-size';
 
 @Component({
   shadow: true,
@@ -10,8 +12,8 @@ import { ODS_SPINNER_COLOR } from '../../constants/spinner-color';
   tag: 'ods-spinner',
 })
 export class OdsSpinner {
-  @Prop({ reflect: true }) color: ODS_SPINNER_COLOR = ODS_SPINNER_COLOR.primary;
-  @Prop({ reflect: true }) size?: ODS_SPINNER_SIZE;
+  @Prop({ reflect: true }) color: OdsSpinnerColor = ODS_SPINNER_COLOR.primary;
+  @Prop({ reflect: true }) size: OdsSpinnerSize = ODS_SPINNER_SIZE.md;
 
   render(): FunctionalComponent {
     return (
@@ -24,7 +26,8 @@ export class OdsSpinner {
             [`ods-spinner__container--${this.color}`]: !!this.color,
             [`ods-spinner__container--${this.size}`]: !!this.size,
           }}
-          innerHTML={ SpinnerSVG }>
+          innerHTML={ SpinnerSVG }
+          part="spinner">
         </div>
       </Host>
     );

@@ -3,7 +3,7 @@ $spinner-size-md: 40px;
 $spinner-size-lg: 60px;
 
 :host(.ods-spinner) {
-  display: block;
+  display: inline-block;
   height: 100%;
 }
 

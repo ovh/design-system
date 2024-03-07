@@ -46,6 +46,7 @@ describe('e2e:osds-clipboard', () => {
 
   beforeEach(() => {
     jest.spyOn(console, 'warn');
+    jest.spyOn(console, 'error');
   });
 
   afterEach(() => {
@@ -67,6 +68,7 @@ describe('e2e:osds-clipboard', () => {
     await setup({ attributes: { value } });
 
     await input.click();
+    await page.waitForTimeout(3000);
 
     expect(await page.evaluate(() => navigator.clipboard.readText())).toBe(value);
   });
@@ -110,6 +112,23 @@ describe('e2e:osds-clipboard', () => {
     await setup({ attributes: { value }, html: messages });
 
     await input.click();
+    await page.waitForTimeout(300);
+    await page.waitForChanges();
+    expect(clipboardSurface).toHaveClass('ocdk-surface--open');
+  });
+
+  it('should show the surface once when clicked on multiple times', async() => {
+    const value = 'text to copy';
+    const messages = '<span slot=\'success-message\'>Copied</span><span slot=\'error-message\'>Error</span>';
+
+    await setup({ attributes: { value }, html: messages });
+
+    await input.click();
+    await page.waitForTimeout(300);
+    await input.click();
+    await input.click();
+    await input.click();
+    await page.waitForChanges();
     expect(clipboardSurface).toHaveClass('ocdk-surface--open');
   });
 
@@ -120,11 +139,13 @@ describe('e2e:osds-clipboard', () => {
     await setup({ attributes: { value }, html: messages });
 
     await input.click();
+    await page.waitForTimeout(300);
+    await page.waitForChanges();
     expect(clipboardSurface).toHaveClass('ocdk-surface--open');
 
-    new Promise((resolve) => setTimeout(resolve, 3000)).then(() => {
-      expect(clipboardSurface).not.toHaveClass('ocdk-surface--open');
-    });
+    await page.waitForTimeout(3000);
+    await page.waitForChanges();
+    expect(clipboardSurface).not.toHaveClass('ocdk-surface--open');
   });
 
   it('should hide the surface when a click happened outside of the surface', async() => {
@@ -144,6 +165,9 @@ describe('e2e:osds-clipboard', () => {
     await setup({ attributes: { value } });
 
     await input.click();
+    await page.waitForTimeout(3000);
+    await page.waitForChanges();
+
     expect(console.warn).toHaveBeenCalledTimes(1);
     expect(clipboardSurface).not.toHaveClass('ocdk-surface--open');
   });
@@ -155,6 +179,8 @@ describe('e2e:osds-clipboard', () => {
     await setup({ attributes: { value }, html: messages });
 
     await input.click();
+    await page.waitForTimeout(3000);
+    await page.waitForChanges();
 
     expect(console.warn).toHaveBeenCalledTimes(1);
     expect(clipboardSurface).not.toHaveClass('ocdk-surface--open');

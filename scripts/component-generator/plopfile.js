@@ -28,32 +28,29 @@ module.exports = function (plop) {
 
   plop.setGenerator('component', {
     description: 'New component',
-    prompts: [{
+    prompts: [
       // TODO put back if we finally want to expose namespaced components
-      // type: 'list',
-      // name: 'prefix',
-      // message: 'Which kind of component do you want to create?',
-      // choices: [
-      //   { name: 'ODS component (<ods-___>)', value: '' },
-      //   { name: 'OVH component (<ods-ovh-___>)', value: 'ovh' },
-      // ],
-      // TODO do we keep the atomic information?
-      // }, {
+      // {
       //   type: 'list',
-      //   name: 'level',
-      //   message: 'Which atomic stage your component is?',
-      //   choices: ['quark', 'atom', 'molecule', 'meta', 'organism', 'layout', 'meta'],
-      // }, {
-      type: 'input',
-      name: 'name',
-      message: 'Type the component name using kebab-case, without any "ods-" prefix (ex: text, search-bar, ...):',
-      validate: function (value) {
-        if (/.+/.test(value)) {
-          return true;
-        }
-        return 'Component name is required';
+      //   name: 'prefix',
+      //   message: 'Which kind of component do you want to create?',
+      //   choices: [
+      //     { name: 'ODS component (<ods-___>)', value: '' },
+      //     { name: 'OVH component (<ods-ovh-___>)', value: 'ovh' },
+      //   ],
+      // },
+      {
+        type: 'input',
+        name: 'name',
+        message: 'Type the component name using kebab-case, without any "ods-" prefix (ex: text, search-bar, ...):',
+        validate: function (value) {
+          if (/.+/.test(value)) {
+            return true;
+          }
+          return 'Component name is required';
+        },
       },
-    }],
+    ],
     actions: [
       // --- Add the components files
       {

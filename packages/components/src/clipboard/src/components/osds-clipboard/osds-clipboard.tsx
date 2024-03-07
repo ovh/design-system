@@ -5,6 +5,7 @@ import type { OcdkSurface } from '@ovhcloud/ods-cdk';
 import type { EventEmitter, FunctionalComponent } from '@stencil/core';
 import type { HTMLStencilElement } from '@stencil/core/internal';
 import { OcdkSurfaceCorner, ocdkDefineCustomElements, ocdkIsSurface } from '@ovhcloud/ods-cdk';
+import { odsDebounce } from '@ovhcloud/ods-common-core';
 import { ODS_THEME_COLOR_INTENT } from '@ovhcloud/ods-common-theming';
 import { Component, Element, Event, Host, Listen, Method, Prop, State, h } from '@stencil/core';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
@@ -34,6 +35,8 @@ export class OsdsClipboard implements OdsClipboardAttribute, OdsClipboardEvent, 
 
   @Event() odsClipboardCopied!: EventEmitter<string>;
 
+  public debouncedHandlerClick = odsDebounce(this.handlerClick);
+
   @Method()
   async closeSurface(): Promise<void> {
     return this.controller.closeSurface();
@@ -48,6 +51,7 @@ export class OsdsClipboard implements OdsClipboardAttribute, OdsClipboardEvent, 
     if (this.disabled) {
       return;
     }
+
     this.controller.handlerClick(this.value);
   }
 
@@ -70,31 +74,33 @@ export class OsdsClipboard implements OdsClipboardAttribute, OdsClipboardEvent, 
       <Host>
         <div
           class="trigger"
-          ref={ (el?: HTMLElement | null): void => {
+          ref={(el?: HTMLElement | null): void => {
             this.anchor = el as HTMLDivElement;
             this.syncReferences();
-          } }>
-          <osds-input read-only
-            color={ ODS_THEME_COLOR_INTENT.primary }
-            disabled={ this.disabled }
-            icon={ ODS_ICON_NAME.COPY }
-            inline={ this.inline }
-            onClick={ (): void => this.handlerClick() }
-            onKeyDown={ (event: KeyboardEvent): void => this.handlerKeyDown(event) }
-            type={ ODS_INPUT_TYPE.text }
-            value={ this.value }
-          >
-          </osds-input>
+          }}
+        >
+          <osds-input
+            read-only
+            color={ODS_THEME_COLOR_INTENT.primary}
+            disabled={this.disabled}
+            icon={ODS_ICON_NAME.COPY}
+            inline={this.inline}
+            onClick={(): void => this.debouncedHandlerClick()}
+            onKeyDown={(event: KeyboardEvent): void => this.handlerKeyDown(event)}
+            type={ODS_INPUT_TYPE.text}
+            value={this.value}
+          ></osds-input>
         </div>
         <ocdk-surface
-          corners={ [OcdkSurfaceCorner.CENTER_RIGHT, OcdkSurfaceCorner.CENTER_LEFT] }
-          innerHTML={ this.surfaceMessage }
-          ref={ (el: HTMLElement): void => {
+          corners={[OcdkSurfaceCorner.CENTER_RIGHT, OcdkSurfaceCorner.CENTER_LEFT]}
+          innerHTML={this.surfaceMessage}
+          ref={(el: HTMLElement): void => {
             if (ocdkIsSurface(el)) {
               this.surface = el as OcdkSurface;
               this.syncReferences();
             }
-          } }/>
+          }}
+        />
       </Host>
     );
   }

@@ -17,6 +17,7 @@ describe('spec:osds-clipboard', () => {
   let instance: OsdsClipboard;
   let controller: OdsClipboardController;
   let input: HTMLElement | null | undefined;
+  const debounce = jest.fn();
 
   afterEach(() => {
     jest.clearAllMocks();
@@ -77,7 +78,7 @@ describe('spec:osds-clipboard', () => {
   describe('controller', () => {
     it('should call handlerClick of controller', async() => {
       const string = 'test';
-      await setup( { attributes: { value: string } });
+      await setup({ attributes: { value: string } });
       instance.handlerClick();
       expect(controller.handlerClick).toHaveBeenCalledTimes(1);
       expect(controller.handlerClick).toHaveBeenCalledWith(string);
@@ -144,10 +145,12 @@ describe('spec:osds-clipboard', () => {
   describe('methods', () => {
     it('should call handlerClick controller', async() => {
       await setup({});
+      instance.debouncedHandlerClick = debounce;
       instance.handlerClick();
-      input?.click();
+      expect(controller.handlerClick).toHaveBeenCalledTimes(1);
 
-      expect(controller.handlerClick).toHaveBeenCalledTimes(2);
+      input?.click();
+      expect(debounce).toHaveBeenCalledTimes(1);
     });
 
     it('should not call handlerClick controller because of disabled', async() => {

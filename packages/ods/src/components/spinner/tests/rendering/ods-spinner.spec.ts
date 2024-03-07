@@ -26,7 +26,7 @@ describe('ods-spinner rendering', () => {
       });
 
       it('should render with expected default value', async() => {
-        await setup(`<ods-spinner color=${ODS_SPINNER_COLOR.primary}></ods-spinner>`);
+        await setup(`<ods-spinner></ods-spinner>`);
 
         expect(container?.classList.contains('ods-spinner__container--primary')).toBe(true);
       });
@@ -34,17 +34,15 @@ describe('ods-spinner rendering', () => {
 
     describe('size', () => {
       it('should be reflected', async() => {
-        await setup(`<ods-spinner size="${ODS_SPINNER_SIZE.md}"></ods-spinner>`);
+        await setup(`<ods-spinner size="${ODS_SPINNER_SIZE.sm}"></ods-spinner>`);
 
-        expect(root?.getAttribute('size')).toBe(ODS_SPINNER_SIZE.md);
+        expect(root?.getAttribute('size')).toBe(ODS_SPINNER_SIZE.sm);
       });
 
-      it('should not be set by default', async() => {
+      it('should render with expected default value', async() => {
         await setup(`<ods-spinner></ods-spinner>`);
 
-        expect(container?.classList.contains('ods-spinner__container--sm')).toBe(false);
-        expect(container?.classList.contains('ods-spinner__container--md')).toBe(false);
-        expect(container?.classList.contains('ods-spinner__container--lg')).toBe(false);
+        expect(root?.getAttribute('size')).toBe(ODS_SPINNER_SIZE.md);
       });
 
       it('should render with unique size class if set', async() => {

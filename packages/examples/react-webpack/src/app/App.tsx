@@ -1,20 +1,9 @@
-// import type { Components } from '@ovhcloud/ods-components';
 import React, { useEffect, useState } from 'react';
 import { ODS_SPINNER_SIZE, ODS_TEXT_PRESET } from '@ovhcloud/ods-components';
 import { OdsSpinner, OdsText } from '@ovhcloud/ods-components/react';
 import { ODS_THEME } from '@ovhcloud/ods-themes';
 import { OText } from './OText';
 import styles from './app.scss';
-
-// interface MyTextProp extends Omit<Components.OdsText, 'getFormattedText'> {}
-//
-// const MyText = (props: MyTextProp) => {
-//   return (
-//     <OdsText neededFlag={ props.neededFlag }>
-//       Custom text with preset: { props.preset }
-//     </OdsText>
-//   )
-// }
 
 const App = () => {
   const [theme, setTheme] = useState<string>()
@@ -42,16 +31,16 @@ const App = () => {
       </h1>
 
       <OdsText preset={ ODS_TEXT_PRESET.headline }
-               onFocusEvent={ (e) => console.log(e) }
-               neededFlag={ true }>
+               onFocusEvent={ (e) => console.log(e) }>
         ODS Text Headline
       </OdsText>
 
-      {/*<MyText neededFlag={ true } />*/}
-      <OText preset={ ODS_TEXT_PRESET.headline }
-             neededFlag={ true } />
+      <OText preset={ ODS_TEXT_PRESET.headline } />
 
       <OdsSpinner size={ ODS_SPINNER_SIZE.sm } />
+      <OdsSpinner />
+      <OdsSpinner size="lg" />
+      <OdsSpinner class={ styles['app__spinner'] } />
 
       <br />
 

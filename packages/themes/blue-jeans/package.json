@@ -5,7 +5,7 @@
   "license": "Apache-2.0",
   "main": "dist/index.css",
   "scripts": {
-    "build": "yarn run build:prod",
+    "build": "yarn run build:prod && node ../figma/scripts/transform.js && node ../figma/scripts/build.js",
     "build:ci": "npm run build:prod",
     "build:prod": "yarn run build:sass:prefix",
     "build:sass:prefix": "yarn run generate:theme && yarn run generate:prefix",

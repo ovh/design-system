@@ -19,7 +19,32 @@ const path = require('path');
 const isMultiple = process.argv[2]?.includes('multiple');
 const typedocBasePath = path.resolve('dist', 'docs-api');
 const pathPrefixIdx = process.argv.indexOf('--prefix');
-const tableSeparator = '|';
+
+const ReflectionKind = {
+  Project: 1,
+  Module: 2,
+  Namespace: 4,
+  Enum: 8,
+  EnumMember: 16,
+  Variable: 32,
+  Function: 64,
+  Class: 128,
+  Interface: 256,
+  Constructor: 512,
+  Property: 1024,
+  Method: 2048,
+  CallSignature: 4096,
+  IndexSignature: 8192,
+  ConstructorSignature: 16384,
+  Parameter: 32768,
+  TypeLiteral: 65536,
+  TypeParameter: 131072,
+  Accessor: 262144,
+  GetSignature: 524288,
+  SetSignature: 1048576,
+  TypeAlias: 2097152,
+  Reference: 4194304,
+}
 
 let pathPrefix = '';
 if (pathPrefixIdx > -1) {
@@ -27,33 +52,32 @@ if (pathPrefixIdx > -1) {
 }
 
 function convertJsonToMarkdown(jsonItems) {
-  const result = [];
-  const interfaces = []; // getInterfaces(jsonItems);
-  const types = getTypes(jsonItems);
+  const classes = getClasses(jsonItems);
+  const enums = getEnums(jsonItems);
 
-  const addSection = (stringArray, sectionString) => {
-    const res = stringArray;
+  const hasProps = classes.props.length;
+  const hasMethods = classes.methods.length;
+  const hasEvents = classes.events.length;
+  const hasEnums = enums.length;
 
-    if (res.length) {
-      result.push(sectionString);
-      result.push(...res);
-    }
-  };
+  const tableOfContents = [
+    '## Table of Contents', 
+    hasProps ? '[• Properties](#properties)\n' : '',
+    hasMethods ? '[• Methods](#methods)\n' : '',
+    hasEvents ? '[• Events](#events)\n' : '',
+    hasEnums ? '[• Enums](#enums)\n' : '',
+  ];
 
-  // Create Table
-  result.push(
-    ...(interfaces?.length ? ['* [**Interfaces**](#interfaces)'] : []),
-    ...(types?.length ? ['* [**Types**](#types)'] : []),
-  );
-
-  addSection(interfaces, '\n## Interfaces');
-  addSection(types, '\n## Types');
-
-  return result.join('\n');
+  return [
+    ...tableOfContents,
+    hasProps ? '## Properties' : '', ...classes.props,
+    hasMethods ? '## Methods' : '', ...classes.methods,
+    hasEvents ? '## Events' : '', ...classes.events,
+    hasEnums ? '## Enums' : '', ...enums,
+  ].join('\n');
 }
 
 function createSpecMd(component = '') {
-  //const typedocJson = require(path.resolve('docs-api', component, 'typedoc.json'));
   const typedocJson = require(path.resolve(typedocBasePath, component, 'typedoc.json'));
   // TODO test for prefixed project (like -ovh)
   const dir = path.resolve('documentation', 'specifications', component);
@@ -70,73 +94,57 @@ function createSpecMd(component = '') {
   }
 }
 
-function getInterfaces(jsonItems) {
-  const res = [];
+function getClasses(jsonItems) {
+  const classesDefinitions = jsonItems.filter(({ kind }) => kind === ReflectionKind.Class);
 
-  jsonItems
-    .filter(({ kindString, children, indexSignature }) => kindString === 'Interface' && (!children || !indexSignature))
-    .forEach(({ name, children, indexSignature }) => {
-      res.push(`\n### ${name}`);
+  const children = classesDefinitions.flatMap(({ children }) => children);
 
-      // Find default values
-      const defaultValues = {};
-
-      (jsonItems.find(({ kindString: defaultString, name: defaultName }) => {
-        return defaultString === 'Variable' && defaultName.toLowerCase() === `${name.toLowerCase()}defaultdoc`;
-      }))
-      ?.declaration.children?.forEach(({ name, defaultValue }) => {
-        defaultValues[name] = defaultValue?.toString() || '';
-      });
-
-      if (indexSignature) {
-        res.push(tableSeparator + ['Key', 'Type', 'Description'].join(` ${tableSeparator} `) + tableSeparator);
-        res.push(tableSeparator + ['---', ':---:', '---'].join(`${tableSeparator}`) + tableSeparator);
-        res.push(tableSeparator + [
-          printType(indexSignature.parameters?.[0]?.type),
-          printType(indexSignature.type),
-          indexSignature.comment?.shortText,
-        ].join(` ${tableSeparator} `) + tableSeparator);
-        return;
-      }
-
-      res.push(
-        tableSeparator + ['Name', 'Type', 'Required', 'Default', 'Description'].join(` ${tableSeparator} `) + tableSeparator,
-      );
-      res.push(
-        tableSeparator + ['---', '---', ':---:', '---', '---'].join(`${tableSeparator}`) + tableSeparator,
-      );
-
-      children?.forEach(({ name, type, signatures, flags, comment }) => {
-        const commentString = (comment || (signatures && signatures[0]?.comment))?.shortText || '';
-
-        res.push(tableSeparator + [
-          `**\`${name}\`**`,
-          type ? printType(type) : printType(signatures?.[0]?.type),
-          !flags.isOptional ? '✴️' : '',
-          defaultValues[name] ? `\`${defaultValues[name]}\`` : '',
-          commentString.replace(/\n/g, ''),
-        ].join(` ${tableSeparator} `) + tableSeparator);
-      });
+  const props = children
+    .filter(({ kind, decorators }) => kind === ReflectionKind.Property && decorators[0].escapedText === 'Prop')
+    .map((prop) => {
+      return [
+        `### ${prop.name}`,
+        `• ${prop.flags.isOptional ? '\`Optional\`': ''} **${prop.name}**: [${printType(prop.type)}] ${prop.defaultValue ? `= \`${prop.defaultValue}\`` : ''}`,
+        `${prop.comment?.summary?.[0].text ? '**Description**: ' + prop.comment?.summary?.[0].text : ''}`,
+      ].join('\n\n');
     });
 
-  return res;
+  const events = children
+    .filter(({ kind, decorators }) => kind === ReflectionKind.Property && decorators[0].escapedText === 'Event')
+    .map((event) => {
+      const returnType = `\`${event.type.name}\`\<${printType(event.type.typeArguments[0])}\>`
+      return [
+        `### ${event.name}\n\n▸ **${event.name}**(): ${returnType}`,
+        `${event.comment?.summary?.[0].text ? '**Description**: ' + event.comment?.summary?.[0].text : ''}`,
+        `#### Returns\n${returnType}`,
+      ].join('\n\n');
+    });
+
+  const methods = children
+    .filter(({ kind, decorators }) => kind === ReflectionKind.Method && decorators?.[0]?.escapedText === 'Method')
+    .map((method) => {
+        const returnType = `\`${method.signatures[0].type.name}\`\<${printType(method.signatures[0].type.typeArguments[0])}\>`
+        return [
+        `### ${method.name}\n\n▸ **${method.name}**(): ${returnType}`,
+        `${method.signatures?.[0].comment.summary?.[0].text ? '**Description**: ' + method.signatures?.[0].comment.summary?.[0].text : ''}`,
+        `#### Returns\n${returnType}`,
+      ].join('\n\n');
+    });
+
+  return {
+    props,
+    events,
+    methods,
+  };
 }
 
-function getTypes(jsonItems) {
-  const res = [];
-
-  jsonItems
-    .filter((item) => item.kindString === 'Enumeration')
-    .forEach((enumeration) => {
-      res.push(`\n### ${enumeration.name}`);
-      res.push('|  |\n|:---:|');
-
-      if (enumeration.children) {
-        res.push(enumeration.children.map((property) => `| \`${property.name}\` |`).join('\n'));
-      }
+function getEnums(jsonItems) {
+  return jsonItems
+    .filter(({ kind }) => kind === ReflectionKind.Enum)
+    .flatMap((enumDefinition) => {
+      const children = enumDefinition.children.map(({ name }) => `### ${name}\n\n• **${name}** = \`"${name}"\`\n`);
+      return `## Enumeration: ${enumDefinition.name}\n\n${children.join('\n')}\n`
     });
-
-  return res;
 }
 
 function getTypeValue(tObj) {
@@ -166,7 +174,7 @@ function printType(typeObject) {
       case 'array':
         return `${printType(someType.elementType).replace(/^(_|`)|(_|`)$/g, '')}[]`;
       case 'union':
-        return someType.types.map((tObj) => `\`${printType(tObj).replace(/^(_|`)|(_|`)$/g, '')}\``).join(' \\| ');
+        return someType.types.map((tObj) => `\`${printType(tObj).replace(/^(_|`)|(_|`)$/g, '')}\``).join(' \| ');
     }
   }
   return '_unknown_';

@@ -7,8 +7,7 @@
   "collection": "dist/collection/collection-manifest.json",
   "scripts": {
     "clean": "rimraf .stencil coverage dist docs-api www",
-    "__doc": "typedoc --pretty && node ../../../scripts/generate-typedoc-md.js",
-    "doc": "typedoc --pretty --plugin typedoc-plugin-markdown --hideBreadcrumbs true --hideInPageTOC true",
+    "doc": "typedoc --pretty --plugin ../../../scripts/typedoc-plugin-decorator.js && node ../../../scripts/generate-typedoc-md.js",
     "lint:scss": "stylelint 'src/components/**/*.scss'",
     "lint:ts": "eslint 'src/**/*.{js,ts,tsx}'",
     "start": "stencil build --dev --watch --serve",

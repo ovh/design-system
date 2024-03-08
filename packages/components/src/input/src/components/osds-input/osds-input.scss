@@ -7,16 +7,16 @@
 @import '~@ovhcloud/ods-common-theming/ods-theme';
 
 .osds-input {
-  &:focus-visible {
-    outline: 2px solid var(--ods-color-primary-500);
-    border-radius: 1px;
-  }
-
   &__icon-button {
     display: inline-flex;
     border: none;
     background: none;
     padding: 0;
+
+    &:focus-visible {
+      outline: var(--ods-color-primary-500) solid 2px;
+      border-radius: 1px;
+    }
   }
 }
 

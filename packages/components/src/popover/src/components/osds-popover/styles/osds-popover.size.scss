@@ -3,8 +3,9 @@
 // Main CSS mixin for sizes
 @mixin osds-popover-theme-size() {
   ocdk-surface {
-    padding: 8px;
+    padding: var(--ods-size-04);
     width: max-content;
     max-width: 300px;
+    overflow: visible;
   }
 }

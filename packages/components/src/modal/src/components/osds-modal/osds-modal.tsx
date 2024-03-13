@@ -99,36 +99,42 @@ export class OsdsModal implements OdsModalAttribute, OdsModalMethod, OdsModalEve
 
     return (
       <Host masked={masked}>
-        <div class="backdrop"></div>
-
         <dialog
-          class="wrapper"
+          class="dialog"
+          tabindex={-1}
           ref={(el?: HTMLElement | null): void => {
             this.modal = el as HTMLDialogElement;
           }}>
-          <div class="header">
-            {dismissible && (
-              <osds-button onClick={(): Promise<void> => this.close()} color={color} circle variant={ODS_BUTTON_VARIANT.ghost}>
-                <osds-icon ariaName={ODS_ICON_NAME.CLOSE + ' icon'} name={ODS_ICON_NAME.CLOSE} size={ODS_ICON_SIZE.sm} color={color}></osds-icon>
-              </osds-button>
-            )}
-          </div>
 
-          <div class="content">
-            {headline && headline.length > 0 && (
-              <div class="headline">
-                <osds-text level={ODS_TEXT_LEVEL.heading} size={ODS_THEME_TYPOGRAPHY_SIZE._400} color={ODS_THEME_COLOR_INTENT.primary}>
-                  {headline}
-                </osds-text>
+          <div class="wrapper">
+            <div class="backdrop"></div>
+
+            <div class="popup">
+              <div class="header">
+                {dismissible && (
+                  <osds-button onClick={(): Promise<void> => this.close()} color={color} circle variant={ODS_BUTTON_VARIANT.ghost}>
+                    <osds-icon ariaName={ODS_ICON_NAME.CLOSE + ' icon'} name={ODS_ICON_NAME.CLOSE} size={ODS_ICON_SIZE.sm} color={color}></osds-icon>
+                  </osds-button>
+                )}
               </div>
-            )}
 
-            <div class="slot">
-              <slot></slot>
-            </div>
+              <div class="content" tabindex={-1}>
+                {headline && headline.length > 0 && (
+                  <div class="headline">
+                    <osds-text level={ODS_TEXT_LEVEL.heading} size={ODS_THEME_TYPOGRAPHY_SIZE._400} color={ODS_THEME_COLOR_INTENT.primary}>
+                      {headline}
+                    </osds-text>
+                  </div>
+                )}
 
-            <div class="actions">
-              <slot name="actions"></slot>
+                <div class="slot">
+                  <slot></slot>
+                </div>
+
+                <div class="actions">
+                  <slot name="actions"></slot>
+                </div>
+              </div>
             </div>
           </div>
         </dialog>

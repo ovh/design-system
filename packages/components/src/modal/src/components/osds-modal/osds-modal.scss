@@ -22,41 +22,45 @@
 
 :host {
   display: flex;
-  position: fixed;
-  top: 0;
-  left: 0;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
 
-  .backdrop {
-    position: absolute;
-    opacity: 0.75;
-  }
-
-  .wrapper {
-    position: fixed;
-    z-index: 1;
-    outline: none;
-    border: none;
-    overflow: hidden;
-    animation: modal-appear 0.2s ease-in-out;
-
-    .header {
+  .dialog {
+    .wrapper {
       display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      overflow: hidden;
-    }
+      position: fixed;
+      top: 0;
+      left: 0;
+      overflow-y: scroll;
 
-    .content {
-      max-height: 50vh;
-      overflow-y: auto;
+      .backdrop {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: -1;
+      }
 
-      .actions {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
+      .popup {
+        overflow: visible;
+        animation: modal-appear 0.2s ease-in-out;
+
+        .header {
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          overflow: hidden;
+        }
+
+        .content {
+          .slot {
+            display: flex;
+            flex-direction: column;
+          }
+
+          .actions {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+          }
+        }
       }
     }
   }

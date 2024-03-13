@@ -1,4 +1,5 @@
-%ods-headline {
+// Example, to be replace with actual mixins
+@mixin ods-headline() {
   font-weight: bold;
   font-size: 24px;
 }

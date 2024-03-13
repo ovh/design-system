@@ -8,7 +8,6 @@
  */
 const componentNames = [
   'spinner',
-  'text',
   //--generator-anchor--
 ];
 

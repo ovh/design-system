@@ -7,4 +7,3 @@
  * please use the generator command `yarn new:component` at the root of the project
  */
 export * from './spinner/src';
-export * from './text/src';

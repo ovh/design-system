@@ -1,4 +1,11 @@
-# Class: OdsText
+## Table of Contents
+[• Properties](#properties)
+
+[• Methods](#methods)
+
+[• Events](#events)
+
+[• Enums](#enums)
 
 ## Properties
 ### preset
@@ -11,22 +18,22 @@
 
 ▸ **getFormattedText**(): `Promise`<_string_>
 
+
+
 #### Returns
 `Promise`<_string_>
-
-
 ## Events
 ### focusEvent
 
 ▸ **focusEvent**(): `EventEmitter`<`FocusEventDetail`>
 
+
+
 #### Returns
 `EventEmitter`<`FocusEventDetail`>
+## Enums
+## Enumeration: ODS_TEXT_PRESET
 
-
-# Enumeration: ODS_TEXT_PRESET
-
-## Enumeration Members
 ### headline
 
 • **headline** = `"headline"`

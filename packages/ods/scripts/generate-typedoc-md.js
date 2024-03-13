@@ -61,7 +61,7 @@ function convertJsonToMarkdown(jsonItems) {
   const hasEnums = enums.length;
 
   const tableOfContents = [
-    '## Table of Contents', 
+    '## Table of Contents',
     hasProps ? '[• Properties](#properties)\n' : '',
     hasMethods ? '[• Methods](#methods)\n' : '',
     hasEvents ? '[• Events](#events)\n' : '',
@@ -104,7 +104,7 @@ function getClasses(jsonItems) {
     .map((prop) => {
       return [
         `### ${prop.name}`,
-        `• ${prop.flags.isOptional ? '\`Optional\`': ''} **${prop.name}**: [${printType(prop.type)}] ${prop.defaultValue ? `= \`${prop.defaultValue}\`` : ''}`,
+        `• ${prop.flags.isOptional ? '\`Optional\`' : ''} **${prop.name}**: [${printType(prop.type)}] ${prop.defaultValue ? `= \`${prop.defaultValue}\`` : ''}`,
         `${prop.comment?.summary?.[0].text ? '**Description**: ' + prop.comment?.summary?.[0].text : ''}`,
       ].join('\n\n');
     });
@@ -123,10 +123,10 @@ function getClasses(jsonItems) {
   const methods = children
     .filter(({ kind, decorators }) => kind === ReflectionKind.Method && decorators?.[0]?.escapedText === 'Method')
     .map((method) => {
-        const returnType = `\`${method.signatures[0].type.name}\`\<${printType(method.signatures[0].type.typeArguments[0])}\>`
-        return [
+      const returnType = `\`${method.signatures[0].type.name}\`\<${printType(method.signatures[0].type.typeArguments[0])}\>`
+      return [
         `### ${method.name}\n\n▸ **${method.name}**(): ${returnType}`,
-        `${method.signatures?.[0].comment.summary?.[0].text ? '**Description**: ' + method.signatures?.[0].comment.summary?.[0].text : ''}`,
+        `${method.signatures?.[0].comment?.summary?.[0].text ? '**Description**: ' + method.signatures?.[0].comment?.summary?.[0].text : ''}`,
         `#### Returns\n${returnType}`,
       ].join('\n\n');
     });

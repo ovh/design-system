@@ -7,9 +7,13 @@
     background-color: '100'
   )) using($colors) {
     @include osds-modal-on-selected-host {
-      .wrapper {
-        .header {
-          background-color: map_get($colors, background-color);
+      .dialog {
+        .wrapper {
+          .popup {
+            .header {
+              background-color: map_get($colors, background-color);
+            }
+          }
         }
       }
     }
@@ -22,15 +26,24 @@
   :host {
     border-color: transparent;
 
-    .backdrop {
-      background-color: var(--ods-color-primary-500);
-    }
+    .dialog {
+      border-color: transparent;
+      background: none;
 
-    .wrapper {
-      background: #fff;
+      .wrapper {
+        // Doesn't work with most browsers
+        &::backdrop {
+          background: none;
+        }
 
-      &::backdrop {
-        opacity: 0;
+        .backdrop {
+          opacity: 0.75;
+          background-color: var(--ods-color-primary-500);
+        }
+
+        .popup {
+          background-color: var(--ods-color-default-000);
+        }
       }
     }
   }

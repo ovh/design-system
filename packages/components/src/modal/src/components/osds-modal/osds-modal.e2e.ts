@@ -20,7 +20,7 @@ describe('e2e:osds-modal', () => {
     el = await page.find('osds-modal');
 
     await page.evaluate(() => {
-      const modalElement = document.querySelector('osds-modal')?.shadowRoot?.querySelector('.wrapper') as HTMLDialogElement;
+      const modalElement = document.querySelector('osds-modal')?.shadowRoot?.querySelector('.popup') as HTMLElement;
       modalElement.style.setProperty('animation', 'none');
     });
   }
@@ -46,7 +46,7 @@ describe('e2e:osds-modal', () => {
       expect(closeIcon).toBeNull();
     });
 
-    it('should set display styling to none when clicked', async() => {
+    it('should set masked to true when clicked', async() => {
       await setup({ attributes: { dismissible: true } });
 
       const closeIcon = await page.find('osds-modal >>> osds-icon[name="close"]');
@@ -54,11 +54,8 @@ describe('e2e:osds-modal', () => {
       await closeIcon.click();
       await page.waitForChanges();
 
-      const display = await page.evaluate(() => {
-        const modal = document.querySelector('osds-modal');
-        return modal ? window.getComputedStyle(modal).display : null;
-      });
-      expect(display).toBe('none');
+      const masked = await el.getProperty('masked');
+      expect(masked).toBe(true);
     });
   });
 

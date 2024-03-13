@@ -112,7 +112,7 @@ export class OsdsSelect implements OdsSelectAttribute, OdsSelectEvent, OdsSelect
   }
 
   handleKeyDown(event: KeyboardEvent): void {
-    event.stopPropagation();
+    event.preventDefault();
     this.controller.handlerKeyDown(event);
   }
 

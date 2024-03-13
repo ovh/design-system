@@ -1,0 +1,33 @@
+import { Canvas } from '@storybook/addon-docs';
+import PresetProperty from './properties/usage.preset.mdx';
+
+## Usage
+
+### Default
+
+<Canvas sourceState="none">
+  <ods-text>lorem ipsum</ods-text>
+</Canvas>
+
+```html
+<ods-text></ods-text>
+```
+
+### Preset
+<PresetProperty />
+
+### CSS Customisation
+
+You can add your own style on the text element using the part `text`.
+
+```html
+<ods-text class="my-text">
+  test
+</ods-text>
+
+<style>
+  .my-text::part(text) {
+    color: green;
+  }
+</style>
+```

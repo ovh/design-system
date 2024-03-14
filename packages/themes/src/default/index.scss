@@ -1,3 +1,6 @@
+@import '../../assets/fonts/source-code-pro';
+@import '../../assets/fonts/source-sans-pro';
+
 $ods-color-primary-000: #fff;
 $ods-color-primary-050: #e6faff;
 $ods-color-primary-100: #bef1ff;
@@ -12,4 +15,6 @@ $ods-color-primary-900: #000d1f;
 
 :root {
   --ods-color-primary-500: #{$ods-color-primary-500};
+  --ods-font-family-code: 'Source Code Pro', arial;
+  --ods-font-family-default: 'Source Sans Pro', 'Trebuchet MS', arial, 'Segoe UI', sans-serif;
 }

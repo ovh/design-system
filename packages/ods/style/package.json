@@ -8,7 +8,7 @@
   "license": "Apache-2.0",
   "main": "./dist/index.scss",
   "scripts": {
-    "build": "shx cp -r ../src/style ./dist",
+    "build": "npm run clean && shx cp -r ../src/style ./dist",
     "clean": "rimraf dist"
   },
   "devDependencies": {

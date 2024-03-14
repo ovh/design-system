@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { ODS_SPINNER_SIZE, ODS_TEXT_PRESET } from '@ovhcloud/ods-components';
-import { OdsSpinner, OdsText } from '@ovhcloud/ods-components/react';
+import { ODS_SPINNER_SIZE } from '@ovhcloud/ods-components';
+import { OdsSpinner } from '@ovhcloud/ods-components/react';
 import { ODS_THEME } from '@ovhcloud/ods-themes';
-import { OText } from './OText';
 import styles from './app.scss';
 
 const App = () => {
@@ -29,13 +28,6 @@ const App = () => {
       <h1 className={ styles['app__title'] }>
         Headline with ODS mixin
       </h1>
-
-      <OdsText preset={ ODS_TEXT_PRESET.headline }
-               onFocusEvent={ (e) => console.log(e) }>
-        ODS Text Headline
-      </OdsText>
-
-      <OText preset={ ODS_TEXT_PRESET.headline } />
 
       <OdsSpinner size={ ODS_SPINNER_SIZE.sm } />
       <OdsSpinner />

@@ -7,11 +7,15 @@ describe('ods-spinner rendering', () => {
   let el: E2EElement;
   let page: E2EPage;
 
-  async function setup(content: string): Promise<void> {
+  async function setup(content: string, customStyle?: string): Promise<void> {
     page = await newE2EPage();
 
     await page.setContent(content);
     await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
+
+    if (customStyle) {
+      await page.addStyleTag({ content: customStyle });
+    }
 
     el = await page.find('ods-spinner');
     container = await page.find('ods-spinner >>> .ods-spinner__container');
@@ -22,6 +26,17 @@ describe('ods-spinner rendering', () => {
 
     expect(el.shadowRoot).not.toBeNull();
     expect(container).not.toBeNull();
+  });
+
+  describe('part', () => {
+    it('should render with custom style applied', async() => {
+      const customHeight = 200;
+
+      await setup('<ods-spinner></ods-spinner>', `ods-spinner::part(spinner) { height: ${customHeight}px; }`);
+
+      const elStyle = await el.getComputedStyle();
+      expect(parseInt(elStyle.getPropertyValue('height'), 10)).toBe(customHeight);
+    });
   });
 
   describe('sizes', () => {

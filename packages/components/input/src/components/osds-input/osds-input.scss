@@ -51,12 +51,14 @@ input {
   cursor: not-allowed;
 }
 
-/* Chrome, Safari, Edge, Opera */
-input[type="number"],
+input[type="number"] {
+  appearance: textfield;
+  margin: 0;
+}
+
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
   appearance: none;
-  appearance: textfield;
   margin: 0;
 }
 

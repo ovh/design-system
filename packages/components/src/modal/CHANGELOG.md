@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [17.2.0](https://ovh.github.io/design-system/v17.2.0/?path=/docs/design-system-changelog--page) (2024-03-15)
+[compare](https://github.com/ovh/design-system/compare/v17.1.0...v17.2.0)
+
+### Bug Fixes
+
+* **modal:** change width value on breakpoint ([3e7aeba](https://github.com/ovh/design-system/commit/3e7aeba0f2cb54b4fe57fff3bd9b6797893de656))
+* **modal:** fix styles and dont use media breakpoint ([3eaf7f4](https://github.com/ovh/design-system/commit/3eaf7f4e562b00920f949510a383073e6a126666))
+* **modal/popover:** fix scrollbar overlay ([1c22ff4](https://github.com/ovh/design-system/commit/1c22ff497f2030d6eb4a8ebd1428afa34db7894a))
+* **modal/popover:** keep content inline for modal ([1ec9602](https://github.com/ovh/design-system/commit/1ec960297f2319f263784d86c54202139e0a673d))
+* **modal/popover:** overflowing surface ([0c5d298](https://github.com/ovh/design-system/commit/0c5d298be87509aa680ac1ef6d6b2cd7674de5cd))
+* **modal/popover:** overflowing surface ([f33385c](https://github.com/ovh/design-system/commit/f33385c76c31025cb30c3c8e3cf0628d3afee0f1))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

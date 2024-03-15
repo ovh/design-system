@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [17.2.0](https://ovh.github.io/design-system/v17.2.0/?path=/docs/design-system-changelog--page) (2024-03-15)
+[compare](https://github.com/ovh/design-system/compare/v17.1.0...v17.2.0)
+
+### Bug Fixes
+
+* **clipboard:** add test for no content slot ([fd9a174](https://github.com/ovh/design-system/commit/fd9a174b92ace11aa34351227544815223197842))
+* **clipboard:** add warn when message slot not defined ([0815fe4](https://github.com/ovh/design-system/commit/0815fe475bda3f060543d72f9bd0162f55ecea7b))
+* **clipboard:** aff check with text content for tooltip ([29b353f](https://github.com/ovh/design-system/commit/29b353f1c49bdcd4cc7ba85057cc625cc1881190))
+* **clipboard:** fix tooltip close delay ([2849fb0](https://github.com/ovh/design-system/commit/2849fb0c42955fcee2568e7aaa2df9d76ee404e4))
+* **clipboard:** lint ([5c6f557](https://github.com/ovh/design-system/commit/5c6f557cf71742696041585cb52c6bfb8c80a97b))
+* **clipboard:** message undefined when slot not defined ([7eeafc5](https://github.com/ovh/design-system/commit/7eeafc53a35c8236a27ab32447105dac416e54d6))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

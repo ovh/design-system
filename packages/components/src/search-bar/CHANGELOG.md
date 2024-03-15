@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [17.2.0](https://ovh.github.io/design-system/v17.2.0/?path=/docs/design-system-changelog--page) (2024-03-15)
+[compare](https://github.com/ovh/design-system/compare/v17.1.0...v17.2.0)
+
+### Bug Fixes
+
+* **search-bar:** lint ts ([0dd161f](https://github.com/ovh/design-system/commit/0dd161f0c94741f9c14c6d1604cf8487d5b5499b))
+* **searchbar:** emit submit event on enterkey on input ([95750a8](https://github.com/ovh/design-system/commit/95750a81a352e82417da26a3832c72664f89766c))
+* **searchbar:** fix test unit ([cab347f](https://github.com/ovh/design-system/commit/cab347f18d308ceeab2b11010447b5e2da0783be))
+* **table:** fix build and doc ([700c313](https://github.com/ovh/design-system/commit/700c31306c91fc94730ff8673d1f8be4e5d8ff0f))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

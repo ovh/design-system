@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [17.2.0](https://ovh.github.io/design-system/v17.2.0/?path=/docs/design-system-changelog--page) (2024-03-15)
+[compare](https://github.com/ovh/design-system/compare/v17.1.0...v17.2.0)
+
+### Bug Fixes
+
+* **textarea:** add style for disabled ([b187eb6](https://github.com/ovh/design-system/commit/b187eb66179e567d8cdccd7ad796288991984482))
+* **textarea:** change style to be like osds-input ([8bdd3a6](https://github.com/ovh/design-system/commit/8bdd3a6369ff4ea39efdaa647e88e8c62a82f07f))
+* **textarea:** lint style ([9de6610](https://github.com/ovh/design-system/commit/9de6610ca69ff074c591733413b12c75e8613537))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

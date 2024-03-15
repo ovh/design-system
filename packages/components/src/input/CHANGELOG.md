@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [17.2.0](https://ovh.github.io/design-system/v17.2.0/?path=/docs/design-system-changelog--page) (2024-03-15)
+[compare](https://github.com/ovh/design-system/compare/v17.1.0...v17.2.0)
+
+### Bug Fixes
+
+* **input:** button focus visible ([f556680](https://github.com/ovh/design-system/commit/f5566809f01df314aca20f446dedb2daaa0e517b))
+* **input:** clearabed button focusabled on disabled ([1600a5e](https://github.com/ovh/design-system/commit/1600a5ec986f18955bd7b86e1b9f63bd60558423))
+* **input:** order tabindex ([9170668](https://github.com/ovh/design-system/commit/91706680e29262b1d6c3f67a3e5f63c6327b37a9))
+
+
+### Features
+
+* **input:** focus on inpt after clear ([97579f6](https://github.com/ovh/design-system/commit/97579f65c3f8653e786196662ad181459b660636))
+* **input:** selectable icon input ([520e746](https://github.com/ovh/design-system/commit/520e7466e55b0f3fe2ddf9c1e8ac1d124c497cd9))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

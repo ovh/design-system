@@ -3,6 +3,65 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [17.2.0](https://ovh.github.io/design-system/v17.2.0/?path=/docs/design-system-changelog--page) (2024-03-15)
+[compare](https://github.com/ovh/design-system/compare/v17.1.0...v17.2.0)
+
+### Bug Fixes
+
+* **clipboard:** add test for no content slot ([fd9a174](https://github.com/ovh/design-system/commit/fd9a174b92ace11aa34351227544815223197842))
+* **clipboard:** add warn when message slot not defined ([0815fe4](https://github.com/ovh/design-system/commit/0815fe475bda3f060543d72f9bd0162f55ecea7b))
+* **clipboard:** aff check with text content for tooltip ([29b353f](https://github.com/ovh/design-system/commit/29b353f1c49bdcd4cc7ba85057cc625cc1881190))
+* **clipboard:** fix tooltip close delay ([2849fb0](https://github.com/ovh/design-system/commit/2849fb0c42955fcee2568e7aaa2df9d76ee404e4))
+* **clipboard:** lint ([5c6f557](https://github.com/ovh/design-system/commit/5c6f557cf71742696041585cb52c6bfb8c80a97b))
+* **clipboard:** message undefined when slot not defined ([7eeafc5](https://github.com/ovh/design-system/commit/7eeafc53a35c8236a27ab32447105dac416e54d6))
+* **datepicker:** remove selector variant from style ([807c4f7](https://github.com/ovh/design-system/commit/807c4f7ac2f7ca299fd4ccf265a894b7bd084b6b))
+* **datepicker:** safari styles ([bc4f243](https://github.com/ovh/design-system/commit/bc4f2435387bb1eae5275bd8fb7e1d692baf3c8a))
+* **datepicker:** set days to 2 letters ([bdfaa79](https://github.com/ovh/design-system/commit/bdfaa795aed2cf47c86c324a4f718c661bffce58))
+* **datepicker:** surface border color in error ([02a3d47](https://github.com/ovh/design-system/commit/02a3d47f29704ce838eb30ef68eeffc9c02047f5))
+* **input:** button focus visible ([f556680](https://github.com/ovh/design-system/commit/f5566809f01df314aca20f446dedb2daaa0e517b))
+* **input:** clearabed button focusabled on disabled ([1600a5e](https://github.com/ovh/design-system/commit/1600a5ec986f18955bd7b86e1b9f63bd60558423))
+* **input:** order tabindex ([9170668](https://github.com/ovh/design-system/commit/91706680e29262b1d6c3f67a3e5f63c6327b37a9))
+* **link:** fix multiple active color on safari ([11c8a21](https://github.com/ovh/design-system/commit/11c8a21a04f780c7081bc53d9a6c619ab5f35158))
+* **link:** multiple active states on safari ([7ccfe69](https://github.com/ovh/design-system/commit/7ccfe69a8cd815f84ced5f09113688a6e6dc879e))
+* **modal:** change width value on breakpoint ([3e7aeba](https://github.com/ovh/design-system/commit/3e7aeba0f2cb54b4fe57fff3bd9b6797893de656))
+* **modal:** fix styles and dont use media breakpoint ([3eaf7f4](https://github.com/ovh/design-system/commit/3eaf7f4e562b00920f949510a383073e6a126666))
+* **modal/popover:** fix scrollbar overlay ([1c22ff4](https://github.com/ovh/design-system/commit/1c22ff497f2030d6eb4a8ebd1428afa34db7894a))
+* **modal/popover:** keep content inline for modal ([1ec9602](https://github.com/ovh/design-system/commit/1ec960297f2319f263784d86c54202139e0a673d))
+* **modal/popover:** overflowing surface ([0c5d298](https://github.com/ovh/design-system/commit/0c5d298be87509aa680ac1ef6d6b2cd7674de5cd))
+* **modal/popover:** overflowing surface ([f33385c](https://github.com/ovh/design-system/commit/f33385c76c31025cb30c3c8e3cf0628d3afee0f1))
+* **pagination:** display pagination with page ender 2 ([a78d5d2](https://github.com/ovh/design-system/commit/a78d5d2e6126a49dcdd4412cd7fa437f41170eac))
+* **pagination:** fix e2e tests ([0250635](https://github.com/ovh/design-system/commit/0250635b9896c9a1eaca9ffd56fa0ac9b1cc6f08))
+* **pagination:** forbid defaultCurrentPage values below 1 or above total pages ([4fff9d1](https://github.com/ovh/design-system/commit/4fff9d1cb7b42df65d59255a1f0cf4dad85689fa))
+* **pagination:** hide navigation when totalitems is inferior to itemsPerPage ([6d4343b](https://github.com/ovh/design-system/commit/6d4343b8ad24c2ef1b887cb6e30a63db763c3e21))
+* **phone-number:** event on type ([9882236](https://github.com/ovh/design-system/commit/9882236367d321f5cdc28122acbe75f7ebce1d50))
+* **quantity:** fix storybook doc and demo to add default variant ([d33e305](https://github.com/ovh/design-system/commit/d33e305f30e3bb87e9632c7d5df33481bf886045))
+* **search-bar:** lint ts ([0dd161f](https://github.com/ovh/design-system/commit/0dd161f0c94741f9c14c6d1604cf8487d5b5499b))
+* **searchbar:** emit submit event on enterkey on input ([95750a8](https://github.com/ovh/design-system/commit/95750a81a352e82417da26a3832c72664f89766c))
+* **searchbar:** fix test unit ([cab347f](https://github.com/ovh/design-system/commit/cab347f18d308ceeab2b11010447b5e2da0783be))
+* **table:** column width on large screens on Firefox ([f405ca4](https://github.com/ovh/design-system/commit/f405ca421af9d3f456e5bd32a3e009b59a3e1498))
+* **table:** fix build and doc ([700c313](https://github.com/ovh/design-system/commit/700c31306c91fc94730ff8673d1f8be4e5d8ff0f))
+* **textarea:** add style for disabled ([b187eb6](https://github.com/ovh/design-system/commit/b187eb66179e567d8cdccd7ad796288991984482))
+* **textarea:** change style to be like osds-input ([8bdd3a6](https://github.com/ovh/design-system/commit/8bdd3a6369ff4ea39efdaa647e88e8c62a82f07f))
+* **textarea:** lint style ([9de6610](https://github.com/ovh/design-system/commit/9de6610ca69ff074c591733413b12c75e8613537))
+* **tile:** fix animation on safari ([265c704](https://github.com/ovh/design-system/commit/265c7042cf88421d80e18c21906028c92748c1fe))
+* **tile:** fix style of checking state in safari ([72fee99](https://github.com/ovh/design-system/commit/72fee99f6057ee8004be4be0bc71822192c0f272))
+
+
+### Features
+
+* **input:** focus on inpt after clear ([97579f6](https://github.com/ovh/design-system/commit/97579f65c3f8653e786196662ad181459b660636))
+* **input:** selectable icon input ([520e746](https://github.com/ovh/design-system/commit/520e7466e55b0f3fe2ddf9c1e8ac1d124c497cd9))
+* **pagination:** create defaultCurrentPage attribute, remove current & update tests ([b7ad13c](https://github.com/ovh/design-system/commit/b7ad13ccdeae0f259b9ca08895dd8543b67c41d8))
+* **pagination:** display arrows ([c4408b2](https://github.com/ovh/design-system/commit/c4408b296ca3425cb51b9a14f86551b9f46450dd))
+* **table:** initial commit ([c400d37](https://github.com/ovh/design-system/commit/c400d37ca00f5b2dad6701eb4087907d8c29969a))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

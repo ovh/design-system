@@ -102,9 +102,7 @@
   }
 
   :host(&--rounded){
-    @include osds-tile-on-selected-host {
-      border-radius: var(--ods-size-border-radius-02);
-    }
+    border-radius: var(--ods-size-border-radius-02);
   }
 
   ::slotted([slot="start"]),

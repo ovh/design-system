@@ -8,6 +8,21 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [16.6.1](https://ovh.github.io/design-system/v16.6.1/?path=/docs/design-system-changelog--page) (2024-03-15)
+[compare](https://github.com/ovh/design-system/compare/v16.6.0...v16.6.1)
+
+### Bug Fixes
+
+* **input:** hide arrow in safari ([04ad45d](https://github.com/ovh/design-system/commit/04ad45d1159ac02fe85406bf598d6a4d49973046))
+* **tile:** rounded border on safari ([0575f35](https://github.com/ovh/design-system/commit/0575f351b20771a35e08b74ac87d335723c3fd93))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [16.6.0](https://ovh.github.io/design-system/v16.6.0/?path=/docs/design-system-changelog--page) (2023-12-13)
 [compare](https://github.com/ovh/design-system/compare/v16.5.0...v16.6.0)
 

@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [16.6.1](https://ovh.github.io/design-system/v16.6.1/?path=/docs/design-system-changelog--page) (2024-03-15)
+[compare](https://github.com/ovh/design-system/compare/v16.6.0...v16.6.1)
+
+### Bug Fixes
+
+* **input:** hide arrow in safari ([04ad45d](https://github.com/ovh/design-system/commit/04ad45d1159ac02fe85406bf598d6a4d49973046))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

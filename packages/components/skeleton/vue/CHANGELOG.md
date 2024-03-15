@@ -6,6 +6,18 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [16.6.1](https://ovh.github.io/design-system/v16.6.1/?path=/docs/design-system-changelog--page) (2024-03-15)
+[compare](https://github.com/ovh/design-system/compare/v16.6.0...v16.6.1)
+
+**Note:** Version bump only for package @ovhcloud/ods-component-skeleton-vue
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [16.6.0](https://ovh.github.io/design-system/v16.6.0/?path=/docs/design-system-changelog--page) (2023-12-13)
 [compare](https://github.com/ovh/design-system/compare/v16.5.0...v16.6.0)
 

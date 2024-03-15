@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-component-medium-vue",
-  "version": "16.6.0",
+  "version": "16.6.1",
   "private": true,
   "description": "Vue specific wrapper for ods",
   "keywords": [],
@@ -19,12 +19,12 @@
     "dist/"
   ],
   "dependencies": {
-    "@ovhcloud/ods-component-medium": "16.6.0"
+    "@ovhcloud/ods-component-medium": "16.6.1"
   },
   "peerDependencies": {
     "vue": ">=3"
   },
   "devDependencies": {
-    "@ovhcloud/ods-vue-dev": "16.6.0"
+    "@ovhcloud/ods-vue-dev": "16.6.1"
   }
 }

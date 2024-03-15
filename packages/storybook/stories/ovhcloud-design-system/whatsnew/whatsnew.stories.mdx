@@ -12,6 +12,78 @@ import { Meta } from '@storybook/addon-docs';
 
 # What's new ?
 
+## v17.2.0
+
+This update introduces our new `Table` component, enhances various features and improves documentation.
+It also brings numerous bug fixes across components, ensuring a smoother and more accessible user experience.
+
+### New component:
+
+**Table**
+[See Documentation](?path=/story/table--default)
+
+### Documentation improvements:
+
+**Form Field**
+
+- Added an accessibility label.
+- Updated Storybook Usage Guidelines.
+
+### Feature updates:
+
+**Clipboard**
+
+- `Tooltip` now features a `3 seconds` closing delay.
+- `Tooltip` won't be displayed if `success-message` OR `error-message` is not defined.
+
+**Datepicker**
+
+- `Datepicker` days are now displayed with 2 letters.
+
+**Pagination**
+
+- New attribute `defaultCurrentPage` has been added.
+- New method `getCurrentPage()` has been added.
+- Old attribute `current` has been removed.
+- Navigation will be hidden if `totalItems` is lower than `itemPerPage`
+
+### Bug fixes:
+
+**Breadcrumb**
+**Link**
+
+- Multiple active states issue on Safari browsers has been fixed.
+
+**Datepicker**
+
+- Error color on `Datepicker`'s border has been fixed.
+
+**Input**
+
+- Clearing the `Input` now properly focuses it afterwards.
+
+**Modal**
+
+- Overlaying elements can now overflow from the `Modal`.
+- Pressing the `ESCAPE` key when a `Select` is open inside a `Modal` no longer displays an unwanted backdrop.
+- Width value has been fixed on breakpoint.
+
+**Popover**
+
+- Overlaying elements can now overflow from the `Popover`.
+
+**Textarea**
+
+- `Textarea` style has been fixed to match the `Input`.
+
+**Tile**
+
+- Checked `Tile` styling has been fixed on Safari.
+
+**Search Bar**
+
+- `odsSearchSubmit` event is now properly triggered on `KEY_DOWN` input.
+
 ## v17.1.0
 
 As we're working towards a massive uniformisation of all ODS form elements (events, nav behaviour, required state, validity state, ...),

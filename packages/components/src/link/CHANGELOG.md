@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [17.2.0](https://ovh.github.io/design-system/v17.2.0/?path=/docs/design-system-changelog--page) (2024-03-15)
+[compare](https://github.com/ovh/design-system/compare/v17.1.0...v17.2.0)
+
+### Bug Fixes
+
+* **link:** fix multiple active color on safari ([11c8a21](https://github.com/ovh/design-system/commit/11c8a21a04f780c7081bc53d9a6c619ab5f35158))
+* **link:** multiple active states on safari ([7ccfe69](https://github.com/ovh/design-system/commit/7ccfe69a8cd815f84ced5f09113688a6e6dc879e))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

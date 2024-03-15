@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [17.2.0](https://ovh.github.io/design-system/v17.2.0/?path=/docs/design-system-changelog--page) (2024-03-15)
+[compare](https://github.com/ovh/design-system/compare/v17.1.0...v17.2.0)
+
+### Bug Fixes
+
+* **tile:** fix animation on safari ([265c704](https://github.com/ovh/design-system/commit/265c7042cf88421d80e18c21906028c92748c1fe))
+* **tile:** fix style of checking state in safari ([72fee99](https://github.com/ovh/design-system/commit/72fee99f6057ee8004be4be0bc71822192c0f272))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [17.2.0](https://ovh.github.io/design-system/v17.2.0/?path=/docs/design-system-changelog--page) (2024-03-15)
+[compare](https://github.com/ovh/design-system/compare/v17.1.0...v17.2.0)
+
+### Bug Fixes
+
+* **pagination:** display pagination with page ender 2 ([a78d5d2](https://github.com/ovh/design-system/commit/a78d5d2e6126a49dcdd4412cd7fa437f41170eac))
+* **pagination:** fix e2e tests ([0250635](https://github.com/ovh/design-system/commit/0250635b9896c9a1eaca9ffd56fa0ac9b1cc6f08))
+* **pagination:** forbid defaultCurrentPage values below 1 or above total pages ([4fff9d1](https://github.com/ovh/design-system/commit/4fff9d1cb7b42df65d59255a1f0cf4dad85689fa))
+* **pagination:** hide navigation when totalitems is inferior to itemsPerPage ([6d4343b](https://github.com/ovh/design-system/commit/6d4343b8ad24c2ef1b887cb6e30a63db763c3e21))
+
+
+### Features
+
+* **pagination:** create defaultCurrentPage attribute, remove current & update tests ([b7ad13c](https://github.com/ovh/design-system/commit/b7ad13ccdeae0f259b9ca08895dd8543b67c41d8))
+* **pagination:** display arrows ([c4408b2](https://github.com/ovh/design-system/commit/c4408b296ca3425cb51b9a14f86551b9f46450dd))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

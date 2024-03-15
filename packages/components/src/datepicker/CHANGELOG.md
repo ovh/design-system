@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [17.2.0](https://ovh.github.io/design-system/v17.2.0/?path=/docs/design-system-changelog--page) (2024-03-15)
+[compare](https://github.com/ovh/design-system/compare/v17.1.0...v17.2.0)
+
+### Bug Fixes
+
+* **datepicker:** remove selector variant from style ([807c4f7](https://github.com/ovh/design-system/commit/807c4f7ac2f7ca299fd4ccf265a894b7bd084b6b))
+* **datepicker:** safari styles ([bc4f243](https://github.com/ovh/design-system/commit/bc4f2435387bb1eae5275bd8fb7e1d692baf3c8a))
+* **datepicker:** set days to 2 letters ([bdfaa79](https://github.com/ovh/design-system/commit/bdfaa795aed2cf47c86c324a4f718c661bffce58))
+* **datepicker:** surface border color in error ([02a3d47](https://github.com/ovh/design-system/commit/02a3d47f29704ce838eb30ef68eeffc9c02047f5))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

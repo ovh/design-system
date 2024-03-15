@@ -6,6 +6,18 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [17.2.0](https://ovh.github.io/design-system/v17.2.0/?path=/docs/design-system-changelog--page) (2024-03-15)
+[compare](https://github.com/ovh/design-system/compare/v17.1.0...v17.2.0)
+
+**Note:** Version bump only for package @ovhcloud/ods-component-spinner
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [17.1.0](https://ovh.github.io/design-system/v17.1.0/?path=/docs/design-system-changelog--page) (2024-02-09)
 [compare](https://github.com/ovh/design-system/compare/v17.1.0-alpha.2...v17.1.0)
 

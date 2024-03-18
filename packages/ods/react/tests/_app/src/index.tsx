@@ -2,6 +2,7 @@ import React, { createRoot } from 'react-dom/client';
 import { StrictMode, Suspense, lazy } from 'react';
 import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 import { componentNames } from './components';
+import '@ovhcloud/ods-themes/default';
 
 const root = createRoot(document.getElementById('root')!);
 

@@ -4,7 +4,7 @@ enum ODS_SPINNER_COLOR {
   white = 'white',
 }
 
-type OdsSpinnerColor = keyof typeof ODS_SPINNER_COLOR;
+type OdsSpinnerColor =`${ODS_SPINNER_COLOR}`;
 
 const ODS_SPINNER_COLORS = Object.freeze(Object.values(ODS_SPINNER_COLOR));
 

@@ -26,7 +26,7 @@ describe('ods-text rendering', () => {
       expect(root?.getAttribute('preset')).toBe(presetValue);
     });
 
-    it('should not be set by default', async() => {
+    it('should render with expected default value', async() => {
       await setup(`<ods-text></ods-text>`);
 
       expect(root?.getAttribute('preset')).toBe(ODS_TEXT_PRESET.paragraph);

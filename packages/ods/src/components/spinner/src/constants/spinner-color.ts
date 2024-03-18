@@ -1,5 +1,7 @@
 enum ODS_SPINNER_COLOR {
+  neutral = 'neutral',
   primary = 'primary',
+  white = 'white',
 }
 
 type OdsSpinnerColor = keyof typeof ODS_SPINNER_COLOR;

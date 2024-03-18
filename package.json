@@ -37,7 +37,7 @@
     "ods:prerelease": "yarn ods:release:prepare && yarn version:prerelease",
     "ods:release:prepare": "npx zx scripts/ods-release-prepare.mjs",
     "publish": "lerna publish --concurrency 1 from-package --yes",
-    "storybook": "yarn workspace @ovhcloud/ods-storybook run start:quiet",
+    "storybook": "yarn workspace @ovhcloud/ods-storybook run start",
     "test:ci": "yarn run test:spec:ci && yarn run test:e2e:ci",
     "test:e2e:ci": "lerna run --stream --concurrency 1 test:e2e:ci",
     "test:spec:ci": "lerna run --stream --concurrency 1 test:spec:ci",

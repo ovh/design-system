@@ -1,7 +1,19 @@
 @import '../../assets/fonts/source-code-pro';
 @import '../../assets/fonts/source-sans-pro';
 
-$ods-color-primary-000: #fff;
+/* stylelint-disable color-hex-length */
+$ods-color-neutral-000: #ffffff;
+$ods-color-neutral-050: #f2f2f2;
+$ods-color-neutral-100: #e6e6e6;
+$ods-color-neutral-200: #cccccc;
+$ods-color-neutral-300: #b3b3b3;
+$ods-color-neutral-400: #999999;
+$ods-color-neutral-500: #808080;
+$ods-color-neutral-600: #666666;
+$ods-color-neutral-700: #4d4d4d;
+$ods-color-neutral-800: #333333;
+$ods-color-neutral-900: #1a1a1a;
+$ods-color-primary-000: #ffffff;
 $ods-color-primary-050: #e6faff;
 $ods-color-primary-100: #bef1ff;
 $ods-color-primary-200: #85d9fd;
@@ -12,8 +24,11 @@ $ods-color-primary-600: #002dbe;
 $ods-color-primary-700: #000e9c;
 $ods-color-primary-800: #00185e;
 $ods-color-primary-900: #000d1f;
+/* stylelint-enable color-hex-length */
 
 :root {
+  --ods-color-neutral-500: #{$ods-color-neutral-500};
+  --ods-color-primary-000: #{$ods-color-primary-000};
   --ods-color-primary-500: #{$ods-color-primary-500};
   --ods-font-family-code: 'Source Code Pro', arial;
   --ods-font-family-default: 'Source Sans Pro', 'Trebuchet MS', arial, 'Segoe UI', sans-serif;

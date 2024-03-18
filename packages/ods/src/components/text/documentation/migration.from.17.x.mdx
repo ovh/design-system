@@ -1,16 +1,46 @@
 ## Attributes changes
 
-`dummy` <img src="https://img.shields.io/badge/removed-FF0000" />
+`size` <img src="https://img.shields.io/badge/removed-FF0000" />
+`color` <img src="https://img.shields.io/badge/removed-FF0000" />
+`level` <img src="https://img.shields.io/badge/removed-FF0000" />
+`contrasted` <img src="https://img.shields.io/badge/removed-FF0000" />
+`breakSpaces` <img src="https://img.shields.io/badge/removed-FF0000" />
 
 Has been removed.
 
-You can use the new `better-dummy` attribute to obtain the same rendering.
+You can use the new `preset` attribute to obtain the same rendering.
 
 ## Migration examples
 
-Dummy text:
+Size & Level text:
 ```html
-<ods-text dummy></ods-text>
+<ods-text size="500" level="heading">My text</ods-text>
 <!-- is now -->
-<ods-text better-dummy></ods-text>
+<ods-text preset="heading-1">My text</ods-text>
+```
+
+Color text:
+```html
+<ods-text color="info">My text</ods-text>
+<!-- is now -->
+<ods-text class="my-text">My text</ods-text>
+
+<style>
+  .my-text::part(text) {
+    color: var(--ods-color-primary-500);
+  }
+</style>
+```
+
+breakSpaces text:
+```html
+<ods-text break-spaces>My text</ods-text>
+<!-- is now -->
+<ods-text class="my-text">My text</ods-text>
+
+<style>
+  .my-text::part(text) {
+    white-space: break-spaces;
+  }
+</style>
 ```

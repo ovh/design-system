@@ -1,4 +1,4 @@
-import type { Page } from 'puppeteer';
+import { Page } from 'puppeteer';
 import { goToComponentPage, setupBrowser } from '../setup';
 
 describe('ods-text react', () => {
@@ -14,10 +14,9 @@ describe('ods-text react', () => {
   });
 
   it('render the component correctly', async () => {
-    const elem = await page.$('ods-text');
+    await page.waitForSelector('ods-text[preset]');
 
-    // TODO add relevant tests
-
-    expect(false).toBe(true);
+    const preset = await page.$eval('ods-text', (el) => el?.getAttribute('preset'));
+    expect(preset).toBe('paragraph');
   });
 });

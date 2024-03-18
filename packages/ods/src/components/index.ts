@@ -8,3 +8,4 @@
  */
 export * from './spinner/src';
 export * from './text/src';
+export * from './icon/src';

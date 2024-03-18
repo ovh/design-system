@@ -28,9 +28,9 @@ describe('ods-text rendering', () => {
 
   describe('part', () => {
     it('should render with custom style applied', async() => {
-      await setup('<ods-text>some text</ods-text>', 'ods-text::part(text) { color: green; }');
+      await setup('<ods-text>some text</ods-text>', 'ods-text::part(text) { color: #00ff00; }');
       const partStyle = await part.getComputedStyle();
-      expect(partStyle.getPropertyValue('color')).toBe('rgb(0, 128, 0)');
+      expect(partStyle.getPropertyValue('color')).toBe('rgb(0, 255, 0)');
     });
   });
 

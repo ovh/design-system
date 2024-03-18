@@ -7,7 +7,7 @@ import type { Meta } from '@storybook/web-components';
 defineCustomElement();
 
 const meta: Meta = {
-  title: 'ODS Components/Text/Demo',
+  title: 'ODS Components/Content/Text/Demo',
   render: (args) => html`
     <ods-text preset="${args.preset}">
       ${unsafeHTML(args.content)}

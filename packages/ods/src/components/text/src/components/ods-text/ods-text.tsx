@@ -1,4 +1,4 @@
-import { Component, type FunctionalComponent,  Host, Prop, h } from '@stencil/core';
+import { Component, type FunctionalComponent, Host, Prop, h } from '@stencil/core';
 import { ODS_TEXT_PRESET, type OdsTextPreset } from '../../constants/text-preset';
 
 @Component({
@@ -21,17 +21,17 @@ export class OdsText {
         return 'span';
       case ODS_TEXT_PRESET.label:
         return 'label';
-      case ODS_TEXT_PRESET['heading-1']:
+      case ODS_TEXT_PRESET.heading1:
         return 'h1';
-      case ODS_TEXT_PRESET['heading-2']:
+      case ODS_TEXT_PRESET.heading2:
         return 'h2';
-      case ODS_TEXT_PRESET['heading-3']:
+      case ODS_TEXT_PRESET.heading3:
         return 'h3';
-      case ODS_TEXT_PRESET['heading-4']:
+      case ODS_TEXT_PRESET.heading4:
         return 'h4';
-      case ODS_TEXT_PRESET['heading-5']:
+      case ODS_TEXT_PRESET.heading5:
         return 'h5';
-      case ODS_TEXT_PRESET['heading-6']:
+      case ODS_TEXT_PRESET.heading6:
         return 'h6';
       default:
         return 'p';

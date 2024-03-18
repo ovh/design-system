@@ -14,10 +14,8 @@ describe('ods-text vue', () => {
   });
 
   it('render the component correctly', async () => {
-    const elem = await page.$('ods-text');
-
-    // TODO add relevant tests
-
-    expect(false).toBe(true);
+    await page.waitForSelector('ods-text[preset]');
+    const preset = await page.$eval('ods-text', (el) => el?.getAttribute('preset'));
+    expect(preset).toBe('paragraph');
   });
 });

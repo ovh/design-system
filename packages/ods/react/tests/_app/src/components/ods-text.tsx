@@ -3,7 +3,7 @@ import { OdsText } from 'ods-components-react';
 
 const Text = () => {
   return (
-    <OdsText />
+    <OdsText>lorem ipsum</OdsText>
   );
 };
 

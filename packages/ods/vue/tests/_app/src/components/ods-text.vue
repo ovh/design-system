@@ -1,5 +1,6 @@
 <template>
-  <OdsText />
+  <OdsText>lorem ipsum</OdsText>
+  tes
 </template>
 
 <script lang="ts">

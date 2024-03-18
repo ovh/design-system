@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html dir='ltr' lang='en'>
+<head>
+  <meta charset='utf-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0' />
+  <title>Dev ods-icon</title>
+
+  <script type='module' src='/build/ods-icon.esm.js'></script>
+  <script nomodule src='/build/ods-icon.js'></script>
+  <link rel="stylesheet" href="/build/ods-icon.css">
+
+  <!-- TODO use font-size and color when switching to fonts -->
+  <style>
+    .custom {
+      width: 48px;
+      height: 48px;
+      background-color: orange;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <h3>All set</h3>
+
+    <ods-icon alt="warning"
+              name="warning">
+    </ods-icon>
+  </div>
+
+  <div>
+    <h3>No alt</h3>
+
+    <ods-icon name="arrow-left">
+    </ods-icon>
+  </div>
+
+  <div>
+    <h3>Custom style</h3>
+
+    <ods-icon class="custom"
+              name="arrow-left">
+    </ods-icon>
+  </div>
+</body>
+</html>

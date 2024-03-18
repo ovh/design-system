@@ -1,6 +1,6 @@
-$spinner-size-sm: 20px;
-$spinner-size-md: 40px;
-$spinner-size-lg: 60px;
+$spinner-size-sm: 24px;
+$spinner-size-md: 48px;
+$spinner-size-lg: 80px;
 
 :host(.ods-spinner) {
   display: inline-block;
@@ -23,8 +23,16 @@ $spinner-size-lg: 60px;
       height: $spinner-size-lg;
     }
 
+    &--neutral {
+      fill: var(--ods-color-neutral-500);
+    }
+
     &--primary {
       fill: var(--ods-color-primary-500);
+    }
+
+    &--white {
+      fill: var(--ods-color-primary-000);
     }
 
     > svg {

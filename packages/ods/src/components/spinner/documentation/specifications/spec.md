@@ -8,7 +8,7 @@
 ## Properties
 ### color
 
-•  **color**: [_primary_] = `ODS_SPINNER_COLOR.primary`
+•  **color**: [`neutral` | `primary` | `white`] = `ODS_SPINNER_COLOR.primary`
 
 
 ### size
@@ -21,9 +21,17 @@
 ## Enums
 ## Enumeration: ODS_SPINNER_COLOR
 
+### neutral
+
+• **neutral** = `"neutral"`
+
 ### primary
 
 • **primary** = `"primary"`
+
+### white
+
+• **white** = `"white"`
 
 
 ## Enumeration: ODS_SPINNER_SIZE

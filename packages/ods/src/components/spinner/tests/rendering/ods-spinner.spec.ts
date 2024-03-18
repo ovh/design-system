@@ -30,6 +30,26 @@ describe('ods-spinner rendering', () => {
 
         expect(container?.classList.contains('ods-spinner__container--primary')).toBe(true);
       });
+
+      it('should render with unique color class if set', async() => {
+        await setup(`<ods-spinner color="${ODS_SPINNER_COLOR.neutral}"></ods-spinner>`);
+
+        expect(container?.classList.contains('ods-spinner__container--neutral')).toBe(true);
+        expect(container?.classList.contains('ods-spinner__container--primary')).toBe(false);
+        expect(container?.classList.contains('ods-spinner__container--white')).toBe(false);
+
+        await setup(`<ods-spinner color="${ODS_SPINNER_COLOR.primary}"></ods-spinner>`);
+
+        expect(container?.classList.contains('ods-spinner__container--neutral')).toBe(false);
+        expect(container?.classList.contains('ods-spinner__container--primary')).toBe(true);
+        expect(container?.classList.contains('ods-spinner__container--white')).toBe(false);
+
+        await setup(`<ods-spinner color="${ODS_SPINNER_COLOR.white}"></ods-spinner>`);
+
+        expect(container?.classList.contains('ods-spinner__container--neutral')).toBe(false);
+        expect(container?.classList.contains('ods-spinner__container--primary')).toBe(false);
+        expect(container?.classList.contains('ods-spinner__container--white')).toBe(true);
+      });
     });
 
     describe('size', () => {

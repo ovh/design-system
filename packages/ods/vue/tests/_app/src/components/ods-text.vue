@@ -1,6 +1,5 @@
 <template>
   <OdsText>lorem ipsum</OdsText>
-  tes
 </template>
 
 <script lang="ts">

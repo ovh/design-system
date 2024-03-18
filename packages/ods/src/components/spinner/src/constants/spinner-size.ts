@@ -4,7 +4,7 @@ enum ODS_SPINNER_SIZE {
   lg = 'lg',
 }
 
-type OdsSpinnerSize = keyof typeof ODS_SPINNER_SIZE;
+type OdsSpinnerSize =`${ODS_SPINNER_SIZE}`;
 
 const ODS_SPINNER_SIZES = Object.freeze(Object.values(ODS_SPINNER_SIZE));
 

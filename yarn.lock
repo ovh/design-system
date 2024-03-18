@@ -3869,6 +3869,7 @@ __metadata:
   linkType: hard
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 "@ovhcloud/ods-cdk-dev@17.2.2, @ovhcloud/ods-cdk-dev@workspace:packages/cdk/dev":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-cdk-dev@workspace:packages/cdk/dev"
@@ -3899,6 +3900,14 @@ __metadata:
 
 "@ovhcloud/ods-common-scripts@17.2.2, @ovhcloud/ods-common-scripts@workspace:packages/common/scripts":
 =======
+=======
+"@ovhcloud/ods-component-icon@workspace:packages/ods/src/components/icon":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-icon@workspace:packages/ods/src/components/icon"
+  languageName: unknown
+  linkType: soft
+
+>>>>>>> 43e3f1fa9 (feat(icon): implement component)
 "@ovhcloud/ods-component-spinner@workspace:packages/ods/src/components/spinner":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-spinner@workspace:packages/ods/src/components/spinner"

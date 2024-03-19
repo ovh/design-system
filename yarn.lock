@@ -3907,7 +3907,16 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+<<<<<<< HEAD
 >>>>>>> 43e3f1fa9 (feat(icon): implement component)
+=======
+"@ovhcloud/ods-component-skeleton@workspace:packages/ods/src/components/skeleton":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-skeleton@workspace:packages/ods/src/components/skeleton"
+  languageName: unknown
+  linkType: soft
+
+>>>>>>> 874715e73 (refactor(skeleton): migrate arch)
 "@ovhcloud/ods-component-spinner@workspace:packages/ods/src/components/spinner":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-spinner@workspace:packages/ods/src/components/spinner"

@@ -1,5 +1,5 @@
 // import { DocsPage, DocsContainer } from '@storybook/addon-docs'; // TODO check what is it for?
-import '@ovhcloud/ods-themes';
+import '@ovhcloud/ods-themes/default';
 
 /** @type { import('@storybook/web-components').Preview } */
 const preview = {

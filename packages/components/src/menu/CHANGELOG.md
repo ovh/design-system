@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [17.2.1](https://ovh.github.io/design-system/v17.2.1/?path=/docs/design-system-changelog--page) (2024-03-19)
+[compare](https://github.com/ovh/design-system/compare/v17.2.0...v17.2.1)
+
+### Bug Fixes
+
+* **menu:** add comment to inform about the use of important ([8c8507a](https://github.com/ovh/design-system/commit/8c8507ae884276773f709253ae4d7bb41a5f7de3))
+* **menu:** force min height in style instead of CDK ([143d4ac](https://github.com/ovh/design-system/commit/143d4ac0fc70d9b6914599206c007ac4ed6b2d86))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

@@ -8,6 +8,20 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [17.2.1](https://ovh.github.io/design-system/v17.2.1/?path=/docs/design-system-changelog--page) (2024-03-19)
+[compare](https://github.com/ovh/design-system/compare/v17.2.0...v17.2.1)
+
+### Bug Fixes
+
+* **clipboard:** fix surface background color ([3a1878e](https://github.com/ovh/design-system/commit/3a1878e8f93807c00072fbdbc7a22043c185ae80))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [17.2.0](https://ovh.github.io/design-system/v17.2.0/?path=/docs/design-system-changelog--page) (2024-03-15)
 [compare](https://github.com/ovh/design-system/compare/v17.1.0...v17.2.0)
 

@@ -45,9 +45,10 @@
   }
 
   display: flex;
-  margin: calc(var(--ods-size-inset-n-02) + var(--ods-size-inset-n-02));
+  margin: 0;
   outline: none;
-  padding: calc(var(--ods-size-inset-02) + var(--ods-size-inset-02));
+  border-radius: var(--ods-size-button-border-radius, var(--ods-size-button-md-border-radius));
+  padding: 0;
   min-width: 0;
   overflow: hidden;
 }

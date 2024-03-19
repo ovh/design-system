@@ -27,6 +27,8 @@ $ods-color-primary-900: #000d1f;
 /* stylelint-enable color-hex-length */
 
 :root {
+  --ods-color-neutral-050: #{$ods-color-neutral-050};
+  --ods-color-neutral-100: #{$ods-color-neutral-100};
   --ods-color-neutral-500: #{$ods-color-neutral-500};
   --ods-color-primary-000: #{$ods-color-primary-000};
   --ods-color-primary-500: #{$ods-color-primary-500};

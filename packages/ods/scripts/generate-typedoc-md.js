@@ -142,7 +142,7 @@ function getEnums(jsonItems) {
   return jsonItems
     .filter(({ kind }) => kind === ReflectionKind.Enum)
     .flatMap((enumDefinition) => {
-      const children = enumDefinition.children.map(({ name }) => `### ${name}\n\n• **${name}** = \`"${name}"\`\n`);
+      const children = enumDefinition.children.map(({ name, type }) => `• **${name}** = \`"${type?.value}"\`\n`);
       return `## Enumeration: ${enumDefinition.name}\n\n${children.join('\n')}\n`
     });
 }

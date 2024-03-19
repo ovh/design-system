@@ -3874,6 +3874,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-component-skeleton@workspace:packages/ods/src/components/skeleton":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-skeleton@workspace:packages/ods/src/components/skeleton"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-component-spinner@workspace:packages/ods/src/components/spinner":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-spinner@workspace:packages/ods/src/components/spinner"

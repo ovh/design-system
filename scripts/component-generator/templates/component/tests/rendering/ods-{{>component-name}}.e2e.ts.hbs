@@ -5,11 +5,16 @@ describe('ods-{{> component-name }} rendering', () => {
   let el: E2EElement;
   let page: E2EPage;
 
-  async function setup(content: string): Promise<void> {
+  async function setup(content: string, customStyle?: string): Promise<void> {
     page = await newE2EPage();
 
     await page.setContent(content);
     await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
+
+    if (customStyle) {
+      await page.addStyleTag({ content: customStyle });
+    }
+
 
     el = await page.find('ods-{{> component-name }}');
   }

@@ -10,6 +10,7 @@ const componentNames = [
   'spinner',
   'text',
   'icon',
+  'skeleton',
   //--generator-anchor--
 ];
 

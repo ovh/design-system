@@ -7,7 +7,7 @@
     padding: 0;
     width: auto;
     max-width: 25rem;
-    min-height: 36px !important;
+    min-height: 36px !important; /* important is necessary to override the min-height inline rule setted by CDK */
     overflow: hidden;
   }
 }

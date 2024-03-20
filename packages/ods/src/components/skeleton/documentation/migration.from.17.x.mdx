@@ -17,7 +17,7 @@ Size skeleton:
 <ods-skeleton class="my-skeleton"></ods-skeleton>
 
 <style>
-  .my-skeleton::part(text) {
+  .my-skeleton::part(skeleton) {
     width: 250px;
   }
 </style>
@@ -27,11 +27,12 @@ Inline skeleton:
 ```html
 <ods-skeleton inline></ods-skeleton>
 <!-- is now -->
-<ods-skeleton class="my-skeleton"></ods-skeleton>
+<ods-skeleton class="my-skeleton--inline"></ods-skeleton>
 
 <style>
-  .my-skeleton {
+  .my-skeleton--inline {
     display: inline-block;
+    width: 100px;
   }
 </style>
 ```

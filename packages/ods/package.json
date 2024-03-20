@@ -18,7 +18,8 @@
     "build:react": "npm --prefix react run build",
     "build:stencil": "stencil build --prod --config stencil.config.ts",
     "build:style": "npm --prefix style run build",
-    "build:vue": "npm --prefix vue run build"
+    "build:vue": "npm --prefix vue run build",
+    "lint:scss": "stylelint 'src/style/*.scss'"
   },
   "dependencies": {
     "@stencil/core": "4.12.2"

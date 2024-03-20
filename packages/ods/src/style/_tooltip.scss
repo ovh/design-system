@@ -1,0 +1,7 @@
+@mixin ods-tooltip() {
+  border-radius: 4px;
+  box-shadow: 0 2px 8px 0 rgba(0, 14, 156, 0.20);
+  background: var(--ods-color-primary-000);
+  padding: var(--ods-spacing-8);
+  color: var(--ods-color-primary-500);
+}

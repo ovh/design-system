@@ -16,13 +16,15 @@
   </ods-skeleton>
 
   <p>Custom Css</p>
-  <ods-skeleton class="my-skeleton">
-  </ods-skeleton>
-  <style>
-    .my-skeleton::part(skeleton) {
-      height: 2em;
-      width: 10em;
+  <ods-skeleton id="mySkeleton"></ods-skeleton>
+
+  <script>
+    const mySkeleton = document.getElementById('mySkeleton');
+    const getRandomValue = () => {
+      // between 30 and 100
+      return Math.floor(Math.random() * (100 - 30)) + 30;
     }
-  </style>
+    mySkeleton.style.width = getRandomValue() + '%';
+  </script>
 </body>
 </html>

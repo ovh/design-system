@@ -1,6 +1,7 @@
 {
   "extends": ["stylelint-config-concentric-order", "stylelint-config-standard-scss"],
   "rules": {
+    "alpha-value-notation": "number",
     "color-function-notation": "legacy",
     "color-named": "never",
     "hue-degree-notation": "number",

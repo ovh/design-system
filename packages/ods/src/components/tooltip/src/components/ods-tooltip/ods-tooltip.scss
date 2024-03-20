@@ -1,0 +1,24 @@
+@import '../../../../../style/tooltip';
+
+:host(.ods-tooltip) {
+  @include ods-tooltip;
+
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.ods-tooltip {
+  &__arrow {
+    position: absolute;
+    transform: rotate(45deg);
+    background: inherit;
+    width: 8px;
+    height: 8px;
+
+    &--hidden {
+      display: none;
+    }
+  }
+}

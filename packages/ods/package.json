@@ -22,6 +22,7 @@
     "lint:scss": "stylelint 'src/style/*.scss'"
   },
   "dependencies": {
+    "@floating-ui/dom": "1.6.3",
     "@stencil/core": "4.12.2"
   },
   "devDependencies": {

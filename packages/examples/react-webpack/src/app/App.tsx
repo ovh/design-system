@@ -130,6 +130,15 @@ const App = () => {
                   type={ ODS_BUTTON_TYPE.submit }>
         Submit
       </OsdsButton>
+
+      <OsdsButton type={ ODS_BUTTON_TYPE.button } disabled="" onClick={() => alert("clicked")}
+      >
+        Test Disabled
+      </OsdsButton>
+      <OsdsButton type={ ODS_BUTTON_TYPE.button } onClick={() => alert("clicked")}
+      >
+        Test Not Disabled
+      </OsdsButton>
     </form>
   );
 };

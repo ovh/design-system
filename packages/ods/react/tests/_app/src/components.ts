@@ -11,6 +11,7 @@ const componentNames = [
   'text',
   'icon',
   'skeleton',
+  'link',
   //--generator-anchor--
 ];
 

@@ -1,0 +1,49 @@
+#storybook-docs > .sbdocs-wrapper {
+  padding: 1.5rem 3rem 3rem 3rem;
+  justify-content: flex-start;
+}
+
+/***************************************
+ * TYPOGRAPHY
+ ***************************************/
+
+.sbdocs-content > h1,
+.sbdocs-content > div:not(.sb-unstyled) > h1,
+.sbdocs-content > h2,
+.sbdocs-content > div:not(.sb-unstyled) > h2,
+.sbdocs-content > h3,
+.sbdocs-content > div:not(.sb-unstyled) > h3,
+.sbdocs-content > h4,
+.sbdocs-content > div:not(.sb-unstyled) > h4,
+.sbdocs-content > h5,
+.sbdocs-content > div:not(.sb-unstyled) > h5,
+.sbdocs-content > h6,
+.sbdocs-content > div:not(.sb-unstyled) > h6 {
+  font-family: var(--ods-font-family-default);
+  color: var(--ods-color-primary-800);
+}
+
+.sbdocs-content :where(span:not(.sb-anchor, .sb-unstyled, .sb-unstyled span)) {
+  font-family: var(--ods-font-family-default) !important;
+  font-size: 1rem !important;
+}
+
+.sbdocs-content :where(p:not(.sb-anchor, .sb-unstyled, .sb-unstyled p)) {
+  font-family: var(--ods-font-family-default) !important;
+  color: var(--ods-color-primary-800) !important;
+  font-size: 1rem !important;
+}
+
+/***************************************
+ * TABLE OF CONTENT
+ ***************************************/
+
+.toc-link {
+  font-family: var(--ods-font-family-default) !important;
+  color: var(--ods-color-primary-500) !important;
+  font-size: 1rem;
+}
+
+.toc-list-item.is-active-li > a {
+  color: var(--ods-color-primary-700) !important;
+}

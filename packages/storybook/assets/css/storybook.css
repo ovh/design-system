@@ -1,0 +1,28 @@
+body {
+  letter-spacing: 0.03rem;
+}
+
+#root > div {
+  margin: -10px 0;
+  width: calc(100vw + 10px);
+  height: calc(100vh + 20px);
+}
+
+a[title*="Design System"] {
+  margin-left: 15%;
+  margin-bottom: -5px;
+  padding: 0;
+  max-width: 75%;
+}
+
+button[title="Shortcuts"] {
+  display: none;
+}
+
+.sidebar-subheading.sidebar-subheading {
+  font-size: 1em;
+  font-weight: bold;
+  letter-spacing: normal;
+  text-transform: none;
+  color: #00175C;
+}

@@ -1,10 +1,3 @@
-## Table of Contents
-[• Properties](#properties)
-
-
-
-[• Enums](#enums)
-
 ## Properties
 ### preset
 
@@ -14,7 +7,7 @@
 
 
 ## Enums
-## Enumeration: ODS_TEXT_PRESET
+### Enumeration: ODS_TEXT_PRESET
 
 • **caption** = `"caption"`
 

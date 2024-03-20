@@ -1,8 +1,6 @@
-import { Canvas } from '@storybook/addon-docs';
+import { Canvas } from '@storybook/blocks';
 
-## Usage
-
-### Default
+## Default
 
 <Canvas sourceState="none">
   <ods-skeleton></ods-skeleton>
@@ -10,19 +8,4 @@ import { Canvas } from '@storybook/addon-docs';
 
 ```html
 <ods-skeleton></ods-skeleton>
-```
-
-### Custom CSS
-
-You can add your own style on the text element using the part `skeleton`.
-
-```html
-<ods-skeleton class="my-skeleton">
-</ods-skeleton>
-<style>
-  .my-skeleton::part(skeleton) {
-    height: 2em;
-    width: 10em;
-  }
-</style>
 ```

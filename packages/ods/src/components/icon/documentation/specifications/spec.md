@@ -1,10 +1,3 @@
-## Table of Contents
-[• Properties](#properties)
-
-
-
-[• Enums](#enums)
-
 ## Properties
 ### alt
 
@@ -19,13 +12,9 @@
 
 
 ## Enums
-## Enumeration: ODS_ICON_NAME
-
-### arrowLeft
+### Enumeration: ODS_ICON_NAME
 
 • **arrowLeft** = `"arrow-left"`
-
-### warning
 
 • **warning** = `"warning"`
 

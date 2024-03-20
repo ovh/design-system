@@ -1,11 +1,7 @@
 @import '../../../../../style/skeleton';
 
-:host(.ods-skeleton) {
-  @include ods-skeleton;
-}
-
 .ods-skeleton {
   &__loader {
-    @include ods-skeleton-loader;
+    @include ods-skeleton;
   }
 }

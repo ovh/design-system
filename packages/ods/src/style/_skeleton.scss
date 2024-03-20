@@ -1,5 +1,20 @@
 @mixin ods-skeleton() {
+  display: flex;
+  position: relative;
+
+  &::before {
+    font-size: inherit;
+    content: "\00a0";
+  }
+}
+
+@mixin ods-skeleton-loader() {
   display: block;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  left: 0;
+  transform: translateY(-50%);
   border-radius: .5rem;
   background-color : var(--ods-color-neutral-050);
   background-image: linear-gradient(-90deg, var(--ods-color-neutral-050), var(--ods-color-neutral-100) 46%, var(--ods-color-neutral-100) 61%, var(--ods-color-neutral-050));

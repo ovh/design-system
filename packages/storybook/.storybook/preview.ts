@@ -1,17 +1,33 @@
-// import { DocsPage, DocsContainer } from '@storybook/addon-docs'; // TODO check what is it for?
+import type { Preview } from '@storybook/web-components';
 import '@ovhcloud/ods-themes/default';
 
-/** @type { import('@storybook/web-components').Preview } */
-const preview = {
-  // docs: {
-  //   container: DocsContainer,
-  //   page: DocsPage,
-  // },
+const preview: Preview = {
   parameters: {
-    actions: { argTypesRegex: "^on[A-Z].*" },
+    docs: {
+      toc: {
+        contentsSelector: '.sbdocs-content',
+        headingSelector: 'h1, h2',
+        ignoreSelector: '.banner',
+        disable: false,
+      },
+    },
     controls: {
       expanded: true,
       hideNoControlsWarning: true,
+    },
+    options: {
+      storySort: {
+        order: [
+          'OVHcloud Design System',
+          ['Welcome', 'Get Started', 'What\'s new?',
+            ['What\'s new', 'Changelog', 'Migration guide'],
+            'Design tokens',
+          ],
+          'ODS Components',
+          ['Actions', 'Content', 'Form', 'Layout', 'Navigation', 'User feedback'],
+        ],
+      },
+      showPanel: true,
     },
   },
 };

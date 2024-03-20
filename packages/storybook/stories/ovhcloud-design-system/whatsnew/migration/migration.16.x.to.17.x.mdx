@@ -1,0 +1,76 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="OVHcloud Design System/What's new?/Migration guide/16.x to 17.x" />
+
+# [16.6.0](https://ovh.github.io/design-system/v16.6.0/?path=/story/ovhcloud-design-system-what-s-new-changelog--page) to [17.0.0](https://ovh.github.io/design-system/v17.0.0/?path=/story/ovhcloud-design-system-what-s-new-changelog--page) ([compare](https://github.com/ovh/design-system/compare/release/16.0...release/17.0))
+
+Main focus on this version has been on simplifying ODS integration in existing projects (React, Vue, JS, ...).
+
+If you have any issue finding a specific change, feel free to contact us directly and we'll help you migrate.
+
+## All Components
+
+### Dependency
+
+We now only publish one `ods-components` library that embed all the ODS components.
+
+You need to remove any component specific dependencies, ex:
+
+```
+"ods-component-button": "16.6.0" // should be removed
+```
+
+Instead use only one dependency:
+
+```
+"ods-components": "17.0.0"
+```
+
+### Import
+
+You can see more details in the updated [Get Started documentation](?path=/story/ovhcloud-design-system-get-started--page#how-to-use-ods-components-in-my-project)
+
+#### Native webcomponents
+
+Using lazy-loading:
+
+```js
+import { defineCustomElements } from '@ovhcloud/ods-components/dist/loader';
+defineCustomElements();
+```
+
+As module:
+
+```js
+import { defineCustomElement as defineButton } from '@ovhcloud/ods-components/dist/components/osds-button';
+defineButton();
+```
+
+#### React components
+
+```js
+import { OsdsButton, OsdsText } from '@ovhcloud/ods-components/react';
+```
+
+#### Vue components
+
+```js
+import { OsdsButton, OsdsText } from '@ovhcloud/ods-components/vue';
+```
+
+#### Types and constans
+
+All types and constants are accessible from the `ods-components` library:
+
+```js
+import type { OdsButtonAttribute } from '@ovhcloud/ods-components'
+import { ODS_BUTTON_SIZE, ODS_BUTTON_SIZES } from '@ovhcloud/ods-components';
+```
+
+### About `ods-common-xxx` libs
+
+We're trying to remove the need to add any `ods-common-xxx` lib to any project using ODS.
+
+For now, you will still need to add `ods-common-theming` as a dependency to access the `ODS_THEME_COLOR_INTENT` values.
+
+If you still ended up adding `ods-common-core` in your project, please give us the feedback so that we work on removing that need.

@@ -60,16 +60,7 @@ function convertJsonToMarkdown(jsonItems) {
   const hasEvents = classes.events.length;
   const hasEnums = enums.length;
 
-  const tableOfContents = [
-    '## Table of Contents',
-    hasProps ? '[• Properties](#properties)\n' : '',
-    hasMethods ? '[• Methods](#methods)\n' : '',
-    hasEvents ? '[• Events](#events)\n' : '',
-    hasEnums ? '[• Enums](#enums)\n' : '',
-  ];
-
   return [
-    ...tableOfContents,
     hasProps ? '## Properties' : '', ...classes.props,
     hasMethods ? '## Methods' : '', ...classes.methods,
     hasEvents ? '## Events' : '', ...classes.events,
@@ -143,7 +134,7 @@ function getEnums(jsonItems) {
     .filter(({ kind }) => kind === ReflectionKind.Enum)
     .flatMap((enumDefinition) => {
       const children = enumDefinition.children.map(({ name, type }) => `• **${name}** = \`"${type?.value}"\`\n`);
-      return `## Enumeration: ${enumDefinition.name}\n\n${children.join('\n')}\n`
+      return `### Enumeration: ${enumDefinition.name}\n\n${children.join('\n')}\n`
     });
 }
 

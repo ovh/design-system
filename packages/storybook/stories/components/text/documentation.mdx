@@ -1,0 +1,27 @@
+import { Meta, Markdown } from '@storybook/blocks';
+import OverviewText from '@ovhcloud/ods-components/src/components/text/documentation/overview-text.mdx';
+import SpecificationsText from '@ovhcloud/ods-components/src/components/text/documentation/specifications/spec.md?raw';
+import StyleCustomizationText from '@ovhcloud/ods-components/src/components/text/documentation/style-customization-text.mdx';
+import Usage from '@ovhcloud/ods-components/src/components/text/documentation/usage-guidelines/usage.mdx';
+import { Banner } from '../../Banner';
+import * as TextStories from './text.stories';
+
+<Meta of={ TextStories } name='Documentation' />
+
+<Banner of={ TextStories } />
+
+# Overview
+
+<OverviewText />
+
+# API
+
+<Markdown> { SpecificationsText } </Markdown>
+
+# Style customization
+
+<StyleCustomizationText />
+
+# Examples
+
+<Usage />

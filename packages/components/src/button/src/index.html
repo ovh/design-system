@@ -133,6 +133,7 @@
 </osds-button>
 
 <script>
+  document.querySelectorAll('[disabled]').forEach(button => button.addEventListener('click', ()=>{console.log('click')}))
   document.querySelector('form').addEventListener('submit', (e) => {
     e.preventDefault();
     console.log('form submitted');

@@ -1,0 +1,28 @@
+import { Meta, Markdown } from '@storybook/blocks';
+import OverviewSpinner from '@ovhcloud/ods-components/src/components/spinner/documentation/overview-spinner.mdx';
+import SpecificationsSpinner from '@ovhcloud/ods-components/src/components/spinner/documentation/specifications/spec.md?raw';
+import StyleCustomizationSpinner from '@ovhcloud/ods-components/src/components/spinner/documentation/style-customization-spinner.mdx';
+import Usage from '@ovhcloud/ods-components/src/components/spinner/documentation/usage-guidelines/usage.mdx';
+import { Banner } from '../../Banner';
+import * as SpinnerStories from './spinner.stories';
+
+<Meta of={ SpinnerStories } name='Documentation' />
+
+<Banner of={ SpinnerStories } />
+
+# Overview
+
+<OverviewSpinner />
+
+# API
+
+<Markdown>{ SpecificationsSpinner }</Markdown>
+
+
+# Style customization
+
+<StyleCustomizationSpinner />
+
+# Examples
+
+<Usage />

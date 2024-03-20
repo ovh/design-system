@@ -1,10 +1,3 @@
-## Table of Contents
-[• Properties](#properties)
-
-
-
-[• Enums](#enums)
-
 ## Properties
 ### color
 
@@ -19,32 +12,20 @@
 
 
 ## Enums
-## Enumeration: ODS_SPINNER_COLOR
-
-### neutral
+### Enumeration: ODS_SPINNER_COLOR
 
 • **neutral** = `"neutral"`
 
-### primary
-
 • **primary** = `"primary"`
-
-### white
 
 • **white** = `"white"`
 
 
-## Enumeration: ODS_SPINNER_SIZE
-
-### lg
+### Enumeration: ODS_SPINNER_SIZE
 
 • **lg** = `"lg"`
 
-### md
-
 • **md** = `"md"`
-
-### sm
 
 • **sm** = `"sm"`
 

@@ -1,0 +1,27 @@
+import { Meta, Markdown } from '@storybook/blocks';
+import OverviewSkeleton from '@ovhcloud/ods-components/src/components/skeleton/documentation/overview-skeleton.mdx';
+import SpecificationsSkeleton from '@ovhcloud/ods-components/src/components/skeleton/documentation/specifications/spec.md?raw';
+import StyleCustomizationSkeleton from '@ovhcloud/ods-components/src/components/skeleton/documentation/style-customization-skeleton.mdx';
+import Usage from '@ovhcloud/ods-components/src/components/skeleton/documentation/usage-guidelines/usage.mdx';
+import { Banner } from '../../Banner';
+import * as SkeletonStories from './skeleton.stories';
+
+<Meta of={ SkeletonStories } name='Documentation' />
+
+<Banner of={ SkeletonStories } />
+
+# Overview
+
+<OverviewSkeleton />
+
+# API
+
+<Markdown> { SpecificationsSkeleton } </Markdown>
+
+# Style customization
+
+<StyleCustomizationSkeleton />
+
+# Examples
+
+<Usage />

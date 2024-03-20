@@ -1,66 +1,66 @@
 @mixin ods-text-caption() {
-  font-weight: 400;
-  font-size: 12px;
   line-height: 1;
+  font-size: 12px;
+  font-weight: 400;
 }
 
 @mixin ods-text-code() {
-  font-family: var(--ods-font-family-code) ;
-  font-weight: 400;
-  font-size: 16px;
   line-height: 1;
+  font-family: var(--ods-font-family-code) ;
+  font-size: 16px;
+  font-weight: 400;
 }
 
 @mixin ods-text-heading-1() {
-  font-weight: 700;
-  font-size: 36px;
   line-height: 1.15;
+  font-size: 36px;
+  font-weight: 700;
 }
 
 @mixin ods-text-heading-2() {
-  font-weight: 700;
-  font-size: 28px;
   line-height: 1;
+  font-size: 28px;
+  font-weight: 700;
 }
 
 @mixin ods-text-heading-3() {
-  font-weight: 700;
-  font-size: 24px;
   line-height: 1;
+  font-size: 24px;
+  font-weight: 700;
 }
 
 @mixin ods-text-heading-4() {
-  font-weight: 700;
-  font-size: 20px;
   line-height: 1;
+  font-size: 20px;
+  font-weight: 700;
 }
 
 @mixin ods-text-heading-5() {
-  font-weight: 700;
-  font-size: 18px;
   line-height: 1.15;
+  font-size: 18px;
+  font-weight: 700;
 }
 
 @mixin ods-text-heading-6() {
-  font-weight: 700;
-  font-size: 16px;
   line-height: 1.15;
+  font-size: 16px;
+  font-weight: 700;
 }
 
 @mixin ods-text-label() {
-  font-weight: 600;
-  font-size: 16px;
   line-height: 1;
+  font-size: 16px;
+  font-weight: 600;
 }
 
 @mixin ods-text-paragraph() {
-  font-weight: 400;
-  font-size: 16px;
   line-height: 1;
+  font-size: 16px;
+  font-weight: 400;
 }
 
 @mixin ods-text-span() {
-  font-weight: 400;
-  font-size: 16px;
   line-height: 1;
+  font-size: 16px;
+  font-weight: 400;
 }

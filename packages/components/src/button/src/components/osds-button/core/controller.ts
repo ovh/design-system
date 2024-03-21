@@ -52,9 +52,7 @@ class OdsButtonController {
    * Handle Click and KeyPress Event on the button
    */
   handleClick(event: MouseEvent): void {
-    if (!this.component.disabled) {
-      this.submitForm(event);
-    }
+    this.submitForm(event);
   }
 
   handleKey(event: KeyboardEvent): void {

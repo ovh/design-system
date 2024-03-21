@@ -131,7 +131,7 @@ const App = () => {
         Submit
       </OsdsButton>
 
-      <OsdsButton type={ ODS_BUTTON_TYPE.button } disabled="" onClick={() => alert("clicked")}
+      <OsdsButton type={ ODS_BUTTON_TYPE.button } disabled={true} onClick={() => alert("clicked")}
       >
         Test Disabled
       </OsdsButton>

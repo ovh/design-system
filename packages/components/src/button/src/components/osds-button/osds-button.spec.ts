@@ -250,6 +250,17 @@ describe('spec:osds-button', () => {
       expect(controller.validateAttributes).toHaveBeenCalledTimes(1);
     });
 
+    it('should not call handleClick of controller', async() => {
+      const click = new MouseEvent('click');
+      await setup({ attributes: { disabled: true } });
+      instance.handleClick(click);
+
+      page.root?.click();
+
+      expect(controller.handleClick).toHaveBeenCalledTimes(0);
+      expect(controller.handleClick).not.toHaveBeenCalledWith(click);
+    });
+
     it('should call handleClick of controller', async() => {
       const click = new MouseEvent('click');
       await setup({});

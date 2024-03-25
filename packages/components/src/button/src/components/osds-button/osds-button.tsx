@@ -65,7 +65,13 @@ export class OsdsButton implements OdsButtonAttribute {
   }
 
   @Listen('click')
-  handleClick(event: MouseEvent) {
+  handleClick(event: MouseEvent){
+    if(this.disabled){
+      event.preventDefault();
+      event.stopPropagation();
+
+      return;
+    }
     this.controller.handleClick(event);
   }
 

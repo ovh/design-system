@@ -1,13 +1,26 @@
+<<<<<<< HEAD
 ## OdsIcon
 ### Properties
 | Property | Type | Required | Default value |
 | --- | --- | --- | --- |
 | alt | `string` | `false` | `''` |
 | name | `OdsIconName` | `true` | `undefined` |
+=======
+## Properties
+### alt
+
+• `Optional` **alt**: [_string_] = `''`
+
+
+### name
+
+•  **name**: [`arrow-left` | `warning`] 
+>>>>>>> 8dcddd22b (feat(storybook): centralize doc in storybook only)
 
 
 
 
+<<<<<<< HEAD
 ### Enums
 #### ODS_ICON_NAME
 
@@ -292,4 +305,12 @@
 • **user** = `"user"`
 
 • **xmark** = `"xmark"`
+=======
+## Enums
+### Enumeration: ODS_ICON_NAME
+
+• **arrowLeft** = `"arrow-left"`
+
+• **warning** = `"warning"`
+>>>>>>> 8dcddd22b (feat(storybook): centralize doc in storybook only)
 

@@ -15,14 +15,15 @@ const meta: Meta = {
 export default meta;
 
 export const Demo: StoryObj = {
-  /*
-  * todo check why render is necessary here? https://storybook.js.org/docs/api/csf#default-render-functions
-  *  and it affects canvas rendering in documentation (presets are overrided for example)
-  *  */
-  render: (args) => html`
-    <ods-text preset="${args.preset}">
-      ${unsafeHTML(args.content)}
-    </ods-text>
+  render: (arg) => html`
+<ods-text class="my-text" preset="${arg.preset}">
+  ${unsafeHTML(arg.content)}
+</ods-text>
+<style>
+  .my-text::part(text) {
+    ${arg.customCss}
+  }
+</style>
   `,
   argTypes: orderControls({
     preset: {
@@ -41,8 +42,41 @@ export const Demo: StoryObj = {
       },
       control: 'text',
     },
+    customCss: {
+      table: {
+        category: CONTROL_CATEGORY.design,
+        defaultValue: { summary: 'ø' },
+        type: { summary: 'string' }
+      },
+      control: 'text',
+      description: 'Set a custom style properties. Example: "color: #008000;"',
+    }
   }),
   args: {
     content: 'lorem ipsum'
   },
+};
+
+export const Default: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-text>lorem ipsum</ods-text>
+  `,
+};
+
+export const Preset: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-text preset="caption">Caption</ods-text>
+<ods-text preset="code">Code</ods-text>
+<ods-text preset="paragraph">Paragraph</ods-text>
+<ods-text preset="span">Span</ods-text>
+<ods-text preset="label">Label</ods-text>
+<ods-text preset="heading-1">Heading-1</ods-text>
+<ods-text preset="heading-2">Heading-2</ods-text>
+<ods-text preset="heading-3">Heading-3</ods-text>
+<ods-text preset="heading-4">Heading-4</ods-text>
+<ods-text preset="heading-5">Heading-5</ods-text>
+<ods-text preset="heading-6">Heading-6</ods-text>
+  `,
 };

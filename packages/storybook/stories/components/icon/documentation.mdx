@@ -1,7 +1,5 @@
-import { Meta, Markdown } from '@storybook/blocks';
-import OverviewIcon from '@ovhcloud/ods-components/src/components/icon/documentation/overview-icon.mdx';
-import SpecificationsIcon from '@ovhcloud/ods-components/src/components/icon/documentation/specifications/spec.md?raw';
-import Usage from '@ovhcloud/ods-components/src/components/icon/documentation/usage-guidelines/usage.mdx';
+import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import SpecificationsIcon from '@ovhcloud/ods-components/src/components/icon/documentation/spec.md?raw';
 import { Banner } from '../../Banner';
 import * as IconStories from './icon.stories';
 
@@ -11,12 +9,22 @@ import * as IconStories from './icon.stories';
 
 # Overview
 
-<OverviewIcon />
+Icon is a visual context used to represent a command, navigation, status or common action:
+
+<Canvas of={ IconStories.Demo } sourceState='none' />
+
+<div>
+  <a href="#"
+     target="_blank">
+    ZEROHEIGHT - ICON DESIGN GUIDELINES &nbsp;
+  </a>
+</div>
 
 # API
 
 <Markdown>{ SpecificationsIcon }</Markdown>
 
 # Examples
+## Name
 
-<Usage />
+<Canvas of={ IconStories.Name } sourceState='shown' />

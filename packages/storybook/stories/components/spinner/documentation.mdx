@@ -1,8 +1,5 @@
-import { Meta, Markdown } from '@storybook/blocks';
-import OverviewSpinner from '@ovhcloud/ods-components/src/components/spinner/documentation/overview-spinner.mdx';
-import SpecificationsSpinner from '@ovhcloud/ods-components/src/components/spinner/documentation/specifications/spec.md?raw';
-import StyleCustomizationSpinner from '@ovhcloud/ods-components/src/components/spinner/documentation/style-customization-spinner.mdx';
-import Usage from '@ovhcloud/ods-components/src/components/spinner/documentation/usage-guidelines/usage.mdx';
+import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import SpecificationsSpinner from '@ovhcloud/ods-components/src/components/spinner/documentation/spec.md?raw';
 import { Banner } from '../../Banner';
 import * as SpinnerStories from './spinner.stories';
 
@@ -12,7 +9,15 @@ import * as SpinnerStories from './spinner.stories';
 
 # Overview
 
-<OverviewSpinner />
+<Canvas of={ SpinnerStories.Demo } sourceState='none' />
+
+<div>
+  <osds-button color="primary" variant="ghost" href="https://zeroheight.com/6fc8a63f7/p/9017bb-spinner/b/40a887" target="_blank">
+    ZEROHEIGHT - SPINNER DESIGN GUIDELINES  
+
+    <osds-icon name="external-link" color="primary" size="xs" />
+  </osds-button>
+</div>
 
 # API
 
@@ -21,8 +26,19 @@ import * as SpinnerStories from './spinner.stories';
 
 # Style customization
 
-<StyleCustomizationSpinner />
+You can add your own style on the spinner element using the part `spinner`.
+
+<Canvas of={ SpinnerStories.Demo } sourceState='shown' />
 
 # Examples
+## Default
 
-<Usage />
+<Canvas of={ SpinnerStories.Demo } sourceState='shown' />
+
+## Color
+
+<Canvas of={ SpinnerStories.Color } sourceState='shown' />
+
+## Size
+
+<Canvas of={ SpinnerStories.Size } sourceState='shown' />

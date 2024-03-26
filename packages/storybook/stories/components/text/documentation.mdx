@@ -1,8 +1,5 @@
-import { Meta, Markdown } from '@storybook/blocks';
-import OverviewText from '@ovhcloud/ods-components/src/components/text/documentation/overview-text.mdx';
-import SpecificationsText from '@ovhcloud/ods-components/src/components/text/documentation/specifications/spec.md?raw';
-import StyleCustomizationText from '@ovhcloud/ods-components/src/components/text/documentation/style-customization-text.mdx';
-import Usage from '@ovhcloud/ods-components/src/components/text/documentation/usage-guidelines/usage.mdx';
+import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import SpecificationsText from '@ovhcloud/ods-components/src/components/text/documentation/spec.md?raw';
 import { Banner } from '../../Banner';
 import * as TextStories from './text.stories';
 
@@ -12,7 +9,14 @@ import * as TextStories from './text.stories';
 
 # Overview
 
-<OverviewText />
+<Canvas of={ TextStories.Default } sourceState='none' />
+
+<div>
+<osds-button color="primary" variant="ghost" href="https://zeroheight.com/6fc8a63f7/p/5546ea-text/b/40a887" target="_blank">
+    ZEROHEIGHT - TEXT DESIGN GUIDELINES &nbsp;
+    <osds-text name="external-link" color="primary" size="xs"></osds-text>
+  </osds-button>
+</div>
 
 # API
 
@@ -20,8 +24,15 @@ import * as TextStories from './text.stories';
 
 # Style customization
 
-<StyleCustomizationText />
+You can add your own style on the text element using the part `text`.
+
+<Canvas of={TextStories.Demo} sourceState='shown'/>
 
 # Examples
+## Default
 
-<Usage />
+<Canvas of={ TextStories.Default } sourceState='shown' />
+
+## Preset
+
+<Canvas of={ TextStories.Preset } sourceState='shown' />

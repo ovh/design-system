@@ -14,10 +14,51 @@ describe('ods-link accessibility', () => {
     el = await page.find('ods-link');
   }
 
-  it('should render the web component with the right role', async() => {
-    await setup('<ods-link></ods-link>');
+  it('should be focused on tabulation', async() => {
+    await setup('<ods-link label="some link" href="https://www.ovhcloud.com/fr/"></ods-link>');
+    await page.keyboard.press('Tab');
+    const focusedTagName = await page.evaluate(() => document.activeElement?.tagName);
+    expect(focusedTagName).toBe('ODS-LINK');
+  });
 
-    expect(el.shadowRoot).not.toBeNull();
-    expect(el.getAttribute('role')).toBe('article');
+  it('should not be focused with disabled', async() => {
+    await setup('<ods-link label="some link" disabled href="https://www.ovhcloud.com/fr/"></ods-link>');
+    await page.keyboard.press('Tab');
+    const focusedTagName = await page.evaluate(() => document.activeElement?.tagName);
+    expect(focusedTagName).not.toBe('ODS-LINK');
+  });
+
+  it('should trigger link when Enter', async() => {
+    const href = 'https://www.ovhcloud.com/fr/';
+    await setup(`<ods-link label="some link" href="${href}"></ods-link>`);
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+    await page.waitForNetworkIdle();
+    expect(page.url()).toBe(href);
+  });
+
+  it('should not trigger link when Enter with disabled', async() => {
+    const href = 'https://www.ovhcloud.com/fr/';
+    await setup(`<ods-link label="some link" disabled href="${href}"></ods-link>`);
+    await page.keyboard.press('Tab');
+    await page.keyboard.press('Enter');
+    await page.waitForNetworkIdle();
+    expect(page.url()).not.toBe(href);
+  });
+
+  it('should trigger link when click', async() => {
+    const href = 'https://www.ovhcloud.com/fr/';
+    await setup(`<ods-link label="some link" href="${href}"></ods-link>`);
+    await el.click();
+    await page.waitForNetworkIdle();
+    expect(page.url()).toBe(href);
+  });
+
+  it('should not trigger link when click with disabled', async() => {
+    const href = 'https://www.ovhcloud.com/fr/';
+    await setup(`<ods-link label="some link" disabled href="${href}"></ods-link>`);
+    await el.click();
+    await page.waitForNetworkIdle();
+    expect(page.url()).not.toBe(href);
   });
 });

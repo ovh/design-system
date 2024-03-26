@@ -2,21 +2,51 @@ import type { E2EElement, E2EPage } from '@stencil/core/testing';
 import { newE2EPage } from '@stencil/core/testing';
 
 describe('ods-link rendering', () => {
+  let aElement: E2EElement;
   let el: E2EElement;
   let page: E2EPage;
+  let part: E2EElement;
 
-  async function setup(content: string): Promise<void> {
+  async function setup(content: string, customStyle?: string): Promise<void> {
     page = await newE2EPage();
 
     await page.setContent(content);
     await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
 
+    if (customStyle) {
+      await page.addStyleTag({ content: customStyle });
+    }
+
     el = await page.find('ods-link');
+    aElement = await page.find('ods-link >>> a');
+    part = await page.find('ods-link >>> [part="link"]');
   }
+
+  describe('part', () => {
+    it('should render with custom style applied', async() => {
+      await setup('<ods-link label="some link" href="https://www.ovhcloud.com/fr/"></ods-link>', 'ods-link::part(link) { color: #00ff00; }');
+      const partStyle = await part.getComputedStyle();
+      expect(partStyle.getPropertyValue('color')).toBe('rgb(0, 255, 0)');
+    });
+  });
 
   it('should render the web component', async() => {
     await setup('<ods-link></ods-link>');
 
     expect(el.shadowRoot).not.toBeNull();
+  });
+
+  it('should get class disabled', async() => {
+    await setup('<ods-link disabled></ods-link>');
+
+    expect(el.getAttribute('disabled')).toBe('');
+    expect(aElement.classList.contains('ods-link__link--disabled')).toBe(true);
+  });
+
+  it('should get class color', async() => {
+    await setup('<ods-link color="primary"></ods-link>');
+
+    expect(el.getAttribute('color')).toBe('primary');
+    expect(aElement.classList.contains('ods-link__link--primary')).toBe(true);
   });
 });

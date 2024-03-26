@@ -3,7 +3,7 @@ import { OdsLink } from 'ods-components-react';
 
 const Link = () => {
   return (
-    <OdsLink />
+    <OdsLink href="https://www.ovhcloud.com/fr/" label="OVH link" />
   );
 };
 

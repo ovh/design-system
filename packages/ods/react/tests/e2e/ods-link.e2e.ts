@@ -16,8 +16,9 @@ describe('ods-link react', () => {
   it('render the component correctly', async () => {
     const elem = await page.$('ods-link');
 
-    // TODO add relevant tests
+    await elem?.click();
+    await page.waitForNavigation();
 
-    expect(false).toBe(true);
+    expect(page.url()).toBe('https://www.ovhcloud.com/fr/');
   });
 });

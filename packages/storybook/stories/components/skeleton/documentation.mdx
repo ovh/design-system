@@ -1,8 +1,5 @@
-import { Meta, Markdown } from '@storybook/blocks';
-import OverviewSkeleton from '@ovhcloud/ods-components/src/components/skeleton/documentation/overview-skeleton.mdx';
-import SpecificationsSkeleton from '@ovhcloud/ods-components/src/components/skeleton/documentation/specifications/spec.md?raw';
-import StyleCustomizationSkeleton from '@ovhcloud/ods-components/src/components/skeleton/documentation/style-customization-skeleton.mdx';
-import Usage from '@ovhcloud/ods-components/src/components/skeleton/documentation/usage-guidelines/usage.mdx';
+import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import SpecificationsSkeleton from '@ovhcloud/ods-components/src/components/skeleton/documentation/spec.md?raw';
 import { Banner } from '../../Banner';
 import * as SkeletonStories from './skeleton.stories';
 
@@ -12,7 +9,16 @@ import * as SkeletonStories from './skeleton.stories';
 
 # Overview
 
-<OverviewSkeleton />
+Skeleton component indicates that data is loading. It improves the perceived loading time for the user.
+
+<Canvas of={SkeletonStories.Default} sourceState='none' />
+
+<div>
+  <a href="#"
+     target="_blank">
+    ZEROHEIGHT - SKELETON DESIGN GUIDELINES &nbsp;
+  </a>
+</div>
 
 # API
 
@@ -20,8 +26,11 @@ import * as SkeletonStories from './skeleton.stories';
 
 # Style customization
 
-<StyleCustomizationSkeleton />
+You can add your own style on the text element using the part `skeleton`.
+
+<Canvas of={ SkeletonStories.Demo } sourceState='shown'/>
 
 # Examples
+## Default
 
-<Usage />
+<Canvas of={ SkeletonStories.Default } sourceState='shown' />

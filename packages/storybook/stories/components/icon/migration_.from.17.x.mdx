@@ -1,5 +1,4 @@
 import { Meta } from '@storybook/blocks';
-import Migration from '@ovhcloud/ods-components/src/components/icon/documentation/migration.from.17.x.mdx';
 import * as IconStories from './icon.stories';
 
 <Meta of={IconStories} name='Migration From 17.x' />
@@ -7,4 +6,77 @@ import * as IconStories from './icon.stories';
 # Icon - migrate from v17 to v18
 ----
 
-<Migration />
+## Attributes changes
+
+`ariaName` <img src="https://img.shields.io/badge/updated-00FFFF" />
+
+Has been updated.
+
+You can use the new `alt` attribute to obtain the same behavior.
+
+`color` <img src="https://img.shields.io/badge/removed-FF0000" />
+
+Has been removed.
+
+Icons are now font, they will by default have the same color as the current text. (TODO will be true after font update only)
+
+You can override this using a css class on the component directly.
+
+`contrasted` <img src="https://img.shields.io/badge/removed-FF0000" />
+
+Has been removed.
+
+Icons are now font, they will by default have the same color as the current text. (TODO will be true after font update only)
+
+`hoverable` <img src="https://img.shields.io/badge/removed-FF0000" />
+
+Has been removed.
+
+Interactive icon will be handled specifically by components that implements those interactions.
+
+TODO? add example of scss mixin to reproduce current style?
+
+`size` <img src="https://img.shields.io/badge/removed-FF0000" />
+
+Has been removed.
+
+Icons are now font, they will by default have the same size as the current text. (TODO will be true after font update only)
+
+You can override this using a css class on the component directly.
+
+## Migration examples
+
+Contrasted icon:
+```html
+<ods-icon contrasted
+          name="warning">
+</ods-icon>
+<!-- is now -->
+<style>
+  .custom {
+    color: #fff;
+  }
+</style>
+
+<ods-icon class="custom"
+          name="warning">
+</ods-icon>
+```
+
+Icon size:
+```html
+<ods-icon name="warning"
+          size="xl">
+</ods-icon>
+<!-- is now -->
+<style>
+  .custom {
+    font-size: 48px;
+  }
+</style>
+
+<ods-icon class="custom"
+          name="warning">
+</ods-icon>
+```
+

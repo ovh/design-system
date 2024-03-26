@@ -6,4 +6,11 @@ const enableShortcuts = false;
 addons.setConfig({
   theme,
   enableShortcuts,
+  sidebar: {
+    filters: {
+      patterns: (item) => {
+        return !item.tags.includes('isHidden');
+      }
+    }
+  }
 });

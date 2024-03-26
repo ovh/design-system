@@ -1,0 +1,27 @@
+import { Meta, Markdown } from '@storybook/blocks';
+import OverviewTooltip from '@ovhcloud/ods-components/src/components/tooltip/documentation/overview-tooltip.mdx';
+import SpecificationsTooltip from '@ovhcloud/ods-components/src/components/tooltip/documentation/specifications/spec.md?raw';
+import StyleCustomizationTooltip from '@ovhcloud/ods-components/src/components/tooltip/documentation/style-customization-tooltip.mdx';
+import Usage from '@ovhcloud/ods-components/src/components/tooltip/documentation/usage-guidelines/usage.mdx';
+import { Banner } from '../../Banner';
+import * as TooltipStories from './tooltip.stories';
+
+<Meta of={ TooltipStories } name='Documentation' />
+
+<Banner of={ TooltipStories } />
+
+# Overview
+
+<OverviewTooltip />
+
+# API
+
+<Markdown> { SpecificationsTooltip } </Markdown>
+
+# Style customization
+
+<StyleCustomizationTooltip />
+
+# Examples
+
+<Usage />

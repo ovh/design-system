@@ -3,21 +3,21 @@ import { Canvas } from '@storybook/blocks';
 ## Default
 
 <Canvas sourceState="none">
-  <div>
+  <div id="trigger">
     Hover me
   </div>
 
-  <ods-tooltip>
+  <ods-tooltip trigger-id="trigger">
     Tooltip content
   </ods-tooltip>
 </Canvas>
 
 ```html
-<div>
+<div id="trigger">
   Hover me
 </div>
 
-<ods-tooltip>
+<ods-tooltip trigger-id="trigger">
   Tooltip content
 </ods-tooltip>
 ```
@@ -25,21 +25,23 @@ import { Canvas } from '@storybook/blocks';
 ## With an arrow tip
 
 <Canvas sourceState="none">
-  <div>
+  <div id="trigger">
     Hover me
   </div>
 
-  <ods-tooltip with-arrow>
+  <ods-tooltip trigger-id="trigger"
+               with-arrow>
     Tooltip content
   </ods-tooltip>
 </Canvas>
 
 ```html
-<div>
+<div id="trigger">
   Hover me
 </div>
 
-<ods-tooltip with-arrow>
+<ods-tooltip trigger-id="trigger"
+             with-arrow>
   Tooltip content
 </ods-tooltip>
 ```

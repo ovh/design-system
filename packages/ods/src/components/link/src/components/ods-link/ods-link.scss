@@ -1,7 +1,37 @@
-:host(.ods-link) {
-  // Style to apply directly to the Host element
-}
+@import '../../../../../style/link';
 
 .ods-link {
-  // BEM elements and modifiers
+  &__link {
+    @include ods-link;
+
+    &-text {
+      display: inline-flex;
+      align-items: center;
+      transition: background-size .2s ease-in, color ease-in-out .1s;
+      background-image: linear-gradient(currentcolor, currentcolor);
+      background-position: 0 100%;
+      background-repeat: no-repeat;
+      background-size: 0 0.1em;
+      padding-bottom: 1px;
+    }
+
+    /* stylelint-disable-next-line order/order */
+    &:focus-visible, &:hover {
+      .ods-link__link-text {
+        transition: background-size .2s ease-out;
+        background-size: 100% 0.1em;
+      }
+    }
+
+    &--disabled {
+      opacity: .5;
+      cursor: not-allowed;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    &--primary {
+      color: var(--ods-color-primary-500);
+    }
+  }
 }

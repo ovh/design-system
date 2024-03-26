@@ -1,5 +1,5 @@
 <template>
-  <OdsLink />
+  <OdsLink href="https://www.ovhcloud.com/fr/" label="OVH link" />
 </template>
 
 <script lang="ts">

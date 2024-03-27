@@ -1,5 +1,6 @@
 var ODS_ICON_NAME;
 (function (ODS_ICON_NAME) {
+<<<<<<< HEAD
     ODS_ICON_NAME["apps"] = "apps";
     ODS_ICON_NAME["arrowCrossed"] = "arrow-crossed";
     ODS_ICON_NAME["arrowDownLeft"] = "arrow-down-left";
@@ -150,6 +151,11 @@ var ODS_ICON_NAME;
     ODS_ICON_NAME["user"] = "user";
     ODS_ICON_NAME["warningTriangleFull"] = "warning-triangle-full";
     ODS_ICON_NAME["warningTriangle"] = "warning-triangle";
+=======
+    // TODO need actual list from design
+    ODS_ICON_NAME["arrowLeft"] = "arrow-left";
+    ODS_ICON_NAME["warning"] = "warning";
+>>>>>>> 923c5abac (fix(link): review)
 })(ODS_ICON_NAME || (ODS_ICON_NAME = {}));
 const ODS_ICON_NAMES = Object.freeze(Object.values(ODS_ICON_NAME));
 export { ODS_ICON_NAME, ODS_ICON_NAMES, };

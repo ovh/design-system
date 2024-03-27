@@ -1,12 +1,10 @@
 @mixin ods-link() {
   display: inline-flex;
   align-items: center;
+  cursor: pointer;
   text-decoration: none;
   font-family: var(--ods-font-family-default);
   font-weight: 600;
-  font-size: 16px;
-  line-height: 1;
-  cursor: pointer;
 
   &:focus-visible {
     outline-offset: 3px;

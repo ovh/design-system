@@ -42,3 +42,16 @@ export const Default: StoryObj = {
 <ods-skeleton></ods-skeleton>
   `,
 };
+
+export const CustomCSS: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+    <ods-skeleton class="my-skeleton">
+    </ods-skeleton>
+    <style>
+      .my-skeleton::part(skeleton) {
+        width: 50%;
+      }
+    </style>
+  `,
+};

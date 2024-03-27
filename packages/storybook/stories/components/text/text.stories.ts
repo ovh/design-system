@@ -80,3 +80,15 @@ export const Preset: StoryObj = {
 <ods-text preset="heading-6">Heading-6</ods-text>
   `,
 };
+
+export const CustomCSS: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-text class="my-text">lorem ipsum</ods-text>
+<style>
+  .my-text::part(text) {
+    color: #008000;
+  }
+</style>
+  `,
+};

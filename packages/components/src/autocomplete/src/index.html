@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html dir='ltr' lang='en'>
+<head>
+  <meta charset='utf-8'/>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0'/>
+  <title>Dev osds-autocomplete</title>
+
+  <script type="module">
+    !window.ods && (window.ods = {config: {logging: {active: true}}});
+  </script>
+
+  <script type='module' src='/build/osds-autocomplete.esm.js'></script>
+  <script nomodule src='/build/osds-autocomplete.js'></script>
+  <link rel="stylesheet" href="/build/osds-autocomplete.css">
+</head>
+<body>
+
+  <osds-text>Autocomplete 1</osds-text>
+
+  <osds-autocomplete id="autocomplete" clearable="true" inline icon="ovh" value="Hello">
+  </osds-autocomplete>
+
+  <osds-text>Autocomplete 2</osds-text>
+
+  <osds-autocomplete id="autocomplete2" clearable="true" placeholder="Bonjour">
+  </osds-autocomplete>
+
+  <osds-text>Autocomplete 3</osds-text>
+
+  <osds-autocomplete id="autocomplete3" clearable="true" placeholder="Select a language...">
+    <osds-select-option value="FR">Bonjour</osds-select-option>
+    <osds-select-option value="IT">Bongiorno</osds-select-option>
+    <osds-select-option value="EN">Hello</osds-select-option>
+  </osds-autocomplete>
+
+  <osds-text>Autocomplete 4 (Minimum number of characters: 2)</osds-text>
+
+  <osds-autocomplete id="autocomplete4" clearable="true" minimum-number-of-characters="2" placeholder="Select a server...">
+    <osds-select-option value="RS">Rise</osds-select-option>
+    <osds-select-option value="AV">Advance</osds-select-option>
+    <osds-select-option value="GM">Game</osds-select-option>
+    <osds-select-option value="ST">Storage</osds-select-option>
+    <osds-select-option value="SC">Scale</osds-select-option>
+    <osds-select-option value="HG">High Grade</osds-select-option>
+  </osds-autocomplete>
+
+  <script>
+    const database = [
+      { value: 'Hello', text: 'Hello World' },
+      { value: 'How', text: 'How are you today?' },
+      { value: 'Bonjour', text: 'Bonjour tout le monde' },
+      { value: 'Hola', text: 'Hola Mundo' },
+      { value: 'Fizz', text: 'Buzz' },
+      { value: 'Auto', text: 'Autocomplete' },
+    ];
+
+    const autocompleteElement = document.querySelector('#autocomplete');
+    const autocompleteElement2 = document.querySelector('#autocomplete2');
+
+    const updateOptions = (value, element) => {
+      while (element.firstChild) {
+        element.removeChild(element.firstChild);
+      }
+
+      const regex = new RegExp(value, 'i');
+
+      database.forEach(entry => {
+        if (regex.test(entry.text)) {
+          const optionElement = document.createElement('osds-select-option');
+          optionElement.value = entry.value;
+          optionElement.tabIndex = 1;
+
+          const textElem = document.createElement('osds-text');
+          textElem.innerHTML = entry.text.replace(regex, '<b>$&</b>');
+          optionElement.appendChild(textElem);
+
+          element.appendChild(optionElement);
+        }
+      });
+    };
+
+    autocompleteElement.addEventListener('odsValueChange', (event) => {
+      updateOptions(event.detail.value, autocompleteElement);
+    });
+    autocompleteElement2.addEventListener('odsValueChange', (event) => {
+      updateOptions(event.detail.value, autocompleteElement2);
+    });
+    updateOptions('');
+  </script>
+  </body>
+  </html>

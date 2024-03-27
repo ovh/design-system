@@ -5216,6 +5216,18 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-component-autocomplete@workspace:packages/components/src/autocomplete":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-autocomplete@workspace:packages/components/src/autocomplete"
+  dependencies:
+    "@ovhcloud/ods-common-core": 17.1.0
+    "@ovhcloud/ods-common-stencil": 17.1.0
+    "@ovhcloud/ods-common-testing": 17.1.0
+    "@ovhcloud/ods-common-theming": 17.1.0
+    "@ovhcloud/ods-stencil-dev": 17.1.0
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-component-breadcrumb@workspace:packages/components/src/breadcrumb":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-breadcrumb@workspace:packages/components/src/breadcrumb"

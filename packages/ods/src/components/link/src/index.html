@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html dir='ltr' lang='en'>
+<head>
+  <meta charset='utf-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0' />
+  <title>Dev ods-link</title>
+
+  <script type='module' src='/build/ods-link.esm.js'></script>
+  <script nomodule src='/build/ods-link.js'></script>
+  <link rel="stylesheet" href="/build/ods-link.css">
+</head>
+
+<body>
+  <p>Default</p>
+  <ods-link href="test" label="link clickable">
+  </ods-link>
+
+  <p>Disabled</p>
+  <ods-link href="test" label="link clickable" disabled>
+  </ods-link>
+
+  <p>Icon</p>
+  <ods-link href="test" label="link clickable" icon="warning">
+  </ods-link>
+
+  <p>Icon Disabled</p>
+  <ods-link href="test" label="link clickable" icon="warning" disabled>
+  </ods-link>
+</body>
+</html>

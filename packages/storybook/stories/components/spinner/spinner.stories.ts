@@ -59,6 +59,13 @@ export const Demo: StoryObj = {
   },
 };
 
+export const Default: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-spinner></ods-spinner>
+  `,
+};
+
 export const Color: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
@@ -74,5 +81,17 @@ export const Size: StoryObj = {
 <ods-spinner size="sm"></ods-spinner>
 <ods-spinner size="md"></ods-spinner>
 <ods-spinner size="lg"></ods-spinner>
+  `,
+};
+
+export const CustomCSS: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-spinner class="my-spinner"></ods-spinner>
+<style>
+  .my-spinner::part(spinner) {
+    height: 100px;
+  }
+</style>
   `,
 };

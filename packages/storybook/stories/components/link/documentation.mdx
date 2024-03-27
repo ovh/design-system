@@ -1,0 +1,23 @@
+import { Meta, Markdown } from '@storybook/blocks';
+import OverviewLink from '@ovhcloud/ods-components/src/components/link/documentation/overview-link.mdx';
+import SpecificationsLink from '@ovhcloud/ods-components/src/components/link/documentation/specifications/spec.md?raw';
+import Usage from '@ovhcloud/ods-components/src/components/link/documentation/usage-guidelines/usage.mdx';
+import { Banner } from '../../Banner';
+import * as LinkStories from './link.stories';
+
+<Meta of={ LinkStories } name='Documentation' />
+
+<Banner of={ LinkStories } />
+
+# Overview
+
+<OverviewLink />
+
+# API
+
+<Markdown>{ SpecificationsLink }</Markdown>
+
+# Examples
+
+<Usage />
+

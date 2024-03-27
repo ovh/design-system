@@ -1,0 +1,258 @@
+import type { OsdsSelectOption } from '../../../../../select/src/components/osds-select-option/osds-select-option';
+import type { OsdsAutocomplete } from '../osds-autocomplete';
+import type { OcdkSurface } from '@ovhcloud/ods-cdk';
+import { OcdkSurfaceMock } from '@ovhcloud/ods-cdk';
+import { OdsAutocompleteController } from './controller';
+
+class OdsAutocompleteMock {
+  constructor(attribute: Partial<OsdsAutocomplete>) {
+    Object.assign(this, attribute);
+  }
+
+  surface = new OcdkSurfaceMock() as unknown as OcdkSurface;
+  handleAutocompleteClick = jest.fn();
+  handleValueChange = jest.fn();
+  emitChange = jest.fn();
+  setFocus = jest.fn();
+
+  internals = {
+    setFormValue: jest.fn(),
+  };
+}
+
+describe('spec:ods-autocomplete-controller', () => {
+  let controller: OdsAutocompleteController;
+  let component: OsdsAutocomplete;
+  let item1: OsdsSelectOption & HTMLElement;
+  let item2: OsdsSelectOption & HTMLElement;
+
+  function setup(attributes: Partial<OsdsAutocomplete> = {}): void {
+    component = new OdsAutocompleteMock(attributes) as unknown as OsdsAutocomplete;
+
+    if (component.surface) {
+      component.surface.opened = attributes?.opened ?? false;
+    }
+
+    item1 = document.createElement('osds-select-option') as unknown as OsdsSelectOption & HTMLElement;
+    item2 = document.createElement('osds-select-option') as unknown as OsdsSelectOption & HTMLElement;
+    item1.value = '1';
+    item2.value = '2';
+
+    controller = new OdsAutocompleteController(component);
+    controller.selectOptions = [item1, item2];
+  }
+
+  it('should initialize', () => {
+    setup();
+    expect(controller).toBeDefined();
+  });
+
+  describe('methods', () => {
+    describe('methods:openSurface', () => {
+      it('should open surface with default value', () => {
+        setup();
+        controller.openSurface();
+        expect(component.opened).toBe(true);
+      });
+
+      it('should open surface', () => {
+        setup({
+          opened: false,
+        });
+        controller.openSurface();
+        expect(component.opened).toBe(true);
+      });
+
+      it('should close surface', () => {
+        setup({
+          opened: true,
+        });
+        controller.closeSurface();
+        expect(component.opened).toBe(false);
+      });
+    });
+
+    describe('methods:handlerKeyDown', () => {
+      it('should open Autocomplete with enter key', () => {
+        setup();
+        const keyEnter = new KeyboardEvent('keydown', { code : 'Enter' });
+        controller.handlerKeyDown(keyEnter);
+        expect(component.handleAutocompleteClick).toHaveBeenCalled();
+      });
+
+      it('should Autocomplete option with enter key', () => {
+        setup({ opened: true });
+        item1.setAttribute('selected', '');
+        const keyEnter = new KeyboardEvent('keydown', { code : 'Enter' });
+        controller.handlerKeyDown(keyEnter);
+        expect(component.handleValueChange).toHaveBeenCalled();
+        expect(component.setFocus).toHaveBeenCalled();
+      });
+
+      it('should close Autocomplete with escape key', () => {
+        setup({ opened: true });
+        const spyCloseSurface = jest.spyOn(controller, 'closeSurface');
+        const keySpace = new KeyboardEvent('keydown', { code : 'Escape' });
+        controller.handlerKeyDown(keySpace);
+        expect(spyCloseSurface).toHaveBeenCalledTimes(1);
+      });
+
+      it('should close Autocomplete with escape key and Autocomplete after navigation', () => {
+        setup({ opened: true, value: '2' });
+        const spyCloseSurface = jest.spyOn(controller, 'closeSurface');
+        const keyArraowDown = new KeyboardEvent('keydown', { code : 'ArrowDown' });
+        controller.handlerKeyDown(keyArraowDown);
+        const keySpace = new KeyboardEvent('keydown', { code : 'Escape' });
+        controller.handlerKeyDown(keySpace);
+        const selectedOption = controller.selectOptions.filter((s) => s.getAttribute('selected') === '');
+        expect(selectedOption).toHaveLength(1);
+        expect(spyCloseSurface).toHaveBeenCalledTimes(1);
+      });
+
+      it('should select option with arrow down', () => {
+        setup({ opened: true });
+        const keyArrowDown = new KeyboardEvent('keydown', { code : 'ArrowDown' });
+        controller.handlerKeyDown(keyArrowDown);
+        expect(item1.getAttribute('selected')).toBe('');
+      });
+
+      it('should not select option with tab because of closed Autocomplete', () => {
+        setup({ opened: false });
+        const keyTab = new KeyboardEvent('keydown', { code : 'Tab' });
+        controller.handlerKeyDown(keyTab);
+        expect(item1.getAttribute('selected')).toBe(null);
+      });
+
+      it('should select option with tab', () => {
+        setup({ opened: true });
+        const keyTab = new KeyboardEvent('keydown', { code : 'Tab' });
+        controller.handlerKeyDown(keyTab);
+        expect(item1.getAttribute('selected')).toBe('');
+      });
+
+      it('should select option with tab + shift', () => {
+        setup({ opened: true });
+        const keyTab = new KeyboardEvent('keydown', { code : 'Tab' });
+        controller.handlerKeyDown(keyTab);
+        controller.handlerKeyDown(keyTab);
+        const keyTabShift = new KeyboardEvent('keydown', { code : 'Tab', shiftKey: true });
+        controller.handlerKeyDown(keyTabShift);
+        expect(item1.getAttribute('selected')).toBe('');
+      });
+
+      it('should select option with arrow up', () => {
+        setup({ opened: true });
+        item2.setAttribute('selected', '');
+        const keyArrowUp = new KeyboardEvent('keydown', { code : 'ArrowUp' });
+        controller.handlerKeyDown(keyArrowUp);
+        expect(item1.getAttribute('selected')).toBe('');
+        expect(item2.getAttribute('selected')).toBe(null);
+      });
+
+      it('should close select after if open and not any option selected', () => {
+        setup({ opened: true });
+        const keyArrowDown = new KeyboardEvent('keydown', { code : 'Enter' });
+        controller.handlerKeyDown(keyArrowDown);
+        expect(component.handleAutocompleteClick).toHaveBeenCalledTimes(1);
+      });
+
+      it('should go back to first option with arrow down when on the last one', () => {
+        setup({ opened: true });
+        item2.focus();
+        item2.setAttribute('selected', '');
+
+        const keyDown = new KeyboardEvent('keydown', { code : 'ArrowDown' });
+        controller.handlerKeyDown(keyDown);
+
+        expect(item1.getAttribute('selected')).toBe('');
+      });
+
+      it('should go back to last option with arrow up when on the first one', () => {
+        setup({ opened: true });
+        item1.focus();
+        item1.setAttribute('selected', '');
+
+        const keyUp = new KeyboardEvent('keydown', { code : 'ArrowUp' });
+        controller.handlerKeyDown(keyUp);
+
+        expect(item2.getAttribute('selected')).toBe('');
+      });
+
+      it('should don\'t do anything', () => {
+        setup();
+        const spyCloseSurface = jest.spyOn(controller, 'closeSurface');
+
+        const keyArrowDown = new KeyboardEvent('keydown', { code : 'A' });
+        controller.handlerKeyDown(keyArrowDown);
+        const keyArrowUp = new KeyboardEvent('keydown', { code : 'Maj' });
+        controller.handlerKeyDown(keyArrowUp);
+
+        expect(spyCloseSurface).not.toHaveBeenCalled();
+        expect(component.setFocus).not.toHaveBeenCalled();
+        expect(component.handleAutocompleteClick).not.toHaveBeenCalled();
+        expect(component.handleValueChange).not.toHaveBeenCalled();
+        expect(item1.getAttribute('selected')).toBe(null);
+        expect(item2.getAttribute('selected')).toBe(null);
+      });
+    });
+
+    describe('methods:changeValue', () => {
+      it('should change value', () => {
+        setup();
+        controller.changeValue('1');
+        expect(component.internals.setFormValue).toHaveBeenCalledWith('1');
+      });
+    });
+
+    describe('methods:getValidity', () => {
+      it('should return valid', () => {
+        setup();
+        expect(controller.getValidity()).toEqual({
+          customError: false,
+          forbiddenValue: false,
+          invalid: false,
+          stepMismatch: false,
+          valid: true,
+          valueMissing: false,
+        });
+      });
+
+      it('should return invalid', () => {
+        setup({ required: true });
+        expect(controller.getValidity()).toEqual({
+          customError: false,
+          forbiddenValue: false,
+          invalid: true,
+          stepMismatch: false,
+          valid: false,
+          valueMissing: true,
+        });
+      });
+    });
+
+    describe('methods:onValueChange', () => {
+      it('should call handleValueChange', () => {
+        setup();
+        controller.onValueChange('1', '2');
+        expect(component.emitChange).toHaveBeenCalled();
+      });
+    });
+
+    describe('methods:hasRequiredError', () => {
+      it('should return true if required and no value', () => {
+        setup({ required: true });
+        expect(controller.hasRequiredError()).toBe(true);
+      });
+
+      it('should return false if not required', () => {
+        setup({ required: false });
+        expect(controller.hasRequiredError()).toBe(false);
+      });
+
+      it('should return false if required and value', () => {
+        setup({ required: true, value: '1' });
+        expect(controller.hasRequiredError()).toBe(false);
+      });
+    });
+  });
+});

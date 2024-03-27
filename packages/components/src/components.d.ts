@@ -8,10 +8,11 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { ODS_THEME_COLOR_INTENT } from "@ovhcloud/ods-common-theming";
 import { ODS_ACCORDION_SIZE } from "./accordion/src/components/osds-accordion/constants/accordion-size";
 import { OsdsAccordion } from "./accordion/src/components/osds-accordion/osds-accordion";
-import { OdsBreadcrumbAttributeItem } from "./breadcrumb/src/components/osds-breadcrumb/interfaces/attributes";
 import { ODS_ICON_NAME } from "./icon/src";
-import { ODS_LINK_REFERRER_POLICY } from "./link/src";
+import { OdsAutocompleteValueChangeEventDetail } from "./autocomplete/src/components/osds-autocomplete/interfaces/events";
 import { ODS_COUNTRY_ISO_CODE, ODS_LOCALE, ODS_PERIOD_ISO_CODE, OdsErrorStateControl, OdsFormControl, OdsFormForbiddenValues, OdsHTMLAnchorElementRel, OdsHTMLAnchorElementTarget, OdsI18nHook, OdsInputValue, OdsTextAreaValidityState, OdsValidityState } from "@ovhcloud/ods-common-core";
+import { OdsBreadcrumbAttributeItem } from "./breadcrumb/src/components/osds-breadcrumb/interfaces/attributes";
+import { ODS_LINK_REFERRER_POLICY } from "./link/src";
 import { OdsBreadcrumbAttributeItem as OdsBreadcrumbAttributeItem1 } from "./breadcrumb/src/components/osds-breadcrumb/public-api";
 import { ODS_BUTTON_SIZE } from "./button/src/components/osds-button/constants/button-size";
 import { ODS_BUTTON_TYPE } from "./button/src/components/osds-button/constants/button-type";
@@ -74,10 +75,11 @@ import { ODS_TOOLTIP_VARIANT } from "./tooltip/src/components/osds-tooltip/const
 export { ODS_THEME_COLOR_INTENT } from "@ovhcloud/ods-common-theming";
 export { ODS_ACCORDION_SIZE } from "./accordion/src/components/osds-accordion/constants/accordion-size";
 export { OsdsAccordion } from "./accordion/src/components/osds-accordion/osds-accordion";
-export { OdsBreadcrumbAttributeItem } from "./breadcrumb/src/components/osds-breadcrumb/interfaces/attributes";
 export { ODS_ICON_NAME } from "./icon/src";
-export { ODS_LINK_REFERRER_POLICY } from "./link/src";
+export { OdsAutocompleteValueChangeEventDetail } from "./autocomplete/src/components/osds-autocomplete/interfaces/events";
 export { ODS_COUNTRY_ISO_CODE, ODS_LOCALE, ODS_PERIOD_ISO_CODE, OdsErrorStateControl, OdsFormControl, OdsFormForbiddenValues, OdsHTMLAnchorElementRel, OdsHTMLAnchorElementTarget, OdsI18nHook, OdsInputValue, OdsTextAreaValidityState, OdsValidityState } from "@ovhcloud/ods-common-core";
+export { OdsBreadcrumbAttributeItem } from "./breadcrumb/src/components/osds-breadcrumb/interfaces/attributes";
+export { ODS_LINK_REFERRER_POLICY } from "./link/src";
 export { OdsBreadcrumbAttributeItem as OdsBreadcrumbAttributeItem1 } from "./breadcrumb/src/components/osds-breadcrumb/public-api";
 export { ODS_BUTTON_SIZE } from "./button/src/components/osds-button/constants/button-size";
 export { ODS_BUTTON_TYPE } from "./button/src/components/osds-button/constants/button-type";
@@ -174,6 +176,102 @@ export namespace Components {
           * @see OdsAccordionGroupMethod.unRegisterAccordion
          */
         "unRegisterAccordion": (accordion: OsdsAccordion) => Promise<void>;
+    }
+    interface OsdsAutocomplete {
+        /**
+          * The corresponding aria-label describing its content
+          * @see OdsAutocompleteAttribute.ariaLabel
+         */
+        "ariaLabel": HTMLElement['ariaLabel'];
+        /**
+          * The ID to an external description
+          * @see OdsAutocompleteAttribute.ariaLabelledby
+         */
+        "ariaLabelledby": string;
+        /**
+          * Erase the current selection
+         */
+        "clear": () => Promise<void>;
+        /**
+          * Defines if the Autocomplete should be clearable or not (displays a clear button)
+          * @see OdsAutocompleteAttribute.clearable
+         */
+        "clearable": boolean;
+        /**
+          * Default value of the Autocomplete
+          * @see OdsAutocompleteAttribute.defaultValue
+         */
+        "defaultValue": string;
+        /**
+          * Defines if the Autocomplete should be disabled or not (lower opacity and not interactable)
+          * @see OdsAutocompleteAttribute.disabled
+         */
+        "disabled": boolean;
+        /**
+          * Defines if the Autocomplete should display an error state
+          * @see OdsAutocompleteAttribute.error
+         */
+        "error": boolean;
+        /**
+          * Get the validity state
+         */
+        "getValidity": () => Promise<OdsValidityState>;
+        /**
+          * Defines if the Autocomplete should display an icon in the input field
+          * @see OdsAutocompleteAttribute.icon
+         */
+        "icon"?: ODS_ICON_NAME;
+        /**
+          * Indicates if the Autocomplete is full width or not: see component principles
+          * @see OdsAutocompleteAttribute.inline
+         */
+        "inline": boolean;
+        /**
+          * Defines the Autocomplete's minimum number of characters to open the dropdown
+          * @see OdsAutocompleteAttribute.minimumNumberOfCharacters
+         */
+        "minimumNumberOfCharacters": number;
+        /**
+          * Name of the Autocomplete field
+          * @see OdsAutocompleteAttribute.name
+         */
+        "name"?: string;
+        /**
+          * Defines if the Autocomplete dropdown is opened or not
+          * @see OdsAutocompleteAttribute.opened
+         */
+        "opened": boolean;
+        /**
+          * Defines if the Autocomplete should display a placeholder message
+          * @see OdsAutocompleteAttribute.placeholder
+         */
+        "placeholder"?: string;
+        /**
+          * Defines if a value has to be selected or not
+          * @see OdsAutocompleteAttribute.required
+         */
+        "required": boolean;
+        /**
+          * Reset the value to the initial one (default value)
+         */
+        "reset": () => Promise<void>;
+        /**
+          * Focus the element
+         */
+        "setFocus": () => Promise<void>;
+        /**
+          * Set tab index on the component
+         */
+        "setInputTabindex": (value: number) => Promise<void>;
+        /**
+          * check if the Autocomplete is valid. In case of required field, the validation will check the entered value and set the field in error if it is not fulfilled
+         */
+        "validate": () => Promise<OdsValidityState>;
+        /**
+          * Defines the Autocomplete's value
+          * @see OdsAutocompleteAttribute.value
+         */
+        "value": string;
     }
     interface OsdsBreadcrumb {
         /**
@@ -1953,6 +2051,10 @@ export interface OsdsAccordionCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLOsdsAccordionElement;
 }
+export interface OsdsAutocompleteCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLOsdsAutocompleteElement;
+}
 export interface OsdsBreadcrumbItemCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLOsdsBreadcrumbItemElement;
@@ -2072,6 +2174,25 @@ declare global {
     var HTMLOsdsAccordionGroupElement: {
         prototype: HTMLOsdsAccordionGroupElement;
         new (): HTMLOsdsAccordionGroupElement;
+    };
+    interface HTMLOsdsAutocompleteElementEventMap {
+        "odsValueChange": OdsAutocompleteValueChangeEventDetail;
+        "odsFocus": void;
+        "odsBlur": void;
+    }
+    interface HTMLOsdsAutocompleteElement extends Components.OsdsAutocomplete, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLOsdsAutocompleteElementEventMap>(type: K, listener: (this: HTMLOsdsAutocompleteElement, ev: OsdsAutocompleteCustomEvent<HTMLOsdsAutocompleteElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLOsdsAutocompleteElementEventMap>(type: K, listener: (this: HTMLOsdsAutocompleteElement, ev: OsdsAutocompleteCustomEvent<HTMLOsdsAutocompleteElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLOsdsAutocompleteElement: {
+        prototype: HTMLOsdsAutocompleteElement;
+        new (): HTMLOsdsAutocompleteElement;
     };
     interface HTMLOsdsBreadcrumbElement extends Components.OsdsBreadcrumb, HTMLStencilElement {
     }
@@ -2775,6 +2896,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "osds-accordion": HTMLOsdsAccordionElement;
         "osds-accordion-group": HTMLOsdsAccordionGroupElement;
+        "osds-autocomplete": HTMLOsdsAutocompleteElement;
         "osds-breadcrumb": HTMLOsdsBreadcrumbElement;
         "osds-breadcrumb-item": HTMLOsdsBreadcrumbItemElement;
         "osds-button": HTMLOsdsButtonElement;
@@ -2874,6 +2996,90 @@ declare namespace LocalJSX {
         "size"?: ODS_ACCORDION_SIZE;
     }
     interface OsdsAccordionGroup {
+    }
+    interface OsdsAutocomplete {
+        /**
+          * The corresponding aria-label describing its content
+          * @see OdsAutocompleteAttribute.ariaLabel
+         */
+        "ariaLabel"?: HTMLElement['ariaLabel'];
+        /**
+          * The ID to an external description
+          * @see OdsAutocompleteAttribute.ariaLabelledby
+         */
+        "ariaLabelledby"?: string;
+        /**
+          * Defines if the Autocomplete should be clearable or not (displays a clear button)
+          * @see OdsAutocompleteAttribute.clearable
+         */
+        "clearable"?: boolean;
+        /**
+          * Default value of the Autocomplete
+          * @see OdsAutocompleteAttribute.defaultValue
+         */
+        "defaultValue"?: string;
+        /**
+          * Defines if the Autocomplete should be disabled or not (lower opacity and not interactable)
+          * @see OdsAutocompleteAttribute.disabled
+         */
+        "disabled"?: boolean;
+        /**
+          * Defines if the Autocomplete should display an error state
+          * @see OdsAutocompleteAttribute.error
+         */
+        "error"?: boolean;
+        /**
+          * Defines if the Autocomplete should display an icon in the input field
+          * @see OdsAutocompleteAttribute.icon
+         */
+        "icon"?: ODS_ICON_NAME;
+        /**
+          * Indicates if the Autocomplete is full width or not: see component principles
+          * @see OdsAutocompleteAttribute.inline
+         */
+        "inline"?: boolean;
+        /**
+          * Defines the Autocomplete's minimum number of characters to open the dropdown
+          * @see OdsAutocompleteAttribute.minimumNumberOfCharacters
+         */
+        "minimumNumberOfCharacters"?: number;
+        /**
+          * Name of the Autocomplete field
+          * @see OdsAutocompleteAttribute.name
+         */
+        "name"?: string;
+        /**
+          * Event triggered on Autocomplete's blur
+         */
+        "onOdsBlur"?: (event: OsdsAutocompleteCustomEvent<void>) => void;
+        /**
+          * Event triggered on Autocomplete's focus
+         */
+        "onOdsFocus"?: (event: OsdsAutocompleteCustomEvent<void>) => void;
+        /**
+          * Events
+         */
+        "onOdsValueChange"?: (event: OsdsAutocompleteCustomEvent<OdsAutocompleteValueChangeEventDetail>) => void;
+        /**
+          * Defines if the Autocomplete dropdown is opened or not
+          * @see OdsAutocompleteAttribute.opened
+         */
+        "opened"?: boolean;
+        /**
+          * Defines if the Autocomplete should display a placeholder message
+          * @see OdsAutocompleteAttribute.placeholder
+         */
+        "placeholder"?: string;
+        /**
+          * Defines if a value has to be selected or not
+          * @see OdsAutocompleteAttribute.required
+         */
+        "required"?: boolean;
+        /**
+          * Defines the Autocomplete's value
+          * @see OdsAutocompleteAttribute.value
+         */
+        "value"?: string;
     }
     interface OsdsBreadcrumb {
         /**
@@ -4672,6 +4878,7 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "osds-accordion": OsdsAccordion;
         "osds-accordion-group": OsdsAccordionGroup;
+        "osds-autocomplete": OsdsAutocomplete;
         "osds-breadcrumb": OsdsBreadcrumb;
         "osds-breadcrumb-item": OsdsBreadcrumbItem;
         "osds-button": OsdsButton;
@@ -4743,6 +4950,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "osds-accordion": LocalJSX.OsdsAccordion & JSXBase.HTMLAttributes<HTMLOsdsAccordionElement>;
             "osds-accordion-group": LocalJSX.OsdsAccordionGroup & JSXBase.HTMLAttributes<HTMLOsdsAccordionGroupElement>;
+            "osds-autocomplete": LocalJSX.OsdsAutocomplete & JSXBase.HTMLAttributes<HTMLOsdsAutocompleteElement>;
             "osds-breadcrumb": LocalJSX.OsdsBreadcrumb & JSXBase.HTMLAttributes<HTMLOsdsBreadcrumbElement>;
             "osds-breadcrumb-item": LocalJSX.OsdsBreadcrumbItem & JSXBase.HTMLAttributes<HTMLOsdsBreadcrumbItemElement>;
             "osds-button": LocalJSX.OsdsButton & JSXBase.HTMLAttributes<HTMLOsdsButtonElement>;

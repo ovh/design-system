@@ -1,0 +1,23 @@
+import { Meta } from '@storybook/addon-docs';
+import Specifications from '@ovhcloud/ods-components/src/autocomplete/documentation/specifications/specifications-autocomplete.mdx';
+
+<Meta title="ODS Components/Form/Autocomplete [organism]/Specifications" />
+
+# Autocomplete - Design Specifications
+----
+
+Autocompletes allow users to enter any combination of letters, numbers, or symbols of their choosing (unless otherwise restricted), and receive one or more suggested matches in a list below the input.
+It is a visual component, meaning sorting logics must be integrated besides the Autocomplete component.
+
+<div>
+  <osds-autocomplete clearable="true" placeholder="Select a language...">
+    <osds-select-option value="FR">Bonjour</osds-select-option>
+    <osds-select-option value="IT">Bongiorno</osds-select-option>
+    <osds-select-option value="EN">Hello</osds-select-option>
+  </osds-autocomplete>
+</div>
+
+# Autocomplete - Technical Specification
+----
+
+<Specifications />

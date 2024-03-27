@@ -1,0 +1,56 @@
+import ClearableProperty from './properties/usage.clearable.mdx';
+import DisabledProperty from './properties/usage.disabled.mdx';
+import ErrorProperty from './properties/usage.error.mdx';
+import IconProperty from './properties/usage.icon.mdx';
+import InlineProperty from './properties/usage.inline.mdx';
+import MinimumNumberOfCharactersProperty from './properties/usage.minimumNumberOfCharacters.mdx';
+import PlaceholderProperty from './properties/usage.placeholder.mdx';
+import GenericStyle from '@ovhcloud/ods-common-core/docs/generic-style.mdx';
+import { Canvas } from '@storybook/addon-docs';
+
+<GenericStyle />
+
+## Usage
+
+### Default
+<Canvas withSource="none">
+  <div style={{ height: '300px' }}>
+    <osds-autocomplete>
+      <osds-select-option value="FR">Bonjour</osds-select-option>
+      <osds-select-option value="IT">Bongiorno</osds-select-option>
+      <osds-select-option value="EN">Hello</osds-select-option>
+    </osds-autocomplete>
+  </div>
+</Canvas >
+
+```html
+<osds-autocomplete>
+    <osds-select-option value="FR">Bonjour</osds-select-option>
+    <osds-select-option value="IT">Bongiorno</osds-select-option>
+    <osds-select-option value="EN">Hello</osds-select-option>
+</osds-autocomplete>
+```
+
+### Clearable
+<ClearableProperty />
+
+### Disabled
+<DisabledProperty />
+
+### Error
+<ErrorProperty />
+
+### Icon
+<IconProperty />
+
+### Inline
+<InlineProperty />
+
+### Inline
+<InlineProperty />
+
+### MinimumNumberOfCharacters
+<MinimumNumberOfCharactersProperty />
+
+### Placeholder
+<PlaceholderProperty />

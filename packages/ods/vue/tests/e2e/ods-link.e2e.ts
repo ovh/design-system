@@ -13,7 +13,7 @@ describe('ods-link vue', () => {
     await goToComponentPage(page, 'ods-link');
   });
 
-  it('render the component correctly', async () => {
+  it('should navigate on click', async () => {
     const elem = await page.$('ods-link');
 
     await elem?.click();

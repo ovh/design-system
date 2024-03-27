@@ -1,7 +1,7 @@
 import type { E2EElement, E2EPage } from '@stencil/core/testing';
 import { newE2EPage } from '@stencil/core/testing';
 
-describe('ods-link accessibility', () => {
+describe('ods-link navigation', () => {
   let el: E2EElement;
   let page: E2EPage;
 
@@ -21,14 +21,14 @@ describe('ods-link accessibility', () => {
     expect(focusedTagName).toBe('ODS-LINK');
   });
 
-  it('should not be focused with disabled', async() => {
+  it('should not be focused when  disabled', async() => {
     await setup('<ods-link label="some link" disabled href="https://www.ovhcloud.com/fr/"></ods-link>');
     await page.keyboard.press('Tab');
     const focusedTagName = await page.evaluate(() => document.activeElement?.tagName);
     expect(focusedTagName).not.toBe('ODS-LINK');
   });
 
-  it('should trigger link when Enter', async() => {
+  it('should trigger link on Enter', async() => {
     const href = 'https://www.ovhcloud.com/fr/';
     await setup(`<ods-link label="some link" href="${href}"></ods-link>`);
     await page.keyboard.press('Tab');
@@ -37,7 +37,7 @@ describe('ods-link accessibility', () => {
     expect(page.url()).toBe(href);
   });
 
-  it('should not trigger link when Enter with disabled', async() => {
+  it('should not trigger link on Enter when disabled', async() => {
     const href = 'https://www.ovhcloud.com/fr/';
     await setup(`<ods-link label="some link" disabled href="${href}"></ods-link>`);
     await page.keyboard.press('Tab');
@@ -46,7 +46,7 @@ describe('ods-link accessibility', () => {
     expect(page.url()).not.toBe(href);
   });
 
-  it('should trigger link when click', async() => {
+  it('should trigger link on click', async() => {
     const href = 'https://www.ovhcloud.com/fr/';
     await setup(`<ods-link label="some link" href="${href}"></ods-link>`);
     await el.click();
@@ -54,7 +54,7 @@ describe('ods-link accessibility', () => {
     expect(page.url()).toBe(href);
   });
 
-  it('should not trigger link when click with disabled', async() => {
+  it('should not trigger link on click when disabled', async() => {
     const href = 'https://www.ovhcloud.com/fr/';
     await setup(`<ods-link label="some link" disabled href="${href}"></ods-link>`);
     await el.click();

@@ -26,7 +26,7 @@ describe('ods-link rendering', () => {
       expect(root?.getAttribute('color')).toBe(colorValue);
     });
 
-    it('should not be set by default', async() => {
+    it('should render with expected default value', async() => {
       await setup(`<ods-link></ods-link>`);
 
       expect(root?.getAttribute('color')).toBe( ODS_LINK_COLOR.primary);
@@ -35,14 +35,12 @@ describe('ods-link rendering', () => {
 
   describe('disabled', () => {
     it('should be reflected', async() => {
-      const disabledValue = true;
-
-      await setup(`<ods-link disabled="${disabledValue}"></ods-link>`);
+      await setup(`<ods-link disabled></ods-link>`);
 
       expect(root?.getAttribute('disabled')).toBe('');
     });
 
-    it('should not be set by default', async() => {
+    it('should render with expected default value', async() => {
       await setup(`<ods-link></ods-link>`);
 
       expect(root?.getAttribute('disabled')).toBe(null);
@@ -58,7 +56,7 @@ describe('ods-link rendering', () => {
       expect(root?.getAttribute('download')).toBe(downloadValue);
     });
 
-    it('should not be set by default', async() => {
+    it('should render with expected default value', async() => {
       await setup(`<ods-link></ods-link>`);
 
       expect(root?.getAttribute('download')).toBe(null);
@@ -74,7 +72,7 @@ describe('ods-link rendering', () => {
       expect(root?.getAttribute('href')).toBe(hrefValue);
     });
 
-    it('should not be set by default', async() => {
+    it('should render with expected default value', async() => {
       await setup(`<ods-link></ods-link>`);
 
       expect(root?.getAttribute('href')).toBe(null);
@@ -92,7 +90,7 @@ describe('ods-link rendering', () => {
       expect(iconElement?.getAttribute('name')).toBe(iconValue);
     });
 
-    it('should not be set by default', async() => {
+    it('should render with expected default value', async() => {
       await setup(`<ods-link></ods-link>`);
 
       expect(root?.getAttribute('icon')).toBe(null);
@@ -109,7 +107,7 @@ describe('ods-link rendering', () => {
       expect(root?.getAttribute('label')).toBe(labelValue);
     });
 
-    it('should not be set by default', async() => {
+    it('should render with expected default value', async() => {
       await setup(`<ods-link></ods-link>`);
 
       expect(root?.getAttribute('label')).toBe(null);
@@ -125,7 +123,7 @@ describe('ods-link rendering', () => {
       expect(root?.getAttribute('referrerpolicy')).toBe(referrerpolicyValue);
     });
 
-    it('should not be set by default', async() => {
+    it('should render with expected default value', async() => {
       await setup(`<ods-link></ods-link>`);
 
       expect(root?.getAttribute('referrerpolicy')).toBe(null);
@@ -141,7 +139,7 @@ describe('ods-link rendering', () => {
       expect(root?.getAttribute('rel')).toBe(relValue);
     });
 
-    it('should not be set by default', async() => {
+    it('should render with expected default value', async() => {
       await setup(`<ods-link></ods-link>`);
 
       expect(root?.getAttribute('rel')).toBe(null);
@@ -157,7 +155,7 @@ describe('ods-link rendering', () => {
       expect(root?.getAttribute('target')).toBe(targetValue);
     });
 
-    it('should not be set by default', async() => {
+    it('should render with expected default value', async() => {
       await setup(`<ods-link></ods-link>`);
 
       expect(root?.getAttribute('target')).toBe(null);

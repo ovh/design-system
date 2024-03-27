@@ -9,7 +9,7 @@ import { ODS_LINK_COLOR, type OdsLinkColor } from '../../constant/link-color';
 })
 export class OdsLink {
   @Prop({ reflect: true }) public color: OdsLinkColor = ODS_LINK_COLOR.primary;
-  @Prop({ reflect: true }) public disabled?: boolean;
+  @Prop({ reflect: true }) public disabled: boolean = false;
   @Prop({ reflect: true }) public download?: HTMLAnchorElement['download'];
   @Prop({ reflect: true }) public href!: string;
   @Prop({ reflect: true }) public icon?: OdsIconName;
@@ -34,7 +34,7 @@ export class OdsLink {
           rel={ this.rel }
           tabindex={ this.disabled ? -1 : 0 }
           target={ this.target }>
-          <span class="ods-link__link-text">
+          <span class="ods-link__link__text">
             { this.label }
           </span>
 

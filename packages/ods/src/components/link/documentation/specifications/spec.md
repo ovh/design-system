@@ -1,9 +1,3 @@
-## Table of Contents
-[• Properties](#properties)
-
-
-
-[• Enums](#enums)
 
 ## Properties
 ### color
@@ -54,7 +48,7 @@
 
 
 ## Enums
-## Enumeration: ODS_LINK_COLOR
+### Enumeration: ODS_LINK_COLOR
 
 • **primary** = `"primary"`
 

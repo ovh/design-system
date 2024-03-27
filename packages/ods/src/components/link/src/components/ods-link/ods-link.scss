@@ -4,7 +4,7 @@
   &__link {
     @include ods-link;
 
-    &-text {
+    &__text {
       display: inline-flex;
       align-items: center;
       transition: background-size .2s ease-in, color ease-in-out .1s;
@@ -17,7 +17,7 @@
 
     /* stylelint-disable-next-line order/order */
     &:focus-visible, &:hover {
-      .ods-link__link-text {
+      .ods-link__link__text {
         transition: background-size .2s ease-out;
         background-size: 100% 0.1em;
       }

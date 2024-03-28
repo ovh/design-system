@@ -1,8 +1,5 @@
-import { Meta, Markdown } from '@storybook/blocks';
-import OverviewTooltip from '@ovhcloud/ods-components/src/components/tooltip/documentation/overview-tooltip.mdx';
-import SpecificationsTooltip from '@ovhcloud/ods-components/src/components/tooltip/documentation/specifications/spec.md?raw';
-import StyleCustomizationTooltip from '@ovhcloud/ods-components/src/components/tooltip/documentation/style-customization-tooltip.mdx';
-import Usage from '@ovhcloud/ods-components/src/components/tooltip/documentation/usage-guidelines/usage.mdx';
+import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import SpecificationsTooltip from '@ovhcloud/ods-components/src/components/tooltip/documentation/spec.md?raw';
 import { Banner } from '../../Banner';
 import * as TooltipStories from './tooltip.stories';
 
@@ -12,7 +9,14 @@ import * as TooltipStories from './tooltip.stories';
 
 # Overview
 
-<OverviewTooltip />
+<Canvas of={ TooltipStories.Overview } sourceState='none' />
+
+<div>
+  <a href="#"
+     target="_blank">
+    ZEROHEIGHT - SKELETON DESIGN GUIDELINES &nbsp;
+  </a>
+</div>
 
 # API
 
@@ -20,8 +24,15 @@ import * as TooltipStories from './tooltip.stories';
 
 # Style customization
 
-<StyleCustomizationTooltip />
+You can update the tooltip content by directly updating the slot element.
+
+<Canvas of={ TooltipStories.CustomCSS } sourceState='shown' />
 
 # Examples
+## Default
 
-<Usage />
+<Canvas of={ TooltipStories.Default } sourceState='shown' />
+
+## With an arrow tip
+
+<Canvas of={ TooltipStories.ArrowTip } sourceState='shown' />

@@ -35,6 +35,10 @@ const storyParams = {
     category: 'General',
     defaultValue: false,
   },
+  isLoading: {
+    category: 'General',
+    defaultValue: false,
+  },
   minimumNumberOfCharacters: {
     category: 'General',
     defaultValue: 0,

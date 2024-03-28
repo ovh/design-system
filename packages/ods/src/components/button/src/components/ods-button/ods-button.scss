@@ -1,0 +1,176 @@
+@import '../../../../../style/button';
+
+.ods-button {
+  &__button {
+    $button: &;
+
+    position: relative;
+
+    &--default {
+      &#{$button}--critical {
+        &#{$button}--sm {
+          @include ods-button('critical', 'sm', 'default')
+        }
+
+        &#{$button}--md {
+          @include ods-button('critical', 'md', 'default')
+        }
+      }
+
+      &#{$button}--primary {
+        &#{$button}--sm {
+          @include ods-button('primary', 'sm', 'default')
+        }
+
+        &#{$button}--md {
+          @include ods-button('primary', 'md', 'default')
+        }
+      }
+    }
+
+    &--ghost {
+      &#{$button}--critical {
+        &#{$button}--sm {
+          @include ods-button('critical', 'sm', 'ghost')
+        }
+
+        &#{$button}--md {
+          @include ods-button('critical', 'md', 'ghost')
+        }
+      }
+
+      &#{$button}--primary {
+        &#{$button}--sm {
+          @include ods-button('primary', 'sm', 'ghost')
+        }
+
+        &#{$button}--md {
+          @include ods-button('primary', 'md', 'ghost')
+        }
+      }
+    }
+
+    &--outline {
+      &#{$button}--critical {
+        &#{$button}--sm {
+          @include ods-button('critical', 'sm', 'outline')
+        }
+
+        &#{$button}--md {
+          @include ods-button('critical', 'md', 'outline')
+        }
+      }
+
+      &#{$button}--primary {
+        &#{$button}--sm {
+          @include ods-button('primary', 'sm', 'outline')
+        }
+
+        &#{$button}--md {
+          @include ods-button('primary', 'md', 'outline')
+        }
+      }
+    }
+
+    &__spinner {
+      display: flex;
+      position: absolute;
+      inset: 0;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--ods-color-neutral-100);
+    }
+
+    // ---------------------------------------------------------------
+    // TODO remove all this when using fonts for icons
+    &__icon {
+      background-color: var(--ods-color-primary-000);
+    }
+
+    &#{$button}--critical {
+      &#{$button}--ghost {
+        &:not(:disabled) {
+          &:hover {
+            #{$button}__icon {
+              background-color: #800015; // TODO var(--ods-color-??);
+            }
+          }
+
+          &:active {
+            #{$button}__icon {
+              background-color: var(--ods-color-critical-800);
+            }
+          }
+        }
+
+        #{$button}__icon {
+          background-color: var(--ods-color-critical-500);
+        }
+      }
+
+      &#{$button}--outline {
+        &:not(:disabled) {
+          &:hover {
+            #{$button}__icon {
+              background-color: #800015; // TODO var(--ods-color-??);
+            }
+          }
+
+          &:active {
+            #{$button}__icon {
+              background-color: var(--ods-color-critical-800);
+            }
+          }
+        }
+
+        #{$button}__icon {
+          background-color: var(--ods-color-critical-500);
+        }
+      }
+    }
+
+    &#{$button}--primary {
+      &#{$button}--ghost {
+        &:not(:disabled) {
+          &:hover {
+            #{$button}__icon {
+              background-color: var(--ods-color-primary-700);
+            }
+          }
+
+          &:active {
+            #{$button}__icon {
+              background-color: var(--ods-color-primary-800);
+            }
+          }
+        }
+
+        #{$button}__icon {
+          background-color: var(--ods-color-primary-500);
+        }
+      }
+
+      &#{$button}--outline {
+        &:not(:disabled) {
+          &:hover {
+            #{$button}__icon {
+              background-color: var(--ods-color-primary-700);
+            }
+          }
+
+          &:active {
+            #{$button}__icon {
+              background-color: var(--ods-color-primary-800);
+            }
+          }
+        }
+
+        #{$button}__icon {
+          background-color: var(--ods-color-primary-500);
+        }
+      }
+    }
+    // TODO remove all this when using fonts for icons
+    // ---------------------------------------------------------------
+  }
+}

@@ -3845,6 +3845,7 @@ __metadata:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 "@ovhcloud/ods-cdk-dev@17.2.2, @ovhcloud/ods-cdk-dev@workspace:packages/cdk/dev":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-cdk-dev@workspace:packages/cdk/dev"
@@ -3876,6 +3877,14 @@ __metadata:
 "@ovhcloud/ods-common-scripts@17.2.2, @ovhcloud/ods-common-scripts@workspace:packages/common/scripts":
 =======
 =======
+=======
+"@ovhcloud/ods-component-button@workspace:packages/ods/src/components/button":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-button@workspace:packages/ods/src/components/button"
+  languageName: unknown
+  linkType: soft
+
+>>>>>>> ca6158dbb (feat(button): implement component)
 "@ovhcloud/ods-component-icon@workspace:packages/ods/src/components/icon":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-icon@workspace:packages/ods/src/components/icon"

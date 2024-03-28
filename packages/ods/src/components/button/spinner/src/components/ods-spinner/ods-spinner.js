@@ -8,7 +8,11 @@ export class OdsSpinner {
         this.size = ODS_SPINNER_SIZE.md;
     }
     render() {
+<<<<<<< HEAD
         return (h(Host, { key: 'e7dabce700e1e689f7e19fbb7e8f0aced2b494dd', class: "ods-spinner", role: "progressbar" }, h("div", { key: 'a880dd34e9c51a4c0741ae28634eeb2dc7323484', class: {
+=======
+        return (h(Host, { key: 'b1b6ba2ed3b5ca4abacc5e5c58079c272484457d', class: "ods-spinner", role: "progressbar" }, h("div", { key: '09f63651555964fcbb178c0a4ecf8c015fd3e9bc', class: {
+>>>>>>> ca6158dbb (feat(button): implement component)
                 'ods-spinner__container': true,
                 [`ods-spinner__container--${this.color}`]: !!this.color,
                 [`ods-spinner__container--${this.size}`]: !!this.size,

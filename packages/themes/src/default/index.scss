@@ -91,10 +91,19 @@ $ods-notifier-foreground-color-critical-focused: $ods-color-critical-800;
 /* stylelint-enable color-hex-length */
 
 :root {
+  --ods-border-radius-md: #{$ods-border-radius-md};
+  --ods-color-critical-100: #{$ods-color-critical-100};
+  --ods-color-critical-200: #{$ods-color-critical-200};
+  --ods-color-critical-500: #{$ods-color-critical-500};
+  --ods-color-critical-700: #{$ods-color-critical-700};
+  --ods-color-critical-800: #{$ods-color-critical-800};
   --ods-color-neutral-050: #{$ods-color-neutral-050};
   --ods-color-neutral-100: #{$ods-color-neutral-100};
+  --ods-color-neutral-300: #{$ods-color-neutral-300};
   --ods-color-neutral-500: #{$ods-color-neutral-500};
+  --ods-color-neutral-600: #{$ods-color-neutral-600};
   --ods-color-primary-000: #{$ods-color-primary-000};
+  --ods-color-primary-100: #{$ods-color-primary-100};
   --ods-color-primary-200: #{$ods-color-primary-200};
   --ods-color-primary-500: #{$ods-color-primary-500};
   --ods-color-primary-700: #{$ods-color-primary-700};

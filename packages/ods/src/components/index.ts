@@ -12,3 +12,4 @@ export * from './icon/src';
 export * from './link/src';
 export * from './skeleton/src';
 export * from './tooltip/src';
+export * from './button/src';

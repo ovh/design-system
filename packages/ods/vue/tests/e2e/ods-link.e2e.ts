@@ -18,6 +18,8 @@ describe('ods-link vue', () => {
 
     await elem?.click();
     await page.waitForNavigation();
+    const sleep = () => new Promise(resolve => setTimeout(resolve, 500));
+    await sleep();
 
     expect(page.url()).toBe('https://www.ovhcloud.com/fr/');
   });

@@ -13,6 +13,7 @@ const componentNames = [
   'link',
   'skeleton',
   'tooltip',
+  'button',
   //--generator-anchor--
 ];
 

@@ -3843,6 +3843,12 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@ovhcloud/ods-component-button@workspace:packages/ods/src/components/button":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-button@workspace:packages/ods/src/components/button"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-component-icon@workspace:packages/ods/src/components/icon":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-icon@workspace:packages/ods/src/components/icon"

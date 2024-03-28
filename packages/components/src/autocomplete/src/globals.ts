@@ -7,6 +7,7 @@
  */
 import '../../content-addon/src';
 import '../../icon/src';
-import '../../text/src';
-import '../../select/src';
 import '../../input/src';
+import '../../select/src';
+import '../../spinner/src';
+import '../../text/src';

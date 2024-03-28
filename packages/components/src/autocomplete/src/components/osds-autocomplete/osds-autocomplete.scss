@@ -39,6 +39,14 @@
   animation: appear 0.2s ease-in-out;
 }
 
+:host(.ods-autocomplete) .anchor .overlay .loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--ods-size-03);
+  height: var(--ods-size-09);
+}
+
 :host(.ods-autocomplete[opened]) {
   .anchor .overlay {
     display: flex;

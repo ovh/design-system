@@ -9,6 +9,7 @@ const DEFAULT_ATTRIBUTE: OdsAutocompleteAttribute = Object.freeze({
   error: false,
   icon: undefined,
   inline: false,
+  isLoading: false,
   minimumNumberOfCharacters: 0,
   name: undefined,
   opened: false,

@@ -34,6 +34,10 @@ interface OdsAutocompleteAttribute {
    */
   inline: boolean;
   /**
+   * Defines if the Autocomplete should display a loading spinner in the dropdown
+   */
+  isLoading: boolean;
+  /**
    * Defines the Autocomplete's minimum number of characters to open the dropdown
    */
   minimumNumberOfCharacters: number;

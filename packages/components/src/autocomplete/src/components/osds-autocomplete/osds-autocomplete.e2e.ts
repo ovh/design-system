@@ -6,7 +6,7 @@ import { newE2EPage } from '@stencil/core/testing';
 import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 
 describe('e2e:osds-autocomplete', () => {
-  const baseAttribute = { ariaLabel: null, ariaLabelledby: '', clearable: false, defaultValue: '', disabled: false, error: false, icon: undefined, inline: false, minimumNumberOfCharacters: 0, name: undefined, opened: false, placeholder: '', required: false, value: '' };
+  const baseAttribute = { ariaLabel: null, ariaLabelledby: '', clearable: false, defaultValue: '', disabled: false, error: false, icon: undefined, inline: false, isLoading: false, minimumNumberOfCharacters: 0, name: undefined, opened: false, placeholder: '', required: false, value: '' };
   let page: E2EPage;
   let el: E2EElement;
   let inputElement: E2EElement;
@@ -203,6 +203,14 @@ describe('e2e:osds-autocomplete', () => {
       await page.click('body');
       await page.waitForChanges();
       expect(await el.getProperty('opened')).toBe(false);
+    });
+  });
+
+  describe('isLoading', () => {
+    it('should display a loading spinner', async() => {
+      await setup({ attributes: { isLoading: true } });
+      const spinner = await page.find('osds-autocomplete >>> osds-spinner');
+      expect(spinner).not.toBeNull();
     });
   });
 

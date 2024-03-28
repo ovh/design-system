@@ -3,6 +3,8 @@ import puppeteer, { Browser, Page } from 'puppeteer';
 async function goToComponentPage(page, componentName) {
   await page.goto(`http://localhost:3000/#/${componentName}`);
   await page.waitForSelector(componentName);
+  // Small delay to prevent random test errors on slow render
+  await new Promise((resolve) => setTimeout(resolve, 100));
 }
 
 function setupBrowser() {

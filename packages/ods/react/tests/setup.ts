@@ -5,6 +5,8 @@ async function goToComponentPage(page, componentName) {
   await page.waitForSelector(`#${componentName}`);
   await page.click(`#${componentName}`);
   await page.waitForSelector(componentName);
+  // Small delay to prevent random test errors on slow render
+  await new Promise((resolve) => setTimeout(resolve, 100));
 }
 
 function setupBrowser() {

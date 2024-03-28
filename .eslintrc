@@ -90,7 +90,7 @@
     "no-nested-ternary": "error",
     "no-trailing-spaces": "error",
     "object-curly-spacing": ["error", "always"],
-    "operator-linebreak": ["error", "before"],
+    "operator-linebreak": ["error", "before", { "overrides": { "&&": "after" }}],
     "quotes": ["error", "single"],
     "semi": ["error", "always"],
     "sort-imports": [

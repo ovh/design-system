@@ -12,6 +12,7 @@ const componentNames = [
   'icon',
   'skeleton',
   'tooltip',
+  'button',
   //--generator-anchor--
 ];
 

@@ -6,6 +6,7 @@
     "color-named": "never",
     "hue-degree-notation": "number",
     "scss/at-rule-conditional-no-parentheses": null,
+    "scss/double-slash-comment-empty-line-before": null,
     "scss/no-global-function-names": null,
     "selector-class-pattern": [
       "^[a-z]([-_]{0,2}?[a-z0-9]+)*(__[a-z0-9]([-]?[a-z0-9]+)*)?(--[a-z0-9]([-]?[a-z0-9]+)*)?$",

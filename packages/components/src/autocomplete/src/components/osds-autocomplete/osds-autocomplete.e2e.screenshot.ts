@@ -7,7 +7,7 @@ import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 describe('e2e:osds-autocomplete', () => {
   let page: E2EPage;
   let el: E2EElement;
-  const baseAttribute = { ariaLabel: null, ariaLabelledby: '', clearable: false, defaultValue: '', disabled: false, error: false, icon: undefined, inline: false, minimumNumberOfCharacters: 0, name: undefined, opened: false, placeholder: '', required: false, value: '' };
+  const baseAttribute = { ariaLabel: null, ariaLabelledby: '', clearable: false, defaultValue: '', disabled: false, error: false, icon: undefined, inline: false, isLoading: false, minimumNumberOfCharacters: 0, name: undefined, opened: false, placeholder: '', required: false, value: '' };
 
   async function setup({ attributes = {}, html = '' }: { attributes?: Partial<OdsAutocompleteAttribute>, html?: string } = {}): Promise<void> {
     const stringAttributes = odsComponentAttributes2StringAttributes<OdsAutocompleteAttribute>({ ...baseAttribute, ...attributes }, DEFAULT_ATTRIBUTE);

@@ -22,7 +22,7 @@ global.MutationObserver = mutationObserverMock;
 OdsMockPropertyDescriptor(HTMLInputElement.prototype, 'validity', () => DEFAULT_VALIDITY_STATE);
 
 describe('spec:osds-autocomplete', () => {
-  const baseAttribute = { ariaLabel: null, ariaLabelledby: '', clearable: false, defaultValue: '', disabled: false, error: false, icon: undefined, inline: false, minimumNumberOfCharacters: 2, name: undefined, opened: false, placeholder: '', required: false, value: '' };
+  const baseAttribute = { ariaLabel: null, ariaLabelledby: '', clearable: false, defaultValue: '', disabled: false, error: false, icon: undefined, inline: false, isLoading: false, minimumNumberOfCharacters: 2, name: undefined, opened: false, placeholder: '', required: false, value: '' };
   let page: SpecPage;
   let instance: OsdsAutocomplete;
 
@@ -138,6 +138,17 @@ describe('spec:osds-autocomplete', () => {
         name: 'inline',
         newValue: true,
         setup: (value) => setup({ attributes: { ['inline']: value } }),
+        value: false,
+        ...config,
+      });
+    });
+
+    describe('isLoading', () => {
+      odsUnitTestAttribute<OdsAutocompleteAttribute, 'isLoading'>({
+        defaultValue: DEFAULT_ATTRIBUTE.isLoading,
+        name: 'isLoading',
+        newValue: true,
+        setup: (value) => setup({ attributes: { ['isLoading']: value } }),
         value: false,
         ...config,
       });

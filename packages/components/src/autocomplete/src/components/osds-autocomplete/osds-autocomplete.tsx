@@ -71,6 +71,9 @@ export class OsdsAutocomplete implements OdsAutocompleteAttribute, OdsAutocomple
   /** @see OdsAutocompleteAttribute.inline */
   @Prop({ reflect: true }) inline: boolean = DEFAULT_ATTRIBUTE.inline;
 
+  /** @see OdsAutocompleteAttribute.isLoading */
+  @Prop({ mutable: true, reflect: true }) isLoading: boolean = DEFAULT_ATTRIBUTE.isLoading;
+
   /** @see OdsAutocompleteAttribute.minimumNumberOfCharacters */
   @Prop({ reflect: true }) minimumNumberOfCharacters: number = DEFAULT_ATTRIBUTE.minimumNumberOfCharacters;
 
@@ -355,7 +358,12 @@ export class OsdsAutocomplete implements OdsAutocompleteAttribute, OdsAutocomple
                 this.syncReferences();
               }
             }}>
-            <slot onSlotchange={(): Promise<void> => this.handleSlotChange()}></slot>
+            {this.isLoading
+              ? <div class="loading">
+                <osds-spinner inline size='sm'/>
+              </div>
+              : <slot onSlotchange={(): Promise<void> => this.handleSlotChange()}></slot>
+            }
           </ocdk-surface>
         </div>
       </Host>

@@ -18,6 +18,7 @@ const componentNames = [
   'badge',
   'table',
   'medium',
+  'quantity',
   'input',
   'textarea',
   'breadcrumb',

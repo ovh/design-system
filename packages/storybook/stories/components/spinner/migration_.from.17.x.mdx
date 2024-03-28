@@ -1,5 +1,4 @@
 import { Meta } from '@storybook/blocks';
-import Migration from '@ovhcloud/ods-components/src/components/spinner/documentation/migration.from.17.x.mdx';
 import * as SpinnerStories from './spinner.stories';
 
 <Meta of={SpinnerStories} name='Migration From 17.x' />
@@ -8,4 +7,56 @@ import * as SpinnerStories from './spinner.stories';
 
 ***
 
-<Migration />
+## Attributes changes
+
+`color` <img src="https://img.shields.io/badge/new-008000" />
+
+New attribute.
+
+Provides a list of colors using the currently applied theme.
+
+`contrasted` <img src="https://img.shields.io/badge/removed-FF0000" />
+
+Has been removed.
+
+You can use the new `white` color to obtain the same rendering.
+
+`inline` <img src="https://img.shields.io/badge/removed-FF0000" />
+
+Has been removed.
+
+Spinner is now `inline-block` by default.
+You can add some style directly on the component if you want to override that.
+
+`mode` <img src="https://img.shields.io/badge/removed-FF0000" />
+
+Has been removed.
+
+There was only was mode value, it is now the default rendering.
+
+`size` <img src="https://img.shields.io/badge/updated-00FFFF" />
+
+Has been updated.
+
+Provides a list of pre-made spinner sizer, here is the comparison of previous size and new ones:
+
+**sm**
+
+Changed from 20px to 24px.
+
+**md**
+
+Changed from 40px to 48px.
+
+**lg**
+
+Changed from 140px to 80px.
+
+## Migration examples
+
+Contrasted spinner:
+```html
+<ods-spinner inline contrasted></ods-spinner>
+<!-- is now -->
+<ods-spinner color="white"></ods-spinner>
+```

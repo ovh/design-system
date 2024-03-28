@@ -14,13 +14,13 @@ export default meta;
 
 export const Demo: StoryObj = {
   render: (arg) => html`
-    <ods-skeleton class="my-skeleton">
-    </ods-skeleton>
-    <style>
-      .my-skeleton::part(skeleton) {
-        ${arg.customCss}
-      }
-    </style>
+<ods-skeleton class="my-skeleton">
+</ods-skeleton>
+<style>
+  .my-skeleton::part(skeleton) {
+    ${arg.customCss}
+  }
+</style>
   `,
   argTypes: orderControls({
     customCss: {
@@ -34,4 +34,24 @@ export const Demo: StoryObj = {
     }
   }),
   args: {},
+};
+
+export const Default: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-skeleton></ods-skeleton>
+  `,
+};
+
+export const CustomCSS: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+    <ods-skeleton class="my-skeleton">
+    </ods-skeleton>
+    <style>
+      .my-skeleton::part(skeleton) {
+        width: 50%;
+      }
+    </style>
+  `,
 };

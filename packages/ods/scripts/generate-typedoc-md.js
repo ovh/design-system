@@ -71,7 +71,7 @@ function convertJsonToMarkdown(jsonItems) {
 function createSpecMd(component = '') {
   const typedocJson = require(path.resolve(typedocBasePath, component, 'typedoc.json'));
   // TODO test for prefixed project (like -ovh)
-  const dir = path.resolve('documentation', 'specifications', component);
+  const dir = path.resolve('documentation');
 
   fs.mkdirSync(dir, { recursive: true });
 

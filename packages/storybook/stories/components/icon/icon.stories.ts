@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/web-components';
 import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/ods-icon';
 import { ODS_ICON_NAME, ODS_ICON_NAMES } from '@ovhcloud/ods-components';
 import { CONTROL_CATEGORY, orderControls } from '../../control';
+import { html } from 'lit-html';
 
 defineCustomElement();
 
@@ -39,4 +40,12 @@ export const Demo: StoryObj = {
 
 export const All: StoryObj = {
   args: {},
+};
+
+export const Name: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-icon name="arrow-left"></ods-icon>
+<ods-icon name="warning"></ods-icon>
+  `,
 };

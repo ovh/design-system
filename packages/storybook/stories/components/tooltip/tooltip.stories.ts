@@ -1,31 +1,34 @@
+import type { Meta, StoryObj } from '@storybook/web-components';
 import { ODS_TOOLTIP_POSITION, ODS_TOOLTIP_POSITIONS } from '@ovhcloud/ods-components';
 import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/ods-tooltip';
-import { type Meta, StoryObj } from '@storybook/web-components';
-// import { html } from 'lit-html';
-// import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
-import { CONTROL_CATEGORY, orderControls } from '../../control.ts';
+import { html } from 'lit-html';
+import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
+import { CONTROL_CATEGORY, orderControls } from '../../control';
 
 defineCustomElement();
 
 const meta: Meta = {
   title: 'ODS Components/User feedback/Tooltip',
   component: 'ods-tooltip',
-  // decorators: [(story) => html`<div style="height: 300px; display: inline-flex">${story()}</div>`],
+  parameters: {
+    layout: 'centered',
+  },
+  decorators: [(story) => html`<div style="padding-top: 50px; display: inline-flex;">${story()}</div>`],
 };
 
 export default meta;
 
 export const Demo: StoryObj = {
-  // render: (args) => html`
-  //   <button id="trigger">
-  //     Hover me
-  //   </button>
-  //   <ods-tooltip position="${args.position}"
-  //                trigger-id="trigger"
-  //                with-arrow="${args.withArrow}">
-  //     ${unsafeHTML(args.content)}
-  //   </ods-tooltip>
-  // `,
+  render: (args) => html`
+<button id="trigger-1">
+  Hover me
+</button>
+<ods-tooltip position="${args.position}"
+             trigger-id="trigger-1"
+             with-arrow="${args.withArrow}">
+  ${unsafeHTML(args.content)}
+</ods-tooltip>
+  `,
   argTypes: orderControls ({
     content: {
       table: {
@@ -53,7 +56,65 @@ export const Demo: StoryObj = {
   }),
   args: {
     content: 'Tooltip content',
-    position: ODS_TOOLTIP_POSITION.top,
+    position: ODS_TOOLTIP_POSITION.bottom,
     withArrow: true,
   },
+};
+
+export const Overview: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<div id="trigger-2">
+  Hover me
+</div>
+<ods-tooltip trigger-id="trigger-2">
+  Tooltip content
+</ods-tooltip>
+  `,
+};
+
+export const Default: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<div id="trigger-3">
+  Hover me
+</div>
+<ods-tooltip trigger-id="trigger-3">
+  Tooltip content
+</ods-tooltip>
+  `,
+};
+
+export const ArrowTip: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<div id="trigger-4">
+  Hover me
+</div>
+<ods-tooltip trigger-id="trigger-4"
+             with-arrow>
+  Tooltip content
+</ods-tooltip>
+  `,
+};
+
+export const CustomCSS: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<div id="trigger-5">
+  Hover me
+</div>
+<ods-tooltip position="top-start"
+             trigger-id="trigger-5"
+             with-arrow>
+  <p class="custom-tooltip">
+    Top-start tooltip
+  </p>
+</ods-tooltip>
+<style>
+  .custom-tooltip {
+    font-style: italic;
+  }
+</style>
+  `,
 };

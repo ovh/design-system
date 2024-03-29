@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 ## OdsInput
 ### Properties
 | Property | Type | Required | Default value |
@@ -46,6 +47,8 @@
 ### Enums
 #### ODS_INPUT_TYPE
 =======
+=======
+>>>>>>> 47e0359a4 (refactor(input): v18 first step)
 ## Properties
 ### ariaLabel
 
@@ -223,12 +226,16 @@
 `EventEmitter`<`OdsInputEventValueChange`>
 ## Enums
 ### Enumeration: ODS_INPUT_TYPE
+<<<<<<< HEAD
 >>>>>>> 564af4416 (refactor(input): v18 first step)
+=======
+>>>>>>> 47e0359a4 (refactor(input): v18 first step)
 
 • **email** = `"email"`
 
 • **number** = `"number"`
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 • **password** = `"password"`
 
@@ -242,5 +249,9 @@
 • **text** = `"text"`
 
 >>>>>>> 564af4416 (refactor(input): v18 first step)
+=======
+• **text** = `"text"`
+
+>>>>>>> 47e0359a4 (refactor(input): v18 first step)
 • **url** = `"url"`
 

@@ -5,3 +5,5 @@
  * ex:
  *   import '../../text/src';
  */
+import '../../icon/src';
+import '../../spinner/src';

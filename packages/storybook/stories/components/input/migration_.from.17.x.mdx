@@ -1,0 +1,219 @@
+import { Meta } from '@storybook/blocks';
+import * as SkeletonStories from './input.stories';
+
+<Meta of={SkeletonStories} name='Migration From 17.x' />
+
+# Skeleton - migrate from v17 to v18
+----
+
+## Attributes changes
+
+`clearable` <img src="https://img.shields.io/badge/updated-00FFFF" />
+
+Has been updated.
+
+You can use the new `isClearable` attribute to obtain the same behavior.
+
+`disabled` <img src="https://img.shields.io/badge/updated-00FFFF" />
+
+Has been updated.
+
+You can use the new `isDisabled` attribute to obtain the same behavior.
+
+`loading` <img src="https://img.shields.io/badge/updated-00FFFF" />
+
+Has been updated.
+
+You can use the new `isLoading` attribute to obtain the same behavior.
+
+`masked` <img src="https://img.shields.io/badge/updated-00FFFF" />
+
+Has been updated.
+
+You can use the new `isMasked` attribute to obtain the same behavior.
+
+`error` <img src="https://img.shields.io/badge/updated-00FFFF" />
+
+Has been updated.
+
+You can use the new `hasError` attribute to obtain the same behavior.
+
+`readonly` <img src="https://img.shields.io/badge/updated-00FFFF" />
+
+Has been updated.
+
+You can use the new `isReadonly` attribute to obtain the same behavior.
+
+`required` <img src="https://img.shields.io/badge/updated-00FFFF" />
+
+Has been updated.
+
+You can use the new `isRequired` attribute to obtain the same behavior.
+
+`forbidden-values` <img src="https://img.shields.io/badge/removed-FF0000" />
+
+Has been removed.
+
+You can replace it a regax on the `pattern` attributes.
+
+`inline` <img src="https://img.shields.io/badge/removed-FF0000" />
+
+Has been removed.
+
+Input is now `inline-block` by default.
+You can add some style directly on the component if you want to override that.
+
+`label` <img src="https://img.shields.io/badge/removed-FF0000" />
+
+Has been removed.
+
+For add a label on the input wrapped it with the component `form-field`.
+
+`prefix-value` <img src="https://img.shields.io/badge/removed-FF0000" />
+
+Have been removed.
+
+No need anymore. Can't be migrate.
+
+`maxlength` <img src="https://img.shields.io/badge/new-008000" />
+
+New attribute (optional).
+
+Defines the maximum string length that the user can enter into the input.
+
+`minlength` <img src="https://img.shields.io/badge/new-008000" />
+
+New attribute (optional).
+
+Defines the minimum string length that the user can enter into the input.
+
+## Migration examples
+
+
+Clearable input:
+```html
+<osds-input clearable>
+  My button
+</osds-input>
+
+<!-- is now -->
+
+<ods-input is-clearable>
+</ods-input>
+```
+
+Disabled input:
+```html
+<osds-input disabled>
+  My button
+</osds-input>
+
+<!-- is now -->
+
+<ods-input is-disabled>
+</ods-input>
+```
+
+Error input:
+```html
+<osds-input error>
+  My button
+</osds-input>
+
+<!-- is now -->
+
+<ods-input has-error>
+</ods-input>
+```
+
+Loading input:
+```html
+<osds-input loading>
+  My button
+</osds-input>
+
+<!-- is now -->
+
+<ods-input is-loading>
+</ods-input>
+```
+
+Masked input:
+```html
+<osds-input masked>
+  My button
+</osds-input>
+
+<!-- is now -->
+
+<ods-input is-masked>
+</ods-input>
+```
+
+Readonly input:
+```html
+<osds-input readonly>
+  My button
+</osds-input>
+
+<!-- is now -->
+
+<ods-input is-readonly>
+</ods-input>
+```
+
+Required input:
+```html
+<osds-input required>
+  My button
+</osds-input>
+
+<!-- is now -->
+
+<ods-input is-required>
+</ods-input>
+```
+
+Forbidden values input:
+```html
+<osds-input forbidden-values="['1', '2']">
+  My button
+</osds-input>
+
+<!-- is now -->
+
+<ods-input pattern="[^12]+">
+</ods-input>
+```
+
+Inline input:
+```html
+<osds-input inline>
+  My button
+</osds-input>
+
+<!-- is now -->
+
+<ods-input class="my-input__inline">
+</ods-input>
+<style>
+  .my-input__inline ::part(input) {
+    width: 100px;
+    display: inline-block;
+  }
+</style>
+```
+
+Label input:
+```html
+<osds-input label="My label">
+  My button
+</osds-input>
+
+<!-- is now -->
+<ods-form-field>
+  <ods-text slot='label' color='text'>My label</ods-text>
+  <ods-input type='text' value='Input'></ods-input>
+</ods-form-field>
+```
+

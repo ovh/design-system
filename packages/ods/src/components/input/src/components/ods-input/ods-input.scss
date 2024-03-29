@@ -1,7 +1,68 @@
+@use '../../../../../style/focus';
+@import '../../../../../style/input';
+
 :host(.ods-input) {
-  // Style to apply directly to the Host element
+  position: relative;
 }
 
 .ods-input {
-  // BEM elements and modifiers
+  &__button {
+    display: inline-flex;
+    position: absolute;
+    top: 0;
+    right: var(--ods-spacing-4);
+    border: none;
+    background: none;
+    color: var(--ods-color-primary-500);
+
+    &:focus-visible {
+      @include focus.ods-focus();
+    }
+
+    &:not(:first-of-type) {
+      right: 30px;
+    }
+  }
+
+  &__input {
+    $input: &;
+
+    @include ods-input;
+
+    &:not(#{$input}--error) {
+      &:focus {
+        border-color: var(--ods-form-element-border-color-focused);
+      }
+
+      &:hover {
+        border-color: var(--ods-form-element-border-color-hover);
+      }
+    }
+
+    &--disabled {
+      background: var(--ods-color-neutral-100);
+      cursor: not-allowed;
+      user-select: none;
+
+      ~ .ods-input__button {
+        cursor: not-allowed;
+      }
+    }
+
+    &--error {
+      border-color: var(--ods-form-element-border-color-critical);
+    }
+  }
+
+  &__spinner {
+    position: absolute;
+    top: 0;
+    right: var(--ods-spacing-4);
+    padding: 0 var(--ods-spacing-4);
+
+    &::part(spinner) {
+      width: var(--ods-spacing-16);
+      height: var(--ods-spacing-16);
+    }
+  }
 }

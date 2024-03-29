@@ -3861,6 +3861,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-component-input@workspace:packages/ods/src/components/input":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-input@workspace:packages/ods/src/components/input"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-component-link@workspace:packages/ods/src/components/link":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-link@workspace:packages/ods/src/components/link"
@@ -3944,7 +3950,7 @@ __metadata:
     "@stencil/core": 4.12.2
     "@stencil/react-output-target": 0.5.3
     "@stencil/sass": 3.0.9
-    "@stencil/vue-output-target": 0.8.7
+    "@stencil/vue-output-target": 0.8.8
     "@types/jest": 29.5.12
     "@types/react": 18.2.56
     "@types/react-dom": 18.2.19
@@ -4245,12 +4251,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@stencil/vue-output-target@npm:0.8.7":
-  version: 0.8.7
-  resolution: "@stencil/vue-output-target@npm:0.8.7"
+"@stencil/vue-output-target@npm:0.8.8":
+  version: 0.8.8
+  resolution: "@stencil/vue-output-target@npm:0.8.8"
   peerDependencies:
     "@stencil/core": ">=2.0.0 || >=3 || >= 4.0.0-beta.0 || >= 4.0.0"
-  checksum: 3cdbdadea924b0ed5f5e4c20771666ee0b5f0d8df1859289ef851ebca38e5be43efd4ccf6464fca2f23c82fd7204e9accfef9ceade51e9154005e0cdcc803484
+  checksum: bcee6b0603d13d305be458205b3774213064e01a691c7fd3616ccf810b6fefa4d22be1324410b359e298a4eec15859fce03b44a0c09ece4f545c4b56a0ef9115
   languageName: node
   linkType: hard
 

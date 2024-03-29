@@ -15,9 +15,38 @@ describe('ods-input react', () => {
 
   it('render the component correctly', async () => {
     const elem = await page.$('ods-input');
+    const boundingBox = await elem?.boundingBox();
 
-    // TODO add relevant tests
+    expect(boundingBox?.height).toBeGreaterThan(0);
+    expect(boundingBox?.width).toBeGreaterThan(0);
+  });
 
-    expect(false).toBe(true);
+  it('trigger the odsValueChange handler on type', async () => {
+    const elem = await page.$('ods-input:not([is-disabled]) >>> input');
+    let consoleLog = '';
+    page.on('console', (consoleObj) => {
+      consoleLog = consoleObj.text();
+    });
+
+    await elem?.type('a');
+    // Small delay to ensure page console event has been resolved
+    await new Promise((resolve) => setTimeout(resolve, 100));
+
+    expect(consoleLog).toBe('React input odsValueChange');
+  });
+
+  it('does not trigger the odsValueChange handler on type if disabled', async () => {
+    const elem = await page.$('ods-input[is-disabled] >>> input');
+    console.log('elem', elem)
+    let consoleLog = '';
+    page.on('console', (consoleObj) => {
+      consoleLog = consoleObj.text();
+    });
+
+    await elem?.type('a');
+    // Small delay to ensure page console event has been resolved
+    await new Promise((resolve) => setTimeout(resolve, 100));
+
+    expect(consoleLog).toBe('');
   });
 });

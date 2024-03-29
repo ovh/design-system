@@ -30,7 +30,7 @@
     "@stencil-community/postcss": "2.2.0",
     "@stencil/react-output-target": "0.5.3",
     "@stencil/sass": "3.0.9",
-    "@stencil/vue-output-target": "0.8.7",
+    "@stencil/vue-output-target": "0.8.8",
     "@types/jest": "29.5.12",
     "@types/react": "18.2.56",
     "@types/react-dom": "18.2.19",

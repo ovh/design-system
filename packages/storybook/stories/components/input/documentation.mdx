@@ -1,0 +1,57 @@
+import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import SpecificationsInput from '@ovhcloud/ods-components/src/components/input/documentation/spec.md?raw';
+import { Banner } from '../../Banner';
+import * as InputStories from './input.stories';
+
+<Meta of={ InputStories } name='Documentation' />
+
+<Banner of={ InputStories } />
+
+# Overview
+
+Input component is an input field where users can type into:
+
+<Canvas of={InputStories.Default} sourceState='none' />
+
+<div>
+  <osds-button color="primary" variant="ghost" href="#" target="_blank">
+    ZEROHEIGHT - INPUT DESIGN GUIDELINES &nbsp;
+    <osds-text name="external-link" color="primary" size="xs"></osds-text>
+  </osds-button>
+</div>
+
+# API
+
+<Markdown> { SpecificationsInput } </Markdown>
+
+# Style customization
+
+You can add your own style on the text element using the part `input`.
+
+<Canvas of={ InputStories.CustomCSS } sourceState='shown'/>
+
+# Examples
+
+## Default
+
+<Canvas of={ InputStories.Default } sourceState='shown' />
+
+## Clearable
+
+<Canvas of={ InputStories.Clearable } sourceState='shown' />
+
+## Disabled
+
+<Canvas of={ InputStories.Disabled } sourceState='shown' />
+
+## Error
+
+<Canvas of={ InputStories.Error } sourceState='shown' />
+
+## Loading
+
+<Canvas of={ InputStories.Loading } sourceState='shown' />
+
+## Masked
+
+<Canvas of={ InputStories.Masked } sourceState='shown' />

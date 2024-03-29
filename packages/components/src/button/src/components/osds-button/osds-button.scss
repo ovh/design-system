@@ -1,49 +1,12 @@
-@import 'styles/osds-button.mixins';
-@import 'styles/osds-button.color';
-@import 'styles/osds-button.size';
-@import 'styles/osds-button.typography';
+@import '~@ovhcloud/ods-common-theming/color/ods-component-color';
 @import '~@ovhcloud/ods-common-theming/color/ods-theming-color';
 @import '~@ovhcloud/ods-common-theming/reset/ods-theming-reset.button';
+@import '~@ovhcloud/ods-common-theming/size/ods-component-size';
 @import '~@ovhcloud/ods-common-theming/ods-theme';
 
 // CSS for the component but not for theming
 
 :host {
-  @include osds-button-on-main-element {
-    @include osds-button-on-text-container {
-      display: inline-grid;
-      position: relative;
-      grid-template: "start center end" / auto 1fr auto;
-      grid-auto-rows: 1fr;
-      grid-auto-columns: 1fr;
-      align-items: center;
-      justify-content: center;
-      max-width: inherit;
-      height: 100%;
-    }
-
-    box-sizing: border-box;
-    display: inherit;
-    transition: all ease-in-out 100ms;
-    opacity: 1;
-    margin: 0;
-    border-style: solid;
-    border-color: transparent;
-    box-shadow: none;
-    cursor: pointer;
-    width: var(--ods-button-width, auto);
-    overflow: hidden;
-    text-decoration: none;
-  }
-
-  @include osds-button-on-main-element {
-    width: 100%;
-  }
-
-  @include osds-button-on-text-container {
-    width: inherit;
-  }
-
   display: flex;
   margin: calc(var(--ods-size-inset-n-02) + var(--ods-size-inset-n-02));
   outline: none;
@@ -52,8 +15,62 @@
   overflow: hidden;
 }
 
-:host([text-align]) {
-  @include osds-button-on-text-container {
+.button {
+  box-sizing: border-box;
+  display: inherit;
+  transition: all ease-in-out 100ms;
+  opacity: 1;
+  margin: 0;
+  border-width: var(--ods-size-inset-02);
+  border-style: solid;
+  border-radius: var(--ods-size-border-radius-02);
+  border-color: transparent;
+  box-shadow: none;
+  cursor: pointer;
+  padding: 0 var(--ods-size-squish-06-x);
+  width: 100%;
+  height: 3.25rem;
+  overflow: hidden;
+  text-decoration: none;
+  line-height: var(--ods-typo-size-04);
+  font-family: var(--ods-font-family);
+  font-size: var(--ods-typo-size-02);
+  font-weight: var(--ods-typo-weight-semibold);
+
+  .button__text-container {
+    display: inline-grid;
+    position: relative;
+    grid-template: "start center end" / auto 1fr auto;
+    grid-auto-rows: 1fr;
+    grid-auto-columns: 1fr;
+    align-items: center;
+    justify-content: center;
+    width: inherit;
+    max-width: inherit;
+    height: 100%;
+  }
+}
+
+/** Circle **/
+
+.button__circle {
+  border-radius: 999em;
+  padding: var(--ods-size-03);
+  height: min-content;
+  aspect-ratio: 1;
+}
+
+/** Inline **/
+
+.button__inline {
+  display: inline-flex;
+  width: var(--width);
+}
+
+/** Text alignments **/
+
+.button[class^="button__text-align-"] {
+  .button__text-container {
     & span:not([slot]) {
       --ods-icon-vertical-align: bottom;
 
@@ -76,54 +93,58 @@
   }
 }
 
-:host([text-align="center"]) {
-  @include osds-button-on-text-container {
-    & span:not([slot]) {
-      text-align: center;
-    }
-  }
-}
-
-:host([text-align="start"]) {
-  @include osds-button-on-text-container {
+.button__text-align-start {
+  .button__text-container {
     & span:not([slot]) {
       text-align: start;
     }
   }
 }
 
-:host([text-align="end"]) {
-  @include osds-button-on-text-container {
+.button__text-align-center {
+  .button__text-container {
+    & span:not([slot]) {
+      text-align: center;
+    }
+  }
+}
+
+.button__text-align-end {
+  .button__text-container {
     & span:not([slot]) {
       text-align: end;
     }
   }
 }
 
-:not([disabled]):focus-visible {
-  @include osds-button-on-selected-host {
-    outline-offset: var(--ods-size-inset-02);
-    outline-width: var(--ods-size-inset-02);
-    outline-style: dotted;
-  }
+/** States **/
+
+/*** Disabled ***/
+
+.button__disabled {
+  opacity: .5;
+  cursor: not-allowed;
 }
 
-:active {
-  @include osds-button-on-selected-host {
-    transition: background-color ease-in-out 0s;
-  }
+.button:active {
+  transition: background-color ease-in-out 0s;
 }
 
-:host([disabled]) {
-  @include osds-button-on-main-element {
-    cursor: not-allowed;
-  }
+.button:not(.button__disabled):focus-visible {
+  outline-offset: var(--ods-size-inset-02);
+  outline-width: var(--ods-size-inset-02);
+  outline-style: dotted;
 }
 
-:host([inline]) {
-  display: inline-flex;
-  width: var(--width);
+.button:not(.button__disabled):focus {
+  outline-color: var(--ods-color-gray-500);
 }
+
+.button__contrasted:not(.button__disabled):focus {
+  outline-color: var(--ods-color-gray-000);
+}
+
+/** Slots **/
 
 slot {
   display: inline;
@@ -159,9 +180,216 @@ slot {
   display: none;
 }
 
-// apply the theme template for the component
-@include ods-theme-component {
-  @include osds-button-theme-color;
-  @include osds-button-theme-size;
-  @include osds-button-theme-typography;
+/** sizes **/
+
+/*** typography properties ***/
+
+@each $size in ('md','sm', 'lg') {
+  .button[class^='button__size-#{$size}'] {
+    .button__text-container {
+      $typography-properties: ods-get-typography-properties(button, '100');
+
+      line-height: ods-get-typography-property($typography-properties, line-height);
+      letter-spacing: ods-get-typography-property($typography-properties, letter-spacing);
+      font-family: ods-get-typography-property($typography-properties, font-family);
+      font-size: ods-get-typography-property($typography-properties, font-size);
+      font-weight: ods-get-typography-property($typography-properties, font-weight);
+      font-style: ods-get-typography-property($typography-properties, font-style);
+    }
+  }
+}
+
+$sizes: (
+  "01": 0.0625, // 1px
+  "02": 0.125,  // 2px
+  "03": 0.25,   // 4px
+  "04": 0.5,    // 8px
+  "05": 0.75,   // 12px
+  "06": 1,      // 16px
+  "07": 1.25,   // 20px
+  "08": 1.5,    // 24px
+  "09": 2,      // 32px
+  "10": 2.5,    // 40px
+  "11": 3       // 48px
+);
+
+@each $size in ('md', 'sm', 'lg') {
+  .button[class^='button__size-#{$size}'] {
+    color: red;
+    border-width: ods-get-size-property($sizes, border-width);
+    border-radius: var(--ods-size-button-border-radius, ods-get-size-property($sizes, border-radius));
+    padding: var(--ods-size-button-padding-y, ods-get-size-property($sizes, padding-y)) var(--ods-size-button-padding-x, ods-get-size-property($sizes, padding-x));
+    height: var(--ods-size-button-height, ods-get-size-property($sizes, height));
+    font-size: ods-get-size-property($sizes, font-size);
+  }
+}
+
+/** Variants **/
+
+/*** No variant specified: Flat colors ***/
+.button:not([class^="button__variant-"]),
+/*** Specified flat variant colors ***/
+.button__variant-flat,
+/*** Default variant: flat colors ***/
+.button__variant-default {
+  @include ods-and-all-hue-foreach-theme-color((
+    color: '500-contrasted',
+    background-color: '500'
+  )) using($colors) {
+    background-color: map_get($colors, background-color);
+    color: map_get($colors, color);
+  }
+
+  &:not(.button__disabled) {
+    @include ods-and-one-hue-foreach-theme-color('700') using($color) {
+      &:hover, &:focus {
+        background-color: $color;
+      }
+    }
+
+    &.button__contrasted {
+      @include ods-and-one-hue-foreach-theme-color('100') using($color) {
+        &:hover, &:focus {
+          background-color: $color;
+        }
+      }
+    }
+  }
+
+  &:not(.button__disabled):active {
+    @include ods-and-one-hue-foreach-theme-color('800') using($color) {
+      background-color: $color;
+    }
+
+    &.button__contrasted {
+      @include ods-and-one-hue-foreach-theme-color('200') using($color) {
+        background-color: $color;
+      }
+    }
+  }
+
+  &.button__contrasted {
+    @include ods-and-all-hue-foreach-theme-color((
+      color: '500',
+      background-color: '500-contrasted'
+    )) using($colors) {
+      background-color: map_get($colors, background-color);
+      color: map_get($colors, color);
+    }
+  }
+}
+
+/*** Stroked variant ***/
+
+.button__variant-stroked {
+  @include ods-and-all-hue-foreach-theme-color((
+    background-color: '500-contrasted',
+    color: '500',
+    border-color: '500'
+  )) using($colors) {
+    border-color: map_get($colors, border-color);
+    background-color: map_get($colors, background-color);
+    color: map_get($colors, color);
+  }
+
+  background-color: initial;
+
+  &:not(.button__disabled) {
+    @include ods-and-one-hue-foreach-theme-color('100') using($color) {
+      background-color: $color;
+    }
+
+    &.button__contrasted {
+      @include ods-and-all-hue-foreach-theme-color((
+        background-color: (tone: '100', alpha: '.2'),
+        border-color: '100'
+      )) using($colors) {
+        &:hover, &:focus {
+          border-color: map_get($colors, border-color);
+
+          /* TODO Add 20% opacity to the bg-color hsla(193, 100%, 87%, 0.2) */
+          background-color: map_get($colors, background-color);
+        }
+      }
+    }
+  }
+
+  &:not(.button__disabled):active {
+    @include ods-and-one-hue-foreach-theme-color('200') using($color) {
+      background-color: $color;
+    }
+
+    &.button__contrasted {
+      @include ods-and-all-hue-foreach-theme-color((
+        background-color: (tone: '100', alpha: '.5'),
+        border-color: '100'
+      )) using($colors) {
+        border-color: map_get($colors, border-color);
+        background-color: map_get($colors, background-color);
+      }
+    }
+  }
+
+  &.button__contrasted {
+    @include ods-and-all-hue-foreach-theme-color((
+      color: '500-contrasted',
+      border-color: '500-contrasted'
+    )) using($colors) {
+      border-color: map_get($colors, border-color);
+      background-color: transparent;
+      color: map_get($colors, color);
+    }
+  }
+}
+
+/*** Ghost variant ***/
+
+.button__variant-ghost {
+  @include ods-and-all-hue-foreach-theme-color((
+    color: '500',
+  )) using($colors) {
+    color: map_get($colors, color);
+  }
+
+  background-color: initial;
+
+  &:not(.button__disabled) {
+    @include ods-and-one-hue-foreach-theme-color('100') using($color) {
+      &:hover, &:focus {
+        background-color: $color;
+      }
+    }
+
+    &.button__contrasted {
+      @include ods-and-all-hue-foreach-theme-color((
+        background-color: (tone: '100', alpha: '.2'),
+      )) using($colors) {
+        &:hover, &:focus {
+          background-color: map_get($colors, background-color);
+        }
+      }
+    }
+  }
+
+  &:not(.button__disabled):active {
+    @include ods-and-one-hue-foreach-theme-color('200') using($color) {
+      background-color: $color;
+    }
+
+    &.button__contrasted {
+      @include ods-and-all-hue-foreach-theme-color((
+        background-color: (tone: '100', alpha: '.5'),
+      )) using($colors) {
+        background-color: map_get($colors, background-color);
+      }
+    }
+  }
+
+  &.button__contrasted {
+    @include ods-and-all-hue-foreach-theme-color((
+      color: '500-contrasted',
+    )) using($colors) {
+      color: map_get($colors, color);
+    }
+  }
 }

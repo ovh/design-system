@@ -5,140 +5,195 @@
   <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0' />
   <title>Dev osds-button</title>
 
-  <script type="module">
-    !window.ods && (window.ods = {config: {logging: {active:true}}});
+  <script type='module'>
+    !window.ods && (window.ods = { config: { logging: { active: true } } });
   </script>
 
   <script type='module' src='/build/osds-button.esm.js'></script>
   <script nomodule src='/build/osds-button.js'></script>
-<!--  <script type="text/javascript">ods.instance().logging(true)</script>-->
-  <link rel="stylesheet" href="/build/osds-button.css">
+  <!--  <script type="text/javascript">ods.instance().logging(true)</script>-->
+  <link rel='stylesheet' href='/build/osds-button.css'>
+  <style>
+    body {
+      display: flex;
+      flex-flow: column wrap;
+      font-family: var(--ods-font-family), sans-serif;
+      gap: 1em 1.5em;
+      min-height: 100vh;
+      place-items: center;
+    }
+
+    * > div {
+      align-items: center;
+      display: flex;
+      flex-flow: column wrap;
+      gap: 0.5em;
+    }
+  </style>
 </head>
 <body>
 
-<p>Size</p>
-<osds-button size='sm'>
-  Small
-  <osds-icon
-    name="plus"
-    size="sm"
-    color="primary"
-  />
-</osds-button>
-<osds-button>Default</osds-button>
-<osds-button size='lg'>Large</osds-button>
+<div>
 
-<p>Vertical Align</p>
-<osds-button>
-  <span slot="start"><osds-icon name="close" contrasted="" size="sm" aria-hidden="" alt="" aria-name="" color="default" class="hydrated"></osds-icon><!----></span>
-    <osds-icon name="close" contrasted="" size="sm" aria-hidden="" alt="" aria-name="" color="default" class="hydrated"></osds-icon>
-  <span slot="end"><osds-icon name="close" contrasted="" size="sm" aria-hidden="" alt="" aria-name="" color="default" class="hydrated"></osds-icon><!----></span>
-</osds-button>
-<osds-button inline>
-  <span slot="start"><osds-icon name="close" contrasted="" size="sm" aria-hidden="" alt="" aria-name="" color="default" class="hydrated"></osds-icon><!----></span>
-  <osds-icon name="close" contrasted="" size="sm" aria-hidden="" alt="" aria-name="" color="default" class="hydrated"></osds-icon>
-  <span slot="end"><osds-icon name="close" contrasted="" size="sm" aria-hidden="" alt="" aria-name="" color="default" class="hydrated"></osds-icon><!----></span>
-</osds-button>
+  <p>Disable shadow dom to show styled button below</p>
+  <button class='button button__color-default button__text-align-center button__size-sm button__variant-flat' role='button' type='button'>
+    <span class='button__text-container'>Vanilla button</span>
+  </button>
 
-<p>Variant</p>
-<osds-button variant='ghost'>Ghost</osds-button>
-<osds-button variant='stroked'>Primary</osds-button>
-<osds-button variant='flat'>Secondary</osds-button>
+  <p>Size</p>
+  <osds-button size='sm'>
+    Small
+    <osds-icon
+      name='plus'
+      size='sm'
+      color='primary'
+    />
+  </osds-button>
+  <osds-button>Default</osds-button>
+  <osds-button size='lg'>Large</osds-button>
+</div>
 
-<p>Color</p>
-<osds-button color="default">default</osds-button>
-<osds-button color="primary">primary</osds-button>
-<osds-button color="success">success</osds-button>
+<div>
+  <p>Vertical Align</p>
+  <osds-button>
+    <span slot='start'><osds-icon name='close' contrasted='' size='sm' aria-hidden='' alt='' aria-name=''
+                                  color='default' class='hydrated'></osds-icon><!----></span>
+    <osds-icon name='close' contrasted='' size='sm' aria-hidden='' alt='' aria-name='' color='default'
+               class='hydrated'></osds-icon>
+    <span slot='end'><osds-icon name='close' contrasted='' size='sm' aria-hidden='' alt='' aria-name='' color='default'
+                                class='hydrated'></osds-icon><!----></span>
+  </osds-button>
+  <osds-button inline>
+    <span slot='start'><osds-icon name='close' contrasted='' size='sm' aria-hidden='' alt='' aria-name=''
+                                  color='default' class='hydrated'></osds-icon><!----></span>
+    <osds-icon name='close' contrasted='' size='sm' aria-hidden='' alt='' aria-name='' color='default'
+               class='hydrated'></osds-icon>
+    <span slot='end'><osds-icon name='close' contrasted='' size='sm' aria-hidden='' alt='' aria-name='' color='default'
+                                class='hydrated'></osds-icon><!----></span>
+  </osds-button>
+</div>
 
-<p>Square</p>
-<osds-button square size='s'>Square small</osds-button>
-<osds-button square>Square</osds-button>
-<osds-button square size='l'>Square large</osds-button>
+<div>
+  <p>Variant</p>
+  <osds-button variant='ghost'>Ghost</osds-button>
+  <osds-button variant='stroked'>Primary</osds-button>
+  <osds-button variant='flat'>Secondary</osds-button>
+</div>
 
-<p>Link</p>
-<osds-button href="#">Link</osds-button>
+<div>
+  <p>Color</p>
+  <osds-button color='default'>default</osds-button>
+  <osds-button color='primary'>primary</osds-button>
+  <osds-button color='success'>success</osds-button>
+</div>
 
-<p>Disabled</p>
-<osds-button size='s' disabled>Small</osds-button>
-<osds-button disabled>Default</osds-button>
-<osds-button size='l' disabled>Large</osds-button>
-<osds-button variant='ghost' disabled>Ghost</osds-button>
-<osds-button variant='primary' disabled>Primary</osds-button>
-<osds-button variant='secondary' disabled>Secondary</osds-button>
-<osds-button block size='s' disabled>Block small</osds-button>
-<osds-button block disabled>Block</osds-button>
-<osds-button block size='l' disabled>Block large</osds-button>
-<osds-button square size='s' disabled>Square small</osds-button>
-<osds-button square disabled>Square</osds-button>
-<osds-button square size='l' disabled>Square large</osds-button>
+<div>
+  <p>Square</p>
+  <osds-button square size='s'>Square small</osds-button>
+  <osds-button square>Square</osds-button>
+  <osds-button square size='l'>Square large</osds-button>
+</div>
 
-<p>Circle</p>
-<osds-button   color="primary" circle variant="ghost">
-  <osds-icon
-    name="plus"
-    size="xs"
-    color="primary"
-  />
-</osds-button>
-<osds-button color="primary" circle size='sm' variant="flat">
-  <osds-icon
-    name="ellipsis-vertical"
-    size="xxs"
-    color="primary"
-  />
-</osds-button>
-<osds-button circle variant="stroked">
-  <span>Button</span>
-</osds-button>
-<osds-button circle>
-  <span>Button</span>
-</osds-button>
+<div>
+  <p>Link</p>
+  <osds-button href='#'>Link</osds-button>
+</div>
 
-<p>In Form</p>
-<form>
-  <div>
-    <label for="text">Enter text: </label>
-    <input type="text" name="text" id="text" required>
-  </div>
+<div>
+  <p>Disabled</p>
+  <osds-button size='s' disabled>Small</osds-button>
+  <osds-button disabled>Default</osds-button>
+  <osds-button size='l' disabled>Large</osds-button>
+  <osds-button variant='ghost' disabled>Ghost</osds-button>
+  <osds-button variant='primary' disabled>Primary</osds-button>
+  <osds-button variant='secondary' disabled>Secondary</osds-button>
+  <osds-button block size='s' disabled>Block small</osds-button>
+  <osds-button block disabled>Block</osds-button>
+  <osds-button block size='l' disabled>Block large</osds-button>
+  <osds-button square size='s' disabled>Square small</osds-button>
+  <osds-button square disabled>Square</osds-button>
+  <osds-button square size='l' disabled>Square large</osds-button>
+</div>
 
-  <osds-button type='submit' size='sm'>submit</osds-button>
-</form>
+<div>
+  <p>Circle</p>
+  <osds-button color='primary' circle variant='ghost'>
+    <osds-icon
+      name='plus'
+      size='xs'
+      color='primary'
+    />
+  </osds-button>
+  <osds-button color='primary' circle size='sm' variant='flat'>
+    <osds-icon
+      name='ellipsis-vertical'
+      size='xxs'
+      color='primary'
+    />
+  </osds-button>
+  <osds-button circle variant='stroked'>
+    <span>Button</span>
+  </osds-button>
+  <osds-button circle>
+    <span>Button</span>
+  </osds-button>
+</div>
 
-<p>Inline</p>
-<osds-button inline>Default</osds-button>
+<div>
+  <p>In Form</p>
+  <form>
+    <div>
+      <label for='text'>Enter text: </label>
+      <input type='text' name='text' id='text' required>
+    </div>
 
-<p>InlineWith Icon</p>
-<osds-button inline>
-  Default
-  <osds-icon
-    name="plus"
-    size="sm"
-    color="primary"
-  />
-</osds-button>
+    <osds-button type='submit' size='sm'>submit</osds-button>
+  </form>
+</div>
 
-<p>Ellipsis</p>
-<osds-button size='lg'>
-  <span slot='start'>start</span>
-  Oles ipsum dolor sit amet, sem platform library data veeam vero quis scripta dicant te massa fuisset
-  signiferumque fringilla mus sodales diam eu mazim kpi mac sociis mi ls nullam cu information aperiri
-  <span slot='end'>end</span>
-</osds-button>
+<div>
+  <p>Inline</p>
+  <osds-button inline>Default</osds-button>
+</div>
 
-<p>No Start</p>
-<osds-button size='lg'>
-  <span slot='start'></span>
-  button
-  <span slot='end'>end</span>
-</osds-button>
+<div>
+  <p>InlineWith Icon</p>
+  <osds-button inline>
+    Default
+    <osds-icon
+      name='plus'
+      size='sm'
+      color='primary'
+    />
+  </osds-button>
+</div>
+
+<div>
+  <p>Ellipsis</p>
+  <osds-button size='lg'>
+    <span slot='start'>start</span>
+    Oles ipsum dolor sit amet, sem platform library data veeam vero quis scripta dicant te massa fuisset
+    signiferumque fringilla mus sodales diam eu mazim kpi mac sociis mi ls nullam cu information aperiri
+    <span slot='end'>end</span>
+  </osds-button>
+</div>
+
+<div>
+  <p>No Start</p>
+  <osds-button size='lg'>
+    <span slot='start'></span>
+    button
+    <span slot='end'>end</span>
+  </osds-button>
+</div>
 
 <script>
   document.querySelector('form').addEventListener('submit', (e) => {
     e.preventDefault();
     console.log('form submitted');
-  })
+  });
 
-  document.addEventListener('odsInitialized', ({detail}) => {
+  document.addEventListener('odsInitialized', ({ detail }) => {
     const instance = detail.instance;
     instance.logging(true);
     const logger = new instance.logger('www');
@@ -149,7 +204,7 @@
         logger.log('(html) addEventListener odsButtonClick: %o', event);
       });
     });
-  })
+  });
 </script>
 </body>
 </html>

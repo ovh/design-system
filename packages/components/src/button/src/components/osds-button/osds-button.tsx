@@ -90,11 +90,23 @@ export class OsdsButton implements OdsButtonAttribute {
       </span>
     );
 
+    const classes = {
+      'button': true,
+      'button__circle': this.circle || false,
+      [`button__color-${this.color}`]: true,
+      'button__contrasted': this.contrasted || false,
+      'button__disabled': this.disabled || false,
+      'button__inline': this.inline || false,
+      [`button__text-align-${this.textAlign}`]: true,
+      [`button__size-${this.size}`]: true,
+      [`button__variant-${this.variant}`]: true,
+    };
+
     let template: Element;
     if (this.href) {
       template = (
         <a {...{
-          class: 'button',
+          class: classes,
           href: this.href,
           part: 'button',
           role: 'link',
@@ -110,7 +122,7 @@ export class OsdsButton implements OdsButtonAttribute {
     } else {
       template = (
         <button {...{
-          class: 'button',
+          class: classes,
           disabled: this.disabled,
           part: 'button',
           ref: (el):HTMLButtonElement => this.buttonEl = el as HTMLButtonElement,

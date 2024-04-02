@@ -15,6 +15,7 @@ describe('ods-link rendering', () => {
 
     if (customStyle) {
       await page.addStyleTag({ content: customStyle });
+      await page.waitForChanges();
     }
 
     el = await page.find('ods-link');
@@ -24,7 +25,8 @@ describe('ods-link rendering', () => {
 
   describe('part', () => {
     it('should render with custom style applied', async() => {
-      await setup('<ods-link label="some link" href="https://www.ovhcloud.com/fr/"></ods-link>', 'ods-link::part(link) { color: #00ff00; }');
+      await setup('<ods-link label="some link" href="https://www.ovhcloud.com/fr/"></ods-link>', 'ods-link::part(link) { color: #00FF00 }');
+      await new Promise(resolve => setTimeout(resolve, 500));
       const partStyle = await part.getComputedStyle();
       expect(partStyle.getPropertyValue('color')).toBe('rgb(0, 255, 0)');
     });

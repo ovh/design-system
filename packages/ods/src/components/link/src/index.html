@@ -12,19 +12,42 @@
 
 <body>
   <p>Default</p>
-  <ods-link href="test" label="link clickable">
+  <ods-link href="test" label="link clickable" target="_blank">
   </ods-link>
 
   <p>Disabled</p>
-  <ods-link href="test" label="link clickable" disabled>
+  <ods-link href="test" label="link disabled" disabled target="_blank">
   </ods-link>
 
   <p>Icon</p>
-  <ods-link href="test" label="link clickable" icon="warning">
+  <ods-link href="test" label="link icon clickable" icon="warning">
   </ods-link>
 
   <p>Icon Disabled</p>
-  <ods-link href="test" label="link clickable" icon="warning" disabled>
+  <ods-link href="test" label="link icon disabled" icon="warning" disabled>
   </ods-link>
+
+  <p>Custom CSS</p>
+  <ods-link class="my-link" href="test" label="link custom css">
+  </ods-link>
+
+  <p>Custom CSS with icon</p>
+  <ods-link class="my-link-icon" href="test" label="link custom css icon" icon="warning">
+  </ods-link>
+
+  <style>
+    .my-link::part(link) {
+      color: green;
+      font-size: 32px;
+    }
+
+    .my-link-icon::part(link) {
+      font-size: 32px;
+    }
+    .my-link-icon::part(icon) {
+      width: 2rem;
+      height: 2rem;
+    }
+  </style>
 </body>
 </html>

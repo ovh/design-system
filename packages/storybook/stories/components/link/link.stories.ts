@@ -16,6 +16,7 @@ export default meta;
 export const Demo: StoryObj = {
   render: (args) => html`
     <ods-link
+      class="my-link"
       color="${args.color}"
       disabled="${args.disabled}"
       download="${args.download}"
@@ -26,6 +27,14 @@ export const Demo: StoryObj = {
       referrerpolicy="${args.referrerpolicy}"
       target="${args.target}">
     </ods-link>
+    <style>
+      .my-link::part(link) {
+        ${args.customCssLink}
+      }
+      .my-link::part(icon) {
+        ${args.customCssIcon}
+      }
+    </style>
   `,
   argTypes: orderControls({
     color: {
@@ -36,6 +45,24 @@ export const Demo: StoryObj = {
       },
       control: 'select',
       options: ODS_LINK_COLORS,
+    },
+    customCssLink: {
+      table: {
+        category: CONTROL_CATEGORY.design,
+        defaultValue: { summary: 'ø' },
+        type: { summary: 'string' }
+      },
+      control: 'text',
+      description: 'Set a custom style properties on the link. Example: "color: green; font-size: 32px;"',
+    },
+    customCssIcon: {
+      table: {
+        category: CONTROL_CATEGORY.design,
+        defaultValue: { summary: 'ø' },
+        type: { summary: 'string' }
+      },
+      control: 'text',
+      description: 'Set a custom style properties on the icon. Example: "width: 2rem; height: 2rem;"',
     },
     disabled: {
       table: {
@@ -85,8 +112,7 @@ export const Demo: StoryObj = {
         defaultValue: { summary: 'ø' },
         type: { summary: 'string' }
       },
-      control: 'select',
-      options: [],
+      control: 'text',
     },
     rel: {
       table: {
@@ -94,8 +120,7 @@ export const Demo: StoryObj = {
         defaultValue: { summary: 'ø' },
         type: { summary: 'string' }
       },
-      control: 'select',
-      options: [],
+      control: 'text',
     },
     target: {
       table: {
@@ -103,8 +128,7 @@ export const Demo: StoryObj = {
         defaultValue: { summary: 'ø' },
         type: { summary: 'string' }
       },
-      control: 'select',
-      options: [],
+      control: 'text',
     },
   }),
   args: {

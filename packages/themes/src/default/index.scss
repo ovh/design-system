@@ -101,5 +101,12 @@ $ods-notifier-foreground-color-critical-focused: $ods-color-critical-800;
   --ods-color-primary-800: #{$ods-color-primary-800};
   --ods-font-family-code: 'Source Code Pro', arial;
   --ods-font-family-default: 'Source Sans Pro', 'Trebuchet MS', arial, 'Segoe UI', sans-serif;
+  --ods-spacing-1: #{$ods-spacing-1};
+  --ods-spacing-2: #{$ods-spacing-2};
+  --ods-spacing-4: #{$ods-spacing-4};
   --ods-spacing-8: #{$ods-spacing-8};
+  --ods-outline-color: #{$ods-outline-color};
+  --ods-outline-width: #{$ods-outline-width};
+  --ods-outline-offset: #{$ods-outline-offset};
+  --ods-outline-style: #{$ods-outline-style};
 }

@@ -1,14 +1,25 @@
 @mixin ods-link() {
   display: inline-flex;
   align-items: center;
+  transition: background-size .2s ease-in, color ease-in-out .1s;
+  background-image: linear-gradient(currentcolor, currentcolor);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0 1px;
   cursor: pointer;
+  padding-bottom: 3px;
   text-decoration: none;
   font-family: var(--ods-font-family-default);
   font-weight: 600;
 
+  /* stylelint-disable-next-line order/order */
+  &:focus-visible, &:hover {
+    transition: background-size .2s ease-out;
+    background-size: 100% 1px;
+  }
+
   &:focus-visible {
-    outline-offset: 3px;
-    outline-width: 3px;
-    outline-style: dotted;
+    outline: currentcolor var(--ods-outline-style) var(--ods-outline-width);
+    outline-offset: var(--ods-outline-offset);
   }
 }

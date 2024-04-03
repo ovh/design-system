@@ -1,17 +1,13 @@
+[id='root'] > div:not(:has(> :nth-child(4))) [data-test-id='sb-preview-toolbar'] {
+  display: none;
+}
+
 body {
   letter-spacing: 0.03rem;
 }
 
-#root > div {
-  margin: -10px 0;
-  width: calc(100vw + 10px);
-  height: calc(100vh + 20px);
-}
-
 a[title*="Design System"] {
-  margin-left: 15%;
-  margin-bottom: -5px;
-  padding: 0;
+  margin: auto;
   max-width: 75%;
 }
 

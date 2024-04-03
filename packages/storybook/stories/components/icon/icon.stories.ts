@@ -42,8 +42,21 @@ export const All: StoryObj = {
   args: {},
 };
 
+export const Overview: StoryObj = {
+  tags: ['isHidden'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: () => html`
+<ods-icon name="arrow-left"></ods-icon>
+  `,
+};
+
 export const Name: StoryObj = {
   tags: ['isHidden'],
+  parameters: {
+    layout: 'centered',
+  },
   render: () => html`
 <ods-icon name="arrow-left"></ods-icon>
 <ods-icon name="warning"></ods-icon>

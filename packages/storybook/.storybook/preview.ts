@@ -8,7 +8,10 @@ const preview: Preview = {
         contentsSelector: '.sbdocs-content',
         headingSelector: 'h1, h2',
         ignoreSelector: '.banner',
-        disable: false,
+        disable: false
+      },
+      source: {
+        excludeDecorators: true,
       },
     },
     controls: {

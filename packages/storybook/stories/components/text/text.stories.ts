@@ -67,10 +67,10 @@ export const Default: StoryObj = {
 export const Preset: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
-<ods-text preset="caption">Caption</ods-text>
+<ods-text preset="caption">Caption</ods-text><br>
 <ods-text preset="code">Code</ods-text>
 <ods-text preset="paragraph">Paragraph</ods-text>
-<ods-text preset="span">Span</ods-text>
+<ods-text preset="span">Span</ods-text><br>
 <ods-text preset="label">Label</ods-text>
 <ods-text preset="heading-1">Heading-1</ods-text>
 <ods-text preset="heading-2">Heading-2</ods-text>

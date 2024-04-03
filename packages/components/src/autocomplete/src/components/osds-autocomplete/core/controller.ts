@@ -4,15 +4,7 @@ import type { OdsValidityState } from '@ovhcloud/ods-common-core';
 
 class OdsAutocompleteController {
   private component: OsdsAutocomplete;
-  private _selectOptions: (HTMLElement & OsdsSelectOption)[] = [];
-
-  public get selectOptions(): (HTMLElement & OsdsSelectOption)[] {
-    return this._selectOptions;
-  }
-
-  public set selectOptions(value: (HTMLElement & OsdsSelectOption)[]) {
-    this._selectOptions = value;
-  }
+  public selectOptions: (HTMLElement & OsdsSelectOption)[] = [];
 
   constructor(component: OsdsAutocomplete) {
     this.component = component;
@@ -47,7 +39,7 @@ class OdsAutocompleteController {
   syncReferences(): void {
     if (this.component.surface && this.component.anchor) {
       this.component.surface.setAnchorElement(this.component.anchor);
-      this.component.surface.setAnchorMargin({ bottom: 0, top: 0 });
+      this.component.surface.setAnchorMargin({ bottom: 0, left: 0, right: 0, top: 0 });
     }
   }
 

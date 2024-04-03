@@ -206,7 +206,7 @@ export class OsdsAutocomplete implements OdsAutocompleteAttribute, OdsAutocomple
     }
   }
 
-  // Toggle overlay when we click on the Autocomplete.
+  // Toggle surface when we click on the Autocomplete.
   handleAutocompleteClick(): void {
     if (this.disabled || (this.value.length < this.minimumNumberOfCharacters && this.inputValue.length < this.minimumNumberOfCharacters)) {
       return;
@@ -242,7 +242,7 @@ export class OsdsAutocomplete implements OdsAutocompleteAttribute, OdsAutocomple
     }
   }
 
-  // Hide overlay when we click anywhere else in the window.
+  // Hide surface when we click anywhere else in the window.
   @Listen('click', { target: 'window' })
   checkForClickOutside(ev: Event): void {
     ocdkAssertEventTargetIsNode(ev.target);
@@ -321,7 +321,13 @@ export class OsdsAutocomplete implements OdsAutocompleteAttribute, OdsAutocomple
       <Host {...{
         'aria-labelledby': ariaLabelledby,
         ariaLabel,
-        class: 'ods-autocomplete',
+        class: {
+          'autocomplete': true,
+          'autocomplete--disabled': disabled,
+          'autocomplete--error': error,
+          'autocomplete--inline': inline,
+          'autocomplete--opened': opened,
+        },
         inline,
         onBlur: this.onBlur.bind(this),
         onClick: this.handleAutocompleteClick.bind(this),
@@ -332,23 +338,30 @@ export class OsdsAutocomplete implements OdsAutocompleteAttribute, OdsAutocomple
           this.anchor = el as HTMLElement;
           this.syncReferences();
         },
-        tabindex: this.disabled ? -1 : this.tabindex,
+        tabindex: disabled ? -1 : this.tabindex,
       }}>
-        <osds-input
-          clearable={clearable}
-          color={ODS_THEME_COLOR_INTENT.primary}
-          disabled={disabled}
-          error={error}
-          icon={icon}
-          inline={inline}
-          onOdsValueChange={this.handleInputValueChange.bind(this)}
-          placeholder={placeholder}
-          type={ODS_INPUT_TYPE.text}
-          value={this.inputValue}
-        />
-        <div class="anchor">
+        <div class='autocomplete__anchor'>
+          <osds-input
+            class={{
+              'autocomplete__input': true,
+              'autocomplete__input--opened': opened,
+            }}
+            clearable={clearable}
+            color={ODS_THEME_COLOR_INTENT.primary}
+            disabled={disabled}
+            error={error}
+            icon={icon}
+            inline={inline}
+            onOdsValueChange={this.handleInputValueChange.bind(this)}
+            placeholder={placeholder}
+            type={ODS_INPUT_TYPE.text}
+            value={this.inputValue}
+          />
           <ocdk-surface
-            class="overlay"
+            class={{
+              'autocomplete__surface': true,
+              'autocomplete__surface--opened': opened,
+            }}
             ref={(el: HTMLElement): void => {
               if (ocdkIsSurface(el)) {
                 this.surface = el as OcdkSurface;

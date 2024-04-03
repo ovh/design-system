@@ -27,7 +27,7 @@ export const Banner = ({ of, label, section }: { of: ModuleExports, label?: stri
       }}
     >
       <span style={{ color: 'white' }}>{subtitle}</span>
-      <h1 className={'banner'} style={{ marginTop: '-0.5rem', color: 'white' }}>{title}</h1>
+      <h1 className={'banner'} style={{ color: 'white' }}>{title}</h1>
     </div>
   );
 }

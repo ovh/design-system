@@ -2,6 +2,9 @@
 node_modules/
 dist/
 
+# Generated doc file
+spec.md
+
 # Log files
 npm-debug.log*
 yarn-debug.log*

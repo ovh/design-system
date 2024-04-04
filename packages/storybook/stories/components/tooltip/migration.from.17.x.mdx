@@ -12,7 +12,7 @@ The tooltip usage has changed a bit regarding the trigger element declaration.
 
 Previously, the trigger element is declared inside the web-component as its main slot content.
 
-The tooltip content is the declared using a `osds-tooltip-content` with the slot `tooltip-content` parameter.
+The tooltip content is declared using a `osds-tooltip-content` with the slot `tooltip-content` parameter.
 
 This was causing an issue of double focus when the trigger used was a focusable element.
 
@@ -23,7 +23,7 @@ The only requirement is to give this element an `id` so that the tooltip can get
 Here is an example of the previous declaration:
 
 ```html
-<ods-tooltip>
+<osds-tooltip>
   <div>
     Hover me
   </div>
@@ -31,7 +31,7 @@ Here is an example of the previous declaration:
   <osds-tooltip-content slot="tooltip-content">
     Tooltip content
   </osds-tooltip-content>
-</ods-tooltip>
+</osds-tooltip>
 ```
 
 The same result would now be achieved using:
@@ -76,7 +76,7 @@ Set it to `true` if you want to add an arrow to the tooltip.
 
 Basic tooltip:
 ```html
-<ods-tooltip>
+<osds-tooltip>
   <div>
     Hover me
   </div>
@@ -84,7 +84,7 @@ Basic tooltip:
   <osds-tooltip-content slot="tooltip-content">
     Tooltip content
   </osds-tooltip-content>
-</ods-tooltip>
+</osds-tooltip>
 
 <!-- is now -->
 
@@ -99,7 +99,7 @@ Basic tooltip:
 
 Arrow tooltip:
 ```html
-<ods-tooltip variant="tip">
+<osds-tooltip variant="tip">
   <div>
     Hover me
   </div>
@@ -107,7 +107,7 @@ Arrow tooltip:
   <osds-tooltip-content slot="tooltip-content">
     Tooltip content
   </osds-tooltip-content>
-</ods-tooltip>
+</osds-tooltip>
 
 <!-- is now -->
 

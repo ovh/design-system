@@ -1,0 +1,150 @@
+import type { Meta, StoryObj } from '@storybook/web-components';
+import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/ods-button';
+import { ODS_BUTTON_COLOR, ODS_BUTTON_COLORS, ODS_BUTTON_SIZE, ODS_BUTTON_SIZES, ODS_BUTTON_VARIANT, ODS_BUTTON_VARIANTS, ODS_ICON_NAMES } from '@ovhcloud/ods-components';
+import { CONTROL_CATEGORY, orderControls } from '../../control';
+import { html } from 'lit-html';
+
+defineCustomElement();
+
+const meta: Meta = {
+  title: 'ODS Components/Actions/Button',
+  component: 'ods-button',
+};
+
+export default meta;
+
+export const Demo: StoryObj = {
+  render: (arg) => html`
+<ods-button class="my-button"
+            color="${arg.color}"
+            icon="${arg.icon}"
+            label="${arg.label}"
+            size="${arg.size}"
+            variant="${arg.variant}">
+</ods-button>
+<style>
+  .my-button::part(button) {
+    ${arg.customCss}
+  }
+</style>
+  `,
+  argTypes: orderControls({
+    color: {
+      table: {
+        category: CONTROL_CATEGORY.design,
+        defaultValue: { summary: ODS_BUTTON_COLOR.primary },
+        type: { summary: ODS_BUTTON_COLORS }
+      },
+      control: { type: 'select' },
+      options: ODS_BUTTON_COLORS,
+    },
+    customCss: {
+      table: {
+        category: CONTROL_CATEGORY.design,
+        defaultValue: { summary: 'ø' },
+        type: { summary: 'string' }
+      },
+      control: 'text',
+      description: 'Set a custom style properties. Example: "height: 100px; color: #008000;"',
+    },
+    icon: {
+      table: {
+        category: CONTROL_CATEGORY.design,
+        type: { summary: ODS_ICON_NAMES }
+      },
+      control: { type: 'select' },
+      options: ODS_ICON_NAMES,
+    },
+    label: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: 'My button' },
+        type: { summary: 'string' }
+      },
+      control: 'text',
+      description: 'The button label',
+    },
+    size: {
+      table: {
+        category: CONTROL_CATEGORY.design,
+        defaultValue: { summary: ODS_BUTTON_SIZE.md },
+        type: { summary: ODS_BUTTON_SIZES }
+      },
+      control: { type: 'select' },
+      options: ODS_BUTTON_SIZES,
+    },
+    variant: {
+      table: {
+        category: CONTROL_CATEGORY.design,
+        defaultValue: { summary: ODS_BUTTON_VARIANT.default },
+        type: { summary: ODS_BUTTON_VARIANTS }
+      },
+      control: { type: 'select' },
+      options: ODS_BUTTON_VARIANTS,
+    },
+  }),
+  args: {
+    color: ODS_BUTTON_COLOR.primary,
+    label: 'My button',
+    size: ODS_BUTTON_SIZE.md,
+    variant: ODS_BUTTON_VARIANT.default,
+  },
+};
+
+export const Default: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-button label="My button"></ods-button>
+  `,
+};
+
+export const Color: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-button color="${ODS_BUTTON_COLOR.primary}" label="Primary button"></ods-button>
+<ods-button color="${ODS_BUTTON_COLOR.critical}" label="Critical button"></ods-button>
+  `,
+};
+
+export const CustomCSS: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-button class="my-button" label="My button"></ods-button>
+<style>
+  .my-button::part(button) {
+    width: 300px;
+  }
+</style>
+  `,
+};
+
+export const IsDisabled: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-button is-disabled label="Disabled button"></ods-button>
+  `,
+};
+
+export const IsLoading: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-button is-loading label="Loading button"></ods-button>
+  `,
+};
+
+export const Size: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-button label="MD button" size="${ODS_BUTTON_SIZE.md}"></ods-button>
+<ods-button label="SM button" size="${ODS_BUTTON_SIZE.sm}"></ods-button>
+  `,
+};
+
+export const Variant: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-button label="Default button" variant="${ODS_BUTTON_VARIANT.default}"></ods-button>
+<ods-button label="Outline button" variant="${ODS_BUTTON_VARIANT.outline}"></ods-button>
+<ods-button label="Ghost button" variant="${ODS_BUTTON_VARIANT.ghost}"></ods-button>
+  `,
+};

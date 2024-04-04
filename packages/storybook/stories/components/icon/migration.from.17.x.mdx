@@ -48,35 +48,38 @@ You can override this using a css class on the component directly.
 
 Contrasted icon:
 ```html
-<ods-icon contrasted
+<osds-icon contrasted
+          name="warning">
+</osds-icon>
+
+<!-- is now -->
+
+<ods-icon class="custom"
           name="warning">
 </ods-icon>
-<!-- is now -->
+
 <style>
   .custom {
     color: #fff;
   }
 </style>
-
-<ods-icon class="custom"
-          name="warning">
-</ods-icon>
 ```
 
 Icon size:
 ```html
-<ods-icon name="warning"
+<osds-icon name="warning"
           size="xl">
-</ods-icon>
+</osds-icon>
+
 <!-- is now -->
+
+<ods-icon class="custom"
+          name="warning">
+</ods-icon>
+
 <style>
   .custom {
     font-size: 48px;
   }
 </style>
-
-<ods-icon class="custom"
-          name="warning">
-</ods-icon>
 ```
-

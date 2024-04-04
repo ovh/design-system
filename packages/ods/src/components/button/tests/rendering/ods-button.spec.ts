@@ -1,4 +1,4 @@
-import { newSpecPage, type SpecPage } from '@stencil/core/testing';
+import { type SpecPage, newSpecPage } from '@stencil/core/testing';
 import { ODS_BUTTON_COLOR, ODS_BUTTON_SIZE, ODS_BUTTON_VARIANT, OdsButton } from '../../src';
 
 describe('ods-button rendering', () => {
@@ -13,7 +13,7 @@ describe('ods-button rendering', () => {
 
     root = page.root;
   }
-// TODO describe attributes + lifecycle
+
   describe('color', () => {
     it('should be reflected', async() => {
       const dummyValue = 'dummy value';
@@ -24,7 +24,7 @@ describe('ods-button rendering', () => {
     });
 
     it('should render with expected default value', async() => {
-      await setup(`<ods-button>Dummy Button</ods-button>`);
+      await setup('<ods-button>Dummy Button</ods-button>');
 
       expect(root?.getAttribute('color')).toBe(ODS_BUTTON_COLOR.primary);
     });
@@ -40,7 +40,7 @@ describe('ods-button rendering', () => {
     });
 
     it('should not be set by default', async() => {
-      await setup(`<ods-button></ods-button>`);
+      await setup('<ods-button></ods-button>');
 
       expect(root?.getAttribute('icon')).toBeNull();
     });
@@ -48,13 +48,13 @@ describe('ods-button rendering', () => {
 
   describe('isDisabled', () => {
     it('should be reflected', async() => {
-      await setup(`<ods-button is-disabled>Dummy Button</ods-button>`);
+      await setup('<ods-button is-disabled>Dummy Button</ods-button>');
 
       expect(root?.getAttribute('disabled')).toBe('');
     });
 
     it('should render with expected default value', async() => {
-      await setup(`<ods-button>Dummy Button</ods-button>`);
+      await setup('<ods-button>Dummy Button</ods-button>');
 
       expect(root?.getAttribute('disabled')).toBeNull();
     });
@@ -62,13 +62,13 @@ describe('ods-button rendering', () => {
 
   describe('isLoading', () => {
     it('should be reflected', async() => {
-      await setup(`<ods-button is-loading>Dummy Button</ods-button>`);
+      await setup('<ods-button is-loading>Dummy Button</ods-button>');
 
       expect(root?.getAttribute('is-loading')).toBe('');
     });
 
     it('should render with expected default value', async() => {
-      await setup(`<ods-button>Dummy Button</ods-button>`);
+      await setup('<ods-button>Dummy Button</ods-button>');
 
       expect(root?.getAttribute('is-loading')).toBeNull();
     });
@@ -84,7 +84,7 @@ describe('ods-button rendering', () => {
     });
 
     it('should not be set by default', async() => {
-      await setup(`<ods-button></ods-button>`);
+      await setup('<ods-button></ods-button>');
 
       expect(root?.getAttribute('label')).toBeNull();
     });
@@ -100,7 +100,7 @@ describe('ods-button rendering', () => {
     });
 
     it('should render with expected default value', async() => {
-      await setup(`<ods-button>Dummy Button</ods-button>`);
+      await setup('<ods-button>Dummy Button</ods-button>');
 
       expect(root?.getAttribute('size')).toBe(ODS_BUTTON_SIZE.md);
     });
@@ -116,7 +116,7 @@ describe('ods-button rendering', () => {
     });
 
     it('should render with expected default value', async() => {
-      await setup(`<ods-button>Dummy Button</ods-button>`);
+      await setup('<ods-button>Dummy Button</ods-button>');
 
       expect(root?.getAttribute('type')).toBe('button');
     });
@@ -132,7 +132,7 @@ describe('ods-button rendering', () => {
     });
 
     it('should render with expected default value', async() => {
-      await setup(`<ods-button>Dummy Button</ods-button>`);
+      await setup('<ods-button>Dummy Button</ods-button>');
 
       expect(root?.getAttribute('variant')).toBe(ODS_BUTTON_VARIANT.default);
     });

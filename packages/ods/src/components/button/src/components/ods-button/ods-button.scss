@@ -92,7 +92,7 @@
         &:not(:disabled) {
           &:hover {
             #{$button}__icon {
-              background-color: #800015; // TODO var(--ods-color-??);
+              background-color: var(--ods-color-critical-700);
             }
           }
 
@@ -112,7 +112,7 @@
         &:not(:disabled) {
           &:hover {
             #{$button}__icon {
-              background-color: #800015; // TODO var(--ods-color-??);
+              background-color: var(--ods-color-critical-700);
             }
           }
 

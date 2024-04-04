@@ -5,7 +5,7 @@ describe('ods-button navigation', () => {
   let el: E2EElement;
   let page: E2EPage;
 
-  async function bindClick() {
+  async function bindClick(): Promise<void> {
     await page.exposeFunction('onClick', () => {
       clickSpy.call(null);
     });
@@ -17,7 +17,7 @@ describe('ods-button navigation', () => {
     });
   }
 
-  async function isFocused() {
+  async function isFocused(): Promise<boolean> {
     return await page.evaluate(() => {
       const element = document.querySelector('ods-button');
       return document.activeElement === element;

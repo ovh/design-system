@@ -26,7 +26,7 @@ describe('ods-spinner rendering', () => {
       });
 
       it('should render with expected default value', async() => {
-        await setup(`<ods-spinner></ods-spinner>`);
+        await setup('<ods-spinner></ods-spinner>');
 
         expect(container?.classList.contains('ods-spinner__container--primary')).toBe(true);
       });
@@ -60,7 +60,7 @@ describe('ods-spinner rendering', () => {
       });
 
       it('should render with expected default value', async() => {
-        await setup(`<ods-spinner></ods-spinner>`);
+        await setup('<ods-spinner></ods-spinner>');
 
         expect(root?.getAttribute('size')).toBe(ODS_SPINNER_SIZE.md);
       });

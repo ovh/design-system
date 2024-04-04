@@ -1,7 +1,5 @@
 import { Meta, Markdown } from '@storybook/blocks';
-import OverviewLink from '@ovhcloud/ods-components/src/components/link/documentation/overview-link.mdx';
-import SpecificationsLink from '@ovhcloud/ods-components/src/components/link/documentation/specifications/spec.md?raw';
-import Usage from '@ovhcloud/ods-components/src/components/link/documentation/usage-guidelines/usage.mdx';
+import SpecificationsLink from '@ovhcloud/ods-components/src/components/link/documentation/spec.md?raw';
 import { Banner } from '../../Banner';
 import * as LinkStories from './link.stories';
 
@@ -11,13 +9,54 @@ import * as LinkStories from './link.stories';
 
 # Overview
 
-<OverviewLink />
+import { Canvas } from '@storybook/blocks';
+
+Link is a component that enables redirection to a new page, section, website or other resources:
+
+<Canvas of={ LinkStories.Default } sourceState='none' />
+
+<div>
+  <osds-button color="primary" variant="ghost" href="https://zeroheight.com/6fc8a63f7/p/82b71b-link/b/40a887" target="_blank">
+    ZEROHEIGHT - SPINNER DESIGN GUIDELINES  
+
+    <osds-icon name="external-link" color="primary" size="xs" />
+  </osds-button>
+</div>
 
 # API
 
 <Markdown>{ SpecificationsLink }</Markdown>
 
+# Style customization
+
+You can add your own style on the link element using the part `link`.
+
+Custom link css:
+
+<Canvas of={ LinkStories.CustomCSSLink } sourceState='shown'/>
+
+You can add your own style on the icon link element using the part `icon`.
+
+Custom icon css:
+
+<Canvas of={ LinkStories.CustomCSSLinkIcon } sourceState='shown'/>
+
 # Examples
 
-<Usage />
+## Usage
 
+### Default
+
+<Canvas of={ LinkStories.Default } sourceState='shown' />
+
+### Color
+<Canvas of={ LinkStories.Color } sourceState='shown' />
+
+### Disabled
+<Canvas of={ LinkStories.Disabled } sourceState='shown' />
+
+### Icon
+<Canvas of={ LinkStories.Icon } sourceState='shown' />
+
+### Target
+<Canvas of={ LinkStories.Target } sourceState='shown' />

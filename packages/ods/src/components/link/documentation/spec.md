@@ -1,4 +1,3 @@
-
 ## Properties
 ### color
 
@@ -7,7 +6,7 @@
 
 ### disabled
 
-• `Optional` **disabled**: [_boolean_] 
+•  **disabled**: [_boolean_] = `false`
 
 
 ### download

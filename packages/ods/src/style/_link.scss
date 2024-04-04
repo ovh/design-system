@@ -12,7 +12,6 @@
   font-family: var(--ods-font-family-default);
   font-weight: 600;
 
-  /* stylelint-disable-next-line order/order */
   &:focus-visible, &:hover {
     transition: background-size .2s ease-out;
     background-size: 100% 1px;

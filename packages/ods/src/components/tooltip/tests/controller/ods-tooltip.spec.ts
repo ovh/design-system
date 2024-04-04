@@ -7,8 +7,8 @@ jest.mock('@floating-ui/dom', () => ({
   shift: jest.fn().mockReturnValue('shift middleware'),
 }));
 
-import { hideTooltip, showTooltip } from '../../src/controller/ods-tooltip';
 import { arrow, autoUpdate, computePosition, flip, offset, shift } from '@floating-ui/dom';
+import { hideTooltip, showTooltip } from '../../src/controller/ods-tooltip';
 
 describe('ods-tooltip controller', () => {
   beforeEach(jest.clearAllMocks);
@@ -75,10 +75,10 @@ describe('ods-tooltip controller', () => {
 
         (autoUpdate as jest.Mock).mockImplementation((_t, _p, cb) => cb(dummyPosition, dummyDom));
         (computePosition as jest.Mock).mockResolvedValue({
+          middlewareData: {},
+          placement: 'top',
           x: expectedPopperX,
           y: expectedPopperY,
-          placement: 'top',
-          middlewareData: {},
         });
 
         showTooltip(dummyPosition, dummyDom);
@@ -127,10 +127,10 @@ describe('ods-tooltip controller', () => {
 
         (autoUpdate as jest.Mock).mockImplementation((_t, _p, cb) => cb(dummyPosition, dummyDom));
         (computePosition as jest.Mock).mockResolvedValue({
+          middlewareData: dummyMiddlewareData,
+          placement: 'top',
           x: expectedPopperX,
           y: expectedPopperY,
-          placement: 'top',
-          middlewareData: dummyMiddlewareData,
         });
 
         showTooltip(dummyPosition, dummyDom);
@@ -161,5 +161,5 @@ describe('ods-tooltip controller', () => {
         expect(dummyArrow.style.top).toBe(`${dummyMiddlewareData.arrow.y}px`);
       });
     });
-  })
+  });
 });

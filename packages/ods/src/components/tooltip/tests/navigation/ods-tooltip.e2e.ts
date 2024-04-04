@@ -36,7 +36,7 @@ describe('ods-tooltip navigation', () => {
         Not a trigger
       </button>
     `);
-  })
+  });
 
   it('should be visible on trigger focus using tabulation', async() => {
     expect(await isTooltipVisible()).toBe(false);

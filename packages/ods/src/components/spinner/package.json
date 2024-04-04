@@ -9,7 +9,7 @@
     "clean": "rimraf .stencil coverage dist docs-api www",
     "doc": "typedoc --pretty --plugin ../../../scripts/typedoc-plugin-decorator.js && node ../../../scripts/generate-typedoc-md.js",
     "lint:scss": "stylelint 'src/components/**/*.scss'",
-    "lint:ts": "eslint 'src/**/*.{js,ts,tsx}'",
+    "lint:ts": "eslint '{src,tests}/**/*.{js,ts,tsx}'",
     "start": "stencil build --dev --watch --serve",
     "test:e2e": "stencil test --e2e --config stencil.config.ts",
     "test:e2e:ci": "tsc --noEmit && stencil test --e2e --ci --config stencil.config.ts",

@@ -41,14 +41,14 @@ describe('ods-tooltip rendering', () => {
   });
 
   describe('position', () => {
-    async function getRect(selector: string) {
+    async function getRect(selector: string): Promise<{ bottom: number, left: number, right: number, top: number }> {
       return await page.evaluate((selector: string) => {
         const { bottom, left, right, top } = document.querySelector(selector)!.getBoundingClientRect();
         return { bottom, left, right, top };
       }, selector);
     }
 
-    async function renderPosition(position: OdsTooltipPosition, customStyle?: string) {
+    async function renderPosition(position: OdsTooltipPosition, customStyle?: string): Promise<void> {
       await setup(`<ods-tooltip position="${position}" trigger-id="${triggerId}">Tooltip content</ods-tooltip>`, customStyle);
     }
 

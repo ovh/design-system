@@ -24,14 +24,14 @@ describe('ods-tooltip rendering', () => {
     });
 
     it('should render with expected default value', async() => {
-      await setup(`<ods-tooltip></ods-tooltip>`);
+      await setup('<ods-tooltip></ods-tooltip>');
 
       expect(root?.getAttribute('position')).toBe(ODS_TOOLTIP_POSITION.top);
     });
   });
 
   describe('triggerId', () => {
-    it('should be reflected', async () => {
+    it('should be reflected', async() => {
       const dummyValue = 'dummy value';
 
       await setup(`<ods-tooltip triggerId="${dummyValue}"></ods-tooltip>`);
@@ -40,21 +40,21 @@ describe('ods-tooltip rendering', () => {
     });
 
     it('should not be set by default', async() => {
-      await setup(`<ods-tooltip></ods-tooltip>`);
+      await setup('<ods-tooltip></ods-tooltip>');
 
       expect(root?.getAttribute('triggerId')).toBeNull();
     });
   });
 
   describe('withArrow', () => {
-    it('should be reflected', async () => {
-      await setup(`<ods-tooltip withArrow></ods-tooltip>`);
+    it('should be reflected', async() => {
+      await setup('<ods-tooltip withArrow></ods-tooltip>');
 
       expect(root?.getAttribute('withArrow')).not.toBeNull();
     });
 
     it('should not be set by default', async() => {
-      await setup(`<ods-tooltip></ods-tooltip>`);
+      await setup('<ods-tooltip></ods-tooltip>');
 
       expect(root?.getAttribute('withArrow')).toBeNull();
     });

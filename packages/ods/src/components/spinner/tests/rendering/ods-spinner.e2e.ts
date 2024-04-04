@@ -45,7 +45,7 @@ describe('ods-spinner rendering', () => {
         <ods-spinner size="${ODS_SPINNER_SIZE.sm}"></ods-spinner>
         <ods-spinner size="${ODS_SPINNER_SIZE.md}"></ods-spinner>
         <ods-spinner size="${ODS_SPINNER_SIZE.lg}"></ods-spinner>
-      `)
+      `);
 
       const smSpinner = await page.find(`ods-spinner[size=${ODS_SPINNER_SIZE.sm}]`);
       const mdSpinner = await page.find(`ods-spinner[size=${ODS_SPINNER_SIZE.md}]`);

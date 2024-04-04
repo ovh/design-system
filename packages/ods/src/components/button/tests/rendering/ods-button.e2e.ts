@@ -15,7 +15,6 @@ describe('ods-button rendering', () => {
       await page.addStyleTag({ content: customStyle });
     }
 
-
     el = await page.find('ods-button');
   }
 

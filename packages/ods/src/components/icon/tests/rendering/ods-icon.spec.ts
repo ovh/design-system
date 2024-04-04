@@ -25,7 +25,7 @@ describe('ods-icon rendering', () => {
     });
 
     it('should render with expected default value', async() => {
-      await setup(`<ods-icon></ods-icon>`);
+      await setup('<ods-icon></ods-icon>');
 
       expect(root?.getAttribute('alt')).toBe('');
     });
@@ -41,7 +41,7 @@ describe('ods-icon rendering', () => {
     });
 
     it('should not be set by default', async() => {
-      await setup(`<ods-icon></ods-icon>`);
+      await setup('<ods-icon></ods-icon>');
 
       expect(root?.getAttribute('name')).toBeNull();
     });

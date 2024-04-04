@@ -1,7 +1,6 @@
 enum ODS_BUTTON_SIZE {
-  // TODO need actual list from design
-  sm = 'sm',
   md = 'md',
+  sm = 'sm',
 }
 
 type OdsButtonSize =`${ODS_BUTTON_SIZE}`;

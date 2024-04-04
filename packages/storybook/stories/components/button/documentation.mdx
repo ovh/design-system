@@ -1,0 +1,58 @@
+import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import SpecificationsButton from '@ovhcloud/ods-components/src/components/button/documentation/spec.md?raw';
+import { Banner } from '../../Banner';
+import * as ButtonStories from './button.stories';
+
+<Meta of={ ButtonStories } name='Documentation' />
+
+<Banner of={ ButtonStories } />
+
+# Overview
+
+Button component aims to initiate an action. Its text indicates the related intent, its aspect describes the importance and influence level.
+
+<Canvas of={ ButtonStories.Default } sourceState='none' />
+
+<div>
+  <osds-button color="primary" variant="ghost" href="https://zeroheight.com/6fc8a63f7/p/9017bb-spinner/b/40a887" target="_blank">
+    ZEROHEIGHT - BUTTON DESIGN GUIDELINES  
+
+    <osds-icon name="external-link" color="primary" size="xs" />
+  </osds-button>
+</div>
+
+# API
+
+<Markdown>{ SpecificationsButton }</Markdown>
+
+# Style customization
+
+You can add your own style on the button element using the part `button`.
+
+<Canvas of={ ButtonStories.CustomCSS } sourceState='shown' />
+
+# Examples
+
+## Default
+
+<Canvas of={ ButtonStories.Default } sourceState='shown' />
+
+## Color
+
+<Canvas of={ ButtonStories.Color } sourceState='shown' />
+
+## Is Disabled
+
+<Canvas of={ ButtonStories.IsDisabled } sourceState='shown' />
+
+## Is Loading
+
+<Canvas of={ ButtonStories.IsLoading } sourceState='shown' />
+
+## Size
+
+<Canvas of={ ButtonStories.Size } sourceState='shown' />
+
+## Variant
+
+<Canvas of={ ButtonStories.Variant } sourceState='shown' />

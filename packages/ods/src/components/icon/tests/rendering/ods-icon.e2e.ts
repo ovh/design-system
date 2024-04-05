@@ -29,7 +29,7 @@ describe('ods-icon rendering', () => {
     it('should render with custom style applied', async() => {
       const customHeight = 200;
 
-      await setup(`<ods-icon name="${ODS_ICON_NAME.warning}"></ods-icon>`, `ods-icon { height: ${customHeight}px; }`);
+      await setup(`<ods-icon name="${ODS_ICON_NAME.add}"></ods-icon>`, `ods-icon { height: ${customHeight}px; }`);
 
       const elStyle = await el.getComputedStyle();
       expect(parseInt(elStyle.getPropertyValue('height'), 10)).toBe(customHeight);

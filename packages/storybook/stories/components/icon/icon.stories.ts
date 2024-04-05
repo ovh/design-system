@@ -34,12 +34,31 @@ export const Demo: StoryObj = {
     },
   }),
   args: {
-    name: ODS_ICON_NAME.warning,
+    name: ODS_ICON_NAME.add,
   },
 };
 
 export const All: StoryObj = {
-  args: {},
+  render: (args) => {
+    const regexp = new RegExp(args.search)
+    const names = args.search ? ODS_ICON_NAMES.filter((name) => {
+      return regexp.test(name);
+    }) : ODS_ICON_NAMES;
+
+    return html`
+      <div style="display: flex; flex-flow: row; flex-wrap: wrap; grid-gap: 1rem;">
+        ${names.map((name) =>
+          html`<ods-icon name="${name}" title="${name}"></ods-icon>`
+        )}
+      </div>
+    `;
+  },
+  argTypes: {
+    search: {
+      control: { type: 'text' },
+      description: 'Search for a specific icon name'
+    },
+  },
 };
 
 export const Overview: StoryObj = {
@@ -59,6 +78,6 @@ export const Name: StoryObj = {
   },
   render: () => html`
 <ods-icon name="arrow-left"></ods-icon>
-<ods-icon name="warning"></ods-icon>
+<ods-icon name="warning-triangle"></ods-icon>
   `,
 };

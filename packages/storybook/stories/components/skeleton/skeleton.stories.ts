@@ -14,10 +14,10 @@ export default meta;
 
 export const Demo: StoryObj = {
   render: (arg) => html`
-<ods-skeleton class="my-skeleton">
+<ods-skeleton class="my-skeleton-demo">
 </ods-skeleton>
 <style>
-  .my-skeleton::part(skeleton) {
+  .my-skeleton-demo::part(skeleton) {
     ${arg.customCss}
   }
 </style>

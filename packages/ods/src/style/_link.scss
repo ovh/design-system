@@ -1,3 +1,5 @@
+@import './focus';
+
 @mixin ods-link() {
   display: inline-flex;
   align-items: center;
@@ -18,7 +20,6 @@
   }
 
   &:focus-visible {
-    outline: currentcolor var(--ods-outline-style) var(--ods-outline-width);
-    outline-offset: var(--ods-outline-offset);
+    @include ods-focus;
   }
 }

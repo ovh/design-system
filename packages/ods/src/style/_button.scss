@@ -1,3 +1,5 @@
+@import './focus';
+
 @mixin ods-button($color, $size, $variant) {
   display: inline-flex;
   align-items: center;
@@ -24,8 +26,7 @@
 
   &:not(:disabled) {
     &:focus {
-      outline: solid 2px var(--ods-color-primary-700);
-      outline-offset: 2px;
+      @include ods-focus;
     }
   }
 

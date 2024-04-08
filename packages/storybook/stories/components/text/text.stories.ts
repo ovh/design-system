@@ -16,11 +16,12 @@ export default meta;
 
 export const Demo: StoryObj = {
   render: (arg) => html`
-<ods-text class="my-text" preset="${arg.preset}">
+<ods-text class="my-text-demo"
+          preset="${arg.preset}">
   ${unsafeHTML(arg.content)}
 </ods-text>
 <style>
-  .my-text::part(text) {
+  .my-text-demo::part(text) {
     ${arg.customCss}
   }
 </style>

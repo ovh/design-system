@@ -15,7 +15,7 @@ export default meta;
 
 export const Demo: StoryObj = {
   render: (arg) => html`
-<ods-button class="my-button"
+<ods-button class="my-button-demo"
             color="${arg.color}"
             icon="${arg.icon}"
             label="${arg.label}"
@@ -23,7 +23,7 @@ export const Demo: StoryObj = {
             variant="${arg.variant}">
 </ods-button>
 <style>
-  .my-button::part(button) {
+  .my-button-demo::part(button) {
     ${arg.customCss}
   }
 </style>

@@ -5,6 +5,7 @@
     $current: &;
 
     @include ods-link;
+
     &:not(&#{$current}--disabled) {
       &#{$current}--primary {
         color: var(--ods-color-primary-500);

@@ -194,16 +194,3 @@ export const CustomCSSLink: StoryObj = {
 </style>
   `,
 }
-
-export const CustomCSSLinkIcon: StoryObj = {
-  tags: ['isHidden'],
-  render: () => html`
-  <ods-link class="my-link-icon" href="/page" label="Content" icon="warning"></ods-link>
-  <style>
-    .my-link-icon::part(icon) {
-      width: 2rem;
-      height: 2rem;
-    }
-  </style>
-  `,
-};

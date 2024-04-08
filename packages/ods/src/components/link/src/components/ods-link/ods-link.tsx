@@ -46,7 +46,11 @@ export class OdsLink {
           </span>
 
           {
-            !!this.icon && <ods-icon part="icon" name={ this.icon } class="ods-link__link__icon"></ods-icon>
+            !!this.icon &&
+            <ods-icon
+              class="ods-link__link__icon"
+              name={ this.icon }>
+            </ods-icon>
           }
         </a>
       </Host>

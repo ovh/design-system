@@ -15,12 +15,12 @@ export default meta;
 
 export const Demo: StoryObj = {
   render: (arg) => html`
-<ods-spinner class="my-spinner"
+<ods-spinner class="my-spinner-demo"
              color="${arg.color}"
              size="${arg.size}">
 </ods-spinner>
 <style>
-  .my-spinner::part(spinner) {
+  .my-spinner-demo::part(spinner) {
     ${arg.customCss}
   }
 </style>

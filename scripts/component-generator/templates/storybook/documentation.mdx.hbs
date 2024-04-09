@@ -1,0 +1,47 @@
+import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import Specifications{{> ComponentName }} from '@ovhcloud/ods-{{> component-dir}}/src/components/{{> component-name }}/documentation/spec.md?raw';
+import { Banner } from '../../Banner';
+import * as {{> ComponentName }}Stories from './{{> component-name }}.stories';
+
+<Meta of={ {{> ComponentName }}Stories } name='Documentation' />
+
+<Banner of={ {{> ComponentName }}Stories } />
+
+# Overview
+
+TODO Some text about the component
+
+<Canvas of={ {{> ComponentName }}Stories.Default } sourceState='none' />
+
+<div>
+  <osds-button color="primary" variant="ghost" href="https://zeroheight.com/6fc8a63f7/p/82b71b-link/b/40a887" target="_blank">
+    ZEROHEIGHT - {{> COMPONENT_NAME }} DESIGN GUIDELINES  
+
+    <osds-icon name="external-link" color="primary" size="xs" />
+  </osds-button>
+</div>
+
+# API
+
+<Markdown>{ Specifications{{> ComponentName }} }</Markdown>
+
+# Style customization [IF RELEVANT]
+
+You can add your own style on the {{> component-name }} element using the part `{{> component-name }}`.
+
+Custom {{> component-name }} css:
+
+<Canvas of={ {{> ComponentName }}Stories.CustomCSS } sourceState='shown'/>
+
+# Examples
+
+## Usage
+
+### Default
+
+<Canvas of={ {{> ComponentName }}Stories.Default } sourceState='shown' />
+
+### [Other attribute]
+<Canvas of={ {{> ComponentName }}Stories.Default } sourceState='shown' />
+
+...

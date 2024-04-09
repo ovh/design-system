@@ -18,6 +18,8 @@ export const Demo: StoryObj = {
 <ods-button class="my-button-demo"
             color="${arg.color}"
             icon="${arg.icon}"
+            is-disabled="${arg.isDisabled}"
+            is-loading="${arg.isLoading}"
             label="${arg.label}"
             size="${arg.size}"
             variant="${arg.variant}">
@@ -55,6 +57,22 @@ export const Demo: StoryObj = {
       control: { type: 'select' },
       options: ODS_ICON_NAMES,
     },
+    isDisabled: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: 'false' },
+        type: { summary: 'boolean' }
+      },
+      control: 'boolean',
+    },
+    isLoading: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: 'false' },
+        type: { summary: 'boolean' }
+      },
+      control: 'boolean',
+    },
     label: {
       table: {
         category: CONTROL_CATEGORY.general,
@@ -85,6 +103,8 @@ export const Demo: StoryObj = {
   }),
   args: {
     color: ODS_BUTTON_COLOR.primary,
+    isDisabled: false,
+    isLoading: false,
     label: 'My button',
     size: ODS_BUTTON_SIZE.md,
     variant: ODS_BUTTON_VARIANT.default,

@@ -343,7 +343,10 @@ export class OsdsAutocomplete implements OdsAutocompleteAttribute, OdsAutocomple
         },
         tabindex: disabled ? -1 : this.tabindex,
       }}>
-        <div class='autocomplete__anchor'>
+        <div class={{
+            'autocomplete__anchor': true,
+            'autocomplete__anchor--inline': inline,
+          }}>
           <osds-input
             class={{
               'autocomplete__input': true,
@@ -372,7 +375,7 @@ export class OsdsAutocomplete implements OdsAutocompleteAttribute, OdsAutocomple
               }
             }}>
             {this.isLoading
-              ? <div class="loading">
+              ? <div class='autocomplete__surface__loading'>
                 <osds-spinner inline size='sm'/>
               </div>
               : <slot onSlotchange={(): Promise<void> => this.handleSlotChange()}></slot>

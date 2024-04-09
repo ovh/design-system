@@ -11,22 +11,21 @@
 :host(.autocomplete) {
   display: flex;
   flex-direction: column;
-  width: 100%;
 }
 
 .autocomplete {
   display: flex;
   flex-direction: column;
-  width: 100%;
-
-  &--inline {
-    width: fit-content;
-  }
 
   &__anchor {
+    width: 100%;
     position: relative;
     padding: 0;
     text-align: initial;
+
+    &--inline {
+      width: fit-content;
+    }
   }
 
   &__input {
@@ -37,6 +36,7 @@
   }
 
   &__surface {
+    width: 100%;
     box-sizing: border-box;
     display: none;
     flex-direction: column;

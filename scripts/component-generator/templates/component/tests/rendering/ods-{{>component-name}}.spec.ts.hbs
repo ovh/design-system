@@ -25,7 +25,7 @@ describe('ods-{{> component-name }} rendering', () => {
     });
 
     it('should not be set by default', async() => {
-      await setup(`<ods-{{> component-name }}></ods-{{> component-name }}>`);
+      await setup('<ods-{{> component-name }}></ods-{{> component-name }}>');
 
       expect(root?.getAttribute('dummy')).toBeNull();
     });

@@ -18,9 +18,9 @@
   flex-direction: column;
 
   &__anchor {
-    width: 100%;
     position: relative;
     padding: 0;
+    width: 100%;
     text-align: initial;
 
     &--inline {
@@ -36,7 +36,6 @@
   }
 
   &__surface {
-    width: 100%;
     box-sizing: border-box;
     display: none;
     flex-direction: column;
@@ -46,6 +45,7 @@
     border-radius: 0 0 var(--ods-size-03) var(--ods-size-03);
     border-color: var(--ods-color-primary-200);
     background: var(--ods-color-gray-000);
+    width: 100%;
     max-height: calc(var(--ods-size-stack-11) * 7.5);
     overflow: auto;
     animation: appear 0.2s ease-in-out;

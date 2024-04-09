@@ -344,9 +344,9 @@ export class OsdsAutocomplete implements OdsAutocompleteAttribute, OdsAutocomple
         tabindex: disabled ? -1 : this.tabindex,
       }}>
         <div class={{
-            'autocomplete__anchor': true,
-            'autocomplete__anchor--inline': inline,
-          }}>
+          'autocomplete__anchor': true,
+          'autocomplete__anchor--inline': inline,
+        }}>
           <osds-input
             class={{
               'autocomplete__input': true,

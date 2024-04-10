@@ -1,0 +1,178 @@
+@import './focus';
+
+$ods-tag-height-sm: 16px;
+$ods-tag-height-md: 20px;
+$ods-tag-height-lg: 28px;
+
+@mixin ods-tag() {
+  box-sizing: border-box;
+  display: inline-flex;
+  flex-flow: row;
+  grid-gap: var(--ods-spacing-1);
+  align-items: center;
+  cursor: pointer;
+
+  &:focus-visible {
+    @include ods-focus();
+  }
+}
+
+@mixin ods-tag-shape($shape) {
+  @if $shape == 'round' {
+    border-radius: var(--ods-border-radius-lg);
+  } @else if $shape == 'square' {
+    border-radius: var(--ods-border-radius-sm);
+  }
+}
+
+@mixin ods-tag-size($size) {
+  @if $size == 'sm' {
+    padding: var(--ods-spacing-2) var(--ods-spacing-4);
+    height: $ods-tag-height-sm;
+    font-size: 0.75rem;
+  } @else if $size == 'md' {
+    padding: var(--ods-spacing-1) var(--ods-spacing-6);
+    height: $ods-tag-height-md;
+    font-size: 0.875rem;
+  } @else if $size == 'lg' {
+    padding: var(--ods-spacing-2) var(--ods-spacing-8);
+    height: $ods-tag-height-lg;
+    font-size: 1rem;
+  }
+}
+
+@mixin ods-tag-variant-default($color) {
+  @if $color == 'critical' {
+    background-color: var(--ods-color-critical-100);
+    color: var(--ods-color-critical-900);
+
+    &:hover {
+      background-color: var(--ods-color-critical-200);
+    }
+
+    &:active {
+      background-color: var(--ods-color-critical-300);
+    }
+  } @else if $color == 'information' {
+    background-color: var(--ods-color-primary-100);
+    color: var(--ods-color-primary-900);
+
+    &:hover {
+      background-color: var(--ods-color-primary-200);
+    }
+
+    &:active {
+      background-color: var(--ods-color-primary-300);
+    }
+  } @else if $color == 'neutral' {
+    background-color: var(--ods-color-neutral-100);
+    color: var(--ods-color-neutral-700);
+
+    &:hover {
+      background-color: var(--ods-color-neutral-200);
+    }
+
+    &:active {
+      background-color: var(--ods-color-neutral-300);
+    }
+  } @else if $color == 'success' {
+    background-color: var(--ods-color-success-100);
+    color: var(--ods-color-success-900);
+
+    &:hover {
+      background-color: var(--ods-color-success-200);
+    }
+
+    &:active {
+      background-color: var(--ods-color-success-300);
+    }
+  } @else if $color == 'warning' {
+    background-color: var(--ods-color-warning-100);
+    color: var(--ods-color-warning-900);
+
+    &:hover {
+      background-color: var(--ods-color-warning-200);
+    }
+
+    &:active {
+      background-color: var(--ods-color-warning-300);
+    }
+  }
+}
+
+@mixin ods-tag-variant-outline($color) {
+  border-width: 2px;
+  border-style: solid;
+
+  @if $color == 'critical' {
+    border-color: var(--ods-color-critical-100);
+    background-color: var(--ods-color-critical-000);
+    color: var(--ods-color-critical-900);
+
+    &:hover {
+      border-color: var(--ods-color-critical-200);
+      background-color: var(--ods-color-critical-050);
+    }
+
+    &:active {
+      border-color: var(--ods-color-critical-300);
+      background-color: var(--ods-color-critical-100);
+    }
+  } @else if $color == 'information' {
+    border-color: var(--ods-color-primary-100);
+    background-color: var(--ods-color-primary-000);
+    color: var(--ods-color-primary-900);
+
+    &:hover {
+      border-color: var(--ods-color-primary-200);
+      background-color: var(--ods-color-primary-100);
+    }
+
+    &:active {
+      border-color: var(--ods-color-primary-300);
+      background-color: var(--ods-color-primary-200);
+    }
+  } @else if $color == 'neutral' {
+    border-color: var(--ods-color-neutral-100);
+    background-color: var(--ods-color-neutral-000);
+    color: var(--ods-color-neutral-700);
+
+    &:hover {
+      border-color: var(--ods-color-neutral-200);
+      background-color: var(--ods-color-neutral-100);
+    }
+
+    &:active {
+      border-color: var(--ods-color-neutral-300);
+      background-color: var(--ods-color-neutral-200);
+    }
+  } @else if $color == 'success' {
+    border-color: var(--ods-color-success-100);
+    background-color: var(--ods-color-success-000);
+    color: var(--ods-color-success-900);
+
+    &:hover {
+      border-color: var(--ods-color-success-200);
+      background-color: var(--ods-color-success-050);
+    }
+
+    &:active {
+      border-color: var(--ods-color-success-300);
+      background-color: var(--ods-color-success-100);
+    }
+  } @else if $color == 'warning' {
+    border-color: var(--ods-color-warning-100);
+    background-color: var(--ods-color-warning-000);
+    color: var(--ods-color-warning-900);
+
+    &:hover {
+      border-color: var(--ods-color-warning-200);
+      background-color: var(--ods-color-warning-050);
+    }
+
+    &:active {
+      border-color: var(--ods-color-warning-300);
+      background-color: var(--ods-color-warning-100);
+    }
+  }
+}

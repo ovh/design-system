@@ -14,6 +14,7 @@ const componentNames = [
   'skeleton',
   'tooltip',
   'button',
+  'tag',
   //--generator-anchor--
 ];
 

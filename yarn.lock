@@ -3873,6 +3873,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-component-tag@workspace:packages/ods/src/components/tag":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-tag@workspace:packages/ods/src/components/tag"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-component-text@workspace:packages/ods/src/components/text":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-text@workspace:packages/ods/src/components/text"

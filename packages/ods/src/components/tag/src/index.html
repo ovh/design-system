@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html dir='ltr' lang='en'>
+<head>
+  <meta charset='utf-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0' />
+  <title>Dev ods-tag</title>
+
+  <script type='module' src='/build/ods-tag.esm.js'></script>
+  <script nomodule src='/build/ods-tag.js'></script>
+  <link rel="stylesheet" href="/build/ods-tag.css">
+
+  <style>
+    .my-tag::part(tag) {
+      background-color: red;
+    }
+
+    .my-tag::part(tag):hover {
+      background-color: yellow;
+    }
+  </style>
+</head>
+
+<body>
+  <p>Default</p>
+  <ods-tag label="Default tag"></ods-tag>
+
+  <p>Id</p>
+  <ods-tag label="ID tag" id="my-tag"></ods-tag>
+
+  <p>Disabled</p>
+  <ods-tag label="Disabled tag" is-disabled></ods-tag>
+
+  <p>Icon</p>
+  <ods-tag label="Icon tag" icon="star"></ods-tag>
+
+  <p>Shape</p>
+  <ods-tag label="Round tag" shape="round"></ods-tag>
+  <ods-tag label="Square tag" shape="square"></ods-tag>
+
+  <p>Size</p>
+  <ods-tag label="SM tag" size="sm"></ods-tag>
+  <ods-tag label="MD tag" size="md"></ods-tag>
+  <ods-tag label="LG tag" size="lg"></ods-tag>
+
+  <p>Variant</p>
+  <ods-tag label="Default tag" variant="default"></ods-tag>
+  <ods-tag label="Outline tag" variant="outline"></ods-tag>
+
+  <p>Color - Default</p>
+  <ods-tag label="Critical tag" color="critical" variant="default"></ods-tag>
+  <ods-tag label="Information tag" color="information" variant="default"></ods-tag>
+  <ods-tag label="Neutral tag" color="neutral" variant="default"></ods-tag>
+  <ods-tag label="Success tag" color="success" variant="default"></ods-tag>
+  <ods-tag label="Warning tag" color="warning" variant="default"></ods-tag>
+  <br /><br />
+  <ods-tag label="Critical tag" color="critical" icon="star" variant="default"></ods-tag>
+  <ods-tag label="Information tag" color="information" icon="star" variant="default"></ods-tag>
+  <ods-tag label="Neutral tag" color="neutral" icon="star" variant="default"></ods-tag>
+  <ods-tag label="Success tag" color="success" icon="star" variant="default"></ods-tag>
+  <ods-tag label="Warning tag" color="warning" icon="star" variant="default"></ods-tag>
+  <br /><br />
+  <ods-tag label="Critical tag" color="critical" icon="star" is-disabled variant="default"></ods-tag>
+  <ods-tag label="Information tag" color="information" icon="star" is-disabled variant="default"></ods-tag>
+  <ods-tag label="Neutral tag" color="neutral" icon="star" is-disabled variant="default"></ods-tag>
+  <ods-tag label="Success tag" color="success" icon="star" is-disabled variant="default"></ods-tag>
+  <ods-tag label="Warning tag" color="warning" icon="star" is-disabled variant="default"></ods-tag>
+
+  <p>Color - Outline</p>
+  <ods-tag label="Critical tag" color="critical" variant="outline"></ods-tag>
+  <ods-tag label="Information tag" color="information" variant="outline"></ods-tag>
+  <ods-tag label="Neutral tag" color="neutral" variant="outline"></ods-tag>
+  <ods-tag label="Success tag" color="success" variant="outline"></ods-tag>
+  <ods-tag label="Warning tag" color="warning" variant="outline"></ods-tag>
+  <br /><br />
+  <ods-tag label="Critical tag" color="critical" icon="star" variant="outline"></ods-tag>
+  <ods-tag label="Information tag" color="information" icon="star" variant="outline"></ods-tag>
+  <ods-tag label="Neutral tag" color="neutral" icon="star" variant="outline"></ods-tag>
+  <ods-tag label="Success tag" color="success" icon="star" variant="outline"></ods-tag>
+  <ods-tag label="Warning tag" color="warning" icon="star" variant="outline"></ods-tag>
+  <br /><br />
+  <ods-tag label="Critical tag" color="critical" icon="star" is-disabled variant="outline"></ods-tag>
+  <ods-tag label="Information tag" color="information" icon="star" is-disabled variant="outline"></ods-tag>
+  <ods-tag label="Neutral tag" color="neutral" icon="star" is-disabled variant="outline"></ods-tag>
+  <ods-tag label="Success tag" color="success" icon="star" is-disabled variant="outline"></ods-tag>
+  <ods-tag label="Warning tag" color="warning" icon="star" is-disabled variant="outline"></ods-tag>
+
+  <p>Custom style</p>
+  <ods-tag class="my-tag" label="Custom tag"></ods-tag>
+
+  <script>
+    window.addEventListener('odsRemove', (event) => {
+      console.log(event);
+    });
+  </script>
+</body>
+</html>

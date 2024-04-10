@@ -1,0 +1,125 @@
+import { Meta } from '@storybook/blocks';
+import * as TagStories from './tag.stories';
+
+<Meta of={ TagStories } name='Migration From 17.x' />
+
+# Tag - migrate from v17 to v18
+----
+
+## Usage changes
+
+Previous to v18, Tag component was actually a Chip component with specific properties set.
+
+Chip has been split into two new components (Tag and Badge):
+- use Tag when you need an interactive Chip that can be removed.
+- use Badge when you need a presentational Chip.
+
+On Chip component, slots were used to allow any content to be put inside the chip.
+
+The new tag design enforces the usage of only text as the main content, with an optional icon on the left side.
+
+Therefore, slots have been replaced by two attributes: `label` and `icon`.
+
+```html
+<osds-chip removable>
+  <osds-icon name="star"></osds-icon>
+  My tag
+</osds-chip>
+```
+
+The same result would now be achieved using:
+```html
+<ods-tag icon="star"
+         label="My tag">
+</ods-tag>
+```
+
+## Attributes changes
+
+`contrasted ` <img src="https://img.shields.io/badge/removed-FF0000" />
+
+Has been removed.
+
+You can use the style customization to achieve the same result, until a new color get validated by the design team.
+
+`disabled` <img src="https://img.shields.io/badge/updated-00FFFF" />
+
+Has been updated.
+
+You can use the new `isDisabled` attribute to obtain the same behavior.
+
+`icon` <img src="https://img.shields.io/badge/new-008000" />
+
+New attribute (optional).
+
+Allow you to render an icon on the left side of the tag.
+
+`inline` <img src="https://img.shields.io/badge/removed-FF0000" />
+
+Has been removed.
+
+Tags are inline by default. If you need to change this, you can use the style customization.
+
+`label` <img src="https://img.shields.io/badge/new-008000" />
+
+New attribute (required).
+
+The label you want to render in the tag.
+
+`removable` <img src="https://img.shields.io/badge/removed-FF0000" />
+
+Has been removed.
+
+Tag are all removable. If you want to display information without the removal, use the Badge component.
+
+`selectable` <img src="https://img.shields.io/badge/removed-FF0000" />
+
+Has been removed.
+
+Tag are not meant to be selected.
+You may eventually mimic previous behavior using some style customization,
+but we'll advise to reach out the design team before doing so.
+
+`shape` <img src="https://img.shields.io/badge/new-008000" />
+
+New attribute (optional).
+
+Allow you to choose between different shape rendering option.
+
+## Migration examples
+
+Basic tag:
+```html
+<osds-chip>
+  My tag
+</osds-chip>
+
+<!-- is now -->
+
+<ods-tag label="My tag">
+</ods-tag>
+```
+
+Disabled tag:
+```html
+<osds-chip disabled>
+  My tag
+</osds-chip>
+
+<!-- is now -->
+
+<ods-tag label="My tag" is-disabled>
+</ods-tag>
+```
+
+Inline tag:
+```html
+<osds-chip inline>
+  My tag
+</osds-chip>
+
+<!-- is now -->
+
+<ods-tag label="My tag">
+</ods-tag>
+```

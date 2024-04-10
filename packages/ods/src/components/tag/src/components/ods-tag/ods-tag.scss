@@ -1,0 +1,86 @@
+@import '../../../../../style/tag';
+
+:host(.ods-tag) {
+  display: inline-block;
+}
+
+.ods-tag {
+  &__tag {
+    $tag: &;
+
+    @include ods-tag();
+
+    &:not(&#{$tag}--disabled) {
+      &#{$tag}--default {
+        &#{$tag}--critical {
+          @include ods-tag-variant-default('critical');
+        }
+
+        &#{$tag}--information {
+          @include ods-tag-variant-default('information');
+        }
+
+        &#{$tag}--neutral {
+          @include ods-tag-variant-default('neutral');
+        }
+
+        &#{$tag}--success {
+          @include ods-tag-variant-default('success');
+        }
+
+        &#{$tag}--warning {
+          @include ods-tag-variant-default('warning');
+        }
+      }
+
+      &#{$tag}--outline {
+        &#{$tag}--critical {
+          @include ods-tag-variant-outline('critical');
+        }
+
+        &#{$tag}--information {
+          @include ods-tag-variant-outline('information');
+        }
+
+        &#{$tag}--neutral {
+          @include ods-tag-variant-outline('neutral');
+        }
+
+        &#{$tag}--success {
+          @include ods-tag-variant-outline('success');
+        }
+
+        &#{$tag}--warning {
+          @include ods-tag-variant-outline('warning');
+        }
+      }
+    }
+
+    &--disabled {
+      border-color: var(--ods-color-neutral-300);
+      background-color: var(--ods-color-neutral-300);
+      cursor: not-allowed;
+      color: var(--ods-color-neutral-600);
+    }
+
+    &--round {
+      @include ods-tag-shape('round');
+    }
+
+    &--square {
+      @include ods-tag-shape('square');
+    }
+
+    &--sm {
+      @include ods-tag-size('sm');
+    }
+
+    &--md {
+      @include ods-tag-size('md');
+    }
+
+    &--lg {
+      @include ods-tag-size('lg');
+    }
+  }
+}

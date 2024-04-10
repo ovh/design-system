@@ -58,11 +58,14 @@ describe('ods-button navigation', () => {
   it('should trigger on "Enter" when focused', async() => {
     await setup('<ods-button label="Dummy button"></ods-button>');
     await bindClick();
+
     await page.keyboard.press('Tab');
+    await page.waitForChanges();
 
     expect(clickSpy).not.toHaveBeenCalled();
 
     await page.keyboard.press('Enter');
+    await page.waitForChanges();
 
     expect(clickSpy).toHaveBeenCalledTimes(1);
   });
@@ -70,11 +73,14 @@ describe('ods-button navigation', () => {
   it('should trigger on "Space" when focused', async() => {
     await setup('<ods-button label="Dummy button"></ods-button>');
     await bindClick();
+
     await page.keyboard.press('Tab');
+    await page.waitForChanges();
 
     expect(clickSpy).not.toHaveBeenCalled();
 
     await page.keyboard.press('Space');
+    await page.waitForChanges();
 
     expect(clickSpy).toHaveBeenCalledTimes(1);
   });
@@ -86,6 +92,7 @@ describe('ods-button navigation', () => {
     expect(clickSpy).not.toHaveBeenCalled();
 
     await el.click();
+    await page.waitForChanges();
 
     expect(clickSpy).toHaveBeenCalledTimes(1);
   });
@@ -97,6 +104,7 @@ describe('ods-button navigation', () => {
     expect(clickSpy).not.toHaveBeenCalled();
 
     await el.click();
+    await page.waitForChanges();
 
     expect(clickSpy).not.toHaveBeenCalled();
   });

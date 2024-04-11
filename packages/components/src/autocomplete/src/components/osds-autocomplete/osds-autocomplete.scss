@@ -13,10 +13,11 @@
   flex-direction: column;
 }
 
-.autocomplete {
-  display: flex;
-  flex-direction: column;
+:host([inline]) {
+  width: fit-content;
+}
 
+.autocomplete {
   &__anchor {
     position: relative;
     padding: 0;

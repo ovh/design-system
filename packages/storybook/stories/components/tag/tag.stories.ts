@@ -35,7 +35,7 @@ export const Demo: StoryObj = {
       table: {
         category: CONTROL_CATEGORY.design,
         defaultValue: { summary: ODS_TAG_COLOR.information },
-        type: { summary: ODS_TAG_COLORS }
+        type: { summary: ODS_TAG_COLORS },
       },
       control: { type: 'select' },
       options: ODS_TAG_COLORS,
@@ -44,24 +44,25 @@ export const Demo: StoryObj = {
       table: {
         category: CONTROL_CATEGORY.design,
         defaultValue: { summary: 'ø' },
-        type: { summary: 'string' }
+        type: { summary: 'string' },
       },
       control: 'text',
       description: 'Set a custom style properties. Example: "background-color: #008000;"',
     },
     icon: {
       table: {
-        category: CONTROL_CATEGORY.design,
-        type: { summary: ODS_ICON_NAMES }
+        category: CONTROL_CATEGORY.general,
+        type: { summary: 'string' },
       },
       control: { type: 'select' },
       options: ODS_ICON_NAMES,
+      description: 'See the whole list [here](/?path=/docs/ods-components-content-icon--documentation#name)'
     },
     isDisabled: {
       table: {
         category: CONTROL_CATEGORY.general,
         defaultValue: { summary: 'false' },
-        type: { summary: 'boolean' }
+        type: { summary: 'boolean' },
       },
       control: 'boolean',
     },
@@ -69,7 +70,7 @@ export const Demo: StoryObj = {
       table: {
         category: CONTROL_CATEGORY.general,
         defaultValue: { summary: 'My tag' },
-        type: { summary: 'string' }
+        type: { summary: 'string' },
       },
       control: 'text',
       description: 'The tag label',
@@ -78,7 +79,7 @@ export const Demo: StoryObj = {
       table: {
         category: CONTROL_CATEGORY.design,
         defaultValue: { summary: ODS_TAG_SHAPE.round },
-        type: { summary: ODS_TAG_SHAPES }
+        type: { summary: ODS_TAG_SHAPES },
       },
       control: { type: 'select' },
       options: ODS_TAG_SHAPES,
@@ -87,7 +88,7 @@ export const Demo: StoryObj = {
       table: {
         category: CONTROL_CATEGORY.design,
         defaultValue: { summary: ODS_TAG_SIZE.md },
-        type: { summary: ODS_TAG_SIZES }
+        type: { summary: ODS_TAG_SIZES },
       },
       control: { type: 'select' },
       options: ODS_TAG_SIZES,
@@ -96,7 +97,7 @@ export const Demo: StoryObj = {
       table: {
         category: CONTROL_CATEGORY.design,
         defaultValue: { summary: ODS_TAG_VARIANT.default },
-        type: { summary: ODS_TAG_VARIANTS }
+        type: { summary: ODS_TAG_VARIANTS },
       },
       control: { type: 'select' },
       options: ODS_TAG_VARIANTS,

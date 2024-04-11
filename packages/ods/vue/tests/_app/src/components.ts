@@ -15,6 +15,7 @@ const componentNames = [
   'tooltip',
   'button',
   'tag',
+  'badge',
   //--generator-anchor--
 ];
 

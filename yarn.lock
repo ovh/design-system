@@ -3846,6 +3846,7 @@ __metadata:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 "@ovhcloud/ods-cdk-dev@17.2.2, @ovhcloud/ods-cdk-dev@workspace:packages/cdk/dev":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-cdk-dev@workspace:packages/cdk/dev"
@@ -3878,6 +3879,14 @@ __metadata:
 =======
 =======
 =======
+=======
+"@ovhcloud/ods-component-badge@workspace:packages/ods/src/components/badge":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-badge@workspace:packages/ods/src/components/badge"
+  languageName: unknown
+  linkType: soft
+
+>>>>>>> 1a2403ac6 (feat(badge): implement component)
 "@ovhcloud/ods-component-button@workspace:packages/ods/src/components/button":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-button@workspace:packages/ods/src/components/button"

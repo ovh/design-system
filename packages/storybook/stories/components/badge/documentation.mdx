@@ -1,0 +1,54 @@
+import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import SpecificationsBadge from '@ovhcloud/ods-components/src/components/badge/documentation/spec.md?raw';
+import { Banner } from '../../Banner';
+import * as BadgeStories from './badge.stories';
+
+<Meta of={ BadgeStories } name='Documentation' />
+
+<Banner of={ BadgeStories } />
+
+# Overview
+
+Badge show concise metadata or the current status for an item, in a compact format. They are used inline, next to the title or text they complete:
+
+<Canvas of={ BadgeStories.Default } sourceState='none' />
+
+<div>
+  <osds-button color="primary" variant="ghost" href="https://zeroheight.com/6fc8a63f7/p/82b71b-link/b/40a887" target="_blank">
+    ZEROHEIGHT - BADGE DESIGN GUIDELINES  
+
+    <osds-icon name="external-link" color="primary" size="xs" />
+  </osds-button>
+</div>
+
+# API
+
+<Markdown>{ SpecificationsBadge }</Markdown>
+
+# Style customization
+
+You can add your own style on the badge element using the part `badge`.
+
+Custom badge css:
+
+<Canvas of={ BadgeStories.CustomCSS } sourceState='shown'/>
+
+# Examples
+
+## Usage
+
+### Default
+
+<Canvas of={ BadgeStories.Default } sourceState='shown' />
+
+## Color
+
+<Canvas of={ BadgeStories.Color } sourceState='shown' />
+
+## Shape
+
+<Canvas of={ BadgeStories.Shape } sourceState='shown' />
+
+## Size
+
+<Canvas of={ BadgeStories.Size } sourceState='shown' />

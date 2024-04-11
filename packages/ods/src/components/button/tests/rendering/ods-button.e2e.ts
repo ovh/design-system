@@ -1,7 +1,8 @@
-import type { E2EElement, E2EPage } from '@stencil/core/testing';
-import { newE2EPage } from '@stencil/core/testing';
+import { type E2EElement, type E2EPage, newE2EPage } from '@stencil/core/testing';
+import { ODS_BUTTON_SIZE } from '../../src';
 
 describe('ods-button rendering', () => {
+  let button: E2EElement;
   let el: E2EElement;
   let page: E2EPage;
 
@@ -16,11 +17,55 @@ describe('ods-button rendering', () => {
     }
 
     el = await page.find('ods-button');
+    button = await page.find('ods-button >>> .ods-button__button');
   }
 
   it('should render the web component', async() => {
     await setup('<ods-button></ods-button>');
 
     expect(el.shadowRoot).not.toBeNull();
+  });
+
+  describe('icon', () => {
+    it('should render with an icon', async() => {
+      const dummyIcon = 'star';
+      await setup(`<ods-button icon="${dummyIcon}"></ods-button>`);
+
+      const customIcon = await button.find(`ods-icon[name="${dummyIcon}"]`);
+
+      expect(customIcon).not.toBeNull();
+    });
+  });
+
+  describe('part', () => {
+    it('should render with custom style applied', async() => {
+      const customBackgroundColor = '#ff0000';
+
+      await setup('<ods-button></ods-button>', `ods-button::part(button) { background-color: ${customBackgroundColor}; }`);
+
+      const buttonStyle = await button.getComputedStyle();
+      expect(buttonStyle.getPropertyValue('background-color')).toBe('rgb(255, 0, 0)');
+    });
+  });
+
+  describe('sizes', () => {
+    it('should respect increase order (sm < md)', async() => {
+      await setup(`
+        <ods-button size="${ODS_BUTTON_SIZE.sm}" label="Button"></ods-button>
+        <ods-button size="${ODS_BUTTON_SIZE.md}" label="Button"></ods-button>
+      `);
+
+      const smButton = await page.find(`ods-button[size=${ODS_BUTTON_SIZE.sm}] >>> .ods-button__button`);
+      const mdButton = await page.find(`ods-button[size=${ODS_BUTTON_SIZE.md}] >>> .ods-button__button`);
+
+      const smButtonStyle = await smButton.getComputedStyle();
+      const smButtonHeight = parseInt(smButtonStyle.getPropertyValue('height'), 10);
+
+      const mdButtonStyle = await mdButton.getComputedStyle();
+      const mdButtonHeight = parseInt(mdButtonStyle.getPropertyValue('height'), 10);
+
+      expect(smButtonHeight).toBeLessThan(mdButtonHeight);
+      expect(mdButtonHeight).toBeGreaterThan(smButtonHeight);
+    });
   });
 });

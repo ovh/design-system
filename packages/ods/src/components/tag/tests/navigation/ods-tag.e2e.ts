@@ -28,6 +28,7 @@ describe('ods-tag navigation', () => {
     expect(await isFocused()).toBe(false);
 
     await page.keyboard.press('Tab');
+    await page.waitForChanges();
 
     expect(await isFocused()).toBe(true);
   });
@@ -38,6 +39,7 @@ describe('ods-tag navigation', () => {
     expect(await isFocused()).toBe(false);
 
     await page.keyboard.press('Tab');
+    await page.waitForChanges();
 
     expect(await isFocused()).toBe(false);
   });
@@ -47,7 +49,9 @@ describe('ods-tag navigation', () => {
     const eventSpy = await el.spyOnEvent('odsRemove');
 
     await page.keyboard.press('Tab');
+    await page.waitForChanges();
     await page.keyboard.press('Enter');
+    await page.waitForChanges();
 
     expect(eventSpy).toHaveReceivedEventTimes(1);
     expect(eventSpy).toHaveReceivedEventDetail({ id: '' });
@@ -59,7 +63,9 @@ describe('ods-tag navigation', () => {
     const eventSpy = await el.spyOnEvent('odsRemove');
 
     await page.keyboard.press('Tab');
+    await page.waitForChanges();
     await page.keyboard.press('Enter');
+    await page.waitForChanges();
 
     expect(eventSpy).toHaveReceivedEventTimes(1);
     expect(eventSpy).toHaveReceivedEventDetail({ id: dummyId });
@@ -70,7 +76,9 @@ describe('ods-tag navigation', () => {
     const eventSpy = await el.spyOnEvent('odsRemove');
 
     await page.keyboard.press('Tab');
+    await page.waitForChanges();
     await page.keyboard.press('Space');
+    await page.waitForChanges();
 
     expect(eventSpy).toHaveReceivedEventTimes(1);
     expect(eventSpy).toHaveReceivedEventDetail({ id: '' });
@@ -82,7 +90,9 @@ describe('ods-tag navigation', () => {
     const eventSpy = await el.spyOnEvent('odsRemove');
 
     await page.keyboard.press('Tab');
+    await page.waitForChanges();
     await page.keyboard.press('Space');
+    await page.waitForChanges();
 
     expect(eventSpy).toHaveReceivedEventTimes(1);
     expect(eventSpy).toHaveReceivedEventDetail({ id: dummyId });

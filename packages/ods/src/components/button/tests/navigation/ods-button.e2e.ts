@@ -41,6 +41,7 @@ describe('ods-button navigation', () => {
     expect(await isFocused()).toBe(false);
 
     await page.keyboard.press('Tab');
+    await page.waitForChanges();
 
     expect(await isFocused()).toBe(true);
   });
@@ -51,6 +52,7 @@ describe('ods-button navigation', () => {
     expect(await isFocused()).toBe(false);
 
     await page.keyboard.press('Tab');
+    await page.waitForChanges();
 
     expect(await isFocused()).toBe(false);
   });

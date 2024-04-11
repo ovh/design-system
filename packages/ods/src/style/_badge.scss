@@ -1,0 +1,46 @@
+$ods-badge-height-sm: 19px;
+$ods-badge-height-md: 26px;
+$ods-badge-height-lg: 28px;
+
+@mixin ods-badge() {
+  box-sizing: border-box;
+  display: inline-flex;
+  flex-flow: row;
+  grid-gap: var(--ods-spacing-1);
+  align-items: center;
+  color: var(--ods-color-primary-900);
+}
+
+@mixin ods-badge-color($color) {
+  @if $color == 'information' {
+    background-color: var(--ods-color-new);
+  } @else if $color == 'success' {
+    background-color: var(--ods-color-beta);
+  } @else if $color == 'warning' {
+    background-color: var(--ods-color-alpha);
+  }
+}
+
+@mixin ods-badge-shape($shape) {
+  @if $shape == 'round' {
+    border-radius: var(--ods-border-radius-lg);
+  } @else if $shape == 'square' {
+    border-radius: var(--ods-border-radius-sm);
+  }
+}
+
+@mixin ods-badge-size($size) {
+  @if $size == 'sm' {
+    padding: var(--ods-spacing-2) var(--ods-spacing-4);
+    height: $ods-badge-height-sm;
+    font-size: 0.75rem;
+  } @else if $size == 'md' {
+    padding: var(--ods-spacing-4);
+    height: $ods-badge-height-md;
+    font-size: 0.875rem;
+  } @else if $size == 'lg' {
+    padding: var(--ods-spacing-4);
+    height: $ods-badge-height-lg;
+    font-size: 1rem;
+  }
+}

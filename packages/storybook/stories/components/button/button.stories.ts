@@ -35,7 +35,7 @@ export const Demo: StoryObj = {
       table: {
         category: CONTROL_CATEGORY.design,
         defaultValue: { summary: ODS_BUTTON_COLOR.primary },
-        type: { summary: ODS_BUTTON_COLORS }
+        type: { summary: ODS_BUTTON_COLORS },
       },
       control: { type: 'select' },
       options: ODS_BUTTON_COLORS,
@@ -44,18 +44,19 @@ export const Demo: StoryObj = {
       table: {
         category: CONTROL_CATEGORY.design,
         defaultValue: { summary: 'ø' },
-        type: { summary: 'string' }
+        type: { summary: 'string' },
       },
       control: 'text',
       description: 'Set a custom style properties. Example: "height: 100px; color: #008000;"',
     },
     icon: {
       table: {
-        category: CONTROL_CATEGORY.design,
-        type: { summary: ODS_ICON_NAMES }
+        category: CONTROL_CATEGORY.general,
+        type: { summary: 'string' }
       },
       control: { type: 'select' },
       options: ODS_ICON_NAMES,
+      description: 'See the whole list [here](/?path=/docs/ods-components-content-icon--documentation#name)'
     },
     isDisabled: {
       table: {

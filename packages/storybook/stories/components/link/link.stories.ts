@@ -41,7 +41,7 @@ export const Demo: StoryObj = {
       table: {
         category: CONTROL_CATEGORY.design,
         defaultValue: { summary: 'ø' },
-        type: { summary: 'string' }
+        type: { summary: 'string' },
       },
       control: 'select',
       options: ODS_LINK_COLORS,
@@ -50,7 +50,7 @@ export const Demo: StoryObj = {
       table: {
         category: CONTROL_CATEGORY.design,
         defaultValue: { summary: 'ø' },
-        type: { summary: 'string' }
+        type: { summary: 'string' },
       },
       control: 'text',
       description: 'Set a custom style properties on the link. Example: "color: green; font-size: 32px;"',
@@ -59,7 +59,7 @@ export const Demo: StoryObj = {
       table: {
         category: CONTROL_CATEGORY.design,
         defaultValue: { summary: 'ø' },
-        type: { summary: 'string' }
+        type: { summary: 'string' },
       },
       control: 'text',
       description: 'Set a custom style properties on the icon. Example: "width: 2rem; height: 2rem;"',
@@ -68,7 +68,7 @@ export const Demo: StoryObj = {
       table: {
         category: CONTROL_CATEGORY.general,
         defaultValue: { summary: 'false' },
-        type: { summary: 'boolean' }
+        type: { summary: 'boolean' },
       },
       control: 'boolean',
     },
@@ -76,7 +76,7 @@ export const Demo: StoryObj = {
       table: {
         category: CONTROL_CATEGORY.general,
         defaultValue: { summary: 'ø' },
-        type: { summary: 'string' }
+        type: { summary: 'string' },
       },
       control: 'text',
     },
@@ -84,25 +84,24 @@ export const Demo: StoryObj = {
       table: {
         category: CONTROL_CATEGORY.general,
         defaultValue: { summary: 'ø' },
-        type: { summary: 'string' }
+        type: { summary: 'string' },
       },
       control: 'text',
     },
     icon: {
       table: {
         category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: 'ø' },
-        type: { summary: 'string' }
+        type: { summary: 'string' },
       },
       control: 'select',
       options: ODS_ICON_NAMES,
-      defaultValue: '',
+      description: 'See the whole list [here](/?path=/docs/ods-components-content-icon--documentation#name)'
     },
     label: {
       table: {
         category: CONTROL_CATEGORY.general,
         defaultValue: { summary: 'ø' },
-        type: { summary: 'string' }
+        type: { summary: 'string' },
       },
       control: 'text',
     },
@@ -110,7 +109,7 @@ export const Demo: StoryObj = {
       table: {
         category: CONTROL_CATEGORY.accessibility,
         defaultValue: { summary: 'ø' },
-        type: { summary: 'string' }
+        type: { summary: 'string' },
       },
       control: 'text',
     },
@@ -118,7 +117,7 @@ export const Demo: StoryObj = {
       table: {
         category: CONTROL_CATEGORY.accessibility,
         defaultValue: { summary: 'ø' },
-        type: { summary: 'string' }
+        type: { summary: 'string' },
       },
       control: 'text',
     },
@@ -126,7 +125,7 @@ export const Demo: StoryObj = {
       table: {
         category: CONTROL_CATEGORY.general,
         defaultValue: { summary: 'ø' },
-        type: { summary: 'string' }
+        type: { summary: 'string' },
       },
       control: 'text',
     },

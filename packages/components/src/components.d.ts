@@ -227,6 +227,11 @@ export namespace Components {
          */
         "inline": boolean;
         /**
+          * Defines if the Autocomplete should display a loading spinner in the dropdown
+          * @see OdsAutocompleteAttribute.isLoading
+         */
+        "isLoading": boolean;
+        /**
           * Defines the Autocomplete's minimum number of characters to open the dropdown
           * @see OdsAutocompleteAttribute.minimumNumberOfCharacters
          */
@@ -3038,6 +3043,11 @@ declare namespace LocalJSX {
           * @see OdsAutocompleteAttribute.inline
          */
         "inline"?: boolean;
+        /**
+          * Defines if the Autocomplete should display a loading spinner in the dropdown
+          * @see OdsAutocompleteAttribute.isLoading
+         */
+        "isLoading"?: boolean;
         /**
           * Defines the Autocomplete's minimum number of characters to open the dropdown
           * @see OdsAutocompleteAttribute.minimumNumberOfCharacters

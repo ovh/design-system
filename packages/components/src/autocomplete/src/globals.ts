@@ -5,7 +5,6 @@
  * ex:
  *   import '../../text/src';
  */
-import '../../content-addon/src';
 import '../../icon/src';
 import '../../input/src';
 import '../../select/src';

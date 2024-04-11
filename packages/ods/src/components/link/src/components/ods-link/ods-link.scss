@@ -20,22 +20,13 @@
       }
     }
 
-    &__text {
-      display: inline-flex;
-      align-items: center;
-    }
-
-    &__icon {
-      margin-left: var(--ods-spacing-8);
-      background-color: currentcolor;
-    }
-
     &--disabled {
       opacity: .5;
       cursor: not-allowed;
       color: var(--ods-color-neutral-400);
 
-      &:focus-visible, &:hover {
+      &:focus-visible,
+      &:hover {
         transition: none;
         background-size: 0;
       }

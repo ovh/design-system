@@ -2,6 +2,8 @@
 
 @mixin ods-link() {
   display: inline-flex;
+  flex-flow: row;
+  grid-gap: var(--ods-spacing-8);
   align-items: center;
   transition: background-size .2s ease-in, color ease-in-out .1s;
   background-image: linear-gradient(currentcolor, currentcolor);
@@ -9,12 +11,11 @@
   background-repeat: no-repeat;
   background-size: 0 1px;
   cursor: pointer;
-  padding-bottom: 3px;
   text-decoration: none;
-  font-family: var(--ods-font-family-default);
   font-weight: 600;
 
-  &:focus-visible, &:hover {
+  &:focus-visible,
+  &:hover {
     transition: background-size .2s ease-out;
     background-size: 100% 1px;
   }

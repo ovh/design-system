@@ -1,0 +1,58 @@
+@import '../../../../../style/badge';
+@import '../../../../../style/font';
+
+:host(.ods-badge) {
+  display: inline-block;
+}
+
+.ods-badge {
+  &__badge {
+    $badge: &;
+
+    @include ods-badge();
+
+    &--information {
+      @include ods-badge-color('information');
+    }
+
+    &--success {
+      @include ods-badge-color('success');
+    }
+
+    &--warning {
+      @include ods-badge-color('warning');
+    }
+
+    &--round {
+      @include ods-badge-shape('round');
+    }
+
+    &--square {
+      @include ods-badge-shape('square');
+    }
+
+    &--sm {
+      @include ods-badge-size('sm');
+
+      & #{$badge}__icon {
+        font-size: 0.875rem;
+      }
+    }
+
+    &--md {
+      @include ods-badge-size('md');
+
+      & #{$badge}__icon {
+        font-size: 1rem;
+      }
+    }
+
+    &--lg {
+      @include ods-badge-size('lg');
+    }
+
+    &__label {
+      @include ellipsis();
+    }
+  }
+}

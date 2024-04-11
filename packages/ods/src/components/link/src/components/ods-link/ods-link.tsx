@@ -41,15 +41,13 @@ export class OdsLink {
         rel={ this.rel }
         tabindex={ this.disabled ? -1 : 0 }
         target={ this.target }>
-          <span class="ods-link__link__text">
+          <span>
             { this.label }
           </span>
 
           {
             !!this.icon &&
-            <ods-icon
-              class="ods-link__link__icon"
-              name={ this.icon }>
+            <ods-icon name={ this.icon }>
             </ods-icon>
           }
         </a>

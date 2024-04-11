@@ -4,71 +4,45 @@
   &__button {
     $button: &;
 
+    @include ods-button;
+
     position: relative;
+
+    &--sm {
+      @include ods-button-size('sm');
+    }
+
+    &--md {
+      @include ods-button-size('md');
+    }
 
     &--default {
       &#{$button}--critical {
-        &#{$button}--sm {
-          @include ods-button('critical', 'sm', 'default')
-        }
-
-        &#{$button}--md {
-          @include ods-button('critical', 'md', 'default')
-        }
+        @include ods-button-variant-default('critical');
       }
 
       &#{$button}--primary {
-        &#{$button}--sm {
-          @include ods-button('primary', 'sm', 'default')
-        }
-
-        &#{$button}--md {
-          @include ods-button('primary', 'md', 'default')
-        }
+        @include ods-button-variant-default('primary');
       }
     }
 
     &--ghost {
       &#{$button}--critical {
-        &#{$button}--sm {
-          @include ods-button('critical', 'sm', 'ghost')
-        }
-
-        &#{$button}--md {
-          @include ods-button('critical', 'md', 'ghost')
-        }
+        @include ods-button-variant-ghost('critical');
       }
 
       &#{$button}--primary {
-        &#{$button}--sm {
-          @include ods-button('primary', 'sm', 'ghost')
-        }
-
-        &#{$button}--md {
-          @include ods-button('primary', 'md', 'ghost')
-        }
+        @include ods-button-variant-ghost('primary');
       }
     }
 
     &--outline {
       &#{$button}--critical {
-        &#{$button}--sm {
-          @include ods-button('critical', 'sm', 'outline')
-        }
-
-        &#{$button}--md {
-          @include ods-button('critical', 'md', 'outline')
-        }
+        @include ods-button-variant-outline('critical');
       }
 
       &#{$button}--primary {
-        &#{$button}--sm {
-          @include ods-button('primary', 'sm', 'outline')
-        }
-
-        &#{$button}--md {
-          @include ods-button('primary', 'md', 'outline')
-        }
+        @include ods-button-variant-outline('primary');
       }
     }
 
@@ -80,97 +54,5 @@
       justify-content: center;
       background-color: var(--ods-color-neutral-100);
     }
-
-    // ---------------------------------------------------------------
-    // TODO remove all this when using fonts for icons
-    &__icon {
-      background-color: var(--ods-color-primary-000);
-    }
-
-    &#{$button}--critical {
-      &#{$button}--ghost {
-        &:not(:disabled) {
-          &:hover {
-            #{$button}__icon {
-              background-color: var(--ods-color-critical-700);
-            }
-          }
-
-          &:active {
-            #{$button}__icon {
-              background-color: var(--ods-color-critical-800);
-            }
-          }
-        }
-
-        #{$button}__icon {
-          background-color: var(--ods-color-critical-500);
-        }
-      }
-
-      &#{$button}--outline {
-        &:not(:disabled) {
-          &:hover {
-            #{$button}__icon {
-              background-color: var(--ods-color-critical-700);
-            }
-          }
-
-          &:active {
-            #{$button}__icon {
-              background-color: var(--ods-color-critical-800);
-            }
-          }
-        }
-
-        #{$button}__icon {
-          background-color: var(--ods-color-critical-500);
-        }
-      }
-    }
-
-    &#{$button}--primary {
-      &#{$button}--ghost {
-        &:not(:disabled) {
-          &:hover {
-            #{$button}__icon {
-              background-color: var(--ods-color-primary-700);
-            }
-          }
-
-          &:active {
-            #{$button}__icon {
-              background-color: var(--ods-color-primary-800);
-            }
-          }
-        }
-
-        #{$button}__icon {
-          background-color: var(--ods-color-primary-500);
-        }
-      }
-
-      &#{$button}--outline {
-        &:not(:disabled) {
-          &:hover {
-            #{$button}__icon {
-              background-color: var(--ods-color-primary-700);
-            }
-          }
-
-          &:active {
-            #{$button}__icon {
-              background-color: var(--ods-color-primary-800);
-            }
-          }
-        }
-
-        #{$button}__icon {
-          background-color: var(--ods-color-primary-500);
-        }
-      }
-    }
-    // TODO remove all this when using fonts for icons
-    // ---------------------------------------------------------------
   }
 }

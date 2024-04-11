@@ -2,6 +2,7 @@ import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/os
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html';
 import { ODS_ICON_NAMES } from '@ovhcloud/ods-components';
+import { AutocompletePlay } from './demo.logic.stories';
 import { extractArgTypes, extractStoryParams, getTagAttributes } from '../../../core/componentHTMLUtils';
 
 defineCustomElement();
@@ -76,8 +77,26 @@ const TemplateWithoutLogic = (args:any) => html`
     ${unsafeHTML(args.extraOptions)}
   </osds-autocomplete>
 `;
+
 export const WithoutLogic = TemplateWithoutLogic.bind({});
 // @ts-ignore
 WithoutLogic.args = {
   ...extractStoryParams(storyParams),
 };
+
+/* WithLogic */
+const TemplateWithLogic = (args:any) => html`
+  <osds-autocomplete ...=${getTagAttributes(args)}>
+  </osds-autocomplete>
+`;
+
+export const WithLogic = TemplateWithLogic.bind({});
+
+type WithLogicProps = {
+  args: Record<string, unknown>;
+  play: () => Promise<void>;
+};
+(WithLogic as unknown as WithLogicProps).args = {
+  ...(extractStoryParams(storyParams) as Record<string, unknown>),
+};
+(WithLogic as unknown as WithLogicProps).play = AutocompletePlay;

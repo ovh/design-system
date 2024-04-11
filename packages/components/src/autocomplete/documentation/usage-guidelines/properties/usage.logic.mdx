@@ -1,0 +1,68 @@
+import WithLogicComponent from '../logic/WithLogicComponent.ts';
+import { Canvas } from '@storybook/addon-docs';
+
+The `osds-autocomplete` component is a versatile visual tool designed to enhance user experience by providing a dynamic and responsive option selection mechanism. It allows users to quickly find and select from a list of options, reducing the need for extensive navigation and search.
+
+Please keep in mind that the `osds-autocomplete` does not integrate any sorting logic by itself.
+
+#### Implementing Dynamic Option Updating
+
+We provide you here with an example of how options can be dynamically updated based on user input. This example serves an informative purpose, and is only one way of how you could implement this logic on the `osds-autocomplete`.
+
+<Canvas withSource="none">
+  <div style={{ height: '300px' }}>
+    <osds-autocomplete id="logic" clearable="true" placeholder="Bonjour">
+    </osds-autocomplete>
+  </div>
+</Canvas>
+
+<WithLogicComponent />
+
+```html
+<osds-autocomplete id="logic" clearable="true" placeholder="Bonjour">
+  [... -> Leave it empty to edit the slot]
+</osds-autocomplete>
+```
+
+```javascript
+<script>
+  const autocomplete = document.querySelector('#logic');
+
+  const database = [
+    { value: 'Hello', text: 'Hello World' },
+    { value: 'How', text: 'How are you today?' },
+    { value: 'Bonjour', text: 'Bonjour tout le monde' },
+    { value: 'Hola', text: 'Hola Mundo' },
+    { value: 'Fizz', text: 'Buzz' },
+    { value: 'Auto', text: 'Autocomplete' },
+  ];
+
+  const updateOptions = (value) => {
+    while (autocomplete && autocomplete.firstChild) {
+      autocomplete.removeChild(autocomplete.firstChild);
+    }
+    const regex = new RegExp(value, 'i');
+
+    database.forEach((entry) => {
+      if (regex.test(entry.text)) {
+        const optionElement = document.createElement('osds-select-option');
+        optionElement.value = entry.value;
+        optionElement.tabIndex = 1;
+        const textElem = document.createElement('osds-text');
+        textElem.innerHTML = entry.text.replace(regex, '<b>$&</b>');
+        optionElement.appendChild(textElem);
+        autocomplete?.appendChild(optionElement);
+      }
+    });
+  };
+
+  if (autocomplete) {
+    autocomplete.addEventListener('odsValueChange', (event) => {
+      const detail = event.detail;
+      updateOptions(detail.value);
+    });
+
+    updateOptions('');
+  }
+</script>
+```

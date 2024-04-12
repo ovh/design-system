@@ -56,13 +56,19 @@ export class OdsTag {
           tabindex={ this.isDisabled ? -1 : 0 }>
           {
             !!this.icon &&
-            <ods-icon name={ this.icon }>
+            <ods-icon
+              class="ods-tag__tag__icon"
+              name={ this.icon }>
             </ods-icon>
           }
 
-          { this.label }
+          <span class="ods-tag__tag__label">
+            { this.label }
+          </span>
 
-          <ods-icon name={ ODS_ICON_NAME.cross }>
+          <ods-icon
+            class="ods-tag__tag__close"
+            name={ ODS_ICON_NAME.cross }>
           </ods-icon>
         </div>
       </Host>

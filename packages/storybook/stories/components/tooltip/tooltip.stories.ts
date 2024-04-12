@@ -64,19 +64,6 @@ export const Demo: StoryObj = {
   },
 };
 
-export const Overview: StoryObj = {
-  tags: ['isHidden'],
-  render: () => html`
-<ods-text preset="paragraph">Lorem ipsum &nbsp;</ods-text>
-<ods-icon id="trigger-2"
-          name="help-circle">
-</ods-icon>
-<ods-tooltip trigger-id="trigger-2">
-  Tooltip content
-</ods-tooltip>
-  `,
-};
-
 export const Default: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
@@ -108,11 +95,11 @@ export const CustomCSS: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
 <ods-text preset="paragraph">Lorem ipsum &nbsp;</ods-text>
-<ods-icon id="trigger-5"
+<ods-icon id="trigger-2"
           name="help-circle">
 </ods-icon>
 <ods-tooltip position="top-start"
-             trigger-id="trigger-5"
+             trigger-id="trigger-2"
              with-arrow>
   <p class="custom-tooltip">
     Top-start tooltip

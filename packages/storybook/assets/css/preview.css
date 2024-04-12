@@ -7,6 +7,16 @@
  * TYPOGRAPHY
  ***************************************/
 
+html body *:not(pre):not(code),
+html body .sbdocs-content *:not(pre):not(code) {
+  font-family: var(--ods-font-family-default);
+}
+
+pre,
+code {
+  font-family: var(--ods-font-family-code) !important;
+}
+
 .sbdocs-content > h1,
 .sbdocs-content > div:not(.sb-unstyled) > h1,
 .sbdocs-content > h2,
@@ -19,18 +29,14 @@
 .sbdocs-content > div:not(.sb-unstyled) > h5,
 .sbdocs-content > h6,
 .sbdocs-content > div:not(.sb-unstyled) > h6 {
-  font-family: var(--ods-font-family-default);
   color: var(--ods-color-primary-800);
 }
 
 .sbdocs-content :where(span:not(.sb-anchor, .sb-unstyled, .sb-unstyled span)) {
-  font-family: var(--ods-font-family-default) !important;
   font-size: 1rem !important;
 }
 
 .sbdocs-content :where(p:not(.sb-anchor, .sb-unstyled, .sb-unstyled p)) {
-  font-family: var(--ods-font-family-default) !important;
-  color: var(--ods-color-primary-800) !important;
   font-size: 1rem !important;
 }
 
@@ -39,7 +45,6 @@
  ***************************************/
 
 .toc-link {
-  font-family: var(--ods-font-family-default) !important;
   color: var(--ods-color-primary-500) !important;
   font-size: 1rem;
 }

@@ -61,7 +61,7 @@ export const All: StoryObj = {
   },
 };
 
-export const Overview: StoryObj = {
+export const Default: StoryObj = {
   tags: ['isHidden'],
   parameters: {
     layout: 'centered',

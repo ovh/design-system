@@ -1,3 +1,4 @@
+@import '../../../../../style/font';
 @import '../../../../../style/tag';
 
 :host(.ods-tag) {
@@ -77,10 +78,24 @@
 
     &--md {
       @include ods-tag-size('md');
+
+      & #{$tag}__close,
+      & #{$tag}__icon {
+        font-size: 1rem;
+      }
     }
 
     &--lg {
       @include ods-tag-size('lg');
+
+      & #{$tag}__close,
+      & #{$tag}__icon {
+        font-size: 1.25rem;
+      }
+    }
+
+    &__label {
+      @include ellipsis();
     }
   }
 }

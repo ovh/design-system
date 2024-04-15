@@ -16,6 +16,7 @@ import { DEFAULT_ATTRIBUTE } from './constants/default-attributes';
 import { DEFAULT_VALIDITY_STATE } from './constants/default-validity-state';
 import { OdsAutocompleteController } from './core/controller';
 import { ODS_INPUT_TYPE } from '../../../../input/src';
+import { ODS_SPINNER_SIZE } from '../../../../spinner/src';
 
 ocdkDefineCustomElements();
 
@@ -376,7 +377,10 @@ export class OsdsAutocomplete implements OdsAutocompleteAttribute, OdsAutocomple
             }}>
             {this.isLoading
               ? <div class='autocomplete__surface__loading'>
-                <osds-spinner inline size='sm'/>
+                <osds-spinner
+                  inline
+                  size={ODS_SPINNER_SIZE.sm}
+                />
               </div>
               : <slot onSlotchange={(): Promise<void> => this.handleSlotChange()}></slot>
             }

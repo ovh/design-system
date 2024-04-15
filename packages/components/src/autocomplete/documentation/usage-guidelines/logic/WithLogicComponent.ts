@@ -1,4 +1,4 @@
-import type { OsdsAutocomplete } from '@ovhcloud/ods-components';
+import type { OsdsAutocomplete } from '../../../src/components/osds-autocomplete/public-api';
 import React, { useEffect } from 'react';
 
 type DatabaseEntry = {

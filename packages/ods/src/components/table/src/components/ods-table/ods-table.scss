@@ -1,0 +1,35 @@
+@use '~@ovhcloud/ods-themes/src/default/variables' as theme;
+@use '../../../../../style/table';
+
+.ods-table {
+  &--sm {
+    table {
+      @include table.ods-table('sm');
+    }
+  }
+
+  &--md {
+    table {
+      @include table.ods-table('md');
+    }
+  }
+
+  &--lg {
+    table {
+      @include table.ods-table('lg');
+    }
+  }
+
+  &--striped {
+    table {
+      tbody {
+        tr:nth-child(2n) {
+          th,
+          td {
+            background-color: theme.$ods-color-neutral-050;
+          }
+        }
+      }
+    }
+  }
+}

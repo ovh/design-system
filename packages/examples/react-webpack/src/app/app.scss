@@ -4,10 +4,10 @@
 .app {
   font-family: var(--ods-font-family-default);
 
-  // &__title {
-  //   //@include ods.ods-headline();
-  //   @include ods-headline();
-  // }
+   &__title {
+     //@include ods.ods-text-heading-1();
+     @include ods-text-heading-1();
+   }
 
   &__code {
     font-family: var(--ods-font-family-code);

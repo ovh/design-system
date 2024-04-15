@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/ods-button';
 import { ODS_BUTTON_COLOR, ODS_BUTTON_COLORS, ODS_BUTTON_SIZE, ODS_BUTTON_SIZES, ODS_BUTTON_VARIANT, ODS_BUTTON_VARIANTS, ODS_ICON_NAMES } from '@ovhcloud/ods-components';
-import { CONTROL_CATEGORY, orderControls } from '../../control';
 import { html } from 'lit-html';
+import { CONTROL_CATEGORY, orderControls } from '../../control';
 
 defineCustomElement();
 

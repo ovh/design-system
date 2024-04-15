@@ -1,0 +1,80 @@
+@use '~@ovhcloud/ods-themes/src/default/variables' as theme;
+
+@mixin ods-table($size) {
+  width: 100%;
+  border-collapse: collapse;
+
+  caption {
+    padding: 8px;
+    caption-side: bottom;
+    font-weight: 600;
+  }
+
+  thead,
+  tbody,
+  tfoot {
+    tr {
+      th,
+      td {
+        box-sizing: border-box;
+        min-width: calc(100vw / 3);
+        line-height: 1rem;
+
+        @if $size == 'sm' {
+          padding: 8px;
+          min-height: 32px;
+        } @else if $size == 'md' {
+          padding: 16px 8px;
+          min-height: 48px;
+        } @else if $size == 'lg' {
+          padding: 24px 8px;
+          min-height: 64px;
+        }
+      }
+    }
+  }
+
+  thead {
+    tr {
+      th {
+        border: 1px solid theme.$ods-color-neutral-100;
+        background-color: theme.$ods-color-neutral-000;
+        color: theme.$ods-color-primary-800;
+        font-weight: 600;
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      th,
+      td {
+        border-top: 1px solid theme.$ods-color-neutral-100;
+        border-bottom: 1px solid theme.$ods-color-neutral-100;
+        background-color: theme.$ods-color-neutral-000;
+        color: theme.$ods-color-text;
+
+        &:first-child {
+          border-left: 1px solid theme.$ods-color-neutral-100;
+        }
+
+        &:last-child {
+          border-right: 1px solid theme.$ods-color-neutral-100;
+        }
+      }
+    }
+  }
+
+  @media screen and (width >= (theme.$ods-breakpoint-mobile)) {
+    thead,
+    tbody,
+    tfoot {
+      tr {
+        th,
+        td {
+          min-width: auto;
+        }
+      }
+    }
+  }
+}

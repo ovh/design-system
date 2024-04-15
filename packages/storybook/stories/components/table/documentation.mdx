@@ -1,0 +1,48 @@
+import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import SpecificationsTable from '@ovhcloud/ods-components/src/components/table/documentation/spec.md?raw';
+import { Banner } from '../../Banner';
+import * as TableStories from './table.stories';
+
+<Meta of={ TableStories } name='Documentation' />
+
+<Banner of={ TableStories } />
+
+# Overview
+
+Table is a wrapper for displaying tables:
+
+<Canvas of={ TableStories.Default } sourceState='none' />
+
+<div>
+  <osds-button color="primary" variant="ghost" href="https://zeroheight.com/6fc8a63f7/p/82b71b-link/b/40a887" target="_blank">
+    ZEROHEIGHT - TABLE DESIGN GUIDELINES  
+
+    <osds-icon name="external-link" color="primary" size="xs" />
+  </osds-button>
+</div>
+
+# API
+
+<Markdown>{ SpecificationsTable }</Markdown>
+
+# Style customization
+
+The web component is just a wrapper of a native table element that will apply the correct style.
+
+You can apply your own style on each part of the table directly.
+
+# Examples
+
+## Usage
+
+### Default
+
+<Canvas of={ TableStories.Default } sourceState='shown' />
+
+## Size
+
+<Canvas of={ TableStories.Size } sourceState='shown' />
+
+## Variant
+
+<Canvas of={ TableStories.Variant } sourceState='shown' />

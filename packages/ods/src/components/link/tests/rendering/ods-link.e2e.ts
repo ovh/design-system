@@ -39,9 +39,9 @@ describe('ods-link rendering', () => {
   });
 
   it('should get class disabled', async() => {
-    await setup('<ods-link disabled></ods-link>');
+    await setup('<ods-link is-disabled></ods-link>');
 
-    expect(el.getAttribute('disabled')).toBe('');
+    expect(el.getAttribute('is-disabled')).toBe('');
     expect(aElement.classList.contains('ods-link__link--disabled')).toBe(true);
   });
 

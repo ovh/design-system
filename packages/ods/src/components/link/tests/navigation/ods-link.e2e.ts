@@ -22,7 +22,7 @@ describe('ods-link navigation', () => {
   });
 
   it('should not be focused when  disabled', async() => {
-    await setup('<ods-link label="some link" disabled href="https://www.ovhcloud.com/fr/"></ods-link>');
+    await setup('<ods-link label="some link" is-disabled href="https://www.ovhcloud.com/fr/"></ods-link>');
     await page.keyboard.press('Tab');
     const focusedTagName = await page.evaluate(() => document.activeElement?.tagName);
     expect(focusedTagName).not.toBe('ODS-LINK');
@@ -39,7 +39,7 @@ describe('ods-link navigation', () => {
 
   it('should not trigger link on Enter when disabled', async() => {
     const href = 'https://www.ovhcloud.com/fr/';
-    await setup(`<ods-link label="some link" disabled href="${href}"></ods-link>`);
+    await setup(`<ods-link label="some link" is-disabled href="${href}"></ods-link>`);
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
     await page.waitForNetworkIdle();
@@ -56,7 +56,7 @@ describe('ods-link navigation', () => {
 
   it('should not trigger link on click when disabled', async() => {
     const href = 'https://www.ovhcloud.com/fr/';
-    await setup(`<ods-link label="some link" disabled href="${href}"></ods-link>`);
+    await setup(`<ods-link label="some link" is-disabled href="${href}"></ods-link>`);
     await el.click();
     await page.waitForNetworkIdle();
     expect(page.url()).not.toBe(href);

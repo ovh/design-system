@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ODS_SPINNER_SIZE } from '@ovhcloud/ods-components';
 import { OdsSpinner } from '@ovhcloud/ods-components/react';
-import { ODS_THEME } from '@ovhcloud/ods-themes';
+// import { ODS_THEME } from '@ovhcloud/ods-themes';
 import styles from './app.scss';
 
 // const fontWeights = [200, 300, 400, 500, 600, 700, 800, 900];
@@ -18,7 +18,8 @@ const App = () => {
   }
 
   function onDarkThemeClick() {
-    setTheme(ODS_THEME.dark)
+    // TODO Theme is not yet implemented
+    // setTheme(ODS_THEME.dark)
   }
 
   function onNoThemeClick() {

@@ -15,3 +15,5 @@ export * from './tooltip/src';
 export * from './button/src';
 export * from './tag/src';
 export * from './badge/src';
+
+export * from './table/src';

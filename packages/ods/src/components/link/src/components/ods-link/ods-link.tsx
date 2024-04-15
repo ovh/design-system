@@ -9,10 +9,10 @@ import { ODS_LINK_COLOR, type OdsLinkColor } from '../../constant/link-color';
 })
 export class OdsLink {
   @Prop({ reflect: true }) public color: OdsLinkColor = ODS_LINK_COLOR.primary;
-  @Prop({ reflect: true }) public disabled: boolean = false;
   @Prop({ reflect: true }) public download?: HTMLAnchorElement['download'];
   @Prop({ reflect: true }) public href!: string;
   @Prop({ reflect: true }) public icon?: OdsIconName;
+  @Prop({ reflect: true }) public isDisabled: boolean = false;
   @Prop({ reflect: true }) public label?: string;
   @Prop({ reflect: true }) public referrerpolicy?: ReferrerPolicy;
   @Prop({ reflect: true }) public rel?: HTMLAnchorElement['rel'];
@@ -20,7 +20,7 @@ export class OdsLink {
 
   @Listen('click')
   onClick(event: MouseEvent): void {
-    if (this.disabled) {
+    if (this.isDisabled) {
       event.preventDefault();
       event.stopPropagation();
     }
@@ -31,7 +31,7 @@ export class OdsLink {
       <Host class="ods-link">
         <a class={{
           'ods-link__link': true,
-          'ods-link__link--disabled': this.disabled ?? false,
+          'ods-link__link--disabled': this.isDisabled ?? false,
           [`ods-link__link--${this.color}`]: true,
         }}
         download={ this.download }
@@ -39,7 +39,7 @@ export class OdsLink {
         part="link"
         referrerPolicy={ this.referrerpolicy }
         rel={ this.rel }
-        tabindex={ this.disabled ? -1 : 0 }
+        tabindex={ this.isDisabled ? -1 : 0 }
         target={ this.target }>
           <span>
             { this.label }

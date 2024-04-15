@@ -18,10 +18,10 @@ export const Demo: StoryObj = {
     <ods-link
       class="my-link-demo"
       color="${args.color}"
-      disabled="${args.disabled}"
       download="${args.download}"
       href="${args.href}"
       icon="${args.icon}"
+      is-disabled="${args.isDisabled}"
       label="${args.label}"
       rel="${args.rel}"
       referrerpolicy="${args.referrerpolicy}"
@@ -64,14 +64,6 @@ export const Demo: StoryObj = {
       control: 'text',
       description: 'Set a custom style properties on the icon. Example: "width: 2rem; height: 2rem;"',
     },
-    disabled: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: 'false' },
-        type: { summary: 'boolean' },
-      },
-      control: 'boolean',
-    },
     download: {
       table: {
         category: CONTROL_CATEGORY.general,
@@ -96,6 +88,14 @@ export const Demo: StoryObj = {
       control: 'select',
       options: ODS_ICON_NAMES,
       description: 'See the whole list [here](/?path=/docs/ods-components-content-icon--documentation#name)'
+    },
+    isDisabled: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: 'false' },
+        type: { summary: 'boolean' },
+      },
+      control: 'boolean',
     },
     label: {
       table: {
@@ -132,7 +132,7 @@ export const Demo: StoryObj = {
   }),
   args: {
     color: ODS_LINK_COLOR.primary,
-    disabled: false,
+    isDisabled: false,
     label: 'my label',
   },
 };
@@ -151,14 +151,12 @@ export const Color: StoryObj = {
   `,
 };
 
-
 export const Disabled: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
-<ods-link href="https://www.ovhcloud.com/" disabled="false" label="Not Disabled"></ods-link>
-<ods-link href="https://www.ovhcloud.com/" disabled label="Disabled"></ods-link>  `,
+<ods-link href="https://www.ovhcloud.com/" is-disabled="false" label="Not Disabled"></ods-link>
+<ods-link href="https://www.ovhcloud.com/" is-disabled label="Disabled"></ods-link>  `,
 };
-
 
 export const Icon: StoryObj = {
   tags: ['isHidden'],
@@ -166,7 +164,6 @@ export const Icon: StoryObj = {
 <ods-link href="https://www.ovhcloud.com/" label="Icon Link" icon="warning"></ods-link>
   `,
 };
-
 
 export const Target: StoryObj = {
   tags: ['isHidden'],
@@ -179,7 +176,6 @@ export const Target: StoryObj = {
 </div>
   `,
 };
-
 
 export const CustomCSSLink: StoryObj = {
   tags: ['isHidden'],

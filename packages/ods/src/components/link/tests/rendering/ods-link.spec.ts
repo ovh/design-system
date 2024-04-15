@@ -35,15 +35,15 @@ describe('ods-link rendering', () => {
 
   describe('disabled', () => {
     it('should be reflected', async() => {
-      await setup(`<ods-link disabled></ods-link>`);
+      await setup(`<ods-link is-disabled></ods-link>`);
 
-      expect(root?.getAttribute('disabled')).toBe('');
+      expect(root?.getAttribute('is-disabled')).toBe('');
     });
 
     it('should render with expected default value', async() => {
       await setup(`<ods-link></ods-link>`);
 
-      expect(root?.getAttribute('disabled')).toBe(null);
+      expect(root?.getAttribute('is-disabled')).toBe(null);
     });
   });
 

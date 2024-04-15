@@ -1,4 +1,4 @@
-@import './focus';
+@use './focus';
 
 @mixin ods-button() {
   display: inline-flex;
@@ -19,7 +19,7 @@
   }
 
   &:focus-visible {
-    @include ods-focus;
+    @include focus.ods-focus();
   }
 }
 

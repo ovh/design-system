@@ -4,7 +4,7 @@ import { OdsSpinner } from '@ovhcloud/ods-components/react';
 import { ODS_THEME } from '@ovhcloud/ods-themes';
 import styles from './app.scss';
 
-const fontWeights = [200, 300, 400, 500, 600, 700, 800, 900];
+// const fontWeights = [200, 300, 400, 500, 600, 700, 800, 900];
 
 const App = () => {
   const [theme, setTheme] = useState<string>()
@@ -31,19 +31,19 @@ const App = () => {
         Headline with ODS mixin
       </h1>
 
-      <div className={ styles['app__code'] }>
-        {
-          fontWeights.map((fontWeight, idx) => (
-            <p style={{ fontWeight, fontStyle: 'italic' }} key={ idx }>Code { fontWeight } italic</p>
-          ))
-        }
+      {/*<div className={ styles['app__code'] }>*/}
+      {/*  {*/}
+      {/*    fontWeights.map((fontWeight, idx) => (*/}
+      {/*      <p style={{ fontWeight, fontStyle: 'italic' }} key={ idx }>Code { fontWeight } italic</p>*/}
+      {/*    ))*/}
+      {/*  }*/}
 
-        {
-          fontWeights.map((fontWeight, idx) => (
-            <p style={{ fontWeight }} key={ idx }>Code { fontWeight } normal</p>
-          ))
-        }
-      </div>
+      {/*  {*/}
+      {/*    fontWeights.map((fontWeight, idx) => (*/}
+      {/*      <p style={{ fontWeight }} key={ idx }>Code { fontWeight } normal</p>*/}
+      {/*    ))*/}
+      {/*  }*/}
+      {/*</div>*/}
 
       <OdsSpinner size={ ODS_SPINNER_SIZE.sm } />
       <OdsSpinner />

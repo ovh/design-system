@@ -1,4 +1,4 @@
-@import './focus';
+@use './focus';
 
 $ods-tag-height-sm: 16px;
 $ods-tag-height-md: 20px;
@@ -13,7 +13,7 @@ $ods-tag-height-lg: 28px;
   cursor: pointer;
 
   &:focus-visible {
-    @include ods-focus();
+    @include focus.ods-focus();
   }
 }
 

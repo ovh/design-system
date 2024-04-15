@@ -1,5 +1,4 @@
 enum ODS_THEME {
-  dark = 'dark',
   default = 'default',
 }
 

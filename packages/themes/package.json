@@ -7,12 +7,8 @@
     ".": {
       "default": "./dist/index.js"
     },
-    "./dark": {
-      "sass": "./src/dark/index.scss",
-      "default": "./dist/dark/index.css"
-    },
     "./default": {
-      "sass": "./src/default/index.scss",
+      "sass": "./src/default/variables.scss",
       "default": "./dist/default/index.css"
     }
   },

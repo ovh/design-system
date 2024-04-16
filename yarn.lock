@@ -3938,7 +3938,16 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+<<<<<<< HEAD
 >>>>>>> 7ad9d6e7b (feat(medium): implement component)
+=======
+"@ovhcloud/ods-component-quantity@workspace:packages/ods/src/components/quantity":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-quantity@workspace:packages/ods/src/components/quantity"
+  languageName: unknown
+  linkType: soft
+
+>>>>>>> f3c951398 (refactor(quantity): implement component)
 "@ovhcloud/ods-component-skeleton@workspace:packages/ods/src/components/skeleton":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-skeleton@workspace:packages/ods/src/components/skeleton"

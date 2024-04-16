@@ -1,5 +1,5 @@
-@import '../../../../../style/badge';
-@import '../../../../../style/font';
+@use '../../../../../style/badge';
+@use '../../../../../style/font';
 
 :host(.ods-badge) {
   display: inline-block;
@@ -9,30 +9,30 @@
   &__badge {
     $badge: &;
 
-    @include ods-badge();
+    @include badge.ods-badge();
 
     &--information {
-      @include ods-badge-color('information');
+      @include badge.ods-badge-color('information');
     }
 
     &--success {
-      @include ods-badge-color('success');
+      @include badge.ods-badge-color('success');
     }
 
     &--warning {
-      @include ods-badge-color('warning');
+      @include badge.ods-badge-color('warning');
     }
 
     &--round {
-      @include ods-badge-shape('round');
+      @include badge.ods-badge-shape('round');
     }
 
     &--square {
-      @include ods-badge-shape('square');
+      @include badge.ods-badge-shape('square');
     }
 
     &--sm {
-      @include ods-badge-size('sm');
+      @include badge.ods-badge-size('sm');
 
       & #{$badge}__icon {
         font-size: 0.875rem;
@@ -40,7 +40,7 @@
     }
 
     &--md {
-      @include ods-badge-size('md');
+      @include badge.ods-badge-size('md');
 
       & #{$badge}__icon {
         font-size: 1rem;
@@ -48,11 +48,11 @@
     }
 
     &--lg {
-      @include ods-badge-size('lg');
+      @include badge.ods-badge-size('lg');
     }
 
     &__label {
-      @include ellipsis();
+      @include font.ellipsis();
     }
   }
 }

@@ -1,7 +1,7 @@
-@import '../../../../../style/tooltip';
+@use '../../../../../style/tooltip';
 
 :host(.ods-tooltip) {
-  @include ods-tooltip;
+  @include tooltip.ods-tooltip();
 
   display: none;
   position: absolute;

@@ -4600,7 +4600,11 @@ __metadata:
     "@floating-ui/dom": 1.6.3
 >>>>>>> 45aa23219 (feat(tooltip): implement component)
     "@jest/types": 29.6.3
+<<<<<<< HEAD
 >>>>>>> 988d69ce3 (refactor(app): setup new architecture)
+=======
+    "@ovhcloud/ods-themes": 17.1.0
+>>>>>>> 3a3ee275e (refactor(style): replace css var by sass var on each components)
     "@stencil-community/postcss": 2.2.0
     "@stencil/core": 4.12.2
     "@stencil/react-output-target": 0.5.3
@@ -4680,8 +4684,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+<<<<<<< HEAD
 "@ovhcloud/ods-themes@workspace:packages/themes":
 >>>>>>> 988d69ce3 (refactor(app): setup new architecture)
+=======
+"@ovhcloud/ods-themes@17.1.0, @ovhcloud/ods-themes@workspace:packages/themes":
+>>>>>>> 3a3ee275e (refactor(style): replace css var by sass var on each components)
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-themes@workspace:packages/themes"
   dependencies:

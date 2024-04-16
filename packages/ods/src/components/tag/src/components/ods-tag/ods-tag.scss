@@ -1,5 +1,6 @@
-@import '../../../../../style/font';
-@import '../../../../../style/tag';
+@use '~@ovhcloud/ods-themes/src/default/variables' as theme;
+@use '../../../../../style/font';
+@use '../../../../../style/tag';
 
 :host(.ods-tag) {
   display: inline-block;
@@ -9,75 +10,75 @@
   &__tag {
     $tag: &;
 
-    @include ods-tag();
+    @include tag.ods-tag();
 
     &:not(&#{$tag}--disabled) {
       &#{$tag}--default {
         &#{$tag}--critical {
-          @include ods-tag-variant-default('critical');
+          @include tag.ods-tag-variant-default('critical');
         }
 
         &#{$tag}--information {
-          @include ods-tag-variant-default('information');
+          @include tag.ods-tag-variant-default('information');
         }
 
         &#{$tag}--neutral {
-          @include ods-tag-variant-default('neutral');
+          @include tag.ods-tag-variant-default('neutral');
         }
 
         &#{$tag}--success {
-          @include ods-tag-variant-default('success');
+          @include tag.ods-tag-variant-default('success');
         }
 
         &#{$tag}--warning {
-          @include ods-tag-variant-default('warning');
+          @include tag.ods-tag-variant-default('warning');
         }
       }
 
       &#{$tag}--outline {
         &#{$tag}--critical {
-          @include ods-tag-variant-outline('critical');
+          @include tag.ods-tag-variant-outline('critical');
         }
 
         &#{$tag}--information {
-          @include ods-tag-variant-outline('information');
+          @include tag.ods-tag-variant-outline('information');
         }
 
         &#{$tag}--neutral {
-          @include ods-tag-variant-outline('neutral');
+          @include tag.ods-tag-variant-outline('neutral');
         }
 
         &#{$tag}--success {
-          @include ods-tag-variant-outline('success');
+          @include tag.ods-tag-variant-outline('success');
         }
 
         &#{$tag}--warning {
-          @include ods-tag-variant-outline('warning');
+          @include tag.ods-tag-variant-outline('warning');
         }
       }
     }
 
     &--disabled {
-      border-color: var(--ods-color-neutral-300);
-      background-color: var(--ods-color-neutral-300);
+      border-color: theme.$ods-color-neutral-300;
+      background-color: theme.$ods-color-neutral-300;
       cursor: not-allowed;
-      color: var(--ods-color-neutral-600);
+      color: theme.$ods-color-neutral-600;
     }
 
     &--round {
-      @include ods-tag-shape('round');
+      @include tag.ods-tag-shape('round');
     }
 
     &--square {
-      @include ods-tag-shape('square');
+      @include tag.ods-tag-shape('square');
     }
 
     &--sm {
-      @include ods-tag-size('sm');
+      @include tag.ods-tag-size('sm');
     }
 
     &--md {
-      @include ods-tag-size('md');
+      @include tag.ods-tag-size('md');
 
       & #{$tag}__close,
       & #{$tag}__icon {
@@ -86,7 +87,7 @@
     }
 
     &--lg {
-      @include ods-tag-size('lg');
+      @include tag.ods-tag-size('lg');
 
       & #{$tag}__close,
       & #{$tag}__icon {
@@ -95,7 +96,7 @@
     }
 
     &__label {
-      @include ellipsis();
+      @include font.ellipsis();
     }
   }
 }

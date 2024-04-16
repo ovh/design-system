@@ -1,6 +1,7 @@
 import { Canvas, Meta, Markdown } from '@storybook/blocks';
 import SpecificationsBadge from '@ovhcloud/ods-components/src/components/badge/documentation/spec.md?raw';
-import { Banner } from '../../Banner';
+import { Banner } from '../../banner';
+import { DocNavigator } from '../../doc-navigator';
 import * as BadgeStories from './badge.stories';
 
 <Meta of={ BadgeStories } name='Documentation' />
@@ -13,13 +14,7 @@ Badge show concise metadata or the current status for an item, in a compact form
 
 <Canvas of={ BadgeStories.Default } sourceState='none' />
 
-<div>
-  <osds-button color="primary" variant="ghost" href="https://zeroheight.com/6fc8a63f7/p/82b71b-link/b/40a887" target="_blank">
-    ZEROHEIGHT - BADGE DESIGN GUIDELINES  
-
-    <osds-icon name="external-link" color="primary" size="xs" />
-  </osds-button>
-</div>
+<DocNavigator of={ BadgeStories } />
 
 # API
 

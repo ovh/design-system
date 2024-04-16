@@ -1,6 +1,7 @@
 import { Canvas, Meta, Markdown } from '@storybook/blocks';
 import SpecificationsButton from '@ovhcloud/ods-components/src/components/button/documentation/spec.md?raw';
-import { Banner } from '../../Banner';
+import { Banner } from '../../banner';
+import { DocNavigator } from '../../doc-navigator';
 import * as ButtonStories from './button.stories';
 
 <Meta of={ ButtonStories } name='Documentation' />
@@ -13,13 +14,7 @@ Button component aims to initiate an action. Its text indicates the related inte
 
 <Canvas of={ ButtonStories.Default } sourceState='none' />
 
-<div>
-  <osds-button color="primary" variant="ghost" href="https://zeroheight.com/6fc8a63f7/p/9017bb-spinner/b/40a887" target="_blank">
-    ZEROHEIGHT - BUTTON DESIGN GUIDELINES  
-
-    <osds-icon name="external-link" color="primary" size="xs" />
-  </osds-button>
-</div>
+<DocNavigator of={ ButtonStories } />
 
 # API
 

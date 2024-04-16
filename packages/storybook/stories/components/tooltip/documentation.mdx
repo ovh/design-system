@@ -1,6 +1,7 @@
 import { Canvas, Meta, Markdown } from '@storybook/blocks';
 import SpecificationsTooltip from '@ovhcloud/ods-components/src/components/tooltip/documentation/spec.md?raw';
-import { Banner } from '../../Banner';
+import { Banner } from '../../banner';
+import { DocNavigator } from '../../doc-navigator';
 import * as TooltipStories from './tooltip.stories';
 
 <Meta of={ TooltipStories } name='Documentation' />
@@ -11,12 +12,7 @@ import * as TooltipStories from './tooltip.stories';
 
 <Canvas of={ TooltipStories.Overview } sourceState='none' />
 
-<div>
-  <a href="#"
-     target="_blank">
-    ZEROHEIGHT - SKELETON DESIGN GUIDELINES &nbsp;
-  </a>
-</div>
+<DocNavigator of={ TooltipStories } />
 
 # API
 

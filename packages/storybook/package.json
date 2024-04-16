@@ -21,6 +21,7 @@
   "devDependencies": {
     "@storybook/addon-a11y": "8.0.4",
     "@storybook/addon-essentials": "8.0.4",
+    "@storybook/addon-links": "8.0.4",
     "@storybook/blocks": "8.0.4",
     "@storybook/test": "8.0.4",
     "@storybook/web-components": "8.0.4",

@@ -1,5 +1,6 @@
+@use '~@ovhcloud/ods-themes/src/default/variables' as theme;
 @use '../../../../../style/focus';
-@import '../../../../../style/input';
+@use '../../../../../style/input';
 
 :host(.ods-input) {
   position: relative;
@@ -10,10 +11,10 @@
     display: inline-flex;
     position: absolute;
     top: 0;
-    right: var(--ods-spacing-4);
+    right: 4px;
     border: none;
     background: none;
-    color: var(--ods-color-primary-500);
+    color: theme.$ods-color-primary-500;
 
     &:focus-visible {
       @include focus.ods-focus();
@@ -27,20 +28,20 @@
   &__input {
     $input: &;
 
-    @include ods-input;
+    @include input.ods-input();
 
     &:not(#{$input}--error) {
       &:focus {
-        border-color: var(--ods-form-element-border-color-focused);
+        border-color: theme.$ods-form-element-border-color-focused;
       }
 
       &:hover {
-        border-color: var(--ods-form-element-border-color-hover);
+        border-color: theme.$ods-form-element-border-color-hover;
       }
     }
 
     &--disabled {
-      background: var(--ods-color-neutral-100);
+      background: theme.$ods-color-neutral-100;
       cursor: not-allowed;
       user-select: none;
 
@@ -50,19 +51,19 @@
     }
 
     &--error {
-      border-color: var(--ods-form-element-border-color-critical);
+      border-color: theme.$ods-form-element-border-color-critical;
     }
   }
 
   &__spinner {
     position: absolute;
     top: 0;
-    right: var(--ods-spacing-4);
-    padding: 0 var(--ods-spacing-4);
+    right: 4px;
+    padding: 0 4px;
 
     &::part(spinner) {
-      width: var(--ods-spacing-16);
-      height: var(--ods-spacing-16);
+      width: 16px;
+      height: 16px;
     }
   }
 }

@@ -1,6 +1,7 @@
 import { Canvas, Meta, Markdown } from '@storybook/blocks';
 import Specifications{{> ComponentName }} from '@ovhcloud/ods-{{> component-dir}}/src/components/{{> component-name }}/documentation/spec.md?raw';
-import { Banner } from '../../Banner';
+import { Banner } from '../../banner';
+import { DocNavigator } from '../../doc-navigator';
 import * as {{> ComponentName }}Stories from './{{> component-name }}.stories';
 
 <Meta of={ {{> ComponentName }}Stories } name='Documentation' />
@@ -13,13 +14,7 @@ TODO Some text about the component
 
 <Canvas of={ {{> ComponentName }}Stories.Default } sourceState='none' />
 
-<div>
-  <osds-button color="primary" variant="ghost" href="https://zeroheight.com/6fc8a63f7/p/82b71b-link/b/40a887" target="_blank">
-    ZEROHEIGHT - {{> COMPONENT_NAME }} DESIGN GUIDELINES  
-
-    <osds-icon name="external-link" color="primary" size="xs" />
-  </osds-button>
-</div>
+<DocNavigator of={ {{> ComponentName }}Stories } />
 
 # API
 

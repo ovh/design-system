@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html dir='ltr' lang='en'>
+<head>
+  <meta charset='utf-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0' />
+  <title>Dev ods-quantity</title>
+
+  <script type='module' src='/build/ods-quantity.esm.js'></script>
+  <script nomodule src='/build/ods-quantity.js'></script>
+  <link rel="stylesheet" href="/build/ods-quantity.css">
+</head>
+
+<body>
+  <p>Default</p>
+  <ods-quantity id="default-quantity" default-value="5">
+  </ods-quantity>
+  <button id="clear-button">Clear</button>
+  <button id="reset-button">Reset</button>
+  <button id="get-validity-button">Get Validity</button>
+  <script>
+    const defaultQuantity = document.querySelector('#default-quantity');
+    const clearButton = document.querySelector('#clear-button');
+    const resetButton = document.querySelector('#reset-button');
+    const getValidityButton = document.querySelector('#get-validity-button');
+
+    clearButton?.addEventListener?.('click', () => defaultQuantity.clear());
+    resetButton?.addEventListener?.('click', () => defaultQuantity.reset());
+    getValidityButton?.addEventListener?.('click', async() => console.log('getValidity()', await defaultQuantity.getValidity()));
+
+    ['odsBlur', 'odsClear', 'odsFocus', 'odsReset', 'odsChange'].forEach((eventName) =>{
+      defaultQuantity.addEventListener(eventName, (event) => {
+        console.log(eventName, event);
+      });
+    });
+  </script>
+
+  <p>Error</p>
+  <ods-quantity has-error>
+  </ods-quantity>
+
+  <p>Disabled</p>
+  <ods-quantity is-disabled>
+  </ods-quantity>
+
+  <p>Min</p>
+  <ods-quantity min="0" value="0">
+  </ods-quantity>
+
+  <p>Max</p>
+  <ods-quantity max="10" value="10">
+  </ods-quantity>
+
+  <p>Readonly</p>
+  <ods-quantity is-readonly>
+  </ods-quantity>
+
+  <p>Required</p>
+  <ods-quantity is-required>
+  </ods-quantity>
+
+  <p>Placeholder</p>
+  <ods-quantity placeholder="type a number">
+  </ods-quantity>
+
+  <p>Step 10</p>
+  <ods-quantity step="10">
+  </ods-quantity>
+
+  <p>Custom Css</p>
+  <ods-quantity class="my-quantity">
+  </ods-quantity>
+
+  <style>
+    .my-quantity::part(input) {
+      width: 200px;
+    }
+
+    .my-quantity::part(button_minus) {
+      color: green;
+      border-color: green;
+    }
+
+    .my-quantity::part(button_add) {
+      color: red;
+      border-color: red;
+    }
+  </style>
+
+  <p>Form</p>
+  <form id="my-form">
+    <ods-quantity name="form-quantity">
+    </ods-quantity>
+
+    <button id="form-reset-button" type="reset">Reset</button>
+    <button id="form-submit-button" type="submit">Submit</button>
+  </form>
+
+  <script>
+    const form = document.querySelector('#my-form');
+    const submitFormButton = document.querySelector('#form-submit-button');
+
+    submitFormButton.addEventListener('click', () => {
+      const formData = new FormData(form);
+      console.log('formData', formData);
+    });
+  </script>
+</body>
+</html>

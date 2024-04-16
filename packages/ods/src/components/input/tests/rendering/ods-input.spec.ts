@@ -6,7 +6,6 @@ import { ODS_INPUT_TYPE, OdsInput } from '../../src';
 describe('ods-input rendering', () => {
   let page: SpecPage;
   let root: HTMLElement | undefined;
-  let rootInstance: OdsInput | undefined;
 
   async function setup(html: string): Promise<void> {
     page = await newSpecPage({
@@ -15,7 +14,6 @@ describe('ods-input rendering', () => {
     });
 
     root = page.root;
-    rootInstance = page.rootInstance;
   }
 
   describe('attributes', () => {

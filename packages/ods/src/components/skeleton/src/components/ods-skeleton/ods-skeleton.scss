@@ -1,7 +1,7 @@
-@import '../../../../../style/skeleton';
+@use '../../../../../style/skeleton';
 
 .ods-skeleton {
   &__loader {
-    @include ods-skeleton;
+    @include skeleton.ods-skeleton();
   }
 }

@@ -3928,6 +3928,7 @@ __metadata:
   dependencies:
     "@floating-ui/dom": 1.6.3
     "@jest/types": 29.6.3
+    "@ovhcloud/ods-themes": 17.1.0
     "@stencil-community/postcss": 2.2.0
     "@stencil/core": 4.12.2
     "@stencil/react-output-target": 0.5.3
@@ -3973,7 +3974,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@ovhcloud/ods-themes@workspace:packages/themes":
+"@ovhcloud/ods-themes@17.1.0, @ovhcloud/ods-themes@workspace:packages/themes":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-themes@workspace:packages/themes"
   dependencies:

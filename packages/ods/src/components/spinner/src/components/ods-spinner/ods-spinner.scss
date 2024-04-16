@@ -1,3 +1,5 @@
+@use '~@ovhcloud/ods-themes/src/default/variables' as theme;
+
 $spinner-size-sm: 24px;
 $spinner-size-md: 48px;
 $spinner-size-lg: 80px;
@@ -24,15 +26,15 @@ $spinner-size-lg: 80px;
     }
 
     &--neutral {
-      fill: var(--ods-color-neutral-500);
+      fill: theme.$ods-color-neutral-500;
     }
 
     &--primary {
-      fill: var(--ods-color-primary-500);
+      fill: theme.$ods-color-primary-500;
     }
 
     &--white {
-      fill: var(--ods-color-primary-000);
+      fill: theme.$ods-color-primary-000;
     }
 
     > svg {

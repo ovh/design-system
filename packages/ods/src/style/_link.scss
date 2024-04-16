@@ -3,7 +3,7 @@
 @mixin ods-link() {
   display: inline-flex;
   flex-flow: row;
-  grid-gap: var(--ods-spacing-8);
+  grid-gap: 8px;
   align-items: center;
   transition: background-size .2s ease-in, color ease-in-out .1s;
   background-image: linear-gradient(currentcolor, currentcolor);

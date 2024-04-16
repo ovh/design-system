@@ -1,6 +1,5 @@
 @use '../_common' as common;
 @use '_palette' as palette;
-@use '_spacing' as spacing;
 
 /*
  * Expose Here SASS variables that will be used by ODS users
@@ -94,16 +93,16 @@ $ods-color-warning-800: palette.$ods-color-orange-800;
 $ods-color-warning-900: palette.$ods-color-orange-900;
 
 // BORDERS
-$ods-border-radius-sm: spacing.$ods-dimension-spacing-4;
-$ods-border-radius-md: spacing.$ods-dimension-spacing-6;
-$ods-border-radius-lg: spacing.$ods-dimension-spacing-16;
-$ods-border-width-sm: spacing.$ods-dimension-spacing-1;
-$ods-border-width-md: spacing.$ods-dimension-spacing-2;
+$ods-border-radius-sm: 4px;
+$ods-border-radius-md: 6px;
+$ods-border-radius-lg: 16px;
+$ods-border-width-sm: 1px;
+$ods-border-width-md: 2px;
 
 // OUTLINE
 $ods-outline-color: $ods-color-primary-700;
 $ods-outline-width: $ods-border-width-md;
-$ods-outline-offset: spacing.$ods-dimension-spacing-2;
+$ods-outline-offset: 2px;
 $ods-outline-style: solid;
 
 // TRANSITIONS

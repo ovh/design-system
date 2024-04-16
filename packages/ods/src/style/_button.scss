@@ -1,21 +1,21 @@
+@use '~@ovhcloud/ods-themes/src/default/variables' as theme;
 @use './focus';
 
 @mixin ods-button() {
   display: inline-flex;
   align-items: center;
-  border-radius: var(--ods-border-radius-md);
+  border-radius: theme.$ods-border-radius-md;
   cursor: pointer;
   overflow: hidden;
-  font-family: var(--ods-font-family-default);
   font-size: 1rem;
   font-weight: 600;
   font-style: normal;
 
   &:disabled {
-    border-color: var(--ods-color-neutral-100);
-    background-color: var(--ods-color-neutral-100);
+    border-color: theme.$ods-color-neutral-100;
+    background-color: theme.$ods-color-neutral-100;
     cursor: not-allowed;
-    color: var(--ods-color-neutral-600);
+    color: theme.$ods-color-neutral-600;
   }
 
   &:focus-visible {
@@ -25,12 +25,12 @@
 
 @mixin ods-button-size($size) {
   @if $size == 'sm' {
-    grid-column-gap: 6px; // TODO var
-    padding: 6px; // TODO var
+    grid-column-gap: 6px;
+    padding: 6px;
     height: 32px;
   } @else if $size == 'md' {
-    grid-column-gap: var(--ods-spacing-8);
-    padding: var(--ods-spacing-8);
+    grid-column-gap: 8px;
+    padding: 8px;
     height: 40px;
   }
 }
@@ -41,32 +41,32 @@
 
   &:not(:disabled) {
     @if $color == 'critical' {
-      border-color: var(--ods-color-critical-500);
-      background-color: var(--ods-color-critical-500);
-      color: var(--ods-color-primary-000);
+      border-color: theme.$ods-color-critical-500;
+      background-color: theme.$ods-color-critical-500;
+      color: theme.$ods-color-primary-000;
 
       &:hover {
-        border-color: var(--ods-color-critical-700);
-        background-color: var(--ods-color-critical-700);
+        border-color: theme.$ods-color-critical-700;
+        background-color: theme.$ods-color-critical-700;
       }
 
       &:active {
-        border-color: var(--ods-color-critical-800);
-        background-color: var(--ods-color-critical-800);
+        border-color: theme.$ods-color-critical-800;
+        background-color: theme.$ods-color-critical-800;
       }
     } @else if $color == 'primary' {
-      border-color: var(--ods-color-primary-500);
-      background-color: var(--ods-color-primary-500);
-      color: var(--ods-color-primary-000);
+      border-color: theme.$ods-color-primary-500;
+      background-color: theme.$ods-color-primary-500;
+      color: theme.$ods-color-primary-000;
 
       &:hover {
-        border-color: var(--ods-color-primary-700);
-        background-color: var(--ods-color-primary-700);
+        border-color: theme.$ods-color-primary-700;
+        background-color: theme.$ods-color-primary-700;
       }
 
       &:active {
-        border-color: var(--ods-color-primary-800);
-        background-color: var(--ods-color-primary-800);
+        border-color: theme.$ods-color-primary-800;
+        background-color: theme.$ods-color-primary-800;
       }
     }
   }
@@ -82,29 +82,29 @@
   &:not(:disabled) {
     @if $color == 'critical' {
       background-color: inherit;
-      color: var(--ods-color-critical-500);
+      color: theme.$ods-color-critical-500;
 
       &:hover {
-        background-color: var(--ods-color-critical-100);
-        color: var(--ods-color-critical-700);
+        background-color: theme.$ods-color-critical-100;
+        color: theme.$ods-color-critical-700;
       }
 
       &:active {
-        background-color: var(--ods-color-critical-200);
-        color: var(--ods-color-critical-800);
+        background-color: theme.$ods-color-critical-200;
+        color: theme.$ods-color-critical-800;
       }
     } @else if $color == 'primary' {
       background-color: inherit;
-      color: var(--ods-color-primary-500);
+      color: theme.$ods-color-primary-500;
 
       &:hover {
-        background-color: var(--ods-color-primary-100);
-        color: var(--ods-color-primary-700);
+        background-color: theme.$ods-color-primary-100;
+        color: theme.$ods-color-primary-700;
       }
 
       &:active {
-        background-color: var(--ods-color-primary-200);
-        color: var(--ods-color-primary-800);
+        background-color: theme.$ods-color-primary-200;
+        color: theme.$ods-color-primary-800;
       }
     }
   }
@@ -115,41 +115,41 @@
   border-style: solid;
 
   &:disabled {
-    border-color: var(--ods-color-neutral-300);
+    border-color: theme.$ods-color-neutral-300;
   }
 
   &:not(:disabled) {
     @if $color == 'critical' {
-      border-color: var(--ods-color-critical-500);
-      background-color: var(--ods-color-primary-000);
-      color: var(--ods-color-critical-500);
+      border-color: theme.$ods-color-critical-500;
+      background-color: theme.$ods-color-primary-000;
+      color: theme.$ods-color-critical-500;
 
       &:hover {
-        border-color: var(--ods-color-critical-700);
-        background-color: var(--ods-color-critical-100);
-        color: var(--ods-color-critical-700);
+        border-color: theme.$ods-color-critical-700;
+        background-color: theme.$ods-color-critical-100;
+        color: theme.$ods-color-critical-700;
       }
 
       &:active {
-        border-color: var(--ods-color-critical-800);
-        background-color: var(--ods-color-critical-200);
-        color: var(--ods-color-critical-800);
+        border-color: theme.$ods-color-critical-800;
+        background-color: theme.$ods-color-critical-200;
+        color: theme.$ods-color-critical-800;
       }
     } @else if $color == 'primary' {
-      border-color: var(--ods-color-primary-500);
-      background-color: var(--ods-color-primary-000);
-      color: var(--ods-color-primary-500);
+      border-color: theme.$ods-color-primary-500;
+      background-color: theme.$ods-color-primary-000;
+      color: theme.$ods-color-primary-500;
 
       &:hover {
-        border-color: var(--ods-color-primary-700);
-        background-color: var(--ods-color-primary-100);
-        color: var(--ods-color-primary-700);
+        border-color: theme.$ods-color-primary-700;
+        background-color: theme.$ods-color-primary-100;
+        color: theme.$ods-color-primary-700;
       }
 
       &:active {
-        border-color: var(--ods-color-primary-800);
-        background-color: var(--ods-color-primary-200);
-        color: var(--ods-color-primary-800);
+        border-color: theme.$ods-color-primary-800;
+        background-color: theme.$ods-color-primary-200;
+        color: theme.$ods-color-primary-800;
       }
     }
   }

@@ -1,15 +1,15 @@
+@use '~@ovhcloud/ods-themes/src/default/variables' as theme;
 @use './focus';
 
 @mixin ods-input() {
   box-sizing: border-box;
-  border: var(--ods-border-width-sm) solid var(--ods-form-element-border-color-default);
-  border-radius: var(--ods-border-radius-sm);
+  border: theme.$ods-border-width-sm solid theme.$ods-form-element-border-color-default;
+  border-radius: theme.$ods-border-radius-sm;
   cursor: text;
-  padding: var(--ods-spacing-4) var(--ods-spacing-8);
+  padding: 4px 8px;
   width: 100%;
-  height: var(--ods-spacing-32);
+  height: 32px;
   line-height: 16px;
-  font-family: var(--ods-font-family-default);
   font-size: 16px;
 
   &:focus {

@@ -1,6 +1,7 @@
 import { Canvas, Meta, Markdown } from '@storybook/blocks';
 import SpecificationsSkeleton from '@ovhcloud/ods-components/src/components/skeleton/documentation/spec.md?raw';
-import { Banner } from '../../Banner';
+import { Banner } from '../../banner';
+import { DocNavigator } from '../../doc-navigator';
 import * as SkeletonStories from './skeleton.stories';
 
 <Meta of={ SkeletonStories } name='Documentation' />
@@ -13,12 +14,7 @@ Skeleton component indicates that data is loading. It improves the perceived loa
 
 <Canvas of={SkeletonStories.Default} sourceState='none' />
 
-<div>
-  <a href="#"
-     target="_blank">
-    ZEROHEIGHT - SKELETON DESIGN GUIDELINES &nbsp;
-  </a>
-</div>
+<DocNavigator of={ SkeletonStories } />
 
 # API
 

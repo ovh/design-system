@@ -1,6 +1,7 @@
 import { Canvas, Meta, Markdown } from '@storybook/blocks';
 import SpecificationsSpinner from '@ovhcloud/ods-components/src/components/spinner/documentation/spec.md?raw';
-import { Banner } from '../../Banner';
+import { Banner } from '../../banner';
+import { DocNavigator } from '../../doc-navigator';
 import * as SpinnerStories from './spinner.stories';
 
 <Meta of={ SpinnerStories } name='Documentation' />
@@ -13,13 +14,7 @@ A visual indicator that a process is happening in the background but the interfa
 
 <Canvas of={ SpinnerStories.Default } sourceState='none' />
 
-<div>
-  <osds-button color="primary" variant="ghost" href="https://zeroheight.com/6fc8a63f7/p/9017bb-spinner/b/40a887" target="_blank">
-    ZEROHEIGHT - SPINNER DESIGN GUIDELINES  
-
-    <osds-icon name="external-link" color="primary" size="xs" />
-  </osds-button>
-</div>
+<DocNavigator of={ SpinnerStories } />
 
 # API
 

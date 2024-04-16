@@ -3961,6 +3961,7 @@ __metadata:
     "@ovhcloud/ods-components": 17.1.0
     "@storybook/addon-a11y": 8.0.4
     "@storybook/addon-essentials": 8.0.4
+    "@storybook/addon-links": 8.0.4
     "@storybook/blocks": 8.0.4
     "@storybook/test": 8.0.4
     "@storybook/web-components": 8.0.4
@@ -4344,6 +4345,22 @@ __metadata:
   dependencies:
     "@storybook/global": ^5.0.0
   checksum: 3a2b9e2f102071167dbfd60499e10b144d7c61ba042923cd650537e52c257b9a5572d0c27320b76ad479782f0fe6469155f48e4ed93644bc616a6ec201758eb2
+  languageName: node
+  linkType: hard
+
+"@storybook/addon-links@npm:8.0.4":
+  version: 8.0.4
+  resolution: "@storybook/addon-links@npm:8.0.4"
+  dependencies:
+    "@storybook/csf": ^0.1.2
+    "@storybook/global": ^5.0.0
+    ts-dedent: ^2.0.0
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+  peerDependenciesMeta:
+    react:
+      optional: true
+  checksum: 2d266a6a87c96b6e298a6b216a7f5e5add36e4da27e7cf7ddfc3a1de1347b5c59c44549297cd349079c7610bb2d145a70cb2e98e32dbaedcad7eea628564b156
   languageName: node
   linkType: hard
 

@@ -1,6 +1,7 @@
 import { Canvas, Meta, Markdown } from '@storybook/blocks';
 import SpecificationsTag from '@ovhcloud/ods-components/src/components/tag/documentation/spec.md?raw';
-import { Banner } from '../../Banner';
+import { Banner } from '../../banner';
+import { DocNavigator } from '../../doc-navigator';
 import * as TagStories from './tag.stories';
 
 <Meta of={ TagStories } name='Documentation' />
@@ -13,13 +14,7 @@ Tag show concise metadata or the current status for an item, in a compact format
 
 <Canvas of={ TagStories.Default } sourceState='none' />
 
-<div>
-  <osds-button color="primary" variant="ghost" href="https://zeroheight.com/6fc8a63f7/p/82b71b-link/b/40a887" target="_blank">
-    ZEROHEIGHT - TAG DESIGN GUIDELINES  
-
-    <osds-icon name="external-link" color="primary" size="xs" />
-  </osds-button>
-</div>
+<DocNavigator of={ TagStories } />
 
 # API
 

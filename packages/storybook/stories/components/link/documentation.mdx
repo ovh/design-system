@@ -1,6 +1,7 @@
 import { Canvas, Meta, Markdown } from '@storybook/blocks';
 import SpecificationsLink from '@ovhcloud/ods-components/src/components/link/documentation/spec.md?raw';
-import { Banner } from '../../Banner';
+import { Banner } from '../../banner';
+import { DocNavigator } from '../../doc-navigator';
 import * as LinkStories from './link.stories';
 
 <Meta of={ LinkStories } name='Documentation' />
@@ -13,13 +14,7 @@ Link is a component that enables redirection to a new page, section, website or 
 
 <Canvas of={ LinkStories.Default } sourceState='none' />
 
-<div>
-  <osds-button color="primary" variant="ghost" href="https://zeroheight.com/6fc8a63f7/p/82b71b-link/b/40a887" target="_blank">
-    ZEROHEIGHT - LINK DESIGN GUIDELINES  
-
-    <osds-icon name="external-link" color="primary" size="xs" />
-  </osds-button>
-</div>
+<DocNavigator of={ LinkStories } />
 
 # API
 

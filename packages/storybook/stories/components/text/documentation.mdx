@@ -1,6 +1,7 @@
 import { Canvas, Meta, Markdown } from '@storybook/blocks';
 import SpecificationsText from '@ovhcloud/ods-components/src/components/text/documentation/spec.md?raw';
-import { Banner } from '../../Banner';
+import { Banner } from '../../banner';
+import { DocNavigator } from '../../doc-navigator';
 import * as TextStories from './text.stories';
 
 <Meta of={ TextStories } name='Documentation' />
@@ -13,12 +14,7 @@ The text component is used to display text with a specific font & style.
 
 <Canvas of={ TextStories.Default } sourceState='none' />
 
-<div>
-<osds-button color="primary" variant="ghost" href="https://zeroheight.com/6fc8a63f7/p/5546ea-text/b/40a887" target="_blank">
-    ZEROHEIGHT - TEXT DESIGN GUIDELINES &nbsp;
-    <osds-text name="external-link" color="primary" size="xs"></osds-text>
-  </osds-button>
-</div>
+<DocNavigator of={ TextStories } />
 
 # API
 

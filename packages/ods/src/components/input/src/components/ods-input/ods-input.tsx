@@ -83,13 +83,13 @@ export class OdsInput {
       name: this.name,
       oldValue: oldValue,
       validity:  this.inputEl?.validity,
-      value: value ?? '',
+      value: value ?? null,
     });
   }
 
   componentWillLoad(): void {
     this.onMaskedChange();
-    if (!this.value) {
+    if (!this.value && this.value !== 0) {
       this.value = this.defaultValue ?? null;
     }
     setFormValue(this.internals, this.value);

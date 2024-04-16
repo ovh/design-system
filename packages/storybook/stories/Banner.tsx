@@ -18,7 +18,7 @@ export const Banner = ({ of, label, section }: { of: ModuleExports, label?: stri
   return (
     <div
       style={{
-        backgroundColor: 'var(--ods-color-primary-500)',
+        backgroundColor: '#0050d7',
         margin: '-1.5rem -1.5rem 3rem',
         minHeight: '5rem',
         position: 'relative',

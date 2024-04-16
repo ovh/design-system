@@ -9,12 +9,12 @@
 
 html body *:not(pre):not(code),
 html body .sbdocs-content *:not(pre):not(code) {
-  font-family: var(--ods-font-family-default);
+  font-family: 'Source Sans Pro', 'Trebuchet MS', arial, 'Segoe UI', sans-serif;
 }
 
 pre,
 code {
-  font-family: var(--ods-font-family-code) !important;
+  font-family: 'Source Code Pro', arial !important;
 }
 
 .sbdocs-content > h1,
@@ -45,10 +45,10 @@ code {
  ***************************************/
 
 .toc-link {
-  color: var(--ods-color-primary-500) !important;
+  color: #0050d7 !important;
   font-size: 1rem;
 }
 
 .toc-list-item.is-active-li > a {
-  color: var(--ods-color-primary-700) !important;
+  color: #000e9c !important;
 }

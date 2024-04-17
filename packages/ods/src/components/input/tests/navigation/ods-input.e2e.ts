@@ -28,7 +28,7 @@ describe('ods-input accessibility', () => {
 
     el = await page.find('ods-input');
     input = await page.find('ods-input >>> input');
-    button = await page.find('ods-input >>> .ods-input__button')
+    button = await page.find('ods-input >>> .ods-input__button');
   }
 
   beforeEach(jest.clearAllMocks);
@@ -94,7 +94,7 @@ describe('ods-input accessibility', () => {
       const odsClearSpy = await page.spyOnEvent('odsClear');
       expect(await el.getProperty('value')).toBe('value');
 
-      await button.click()
+      await button.click();
       await page.waitForChanges();
 
       expect(await el.getProperty('value')).toBeNull();
@@ -109,11 +109,14 @@ describe('ods-input accessibility', () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Space');
       await page.waitForChanges();
-
       expect(await el.getProperty('value')).toBe('value');
+
       await page.keyboard.press('Enter');
       await page.waitForChanges();
+      expect(await el.getProperty('value')).toBe('value');
+
       await button.click();
+      await page.waitForChanges();
       expect(await el.getProperty('value')).toBe('value');
       expect(odsClearSpy).not.toHaveReceivedEvent();
     });
@@ -154,7 +157,7 @@ describe('ods-input accessibility', () => {
 
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
-      await page.keyboard.press(' ');
+      await page.keyboard.press('Space');
       await page.waitForChanges();
 
       expect(await input.getProperty('type')).toBe('text');
@@ -166,7 +169,7 @@ describe('ods-input accessibility', () => {
       const odsToggleMaskSpy = await page.spyOnEvent('odsToggleMask');
       expect(await input.getProperty('type')).toBe('password');
 
-      await button.click()
+      await button.click();
       await page.waitForChanges();
 
       expect(await input.getProperty('type')).toBe('text');
@@ -182,13 +185,14 @@ describe('ods-input accessibility', () => {
       await page.keyboard.press('Tab');
       await page.keyboard.press('Space');
       await page.waitForChanges();
-
       expect(await input.getProperty('type')).toBe('password');
 
       await page.keyboard.press('Enter');
       await page.waitForChanges();
-      await button.click();
+      expect(await input.getProperty('type')).toBe('password');
 
+      await button.click();
+      await page.waitForChanges();
       expect(await input.getProperty('type')).toBe('password');
       expect(odsToggleMaskSpy).not.toHaveReceivedEvent();
     });

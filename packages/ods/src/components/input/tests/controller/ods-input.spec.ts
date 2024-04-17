@@ -17,8 +17,9 @@ describe('ods-input controller', () => {
       const callback = jest.fn();
       const event = {
         key: ' ',
+        preventDefault: jest.fn(),
       } as unknown as KeyboardEvent;
-      handleKeySpace(event, true, callback)
+      handleKeySpace(event, true, callback);
       expect(callback).not.toHaveBeenCalled();
     });
 
@@ -26,8 +27,9 @@ describe('ods-input controller', () => {
       const callback = jest.fn();
       const event = {
         key: ' ',
+        preventDefault: jest.fn(),
       } as unknown as KeyboardEvent;
-      handleKeySpace(event, false, callback)
+      handleKeySpace(event, false, callback);
       expect(callback).toHaveBeenCalledTimes(1);
     });
 
@@ -35,8 +37,9 @@ describe('ods-input controller', () => {
       const callback = jest.fn();
       const event = {
         key: 'Enter',
+        preventDefault: jest.fn(),
       } as unknown as KeyboardEvent;
-      handleKeySpace(event, false, callback)
+      handleKeySpace(event, false, callback);
       expect(callback).not.toHaveBeenCalled();
     });
   });

@@ -1,3 +1,4 @@
+jest.mock('../../src/controller/ods-input');
 import type { SpecPage } from '@stencil/core/testing';
 import { newSpecPage } from '@stencil/core/testing';
 import { ODS_INPUT_TYPE, OdsInput } from '../../src';
@@ -19,14 +20,14 @@ describe('ods-input rendering', () => {
 
   describe('methods', () => {
     describe('clear', () => {
-      it('should clear the input', async () => {
-        await setup(`<ods-input value="value"></ods-input>`);
+      it('should clear the input', async() => {
+        await setup('<ods-input value="value"></ods-input>');
         await rootInstance?.clear();
         await page.waitForChanges();
         expect(root?.getAttribute('value')).toBeNull();
       });
 
-      it('should do nothing with disabled', async () => {
+      it('should do nothing with disabled', async() => {
         const value = 'value';
         await setup(`<ods-input value="${value}" is-disabled></ods-input>`);
         await rootInstance?.clear();
@@ -36,7 +37,7 @@ describe('ods-input rendering', () => {
     });
 
     describe('reset', () => {
-      it('should reset input with default value', async () => {
+      it('should reset input with default value', async() => {
         const defaultValue = 'defaultValue';
         const value = 'value';
         await setup(`<ods-input value="${value}" default-value="${defaultValue}"></ods-input>`);
@@ -46,7 +47,7 @@ describe('ods-input rendering', () => {
         expect(root?.getAttribute('value')).toBe(defaultValue);
       });
 
-      it('should do nothing with disabled', async () => {
+      it('should do nothing with disabled', async() => {
         const defaultValue = 'defaultValue';
         const value = 'value';
         await setup(`<ods-input is-disabled value="${value}" default-value="${defaultValue}"></ods-input>`);
@@ -57,18 +58,17 @@ describe('ods-input rendering', () => {
       });
     });
 
-
-    describe('toogleMasked', () => {
-      it('should change masked', async () => {
-        await setup(`<ods-input is-masked></ods-input>`);
+    describe('toggleMasked', () => {
+      it('should change masked', async() => {
+        await setup('<ods-input is-masked></ods-input>');
         expect(root?.getAttribute('is-masked')).toBe('');
         await rootInstance?.toggleMask();
         await page.waitForChanges();
         expect(root?.getAttribute('is-masked')).toBeNull();
       });
 
-      it('should do nothing because of disabled', async () => {
-        await setup(`<ods-input is-masked is-disabled></ods-input>`);
+      it('should do nothing because of disabled', async() => {
+        await setup('<ods-input is-masked is-disabled></ods-input>');
         expect(root?.getAttribute('is-masked')).toBe('');
         await rootInstance?.toggleMask();
         await page.waitForChanges();
@@ -88,7 +88,7 @@ describe('ods-input rendering', () => {
       });
 
       it('should not be set by default', async() => {
-        await setup(`<ods-input></ods-input>`);
+        await setup('<ods-input></ods-input>');
 
         expect(root?.getAttribute('aria-label')).toBeNull();
       });
@@ -104,7 +104,7 @@ describe('ods-input rendering', () => {
       });
 
       it('should not be set by default', async() => {
-        await setup(`<ods-input></ods-input>`);
+        await setup('<ods-input></ods-input>');
 
         expect(root?.getAttribute('aria-labelledby')).toBeNull();
       });
@@ -119,7 +119,7 @@ describe('ods-input rendering', () => {
       });
 
       it('should not be set by default', async() => {
-        await setup(`<ods-input></ods-input>`);
+        await setup('<ods-input></ods-input>');
 
         expect(root?.getAttribute('defaultValue')).toBeNull();
       });
@@ -127,13 +127,13 @@ describe('ods-input rendering', () => {
 
     describe('hasError', () => {
       it('should be reflected', async() => {
-        await setup(`<ods-input has-error></ods-input>`);
+        await setup('<ods-input has-error></ods-input>');
 
         expect(root?.getAttribute('has-error')).toBe('');
       });
 
       it('should not be set by default', async() => {
-        await setup(`<ods-input></ods-input>`);
+        await setup('<ods-input></ods-input>');
 
         expect(root?.getAttribute('has-error')).toBeNull();
       });
@@ -141,13 +141,13 @@ describe('ods-input rendering', () => {
 
     describe('isClearable', () => {
       it('should be reflected', async() => {
-        await setup(`<ods-input is-clearable></ods-input>`);
+        await setup('<ods-input is-clearable></ods-input>');
 
         expect(root?.getAttribute('is-clearable')).toBe('');
       });
 
       it('should not be set by default', async() => {
-        await setup(`<ods-input></ods-input>`);
+        await setup('<ods-input></ods-input>');
 
         expect(root?.getAttribute('is-clearable')).toBeNull();
       });
@@ -155,13 +155,13 @@ describe('ods-input rendering', () => {
 
     describe('isDisabled', () => {
       it('should be reflected', async() => {
-        await setup(`<ods-input is-disabled></ods-input>`);
+        await setup('<ods-input is-disabled></ods-input>');
 
         expect(root?.getAttribute('is-disabled')).toBe('');
       });
 
       it('should not be set by default', async() => {
-        await setup(`<ods-input></ods-input>`);
+        await setup('<ods-input></ods-input>');
 
         expect(root?.getAttribute('is-disabled')).toBeNull();
       });
@@ -169,13 +169,13 @@ describe('ods-input rendering', () => {
 
     describe('isMasked', () => {
       it('should be reflected', async() => {
-        await setup(`<ods-input is-masked></ods-input>`);
+        await setup('<ods-input is-masked></ods-input>');
 
         expect(root?.getAttribute('is-masked')).toBe('');
       });
 
       it('should not be set by default', async() => {
-        await setup(`<ods-input></ods-input>`);
+        await setup('<ods-input></ods-input>');
 
         expect(root?.getAttribute('is-masked')).toBeNull();
       });
@@ -183,13 +183,13 @@ describe('ods-input rendering', () => {
 
     describe('isReadonly', () => {
       it('should be reflected', async() => {
-        await setup(`<ods-input is-readonly></ods-input>`);
+        await setup('<ods-input is-readonly></ods-input>');
 
         expect(root?.getAttribute('is-readonly')).toBe('');
       });
 
       it('should not be set by default', async() => {
-        await setup(`<ods-input></ods-input>`);
+        await setup('<ods-input></ods-input>');
 
         expect(root?.getAttribute('is-readonly')).toBeNull();
       });
@@ -197,13 +197,13 @@ describe('ods-input rendering', () => {
 
     describe('isRequired', () => {
       it('should be reflected', async() => {
-        await setup(`<ods-input is-required></ods-input>`);
+        await setup('<ods-input is-required></ods-input>');
 
         expect(root?.getAttribute('is-required')).toBe('');
       });
 
       it('should not be set by default', async() => {
-        await setup(`<ods-input></ods-input>`);
+        await setup('<ods-input></ods-input>');
 
         expect(root?.getAttribute('is-required')).toBeNull();
       });
@@ -211,13 +211,13 @@ describe('ods-input rendering', () => {
 
     describe('isLoading', () => {
       it('should be reflected', async() => {
-        await setup(`<ods-input is-loading></ods-input>`);
+        await setup('<ods-input is-loading></ods-input>');
 
         expect(root?.getAttribute('is-loading')).toBe('');
       });
 
       it('should not be set by default', async() => {
-        await setup(`<ods-input></ods-input>`);
+        await setup('<ods-input></ods-input>');
 
         expect(root?.getAttribute('is-loading')).toBeNull();
       });
@@ -232,7 +232,7 @@ describe('ods-input rendering', () => {
       });
 
       it('should not be set by default', async() => {
-        await setup(`<ods-input></ods-input>`);
+        await setup('<ods-input></ods-input>');
 
         expect(root?.getAttribute('max')).toBeNull();
       });
@@ -247,7 +247,7 @@ describe('ods-input rendering', () => {
       });
 
       it('should not be set by default', async() => {
-        await setup(`<ods-input></ods-input>`);
+        await setup('<ods-input></ods-input>');
 
         expect(root?.getAttribute('maxlength')).toBeNull();
       });
@@ -262,7 +262,7 @@ describe('ods-input rendering', () => {
       });
 
       it('should not be set by default', async() => {
-        await setup(`<ods-input></ods-input>`);
+        await setup('<ods-input></ods-input>');
 
         expect(root?.getAttribute('min')).toBeNull();
       });
@@ -277,7 +277,7 @@ describe('ods-input rendering', () => {
       });
 
       it('should not be set by default', async() => {
-        await setup(`<ods-input></ods-input>`);
+        await setup('<ods-input></ods-input>');
 
         expect(root?.getAttribute('minlength')).toBeNull();
       });
@@ -292,7 +292,7 @@ describe('ods-input rendering', () => {
       });
 
       it('should not be set by default', async() => {
-        await setup(`<ods-input></ods-input>`);
+        await setup('<ods-input></ods-input>');
 
         expect(root?.getAttribute('name')).toBeNull();
       });
@@ -300,14 +300,14 @@ describe('ods-input rendering', () => {
 
     describe('pattern', () => {
       it('should be reflected', async() => {
-        const patternValue = "pattern";
+        const patternValue = 'pattern';
         await setup(`<ods-input pattern="${patternValue}"></ods-input>`);
 
         expect(root?.getAttribute('pattern')).toBe(patternValue);
       });
 
       it('should not be set by default', async() => {
-        await setup(`<ods-input></ods-input>`);
+        await setup('<ods-input></ods-input>');
 
         expect(root?.getAttribute('pattern')).toBeNull();
       });
@@ -322,7 +322,7 @@ describe('ods-input rendering', () => {
       });
 
       it('should not be set by default', async() => {
-        await setup(`<ods-input></ods-input>`);
+        await setup('<ods-input></ods-input>');
 
         expect(root?.getAttribute('placeholder')).toBeNull();
       });
@@ -337,7 +337,7 @@ describe('ods-input rendering', () => {
       });
 
       it('should not be set by default', async() => {
-        await setup(`<ods-input></ods-input>`);
+        await setup('<ods-input></ods-input>');
 
         expect(root?.getAttribute('step')).toBeNull();
       });
@@ -351,8 +351,8 @@ describe('ods-input rendering', () => {
         expect(root?.getAttribute('type')).toBe(typeValue);
       });
 
-      it('should not be set by default', async() => {
-        await setup(`<ods-input></ods-input>`);
+      it('should not be set by default with type "text"', async() => {
+        await setup('<ods-input></ods-input>');
 
         expect(root?.getAttribute('type')).toBe(ODS_INPUT_TYPE.text);
       });
@@ -367,7 +367,7 @@ describe('ods-input rendering', () => {
       });
 
       it('should not be set by default', async() => {
-        await setup(`<ods-input></ods-input>`);
+        await setup('<ods-input></ods-input>');
 
         expect(root?.getAttribute('value')).toBeNull();
       });

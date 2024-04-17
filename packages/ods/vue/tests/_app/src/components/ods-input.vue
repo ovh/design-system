@@ -1,4 +1,5 @@
 <template>
+  <!-- FIXME custom event not working in vue -->
   <ods-input name="ods-input" @ods-value-change="() => console.log('test')"></ods-input>
 
   <OdsInput name="ods-input-disabled" is-disabled @ods-value-change="onOdsValueChange" />

@@ -3,57 +3,56 @@ import { type ModuleExports } from '@storybook/types';
 import { navigate } from '@storybook/addon-links';
 import { OdsButton, OdsLink } from '@ovhcloud/ods-components-react';
 import { ODS_BUTTON_VARIANT, ODS_ICON_NAME } from '@ovhcloud/ods-components';
+import React, { useEffect, useState } from 'react';
 import { BASE_URL, LINK_ID } from './zeroheight';
-import React from 'react';
 
-export const DocNavigator = ({ of, children }: { of: ModuleExports, children: React.ReactNode }) => {
-  const resolvedOf = useOf(of || 'story', ['meta']);
-  const demoStoryKeys = Object.keys(resolvedOf.csfFile.stories || {}).filter(storyKey => storyKey.includes('--demo'));
+function extractLinkId(storyId: string): string | null {
+  for (const id of Object.values(LINK_ID)) {
+    const idPart = id.split('-');
+    const componentPart = idPart.slice(1).join('-');
 
-  const extractLinkId = (storyId: string): string | null => {
-    for (const id of Object.values(LINK_ID)) {
-      const idPart = id.split('-');
-      const componentPart = idPart.slice(1).join('-');
-      if (storyId.includes(componentPart)) {
-        return id;
-      }
+    if (storyId.includes(componentPart)) {
+      return id;
     }
-    return null;
-  };
+  }
+  return null;
+}
+
+const DocNavigator = ({ of }: { of: ModuleExports }) => {
+  const resolvedOf = useOf(of || 'story', ['meta']);
+  const [href, setHref] = useState('');
+  const [storyId, setStoryId] = useState('');
+
+  useEffect(() => {
+    const demoStoryKeys = Object.keys(resolvedOf.csfFile.stories || {}).filter((storyKey) => storyKey.includes('--demo'));
+    const storyId = demoStoryKeys[0];
+    const linkId = extractLinkId(storyId);
+
+    setStoryId(storyId);
+
+    if (linkId) {
+      setHref(`${BASE_URL}${linkId}/b/40a887`);
+    } else {
+      console.error('No Zeroheight link id matching storyId', storyId);
+    }
+  }, [extractLinkId]);
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-      <div>
-        {demoStoryKeys.map((storyId, index) => (
-          <OdsButton
-            key={index}
-            label='Go to Demo'
-            variant={ODS_BUTTON_VARIANT.default}
-            onClick={() => {
-              navigate({ storyId })
-            }}
-          >
-          </OdsButton>
-        ))}
-      </div>
-      <div style={{ marginLeft: '20px' }}>
-        <OdsLink
-          label='Go to functional specification'
-          icon={ODS_ICON_NAME.externalLink}
-          onClick={() => {
-            const storyId = demoStoryKeys[0];
-            const linkId = extractLinkId(storyId);
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', columnGap: '20px' }}>
+      <OdsButton
+        label="Go to Demo"
+        onClick={ () => navigate({ storyId }) }
+        variant={ ODS_BUTTON_VARIANT.default } />
 
-            if (linkId) {
-              const externalLink = `${BASE_URL}${linkId}/b/40a887`;
-              window.open(externalLink);
-            } else {
-              console.error('No Zeroheight link id matching storyId', storyId);
-            }
-          }}
-        />
-      </div>
-      {children}
+      <OdsLink
+        href={ href }
+        icon={ ODS_ICON_NAME.externalLink }
+        label="Go to functional specification"
+        target="_blank" />
     </div>
   )
-}
+};
+
+export {
+  DocNavigator,
+};

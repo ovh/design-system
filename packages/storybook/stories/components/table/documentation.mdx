@@ -1,6 +1,7 @@
 import { Canvas, Meta, Markdown } from '@storybook/blocks';
 import SpecificationsTable from '@ovhcloud/ods-components/src/components/table/documentation/spec.md?raw';
-import { Banner } from '../../Banner';
+import { Banner } from '../../banner';
+import { DocNavigator } from '../../doc-navigator';
 import * as TableStories from './table.stories';
 
 <Meta of={ TableStories } name='Documentation' />
@@ -13,13 +14,7 @@ Table is a wrapper for displaying tables:
 
 <Canvas of={ TableStories.Default } sourceState='none' />
 
-<div>
-  <osds-button color="primary" variant="ghost" href="https://zeroheight.com/6fc8a63f7/p/82b71b-link/b/40a887" target="_blank">
-    ZEROHEIGHT - TABLE DESIGN GUIDELINES  
-
-    <osds-icon name="external-link" color="primary" size="xs" />
-  </osds-button>
-</div>
+<DocNavigator of={ TableStories } />
 
 # API
 

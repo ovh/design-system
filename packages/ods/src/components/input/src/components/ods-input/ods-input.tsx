@@ -1,7 +1,7 @@
 import { AttachInternals, Component, Element, Event, type EventEmitter, type FunctionalComponent, Host, Method, Prop, State, Watch, h } from '@stencil/core';
 import { ODS_ICON_NAME } from '../../../../icon/src';
 import { ODS_INPUT_TYPE, type OdsInputType } from '../../constants/input-type';
-import { handleKeySpace, isPassword } from '../../controller/ods-input';
+import { handleKeySpace, isPassword, setFormValue } from '../../controller/ods-input';
 import { type OdsInputEventValueChange } from '../../interfaces/events';
 
 @Component({
@@ -24,12 +24,12 @@ export class OdsInput {
   @Prop({ reflect: true }) public ariaLabelledby?: string;
   @Prop({ reflect: true }) public defaultValue?: string | number;
   @Prop({ reflect: true }) public hasError: boolean = false;
-  @Prop({ reflect: true }) public isClearable?: boolean;
+  @Prop({ reflect: true }) public isClearable?: boolean = false;
   @Prop({ reflect: true }) public isDisabled: boolean = false;
-  @Prop({ reflect: true }) public isLoading?: boolean;
+  @Prop({ reflect: true }) public isLoading?: boolean = false;
   @Prop({ mutable: true, reflect: true }) public isMasked?: boolean;
-  @Prop({ reflect: true }) public isReadonly?: boolean;
-  @Prop({ reflect: true }) public isRequired?: boolean;
+  @Prop({ reflect: true }) public isReadonly?: boolean = false;
+  @Prop({ reflect: true }) public isRequired?: boolean = false;
   @Prop({ reflect: true }) public max?: number;
   @Prop({ reflect: true }) public maxlength?: number;
   @Prop({ reflect: true }) public min?: number;
@@ -94,7 +94,7 @@ export class OdsInput {
 
   @Watch('value')
   onValueChange(value: string | number, oldValue?: string | number): void {
-    this.internals?.setFormValue?.(this.value?.toString() ?? '');
+    setFormValue(this.internals, this.value);
     this.onErrorChange();
     this.odsValueChange.emit({
       name: this.name,
@@ -109,7 +109,7 @@ export class OdsInput {
     if (!this.value) {
       this.value = this.defaultValue;
     }
-    this.internals?.setFormValue?.(this.value?.toString() ?? '');
+    setFormValue(this.internals, this.value);
   }
 
   async formResetCallback(): Promise<void> {
@@ -129,7 +129,7 @@ export class OdsInput {
       <button
         class="ods-input__button"
         disabled= { this.isDisabled }
-        onClick={ (): Promise<void> => callback() }
+        onClick={ callback }
         onKeyUp={ (event: KeyboardEvent): Promise<void> => handleKeySpace(event, this.isDisabled, callback) }>
         <ods-icon name={ icon }>
         </ods-icon>

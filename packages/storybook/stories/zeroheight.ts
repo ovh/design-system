@@ -17,6 +17,7 @@ enum LINK_ID {
   ICON = '99bbef-icon',
   INPUT = '30b649-input',
   LINK = '82b71b-link',
+  MEDIUM = '0186fb-medium',
   MENU = '98f6d2-menu',
   MESSAGE = '7113b2-message',
   MODAL = '887224-modal',

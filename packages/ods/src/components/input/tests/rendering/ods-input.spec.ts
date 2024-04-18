@@ -351,7 +351,7 @@ describe('ods-input rendering', () => {
         expect(root?.getAttribute('type')).toBe(typeValue);
       });
 
-      it('should not be set by default with type "text"', async() => {
+      it('should be set by default with type "text"', async() => {
         await setup('<ods-input></ods-input>');
 
         expect(root?.getAttribute('type')).toBe(ODS_INPUT_TYPE.text);

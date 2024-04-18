@@ -1,6 +1,5 @@
 //@use '@ovhcloud/ods-components/style' as ods;
 @import '@ovhcloud/ods-components/style';
-@import '@ovhcloud/ods-themes/default';
 
 .app {
   font-family: var(--ods-font-family-default);
@@ -8,7 +7,6 @@
    &__title {
      //@include ods.ods-text-heading-1();
      @include ods-text-heading-1();
-     background-color: $ods-color-primary-400;
    }
 
   &__code {

@@ -1,4 +1,4 @@
-@use '~@ovhcloud/ods-themes/src/default/variables' as theme;
+@use './breakpoint';
 
 @mixin ods-table($size) {
   width: 100%;
@@ -37,9 +37,9 @@
   thead {
     tr {
       th {
-        border: 1px solid theme.$ods-color-neutral-100;
-        background-color: theme.$ods-color-neutral-000;
-        color: theme.$ods-color-primary-800;
+        border: 1px solid var(--ods-color-neutral-100);
+        background-color: var(--ods-color-neutral-000);
+        color: var(--ods-color-primary-800);
         font-weight: 600;
       }
     }
@@ -49,23 +49,23 @@
     tr {
       th,
       td {
-        border-top: 1px solid theme.$ods-color-neutral-100;
-        border-bottom: 1px solid theme.$ods-color-neutral-100;
-        background-color: theme.$ods-color-neutral-000;
-        color: theme.$ods-color-text;
+        border-top: 1px solid var(--ods-color-neutral-100);
+        border-bottom: 1px solid var(--ods-color-neutral-100);
+        background-color: var(--ods-color-neutral-000);
+        color: var(--ods-color-text);
 
         &:first-child {
-          border-left: 1px solid theme.$ods-color-neutral-100;
+          border-left: 1px solid var(--ods-color-neutral-100);
         }
 
         &:last-child {
-          border-right: 1px solid theme.$ods-color-neutral-100;
+          border-right: 1px solid var(--ods-color-neutral-100);
         }
       }
     }
   }
 
-  @media screen and (width >= (theme.$ods-breakpoint-mobile)) {
+  @media screen and (width >= (breakpoint.$ods-breakpoint-mobile)) {
     thead,
     tbody,
     tfoot {

@@ -48,8 +48,18 @@ describe('ods-input accessibility', () => {
   });
 
   describe('isClearable', () => {
-    it('Button clearable should be focusable', async() => {
+    it('should not have clearable button without value', async() => {
       await setup('<ods-input is-clearable></ods-input>');
+
+      await page.keyboard.press('Tab');
+      expect(await odsInputFocusedElementTagName()).toBe('INPUT');
+
+      await page.keyboard.press('Tab');
+      expect(await odsInputFocusedElementTagName()).not.toBe('BUTTON');
+    });
+
+    it('Button clearable should be focusable', async() => {
+      await setup('<ods-input is-clearable value="value"></ods-input>');
 
       await page.keyboard.press('Tab');
       expect(await odsInputFocusedElementTagName()).toBe('INPUT');
@@ -199,7 +209,7 @@ describe('ods-input accessibility', () => {
   });
 
   it('should have 2 button focusable with masked & clearable', async() => {
-    await setup('<ods-input is-masked is-clearable></ods-input>');
+    await setup('<ods-input is-masked is-clearable value="value"></ods-input>');
     await page.keyboard.press('Tab');
     expect(await odsInputFocusedElementTagName()).toBe('INPUT');
 

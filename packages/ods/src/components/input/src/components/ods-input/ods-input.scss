@@ -6,24 +6,49 @@
   position: relative;
 }
 
-$ods-input__button-right: 4px;
+$ods-input-button-right: 4px;
+$ods-input-button-top: -1px;
 
 .ods-input {
   &__button {
+    $button: &;
+
     display: inline-flex;
     position: absolute;
-    top: 0;
-    right: $ods-input__button-right;
+    top: $ods-input-button-top;
+    right: $ods-input-button-right;
     border: none;
+    border-radius: 2px;
     background: none;
+    cursor: pointer;
     color: theme.$ods-color-primary-500;
 
     &:focus-visible {
       @include focus.ods-focus();
     }
 
-    &:not(:first-of-type) {
-      right: 30px;
+    &:hover {
+      background-color: theme.$ods-color-primary-100;
+    }
+
+    &:active {
+      background-color: theme.$ods-color-primary-200;
+    }
+
+    &__clearable {
+      color: theme.$ods-color-neutral-600;
+
+      &:has(+ #{$button}) {
+        right: 30px;
+      }
+
+      &:hover {
+        background-color: theme.$ods-color-neutral-100;
+      }
+
+      &:active {
+        background-color: theme.$ods-color-neutral-200;
+      }
     }
   }
 
@@ -32,7 +57,7 @@ $ods-input__button-right: 4px;
 
     @include input.ods-input();
 
-    &:not(#{$input}--error) {
+    &:not(#{$input}--error, #{$input}--disabled) {
       &:focus {
         border-color: theme.$ods-form-element-border-color-focused;
       }
@@ -55,12 +80,16 @@ $ods-input__button-right: 4px;
     &--error {
       border-color: theme.$ods-form-element-border-color-critical;
     }
+
+    &[type="number"] {
+      appearance: textfield;
+    }
   }
 
   &__spinner {
     position: absolute;
-    top: 0;
-    right: $ods-input__button-right;
+    top: $ods-input-button-top;
+    right: $ods-input-button-right;
     padding: 0 4px;
 
     &::part(spinner) {

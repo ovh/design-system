@@ -3867,6 +3867,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-component-medium@workspace:packages/ods/src/components/medium":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-medium@workspace:packages/ods/src/components/medium"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-component-skeleton@workspace:packages/ods/src/components/skeleton":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-skeleton@workspace:packages/ods/src/components/skeleton"

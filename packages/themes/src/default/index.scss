@@ -1,6 +1,58 @@
 /*
  * The actual part of the theme that will be exposed as CSS
  */
+@use './variables' as var;
 @import '../../assets/fonts/ods-icon';
 @import '../../assets/fonts/source-code-pro';
 @import '../../assets/fonts/source-sans-pro';
+
+:root {
+  --ods-border-radius-sm: #{var.$ods-border-radius-sm};
+  --ods-border-radius-md: #{var.$ods-border-radius-md};
+  --ods-border-radius-lg: #{var.$ods-border-radius-lg};
+  --ods-color-alpha: #{var.$ods-single-color-alpha};
+  --ods-color-beta: #{var.$ods-single-color-beta};
+  --ods-color-critical-050: #{var.$ods-critical-050};
+  --ods-color-critical-100: #{var.$ods-critical-100};
+  --ods-color-critical-200: #{var.$ods-critical-200};
+  --ods-color-critical-300: #{var.$ods-critical-300};
+  --ods-color-critical-500: #{var.$ods-critical-500};
+  --ods-color-critical-700: #{var.$ods-critical-700};
+  --ods-color-critical-800: #{var.$ods-critical-800};
+  --ods-color-critical-900: #{var.$ods-critical-900};
+  --ods-color-neutral-000: #{var.$ods-neutral-000};
+  --ods-color-neutral-050: #{var.$ods-neutral-050};
+  --ods-color-neutral-100: #{var.$ods-neutral-100};
+  --ods-color-neutral-200: #{var.$ods-neutral-200};
+  --ods-color-neutral-300: #{var.$ods-neutral-300};
+  --ods-color-neutral-500: #{var.$ods-neutral-500};
+  --ods-color-neutral-600: #{var.$ods-neutral-600};
+  --ods-color-neutral-700: #{var.$ods-neutral-700};
+  --ods-color-new: #{var.$ods-single-color-new};
+  --ods-color-primary-000: #{var.$ods-primary-000};
+  --ods-color-primary-100: #{var.$ods-primary-100};
+  --ods-color-primary-200: #{var.$ods-primary-200};
+  --ods-color-primary-300: #{var.$ods-primary-300};
+  --ods-color-primary-500: #{var.$ods-primary-500};
+  --ods-color-primary-700: #{var.$ods-primary-700};
+  --ods-color-primary-800: #{var.$ods-primary-800};
+  --ods-color-primary-900: #{var.$ods-primary-900};
+  --ods-color-success-000: #{var.$ods-color-green-000};
+  --ods-color-success-050: #{var.$ods-color-green-050};
+  --ods-color-success-100: #{var.$ods-color-green-100};
+  --ods-color-success-200: #{var.$ods-color-green-200};
+  --ods-color-success-300: #{var.$ods-color-green-300};
+  --ods-color-success-900: #{var.$ods-color-green-900};
+  --ods-color-warning-000: #{var.$ods-color-orange-000};
+  --ods-color-warning-050: #{var.$ods-color-orange-050};
+  --ods-color-warning-100: #{var.$ods-color-orange-100};
+  --ods-color-warning-200: #{var.$ods-color-orange-200};
+  --ods-color-warning-300: #{var.$ods-color-orange-300};
+  --ods-color-warning-900: #{var.$ods-color-orange-900};
+  --ods-font-family-code: 'Source Code Pro', arial;
+  --ods-font-family-default: 'Source Sans Pro', 'Trebuchet MS', arial, 'Segoe UI', sans-serif;
+  --ods-outline-color: #{var.$ods-outline-color};
+  --ods-outline-width: #{var.$ods-outline-width};
+  --ods-outline-offset: #{var.$ods-outline-offset};
+  --ods-outline-style: #{var.$ods-outline-style};
+}

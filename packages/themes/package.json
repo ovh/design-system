@@ -8,7 +8,7 @@
       "default": "./dist/index.js"
     },
     "./default": {
-      "sass": "./src/default/variables.scss",
+      "sass": "./src/default/index.scss",
       "default": "./dist/default/index.css"
     }
   },

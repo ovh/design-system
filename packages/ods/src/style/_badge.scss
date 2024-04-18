@@ -1,5 +1,3 @@
-@use '~@ovhcloud/ods-themes/src/default/variables' as theme;
-
 $ods-badge-height-sm: 19px;
 $ods-badge-height-md: 26px;
 $ods-badge-height-lg: 28px;
@@ -10,24 +8,24 @@ $ods-badge-height-lg: 28px;
   flex-flow: row;
   grid-gap: 1px;
   align-items: center;
-  color: theme.$ods-color-primary-900;
+  color: var(--ods-color-primary-900);
 }
 
 @mixin ods-badge-color($color) {
   @if $color == 'information' {
-    background-color: theme.$ods-color-new;
+    background-color: var(--ods-color-new);
   } @else if $color == 'success' {
-    background-color: theme.$ods-color-beta;
+    background-color: var(--ods-color-beta);
   } @else if $color == 'warning' {
-    background-color: theme.$ods-color-alpha;
+    background-color: var(--ods-color-alpha);
   }
 }
 
 @mixin ods-badge-shape($shape) {
   @if $shape == 'round' {
-    border-radius: theme.$ods-border-radius-lg;
+    border-radius: var(--ods-border-radius-lg);
   } @else if $shape == 'square' {
-    border-radius: theme.$ods-border-radius-sm;
+    border-radius: var(--ods-border-radius-sm);
   }
 }
 

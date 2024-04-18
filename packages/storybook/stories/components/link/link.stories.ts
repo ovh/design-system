@@ -161,7 +161,7 @@ export const Disabled: StoryObj = {
 export const Icon: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
-<ods-link href="https://www.ovhcloud.com/" label="Icon Link" icon="warning"></ods-link>
+<ods-link href="https://www.ovhcloud.com/" label="Icon Link" icon="arrow-right"></ods-link>
   `,
 };
 

@@ -1,4 +1,3 @@
-@use '~@ovhcloud/ods-themes/src/default/variables' as theme;
 @use '../../../../../style/button';
 
 .ods-button {
@@ -53,7 +52,7 @@
       inset: 0;
       align-items: center;
       justify-content: center;
-      background-color: theme.$ods-color-neutral-100;
+      background-color: var(--ods-color-neutral-100);
     }
   }
 }

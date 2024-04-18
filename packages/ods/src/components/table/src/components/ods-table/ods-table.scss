@@ -1,4 +1,3 @@
-@use '~@ovhcloud/ods-themes/src/default/variables' as theme;
 @use '../../../../../style/table';
 
 .ods-table {
@@ -26,7 +25,7 @@
         tr:nth-child(2n) {
           th,
           td {
-            background-color: theme.$ods-color-neutral-050;
+            background-color: var(--ods-color-neutral-050);
           }
         }
       }

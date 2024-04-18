@@ -17,6 +17,7 @@ const componentNames = [
   'tag',
   'badge',
   'table',
+  'medium',
   //--generator-anchor--
 ];
 

@@ -24,12 +24,12 @@ export class OdsInput {
   @Prop({ reflect: true }) public ariaLabelledby?: string;
   @Prop({ reflect: true }) public defaultValue?: string | number;
   @Prop({ reflect: true }) public hasError: boolean = false;
-  @Prop({ reflect: true }) public isClearable?: boolean = false;
+  @Prop({ reflect: true }) public isClearable: boolean = false;
   @Prop({ reflect: true }) public isDisabled: boolean = false;
-  @Prop({ reflect: true }) public isLoading?: boolean = false;
+  @Prop({ reflect: true }) public isLoading: boolean = false;
   @Prop({ mutable: true, reflect: true }) public isMasked?: boolean;
-  @Prop({ reflect: true }) public isReadonly?: boolean = false;
-  @Prop({ reflect: true }) public isRequired?: boolean = false;
+  @Prop({ reflect: true }) public isReadonly: boolean = false;
+  @Prop({ reflect: true }) public isRequired: boolean = false;
   @Prop({ reflect: true }) public max?: number;
   @Prop({ reflect: true }) public maxlength?: number;
   @Prop({ reflect: true }) public min?: number;
@@ -124,10 +124,10 @@ export class OdsInput {
     return;
   }
 
-  private renderButtonIcon(icon: ODS_ICON_NAME, callback: () => Promise<void>): FunctionalComponent {
+  private renderButtonIcon(icon: ODS_ICON_NAME, callback: () => Promise<void>, customClass: string = ''): FunctionalComponent {
     return (
       <button
-        class="ods-input__button"
+        class= { `ods-input__button ${customClass}` }
         disabled= { this.isDisabled }
         onClick={ callback }
         onKeyUp={ (event: KeyboardEvent): Promise<void> => handleKeySpace(event, this.isDisabled, callback) }>
@@ -171,11 +171,11 @@ export class OdsInput {
         }
 
         {
-          this.isPassword && !this.isLoading && this.renderButtonIcon(this.isMasked ? ODS_ICON_NAME.eyeClose : ODS_ICON_NAME.eyeOpen, this.toggleMask.bind(this))
+          this.isClearable && !this.isLoading && this.value && this.renderButtonIcon(ODS_ICON_NAME.cross, this.clear.bind(this), 'ods-input__button__clearable')
         }
 
         {
-          this.isClearable && !this.isLoading && this.renderButtonIcon(ODS_ICON_NAME.cross, this.clear.bind(this))
+          this.isPassword && !this.isLoading && this.renderButtonIcon(this.isMasked ? ODS_ICON_NAME.eyeClose : ODS_ICON_NAME.eyeOpen, this.toggleMask.bind(this))
         }
       </Host>
     );

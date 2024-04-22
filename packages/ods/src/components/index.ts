@@ -18,3 +18,4 @@ export * from './badge/src';
 export * from './table/src';
 export * from './medium/src';
 export * from './input/src';
+export * from './textarea/src';

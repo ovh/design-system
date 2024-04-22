@@ -1,0 +1,59 @@
+import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import SpecificationsTextarea from '@ovhcloud/ods-components/src/components/textarea/documentation/spec.md?raw';
+import { Banner } from '../../banner';
+import { DocNavigator } from '../../doc-navigator';
+import * as TextareaStories from './textarea.stories';
+
+<Meta of={ TextareaStories } name='Documentation' />
+
+<Banner of={ TextareaStories } />
+
+# Overview
+
+Textarea component is used to type long content:
+
+<Canvas of={ TextareaStories.Default } sourceState='none' />
+
+<DocNavigator of={ TextareaStories } />
+
+# API
+
+<Markdown>{ SpecificationsTextarea }</Markdown>
+
+# Style customization
+
+You can add your own style on the textarea element using the part `textarea`.
+
+Custom textarea css:
+
+<Canvas of={ TextareaStories.CustomCSS } sourceState='shown'/>
+
+# Examples
+
+## Default
+
+<Canvas of={ TextareaStories.Default } sourceState='shown' />
+
+## Cols
+
+<Canvas of={ TextareaStories.Cols } sourceState='shown' />
+
+## Disabled
+
+<Canvas of={ TextareaStories.Disabled } sourceState='shown' />
+
+## Error
+
+<Canvas of={ TextareaStories.Error } sourceState='shown' />
+
+## Placeholder
+
+<Canvas of={ TextareaStories.Placeholder } sourceState='shown' />
+
+## Resizable
+
+<Canvas of={ TextareaStories.Resizable } sourceState='shown' />
+
+## Rows
+
+<Canvas of={ TextareaStories.Rows } sourceState='shown' />

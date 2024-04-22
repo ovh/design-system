@@ -7,11 +7,13 @@ import React, { useEffect, useState } from 'react';
 import { BASE_URL, LINK_ID } from './zeroheight';
 
 function extractLinkId(storyId: string): string | null {
+  const storyComponentName = storyId.split('--').shift()?.split('-').pop() || '';
+
   for (const id of Object.values(LINK_ID)) {
     const idPart = id.split('-');
     const componentPart = idPart.slice(1).join('-');
 
-    if (storyId.includes(componentPart)) {
+    if (storyComponentName === componentPart) {
       return id;
     }
   }

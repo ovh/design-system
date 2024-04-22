@@ -19,6 +19,7 @@ const componentNames = [
   'table',
   'medium',
   'input',
+  'textarea',
   //--generator-anchor--
 ];
 

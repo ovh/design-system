@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
-import type { TemplateResult } from 'lit-html';
 import { ODS_INPUT_TYPE, ODS_INPUT_TYPES } from '@ovhcloud/ods-components';
 import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/ods-input';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import { html } from 'lit-html';
 import { CONTROL_CATEGORY, orderControls } from '../../control';
 
@@ -14,51 +14,27 @@ const meta: Meta = {
 
 export default meta;
 
-function baseInput(arg: Record<string, string>): TemplateResult {
-  return arg.isMasked !== undefined
-    ? html`<ods-input class="my-input"
-      ariaLabel="${arg.ariaLabel}"
-      ariaLabelledby="${arg.ariaLabelledby}"
-      has-error="${arg.hasError}"
-      is-clearable="${arg.isClearable}"
-      is-disabled="${arg.isDisabled}"
-      is-loading="${arg.isLoading}"
-      is-masked="${arg.isMasked}"
-      is-readonly="${arg.isReadonly}"
-      is-required="${arg.isRequired}"
-      max="${arg.max}"
-      maxlength="${arg.maxlength}"
-      min="${arg.min}"
-      minlength="${arg.minlength}"
-      pattern="${arg.pattern}"
-      placeholder="${arg.placeholder}"
-      step="${arg.step}"
-      type="${arg.type}">
-      </ods-input>`
-    : html`<ods-input class="my-input"
-      ariaLabel="${arg.ariaLabel}"
-      ariaLabelledby="${arg.ariaLabelledby}"
-      has-error="${arg.hasError}"
-      is-clearable="${arg.isClearable}"
-      is-disabled="${arg.isDisabled}"
-      is-loading="${arg.isLoading}"
-      is-readonly="${arg.isReadonly}"
-      is-required="${arg.isRequired}"
-      max="${arg.max}"
-      maxlength="${arg.maxlength}"
-      min="${arg.min}"
-      minlength="${arg.minlength}"
-      pattern="${arg.pattern}"
-      placeholder="${arg.placeholder}"
-      step="${arg.step}"
-      type="${arg.type}">
-      </ods-input>`;
-}
-
 export const Demo: StoryObj = {
   render: (arg) => html`
-  ${arg.isMasked}
-  ${baseInput(arg)}
+  <ods-input class="my-input"
+      ariaLabel="${arg.ariaLabel}"
+      ariaLabelledby="${arg.ariaLabelledby}"
+      has-error="${arg.hasError}"
+      is-clearable="${arg.isClearable}"
+      is-disabled="${arg.isDisabled}"
+      is-loading="${arg.isLoading}"
+      is-masked="${ifDefined(arg.isMasked)}"
+      is-readonly="${arg.isReadonly}"
+      is-required="${arg.isRequired}"
+      max="${arg.max}"
+      maxlength="${arg.maxlength}"
+      min="${arg.min}"
+      minlength="${arg.minlength}"
+      pattern="${arg.pattern}"
+      placeholder="${arg.placeholder}"
+      step="${arg.step}"
+      type="${arg.type}">
+      </ods-input>
 <style>
   .my-input::part(input) {
     ${arg.customCss}

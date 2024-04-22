@@ -3,17 +3,27 @@
 
 @mixin ods-input() {
   box-sizing: border-box;
-  border: theme.$ods-border-width-sm solid theme.$ods-form-element-border-color-default;
-  border-radius: theme.$ods-border-radius-sm;
+  border: var(--ods-border-width-sm) solid var(--ods-form-element-border-color-default);
+  border-radius: var(--ods-border-radius-sm);
   cursor: text;
   padding: 4px 8px;
   width: 100%;
   height: 32px;
   line-height: 1rem;
-  color: theme.$ods-color-text;
+  color: var(--ods-color-text);
   font-size: 1rem;
 
   &:focus {
     @include focus.ods-focus();
+  }
+
+  &:disabled {
+    background-color: var(--ods-color-neutral-100);
+    cursor: not-allowed;
+    color: var(--ods-form-element-foreground-color-disabled);
+  }
+
+  &:read-only {
+    color: var(--ods-form-element-foreground-color-readonly);
   }
 }

@@ -5,7 +5,8 @@ describe('ods-input accessibility', () => {
   let el: E2EElement;
   let input: E2EElement;
   let page: E2EPage;
-  let button: E2EElement;
+  let buttonClearable: E2EElement;
+  let buttonToggleMask: E2EElement;
 
   async function isFocused(): Promise<boolean> {
     return await page.evaluate(() => {
@@ -28,7 +29,8 @@ describe('ods-input accessibility', () => {
 
     el = await page.find('ods-input');
     input = await page.find('ods-input >>> input');
-    button = await page.find('ods-input >>> .ods-input__button');
+    buttonClearable = await page.find('ods-input >>> .ods-input__actions__clearable');
+    buttonToggleMask = await page.find('ods-input >>> .ods-input__actions__toggle-mask');
   }
 
   beforeEach(jest.clearAllMocks);
@@ -36,14 +38,18 @@ describe('ods-input accessibility', () => {
   describe('focus', () => {
     it('should be focusable', async() => {
       await setup('<ods-input></ods-input>');
+      const odsFocusSpy = await page.spyOnEvent('odsFocus');
       await page.keyboard.press('Tab');
       expect(await isFocused()).toBe(true);
+      expect(odsFocusSpy).toHaveReceivedEventTimes(1);
     });
 
     it('should not be focusable if disabled', async() => {
       await setup('<ods-input is-disabled></ods-input>');
+      const odsFocusSpy = await page.spyOnEvent('odsFocus');
       await page.keyboard.press('Tab');
       expect(await isFocused()).toBe(false);
+      expect(odsFocusSpy).not.toHaveReceivedEvent();
     });
   });
 
@@ -83,6 +89,7 @@ describe('ods-input accessibility', () => {
 
       expect(await el.getProperty('value')).toBeNull();
       expect(odsClearSpy).toHaveReceivedEventTimes(1);
+      expect(await odsInputFocusedElementTagName()).toBe('INPUT');
     });
 
     it('should clear input when Space on clearable button', async() => {
@@ -97,6 +104,7 @@ describe('ods-input accessibility', () => {
 
       expect(await el.getProperty('value')).toBeNull();
       expect(odsClearSpy).toHaveReceivedEventTimes(1);
+      expect(await odsInputFocusedElementTagName()).toBe('INPUT');
     });
 
     it('should clear input when click on clearable button', async() => {
@@ -104,11 +112,12 @@ describe('ods-input accessibility', () => {
       const odsClearSpy = await page.spyOnEvent('odsClear');
       expect(await el.getProperty('value')).toBe('value');
 
-      await button.click();
+      await buttonClearable.click();
       await page.waitForChanges();
 
       expect(await el.getProperty('value')).toBeNull();
       expect(odsClearSpy).toHaveReceivedEventTimes(1);
+      expect(await odsInputFocusedElementTagName()).toBe('INPUT');
     });
 
     it('should do nothing because of disabled', async() => {
@@ -125,7 +134,7 @@ describe('ods-input accessibility', () => {
       await page.waitForChanges();
       expect(await el.getProperty('value')).toBe('value');
 
-      await button.click();
+      await buttonClearable.click();
       await page.waitForChanges();
       expect(await el.getProperty('value')).toBe('value');
       expect(odsClearSpy).not.toHaveReceivedEvent();
@@ -179,7 +188,7 @@ describe('ods-input accessibility', () => {
       const odsToggleMaskSpy = await page.spyOnEvent('odsToggleMask');
       expect(await input.getProperty('type')).toBe('password');
 
-      await button.click();
+      await buttonToggleMask.click();
       await page.waitForChanges();
 
       expect(await input.getProperty('type')).toBe('text');
@@ -201,7 +210,7 @@ describe('ods-input accessibility', () => {
       await page.waitForChanges();
       expect(await input.getProperty('type')).toBe('password');
 
-      await button.click();
+      await buttonToggleMask.click();
       await page.waitForChanges();
       expect(await input.getProperty('type')).toBe('password');
       expect(odsToggleMaskSpy).not.toHaveReceivedEvent();

@@ -107,7 +107,7 @@ describe('ods-input behaviour', () => {
       await part.type('some text');
       await page.waitForChanges();
 
-      expect(await el.getProperty('value')).toBe(undefined);
+      expect(await el.getProperty('value')).toBe(null);
       expect(odsValueChangeSpy).not.toHaveReceivedEvent();
     });
   });

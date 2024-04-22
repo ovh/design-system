@@ -10,6 +10,8 @@
   --ods-border-radius-sm: #{var.$ods-border-radius-sm};
   --ods-border-radius-md: #{var.$ods-border-radius-md};
   --ods-border-radius-lg: #{var.$ods-border-radius-lg};
+  --ods-border-width-sm: #{var.$ods-border-width-sm};
+  --ods-border-width-md: #{var.$ods-border-width-md};
   --ods-color-alpha: #{var.$ods-single-color-alpha};
   --ods-color-beta: #{var.$ods-single-color-beta};
   --ods-color-critical-050: #{var.$ods-critical-050};
@@ -37,6 +39,7 @@
   --ods-color-primary-700: #{var.$ods-primary-700};
   --ods-color-primary-800: #{var.$ods-primary-800};
   --ods-color-primary-900: #{var.$ods-primary-900};
+  --ods-color-text: #{var.$ods-single-color-text};
   --ods-color-success-000: #{var.$ods-color-green-000};
   --ods-color-success-050: #{var.$ods-color-green-050};
   --ods-color-success-100: #{var.$ods-color-green-100};
@@ -51,6 +54,12 @@
   --ods-color-warning-900: #{var.$ods-color-orange-900};
   --ods-font-family-code: 'Source Code Pro', arial;
   --ods-font-family-default: 'Source Sans Pro', 'Trebuchet MS', arial, 'Segoe UI', sans-serif;
+  --ods-form-element-border-color-default: #{var.$ods-form-element-border-color-default};
+  --ods-form-element-border-color-hover: #{var.$ods-form-element-border-color-hover};
+  --ods-form-element-border-color-focused: #{var.$ods-form-element-border-color-focused};
+  --ods-form-element-border-color-critical: #{var.$ods-form-element-border-color-critical};
+  --ods-form-element-foreground-color-disabled: #{var.$ods-form-element-foreground-color-disabled};
+  --ods-form-element-foreground-color-readonly: #{var.$ods-form-element-foreground-color-readonly};
   --ods-outline-color: #{var.$ods-outline-color};
   --ods-outline-width: #{var.$ods-outline-width};
   --ods-outline-offset: #{var.$ods-outline-offset};

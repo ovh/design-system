@@ -20,6 +20,7 @@ $ods-input-input-padding-right: calc($ods-input-actions-button-width + $ods-inpu
     top: 0;
     right: 0;
     bottom: 0;
+    gap: 2px;
     align-items: center;
     justify-content: center;
     padding-right: 4px;
@@ -29,6 +30,10 @@ $ods-input-input-padding-right: calc($ods-input-actions-button-width + $ods-inpu
       border-radius: 2px;
       background: none;
       cursor: pointer;
+    }
+
+    &__icon {
+      font-size: 16px;
     }
 
     &__clearable {
@@ -62,6 +67,8 @@ $ods-input-input-padding-right: calc($ods-input-actions-button-width + $ods-inpu
 
       &:focus-visible {
         @include focus.ods-focus();
+
+        outline-offset: 0;
       }
     }
 
@@ -94,6 +101,7 @@ $ods-input-input-padding-right: calc($ods-input-actions-button-width + $ods-inpu
     &:disabled {
       ~ .ods-input__actions {
         cursor: not-allowed;
+        pointer-events: none;
 
         .ods-input__actions__clearable, .ods-input__actions__toggle-mask {
           cursor: not-allowed;

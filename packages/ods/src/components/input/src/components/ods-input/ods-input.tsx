@@ -45,17 +45,16 @@ export class OdsInput {
   @Event() odsFocus!: EventEmitter<void>;
   @Event() odsToggleMask!: EventEmitter<void>;
   @Event() odsReset!: EventEmitter<void>;
-  @Event() odsValueChange!: EventEmitter<OdsInputValueChangeEventDetail>;
+  @Event() odsChange!: EventEmitter<OdsInputValueChangeEventDetail>;
 
   @Method()
   async clear(): Promise<void> {
-    if (this.isDisabled) {
+    if (this.isNotEditable) {
       return;
     }
     this.value = null;
     this.inputEl?.focus();
     this.odsClear.emit();
-    return;
   }
 
   @Method()
@@ -65,22 +64,20 @@ export class OdsInput {
 
   @Method()
   async toggleMask(): Promise<void> {
-    if (this.isDisabled) {
+    if (this.isNotEditable) {
       return;
     }
     this.isMasked = !this.isMasked;
     this.odsToggleMask.emit();
-    return;
   }
 
   @Method()
   async reset(): Promise<void> {
-    if (this.isDisabled) {
+    if (this.isNotEditable) {
       return;
     }
     this.value = this.defaultValue ?? null;
     this.odsReset.emit();
-    return;
   }
 
   @Watch('isMasked')
@@ -91,7 +88,7 @@ export class OdsInput {
   @Watch('value')
   onValueChange(value: string | number, oldValue?: string | number): void {
     setFormValue(this.internals, this.value);
-    this.odsValueChange.emit({
+    this.odsChange.emit({
       name: this.name,
       oldValue: oldValue,
       validity:  this.inputEl?.validity,
@@ -109,6 +106,10 @@ export class OdsInput {
 
   async formResetCallback(): Promise<void> {
     await this.reset();
+  }
+
+  private get isNotEditable(): boolean {
+    return this.isDisabled || this.isReadonly;
   }
 
   private onInput(): void {
@@ -164,7 +165,7 @@ export class OdsInput {
               disabled={ this.isDisabled }
               onClick={ this.clear.bind(this) }
               onKeyUp={ (event: KeyboardEvent): Promise<void> => handleKeySpace(event, this.isDisabled, this.clear.bind(this)) }>
-              <ods-icon name={ ODS_ICON_NAME.cross }>
+              <ods-icon class="ods-input__actions__icon" name={ ODS_ICON_NAME.cross }>
               </ods-icon>
             </button>
           }
@@ -175,7 +176,7 @@ export class OdsInput {
               disabled={ this.isDisabled }
               onClick={ this.toggleMask.bind(this) }
               onKeyUp={ (event: KeyboardEvent): Promise<void> => handleKeySpace(event, this.isDisabled, this.toggleMask.bind(this)) }>
-              <ods-icon name={ this.isMasked ? ODS_ICON_NAME.eyeClose : ODS_ICON_NAME.eyeOpen }>
+              <ods-icon class="ods-input__actions__icon" name={ this.isMasked ? ODS_ICON_NAME.eyeClose : ODS_ICON_NAME.eyeOpen }>
               </ods-icon>
             </button>
           }

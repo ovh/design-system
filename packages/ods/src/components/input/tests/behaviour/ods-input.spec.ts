@@ -3,7 +3,7 @@ import type { SpecPage } from '@stencil/core/testing';
 import { newSpecPage } from '@stencil/core/testing';
 import { OdsInput } from '../../src';
 
-describe('ods-input rendering', () => {
+describe('ods-input behaviour', () => {
   let page: SpecPage;
   let root: HTMLElement | undefined;
   let rootInstance: OdsInput | undefined;

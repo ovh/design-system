@@ -38,6 +38,16 @@ describe('ods-input behaviour', () => {
       expect(await el.getProperty('value')).toBe(value);
       expect(odsClearSpy).not.toHaveReceivedEvent();
     });
+
+    it('should do nothing because of readonly', async() => {
+      const value = 'value';
+      await setup(`<ods-input is-readonly value="${value}"></ods-input>`);
+      const odsClearSpy = await page.spyOnEvent('odsClear');
+      await el.callMethod('clear');
+      await page.waitForChanges();
+      expect(await el.getProperty('value')).toBe(value);
+      expect(odsClearSpy).not.toHaveReceivedEvent();
+    });
   });
 
   describe('method:reset', () => {
@@ -54,6 +64,16 @@ describe('ods-input behaviour', () => {
     it('should do nothing because of disabled', async() => {
       const value = 'value';
       await setup(`<ods-input is-disabled value="${value}" default-value="defaultValue"></ods-input>`);
+      const odsResetSpy = await page.spyOnEvent('odsReset');
+      await el.callMethod('reset');
+      await page.waitForChanges();
+      expect(await el.getProperty('value')).toBe(value);
+      expect(odsResetSpy).not.toHaveReceivedEvent();
+    });
+
+    it('should do nothing because of readonly', async() => {
+      const value = 'value';
+      await setup(`<ods-input is-readonly value="${value}" default-value="defaultValue"></ods-input>`);
       const odsResetSpy = await page.spyOnEvent('odsReset');
       await el.callMethod('reset');
       await page.waitForChanges();
@@ -85,30 +105,40 @@ describe('ods-input behaviour', () => {
       expect(await el.getProperty('isMasked')).toBe(true);
       expect(odsToggleMaskSpy).not.toHaveReceivedEvent();
     });
+
+    it('should do nothing because of readonly', async() => {
+      await setup('<ods-input is-masked is-readonly></ods-input>');
+      const odsToggleMaskSpy = await page.spyOnEvent('odsToggleMask');
+      await el.callMethod('toggleMask');
+      await page.waitForChanges();
+
+      expect(await el.getProperty('isMasked')).toBe(true);
+      expect(odsToggleMaskSpy).not.toHaveReceivedEvent();
+    });
   });
 
-  describe('event:odsValueChange', () => {
-    it('should receive odsValueChange event', async() => {
+  describe('event:odsChange ', () => {
+    it('should receive odsChange event', async() => {
       const typeValue = 'some text';
       await setup('<ods-input></ods-input>');
-      const odsValueChangeSpy = await page.spyOnEvent('odsValueChange');
+      const odsChangeSpy = await page.spyOnEvent('odsChange');
 
       await part.type(typeValue);
       await page.waitForChanges();
 
       expect(await el.getProperty('value')).toBe(typeValue);
-      expect(odsValueChangeSpy).toHaveReceivedEventTimes(typeValue.length);
+      expect(odsChangeSpy).toHaveReceivedEventTimes(typeValue.length);
     });
 
     it('should do nothing because of disabled', async() => {
       await setup('<ods-input is-disabled></ods-input>');
-      const odsValueChangeSpy = await page.spyOnEvent('odsValueChange');
+      const odsChangeSpy = await page.spyOnEvent('odsChange');
 
       await part.type('some text');
       await page.waitForChanges();
 
       expect(await el.getProperty('value')).toBe(null);
-      expect(odsValueChangeSpy).not.toHaveReceivedEvent();
+      expect(odsChangeSpy).not.toHaveReceivedEvent();
     });
   });
 });

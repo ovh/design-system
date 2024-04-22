@@ -21,7 +21,7 @@ describe('ods-input react', () => {
     expect(boundingBox?.width).toBeGreaterThan(0);
   });
 
-  it('trigger the odsValueChange handler on type', async () => {
+  it('trigger the odsChange handler on type', async () => {
     const elem = await page.$('ods-input:not([is-disabled]) >>> input');
     let consoleLog = '';
     page.on('console', (consoleObj) => {
@@ -32,12 +32,11 @@ describe('ods-input react', () => {
     // Small delay to ensure page console event has been resolved
     await new Promise((resolve) => setTimeout(resolve, 100));
 
-    expect(consoleLog).toBe('React input odsValueChange');
+    expect(consoleLog).toBe('React input odsChange');
   });
 
-  it('does not trigger the odsValueChange handler on type if disabled', async () => {
+  it('does not trigger the odsChange handler on type if disabled', async () => {
     const elem = await page.$('ods-input[is-disabled] >>> input');
-    console.log('elem', elem)
     let consoleLog = '';
     page.on('console', (consoleObj) => {
       consoleLog = consoleObj.text();

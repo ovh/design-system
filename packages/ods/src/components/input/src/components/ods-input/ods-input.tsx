@@ -2,7 +2,7 @@ import { AttachInternals, Component, Element, Event, type EventEmitter, type Fun
 import { ODS_ICON_NAME } from '../../../../icon/src';
 import { ODS_INPUT_TYPE, type OdsInputType } from '../../constants/input-type';
 import { handleKeySpace, isPassword, setFormValue } from '../../controller/ods-input';
-import { type OdsInputEventValueChange } from '../../interfaces/events';
+import { type OdsInputValueChangeEventDetail } from '../../interfaces/events';
 
 @Component({
   formAssociated: true,
@@ -18,7 +18,6 @@ export class OdsInput {
   @AttachInternals() private internals!: ElementInternals;
 
   @State() isPassword = false;
-  @State() internalError = false;
 
   @Prop({ reflect: true }) public ariaLabel: HTMLElement['ariaLabel'] = null;
   @Prop({ reflect: true }) public ariaLabelledby?: string;
@@ -39,20 +38,22 @@ export class OdsInput {
   @Prop({ reflect: true }) public placeholder?: string;
   @Prop({ reflect: true }) public step?: number;
   @Prop({ reflect: true }) public type: OdsInputType = ODS_INPUT_TYPE.text;
-  @Prop({ mutable: true, reflect: true }) public value?: string | number = undefined;
+  @Prop({ mutable: true, reflect: true }) public value: string | number | null = null;
 
   @Event() odsBlur!: EventEmitter<void>;
   @Event() odsClear!: EventEmitter<void>;
+  @Event() odsFocus!: EventEmitter<void>;
   @Event() odsToggleMask!: EventEmitter<void>;
   @Event() odsReset!: EventEmitter<void>;
-  @Event() odsValueChange!: EventEmitter<OdsInputEventValueChange>;
+  @Event() odsValueChange!: EventEmitter<OdsInputValueChangeEventDetail>;
 
   @Method()
   async clear(): Promise<void> {
     if (this.isDisabled) {
       return;
     }
-    this.value = undefined;
+    this.value = null;
+    this.inputEl?.focus();
     this.odsClear.emit();
     return;
   }
@@ -77,7 +78,7 @@ export class OdsInput {
     if (this.isDisabled) {
       return;
     }
-    this.value = this.defaultValue ?? undefined;
+    this.value = this.defaultValue ?? null;
     this.odsReset.emit();
     return;
   }
@@ -87,15 +88,9 @@ export class OdsInput {
     this.isPassword = isPassword(this.isMasked);
   }
 
-  @Watch('error')
-  onErrorChange(): void {
-    this.internalError = !this.inputEl?.validity?.valid ?? this.hasError;
-  }
-
   @Watch('value')
   onValueChange(value: string | number, oldValue?: string | number): void {
     setFormValue(this.internals, this.value);
-    this.onErrorChange();
     this.odsValueChange.emit({
       name: this.name,
       oldValue: oldValue,
@@ -107,7 +102,7 @@ export class OdsInput {
   componentWillLoad(): void {
     this.onMaskedChange();
     if (!this.value) {
-      this.value = this.defaultValue;
+      this.value = this.defaultValue ?? null;
     }
     setFormValue(this.internals, this.value);
   }
@@ -120,24 +115,14 @@ export class OdsInput {
     if (this.isDisabled) {
       return;
     }
-    this.value = this.inputEl?.value;
+    this.value = this.inputEl?.value ?? null;
     return;
   }
 
-  private renderButtonIcon(icon: ODS_ICON_NAME, callback: () => Promise<void>, customClass: string = ''): FunctionalComponent {
-    return (
-      <button
-        class= { `ods-input__button ${customClass}` }
-        disabled= { this.isDisabled }
-        onClick={ callback }
-        onKeyUp={ (event: KeyboardEvent): Promise<void> => handleKeySpace(event, this.isDisabled, callback) }>
-        <ods-icon name={ icon }>
-        </ods-icon>
-      </button>
-    );
-  }
-
   render(): FunctionalComponent {
+    const hasClearableIcon = this.isClearable && !this.isLoading && !!this.value;
+    const hasToggleMaskIcon = this.isPassword && !this.isLoading;
+
     return (
       <Host class="ods-input">
         <input
@@ -145,8 +130,9 @@ export class OdsInput {
           aria-labelledby={ this.ariaLabelledby }
           class={{
             'ods-input__input': true,
-            'ods-input__input--disabled': this.isDisabled,
-            'ods-input__input--error': this.internalError || this.hasError,
+            'ods-input__input--clearable': hasClearableIcon,
+            'ods-input__input--error': this.hasError,
+            'ods-input__input--toggle-mask': hasToggleMaskIcon,
           }}
           disabled={ this.isDisabled }
           max={ this.max }
@@ -155,6 +141,7 @@ export class OdsInput {
           minlength={ this.minlength }
           name={ this.name }
           onBlur={ (): CustomEvent<void> => this.odsBlur.emit() }
+          onFocus={ (): CustomEvent<void> => this.odsFocus.emit() }
           onInput={ (): void => this.onInput() }
           pattern={ this.pattern }
           part="input"
@@ -166,17 +153,33 @@ export class OdsInput {
           type={ this.isPassword && this.isMasked ? 'password' : this.type }
           value={ this.value?.toString() || '' } />
 
-        {
-          this.isLoading && <ods-spinner class="ods-input__spinner"></ods-spinner>
-        }
-
-        {
-          this.isClearable && !this.isLoading && this.value && this.renderButtonIcon(ODS_ICON_NAME.cross, this.clear.bind(this), 'ods-input__button__clearable')
-        }
-
-        {
-          this.isPassword && !this.isLoading && this.renderButtonIcon(this.isMasked ? ODS_ICON_NAME.eyeClose : ODS_ICON_NAME.eyeOpen, this.toggleMask.bind(this))
-        }
+        <div class="ods-input__actions">
+          {
+            this.isLoading && <ods-spinner class="ods-input__actions__spinner"></ods-spinner>
+          }
+          {
+            hasClearableIcon &&
+            <button
+              class="ods-input__actions__clearable"
+              disabled={ this.isDisabled }
+              onClick={ this.clear.bind(this) }
+              onKeyUp={ (event: KeyboardEvent): Promise<void> => handleKeySpace(event, this.isDisabled, this.clear.bind(this)) }>
+              <ods-icon name={ ODS_ICON_NAME.cross }>
+              </ods-icon>
+            </button>
+          }
+          {
+            hasToggleMaskIcon &&
+            <button
+              class="ods-input__actions__toggle-mask"
+              disabled={ this.isDisabled }
+              onClick={ this.toggleMask.bind(this) }
+              onKeyUp={ (event: KeyboardEvent): Promise<void> => handleKeySpace(event, this.isDisabled, this.toggleMask.bind(this)) }>
+              <ods-icon name={ this.isMasked ? ODS_ICON_NAME.eyeClose : ODS_ICON_NAME.eyeOpen }>
+              </ods-icon>
+            </button>
+          }
+        </div>
       </Host>
     );
   }

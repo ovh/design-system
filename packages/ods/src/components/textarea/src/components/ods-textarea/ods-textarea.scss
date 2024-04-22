@@ -1,0 +1,18 @@
+@use '../../../../../style/input';
+
+.ods-textarea {
+  &__textarea {
+     @include input.ods-input();
+
+    height: auto;
+    resize: none;
+
+    &--error {
+      @include input.ods-input-error();
+    }
+
+    &--resizable {
+      resize: both;
+    }
+  }
+}

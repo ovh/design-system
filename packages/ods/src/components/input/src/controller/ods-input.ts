@@ -5,8 +5,8 @@ async function handleKeySpace(event: KeyboardEvent, isDisabled: boolean, callbac
   }
 }
 
-function setFormValue(internals: ElementInternals, value?: number | string): void {
-  internals?.setFormValue?.(value?.toString() ?? '');
+function setFormValue(internals: ElementInternals, value: number | string | null): void {
+  internals.setFormValue(value?.toString() ?? '');
 }
 
 function isPassword(isMasked?: boolean): boolean {

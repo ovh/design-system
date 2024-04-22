@@ -3,53 +3,77 @@
 @use '../../../../../style/input';
 
 :host(.ods-input) {
+  display: inline-block;
   position: relative;
+  width: 100%;
+  height: 100%;
 }
 
-$ods-input-button-right: 4px;
-$ods-input-button-top: -1px;
+$ods-input-actions-button-width: 24px;
+$ods-input-actions-padding-right: 4px;
+$ods-input-input-padding-right: calc($ods-input-actions-button-width + $ods-input-actions-padding-right);
 
 .ods-input {
-  &__button {
-    $button: &;
-
+  &__actions {
     display: inline-flex;
     position: absolute;
-    top: $ods-input-button-top;
-    right: $ods-input-button-right;
-    border: none;
-    border-radius: 2px;
-    background: none;
-    cursor: pointer;
-    color: theme.$ods-color-primary-500;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    align-items: center;
+    justify-content: center;
+    padding-right: 4px;
 
-    &:focus-visible {
-      @include focus.ods-focus();
-    }
-
-    &:hover {
-      background-color: theme.$ods-color-primary-100;
-    }
-
-    &:active {
-      background-color: theme.$ods-color-primary-200;
+    &__clearable, &__toggle-mask, &__spinner {
+      border: none;
+      border-radius: 2px;
+      background: none;
+      cursor: pointer;
     }
 
     &__clearable {
-      color: theme.$ods-color-neutral-600;
-
-      &:has(+ #{$button}) {
-        right: 30px;
-      }
+      color: var(--ods-color-neutral-600);
 
       &:hover {
-        background-color: theme.$ods-color-neutral-100;
+        background-color: var(--ods-color-neutral-100);
       }
 
       &:active {
-        background-color: theme.$ods-color-neutral-200;
+        background-color: var(--ods-color-neutral-200);
       }
     }
+
+    &__toggle-mask {
+      color: var(--ods-color-primary-500);
+
+      &:hover {
+        background-color: var(--ods-color-primary-100);
+      }
+
+      &:active {
+        background-color: var(--ods-color-primary-200);
+      }
+    }
+
+    /* stylelint-disable-next-line no-descending-specificity */
+    &__clearable, &__toggle-mask {
+      width: $ods-input-actions-button-width;
+      height: 24px;
+
+      &:focus-visible {
+        @include focus.ods-focus();
+      }
+    }
+
+    &__spinner {
+      height: unset;
+
+      &::part(spinner) {
+        width: 1rem;
+        height: 1rem;
+      }
+    }
+
   }
 
   &__input {
@@ -57,44 +81,44 @@ $ods-input-button-top: -1px;
 
     @include input.ods-input();
 
-    &:not(#{$input}--error, #{$input}--disabled) {
+    &:not(#{$input}--error, :disabled) {
       &:focus {
-        border-color: theme.$ods-form-element-border-color-focused;
+        border-color: var(--ods-form-element-border-color-focused);
       }
 
       &:hover {
-        border-color: theme.$ods-form-element-border-color-hover;
+        border-color: var(--ods-form-element-border-color-hover);
       }
     }
 
-    &--disabled {
-      background-color: theme.$ods-color-neutral-100;
-      cursor: not-allowed;
-      user-select: none;
-
-      ~ .ods-input__button {
+    &:disabled {
+      ~ .ods-input__actions {
         cursor: not-allowed;
+
+        .ods-input__actions__clearable, .ods-input__actions__toggle-mask {
+          cursor: not-allowed;
+        }
       }
+    }
+
+    &--clearable {
+      padding-right: $ods-input-input-padding-right;
     }
 
     &--error {
-      border-color: theme.$ods-form-element-border-color-critical;
+      border-color: var(--ods-form-element-border-color-critical);
+    }
+
+    &--toggle-mask {
+      padding-right: $ods-input-input-padding-right;
+    }
+
+    &.ods-input__input--clearable.ods-input__input--toggle-mask {
+      padding-right: calc($ods-input-input-padding-right * 2);
     }
 
     &[type="number"] {
       appearance: textfield;
-    }
-  }
-
-  &__spinner {
-    position: absolute;
-    top: $ods-input-button-top;
-    right: $ods-input-button-right;
-    padding: 0 4px;
-
-    &::part(spinner) {
-      width: 1rem;
-      height: 1rem;
     }
   }
 }

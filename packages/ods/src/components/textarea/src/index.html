@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html dir='ltr' lang='en'>
+<head>
+  <meta charset='utf-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0' />
+  <title>Dev ods-textarea</title>
+
+  <script type='module' src='/build/ods-textarea.esm.js'></script>
+  <script nomodule src='/build/ods-textarea.js'></script>
+  <link rel="stylesheet" href="/build/ods-textarea.css">
+</head>
+
+<body>
+  <p>Default</p>
+  <ods-textarea>
+  </ods-textarea>
+
+  <p>Cols</p>
+  <ods-textarea cols="4">
+  </ods-textarea>
+
+  <p>Default value</p>
+  <ods-textarea default-value="Default value">
+  </ods-textarea>
+
+  <p>Has error</p>
+  <ods-textarea has-error>
+  </ods-textarea>
+
+  <p>Is disabled</p>
+  <ods-textarea is-disabled>
+  </ods-textarea>
+  <ods-textarea is-disabled value="Disabled">
+  </ods-textarea>
+
+  <p>Is readonly</p>
+  <ods-textarea is-readonly>
+  </ods-textarea>
+  <ods-textarea is-readonly value="Readonly">
+  </ods-textarea>
+
+  <p>Is resizable</p>
+  <ods-textarea is-resizable>
+  </ods-textarea>
+
+  <p>Placeholder</p>
+  <ods-textarea placeholder="Placeholder">
+  </ods-textarea>
+
+  <p>Rows</p>
+  <ods-textarea rows="4">
+  </ods-textarea>
+
+  <p>Value</p>
+  <ods-textarea value="value">
+  </ods-textarea>
+
+  <p>Custom CSS</p>
+  <ods-textarea class="my-textarea">
+  </ods-textarea>
+  <style>
+    .my-textarea::part(textarea) {
+      width: 500px;
+    }
+  </style>
+
+  <p>Form</p>
+  <form id="my-form">
+    <ods-textarea default-value="Default value" is-readonly
+                  name="my-textarea"
+                  value="Form textarea">
+    </ods-textarea>
+
+    <button id="form-reset-button" type="reset">Reset</button>
+    <button id="form-submit-button" type="submit">Submit</button>
+  </form>
+  <script>
+    const form = document.querySelector('#my-form');
+    const submitFormButton = document.querySelector('#form-submit-button');
+
+    submitFormButton.addEventListener('click', () => {
+      const formData = new FormData(form);
+      console.log('formData', formData);
+    });
+  </script>
+
+  <p>Methods & Events</p>
+  <ods-textarea id="textarea-method" is-required>
+  </ods-textarea>
+  <button id="clear-button">clear</button>
+  <button id="reset-button">reset</button>
+  <button id="validity-button">get validity</button>
+  <script>
+    const textarea = document.querySelector('#textarea-method');
+    const clearButton = document.querySelector('#clear-button');
+    const resetButton = document.querySelector('#reset-button');
+    const getValidityButton = document.querySelector('#validity-button');
+
+    clearButton.addEventListener('click', () => { textarea.clear() });
+    resetButton.addEventListener('click', () => { textarea.reset() });
+    getValidityButton.addEventListener('click', async() => {
+      const validity = await textarea.getValidity();
+      console.log(validity);
+    });
+
+    // textarea.addEventListener('odsBlur', () => { console.log('on blur') });
+    // textarea.addEventListener('odsChange', (e) => { console.log('on change', e) });
+    // textarea.addEventListener('odsClear', () => { console.log('on clear') });
+    // textarea.addEventListener('odsFocus', () => { console.log('on focus') });
+    // textarea.addEventListener('odsReset', () => { console.log('on reset') });
+  </script>
+</body>
+</html>

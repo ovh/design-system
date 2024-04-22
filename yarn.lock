@@ -3909,6 +3909,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-component-textarea@workspace:packages/ods/src/components/textarea":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-textarea@workspace:packages/ods/src/components/textarea"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-component-tooltip@workspace:packages/ods/src/components/tooltip":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-tooltip@workspace:packages/ods/src/components/tooltip"

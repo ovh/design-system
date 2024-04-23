@@ -10,8 +10,8 @@
 }
 
 $ods-input-actions-button-width: 24px;
-$ods-input-actions-padding-right: 4px;
-$ods-input-input-padding-right: calc($ods-input-actions-button-width + $ods-input-actions-padding-right);
+$ods-input-icon-padding-right: 4px;
+$ods-input-input-padding-right: calc($ods-input-actions-button-width + $ods-input-icon-padding-right);
 
 .ods-input {
   &__actions {
@@ -23,47 +23,24 @@ $ods-input-input-padding-right: calc($ods-input-actions-button-width + $ods-inpu
     gap: 2px;
     align-items: center;
     justify-content: center;
-    padding-right: 4px;
+    padding-right: $ods-input-icon-padding-right;
 
-    &__clearable, &__toggle-mask, &__spinner {
+    &__clearable, &__toggle-mask {
+      display: inherit;
+      align-items: center;
+      justify-content: center;
       border: none;
       border-radius: 2px;
       background: none;
       cursor: pointer;
-    }
-
-    &__icon {
-      font-size: 16px;
-    }
-
-    &__clearable {
-      color: var(--ods-color-neutral-600);
-
-      &:hover {
-        background-color: var(--ods-color-neutral-100);
-      }
-
-      &:active {
-        background-color: var(--ods-color-neutral-200);
-      }
-    }
-
-    &__toggle-mask {
-      color: var(--ods-color-primary-500);
-
-      &:hover {
-        background-color: var(--ods-color-primary-100);
-      }
-
-      &:active {
-        background-color: var(--ods-color-primary-200);
-      }
-    }
-
-    /* stylelint-disable-next-line no-descending-specificity */
-    &__clearable, &__toggle-mask {
+      padding: 0;
       width: $ods-input-actions-button-width;
       height: 24px;
+      font-size: 1rem;
+
+      &:disabled {
+        cursor: not-allowed;
+      }
 
       &:focus-visible {
         @include focus.ods-focus();
@@ -72,7 +49,38 @@ $ods-input-input-padding-right: calc($ods-input-actions-button-width + $ods-inpu
       }
     }
 
+    /* stylelint-disable no-descending-specificity */
+    &__clearable {
+      color: var(--ods-color-neutral-600);
+
+      &:not(:disabled, &--readonly) {
+        &:hover {
+          background-color: var(--ods-color-neutral-100);
+        }
+
+        &:active {
+          background-color: var(--ods-color-neutral-200);
+        }
+      }
+    }
+
+    &__toggle-mask {
+      color: var(--ods-color-primary-500);
+
+      &:not(:disabled, &--readonly) {
+        &:hover {
+          background-color: var(--ods-color-primary-100);
+        }
+
+        &:active {
+          background-color: var(--ods-color-primary-200);
+        }
+      }
+    }
+    /* stylelint-enable no-descending-specificity */
+
     &__spinner {
+      padding-right: $ods-input-icon-padding-right;
       height: unset;
 
       &::part(spinner) {
@@ -80,13 +88,18 @@ $ods-input-input-padding-right: calc($ods-input-actions-button-width + $ods-inpu
         height: 1rem;
       }
     }
-
   }
 
   &__input {
     $input: &;
 
     @include input.ods-input();
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      appearance: none;
+      margin: 0;
+    }
 
     &:not(#{$input}--error, :disabled) {
       &:focus {
@@ -101,24 +114,15 @@ $ods-input-input-padding-right: calc($ods-input-actions-button-width + $ods-inpu
     &:disabled {
       ~ .ods-input__actions {
         cursor: not-allowed;
-        pointer-events: none;
-
-        .ods-input__actions__clearable, .ods-input__actions__toggle-mask {
-          cursor: not-allowed;
-        }
       }
     }
 
-    &--clearable {
+    &--clearable, &--loading, &--toggle-mask {
       padding-right: $ods-input-input-padding-right;
     }
 
     &--error {
       border-color: var(--ods-form-element-border-color-critical);
-    }
-
-    &--toggle-mask {
-      padding-right: $ods-input-input-padding-right;
     }
 
     &.ods-input__input--clearable.ods-input__input--toggle-mask {

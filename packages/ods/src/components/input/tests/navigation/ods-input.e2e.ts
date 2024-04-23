@@ -139,6 +139,26 @@ describe('ods-input accessibility', () => {
       expect(await el.getProperty('value')).toBe('value');
       expect(odsClearSpy).not.toHaveReceivedEvent();
     });
+
+    it('should do nothing because of readonly', async() => {
+      await setup('<ods-input is-readonly is-clearable value="value"></ods-input>');
+      const odsClearSpy = await page.spyOnEvent('odsClear');
+
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Space');
+      await page.waitForChanges();
+      expect(await el.getProperty('value')).toBe('value');
+
+      await page.keyboard.press('Enter');
+      await page.waitForChanges();
+      expect(await el.getProperty('value')).toBe('value');
+
+      await buttonClearable.click();
+      await page.waitForChanges();
+      expect(await el.getProperty('value')).toBe('value');
+      expect(odsClearSpy).not.toHaveReceivedEvent();
+    });
   });
 
   describe('isMasked', () => {
@@ -197,6 +217,27 @@ describe('ods-input accessibility', () => {
 
     it('should do nothing because of disabled', async() => {
       await setup('<ods-input is-disabled is-masked value="value"></ods-input>');
+      const odsToggleMaskSpy = await page.spyOnEvent('odsToggleMask');
+      expect(await input.getProperty('type')).toBe('password');
+
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Space');
+      await page.waitForChanges();
+      expect(await input.getProperty('type')).toBe('password');
+
+      await page.keyboard.press('Enter');
+      await page.waitForChanges();
+      expect(await input.getProperty('type')).toBe('password');
+
+      await buttonToggleMask.click();
+      await page.waitForChanges();
+      expect(await input.getProperty('type')).toBe('password');
+      expect(odsToggleMaskSpy).not.toHaveReceivedEvent();
+    });
+
+    it('should do nothing because of readonly', async() => {
+      await setup('<ods-input is-readonly is-masked value="value"></ods-input>');
       const odsToggleMaskSpy = await page.spyOnEvent('odsToggleMask');
       expect(await input.getProperty('type')).toBe('password');
 

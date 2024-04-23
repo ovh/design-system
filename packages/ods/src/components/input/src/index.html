@@ -12,7 +12,7 @@
 
 <body>
   <p>Default</p>
-  <ods-input value="Default" type="number">
+  <ods-input value="Default" type="number" is-clearable>
   </ods-input>
 
   <p>Clearable</p>
@@ -36,7 +36,7 @@
   </ods-input>
 
   <p>Masked</p>
-  <ods-input is-masked type="number">
+  <ods-input is-masked>
   </ods-input>
 
   <p>Masked & Clearable</p>
@@ -53,6 +53,10 @@
 
   <p>Readonly Clearable</p>
   <ods-input value="Readonly" is-readonly is-clearable>
+  </ods-input>
+
+  <p>Pattern just numbers</p>
+  <ods-input id="my-input-pattern" pattern="\d*">
   </ods-input>
 
   <p>Custom CSS</p>
@@ -78,9 +82,14 @@
   <button id="clear-button">clear</button>
   <button id="reset-button">reset</button>
   <button id="toggle-mask-button">toggleMask</button>
-
   <button id="get-validity-button">getValidity</button>
+
   <script>
+    const inputPattern = document.getElementById('my-input-pattern');
+
+    inputPattern.addEventListener('odsChange', (event) => {
+      inputPattern.hasError = !event.detail.validity.valid;
+    });
     const input = document.getElementById('input-methods');
     const clearButton = document.getElementById('clear-button');
     const resetButton = document.getElementById('reset-button');

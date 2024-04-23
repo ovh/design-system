@@ -49,9 +49,6 @@ export class OdsInput {
 
   @Method()
   async clear(): Promise<void> {
-    if (this.isNotEditable) {
-      return;
-    }
     this.value = null;
     this.inputEl?.focus();
     this.odsClear.emit();
@@ -64,18 +61,12 @@ export class OdsInput {
 
   @Method()
   async toggleMask(): Promise<void> {
-    if (this.isNotEditable) {
-      return;
-    }
     this.isMasked = !this.isMasked;
     this.odsToggleMask.emit();
   }
 
   @Method()
   async reset(): Promise<void> {
-    if (this.isNotEditable) {
-      return;
-    }
     this.value = this.defaultValue ?? null;
     this.odsReset.emit();
   }
@@ -108,10 +99,6 @@ export class OdsInput {
     await this.reset();
   }
 
-  private get isNotEditable(): boolean {
-    return this.isDisabled || this.isReadonly;
-  }
-
   private onInput(): void {
     if (this.isDisabled) {
       return;
@@ -133,6 +120,7 @@ export class OdsInput {
             'ods-input__input': true,
             'ods-input__input--clearable': hasClearableIcon,
             'ods-input__input--error': this.hasError,
+            'ods-input__input--loading': this.isLoading,
             'ods-input__input--toggle-mask': hasToggleMaskIcon,
           }}
           disabled={ this.isDisabled }
@@ -161,22 +149,28 @@ export class OdsInput {
           {
             hasClearableIcon &&
             <button
-              class="ods-input__actions__clearable"
-              disabled={ this.isDisabled }
+              class={{
+                'ods-input__actions__clearable': true,
+                'ods-input__actions__clearable--readonly': this.isReadonly,
+              }}
+              disabled={ this.isDisabled || this.isReadonly }
               onClick={ this.clear.bind(this) }
               onKeyUp={ (event: KeyboardEvent): Promise<void> => handleKeySpace(event, this.isDisabled, this.clear.bind(this)) }>
-              <ods-icon class="ods-input__actions__icon" name={ ODS_ICON_NAME.cross }>
+              <ods-icon name={ ODS_ICON_NAME.cross }>
               </ods-icon>
             </button>
           }
           {
             hasToggleMaskIcon &&
             <button
-              class="ods-input__actions__toggle-mask"
-              disabled={ this.isDisabled }
+              class={{
+                'ods-input__actions__toggle-mask': true,
+                'ods-input__actions__toggle-mask--readonly': this.isReadonly,
+              }}
+              disabled={ this.isDisabled || this.isReadonly }
               onClick={ this.toggleMask.bind(this) }
               onKeyUp={ (event: KeyboardEvent): Promise<void> => handleKeySpace(event, this.isDisabled, this.toggleMask.bind(this)) }>
-              <ods-icon class="ods-input__actions__icon" name={ this.isMasked ? ODS_ICON_NAME.eyeClose : ODS_ICON_NAME.eyeOpen }>
+              <ods-icon name={ this.isMasked ? ODS_ICON_NAME.eyeClose : ODS_ICON_NAME.eyeOpen }>
               </ods-icon>
             </button>
           }

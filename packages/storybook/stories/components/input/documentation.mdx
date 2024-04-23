@@ -1,6 +1,7 @@
 import { Canvas, Meta, Markdown } from '@storybook/blocks';
 import SpecificationsInput from '@ovhcloud/ods-components/src/components/input/documentation/spec.md?raw';
 import { Banner } from '../../banner';
+import { DocNavigator } from '../../doc-navigator';
 import * as InputStories from './input.stories';
 
 <Meta of={ InputStories } name='Documentation' />
@@ -11,14 +12,9 @@ import * as InputStories from './input.stories';
 
 Input component is an input field where users can type into:
 
-<Canvas of={InputStories.Default} sourceState='none' />
+<Canvas of={ InputStories.Default } sourceState='none' />
 
-<div>
-  <osds-button color="primary" variant="ghost" href="#" target="_blank">
-    ZEROHEIGHT - INPUT DESIGN GUIDELINES &nbsp;
-    <osds-text name="external-link" color="primary" size="xs"></osds-text>
-  </osds-button>
-</div>
+<DocNavigator of={ InputStories } />
 
 # API
 
@@ -55,3 +51,15 @@ You can add your own style on the text element using the part `input`.
 ## Masked
 
 <Canvas of={ InputStories.Masked } sourceState='shown' />
+
+## Pattern
+Allow just numeric character
+<Canvas of={ InputStories.Pattern } sourceState='shown' />
+
+## Placeholder
+
+<Canvas of={ InputStories.Placeholder } sourceState='shown' />
+
+## Readonly
+
+<Canvas of={ InputStories.Readonly } sourceState='shown' />

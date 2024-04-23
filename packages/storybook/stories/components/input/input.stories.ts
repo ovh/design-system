@@ -65,7 +65,7 @@ export const Demo: StoryObj = {
         type: { summary: 'string' },
       },
       control: 'text',
-      description: 'Set a custom style properties. Example: "height: 50px; width: 500px;"',
+      description: 'Set a custom style properties. Example: "border-color: red;"',
     },
     hasError: {
       table: {
@@ -244,6 +244,36 @@ export const Masked: StoryObj = {
   render: () => html`
 <ods-input is-masked>
 </ods-input>
+  `,
+};
+
+export const Readonly: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-input is-readonly value="Readonly">
+</ods-input>
+  `,
+};
+
+export const Placeholder: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-input placeholder="Placeholder">
+</ods-input>
+  `,
+};
+
+export const Pattern: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-input id="my-input-pattern" pattern="\\d*">
+</ods-input>
+<script>
+const inputPattern = document.getElementById('my-input-pattern');
+inputPattern.addEventListener('odsChange', (event) => {
+  inputPattern.hasError = !event.detail.validity.valid;
+});
+</script>
   `,
 };
 

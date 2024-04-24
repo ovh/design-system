@@ -1,5 +1,9 @@
 import { Meta } from '@storybook/blocks';
 
+/* This line below somehow fixes the fact that components are not loaded in the page */
+
+import { DocNavigator } from '../doc-navigator';
+
 <Meta title="OVHcloud Design System/Welcome" />
 
 <span
@@ -27,7 +31,7 @@ import { Meta } from '@storybook/blocks';
             borderRadius: '0 0 20em 0',
             display: "inline-flex",
             flexDirection: "column",
-            padding: "2rem",
+            padding: "4rem",
             margin: "auto"
     }}
     >
@@ -41,56 +45,45 @@ import { Meta } from '@storybook/blocks';
       }}
       />
 
-      <osds-text
-        color="primary"
-        size="200"
-        level="subheading"
-        hue="500"
-        style={{
-                    maxWidth: "30rem",
-                    padding: "2rem",
-                 }}
-      >
-        A collection of assets, guidelines and UI components for building consistent user experiences across OVHcloud products.
-      </osds-text>
+      <ods-text preset="heading-3" style={{
+        color: 'var(--ods-color-primary-500)',
+        maxWidth: "45rem",
+        padding: "2rem .5rem",
+      }}>A collection of assets, guidelines and UI components for building consistent user experiences across OVHcloud products.</ods-text>
 
       <span
         style={{
           display: "inline-flex",
           flexDirection: "column",
-          padding: '0 2rem',
-          maxWidth: "10rem",
-          gap: "1rem",
+          padding: '0 .5rem',
+          maxWidth: "21rem",
+          gap: "1.5rem",
       }}
       >
-        <osds-link href="?path=/story/ovhcloud-design-system-get-started--page" color="primary">
-          Get Started
+        <ods-link label="Get Started"
+                  icon="arrow-right"
+                  href="?path=/story/ovhcloud-design-system-get-started--page"
+                  style={{
+                    fontSize: "larger"
+                  }}></ods-link>
 
-          <span slot="end">
-            <osds-icon color="primary" name="arrow-right" size="xs" style={{ marginLeft: "8px" }} />
-          </span>
-        </osds-link>
+        <ods-link label="Design Guidelines"
+                  icon="external-link"
+                  href="https://zeroheight.com/6fc8a63f7/p/533db0-ovhcloud-design-system"
+                  target="_blank"
+                  style={{
+                    fontSize: "larger"
+                  }}></ods-link>
 
-        <osds-link href="https://zeroheight.com/6fc8a63f7/p/533db0-ovhcloud-design-system" color="primary" target="_blank">
-          Design Guidelines
-
-          <span slot="end">
-            <osds-icon color="primary" name="external-link" size="xs" style={{ marginLeft: "8px" }} />
-          </span>
-        </osds-link>
-
-        <osds-link href="https://github.com/ovh/design-system" color="primary" target="_blank">
-          Follow on GitHub
-
-          <span slot="end">
-            <osds-icon color="primary" name="external-link" size="xs" style={{ marginLeft: "8px" }} />
-          </span>
-        </osds-link>
-
-        <osds-text color="primary" level="caption" size="100" hue="000">
-          (This webpage has been done using ODS components #inception)
-        </osds-text>
+        <ods-link label="GitHub repository"
+                  icon="external-link"
+                  href="https://github.com/ovh/design-system"
+                  target="_blank"
+                  style={{
+                    fontSize: "larger"
+                  }}></ods-link>
       </span>
     </span>
   </div>
 </span>
+

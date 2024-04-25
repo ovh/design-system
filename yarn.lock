@@ -3886,7 +3886,16 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+<<<<<<< HEAD
 >>>>>>> 1a2403ac6 (feat(badge): implement component)
+=======
+"@ovhcloud/ods-component-breadcrumb@workspace:packages/ods/src/components/breadcrumb":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-breadcrumb@workspace:packages/ods/src/components/breadcrumb"
+  languageName: unknown
+  linkType: soft
+
+>>>>>>> e27439296 (feat(breadcrumb): implement component)
 "@ovhcloud/ods-component-button@workspace:packages/ods/src/components/button":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-button@workspace:packages/ods/src/components/button"

@@ -1,0 +1,105 @@
+import { Meta } from '@storybook/blocks';
+import * as BreadcrumbStories from './breadcrumb.stories';
+
+<Meta of={ BreadcrumbStories } name='Migration From 17.x' />
+
+# Breadcrumb - migrate from v17 to v18
+----
+
+## Usage changes
+
+Previous to v18, breadcrumb items were passed as an array attribute, with a strict definition of expected attributes.
+
+New component now works more like other ods components, child items are now declared as slotted element directly in the DOM.
+
+This way you can easily manipulate the list item DOM and each item separately.
+
+```html
+<osds-breadcrumb id="default-breadcrumb"></osds-breadcrumb>
+<script>
+document.querySelector('#default-breadcrumb').items = JSON.stringify([
+  { href: "#home", label: "Home" },
+  { href: "#services", label: "Services" },
+  { href: "#products", label: "Products" },
+  { href: "#web", label: "Web" },
+]);
+</script>
+```
+
+The same result would now be achieved using:
+```html
+<ods-breadcrumb>
+  <ods-breadcrumb-item href="#home" label="Home"></ods-breadcrumb-item>
+  <ods-breadcrumb-item href="#services" label="Services"></ods-breadcrumb-item>
+  <ods-breadcrumb-item href="#products" label="Products"></ods-breadcrumb-item>
+  <ods-breadcrumb-item href="#web" label="Web"></ods-breadcrumb-item>
+</ods-breadcrumb>
+```
+
+## Design changes
+
+The last item of the breadcrumb is now automatically rendered as a text, it is no longer a disabled link.
+
+## Attributes changes
+
+`contrasted ` <img src="https://img.shields.io/badge/removed-FF0000" />
+
+Has been removed.
+
+You can use the style customization to achieve the same result, until a new color get validated by the design team.
+
+`items` <img src="https://img.shields.io/badge/removed-FF0000" />
+
+Has been removed.
+
+You should now use `<ods-breadcrumb-item>` directly in the DOM of the `<ods-breadcrumb>` component.
+
+The attribute list is the same as the [ods-link](?path=/docs/ods-components-actions-link--documentation#properties) component.
+
+Which means you have the same attributes, following the link [migration guide](?path=/docs/ods-components-actions-link--migration-from-17-x).
+
+## Migration examples
+
+Basic breadcrumb:
+```html
+<osds-breadcrumb id="default-breadcrumb"></osds-breadcrumb>
+<script>
+document.querySelector('#default-breadcrumb').items = JSON.stringify([
+  { href: "#home", label: "Home" },
+  { href: "#services", label: "Services" },
+  { href: "#products", label: "Products" },
+  { href: "#web", label: "Web" },
+]);
+</script>
+
+<!-- is now -->
+
+<ods-breadcrumb>
+  <ods-breadcrumb-item href="#home" label="Home"></ods-breadcrumb-item>
+  <ods-breadcrumb-item href="#services" label="Services"></ods-breadcrumb-item>
+  <ods-breadcrumb-item href="#products" label="Products"></ods-breadcrumb-item>
+  <ods-breadcrumb-item href="#web" label="Web"></ods-breadcrumb-item>
+</ods-breadcrumb>
+```
+
+Custom breadcrumb item:
+```html
+<osds-breadcrumb id="default-breadcrumb"></osds-breadcrumb>
+<script>
+document.querySelector('#default-breadcrumb').items = JSON.stringify([
+  { href: "#home", label: "Home" },
+  { href: "#services", label: "Services", target: "_blank" },
+  { href: "#products", label: "Products", disabled: true },
+  { href: "#web", label: "Web" },
+]);
+</script>
+
+<!-- is now -->
+
+<ods-breadcrumb>
+  <ods-breadcrumb-item href="#home" label="Home"></ods-breadcrumb-item>
+  <ods-breadcrumb-item href="#services" label="Services" target="_blank"></ods-breadcrumb-item>
+  <ods-breadcrumb-item href="#products" is-disabled label="Products"></ods-breadcrumb-item>
+  <ods-breadcrumb-item href="#web" label="Web"></ods-breadcrumb-item>
+</ods-breadcrumb>
+```

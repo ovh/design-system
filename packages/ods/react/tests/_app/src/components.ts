@@ -20,6 +20,7 @@ const componentNames = [
   'medium',
   'input',
   'textarea',
+  'breadcrumb',
   //--generator-anchor--
 ];
 

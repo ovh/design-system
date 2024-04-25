@@ -3849,6 +3849,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-component-breadcrumb@workspace:packages/ods/src/components/breadcrumb":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-breadcrumb@workspace:packages/ods/src/components/breadcrumb"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-component-button@workspace:packages/ods/src/components/button":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-button@workspace:packages/ods/src/components/button"

@@ -12,8 +12,8 @@ import { ODS_SPINNER_SIZE } from '../../constants/spinner-size';
   tag: 'ods-spinner',
 })
 export class OdsSpinner {
-  @Prop({ reflect: true }) color: OdsSpinnerColor = ODS_SPINNER_COLOR.primary;
-  @Prop({ reflect: true }) size: OdsSpinnerSize = ODS_SPINNER_SIZE.md;
+  @Prop({ reflect: true }) public color: OdsSpinnerColor = ODS_SPINNER_COLOR.primary;
+  @Prop({ reflect: true }) public size: OdsSpinnerSize = ODS_SPINNER_SIZE.md;
 
   render(): FunctionalComponent {
     return (

@@ -41,14 +41,25 @@ export class OdsLink {
         rel={ this.rel }
         tabindex={ this.isDisabled ? -1 : 0 }
         target={ this.target }>
-          <span>
-            { this.label }
-          </span>
+          {
+            !!this.label &&
+            <span>
+              { this.label }
+            </span>
+          }
 
           {
             !!this.icon &&
-            <ods-icon name={ this.icon }>
-            </ods-icon>
+            <div class="ods-link__link__icon">
+              {/* If there is no label, we display a zero-width space to simulate the correct baseline */}
+              {
+                !this.label &&
+                <span>&#8203;</span>
+              }
+
+              <ods-icon name={ this.icon }>
+              </ods-icon>
+            </div>
           }
         </a>
       </Host>

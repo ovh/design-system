@@ -8,8 +8,8 @@ import { Component, Host, Prop, h } from '@stencil/core';
   tag: 'ods-icon',
 })
 export class OdsIcon {
-  @Prop({ reflect: true }) alt?: string = '';
-  @Prop({ reflect: true }) name!: OdsIconName;
+  @Prop({ reflect: true }) public alt?: string = '';
+  @Prop({ reflect: true }) public name!: OdsIconName;
 
   render(): FunctionalComponent {
     return (

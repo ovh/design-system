@@ -6,8 +6,8 @@
 
 /**
  * Script to generate the file spec.md for one specific component
- * The file is created in <path>/documentation/specifications
- * The script need a json typedoc file in <path>/docs-api/typedoc.json
+ * The file is created in <path>/documentation
+ * The script need a json typedoc file in <path>/typedoc.json
  *
  * You can pass an optional --prefix <value> to manage components that are not
  * in the default "components" package, ex:
@@ -92,6 +92,7 @@ function getClasses(jsonItems) {
 
   const props = children
     .filter(({ kind, decorators }) => kind === ReflectionKind.Property && decorators[0].escapedText === 'Prop')
+    .filter((prop) => prop.flags.isPublic)
     .map((prop) => {
       return [
         `### ${prop.name}`,

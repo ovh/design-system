@@ -18,6 +18,7 @@ export class OdsTextarea {
   @Prop({ reflect: true }) public cols?: number;
   @Prop({ reflect: true }) public defaultValue?: string;
   @Prop({ reflect: true }) public hasError: boolean = false;
+  @Prop({ reflect: true }) public hasSpellcheck: boolean = false;
   @Prop({ reflect: true }) public isDisabled: boolean = false;
   @Prop({ reflect: true }) public isReadonly: boolean = false;
   @Prop({ reflect: true }) public isRequired: boolean = false;
@@ -25,7 +26,6 @@ export class OdsTextarea {
   @Prop({ reflect: true }) public name!: string;
   @Prop({ reflect: true }) public placeholder?: string;
   @Prop({ reflect: true }) public rows?: number;
-  @Prop({ reflect: true }) public spellcheck: boolean = false;
   @Prop({ mutable: true, reflect: true }) public value: string | null = null;
 
   @Event() odsBlur!: EventEmitter<void>;
@@ -114,7 +114,7 @@ export class OdsTextarea {
           required={ this.isRequired }
           role="textbox"
           rows={ this.rows }
-          spellcheck={ this.spellcheck }
+          spellcheck={ this.hasSpellcheck }
           value={ this.value || '' }>
         </textarea>
       </Host>

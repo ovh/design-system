@@ -105,6 +105,22 @@ describe('ods-textarea rendering', () => {
     });
   });
 
+  describe('hasSpellcheck', () => {
+    it('should be reflected', async() => {
+      const dummyValue = 'dummy value';
+
+      await setup(`<ods-textarea has-spellcheck="${dummyValue}"></ods-textarea>`);
+
+      expect(root?.getAttribute('has-spellcheck')).toBe(dummyValue);
+    });
+
+    it('should not be set by default', async() => {
+      await setup('<ods-textarea></ods-textarea>');
+
+      expect(root?.getAttribute('has-spellcheck')).toBeNull();
+    });
+  });
+
   describe('isDisabled', () => {
     it('should be reflected', async() => {
       const dummyValue = 'dummy value';
@@ -220,22 +236,6 @@ describe('ods-textarea rendering', () => {
       await setup('<ods-textarea></ods-textarea>');
 
       expect(root?.getAttribute('rows')).toBeNull();
-    });
-  });
-
-  describe('spellcheck', () => {
-    it('should be reflected', async() => {
-      const dummyValue = 'dummy value';
-
-      await setup(`<ods-textarea spellcheck="${dummyValue}"></ods-textarea>`);
-
-      expect(root?.getAttribute('spellcheck')).toBe('');
-    });
-
-    it('should render with expected default value', async() => {
-      await setup('<ods-textarea></ods-textarea>');
-
-      expect(root?.getAttribute('spellcheck')).toBeNull();
     });
   });
 

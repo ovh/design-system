@@ -19,13 +19,13 @@ export const Demo: StoryObj = {
                 ariaLabelledby="${arg.ariaLabelledby}"
                 cols="${arg.cols}"
                 has-error="${arg.hasError}"
+                has-spellcheck="${arg.hasSpellcheck}"
                 is-disabled="${arg.isDisabled}"
                 is-readonly="${arg.isReadonly}"
                 is-required="${arg.isRequired}"
                 is-resizable="${arg.isResizable}"
                 placeholder="${arg.placeholder}"
-                rows="${arg.rows}"
-                spellcheck="${arg.spellcheck}">
+                rows="${arg.rows}">
   </ods-textarea>
 <style>
   .my-textarea::part(textarea) {
@@ -68,6 +68,14 @@ export const Demo: StoryObj = {
       description: 'Set a custom style properties. Example: "height: 50px; width: 500px;"',
     },
     hasError: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: false },
+        type: { summary: 'boolean' },
+      },
+      control: 'boolean',
+    },
+    hasSpellcheck: {
       table: {
         category: CONTROL_CATEGORY.general,
         defaultValue: { summary: false },
@@ -123,22 +131,14 @@ export const Demo: StoryObj = {
       },
       control: 'number',
     },
-    spellcheck: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: false },
-        type: { summary: 'boolean' },
-      },
-      control: 'boolean',
-    },
   }),
   args: {
     hasError: false,
+    hasSpellcheck: false,
     isDisabled: false,
     isReadonly: false,
     isRequired: false,
     isResizable: false,
-    spellcheck: false,
   },
 };
 
@@ -194,6 +194,14 @@ export const Placeholder: StoryObj = {
   `,
 };
 
+export const Readonly: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-textarea is-readonly value="Readonly">
+</ods-textarea>
+  `,
+};
+
 export const Resizable: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
@@ -206,6 +214,14 @@ export const Rows: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
 <ods-textarea rows="8">
+</ods-textarea>
+  `,
+};
+
+export const Spellcheck: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-textarea has-spellcheck>
 </ods-textarea>
   `,
 };

@@ -23,3 +23,4 @@ export * from './textarea/src';
 export * from './breadcrumb/src';
 export * from './toggle/src';
 export * from './clipboard/src';
+export * from './divider/src';

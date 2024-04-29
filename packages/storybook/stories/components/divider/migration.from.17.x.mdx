@@ -1,0 +1,68 @@
+import { Meta } from '@storybook/blocks';
+import * as DividerStories from './divider.stories';
+
+<Meta of={ DividerStories } name='Migration From 17.x' />
+
+# Divider - migrate from v17 to v18
+----
+
+## Attributes changes
+
+`color`  <img src="https://img.shields.io/badge/updated-00FFFF" />
+
+Has been updated.
+
+The 2 possible values are now `light` and `dark`.
+
+`contrasted ` <img src="https://img.shields.io/badge/removed-FF0000" />
+
+Has been removed.
+
+Color attribute can be use with `dark` for contrasted content.
+
+`seperator ` <img src="https://img.shields.io/badge/removed-FF0000" />
+
+Has been removed.
+
+Divider is always shown as visible line now.
+
+## Migration examples
+
+Color:
+```html
+<osds-divider color="primary"></osds-divider>
+
+<!-- is now -->
+
+<osds-divider class="custom"></osds-divider>
+
+<style>
+  .custom {
+    background-color: var(--ods-color-primary-100);
+  }
+</style>
+```
+
+Contrasted:
+```html
+<osds-divider contrasted></osds-divider>
+
+<!-- is now -->
+
+<osds-divider color="dark"></osds-divider>
+```
+
+Seperator:
+```html
+<osds-divider seperator="false"></osds-divider>
+
+<!-- is now -->
+
+<osds-divider class="custom"></osds-divider>
+
+<style>
+  .custom {
+    background-color: transparent;
+  }
+</style>
+```

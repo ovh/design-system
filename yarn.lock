@@ -3886,6 +3886,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-component-divider@workspace:packages/ods/src/components/divider":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-divider@workspace:packages/ods/src/components/divider"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-component-icon@workspace:packages/ods/src/components/icon":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-icon@workspace:packages/ods/src/components/icon"

@@ -1,0 +1,23 @@
+$spacings: 0, 2, 4, 8, 12, 16, 24, 32, 40, 48, 64;
+
+.ods-divider {
+  &__divider {
+    border: none;
+    height: 1px;
+
+    &--light {
+      background-color: var(--ods-color-neutral-100);
+    }
+
+    &--dark {
+      background-color: var(--ods-color-neutral-700);
+    }
+
+    @each $spacing in $spacings {
+      &--#{$spacing} {
+        margin-top: calc(#{$spacing}px / 2);
+        margin-bottom: calc(#{$spacing}px / 2);
+      }
+    }
+  }
+}

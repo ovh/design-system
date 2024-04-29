@@ -24,7 +24,8 @@ const componentNames = [
   'breadcrumb',
   'toggle',
   'clipboard',
-  //--generator-anchor--
+  'divider',
+  //--generator-anchor--y
 ];
 
 export { componentNames };

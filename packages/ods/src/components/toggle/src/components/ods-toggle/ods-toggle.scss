@@ -1,0 +1,87 @@
+@use '../../../../../style/focus';
+
+.ods-toggle {
+  &__container {
+    display: inline-block;
+    position: relative;
+    width: 48px;
+    height: 24px;
+
+    &__slider {
+      $slider: &;
+
+      position: absolute;
+      inset: 0;
+      border-radius: 1rem;
+      background-color: var(--ods-color-neutral-200);
+      cursor: pointer;
+
+      &::before {
+        position: absolute;
+        bottom: 2px;
+        left: 2px;
+        transition: .4s;
+        border-radius: 1rem;
+        background-color: var(--ods-color-neutral-000);
+        width: 20px;
+        height: 20px;
+        content: '';
+      }
+
+      &:not(#{$slider}--disabled):hover {
+        background-color: var(--ods-color-neutral-300);
+
+        & #{$slider}__label {
+          color: var(--ods-color-neutral-800);
+        }
+      }
+
+      &--disabled {
+        background-color: var(--ods-color-neutral-100);
+        cursor: not-allowed;
+      }
+
+      &__label {
+        position: absolute;
+        top: 5px;
+        left: 23px;
+        color: var(--ods-color-neutral-700);
+        font-size: 12px;
+        font-weight: 700;
+        pointer-events: none;
+      }
+    }
+
+    &__input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+
+      &:focus + .ods-toggle__container__slider {
+        @include focus.ods-focus();
+      }
+
+      &:checked {
+        & + .ods-toggle__container__slider::before {
+          transform: translateX(24px);
+        }
+
+        & + .ods-toggle__container__slider .ods-toggle__container__slider__label {
+          left: 4px;
+        }
+
+        & + :not(.ods-toggle__container__slider--disabled).ods-toggle__container__slider {
+          background-color: var(--ods-color-primary-500);
+
+          &:hover {
+            background-color: var(--ods-color-primary-700);
+          }
+
+          & .ods-toggle__container__slider__label {
+            color: var(--ods-color-neutral-000);
+          }
+        }
+      }
+    }
+  }
+}

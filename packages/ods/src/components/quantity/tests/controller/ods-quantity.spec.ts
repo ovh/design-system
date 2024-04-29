@@ -11,6 +11,9 @@ describe('ods-input controller', () => {
 
       // max === value
       expect(isAddButtonDisabled(false, 10, 10)).toBe(true);
+
+      // max < value
+      expect(isAddButtonDisabled(false, 11, 10)).toBe(true);
     });
 
     it('should return false', async() => {
@@ -29,6 +32,9 @@ describe('ods-input controller', () => {
 
       // min === value
       expect(isMinusButtonDisabled(false, 0, 0)).toBe(true);
+
+      // min > value
+      expect(isMinusButtonDisabled(false, 0, 1)).toBe(true);
     });
 
     it('should return false', async() => {

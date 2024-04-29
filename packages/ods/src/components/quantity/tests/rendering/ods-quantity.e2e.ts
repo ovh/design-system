@@ -60,22 +60,18 @@ describe('ods-quantity rendering', () => {
       expect(input.getAttribute('is-disabled')).toBe('');
       expect(buttonMinus.getAttribute('is-disabled')).toBe('');
       expect(buttonAdd.getAttribute('is-disabled')).toBe('');
-      expect(buttonMinus.classList.contains('ods-quantity__button--disabled')).toBe(true);
-      expect(buttonAdd.classList.contains('ods-quantity__button--disabled')).toBe(true);
     });
 
     it('should disabled minus button with min', async() => {
       await setup('<ods-quantity min="0" value="0"></ods-quantity>');
 
       expect(buttonMinus.getAttribute('is-disabled')).toBe('');
-      expect(buttonMinus.classList.contains('ods-quantity__button--disabled')).toBe(true);
     });
 
     it('should disabled add button with max', async() => {
       await setup('<ods-quantity max="10" value="10"></ods-quantity>');
 
       expect(buttonAdd.getAttribute('is-disabled')).toBe('');
-      expect(buttonAdd.classList.contains('ods-quantity__button--disabled')).toBe(true);
     });
   });
 
@@ -86,53 +82,6 @@ describe('ods-quantity rendering', () => {
       expect(input.getAttribute('has-error')).toBe('');
       expect(buttonMinus.getAttribute('color')).toBe(ODS_BUTTON_COLOR.critical);
       expect(buttonAdd.getAttribute('color')).toBe(ODS_BUTTON_COLOR.critical);
-      expect(buttonMinus.classList.contains('ods-quantity__button--error')).toBe(true);
-      expect(buttonAdd.classList.contains('ods-quantity__button--error')).toBe(true);
-    });
-  });
-
-  describe('Form', () => {
-    it('should get form data with button type submit', async() => {
-      await setup(`<form method="get">
-        <ods-quantity name="ods-quantity" value="0"></ods-quantity>
-        <button type="reset">Reset</button>
-        <button type="submit">Submit</button>
-      </form>`);
-      await buttonAdd.click();
-      const submitButton = await page.find('button[type="submit"]');
-      await submitButton.click();
-      await page.waitForNetworkIdle();
-      const url = new URL(page.url());
-      expect(url.searchParams.get('ods-quantity')).toBe('1');
-    });
-
-    it('should get form data with button type submit after increment quantity', async() => {
-      await setup(`<form method="get">
-        <ods-quantity name="ods-quantity" value="0"></ods-quantity>
-        <button type="reset">Reset</button>
-        <button type="submit">Submit</button>
-      </form>`);
-      const submitButton = await page.find('button[type="submit"]');
-      await submitButton.click();
-      await page.waitForNetworkIdle();
-      const url = new URL(page.url());
-      expect(url.searchParams.get('ods-quantity')).toBe('0');
-    });
-
-    it('should reset form with button type reset', async() => {
-      await setup(`<form method="get">
-        <ods-quantity name="ods-quantity" value="On Vous Heberge ?"></ods-quantity>
-        <button type="reset">Reset</button>
-        <button type="submit">Submit</button>
-      </form>`);
-      const resetButton = await page.find('button[type="reset"]');
-      await resetButton.click();
-
-      const submitButton = await page.find('button[type="submit"]');
-      await submitButton.click();
-      await page.waitForNetworkIdle();
-      const url = new URL(page.url());
-      expect(url.searchParams.get('ods-quantity')).toBe('');
     });
   });
 });

@@ -108,6 +108,10 @@ $ods-input-input-padding-right: calc($ods-input-actions-button-width + $ods-inpu
       }
     }
 
+    &:not(:disabled)#{$input}--error {
+      border-color: var(--ods-form-element-border-color-critical);
+    }
+
     &:disabled {
       ~ .ods-input__actions {
         cursor: not-allowed;

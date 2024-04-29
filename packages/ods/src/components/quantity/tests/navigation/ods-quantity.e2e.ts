@@ -28,6 +28,7 @@ describe('ods-quantity navigation', () => {
       await setup('<ods-quantity></ods-quantity>');
       const odsFocusSpy = await page.spyOnEvent('odsFocus');
       await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
       expect(await isFocused()).toBe(true);
       expect(odsFocusSpy).toHaveReceivedEventTimes(1);
     });

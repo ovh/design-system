@@ -83,14 +83,6 @@ export const Demo: StoryObj = {
       control: 'text',
       description: 'Set a custom style properties. Example: "width: 100px;"',
     },
-    defaultValue: {
-      control: 'number',
-      table: {
-        category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: 'ø' },
-        type: { summary: 'number' },
-      },
-    },
     hasError: {
       control: 'boolean',
       table: {
@@ -139,14 +131,6 @@ export const Demo: StoryObj = {
         type: { summary: 'number' },
       },
     },
-    placeholder: {
-      control: 'text',
-      table: {
-        category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: 'ø' },
-        type: { summary: 'string' },
-      },
-    },
     step: {
       control: 'number',
       table: {
@@ -156,7 +140,12 @@ export const Demo: StoryObj = {
       },
     },
   }),
-  args: {},
+  args: {
+    hasError: false,
+    isDisabled: false,
+    isReadonly: false,
+    isRequired: false,
+  },
 };
 
 export const Default: StoryObj = {
@@ -183,14 +172,7 @@ export const Error: StoryObj = {
 export const Readonly: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
-<ods-quantity is-readonly></ods-quantity>
-  `,
-};
-
-export const Placeholder: StoryObj = {
-  tags: ['isHidden'],
-  render: () => html`
-<ods-quantity placeholder="Placeholder"></ods-quantity>
+<ods-quantity is-readonly default-value="0"></ods-quantity>
   `,
 };
 

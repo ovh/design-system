@@ -1,5 +1,5 @@
 import { AttachInternals, Component, Event, type EventEmitter, type FunctionalComponent, Host, Method, Prop, h } from '@stencil/core';
-import { ODS_BUTTON_COLOR, ODS_BUTTON_SIZE } from '../../../../button/src';
+import { ODS_BUTTON_COLOR, ODS_BUTTON_SIZE, ODS_BUTTON_VARIANT } from '../../../../button/src';
 import { ODS_ICON_NAME } from '../../../../icon/src';
 import { ODS_INPUT_TYPE, type OdsInput, type OdsInputValueChangeEvent } from '../../../../input/src';
 import { isAddButtonDisabled, isMinusButtonDisabled, setFormValue } from '../../controller/ods-quantity';
@@ -21,8 +21,8 @@ export class OdsQuantity {
   @Prop({ reflect: true }) public defaultValue?: number;
   @Prop({ reflect: true }) public hasError: boolean = false;
   @Prop({ reflect: true }) public isDisabled: boolean = false;
-  @Prop({ reflect: true }) public isReadonly?: boolean = false;
-  @Prop({ reflect: true }) public isRequired?: boolean = false;
+  @Prop({ reflect: true }) public isReadonly: boolean = false;
+  @Prop({ reflect: true }) public isRequired: boolean = false;
   @Prop({ reflect: true }) public max?: number;
   @Prop({ reflect: true }) public min?: number;
   @Prop({ reflect: true }) public name!: string;
@@ -93,8 +93,7 @@ export class OdsQuantity {
         <ods-button
           class={{
             'ods-quantity__button': true,
-            'ods-quantity__button--disabled': isMinusButtonDisabled(this.isDisabled, this.value, this.min),
-            'ods-quantity__button--error': this.hasError,
+            'ods-quantity__button--readonly': this.isReadonly,
           }}
           color={ this.hasError ? ODS_BUTTON_COLOR.critical : ODS_BUTTON_COLOR.primary }
           exportparts="button:button_minus"
@@ -102,8 +101,8 @@ export class OdsQuantity {
           icon={ ODS_ICON_NAME.minus }
           label=""
           onClick={ () => this.decrement() }
-          onFocus={ () => this.odsFocus.emit() }
-          size={ ODS_BUTTON_SIZE.sm }>
+          size={ ODS_BUTTON_SIZE.sm }
+          variant={ ODS_BUTTON_VARIANT.outline }>
         </ods-button>
         <ods-input
           ariaLabel={ this.ariaLabel }
@@ -128,8 +127,7 @@ export class OdsQuantity {
         <ods-button
           class={{
             'ods-quantity__button': true,
-            'ods-quantity__button--disabled': isAddButtonDisabled(this.isDisabled, this.value, this.max),
-            'ods-quantity__button--error': this.hasError,
+            'ods-quantity__button--readonly': this.isReadonly,
           }}
           color={ this.hasError ? ODS_BUTTON_COLOR.critical : ODS_BUTTON_COLOR.primary }
           exportparts="button:button_add"
@@ -137,8 +135,8 @@ export class OdsQuantity {
           icon={ ODS_ICON_NAME.add }
           label=""
           onClick={ () => this.increment() }
-          onFocus={ () => this.odsFocus.emit() }
-          size={ ODS_BUTTON_SIZE.sm }>
+          size={ ODS_BUTTON_SIZE.sm }
+          variant={ ODS_BUTTON_VARIANT.outline }>
         </ods-button>
       </Host>
     );

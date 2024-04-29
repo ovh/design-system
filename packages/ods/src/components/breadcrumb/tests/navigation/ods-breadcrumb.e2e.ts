@@ -27,6 +27,7 @@ describe('ods-breadcrumb navigation', () => {
   <ods-breadcrumb-item id="second" label="Second"></ods-breadcrumb-item>
   <ods-breadcrumb-item id="last" label="Last"></ods-breadcrumb-item>
 </ods-breadcrumb>
+<button id="button">Dummy</button>
 `);
 
     await page.keyboard.press('Tab');
@@ -42,8 +43,7 @@ describe('ods-breadcrumb navigation', () => {
     await page.keyboard.press('Tab');
     await page.waitForChanges();
 
-    expect(await isItemFocused('first')).toBe(true);
-    expect(await isItemFocused('last')).toBe(false);
+    expect(await isItemFocused('button')).toBe(true);
   });
 
   it('should focus only first and expandable items if there is more than the max items', async() => {

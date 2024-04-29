@@ -1,6 +1,9 @@
 import { Host, h } from "@stencil/core";
 import { ODS_ICON_NAME } from "../../../../icon/src";
+<<<<<<< HEAD
 import { ODS_SPINNER_COLOR } from "../../../../spinner/src";
+=======
+>>>>>>> a160577f0 (refactor(toggle): implementation component)
 import { ODS_INPUT_TYPE } from "../../constants/input-type";
 import { handleKeySpace, isPassword, setFormValue } from "../../controller/ods-input";
 export class OdsInput {
@@ -82,12 +85,17 @@ export class OdsInput {
         var _a;
         const hasClearableIcon = this.isClearable && !this.isLoading && !!this.value;
         const hasToggleMaskIcon = this.isPassword && !this.isLoading;
+<<<<<<< HEAD
         return (h(Host, { key: 'cdeab76a4c7d2d0ccaf781bcf59b86dfeeea27f7', class: "ods-input" }, h("input", { key: '77e2f95eee86d557cdd46be14225e6635547785a', "aria-label": this.ariaLabel, "aria-labelledby": this.ariaLabelledby, class: {
+=======
+        return (h(Host, { key: '4f695b3b067d9a77ce4fa1ecce3d072ea69952fc', class: "ods-input" }, h("input", { key: '05631b2ff3bf8ceeeb6248fb009d13c4a67b3e5f', "aria-label": this.ariaLabel, "aria-labelledby": this.ariaLabelledby, class: {
+>>>>>>> a160577f0 (refactor(toggle): implementation component)
                 'ods-input__input': true,
                 'ods-input__input--clearable': hasClearableIcon,
                 'ods-input__input--error': this.hasError,
                 'ods-input__input--loading': this.isLoading,
                 'ods-input__input--toggle-mask': hasToggleMaskIcon,
+<<<<<<< HEAD
             }, disabled: this.isDisabled, max: this.max, maxlength: this.maxlength, min: this.min, minlength: this.minlength, name: this.name, onBlur: () => this.odsBlur.emit(), onFocus: () => this.odsFocus.emit(), onInput: () => this.onInput(), pattern: this.pattern, part: "input", placeholder: this.placeholder, readonly: this.isReadonly, ref: (el) => this.inputEl = el, required: this.isRequired, step: this.step, type: this.isPassword && this.isMasked ? ODS_INPUT_TYPE.password : this.type, value: ((_a = this.value) === null || _a === void 0 ? void 0 : _a.toString()) || '' }), h("div", { key: '31d4d7621b2d16f1693b771183130ce5e20b8d95', class: "ods-input__actions" }, this.isLoading && h("ods-spinner", { class: "ods-input__actions__spinner", color: this.isDisabled ? ODS_SPINNER_COLOR.neutral : ODS_SPINNER_COLOR.primary }), hasClearableIcon &&
             h("button", { class: {
                     'ods-input__actions__clearable': true,
@@ -97,6 +105,17 @@ export class OdsInput {
                     'ods-input__actions__toggle-mask': true,
                     'ods-input__actions__toggle-mask--readonly': this.isReadonly,
                 }, disabled: this.isDisabled, onClick: this.toggleMask.bind(this), onKeyUp: (event) => handleKeySpace(event, this.isDisabled, this.toggleMask.bind(this)) }, h("ods-icon", { name: this.isMasked ? ODS_ICON_NAME.eyeOff : ODS_ICON_NAME.eye })))));
+=======
+            }, disabled: this.isDisabled, max: this.max, maxlength: this.maxlength, min: this.min, minlength: this.minlength, name: this.name, onBlur: () => this.odsBlur.emit(), onFocus: () => this.odsFocus.emit(), onInput: () => this.onInput(), pattern: this.pattern, part: "input", placeholder: this.placeholder, readonly: this.isReadonly, ref: (el) => this.inputEl = el, required: this.isRequired, step: this.step, type: this.isPassword && this.isMasked ? 'password' : this.type, value: ((_a = this.value) === null || _a === void 0 ? void 0 : _a.toString()) || '' }), h("div", { key: 'b4ac8f03ea9f91fbfd970e8f63fd864afa43e6eb', class: "ods-input__actions" }, this.isLoading && h("ods-spinner", { class: "ods-input__actions__spinner" }), hasClearableIcon &&
+            h("button", { class: {
+                    'ods-input__actions__clearable': true,
+                    'ods-input__actions__clearable--readonly': this.isReadonly,
+                }, disabled: this.isDisabled || this.isReadonly, onClick: this.clear.bind(this), onKeyUp: (event) => handleKeySpace(event, this.isDisabled, this.clear.bind(this)) }, h("ods-icon", { name: ODS_ICON_NAME.cross })), hasToggleMaskIcon &&
+            h("button", { class: {
+                    'ods-input__actions__toggle-mask': true,
+                    'ods-input__actions__toggle-mask--readonly': this.isReadonly,
+                }, disabled: this.isDisabled || this.isReadonly, onClick: this.toggleMask.bind(this), onKeyUp: (event) => handleKeySpace(event, this.isDisabled, this.toggleMask.bind(this)) }, h("ods-icon", { name: this.isMasked ? ODS_ICON_NAME.eyeClose : ODS_ICON_NAME.eyeOpen })))));
+>>>>>>> a160577f0 (refactor(toggle): implementation component)
     }
     static get is() { return "ods-input"; }
     static get encapsulation() { return "shadow"; }
@@ -436,7 +455,11 @@ export class OdsInput {
                 "mutable": false,
                 "complexType": {
                     "original": "OdsInputType",
+<<<<<<< HEAD
                     "resolved": "\"email\" | \"number\" | \"password\" | \"text\" | \"url\"",
+=======
+                    "resolved": "\"email\" | \"number\" | \"text\" | \"url\"",
+>>>>>>> a160577f0 (refactor(toggle): implementation component)
                     "references": {
                         "OdsInputType": {
                             "location": "import",

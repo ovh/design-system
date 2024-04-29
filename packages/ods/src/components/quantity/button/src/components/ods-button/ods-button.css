@@ -1,9 +1,12 @@
+<<<<<<< HEAD
 :host(.ods-button) {
   display: inline-block;
   border-radius: var(--ods-border-radius-md);
   height: inherit;
 }
 
+=======
+>>>>>>> a160577f0 (refactor(toggle): implementation component)
 .ods-button__button {
   display: inline-flex;
   align-items: center;

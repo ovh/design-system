@@ -1,7 +1,7 @@
 import type { E2EElement, E2EPage } from '@stencil/core/testing';
 import { newE2EPage } from '@stencil/core/testing';
 
-describe('ods-input accessibility', () => {
+describe('ods-input navigation', () => {
   let el: E2EElement;
   let input: E2EElement;
   let page: E2EPage;

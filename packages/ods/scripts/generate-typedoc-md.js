@@ -1,13 +1,9 @@
 #! /usr/bin/env node
 
-// TODO either:
-//  fix with https://github.com/TypeStrong/typedoc/releases/tag/v0.24.0 changes (and remove typedoc-plugin-markdown dep)
-//  use typedoc-plugin-markdown and adapt our doc
-
 /**
- * Script to generate the file spec.md for one specific component
- * The file is created in <path>/documentation
- * The script need a json typedoc file in <path>/typedoc.json
+ * Script to generate the file spec.md for one specific ODS component
+ * The file is created in <component-path>/documentation
+ * The script need a json typedoc file located in <component-path>/dist/doc-api/typedoc.json
  *
  * You can pass an optional --prefix <value> to manage components that are not
  * in the default "components" package, ex:
@@ -15,11 +11,8 @@
  */
 const fs = require('fs');
 const path = require('path');
-
-const isMultiple = process.argv[2]?.includes('multiple');
 const typedocBasePath = path.resolve('dist', 'docs-api');
 const pathPrefixIdx = process.argv.indexOf('--prefix');
-
 const ReflectionKind = {
   Project: 1,
   Module: 2,
@@ -44,52 +37,55 @@ const ReflectionKind = {
   SetSignature: 1048576,
   TypeAlias: 2097152,
   Reference: 4194304,
-}
+};
 
 let pathPrefix = '';
 if (pathPrefixIdx > -1) {
   pathPrefix = process.argv[pathPrefixIdx + 1];
 }
 
-function convertJsonToMarkdown(jsonItems) {
-  const classes = getClasses(jsonItems);
-  const enums = getEnums(jsonItems);
-
-  const hasProps = classes.props.length;
-  const hasMethods = classes.methods.length;
-  const hasEvents = classes.events.length;
-  const hasEnums = enums.length;
-
-  return [
-    hasProps ? '## Properties' : '', ...classes.props,
-    hasMethods ? '## Methods' : '', ...classes.methods,
-    hasEvents ? '## Events' : '', ...classes.events,
-    hasEnums ? '## Enums' : '', ...enums,
-  ].join('\n');
-}
-
-function createSpecMd(component = '') {
-  const typedocJson = require(path.resolve(typedocBasePath, component, 'typedoc.json'));
+function createSpecMd() {
+  const typedocJson = require(path.resolve(typedocBasePath, 'typedoc.json'));
   // TODO test for prefixed project (like -ovh)
   const dir = path.resolve('documentation');
 
   fs.mkdirSync(dir, { recursive: true });
 
-  if (typedocJson.children) {
-    fs.writeFileSync(path.resolve(dir, 'spec.md'), convertJsonToMarkdown(typedocJson.children), (err) => {
-      if (err) {
-        console.error('file write error.');
-        throw err;
-      }
-    });
-  }
+  const classesMarkdown = getClassesInfo(typedocJson.children);
+  const enumsMarkdown = getEnums(typedocJson.children);
+  const markdown = [].concat(classesMarkdown).concat(enumsMarkdown).join('\n');
+
+  fs.writeFileSync(path.resolve(dir, `spec.md`), markdown, (err) => {
+    if (err) {
+      console.error('file write error.');
+      throw err;
+    }
+  });
 }
 
-function getClasses(jsonItems) {
-  const classesDefinitions = jsonItems.filter(({ kind }) => kind === ReflectionKind.Class);
+function getClassesInfo(jsonItems) {
+  return jsonItems
+    .filter(({ kind }) => kind === ReflectionKind.Class)
+    .map((classData) => {
+      const { events, methods, props } = getClassInfo(classData);
 
-  const children = classesDefinitions.flatMap(({ children }) => children);
+      if (!events.length && !methods.length && !props.length) {
+        return [
+          `# ${classData.name}`,
+          'This component has no properties, events nor methods.',
+        ].join('\n');
+      }
 
+      return [
+        `# ${classData.name}`,
+        props.length ? '## Properties' : '', ...props,
+        methods.length ? '## Methods' : '', ...methods,
+        events.length ? '## Events' : '', ...events,
+      ].join('\n');
+    });
+}
+
+function getClassInfo({ children }) {
   const props = children
     .filter(({ kind, decorators }) => kind === ReflectionKind.Property && decorators[0].escapedText === 'Prop')
     .filter((prop) => prop.flags.isPublic)
@@ -124,19 +120,30 @@ function getClasses(jsonItems) {
     });
 
   return {
-    props,
     events,
     methods,
+    props,
   };
 }
 
 function getEnums(jsonItems) {
-  return jsonItems
+  const enums = jsonItems
     .filter(({ kind }) => kind === ReflectionKind.Enum)
-    .flatMap((enumDefinition) => {
-      const children = enumDefinition.children.map(({ name, type }) => `• **${name}** = \`"${type?.value}"\`\n`);
-      return `### Enumeration: ${enumDefinition.name}\n\n${children.join('\n')}\n`
-    });
+    .map((getEnum));
+
+  if (!enums.length) {
+    return [];
+  }
+
+  return [
+    `# Enums`,
+    enums.join('\n'),
+  ];
+}
+
+function getEnum(enumDefinition) {
+  const children = enumDefinition.children.map(({ name, type }) => `• **${name}** = \`"${type?.value}"\`\n`);
+  return `## ${enumDefinition.name}\n\n${children.join('\n')}\n`
 }
 
 function getTypeValue(tObj) {
@@ -172,14 +179,4 @@ function printType(typeObject) {
   return '_unknown_';
 }
 
-if (!isMultiple) {
-  return createSpecMd();
-}
-
-// See Radio or Accordion for example multiple
-const componentFolders = fs.readdirSync('./src/components', {});
-
-componentFolders.forEach((odsComponent) => {
-  const component = odsComponent.replace(`ods${pathPrefix ? `-${pathPrefix}` : ''}-`, '');
-  return createSpecMd(component);
-});
+return createSpecMd();

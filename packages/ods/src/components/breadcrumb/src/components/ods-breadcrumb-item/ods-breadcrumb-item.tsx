@@ -52,7 +52,7 @@ export class OdsBreadcrumbItem {
 
         {
           !this.isExpandable && (this.isLast
-            ? <span class="ods-breadcrumb-item__last">
+            ? <span class="ods-breadcrumb-item__last" aria-current="page">
               { this.label }
             </span>
             : <ods-link

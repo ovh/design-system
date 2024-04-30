@@ -8,7 +8,7 @@ import { html } from 'lit-html';
 defineCustomElement();
 
 const meta: Meta = {
-  title: 'ODS Components/Content/Divider',
+  title: 'ODS Components/Layout/Divider',
   component: 'ods-divider',
 };
 
@@ -53,7 +53,7 @@ export const Demo: StoryObj = {
         type: { summary: 'string' }
       },
       control: 'text',
-      description: 'Set a custom style properties. Example: "height: 100px; color: #008000;"',
+      description: 'Set a custom style properties. Example: "height: 100px; background-color: #008000;"',
     }
   }),
   args: {
@@ -73,8 +73,8 @@ export const Default: StoryObj = {
 export const Color: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
-<ods-divider color="light"></ods-divider>
-<ods-divider color="dark"></ods-divider>
+<ods-divider color="light" spacing="16"></ods-divider>
+<ods-divider color="dark" spacing="16"></ods-divider>
   `,
 };
 export const Spacing: StoryObj = {

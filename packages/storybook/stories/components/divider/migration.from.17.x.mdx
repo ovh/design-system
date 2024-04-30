@@ -24,7 +24,14 @@ Color attribute can be use with `dark` for contrasted content.
 
 Has been removed.
 
-Divider is always shown as visible line now.
+Divider is always shown by default.
+
+`size ` <img src="https://img.shields.io/badge/removed-FF0000" />
+
+Has been removed and replaced by
+
+`spacing ` <img src="https://img.shields.io/badge/new-008000" />
+
 
 ## Migration examples
 
@@ -52,7 +59,7 @@ Contrasted:
 <osds-divider color="dark"></osds-divider>
 ```
 
-Seperator:
+Separator:
 ```html
 <osds-divider seperator="false"></osds-divider>
 
@@ -65,4 +72,14 @@ Seperator:
     background-color: transparent;
   }
 </style>
+```
+
+
+Size:
+```html
+<osds-divider size="2"></osds-divider>
+
+<!-- is now -->
+
+<osds-divider spacing="2"></osds-divider>
 ```

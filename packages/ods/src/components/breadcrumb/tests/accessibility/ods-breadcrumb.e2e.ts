@@ -20,4 +20,21 @@ describe('ods-breadcrumb accessibility', () => {
     expect(el.shadowRoot).not.toBeNull();
     expect(el.getAttribute('role')).toBe('navigation');
   });
+
+  it('should render the last item with aria-current set', async() => {
+    await setup(`
+<ods-breadcrumb>
+  <ods-breadcrumb-item id="first" label="First">
+  </ods-breadcrumb-item>
+  <ods-breadcrumb-item id="last" label="Last">
+  </ods-breadcrumb-item>
+</ods-breadcrumb>
+    `);
+
+    const firstItem = await page.find('ods-breadcrumb > #first');
+    const lastItem = await page.find('ods-breadcrumb > #last');
+
+    expect(firstItem?.shadowRoot?.querySelector('[aria-current]')).toBeNull();
+    expect(lastItem?.shadowRoot?.querySelector('[aria-current]')).not.toBeNull();
+  });
 });

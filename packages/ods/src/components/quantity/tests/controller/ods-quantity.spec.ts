@@ -1,27 +1,27 @@
-import { isAddButtonDisabled, isMinusButtonDisabled } from '../../src/controller/ods-quantity';
+import { isMinusButtonDisabled, isPlusButtonDisabled } from '../../src/controller/ods-quantity';
 
 describe('ods-input controller', () => {
 
   beforeEach(jest.clearAllMocks);
 
-  describe('isAddButtonDisabled', () => {
+  describe('isPlusButtonDisabled', () => {
     it('should return true', async() => {
       // disabled
-      expect(isAddButtonDisabled(true, 0, 10)).toBe(true);
+      expect(isPlusButtonDisabled(true, 0, 10)).toBe(true);
 
       // max === value
-      expect(isAddButtonDisabled(false, 10, 10)).toBe(true);
+      expect(isPlusButtonDisabled(false, 10, 10)).toBe(true);
 
       // max < value
-      expect(isAddButtonDisabled(false, 11, 10)).toBe(true);
+      expect(isPlusButtonDisabled(false, 11, 10)).toBe(true);
     });
 
     it('should return false', async() => {
       // not disabled
-      expect(isAddButtonDisabled(false, 0, 10)).toBe(false);
+      expect(isPlusButtonDisabled(false, 0, 10)).toBe(false);
 
       // max === undefined
-      expect(isAddButtonDisabled(false, 10, undefined)).toBe(false);
+      expect(isPlusButtonDisabled(false, 10, undefined)).toBe(false);
     });
   });
 

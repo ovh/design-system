@@ -1,4 +1,4 @@
-function isAddButtonDisabled(isDisabled: boolean, value: number | null, max?: number): boolean {
+function isPlusButtonDisabled(isDisabled: boolean, value: number | null, max?: number): boolean {
   return isDisabled || (max !== undefined && value !== null && max <= value);
 }
 
@@ -11,7 +11,7 @@ function setFormValue(internals: ElementInternals, value: number | null): void {
 }
 
 export {
-  isAddButtonDisabled,
+  isPlusButtonDisabled,
   isMinusButtonDisabled,
   setFormValue,
 };

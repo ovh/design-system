@@ -1,4 +1,4 @@
-type OdsBreadcrumbItemClickEvent = CustomEvent<Event>;
+type OdsBreadcrumbItemClickEvent = CustomEvent<MouseEvent>;
 type OdsBreadcrumbItemExpandEvent = CustomEvent<void>;
 
 export {

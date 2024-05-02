@@ -48,11 +48,9 @@ describe('ods-breadcrumb-item rendering', () => {
 
   describe('isCollapsed', () => {
     it('should be reflected', async() => {
-      const dummyValue = 'dummy value';
+      await setup('<ods-breadcrumb-item is-collapsed></ods-breadcrumb-item>');
 
-      await setup(`<ods-breadcrumb-item is-collapsed="${dummyValue}"></ods-breadcrumb-item>`);
-
-      expect(root?.getAttribute('is-collapsed')).toBe(dummyValue);
+      expect(root?.getAttribute('is-collapsed')).toBe('');
     });
 
     it('should not be set by default', async() => {
@@ -64,11 +62,9 @@ describe('ods-breadcrumb-item rendering', () => {
 
   describe('isDisabled', () => {
     it('should be reflected', async() => {
-      const dummyValue = 'dummy value';
+      await setup('<ods-breadcrumb-item is-disabled></ods-breadcrumb-item>');
 
-      await setup(`<ods-breadcrumb-item is-disabled="${dummyValue}"></ods-breadcrumb-item>`);
-
-      expect(root?.getAttribute('is-disabled')).toBe(dummyValue);
+      expect(root?.getAttribute('is-disabled')).toBe('');
     });
 
     it('should not be set by default', async() => {
@@ -80,11 +76,9 @@ describe('ods-breadcrumb-item rendering', () => {
 
   describe('isExpandable', () => {
     it('should be reflected', async() => {
-      const dummyValue = 'dummy value';
+      await setup('<ods-breadcrumb-item is-expandable></ods-breadcrumb-item>');
 
-      await setup(`<ods-breadcrumb-item is-expandable="${dummyValue}"></ods-breadcrumb-item>`);
-
-      expect(root?.getAttribute('is-expandable')).toBe(dummyValue);
+      expect(root?.getAttribute('is-expandable')).toBe('');
     });
 
     it('should not be set by default', async() => {
@@ -96,11 +90,9 @@ describe('ods-breadcrumb-item rendering', () => {
 
   describe('isLast', () => {
     it('should be reflected', async() => {
-      const dummyValue = 'dummy value';
+      await setup('<ods-breadcrumb-item is-last></ods-breadcrumb-item>');
 
-      await setup(`<ods-breadcrumb-item is-last="${dummyValue}"></ods-breadcrumb-item>`);
-
-      expect(root?.getAttribute('is-last')).toBe(dummyValue);
+      expect(root?.getAttribute('is-last')).toBe('');
     });
 
     it('should not be set by default', async() => {

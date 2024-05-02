@@ -4,7 +4,7 @@ $breadcrumb-spacing: 8px;
   display: flex;
   flex-wrap: wrap;
   column-gap: $breadcrumb-spacing;
-  align-items: center;
+  align-items: baseline;
 
   ::slotted(ods-breadcrumb-item:not(:last-child)) {
     &::after {

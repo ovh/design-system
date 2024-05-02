@@ -91,13 +91,10 @@ export class OdsQuantity {
     return (
       <Host class="ods-quantity">
         <ods-button
-          class={{
-            'ods-quantity__button': true,
-            'ods-quantity__button--readonly': this.isReadonly,
-          }}
+          class="ods-quantity__button"
           color={ this.hasError ? ODS_BUTTON_COLOR.critical : ODS_BUTTON_COLOR.primary }
           exportparts="button:button-minus"
-          isDisabled={ isMinusButtonDisabled(this.isDisabled, this.value, this.min) }
+          isDisabled={ isMinusButtonDisabled(this.isDisabled, this.isReadonly, this.value, this.min) }
           icon={ ODS_ICON_NAME.minus }
           label=""
           onClick={ () => this.decrement() }
@@ -125,13 +122,10 @@ export class OdsQuantity {
           value={ this.value }>
         </ods-input>
         <ods-button
-          class={{
-            'ods-quantity__button': true,
-            'ods-quantity__button--readonly': this.isReadonly,
-          }}
+          class="ods-quantity__button"
           color={ this.hasError ? ODS_BUTTON_COLOR.critical : ODS_BUTTON_COLOR.primary }
           exportparts="button:button-plus"
-          isDisabled={ isPlusButtonDisabled(this.isDisabled, this.value, this.max) }
+          isDisabled={ isPlusButtonDisabled(this.isDisabled, this.isReadonly, this.value, this.max) }
           icon={ ODS_ICON_NAME.add }
           label=""
           onClick={ () => this.increment() }

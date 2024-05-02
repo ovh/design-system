@@ -19,7 +19,7 @@ export class OdsBreadcrumbItem {
   @Prop({ reflect: true }) public rel?: HTMLAnchorElement['rel'];
   @Prop({ reflect: true }) public target?: HTMLAnchorElement['target'];
 
-  @Event() odsBreadcrumbItemClick!: EventEmitter<globalThis.Event>;
+  @Event() odsBreadcrumbItemClick!: EventEmitter<MouseEvent>;
   @Event() odsBreadcrumbItemExpand!: EventEmitter<void>;
 
   onExpandClick(e: Event): void {
@@ -29,7 +29,7 @@ export class OdsBreadcrumbItem {
     this.odsBreadcrumbItemExpand.emit();
   }
 
-  onLinkClick(e: globalThis.Event): void {
+  onLinkClick(e: MouseEvent): void {
     if (!this.isDisabled) {
       this.odsBreadcrumbItemClick.emit(e);
     }
@@ -39,14 +39,14 @@ export class OdsBreadcrumbItem {
     return (
       <Host class={{
         'ods-breadcrumb-item': true,
-        ['ods-breadcrumb-item--collapsed']: this.isCollapsed && !this.isExpandable,
+        'ods-breadcrumb-item--collapsed': this.isCollapsed && !this.isExpandable,
       }}>
         {
           this.isExpandable &&
           <ods-link
             href=""
             label="&hellip;"
-            onClick={ (e: globalThis.Event) => this.onExpandClick(e) }>
+            onClick={ (e: MouseEvent) => this.onExpandClick(e) }>
           </ods-link>
         }
 
@@ -61,7 +61,7 @@ export class OdsBreadcrumbItem {
               icon={ this.icon }
               isDisabled={ this.isDisabled }
               label={ this.label }
-              onClick={ (e: globalThis.Event) => this.onLinkClick(e) }
+              onClick={ (e: MouseEvent) => this.onLinkClick(e) }
               referrerpolicy={ this.referrerpolicy }
               rel={ this.rel }
               target={ this.target }>

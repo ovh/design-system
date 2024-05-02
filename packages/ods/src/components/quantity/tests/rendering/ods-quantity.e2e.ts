@@ -75,6 +75,15 @@ describe('ods-quantity rendering', () => {
     });
   });
 
+  describe('readonly', () => {
+    it('should render the web component with is-readonly', async() => {
+      await setup('<ods-quantity is-readonly></ods-quantity>');
+
+      expect(buttonMinus.getAttribute('is-disabled')).toBe('');
+      expect(buttonAdd.getAttribute('is-disabled')).toBe('');
+    });
+  });
+
   describe('hasError', () => {
     it('should render the web component with has-error', async() => {
       await setup('<ods-quantity has-error></ods-quantity>');

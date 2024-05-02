@@ -25,10 +25,6 @@
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
     }
-
-    &--readonly::part(button) {
-      pointer-events: none;
-    }
   }
 
   &__input {

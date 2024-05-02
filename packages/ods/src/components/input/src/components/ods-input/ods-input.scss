@@ -109,7 +109,7 @@ $ods-input-input-padding-right: calc($ods-input-actions-button-width + $ods-inpu
     }
 
     &:not(:disabled)#{$input}--error {
-      border-color: var(--ods-form-element-border-color-critical);
+      @include input.ods-input-error();
     }
 
     &:disabled {
@@ -120,10 +120,6 @@ $ods-input-input-padding-right: calc($ods-input-actions-button-width + $ods-inpu
 
     &--clearable, &--loading, &--toggle-mask {
       padding-right: $ods-input-input-padding-right;
-    }
-
-    &--error {
-      @include input.ods-input-error();
     }
 
     &.ods-input__input--clearable.ods-input__input--toggle-mask {

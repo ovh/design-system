@@ -14,8 +14,8 @@ describe('ods-quantity behaviour', () => {
     await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
 
     el = await page.find('ods-quantity');
-    buttonMinus = await page.find('ods-quantity >>> [exportparts="button:button_minus"]');
-    buttonAdd = await page.find('ods-quantity >>> [exportparts="button:button_add"]');
+    buttonMinus = await page.find('ods-quantity >>> [exportparts="button:button-minus"]');
+    buttonAdd = await page.find('ods-quantity >>> [exportparts="button:button-plus"]');
 
     await page.waitForChanges();
   }

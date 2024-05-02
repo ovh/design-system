@@ -7,42 +7,48 @@ describe('ods-input controller', () => {
   describe('isPlusButtonDisabled', () => {
     it('should return true', async() => {
       // disabled
-      expect(isPlusButtonDisabled(true, 0, 10)).toBe(true);
+      expect(isPlusButtonDisabled(true, false, 0, 10)).toBe(true);
+
+      // readonly
+      expect(isPlusButtonDisabled(false, true, 0, 10)).toBe(true);
 
       // max === value
-      expect(isPlusButtonDisabled(false, 10, 10)).toBe(true);
+      expect(isPlusButtonDisabled(false, false, 10, 10)).toBe(true);
 
       // max < value
-      expect(isPlusButtonDisabled(false, 11, 10)).toBe(true);
+      expect(isPlusButtonDisabled(false, false, 11, 10)).toBe(true);
     });
 
     it('should return false', async() => {
-      // not disabled
-      expect(isPlusButtonDisabled(false, 0, 10)).toBe(false);
+      // not disabled & not readonly
+      expect(isPlusButtonDisabled(false, false, 0, 10)).toBe(false);
 
       // max === undefined
-      expect(isPlusButtonDisabled(false, 10, undefined)).toBe(false);
+      expect(isPlusButtonDisabled(false, false, 10, undefined)).toBe(false);
     });
   });
 
   describe('isMinusButtonDisabled', () => {
     it('should return true', async() => {
       // disabled
-      expect(isMinusButtonDisabled(true, 0, 10)).toBe(true);
+      expect(isMinusButtonDisabled(true, false, 0, 10)).toBe(true);
+
+      // disabled
+      expect(isMinusButtonDisabled(false, true, 0, 10)).toBe(true);
 
       // min === value
-      expect(isMinusButtonDisabled(false, 0, 0)).toBe(true);
+      expect(isMinusButtonDisabled(false, false, 0, 0)).toBe(true);
 
       // min > value
-      expect(isMinusButtonDisabled(false, 0, 1)).toBe(true);
+      expect(isMinusButtonDisabled(false, false, 0, 1)).toBe(true);
     });
 
     it('should return false', async() => {
-      // not disabled
-      expect(isMinusButtonDisabled(false, 10, 0)).toBe(false);
+      // not disabled & not readonly
+      expect(isMinusButtonDisabled(false, false, 10, 0)).toBe(false);
 
       // min === undefined
-      expect(isMinusButtonDisabled(false, 0, undefined)).toBe(false);
+      expect(isMinusButtonDisabled(false, false, 0, undefined)).toBe(false);
     });
   });
 });

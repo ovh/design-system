@@ -29,8 +29,8 @@ describe('ods-quantity rendering', () => {
 
     el = await page.find('ods-quantity');
     input = await page.find('ods-quantity >>> .ods-quantity__input');
-    buttonMinus = await page.find('ods-quantity >>> [exportparts="button:button_minus"]');
-    buttonAdd = await page.find('ods-quantity >>> [exportparts="button:button_add"]');
+    buttonMinus = await page.find('ods-quantity >>> [exportparts="button:button-minus"]');
+    buttonAdd = await page.find('ods-quantity >>> [exportparts="button:button-plus"]');
   }
 
   it('should render the web component', async() => {
@@ -41,14 +41,14 @@ describe('ods-quantity rendering', () => {
 
   describe('part', () => {
     it('should render with custom style applied', async() => {
-      await setup('<ods-quantity class="my-quantity"></ods-quantity>', '.my-quantity::part(input) { width: 200px; } .my-quantity::part(button_minus) { color: #00ff00; } .my-quantity::part(button_add) { color: #ff0000; }');
+      await setup('<ods-quantity class="my-quantity"></ods-quantity>', '.my-quantity::part(input) { width: 200px; } .my-quantity::part(button-minus) { color: #00ff00; } .my-quantity::part(button-plus) { color: #ff0000; }');
       const inputStyle = await input.getComputedStyle();
       expect(inputStyle.getPropertyValue('width')).toBe('200px');
 
-      const buttonMinusColor = await getButtonColor('button_minus');
+      const buttonMinusColor = await getButtonColor('button-minus');
       expect(buttonMinusColor).toBe('rgb(0, 255, 0)');
 
-      const buttonAddColor = await getButtonColor('button_add');
+      const buttonAddColor = await getButtonColor('button-plus');
       expect(buttonAddColor).toBe('rgb(255, 0, 0)');
     });
   });

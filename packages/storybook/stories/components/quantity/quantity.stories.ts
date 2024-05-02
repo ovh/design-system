@@ -31,10 +31,10 @@ export const Demo: StoryObj = {
   .my-quantity::part(input) {
     ${arg.customCssInput}
   }
-  .my-quantity::part(button_minus) {
+  .my-quantity::part(button-minus) {
     ${arg.customCssButtonMinus}
   }
-  .my-quantity::part(button_add) {
+  .my-quantity::part(button-plus) {
     ${arg.customCssButtonAdd}
   }
 </style>
@@ -206,12 +206,12 @@ export const CustomCSS: StoryObj = {
       width: 200px;
     }
 
-    .my-quantity::part(button_minus) {
+    .my-quantity::part(button-minus) {
       color: green;
       border-color: green;
     }
 
-    .my-quantity::part(button_add) {
+    .my-quantity::part(button-plus) {
       color: red;
       border-color: red;
     }

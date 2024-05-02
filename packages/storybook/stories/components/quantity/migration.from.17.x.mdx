@@ -7,6 +7,35 @@ import { linkTo } from '@storybook/addon-links';
 # Quantity - migrate from v17 to v18
 ----
 
+## Usage changes
+
+Quantity component was using slots, expecting specific components in it to work as expected.
+
+It has been fully reworked to be a all-in-one form element component.
+
+You can now use it directly as any input element.
+
+Here is an example of the previous declaration with ODS component:
+
+```html
+<osds-quantity>
+  <osds-button slot='minus' color='primary' size='sm'>
+    <osds-icon size='sm' contrasted name='minus'></osds-icon>
+  </osds-button>
+  <osds-input type='number' color='primary'></osds-input>
+  <osds-button slot='plus' color='primary' size='sm'>
+    <osds-icon size='sm' contrasted name='plus'></osds-icon>
+  </osds-button>
+</osds-quantity>
+```
+
+The same result would now be achieved using:
+```html
+<ods-quantity>
+</ods-quantity>
+```
+
+
 ## Attributes changes
 
 `disabled` <img src="https://img.shields.io/badge/updated-00FFFF" />

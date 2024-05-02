@@ -2,7 +2,7 @@ import { AttachInternals, Component, Event, type EventEmitter, type FunctionalCo
 import { ODS_BUTTON_COLOR, ODS_BUTTON_SIZE, ODS_BUTTON_VARIANT } from '../../../../button/src';
 import { ODS_ICON_NAME } from '../../../../icon/src';
 import { ODS_INPUT_TYPE, type OdsInput, type OdsInputValueChangeEvent } from '../../../../input/src';
-import { isAddButtonDisabled, isMinusButtonDisabled, setFormValue } from '../../controller/ods-quantity';
+import { isMinusButtonDisabled, isPlusButtonDisabled, setFormValue } from '../../controller/ods-quantity';
 import { type OdsQuantityEventValueChangeDetail } from '../../interfaces/events';
 
 @Component({
@@ -96,7 +96,7 @@ export class OdsQuantity {
             'ods-quantity__button--readonly': this.isReadonly,
           }}
           color={ this.hasError ? ODS_BUTTON_COLOR.critical : ODS_BUTTON_COLOR.primary }
-          exportparts="button:button_minus"
+          exportparts="button:button-minus"
           isDisabled={ isMinusButtonDisabled(this.isDisabled, this.value, this.min) }
           icon={ ODS_ICON_NAME.minus }
           label=""
@@ -130,8 +130,8 @@ export class OdsQuantity {
             'ods-quantity__button--readonly': this.isReadonly,
           }}
           color={ this.hasError ? ODS_BUTTON_COLOR.critical : ODS_BUTTON_COLOR.primary }
-          exportparts="button:button_add"
-          isDisabled={ isAddButtonDisabled(this.isDisabled, this.value, this.max) }
+          exportparts="button:button-plus"
+          isDisabled={ isPlusButtonDisabled(this.isDisabled, this.value, this.max) }
           icon={ ODS_ICON_NAME.add }
           label=""
           onClick={ () => this.increment() }

@@ -7,6 +7,28 @@ type DomElement = {
   trigger: HTMLElement | null | undefined,
 }
 
+function findTriggerElement(triggerId: string, shadowDomTriggerId?: string): HTMLElement | undefined {
+  const hostElement = document.querySelector<HTMLElement>(`#${triggerId}`);
+
+  if (!hostElement) {
+    console.warn(`[ods-tooltip] Unable to find trigger element in DOM with id: ${triggerId}`);
+    return;
+  }
+
+  if (shadowDomTriggerId) {
+    const shadowDomElement = hostElement.shadowRoot?.querySelector<HTMLElement>(`#${shadowDomTriggerId}`);
+
+    if (!shadowDomElement) {
+      console.warn(`[ods-tooltip] Unable to find trigger element in shadow DOM with id: ${shadowDomTriggerId}`);
+      return;
+    }
+
+    return shadowDomElement;
+  }
+
+  return hostElement;
+}
+
 function hideTooltip(popperElement: HTMLElement, cleanUpCallback?: () => void): void {
   popperElement.style.display = 'none';
 
@@ -68,6 +90,7 @@ async function update(position: OdsTooltipPosition, domElement: DomElement): Pro
 }
 
 export {
+  findTriggerElement,
   hideTooltip,
   showTooltip,
 };

@@ -14,6 +14,10 @@ describe('ods-tooltip rendering', () => {
     root = page.root;
   }
 
+  beforeEach(() => {
+    jest.spyOn(console, 'warn').mockImplementation(() => {});
+  });
+
   describe('position', () => {
     it('should be reflected', async() => {
       const dummyValue = 'dummy value';

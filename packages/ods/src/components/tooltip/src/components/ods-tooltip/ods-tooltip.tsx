@@ -1,6 +1,6 @@
-import { Component, Element, type FunctionalComponent, Host, Method, Prop, h } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, type FunctionalComponent, Host, Method, Prop, h } from '@stencil/core';
 import { ODS_TOOLTIP_POSITION, type OdsTooltipPosition } from '../../constants/tooltip-position';
-import { hideTooltip, showTooltip } from '../../controller/ods-tooltip';
+import { findTriggerElement, hideTooltip, showTooltip } from '../../controller/ods-tooltip';
 
 @Component({
   shadow: true,
@@ -11,36 +11,40 @@ export class OdsTooltip {
   private arrowElement!: HTMLElement;
   private triggerElement?: HTMLElement | null;
   private cleanUpCallback: () => void = () => {};
+  private boundHide = this.hide.bind(this);
+  private boundShow = this.show.bind(this);
 
   @Element() el!: HTMLElement;
 
   @Prop({ reflect: true }) public position: OdsTooltipPosition = ODS_TOOLTIP_POSITION.top;
+  @Prop({ reflect: true }) public shadowDomTriggerId?: string;
   @Prop({ reflect: true }) public triggerId!: string;
-  @Prop({ reflect: true }) public withArrow?: boolean;
+  @Prop({ reflect: true }) public withArrow: boolean = false;
+
+  @Event() odsTooltipHide!: EventEmitter<string>;
+  @Event() odsTooltipShow!: EventEmitter<string>;
 
   connectedCallback(): void {
-    this.triggerElement = document.querySelector<HTMLElement>(`#${this.triggerId}`);
+    this.triggerElement = findTriggerElement(this.triggerId, this.shadowDomTriggerId);
 
-    if (!this.triggerElement) {
-      console.warn(`[ods-tooltip] Unable to find trigger DOM element with id: ${this.triggerId}`);
-    } else {
-      this.triggerElement.addEventListener('blur', () => this.hide());
-      this.triggerElement.addEventListener('focus', () => this.show());
-      this.triggerElement.addEventListener('mouseenter', () => this.show());
-      this.triggerElement.addEventListener('mouseleave', () => this.hide());
-    }
+    this.triggerElement?.addEventListener('blur', this.boundHide);
+    this.triggerElement?.addEventListener('focus', this.boundShow);
+    this.triggerElement?.addEventListener('mouseenter', this.boundShow);
+    this.triggerElement?.addEventListener('mouseleave', this.boundHide);
   }
 
   disconnectedCallback() : void {
-    this.triggerElement?.removeEventListener('blur', () => this.hide());
-    this.triggerElement?.removeEventListener('focus', () => this.show());
-    this.triggerElement?.removeEventListener('mouseenter', () => this.show());
-    this.triggerElement?.removeEventListener('mouseleave', () => this.hide());
+    this.triggerElement?.removeEventListener('blur', this.boundHide);
+    this.triggerElement?.removeEventListener('focus', this.boundShow);
+    this.triggerElement?.removeEventListener('mouseenter', this.boundShow);
+    this.triggerElement?.removeEventListener('mouseleave', this.boundHide);
   }
 
   @Method()
   async hide(): Promise<void> {
     hideTooltip(this.el, this.cleanUpCallback);
+
+    this.odsTooltipHide.emit();
   }
 
   @Method()
@@ -50,6 +54,8 @@ export class OdsTooltip {
       popper: this.el,
       trigger: this.triggerElement,
     });
+
+    this.odsTooltipShow.emit();
   }
 
   render(): FunctionalComponent {

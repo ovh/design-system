@@ -8,10 +8,58 @@ jest.mock('@floating-ui/dom', () => ({
 }));
 
 import { arrow, autoUpdate, computePosition, flip, offset, shift } from '@floating-ui/dom';
-import { hideTooltip, showTooltip } from '../../src/controller/ods-tooltip';
+import { findTriggerElement, hideTooltip, showTooltip } from '../../src/controller/ods-tooltip';
 
 describe('ods-tooltip controller', () => {
   beforeEach(jest.clearAllMocks);
+
+  beforeEach(() => {
+    jest.spyOn(console, 'warn').mockImplementation(() => {});
+  });
+
+  describe('findTriggerElement', () => {
+    it('return empty if trigger element is not found', async() => {
+      expect(findTriggerElement('dummy')).toBeUndefined();
+    });
+
+    it('return the trigger element if found', async() => {
+      const hostElement = { dummy: 'element' } as unknown as HTMLElement;
+      const querySelectorSpy = jest.spyOn(document, 'querySelector').mockReturnValue(hostElement);
+
+      const triggerElement = findTriggerElement('dummy');
+
+      expect(querySelectorSpy).toHaveBeenCalledTimes(1);
+      expect(querySelectorSpy).toHaveBeenCalledWith('#dummy');
+      expect(triggerElement).toBe(hostElement);
+    });
+
+    it('return empty if shadow trigger element is not found', async() => {
+      const hostElement = { dummy: 'element' } as unknown as HTMLElement;
+      const querySelectorSpy = jest.spyOn(document, 'querySelector').mockReturnValue(hostElement);
+
+      const triggerElement = findTriggerElement('dummy', 'shadow');
+
+      expect(querySelectorSpy).toHaveBeenCalledTimes(1);
+      expect(querySelectorSpy).toHaveBeenCalledWith('#dummy');
+      expect(triggerElement).toBeUndefined();
+    });
+
+    it('return the shadow trigger element if found', async() => {
+      const shadowElement = { dummy: 'element' } as unknown as HTMLElement;
+      const shadowQuerySelectorSpy = jest.fn().mockReturnValue(shadowElement);
+      const querySelectorSpy = jest.spyOn(document, 'querySelector').mockReturnValue({
+        shadowRoot: { querySelector: shadowQuerySelectorSpy },
+      } as unknown as HTMLElement);
+
+      const triggerElement = findTriggerElement('dummy', 'shadow');
+
+      expect(querySelectorSpy).toHaveBeenCalledTimes(1);
+      expect(querySelectorSpy).toHaveBeenCalledWith('#dummy');
+      expect(shadowQuerySelectorSpy).toHaveBeenCalledTimes(1);
+      expect(shadowQuerySelectorSpy).toHaveBeenCalledWith('#shadow');
+      expect(triggerElement).toBe(shadowElement);
+    });
+  });
 
   describe('hideTooltip', () => {
     it('should set popper display style to none', async() => {

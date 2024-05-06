@@ -1,0 +1,169 @@
+import { Meta } from '@storybook/blocks';
+import * as PasswordStories from './password.stories';
+
+<Meta of={ PasswordStories } name='Migration From 17.x' />
+
+# Password - migrate from v17 to v18
+----
+
+## Attributes changes
+
+`color ` <img src="https://img.shields.io/badge/removed-FF0000" />
+
+Has been removed.
+
+Form components does not provide color variant anymore.
+You can use custom css if you need to customize the component.
+
+`contrasted ` <img src="https://img.shields.io/badge/removed-FF0000" />
+
+Has been removed.
+
+Form components does not provide color variant anymore.
+You can use custom css if you need to customize the component.
+
+`clearable` <img src="https://img.shields.io/badge/updated-00FFFF" />
+
+Has been updated.
+
+You can use the new `isClearable` attribute to obtain the same behavior.
+
+`disabled` <img src="https://img.shields.io/badge/updated-00FFFF" />
+
+Has been updated.
+
+You can use the new `isDisabled` attribute to obtain the same behavior.
+
+`forbidden-values` <img src="https://img.shields.io/badge/removed-FF0000" />
+
+Has been removed.
+
+You can replace it with a regex on the `pattern` attributes.
+
+`label` <img src="https://img.shields.io/badge/removed-FF0000" />
+
+Has been removed.
+
+To add a label on the input wrapped it with the component `form-field`.
+
+`loading` <img src="https://img.shields.io/badge/updated-00FFFF" />
+
+Has been updated.
+
+You can use the new `isLoading` attribute to obtain the same behavior.
+
+`masked` <img src="https://img.shields.io/badge/updated-00FFFF" />
+
+Has been updated.
+
+You can use the new `isMasked` attribute to obtain the same behavior.
+
+`error` <img src="https://img.shields.io/badge/updated-00FFFF" />
+
+Has been updated.
+
+You can use the new `hasError` attribute to obtain the same behavior.
+
+`readonly` <img src="https://img.shields.io/badge/updated-00FFFF" />
+
+Has been updated.
+
+You can use the new `isReadonly` attribute to obtain the same behavior.
+
+`required` <img src="https://img.shields.io/badge/updated-00FFFF" />
+
+Has been updated.
+
+You can use the new `isRequired` attribute to obtain the same behavior.
+
+`inline` <img src="https://img.shields.io/badge/removed-FF0000" />
+
+Has been removed.
+
+Input is now `inline-block` by default.
+You can add some style directly on the component if you want to override that.
+
+`size ` <img src="https://img.shields.io/badge/removed-FF0000" />
+
+Has been removed.
+
+Form components does not provide size variant anymore.
+You can use custom css if you need to customize the component.
+## Migration examples
+
+Clearable password:
+```html
+<osds-password clearable>
+</osds-password>
+
+<!-- is now -->
+
+<ods-password is-clearable>
+</ods-password>
+```
+
+Disabled password:
+```html
+<osds-password disabled>
+</osds-password>
+
+<!-- is now -->
+
+<ods-password is-disabled>
+</ods-password>
+```
+
+Error password:
+```html
+<osds-password error>
+</osds-password>
+
+<!-- is now -->
+
+<ods-password has-error>
+</ods-password>
+```
+
+Loading password:
+```html
+<osds-password loading>
+</osds-password>
+
+<!-- is now -->
+
+<ods-password is-loading>
+</ods-password>
+```
+
+Masked password:
+```html
+<osds-password masked>
+</osds-password>
+
+<!-- is now -->
+
+<ods-password is-masked>
+</ods-password>
+```
+
+Readonly password:
+```html
+<osds-password readonly>
+</osds-password>
+
+<!-- is now -->
+
+<ods-password is-readonly>
+</ods-password>
+```
+
+Required password:
+```html
+<osds-password required>
+</osds-password>
+
+<!-- is now -->
+
+<ods-password is-required>
+</ods-password>
+```

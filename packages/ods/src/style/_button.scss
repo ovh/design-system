@@ -1,9 +1,11 @@
 @use './focus';
 
+$ods-button-border-radius: var(--ods-border-radius-md);
+
 @mixin ods-button() {
   display: inline-flex;
   align-items: center;
-  border-radius: var(--ods-border-radius-md);
+  border-radius: $ods-button-border-radius;
   cursor: pointer;
   overflow: hidden;
   font-size: 1rem;

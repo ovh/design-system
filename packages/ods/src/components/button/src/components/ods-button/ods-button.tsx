@@ -34,7 +34,9 @@ export class OdsButton {
 
   render(): FunctionalComponent {
     return (
-      <Host disabled={ this.isDisabled || this.isLoading }>
+      <Host
+        class="ods-button"
+        disabled={ this.isDisabled || this.isLoading }>
         <button
           class={`
             ods-button__button

@@ -10,9 +10,9 @@
   &__copy {
     display: flex;
     position: absolute;
-    top: 0;
+    top: input.$ods-input-actions-padding-right;
     right: input.$ods-input-actions-padding-right;
-    bottom: 0;
+    bottom: input.$ods-input-actions-padding-right;
     align-items: center;
     justify-content: center;
 

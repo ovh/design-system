@@ -23,6 +23,7 @@ const componentNames = [
   'textarea',
   'breadcrumb',
   'toggle',
+  'clipboard',
   //--generator-anchor--
 ];
 

@@ -22,3 +22,4 @@ export * from './input/src';
 export * from './textarea/src';
 export * from './breadcrumb/src';
 export * from './toggle/src';
+export * from './clipboard/src';

@@ -3,26 +3,10 @@
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended"
   ],
-//  "ignorePatterns": [
-//    "**/.yarn/**",
-//    "**/assets/**",
-//    "**/docs/**",
-//    "**/packages/**/dist/**",
-//    "**/packages/**/doc/**",
-//    "**/packages/themes/**",
-////    "**/packages/components/**/custom-elements",
-////    "**/packages/components/**/custom-elements-bundle",
-////    "**/packages/components/**/documentation",
-////    "**/packages/components/**/loader",
-////    "**/packages/components/**/react",
-////    "**/packages/components/**/vue",
-//    "**/packages/**/www",
-//    "**/*.d.ts"
-//  ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 2020,
-    "project": ["tsconfig.json", "tsconfig.test.json"],
+    "project": ["tsconfig.json"],
     "sourceType": "module"
   },
   "plugins": [
@@ -39,7 +23,7 @@
     "@typescript-eslint/consistent-type-imports": "error",
     "@typescript-eslint/explicit-function-return-type": "error",
     "@typescript-eslint/no-explicit-any": "error",
-    "@typescript-eslint/no-unused-vars": ["error", { "varsIgnorePattern": "h" }],
+    "@typescript-eslint/no-unused-vars": ["error", { "ignoreRestSiblings": true, "varsIgnorePattern": "h" }],
     "@typescript-eslint/ban-ts-comment": ["error", { "ts-ignore": "allow-with-description" }],
     "array-bracket-spacing": ["error", "never"],
     "arrow-parens": ["error", "always"],

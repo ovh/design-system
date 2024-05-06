@@ -1,12 +1,16 @@
-@use '~@ovhcloud/ods-themes/src/default/variables' as theme;
 @use './focus';
+
+$ods-input-actions-button-width: 24px;
+$ods-input-actions-padding-right: 4px;
+$ods-input-input-height: 32px;
+$ods-input-input-padding-right: calc($ods-input-actions-button-width + $ods-input-actions-padding-right);
 
 @mixin ods-input() {
   box-sizing: border-box;
   border: var(--ods-border-width-sm) solid var(--ods-form-element-border-color-default);
   border-radius: var(--ods-border-radius-sm);
   padding: 4px 8px;
-  height: 32px;
+  height: $ods-input-input-height;
   color: var(--ods-color-text);
   font-size: 1rem;
 

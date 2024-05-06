@@ -1,0 +1,61 @@
+import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import SpecificationsPassword from '@ovhcloud/ods-components/src/components/password/documentation/spec.md?raw';
+import { Banner } from '../../banner';
+import { DocNavigator } from '../../doc-navigator';
+import * as PasswordStories from './password.stories';
+
+<Meta of={ PasswordStories } name='Documentation' />
+
+<Banner of={ PasswordStories } />
+
+# Overview
+
+TODO Some text about the component
+
+<Canvas of={ PasswordStories.Default } sourceState='none' />
+
+<DocNavigator of={ PasswordStories } />
+
+<Markdown>{ SpecificationsPassword }</Markdown>
+
+# Style customization
+
+You can add your own style on the password element using the part `input`.
+
+Custom password css:
+
+<Canvas of={ PasswordStories.CustomCSS } sourceState='shown'/>
+
+# Examples
+
+## Default
+
+<Canvas of={ PasswordStories.Default } sourceState='shown' />
+
+## Clearable
+
+<Canvas of={ PasswordStories.Clearable } sourceState='shown' />
+
+## Disabled
+
+<Canvas of={ PasswordStories.Disabled } sourceState='shown' />
+
+## Error
+
+<Canvas of={ PasswordStories.Error } sourceState='shown' />
+
+## Loading
+
+<Canvas of={ PasswordStories.Loading } sourceState='shown' />
+
+## Pattern
+Allow just numeric character
+<Canvas of={ PasswordStories.Pattern } sourceState='shown' />
+
+## Placeholder
+
+<Canvas of={ PasswordStories.Placeholder } sourceState='shown' />
+
+## Readonly
+
+<Canvas of={ PasswordStories.Readonly } sourceState='shown' />

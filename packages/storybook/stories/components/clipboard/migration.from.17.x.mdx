@@ -1,0 +1,92 @@
+import { Meta } from '@storybook/blocks';
+import * as ClipboardStories from './clipboard.stories';
+
+<Meta of={ ClipboardStories } name='Migration From 17.x' />
+
+# Clipboard - migrate from v17 to v18
+----
+
+## Usage changes
+
+The clipboard does not use slots anymore, it will provide default labels that you can customize using new attributes.
+
+```html
+<osds-clipboard value="Content to copy"
+  Copier le contenu
+  <span slot='success-message'>Copié !</span>
+</osds-clipboard>
+```
+
+The same result would now be achieved using:
+
+```html
+<ods-clipboard label-copy="Copier le contenu"
+               label-copy-success="Copié !"
+               value="Content to copy">
+</ods-clipboard>
+```
+
+## Attributes changes
+
+`disabled` <img src="https://img.shields.io/badge/updated-00FFFF" />
+
+Has been updated.
+
+You can use the new `isDisabled` attribute to obtain the same behavior.
+
+`inline ` <img src="https://img.shields.io/badge/removed-FF0000" />
+
+Has been removed.
+
+Clipboard is now `inline-block` by default.
+You can add some style directly on the component if you want to override that.
+
+`labelCopy` <img src="https://img.shields.io/badge/new-008000" />
+
+New attribute (optional).
+
+Use this to customize the label on the tooltip when hovering before any copy action is triggered.
+
+`labelCopySuccess` <img src="https://img.shields.io/badge/new-008000" />
+
+New attribute (optional).
+
+Use this to customize the label on the tooltip when a successful copy did happen.
+
+## Migration examples
+
+Disabled clipboard:
+```html
+<osds-clipboard disabled>
+</osds-clipboard>
+
+<!-- is now -->
+
+<ods-clipboard is-disabled>
+</ods-clipboard>
+```
+
+Inline clipboard:
+```html
+<osds-clipboard inline>
+</osds-clipboard>
+
+<!-- is now -->
+
+<ods-clipboard>
+</ods-clipboard>
+```
+
+Custom labels:
+```html
+<osds-clipboard>
+  Copier le contenu
+  <span slot='success-message'>Copié !</span>
+</osds-clipboard>
+
+<!-- is now -->
+
+<ods-clipboard label-copy="Copier le contenu"
+               label-copy-success="Copié !">
+</ods-clipboard>
+```

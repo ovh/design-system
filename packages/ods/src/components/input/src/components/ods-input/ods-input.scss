@@ -6,10 +6,6 @@
   position: relative;
 }
 
-$ods-input-actions-button-width: 24px;
-$ods-input-icon-padding-right: 4px;
-$ods-input-input-padding-right: calc($ods-input-actions-button-width + $ods-input-icon-padding-right);
-
 .ods-input {
   &__actions {
     display: inline-flex;
@@ -20,7 +16,7 @@ $ods-input-input-padding-right: calc($ods-input-actions-button-width + $ods-inpu
     gap: 2px;
     align-items: center;
     justify-content: center;
-    padding-right: $ods-input-icon-padding-right;
+    padding-right: input.$ods-input-actions-padding-right;
 
     &__clearable, &__toggle-mask {
       display: inherit;
@@ -31,7 +27,7 @@ $ods-input-input-padding-right: calc($ods-input-actions-button-width + $ods-inpu
       background: none;
       cursor: pointer;
       padding: 0;
-      width: $ods-input-actions-button-width;
+      width: input.$ods-input-actions-button-width;
       height: 24px;
       font-size: 1rem;
 
@@ -77,7 +73,7 @@ $ods-input-input-padding-right: calc($ods-input-actions-button-width + $ods-inpu
     /* stylelint-enable no-descending-specificity */
 
     &__spinner {
-      padding-right: $ods-input-icon-padding-right;
+      padding-right: input.$ods-input-actions-padding-right;
       height: unset;
 
       &::part(spinner) {
@@ -119,11 +115,11 @@ $ods-input-input-padding-right: calc($ods-input-actions-button-width + $ods-inpu
     }
 
     &--clearable, &--loading, &--toggle-mask {
-      padding-right: $ods-input-input-padding-right;
+      padding-right: input.$ods-input-input-padding-right;
     }
 
     &.ods-input__input--clearable.ods-input__input--toggle-mask {
-      padding-right: calc($ods-input-input-padding-right * 2);
+      padding-right: calc(input.$ods-input-input-padding-right * 2);
     }
 
     &[type="number"] {

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html dir='ltr' lang='en'>
+<head>
+  <meta charset='utf-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0' />
+  <title>Dev ods-clipboard</title>
+
+  <script type='module' src='/build/ods-clipboard.esm.js'></script>
+  <script nomodule src='/build/ods-clipboard.js'></script>
+  <link rel="stylesheet" href="/build/ods-clipboard.css">
+</head>
+
+<body>
+  <p>Default</p>
+  <ods-clipboard>
+  </ods-clipboard>
+
+  <p>Custom host id</p>
+  <ods-clipboard id="my-clipboard">
+  </ods-clipboard>
+
+  <p>Disabled</p>
+  <ods-clipboard id="disabled-clipboard" value="Disabled" is-disabled>
+  </ods-clipboard>
+  <button onclick="toggleDisable()">Toggle disable state</button>
+  <script>
+    const disabledClipboard = document.querySelector('#disabled-clipboard');
+
+    function toggleDisable() {
+      if (disabledClipboard.getAttribute('is-disabled') !== null) {
+        disabledClipboard.removeAttribute('is-disabled')
+      } else {
+        disabledClipboard.setAttribute('is-disabled', '');
+      }
+    }
+  </script>
+
+  <p>Custom labels</p>
+  <ods-clipboard label-copy="Copier le contenu" label-copy-success="Copié !">
+  </ods-clipboard>
+
+  <p>Value</p>
+  <ods-clipboard value="Some content to copy">
+  </ods-clipboard>
+
+  <p>Event</p>
+  <ods-clipboard id="event-clipboard" value="Event copied content">
+  </ods-clipboard>
+  <script>
+    const eventClipboard = document.querySelector('#event-clipboard');
+
+    eventClipboard.addEventListener('odsClipboardCopy', (e) => {
+      console.log('odsClipboardCopy event received');
+      console.log(e);
+    });
+  </script>
+</body>
+</html>

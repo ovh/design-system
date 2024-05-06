@@ -92,15 +92,15 @@ describe('ods-toggle rendering', () => {
 
   describe('withLabel', () => {
     it('should be reflected', async() => {
-      await setup('<ods-toggle withLabel></ods-toggle>');
+      await setup('<ods-toggle with-label></ods-toggle>');
 
-      expect(root?.getAttribute('withLabel')).toBe('');
+      expect(root?.getAttribute('with-label')).toBe('');
     });
 
     it('should not be set by default', async() => {
       await setup('<ods-toggle></ods-toggle>');
 
-      expect(root?.getAttribute('withLabel')).toBeNull();
+      expect(root?.getAttribute('with-label')).toBeNull();
     });
   });
 });

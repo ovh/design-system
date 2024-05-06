@@ -26,6 +26,7 @@ const componentNames = [
   'clipboard',
   'divider',
   'code',
+  'password',
   //--generator-anchor--
 ];
 

@@ -139,7 +139,7 @@ export class OdsInput {
           ref={ (el): HTMLInputElement => this.inputEl = el as HTMLInputElement }
           required={ this.isRequired }
           step={ this.step }
-          type={ this.isPassword && this.isMasked ? 'password' : this.type }
+          type={ this.isPassword && this.isMasked ? ODS_INPUT_TYPE.password : this.type }
           value={ this.value?.toString() || '' } />
 
         <div class="ods-input__actions">

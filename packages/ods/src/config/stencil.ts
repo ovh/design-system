@@ -66,6 +66,7 @@ function getStencilConfig({ args, componentCorePackage, devScript, jestOption = 
   if (isTest) {
     const { testEnvironment, ...testOption } = getJestOption({ args, option: jestOption });
 
+    /* eslint-disable sort-keys */
     return {
       ...baseConfig,
       globalScript: 'src/globals.ts',
@@ -96,6 +97,7 @@ function getStencilConfig({ args, componentCorePackage, devScript, jestOption = 
         } : {}),
       },
     };
+    /* eslint-enable sort-keys */
   }
 
   if (isProd) {

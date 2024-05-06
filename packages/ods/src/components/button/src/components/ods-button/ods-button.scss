@@ -1,5 +1,10 @@
 @use '../../../../../style/button';
 
+:host(.ods-button) {
+  // Ensure the hit area of the web-component is the same as the inside button (for hover triggering for example)
+  border-radius: button.$ods-button-border-radius;
+}
+
 .ods-button {
   &__button {
     $button: &;

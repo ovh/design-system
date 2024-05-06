@@ -20,8 +20,10 @@
         position: absolute;
         bottom: 2px;
         left: 2px;
-        transition: .4s;
+        transition: all .4s ease;
+        z-index: 1;
         border-radius: 1rem;
+        box-shadow: 0 1px 1px 0#00000040;
         background-color: var(--ods-color-neutral-000);
         width: 20px;
         height: 20px;
@@ -39,16 +41,25 @@
       &--disabled {
         background-color: var(--ods-color-neutral-100);
         cursor: not-allowed;
+
+        & #{$slider}__label {
+          color: var(--ods-color-neutral-600);
+        }
       }
 
       &__label {
+        display: flex;
         position: absolute;
-        top: 5px;
-        left: 23px;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        align-items: center;
+        padding-right: 2px;
         color: var(--ods-color-neutral-700);
         font-size: 12px;
         font-weight: 700;
         pointer-events: none;
+        user-select: none;
       }
     }
 
@@ -67,7 +78,8 @@
         }
 
         & + .ods-toggle__container__slider .ods-toggle__container__slider__label {
-          left: 4px;
+          left: 0;
+          padding-left: 4px;
         }
 
         & + :not(.ods-toggle__container__slider--disabled).ods-toggle__container__slider {

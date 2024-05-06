@@ -35,7 +35,7 @@ describe('ods-toggle behaviour', () => {
     expect(odsChangeSpy).toHaveReceivedEventTimes(1);
   });
 
-  it('should toggle value if disabled', async() => {
+  it('should not toggle value if disabled', async() => {
     await setup('<ods-toggle is-disabled></ods-toggle>');
     const odsChangeSpy = await page.spyOnEvent('odsChange');
 

@@ -1,0 +1,43 @@
+@use '../../../../../style/input';
+
+:host(.ods-clipboard) {
+  display: inline-block;
+  position: relative;
+  height: input.$ods-input-input-height;
+}
+
+.ods-clipboard {
+  &__copy {
+    display: flex;
+    position: absolute;
+    top: 0;
+    right: input.$ods-input-actions-padding-right;
+    bottom: 0;
+    align-items: center;
+    justify-content: center;
+
+    &::part(button) {
+      padding: input.$ods-input-actions-padding-right;
+      width: input.$ods-input-actions-button-width;
+      height: input.$ods-input-actions-button-width;
+    }
+  }
+
+  &__tooltip {
+    margin: 0;
+    font-size: 0.75rem;
+    font-weight: 600;
+
+    &__copied {
+      display: flex;
+      flex-flow: row;
+      column-gap: 4px;
+      align-items: center;
+      justify-content: center;
+
+      &__check {
+        font-size: 1.125rem;
+      }
+    }
+  }
+}

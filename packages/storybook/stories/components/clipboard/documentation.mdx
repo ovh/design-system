@@ -1,0 +1,33 @@
+import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import SpecificationsClipboard from '@ovhcloud/ods-components/src/components/clipboard/documentation/spec.md?raw';
+import { Banner } from '../../banner';
+import { DocNavigator } from '../../doc-navigator';
+import * as ClipboardStories from './clipboard.stories';
+
+<Meta of={ ClipboardStories } name='Documentation' />
+
+<Banner of={ ClipboardStories } />
+
+# Overview
+
+Clipboard component allows user to preview and copy crucial information to its clipboard:
+
+<Canvas of={ ClipboardStories.Default } sourceState='none' />
+
+<DocNavigator of={ ClipboardStories } />
+
+<Markdown>{ SpecificationsClipboard }</Markdown>
+
+# Examples
+
+## Default
+
+<Canvas of={ ClipboardStories.Default } sourceState='shown' />
+
+## Disabled
+
+<Canvas of={ ClipboardStories.Disabled } sourceState='shown' />
+
+## Custom labels
+
+<Canvas of={ ClipboardStories.CustomLabels } sourceState='shown' />

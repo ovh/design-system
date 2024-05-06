@@ -3922,6 +3922,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-component-password@workspace:packages/ods/src/components/password":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-password@workspace:packages/ods/src/components/password"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-component-quantity@workspace:packages/ods/src/components/quantity":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-quantity@workspace:packages/ods/src/components/quantity"

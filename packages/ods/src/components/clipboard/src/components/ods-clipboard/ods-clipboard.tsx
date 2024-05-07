@@ -70,6 +70,7 @@ export class OdsClipboard {
           !this.isDisabled &&
           <ods-tooltip
             onOdsTooltipHide={ () => this.onTooltipHide() }
+            part="tooltip"
             position="right"
             shadowDomTriggerId={ this.copyButtonId }
             triggerId={ this.hostId }>

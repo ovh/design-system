@@ -4,7 +4,7 @@ import { newE2EPage } from '@stencil/core/testing';
 describe('ods-clipboard rendering', () => {
   let el: E2EElement;
   let page: E2EPage;
-  let tooltip: HTMLElement | null;
+  let tooltip: E2EElement;
 
   async function setup(content: string, customStyle?: string): Promise<void> {
     page = await newE2EPage();
@@ -17,7 +17,7 @@ describe('ods-clipboard rendering', () => {
     }
 
     el = await page.find('ods-clipboard');
-    tooltip = await el.shadowRoot.querySelector<HTMLElement>('ods-tooltip');
+    tooltip = await page.find('ods-clipboard >>> [part="tooltip"]');
   }
 
   it('should render the web component', async() => {
@@ -32,5 +32,15 @@ describe('ods-clipboard rendering', () => {
 
     expect(el.shadowRoot).not.toBeNull();
     expect(tooltip).toBeNull();
+  });
+
+  describe('part', () => {
+    it('should render with custom style applied to the tooltip', async() => {
+      const customWidth = '200px';
+      await setup('<ods-clipboard></ods-clipboard>', `ods-clipboard::part(tooltip) { width: ${customWidth}; }`);
+
+      const tooltipStyle = await tooltip.getComputedStyle();
+      expect(tooltipStyle.getPropertyValue('width')).toBe(customWidth);
+    });
   });
 });

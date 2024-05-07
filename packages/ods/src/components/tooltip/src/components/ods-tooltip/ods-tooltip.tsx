@@ -21,8 +21,8 @@ export class OdsTooltip {
   @Prop({ reflect: true }) public triggerId!: string;
   @Prop({ reflect: true }) public withArrow: boolean = false;
 
-  @Event() odsTooltipHide!: EventEmitter<string>;
-  @Event() odsTooltipShow!: EventEmitter<string>;
+  @Event() odsTooltipHide!: EventEmitter<void>;
+  @Event() odsTooltipShow!: EventEmitter<void>;
 
   connectedCallback(): void {
     this.triggerElement = findTriggerElement(this.triggerId, this.shadowDomTriggerId);

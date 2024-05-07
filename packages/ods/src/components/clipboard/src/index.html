@@ -43,6 +43,15 @@
   <ods-clipboard value="Some content to copy Some content to copy Some content to copy Some content to copy">
   </ods-clipboard>
 
+  <p>Custom tooltip style</p>
+  <ods-clipboard class="custom-tooltip" value="Some content to copy">
+  </ods-clipboard>
+  <style>
+    .custom-tooltip::part(tooltip) {
+      width: 300px;
+    }
+  </style>
+
   <p>Event</p>
   <ods-clipboard id="event-clipboard" value="Event copied content">
   </ods-clipboard>

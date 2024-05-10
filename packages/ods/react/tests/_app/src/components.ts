@@ -28,6 +28,7 @@ const componentNames = [
   'code',
   'password',
   'popover',
+  'progress-bar',
   //--generator-anchor--
 ];
 

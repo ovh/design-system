@@ -27,14 +27,6 @@ export const Demo: StoryObj = {
 </style>
   `,
   argTypes: orderControls({
-    isDisabled: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: false },
-        type: { summary: 'boolean' },
-      },
-      control: 'boolean',
-    },
     customTooltipCss: {
       table: {
         category: CONTROL_CATEGORY.design,
@@ -43,6 +35,14 @@ export const Demo: StoryObj = {
       },
       control: 'text',
       description: 'Set a custom style to the tooltip. Example: "width: 200px;"',
+    },
+    isDisabled: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: false },
+        type: { summary: 'boolean' },
+      },
+      control: 'boolean',
     },
     labelCopy: {
       table: {

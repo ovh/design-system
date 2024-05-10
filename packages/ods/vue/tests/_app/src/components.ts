@@ -25,7 +25,8 @@ const componentNames = [
   'toggle',
   'clipboard',
   'divider',
-  //--generator-anchor--y
+  'code',
+  //--generator-anchor--
 ];
 
 export { componentNames };

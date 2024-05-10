@@ -3934,6 +3934,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-component-progress-bar@workspace:packages/ods/src/components/progress-bar":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-progress-bar@workspace:packages/ods/src/components/progress-bar"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-component-quantity@workspace:packages/ods/src/components/quantity":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-quantity@workspace:packages/ods/src/components/quantity"

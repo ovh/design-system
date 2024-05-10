@@ -27,3 +27,4 @@ export * from './divider/src';
 export * from './code/src';
 export * from './password/src';
 export * from './popover/src';
+export * from './progress-bar/src';

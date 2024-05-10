@@ -24,3 +24,4 @@ export * from './breadcrumb/src';
 export * from './toggle/src';
 export * from './clipboard/src';
 export * from './divider/src';
+export * from './code/src';

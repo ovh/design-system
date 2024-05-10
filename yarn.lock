@@ -3886,9 +3886,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+<<<<<<< HEAD
 "@ovhcloud/ods-component-divider@workspace:packages/ods/src/components/divider":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-divider@workspace:packages/ods/src/components/divider"
+=======
+"@ovhcloud/ods-component-code@workspace:packages/ods/src/components/code":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-code@workspace:packages/ods/src/components/code"
+>>>>>>> e20159c0 (feat(code): implement component)
   languageName: unknown
   linkType: soft
 

@@ -1,0 +1,70 @@
+import type { Meta, StoryObj } from '@storybook/web-components';
+import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/ods-code';
+import { html } from 'lit-html';
+import { CONTROL_CATEGORY, orderControls } from '../../control';
+
+defineCustomElement();
+
+const meta: Meta = {
+  title: 'ODS Components/Content/Code',
+  component: 'ods-code',
+};
+
+export default meta;
+
+export const Demo: StoryObj = {
+  render: (arg) => html`
+<ods-code can-copy="${arg.canCopy}">${arg.content}</ods-code>
+  `,
+  argTypes: orderControls({
+    canCopy: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: false },
+        type: { summary: 'boolean' },
+      },
+      control: 'boolean',
+    },
+    content: {
+      table: {
+        category: CONTROL_CATEGORY.slot,
+        defaultValue: { summary: 'ø' },
+      },
+      control: 'text',
+    },
+  }),
+  args: {
+    canCopy: false,
+    content: 'import { OsdsText } from \'@ovhcloud/ods-components/react\';'
+  },
+};
+
+export const CanCopy: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-code can-copy>import { OsdsText } from '@ovhcloud/ods-components/react';
+</ods-code>
+  `,
+};
+
+export const CustomCSS: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-code class="my-code">import { OsdsText } from '@ovhcloud/ods-components/react';
+</ods-code>
+<style>
+  .my-code {
+    display: flex;
+    color: cyan;
+  }
+</style>
+  `,
+};
+
+export const Default: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-code>import { OsdsText } from '@ovhcloud/ods-components/react';
+</ods-code>
+  `,
+};

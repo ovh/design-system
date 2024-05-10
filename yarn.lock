@@ -3932,6 +3932,7 @@ __metadata:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 18555ebcb (feat(clipboard): implement component)
 =======
 =======
@@ -3940,10 +3941,17 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-divider@workspace:packages/ods/src/components/divider"
 =======
+=======
+>>>>>>> 223275835 (fix(code): enforce button height to be the same as one-line container)
 "@ovhcloud/ods-component-code@workspace:packages/ods/src/components/code":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-code@workspace:packages/ods/src/components/code"
->>>>>>> e20159c0 (feat(code): implement component)
+  languageName: unknown
+  linkType: soft
+
+"@ovhcloud/ods-component-divider@workspace:packages/ods/src/components/divider":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-divider@workspace:packages/ods/src/components/divider"
   languageName: unknown
   linkType: soft
 

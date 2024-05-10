@@ -1,0 +1,45 @@
+@use '../../../../../style/input';
+
+// As there are no variant or design token dedicated to this component, we'll just set local variable for now
+$ods-code-primary-color: #fff;
+$ods-code-secondary-color: #000;
+
+:host(.ods-code) {
+  display: inline-flex;
+  flex-flow: row;
+  column-gap: 8px;
+  border-radius: var(--ods-border-radius-sm);
+  background-color: $ods-code-secondary-color;
+  padding: 8px;
+  min-height: input.$ods-input-input-height;
+  color: $ods-code-primary-color;
+}
+
+.ods-code {
+  &__preformat {
+    display: flex;
+    align-items: center;
+    margin: 0;
+
+    &__code {
+      white-space: pre-line;
+      font-family: var(--ods-font-family-code);
+    }
+  }
+
+  &__copy::part(button) {
+    color: $ods-code-primary-color;
+
+    &:hover {
+      background-color: var(--ods-color-neutral-600);
+    }
+
+    &:active {
+      background-color: var(--ods-color-neutral-700);
+    }
+
+    &:focus {
+      outline-color: $ods-code-primary-color;
+    }
+  }
+}

@@ -3955,7 +3955,16 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+<<<<<<< HEAD
 >>>>>>> d291fda1a (feat(divider): implement coponent)
+=======
+"@ovhcloud/ods-component-form-field@workspace:packages/ods/src/components/form-field":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-form-field@workspace:packages/ods/src/components/form-field"
+  languageName: unknown
+  linkType: soft
+
+>>>>>>> a86f201d0 (feat(form-field): implement component)
 "@ovhcloud/ods-component-icon@workspace:packages/ods/src/components/icon":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-icon@workspace:packages/ods/src/components/icon"

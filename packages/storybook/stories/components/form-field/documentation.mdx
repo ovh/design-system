@@ -1,0 +1,38 @@
+import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import SpecificationsFormField from '@ovhcloud/ods-components/src/components/form-field/documentation/spec.md?raw';
+import { Banner } from '../../banner';
+import { DocNavigator } from '../../doc-navigator';
+import * as FormFieldStories from './form-field.stories';
+
+<Meta of={ FormFieldStories } name='Documentation' />
+
+<Banner of={ FormFieldStories } />
+
+# Overview
+
+TODO Some text about the component
+
+<Canvas of={ FormFieldStories.Default } sourceState='none' />
+
+<DocNavigator of={ FormFieldStories } />
+
+<Markdown>{ SpecificationsFormField }</Markdown>
+
+# Style customization [IF RELEVANT]
+
+You can add your own style on the form-field element using the part `form-field`.
+
+Custom form-field css:
+
+<Canvas of={ FormFieldStories.CustomCSS } sourceState='shown'/>
+
+# Examples
+
+## Default
+
+<Canvas of={ FormFieldStories.Default } sourceState='shown' />
+
+## [Other attribute]
+<Canvas of={ FormFieldStories.Default } sourceState='shown' />
+
+...

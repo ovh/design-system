@@ -1,0 +1,27 @@
+@use '../../../../../style/input';
+
+:host(.ods-form-field) {
+  display: inline-flex;
+  position: relative;
+  flex-direction: column;
+}
+
+.ods-form-field {
+
+  &__top-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 4px;
+    width: 100%;
+  }
+
+  &__bottom-bar {
+    margin-top: 4px;
+
+    &__error-message {
+      color: var(--ods-color-critical-500);
+    }
+  }
+}

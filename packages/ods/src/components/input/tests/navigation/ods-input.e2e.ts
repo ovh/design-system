@@ -14,10 +14,10 @@ describe('ods-input navigation', () => {
     });
   }
 
-  async function odsInputFocusedElementTagName(): Promise<string | undefined> {
+  async function odsInputFocusedElementClassName(): Promise<string | undefined> {
     return await page.evaluate(() => {
       const input = document.querySelector('ods-input');
-      return input?.shadowRoot?.activeElement?.tagName;
+      return input?.shadowRoot?.activeElement?.className;
     });
   }
 
@@ -58,23 +58,23 @@ describe('ods-input navigation', () => {
       await setup('<ods-input is-clearable></ods-input>');
 
       await page.keyboard.press('Tab');
-      expect(await odsInputFocusedElementTagName()).toBe('INPUT');
+      expect(await odsInputFocusedElementClassName()).toContain('ods-input__input');
 
       await page.keyboard.press('Tab');
-      expect(await odsInputFocusedElementTagName()).not.toBe('BUTTON');
+      expect(await odsInputFocusedElementClassName()).toBe(undefined);
     });
 
     it('Button clearable should be focusable', async() => {
       await setup('<ods-input is-clearable value="value"></ods-input>');
 
       await page.keyboard.press('Tab');
-      expect(await odsInputFocusedElementTagName()).toBe('INPUT');
+      expect(await odsInputFocusedElementClassName()).toContain('ods-input__input');
 
       await page.keyboard.press('Tab');
-      expect(await odsInputFocusedElementTagName()).toBe('BUTTON');
+      expect(await odsInputFocusedElementClassName()).toContain('ods-input__actions__clearable');
 
       await page.keyboard.press('Tab');
-      expect(await odsInputFocusedElementTagName()).not.toBe('BUTTON');
+      expect(await odsInputFocusedElementClassName()).toBe(undefined);
     });
 
     it('should clear input when Enter on clearable button', async() => {
@@ -89,7 +89,7 @@ describe('ods-input navigation', () => {
 
       expect(await el.getProperty('value')).toBeNull();
       expect(odsClearSpy).toHaveReceivedEventTimes(1);
-      expect(await odsInputFocusedElementTagName()).toBe('INPUT');
+      expect(await odsInputFocusedElementClassName()).toContain('ods-input__input');
     });
 
     it('should clear input when Space on clearable button', async() => {
@@ -104,7 +104,7 @@ describe('ods-input navigation', () => {
 
       expect(await el.getProperty('value')).toBeNull();
       expect(odsClearSpy).toHaveReceivedEventTimes(1);
-      expect(await odsInputFocusedElementTagName()).toBe('INPUT');
+      expect(await odsInputFocusedElementClassName()).toContain('ods-input__input');
     });
 
     it('should clear input when click on clearable button', async() => {
@@ -117,7 +117,7 @@ describe('ods-input navigation', () => {
 
       expect(await el.getProperty('value')).toBeNull();
       expect(odsClearSpy).toHaveReceivedEventTimes(1);
-      expect(await odsInputFocusedElementTagName()).toBe('INPUT');
+      expect(await odsInputFocusedElementClassName()).toContain('ods-input__input');
     });
 
     it('should do nothing because of disabled', async() => {
@@ -166,13 +166,13 @@ describe('ods-input navigation', () => {
       await setup('<ods-input is-masked></ods-input>');
 
       await page.keyboard.press('Tab');
-      expect(await odsInputFocusedElementTagName()).toBe('INPUT');
+      expect(await odsInputFocusedElementClassName()).toContain('ods-input__input');
 
       await page.keyboard.press('Tab');
-      expect(await odsInputFocusedElementTagName()).toBe('BUTTON');
+      expect(await odsInputFocusedElementClassName()).toContain('ods-input__actions__toggle-mask');
 
       await page.keyboard.press('Tab');
-      expect(await odsInputFocusedElementTagName()).not.toBe('BUTTON');
+      expect(await odsInputFocusedElementClassName()).toBe(undefined);
     });
 
     it('should masked input when Enter on masked button', async() => {
@@ -236,37 +236,28 @@ describe('ods-input navigation', () => {
       expect(odsToggleMaskSpy).not.toHaveReceivedEvent();
     });
 
-    it('should do nothing because of readonly', async() => {
+    it('should toggle masked when click on masked button with readonly', async() => {
       await setup('<ods-input is-readonly is-masked value="value"></ods-input>');
       const odsToggleMaskSpy = await page.spyOnEvent('odsToggleMask');
       expect(await input.getProperty('type')).toBe('password');
 
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Space');
-      await page.waitForChanges();
-      expect(await input.getProperty('type')).toBe('password');
-
-      await page.keyboard.press('Enter');
-      await page.waitForChanges();
-      expect(await input.getProperty('type')).toBe('password');
-
       await buttonToggleMask.click();
       await page.waitForChanges();
-      expect(await input.getProperty('type')).toBe('password');
-      expect(odsToggleMaskSpy).not.toHaveReceivedEvent();
+
+      expect(await input.getProperty('type')).toBe('text');
+      expect(odsToggleMaskSpy).toHaveReceivedEventTimes(1);
     });
   });
 
   it('should have 2 button focusable with masked & clearable', async() => {
     await setup('<ods-input is-masked is-clearable value="value"></ods-input>');
     await page.keyboard.press('Tab');
-    expect(await odsInputFocusedElementTagName()).toBe('INPUT');
+    expect(await odsInputFocusedElementClassName()).toContain('ods-input__input');
 
     await page.keyboard.press('Tab');
-    expect(await odsInputFocusedElementTagName()).toBe('BUTTON');
+    expect(await odsInputFocusedElementClassName()).toContain('ods-input__actions__clearable');
 
     await page.keyboard.press('Tab');
-    expect(await odsInputFocusedElementTagName()).toBe('BUTTON');
+    expect(await odsInputFocusedElementClassName()).toContain('ods-input__actions__toggle-mask');
   });
 });

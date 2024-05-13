@@ -1,5 +1,6 @@
 import { AttachInternals, Component, Element, Event, type EventEmitter, type FunctionalComponent, Host, Method, Prop, State, Watch, h } from '@stencil/core';
 import { ODS_ICON_NAME } from '../../../../icon/src';
+import { ODS_SPINNER_COLOR } from '../../../../spinner/src';
 import { ODS_INPUT_TYPE, type OdsInputType } from '../../constants/input-type';
 import { handleKeySpace, isPassword, setFormValue } from '../../controller/ods-input';
 import { type OdsInputValueChangeEventDetail } from '../../interfaces/events';
@@ -144,7 +145,7 @@ export class OdsInput {
 
         <div class="ods-input__actions">
           {
-            this.isLoading && <ods-spinner class="ods-input__actions__spinner"></ods-spinner>
+            this.isLoading && <ods-spinner class="ods-input__actions__spinner" color={ this.isDisabled ? ODS_SPINNER_COLOR.neutral : ODS_SPINNER_COLOR.primary }></ods-spinner>
           }
           {
             hasClearableIcon &&
@@ -167,7 +168,7 @@ export class OdsInput {
                 'ods-input__actions__toggle-mask': true,
                 'ods-input__actions__toggle-mask--readonly': this.isReadonly,
               }}
-              disabled={ this.isDisabled || this.isReadonly }
+              disabled={ this.isDisabled }
               onClick={ this.toggleMask.bind(this) }
               onKeyUp={ (event: KeyboardEvent): Promise<void> => handleKeySpace(event, this.isDisabled, this.toggleMask.bind(this)) }>
               <ods-icon name={ this.isMasked ? ODS_ICON_NAME.eyeClose : ODS_ICON_NAME.eyeOpen }>

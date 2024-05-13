@@ -22,7 +22,7 @@ export const Demo: StoryObj = {
       is-disabled="${arg.isDisabled}"
       is-loading="${arg.isLoading}"
       is-readonly="${arg.isReadonly}"
-      is-required="${arg.isRequired}
+      is-required="${arg.isRequired}"
       pattern="${arg.pattern}"
       placeholder="${arg.placeholder}">
       </ods-password>

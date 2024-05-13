@@ -85,7 +85,7 @@ export class OdsPassword {
           isRequired={ this.isRequired }
           name={ this.name }
           onOdsToggleMask={ () => this.isMasked = !this.isMasked }
-          onOdsChange={ this.onOdsChange.bind(this) }
+          onOdsChange={ (event: OdsInputValueChangeEvent) => this.onOdsChange(event) }
           exportparts="input"
           pattern={ this.pattern }
           placeholder={ this.placeholder }

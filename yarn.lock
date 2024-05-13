@@ -3898,6 +3898,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-component-form-field@workspace:packages/ods/src/components/form-field":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-form-field@workspace:packages/ods/src/components/form-field"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-component-icon@workspace:packages/ods/src/components/icon":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-icon@workspace:packages/ods/src/components/icon"

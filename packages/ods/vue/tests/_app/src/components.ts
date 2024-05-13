@@ -27,6 +27,7 @@ const componentNames = [
   'divider',
   'code',
   'password',
+  'popover',
   //--generator-anchor--
 ];
 

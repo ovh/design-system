@@ -1,6 +1,6 @@
 @use '../../../../../style/overlay';
 
-:host(.ods-tooltip) {
+:host(.ods-popover) {
   @include overlay.ods-tooltip();
 
   display: none;
@@ -9,7 +9,7 @@
   left: 0;
 }
 
-.ods-tooltip {
+.ods-popover {
   &__arrow {
     @include overlay.ods-tooltip-arrow();
 

@@ -44,7 +44,7 @@ describe('ods-quantity navigation', () => {
 
   describe('navigation', () => {
     it('should navigate between button & input', async() => {
-      await setup('<ods-quantity></ods-quantity>');
+      await setup('<ods-quantity></ods-quantity><button>Dummy to focus out</button>');
 
       await page.keyboard.press('Tab');
       expect(await odsQuantityFocusedElementTagName()).toBe('ODS-BUTTON');

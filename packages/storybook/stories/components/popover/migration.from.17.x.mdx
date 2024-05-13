@@ -1,0 +1,129 @@
+import { Meta } from '@storybook/blocks';
+import * as PopoverStories from './popover.stories';
+
+<Meta of={ PopoverStories } name='Migration From 17.x' />
+
+# Popover - migrate from v17 to v18
+----
+
+## Usage changes
+
+The popover usage has changed a bit regarding the trigger element declaration.
+
+Previously, the trigger element was declared inside the web-component as its main slot content.
+
+The popover content was declared using a `osds-popover-content` with header, footer and content slots.
+
+The trigger is now declared outside of the web-component, so you can set directly the DOM you need inside the popover unique slot.
+
+The only requirement is to give the trigger element an `id` so that the popover can get attached to it using the new attribute `trigger-id`.
+
+Here is an example of the previous declaration:
+
+```html
+<osds-popover>
+  <span slot="popover-trigger">
+    <osds-button>Trigger</osds-button>
+  </span>
+
+  <osds-popover-content>
+    <p slot="popover-header">My popover title</p>
+
+    <p>Lorem ipsum dolor sit amet</p>
+
+    <div slot="popover-footer">
+      <osds-button>Dismiss</osds-button>
+      <osds-button>Action</osds-button>
+    </div>
+  </osds-popover-content>
+</osds-popover>
+```
+
+The same result would now be achieved using:
+```html
+<div id="popover-trigger">
+  Trigger
+</div>
+
+<ods-popover trigger-id="popover-trigger">
+  <p>My popover title</p>
+
+  <p>Lorem ipsum dolor sit amet</p>
+
+  <div>
+    <ods-button label="Dismiss"></ods-button>
+    <ods-button label="Action"></ods-button>
+  </div>
+</ods-popover>
+```
+
+## Attributes changes
+
+`position` <img src="https://img.shields.io/badge/new-008000" />
+
+New attribute (optional).
+
+You can choose a specific position for the popover. In case there is not enough space, it will automatically fallback
+to another position where the whole content can be displayed.
+
+`shadowDomTriggerId` <img src="https://img.shields.io/badge/new-008000" />
+
+New attribute (optional).
+
+If your trigger element is hidden inside a shadow DOM, you can provide a specific id (in combination with `triggerId`)
+to point to the element inside the shadow DOM of the trigger element.
+
+You usually won't have to use this attribute.
+
+You can find an usage example in the clipboard element implementation.
+
+`triggerId` <img src="https://img.shields.io/badge/new-008000" />
+
+New attribute (required).
+
+Id of the HTML element that serves as the popover trigger.
+
+`with-arrow` <img src="https://img.shields.io/badge/removed-FF0000" />
+
+New attribute (optional).
+
+Set it to `true` if you want to add an arrow to the popover.
+
+## Migration examples
+
+Basic popover:
+```html
+<osds-popover>
+  <span slot="popover-trigger">
+    <osds-button>Trigger</osds-button>
+  </span>
+
+  <osds-popover-content>
+    <p slot="popover-header">My popover title</p>
+
+    <p>Lorem ipsum dolor sit amet</p>
+
+    <div slot="popover-footer">
+      <osds-button>Dismiss</osds-button>
+      <osds-button>Action</osds-button>
+    </div>
+  </osds-popover-content>
+</osds-popover>
+
+<!-- is now -->
+
+<div id="popover-trigger">
+  Trigger
+</div>
+
+<ods-popover trigger-id="popover-trigger">
+  <p>My popover title</p>
+
+  <p>Lorem ipsum dolor sit amet</p>
+
+  <div>
+    <ods-button label="Dismiss"></ods-button>
+    <ods-button label="Action"></ods-button>
+  </div>
+</ods-popover>
+```

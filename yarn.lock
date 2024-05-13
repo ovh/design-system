@@ -3922,9 +3922,15 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+<<<<<<< HEAD
 "@ovhcloud/ods-component-password@workspace:packages/ods/src/components/password":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-password@workspace:packages/ods/src/components/password"
+=======
+"@ovhcloud/ods-component-popover@workspace:packages/ods/src/components/popover":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-popover@workspace:packages/ods/src/components/popover"
+>>>>>>> f36639b7 (feat(popover): implement component)
   languageName: unknown
   linkType: soft
 

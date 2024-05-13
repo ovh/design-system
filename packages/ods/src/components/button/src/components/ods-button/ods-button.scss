@@ -2,7 +2,9 @@
 
 :host(.ods-button) {
   // Ensure the hit area of the web-component is the same as the inside button (for hover triggering for example)
+  display: inline-block;
   border-radius: button.$ods-button-border-radius;
+  height: inherit;
 }
 
 .ods-button {

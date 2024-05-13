@@ -1,4 +1,4 @@
-import { copyToClipboard, getRandomHTMLId } from '../../src/utils/dom';
+import { copyToClipboard, getRandomHTMLId, isTargetInElement } from '../../src/utils/dom';
 
 describe('utils dom', () => {
   beforeEach(jest.clearAllMocks);
@@ -33,6 +33,57 @@ describe('utils dom', () => {
       expect(htmlId1).not.toBe(htmlId2);
       expect(/^[0-9]/.test(htmlId1)).toBe(false);
       expect(/^[0-9]/.test(htmlId2)).toBe(false);
+    });
+  });
+
+  describe('isTargetInElement', () => {
+    const containSpy = jest.fn();
+    const includeSpy = jest.fn();
+    const mockElement = {
+      contains: containSpy,
+    } as unknown as HTMLElement;
+    const mockEvent = {
+      composedPath: jest.fn().mockReturnValue({
+        includes: includeSpy,
+      }),
+      target: 'dummy target',
+    } as unknown as Event;
+
+    it('should return false if element is empty', () => {
+      expect(isTargetInElement(mockEvent)).toBe(false);
+    });
+
+    it('should return false if target is not contained by the element or the path', () => {
+      containSpy.mockReturnValueOnce(false);
+      includeSpy.mockReturnValueOnce(false);
+
+      const mockEvent = {
+        composedPath: jest.fn().mockReturnValue({
+          includes: includeSpy,
+        }),
+        target: 'dummy target',
+      } as unknown as Event;
+
+      expect(isTargetInElement(mockEvent, mockElement)).toBe(false);
+      expect(mockElement.contains).toHaveBeenCalledWith(mockEvent.target);
+      expect(includeSpy).toHaveBeenCalledWith(mockElement);
+    });
+
+    it('should return true if target is contained by the element', () => {
+      containSpy.mockReturnValueOnce(true);
+
+      expect(isTargetInElement(mockEvent, mockElement)).toBe(true);
+      expect(mockElement.contains).toHaveBeenCalledWith(mockEvent.target);
+      expect(includeSpy).not.toHaveBeenCalled();
+    });
+
+    it('should return true if target is included in the event path', () => {
+      containSpy.mockReturnValueOnce(false);
+      includeSpy.mockReturnValueOnce(true);
+
+      expect(isTargetInElement(mockEvent, mockElement)).toBe(true);
+      expect(mockElement.contains).toHaveBeenCalledWith(mockEvent.target);
+      expect(includeSpy).toHaveBeenCalledWith(mockElement);
     });
   });
 });

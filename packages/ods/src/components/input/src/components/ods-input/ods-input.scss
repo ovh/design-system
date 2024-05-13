@@ -58,9 +58,11 @@
     }
 
     &__toggle-mask {
-      color: var(--ods-color-primary-500);
+      color: var(--ods-color-neutral-600);
 
-      &:not(:disabled, &--readonly) {
+      &:not(:disabled) {
+        color: var(--ods-color-primary-500);
+
         &:hover {
           background-color: var(--ods-color-primary-100);
         }

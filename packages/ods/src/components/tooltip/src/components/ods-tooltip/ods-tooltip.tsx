@@ -1,6 +1,6 @@
 import { Component, Element, Event, type EventEmitter, type FunctionalComponent, Host, Method, Prop, h } from '@stencil/core';
+import { findTriggerElement, hideOverlay, showOverlay } from '../../../../../utils/overlay';
 import { ODS_TOOLTIP_POSITION, type OdsTooltipPosition } from '../../constants/tooltip-position';
-import { findTriggerElement, hideTooltip, showTooltip } from '../../controller/ods-tooltip';
 
 @Component({
   shadow: true,
@@ -24,6 +24,24 @@ export class OdsTooltip {
   @Event() odsTooltipHide!: EventEmitter<void>;
   @Event() odsTooltipShow!: EventEmitter<void>;
 
+  @Method()
+  async hide(): Promise<void> {
+    hideOverlay(this.el, this.cleanUpCallback);
+
+    this.odsTooltipHide.emit();
+  }
+
+  @Method()
+  async show(): Promise<void> {
+    this.cleanUpCallback = showOverlay(this.position, {
+      arrow: this.arrowElement,
+      popper: this.el,
+      trigger: this.triggerElement,
+    });
+
+    this.odsTooltipShow.emit();
+  }
+
   connectedCallback(): void {
     this.triggerElement = findTriggerElement(this.triggerId, this.shadowDomTriggerId);
 
@@ -38,24 +56,6 @@ export class OdsTooltip {
     this.triggerElement?.removeEventListener('focus', this.boundShow);
     this.triggerElement?.removeEventListener('mouseenter', this.boundShow);
     this.triggerElement?.removeEventListener('mouseleave', this.boundHide);
-  }
-
-  @Method()
-  async hide(): Promise<void> {
-    hideTooltip(this.el, this.cleanUpCallback);
-
-    this.odsTooltipHide.emit();
-  }
-
-  @Method()
-  async show(): Promise<void> {
-    this.cleanUpCallback = showTooltip(this.position, {
-      arrow: this.arrowElement,
-      popper: this.el,
-      trigger: this.triggerElement,
-    });
-
-    this.odsTooltipShow.emit();
   }
 
   render(): FunctionalComponent {

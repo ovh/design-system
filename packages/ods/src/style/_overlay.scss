@@ -5,3 +5,11 @@
   padding: 8px;
   color: var(--ods-color-primary-500);
 }
+
+@mixin ods-tooltip-arrow() {
+  position: absolute;
+  transform: rotate(45deg);
+  background: inherit;
+  width: 8px;
+  height: 8px;
+}

@@ -1,24 +1,7 @@
-enum ODS_TOOLTIP_POSITION {
-  bottom = 'bottom',
-  bottomEnd = 'bottom-end',
-  bottomStart = 'bottom-start',
-  left = 'left',
-  leftEnd = 'left-end',
-  leftStart = 'left-start',
-  right = 'right',
-  rightEnd = 'right-end',
-  rightStart = 'right-start',
-  top = 'top',
-  topEnd = 'top-end',
-  topStart = 'top-start',
-}
-
-type OdsTooltipPosition = `${ODS_TOOLTIP_POSITION}`;
-
-const ODS_TOOLTIP_POSITIONS = Object.freeze(Object.values(ODS_TOOLTIP_POSITION));
+import { ODS_OVERLAY_POSITION, ODS_OVERLAY_POSITIONS, type OdsOverlayPosition } from '../../../../utils/overlay';
 
 export {
-  ODS_TOOLTIP_POSITION,
-  ODS_TOOLTIP_POSITIONS,
-  type OdsTooltipPosition,
+  ODS_OVERLAY_POSITION as ODS_TOOLTIP_POSITION,
+  ODS_OVERLAY_POSITIONS as ODS_TOOLTIP_POSITIONS,
+  type OdsOverlayPosition as OdsTooltipPosition,
 };

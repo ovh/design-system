@@ -8,9 +8,9 @@ jest.mock('@floating-ui/dom', () => ({
 }));
 
 import { arrow, autoUpdate, computePosition, flip, offset, shift } from '@floating-ui/dom';
-import { findTriggerElement, hideTooltip, showTooltip } from '../../src/controller/ods-tooltip';
+import { findTriggerElement, hideOverlay, showOverlay } from '../../src/utils/overlay';
 
-describe('ods-tooltip controller', () => {
+describe('utils overlay', () => {
   beforeEach(jest.clearAllMocks);
 
   beforeEach(() => {
@@ -61,13 +61,13 @@ describe('ods-tooltip controller', () => {
     });
   });
 
-  describe('hideTooltip', () => {
+  describe('hideOverlay', () => {
     it('should set popper display style to none', async() => {
       const dummyPopperElement = document.createElement('div');
 
       expect(dummyPopperElement.style.display).not.toBe('none');
 
-      hideTooltip(dummyPopperElement);
+      hideOverlay(dummyPopperElement);
 
       expect(dummyPopperElement.style.display).toBe('none');
     });
@@ -76,7 +76,7 @@ describe('ods-tooltip controller', () => {
       const dummyPopperElement = document.createElement('div');
       const dummyCallback = jest.fn();
 
-      hideTooltip(dummyPopperElement, dummyCallback);
+      hideOverlay(dummyPopperElement, dummyCallback);
 
       expect(dummyCallback).toHaveBeenCalled();
     });
@@ -84,7 +84,7 @@ describe('ods-tooltip controller', () => {
 
   describe('showTooltip', () => {
     it('should do nothing if not trigger element', async() => {
-      showTooltip('top', {
+      showOverlay('top', {
         arrow: document.createElement('div'),
         popper: document.createElement('div'),
         trigger: undefined,
@@ -97,7 +97,7 @@ describe('ods-tooltip controller', () => {
       const dummyPopper = document.createElement('div');
       dummyPopper.style.display = 'none';
 
-      showTooltip('top', {
+      showOverlay('top', {
         arrow: document.createElement('div'),
         popper: dummyPopper,
         trigger: document.createElement('div'),
@@ -112,11 +112,9 @@ describe('ods-tooltip controller', () => {
       const expectedPopperY = 42;
 
       it('should update popper position', async() => {
-        const dummyArrow = document.createElement('div');
         const dummyPopper = document.createElement('div');
         const dummyTrigger = document.createElement('div');
         const dummyDom = {
-          arrow: dummyArrow,
           popper: dummyPopper,
           trigger: dummyTrigger,
         };
@@ -129,19 +127,17 @@ describe('ods-tooltip controller', () => {
           y: expectedPopperY,
         });
 
-        showTooltip(dummyPosition, dummyDom);
+        showOverlay(dummyPosition, dummyDom);
 
         expect(autoUpdate).toHaveBeenCalledWith(dummyTrigger, dummyPopper, expect.any(Function));
         expect(computePosition).toHaveBeenCalledWith(dummyTrigger, dummyPopper, {
           middleware: [
-            'arrow middleware',
             'flip middleware',
             'offset middleware',
             'shift middleware',
           ],
           placement: dummyPosition,
         });
-        expect(arrow).toHaveBeenCalledWith({ element: dummyArrow });
         expect(flip).toHaveBeenCalled();
         expect(offset).toHaveBeenCalledWith(expect.any(Number));
         expect(shift).toHaveBeenCalledWith({ padding: expect.any(Number) });
@@ -151,10 +147,6 @@ describe('ods-tooltip controller', () => {
 
         expect(dummyPopper.style.left).toBe(`${expectedPopperX}px`);
         expect(dummyPopper.style.top).toBe(`${expectedPopperY}px`);
-        expect(dummyArrow.style.bottom).toBe('-4px');
-        expect(dummyArrow.style.left).toBe('');
-        expect(dummyArrow.style.right).toBe('');
-        expect(dummyArrow.style.top).toBe('');
       });
 
       it('should update popper and arrow position', async() => {
@@ -181,15 +173,15 @@ describe('ods-tooltip controller', () => {
           y: expectedPopperY,
         });
 
-        showTooltip(dummyPosition, dummyDom);
+        showOverlay(dummyPosition, dummyDom);
 
         expect(autoUpdate).toHaveBeenCalledWith(dummyTrigger, dummyPopper, expect.any(Function));
         expect(computePosition).toHaveBeenCalledWith(dummyTrigger, dummyPopper, {
           middleware: [
-            'arrow middleware',
             'flip middleware',
             'offset middleware',
             'shift middleware',
+            'arrow middleware',
           ],
           placement: dummyPosition,
         });

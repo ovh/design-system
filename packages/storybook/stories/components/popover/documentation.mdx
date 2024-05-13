@@ -1,0 +1,76 @@
+import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import SpecificationsPopover from '@ovhcloud/ods-components/src/components/popover/documentation/spec.md?raw';
+import { Banner } from '../../banner';
+import { DocNavigator } from '../../doc-navigator';
+import * as PopoverStories from './popover.stories';
+
+<Meta of={ PopoverStories } name='Documentation' />
+
+<Banner of={ PopoverStories } />
+
+# Overview
+
+Popover component is triggered by click and is used to provide additional information to the user in a new temporary window that overlays the page:
+
+<Canvas of={ PopoverStories.Overview } sourceState='none' />
+
+<DocNavigator of={ PopoverStories } />
+
+<Markdown>{ SpecificationsPopover }</Markdown>
+
+# Style customization
+
+You can update the popover content by directly updating the slot element.
+
+<Canvas of={ PopoverStories.CustomCSS } sourceState='shown'/>
+
+# Positioning
+
+Unlike tooltip, popover can contains focusable elements.
+Thus it needs to be positioned in the right spot on the DOM to follow the native focus workflow.
+
+To ensure that, always declare your popover right after its trigger.
+
+Here is an example of a wrong positioning:
+
+```html
+<ods-button icon="menu-ellipsis-vertical"
+            id="popover-trigger"
+            label="Menu">
+</ods-button>
+
+<ods-input name="some-input">
+</ods-input>
+
+<ods-popover trigger-id="popover-trigger">
+  ...focusable popover content
+</ods-popover>
+```
+
+The input will get focused after the popover trigger button, causing the popover to close, thus making the element inside of it unreachable.
+
+The correct way would be:
+
+```html
+<ods-button icon="menu-ellipsis-vertical"
+            id="popover-trigger"
+            label="Menu">
+</ods-button>
+
+<ods-popover trigger-id="popover-trigger">
+  ...focusable popover content
+</ods-popover>
+
+<ods-input name="some-input">
+</ods-input>
+```
+
+# Examples
+
+## Default
+
+<Canvas of={ PopoverStories.Default } sourceState='shown' />
+
+## With an arrow tip
+
+<Canvas of={ PopoverStories.ArrowTip } sourceState='shown' />

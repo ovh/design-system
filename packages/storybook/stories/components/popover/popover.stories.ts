@@ -1,0 +1,127 @@
+import type { Meta, StoryObj } from '@storybook/web-components';
+import { ODS_POPOVER_POSITION, ODS_POPOVER_POSITIONS } from '@ovhcloud/ods-components';
+import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/ods-popover';
+import { html } from 'lit-html';
+import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
+import { CONTROL_CATEGORY, orderControls } from '../../control';
+
+defineCustomElement();
+
+const meta: Meta = {
+  title: 'ODS Components/User feedback/Popover',
+  component: 'ods-popover',
+  parameters: {
+    layout: 'centered',
+  },
+  decorators: [(story) => html`<div style="padding-top: 50px; display: inline-flex; align-content: center;">${story()}</div>`],
+};
+
+export default meta;
+
+export const Demo: StoryObj = {
+  render: (args) => html`
+<ods-input name="input-1" style="padding-right: 8px"></ods-input>
+<ods-button icon="menu-ellipsis-vertical"
+            id="trigger-demo"
+            label="Menu">
+</ods-button>
+<ods-popover position="${args.position}"
+             trigger-id="trigger-demo"
+             with-arrow="${args.withArrow}">
+  ${unsafeHTML(args.content)}
+</ods-popover>
+<ods-input name="input-2" style="padding-left: 8px"></ods-input>
+  `,
+  argTypes: orderControls({
+    content: {
+      table: {
+        category: CONTROL_CATEGORY.slot,
+        defaultValue: { summary: 'ø' },
+      },
+      control: 'text',
+    },
+    position: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: ODS_POPOVER_POSITION.top },
+        type: { summary: ODS_POPOVER_POSITIONS },
+      },
+      control: { type: 'select' },
+      options: ODS_POPOVER_POSITIONS,
+    },
+    withArrow: {
+      table: {
+        category: CONTROL_CATEGORY.design,
+        defaultValue: { summary: false },
+      },
+      control: { type: 'boolean' },
+    }
+  }),
+  args: {
+    content: '<div><p>Some text content</p><input type="text" /><button>Action</button>',
+    position: ODS_POPOVER_POSITION.bottom,
+    withArrow: true,
+  },
+};
+
+export const ArrowTip: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-button icon="home"
+            id="trigger-arrow"
+            label="Menu">
+</ods-button>
+<ods-popover trigger-id="trigger-arrow"
+             with-arrow>
+  Popover content
+</ods-popover>
+  `,
+};
+
+export const CustomCSS: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-button icon="home"
+            id="trigger-css"
+            label="Menu">
+</ods-button>
+<ods-popover trigger-id="trigger-css"
+             with-arrow>
+  <p class="custom-content">
+    Popover content
+  </p>
+</ods-popover>
+<style>
+  .custom-content {
+    margin: 0;
+    font-style: italic;
+  }
+</style>
+  `,
+};
+
+export const Default: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-button icon="home"
+            id="trigger-default"
+            label="Menu">
+</ods-button>
+<ods-popover trigger-id="trigger-default">
+  Popover content
+</ods-popover>
+  `,
+};
+
+export const Overview: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-button icon="home"
+            id="trigger-overview"
+            label="Menu">
+</ods-button>
+<ods-popover trigger-id="trigger-overview">
+  Popover content
+</ods-popover>
+  `,
+};

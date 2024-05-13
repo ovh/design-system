@@ -1,13 +1,13 @@
 import { type SpecPage, newSpecPage } from '@stencil/core/testing';
-import { ODS_TOOLTIP_POSITION, OdsTooltip } from '../../src';
+import { ODS_POPOVER_POSITION, OdsPopover } from '../../src';
 
-describe('ods-tooltip rendering', () => {
+describe('ods-popover rendering', () => {
   let page: SpecPage;
   let root: HTMLElement | undefined;
 
   async function setup(html: string): Promise<void> {
     page = await newSpecPage({
-      components: [OdsTooltip],
+      components: [OdsPopover],
       html,
     });
 
@@ -22,15 +22,15 @@ describe('ods-tooltip rendering', () => {
     it('should be reflected', async() => {
       const dummyValue = 'dummy value';
 
-      await setup(`<ods-tooltip position="${dummyValue}"></ods-tooltip>`);
+      await setup(`<ods-popover position="${dummyValue}"></ods-popover>`);
 
       expect(root?.getAttribute('position')).toBe(dummyValue);
     });
 
     it('should render with expected default value', async() => {
-      await setup('<ods-tooltip></ods-tooltip>');
+      await setup('<ods-popover></ods-popover>');
 
-      expect(root?.getAttribute('position')).toBe(ODS_TOOLTIP_POSITION.top);
+      expect(root?.getAttribute('position')).toBe(ODS_POPOVER_POSITION.top);
     });
   });
 
@@ -38,13 +38,13 @@ describe('ods-tooltip rendering', () => {
     it('should be reflected', async() => {
       const dummyValue = 'dummy value';
 
-      await setup(`<ods-tooltip shadow-dom-trigger-id="${dummyValue}"></ods-tooltip>`);
+      await setup(`<ods-popover shadow-dom-trigger-id="${dummyValue}"></ods-popover>`);
 
       expect(root?.getAttribute('shadow-dom-trigger-id')).toBe(dummyValue);
     });
 
     it('should not be set by default', async() => {
-      await setup('<ods-tooltip></ods-tooltip>');
+      await setup('<ods-popover></ods-popover>');
 
       expect(root?.getAttribute('shadow-dom-trigger-id')).toBeNull();
     });
@@ -54,13 +54,13 @@ describe('ods-tooltip rendering', () => {
     it('should be reflected', async() => {
       const dummyValue = 'dummy value';
 
-      await setup(`<ods-tooltip trigger-id="${dummyValue}"></ods-tooltip>`);
+      await setup(`<ods-popover trigger-id="${dummyValue}"></ods-popover>`);
 
       expect(root?.getAttribute('trigger-id')).toBe(dummyValue);
     });
 
     it('should not be set by default', async() => {
-      await setup('<ods-tooltip></ods-tooltip>');
+      await setup('<ods-popover></ods-popover>');
 
       expect(root?.getAttribute('trigger-id')).toBeNull();
     });
@@ -68,13 +68,13 @@ describe('ods-tooltip rendering', () => {
 
   describe('withArrow', () => {
     it('should be reflected', async() => {
-      await setup('<ods-tooltip with-arrow></ods-tooltip>');
+      await setup('<ods-popover with-arrow></ods-popover>');
 
       expect(root?.getAttribute('with-arrow')).toBe('');
     });
 
     it('should not be set by default', async() => {
-      await setup('<ods-tooltip></ods-tooltip>');
+      await setup('<ods-popover></ods-popover>');
 
       expect(root?.getAttribute('with-arrow')).toBeNull();
     });

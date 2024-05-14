@@ -19,6 +19,7 @@
     bottom: input.$ods-input-actions-padding-right;
     align-items: center;
     justify-content: center;
+    height: auto;
 
     &::part(button) {
       padding: input.$ods-input-actions-padding-right;

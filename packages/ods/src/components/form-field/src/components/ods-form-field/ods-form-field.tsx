@@ -20,14 +20,14 @@ export class OdsFormField {
         <slot></slot>
         <div class='ods-form-field__bottom-bar'>
           {
-            this.error
-            && this.error.length > 0
+            this.error &&
+            this.error.length > 0
               ? <ods-text
-                  class='ods-form-field__bottom-bar__error-message'
-                  preset={ ODS_TEXT_PRESET.span }
-                >
-                  { this.error }
-                </ods-text>
+                class='ods-form-field__bottom-bar__error-message'
+                preset={ ODS_TEXT_PRESET.span }
+              >
+                { this.error }
+              </ods-text>
               : <slot name='helper'></slot>
           }
         </div>

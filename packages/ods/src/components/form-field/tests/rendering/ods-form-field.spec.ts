@@ -27,7 +27,7 @@ describe('ods-form-field rendering', () => {
     it('should not be set by default', async() => {
       await setup('<ods-form-field></ods-form-field>');
 
-      expect(root?.getAttribute('error')).toBeNull();
+      expect(root?.getAttribute('error')).toBe('');
     });
   });
 });

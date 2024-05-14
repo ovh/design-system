@@ -10,7 +10,7 @@ import * as FormFieldStories from './form-field.stories';
 
 # Overview
 
-TODO Some text about the component
+A Form Field component is used to wrap several form components with logic, visual hints and additional styling:
 
 <Canvas of={ FormFieldStories.Default } sourceState='none' />
 
@@ -18,9 +18,9 @@ TODO Some text about the component
 
 <Markdown>{ SpecificationsFormField }</Markdown>
 
-# Style customization [IF RELEVANT]
+# Style customization
 
-You can add your own style on the form-field element using the part `form-field`.
+You can add your own style on the form-field elements using `::part` or by directly updating the slot elements.
 
 Custom form-field css:
 
@@ -32,7 +32,20 @@ Custom form-field css:
 
 <Canvas of={ FormFieldStories.Default } sourceState='shown' />
 
-## [Other attribute]
-<Canvas of={ FormFieldStories.Default } sourceState='shown' />
+## Error
+<Canvas of={ FormFieldStories.Error } sourceState='shown' />
 
-...
+## Label only
+<Canvas of={ FormFieldStories.Label } sourceState='shown' />
+
+## Label & Visual Hint
+<Canvas of={ FormFieldStories.LabelVisualHint } sourceState='shown' />
+
+## Label, Visual Hint & Helper
+<Canvas of={ FormFieldStories.LabelVisualHintHelper } sourceState='shown' />
+
+## Tooltip
+<Canvas of={ FormFieldStories.Tooltip } sourceState='shown' />
+
+## Textarea
+<Canvas of={ FormFieldStories.Textarea } sourceState='shown' />

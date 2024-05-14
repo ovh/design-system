@@ -21,9 +21,8 @@ export default meta;
 export const Demo: StoryObj = {
   render: (args) => html`
 <ods-input name="input-1" style="padding-right: 8px"></ods-input>
-<ods-button icon="menu-ellipsis-vertical"
-            id="trigger-demo"
-            label="Menu">
+<ods-button id="trigger-demo"
+            label="Trigger">
 </ods-button>
 <ods-popover position="${args.position}"
              trigger-id="trigger-demo"

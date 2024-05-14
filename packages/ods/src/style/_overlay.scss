@@ -1,4 +1,7 @@
+$ods-overlay-z-index: 99;
+
 @mixin ods-tooltip() {
+  z-index: $ods-overlay-z-index;
   border-radius: 4px;
   box-shadow: 0 2px 8px 0 rgba(0, 14, 156, 0.20);
   background: var(--ods-color-primary-000);
@@ -9,6 +12,7 @@
 @mixin ods-tooltip-arrow() {
   position: absolute;
   transform: rotate(45deg);
+  z-index: $ods-overlay-z-index;
   background: inherit;
   width: 8px;
   height: 8px;

@@ -20,7 +20,6 @@ export default meta;
 
 export const Demo: StoryObj = {
   render: (args) => html`
-<ods-input name="input-1" style="padding-right: 8px"></ods-input>
 <ods-button id="trigger-demo"
             label="Trigger">
 </ods-button>
@@ -29,7 +28,6 @@ export const Demo: StoryObj = {
              with-arrow="${args.withArrow}">
   ${unsafeHTML(args.content)}
 </ods-popover>
-<ods-input name="input-2" style="padding-left: 8px"></ods-input>
   `,
   argTypes: orderControls({
     content: {

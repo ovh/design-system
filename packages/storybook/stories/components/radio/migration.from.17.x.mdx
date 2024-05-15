@@ -1,0 +1,108 @@
+import { Meta } from '@storybook/blocks';
+import * as RadioStories from './radio.stories';
+
+<Meta of={ RadioStories } name='Migration From 17.x' />
+
+# Radio - migrate from v17 to v18
+----
+
+## Attributes changes Radio
+
+`checked` <img src="https://img.shields.io/badge/updated-00FFFF" />
+
+Has been updated.
+
+You can use the new `isChecked` attribute to obtain the same behavior.
+
+`checking` <img src="https://img.shields.io/badge/removed-FF0000" />
+
+Has been removed.
+
+This design feature has been removed in order to match the new styling of the component.
+
+`disabled` <img src="https://img.shields.io/badge/updated-00FFFF" />
+
+Has been updated.
+
+You can use the new `isDisabled` attribute to obtain the same behavior.
+
+`label` <img src="https://img.shields.io/badge/removed-FF0000" />
+
+Has been removed.
+
+Radio can now use HTML Label. Like in the example.
+
+`afterSave` <img src="https://img.shields.io/badge/removed-FF0000" />
+
+Has been removed.
+
+We don't think this kind of callback was necessary anymore.
+
+`beforeSave` <img src="https://img.shields.io/badge/removed-FF0000" />
+
+Has been removed.
+
+We don't think this kind of callback was necessary anymore.
+
+`save` <img src="https://img.shields.io/badge/removed-FF0000" />
+
+Has been removed.
+
+We don't think this kind of callback was necessary anymore.
+
+## Attributes changes Radio group
+
+`required` <img src="https://img.shields.io/badge/updated-00FFFF" />
+
+Has been updated.
+
+You can use the new `isRequired` attribute to obtain the same behavior.
+
+## Attributes changes Radio button
+
+`color` <img src="https://img.shields.io/badge/removed-FF0000" />
+
+Has been removed.
+
+This design feature has been removed in order to match the new styling of the component.
+
+You can use the css to obtain the same rendering.
+
+`hasFocus` <img src="https://img.shields.io/badge/removed-FF0000" />
+
+Has been removed.
+
+You have now an event for know want the component is focus.
+
+`interactive` <img src="https://img.shields.io/badge/removed-FF0000" />
+
+Has been removed.
+
+This design feature has been removed in order to match the new styling of the component.
+
+`size` <img src="https://img.shields.io/badge/removed-FF0000" />
+
+Has been removed.
+
+You can use the css to obtain the same rendering.
+
+## Migration examples
+
+Disabled radio:
+```html
+<osds-radio disabled></osds-radio>
+
+<!-- is now -->
+
+<ods-radio is-disabled></ods-radio>
+```
+
+Label radio:
+```html
+<osds-radio label="Radio label"></osds-radio>
+
+<!-- is now -->
+
+<ods-radio input-id="migration-label" name="name" value="migration"></ods-radio>
+<label for="migration-label">Radio label</label>
+```

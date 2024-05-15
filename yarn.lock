@@ -3958,6 +3958,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-component-radio@workspace:packages/ods/src/components/radio":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-radio@workspace:packages/ods/src/components/radio"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-component-skeleton@workspace:packages/ods/src/components/skeleton":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-skeleton@workspace:packages/ods/src/components/skeleton"

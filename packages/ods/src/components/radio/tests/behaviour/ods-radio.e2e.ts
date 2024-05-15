@@ -1,0 +1,125 @@
+import type { E2EElement, E2EPage } from '@stencil/core/testing';
+import { newE2EPage } from '@stencil/core/testing';
+
+describe('ods-radio behaviour', () => {
+  let el: E2EElement;
+  let page: E2EPage;
+
+  async function isInputRadioChecked(radio: E2EElement): Promise<boolean> {
+    const input = await radio.find('input[type="radio"]');
+    return input.getProperty('checked');
+  }
+
+  async function setup(content: string, customStyle?: string): Promise<void> {
+    page = await newE2EPage();
+
+    await page.setContent(content);
+    await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
+
+    if (customStyle) {
+      await page.addStyleTag({ content: customStyle });
+    }
+
+    el = await page.find('ods-radio');
+  }
+
+  describe('Methods', () => {
+    describe('method:clear', () => {
+      it('should receive odsClear event', async() => {
+        await setup('<ods-radio value="value" is-checked></ods-radio>');
+        const odsClearSpy = await page.spyOnEvent('odsClear');
+        expect(await isInputRadioChecked(el)).toBe(true);
+        await el.callMethod('clear');
+        await page.waitForChanges();
+
+        expect(await isInputRadioChecked(el)).toBe(false);
+        expect(odsClearSpy).toHaveReceivedEventTimes(1);
+      });
+    });
+  });
+
+  describe('Radio group', () => {
+    async function isInputRadioChecked(radio: E2EElement): Promise<boolean> {
+      const input = await radio.find('input[type="radio"]');
+      return input.getProperty('checked');
+    }
+
+    it('should select only one radio with the same name', async() => {
+      await setup('<ods-radio name="radio-group" value="value1" is-checked></ods-radio><ods-radio name="radio-group" value="value2"></ods-radio><ods-radio name="radio-group" value="value3"></ods-radio>');
+      const radios = await page.findAll('ods-radio');
+      expect(await isInputRadioChecked(radios[0])).toBe(true);
+
+      await radios[2].click();
+
+      expect(await isInputRadioChecked(radios[0])).toBe(false);
+      expect(await isInputRadioChecked(radios[2])).toBe(true);
+    });
+
+    it('should select only one radio with the same name', async() => {
+      await setup(`<ods-radio name="radio-group" value="value1" is-checked></ods-radio><ods-radio name="radio-group" value="value2"></ods-radio><ods-radio name="radio-group" value="value3"></ods-radio>
+
+      <ods-radio name="radio-group2" value="value1"></ods-radio><ods-radio name="radio-group2" value="value2"></ods-radio><ods-radio name="radio-group2" value="value3"></ods-radio>`);
+      const radiosGroup = await page.findAll('ods-radio[name="radio-group"]');
+      const radiosGroup2 = await page.findAll('ods-radio[name="radio-group2"]');
+
+      expect(await isInputRadioChecked(radiosGroup[0])).toBe(true);
+      expect(await isInputRadioChecked(radiosGroup2[0])).toBe(false);
+
+      await radiosGroup[2].click();
+      expect(await isInputRadioChecked(radiosGroup[0])).toBe(false);
+      expect(await isInputRadioChecked(radiosGroup[2])).toBe(true);
+      expect(await isInputRadioChecked(radiosGroup2[2])).toBe(false);
+
+    });
+  });
+
+  describe('Form', () => {
+    it('should get form data with button type submit', async() => {
+      await setup(`<form method="get">
+        <ods-radio input-id="huey-form" name="name" value="huey" is-checked></ods-radio>
+        <ods-radio input-id="dewey-form" name="name" value="dewey"></ods-radio>
+        <ods-radio input-id="louie-form" name="name" value="louie"></ods-radio>
+        <button type="reset">Reset</button>
+        <button type="submit">Submit</button>
+      </form>`);
+      const submitButton = await page.find('button[type="submit"]');
+      await submitButton.click();
+      await page.waitForNetworkIdle();
+      const url = new URL(page.url());
+      expect(url.searchParams.get('name')).toBe('huey');
+    });
+
+    it('should not add the radio to the formData if unchecked', async() => {
+      await setup(`<form method="get">
+        <ods-radio input-id="huey-form" name="name" value="huey"></ods-radio>
+        <ods-radio input-id="dewey-form" name="name" value="dewey"></ods-radio>
+        <ods-radio input-id="louie-form" name="name" value="louie"></ods-radio>
+        <button type="reset">Reset</button>
+        <button type="submit">Submit</button>
+      </form>`);
+      const submitButton = await page.find('button[type="submit"]');
+      await submitButton.click();
+      await page.waitForNetworkIdle();
+      const url = new URL(page.url());
+      expect(url.searchParams.get('name')).toBeNull();
+    });
+
+    it('should reset form with button type reset', async() => {
+      await setup(`<form method="get">
+        <ods-radio input-id="huey-form" name="name" value="huey" is-checked></ods-radio>
+        <ods-radio input-id="dewey-form" name="name" value="dewey"></ods-radio>
+        <ods-radio input-id="louie-form" name="name" value="louie"></ods-radio>
+        <button type="reset">Reset</button>
+        <button type="submit">Submit</button>
+      </form>`);
+      const resetButton = await page.find('button[type="reset"]');
+      await resetButton.click();
+
+      const submitButton = await page.find('button[type="submit"]');
+      await submitButton.click();
+      await page.waitForNetworkIdle();
+      const url = new URL(page.url());
+      expect(url.searchParams.get('name')).toBeNull();
+    });
+  });
+});

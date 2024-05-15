@@ -31,6 +31,7 @@ const componentNames = [
   'progress-bar',
   'form-field',
   'message',
+  'radio',
   //--generator-anchor--
 ];
 

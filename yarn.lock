@@ -3866,6 +3866,7 @@ __metadata:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 "@ovhcloud/ods-cdk-dev@17.2.2, @ovhcloud/ods-cdk-dev@workspace:packages/cdk/dev":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-cdk-dev@workspace:packages/cdk/dev"
@@ -3899,6 +3900,24 @@ __metadata:
 =======
 =======
 =======
+=======
+"@orchidjs/sifter@npm:^1.0.3":
+  version: 1.0.3
+  resolution: "@orchidjs/sifter@npm:1.0.3"
+  dependencies:
+    "@orchidjs/unicode-variants": ^1.0.4
+  checksum: 5925ce6e5babb872beaaeb562634f02befea118bf19676a734070647efee0a7eb591f5f4ae280b6bbb5288c7959eb679e9daf2c42a7d9ba1262e9daff3748958
+  languageName: node
+  linkType: hard
+
+"@orchidjs/unicode-variants@npm:^1.0.4":
+  version: 1.0.4
+  resolution: "@orchidjs/unicode-variants@npm:1.0.4"
+  checksum: a6ad1c66f4e978527ee529086b875bcaa93e23d75a3b894343bd226a2492b1fa2f9faa2a72967e4ab101a5f2c4cf4751b5a6a14086f8a864b35036f178d9aaeb
+  languageName: node
+  linkType: hard
+
+>>>>>>> 326e7fe13 (feat(select): implement component)
 "@ovhcloud/ods-component-badge@workspace:packages/ods/src/components/badge":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-badge@workspace:packages/ods/src/components/badge"
@@ -4066,7 +4085,16 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+<<<<<<< HEAD
 >>>>>>> 6e739da36 (refactor(radio): implementation component)
+=======
+"@ovhcloud/ods-component-select@workspace:packages/ods/src/components/select":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-select@workspace:packages/ods/src/components/select"
+  languageName: unknown
+  linkType: soft
+
+>>>>>>> 326e7fe13 (feat(select): implement component)
 "@ovhcloud/ods-component-skeleton@workspace:packages/ods/src/components/skeleton":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-skeleton@workspace:packages/ods/src/components/skeleton"
@@ -4800,6 +4828,7 @@ __metadata:
     replace-in-file: 7.1.0
     sass: 1.71.0
     stencil-inline-svg: 1.1.0
+    tom-select: 2.3.1
     ts-jest: 29.1.2
     ts-node: 10.9.2
     typedoc: 0.25.11
@@ -21562,6 +21591,16 @@ __metadata:
   version: 1.0.1
   resolution: "toidentifier@npm:1.0.1"
   checksum: 952c29e2a85d7123239b5cfdd889a0dde47ab0497f0913d70588f19c53f7e0b5327c95f4651e413c74b785147f9637b17410ac8c846d5d4a20a5a33eb6dc3a45
+  languageName: node
+  linkType: hard
+
+"tom-select@npm:2.3.1":
+  version: 2.3.1
+  resolution: "tom-select@npm:2.3.1"
+  dependencies:
+    "@orchidjs/sifter": ^1.0.3
+    "@orchidjs/unicode-variants": ^1.0.4
+  checksum: a70242080e29776770d2cf5f9a110ee9a261d8af3d5503d4e720ee17b195f820130f7e9df8e02b10cb0fb96258b0496a956868e800da5104120e22206a59839b
   languageName: node
   linkType: hard
 

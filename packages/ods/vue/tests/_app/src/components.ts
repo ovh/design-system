@@ -33,6 +33,7 @@ const componentNames = [
   'message',
   'radio',
   'checkbox',
+  'select',
   //--generator-anchor--
 ];
 

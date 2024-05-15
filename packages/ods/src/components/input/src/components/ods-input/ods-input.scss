@@ -42,7 +42,6 @@
       }
     }
 
-    /* stylelint-disable no-descending-specificity */
     &__clearable {
       color: var(--ods-color-neutral-600);
 
@@ -72,7 +71,6 @@
         }
       }
     }
-    /* stylelint-enable no-descending-specificity */
 
     &__spinner {
       padding-right: input.$ods-input-actions-padding-right;

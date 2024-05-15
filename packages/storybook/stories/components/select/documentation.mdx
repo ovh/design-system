@@ -1,0 +1,68 @@
+import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import SpecificationsSelect from '@ovhcloud/ods-components/src/components/select/documentation/spec.md?raw';
+import { Banner } from '../../banner';
+import { DocNavigator } from '../../doc-navigator';
+import * as SelectStories from './select.stories';
+import { LINK_ID } from '../../zeroheight';
+
+<Meta of={ SelectStories } name='Documentation' />
+
+<Banner of={ SelectStories } />
+
+# Overview
+
+Select component is used to select one or more items from a list of values:
+
+<Canvas of={ SelectStories.Default } sourceState='none' />
+
+<DocNavigator of={ SelectStories } linkId={ LINK_ID.SELECT } />
+
+<Markdown>{ SpecificationsSelect }</Markdown>
+
+# Style customization
+
+You can add your own style on the select element by adding class on the webcomponent directly.
+
+Custom select css:
+
+<Canvas of={ SelectStories.CustomCSS } sourceState='shown'/>
+
+# Examples
+
+## Default
+
+<Canvas of={ SelectStories.Default } sourceState='shown' />
+
+## Multiple Selection
+
+<Canvas of={ SelectStories.Multiple } sourceState='shown' />
+
+## Custom Renderer
+
+If you want to display something more complex that just a string, you can use your own render functions instead of native elements.
+
+You can customize either:
+- `item`: the currently selected element
+- `option`: an option on the select option list
+
+By default, each render function will receive as argument an object containing the following properties:
+- `text`: the label of the option
+- `value`: the value of the option
+
+If you need more data per option, you can attach a `data-attribute` to each option, the value will be available
+on the render function as well.
+
+Here is an example of the customization of each elements using specific data:
+
+<Canvas of={ SelectStories.CustomRenderer } sourceState='shown' />
+
+## Custom Renderer For Multiple Selection
+
+If you set the property `allow-multiple`, custom option rendering is quite the same as, except that you'll
+have to take into account the selection checkbox that will be injected in the DOM.
+
+As for now, item template is not customizable and will always render as the count of selected items.
+
+Here is the same example as [previously](?path=/docs/ods-components-form-select--documentation#custom-renderer) updated for multiple selection:
+
+<Canvas of={ SelectStories.CustomRendererMultiple } sourceState='shown' />

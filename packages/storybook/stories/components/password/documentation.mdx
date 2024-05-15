@@ -3,6 +3,7 @@ import SpecificationsPassword from '@ovhcloud/ods-components/src/components/pass
 import { Banner } from '../../banner';
 import { DocNavigator } from '../../doc-navigator';
 import * as PasswordStories from './password.stories';
+import { LINK_ID } from '../../zeroheight';
 
 <Meta of={ PasswordStories } name='Documentation' />
 
@@ -14,7 +15,7 @@ Password component is an input field for entering a password that can be hidden 
 
 <Canvas of={ PasswordStories.Default } sourceState='none' />
 
-<DocNavigator of={ PasswordStories } />
+<DocNavigator of={ PasswordStories } linkId={ LINK_ID.PASSWORD } />
 
 <Markdown>{ SpecificationsPassword }</Markdown>
 

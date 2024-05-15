@@ -3,6 +3,7 @@ import SpecificationsTag from '@ovhcloud/ods-components/src/components/tag/docum
 import { Banner } from '../../banner';
 import { DocNavigator } from '../../doc-navigator';
 import * as TagStories from './tag.stories';
+import { LINK_ID } from '../../zeroheight';
 
 <Meta of={ TagStories } name='Documentation' />
 
@@ -14,7 +15,7 @@ Tag show concise metadata or the current status for an item, in a compact format
 
 <Canvas of={ TagStories.Default } sourceState='none' />
 
-<DocNavigator of={ TagStories } />
+<DocNavigator of={ TagStories } linkId={ LINK_ID.TAG } />
 
 <Markdown>{ SpecificationsTag }</Markdown>
 

@@ -3,6 +3,7 @@ import SpecificationsSpinner from '@ovhcloud/ods-components/src/components/spinn
 import { Banner } from '../../banner';
 import { DocNavigator } from '../../doc-navigator';
 import * as SpinnerStories from './spinner.stories';
+import { LINK_ID } from '../../zeroheight';
 
 <Meta of={ SpinnerStories } name='Documentation' />
 
@@ -14,7 +15,7 @@ A visual indicator that a process is happening in the background but the interfa
 
 <Canvas of={ SpinnerStories.Default } sourceState='none' />
 
-<DocNavigator of={ SpinnerStories } />
+<DocNavigator of={ SpinnerStories } linkId={ LINK_ID.SPINNER } />
 
 <Markdown>{ SpecificationsSpinner }</Markdown>
 

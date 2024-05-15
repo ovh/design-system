@@ -3,6 +3,7 @@ import SpecificationsClipboard from '@ovhcloud/ods-components/src/components/cli
 import { Banner } from '../../banner';
 import { DocNavigator } from '../../doc-navigator';
 import * as ClipboardStories from './clipboard.stories';
+import { LINK_ID } from '../../zeroheight';
 
 <Meta of={ ClipboardStories } name='Documentation' />
 
@@ -14,7 +15,7 @@ Clipboard component allows user to preview and copy crucial information to its c
 
 <Canvas of={ ClipboardStories.Default } sourceState='none' />
 
-<DocNavigator of={ ClipboardStories } />
+<DocNavigator of={ ClipboardStories } linkId={ LINK_ID.CLIPBOARD } />
 
 <Markdown>{ SpecificationsClipboard }</Markdown>
 

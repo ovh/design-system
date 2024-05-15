@@ -3,6 +3,7 @@ import SpecificationsTable from '@ovhcloud/ods-components/src/components/table/d
 import { Banner } from '../../banner';
 import { DocNavigator } from '../../doc-navigator';
 import * as TableStories from './table.stories';
+import { LINK_ID } from '../../zeroheight';
 
 <Meta of={ TableStories } name='Documentation' />
 
@@ -14,7 +15,7 @@ Table is a wrapper for displaying tables:
 
 <Canvas of={ TableStories.Default } sourceState='none' />
 
-<DocNavigator of={ TableStories } />
+<DocNavigator of={ TableStories } linkId={ LINK_ID.TABLE } />
 
 <Markdown>{ SpecificationsTable }</Markdown>
 

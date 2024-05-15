@@ -3,6 +3,7 @@ import SpecificationsToggle from '@ovhcloud/ods-components/src/components/toggle
 import { Banner } from '../../banner';
 import { DocNavigator } from '../../doc-navigator';
 import * as ToggleStories from './toggle.stories';
+import { LINK_ID } from '../../zeroheight';
 
 <Meta of={ ToggleStories } name='Documentation' />
 
@@ -14,7 +15,7 @@ Toggle component is used to allow the user to switch between two states, on and 
 
 <Canvas of={ ToggleStories.Default } sourceState='none' />
 
-<DocNavigator of={ ToggleStories } />
+<DocNavigator of={ ToggleStories } linkId={ LINK_ID.TOGGLE } />
 
 <Markdown>{ SpecificationsToggle }</Markdown>
 

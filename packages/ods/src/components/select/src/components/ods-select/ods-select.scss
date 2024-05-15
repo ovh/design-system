@@ -1,0 +1,212 @@
+@use '../../../../../style/checkbox';
+@use '../../../../../style/focus';
+@use '../../../../../style/icon';
+@use '../../../../../style/input';
+@use '../../../../../style/overlay';
+@import '~tom-select/dist/css/tom-select.bootstrap4.min.css';
+
+$select-background-color: #fff;
+$select-caret-size: 24px;
+$select-base-padding: 8px;
+$select-padding-right: $select-caret-size + ($select-base-padding * 2);
+
+@mixin ods-select-item() {
+  color: var(--ods-color-text);
+}
+
+@mixin ods-select-placeholder() {
+  color: var(--ods-color-neutral-600);
+}
+
+:host(.ods-select) {
+  .ts-control {
+    border: solid 1px var(--ods-color-neutral-300);
+    border-radius: var(--ods-border-radius-sm);
+    background-color: $select-background-color;
+    cursor: pointer !important;
+    padding: 0 $select-padding-right 0 $select-base-padding !important;
+    height: input.$ods-input-input-height;
+    min-height: auto;
+
+    .item {
+      @include ods-select-item();
+    }
+  }
+
+  .disabled {
+    .ts-control {
+      @include input.ods-input-disabled();
+
+      opacity: 1;
+      cursor: not-allowed !important;
+
+      * {
+        cursor: not-allowed !important;
+        color: inherit !important;
+      }
+    }
+  }
+
+  .dropdown-active.focus {
+    .ts-control {
+      box-shadow: none;
+    }
+  }
+
+  :not(.dropdown-active).focus {
+    .ts-control {
+      @include focus.ods-focus();
+
+      box-shadow: none;
+    }
+  }
+
+  .ts-dropdown {
+    z-index: overlay.$ods-overlay-z-index - 1;
+    margin: 0;
+    box-shadow: none;
+
+    &.ods-select__dropdown--bottom {
+      border-radius: 0 0 var(--ods-border-radius-sm) var(--ods-border-radius-sm);
+    }
+
+    &.ods-select__dropdown--top {
+      border-radius: var(--ods-border-radius-sm) var(--ods-border-radius-sm) 0 0;
+    }
+  }
+
+  .ts-dropdown-content {
+    padding: 0;
+
+    .option {
+      display: flex;
+      align-items: center;
+      padding: 0 8px;
+      min-height: input.$ods-input-input-height;
+      color: var(--ods-color-text);
+
+      &:not([data-selectable]) {
+        @include input.ods-input-disabled();
+
+        opacity: 1;
+      }
+
+      &.active,
+      &:hover {
+        background-color: var(--ods-color-primary-100);
+      }
+    }
+
+    .optgroup {
+      &::before {
+        margin: 0;
+      }
+
+      &[data-disabled] {
+        @include input.ods-input-disabled();
+
+        opacity: 1;
+      }
+
+      .optgroup-header {
+        display: flex;
+        align-items: center;
+        background-color: inherit;
+        padding: 0 8px;
+        min-height: input.$ods-input-input-height;
+        color: var(--ods-color-heading);
+        font-size: 1rem;
+        font-weight: 600;
+      }
+
+      .option {
+        padding-left: 24px;
+      }
+    }
+
+    .tomselect-checkbox {
+      @include checkbox.ods-checkbox();
+
+      margin-right: 8px;
+    }
+  }
+
+  .ts-placeholder {
+    @include ods-select-placeholder();
+  }
+
+  .plugin-merge_selected_items {
+    .ts-merged-items {
+      @include ods-select-item();
+
+      margin: 0;
+      background: $select-background-color;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .ts-merged-items-placeholder {
+      @include ods-select-placeholder();
+    }
+  }
+
+  .ts-wrapper {
+    &.multi,
+    &.single {
+      .ts-control {
+        &::after {
+          @include icon.ods-icon();
+
+          position: absolute;
+          top: 50%;
+          right: $select-base-padding;
+          transform: translateY(-50%);
+          margin: 0;
+          border: none;
+          background-color: inherit;
+          width: auto;
+          height: auto;
+          color: var(--ods-color-primary-500);
+          font-size: $select-caret-size;
+          content: '\e916';
+        }
+      }
+
+      &.dropdown-active {
+        .ts-control {
+          &::after {
+            content: '\e919';
+          }
+        }
+      }
+
+      &.disabled {
+        .ts-control {
+          &::after {
+            color: var(--ods-color-neutral-600);
+          }
+        }
+
+        .ts-merged-items {
+          @include input.ods-input-disabled();
+        }
+      }
+    }
+
+    &.multi {
+      &.plugin-placeholder {
+        .ts-placeholder {
+          // As we use the merge plugin, we enforce the placeholder from other plugin to be hidden
+          display: none !important;
+        }
+      }
+    }
+  }
+}
+
+// Double class to give more weight than base override
+:host(.ods-select.ods-select--error) {
+  .ts-control {
+    @include input.ods-input-error();
+  }
+}

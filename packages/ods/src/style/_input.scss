@@ -19,14 +19,18 @@ $ods-input-input-padding-right: calc($ods-input-actions-button-width + $ods-inpu
   }
 
   &:disabled {
-    background-color: var(--ods-color-neutral-100);
-    cursor: not-allowed;
-    color: var(--ods-form-element-foreground-color-disabled);
+    @include ods-input-disabled();
   }
 
   &:read-only {
     color: var(--ods-form-element-foreground-color-readonly);
   }
+}
+
+@mixin ods-input-disabled() {
+  background-color: var(--ods-color-neutral-100);
+  cursor: not-allowed;
+  color: var(--ods-form-element-foreground-color-disabled);
 }
 
 @mixin ods-input-error() {

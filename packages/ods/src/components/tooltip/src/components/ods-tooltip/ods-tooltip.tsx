@@ -37,6 +37,9 @@ export class OdsTooltip {
       arrow: this.arrowElement,
       popper: this.el,
       trigger: this.triggerElement,
+    }, {
+      offset: 8,
+      shift: { padding: 5 },
     });
 
     this.odsTooltipShow.emit();

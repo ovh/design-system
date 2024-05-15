@@ -8,7 +8,7 @@ jest.mock('@floating-ui/dom', () => ({
 }));
 
 import { arrow, autoUpdate, computePosition, flip, offset, shift } from '@floating-ui/dom';
-import { findTriggerElement, hideOverlay, showOverlay } from '../../src/utils/overlay';
+import { findTriggerElement, getElementPosition, hideOverlay, showOverlay } from '../../src/utils/overlay';
 
 describe('utils overlay', () => {
   beforeEach(jest.clearAllMocks);
@@ -61,6 +61,37 @@ describe('utils overlay', () => {
     });
   });
 
+  describe('getElementPosition', () => {
+    it('should throw if no trigger element', () => {
+      expect(async() => {
+        await getElementPosition('top', {
+          popper: document.createElement('div'),
+          trigger: undefined,
+        });
+      }).rejects.toThrow();
+    });
+
+    it('should call computePosition with expected arguments', async() => {
+      const dummyDomElement = {
+        popper: document.createElement('div'),
+        trigger: document.createElement('div'),
+      };
+      const dummyPosition = 'top';
+
+      await getElementPosition(dummyPosition, dummyDomElement);
+
+      expect(computePosition).toHaveBeenCalledTimes(1);
+      expect(computePosition).toHaveBeenCalledWith(dummyDomElement.trigger, dummyDomElement.popper, {
+        middleware: [
+          'flip middleware',
+          'offset middleware',
+          'shift middleware',
+        ],
+        placement: dummyPosition,
+      });
+    });
+  });
+
   describe('hideOverlay', () => {
     it('should set popper display style to none', async() => {
       const dummyPopperElement = document.createElement('div');
@@ -107,6 +138,10 @@ describe('utils overlay', () => {
     });
 
     describe('update', () => {
+      const dummyOption = {
+        offset: 8,
+        shift: { padding: 5 },
+      };
       const dummyPosition = 'top';
       const expectedPopperX = 33;
       const expectedPopperY = 42;
@@ -127,7 +162,7 @@ describe('utils overlay', () => {
           y: expectedPopperY,
         });
 
-        showOverlay(dummyPosition, dummyDom);
+        showOverlay(dummyPosition, dummyDom, dummyOption);
 
         expect(autoUpdate).toHaveBeenCalledWith(dummyTrigger, dummyPopper, expect.any(Function));
         expect(computePosition).toHaveBeenCalledWith(dummyTrigger, dummyPopper, {
@@ -139,8 +174,8 @@ describe('utils overlay', () => {
           placement: dummyPosition,
         });
         expect(flip).toHaveBeenCalled();
-        expect(offset).toHaveBeenCalledWith(expect.any(Number));
-        expect(shift).toHaveBeenCalledWith({ padding: expect.any(Number) });
+        expect(offset).toHaveBeenCalledWith(dummyOption.offset);
+        expect(shift).toHaveBeenCalledWith(dummyOption.shift);
 
         // Need to wait for the autoUpdate async callback to end
         await new Promise(process.nextTick);
@@ -173,7 +208,7 @@ describe('utils overlay', () => {
           y: expectedPopperY,
         });
 
-        showOverlay(dummyPosition, dummyDom);
+        showOverlay(dummyPosition, dummyDom, dummyOption);
 
         expect(autoUpdate).toHaveBeenCalledWith(dummyTrigger, dummyPopper, expect.any(Function));
         expect(computePosition).toHaveBeenCalledWith(dummyTrigger, dummyPopper, {
@@ -187,8 +222,8 @@ describe('utils overlay', () => {
         });
         expect(arrow).toHaveBeenCalledWith({ element: dummyArrow });
         expect(flip).toHaveBeenCalled();
-        expect(offset).toHaveBeenCalledWith(expect.any(Number));
-        expect(shift).toHaveBeenCalledWith({ padding: expect.any(Number) });
+        expect(offset).toHaveBeenCalledWith(dummyOption.offset);
+        expect(shift).toHaveBeenCalledWith(dummyOption.shift);
 
         // Need to wait for the autoUpdate async callback to end
         await new Promise(process.nextTick);

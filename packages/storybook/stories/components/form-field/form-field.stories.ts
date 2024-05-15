@@ -77,14 +77,6 @@ export const Default: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
 <ods-form-field>
-  <ods-text slot="label" preset='label'>
-    Description
-  </ods-text>
-
-  <ods-text slot="visual-hint" preset='caption'>
-    02/11/1999
-  </ods-text>
-
   <ods-input type="text" value="Hello, ODS!" clearable></ods-input>
 </ods-form-field>`,
 };
@@ -122,19 +114,14 @@ export const CustomCSS: StoryObj = {
     02/11/1999
   </ods-text>
 
-  <ods-input type="text" class="my-input" value="Hello, ODS!" clearable></ods-input>
+  <ods-input type="text" value="Hello, ODS!" clearable></ods-input>
 </ods-form-field>
 
 <style>
   .my-label {
     transform: skew(50deg, -10deg);
-  }
-  .my-label::part(text) {
     background: yellow;
     color: red;
-  }
-  .my-input::part(input) {
-    width: 500px;
   }
 </style>
   `,

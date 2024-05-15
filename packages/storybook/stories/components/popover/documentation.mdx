@@ -3,6 +3,7 @@ import SpecificationsPopover from '@ovhcloud/ods-components/src/components/popov
 import { Banner } from '../../banner';
 import { DocNavigator } from '../../doc-navigator';
 import * as PopoverStories from './popover.stories';
+import { LINK_ID } from '../../zeroheight';
 
 <Meta of={ PopoverStories } name='Documentation' />
 
@@ -14,7 +15,7 @@ Popover component is triggered by click and is used to provide additional inform
 
 <Canvas of={ PopoverStories.Overview } sourceState='none' />
 
-<DocNavigator of={ PopoverStories } />
+<DocNavigator of={ PopoverStories } linkId={ LINK_ID.POPOVER } />
 
 <Markdown>{ SpecificationsPopover }</Markdown>
 

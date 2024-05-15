@@ -1,0 +1,126 @@
+import { Meta } from '@storybook/blocks';
+import * as SelectStories from './select.stories';
+
+<Meta of={ SelectStories } name='Migration From 17.x' />
+
+# Select - migrate from v17 to v18
+----
+
+## Usage changes
+
+Select component has been entirely reworked, there is now only one component `ods-select`
+(no more `osds-select-option` and `osds-select-group`).
+
+This component expects the same native children as a classic `select` element (option, optgroup).
+
+Here is an example of the previous declaration:
+
+```html
+<osds-select>
+  <span slot="placeholder">Select a country</span>
+  <osds-select-group>Europe</osds-select-group>
+  <osds-select-option value="fr">France</osds-select-option>
+  <osds-select-option value="it">Italy</osds-select-option>
+  <osds-select-option value="de">Germany</osds-select-option>
+</osds-select>
+```
+
+The same result would now be achieved using:
+
+```html
+<ods-select placeholder="Select a country">
+  <optgroup label="Europe">
+    <option value="fr">France</option>
+    <option value="it">Italy</option>
+    <option value="de">Germany</option>
+  </optgroup>
+</ods-select>
+```
+
+## Attributes changes
+
+`allowMultiple` <img src="https://img.shields.io/badge/new-008000" />
+
+New attribute (optional).
+
+Set this to true to allow multiple selection in the select.
+
+`customRenderer` <img src="https://img.shields.io/badge/new-008000" />
+
+New attribute (optional).
+
+You can use this to customize the rendering of some of the select elements.
+
+See [this example](?path=/docs/ods-components-form-select--documentation#custom-renderer) for more details.
+
+`color ` <img src="https://img.shields.io/badge/removed-FF0000" />
+
+Has been removed.
+
+Form components does not provide color variant anymore.
+You can use custom css if you need to customize the component. // TODO
+
+`disabled` <img src="https://img.shields.io/badge/updated-00FFFF" />
+
+Has been updated.
+
+You can use the new `isDisabled` attribute to obtain the same behavior.
+
+`error` <img src="https://img.shields.io/badge/updated-00FFFF" />
+
+Has been updated.
+
+You can use the new `hasError` attribute to obtain the same behavior.
+
+`inline` <img src="https://img.shields.io/badge/removed-FF0000" />
+
+Has been removed.
+
+TODO
+Select is now `??????` by default.
+You can add some style directly on the component if you want to override that. // TODO
+
+
+`multipleSelectionLabel` <img src="https://img.shields.io/badge/new-008000" />
+
+New attribute (optional).
+
+Define the label displayed before the selection count in the select.
+Only relevant if `allowMultiple` is set to true.
+
+`opened ` <img src="https://img.shields.io/badge/removed-FF0000" />
+
+Has been removed.
+
+TBD do we keep a method or not?
+
+`placeholder` <img src="https://img.shields.io/badge/new-008000" />
+
+New attribute (optional).
+
+Use this if you want to display a placeholder text when no value is yet selected.
+
+`required` <img src="https://img.shields.io/badge/updated-00FFFF" />
+
+Has been updated.
+
+You can use the new `isRequired` attribute to obtain the same behavior.
+
+`size` <img src="https://img.shields.io/badge/removed-FF0000" />
+
+Has been removed.
+
+This attribute was not used, as there was only one single possible value.
+
+## Migration examples
+
+TODO
+
+Without dummy:
+```html
+<osds-dummy dummy></osds-dummy>
+
+<!-- is now -->
+
+<ods-dummy></ods-dummy>
+```

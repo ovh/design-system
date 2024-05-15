@@ -29,3 +29,4 @@ export * from './password/src';
 export * from './popover/src';
 export * from './progress-bar/src';
 export * from './form-field/src';
+export * from './select/src';

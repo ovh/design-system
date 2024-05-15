@@ -30,6 +30,7 @@ const componentNames = [
   'popover',
   'progress-bar',
   'form-field',
+  'select',
   //--generator-anchor--
 ];
 

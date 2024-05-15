@@ -1,9 +1,13 @@
-import { arrow, autoUpdate, computePosition, flip, offset, shift } from '@floating-ui/dom';
+import { type ComputePositionReturn, type OffsetOptions, type ShiftOptions, arrow, autoUpdate, computePosition, flip, offset, shift } from '@floating-ui/dom';
 
 type DomElement = {
   arrow?: HTMLElement,
   popper: HTMLElement,
   trigger: HTMLElement | null | undefined,
+}
+type MiddlewareOption = {
+  offset?: OffsetOptions,
+  shift?: ShiftOptions,
 }
 
 enum ODS_OVERLAY_POSITION {
@@ -47,37 +51,15 @@ function findTriggerElement(triggerId: string, shadowDomTriggerId?: string): HTM
   return hostElement;
 }
 
-function hideOverlay(popperElement: HTMLElement, cleanUpCallback?: () => void): void {
-  popperElement.style.display = 'none';
-
-  if (cleanUpCallback) {
-    cleanUpCallback();
-  }
-}
-
-function showOverlay(position: OdsOverlayPosition, domElement: DomElement): () => void {
+async function getElementPosition(position: OdsOverlayPosition, domElement: DomElement, option?: MiddlewareOption): Promise<ComputePositionReturn> {
   if (!domElement.trigger) {
-    return () => {};
-  }
-
-  domElement.popper.style.display = 'block';
-
-  return autoUpdate(
-    domElement.trigger,
-    domElement.popper,
-    () => update(position, domElement),
-  );
-}
-
-async function update(position: OdsOverlayPosition, domElement: DomElement): Promise<void> {
-  if (!domElement.trigger) {
-    return;
+    throw new Error('No trigger element passed, unable to compute the position');
   }
 
   const middlewares = [
     flip(),
-    offset(8),
-    shift({ padding: 5 }),
+    offset(option?.offset || 0),
+    shift(option?.shift),
   ];
 
   if (domElement.arrow) {
@@ -87,35 +69,62 @@ async function update(position: OdsOverlayPosition, domElement: DomElement): Pro
   return computePosition(domElement.trigger, domElement.popper, {
     middleware: middlewares,
     placement: position,
-  }).then(({ x, y, placement, middlewareData }) => {
-    Object.assign(domElement.popper.style, {
-      left: `${x}px`,
-      top: `${y}px`,
-    });
-
-    if (!!domElement.arrow && middlewareData.arrow) {
-      const arrowData = middlewareData.arrow;
-      const staticSide = {
-        bottom: 'top',
-        left: 'right',
-        right: 'left',
-        top: 'bottom',
-      }[placement.split('-')[0]] || '';
-
-      Object.assign(domElement.arrow.style, {
-        bottom: '',
-        left: arrowData?.x ? `${arrowData.x}px` : '' ,
-        right: '',
-        top: arrowData?.y ? `${arrowData.y}px` : '',
-        // eslint-disable-next-line sort-keys
-        [staticSide]: '-4px', // half of arrow css width/height
-      });
-    }
   });
+}
+
+function hideOverlay(popperElement: HTMLElement, cleanUpCallback?: () => void): void {
+  popperElement.style.display = 'none';
+
+  if (cleanUpCallback) {
+    cleanUpCallback();
+  }
+}
+
+function showOverlay(position: OdsOverlayPosition, domElement: DomElement, option?: MiddlewareOption): () => void {
+  if (!domElement.trigger) {
+    return () => {};
+  }
+
+  domElement.popper.style.display = 'block';
+
+  return autoUpdate(
+    domElement.trigger,
+    domElement.popper,
+    () => update(position, domElement, option),
+  );
+}
+
+async function update(position: OdsOverlayPosition, domElement: DomElement, option?: MiddlewareOption): Promise<void> {
+  const { x, y, placement, middlewareData } = await getElementPosition(position, domElement, option);
+
+  Object.assign(domElement.popper.style, {
+    left: `${x}px`,
+    top: `${y}px`,
+  });
+
+  if (!!domElement.arrow && middlewareData.arrow) {
+    const arrowData = middlewareData.arrow;
+    const staticSide = {
+      bottom: 'top',
+      left: 'right',
+      right: 'left',
+      top: 'bottom',
+    }[placement.split('-')[0]] || '';
+
+    Object.assign(domElement.arrow.style, {
+      bottom: '',
+      left: arrowData?.x ? `${arrowData.x}px` : '' ,
+      right: '',
+      top: arrowData?.y ? `${arrowData.y}px` : '',
+      // eslint-disable-next-line sort-keys
+      [staticSide]: '-4px', // half of arrow css width/height
+    });
+  }
 }
 
 export {
   findTriggerElement,
+  getElementPosition,
   hideOverlay,
   ODS_OVERLAY_POSITION,
   ODS_OVERLAY_POSITIONS,

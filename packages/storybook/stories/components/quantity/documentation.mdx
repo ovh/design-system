@@ -3,6 +3,7 @@ import SpecificationsQuantity from '@ovhcloud/ods-components/src/components/quan
 import { Banner } from '../../banner';
 import { DocNavigator } from '../../doc-navigator';
 import * as QuantityStories from './quantity.stories';
+import { LINK_ID } from '../../zeroheight';
 
 <Meta of={ QuantityStories } name='Documentation' />
 
@@ -14,7 +15,7 @@ Quantity is a component used to enter and modify a numeric value in a responsive
 
 <Canvas of={ QuantityStories.Default } sourceState='none' />
 
-<DocNavigator of={ QuantityStories } />
+<DocNavigator of={ QuantityStories } linkId={ LINK_ID.QUANTITY } />
 
 <Markdown>{ SpecificationsQuantity }</Markdown>
 

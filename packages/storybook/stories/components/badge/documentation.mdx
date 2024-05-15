@@ -3,6 +3,7 @@ import SpecificationsBadge from '@ovhcloud/ods-components/src/components/badge/d
 import { Banner } from '../../banner';
 import { DocNavigator } from '../../doc-navigator';
 import * as BadgeStories from './badge.stories';
+import { LINK_ID } from '../../zeroheight';
 
 <Meta of={ BadgeStories } name='Documentation' />
 
@@ -14,7 +15,7 @@ Badge show concise metadata or the current status for an item, in a compact form
 
 <Canvas of={ BadgeStories.Default } sourceState='none' />
 
-<DocNavigator of={ BadgeStories } />
+<DocNavigator of={ BadgeStories } linkId={ LINK_ID.BADGE } />
 
 <Markdown>{ SpecificationsBadge }</Markdown>
 

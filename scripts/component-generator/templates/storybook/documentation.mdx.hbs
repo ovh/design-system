@@ -3,6 +3,7 @@ import Specifications{{> ComponentName }} from '@ovhcloud/ods-{{> component-dir}
 import { Banner } from '../../banner';
 import { DocNavigator } from '../../doc-navigator';
 import * as {{> ComponentName }}Stories from './{{> component-name }}.stories';
+import { LINK_ID } from '../../zeroheight';
 
 <Meta of={ {{> ComponentName }}Stories } name='Documentation' />
 
@@ -14,7 +15,7 @@ TODO Some text about the component
 
 <Canvas of={ {{> ComponentName }}Stories.Default } sourceState='none' />
 
-<DocNavigator of={ {{> ComponentName }}Stories } />
+<DocNavigator of={ {{> ComponentName }}Stories } linkId={ LINK_ID.{{> COMPONENT_NAME }} } />
 
 <Markdown>{ Specifications{{> ComponentName }} }</Markdown>
 

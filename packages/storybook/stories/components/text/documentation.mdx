@@ -3,6 +3,7 @@ import SpecificationsText from '@ovhcloud/ods-components/src/components/text/doc
 import { Banner } from '../../banner';
 import { DocNavigator } from '../../doc-navigator';
 import * as TextStories from './text.stories';
+import { LINK_ID } from '../../zeroheight';
 
 <Meta of={ TextStories } name='Documentation' />
 
@@ -14,7 +15,7 @@ The text component is used to display text with a specific font & style.
 
 <Canvas of={ TextStories.Default } sourceState='none' />
 
-<DocNavigator of={ TextStories } />
+<DocNavigator of={ TextStories } linkId={ LINK_ID.TEXT } />
 
 <Markdown> { SpecificationsText } </Markdown>
 

@@ -3,6 +3,7 @@ import SpecificationsTooltip from '@ovhcloud/ods-components/src/components/toolt
 import { Banner } from '../../banner';
 import { DocNavigator } from '../../doc-navigator';
 import * as TooltipStories from './tooltip.stories';
+import { LINK_ID } from '../../zeroheight';
 
 <Meta of={ TooltipStories } name='Documentation' />
 
@@ -14,7 +15,7 @@ Tooltip component is used to display contextual information when the user hovers
 
 <Canvas of={ TooltipStories.Overview } sourceState='none' />
 
-<DocNavigator of={ TooltipStories } />
+<DocNavigator of={ TooltipStories } linkId={ LINK_ID.TOOLTIP } />
 
 <Markdown> { SpecificationsTooltip } </Markdown>
 

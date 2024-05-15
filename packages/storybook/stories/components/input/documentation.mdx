@@ -3,6 +3,7 @@ import SpecificationsInput from '@ovhcloud/ods-components/src/components/input/d
 import { Banner } from '../../banner';
 import { DocNavigator } from '../../doc-navigator';
 import * as InputStories from './input.stories';
+import { LINK_ID } from '../../zeroheight';
 
 <Meta of={ InputStories } name='Documentation' />
 
@@ -14,7 +15,7 @@ Input component is an input field where users can type into:
 
 <Canvas of={ InputStories.Default } sourceState='none' />
 
-<DocNavigator of={ InputStories } />
+<DocNavigator of={ InputStories } linkId={ LINK_ID.INPUT } />
 
 <Markdown> { SpecificationsInput } </Markdown>
 

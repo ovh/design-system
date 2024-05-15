@@ -3,6 +3,7 @@ import SpecificationsCode from '@ovhcloud/ods-components/src/components/code/doc
 import { Banner } from '../../banner';
 import { DocNavigator } from '../../doc-navigator';
 import * as CodeStories from './code.stories';
+import { LINK_ID } from '../../zeroheight';
 
 <Meta of={ CodeStories } name='Documentation' />
 
@@ -14,7 +15,7 @@ Code component highlights strings or small blocks of code so it makes them easie
 
 <Canvas of={ CodeStories.Default } sourceState='none' />
 
-<DocNavigator of={ CodeStories } />
+<DocNavigator of={ CodeStories } linkId={ LINK_ID.CODE } />
 
 <Markdown>{ SpecificationsCode }</Markdown>
 

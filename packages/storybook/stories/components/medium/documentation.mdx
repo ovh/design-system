@@ -3,6 +3,7 @@ import SpecificationsMedium from '@ovhcloud/ods-components/src/components/medium
 import { Banner } from '../../banner';
 import { DocNavigator } from '../../doc-navigator';
 import * as MediumStories from './medium.stories';
+import { LINK_ID } from '../../zeroheight';
 
 <Meta of={ MediumStories } name='Documentation' />
 
@@ -14,7 +15,7 @@ Medium is a wrapper for displaying assets such as images:
 
 <Canvas of={ MediumStories.Default } sourceState='none' />
 
-<DocNavigator of={ MediumStories } />
+<DocNavigator of={ MediumStories } linkId={ LINK_ID.MEDIUM } />
 
 <Markdown>{ SpecificationsMedium }</Markdown>
 

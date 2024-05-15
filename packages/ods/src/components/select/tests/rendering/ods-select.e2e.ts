@@ -1,0 +1,131 @@
+import { type E2EElement, type E2EPage, newE2EPage } from '@stencil/core/testing';
+import { type OdsSelect } from '../../src/';
+
+describe('ods-select rendering', () => {
+  let el: E2EElement;
+  let innerSelect: HTMLSelectElement;
+  let page: E2EPage;
+  let selectComponent: HTMLElement;
+
+  async function setup(content: string, customStyle?: string): Promise<void> {
+    page = await newE2EPage();
+
+    await page.setContent(content);
+    await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
+
+    if (customStyle) {
+      await page.addStyleTag({ content: customStyle });
+    }
+
+    el = await page.find('ods-select');
+    innerSelect = el.shadowRoot!.querySelector('select')!;
+    selectComponent = el.shadowRoot!.querySelector('.ts-wrapper')!;
+  }
+
+  it('should render the web component', async() => {
+    await setup('<ods-select><option value="1">Value 1</option></ods-select>');
+
+    expect(el.shadowRoot).not.toBeNull();
+    expect(innerSelect).not.toBeNull();
+    expect(selectComponent).not.toBeNull();
+  });
+
+  it('should move the slot content to the inner select', async() => {
+    await setup('<ods-select><option value="1">1</option></ods-select>');
+
+    expect(innerSelect.innerHTML).toBe('<option value="1">1</option><option value=""></option>');
+  });
+
+  it('should render a placeholder', async() => {
+    const dummyPlaceholder = 'dummy placeholder';
+    await setup(`<ods-select placeholder="${dummyPlaceholder}"><option value="1">Value 1</option></ods-select>`);
+
+    expect(await page.evaluate(() => {
+      return document.querySelector('ods-select')?.shadowRoot?.querySelector<HTMLElement>('.ts-control')?.innerText;
+    })).toBe(dummyPlaceholder);
+  });
+
+  it('should render with an option disabled', async() => {
+    await setup('<ods-select><option value="1">Value 1</option><option disabled value="2">Value 2</option></ods-select>');
+    await el.callMethod('open');
+    await page.waitForChanges();
+
+    const disabledStates = await page.evaluate(() => {
+      const options = document.querySelector('ods-select')?.shadowRoot?.querySelectorAll<HTMLElement>('.ts-wrapper .option');
+      return (Array.from(options || [])).map((option) => option.getAttribute('aria-disabled'));
+    }) || [];
+
+    expect(disabledStates[0]).toBeNull();
+    expect(disabledStates[1]).toBe('true');
+  });
+
+  it('should render with an optgroup', async() => {
+    const dummyLabel = 'dummy optgroup';
+    await setup(`<ods-select><optgroup label="${dummyLabel}"><option value="1">1</option></optgroup></ods-select>`);
+    await el.callMethod('open');
+    await page.waitForChanges();
+
+    expect(await page.evaluate(() => {
+      return !!document.querySelector('ods-select')?.shadowRoot?.querySelector('.ts-wrapper .optgroup');
+    })).toBe(true);
+    expect(await page.evaluate(() => {
+      return document.querySelector('ods-select')?.shadowRoot?.querySelector<HTMLElement>('.ts-wrapper .optgroup-header')?.innerText;
+    })).toBe(dummyLabel);
+  });
+
+  it('should render with a whole optgroup disabled', async() => {
+    await setup('<ods-select><optgroup disabled label="group"><option value="1">1</option></optgroup></ods-select>');
+    await el.callMethod('open');
+    await page.waitForChanges();
+
+    expect(await page.evaluate(() => {
+      return document.querySelector('ods-select')?.shadowRoot?.querySelector('.ts-wrapper .optgroup')?.hasAttribute('data-disabled');
+    })).toBe(true);
+  });
+
+  it('should render with checkboxes if multiple', async() => {
+    await setup('<ods-select allow-multiple><option value="1">1</option></ods-select>');
+    await el.callMethod('open');
+    await page.waitForChanges();
+
+    expect(await page.evaluate(() => {
+      return !!document.querySelector('ods-select')?.shadowRoot?.querySelector('.ts-wrapper .option [type="checkbox"]');
+    })).toBe(true);
+  });
+
+  it('should render with a custom renderer', async() => {
+    await setup('<ods-select></ods-select>');
+    await page.evaluate(() => {
+      const select = document.querySelector<OdsSelect & HTMLElement>('ods-select');
+      select!.customRenderer = {
+        option: ({ text }: { text: string }): string => {
+          return `<div>>>> ${text} <<<</div>`;
+        },
+      };
+      select!.innerHTML = '<option value="1">1</option>';
+    });
+    await el.callMethod('open');
+    await page.waitForChanges();
+
+    expect(await page.evaluate(() => {
+      return document.querySelector('ods-select')?.shadowRoot?.querySelector<HTMLElement>('.ts-wrapper .option')?.innerText;
+    })).toBe('>>> 1 <<<');
+  });
+
+  describe('watchers', () => {
+    describe('isDisabled', () => {
+      it('should disable the select component', async() => {
+        await setup('<ods-select><option value="1">1</option></ods-select>');
+
+        expect(selectComponent.classList.contains('disabled')).toBe(false);
+
+        el.setAttribute('is-disabled', true);
+        await page.waitForChanges();
+
+        expect(await page.evaluate(() => {
+          return document.querySelector('ods-select')?.shadowRoot?.querySelector('.ts-wrapper')?.classList.contains('disabled') || false;
+        })).toBe(true);
+      });
+    });
+  });
+});

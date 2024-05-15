@@ -6,6 +6,7 @@
     "color-hex-length": null,
     "color-named": "never",
     "hue-degree-notation": "number",
+    "no-descending-specificity": null,
     "scss/at-mixin-argumentless-call-parentheses": null,
     "scss/at-rule-conditional-no-parentheses": null,
     "scss/double-slash-comment-empty-line-before": null,

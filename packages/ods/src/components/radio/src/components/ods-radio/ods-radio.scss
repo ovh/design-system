@@ -1,0 +1,7 @@
+@use '../../../../../style/radio';
+
+.ods-radio {
+  &__radio {
+    @include radio.ods-radio();
+  }
+}

@@ -40,14 +40,14 @@ describe('ods-form-field rendering', () => {
     await setup('<ods-form-field><ods-input></ods-input><span slot="label">Label</span></ods-form-field>');
     const labelSlot = await el.find('span[slot="label"]');
     expect(labelSlot).not.toBeNull();
-    expect(labelSlot.textContent).toEqual('Label');
+    expect(labelSlot.textContent).toBe('Label');
   });
 
   it('should correctly render content in the visual-hint slot', async() => {
     await setup('<ods-form-field><ods-input></ods-input><span slot="visual-hint">Visual Hint</span></ods-form-field>');
     const visualHintSlot = await el.find('span[slot="visual-hint"]');
     expect(visualHintSlot).not.toBeNull();
-    expect(visualHintSlot.textContent).toEqual('Visual Hint');
+    expect(visualHintSlot.textContent).toBe('Visual Hint');
   });
 
   it('should correctly render content in the default slot', async() => {
@@ -66,13 +66,13 @@ describe('ods-form-field rendering', () => {
     await setup('<ods-form-field><ods-input></ods-input><span slot="helper">Helper</span></ods-form-field>');
     const helperSlot = await el.find('span[slot="helper"]');
     expect(helperSlot).not.toBeNull();
-    expect(helperSlot.textContent).toEqual('Helper');
+    expect(helperSlot.textContent).toBe('Helper');
   });
 
   it('should be displaying the error message if error, even if there is a helper', async() => {
     await setup('<ods-form-field error="Wrong format."><ods-input></ods-input><span slot="helper">Helper Text</span></ods-form-field>');
     const errorMessage = await page.find('ods-form-field >>> .ods-form-field__bottom-bar__error-message');
     expect(errorMessage).not.toBeNull();
-    expect(errorMessage?.textContent).toEqual('Wrong format.');
+    expect(errorMessage?.textContent).toBe('Wrong format.');
   });
 });

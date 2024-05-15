@@ -15,7 +15,6 @@ export class OdsFormField {
       <Host class='ods-form-field'>
         <div class='ods-form-field__top-bar'>
           <slot name='label'></slot>
-          <slot name='visual-hint'></slot>
         </div>
         <slot></slot>
         <div class='ods-form-field__bottom-bar'>
@@ -30,6 +29,8 @@ export class OdsFormField {
               </ods-text>
               : <slot name='helper'></slot>
           }
+          <div class='ods-form-field__bottom-bar__separator'></div>
+          <slot name='visual-hint'></slot>
         </div>
       </Host>
     );

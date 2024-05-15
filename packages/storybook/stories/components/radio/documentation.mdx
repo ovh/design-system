@@ -1,0 +1,57 @@
+import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import SpecificationsRadio from '@ovhcloud/ods-components/src/components/radio/documentation/spec.md?raw';
+import { Banner } from '../../banner';
+import { DocNavigator } from '../../doc-navigator';
+import * as RadioStories from './radio.stories';
+import { LINK_ID } from '../../zeroheight';
+
+<Meta of={ RadioStories } name='Documentation' />
+
+<Banner of={ RadioStories } />
+
+# Overview
+
+Radio are used when, a list of two or more options, the user must select only one option.
+
+The previous components `radio`, `radio-button` and `radio-group` have now been included in `radio`
+
+The behavior of the old `radio-group` is now automatic, giving the radio the same name as the native implementation.
+
+There is no longer a `radio` component to make clickable Element.
+
+<Canvas of={ RadioStories.Default } sourceState='none' />
+
+<DocNavigator of={ RadioStories } linkId={ LINK_ID.RADIO_BUTTON } />
+
+<Markdown>{ SpecificationsRadio }</Markdown>
+
+# Style customization
+
+You can add your own style on the radio element using the part `radio`.
+
+Custom radio css:
+
+<Canvas of={ RadioStories.CustomCSS } sourceState='shown'/>
+
+# Examples
+
+## Default
+
+<Canvas of={ RadioStories.Default } sourceState='shown' />
+
+## Disabled
+<Canvas of={ RadioStories.Disabled } sourceState='shown' />
+
+## Disabled Checked
+<Canvas of={ RadioStories.DisabledChecked } sourceState='shown' />
+
+## Group
+<Canvas of={ RadioStories.Group } sourceState='shown' />
+
+## Group checked
+The attribute `is-checked` works like the native implementation, defining the default checked radio in a group.
+<Canvas of={ RadioStories.GroupIsChecked } sourceState='shown' />
+
+## InputId
+<Canvas of={ RadioStories.InputId } sourceState='shown' />
+

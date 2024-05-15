@@ -1,0 +1,50 @@
+@use '../../../../../style/focus';
+
+@mixin ods-radio() {
+  appearance: none;
+  display: inline-flex;
+  transform: translateY(-3px);
+  margin: 0;
+  border: 1px solid var(--ods-color-neutral-300);
+  border-radius: 50%;
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+
+  &::before {
+    transform: scale(0);
+    transition: 120ms all ease-in-out;
+    margin: auto;
+    border-radius: 50%;
+    background-color: var(--ods-color-primary-000);
+    width: 4px;
+    height: 4px;
+    content: "";
+  }
+
+  &:focus {
+    @include focus.ods-focus();
+  }
+
+  &:checked::before {
+    transform: scale(1);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+
+    &:checked {
+      border: 1px solid var(--ods-color-neutral-200);
+      background-color: var(--ods-color-neutral-200);
+    }
+  }
+
+  &:not(:disabled):checked {
+    border: 1px solid var(--ods-color-primary-500);
+    background-color: var(--ods-color-primary-500);
+
+    &:hover {
+      background-color: var(--ods-color-primary-700);
+    }
+  }
+}

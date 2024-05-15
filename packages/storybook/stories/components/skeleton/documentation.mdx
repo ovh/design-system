@@ -3,6 +3,7 @@ import SpecificationsSkeleton from '@ovhcloud/ods-components/src/components/skel
 import { Banner } from '../../banner';
 import { DocNavigator } from '../../doc-navigator';
 import * as SkeletonStories from './skeleton.stories';
+import { LINK_ID } from '../../zeroheight';
 
 <Meta of={ SkeletonStories } name='Documentation' />
 
@@ -14,7 +15,7 @@ Skeleton component indicates that data is loading. It improves the perceived loa
 
 <Canvas of={SkeletonStories.Default} sourceState='none' />
 
-<DocNavigator of={ SkeletonStories } />
+<DocNavigator of={ SkeletonStories } linkId={ LINK_ID.SKELETON } />
 
 <Markdown> { SpecificationsSkeleton } </Markdown>
 

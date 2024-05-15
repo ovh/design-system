@@ -3,6 +3,7 @@ import SpecificationsDivider from '@ovhcloud/ods-components/src/components/divid
 import { Banner } from '../../banner';
 import { DocNavigator } from '../../doc-navigator';
 import * as DividerStories from './divider.stories';
+import { LINK_ID } from '../../zeroheight';
 
 <Meta of={ DividerStories } name='Documentation' />
 
@@ -14,7 +15,7 @@ The divider is a spacer dedicated to represent the empty space. it displays a si
 
 <Canvas of={ DividerStories.Default } sourceState='none' />
 
-<DocNavigator of={ DividerStories } />
+<DocNavigator of={ DividerStories } linkId={ LINK_ID.DIVIDER } />
 
 <Markdown>{ SpecificationsDivider }</Markdown>
 

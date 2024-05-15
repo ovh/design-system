@@ -3,6 +3,7 @@ import SpecificationsBreadcrumb from '@ovhcloud/ods-components/src/components/br
 import { Banner } from '../../banner';
 import { DocNavigator } from '../../doc-navigator';
 import * as BreadcrumbStories from './breadcrumb.stories';
+import { LINK_ID } from '../../zeroheight';
 
 <Meta of={ BreadcrumbStories } name='Documentation' />
 
@@ -14,7 +15,7 @@ A list of links showing the current page location in the navigational hierarchy:
 
 <Canvas of={ BreadcrumbStories.Default } sourceState='none' />
 
-<DocNavigator of={ BreadcrumbStories } />
+<DocNavigator of={ BreadcrumbStories } linkId={ LINK_ID.BREADCRUMB } />
 
 <Markdown>{ SpecificationsBreadcrumb }</Markdown>
 

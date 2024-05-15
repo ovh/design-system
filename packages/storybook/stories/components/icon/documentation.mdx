@@ -3,6 +3,7 @@ import SpecificationsIcon from '@ovhcloud/ods-components/src/components/icon/doc
 import { Banner } from '../../banner';
 import { DocNavigator } from '../../doc-navigator';
 import * as IconStories from './icon.stories';
+import { LINK_ID } from '../../zeroheight';
 
 <Meta of={ IconStories } name='Documentation' />
 
@@ -14,7 +15,7 @@ Icon is a visual context used to represent a command, navigation, status or comm
 
 <Canvas of={ IconStories.Default } sourceState='none' />
 
-<DocNavigator of={ IconStories } />
+<DocNavigator of={ IconStories } linkId={ LINK_ID.ICON } />
 
 <Markdown>{ SpecificationsIcon }</Markdown>
 

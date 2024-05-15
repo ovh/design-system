@@ -3,6 +3,7 @@ import SpecificationsTextarea from '@ovhcloud/ods-components/src/components/text
 import { Banner } from '../../banner';
 import { DocNavigator } from '../../doc-navigator';
 import * as TextareaStories from './textarea.stories';
+import { LINK_ID } from '../../zeroheight';
 
 <Meta of={ TextareaStories } name='Documentation' />
 
@@ -14,7 +15,7 @@ Textarea component is used to type long content:
 
 <Canvas of={ TextareaStories.Default } sourceState='none' />
 
-<DocNavigator of={ TextareaStories } />
+<DocNavigator of={ TextareaStories } linkId={ LINK_ID.TEXTAREA } />
 
 <Markdown>{ SpecificationsTextarea }</Markdown>
 

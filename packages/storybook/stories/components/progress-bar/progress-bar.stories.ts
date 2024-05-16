@@ -74,7 +74,7 @@ export const CustomCSS: StoryObj = {
 export const Default: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
-<ods-progress-bar value="50"></ods-progress-bar>
+<ods-progress-bar></ods-progress-bar>
   `,
 };
 

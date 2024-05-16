@@ -3,6 +3,7 @@ import SpecificationsProgressBar from '@ovhcloud/ods-components/src/components/p
 import { Banner } from '../../banner';
 import { DocNavigator } from '../../doc-navigator';
 import * as ProgressBarStories from './progress-bar.stories';
+import { LINK_ID } from '../../zeroheight';
 
 <Meta of={ ProgressBarStories } name='Documentation' />
 
@@ -12,9 +13,9 @@ import * as ProgressBarStories from './progress-bar.stories';
 
 A horizontal bar indicating the current completion status of a long-running task:
 
-<Canvas of={ ProgressBarStories.Default } sourceState='none' />
+<Canvas of={ ProgressBarStories.Value } sourceState='none' />
 
-<DocNavigator of={ ProgressBarStories } />
+<DocNavigator of={ ProgressBarStories } linkId={ LINK_ID.PROGRESS_BAR }/>
 
 <Markdown>{ SpecificationsProgressBar }</Markdown>
 

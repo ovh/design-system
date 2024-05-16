@@ -1,4 +1,6 @@
 import { Meta } from '@storybook/blocks';
+import '../components/link/link.stories';
+import '../components/text/text.stories';
 
 <Meta title="OVHcloud Design System/Welcome" />
 
@@ -33,8 +35,8 @@ import { Meta } from '@storybook/blocks';
     >
       <span
         style={{
-              width: '30rem',
-              height: '2rem',
+              width: '40rem',
+              height: '4rem',
               backgroundImage: `url(ods_logo.svg)`,
               backgroundSize: 'contain',
               backgroundRepeat: 'no-repeat',
@@ -54,12 +56,12 @@ import { Meta } from '@storybook/blocks';
           flexDirection: "column",
           padding: '0 .5rem',
           maxWidth: "21rem",
-          gap: "1.5rem",
+          gap: "2rem",
         }}
       >
         <ods-link label="Get Started"
                   icon="arrow-right"
-                  href="?path=/story/ovhcloud-design-system-get-started--page"
+                  href="../?path=/docs/ovhcloud-design-system-get-started--docs"
                   style={{
                     fontSize: "1.4rem"
                   }}

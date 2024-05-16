@@ -15,16 +15,16 @@ export default meta;
 
 export const Demo: StoryObj = {
   render: (arg) => html`
-  <ods-form-field error="${arg.error}">
+  <ods-form-field class="demo" error="${arg.error}">
     ${unsafeHTML(arg.label)}
     ${unsafeHTML(arg.visualHint)}
     ${unsafeHTML(arg.content)}
     ${unsafeHTML(arg.helper)}
   </ods-form-field>
   <style>
-    ods-text[slot="label"],
-    ods-text[slot="helper"],
-    ods-text[slot="visual-hint"] {
+    .demo ods-text[slot="label"],
+    .demo ods-text[slot="helper"],
+    .demo ods-text[slot="visual-hint"] {
       color: #4d5592;
     }
   </style>
@@ -206,7 +206,7 @@ export const Textarea: StoryObj = {
   </ods-text>
 
   <ods-text slot="visual-hint" preset='caption'>
-    02/11/1999
+    11/200
   </ods-text>
 
   <ods-textarea value="Hello, ODS!" is-resizable="true"></ods-textarea>

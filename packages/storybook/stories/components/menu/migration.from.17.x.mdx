@@ -1,0 +1,15 @@
+import { Canvas, Meta } from '@storybook/blocks';
+import * as PopoverStories from '../popover/popover.stories';
+
+<Meta title="ODS Components/Actions/Menu/Migration From 17.x" />
+
+# Menu - migrate from v17 to v18
+----
+
+Menu has been removed from ODS components.
+
+The same component can be achieved with ods-popover.
+
+Here is an example of the Popover as Action Menu:
+
+<Canvas of={ PopoverStories.Menu } sourceState='shown' />

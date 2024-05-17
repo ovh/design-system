@@ -364,6 +364,12 @@
           ),
         ),
         $radio-button: (
+          xs: (
+            border-width: calc(0.2rem * var(--ods-size-ratio)),
+            height: calc(0.75rem * var(--ods-size-ratio)),
+            margin: calc(0.25rem * var(--ods-size-ratio)) calc(0.5rem * var(--ods-size-ratio)),
+            width: calc(0.75rem * var(--ods-size-ratio)),
+          ),
           sm: (
             border-width: calc(0.2rem * var(--ods-size-ratio)),
             height: calc(1.25rem * var(--ods-size-ratio)),

@@ -1,6 +1,7 @@
 enum ODS_RADIO_BUTTON_SIZE {
   md = 'md',
   sm = 'sm',
+  xs = 'xs',
 }
 
 const ODS_RADIO_BUTTON_SIZES = Object.freeze(Object.values(ODS_RADIO_BUTTON_SIZE));

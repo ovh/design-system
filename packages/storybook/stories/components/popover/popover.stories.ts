@@ -122,3 +122,47 @@ export const Overview: StoryObj = {
 </ods-popover>
   `,
 };
+
+export const Menu: StoryObj = {
+  tags:['isHidden'],
+  decorators: [(story) => html`<div style="height: 200px;">${story()}</div>`],
+  render: () => html`
+<div style="display: flex;">
+  <ods-button class="my-trigger"
+              icon="menu-ellipsis-vertical"
+              id="trigger-menu"
+              variant="ghost"></ods-button>
+
+  <ods-popover class="custom-popover"
+               trigger-id="trigger-menu"
+               with-arrow>
+    <ods-button class="my-button"
+                label="Button"
+                variant="ghost"></ods-button>
+    <ods-button class="my-button"
+                label="Button"
+                variant="ghost"></ods-button>
+    <ods-divider></ods-divider>
+    <ods-button class="my-button"
+                label="Button"
+                variant="ghost"
+                color="critical"></ods-button>
+  </ods-popover>
+
+  <style>
+    .custom-popover {
+      padding: 8px 0;
+    }
+    .my-trigger::part(button) {
+      width: 40px;
+      height: 40px;
+      justify-content: center;
+    }
+    .my-button::part(button) {
+      height: 32px;
+      border-radius: 0;
+    }
+  </style>
+</div>
+  `,
+}

@@ -4047,7 +4047,16 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+<<<<<<< HEAD
 >>>>>>> 0dbb17cf7 (feat(message): component implementation)
+=======
+"@ovhcloud/ods-component-modal@workspace:packages/ods/src/components/modal":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-modal@workspace:packages/ods/src/components/modal"
+  languageName: unknown
+  linkType: soft
+
+>>>>>>> fd80de307 (feat(modal): init component)
 "@ovhcloud/ods-component-password@workspace:packages/ods/src/components/password":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-password@workspace:packages/ods/src/components/password"

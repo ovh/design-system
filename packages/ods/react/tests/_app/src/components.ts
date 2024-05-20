@@ -34,6 +34,7 @@ const componentNames = [
   'radio',
   'checkbox',
   'select',
+  'modal',
   //--generator-anchor--
 ];
 

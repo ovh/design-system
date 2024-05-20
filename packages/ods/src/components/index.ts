@@ -33,3 +33,4 @@ export * from './message/src';
 export * from './radio/src';
 export * from './checkbox/src';
 export * from './select/src';
+export * from './modal/src';

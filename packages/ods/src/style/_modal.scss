@@ -1,0 +1,13 @@
+@mixin ods-modal-color($color) {
+  @if $color == 'critical' {
+    background-color: var(--ods-color-alpha);
+  } @else if $color == 'information' {
+    background-color: var(--ods-color-new);
+  } @else if $color == 'neutral' {
+    background-color: var(--ods-color-beta);
+  } @else if $color == 'success' {
+    background-color: var(--ods-color-beta);
+  } @else if $color == 'warning' {
+    background-color: var(--ods-color-alpha);
+  }
+}

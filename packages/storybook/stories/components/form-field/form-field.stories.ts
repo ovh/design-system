@@ -73,8 +73,8 @@ export const Demo: StoryObj = {
   args: {
     error: '',
     label: `<ods-text slot="label" preset='label'>Description</ods-text>`,
-    visualHint: `<ods-text slot="visual-hint" preset='caption'>02/11/1999</ods-text>`,
-    content: `<ods-input type="text" value="Hello, ODS!" clearable></ods-input>`,
+    visualHint: `<ods-text slot="visual-hint" preset='span'>0/100</ods-text>`,
+    content: `<ods-input type="text" placeholder="Placeholder" clearable></ods-input>`,
     helper: `<ods-text slot="helper" preset='span'>A little helper text</ods-text>`,
   },
 };
@@ -83,7 +83,7 @@ export const Default: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
 <ods-form-field>
-  <ods-input type="text" value="Hello, ODS!" clearable></ods-input>
+  <ods-input type="text" placeholder="Placeholder" clearable></ods-input>
 </ods-form-field>`,
 };
 
@@ -95,14 +95,14 @@ export const Error: StoryObj = {
     Description
   </ods-text>
 
-  <ods-input type="text" value="Hello, ODS!" clearable></ods-input>
+  <ods-input type="text" placeholder="Placeholder" clearable></ods-input>
 
   <ods-text slot="helper" preset='span'>
     A little helper text
   </ods-text>
 
-  <ods-text slot="visual-hint" preset='caption'>
-    02/11/1999
+  <ods-text slot="visual-hint" preset='span'>
+    0/100
   </ods-text>
 </ods-form-field>
   `,
@@ -116,7 +116,7 @@ export const CustomCSS: StoryObj = {
     Description
   </ods-text>
 
-  <ods-input type="text" value="Hello, ODS!" clearable></ods-input>
+  <ods-input type="text" placeholder="Placeholder" clearable></ods-input>
 </ods-form-field>
 
 <style>
@@ -135,7 +135,7 @@ export const Label: StoryObj = {
     Description
   </ods-text>
 
-  <ods-input type="text" value="Hello, ODS!" clearable></ods-input>
+  <ods-input type="text" placeholder="Placeholder" clearable></ods-input>
 </ods-form-field>
   `,
 };
@@ -148,10 +148,10 @@ export const LabelVisualHint: StoryObj = {
     Description
   </ods-text>
 
-  <ods-input type="text" value="Hello, ODS!" clearable></ods-input>
+  <ods-input type="text" placeholder="Placeholder" clearable></ods-input>
 
-  <ods-text slot="visual-hint" preset='caption'>
-    02/11/1999
+  <ods-text slot="visual-hint" preset='span'>
+    0/100
   </ods-text>
 </ods-form-field>
   `,
@@ -165,14 +165,14 @@ export const LabelVisualHintHelper: StoryObj = {
     Description
   </ods-text>
 
-  <ods-input type="text" value="Hello, ODS!" clearable></ods-input>
+  <ods-input type="text" placeholder="Placeholder" clearable></ods-input>
 
   <ods-text slot="helper" preset='span'>
     A little helper text
   </ods-text>
 
-  <ods-text slot="visual-hint" preset='caption'>
-    02/11/1999
+  <ods-text slot="visual-hint" preset='span'>
+    0/100
   </ods-text>
 </ods-form-field>
   `,
@@ -186,12 +186,12 @@ export const Tooltip: StoryObj = {
     Description
   </ods-text>
 
-  <ods-input type="text" value="Hello, ODS!" clearable></ods-input>
+  <ods-icon slot="label" id="tooltip-trigger" name="help-circle"></ods-icon>
 
-  <ods-icon slot="visual-hint" id="tooltip-trigger" name="help-circle"></ods-icon>
+  <ods-input type="text" placeholder="Placeholder" clearable></ods-input>
 
   <ods-tooltip trigger-id="tooltip-trigger">
-    02/11/1999
+    0/100
   </ods-tooltip>
 </ods-form-field>
   `,
@@ -205,11 +205,11 @@ export const Textarea: StoryObj = {
     Description
   </ods-text>
 
-  <ods-text slot="visual-hint" preset='caption'>
-    11/200
+  <ods-text slot="visual-hint" preset='span'>
+    0/200
   </ods-text>
 
-  <ods-textarea value="Hello, ODS!" is-resizable="true"></ods-textarea>
+  <ods-textarea placeholder="Placeholder" is-resizable="true"></ods-textarea>
 </ods-form-field>
   `,
 };

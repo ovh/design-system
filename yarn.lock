@@ -3956,6 +3956,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-component-modal@workspace:packages/ods/src/components/modal":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-modal@workspace:packages/ods/src/components/modal"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-component-password@workspace:packages/ods/src/components/password":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-password@workspace:packages/ods/src/components/password"

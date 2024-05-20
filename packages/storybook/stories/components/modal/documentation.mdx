@@ -1,0 +1,39 @@
+import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import SpecificationsModal from '@ovhcloud/ods-components/src/components/modal/documentation/spec.md?raw';
+import { Banner } from '../../banner';
+import { DocNavigator } from '../../doc-navigator';
+import * as ModalStories from './modal.stories';
+import { LINK_ID } from '../../zeroheight';
+
+<Meta of={ ModalStories } name='Documentation' />
+
+<Banner of={ ModalStories } />
+
+# Overview
+
+TODO Some text about the component
+
+<Canvas of={ ModalStories.Default } sourceState='none' />
+
+<DocNavigator of={ ModalStories } linkId={ LINK_ID.MODAL } />
+
+<Markdown>{ SpecificationsModal }</Markdown>
+
+# Style customization [IF RELEVANT]
+
+You can add your own style on the modal element using the part `modal`.
+
+Custom modal css:
+
+<Canvas of={ ModalStories.CustomCSS } sourceState='shown'/>
+
+# Examples
+
+## Default
+
+<Canvas of={ ModalStories.Default } sourceState='shown' />
+
+## [Other attribute]
+<Canvas of={ ModalStories.Default } sourceState='shown' />
+
+...

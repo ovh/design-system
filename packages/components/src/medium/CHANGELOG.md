@@ -6,6 +6,18 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [17.2.2](https://ovh.github.io/design-system/v17.2.2/?path=/docs/design-system-changelog--page) (2024-05-21)
+[compare](https://github.com/ovh/design-system/compare/v17.2.1...v17.2.2)
+
+**Note:** Version bump only for package @ovhcloud/ods-component-medium
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [17.2.1](https://ovh.github.io/design-system/v17.2.1/?path=/docs/design-system-changelog--page) (2024-03-19)
 [compare](https://github.com/ovh/design-system/compare/v17.2.0...v17.2.1)
 

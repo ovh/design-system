@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [17.2.2](https://ovh.github.io/design-system/v17.2.2/?path=/docs/design-system-changelog--page) (2024-05-21)
+[compare](https://github.com/ovh/design-system/compare/v17.2.1...v17.2.2)
+
+### Bug Fixes
+
+* **button:** add test in react ([c7c5be3](https://github.com/ovh/design-system/commit/c7c5be3262ba860b7c73f829a1ee7415e59e6c9e))
+* **button:** prevent click on disabled for older browser version ([ea9ee09](https://github.com/ovh/design-system/commit/ea9ee09672dd6c6780d9bc91ac2a26b895cb0a81))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

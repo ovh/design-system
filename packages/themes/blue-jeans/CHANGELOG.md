@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [17.2.2](https://ovh.github.io/design-system/v17.2.2/?path=/docs/design-system-changelog--page) (2024-05-21)
+[compare](https://github.com/ovh/design-system/compare/v17.2.1...v17.2.2)
+
+### Bug Fixes
+
+* **radio-button:** change border width ([1c0b13d](https://github.com/ovh/design-system/commit/1c0b13d86dc8c4c2d1c275f5ae6c3d17384a68bd))
+
+
+### Features
+
+* **radio-button:** add xs size ([a74cbc5](https://github.com/ovh/design-system/commit/a74cbc5e7884646fe114344ed6715e4d7f516c76))
+
+
+
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 

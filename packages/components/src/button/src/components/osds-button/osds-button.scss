@@ -119,6 +119,10 @@
   @include osds-button-on-main-element {
     cursor: not-allowed;
   }
+
+  .button__text-container {
+    pointer-events: none;
+  }
 }
 
 :host([inline]) {

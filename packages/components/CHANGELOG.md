@@ -8,6 +8,29 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 [Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
 
 
+# [17.2.2](https://ovh.github.io/design-system/v17.2.2/?path=/docs/design-system-changelog--page) (2024-05-21)
+[compare](https://github.com/ovh/design-system/compare/v17.2.1...v17.2.2)
+
+### Bug Fixes
+
+* **button:** add test in react ([c7c5be3](https://github.com/ovh/design-system/commit/c7c5be3262ba860b7c73f829a1ee7415e59e6c9e))
+* **button:** add test to check handleclick not called when disabled ([6b07285](https://github.com/ovh/design-system/commit/6b0728516715ef2bbd1efa8ff20742ef2bd19371))
+* **button:** disable pointers events on disabled ([b15a409](https://github.com/ovh/design-system/commit/b15a409b2ab6804d71ebc2e721a28abc970d038a))
+* **button:** prevent click on disabled for older browser version ([ea9ee09](https://github.com/ovh/design-system/commit/ea9ee09672dd6c6780d9bc91ac2a26b895cb0a81))
+* **button:** remove margin & padding to prevent click event outside of the component ([6540b7c](https://github.com/ovh/design-system/commit/6540b7c75dd0d217dc90310725899c2c0af85d21))
+
+
+### Features
+
+* **radio-button:** add xs size ([a74cbc5](https://github.com/ovh/design-system/commit/a74cbc5e7884646fe114344ed6715e4d7f516c76))
+
+
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
 # [17.2.1](https://ovh.github.io/design-system/v17.2.1/?path=/docs/design-system-changelog--page) (2024-03-19)
 [compare](https://github.com/ovh/design-system/compare/v17.2.0...v17.2.1)
 

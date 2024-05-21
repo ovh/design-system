@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-common-scripts",
-  "version": "17.2.1",
+  "version": "17.2.2",
   "private": true,
   "description": "ODS common scripts helpers",
   "license": "Apache-2.0",

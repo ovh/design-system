@@ -1,0 +1,40 @@
+import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import SpecificationsMessage from '@ovhcloud/ods-components/src/components/message/documentation/spec.md?raw';
+import { Banner } from '../../banner';
+import { DocNavigator } from '../../doc-navigator';
+import * as MessageStories from './message.stories';
+import { LINK_ID } from '../../zeroheight';
+
+<Meta of={ MessageStories } name='Documentation' />
+
+<Banner of={ MessageStories } />
+
+# Overview
+
+Message component helps to communicate with users providing feedback or information.
+
+<Canvas of={ MessageStories.Default } sourceState='none' />
+
+<DocNavigator of={ MessageStories } linkId={ LINK_ID.MESSAGE } />
+
+<Markdown>{ SpecificationsMessage }</Markdown>
+
+# Style customization
+
+You can add your own style on the message element using the part `message`.
+
+Custom message css:
+
+<Canvas of={ MessageStories.CustomCSS } sourceState='shown'/>
+
+# Examples
+
+## Default
+
+<Canvas of={ MessageStories.Default } sourceState='shown' />
+
+## Color
+<Canvas of={ MessageStories.Color } sourceState='shown' />
+
+## Variant
+<Canvas of={ MessageStories.Variant } sourceState='shown' />

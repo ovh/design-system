@@ -1,0 +1,70 @@
+@use '../../../../../style/focus';
+@use '../../../../../style/message';
+
+$colors: ('critical', 'danger', 'information', 'success', 'warning');
+
+:host(.ods-message) {
+  display: inline-flex;
+  flex-flow: row;
+}
+
+.ods-message {
+  &__message {
+    $message: &;
+
+    @include message.ods-message();
+
+    padding: 0.5rem;
+
+    &__icon {
+      margin-right: 0.5rem;
+      font-size: 1.5rem;
+    }
+
+    &__close-wrapper {
+      margin-left: auto;
+    }
+
+    &__close {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 0.5rem;
+      border: none;
+      border-radius: 0.125rem;
+      background: none;
+      cursor: pointer;
+      padding: 0;
+      width: 1.5rem;
+      min-width: 1.5rem;
+      height: 1.5rem;
+      font-size: 1rem;
+
+      &:focus-visible {
+        @include focus.ods-focus();
+
+        outline-offset: 0;
+      }
+
+      @each $color in $colors {
+        &--#{$color} {
+          @include message.ods-message-close($color);
+        }
+      }
+    }
+
+    @each $color in $colors {
+      &#{$message}--default {
+        &#{$message}--#{$color} {
+          @include message.ods-message-variant-default($color);
+        }
+      }
+
+      &#{$message}--light {
+        &#{$message}--#{$color} {
+          @include message.ods-message-variant-light($color);
+        }
+      }
+    }
+  }
+}

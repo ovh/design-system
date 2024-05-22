@@ -4004,6 +4004,7 @@ __metadata:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 7ad9d6e7b (feat(medium): implement component)
 =======
 =======
@@ -4011,6 +4012,14 @@ __metadata:
 >>>>>>> fddca8114 (feat(popover): implement component)
 =======
 >>>>>>> 451aae11f (fix(doc): clean up demo until better complex example)
+=======
+"@ovhcloud/ods-component-message@workspace:packages/ods/src/components/message":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-message@workspace:packages/ods/src/components/message"
+  languageName: unknown
+  linkType: soft
+
+>>>>>>> 0dbb17cf7 (feat(message): component implementation)
 "@ovhcloud/ods-component-password@workspace:packages/ods/src/components/password":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-password@workspace:packages/ods/src/components/password"

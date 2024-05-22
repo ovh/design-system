@@ -29,7 +29,7 @@ describe('ods-password navigation', () => {
   async function setup(content: string): Promise<void> {
     page = await newE2EPage();
 
-    await page.setContent(content);
+    await page.setContent(`${content}<button>Dummy to focus out</button>`);
     await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
 
     el = await page.find('ods-password');

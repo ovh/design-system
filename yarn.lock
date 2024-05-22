@@ -3928,6 +3928,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-component-message@workspace:packages/ods/src/components/message":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-message@workspace:packages/ods/src/components/message"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-component-password@workspace:packages/ods/src/components/password":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-password@workspace:packages/ods/src/components/password"

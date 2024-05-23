@@ -15,7 +15,7 @@ const meta: Meta = {
   parameters: {
     layout: 'centered',
   },
-  decorators: [(story) => html`<div style="padding-top: 50px; display: inline-flex; align-content: center;">${story()}</div>`],
+  decorators: [(story) => html`<div style="padding-top: 50px; display: inline-flex; align-items: center;">${story()}</div>`],
 };
 
 export default meta;
@@ -59,7 +59,7 @@ export const Demo: StoryObj = {
   }),
   args: {
     content: 'Tooltip content',
-    position: ODS_TOOLTIP_POSITION.bottom,
+    position: ODS_TOOLTIP_POSITION.top,
     withArrow: true,
   },
 };
@@ -111,11 +111,10 @@ export const CustomCSS: StoryObj = {
 <ods-icon id="trigger-3"
           name="help-circle">
 </ods-icon>
-<ods-tooltip position="top-start"
-             trigger-id="trigger-3"
+<ods-tooltip trigger-id="trigger-3"
              with-arrow>
   <p class="custom-tooltip">
-    Top-start tooltip
+    Custom tooltip
   </p>
 </ods-tooltip>
 <style>

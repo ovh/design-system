@@ -20,7 +20,6 @@
   <p>Default</p>
   <ods-message>Default Message</ods-message>
 
-
   <p>Variant</p>
   <ods-message variant="default">Default variant message</ods-message>
   <ods-message variant="light">Light variant message</ods-message>
@@ -44,5 +43,26 @@
 
   <p>Interactive element in slot</p>
   <ods-message><button>Click me</button></ods-message>
+
+  <p>Tooltip in slot</p>
+  <ods-message>
+    <button id="tooltip-trigger">
+      Hover me
+    </button>
+
+    <ods-tooltip trigger-id="tooltip-trigger">
+      Tooltip content
+    </ods-tooltip>
+  </ods-message>
+
+  <p>Select in slot</p>
+  <ods-message>
+    <select name="pets" id="pet-select">
+      <option value="">--Please choose an option--</option>
+      <option value="dog">Dog</option>
+      <option value="cat">Cat</option>
+      <option value="hamster">Hamster</option>
+    </select>
+  </ods-message>
 </body>
 </html>

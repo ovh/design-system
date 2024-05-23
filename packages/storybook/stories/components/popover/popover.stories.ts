@@ -131,7 +131,7 @@ export const Menu: StoryObj = {
   <ods-button class="my-trigger"
               icon="menu-ellipsis-vertical"
               id="trigger-menu"
-              variant="ghost"></ods-button>
+              variant="outline"></ods-button>
 
   <ods-popover class="custom-popover"
                trigger-id="trigger-menu"

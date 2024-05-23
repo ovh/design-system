@@ -3,9 +3,9 @@
 
 $colors: ('critical', 'danger', 'information', 'success', 'warning');
 
-:host(.ods-message) {
-  display: inline-flex;
-  flex-flow: row;
+slot:not([name]) {
+  display: flex;
+  align-self: center;
 }
 
 .ods-message {
@@ -26,7 +26,7 @@ $colors: ('critical', 'danger', 'information', 'success', 'warning');
     }
 
     &__close {
-      display: flex;
+      display: inline-flex;
       align-items: center;
       justify-content: center;
       margin-left: 0.5rem;

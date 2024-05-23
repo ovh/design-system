@@ -22,7 +22,7 @@
     content: "";
   }
 
-  &:focus {
+  &:focus-visible {
     @include focus.ods-focus();
   }
 

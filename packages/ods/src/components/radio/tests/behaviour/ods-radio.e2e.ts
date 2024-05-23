@@ -36,6 +36,36 @@ describe('ods-radio behaviour', () => {
         expect(odsClearSpy).toHaveReceivedEventTimes(1);
       });
     });
+
+    describe('method:reset', () => {
+      it('should receive odsReset event', async() => {
+        await setup('<ods-radio value="value" is-checked></ods-radio>');
+        const odsResetSpy = await page.spyOnEvent('odsReset');
+        expect(await isInputRadioChecked(el)).toBe(true);
+        await el.callMethod('reset');
+        await page.waitForChanges();
+
+        expect(await isInputRadioChecked(el)).toBe(true);
+        expect(odsResetSpy).toHaveReceivedEventTimes(1);
+      });
+
+      it('should checked the radio with is-checked after reset', async() => {
+        await setup(`<ods-radio name="radio-group" value="value1" is-checked></ods-radio>
+        <ods-radio name="radio-group" value="value2"></ods-radio>
+        <ods-radio name="radio-group" value="value3"></ods-radio>`);
+        const radios = await page.findAll('ods-radio');
+        const odsResetSpy = await page.spyOnEvent('odsReset');
+        expect(await isInputRadioChecked(radios[0])).toBe(true);
+
+        await radios[2].click();
+        expect(await isInputRadioChecked(radios[2])).toBe(true);
+
+        await radios[2].callMethod('reset');
+
+        expect(await isInputRadioChecked(radios[0])).toBe(true);
+        expect(odsResetSpy).toHaveReceivedEventTimes(1);
+      });
+    });
   });
 
   describe('Radio group', () => {

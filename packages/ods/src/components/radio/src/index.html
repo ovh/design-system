@@ -18,7 +18,7 @@
   </div>
 
   <div>
-    <ods-radio input-id="dewey" name="drone" value="dewey"></ods-radio>
+    <ods-radio input-id="dewey" name="drone" value="dewey" is-checked></ods-radio>
     <label for="dewey">Dewey</label>
   </div>
 
@@ -27,7 +27,9 @@
     <label for="louie">Louie</label>
   </div>
   <button id="clear-button">clear</button>
+  <button id="reset-button">reset</button>
   <button id="get-validity-button">getValidity</button>
+
   <script>
     const radio = document.querySelector('ods-radio[input-id="huey"]');
 
@@ -37,9 +39,11 @@
       });
     });
     const clearButton = document.getElementById('clear-button');
+    const resetButton = document.getElementById('reset-button');
     const getValidityButton = document.getElementById('get-validity-button');
 
     clearButton.addEventListener('click', () => radio.clear());
+    resetButton.addEventListener('click', () => radio.reset());
     getValidityButton.addEventListener('click', async () => {
       const validity = await radio.getValidity();
       console.log('validity', validity);

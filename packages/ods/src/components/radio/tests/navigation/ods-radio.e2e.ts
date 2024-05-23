@@ -141,7 +141,7 @@ describe('ods-radio navigation', () => {
       expect(await isInputRadioChecked(radios[2])).toBe(true);
     });
 
-    it('should ignore with arrow up / down', async() => {
+    it('should ignore disabled radio with arrow up / down', async() => {
       await setup(`
       <ods-radio name="radio-group" value="1" is-checked></ods-radio>
       <ods-radio name="radio-group" value="2" is-disabled></ods-radio>

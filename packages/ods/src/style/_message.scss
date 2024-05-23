@@ -1,14 +1,6 @@
 @mixin ods-message() {
-  box-sizing: border-box;
-  display: flex;
-  position: relative;
-  align-items: center;
-  opacity: 1;
-  margin: 0;
-  border: none;
-  box-shadow: none;
-  width: 200%;
-  overflow: hidden;
+  display: inline-flex;
+  align-items: flex-start;
 }
 
 @mixin ods-message-variant-default($color) {

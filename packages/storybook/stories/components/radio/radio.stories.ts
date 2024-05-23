@@ -94,6 +94,7 @@ export const DemoGroup: StoryObj = {
         type: { summary: 'boolean' },
       },
       control: 'boolean',
+      description: 'Make the HTML radio checked by default',
     },
     isCheckedCSS: {
       table: {
@@ -102,6 +103,8 @@ export const DemoGroup: StoryObj = {
         type: { summary: 'boolean' },
       },
       control: 'boolean',
+      description: 'Make the CSS radio checked by default',
+
     },
     isCheckedJS: {
       table: {
@@ -110,6 +113,8 @@ export const DemoGroup: StoryObj = {
         type: { summary: 'boolean' },
       },
       control: 'boolean',
+      description: 'Make the JS radio checked by default',
+
     },
     isDisabledHTML: {
       table: {
@@ -118,6 +123,7 @@ export const DemoGroup: StoryObj = {
         type: { summary: 'boolean' },
       },
       control: 'boolean',
+      description: 'Make the HTML radio disabled',
     },
     isDisabledCSS: {
       table: {
@@ -126,6 +132,7 @@ export const DemoGroup: StoryObj = {
         type: { summary: 'boolean' },
       },
       control: 'boolean',
+      description: 'Make the CSS radio disabled',
     },
     isDisabledJS: {
       table: {
@@ -134,6 +141,7 @@ export const DemoGroup: StoryObj = {
         type: { summary: 'boolean' },
       },
       control: 'boolean',
+      description: 'Make the JS radio disabled',
     },
   }),
   args: {
@@ -156,6 +164,13 @@ export const CustomCSS: StoryObj = {
     border-color: red;
   }
 </style>
+  `,
+};
+
+export const Checked: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-radio is-checked></ods-radio>
   `,
 };
 

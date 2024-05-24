@@ -33,21 +33,23 @@ export class OdsMessage {
         <div
           class={ `ods-message__message ods-message__message--${this.color} ods-message__message--${this.variant}` }
           part="message">
-          <ods-icon
-            class="ods-message__message__icon"
-            name={ getIconName(this.color) }>
-          </ods-icon>
+          <div class={'ods-message__message__wrapper'}>
+            <ods-icon
+              class="ods-message__message__icon"
+              name={getIconName(this.color)}>
+            </ods-icon>
 
-          <slot></slot>
+            <slot></slot>
 
-          <div class="ods-message__message__close-wrapper">
-            <button
-              class={`ods-message__message__close ods-message__message__close--${this.color}`}
-              onClick={this.handleClick.bind(this)}
-              onKeyUp={(event: KeyboardEvent) => handleKeySpace(event, this.handleKeyUp.bind(this))}>
-              <ods-icon name={ODS_ICON_NAME.cross}>
-              </ods-icon>
-            </button>
+            <div class="ods-message__message__close-wrapper">
+              <button
+                class={`ods-message__message__close ods-message__message__close--${this.color}`}
+                onClick={this.handleClick.bind(this)}
+                onKeyUp={(event: KeyboardEvent) => handleKeySpace(event, this.handleKeyUp.bind(this))}>
+                <ods-icon name={ODS_ICON_NAME.cross}>
+                </ods-icon>
+              </button>
+            </div>
           </div>
         </div>
       </Host>

@@ -3,11 +3,6 @@
 
 $colors: ('critical', 'danger', 'information', 'success', 'warning');
 
-slot:not([name]) {
-  display: flex;
-  align-self: center;
-}
-
 .ods-message {
   &__message {
     $message: &;
@@ -16,12 +11,20 @@ slot:not([name]) {
 
     padding: 0.5rem;
 
+    &__wrapper {
+      display: inline-flex;
+      align-items: center;
+      width: 100%;
+    }
+
     &__icon {
+      align-self: flex-start;
       margin-right: 0.5rem;
       font-size: 1.5rem;
     }
 
     &__close-wrapper {
+      align-self: flex-start;
       margin-left: auto;
     }
 

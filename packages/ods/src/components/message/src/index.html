@@ -13,6 +13,27 @@
     .my-message::part(message) {
       background-color: yellow;
     }
+
+    .my-text::part(text) {
+      margin: 0;
+    }
+
+    .my-icon {
+      padding-left: 4px;
+      font-size: 18px;
+    }
+
+    .multiline {
+      width: 80px;
+    }
+
+    .width::part(message) {
+      width: 100%;
+    }
+
+    .height::part(message) {
+      height: 200px;
+    }
   </style>
 </head>
 
@@ -44,13 +65,18 @@
   <p>Interactive element in slot</p>
   <ods-message><button>Click me</button></ods-message>
 
-  <p>Tooltip in slot</p>
+  <p>Text & tooltip in slot</p>
   <ods-message>
-    <button id="tooltip-trigger">
-      Hover me
-    </button>
+    <ods-text preset="heading-5"
+              class="my-text">
+      Message content
+    </ods-text>
+    <ods-icon id="tooltip-trigger-2"
+              class="my-icon"
+              name="info-circle">
+    </ods-icon>
 
-    <ods-tooltip trigger-id="tooltip-trigger">
+    <ods-tooltip trigger-id="tooltip-trigger-2">
       Tooltip content
     </ods-tooltip>
   </ods-message>
@@ -63,6 +89,23 @@
       <option value="cat">Cat</option>
       <option value="hamster">Hamster</option>
     </select>
+  </ods-message>
+
+  <p>Multiline</p>
+  <div class="multiline">
+    <ods-message >
+      A long text in a small space
+    </ods-message>
+  </div>
+
+  <p>Message with defined width</p>
+  <ods-message class="width">
+    Message content
+  </ods-message>
+
+  <p>Message with defined height</p>
+  <ods-message class="height">
+    Message content
   </ods-message>
 </body>
 </html>

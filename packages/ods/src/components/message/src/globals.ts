@@ -6,4 +6,5 @@
  *   import '../../text/src';
  */
 import '../../icon/src';
+import '../../text/src';
 import '../../tooltip/src';

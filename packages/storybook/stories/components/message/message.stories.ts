@@ -84,6 +84,7 @@ export const Default: StoryObj = {
 
 export const Color: StoryObj = {
   tags: ['isHidden'],
+  decorators: [(story) => html`<div style="display: flex; flex-direction: column; gap: 8px;">${story()}</div>`],
   render: () => html`
 <ods-message color="critical">Critical Message</ods-message>
 <ods-message color="danger">Danger Message</ods-message>
@@ -95,6 +96,7 @@ export const Color: StoryObj = {
 
 export const Variant: StoryObj = {
   tags: ['isHidden'],
+  decorators: [(story) => html`<div style="display: flex; flex-direction: column; gap: 8px;">${story()}</div>`],
   render: () => html`
 <ods-message variant="default">Default variant Message</ods-message>
 <ods-message variant="light">Light variant Message</ods-message>
@@ -107,7 +109,7 @@ export const CustomCSS: StoryObj = {
 <ods-message class="my-message">Custom CSS Message</ods-message>
 <style>
   .my-message::part(message) {
-    background-color: #ffff00;
+    background-color: #ac246f;
   }
 </style>
   `,

@@ -32,6 +32,7 @@ const componentNames = [
   'form-field',
   'message',
   'radio',
+  'checkbox',
   //--generator-anchor--
 ];
 

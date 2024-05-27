@@ -1,0 +1,138 @@
+import { Meta } from '@storybook/blocks';
+import * as CheckboxStories from './checkbox.stories';
+
+<Meta of={ CheckboxStories } name='Migration From 17.x' />
+
+# Checkbox - migrate from v17 to v18
+----
+
+## Attributes changes
+
+`checked` <img src="https://img.shields.io/badge/updated-00FFFF" />
+
+Has been updated.
+
+You can use the new `isChecked` attribute to obtain the same behavior.
+
+`checking` <img src="https://img.shields.io/badge/removed-FF0000" />
+
+Has been removed.
+
+This design feature has been removed in order to match the new styling of the component.
+
+`color` <img src="https://img.shields.io/badge/removed-FF0000" />
+
+Has been removed.
+
+This design feature has been removed in order to match the new styling of the component.
+
+`disabled` <img src="https://img.shields.io/badge/updated-00FFFF" />
+
+Has been updated.
+
+You can use the new `isDisabled` attribute to obtain the same behavior.
+
+`hasFocus` <img src="https://img.shields.io/badge/removed-FF0000" />
+
+Has been removed.
+
+You can use the event `odsFocus` and `odsBlur` for have the same behavior.
+
+`indeterminate` <img src="https://img.shields.io/badge/updated-00FFFF" />
+
+Has been updated.
+
+You can use the new `isIndeterminate` attribute to obtain the same behavior.
+
+`interactive` <img src="https://img.shields.io/badge/removed-FF0000" />
+
+Has been removed.
+
+This design feature has been removed in order to match the new styling of the component.
+
+`label` <img src="https://img.shields.io/badge/removed-FF0000" />
+
+Has been removed.
+
+Checkbox can now use HTML Label. Like in the example.
+
+`updating` <img src="https://img.shields.io/badge/removed-FF0000" />
+
+Has been removed.
+
+We don't think this kind of attribute was necessary anymore.
+
+`size` <img src="https://img.shields.io/badge/removed-FF0000" />
+
+Has been removed.
+
+This design feature has been removed in order to match the new styling of the component.
+
+`afterSave` <img src="https://img.shields.io/badge/removed-FF0000" />
+
+Has been removed.
+
+We don't think this kind of callback was necessary anymore.
+
+`beforeSave` <img src="https://img.shields.io/badge/removed-FF0000" />
+
+Has been removed.
+
+We don't think this kind of callback was necessary anymore.
+
+`save` <img src="https://img.shields.io/badge/removed-FF0000" />
+
+Has been removed.
+
+We don't think this kind of callback was necessary anymore.
+
+## Migration examples
+
+Checked checkbox:
+```html
+<osds-checkbox checked>
+  <osds-checkbox-button></osds-checkbox-button>
+</osds-checkbox>
+
+<!-- is now -->
+
+<ods-checkbox is-checked></ods-checkbox>
+```
+
+Disabled checkbox:
+```html
+<osds-checkbox disabled>
+  <osds-checkbox-button></osds-checkbox-button>
+</osds-checkbox>
+
+<!-- is now -->
+
+<ods-checkbox is-disabled></ods-checkbox>
+```
+
+Indeterminate checkbox:
+```html
+<osds-checkbox>
+  <osds-checkbox-button indeterminate></osds-checkbox-button>
+</osds-checkbox>
+
+<!-- is now -->
+
+<ods-checkbox is-indeterminate></ods-checkbox>
+```
+
+Label checkbox:
+```html
+<osds-checkbox>
+  <osds-checkbox-button>
+     <span slot="end">
+      Checkbox label
+    </span>
+  </osds-checkbox-button>
+</osds-checkbox>
+
+<!-- is now -->
+
+<ods-checkbox input-id="migration-label"></ods-checkbox>
+<label for="migration-label">Checkbox label</label>
+```

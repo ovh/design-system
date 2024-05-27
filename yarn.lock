@@ -3922,8 +3922,17 @@ __metadata:
   linkType: soft
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> ca6158dbb (feat(button): implement component)
 =======
+=======
+"@ovhcloud/ods-component-checkbox@workspace:packages/ods/src/components/checkbox":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-checkbox@workspace:packages/ods/src/components/checkbox"
+  languageName: unknown
+  linkType: soft
+
+>>>>>>> 8c16f2c3d (refactor(checkbox): implementation component)
 "@ovhcloud/ods-component-clipboard@workspace:packages/ods/src/components/clipboard":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-clipboard@workspace:packages/ods/src/components/clipboard"

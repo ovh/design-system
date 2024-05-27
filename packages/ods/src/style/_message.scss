@@ -1,6 +1,9 @@
 @mixin ods-message() {
-  display: inline-flex;
-  align-items: flex-start;
+  display: grid;
+  grid-template-rows: min-content;
+  grid-template-columns: max-content 1fr max-content;
+  column-gap: 0.5rem;
+  padding: 0.5rem;
 }
 
 @mixin ods-message-variant-default($color) {

@@ -1,7 +1,11 @@
 @use '../../../../../style/focus';
 @use '../../../../../style/message';
 
-$colors: ('critical', 'danger', 'information', 'success', 'warning');
+:host(.ods-message) {
+  display: inline-block;
+  width: inherit;
+  height: inherit;
+}
 
 .ods-message {
   &__message {
@@ -9,30 +13,19 @@ $colors: ('critical', 'danger', 'information', 'success', 'warning');
 
     @include message.ods-message();
 
-    padding: 0.5rem;
-
-    &__wrapper {
-      display: inline-flex;
-      align-items: center;
-      width: 100%;
-    }
-
     &__icon {
-      align-self: flex-start;
-      margin-right: 0.5rem;
       font-size: 1.5rem;
     }
 
-    &__close-wrapper {
-      align-self: flex-start;
-      margin-left: auto;
+    slot:not([name]) {
+      display: flex;
+      align-items: center;
     }
 
     &__close {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      margin-left: 0.5rem;
       border: none;
       border-radius: 0.125rem;
       background: none;
@@ -49,24 +42,68 @@ $colors: ('critical', 'danger', 'information', 'success', 'warning');
         outline-offset: 0;
       }
 
-      @each $color in $colors {
-        &--#{$color} {
-          @include message.ods-message-close($color);
-        }
+      &--critical {
+        @include message.ods-message-close('critical');
+      }
+
+      &--danger {
+        @include message.ods-message-close('danger');
+      }
+
+      &--information {
+        @include message.ods-message-close('information');
+      }
+
+      &--success {
+        @include message.ods-message-close('success');
+      }
+
+      &--warning {
+        @include message.ods-message-close('warning');
       }
     }
 
-    @each $color in $colors {
-      &#{$message}--default {
-        &#{$message}--#{$color} {
-          @include message.ods-message-variant-default($color);
-        }
+    &#{$message}--default {
+      &#{$message}--critical {
+        @include message.ods-message-variant-default('critical');
       }
 
-      &#{$message}--light {
-        &#{$message}--#{$color} {
-          @include message.ods-message-variant-light($color);
-        }
+      &#{$message}--danger {
+        @include message.ods-message-variant-default('danger');
+      }
+
+      &#{$message}--information {
+        @include message.ods-message-variant-default('information');
+      }
+
+      &#{$message}--success {
+        @include message.ods-message-variant-default('success');
+      }
+
+      &#{$message}--warning {
+        @include message.ods-message-variant-default('warning');
+      }
+    }
+
+    &#{$message}--light {
+      &#{$message}--critical {
+        @include message.ods-message-variant-light('critical');
+      }
+
+      &#{$message}--danger {
+        @include message.ods-message-variant-light('danger');
+      }
+
+      &#{$message}--information {
+        @include message.ods-message-variant-light('information');
+      }
+
+      &#{$message}--success {
+        @include message.ods-message-variant-light('success');
+      }
+
+      &#{$message}--warning {
+        @include message.ods-message-variant-light('warning');
       }
     }
   }

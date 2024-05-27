@@ -1,14 +1,7 @@
+@use '../../../../../style/icon';
+
 :host(.ods-icon) {
-  /* use !important to prevent issues with browser extensions that change fonts */
-  text-transform: none;
-  line-height: 1;
-  font-family: 'ODS Icon', serif !important;
-  speak: never;
-  font-weight: normal;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-variant: normal;
-  font-style: normal;
+  @include icon.ods-icon();
 }
 
 :host(.ods-icon__add)::before { content: '\e900'; }

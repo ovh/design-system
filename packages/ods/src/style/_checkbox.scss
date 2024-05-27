@@ -1,0 +1,61 @@
+@use './focus';
+@use './icon';
+
+@mixin ods-checkbox() {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  border: solid 1px var(--ods-color-neutral-300);
+  border-radius: var(--ods-border-radius-sm);
+  background: var(--ods-color-primary-000);
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+
+  &::before {
+    @include icon.ods-icon();
+
+    position: absolute;
+    transform: scale(0);
+    color: var(--ods-color-primary-000);
+  }
+
+  &:focus-visible {
+    @include focus.ods-focus();
+  }
+
+  &:checked {
+    &::before {
+      transform: scale(1);
+      content: "\e913";
+    }
+  }
+
+  &:indeterminate {
+    &::before {
+      transform: scale(1);
+      content: "\e95e";
+    }
+  }
+
+  &:disabled {
+    border-color: var(--ods-color-neutral-200);
+    cursor: not-allowed;
+
+    &:checked, &:indeterminate {
+      background: var(--ods-color-neutral-200);
+    }
+  }
+
+  &:not(:disabled):checked, &:not(:disabled):indeterminate {
+    border-color: var(--ods-color-primary-500);
+    background: var(--ods-color-primary-500);
+
+    &:hover {
+      border-color: var(--ods-color-primary-700);
+      background: var(--ods-color-primary-700);
+    }
+  }
+}

@@ -1,0 +1,93 @@
+import { Component, Event, type EventEmitter, type FunctionalComponent, Host, Method, Prop, h } from '@stencil/core';
+import { type OdsCheckboxValueChangeEventDetail } from '../../interfaces/event';
+
+@Component({
+  formAssociated: true,
+  shadow: false,
+  styleUrl: 'ods-checkbox.scss',
+  tag: 'ods-checkbox',
+})
+export class OdsCheckbox {
+  private inputEl?: HTMLInputElement;
+
+  @Prop({ reflect: true }) public ariaLabel: HTMLElement['ariaLabel'] = null;
+  @Prop({ reflect: true }) public ariaLabelledby?: string;
+  @Prop({ reflect: true }) public isChecked: boolean = false;
+  @Prop({ reflect: true }) public isDisabled: boolean = false;
+  @Prop({ reflect: true }) public isIndeterminate : boolean = false;
+  @Prop({ reflect: true }) public isRequired: boolean = false;
+  @Prop({ reflect: true }) public inputId?: string;
+  @Prop({ reflect: true }) public name!: string;
+  @Prop({ mutable: true, reflect: true }) public value: string | null = null;
+
+  @Event() odsBlur!: EventEmitter<void>;
+  @Event() odsChange!: EventEmitter<OdsCheckboxValueChangeEventDetail>;
+  @Event() odsClear!: EventEmitter<void>;
+  @Event() odsFocus!: EventEmitter<void>;
+  @Event() odsReset!: EventEmitter<void>;
+
+  @Method()
+  async clear(): Promise<void> {
+    if (this.inputEl) {
+      this.inputEl.checked = false;
+    }
+    this.odsClear.emit();
+  }
+
+  @Method()
+  async getValidity(): Promise<ValidityState | undefined> {
+    return this.inputEl?.validity;
+  }
+
+  @Method()
+  async reset(): Promise<void> {
+    this.getOdsCheckboxGroupByName().forEach((checkbox) => {
+      const inputCheckbox = checkbox.querySelector<HTMLInputElement>('input[type="checkbox"]');
+      if (!inputCheckbox) {
+        return;
+      }
+      if (checkbox.getAttribute('is-checked') === '') {
+        inputCheckbox.checked = true;
+      } else {
+        inputCheckbox.checked = false;
+      }
+    });
+    this.odsReset.emit();
+  }
+
+  getOdsCheckboxGroupByName(): NodeListOf<Element> {
+    return document.querySelectorAll(`ods-checkbox[name="${this.name}"]`);
+  }
+
+  private onInput(): void {
+    this.odsChange.emit({
+      checked: this.inputEl?.checked ?? false,
+      name: this.name,
+      validity:  this.inputEl?.validity,
+      value: this.value ?? null,
+    });
+  }
+
+  render(): FunctionalComponent {
+    return (
+      <Host class="ods-checkbox">
+        <input
+          aria-label={ this.ariaLabel }
+          aria-labelledby={ this.ariaLabelledby }
+          class="ods-checkbox__checkbox"
+          checked={ this.isChecked }
+          disabled={ this.isDisabled }
+          onBlur={ (): CustomEvent<void> => this.odsBlur.emit() }
+          onFocus={ (): CustomEvent<void> => this.odsFocus.emit() }
+          onInput={ (): void => this.onInput() }
+          id={ this.inputId }
+          indeterminate={ this.isIndeterminate }
+          name={ this.name }
+          ref={ (el): HTMLInputElement => this.inputEl = el as HTMLInputElement }
+          required={ this.isRequired }
+          type="checkbox"
+          value={ this.value?.toString() || '' } />
+      </Host>
+    );
+  }
+}

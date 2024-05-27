@@ -24,7 +24,7 @@
     }
 
     .multiline {
-      width: 80px;
+      width: 120px;
     }
 
     .width::part(message) {
@@ -67,18 +67,20 @@
 
   <p>Text & tooltip in slot</p>
   <ods-message>
-    <ods-text preset="heading-5"
-              class="my-text">
-      Message content
-    </ods-text>
-    <ods-icon id="tooltip-trigger-2"
-              class="my-icon"
-              name="info-circle">
-    </ods-icon>
+    <div style="display: inline-flex;">
+      <ods-text preset="heading-5"
+                class="my-text">
+        Message content
+      </ods-text>
+      <ods-icon id="tooltip-trigger-2"
+                class="my-icon"
+                name="info-circle">
+      </ods-icon>
 
-    <ods-tooltip trigger-id="tooltip-trigger-2">
-      Tooltip content
-    </ods-tooltip>
+      <ods-tooltip trigger-id="tooltip-trigger-2">
+        Tooltip content
+      </ods-tooltip>
+    </div>
   </ods-message>
 
   <p>Select in slot</p>

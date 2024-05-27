@@ -114,3 +114,19 @@ export const CustomCSS: StoryObj = {
 </style>
   `,
 };
+
+export const Multiline: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<div class="multiline">
+  <ods-message >
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer faucibus, libero et pharetra mattis, ipsum velit semper risus, non ultrices lacus massa sed arcu. Nulla sed tellus.
+  </ods-message>
+</div>
+<style>
+  .multiline {
+    width: 400px;
+  }
+</style>
+  `,
+};

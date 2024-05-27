@@ -1,0 +1,11 @@
+@mixin ods-icon() {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  line-height: 1;
+  font-family: 'ODS Icon', serif !important;
+  speak: never;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-variant: normal;
+  font-style: normal;
+}

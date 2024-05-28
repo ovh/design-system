@@ -3,7 +3,6 @@
 @mixin ods-radio() {
   appearance: none;
   display: inline-flex;
-  transform: translateY(-3px);
   margin: 0;
   border: 1px solid var(--ods-color-neutral-300);
   border-radius: 50%;

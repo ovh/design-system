@@ -230,3 +230,16 @@ export const InputId: StoryObj = {
   <label for="input-id-example">Example</label>
  `,
 };
+
+export const Alignment: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+  <div style="display: inline-flex; justify-content: center; align-items: center; gap: 5px;">
+    <ods-radio input-id="alignment" value="alignment"></ods-radio>
+    <label for="alignment" style="font-size: 2rem;">Alignment</label>
+
+    <ods-radio input-id="alignment2" value="alignment2"></ods-radio>
+    <label for="alignment2" style="">Alignment2</label>
+  </div>
+ `,
+};

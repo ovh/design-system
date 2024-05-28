@@ -1,6 +1,10 @@
 @use '../../../../../style/radio';
 
 .ods-radio {
+  display: inline-flex;
+  width: inherit;
+  height: inherit;
+
   &__radio {
     @include radio.ods-radio();
   }

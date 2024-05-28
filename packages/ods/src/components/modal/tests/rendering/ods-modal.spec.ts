@@ -1,6 +1,6 @@
 import type { SpecPage } from '@stencil/core/testing';
 import { newSpecPage } from '@stencil/core/testing';
-import { OdsModal } from '../../src';
+import { ODS_MODAL_COLOR, OdsModal } from '../../src';
 
 describe('ods-modal rendering', () => {
   let page: SpecPage;
@@ -15,19 +15,53 @@ describe('ods-modal rendering', () => {
     root = page.root;
   }
 
-  describe('dummy', () => {
-    it('should be reflected', async() => {
-      const dummyValue = 'dummy value';
+  describe('attributes', () => {
+    describe('color', () => {
+      it('should be reflected', async() => {
+        const colorValue = ODS_MODAL_COLOR.warning;
 
-      await setup(`<ods-modal dummy="${dummyValue}"></ods-modal>`);
+        await setup(`<ods-modal color="${colorValue}"></ods-modal>`);
 
-      expect(root?.getAttribute('dummy')).toBe(dummyValue);
+        expect(root?.getAttribute('color')).toBe(colorValue);
+      });
+
+      it('should be set to "information" by default', async() => {
+        await setup('<ods-modal></ods-modal>');
+
+        expect(root?.getAttribute('color')).toBe(ODS_MODAL_COLOR.information);
+      });
     });
 
-    it('should not be set by default', async() => {
-      await setup('<ods-modal></ods-modal>');
+    describe('isDismissible', () => {
+      it('should be reflected', async() => {
+        const isDismissibleValue = 'true';
 
-      expect(root?.getAttribute('dummy')).toBeNull();
+        await setup(`<ods-modal is-dismissible="${isDismissibleValue}"></ods-modal>`);
+
+        expect(root?.getAttribute('is-dismissible')).toBe(isDismissibleValue);
+      });
+
+      it('should be set by default', async() => {
+        await setup('<ods-modal></ods-modal>');
+
+        expect(root?.getAttribute('is-dismissible')).not.toBeNull();
+      });
+    });
+
+    describe('isOpen', () => {
+      it('should be reflected', async() => {
+        const isOpenValue = 'true';
+
+        await setup(`<ods-modal is-open="${isOpenValue}"></ods-modal>`);
+
+        expect(root?.getAttribute('is-open')).toBe(isOpenValue);
+      });
+
+      it('should not be set by default', async() => {
+        await setup('<ods-modal></ods-modal>');
+
+        expect(root?.getAttribute('is-open')).toBeNull();
+      });
     });
   });
 });

@@ -11,8 +11,91 @@
 </head>
 
 <body>
-  <p>Default</p>
-  <ods-modal>
+  <ods-button id="button-1" label="Modal 1" icon="face-wink"></ods-button>
+  <ods-button id="button-2" label="Modal 2" icon="shield" variant="outline"></ods-button>
+  <ods-button id="button-3" label="Modal 3" icon="globe" color="critical"></ods-button>
+  <ods-button id="button-4" label="Modal 4" icon="star" color="critical" variant="outline"></ods-button>
+
+  <ods-modal id="modal-1" color="information" is-dismissible="true" is-open>
+    <ods-text preset="heading-4" class="heading">
+      Hello, world!
+    </ods-text>
+    <ods-text preset="span">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    </ods-text>
+    <ods-button class="button" slot="actions" label="Learn more" icon="book" variant="outline"></ods-button>
+    <ods-button class="button" slot="actions" label="Activate" icon="shield"></ods-button>
   </ods-modal>
+
+  <ods-modal id="modal-2" color="warning" is-dismissible="true">
+    <ods-text preset="heading-4" class="heading">
+      Hello, world!
+    </ods-text>
+    <ods-text preset="span">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    </ods-text>
+  </ods-modal>
+
+  <ods-modal id="modal-3" color="critical" is-dismissible="false">
+    <ods-text preset="heading-4" class="heading">
+      Hello, world!
+    </ods-text>
+    <ods-text preset="span">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    </ods-text>
+    <ods-button class="button" slot="actions" label="Learn more" icon="book" variant="outline"></ods-button>
+    <ods-button class="button" slot="actions" label="Activate" icon="shield"></ods-button>
+  </ods-modal>
+
+  <ods-modal id="modal-4" color="success" is-dismissible="true">
+    <ods-text preset="heading-4" class="heading">
+      Hello, world!
+    </ods-text>
+    <ods-text preset="span">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    </ods-text>
+  </ods-modal>
+
+  <script>
+    const button1 = document.getElementById('button-1');
+    const button2 = document.getElementById('button-2');
+    const button3 = document.getElementById('button-3');
+    const button4 = document.getElementById('button-4');
+    const modal1 = document.getElementById('modal-1');
+    const modal2 = document.getElementById('modal-2');
+    const modal3 = document.getElementById('modal-3');
+    const modal4 = document.getElementById('modal-4');
+
+    button1.addEventListener('click', () => {
+      modal1.open();
+    });
+
+    button2.addEventListener('click', () => {
+      modal2.open();
+    });
+
+    button3.addEventListener('click', () => {
+      modal3.open();
+    });
+
+    button4.addEventListener('click', () => {
+      modal4.open();
+    });
+  </script>
+
+  <style>
+    * {
+      font-family: 'Source Sans Pro', sans-serif;
+    }
+
+    .heading::part(text) {
+      margin-top: 0;
+      margin-bottom: 12px;
+    }
+
+    .button {
+      padding-top: 24px;
+    }
+  </style>
 </body>
 </html>

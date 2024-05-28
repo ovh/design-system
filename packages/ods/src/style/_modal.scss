@@ -1,13 +1,128 @@
+$ods-modal-border-radius: var(--ods-border-radius-sm);
+
+@mixin ods-modal() {
+  position: fixed;
+  z-index: 1;
+  outline: none;
+  border: none;
+  border-radius: $ods-modal-border-radius;
+  background: var(--ods-color-neutral-000);
+  padding: 0;
+  width: 100%;
+  max-width: 512px;
+  overflow: hidden;
+  animation: modal-open 0.2s ease-in-out;
+
+  &::backdrop {
+    opacity: 0.75;
+    background-color: var(--ods-color-primary-500);
+  }
+}
+
+@mixin ods-modal-header() {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 4px;
+  width: 100%;
+  height: 32px;
+  overflow: hidden;
+}
+
 @mixin ods-modal-color($color) {
   @if $color == 'critical' {
-    background-color: var(--ods-color-alpha);
+    background-color: var(--ods-color-critical-100);
   } @else if $color == 'information' {
-    background-color: var(--ods-color-new);
+    background-color: var(--ods-color-primary-100);
   } @else if $color == 'neutral' {
-    background-color: var(--ods-color-beta);
+    background-color: var(--ods-color-neutral-100);
   } @else if $color == 'success' {
-    background-color: var(--ods-color-beta);
+    background-color: var(--ods-color-success-100);
   } @else if $color == 'warning' {
-    background-color: var(--ods-color-alpha);
+    background-color: var(--ods-color-warning-100);
   }
+}
+
+@mixin ods-modal-close-button() {
+  display: inherit;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 2px;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  font-size: 1rem;
+}
+
+@mixin ods-modal-close-button-color($color) {
+  @if $color == 'critical' {
+    color: var(--ods-color-critical-500);
+
+    &:hover, &:focus-visible {
+      background-color: var(--ods-color-critical-200);
+    }
+
+    &:active {
+      background-color: var(--ods-color-critical-300);
+    }
+  } @else if $color == 'information' {
+    color: var(--ods-color-primary-600);
+
+    &:hover, &:focus-visible {
+      background-color: var(--ods-color-primary-200);
+    }
+
+    &:active {
+      background-color: var(--ods-color-primary-300);
+    }
+  } @else if $color == 'neutral' {
+    color: var(--ods-color-neutral-600);
+
+    &:hover, &:focus-visible {
+      background-color: var(--ods-color-neutral-200);
+    }
+
+    &:active {
+      background-color: var(--ods-color-neutral-300);
+    }
+  } @else if $color == 'success' {
+    color: var(--ods-color-success-900);
+
+    &:hover, &:focus-visible {
+      background-color: var(--ods-color-success-200);
+    }
+
+    &:active {
+      background-color: var(--ods-color-success-300);
+    }
+  } @else if $color == 'warning' {
+    color: var(--ods-color-warning-900);
+
+    &:hover, &:focus-visible {
+      background-color: var(--ods-color-warning-200);
+    }
+
+    &:active {
+      background-color: var(--ods-color-warning-300);
+    }
+  }
+}
+
+@mixin ods-modal-content() {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  width: 100%;
+  max-height: 50vh;
+  overflow-y: auto;
+}
+
+@mixin ods-modal-actions() {
+  display: flex;
+  gap: 4px;
+  justify-content: flex-end;
+  width: 100%;
 }

@@ -11,17 +11,17 @@ import { LINK_ID } from '../../zeroheight';
 
 # Overview
 
-TODO Some text about the component
+A Modal component is used to overlay with important content the main view of a site and block interactions with it.
 
-<Canvas of={ ModalStories.Default } sourceState='none' />
+<Canvas of={ ModalStories.Overview } sourceState='none' />
 
 <DocNavigator of={ ModalStories } linkId={ LINK_ID.MODAL } />
 
 <Markdown>{ SpecificationsModal }</Markdown>
 
-# Style customization [IF RELEVANT]
+# Style customization
 
-You can add your own style on the modal element using the part `modal`.
+You can update the modal's content by directly updating the slot elements.
 
 Custom modal css:
 
@@ -33,7 +33,14 @@ Custom modal css:
 
 <Canvas of={ ModalStories.Default } sourceState='shown' />
 
-## [Other attribute]
-<Canvas of={ ModalStories.Default } sourceState='shown' />
+## Dismissible
 
-...
+<Canvas of={ ModalStories.Dismissible } sourceState='shown' />
+
+## Color
+
+<Canvas of={ ModalStories.Color } sourceState='shown' />
+
+## Actions slot
+
+<Canvas of={ ModalStories.Actions } sourceState='shown' />

@@ -20,33 +20,6 @@ export class OdsModal {
   @Event() odsModalClose!: EventEmitter<void>;
   @Event() odsModalOpen!: EventEmitter<void>;
 
-  @Listen('keydown', { target: 'window' })
-  onKeyDown(event: KeyboardEvent): void {
-    if(event.key === 'Escape') {
-      event.stopPropagation();
-      event.preventDefault();
-
-      if (this.isOpen && this.isDismissible) {
-        this.close();
-      }
-    }
-  }
-
-  @Watch('isOpen')
-  handleOpenState(): void {
-    if (!this.modalDialog) {
-      return;
-    } else if (this.isOpen) {
-      this.modalDialog.showModal?.();
-    } else {
-      this.modalDialog.close?.();
-    }
-  }
-
-  componentDidLoad(): void {
-    this.handleOpenState();
-  }
-
   @Method()
   async close(): Promise<void> {
     document.body.style.removeProperty('overflow');
@@ -72,6 +45,42 @@ export class OdsModal {
     this.odsModalOpen.emit();
   }
 
+  @Watch('isOpen')
+  handleOpenState(): void {
+    if (!this.modalDialog) {
+      return;
+    }
+
+    if (this.isOpen) {
+      return this.modalDialog.showModal?.();
+    }
+
+    return this.modalDialog.close?.();
+  }
+
+  @Listen('keydown', { target: 'window' })
+  onKeyDown(event: KeyboardEvent): void {
+    if(event.key === 'Escape') {
+      event.stopPropagation();
+      event.preventDefault();
+
+      if (this.isOpen && this.isDismissible) {
+        this.close();
+      }
+    }
+  }
+
+  componentDidLoad(): void {
+    this.handleOpenState();
+  }
+
+  disconnectedCallback(): void {
+    document.body.style.removeProperty('overflow');
+    this.modalDialog.close?.();
+    this.isOpen = false;
+    this.odsModalClose.emit();
+  }
+
   handleBackdropClick(event: MouseEvent): void {
     if (this.isDismissible && event.target === this.modalDialog) {
       this.close();
@@ -92,18 +101,11 @@ export class OdsModal {
         >
           <div class='ods-modal__backdrop'></div>
 
-          <div class={{
-            'ods-modal__dialog__header': true,
-            [ `ods-modal__dialog__header--${this.color}` ]: true,
-          }}>
+          <div class={ `ods-modal__dialog__header ods-modal__dialog__header--${this.color}` }>
             {
               this.isDismissible &&
-              <button
-                class={{
-                  'ods-modal__dialog__header__close': true,
-                  [ `ods-modal__dialog__header__close--${this.color}` ]: true,
-                }}
-                onClick={ this.close.bind(this) }>
+              <button class={ `ods-modal__dialog__header__close ods-modal__dialog__header__close--${this.color}` }
+                onClick={ () => this.close() }>
                 <ods-icon name={ ODS_ICON_NAME.cross }>
                 </ods-icon>
               </button>

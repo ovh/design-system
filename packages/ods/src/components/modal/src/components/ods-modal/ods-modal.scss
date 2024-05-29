@@ -1,26 +1,8 @@
-@keyframes modal-open {
-  from {
-    transform: scale(0.8);
-    opacity: 0;
-  }
+@use '../../../../../style/modal';
+@use '../../../../../style/focus';
 
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-@keyframes modal-close {
-  from {
-    transform: scale(1);
-    opacity: 1;
-  }
-
-  to {
-    transform: scale(0.9);
-    opacity: 0;
-  }
-}
+@include modal.animation-mixin(modal-open);
+@include modal.animation-mixin(modal-close);
 
 :host(.ods-modal) {
   display: none;

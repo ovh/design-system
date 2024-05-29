@@ -25,7 +25,7 @@ describe('ods-modal rendering', () => {
         expect(root?.getAttribute('color')).toBe(colorValue);
       });
 
-      it('should be set to "information" by default', async() => {
+      it('should be set to its default value', async() => {
         await setup('<ods-modal></ods-modal>');
 
         expect(root?.getAttribute('color')).toBe(ODS_MODAL_COLOR.information);

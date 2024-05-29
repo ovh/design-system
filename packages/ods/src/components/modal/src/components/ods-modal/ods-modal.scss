@@ -1,6 +1,5 @@
 @use '../../../../../style/modal';
 @use '../../../../../style/focus';
-
 @include modal.animation-mixin(modal-open);
 @include modal.animation-mixin(modal-close);
 

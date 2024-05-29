@@ -1,5 +1,29 @@
 $ods-modal-border-radius: var(--ods-border-radius-sm);
 
+@mixin animation-mixin($name) {
+  @keyframes modal-open {
+    0% {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes modal-close {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(0.9);
+      opacity: 0;
+    }
+  }
+}
+
 @mixin ods-modal() {
   position: fixed;
   z-index: 1;
@@ -11,7 +35,6 @@ $ods-modal-border-radius: var(--ods-border-radius-sm);
   width: 100%;
   max-width: 512px;
   overflow: hidden;
-  animation: modal-open 0.2s ease-in-out;
 
   &::backdrop {
     opacity: 0.75;

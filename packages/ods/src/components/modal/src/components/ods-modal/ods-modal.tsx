@@ -27,10 +27,13 @@ export class OdsModal {
     if (this.modalDialog) {
       this.modalDialog.classList.add('ods-modal__dialog--close-animation');
 
-      setTimeout(() => {
+      const onAnimationEnd = () => {
         this.isOpen = false;
         this.modalDialog.classList.remove('ods-modal__dialog--close-animation');
-      }, 100);
+        this.modalDialog.removeEventListener('animationend', onAnimationEnd);
+      };
+
+      this.modalDialog.addEventListener('animationend', onAnimationEnd);
     } else {
       this.isOpen = false;
     }

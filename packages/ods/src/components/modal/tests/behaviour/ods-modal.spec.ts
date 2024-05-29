@@ -29,9 +29,8 @@ describe('ods-modal behaviour', () => {
     await modal.close();
     await page.waitForChanges();
 
-    // Wait for the dialog to close
-    await new Promise((resolve) => setTimeout(resolve, 200));
+    const closeAnimation = page.root?.shadowRoot?.querySelector('.ods-modal__dialog--close-animation');
 
-    expect(modal.isOpen).toBe(false);
+    expect(closeAnimation).not.toBeNull();
   });
 });

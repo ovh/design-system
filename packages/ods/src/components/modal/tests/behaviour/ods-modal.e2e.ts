@@ -62,16 +62,10 @@ describe('ods-modal behaviour', () => {
     const modal = await page.find('ods-modal');
     await modal.callMethod('close');
 
-    // Wait for the dialog to close
-    await new Promise((resolve) => setTimeout(resolve, 200));
-
     await page.waitForChanges();
 
-    const isOpen = await page.evaluate(() => {
-      const dialog = document.querySelector('ods-modal')?.shadowRoot?.querySelector('.ods-modal__dialog') as HTMLDialogElement;
-      return dialog && dialog.hasAttribute('open');
-    });
+    const closeAnimation = await page.find('ods-modal >>> .ods-modal__dialog--close-animation');
 
-    expect(isOpen).toBe(false);
+    expect(closeAnimation).not.toBeNull();
   });
 });

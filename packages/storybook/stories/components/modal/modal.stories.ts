@@ -16,15 +16,15 @@ export default meta;
 
 export const Demo: StoryObj = {
   render: (args) => html`
-<ods-modal is-open="${args.isOpen}" is-dismissible="${args.isDismissible}" color="${args.color}">
+<ods-modal class="modal-demo" is-open="${args.isOpen}" is-dismissible="${args.isDismissible}" color="${args.color}">
   ${unsafeHTML(args.content)}
   ${unsafeHTML(args.actions)}
 </ods-modal>
 <style>
-  .my-text::part(text) {
+  .modal-demo .my-text::part(text) {
     margin: 0 0 1rem 0;
   }
-  ods-button::part(button) {
+  .modal-demo ods-button::part(button) {
     margin-top: 1rem;
   }
 </style>
@@ -48,14 +48,12 @@ export const Demo: StoryObj = {
     },
     color: {
       table: {
-        category: CONTROL_CATEGORY.general,
+        category: CONTROL_CATEGORY.design,
         defaultValue: { summary: ODS_MODAL_COLOR.information },
         type: { summary: ODS_MODAL_COLORS },
       },
-      control: {
-        type: 'select',
-        options: ODS_MODAL_COLORS,
-      },
+      control: { type: 'select' },
+      options: ODS_MODAL_COLORS,
     },
     content: {
       table: {
@@ -104,7 +102,7 @@ export const Overview: StoryObj = {
 </script>
 
 <style>
-  .headline::part(text) {
+  .modal-overview .headline::part(text) {
     margin: 0 0 1rem 0;
   }
 </style>
@@ -148,7 +146,7 @@ export const CustomCSS: StoryObj = {
 </script>
 
 <style>
-  .my-text {
+  .modal-custom-css .my-text {
     color: red;
   }
 </style>
@@ -234,7 +232,7 @@ export const Actions: StoryObj = {
 </script>
 
 <style>
-  .modal-actions-close::part(button) {
+  .modal-actions .modal-actions-close::part(button) {
     margin-top: 1rem;
   }
 </style>

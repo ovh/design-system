@@ -1,5 +1,4 @@
 import { Component, Element, Event, type EventEmitter, type FunctionalComponent, Host, Listen, Method, Prop, Watch, h } from '@stencil/core';
-import { type HTMLStencilElement } from '@stencil/core/internal';
 import { ODS_ICON_NAME } from '../../../../icon/src';
 import { ODS_MODAL_COLOR, type OdsModalColor } from '../../constants/modal-color';
 
@@ -11,7 +10,7 @@ import { ODS_MODAL_COLOR, type OdsModalColor } from '../../constants/modal-color
 export class OdsModal {
   private modalDialog!: HTMLDialogElement;
 
-  @Element() el!: HTMLStencilElement;
+  @Element() el!: HTMLElement;
 
   @Prop({ reflect: true }) public color: OdsModalColor = ODS_MODAL_COLOR.information;
   @Prop({ reflect: true }) public isDismissible: boolean = true;
@@ -27,7 +26,7 @@ export class OdsModal {
     if (this.modalDialog) {
       this.modalDialog.classList.add('ods-modal__dialog--close-animation');
 
-      const onAnimationEnd = () => {
+      const onAnimationEnd = (): void => {
         this.isOpen = false;
         this.modalDialog.classList.remove('ods-modal__dialog--close-animation');
         this.modalDialog.removeEventListener('animationend', onAnimationEnd);

@@ -13,11 +13,22 @@ describe('ods-modal react', () => {
     await goToComponentPage(page, 'ods-modal');
   });
 
-  it('renders the component correctly', async () => {
-    const elem = await page.$('ods-modal');
-    const boundingBox = await elem?.boundingBox();
+  it('renders the modal on button click', async() => {
+    const modal = await page.$('ods-modal');
+    let boundingBox = await modal?.boundingBox();
+
+    expect(boundingBox?.height).toBe(undefined);
+    expect(boundingBox?.width).toBe(undefined);
+
+    const button = await page.$('ods-button:not(:disabled)');
+
+    await button?.click();
+    // Small delay to ensure page console event has been resolved
+    await new Promise((resolve) => setTimeout(resolve, 100));
+
+    boundingBox = await modal?.boundingBox();
 
     expect(boundingBox?.height).toBeGreaterThan(0);
     expect(boundingBox?.width).toBeGreaterThan(0);
-  });
+  })
 });

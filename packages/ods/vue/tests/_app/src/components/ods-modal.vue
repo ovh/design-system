@@ -1,7 +1,7 @@
 <template>
   <OdsModal isOpen>
-    <OdsText>Lorem ipsum</OdsText>
-    <OdsText>
+    <OdsText preset='label'>Lorem ipsum</OdsText>
+    <OdsText preset='span'>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam consectetur, nunc nec ultricies ultricies, nunc nunc ultricies
     </OdsText>
   </OdsModal>
@@ -15,6 +15,7 @@
     name: 'Modal',
     components: {
       OdsModal,
+      OdsText
     },
   });
 </script>

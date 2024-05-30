@@ -90,7 +90,9 @@ You can use the css to obtain the same rendering.
 
 Disabled radio:
 ```html
-<osds-radio disabled></osds-radio>
+<osds-radio disabled>
+  <osds-radio-button color='primary' size='sm'></osds-radio-button>
+</osds-radio>
 
 <!-- is now -->
 
@@ -99,10 +101,34 @@ Disabled radio:
 
 Label radio:
 ```html
-<osds-radio label="Radio label"></osds-radio>
+<osds-radio-button>
+  <span slot='end'>Radio label</span>
+</osds-radio-button>
 
 <!-- is now -->
 
 <ods-radio input-id="migration-label" name="name" value="migration"></ods-radio>
 <label for="migration-label">Radio label</label>
+```
+
+Group radio:
+```html
+<osds-radio-group>
+    <osds-radio value="A">
+        <osds-radio-button color='primary' size='sm'></osds-radio-button>
+    </osds-radio>
+    <osds-radio value="B">
+        <osds-radio-button color='primary' size='sm'></osds-radio-button>
+    </osds-radio>
+    <osds-radio value="C">
+        <osds-radio-button color='primary' size='sm'></osds-radio-button>
+    </osds-radio>
+</osds-radio-group>
+
+<!-- is now -->
+
+<ods-radio value="A" name="group-radio"></ods-radio>
+<ods-radio value="B" name="group-radio"></ods-radio>
+<ods-radio value="C" name="group-radio"></ods-radio>
+
 ```

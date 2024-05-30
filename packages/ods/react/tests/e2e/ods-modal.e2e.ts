@@ -20,11 +20,9 @@ describe('ods-modal react', () => {
     expect(boundingBox?.height).toBe(undefined);
     expect(boundingBox?.width).toBe(undefined);
 
-    const button = await page.$('ods-button:not(:disabled)');
+    const button = await page.$('ods-button');
 
     await button?.click();
-    // Small delay to ensure page console event has been resolved
-    await new Promise((resolve) => setTimeout(resolve, 100));
 
     boundingBox = await modal?.boundingBox();
 

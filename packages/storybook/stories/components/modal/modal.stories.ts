@@ -153,30 +153,30 @@ export const CustomCSS: StoryObj = {
   `,
 };
 
-export const Dismissible: StoryObj = {
+export const NotDismissible: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
-<ods-button class="button-dismissible" label="Trigger Modal" icon="cross" variant="outline">
+<ods-button class="button-not-dismissible" label="Trigger Modal" icon="cross" variant="outline">
 </ods-button>
-<ods-modal class="modal-dismissible" is-dismissible="false">
+<ods-modal class="modal-not-dismissible" is-dismissible="false">
   <ods-text preset="span">
     This Modal is not dismissible. You can use the custom "Close" button to close it.
   </ods-text>
-  <ods-button label="Close" slot="actions" icon="cross" class="modal-dismissible-close"></ods-button>
+  <ods-button label="Close" slot="actions" icon="cross" class="modal-not-dismissible-close"></ods-button>
 </ods-modal>
 
 <script>
-  const buttonDismissible = document.querySelector('.button-dismissible');
-  const modalDismissible = document.querySelector('.modal-dismissible');
+  const buttonNotDismissible = document.querySelector('.button-not-dismissible');
+  const modalNotDismissible = document.querySelector('.modal-not-dismissible');
 
-  buttonDismissible.addEventListener('click', () => {
-    modalDismissible.open();
+  buttonNotDismissible.addEventListener('click', () => {
+    modalNotDismissible.open();
   });
 
-  const modalDismissibleClose = document.querySelector('.modal-dismissible-close');
+  const modalNotDismissibleClose = document.querySelector('.modal-not-dismissible-close');
 
-  modalDismissibleClose.addEventListener('click', () => {
-    modalDismissible.close();
+  modalNotDismissibleClose.addEventListener('click', () => {
+    modalNotDismissible.close();
   });
 </script>
   `,

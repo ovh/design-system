@@ -18,7 +18,6 @@
     @include icon.ods-icon();
 
     position: absolute;
-    transform: scale(0);
     color: var(--ods-color-primary-000);
   }
 
@@ -28,14 +27,12 @@
 
   &:checked {
     &::before {
-      transform: scale(1);
       content: "\e913";
     }
   }
 
   &:indeterminate {
     &::before {
-      transform: scale(1);
       content: "\e95e";
     }
   }

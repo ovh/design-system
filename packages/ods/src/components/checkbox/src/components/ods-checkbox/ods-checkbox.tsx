@@ -12,11 +12,11 @@ export class OdsCheckbox {
 
   @Prop({ reflect: true }) public ariaLabel: HTMLElement['ariaLabel'] = null;
   @Prop({ reflect: true }) public ariaLabelledby?: string;
+  @Prop({ reflect: true }) public inputId?: string;
   @Prop({ reflect: true }) public isChecked: boolean = false;
   @Prop({ reflect: true }) public isDisabled: boolean = false;
   @Prop({ reflect: true }) public isIndeterminate : boolean = false;
   @Prop({ reflect: true }) public isRequired: boolean = false;
-  @Prop({ reflect: true }) public inputId?: string;
   @Prop({ reflect: true }) public name!: string;
   @Prop({ mutable: true, reflect: true }) public value: string | null = null;
 

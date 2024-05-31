@@ -21,12 +21,7 @@ export const Demo: StoryObj = {
   ${unsafeHTML(args.actions)}
 </ods-modal>
 <style>
-  .modal-demo .my-text::part(text) {
-    margin: 0 0 1rem 0;
-  }
-  .modal-demo ods-button::part(button) {
-    margin-top: 1rem;
-  }
+  ${unsafeHTML(args.customCss)}
 </style>
   `,
   argTypes: orderControls({
@@ -69,6 +64,14 @@ export const Demo: StoryObj = {
       },
       control: 'text',
     },
+    customCss: {
+      table: {
+        category: CONTROL_CATEGORY.design,
+        defaultValue: { summary: 'ø' },
+      },
+      control: 'text',
+      description: 'Set a custom style properties. Example: "ods-modal::part(dialog) { border: 1px red solid; }"',
+    }
   }),
   args: {
     isOpen: true,
@@ -80,6 +83,13 @@ export const Demo: StoryObj = {
     actions:
 `<ods-button label="Migration guide" slot="actions" variant="outline" icon="upload"></ods-button>
 <ods-button label="Documentation" slot="actions" icon="book"></ods-button>`,
+    customCss:
+`.modal-demo .my-text::part(text) {
+  margin: 0 0 1rem 0;
+}
+.modal-demo ods-button::part(button) {
+  margin-top: 1rem;
+}`
   },
 };
 
@@ -148,6 +158,11 @@ export const CustomCSS: StoryObj = {
 <style>
   .modal-custom-css .my-text {
     color: red;
+  }
+
+  .modal-custom-css::part(dialog) {
+    border: .5rem red solid;
+    height: 90%;
   }
 </style>
   `,

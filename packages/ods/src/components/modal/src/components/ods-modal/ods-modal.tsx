@@ -98,6 +98,7 @@ export class OdsModal {
         <dialog class='ods-modal__dialog'
           ref={ (el) => this.modalDialog = el as HTMLDialogElement }
           onClick={ (event) => this.handleBackdropClick(event) }
+          part='dialog'
         >
           <div class='ods-modal__backdrop'></div>
 

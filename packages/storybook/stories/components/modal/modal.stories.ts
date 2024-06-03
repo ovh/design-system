@@ -1,3 +1,4 @@
+
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/ods-modal';
 import { ODS_MODAL_COLOR, ODS_MODAL_COLORS } from '@ovhcloud/ods-components';
@@ -14,12 +15,25 @@ const meta: Meta = {
 
 export default meta;
 
+const resetRoot = () => {
+  const storybookRoot = document.querySelector('#storybook-root');
+  if (storybookRoot) {
+    storybookRoot.innerHTML = '';
+  }
+};
+
+const withResetRoot = (storyFn: any) => {
+  resetRoot();
+  return storyFn();
+};
+
 export const Demo: StoryObj = {
   render: (args) => html`
 <ods-modal class="modal-demo" is-open="${args.isOpen}" is-dismissible="${args.isDismissible}" color="${args.color}">
   ${unsafeHTML(args.content)}
   ${unsafeHTML(args.actions)}
 </ods-modal>
+
 <style>
   ${unsafeHTML(args.customCss)}
 </style>
@@ -91,6 +105,7 @@ export const Demo: StoryObj = {
   margin-top: 1rem;
 }`
   },
+  decorators: [withResetRoot],
 };
 
 export const Overview: StoryObj = {
@@ -103,12 +118,14 @@ export const Overview: StoryObj = {
 </ods-modal>
 
 <script>
-  const buttonOverview = document.querySelector('.button-overview');
-  const modalOverview = document.querySelector('.modal-overview');
+  (() => {
+    const buttonOverview = document.querySelector('.button-overview');
+    const modalOverview = document.querySelector('.modal-overview');
 
-  buttonOverview.addEventListener('click', () => {
-    modalOverview.open();
-  });
+    buttonOverview.addEventListener('click', () => {
+      modalOverview.open();
+    });
+  })();
 </script>
 
 <style>
@@ -116,7 +133,8 @@ export const Overview: StoryObj = {
     margin: 0 0 1rem 0;
   }
 </style>
-`,
+  `,
+  decorators: [withResetRoot],
 };
 
 export const Default: StoryObj = {
@@ -126,14 +144,16 @@ export const Default: StoryObj = {
 <ods-modal class="modal-default"></ods-modal>
 
 <script>
-  const buttonDefault = document.querySelector('.button-default');
-  const modalDefault = document.querySelector('.modal-default');
+  (() => {
+    const buttonDefault = document.querySelector('.button-default');
+    const modalDefault = document.querySelector('.modal-default');
 
-  buttonDefault.addEventListener('click', () => {
-    modalDefault.open();
-  });
+    buttonDefault.addEventListener('click', () => {
+      modalDefault.open();
+    });
+  })();
 </script>
-`,
+  `,
 };
 
 export const CustomCSS: StoryObj = {
@@ -147,12 +167,14 @@ export const CustomCSS: StoryObj = {
 </ods-modal>
 
 <script>
-  const buttonCustomCSS = document.querySelector('.button-custom-css');
-  const modalCustomCSS = document.querySelector('.modal-custom-css');
+  (() => {
+    const buttonCustomCSS = document.querySelector('.button-custom-css');
+    const modalCustomCSS = document.querySelector('.modal-custom-css');
 
-  buttonCustomCSS.addEventListener('click', () => {
-    modalCustomCSS.open();
-  });
+    buttonCustomCSS.addEventListener('click', () => {
+      modalCustomCSS.open();
+    });
+  })();
 </script>
 
 <style>
@@ -181,18 +203,19 @@ export const NotDismissible: StoryObj = {
 </ods-modal>
 
 <script>
-  const buttonNotDismissible = document.querySelector('.button-not-dismissible');
-  const modalNotDismissible = document.querySelector('.modal-not-dismissible');
+  (() => {
+    const buttonNotDismissible = document.querySelector('.button-not-dismissible');
+    const modalNotDismissible = document.querySelector('.modal-not-dismissible');
+    const modalNotDismissibleClose = document.querySelector('.modal-not-dismissible-close');
 
-  buttonNotDismissible.addEventListener('click', () => {
-    modalNotDismissible.open();
-  });
+    buttonNotDismissible.addEventListener('click', () => {
+      modalNotDismissible.open();
+    });
 
-  const modalNotDismissibleClose = document.querySelector('.modal-not-dismissible-close');
-
-  modalNotDismissibleClose.addEventListener('click', () => {
-    modalNotDismissible.close();
-  });
+    modalNotDismissibleClose.addEventListener('click', () => {
+      modalNotDismissible.close();
+    });
+  })();
 </script>
   `,
 };
@@ -209,14 +232,16 @@ export const Color: StoryObj = {
 </ods-modal>
 
 <script>
-  const buttonColor = document.querySelector('.button-color');
-  const modalColor = document.querySelector('.modal-color');
+  (() => {
+    const buttonColor = document.querySelector('.button-color');
+    const modalColor = document.querySelector('.modal-color');
 
-  buttonColor.addEventListener('click', () => {
-    modalColor.open();
-  });
+    buttonColor.addEventListener('click', () => {
+      modalColor.open();
+    });
+  })();
 </script>
-`,
+  `,
 };
 
 export const Actions: StoryObj = {
@@ -232,18 +257,19 @@ export const Actions: StoryObj = {
 </ods-modal>
 
 <script>
-  const buttonActions = document.querySelector('.button-actions');
-  const modalActions = document.querySelector('.modal-actions');
+  (() => {
+    const buttonActions = document.querySelector('.button-actions');
+    const modalActions = document.querySelector('.modal-actions');
+    const modalActionsClose = document.querySelector('.modal-actions-close');
 
-  buttonActions.addEventListener('click', () => {
-    modalActions.open();
-  });
+    buttonActions.addEventListener('click', () => {
+      modalActions.open();
+    });
 
-  const modalActionsClose = document.querySelector('.modal-actions-close');
-
-  modalActionsClose.addEventListener('click', () => {
-    modalActions.close();
-  });
+    modalActionsClose.addEventListener('click', () => {
+      modalActions.close();
+    });
+  })();
 </script>
 
 <style>

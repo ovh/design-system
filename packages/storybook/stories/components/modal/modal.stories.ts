@@ -29,6 +29,7 @@ const withResetRoot = (storyFn: any) => {
 
 export const Demo: StoryObj = {
   render: (args) => html`
+<ods-button class="button-demo" label="Trigger Modal" icon="shutdown"></ods-button>
 <ods-modal class="modal-demo" is-open="${args.isOpen}" is-dismissible="${args.isDismissible}" color="${args.color}">
   ${unsafeHTML(args.content)}
   ${unsafeHTML(args.actions)}
@@ -37,6 +38,17 @@ export const Demo: StoryObj = {
 <style>
   ${unsafeHTML(args.customCss)}
 </style>
+
+<script>
+  (() => {
+    const buttonDemo = document.querySelector('.button-demo');
+    const modalDemo = document.querySelector('.modal-demo');
+
+    buttonDemo.addEventListener('click', () => {
+      modalDemo.open();
+    });
+  })();
+</script>
   `,
   argTypes: orderControls({
     isOpen: {

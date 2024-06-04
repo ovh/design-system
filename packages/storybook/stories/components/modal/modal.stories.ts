@@ -5,27 +5,17 @@ import { ODS_MODAL_COLOR, ODS_MODAL_COLORS } from '@ovhcloud/ods-components';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
 import { CONTROL_CATEGORY, orderControls } from '../../control';
+import { withResetRoot } from '../../hook';
 
 defineCustomElement();
 
 const meta: Meta = {
   title: 'ODS Components/User Feedback/Modal',
   component: 'ods-modal',
+  decorators: [withResetRoot],
 };
 
 export default meta;
-
-const resetRoot = () => {
-  const storybookRoot = document.querySelector('#storybook-root');
-  if (storybookRoot) {
-    storybookRoot.innerHTML = '';
-  }
-};
-
-const withResetRoot = (storyFn: any) => {
-  resetRoot();
-  return storyFn();
-};
 
 export const Demo: StoryObj = {
   render: (args) => html`
@@ -117,7 +107,6 @@ export const Demo: StoryObj = {
   margin-top: 1rem;
 }`
   },
-  decorators: [withResetRoot],
 };
 
 export const Overview: StoryObj = {
@@ -146,7 +135,6 @@ export const Overview: StoryObj = {
   }
 </style>
   `,
-  decorators: [withResetRoot],
 };
 
 export const Default: StoryObj = {

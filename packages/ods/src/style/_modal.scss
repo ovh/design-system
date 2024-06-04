@@ -148,7 +148,7 @@ $ods-modal-border-radius: var(--ods-border-radius-sm);
 @mixin ods-modal-actions() {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px;
+  gap: 1rem;
   justify-content: flex-end;
   width: 100%;
 }

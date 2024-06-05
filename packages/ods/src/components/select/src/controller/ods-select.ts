@@ -12,13 +12,13 @@ type SelectConfigItem = Record<string, object>;
 type SelectConfig = { plugin: SelectConfigItem, template: SelectConfigItem };
 
 function getSelectConfig(allowMultiple: boolean, multipleSelectionLabel: string, renderer?: CustomRenderer): SelectConfig {
-  const plugin: SelectConfigItem = { 'placeholder': {} };
+  const plugin: SelectConfigItem = { placeholder: {} };
   const template: SelectConfigItem = renderer || {};
 
   if (allowMultiple) {
     plugin['checkbox_options'] = {
-      'checkedClassNames': ['ts-checked'],
-      'uncheckedClassNames': ['ts-unchecked'],
+      checkedClassNames: ['ts-checked'],
+      uncheckedClassNames: ['ts-unchecked'],
     };
     plugin['merge_selected_items'] = {
       label: multipleSelectionLabel,

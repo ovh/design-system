@@ -137,7 +137,8 @@ export const DemoMultiple: StoryObj = {
 export const CustomCSS: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
-<ods-select class="my-select">
+<ods-select class="my-select"
+            placeholder="Select one pet">
   <option value="dog">Dog</option>
   <option value="cat">Cat</option>
   <option value="hamster">Hamster</option>
@@ -212,6 +213,7 @@ export const CustomRendererMultiple: StoryObj = {
   render: () => html`
 <ods-select allow-multiple
             id="select-custom-renderer-multiple"
+            multiple-selection-label="Selected provider"
             placeholder="Select a Cloud provider">
   <option data-description="OVH, legally OVH Groupe SA, is a French cloud computing company which offers VPS, dedicated servers and other web services. As of 2016 OVH owned the world's largest data center in surface area. As of 2019, it was the largest hosting provider in Europe, and the third largest in the world based on physical servers."
           data-logo="https://static-00.iconduck.com/assets.00/ovh-icon-2048x2048-l4c3izvg.png"
@@ -276,13 +278,37 @@ export const Default: StoryObj = {
 export const Multiple: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
-<ods-select allow-multiple>
+<ods-select allow-multiple
+            placeholder="Select one or more pets">
   <option value="dog">Dog</option>
   <option value="cat">Cat</option>
   <option value="hamster">Hamster</option>
   <option value="parrot">Parrot</option>
   <option value="spider">Spider</option>
   <option value="goldfish">Goldfish</option>
+</ods-select>
+  `,
+};
+
+export const Optgroup: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-select placeholder="Select a country">
+  <optgroup label="Europe">
+    <option value="fr">France</option>
+    <option value="it">Italy</option>
+    <option value="de">Germany</option>
+  </optgroup>
+  <optgroup label="Asia">
+    <option value="cn">China</option>
+    <option value="jp">Japan</option>
+    <option value="ru">Russia</option>
+  </optgroup>
+  <optgroup label="North America">
+    <option value="ca">Canada</option>
+    <option value="mx">Mexico</option>
+    <option value="us">United States of America</option>
+  </optgroup>
 </ods-select>
   `,
 };

@@ -44,6 +44,7 @@ export class OdsModal {
   async open(): Promise<void> {
     document.body.style.overflow = 'hidden';
     this.isOpen = true;
+    this.modalDialog.focus();
     this.odsModalOpen.emit();
   }
 

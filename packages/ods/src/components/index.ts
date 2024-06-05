@@ -40,3 +40,4 @@ export * from './tabs/src';
 export * from './switch/src';
 export * from './accordion/src';
 export * from './phone-number/src';
+export * from './datepicker/src';

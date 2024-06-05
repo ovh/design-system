@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html dir='ltr' lang='en'>
+<head>
+  <meta charset='utf-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0' />
+  <title>Dev ods-file-upload</title>
+
+  <script type='module' src='/build/ods-file-upload.esm.js'></script>
+  <script nomodule src='/build/ods-file-upload.js'></script>
+  <link rel="stylesheet" href="/build/ods-file-upload.css">
+
+  <style>
+    * {
+      font-family: 'Source Sans Pro', sans-serif;
+    }
+  </style>
+</head>
+
+<body>
+  <p>Default</p>
+  <ods-file-upload id="default">
+  </ods-file-upload>
+  <script>
+    const defaultFileUpload = document.querySelector('#default');
+
+    defaultFileUpload.addEventListener('odsFileChange', ({ detail }) => {
+      defaultFileUpload.files = (defaultFileUpload.files || []).concat(detail.files);
+    });
+  </script>
+
+  <p>Is disabled</p>
+  <ods-file-upload is-disabled>
+  </ods-file-upload>
+
+  <p>Global error</p>
+  <ods-file-upload error="No files allowed">
+  </ods-file-upload>
+
+  <p>Accept only png</p>
+  <ods-file-upload accept="image/png"
+                   id="accept">
+  </ods-file-upload>
+  <script>
+    const acceptFileUpload = document.querySelector('#accept');
+
+    acceptFileUpload.addEventListener('odsFileChange', ({ detail }) => {
+      acceptFileUpload.files = (acceptFileUpload.files || []).concat(detail.files);
+    });
+
+    acceptFileUpload.addEventListener('odsFileRejected', ({ detail }) => {
+      const filesName = detail.files.map((file) => file.name).join(', ');
+      acceptFileUpload.error = detail.files.length > 1 ?
+        `Files "${filesName}" are not of the expected format` :
+        `File "${filesName}" is not of the expected format`;
+    });
+  </script>
+
+  <p>Max 2 files</p>
+  <ods-file-upload id="maxFile"
+                   max-file="2">
+  </ods-file-upload>
+  <script>
+    const maxFileFileUpload = document.querySelector('#maxFile');
+
+    maxFileFileUpload.addEventListener('odsFileChange', ({ detail }) => {
+      maxFileFileUpload.files = (maxFileFileUpload.files || []).concat(detail.files);
+    });
+
+    maxFileFileUpload.addEventListener('odsFileRejected', ({ detail }) => {
+      maxFileFileUpload.error = `Max file reached, ${detail.files.length} file(s) rejected`;
+    });
+  </script>
+
+  <p>Upload progress</p>
+  <ods-file-upload id="progress">
+  </ods-file-upload>
+  <script>
+    const progressFileUpload = document.querySelector('#progress');
+    const openRequests = {};
+
+    function updateFile(file, { propertyName, value }) {
+      progressFileUpload.files = progressFileUpload.files.map((currentFile) => {
+        if (currentFile.odsId === file.odsId) {
+          currentFile[propertyName] = value;
+        }
+        return currentFile;
+      });
+    }
+
+    progressFileUpload.addEventListener('odsFileChange', ({ detail }) => {
+      detail.files.forEach((file) => {
+        let data = new FormData();
+        let request = new XMLHttpRequest();
+
+        file.progress = 0;
+        data.append('file', file);
+        openRequests[file.odsId] = request;
+
+        request.open('POST', 'http://httpbin.org/post');
+
+        request.onprogress = function(e) {
+          const progress = Math.round((e.loaded / e.total) * 100);
+          updateFile(file, { propertyName: 'progress', value: progress });
+        };
+
+        request.onerror = function() {
+          updateFile(file, { propertyName: 'progress', value: undefined });
+          updateFile(file, { propertyName: 'error', value: 'Error while uploading' });
+        };
+
+        request.onload = function() {
+          updateFile(file, { propertyName: 'progress', value: 100 });
+          updateFile(file, { propertyName: 'isUploaded', value: true });
+        };
+
+        request.send(data);
+      });
+
+      progressFileUpload.files = (progressFileUpload.files || []).concat(detail.files);
+    });
+
+    progressFileUpload.addEventListener('odsFileCancel', ({ detail }) => {
+      const request = openRequests[detail.odsId];
+
+      if (request.status === 200) {
+        request.open('DELETE', 'http://httpbin.org/delete');
+        request.send(detail);
+      } else {
+        request.abort();
+      }
+
+      progressFileUpload.files = progressFileUpload.files.filter((file) => file.odsId !== detail.odsId);
+    });
+  </script>
+
+  <p>Custom labels</p>
+  <ods-file-upload accept="image/*"
+                   accepted-file-label="Formats acceptés :"
+                   browse-file-label="Parcourir les fichiers"
+                   dropzone-label="Glisser-déposer des fichiers"
+                   id="labels"
+                   upload-success-label="Fichier uploadé">
+  </ods-file-upload>
+  <script>
+    const labelsFileUpload = document.querySelector('#labels');
+
+    labelsFileUpload.addEventListener('odsFileChange', ({ detail }) => {
+      labelsFileUpload.files = (labelsFileUpload.files || []).concat(detail.files).map((file) => {
+        file.isUploaded = true;
+        return file;
+      });
+    });
+  </script>
+
+  <p>Custom CSS</p>
+  <ods-file-upload class="custom-file-upload"
+                   id="css">
+  </ods-file-upload>
+  <script>
+    const cssFileUpload = document.querySelector('#css');
+
+    cssFileUpload.addEventListener('odsFileChange', ({ detail }) => {
+      cssFileUpload.files = (cssFileUpload.files || []).concat(detail.files);
+    });
+  </script>
+  <style>
+    .custom-file-upload {
+      width: 300px;
+    }
+
+    .custom-file-upload::part(file-list) {
+      max-height: 75px;
+      overflow: scroll;
+    }
+  </style>
+</body>
+</html>

@@ -194,11 +194,13 @@ export const Pattern: StoryObj = {
 <ods-password id="my-password-pattern" pattern="\\d*">
 </ods-password>
 <script>
-const passwordPattern = document.getElementById('my-password-pattern');
-passwordPattern.addEventListener('odsChange', (event) => {
-  passwordPattern.hasError = !event.detail.validity.valid;
-});
-</script>
+(() => {
+  const passwordPattern = document.getElementById('my-password-pattern');
+  passwordPattern.addEventListener('odsChange', (event) => {
+    passwordPattern.hasError = !event.detail.validity.valid;
+  });
+  </script>
+})();
   `,
 };
 

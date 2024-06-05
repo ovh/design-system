@@ -19,7 +19,7 @@ export default meta;
 
 export const Demo: StoryObj = {
   render: (args) => html`
-<ods-button class="button-demo" label="Trigger Modal" icon="shutdown"></ods-button>
+<ods-button class="button-demo" label="Trigger Modal"></ods-button>
 <ods-modal class="modal-demo" is-open="${args.isOpen}" is-dismissible="${args.isDismissible}" color="${args.color}">
   ${unsafeHTML(args.content)}
   ${unsafeHTML(args.actions)}
@@ -90,21 +90,22 @@ export const Demo: StoryObj = {
     }
   }),
   args: {
-    isOpen: true,
+    isOpen: false,
     isDismissible: true,
     color: ODS_MODAL_COLOR.information,
     content:
 `<ods-text preset="heading-4" class="my-text">Hello, world!</ods-text>
 <ods-text preset="span">Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</ods-text>`,
     actions:
-`<ods-button label="Migration guide" slot="actions" variant="outline" icon="upload"></ods-button>
-<ods-button label="Documentation" slot="actions" icon="book"></ods-button>`,
+`<ods-button label="Cancel" slot="actions" variant="ghost"></ods-button>
+<ods-button label="Confirm" slot="actions"></ods-button>`,
     customCss:
 `.modal-demo .my-text::part(text) {
   margin: 0 0 1rem 0;
 }
 .modal-demo ods-button::part(button) {
   margin-top: 1rem;
+  max-width: 100%;
 }`
   },
 };
@@ -112,7 +113,7 @@ export const Demo: StoryObj = {
 export const Overview: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
-<ods-button class="button-overview" label="Trigger Modal" icon="shutdown"></ods-button>
+<ods-button class="button-overview" label="Trigger Modal"></ods-button>
 <ods-modal class="modal-overview">
   <ods-text class="headline" preset="heading-4">Overview</ods-text>
   <ods-text preset="span">Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</ods-text>
@@ -140,7 +141,7 @@ export const Overview: StoryObj = {
 export const Default: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
-<ods-button class="button-default" label="Trigger Modal" icon="shutdown"></ods-button>
+<ods-button class="button-default" label="Trigger Modal"></ods-button>
 <ods-modal class="modal-default"></ods-modal>
 
 <script>
@@ -159,7 +160,7 @@ export const Default: StoryObj = {
 export const CustomCSS: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
-<ods-button class="button-custom-css" label="Trigger Modal" icon="shutdown"></ods-button>
+<ods-button class="button-custom-css" label="Trigger Modal"></ods-button>
 <ods-modal class="modal-custom-css">
   <ods-text preset="span" class="my-text">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -193,7 +194,7 @@ export const CustomCSS: StoryObj = {
 export const NotDismissible: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
-<ods-button class="button-not-dismissible" label="Trigger Modal" icon="cross" variant="outline">
+<ods-button class="button-not-dismissible" label="Trigger Modal">
 </ods-button>
 <ods-modal class="modal-not-dismissible" is-dismissible="false">
   <ods-text preset="span">
@@ -223,7 +224,7 @@ export const NotDismissible: StoryObj = {
 export const Color: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
-<ods-button class="button-color" label="Trigger Modal" icon="warning-triangle" color=${ODS_MODAL_COLOR.critical}>
+<ods-button class="button-color" label="Trigger Modal">
 </ods-button>
 <ods-modal class="modal-color" color=${ODS_MODAL_COLOR.critical}>
   <ods-text preset="span">
@@ -247,7 +248,7 @@ export const Color: StoryObj = {
 export const Actions: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
-<ods-button class="button-actions" label="Trigger Modal" icon="game-controler-b" variant="outline">
+<ods-button class="button-actions" label="Trigger Modal">
 </ods-button>
 <ods-modal class="modal-actions">
   <ods-text preset="span">

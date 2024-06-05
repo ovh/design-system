@@ -53,11 +53,13 @@ export const ClickedItem: StoryObj = {
   </ods-breadcrumb-item>
 </ods-breadcrumb>
 <script>
+(() => {
   const breadcrumbEl = document.querySelector('#my-breadcrumb-clicked');
-  breadcrumbEl.addEventListener('odsBreadcrumbItemClick', (event) => {
-    // event.target.id will refer to the clicked element
-  });
-</script>
+    breadcrumbEl.addEventListener('odsBreadcrumbItemClick', (event) => {
+      // event.target.id will refer to the clicked element
+    });
+  </script>
+})();
   `,
 };
 

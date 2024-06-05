@@ -3993,8 +3993,17 @@ __metadata:
   linkType: soft
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> d291fda1a (feat(divider): implement coponent)
 =======
+=======
+"@ovhcloud/ods-component-file-upload@workspace:packages/ods/src/components/file-upload":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-file-upload@workspace:packages/ods/src/components/file-upload"
+  languageName: unknown
+  linkType: soft
+
+>>>>>>> a5b3e2a5b (feat(file-upload): implement component)
 "@ovhcloud/ods-component-form-field@workspace:packages/ods/src/components/form-field":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-form-field@workspace:packages/ods/src/components/form-field"

@@ -36,6 +36,7 @@ const componentNames = [
   'select',
   'modal',
   'card',
+  'file-upload',
   //--generator-anchor--
 ];
 

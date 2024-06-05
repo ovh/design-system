@@ -3995,6 +3995,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-component-datepicker@workspace:packages/ods/src/components/datepicker":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-datepicker@workspace:packages/ods/src/components/datepicker"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-component-divider@workspace:packages/ods/src/components/divider":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-divider@workspace:packages/ods/src/components/divider"
@@ -4872,6 +4878,7 @@ __metadata:
     "@types/jest": 29.5.12
     "@types/react": 18.2.56
     "@types/react-dom": 18.2.19
+    "@types/vanillajs-datepicker": 1.3.4
     autoprefixer: 10.4.17
     concurrently: 8.2.2
     google-libphonenumber: 3.2.35
@@ -4890,6 +4897,7 @@ __metadata:
     ts-node: 10.9.2
     typedoc: 0.25.11
     typescript: 5.3.3
+    vanillajs-datepicker: 1.3.4
     wait-on: 7.2.0
   languageName: unknown
   linkType: soft
@@ -6666,6 +6674,13 @@ __metadata:
   version: 9.0.8
   resolution: "@types/uuid@npm:9.0.8"
   checksum: b8c60b7ba8250356b5088302583d1704a4e1a13558d143c549c408bf8920535602ffc12394ede77f8a8083511b023704bc66d1345792714002bfa261b17c5275
+  languageName: node
+  linkType: hard
+
+"@types/vanillajs-datepicker@npm:1.3.4":
+  version: 1.3.4
+  resolution: "@types/vanillajs-datepicker@npm:1.3.4"
+  checksum: bf150802e7ebac0097c1e8f2ce2ef458362d027f6e627f55c8c8ea395146de9a178ff05e31c9f44959700d0bd882fece7876711a8e4362d4b509377e12143840
   languageName: node
   linkType: hard
 
@@ -22627,6 +22642,13 @@ __metadata:
     webpack-dev-server: 5.0.2
   languageName: unknown
   linkType: soft
+
+"vanillajs-datepicker@npm:1.3.4":
+  version: 1.3.4
+  resolution: "vanillajs-datepicker@npm:1.3.4"
+  checksum: 830958f8af5c586ee81ba2b75a76771db425d4eddb68ec08d1b49ac898674376ef3517a0d40eefaf4926a815c23179c54e1637d7327df090f22cdb98056074cf
+  languageName: node
+  linkType: hard
 
 "vary@npm:~1.1.2":
   version: 1.1.2

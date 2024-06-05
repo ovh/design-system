@@ -13,6 +13,7 @@ enum LINK_ID {
   CODE = '07c385-code',
   DATEPICKER = '39da02-datepicker',
   DIVIDER = '32c931-divider',
+  FILE_UPLOAD = '721180-file-upload',
   FLAG = '10bf5c-flag',
   FORM_FIELD = '424784-form-field',
   ICON = '99bbef-icon',

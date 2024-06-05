@@ -1,0 +1,400 @@
+import type { Meta, StoryObj } from '@storybook/web-components';
+import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/ods-file-upload';
+import { html } from 'lit-html';
+import { CONTROL_CATEGORY, orderControls } from '../../control';
+
+defineCustomElement();
+
+const meta: Meta = {
+  title: 'ODS Components/Form/File Upload',
+  component: 'ods-file-upload',
+};
+
+export default meta;
+
+export const Demo: StoryObj = {
+  render: (arg) => html`
+  <ods-file-upload class="my-file-upload"
+                   accept="${arg.accept}"
+                   accepted-file-label="${arg.acceptedFileLabel}"
+                   browse-file-label="${arg.browseFileLabel}"
+                   dropzone-label="${arg.dropzoneLabel}"
+                   error="${arg.error}"
+                   id="demo-file-upload"
+                   is-disabled="${arg.isDisabled}"
+                   max-file="${arg.maxFile}"
+                   upload-success-label="${arg.uploadSuccessLabel}">
+  </ods-file-upload>
+  <style>
+    .my-file-upload {
+      ${arg.customCss}
+    }
+
+    .my-file-upload::part(dropzone) {
+      ${arg.customCssPartDropzone}
+    }
+
+    .my-file-upload::part(file-list) {
+      ${arg.customCssPartFileList}
+    }
+  </style>
+  <script>
+    (() => {
+      const demoFileUpload = document.querySelector('#demo-file-upload');
+
+      demoFileUpload.addEventListener('odsFileChange', ({ detail }) => {
+        demoFileUpload.files = (demoFileUpload.files || []).concat(detail.files.map((file) => {
+            file.isUploaded = true;
+            return file;
+        }));
+      });
+
+      demoFileUpload.addEventListener('odsFileCancel', ({ detail }) => {
+        demoFileUpload.files = demoFileUpload.files.filter((file) => file.odsId !== detail.odsId);
+      });
+    })();
+  </script>
+  `,
+  argTypes: orderControls({
+    accept: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: '' },
+        type: { summary: 'string' }
+      },
+      control: 'text',
+    },
+    acceptedFileLabel: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: 'Accepted files:' },
+        type: { summary: 'string' }
+      },
+      control: 'text',
+    },
+    browseFileLabel: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: 'Browse files' },
+        type: { summary: 'string' }
+      },
+      control: 'text',
+    },
+    customCss: {
+      table: {
+        category: CONTROL_CATEGORY.design,
+        defaultValue: { summary: 'ø' },
+        type: { summary: 'string' },
+      },
+      control: 'text',
+      description: 'Set custom style properties. Example: "width: 500px;"',
+    },
+    customCssPartDropzone: {
+      table: {
+        category: CONTROL_CATEGORY.design,
+        defaultValue: { summary: 'ø' },
+        type: { summary: 'string' },
+      },
+      control: 'text',
+      description: 'Set custom style properties. Example: "width: 500px;"',
+    },
+    customCssPartFileList: {
+      table: {
+        category: CONTROL_CATEGORY.design,
+        defaultValue: { summary: 'ø' },
+        type: { summary: 'string' },
+      },
+      control: 'text',
+      description: 'Set custom style properties. Example: "width: 500px;"',
+    },
+    dropzoneLabel: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: 'Drag & drop a file' },
+        type: { summary: 'string' }
+      },
+      control: 'text',
+    },
+    error: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: '' },
+        type: { summary: 'string' }
+      },
+      control: 'text',
+    },
+    isDisabled: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: false },
+        type: { summary: 'boolean' }
+      },
+      control: 'boolean',
+    },
+    maxFile: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: 'ø' },
+        type: { summary: 'number' }
+      },
+      control: 'number',
+    },
+    uploadSuccessLabel: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: 'File uploaded' },
+        type: { summary: 'string' }
+      },
+      control: 'text',
+    },
+  }),
+  args: {
+    accept: '',
+    acceptedFileLabel: 'Accepted files:',
+    browseFileLabel: 'Browse files',
+    dropzoneLabel: 'Drag & drop a file',
+    error: '',
+    isDisabled: false,
+    uploadSuccessLabel: 'File uploaded',
+  },
+};
+
+export const Accept: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-file-upload accept="image/png"
+                 id="accept-file-upload">
+</ods-file-upload>
+<script>
+  (() => {
+    const acceptFileUpload = document.querySelector('#accept-file-upload');
+
+    acceptFileUpload.addEventListener('odsFileChange', ({ detail }) => {
+      acceptFileUpload.error = '';
+      acceptFileUpload.files = (acceptFileUpload.files || []).concat(detail.files);
+    });
+
+    acceptFileUpload.addEventListener('odsFileCancel', ({ detail }) => {
+      acceptFileUpload.files = acceptFileUpload.files.filter((file) => file.odsId !== detail.odsId);
+    });
+
+    acceptFileUpload.addEventListener('odsFileRejected', ({ detail }) => {
+      const filesName = detail.files.map((file) => file.name).join(', ');
+      acceptFileUpload.error = detail.files.length > 1 ?
+        \`Files "\${filesName}" are not of the expected format\` :
+        \`File "\${filesName}" is not of the expected format\`;
+    });
+  })();
+</script>
+  `,
+};
+
+export const CustomCSS: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-file-upload class="custom-file-upload"
+                 id="css-file-upload">
+</ods-file-upload>
+<style>
+  .custom-file-upload {
+    width: 300px;
+  }
+
+  .custom-file-upload::part(file-list) {
+    max-height: 75px;
+    overflow: scroll;
+  }
+</style>
+<script>
+  (() => {
+    const cssFileUpload = document.querySelector('#css-file-upload');
+
+    cssFileUpload.addEventListener('odsFileChange', ({ detail }) => {
+      cssFileUpload.files = (cssFileUpload.files || []).concat(detail.files);
+    });
+
+    cssFileUpload.addEventListener('odsFileCancel', ({ detail }) => {
+      cssFileUpload.files = cssFileUpload.files.filter((file) => file.odsId !== detail.odsId);
+    });
+  })();
+</script>
+  `,
+};
+
+export const CustomLabels: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-file-upload accept="image/*"
+                 accepted-file-label="Formats acceptés :"
+                 browse-file-label="Parcourir les fichiers"
+                 dropzone-label="Glisser-déposer des fichiers"
+                 id="labels-file-upload"
+                 upload-success-label="Fichier uploadé">
+</ods-file-upload>
+<script>
+  (() => {
+    const labelsFileUpload = document.querySelector('#labels-file-upload');
+
+    labelsFileUpload.addEventListener('odsFileChange', ({ detail }) => {
+      labelsFileUpload.error = '';
+      labelsFileUpload.files = (labelsFileUpload.files || []).concat(detail.files).map((file) => {
+        file.isUploaded = true;
+        return file;
+      });
+    });
+
+    labelsFileUpload.addEventListener('odsFileCancel', ({ detail }) => {
+      labelsFileUpload.files = labelsFileUpload.files.filter((file) => file.odsId !== detail.odsId);
+    });
+
+    labelsFileUpload.addEventListener('odsFileRejected', () => {
+      labelsFileUpload.error = 'Les fichiers doivent être de type image';
+    });
+  })();
+</script>
+  `,
+};
+
+export const Default: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-file-upload id="default-file-upload"></ods-file-upload>
+<script>
+  (() => {
+    const defaultFileUpload = document.querySelector('#default-file-upload');
+
+    defaultFileUpload.addEventListener('odsFileChange', ({ detail }) => {
+      defaultFileUpload.files = (defaultFileUpload.files || []).concat(detail.files);
+    });
+
+    defaultFileUpload.addEventListener('odsFileCancel', ({ detail }) => {
+      defaultFileUpload.files = defaultFileUpload.files.filter((file) => file.odsId !== detail.odsId);
+    });
+  })();
+</script>
+  `,
+};
+
+export const Disabled: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-file-upload is-disabled></ods-file-upload>
+  `,
+};
+
+export const MaxFile: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-file-upload id="max-file-upload"
+                 max-file="2">
+</ods-file-upload>
+<script>
+  (() => {
+    const maxFileUpload = document.querySelector('#max-file-upload');
+
+    maxFileUpload.addEventListener('odsFileChange', ({ detail }) => {
+      maxFileUpload.files = (maxFileUpload.files || []).concat(detail.files);
+      if (detail.noError) {
+        maxFileUpload.error = '';
+      }
+    });
+
+    maxFileUpload.addEventListener('odsFileCancel', ({ detail }) => {
+      maxFileUpload.files = maxFileUpload.files.filter((file) => file.odsId !== detail.odsId);
+    });
+
+    maxFileUpload.addEventListener('odsFileRejected', ({ detail }) => {
+      maxFileUpload.error = \`Max file reached, \${detail.files.length} file(s) rejected\`;
+    });
+  })();
+</script>
+  `,
+};
+
+export const Overview: StoryObj = {
+  tags: ['isHidden'],
+  decorators: [(story) => html`<div style="text-align: center;">${story()}</div>`],
+  render: () => html`
+<ods-file-upload id="overview-file-upload"></ods-file-upload>
+<script>
+  (() => {
+    const overviewFileUpload = document.querySelector('#overview-file-upload');
+
+    overviewFileUpload.addEventListener('odsFileChange', ({ detail }) => {
+      overviewFileUpload.files = (overviewFileUpload.files || []).concat(detail.files);
+    });
+
+    overviewFileUpload.addEventListener('odsFileCancel', ({ detail }) => {
+      overviewFileUpload.files = overviewFileUpload.files.filter((file) => file.odsId !== detail.odsId);
+    });
+  })();
+</script>
+  `,
+};
+
+export const Progress: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-file-upload id="progress-file-upload"></ods-file-upload>
+<script>
+  (() => {
+    const progressFileUpload = document.querySelector('#progress-file-upload');
+    const openRequests = {};
+
+    function updateFile(file, { propertyName, value }) {
+      progressFileUpload.files = progressFileUpload.files.map((currentFile) => {
+        if (currentFile.odsId === file.odsId) {
+          currentFile[propertyName] = value;
+        }
+        return currentFile;
+      });
+    }
+
+    progressFileUpload.addEventListener('odsFileChange', ({ detail }) => {
+      detail.files.forEach((file) => {
+        let data = new FormData();
+        let request = new XMLHttpRequest();
+
+        file.progress = 0;
+        data.append('file', file);
+        openRequests[file.odsId] = request;
+
+        request.open('POST', 'http://httpbin.org/post');
+
+        request.onprogress = function(e) {
+          const progress = Math.round((e.loaded / e.total) * 100);
+          updateFile(file, { propertyName: 'progress', value: progress });
+        };
+
+        request.onerror = function() {
+          updateFile(file, { propertyName: 'progress', value: undefined });
+          updateFile(file, { propertyName: 'error', value: 'Error while uploading' });
+        };
+
+        request.onload = function() {
+          updateFile(file, { propertyName: 'progress', value: 100 });
+          updateFile(file, { propertyName: 'isUploaded', value: true });
+        };
+
+        request.send(data);
+      });
+
+      progressFileUpload.files = (progressFileUpload.files || []).concat(detail.files);
+    });
+
+    progressFileUpload.addEventListener('odsFileCancel', ({ detail }) => {
+      const request = openRequests[detail.odsId];
+
+      if (request.status === 200) {
+        request.open('DELETE', 'http://httpbin.org/delete');
+        request.send(detail);
+      } else {
+        request.abort();
+      }
+
+      progressFileUpload.files = progressFileUpload.files.filter((file) => file.odsId !== detail.odsId);
+    });
+  })();
+</script>
+  `,
+};

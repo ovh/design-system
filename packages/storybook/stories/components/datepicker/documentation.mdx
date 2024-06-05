@@ -1,0 +1,39 @@
+import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import SpecificationsDatepicker from '@ovhcloud/ods-components/src/components/datepicker/documentation/spec.md?raw';
+import { Banner } from '../../banner';
+import { DocNavigator } from '../../doc-navigator';
+import * as DatepickerStories from './datepicker.stories';
+import { LINK_ID } from '../../zeroheight';
+
+<Meta of={ DatepickerStories } name='Documentation' />
+
+<Banner of={ DatepickerStories } />
+
+# Overview
+
+TODO Some text about the component
+
+<Canvas of={ DatepickerStories.Default } sourceState='none' />
+
+<DocNavigator of={ DatepickerStories } linkId={ LINK_ID.DATEPICKER } />
+
+<Markdown>{ SpecificationsDatepicker }</Markdown>
+
+# Style customization [IF RELEVANT]
+
+You can add your own style on the datepicker element using the part `datepicker`.
+
+Custom datepicker css:
+
+<Canvas of={ DatepickerStories.CustomCSS } sourceState='shown'/>
+
+# Examples
+
+## Default
+
+<Canvas of={ DatepickerStories.Default } sourceState='shown' />
+
+## [Other attribute]
+<Canvas of={ DatepickerStories.Default } sourceState='shown' />
+
+...

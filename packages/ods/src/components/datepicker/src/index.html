@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html dir='ltr' lang='en'>
+<head>
+  <meta charset='utf-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0' />
+  <title>Dev ods-datepicker</title>
+
+  <script type='module' src='/build/ods-datepicker.esm.js'></script>
+  <script nomodule src='/build/ods-datepicker.js'></script>
+  <link rel="stylesheet" href="/build/ods-datepicker.css">
+</head>
+
+<body>
+  <p>Default</p>
+  <ods-datepicker>
+  </ods-datepicker>
+
+  <p>Format</p>
+  <ods-datepicker format='yyyy/mm/dd'></ods-datepicker>
+
+  <p>Error</p>
+  <ods-datepicker has-error=''>
+  </ods-datepicker>
+
+  <p>Disabled</p>
+  <ods-datepicker is-disabled=''>
+  </ods-datepicker>
+
+  <p>Show Sibling Month Days</p>
+  <ods-datepicker show-siblings-month-days="false"></ods-datepicker>
+
+  <p>Min Date (Today)</p>
+  <ods-datepicker id='min-datepicker'></ods-datepicker>
+  <script>
+    const datepickerMinDateUsage = document.querySelector('#min-datepicker');
+    datepickerMinDateUsage.min = new Date();
+  </script>
+
+  <p>Max Date (Today)</p>
+  <ods-datepicker id='max-datepicker'></ods-datepicker>
+  <script>
+    const datepickerMaxDateUsage = document.querySelector('#max-datepicker');
+    datepickerMaxDateUsage.max = new Date('10 Jan 2024');
+  </script>
+
+  <p>Date disabled (Today)</p>
+  <ods-datepicker id='datepicker-dates-disabled'></ods-datepicker>
+  <script>
+    const datepickerDatesDisabledUsage = document.querySelector('#datepicker-dates-disabled');
+    datepickerDatesDisabledUsage.datesDisabled = [new Date()];
+  </script>
+
+  <p>Days of Week disabled</p>
+  <ods-datepicker id='datepicker-days-of-week-disabled'></ods-datepicker>
+  <script>
+    const datepickerDaysOfWeekDisabledUsage = document.querySelector('#datepicker-days-of-week-disabled');
+    datepickerDaysOfWeekDisabledUsage.daysOfWeekDisabled = [0,6];
+  </script>
+
+  <p>value</p>
+  <ods-datepicker id='value'></ods-datepicker>
+  <script>
+    const valueUsage = document.querySelector('#value');
+    valueUsage.value = new Date('01/21/2024');
+  </script>
+
+  <p>default value</p>
+  <ods-datepicker id='defaultvalue'></ods-datepicker>
+  <script>
+    const defaultvalueUsage = document.querySelector('#defaultvalue');
+    defaultvalueUsage.value = new Date('01/21/2024');
+    defaultvalueUsage.setAttribute('default-value', new Date('04/21/2024'));
+  </script>
+
+</body>
+</html>

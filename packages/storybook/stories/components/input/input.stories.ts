@@ -269,11 +269,13 @@ export const Pattern: StoryObj = {
 <ods-input id="my-input-pattern" pattern="\\d*">
 </ods-input>
 <script>
-const inputPattern = document.getElementById('my-input-pattern');
-inputPattern.addEventListener('odsChange', (event) => {
-  inputPattern.hasError = !event.detail.validity.valid;
-});
-</script>
+(() => {
+  const inputPattern = document.getElementById('my-input-pattern');
+  inputPattern.addEventListener('odsChange', (event) => {
+    inputPattern.hasError = !event.detail.validity.valid;
+  });
+  </script>
+})();
   `,
 };
 

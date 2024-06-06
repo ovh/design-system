@@ -12,7 +12,7 @@ function mergeSelectedItemPlugin({ label }: Record<string, unknown>): void {
   let currentPlaceholder = self.settings.placeholder || '';
   let divElement: HTMLDivElement;
 
-  function updateCount(): void {
+  function updateElement(): void {
     if (self.items.length > 0) {
       divElement.classList.remove(placeholderClassName);
       divElement.innerText = `${currentLabel} (${self.items.length})`;
@@ -26,22 +26,22 @@ function mergeSelectedItemPlugin({ label }: Record<string, unknown>): void {
     divElement = document.createElement('div');
     divElement.className = mergeItemsClassName;
     self.control.append(divElement);
-    updateCount();
+    updateElement();
   });
 
-  self.on('item_add', updateCount);
-  self.on('item_remove', updateCount);
+  self.on('item_add', updateElement);
+  self.on('item_remove', updateElement);
 
   self.hook('after', 'setup', function() {
     self.control.addEventListener('ods-select-multiple-selection-label-change', (event: CustomEvent<string>) => {
       event.stopPropagation();
       currentLabel = event.detail;
-      updateCount();
+      updateElement();
     });
     self.control.addEventListener('ods-select-placeholder-change', (event: CustomEvent<string>) => {
       event.stopPropagation();
       currentPlaceholder = event.detail;
-      updateCount();
+      updateElement();
     });
   });
 }

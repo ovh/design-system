@@ -158,12 +158,12 @@ $select-padding-right: $select-caret-size + ($select-base-padding * 2);
           @include icon.ods-icon();
 
           position: absolute;
-          top: 50%;
-          right: $select-base-padding;
+          right: 0;
           transform: translateY(-50%);
           margin: 0;
           border: none;
           background-color: inherit;
+          padding: $select-base-padding;
           width: auto;
           height: auto;
           color: var(--ods-color-primary-500);

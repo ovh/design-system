@@ -103,9 +103,11 @@ export const Demo: StoryObj = {
 `.modal-demo .my-text::part(text) {
   margin: 0 0 1rem 0;
 }
+.modal-demo ods-button {
+  max-width: 100%;
+}
 .modal-demo ods-button::part(button) {
   margin-top: 1rem;
-  max-width: 100%;
 }`
   },
 };
@@ -218,6 +220,12 @@ export const NotDismissible: StoryObj = {
     });
   })();
 </script>
+
+<style>
+  .modal-not-dismissible ods-button {
+    max-width: 100%;
+  }
+</style>
   `,
 };
 
@@ -276,6 +284,9 @@ export const Actions: StoryObj = {
 <style>
   .modal-actions .modal-actions-close::part(button) {
     margin-top: 1rem;
+  }
+  .modal-actions ods-button {
+    max-width: 100%;
   }
 </style>
   `,

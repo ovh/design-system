@@ -1,6 +1,8 @@
 @use './focus';
 @use './icon';
 
+$ods-checkbox-size: 16px;
+
 @mixin ods-checkbox() {
   appearance: none;
   display: inline-flex;
@@ -11,8 +13,8 @@
   border-radius: var(--ods-border-radius-sm);
   background: var(--ods-color-primary-000);
   cursor: pointer;
-  width: 16px;
-  height: 16px;
+  width: $ods-checkbox-size;
+  height: $ods-checkbox-size;
 
   &::before {
     @include icon.ods-icon();

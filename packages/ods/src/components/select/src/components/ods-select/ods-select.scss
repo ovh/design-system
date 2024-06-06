@@ -15,6 +15,7 @@ $select-padding-right: $select-caret-size + ($select-base-padding * 2);
 }
 
 @mixin ods-select-placeholder() {
+  white-space: nowrap;
   color: var(--ods-color-neutral-600);
 }
 
@@ -128,6 +129,7 @@ $select-padding-right: $select-caret-size + ($select-base-padding * 2);
       @include checkbox.ods-checkbox();
 
       margin-right: 8px;
+      min-width: checkbox.$ods-checkbox-size;
     }
   }
 
@@ -143,6 +145,7 @@ $select-padding-right: $select-caret-size + ($select-base-padding * 2);
       background: $select-background-color;
       cursor: pointer;
       padding: 0;
+      white-space: nowrap;
     }
 
     .ts-merged-items-placeholder {
@@ -159,7 +162,6 @@ $select-padding-right: $select-caret-size + ($select-base-padding * 2);
 
           position: absolute;
           right: 0;
-          transform: translateY(-50%);
           margin: 0;
           border: none;
           background-color: inherit;
@@ -189,6 +191,14 @@ $select-padding-right: $select-caret-size + ($select-base-padding * 2);
 
         .ts-merged-items {
           @include input.ods-input-disabled();
+        }
+      }
+    }
+
+    &.single {
+      .ts-control {
+        &::after {
+          transform: translateY(-50%);
         }
       }
     }

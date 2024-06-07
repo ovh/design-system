@@ -40,7 +40,9 @@ $ods-modal-border-radius: var(--ods-border-radius-sm);
 
   &::backdrop {
     opacity: 0.75;
-    background-color: var(--ods-color-primary-500);
+    background-color: #0050d7;
+    // We're not using variables because of a Chromium issue with the backdrops
+    // See https://stackoverflow.com/questions/58818299/css-variables-not-working-in-dialogbackdrop/63322762#63322762
   }
 }
 

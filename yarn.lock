@@ -4022,6 +4022,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-component-switch@workspace:packages/ods/src/components/switch":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-switch@workspace:packages/ods/src/components/switch"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-component-table@workspace:packages/ods/src/components/table":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-table@workspace:packages/ods/src/components/table"

@@ -1,4 +1,5 @@
 interface OdsRadioValueChangeEventDetail {
+  checked: boolean;
   name: string;
   validity?: ValidityState;
   value: string | null;

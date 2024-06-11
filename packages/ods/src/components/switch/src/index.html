@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html dir='ltr' lang='en'>
+<head>
+  <meta charset='utf-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0' />
+  <title>Dev ods-switch</title>
+
+  <script type='module' src='/build/ods-switch.esm.js'></script>
+  <script nomodule src='/build/ods-switch.js'></script>
+  <link rel="stylesheet" href="/build/ods-switch.css">
+</head>
+
+<body>
+  <p>Default</p>
+  <ods-switch>
+  </ods-switch>
+
+  <p>With radio group</p>
+  <ods-switch id="switch-group">
+    <ods-switch-item name="switch-radio" is-checked input-id="label1" value="1">label1</ods-switch-item>
+    <ods-switch-item name="switch-radio" input-id="label2" value="2">label2</ods-switch-item>
+    <ods-switch-item name="switch-radio" input-id="label3" value="3">label3</ods-switch-item>
+  </ods-switch>
+
+  <button id="clear-button">clear</button>
+  <button id="reset-button">reset</button>
+  <button id="get-validity-button">getValidity</button>
+
+  <script>
+    const switchGroup = document.querySelector('#switch-group');
+
+    ['odsBlur', 'odsClear', 'odsFocus', 'odsReset', 'odsChange'].forEach((eventName) =>{
+      switchGroup.addEventListener(eventName, (event) => {
+        console.log(eventName, event);
+      });
+    });
+    const clearButton = document.getElementById('clear-button');
+    const resetButton = document.getElementById('reset-button');
+    const getValidityButton = document.getElementById('get-validity-button');
+
+    clearButton.addEventListener('click', () => switchGroup['is-disabled'] = true);
+    resetButton.addEventListener('click', () => switchGroup.reset());
+    getValidityButton.addEventListener('click', async () => {
+      const validity = await switchGroup.getValidity();
+      console.log('validity', validity);
+    });
+  </script>
+
+  <p>Checked</p>
+  <ods-switch>
+    <ods-switch-item name="switch-radio-disabled" input-id="label1-disabled" value="1">label1</ods-switch-item>
+    <ods-switch-item is-checked name="switch-radio-disabled" input-id="label2-disabled" value="2">label2</ods-switch-item>
+    <ods-switch-item name="switch-radio-disabled" input-id="label3-disabled" value="3">label3</ods-switch-item>
+  </ods-switch>
+
+  <p>Disabled</p>
+  <ods-switch is-disabled>
+    <ods-switch-item name="switch-radio-disabled" input-id="label1-disabled" value="1">label1</ods-switch-item>
+    <ods-switch-item name="switch-radio-disabled" input-id="label2-disabled" value="2">label2</ods-switch-item>
+    <ods-switch-item name="switch-radio-disabled" input-id="label3-disabled" value="3">label3</ods-switch-item>
+  </ods-switch>
+
+  <p>Size</p>
+  <ods-switch size="md">
+    <ods-switch-item name="switch-radio-size-md" input-id="size-md1" value="1">Size md 1</ods-switch-item>
+    <ods-switch-item name="switch-radio-size-md" input-id="size-md2" value="2">Size md 2</ods-switch-item>
+    <ods-switch-item name="switch-radio-size-md" input-id="size-md3" value="3">Size md 3</ods-switch-item>
+  </ods-switch>
+
+  <ods-switch size="sm">
+    <ods-switch-item name="switch-radio-size-sm" input-id="size-sm1" value="1">Size sm 1</ods-switch-item>
+    <ods-switch-item name="switch-radio-size-sm" input-id="size-sm2" value="2">Size sm 2</ods-switch-item>
+    <ods-switch-item name="switch-radio-size-sm" input-id="size-sm3" value="3">Size sm 3</ods-switch-item>
+  </ods-switch>
+
+  <p>Form</p>
+  <form id="radio-form" target="_self">
+    <ods-switch size="md">
+      <ods-switch-item name="switch-radio-form" input-id="form1" value="1">form 1</ods-switch-item>
+      <ods-switch-item name="switch-radio-form" input-id="form2" value="2">form 2</ods-switch-item>
+      <ods-switch-item name="switch-radio-form" input-id="form3" value="3">form 3</ods-switch-item>
+    </ods-switch>
+
+    <input type="text" name="natif-input">
+    <button id="form-reset-button" type="reset">Reset</button>
+    <button id="form-submit-button" type="submit">Submit</button>
+  </form>
+
+  <script>
+    const form = document.getElementById('radio-form');
+    const resetFormButton = document.getElementById('form-reset-button');
+    const submitFormButton = document.getElementById('form-submit-button');
+
+    submitFormButton.addEventListener('click', () => {
+      const formData = new FormData(form);
+      console.log('formData', formData);
+    });
+  </script>
+</body>
+</html>

@@ -23,6 +23,10 @@ $ods-file-upload-spacing: 8px;
   }
 }
 
+:host(.ods-file-upload--error) {
+  border-color: var(--ods-color-critical-500);
+}
+
 .ods-file-upload {
   &__dropzone {
     display: inline-flex;
@@ -53,6 +57,11 @@ $ods-file-upload-spacing: 8px;
     }
 
     &__error {
+      display: flex;
+      flex-flow: column;
+      row-gap: 8px;
+      width: 100%;
+      text-align: center;
       color: var(--ods-color-critical-500);
       font-size: font.px-to-rem(12px);
       font-weight: 600;

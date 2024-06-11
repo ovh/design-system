@@ -102,6 +102,7 @@ export class OdsFileUpload {
         class={{
           'ods-file-upload': true,
           'ods-file-upload--disabled': this.isDisabled,
+          'ods-file-upload--error': !!this.error,
         }}
         onDragEnter={ () => this.onDragEnter() }
         onDragLeave={ () => this.onDragLeave() }
@@ -146,9 +147,13 @@ export class OdsFileUpload {
 
           {
             !!this.error &&
-            <span class="ods-file-upload__dropzone__error">
-              { this.error }
-            </span>
+            <div class="ods-file-upload__dropzone__error">
+              <span>
+                { this.error }
+              </span>
+
+              <ods-divider></ods-divider>
+            </div>
           }
         </div>
 

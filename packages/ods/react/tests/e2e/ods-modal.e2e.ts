@@ -24,6 +24,9 @@ describe('ods-modal react', () => {
 
     await button?.click();
 
+    // Small delay to ensure Modal animation has the time to play
+    await new Promise((resolve) => setTimeout(resolve, 200));
+
     boundingBox = await modal?.boundingBox();
 
     expect(boundingBox?.height).toBeGreaterThan(0);

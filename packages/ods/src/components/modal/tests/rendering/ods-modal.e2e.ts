@@ -121,7 +121,7 @@ describe('ods-modal rendering', () => {
       });
 
       expect(hasOverflowHiden).toBe(true);
-    })
+    });
   });
 
   describe('slots', () => {

@@ -23,6 +23,10 @@
   display: flex;
 }
 
+body:has(dialog[open]) {
+  overflow: hidden;
+}
+
 .ods-modal {
   &__dialog {
     @include modal.ods-modal();

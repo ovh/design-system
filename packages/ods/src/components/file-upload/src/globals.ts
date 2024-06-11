@@ -6,5 +6,6 @@
  *   import '../../text/src';
  */
 import '../../button/src';
+import '../../divider/src';
 import '../../icon/src';
 import '../../progress-bar/src';

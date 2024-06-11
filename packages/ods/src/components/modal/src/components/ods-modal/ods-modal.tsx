@@ -21,7 +21,6 @@ export class OdsModal {
 
   @Method()
   async close(): Promise<void> {
-    document.body.style.removeProperty('overflow');
 
     if (this.modalDialog) {
       this.modalDialog.classList.add('ods-modal__dialog--close-animation');
@@ -42,7 +41,6 @@ export class OdsModal {
 
   @Method()
   async open(): Promise<void> {
-    document.body.style.overflow = 'hidden';
     this.isOpen = true;
     this.modalDialog.focus();
     this.odsModalOpen.emit();
@@ -78,7 +76,6 @@ export class OdsModal {
   }
 
   disconnectedCallback(): void {
-    document.body.style.removeProperty('overflow');
     this.modalDialog.close?.();
     this.isOpen = false;
     this.odsModalClose.emit();

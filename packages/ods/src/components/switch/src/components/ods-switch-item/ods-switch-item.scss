@@ -16,8 +16,10 @@
     font-size: 16px;
     font-weight: 600;
 
-    &:not(.ods-switch-item__label--disabled):hover {
-      background-color:  var(--ods-color-primary-100);
+    &:not(.ods-switch-item__label--disabled) {
+      &:hover, &:focus-visible  {
+        background-color:  var(--ods-color-primary-100);
+      }
     }
 
     &--disabled {

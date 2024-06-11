@@ -107,6 +107,21 @@ describe('ods-modal rendering', () => {
 
       expect(isVisible).toBe(true);
     });
+
+    it('should set body overflow to hidden if set to true', async() => {
+      await setup(`
+        <ods-modal is-open>
+          <ods-text>Hello, world!</ods-text>
+        </ods-modal>
+      `);
+
+      const hasOverflowHiden = await page.evaluate(() => {
+        const body = document.querySelector('body') as HTMLElement;
+        return body && body.style.overflow === 'hidden';
+      });
+
+      expect(hasOverflowHiden).toBe(true);
+    })
   });
 
   describe('slots', () => {

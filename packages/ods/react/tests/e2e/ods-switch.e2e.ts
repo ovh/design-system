@@ -21,9 +21,9 @@ describe('ods-switch react', () => {
     expect(boundingBox?.width).toBeGreaterThan(0);
   });
 
-  it('trigger the odsChange handler on type', async () => {
-    const elem = await page.$('ods-switch:not([is-disabled]) > ods-switch-item');
-    console.log('elem', elem)
+  it('trigger the odsChange handler on click', async () => {
+    const elem = await page.$('ods-switch:not([is-disabled])');
+
     let consoleLog = '';
     page.on('console', (consoleObj) => {
       consoleLog = consoleObj.text();
@@ -36,8 +36,9 @@ describe('ods-switch react', () => {
     expect(consoleLog).toBe('React switch odsChange');
   });
 
-  it('does not trigger the odsChange handler on type if disabled', async () => {
-    const elem = await page.$('ods-switch[is-disabled] > ods-switch-item');
+  it('does not trigger the odsChange handler on click if disabled', async () => {
+    const elem = await page.$('ods-switch[is-disabled]');
+
     let consoleLog = '';
     page.on('console', (consoleObj) => {
       consoleLog = consoleObj.text();

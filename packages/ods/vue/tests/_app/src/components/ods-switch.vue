@@ -6,9 +6,9 @@
   </OdsSwitch>
 
   <OdsSwitch @onOdsChange="onOdsChange" isDisabled>
-    <OdsSwitchItem name="switch-radio" is-checked input-id="label1" value="1">label1</OdsSwitchItem>
-    <OdsSwitchItem name="switch-radio" input-id="label2" value="2">label2</OdsSwitchItem>
-    <OdsSwitchItem name="switch-radio" input-id="label3" value="3">label3</OdsSwitchItem>
+    <OdsSwitchItem name="switch-radio-disabled" is-checked input-id="disabled1" value="1">label1</OdsSwitchItem>
+    <OdsSwitchItem name="switch-radio-disabled" input-id="disabled2" value="2">label2</OdsSwitchItem>
+    <OdsSwitchItem name="switch-radio-disabled" input-id="disabled3" value="3">label3</OdsSwitchItem>
   </OdsSwitch>
 </template>
 

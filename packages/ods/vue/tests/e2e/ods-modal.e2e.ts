@@ -13,9 +13,21 @@ describe('ods-modal vue', () => {
     await goToComponentPage(page, 'ods-modal');
   });
 
-  it('render the component correctly', async () => {
+  it('renders the modal on button click', async() => {
     const modal = await page.$('ods-modal');
-    const boundingBox = await modal?.boundingBox();
+    let boundingBox = await modal?.boundingBox();
+
+    expect(boundingBox?.height).toBe(undefined);
+    expect(boundingBox?.width).toBe(undefined);
+
+    const button = await page.$('ods-button');
+
+    await button?.click();
+
+    // Small delay to ensure Modal animation has the time to play
+    await new Promise((resolve) => setTimeout(resolve, 200));
+
+    boundingBox = await modal?.boundingBox();
 
     expect(boundingBox?.height).toBeGreaterThan(0);
     expect(boundingBox?.width).toBeGreaterThan(0);

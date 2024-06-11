@@ -66,6 +66,17 @@ describe('ods-radio behaviour', () => {
         expect(odsResetSpy).toHaveReceivedEventTimes(1);
       });
     });
+
+    describe('method:select', () => {
+      it('should select radio', async() => {
+        await setup('<ods-radio value="value"></ods-radio>');
+        expect(await isInputRadioChecked(el)).toBe(false);
+        await el.callMethod('select');
+        await page.waitForChanges();
+
+        expect(await isInputRadioChecked(el)).toBe(true);
+      });
+    });
   });
 
   describe('Radio group', () => {

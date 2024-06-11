@@ -44,19 +44,30 @@ export class OdsRadio {
   async reset(): Promise<void> {
     this.getOdsRadiosGroupByName().forEach((radio) => {
       const inputRadio = radio.querySelector<HTMLInputElement>('input[type="radio"]');
-      if (inputRadio && radio.getAttribute('is-checked') === '') {
+      if (!inputRadio) {
+        return;
+      }
+      if (radio.getAttribute('is-checked') === '') {
         inputRadio.checked = true;
+      } else {
+        inputRadio.checked = false;
       }
     });
     this.odsReset.emit();
+  }
+
+  @Method()
+  async select(): Promise<void> {
+    this.inputEl?.click();
   }
 
   private getOdsRadiosGroupByName(): NodeListOf<Element> {
     return document.querySelectorAll(`ods-radio[name="${this.name}"]`);
   }
 
-  private onInput(): void {
+  private onInput(event: Event): void {
     this.odsChange.emit({
+      checked: (event.target as HTMLInputElement)?.checked,
       name: this.name,
       validity:  this.inputEl?.validity,
       value: this.value ?? null,
@@ -73,8 +84,8 @@ export class OdsRadio {
           checked={ this.isChecked }
           disabled={ this.isDisabled }
           onBlur={ (): CustomEvent<void> => this.odsBlur.emit() }
+          onInput={ (event: Event): void => this.onInput(event) }
           onFocus={ (): CustomEvent<void> => this.odsFocus.emit() }
-          onInput={ (): void => this.onInput() }
           id={ this.inputId }
           name={ this.name }
           ref={ (el): HTMLInputElement => this.inputEl = el as HTMLInputElement }

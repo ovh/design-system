@@ -1,0 +1,86 @@
+import { Meta } from '@storybook/blocks';
+import * as SwitchStories from './switch.stories';
+
+<Meta of={ SwitchStories } name='Migration From 17.x' />
+
+# Switch - migrate from v17 to v18
+----
+
+## Attributes changes SWITCH
+
+`color` <img src="https://img.shields.io/badge/removed-FF0000" />
+
+Has been removed.
+
+You can use the style customization to achieve the same result.
+
+`contrasted` <img src="https://img.shields.io/badge/removed-FF0000" />
+
+Has been removed.
+
+You can use the style customization to achieve the same result, until a new color get validated by the design team.
+
+`disabled` <img src="https://img.shields.io/badge/updated-00FFFF" />
+
+Has been updated.
+
+You can use the new `isDisabled` attribute to obtain the same behavior.
+
+## Attributes changes SWITCH ITEM
+
+`checked` <img src="https://img.shields.io/badge/updated-00FFFF" />
+
+Has been updated.
+
+You can use the new `isCheched` attribute to obtain the same behavior.
+
+`id` <img src="https://img.shields.io/badge/updated-00FFFF" />
+
+Has been updated.
+
+You can use the new `inputId` attribute to obtain the same behavior.
+
+## Migration examples
+
+Id switch:
+```html
+<osds-switch-item id="id-1" value="1">Value 1</osds-switch-item>
+
+<!-- is now -->
+
+<osds-switch-item input-id="id-1" value="1">Value 1</osds-switch-item>
+```
+
+Checked switch:
+```html
+<osds-switch>
+  <osds-switch-item checked value="1">Value 1</osds-switch-item>
+  <osds-switch-item value="2">Value 2</osds-switch-item>
+  <osds-switch-item value="3">Value 3</osds-switch-item>
+</osds-switch>
+
+<!-- is now -->
+
+<ods-switch>
+  <osds-switch-item is-checked name="checked-group" input-id="id-1" value="1">Value 1</osds-switch-item>
+  <osds-switch-item name="checked-group" input-id="id-2" value="2">Value 2</osds-switch-item>
+  <osds-switch-item name="checked-group" input-id="id-3" value="3">Value 3</osds-switch-item>
+</ods-switch>
+```
+
+Disabled switch:
+```html
+<osds-switch disabled>
+  <osds-switch-item value="1">Value 1</osds-switch-item>
+  <osds-switch-item value="2">Value 2</osds-switch-item>
+  <osds-switch-item value="3">Value 3</osds-switch-item>
+</osds-switch>
+
+<!-- is now -->
+
+<ods-switch is-disabled>
+  <osds-switch-item name="disabled-group" input-id="id-1" value="1">Value 1</osds-switch-item>
+  <osds-switch-item name="disabled-group" input-id="id-2" value="2">Value 2</osds-switch-item>
+  <osds-switch-item name="disabled-group" input-id="id-3" value="3">Value 3</osds-switch-item>
+</ods-switch>
+```

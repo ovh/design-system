@@ -1,0 +1,48 @@
+@use '../../../../../style/focus';
+
+.ods-switch-item {
+  height: 100%;
+
+  &__label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color .3s, color .3s;
+    border-radius: var(--ods-border-radius-lg);
+    cursor: pointer;
+    padding: 0 12px;
+    height: 100%;
+    color: var(--ods-color-primary-500);
+    font-size: 16px;
+    font-weight: 600;
+
+    &:not(.ods-switch-item__label--disabled):hover {
+      background-color:  var(--ods-color-primary-100);
+    }
+
+    &--disabled {
+      opacity: .5;
+      cursor: not-allowed;
+    }
+  }
+
+  &--sm {
+    /* stylelint-disable-next-line no-descending-specificity */
+    .ods-switch-item__label {
+      height: 24px;
+    }
+  }
+
+  &__radio {
+    display: none !important;
+
+    &:has(input[type="radio"]:not(:disabled):checked) + .ods-switch-item__label {
+      background-color:  var(--ods-color-primary-500);
+      color:  var(--ods-color-primary-000);
+    }
+  }
+
+  :focus-visible {
+    @include focus.ods-focus();
+  }
+}

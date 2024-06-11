@@ -35,6 +35,7 @@ enum LINK_ID {
   SELECT = '998d9e-select',
   SKELETON = '63ed1a-skeleton',
   SPINNER = '9017bb-spinner',
+  SWITCH = '113ce5-switch',
   TABLE = '006dd8-table',
   TABS = '69e950-tabs',
   TAG = '638284-tag',

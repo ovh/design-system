@@ -38,6 +38,7 @@ const componentNames = [
   'card',
   'file-upload',
   'tabs',
+  'switch',
   //--generator-anchor--
 ];
 

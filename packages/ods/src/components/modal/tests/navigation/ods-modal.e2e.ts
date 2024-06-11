@@ -30,6 +30,7 @@ describe('ods-modal navigation', () => {
     `);
 
     await page.keyboard.press('Tab');
+    await page.keyboard.press('Tab');
     expect(await page.evaluate(() => document.activeElement?.id)).toBe('input1');
 
     await page.keyboard.press('Tab');
@@ -47,13 +48,15 @@ describe('ods-modal navigation', () => {
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
+    await page.keyboard.press('Tab');
 
-    expect(await page.evaluate(() => document.activeElement?.id)).not.toBe('button2');
+    expect(await page.evaluate(() => document.activeElement?.id)).toBe('input1');
   });
 
   it('should focus the dismissible button first if set', async() => {
     await setup('<ods-modal is-open is-dismissible="true"><ods-text>Hello, world!</ods-text></ods-modal>');
 
+    await page.keyboard.press('Tab');
     await page.waitForChanges();
 
     expect(await page.evaluate(() => {

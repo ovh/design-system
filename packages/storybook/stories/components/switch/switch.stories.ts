@@ -82,9 +82,9 @@ export const Checked: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
 <ods-switch>
-  <ods-switch-item is-checked name="checked" input-id="label1" value="1">label1</ods-switch-item>
-  <ods-switch-item name="checked" input-id="label2" value="2">label2</ods-switch-item>
-  <ods-switch-item name="checked" input-id="label3" value="3">label3</ods-switch-item>
+  <ods-switch-item is-checked name="checked" input-id="checked1" value="1">label1</ods-switch-item>
+  <ods-switch-item name="checked" input-id="checked2" value="2">label2</ods-switch-item>
+  <ods-switch-item name="checked" input-id="checked3" value="3">label3</ods-switch-item>
 </ods-switch>
   `,
 };
@@ -93,9 +93,20 @@ export const Disabled: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
 <ods-switch is-disabled>
-  <ods-switch-item name="disabled" input-id="label1" value="1">label1</ods-switch-item>
-  <ods-switch-item name="disabled" input-id="label2" value="2">label2</ods-switch-item>
-  <ods-switch-item name="disabled" input-id="label3" value="3">label3</ods-switch-item>
+  <ods-switch-item name="disabled" input-id="disabled1" value="1">label1</ods-switch-item>
+  <ods-switch-item name="disabled" input-id="disabled2" value="2">label2</ods-switch-item>
+  <ods-switch-item name="disabled" input-id="disabled3" value="3">label3</ods-switch-item>
+</ods-switch>
+  `,
+};
+
+export const Overview: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-switch>
+  <ods-switch-item is-checked name="overview" input-id="overview1" value="1">label1</ods-switch-item>
+  <ods-switch-item name="overview" input-id="overview2" value="2">label2</ods-switch-item>
+  <ods-switch-item name="overview" input-id="overview3" value="3">label3</ods-switch-item>
 </ods-switch>
   `,
 };
@@ -104,15 +115,15 @@ export const Size: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
 <ods-switch size="md">
-  <ods-switch-item name="size-md" input-id="label1" value="1">label1</ods-switch-item>
-  <ods-switch-item name="size-md" input-id="label2" value="2">label2</ods-switch-item>
-  <ods-switch-item name="size-md" input-id="label3" value="3">label3</ods-switch-item>
+  <ods-switch-item name="size-md" input-id="size-md1" value="1">label1</ods-switch-item>
+  <ods-switch-item name="size-md" input-id="size-md2" value="2">label2</ods-switch-item>
+  <ods-switch-item name="size-md" input-id="size-md3" value="3">label3</ods-switch-item>
 </ods-switch>
 
 <ods-switch size="sm">
-  <ods-switch-item name="size-sm" input-id="label1" value="1">label1</ods-switch-item>
-  <ods-switch-item name="size-sm" input-id="label2" value="2">label2</ods-switch-item>
-  <ods-switch-item name="size-sm" input-id="label3" value="3">label3</ods-switch-item>
+  <ods-switch-item name="size-sm" input-id="size-sm1" value="1">label1</ods-switch-item>
+  <ods-switch-item name="size-sm" input-id="size-sm2" value="2">label2</ods-switch-item>
+  <ods-switch-item name="size-sm" input-id="size-sm3" value="3">label3</ods-switch-item>
 </ods-switch>
   `,
 };

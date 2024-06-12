@@ -74,23 +74,37 @@
 
     &--sm {
       @include tag.ods-tag-size('sm');
+
+      & #{$tag}__close {
+        font-size: 0.5rem;
+      }
+
+      & #{$tag}__icon {
+        font-size: 0.625rem;
+      }
     }
 
     &--md {
       @include tag.ods-tag-size('md');
 
-      & #{$tag}__close,
+      & #{$tag}__close {
+        font-size: 0.75rem;
+      }
+
       & #{$tag}__icon {
-        font-size: 1rem;
+        font-size: 0.833rem;
       }
     }
 
     &--lg {
       @include tag.ods-tag-size('lg');
 
-      & #{$tag}__close,
+      & #{$tag}__close {
+        font-size: 0.875rem;
+      }
+
       & #{$tag}__icon {
-        font-size: 1.25rem;
+        font-size: 1.05rem;
       }
     }
 

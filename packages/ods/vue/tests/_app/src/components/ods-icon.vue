@@ -14,7 +14,7 @@
     },
     data() {
       return {
-        iconName: ODS_ICON_NAME.add,
+        iconName: ODS_ICON_NAME.plus,
       };
     },
   });

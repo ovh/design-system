@@ -68,7 +68,7 @@ export class OdsTag {
 
           <ods-icon
             class="ods-tag__tag__close"
-            name={ ODS_ICON_NAME.cross }>
+            name={ ODS_ICON_NAME.times }>
           </ods-icon>
         </div>
       </Host>

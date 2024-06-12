@@ -14,7 +14,8 @@
     @include message.ods-message();
 
     &__icon {
-      font-size: 1.5rem;
+      padding: 0.125rem;
+      font-size: 1.25rem;
     }
 
     slot:not([name]) {
@@ -34,7 +35,7 @@
       width: 1.5rem;
       min-width: 1.5rem;
       height: 1.5rem;
-      font-size: 1rem;
+      font-size: 0.75rem;
 
       &:focus-visible {
         @include focus.ods-focus();

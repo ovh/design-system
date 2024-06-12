@@ -35,7 +35,7 @@
       @include badge.ods-badge-size('sm');
 
       & #{$badge}__icon {
-        font-size: 0.875rem;
+        font-size: 0.625rem;
       }
     }
 
@@ -43,12 +43,16 @@
       @include badge.ods-badge-size('md');
 
       & #{$badge}__icon {
-        font-size: 1rem;
+        font-size: 0.833rem;
       }
     }
 
     &--lg {
       @include badge.ods-badge-size('lg');
+
+      & #{$badge}__icon {
+        font-size: 1.05rem;
+      }
     }
 
     &__label {

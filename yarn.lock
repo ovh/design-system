@@ -3917,7 +3917,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+<<<<<<< HEAD
 >>>>>>> 326e7fe13 (feat(select): implement component)
+=======
+"@ovhcloud/ods-component-accordion@workspace:packages/ods/src/components/accordion":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-accordion@workspace:packages/ods/src/components/accordion"
+  languageName: unknown
+  linkType: soft
+
+>>>>>>> c83d01595 (feat(accordion): implement component)
 "@ovhcloud/ods-component-badge@workspace:packages/ods/src/components/badge":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-badge@workspace:packages/ods/src/components/badge"

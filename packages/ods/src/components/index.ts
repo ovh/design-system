@@ -38,3 +38,4 @@ export * from './card/src';
 export * from './file-upload/src';
 export * from './tabs/src';
 export * from './switch/src';
+export * from './accordion/src';

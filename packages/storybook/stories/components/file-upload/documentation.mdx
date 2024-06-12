@@ -11,7 +11,7 @@ import { LINK_ID } from '../../zeroheight';
 
 # Overview
 
-File-upload allow users to select one or more files to upload to a specific location:
+File-upload allows users to select one or more files to upload to a specific location:
 
 <Canvas of={ FileUploadStories.Overview } sourceState='none' />
 
@@ -21,14 +21,14 @@ File-upload allow users to select one or more files to upload to a specific loca
 
 # How to use?
 
-The component does not handle any actual upload, nor it knows the status of each file (regarding progress or error),
+The component does not actually handle any upload, nor does it knows the status of each file (regarding progress or error),
 as the upload process is different for every integration.
 
 All the files you'll receive from this component are typed as `OdsFile`.
 
-This is an extend of the native `File` interface with optional attribute that you can set to alter the display:
-- `error`: set this if the upload of the file fail, to display an error message near it on the component file list.
-- `isUploaded`: set this on file upload success, to display a success message  near it on the component file list.
+This is an extension of the native `File` interface with optional attribute that you can set to alter the display:
+- `error`: set this if the upload of the file fails, in order to display an error message below the file.
+- `isUploaded`: set this on file upload success, in order to display a success message below the file.
 - `odsId`: a generated unique id to help you identify the current file being manipulated, you can of course ignore it and use your own `id` attribute directly.
 - `progress`: update this during the upload to display a progress-bar with current file upload progress.
 

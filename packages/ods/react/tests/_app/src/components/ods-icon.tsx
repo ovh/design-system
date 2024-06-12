@@ -4,7 +4,7 @@ import { OdsIcon } from 'ods-components-react';
 
 const Icon = () => {
   return (
-    <OdsIcon name={ ODS_ICON_NAME.add } />
+    <OdsIcon name={ ODS_ICON_NAME.plus } />
   );
 };
 

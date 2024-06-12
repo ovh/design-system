@@ -19,7 +19,7 @@ describe('ods-tag rendering', () => {
 
     el = await page.find('ods-tag');
     tag = await page.find('ods-tag >>> .ods-tag__tag');
-    closeIcon = await tag.find('ods-icon[name="cross"]');
+    closeIcon = await tag.find('ods-icon[name="times"]');
   }
 
   it('should render the web component', async() => {

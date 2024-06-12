@@ -129,7 +129,7 @@ export const Menu: StoryObj = {
   render: () => html`
 <div style="display: flex;">
   <ods-button class="my-trigger"
-              icon="menu-ellipsis-vertical"
+              icon="ellipsis-vertical"
               id="trigger-menu"
               variant="outline"></ods-button>
 

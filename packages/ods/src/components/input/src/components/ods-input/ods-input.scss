@@ -44,6 +44,7 @@
 
     &__clearable {
       color: var(--ods-color-neutral-600);
+      font-size: 0.75rem;
 
       &:not(:disabled, &--readonly) {
         &:hover {
@@ -58,6 +59,7 @@
 
     &__toggle-mask {
       color: var(--ods-color-neutral-600);
+      font-size: 0.833rem;
 
       &:not(:disabled) {
         color: var(--ods-color-primary-500);

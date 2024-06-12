@@ -282,6 +282,26 @@ export const Disabled: StoryObj = {
   `,
 };
 
+export const InverseFileList: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-file-upload id="inverse-file-upload"></ods-file-upload>
+<script>
+  (() => {
+    const inverseFileUpload = document.querySelector('#inverse-file-upload');
+
+    inverseFileUpload.addEventListener('odsFileChange', ({ detail }) => {
+      inverseFileUpload.files = detail.files.concat(inverseFileUpload.files || []);
+    });
+
+    inverseFileUpload.addEventListener('odsFileCancel', ({ detail }) => {
+      inverseFileUpload.files = inverseFileUpload.files.filter((file) => file.odsId !== detail.odsId);
+    });
+  })();
+</script>
+  `,
+};
+
 export const MaxFile: StoryObj = {
   tags: ['isHidden'],
   render: () => html`

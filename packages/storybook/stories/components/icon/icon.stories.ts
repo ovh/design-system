@@ -34,7 +34,7 @@ export const Demo: StoryObj = {
     },
   }),
   args: {
-    name: ODS_ICON_NAME.add,
+    name: ODS_ICON_NAME.plus,
   },
 };
 

@@ -45,7 +45,7 @@ export class OdsMessage {
             class={ `ods-message__message__close ods-message__message__close--${this.color}` }
             onClick={ () => this.handleClick() }
             onKeyUp={ (event: KeyboardEvent) => this.handleKeyUp(event) }>
-            <ods-icon name={ ODS_ICON_NAME.cross }>
+            <ods-icon name={ ODS_ICON_NAME.times }>
             </ods-icon>
           </button>
         </div>

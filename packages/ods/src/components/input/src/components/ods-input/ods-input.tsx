@@ -157,7 +157,7 @@ export class OdsInput {
               disabled={ this.isDisabled || this.isReadonly }
               onClick={ this.clear.bind(this) }
               onKeyUp={ (event: KeyboardEvent): Promise<void> => handleKeySpace(event, this.isDisabled, this.clear.bind(this)) }>
-              <ods-icon name={ ODS_ICON_NAME.cross }>
+              <ods-icon name={ ODS_ICON_NAME.times }>
               </ods-icon>
             </button>
           }
@@ -171,7 +171,7 @@ export class OdsInput {
               disabled={ this.isDisabled }
               onClick={ this.toggleMask.bind(this) }
               onKeyUp={ (event: KeyboardEvent): Promise<void> => handleKeySpace(event, this.isDisabled, this.toggleMask.bind(this)) }>
-              <ods-icon name={ this.isMasked ? ODS_ICON_NAME.eyeClose : ODS_ICON_NAME.eyeOpen }>
+              <ods-icon name={ this.isMasked ? ODS_ICON_NAME.eyeOff : ODS_ICON_NAME.eye }>
               </ods-icon>
             </button>
           }

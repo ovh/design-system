@@ -34,7 +34,7 @@ describe('ods-message rendering', () => {
     it('should render critical icon', async() => {
       await setup(`<ods-message color="${ODS_MESSAGE_COLOR.critical}"></ods-message>`);
 
-      const criticalIcon = await message.find('ods-icon[name="critical"]');
+      const criticalIcon = await message.find('ods-icon[name="critical-hexagon"]');
 
       expect(criticalIcon).not.toBeNull();
     });
@@ -42,7 +42,7 @@ describe('ods-message rendering', () => {
     it('should render danger icon', async() => {
       await setup(`<ods-message color="${ODS_MESSAGE_COLOR.danger}"></ods-message>`);
 
-      const dangerIcon = await message.find('ods-icon[name="danger"]');
+      const dangerIcon = await message.find('ods-icon[name="danger-diamond"]');
 
       expect(dangerIcon).not.toBeNull();
     });
@@ -58,7 +58,7 @@ describe('ods-message rendering', () => {
     it('should render success icon', async() => {
       await setup(`<ods-message color="${ODS_MESSAGE_COLOR.success}"></ods-message>`);
 
-      const successIcon = await message.find('ods-icon[name="success-circle"]');
+      const successIcon = await message.find('ods-icon[name="check-circle"]');
 
       expect(successIcon).not.toBeNull();
     });

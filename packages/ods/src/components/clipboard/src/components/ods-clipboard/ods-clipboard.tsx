@@ -58,7 +58,7 @@ export class OdsClipboard {
 
         <ods-button
           class="ods-clipboard__copy"
-          icon={ ODS_ICON_NAME.filesCopy }
+          icon={ ODS_ICON_NAME.fileCopy }
           id={ this.copyButtonId }
           isDisabled={ this.isDisabled }
           label=""

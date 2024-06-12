@@ -39,7 +39,7 @@ export class OdsCode {
           this.canCopy &&
           <ods-button
             class="ods-code__copy"
-            icon={ ODS_ICON_NAME.filesCopy }
+            icon={ ODS_ICON_NAME.fileCopy }
             label=""
             onClick={ () => this.copy() }
             variant={ ODS_BUTTON_VARIANT.ghost }>

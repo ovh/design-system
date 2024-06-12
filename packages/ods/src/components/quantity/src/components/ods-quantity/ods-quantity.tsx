@@ -126,7 +126,7 @@ export class OdsQuantity {
           color={ this.hasError ? ODS_BUTTON_COLOR.critical : ODS_BUTTON_COLOR.primary }
           exportparts="button:button-plus"
           isDisabled={ isPlusButtonDisabled(this.isDisabled, this.isReadonly, this.value, this.max) }
-          icon={ ODS_ICON_NAME.add }
+          icon={ ODS_ICON_NAME.plus }
           label=""
           onClick={ () => this.increment() }
           size={ ODS_BUTTON_SIZE.sm }

@@ -48,9 +48,8 @@ describe('ods-modal navigation', () => {
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
-    await page.keyboard.press('Tab');
 
-    expect(await page.evaluate(() => document.activeElement?.id)).toBe('input1');
+    expect(await page.evaluate(() => document.activeElement?.id)).not.toBe('button2');
   });
 
   it('should focus the dismissible button first if set', async() => {

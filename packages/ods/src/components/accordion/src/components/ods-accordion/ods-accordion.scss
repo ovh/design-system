@@ -1,0 +1,79 @@
+@use '../../../../../style/focus';
+
+@keyframes toggle {
+  0% {
+    opacity: 0;
+    margin-top: -1.25rem;
+  }
+
+  100% {
+    opacity: 1;
+    margin-top: 0;
+  }
+}
+
+.ods-accordion {
+  &__wrapper {
+    transition: .15s border-color ease-out;
+    border: 1px solid;
+    border-color: transparent;
+
+    &:focus-visible,
+    &:hover {
+      border-color: var(--ods-color-primary-200);
+    }
+
+    &.ods-accordion__wrapper--is-open {
+      border-color: var(--ods-color-primary-500);
+    }
+
+    &--is-disabled {
+      opacity: .5;
+      cursor: no-drop;
+
+      &:hover,
+      &.ods-accordion__wrapper--is-open {
+        border-color: transparent;
+      }
+
+    }
+
+    &__summary {
+      display: flex;
+      position: relative;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      padding: 24px;
+      list-style: none;
+
+      &:focus-visible {
+        @include focus.ods-focus();
+
+        outline-offset: 3px;
+      }
+
+      &--is-open {
+        padding-bottom: 24px;
+      }
+
+      &--is-disabled {
+        opacity: .5;
+        cursor: no-drop;
+
+        &:hover {
+          border-color: transparent;
+        }
+      }
+
+      ods-icon {
+        color: var(--ods-color-primary-500);
+      }
+    }
+
+    &__content {
+      padding: 0 24px 24px;
+      animation: toggle .15s ease-out;
+    }
+  }
+}

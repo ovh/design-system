@@ -57,6 +57,17 @@ describe('ods-file-upload rendering', () => {
     expect((await dropzone.getComputedStyle()).getPropertyValue('background-color')).not.toBe(baseBackgroundColor);
   });
 
+  it('should render the accept labels if set', async() => {
+    const dummyAccept = 'images/*';
+    const dummyAcceptLabel = 'File formats:';
+    await setup(`<ods-file-upload accept="${dummyAccept}" accepted-file-label="${dummyAcceptLabel}"></ods-file-upload>`);
+
+    const acceptElement = await page.find('ods-file-upload >>> .ods-file-upload__dropzone__file-format');
+
+    expect(acceptElement).not.toBeNull();
+    expect(acceptElement.innerText).toBe(`${dummyAcceptLabel} ${dummyAccept}`); // eslint-disable-line no-irregular-whitespace
+  });
+
   it('should render the global error if set', async() => {
     const dummyError = 'dummy error';
     await setup(`<ods-file-upload error="${dummyError}"></ods-file-upload>`);

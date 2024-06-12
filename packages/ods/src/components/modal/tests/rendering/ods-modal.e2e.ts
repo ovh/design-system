@@ -123,7 +123,7 @@ describe('ods-modal rendering', () => {
       expect(hasOverflowHiden).toBe(true);
     });
 
-    it('should have not a bounding box if unset', async() => {
+    it('should not have a bounding box if unset', async() => {
       await setup(`
         <ods-modal>
           <ods-text>Hello, world!</ods-text>

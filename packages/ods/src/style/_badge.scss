@@ -6,7 +6,7 @@ $ods-badge-height-lg: 28px;
   box-sizing: border-box;
   display: inline-flex;
   flex-flow: row;
-  grid-gap: 1px;
+  grid-gap: 0.25rem;
   align-items: center;
   color: var(--ods-color-primary-900);
 }
@@ -31,15 +31,15 @@ $ods-badge-height-lg: 28px;
 
 @mixin ods-badge-size($size) {
   @if $size == 'sm' {
-    padding: 2px 4px;
+    padding: 2px 6px;
     height: $ods-badge-height-sm;
     font-size: 0.75rem;
   } @else if $size == 'md' {
-    padding: 4px;
+    padding: 4px 8px;
     height: $ods-badge-height-md;
     font-size: 0.875rem;
   } @else if $size == 'lg' {
-    padding: 4px;
+    padding: 4px 10px;
     height: $ods-badge-height-lg;
     font-size: 1rem;
   }

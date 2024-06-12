@@ -29,13 +29,13 @@ $ods-checkbox-size: 16px;
 
   &:checked {
     &::before {
-      content: "\e913";
+      content: "\e914";
     }
   }
 
   &:indeterminate {
     &::before {
-      content: "\e95e";
+      content: "\e962";
     }
   }
 

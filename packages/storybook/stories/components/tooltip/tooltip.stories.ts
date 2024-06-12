@@ -24,7 +24,7 @@ export const Demo: StoryObj = {
   render: (args) => html`
 <ods-text preset="paragraph">Lorem ipsum &nbsp;</ods-text>
 <ods-icon id="trigger-1"
-          name="help-circle">
+          name="question-circle">
 </ods-icon>
 <ods-tooltip position="${args.position}"
              trigger-id="trigger-1"
@@ -69,7 +69,7 @@ export const Overview: StoryObj = {
   render: () => html`
 <ods-text preset="paragraph">Lorem ipsum &nbsp;</ods-text>
 <ods-icon id="trigger-2"
-          name="help-circle">
+          name="question-circle">
 </ods-icon>
 <ods-tooltip trigger-id="trigger-2">
   Tooltip content
@@ -82,7 +82,7 @@ export const Default: StoryObj = {
   render: () => html`
 <ods-text preset="paragraph">Lorem ipsum &nbsp;</ods-text>
 <ods-icon id="trigger-4"
-          name="help-circle">
+          name="question-circle">
 </ods-icon>
 <ods-tooltip trigger-id="trigger-4">
   Tooltip content
@@ -95,7 +95,7 @@ export const ArrowTip: StoryObj = {
   render: () => html`
 <ods-text preset="paragraph">Lorem ipsum &nbsp;</ods-text>
 <ods-icon id="trigger-5"
-          name="help-circle">
+          name="question-circle">
 </ods-icon>
 <ods-tooltip trigger-id="trigger-5"
              with-arrow>
@@ -109,7 +109,7 @@ export const CustomCSS: StoryObj = {
   render: () => html`
 <ods-text preset="paragraph">Lorem ipsum &nbsp;</ods-text>
 <ods-icon id="trigger-3"
-          name="help-circle">
+          name="question-circle">
 </ods-icon>
 <ods-tooltip trigger-id="trigger-3"
              with-arrow>

@@ -8,7 +8,7 @@ $ods-tag-height-lg: 28px;
   box-sizing: border-box;
   display: inline-flex;
   flex-flow: row;
-  grid-gap: 1px;
+  grid-gap: 0.25rem;
   align-items: center;
   cursor: pointer;
 
@@ -27,15 +27,15 @@ $ods-tag-height-lg: 28px;
 
 @mixin ods-tag-size($size) {
   @if $size == 'sm' {
-    padding: 2px 4px;
+    padding: 2px 6px;
     height: $ods-tag-height-sm;
     font-size: 0.75rem;
   } @else if $size == 'md' {
-    padding: 1px 6px;
+    padding: 1px 8px;
     height: $ods-tag-height-md;
     font-size: 0.875rem;
   } @else if $size == 'lg' {
-    padding: 2px 8px;
+    padding: 2px 10px;
     height: $ods-tag-height-lg;
     font-size: 1rem;
   }

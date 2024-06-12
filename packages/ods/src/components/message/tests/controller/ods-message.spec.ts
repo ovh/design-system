@@ -9,12 +9,12 @@ describe('ods-message controller', () => {
   describe('getIconName', () => {
     it('should return the correct icon for critical', () => {
       const iconName = getIconName('critical');
-      expect(iconName).toBe(ODS_ICON_NAME.critical);
+      expect(iconName).toBe(ODS_ICON_NAME.criticalHexagon);
     });
 
     it('should return the correct icon for danger', () => {
       const iconName = getIconName('danger');
-      expect(iconName).toBe(ODS_ICON_NAME.danger);
+      expect(iconName).toBe(ODS_ICON_NAME.dangerDiamond);
     });
 
     it('should return the correct icon for information', () => {
@@ -24,7 +24,7 @@ describe('ods-message controller', () => {
 
     it('should return the correct icon for success', () => {
       const iconName = getIconName('success');
-      expect(iconName).toBe(ODS_ICON_NAME.successCircle);
+      expect(iconName).toBe(ODS_ICON_NAME.checkCircle);
     });
 
     it('should return the correct icon for warning', () => {

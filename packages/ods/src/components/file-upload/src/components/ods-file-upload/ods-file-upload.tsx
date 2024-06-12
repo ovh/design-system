@@ -133,9 +133,12 @@ export class OdsFileUpload {
             { this.dropzoneLabel }
           </span>
 
-          <span class="ods-file-upload__dropzone__file-format">
-            { this.acceptedFileLabel }&nbsp;{ this.accept }
-          </span>
+          {
+            this.accept &&
+            <span class="ods-file-upload__dropzone__file-format">
+              { this.acceptedFileLabel }&nbsp;{ this.accept }
+            </span>
+          }
 
           <ods-button
             icon={ ODS_ICON_NAME.upload }

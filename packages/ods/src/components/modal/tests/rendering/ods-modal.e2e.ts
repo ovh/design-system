@@ -122,6 +122,40 @@ describe('ods-modal rendering', () => {
 
       expect(hasOverflowHiden).toBe(true);
     });
+
+    it('should have not a bounding box if unset', async() => {
+      await setup(`
+        <ods-modal>
+          <ods-text>Hello, world!</ods-text>
+        </ods-modal>
+      `);
+
+      const boundingBox = await page.evaluate(() => {
+        const dialog = document.querySelector('ods-modal')?.shadowRoot?.querySelector('.ods-modal__dialog') as HTMLDialogElement;
+        const rect = dialog?.getBoundingClientRect();
+        return rect ? { height: rect.height, width: rect.width } : null;
+      });
+
+      expect(boundingBox?.height).toBe(0);
+      expect(boundingBox?.width).toBe(0);
+    });
+
+    it('should have a bounding box if set to true', async() => {
+      await setup(`
+        <ods-modal is-open>
+          <ods-text>Hello, world!</ods-text>
+        </ods-modal>
+      `);
+
+      const boundingBox = await page.evaluate(() => {
+        const dialog = document.querySelector('ods-modal')?.shadowRoot?.querySelector('.ods-modal__dialog') as HTMLDialogElement;
+        const rect = dialog?.getBoundingClientRect();
+        return rect ? { height: rect.height, width: rect.width } : null;
+      });
+
+      expect(boundingBox?.height).toBeGreaterThan(0);
+      expect(boundingBox?.width).toBeGreaterThan(0);
+    });
   });
 
   describe('slots', () => {

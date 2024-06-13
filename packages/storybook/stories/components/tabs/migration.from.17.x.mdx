@@ -1,0 +1,142 @@
+import { Meta } from '@storybook/blocks';
+import * as TabsStories from './tabs.stories';
+
+<Meta of={ TabsStories } name='Migration From 17.x' />
+
+# Tabs - migrate from v17 to v18
+----
+
+## Usage changes
+
+Previous to v18, the component was managing the tabs and the panel associated to each tab.
+
+This was causing some issue for some projects, as each may want to act differently on tab selection.
+
+The component is now only a graphical component displaying tabs, triggering an event on tab selection.
+
+The following component has been removed: <img src="https://img.shields.io/badge/removed-FF0000" />
+- `osds-tab-bar`
+- `osds-tab-panel`
+
+The following component has been updated: <img src="https://img.shields.io/badge/updated-00FFFF" />
+- `osds-tabs` is now `ods-tabs`
+- `osds-tab-bar-item` is now `ods-tab`
+
+## Attributes changes
+
+### Tabs
+
+`contrasted` <img src="https://img.shields.io/badge/removed-FF0000" />
+
+Has been removed.
+
+You can use the style customization to achieve the same result, until a new color get validated by the design team.
+
+`panel` <img src="https://img.shields.io/badge/removed-FF0000" />
+
+Has been removed.
+
+Not relevant anymore as the new component does not handle panels.
+
+`size` <img src="https://img.shields.io/badge/removed-FF0000" />
+
+Has been removed.
+
+You can use the style customization to achieve the same result.
+
+### Tab
+
+`active` <img src="https://img.shields.io/badge/updated-00FFFF" />
+
+Has been updated.
+
+You can use the new `isSelected` attribute to obtain the same behavior.
+
+`contrasted` <img src="https://img.shields.io/badge/removed-FF0000" />
+
+Has been removed.
+
+You can use the style customization to achieve the same result, until a new color get validated by the design team.
+
+`disabled` <img src="https://img.shields.io/badge/updated-00FFFF" />
+
+Has been updated.
+
+You can use the new `isDisabled` attribute to obtain the same behavior.
+
+`panel` <img src="https://img.shields.io/badge/removed-FF0000" />
+
+Has been removed.
+
+Not relevant anymore as the new component does not handle panels.
+
+## Migration examples
+
+Basic tabs:
+```html
+<osds-tabs>
+  <osds-tab-bar slot="top">
+    <osds-tab-bar-item panel="default">Default</osds-tab-bar-item>
+    <osds-tab-bar-item panel="hover">Hover</osds-tab-bar-item>
+    <osds-tab-bar-item panel="active">Active</osds-tab-bar-item>
+  </osds-tab-bar>
+  <osds-tab-panel name="default">Default</osds-tab-panel>
+  <osds-tab-panel name="hover">Hover</osds-tab-panel>
+  <osds-tab-panel name="active">Active</osds-tab-panel>
+</osds-tabs>
+
+<!-- is now -->
+
+<ods-tabs>
+  <ods-tab>Default</ods-tab>
+  <ods-tab>Hover</ods-tab>
+  <ods-tab>Active</ods-tab>
+</ods-tabs>
+<!-- ... your own panel/view/page management ... -->
+```
+
+Disabled tab:
+```html
+<osds-tabs>
+  <osds-tab-bar slot="top">
+    <osds-tab-bar-item disabled panel="default">Default</osds-tab-bar-item>
+    <osds-tab-bar-item panel="hover">Hover</osds-tab-bar-item>
+    <osds-tab-bar-item panel="active">Active</osds-tab-bar-item>
+  </osds-tab-bar>
+  <osds-tab-panel name="default">Default</osds-tab-panel>
+  <osds-tab-panel name="hover">Hover</osds-tab-panel>
+  <osds-tab-panel name="active">Active</osds-tab-panel>
+</osds-tabs>
+
+<!-- is now -->
+
+<ods-tabs>
+  <ods-tab is-disabled>Default</ods-tab>
+  <ods-tab>Hover</ods-tab>
+  <ods-tab>Active</ods-tab>
+</ods-tabs>
+<!-- ... your own panel/view/page management ... -->
+```
+
+Selected tab:
+```html
+<osds-tabs>
+  <osds-tab-bar slot="top">
+    <osds-tab-bar-item active panel="default">Default</osds-tab-bar-item>
+    <osds-tab-bar-item panel="hover">Hover</osds-tab-bar-item>
+    <osds-tab-bar-item panel="active">Active</osds-tab-bar-item>
+  </osds-tab-bar>
+  <osds-tab-panel name="default">Default</osds-tab-panel>
+  <osds-tab-panel name="hover">Hover</osds-tab-panel>
+  <osds-tab-panel name="active">Active</osds-tab-panel>
+</osds-tabs>
+
+<!-- is now -->
+
+<ods-tabs>
+  <ods-tab is-selected>Default</ods-tab>
+  <ods-tab>Hover</ods-tab>
+  <ods-tab>Active</ods-tab>
+</ods-tabs>
+<!-- ... your own panel/view/page management ... -->
+```

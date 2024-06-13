@@ -1,0 +1,66 @@
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+:host(.autocomplete) {
+  display: flex;
+  flex-direction: column;
+}
+
+:host([inline]) {
+  width: fit-content;
+}
+
+.autocomplete {
+  &__anchor {
+    position: relative;
+    padding: 0;
+    width: 100%;
+    text-align: initial;
+
+    &--inline {
+      width: fit-content;
+    }
+  }
+
+  &__input {
+    &--opened {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+
+  &__surface {
+    box-sizing: border-box;
+    display: none;
+    flex-direction: column;
+    border-width: var(--ods-size-01);
+    border-top-width: 0;
+    border-style: solid;
+    border-radius: 0 0 var(--ods-size-03) var(--ods-size-03);
+    border-color: var(--ods-color-primary-200);
+    background: var(--ods-color-gray-000);
+    width: 100%;
+    max-height: calc(var(--ods-size-stack-11) * 7.5);
+    overflow: auto;
+    animation: appear 0.2s ease-in-out;
+
+    &--opened {
+      display: flex;
+    }
+
+    &__loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--ods-size-03);
+      height: var(--ods-size-09);
+    }
+  }
+}

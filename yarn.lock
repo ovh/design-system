@@ -4028,6 +4028,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-component-tabs@workspace:packages/ods/src/components/tabs":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-tabs@workspace:packages/ods/src/components/tabs"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-component-tag@workspace:packages/ods/src/components/tag":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-tag@workspace:packages/ods/src/components/tag"

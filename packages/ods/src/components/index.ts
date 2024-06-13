@@ -36,3 +36,4 @@ export * from './select/src';
 export * from './modal/src';
 export * from './card/src';
 export * from './file-upload/src';
+export * from './tabs/src';

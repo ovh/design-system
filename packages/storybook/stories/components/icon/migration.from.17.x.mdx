@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/blocks';
+import { Meta, Markdown } from '@storybook/blocks';
 import * as IconStories from './icon.stories';
 
 <Meta of={ IconStories } name='Migration From 17.x' />
@@ -42,6 +42,10 @@ Icons are now font, they will by default have the same size as the current text.
 
 You can override this using a css class on the component directly.
 
+> **Warning:**
+> Icons have been resized to fit entirely their bounding box.
+> Check your current icons and update their size accordingly.
+
 ## Migration examples
 
 Contrasted icon:
@@ -81,3 +85,50 @@ Icon size:
   }
 </style>
 ```
+
+## Icons changes
+<Markdown>
+{`
+| Former icon names | Status                                                         | New                                                                   |
+|-------------------|----------------------------------------------------------------|-----------------------------------------------------------------------|
+| add               | <img src="https://img.shields.io/badge/updated-00FFFF" />      | Use **plus**                                                          |
+| arrow-transfer    | <img src="https://img.shields.io/badge/updated-00FFFF" />      | Use **arrow-left-right**                                              |
+| bin               | <img src="https://img.shields.io/badge/updated-00FFFF" />      | Use **trash**                                                         |
+| cart              | <img src="https://img.shields.io/badge/updated-00FFFF" />      | Use **shopping-cart**                                                 |
+| chevron-up-down   | <img src="https://img.shields.io/badge/removed-FF0000" />      | Use an empty space as default                                         |
+| clock-wait        | <img src="https://img.shields.io/badge/updated-00FFFF" />      | Use **clock-time-four**                                               |
+| close             | <img src="https://img.shields.io/badge/updated-00FFFF" />      | Use **times**                                                         |
+| copy              | <img src="https://img.shields.io/badge/updated-00FFFF" />      | Use **file-copy**                                                     |
+| ellipsis          | <img src="https://img.shields.io/badge/updated-00FFFF" />      | Use **ellipsis-horizontal**                                           |
+| error             | <img src="https://img.shields.io/badge/updated-00FFFF" />      | Use **warning-triangle**                                              |
+| eye-closed        | <img src="https://img.shields.io/badge/updated-00FFFF" />      | Use **eye-off**                                                       |
+| eye-open          | <img src="https://img.shields.io/badge/updated-00FFFF" />      | Use **eye**                                                           |
+| gear              | <img src="https://img.shields.io/badge/updated-00FFFF" />      | Use **cog**                                                           |
+| guides            | <img src="https://img.shields.io/badge/updated-00FFFF" />      | Use **book**                                                          |
+| hamburger         | <img src="https://img.shields.io/badge/updated-00FFFF" />      | Use **hamburger-menu**                                                |
+| help              | <img src="https://img.shields.io/badge/updated-00FFFF" />      | Use **question**                                                      |
+| help-circle       | <img src="https://img.shields.io/badge/updated-00FFFF" />      | Use **question-circle**                                               |
+| indeterminate     | <img src="https://img.shields.io/badge/updated-00FFFF" />      | Use **minus**                                                         |
+| info              | <img src="https://img.shields.io/badge/updated-00FFFF" />      | Use **info-circle**                                                   |
+| ok                | <img src="https://img.shields.io/badge/updated-00FFFF" />      | Use **check**                                                         |
+| ovh               | <img src="https://img.shields.io/badge/removed-FF0000" />      | See [Logo](https://zeroheight.com/6fc8a63f7)                          |
+| remove            | <img src="https://img.shields.io/badge/updated-00FFFF" />      | Use **minus**                                                         |
+| settings          | <img src="https://img.shields.io/badge/updated-00FFFF" />      | Use **cog**                                                           |
+| shape-circle      | <img src="https://img.shields.io/badge/updated-00FFFF" />      | Use **circle** or **star**                                            |
+| shape-dot         | <img src="https://img.shields.io/badge/removed-FF0000" />      | Use **circle** or **star-full**                                       |
+| sort              | <img src="https://img.shields.io/badge/removed-FF0000" />      | Use an empty space as default                                         |
+| sort-down         | <img src="https://img.shields.io/badge/removed-FF0000" />      | Use **sort-alpha-down**, **sort-numeric-down** or **chevron-down**    |
+| sort-up           | <img src="https://img.shields.io/badge/removed-FF0000" />      | Use **sort-alpha-down**, **sort-numeric-down** or **chevron-down**    |
+| success           | <img src="https://img.shields.io/badge/updated-00FFFF" />      | Use **check**                                                         |
+| success-circle    | <img src="https://img.shields.io/badge/updated-00FFFF" />      | Use **check-circle**                                                  |
+| time              | <img src="https://img.shields.io/badge/updated-00FFFF" />      | Use **clock-time-four**                                               |
+| transfer          | <img src="https://img.shields.io/badge/updated-00FFFF" />      | Use **arrow-left-right**                                              |
+| triangle-down     | <img src="https://img.shields.io/badge/removed-FF0000" />      | Use **sort-alpha-down**, **sort-numeric-down** or **chevron-down**    |
+| triangle-left     | <img src="https://img.shields.io/badge/removed-FF0000" />      | Use **chevron-left**                                                  |
+| triangle-right    | <img src="https://img.shields.io/badge/removed-FF0000" />      | Use **chevron-right**                                                 |
+| triangle-up       | <img src="https://img.shields.io/badge/removed-FF0000" />      | Use **sort-alpha-up**, **sort-numeric-up** or **chevron-up**          |
+| user              | <img src="https://img.shields.io/badge/updated-00FFFF" />      | Use **user-circle**                                                   |
+| warning           | <img src="https://img.shields.io/badge/updated-00FFFF" />      | Use **warning-triangle**                                              |
+| warning-circle    | <img src="https://img.shields.io/badge/updated-00FFFF" />      | Use **warning-triangle**                                              |
+`}
+</Markdown>

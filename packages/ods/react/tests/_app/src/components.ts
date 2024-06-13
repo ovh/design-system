@@ -37,6 +37,7 @@ const componentNames = [
   'modal',
   'card',
   'file-upload',
+  'tabs',
   //--generator-anchor--
 ];
 

@@ -1,0 +1,18 @@
+:host(.ods-card) {
+  display: inline-block;
+}
+
+.ods-card {
+  &__wrapper {
+    border: 1px solid;
+    border-radius: 8px;
+
+    &--neutral {
+      border-color: var(--ods-color-neutral-200);
+    }
+
+    &--primary {
+      border-color: var(--ods-color-primary-200);
+    }
+  }
+}

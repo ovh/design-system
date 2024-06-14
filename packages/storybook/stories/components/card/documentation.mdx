@@ -1,0 +1,39 @@
+import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import SpecificationsCard from '@ovhcloud/ods-components/src/components/card/documentation/spec.md?raw';
+import { Banner } from '../../banner';
+import { DocNavigator } from '../../doc-navigator';
+import * as CardStories from './card.stories';
+import { LINK_ID } from '../../zeroheight';
+
+<Meta of={ CardStories } name='Documentation' />
+
+<Banner of={ CardStories } />
+
+# Overview
+
+Card is a component designed to be a container for displaying content and other elements to communicate information or feature a call-to-action within a page.
+
+<Canvas of={ CardStories.Overview } sourceState='none' />
+
+<DocNavigator of={ CardStories } linkId={ LINK_ID.CARD } />
+
+<Markdown>{ SpecificationsCard }</Markdown>
+
+# Style customization
+
+You can add your own style on the card element using the part `card`.
+
+Custom Card CSS:
+
+<Canvas of={ CardStories.CustomCSS } sourceState='shown'/>
+
+# Examples
+
+## Default
+
+<Canvas of={ CardStories.Default } sourceState='shown' />
+
+## Color
+<Canvas of={ CardStories.Color } sourceState='shown' />
+
+...

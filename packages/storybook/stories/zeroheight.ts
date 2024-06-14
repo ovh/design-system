@@ -7,6 +7,7 @@ enum LINK_ID {
   BADGE = '879fff-badge',
   BREADCRUMB = '6707ac-breadcrumb',
   BUTTON = '794ee9-button',
+  CARD = '76f7e4-card',
   CHECKBOX_BUTTON = '0166c5-checkbox-button',
   CLIPBOARD = '25bcae-clipboard',
   CODE = '07c385-code',

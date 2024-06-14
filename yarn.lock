@@ -3896,6 +3896,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-component-card@workspace:packages/ods/src/components/card":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-card@workspace:packages/ods/src/components/card"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-component-checkbox@workspace:packages/ods/src/components/checkbox":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-checkbox@workspace:packages/ods/src/components/checkbox"

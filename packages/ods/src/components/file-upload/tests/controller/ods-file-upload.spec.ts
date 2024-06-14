@@ -1,7 +1,7 @@
 jest.mock('../../../../utils/file');
 
 import { isFileAccepted } from '../../../../utils/file';
-import { filterMaxFiles, filterValidFiles } from '../../src/controller/ods-file-upload';
+import { filterMaxFiles, filterMaxSize, filterValidFiles } from '../../src/controller/ods-file-upload';
 
 describe('ods-file-upload controller', () => {
   beforeEach(jest.clearAllMocks);
@@ -28,6 +28,34 @@ describe('ods-file-upload controller', () => {
 
     it('should return split files if max is reached', () => {
       expect(filterMaxFiles(dummyFiles, 3, 4)).toEqual({
+        rejectedFiles: [dummyFiles[1]],
+        validFiles: [dummyFiles[0]],
+      });
+    });
+  });
+
+  describe('filterMaxSize', () => {
+    const dummyFiles = [
+      { name: 'dummy file 1', size: 2222 } as File,
+      { name: 'dummy file 2', size: 54323 } as File,
+    ];
+
+    it('should return all files as valid if no max size is set', () => {
+      expect(filterMaxSize(dummyFiles)).toEqual({
+        rejectedFiles: [],
+        validFiles: dummyFiles,
+      });
+    });
+
+    it('should return all files as valid if max size is not reached', () => {
+      expect(filterMaxSize(dummyFiles, 987654321)).toEqual({
+        rejectedFiles: [],
+        validFiles: dummyFiles,
+      });
+    });
+
+    it('should return split files if max size is reached', () => {
+      expect(filterMaxSize(dummyFiles, 30000)).toEqual({
         rejectedFiles: [dummyFiles[1]],
         validFiles: [dummyFiles[0]],
       });

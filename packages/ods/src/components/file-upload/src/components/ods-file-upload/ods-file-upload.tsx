@@ -1,10 +1,10 @@
 import { Component, Event, type EventEmitter, type FunctionalComponent, Host, Prop, State, h } from '@stencil/core';
 import { getRandomHTMLId } from '../../../../../utils/dom';
-import { getFilesFromDataTransfer } from '../../../../../utils/file';
+import { formatBytes, getFilesFromDataTransfer } from '../../../../../utils/file';
 import { ODS_BUTTON_VARIANT } from '../../../../button/src';
 import { ODS_ICON_NAME } from '../../../../icon/src';
 import { ODS_FILE_REJECTION_CAUSE } from '../../constants/file-error';
-import { filterMaxFiles, filterValidFiles } from '../../controller/ods-file-upload';
+import { filterMaxFiles, filterMaxSize, filterValidFiles } from '../../controller/ods-file-upload';
 import { type OdsFile } from '../../interfaces/attributes';
 import { type OdsFileChangeEventDetail, type OdsFileRejectedEventDetail } from '../../interfaces/events';
 
@@ -19,13 +19,16 @@ export class OdsFileUpload {
   @State() isDragging: boolean = false;
 
   @Prop({ reflect: true }) public accept: string = '';
-  @Prop({ reflect: true }) public acceptedFileLabel: string = 'Accepted files:';
+  @Prop({ reflect: true }) public acceptedFileLabel?: string;
   @Prop({ reflect: true }) public browseFileLabel: string = 'Browse files';
   @Prop({ reflect: true }) public dropzoneLabel: string = 'Drag & drop a file';
   @Prop({ reflect: true }) public error: string = '';
   @Prop({ reflect: false }) public files: OdsFile[] = [];
   @Prop({ reflect: true }) public isDisabled: boolean = false;
   @Prop({ reflect: true }) public maxFile?: number;
+  @Prop({ reflect: true }) public maxFileLabel?: string;
+  @Prop({ reflect: true }) public maxSize?: number;
+  @Prop({ reflect: true }) public maxSizeLabel?: string;
   @Prop({ reflect: true }) public uploadSuccessLabel: string = 'File uploaded';
 
   @Event() odsFileCancel!: EventEmitter<OdsFile>;
@@ -46,11 +49,20 @@ export class OdsFileUpload {
       });
     }
 
-    const { rejectedFiles, validFiles: remainingFiles } = filterMaxFiles(validFiles, this.files.length, this.maxFile);
+    const { rejectedFiles: oversizedFiles, validFiles: fittedFiles } = filterMaxSize(validFiles, this.maxSize);
 
-    if (rejectedFiles.length) {
+    if (oversizedFiles.length) {
       this.odsFileRejected.emit({
-        files: rejectedFiles,
+        files: oversizedFiles,
+        reason: ODS_FILE_REJECTION_CAUSE.sizeTooLarge,
+      });
+    }
+
+    const { rejectedFiles: exceedingFiles, validFiles: remainingFiles } = filterMaxFiles(fittedFiles, this.files.length, this.maxFile);
+
+    if (exceedingFiles.length) {
+      this.odsFileRejected.emit({
+        files: exceedingFiles,
         reason: ODS_FILE_REJECTION_CAUSE.maxFileReached,
       });
     }
@@ -62,7 +74,7 @@ export class OdsFileUpload {
           file.odsId = getRandomHTMLId();
           return file;
         }),
-        noError: invalidFiles.length === 0 && rejectedFiles.length === 0,
+        noError: invalidFiles.length === 0 && oversizedFiles.length === 0 && exceedingFiles.length === 0,
       });
     }
   }
@@ -126,19 +138,35 @@ export class OdsFileUpload {
 
           <ods-icon
             class="ods-file-upload__dropzone__icon"
-            name={ ODS_ICON_NAME.file }>
+            name={ ODS_ICON_NAME.filePlus }>
           </ods-icon>
 
           <span>
             { this.dropzoneLabel }
           </span>
 
-          {
-            this.accept &&
-            <span class="ods-file-upload__dropzone__file-format">
-              { this.acceptedFileLabel }&nbsp;{ this.accept }
-            </span>
-          }
+          <div class="ods-file-upload__dropzone__rules">
+            {
+              this.maxFileLabel && typeof this.maxFile === 'number' && this.maxFile >= 0 &&
+              <span class="ods-file-upload__dropzone__rules__max-file">
+                { this.maxFileLabel }&nbsp;{ this.maxFile }
+              </span>
+            }
+
+            {
+              this.maxSizeLabel && typeof this.maxSize === 'number' && this.maxSize >= 0 &&
+              <span class="ods-file-upload__dropzone__rules__max-size">
+                { this.maxSizeLabel }&nbsp;{ formatBytes(this.maxSize) }
+              </span>
+            }
+
+            {
+              this.acceptedFileLabel &&
+              <span class="ods-file-upload__dropzone__rules__file-format">
+                { this.acceptedFileLabel }
+              </span>
+            }
+          </div>
 
           <ods-button
             icon={ ODS_ICON_NAME.upload }

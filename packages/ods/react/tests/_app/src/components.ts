@@ -35,6 +35,7 @@ const componentNames = [
   'checkbox',
   'select',
   'modal',
+  'card',
   //--generator-anchor--
 ];
 

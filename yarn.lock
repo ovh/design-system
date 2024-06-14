@@ -3942,9 +3942,18 @@ __metadata:
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> ca6158dbb (feat(button): implement component)
 =======
 =======
+=======
+"@ovhcloud/ods-component-card@workspace:packages/ods/src/components/card":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-card@workspace:packages/ods/src/components/card"
+  languageName: unknown
+  linkType: soft
+
+>>>>>>> 085d24bf8 (feat(card): implement component)
 "@ovhcloud/ods-component-checkbox@workspace:packages/ods/src/components/checkbox":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-checkbox@workspace:packages/ods/src/components/checkbox"

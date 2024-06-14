@@ -57,15 +57,36 @@ describe('ods-file-upload rendering', () => {
     expect((await dropzone.getComputedStyle()).getPropertyValue('background-color')).not.toBe(baseBackgroundColor);
   });
 
-  it('should render the accept labels if set', async() => {
-    const dummyAccept = 'images/*';
-    const dummyAcceptLabel = 'File formats:';
-    await setup(`<ods-file-upload accept="${dummyAccept}" accepted-file-label="${dummyAcceptLabel}"></ods-file-upload>`);
+  it('should render the max file label if set', async() => {
+    const dummyMaxFile = 3;
+    const dummyMaxFileLabel = 'Max file:';
+    await setup(`<ods-file-upload max-file="${dummyMaxFile}" max-file-label="${dummyMaxFileLabel}"></ods-file-upload>`);
 
-    const acceptElement = await page.find('ods-file-upload >>> .ods-file-upload__dropzone__file-format');
+    const acceptElement = await page.find('ods-file-upload >>> .ods-file-upload__dropzone__rules__max-file');
 
     expect(acceptElement).not.toBeNull();
-    expect(acceptElement.innerText).toBe(`${dummyAcceptLabel} ${dummyAccept}`); // eslint-disable-line no-irregular-whitespace
+    expect(acceptElement.innerText).toBe(`${dummyMaxFileLabel} ${dummyMaxFile}`); // eslint-disable-line no-irregular-whitespace
+  });
+
+  it('should render the max size label if set', async() => {
+    const dummyMaxSize = 1024;
+    const dummyMaxSizeLabel = 'Max size:';
+    await setup(`<ods-file-upload max-size="${dummyMaxSize}" max-size-label="${dummyMaxSizeLabel}"></ods-file-upload>`);
+
+    const acceptElement = await page.find('ods-file-upload >>> .ods-file-upload__dropzone__rules__max-size');
+
+    expect(acceptElement).not.toBeNull();
+    expect(acceptElement.innerText).toBe(`${dummyMaxSizeLabel} 1 kb`); // eslint-disable-line no-irregular-whitespace
+  });
+
+  it('should render the accept label if set', async() => {
+    const dummyAcceptLabel = 'File formats: images';
+    await setup(`<ods-file-upload accepted-file-label="${dummyAcceptLabel}"></ods-file-upload>`);
+
+    const acceptElement = await page.find('ods-file-upload >>> .ods-file-upload__dropzone__rules__file-format');
+
+    expect(acceptElement).not.toBeNull();
+    expect(acceptElement.innerText).toBe(dummyAcceptLabel);
   });
 
   it('should render the global error if set', async() => {

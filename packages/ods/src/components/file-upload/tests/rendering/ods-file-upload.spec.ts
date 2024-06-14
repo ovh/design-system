@@ -39,10 +39,10 @@ describe('ods-file-upload rendering', () => {
       expect(root?.getAttribute('accepted-file-label')).toBe(dummyValue);
     });
 
-    it('should render with expected default value', async() => {
+    it('should not be set by default', async() => {
       await setup('<ods-file-upload></ods-file-upload>');
 
-      expect(root?.getAttribute('accepted-file-label')).toBe('Accepted files:');
+      expect(root?.getAttribute('accepted-file-label')).toBeNull();
     });
   });
 
@@ -121,15 +121,63 @@ describe('ods-file-upload rendering', () => {
     it('should be reflected', async() => {
       const dummyValue = 42;
 
-      await setup(`<ods-file-upload max-files="${dummyValue}"></ods-file-upload>`);
+      await setup(`<ods-file-upload max-file="${dummyValue}"></ods-file-upload>`);
 
-      expect(root?.getAttribute('max-files')).toBe(`${dummyValue}`);
+      expect(root?.getAttribute('max-file')).toBe(`${dummyValue}`);
     });
 
     it('should not be set by default', async() => {
       await setup('<ods-file-upload></ods-file-upload>');
 
-      expect(root?.getAttribute('max-files')).toBeNull();
+      expect(root?.getAttribute('max-file')).toBeNull();
+    });
+  });
+
+  describe('maxFileLabel', () => {
+    it('should be reflected', async() => {
+      const dummyValue = 'dummy value';
+
+      await setup(`<ods-file-upload max-file-label="${dummyValue}"></ods-file-upload>`);
+
+      expect(root?.getAttribute('max-file-label')).toBe(dummyValue);
+    });
+
+    it('should not be set by default', async() => {
+      await setup('<ods-file-upload></ods-file-upload>');
+
+      expect(root?.getAttribute('max-file-label')).toBeNull();
+    });
+  });
+
+  describe('maxSize', () => {
+    it('should be reflected', async() => {
+      const dummyValue = 42;
+
+      await setup(`<ods-file-upload max-size="${dummyValue}"></ods-file-upload>`);
+
+      expect(root?.getAttribute('max-size')).toBe(`${dummyValue}`);
+    });
+
+    it('should not be set by default', async() => {
+      await setup('<ods-file-upload></ods-file-upload>');
+
+      expect(root?.getAttribute('max-size')).toBeNull();
+    });
+  });
+
+  describe('maxSizeLabel', () => {
+    it('should be reflected', async() => {
+      const dummyValue = 'dummy value';
+
+      await setup(`<ods-file-upload max-size-label="${dummyValue}"></ods-file-upload>`);
+
+      expect(root?.getAttribute('max-size-label')).toBe(dummyValue);
+    });
+
+    it('should not be set by default', async() => {
+      await setup('<ods-file-upload></ods-file-upload>');
+
+      expect(root?.getAttribute('max-size-label')).toBeNull();
     });
   });
 

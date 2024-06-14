@@ -9,10 +9,13 @@ describe('utils file', () => {
       expect(formatBytes()).toBe('');
       // @ts-ignore for test purpose
       expect(formatBytes('bytes')).toBe('');
+      expect(formatBytes(-1)).toBe('');
     });
 
     it('should return formatted string', () => {
+      expect(formatBytes(0)).toBe('0 b');
       expect(formatBytes(1024)).toBe('1 kb');
+      expect(formatBytes(1048576)).toBe('1 mb');
       expect(formatBytes(524288000)).toBe('500 mb');
       expect(formatBytes(123456789, 2)).toBe('117.74 mb');
       expect(formatBytes(123456789, -2)).toBe('118 mb');

@@ -23,6 +23,9 @@ export const Demo: StoryObj = {
                    id="demo-file-upload"
                    is-disabled="${arg.isDisabled}"
                    max-file="${arg.maxFile}"
+                   max-file-label="${arg.maxFileLabel}"
+                   max-size="${arg.maxSize}"
+                   max-size-label="${arg.maxSizeLabel}"
                    upload-success-label="${arg.uploadSuccessLabel}">
   </ods-file-upload>
   <style>
@@ -67,7 +70,7 @@ export const Demo: StoryObj = {
     acceptedFileLabel: {
       table: {
         category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: 'Accepted files:' },
+        defaultValue: { summary: 'ø' },
         type: { summary: 'string' }
       },
       control: 'text',
@@ -139,6 +142,30 @@ export const Demo: StoryObj = {
       },
       control: 'number',
     },
+    maxFileLabel: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: 'ø' },
+        type: { summary: 'string' }
+      },
+      control: 'text',
+    },
+    maxSize: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: 'ø' },
+        type: { summary: 'number' }
+      },
+      control: 'number',
+    },
+    maxSizeLabel: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: 'ø' },
+        type: { summary: 'string' }
+      },
+      control: 'text',
+    },
     uploadSuccessLabel: {
       table: {
         category: CONTROL_CATEGORY.general,
@@ -150,7 +177,6 @@ export const Demo: StoryObj = {
   }),
   args: {
     accept: '',
-    acceptedFileLabel: 'Accepted files:',
     browseFileLabel: 'Browse files',
     dropzoneLabel: 'Drag & drop a file',
     error: '',
@@ -163,6 +189,7 @@ export const Accept: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
 <ods-file-upload accept="image/png"
+                 accepted-file-label="Png file only"
                  id="accept-file-upload">
 </ods-file-upload>
 <script>
@@ -225,10 +252,14 @@ export const CustomLabels: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
 <ods-file-upload accept="image/*"
-                 accepted-file-label="Formats acceptés :"
+                 accepted-file-label="Formats acceptés : images"
                  browse-file-label="Parcourir les fichiers"
                  dropzone-label="Glisser-déposer des fichiers"
                  id="labels-file-upload"
+                 max-file="3"
+                 max-file-label="Nombre maximal de fichiers :"
+                 max-size="524288000"
+                 max-size-label="Taille de fichier max :"
                  upload-success-label="Fichier uploadé">
 </ods-file-upload>
 <script>
@@ -306,7 +337,8 @@ export const MaxFile: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
 <ods-file-upload id="max-file-upload"
-                 max-file="2">
+                 max-file="2"
+                 max-file-label="Maximum file allowed:">
 </ods-file-upload>
 <script>
   (() => {
@@ -325,6 +357,36 @@ export const MaxFile: StoryObj = {
 
     maxFileUpload.addEventListener('odsFileRejected', ({ detail }) => {
       maxFileUpload.error = \`Max file reached, \${detail.files.length} file(s) rejected\`;
+    });
+  })();
+</script>
+  `,
+};
+
+export const MaxSize: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-file-upload id="max-size-upload"
+                 max-size="1048576"
+                 max-size-label="No file larger than:">
+</ods-file-upload>
+<script>
+  (() => {
+    const maxSizeUpload = document.querySelector('#max-size-upload');
+
+    maxSizeUpload.addEventListener('odsFileChange', ({ detail }) => {
+      maxSizeUpload.files = (maxSizeUpload.files || []).concat(detail.files);
+      if (detail.noError) {
+        maxSizeUpload.error = '';
+      }
+    });
+
+    maxSizeUpload.addEventListener('odsFileCancel', ({ detail }) => {
+      maxSizeUpload.files = maxSizeUpload.files.filter((file) => file.odsId !== detail.odsId);
+    });
+
+    maxSizeUpload.addEventListener('odsFileRejected', ({ detail }) => {
+      maxSizeUpload.error = \`\${detail.files.length} file(s) too large\`;
     });
   })();
 </script>

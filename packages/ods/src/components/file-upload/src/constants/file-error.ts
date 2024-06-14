@@ -1,5 +1,6 @@
 enum ODS_FILE_REJECTION_CAUSE {
   maxFileReached = 'max-file-reached',
+  sizeTooLarge = 'size-too-large',
   wrongFormat = 'wrong-format',
 }
 

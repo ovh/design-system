@@ -74,6 +74,7 @@ For global error, you should listen to the `odsFileRejected` event.
 This event is triggered:
 - if a file is dropped that doesn't match the accept pattern (if `accept` set)
 - if the max file limit is reached (if `max-file` is set)
+- if a file size is bigger then the max size limit (if `max-size` is set)
 
 The event will contain:
 - an array of rejected files
@@ -116,6 +117,16 @@ It works exactly the same as the one from the native [input file](https://develo
 ## Limit the maximum number of file
 
 <Canvas of={ FileUploadStories.MaxFile } sourceState='shown' />
+
+## Limit the maximum size of each file
+
+`max-size` value expect a number of bytes, based on 1024b === 1kb.
+
+For example:
+- to limit to 1Mb, you should set 1024 * 1024 = `1048576`
+- to limit to 500Mb, you should set (1024 * 1024) * 500 = `524288000`
+
+<Canvas of={ FileUploadStories.MaxSize } sourceState='shown' />
 
 ## Send to server and display progress
 

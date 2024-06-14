@@ -1,6 +1,10 @@
 function formatBytes(bytes: number, decimals = 0): string {
-  if (!bytes || typeof bytes !== 'number') {
+  if (typeof bytes !== 'number' || bytes < 0) {
     return '';
+  }
+
+  if (bytes === 0) {
+    return '0 b';
   }
 
   const sizes = ['b', 'kb', 'mb', 'gb', 'tb', 'pb', 'eb', 'zb', 'yb'];

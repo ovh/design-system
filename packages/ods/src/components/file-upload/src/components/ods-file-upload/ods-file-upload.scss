@@ -52,8 +52,16 @@ $ods-file-upload-spacing: 8px;
       font-size: font.px-to-rem(32px);
     }
 
-    &__file-format {
-      font-size: font.px-to-rem(12px);
+    &__rules {
+      display: flex;
+      flex-flow: column;
+      align-self: flex-start;
+
+      &__file-format,
+      &__max-file,
+      &__max-size {
+        font-size: font.px-to-rem(12px);
+      }
     }
 
     &__error {

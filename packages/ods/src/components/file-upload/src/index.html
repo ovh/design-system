@@ -57,7 +57,8 @@
 
   <p>Max 2 files</p>
   <ods-file-upload id="maxFile"
-                   max-file="2">
+                   max-file="2"
+                   max-file-label="Max file:">
   </ods-file-upload>
   <script>
     const maxFileFileUpload = document.querySelector('#maxFile');
@@ -68,6 +69,23 @@
 
     maxFileFileUpload.addEventListener('odsFileRejected', ({ detail }) => {
       maxFileFileUpload.error = `Max file reached, ${detail.files.length} file(s) rejected`;
+    });
+  </script>
+
+  <p>Max 1Mb</p>
+  <ods-file-upload id="maxSize"
+                   max-size="1048576"
+                   max-size-label="Max size per file:">
+  </ods-file-upload>
+  <script>
+    const maxSizeFileUpload = document.querySelector('#maxSize');
+
+    maxSizeFileUpload.addEventListener('odsFileChange', ({ detail }) => {
+      maxSizeFileUpload.files = (maxSizeFileUpload.files || []).concat(detail.files);
+    });
+
+    maxSizeFileUpload.addEventListener('odsFileRejected', ({ detail }) => {
+      maxSizeFileUpload.error = `${detail.files.length} file(s) bigger than 1 mb were rejected`;
     });
   </script>
 
@@ -135,10 +153,14 @@
 
   <p>Custom labels</p>
   <ods-file-upload accept="image/*"
-                   accepted-file-label="Formats acceptés :"
+                   accepted-file-label="Formats acceptés : image"
                    browse-file-label="Parcourir les fichiers"
                    dropzone-label="Glisser-déposer des fichiers"
                    id="labels"
+                   max-file="2"
+                   max-file-label="Nombre max de fichier :"
+                   max-size="1048576"
+                   max-size-label="Taille maximale :"
                    upload-success-label="Fichier uploadé">
   </ods-file-upload>
   <script>

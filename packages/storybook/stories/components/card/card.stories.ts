@@ -47,13 +47,13 @@ export const Demo: StoryObj = {
         defaultValue: { summary: 'ø' },
       },
       control: 'text',
-      description: 'Set a custom style properties. Example: ".demo-card::part(card) { border: 1px red solid; }"',
+      description: 'Set a custom style properties. Example: ".demo-card { border: 1px red solid; }"',
     },
   }),
   args: {
     color: ODS_CARD_COLOR.primary,
     content: '<ods-text preset="heading-6">Hello, world!</ods-text>',
-    customCss: '.demo-card::part(card) { padding: 0 24px; }',
+    customCss: '.demo-card { padding: 0 24px; }',
   },
 };
 
@@ -73,7 +73,7 @@ export const Overview: StoryObj = {
 </ods-card>
 
 <style>
-  .overview-card::part(card) {
+  .overview-card {
     padding: 0 24px;
   }
 </style>
@@ -88,7 +88,7 @@ export const CustomCSS: StoryObj = {
 </ods-card>
 
 <style>
-  .my-card::part(card) {
+  .my-card {
     width: 500px;
     display: flex;
     justify-content: center;

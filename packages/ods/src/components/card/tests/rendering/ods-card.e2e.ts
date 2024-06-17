@@ -32,8 +32,8 @@ describe('ods-card rendering', () => {
       `);
 
       const hasClassPrimary = await page.evaluate(() => {
-        const wrapper = document.querySelector('ods-card')?.shadowRoot?.querySelector('.ods-card__wrapper');
-        return wrapper?.classList.contains('ods-card__wrapper--primary');
+        const card = document.querySelector('ods-card');
+        return card?.classList.contains('ods-card--primary');
       });
 
       expect(hasClassPrimary).toBe(true);
@@ -46,8 +46,8 @@ describe('ods-card rendering', () => {
       `);
 
       const hasClassNeutral = await page.evaluate(() => {
-        const wrapper = document.querySelector('ods-card')?.shadowRoot?.querySelector('.ods-card__wrapper');
-        return wrapper?.classList.contains('ods-card__wrapper--neutral');
+        const card = document.querySelector('ods-card');
+        return card?.classList.contains('ods-card--neutral');
       });
 
       expect(hasClassNeutral).toBe(true);

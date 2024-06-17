@@ -15,21 +15,23 @@ export class OdsAccordion {
 
   @Event() odsAccordionToggle!: EventEmitter<boolean>;
 
-  onToggle(event: Event): void {
+  handleToggle(event: Event): void {
     if (this.isDisabled) {
-      event.preventDefault();
-      event.stopPropagation();
-      this.detailsElement?.removeAttribute('open');
-      return;
+      return event.preventDefault();
     }
 
-    this.isOpen = this.detailsElement?.getAttribute('open') === '' ? true : false;
+    if (this.isOpen) {
+      this.isOpen = false;
+    } else {
+      this.isOpen = true;
+    }
+
     this.odsAccordionToggle.emit();
   }
 
   @Watch('isOpen')
   onOpenChange(): void{
-    if (this.isOpen) {
+    if (this.isOpen && !this.isDisabled) {
       this.detailsElement?.setAttribute('open', '');
     } else {
       this.detailsElement?.removeAttribute('open');
@@ -38,6 +40,16 @@ export class OdsAccordion {
 
   componentDidLoad(): void {
     this.onOpenChange();
+  }
+
+  handleClick(event: MouseEvent): void {
+    this.handleToggle(event);
+  }
+
+  handleKeyDown(event: KeyboardEvent): void {
+    if (event.key === ' ' || event.key === 'Enter') {
+      this.handleToggle(event);
+    }
   }
 
   render(): FunctionalComponent {
@@ -49,15 +61,16 @@ export class OdsAccordion {
             'ods-accordion__wrapper--is-disabled': this.isDisabled,
             'ods-accordion__wrapper--is-open': this.isOpen,
           }}
-          onClick={(e) => {
-            this.isDisabled && e.preventDefault();
-          }}
-          onToggle={(e) => this.onToggle(e)}
+          tabIndex={this.isDisabled ? -1 : 0}
+          onClick={(event) => this.handleClick(event)}
+          onKeyDown={(event) => this.handleKeyDown(event)}
+          onToggle={(event) => event.preventDefault()}
           part='accordion'
           ref={(el) => this.detailsElement = el as HTMLDetailsElement}
         >
           <summary
-            tabIndex={this.isDisabled ? -1 : 0}
+            tabIndex={-1}
+            onClick={(event) => event.preventDefault()}
             class={{
               'ods-accordion__wrapper__summary': true,
               'ods-accordion__wrapper__summary--is-disabled': this.isDisabled,
@@ -67,7 +80,10 @@ export class OdsAccordion {
             <div class='ods-accordion__wrapper__summary__slot'>
               <slot name='summary'></slot>
             </div>
-            <ods-icon name={this.isOpen ? ODS_ICON_NAME.chevronUp : ODS_ICON_NAME.chevronDown}></ods-icon>
+            <ods-icon
+              class='ods-accordion__wrapper__summary__icon'
+              name={this.isOpen && !this.isDisabled ? ODS_ICON_NAME.chevronUp : ODS_ICON_NAME.chevronDown}
+            ></ods-icon>
           </summary>
           <div class='ods-accordion__wrapper__content'>
             <slot></slot>

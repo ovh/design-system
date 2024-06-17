@@ -11,7 +11,7 @@ describe('ods-accordion navigation', () => {
     await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
   }
 
-  it('summary should be focusable on tab', async() => {
+  it('details should be focusable on tab', async() => {
     await setup(`
       <ods-accordion>
         <ods-text class="label" slot="summary" preset="label">Hello, world!</ods-text>
@@ -24,16 +24,16 @@ describe('ods-accordion navigation', () => {
     await page.keyboard.press('Tab');
     await page.waitForChanges();
 
-    const isSummaryFocused = await page.evaluate(() => {
-      const summary = document.querySelector('ods-accordion')?.shadowRoot?.querySelector('.ods-accordion__wrapper__summary');
+    const isDetailsFocused = await page.evaluate(() => {
+      const details = document.querySelector('ods-accordion')?.shadowRoot?.querySelector('.ods-accordion__wrapper');
       const activeElement = document.activeElement?.shadowRoot?.activeElement;
-      return summary === activeElement;
+      return details === activeElement;
     });
 
-    expect(isSummaryFocused).toBe(true);
+    expect(isDetailsFocused).toBe(true);
   });
 
-  it('summary should not be focusable on tab if disabled', async() => {
+  it('details should not be focusable on tab if disabled', async() => {
     await setup(`
       <ods-accordion is-disabled>
         <ods-text class="label" slot="summary" preset="label">Hello, world!</ods-text>
@@ -46,13 +46,13 @@ describe('ods-accordion navigation', () => {
     await page.keyboard.press('Tab');
     await page.waitForChanges();
 
-    const isSummaryFocused = await page.evaluate(() => {
-      const summary = document.querySelector('ods-accordion')?.shadowRoot?.querySelector('.ods-accordion__wrapper__summary');
+    const isDetailsFocused = await page.evaluate(() => {
+      const details = document.querySelector('ods-accordion')?.shadowRoot?.querySelector('.ods-accordion__wrapper');
       const activeElement = document.activeElement?.shadowRoot?.activeElement;
-      return summary === activeElement;
+      return details === activeElement;
     });
 
-    expect(isSummaryFocused).toBe(false);
+    expect(isDetailsFocused).toBe(false);
   });
 
   it('details should toggle on "Enter" when focused', async() => {

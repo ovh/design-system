@@ -12,7 +12,7 @@ export class OdsCard {
 
   render(): FunctionalComponent {
     return (
-      <Host class={ 'ods-card' }>
+      <Host class='ods-card'>
         <div class={ `ods-card__wrapper ods-card__wrapper--${this.color}` } part={ 'card' }>
           <slot></slot>
         </div>

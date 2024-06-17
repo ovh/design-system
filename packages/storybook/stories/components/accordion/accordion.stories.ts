@@ -28,7 +28,7 @@ export const Demo: StoryObj = {
     isDisabled: {
       table: {
         category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: 'ø' },
+        defaultValue: false,
         type: { summary: 'boolean' }
       },
       control: 'boolean',
@@ -36,7 +36,7 @@ export const Demo: StoryObj = {
     isOpen: {
       table: {
         category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: 'ø' },
+        defaultValue: false,
         type: { summary: 'boolean' }
       },
       control: 'boolean',

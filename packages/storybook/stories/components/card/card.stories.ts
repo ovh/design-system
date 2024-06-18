@@ -57,10 +57,12 @@ export const Demo: StoryObj = {
   },
 };
 
-export const Default: StoryObj = {
+export const Slot: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
-<ods-card></ods-card>
+<ods-card>
+  <ods-text preset="heading-6">Hello, world!</ods-text>
+</ods-card>
   `,
 };
 
@@ -101,6 +103,10 @@ export const CustomCSS: StoryObj = {
 export const Color: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
+<ods-card color="primary">
+  <ods-text preset="heading-6">Hello, world!</ods-text>
+</ods-card>
+
 <ods-card color="neutral">
   <ods-text preset="heading-6">Hello, world!</ods-text>
 </ods-card>

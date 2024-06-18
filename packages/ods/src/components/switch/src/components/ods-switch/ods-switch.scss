@@ -1,3 +1,7 @@
+$ods-switch-height-sm: 24px;
+$ods-switch-height-md: 32px;
+
+
 :host(.ods-switch) {
   box-sizing: border-box;
   display: inline-flex;
@@ -9,7 +13,7 @@
 }
 
 :host(.ods-switch--sm) {
-  height: 24px;
+  height: $ods-switch-height-sm;
 
   &::slotted(.ods-switch-item__label) {
     padding: 4px 12px;
@@ -17,5 +21,5 @@
 }
 
 :host(.ods-switch--md) {
-  height: 32px;
+  height: $ods-switch-height-md;
 }

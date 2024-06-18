@@ -6,7 +6,7 @@
 @import '~tom-select/dist/css/tom-select.bootstrap4.min.css';
 
 $select-background-color: #fff;
-$select-caret-size: 24px;
+$select-caret-size: 14px;
 $select-base-padding: 8px;
 $select-padding-right: $select-caret-size + ($select-base-padding * 2);
 
@@ -170,14 +170,14 @@ $select-padding-right: $select-caret-size + ($select-base-padding * 2);
           height: auto;
           color: var(--ods-color-primary-500);
           font-size: $select-caret-size;
-          content: '\e916';
+          content: '\e917';
         }
       }
 
       &.dropdown-active {
         .ts-control {
           &::after {
-            content: '\e919';
+            content: '\e91a';
           }
         }
       }

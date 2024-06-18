@@ -34,7 +34,8 @@ export const Demo: StoryObj = {
     },
   }),
   args: {
-    name: ODS_ICON_NAME.plus,
+    name: ODS_ICON_NAME.home,
+    alt: 'home icon'
   },
 };
 
@@ -67,7 +68,7 @@ export const Default: StoryObj = {
     layout: 'centered',
   },
   render: () => html`
-<ods-icon name="arrow-left"></ods-icon>
+<ods-icon name="home"></ods-icon>
   `,
 };
 
@@ -77,7 +78,7 @@ export const Name: StoryObj = {
     layout: 'centered',
   },
   render: () => html`
-<ods-icon name="arrow-left"></ods-icon>
-<ods-icon name="warning-triangle"></ods-icon>
+<ods-icon name="home"></ods-icon>
+<ods-icon name="plus"></ods-icon>
   `,
 };

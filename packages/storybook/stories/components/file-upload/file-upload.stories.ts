@@ -198,8 +198,10 @@ export const Accept: StoryObj = {
     const acceptFileUpload = document.querySelector('#accept-file-upload');
 
     acceptFileUpload.addEventListener('odsFileChange', ({ detail }) => {
-      acceptFileUpload.error = '';
       acceptFileUpload.files = (acceptFileUpload.files || []).concat(detail.files);
+      if (detail.noError) {
+        acceptFileUpload.error = '';
+      }
     });
 
     acceptFileUpload.addEventListener('odsFileCancel', ({ detail }) => {
@@ -268,11 +270,13 @@ export const CustomLabels: StoryObj = {
     const labelsFileUpload = document.querySelector('#labels-file-upload');
 
     labelsFileUpload.addEventListener('odsFileChange', ({ detail }) => {
-      labelsFileUpload.error = '';
       labelsFileUpload.files = (labelsFileUpload.files || []).concat(detail.files).map((file) => {
         file.isUploaded = true;
         return file;
       });
+      if (detail.noError) {
+        labelsFileUpload.error = '';
+      }
     });
 
     labelsFileUpload.addEventListener('odsFileCancel', ({ detail }) => {

@@ -26,8 +26,14 @@ export class OdsSwitchItem {
 
   /** @internal */
   @Method()
-  async getRadio(): Promise<OdsRadio | undefined> {
-    return this.odsRadio;
+  async reset(): Promise<void> {
+    return this.odsRadio?.reset();
+  }
+
+  /** @internal */
+  @Method()
+  async clear(): Promise<void> {
+    return this.odsRadio?.clear();
   }
 
   @Method()

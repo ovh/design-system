@@ -1,5 +1,4 @@
 import type { OdsRadio } from '../../../../radio/src';
-import type { ODS_SWITCH_SIZE } from '../../constant/switch-size';
 import { Component, Element, Event, type EventEmitter, type FunctionalComponent, Host, Method, Prop, h } from '@stencil/core';
 
 @Component({
@@ -19,7 +18,6 @@ export class OdsSwitchItem {
   @Prop({ reflect: true }) public isRequired: boolean = false;
   @Prop({ reflect: true }) public inputId!: string;
   @Prop({ reflect: true }) public name!: string;
-  @Prop({ reflect: true }) public size?: ODS_SWITCH_SIZE;
   @Prop({ reflect: true }) public value: string | null = null;
 
   @Event() odsFocus!: EventEmitter<void>;
@@ -52,7 +50,7 @@ export class OdsSwitchItem {
 
   render(): FunctionalComponent {
     return (
-      <Host class={ `ods-switch-item ods-switch-item--${this.size}` }>
+      <Host class="ods-switch-item">
         <ods-radio
           ariaLabel={ this.ariaLabel }
           ariaLabelledby={ this.ariaLabelledby }

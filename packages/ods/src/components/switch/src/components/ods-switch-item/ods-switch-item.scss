@@ -11,9 +11,9 @@
     border-radius: var(--ods-border-radius-lg);
     cursor: pointer;
     padding: 0 12px;
-    height: 100%;
+    height: inherit;
     color: var(--ods-color-primary-500);
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 600;
 
     &:not(.ods-switch-item__label--disabled) {
@@ -25,13 +25,6 @@
     &--disabled {
       opacity: .5;
       cursor: not-allowed;
-    }
-  }
-
-  &--sm {
-    /* stylelint-disable-next-line no-descending-specificity */
-    .ods-switch-item__label {
-      height: 24px;
     }
   }
 

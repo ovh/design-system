@@ -1,55 +1,51 @@
 import { type OdsSwitchItem } from '../components/ods-switch-item/ods-switch-item';
-import { type ODS_SWITCH_SIZE } from '../constant/switch-size';
 
 function isSwitchItem(item: Element): item is OdsSwitchItem & Element {
   return item.tagName.toLowerCase() === 'ods-switch-item';
 }
 
-async function resetOnItems(items: Element[]): Promise<void> {
+function getSwitchItem(items: Element[]): (OdsSwitchItem & Element)[] {
+  return items.filter(isSwitchItem);
+}
+
+async function resetItems(items: Element[]): Promise<void> {
   await Promise.all(
-    items
-      .filter(isSwitchItem)
-      .map(async(item) => {
-        const radio = await item.getRadio();
-        return radio?.reset();
-      }),
+    getSwitchItem(items).map((item) => item.reset()),
   );
 }
 
-async function clearOnItems(items: Element[]): Promise<void> {
+async function clearItems(items: Element[]): Promise<void> {
   await Promise.all(
-    items
-      .filter(isSwitchItem)
-      .map(async(item) => {
-        const radio = await item.getRadio();
-        return radio?.clear();
-      }),
+    getSwitchItem(items).map((item) => item.clear()),
   );
 }
 
 function propagateIsDisabled(value: boolean, items: Element[]): void {
-  items
-    .filter(isSwitchItem)
-    .forEach((item) => {
-      if (value) {
-        item.setAttribute('is-disabled', '');
-      } else {
-        item.removeAttribute('is-disabled');
-      }
-    });
+  getSwitchItem(items).forEach((item) => {
+    if (value) {
+      item.setAttribute('is-disabled', '');
+    } else {
+      item.removeAttribute('is-disabled');
+    }
+  });
 }
 
-function propagateSize(value: ODS_SWITCH_SIZE, items: Element[]): void {
-  items
-    .filter(isSwitchItem)
-    .forEach((item) => {
-      item.setAttribute('size', value);
-    });
+function propagateName(name: string, items: Element[]): void {
+  getSwitchItem(items).forEach((item) => {
+    item.setAttribute('name', name);
+  });
+}
+
+function propagateInputId(name: string, items: Element[]): void {
+  getSwitchItem(items).forEach((item, index) => {
+    item.setAttribute('input-id', `${name}-${index}`);
+  });
 }
 
 export {
-  clearOnItems,
+  clearItems,
   propagateIsDisabled,
-  propagateSize,
-  resetOnItems,
+  propagateInputId,
+  propagateName,
+  resetItems,
 };

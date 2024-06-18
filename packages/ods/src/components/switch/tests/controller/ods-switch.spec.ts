@@ -1,13 +1,9 @@
-import { ODS_SWITCH_SIZE } from '../../src';
-import { clearOnItems, propagateIsDisabled, propagateSize, resetOnItems } from '../../src/controller/ods-switch';
+import { clearItems, propagateIsDisabled, resetItems } from '../../src/controller/ods-switch';
 
 type TestItem = {
   'is-disabled'?: boolean,
-  getRadio?: () => {
-    clear?: jest.Mock,
-    reset?: jest.Mock,
-  },
-  size?: ODS_SWITCH_SIZE,
+  clear?: jest.Mock,
+  reset?: jest.Mock,
   tagName: string,
   setAttribute?: jest.Mock,
   removeAttribute?: jest.Mock,
@@ -32,16 +28,14 @@ describe('ods-switch controller', () => {
     it('should call clear on each switchItem', async() => {
       const clearSpy = jest.fn();
       const items: TestItem[] = [{
-        getRadio: () => ({
-          clear: clearSpy,
-        }),
+        clear: clearSpy,
         tagName: 'ODS-SWITCH-ITEM',
       }, {
         tagName: 'BUTTON',
       }];
 
       // @ts-ignore for test purpose
-      await clearOnItems(items);
+      await clearItems(items);
 
       expect(clearSpy).toHaveBeenCalledTimes(1);
     });
@@ -51,16 +45,14 @@ describe('ods-switch controller', () => {
     it('should call reset on each switchItem', async() => {
       const resetSpy = jest.fn();
       const items: TestItem[] = [{
-        getRadio: () => ({
-          reset: resetSpy,
-        }),
+        reset: resetSpy,
         tagName: 'ODS-SWITCH-ITEM',
       }, {
         tagName: 'BUTTON',
       }];
 
       // @ts-ignore for test purpose
-      await resetOnItems(items);
+      await resetItems(items);
 
       expect(resetSpy).toHaveBeenCalledTimes(1);
     });
@@ -103,27 +95,6 @@ describe('ods-switch controller', () => {
       expect(removeAttributeSpy).toHaveBeenCalledTimes(1);
       expect(items[0]['is-disabled']).toBe(undefined);
       expect(items[1]['is-disabled']).toBe(undefined);
-    });
-  });
-
-  describe('propagateSize', () => {
-    it('should set disabled to item', () => {
-      const items: TestItem[] = [{
-        removeAttribute: removeAttributeSpy,
-        setAttribute: setAttributeSpy,
-        tagName: 'ODS-SWITCH-ITEM',
-      }, {
-        removeAttribute: removeAttributeSpy,
-        setAttribute: setAttributeSpy,
-        tagName: 'BUTTON',
-      }];
-
-      // @ts-ignore for test purpose
-      propagateSize(ODS_SWITCH_SIZE.md, items);
-
-      expect(setAttributeSpy).toHaveBeenCalledTimes(1);
-      expect(items[0].size).toBe(ODS_SWITCH_SIZE.md);
-      expect(items[1].size).toBe(undefined);
     });
   });
 });

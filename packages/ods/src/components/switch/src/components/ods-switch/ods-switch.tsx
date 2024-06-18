@@ -1,7 +1,7 @@
 import { Component, Element, Event, type EventEmitter, type FunctionalComponent, Host, Method, Prop, Watch, h } from '@stencil/core';
 import { type OdsRadioValueChangeEventDetail } from '../../../../radio/src';
 import { ODS_SWITCH_SIZE } from '../../constant/switch-size';
-import { clearOnItems, propagateIsDisabled, propagateSize, resetOnItems } from '../../controller/ods-switch';
+import { clearItems, propagateInputId, propagateIsDisabled, propagateName, resetItems } from '../../controller/ods-switch';
 
 @Component({
   shadow: true,
@@ -22,13 +22,13 @@ export class OdsSwitch {
 
   @Method()
   async clear(): Promise<void> {
-    await clearOnItems(Array.from(this.el.children));
+    await clearItems(Array.from(this.el.children));
     this.odsClear.emit();
   }
 
   @Method()
   async reset(): Promise<void> {
-    await resetOnItems(Array.from(this.el.children));
+    await resetItems(Array.from(this.el.children));
     this.odsReset.emit();
   }
 

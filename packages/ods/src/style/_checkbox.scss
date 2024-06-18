@@ -21,6 +21,7 @@ $ods-checkbox-size: 16px;
 
     position: absolute;
     color: var(--ods-color-primary-000);
+    font-size: 0.5rem;
   }
 
   &:focus-visible {
@@ -35,7 +36,7 @@ $ods-checkbox-size: 16px;
 
   &:indeterminate {
     &::before {
-      content: "\e962";
+      content: "\e963";
     }
   }
 

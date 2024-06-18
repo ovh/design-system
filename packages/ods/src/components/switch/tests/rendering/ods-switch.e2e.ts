@@ -4,7 +4,6 @@ import { newE2EPage } from '@stencil/core/testing';
 describe('ods-switch rendering', () => {
   let el: E2EElement;
   let page: E2EPage;
-  let switchItem: E2EElement;
   let switchItemLabel: E2EElement;
 
   async function setup(content: string, customStyle?: string): Promise<void> {
@@ -18,7 +17,6 @@ describe('ods-switch rendering', () => {
     }
 
     el = await page.find('ods-switch');
-    switchItem = await page.find('ods-switch > .ods-switch-item');
     switchItemLabel = await page.find('ods-switch-item > .ods-switch-item__label');
   }
 
@@ -30,20 +28,20 @@ describe('ods-switch rendering', () => {
 
   describe('isDisabled', () => {
     it('should render with isDisabled', async() => {
-      await setup(`<ods-switch is-disabled>
-        <ods-switch-item name="switch-radio" input-id="label1" value="1">label1</ods-switch-item>
-        <ods-switch-item name="switch-radio" input-id="label2" value="2">label2</ods-switch-item>
-        <ods-switch-item name="switch-radio" input-id="label3" value="3">label3</ods-switch-item>
+      await setup(`<ods-switch is-disabled name="switch-radio">
+        <ods-switch-item value="1">label1</ods-switch-item>
+        <ods-switch-item value="2">label2</ods-switch-item>
+        <ods-switch-item value="3">label3</ods-switch-item>
       </ods-switch>`);
 
       expect(switchItemLabel?.classList.contains('ods-switch-item__label--disabled')).toBe(true);
     });
 
     it('should render without isDisabled', async() => {
-      await setup(`<ods-switch>
-        <ods-switch-item name="switch-radio" input-id="label1" value="1">label1</ods-switch-item>
-        <ods-switch-item name="switch-radio" input-id="label2" value="2">label2</ods-switch-item>
-        <ods-switch-item name="switch-radio" input-id="label3" value="3">label3</ods-switch-item>
+      await setup(`<ods-switch name="switch-radio">
+        <ods-switch-item value="1">label1</ods-switch-item>
+        <ods-switch-item value="2">label2</ods-switch-item>
+        <ods-switch-item value="3">label3</ods-switch-item>
       </ods-switch>`);
 
       expect(switchItemLabel?.classList.contains('ods-switch-item__label--disabled')).toBe(false);
@@ -52,25 +50,23 @@ describe('ods-switch rendering', () => {
 
   describe('size', () => {
     it('should render with default size', async() => {
-      await setup(`<ods-switch>
-        <ods-switch-item name="switch-radio" input-id="label1" value="1">label1</ods-switch-item>
-        <ods-switch-item name="switch-radio" input-id="label2" value="2">label2</ods-switch-item>
-        <ods-switch-item name="switch-radio" input-id="label3" value="3">label3</ods-switch-item>
+      await setup(`<ods-switch name="switch-radio">
+        <ods-switch-item value="1">label1</ods-switch-item>
+        <ods-switch-item value="2">label2</ods-switch-item>
+        <ods-switch-item value="3">label3</ods-switch-item>
       </ods-switch>`);
 
       expect(el?.classList.contains('ods-switch--md')).toBe(true);
-      expect(switchItem?.classList.contains('ods-switch-item--md')).toBe(true);
     });
 
     it('should render with size set', async() => {
-      await setup(`<ods-switch size="sm">
-        <ods-switch-item name="switch-radio" input-id="label1" value="1">label1</ods-switch-item>
-        <ods-switch-item name="switch-radio" input-id="label2" value="2">label2</ods-switch-item>
-        <ods-switch-item name="switch-radio" input-id="label3" value="3">label3</ods-switch-item>
+      await setup(`<ods-switch size="sm" name="switch-radio">
+        <ods-switch-item value="1">label1</ods-switch-item>
+        <ods-switch-item value="2">label2</ods-switch-item>
+        <ods-switch-item value="3">label3</ods-switch-item>
       </ods-switch>`);
 
       expect(el?.classList.contains('ods-switch--sm')).toBe(true);
-      expect(switchItem?.classList.contains('ods-switch-item--sm')).toBe(true);
     });
   });
 });

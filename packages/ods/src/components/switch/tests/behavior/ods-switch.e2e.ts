@@ -20,24 +20,37 @@ describe('ods-switch behavior', () => {
 
   describe('Propagation', () => {
     it('should propagate isDisabled to the switch-item', async() => {
-      await setup(`<ods-switch is-disabled>
-        <ods-switch-item name="switch-radio" input-id="label1" value="1">label1</ods-switch-item>
-        <ods-switch-item name="switch-radio" input-id="label2" value="2">label2</ods-switch-item>
-        <ods-switch-item name="switch-radio" input-id="label3" value="3">label3</ods-switch-item>
+      await setup(`<ods-switch is-disabled name="switch-radio">
+        <ods-switch-item value="1">label1</ods-switch-item>
+        <ods-switch-item value="2">label2</ods-switch-item>
+        <ods-switch-item value="3">label3</ods-switch-item>
       </ods-switch>`);
       switchItems.forEach((item) => {
         expect(item.getAttribute('is-disabled')).toBe('');
       });
     });
 
-    it('should propagate size to the switch-item', async() => {
-      await setup(`<ods-switch size="sm">
-        <ods-switch-item name="switch-radio" input-id="label1" value="1">label1</ods-switch-item>
-        <ods-switch-item name="switch-radio" input-id="label2" value="2">label2</ods-switch-item>
-        <ods-switch-item name="switch-radio" input-id="label3" value="3">label3</ods-switch-item>
+    it('should propagate name to the switch-item', async() => {
+      const name = 'switch-radio';
+      await setup(`<ods-switch size="sm" name="${name}">
+        <ods-switch-item value="1">label1</ods-switch-item>
+        <ods-switch-item value="2">label2</ods-switch-item>
+        <ods-switch-item value="3">label3</ods-switch-item>
       </ods-switch>`);
       switchItems.forEach((item) => {
-        expect(item.getAttribute('size')).toBe('sm');
+        expect(item.getAttribute('name')).toBe(name);
+      });
+    });
+
+    it('should generate & propagate inputId to the switch-item', async() => {
+      const name = 'switch-radio';
+      await setup(`<ods-switch size="sm" name="${name}">
+        <ods-switch-item value="1">label1</ods-switch-item>
+        <ods-switch-item value="2">label2</ods-switch-item>
+        <ods-switch-item value="3">label3</ods-switch-item>
+      </ods-switch>`);
+      switchItems.forEach((item, index) => {
+        expect(item.getAttribute('input-id')).toBe(`${name}-${index}`);
       });
     });
   });

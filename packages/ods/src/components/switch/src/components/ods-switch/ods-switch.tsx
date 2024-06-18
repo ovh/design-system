@@ -13,6 +13,7 @@ export class OdsSwitch {
 
   @Prop({ reflect: true }) public isDisabled?: boolean = false;
   @Prop({ reflect: true }) public isRequired?: boolean = false;
+  @Prop({ reflect: true }) public name!: string;
   @Prop({ reflect: true }) public size: ODS_SWITCH_SIZE = ODS_SWITCH_SIZE.md;
 
   @Event() odsBlur!: EventEmitter<void>;
@@ -37,9 +38,9 @@ export class OdsSwitch {
     propagateIsDisabled(value, Array.from(this.el.children));
   }
 
-  @Watch('size')
-  propagateSize(value: ODS_SWITCH_SIZE): void {
-    propagateSize(value, Array.from(this.el.children));
+  @Watch('name')
+  propagateName(value: string): void {
+    propagateName(value, Array.from(this.el.children));
   }
 
   componentDidLoad(): void {
@@ -48,7 +49,8 @@ export class OdsSwitch {
 
   private init(): void {
     this.propagateIsDisabled(this.isDisabled ?? false);
-    this.propagateSize(this.size);
+    this.propagateName(this.name);
+    propagateInputId(this.name, Array.from(this.el.children));
   }
 
   render(): FunctionalComponent {

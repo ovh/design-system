@@ -66,6 +66,7 @@ export const Demo: StoryObj = {
         type: { summary: 'string' }
       },
       control: 'text',
+      description: 'Same as native input file `accept`, use the `acceptedFileLabel` attribute to display a label to the user'
     },
     acceptedFileLabel: {
       table: {

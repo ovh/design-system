@@ -43,6 +43,7 @@ const componentNames = [
   'phone-number',
   'datepicker',
   'timepicker',
+  'range',
   //--generator-anchor--
 ];
 

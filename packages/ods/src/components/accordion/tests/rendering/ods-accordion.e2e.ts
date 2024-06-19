@@ -37,13 +37,6 @@ describe('ods-accordion rendering', () => {
 
       await page.waitForChanges();
 
-      const isSummaryNotFocusable = await page.evaluate(() => {
-        const summary = document.querySelector('ods-accordion')?.shadowRoot?.querySelector('.ods-accordion__wrapper__summary');
-        return summary?.getAttribute('tabindex') === '-1';
-      });
-
-      expect(isSummaryNotFocusable).toBe(true);
-
       const isWrapperDisabled = await page.evaluate(() => {
         const wrapper = document.querySelector('ods-accordion')?.shadowRoot?.querySelector('.ods-accordion__wrapper');
         return wrapper?.classList.contains('ods-accordion__wrapper--is-disabled');

@@ -30,7 +30,7 @@ export class OdsAccordion {
   }
 
   @Watch('isOpen')
-  onOpenChange(): void{
+  onOpenChange(): void {
     if (this.isOpen && !this.isDisabled) {
       this.detailsElement?.setAttribute('open', '');
     } else {
@@ -46,46 +46,50 @@ export class OdsAccordion {
     this.handleToggle(event);
   }
 
-  handleKeyDown(event: KeyboardEvent): void {
+  handleKeyUp(event: KeyboardEvent): void {
     if (event.key === ' ' || event.key === 'Enter') {
+      event.preventDefault();
       this.handleToggle(event);
     }
   }
 
   render(): FunctionalComponent {
     return (
-      <Host class='ods-accordion'>
+      <Host class="ods-accordion">
         <details
-          class={{
+          class={ {
             'ods-accordion__wrapper': true,
             'ods-accordion__wrapper--is-disabled': this.isDisabled,
             'ods-accordion__wrapper--is-open': this.isOpen,
-          }}
-          tabIndex={this.isDisabled ? -1 : 0}
-          onClick={(event) => this.handleClick(event)}
-          onKeyDown={(event) => this.handleKeyDown(event)}
-          onToggle={(event) => event.preventDefault()}
-          part='accordion'
-          ref={(el) => this.detailsElement = el as HTMLDetailsElement}
+          } }
+          tabIndex={ this.isDisabled ? -1 : 0 }
+          onClick={ (event) => this.handleClick(event) }
+          onKeyUp={ (event) => this.handleKeyUp(event) }
+          part="accordion"
+          ref={ (el) => this.detailsElement = el as HTMLDetailsElement }
         >
           <summary
-            tabIndex={-1}
-            onClick={(event) => event.preventDefault()}
-            class={{
+            tabIndex={ -1 }
+            onClick={ (event) => event.preventDefault() }
+            class={ {
               'ods-accordion__wrapper__summary': true,
               'ods-accordion__wrapper__summary--is-disabled': this.isDisabled,
               'ods-accordion__wrapper__summary--is-open': this.isOpen,
-            }}
+            } }
+            part="summary"
           >
-            <div class='ods-accordion__wrapper__summary__slot'>
-              <slot name='summary'></slot>
+            <div class="ods-accordion__wrapper__summary__slot">
+              <slot name="summary"></slot>
             </div>
             <ods-icon
-              class='ods-accordion__wrapper__summary__icon'
-              name={this.isOpen && !this.isDisabled ? ODS_ICON_NAME.chevronUp : ODS_ICON_NAME.chevronDown}
+              class="ods-accordion__wrapper__summary__icon"
+              name={ this.isOpen && !this.isDisabled ? ODS_ICON_NAME.chevronUp : ODS_ICON_NAME.chevronDown }
             ></ods-icon>
           </summary>
-          <div class='ods-accordion__wrapper__content'>
+          <div
+            class="ods-accordion__wrapper__content"
+            part="content"
+          >
             <slot></slot>
           </div>
         </details>

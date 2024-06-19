@@ -1,4 +1,11 @@
+@use '../../../../../style/scroll';
+
 :host(.ods-tabs) {
-  display: flex;
+  @include scroll.hide-scrollbar();
+
+  display: inline-flex;
   flex-flow: row;
+  padding: var(--ods-outline-width);
+  width: inherit;
+  overflow-x: auto;
 }

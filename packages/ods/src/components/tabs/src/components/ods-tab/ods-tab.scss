@@ -6,6 +6,7 @@
   cursor: pointer;
   padding: 2px 16px;
   text-align: center;
+  white-space: nowrap;
   color: var(--ods-color-primary-500);
   font-weight: 600;
 }
@@ -17,7 +18,7 @@
   outline-offset: 0;
 }
 
-:host(.ods-tab:hover):not(:host(.ods-tab--disabled)) {
+:host(.ods-tab:hover:not(.ods-tab--disabled, .ods-tab--selected)) {
   border-color: var(--ods-color-neutral-600);
 }
 
@@ -26,6 +27,6 @@
   color: var(--ods-color-neutral-600);
 }
 
-:host(.ods-tab--selected):not(:host(.ods-tab--disabled)) {
+:host(.ods-tab--selected:not(.ods-tab--disabled)) {
   border-color: var(--ods-color-primary-500);
 }

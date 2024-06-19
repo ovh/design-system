@@ -42,6 +42,7 @@
         @include font.ellipsis();
       }
 
+      &__remove::part(button),
       &__size {
         font-size: font.px-to-rem(12px);
       }

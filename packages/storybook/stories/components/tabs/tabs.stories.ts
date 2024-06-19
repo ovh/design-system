@@ -26,6 +26,7 @@ export const Demo: StoryObj = {
         defaultValue: { summary: 'ø' },
       },
       control: 'text',
+      description: 'Add `is-selected` or `is-disabled` on `ods-tab` to see the state change',
     },
   }),
   args: {
@@ -113,11 +114,45 @@ export const Disabled: StoryObj = {
   `,
 };
 
+export const Overflow: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<div class="my-container">
+  <ods-tabs id="overflow-tabs">
+    <ods-tab id="overflow-tab-1">Tab 1</ods-tab>
+    <ods-tab id="overflow-tab-2">Tab 2</ods-tab>
+    <ods-tab id="overflow-tab-3">Tab 3</ods-tab>
+    <ods-tab id="overflow-tab-4">Tab 4</ods-tab>
+    <ods-tab id="overflow-tab-5">Tab 5</ods-tab>
+    <ods-tab id="overflow-tab-6">Tab 6</ods-tab>
+  </ods-tabs>
+</div>
+<style>
+  .my-container {
+    width: 300px;
+  }
+</style>
+<script>
+  (() => {
+    const overflowTabs = document.querySelector('#overflow-tabs');
+    const allOverflowTabs = overflowTabs.querySelectorAll('ods-tab');
+
+    overflowTabs.addEventListener('odsTabSelected', (event) => {
+      allOverflowTabs.forEach((tab) => {
+        tab.removeAttribute('is-selected');
+      });
+      document.querySelector(\`#\${event.target.id}\`).setAttribute('is-selected', 'true');
+    });
+  })();
+</script>
+  `,
+};
+
 export const Overview: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
 <ods-tabs id="tabs">
-  <ods-tab id="tab-1">Tab 1</ods-tab>
+  <ods-tab id="tab-1" is-selected>Tab 1</ods-tab>
   <ods-tab id="tab-2">Tab 2</ods-tab>
   <ods-tab id="tab-3">Tab 3</ods-tab>
 </ods-tabs>

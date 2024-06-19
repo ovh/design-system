@@ -24,7 +24,7 @@
 
     &--is-disabled {
       opacity: .5;
-      cursor: no-drop;
+      cursor: not-allowed;
 
       &:hover,
       &.ods-accordion__wrapper--is-open {
@@ -38,9 +38,12 @@
       position: relative;
       align-items: center;
       justify-content: space-between;
-      cursor: pointer;
       padding: 24px;
       list-style: none;
+
+      &::-webkit-details-marker {
+        display: none;
+      }
 
       &--is-open {
         padding-bottom: 24px;
@@ -48,7 +51,7 @@
 
       &--is-disabled {
         opacity: .5;
-        cursor: no-drop;
+        cursor: not-allowed;
 
         &:hover {
           border-color: transparent;

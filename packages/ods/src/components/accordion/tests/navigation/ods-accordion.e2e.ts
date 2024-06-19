@@ -142,5 +142,4 @@ describe('ods-accordion navigation', () => {
 
     expect(isDetailsOpen).toBe(false);
   });
-
 });

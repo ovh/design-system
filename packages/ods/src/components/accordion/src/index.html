@@ -13,14 +13,14 @@
 <body>
   <p>Default</p>
   <ods-accordion>
-    <ods-text class="label" slot="summary" preset="label">Hello, world!</ods-text>
+    <ods-text class="label" slot="summary" preset="heading-6">Hello, world!</ods-text>
     <ods-text preset="span">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     </ods-text>
   </ods-accordion>
 
   <ods-accordion>
-    <!-- <ods-text class="label" slot="summary" preset="label">Hello, world!</ods-text> -->
+    <!-- <ods-text class="label" slot="summary" preset="heading-6">Hello, world!</ods-text> -->
     <ods-text preset="span">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     </ods-text>
@@ -28,17 +28,23 @@
 
   <p>Disabled</p>
   <ods-accordion is-disabled>
-    <ods-text class="label" slot="summary" preset="label">Hello, world!</ods-text>
+    <ods-text class="label" slot="summary" preset="heading-6">Hello, world!</ods-text>
     <ods-text preset="span">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     </ods-text>
   </ods-accordion>
   <ods-accordion is-disabled is-open>
-    <ods-text class="label" slot="summary" preset="label">Hello, world!</ods-text>
+    <ods-text class="label" slot="summary" preset="heading-6">Hello, world!</ods-text>
     <ods-text preset="span">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     </ods-text>
   </ods-accordion>
+
+  <p>Native (for comparison)</p>
+  <details style="cursor:pointer;">
+    <summary>Test</summary>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  </details>
 
 
   <style>

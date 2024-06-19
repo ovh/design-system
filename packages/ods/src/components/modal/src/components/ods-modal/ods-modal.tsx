@@ -112,7 +112,7 @@ export class OdsModal {
               this.isDismissible &&
               <button class={ `ods-modal__dialog__header__close ods-modal__dialog__header__close--${this.color}` }
                 onClick={ () => this.close() }>
-                <ods-icon name={ ODS_ICON_NAME.cross }>
+                <ods-icon name={ ODS_ICON_NAME.times }>
                 </ods-icon>
               </button>
             }

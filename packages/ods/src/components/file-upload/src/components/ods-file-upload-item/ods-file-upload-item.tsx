@@ -77,7 +77,8 @@ export class OdsFileUploadItem {
             </span>
 
             <ods-button
-              icon={ ODS_ICON_NAME.cross }
+              class="ods-file-upload-item__file__info__remove"
+              icon={ ODS_ICON_NAME.times }
               isDisabled={ this.isDisabled }
               label=""
               onClick={ () => this.cancelHandler() }

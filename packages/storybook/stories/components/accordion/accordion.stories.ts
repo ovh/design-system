@@ -67,8 +67,8 @@ export const Demo: StoryObj = {
   args: {
     isDisabled: false,
     isOpen: false,
-    summary: '<ods-text class="label" slot="summary" preset="label">Hello, world!</ods-text>',
-    content: '<ods-text preset="span">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.</ods-text>',
+    summary: '<ods-text class="label" slot="summary" preset="span">Hello, world!</ods-text>',
+    content: '<ods-text preset="paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.</ods-text>',
     customCss: '',
   },
 };
@@ -77,8 +77,8 @@ export const Overview: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
 <ods-accordion>
-  <ods-text class="label" slot="summary" preset="label">Hello, world!</ods-text>
-  <ods-text preset="span">
+  <ods-text class="label" slot="summary" preset="span">Hello, world!</ods-text>
+  <ods-text preset="paragraph">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.
   </ods-text>
 </ods-accordion>
@@ -96,15 +96,23 @@ export const CustomCSS: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
 <ods-accordion class="my-accordion">
-  <ods-text class="label" slot="summary" preset="label">Hello, world!</ods-text>
-  <ods-text preset="span">
+  <ods-text class="label" slot="summary" preset="span">Hello, world!</ods-text>
+  <ods-text preset="paragraph">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.
   </ods-text>
 </ods-accordion>
 
 <style>
   .my-accordion::part(accordion) {
-    border: 1px red solid;
+    border: 3px red solid;
+  }
+
+  .my-accordion::part(summary) {
+    border: 3px green solid;
+  }
+
+  .my-accordion::part(content) {
+    border: 3px blue solid;
   }
 </style>
   `,
@@ -114,8 +122,8 @@ export const Open: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
 <ods-accordion is-open>
-  <ods-text class="label" slot="summary" preset="label">Hello, world!</ods-text>
-  <ods-text preset="span">
+  <ods-text class="label" slot="summary" preset="span">Hello, world!</ods-text>
+  <ods-text preset="paragraph">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.
   </ods-text>
 </ods-accordion>
@@ -126,7 +134,7 @@ export const Disabled: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
 <ods-accordion is-disabled>
-  <ods-text class="label" slot="summary" preset="label">Hello, world!</ods-text>
+  <ods-text class="label" slot="summary" preset="span">Hello, world!</ods-text>
 </ods-accordion>
   `,
 };

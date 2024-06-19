@@ -4134,8 +4134,17 @@ __metadata:
   linkType: soft
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 6e739da36 (refactor(radio): implementation component)
 =======
+=======
+"@ovhcloud/ods-component-range@workspace:packages/ods/src/components/range":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-range@workspace:packages/ods/src/components/range"
+  languageName: unknown
+  linkType: soft
+
+>>>>>>> 3effe4458 (refactor(range): implement component)
 "@ovhcloud/ods-component-select@workspace:packages/ods/src/components/select":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-select@workspace:packages/ods/src/components/select"

@@ -1,0 +1,42 @@
+@use '../../../../../style/range';
+
+:host {
+  display: flex;
+  position: relative;
+  height: 32px;
+}
+
+:host(.ods-range-dual) {
+  @include range.ods-range-dual();
+}
+
+.ods-range {
+  &__range {
+    @include range.ods-range();
+  }
+
+  &__range-dual {
+    @include range.ods-range();
+  }
+
+  &__min {
+    position: absolute;
+    margin-top: 12px;
+    color: var(--ods-color-text);
+  }
+
+  &__max {
+    position: absolute;
+    right: 0;
+    margin-top: 12px;
+    color: var(--ods-color-text);
+  }
+
+  &__shadow-thumb {
+    position: absolute;
+    opacity: 0;
+    z-index: -2;
+    width: 16px;
+    height: 16px;
+  }
+}

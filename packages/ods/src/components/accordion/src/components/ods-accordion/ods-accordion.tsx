@@ -65,6 +65,7 @@ export class OdsAccordion {
           tabIndex={ this.isDisabled ? -1 : 0 }
           onClick={ (event) => this.handleClick(event) }
           onKeyUp={ (event) => this.handleKeyUp(event) }
+          onKeyDown={ (event) => event.key === 'Space' && event.preventDefault() }
           part="accordion"
           ref={ (el) => this.detailsElement = el as HTMLDetailsElement }
         >

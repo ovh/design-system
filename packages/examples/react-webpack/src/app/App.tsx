@@ -1,115 +1,40 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { ODS_SPINNER_SIZE } from '@ovhcloud/ods-components';
-import { OdsSpinner, OdsTextarea } from '@ovhcloud/ods-components/react';
-// import { ODS_THEME } from '@ovhcloud/ods-themes';
-import styles from './app.scss';
+import { OdsSwitch, OdsSwitchItem, OdsTextarea } from '@ovhcloud/ods-components/react';
+import { useFormik } from 'formik';
+import React, { type ReactElement, useRef } from 'react';
+import './app.scss';
 
-const fontWeights = [200, 300, 400, 500, 600, 700, 800, 900];
-
-const App = () => {
-  // const [theme, setTheme] = useState<string>()
-  //
-  // useEffect(() => {
-  //   document.documentElement.setAttribute('data-theme', theme || '')
-  // }, [theme])
-  //
-  // function onBasicThemeClick() {
-  //   setTheme('basic')
-  // }
-  //
-  // function onDarkThemeClick() {
-  //   // TODO Theme is not yet implemented
-  //   // setTheme(ODS_THEME.dark)
-  // }
-  //
-  // function onNoThemeClick() {
-  //   setTheme('')
-  // }
-  //
-  // return (
-  //   <div>
-  //     <h1 className={ styles['app__title'] }>
-  //       Headline with ODS mixin
-  //     </h1>
-  //
-  //     <div className={ styles['app__code'] }>
-  //       {
-  //         fontWeights.map((fontWeight, idx) => (
-  //           <p style={{ fontWeight, fontStyle: 'italic' }} key={ idx }>Code { fontWeight } italic</p>
-  //         ))
-  //       }
-  //
-  //       {
-  //         fontWeights.map((fontWeight, idx) => (
-  //           <p style={{ fontWeight }} key={ idx }>Code { fontWeight } normal</p>
-  //         ))
-  //       }
-  //     </div>
-  //
-  //     <OdsSpinner size={ ODS_SPINNER_SIZE.sm } />
-  //     <OdsSpinner />
-  //     <OdsSpinner size="lg" />
-  //     <OdsSpinner class={ styles['app__spinner'] } />
-  //
-  //     <br />
-  //
-  //     <div>
-  //       <button onClick={ onBasicThemeClick }>
-  //         Theme basic
-  //       </button>
-  //
-  //       <button onClick={ onDarkThemeClick }>
-  //         Theme dark
-  //       </button>
-  //
-  //       <button onClick={ onNoThemeClick }>
-  //         No theme
-  //       </button>
-  //     </div>
-  //   </div>
-  // )
+function App(): ReactElement {
   const formRef = useRef(null);
   const textareaRef = useRef(null);
+  const switchItem = useRef(['1', '2']);
 
-  function onSubmit(event: FormEvent) {
-    event.preventDefault();
-    if (formRef.current) {
-      const formData = new FormData(formRef.current);
-      console.log(formData)
-    }
-  }
-
-  function onReset() {
-    // console.log(textRef.current?.formatText())
-    console.log('form reset')
-  }
+  const formik = useFormik({
+    initialValues: {
+      switch: '2',
+      textarea: 'qsdqsd',
+    },
+    onSubmit: (values) => {
+      console.log('formik values', values);
+    },
+  });
 
   return (
-    <form ref={ formRef }
-          onReset={ onReset }
-          onSubmit={ onSubmit }>
-      {/*<OdsText ref={ textRef }*/}
-      {/*         text="Welcome" />*/}
+    <form ref={formRef}
+      onSubmit={formik.handleSubmit}>
 
-      <OdsTextarea ref={ textareaRef }
-                   name="textarea"
-                 // onOdsInputBlur={() => console.log('blur input')}
-                 // onOdsInputFocus={() => console.log('focus input')}
-                 // onOdsValueChange={() => console.log('value change input')}
-                 // placeholder="Type your some text"
-                 // required
-                 // size={ ODS_INPUT_SIZE.md }
-                 // type={ ODS_INPUT_TYPE.text }
-                 // value=""
+      <OdsTextarea ref={textareaRef}
+        name="textarea"
+        onOdsChange={ formik.handleChange }
+        value={ formik.values.textarea }
       />
 
-      <input name="hidden-input"
-             type="hidden"
-             value="should be present in form data" />
+      <OdsSwitch name="switch" onOdsChange={ formik.handleChange }>
+        { switchItem.current.map((item) => <OdsSwitchItem key={ item } isChecked={ formik.values.switch === item } value={ item }>Value { item }</OdsSwitchItem>) }
+      </OdsSwitch>
 
-      <button type="button" onClick={ () => textareaRef.current?.clear() }>
-        Clear
-      </button>
+      <input name="hidden-input"
+        type="hidden"
+        value="should be present in form data" />
 
       <button type="reset">
         Reset
@@ -120,6 +45,6 @@ const App = () => {
       </button>
     </form>
   );
-};
+}
 
 export { App };

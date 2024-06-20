@@ -13,22 +13,21 @@ export class OdsSwitchItem {
 
   @Prop({ reflect: true }) public ariaLabel: HTMLElement['ariaLabel'] = null;
   @Prop({ reflect: true }) public ariaLabelledby?: string;
+  @Prop({ reflect: true }) public inputId?: string;
   @Prop({ reflect: true }) public isChecked: boolean = false;
   @Prop({ reflect: true }) public isDisabled: boolean = false;
   @Prop({ reflect: true }) public isRequired: boolean = false;
-  @Prop({ reflect: true }) public inputId!: string;
   @Prop({ reflect: true }) public name!: string;
   @Prop({ reflect: true }) public value: string | null = null;
 
-  @Event() odsFocus!: EventEmitter<void>;
+  @Event() odsSwitchItemBlur!: EventEmitter<void>;
+  @Event() odsSwitchItemFocus!: EventEmitter<void>;
 
-  /** @internal */
   @Method()
   async reset(): Promise<void> {
     return this.odsRadio?.reset();
   }
 
-  /** @internal */
   @Method()
   async clear(): Promise<void> {
     return this.odsRadio?.clear();
@@ -39,7 +38,7 @@ export class OdsSwitchItem {
     return this.odsRadio?.getValidity();
   }
 
-  handleKeyDown(event: KeyboardEvent): void {
+  handleKeyUp(event: KeyboardEvent): void {
     if (this.isDisabled) {
       return;
     }
@@ -70,9 +69,10 @@ export class OdsSwitchItem {
             'ods-switch-item__label--disabled': this.isDisabled,
           }}
           htmlFor={ this.inputId }
-          onFocus={ () => this.odsFocus.emit() }
           tabindex={ !this.isDisabled ? 0 : -1 }
-          onKeyDown={ (event: KeyboardEvent) => this.handleKeyDown(event) }>
+          onBlur={ () => this.odsSwitchItemBlur.emit() }
+          onFocus={ () => this.odsSwitchItemFocus.emit() }
+          onKeyUp={ (event: KeyboardEvent) => this.handleKeyUp(event) }>
           <slot></slot>
         </label>
       </Host>

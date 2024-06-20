@@ -1,4 +1,4 @@
-import { Component, Element, Event, type EventEmitter, type FunctionalComponent, Host, Method, Prop, Watch, h } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, type FunctionalComponent, Host, Method, Prop, Watch, h, Listen } from '@stencil/core';
 import { type OdsRadioValueChangeEventDetail } from '../../../../radio/src';
 import { ODS_SWITCH_SIZE } from '../../constant/switch-size';
 import { clearItems, propagateInputId, propagateIsDisabled, propagateName, resetItems } from '../../controller/ods-switch';
@@ -16,9 +16,10 @@ export class OdsSwitch {
   @Prop({ reflect: true }) public name!: string;
   @Prop({ reflect: true }) public size: ODS_SWITCH_SIZE = ODS_SWITCH_SIZE.md;
 
-  @Event() odsBlur!: EventEmitter<void>;
+  @Event() odsBlur!: EventEmitter<CustomEvent<void>>;
   @Event() odsChange!: EventEmitter<OdsRadioValueChangeEventDetail>;
   @Event() odsClear!: EventEmitter<void>;
+  @Event() odsFocus!: EventEmitter<CustomEvent<void>>;
   @Event() odsReset!: EventEmitter<void>;
 
   @Method()
@@ -33,6 +34,16 @@ export class OdsSwitch {
     this.odsReset.emit();
   }
 
+  @Listen('odsSwitchItemFocus')
+  onFocus(event: CustomEvent<void>): void {
+    this.odsFocus.emit(event);
+  }
+
+  @Listen('odsSwitchItemBlur')
+  onBlur(event: CustomEvent<void>): void {
+    this.odsBlur.emit(event);
+  }
+
   @Watch('isDisabled')
   propagateIsDisabled(value: boolean): void {
     propagateIsDisabled(value, Array.from(this.el.children));
@@ -43,10 +54,6 @@ export class OdsSwitch {
     propagateName(value, Array.from(this.el.children));
   }
 
-  componentDidLoad(): void {
-    this.init();
-  }
-
   private init(): void {
     this.propagateIsDisabled(this.isDisabled ?? false);
     this.propagateName(this.name);
@@ -55,8 +62,7 @@ export class OdsSwitch {
 
   render(): FunctionalComponent {
     return (
-      <Host class={ `ods-switch ods-switch--${this.size}` }
-        onBlur={ this.odsBlur.emit() }>
+      <Host class={ `ods-switch ods-switch--${this.size}` }>
         <slot onSlotchange={ () => this.init() }></slot>
       </Host>
     );

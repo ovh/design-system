@@ -68,7 +68,7 @@ export const Demo: StoryObj = {
     isDisabled: false,
     isOpen: false,
     summary: '<ods-text class="label" slot="summary" preset="span">Hello, world!</ods-text>',
-    content: '<ods-text preset="paragraph">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.</ods-text>',
+    content: '<ods-text preset="span">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.</ods-text>',
     customCss: '',
   },
 };
@@ -78,7 +78,7 @@ export const Overview: StoryObj = {
   render: () => html`
 <ods-accordion>
   <ods-text class="label" slot="summary" preset="span">Hello, world!</ods-text>
-  <ods-text preset="paragraph">
+  <ods-text preset="span">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.
   </ods-text>
 </ods-accordion>
@@ -97,7 +97,7 @@ export const CustomCSS: StoryObj = {
   render: () => html`
 <ods-accordion class="my-accordion">
   <ods-text class="label" slot="summary" preset="span">Hello, world!</ods-text>
-  <ods-text preset="paragraph">
+  <ods-text preset="span">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.
   </ods-text>
 </ods-accordion>
@@ -123,7 +123,7 @@ export const Open: StoryObj = {
   render: () => html`
 <ods-accordion is-open>
   <ods-text class="label" slot="summary" preset="span">Hello, world!</ods-text>
-  <ods-text preset="paragraph">
+  <ods-text preset="span">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.
   </ods-text>
 </ods-accordion>

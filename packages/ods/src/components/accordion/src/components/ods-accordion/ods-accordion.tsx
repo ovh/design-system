@@ -53,6 +53,12 @@ export class OdsAccordion {
     }
   }
 
+  handleKeyDown(event: KeyboardEvent): void {
+    if (event.key === ' ') {
+      event.preventDefault();
+    }
+  }
+
   render(): FunctionalComponent {
     return (
       <Host class="ods-accordion">
@@ -65,9 +71,7 @@ export class OdsAccordion {
           tabIndex={ this.isDisabled ? -1 : 0 }
           onClick={ (event) => this.handleClick(event) }
           onKeyUp={ (event) => this.handleKeyUp(event) }
-          onKeyDown={ (event) => {
-            event.key === ' ' && event.preventDefault();
-          } }
+          onKeyDown={ (event) => this.handleKeyDown(event)}
           part="accordion"
           ref={ (el) => this.detailsElement = el as HTMLDetailsElement }
         >

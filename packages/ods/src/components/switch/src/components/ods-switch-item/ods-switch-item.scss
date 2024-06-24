@@ -35,7 +35,7 @@
   &__radio {
     display: none !important;
 
-    &:has(input[type="radio"]:not(:disabled):checked) + .ods-switch-item__label {
+    &:has(input[type="radio"]:checked) + .ods-switch-item__label {
       background-color:  var(--ods-color-primary-500);
       color:  var(--ods-color-primary-000);
     }

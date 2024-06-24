@@ -1,4 +1,4 @@
-import { Component, Element, Event, type EventEmitter, type FunctionalComponent, Host, Method, Prop, Watch, h, Listen } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, type FunctionalComponent, Host, Listen, Method, Prop, Watch, h } from '@stencil/core';
 import { type OdsRadioValueChangeEventDetail } from '../../../../radio/src';
 import { ODS_SWITCH_SIZE } from '../../constant/switch-size';
 import { clearItems, propagateInputId, propagateIsDisabled, propagateName, resetItems } from '../../controller/ods-switch';

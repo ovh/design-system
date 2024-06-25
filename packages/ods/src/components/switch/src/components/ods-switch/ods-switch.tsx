@@ -1,5 +1,5 @@
+import type { OdsSwitchValueChangeEventDetail } from '../../interfaces/events';
 import { Component, Element, Event, type EventEmitter, type FunctionalComponent, Host, Listen, Method, Prop, Watch, h } from '@stencil/core';
-import { type OdsRadioValueChangeEventDetail } from '../../../../radio/src';
 import { ODS_SWITCH_SIZE } from '../../constant/switch-size';
 import { clearItems, propagateInputId, propagateIsDisabled, propagateName, resetItems } from '../../controller/ods-switch';
 
@@ -17,7 +17,7 @@ export class OdsSwitch {
   @Prop({ reflect: true }) public size: ODS_SWITCH_SIZE = ODS_SWITCH_SIZE.md;
 
   @Event() odsBlur!: EventEmitter<CustomEvent<void>>;
-  @Event() odsChange!: EventEmitter<OdsRadioValueChangeEventDetail>;
+  @Event() odsChange!: EventEmitter<OdsSwitchValueChangeEventDetail>;
   @Event() odsClear!: EventEmitter<void>;
   @Event() odsFocus!: EventEmitter<CustomEvent<void>>;
   @Event() odsReset!: EventEmitter<void>;

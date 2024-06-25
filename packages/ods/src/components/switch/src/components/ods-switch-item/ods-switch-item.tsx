@@ -38,7 +38,14 @@ export class OdsSwitchItem {
     return this.odsRadio?.getValidity();
   }
 
-  handleKeyUp(event: KeyboardEvent): void {
+  private handleKeyDown(event: KeyboardEvent): void {
+    // This prevents Space key to scroll the window down
+    if (event.key === ' ') {
+      event.preventDefault();
+    }
+  }
+
+  private handleKeyUp(event: KeyboardEvent): void {
     if (this.isDisabled) {
       return;
     }
@@ -72,6 +79,7 @@ export class OdsSwitchItem {
           tabindex={ !this.isDisabled ? 0 : -1 }
           onBlur={ () => this.odsSwitchItemBlur.emit() }
           onFocus={ () => this.odsSwitchItemFocus.emit() }
+          onKeyDown={ (e: KeyboardEvent) => this.handleKeyDown(e) }
           onKeyUp={ (event: KeyboardEvent) => this.handleKeyUp(event) }>
           <slot></slot>
         </label>

@@ -26,11 +26,14 @@
       opacity: .5;
       cursor: not-allowed;
 
-      &:hover,
-      &.ods-accordion__wrapper--is-open {
+      &:hover {
         border-color: transparent;
       }
 
+      &.ods-accordion__wrapper--is-open,
+      &.ods-accordion__wrapper--is-open :hover {
+        border-color: var(--ods-color-primary-500);
+      }
     }
 
     &__summary {
@@ -60,7 +63,7 @@
 
       &__icon {
         color: var(--ods-color-primary-500);
-        font-size: 0.65rem;
+        font-size: 0.875rem;
       }
     }
 

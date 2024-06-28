@@ -274,8 +274,8 @@ export const Pattern: StoryObj = {
   inputPattern.addEventListener('odsChange', (event) => {
     inputPattern.hasError = !event.detail.validity.valid;
   });
-  </script>
 })();
+</script>
   `,
 };
 

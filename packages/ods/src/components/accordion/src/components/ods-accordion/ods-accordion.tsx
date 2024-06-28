@@ -31,7 +31,7 @@ export class OdsAccordion {
 
   @Watch('isOpen')
   onOpenChange(): void {
-    if (this.isOpen && !this.isDisabled) {
+    if (this.isOpen) {
       this.detailsElement?.setAttribute('open', '');
     } else {
       this.detailsElement?.removeAttribute('open');
@@ -90,7 +90,7 @@ export class OdsAccordion {
             </div>
             <ods-icon
               class="ods-accordion__wrapper__summary__icon"
-              name={ this.isOpen && !this.isDisabled ? ODS_ICON_NAME.chevronUp : ODS_ICON_NAME.chevronDown }
+              name={ this.isOpen ? ODS_ICON_NAME.chevronUp : ODS_ICON_NAME.chevronDown }
             ></ods-icon>
           </summary>
           <div

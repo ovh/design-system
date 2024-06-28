@@ -39,6 +39,7 @@ const componentNames = [
   'file-upload',
   'tabs',
   'switch',
+  'datepicker',
   //--generator-anchor--
 ];
 

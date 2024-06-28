@@ -18,7 +18,9 @@
     justify-content: center;
     padding-right: input.$ods-input-actions-padding-right;
 
-    &__clearable, &__toggle-mask {
+    &__calendar,
+    &__clearable,
+    &__toggle-mask {
       display: inherit;
       align-items: center;
       justify-content: center;
@@ -29,8 +31,8 @@
       padding: 0;
       width: input.$ods-input-actions-button-width;
       height: 24px;
-      font-size: 1rem;
 
+      &--disabled,
       &:disabled {
         cursor: not-allowed;
       }
@@ -42,6 +44,16 @@
       }
     }
 
+    &__calendar {
+      font-size: 1.5rem;
+    }
+
+    &__clearable,
+    &__toggle-mask {
+      font-size: 1rem;
+    }
+
+    /* stylelint-disable no-descending-specificity */
     &__clearable {
       color: var(--ods-color-neutral-600);
       font-size: 0.75rem;

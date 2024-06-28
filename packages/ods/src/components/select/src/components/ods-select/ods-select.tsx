@@ -2,8 +2,9 @@ import { AttachInternals, Component, Element, Event, type EventEmitter, type Fun
 import TomSelect from 'tom-select';
 import { getElementPosition } from '../../../../../utils/overlay';
 import { mergeSelectedItemPlugin, placeholderPlugin } from '../../../../../utils/select';
-import { type CustomRenderer, getSelectConfig, inlineValue, moveSlottedElements, setFormValue, setSelectValue } from '../../controller/ods-select';
+import { getSelectConfig, inlineValue, moveSlottedElements, setFormValue, setSelectValue } from '../../controller/ods-select';
 import { type OdsSelectEventChangeDetail } from '../../interfaces/events';
+import { type OdsSelectCustomRenderer } from '../../interfaces/options';
 
 TomSelect.define('merge_selected_items', mergeSelectedItemPlugin);
 TomSelect.define('placeholder', placeholderPlugin);
@@ -17,6 +18,7 @@ TomSelect.define('placeholder', placeholderPlugin);
 export class OdsSelect {
   private hasMovedNodes: boolean = false;
   private isSelectSync: boolean = false;
+  private observer!: MutationObserver;
   private select?: TomSelect;
   private selectElement?: HTMLSelectElement;
 
@@ -27,10 +29,15 @@ export class OdsSelect {
   @Prop({ reflect: true }) public allowMultiple: boolean = false;
   @Prop({ reflect: true }) public ariaLabel: HTMLElement['ariaLabel'] = null;
   @Prop({ reflect: true }) public ariaLabelledby?: string;
-  @Prop({ reflect: false }) public customRenderer?: CustomRenderer;
+  /** @internal */
+  @Prop({ reflect: false }) public borderRounded: 'all' | 'bottom' | 'bottom-left' | 'bottom-right' | 'left' | 'right' | 'top' | 'top-left' | 'top-right' = 'all';
+  @Prop({ reflect: false }) public customRenderer?: OdsSelectCustomRenderer;
   @Prop({ reflect: true }) public defaultValue?: string | string [];
+  /** @internal */
+  @Prop({ reflect: false }) public dropdownWidth: 'auto' | 'input-based' = 'input-based';
   @Prop({ reflect: true }) public hasError: boolean = false;
   @Prop({ reflect: true }) public isDisabled: boolean = false;
+  @Prop({ reflect: true }) public isReadonly: boolean = false;
   @Prop({ reflect: true }) public isRequired: boolean = false;
   @Prop({ reflect: true }) public multipleSelectionLabel: string = 'Selected item';
   @Prop({ reflect: true }) public name!: string;
@@ -75,6 +82,13 @@ export class OdsSelect {
     newValue ? this.select?.disable() : this.select?.enable();
   }
 
+  @Watch('isReadonly')
+  onIsReadonlyChange(newValue: boolean): void {
+    // TODO this seems to prevent focusing on next element
+    // TODO use same still as input readonly (focused)
+    this.select?.setReadOnly(newValue);
+  }
+
   @Watch('multipleSelectionLabel')
   onMultipleSelectionLabelChange(newValue: string): void {
     this.select?.control.dispatchEvent(new CustomEvent('ods-select-multiple-selection-label-change', {
@@ -115,8 +129,38 @@ export class OdsSelect {
     setFormValue(this.internals, this.value);
   }
 
+  componentDidLoad(): void {
+    this.observer = new MutationObserver((mutations) => {
+      // We only care about mutations on child element (attributes or content changes)
+      // as mutations on root element is managed by the onSlotChange
+      const childrenMutations = mutations.filter((mutation) =>
+        mutation.target !== this.selectElement && mutation.type !== 'childList');
+
+      if (childrenMutations.length) {
+        const currentValue = this.select?.getValue() || '';
+        this.select?.clear(); // reset the current selection
+        this.select?.clearOptions(); // reset the tom-select options
+        this.select?.sync(); // get updated options
+        this.select?.setValue(currentValue); // set the value back
+      }
+    });
+
+    this.observer.observe(this.selectElement!, {
+      attributes: true,
+      characterData: true,
+      childList: true,
+      subtree: true,
+    });
+  }
+
   async formResetCallback(): Promise<void> {
     await this.reset();
+  }
+
+  disconnectedCallback(): void {
+    if (this.observer) {
+      this.observer.disconnect();
+    }
   }
 
   private bindSelectControl(): void {
@@ -172,6 +216,7 @@ export class OdsSelect {
         closeAfterSelect: !this.allowMultiple,
         controlInput: undefined,
         create: false,
+        maxOptions: undefined,
         onBlur: (): void => {
           this.odsBlur.emit();
         },
@@ -222,8 +267,9 @@ export class OdsSelect {
         render: template,
         selectOnTab: true,
       });
-      this.bindSelectControl();
 
+      this.bindSelectControl();
+      this.onIsReadonlyChange(this.isReadonly);
       setSelectValue(this.select, this.value, this.defaultValue, true);
     }
   }
@@ -241,7 +287,9 @@ export class OdsSelect {
       <Host
         class={{
           'ods-select': true,
+          'ods-select--dropdown-width-auto': this.dropdownWidth === 'auto',
           'ods-select--error': this.hasError,
+          [`ods-select--border-rounded-${this.borderRounded}`]: true,
         }}>
         <select
           aria-label={ this.ariaLabel }

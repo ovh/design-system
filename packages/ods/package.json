@@ -27,6 +27,7 @@
   "dependencies": {
     "@floating-ui/dom": "1.6.3",
     "@stencil/core": "4.12.2",
+    "google-libphonenumber": "3.2.35",
     "tom-select": "2.3.1"
   },
   "devDependencies": {
@@ -35,6 +36,7 @@
     "@stencil/react-output-target": "0.5.3",
     "@stencil/sass": "3.0.9",
     "@stencil/vue-output-target": "0.8.8",
+    "@types/google-libphonenumber": "7.4.30",
     "@types/jest": "29.5.12",
     "@types/react": "18.2.56",
     "@types/react-dom": "18.2.19",

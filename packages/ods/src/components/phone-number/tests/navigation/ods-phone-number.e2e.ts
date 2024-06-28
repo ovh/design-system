@@ -1,0 +1,88 @@
+import { type E2EPage, newE2EPage } from '@stencil/core/testing';
+
+describe('ods-phone-number navigation', () => {
+  let page: E2EPage;
+
+  async function isInputFocused(): Promise<boolean> {
+    return await page.evaluate(() => {
+      return document.activeElement?.tagName === 'ODS-PHONE-NUMBER' &&
+        document.activeElement?.shadowRoot?.activeElement?.tagName === 'ODS-INPUT';
+    });
+  }
+
+  async function isSelectFocused(): Promise<boolean> {
+    return await page.evaluate(() => {
+      return document.activeElement?.tagName === 'ODS-PHONE-NUMBER' &&
+        document.activeElement?.shadowRoot?.activeElement?.tagName === 'ODS-SELECT';
+    });
+  }
+
+  async function setup(content: string): Promise<void> {
+    page = await newE2EPage();
+
+    await page.setContent(content);
+    await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
+  }
+
+  beforeEach(jest.clearAllMocks);
+
+  it('should focus input on tabulation if no countries', async() => {
+    await setup('<ods-phone-number></ods-phone-number>');
+
+    expect(await isInputFocused()).toBe(false);
+
+    await page.keyboard.press('Tab');
+    await page.waitForChanges();
+
+    expect(await isInputFocused()).toBe(true);
+  });
+
+  it('should not focus input on tabulation if no countries and disabled', async() => {
+    await setup('<ods-phone-number is-disabled></ods-phone-number>');
+
+    expect(await isInputFocused()).toBe(false);
+
+    await page.keyboard.press('Tab');
+    await page.waitForChanges();
+
+    expect(await isInputFocused()).toBe(false);
+  });
+
+  it('should focus select then input on tabulation if countries are set', async() => {
+    await setup('<ods-phone-number countries="all"></ods-phone-number>');
+
+    expect(await isInputFocused()).toBe(false);
+    expect(await isSelectFocused()).toBe(false);
+
+    await page.keyboard.press('Tab');
+    await page.waitForChanges();
+
+    expect(await isInputFocused()).toBe(false);
+    expect(await isSelectFocused()).toBe(true);
+
+    await page.keyboard.press('Tab');
+    await page.waitForChanges();
+
+    expect(await isInputFocused()).toBe(true);
+    expect(await isSelectFocused()).toBe(false);
+  });
+
+  it('should not focus select or input on tabulation if disabled', async() => {
+    await setup('<ods-phone-number countries="all" is-disabled></ods-phone-number>');
+
+    expect(await isInputFocused()).toBe(false);
+    expect(await isSelectFocused()).toBe(false);
+
+    await page.keyboard.press('Tab');
+    await page.waitForChanges();
+
+    expect(await isInputFocused()).toBe(false);
+    expect(await isSelectFocused()).toBe(false);
+
+    await page.keyboard.press('Tab');
+    await page.waitForChanges();
+
+    expect(await isInputFocused()).toBe(false);
+    expect(await isSelectFocused()).toBe(false);
+  });
+});

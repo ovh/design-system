@@ -1,0 +1,40 @@
+import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import SpecificationsPagination from '@ovhcloud/ods-components/src/components/pagination/documentation/spec.md?raw';
+import { Banner } from '../../banner';
+import { DocNavigator } from '../../doc-navigator';
+import * as PaginationStories from './pagination.stories';
+import { LINK_ID } from '../../zeroheight';
+
+<Meta of={ PaginationStories } name='Documentation' />
+
+<Banner of={ PaginationStories } />
+
+# Overview
+
+Pagination is the process of splitting information over multiple pages instead of showing it all on a single page; also the name for the interface component used for navigating between these pages.
+
+<Canvas of={ PaginationStories.DefaultCurrentPage } sourceState='none' />
+
+<DocNavigator of={ PaginationStories } linkId={ LINK_ID.PAGINATION } />
+
+<Markdown>{ SpecificationsPagination }</Markdown>
+
+# Examples
+
+## Default
+<Canvas of={ PaginationStories.Default } sourceState='shown' />
+
+## Default Current Page
+<Canvas of={ PaginationStories.DefaultCurrentPage } sourceState='shown' />
+
+## Disabled
+<Canvas of={ PaginationStories.Disabled } sourceState='shown' />
+
+## Tooltips
+<Canvas of={ PaginationStories.WithTooltips } sourceState='shown' />
+
+## Total Items
+<Canvas of={ PaginationStories.WithTotalItems } sourceState='shown' />
+
+## Total Pages
+<Canvas of={ PaginationStories.WithMultiplePages } sourceState='shown' />

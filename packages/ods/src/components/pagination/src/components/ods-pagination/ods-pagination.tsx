@@ -226,8 +226,6 @@ export class OdsPagination {
         </ods-button>
         {tooltipLabel && (
           <ods-tooltip
-            part="tooltip"
-            position="top"
             shadowDomTriggerId={arrowButtonId}
             triggerId={this.hostId}
           >

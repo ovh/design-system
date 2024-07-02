@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/web-components';
 import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/ods-pagination';
 import { html } from 'lit-html';
 import { CONTROL_CATEGORY, orderControls } from '../../control';
+import { ODS_PAGINATION_PER_PAGE, ODS_PAGINATION_PER_PAGE_OPTIONS } from '@ovhcloud/ods-components';
 
 defineCustomElement();
 
@@ -51,11 +52,11 @@ const totalItemsParam = {
   defaultItemsPerPage: {
     table: {
       category: CONTROL_CATEGORY.general,
-      defaultValue: { summary: 10 },
+      defaultValue: { summary: ODS_PAGINATION_PER_PAGE.min },
       type: { summary: 'number' },
     },
     control: 'select',
-    options: [10, 25, 50, 100, 300],
+    options: ODS_PAGINATION_PER_PAGE_OPTIONS,
   },
   totalItems: {
     table: {
@@ -137,7 +138,7 @@ export const TotalItems: StoryObj = {
   }),
   args: {
     defaultCurrentPage: 4,
-    defaultItemsPerPage: 10,
+    defaultItemsPerPage: ODS_PAGINATION_PER_PAGE.min,
     isDisabled: false,
     labelTooltipPrevious: 'Previous label',
     labelTooltipNext: 'Next label',

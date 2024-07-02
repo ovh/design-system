@@ -4089,7 +4089,16 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+<<<<<<< HEAD
 >>>>>>> fd80de307 (feat(modal): init component)
+=======
+"@ovhcloud/ods-component-pagination@workspace:packages/ods/src/components/pagination":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-pagination@workspace:packages/ods/src/components/pagination"
+  languageName: unknown
+  linkType: soft
+
+>>>>>>> c66142f6e (feat(pagination): implement component)
 "@ovhcloud/ods-component-password@workspace:packages/ods/src/components/password":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-password@workspace:packages/ods/src/components/password"

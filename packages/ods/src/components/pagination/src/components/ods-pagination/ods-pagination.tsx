@@ -1,4 +1,4 @@
-import type { OdsSelectEventChangeDetail } from '../../components';
+import type { OdsSelectEventChangeDetail } from '../../../../select/src';
 import type { OdsPaginationChangedEventDetail, OdsPaginationItemPerPageChangedEventDetail } from '../../interfaces/events';
 import type { OdsPaginationPageList } from '../../interfaces/pagination-page-list';
 import type { EventEmitter, Fragment, FunctionalComponent } from '@stencil/core';

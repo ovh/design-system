@@ -40,6 +40,7 @@ const componentNames = [
   'tabs',
   'switch',
   'accordion',
+  'pagination',
   //--generator-anchor--
 ];
 

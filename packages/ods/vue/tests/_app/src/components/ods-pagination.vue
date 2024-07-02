@@ -1,5 +1,5 @@
 <template>
-  <OdsPagination />
+  <OdsPagination defaultCurrentPage={3} totalPages={21} />
 </template>
 
 <script lang="ts">

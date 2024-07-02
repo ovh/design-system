@@ -31,6 +31,11 @@
   }
 
   &__input {
+    &:focus {
+      position: relative;
+      z-index: 1;
+    }
+
     &--sibling {
       margin-left: -1px; // to merge input and select borders
 

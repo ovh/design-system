@@ -257,10 +257,13 @@ export class OdsPagination {
     }
 
     return (
-      <Host class="ods-pagination">
+      <Host class="ods-pagination" isDisabled={this.isDisabled}>
         {
           !!this.totalItems &&
-            <div class="ods-pagination__results">
+            <div class={{
+              'ods-pagination__results': true,
+              'ods-pagination__results--disabled': this.isDisabled,
+            }}>
               {
                 this.totalItems >= ODS_PAGINATION_PER_PAGE.min &&
                   <ods-select isDisabled={this.isDisabled}
@@ -274,7 +277,7 @@ export class OdsPagination {
                     }
                   </ods-select>
               }
-              <ods-text preset={ ODS_TEXT_PRESET.span }>
+              <ods-text preset={ ODS_TEXT_PRESET.label }>
                 <slot name="before-total-items"></slot>
                 {this.totalItems}
                 <slot name="after-total-items"></slot>

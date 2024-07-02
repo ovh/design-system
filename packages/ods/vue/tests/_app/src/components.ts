@@ -44,6 +44,7 @@ const componentNames = [
   'datepicker',
   'timepicker',
   'range',
+  'pagination',
   //--generator-anchor--
 ];
 

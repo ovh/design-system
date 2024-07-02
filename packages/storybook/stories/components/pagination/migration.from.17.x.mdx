@@ -1,0 +1,26 @@
+import { Meta } from '@storybook/blocks';
+import * as PaginationStories from './pagination.stories';
+
+<Meta of={ PaginationStories } name='Migration From 17.x' />
+
+# Pagination - migrate from v17 to v18
+----
+
+## Attributes changes
+
+`disabled` <img src="https://img.shields.io/badge/updated-00FFFF" />
+
+Has been updated.
+
+You can use the new `isDisabled` attribute to obtain the same behavior.
+
+## Migration examples
+
+Disabled:
+```html
+<osds-pagination disabled></osds-pagination>
+
+<!-- is now -->
+
+<ods-pagination is-disabled></ods-pagination>
+```

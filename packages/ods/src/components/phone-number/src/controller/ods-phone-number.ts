@@ -30,9 +30,9 @@ function getCurrentIsoCode(isoCode: OdsPhoneNumberCountryIsoCode | undefined, de
     return isoCode;
   }
 
-  return getBrowserIsoCodes<ODS_PHONE_NUMBER_COUNTRY_ISO_CODE>().filter((browserIsoCode) => {
+  return getBrowserIsoCodes<ODS_PHONE_NUMBER_COUNTRY_ISO_CODE>().find((browserIsoCode) => {
     return ODS_PHONE_NUMBER_COUNTRY_ISO_CODES.indexOf(browserIsoCode) >= 0;
-  })[0] || defaultValue || ODS_PHONE_NUMBER_COUNTRY_ISO_CODE.fr;
+  }) || defaultValue || ODS_PHONE_NUMBER_COUNTRY_ISO_CODE.fr;
 }
 
 function getCurrentLocale(locale?: OdsPhoneNumberLocale): OdsPhoneNumberLocale {
@@ -40,9 +40,9 @@ function getCurrentLocale(locale?: OdsPhoneNumberLocale): OdsPhoneNumberLocale {
     return locale;
   }
 
-  return getBrowserIsoCodes<ODS_PHONE_NUMBER_LOCALE>().filter((browserIsoCode) => {
+  return getBrowserIsoCodes<ODS_PHONE_NUMBER_LOCALE>().find((browserIsoCode) => {
     return ODS_PHONE_NUMBER_LOCALES.indexOf(browserIsoCode) >= 0;
-  })[0] || ODS_PHONE_NUMBER_LOCALE.fr;
+  }) || ODS_PHONE_NUMBER_LOCALE.fr;
 }
 
 function getNationalPhoneNumberExample(isoCode: OdsPhoneNumberCountryIsoCode | undefined, phoneUtils: PhoneNumberUtil): string {

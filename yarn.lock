@@ -3986,6 +3986,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-component-phone-number@workspace:packages/ods/src/components/phone-number":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-phone-number@workspace:packages/ods/src/components/phone-number"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-component-popover@workspace:packages/ods/src/components/popover":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-popover@workspace:packages/ods/src/components/popover"
@@ -4112,11 +4118,13 @@ __metadata:
     "@stencil/react-output-target": 0.5.3
     "@stencil/sass": 3.0.9
     "@stencil/vue-output-target": 0.8.8
+    "@types/google-libphonenumber": 7.4.30
     "@types/jest": 29.5.12
     "@types/react": 18.2.56
     "@types/react-dom": 18.2.19
     autoprefixer: 10.4.17
     concurrently: 8.2.2
+    google-libphonenumber: 3.2.35
     jest: 29.7.0
     jest-environment-jsdom: 29.7.0
     jest-puppeteer: 10.0.1
@@ -5458,6 +5466,13 @@ __metadata:
     "@types/minimatch": "*"
     "@types/node": "*"
   checksum: 6ae717fedfdfdad25f3d5a568323926c64f52ef35897bcac8aca8e19bc50c0bd84630bbd063e5d52078b2137d8e7d3c26eabebd1a2f03ff350fff8a91e79fc19
+  languageName: node
+  linkType: hard
+
+"@types/google-libphonenumber@npm:7.4.30":
+  version: 7.4.30
+  resolution: "@types/google-libphonenumber@npm:7.4.30"
+  checksum: 09270ed030076a0e69965ad5bad564e672a110e1e83c9092f6d264c3e0355921631521cb9afd022018a51cddfd19ba52d0421f4682d7b68b836dbb52537320de
   languageName: node
   linkType: hard
 
@@ -12127,6 +12142,13 @@ __metadata:
   version: 0.1.2
   resolution: "globrex@npm:0.1.2"
   checksum: adca162494a176ce9ecf4dd232f7b802956bb1966b37f60c15e49d2e7d961b66c60826366dc2649093cad5a0d69970cfa8875bd1695b5a1a2f33dcd2aa88da3c
+  languageName: node
+  linkType: hard
+
+"google-libphonenumber@npm:3.2.35":
+  version: 3.2.35
+  resolution: "google-libphonenumber@npm:3.2.35"
+  checksum: 526430b27af17bb5b6d5ac6f57d7c61c3c7a8f1d7f83c16849c040439e5f8aecf6feb19d483c4565be64b7cf9d1a50d1fc6a2bdeb6b4fa869ee72a15bd466810
   languageName: node
   linkType: hard
 

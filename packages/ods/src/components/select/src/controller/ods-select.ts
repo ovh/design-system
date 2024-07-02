@@ -1,17 +1,10 @@
 import type TomSelect from 'tom-select';
+import { type OdsSelectCustomRenderer } from '../interfaces/options';
 
-type RendererData = {
-  text: string,
-  value: string,
-}
-type CustomRenderer = {
-  item?: (data: RendererData) => string,
-  option?: (data: RendererData) => string,
-};
 type SelectConfigItem = Record<string, object>;
 type SelectConfig = { plugin: SelectConfigItem, template: SelectConfigItem };
 
-function getSelectConfig(allowMultiple: boolean, multipleSelectionLabel: string, renderer?: CustomRenderer): SelectConfig {
+function getSelectConfig(allowMultiple: boolean, multipleSelectionLabel: string, renderer?: OdsSelectCustomRenderer): SelectConfig {
   const plugin: SelectConfigItem = { placeholder: {} };
   const template: SelectConfigItem = renderer || {};
 
@@ -61,7 +54,6 @@ function setSelectValue(select?: TomSelect, value?: string | string[] | null, de
 }
 
 export {
-  type CustomRenderer,
   getSelectConfig,
   inlineValue,
   moveSlottedElements,

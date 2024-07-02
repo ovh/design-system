@@ -40,6 +40,7 @@ const componentNames = [
   'tabs',
   'switch',
   'accordion',
+  'phone-number',
   //--generator-anchor--
 ];
 

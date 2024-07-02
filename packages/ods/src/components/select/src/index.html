@@ -37,6 +37,16 @@
     <option value="goldfish">Goldfish</option>
   </ods-select>
 
+  <p>Readonly</p>
+  <ods-select is-readonly value="parrot">
+    <option value="dog">Dog</option>
+    <option value="cat">Cat</option>
+    <option value="hamster">Hamster</option>
+    <option value="parrot">Parrot</option>
+    <option value="spider">Spider</option>
+    <option value="goldfish">Goldfish</option>
+  </ods-select>
+
   <p>Has error</p>
   <ods-select has-error>
     <option value="dog">Dog</option>
@@ -327,6 +337,45 @@
       },
     }
   </script>
+
+  <p>Border rounded</p>
+  <div style="display: flex; flex-flow: row; column-gap: 10px;">
+    <ods-select border-rounded="bottom">
+      <option value="bottom">Bottom</option>
+    </ods-select>
+    <ods-select border-rounded="bottom-left">
+      <option value="bottom-left">Bottom left</option>
+    </ods-select>
+    <ods-select border-rounded="bottom-right">
+      <option value="bottom-rght">Bottom right</option>
+    </ods-select>
+    <ods-select border-rounded="left">
+      <option value="left">Left</option>
+    </ods-select>
+    <ods-select border-rounded="right">
+      <option value="right">Right</option>
+    </ods-select>
+    <ods-select border-rounded="top">
+      <option value="top">Top</option>
+    </ods-select>
+    <ods-select border-rounded="top-left">
+      <option value="top-left">Top Left</option>
+    </ods-select>
+    <ods-select border-rounded="top-right">
+      <option value="top-right">Top Right</option>
+    </ods-select>
+  </div>
+
+  <p>Dropdown width auto</p>
+  <ods-select dropdown-width="auto">
+    <option value="dog">Dog</option>
+    <option value="cat">Cat</option>
+    <option value="hamster">Hamster</option>
+    <option value="parrot">Parrot</option>
+    <option value="spider">Spider</option>
+    <option value="goldfish">Goldfish</option>
+  </ods-select>
+
 
   <div style="margin-bottom: 2000px;"></div>
 </body>

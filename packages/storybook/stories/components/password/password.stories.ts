@@ -199,8 +199,8 @@ export const Pattern: StoryObj = {
   passwordPattern.addEventListener('odsChange', (event) => {
     passwordPattern.hasError = !event.detail.validity.valid;
   });
-  </script>
 })();
+</script>
   `,
 };
 

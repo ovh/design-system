@@ -1,0 +1,51 @@
+:host(.ods-pagination) {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  li {
+    list-style-type: none;
+    white-space: nowrap;
+  }
+}
+
+.ods-pagination {
+  &__results,
+  &__list {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0;
+    list-style-type: none;
+  }
+
+  &__results {
+    gap: 8px;
+  }
+
+  &__list {
+    &__page,
+    &__arrow {
+      display: flex;
+      align-items: center;
+    }
+
+    &__arrow {
+      padding: 0 8px;
+    }
+
+    &__page {
+      &__ellipsis {
+        cursor: not-allowed;
+        pointer-events: auto;
+      }
+
+      &__button::part(button),
+      &__arrow__button::part(button) {
+        display: flex;
+        justify-content: center;
+        width: 2.25rem;
+      }
+    }
+  }
+}

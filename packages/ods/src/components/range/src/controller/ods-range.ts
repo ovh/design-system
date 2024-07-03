@@ -1,3 +1,10 @@
+function getDefaultValue(min: number, max: number, defaultValue?: number | [number, number]): number | [number, number] {
+  if (defaultValue) {
+    return defaultValue;
+  }
+  return max < min ? min : min + (max - min) / 2;
+}
+
 function isDualRange(value: number | [number, number] | null): value is [number, number] {
   return Array.isArray(value) && value.length === 2 && value.every((v) => typeof v === 'number');
 }
@@ -11,6 +18,7 @@ function toPercentage(max: number, min: number, value?: number): number {
 }
 
 export {
+  getDefaultValue,
   isDualRange,
   toPercentage,
   setFormValue,

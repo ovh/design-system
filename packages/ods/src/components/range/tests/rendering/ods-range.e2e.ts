@@ -23,4 +23,19 @@ describe('ods-range rendering', () => {
 
     expect(el.shadowRoot).not.toBeNull();
   });
+
+  describe('defaultValue', () => {
+    it('get defaultValue with props', async() => {
+      const defaultValue = 40;
+      await setup(`<ods-range default-value="${defaultValue}"></ods-range>`);
+
+      expect(await el.getProperty('value')).toBe(defaultValue);
+    });
+
+    it('get defaultValue with midpoint max and min', async() => {
+      await setup('<ods-range min="0" max="50"></ods-range>');
+
+      expect(await el.getProperty('value')).toBe(25);
+    });
+  });
 });

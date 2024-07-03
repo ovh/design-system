@@ -82,7 +82,7 @@ $range-background-color: var(--ods-color-neutral-300);
     }
   }
 
-  &--error {
+  :not(:disabled) &--error {
     &::-webkit-slider-thumb {
       border-color: var(--ods-form-element-border-color-critical);
     }

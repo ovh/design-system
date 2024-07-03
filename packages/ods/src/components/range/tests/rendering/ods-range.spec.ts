@@ -142,10 +142,10 @@ describe('ods-range rendering', () => {
       expect(root?.getAttribute('value')).toBe(value.toString());
     });
 
-    it('should be set by default', async() => {
+    it('should not be set by default', async() => {
       await setup('<ods-range></ods-range>');
 
-      expect(root?.getAttribute('value')).toBe('0');
+      expect(root?.getAttribute('value')).toBeNull();
     });
   });
 });

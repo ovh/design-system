@@ -1,7 +1,25 @@
-import { isDualRange, toPercentage } from '../../src/controller/ods-range';
+import { getDefaultValue, isDualRange, toPercentage } from '../../src/controller/ods-range';
 
 describe('ods-range controller', () => {
-  describe('isDualRange function', () => {
+
+  describe('getDefaultValue', () => {
+    it('returns the provided defaultValue if specified', () => {
+      expect(getDefaultValue(0, 10, 5)).toBe(5);
+      expect(getDefaultValue(0, 10, [3, 7])).toEqual([3, 7]);
+    });
+
+    it('calculates the midpoint if no defaultValue is provided', () => {
+      expect(getDefaultValue(0, 10)).toBe(5);
+      expect(getDefaultValue(0, 0)).toBe(0);
+    });
+
+    it('handles cases where max < min by returning min', () => {
+      expect(getDefaultValue(10, 5)).toBe(10);
+      expect(getDefaultValue(-5, -10)).toBe(-5);
+    });
+  });
+
+  describe('isDualRange', () => {
     it('should return true for valid dual range', () => {
       expect(isDualRange([1, 2])).toBe(true);
     });
@@ -35,7 +53,7 @@ describe('ods-range controller', () => {
     });
   });
 
-  describe('toPercentage function', () => {
+  describe('toPercentage', () => {
     it('should return correct percentage for valid numbers', () => {
       expect(toPercentage(100, 0, 50)).toBe(50);
     });

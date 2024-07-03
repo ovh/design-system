@@ -8,6 +8,11 @@ defineCustomElement();
 const meta: Meta = {
   component: 'ods-range',
   title: 'ODS Components/Form/Range',
+  parameters: {
+    layout: 'centered',
+  },
+  decorators: [(story) => html`<div style="padding-top: 50px; display: inline-flex; align-items: center;">${story()}</div>`],
+
 };
 
 export default meta;

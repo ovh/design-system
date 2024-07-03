@@ -3,7 +3,8 @@
 :host {
   display: flex;
   position: relative;
-  height: 32px;
+  width: inherit;
+  height: range.$ods-range-height;
 }
 
 :host(.ods-range-dual) {

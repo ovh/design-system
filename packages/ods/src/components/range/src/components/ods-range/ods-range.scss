@@ -1,7 +1,7 @@
 @use '../../../../../style/range';
 
 :host {
-  display: flex;
+  display: inline-flex;
   position: relative;
   width: inherit;
   height: range.$ods-range-height;

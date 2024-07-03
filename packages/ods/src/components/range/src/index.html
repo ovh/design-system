@@ -17,9 +17,9 @@
   </ods-range>
 
   <style>
-    /* #default-range {
+    #default-range::part(range) {
       width: 100px;
-    } */
+    }
   </style>
 
   <button id="clear-button">clear</button>
@@ -50,6 +50,10 @@
   <ods-range value="40" is-disabled>
   </ods-range>
 
+  <p>Disabled & Error</p>
+  <ods-range value="40" is-disabled has-error>
+  </ods-range>
+
   <p>Max</p>
   <ods-range value="40" max="1000">
   </ods-range>
@@ -75,7 +79,7 @@
   </script>
 
   <p>Dual</p>
-  <ods-range id="range-dual">
+  <ods-range step="10" id="range-dual">
   </ods-range>
   <script>
     const rangeDual = document.getElementById('range-dual');

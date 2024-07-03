@@ -1,7 +1,8 @@
 @use './focus';
 
-$ods-range-height: 8px;
-$ods-range-size-thumb: 16px;
+$ods-range-height: 32px;
+$ods-input-range-height: 8px;
+$ods-input-range-size-thumb: 16px;
 $range-background-color-active: var(--ods-color-primary-500);
 $range-background-color: var(--ods-color-neutral-300);
 
@@ -9,12 +10,10 @@ $range-background-color: var(--ods-color-neutral-300);
   $range: &;
 
   appearance: none;
-  position: absolute;
   outline: none;
   border-radius: var(--ods-border-radius-sm);
   cursor: pointer;
-  width: 100%;
-  height: $ods-range-height;
+  height: $ods-input-range-height;
 
   &::-webkit-slider-thumb {
     @include thumb();
@@ -105,8 +104,8 @@ $range-background-color: var(--ods-color-neutral-300);
   box-shadow: none;
   background-color: var(--ods-color-neutral-000);
   cursor: pointer;
-  width: $ods-range-size-thumb;
-  height: $ods-range-size-thumb;
+  width: $ods-input-range-size-thumb;
+  height: $ods-input-range-size-thumb;
 }
 
 @mixin thumb-hover-active() {
@@ -145,8 +144,9 @@ $range-background-color: var(--ods-color-neutral-300);
   }
 
   .ods-range__range {
+    position: absolute;
     z-index: 2;
-    margin-top: 6px;
+    margin-top: $ods-input-range-height;
     height: 0;
   }
 }

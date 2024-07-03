@@ -4,7 +4,7 @@ import { getRandomHTMLId } from '../../../../../utils/dom';
 import { ODS_INPUT_TYPE } from '../../../../input/src';
 import { ODS_TEXT_PRESET } from '../../../../text/src';
 import { type OdsTooltip } from '../../../../tooltip/src';
-import { isDualRange, setFormValue, toPercentage } from '../../controller/ods-range';
+import { getDefaultValue, isDualRange, setFormValue, toPercentage } from '../../controller/ods-range';
 import { type OdsRangeValueChangeEventDetail } from '../../interfaces/event';
 
 @Component({
@@ -64,6 +64,41 @@ export class OdsRange {
     this.odsReset.emit();
   }
 
+  @Watch('min')
+  @Watch('max')
+  onMinOrMaxChange(): void {
+    if (!this.value) {
+      return;
+    }
+
+    if (!isDualRange(this.value)) {
+      if (this.min > this.value) {
+        this.value = this.min;
+      }
+
+      if (this.value > this.max) {
+        this.value = this.max;
+      }
+    } else {
+      const [valueMin, valueMax] = this.value;
+      if (valueMax > this.max) {
+        this.value = [this.value[0], this.max];
+      }
+
+      if (valueMin > this.max) {
+        this.value = [this.max, this.value[1]];
+      }
+
+      if (this.min > valueMax) {
+        this.value = [this.value[0], this.min];
+      }
+
+      if (this.min > valueMin) {
+        this.value = [this.min, this.value[1]];
+      }
+    }
+  }
+
   @Watch('value')
   private onValueChange(): void {
     this.isDualRange = isDualRange(this.value);
@@ -74,8 +109,8 @@ export class OdsRange {
   componentWillLoad(): void {
     this.hostId = this.el.id || getRandomHTMLId();
 
-    if (!this.value && this.defaultValue) {
-      this.value = this.defaultValue;
+    if (!this.value) {
+      this.value = getDefaultValue(this.min, this.max, this.defaultValue);
     }
     setFormValue(this.internals, this.value);
     this.onValueChange();
@@ -203,6 +238,7 @@ export class OdsRange {
               min={ this.min }
               ref={ (el?: HTMLInputElement) => this.inputElDual = el }
               type={ ODS_INPUT_TYPE.range }
+              step={ this.step }
               value={ this.dualValue?.toString() }
             />
             {

@@ -243,7 +243,7 @@ export class OdsPagination {
           class="ods-pagination__list__page__ellipsis"
           color={ ODS_BUTTON_COLOR.primary }
           isDisabled={ true }
-          label="..."
+          label="&#x2026;"
           variant={ ODS_BUTTON_VARIANT.ghost }
         >
         </ods-button>
@@ -257,7 +257,11 @@ export class OdsPagination {
     }
 
     return (
-      <Host class="ods-pagination" isDisabled={this.isDisabled}>
+      <Host
+        class="ods-pagination"
+        isDisabled={this.isDisabled}
+        id={ this.hostId }
+      >
         {
           !!this.totalItems &&
             <div class={{

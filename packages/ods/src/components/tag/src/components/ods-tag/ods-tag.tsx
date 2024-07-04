@@ -15,12 +15,17 @@ import { type OdsTagEventRemoveDetail } from '../../interfaces/events';
 export class OdsTag {
   @Element() el!: HTMLElement;
 
+  /** @docType OdsTagColor */
   @Prop({ reflect: true }) public color: OdsTagColor = ODS_TAG_COLOR.information;
+  /** @docType OdsIconName */
   @Prop({ reflect: true }) public icon?: OdsIconName;
   @Prop({ reflect: true }) public isDisabled: boolean = false;
   @Prop({ reflect: true }) public label!: string;
+  /** @docType OdsTagShape */
   @Prop({ reflect: true }) public shape: OdsTagShape = ODS_TAG_SHAPE.round;
+  /** @docType OdsTagSize */
   @Prop({ reflect: true }) public size: OdsTagSize = ODS_TAG_SIZE.md;
+  /** @docType OdsTagVariant */
   @Prop({ reflect: true }) public variant: OdsTagVariant = ODS_TAG_VARIANT.default;
 
   @Event() odsRemove!: EventEmitter<OdsTagEventRemoveDetail>;

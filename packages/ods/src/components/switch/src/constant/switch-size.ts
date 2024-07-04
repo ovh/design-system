@@ -3,7 +3,7 @@ enum ODS_SWITCH_SIZE {
   sm = 'sm',
 }
 
-type OdsSwitchSize =`${ODS_SWITCH_SIZE}`;
+type OdsSwitchSize = `${ODS_SWITCH_SIZE}`;
 
 const ODS_SWITCH_SIZES = Object.freeze(Object.values(ODS_SWITCH_SIZE));
 

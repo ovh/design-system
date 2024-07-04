@@ -11,7 +11,9 @@ import { ODS_DIVIDER_SPACING } from '../../constants/divider-spacing';
   tag: 'ods-divider',
 })
 export class OdsDivider {
+  /** @docType OdsDividerColor */
   @Prop({ reflect: true }) public color: OdsDividerColor = ODS_DIVIDER_COLOR.light;
+  /** @docType OdsDividerSpacing */
   @Prop({ reflect: true }) public spacing: OdsDividerSpacing = ODS_DIVIDER_SPACING._2;
 
   render(): FunctionalComponent {

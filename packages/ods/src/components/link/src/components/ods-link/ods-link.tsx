@@ -1,5 +1,5 @@
 import { Component, type FunctionalComponent, Host, Listen, Prop, h } from '@stencil/core';
-import { type OdsIconName } from '../../../../icon/src/constants/icon-name';
+import { type OdsIconName } from '../../../../icon/src';
 import { ODS_LINK_COLOR, type OdsLinkColor } from '../../constant/link-color';
 
 @Component({
@@ -8,9 +8,11 @@ import { ODS_LINK_COLOR, type OdsLinkColor } from '../../constant/link-color';
   tag: 'ods-link',
 })
 export class OdsLink {
+  /** @docType OdsLinkColor */
   @Prop({ reflect: true }) public color: OdsLinkColor = ODS_LINK_COLOR.primary;
   @Prop({ reflect: true }) public download?: HTMLAnchorElement['download'];
   @Prop({ reflect: true }) public href!: string;
+  /** @docType OdsIconName */
   @Prop({ reflect: true }) public icon?: OdsIconName;
   @Prop({ reflect: true }) public isDisabled: boolean = false;
   @Prop({ reflect: true }) public label?: string;

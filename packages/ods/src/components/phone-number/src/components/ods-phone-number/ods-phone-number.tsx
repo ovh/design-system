@@ -25,6 +25,7 @@ export class OdsPhoneNumber {
 
   @Prop({ reflect: true }) public ariaLabel: HTMLElement['ariaLabel'] = null;
   @Prop({ reflect: true }) public ariaLabelledby?: string;
+  /** @docType OdsPhoneNumberCountryIsoCode[] | OdsPhoneNumberCountryPreset | string */
   @Prop({ reflect: true }) public countries?: OdsPhoneNumberCountryIsoCode[] | OdsPhoneNumberCountryPreset | string;
   @Prop({ reflect: true }) public defaultValue?: string;
   @Prop({ mutable: true, reflect: true }) public hasError: boolean = false;
@@ -33,7 +34,9 @@ export class OdsPhoneNumber {
   @Prop({ reflect: true }) public isLoading: boolean = false;
   @Prop({ reflect: true }) public isReadonly: boolean = false;
   @Prop({ reflect: true }) public isRequired: boolean = false;
+  /** @docType OdsPhoneNumberCountryIsoCode */
   @Prop({ mutable: true, reflect: true }) public isoCode?: OdsPhoneNumberCountryIsoCode;
+  /** @docType OdsPhoneNumberLocale */
   @Prop({ mutable: true, reflect: true }) public locale?: OdsPhoneNumberLocale;
   @Prop({ reflect: true }) public name!: string;
   @Prop({ reflect: true }) public pattern?: string;

@@ -18,6 +18,7 @@ export class OdsPopover {
 
   @Element() el!: HTMLElement;
 
+  /** @docType OdsPopoverPosition */
   @Prop({ reflect: true }) public position: OdsPopoverPosition = ODS_POPOVER_POSITION.top;
   @Prop({ reflect: true }) public shadowDomTriggerId?: string;
   @Prop({ reflect: true }) public triggerId!: string;

@@ -12,7 +12,9 @@ import { getIconName } from '../../controller/ods-message';
 export class OdsMessage {
   @Element() el!: HTMLElement;
 
+  /** @docType OdsMessageColor */
   @Prop({ reflect: true }) public color: OdsMessageColor = ODS_MESSAGE_COLOR.information;
+  /** @docType OdsMessageVariant */
   @Prop({ reflect: true }) public variant: OdsMessageVariant = ODS_MESSAGE_VARIANT.default;
 
   @Event() odsMessageRemove!: EventEmitter<void>;

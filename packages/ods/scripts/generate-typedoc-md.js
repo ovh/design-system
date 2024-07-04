@@ -44,6 +44,19 @@ if (pathPrefixIdx > -1) {
   pathPrefix = process.argv[pathPrefixIdx + 1];
 }
 
+function buildMarkdownArrayRow(cols, isHeading = false) {
+  const row = cols.reduce((str, col) => {
+    str += ` ${col} |`;
+    return str;
+  }, '|');
+
+  if (isHeading) {
+    return row.concat('\n', buildMarkdownArrayRow(cols.map(() => '---')));
+  }
+
+  return row;
+}
+
 function createSpecMd() {
   const typedocJson = require(path.resolve(typedocBasePath, 'typedoc.json'));
   // TODO test for prefixed project (like -ovh)
@@ -67,9 +80,11 @@ function getClassesInfo(jsonItems) {
   return jsonItems
     .filter(({ kind }) => kind === ReflectionKind.Class)
     .map((classData) => {
-      const { events, methods, props } = getClassInfo(classData);
+      const eventsMarkdown = getClassEventsMarkdown(classData);
+      const methodsMarkdown = getClassMethodsMarkdown(classData);
+      const propsMarkdown = getClassPropsMarkdown(classData);
 
-      if (!events.length && !methods.length && !props.length) {
+      if (!eventsMarkdown.length && !methodsMarkdown.length && !propsMarkdown.length) {
         return [
           `# ${classData.name}`,
           'This component has no properties, events nor methods.',
@@ -78,52 +93,49 @@ function getClassesInfo(jsonItems) {
 
       return [
         `# ${classData.name}`,
-        props.length ? '## Properties' : '', ...props,
-        methods.length ? '## Methods' : '', ...methods,
-        events.length ? '## Events' : '', ...events,
+        propsMarkdown.length ? '## Properties' : '', propsMarkdown,
+        methodsMarkdown.length ? '## Methods' : '', methodsMarkdown,
+        eventsMarkdown.length ? '## Events' : '', eventsMarkdown,
       ].join('\n');
     });
 }
 
-function getClassInfo({ children }) {
-  const props = children
-    .filter(({ kind, decorators }) => kind === ReflectionKind.Property && decorators[0].escapedText === 'Prop')
-    .filter((prop) => prop.flags.isPublic)
-    .map((prop) => {
-      return [
-        `### ${prop.name}`,
-        `• ${prop.flags.isOptional ? '\`Optional\`' : ''} **${prop.name}**: [${printType(prop.type)}] ${prop.defaultValue ? `= \`${prop.defaultValue}\`` : ''}`,
-        `${prop.comment?.summary?.[0].text ? '**Description**: ' + prop.comment?.summary?.[0].text : ''}`,
-      ].join('\n\n');
-    });
-
-  const events = children
+function getClassEventsMarkdown({ children }) {
+  return children
     .filter(({ kind, decorators }) => kind === ReflectionKind.Property && decorators[0].escapedText === 'Event')
     .map((event) => {
-      const returnType = `\`${event.type.name}\`\<${printType(event.type.typeArguments[0])}\>`
-      return [
-        `### ${event.name}\n\n▸ **${event.name}**(): ${returnType}`,
-        `${event.comment?.summary?.[0].text ? '**Description**: ' + event.comment?.summary?.[0].text : ''}`,
-        `#### Returns\n${returnType}`,
-      ].join('\n\n');
-    });
+      const returnType = `${event.type.name}<${printType(event.type.typeArguments[0])}>`;
+      return `• **${event.name}**(): \`${returnType}\``;
+    }).join('\n\n');
+}
 
-  const methods = children
+function getClassMethodsMarkdown({ children }) {
+  return children
     .filter(({ kind, decorators }) => kind === ReflectionKind.Method && decorators?.[0]?.escapedText === 'Method')
     .map((method) => {
-      const returnType = `\`${method.signatures[0].type.name}\`\<${printType(method.signatures[0].type.typeArguments[0])}\>`
-      return [
-        `### ${method.name}\n\n▸ **${method.name}**(): ${returnType}`,
-        `${method.signatures?.[0].comment?.summary?.[0].text ? '**Description**: ' + method.signatures?.[0].comment?.summary?.[0].text : ''}`,
-        `#### Returns\n${returnType}`,
-      ].join('\n\n');
-    });
+      const returnType = `${method.signatures[0].type.name}<${printType(method.signatures[0].type.typeArguments[0])}>`;
+      return `• **${method.name}**(): \`${returnType}\``;
+    }).join('\n\n');
+}
 
-  return {
-    events,
-    methods,
-    props,
-  };
+function getClassPropsMarkdown({ children }) {
+  const props = children
+    .filter(({ kind, decorators }) => kind === ReflectionKind.Property && decorators[0].escapedText === 'Prop')
+    .filter((prop) => prop.flags.isPublic);
+
+  if (props.length) {
+    return props.reduce((str, prop) => {
+      const customDocTypeTag = prop.comment?.blockTags?.find((blockTag) => blockTag.tag === '@docType');
+      const type = customDocTypeTag && customDocTypeTag.content.length ? customDocTypeTag.content[0].text : printType(prop.type);
+
+      str += '\n';
+      str += buildMarkdownArrayRow([prop.name, `\`${type}\``, `\`${prop.flags.isOptional ? 'false' : 'true'}\``, `\`${prop.defaultValue || 'undefined'}\``]);
+
+      return str;
+    }, buildMarkdownArrayRow(['Property', 'Type', 'Required', 'Default value'], true));
+  }
+
+  return '';
 }
 
 function getEnums(jsonItems) {
@@ -151,29 +163,30 @@ function getTypeValue(tObj) {
     return tObj.name.toString();
   }
   if ('value' in tObj) {
+    if (tObj.value === null) {
+      return 'null';
+    }
     return tObj.value?.toString();
   }
   return tObj.type;
 }
 
 function printType(typeObject) {
-  const someType = typeObject;
-
-  if (someType && someType.type) {
-    switch (someType.type) {
+  if (typeObject && typeObject.type) {
+    switch (typeObject.type) {
       case 'intrinsic':
       case 'literal':
-        return `_${getTypeValue(someType)}_`;
+        return getTypeValue(typeObject);
       case 'reference': {
-        if (someType.name === 'Promise' || someType.name === 'EventEmitter') {
-          return `\`${someType.name}<${getTypeValue(someType.typeArguments?.[0])}>\``;
+        if (typeObject.name === 'Promise' || typeObject.name === 'EventEmitter') {
+          return `${typeObject.name}<${getTypeValue(typeObject.typeArguments?.[0])}>`;
         }
-        return `\`${someType.name}\``;
+        return typeObject.name;
       }
       case 'array':
-        return `${printType(someType.elementType).replace(/^(_|`)|(_|`)$/g, '')}[]`;
+        return `${printType(typeObject.elementType)}[]`;
       case 'union':
-        return someType.types.map((tObj) => `\`${printType(tObj).replace(/^(_|`)|(_|`)$/g, '')}\``).join(' \| ');
+        return typeObject.types.map(printType).join(' \| ');
     }
   }
   return '_unknown_';

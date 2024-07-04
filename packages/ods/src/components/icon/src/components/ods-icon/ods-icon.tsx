@@ -9,6 +9,7 @@ import { Component, Host, Prop, h } from '@stencil/core';
 })
 export class OdsIcon {
   @Prop({ reflect: true }) public alt?: string = '';
+  /** @docType OdsIconName */
   @Prop({ reflect: true }) public name!: OdsIconName;
 
   render(): FunctionalComponent {

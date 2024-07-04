@@ -12,6 +12,7 @@ export class OdsModal {
 
   @Element() el!: HTMLElement;
 
+  /** @docType OdsModalColor */
   @Prop({ reflect: true }) public color: OdsModalColor = ODS_MODAL_COLOR.information;
   @Prop({ reflect: true }) public isDismissible: boolean = true;
   @Prop({ mutable: true, reflect: true }) public isOpen: boolean = false;

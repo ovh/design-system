@@ -16,6 +16,7 @@ export class OdsTooltip {
 
   @Element() el!: HTMLElement;
 
+  /** @docType OdsTooltipPosition */
   @Prop({ reflect: true }) public position: OdsTooltipPosition = ODS_TOOLTIP_POSITION.top;
   @Prop({ reflect: true }) public shadowDomTriggerId?: string;
   @Prop({ reflect: true }) public triggerId!: string;

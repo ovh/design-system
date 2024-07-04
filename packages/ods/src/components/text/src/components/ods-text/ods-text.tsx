@@ -7,6 +7,7 @@ import { ODS_TEXT_PRESET, type OdsTextPreset } from '../../constants/text-preset
   tag: 'ods-text',
 })
 export class OdsText {
+  /** @docType OdsTextPreset */
   @Prop({ reflect: true }) public preset?: OdsTextPreset = ODS_TEXT_PRESET.paragraph;
 
   getTag(): string {

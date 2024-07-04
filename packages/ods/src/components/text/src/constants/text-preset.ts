@@ -1,15 +1,15 @@
 enum ODS_TEXT_PRESET {
-  paragraph = 'paragraph',
+  caption = 'caption',
+  code = 'code',
   heading1 = 'heading-1',
   heading2 = 'heading-2',
   heading3 = 'heading-3',
   heading4 = 'heading-4',
   heading5 = 'heading-5',
   heading6 = 'heading-6',
-  span = 'span',
-  code = 'code',
   label = 'label',
-  caption = 'caption',
+  paragraph = 'paragraph',
+  span = 'span',
 }
 
 type OdsTextPreset = `${ODS_TEXT_PRESET}`;

@@ -120,7 +120,13 @@ export class OdsRange {
     await this.reset();
   }
 
-  private onInput(): void {
+  private onInput(currentInput?: HTMLInputElement, otherInput?: HTMLInputElement): void {
+    const isInputsValuesEqual = Number(this.inputEl?.value) - Number(this.inputElDual?.value) > 0;
+    if (currentInput && otherInput && isInputsValuesEqual) {
+      currentInput.value = otherInput.value;
+      return;
+    }
+
     this.isDualRange = isDualRange(this.value);
     this.value = this.changeValues(Number(this.inputEl?.value), Number(this.inputElDual?.value)) ?? null;
     this.odsChange.emit({
@@ -183,7 +189,7 @@ export class OdsRange {
           onFocus={ () => this.odsFocus.emit() }
           onFocusin={ () => this.showTooltips() }
           onFocusout={ () => this.hideTooltips() }
-          onInput={ () => this.onInput() }
+          onInput={ () => this.onInput(this.inputEl, this.inputElDual) }
           onMouseOver={ () => this.showTooltips() }
           onMouseLeave={ () => this.hideTooltips() }
           part="range"
@@ -217,51 +223,50 @@ export class OdsRange {
 
         {
           this.isDualRange &&
-          <div>
-            <input
-              class={{
-                'ods-range__range-dual': true,
-                'ods-range__range-dual--error': this.hasError,
-              }}
-              aria-valuemax={ this.max }
-              aria-valuemin={ this.min }
-              aria-valuenow={ this.value }
-              disabled={ this.isDisabled }
-              id={ this.inputRangeDualId }
-              onFocusin={ () => this.showTooltips() }
-              onFocusout={ () => this.hideTooltips() }
-              onInput={ () => this.onInput() }
-              onMouseOver={ () => this.showTooltips() }
-              onMouseLeave={ () => this.hideTooltips() }
-              part="range-dual"
-              max={ this.max }
-              min={ this.min }
-              ref={ (el?: HTMLInputElement) => this.inputElDual = el }
-              type={ ODS_INPUT_TYPE.range }
-              step={ this.step }
-              value={ this.dualValue?.toString() }
-            />
-            {
-              !this.isDisabled &&
-              <div>
-                <div
-                  class="ods-range__shadow-thumb"
-                  id="ods-range-shadow-thumb-dual"
-                  style={{
-                    left: `calc(${percentageDual}% - (${percentageDual * 0.15}px))`,
-                  }}>
-                </div>
-                <ods-tooltip
-                  position="top"
-                  ref={ (el: unknown) => this.tooltipDual = el as OdsTooltip }
-                  shadowDomTriggerId="ods-range-shadow-thumb-dual"
-                  triggerId={ this.hostId }
-                  withArrow>
-                  { this.dualValue }
-                </ods-tooltip>
-              </div>
-            }
+          <input
+            class={{
+              'ods-range__range-dual': true,
+              'ods-range__range-dual--error': this.hasError,
+            }}
+            aria-valuemax={ this.max }
+            aria-valuemin={ this.min }
+            aria-valuenow={ this.value }
+            disabled={ this.isDisabled }
+            id={ this.inputRangeDualId }
+            onFocusin={ () => this.showTooltips() }
+            onFocusout={ () => this.hideTooltips() }
+            onInput={ () => this.onInput(this.inputElDual, this.inputEl) }
+            onMouseOver={ () => this.showTooltips() }
+            onMouseLeave={ () => this.hideTooltips() }
+            part="range-dual"
+            max={ this.max }
+            min={ this.min }
+            ref={ (el?: HTMLInputElement) => this.inputElDual = el }
+            type={ ODS_INPUT_TYPE.range }
+            step={ this.step }
+            value={ this.dualValue?.toString() }
+          />
+        }
+
+        {
+          !this.isDisabled && this.isDualRange &&
+          <div
+            class="ods-range__shadow-thumb"
+            id="ods-range-shadow-thumb-dual"
+            style={{
+              left: `calc(${percentageDual}% - (${percentageDual * 0.15}px))`,
+            }}>
           </div>
+        }
+        { !this.isDisabled && this.isDualRange &&
+          <ods-tooltip
+            position="top"
+            ref={ (el: unknown) => this.tooltipDual = el as OdsTooltip }
+            shadowDomTriggerId="ods-range-shadow-thumb-dual"
+            triggerId={ this.hostId }
+            withArrow>
+            { this.dualValue }
+          </ods-tooltip>
         }
 
         <ods-text preset={ODS_TEXT_PRESET.label} class="ods-range__min">{ this.min }</ods-text>

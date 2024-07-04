@@ -70,6 +70,13 @@
   <ods-range value="40" has-error>
   </ods-range>
 
+  <p>Dual</p>
+  <ods-range id="range-dual">
+  </ods-range>
+  <script>
+    const rangeDual = document.getElementById('range-dual');
+  </script>
+
   <p>Dual Error</p>
   <ods-range id="range-dual-error" has-error>
   </ods-range>
@@ -78,12 +85,12 @@
     rangeDualError.value = [3, 20];
   </script>
 
-  <p>Dual</p>
-  <ods-range step="10" id="range-dual">
+  <p>Dual Disabled & Error</p>
+  <ods-range id="range-dual-disabled-error" is-disabled has-error>
   </ods-range>
   <script>
-    const rangeDual = document.getElementById('range-dual');
-    rangeDual.value = [3, 20];
+    const rangeDualDisabledError = document.getElementById('range-dual-disabled-error');
+    rangeDualDisabledError.value = [3, 20];
   </script>
 
   <p>Dual Disabled</p>

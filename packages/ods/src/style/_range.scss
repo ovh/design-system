@@ -14,6 +14,7 @@ $range-background-color: var(--ods-color-neutral-300);
   border-radius: var(--ods-border-radius-sm);
   cursor: pointer;
   height: $ods-input-range-height;
+  pointer-events: none;
 
   &::-webkit-slider-thumb {
     @include thumb();
@@ -82,7 +83,7 @@ $range-background-color: var(--ods-color-neutral-300);
     }
   }
 
-  :not(:disabled) &--error {
+  &:not(:disabled)#{$range}--error {
     &::-webkit-slider-thumb {
       border-color: var(--ods-form-element-border-color-critical);
     }
@@ -106,6 +107,7 @@ $range-background-color: var(--ods-color-neutral-300);
   cursor: pointer;
   width: $ods-input-range-size-thumb;
   height: $ods-input-range-size-thumb;
+  pointer-events: auto;
 }
 
 @mixin thumb-hover-active() {
@@ -146,7 +148,7 @@ $range-background-color: var(--ods-color-neutral-300);
   .ods-range__range {
     position: absolute;
     z-index: 2;
-    margin-top: $ods-input-range-height;
+    margin-top: 6px;
     height: 0;
   }
 }

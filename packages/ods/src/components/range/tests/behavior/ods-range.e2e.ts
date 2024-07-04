@@ -73,6 +73,34 @@ describe('ods-range behavior', () => {
     });
   });
 
+  describe('values overtake', () => {
+    it('should change value on dual but not lower then primary value', async() => {
+      const primaryValue = 70;
+      await setup('<ods-range></ods-range>', { value: [primaryValue - 1, primaryValue] });
+
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('ArrowUp');
+      await page.keyboard.press('ArrowUp');
+      await page.waitForChanges();
+
+      expect((await el.getProperty('value'))?.[0]).toBe(primaryValue);
+      expect((await el.getProperty('value'))?.[1]).toBe(primaryValue);
+    });
+
+    it('should change value on dual but not upper then secondary value', async() => {
+      const secondaryValue = 70;
+      await setup('<ods-range></ods-range>', { value: [secondaryValue, secondaryValue + 1] });
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
+      await page.waitForChanges();
+
+      expect((await el.getProperty('value'))?.[0]).toBe(secondaryValue);
+      expect((await el.getProperty('value'))?.[1]).toBe(secondaryValue);
+    });
+  });
+
   describe('change:min&max', () => {
     it('should change value with max inf value', async() => {
       await setup('<ods-range min="0" max="100" value="50"></ods-range>');

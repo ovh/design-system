@@ -29,6 +29,7 @@ export class OdsPagination {
   @State() current: number = 1;
 
   @Prop({ reflect: true }) public defaultCurrentPage: number = 1;
+  /** @docType OdsPaginationPerPage */
   @Prop({ reflect: true }) public defaultItemsPerPage: ODS_PAGINATION_PER_PAGE = ODS_PAGINATION_PER_PAGE.min;
   @Prop({ reflect: true }) public isDisabled: boolean = false;
   @Prop({ reflect: true }) public labelTooltipNext?: string;

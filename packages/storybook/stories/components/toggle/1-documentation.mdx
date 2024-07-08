@@ -1,0 +1,124 @@
+import { Canvas, Markdown, Meta } from '@storybook/blocks';
+import { Banner } from '../../banner';
+import * as ToggleStories from './toggle.stories';
+import { OdsIcon } from '@ovhcloud/ods-components/react';
+import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
+
+<Meta of={ ToggleStories } name='Documentation' />
+
+<Banner of={ ToggleStories } />
+
+_A **Toggle** component is used to allow the user to switch between two states, on and off, in a visual representation._
+
+<Canvas of={ ToggleStories.Default } sourceState='none' />
+
+## Overview
+<div>
+  <div id='description'>
+    The **Toggle** component is used to enable or disable a setting or feature.
+
+    It provides a clear visual indication of the current state and allows users to change states with a single click or
+    tap.
+
+    **Toggles** are commonly used in settings, preferences, and forms where a binary choice is required.
+  </div>
+  <table>
+    <tbody>
+    <tr>
+      <th scope="row">Name</th>
+      <td><strong>Toggle</strong></td>
+    </tr>
+    <tr>
+      <th scope="row">Also known as</th>
+      <td><em>Toggle Switch, Switch</em></td>
+    </tr>
+    <tr>
+      <th scope="row">Atomic type</th>
+      <td>
+        <a href='https://atomicdesign.bradfrost.com/chapter-2/#atoms'>Atom<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Related component(s)</th>
+      <td>
+        [**Checkbox**](?path=/docs/ods-components-form-checkbox--documentation)
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Links</th>
+      <td>
+        <a href='https://www.figma.com/proto/tIKzHa5KvHHyosgIgyBswB/Design-Tokens'>Design<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a><br />
+        <a href='https://github.com/ovh/design-system/tree/master/packages/components/src/toggle'>Github<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+## Anatomy
+
+![Component anatomy](components/toggle/anatomy.png "Component anatomy")
+
+1. **Thumb**: informs the user about the **Toggle**'s state according to its position
+2. **Track**: trail where the thumb can slide from left to right and vice versa
+3. **Textual indication**: add extra info about the **Toggle**'s state _(optional)_
+
+## Usage
+
+A **Toggle** is commonly used for binary choice.
+
+The user can decide to switch between two states with an immediate effect visible at a glance.
+
+It can be used in following use cases when you need to allow the user to:
+- turn an option or settings on or off
+- add or remove an item or an option
+
+A **Toggle** should never require users to press a [**Button**](?path=/docs/ods-components-actions-button--documentation) to apply their settings (if a setting requires a [**Button**](?path=/docs/ods-components-actions-button--documentation), use a [**Checkbox**](?path=/docs/ods-components-form-checkbox--documentation) instead).
+
+### Dos & Don'ts
+
+<Markdown>
+  { `
+| ✅ Do                                                                                                                                                                           |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| - Use a **Toggle** when you need to allow users to adjust settings on mobile                                                                                                   |
+| - A **Toggle** can be used in a form when it has an immediate effect inside the form to avoid a failed selection when submitted                                                |
+| - When other elements are displayed by clicking on the **Toggle**, make sure that these elements are located next to the **Toggle** so it is clear to the user.                |
+| - Add a label to the **Toggle** that explains what will happen when the user set it to "on" or "off" position: keep it clear and concise.                                      |
+` }
+</Markdown>
+<Markdown>
+  { `
+| ❌ Don't                                                                                                                                                                               |
+|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------      |
+| - Use a **Toggle** when you are not expecting an immediate effect by clicking on it: use a [**Checkbox**](?path=/docs/ods-components-form-checkbox--documentation) component instead. |
+` }
+</Markdown>
+
+## Placement
+
+Place the **Toggle** component near the setting or feature it controls.
+
+It should be positioned within forms, settings panels, or any relevant context where a binary choice is required.
+
+Ensure it is easily accessible and visible.
+
+## Behavior
+
+When the user clicks on a **Toggle**, it has an immediate effect:
+- set to "on" position, the thumb will slide to the right of the track
+- set to "off" position, the thumb will slide to the left of the track
+
+## Variants
+
+N/A
+
+## Accessibility
+
+When focused, **Toggle** can be triggered using `Space` or `Enter` keys.

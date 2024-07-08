@@ -1,0 +1,126 @@
+import { Canvas, Markdown, Meta } from '@storybook/blocks';
+import { Banner } from '../../banner';
+import * as TableStories from './table.stories';
+import { OdsIcon } from '@ovhcloud/ods-components/react';
+import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
+
+<Meta of={ TableStories } name='Documentation' />
+
+<Banner of={ TableStories } />
+
+_A component to display data in a tabular format._
+
+<Canvas of={ TableStories.Default } sourceState='none' />
+
+## Overview
+<div>
+  <div id='description'>
+
+  </div>
+  <table>
+    <tbody>
+    <tr>
+      <th scope="row">Name</th>
+      <td><strong>Table</strong></td>
+    </tr>
+    <tr>
+      <th scope="row">Also known as</th>
+      <td><em>-</em></td>
+    </tr>
+    <tr>
+      <th scope="row">Atomic type</th>
+      <td>
+        <a href='https://atomicdesign.bradfrost.com/chapter-2/#organisms'>Organism<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Related component(s)</th>
+      <td>
+        [**Text**](?path=/docs/ods-components-content-tag--documentation),
+        [**Icon**](?path=/docs/ods-components-content-icon--documentation),
+        [**Badge**](?path=/docs/ods-components-content-badge--documentation),
+        [**Button**](?path=/docs/ods-components-actions-button--documentation),
+        [**Tooltip**](?path=/docs/ods-components-user-feedback-tooltip--documentation),
+        [**Link**](?path=/docs/ods-components-actions-link--documentation),
+        [**Medium**](?path=/docs/ods-components-content-medium--documentation)
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Links</th>
+      <td>
+        <a href='https://www.figma.com/proto/tIKzHa5KvHHyosgIgyBswB/Design-Tokens'>Design<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a><br />
+        <a href='https://github.com/ovh/design-system/tree/master/packages/components/src/table'>Github<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+## Anatomy
+
+![Component anatomy](components/table/anatomy.png "Component anatomy")
+
+1. **Header** : Header cells of each column. Each header cell contains a [**Text**](?path=/docs/ods-components-content-tag--documentation), and can contain an additional icon [**Button**](?path=/docs/ods-components-actions-button--documentation) helper with [**Tooltip**](?path=/docs/ods-components-user-feedback-tooltip--documentation).
+2. **Body** : Main content for data visualization. Each cell can contain diverse components, such as [**Text**](?path=/docs/ods-components-content-tag--documentation), and other elements such as [**Badge**](?path=/docs/ods-components-content-badge--documentation), [**Icon**](?path=/docs/ods-components-content-icon--documentation), [**Link**](?path=/docs/ods-components-actions-link--documentation), [**Tooltip**](?path=/docs/ods-components-user-feedback-tooltip--documentation), **Flag**, [**Medium**](?path=/docs/ods-components-content-medium--documentation).
+
+## Usage
+
+
+### Dos & Don'ts
+
+<Markdown>
+  { `
+| ✅ Do                                                                                                                                                                           |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| - Use a **Table** to make content easier to read.                                                                                                                              |
+| - Use **Table** component for small amounts of data that can be displayed in a simple format.                                                                                  |
+| - Structure the data with useful columns (we recommend up to 9 columns).                                                                                                       |
+| - Use clear and concise headers. If a header is too complex, use a description (via a [**Tooltip**](?path=/docs/ods-components-user-feedback-tooltip--documentation)).         |
+| - When data or content is loading in a cell, replace its content with a [**Skeleton**](?path=/docs/ods-components-content-skeleton--documentation).                            |
+` }
+</Markdown>
+<Markdown>
+  { `
+| ❌ Don't                                                                                                                                                                          |
+|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| - Use **Table** component for layout purposes.                                                                                                                                   |
+| - Use **Table** when there is a need to display large sets of data (more than 30 rows).                                                                                          |
+` }
+</Markdown>
+
+## Placement
+
+**Table** component should always fit in its container.
+
+On the contrary, if **Table** is wider than the container (especially in mobile devices), user should be able to scroll horizontally in this container.
+
+Header height is minimum 48px by default.
+
+Body cells height is set to minimum 48px by default but, it can adjust its size, height and width, based on its content.
+
+## Behavior
+
+**Table** component acts like native HTML table. It dynamically sizes column widths and row heights based on content and available space.
+
+By default, **Table** rows height is minimum 48px. When an element is too large in a cell, the row height will adjust based on this element. It is possible to add a new line in a cell.
+
+## Variants
+
+### Sizes
+
+- **Small**: displaying compact data sets in limited spaces, making efficient use of the available area without overwhelming the user.
+- **Large**: presenting extensive data sets with more detailed information, often featuring more columns and rows to provide comprehensive visibility of the data.
+
+### Variations
+
+- **Striped**: improving readability by using alternating row colors to distinguish between consecutive rows of data, making it easier for users to follow and interpret the information. We recommend to use this variant when there are more than 10 rows in the **Table**.
+
+## Accessibility
+
+**Table** component acts the same way as the native `<table>` component.

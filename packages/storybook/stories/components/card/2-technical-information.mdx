@@ -1,0 +1,33 @@
+import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import SpecificationsCard from '@ovhcloud/ods-components/src/components/card/documentation/spec.md?raw';
+import { Banner } from '../../banner';
+import * as CardStories from './card.stories';
+
+<Meta of={ CardStories } name='Technical information' />
+
+<Banner of={ CardStories } />
+
+## Overview
+
+<Canvas of={ CardStories.Overview } sourceState='none' />
+
+<Markdown>{ SpecificationsCard }</Markdown>
+
+## Style customization
+
+You can add your own style on the card element directly by selecting it.
+
+Custom CSS:
+
+<Canvas of={ CardStories.CustomCSS } sourceState='shown'/>
+
+## Examples
+
+### Slot
+
+<Canvas of={ CardStories.Slot } sourceState='shown' />
+
+### Color
+<Canvas of={ CardStories.Color } sourceState='shown' />
+
+...

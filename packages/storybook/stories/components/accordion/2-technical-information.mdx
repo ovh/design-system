@@ -1,0 +1,34 @@
+import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import SpecificationsAccordion from '@ovhcloud/ods-components/src/components/accordion/documentation/spec.md?raw';
+import { Banner } from '../../banner';
+import * as AccordionStories from './accordion.stories';
+
+<Meta of={ AccordionStories } name='Technical information' />
+
+<Banner of={ AccordionStories } />
+
+## Overview
+
+<Canvas of={ AccordionStories.Overview } sourceState='none' />
+
+<Markdown>{ SpecificationsAccordion }</Markdown>
+
+## Style customization
+
+You can add your own style on the accordion element using the parts `accordion`, `summary` and `content`.
+
+Custom CSS:
+
+<Canvas of={ AccordionStories.CustomCSS } sourceState='shown' />
+
+## Examples
+
+### Default
+
+<Canvas of={ AccordionStories.Default } sourceState='shown' />
+
+### Open
+<Canvas of={ AccordionStories.Open } sourceState='shown' />
+
+### Disabled
+<Canvas of={ AccordionStories.Disabled } sourceState='shown' />

@@ -1,0 +1,201 @@
+import { Canvas, Markdown, Meta } from '@storybook/blocks';
+import { Banner } from '../../banner';
+import * as FileUploadStories from './file-upload.stories';
+import { OdsIcon } from '@ovhcloud/ods-components/react';
+import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
+
+<Meta of={ FileUploadStories } name='Documentation' />
+
+<Banner of={ FileUploadStories } />
+
+_**File Upload** allows users to select one or more files to upload to a specific location._
+
+<Canvas of={ FileUploadStories.Overview } sourceState='none' />
+
+## Overview
+<div>
+  <div id='description'>
+    The **File Upload** component is used to enable users to upload files to a server or application.
+
+    It provides a way to browse, select, and upload files, and is accompanied by progress indicators and feedback
+    messages to guide users through the process.
+  </div>
+
+  <table>
+    <tbody>
+    <tr>
+      <th scope="row">Name</th>
+      <td><strong>File Upload</strong></td>
+    </tr>
+    <tr>
+      <th scope="row">Also known as</th>
+      <td><em>File input, File uploader, Dropzone</em></td>
+    </tr>
+    <tr>
+      <th scope="row">Atomic type</th>
+      <td>
+        <a href='https://atomicdesign.bradfrost.com/chapter-2/#organisms'>Organism<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Related component(s)</th>
+      <td>
+        [**Icon**](?path=/docs/ods-components-content-icon--documentation),
+        [**Button**](?path=/docs/ods-components-actions-button--documentation),
+        [**Divider**](?path=/docs/ods-components-layout-divider--documentation), [**Progress
+        Bar**](?path=/docs/ods-components-user-feedback-progress-bar--documentation),
+        [**Text**](?path=/docs/ods-components-content-tag--documentation)
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Links</th>
+      <td>
+        <a href='https://www.figma.com/proto/tIKzHa5KvHHyosgIgyBswB/Design-Tokens'>Design<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a><br />
+        <a href='https://github.com/ovh/design-system/tree/master/packages/components/src/file-upload'>Github<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+## Anatomy
+
+![Component anatomy](components/file-upload/anatomy.png "Component anatomy")
+
+1. A decorative [**Icon**](?path=/docs/ods-components-content-icon--documentation) (optional)
+2. A [**Text**](?path=/docs/ods-components-content-tag--documentation) as title
+3. A [**Text**](?path=/docs/ods-components-content-tag--documentation) explaining formats
+4. [**Button**](?path=/docs/ods-components-actions-button--documentation) to trigger upload dialog
+5. A drop zone: the File component itself
+6. A `file` [**Icon**](?path=/docs/ods-components-content-icon--documentation) and a [**Text**](?path=/docs/ods-components-content-tag--documentation) displaying the uploading file name and its weight
+7. A `close` icon [**Button**](?path=/docs/ods-components-actions-button--documentation) to interrupt the file uploading or remove the uploaded file
+8. A [**Progress Bar**](?path=/docs/ods-components-user-feedback-progress-bar--documentation) to indicate how the **File upload** is progressing
+9. A success [**Text**](?path=/docs/ods-components-content-tag--documentation) with `check` [**Icon**](?path=/docs/ods-components-content-icon--documentation) to indicate that the file has been uploaded
+10. An `error` [**Text**](?path=/docs/ods-components-content-tag--documentation) to indicate something went wrong with the **File upload**
+
+## Usage
+
+Use the **File Upload** component when you need users to submit files, such as documents, images, or other data.
+
+Common use cases include form submissions, profile picture updates, and document management systems.
+
+### Dos & Don'ts
+
+<Markdown>
+  { `
+| ✅ Do                                                                                                                                                                           |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| - Use one **File Upload** component for plural file upload inside a single page                                                                                                |
+| - Use a helper with **Form Field** to inform users when the number of files to upload is limited                                                                               |
+| - Use short and concise success message                                                                                                                                        |
+| - Explain clearly the error context when an error occurred                                                                                                                     |
+` }
+</Markdown>
+<Markdown>
+  { `
+| ❌ Don't                                                                                                                                                                          |
+|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| - Use **File Upload** component in a [**Modal**](?path=/docs/ods-components-user-feedback-modal--documentation)                                                                  |
+` }
+</Markdown>
+
+## Placement
+
+**File Upload** component can be part of a complex form, or displayed as a standalone.
+
+**File Upload** has an automatic default width, based on its content.
+
+## Behavior
+### Selecting files
+
+
+When selecting the browsing [**Button**](?path=/docs/ods-components-actions-button--documentation), the native file selection popup opens to retrieve the needed file to upload.
+
+### Drag & Drop
+
+
+User can drag & drop a file, the drop zone being the whole **File Upload** component.
+
+### Uploading files
+#### With known size
+
+
+When a file upload is in progress, the file name and its size are displayed.
+
+A [**Progress Bar**](?path=/docs/ods-components-user-feedback-progress-bar--documentation) with its percentage is displayed to indicate how the upload is progressing. It remains visible as long as the file uploading is not finished yet.
+
+A close icon [**Button**](?path=/docs/ods-components-actions-button--documentation) is displayed as soon as a file upload is in progress. It is displayed as long as the user does not interrupt the upload or removes an already uploaded file.
+
+#### With unknown size
+
+
+In some situations, file size is hidden in the uploading process due to an unknown file size.
+
+### Upload complete
+#### With success
+
+
+A `success` [**Text**](?path=/docs/ods-components-content-tag--documentation) is displayed, replacing the previous [**Progress Bar**](?path=/docs/ods-components-user-feedback-progress-bar--documentation), as soon as a file has been uploaded, meaning the upload is successful and complete.
+
+#### With error
+
+
+If the uploading of a file went wrong, a specific `error` [**Text**](?path=/docs/ods-components-content-tag--documentation) is displayed below the uploaded file.
+
+The user is still able to upload another file but the `error` [**Text**](?path=/docs/ods-components-content-tag--documentation) will persist until user removes the file in `error`.
+
+When several files are in `error`, there will be an accumulation of `error` messages, each below its related file.
+
+When a file is in `error` and the user uploads a file without any issue, success [**Text**](?path=/docs/ods-components-content-tag--documentation) is triggered as expected below this file but, the `error` [**Text**](?path=/docs/ods-components-content-tag--documentation) persists below the file in error.
+
+Depending on the error, the global component can be displayed in an error state.
+
+### Extra behavior
+#### Global configuration / error
+
+Number of files, maximum sizes and expected formats can be set globally inside the component.
+
+
+A global `error` [**Text**](?path=/docs/ods-components-content-tag--documentation) and a [**Divider**](?path=/docs/ods-components-layout-divider--documentation) are displayed when:
+* Wrong file format has been uploaded
+* Maximum file size exceeded
+* Maximum number of files exceeded
+
+The global component is displayed in an error state in this situation.
+
+#### Disabled
+
+
+When **File Upload** is disabled, user cannot interact with the [**Button**](?path=/docs/ods-components-actions-button--documentation) and drag & drop feature is not available.
+
+#### Cancel a file upload in progress
+
+A click or press on the `close` icon [**Button**](?path=/docs/ods-components-actions-button--documentation) interrupts the upload (or cancel an uploaded file).
+
+When the upload is canceled, the file upload is removed and the **File Upload** component returns to its default state, except for any other files in the queue.
+
+In case some other files have already been uploaded, and the user cancels an uploading file, the next one will take its place in the queue and so on.
+
+#### Remove an already uploaded file
+
+An already uploaded file can be removed by clicking or pressing the `close` icon [**Button**](?path=/docs/ods-components-actions-button--documentation) anytime.
+
+Same as cancelling a file while it is uploading, if several files have already been uploaded and the user cancels an uploading file, the next one will take its place in the queue and so on.
+
+## Variants
+
+N/A
+
+## Accessibility
+
+`Tab` key permits to focus on the inner [**Button**](?path=/docs/ods-components-actions-button--documentation) element in the File Upload.
+
+`Enter`/`Space` while this [**Button**](?path=/docs/ods-components-actions-button--documentation) is focused trigger the native file upload dialog.
+
+You can also tabulate throughout all `close` icon [**Button**](?path=/docs/ods-components-actions-button--documentation) of uploaded files.

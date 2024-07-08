@@ -1,0 +1,35 @@
+import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import SpecificationsProgressBar from '@ovhcloud/ods-components/src/components/progress-bar/documentation/spec.md?raw';
+import { Banner } from '../../banner';
+import * as ProgressBarStories from './progress-bar.stories';
+
+<Meta of={ ProgressBarStories } name='Technical information' />
+
+<Banner of={ ProgressBarStories } />
+
+## Overview
+
+<Canvas of={ ProgressBarStories.Value } sourceState='none' />
+
+<Markdown>{ SpecificationsProgressBar }</Markdown>
+
+## Style customization
+
+You can add your own style on the progress-bar element using the part `progress`.
+
+Custom CSS:
+
+<Canvas of={ ProgressBarStories.CustomCSS } sourceState='shown'/>
+
+## Examples
+
+### Default
+
+<Canvas of={ ProgressBarStories.Default } sourceState='shown' />
+
+### Max
+<Canvas of={ ProgressBarStories.Max } sourceState='shown' />
+
+### Value
+<Canvas of={ ProgressBarStories.Value } sourceState='shown' />
+

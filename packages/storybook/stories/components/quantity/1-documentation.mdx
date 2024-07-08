@@ -1,0 +1,122 @@
+import { Canvas, Markdown, Meta } from '@storybook/blocks';
+import { Banner } from '../../banner';
+import * as QuantityStories from './quantity.stories';
+import { OdsIcon } from '@ovhcloud/ods-components/react';
+import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
+
+<Meta of={ QuantityStories } name='Documentation' />
+
+<Banner of={ QuantityStories } />
+
+_**Quantity** is a component used to enter and modify a numeric value in a responsive and easy way_
+
+<Canvas of={ QuantityStories.Default } sourceState='none' />
+
+## Overview
+<div>
+  <div id='description'>
+    The **Quantity** component provides a user-friendly interface for selecting or entering numerical values.
+
+    It includes an [**Input**](?path=/docs/ods-components-form-input--documentation) field combined with increment and
+    decrement [**Button**](?path=/docs/ods-components-actions-button--documentation) to adjust the value easily.
+  </div>
+  <table>
+    <tbody>
+    <tr>
+      <th scope="row">Name</th>
+      <td><strong>Quantity</strong></td>
+    </tr>
+    <tr>
+      <th scope="row">Also known as</th>
+      <td><em>Numeric, Number input, Amount</em></td>
+    </tr>
+    <tr>
+      <th scope="row">Atomic type</th>
+      <td>
+        <a href='https://atomicdesign.bradfrost.com/chapter-2/#molecules'>Molecule<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Related component(s)</th>
+      <td>
+        [**Button**](?path=/docs/ods-components-actions-button--documentation),
+        [**Icon**](?path=/docs/ods-components-content-icon--documentation),
+        [**Input**](?path=/docs/ods-components-form-input--documentation), [**Form
+        Field**](?path=/docs/ods-components-form-form-field--documentation)
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Links</th>
+      <td>
+        <a href='https://www.figma.com/proto/tIKzHa5KvHHyosgIgyBswB/Design-Tokens'>Design<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a><br />
+        <a href='https://github.com/ovh/design-system/tree/master/packages/components/src/quantity'>Github<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+## Anatomy
+
+![Component anatomy](components/quantity/anatomy.png "Component anatomy")
+
+1. **"Minus" icon Button**: allow users to decrease the value displayed in the numeric field
+2. **Numeric Input**: display or type a value (equal to a quantity)
+3. **"Plus" icon Button**: allow users to increase the value displayed in the numeric field
+
+## Usage
+
+**Quantity** is used to quickly adjust with a few clicks a numeric value within defined parameters.
+
+Limits can be set as minimum or maximum value. In that case, the numeric value cannot be less and more than that minimum and maximum.
+
+### Dos & Don'ts
+
+<Markdown>
+  { `
+| ✅ Do                                                                                                                                                                           |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| - Use **Quantity** for small value changes that require only a few clicks                                                                                                      |
+| - Be sure sure that the user can choose to type directly a number in the field                                                                                                 |
+` }
+</Markdown>
+<Markdown>
+  { `
+| ❌ Don't                                                                                                                                                                          |
+|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| - A **Quantity** by itself displays a number: don't use it in any other context than displaying a quantity                                                                       |
+| - Use **Quantity** for large value changes                                                                                                                                       |
+` }
+</Markdown>
+
+## Placement
+
+**Quantity** can be used to let users easily change an amount of items, for example, or similar situations.
+
+It should be used with numeric [**Input**](?path=/docs/ods-components-form-input--documentation) that are in a fairly narrow range.
+
+## Behavior
+
+**Quantity** numeric field can be edited directly by the user.
+
+The user can also decrease or increase the value by clicking on [**Button**](?path=/docs/ods-components-actions-button--documentation).
+
+In case that limits have been set to minimum and maximum value, corresponding control will be disabled when this value has been reached.
+
+Each item of the **Quantity** component can be focused; the whole component can be disabled at once.
+
+## Variants
+
+N/A
+
+## Accessibility
+
+[**Input**](?path=/docs/ods-components-form-input--documentation) and [**Button**](?path=/docs/ods-components-actions-button--documentation) accessibility features avail here, with former tabulation and triggers.
+
+The numeric field value can be increased/decreased using `Up` and `Down` arrows when focused.

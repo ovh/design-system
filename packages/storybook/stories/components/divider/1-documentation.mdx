@@ -1,0 +1,109 @@
+import { Markdown, Meta } from '@storybook/blocks';
+import { Banner } from '../../banner';
+import * as DividerStories from './divider.stories';
+import { OdsIcon } from '@ovhcloud/ods-components/react';
+import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
+
+<Meta of={ DividerStories } name='Documentation' />
+
+<Banner of={ DividerStories } />
+
+_A **Divider** component is a spacer used to add white space between two elements on a page._
+
+## Overview
+<div>
+  <div id='description'>
+    A **Divider** is a UI component used to separate content into clear, distinct sections, providing visual breaks
+    between different elements or groups of content.
+  </div>
+  <table>
+    <tbody>
+    <tr>
+      <th scope="row">Name</th>
+      <td><strong>Divider</strong></td>
+    </tr>
+    <tr>
+      <th scope="row">Also known as</th>
+      <td><em>Separator, Spacer, Horizontal Line</em></td>
+    </tr>
+    <tr>
+      <th scope="row">Atomic type</th>
+      <td>
+        <a href='https://bradfrost.com/blog/post/extending-atomic-design/'>Quark<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Related component(s)</th>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th scope="row">Links</th>
+      <td>
+        <a href='https://www.figma.com/proto/tIKzHa5KvHHyosgIgyBswB/Design-Tokens'>Design<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a><br/>
+        <a href='https://github.com/ovh/design-system/tree/master/packages/components/src/divider'>Github<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+## Anatomy
+
+![Component anatomy](components/divider/anatomy.png "Component anatomy")
+
+1. A white space
+2. A styled, horizontal line separator
+
+## Usage
+
+**Divider** is used to separate content on a page.
+
+It brings clarity to a layout by dividing content in proximity.
+
+### Dos & Don'ts
+
+<Markdown>
+  { `
+| ✅ Do                                                                                                                                                                           |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| - Use **Divider** to separate two elements.                                                                                                                                    |
+| - Use a **Divider** as a substitute for styled semantic sectioning HTML (for example borders).                                                                           |
+| - A **Divider** with a line separator might be used below a header / a section title.                                                                                          |
+` }
+</Markdown>
+
+<Markdown>
+  { `
+| ❌ Don't                                                                                                                                                                          |
+|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| - Use a **Divider** with a line separator above a header / a section title.                                                                                                |
+| - Use **Divider** sparingly on a page.                                                                                                                                           |
+| - Overuse **Divider** on a page, so it won't create unnecessary noise.                                                                                                     |
+` }
+</Markdown>
+
+## Placement
+
+The **Divider** has to be used to create a separation between two elements and to separate the contents of a page.
+
+The **Divider** can also be used inside components to create separation between a set of sections.
+
+## Behavior
+
+N/A
+
+## Variants
+
+The horizontal line separator has a fixed height of 1 pixel.
+
+Space around **Divider** can be defined in a referential from "0" to "10", depending on the spacing required between two elements.
+
+## Accessibility
+
+N/A

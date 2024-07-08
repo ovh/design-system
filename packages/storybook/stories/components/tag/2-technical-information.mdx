@@ -1,0 +1,48 @@
+import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import SpecificationsTag from '@ovhcloud/ods-components/src/components/tag/documentation/spec.md?raw';
+import { Banner } from '../../banner';
+import * as TagStories from './tag.stories';
+
+<Meta of={ TagStories } name='Technical information' />
+
+<Banner of={ TagStories } />
+
+## Overview
+
+<Canvas of={ TagStories.Default } sourceState='none' />
+
+<Markdown>{ SpecificationsTag }</Markdown>
+
+## Style customization
+
+You can add your own style on the tag element using the part `tag`.
+
+Custom CSS :
+
+<Canvas of={ TagStories.CustomCSS } sourceState='shown'/>
+
+## Examples
+
+### Default
+
+<Canvas of={ TagStories.Default } sourceState='shown' />
+
+### Color
+
+<Canvas of={ TagStories.Color } sourceState='shown' />
+
+### Is Disabled
+
+<Canvas of={ TagStories.IsDisabled } sourceState='shown' />
+
+### Shape
+
+<Canvas of={ TagStories.Shape } sourceState='shown' />
+
+### Size
+
+<Canvas of={ TagStories.Size } sourceState='shown' />
+
+### Variant
+
+<Canvas of={ TagStories.Variant } sourceState='shown' />

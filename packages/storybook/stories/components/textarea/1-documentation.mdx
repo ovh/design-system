@@ -1,0 +1,116 @@
+import { Canvas, Markdown, Meta } from '@storybook/blocks';
+import { Banner } from '../../banner';
+import * as TextareaStories from './textarea.stories';
+import { OdsIcon } from '@ovhcloud/ods-components/react';
+import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
+
+<Meta of={ TextareaStories } name='Documentation' />
+
+<Banner of={ TextareaStories } />
+
+_A **Textarea** component allows users to input and edit multiple lines of text._
+
+<Canvas of={ TextareaStories.Default } sourceState='none' />
+
+## Overview
+<div>
+  <div id='description'>
+    The **Textarea** component is used to capture and display multi-line text input from users.
+
+    It is typically used in forms where users need to provide detailed information, comments, or descriptions.
+  </div>
+  <table>
+    <tbody>
+    <tr>
+      <th scope="row">Name</th>
+      <td><strong>Textarea</strong></td>
+    </tr>
+    <tr>
+      <th scope="row">Also known as</th>
+      <td><em>Text Box</em></td>
+    </tr>
+    <tr>
+      <th scope="row">Atomic type</th>
+      <td>
+        <a href='https://atomicdesign.bradfrost.com/chapter-2/#atoms'>Atom<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Related component(s)</th>
+      <td>
+        [**Tag**](?path=/docs/ods-components-content-tag--documentation)
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Links</th>
+      <td>
+        <a href='https://www.figma.com/proto/tIKzHa5KvHHyosgIgyBswB/Design-Tokens'>Design<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a><br />
+        <a href='https://github.com/ovh/design-system/tree/master/packages/components/src/textarea'>Github<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+## Anatomy
+
+![Component anatomy](components/textarea/anatomy.png "Component anatomy")
+
+1. **Placeholder** : provide hints or example of what to type
+2. **Main container**
+3. **Resize native icon** (optional)
+4. **Scrollbar** : when filled content is longer than its container (optional)
+
+## Usage
+
+Use the **Textarea** component to allow users to enter multi-line text in forms, such as comments, messages, descriptions, or other detailed information.
+
+Ensure that the **Textarea** is appropriately sized for the expected input and provides clear guidance on what information is needed.
+
+### Dos & Don'ts
+<Markdown>
+  { `
+| ✅ Do                                                                                                                                                                           |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| - Use **Textarea** for a text longer than a single line.                                                                                                                       |
+| - Use a [**Form Field**](?path=/docs/ods-components-form-form-field--documentation) label (and/or an helper) to clearly inform what information the user should type.          |
+` }
+</Markdown>
+<Markdown>
+  { `
+| ❌ Don't                                                                                                                                                                          |
+|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| - Use **Textarea** for shorter text.                                                                                                                                             |
+| - Use a placeholder as replacement for a [**Form Field**](?path=/docs/ods-components-form-form-field--documentation) label.                                                      |
+` }
+</Markdown>
+
+## Placement
+
+**Textarea** is used in a form when the expected user text is long.
+
+## Behavior
+
+**Textarea** can be hovered, focused, disabled or read only.
+
+**When disabled**, the component cannot be focused nor clicked.
+
+When the user types an amount of **text longer than Textarea** container itself, a scrollbar is displayed.
+
+**Textarea** is optionally resizable: user can expand its container.
+
+An event is triggered when the **Textarea** value changes, and on user focusing in and out of the component.
+
+## Variants
+
+N/A
+
+## Accessibility
+
+`Tab` permits to focus on **Textarea**.

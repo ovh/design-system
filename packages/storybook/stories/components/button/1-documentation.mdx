@@ -1,0 +1,132 @@
+import { Canvas, Markdown, Meta } from '@storybook/blocks';
+import { Banner } from '../../banner';
+import * as ButtonStories from './button.stories';
+import { OdsIcon } from '@ovhcloud/ods-components/react';
+import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
+
+<Meta of={ ButtonStories } name='Documentation' />
+
+<Banner of={ ButtonStories } />
+
+_A **Button** component aims to initiate an action. Its [**Text**](?path=/docs/ods-components-content-tag--documentation) indicates the related intent, its aspect describes the importance and influence level._
+
+<Canvas of={ ButtonStories.Default } sourceState='none' />
+
+## Overview
+
+<div>
+  <div id='description'>
+    **Buttons** are trigger-able elements that are used to set actions. They communicate calls to action to the user and
+    allow them to interact with pages.
+
+    **Button** labels express explicitly what action will occur when the user interacts with it. Its aspect describes
+    the importance and influence level.
+
+    This component exists in many ways : variants, sizes and colors.
+  </div>
+
+  <table>
+    <tbody>
+    <tr>
+      <th scope="row">Name</th>
+      <td><strong>Button</strong></td>
+    </tr>
+    <tr>
+      <th scope="row">Also known as</th>
+      <td><em>Call To Action, CTA</em></td>
+    </tr>
+    <tr>
+      <th scope="row">Atomic type</th>
+      <td>
+        <a href='https://atomicdesign.bradfrost.com/chapter-2/#atoms'>Atom<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Related component(s)</th>
+      <td>
+        [**Icon**](?path=/docs/ods-components-content-icon--documentation)
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Links</th>
+      <td>
+        <a href='https://www.figma.com/proto/tIKzHa5KvHHyosgIgyBswB/Design-Tokens'>Design<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a><br />
+        <a href='https://github.com/ovh/design-system/tree/master/packages/components/src/button'>Github<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+
+## Anatomy
+
+![Component anatomy](components/button/anatomy.png "Component anatomy")
+
+## Usage
+
+**Buttons** are mainly used for actions, like adding, removing, validation, etc.
+They are used to permit users to interact with the page or its content.
+
+**Buttons** work with other elements on a screen to **surface the most important actions the user wants to take in that context**.
+**They must respect the proximity law** in order to guide the user on the action to be performed and the expected result.
+A **Button** label indicates what happens when the user taps the **Button**, even if it's just to acknowledge something.
+
+**Buttons**don't usually redirect on an external page. For that, see [**Link**](?path=/docs/ods-components-actions-link--documentation).
+
+### Dos & Don'ts
+
+<Markdown>
+  { `
+| ✅ Do                                                                                                                                                                           |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| - Group a main with a secondary Button for page actions.                                                                                                                       |
+| - At least one primary **Button** must be present per page in order to present the main action.                                                                                |
+` }
+</Markdown>
+
+<Markdown>
+  { `
+| ❌ Don't                                                                                                                                                                                                           |
+|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------                                  |
+| - Use **Buttons** as [**Link**](?path=/docs/ods-components-actions-link--documentation) (using the ghost variant), prefer using the [**Link**](?path=/docs/ods-components-actions-link--documentation) component. |
+| - Put two identical **Buttons** side by side.                                                                                                                                                                     |
+| - Use success/error variants for other needs than validation/cancel.                                                                                                                                              |
+` }
+</Markdown>
+
+## Placement
+The **Button** component has an automatic width regarding its context.
+
+By default, the **Button** content is centered in its container.
+
+## Behavior
+
+A **Button** can be hovered, focused, clicked and disabled.
+
+When in disabled state, it is impossible to focus or click on it. A "disabled" cursor is shown when hovering the disabled component.
+
+## Variants
+
+### Colors
+
+- **Critical**: alerts users to high-priority actions or warnings that require immediate attention.
+
+### Variations
+
+- **Outline**: secondary actions, featuring a transparent background with a visible border to signify less emphasis than primary buttons.
+- **Ghost**: tertiary or less prominent actions, blending into the background with minimal styling until hovered or focused to reduce visual dominance.
+
+### Sizes
+
+- **Small**: actions in compact spaces or within densely packed interfaces, providing a more subtle and space-efficient option.
+
+## Accessibility
+
+When focusing the **Button**, pressing Enter or Space keys will trigger it.

@@ -1,0 +1,124 @@
+import { Canvas, Markdown, Meta } from '@storybook/blocks';
+import { Banner } from '../../banner';
+import * as ClipboardStories from './clipboard.stories';
+import { OdsIcon } from '@ovhcloud/ods-components/react';
+import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
+
+<Meta of={ ClipboardStories } name='Documentation' />
+
+<Banner of={ ClipboardStories } />
+
+_**Clipboard** component allows user to preview and copy crucial information to its **Clipboard**._
+
+<Canvas of={ ClipboardStories.Default } sourceState='none' />
+
+## Overview
+<div>
+  <div id='description'>
+    **Clipboard** component is used to copy quickly and easily a text, a link and more to the **Clipboard**.
+  </div>
+
+  <table>
+    <tbody>
+    <tr>
+      <th scope="row">Name</th>
+      <td><strong>Clipboard</strong></td>
+    </tr>
+    <tr>
+      <th scope="row">Also known as</th>
+      <td><em>Copy Component, Copy to Clipboard</em></td>
+    </tr>
+    <tr>
+      <th scope="row">Atomic type</th>
+      <td>
+        <a href='https://atomicdesign.bradfrost.com/chapter-2/#atoms'>Atom<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Related component(s)</th>
+      <td>
+        [**Input**](?path=/docs/ods-components-form-input--documentation),
+        [**Button**](?path=/docs/ods-components-actions-button--documentation),
+        [**Tooltip**](?path=/docs/ods-components-user-feedback-tooltip--documentation)
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Links</th>
+      <td>
+        <a href='https://www.figma.com/proto/tIKzHa5KvHHyosgIgyBswB/Design-Tokens'>Design<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a><br />
+        <a href='https://github.com/ovh/design-system/tree/master/packages/components/src/clipboard'>Github<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+## Anatomy
+
+![Component anatomy](components/clipboard/anatomy.png "Component anatomy")
+
+1. An [**Input**](?path=/docs/ods-components-form-input--documentation) containing the whole content that will be copied to the **Clipboard**
+2. **Value** to copy
+3. A 'copy' icon [**Button**](?path=/docs/ods-components-actions-button--documentation) to complete the copy action when clicked
+4. A Tooltip displayed when user hovers or focuses the component, and briefly after a successful copy action to the user's **Clipboard**
+
+## Usage
+
+**Clipboard** is used to quickly and easily copy an amount of text to the user **Clipboard**.
+
+It can be used when it is considered that it will take the hassle out of selecting and copying an amount of [**Text**](?path=/docs/ods-components-content-tag--documentation) for the user.
+
+### Dos & Don'ts
+
+<Markdown>
+  { `
+| ✅ Do                                                                                                                                                                           |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| - Use **Clipboard** sparingly to reduce user effort                                                                                                                            |
+` }
+</Markdown>
+
+<Markdown>
+  { `
+| ❌ Don't                                                                                                                                                                          |
+|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| - Use **Clipboard** just to display some simple text for decorative purpose.                                                                                                     |
+` }
+</Markdown>
+
+## Placement
+
+By default, the **Clipboard** content is left-aligned in its container.
+
+**Clipboard** [**Tooltip**](?path=/docs/ods-components-user-feedback-tooltip--documentation) are right-aligned after the component by default, and vertically centered.
+
+## Behavior
+
+**Clipboard** can be focused and hovered. It also can be disabled.
+When disabled, the component can't be hovered, focused nor clicked.
+
+The **Clipboard** component is **used as read-only**, to allow users to copy a predefined [**Text**](?path=/docs/ods-components-content-tag--documentation) that cannot be edited directly.
+
+Even if no visual indicator prompts the user to do so, **the user can select the Text directly in the Input**.
+
+
+**The trigger for copying** the [**Input**](?path=/docs/ods-components-form-input--documentation) content to the [**Clipboard**](?path=/docs/ods-components-user-feedback-clipboard--documentation) **is the "copy" Button**.
+When hovering or focusing, **a Tooltip is displayed as a helper**.
+
+
+**An event is triggered when Clipboard content is copied.**
+A confirmation [**Tooltip**](?path=/docs/ods-components-user-feedback-tooltip--documentation) is displayed (if user is still hovering the "copy" [**Button**](?path=/docs/ods-components-actions-button--documentation)) when **Clipboard** content has been successfully copied.
+
+## Variants
+
+N/A
+
+## Accessibility
+
+When focused, the **Clipboard** "copy" [**Button**](?path=/docs/ods-components-actions-button--documentation) can be triggered using `Space` or `Enter` keys.

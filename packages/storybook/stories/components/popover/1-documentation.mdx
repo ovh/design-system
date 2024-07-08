@@ -1,0 +1,124 @@
+import { Canvas, Markdown, Meta } from '@storybook/blocks';
+import { Banner } from '../../banner';
+import * as PopoverStories from './popover.stories';
+import { OdsIcon } from '@ovhcloud/ods-components/react';
+import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
+
+<Meta of={ PopoverStories } name='Documentation' />
+
+<Banner of={ PopoverStories } />
+
+_**Popover** component is triggered by click and is used to provide additional information to the user in a new temporary window that overlays the page_
+
+<Canvas of={ PopoverStories.Overview } sourceState='none' />
+
+## Overview
+<div>
+  <div id='description'>
+    A **Popover** will provide additional information to the user in a clear and concise way.
+
+    It is commonly used to appear by click so crucial information should not be displayed in the **Popover**.
+  </div>
+  <table>
+    <tbody>
+    <tr>
+      <th scope="row">Name</th>
+      <td><strong>Popover</strong></td>
+    </tr>
+    <tr>
+      <th scope="row">Also known as</th>
+      <td><em>Complex Tooltip</em></td>
+    </tr>
+    <tr>
+      <th scope="row">Atomic type</th>
+      <td>
+        <a href='https://atomicdesign.bradfrost.com/chapter-2/#atoms'>Atom<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Related component(s)</th>
+      <td>
+        [**Text**](?path=/docs/ods-components-content-tag--documentation),
+        [**Button**](?path=/docs/ods-components-actions-button--documentation)
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Links</th>
+      <td>
+        <a href='https://www.figma.com/proto/tIKzHa5KvHHyosgIgyBswB/Design-Tokens'>Design<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a><br />
+        <a href='https://github.com/ovh/design-system/tree/master/packages/components/src/popover'>Github<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+## Anatomy
+
+![Component anatomy](components/popover/anatomy.png "Component anatomy")
+
+1. **Container**: main container that has all content (i.e [**Text**](?path=/docs/ods-components-content-tag--documentation), [**Button**](?path=/docs/ods-components-actions-button--documentation), etc.)
+2. **Arrow tip** (optional)
+
+## Usage
+
+A **Popover** is used to provide an explanation for a user interface element.
+
+It can include interactive elements such as [**Button**](?path=/docs/ods-components-actions-button--documentation) or [**Link**](?path=/docs/ods-components-actions-link--documentation).
+
+### [**Tooltip**](?path=/docs/ods-components-user-feedback-tooltip--documentation) vs. **Popover**
+
+- Both components look similar but a [**Tooltip**](?path=/docs/ods-components-user-feedback-tooltip--documentation) is displayed on hover and focus while a **Popover** is triggered by click.
+- [**Tooltip**](?path=/docs/ods-components-user-feedback-tooltip--documentation) are commonly used for shorter explanations, while longer [**Text**](?path=/docs/ods-components-content-tag--documentation) / complex UIs would suit **Popovers** better.
+- Use a **Popover** when you need to insert interactive elements such as [**Button**](?path=/docs/ods-components-actions-button--documentation).
+- A **Popover** can be dismissed if an action [**Button**](?path=/docs/ods-components-actions-button--documentation) allows it.
+
+### Dos & Don'ts
+<Markdown>
+  { `
+| ✅ Do                                                                                                                                                                                                                    |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------                                          |
+| - Use a **Popover** instead of a [**Tooltip**](?path=/docs/ods-components-user-feedback-tooltip--documentation) when the [**Text**](?path=/docs/ods-components-content-tag--documentation) is long; but keep it concise |
+| - Write **Popover**'s [**Text**](?path=/docs/ods-components-content-tag--documentation) as full sentences with punctuation                                                                                              |
+` }
+</Markdown>
+<Markdown>
+  { `
+| ❌ Don't                                                                                                                                                                          |
+|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| - Write very important information within a **Popover** since it is only displayed by click so the user might miss its crucial content                                           |
+| - Insert rich information such as image in a **Popover**                                                                                                                         |
+| - Overlap the **Popover**'s trigger element with the **Popover** itself when it has been triggered                                                                               |
+` }
+</Markdown>
+
+## Placement
+
+**Popover** can be set in a certain position by default around its trigger.
+
+**Popover** has automatic positioning feature. It can detect the edge of the browser so the container always stays visible on a page.
+
+## Behavior
+
+By default, a **Popover** is hidden to the user.
+
+It triggers when the user clicks on the **Popover**'s trigger element such as a [**Button**](?path=/docs/ods-components-actions-button--documentation).
+
+The **Popover** can be closed or dismissed by clicking anywhere on the page outside the **Popover**'s container.
+
+## Variants
+
+N/A
+
+## Accessibility
+
+When visible, **Popover** gains the user's focus.
+
+- `Escape` closes the currently opened **Popover**
+- `Tab` permits to focus in inner **Popover** content

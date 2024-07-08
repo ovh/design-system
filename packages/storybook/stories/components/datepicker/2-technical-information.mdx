@@ -1,0 +1,62 @@
+import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import SpecificationsDatepicker from '@ovhcloud/ods-components/src/components/datepicker/documentation/spec.md?raw';
+import { Banner } from '../../banner';
+import { DocNavigator } from '../../doc-navigator';
+import * as DatepickerStories from './datepicker.stories';
+import { LINK_ID } from '../../zeroheight';
+
+<Meta of={ DatepickerStories } name='Technical Information' />
+
+<Banner of={ DatepickerStories } />
+
+## Overview
+
+<Canvas of={ DatepickerStories.Default } sourceState='none' />
+
+<Markdown>{ SpecificationsDatepicker }</Markdown>
+
+## Examples
+
+### Default
+
+<Canvas of={ DatepickerStories.Default } sourceState='shown' />
+
+### Clearable
+
+<Canvas of={ DatepickerStories.Clearable } sourceState='shown' />
+
+### Dates Disabled
+
+<Canvas of={ DatepickerStories.DatesDisabled } sourceState='shown' />
+
+### Days Of Week Disabled
+
+<Canvas of={ DatepickerStories.DaysOfWeekDisabled } sourceState='shown' />
+
+### Disabled
+
+<Canvas of={ DatepickerStories.Disabled } sourceState='shown' />
+
+### Error
+
+<Canvas of={ DatepickerStories.Error } sourceState='shown' />
+
+### Format
+
+<Canvas of={ DatepickerStories.Format } sourceState='shown' />
+
+### Loading
+
+<Canvas of={ DatepickerStories.Loading } sourceState='shown' />
+
+### Locale
+
+<Canvas of={ DatepickerStories.Locale } sourceState='shown' />
+
+### Placeholder
+
+<Canvas of={ DatepickerStories.Placeholder } sourceState='shown' />
+
+### Readonly
+
+<Canvas of={ DatepickerStories.Readonly } sourceState='shown' />

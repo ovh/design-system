@@ -1,0 +1,126 @@
+import { Canvas, Markdown, Meta } from '@storybook/blocks';
+import { Banner } from '../../banner';
+import * as FormFieldStories from './form-field.stories';
+import { OdsIcon } from '@ovhcloud/ods-components/react';
+import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
+
+<Meta of={ FormFieldStories } name='Documentation' />
+
+<Banner of={ FormFieldStories } />
+
+_A **Form Field** component is used to wrap several form components with logic, visual hints and additional styling_
+
+<Canvas of={ FormFieldStories.LabelVisualHintHelper } sourceState='none' />
+
+## Overview
+<div>
+  <div id='description'>
+    A **Form Field** is based on a single form element or group components as a whole that are decorated with additional
+    [**Text**](?path=/docs/ods-components-content-tag--documentation) to handle specific types of information, like a
+    [**Password**](?path=/docs/ods-components-form-password--documentation) field for example.
+  </div>
+
+  <table>
+    <tbody>
+    <tr>
+      <th scope="row">Name</th>
+      <td><strong>Form Field</strong></td>
+    </tr>
+    <tr>
+      <th scope="row">Also known as</th>
+      <td><em>Form Control</em></td>
+    </tr>
+    <tr>
+      <th scope="row">Atomic type</th>
+      <td>
+        <a href='https://atomicdesign.bradfrost.com/chapter-2/#molecules'>Molecule<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Related component(s)</th>
+      <td>
+        [**Checkbox**](?path=/docs/ods-components-form-checkbox--documentation), [**File
+        Upload**](?path=/docs/ods-components-form-file-upload--documentation),
+        [**Input**](?path=/docs/ods-components-form-input--documentation),
+        [**Password**](?path=/docs/ods-components-form-password--documentation), [**Phone
+        Number**](?path=/docs/ods-components-form-phone-number--documentation),
+        [**Quantity**](?path=/docs/ods-components-form-quantity--documentation),
+        [**Radio**](?path=/docs/ods-components-form-radio--documentation),
+        [**Select**](?path=/docs/ods-components-form-select--documentation),
+        [**Switch**](?path=/docs/ods-components-form-switch--documentation),
+        [**Textarea**](?path=/docs/ods-components-form-textarea--documentation),
+        [**Toggle**](?path=/docs/ods-components-form-toggle--documentation)
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Links</th>
+      <td>
+        <a href='https://www.figma.com/proto/tIKzHa5KvHHyosgIgyBswB/Design-Tokens'>Design<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a><br />
+        <a href='https://github.com/ovh/design-system/tree/master/packages/components/src/form-field'>Github<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+## Anatomy
+
+![Component anatomy](components/form-field/anatomy.png "Component anatomy")
+
+## Usage
+
+A **Form Field** is used to wrap a field that can be customized with some additional information about this field.
+
+Additional information (label, placeholder, helper message) provides hint and help to users, so they can easily understand what is required from them in a form.
+
+Users will also type or enter information in the expected format and avoid mistakes.
+
+### Dos & Don'ts
+
+<Markdown>
+  { `
+| ✅ Do                                                                                                                                                                           |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| - Use several **Form Fields** for strongly related content and/or fields.                                                                                                      |
+| - Use a **Form Fields** to help users to fill in a form.                                                                                                                       |
+| - Remember to use a field with a length proportional to the expected user [**Input**](?path=/docs/ods-components-form-input--documentation).                                   |
+| - Group when you need to combine related components into a whole new one.                                                                                                      |
+` }
+</Markdown>
+<Markdown>
+  { `
+| ❌ Don't                                                                                                                                                                                                                    |
+|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------                                           |
+| - Use a **Form Field** for content longer than a single line: Use a [**Textarea**](?path=/docs/ods-components-form-textarea--documentation) instead.                                                                       |
+| - Use an Input when you have a predefined list of answers: use a [**Select**](?path=/docs/ods-components-form-select--documentation) or [**Radio**](?path=/docs/ods-components-form-radio--documentation) Buttons instead. |
+| - Use * to mark the mandatory fields.                                                                                                                                                                                      |
+| - Overuse content related **Form Fields** with top aligned label in one group since it requires quite vertical space: split into smaller groups.                                                                           |
+| - Use interactive content such as a [**Link**](?path=/docs/ods-components-actions-link--documentation) or a [**Button**](?path=/docs/ods-components-actions-button--documentation) inside the **Form Field** label.        |
+` }
+</Markdown>
+
+## Placement
+
+A **Form Field** can be used everywhere in a page where there is a form and users need help to fill in this form.
+
+## Behavior
+
+A **Form Field** can react to a field validation, especially on its border and in addition to an helper (if necessary).
+
+If the field is in error state, an error message is displayed below the helper [**Text**](?path=/docs/ods-components-content-tag--documentation) when it exists. When no helper [**Text**](?path=/docs/ods-components-content-tag--documentation) exists, the error message is displayed below the form component.
+
+## Variants
+
+N/A
+
+## Accessibility
+
+Label, helpers and extra field information have to be readable to the user when navigating in on a **Form Field**.
+
+For the center part, the reading order for screen readers is components from left to right.

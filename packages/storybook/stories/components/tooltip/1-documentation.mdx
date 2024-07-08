@@ -1,0 +1,127 @@
+import { Canvas, Markdown, Meta } from '@storybook/blocks';
+import { Banner } from '../../banner';
+import * as TooltipStories from './tooltip.stories';
+import { OdsIcon } from '@ovhcloud/ods-components/react';
+import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
+
+<Meta of={ TooltipStories } name='Documentation' />
+
+<Banner of={ TooltipStories } />
+
+_**Tooltip** component is used to display contextual information when the user hovers over or focus on a UI element in a page._
+
+<Canvas of={ TooltipStories.Overview } sourceState='none' />
+
+## Overview
+<div>
+  <div id='description'>
+    The **Tooltip** component is used to display brief, contextual information when users hover over or focus on an
+    element.
+
+    It enhances user experience by providing helpful hints, explanations, or descriptions without cluttering the UI.
+
+    **Tooltips** are commonly used for [**Button**](?path=/docs/ods-components-actions-button--documentation),
+    [**Icon**](?path=/docs/ods-components-content-icon--documentation), [**Form
+    Field**](?path=/docs/ods-components-form-form-field--documentation), and other interactive elements.
+  </div>
+  <table>
+    <tbody>
+    <tr>
+      <th scope="row">Name</th>
+      <td><strong>Tooltip</strong></td>
+    </tr>
+    <tr>
+      <th scope="row">Also known as</th>
+      <td><em>Info Bubble</em></td>
+    </tr>
+    <tr>
+      <th scope="row">Atomic type</th>
+      <td>
+        <a href='https://atomicdesign.bradfrost.com/chapter-2/#atoms'>Atom<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Related component(s)</th>
+      <td>
+        [**Text**](?path=/docs/ods-components-content-tag--documentation),
+        [**Icon**](?path=/docs/ods-components-content-icon--documentation))
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Links</th>
+      <td>
+        <a href='https://www.figma.com/proto/tIKzHa5KvHHyosgIgyBswB/Design-Tokens'>Design<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a><br />
+        <a href='https://github.com/ovh/design-system/tree/master/packages/components/src/tooltip'>Github<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+## Anatomy
+
+![Component anatomy](components/tooltip/anatomy.png "Component anatomy")
+
+1. **Container**
+2. **Main content**
+3. **Arrow** _(optional)_
+
+## Usage
+
+Use the **Tooltip** component to provide additional information or context for UI elements.
+
+**Tooltips** should be brief and helpful, enhancing user understanding without overwhelming them.
+
+They are suitable for [**Button**](?path=/docs/ods-components-actions-button--documentation), [**Icon**](?path=/docs/ods-components-content-icon--documentation), [**Form Field**](?path=/docs/ods-components-form-form-field--documentation), [**Link**](?path=/docs/ods-components-actions-link--documentation), and any other elements where additional context would be beneficial.
+
+### Dos & Don'ts
+<Markdown>
+  { `
+| ✅ Do                                                                                                                                                                           |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| - Use a **Tooltip** to provide useful, brief additional information.                                                                                                           |
+| - Use **Tooltips** sparingly without invading the screen.                                                                                                                      |
+| - Write **Tooltip**'s [**Text**](?path=/docs/ods-components-content-tag--documentation) as full sentences with punctuation except there is not enough space.                   |
+` }
+</Markdown>
+<Markdown>
+  { `
+| ❌ Don't                                                                                                                                                                                               |
+|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------                      |
+| - Use a **Tooltip** to communicate error messages.                                                                                                                                                    |
+| - Write very important information within a **Tooltip** since it is only displayed on hover and focus so the user might miss its crucial content.                                                     |
+| - Insert rich information such as image in a **Tooltip**.                                                                                                                                             |
+| - Use interactive elements within a **Tooltip** such as [**Button**](?path=/docs/ods-components-actions-button--documentation) or [**Link**](?path=/docs/ods-components-actions-link--documentation). |
+| - Repeat information within a **Tooltip** that is already visible in the UI.                                                                                                                          |
+` }
+</Markdown>
+
+## Placement
+
+**Tooltip** has automatic positioning feature. It can detect the edge of the browser so the container always stays visible on a page.
+
+## Behavior
+
+By default, a **Tooltip** is hidden to the user.
+
+It triggers when the user hovers over or focus on the **Tooltip'**s trigger element such as an [**Icon**](?path=/docs/ods-components-content-icon--documentation).
+
+As long as the user's mouse cursor or focus is active, the **Tooltip** will persist.
+
+It will hide when the users stop hovering over or focusing on this element.
+
+On a mobile device, a **Tooltip** is displayed upon tapping, and it will hide when the user taps an area outside the **Tooltip**'s container.
+
+## Variants
+
+- **With extra arrow**: providing a more pronounced visual connection between the tooltip and the element it describes, ensuring users clearly understand which element the tooltip is associated with.
+
+## Accessibility
+
+**Tooltip** component is a visual equivalent of ARIA labels, it will be read the same way by screen readers.

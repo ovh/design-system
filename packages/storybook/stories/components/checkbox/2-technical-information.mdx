@@ -1,0 +1,52 @@
+import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import SpecificationsCheckbox from '@ovhcloud/ods-components/src/components/checkbox/documentation/spec.md?raw';
+import { Banner } from '../../banner';
+import * as CheckboxStories from './checkbox.stories';
+
+<Meta of={ CheckboxStories } name='Technical information' />
+
+<Banner of={ CheckboxStories } />
+
+## Overview
+
+<Canvas of={ CheckboxStories.Checked } sourceState='none' />
+
+<Markdown>{ SpecificationsCheckbox }</Markdown>
+
+## Style customization
+
+You can add your own style on the checkbox element using the part `checkbox`.
+
+Custom CSS:
+
+<Canvas of={ CheckboxStories.CustomCSS } sourceState='shown'/>
+
+## Examples
+
+### Default
+
+<Canvas of={ CheckboxStories.Default } sourceState='shown' />
+
+### Alignment
+The checkbox component may not be vertically aligned by default, depending on the content following it.
+You'll need to manage this with css on parent element.
+<Canvas of={ CheckboxStories.Alignment } sourceState='shown' />
+
+### Checked
+<Canvas of={ CheckboxStories.Checked } sourceState='shown' />
+
+### Disabled
+<Canvas of={ CheckboxStories.Disabled } sourceState='shown' />
+
+### Disabled Checked
+<Canvas of={ CheckboxStories.DisabledChecked } sourceState='shown' />
+
+### Disabled Indeterminate
+<Canvas of={ CheckboxStories.DisabledIndeterminate } sourceState='shown' />
+
+### InputId
+The `id` is encapsulated by the `input-id` attribute. This way you can link a label (attribute `for`) to the input.
+<Canvas of={ CheckboxStories.InputId } sourceState='shown' />
+
+### Indeterminate
+<Canvas of={ CheckboxStories.Indeterminate } sourceState='shown' />

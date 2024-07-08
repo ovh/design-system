@@ -1,6 +1,5 @@
 #storybook-docs > .sbdocs-wrapper {
   padding: 1.5rem 3rem 3rem 3rem;
-  justify-content: flex-start;
 }
 
 /***************************************
@@ -40,15 +39,23 @@ code {
   font-size: 1rem !important;
 }
 
-/***************************************
- * TABLE OF CONTENT
- ***************************************/
-
-.toc-link {
-  color: var(--ods-color-primary-500) !important;
-  font-size: 1rem;
+.sbdocs-content #overview + div {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 2rem;
+}
+.sbdocs-content #overview + div > table {
+  align-self: flex-start;
+  text-align: left;
 }
 
-.toc-list-item.is-active-li > a {
-  color: var(--ods-color-primary-700) !important;
+.sbdocs-content #dos--donts + table,
+.sbdocs-content #dos--donts + table + table {
+  width: 100%;
+}
+.sbdocs-content #dos--donts + table tr {
+  background-color: var(--ods-color-success-050);
+}
+.sbdocs-content #dos--donts + table + table tr {
+  background-color: var(--ods-color-critical-050);
 }

@@ -1,0 +1,178 @@
+import { Canvas, Markdown, Meta } from '@storybook/blocks';
+import { Banner } from '../../banner';
+import * as DatepickerStories from './datepicker.stories';
+import { OdsIcon } from '@ovhcloud/ods-components/react';
+import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
+
+<Meta of={ DatepickerStories } name='Documentation' />
+
+<Banner of={ DatepickerStories } />
+
+_A **Datepicker** component is used to allow users to select a date or range of dates. They can navigate through days, months and years:_
+
+<Canvas of={ DatepickerStories.Default } sourceState='none' />
+
+## Overview
+<div>
+  <div id='description'>
+    The Datepicker component is used for selecting dates in forms and applications. It provides a user-friendly
+    interface for choosing dates, ensuring that the date format is consistent and valid. This component can include
+    features such as date ranges, disabled dates, and custom formats.
+  </div>
+  <table>
+    <tbody>
+    <tr>
+      <th scope="row">Name</th>
+      <td><strong>Datepicker</strong></td>
+    </tr>
+    <tr>
+      <th scope="row">Also known as</th>
+      <td><em>Calendar</em></td>
+    </tr>
+    <tr>
+      <th scope="row">Atomic type</th>
+      <td>
+        <a href='https://atomicdesign.bradfrost.com/chapter-2/#molecules'>Molecule<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Related component(s)</th>
+      <td>
+        [**Input**](?path=/docs/ods-components-form-input--documentation), [**Form
+        Field**](?path=/docs/ods-components-form-form-field--documentation)
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Links</th>
+      <td>
+        <a href='https://www.figma.com/proto/tIKzHa5KvHHyosgIgyBswB/Design-Tokens'>Design<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a><br />
+        <a href='https://github.com/ovh/design-system/tree/master/packages/components/src/datepicker'>Github<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+## Anatomy
+
+![Component anatomy](components/datagrid/anatomy.png "Component anatomy")
+
+1. **Date Input**: it is a text field where users can type a date in expected format.
+2. **Date**
+3. **Calendar Icon**
+4. **Datepicker dropdown**
+5. **Arrow icon Buttons** as month/year pagination: it let users move forward or backward through months or years
+6. **Year picker dropdown**: permits to select a different year
+7. **Date Button**
+
+## Usage
+
+**Datepicker** is used to **allow a selection of a specific date** in the near future or even past. It is **useful for scheduling, or defining user dates**.
+
+### Dos & Don'ts
+<Markdown>
+  { `
+| ✅ Do                                                                                                                                                                           |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| - Use a **Datepicker** when users need to select a single date or range of dates.                                                                                                  |
+| - Use a **Datepicker** for recent or near future dates.                                                                                                                            |
+| - When the user has to pick dates in the distant past or future, do choose a more suitable day as **Datepicker** default date when it will open.                                   |
+` }
+</Markdown>
+<Markdown>
+  { `
+| ❌ Don't                                                                                                                                                                                                     |
+|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------                            |
+| - Use a **Datepicker** when the user has to pick dates in many years in the past or future, a date of birth for example.                                                                                        |
+| - Only use a placeholder to indicate the user about the expected format in the date field since it will disappear after typing. Consider adding a label with a Form Field component to indicate the format. |
+` }
+</Markdown>
+
+## Placement
+
+A **Datepicker** can be used in a page as long as there is a need to allow users pick a date or a range of dates.
+
+The date field has a fixed width by default but, when used in a form, its width should match the other inputs.
+
+The **Datepicker** dropdown has a fixed width and is not adjustable.
+
+## Behavior
+
+**Opening the Datepicker**
+
+By clicking on the **Datepicker** date field
+
+**Closing the Datepicker**
+
+- By clicking outside the **Datepicker** dropdown
+- When the user has selected a date
+
+**Date picking mode**
+
+Navigating to previous/next month : By clicking on arrow icon [**Buttons**](?path=/docs/ods-components-actions-button--documentation) to navigate through months
+
+Selecting a month : By clicking on the month selection [**Button**](?path=/docs/ods-components-actions-button--documentation) to switch to month picking mode
+
+Picking a date : By clicking on a date
+
+**Month picking mode**
+
+Navigating to previous/next year : By clicking on arrow icon [**Buttons**](?path=/docs/ods-components-actions-button--documentation) to navigate through years
+
+Selecting a year : By clicking on the month selection [**Button**](?path=/docs/ods-components-actions-button--documentation) to switch to year picking mode
+
+Picking a month: By clicking on a month, the dropdown goes back to date picking mode
+
+**Year picking mode**
+
+Navigating to previous/next range of years : By clicking on arrow icon [**Buttons**](?path=/docs/ods-components-actions-button--documentation) to navigate through years
+
+Selecting a decade : By clicking on the month selection [**Button**](?path=/docs/ods-components-actions-button--documentation) to switch to year picking mode
+
+Picking a month: By clicking on a month, the dropdown goes back to date picking mode
+
+**Locale**
+
+Locale determines how the week days will be displayed according to the localization. The **Datepicker** supports the following locales: English (default), German, Spanish, French, Italian, Dutch, Polish and Portuguese.
+
+## Variants
+
+N/A
+
+## Accessibility
+
+**Opening the Datepicker dropdown:**
+
+By pressing `Tab` key while the date field is focused
+
+**Closing the Datepicker dropdown:**
+
+By pressing `Escape` key
+
+When the user remove focus on the Datepicker, it will close
+
+**Selecting a year or a month:**
+
+By manually typing the year or the month in the date field, respectively in format 'yyyy' or 'mm', and pressing `Enter` key
+
+**Navigating to next or previous month:**
+
+By pressing Arrow keys, the user can move to next or previous month
+
+**Selecting a date**
+
+By manually typing a date in the date field in format 'yyyy-mm-dd', and pressing `Enter` key
+
+By pressing Arrow keys to navigate through the days and pressing `Enter` key in the drop-down **Datepicker**
+
+**Selecting a range of days:**
+
+By manually typing the start and end dates in the date field in format "DD/MM/YYYY"
+
+By pressing Arrow keys to navigate through the days and pressing `Enter` key a first time to set the start date. Then, the user can repeat this operation to set the end date

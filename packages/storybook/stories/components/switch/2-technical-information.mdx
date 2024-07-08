@@ -1,0 +1,31 @@
+import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import SpecificationsSwitch from '@ovhcloud/ods-components/src/components/switch/documentation/spec.md?raw';
+import { Banner } from '../../banner';
+import * as SwitchStories from './switch.stories';
+
+<Meta of={ SwitchStories } name='Technical information' />
+
+<Banner of={ SwitchStories } />
+
+## Overview
+
+<Canvas of={ SwitchStories.Overview } sourceState='none' />
+
+<Markdown>{ SpecificationsSwitch }</Markdown>
+
+## Examples
+
+### Default
+
+<Canvas of={ SwitchStories.Default } sourceState='shown' />
+
+### Checked
+<Canvas of={ SwitchStories.Checked } sourceState='shown' />
+
+### Disabled
+<Canvas of={ SwitchStories.Disabled } sourceState='shown' />
+
+### Size
+<Canvas of={ SwitchStories.Size } sourceState='shown' />
+
+

@@ -1,0 +1,60 @@
+import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import SpecificationsTextarea from '@ovhcloud/ods-components/src/components/textarea/documentation/spec.md?raw';
+import { Banner } from '../../banner';
+import * as TextareaStories from './textarea.stories';
+
+<Meta of={ TextareaStories } name='Technical information' />
+
+<Banner of={ TextareaStories } />
+
+## Overview
+
+<Canvas of={ TextareaStories.Default } sourceState='none' />
+
+<Markdown>{ SpecificationsTextarea }</Markdown>
+
+## Style customization
+
+You can add your own style on the textarea element using the part `textarea`.
+
+Custom CSS:
+
+<Canvas of={ TextareaStories.CustomCSS } sourceState='shown'/>
+
+## Examples
+
+### Default
+
+<Canvas of={ TextareaStories.Default } sourceState='shown' />
+
+### Cols
+
+<Canvas of={ TextareaStories.Cols } sourceState='shown' />
+
+### Disabled
+
+<Canvas of={ TextareaStories.Disabled } sourceState='shown' />
+
+### Error
+
+<Canvas of={ TextareaStories.Error } sourceState='shown' />
+
+### Placeholder
+
+<Canvas of={ TextareaStories.Placeholder } sourceState='shown' />
+
+### Readonly
+
+<Canvas of={ TextareaStories.Readonly } sourceState='shown' />
+
+### Resizable
+
+<Canvas of={ TextareaStories.Resizable } sourceState='shown' />
+
+### Rows
+
+<Canvas of={ TextareaStories.Rows } sourceState='shown' />
+
+### Spellcheck
+
+<Canvas of={ TextareaStories.Spellcheck } sourceState='shown' />

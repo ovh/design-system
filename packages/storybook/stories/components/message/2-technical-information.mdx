@@ -1,0 +1,37 @@
+import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import SpecificationsMessage from '@ovhcloud/ods-components/src/components/message/documentation/spec.md?raw';
+import { Banner } from '../../banner';
+import * as MessageStories from './message.stories';
+
+<Meta of={ MessageStories } name='Technical information' />
+
+<Banner of={ MessageStories } />
+
+## Overview
+
+<Canvas of={ MessageStories.Default } sourceState='none' />
+
+<Markdown>{ SpecificationsMessage }</Markdown>
+
+## Style customization
+
+You can add your own style on the message element using the part `message`.
+
+Custom CSS:
+
+<Canvas of={ MessageStories.CustomCSS } sourceState='shown'/>
+
+## Examples
+
+### Default
+
+<Canvas of={ MessageStories.Default } sourceState='shown' />
+
+### Color
+<Canvas of={ MessageStories.Color } sourceState='shown' />
+
+### Variant
+<Canvas of={ MessageStories.Variant } sourceState='shown' />
+
+### Multiline
+<Canvas of={ MessageStories.Multiline } sourceState='shown' />

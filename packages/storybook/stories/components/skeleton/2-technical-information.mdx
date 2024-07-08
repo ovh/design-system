@@ -1,0 +1,28 @@
+import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import SpecificationsSkeleton from '@ovhcloud/ods-components/src/components/skeleton/documentation/spec.md?raw';
+import { Banner } from '../../banner';
+import * as SkeletonStories from './skeleton.stories';
+
+<Meta of={ SkeletonStories } name='Technical information' />
+
+<Banner of={ SkeletonStories } />
+
+## Overview
+
+<Canvas of={SkeletonStories.Default} sourceState='none' />
+
+<Markdown> { SpecificationsSkeleton } </Markdown>
+
+## Style customization
+
+You can add your own style on the text element using the part `skeleton`.
+
+Custom CSS :
+
+<Canvas of={ SkeletonStories.CustomCSS } sourceState='shown'/>
+
+## Examples
+
+### Default
+
+<Canvas of={ SkeletonStories.Default } sourceState='shown' />

@@ -1,0 +1,103 @@
+import { Canvas, Markdown, Meta } from '@storybook/blocks';
+import { Banner } from '../../banner';
+import * as ProgressBarStories from './progress-bar.stories';
+import { OdsIcon } from '@ovhcloud/ods-components/react';
+import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
+
+<Meta of={ ProgressBarStories } name='Documentation' />
+
+<Banner of={ ProgressBarStories } />
+
+_A horizontal bar indicating the current completion status of a long-running task, usually updated continuously as the task progresses, instead of in discrete steps._
+
+<Canvas of={ ProgressBarStories.Value } sourceState='none' />
+
+## Overview
+<div>
+  <div id='description'>
+    The **Progress Bar** component is used to indicate the progress of a task or process to users. It visually
+    represents the completion percentage, providing users with feedback on the status of ongoing operations, such as
+    [**File upload**](?path=/docs/ods-components-form-file-upload--documentation), downloads, or form submissions.
+  </div>
+  <table>
+    <tbody>
+    <tr>
+      <th scope="row">Name</th>
+      <td><strong>Progress Bar</strong></td>
+    </tr>
+    <tr>
+      <th scope="row">Also known as</th>
+      <td><em>Progress, Progress Loader, Preloader, Loading Bar, Progress Indicator</em></td>
+    </tr>
+    <tr>
+      <th scope="row">Atomic type</th>
+      <td>
+        <a href='https://atomicdesign.bradfrost.com/chapter-2/#atoms'>Atom<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Related component(s)</th>
+      <td>
+        [**Text**](?path=/docs/ods-components-content-tag--documentation)
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Links</th>
+      <td>
+        <a href='https://www.figma.com/proto/tIKzHa5KvHHyosgIgyBswB/Design-Tokens'>Design<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a><br />
+        <a href='https://github.com/ovh/design-system/tree/master/packages/components/src/progress-bar'>Github<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+## Anatomy
+
+![Component anatomy](components/progress-bar/anatomy.png "Component anatomy")
+
+1. **Track**: displays the visual range of progression, from a starting to an ending position
+2. **Filled track**: represents the visual progression value within the **Progress Bar**.
+
+## Usage
+
+**Progress Bar** component is only used in process progression, such as submitting, uploading or saving items.
+
+### Dos & Don'ts
+<Markdown>
+  { `
+| ✅ Do                                                                                                                                                                                                                                                                                                                                    |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------                                                                                                                                                          |
+| - Use **Progress Bar** for quantifiable loading; if not, please use [**Spinner**](?path=/docs/ods-components-user-feedback-spinner--documentation) for complex content or [**Skeleton**](?path=/docs/ods-components-content-skeleton--documentation) for [**Text**](?path=/docs/ods-components-content-tag--documentation)-only content |
+` }
+</Markdown>
+<Markdown>
+  { `
+| ❌ Don't                                                                                                                                                                          |
+|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| - Use **Progress Bar** for data visualization                                                                                                                                    |
+| - Use all three starting value, ending value and progress value labels at the same time                                                                                          |
+` }
+</Markdown>
+
+## Placement
+
+**Progress Bar** is usually centered in its container, and can be stretched to match the container width if necessary.
+
+## Behavior
+
+**Progress Bar** is filled from the minimum to the maximum value, depending on the progress described.
+
+## Variants
+
+N/A
+
+## Accessibility
+
+User is being notified of its loading based on the ARIA `live` property.

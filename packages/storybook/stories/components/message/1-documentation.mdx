@@ -1,0 +1,136 @@
+import { Canvas, Markdown, Meta } from '@storybook/blocks';
+import { Banner } from '../../banner';
+import * as MessageStories from './message.stories';
+import { OdsIcon } from '@ovhcloud/ods-components/react';
+import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
+
+<Meta of={ MessageStories } name='Documentation' />
+
+<Banner of={ MessageStories } />
+
+_**Message** component helps to communicate with users providing feedback or information._
+
+<Canvas of={ MessageStories.Default } sourceState='none' />
+
+## Overview
+<div>
+  <div id='description'>
+    **Message** component communicate information to the user.
+
+    It grabs the user's attention in a prominent way.
+  </div>
+  <table>
+    <tbody>
+    <tr>
+      <th scope="row">Name</th>
+      <td><strong>Message</strong></td>
+    </tr>
+    <tr>
+      <th scope="row">Also known as</th>
+      <td><em>Notifier, Notification, Banner, Alert, Feedback</em></td>
+    </tr>
+    <tr>
+      <th scope="row">Atomic type</th>
+      <td>
+        <a href='https://atomicdesign.bradfrost.com/chapter-2/#molecules'>Molecule<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Related component(s)</th>
+      <td>
+        [**Icon**](?path=/docs/ods-components-content-icon--documentation),
+        [**Button**](?path=/docs/ods-components-actions-button--documentation),
+        [**Text**](?path=/docs/ods-components-content-tag--documentation)
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Links</th>
+      <td>
+        <a href='https://www.figma.com/proto/tIKzHa5KvHHyosgIgyBswB/Design-Tokens'>Design<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a><br />
+        <a href='https://github.com/ovh/design-system/tree/master/packages/components/src/message'>Github<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+## Anatomy
+
+![Component anatomy](components/message/anatomy.png "Component anatomy")
+
+1. [**Icon**](?path=/docs/ods-components-content-icon--documentation) to inform users about what kind of message it is (optional)
+
+2. [**Text**](?path=/docs/ods-components-content-tag--documentation), which can be a plain text or contain a link
+
+3. A `cross` icon [**Button**](?path=/docs/ods-components-actions-button--documentation), which is a close button to dismiss the **Message**
+
+## Usage
+
+**Messages** are used as notification status.
+
+There are four different subtypes of standard **Messages**, in order of priority:
+
+- **Information**: Provides info to users in context. Shouldn’t be overused to replace regular content.
+- **Success**: Reserved to provide to a success message. They are displayed as a snackbar.
+- **Warning**: Reserved for **Messages** that need the user attention and acknowledgment but might not cause errors.
+- **Critical**: Reserved for errors, malfunctions, as well as critical issues. Inform the user that a problem requires immediate intervention or correction before the process continues.
+- **Danger**: Reserved for errors, malfunctions, as well as critical issues. Inform the user that a problem requires immediate intervention or correction before the process continues.
+
+### Dos & Don'ts
+<Markdown>
+  { `
+| ✅ Do                                                                                                                                                                           |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| -  Use the affirmative form                                                                                                                                                    |
+| -  Make **Messages** content informative, brief, clear, consistent and non-critical                                                                                            |
+| -  **Messages** must be displayed in the user's language                                                                                                                       |
+| -  Position a **Message** wherever it is visible for the user                                                                                                                  |
+| -  Use a **Message** when an immediate action is required by the user                                                                                                          |
+` }
+</Markdown>
+<Markdown>
+  { `
+| ❌ Don't                                                                                                                                                                          |
+|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| -  Use too long **Messages** that may affect its readability                                                                                                                     |
+| -  Use a **Message** for highlighting content: use a Tile instead                                                                                                                |
+` }
+</Markdown>
+
+## Placement
+
+**Messages** show up during a task to notify users of the status of an action. In every page, it is possible to display one or more **Messages** to inform the user.
+
+They are positioned near their related items or right after the header and before the page title and page content.
+
+
+## Behavior
+
+Based on its informational manner, the component default behavior is being read-only. You can only select its content if needed.
+
+A click on the `close` icon [**Button**](?path=/docs/ods-components-actions-button--documentation) will dismiss the **Message**.
+
+## Variants
+
+### Colors
+
+- **Success**: confirming that an action has been completed successfully, providing positive feedback to the user.
+- **Warning**: alerting users to potential issues or cautionary information, prompting them to take preventive actions.
+- **Danger**: indicating serious issues or errors that require immediate attention, signaling a high level of urgency.
+- **Critical**: highlighting severe and potentially catastrophic issues that demand urgent and decisive action to prevent significant negative consequences.
+
+### Variations
+
+- **Light**: conveying non-urgent, informational content in a subtle and less prominent manner, ensuring the message is seen without drawing too much attention.
+
+## Accessibility
+
+When a **Message** appears, user is alerted of its presence, regardless of the user's navigation.
+
+The `close` icon [**Button**](?path=/docs/ods-components-actions-button--documentation) is focusable and can be triggered with the `Enter`/`Space` key.

@@ -216,6 +216,18 @@ export const Default: StoryObj = {
   `,
 };
 
+export const DefaultDual: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-range id="range-dual-default"></ods-range>
+<script>
+(() => {
+  const rangeDualDefault = document.querySelector('#range-dual-default');
+  rangeDualDefault.value = [30, 70];
+})()
+</script>`,
+};
+
 export const Disabled: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
@@ -223,11 +235,35 @@ export const Disabled: StoryObj = {
   `,
 };
 
+export const DisabledDual: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-range is-disabled value="40" id="range-dual-disabled"></ods-range>
+<script>
+(() => {
+  const rangeDualDisabled = document.querySelector('#range-dual-disabled');
+  rangeDualDisabled.value = [30, 70];
+})()
+</script>`,
+};
+
 export const Error: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
 <ods-range has-error value="40"></ods-range>
   `,
+};
+
+export const ErrorDual: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-range has-error value="40" id="range-dual-error"></ods-range>
+<script>
+(() => {
+  const rangeDualError = document.querySelector('#range-dual-error');
+  rangeDualError.value = [30, 70];
+})()
+</script>`,
 };
 
 export const Max: StoryObj = {
@@ -255,5 +291,18 @@ export const Step: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
 <ods-range step="10" value="70"></ods-range>
+  `,
+};
+
+export const StepDual: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-range step="10" id="range-dual-step"></ods-range>
+<script>
+(() => {
+  const rangeDualStep = document.querySelector('#range-dual-step');
+  rangeDualStep.value = [30, 70];
+})()
+</script>
   `,
 };

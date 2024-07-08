@@ -106,6 +106,11 @@ export class OdsRange {
     setFormValue(this.internals, this.value);
   }
 
+  @Watch('step')
+  onStepChange(): void {
+    this.onInput();
+  }
+
   componentWillLoad(): void {
     this.hostId = this.el.id || getRandomHTMLId();
 

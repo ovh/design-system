@@ -1,0 +1,69 @@
+import { ODS_TIMEZONE, ODS_TIMEZONES, ODS_TIMEZONES_PRESET } from '../../src';
+import { formatValue, getCurrentTimezone, parseTimezones } from '../../src/controller/ods-timepicker';
+
+describe('ods-timepicker controller', () => {
+  describe('formatValue', () => {
+    it('should format value without seconds correctly', () => {
+      expect(formatValue('12:34:56', false)).toBe('12:34');
+    });
+
+    it('should format value with seconds correctly', () => {
+      expect(formatValue('12:34', true)).toBe('12:34:00');
+    });
+
+    it('should handle undefined value gracefully', () => {
+      expect(formatValue(undefined, false)).toBe('');
+    });
+
+    it('should handle undefined withSeconds parameter gracefully', () => {
+      expect(formatValue('12:34:56')).toBe('12:34');
+    });
+
+    it('should return empty string for invalid value', () => {
+      expect(formatValue('invalid-time-format', true)).toBe('');
+    });
+  });
+
+  describe('getCurrentTimezone', () => {
+    it('should return browser timezone when currentTimezone is undefined', () => {
+      const dateMock = {
+        getTimezoneOffset: jest.fn(() => -5 * 60), // Simulate UTC+5
+      };
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      global.Date = jest.fn(() => dateMock as any) as any;
+
+      expect(getCurrentTimezone()).toBe(ODS_TIMEZONE.UTC5);
+    });
+
+    it('should return currentTimezone when provided', () => {
+      const currentTimezoneMock = 'UTC+1';
+      expect(getCurrentTimezone(currentTimezoneMock)).toBe(currentTimezoneMock);
+    });
+
+  });
+
+  describe('parseTimezones', () => {
+    it('should return all timezones when input is undefined or ODS_TIMEZONES_PRESET.All', () => {
+      expect(parseTimezones()).toEqual(expect.arrayContaining(ODS_TIMEZONES));
+      expect(parseTimezones(ODS_TIMEZONES_PRESET.All)).toEqual(expect.arrayContaining(ODS_TIMEZONES));
+    });
+
+    it('should parse a valid JSON string of timezones', () => {
+      const inputTimezones = '["UTC+1","UTC-5","UTC+8"]';
+      expect(parseTimezones(inputTimezones)).toEqual(['UTC+1', 'UTC-5', 'UTC+8']);
+    });
+
+    it('should parse a valid JSON string of timezones and remove unknown timezones', () => {
+      const inputTimezones = '["UTC+1","UTC-5","UTC+8","UTC+30"]';
+      expect(parseTimezones(inputTimezones)).toEqual(['UTC+1', 'UTC-5', 'UTC+8']);
+    });
+
+    it('should handle invalid JSON string gracefully', () => {
+      const invalidInput = 'invalid-json';
+      console.warn = jest.fn();
+
+      expect(parseTimezones(invalidInput)).toEqual([]);
+      expect(console.warn).toHaveBeenCalled();
+    });
+  });
+});

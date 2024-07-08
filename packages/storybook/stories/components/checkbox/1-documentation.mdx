@@ -1,0 +1,119 @@
+import { Canvas, Markdown, Meta } from '@storybook/blocks';
+import { Banner } from '../../banner';
+import * as CheckboxStories from './checkbox.stories';
+import { OdsIcon } from '@ovhcloud/ods-components/react';
+import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
+
+<Meta of={ CheckboxStories } name='Documentation' />
+
+<Banner of={ CheckboxStories } />
+
+_**Checkbox** are used for a list of options where the user may make a choice by selecting multiple options, including all or none._
+
+<Canvas of={ CheckboxStories.Checked } sourceState='none' />
+
+## Overview
+<div>
+  <div id='description'>
+    **Checkbox** are used to make a choice that must be confirmed by submitting a form. For an instantaneous choice
+    (without submit), the use of a switch is preferred (see Switch).
+  </div>
+
+  <table>
+    <tbody>
+    <tr>
+      <th scope="row">Name</th>
+      <td><strong>Checkbox</strong></td>
+    </tr>
+    <tr>
+      <th scope="row">Also known as</th>
+      <td><em>Checkbox, Check Box, Tick Box</em></td>
+    </tr>
+    <tr>
+      <th scope="row">Atomic type</th>
+      <td>
+        <a href='https://atomicdesign.bradfrost.com/chapter-2/#atoms'>Atom<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Related component(s)</th>
+      <td>
+        [**Text**](?path=/docs/ods-components-content-tag--documentation)
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Links</th>
+      <td>
+        <a href='https://www.figma.com/proto/tIKzHa5KvHHyosgIgyBswB/Design-Tokens'>Design<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a><br />
+        <a href='https://github.com/ovh/design-system/tree/master/packages/components/src/checkbox'>Github<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+## Anatomy
+
+![Component anatomy](components/checkbox/anatomy.png "Component anatomy")
+
+1. **Checkbox** - The selection control.
+2. **Text** - Use this [**Text**](?path=/docs/ods-components-content-tag--documentation) label to describe what the [**Radio**](?path=/docs/ods-components-form-radio--documentation) is for.
+
+## Usage
+
+**Checkbox** can be used in forms, and containers.
+
+Also, it can serve as :
+* Selecting/deselecting item(s)
+* Lists/sub-lists
+* Filters
+* Agreement to terms and conditions
+
+A **Checkbox** group is used for a list of options where the user may make a choice by selecting multiple options, including all or none.
+
+### Dos & Don'ts
+
+<Markdown>
+  { `
+| ✅ Do                                                                                                                                                                           |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| - Always use clear and concise labels for **Checkbox**                                                                                                                         |
+| - Long labels may wrap to a second line, and this is preferable to truncation.                                                                                                 |
+` }
+</Markdown>
+<Markdown>
+  { `
+| ❌ Don't                                                                                                                                                                          |
+|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| - Avoid using **Checkbox** if only one item in list can be selected, prefer using [**Radio**](?path=/docs/ods-components-form-radio--documentation) instead                      |
+| - Truncate **Checkbox** label **Text** with an ellipsis.                                                                                                                         |
+` }
+</Markdown>
+
+## Placement
+
+The **Checkbox** can be autonomous, as it can be labelled in a starting/ending [**Text**](?path=/docs/ods-components-content-tag--documentation).
+
+It can be inserted in containers, or next to an external item.
+
+## Behavior
+
+The default behavior is that when clicking on the **Checkbox** or its linked label, the **Checkbox** is alternatively selected or deselected depending on the previous state.
+
+The indeterminate state is used only when the **Checkbox** contains a sub-list of selections that are partially selected.
+
+The **Checkbox** can be in an error state, but also in a disabled state.
+
+## Variants
+
+N/A
+
+## Accessibility
+
+**Checkbox** can be focus through tabulation, and toggled using `Space` and `Enter` keys.

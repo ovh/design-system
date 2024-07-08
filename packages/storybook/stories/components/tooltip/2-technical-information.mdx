@@ -1,0 +1,32 @@
+import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import SpecificationsTooltip from '@ovhcloud/ods-components/src/components/tooltip/documentation/spec.md?raw';
+import { Banner } from '../../banner';
+import * as TooltipStories from './tooltip.stories';
+
+<Meta of={ TooltipStories } name='Technical information' />
+
+<Banner of={ TooltipStories } />
+
+## Overview
+
+<Canvas of={ TooltipStories.Overview } sourceState='none' />
+
+<Markdown> { SpecificationsTooltip } </Markdown>
+
+## Style customization
+
+You can update the tooltip content by directly updating the slot element.
+
+Custom CSS:
+
+<Canvas of={ TooltipStories.CustomCSS } sourceState='shown' />
+
+## Examples
+
+### Default
+
+<Canvas of={ TooltipStories.Default } sourceState='shown' />
+
+### With an arrow tip
+
+<Canvas of={ TooltipStories.ArrowTip } sourceState='shown' />

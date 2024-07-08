@@ -1,0 +1,133 @@
+import { Canvas, Markdown, Meta } from '@storybook/blocks';
+import { Banner } from '../../banner';
+import * as SelectStories from './select.stories';
+import { OdsIcon } from '@ovhcloud/ods-components/react';
+import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
+
+<Meta of={ SelectStories } name='Documentation' />
+
+<Banner of={ SelectStories } />
+
+_**Select** component is used to select one or more items from a list of values_
+
+<Canvas of={ SelectStories.Default } sourceState='none' />
+
+## Overview
+<div>
+  <div id='description'>
+    A **Select** is used to allow users to select one or more items from a list that is displayed after clicking on it.
+  </div>
+  <table>
+    <tbody>
+    <tr>
+      <th scope="row">Name</th>
+      <td><strong>Select</strong></td>
+    </tr>
+    <tr>
+      <th scope="row">Also known as</th>
+      <td><em>Dropdown</em></td>
+    </tr>
+    <tr>
+      <th scope="row">Atomic type</th>
+      <td>
+        <a href='https://atomicdesign.bradfrost.com/chapter-2/#molecules'>Molecule<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Related component(s)</th>
+      <td>
+        [**Text**](?path=/docs/ods-components-content-tag--documentation),
+        [**Flag**](?path=/story/ods-components-content-flag--demo),
+        [**Badge**](?path=/docs/ods-components-content-badge--documentation), [**Form
+        Field**](?path=/docs/ods-components-form-form-field--documentation)
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Links</th>
+      <td>
+        <a href='https://www.figma.com/proto/tIKzHa5KvHHyosgIgyBswB/Design-Tokens'>Design<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a><br />
+        <a href='https://github.com/ovh/design-system/tree/master/packages/components/src/select'>Github<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+## Anatomy
+
+![Component anatomy](components/select/anatomy.png "Component anatomy")
+
+1. **Placeholder**
+2. **Field** to represent the **Select** itself. It can be opened and closed on click/trigger.
+3. "Chevron" [**Icon**](?path=/docs/ods-components-content-icon--documentation) to inform that the **Select** can display a list of choices.
+4. **Dropdown** that displays a list of items or options. It is displayed on click/trigger so users can make their choice.
+
+## Usage
+
+A **Select** is used to display to the user a list of items or options to choose from.
+
+The order of items or options in the list should be sorted as following, depending on the usage:
+- **Frequency** of use: recommended item will be listed first
+- **Alpha**: it can be used for countries or city locations for example
+- **Numeric**: it can be used for sizes for example
+
+### Dos & Don'ts
+
+<Markdown>
+  { `
+| ✅ Do                                                                                                                                                                           |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| - Use a **Select** when there are 3 or more items to choose from.                                                                                                              |
+| - Make the order of the **Select** list based on the frequency of use, alpha or numeric.                                                                                       |
+| - Use only one word or a very short [**Text**](?path=/docs/ods-components-content-tag--documentation) for each item of the list: try to keep it to one line.                   |
+` }
+</Markdown>
+<Markdown>
+  { `
+| ❌ Don't                                                                                                                                                                          |
+|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| - Use a **Select** to display a "yes" or "no" selection: use [**Radio**](?path=/docs/ods-components-form-radio--documentation) buttons                                           |
+| - Use a **Select** when a comparison between all items or options is needed: use [**Radio**](?path=/docs/ods-components-form-radio--documentation) buttons                       |
+` }
+</Markdown>
+
+## Placement
+
+**Select** should be vertically aligned with other form components on a same page.
+
+It has a width by default, but it can widen to match its container.
+
+## Behavior
+
+**Select** can be focused and hovered. It also can be disabled. A single option and a group of options can be disabled to be more precise in inner **Select** items.
+
+When an item contains a [**Text**](?path=/docs/ods-components-content-tag--documentation) that cannot fit on a single line, the [**Text**](?path=/docs/ods-components-content-tag--documentation) will be truncated.
+
+An event is triggered when the **Select** option changes.
+
+An event is called on focusing, and a blur event is triggered when the **Select** loses the focus.
+
+## Variants
+
+### Variations
+
+- **Single selection**: Allows the user to select a single item from a dropdown list of options.
+
+- **Multiple selection**: Allows the user to select multiple items from a dropdown list of options. The whole line is clickable.
+
+- **Grouped options**: Related options can be grouped together in both a single and multi **Select**.
+
+## Accessibility
+
+Like all form fields, **Select** component is focusable using `Tabulation` key.
+
+When focused, using `Space` opens the **Select**'s dropdown; while opened, user can :
+- Use `Up` or `Down` arrows to highlight an option
+- Use `Echap` key to close the dropdown without selecting anything new
+- Use `Enter` or `Tab` key to select the highlighted option

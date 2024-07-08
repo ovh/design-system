@@ -1,0 +1,112 @@
+import { Markdown, Meta } from '@storybook/blocks';
+import { Banner } from '../../banner';
+import * as CodeStories from './code.stories';
+import { OdsIcon } from '@ovhcloud/ods-components/react';
+import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
+
+<Meta of={ CodeStories } name='Documentation' />
+
+<Banner of={ CodeStories } />
+
+_**Code** component highlights strings or small blocks of **Code** so it makes them easier to read and understand_
+
+## Overview
+<div>
+  <div id='description'>
+    A **Code** component displays a string of **Code** or a small block of **Code** that can be copied to the clipboard.
+  </div>
+  <table>
+    <tbody>
+    <tr>
+      <th scope="row">Name</th>
+      <td><strong>Code</strong></td>
+    </tr>
+    <tr>
+      <th scope="row">Also known as</th>
+      <td><em>Code snippet</em></td>
+    </tr>
+    <tr>
+      <th scope="row">Atomic type</th>
+      <td>
+        <a href='https://atomicdesign.bradfrost.com/chapter-2/#atoms'>Atom<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Related component(s)</th>
+      <td>
+        [**Text**](?path=/docs/ods-components-content-tag--documentation),
+        [**Button**](?path=/docs/ods-components-actions-button--documentation)
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Links</th>
+      <td>
+        <a href='https://www.figma.com/proto/tIKzHa5KvHHyosgIgyBswB/Design-Tokens'>Design<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a><br />
+        <a href='https://github.com/ovh/design-system/tree/master/packages/components/src/code'>Github<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+## Anatomy
+
+![Component anatomy](components/code/anatomy.png "Component anatomy")
+
+1. A container with the whole **Code** content that will be copied to the clipboard
+2. A 'copy' icon **Button** to complete the copy action when clicked
+
+## Usage
+
+**Code** is mainly used for sharing examples of **Code** that can be a string or a small block of **Code**.
+
+An optional icon **Button** may be added in order to copy its content.
+
+### Dos & Don'ts
+
+<Markdown>
+  { `
+| ✅ Do                                                                                                                                                                           |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| - Align **Code** container to the grid                                                                                                                                         |
+| - Use **Code** for useful and reusable small portion of code                                                                                                                   |
+` }
+</Markdown>
+
+<Markdown>
+  { `
+| ❌ Don't                                                                                                                                                                          |
+|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| - Align **Code** text to the grid and hang its container                                                                                                                         |
+| - Use **Code** just to display some simple [**Text**](?path=/docs/ods-components-content-tag--documentation)                                                                     |
+| - Use **Code** with very long portion of code                                                                                                                                    |
+` }
+</Markdown>
+
+## Placement
+
+By default, the **Code** content is left-aligned in its container.
+
+It should be vertically aligned with other form components on a same page.
+
+## Behavior
+
+The "Copy" icon **Button** can be hovered, focused and clicked.
+
+If the optional icon **Button** exists, when clicking on it, the **Code** content is copied to the clipboard.
+
+An event is triggered when **Code** content is copied.
+
+## Variants
+
+N/A
+
+## Accessibility
+
+When focusing on the "Copy" icon [**Button**](?path=/docs/ods-components-actions-button--documentation), the component can be triggered with `Space` or `Enter` keys.

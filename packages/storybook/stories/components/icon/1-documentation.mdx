@@ -1,0 +1,112 @@
+import { Canvas, Markdown, Meta } from '@storybook/blocks';
+import { Banner } from '../../banner';
+import * as IconStories from './icon.stories';
+import { OdsIcon } from '@ovhcloud/ods-components/react';
+import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
+
+<Meta of={ IconStories } name='Documentation' />
+
+<Banner of={ IconStories } />
+
+_**Icon** is a visual context used to represent a command, navigation, status or common action._
+
+<Canvas of={ IconStories.Default } sourceState='none' />
+
+## Overview
+<div>
+  <div id='description'>
+    **Icon** is a visual symbol which provides visual context thanks to its clarity and consistency.
+
+    It is displayed as solid, in a single color.
+  </div>
+
+  <table>
+    <tbody>
+    <tr>
+      <th scope="row">Name</th>
+      <td><strong>Icon</strong></td>
+    </tr>
+    <tr>
+      <th scope="row">Also known as</th>
+      <td><em>Symbol</em></td>
+    </tr>
+    <tr>
+      <th scope="row">Atomic type</th>
+      <td>
+        <a href='https://bradfrost.com/blog/post/extending-atomic-design/'>Quark<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Related component(s)</th>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th scope="row">Links</th>
+      <td>
+        <a href='https://www.figma.com/proto/tIKzHa5KvHHyosgIgyBswB/Design-Tokens'>Design<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a><br />
+        <a href='https://github.com/ovh/design-system/tree/master/packages/components/src/icon'>Github<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+## Anatomy
+
+![Component anatomy](components/icon/anatomy.png "Component anatomy")
+
+## Usage
+
+**Icons** enhance the usability and bring clarity to users by reducing the cognitive load.
+
+**Icons** can be used in standalone [**Button**](?path=/docs/ods-components-actions-button--documentation) and can be usually associated with some sort of action.
+
+**Icons** can be used as navigational elements as well.
+
+### Dos & Don'ts
+
+<Markdown>
+  { `
+| ✅ Do                                                                                                                                                                           |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| - Give an equivalent text as aria-name to the Icon                                                                                                                             |
+| - Assure a good contrast between the background and Icon colors                                                                                                                |
+| - Center-align when **Icons** are next to [**Text**](?path=/docs/ods-components-content-tag--documentation)                                                                    |
+| - When **Icons** are next to [**Text**](?path=/docs/ods-components-content-tag--documentation), use the same color for pairing them                                            |
+` }
+</Markdown>
+<Markdown>
+  { `
+| ❌ Don't                                                                                                                                                                          |
+|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| - Use for decorative purpose                                                                                                                                                     |
+| - Use the same **Icon** for different purposes to avoid user's confusion                                                                                                         |
+| - Use similar shades of the same color for background and **Icon** colors                                                                                                        |
+| - Baseline-align **Icons** when they are next to [**Text**](?path=/docs/ods-components-content-tag--documentation)                                                               |
+| - When **Icons** are next to [**Text**](?path=/docs/ods-components-content-tag--documentation), don't use different colors for both of them                                      |
+` }
+</Markdown>
+
+## Placement
+
+**Icons** draw attention to important information or action, so it has to be thoughtfully inserted in a page.
+
+It also can be used in other components where it is adapted for a specific purpose.
+
+## Behavior
+
+**Icons** can stand alone or be included in a [**Button**](?path=/docs/ods-components-actions-button--documentation) or other components depending on the usage.
+
+## Variants
+
+N/A
+
+## Accessibility
+
+All **Icons** must have a readable ARIA `aria-label` to be linked to.

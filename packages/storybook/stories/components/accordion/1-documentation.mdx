@@ -1,0 +1,152 @@
+import { Canvas, Markdown, Meta } from '@storybook/blocks';
+import { Banner } from '../../banner';
+import * as AccordionStories from './accordion.stories';
+import { OdsIcon } from '@ovhcloud/ods-components/react';
+import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
+
+<Meta of={ AccordionStories } name='Documentation' />
+
+<Banner of={ AccordionStories } />
+
+_An **Accordion** is a vertical header that reveals or hides an associated section of content._
+
+<Canvas of={ AccordionStories.Overview } sourceState='none' />
+
+## Overview
+<div>
+  <div id='description'>
+    The **Accordion** component **delivers large amounts of content in a small space through progressive disclosure**.
+
+    The header part give the user a high level overview of the content allowing the user to decide which sections to
+    read.
+
+    **Accordions** can make **information processing and discovering more effective**. However, it does hide content
+    from
+    users, and
+    it’s important to account for a user not noticing or reading all the included content. If a user is likely to read
+    all the content then don’t use an **Accordion** as it adds the burden of an extra click; instead use a full
+    scrolling
+    page with normal headers.
+  </div>
+
+  <table>
+    <tbody>
+    <tr>
+      <th scope="row">Name</th>
+      <td><strong>Accordion</strong></td>
+    </tr>
+    <tr>
+      <th scope="row">Also known as</th>
+      <td><em>Collapsible, FAQ</em></td>
+    </tr>
+    <tr>
+      <th scope="row">Atomic type</th>
+      <td>
+        <a href='https://atomicdesign.bradfrost.com/chapter-2/#atoms'>Atom<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Related component(s)</th>
+      <td>
+        [**Text**](?path=/docs/ods-components-content-tag--documentation)
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Links</th>
+      <td>
+        <a href='https://www.figma.com/proto/tIKzHa5KvHHyosgIgyBswB/Design-Tokens'>Design<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a><br/>
+        <a href='https://github.com/ovh/design-system/tree/master/packages/components/src/accordion'>Github<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+## Anatomy
+
+![Component anatomy](components/accordion/anatomy.png "Component anatomy")
+  1. **Header**: contains the section title and acts as a control for revealing the panel or not (always visible).
+  2. **Icon**: A "down/up" chevron [**Icon**](?path=/docs/ods-components-content-icon--documentation) is used to indicate the “expand/collapse” action, though the entire header area is clickable (always visible).
+  3. **Panel**: the section of content associated with an **Accordion** header.
+
+## Usage
+
+Use any number of elements to visually display them as a group.
+Several collapsible panels can co-exist in a same interface.
+
+Use this component for :
+* Organizing related information
+* Shortening pages and reducing scrolling when content is not crucial to read in full
+* When space is at a premium and long content cannot be displayed all at once, like on a mobile interface or in a side panel
+
+### Dos & Don'ts
+
+<Markdown>
+  { `
+| ✅ Do                                                                                                                                                                                                                                                                                            |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------                                                                                                                  |
+| - Header [**Text**](?path=/docs/ods-components-content-tag--documentation) describes the content contained in the panel. Use a clear and concise [**Text**](?path=/docs/ods-components-content-tag--documentation), and be explicit about the action that will happen if the option is selected |
+| - Use sentence-style capitalization in header [**Text**](?path=/docs/ods-components-content-tag--documentation) (only the first word in a phrase and any proper nouns capitalized), no more than three words, and no punctuation                                                                |
+| - Use Accordion instead of [**Tab**](?path=/docs/ods-components-navigation-tabs--documentation) if users need to see multiple sections at once                                                                                                                                                  |
+` }
+</Markdown>
+
+<Markdown>
+  { `
+| ❌ Don't                                                                                                                                                                          |
+|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| - Expose a lot of content in the Header section (i.e. more than 2 lines)                                                                                                         |
+| - Use **Accordions** with essential content for users                                                                                                                            |
+| - Use [**Icon**](?path=/docs/ods-components-content-icon--documentation) in header text                                                                                   |
+| - Expose a lot of content in the Panel section (i.e. more than the viewport height)                                                                                              |
+| - Empty the Panel section, as the **Accordion** become useless                                                                                                                   |
+| - Disable **Accordions**, as it can be confusing for users                                                                                                                       |
+| - Trigger expanding/collapsing on hover action                                                                                                                                   |
+| - Avoid nested **Accordions**, like collapsible content within collapsible content                                                                                               |
+` }
+</Markdown>
+
+## Placement
+
+The **Accordion** component is adjusted to the parent's width. It can vary based on the content, layout, and page design.
+
+By default, the **Accordion** content is left-aligned in its container, as the header does.
+
+It can be placed within main page content or inside a side container (as panels, or tiles).
+
+## Behavior
+
+**Accordion** has two states : **collapsed** and **expanded**.
+
+**Accordion is by default collapsed.**
+
+When triggering the header part, the panel part should react as expanding or collapsing, depending on what previous
+state it had.
+
+The mouse cursor acts as a clickable area on the Header part of the component.
+
+The **Icon** helps the user to know if the **Accordion** is collapsed or expanded :
+  * Collapsed : chevron points down
+  * Expanded : chevron points up
+
+**The Header part of this component acts like a Button**, with hover, focus and active styles.
+
+Same behavior and styling applies to both Desktop and Mobile modes.
+
+## Variants
+
+N/A
+
+## Accessibility
+
+The header part can be navigated through tabulation, with the same behavior as a [**Button**](?path=/docs/ods-components-actions-button--documentation).
+
+When focusing the header part, pressing Enter or Space keys will trigger its expansion or its collapsion.
+
+For screen readers, the user can know easily that the **Accordion** is opened or not, and therefore the inner content is readable or not.

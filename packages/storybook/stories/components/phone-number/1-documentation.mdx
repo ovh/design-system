@@ -1,0 +1,120 @@
+import { Canvas, Markdown, Meta } from '@storybook/blocks';
+import { Banner } from '../../banner';
+import * as PhoneNumberStories from './phone-number.stories';
+import { OdsIcon } from '@ovhcloud/ods-components/react';
+import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
+
+<Meta of={ PhoneNumberStories } name='Documentation' />
+
+<Banner of={ PhoneNumberStories } />
+
+_**Phone Number** component is a combo of a selection of country phone indicator and an [**Input**](?path=/docs/ods-components-form-input--documentation) field for entering a phone number_
+
+<Canvas of={ PhoneNumberStories.Overview } sourceState='none' />
+
+## Overview
+<div>
+  <div id='description'>
+    **Phone Number** component is used to let users enter their phone number in the correct format for the selected
+    country.
+  </div>
+  <table>
+    <tbody>
+    <tr>
+      <th scope="row">Name</th>
+      <td><strong>Phone Number</strong></td>
+    </tr>
+    <tr>
+      <th scope="row">Also known as</th>
+      <td><em>**Phone Number**, Phone Number Field</em></td>
+    </tr>
+    <tr>
+      <th scope="row">Atomic type</th>
+      <td>
+        <a href='https://atomicdesign.bradfrost.com/chapter-2/#molecules'>Molecule<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Related component(s)</th>
+      <td>
+        [**Input**](?path=/docs/ods-components-form-input--documentation),
+        [**Select**](?path=/docs/ods-components-form-select--documentation),
+        [**Flag**](?path=/story/ods-components-content-flag--demo), [**Form
+        Field**](?path=/docs/ods-components-form-form-field--documentation)
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Links</th>
+      <td>
+        <a href='https://www.figma.com/proto/tIKzHa5KvHHyosgIgyBswB/Design-Tokens'>Design<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a><br />
+        <a href='https://github.com/ovh/design-system/tree/master/packages/components/src/phone-number'>Github<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+## Anatomy
+
+![Component anatomy](components/phone-number/anatomy.png "Component anatomy")
+
+1. **Country indicator Select**: displays the selected country flag and the list of countries by click. List is scroll-able, with 5 items visible at the same time. Each country name is written in the user locale, in alphabetical order (for Latin script)
+2. **Input field**: displays the country indicator as prefix when users select a country, and they can enter their phone number in this field (from 7 to 12 characters maximum). The [**Input**](?path=/docs/ods-components-form-input--documentation) field has also a placeholder to provide hints regarding format according to the selected country.
+
+## Usage
+
+**Phone Number** component should be used when there is a need to collect the user's phone number, in a form for instance:
+- As [**Form Field**](?path=/docs/ods-components-form-form-field--documentation) in an user profile
+- As in customer contact/appointment form
+- For telecom configuration
+
+### Dos & Don'ts
+<Markdown>
+  { `
+| ✅ Do                                                                                                                                                                              |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------    |
+| - Validate **Phone number** format when user leaves the field                                                                                                                     |
+| - Use **Phone Number** without the optional country indicator [**Select**](?path=/docs/ods-components-form-select--documentation) when you only accept user's locale as selection |
+| - Use a helper when validation is in error state (expected number of characters, expected format...)                                                                              |
+` }
+</Markdown>
+<Markdown>
+  { `
+| ❌ Don't                                                                                                                                                                          |
+|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| - Force a strict format to users                                                                                                                                                 |
+| - Make a **Phone Number** [**Input**](?path=/docs/ods-components-form-input--documentation) as required without explaining to users why this field is required                   |
+| - Assume exclusive use of mobile phone numbers                                                                                                                                   |
+` }
+</Markdown>
+
+## Placement
+
+**Phone Number** is a group of [**Select**](?path=/docs/ods-components-form-select--documentation) and [**Input**](?path=/docs/ods-components-form-input--documentation), and should act as their specific placements.
+
+## Behavior
+[
+// (By default, the country **Select** displays user's locale country. If the locale does not exist in the Phone Number current selection, the first item is selected by default.)
+]  #
+
+Country indicator [**Select**](?path=/docs/ods-components-form-select--documentation) can be optional.
+
+When the user selects a country, it determines the format used to validate their phone number. If selected country has been modified, expected format and placeholder will be updated.
+
+If the field content is in error state (i.e. missing or wrong characters), the whole **Phone Number** component becomes in error state.
+
+An event is triggered when the [**Input**](?path=/docs/ods-components-form-input--documentation) value changes.
+
+## Variants
+
+N/A
+
+## Accessibility
+
+Keyboard navigation is the same as [**Select**](?path=/docs/ods-components-form-select--documentation) and [**Input**](?path=/docs/ods-components-form-input--documentation) does, `Tab` key permits to focus to one another.

@@ -1,0 +1,60 @@
+import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import SpecificationsInput from '@ovhcloud/ods-components/src/components/input/documentation/spec.md?raw';
+import { Banner } from '../../banner';
+import * as InputStories from './input.stories';
+
+<Meta of={ InputStories } name='Technical information' />
+
+<Banner of={ InputStories } />
+
+## Overview
+
+<Canvas of={ InputStories.Default } sourceState='none' />
+
+<Markdown> { SpecificationsInput } </Markdown>
+
+## Style customization
+
+You can add your own style on the text element using the part `input`.
+
+Custom CSS :
+
+<Canvas of={ InputStories.CustomCSS } sourceState='shown'/>
+
+## Examples
+
+### Default
+
+<Canvas of={ InputStories.Default } sourceState='shown' />
+
+### Clearable
+
+<Canvas of={ InputStories.Clearable } sourceState='shown' />
+
+### Disabled
+
+<Canvas of={ InputStories.Disabled } sourceState='shown' />
+
+### Error
+
+<Canvas of={ InputStories.Error } sourceState='shown' />
+
+### Loading
+
+<Canvas of={ InputStories.Loading } sourceState='shown' />
+
+### Masked
+
+<Canvas of={ InputStories.Masked } sourceState='shown' />
+
+### Pattern
+Allow just numeric character
+<Canvas of={ InputStories.Pattern } sourceState='shown' />
+
+### Placeholder
+
+<Canvas of={ InputStories.Placeholder } sourceState='shown' />
+
+### Readonly
+
+<Canvas of={ InputStories.Readonly } sourceState='shown' />

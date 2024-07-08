@@ -1,0 +1,117 @@
+import { Canvas, Markdown, Meta } from '@storybook/blocks';
+import { Banner } from '../../banner';
+import * as InputStories from './input.stories';
+import { OdsIcon } from '@ovhcloud/ods-components/react';
+import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
+
+<Meta of={ InputStories } name='Documentation' />
+
+<Banner of={ InputStories } />
+
+_**Input** component is an **Input** field where users can type into_
+
+<Canvas of={ InputStories.Default } sourceState='none' />
+
+## Overview
+<div>
+  <div id='description'>
+    An **Input** is used to allow the user to enter a single line information in a field.
+  </div>
+
+  <table>
+    <tbody>
+    <tr>
+      <th scope="row">Name</th>
+      <td><strong>Input</strong></td>
+    </tr>
+    <tr>
+      <th scope="row">Also known as</th>
+      <td><em>Text Input, Text Field</em></td>
+    </tr>
+    <tr>
+      <th scope="row">Atomic type</th>
+      <td>
+        <a href='https://atomicdesign.bradfrost.com/chapter-2/#atoms'>Atom<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Related component(s)</th>
+      <td>
+        [**Button**](?path=/docs/ods-components-actions-button--documentation), [**Form
+        Field**](?path=/docs/ods-components-form-form-field--documentation),
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Links</th>
+      <td>
+        <a href='https://www.figma.com/proto/tIKzHa5KvHHyosgIgyBswB/Design-Tokens'>Design<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a><br />
+        <a href='https://github.com/ovh/design-system/tree/master/packages/components/src/input'>Github<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+## Anatomy
+
+![Component anatomy](components/input/anatomy.png "Component anatomy")
+
+1. A **field**: a container where the user can type in
+2. A **placeholder**: provides hints or example of what to type
+3. **Inner content**: displays the content typed by the field type (e.g.: `date`, `email`, `number`, `password`, `search`, `tel`, `text`, `time`, `url`)
+4. Clickable icon [**Button**](?path=/docs/ods-components-actions-button--documentation), used for extra actions
+5. Clickable icon [**Button**](?path=/docs/ods-components-actions-button--documentation), used for extra actions
+
+## Usage
+
+An **Input** is used to type a free-form short text in a field. It is often used within a [**Form Field**](?path=/docs/ods-components-form-form-field--documentation) component that adds its label.
+
+It is commonly used in a form, such as asking the user their name or email address, data entered can be text or numbers.
+
+The **Input** component can be used in addition with the **Autocomplete** component.
+
+### Dos & Don'ts
+
+<Markdown>
+  { `
+| ✅ Do                                                                                                                                                                           |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| - Add label and helper message to the **Input** with [**Form Field**](?path=/docs/ods-components-form-form-field--documentation) component.                                    |
+` }
+</Markdown>
+<Markdown>
+  { `
+| ❌ Don't                                                                                                                                                                                                                      |
+|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------                                             |
+| - Use an **Input** for content longer than a single line: Use a [**Textarea**](?path=/docs/ods-components-form-textarea--documentation) instead.                                                                       |
+| - Use an **Input** when you have a predefined list of answers: use a [**Select**](?path=/docs/ods-components-form-select--documentation) or [**Radio**](?path=/docs/ods-components-form-radio--documentation) instead. |
+` }
+</Markdown>
+
+## Placement
+
+**Input** should be vertically aligned with other form components on a same page.
+
+**Inputs** that are strongly related in a form can be grouped. This group can flow horizontally left to right and/or vertically top to bottom.
+
+## Behavior
+
+**Inputs** can be hovered, focused and clicked/triggered. They can be disabled as well.
+
+The user can start typing in the **Input** after clicking or focusing on the field container.
+
+When the user types longer text than the **Input** width, the cursor will automatically scroll left.
+
+## Variants
+
+N/A
+
+## Accessibility
+
+`Tab` permits to focus on **Input**.

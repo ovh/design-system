@@ -1,0 +1,31 @@
+import { Canvas, Markdown, Meta } from '@storybook/blocks';
+import SpecificationsCode from '@ovhcloud/ods-components/src/components/code/documentation/spec.md?raw';
+import { Banner } from '../../banner';
+import * as CodeStories from './code.stories';
+
+<Meta of={ CodeStories } name='Technical information' />
+
+<Banner of={ CodeStories } />
+
+## Overview
+
+<Canvas of={ CodeStories.Default } sourceState='none' />
+
+<Markdown>{ SpecificationsCode }</Markdown>
+
+## Style customization
+
+You can update the container directly by adding your own class to it.
+
+Custom CSS :
+
+<Canvas of={ CodeStories.CustomCSS } sourceState='shown' />
+
+## Examples
+
+### Default
+
+<Canvas of={ CodeStories.Default } sourceState='shown' />
+
+### With copy button enabled
+<Canvas of={ CodeStories.CanCopy } sourceState='shown' />

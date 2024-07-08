@@ -1,0 +1,118 @@
+import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import { Banner } from '../../banner';
+import * as TimepickerStories from './timepicker.stories';
+import { OdsIcon } from '@ovhcloud/ods-components/react';
+import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
+
+<Meta of={ TimepickerStories } name='Documentation' />
+
+<Banner of={ TimepickerStories } />
+
+_A **Timepicker** is a component that allows users to select a time from a list or set a specific time._
+
+<Canvas of={ TimepickerStories.Default } sourceState='none' />
+
+## Overview
+<div>
+  <div id='description'>
+    The **Timepicker** component is used for selecting times in forms and applications. It provides an interface for users to choose a time, ensuring the format is consistent and valid. The component can include features like 12-hour or 24-hour formats, increments, and disabled times.
+  </div>
+  <table>
+    <tbody>
+    <tr>
+      <th scope="row">Name</th>
+      <td><strong>Timepicker</strong></td>
+    </tr>
+    <tr>
+      <th scope="row">Also known as</th>
+      <td><em>Time</em></td>
+    </tr>
+    <tr>
+      <th scope="row">Atomic type</th>
+      <td>
+        <a href='https://atomicdesign.bradfrost.com/chapter-2/#molecules'>Molecule<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Related component(s)</th>
+      <td>
+        [**Input**](?path=/docs/ods-components-form-input--documentation), [**Select**](?path=/docs/ods-components-form-select--documentation), [**Form
+        Field**](?path=/docs/ods-components-form-form-field--documentation)
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Links</th>
+      <td>
+        <a href='https://www.figma.com/proto/tIKzHa5KvHHyosgIgyBswB/Design-Tokens'>Design<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a><br />
+        <a href='https://github.com/ovh/design-system/tree/master/packages/components/src/timepicker'>Github<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+## Anatomy
+
+![Component anatomy](components/timepicker/anatomy.png "Component anatomy")
+
+1. **Time Input**: it is a text field where users can type a time in expected format.
+2. **Timezone Select**: a list of worldwide timezones available
+
+## Usage
+
+**Timepicker** is used to allow a selection of a specific time.
+
+It is useful for scheduling such as planning a meeting.
+
+A **Timepicker** field includes the hour, minutes and optionally seconds. It can be followed by an AM/PM indicator.
+
+For some use case, an optional time zone [**Select**](?path=/docs/ods-components-form-select--documentation) can be added to allow users to select their desired time zone from a list of options.
+
+### Dos & Don'ts
+<Markdown>
+  { `
+| ✅ Do                                                                                                                                                                           |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| - Use a **Timepicker** in a form when you need to display scheduling options                                   |
+| - Add label and/or helper to the **Timepicker** with [**Form Field**](?path=/docs/ods-components-form-form-field--documentation) component                                   |
+| - A **Timepicker** can be combined with a Date picker to allow users to pick both date and time                                   |
+| - Use AM/PM selector when you plan to use 12 hours format                                   |
+| - Display a restricted list of timezones that makes sense, especially when the company or product exists only in few countries. Otherwise it adds to confusion                                   |
+` }
+</Markdown>
+<Markdown>
+  { `
+| ❌ Don't                                                                                                                                                                                                     |
+|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------                            |
+| - Use a placeholder in the time field as replacement for a 'label'     |
+| - Use a placeholder to provide crucial information since it will disappear after typing into the time field |
+` }
+</Markdown>
+
+## Placement
+
+A **Timepicker** can be used in a page as long as there is a need to allow users pick a time.
+
+The time field has a fixed width by default but, when used in a form, its width should match the other inputs.
+
+**Timepicker** should be vertically aligned with other form components on a same page.
+
+## Behavior
+
+A **Timepicker** can widen to match its container (width of the elements is 50% each).
+
+It has the same states and behaviors for each inner component (i.e. [**Input**](?path=/docs/ods-components-form-input--documentation) and [**Select**](?path=/docs/ods-components-form-select--documentation)).
+
+## Variants
+
+N/A
+
+## Accessibility
+
+Each **Timepicker** fields can be browsed through tabulations.

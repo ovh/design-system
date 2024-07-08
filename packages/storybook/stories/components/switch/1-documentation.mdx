@@ -1,0 +1,115 @@
+import { Canvas, Markdown, Meta } from '@storybook/blocks';
+import { Banner } from '../../banner';
+import * as SwitchStories from './switch.stories';
+import { OdsIcon } from '@ovhcloud/ods-components/react';
+import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
+
+<Meta of={ SwitchStories } name='Documentation' />
+
+<Banner of={ SwitchStories } />
+
+_A **Switch** allows users to quickly and easily switch between several states, actions or options in a row._
+
+<Canvas of={ SwitchStories.Overview } sourceState='none' />
+
+## Overview
+<div>
+  <div id='description'>
+    A **Switch** allows users to quickly and easily switch between several states, actions or options in a row.
+  </div>
+  <table>
+    <tbody>
+    <tr>
+      <th scope="row">Name</th>
+      <td><strong>Switch</strong></td>
+    </tr>
+    <tr>
+      <th scope="row">Also known as</th>
+      <td><em>Button group, Segmented control, Toggle group</em></td>
+    </tr>
+    <tr>
+      <th scope="row">Atomic type</th>
+      <td>
+        <a href='https://atomicdesign.bradfrost.com/chapter-2/#atoms'>Atom<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Related component(s)</th>
+      <td>
+        [**Text**](?path=/docs/ods-components-content-tag--documentation), [**Form
+        Field**](?path=/docs/ods-components-form-form-field--documentation)
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Links</th>
+      <td>
+        <a href='https://www.figma.com/proto/tIKzHa5KvHHyosgIgyBswB/Design-Tokens'>Design<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a><br />
+        <a href='https://github.com/ovh/design-system/tree/master/packages/components/src/switch'>Github<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+## Anatomy
+
+![Component anatomy](components/switch/anatomy.png "Component anatomy")
+
+1. **Controls**: the user clicks on them to choose a state or an item. Controls' content can be [**Text**](?path=/docs/ods-components-content-tag--documentation), [**Icon**](?path=/docs/ods-components-content-icon--documentation), or both.
+2. **Track**: it is a trail where the controls are displayed. The user can switch from one state or item to another
+
+## Usage
+
+A **Switch** is used to switch between multiple states, actions or options (up-to 4).
+
+It can be used for many use cases such as selecting a state within a group of states or filtering.
+
+### Dos & Don'ts
+<Markdown>
+  { `
+| ✅ Do                                                                                                                                                                                                                            |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------                                                  |
+| - Use a **Switch** when the user has to select only one state or action active at a time                                                                                                                                     |
+| - Make it clear in every **Switch** control content about what the user is selecting: give a strong indication                                                                                                               |
+| - Consider whether a [**Text**](?path=/docs/ods-components-content-tag--documentation), an [**Icon**](?path=/docs/ods-components-content-icon--documentation), or both would suit better to your **Switch** controls content |
+` }
+</Markdown>
+<Markdown>
+  { `
+| ❌ Don't                                                                                                                                                                                                                                                                                                                                             |
+|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------                                                                                                                                                                    |
+| - Use a **Switch** when there are more than four options to display to the user: use others component such as [**Checkbox**](?path=/docs/ods-components-form-checkbox--documentation) button, [**Radio**](?path=/docs/ods-components-form-radio--documentation) button or [**Select**](?path=/docs/ods-components-form-select--documentation) |
+| - Use a **Switch** when you are not expecting an immediate effect by clicking on it: use a [**Checkbox**](?path=/docs/ods-components-form-checkbox--documentation) component instead                                                                                                                                                          |
+| - Use a **Switch** with states, actions or options that are not strongly related                                                                                                                                                                                                                                                              |
+` }
+</Markdown>
+
+## Placement
+
+A **Switch** can be used in a page when the user needs to select a choice from multiple states or items.
+It may replace two [**Radio**](?path=/docs/ods-components-form-radio--documentation) buttons or a single [**Checkbox**](?path=/docs/ods-components-form-checkbox--documentation) to allow users to choose between several states.
+
+By default, the width of a **Switch** control is defined by the length of content.
+A custom width can be set so all controls on the track will have the same size regardless of content length.
+
+## Behavior
+
+**One of the controls is always selected by default.**
+
+The user can switch between states by clicking the **Switch** controls, and it has an immediate effect.
+
+An event is triggered when the **Switch** item changes.
+
+## Variants
+
+N/A
+
+## Accessibility
+
+All **Switch** items can be focused using `Tabulation`, selecting an item can be done using `Space`/`Enter` keys.

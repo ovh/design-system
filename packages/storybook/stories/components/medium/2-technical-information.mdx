@@ -1,0 +1,26 @@
+import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import SpecificationsMedium from '@ovhcloud/ods-components/src/components/medium/documentation/spec.md?raw';
+import { Banner } from '../../banner';
+import * as MediumStories from './medium.stories';
+
+<Meta of={ MediumStories } name='Technical information' />
+
+<Banner of={ MediumStories } />
+
+## Overview
+
+<Canvas of={ MediumStories.Default } sourceState='none' />
+
+<Markdown>{ SpecificationsMedium }</Markdown>
+
+## Examples
+
+### Default
+
+<Canvas of={ MediumStories.Default } sourceState='shown' />
+
+### Height
+<Canvas of={ MediumStories.Height } sourceState='shown' />
+
+### Width
+<Canvas of={ MediumStories.Width } sourceState='shown' />

@@ -1,0 +1,40 @@
+import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import SpecificationsLink from '@ovhcloud/ods-components/src/components/link/documentation/spec.md?raw';
+import { Banner } from '../../banner';
+import * as LinkStories from './link.stories';
+
+<Meta of={ LinkStories } name='Technical information' />
+
+<Banner of={ LinkStories } />
+
+## Overview
+
+<Canvas of={ LinkStories.Default } sourceState='none' />
+
+<Markdown>{ SpecificationsLink }</Markdown>
+
+## Style customization
+
+You can add your own style on the link element using the part `link`.
+
+Custom CSS:
+
+<Canvas of={ LinkStories.CustomCSSLink } sourceState='shown'/>
+
+## Examples
+
+### Default
+
+<Canvas of={ LinkStories.Default } sourceState='shown' />
+
+### Color
+<Canvas of={ LinkStories.Color } sourceState='shown' />
+
+### Disabled
+<Canvas of={ LinkStories.Disabled } sourceState='shown' />
+
+### Icon
+<Canvas of={ LinkStories.Icon } sourceState='shown' />
+
+### Target
+<Canvas of={ LinkStories.Target } sourceState='shown' />

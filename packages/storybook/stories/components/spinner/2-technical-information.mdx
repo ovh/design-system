@@ -1,0 +1,36 @@
+import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import SpecificationsSpinner from '@ovhcloud/ods-components/src/components/spinner/documentation/spec.md?raw';
+import { Banner } from '../../banner';
+import * as SpinnerStories from './spinner.stories';
+
+<Meta of={ SpinnerStories } name='Technical information' />
+
+<Banner of={ SpinnerStories } />
+
+## Overview
+
+<Canvas of={ SpinnerStories.Default } sourceState='none' />
+
+<Markdown>{ SpecificationsSpinner }</Markdown>
+
+## Style customization
+
+You can add your own style on the spinner element using the part `spinner`.
+
+Custom CSS :
+
+<Canvas of={ SpinnerStories.CustomCSS } sourceState='shown' />
+
+## Examples
+
+### Default
+
+<Canvas of={ SpinnerStories.Default } sourceState='shown' />
+
+### Color
+
+<Canvas of={ SpinnerStories.Color } sourceState='shown' />
+
+### Size
+
+<Canvas of={ SpinnerStories.Size } sourceState='shown' />

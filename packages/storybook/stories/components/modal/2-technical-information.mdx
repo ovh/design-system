@@ -1,0 +1,40 @@
+import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import SpecificationsModal from '@ovhcloud/ods-components/src/components/modal/documentation/spec.md?raw';
+import { Banner } from '../../banner';
+import * as ModalStories from './modal.stories';
+
+<Meta of={ ModalStories } name='Technical information' />
+
+<Banner of={ ModalStories } />
+
+## Overview
+
+<Canvas of={ ModalStories.Overview } sourceState='none' />
+
+<Markdown>{ SpecificationsModal }</Markdown>
+
+## Style customization
+
+You can update the modal's content by directly updating the slot elements. You can also update it using the `::part(dialog)`.
+
+Custom CSS:
+
+<Canvas of={ ModalStories.CustomCSS } sourceState='shown'/>
+
+## Examples
+
+### Default
+
+<Canvas of={ ModalStories.Default } sourceState='shown' />
+
+### Not Dismissible
+
+<Canvas of={ ModalStories.NotDismissible } sourceState='shown' />
+
+### Color
+
+<Canvas of={ ModalStories.Color } sourceState='shown' />
+
+### Actions slot
+
+<Canvas of={ ModalStories.Actions } sourceState='shown' />

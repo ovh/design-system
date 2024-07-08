@@ -1,0 +1,135 @@
+import { Canvas, Markdown, Meta } from '@storybook/blocks';
+import { Banner } from '../../banner';
+import * as CardStories from './card.stories';
+import { OdsIcon } from '@ovhcloud/ods-components/react';
+import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
+
+<Meta of={ CardStories } name='Documentation' />
+
+<Banner of={ CardStories } />
+
+_A **Card** is a versatile component designed to act as a container for various types of content, providing structure and context in a visually distinct box._
+
+<Canvas of={ CardStories.Overview } sourceState='none' />
+
+## Overview
+<div>
+  <div id='description'>
+    The **Card** component will serve as a flexible container that can be used across different parts of an application
+    to display information in a structured manner.
+
+    It is designed to be reusable, customizable, and responsive, as it can hold various elements like
+    [**Text**](?path=/docs/ods-components-content-tag--documentation),
+    [**Medium**](?path=/docs/ods-components-content-medium--documentation) and other UI components.
+
+    It also provides a consistent layout and styling for presenting information in a visually appealing way.
+  </div>
+
+  <table>
+    <tbody>
+    <tr>
+      <th scope="row">Name</th>
+      <td><strong>Card</strong></td>
+    </tr>
+    <tr>
+      <th scope="row">Also known as</th>
+      <td><em>Content Container, Content Box, Tile</em></td>
+    </tr>
+    <tr>
+      <th scope="row">Atomic type</th>
+      <td>
+        <a href='https://atomicdesign.bradfrost.com/chapter-2/#atoms'>Atom<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Related component(s)</th>
+      <td>
+        [**Tile**](?path=/story/ods-components-content-tile--demo),
+        [**Text**](?path=/docs/ods-components-content-tag--documentation),
+        [**Medium**](?path=/docs/ods-components-content-medium--documentation)
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Links</th>
+      <td>
+        <a href='https://www.figma.com/proto/tIKzHa5KvHHyosgIgyBswB/Design-Tokens'>Design<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a><br />
+        <a href='https://github.com/ovh/design-system/tree/master/packages/components/src/card'>Github<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+## Anatomy
+
+![Component anatomy](components/card/anatomy.png "Component anatomy")
+
+1. **Container**
+2. **Main content**
+
+## Usage
+
+A **Card** can be used to:
+
+* display a wide variety of content such as a [**Text**](?path=/docs/ods-components-content-tag--documentation), a [**Link**](?path=/docs/ods-components-actions-link--documentation) or other elements like a [**Button**](?path=/docs/ods-components-actions-button--documentation)
+* emphasize important content
+* visually group related content together
+* guide the user toward actions
+* provide the option to navigate to more detailed content
+
+Several elements can be used in a **Card**:
+
+* A title
+* A description
+* A [**Button**](?path=/docs/ods-components-actions-button--documentation)
+* A [**Medium**](?path=/docs/ods-components-content-medium--documentation)
+* Extra information
+
+All these elements are not mandatory in every **Card**.
+
+### Dos & Don'ts
+
+<Markdown>
+  { `
+| ✅ Do                                                                                                                                                                                                                                                                                     |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------                                                                                                           |
+| - Use **Cards** sparingly to improve readability                                                                                                                                                                                                                                         |
+| - Use content in a **Card**, such as [**Text**](?path=/docs/ods-components-content-tag--documentation), [**Medium**](?path=/docs/ods-components-content-medium--documentation) and [**Button**](?path=/docs/ods-components-actions-button--documentation), that are contextually related |
+| - Keep the number of [**Button**](?path=/docs/ods-components-actions-button--documentation) per **Card** to a minimum                                                                                                                                                                    |
+` }
+</Markdown>
+<Markdown>
+  { `
+| ❌ Don't                                                                                                                                                                          |
+|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| - Overuse **Cards** since it may confuse users                                                                                                                             |
+| - Add too much content in a **Card**                                                                                                                                       |
+| - Group **Cards** that are unlike and use different elements                                                                                                               |
+` }
+</Markdown>
+
+## Placement
+
+**Cards** have an automatic width, but they can widen to match the container.
+
+**Cards** that are strongly related can be grouped in a layout group. This group can flow horizontally left to right and/or vertically top to bottom.
+
+## Behavior
+
+N/A
+
+## Variants
+
+### Colors
+
+- **Neutral**: displaying standard content without conveying any particular status or urgency, maintaining a balanced and non-emphatic appearance.
+
+## Accessibility
+
+N/A

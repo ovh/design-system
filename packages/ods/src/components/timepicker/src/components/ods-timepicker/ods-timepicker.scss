@@ -1,0 +1,22 @@
+:host(.ods-timepicker) {
+  display: flex;
+  gap: 8px;
+}
+
+.ods-timepicker {
+  &__time {
+    &::part(input) {
+      width: 120px;
+    }
+
+    &--with-seconds {
+      &::part(input) {
+        width: 150px;
+      }
+    }
+  }
+
+  &__timezones {
+    width: 246px;
+  }
+}

@@ -4192,6 +4192,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@ovhcloud/ods-component-timepicker@workspace:packages/ods/src/components/timepicker":
+  version: 0.0.0-use.local
+  resolution: "@ovhcloud/ods-component-timepicker@workspace:packages/ods/src/components/timepicker"
+  languageName: unknown
+  linkType: soft
+
 "@ovhcloud/ods-component-toggle@workspace:packages/ods/src/components/toggle":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-toggle@workspace:packages/ods/src/components/toggle"

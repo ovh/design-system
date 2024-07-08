@@ -1,0 +1,31 @@
+import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import SpecificationsText from '@ovhcloud/ods-components/src/components/text/documentation/spec.md?raw';
+import { Banner } from '../../banner';
+import * as TextStories from './text.stories';
+
+<Meta of={ TextStories } name='Technical information' />
+
+<Banner of={ TextStories } />
+
+## Overview
+
+<Canvas of={ TextStories.Default } sourceState='none' />
+
+<Markdown> { SpecificationsText } </Markdown>
+
+## Style customization
+
+You can add your own style on the text element using the part `text`.
+
+Custom CSS :
+
+<Canvas of={TextStories.CustomCSS} sourceState='shown'/>
+
+## Examples
+### Default
+
+<Canvas of={ TextStories.Default } sourceState='shown' />
+
+### Preset
+
+<Canvas of={ TextStories.Preset } sourceState='shown' />

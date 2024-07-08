@@ -1,0 +1,125 @@
+import { Canvas, Markdown, Meta } from '@storybook/blocks';
+import { Banner } from '../../banner';
+import * as LinkStories from './link.stories';
+import { OdsIcon } from '@ovhcloud/ods-components/react';
+import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
+
+<Meta of={ LinkStories } name='Documentation' />
+
+<Banner of={ LinkStories } />
+
+_**Link** is a component that enables redirection to a new page, section, website or other resources:_
+
+<Canvas of={ LinkStories.Default } sourceState='none' />
+
+## Overview
+<div>
+  <div id='description'>
+    A **Link** allows users to move through a website by redirecting them to a different page or section.
+
+    It can also enables **Links** to other resources.
+  </div>
+  <table>
+    <tbody>
+    <tr>
+      <th scope="row">Name</th>
+      <td><strong>Link</strong></td>
+    </tr>
+    <tr>
+      <th scope="row">Also known as</th>
+      <td><em>Hyperlink, Anchor</em></td>
+    </tr>
+    <tr>
+      <th scope="row">Atomic type</th>
+      <td>
+        <a href='https://bradfrost.com/blog/post/extending-atomic-design/'>Quark<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Related component(s)</th>
+      <td>
+        [**Icon**](?path=/docs/ods-components-content-icon--documentation)
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Links</th>
+      <td>
+        <a href='https://www.figma.com/proto/tIKzHa5KvHHyosgIgyBswB/Design-Tokens'>Design<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a><br />
+        <a href='https://github.com/ovh/design-system/tree/master/packages/components/src/link'>Github<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+## Anatomy
+
+![Component anatomy](components/link/anatomy.png "Component anatomy")
+
+1. **Link text**: Communicates what is being linked to.
+2. [**Icon**](?path=/docs/ods-components-content-icon--documentation) (optional): Indicates the destination or type of content being.
+
+## Usage
+
+**Links** are used as navigational elements.
+
+They are also used when linking to another document. In that case, **Link** description should contain type and size of document.
+
+### When to use a **Link** or a [**Button**](?path=/docs/ods-components-actions-button--documentation):
+
+They have different purposes so, make sure you are accurately using them.
+
+[**Button**](?path=/docs/ods-components-actions-button--documentation) is used for actions while **Link** is used for navigation.
+
+### Dos & Don'ts
+
+<Markdown>
+  { `
+| ✅ Do                                                                                                                                                                           |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| - Use a **Link** to redirect user to a new page, section or website.                                                                                                           |
+| - Make a **Link** description self-explanatory to describe where user will be send after following this **Link**                                                               |
+| - Write short key words as **Link** description                                                                                                                                |
+| - Ensure users are aware of a **Link** containing a document by providing its type and size                                                                                    |
+` }
+</Markdown>
+<Markdown>
+  { `
+| ❌ Don't                                                                                                                                                                          |
+|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| - Use a **Link** as a [**Button**](?path=/docs/ods-components-actions-button--documentation) for actions such as 'save', 'cancel' or 'submit'                                    |
+| - Use "Click Here" or "Here" as description for a **Link**                                                                                                                       |
+| - Write a full long sentence as **Link** description                                                                                                                             |
+| - Use different color for **Link** and the optional [**Icon**](?path=/docs/ods-components-content-icon--documentation) when you add one                                          |
+` }
+</Markdown>
+
+## Placement
+
+A **Link** can stand alone on a page, or it can be placed within a sentence or a paragraph.
+
+An optional [**Icon**](?path=/docs/ods-components-content-icon--documentation) can be placed next to the **Link**.
+
+## Behavior
+
+**Link** component can be hovered, focused, clicked and disabled.
+
+When disabled, user cannot focus nor click on the **Link**.
+
+On hover, **Link** is underlined and its color changes.
+
+When users clicks anywhere on the **Link**, even its optional [**Icon**](?path=/docs/ods-components-content-icon--documentation), they are redirected to the expected page or section.
+
+## Variants
+
+N/A
+
+## Accessibility
+
+While **Link** has focus, users can press `Enter` key to open it.

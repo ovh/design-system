@@ -1,0 +1,49 @@
+import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import SpecificationsBreadcrumb from '@ovhcloud/ods-components/src/components/breadcrumb/documentation/spec.md?raw';
+import { Banner } from '../../banner';
+import * as BreadcrumbStories from './breadcrumb.stories';
+
+<Meta of={ BreadcrumbStories } name='Technical information' />
+
+<Banner of={ BreadcrumbStories } />
+
+## Overview
+
+<Canvas of={ BreadcrumbStories.Default } sourceState='none' />
+
+<Markdown>{ SpecificationsBreadcrumb }</Markdown>
+
+## Style customization
+
+The breadcrumb component wraps and apply style on the breadcrumb items you set inside of it.
+
+You can add directly some css classes on each item you want to customize.
+
+If you want to go deeper and customize the item link directly, you can use the part `link`
+
+Custom CSS :
+
+<Canvas of={ BreadcrumbStories.CustomCSS } sourceState='shown'/>
+
+## Examples
+
+### Default
+
+<Canvas of={ BreadcrumbStories.Default } sourceState='shown' />
+
+### Collapsed
+
+<Canvas of={ BreadcrumbStories.Collapsed } sourceState='shown' />
+
+### Get the clicked item
+
+If you need to perform specific actions when a breadcrumb item is clicked,
+you can observe the `odsBreadcrumbItemClick` event, that will return the target of the click.
+
+<Canvas of={ BreadcrumbStories.ClickedItem } sourceState='shown' />
+
+### Breadcrumb item attributes
+
+Each breadcrumb item supports the same attribute list as the [ods-link](?path=/docs/ods-components-actions-link--documentation#properties) component.
+
+<Canvas of={ BreadcrumbStories.CustomItem } sourceState='shown' />

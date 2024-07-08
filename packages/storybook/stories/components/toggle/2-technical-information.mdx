@@ -1,0 +1,37 @@
+import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import SpecificationsToggle from '@ovhcloud/ods-components/src/components/toggle/documentation/spec.md?raw';
+import { Banner } from '../../banner';
+import * as ToggleStories from './toggle.stories';
+
+<Meta of={ ToggleStories } name='Technical information' />
+
+<Banner of={ ToggleStories } />
+
+## Overview
+
+<Canvas of={ ToggleStories.Default } sourceState='none' />
+
+<Markdown>{ SpecificationsToggle }</Markdown>
+
+## Style customization
+
+You can add your own style on the text element using the part `slider`, `label`, `slider check` or `label check`.
+
+Custom CSS :
+
+<Canvas of={ ToggleStories.CustomCSS } sourceState='shown'/>
+
+## Examples
+
+### Default
+
+<Canvas of={ ToggleStories.Default } sourceState='shown' />
+
+### Disabled On
+<Canvas of={ ToggleStories.DisabledOn } sourceState='shown' />
+
+### Disabled Off
+<Canvas of={ ToggleStories.DisabledOff } sourceState='shown' />
+
+### With Label
+<Canvas of={ ToggleStories.WithLabel } sourceState='shown' />

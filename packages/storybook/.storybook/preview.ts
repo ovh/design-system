@@ -6,8 +6,7 @@ const preview: Preview = {
     docs: {
       toc: {
         contentsSelector: '.sbdocs-content',
-        headingSelector: 'h1, h2',
-        ignoreSelector: '.banner',
+        headingSelector: 'h2, h3',
         disable: false
       },
       source: {

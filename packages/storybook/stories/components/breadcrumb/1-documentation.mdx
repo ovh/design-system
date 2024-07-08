@@ -1,0 +1,125 @@
+import { Canvas, Markdown, Meta } from '@storybook/blocks';
+import { Banner } from '../../banner';
+import * as BreadcrumbStories from './breadcrumb.stories';
+import { OdsIcon } from '@ovhcloud/ods-components/react';
+import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
+
+<Meta of={ BreadcrumbStories } name='Documentation' />
+
+<Banner of={ BreadcrumbStories } />
+
+_A list of [**Link**](?path=/docs/ods-components-actions-link--documentation) showing the current page location in the navigational hierarchy._
+
+<Canvas of={ BreadcrumbStories.Default } sourceState='none' />
+
+## Overview
+
+<div>
+  <div id='description'>
+    **Breadcrumb** is used to define user position in a site hierarchy, it can also be useful for a finer navigation in
+    an inner application.
+  </div>
+
+  <table>
+    <tbody>
+    <tr>
+      <th scope="row">Name</th>
+      <td><strong>Breadcrumb</strong></td>
+    </tr>
+    <tr>
+      <th scope="row">Also known as</th>
+      <td><em>Breadcrumb trail</em></td>
+    </tr>
+    <tr>
+      <th scope="row">Atomic type</th>
+      <td>
+        <a href='https://atomicdesign.bradfrost.com/chapter-2/#atoms'>Atom<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Related component(s)</th>
+      <td>
+        [**Link**](?path=/docs/ods-components-actions-link--documentation),
+        [**Icon**](?path=/docs/ods-components-content-icon--documentation)),
+        [**Text**](?path=/docs/ods-components-content-tag--documentation))
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Links</th>
+      <td>
+        <a href='https://www.figma.com/proto/tIKzHa5KvHHyosgIgyBswB/Design-Tokens'>Design<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a><br />
+        <a href='https://github.com/ovh/design-system/tree/master/packages/components/src/breadcrumb'>Github<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+## Anatomy
+
+![Component anatomy](components/breadcrumb/anatomy.png "Component anatomy")
+1. **Page link** (as Home [**Icon**](?path=/docs/ods-components-content-icon--documentation))
+2. **Page link**: Directs users to the parent-level page.
+3. **Separator**: Element between each page.
+4. **Active page** (Non-clickable): Indicate the current page.
+
+## Usage
+
+It has several usage :
+* Displaying sub-pages of a site structure
+* Show a step progress of a process
+* Simplify site structure navigation in a quicker way
+
+### Dos & Don'ts
+
+<Markdown>
+  { `
+| ✅ Do                                                                                                                                                                           |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| - The first **Breadcrumb** element has to be a [**Link**](?path=/docs/ods-components-actions-link--documentation) to its preferential home page (with an [**Icon**](?path=/docs/ods-components-content-icon--documentation), or with "Home" [**Text**](?path=/docs/ods-components-content-tag--documentation))
+| - Inherit page structure logic inside the **Breadcrumb** construction
+` }
+</Markdown>
+
+<Markdown>
+  { `
+| ❌ Don't                                                                                                                                                                          |
+|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| - Use **Breadcrumb** for main page navigation                                                                                                                                    |
+| - Use nested **Breadcrumbs**                                                                                                                                                     |
+| - Add external [**Link**](?path=/docs/ods-components-actions-link--documentation) in the component                                                                               |
+| - Put more than 4 imbrications inside a **Breadcrumb**, as the structure will be too complex                                                                                     |
+` }
+</Markdown>
+
+## Placement
+
+A **Breadcrumb** is used at the top of a web page, preferably start-aligned.
+
+Its width is automatic, relative to its content and is not adjustable.
+
+## Behavior
+
+When the **Breadcrumb** has more than 4 [**Link**](?path=/docs/ods-components-actions-link--documentation) visible, an ellipsis is displayed as a replacement for the middle [**Link**](?path=/docs/ods-components-actions-link--documentation).
+
+A click on the ellipsis will expanded all previously hidden [**Link**](?path=/docs/ods-components-actions-link--documentation) inline, the collapsed state can't be redone afterwards.
+
+The **Breadcrumb** [**Link**](?path=/docs/ods-components-actions-link--documentation) are kept inline, even on mobile viewports.
+
+Clicking or pressing `enter` or `space` key on **Breadcrumb** item triggers and event.
+
+Same actions on **Breadcrumb** collapsed item will trigger and event.
+
+## Variants
+
+N/A
+
+## Accessibility
+
+All [**Link**](?path=/docs/ods-components-actions-link--documentation) are accessible through tabulation.

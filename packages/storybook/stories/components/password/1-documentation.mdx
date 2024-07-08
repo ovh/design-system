@@ -1,0 +1,117 @@
+import { Canvas, Markdown, Meta } from '@storybook/blocks';
+import { Banner } from '../../banner';
+import * as PasswordStories from './password.stories';
+import { OdsIcon } from '@ovhcloud/ods-components/react';
+import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
+
+<Meta of={ PasswordStories } name='Documentation' />
+
+<Banner of={ PasswordStories } />
+
+_**Password** component is an [**Input**](?path=/docs/ods-components-form-input--documentation) field for entering a password that can be hidden or not._
+
+<Canvas of={ PasswordStories.Default } sourceState='none' />
+
+## Overview
+<div>
+  <div id='description'>
+    The **Password** component is an **Input** field whose content is replaced with middle dot symbol "·" by default and
+    the
+    masking can be toggled using a show/hide action.
+  </div>
+  <table>
+    <tbody>
+    <tr>
+      <th scope="row">Name</th>
+      <td><strong>Password</strong></td>
+    </tr>
+    <tr>
+      <th scope="row">Also known as</th>
+      <td><em>Password field, Password input</em></td>
+    </tr>
+    <tr>
+      <th scope="row">Atomic type</th>
+      <td>
+        <a href='https://atomicdesign.bradfrost.com/chapter-2/#molecules'>Molecule<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Related component(s)</th>
+      <td>
+        [**Input**](?path=/docs/ods-components-form-input--documentation), [**Form
+        Field**](?path=/docs/ods-components-form-form-field--documentation)
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Links</th>
+      <td>
+        <a href='https://www.figma.com/proto/tIKzHa5KvHHyosgIgyBswB/Design-Tokens'>Design<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a><br />
+        <a href='https://github.com/ovh/design-system/tree/master/packages/components/src/password'>Github<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+## Anatomy
+
+![Component anatomy](components/password/anatomy.png "Component anatomy")
+
+1. **Placeholder**: it provides hints or example of what user should type
+2. **Container**: it is a container where the user can type in
+3. **Clear action**: a `close` icon [**Button**](?path=/docs/ods-components-actions-button--documentation) so that user can clear the [**Input**](?path=/docs/ods-components-form-input--documentation) content (optional)
+4. **Show/hide action**: an `eye` icon [**Button**](?path=/docs/ods-components-actions-button--documentation) to toggle between masked or visible [**Input**](?path=/docs/ods-components-form-input--documentation) content
+
+## Usage
+
+A **Password** is mainly used to let users enter a password.
+
+Entered password can be masked or visible as plain text when users need to check what they have entered.
+
+It can also be used for displaying tokens.
+
+### Dos & Don'ts
+
+<Markdown>
+  { `
+| ✅ Do                                                                                                                                                                           |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| - Use a **Password** when user has to enter sensitive data in the field                                                                                                        |
+| - Use read-only **Password** for tokens with copyable action enabled                                                                                                           |
+` }
+</Markdown>
+<Markdown>
+  { `
+| ❌ Don't                                                                                                                                                                          |
+|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| - Use a **Password** when you need the text users enter to be only visible. You should use an [**Input**](?path=/docs/ods-components-form-input--documentation) instead          |
+` }
+</Markdown>
+
+## Placement
+
+By default, the **Password** content is left-aligned in its container.
+
+## Behavior
+
+By default, the **Password** content is masked.
+
+**Password** can be used as read-only (especially for tokens).
+
+The password masking toggled using show/hide action is permanent. Users have to click again to show/hide the [**Input**](?path=/docs/ods-components-form-input--documentation) content.
+
+It inherits events from [**Input**](?path=/docs/ods-components-form-input--documentation) component.
+
+## Variants
+
+N/A
+
+## Accessibility
+
+Password shares the same keyboard features as [**Input**](?path=/docs/ods-components-form-input--documentation) (focusing + icon [**Button**](?path=/docs/ods-components-actions-button--documentation))

@@ -1,0 +1,103 @@
+import { Canvas, Markdown, Meta } from '@storybook/blocks';
+import { Banner } from '../../banner';
+import * as SpinnerStories from './spinner.stories';
+import { OdsIcon } from '@ovhcloud/ods-components/react';
+import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
+
+<Meta of={ SpinnerStories } name='Documentation' />
+
+<Banner of={ SpinnerStories } />
+
+_A visual indicator that a process is happening in the background but the interface is not yet ready for interaction._
+
+<Canvas of={ SpinnerStories.Default } sourceState='none' />
+
+## Overview
+<div>
+  <div id='description'>
+    A visual indicator that **a process is happening in the background** but the interface is not yet ready for
+    interaction.
+  </div>
+  <table>
+    <tbody>
+    <tr>
+      <th scope="row">Name</th>
+      <td><strong>Spinner</strong></td>
+    </tr>
+    <tr>
+      <th scope="row">Also known as</th>
+      <td><em>Loading, Spin, Circular Progress</em></td>
+    </tr>
+    <tr>
+      <th scope="row">Atomic type</th>
+      <td>
+        <a href='https://bradfrost.com/blog/post/extending-atomic-design/'>Quark<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Related component(s)</th>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th scope="row">Links</th>
+      <td>
+        <a href='https://www.figma.com/proto/tIKzHa5KvHHyosgIgyBswB/Design-Tokens'>Design<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a><br />
+        <a href='https://github.com/ovh/design-system/tree/master/packages/components/src/spinner'>Github<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+## Anatomy
+
+![Component anatomy](components/spinner/anatomy.png "Component anatomy")
+
+1. **Main content**: the **Spinner** itself.
+
+## Usage
+
+**Spinner** component is used as a fallback when complex content is loading in the background.
+
+When using a **Spinner** directly over content, we recommend applying an opacity to the content container to de-emphasize the content and increase the visibility of the **Spinner**.
+
+### Dos & Don'ts
+<Markdown>
+  { `
+| ✅ Do                                                                                                                                                                           |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| - Use **Spinner** when the loading wait time is expected to be longer than three seconds.                                                                                      |
+` }
+</Markdown>
+<Markdown>
+  { `
+| ❌ Don't                                                                                                                                                                          |
+|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| - Use multiple **Spinners** on the same page, prefer using a single **Spinner** on an overlay.                                                                                   |
+| - Use **Spinner** for text-only loading. Use [**Skeleton**](?path=/docs/ods-components-content-skeleton--documentation) component instead.                                       |
+` }
+</Markdown>
+
+## Placement
+
+**Spinner can be placed where needed**, whether it's centered on an overlay or specific container/content in the page.
+
+**Spinner** can widen to match its container.
+
+## Behavior
+
+The **Spinner** component has a spinning animation to show to the user that the background process is moving on.
+
+## Variants
+
+N/A
+
+## Accessibility
+
+User is being notified of its loading based on the ARIA `live` property.

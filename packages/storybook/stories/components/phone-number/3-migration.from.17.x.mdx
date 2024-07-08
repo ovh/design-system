@@ -1,0 +1,183 @@
+import { Meta } from '@storybook/blocks';
+import * as PhoneNumberStories from './phone-number.stories';
+
+<Meta of={ PhoneNumberStories } name='Migration From 17.x' />
+
+# PhoneNumber - migrate from v17 to v18
+----
+
+### List of country changes
+
+The list of available iso codes have been updated, the following are no longer available:
+
+<img src="https://img.shields.io/badge/removed-FF0000" />
+
+<table>
+  <thead>
+    <tr>
+      <td>Iso Code</td>
+      <td>Country Name</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>aq</td>
+      <td>Antarctica</td>
+    </tr>
+    <tr>
+      <td>bq</td>
+      <td>Bonaire, Sint Eustatius and Saba</td>
+    </tr>
+    <tr>
+      <td>bv</td>
+      <td>Bouvet Island</td>
+    </tr>
+    <tr>
+      <td>gf</td>
+      <td>French Guiana</td>
+    </tr>
+    <tr>
+      <td>gp</td>
+      <td>Guadeloupe</td>
+    </tr>
+    <tr>
+      <td>gs</td>
+      <td>South Georgia and the South Sandwich Islands</td>
+    </tr>
+    <tr>
+      <td>hm</td>
+      <td>Heard Island and McDonald Islands</td>
+    </tr>
+    <tr>
+      <td>io</td>
+      <td>British Indian Ocean Territory</td>
+    </tr>
+    <tr>
+      <td>pm</td>
+      <td>Saint Pierre and Miquelon</td>
+    </tr>
+    <tr>
+      <td>pn</td>
+      <td>Pitcairn</td>
+    </tr>
+    <tr>
+      <td>re</td>
+      <td>Réunion</td>
+    </tr>
+    <tr>
+      <td>sj</td>
+      <td>Svalbard and Jan Mayen</td>
+    </tr>
+    <tr>
+      <td>sx</td>
+      <td>Sint Maarten</td>
+    </tr>
+    <tr>
+      <td>tf</td>
+      <td>French Southern Territories</td>
+    </tr>
+    <tr>
+      <td>um</td>
+      <td>United States Minor Outlying Islands</td>
+    </tr>
+  </tbody>
+</table>
+
+## Attributes changes
+
+`ariaLabel` <img src="https://img.shields.io/badge/new-008000" />
+
+New attribute (optional).
+
+You can use the new `ariaLabel` attribute to apply the aria label value on the input.
+
+`ariaLabelledby` <img src="https://img.shields.io/badge/new-008000" />
+
+New attribute (optional).
+
+You can use the new `araiLabelledby` attribute to apply the aria labelled-by value on the input.
+
+`clearable` <img src="https://img.shields.io/badge/updated-00FFFF" />
+
+Has been updated.
+
+You can use the new `isClearable` attribute to obtain the same behavior.
+
+`disabled` <img src="https://img.shields.io/badge/updated-00FFFF" />
+
+Has been updated.
+
+You can use the new `isDisabled` attribute to obtain the same behavior.
+
+`error` <img src="https://img.shields.io/badge/updated-00FFFF" />
+
+Has been updated.
+
+You can use the new `hasError` attribute to obtain the same behavior.
+
+`isLoading` <img src="https://img.shields.io/badge/new-008000" />
+
+New attribute (optional).
+
+You can use the new `isLoading` attribute to apply the loading state on the input.
+
+`isReadonly` <img src="https://img.shields.io/badge/new-008000" />
+
+New attribute (optional).
+
+You can use the new `isReadonly` attribute to apply the readonly state on the input and the select (if you have any countries set).
+
+`isRequired` <img src="https://img.shields.io/badge/new-008000" />
+
+New attribute (optional).
+
+You can use the new `isRequired` attribute to apply the required state on the input.
+
+`pattern` <img src="https://img.shields.io/badge/new-008000" />
+
+New attribute (optional).
+
+You can use the new `pattern` attribute to apply the required pattern on the input.
+
+Do note that the phone-number component already provides a format validation, that can accepts a lot of different usage per country.
+
+For example, those are all valid french phone number: `0123456789`, `+33 123456789`, `01.23.45.67.89`, `+331 23-45-67-89`.
+
+We do advise to not enforce any pattern on this component to let the user type as he prefers.
+
+The final value will be formatted the same way in any case (all examples above will return the formatted value `+33123456789`);
+
+## Migration examples
+
+Clearable phone number:
+```html
+<osds-phone-number clearable>
+</osds-phone-number>
+
+<!-- is now -->
+
+<ods-phone-number is-clearable>
+</ods-phone-number>
+```
+
+Disabled phone number:
+```html
+<osds-phone-number disabled>
+</osds-phone-number>
+
+<!-- is now -->
+
+<ods-phone-number is-disabled>
+</ods-phone-number>
+```
+
+Errored phone number:
+```html
+<osds-phone-number error>
+</osds-phone-number>
+
+<!-- is now -->
+
+<ods-phone-number has-error>
+</ods-phone-number>
+```

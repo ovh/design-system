@@ -1,0 +1,40 @@
+import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import SpecificationsBadge from '@ovhcloud/ods-components/src/components/badge/documentation/spec.md?raw';
+import { Banner } from '../../banner';
+import * as BadgeStories from './badge.stories';
+
+<Meta of={ BadgeStories } name='Technical information' />
+
+<Banner of={ BadgeStories } />
+
+## Overview
+
+<Canvas of={ BadgeStories.Default } sourceState='none' />
+
+<Markdown>{ SpecificationsBadge }</Markdown>
+
+## Style customization
+
+You can add your own style on the badge element using the part `badge`.
+
+Custom CSS:
+
+<Canvas of={ BadgeStories.CustomCSS } sourceState='shown'/>
+
+## Examples
+
+### Default
+
+<Canvas of={ BadgeStories.Default } sourceState='shown' />
+
+### Color
+
+<Canvas of={ BadgeStories.Color } sourceState='shown' />
+
+### Shape
+
+<Canvas of={ BadgeStories.Shape } sourceState='shown' />
+
+### Size
+
+<Canvas of={ BadgeStories.Size } sourceState='shown' />

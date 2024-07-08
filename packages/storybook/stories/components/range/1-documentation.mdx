@@ -1,0 +1,128 @@
+import { Canvas, Markdown, Meta } from '@storybook/blocks';
+import { Banner } from '../../banner';
+import * as RangeStories from './range.stories';
+import { OdsIcon } from '@ovhcloud/ods-components/react';
+import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
+
+<Meta of={ RangeStories } name='Documentation' />
+
+<Banner of={ RangeStories } />
+
+_**Range** component is used to allow users to visually select one or more values from a range of values by moving the handle along a bar_
+
+<Canvas of={ RangeStories.Overview } sourceState='none' />
+
+## Overview
+<div>
+  <div id='description'>
+    The **Range** component is used for selecting a numerical value or a range of values within a specified range.
+
+    It provides a visual and interactive way to adjust values, often used in forms, settings, and data filtering.
+
+    The component can support single-value sliders or dual-handle sliders for selecting ranges.
+  </div>
+  <table>
+    <tbody>
+    <tr>
+      <th scope="row">Name</th>
+      <td><strong>Range</strong></td>
+    </tr>
+    <tr>
+      <th scope="row">Also known as</th>
+      <td><em>Slider</em></td>
+    </tr>
+    <tr>
+      <th scope="row">Atomic type</th>
+      <td>
+        <a href='https://atomicdesign.bradfrost.com/chapter-2/#atoms'>Atom<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Related component(s)</th>
+      <td>
+        [**Form Field**](?path=/docs/ods-components-form-form-field--documentation),
+        [**Input**](?path=/docs/ods-components-form-input--documentation)
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Links</th>
+      <td>
+        <a href='https://www.figma.com/proto/tIKzHa5KvHHyosgIgyBswB/Design-Tokens'>Design<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a><br />
+        <a href='https://github.com/ovh/design-system/tree/master/packages/components/src/range'>Github<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+## Anatomy
+
+![Component anatomy](components/range/anatomy.png "Component anatomy")
+
+1. **Track**: the range of values the user can select and adjust
+2. **Filled track**: the user's selected value within the **Range**. It is filled from the minimum value to the selected value
+3. **Thumb**: a positional indicator. It can be moved along the track to indicate a position on this track
+4. **Additional thumb**: a second positional indicator to get a dual **Range**. It allows users to take a portion of something which is matching range _(optional)_
+5. **Minimum value label**: beginning of a **Range** as its minimum value
+6. **Maximum value label**: end of a **Range** as its maximum value
+
+## Usage
+
+A **Range** is used to select a numeric value within a given range with defined minimum and maximum values.
+
+It is easily adjustable in a visually pleasing interface and, after interacting with it, changes are reflected immediately.
+
+A dual **Range** allows the user to select a numeric range value that is no less than a given value, and no more than another given value.
+
+### Dos & Don'ts
+<Markdown>
+  { `
+| ✅ Do                                                                                                                                                                                         |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------               |
+| - Use a **Range** when the user needs a way to select a value within a range                                                                                                                 |
+| - Include a label on a **Range**, such as the one provided by [**Form Field**](?path=/docs/ods-components-form-form-field--documentation) component, to explain the purpose of the **Range** |
+| - Add a default numeric value                                                                                                                                                                |
+` }
+</Markdown>
+<Markdown>
+  { `
+| ❌ Don't                                                                                                                                                                          |
+|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| - Overuse **Ranges** on one page                                                                                                                                                 |
+| - Use a **Range** when the numeric value range is infinite                                                                                                                       |
+| - Use a **Range** in too small spaces on a page: it is necessary to have enough space in the UI                                                                                  |
+| - Use a continuous **Range** when the defined range of values is too large: use a discrete **Range**                                                                             |
+` }
+</Markdown>
+
+## Placement
+
+A **Range** can be used in a page as long as there is a need to allow users to select a numeric value within a given range, for a quantity or a volume for example.
+
+It has a width by default, but it can widen to match its container.
+
+The **Range** can also be used inside components.
+
+It also can be combined with other elements such as an [**Input**](?path=/docs/ods-components-form-input--documentation) for a better control of the value selection.
+
+## Behavior
+
+A **Range** can be focused and hovered. It also can be disabled.
+
+The user can select a numeric value by clicking and dragging the thumb along the track.
+
+An event is triggered when the **Range** value(s) changes.
+
+## Variants
+
+N/A
+
+## Accessibility
+
+Each **Range** thumb can be focused using `Tabulation`, using `Up` and `Right` arrows increases its value, `Down` and `Left` keys decreases it.

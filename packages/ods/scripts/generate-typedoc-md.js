@@ -86,16 +86,16 @@ function getClassesInfo(jsonItems) {
 
       if (!eventsMarkdown.length && !methodsMarkdown.length && !propsMarkdown.length) {
         return [
-          `# ${classData.name}`,
+          `## ${classData.name}`,
           'This component has no properties, events nor methods.',
         ].join('\n');
       }
 
       return [
-        `# ${classData.name}`,
-        propsMarkdown.length ? '## Properties' : '', propsMarkdown,
-        methodsMarkdown.length ? '## Methods' : '', methodsMarkdown,
-        eventsMarkdown.length ? '## Events' : '', eventsMarkdown,
+        `## ${classData.name}`,
+        propsMarkdown.length ? '### Properties' : '', propsMarkdown,
+        methodsMarkdown.length ? '### Methods' : '', methodsMarkdown,
+        eventsMarkdown.length ? '### Events' : '', eventsMarkdown,
       ].join('\n');
     });
 }
@@ -148,14 +148,14 @@ function getEnums(jsonItems) {
   }
 
   return [
-    `# Enums`,
+    `### Enums`,
     enums.join('\n'),
   ];
 }
 
 function getEnum(enumDefinition) {
   const children = enumDefinition.children.map(({ name, type }) => `• **${name}** = \`"${type?.value}"\`\n`);
-  return `## ${enumDefinition.name}\n\n${children.join('\n')}\n`
+  return `#### ${enumDefinition.name}\n\n${children.join('\n')}\n`
 }
 
 function getTypeValue(tObj) {

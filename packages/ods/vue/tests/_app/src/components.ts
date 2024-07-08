@@ -42,6 +42,7 @@ const componentNames = [
   'accordion',
   'phone-number',
   'datepicker',
+  'timepicker',
   //--generator-anchor--
 ];
 

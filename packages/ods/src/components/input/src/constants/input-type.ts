@@ -3,6 +3,7 @@ enum ODS_INPUT_TYPE {
   number = 'number',
   password = 'password',
   text = 'text',
+  time = 'time',
   url = 'url',
 }
 

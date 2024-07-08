@@ -1,0 +1,10 @@
+{
+  "entryPoints": ["src/index.ts"],
+  "excludeInternal": true,
+  "excludePrivate": true,
+  "excludeProtected": true,
+  "hideGenerator": true,
+  "json": "dist/docs-api/typedoc.json",
+  "out": "dist/docs-api/",
+  "tsconfig":"tsconfig.json"
+}

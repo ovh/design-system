@@ -52,7 +52,7 @@ const totalItemsParam = {
   defaultItemsPerPage: {
     table: {
       category: CONTROL_CATEGORY.general,
-      defaultValue: { summary: ODS_PAGINATION_PER_PAGE.min },
+      defaultValue: { summary: ODS_PAGINATION_PER_PAGE.option_10 },
       type: { summary: 'number' },
     },
     control: 'select',
@@ -138,7 +138,7 @@ export const TotalItems: StoryObj = {
   }),
   args: {
     defaultCurrentPage: 4,
-    defaultItemsPerPage: ODS_PAGINATION_PER_PAGE.min,
+    defaultItemsPerPage: ODS_PAGINATION_PER_PAGE.option_10,
     isDisabled: false,
     labelTooltipPrevious: 'Previous label',
     labelTooltipNext: 'Next label',

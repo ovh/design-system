@@ -21,6 +21,9 @@ export class OdsPagination {
   private leftArrowButtonId = 'pagination-left-arrow';
   private rightArrowButtonId = 'pagination-right-arrow';
   private hostId: string = '';
+  private maxPagesBeforeEllipsis = 6;
+  private minCurrentPageForRightEllipsis = 4;
+  private pagesBeforeEnd = 3;
 
   @Element() el!: HTMLElement;
 
@@ -140,49 +143,46 @@ export class OdsPagination {
     }
   }
 
-  handlePreviousClick(page: number): void {
+  private handlePreviousClick(page: number): void {
     this.setCurrentPage(page - 1);
   }
 
-  handleNextClick(page: number): void {
+  private handleNextClick(page: number): void {
     this.setCurrentPage(page + 1);
   }
 
-  handlePageClick(page: number): void {
+  private handlePageClick(page: number): void {
     this.setCurrentPage(page);
   }
 
-  handlePreviousKeyUp(event: KeyboardEvent, page: number): void {
+  private handlePreviousKeyUp(event: KeyboardEvent, page: number): void {
     if (this.current > 1) {
       this.onKeyUp(event, page - 1);
     }
   }
 
-  handleNextKeyUp(event: KeyboardEvent, page: number): void {
+  private handleNextKeyUp(event: KeyboardEvent, page: number): void {
     if (this.current < this.pageList.length) {
       this.onKeyUp(event, page + 1);
     }
   }
 
-  handlePageKeyUp(event: KeyboardEvent, page: number): void {
+  private handlePageKeyUp(event: KeyboardEvent, page: number): void {
     this.onKeyUp(event, page);
   }
 
-  onKeyUp(event: KeyboardEvent, page: number): void {
+  private onKeyUp(event: KeyboardEvent, page: number): void {
     if (event.key === ' ' || event.key === 'Enter') {
       event.preventDefault();
       this.setCurrentPage(page);
     }
   }
 
-  renderArrow(direction: 'left' | 'right'): typeof Fragment {
+  private renderArrow(direction: 'left' | 'right'): typeof Fragment {
     const isLeft = direction === 'left';
     const tooltipLabel = isLeft ? this.labelTooltipPrevious : this.labelTooltipNext;
     const arrowButtonId = isLeft ? this.leftArrowButtonId : this.rightArrowButtonId;
-
-    const checkArrowDisabled = (): boolean => {
-      return this.isDisabled || (isLeft && this.current === 1) || (!isLeft && this.current >= this.pageList.length);
-    };
+    const isArrowDisabled = this.isDisabled || (isLeft && this.current === 1) || (!isLeft && this.current >= this.pageList.length);
 
     return (
       <li class="ods-pagination__list__arrow">
@@ -191,10 +191,10 @@ export class OdsPagination {
           class="ods-pagination__list__arrow__button"
           icon={isLeft ? ODS_ICON_NAME.chevronLeft : ODS_ICON_NAME.chevronRight}
           id={arrowButtonId}
-          isDisabled={checkArrowDisabled()}
+          isDisabled={isArrowDisabled}
           label=""
           onClick={() => {
-            if (checkArrowDisabled()) {
+            if (isArrowDisabled) {
               return;
             }
 
@@ -227,7 +227,7 @@ export class OdsPagination {
     );
   }
 
-  renderEllipsis(): typeof Fragment {
+  private renderEllipsis(): typeof Fragment {
     return (
       <li>
         <ods-button
@@ -288,8 +288,8 @@ export class OdsPagination {
               .filter((page) => page.active)
               .map((page) => {
                 const pageId = this.pageList.indexOf(page) + 1;
-                const shouldRenderLeftEllipsis = this.pageList.length > 6 && this.pageList.length - this.current > 3 && pageId === this.pageList.length;
-                const shouldRenderRightEllipsis = this.pageList.length > 6 && this.current > 4 && pageId === 1;
+                const shouldRenderLeftEllipsis = this.pageList.length > this.maxPagesBeforeEllipsis && this.pageList.length - this.current > this.pagesBeforeEnd && pageId === this.pageList.length;
+                const shouldRenderRightEllipsis = this.pageList.length > this.maxPagesBeforeEllipsis && this.current > this.minCurrentPageForRightEllipsis && pageId === 1;
 
                 shouldRenderLeftEllipsis || shouldRenderRightEllipsis && this.renderEllipsis();
 

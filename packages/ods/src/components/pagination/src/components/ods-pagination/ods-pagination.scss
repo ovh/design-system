@@ -2,11 +2,6 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-
-  li {
-    list-style-type: none;
-    white-space: nowrap;
-  }
 }
 
 :host([isDisabled]) {
@@ -54,7 +49,6 @@
       &__ellipsis {
         display: flex;
         justify-content: center;
-        cursor: not-allowed;
         width: 2.5rem;
         pointer-events: auto;
       }

@@ -1,5 +1,13 @@
 import type { OdsPaginationPageList } from '../interfaces/pagination-page-list';
 
+function computeActualTotalPages(itemPerPage: number, totalItems: number | undefined, totalPages: number): number {
+  if (!totalItems) {
+    return totalPages;
+  }
+
+  return Math.ceil(totalItems / (itemPerPage || 1));
+}
+
 function createPageList(totalPages: number, pageSelected: number): OdsPaginationPageList {
   const pageList: OdsPaginationPageList = [];
 
@@ -48,6 +56,18 @@ function createPageList(totalPages: number, pageSelected: number): OdsPagination
   return pageList;
 }
 
+function getActualPage(defaultCurrentPage: number, actualTotalPages: number, current: number): number {
+  if (defaultCurrentPage > actualTotalPages) {
+    return actualTotalPages;
+  } else if (defaultCurrentPage < 1) {
+    return 1;
+  } else {
+    return defaultCurrentPage || current;
+  }
+}
+
 export {
+  computeActualTotalPages,
   createPageList,
+  getActualPage,
 };

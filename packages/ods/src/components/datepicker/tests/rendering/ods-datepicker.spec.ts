@@ -1,9 +1,8 @@
 jest.mock('../../src/controller/ods-datepicker');
+
 import type { SpecPage } from '@stencil/core/testing';
 import { newSpecPage } from '@stencil/core/testing';
 import { OdsDatepicker } from '../../src';
-// @ts-ignore
-import { Datepicker } from '../../jestStub';
 
 describe('ods-datepicker rendering', () => {
   let page: SpecPage;
@@ -28,15 +27,15 @@ describe('ods-datepicker rendering', () => {
     it('should be reflected', async() => {
       const ariaLabelValue = 'ariaLabel';
 
-      await setup(`<ods-datepicker ariaLabel="${ariaLabelValue}"></ods-datepicker>`);
+      await setup(`<ods-datepicker aria-label="${ariaLabelValue}"></ods-datepicker>`);
 
-      expect(root?.getAttribute('ariaLabel')).toBe(ariaLabelValue);
+      expect(root?.getAttribute('aria-label')).toBe(ariaLabelValue);
     });
 
     it('should not be set by default', async() => {
       await setup('<ods-datepicker></ods-datepicker>');
 
-      expect(root?.getAttribute('ariaLabel')).toBeNull();
+      expect(root?.getAttribute('aria-label')).toBeNull();
     });
   });
 
@@ -44,15 +43,15 @@ describe('ods-datepicker rendering', () => {
     it('should be reflected', async() => {
       const ariaLabelledbyValue = 'ariaLabelledby';
 
-      await setup(`<ods-datepicker ariaLabelledby="${ariaLabelledbyValue}"></ods-datepicker>`);
+      await setup(`<ods-datepicker aria-labelledby="${ariaLabelledbyValue}"></ods-datepicker>`);
 
-      expect(root?.getAttribute('ariaLabelledby')).toBe(ariaLabelledbyValue);
+      expect(root?.getAttribute('aria-labelledby')).toBe(ariaLabelledbyValue);
     });
 
     it('should not be set by default', async() => {
       await setup('<ods-datepicker></ods-datepicker>');
 
-      expect(root?.getAttribute('ariaLabelledby')).toBeNull();
+      expect(root?.getAttribute('aria-labelledby')).toBeNull();
     });
   });
 
@@ -60,31 +59,31 @@ describe('ods-datepicker rendering', () => {
     it('should be reflected', async() => {
       const datesDisabled = [new Date()];
 
-      await setup(`<ods-datepicker datesDisabled="${datesDisabled}"></ods-datepicker>`);
+      await setup(`<ods-datepicker dates-disabled="${datesDisabled}"></ods-datepicker>`);
 
-      expect(root?.getAttribute('datesDisabled')).toBe(datesDisabled.join(','));
+      expect(root?.getAttribute('dates-disabled')).toBe(datesDisabled.join(','));
     });
 
     it('should not be set by default', async() => {
       await setup('<ods-datepicker></ods-datepicker>');
 
-      expect(root?.getAttribute('datesDisabled')).toBeNull();
+      expect(root?.getAttribute('dates-disabled')).toBeNull();
     });
   });
 
   describe('daysOfWeekDisabled', () => {
     it('should be reflected', async() => {
-      const daysOfWeekDisabled = [0,6];
+      const daysOfWeekDisabled = [0, 6];
 
-      await setup(`<ods-datepicker daysOfWeekDisabled="${daysOfWeekDisabled}"></ods-datepicker>`);
+      await setup(`<ods-datepicker days-of-week-disabled="${daysOfWeekDisabled}"></ods-datepicker>`);
 
-      expect(root?.getAttribute('daysOfWeekDisabled')).toBe(daysOfWeekDisabled.join(','));
+      expect(root?.getAttribute('days-of-week-disabled')).toBe(daysOfWeekDisabled.join(','));
     });
 
     it('should not be set by default', async() => {
       await setup('<ods-datepicker></ods-datepicker>');
 
-      expect(root?.getAttribute('daysOfWeekDisabled')).toBeNull();
+      expect(root?.getAttribute('days-of-week-disabled')).toBeNull();
     });
   });
 
@@ -92,15 +91,15 @@ describe('ods-datepicker rendering', () => {
     it('should be reflected', async() => {
       const defaultValue = new Date('01 Jan 2024').toString();
 
-      await setup(`<ods-datepicker defaultValue="${defaultValue}"></ods-datepicker>`);
+      await setup(`<ods-datepicker default-value="${defaultValue}"></ods-datepicker>`);
 
-      expect(root?.getAttribute('defaultValue')).toBe(defaultValue.toString());
+      expect(root?.getAttribute('default-value')).toBe(defaultValue.toString());
     });
 
     it('should not be set by default', async() => {
       await setup('<ods-datepicker></ods-datepicker>');
 
-      expect(root?.getAttribute('defaultValue')).toBeNull();
+      expect(root?.getAttribute('default-value')).toBeNull();
     });
   });
 
@@ -124,7 +123,7 @@ describe('ods-datepicker rendering', () => {
     it('should be reflected', async() => {
       await setup('<ods-datepicker has-error></ods-datepicker>');
 
-      expect(root?.getAttribute('has-error')).toBe("");
+      expect(root?.getAttribute('has-error')).toBe('');
     });
 
     it('should not be set by default', async() => {
@@ -134,11 +133,25 @@ describe('ods-datepicker rendering', () => {
     });
   });
 
+  describe('isClearable', () => {
+    it('should be reflected', async() => {
+      await setup('<ods-datepicker is-clearable></ods-datepicker>');
+
+      expect(root?.getAttribute('is-clearable')).toBe('');
+    });
+
+    it('should not be set by default', async() => {
+      await setup('<ods-datepicker></ods-datepicker>');
+
+      expect(root?.getAttribute('is-clearable')).toBeNull();
+    });
+  });
+
   describe('isDisabled', () => {
     it('should be reflected', async() => {
       await setup('<ods-datepicker is-disabled></ods-datepicker>');
 
-      expect(root?.getAttribute('is-disabled')).toBe("");
+      expect(root?.getAttribute('is-disabled')).toBe('');
     });
 
     it('should not be set by default', async() => {
@@ -148,11 +161,25 @@ describe('ods-datepicker rendering', () => {
     });
   });
 
+  describe('isLoading', () => {
+    it('should be reflected', async() => {
+      await setup('<ods-datepicker is-loading></ods-datepicker>');
+
+      expect(root?.getAttribute('is-loading')).toBe('');
+    });
+
+    it('should not be set by default', async() => {
+      await setup('<ods-datepicker></ods-datepicker>');
+
+      expect(root?.getAttribute('is-loading')).toBeNull();
+    });
+  });
+
   describe('isReadonly', () => {
     it('should be reflected', async() => {
       await setup('<ods-datepicker is-readonly></ods-datepicker>');
 
-      expect(root?.getAttribute('is-readonly')).toBe("");
+      expect(root?.getAttribute('is-readonly')).toBe('');
     });
 
     it('should not be set by default', async() => {
@@ -166,7 +193,7 @@ describe('ods-datepicker rendering', () => {
     it('should be reflected', async() => {
       await setup('<ods-datepicker is-required></ods-datepicker>');
 
-      expect(root?.getAttribute('is-required')).toBe("");
+      expect(root?.getAttribute('is-required')).toBe('');
     });
 
     it('should not be set by default', async() => {
@@ -253,22 +280,6 @@ describe('ods-datepicker rendering', () => {
       await setup('<ods-datepicker></ods-datepicker>');
 
       expect(root?.getAttribute('placeholder')).toBeNull();
-    });
-  });
-
-  describe('showSiblingsMonthDays', () => {
-    it('should be reflected', async() => {
-      const showSiblingsMonthDays = false;
-
-      await setup(`<ods-datepicker show-siblings-month-days="${showSiblingsMonthDays}"></ods-datepicker>`);
-
-      expect(root?.getAttribute('show-siblings-month-days')).toBe("false");
-    });
-
-    it('should be set by default', async() => {
-      await setup('<ods-datepicker></ods-datepicker>');
-
-      expect(root?.getAttribute('show-siblings-month-days')).toBe("");
     });
   });
 

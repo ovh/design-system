@@ -1,37 +1,25 @@
-import {
-  AttachInternals,
-  Component,
-  Element,
-  Event,
-  EventEmitter,
-  h,
-  Host,
-  Listen,
-  Method,
-  Prop,
-  State,
-  Watch,
-} from '@stencil/core';
-import { ODS_DATEPICKER_DAY } from '../../constants/datepicker-day';
-import { ODS_DATEPICKER_LOCALE } from '../../constants/datepicker-locale';
-import { setFormValue } from '../../controller/ods-datepicker';
-import { OdsDatepickerEventValueChangeDetail } from '../../interfaces/events';
-import { ODS_INPUT_TYPE, OdsInput } from '../../../../input/src';
+import { AttachInternals, Component, Element, Event, type EventEmitter, type FunctionalComponent, Host, Method, Prop, Watch, h } from '@stencil/core';
 import { Datepicker } from 'vanillajs-datepicker';
-// @ts-ignore
-import de from 'vanillajs-datepicker/js/i18n/locales/de';
-// @ts-ignore
-import es from 'vanillajs-datepicker/js/i18n/locales/es';
-// @ts-ignore
-import fr from 'vanillajs-datepicker/js/i18n/locales/fr';
-// @ts-ignore
-import it from 'vanillajs-datepicker/js/i18n/locales/it';
-// @ts-ignore
-import nl from 'vanillajs-datepicker/js/i18n/locales/nl';
-// @ts-ignore
-import pl from 'vanillajs-datepicker/js/i18n/locales/pl';
-// @ts-ignore
-import pt from 'vanillajs-datepicker/js/i18n/locales/pt';
+// @ts-ignore no existing declaration
+import de from 'vanillajs-datepicker/js/i18n/locales/de'; // eslint-disable-line import/no-unresolved
+// @ts-ignore no existing declaration
+import es from 'vanillajs-datepicker/js/i18n/locales/es'; // eslint-disable-line import/no-unresolved
+// @ts-ignore no existing declaration
+import fr from 'vanillajs-datepicker/js/i18n/locales/fr'; // eslint-disable-line import/no-unresolved
+// @ts-ignore no existing declaration
+import it from 'vanillajs-datepicker/js/i18n/locales/it'; // eslint-disable-line import/no-unresolved
+// @ts-ignore no existing declaration
+import nl from 'vanillajs-datepicker/js/i18n/locales/nl'; // eslint-disable-line import/no-unresolved
+// @ts-ignore no existing declaration
+import pl from 'vanillajs-datepicker/js/i18n/locales/pl'; // eslint-disable-line import/no-unresolved
+// @ts-ignore no existing declaration
+import pt from 'vanillajs-datepicker/js/i18n/locales/pt'; // eslint-disable-line import/no-unresolved
+import { ODS_ICON_NAME } from '../../../../icon/src';
+import { ODS_SPINNER_COLOR } from '../../../../spinner/src';
+import { type OdsDatepickerDay } from '../../constants/datepicker-day';
+import { ODS_DATEPICKER_LOCALE, type OdsDatepickerLocale } from '../../constants/datepicker-locale';
+import { formatDate, setFormValue } from '../../controller/ods-datepicker';
+import { type OdsDatepickerEventChangeDetail } from '../../interfaces/events';
 
 Object.assign(Datepicker.locales, de);
 Object.assign(Datepicker.locales, es);
@@ -48,340 +36,242 @@ Object.assign(Datepicker.locales, pt);
   tag: 'ods-datepicker',
 })
 export class OdsDatepicker {
-  private datepickerInstance: Datepicker | undefined = undefined;
-  private hiddenInput: HTMLInputElement | undefined = undefined;
-  private datepickerElement: HTMLElement | undefined = undefined;
-  private odsInput?: OdsInput;
-
-  get datepickerInstanceAccessor(): Datepicker | undefined {
-    return this.datepickerInstance;
-  }
+  private datepickerInstance?: Datepicker;
+  private inputElement?: HTMLInputElement;
 
   @Element() el!: HTMLElement;
 
   @AttachInternals() internals!: ElementInternals;
 
-  @State() hasFocus = false;
-
   @Prop({ reflect: true }) public ariaLabel: HTMLElement['ariaLabel'] = null;
   @Prop({ reflect: true }) public ariaLabelledby?: string;
   @Prop({ reflect: true }) public datesDisabled: Date[] = [];
-  @Prop({ reflect: true }) public daysOfWeekDisabled: ODS_DATEPICKER_DAY[] = [];
-  @Prop({ reflect: true }) public defaultValue?: string;
+  /** @docType OdsDatepickerDay[] */
+  @Prop({ reflect: true }) public daysOfWeekDisabled: OdsDatepickerDay[] = [];
+  @Prop({ reflect: true }) public defaultValue?: Date;
   @Prop({ reflect: true }) public format: string = 'dd/mm/yyyy';
   @Prop({ reflect: true }) public hasError: boolean = false;
+  @Prop({ reflect: true }) public isClearable: boolean = false;
   @Prop({ reflect: true }) public isDisabled: boolean = false;
+  @Prop({ reflect: true }) public isLoading: boolean = false;
   @Prop({ reflect: true }) public isReadonly: boolean = false;
   @Prop({ reflect: true }) public isRequired: boolean = false;
-  @Prop({ reflect: true }) public locale: ODS_DATEPICKER_LOCALE = ODS_DATEPICKER_LOCALE.EN;
+  /** @docType OdsDatepickerLocale */
+  @Prop({ reflect: true }) public locale: OdsDatepickerLocale = ODS_DATEPICKER_LOCALE.en;
   @Prop({ reflect: true }) public max?: Date;
   @Prop({ reflect: true }) public min?: Date;
   @Prop({ reflect: true }) public name!: string;
   @Prop({ reflect: true }) public placeholder?: string;
-  @Prop({ reflect: true }) public showSiblingsMonthDays: boolean = true;
-  @Prop({ reflect: true, mutable: true }) public value?: Date | null = null;
+  @Prop({ mutable: true, reflect: true }) public value: Date | null = null;
 
   @Event() odsBlur!: EventEmitter<void>;
-  @Event() odsChange!: EventEmitter<OdsDatepickerEventValueChangeDetail>;
+  @Event() odsChange!: EventEmitter<OdsDatepickerEventChangeDetail>;
   @Event() odsClear!: EventEmitter<void>;
   @Event() odsFocus!: EventEmitter<void>;
   @Event() odsReset!: EventEmitter<void>;
 
   @Method()
   async clear(): Promise<void> {
-    return this.odsInput?.clear();
+    this.odsClear.emit();
+    // This will trigger the "changeDate" event that will take care of updating value, internals and emit change
+    this.datepickerInstance?.setDate({ clear: true });
+    this.inputElement?.focus();
+  }
+
+  @Method()
+  async close(): Promise<void> {
+    this.datepickerInstance?.hide();
   }
 
   @Method()
   async getValidity(): Promise<ValidityState | undefined> {
-    return this.odsInput?.getValidity();
+    return this.inputElement?.validity;
+  }
+
+  @Method()
+  async open(): Promise<void> {
+    this.datepickerInstance?.show();
   }
 
   @Method()
   async reset(): Promise<void> {
-    return this.odsInput?.reset();
-  }
+    this.odsReset.emit();
 
-  @Listen('odsChange')
-  handleInputValueChange(event: CustomEvent) {
-    if (this.format && (event.detail.value && event.detail.value.length === this.format.length)) {
-       this.onChange(new Date(Datepicker.parseDate(event.detail.value, this.format)));
-    } else if (event.detail.value && event.detail.value.length === 0) {
-      this.onChange(null);
+    // Those will trigger the "changeDate" event that will take care of updating value, internals and emit change
+    if (this.defaultValue) {
+      this.datepickerInstance?.setDate(this.defaultValue);
+    } else {
+      this.datepickerInstance?.setDate({ clear: true });
     }
-  }
-
-  @Listen('odsReset')
-  handleInputValueReset() {
-    this.value = this.defaultValue ? new Date(this.defaultValue) : null;
-  }
-
-  @Listen('odsClear')
-  handleInputValueClear() {
-    this.value = null;
   }
 
   @Watch('datesDisabled')
-  @Watch('daysOfWeekDisabled')
-  @Watch('format')
-  @Watch('locale')
-  @Watch('max')
-  @Watch('min')
-  updateDatepicker() {
-    if (!this.datepickerInstance) {
-      return;
-    }
-
-    this.datepickerInstance.setOptions({
-      datesDisabled: this.datesDisabled
-        ? this.datesDisabled.map((date) => Datepicker.formatDate(date, 'dd/mm/yyyy'))
-        : undefined,
-      daysOfWeekDisabled: this.daysOfWeekDisabled,
-      format: this.format,
-      language: this.locale,
-      maxDate: this.max
-        ? this.max
-        : undefined,
-      minDate: this.min
-        ? this.min
-        : undefined,
-    });
-    this.updateSiblingsMonthDaysVisibility();
+  onDatesDisabledChange(): void {
+    this.datepickerInstance?.setOptions({ datesDisabled: this.datesDisabled?.map((date) => Datepicker.formatDate(date, this.format)) });
   }
 
-  @Watch('value')
-  checkValueFormat() {
-    if(this.odsInput && this.value?.toString().length !== this.format.length) {
-      this.odsInput.value = this.formatDate(this.value);
-    }
+  @Watch('daysOfWeekDisabled')
+  onDaysOfWeekDisabledChange(): void {
+    this.datepickerInstance?.setOptions({ daysOfWeekDisabled: this.daysOfWeekDisabled });
+  }
+
+  @Watch('format')
+  onFormatChange(): void {
+    this.datepickerInstance?.setOptions({ format: this.format });
+  }
+
+  @Watch('locale')
+  onLocaleChange(): void {
+    this.datepickerInstance?.setOptions({ language: this.locale });
+  }
+
+  @Watch('max')
+  onMaxChange(): void {
+    this.datepickerInstance?.setOptions({ maxDate: this.max });
+  }
+
+  @Watch('min')
+  onMinChange(): void {
+    this.datepickerInstance?.setOptions({ minDate: this.min });
   }
 
   componentWillLoad(): void {
     // Those components are used in some string templates, not JSX,
     // thus Stencil does not detect them correctly and they're not embedded in the build,
     // so we have to manually declare their usage here
-    h('osds-icon');
+    h('ods-icon');
 
     if (!this.value) {
       this.value = this.defaultValue ? new Date(this.defaultValue) : null;
     }
-    setFormValue(this.internals ,this.formatDate(this.value) ?? null);
-  }
-
-  formResetCallback(): void {
-    this.value = this.defaultValue ? new Date(this.defaultValue) : null;
-  }
-
-  onChange(newValue: Date | undefined | null): void {
-    if(!this.isDisabled) {
-      if (!this.validateValue(newValue)) {
-        this.value = null;
-        this.datepickerInstanceAccessor?.setDate({ clear: true });
-        setFormValue(this.internals, '');
-      } else {
-        this.value = newValue;
-        this.datepickerInstanceAccessor?.setDate(newValue);
-        setFormValue(this.internals, this.formatDate(newValue) ?? '');
-      }
-      this.hasFocus = false;
-    }
-  }
-
-  onFocus(): void {
-    if (!this.isDisabled) {
-      this.hasFocus = true;
-    }
-  }
-
-  private validateValue(value?: Date | null | undefined): boolean {
-    if (!value || value === null || isNaN(value.getTime())) {
-      return false;
-    }
-
-    const midnightValue = this.getMidnightDate(value).getTime();
-
-    if (this.datesDisabled && this.datesDisabled.some((d) => this.getMidnightDate(d).getTime() === midnightValue)) {
-      return false;
-    }
-
-    if (this.daysOfWeekDisabled && this.daysOfWeekDisabled.includes(value.getDay())) {
-      return false;
-    }
-
-    if (this.max && midnightValue > this.getMidnightDate(this.max).getTime()) {
-      return false;
-    }
-
-    if (this.min && midnightValue < this.getMidnightDate(this.min).getTime()) {
-      return false;
-    }
-
-    return true;
-  }
-
-  private getMidnightDate(date: Date): Date {
-    return new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
+    setFormValue(this.internals, formatDate(this.value, this.format));
   }
 
   componentDidLoad(): void {
-    this.initializeDatepicker();
-  }
-
-  initializeDatepicker(): void {
-    if(!this.el.shadowRoot || this.datepickerInstance) {
-      return;
-    }
-
-    if (!this.hiddenInput || this.hiddenInput.getAttribute('initialized')) {
-      return;
-    }
-
-    this.datepickerInstance = new Datepicker(this.hiddenInput, {
-      datesDisabled: this.datesDisabled
-        ? this.datesDisabled.map((date) => Datepicker.formatDate(date, 'dd/mm/yyyy'))
-        : undefined,
-      daysOfWeekDisabled: this.daysOfWeekDisabled,
-      format: this.format,
-      language: this.locale,
-      maxDate: this.max
-        ? this.max
-        : undefined,
-      maxView: 2,
-      minDate: this.min
-        ? this.min
-        : undefined,
-      nextArrow: `<ods-icon name="chevron-right" size="sm"></ods-icon>`,
-      prevArrow: `<ods-icon name="chevron-left" size="sm"></ods-icon>`,
-    });
-
-    this.datepickerElement = this.el.shadowRoot.querySelector('.datepicker-picker') as HTMLElement;
-
-    this.hiddenInput.addEventListener('changeDate', (e: Event) => {
-      const customEvent = e as CustomEvent;
-      this.onChange(customEvent.detail.date);
-    });
-
-    this.hiddenInput.setAttribute('initialized', 'true');
-
-    const datepickerButtons = this.datepickerElement.querySelectorAll('button');
-    datepickerButtons.forEach((element) => {
-      element.removeAttribute('tabindex');
-    });
-
-    const viewSwitch = this.el.shadowRoot.querySelector('.view-switch') as HTMLElement;
-    const chevron = document.createElement('osds-icon');
-    chevron.setAttribute('name', 'chevron-down');
-    chevron.setAttribute('size', 'xs');
-    viewSwitch.appendChild(chevron);
-
-    const datepickerSpanElements = this.el.shadowRoot.querySelectorAll('.datepicker-grid span');
-    datepickerSpanElements.forEach((span) => {
-      const button = document.createElement('button');
-      button.setAttribute('class', span.getAttribute('class') as string);
-      button.setAttribute('data-date', span.getAttribute('data-date') as string);
-      button.innerHTML = span.innerHTML;
-      span.replaceWith(button);
-    });
-    this.updateSiblingsMonthDaysVisibility();
-
-    this.hiddenInput.addEventListener('changeView', (e: Event) => {
-      const customEvent = e as CustomEvent;
-      if (this.el.shadowRoot) {
-        const datepickerSpanElements = this.el.shadowRoot.querySelectorAll('.datepicker-grid span');
-        datepickerSpanElements.forEach((span) => {
-          const button = document.createElement('button');
-          button.setAttribute('class', span.getAttribute('class') as string);
-          if (customEvent.detail.viewId === 0) {
-            button.setAttribute('data-date', span.getAttribute('data-date') as string);
-          } else if (customEvent.detail.viewId === 1) {
-            button.setAttribute('data-month', span.getAttribute('data-month') as string);
-          } else if (customEvent.detail.viewId === 2) {
-            button.setAttribute('data-year', span.getAttribute('data-year') as string);
-          }
-          button.innerHTML = span.innerHTML;
-          span.replaceWith(button);
-        });
-      }
-    });
-
-    ['changeView', 'changeMonth', 'changeYear'].forEach((event) => {
-      if (this.hiddenInput) {
-        this.hiddenInput.addEventListener(event, (e: Event) => {
-          this.updateSiblingsMonthDaysVisibility();
-          const customEvent = e as CustomEvent;
-          if (customEvent.detail.viewId < 2) {
-            viewSwitch.appendChild(chevron);
-          }
-        });
-      }
-    });
-  }
-
-  @Watch('showSiblingsMonthDays')
-  updateSiblingsMonthDaysVisibility(): void {
-    const datepickerDay = this.el.shadowRoot?.querySelectorAll('.datepicker-grid .day');
-    datepickerDay?.forEach((day) => {
-      day.removeAttribute('disabled');
-      return day.classList.remove('no-displayed');
-    });
-
-    if (!this.showSiblingsMonthDays) {
-      const datepickerNextMonthDays = this.el.shadowRoot?.querySelectorAll('.datepicker-grid .day.next');
-      datepickerNextMonthDays?.forEach((day) => {
-        day.setAttribute('disabled', '');
-        return day.classList.add('no-displayed');
+    if (!this.datepickerInstance && this.inputElement) {
+      this.datepickerInstance = new Datepicker(this.inputElement, {
+        autohide: true,
+        datesDisabled: this.datesDisabled.map((date) => Datepicker.formatDate(date, this.format)),
+        daysOfWeekDisabled: this.daysOfWeekDisabled.map((day) => parseInt(day, 10)),
+        enableOnReadonly: false,
+        format: this.format,
+        language: this.locale,
+        maxDate: this.max,
+        maxView: 2,
+        minDate: this.min,
+        nextArrow: `<ods-icon name="${ODS_ICON_NAME.chevronRight}"></ods-icon>`,
+        prevArrow: `<ods-icon name="${ODS_ICON_NAME.chevronLeft}"></ods-icon>`,
+        showOnClick: true,
+        showOnFocus: true,
+        updateOnBlur: true,
       });
-      const datepickerPrevMonthDays = this.el.shadowRoot?.querySelectorAll('.datepicker-grid .day.prev');
-      datepickerPrevMonthDays?.forEach((day) => {
-        day.setAttribute('disabled', '');
-        return day.classList.add('no-displayed');
+      // Apply initial DOM changes on the picker
+      this.updateViewSwitch();
+
+      // We need to reapply the dom customization on every picker changes
+      ['changeView', 'changeMonth', 'changeYear'].forEach((event) => {
+        this.inputElement?.addEventListener(event, (e: Event) => {
+          // We add the chevron on switch only if we didn't reached the last view
+          if ((e as CustomEvent).detail.viewId < 2) {
+            this.updateViewSwitch();
+          }
+        });
+      });
+
+      // Manage the component value change
+      // Triggered either by user selection or `setDate` instance method call
+      this.inputElement.addEventListener('changeDate', (event: Event) => {
+        const newDate = (event as CustomEvent).detail.date;
+        const formattedNewDate = formatDate(newDate, this.format);
+
+        this.value = newDate;
+        setFormValue(this.internals, formattedNewDate);
+
+        this.odsChange.emit({
+          formattedValue: formattedNewDate,
+          name: this.name,
+          validity: this.inputElement?.validity,
+          value: this.value,
+        });
       });
     }
   }
 
-  formatDate(date?: Date | undefined | null): string {
-    if (this.format && date) {
-      return Datepicker.formatDate(date, this.format);
-    } else {
-      return '';
+  async formResetCallback(): Promise<void> {
+    await this.reset();
+  }
+
+  private onClearButtonKeyUp(event: KeyboardEvent): void {
+    event.preventDefault();
+
+    if(event.key === ' ' && !this.isDisabled) {
+      this.clear();
     }
   }
 
-  render() {
+  private updateViewSwitch(): void {
+    const viewSwitch = this.el.shadowRoot?.querySelector<HTMLElement>('.view-switch');
+
+    if (viewSwitch && viewSwitch.childElementCount < 1) {
+      const chevron = document.createElement('ods-icon');
+      chevron.setAttribute('name', ODS_ICON_NAME.chevronDown);
+      viewSwitch.appendChild(chevron);
+    }
+  }
+
+  render(): FunctionalComponent {
+    const hasClearableAction = this.isClearable && !this.isLoading && !!this.value;
+
     return (
-      <Host
-        class="ods-datepicker"
-        error={ this.hasError }
-        disabled={ this.isDisabled }
-        hasFocus={ this.hasFocus }
-        onFocus={ ():void => this.onFocus() }
-        onFocusout={ () => this.hasFocus = false }
-      >
-        <ods-input
-          ariaLabel={ this.ariaLabel }
-          ariaLabelledby= { this.ariaLabelledby }
-          class="ods-datepicker__input"
-          defaultValue={ this.defaultValue }
-          exportparts="input"
-          hasError={ this.hasError }
-          isDatepicker={true}
-          isDisabled={ this.isDisabled }
-          isReadonly={ this.isReadonly }
-          isRequired={ this.isRequired }
-          onClick={ () => this.hasFocus = true }
-          max={ this.max?.toString() }
-          min={ this.min?.toString() }
+      <Host class="ods-datepicker">
+        <input
+          aria-label={ this.ariaLabel }
+          aria-labelledby={ this.ariaLabelledby }
+          class={{
+            'ods-datepicker__input': true,
+            'ods-datepicker__input--clearable': hasClearableAction,
+            'ods-datepicker__input--error': this.hasError,
+            'ods-datepicker__input--loading': this.isLoading,
+          }}
+          disabled={ this.isDisabled }
           name={ this.name }
           placeholder={ this.placeholder }
-          ref={ (el?: unknown) => this.odsInput = el as OdsInput }
-          type={ODS_INPUT_TYPE.text}
-          value={this.formatDate(this.value)}
-        ></ods-input>
-        <input
-          tabindex={-1}
-          class="ods-datepicker__hidden-input"
-          ref={(el?: HTMLInputElement) => this.hiddenInput = el || this.hiddenInput}
-        ></input>
+          readonly={ this.isReadonly }
+          ref={ (el): HTMLInputElement => this.inputElement = el as HTMLInputElement }
+          required={ this.isRequired }
+          type="text"
+          value={ formatDate(this.value, this.format) }>
+        </input>
+
+        <div class="ods-datepicker__actions">
+          {
+            this.isLoading &&
+            <ods-spinner
+              class="ods-datepicker__actions__spinner"
+              color={ this.isDisabled ? ODS_SPINNER_COLOR.neutral : ODS_SPINNER_COLOR.primary }>
+            </ods-spinner>
+          }
+
+          {
+            hasClearableAction &&
+            <button
+              class="ods-datepicker__actions__clearable"
+              disabled={ this.isDisabled || this.isReadonly }
+              onClick={ () => this.clear() }
+              onKeyUp={ (e: KeyboardEvent): void => this.onClearButtonKeyUp(e) }>
+              <ods-icon name={ ODS_ICON_NAME.times }>
+              </ods-icon>
+            </button>
+          }
+
+          <ods-icon
+            class={{
+              'ods-datepicker__actions__icon': true,
+              'ods-datepicker__actions__icon--disabled': this.isDisabled,
+            }}
+            name={ ODS_ICON_NAME.calendar }>
+          </ods-icon>
+        </div>
       </Host>
     );
   }

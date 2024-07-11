@@ -15,9 +15,9 @@ describe('ods-datepicker react', () => {
 
   it('render the component correctly', async () => {
     const elem = await page.$('ods-datepicker');
+    const boundingBox = await elem?.boundingBox();
 
-    // TODO add relevant tests
-
-    expect(false).toBe(true);
+    expect(boundingBox?.height).toBeGreaterThan(0);
+    expect(boundingBox?.width).toBeGreaterThan(0);
   });
 });

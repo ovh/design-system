@@ -1,13 +1,13 @@
-interface OdsDatepickerEventValueChangeDetail {
+interface OdsDatepickerEventChangeDetail {
+  formattedValue?: string;
   name: string;
-  oldValue?: Date | null;
   validity?: ValidityState;
   value?: Date | null;
 }
 
-type OdsDatepickerEventValueChange = CustomEvent<OdsDatepickerEventValueChangeDetail>;
+type OdsDatepickerEventChange = CustomEvent<OdsDatepickerEventChangeDetail>;
 
 export {
-  type OdsDatepickerEventValueChange,
-  type OdsDatepickerEventValueChangeDetail,
+  type OdsDatepickerEventChange,
+  type OdsDatepickerEventChangeDetail,
 };

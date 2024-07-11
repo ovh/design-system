@@ -4128,7 +4128,7 @@ __metadata:
     "@types/jest": 29.5.12
     "@types/react": 18.2.56
     "@types/react-dom": 18.2.19
-    "@types/vanillajs-datepicker": 1.3.4
+    "@types/vanillajs-datepicker": 1.3.5
     autoprefixer: 10.4.17
     concurrently: 8.2.2
     google-libphonenumber: 3.2.35
@@ -5857,10 +5857,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/vanillajs-datepicker@npm:1.3.4":
-  version: 1.3.4
-  resolution: "@types/vanillajs-datepicker@npm:1.3.4"
-  checksum: bf150802e7ebac0097c1e8f2ce2ef458362d027f6e627f55c8c8ea395146de9a178ff05e31c9f44959700d0bd882fece7876711a8e4362d4b509377e12143840
+"@types/vanillajs-datepicker@npm:1.3.5":
+  version: 1.3.5
+  resolution: "@types/vanillajs-datepicker@npm:1.3.5"
+  checksum: 09f341ea8c9ff880160c3858fcf3ab034cf79b8ec53b286d8a79562db8dba0f54117f4999bff5e2cf706a1075cc6ab40591ea671018ac6e03184f7e1f0c1b867
   languageName: node
   linkType: hard
 

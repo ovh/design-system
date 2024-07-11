@@ -6,5 +6,4 @@
  *   import '../../text/src';
  */
 import '../../icon/src';
-import '../../input/src';
-import '../../text/src';
+import '../../spinner/src';

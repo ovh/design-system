@@ -25,15 +25,14 @@ export class OdsInput {
   @Prop({ reflect: true }) public defaultValue?: string | number;
   @Prop({ reflect: true }) public hasError: boolean = false;
   @Prop({ reflect: true }) public isClearable: boolean = false;
-  @Prop({ reflect: true }) public isDatepicker: boolean = false;
   @Prop({ reflect: true }) public isDisabled: boolean = false;
   @Prop({ reflect: true }) public isLoading: boolean = false;
   @Prop({ mutable: true, reflect: true }) public isMasked?: boolean;
   @Prop({ reflect: true }) public isReadonly: boolean = false;
   @Prop({ reflect: true }) public isRequired: boolean = false;
-  @Prop({ reflect: true }) public max?: number | string;
+  @Prop({ reflect: true }) public max?: number;
   @Prop({ reflect: true }) public maxlength?: number;
-  @Prop({ reflect: true }) public min?: number | string;
+  @Prop({ reflect: true }) public min?: number;
   @Prop({ reflect: true }) public minlength?: number;
   @Prop({ reflect: true }) public name!: string;
   @Prop({ reflect: true }) public pattern?: string;
@@ -111,7 +110,6 @@ export class OdsInput {
   }
 
   render(): FunctionalComponent {
-    const hasCalendarIcon = this.isDatepicker && !this.isLoading;
     const hasClearableIcon = this.isClearable && !this.isLoading && !!this.value;
     const hasToggleMaskIcon = this.isPassword && !this.isLoading;
 
@@ -122,7 +120,6 @@ export class OdsInput {
           aria-labelledby={ this.ariaLabelledby }
           class={{
             'ods-input__input': true,
-            'ods-input__input--calendar': hasCalendarIcon,
             'ods-input__input--clearable': hasClearableIcon,
             'ods-input__input--error': this.hasError,
             'ods-input__input--loading': this.isLoading,
@@ -150,15 +147,6 @@ export class OdsInput {
         <div class="ods-input__actions">
           {
             this.isLoading && <ods-spinner class="ods-input__actions__spinner" color={ this.isDisabled ? ODS_SPINNER_COLOR.neutral : ODS_SPINNER_COLOR.primary }></ods-spinner>
-          }
-          {
-            hasCalendarIcon &&
-            <ods-icon class={{
-              "ods-input__actions__calendar" : true,
-              "ods-input__actions__calendar--disabled" : this.isDisabled,
-            }}
-            name={ ODS_ICON_NAME.calendar }>
-            </ods-icon>
           }
           {
             hasClearableIcon &&

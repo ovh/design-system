@@ -3,7 +3,7 @@ import { OdsDatepicker } from 'ods-components-react';
 
 const Datepicker = () => {
   return (
-    <OdsDatepicker />
+    <OdsDatepicker name="my-datepicker" />
   );
 };
 

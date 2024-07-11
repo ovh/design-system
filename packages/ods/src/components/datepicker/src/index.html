@@ -8,9 +8,15 @@
   <script type='module' src='/build/ods-datepicker.esm.js'></script>
   <script nomodule src='/build/ods-datepicker.js'></script>
   <link rel="stylesheet" href="/build/ods-datepicker.css">
+
+  <style>
+    * {
+      font-family: 'Source Sans Pro', sans-serif;
+    }
+  </style>
 </head>
 
-<body>
+<body style="margin-bottom: 200px;">
   <p>Default</p>
   <ods-datepicker>
   </ods-datepicker>
@@ -19,15 +25,44 @@
   <ods-datepicker format='yyyy/mm/dd'></ods-datepicker>
 
   <p>Error</p>
-  <ods-datepicker has-error=''>
+  <ods-datepicker has-error>
   </ods-datepicker>
 
   <p>Disabled</p>
-  <ods-datepicker is-disabled=''>
+  <ods-datepicker is-disabled>
+  </ods-datepicker>
+  <ods-datepicker is-disabled
+                  is-loading>
+  </ods-datepicker>
+  <ods-datepicker id="disabled-datepicker"
+                  is-disabled
+                  is-clearable>
+  </ods-datepicker>
+  <script>
+    const disabledDatepicker = document.querySelector('#disabled-datepicker');
+    disabledDatepicker.value = new Date('05/01/2024');
+  </script>
+
+  <p>Readonly</p>
+  <ods-datepicker id="readonly-datepicker"
+                  is-readonly>
+  </ods-datepicker>
+  <ods-datepicker id="readonly-clearable-datepicker"
+                  is-readonly
+                  is-clearable>
+  </ods-datepicker>
+  <script>
+    document.querySelector('#readonly-datepicker').value = new Date('05/01/2024');
+    document.querySelector('#readonly-clearable-datepicker').value = new Date('05/01/2024');
+  </script>
+
+  <p>Loading</p>
+  <ods-datepicker is-loading>
   </ods-datepicker>
 
-  <p>Show Sibling Month Days</p>
-  <ods-datepicker show-siblings-month-days="false"></ods-datepicker>
+  <p>Clearable</p>
+  <ods-datepicker is-clearable>
+  </ods-datepicker>
 
   <p>Min Date (Today)</p>
   <ods-datepicker id='min-datepicker'></ods-datepicker>
@@ -40,7 +75,7 @@
   <ods-datepicker id='max-datepicker'></ods-datepicker>
   <script>
     const datepickerMaxDateUsage = document.querySelector('#max-datepicker');
-    datepickerMaxDateUsage.max = new Date('10 Jan 2024');
+    datepickerMaxDateUsage.max = new Date();
   </script>
 
   <p>Date disabled (Today)</p>
@@ -54,23 +89,94 @@
   <ods-datepicker id='datepicker-days-of-week-disabled'></ods-datepicker>
   <script>
     const datepickerDaysOfWeekDisabledUsage = document.querySelector('#datepicker-days-of-week-disabled');
-    datepickerDaysOfWeekDisabledUsage.daysOfWeekDisabled = [0,6];
+    datepickerDaysOfWeekDisabledUsage.daysOfWeekDisabled = [0, 6];
   </script>
 
-  <p>value</p>
-  <ods-datepicker id='value'></ods-datepicker>
+  <p>Locales</p>
+  <ods-datepicker locale="fr">
+  </ods-datepicker>
+  <ods-datepicker locale="en">
+  </ods-datepicker>
+
+  <p>Value</p>
+  <ods-datepicker id="value" is-clearable></ods-datepicker>
   <script>
-    const valueUsage = document.querySelector('#value');
-    valueUsage.value = new Date('01/21/2024');
+    const valueDatepicker = document.querySelector('#value');
+    valueDatepicker.value = new Date('10 May 2024');
   </script>
 
-  <p>default value</p>
-  <ods-datepicker id='defaultvalue'></ods-datepicker>
+  <p>Default Value</p>
+  <ods-datepicker id="default-value" is-clearable></ods-datepicker>
   <script>
-    const defaultvalueUsage = document.querySelector('#defaultvalue');
-    defaultvalueUsage.value = new Date('01/21/2024');
-    defaultvalueUsage.setAttribute('default-value', new Date('04/21/2024'));
+    const defaultValueDatepicker = document.querySelector('#default-value');
+    defaultValueDatepicker.defaultValue = new Date('04/21/2024');
   </script>
 
+  <p>Methods & Events</p>
+  <ods-datepicker id="datepicker-methods">
+  </ods-datepicker>
+  <button id="datepicker-clear-button">Clear</button>
+  <button id="datepicker-reset-button">Reset</button>
+  <button id="datepicker-get-validity-button">GetValidity</button>
+  <button id="datepicker-open-button">Open</button>
+  <button id="datepicker-close-button">Close</button>
+  <script>
+    const datepickerMethods = document.getElementById('datepicker-methods');
+    datepickerMethods.defaultValue = new Date();
+    const datepickerClearButton = document.getElementById('datepicker-clear-button');
+    const datepickerResetButton = document.getElementById('datepicker-reset-button');
+    const datepickerGetValidityButton = document.getElementById('datepicker-get-validity-button');
+    const datepickerOpenButton = document.getElementById('datepicker-open-button');
+    const datepickerCloseButton = document.getElementById('datepicker-close-button');
+
+    datepickerClearButton.addEventListener('click', () => datepickerMethods.clear());
+    datepickerResetButton.addEventListener('click', () => datepickerMethods.reset());
+    datepickerOpenButton.addEventListener('click', () => datepickerMethods.open());
+    datepickerCloseButton.addEventListener('click', () => datepickerMethods.close());
+    datepickerGetValidityButton.addEventListener('click', async() => {
+      console.log(await datepickerMethods.getValidity());
+    });
+
+    // datepickerMethods.addEventListener('odsBlur', () => { console.log('on blur') });
+    datepickerMethods.addEventListener('odsChange', (e) => { console.log('on change', e) });
+    datepickerMethods.addEventListener('odsClear', () => { console.log('on clear') });
+    // datepickerMethods.addEventListener('odsFocus', () => { console.log('on focus') });
+    datepickerMethods.addEventListener('odsReset', () => { console.log('on reset') });
+  </script>
+
+  <p>Form</p>
+  <form id="datepicker-form">
+    <ods-datepicker id="datepicker-in-form"
+                    name="datepicker">
+    </ods-datepicker>
+    <button id="datepicker-form-reset-button" type="reset">Reset</button>
+    <button id="datepicker-form-submit-button" type="submit">Submit</button>
+  </form>
+  <script>
+    const datepickerFormElement = document.querySelector('#datepicker-in-form');
+    // datepickerFormElement.value = new Date();
+    datepickerFormElement.defaultValue = new Date();
+    const datepickerForm = document.querySelector('#datepicker-form');
+    const datepickerSubmitFormButton = document.querySelector('#datepicker-form-submit-button');
+
+    datepickerSubmitFormButton.addEventListener('click', () => {
+      const formData = new FormData(datepickerForm);
+      console.log('formData', formData);
+    });
+  </script>
+
+  <p>Dynamic Prop Change</p>
+  <ods-datepicker id="dynamic-datepicker"></ods-datepicker>
+  <button id="dynamic-datepicker-change-prop-button" type="button">Change Prop</button>
+  <script>
+    const dynamicDatepicker = document.querySelector('#dynamic-datepicker');
+    const changePropButton = document.querySelector('#dynamic-datepicker-change-prop-button');
+    dynamicDatepicker.min = new Date();
+
+    changePropButton.addEventListener('click', () => {
+      dynamicDatepicker.min = new Date(Date.now() - 86400000);
+      // dynamicDatepicker.locale = 'fr';
+    });
+  </script>
 </body>
 </html>

@@ -3,16 +3,16 @@ import { type E2EPage, newE2EPage } from '@stencil/core/testing';
 describe('ods-select navigation', () => {
   let page: E2EPage;
 
-  async function isOpen(): Promise<boolean> {
-    return await page.evaluate(() => {
-      return document.querySelector('ods-select')?.shadowRoot?.querySelector<HTMLElement>('.ts-dropdown')?.style.display !== 'none';
-    });
-  }
-
   async function isFocused(): Promise<boolean> {
     return await page.evaluate(() => {
       const element = document.querySelector('ods-select');
       return document.activeElement === element;
+    });
+  }
+
+  async function isOpen(): Promise<boolean> {
+    return await page.evaluate(() => {
+      return document.querySelector('ods-select')?.shadowRoot?.querySelector<HTMLElement>('.ts-dropdown')?.style.display !== 'none';
     });
   }
 

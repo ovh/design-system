@@ -1,5 +1,5 @@
 <template>
-  <OdsDatepicker />
+  <OdsDatepicker name="my-datepicker" />
 </template>
 
 <script lang="ts">

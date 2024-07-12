@@ -30,6 +30,7 @@ export class OdsPagination {
   @State() itemPerPage = ODS_PAGINATION_PER_PAGE.option_10;
   @State() pageList: OdsPaginationPageList = [];
   @State() current: number = 1;
+  @State() isPageKeyUp: boolean = false;
 
   @Prop({ reflect: true }) public defaultCurrentPage: number = 1;
   /** @docType OdsPaginationPerPage */
@@ -120,6 +121,22 @@ export class OdsPagination {
     this.isFirstLoad = false;
   }
 
+  componentDidRender(): void {
+    if (this.isPageKeyUp) {
+      const allButtons = this.el.shadowRoot?.querySelectorAll('ods-button');
+      if (allButtons) {
+        allButtons.forEach((button) => {
+          if (button.getAttribute('label') === `${this.current}`) {
+            const shadowButton = button.shadowRoot?.querySelector('button');
+            if (shadowButton) {
+              shadowButton.focus();
+            }
+          }
+        });
+      }
+    }
+  }
+
   private updatePageList(): void {
     this.pageList = createPageList(this.actualTotalPages, this.current);
   }
@@ -144,10 +161,12 @@ export class OdsPagination {
   }
 
   private handlePreviousClick(page: number): void {
+    this.isPageKeyUp = false;
     this.setCurrentPage(page - 1);
   }
 
   private handleNextClick(page: number): void {
+    this.isPageKeyUp = false;
     this.setCurrentPage(page + 1);
   }
 
@@ -157,17 +176,20 @@ export class OdsPagination {
 
   private handlePreviousKeyUp(event: KeyboardEvent, page: number): void {
     if (this.current > 1) {
+      this.isPageKeyUp = false;
       this.onKeyUp(event, page - 1);
     }
   }
 
   private handleNextKeyUp(event: KeyboardEvent, page: number): void {
     if (this.current < this.pageList.length) {
+      this.isPageKeyUp = false;
       this.onKeyUp(event, page + 1);
     }
   }
 
   private handlePageKeyUp(event: KeyboardEvent, page: number): void {
+    this.isPageKeyUp = true;
     this.onKeyUp(event, page);
   }
 

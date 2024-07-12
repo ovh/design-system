@@ -58,6 +58,11 @@
         justify-content: center;
         width: 2.5rem;
       }
+
+      &__button--selected::part(button) {
+        border-color: var(--ods-color-primary-800);
+        background-color: var(--ods-color-primary-800);
+      }
     }
   }
 }

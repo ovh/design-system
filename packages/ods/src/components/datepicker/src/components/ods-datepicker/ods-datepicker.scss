@@ -10,12 +10,10 @@ $ods-datepicker-clearable-button-size: input.$ods-input-actions-button-width;
   height: $ods-datepicker-item-size;
 
   &:not(.disabled) {
-    &:not(.focused) {
-      color: var(--ods-color-primary-500);
+    color: var(--ods-color-primary-500);
 
-      &:hover {
-        background-color: var(--ods-color-primary-200);
-      }
+    &:not(.selected):hover {
+      background-color: var(--ods-color-primary-200);
     }
   }
 
@@ -25,6 +23,14 @@ $ods-datepicker-clearable-button-size: input.$ods-input-actions-button-width;
   }
 
   &.focused {
+    @include focus.ods-focus();
+
+    z-index: 1;
+    outline-offset: 0;
+    background-color: inherit;
+  }
+
+  &.selected {
     background-color: var(--ods-color-primary-800);
     color: var(--ods-color-primary-000);
   }
@@ -185,37 +191,16 @@ $ods-datepicker-clearable-button-size: input.$ods-input-actions-button-width;
 
           .datepicker-grid {
             .day {
+              @include custom-view();
+
               border-radius: 50%;
               font-weight: 600;
 
               &:not(.disabled) {
-                color: var(--ods-color-primary-500);
-
-                &:not(.selected):hover {
-                  background-color: var(--ods-color-primary-200);
-                }
-
                 &.next,
                 &.prev {
                   opacity: .5;
                 }
-              }
-
-              &.disabled {
-                cursor: not-allowed;
-              }
-
-              &.focused {
-                @include focus.ods-focus();
-
-                z-index: 1;
-                outline-offset: 0;
-                background-color: inherit;
-              }
-
-              &.selected {
-                background-color: var(--ods-color-primary-800);
-                color: var(--ods-color-primary-000);
               }
             }
           }

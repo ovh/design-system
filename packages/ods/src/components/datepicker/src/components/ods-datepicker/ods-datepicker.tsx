@@ -163,6 +163,7 @@ export class OdsDatepicker {
         prevArrow: `<ods-icon name="${ODS_ICON_NAME.chevronLeft}"></ods-icon>`,
         showOnClick: true,
         showOnFocus: true,
+        todayHighlight: true,
         updateOnBlur: true,
       });
       // Apply initial DOM changes on the picker

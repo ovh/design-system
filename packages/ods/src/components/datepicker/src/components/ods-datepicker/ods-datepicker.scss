@@ -2,7 +2,7 @@
 @use '../../../../../style/input';
 @import '~vanillajs-datepicker/dist/css/datepicker.min.css';
 
-$ods-datepicker-item-size: 32px;
+$ods-datepicker-item-size: 36px;
 $ods-datepicker-padding: 6px;
 $ods-datepicker-clearable-button-size: input.$ods-input-actions-button-width;
 
@@ -200,6 +200,24 @@ $ods-datepicker-clearable-button-size: input.$ods-input-actions-button-width;
                 &.next,
                 &.prev {
                   opacity: .5;
+                }
+              }
+
+              &.today {
+                position: relative;
+
+                &::after {
+                  position: absolute;
+                  bottom: 3px;
+                  border-radius: 50%;
+                  background-color: var(--ods-color-primary-500);
+                  width: 4px;
+                  height: 4px;
+                  content: '';
+                }
+
+                &:not(.selected) {
+                  background-color: inherit;
                 }
               }
             }

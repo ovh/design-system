@@ -1,0 +1,4 @@
+@mixin ods-flag() {
+  box-shadow: 0 0 12px var(--ods-color-neutral-200);
+  aspect-ratio: 4/3;
+}

@@ -3,6 +3,17 @@ import type { SpecPage } from '@stencil/core/testing';
 import { newSpecPage } from '@stencil/core/testing';
 import { OdsRange } from '../../src';
 
+const mutationObserverMock = jest.fn(function MutationObserver(callback) {
+  this.observe = jest.fn();
+  this.disconnect = jest.fn();
+  // Optionally add a trigger() method to manually trigger a change
+  this.trigger = function(mockedMutationsList: MutationRecord[]): void {
+    callback(mockedMutationsList, this);
+  };
+});
+// @ts-ignore mock
+global.MutationObserver = mutationObserverMock;
+
 describe('ods-range rendering', () => {
   let page: SpecPage;
   let root: HTMLElement | undefined;

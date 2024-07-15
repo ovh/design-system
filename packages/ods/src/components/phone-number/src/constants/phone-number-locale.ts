@@ -1,14 +1,3 @@
-enum ODS_PHONE_NUMBER_LOCALE {
-  en = 'en',
-  fr = 'fr',
-}
+import { ODS_LOCALE, ODS_LOCALES, type OdsLocale } from '../../../../utils/locale';
 
-type OdsPhoneNumberLocale = `${ODS_PHONE_NUMBER_LOCALE}`;
-
-const ODS_PHONE_NUMBER_LOCALES = Object.freeze(Object.values(ODS_PHONE_NUMBER_LOCALE));
-
-export {
-  ODS_PHONE_NUMBER_LOCALE,
-  ODS_PHONE_NUMBER_LOCALES,
-  type OdsPhoneNumberLocale,
-};
+export { ODS_LOCALE as ODS_PHONE_NUMBER_LOCALE, ODS_LOCALES as ODS_PHONE_NUMBER_LOCALES, type OdsLocale as OdsPhoneNumberLocale };

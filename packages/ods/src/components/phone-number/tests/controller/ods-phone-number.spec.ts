@@ -100,7 +100,7 @@ describe('ods-phone-number controller', () => {
 
     it('should return the default locale if no match from navigator language', () => {
       // @ts-ignore for test purpose
-      global.navigator = { language: 'de-AT' };
+      global.navigator = { language: 'zh-gan' };
 
       // @ts-ignore for test purpose
       expect(getCurrentLocale('zw')).toBe('fr');

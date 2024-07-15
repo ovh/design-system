@@ -26,8 +26,8 @@
   {"isoCode": "bj", "name": "Benin"},
   {"isoCode": "bl", "name": "Saint Barthélemy"},
   {"isoCode": "bm", "name": "Bermuda"},
-  {"isoCode": "bn", "name": "Brunei Darussalam"},
-  {"isoCode": "bo", "name": "Bolivia (Plurinational State of)"},
+  {"isoCode": "bn", "name": "Brunei"},
+  {"isoCode": "bo", "name": "Bolivia"},
   {"isoCode": "br", "name": "Brazil"},
   {"isoCode": "bs", "name": "Bahamas"},
   {"isoCode": "bt", "name": "Bhutan"},
@@ -236,5 +236,5 @@
   {"isoCode": "yt", "name": "Mayotte"},
   {"isoCode": "za", "name": "South Africa"},
   {"isoCode": "zm", "name": "Zambia"},
-  {"isoCode": "zw", "name": "Zimbabwe"
-}]
+  {"isoCode": "zw", "name": "Zimbabwe"}
+]

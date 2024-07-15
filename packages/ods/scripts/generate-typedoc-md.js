@@ -187,6 +187,8 @@ function printType(typeObject) {
         return `${printType(typeObject.elementType)}[]`;
       case 'union':
         return typeObject.types.map(printType).join(' \| ');
+      case 'tuple':
+        return `[${typeObject.elements.map(printType).join(' \| ')}]`;
     }
   }
   return '_unknown_';

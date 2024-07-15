@@ -14,12 +14,12 @@ import { type OdsRangeValueChangeEventDetail } from '../../interfaces/event';
   tag: 'ods-range',
 })
 export class OdsRange {
-  private inputRangeId = 'input-range';
-  private inputRangeDualId = 'input-range-dual';
-
   private hostId: string = '';
   private inputEl?: HTMLInputElement;
   private inputElDual?: HTMLInputElement;
+  private inputObservable?: MutationObserver;
+  private inputRangeId = 'input-range';
+  private inputRangeDualId = 'input-range-dual';
   private tooltip?: OdsTooltip;
   private tooltipDual?: OdsTooltip;
 
@@ -106,9 +106,12 @@ export class OdsRange {
     setFormValue(this.internals, this.value);
   }
 
-  @Watch('step')
-  onStepChange(): void {
-    this.onInput();
+  onInputElChange(mutationList: MutationRecord[]): void {
+    for (const mutation of mutationList) {
+      if(mutation.attributeName && ['step', 'min', 'max'].includes(mutation.attributeName)) {
+        this.onInput();
+      }
+    }
   }
 
   componentWillLoad(): void {
@@ -119,6 +122,18 @@ export class OdsRange {
     }
     setFormValue(this.internals, this.value);
     this.onValueChange();
+  }
+
+  componentDidLoad(): void {
+    this.inputObservable = new MutationObserver(this.onInputElChange.bind(this));
+
+    if (this.inputEl) {
+      this.inputObservable.observe(this.inputEl, { attributes: true });
+    }
+  }
+
+  disconnectedCallback(): void {
+    this.inputObservable?.disconnect();
   }
 
   async formResetCallback(): Promise<void> {

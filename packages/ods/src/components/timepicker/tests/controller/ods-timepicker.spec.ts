@@ -11,6 +11,10 @@ describe('ods-timepicker controller', () => {
       expect(formatValue('12:34', true)).toBe('12:34:00');
     });
 
+    it('should return value with seconds correctly', () => {
+      expect(formatValue('12:34:56', true)).toBe('12:34:56');
+    });
+
     it('should handle undefined value gracefully', () => {
       expect(formatValue(undefined, false)).toBe('');
     });
@@ -44,8 +48,8 @@ describe('ods-timepicker controller', () => {
 
   describe('parseTimezones', () => {
     it('should return all timezones when input is undefined or ODS_TIMEZONES_PRESET.All', () => {
-      expect(parseTimezones()).toEqual(expect.arrayContaining(ODS_TIMEZONES));
-      expect(parseTimezones(ODS_TIMEZONES_PRESET.All)).toEqual(expect.arrayContaining(ODS_TIMEZONES));
+      expect(parseTimezones()).toEqual(ODS_TIMEZONES);
+      expect(parseTimezones(ODS_TIMEZONES_PRESET.All)).toEqual(ODS_TIMEZONES);
     });
 
     it('should parse a valid JSON string of timezones', () => {

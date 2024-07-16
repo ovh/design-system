@@ -1,7 +1,7 @@
 import type { OdsTimezone } from '../constant/timezones';
 
 interface OdsTimepickerValueChangeEventDetail {
-  currentTimes?: OdsTimezone;
+  currentTimezone?: OdsTimezone;
   name: string;
   oldValue?: string;
   validity?: ValidityState;

@@ -109,7 +109,7 @@ export class OdsRange {
   onInputElChange(mutationList: MutationRecord[]): void {
     for (const mutation of mutationList) {
       if(mutation.attributeName && ['step', 'min', 'max'].includes(mutation.attributeName)) {
-        this.onInput();
+        this.onInput(false);
       }
     }
   }
@@ -140,11 +140,15 @@ export class OdsRange {
     await this.reset();
   }
 
-  private onInput(currentInput?: HTMLInputElement, otherInput?: HTMLInputElement): void {
-    const isInputsValuesEqual = Number(this.inputEl?.value) - Number(this.inputElDual?.value) > 0;
-    if (currentInput && otherInput && isInputsValuesEqual) {
-      currentInput.value = otherInput.value;
-      return;
+  private onInput(isDualInput: boolean): void {
+    const step = this.step ?? 1;
+    const isInputsValuesEqual = Number(this.inputElDual?.value) - Number(this.inputEl?.value) < step;
+    if (isInputsValuesEqual) {
+      if (isDualInput) {
+        this.onInputElDual(step);
+      } else {
+        this.onInputEl(step);
+      }
     }
 
     this.isDualRange = isDualRange(this.value);
@@ -154,6 +158,18 @@ export class OdsRange {
       validity: this.inputEl?.validity,
       value: this.value,
     });
+  }
+
+  private onInputEl(step : number): void {
+    if (this.inputEl && this.inputElDual) {
+      this.inputEl.value = `${(Number(this.inputElDual.value) ?? 0) - step}`;
+    }
+  }
+
+  private onInputElDual(step : number): void {
+    if (this.inputEl && this.inputElDual) {
+      this.inputElDual.value = `${(Number(this.inputEl.value) ?? 0) + step}`;
+    }
   }
 
   private changeValues(currentValue?: number, dualValue?: number): number | [number, number] | undefined {
@@ -209,7 +225,7 @@ export class OdsRange {
           onFocus={ () => this.odsFocus.emit() }
           onFocusin={ () => this.showTooltips() }
           onFocusout={ () => this.hideTooltips() }
-          onInput={ () => this.onInput(this.inputEl, this.inputElDual) }
+          onInput={ () => this.onInput(false) }
           onMouseOver={ () => this.showTooltips() }
           onMouseLeave={ () => this.hideTooltips() }
           part="range"
@@ -255,7 +271,7 @@ export class OdsRange {
             id={ this.inputRangeDualId }
             onFocusin={ () => this.showTooltips() }
             onFocusout={ () => this.hideTooltips() }
-            onInput={ () => this.onInput(this.inputElDual, this.inputEl) }
+            onInput={ () => this.onInput(true) }
             onMouseOver={ () => this.showTooltips() }
             onMouseLeave={ () => this.hideTooltips() }
             part="range-dual"

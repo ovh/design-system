@@ -83,7 +83,7 @@ describe('ods-range behavior', () => {
       await page.keyboard.press('ArrowUp');
       await page.waitForChanges();
 
-      expect((await el.getProperty('value'))?.[0]).toBe(primaryValue);
+      expect((await el.getProperty('value'))?.[0]).toBe(primaryValue - 1);
       expect((await el.getProperty('value'))?.[1]).toBe(primaryValue);
     });
 
@@ -97,7 +97,21 @@ describe('ods-range behavior', () => {
       await page.waitForChanges();
 
       expect((await el.getProperty('value'))?.[0]).toBe(secondaryValue);
-      expect((await el.getProperty('value'))?.[1]).toBe(secondaryValue);
+      expect((await el.getProperty('value'))?.[1]).toBe(secondaryValue + 1);
+    });
+
+    it('should change value with step on dual but not upper then secondary value', async() => {
+      const secondaryValue = 70;
+      const step = 10;
+      await setup(`<ods-range step="${step}"></ods-range>`, { value: [secondaryValue, secondaryValue + (step * 2)] });
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('ArrowDown');
+      await page.waitForChanges();
+
+      expect((await el.getProperty('value'))?.[0]).toBe(secondaryValue);
+      expect((await el.getProperty('value'))?.[1]).toBe(secondaryValue + step);
     });
   });
 

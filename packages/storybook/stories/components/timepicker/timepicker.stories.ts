@@ -8,7 +8,7 @@ defineCustomElement();
 
 const meta: Meta = {
   component: 'ods-timepicker',
-  title: 'ODS Components/Form/Time picker',
+  title: 'ODS Components/Form/Timepicker',
 };
 
 export default meta;
@@ -16,8 +16,8 @@ export default meta;
 export const Demo: StoryObj = {
   render: (arg) => html`
   <ods-timepicker class="my-timepicker-demo"
-    ariaLabel="${arg.ariaLabel}"
-    ariaLabelledby="${arg.ariaLabelledby}"
+    aria-label="${arg.ariaLabel}"
+    aria-labelledby="${arg.ariaLabelledby}"
     has-error="${arg.hasError}"
     is-disabled="${arg.isDisabled}"
     is-readonly="${arg.isReadonly}"
@@ -106,11 +106,11 @@ export const Demo: StoryObj = {
   },
 };
 
-export const DemoTimeZones: StoryObj = {
+export const TimeZones: StoryObj = {
   render: (arg) => html`
   <ods-timepicker class="my-timepicker-demo-timezones"
-    ariaLabel="${arg.ariaLabel}"
-    ariaLabelledby="${arg.ariaLabelledby}"
+    aria-label="${arg.ariaLabel}"
+    aria-labelledby="${arg.ariaLabelledby}"
     current-timezone="${arg.currentTimezone}"
     has-error="${arg.hasError}"
     is-disabled="${arg.isDisabled}"
@@ -148,7 +148,7 @@ export const DemoTimeZones: StoryObj = {
     currentTimezone: {
       table: {
         category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: ODS_TIMEZONE.UTC },
+        defaultValue: { summary: 'ø' },
         type: { summary: ODS_TIMEZONES },
       },
       control: { type: 'select' },
@@ -207,7 +207,7 @@ export const DemoTimeZones: StoryObj = {
     timezones: {
       table: {
         category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: ODS_TIMEZONES_PRESET.All },
+        defaultValue: { summary: 'ø' },
         type: { summary: [...ODS_TIMEZONES, ...ODS_TIMEZONES_PRESETS] },
       },
       control: { type: 'select' },
@@ -233,6 +233,7 @@ export const DemoTimeZones: StoryObj = {
 };
 
 export const CustomCSS: StoryObj = {
+  decorators: [(story) => html`<div style="padding-bottom: 200px; display: inline-flex; align-items: center;">${story()}</div>`],
   tags: ['isHidden'],
   render: () => html`
   <ods-timepicker timezones="all" class="my-timepicker-custom-css"></ods-timepicker>
@@ -277,6 +278,7 @@ export const Readonly: StoryObj = {
 };
 
 export const Timezones: StoryObj = {
+  decorators: [(story) => html`<div style="padding-bottom: 200px; display: inline-flex; align-items: center;">${story()}</div>`],
   tags: ['isHidden'],
   render: () => html`
 <ods-timepicker timezones="all"></ods-timepicker>

@@ -54,9 +54,13 @@
       }
 
       &__button::part(button) {
-        display: flex;
+        display: none;
         justify-content: center;
         width: 2.5rem;
+      }
+
+      &__button--visible::part(button) {
+        display: flex;
       }
 
       &__button--selected::part(button) {

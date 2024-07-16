@@ -9,7 +9,7 @@ Flag has been removed from ODS components.
 
 Using ODS Flag, pre V18, does require every project to setup a specific build configuration to be able to fetch the assets.
 
-This whole config should not be enforced by ODS and should be manage by each the way they prefer.
+This whole config should not be enforced by ODS and should be managed by each the way they prefer.
 
 ## The assets issue
 
@@ -26,14 +26,14 @@ This solution will transform the assets into base64 strings and embed them in th
 
 It is fine when dealing with small assets (like the spinner svg).
 
-But, flags are high quality svg that add way to much weight to the bundle, thus it is not a viable solution.
+However, flags are usually high-quality svg files that will add weight to the bundle, thus it is not a viable solution.
 
 ### Externalize the assets
 
 Putting all the flags svg to a remote dedicated server/cdn and embed only the url would be, by far, the most
 performant solution.
 
-Sadly this is not possible yet due to internal security rules.
+Regrettably, this is not possible yet due to internal security rules.
 
 We do hope a solution will be found at some point, that will allow us to put back this component.
 

@@ -21,16 +21,14 @@ export class OdsPagination {
   private leftArrowButtonId = 'pagination-left-arrow';
   private rightArrowButtonId = 'pagination-right-arrow';
   private hostId: string = '';
-  private maxPagesBeforeEllipsis = 6;
-  private minCurrentPageForRightEllipsis = 4;
-  private pagesBeforeEnd = 3;
+  private maxVisibleItems = 7;
+  private ellipsisThreshold = 4;
 
   @Element() el!: HTMLElement;
 
   @State() itemPerPage = ODS_PAGINATION_PER_PAGE.option_10;
   @State() pageList: OdsPaginationPageList = [];
   @State() current: number = 1;
-  @State() isPageKeyUp: boolean = false;
 
   @Prop({ reflect: true }) public defaultCurrentPage: number = 1;
   /** @docType OdsPaginationPerPage */
@@ -64,7 +62,7 @@ export class OdsPagination {
 
   @Watch('current')
   async onCurrentChange(current: number, oldCurrent?: number): Promise<void> {
-    this.updatePageList();
+    this.updatePageVisibility();
     this.emitChange(current, oldCurrent);
   }
 
@@ -74,6 +72,7 @@ export class OdsPagination {
       this.actualTotalPages = this.totalPages;
     }
     this.updatePageList();
+    this.updatePageVisibility();
   }
 
   @Watch('itemPerPage')
@@ -118,27 +117,46 @@ export class OdsPagination {
     this.current = getActualPage(this.defaultCurrentPage, this.actualTotalPages, this.current);
 
     this.updatePageList();
+    this.updatePageVisibility();
     this.isFirstLoad = false;
   }
 
-  componentDidRender(): void {
-    if (this.isPageKeyUp) {
-      const allButtons = this.el.shadowRoot?.querySelectorAll('ods-button');
-      if (allButtons) {
-        allButtons.forEach((button) => {
-          if (button.getAttribute('label') === `${this.current}`) {
-            const shadowButton = button.shadowRoot?.querySelector('button');
-            if (shadowButton) {
-              shadowButton.focus();
-            }
-          }
-        });
-      }
-    }
+  private updatePageList(): void {
+    this.pageList = createPageList(this.actualTotalPages, this.current).map((page) => ({
+      ...page,
+      isVisible: false,
+    }));
   }
 
-  private updatePageList(): void {
-    this.pageList = createPageList(this.actualTotalPages, this.current);
+  private updatePageVisibility(): void {
+    const maxVisibleItems = 7;
+
+    this.pageList.forEach((page, index) => {
+      const pageId = index + 1;
+
+      if (pageId === 1 || pageId === this.actualTotalPages) {
+        page.isVisible = true;
+      } else if (this.actualTotalPages <= maxVisibleItems) {
+        page.isVisible = true;
+      } else if (this.current <= this.ellipsisThreshold) {
+        page.isVisible = pageId <= maxVisibleItems - 2;
+      } else if (this.current >= this.actualTotalPages - this.ellipsisThreshold) {
+        page.isVisible = pageId >= this.actualTotalPages - (maxVisibleItems - 3);
+      } else {
+        page.isVisible = pageId >= this.current - 1 && pageId <= this.current + 1;
+      }
+    });
+
+    const visiblePages = this.pageList.filter((page) => page.isVisible);
+    if (visiblePages.length > maxVisibleItems) {
+      if (this.current > this.ellipsisThreshold && this.current < this.actualTotalPages - this.ellipsisThreshold) {
+        visiblePages[1].isVisible = false;
+      } else if (this.current <= this.ellipsisThreshold) {
+        visiblePages[visiblePages.length - 2].isVisible = false;
+      } else {
+        visiblePages[1].isVisible = false;
+      }
+    }
   }
 
   private emitChange(current: number, oldCurrent?: number): void {
@@ -153,20 +171,18 @@ export class OdsPagination {
     this.actualTotalPages = computeActualTotalPages(this.itemPerPage, this.totalItems, this.totalPages);
 
     if (this.current === 1) {
-      // If current is already 1 we don't want to emit a change event
       this.updatePageList();
+      this.updatePageVisibility();
     } else {
       await this.setCurrentPage(1);
     }
   }
 
   private handlePreviousClick(page: number): void {
-    this.isPageKeyUp = false;
     this.setCurrentPage(page - 1);
   }
 
   private handleNextClick(page: number): void {
-    this.isPageKeyUp = false;
     this.setCurrentPage(page + 1);
   }
 
@@ -176,20 +192,17 @@ export class OdsPagination {
 
   private handlePreviousKeyUp(event: KeyboardEvent, page: number): void {
     if (this.current > 1) {
-      this.isPageKeyUp = false;
       this.onKeyUp(event, page - 1);
     }
   }
 
   private handleNextKeyUp(event: KeyboardEvent, page: number): void {
     if (this.current < this.pageList.length) {
-      this.isPageKeyUp = false;
       this.onKeyUp(event, page + 1);
     }
   }
 
   private handlePageKeyUp(event: KeyboardEvent, page: number): void {
-    this.isPageKeyUp = true;
     this.onKeyUp(event, page);
   }
 
@@ -249,15 +262,15 @@ export class OdsPagination {
     );
   }
 
-  private renderEllipsis(): typeof Fragment {
+  private renderEllipsis(key: string): typeof Fragment {
     return (
-      <li>
+      <li key={key}>
         <ods-button
           class="ods-pagination__list__page__ellipsis"
-          color={ ODS_BUTTON_COLOR.primary }
-          isDisabled={ true }
+          color={ODS_BUTTON_COLOR.primary}
+          isDisabled={true}
           label="&#x2026;"
-          variant={ ODS_BUTTON_VARIANT.ghost }
+          variant={ODS_BUTTON_VARIANT.ghost}
         >
         </ods-button>
       </li>
@@ -269,11 +282,14 @@ export class OdsPagination {
       return;
     }
 
+    const renderEllipsisLeft = this.current > this.ellipsisThreshold && this.actualTotalPages > this.maxVisibleItems;
+    const renderEllipsisRight = this.current < this.actualTotalPages - this.ellipsisThreshold && this.actualTotalPages > this.maxVisibleItems;
+
     return (
       <Host
         class="ods-pagination"
         isDisabled={this.isDisabled}
-        id={ this.hostId }
+        id={this.hostId}
       >
         {
           !!this.totalItems &&
@@ -294,7 +310,7 @@ export class OdsPagination {
                     }
                   </ods-select>
               }
-              <ods-text preset={ ODS_TEXT_PRESET.label }>
+              <ods-text preset={ODS_TEXT_PRESET.label}>
                 <slot name="before-total-items"></slot>
                 {this.totalItems}
                 <slot name="after-total-items"></slot>
@@ -303,47 +319,76 @@ export class OdsPagination {
         }
 
         <ul class="ods-pagination__list">
-          { this.renderArrow( 'left' ) }
+          {this.renderArrow('left')}
 
-          {
-            this.pageList
-              .filter((page) => page.active)
-              .map((page) => {
-                const pageId = this.pageList.indexOf(page) + 1;
-                const shouldRenderLeftEllipsis = this.pageList.length > this.maxPagesBeforeEllipsis && this.pageList.length - this.current > this.pagesBeforeEnd && pageId === this.pageList.length;
-                const shouldRenderRightEllipsis = this.pageList.length > this.maxPagesBeforeEllipsis && this.current > this.minCurrentPageForRightEllipsis && pageId === 1;
+          {(this.totalItems || this.actualTotalPages > 1) && (
+            <li key={1}>
+              <ods-button
+                class={{
+                  'ods-pagination__list__page__button': true,
+                  'ods-pagination__list__page__button--selected': this.current === 1,
+                  'ods-pagination__list__page__button--visible': true,
+                }}
+                variant={this.current === 1 ? ODS_BUTTON_VARIANT.default : ODS_BUTTON_VARIANT.ghost}
+                isDisabled={this.isDisabled}
+                label={'1'}
+                color={ODS_BUTTON_COLOR.primary}
+                size={ODS_BUTTON_SIZE.md}
+                onClick={(): void => this.handlePageClick(1)}
+                onKeyUp={(event: KeyboardEvent): void => this.handlePageKeyUp(event, 1)}
+              >
+              </ods-button>
+            </li>
+          )}
 
-                shouldRenderLeftEllipsis || shouldRenderRightEllipsis && this.renderEllipsis();
+          {renderEllipsisLeft && this.renderEllipsis('left')}
 
-                return (
-                  <div class="ods-pagination__list__page">
-                    { shouldRenderLeftEllipsis && this.renderEllipsis() }
+          {this.pageList.slice(1, this.pageList.length - 1).map((page, index) => {
+            const pageId = index + 2;
+            return (
+              <li key={pageId}>
+                <ods-button
+                  class={{
+                    'ods-pagination__list__page__button': true,
+                    'ods-pagination__list__page__button--selected': this.current === pageId,
+                    'ods-pagination__list__page__button--visible': page.isVisible,
+                  }}
+                  variant={this.current === pageId ? ODS_BUTTON_VARIANT.default : ODS_BUTTON_VARIANT.ghost}
+                  isDisabled={this.isDisabled}
+                  label={`${pageId}`}
+                  color={ODS_BUTTON_COLOR.primary}
+                  size={ODS_BUTTON_SIZE.md}
+                  onClick={(): void => this.handlePageClick(pageId)}
+                  onKeyUp={(event: KeyboardEvent): void => this.handlePageKeyUp(event, pageId)}
+                >
+                </ods-button>
+              </li>
+            );
+          })}
 
-                    <li>
-                      <ods-button
-                        key={pageId}
-                        class={{
-                          'ods-pagination__list__page__button': true,
-                          'ods-pagination__list__page__button--selected': this.current === pageId,
-                        }}
-                        variant={this.current === pageId ? ODS_BUTTON_VARIANT.default : ODS_BUTTON_VARIANT.ghost}
-                        isDisabled={this.isDisabled}
-                        label={`${pageId}`}
-                        color={ODS_BUTTON_COLOR.primary}
-                        size={ODS_BUTTON_SIZE.md}
-                        onClick={(): void => this.handlePageClick(pageId)}
-                        onKeyUp={(event: KeyboardEvent): void => this.handlePageKeyUp(event, pageId)}
-                      >
-                      </ods-button>
-                    </li>
+          {renderEllipsisRight && this.renderEllipsis('right')}
 
-                    { shouldRenderRightEllipsis && this.renderEllipsis() }
-                  </div>
-                );
-              })
-          }
+          {this.actualTotalPages > 1 && (
+            <li key={this.actualTotalPages}>
+              <ods-button
+                class={{
+                  'ods-pagination__list__page__button': true,
+                  'ods-pagination__list__page__button--selected': this.current === this.actualTotalPages,
+                  'ods-pagination__list__page__button--visible': true,
+                }}
+                variant={this.current === this.actualTotalPages ? ODS_BUTTON_VARIANT.default : ODS_BUTTON_VARIANT.ghost}
+                isDisabled={this.isDisabled}
+                label={`${this.actualTotalPages}`}
+                color={ODS_BUTTON_COLOR.primary}
+                size={ODS_BUTTON_SIZE.md}
+                onClick={(): void => this.handlePageClick(this.actualTotalPages)}
+                onKeyUp={(event: KeyboardEvent): void => this.handlePageKeyUp(event, this.actualTotalPages)}
+              >
+              </ods-button>
+            </li>
+          )}
 
-          { this.renderArrow( 'right' ) }
+          {this.renderArrow('right')}
         </ul>
       </Host>
     );

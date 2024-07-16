@@ -13,7 +13,7 @@ function createPageList(totalPages: number, pageSelected: number): OdsPagination
 
   // Create initial pageList with 'active' property set to false for each page.
   for (let i = 1; i <= totalPages; i++) {
-    pageList.push({ active: false });
+    pageList.push({ active: false, isVisible: false });
   }
 
   let startIndex = Math.max(pageSelected - 2, 1);

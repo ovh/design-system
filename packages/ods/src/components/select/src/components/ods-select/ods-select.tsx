@@ -287,6 +287,7 @@ export class OdsSelect {
       <Host
         class={{
           'ods-select': true,
+          'ods-select--disabled': this.isDisabled,
           'ods-select--dropdown-width-auto': this.dropdownWidth === 'auto',
           'ods-select--error': this.hasError,
           [`ods-select--border-rounded-${this.borderRounded}`]: true,

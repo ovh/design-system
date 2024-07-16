@@ -62,7 +62,7 @@ export class OdsPagination {
 
   @Watch('current')
   async onCurrentChange(current: number, oldCurrent?: number): Promise<void> {
-    this.updatePageVisibility();
+    this.updatePageList();
     this.emitChange(current, oldCurrent);
   }
 
@@ -72,7 +72,6 @@ export class OdsPagination {
       this.actualTotalPages = this.totalPages;
     }
     this.updatePageList();
-    this.updatePageVisibility();
   }
 
   @Watch('itemPerPage')
@@ -117,46 +116,13 @@ export class OdsPagination {
     this.current = getActualPage(this.defaultCurrentPage, this.actualTotalPages, this.current);
 
     this.updatePageList();
-    this.updatePageVisibility();
     this.isFirstLoad = false;
   }
 
   private updatePageList(): void {
     this.pageList = createPageList(this.actualTotalPages, this.current).map((page) => ({
       ...page,
-      isVisible: false,
     }));
-  }
-
-  private updatePageVisibility(): void {
-    const maxVisibleItems = 7;
-
-    this.pageList.forEach((page, index) => {
-      const pageId = index + 1;
-
-      if (pageId === 1 || pageId === this.actualTotalPages) {
-        page.isVisible = true;
-      } else if (this.actualTotalPages <= maxVisibleItems) {
-        page.isVisible = true;
-      } else if (this.current <= this.ellipsisThreshold) {
-        page.isVisible = pageId <= maxVisibleItems - 2;
-      } else if (this.current >= this.actualTotalPages - this.ellipsisThreshold) {
-        page.isVisible = pageId >= this.actualTotalPages - (maxVisibleItems - 3);
-      } else {
-        page.isVisible = pageId >= this.current - 1 && pageId <= this.current + 1;
-      }
-    });
-
-    const visiblePages = this.pageList.filter((page) => page.isVisible);
-    if (visiblePages.length > maxVisibleItems) {
-      if (this.current > this.ellipsisThreshold && this.current < this.actualTotalPages - this.ellipsisThreshold) {
-        visiblePages[1].isVisible = false;
-      } else if (this.current <= this.ellipsisThreshold) {
-        visiblePages[visiblePages.length - 2].isVisible = false;
-      } else {
-        visiblePages[1].isVisible = false;
-      }
-    }
   }
 
   private emitChange(current: number, oldCurrent?: number): void {
@@ -172,7 +138,6 @@ export class OdsPagination {
 
     if (this.current === 1) {
       this.updatePageList();
-      this.updatePageVisibility();
     } else {
       await this.setCurrentPage(1);
     }
@@ -188,29 +153,6 @@ export class OdsPagination {
 
   private handlePageClick(page: number): void {
     this.setCurrentPage(page);
-  }
-
-  private handlePreviousKeyUp(event: KeyboardEvent, page: number): void {
-    if (this.current > 1) {
-      this.onKeyUp(event, page - 1);
-    }
-  }
-
-  private handleNextKeyUp(event: KeyboardEvent, page: number): void {
-    if (this.current < this.pageList.length) {
-      this.onKeyUp(event, page + 1);
-    }
-  }
-
-  private handlePageKeyUp(event: KeyboardEvent, page: number): void {
-    this.onKeyUp(event, page);
-  }
-
-  private onKeyUp(event: KeyboardEvent, page: number): void {
-    if (event.key === ' ' || event.key === 'Enter') {
-      event.preventDefault();
-      this.setCurrentPage(page);
-    }
   }
 
   private renderArrow(direction: 'left' | 'right'): typeof Fragment {
@@ -237,13 +179,6 @@ export class OdsPagination {
               this.handlePreviousClick(Number(this.current));
             } else {
               this.handleNextClick(Number(this.current));
-            }
-          }}
-          onKeyUp={(event: KeyboardEvent) => {
-            if (isLeft) {
-              this.handlePreviousKeyUp(event, Number(this.current));
-            } else {
-              this.handleNextKeyUp(event, Number(this.current));
             }
           }}
           variant={ODS_BUTTON_VARIANT.ghost}
@@ -283,7 +218,7 @@ export class OdsPagination {
     }
 
     const renderEllipsisLeft = this.current > this.ellipsisThreshold && this.actualTotalPages > this.maxVisibleItems;
-    const renderEllipsisRight = this.current < this.actualTotalPages - this.ellipsisThreshold && this.actualTotalPages > this.maxVisibleItems;
+    const renderEllipsisRight = this.current < this.actualTotalPages - this.ellipsisThreshold + 1 && this.actualTotalPages > this.maxVisibleItems;
 
     return (
       <Host
@@ -335,7 +270,6 @@ export class OdsPagination {
                 color={ODS_BUTTON_COLOR.primary}
                 size={ODS_BUTTON_SIZE.md}
                 onClick={(): void => this.handlePageClick(1)}
-                onKeyUp={(event: KeyboardEvent): void => this.handlePageKeyUp(event, 1)}
               >
               </ods-button>
             </li>
@@ -351,7 +285,7 @@ export class OdsPagination {
                   class={{
                     'ods-pagination__list__page__button': true,
                     'ods-pagination__list__page__button--selected': this.current === pageId,
-                    'ods-pagination__list__page__button--visible': page.isVisible,
+                    'ods-pagination__list__page__button--visible': page.active,
                   }}
                   variant={this.current === pageId ? ODS_BUTTON_VARIANT.default : ODS_BUTTON_VARIANT.ghost}
                   isDisabled={this.isDisabled}
@@ -359,7 +293,6 @@ export class OdsPagination {
                   color={ODS_BUTTON_COLOR.primary}
                   size={ODS_BUTTON_SIZE.md}
                   onClick={(): void => this.handlePageClick(pageId)}
-                  onKeyUp={(event: KeyboardEvent): void => this.handlePageKeyUp(event, pageId)}
                 >
                 </ods-button>
               </li>
@@ -382,7 +315,6 @@ export class OdsPagination {
                 color={ODS_BUTTON_COLOR.primary}
                 size={ODS_BUTTON_SIZE.md}
                 onClick={(): void => this.handlePageClick(this.actualTotalPages)}
-                onKeyUp={(event: KeyboardEvent): void => this.handlePageKeyUp(event, this.actualTotalPages)}
               >
               </ods-button>
             </li>

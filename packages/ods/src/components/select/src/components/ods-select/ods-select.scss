@@ -279,7 +279,7 @@ $select-padding-right: $select-caret-size + ($select-base-padding * 2);
 }
 
 // Double class to give more weight than base override
-:host(.ods-select.ods-select--error) {
+:host(:not(.ods-select--disabled).ods-select.ods-select--error) {
   .ts-control {
     @include input.ods-input-error();
   }

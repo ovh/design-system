@@ -1,0 +1,34 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="ODS Components/User feedback/Cart/Migration From 17.x" />
+
+# Cart - migrate from v17 to v18
+----
+
+Cart has been removed from ODS components. <img src="https://img.shields.io/badge/removed-FF0000" />
+
+This component was too specific to a custom need and comes with quite a lot of downsides.
+
+## Current component issues
+
+### Performance & Complexity
+
+The whole component was composed of 9 web-components, each with their own rendering lifecycle.
+
+Each of those were relying on DOM queries to update their states accordingly to their parents/siblings, which
+can become quite problematic performance-wise.
+
+Also, in order to use this component, the integrators had to learn about the 9 different interfaces and all their possible combinations.
+
+### Internal logic
+
+ODS components tend to be presentational, thus the internal logic should be handled by the integrators.
+
+The current implementation of Cart was trying to enforce some of the logic (e.g. quantity computation).
+
+## How to use Cart in v18
+
+This component is basically a very simple top-to-bottom layout, where each section can be rendered using `ods-text` or even
+a simple text element. You can also use `ods-divider` to add some separation if needed.
+
+All the colors and style properties can be found in the exposed design tokens.

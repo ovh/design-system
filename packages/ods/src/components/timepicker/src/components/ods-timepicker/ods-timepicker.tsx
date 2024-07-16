@@ -5,7 +5,7 @@ import { AttachInternals, Component, Element, Event, Host, Method, Prop, Watch, 
 import { ODS_INPUT_TYPE, type OdsInput, type OdsInputValueChangeEvent } from '../../../../input/src';
 import { type OdsSelectEventChange } from '../../../../select/src';
 import { type OdsTimezonePreset } from '../../constant/timezone-preset';
-import { type ODS_TIMEZONE, type OdsTimezone } from '../../constant/timezones';
+import { type OdsTimezone } from '../../constant/timezones';
 import { formatValue, getCurrentTimezone, parseTimezones, setFormValue } from '../../controller/ods-timepicker';
 
 @Component({
@@ -18,7 +18,7 @@ export class OdsTimepicker {
   private defaultCurrentTimezone?: OdsTimezone;
   private odsInput?: OdsInput & HTMLElement;
   private odsSelect?: OdsSelect & HTMLElement;
-  private timezonesList: ODS_TIMEZONE[] = [];
+  private timezonesList: OdsTimezone[] = [];
 
   @Element() el!: HTMLElement;
 
@@ -113,7 +113,7 @@ export class OdsTimepicker {
       this.value = event.detail.value as string;
     }
     this.odsChange.emit({
-      currentTimes: this.currentTimezone,
+      currentTimezone: this.currentTimezone,
       name: this.name,
       oldValue: '',
       validity: await this.odsInput?.getValidity(),
@@ -125,10 +125,7 @@ export class OdsTimepicker {
     return (
       <Host class="ods-timepicker">
         <ods-input
-          class={{
-            'ods-timepicker__time': true,
-            'ods-timepicker__time--with-seconds': this.withSeconds,
-          }}
+          class="ods-timepicker__time"
           ariaLabel={ this.ariaLabel }
           ariaLabelledby={ this.ariaLabelledby }
           defaultValue={ this.defaultValue }
@@ -160,7 +157,7 @@ export class OdsTimepicker {
             onOdsReset={ (event: CustomEvent<void>) => event.stopPropagation() }
             name={ this.name }
             ref={ (el?: HTMLElement): OdsSelect => this.odsSelect = el as OdsSelect & HTMLElement }
-            value={ this.timezonesList?.length === 1 ? this.timezonesList[0] : this.currentTimezone }>
+            value={ this.currentTimezone }>
             {
               this.timezonesList?.map((timezone) => {
                 return <option value={ timezone }>{ timezone }</option>;

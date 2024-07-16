@@ -7,8 +7,13 @@ function formatValue(value?: string, withSeconds?: boolean): string {
     return `${ inputValue[0] }:${ inputValue[1] }`;
   }
 
-  if (withSeconds && value?.match(/:/g)?.length === 1) {
-    return `${ value }:00`;
+  if (withSeconds) {
+    if (value?.match(/:/g)?.length === 1) {
+      return `${ value }:00`;
+    }
+    if (value?.match(/:/g)?.length === 2) {
+      return value;
+    }
   }
 
   return '';
@@ -23,9 +28,9 @@ function getCurrentTimezone(currentTimezone?: OdsTimezone): OdsTimezone | undefi
   return currentTimezone;
 }
 
-function parseTimezones(timezones?: OdsTimezone[] | ODS_TIMEZONES_PRESET | string): ODS_TIMEZONE[] {
+function parseTimezones(timezones?: OdsTimezone[] | ODS_TIMEZONES_PRESET | string): OdsTimezone[] {
   if (!timezones || timezones === ODS_TIMEZONES_PRESET.All) {
-    return ODS_TIMEZONES as ODS_TIMEZONE[];
+    return ODS_TIMEZONES as OdsTimezone[];
   }
   if (typeof timezones === 'string') {
     try {
@@ -38,7 +43,7 @@ function parseTimezones(timezones?: OdsTimezone[] | ODS_TIMEZONES_PRESET | strin
       return [];
     }
   }
-  return timezones as ODS_TIMEZONE[];
+  return timezones;
 }
 
 function setFormValue(internals: ElementInternals, value: string | null): void {

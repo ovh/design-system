@@ -261,9 +261,9 @@ export class OdsPagination {
               <ods-button
                 class={{
                   'ods-pagination__list__page__button': true,
+                  'ods-pagination__list__page__button--disabled': this.isDisabled,
                   'ods-pagination__list__page__button--selected': this.current === 1,
                   'ods-pagination__list__page__button--visible': true,
-                  'ods-pagination__list__page__button--disabled': this.isDisabled,
                 }}
                 variant={this.current === 1 ? ODS_BUTTON_VARIANT.default : ODS_BUTTON_VARIANT.ghost}
                 isDisabled={this.isDisabled}
@@ -285,9 +285,9 @@ export class OdsPagination {
                 <ods-button
                   class={{
                     'ods-pagination__list__page__button': true,
+                    'ods-pagination__list__page__button--disabled': this.isDisabled,
                     'ods-pagination__list__page__button--selected': this.current === pageId,
                     'ods-pagination__list__page__button--visible': page.active,
-                    'ods-pagination__list__page__button--disabled': this.isDisabled,
                   }}
                   variant={this.current === pageId ? ODS_BUTTON_VARIANT.default : ODS_BUTTON_VARIANT.ghost}
                   isDisabled={this.isDisabled}
@@ -308,9 +308,9 @@ export class OdsPagination {
               <ods-button
                 class={{
                   'ods-pagination__list__page__button': true,
+                  'ods-pagination__list__page__button--disabled': this.isDisabled,
                   'ods-pagination__list__page__button--selected': this.current === this.actualTotalPages,
                   'ods-pagination__list__page__button--visible': true,
-                  'ods-pagination__list__page__button--disabled': this.isDisabled,
                 }}
                 variant={this.current === this.actualTotalPages ? ODS_BUTTON_VARIANT.default : ODS_BUTTON_VARIANT.ghost}
                 isDisabled={this.isDisabled}

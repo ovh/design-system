@@ -7,6 +7,10 @@ describe('ods-timepicker controller', () => {
       expect(formatValue('12:34:56', false)).toBe('12:34');
     });
 
+    it('should format value without seconds correctly', () => {
+      expect(formatValue('12:34', false)).toBe('12:34');
+    });
+
     it('should format value with seconds correctly', () => {
       expect(formatValue('12:34', true)).toBe('12:34:00');
     });

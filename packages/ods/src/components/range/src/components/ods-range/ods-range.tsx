@@ -120,7 +120,7 @@ export class OdsRange {
     if (!this.value) {
       this.value = getDefaultValue(this.min, this.max, this.defaultValue);
     }
-    setFormValue(this.internals, this.value);
+    this.onMinOrMaxChange();
     this.onValueChange();
   }
 
@@ -186,13 +186,19 @@ export class OdsRange {
     return value;
   }
 
-  private showTooltips(): void {
+  private showTooltip(): void {
     this.tooltip?.show();
+  }
+
+  private hideTooltip(): void {
+    this.tooltip?.hide();
+  }
+
+  private showTooltipDual(): void {
     this.tooltipDual?.show();
   }
 
-  private hideTooltips(): void {
-    this.tooltip?.hide();
+  private hideTooltipDual(): void {
     this.tooltipDual?.hide();
   }
 
@@ -223,11 +229,11 @@ export class OdsRange {
           id={ this.inputRangeId }
           onBlur={ () => this.odsBlur.emit() }
           onFocus={ () => this.odsFocus.emit() }
-          onFocusin={ () => this.showTooltips() }
-          onFocusout={ () => this.hideTooltips() }
+          onFocusin={ () => this.showTooltip() }
+          onFocusout={ () => this.hideTooltip() }
           onInput={ () => this.onInput(false) }
-          onMouseOver={ () => this.showTooltips() }
-          onMouseLeave={ () => this.hideTooltips() }
+          onMouseOver={ () => this.showTooltip() }
+          onMouseLeave={ () => this.hideTooltip() }
           part="range"
           max={ this.max }
           min={ this.min }
@@ -269,11 +275,11 @@ export class OdsRange {
             aria-valuenow={ this.value }
             disabled={ this.isDisabled }
             id={ this.inputRangeDualId }
-            onFocusin={ () => this.showTooltips() }
-            onFocusout={ () => this.hideTooltips() }
+            onFocusin={ () => this.showTooltipDual() }
+            onFocusout={ () => this.hideTooltipDual() }
             onInput={ () => this.onInput(true) }
-            onMouseOver={ () => this.showTooltips() }
-            onMouseLeave={ () => this.hideTooltips() }
+            onMouseOver={ () => this.showTooltipDual() }
+            onMouseLeave={ () => this.hideTooltipDual() }
             part="range-dual"
             max={ this.max }
             min={ this.min }

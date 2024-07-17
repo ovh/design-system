@@ -13,7 +13,7 @@ import { LINK_ID } from '../../zeroheight';
 
 Pagination is the process of splitting information over multiple pages instead of showing it all on a single page; also the name for the interface component used for navigating between these pages.
 
-<Canvas of={ PaginationStories.DefaultCurrentPage } sourceState='none' />
+<Canvas of={ PaginationStories.DefaultLargeAmountOfPages } sourceState='none' />
 
 <DocNavigator of={ PaginationStories } linkId={ LINK_ID.PAGINATION } />
 
@@ -24,17 +24,17 @@ Pagination is the process of splitting information over multiple pages instead o
 ## Default
 <Canvas of={ PaginationStories.Default } sourceState='shown' />
 
-## Default Current Page
-<Canvas of={ PaginationStories.DefaultCurrentPage } sourceState='shown' />
+## Default - Large amount of pages
+<Canvas of={ PaginationStories.DefaultLargeAmountOfPages } sourceState='shown' />
 
 ## Disabled
 <Canvas of={ PaginationStories.Disabled } sourceState='shown' />
 
-## Tooltips
+## Tooltip - Configuration
 <Canvas of={ PaginationStories.WithTooltips } sourceState='shown' />
 
 ## Total Items
 <Canvas of={ PaginationStories.WithTotalItems } sourceState='shown' />
 
-## Total Pages
-<Canvas of={ PaginationStories.WithMultiplePages } sourceState='shown' />
+## Total Items with labels
+<Canvas of={ PaginationStories.WithTotalItemsWithLabels } sourceState='shown' />

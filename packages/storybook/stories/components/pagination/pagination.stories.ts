@@ -151,11 +151,11 @@ export const TotalItems: StoryObj = {
 export const Default: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
-    <ods-pagination></ods-pagination>
+    <ods-pagination default-current-page="4" total-pages="7"></ods-pagination>
   `,
 };
 
-export const DefaultCurrentPage: StoryObj = {
+export const DefaultLargeAmountOfPages: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
     <ods-pagination default-current-page="3" total-pages="21"></ods-pagination>
@@ -188,10 +188,17 @@ export const WithTotalItems: StoryObj = {
   `,
 };
 
-export const WithMultiplePages: StoryObj = {
+export const WithTotalItemsWithLabels: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
-    <ods-pagination default-current-page="3" total-pages="10"></ods-pagination>
+    <ods-pagination
+      default-current-page="3"
+      total-items="100"
+      label-tooltip-next="Go to next page"
+      label-tooltip-previous="Go to previous page">
+      <span slot="before-total-items">of </span>
+      <span slot="after-total-items"> results</span>
+    </ods-pagination>
   `,
 };
 

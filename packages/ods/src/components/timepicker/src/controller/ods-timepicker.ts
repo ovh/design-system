@@ -2,16 +2,22 @@ import { ODS_TIMEZONES_PRESET } from '../constant/timezone-preset';
 import { type ODS_TIMEZONE, ODS_TIMEZONES, type OdsTimezone } from '../constant/timezones';
 
 function formatValue(value?: string, withSeconds?: boolean): string {
-  if (!withSeconds && value?.match(/:/g)?.length === 2) {
-    const inputValue = value.split(':');
-    return `${ inputValue[0] }:${ inputValue[1] }`;
+  const numberOfTwoPoint = value?.match(/:/g)?.length;
+  if (!withSeconds && numberOfTwoPoint) {
+    if (numberOfTwoPoint === 1) {
+      return value;
+    }
+    if (numberOfTwoPoint === 2) {
+      const inputValue = value.split(':');
+      return `${ inputValue[0] }:${ inputValue[1] }`;
+    }
   }
 
-  if (withSeconds) {
-    if (value?.match(/:/g)?.length === 1) {
+  if (withSeconds && numberOfTwoPoint) {
+    if (numberOfTwoPoint === 1) {
       return `${ value }:00`;
     }
-    if (value?.match(/:/g)?.length === 2) {
+    if (numberOfTwoPoint === 2) {
       return value;
     }
   }

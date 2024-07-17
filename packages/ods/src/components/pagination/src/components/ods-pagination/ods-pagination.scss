@@ -61,11 +61,21 @@
 
       &__button--visible::part(button) {
         display: flex;
+
+        &:focus-visible {
+          z-index: 1;
+        }
       }
 
-      &__button--selected::part(button) {
-        border-color: var(--ods-color-primary-800);
-        background-color: var(--ods-color-primary-800);
+      &__button--selected {
+        &::part(button) {
+          border-color: var(--ods-color-primary-800);
+          background-color: var(--ods-color-primary-800);
+        }
+
+        &.ods-pagination__list__page__button--disabled::part(button) {
+          color: var(--ods-color-neutral-000);
+        }
       }
     }
   }

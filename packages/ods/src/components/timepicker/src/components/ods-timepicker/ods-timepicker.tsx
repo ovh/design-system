@@ -70,8 +70,7 @@ export class OdsTimepicker {
   }
 
   @Watch('withSeconds')
-  @Watch('value')
-  onValueChange(): void {
+  formatValue(): void {
     const value = formatValue(this.odsInput?.value as string, this.withSeconds);
 
     if (value) {
@@ -85,8 +84,8 @@ export class OdsTimepicker {
       this.value = this.defaultValue ?? null;
     }
     this.initTimezones();
+    this.formatValue();
     this.defaultCurrentTimezone = this.currentTimezone;
-    setFormValue(this.internals, this.value);
   }
 
   async formResetCallback(): Promise<void> {

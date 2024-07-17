@@ -53,17 +53,20 @@ function createPageList(totalPages: number, pageSelected: number): OdsPagination
       pageList[totalPages - 1].active = true;
     }
   }
+
   return pageList;
 }
 
 function getActualPage(defaultCurrentPage: number, actualTotalPages: number, current: number): number {
   if (defaultCurrentPage > actualTotalPages) {
     return actualTotalPages;
-  } else if (defaultCurrentPage < 1) {
-    return 1;
-  } else {
-    return defaultCurrentPage || current;
   }
+
+  if (defaultCurrentPage < 1) {
+    return 1;
+  }
+
+  return defaultCurrentPage || current;
 }
 
 export {

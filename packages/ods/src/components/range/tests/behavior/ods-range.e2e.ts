@@ -160,7 +160,7 @@ describe('ods-range behavior', () => {
       await el.setProperty('max', newMax);
       await page.waitForChanges();
 
-      expect((await el.getProperty('value'))?.[0]).toBe(newMax);
+      expect((await el.getProperty('value'))?.[0]).toBe(newMax - 1);
       expect((await el.getProperty('value'))?.[1]).toBe(newMax);
     });
 

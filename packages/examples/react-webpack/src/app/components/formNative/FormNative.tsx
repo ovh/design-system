@@ -1,10 +1,10 @@
 import { ODS_INPUT_TYPE } from '@ovhcloud/ods-components';
-import { OdsCheckbox, OdsDatepicker, OdsInput, OdsPassword, OdsPhoneNumber, OdsQuantity, OdsRadio, OdsSelect, OdsSwitch, OdsSwitchItem, OdsTextarea } from '@ovhcloud/ods-components/react';
+import { OdsCheckbox, OdsDatepicker, OdsInput, OdsPassword, OdsPhoneNumber, OdsQuantity, OdsRadio, OdsSelect, OdsSwitch, OdsSwitchItem, OdsTextarea, OdsTimepicker } from '@ovhcloud/ods-components/react';
 import React, { type ReactElement, useRef, useState } from 'react';
 import styles from './formNative.scss';
 
 function FormNative(): ReactElement {
-  const checkboxRef = useRef<HTMLOdsCheckboxElement>(null);
+  // const checkboxRef = useRef<HTMLOdsCheckboxElement>(null);
   const datepickerRef = useRef<HTMLOdsDatepickerElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
   const inputNumberRef = useRef<HTMLOdsInputElement>(null);
@@ -16,6 +16,7 @@ function FormNative(): ReactElement {
   const selectRef = useRef<HTMLOdsSelectElement>(null);
   const switchRef = useRef<HTMLOdsSwitchElement>(null);
   const textareaRef = useRef<HTMLOdsTextareaElement>(null);
+  const timepickerRef = useRef<HTMLOdsTimepickerElement>(null);
 
   const [error, setError] = useState({
     checkbox: false,
@@ -29,13 +30,14 @@ function FormNative(): ReactElement {
     select: false,
     // switch: false, // no error state on this component
     textarea: false,
+    timepicker: false,
   });
 
   async function onSubmit(e: any) {
     e.preventDefault();
     e.stopPropagation();
 
-    await validateField(checkboxRef.current);
+    // await validateField(checkboxRef.current);
     // await validateField(datepickerRef.current);
     // await validateField(inputNumberRef.current);
     // await validateField(inputTextRef.current);
@@ -46,6 +48,7 @@ function FormNative(): ReactElement {
     // await validateField(selectRef.current);
     // await validateField(switchRef.current);
     // await validateField(textareaRef.current);
+    await validateField(timepickerRef.current);
 
     const formData = new FormData(formRef.current!);
     console.log(formData)
@@ -59,7 +62,7 @@ function FormNative(): ReactElement {
     }
 
     const validity = await element.getValidity();
-
+// console.log(validity)
     if (validity !== undefined) {
       setError({
         ...error,
@@ -75,14 +78,22 @@ function FormNative(): ReactElement {
       ref={ formRef }
     >
       <div>
-        {/* Not sure about the expected formData for checkbox, need to test native one*/}
-        {/* TODO test multiple checkbox with same name */}
+        {/* OKish no validity method but required is managed by browser directly */}
         <OdsCheckbox
           // isRequired={ true }
           inputId="checkbox"
           name="checkbox"
+          value="checkbox"
         />
         <label htmlFor="checkbox">Checked</label>
+
+        <OdsCheckbox
+          // isRequired={ true }
+          inputId="checkbox2"
+          name="checkbox"
+          value="checkbox2"
+        />
+        <label htmlFor="checkbox2">Checked 2</label>
       </div>
 
       {/* KO? reset to "" instead of null */}
@@ -121,8 +132,7 @@ function FormNative(): ReactElement {
         type={ ODS_INPUT_TYPE.text }
       />
 
-      {/* KO default value not in formData on immediate submit */}
-      {/* KO style different */}
+      {/* KO style width different */}
       <OdsPassword
         defaultValue="pass"
         hasError={ error.password }
@@ -134,7 +144,7 @@ function FormNative(): ReactElement {
       />
 
       {/* KO default value not in formData on immediate submit */}
-      {/* KO style different */}
+      {/* KO style width different */}
       <OdsPhoneNumber
         defaultValue="+33123456789"
         hasError={ error.phoneNumber }
@@ -223,6 +233,18 @@ function FormNative(): ReactElement {
         ref={ textareaRef }
       />
 
+      {/* KO value not in formData when no default */}
+      {/* KO value in formData not updated when default */}
+      <OdsTimepicker
+        defaultValue="12:34"
+        hasError={ error.timepicker }
+        isRequired={ true }
+        name="timepicker"
+        onOdsChange={ () => validateField(timepickerRef.current) }
+        ref={ timepickerRef }
+      />
+
+      {/* OK */}
       <input
         name="hidden-input"
         type="hidden"

@@ -1,5 +1,5 @@
 import { ODS_INPUT_TYPE } from '@ovhcloud/ods-components';
-import { OdsCheckbox, OdsDatepicker, OdsInput, OdsPassword, OdsPhoneNumber, OdsQuantity, OdsRadio, OdsSelect, OdsSwitch, OdsSwitchItem, OdsTextarea } from '@ovhcloud/ods-components/react';
+import { OdsCheckbox, OdsDatepicker, OdsInput, OdsPassword, OdsPhoneNumber, OdsQuantity, OdsRadio, OdsSelect, OdsSwitch, OdsSwitchItem, OdsTextarea, OdsTimepicker } from '@ovhcloud/ods-components/react';
 import { useFormik } from 'formik';
 import React, { type ReactElement } from 'react';
 import * as yup from 'yup';
@@ -7,7 +7,7 @@ import styles from './formFormik.scss';
 
 const validationSchema = yup.object({
   checkbox: yup.string().nullable(),//.required(),
-  date: yup.date().nullable(),//.required(),
+  datepicker: yup.date().nullable(),//.required(),
   inputNumber: yup.number().nullable(),//.required(),
   inputText: yup.string().nullable().required(),
   password: yup.string().nullable().required(),
@@ -17,13 +17,14 @@ const validationSchema = yup.object({
   select: yup.string().nullable().required(),
   switch: yup.string().nullable().required(),
   textarea: yup.string().nullable().required(),
+  timepicker: yup.string().nullable().required(),
 });
 
 function FormFormik(): ReactElement {
   const formik = useFormik({
     initialValues: {
       checkbox: null,
-      date: new Date(),
+      datepicker: new Date(),
       inputNumber: null,
       inputText: 'input text',
       password: 'password',
@@ -33,6 +34,7 @@ function FormFormik(): ReactElement {
       select: 'cat',
       switch: 'option1',
       textarea: 'textarea',
+      timepicker: '12:34',
     },
     onSubmit: (values) => {
       console.log('Formik values', values);
@@ -67,14 +69,14 @@ function FormFormik(): ReactElement {
       {/* OK */}
       <OdsDatepicker
         // @ts-ignore IDE try to match another react specific attribute
-        defaultValue={ formik.initialValues.date }
-        hasError={ formik.touched.date && !!formik.errors.date }
+        defaultValue={ formik.initialValues.datepicker }
+        hasError={ formik.touched.datepicker && !!formik.errors.datepicker }
         isClearable={ true }
         isRequired={ true }
-        name="date"
+        name="datepicker"
         onOdsBlur={ formik.handleBlur }
         onOdsChange={ formik.handleChange }
-        value={ formik.values.date }
+        value={ formik.values.datepicker }
       />
 
       {/* KO? reset to "" instead of null */}
@@ -222,10 +224,16 @@ function FormFormik(): ReactElement {
         value={ formik.values.textarea }
       />
 
-      {/*<input*/}
-      {/*  name="hidden-input"*/}
-      {/*  type="hidden"*/}
-      {/*  value="should be present in form data" />*/}
+      {/* OK */}
+      <OdsTimepicker
+        defaultValue={ formik.initialValues.timepicker }
+        hasError={ formik.touched.timepicker && !!formik.errors.timepicker }
+        isRequired={ true }
+        name="timepicker"
+        onOdsBlur={ formik.handleBlur }
+        onOdsChange={ formik.handleChange }
+        value={ formik.values.timepicker }
+      />
 
       <p>
         Errors?

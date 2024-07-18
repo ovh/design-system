@@ -117,6 +117,7 @@ describe('ods-datepicker behaviour', () => {
       it('should emit an odsChange event', async() => {
         const value = new Date('10 May 2024');
         await setup('<ods-datepicker name="ods-datepicker"></ods-datepicker>');
+        await page.emulateTimezone('Europe/Madrid');
         await page.evaluate((value) => {
           document.querySelector<OdsDatepicker & HTMLElement>('ods-datepicker')!.value = value;
         }, value);

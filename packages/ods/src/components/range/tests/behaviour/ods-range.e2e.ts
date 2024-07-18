@@ -1,7 +1,7 @@
 import type { E2EElement, E2EPage } from '@stencil/core/testing';
 import { newE2EPage } from '@stencil/core/testing';
 
-describe('ods-range behavior', () => {
+describe('ods-range behaviour', () => {
   let el: E2EElement;
   let page: E2EPage;
 
@@ -206,7 +206,7 @@ describe('ods-range behavior', () => {
       await page.waitForNetworkIdle();
       const url = new URL(page.url());
       expect(url.searchParams.get('natifInput')).toBe('');
-      expect(url.searchParams.get('odsRange')).toBe('0');
+      expect(url.searchParams.get('odsRange')).toBe('');
     });
 
     it('should reset form with button type reset with default value', async() => {

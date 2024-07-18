@@ -18,7 +18,7 @@ export class OdsInput {
 
   @AttachInternals() private internals!: ElementInternals;
 
-  @State() isPassword = false;
+  @State() private isPassword = false;
 
   @Prop({ reflect: true }) public ariaLabel: HTMLElement['ariaLabel'] = null;
   @Prop({ reflect: true }) public ariaLabelledby?: string;
@@ -43,11 +43,11 @@ export class OdsInput {
   @Prop({ mutable: true, reflect: true }) public value: string | number | null = null;
 
   @Event() odsBlur!: EventEmitter<void>;
+  @Event() odsChange!: EventEmitter<OdsInputValueChangeEventDetail>;
   @Event() odsClear!: EventEmitter<void>;
   @Event() odsFocus!: EventEmitter<void>;
-  @Event() odsToggleMask!: EventEmitter<void>;
   @Event() odsReset!: EventEmitter<void>;
-  @Event() odsChange!: EventEmitter<OdsInputValueChangeEventDetail>;
+  @Event() odsToggleMask!: EventEmitter<void>;
 
   @Method()
   async clear(): Promise<void> {
@@ -81,6 +81,7 @@ export class OdsInput {
   @Watch('value')
   onValueChange(value: string | number, previousValue?: string | number): void {
     setFormValue(this.internals, this.value);
+
     this.odsChange.emit({
       name: this.name,
       previousValue,
@@ -106,7 +107,6 @@ export class OdsInput {
       return;
     }
     this.value = this.inputEl?.value ?? null;
-    return;
   }
 
   render(): FunctionalComponent {

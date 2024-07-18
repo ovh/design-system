@@ -1,5 +1,9 @@
 @use '../../../../../style/input';
 
+:host(.ods-textarea) {
+  display: inline-block;
+}
+
 .ods-textarea {
   &__textarea {
      @include input.ods-input();

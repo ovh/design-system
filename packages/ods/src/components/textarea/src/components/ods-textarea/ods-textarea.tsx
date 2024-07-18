@@ -11,7 +11,7 @@ import { type OdsTextareaEventChangeDetail } from '../../interfaces/events';
 export class OdsTextarea {
   private textareaElement?: HTMLTextAreaElement;
 
-  @AttachInternals() internals!: ElementInternals;
+  @AttachInternals() private internals!: ElementInternals;
 
   @Prop({ reflect: true }) public ariaLabel: HTMLElement['ariaLabel'] = null;
   @Prop({ reflect: true }) public ariaLabelledby?: string;
@@ -74,15 +74,15 @@ export class OdsTextarea {
     await this.reset();
   }
 
-  onBlur(): void {
+  private onBlur(): void {
     this.odsBlur.emit();
   }
 
-  onFocus(): void {
+  private onFocus(): void {
     this.odsFocus.emit();
   }
 
-  onInput(): void {
+  private onInput(): void {
     if (this.isDisabled) {
       return;
     }
@@ -109,7 +109,7 @@ export class OdsTextarea {
           onInput={ (): void => this.onInput() }
           part="textarea"
           placeholder={ this.placeholder }
-          readOnly={ this.isReadonly }
+          readonly={ this.isReadonly }
           ref={ (el): HTMLTextAreaElement => this.textareaElement = el as HTMLTextAreaElement }
           required={ this.isRequired }
           role="textbox"

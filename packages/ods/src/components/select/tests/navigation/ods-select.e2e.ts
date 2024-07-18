@@ -172,19 +172,19 @@ describe('ods-select navigation', () => {
       await page.waitForChanges();
 
       expect(await isOpen()).toBe(true);
-      expect(odsChangeSpy).toHaveReceivedEventDetail({ oldValue: '', validity: {}, value: '1' });
+      expect(odsChangeSpy).toHaveReceivedEventDetail({ previousValue: '', validity: {}, value: '1' });
 
       await options[1].click();
       await page.waitForChanges();
 
       expect(await isOpen()).toBe(true);
-      expect(odsChangeSpy).toHaveReceivedEventDetail({ oldValue: '1', validity: {}, value: '1,2' });
+      expect(odsChangeSpy).toHaveReceivedEventDetail({ previousValue: '1', validity: {}, value: '1,2' });
 
       await options[0].click();
       await page.waitForChanges();
 
       expect(await isOpen()).toBe(true);
-      expect(odsChangeSpy).toHaveReceivedEventDetail({ oldValue: '1,2', validity: {}, value: '2' });
+      expect(odsChangeSpy).toHaveReceivedEventDetail({ previousValue: '1,2', validity: {}, value: '2' });
     });
 
     it('should toggle options on Enter press', async() => {
@@ -201,21 +201,21 @@ describe('ods-select navigation', () => {
       await page.waitForChanges();
 
       expect(await isOpen()).toBe(true);
-      expect(odsChangeSpy).toHaveReceivedEventDetail({ oldValue: '', validity: {}, value: '1' });
+      expect(odsChangeSpy).toHaveReceivedEventDetail({ previousValue: '', validity: {}, value: '1' });
 
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('Enter');
       await page.waitForChanges();
 
       expect(await isOpen()).toBe(true);
-      expect(odsChangeSpy).toHaveReceivedEventDetail({ oldValue: '1', validity: {}, value: '1,2' });
+      expect(odsChangeSpy).toHaveReceivedEventDetail({ previousValue: '1', validity: {}, value: '1,2' });
 
       await page.keyboard.press('ArrowUp');
       await page.keyboard.press('Enter');
       await page.waitForChanges();
 
       expect(await isOpen()).toBe(true);
-      expect(odsChangeSpy).toHaveReceivedEventDetail({ oldValue: '1,2', validity: {}, value: '2' });
+      expect(odsChangeSpy).toHaveReceivedEventDetail({ previousValue: '1,2', validity: {}, value: '2' });
     });
 
     it('should toggle options on Tab press', async() => {
@@ -232,21 +232,21 @@ describe('ods-select navigation', () => {
       await page.waitForChanges();
 
       expect(await isOpen()).toBe(true);
-      expect(odsChangeSpy).toHaveReceivedEventDetail({ oldValue: '', validity: {}, value: '1' });
+      expect(odsChangeSpy).toHaveReceivedEventDetail({ previousValue: '', validity: {}, value: '1' });
 
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('Tab');
       await page.waitForChanges();
 
       expect(await isOpen()).toBe(true);
-      expect(odsChangeSpy).toHaveReceivedEventDetail({ oldValue: '1', validity: {}, value: '1,2' });
+      expect(odsChangeSpy).toHaveReceivedEventDetail({ previousValue: '1', validity: {}, value: '1,2' });
 
       await page.keyboard.press('ArrowUp');
       await page.keyboard.press('Tab');
       await page.waitForChanges();
 
       expect(await isOpen()).toBe(true);
-      expect(odsChangeSpy).toHaveReceivedEventDetail({ oldValue: '1,2', validity: {}, value: '2' });
+      expect(odsChangeSpy).toHaveReceivedEventDetail({ previousValue: '1,2', validity: {}, value: '2' });
     });
   });
 });

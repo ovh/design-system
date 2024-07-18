@@ -18,7 +18,7 @@ export class OdsTimepicker {
   private defaultCurrentTimezone?: OdsTimezone;
   private odsInput?: OdsInput & HTMLElement;
   private odsSelect?: OdsSelect & HTMLElement;
-  private oldValue?: string | null;
+  private previousValue?: string | null;
   private timezonesList: OdsTimezone[] = [];
 
   @Element() el!: HTMLElement;
@@ -75,7 +75,7 @@ export class OdsTimepicker {
     const value = formatValue(this.odsInput?.value as string, this.withSeconds);
 
     if (value) {
-      this.oldValue = this.value ?? null;
+      this.previousValue = this.value ?? null;
       this.value = value;
     }
     setFormValue(this.internals, this.value);
@@ -85,7 +85,6 @@ export class OdsTimepicker {
     if (!this.value) {
       this.value = this.defaultValue ?? null;
     }
-    console.log('this.value init', this.value)
     this.initTimezones();
     this.formatValue();
     this.defaultCurrentTimezone = this.currentTimezone;
@@ -112,13 +111,13 @@ export class OdsTimepicker {
     if (isFromSelect) {
       this.currentTimezone = event.detail.value as OdsTimezone;
     } else {
-      this.oldValue = event.detail.oldValue as string;
+      this.previousValue = event.detail.previousValue as string;
       this.value = event.detail.value as string;
     }
     this.odsChange.emit({
       currentTimezone: this.currentTimezone,
       name: this.name,
-      oldValue: this.oldValue ?? undefined,
+      previousValue: this.previousValue ?? undefined,
       validity: await this.odsInput?.getValidity(),
       value: this.value ?? '',
     });

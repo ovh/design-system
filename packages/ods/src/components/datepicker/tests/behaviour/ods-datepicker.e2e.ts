@@ -131,7 +131,7 @@ describe('ods-datepicker behaviour', () => {
         expect(odsOdsChangeSpy).toHaveReceivedEventDetail({
           formattedValue: '11/05/2024',
           name: 'ods-datepicker',
-          oldValue: value.toISOString(),
+          previousValue: value.toISOString(),
           validity: {},
           value: '2024-05-10T22:00:00.000Z',
         });

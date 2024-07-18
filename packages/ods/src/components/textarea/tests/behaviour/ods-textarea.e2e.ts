@@ -87,7 +87,7 @@ describe('ods-textarea behaviour', () => {
         expect(odsValueChangeSpy).toHaveReceivedEventTimes(dummyValue.length);
         expect(odsValueChangeSpy).toHaveReceivedEventDetail({
           name: 'ods-textarea',
-          oldValue: dummyValue.slice(0, -1),
+          previousValue: dummyValue.slice(0, -1),
           validity: {},
           value: dummyValue,
         });

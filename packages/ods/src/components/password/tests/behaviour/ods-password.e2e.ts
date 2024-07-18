@@ -68,7 +68,7 @@ describe('ods-password behaviour', () => {
       expect(odsChangeSpy).toHaveReceivedEventTimes(typeValue.length);
       expect(odsChangeSpy).toHaveReceivedEventDetail({
         name: 'ods-password',
-        oldValue: 'some tex',
+        previousValue: 'some tex',
         validity: {},
         value: 'some text',
       });

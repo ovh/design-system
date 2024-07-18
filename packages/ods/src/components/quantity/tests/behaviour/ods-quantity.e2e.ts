@@ -55,7 +55,7 @@ describe('ods-quantity behaviour', () => {
       expect(odsChangeSpy).toHaveReceivedEventTimes(1);
       expect(odsChangeSpy).toHaveReceivedEventDetail({
         name: 'ods-quantity',
-        oldValue: 0,
+        previousValue: 0,
         validity: {},
         value: -1,
       });
@@ -70,7 +70,7 @@ describe('ods-quantity behaviour', () => {
       expect(odsChangeSpy).toHaveReceivedEventTimes(1);
       expect(odsChangeSpy).toHaveReceivedEventDetail({
         name: 'ods-quantity',
-        oldValue: 0,
+        previousValue: 0,
         validity: {},
         value: -10,
       });
@@ -123,7 +123,7 @@ describe('ods-quantity behaviour', () => {
       expect(odsChangeSpy).toHaveReceivedEventTimes(1);
       expect(odsChangeSpy).toHaveReceivedEventDetail({
         name: 'ods-quantity',
-        oldValue: 0,
+        previousValue: 0,
         validity: {},
         value: 1,
       });
@@ -138,7 +138,7 @@ describe('ods-quantity behaviour', () => {
       expect(odsChangeSpy).toHaveReceivedEventTimes(1);
       expect(odsChangeSpy).toHaveReceivedEventDetail({
         name: 'ods-quantity',
-        oldValue: 0,
+        previousValue: 0,
         validity: {},
         value: 10,
       });

@@ -182,15 +182,17 @@ export class OdsDatepicker {
       // Manage the component value change
       // Triggered either by user selection or `setDate` instance method call
       this.inputElement.addEventListener('changeDate', (event: Event) => {
-        const newDate = (event as CustomEvent).detail.date;
+        const newDate: Date = (event as CustomEvent).detail.date;
         const formattedNewDate = formatDate(newDate, this.format);
 
+        const oldValue = this.value;
         this.value = newDate;
         setFormValue(this.internals, formattedNewDate);
 
         this.odsChange.emit({
           formattedValue: formattedNewDate,
           name: this.name,
+          oldValue,
           validity: this.inputElement?.validity,
           value: this.value,
         });

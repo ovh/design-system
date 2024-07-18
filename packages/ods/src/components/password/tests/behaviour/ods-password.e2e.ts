@@ -57,7 +57,7 @@ describe('ods-password behaviour', () => {
   describe('event:odsChange ', () => {
     it('should receive odsChange event', async() => {
       const typeValue = 'some text';
-      await setup('<ods-password></ods-password>');
+      await setup('<ods-password name="ods-password"></ods-password>');
       const odsChangeSpy = await page.spyOnEvent('odsChange');
 
       await page.keyboard.press('Tab');
@@ -66,6 +66,12 @@ describe('ods-password behaviour', () => {
 
       expect(await el.getProperty('value')).toBe(typeValue);
       expect(odsChangeSpy).toHaveReceivedEventTimes(typeValue.length);
+      expect(odsChangeSpy).toHaveReceivedEventDetail({
+        name: 'ods-password',
+        oldValue: 'some tex',
+        validity: {},
+        value: 'some text',
+      });
     });
 
     it('should do nothing because of disabled', async() => {

@@ -65,7 +65,7 @@ export class OdsRadio {
     return document.querySelectorAll(`ods-radio[name="${this.name}"]`);
   }
 
-  private onInput(event: Event): void {
+  private onInput(event: InputEvent): void {
     this.odsChange.emit({
       checked: (event.target as HTMLInputElement)?.checked,
       name: this.name,
@@ -84,7 +84,7 @@ export class OdsRadio {
           checked={ this.isChecked }
           disabled={ this.isDisabled }
           onBlur={ (): CustomEvent<void> => this.odsBlur.emit() }
-          onInput={ (event: Event): void => this.onInput(event) }
+          onInput={ (event: InputEvent): void => this.onInput(event) }
           onFocus={ (): CustomEvent<void> => this.odsFocus.emit() }
           id={ this.inputId }
           name={ this.name }

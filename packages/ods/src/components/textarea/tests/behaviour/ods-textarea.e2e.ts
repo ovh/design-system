@@ -77,7 +77,7 @@ describe('ods-textarea behaviour', () => {
     describe('on value change', () => {
       it('should emit an odsChange event', async() => {
         const dummyValue = 'dummy value';
-        await setup('<ods-textarea></ods-textarea>');
+        await setup('<ods-textarea name="ods-textarea"></ods-textarea>');
         const odsValueChangeSpy = await page.spyOnEvent('odsChange');
 
         await textarea.type(dummyValue);
@@ -85,6 +85,12 @@ describe('ods-textarea behaviour', () => {
 
         expect(await el.getProperty('value')).toBe(dummyValue);
         expect(odsValueChangeSpy).toHaveReceivedEventTimes(dummyValue.length);
+        expect(odsValueChangeSpy).toHaveReceivedEventDetail({
+          name: 'ods-textarea',
+          oldValue: dummyValue.slice(0, -1),
+          validity: {},
+          value: dummyValue,
+        });
       });
 
       it('should do nothing if disabled', async() => {

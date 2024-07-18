@@ -60,7 +60,7 @@ describe('ods-input behaviour', () => {
   describe('event:odsChange ', () => {
     it('should receive odsChange event', async() => {
       const typeValue = 'some text';
-      await setup('<ods-input></ods-input>');
+      await setup('<ods-input name="ods-input"></ods-input>');
       const odsChangeSpy = await page.spyOnEvent('odsChange');
 
       await part.type(typeValue);
@@ -68,6 +68,12 @@ describe('ods-input behaviour', () => {
 
       expect(await el.getProperty('value')).toBe(typeValue);
       expect(odsChangeSpy).toHaveReceivedEventTimes(typeValue.length);
+      expect(odsChangeSpy).toHaveReceivedEventDetail({
+        name: 'ods-input',
+        oldValue: 'some tex',
+        validity: {},
+        value: 'some text',
+      });
     });
 
     it('should do nothing because of disabled', async() => {

@@ -36,10 +36,6 @@ function getStencilConfig({ args, componentCorePackage, devScript, jestOption = 
         includeGlobalScripts: false,
         type: 'dist-custom-elements',
       },
-      {
-        dir: 'dist/docs',
-        type: 'docs-readme',
-      },
     ],
     plugins: [
       sass(),

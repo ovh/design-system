@@ -5,6 +5,7 @@ $ods-input-range-height: 8px;
 $ods-input-range-size-thumb: 16px;
 $range-background-color-active: var(--ods-color-primary-500);
 $range-background-color: var(--ods-color-neutral-300);
+$range-z-index-dual: 1;
 
 @mixin ods-range() {
   $range: &;
@@ -126,7 +127,7 @@ $range-background-color: var(--ods-color-neutral-300);
 
 @mixin ods-range-dual() {
   .ods-range__range-dual {
-    z-index: 1;
+    z-index: $range-z-index-dual;
     background: linear-gradient(to right,
       $range-background-color 0,
       $range-background-color min(var(--ods-range-value-percentage), var(--ods-range-value-percentage-dual)),
@@ -148,7 +149,7 @@ $range-background-color: var(--ods-color-neutral-300);
 
   .ods-range__range {
     position: absolute;
-    z-index: 2;
+    z-index: $range-z-index-dual + 1;
     margin-top: 6px;
     height: 0;
   }

@@ -251,7 +251,7 @@ export class OdsRange {
         </div>
 
         {
-          !this.isDisabled &&
+          !this.isDisabled && this.currentValue &&
           <ods-tooltip
             position="top"
             ref={ (el: unknown) => this.tooltip = el as unknown as OdsTooltip }
@@ -299,7 +299,7 @@ export class OdsRange {
             }}>
           </div>
         }
-        { !this.isDisabled && this.isDualRange &&
+        { !this.isDisabled && this.isDualRange && this.dualValue &&
           <ods-tooltip
             position="top"
             ref={ (el: unknown) => this.tooltipDual = el as OdsTooltip }

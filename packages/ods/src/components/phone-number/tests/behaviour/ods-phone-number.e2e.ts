@@ -115,4 +115,52 @@ describe('ods-phone-number behaviour', () => {
       });
     });
   });
+
+  describe('event', () => {
+    describe('odsChange', () => {
+      it('should emit an odsChange event', async() => {
+        await setup('<ods-phone-number name="ods-phone-number" iso-code="fr"></ods-phone-number>');
+        const odsChangeSpy = await page.spyOnEvent('odsChange');
+
+        const newValue = '0987654321';
+        await page.keyboard.press('Tab');
+        await page.keyboard.type(newValue);
+        await page.waitForChanges();
+
+        expect(await el.getProperty('value')).toBe(newValue);
+        expect(odsChangeSpy).toHaveReceivedEventTimes(newValue.length);
+        expect(odsChangeSpy).toHaveReceivedEventDetail({
+          isoCode: 'fr',
+          name: 'ods-phone-number',
+          oldValue: newValue.slice(0, -1),
+          validity: {
+            badInput: false,
+            customError: false,
+            patternMismatch: false,
+            rangeOverflow: false,
+            rangeUnderflow: false,
+            stepMismatch: false,
+            tooLong: false,
+            tooShort: false,
+            typeMismatch: false,
+            valid: true,
+            valueMissing: false,
+          },
+          value: `+33${newValue.substring(1)}`,
+        });
+      });
+
+      it('should not emit an odsChange event if disabled', async() => {
+        await setup('<ods-phone-number is-disabled name="ods-phone-number" iso-code="fr"></ods-phone-number>');
+        const odsChangeSpy = await page.spyOnEvent('odsChange');
+
+        const newValue = '0987654321';
+        await page.keyboard.press('Tab');
+        await page.keyboard.type(newValue);
+        await page.waitForChanges();
+
+        expect(odsChangeSpy).toHaveReceivedEventTimes(0);
+      });
+    });
+  });
 });

@@ -64,7 +64,7 @@ export class OdsToggle {
     setFormValue(this.internals, this.value);
     this.odsChange.emit({
       name: this.name,
-      oldValue: !this.value,
+      previousValue: !this.value,
       value: this.value,
     });
   }

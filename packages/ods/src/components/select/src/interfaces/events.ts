@@ -1,6 +1,6 @@
 interface OdsSelectEventChangeDetail {
   name: string;
-  oldValue?: string;
+  previousValue?: string;
   validity?: ValidityState;
   value: string;
 }

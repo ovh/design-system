@@ -1,6 +1,6 @@
 interface OdsToggleValueChangeEventDetail {
   name: string;
-  oldValue?: boolean;
+  previousValue?: boolean;
   value: boolean;
 }
 

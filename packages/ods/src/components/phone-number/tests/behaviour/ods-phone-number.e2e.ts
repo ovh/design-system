@@ -132,7 +132,7 @@ describe('ods-phone-number behaviour', () => {
         expect(odsChangeSpy).toHaveReceivedEventDetail({
           isoCode: 'fr',
           name: 'ods-phone-number',
-          oldValue: newValue.slice(0, -1),
+          previousValue: newValue.slice(0, -1),
           validity: {
             badInput: false,
             customError: false,

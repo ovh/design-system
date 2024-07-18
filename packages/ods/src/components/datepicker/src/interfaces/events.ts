@@ -1,7 +1,7 @@
 interface OdsDatepickerEventChangeDetail {
   formattedValue?: string;
   name: string;
-  oldValue?: Date | null;
+  previousValue?: Date | null;
   validity?: ValidityState;
   value?: Date | null;
 }

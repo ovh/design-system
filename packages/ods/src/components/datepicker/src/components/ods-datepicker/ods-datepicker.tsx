@@ -185,7 +185,7 @@ export class OdsDatepicker {
         const newDate = (event as CustomEvent).detail.date;
         const formattedNewDate = formatDate(newDate, this.format);
 
-        this.value = newDate;
+        this.value = newDate ?? null;
         setFormValue(this.internals, formattedNewDate);
 
         this.odsChange.emit({

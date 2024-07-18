@@ -60,7 +60,7 @@ export class OdsRange {
 
   @Method()
   async reset(): Promise<void> {
-    this.value = this.defaultValue ?? this.min;
+    this.value = this.defaultValue ?? null;
     this.odsReset.emit();
   }
 
@@ -72,13 +72,7 @@ export class OdsRange {
     }
 
     if (!isDualRange(this.value)) {
-      if (this.min > this.value) {
-        this.value = this.min;
-      }
-
-      if (this.value > this.max) {
-        this.value = this.max;
-      }
+      this.value = Math.min(Math.max(this.value, this.min), this.max);
     } else {
       const [valueMin, valueMax] = this.value;
       if (valueMax > this.max) {
@@ -101,17 +95,14 @@ export class OdsRange {
 
   @Watch('value')
   private onValueChange(): void {
-    this.isDualRange = isDualRange(this.value);
-    isDualRange(this.value) ? this.changeValues(this.value[0], this.value[1]) : this.changeValues(this.value ?? undefined);
-    setFormValue(this.internals, this.value);
-  }
-
-  onInputElChange(mutationList: MutationRecord[]): void {
-    for (const mutation of mutationList) {
-      if(mutation.attributeName && ['step', 'min', 'max'].includes(mutation.attributeName)) {
-        this.onInput(false);
-      }
+    if (isDualRange(this.value)) {
+      this.isDualRange = true;
+      this.changeValues(this.value[0], this.value[1]);
+    } else {
+      this.isDualRange = false;
+      this.changeValues(this.value ?? undefined);
     }
+    setFormValue(this.internals, this.value);
   }
 
   componentWillLoad(): void {
@@ -140,6 +131,20 @@ export class OdsRange {
     await this.reset();
   }
 
+  private changeValues(currentValue?: number, dualValue?: number): number | [number, number] | undefined {
+    let value: number | [number, number] | undefined;
+
+    if (this.isDualRange && currentValue !== undefined && dualValue !== undefined) {
+      this.currentValue = currentValue;
+      this.dualValue = dualValue;
+      value = [currentValue, dualValue];
+    } else {
+      this.currentValue = currentValue;
+      value = this.currentValue;
+    }
+    return value;
+  }
+
   private onInput(isDualInput: boolean): void {
     const step = this.step ?? 1;
     const isInputsValuesEqual = Number(this.inputElDual?.value) - Number(this.inputEl?.value) < step;
@@ -166,40 +171,34 @@ export class OdsRange {
     }
   }
 
+  private onInputElChange(mutationList: MutationRecord[]): void {
+    for (const mutation of mutationList) {
+      if(mutation.attributeName && ['step', 'min', 'max'].includes(mutation.attributeName)) {
+        this.onInput(false);
+      }
+    }
+  }
+
   private onInputElDual(step : number): void {
     if (this.inputEl && this.inputElDual) {
       this.inputElDual.value = `${(Number(this.inputEl.value) ?? 0) + step}`;
     }
   }
 
-  private changeValues(currentValue?: number, dualValue?: number): number | [number, number] | undefined {
-    let value: number | [number, number] | undefined;
+  private hideTooltip(): void {
+    this.tooltip?.hide();
+  }
 
-    if (this.isDualRange && currentValue !== undefined && dualValue !== undefined) {
-      this.currentValue = currentValue;
-      this.dualValue = dualValue;
-      value = [currentValue, dualValue];
-    } else {
-      this.currentValue = currentValue;
-      value = this.currentValue;
-    }
-    return value;
+  private hideTooltipDual(): void {
+    this.tooltipDual?.hide();
   }
 
   private showTooltip(): void {
     this.tooltip?.show();
   }
 
-  private hideTooltip(): void {
-    this.tooltip?.hide();
-  }
-
   private showTooltipDual(): void {
     this.tooltipDual?.show();
-  }
-
-  private hideTooltipDual(): void {
-    this.tooltipDual?.hide();
   }
 
   render(): FunctionalComponent {

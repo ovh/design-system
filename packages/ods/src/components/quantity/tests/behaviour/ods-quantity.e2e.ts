@@ -47,21 +47,33 @@ describe('ods-quantity behaviour', () => {
 
   describe('button minus', () => {
     it('should decrement value', async() => {
-      await setup('<ods-quantity value="0"></ods-quantity>');
+      await setup('<ods-quantity name="ods-quantity" value="0"></ods-quantity>');
       const odsChangeSpy = await page.spyOnEvent('odsChange');
       await buttonMinus.click();
       await page.waitForChanges();
       expect(await el.getProperty('value')).toBe(-1);
       expect(odsChangeSpy).toHaveReceivedEventTimes(1);
+      expect(odsChangeSpy).toHaveReceivedEventDetail({
+        name: 'ods-quantity',
+        oldValue: 0,
+        validity: {},
+        value: -1,
+      });
     });
 
     it('should decrement value with step', async() => {
-      await setup('<ods-quantity value="0" step="10"></ods-quantity>');
+      await setup('<ods-quantity name="ods-quantity" value="0" step="10"></ods-quantity>');
       const odsChangeSpy = await page.spyOnEvent('odsChange');
       await buttonMinus.click();
       await page.waitForChanges();
       expect(await el.getProperty('value')).toBe(-10);
       expect(odsChangeSpy).toHaveReceivedEventTimes(1);
+      expect(odsChangeSpy).toHaveReceivedEventDetail({
+        name: 'ods-quantity',
+        oldValue: 0,
+        validity: {},
+        value: -10,
+      });
     });
 
     it('should not decrement value with is-disabled', async() => {
@@ -103,21 +115,33 @@ describe('ods-quantity behaviour', () => {
 
   describe('button add', () => {
     it('should increment value', async() => {
-      await setup('<ods-quantity value="0"></ods-quantity>');
+      await setup('<ods-quantity name="ods-quantity" value="0"></ods-quantity>');
       const odsChangeSpy = await page.spyOnEvent('odsChange');
       await buttonAdd.click();
       await page.waitForChanges();
       expect(await el.getProperty('value')).toBe(1);
       expect(odsChangeSpy).toHaveReceivedEventTimes(1);
+      expect(odsChangeSpy).toHaveReceivedEventDetail({
+        name: 'ods-quantity',
+        oldValue: 0,
+        validity: {},
+        value: 1,
+      });
     });
 
     it('should increment value with step', async() => {
-      await setup('<ods-quantity value="0" step="10"></ods-quantity>');
+      await setup('<ods-quantity name="ods-quantity" value="0" step="10"></ods-quantity>');
       const odsChangeSpy = await page.spyOnEvent('odsChange');
       await buttonAdd.click();
       await page.waitForChanges();
       expect(await el.getProperty('value')).toBe(10);
       expect(odsChangeSpy).toHaveReceivedEventTimes(1);
+      expect(odsChangeSpy).toHaveReceivedEventDetail({
+        name: 'ods-quantity',
+        oldValue: 0,
+        validity: {},
+        value: 10,
+      });
     });
 
     it('should not increment value with is-disabled', async() => {

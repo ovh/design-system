@@ -102,15 +102,22 @@ describe('ods-timepicker behavior', () => {
 
   describe('events', () => {
     it('should call odsChange event', async() => {
-      const value = '12:12';
-      await setup('<ods-timepicker value="11:11"></ods-timepicker>');
+      const newValue = '12:12';
+      const value = '11:11';
+      await setup(`<ods-timepicker name="ods-timepicker" value="${value}"></ods-timepicker>`);
       const odsChangeSpy = await page.spyOnEvent('odsChange');
 
-      await el.setProperty('value', value);
+      await el.setProperty('value', newValue);
       await page.waitForChanges();
 
-      expect(await el.getProperty('value')).toBe(value);
+      expect(await el.getProperty('value')).toBe(newValue);
       expect(odsChangeSpy).toHaveReceivedEventTimes(1);
+      expect(odsChangeSpy).toHaveReceivedEventDetail({
+        name: 'ods-timepicker',
+        oldValue: value,
+        validity: {},
+        value: newValue,
+      });
     });
   });
 });

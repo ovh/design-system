@@ -111,4 +111,31 @@ describe('ods-datepicker behaviour', () => {
       });
     });
   });
+
+  describe('event', () => {
+    describe('odsChange', () => {
+      it('should emit an odsChange event', async() => {
+        const value = new Date('10 May 2024');
+        await setup('<ods-datepicker name="ods-datepicker"></ods-datepicker>');
+        await page.evaluate((value) => {
+          document.querySelector<OdsDatepicker & HTMLElement>('ods-datepicker')!.value = value;
+        }, value);
+        const odsOdsChangeSpy = await page.spyOnEvent('odsChange');
+
+        await page.keyboard.press('Tab');
+        await page.keyboard.type('11/05/2024');
+        await page.keyboard.press('Enter');
+        await page.waitForChanges();
+
+        expect(odsOdsChangeSpy).toHaveReceivedEventTimes(1);
+        expect(odsOdsChangeSpy).toHaveReceivedEventDetail({
+          formattedValue: '11/05/2024',
+          name: 'ods-datepicker',
+          oldValue: value.toISOString(),
+          validity: {},
+          value: '2024-05-10T22:00:00.000Z',
+        });
+      });
+    });
+  });
 });

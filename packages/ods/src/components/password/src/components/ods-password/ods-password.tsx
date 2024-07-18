@@ -57,6 +57,9 @@ export class OdsPassword {
   }
 
   componentWillLoad(): void {
+    if (!this.value) {
+      this.value = this.defaultValue ?? null;
+    }
     setFormValue(this.internals, this.value);
   }
 

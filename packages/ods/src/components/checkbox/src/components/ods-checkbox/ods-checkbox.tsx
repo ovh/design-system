@@ -55,7 +55,7 @@ export class OdsCheckbox {
     this.odsReset.emit();
   }
 
-  getOdsCheckboxGroupByName(): NodeListOf<Element> {
+  private getOdsCheckboxGroupByName(): NodeListOf<Element> {
     return document.querySelectorAll(`ods-checkbox[name="${this.name}"]`);
   }
 

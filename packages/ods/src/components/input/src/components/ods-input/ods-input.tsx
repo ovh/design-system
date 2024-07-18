@@ -79,11 +79,11 @@ export class OdsInput {
   }
 
   @Watch('value')
-  onValueChange(value: string | number, oldValue?: string | number): void {
+  onValueChange(value: string | number, previousValue?: string | number): void {
     setFormValue(this.internals, this.value);
     this.odsChange.emit({
       name: this.name,
-      oldValue: oldValue,
+      previousValue,
       validity:  this.inputEl?.validity,
       value: value ?? null,
     });

@@ -70,7 +70,7 @@ describe('ods-input behaviour', () => {
       expect(odsChangeSpy).toHaveReceivedEventTimes(typeValue.length);
       expect(odsChangeSpy).toHaveReceivedEventDetail({
         name: 'ods-input',
-        oldValue: 'some tex',
+        previousValue: 'some tex',
         validity: {},
         value: 'some text',
       });

@@ -1,6 +1,6 @@
 interface OdsTextareaEventChangeDetail {
   name: string;
-  oldValue?: string;
+  previousValue?: string;
   validity?: ValidityState;
   value: string;
 }

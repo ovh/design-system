@@ -1,6 +1,6 @@
 interface OdsInputValueChangeEventDetail {
   name: string;
-  oldValue?: string | number;
+  previousValue?: string | number;
   validity?: ValidityState;
   value: string | number;
 }

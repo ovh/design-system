@@ -114,7 +114,7 @@ describe('ods-timepicker behavior', () => {
       expect(odsChangeSpy).toHaveReceivedEventTimes(1);
       expect(odsChangeSpy).toHaveReceivedEventDetail({
         name: 'ods-timepicker',
-        oldValue: value,
+        previousValue: value,
         validity: {},
         value: newValue,
       });

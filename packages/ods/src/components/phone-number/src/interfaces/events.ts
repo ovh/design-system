@@ -3,7 +3,7 @@ import { type OdsPhoneNumberCountryIsoCode } from '../constants/phone-number-cou
 interface OdsPhoneNumberValueChangeEventDetail {
   isoCode?: OdsPhoneNumberCountryIsoCode;
   name: string;
-  oldValue?: string;
+  previousValue?: string;
   validity?: ValidityState;
   value: string | null;
 }

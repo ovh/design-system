@@ -1,14 +1,16 @@
 import React, { type ReactElement } from 'react';
-import { FormFormik } from './components/formFormik/FormFormik';
+import { Gallery } from './components/gallery/Gallery';
+// import { FormFormik } from './components/formFormik/FormFormik';
 // import { FormNative } from './components/formNative/FormNative';
-import './app.scss';
+import styles from './app.scss';
 
 function App(): ReactElement {
   return (
-    <>
-      <FormFormik />
+    <div className={ styles.app }>
+      <Gallery />
+      {/*<FormFormik />*/}
       {/*<FormNative />*/}
-    </>
+    </div>
   );
 }
 

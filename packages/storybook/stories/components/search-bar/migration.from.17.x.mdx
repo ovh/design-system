@@ -1,0 +1,49 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="ODS Components/Navigation/Search Bar/Migration From 17.x" />
+
+# Search Bar - migrate from v17 to v18
+----
+
+Search Bar has been removed from ODS components. <img src="https://img.shields.io/badge/removed-FF0000" />
+
+The component wasn't bringing any meaningful value and was not flexible enough regarding the different use cases
+that may exist.
+
+If you need to replace the previous search-bar, you can achieve the same result with the existing components,
+here is a quick example:
+
+```html
+<style>
+    .search-bar {
+      display: grid;
+      grid-template-columns: max-content 1fr max-content;
+    }
+
+    .search-bar__input::part(input) {
+      border-radius: 0;
+      border-left: 0;
+    }
+
+    .search-bar__button::part(button) {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  </style>
+
+<div class="search-bar">
+  <ods-select border-rounded="left"
+              dropdown-width="auto">
+    <option value="filter-1">Some filter</option>
+    <!-- ... -->
+  </ods-select>
+
+  <ods-input class="search-bar__input">
+  </ods-input>
+
+  <ods-button class="search-bar__button"
+              icon="search"
+              size="sm">
+  </ods-button>
+</div>
+```

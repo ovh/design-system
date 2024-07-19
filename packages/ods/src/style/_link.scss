@@ -25,3 +25,17 @@ $ods-link-font-weight: 600;
     @include focus.ods-focus();
   }
 }
+
+@mixin ods-link-color($color) {
+  @if $color == 'primary' {
+    color: var(--ods-color-primary-500);
+
+    &:hover {
+      color: var(--ods-color-primary-700);
+    }
+
+    &:visited {
+      color: var(--ods-color-primary-800);
+    }
+  }
+}

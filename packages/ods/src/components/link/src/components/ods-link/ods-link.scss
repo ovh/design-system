@@ -8,15 +8,7 @@
 
     &:not(&#{$current}--disabled) {
       &#{$current}--primary {
-        color: var(--ods-color-primary-500);
-
-        &:hover {
-          color: var(--ods-color-primary-700);
-        }
-
-        &:visited {
-          color: var(--ods-color-primary-800);
-        }
+        @include link.ods-link-color('primary');
       }
     }
 

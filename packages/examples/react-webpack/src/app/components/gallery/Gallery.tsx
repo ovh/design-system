@@ -14,13 +14,13 @@ function Gallery(): ReactElement {
         </div>
       </div>
 
-      {/* Diff on height */}
+      {/* OK */}
       <div>
         <OdsButton label="ODS Button" />
 
-        <div className={ styles['gallery__my-button'] }>
+        <button className={ styles['gallery__my-button'] }>
           My Button
-        </div>
+        </button>
       </div>
 
       {/* OK */}

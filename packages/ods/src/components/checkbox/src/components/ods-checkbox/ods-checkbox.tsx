@@ -28,10 +28,12 @@ export class OdsCheckbox {
 
   @Method()
   async clear(): Promise<void> {
+    const hasChange = this.inputEl?.checked === true;
     if (this.inputEl) {
       this.inputEl.checked = false;
     }
     this.odsClear.emit();
+    hasChange && this.onInput();
   }
 
   @Method()
@@ -41,6 +43,7 @@ export class OdsCheckbox {
 
   @Method()
   async reset(): Promise<void> {
+    const hasChange = this.inputEl?.checked === true;
     this.getOdsCheckboxGroupByName().forEach((checkbox) => {
       const inputCheckbox = checkbox.querySelector<HTMLInputElement>('input[type="checkbox"]');
       if (!inputCheckbox) {
@@ -53,6 +56,7 @@ export class OdsCheckbox {
       }
     });
     this.odsReset.emit();
+    hasChange && this.onInput();
   }
 
   private getOdsCheckboxGroupByName(): NodeListOf<Element> {

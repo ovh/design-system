@@ -2,15 +2,5 @@
 
 .app {
   font-family: var(--ods-font-family-default);
-
-  &__code {
-    font-family: var(--ods-font-family-code);
-  }
-
-  &__spinner {
-    &::part(spinner) {
-      height: 100px;
-    }
-  }
 }
 

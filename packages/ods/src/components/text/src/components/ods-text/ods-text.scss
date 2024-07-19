@@ -1,5 +1,10 @@
 @use '../../../../../style/text';
 
+:host(.ods-text) {
+  display: inline-block;
+  height: inherit;
+}
+
 .ods-text {
   &--heading-1 {
     @include text.ods-text-heading-1();

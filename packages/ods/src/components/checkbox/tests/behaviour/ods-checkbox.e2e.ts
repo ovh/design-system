@@ -28,22 +28,53 @@ describe('ods-checkbox behavior', () => {
       it('should receive odsClear event', async() => {
         await setup('<ods-checkbox value="value" is-checked></ods-checkbox>');
         const odsClearSpy = await page.spyOnEvent('odsClear');
+        const odsChangeSpy = await page.spyOnEvent('odsChange');
         expect(await isInputCheckboxChecked(el)).toBe(true);
         await el.callMethod('clear');
         await page.waitForChanges();
 
         expect(await isInputCheckboxChecked(el)).toBe(false);
         expect(odsClearSpy).toHaveReceivedEventTimes(1);
+        expect(odsChangeSpy).toHaveReceivedEventTimes(1);
+      });
+
+      it('should receive odsClear event but not odsChange if there are no change', async() => {
+        await setup('<ods-checkbox value="value"></ods-checkbox>');
+        const odsClearSpy = await page.spyOnEvent('odsClear');
+        const odsChangeSpy = await page.spyOnEvent('odsChange');
+        expect(await isInputCheckboxChecked(el)).toBe(false);
+
+        await el.callMethod('clear');
+        await page.waitForChanges();
+
+        expect(await isInputCheckboxChecked(el)).toBe(false);
+        expect(odsClearSpy).toHaveReceivedEventTimes(1);
+        expect(odsChangeSpy).toHaveReceivedEventTimes(0);
       });
     });
 
     describe('method:reset', () => {
+      it('should receive odsReset event but not odsChange if there are no change', async() => {
+        await setup('<ods-checkbox value="value"></ods-checkbox>');
+        const odsResetSpy = await page.spyOnEvent('odsReset');
+        const odsChangeSpy = await page.spyOnEvent('odsChange');
+        expect(await isInputCheckboxChecked(el)).toBe(false);
+
+        await el.callMethod('reset');
+        await page.waitForChanges();
+
+        expect(await isInputCheckboxChecked(el)).toBe(false);
+        expect(odsResetSpy).toHaveReceivedEventTimes(1);
+        expect(odsChangeSpy).toHaveReceivedEventTimes(0);
+      });
+
       it('should checked the checkbox with is-checked after reset', async() => {
         await setup(`<ods-checkbox name="checkbox-group" value="value1" is-checked></ods-checkbox>
         <ods-checkbox name="checkbox-group" value="value2"></ods-checkbox>
         <ods-checkbox name="checkbox-group" value="value3"></ods-checkbox>`);
         const checkboxGroup = await page.findAll('ods-checkbox');
         const odsResetSpy = await page.spyOnEvent('odsReset');
+        const odsChangeSpy = await page.spyOnEvent('odsChange');
         expect(await isInputCheckboxChecked(checkboxGroup[0])).toBe(true);
 
         await checkboxGroup[2].click();
@@ -55,6 +86,7 @@ describe('ods-checkbox behavior', () => {
         expect(await isInputCheckboxChecked(checkboxGroup[0])).toBe(true);
         expect(await isInputCheckboxChecked(checkboxGroup[2])).toBe(false);
         expect(odsResetSpy).toHaveReceivedEventTimes(1);
+        expect(odsChangeSpy).toHaveReceivedEventTimes(2);
       });
     });
   });

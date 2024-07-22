@@ -9,6 +9,10 @@ function computeActualTotalPages(itemPerPage: number, totalItems: number | undef
 }
 
 function createPageList(totalPages: number, pageSelected: number): OdsPaginationPageList {
+  const MAX_VISIBLE_ITEMS = 7;
+  const ELLIPSIS_THRESHOLD = 4;
+  const MINIMUM_PAGE = 1;
+  const DEFAULT_PAGE_OFFSET = 2;
   const pageList: OdsPaginationPageList = [];
 
   // Create initial pageList with 'active' property set to false for each page.
@@ -16,28 +20,28 @@ function createPageList(totalPages: number, pageSelected: number): OdsPagination
     pageList.push({ active: false });
   }
 
-  let startIndex = Math.max(pageSelected - 2, 1);
-  const endIndex = Math.min(startIndex + 4, totalPages);
+  let startIndex = Math.max(pageSelected - DEFAULT_PAGE_OFFSET, 1);
+  const endIndex = Math.min(startIndex + ELLIPSIS_THRESHOLD, totalPages);
 
   // If there are less than or equal to 5 pages, set all pages as active (all displayed).
-  if (totalPages <= 5) {
+  if (totalPages <= (MAX_VISIBLE_ITEMS - DEFAULT_PAGE_OFFSET)) {
     for (let i = 0; i < pageList.length; i++) {
       pageList[i].active = true;
     }
   } else {
     // If there are more than 5 pages, set only some of them as active (not all displayed).
-    if (totalPages - pageSelected < 2) {
+    if (totalPages - pageSelected < DEFAULT_PAGE_OFFSET) {
       // If selected page is one of the last pages of a long list, show the last 5 pages.
-      startIndex = totalPages - 4;
+      startIndex = totalPages - ELLIPSIS_THRESHOLD;
     }
 
     for (let i = startIndex; i <= endIndex; i++) {
       // If i is two pages away from the selected page, skip it if it is between 4 and totalPages-2.
-      if (i == pageSelected - 2 && pageSelected < totalPages - 1 && pageSelected > 4 && pageSelected < totalPages - 2) {
+      if (i == pageSelected - DEFAULT_PAGE_OFFSET && pageSelected < totalPages - 1 && pageSelected > ELLIPSIS_THRESHOLD && pageSelected < totalPages - DEFAULT_PAGE_OFFSET) {
         continue;
       }
       // If i is two pages away from the selected page, skip it if it is greater than 5.
-      if (i == pageSelected + 2 && pageSelected < totalPages - 3 && i > 5) {
+      if (i == pageSelected + DEFAULT_PAGE_OFFSET && pageSelected < totalPages - (DEFAULT_PAGE_OFFSET + MINIMUM_PAGE) && i > (MAX_VISIBLE_ITEMS - DEFAULT_PAGE_OFFSET)) {
         continue;
       }
       pageList[i - 1].active = true;

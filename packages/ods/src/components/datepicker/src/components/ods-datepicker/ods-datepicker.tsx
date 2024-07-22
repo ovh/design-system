@@ -262,7 +262,7 @@ export class OdsDatepicker {
               disabled={ this.isDisabled || this.isReadonly }
               onClick={ () => this.clear() }
               onKeyUp={ (e: KeyboardEvent): void => this.onClearButtonKeyUp(e) }>
-              <ods-icon name={ ODS_ICON_NAME.times }>
+              <ods-icon name={ ODS_ICON_NAME.xmark }>
               </ods-icon>
             </button>
           }

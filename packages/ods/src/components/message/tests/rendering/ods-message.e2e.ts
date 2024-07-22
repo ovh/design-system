@@ -34,7 +34,7 @@ describe('ods-message rendering', () => {
     it('should render critical icon', async() => {
       await setup(`<ods-message color="${ODS_MESSAGE_COLOR.critical}"></ods-message>`);
 
-      const criticalIcon = await message.find('ods-icon[name="critical-hexagon"]');
+      const criticalIcon = await message.find('ods-icon[name="hexagon-exclamation"]');
 
       expect(criticalIcon).not.toBeNull();
     });
@@ -42,7 +42,7 @@ describe('ods-message rendering', () => {
     it('should render danger icon', async() => {
       await setup(`<ods-message color="${ODS_MESSAGE_COLOR.danger}"></ods-message>`);
 
-      const dangerIcon = await message.find('ods-icon[name="danger-diamond"]');
+      const dangerIcon = await message.find('ods-icon[name="diamond-exclamation"]');
 
       expect(dangerIcon).not.toBeNull();
     });
@@ -50,7 +50,7 @@ describe('ods-message rendering', () => {
     it('should render information icon', async() => {
       await setup(`<ods-message color="${ODS_MESSAGE_COLOR.information}"></ods-message>`);
 
-      const informationIcon = await message.find('ods-icon[name="info-circle"]');
+      const informationIcon = await message.find('ods-icon[name="circle-info"]');
 
       expect(informationIcon).not.toBeNull();
     });
@@ -58,7 +58,7 @@ describe('ods-message rendering', () => {
     it('should render success icon', async() => {
       await setup(`<ods-message color="${ODS_MESSAGE_COLOR.success}"></ods-message>`);
 
-      const successIcon = await message.find('ods-icon[name="check-circle"]');
+      const successIcon = await message.find('ods-icon[name="circle-check"]');
 
       expect(successIcon).not.toBeNull();
     });
@@ -66,7 +66,7 @@ describe('ods-message rendering', () => {
     it('should render warning icon', async() => {
       await setup(`<ods-message color="${ODS_MESSAGE_COLOR.warning}"></ods-message>`);
 
-      const warningIcon = await message.find('ods-icon[name="warning-triangle"]');
+      const warningIcon = await message.find('ods-icon[name="triangle-exclamation"]');
 
       expect(warningIcon).not.toBeNull();
     });

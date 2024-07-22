@@ -1,6 +1,5 @@
-import type { OdsIconName } from '../../constants/icon-name';
-import type { FunctionalComponent } from '@stencil/core';
-import { Component, Host, Prop, h } from '@stencil/core';
+import { Component, type FunctionalComponent, Host, Prop, h } from '@stencil/core';
+import { type OdsIconName } from '../../constants/icon-name';
 
 @Component({
   shadow: true,

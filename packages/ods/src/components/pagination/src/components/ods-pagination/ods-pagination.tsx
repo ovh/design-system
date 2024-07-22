@@ -8,7 +8,7 @@ import { ODS_BUTTON_COLOR, ODS_BUTTON_SIZE, ODS_BUTTON_VARIANT } from '../../../
 import { ODS_ICON_NAME } from '../../../../icon/src';
 import { ODS_TEXT_PRESET } from '../../../../text/src';
 import { ODS_PAGINATION_PER_PAGE, ODS_PAGINATION_PER_PAGE_OPTIONS } from '../../constants/pagination-per-page';
-import { computeActualTotalPages, createPageList, getActualPage } from '../../controller/ods-pagination';
+import { ELLIPSIS_THRESHOLD, MAX_VISIBLE_ITEMS, computeActualTotalPages, createPageList, getActualPage } from '../../controller/ods-pagination';
 
 @Component({
   shadow: true,
@@ -20,8 +20,6 @@ export class OdsPagination {
   private leftArrowButtonId = 'pagination-left-arrow';
   private rightArrowButtonId = 'pagination-right-arrow';
   private hostId: string = '';
-  private MAX_VISIBLE_ITEMS = 7;
-  private ELLIPSIS_THRESHOLD = 4;
 
   @Element() el!: HTMLElement;
 
@@ -211,8 +209,8 @@ export class OdsPagination {
       return;
     }
 
-    const renderEllipsisLeft = this.current > this.ELLIPSIS_THRESHOLD && this.actualTotalPages > this.MAX_VISIBLE_ITEMS;
-    const renderEllipsisRight = this.current < this.actualTotalPages - this.ELLIPSIS_THRESHOLD + 1 && this.actualTotalPages > this.MAX_VISIBLE_ITEMS;
+    const renderEllipsisLeft = this.current > ELLIPSIS_THRESHOLD && this.actualTotalPages > MAX_VISIBLE_ITEMS;
+    const renderEllipsisRight = this.current < this.actualTotalPages - ELLIPSIS_THRESHOLD + 1 && this.actualTotalPages > MAX_VISIBLE_ITEMS;
 
     return (
       <Host

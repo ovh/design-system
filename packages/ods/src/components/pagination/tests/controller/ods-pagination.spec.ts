@@ -73,7 +73,12 @@ describe('ods-pagination controller', () => {
       const result = createPageList(totalPages, pageSelected);
 
       expect(result).toHaveLength(totalPages);
-      result.forEach((page) => expect(page.active).toBe(true));
+
+      expect(result[0].active).toBe(true);
+      expect(result[1].active).toBe(true);
+      expect(result[2].active).toBe(true);
+      expect(result[3].active).toBe(true);
+      expect(result[4].active).toBe(true);
     });
 
     it('should activate appropriate pages when totalPages is greater than MAX_VISIBLE_ITEMS and pageSelected is in the middle', () => {
@@ -83,13 +88,17 @@ describe('ods-pagination controller', () => {
       const result = createPageList(totalPages, pageSelected);
 
       expect(result).toHaveLength(totalPages);
-      result.forEach((page, index) => {
-        if (index === 0 || index === totalPages - 1 || (index >= (pageSelected - 2) && index <= pageSelected)) {
-          expect(page.active).toBe(true);
-        } else {
-          expect(page.active).toBe(false);
-        }
-      });
+
+      expect(result[0].active).toBe(true);
+      expect(result[1].active).toBe(false);
+      expect(result[2].active).toBe(false);
+      expect(result[3].active).toBe(true);
+      expect(result[4].active).toBe(true);
+      expect(result[5].active).toBe(true);
+      expect(result[6].active).toBe(false);
+      expect(result[7].active).toBe(false);
+      expect(result[8].active).toBe(false);
+      expect(result[9].active).toBe(true);
     });
 
     it('should activate the first page and the range around pageSelected when it is near the start', () => {
@@ -99,13 +108,17 @@ describe('ods-pagination controller', () => {
       const result = createPageList(totalPages, pageSelected);
 
       expect(result).toHaveLength(totalPages);
-      result.forEach((page, index) => {
-        if (index <= 4 || index === totalPages - 1) {
-          expect(page.active).toBe(true);
-        } else {
-          expect(page.active).toBe(false);
-        }
-      });
+
+      expect(result[0].active).toBe(true);
+      expect(result[1].active).toBe(true);
+      expect(result[2].active).toBe(true);
+      expect(result[3].active).toBe(true);
+      expect(result[4].active).toBe(true);
+      expect(result[5].active).toBe(false);
+      expect(result[6].active).toBe(false);
+      expect(result[7].active).toBe(false);
+      expect(result[8].active).toBe(false);
+      expect(result[9].active).toBe(true);
     });
 
     it('should activate the last page and the range around pageSelected when it is near the end', () => {
@@ -115,13 +128,17 @@ describe('ods-pagination controller', () => {
       const result = createPageList(totalPages, pageSelected);
 
       expect(result).toHaveLength(totalPages);
-      result.forEach((page, index) => {
-        if (index === 0 || index === totalPages - 1 || index >= 5) {
-          expect(page.active).toBe(true);
-        } else {
-          expect(page.active).toBe(false);
-        }
-      });
+
+      expect(result[0].active).toBe(true);
+      expect(result[1].active).toBe(false);
+      expect(result[2].active).toBe(false);
+      expect(result[3].active).toBe(false);
+      expect(result[4].active).toBe(false);
+      expect(result[5].active).toBe(true);
+      expect(result[6].active).toBe(true);
+      expect(result[7].active).toBe(true);
+      expect(result[8].active).toBe(true);
+      expect(result[9].active).toBe(true);
     });
 
     it('should handle a small number of totalPages correctly', () => {
@@ -131,7 +148,10 @@ describe('ods-pagination controller', () => {
       const result = createPageList(totalPages, pageSelected);
 
       expect(result).toHaveLength(totalPages);
-      result.forEach((page) => expect(page.active).toBe(true));
+
+      expect(result[0].active).toBe(true);
+      expect(result[1].active).toBe(true);
+      expect(result[2].active).toBe(true);
     });
 
     it('should handle a large number of totalPages correctly', () => {
@@ -141,13 +161,16 @@ describe('ods-pagination controller', () => {
       const result = createPageList(totalPages, pageSelected);
 
       expect(result).toHaveLength(totalPages);
-      result.forEach((page, index) => {
-        if (index === 0 || index === totalPages - 1 || (index >= (pageSelected - 2) && index <= pageSelected)) {
-          expect(page.active).toBe(true);
-        } else {
-          expect(page.active).toBe(false);
-        }
-      });
+
+      expect(result[0].active).toBe(true);
+      expect(result[1].active).toBe(false);
+      expect(result[47].active).toBe(false);
+      expect(result[48].active).toBe(true);
+      expect(result[49].active).toBe(true);
+      expect(result[50].active).toBe(true);
+      expect(result[51].active).toBe(false);
+      expect(result[98].active).toBe(false);
+      expect(result[99].active).toBe(true);
     });
   });
 

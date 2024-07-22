@@ -1,4 +1,4 @@
-@use '../../../../../style/pagination';
+$ods-pagination-button-width: 2.5rem;
 
 :host(.ods-pagination) {
   display: flex;
@@ -43,7 +43,7 @@
       &__button::part(button) {
         display: flex;
         justify-content: center;
-        width: 2.5rem;
+        width: $ods-pagination-button-width;
       }
     }
 
@@ -51,13 +51,13 @@
       &__ellipsis {
         display: flex;
         justify-content: center;
-        width: pagination.$ods-pagination-button-width;
+        width: $ods-pagination-button-width;
       }
 
       &__button::part(button) {
         display: none;
         justify-content: center;
-        width: pagination.$ods-pagination-button-width;
+        width: $ods-pagination-button-width;
       }
 
       &__button--visible::part(button) {

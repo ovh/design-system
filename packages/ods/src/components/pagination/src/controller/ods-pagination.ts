@@ -1,5 +1,10 @@
 import type { OdsPaginationPageList } from '../interfaces/pagination-page-list';
 
+const DEFAULT_PAGE_OFFSET = 2;
+const ELLIPSIS_THRESHOLD = 4;
+const MAX_VISIBLE_ITEMS = 7;
+const MINIMUM_PAGE = 1;
+
 function computeActualTotalPages(itemPerPage: number, totalItems: number | undefined, totalPages: number): number {
   if (!totalItems) {
     return totalPages;
@@ -9,10 +14,6 @@ function computeActualTotalPages(itemPerPage: number, totalItems: number | undef
 }
 
 function createPageList(totalPages: number, pageSelected: number): OdsPaginationPageList {
-  const MAX_VISIBLE_ITEMS = 7;
-  const ELLIPSIS_THRESHOLD = 4;
-  const MINIMUM_PAGE = 1;
-  const DEFAULT_PAGE_OFFSET = 2;
   const pageList: OdsPaginationPageList = [];
 
   // Create initial pageList with 'active' property set to false for each page.
@@ -74,6 +75,10 @@ function getActualPage(defaultCurrentPage: number, actualTotalPages: number, cur
 }
 
 export {
+  DEFAULT_PAGE_OFFSET,
+  ELLIPSIS_THRESHOLD,
+  MAX_VISIBLE_ITEMS,
+  MINIMUM_PAGE,
   computeActualTotalPages,
   createPageList,
   getActualPage,

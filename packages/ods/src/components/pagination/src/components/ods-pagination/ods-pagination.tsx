@@ -17,12 +17,11 @@ import { computeActualTotalPages, createPageList, getActualPage } from '../../co
 })
 export class OdsPagination {
   private actualTotalPages = 1;
-  private isFirstLoad: boolean = true;
   private leftArrowButtonId = 'pagination-left-arrow';
   private rightArrowButtonId = 'pagination-right-arrow';
   private hostId: string = '';
-  private maxVisibleItems = 7;
-  private ellipsisThreshold = 4;
+  private MAX_VISIBLE_ITEMS = 7;
+  private ELLIPSIS_THRESHOLD = 4;
 
   @Element() el!: HTMLElement;
 
@@ -76,15 +75,13 @@ export class OdsPagination {
 
   @Watch('itemPerPage')
   async onItemPerPageChange(): Promise<void> {
-    if (!this.isFirstLoad) {
-      await this.updatePagination();
+    await this.updatePagination();
 
-      this.odsPaginationItemPerPageChanged.emit({
-        current: this.itemPerPage,
-        currentPage: this.current,
-        totalPages: this.actualTotalPages,
-      });
-    }
+    this.odsPaginationItemPerPageChanged.emit({
+      current: this.itemPerPage,
+      currentPage: this.current,
+      totalPages: this.actualTotalPages,
+    });
   }
 
   @Watch('totalItems')
@@ -116,13 +113,10 @@ export class OdsPagination {
     this.current = getActualPage(this.defaultCurrentPage, this.actualTotalPages, this.current);
 
     this.updatePageList();
-    this.isFirstLoad = false;
   }
 
   private updatePageList(): void {
-    this.pageList = createPageList(this.actualTotalPages, this.current).map((page) => ({
-      ...page,
-    }));
+    this.pageList = createPageList(this.actualTotalPages, this.current);
   }
 
   private emitChange(current: number, oldCurrent?: number): void {
@@ -185,7 +179,7 @@ export class OdsPagination {
           size={ODS_BUTTON_SIZE.md}
         >
         </ods-button>
-        {tooltipLabel && (
+        {tooltipLabel && !isArrowDisabled && (
           <ods-tooltip
             shadowDomTriggerId={arrowButtonId}
             triggerId={this.hostId}
@@ -217,13 +211,15 @@ export class OdsPagination {
       return;
     }
 
-    const renderEllipsisLeft = this.current > this.ellipsisThreshold && this.actualTotalPages > this.maxVisibleItems;
-    const renderEllipsisRight = this.current < this.actualTotalPages - this.ellipsisThreshold + 1 && this.actualTotalPages > this.maxVisibleItems;
+    const renderEllipsisLeft = this.current > this.ELLIPSIS_THRESHOLD && this.actualTotalPages > this.MAX_VISIBLE_ITEMS;
+    const renderEllipsisRight = this.current < this.actualTotalPages - this.ELLIPSIS_THRESHOLD + 1 && this.actualTotalPages > this.MAX_VISIBLE_ITEMS;
 
     return (
       <Host
-        class="ods-pagination"
-        isDisabled={this.isDisabled}
+        class={{
+          'ods-pagination': true,
+          'ods-pagination--disabled': this.isDisabled,
+        }}
         id={this.hostId}
       >
         {

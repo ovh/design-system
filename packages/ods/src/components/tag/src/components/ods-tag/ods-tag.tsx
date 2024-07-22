@@ -73,7 +73,7 @@ export class OdsTag {
 
           <ods-icon
             class="ods-tag__tag__close"
-            name={ ODS_ICON_NAME.times }>
+            name={ ODS_ICON_NAME.xmark }>
           </ods-icon>
         </div>
       </Host>

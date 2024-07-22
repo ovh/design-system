@@ -158,7 +158,7 @@ export class OdsInput {
               disabled={ this.isDisabled || this.isReadonly }
               onClick={ this.clear.bind(this) }
               onKeyUp={ (event: KeyboardEvent): Promise<void> => handleKeySpace(event, this.isDisabled, this.clear.bind(this)) }>
-              <ods-icon name={ ODS_ICON_NAME.times }>
+              <ods-icon name={ ODS_ICON_NAME.xmark }>
               </ods-icon>
             </button>
           }

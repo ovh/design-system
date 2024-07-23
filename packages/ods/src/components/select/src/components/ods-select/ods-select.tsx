@@ -124,9 +124,9 @@ export class OdsSelect {
 
     this.odsChange.emit({
       name: this.name,
-      previousValue: inlineValue(previousValue) ?? undefined,
+      previousValue: inlineValue(previousValue) || undefined,
       validity:  this.selectElement?.validity,
-      value: inlineValue(value),
+      value: inlineValue(value) || null,
     });
   }
 

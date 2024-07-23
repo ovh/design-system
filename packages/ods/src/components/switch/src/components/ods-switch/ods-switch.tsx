@@ -25,14 +25,15 @@ export class OdsSwitch {
 
   @Method()
   async clear(): Promise<void> {
-    await clearItems(Array.from(this.el.children));
     this.odsClear.emit();
+    await clearItems(Array.from(this.el.children));
+    this.el.focus();
   }
 
   @Method()
   async reset(): Promise<void> {
-    await resetItems(Array.from(this.el.children));
     this.odsReset.emit();
+    await resetItems(Array.from(this.el.children));
   }
 
   @Listen('odsSwitchItemFocus')

@@ -13,7 +13,7 @@ export class OdsAccordion {
   @Prop({ reflect: true }) public isDisabled: boolean = false;
   @Prop({ mutable: true, reflect: true }) public isOpen: boolean = false;
 
-  @Event() odsAccordionToggle!: EventEmitter<boolean>;
+  @Event() odsToggle!: EventEmitter<boolean>;
 
   handleToggle(event: Event): void {
     if (this.isDisabled) {
@@ -26,7 +26,7 @@ export class OdsAccordion {
       this.isOpen = true;
     }
 
-    this.odsAccordionToggle.emit();
+    this.odsToggle.emit();
   }
 
   @Watch('isOpen')

@@ -1,5 +1,5 @@
 import { Component, Event, type EventEmitter, type FunctionalComponent, Host, Listen, h } from '@stencil/core';
-import { type OdsTabSelectedDetail } from '../../interfaces/events';
+import { type OdsTabSelectedEventDetail } from '../../interfaces/events';
 
 @Component({
   shadow: true,
@@ -7,10 +7,10 @@ import { type OdsTabSelectedDetail } from '../../interfaces/events';
   tag: 'ods-tabs',
 })
 export class OdsTabs {
-  @Event() odsTabsSelected!: EventEmitter<OdsTabSelectedDetail>;
+  @Event() odsTabsSelected!: EventEmitter<OdsTabSelectedEventDetail>;
 
   @Listen('odsTabSelected')
-  onOdsTabSelected(event: OdsTabSelectedDetail): void {
+  onOdsTabSelected(event: OdsTabSelectedEventDetail): void {
     this.odsTabsSelected.emit(event);
   }
 

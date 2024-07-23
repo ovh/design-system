@@ -1,13 +1,13 @@
-interface OdsTextareaEventChangeDetail {
+interface OdsTextareaChangeEventDetail {
   name: string;
   previousValue?: string | null;
   validity?: ValidityState;
   value: string | null;
 }
 
-type OdsTextareaEventChange = CustomEvent<OdsTextareaEventChangeDetail>;
+type OdsTextareaChangeEvent = CustomEvent<OdsTextareaChangeEventDetail>;
 
 export {
-  type OdsTextareaEventChange,
-  type OdsTextareaEventChangeDetail,
+  type OdsTextareaChangeEvent,
+  type OdsTextareaChangeEventDetail,
 };

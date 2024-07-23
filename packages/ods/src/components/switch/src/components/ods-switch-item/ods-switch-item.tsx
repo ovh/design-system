@@ -20,8 +20,8 @@ export class OdsSwitchItem {
   @Prop({ reflect: true }) public name!: string;
   @Prop({ reflect: true }) public value: string | null = null;
 
-  @Event() odsSwitchItemBlur!: EventEmitter<void>;
-  @Event() odsSwitchItemFocus!: EventEmitter<void>;
+  @Event() odsBlur!: EventEmitter<void>;
+  @Event() odsFocus!: EventEmitter<void>;
 
   @Method()
   async reset(): Promise<void> {
@@ -77,8 +77,8 @@ export class OdsSwitchItem {
           }}
           htmlFor={ this.inputId }
           tabindex={ !this.isDisabled ? 0 : -1 }
-          onBlur={ () => this.odsSwitchItemBlur.emit() }
-          onFocus={ () => this.odsSwitchItemFocus.emit() }
+          onBlur={ () => this.odsBlur.emit() }
+          onFocus={ () => this.odsFocus.emit() }
           onKeyDown={ (e: KeyboardEvent) => this.handleKeyDown(e) }
           onKeyUp={ (event: KeyboardEvent) => this.handleKeyUp(event) }>
           <slot></slot>

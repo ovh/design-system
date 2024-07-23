@@ -5,18 +5,18 @@ import { OdsFileUpload } from 'ods-components-react';
 const FileUpload = () => {
   const [files, setFiles] = useState<OdsFile[]>([]);
 
-  function onFileCancel(event: OdsFileCancelEvent) {
+  function onCancel(event: OdsFileCancelEvent) {
     setFiles(() => files.filter((file) => file.odsId !== event.detail.odsId));
   }
 
-  function onFileChange(event: OdsFileChangeEvent) {
+  function onChange(event: OdsFileChangeEvent) {
     setFiles(() => files.concat(event.detail));
   }
 
   return (
     <OdsFileUpload files={ files }
-                   onOdsFileCancel={ onFileCancel }
-                   onOdsFileChange={ onFileChange } />
+                   onOdsCancel={ onCancel }
+                   onOdsChange={ onChange } />
   );
 };
 

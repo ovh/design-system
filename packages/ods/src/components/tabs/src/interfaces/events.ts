@@ -1,9 +1,9 @@
-type OdsTabSelectedDetail = KeyboardEvent | MouseEvent;
-type OdsTabSelectedEvent = CustomEvent<OdsTabSelectedDetail>;
-type OdsTabsSelectedEvent = CustomEvent<OdsTabSelectedDetail>;
+type OdsTabSelectedEventDetail = KeyboardEvent | MouseEvent;
+type OdsTabSelectedEvent = CustomEvent<OdsTabSelectedEventDetail>;
+type OdsTabsSelectedEvent = CustomEvent<OdsTabSelectedEventDetail>;
 
 export {
-  type OdsTabSelectedDetail,
+  type OdsTabSelectedEventDetail,
   type OdsTabSelectedEvent,
   type OdsTabsSelectedEvent,
 };

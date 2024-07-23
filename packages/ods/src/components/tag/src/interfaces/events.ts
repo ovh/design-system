@@ -1,10 +1,10 @@
-interface OdsTagEventRemoveDetail {
+interface OdsTagRemoveEventDetail {
   id?: string;
 }
 
-type OdsTagEventRemove = CustomEvent<OdsTagEventRemoveDetail>;
+type OdsTagRemoveEvent = CustomEvent<OdsTagRemoveEventDetail>;
 
 export {
-  type OdsTagEventRemove,
-  type OdsTagEventRemoveDetail,
+  type OdsTagRemoveEvent,
+  type OdsTagRemoveEventDetail,
 };

@@ -1,13 +1,13 @@
-interface OdsRadioValueChangeEventDetail {
+interface OdsRadioChangeEventDetail {
   checked: boolean;
   name: string;
   validity?: ValidityState;
   value: string | null;
 }
 
-type OdsRadioValueChangeEvent = CustomEvent<OdsRadioValueChangeEventDetail>;
+type OdsRadioChangeEvent = CustomEvent<OdsRadioChangeEventDetail>;
 
 export {
-  type OdsRadioValueChangeEvent,
-  type OdsRadioValueChangeEventDetail,
+  type OdsRadioChangeEvent,
+  type OdsRadioChangeEventDetail,
 };

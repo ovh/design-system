@@ -17,16 +17,16 @@ export class OdsMessage {
   /** @docType OdsMessageVariant */
   @Prop({ reflect: true }) public variant: OdsMessageVariant = ODS_MESSAGE_VARIANT.default;
 
-  @Event() odsMessageRemove!: EventEmitter<void>;
+  @Event() odsRemove!: EventEmitter<void>;
 
   private handleClick(): void {
-    this.odsMessageRemove.emit();
+    this.odsRemove.emit();
   }
 
   private handleKeyUp(event: KeyboardEvent): void {
     if (event.key === ' ') {
       event.preventDefault();
-      this.odsMessageRemove.emit();
+      this.odsRemove.emit();
     }
   }
 

@@ -56,9 +56,9 @@ describe('ods-message navigation', () => {
     expect(await odsMessageFocusedElementClassName()).toContain('ods-message__message__close');
   });
 
-  it('should trigger odsMessageRemove event on "Enter" when close button is focused', async() => {
+  it('should trigger odsRemove event on "Enter" when close button is focused', async() => {
     await setup('<ods-message></ods-message>');
-    const eventSpy = await el.spyOnEvent('odsMessageRemove');
+    const eventSpy = await el.spyOnEvent('odsRemove');
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Enter');
@@ -67,9 +67,9 @@ describe('ods-message navigation', () => {
     expect(eventSpy).toHaveReceivedEventTimes(1);
   });
 
-  it('should trigger odsMessageRemove event on "Space" when close button is focused', async() => {
+  it('should trigger odsRemove event on "Space" when close button is focused', async() => {
     await setup('<ods-message></ods-message>');
-    const eventSpy = await el.spyOnEvent('odsMessageRemove');
+    const eventSpy = await el.spyOnEvent('odsRemove');
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Space');
@@ -78,9 +78,9 @@ describe('ods-message navigation', () => {
     expect(eventSpy).toHaveReceivedEventTimes(1);
   });
 
-  it('should trigger odsMessageRemove on close button click', async() => {
+  it('should trigger odsRemove on close button click', async() => {
     await setup('<ods-message></ods-message>');
-    const eventSpy = await el.spyOnEvent('odsMessageRemove');
+    const eventSpy = await el.spyOnEvent('odsRemove');
 
     await closeButton.click();
     await page.waitForChanges();

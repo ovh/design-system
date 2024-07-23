@@ -1,13 +1,13 @@
-interface OdsInputValueChangeEventDetail {
+interface OdsInputChangeEventDetail {
   name: string;
   previousValue?: string | number | null;
   validity?: ValidityState;
   value: string | number | null;
 }
 
-type OdsInputValueChangeEvent = CustomEvent<OdsInputValueChangeEventDetail>;
+type OdsInputChangeEvent = CustomEvent<OdsInputChangeEventDetail>;
 
 export {
-  type OdsInputValueChangeEvent,
-  type OdsInputValueChangeEventDetail,
+  type OdsInputChangeEvent,
+  type OdsInputChangeEventDetail,
 };

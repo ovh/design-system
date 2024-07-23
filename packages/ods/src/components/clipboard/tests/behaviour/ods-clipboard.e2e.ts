@@ -21,10 +21,10 @@ describe('ods-clipboard behaviour', () => {
 
   describe('methods', () => {
     describe('copy', () => {
-      it('should emit an odsClipboardCopy event', async() => {
+      it('should emit an odsCopy event', async() => {
         const dummyValue = 'dummy value';
         await setup(`<ods-clipboard value="${dummyValue}"></ods-clipboard>`);
-        const copySpy = await page.spyOnEvent('odsClipboardCopy');
+        const copySpy = await page.spyOnEvent('odsCopy');
 
         // We have to focus the document to be able to call the navigator copy function
         await page.keyboard.press('Tab');
@@ -39,7 +39,7 @@ describe('ods-clipboard behaviour', () => {
 
       it('should should not emit if disabled', async() => {
         await setup('<ods-clipboard is-disabled value="value"></ods-clipboard>');
-        const copySpy = await page.spyOnEvent('odsClipboardCopy');
+        const copySpy = await page.spyOnEvent('odsCopy');
 
         await el.callMethod('copy');
         await page.waitForChanges();

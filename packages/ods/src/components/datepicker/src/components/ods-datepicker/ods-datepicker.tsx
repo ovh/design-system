@@ -19,7 +19,7 @@ import { ODS_SPINNER_COLOR } from '../../../../spinner/src';
 import { type OdsDatepickerDay } from '../../constants/datepicker-day';
 import { ODS_DATEPICKER_LOCALE, type OdsDatepickerLocale } from '../../constants/datepicker-locale';
 import { formatDate, setFormValue } from '../../controller/ods-datepicker';
-import { type OdsDatepickerEventChangeDetail } from '../../interfaces/events';
+import { type OdsDatepickerChangeEventDetail } from '../../interfaces/events';
 
 Object.assign(Datepicker.locales, de);
 Object.assign(Datepicker.locales, es);
@@ -65,7 +65,7 @@ export class OdsDatepicker {
   @Prop({ mutable: true, reflect: true }) public value: Date | null = null;
 
   @Event() odsBlur!: EventEmitter<void>;
-  @Event() odsChange!: EventEmitter<OdsDatepickerEventChangeDetail>;
+  @Event() odsChange!: EventEmitter<OdsDatepickerChangeEventDetail>;
   @Event() odsClear!: EventEmitter<void>;
   @Event() odsFocus!: EventEmitter<void>;
   @Event() odsReset!: EventEmitter<void>;

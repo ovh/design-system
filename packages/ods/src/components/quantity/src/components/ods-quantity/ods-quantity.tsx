@@ -1,9 +1,9 @@
 import { AttachInternals, Component, Event, type EventEmitter, type FunctionalComponent, Host, Method, Prop, h } from '@stencil/core';
 import { ODS_BUTTON_COLOR, ODS_BUTTON_SIZE, ODS_BUTTON_VARIANT } from '../../../../button/src';
 import { ODS_ICON_NAME } from '../../../../icon/src';
-import { ODS_INPUT_TYPE, type OdsInput, type OdsInputValueChangeEvent } from '../../../../input/src';
+import { ODS_INPUT_TYPE, type OdsInput, type OdsInputChangeEvent } from '../../../../input/src';
 import { isMinusButtonDisabled, isPlusButtonDisabled, setFormValue } from '../../controller/ods-quantity';
-import { type OdsQuantityEventValueChangeDetail } from '../../interfaces/events';
+import { type OdsQuantityChangeEventDetail } from '../../interfaces/events';
 
 @Component({
   formAssociated: true,
@@ -31,7 +31,7 @@ export class OdsQuantity {
   @Prop({ mutable: true, reflect: true }) public value: number | null = null;
 
   @Event() odsBlur!: EventEmitter<void>;
-  @Event() odsChange!: EventEmitter<OdsQuantityEventValueChangeDetail>;
+  @Event() odsChange!: EventEmitter<OdsQuantityChangeEventDetail>;
   @Event() odsClear!: EventEmitter<void>;
   @Event() odsFocus!: EventEmitter<void>;
   @Event() odsReset!: EventEmitter<void>;
@@ -78,7 +78,7 @@ export class OdsQuantity {
     this.value = this.value !== null ? Number(this.value) + step : 0;
   }
 
-  private onOdsChange(event: OdsInputValueChangeEvent): void {
+  private onOdsChange(event: OdsInputChangeEvent): void {
     if (event.detail.value === null) {
       this.value = null;
     } else {
@@ -111,7 +111,7 @@ export class OdsQuantity {
           isDisabled={ this.isDisabled }
           isReadonly={ this.isReadonly }
           isRequired={ this.isRequired }
-          onOdsChange={ (event: OdsInputValueChangeEvent) => this.onOdsChange(event) }
+          onOdsChange={ (event: OdsInputChangeEvent) => this.onOdsChange(event) }
           max={ this.max }
           min={ this.min }
           name={ this.name }

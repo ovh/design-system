@@ -1,4 +1,4 @@
-import type { OdsSwitchValueChangeEventDetail } from '../../interfaces/events';
+import type { OdsSwitchChangeEventDetail } from '../../interfaces/events';
 import { Component, Element, Event, type EventEmitter, type FunctionalComponent, Host, Listen, Method, Prop, Watch, h } from '@stencil/core';
 import { ODS_SWITCH_SIZE, type OdsSwitchSize } from '../../constant/switch-size';
 import { clearItems, propagateInputId, propagateIsDisabled, propagateName, resetItems } from '../../controller/ods-switch';
@@ -18,7 +18,7 @@ export class OdsSwitch {
   @Prop({ reflect: true }) public size: OdsSwitchSize = ODS_SWITCH_SIZE.md;
 
   @Event() odsBlur!: EventEmitter<CustomEvent<void>>;
-  @Event() odsChange!: EventEmitter<OdsSwitchValueChangeEventDetail>;
+  @Event() odsChange!: EventEmitter<OdsSwitchChangeEventDetail>;
   @Event() odsClear!: EventEmitter<void>;
   @Event() odsFocus!: EventEmitter<CustomEvent<void>>;
   @Event() odsReset!: EventEmitter<void>;
@@ -36,12 +36,12 @@ export class OdsSwitch {
     await resetItems(Array.from(this.el.children));
   }
 
-  @Listen('odsSwitchItemFocus')
+  @Listen('odsFocus')
   onFocus(event: CustomEvent<void>): void {
     this.odsFocus.emit(event);
   }
 
-  @Listen('odsSwitchItemBlur')
+  @Listen('odsBlur')
   onBlur(event: CustomEvent<void>): void {
     this.odsBlur.emit(event);
   }

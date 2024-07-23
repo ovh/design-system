@@ -1,2 +1,2 @@
 export { OdsQuantity } from './components/ods-quantity/ods-quantity';
-export { type OdsQuantityEventValueChange, type OdsQuantityEventValueChangeDetail } from './interfaces/events';
+export { type OdsQuantityChangeEvent, type OdsQuantityChangeEventDetail } from './interfaces/events';

@@ -1,6 +1,6 @@
 import { AttachInternals, Component, Event, type EventEmitter, type FunctionalComponent, Host, Method, Prop, Watch, h } from '@stencil/core';
 import { setFormValue } from '../../controller/ods-textarea';
-import { type OdsTextareaEventChangeDetail } from '../../interfaces/events';
+import { type OdsTextareaChangeEventDetail } from '../../interfaces/events';
 
 @Component({
   formAssociated: true,
@@ -29,7 +29,7 @@ export class OdsTextarea {
   @Prop({ mutable: true, reflect: true }) public value: string | null = null;
 
   @Event() odsBlur!: EventEmitter<void>;
-  @Event() odsChange!: EventEmitter<OdsTextareaEventChangeDetail>;
+  @Event() odsChange!: EventEmitter<OdsTextareaChangeEventDetail>;
   @Event() odsClear!: EventEmitter<void>;
   @Event() odsFocus!: EventEmitter<void>;
   @Event() odsReset!: EventEmitter<void>;

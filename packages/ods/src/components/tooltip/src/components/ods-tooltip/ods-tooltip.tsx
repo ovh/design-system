@@ -22,14 +22,14 @@ export class OdsTooltip {
   @Prop({ reflect: true }) public triggerId!: string;
   @Prop({ reflect: true }) public withArrow: boolean = false;
 
-  @Event() odsTooltipHide!: EventEmitter<void>;
-  @Event() odsTooltipShow!: EventEmitter<void>;
+  @Event() odsHide!: EventEmitter<void>;
+  @Event() odsShow!: EventEmitter<void>;
 
   @Method()
   async hide(): Promise<void> {
     hideOverlay(this.el, this.cleanUpCallback);
 
-    this.odsTooltipHide.emit();
+    this.odsHide.emit();
   }
 
   @Method()
@@ -43,7 +43,7 @@ export class OdsTooltip {
       shift: { padding: 5 },
     });
 
-    this.odsTooltipShow.emit();
+    this.odsShow.emit();
   }
 
   connectedCallback(): void {

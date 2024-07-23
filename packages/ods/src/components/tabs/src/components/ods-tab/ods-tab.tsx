@@ -1,5 +1,5 @@
 import { Component, Event, type EventEmitter, type FunctionalComponent, Host, Prop, h } from '@stencil/core';
-import { type OdsTabSelectedDetail } from '../../interfaces/events';
+import { type OdsTabSelectedEventDetail } from '../../interfaces/events';
 
 @Component({
   shadow: true,
@@ -10,7 +10,7 @@ export class OdsTab {
   @Prop({ reflect: true }) public isDisabled: boolean = false;
   @Prop({ reflect: true }) public isSelected: boolean = false;
 
-  @Event() odsTabSelected!: EventEmitter<OdsTabSelectedDetail>;
+  @Event() odsTabSelected!: EventEmitter<OdsTabSelectedEventDetail>;
 
   private onClick(event: MouseEvent): void {
     if (!this.isDisabled) {

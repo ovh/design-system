@@ -9,8 +9,8 @@ import { expandItems, setupItems } from '../../controller/ods-breadcrumb';
 export class OdsBreadcrumb {
   @Element() el!: HTMLElement;
 
-  @Listen('odsBreadcrumbItemExpand')
-  onOdsBreadcrumbItemExpand(): void {
+  @Listen('odsExpand')
+  onOdsExpand(): void {
     expandItems(Array.from(this.el.children));
   }
 

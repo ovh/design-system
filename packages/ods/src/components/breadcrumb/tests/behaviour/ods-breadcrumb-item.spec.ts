@@ -23,10 +23,10 @@ describe('ods-breadcrumb-item behaviour', () => {
 
   beforeEach(jest.clearAllMocks);
 
-  describe('onExpandClick', () => {
+  describe('onExpand', () => {
     it('should emit an event', async() => {
       await setup('<ods-breadcrumb-item></ods-breadcrumb-item>');
-      root?.addEventListener('odsBreadcrumbItemExpand', listenerSpy);
+      root?.addEventListener('odsExpand', listenerSpy);
 
       // @ts-ignore for test purpose
       rootInstance?.onExpandClick(mockEvent);
@@ -37,10 +37,10 @@ describe('ods-breadcrumb-item behaviour', () => {
     });
   });
 
-  describe('onLinkClick', () => {
+  describe('onClick', () => {
     it('should emit an event', async() => {
       await setup('<ods-breadcrumb-item></ods-breadcrumb-item>');
-      root?.addEventListener('odsBreadcrumbItemClick', listenerSpy);
+      root?.addEventListener('odsClick', listenerSpy);
 
       // @ts-ignore for test purpose
       rootInstance?.onLinkClick();
@@ -50,7 +50,7 @@ describe('ods-breadcrumb-item behaviour', () => {
 
     it('should do nothing if disabled', async() => {
       await setup('<ods-breadcrumb-item is-disabled></ods-breadcrumb-item>');
-      root?.addEventListener('odsBreadcrumbItemClick', listenerSpy);
+      root?.addEventListener('odsClick', listenerSpy);
 
       // @ts-ignore for test purpose
       rootInstance?.onLinkClick();

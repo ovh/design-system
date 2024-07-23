@@ -24,8 +24,8 @@ export class OdsPopover {
   @Prop({ reflect: true }) public triggerId!: string;
   @Prop({ reflect: true }) public withArrow: boolean = false;
 
-  @Event() odsPopoverHide!: EventEmitter<void>;
-  @Event() odsPopoverShow!: EventEmitter<void>;
+  @Event() odsHide!: EventEmitter<void>;
+  @Event() odsShow!: EventEmitter<void>;
 
   @Listen('click', { target: 'document' })
   onDocumentClick(event: MouseEvent): void {
@@ -59,7 +59,7 @@ export class OdsPopover {
     hideOverlay(this.el, this.cleanUpCallback);
 
     this.isOpen = false;
-    this.odsPopoverHide.emit();
+    this.odsHide.emit();
   }
 
   @Method()
@@ -74,7 +74,7 @@ export class OdsPopover {
     });
 
     this.isOpen = true;
-    this.odsPopoverShow.emit();
+    this.odsShow.emit();
   }
 
   connectedCallback(): void {

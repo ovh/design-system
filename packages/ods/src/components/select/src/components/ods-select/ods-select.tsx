@@ -3,7 +3,7 @@ import TomSelect from 'tom-select';
 import { getElementPosition } from '../../../../../utils/overlay';
 import { mergeSelectedItemPlugin, placeholderPlugin } from '../../../../../utils/select';
 import { getSelectConfig, inlineValue, moveSlottedElements, setFormValue, setSelectValue } from '../../controller/ods-select';
-import { type OdsSelectEventChangeDetail } from '../../interfaces/events';
+import { type OdsSelectChangeEventDetail } from '../../interfaces/events';
 import { type OdsSelectCustomRenderer } from '../../interfaces/options';
 
 TomSelect.define('merge_selected_items', mergeSelectedItemPlugin);
@@ -46,7 +46,7 @@ export class OdsSelect {
   @Prop({ mutable: true, reflect: true }) public value: string | string [] | null = null;
 
   @Event() odsBlur!: EventEmitter<void>;
-  @Event() odsChange!: EventEmitter<OdsSelectEventChangeDetail>;
+  @Event() odsChange!: EventEmitter<OdsSelectChangeEventDetail>;
   @Event() odsClear!: EventEmitter<void>;
   @Event() odsFocus!: EventEmitter<void>;
   @Event() odsReset!: EventEmitter<void>;

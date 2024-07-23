@@ -1,12 +1,12 @@
-interface OdsRangeValueChangeEventDetail {
+interface OdsRangeChangeEventDetail {
   name: string;
   validity?: ValidityState;
   value: number | [number, number] | null;
 }
 
-type OdsRangeValueChangeEvent = CustomEvent<OdsRangeValueChangeEventDetail>;
+type OdsRangeChangeEvent = CustomEvent<OdsRangeChangeEventDetail>;
 
 export {
-  type OdsRangeValueChangeEvent,
-  type OdsRangeValueChangeEventDetail,
+  type OdsRangeChangeEvent,
+  type OdsRangeChangeEventDetail,
 };

@@ -1,6 +1,6 @@
 import { type OdsPhoneNumberCountryIsoCode } from '../constants/phone-number-country-iso-code';
 
-interface OdsPhoneNumberValueChangeEventDetail {
+interface OdsPhoneNumberChangeEventDetail {
   isoCode?: OdsPhoneNumberCountryIsoCode;
   name: string;
   previousValue?: string | null;
@@ -8,9 +8,9 @@ interface OdsPhoneNumberValueChangeEventDetail {
   value: string | null;
 }
 
-type OdsPhoneNumberValueChangeEvent = CustomEvent<OdsPhoneNumberValueChangeEventDetail>;
+type OdsPhoneNumberChangeEvent = CustomEvent<OdsPhoneNumberChangeEventDetail>;
 
 export {
-  type OdsPhoneNumberValueChangeEvent,
-  type OdsPhoneNumberValueChangeEventDetail,
+  type OdsPhoneNumberChangeEvent,
+  type OdsPhoneNumberChangeEventDetail,
 };

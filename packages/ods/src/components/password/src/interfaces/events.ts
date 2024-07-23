@@ -1,6 +1,6 @@
-import type { OdsInputValueChangeEvent, OdsInputValueChangeEventDetail } from '../../../input/src';
+import type { OdsInputChangeEvent, OdsInputChangeEventDetail } from '../../../input/src';
 
 export {
-  type OdsInputValueChangeEvent as OdsPasswordValueChangeEvent,
-  type OdsInputValueChangeEventDetail as OdsPasswordValueChangeEventDetail,
+  type OdsInputChangeEvent as OdsPasswordChangeEvent,
+  type OdsInputChangeEventDetail as OdsPasswordChangeEventDetail,
 };

@@ -45,14 +45,14 @@ export const Demo: StoryObj = {
     (() => {
       const demoFileUpload = document.querySelector('#demo-file-upload');
 
-      demoFileUpload.addEventListener('odsFileChange', ({ detail }) => {
+      demoFileUpload.addEventListener('odsChange', ({ detail }) => {
         demoFileUpload.files = (demoFileUpload.files || []).concat(detail.files.map((file) => {
             file.isUploaded = true;
             return file;
         }));
       });
 
-      demoFileUpload.addEventListener('odsFileCancel', ({ detail }) => {
+      demoFileUpload.addEventListener('odsCancel', ({ detail }) => {
         demoFileUpload.files = demoFileUpload.files.filter((file) => file.odsId !== detail.odsId);
       });
     })();
@@ -197,18 +197,18 @@ export const Accept: StoryObj = {
   (() => {
     const acceptFileUpload = document.querySelector('#accept-file-upload');
 
-    acceptFileUpload.addEventListener('odsFileChange', ({ detail }) => {
+    acceptFileUpload.addEventListener('odsChange', ({ detail }) => {
       acceptFileUpload.files = (acceptFileUpload.files || []).concat(detail.files);
       if (detail.noError) {
         acceptFileUpload.error = '';
       }
     });
 
-    acceptFileUpload.addEventListener('odsFileCancel', ({ detail }) => {
+    acceptFileUpload.addEventListener('odsCancel', ({ detail }) => {
       acceptFileUpload.files = acceptFileUpload.files.filter((file) => file.odsId !== detail.odsId);
     });
 
-    acceptFileUpload.addEventListener('odsFileRejected', ({ detail }) => {
+    acceptFileUpload.addEventListener('odsRejected', ({ detail }) => {
       const filesName = detail.files.map((file) => file.name).join(', ');
       acceptFileUpload.error = detail.files.length > 1 ?
         \`Files "\${filesName}" are not of the expected format\` :
@@ -239,11 +239,11 @@ export const CustomCSS: StoryObj = {
   (() => {
     const cssFileUpload = document.querySelector('#css-file-upload');
 
-    cssFileUpload.addEventListener('odsFileChange', ({ detail }) => {
+    cssFileUpload.addEventListener('odsChange', ({ detail }) => {
       cssFileUpload.files = (cssFileUpload.files || []).concat(detail.files);
     });
 
-    cssFileUpload.addEventListener('odsFileCancel', ({ detail }) => {
+    cssFileUpload.addEventListener('odsCancel', ({ detail }) => {
       cssFileUpload.files = cssFileUpload.files.filter((file) => file.odsId !== detail.odsId);
     });
   })();
@@ -269,7 +269,7 @@ export const CustomLabels: StoryObj = {
   (() => {
     const labelsFileUpload = document.querySelector('#labels-file-upload');
 
-    labelsFileUpload.addEventListener('odsFileChange', ({ detail }) => {
+    labelsFileUpload.addEventListener('odsChange', ({ detail }) => {
       labelsFileUpload.files = (labelsFileUpload.files || []).concat(detail.files).map((file) => {
         file.isUploaded = true;
         return file;
@@ -279,11 +279,11 @@ export const CustomLabels: StoryObj = {
       }
     });
 
-    labelsFileUpload.addEventListener('odsFileCancel', ({ detail }) => {
+    labelsFileUpload.addEventListener('odsCancel', ({ detail }) => {
       labelsFileUpload.files = labelsFileUpload.files.filter((file) => file.odsId !== detail.odsId);
     });
 
-    labelsFileUpload.addEventListener('odsFileRejected', () => {
+    labelsFileUpload.addEventListener('odsRejected', () => {
       labelsFileUpload.error = 'Les fichiers doivent être de type image';
     });
   })();
@@ -299,11 +299,11 @@ export const Default: StoryObj = {
   (() => {
     const defaultFileUpload = document.querySelector('#default-file-upload');
 
-    defaultFileUpload.addEventListener('odsFileChange', ({ detail }) => {
+    defaultFileUpload.addEventListener('odsChange', ({ detail }) => {
       defaultFileUpload.files = (defaultFileUpload.files || []).concat(detail.files);
     });
 
-    defaultFileUpload.addEventListener('odsFileCancel', ({ detail }) => {
+    defaultFileUpload.addEventListener('odsCancel', ({ detail }) => {
       defaultFileUpload.files = defaultFileUpload.files.filter((file) => file.odsId !== detail.odsId);
     });
   })();
@@ -326,11 +326,11 @@ export const InverseFileList: StoryObj = {
   (() => {
     const inverseFileUpload = document.querySelector('#inverse-file-upload');
 
-    inverseFileUpload.addEventListener('odsFileChange', ({ detail }) => {
+    inverseFileUpload.addEventListener('odsChange', ({ detail }) => {
       inverseFileUpload.files = detail.files.concat(inverseFileUpload.files || []);
     });
 
-    inverseFileUpload.addEventListener('odsFileCancel', ({ detail }) => {
+    inverseFileUpload.addEventListener('odsCancel', ({ detail }) => {
       inverseFileUpload.files = inverseFileUpload.files.filter((file) => file.odsId !== detail.odsId);
     });
   })();
@@ -349,18 +349,18 @@ export const MaxFile: StoryObj = {
   (() => {
     const maxFileUpload = document.querySelector('#max-file-upload');
 
-    maxFileUpload.addEventListener('odsFileChange', ({ detail }) => {
+    maxFileUpload.addEventListener('odsChange', ({ detail }) => {
       maxFileUpload.files = (maxFileUpload.files || []).concat(detail.files);
       if (detail.noError) {
         maxFileUpload.error = '';
       }
     });
 
-    maxFileUpload.addEventListener('odsFileCancel', ({ detail }) => {
+    maxFileUpload.addEventListener('odsCancel', ({ detail }) => {
       maxFileUpload.files = maxFileUpload.files.filter((file) => file.odsId !== detail.odsId);
     });
 
-    maxFileUpload.addEventListener('odsFileRejected', ({ detail }) => {
+    maxFileUpload.addEventListener('odsRejected', ({ detail }) => {
       maxFileUpload.error = \`Max file reached, \${detail.files.length} file(s) rejected\`;
     });
   })();
@@ -379,18 +379,18 @@ export const MaxSize: StoryObj = {
   (() => {
     const maxSizeUpload = document.querySelector('#max-size-upload');
 
-    maxSizeUpload.addEventListener('odsFileChange', ({ detail }) => {
+    maxSizeUpload.addEventListener('odsChange', ({ detail }) => {
       maxSizeUpload.files = (maxSizeUpload.files || []).concat(detail.files);
       if (detail.noError) {
         maxSizeUpload.error = '';
       }
     });
 
-    maxSizeUpload.addEventListener('odsFileCancel', ({ detail }) => {
+    maxSizeUpload.addEventListener('odsCancel', ({ detail }) => {
       maxSizeUpload.files = maxSizeUpload.files.filter((file) => file.odsId !== detail.odsId);
     });
 
-    maxSizeUpload.addEventListener('odsFileRejected', ({ detail }) => {
+    maxSizeUpload.addEventListener('odsRejected', ({ detail }) => {
       maxSizeUpload.error = \`\${detail.files.length} file(s) too large\`;
     });
   })();
@@ -407,11 +407,11 @@ export const Overview: StoryObj = {
   (() => {
     const overviewFileUpload = document.querySelector('#overview-file-upload');
 
-    overviewFileUpload.addEventListener('odsFileChange', ({ detail }) => {
+    overviewFileUpload.addEventListener('odsChange', ({ detail }) => {
       overviewFileUpload.files = (overviewFileUpload.files || []).concat(detail.files);
     });
 
-    overviewFileUpload.addEventListener('odsFileCancel', ({ detail }) => {
+    overviewFileUpload.addEventListener('odsCancel', ({ detail }) => {
       overviewFileUpload.files = overviewFileUpload.files.filter((file) => file.odsId !== detail.odsId);
     });
   })();
@@ -437,7 +437,7 @@ export const Progress: StoryObj = {
       });
     }
 
-    progressFileUpload.addEventListener('odsFileChange', ({ detail }) => {
+    progressFileUpload.addEventListener('odsChange', ({ detail }) => {
       detail.files.forEach((file) => {
         let data = new FormData();
         let request = new XMLHttpRequest();
@@ -469,7 +469,7 @@ export const Progress: StoryObj = {
       progressFileUpload.files = (progressFileUpload.files || []).concat(detail.files);
     });
 
-    progressFileUpload.addEventListener('odsFileCancel', ({ detail }) => {
+    progressFileUpload.addEventListener('odsCancel', ({ detail }) => {
       const request = openRequests[detail.odsId];
 
       if (request.status === 200) {

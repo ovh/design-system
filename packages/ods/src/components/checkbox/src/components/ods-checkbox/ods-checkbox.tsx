@@ -1,5 +1,5 @@
 import { Component, Event, type EventEmitter, type FunctionalComponent, Host, Method, Prop, h } from '@stencil/core';
-import { type OdsCheckboxValueChangeEventDetail } from '../../interfaces/event';
+import { type OdsCheckboxChangeEventDetail } from '../../interfaces/event';
 
 @Component({
   formAssociated: true,
@@ -21,7 +21,7 @@ export class OdsCheckbox {
   @Prop({ mutable: true, reflect: true }) public value: string | null = null;
 
   @Event() odsBlur!: EventEmitter<void>;
-  @Event() odsChange!: EventEmitter<OdsCheckboxValueChangeEventDetail>;
+  @Event() odsChange!: EventEmitter<OdsCheckboxChangeEventDetail>;
   @Event() odsClear!: EventEmitter<void>;
   @Event() odsFocus!: EventEmitter<void>;
   @Event() odsReset!: EventEmitter<void>;

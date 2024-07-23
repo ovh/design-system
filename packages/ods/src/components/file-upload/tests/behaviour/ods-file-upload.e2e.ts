@@ -46,45 +46,45 @@ describe('ods-file-upload behaviour', () => {
   beforeEach(jest.clearAllMocks);
 
   describe('events', () => {
-    it('should emit an odsFileChange event on file add', async() => {
+    it('should emit an odsChange event on file add', async() => {
       await setup('<ods-file-upload></ods-file-upload>');
-      const odsFileChangeSpy = await page.spyOnEvent('odsFileChange');
-      const odsFileRejectedSpy = await page.spyOnEvent('odsFileRejected');
+      const odsChangeSpy = await page.spyOnEvent('odsChange');
+      const odsRejectedSpy = await page.spyOnEvent('odsRejected');
 
       await uploadFile('./ods-file-upload.e2e.ts');
       await page.waitForChanges();
 
-      expect(odsFileChangeSpy).toHaveReceivedEventTimes(1);
-      expect(odsFileRejectedSpy).toHaveReceivedEventTimes(0);
+      expect(odsChangeSpy).toHaveReceivedEventTimes(1);
+      expect(odsRejectedSpy).toHaveReceivedEventTimes(0);
     });
 
-    it('should emit an odsFileRejected event on file add if type is not accepted', async() => {
+    it('should emit an odsRejected event on file add if type is not accepted', async() => {
       await setup('<ods-file-upload accept="image/*"></ods-file-upload>');
-      const odsFileChangeSpy = await page.spyOnEvent('odsFileChange');
-      const odsFileRejectedSpy = await page.spyOnEvent('odsFileRejected');
+      const odsChangeSpy = await page.spyOnEvent('odsChange');
+      const odsRejectedSpy = await page.spyOnEvent('odsRejected');
 
       await uploadFile('./ods-file-upload.e2e.ts');
       await page.waitForChanges();
 
-      expect(odsFileChangeSpy).toHaveReceivedEventTimes(0);
-      expect(odsFileRejectedSpy).toHaveReceivedEventTimes(1);
-      expect(odsFileRejectedSpy).toHaveReceivedEventDetail({
+      expect(odsChangeSpy).toHaveReceivedEventTimes(0);
+      expect(odsRejectedSpy).toHaveReceivedEventTimes(1);
+      expect(odsRejectedSpy).toHaveReceivedEventDetail({
         files: [{}],
         reason: ODS_FILE_REJECTION_CAUSE.wrongFormat,
       });
     });
 
-    it('should emit an odsFileRejected event on file add if max file is reached', async() => {
+    it('should emit an odsRejected event on file add if max file is reached', async() => {
       await setup('<ods-file-upload max-file="0"></ods-file-upload>');
-      const odsFileChangeSpy = await page.spyOnEvent('odsFileChange');
-      const odsFileRejectedSpy = await page.spyOnEvent('odsFileRejected');
+      const odsChangeSpy = await page.spyOnEvent('odsChange');
+      const odsRejectedSpy = await page.spyOnEvent('odsRejected');
 
       await uploadFile('./ods-file-upload.e2e.ts');
       await page.waitForChanges();
 
-      expect(odsFileChangeSpy).toHaveReceivedEventTimes(0);
-      expect(odsFileRejectedSpy).toHaveReceivedEventTimes(1);
-      expect(odsFileRejectedSpy).toHaveReceivedEventDetail({
+      expect(odsChangeSpy).toHaveReceivedEventTimes(0);
+      expect(odsRejectedSpy).toHaveReceivedEventTimes(1);
+      expect(odsRejectedSpy).toHaveReceivedEventDetail({
         files: [{}],
         reason: ODS_FILE_REJECTION_CAUSE.maxFileReached,
       });

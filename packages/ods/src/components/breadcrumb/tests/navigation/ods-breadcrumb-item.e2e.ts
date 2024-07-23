@@ -46,16 +46,16 @@ describe('ods-breadcrumb-item navigation', () => {
 
   it('should emit an event on click', async() => {
     await setup('<ods-breadcrumb-item label="Dummy item"></ods-breadcrumb-item>');
-    const eventSpy = await el.spyOnEvent('odsBreadcrumbItemClick');
+    const eventSpy = await el.spyOnEvent('odsClick');
 
-    await Promise.all([el.waitForEvent('odsBreadcrumbItemClick'), el.click()]);
+    await Promise.all([el.waitForEvent('odsClick'), el.click()]);
 
     expect(eventSpy).toHaveReceivedEventTimes(1);
   });
 
   it('should not be clickable if disabled', async() => {
     await setup('<ods-breadcrumb-item is-disabled label="Dummy item"></ods-breadcrumb-item>');
-    const eventSpy = await el.spyOnEvent('odsBreadcrumbItemClick');
+    const eventSpy = await el.spyOnEvent('odsClick');
 
     await el.click();
     await page.waitForChanges();

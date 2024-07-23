@@ -5,7 +5,7 @@ import { ODS_INPUT_TYPE } from '../../../../input/src';
 import { ODS_TEXT_PRESET } from '../../../../text/src';
 import { type OdsTooltip } from '../../../../tooltip/src';
 import { getDefaultValue, isDualRange, setFormValue, toPercentage } from '../../controller/ods-range';
-import { type OdsRangeValueChangeEventDetail } from '../../interfaces/event';
+import { type OdsRangeChangeEventDetail } from '../../interfaces/event';
 
 @Component({
   formAssociated: true,
@@ -42,7 +42,7 @@ export class OdsRange {
   @Prop({ mutable: true, reflect: true }) public value: number | [number, number] | null = 0;
 
   @Event() odsBlur!: EventEmitter<void>;
-  @Event() odsChange!: EventEmitter<OdsRangeValueChangeEventDetail>;
+  @Event() odsChange!: EventEmitter<OdsRangeChangeEventDetail>;
   @Event() odsClear!: EventEmitter<void>;
   @Event() odsFocus!: EventEmitter<void>;
   @Event() odsReset!: EventEmitter<void>;

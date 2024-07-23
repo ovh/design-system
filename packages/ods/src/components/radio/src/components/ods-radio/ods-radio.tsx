@@ -1,4 +1,4 @@
-import type { OdsRadioValueChangeEventDetail } from '../../interfaces/events';
+import type { OdsRadioChangeEventDetail } from '../../interfaces/events';
 import { Component, Element, Event, type EventEmitter, type FunctionalComponent, Host, Method, Prop, h } from '@stencil/core';
 
 @Component({
@@ -22,7 +22,7 @@ export class OdsRadio {
   @Prop({ mutable: true, reflect: true }) public value: string | null = null;
 
   @Event() odsBlur!: EventEmitter<void>;
-  @Event() odsChange!: EventEmitter<OdsRadioValueChangeEventDetail>;
+  @Event() odsChange!: EventEmitter<OdsRadioChangeEventDetail>;
   @Event() odsClear!: EventEmitter<void>;
   @Event() odsFocus!: EventEmitter<void>;
   @Event() odsReset!: EventEmitter<void>;

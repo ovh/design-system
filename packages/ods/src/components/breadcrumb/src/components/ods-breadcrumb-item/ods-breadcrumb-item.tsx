@@ -20,19 +20,19 @@ export class OdsBreadcrumbItem {
   @Prop({ reflect: true }) public rel?: HTMLAnchorElement['rel'];
   @Prop({ reflect: true }) public target?: HTMLAnchorElement['target'];
 
-  @Event() odsBreadcrumbItemClick!: EventEmitter<MouseEvent>;
-  @Event() odsBreadcrumbItemExpand!: EventEmitter<void>;
+  @Event() odsClick!: EventEmitter<MouseEvent>;
+  @Event() odsExpand!: EventEmitter<void>;
 
   onExpandClick(e: Event): void {
     e.preventDefault();
     e.stopPropagation();
 
-    this.odsBreadcrumbItemExpand.emit();
+    this.odsExpand.emit();
   }
 
   onLinkClick(e: MouseEvent): void {
     if (!this.isDisabled) {
-      this.odsBreadcrumbItemClick.emit(e);
+      this.odsClick.emit(e);
     }
   }
 

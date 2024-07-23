@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
-import { ODS_TIMEZONE, ODS_TIMEZONES, ODS_TIMEZONES_PRESET, ODS_TIMEZONES_PRESETS } from '@ovhcloud/ods-components';
+import { ODS_TIMEZONES, ODS_TIMEZONES_PRESETS } from '@ovhcloud/ods-components';
 import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/ods-timepicker';
 import { html } from 'lit-html';
 import { CONTROL_CATEGORY, orderControls } from '../../control';
@@ -21,7 +21,6 @@ export const Demo: StoryObj = {
     has-error="${arg.hasError}"
     is-disabled="${arg.isDisabled}"
     is-readonly="${arg.isReadonly}"
-    is-required="${arg.isRequired}"
     with-seconds="${arg.withSeconds}">
   </ods-timepicker>
   <style>
@@ -80,14 +79,6 @@ export const Demo: StoryObj = {
       },
       control: 'boolean',
     },
-    isRequired: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: false },
-        type: { summary: 'boolean' },
-      },
-      control: 'boolean',
-    },
     withSeconds: {
       table: {
         category: CONTROL_CATEGORY.general,
@@ -101,7 +92,6 @@ export const Demo: StoryObj = {
     hasError: false,
     isDisabled: false,
     isReadonly: false,
-    isRequired: false,
     withSeconds: false,
   },
 };
@@ -115,7 +105,6 @@ export const TimeZones: StoryObj = {
     has-error="${arg.hasError}"
     is-disabled="${arg.isDisabled}"
     is-readonly="${arg.isReadonly}"
-    is-required="${arg.isRequired}"
     timezones="${arg.timezones}"
     with-seconds="${arg.withSeconds}">
   </ods-timepicker>
@@ -196,14 +185,6 @@ export const TimeZones: StoryObj = {
       },
       control: 'boolean',
     },
-    isRequired: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: false },
-        type: { summary: 'boolean' },
-      },
-      control: 'boolean',
-    },
     timezones: {
       table: {
         category: CONTROL_CATEGORY.general,
@@ -226,7 +207,6 @@ export const TimeZones: StoryObj = {
     hasError: false,
     isDisabled: false,
     isReadonly: false,
-    isRequired: false,
     timezones: 'all',
     withSeconds: false,
   },

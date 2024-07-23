@@ -19,7 +19,6 @@ export const Demo: StoryObj = {
       ariaLabelledby="${args.ariaLabelledby}"
       class="my-radio-demo"
       is-disabled="${args.isDisabled}"
-      is-required="${args.isRequired}"
     ></ods-radio>
     <style>
       .my-radio-demo > input[type="radio"]:not(:disabled):checked {
@@ -60,18 +59,9 @@ export const Demo: StoryObj = {
       },
       control: 'boolean',
     },
-    isRequired: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: false },
-        type: { summary: 'boolean' },
-      },
-      control: 'boolean',
-    },
   }),
   args: {
     isDisabled: false,
-    isRequired: false,
   },
 };
 

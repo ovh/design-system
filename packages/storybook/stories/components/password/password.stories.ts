@@ -22,7 +22,6 @@ export const Demo: StoryObj = {
       is-disabled="${arg.isDisabled}"
       is-loading="${arg.isLoading}"
       is-readonly="${arg.isReadonly}"
-      is-required="${arg.isRequired}"
       pattern="${arg.pattern}"
       placeholder="${arg.placeholder}">
       </ods-password>
@@ -98,14 +97,6 @@ export const Demo: StoryObj = {
       },
       control: 'boolean',
     },
-    isRequired: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: false },
-        type: { summary: 'boolean' },
-      },
-      control: 'boolean',
-    },
     pattern: {
       table: {
         category: CONTROL_CATEGORY.general,
@@ -129,7 +120,6 @@ export const Demo: StoryObj = {
     isDisabled: false,
     isLoading: false,
     isReadonly: false,
-    isRequired: false,
   },
 };
 

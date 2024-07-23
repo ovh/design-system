@@ -23,11 +23,11 @@ function getSelectConfig(allowMultiple: boolean, multipleSelectionLabel: string,
   return { plugin, template };
 }
 
-function inlineValue(value: string | string[] | null | undefined): string {
+function inlineValue(value: string | string[] | null | undefined): string | null {
   if (Array.isArray(value)) {
     return value.join(',');
   }
-  return value || '';
+  return value ?? null;
 }
 
 function moveSlottedElements(targetElement: HTMLSelectElement, slottedElements: Element[]): void {

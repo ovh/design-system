@@ -2,7 +2,7 @@ interface OdsTextareaEventChangeDetail {
   name: string;
   previousValue?: string;
   validity?: ValidityState;
-  value: string;
+  value: string | null;
 }
 
 type OdsTextareaEventChange = CustomEvent<OdsTextareaEventChangeDetail>;

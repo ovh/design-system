@@ -4,7 +4,7 @@ import React, { type ReactElement, useRef, useState } from 'react';
 import styles from './formNative.scss';
 
 function FormNative(): ReactElement {
-  // const checkboxRef = useRef<HTMLOdsCheckboxElement>(null);
+  const checkboxRef = useRef<HTMLOdsCheckboxElement>(null);
   const datepickerRef = useRef<HTMLOdsDatepickerElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
   const inputNumberRef = useRef<HTMLOdsInputElement>(null);
@@ -12,7 +12,7 @@ function FormNative(): ReactElement {
   const passwordRef = useRef<HTMLOdsPasswordElement>(null);
   const phoneNumberRef = useRef<HTMLOdsPhoneNumberElement>(null);
   const quantityRef = useRef<HTMLOdsQuantityElement>(null);
-  // const radioRef = useRef<HTMLOdsRadioElement>(null);
+  const radioRef = useRef<HTMLOdsRadioElement>(null);
   const selectRef = useRef<HTMLOdsSelectElement>(null);
   const switchRef = useRef<HTMLOdsSwitchElement>(null);
   const textareaRef = useRef<HTMLOdsTextareaElement>(null);
@@ -48,27 +48,39 @@ function FormNative(): ReactElement {
     // await validateField(selectRef.current);
     // await validateField(switchRef.current);
     // await validateField(textareaRef.current);
-    await validateField(timepickerRef.current);
+    // await validateField(timepickerRef.current);
 
     const formData = new FormData(formRef.current!);
-    console.log(formData)
+    console.log(formData);
 
     return false;
   }
 
-  async function validateField(element: any) {
+  async function validateField(element: any): Promise<void> {
     if (!element) {
       return;
     }
 
     const validity = await element.getValidity();
-// console.log(validity)
+    // console.log(validity)
     if (validity !== undefined) {
       setError({
         ...error,
         [element.name]: !validity.valid,
       });
     }
+  }
+
+  function onChange(event: CustomEvent) {
+    console.log('onChange', event);
+  }
+
+  function onReset(event: CustomEvent): void {
+    console.log('onReset', event);
+  }
+
+  function onClear(event: CustomEvent): void {
+    console.log('onClear', event);
   }
 
   return (
@@ -84,6 +96,7 @@ function FormNative(): ReactElement {
           inputId="checkbox"
           name="checkbox"
           value="checkbox"
+          ref={ checkboxRef }
         />
         <label htmlFor="checkbox">Checked</label>
 
@@ -113,21 +126,20 @@ function FormNative(): ReactElement {
         defaultValue={ 23 }
         hasError={ error.inputNumber }
         isClearable={ true }
-        isRequired={ true }
+        // isRequired={ true }
         name="inputNumber"
-        onOdsChange={ () => validateField(inputNumberRef.current) }
         ref={ inputNumberRef }
         type={ ODS_INPUT_TYPE.number }
       />
 
       {/* OK */}
       <OdsInput
-        defaultValue="input text"
+        // defaultValue="input text"
         hasError={ error.inputText }
         isClearable={ true }
-        isRequired={ true }
+        // isRequired={ true }
+
         name="inputText"
-        onOdsChange={ () => validateField(inputTextRef.current) }
         ref={ inputTextRef }
         type={ ODS_INPUT_TYPE.text }
       />
@@ -139,30 +151,27 @@ function FormNative(): ReactElement {
         isClearable={ true }
         isRequired={ true }
         name="password"
-        onOdsChange={ () => validateField(passwordRef.current) }
         ref={ passwordRef }
       />
 
       {/* KO default value not in formData on immediate submit */}
       {/* KO style width different */}
       <OdsPhoneNumber
-        defaultValue="+33123456789"
+        // defaultValue="+33123456789"
         hasError={ error.phoneNumber }
         isClearable={ true }
         isRequired={ true }
         isoCode="fr"
         name="phoneNumber"
-        onOdsChange={ () => validateField(phoneNumberRef.current) }
         ref={ phoneNumberRef }
       />
 
       {/* KO reset does not reset formData if no default value */}
       <OdsQuantity
-        defaultValue={ 22 }
+        // defaultValue={ 22 }
         hasError={ error.quantity }
         isRequired={ true }
         name="quantity"
-        onOdsChange={ () => validateField(quantityRef.current) }
         ref={ quantityRef }
       />
 
@@ -172,7 +181,10 @@ function FormNative(): ReactElement {
           // isRequired={ true }
           inputId="radio1"
           name="radio"
+          isChecked
           value="radio-1"
+          ref={ radioRef }
+
         />
         <label htmlFor="radio1">Radio 1</label>
 
@@ -192,6 +204,9 @@ function FormNative(): ReactElement {
         hasError={ error.select }
         isRequired={ true }
         name="select"
+        onOdsChange={ (event) => onChange(event) }
+        onOdsReset={ (event) => onReset(event) }
+        onOdsClear={ (event) => onClear(event) }
         ref={ selectRef }
       >
         <option value="dog">Dog</option>
@@ -202,14 +217,18 @@ function FormNative(): ReactElement {
         <option value="goldfish">Goldfish</option>
       </OdsSelect>
 
+      <button onClick={ () => checkboxRef.current?.clear() }>Clear</button>
+
       {/* KO isRequired => no way to get validity */}
       {/* KO should have an hasError status */}
+      {/* Two event change on reset & clear */}
       <OdsSwitch
         isRequired={ true }
         name="switch"
         ref={ switchRef }
       >
         <OdsSwitchItem
+          isChecked
           name="switch"
           value="option1"
         >
@@ -229,18 +248,16 @@ function FormNative(): ReactElement {
         hasError={ error.textarea }
         isRequired={ true }
         name="textarea"
-        onOdsChange={ () => validateField(textareaRef.current) }
         ref={ textareaRef }
       />
 
       {/* KO value not in formData when no default */}
       {/* KO value in formData not updated when default */}
       <OdsTimepicker
-        defaultValue="12:34"
+        // defaultValue="12:34"
         hasError={ error.timepicker }
         isRequired={ true }
         name="timepicker"
-        onOdsChange={ () => validateField(timepickerRef.current) }
         ref={ timepickerRef }
       />
 

@@ -36,8 +36,9 @@ export class OdsTextarea {
 
   @Method()
   async clear(): Promise<void> {
-    this.value = null;
     this.odsClear.emit();
+    this.value = null;
+    this.textareaElement?.focus();
   }
 
   @Method()
@@ -47,8 +48,8 @@ export class OdsTextarea {
 
   @Method()
   async reset(): Promise<void> {
-    this.value = this.defaultValue ?? null;
     this.odsReset.emit();
+    this.value = this.defaultValue ?? null;
   }
 
   @Watch('value')
@@ -59,7 +60,7 @@ export class OdsTextarea {
       name: this.name,
       previousValue,
       validity:  this.textareaElement?.validity,
-      value: value ?? '',
+      value: value ?? null,
     });
   }
 

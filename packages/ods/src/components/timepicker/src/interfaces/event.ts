@@ -5,7 +5,7 @@ interface OdsTimepickerValueChangeEventDetail {
   name: string;
   previousValue?: string;
   validity?: ValidityState;
-  value: string;
+  value: string | null;
 }
 
 type OdsTimepickerValueChangeEvent = CustomEvent<OdsTimepickerValueChangeEventDetail>;

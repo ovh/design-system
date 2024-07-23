@@ -25,7 +25,7 @@ $ods-checkbox-size: 16px;
     font-size: 0.5rem;
   }
 
-  &:focus-visible {
+  &:focus-visible, &:focus {
     @include focus.ods-focus();
   }
 

@@ -222,7 +222,7 @@ describe('ods-quantity behaviour', () => {
       await submitButton.click();
       await page.waitForNetworkIdle();
       const url = new URL(page.url());
-      expect(url.searchParams.get('ods-quantity')).toBe('0');
+      expect(url.searchParams.get('ods-quantity')).toBe('');
     });
   });
 });

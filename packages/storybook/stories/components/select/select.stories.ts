@@ -17,7 +17,6 @@ export const Demo: StoryObj = {
   render: (arg) => html`
   <ods-select has-error="${arg.hasError}"
               is-disabled="${arg.isDisabled}"
-              is-required="${arg.isRequired}"
               placeholder="${arg.placeholder}">
     <option value="dog">Dog</option>
     <option value="cat">Cat</option>
@@ -44,14 +43,6 @@ export const Demo: StoryObj = {
       },
       control: 'boolean',
     },
-    isRequired: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: false },
-        type: { summary: 'boolean' },
-      },
-      control: 'boolean',
-    },
     placeholder: {
       table: {
         category: CONTROL_CATEGORY.general,
@@ -64,7 +55,6 @@ export const Demo: StoryObj = {
   args: {
     hasError: false,
     isDisabled: false,
-    isRequired: false,
   },
 };
 
@@ -73,7 +63,6 @@ export const DemoMultiple: StoryObj = {
   <ods-select allow-multiple
               has-error="${arg.hasError}"
               is-disabled="${arg.isDisabled}"
-              is-required="${arg.isRequired}"
               multiple-selection-label="${arg.multipleSelectionLabel}"
               placeholder="${arg.placeholder}">
     <option value="dog">Dog</option>
@@ -101,14 +90,6 @@ export const DemoMultiple: StoryObj = {
       },
       control: 'boolean',
     },
-    isRequired: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: false },
-        type: { summary: 'boolean' },
-      },
-      control: 'boolean',
-    },
     multipleSelectionLabel: {
       table: {
         category: CONTROL_CATEGORY.general,
@@ -129,7 +110,6 @@ export const DemoMultiple: StoryObj = {
   args: {
     hasError: false,
     isDisabled: false,
-    isRequired: false,
     multipleSelectionLabel: 'Selected item',
   },
 };

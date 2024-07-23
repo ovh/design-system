@@ -19,7 +19,6 @@ export const Demo: StoryObj = {
     <ods-switch
                 name="demo"
                 is-disabled="${args.isDisabled}"
-                is-required="${args.isRequired}"
                 size="${args.size}">
       ${unsafeHTML(args.content)}
     </ods-switch>
@@ -33,14 +32,6 @@ export const Demo: StoryObj = {
       control: 'text',
     },
     isDisabled: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: 'ø' },
-        type: { summary: 'boolean' },
-      },
-      control: 'boolean',
-    },
-    isRequired: {
       table: {
         category: CONTROL_CATEGORY.general,
         defaultValue: { summary: 'ø' },
@@ -63,7 +54,6 @@ export const Demo: StoryObj = {
     <ods-switch-item value="2">label2</ods-switch-item>
     <ods-switch-item value="3">label3</ods-switch-item>`,
     isDisabled: false,
-    isRequired: false,
     size: 'md',
   },
 };

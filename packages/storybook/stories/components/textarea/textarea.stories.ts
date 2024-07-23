@@ -22,7 +22,6 @@ export const Demo: StoryObj = {
                 has-spellcheck="${arg.hasSpellcheck}"
                 is-disabled="${arg.isDisabled}"
                 is-readonly="${arg.isReadonly}"
-                is-required="${arg.isRequired}"
                 is-resizable="${arg.isResizable}"
                 placeholder="${arg.placeholder}"
                 rows="${arg.rows}">
@@ -99,14 +98,6 @@ export const Demo: StoryObj = {
       },
       control: 'boolean',
     },
-    isRequired: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: false },
-        type: { summary: 'boolean' },
-      },
-      control: 'boolean',
-    },
     isResizable: {
       table: {
         category: CONTROL_CATEGORY.general,
@@ -137,7 +128,6 @@ export const Demo: StoryObj = {
     hasSpellcheck: false,
     isDisabled: false,
     isReadonly: false,
-    isRequired: false,
     isResizable: false,
   },
 };

@@ -16,7 +16,6 @@ export const Demo: StoryObj = {
   render: (arg) => html`
 <ods-toggle class="my-toggle-demo"
   is-disabled=${arg.isDisabled}
-  is-required=${arg.isRequired}
   with-label=${arg.withLabel}>
 </ods-toggle>
 <style>
@@ -108,14 +107,6 @@ export const Demo: StoryObj = {
         type: { summary: 'boolean' },
       },
     },
-    isRequired: {
-      control: 'boolean',
-      table: {
-        category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: 'ø' },
-        type: { summary: 'boolean' },
-      },
-    },
     withLabel: {
       control: 'boolean',
       table: {
@@ -127,7 +118,6 @@ export const Demo: StoryObj = {
   }),
   args: {
     isDisabled: false,
-    isRequired: false,
     withLabel: false,
   },
 };

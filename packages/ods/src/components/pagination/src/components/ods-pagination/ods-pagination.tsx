@@ -204,6 +204,28 @@ export class OdsPagination {
     );
   }
 
+  private renderPage(pageId: number, active: boolean): typeof Fragment {
+    return (
+      <li key={pageId}>
+        <ods-button
+          class={{
+            'ods-pagination__list__page__button': true,
+            'ods-pagination__list__page__button--disabled': this.isDisabled,
+            'ods-pagination__list__page__button--selected': this.current === pageId,
+            'ods-pagination__list__page__button--visible': active,
+          }}
+          variant={this.current === pageId ? ODS_BUTTON_VARIANT.default : ODS_BUTTON_VARIANT.ghost}
+          isDisabled={this.isDisabled}
+          label={`${pageId}`}
+          color={ODS_BUTTON_COLOR.primary}
+          size={ODS_BUTTON_SIZE.md}
+          onClick={(): void => this.handlePageClick(pageId)}
+        >
+        </ods-button>
+      </li>
+    );
+  }
+
   render(): FunctionalComponent | undefined {
     if (!this.totalItems && this.actualTotalPages < 2) {
       return;
@@ -250,72 +272,17 @@ export class OdsPagination {
         <ul class="ods-pagination__list">
           {this.renderArrow('left')}
 
-          {(this.totalItems || this.actualTotalPages > 1) && (
-            <li key={1}>
-              <ods-button
-                class={{
-                  'ods-pagination__list__page__button': true,
-                  'ods-pagination__list__page__button--disabled': this.isDisabled,
-                  'ods-pagination__list__page__button--selected': this.current === 1,
-                  'ods-pagination__list__page__button--visible': true,
-                }}
-                variant={this.current === 1 ? ODS_BUTTON_VARIANT.default : ODS_BUTTON_VARIANT.ghost}
-                isDisabled={this.isDisabled}
-                label={'1'}
-                color={ODS_BUTTON_COLOR.primary}
-                size={ODS_BUTTON_SIZE.md}
-                onClick={(): void => this.handlePageClick(1)}
-              >
-              </ods-button>
-            </li>
-          )}
+          {(this.totalItems || this.actualTotalPages > 1) && this.renderPage(1, true)}
 
           {renderEllipsisLeft && this.renderEllipsis('left')}
 
           {this.pageList.slice(1, this.pageList.length - 1).map((page, index) => {
-            const pageId = index + 2;
-            return (
-              <li key={pageId}>
-                <ods-button
-                  class={{
-                    'ods-pagination__list__page__button': true,
-                    'ods-pagination__list__page__button--disabled': this.isDisabled,
-                    'ods-pagination__list__page__button--selected': this.current === pageId,
-                    'ods-pagination__list__page__button--visible': page.active,
-                  }}
-                  variant={this.current === pageId ? ODS_BUTTON_VARIANT.default : ODS_BUTTON_VARIANT.ghost}
-                  isDisabled={this.isDisabled}
-                  label={`${pageId}`}
-                  color={ODS_BUTTON_COLOR.primary}
-                  size={ODS_BUTTON_SIZE.md}
-                  onClick={(): void => this.handlePageClick(pageId)}
-                >
-                </ods-button>
-              </li>
-            );
+            return this.renderPage(index + 2, page.active);
           })}
 
           {renderEllipsisRight && this.renderEllipsis('right')}
 
-          {this.actualTotalPages > 1 && (
-            <li key={this.actualTotalPages}>
-              <ods-button
-                class={{
-                  'ods-pagination__list__page__button': true,
-                  'ods-pagination__list__page__button--disabled': this.isDisabled,
-                  'ods-pagination__list__page__button--selected': this.current === this.actualTotalPages,
-                  'ods-pagination__list__page__button--visible': true,
-                }}
-                variant={this.current === this.actualTotalPages ? ODS_BUTTON_VARIANT.default : ODS_BUTTON_VARIANT.ghost}
-                isDisabled={this.isDisabled}
-                label={`${this.actualTotalPages}`}
-                color={ODS_BUTTON_COLOR.primary}
-                size={ODS_BUTTON_SIZE.md}
-                onClick={(): void => this.handlePageClick(this.actualTotalPages)}
-              >
-              </ods-button>
-            </li>
-          )}
+          {this.actualTotalPages > 1 && this.renderPage(this.actualTotalPages, true)}
 
           {this.renderArrow('right')}
         </ul>

@@ -66,12 +66,12 @@ _**Badge** show concise metadata or the current status for an item, in a compact
 
 ## Usage
 
-Chips are used for items that need to be labeled or categorized.
+Chips are used for items that need to be labelled or categorized.
 
 It can refer to these examples of enhanced data :
 * A notification status
 * A marketing category
-* A product extra information
+* Additional product information
 
 #### Notification Status
 
@@ -80,7 +80,7 @@ The notification status can be used next to a menu entry, a label or an option ;
 There are four different sub-types of status, in order of severity:
 * **Error** : Reserved for errors, malfunctions, as well as critical issues. System is unusable, or an action must be taken immediately.
 * **Warning** : Reserved for critical messages that need the user attention and acknowledgment, but might not cause errors.
-* **Information** : Provides information to users in context. Shouldn’t be over replace regular content.
+* **Information** : Provides information to users in context. Shouldn’t replace regular content.
 * **Success** : Reserved to provide to a static persistent success message.
 
 #### Marketing category
@@ -89,11 +89,11 @@ The marketing category is used in product Tiles or product descriptions; used as
 
 It can contain categories like _"Promotion", "Summer Deals", "Black Friday", "Limited Edition", "Flash Sales"_, ...
 
-#### Product extra information
+#### Additional product information
 
 The product status is used in product Tiles or product descriptions, it is bound inside the product structure to add tags and information.
 
-All product status are of type "New", "Limited edition", "Sold out"
+All product statuses are of type "New", "Limited edition", "Sold out"
 
 ### Dos & Don'ts
 
@@ -125,23 +125,25 @@ Multiple **Badges** can be displayed:
 
 ## Behavior
 
-Based on its informational manner, the component default behavior is being read-only. You can only select its content if needed.
+As the **Badge** is an informational component, its default behavior is being read-only.
 
-## Variants
+## Variation
 
-### Variations
+### Variant
 
-- **Information**: display neutral or informational messages, such as updates, notifications, or general status.
+- **Information** _(default)_: display neutral or informational messages, such as updates, notifications, or general status.
 - **Success**: indicate positive outcomes or successful actions, such as completed tasks or achievements.
 - **Warning**: alert users to potential issues or cautionary information, signaling that attention is needed.
 
-### Shapes
+### Shape
 
+- **Round** _(default)_: presents a pill element that can be visually stacked along with multiple **Badges**.
 - **Square**: a straightforward and versatile display of counts or statuses, fitting well within grid layouts and alongside other UI elements.
 
-### Sizes
+### Size
 
 - **Small**: compact and unobtrusive counts or statuses, suitable for tight spaces and minimalistic designs.
+- **Medium** _(default)_: main size for displaying **Badges**.
 - **Large**: prominent and easily noticeable counts or statuses, suitable for emphasizing important information.
 
 ## Accessibility

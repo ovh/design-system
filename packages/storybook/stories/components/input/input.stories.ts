@@ -25,7 +25,6 @@ export const Demo: StoryObj = {
       is-loading="${arg.isLoading}"
       is-masked="${ifDefined(arg.isMasked)}"
       is-readonly="${arg.isReadonly}"
-      is-required="${arg.isRequired}"
       max="${arg.max}"
       maxlength="${arg.maxlength}"
       min="${arg.min}"
@@ -115,14 +114,6 @@ export const Demo: StoryObj = {
       },
       control: 'boolean',
     },
-    isRequired: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: false },
-        type: { summary: 'boolean' },
-      },
-      control: 'boolean',
-    },
     max: {
       table: {
         category: CONTROL_CATEGORY.general,
@@ -196,7 +187,6 @@ export const Demo: StoryObj = {
     isLoading: false,
     isMasked: undefined,
     isReadonly: false,
-    isRequired: false,
   },
 };
 

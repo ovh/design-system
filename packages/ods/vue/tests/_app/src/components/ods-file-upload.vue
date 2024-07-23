@@ -1,6 +1,6 @@
 <template>
-  <div @odsFileCancel="onOdsFileCancel"
-       @odsFileChange="onOdsFileChange">
+  <div @odsCancel="onOdsCancel"
+       @odsChange="onOdsChange">
     <OdsFileUpload :files="files" />
   </div>
 </template>
@@ -19,10 +19,10 @@
       files: []
     }),
     methods: {
-      onOdsFileCancel: function(event: OdsFileCancelEvent) {
+      onOdsCancel: function(event: OdsFileCancelEvent) {
         this.files = this.files.filter((file) => file.odsId !== event.detail.odsId);
       },
-      onOdsFileChange: function(event: OdsFileChangeEvent) {
+      onOdsChange: function(event: OdsFileChangeEvent) {
         this.files = this.files.concat(event.detail);
       },
     },

@@ -31,9 +31,9 @@ export class OdsFileUpload {
   @Prop({ reflect: true }) public maxSizeLabel?: string;
   @Prop({ reflect: true }) public uploadSuccessLabel: string = 'File uploaded';
 
-  @Event() odsFileCancel!: EventEmitter<OdsFile>;
-  @Event() odsFileChange!: EventEmitter<OdsFileChangeEventDetail>;
-  @Event() odsFileRejected!: EventEmitter<OdsFileRejectedEventDetail>;
+  @Event() odsCancel!: EventEmitter<OdsFile>;
+  @Event() odsChange!: EventEmitter<OdsFileChangeEventDetail>;
+  @Event() odsRejected!: EventEmitter<OdsFileRejectedEventDetail>;
 
   private browseFiles(): void {
     this.inputFile?.click();
@@ -43,7 +43,7 @@ export class OdsFileUpload {
     const { rejectedFiles: invalidFiles, validFiles } = filterValidFiles(files, this.accept);
 
     if (invalidFiles.length) {
-      this.odsFileRejected.emit({
+      this.odsRejected.emit({
         files: invalidFiles,
         reason: ODS_FILE_REJECTION_CAUSE.wrongFormat,
       });
@@ -52,7 +52,7 @@ export class OdsFileUpload {
     const { rejectedFiles: oversizedFiles, validFiles: fittedFiles } = filterMaxSize(validFiles, this.maxSize);
 
     if (oversizedFiles.length) {
-      this.odsFileRejected.emit({
+      this.odsRejected.emit({
         files: oversizedFiles,
         reason: ODS_FILE_REJECTION_CAUSE.sizeTooLarge,
       });
@@ -61,14 +61,14 @@ export class OdsFileUpload {
     const { rejectedFiles: exceedingFiles, validFiles: remainingFiles } = filterMaxFiles(fittedFiles, this.files.length, this.maxFile);
 
     if (exceedingFiles.length) {
-      this.odsFileRejected.emit({
+      this.odsRejected.emit({
         files: exceedingFiles,
         reason: ODS_FILE_REJECTION_CAUSE.maxFileReached,
       });
     }
 
     if (remainingFiles.length) {
-      this.odsFileChange.emit({
+      this.odsChange.emit({
         files: remainingFiles.map((file) => {
           // Add a unique ID to help user to identify each file on their side without having to add their own ID
           file.odsId = getRandomHTMLId();
@@ -100,7 +100,7 @@ export class OdsFileUpload {
   }
 
   private onFileCancel(file: OdsFile): void {
-    this.odsFileCancel.emit(file);
+    this.odsCancel.emit(file);
   }
 
   private onFileChange(event: Event): void {

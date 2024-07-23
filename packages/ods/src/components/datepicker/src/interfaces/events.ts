@@ -1,4 +1,4 @@
-interface OdsDatepickerEventChangeDetail {
+interface OdsDatepickerChangeEventDetail {
   formattedValue?: string;
   name: string;
   previousValue?: Date | null;
@@ -6,9 +6,9 @@ interface OdsDatepickerEventChangeDetail {
   value?: Date | null;
 }
 
-type OdsDatepickerEventChange = CustomEvent<OdsDatepickerEventChangeDetail>;
+type OdsDatepickerChangeEvent = CustomEvent<OdsDatepickerChangeEventDetail>;
 
 export {
-  type OdsDatepickerEventChange,
-  type OdsDatepickerEventChangeDetail,
+  type OdsDatepickerChangeEvent,
+  type OdsDatepickerChangeEventDetail,
 };

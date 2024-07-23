@@ -17,8 +17,8 @@ export class OdsModal {
   @Prop({ reflect: true }) public isDismissible: boolean = true;
   @Prop({ mutable: true, reflect: true }) public isOpen: boolean = false;
 
-  @Event() odsModalClose!: EventEmitter<void>;
-  @Event() odsModalOpen!: EventEmitter<void>;
+  @Event() odsClose!: EventEmitter<void>;
+  @Event() odsOpen!: EventEmitter<void>;
 
   @Method()
   async close(): Promise<void> {
@@ -38,7 +38,7 @@ export class OdsModal {
       this.isOpen = false;
     }
 
-    this.odsModalClose.emit();
+    this.odsClose.emit();
   }
 
   @Method()
@@ -46,7 +46,7 @@ export class OdsModal {
     document.body.style.setProperty('overflow', 'hidden');
     this.isOpen = true;
     this.modalDialog.focus();
-    this.odsModalOpen.emit();
+    this.odsOpen.emit();
   }
 
   @Watch('isOpen')
@@ -86,7 +86,7 @@ export class OdsModal {
     document.body.style.removeProperty('overflow');
     this.modalDialog.close?.();
     this.isOpen = false;
-    this.odsModalClose.emit();
+    this.odsClose.emit();
   }
 
   handleBackdropClick(event: MouseEvent): void {

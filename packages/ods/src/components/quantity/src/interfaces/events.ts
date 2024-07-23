@@ -1,13 +1,13 @@
-interface OdsQuantityEventValueChangeDetail {
+interface OdsQuantityChangeEventDetail {
   name: string;
   previousValue?: number | null;
   validity?: ValidityState;
   value: number | null;
 }
 
-type OdsQuantityEventValueChange = CustomEvent<OdsQuantityEventValueChangeDetail>;
+type OdsQuantityChangeEvent = CustomEvent<OdsQuantityChangeEventDetail>;
 
 export {
-  type OdsQuantityEventValueChange,
-  type OdsQuantityEventValueChangeDetail,
+  type OdsQuantityChangeEvent,
+  type OdsQuantityChangeEventDetail,
 };

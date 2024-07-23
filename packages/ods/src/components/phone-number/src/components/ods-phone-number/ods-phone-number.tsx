@@ -1,12 +1,12 @@
 import { AttachInternals, Component, Event, type EventEmitter, type FunctionalComponent, Host, Method, Prop, Watch, h } from '@stencil/core';
 import { PhoneNumberUtil } from 'google-libphonenumber';
-import { type OdsInput, type OdsInputValueChangeEvent } from '../../../../input/src';
+import { type OdsInput, type OdsInputChangeEvent } from '../../../../input/src';
 import { type OdsSelectCustomRendererData, type OdsSelectEventChange } from '../../../../select/src';
 import { type OdsPhoneNumberCountryIsoCode } from '../../constants/phone-number-country-iso-code';
 import { type OdsPhoneNumberCountryPreset } from '../../constants/phone-number-country-preset';
 import { type OdsPhoneNumberLocale } from '../../constants/phone-number-locale';
 import { type TranslatedCountryMap, formatPhoneNumber, getCurrentIsoCode, getCurrentLocale, getNationalPhoneNumberExample, getTranslatedCountryMap, getValidityState, isValidPhoneNumber, parseCountries, setFormValue, sortCountriesByName } from '../../controller/ods-phone-number';
-import { type OdsPhoneNumberValueChangeEventDetail } from '../../interfaces/events';
+import { type OdsPhoneNumberChangeEventDetail } from '../../interfaces/events';
 
 @Component({
   formAssociated: true,
@@ -43,7 +43,7 @@ export class OdsPhoneNumber {
   @Prop({ mutable: true, reflect: true }) public value: string | null = null;
 
   @Event() odsBlur!: EventEmitter<void>;
-  @Event() odsChange!: EventEmitter<OdsPhoneNumberValueChangeEventDetail>;
+  @Event() odsChange!: EventEmitter<OdsPhoneNumberChangeEventDetail>;
   @Event() odsClear!: EventEmitter<void>;
   @Event() odsFocus!: EventEmitter<void>;
   @Event() odsReset!: EventEmitter<void>;
@@ -106,7 +106,7 @@ export class OdsPhoneNumber {
     return getNationalPhoneNumberExample(this.isoCode, this.phoneUtils);
   }
 
-  private onInputChange(event: OdsInputValueChangeEvent): void {
+  private onInputChange(event: OdsInputChangeEvent): void {
     event.stopImmediatePropagation();
 
     this.value = event.detail.value?.toString() ?? null;
@@ -186,7 +186,7 @@ export class OdsPhoneNumber {
           isReadonly={ this.isReadonly }
           isRequired={ this.isRequired }
           name={ this.name }
-          onOdsChange={ (e: OdsInputValueChangeEvent) => this.onInputChange(e) }
+          onOdsChange={ (e: OdsInputChangeEvent) => this.onInputChange(e) }
           exportparts="input"
           pattern={ this.pattern }
           placeholder={ this.getPlaceholder() }

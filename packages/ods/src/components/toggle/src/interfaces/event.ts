@@ -1,12 +1,12 @@
-interface OdsToggleValueChangeEventDetail {
+interface OdsToggleChangeEventDetail {
   name: string;
   previousValue?: boolean;
   value: boolean;
 }
 
-type OdsToggleValueChangeEvent = CustomEvent<OdsToggleValueChangeEventDetail>;
+type OdsToggleChangeEvent = CustomEvent<OdsToggleChangeEventDetail>;
 
 export {
-  type OdsToggleValueChangeEvent,
-  type OdsToggleValueChangeEventDetail,
+  type OdsToggleChangeEvent,
+  type OdsToggleChangeEventDetail,
 };

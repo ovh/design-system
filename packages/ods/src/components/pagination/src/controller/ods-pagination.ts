@@ -14,12 +14,7 @@ function computeActualTotalPages(itemPerPage: number, totalItems: number | undef
 }
 
 function createPageList(totalPages: number, pageSelected: number): OdsPaginationPageList {
-  const pageList: OdsPaginationPageList = [];
-
-  // Create initial pageList with 'active' property set to false for each page.
-  for (let i = 1; i <= totalPages; i++) {
-    pageList.push({ active: false });
-  }
+  const pageList: OdsPaginationPageList = Array.from({ length: totalPages }, () => ({ active: false }));
 
   let startIndex = Math.max(pageSelected - DEFAULT_PAGE_OFFSET, 1);
   const endIndex = Math.min(startIndex + ELLIPSIS_THRESHOLD, totalPages);

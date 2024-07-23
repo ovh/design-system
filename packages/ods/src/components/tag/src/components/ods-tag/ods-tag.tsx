@@ -3,7 +3,7 @@ import { ODS_ICON_NAME, type OdsIconName } from '../../../../icon/src';
 import { ODS_TAG_COLOR, type OdsTagColor } from '../../constants/tag-color';
 import { ODS_TAG_SIZE, type OdsTagSize } from '../../constants/tag-size';
 import { handleClick, handleKeyDown, handleKeyUp } from '../../controller/ods-tag';
-import { type OdsTagEventRemoveDetail } from '../../interfaces/events';
+import { type OdsTagRemoveEventDetail } from '../../interfaces/events';
 
 @Component({
   shadow: true,
@@ -22,7 +22,7 @@ export class OdsTag {
   /** @docType OdsTagSize */
   @Prop({ reflect: true }) public size: OdsTagSize = ODS_TAG_SIZE.md;
 
-  @Event() odsRemove!: EventEmitter<OdsTagEventRemoveDetail>;
+  @Event() odsRemove!: EventEmitter<OdsTagRemoveEventDetail>;
 
   @Listen('click')
   onClick(): void {

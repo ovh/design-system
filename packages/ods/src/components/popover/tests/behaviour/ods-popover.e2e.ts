@@ -28,24 +28,24 @@ describe('ods-popover behaviour', () => {
 
   describe('methods', () => {
     describe('hide', () => {
-      it('should emit an odsPopoverHide event', async() => {
-        const odsPopoverHideSpy = await page.spyOnEvent('odsPopoverHide');
+      it('should emit an odsHide event', async() => {
+        const odsHideSpy = await page.spyOnEvent('odsHide');
 
         await popoverElement.callMethod('hide');
         await page.waitForChanges();
 
-        expect(odsPopoverHideSpy).toHaveReceivedEventTimes(1);
+        expect(odsHideSpy).toHaveReceivedEventTimes(1);
       });
     });
 
     describe('show', () => {
-      it('should emit an odsPopoverShow event', async() => {
-        const odsPopoverShowSpy = await page.spyOnEvent('odsPopoverShow');
+      it('should emit an odsShow event', async() => {
+        const odsShowSpy = await page.spyOnEvent('odsShow');
 
         await popoverElement.callMethod('show');
         await page.waitForChanges();
 
-        expect(odsPopoverShowSpy).toHaveReceivedEventTimes(1);
+        expect(odsShowSpy).toHaveReceivedEventTimes(1);
       });
     });
   });

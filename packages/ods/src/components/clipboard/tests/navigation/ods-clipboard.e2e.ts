@@ -60,7 +60,7 @@ describe('ods-clipboard navigation', () => {
   it('should copy on action button click', async() => {
     const dummyValue = 'dummy value';
     await setup(`<ods-clipboard value="${dummyValue}"></ods-clipboard>`);
-    const copySpy = await page.spyOnEvent( 'odsClipboardCopy' );
+    const copySpy = await page.spyOnEvent( 'odsCopy' );
 
     await copyButton.click();
     await page.waitForChanges();
@@ -72,7 +72,7 @@ describe('ods-clipboard navigation', () => {
   it('should not copy on action button click if disabled', async() => {
     const dummyValue = 'dummy value';
     await setup(`<ods-clipboard is-disabled value="${dummyValue}"></ods-clipboard>`);
-    const copySpy = await page.spyOnEvent( 'odsClipboardCopy' );
+    const copySpy = await page.spyOnEvent( 'odsCopy' );
 
     await copyButton.click();
     await page.waitForChanges();

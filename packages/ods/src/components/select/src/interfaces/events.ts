@@ -1,13 +1,13 @@
-interface OdsSelectEventChangeDetail {
+interface OdsSelectChangeEventDetail {
   name: string;
   previousValue?: string | null;
   validity?: ValidityState;
   value: string | null;
 }
 
-type OdsSelectEventChange = CustomEvent<OdsSelectEventChangeDetail>;
+type OdsSelectChangeEvent = CustomEvent<OdsSelectChangeEventDetail>;
 
 export {
-  type OdsSelectEventChange,
-  type OdsSelectEventChangeDetail,
+  type OdsSelectChangeEvent,
+  type OdsSelectChangeEventDetail,
 };

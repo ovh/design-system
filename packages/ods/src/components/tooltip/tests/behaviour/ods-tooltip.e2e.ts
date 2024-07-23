@@ -28,24 +28,24 @@ describe('ods-tooltip behaviour', () => {
 
   describe('methods', () => {
     describe('hide', () => {
-      it('should emit an odsTooltipHide event', async() => {
-        const odsTooltipHideSpy = await page.spyOnEvent('odsTooltipHide');
+      it('should emit an odsHide event', async() => {
+        const odsHideSpy = await page.spyOnEvent('odsHide');
 
         await tooltipElement.callMethod('hide');
         await page.waitForChanges();
 
-        expect(odsTooltipHideSpy).toHaveReceivedEventTimes(1);
+        expect(odsHideSpy).toHaveReceivedEventTimes(1);
       });
     });
 
     describe('show', () => {
-      it('should emit an odsTooltipShow event', async() => {
-        const odsTooltipShowSpy = await page.spyOnEvent('odsTooltipShow');
+      it('should emit an odsShow event', async() => {
+        const odsShowSpy = await page.spyOnEvent('odsShow');
 
         await tooltipElement.callMethod('show');
         await page.waitForChanges();
 
-        expect(odsTooltipShowSpy).toHaveReceivedEventTimes(1);
+        expect(odsShowSpy).toHaveReceivedEventTimes(1);
       });
     });
   });

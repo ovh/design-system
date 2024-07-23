@@ -1,6 +1,6 @@
-import { type OdsRadioValueChangeEvent, type OdsRadioValueChangeEventDetail } from '../../../radio/src';
+import { type OdsRadioChangeEvent, type OdsRadioChangeEventDetail } from '../../../radio/src';
 
 export {
-  type OdsRadioValueChangeEvent as OdsSwitchValueChangeEvent,
-  type OdsRadioValueChangeEventDetail as OdsSwitchValueChangeEventDetail,
+  type OdsRadioChangeEvent as OdsSwitchChangeEvent,
+  type OdsRadioChangeEventDetail as OdsSwitchChangeEventDetail,
 };

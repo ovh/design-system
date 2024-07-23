@@ -1,7 +1,7 @@
 import { AttachInternals, Component, Event, type EventEmitter, type FunctionalComponent, Host, Method, Prop, h } from '@stencil/core';
-import { type OdsInput, type OdsInputValueChangeEvent } from '../../../../input/src';
+import { type OdsInput, type OdsInputChangeEvent } from '../../../../input/src';
 import { setFormValue } from '../../controller/ods-password';
-import { type OdsPasswordValueChangeEventDetail } from '../../interfaces/events';
+import { type OdsPasswordChangeEventDetail } from '../../interfaces/events';
 
 @Component({
   formAssociated: true,
@@ -34,7 +34,7 @@ export class OdsPassword {
   @Event() odsFocus!: EventEmitter<void>;
   @Event() odsToggleMask!: EventEmitter<void>;
   @Event() odsReset!: EventEmitter<void>;
-  @Event() odsChange!: EventEmitter<OdsPasswordValueChangeEventDetail>;
+  @Event() odsChange!: EventEmitter<OdsPasswordChangeEventDetail>;
 
   @Method()
   async clear(): Promise<void> {
@@ -67,7 +67,7 @@ export class OdsPassword {
     await this.reset();
   }
 
-  private onOdsChange(event: OdsInputValueChangeEvent): void {
+  private onOdsChange(event: OdsInputChangeEvent): void {
     this.value = event.detail.value?.toString() ?? null;
     setFormValue(this.internals, this.value);
   }
@@ -88,7 +88,7 @@ export class OdsPassword {
           isRequired={ this.isRequired }
           name={ this.name }
           onOdsToggleMask={ () => this.isMasked = !this.isMasked }
-          onOdsChange={ (event: OdsInputValueChangeEvent) => this.onOdsChange(event) }
+          onOdsChange={ (event: OdsInputChangeEvent) => this.onOdsChange(event) }
           exportparts="input"
           pattern={ this.pattern }
           placeholder={ this.placeholder }

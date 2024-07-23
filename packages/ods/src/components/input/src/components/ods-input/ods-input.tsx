@@ -3,7 +3,7 @@ import { ODS_ICON_NAME } from '../../../../icon/src';
 import { ODS_SPINNER_COLOR } from '../../../../spinner/src';
 import { ODS_INPUT_TYPE, type OdsInputType } from '../../constants/input-type';
 import { handleKeySpace, isPassword, setFormValue } from '../../controller/ods-input';
-import { type OdsInputValueChangeEventDetail } from '../../interfaces/events';
+import { type OdsInputChangeEventDetail } from '../../interfaces/events';
 
 @Component({
   formAssociated: true,

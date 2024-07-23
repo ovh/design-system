@@ -21,7 +21,7 @@ export class OdsClipboard {
   @Prop({ reflect: true }) public labelCopySuccess: string = 'Copied!';
   @Prop({ reflect: true }) public value?: string;
 
-  @Event() odsClipboardCopy!: EventEmitter<string>;
+  @Event() odsCopy!: EventEmitter<string>;
 
   @Method()
   async copy(): Promise<void> {
@@ -32,7 +32,7 @@ export class OdsClipboard {
     await copyToClipboard(this.value || '');
 
     this.isCopyDone = true;
-    this.odsClipboardCopy.emit(this.value);
+    this.odsCopy.emit(this.value);
   }
 
   componentWillLoad(): void {
@@ -69,7 +69,7 @@ export class OdsClipboard {
         {
           !this.isDisabled &&
           <ods-tooltip
-            onOdsTooltipHide={ () => this.onTooltipHide() }
+            onOdsHide={ () => this.onTooltipHide() }
             part="tooltip"
             position="right"
             shadowDomTriggerId={ this.copyButtonId }

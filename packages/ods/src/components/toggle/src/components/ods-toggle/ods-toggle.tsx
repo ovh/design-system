@@ -1,6 +1,6 @@
 import { AttachInternals, Component, Event, type EventEmitter, type FunctionalComponent, Host, Method, Prop, h } from '@stencil/core';
 import { setFormValue } from '../../controller/ods-toggle';
-import { type OdsToggleValueChangeEventDetail } from '../../interfaces/event';
+import { type OdsToggleChangeEventDetail } from '../../interfaces/event';
 
 @Component({
   formAssociated: true,
@@ -22,7 +22,7 @@ export class OdsToggle {
   @Prop({ reflect: true }) public withLabel: boolean = false;
 
   @Event() odsBlur!: EventEmitter<void>;
-  @Event() odsChange!: EventEmitter<OdsToggleValueChangeEventDetail>;
+  @Event() odsChange!: EventEmitter<OdsToggleChangeEventDetail>;
   @Event() odsClear!: EventEmitter<void>;
   @Event() odsFocus!: EventEmitter<void>;
   @Event() odsReset!: EventEmitter<void>;

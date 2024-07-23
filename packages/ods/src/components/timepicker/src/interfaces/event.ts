@@ -1,6 +1,6 @@
 import type { OdsTimezone } from '../constant/timezones';
 
-interface OdsTimepickerValueChangeEventDetail {
+interface OdsTimepickerChangeEventDetail {
   currentTimezone?: OdsTimezone;
   name: string;
   previousValue?: string | null;
@@ -8,9 +8,9 @@ interface OdsTimepickerValueChangeEventDetail {
   value: string | null;
 }
 
-type OdsTimepickerValueChangeEvent = CustomEvent<OdsTimepickerValueChangeEventDetail>;
+type OdsTimepickerChangeEvent = CustomEvent<OdsTimepickerChangeEventDetail>;
 
 export {
-  type OdsTimepickerValueChangeEvent,
-  type OdsTimepickerValueChangeEventDetail,
+  type OdsTimepickerChangeEvent,
+  type OdsTimepickerChangeEventDetail,
 };

@@ -1,9 +1,9 @@
 import type { OdsSelect } from '../../../../select/src';
-import type { OdsTimepickerValueChangeEventDetail } from '../../interfaces/event';
+import type { OdsTimepickerChangeEventDetail } from '../../interfaces/event';
 import type { EventEmitter, FunctionalComponent } from '@stencil/core';
 import { AttachInternals, Component, Element, Event, Host, Method, Prop, Watch, h } from '@stencil/core';
-import { ODS_INPUT_TYPE, type OdsInput, type OdsInputValueChangeEvent } from '../../../../input/src';
-import { type OdsSelectEventChange } from '../../../../select/src';
+import { ODS_INPUT_TYPE, type OdsInput, type OdsInputChangeEvent } from '../../../../input/src';
+import { type OdsSelectChangeEvent } from '../../../../select/src';
 import { type OdsTimezonePreset } from '../../constant/timezone-preset';
 import { type OdsTimezone } from '../../constant/timezones';
 import { formatValue, getCurrentTimezone, parseTimezones, setFormValue } from '../../controller/ods-timepicker';
@@ -41,7 +41,7 @@ export class OdsTimepicker {
   @Prop({ reflect: true }) public withSeconds: boolean = false;
 
   @Event() odsBlur!: EventEmitter<void>;
-  @Event() odsChange!: EventEmitter<OdsTimepickerValueChangeEventDetail>;
+  @Event() odsChange!: EventEmitter<OdsTimepickerChangeEventDetail>;
   @Event() odsClear!: EventEmitter<void>;
   @Event() odsFocus!: EventEmitter<void>;
   @Event() odsReset!: EventEmitter<void>;
@@ -105,7 +105,7 @@ export class OdsTimepicker {
     }
   }
 
-  private async onOdsChange(event: OdsInputValueChangeEvent | OdsSelectEventChange, isFromSelect: boolean): Promise<void> {
+  private async onOdsChange(event: OdsInputChangeEvent | OdsSelectChangeEvent, isFromSelect: boolean): Promise<void> {
     event.preventDefault();
     event.stopPropagation();
     if (isFromSelect) {
@@ -135,7 +135,7 @@ export class OdsTimepicker {
           is-disabled={ this.isDisabled }
           is-readonly={ this.isReadonly }
           has-error={ this.hasError }
-          onOdsChange={ (event: OdsInputValueChangeEvent) => this.onOdsChange(event, false) }
+          onOdsChange={ (event: OdsInputChangeEvent) => this.onOdsChange(event, false) }
           onOdsClear={ (event: CustomEvent<void>) => event.stopPropagation() }
           onOdsReset={ (event: CustomEvent<void>) => event.stopPropagation() }
           name={ this.name }

@@ -61,25 +61,41 @@ describe('ods-select behaviour', () => {
   describe('methods', () => {
     describe('clear', () => {
       it('should emit an odsClear event', async() => {
-        await setup('<ods-select value="value"></ods-select>');
+        await setup('<ods-select name="ods-select" value="value"></ods-select>');
         const odsClearSpy = await page.spyOnEvent('odsClear');
+        const odsChangeSpy = await page.spyOnEvent('odsChange');
 
         await el.callMethod('clear');
         await page.waitForChanges();
 
         expect(await el.getProperty('value')).toBeNull();
         expect(odsClearSpy).toHaveReceivedEventTimes(1);
+        expect(odsChangeSpy).toHaveReceivedEventTimes(1);
+        expect(odsChangeSpy).toHaveReceivedEventDetail({
+          name: 'ods-select',
+          previousValue: 'value',
+          validity: {},
+          value: null,
+        });
       });
 
       it('should emit an odsClear event even if disabled', async() => {
-        await setup('<ods-select is-disabled value="value"></ods-select>');
+        await setup('<ods-select name="ods-select" is-disabled value="value"></ods-select>');
         const odsClearSpy = await page.spyOnEvent('odsClear');
+        const odsChangeSpy = await page.spyOnEvent('odsChange');
 
         await el.callMethod('clear');
         await page.waitForChanges();
 
         expect(await el.getProperty('value')).toBeNull();
         expect(odsClearSpy).toHaveReceivedEventTimes(1);
+        expect(odsChangeSpy).toHaveReceivedEventTimes(1);
+        expect(odsChangeSpy).toHaveReceivedEventDetail({
+          name: 'ods-select',
+          previousValue: 'value',
+          validity: {},
+          value: null,
+        });
       });
     });
 
@@ -114,26 +130,61 @@ describe('ods-select behaviour', () => {
     describe('reset', () => {
       it('should emit an odsReset event', async() => {
         const dummyDefaultValue = 'dummy defaultValue';
-        await setup(`<ods-select value="value" default-value="${dummyDefaultValue}"></ods-select>`);
+        await setup(`<ods-select name="ods-select" value="value" default-value="${dummyDefaultValue}"></ods-select>`);
         const odsResetSpy = await page.spyOnEvent('odsReset');
+        const odsChangeSpy = await page.spyOnEvent('odsChange');
 
         await el.callMethod('reset');
         await page.waitForChanges();
 
         expect(await el.getProperty('value')).toBe(dummyDefaultValue);
         expect(odsResetSpy).toHaveReceivedEventTimes(1);
+        expect(odsChangeSpy).toHaveReceivedEventTimes(1);
+        expect(odsChangeSpy).toHaveReceivedEventDetail({
+          name: 'ods-select',
+          previousValue: 'value',
+          validity: {},
+          value: dummyDefaultValue,
+        });
       });
 
       it('should emit an odsReset event even if disabled', async() => {
         const dummyDefaultValue = 'dummy defaultValue';
-        await setup(`<ods-select is-disabled value="value" default-value="${dummyDefaultValue}"></ods-select>`);
+        await setup(`<ods-select name="ods-select" is-disabled value="value" default-value="${dummyDefaultValue}"></ods-select>`);
         const odsResetSpy = await page.spyOnEvent('odsReset');
+        const odsChangeSpy = await page.spyOnEvent('odsChange');
 
         await el.callMethod('reset');
         await page.waitForChanges();
 
         expect(await el.getProperty('value')).toBe(dummyDefaultValue);
         expect(odsResetSpy).toHaveReceivedEventTimes(1);
+        expect(odsChangeSpy).toHaveReceivedEventTimes(1);
+        expect(odsChangeSpy).toHaveReceivedEventDetail({
+          name: 'ods-select',
+          previousValue: 'value',
+          validity: {},
+          value: dummyDefaultValue,
+        });
+      });
+
+      it('should emit an odsReset event without defaultValue', async() => {
+        await setup('<ods-select name="ods-select" is-disabled value="value"></ods-select>');
+        const odsResetSpy = await page.spyOnEvent('odsReset');
+        const odsChangeSpy = await page.spyOnEvent('odsChange');
+
+        await el.callMethod('reset');
+        await page.waitForChanges();
+
+        expect(await el.getProperty('value')).toBeNull();
+        expect(odsResetSpy).toHaveReceivedEventTimes(1);
+        expect(odsChangeSpy).toHaveReceivedEventTimes(1);
+        expect(odsChangeSpy).toHaveReceivedEventDetail({
+          name: 'ods-select',
+          previousValue: 'value',
+          validity: {},
+          value: null,
+        });
       });
     });
   });
@@ -154,7 +205,6 @@ describe('ods-select behaviour', () => {
         expect(await el.getProperty('value')).toBe(dummyValue);
         expect(odsValueChangeSpy).toHaveReceivedEventTimes(1);
         expect(odsValueChangeSpy).toHaveReceivedEventDetail({
-          previousValue: '',
           validity: {},
           value: dummyValue,
         });

@@ -37,7 +37,7 @@ describe('ods-timepicker behavior', () => {
       await el.callMethod('clear');
       await page.waitForChanges();
       expect(await el.getProperty('value')).toBeNull();
-      expect(await el.getProperty('currentTimezone')).toBe('');
+      expect(await el.getProperty('currentTimezone')).toBeNull();
       expect(odsClearSpy).toHaveReceivedEventTimes(1);
     });
   });

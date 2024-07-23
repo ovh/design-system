@@ -15,7 +15,7 @@ _A **Modal** component is used to overlay with important content the main view o
 ## Overview
 <div>
   <div id='description'>
-    A **Modal** is used to provide some information to users that needs a response from them.
+    A **Modal** is used to provide some information to users that needs a response or immediate attention.
 
     While a **Modal** is triggered, there is no interaction possible on the page that is overlaid so users have to
     dismiss or click on an action [**Button**](?path=/docs/ods-components-actions-button--documentation) to proceed
@@ -113,7 +113,7 @@ They can be dismissable or not.
 
 When a **Modal** opening is triggered, it is displayed with a position aligned both horizontally and vertically within the viewport.
 
-**Modal** takes up 100% of the viewport width, with a maximum width of 512px.
+**Modal** takes up 100% of the viewport width up to a maximum width of 512px.
 
 ## Behavior
 
@@ -133,7 +133,7 @@ Dismissing a **Modal** means that it will be closed without submitting any data 
 
 A **Modal** will be successfully closed only once the required action or response has been completed by the user, meaning that the task is completed so the user will proceed further.
 
-Closing the **Modal** triggers an event.
+Closing the **Modal** triggers an event and an animation.
 
 The hidden overflow behaviour is removed whenever the **Modal** get closed.
 
@@ -141,9 +141,9 @@ The hidden overflow behaviour is removed whenever the **Modal** get closed.
 
 When necessary, depending on the viewport height and the **Modal** content, the user can scroll vertically with the header and the action [**Button**](?path=/docs/ods-components-actions-button--documentation)) remaining in place.
 
-## Variants
+## Variation
 
-### Colors
+### Color
 
 - **Neutral**: providing general information or updates without implying any particular urgency or emotion.
 - **Success**: indicating that an action has been successfully completed, offering positive reinforcement to the user.
@@ -156,7 +156,7 @@ When displayed, the user is directly focused on the **Modal** itself.
 
 When **Modal** is opened :
 - `Escape` key will dismiss it (if dismissible)
-- `Tabulation` permits to move forward, first to the closing icon, then through any focusable element in the **Modal** (e.g. action [**Button**](?path=/docs/ods-components-actions-button--documentation)))
-- `Shift + Tab` permits the opposite way to move backward in focusing items
+- `Tabulation` allows to move forward, first to the closing icon, then through any focusable element in the **Modal** (e.g. action [**Button**](?path=/docs/ods-components-actions-button--documentation)))
+- `Shift + Tab` allows the opposite way to move backward in focusing items
 
 Focus is trapped inside the **Modal** scope and inner elements when active.

@@ -21,7 +21,6 @@ export const Demo: StoryObj = {
       is-clearable="${arg.isClearable}"
       is-disabled="${arg.isDisabled}"
       is-readonly="${arg.isReadonly}"
-      is-required="${arg.isRequired}"
       max="${arg.max}"
       min="${arg.min}"
       placeholder="${arg.placeholder}"
@@ -107,14 +106,6 @@ export const Demo: StoryObj = {
         type: { summary: 'boolean' },
       },
     },
-    isRequired: {
-      control: 'boolean',
-      table: {
-        category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: 'false' },
-        type: { summary: 'boolean' },
-      },
-    },
     max: {
       control: 'number',
       table: {
@@ -144,7 +135,6 @@ export const Demo: StoryObj = {
     hasError: false,
     isDisabled: false,
     isReadonly: false,
-    isRequired: false,
   },
 };
 

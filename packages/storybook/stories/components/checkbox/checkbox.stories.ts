@@ -20,7 +20,6 @@ export const Demo: StoryObj = {
       class="my-checkbox-demo"
       is-disabled="${args.isDisabled}"
       is-indeterminate="${args.isIndeterminate}"
-      is-required="${args.isRequired}"
     ></ods-checkbox>
     <style>
       .my-checkbox-demo > input[type="checkbox"]:not(:disabled):checked {
@@ -69,19 +68,10 @@ export const Demo: StoryObj = {
       },
       control: 'boolean',
     },
-    isRequired: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: false },
-        type: { summary: 'boolean' },
-      },
-      control: 'boolean',
-    },
   }),
   args: {
     isDisabled: false,
     isIndeterminate: false,
-    isRequired: false,
   },
 };
 export const Alignment: StoryObj = {

@@ -23,7 +23,6 @@ export const Demo: StoryObj = {
       class="my-range-demo"
       has-error="${args.hasError}"
       is-disabled="${args.isDisabled}"
-      is-required="${args.isRequired}"
       max="${args.max}"
       min="${args.min}"
       step="${args.step}"
@@ -59,14 +58,6 @@ export const Demo: StoryObj = {
       },
       control: 'boolean',
     },
-    isRequired: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: false },
-        type: { summary: 'boolean' },
-      },
-      control: 'boolean',
-    },
     max: {
       table: {
         category: CONTROL_CATEGORY.general,
@@ -95,7 +86,6 @@ export const Demo: StoryObj = {
   args: {
     hasError: false,
     isDisabled: false,
-    isRequired: false,
     max: 100,
     min: 0,
     step: 1,
@@ -108,7 +98,6 @@ export const DemoDual: StoryObj = {
       class="my-range-dual-demo"
       has-error="${args.hasError}"
       is-disabled="${args.isDisabled}"
-      is-required="${args.isRequired}"
       max="${args.max}"
       min="${args.min}"
       step="${args.step}"
@@ -154,14 +143,6 @@ export const DemoDual: StoryObj = {
       },
       control: 'boolean',
     },
-    isRequired: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: false },
-        type: { summary: 'boolean' },
-      },
-      control: 'boolean',
-    },
     max: {
       table: {
         category: CONTROL_CATEGORY.general,
@@ -190,7 +171,6 @@ export const DemoDual: StoryObj = {
   args: {
     hasError: false,
     isDisabled: false,
-    isRequired: false,
     max: 100,
     min: 0,
     step: 1,

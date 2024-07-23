@@ -172,7 +172,7 @@ describe('ods-select navigation', () => {
       await page.waitForChanges();
 
       expect(await isOpen()).toBe(true);
-      expect(odsChangeSpy).toHaveReceivedEventDetail({ previousValue: '', validity: {}, value: '1' });
+      expect(odsChangeSpy).toHaveReceivedEventDetail({ validity: {}, value: '1' });
 
       await options[1].click();
       await page.waitForChanges();
@@ -201,7 +201,7 @@ describe('ods-select navigation', () => {
       await page.waitForChanges();
 
       expect(await isOpen()).toBe(true);
-      expect(odsChangeSpy).toHaveReceivedEventDetail({ previousValue: '', validity: {}, value: '1' });
+      expect(odsChangeSpy).toHaveReceivedEventDetail({ validity: {}, value: '1' });
 
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('Enter');
@@ -232,7 +232,7 @@ describe('ods-select navigation', () => {
       await page.waitForChanges();
 
       expect(await isOpen()).toBe(true);
-      expect(odsChangeSpy).toHaveReceivedEventDetail({ previousValue: '', validity: {}, value: '1' });
+      expect(odsChangeSpy).toHaveReceivedEventDetail({ validity: {}, value: '1' });
 
       await page.keyboard.press('ArrowDown');
       await page.keyboard.press('Tab');

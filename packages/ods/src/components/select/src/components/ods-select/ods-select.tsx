@@ -18,6 +18,7 @@ TomSelect.define('placeholder', placeholderPlugin);
 export class OdsSelect {
   private hasMovedNodes: boolean = false;
   private isSelectSync: boolean = false;
+  private isValueSync: boolean = false;
   private observer!: MutationObserver;
   private select?: TomSelect;
   private selectElement?: HTMLSelectElement;
@@ -52,8 +53,12 @@ export class OdsSelect {
 
   @Method()
   async clear(): Promise<void> {
-    this.value = null;
     this.odsClear.emit();
+    if (this.value !== null) {
+      this.isValueSync = true;
+    }
+    this.value = null;
+    this.select?.focus();
   }
 
   @Method()
@@ -73,8 +78,11 @@ export class OdsSelect {
 
   @Method()
   async reset(): Promise<void> {
-    this.updateValue(this.defaultValue ?? null);
     this.odsReset.emit();
+    if (this.value !== (this.defaultValue ?? null)) {
+      this.isValueSync = true;
+    }
+    this.updateValue(this.defaultValue ?? null);
   }
 
   @Watch('isDisabled')
@@ -104,7 +112,7 @@ export class OdsSelect {
   }
 
   @Watch('value')
-  onValueChange(value: string | string[], previousValue?: string | string[]): void {
+  onValueChange(value: string | string[] | null, previousValue?: string | string[]): void {
     // Value change can be triggered from either value attribute change or select change
     // For the latter, we don't want to trigger a new change (as it may causes loop)
     if (!this.isSelectSync) {
@@ -116,7 +124,7 @@ export class OdsSelect {
 
     this.odsChange.emit({
       name: this.name,
-      previousValue: inlineValue(previousValue),
+      previousValue: inlineValue(previousValue) ?? undefined,
       validity:  this.selectElement?.validity,
       value: inlineValue(value),
     });
@@ -221,8 +229,11 @@ export class OdsSelect {
           this.odsBlur.emit();
         },
         onChange: (value: string | string[]): void => {
-          this.isSelectSync = true;
-          this.updateValue(value);
+          if (!this.isValueSync) {
+            this.isSelectSync = true;
+            this.updateValue(value);
+          }
+          this.isValueSync = false;
         },
         onDropdownClose: (dropdown: HTMLDivElement): void => {
           dropdown.classList.remove('ods-select__dropdown--bottom', 'ods-select__dropdown--top');

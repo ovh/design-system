@@ -33,6 +33,13 @@ export class OdsRadio {
       this.inputEl.checked = false;
     }
     this.odsClear.emit();
+    this.emitChange({
+      checked: false,
+      name: this.name,
+      validity:  this.inputEl?.validity,
+      value: this.value ?? null,
+    });
+    this.inputEl?.focus();
   }
 
   @Method()
@@ -47,13 +54,19 @@ export class OdsRadio {
       if (!inputRadio) {
         return;
       }
-      if (radio.getAttribute('is-checked') === '') {
+      if (radio.getAttribute('is-checked') !== null) {
         inputRadio.checked = true;
       } else {
         inputRadio.checked = false;
       }
     });
     this.odsReset.emit();
+    this.emitChange({
+      checked: this.isChecked,
+      name: this.name,
+      validity:  this.inputEl?.validity,
+      value: this.value ?? null,
+    });
   }
 
   @Method()
@@ -65,12 +78,21 @@ export class OdsRadio {
     return document.querySelectorAll(`ods-radio[name="${this.name}"]`);
   }
 
-  private onInput(event: InputEvent): void {
-    this.odsChange.emit({
+  private onInput(event: Event): void {
+    this.emitChange({
       checked: (event.target as HTMLInputElement)?.checked,
       name: this.name,
       validity:  this.inputEl?.validity,
       value: this.value ?? null,
+    });
+  }
+
+  private emitChange(detail: OdsRadioValueChangeEventDetail): void {
+    this.odsChange.emit({
+      checked: detail.checked,
+      name: detail.name,
+      validity:  detail.validity,
+      value: detail.value,
     });
   }
 

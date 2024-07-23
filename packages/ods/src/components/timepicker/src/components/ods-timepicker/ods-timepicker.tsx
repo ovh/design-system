@@ -119,7 +119,7 @@ export class OdsTimepicker {
       name: this.name,
       previousValue: this.previousValue ?? undefined,
       validity: await this.odsInput?.getValidity(),
-      value: this.value ?? '',
+      value: this.value ?? null,
     });
   }
 

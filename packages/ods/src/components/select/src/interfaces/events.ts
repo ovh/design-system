@@ -2,7 +2,7 @@ interface OdsSelectEventChangeDetail {
   name: string;
   previousValue?: string;
   validity?: ValidityState;
-  value: string;
+  value: string | null;
 }
 
 type OdsSelectEventChange = CustomEvent<OdsSelectEventChangeDetail>;

@@ -2,7 +2,7 @@ interface OdsQuantityEventValueChangeDetail {
   name: string;
   previousValue?: number;
   validity?: ValidityState;
-  value: number;
+  value: number | null;
 }
 
 type OdsQuantityEventValueChange = CustomEvent<OdsQuantityEventValueChangeDetail>;

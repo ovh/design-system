@@ -81,9 +81,9 @@ export class OdsQuantity {
   private onOdsChange(event: OdsInputValueChangeEvent): void {
     if (event.detail.value === null) {
       this.value = null;
-      return;
+    } else {
+      this.value = Number(event.detail.value) ?? null;
     }
-    this.value = Number(event.detail.value) ?? null;
     setFormValue(this.internals, this.value);
   }
 

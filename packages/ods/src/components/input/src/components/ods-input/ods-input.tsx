@@ -51,9 +51,9 @@ export class OdsInput {
 
   @Method()
   async clear(): Promise<void> {
+    this.odsClear.emit();
     this.value = null;
     this.inputEl?.focus();
-    this.odsClear.emit();
   }
 
   @Method()
@@ -69,8 +69,8 @@ export class OdsInput {
 
   @Method()
   async reset(): Promise<void> {
-    this.value = this.defaultValue ?? null;
     this.odsReset.emit();
+    this.value = this.defaultValue ?? null;
   }
 
   @Watch('isMasked')

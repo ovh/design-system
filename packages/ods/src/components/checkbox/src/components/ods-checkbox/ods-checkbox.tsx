@@ -34,6 +34,7 @@ export class OdsCheckbox {
     }
     this.odsClear.emit();
     hasChange && this.onInput();
+    this.inputEl?.focus();
   }
 
   @Method()

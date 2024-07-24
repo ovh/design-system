@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/ods-tag';
-import { ODS_ICON_NAMES, ODS_TAG_COLOR, ODS_TAG_COLORS, ODS_TAG_SHAPE, ODS_TAG_SHAPES, ODS_TAG_SIZE, ODS_TAG_SIZES, ODS_TAG_VARIANT, ODS_TAG_VARIANTS } from '@ovhcloud/ods-components';
+import { ODS_ICON_NAMES, ODS_TAG_COLOR, ODS_TAG_COLORS, ODS_TAG_SIZE, ODS_TAG_SIZES } from '@ovhcloud/ods-components';
 import { html } from 'lit-html';
 import { CONTROL_CATEGORY, orderControls } from '../../control';
 
@@ -20,9 +20,7 @@ export const Demo: StoryObj = {
          icon="${arg.icon}"
          is-disabled="${arg.isDisabled}"
          label="${arg.label}"
-         shape="${arg.shape}"
-         size="${arg.size}"
-         variant="${arg.variant}">
+         size="${arg.size}">
 </ods-tag>
 <style>
   .my-tag-demo::part(tag) {
@@ -75,15 +73,6 @@ export const Demo: StoryObj = {
       control: 'text',
       description: 'The tag label',
     },
-    shape: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-        defaultValue: { summary: ODS_TAG_SHAPE.round },
-        type: { summary: ODS_TAG_SHAPES },
-      },
-      control: { type: 'select' },
-      options: ODS_TAG_SHAPES,
-    },
     size: {
       table: {
         category: CONTROL_CATEGORY.design,
@@ -93,23 +82,12 @@ export const Demo: StoryObj = {
       control: { type: 'select' },
       options: ODS_TAG_SIZES,
     },
-    variant: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-        defaultValue: { summary: ODS_TAG_VARIANT.default },
-        type: { summary: ODS_TAG_VARIANTS },
-      },
-      control: { type: 'select' },
-      options: ODS_TAG_VARIANTS,
-    },
   }),
   args: {
     color: ODS_TAG_COLOR.information,
     isDisabled: false,
     label: 'My tag',
-    shape: ODS_TAG_SHAPE.round,
     size: ODS_TAG_SIZE.md,
-    variant: ODS_TAG_VARIANT.default,
   },
 };
 
@@ -150,26 +128,10 @@ export const IsDisabled: StoryObj = {
   `,
 };
 
-export const Shape: StoryObj = {
-  tags: ['isHidden'],
-  render: () => html`
-<ods-tag label="Round tag" shape="${ODS_TAG_SHAPE.round}"></ods-tag>
-<ods-tag label="Square tag" shape="${ODS_TAG_SHAPE.square}"></ods-tag>
-  `,
-};
-
 export const Size: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
 <ods-tag label="MD tag" size="${ODS_TAG_SIZE.md}"></ods-tag>
 <ods-tag label="LG tag" size="${ODS_TAG_SIZE.lg}"></ods-tag>
-  `,
-};
-
-export const Variant: StoryObj = {
-  tags: ['isHidden'],
-  render: () => html`
-<ods-tag label="Default tag" variant="${ODS_TAG_VARIANT.default}"></ods-tag>
-<ods-tag label="Outline tag" variant="${ODS_TAG_VARIANT.outline}"></ods-tag>
   `,
 };

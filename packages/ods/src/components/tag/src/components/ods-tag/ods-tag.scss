@@ -12,48 +12,24 @@
     @include tag.ods-tag();
 
     &:not(&#{$tag}--disabled) {
-      &#{$tag}--default {
-        &#{$tag}--critical {
-          @include tag.ods-tag-variant-default('critical');
-        }
-
-        &#{$tag}--information {
-          @include tag.ods-tag-variant-default('information');
-        }
-
-        &#{$tag}--neutral {
-          @include tag.ods-tag-variant-default('neutral');
-        }
-
-        &#{$tag}--success {
-          @include tag.ods-tag-variant-default('success');
-        }
-
-        &#{$tag}--warning {
-          @include tag.ods-tag-variant-default('warning');
-        }
+      &#{$tag}--critical {
+        @include tag.ods-tag-color('critical');
       }
 
-      &#{$tag}--outline {
-        &#{$tag}--critical {
-          @include tag.ods-tag-variant-outline('critical');
-        }
+      &#{$tag}--information {
+        @include tag.ods-tag-color('information');
+      }
 
-        &#{$tag}--information {
-          @include tag.ods-tag-variant-outline('information');
-        }
+      &#{$tag}--neutral {
+        @include tag.ods-tag-color('neutral');
+      }
 
-        &#{$tag}--neutral {
-          @include tag.ods-tag-variant-outline('neutral');
-        }
+      &#{$tag}--success {
+        @include tag.ods-tag-color('success');
+      }
 
-        &#{$tag}--success {
-          @include tag.ods-tag-variant-outline('success');
-        }
-
-        &#{$tag}--warning {
-          @include tag.ods-tag-variant-outline('warning');
-        }
+      &#{$tag}--warning {
+        @include tag.ods-tag-color('warning');
       }
     }
 

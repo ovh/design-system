@@ -118,7 +118,7 @@ export class OdsPhoneNumber {
     this.odsChange.emit({
       isoCode: this.isoCode,
       name: this.name,
-      previousValue: event.detail.previousValue?.toString(),
+      previousValue: event.detail.previousValue?.toString() ?? null,
       validity: getValidityState(this.hasError, event.detail.validity),
       value: formattedValue,
     });

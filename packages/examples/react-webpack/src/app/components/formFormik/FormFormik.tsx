@@ -9,15 +9,15 @@ const validationSchema = yup.object({
   checkbox: yup.string().nullable(),//.required(),
   datepicker: yup.date().nullable(),//.required(),
   inputNumber: yup.number().nullable(),//.required(),
-  inputText: yup.string().nullable().required(),
-  password: yup.string().nullable().required(),
-  phoneNumber: yup.string().nullable().required(),
+  inputText: yup.string().nullable(),//.required(),
+  password: yup.string().nullable(),//.required(),
+  phoneNumber: yup.string().nullable(),//.required(),
   quantity: yup.number().nullable(),//.required(),
-  radio: yup.string().nullable().required(),
-  select: yup.string().nullable().required(),
-  switch: yup.string().nullable().required(),
-  textarea: yup.string().nullable().required(),
-  timepicker: yup.string().nullable().required(),
+  radio: yup.string().nullable(),//.required(),
+  select: yup.string().nullable(),//.required(),
+  switch: yup.string().nullable(),//.required(),
+  textarea: yup.string().nullable(),//.required(),
+  timepicker: yup.string().nullable(),//.required(),
 });
 
 function FormFormik(): ReactElement {
@@ -55,8 +55,8 @@ function FormFormik(): ReactElement {
       {/* KO reset */}
       <div>
         <OdsCheckbox
-          isChecked={ !!formik.values.checkbox }
-          // isRequired={ true }
+          type="checkbox"
+          isChecked={ false }
           inputId="checkbox"
           name="checkbox"
           onOdsBlur={ formik.handleBlur }
@@ -72,7 +72,7 @@ function FormFormik(): ReactElement {
         defaultValue={ formik.initialValues.datepicker }
         hasError={ formik.touched.datepicker && !!formik.errors.datepicker }
         isClearable={ true }
-        isRequired={ true }
+        // isRequired={ true }
         name="datepicker"
         onOdsBlur={ formik.handleBlur }
         onOdsChange={ formik.handleChange }
@@ -83,7 +83,7 @@ function FormFormik(): ReactElement {
       <OdsInput
         hasError={ formik.touched.inputNumber && !!formik.errors.inputNumber }
         isClearable={ true }
-        isRequired={ true }
+        // isRequired={ true }
         name="inputNumber"
         onOdsBlur={ formik.handleBlur }
         onOdsChange={ formik.handleChange }
@@ -95,7 +95,7 @@ function FormFormik(): ReactElement {
       <OdsInput
         hasError={ formik.touched.inputText && !!formik.errors.inputText }
         isClearable={ true }
-        isRequired={ true }
+        // isRequired={ true }
         name="inputText"
         onOdsBlur={ formik.handleBlur }
         onOdsChange={ formik.handleChange }
@@ -111,7 +111,7 @@ function FormFormik(): ReactElement {
         defaultValue={ formik.initialValues.password }
         hasError={ formik.touched.password && !!formik.errors.password }
         isClearable={ true }
-        isRequired={ true }
+        // isRequired={ true }
         name="password"
         onOdsBlur={ formik.handleBlur }
         onOdsChange={ formik.handleChange }
@@ -125,7 +125,7 @@ function FormFormik(): ReactElement {
         defaultValue={ formik.initialValues.phoneNumber }
         hasError={ formik.touched.phoneNumber && !!formik.errors.phoneNumber }
         isClearable={ true }
-        isRequired={ true }
+        // isRequired={ true }
         isoCode="fr"
         name="phoneNumber"
         onOdsBlur={ formik.handleBlur }
@@ -139,7 +139,7 @@ function FormFormik(): ReactElement {
         // @ts-ignore IDE try to match another react specific attribute
         defaultValue={ formik.initialValues.quantity }
         hasError={ formik.touched.quantity && !!formik.errors.quantity }
-        isRequired={ true }
+        // isRequired={ true }
         name="quantity"
         onOdsBlur={ formik.handleBlur }
         onOdsChange={ formik.handleChange }
@@ -150,7 +150,7 @@ function FormFormik(): ReactElement {
       <div>
         <OdsRadio
           isChecked={ formik.values.radio === 'radio-1' }
-          isRequired={ true }
+          // isRequired={ true }
           inputId="radio1"
           name="radio"
           onOdsBlur={ formik.handleBlur }
@@ -161,7 +161,7 @@ function FormFormik(): ReactElement {
 
         <OdsRadio
           isChecked={ formik.values.radio === 'radio-2' }
-          isRequired={ true }
+          // isRequired={ true }
           inputId="radio2"
           name="radio"
           onOdsBlur={ formik.handleBlur }
@@ -176,7 +176,7 @@ function FormFormik(): ReactElement {
         // @ts-ignore IDE try to match another react specific attribute
         defaultValue={ formik.initialValues.select }
         hasError={ formik.touched.select && !!formik.errors.select }
-        isRequired={ true }
+        // isRequired={ true }
         name="select"
         onOdsBlur={ formik.handleBlur }
         onOdsChange={ formik.handleChange }
@@ -192,7 +192,7 @@ function FormFormik(): ReactElement {
 
       {/* KO Reset */}
       <OdsSwitch
-        isRequired={ true }
+        // isRequired={ true }
         name="switch"
         onOdsBlur={ formik.handleBlur }
         onOdsChange={ formik.handleChange }
@@ -217,7 +217,7 @@ function FormFormik(): ReactElement {
       <OdsTextarea
         defaultValue={ formik.initialValues.textarea }
         hasError={ formik.touched.textarea && !!formik.errors.textarea }
-        isRequired={ true }
+        // isRequired={ true }
         name="textarea"
         onOdsBlur={ formik.handleBlur }
         onOdsChange={ formik.handleChange }
@@ -228,7 +228,7 @@ function FormFormik(): ReactElement {
       <OdsTimepicker
         defaultValue={ formik.initialValues.timepicker }
         hasError={ formik.touched.timepicker && !!formik.errors.timepicker }
-        isRequired={ true }
+        // isRequired={ true }
         name="timepicker"
         onOdsBlur={ formik.handleBlur }
         onOdsChange={ formik.handleChange }

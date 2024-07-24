@@ -1,6 +1,6 @@
 import type { SpecPage } from '@stencil/core/testing';
 import { newSpecPage } from '@stencil/core/testing';
-import { ODS_TAG_COLOR, ODS_TAG_SHAPE, ODS_TAG_SIZE, ODS_TAG_VARIANT, OdsTag } from '../../src';
+import { ODS_TAG_COLOR, ODS_TAG_SHAPE, ODS_TAG_SIZE, OdsTag } from '../../src';
 
 describe('ods-tag rendering', () => {
   let page: SpecPage;
@@ -106,22 +106,6 @@ describe('ods-tag rendering', () => {
       await setup('<ods-tag>Dummy Tag</ods-tag>');
 
       expect(root?.getAttribute('size')).toBe(ODS_TAG_SIZE.md);
-    });
-  });
-
-  describe('variant', () => {
-    it('should be reflected', async() => {
-      const dummyValue = 'dummy value';
-
-      await setup(`<ods-tag variant="${dummyValue}">Dummy Tag</ods-tag>`);
-
-      expect(root?.getAttribute('variant')).toBe(dummyValue);
-    });
-
-    it('should render with expected default value', async() => {
-      await setup('<ods-tag>Dummy Button</ods-tag>');
-
-      expect(root?.getAttribute('variant')).toBe(ODS_TAG_VARIANT.default);
     });
   });
 });

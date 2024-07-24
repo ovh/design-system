@@ -54,7 +54,7 @@ export class OdsRadio {
       if (!inputRadio) {
         return;
       }
-      if (radio.getAttribute('is-checked') !== null) {
+      if (radio.getAttribute('is-checked') !== null && radio.getAttribute('is-checked') !== 'false') {
         inputRadio.checked = true;
       } else {
         inputRadio.checked = false;
@@ -72,6 +72,10 @@ export class OdsRadio {
   @Method()
   async select(): Promise<void> {
     this.inputEl?.click();
+  }
+
+  async formResetCallback(): Promise<void> {
+    await this.reset();
   }
 
   private getOdsRadiosGroupByName(): NodeListOf<Element> {

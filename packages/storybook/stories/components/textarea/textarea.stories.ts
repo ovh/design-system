@@ -215,3 +215,33 @@ export const Spellcheck: StoryObj = {
 </ods-textarea>
   `,
 };
+
+export const WithFormField: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+    <ods-form-field>
+      <ods-text slot='label' preset='label'>
+        Description
+      </ods-text>
+
+      <ods-text slot='visual-hint' preset='span'>
+        <span id='textarea-character-counter'>0</span>/<span id='textarea-character-max-count'>0</span>
+      </ods-text>
+
+      <ods-textarea id='textarea-form-field' placeholder='Placeholder' maxlength='20'></ods-textarea>
+    </ods-form-field>
+    <script>
+      const textarea = document.querySelector('#textarea-form-field');
+      const maxlength = textarea.getAttribute('maxlength')
+
+      const characterCounter = document.querySelector('#textarea-character-counter');
+      const characterMaxCount = document.querySelector('#textarea-character-max-count');
+      characterMaxCount.innerText = maxlength;
+
+      textarea.addEventListener('odsChange', (event) => {
+        const value = event.target.value;
+        characterCounter.innerText = value?.length;
+      });
+    </script>
+  `,
+};

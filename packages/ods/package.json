@@ -19,10 +19,11 @@
     "build:stencil": "stencil build --prod --config stencil.config.ts",
     "build:style": "npm --prefix style run build",
     "build:vue": "npm --prefix vue run build",
+    "clean": "rimraf dist",
     "lint:scss": "stylelint 'src/style/*.scss'",
     "lint:ts": "eslint '{src,tests}/!(components)/**/*.{ts,tsx}'",
     "test:spec": "jest --config jest.config.ts --coverage",
-    "test:spec:ci": "npm run test:spec"
+    "test:spec:ci": "jest --config jest.config.ts"
   },
   "dependencies": {
     "@floating-ui/dom": "1.6.3",

@@ -4894,9 +4894,9 @@ __metadata:
 =======
 >>>>>>> d6afdc73b (refactor(style): put back css variables to fix dependency issues)
     "@stencil-community/postcss": 2.2.0
-    "@stencil/core": 4.12.2
+    "@stencil/core": 4.16.0
     "@stencil/react-output-target": 0.5.3
-    "@stencil/sass": 3.0.9
+    "@stencil/sass": 3.0.12
     "@stencil/vue-output-target": 0.8.8
     "@types/google-libphonenumber": 7.4.30
     "@types/jest": 29.5.12
@@ -5250,12 +5250,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@stencil/core@npm:4.12.2":
-  version: 4.12.2
-  resolution: "@stencil/core@npm:4.12.2"
+"@stencil/core@npm:4.16.0":
+  version: 4.16.0
+  resolution: "@stencil/core@npm:4.16.0"
   bin:
     stencil: bin/stencil
-  checksum: 85bcb310448cf3647b80cdc3df061ff2fac5879a56920ba7e24150722a773024dbe6522be3e3ae206c66d4a3a10e4547318a5568d32aaafbf2e8dd089d55f3f9
+  checksum: 70a660596a496959e5dc9fa876ac8bc7a2c2d4043c64bf86305e0722378dd484ce1a80e58466b8370831f68a9667efd40e7e4853ec1c8752181740bbac4f87fd
   languageName: node
   linkType: hard
 
@@ -5268,12 +5268,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@stencil/sass@npm:3.0.9":
-  version: 3.0.9
-  resolution: "@stencil/sass@npm:3.0.9"
+"@stencil/sass@npm:3.0.12":
+  version: 3.0.12
+  resolution: "@stencil/sass@npm:3.0.12"
   peerDependencies:
     "@stencil/core": ">=2.0.0 || >=3.0.0-beta.0 || >= 4.0.0-beta.0 || >= 4.0.0"
-  checksum: 2265ac3af2db425b7be0b836ea52aabbd44f55cb97d869eceab5468e8a47dc1ff79e5ef19b2d40a99542f5c3d8a2f812f6829fef18b6f7d551ba6e886c333a3c
+  checksum: 838e9b367b57a0845302ae0df0130f92b2244ce129fcc0d6965b4503c3e39a2a2a31b90f6b34d963b215ac42c6334a28b380523136780aad90a1ec0b230a2256
   languageName: node
   linkType: hard
 

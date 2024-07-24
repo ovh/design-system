@@ -30,26 +30,18 @@ export const Demo: StoryObj = {
   </style>
     `,
   argTypes: orderControls({
-    error: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: 'ø' },
-        type: { summary: 'string' }
-      },
-      control: 'text',
-    },
-    label: {
-      table: {
-        category: CONTROL_CATEGORY.slot,
-        defaultValue: { summary: 'ø' },
-      },
-      control: 'text',
-      description: 'Set a label on the top-left corner of the field.',
-    },
     content: {
       table: {
         category: CONTROL_CATEGORY.slot,
         defaultValue: { summary: 'ø' },
+      },
+      control: 'text',
+    },
+    error: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: '' },
+        type: { summary: 'string' }
       },
       control: 'text',
     },
@@ -60,6 +52,14 @@ export const Demo: StoryObj = {
       },
       control: 'text',
       description: 'Set a helper text on the bottom-left corner of the field.',
+    },
+    label: {
+      table: {
+        category: CONTROL_CATEGORY.slot,
+        defaultValue: { summary: 'ø' },
+      },
+      control: 'text',
+      description: 'Set a label on the top-left corner of the field.',
     },
     visualHint: {
       table: {
@@ -72,10 +72,10 @@ export const Demo: StoryObj = {
   }),
   args: {
     error: '',
-    label: `<ods-text slot="label" preset='label'>Description</ods-text>`,
-    visualHint: `<ods-text slot="visual-hint" preset='span'>0/100</ods-text>`,
-    content: `<ods-input type="text" placeholder="Placeholder" clearable></ods-input>`,
-    helper: `<ods-text slot="helper" preset='span'>A little helper text</ods-text>`,
+    label: '<ods-text slot="label" preset="label">Description</ods-text>',
+    visualHint: '<ods-text slot="visual-hint" preset="span">0/100</ods-text>',
+    content: '<ods-input type="text" placeholder="Placeholder" clearable></ods-input>',
+    helper: '<ods-text slot="helper" preset="span">A little helper text</ods-text>',
   },
 };
 
@@ -91,17 +91,17 @@ export const Error: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
 <ods-form-field error="Wrong format.">
-  <ods-text slot="label" preset='label'>
+  <ods-text slot="label" preset="label">
     Description
   </ods-text>
 
   <ods-input type="text" placeholder="Placeholder" clearable></ods-input>
 
-  <ods-text slot="helper" preset='span'>
+  <ods-text slot="helper" preset="span">
     A little helper text
   </ods-text>
 
-  <ods-text slot="visual-hint" preset='span'>
+  <ods-text slot="visual-hint" preset="span">
     0/100
   </ods-text>
 </ods-form-field>
@@ -112,7 +112,7 @@ export const CustomCSS: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
 <ods-form-field>
-  <ods-text slot="label" class="my-label" preset='label'>
+  <ods-text slot="label" class="my-label" preset="label">
     Description
   </ods-text>
 
@@ -131,7 +131,7 @@ export const Label: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
 <ods-form-field>
-  <ods-text slot="label" preset='label'>
+  <ods-text slot="label" preset="label">
     Description
   </ods-text>
 
@@ -144,13 +144,13 @@ export const LabelVisualHint: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
 <ods-form-field>
-  <ods-text slot="label" preset='label'>
+  <ods-text slot="label" preset="label">
     Description
   </ods-text>
 
   <ods-input type="text" placeholder="Placeholder" clearable></ods-input>
 
-  <ods-text slot="visual-hint" preset='span'>
+  <ods-text slot="visual-hint" preset="span">
     0/100
   </ods-text>
 </ods-form-field>
@@ -161,17 +161,17 @@ export const LabelVisualHintHelper: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
 <ods-form-field>
-  <ods-text slot="label" preset='label'>
+  <ods-text slot="label" preset="label">
     Description
   </ods-text>
 
   <ods-input type="text" placeholder="Placeholder" clearable></ods-input>
 
-  <ods-text slot="helper" preset='span'>
+  <ods-text slot="helper" preset="span">
     A little helper text
   </ods-text>
 
-  <ods-text slot="visual-hint" preset='span'>
+  <ods-text slot="visual-hint" preset="span">
     0/100
   </ods-text>
 </ods-form-field>
@@ -182,11 +182,13 @@ export const Tooltip: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
 <ods-form-field>
-  <ods-text slot="label" preset='label'>
-    Description
-  </ods-text>
+  <div slot="label">
+    <ods-text preset="label">
+      Description
+    </ods-text>
 
-  <ods-icon slot="label" id="tooltip-trigger" name="circle-question"></ods-icon>
+    <ods-icon id="tooltip-trigger" name="circle-question"></ods-icon>
+  </div>
 
   <ods-input type="text" placeholder="Placeholder" clearable></ods-input>
 
@@ -201,11 +203,11 @@ export const Textarea: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
 <ods-form-field>
-  <ods-text slot="label" preset='label'>
+  <ods-text slot="label" preset="label">
     Description
   </ods-text>
 
-  <ods-text slot="visual-hint" preset='span'>
+  <ods-text slot="visual-hint" preset="span">
     0/200
   </ods-text>
 

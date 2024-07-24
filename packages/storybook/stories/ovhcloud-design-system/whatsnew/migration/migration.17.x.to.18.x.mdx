@@ -2,40 +2,161 @@ import { Meta } from '@storybook/blocks';
 
 <Meta title="OVHcloud Design System/What's new?/Migration guide/17.x to 18.x" />
 
-[//]: # "# [16.6.0](https://ovh.github.io/design-system/v16.6.0/?path=/story/ovhcloud-design-system-what-s-new-changelog--page) to [17.0.0](https://ovh.github.io/design-system/v17.0.0/?path=/story/ovhcloud-design-system-what-s-new-changelog--page) ([compare](https://github.com/ovh/design-system/compare/release/16.0...release/17.0))"
+# [17.2.2](https://ovh.github.io/design-system/v17.6.0/?path=/story/ovhcloud-design-system-what-s-new-changelog--page) to [18.0.0](https://ovh.github.io/design-system/v18.0.0/?path=/story/ovhcloud-design-system-what-s-new-changelog--page) ([compare](https://github.com/ovh/design-system/compare/release/17.0...release/18.0))
 
-TODO explain philosophy for the big changes:
+From the beginning of the project to the latest v17 version, our vision of the project have greatly evolved.
+Thanks to real-user feedbacks, a better understanding of our use cases and how ODS fits in the OVHCloud ecosystem.
 
-* given user feedback, far from native, release process too long, too many enums, ...
-* add design token and theming
-* now export styles helpers
+With this new version we've tried to tackle most of the known issues to offer a better end-user experience:
+- components are now behaving more like native html elements
+- components are now easier to use and to customize
+- no more invasive `console.log`, we only print meaningful warnings when needed
+- enum values can now be used directly instead of importing it
+- events are now normalized for all components
+- release process will be shorter
 
-## Dependency
+On top of that, the v18 does bring new features:
+- new components: file-upload and timepicker
+- latest design applied on all component
+- now sync with figma changes
+- a new set of icons
+- a reworked documentation
 
-TODO
+To achieve all this, we had to rewrite almost the whole library.
 
-* common libs and blue-jeans are removed
-* new lib ods-themes
-* example of import change
+Thanks to that ODS lib has lost (TODO info about size before and after)
+
+This is a major version change with tons of breaking changes.
+But this aims to be the last time.
+
+To help you moving from a previous version to the v18, we've added a dedicated page on each component presenting
+the changes and some migration examples.
+
+We'll go here through the major changes of this version.
+If you have any questions or issues regarding the new version, feel free to reach us directly.
+
+## ODS libraries
+
+The following libs have been removed:
+- @ovhcloud/ods-cdk
+- @ovhcloud/ods-common-core
+- @ovhcloud/ods-common-stencil
+- @ovhcloud/ods-common-testing
+- @ovhcloud/ods-common-theming
+- @ovhcloud/ods-theme-blue-jeans
+
+There is now only two library published that you should include:
+- `@ovhcloud/ods-components` that contain all web-components, react and vue wrappers and the sass mixins
+- `@ovhcloud/ods-themes` that contain the design tokens and the assets (fonts and icons)
+
+The CDK has been removed and we do not plan on publishing it again. If you were using part of it, please reach
+out to us so that we can get more information about your usage.
+
+All common libs have been and we do not plan on publishing them again. If you were using part of them, please reach
+out to us so that we can get more information about your usage.
+
+The `blue-jeans` theme has been replace by the default theme of `@ovhcloud/ods-themes`
+(see [Themes](TODO url) section for more information).
+
+## ODS dependencies upgrade
+
+The new version comes with the following upgrade on major library:
+- Stencil bumps from `4.12.0` to `4.12.2` TODO 4.19?
+- `node-sass` is not supported anymore and was replaced by `sass` (`1.71.0`)
+- Typescript bumps from `4.7.4` to `5.3.3`
+- Storybook bumps from `6.4.19` to `8.0.4`
 
 ## Themes
 
-TODO explain how themes works and how to use them
+TODO explain how themes works and how to use theme
+
+## Style customization
+
+Although the ODS component comes with the expected design, you can now apply your own style directly on some part
+of the web-component shadow DOM, thanks to the [part selector](https://developer.mozilla.org/en-US/docs/Web/CSS/::part).
+
+For example, you can add style on the native `input` element of an `ods-input` component through the following code:
+```html
+<style>
+  .my-input::part(input) {
+    width: 300px;
+  }
+</style>
+
+<ods-input class="my-input" ... />
+```
+
+Most of the component exposes one or more part like this, you can find more information on each component documentation page.
 
 ## Sass helpers
 
-TODO explain how to use sass mixins / placehodlers
+In addition to the easier customization, we're also exposing the "basic" style of some core component as Sass mixins
+that you can use to apply on a native element to get the same ODS rendering.
 
-## All Components
+For example, if you need to make a `a` tag looks like an `ods-link`:
 
-TODO explain why we refactored all components:
+```scss
+@import '@ovhcloud/ods-components/style';
 
-* more native
-* easier to use/integrate
-* more robust, faster and lighter
-* easy style customization
-* ...
+.my-link {
+  @include ods-link();
+  @include ods-link-color('primary');
+}
+```
+```html
+<a class="my-link" ...>...</a>
+```
 
-The complete list of changes and guide about how to migrate is available per component:
+This can be useful when you can't manage some part of the DOM as you want, for example using a library that will always
+render a `a` and that provide no custom templating.
 
+Be careful though, this does only provide basic style, not all the feature of an ODS component, so we do recommend
+to use the web-component by default.
+
+## ODS Components
+
+As each component was refactored, there are too many changes to list everything here.
+
+The main common breaking change is the following: `osds-xxx` component is now `ods-xxx`
+
+A complete list of changes and a guide about how to migrate is available per component:
+
+[//]: # (TODO correct url on each)
+
+* [accordion](#)
+* [badge](#)
+* [breadcrumb](#)
+* [button](#)
+* [card](#)
+* [checkbox](#)
+* [clipboard](#)
+* [code](#)
+* [datepicker](#)
+* [divider](#)
+* [file-upload](#)
+* [form-field](#)
+* [icon](#)
+* [input](#)
+* [link](#)
+* [medium](#)
+* [message](#)
+* [modal](#)
+* [password](#)
+* [phone-number](#)
+* [popover](#)
+* [progress-bar](#)
+* [quantity](#)
+* [radio](#)
+* [range](#)
+* [select](#)
+* [skeleton](#)
 * [spinner](#)
+* [switch](#)
+* [table](#)
+* [tabs](#)
+* [tag](#)
+* [text](#)
+* [textarea](#)
+* [timepicker](#)
+* [toggle](#)
+* [tooltip](#)

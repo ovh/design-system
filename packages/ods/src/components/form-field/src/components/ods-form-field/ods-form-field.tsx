@@ -1,6 +1,4 @@
-import type { FunctionalComponent } from '@stencil/core';
-import { Component, Host, Prop, h } from '@stencil/core';
-import { ODS_TEXT_PRESET } from '../../../../text/src';
+import { Component, type FunctionalComponent, Host, Prop, h } from '@stencil/core';
 
 @Component({
   shadow: true,
@@ -12,25 +10,24 @@ export class OdsFormField {
 
   render(): FunctionalComponent {
     return (
-      <Host class='ods-form-field'>
-        <div class='ods-form-field__top-bar'>
-          <slot name='label'></slot>
-        </div>
+      <Host class="ods-form-field">
+        <slot name="label"></slot>
+
         <slot></slot>
-        <div class='ods-form-field__bottom-bar'>
-          {
-            this.error &&
-            this.error.length > 0
-              ? <ods-text
-                class='ods-form-field__bottom-bar__error-message'
-                preset={ ODS_TEXT_PRESET.span }
-              >
+
+        <div class="ods-form-field__bottom-bar">
+          <div class="ods-form-field__bottom-bar__messages">
+            <slot name="helper"></slot>
+
+            {
+              !!this.error &&
+              <span class="ods-form-field__bottom-bar__messages__error">
                 { this.error }
-              </ods-text>
-              : <slot name='helper'></slot>
-          }
-          <div class='ods-form-field__bottom-bar__separator'></div>
-          <slot name='visual-hint'></slot>
+              </span>
+            }
+          </div>
+
+          <slot name="visual-hint"></slot>
         </div>
       </Host>
     );

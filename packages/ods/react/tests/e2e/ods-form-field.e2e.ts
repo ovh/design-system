@@ -23,13 +23,13 @@ describe('ods-form-field react', () => {
 
   it('properly renders the label slot', async() => {
     const elem = await page.$('ods-form-field');
-    const label = await elem?.evaluate((el) => el.querySelector('ods-text[slot="label"]')?.textContent);
+    const label = await elem?.evaluate((el) => el.querySelector('[slot="label"]')?.textContent);
     expect(label).toBe('Description');
   });
 
   it('properly renders the visual-hint slot', async() => {
     const elem = await page.$('ods-form-field');
-    const visualHint = await elem?.evaluate((el) => el.querySelector('ods-text[slot="visual-hint"]')?.textContent);
+    const visualHint = await elem?.evaluate((el) => el.querySelector('[slot="visual-hint"]')?.textContent);
     expect(visualHint).toBe('02/11/1999');
   });
 
@@ -43,13 +43,13 @@ describe('ods-form-field react', () => {
 
   it('properly renders the helper slot', async() => {
     const elem = await page.$('ods-form-field');
-    const helper = await elem?.evaluate((el) => el.querySelector('ods-text[slot="helper"]')?.textContent);
+    const helper = await elem?.evaluate((el) => el.querySelector('[slot="helper"]')?.textContent);
     expect(helper).toBe('A little helper text');
   });
 
   it('displays the error message when error attribute is set', async() => {
     const elem = await page.$('ods-form-field');
-    const errorMessage = await elem?.evaluate((el) => el.shadowRoot?.querySelector('ods-text.ods-form-field__bottom-bar__error-message')?.textContent);
+    const errorMessage = await elem?.evaluate((el) => el.shadowRoot?.querySelector('.ods-form-field__bottom-bar__messages__error')?.textContent);
     expect(errorMessage).toBe('Wrong format.');
   });
 });

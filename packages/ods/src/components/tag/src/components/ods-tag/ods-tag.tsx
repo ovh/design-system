@@ -1,7 +1,6 @@
 import { Component, Element, Event, type EventEmitter, type FunctionalComponent, Host, Listen, Prop, h } from '@stencil/core';
 import { ODS_ICON_NAME, type OdsIconName } from '../../../../icon/src';
 import { ODS_TAG_COLOR, type OdsTagColor } from '../../constants/tag-color';
-import { ODS_TAG_SHAPE, type OdsTagShape } from '../../constants/tag-shape';
 import { ODS_TAG_SIZE, type OdsTagSize } from '../../constants/tag-size';
 import { handleClick, handleKeyDown, handleKeyUp } from '../../controller/ods-tag';
 import { type OdsTagEventRemoveDetail } from '../../interfaces/events';
@@ -20,8 +19,6 @@ export class OdsTag {
   @Prop({ reflect: true }) public icon?: OdsIconName;
   @Prop({ reflect: true }) public isDisabled: boolean = false;
   @Prop({ reflect: true }) public label!: string;
-  /** @docType OdsTagShape */
-  @Prop({ reflect: true }) public shape: OdsTagShape = ODS_TAG_SHAPE.round;
   /** @docType OdsTagSize */
   @Prop({ reflect: true }) public size: OdsTagSize = ODS_TAG_SIZE.md;
 
@@ -50,7 +47,6 @@ export class OdsTag {
             'ods-tag__tag': true,
             'ods-tag__tag--disabled': this.isDisabled,
             [`ods-tag__tag--${this.color}`]: true,
-            [`ods-tag__tag--${this.shape}`]: true,
             [`ods-tag__tag--${this.size}`]: true,
           }}
           part="tag"

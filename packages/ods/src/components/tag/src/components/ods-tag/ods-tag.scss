@@ -72,18 +72,6 @@
       @include tag.ods-tag-shape('square');
     }
 
-    &--sm {
-      @include tag.ods-tag-size('sm');
-
-      & #{$tag}__close {
-        font-size: 0.5rem;
-      }
-
-      & #{$tag}__icon {
-        font-size: 0.625rem;
-      }
-    }
-
     &--md {
       @include tag.ods-tag-size('md');
 

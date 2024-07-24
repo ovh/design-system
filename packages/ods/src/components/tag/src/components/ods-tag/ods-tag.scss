@@ -40,14 +40,6 @@
       color: var(--ods-color-neutral-600);
     }
 
-    &--round {
-      @include tag.ods-tag-shape('round');
-    }
-
-    &--square {
-      @include tag.ods-tag-shape('square');
-    }
-
     &--md {
       @include tag.ods-tag-size('md');
 

@@ -6,7 +6,7 @@ enum ODS_TAG_COLOR {
   warning = 'warning',
 }
 
-type OdsTagColor =`${ODS_TAG_COLOR}`;
+type OdsTagColor = `${ODS_TAG_COLOR}`;
 
 const ODS_TAG_COLORS = Object.freeze(Object.values(ODS_TAG_COLOR));
 

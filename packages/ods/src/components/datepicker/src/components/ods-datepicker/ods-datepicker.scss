@@ -13,7 +13,7 @@ $ods-datepicker-clearable-button-size: input.$ods-input-actions-button-width;
     color: var(--ods-color-primary-500);
 
     &:not(.selected):hover {
-      background-color: var(--ods-color-primary-200);
+      background-color: var(--ods-color-primary-100);
     }
   }
 
@@ -27,7 +27,7 @@ $ods-datepicker-clearable-button-size: input.$ods-input-actions-button-width;
 
     z-index: 1;
     outline-offset: 0;
-    background-color: inherit;
+    background-color: var(--ods-color-primary-100);
   }
 
   &.selected {
@@ -142,7 +142,7 @@ $ods-datepicker-clearable-button-size: input.$ods-input-actions-button-width;
           color: var(--ods-color-primary-500);
 
           &:hover {
-            background-color: var(--ods-color-primary-200);
+            background-color: var(--ods-color-primary-100);
           }
         }
 
@@ -216,7 +216,7 @@ $ods-datepicker-clearable-button-size: input.$ods-input-actions-button-width;
                   content: '';
                 }
 
-                &:not(.selected) {
+                &:not(.focused, .selected) {
                   background-color: inherit;
                 }
               }

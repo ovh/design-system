@@ -6,20 +6,19 @@
 
 .ods-form-field {
   &__bottom-bar {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 1fr max-content;
     column-gap: 4px;
-    align-items: flex-start;
-    justify-content: space-between;
 
-    &__error-message {
-      color: var(--ods-color-critical-500);
-      font-weight: 600;
-    }
+    &__messages {
+      display: flex;
+      flex-flow: column;
+      row-gap: 4px;
 
-    &__separator {
-      flex: 1;
-      content: '';
+      &__error {
+        color: var(--ods-color-critical-500);
+        font-weight: 600;
+      }
     }
   }
 }

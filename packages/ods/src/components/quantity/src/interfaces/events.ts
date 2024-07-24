@@ -1,6 +1,6 @@
 interface OdsQuantityEventValueChangeDetail {
   name: string;
-  previousValue?: number;
+  previousValue?: number | null;
   validity?: ValidityState;
   value: number | null;
 }

@@ -117,9 +117,9 @@ export class OdsTimepicker {
     this.odsChange.emit({
       currentTimezone: this.currentTimezone,
       name: this.name,
-      previousValue: this.previousValue ?? undefined,
+      previousValue: this.previousValue,
       validity: await this.odsInput?.getValidity(),
-      value: this.value ?? null,
+      value: this.value,
     });
   }
 

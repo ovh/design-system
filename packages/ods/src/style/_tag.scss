@@ -9,6 +9,8 @@ $ods-tag-height-lg: 28px;
   flex-flow: row;
   grid-gap: 0.25rem;
   align-items: center;
+  border-width: 2px;
+  border-style: solid;
   cursor: pointer;
 
   &:focus-visible {
@@ -36,69 +38,7 @@ $ods-tag-height-lg: 28px;
   }
 }
 
-@mixin ods-tag-variant-default($color) {
-  @if $color == 'critical' {
-    background-color: var(--ods-color-critical-100);
-    color: var(--ods-color-critical-900);
-
-    &:hover {
-      background-color: var(--ods-color-critical-200);
-    }
-
-    &:active {
-      background-color: var(--ods-color-critical-300);
-    }
-  } @else if $color == 'information' {
-    background-color: var(--ods-color-primary-100);
-    color: var(--ods-color-primary-900);
-
-    &:hover {
-      background-color: var(--ods-color-primary-200);
-    }
-
-    &:active {
-      background-color: var(--ods-color-primary-300);
-    }
-  } @else if $color == 'neutral' {
-    background-color: var(--ods-color-neutral-100);
-    color: var(--ods-color-neutral-700);
-
-    &:hover {
-      background-color: var(--ods-color-neutral-200);
-    }
-
-    &:active {
-      background-color: var(--ods-color-neutral-300);
-    }
-  } @else if $color == 'success' {
-    background-color: var(--ods-color-success-100);
-    color: var(--ods-color-success-900);
-
-    &:hover {
-      background-color: var(--ods-color-success-200);
-    }
-
-    &:active {
-      background-color: var(--ods-color-success-300);
-    }
-  } @else if $color == 'warning' {
-    background-color: var(--ods-color-warning-100);
-    color: var(--ods-color-warning-900);
-
-    &:hover {
-      background-color: var(--ods-color-warning-200);
-    }
-
-    &:active {
-      background-color: var(--ods-color-warning-300);
-    }
-  }
-}
-
-@mixin ods-tag-variant-outline($color) {
-  border-width: 2px;
-  border-style: solid;
-
+@mixin ods-tag-color($color) {
   @if $color == 'critical' {
     border-color: var(--ods-color-critical-100);
     background-color: var(--ods-color-critical-000);

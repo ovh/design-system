@@ -161,7 +161,6 @@ export const Shape: StoryObj = {
 export const Size: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
-<ods-tag label="SM tag" size="${ODS_TAG_SIZE.sm}"></ods-tag>
 <ods-tag label="MD tag" size="${ODS_TAG_SIZE.md}"></ods-tag>
 <ods-tag label="LG tag" size="${ODS_TAG_SIZE.lg}"></ods-tag>
   `,

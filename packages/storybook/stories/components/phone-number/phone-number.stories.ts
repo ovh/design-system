@@ -242,6 +242,23 @@ export const Overview: StoryObj = {
   `,
 };
 
+export const Locale: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+    <ods-phone-number countries="all"
+                      locale="fr">
+    </ods-phone-number>
+    <br /><br />
+    <ods-phone-number countries="all"
+                      locale="en">
+    </ods-phone-number>
+    <br /><br />
+    <ods-phone-number countries="all"
+                      locale="de">
+    </ods-phone-number>
+  `,
+};
+
 export const Pattern: StoryObj = {
   tags: ['isHidden'],
   render: () => html`

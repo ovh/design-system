@@ -202,7 +202,7 @@ export const NotDismissible: StoryObj = {
   <ods-text preset="span">
     This Modal is not dismissible. You can use the custom "Close" button to close it.
   </ods-text>
-  <ods-button label="Close" slot="actions" icon="cross" class="modal-not-dismissible-close"></ods-button>
+  <ods-button label="Close" slot="actions" icon="xmark" class="modal-not-dismissible-close"></ods-button>
 </ods-modal>
 
 <script>
@@ -262,7 +262,7 @@ export const Actions: StoryObj = {
   <ods-text preset="span">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
   </ods-text>
-  <ods-button label="Close" slot="actions" icon="cross" class="modal-actions-close"></ods-button>
+  <ods-button label="Close" slot="actions" icon="xmark" class="modal-actions-close"></ods-button>
 </ods-modal>
 
 <script>

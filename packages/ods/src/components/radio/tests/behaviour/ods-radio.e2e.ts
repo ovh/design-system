@@ -185,7 +185,7 @@ describe('ods-radio behaviour', () => {
       await submitButton.click();
       await page.waitForNetworkIdle();
       const url = new URL(page.url());
-      expect(url.searchParams.get('name')).toBeNull();
+      expect(url.searchParams.get('name')).toBe('huey');
     });
   });
 });

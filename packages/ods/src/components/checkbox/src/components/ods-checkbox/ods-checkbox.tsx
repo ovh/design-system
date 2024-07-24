@@ -50,7 +50,7 @@ export class OdsCheckbox {
       if (!inputCheckbox) {
         return;
       }
-      if (checkbox.getAttribute('is-checked') === '') {
+      if (checkbox.getAttribute('is-checked') !== null && checkbox.getAttribute('is-checked') !== 'false') {
         inputCheckbox.checked = true;
       } else {
         inputCheckbox.checked = false;
@@ -58,6 +58,10 @@ export class OdsCheckbox {
     });
     this.odsReset.emit();
     hasChange && this.onInput();
+  }
+
+  async formResetCallback(): Promise<void> {
+    await this.reset();
   }
 
   private getOdsCheckboxGroupByName(): NodeListOf<Element> {

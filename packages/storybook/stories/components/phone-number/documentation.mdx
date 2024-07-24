@@ -64,7 +64,7 @@ _**Phone Number** component is a combo of a selection of country phone indicator
 
 ![Component anatomy](components/phone-number/anatomy.png "Component anatomy")
 
-1. **Country indicator Select**: displays the selected country flag and the list of countries by click. List is scroll-able, with 5 items visible at the same time. Each country name is written in users locale, in alphabetical order (for Latin script)
+1. **Country indicator Select**: displays the selected country flag and the list of countries by click. List is scroll-able, with 5 items visible at the same time. Each country name is written in users locale, in alphabetical order (for Latin script) _(optional)_
 2. **Input field**: displays the country indicator as prefix when users select a country, and they can enter their phone number in this field (from 7 to 12 characters maximum). The [**Input**](?path=/docs/ods-components-form-input--documentation) field also has a placeholder to provide hints regarding format according to the selected country.
 
 ## Usage
@@ -99,17 +99,28 @@ _**Phone Number** component is a combo of a selection of country phone indicator
 **Phone Number** is a group of [**Select**](?path=/docs/ods-components-form-select--documentation) and [**Input**](?path=/docs/ods-components-form-input--documentation), and should act as their specific placements.
 
 ## Behavior
-[
-// (By default, the country **Select** displays user's locale country. If the locale does not exist in the Phone Number current selection, the first item is selected by default.)
-]  #
-
-Country indicator [**Select**](?path=/docs/ods-components-form-select--documentation) can be optional.
 
 When the user selects a country, it determines the format used to validate their phone number. If selected country has been modified, expected format and placeholder will be updated.
 
 If the field content is in error state (i.e. missing or wrong characters), the whole **Phone Number** component becomes in error state.
 
 An event is triggered when the [**Input**](?path=/docs/ods-components-form-input--documentation) value changes.
+
+### Locale
+
+The locale (i.e. country list translation in [**Select**](?path=/docs/ods-components-form-select--documentation)) is first set to the value provided as a property.
+
+If the given property is not defined or recognized, the component attempts to use the browser's locale settings.
+
+If the browser's locale is also not recognized, the component defaults to French (FR).
+
+### ISO code
+
+The ISO code is initially set to the value provided as a property.
+
+If the given property is not defined or recognized, the component attempts to determine the ISO code based on the browser's locale.
+
+If the browser's locale is not recognized, the component defaults to the first ISO code in the predefined country list.
 
 ## Variation
 

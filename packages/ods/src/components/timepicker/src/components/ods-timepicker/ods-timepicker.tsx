@@ -154,7 +154,7 @@ export class OdsTimepicker {
             has-error={ this.hasError }
             is-disabled={ this.isDisabled }
             is-readonly={ this.isReadonly }
-            onOdsChange={ (event: OdsSelectEventChange) => this.onOdsChange(event, true) }
+            onOdsChange={ (event: OdsSelectChangeEvent) => this.onOdsChange(event, true) }
             onOdsClear={ (event: CustomEvent<void>) => event.stopPropagation() }
             onOdsReset={ (event: CustomEvent<void>) => event.stopPropagation() }
             name={ this.name }

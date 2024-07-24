@@ -249,6 +249,15 @@ export const Locale: StoryObj = {
   `,
 };
 
+export const ISOCode: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+    <ods-phone-number countries="all"
+                      iso-code="br">
+    </ods-phone-number>
+  `,
+};
+
 export const Pattern: StoryObj = {
   tags: ['isHidden'],
   render: () => html`

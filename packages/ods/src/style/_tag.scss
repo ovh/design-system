@@ -1,6 +1,5 @@
 @use './focus';
 
-$ods-tag-height-sm: 16px;
 $ods-tag-height-md: 20px;
 $ods-tag-height-lg: 28px;
 
@@ -26,11 +25,7 @@ $ods-tag-height-lg: 28px;
 }
 
 @mixin ods-tag-size($size) {
-  @if $size == 'sm' {
-    padding: 2px 6px;
-    height: $ods-tag-height-sm;
-    font-size: 0.75rem;
-  } @else if $size == 'md' {
+  @if $size == 'md' {
     padding: 1px 8px;
     height: $ods-tag-height-md;
     font-size: 0.875rem;

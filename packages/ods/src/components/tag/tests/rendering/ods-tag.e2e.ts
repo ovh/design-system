@@ -73,19 +73,14 @@ describe('ods-tag rendering', () => {
   });
 
   describe('sizes', () => {
-    it('should respect increase order (sm < md < lg)', async() => {
+    it('should respect increase order (md < lg)', async() => {
       await setup(`
-        <ods-tag size="${ODS_TAG_SIZE.sm}"></ods-tag>
         <ods-tag size="${ODS_TAG_SIZE.md}"></ods-tag>
         <ods-tag size="${ODS_TAG_SIZE.lg}"></ods-tag>
       `);
 
-      const smTag = await page.find(`ods-tag[size=${ODS_TAG_SIZE.sm}]`);
       const mdTag = await page.find(`ods-tag[size=${ODS_TAG_SIZE.md}]`);
       const lgTag = await page.find(`ods-tag[size=${ODS_TAG_SIZE.lg}]`);
-
-      const smTagStyle = await smTag.getComputedStyle();
-      const smTagHeight = parseInt(smTagStyle.getPropertyValue('height'), 10);
 
       const mdTagStyle = await mdTag.getComputedStyle();
       const mdTagHeight = parseInt(mdTagStyle.getPropertyValue('height'), 10);
@@ -93,11 +88,7 @@ describe('ods-tag rendering', () => {
       const lgTagStyle = await lgTag.getComputedStyle();
       const lgTagHeight = parseInt(lgTagStyle.getPropertyValue('height'), 10);
 
-      expect(smTagHeight).toBeLessThan(mdTagHeight);
-      expect(smTagHeight).toBeLessThan(lgTagHeight);
       expect(mdTagHeight).toBeLessThan(lgTagHeight);
-      expect(mdTagHeight).toBeGreaterThan(smTagHeight);
-      expect(lgTagHeight).toBeGreaterThan(smTagHeight);
       expect(lgTagHeight).toBeGreaterThan(mdTagHeight);
     });
   });

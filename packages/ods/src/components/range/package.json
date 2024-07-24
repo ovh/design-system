@@ -6,7 +6,7 @@
   "main": "dist/index.cjs.js",
   "collection": "dist/collection/collection-manifest.json",
   "scripts": {
-    "clean": "rimraf .stencil coverage dist docs-api www",
+    "clean": "rimraf .stencil coverage dist documentation www",
     "doc": "typedoc --pretty --plugin ../../../scripts/typedoc-plugin-decorator.js && node ../../../scripts/generate-typedoc-md.js",
     "lint:scss": "stylelint 'src/components/**/*.scss'",
     "lint:ts": "eslint '{src,tests}/**/*.{js,ts,tsx}'",
@@ -14,6 +14,6 @@
     "test:e2e": "stencil test --e2e --runInBand --config stencil.config.ts",
     "test:e2e:ci": "tsc --noEmit && stencil test --e2e --ci --runInBand --config stencil.config.ts",
     "test:spec": "stencil test --spec --config stencil.config.ts --coverage",
-    "test:spec:ci": "tsc --noEmit && stencil test --config stencil.config.ts  --spec --ci --coverage"
+    "test:spec:ci": "tsc --noEmit && stencil test --config stencil.config.ts  --spec --ci"
   }
 }

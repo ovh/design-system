@@ -47,18 +47,18 @@ $ods-tag-height-lg: 28px;
       background-color: var(--ods-color-critical-100);
     }
   } @else if $color == 'information' {
-    border-color: var(--ods-color-primary-100);
-    background-color: var(--ods-color-primary-000);
-    color: var(--ods-color-primary-900);
+    border-color: var(--ods-color-information-100);
+    background-color: var(--ods-color-information-000);
+    color: var(--ods-color-information-900);
 
     &:hover {
-      border-color: var(--ods-color-primary-200);
-      background-color: var(--ods-color-primary-100);
+      border-color: var(--ods-color-information-200);
+      background-color: var(--ods-color-information-100);
     }
 
     &:active {
-      border-color: var(--ods-color-primary-300);
-      background-color: var(--ods-color-primary-200);
+      border-color: var(--ods-color-information-300);
+      background-color: var(--ods-color-information-200);
     }
   } @else if $color == 'neutral' {
     border-color: var(--ods-color-neutral-100);

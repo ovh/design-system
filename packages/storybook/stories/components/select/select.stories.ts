@@ -292,3 +292,49 @@ export const Optgroup: StoryObj = {
 </ods-select>
   `,
 };
+
+export const Disabled: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-select is-disabled placeholder="Disabled select">
+  <option value="cat">Cat</option>
+</ods-select>
+  `,
+};
+
+export const DisabledOption: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-select placeholder="Disabled select">
+  <option value="dog">Dog</option>
+  <option value="cat" disabled>Cat</option>
+  <option value="hamster">Hamster</option>
+  <option value="parrot">Parrot</option>
+  <option value="spider">Spider</option>
+  <option value="goldfish">Goldfish</option>
+</ods-select>
+  `,
+};
+
+export const DisabledGroupOfOptions: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-select placeholder="Select a country">
+  <optgroup label="Europe">
+    <option value="fr">France</option>
+    <option value="it">Italy</option>
+    <option value="de">Germany</option>
+  </optgroup>
+  <optgroup label="Asia" disabled>
+    <option value="cn">China</option>
+    <option value="jp">Japan</option>
+    <option value="ru">Russia</option>
+  </optgroup>
+  <optgroup label="North America">
+    <option value="ca">Canada</option>
+    <option value="mx">Mexico</option>
+    <option value="us">United States of America</option>
+  </optgroup>
+</ods-select>
+  `,
+};

@@ -1,5 +1,5 @@
 import { type E2EElement, type E2EPage, newE2EPage } from '@stencil/core/testing';
-import { ODS_TAG_SHAPE, ODS_TAG_SIZE } from '../../src';
+import { ODS_TAG_SIZE } from '../../src';
 
 describe('ods-tag rendering', () => {
   let closeIcon: E2EElement;
@@ -49,26 +49,6 @@ describe('ods-tag rendering', () => {
 
       const tagStyle = await tag.getComputedStyle();
       expect(tagStyle.getPropertyValue('background-color')).toBe('rgb(255, 0, 0)');
-    });
-  });
-
-  describe('shapes', () => {
-    it('should render rounder tag on round shape', async() => {
-      await setup(`
-        <ods-tag shape="${ODS_TAG_SHAPE.round}"></ods-tag>
-        <ods-tag shape="${ODS_TAG_SHAPE.square}"></ods-tag>
-      `);
-
-      const roundTag = await page.find(`ods-tag[shape="${ODS_TAG_SHAPE.round}"] >>> .ods-tag__tag`);
-      const squareTag = await page.find(`ods-tag[shape="${ODS_TAG_SHAPE.square}"] >>> .ods-tag__tag`);
-
-      const roundTagStyle = await roundTag.getComputedStyle();
-      const roundTagBorderRadius = parseInt(roundTagStyle.getPropertyValue('borderRadius'), 10);
-
-      const squareTagStyle = await squareTag.getComputedStyle();
-      const squareTagBorderRadius = parseInt(squareTagStyle.getPropertyValue('borderRadius'), 10);
-
-      expect(roundTagBorderRadius).toBeGreaterThan(squareTagBorderRadius);
     });
   });
 

@@ -186,7 +186,7 @@ export const Tooltip: StoryObj = {
     Description
   </ods-text>
 
-  <ods-icon slot="label" id="tooltip-trigger" name="help-circle"></ods-icon>
+  <ods-icon slot="label" id="tooltip-trigger" name="circle-question"></ods-icon>
 
   <ods-input type="text" placeholder="Placeholder" clearable></ods-input>
 

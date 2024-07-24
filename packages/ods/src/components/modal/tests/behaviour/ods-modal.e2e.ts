@@ -23,7 +23,7 @@ describe('ods-modal behaviour', () => {
 
   it('should trigger open event when opening', async() => {
     await setup('<ods-modal><ods-text>Hello, world!</ods-text></ods-modal>');
-    const openSpy = await page.spyOnEvent('odsModalOpen');
+    const openSpy = await page.spyOnEvent('odsOpen');
 
     const modal = await page.find('ods-modal');
     await modal.callMethod('open');
@@ -33,7 +33,7 @@ describe('ods-modal behaviour', () => {
 
   it('should trigger close event when closing', async() => {
     await setup('<ods-modal is-open><ods-text>Hello, world!</ods-text></ods-modal>');
-    const closeSpy = await page.spyOnEvent('odsModalClose');
+    const closeSpy = await page.spyOnEvent('odsClose');
 
     const modal = await page.find('ods-modal');
     await modal.callMethod('close');

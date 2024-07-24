@@ -69,7 +69,7 @@ describe('ods-modal navigation', () => {
         <ods-text>Hello, world!</ods-text>
       </ods-modal>
     `);
-    const closeSpy = await page.spyOnEvent('odsModalClose');
+    const closeSpy = await page.spyOnEvent('odsClose');
 
     const dismissButton = await page.find('ods-modal >>> .ods-modal__dialog__header__close');
     await dismissButton.click();
@@ -81,7 +81,7 @@ describe('ods-modal navigation', () => {
 
   it('should close the modal on dismissible button "Enter" press', async() => {
     await setup('<ods-modal is-open is-dismissible="true"><ods-text>Hello, world!</ods-text></ods-modal>');
-    const closeSpy = await page.spyOnEvent('odsModalClose');
+    const closeSpy = await page.spyOnEvent('odsClose');
 
     const dismissButton = await page.find('ods-modal >>> .ods-modal__dialog__header__close');
     await dismissButton.press('Enter');
@@ -93,7 +93,7 @@ describe('ods-modal navigation', () => {
 
   it('should close the modal on dismissible button "Space" press', async() => {
     await setup('<ods-modal is-open is-dismissible="true"><ods-text>Hello, world!</ods-text></ods-modal>');
-    const closeSpy = await page.spyOnEvent('odsModalClose');
+    const closeSpy = await page.spyOnEvent('odsClose');
 
     const dismissButton = await page.find('ods-modal >>> .ods-modal__dialog__header__close');
     await dismissButton.press('Space');

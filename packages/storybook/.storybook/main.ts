@@ -20,6 +20,9 @@ const config: StorybookConfig = {
       },
     },
   ],
+  core: {
+    disableTelemetry: true,
+  },
   docs: {
     autodocs: false,
   },

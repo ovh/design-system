@@ -11,18 +11,11 @@ $ods-tag-height-lg: 28px;
   align-items: center;
   border-width: 2px;
   border-style: solid;
+  border-radius: var(--ods-border-radius-lg);
   cursor: pointer;
 
   &:focus-visible {
     @include focus.ods-focus();
-  }
-}
-
-@mixin ods-tag-shape($shape) {
-  @if $shape == 'round' {
-    border-radius: var(--ods-border-radius-lg);
-  } @else if $shape == 'square' {
-    border-radius: var(--ods-border-radius-sm);
   }
 }
 

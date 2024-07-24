@@ -11,7 +11,7 @@ $ods-input-input-padding-right: calc($ods-input-actions-button-width + $ods-inpu
   border-radius: var(--ods-border-radius-sm);
   padding: 4px 8px;
   height: $ods-input-input-height;
-  color: var(--ods-color-text);
+  color: var(--ods-color-neutral-600);
   font-size: 1rem;
 
   &:focus {

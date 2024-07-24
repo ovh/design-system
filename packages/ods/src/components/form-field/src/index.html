@@ -8,11 +8,27 @@
   <script type='module' src='/build/ods-form-field.esm.js'></script>
   <script nomodule src='/build/ods-form-field.js'></script>
   <link rel="stylesheet" href="/build/ods-form-field.css">
+
+  <style>
+    * {
+      font-family: 'Source Sans Pro', sans-serif;
+    }
+
+    .divider {
+      width: 100%;
+      height: 1px;
+      margin-top: 48px;
+      background: lightgray;
+    }
+
+    .textarea::part(textarea) {
+      width: 100%;
+    }
+  </style>
 </head>
 
 <body>
-
-  <p>1 (Label only)</p>
+  <p>Label only</p>
   <ods-form-field>
     <ods-text slot="label" preset='label'>
       <ods-icon name="home"></ods-icon>
@@ -22,7 +38,15 @@
   </ods-form-field>
 
   <div class="divider"></div>
-  <p>2 (Label & Visual Hint)</p>
+
+  <p>Error only</p>
+  <ods-form-field error="Wrong format.">
+    <ods-input type="text" id="midable"></ods-input>
+  </ods-form-field>
+
+  <div class="divider"></div>
+
+  <p>Label & Visual Hint</p>
   <ods-form-field>
     <ods-text slot="label" preset='label'>
       Description
@@ -34,7 +58,8 @@
   </ods-form-field>
 
   <div class="divider"></div>
-  <p>3 (Label, Visual Hint & Helper)</p>
+
+  <p>Label, Visual Hint & Helper</p>
   <ods-form-field>
     <ods-text slot="label" preset='label'>
       Description
@@ -52,7 +77,8 @@
   </ods-form-field>
 
   <div class="divider"></div>
-  <p>4 (Label, Visual Hint & Error)</p>
+
+  <p>Label, Visual Hint & Error</p>
   <ods-form-field error="Wrong format.">
     <ods-text slot="label" preset='label'>
       Description
@@ -70,7 +96,8 @@
   </ods-form-field>
 
   <div class="divider"></div>
-  <p>5 (With a Tooltip)</p>
+
+  <p>With a Tooltip</p>
   <ods-form-field>
     <ods-text slot="label" preset='label'>
       Description
@@ -92,7 +119,8 @@
   </ods-form-field>
 
   <div class="divider"></div>
-  <p>6 (Too long text)</p>
+
+  <p>Too long text</p>
   <ods-form-field>
     <ods-text slot="label" preset='label'>
       Description
@@ -116,20 +144,3 @@
   <div class="divider"></div>
 </body>
 </html>
-
-<style>
-  * {
-    font-family: 'Source Sans Pro', sans-serif;
-  }
-
-  .divider {
-    width: 100%;
-    height: 1px;
-    margin-top: 48px;
-    background: lightgray;
-  }
-
-  .textarea::part(textarea) {
-    width: 100%;
-  }
-</style>

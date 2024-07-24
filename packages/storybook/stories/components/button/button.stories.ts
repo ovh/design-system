@@ -1,6 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/ods-button';
-import { ODS_BUTTON_COLOR, ODS_BUTTON_COLORS, ODS_BUTTON_SIZE, ODS_BUTTON_SIZES, ODS_BUTTON_VARIANT, ODS_BUTTON_VARIANTS, ODS_ICON_NAMES } from '@ovhcloud/ods-components';
+import {
+  ODS_BUTTON_COLOR,
+  ODS_BUTTON_COLORS,
+  ODS_BUTTON_SIZE,
+  ODS_BUTTON_SIZES,
+  ODS_BUTTON_VARIANT,
+  ODS_BUTTON_VARIANTS,
+  ODS_ICON_NAME,
+  ODS_ICON_NAMES,
+} from '@ovhcloud/ods-components';
 import { html } from 'lit-html';
 import { CONTROL_CATEGORY, orderControls } from '../../control';
 
@@ -167,5 +176,19 @@ export const Variant: StoryObj = {
 <ods-button label="Default button" variant="${ODS_BUTTON_VARIANT.default}"></ods-button>
 <ods-button label="Outline button" variant="${ODS_BUTTON_VARIANT.outline}"></ods-button>
 <ods-button label="Ghost button" variant="${ODS_BUTTON_VARIANT.ghost}"></ods-button>
+  `,
+};
+
+export const WithIcon: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+    <ods-button label="Button" icon="${ODS_ICON_NAME.home}"></ods-button>
+  `,
+};
+
+export const IconOnly: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-button icon="${ODS_ICON_NAME.ellipsisHorizontal}"></ods-button>
   `,
 };

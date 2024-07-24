@@ -112,7 +112,7 @@ export class OdsSelect {
   }
 
   @Watch('value')
-  onValueChange(value: string | string[] | null, previousValue?: string | string[]): void {
+  onValueChange(value: string | string[] | null, previousValue?: string | string[] | null): void {
     // Value change can be triggered from either value attribute change or select change
     // For the latter, we don't want to trigger a new change (as it may causes loop)
     if (!this.isSelectSync) {
@@ -124,7 +124,7 @@ export class OdsSelect {
 
     this.odsChange.emit({
       name: this.name,
-      previousValue: inlineValue(previousValue) || undefined,
+      previousValue: inlineValue(previousValue) || null,
       validity:  this.selectElement?.validity,
       value: inlineValue(value) || null,
     });

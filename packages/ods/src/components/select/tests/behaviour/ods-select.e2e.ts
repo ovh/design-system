@@ -205,6 +205,7 @@ describe('ods-select behaviour', () => {
         expect(await el.getProperty('value')).toBe(dummyValue);
         expect(odsValueChangeSpy).toHaveReceivedEventTimes(1);
         expect(odsValueChangeSpy).toHaveReceivedEventDetail({
+          previousValue: null,
           validity: {},
           value: dummyValue,
         });

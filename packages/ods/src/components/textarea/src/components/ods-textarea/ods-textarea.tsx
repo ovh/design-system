@@ -53,14 +53,14 @@ export class OdsTextarea {
   }
 
   @Watch('value')
-  onValueChange(value: string, previousValue?: string): void {
+  onValueChange(value: string | null, previousValue?: string): void {
     setFormValue(this.internals, this.value);
 
     this.odsChange.emit({
       name: this.name,
       previousValue,
       validity:  this.textareaElement?.validity,
-      value: value ?? null,
+      value: value,
     });
   }
 

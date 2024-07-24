@@ -1,8 +1,8 @@
 interface OdsInputValueChangeEventDetail {
   name: string;
-  previousValue?: string | number;
+  previousValue?: string | number | null;
   validity?: ValidityState;
-  value: string | number;
+  value: string | number | null;
 }
 
 type OdsInputValueChangeEvent = CustomEvent<OdsInputValueChangeEventDetail>;

@@ -1,6 +1,6 @@
-import { type OdsTagEventRemoveDetail } from '../interfaces/events';
+import { type OdsTagRemoveEventDetail } from '../interfaces/events';
 
-function emit(tag: HTMLElement, isDisabled: boolean, eventEmitter: { emit: (data: OdsTagEventRemoveDetail) => CustomEvent }): void {
+function emit(tag: HTMLElement, isDisabled: boolean, eventEmitter: { emit: (data: OdsTagRemoveEventDetail) => CustomEvent }): void {
   if (!isDisabled) {
     eventEmitter.emit({
       id: tag.id,
@@ -8,7 +8,7 @@ function emit(tag: HTMLElement, isDisabled: boolean, eventEmitter: { emit: (data
   }
 }
 
-function handleClick(tag: HTMLElement, isDisabled: boolean, eventEmitter: { emit: (data: OdsTagEventRemoveDetail) => CustomEvent }): void {
+function handleClick(tag: HTMLElement, isDisabled: boolean, eventEmitter: { emit: (data: OdsTagRemoveEventDetail) => CustomEvent }): void {
   emit(tag, isDisabled, eventEmitter);
 }
 
@@ -19,7 +19,7 @@ function handleKeyDown(event: KeyboardEvent): void {
   }
 }
 
-function handleKeyUp(event: KeyboardEvent, tag: HTMLElement, isDisabled: boolean, eventEmitter: { emit: (data: OdsTagEventRemoveDetail) => CustomEvent }): void {
+function handleKeyUp(event: KeyboardEvent, tag: HTMLElement, isDisabled: boolean, eventEmitter: { emit: (data: OdsTagRemoveEventDetail) => CustomEvent }): void {
   switch (event.key) {
     case ' ':
     case 'Enter':

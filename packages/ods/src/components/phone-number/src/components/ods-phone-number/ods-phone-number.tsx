@@ -1,7 +1,7 @@
 import { AttachInternals, Component, Event, type EventEmitter, type FunctionalComponent, Host, Method, Prop, Watch, h } from '@stencil/core';
 import { PhoneNumberUtil } from 'google-libphonenumber';
 import { type OdsInput, type OdsInputChangeEvent } from '../../../../input/src';
-import { type OdsSelectCustomRendererData, type OdsSelectEventChange } from '../../../../select/src';
+import { type OdsSelectChangeEvent, type OdsSelectCustomRendererData } from '../../../../select/src';
 import { type OdsPhoneNumberCountryIsoCode } from '../../constants/phone-number-country-iso-code';
 import { type OdsPhoneNumberCountryPreset } from '../../constants/phone-number-country-preset';
 import { type OdsPhoneNumberLocale } from '../../constants/phone-number-locale';
@@ -124,7 +124,7 @@ export class OdsPhoneNumber {
     });
   }
 
-  private onSelectChange(event: OdsSelectEventChange): void {
+  private onSelectChange(event: OdsSelectChangeEvent): void {
     this.isoCode = event.detail.value as OdsPhoneNumberCountryIsoCode;
   }
 
@@ -153,7 +153,7 @@ export class OdsPhoneNumber {
             isDisabled={ this.isDisabled }
             isReadonly={ this.isReadonly }
             name="iso-code"
-            onOdsChange={ (e: OdsSelectEventChange) => this.onSelectChange(e) }
+            onOdsChange={ (e: OdsSelectChangeEvent) => this.onSelectChange(e) }
             part="select"
             value={ this.isoCode }>
             {

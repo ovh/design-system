@@ -1,4 +1,4 @@
-import type { OdsSelectEventChangeDetail } from '../../../../select/src';
+import type { OdsSelectChangeEventDetail } from '../../../../select/src';
 import type { OdsPaginationChangedEventDetail, OdsPaginationItemPerPageChangedEventDetail } from '../../interfaces/events';
 import type { OdsPaginationPageList } from '../../interfaces/pagination-page-list';
 import type { EventEmitter, Fragment, FunctionalComponent } from '@stencil/core';
@@ -36,11 +36,11 @@ export class OdsPagination {
   @Prop({ reflect: true }) public totalItems?: number;
   @Prop({ reflect: true }) public totalPages: number = 1;
 
-  @Event() odsPaginationChanged!: EventEmitter<OdsPaginationChangedEventDetail>;
-  @Event() odsPaginationItemPerPageChanged!: EventEmitter<OdsPaginationItemPerPageChangedEventDetail>;
+  @Event() odsChanged!: EventEmitter<OdsPaginationChangedEventDetail>;
+  @Event() odsItemPerPageChanged!: EventEmitter<OdsPaginationItemPerPageChangedEventDetail>;
 
   @Listen('odsChange')
-  odsValueChangeHandler(event: CustomEvent<OdsSelectEventChangeDetail>): void {
+  odsValueChangeHandler(event: CustomEvent<OdsSelectChangeEventDetail>): void {
     event.preventDefault();
     event.stopPropagation();
 
@@ -75,7 +75,7 @@ export class OdsPagination {
   async onItemPerPageChange(): Promise<void> {
     await this.updatePagination();
 
-    this.odsPaginationItemPerPageChanged.emit({
+    this.odsItemPerPageChanged.emit({
       current: this.itemPerPage,
       currentPage: this.current,
       totalPages: this.actualTotalPages,
@@ -118,7 +118,7 @@ export class OdsPagination {
   }
 
   private emitChange(current: number, oldCurrent?: number): void {
-    this.odsPaginationChanged.emit({
+    this.odsChanged.emit({
       current: current,
       itemPerPage: this.itemPerPage,
       oldCurrent: oldCurrent,

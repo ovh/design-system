@@ -1,10 +1,13 @@
 @use './focus';
 
 $ods-button-border-radius: var(--ods-border-radius-md);
+$ods-button-size-sm: 32px;
+$ods-button-size-md: 40px;
 
 @mixin ods-button() {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   border-radius: $ods-button-border-radius;
   cursor: pointer;
   overflow: hidden;
@@ -28,11 +31,13 @@ $ods-button-border-radius: var(--ods-border-radius-md);
   @if $size == 'sm' {
     grid-column-gap: 6px;
     padding: 6px;
-    height: 32px;
+    min-width: $ods-button-size-sm;
+    height: $ods-button-size-sm;
   } @else if $size == 'md' {
     grid-column-gap: 8px;
     padding: 8px;
-    height: 40px;
+    min-width: $ods-button-size-md;
+    height: $ods-button-size-md;
   }
 }
 

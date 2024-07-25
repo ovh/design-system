@@ -1,8 +1,0 @@
-custom-elements/
-custom-elements-bundle/
-dist/
-hydrate/
-loader/
-src/components.d.ts
-www/
-!src/interface.d.ts

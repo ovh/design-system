@@ -1,8 +1,0 @@
-:host {
-  display: block;
-  padding: var(--ods-size-inset-06);
-}
-
-:host(:not([active])) {
-  display: none;
-}

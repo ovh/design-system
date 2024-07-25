@@ -5,16 +5,14 @@
 </p>
 <div align="center">
 
-### A collection of assets and guidelines for building consistent user experiences across OVHcloud products.
+### A collection of assets and guidelines for building consistent user experiences across OVHCloud products.
 
-[![NPM version][npm-image]][npm-url] [![CI status][github-action-image]][github-action-url] [![NPM downloads][download-image]][download-url] [![Licence][licence-image]][licence-url] 
+[![NPM version][npm-image]][npm-url] [![NPM downloads][download-image]][download-url] [![Licence][licence-image]][licence-url] 
 
 [![StencilJS][stenciljs-image]][stenciljs-url] [![TypeScript][typescript-image]][typescript-url] [![Sass][sass-image]][sass-url] [![Storybook][storybook-image]][storybook-url] [![Jest][jest-image]][jest-url] [![Puppeteer][puppeteer-image]][puppeteer-url]
 
-[npm-image]: https://img.shields.io/npm/v/@ovhcloud/ods-core
-[npm-url]: https://www.npmjs.com/package/@ovhcloud/ods-core        
-[github-action-image]: https://github.com/ovh/design-system/actions/workflows/ci.yml/badge.svg
-[github-action-url]: https://github.com/ovh/design-system/actions/workflows/ci.yml
+[npm-image]: https://www.npmjs.com/package/@ovhcloud/ods-components
+[npm-url]: https://www.npmjs.com/package/@ovhcloud/ods-components
 [download-image]: https://img.shields.io/npm/dm/@ovhcloud/ods-core.svg?style=flat
 [download-url]: https://www.npmjs.com/package/@ovhcloud/ods-core
 [licence-image]: https://img.shields.io/github/license/ovh/design-system
@@ -22,69 +20,54 @@
 [stenciljs-image]: https://img.shields.io/badge/-StencilJS-000?logo=webcomponents.org&logoColor=white
 [stenciljs-url]: https://stenciljs.com/
 [typescript-image]: https://img.shields.io/badge/-TypeScript-3178C6?logo=typescript&logoColor=white
-[typescript-url]: https://stenciljs.com/
+[typescript-url]: https://www.typescriptlang.org/
 [sass-image]: https://img.shields.io/badge/-Sass-CC6699?logo=sass&logoColor=white
 [sass-url]: https://sass-lang.com/
 [storybook-image]: https://cdn.jsdelivr.net/gh/storybookjs/brand@master/badge/badge-storybook.svg
 [storybook-url]: https://storybook.js.org/
 [jest-image]: https://img.shields.io/badge/-Jest-C21325?logo=jest&logoColor=white
-[jest-url]: https://jestjs.io/fr/
+[jest-url]: https://jestjs.io/
 [puppeteer-image]: https://img.shields.io/badge/-Puppeteer-40B5A4?logo=puppeteer&logoColor=white
 [puppeteer-url]: https://pptr.dev/
 
 </div>
 
 ## Quick links
-* [**Storybook (current version)**](https://ovh.github.io/design-system/latest/)
-* [**All ODS versions**](https://ovh.github.io/design-system/)
+
+* [**Storybook**](https://ovh.github.io/design-system/latest/)
 * [**What's new**](https://ovh.github.io/design-system/latest/?path=/story/ovhcloud-design-system-what-s-new-what-s-new--page)
 * [**Changelog**](https://ovh.github.io/design-system/latest/?path=/story/ovhcloud-design-system-what-s-new-changelog--page)
-* [**Global Documentation 🔗**](https://zeroheight.com/6fc8a63f7/p/533db0-ovhcloud-design-system)
 
 ### Requirements (only for contributing)
+
 * [**Node.js**](https://nodejs.org/en/) with version ">= 18.17"
 * [**Yarn**](https://yarnpkg.com/) with version ">= 2.4"
 
 ## Installation
-All the OVHcloud Design System packages are available on [**NPM**](https://www.npmjs.com/).
+
+All the OVHCloud Design System packages are available on [**NPM**](https://www.npmjs.com/).
 
 ```sh
-yarn add @ovhcloud/ods-components @ovhcloud/ods-theme-blue-jeans
+yarn add @ovhcloud/ods-components @ovhcloud/ods-themes
 ```
 or
 ```sh
-npm install --save @ovhcloud/ods-components @ovhcloud/ods-theme-blue-jeans
+npm install --save @ovhcloud/ods-components @ovhcloud/ods-themes
 ```
 
 ## Usage
-To start using ODS, you'll need to import the components.
-
-Add a dependency to either:
-* `@ovhcloud/ods-components` to import all components
-* `@ovhcloud/ods-components-<component>` to import a specific component
 
 Components can be imported using one of:
 ```typescript
-import { Osds<Component> } from '@ovhcloud/ods-component-<component>'
-import { Osds<Component> } from '@ovhcloud/ods-component-<component>/react'
-import { Osds<Component> } from '@ovhcloud/ods-component-<component>/vue'
-```
-
-You can import enums directly from the component:
-```typescript
-import { ODS_%COMPONENT%_SIZE, ODS_%COMPONENT%_SIZES } from '@ovhcloud/ods-component-<component>'
-```
-
-Same goes for interfaces:
-```typescript
-import type { Ods<Component>Attribute } from '@ovhcloud/ods-component-<component>'
+import { Ods<Component> } from '@ovhcloud/ods-components>'
+import { Ods<Component> } from '@ovhcloud/ods-components/react'
+import { Ods<Component> } from '@ovhcloud/ods-components/vue'
 ```
 
 Then, in your view, you can start using ODS components. For instance:
 ```html
-<osds-button>
-  My Button
-</osds-button>
+<ods-button label="My Button">
+</ods-button>
 ```
 
 For more detail, see our global [Get Started](https://ovh.github.io/design-system/latest/?path=/story/ovhcloud-design-system-get-started--page) guide

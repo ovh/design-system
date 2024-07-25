@@ -13,7 +13,7 @@ export class OdsCode {
 
   @Prop({ reflect: true }) public canCopy: boolean = false;
 
-  @Event() odCopy!: EventEmitter<string>;
+  @Event() odsCopy!: EventEmitter<string>;
 
   @Method()
   async copy(): Promise<void> {
@@ -21,7 +21,7 @@ export class OdsCode {
       .map((node) => node.textContent).join('').trim();
 
     await copyToClipboard(value || '');
-    this.odCopy.emit(value);
+    this.odsCopy.emit(value);
   }
 
   render(): FunctionalComponent {

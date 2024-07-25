@@ -24,7 +24,7 @@ describe('ods-pagination navigation', () => {
   it('should emit event when current page changes', async() => {
     await setup('<ods-pagination default-current-page="2" total-pages="5"></ods-pagination>');
     const buttonList = await page.findAll('ods-pagination >>> li >>> ods-button');
-    const odsChanged = await el.spyOnEvent('odsChanged');
+    const odsChange = await el.spyOnEvent('odsChange');
 
     // There is the "previous" arrow that also counts as a button
     await buttonList[4].click();
@@ -36,8 +36,8 @@ describe('ods-pagination navigation', () => {
       oldCurrent: 2,
     };
 
-    expect(odsChanged).toHaveReceivedEventDetail(expected);
-    expect(odsChanged).toHaveReceivedEventTimes(1);
+    expect(odsChange).toHaveReceivedEventDetail(expected);
+    expect(odsChange).toHaveReceivedEventTimes(1);
   });
 
   it('should not allow to go to next page if current page is the last one', async() => {
@@ -57,7 +57,7 @@ describe('ods-pagination navigation', () => {
   it('should change items per page and emit event', async() => {
     await setup('<ods-pagination default-current-page="2" total-items="60"></ods-pagination>');
     const perPageSelectElement = await page.find('ods-pagination >>> ods-select');
-    const odsItemPerPageChanged = await el.spyOnEvent('odsItemPerPageChanged');
+    const odsItemPerPageChange = await el.spyOnEvent('odsItemPerPageChange');
     perPageSelectElement.setAttribute('value', '50');
     await page.waitForChanges();
 
@@ -67,7 +67,7 @@ describe('ods-pagination navigation', () => {
       totalPages: 2,
     };
 
-    expect(odsItemPerPageChanged).toHaveReceivedEventDetail(expected);
-    expect(odsItemPerPageChanged).toHaveReceivedEventTimes(1);
+    expect(odsItemPerPageChange).toHaveReceivedEventDetail(expected);
+    expect(odsItemPerPageChange).toHaveReceivedEventTimes(1);
   });
 });

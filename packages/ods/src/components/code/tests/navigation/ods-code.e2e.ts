@@ -36,7 +36,7 @@ describe('ods-code navigation', () => {
   it('should trigger on "Enter" when button is focused', async() => {
     const dummyCode = 'Dummy code';
     await setup(`<ods-code can-copy>${dummyCode}</ods-code>`);
-    const copySpy = await page.spyOnEvent( 'odCopy' );
+    const copySpy = await page.spyOnEvent( 'odsCopy' );
 
     await page.keyboard.press('Tab');
     await page.waitForChanges();
@@ -51,7 +51,7 @@ describe('ods-code navigation', () => {
   it('should trigger on "Space" when button is focused', async() => {
     const dummyCode = 'Dummy code';
     await setup(`<ods-code can-copy>${dummyCode}</ods-code>`);
-    const copySpy = await page.spyOnEvent( 'odCopy' );
+    const copySpy = await page.spyOnEvent( 'odsCopy' );
 
     await page.keyboard.press('Tab');
     await page.waitForChanges();
@@ -66,7 +66,7 @@ describe('ods-code navigation', () => {
   it('should trigger on copy button click', async() => {
     const dummyCode = 'Dummy code';
     await setup(`<ods-code can-copy>${dummyCode}</ods-code>`);
-    const copySpy = await page.spyOnEvent( 'odCopy' );
+    const copySpy = await page.spyOnEvent( 'odsCopy' );
     const copyButton = await page.find('ods-code >>> ods-button');
 
     await copyButton.click();

@@ -47,14 +47,6 @@
       @include badge.ods-badge-color('warning');
     }
 
-    &--round {
-      @include badge.ods-badge-shape('round');
-    }
-
-    &--square {
-      @include badge.ods-badge-shape('square');
-    }
-
     &--sm {
       @include badge.ods-badge-size('sm');
 

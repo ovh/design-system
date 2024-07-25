@@ -26,6 +26,7 @@ const preview: Preview = {
             'Design tokens',
           ],
           'ODS Components',
+          ['Gallery'],
           ['Actions', ['Documentation', 'Technical information', 'Migration From 17.x', 'Demo', '*'], 'Content', 'Form', 'Layout', 'Navigation', 'User feedback'],
         ],
       },

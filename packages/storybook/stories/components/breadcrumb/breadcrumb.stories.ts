@@ -7,7 +7,7 @@ import { CONTROL_CATEGORY, orderControls } from '../../control';
 defineCustomElement();
 
 const meta: Meta = {
-  title: 'ODS Components/Navigation/Breadcrumb',
+  title: 'ODS Components/Breadcrumb',
   component: 'ods-breadcrumb',
 };
 

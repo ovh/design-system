@@ -7,7 +7,7 @@ defineCustomElement();
 
 const meta: Meta = {
   component: 'ods-radio',
-  title: 'ODS Components/Form/Radio',
+  title: 'ODS Components/Form elements/Radio',
 };
 
 export default meta;

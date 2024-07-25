@@ -8,7 +8,7 @@ import { CONTROL_CATEGORY, orderControls } from '../../control';
 defineCustomElement();
 
 const meta: Meta = {
-  title: 'ODS Components/Layout/Table',
+  title: 'ODS Components/Table',
   component: 'ods-table',
 };
 

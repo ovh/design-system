@@ -8,7 +8,7 @@ import { html } from 'lit-html';
 defineCustomElement();
 
 const meta: Meta = {
-  title: 'ODS Components/Layout/Divider',
+  title: 'ODS Components/Divider',
   component: 'ods-divider',
 };
 

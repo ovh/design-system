@@ -10,7 +10,7 @@ defineCustomElement();
 defineIcon();
 
 const meta: Meta = {
-  title: 'ODS Components/User feedback/Tooltip',
+  title: 'ODS Components/Tooltip',
   component: 'ods-tooltip',
   parameters: {
     layout: 'centered',

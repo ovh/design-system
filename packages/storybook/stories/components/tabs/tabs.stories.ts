@@ -7,7 +7,7 @@ import { CONTROL_CATEGORY, orderControls } from '../../control';
 defineCustomElement();
 
 const meta: Meta = {
-  title: 'ODS Components/Navigation/Tabs',
+  title: 'ODS Components/Tabs',
   component: 'ods-tabs',
 };
 

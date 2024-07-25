@@ -6,7 +6,7 @@ import { CONTROL_CATEGORY, orderControls } from '../../control';
 defineCustomElement();
 
 const meta: Meta = {
-  title: 'ODS Components/Form/Select',
+  title: 'ODS Components/Form elements/Select',
   component: 'ods-select',
   decorators: [(story) => html`<div style="height: 200px;">${story()}</div>`],
 };

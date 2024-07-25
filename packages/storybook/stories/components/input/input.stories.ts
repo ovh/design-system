@@ -8,7 +8,7 @@ import { CONTROL_CATEGORY, orderControls } from '../../control';
 defineCustomElement();
 
 const meta: Meta = {
-  title: 'ODS Components/Form/Input',
+  title: 'ODS Components/Form elements/Input',
   component: 'ods-input',
 };
 

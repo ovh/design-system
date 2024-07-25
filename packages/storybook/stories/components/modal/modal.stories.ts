@@ -10,7 +10,7 @@ import { withResetRoot } from '../../hook';
 defineCustomElement();
 
 const meta: Meta = {
-  title: 'ODS Components/User feedback/Modal',
+  title: 'ODS Components/Modal',
   component: 'ods-modal',
   decorators: [withResetRoot],
 };

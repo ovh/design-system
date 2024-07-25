@@ -6,7 +6,7 @@ import { CONTROL_CATEGORY, orderControls } from '../../control';
 defineCustomElement();
 
 const meta: Meta = {
-  title: 'ODS Components/Form/Password',
+  title: 'ODS Components/Form elements/Password',
   component: 'ods-password',
 };
 

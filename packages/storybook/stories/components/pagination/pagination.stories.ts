@@ -7,7 +7,7 @@ import { ODS_PAGINATION_PER_PAGE, ODS_PAGINATION_PER_PAGE_OPTIONS } from '@ovhcl
 defineCustomElement();
 
 const meta: Meta = {
-  title: 'ODS Components/Navigation/Pagination',
+  title: 'ODS Components/Pagination',
   component: 'ods-pagination',
 };
 

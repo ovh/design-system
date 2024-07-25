@@ -1,5 +1,5 @@
 import { type E2EElement, type E2EPage, newE2EPage } from '@stencil/core/testing';
-import { ODS_BADGE_SHAPE, ODS_BADGE_SIZE } from '../../src';
+import { ODS_BADGE_SIZE } from '../../src';
 
 describe('ods-badge rendering', () => {
   let el: E2EElement;
@@ -46,26 +46,6 @@ describe('ods-badge rendering', () => {
 
       const badgeStyle = await badge.getComputedStyle();
       expect(badgeStyle.getPropertyValue('background-color')).toBe('rgb(255, 0, 0)');
-    });
-  });
-
-  describe('shapes', () => {
-    it('should render rounder badge on round shape', async() => {
-      await setup(`
-        <ods-badge shape="${ODS_BADGE_SHAPE.round}"></ods-badge>
-        <ods-badge shape="${ODS_BADGE_SHAPE.square}"></ods-badge>
-      `);
-
-      const roundBadge = await page.find(`ods-badge[shape="${ODS_BADGE_SHAPE.round}"] >>> .ods-badge__badge`);
-      const squareBadge = await page.find(`ods-badge[shape="${ODS_BADGE_SHAPE.square}"] >>> .ods-badge__badge`);
-
-      const roundBadgeStyle = await roundBadge.getComputedStyle();
-      const roundBadgeBorderRadius = parseInt(roundBadgeStyle.getPropertyValue('borderRadius'), 10);
-
-      const squareBadgeStyle = await squareBadge.getComputedStyle();
-      const squareBadgeBorderRadius = parseInt(squareBadgeStyle.getPropertyValue('borderRadius'), 10);
-
-      expect(roundBadgeBorderRadius).toBeGreaterThan(squareBadgeBorderRadius);
     });
   });
 

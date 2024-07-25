@@ -19,7 +19,6 @@ export const Demo: StoryObj = {
            color="${arg.color}"
            icon="${arg.icon}"
            label="${arg.label}"
-           shape="${arg.shape}"
            size="${arg.size}">
 </ods-badge>
 <style>
@@ -65,15 +64,6 @@ export const Demo: StoryObj = {
       control: 'text',
       description: 'The badge label',
     },
-    shape: {
-      table: {
-        category: CONTROL_CATEGORY.design,
-        defaultValue: { summary: ODS_BADGE_SHAPE.round },
-        type: { summary: ODS_BADGE_SHAPES }
-      },
-      control: { type: 'select' },
-      options: ODS_BADGE_SHAPES,
-    },
     size: {
       table: {
         category: CONTROL_CATEGORY.design,
@@ -87,7 +77,6 @@ export const Demo: StoryObj = {
   args: {
     color: ODS_BADGE_COLOR.information,
     label: 'My badge',
-    shape: ODS_BADGE_SHAPE.round,
     size: ODS_BADGE_SIZE.md,
   },
 };
@@ -123,14 +112,6 @@ export const CustomCSS: StoryObj = {
     background-color: #ff00ff;
   }
 </style>
-  `,
-};
-
-export const Shape: StoryObj = {
-  tags: ['isHidden'],
-  render: () => html`
-<ods-badge label="Round badge" shape="${ODS_BADGE_SHAPE.round}"></ods-badge>
-<ods-badge label="Square badge" shape="${ODS_BADGE_SHAPE.square}"></ods-badge>
   `,
 };
 

@@ -102,7 +102,13 @@ export const Default: StoryObj = {
 export const Color: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
+<ods-badge color="${ODS_BADGE_COLOR.alpha}" label="Alpha"></ods-badge>
+<ods-badge color="${ODS_BADGE_COLOR.beta}" label="Beta"></ods-badge>
+<ods-badge color="${ODS_BADGE_COLOR.critical}" label="Critical"></ods-badge>
 <ods-badge color="${ODS_BADGE_COLOR.information}" label="Information"></ods-badge>
+<ods-badge color="${ODS_BADGE_COLOR.neutral}" label="Neutral"></ods-badge>
+<ods-badge color="${ODS_BADGE_COLOR.new}" label="New"></ods-badge>
+<ods-badge color="${ODS_BADGE_COLOR.promotion}" label="Promotion"></ods-badge>
 <ods-badge color="${ODS_BADGE_COLOR.success}" label="Success"></ods-badge>
 <ods-badge color="${ODS_BADGE_COLOR.warning}" label="Warning"></ods-badge>
   `,

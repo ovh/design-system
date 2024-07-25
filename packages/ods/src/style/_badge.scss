@@ -8,6 +8,7 @@ $ods-badge-height-lg: 28px;
   flex-flow: row;
   grid-gap: 0.25rem;
   align-items: center;
+  border-radius: var(--ods-border-radius-lg);
   color: var(--ods-color-primary-900);
 }
 
@@ -39,14 +40,6 @@ $ods-badge-height-lg: 28px;
   } @else if $color == 'warning' {
     background-color: var(--ods-color-warning-100);
     color: var(--ods-color-warning-900);
-  }
-}
-
-@mixin ods-badge-shape($shape) {
-  @if $shape == 'round' {
-    border-radius: var(--ods-border-radius-lg);
-  } @else if $shape == 'square' {
-    border-radius: var(--ods-border-radius-sm);
   }
 }
 

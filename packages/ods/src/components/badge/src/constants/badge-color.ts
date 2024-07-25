@@ -1,13 +1,13 @@
 enum ODS_BADGE_COLOR {
-  neutral = 'neutral',
-  information = 'information',
-  success = 'success',
-  warning = 'warning',
-  critical = 'critical',
   alpha = 'alpha',
   beta = 'beta',
+  critical = 'critical',
+  information = 'information',
+  neutral = 'neutral',
   new = 'new',
   promotion = 'promotion',
+  success = 'success',
+  warning = 'warning',
 }
 
 type OdsBadgeColor =`${ODS_BADGE_COLOR}`;

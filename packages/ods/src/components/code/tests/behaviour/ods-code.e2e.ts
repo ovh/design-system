@@ -21,10 +21,10 @@ describe('ods-code behaviour', () => {
 
   describe('methods', () => {
     describe('copy', () => {
-      it('should emit an odCopy event', async() => {
+      it('should emit an odsCopy event', async() => {
         const dummyValue = 'dummy value';
         await setup(`<ods-code can-copy>${dummyValue}</ods-code>`);
-        const copySpy = await page.spyOnEvent('odCopy');
+        const copySpy = await page.spyOnEvent('odsCopy');
 
         // We have to focus the document to be able to call the navigator copy function
         await page.keyboard.press('Tab');

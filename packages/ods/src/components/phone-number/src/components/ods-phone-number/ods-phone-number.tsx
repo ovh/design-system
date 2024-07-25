@@ -135,7 +135,10 @@ export class OdsPhoneNumber {
           this.hasCountries &&
           <ods-select
             borderRounded="left"
-            class="ods-phone-number__iso-codes"
+            class={{
+              'ods-phone-number__iso-codes': true,
+              'ods-phone-number__iso-codes--is-disabled': this.isDisabled,
+            }}
             customRenderer={{
               item: (data: OdsSelectCustomRendererData) => `<span part="flag flag-${data.value}"></span>`,
               option: (data: OdsSelectCustomRendererData) => `

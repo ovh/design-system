@@ -15,7 +15,7 @@
 
     &::part(flag) {
       display: inline-block;
-      filter: drop-shadow(0 0 5px rgba(0, 13, 31, 0.25));
+      filter: drop-shadow(0 0 2px rgba(0, 13, 31, 0.25));
       z-index: 1;
       background-image: $sprite-flags-background-image;
       background-repeat: no-repeat;
@@ -26,6 +26,12 @@
     @each $iso-code, $background-position in $sprite-flags-background-position {
       &::part(flag-#{$iso-code}) {
         background-position: $background-position;
+      }
+    }
+
+    &--is-disabled {
+      &::part(flag) {
+        opacity: .5;
       }
     }
   }

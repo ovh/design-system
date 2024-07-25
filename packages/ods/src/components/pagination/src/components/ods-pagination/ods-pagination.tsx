@@ -2,7 +2,7 @@ import type { OdsSelectChangeEventDetail } from '../../../../select/src';
 import type { OdsPaginationChangedEventDetail, OdsPaginationItemPerPageChangedEventDetail } from '../../interfaces/events';
 import type { OdsPaginationPageList } from '../../interfaces/pagination-page-list';
 import type { EventEmitter, Fragment, FunctionalComponent } from '@stencil/core';
-import { Component, Element, Event, Host, Listen, Method, Prop, State, Watch, forceUpdate, h } from '@stencil/core';
+import { Component, Element, Event, Host, Method, Prop, State, Watch, forceUpdate, h } from '@stencil/core';
 import { getRandomHTMLId } from '../../../../../utils/dom';
 import { ODS_BUTTON_COLOR, ODS_BUTTON_SIZE, ODS_BUTTON_VARIANT } from '../../../../button/src';
 import { ODS_ICON_NAME } from '../../../../icon/src';
@@ -36,20 +36,8 @@ export class OdsPagination {
   @Prop({ reflect: true }) public totalItems?: number;
   @Prop({ reflect: true }) public totalPages: number = 1;
 
-  @Event() odsChanged!: EventEmitter<OdsPaginationChangedEventDetail>;
-  @Event() odsItemPerPageChanged!: EventEmitter<OdsPaginationItemPerPageChangedEventDetail>;
-
-  @Listen('odsChange')
-  odsValueChangeHandler(event: CustomEvent<OdsSelectChangeEventDetail>): void {
-    event.preventDefault();
-    event.stopPropagation();
-
-    const { value } = event.detail;
-
-    if (value) {
-      this.itemPerPage = typeof value === 'number' ? value : parseInt(value, 10);
-    }
-  }
+  @Event() odsChange!: EventEmitter<OdsPaginationChangedEventDetail>;
+  @Event() odsItemPerPageChange!: EventEmitter<OdsPaginationItemPerPageChangedEventDetail>;
 
   @Watch('labelTooltipNext')
   @Watch('labelTooltipPrevious')
@@ -75,7 +63,7 @@ export class OdsPagination {
   async onItemPerPageChange(): Promise<void> {
     await this.updatePagination();
 
-    this.odsItemPerPageChanged.emit({
+    this.odsItemPerPageChange.emit({
       current: this.itemPerPage,
       currentPage: this.current,
       totalPages: this.actualTotalPages,
@@ -118,21 +106,11 @@ export class OdsPagination {
   }
 
   private emitChange(current: number, oldCurrent?: number): void {
-    this.odsChanged.emit({
+    this.odsChange.emit({
       current: current,
       itemPerPage: this.itemPerPage,
       oldCurrent: oldCurrent,
     });
-  }
-
-  private async updatePagination(): Promise<void> {
-    this.actualTotalPages = computeActualTotalPages(this.itemPerPage, this.totalItems, this.totalPages);
-
-    if (this.current === 1) {
-      this.updatePageList();
-    } else {
-      await this.setCurrentPage(1);
-    }
   }
 
   private handlePreviousClick(page: number): void {
@@ -145,6 +123,27 @@ export class OdsPagination {
 
   private handlePageClick(page: number): void {
     this.setCurrentPage(page);
+  }
+
+  private odsChangeHandler(event: CustomEvent<OdsSelectChangeEventDetail>): void {
+    event.preventDefault();
+    event.stopPropagation();
+
+    const { value } = event.detail;
+
+    if (value) {
+      this.itemPerPage = typeof value === 'number' ? value : parseInt(value, 10);
+    }
+  }
+
+  private async updatePagination(): Promise<void> {
+    this.actualTotalPages = computeActualTotalPages(this.itemPerPage, this.totalItems, this.totalPages);
+
+    if (this.current === 1) {
+      this.updatePageList();
+    } else {
+      await this.setCurrentPage(1);
+    }
   }
 
   private renderArrow(direction: 'left' | 'right'): typeof Fragment {
@@ -250,7 +249,9 @@ export class OdsPagination {
             }}>
               {
                 this.totalItems >= ODS_PAGINATION_PER_PAGE.option_10 &&
-                  <ods-select isDisabled={this.isDisabled}
+                  <ods-select
+                    isDisabled={this.isDisabled}
+                    onOdsChange={ (event: CustomEvent<OdsSelectChangeEventDetail>): void => this.odsChangeHandler(event)}
                     value={`${this.itemPerPage}`}
                     name="ods-pagination__items-per-page"
                   >

@@ -7,12 +7,7 @@
   "main": "index.js",
   "scripts": {
     "build:storybook": "storybook build -o dist",
-    "__list:releases": "node .storybook/utils/get-repo-releases.js",
-    "__prepare": "npm run build:storybook",
-    "__start": "yarn list:releases && storybook dev -p 6006",
-    "start": "storybook dev -p 6006",
-    "__start:nocache": "yarn list:releases && storybook dev -p 6006 --no-manager-cache",
-    "__start:quiet": "yarn list:releases && storybook dev -p 6006 --quiet"
+    "start": "storybook dev -p 6006"
   },
   "dependencies": {
     "@ovhcloud/ods-components": "17.1.0",

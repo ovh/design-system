@@ -7,7 +7,7 @@ defineCustomElement();
 
 const meta: Meta = {
   component: 'ods-range',
-  title: 'ODS Components/Form/Range',
+  title: 'ODS Components/Form elements/Range',
   parameters: {
     layout: 'centered',
   },

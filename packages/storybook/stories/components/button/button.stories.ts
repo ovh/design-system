@@ -16,7 +16,7 @@ import { CONTROL_CATEGORY, orderControls } from '../../control';
 defineCustomElement();
 
 const meta: Meta = {
-  title: 'ODS Components/Actions/Button',
+  title: 'ODS Components/Button',
   component: 'ods-button',
 };
 

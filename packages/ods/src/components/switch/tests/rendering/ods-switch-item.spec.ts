@@ -2,6 +2,17 @@ import type { SpecPage } from '@stencil/core/testing';
 import { newSpecPage } from '@stencil/core/testing';
 import { ODS_SWITCH_SIZE, OdsSwitchItem } from '../../src';
 
+const mutationObserverMock = jest.fn(function MutationObserver(callback) {
+  this.observe = jest.fn();
+  this.disconnect = jest.fn();
+  // Optionally add a trigger() method to manually trigger a change
+  this.trigger = (mockedMutationsList: MutationRecord[]): void => {
+    callback(mockedMutationsList, this);
+  };
+});
+// @ts-ignore test purpose
+global.MutationObserver = mutationObserverMock;
+
 describe('ods-switch-item rendering', () => {
   let page: SpecPage;
   let root: HTMLElement | undefined;

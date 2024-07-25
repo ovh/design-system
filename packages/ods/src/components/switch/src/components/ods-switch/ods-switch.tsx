@@ -1,7 +1,7 @@
 import type { OdsSwitchValueChangeEventDetail } from '../../interfaces/events';
 import { Component, Element, Event, type EventEmitter, type FunctionalComponent, Host, Listen, Method, Prop, Watch, h } from '@stencil/core';
 import { ODS_SWITCH_SIZE, type OdsSwitchSize } from '../../constant/switch-size';
-import { clearItems, propagateInputId, propagateIsDisabled, propagateName, resetItems } from '../../controller/ods-switch';
+import { clearItems, propagateInputId, propagateIsDisabled, propagateIsRequired, propagateName, resetItems } from '../../controller/ods-switch';
 
 @Component({
   shadow: true,
@@ -51,6 +51,11 @@ export class OdsSwitch {
     propagateIsDisabled(value, Array.from(this.el.children));
   }
 
+  @Watch('isRequired')
+  propagateIsRequired(value: boolean): void {
+    propagateIsRequired(value, Array.from(this.el.children));
+  }
+
   @Watch('name')
   propagateName(value: string): void {
     propagateName(value, Array.from(this.el.children));
@@ -58,6 +63,7 @@ export class OdsSwitch {
 
   private init(): void {
     this.propagateIsDisabled(this.isDisabled ?? false);
+    this.propagateIsRequired(this.isRequired ?? false);
     this.propagateName(this.name);
     propagateInputId(this.name, Array.from(this.el.children));
   }

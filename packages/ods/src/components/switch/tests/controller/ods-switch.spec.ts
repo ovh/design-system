@@ -1,7 +1,8 @@
-import { clearItems, propagateIsDisabled, resetItems } from '../../src/controller/ods-switch';
+import { clearItems, propagateIsDisabled, propagateIsRequired, resetItems } from '../../src/controller/ods-switch';
 
 type TestItem = {
   'is-disabled'?: boolean,
+  'is-required'?: boolean,
   clear?: jest.Mock,
   reset?: jest.Mock,
   tagName: string,
@@ -95,6 +96,46 @@ describe('ods-switch controller', () => {
       expect(removeAttributeSpy).toHaveBeenCalledTimes(1);
       expect(items[0]['is-disabled']).toBe(undefined);
       expect(items[1]['is-disabled']).toBe(undefined);
+    });
+  });
+
+  describe('propagateIsRequired', () => {
+    it('should set required to item', () => {
+      const items: TestItem[] = [{
+        removeAttribute: removeAttributeSpy,
+        setAttribute: setAttributeSpy,
+        tagName: 'ODS-SWITCH-ITEM',
+      }, {
+        removeAttribute: removeAttributeSpy,
+        setAttribute: setAttributeSpy,
+        tagName: 'BUTTON',
+      }];
+
+      // @ts-ignore for test purpose
+      propagateIsRequired(true, items);
+
+      expect(setAttributeSpy).toHaveBeenCalledTimes(1);
+      expect(items[0]['is-required']).toBe('');
+      expect(items[1]['is-required']).toBe(undefined);
+    });
+
+    it('should remove disabled to item', () => {
+      const items: TestItem[] = [{
+        removeAttribute: removeAttributeSpy,
+        setAttribute: setAttributeSpy,
+        tagName: 'ODS-SWITCH-ITEM',
+      }, {
+        removeAttribute: removeAttributeSpy,
+        setAttribute: setAttributeSpy,
+        tagName: 'BUTTON',
+      }];
+
+      // @ts-ignore for test purpose
+      propagateIsRequired(false, items);
+
+      expect(removeAttributeSpy).toHaveBeenCalledTimes(1);
+      expect(items[0]['is-required']).toBe(undefined);
+      expect(items[1]['is-required']).toBe(undefined);
     });
   });
 });

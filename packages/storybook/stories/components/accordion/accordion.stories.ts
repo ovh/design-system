@@ -7,7 +7,7 @@ import { CONTROL_CATEGORY, orderControls } from '../../control';
 defineCustomElement();
 
 const meta: Meta = {
-  title: 'ODS Components/Layout/Accordion',
+  title: 'ODS Components/Accordion',
   component: 'ods-accordion',
 };
 

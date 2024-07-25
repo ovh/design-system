@@ -7,7 +7,7 @@ import { CONTROL_CATEGORY, orderControls } from '../../control';
 defineCustomElement();
 
 const meta: Meta = {
-  title: 'ODS Components/Actions/Link',
+  title: 'ODS Components/Link',
   component: 'ods-link',
 };
 

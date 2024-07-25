@@ -6,7 +6,7 @@ import { CONTROL_CATEGORY, orderControls } from '../../control';
 defineCustomElement();
 
 const meta: Meta = {
-  title: 'ODS Components/Form/File Upload',
+  title: 'ODS Components/Form elements/File Upload',
   component: 'ods-file-upload',
 };
 

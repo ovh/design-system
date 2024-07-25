@@ -7,7 +7,7 @@ import { CONTROL_CATEGORY, orderControls } from '../../control';
 defineCustomElement();
 
 const meta: Meta = {
-  title: 'ODS Components/Form/Datepicker',
+  title: 'ODS Components/Form elements/Datepicker',
   component: 'ods-datepicker',
   decorators: [(story) => html`<div style="height: 320px;">${story()}</div>`],
 };

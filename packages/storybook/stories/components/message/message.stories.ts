@@ -13,7 +13,7 @@ import { CONTROL_CATEGORY, orderControls } from '../../control';
 defineCustomElement();
 
 const meta: Meta = {
-  title: 'ODS Components/User feedback/Message',
+  title: 'ODS Components/Message',
   component: 'ods-message',
 };
 

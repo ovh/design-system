@@ -9,7 +9,7 @@ defineCustomElement();
 
 const meta: Meta = {
   component: 'ods-switch',
-  title: 'ODS Components/Form/Switch',
+  title: 'ODS Components/Form elements/Switch',
 };
 
 export default meta;

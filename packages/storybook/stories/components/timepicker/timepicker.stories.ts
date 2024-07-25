@@ -8,7 +8,7 @@ defineCustomElement();
 
 const meta: Meta = {
   component: 'ods-timepicker',
-  title: 'ODS Components/Form/Timepicker',
+  title: 'ODS Components/Form elements/Timepicker',
 };
 
 export default meta;

@@ -7,7 +7,7 @@ import { CONTROL_CATEGORY, orderControls } from '../../control';
 defineCustomElement();
 
 const meta: Meta = {
-  title: 'ODS Components/Form/Form Field',
+  title: 'ODS Components/Form elements/Form Field',
   component: 'ods-form-field',
 };
 

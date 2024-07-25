@@ -6,7 +6,7 @@ import { CONTROL_CATEGORY, orderControls } from '../../control';
 defineCustomElement();
 
 const meta: Meta = {
-  title: 'ODS Components/Form/Textarea',
+  title: 'ODS Components/Form elements/Textarea',
   component: 'ods-textarea',
 };
 

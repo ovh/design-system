@@ -6,7 +6,7 @@ import { CONTROL_CATEGORY, orderControls } from '../../control';
 defineCustomElement();
 
 const meta: Meta = {
-  title: 'ODS Components/Form/Checkbox',
+  title: 'ODS Components/Form elements/Checkbox',
   component: 'ods-checkbox',
 };
 

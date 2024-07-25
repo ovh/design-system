@@ -6,7 +6,7 @@ import { CONTROL_CATEGORY, orderControls } from '../../control';
 defineCustomElement();
 
 const meta: Meta = {
-  title: 'ODS Components/Form/Quantity',
+  title: 'ODS Components/Form elements/Quantity',
   component: 'ods-quantity',
 };
 

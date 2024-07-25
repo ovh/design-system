@@ -163,7 +163,7 @@ const ODS_ICON_TAG: { [NameKey in IconNameKey]: string[] } = {
 defineCustomElement();
 
 const meta: Meta = {
-  title: 'ODS Components/Content/Icon',
+  title: 'ODS Components/Icon',
   component: 'ods-icon',
 };
 

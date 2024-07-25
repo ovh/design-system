@@ -6,7 +6,7 @@ import { CONTROL_CATEGORY, orderControls } from '../../control';
 defineCustomElement();
 
 const meta: Meta = {
-  title: 'ODS Components/User feedback/Progress Bar',
+  title: 'ODS Components/Progress Bar',
   component: 'ods-progress-bar',
 };
 

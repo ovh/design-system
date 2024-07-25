@@ -8,7 +8,7 @@ import { CONTROL_CATEGORY, orderControls } from '../../control';
 defineCustomElement();
 
 const meta: Meta = {
-  title: 'ODS Components/User feedback/Popover',
+  title: 'ODS Components/Popover',
   component: 'ods-popover',
   parameters: {
     layout: 'centered',

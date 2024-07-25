@@ -6,7 +6,7 @@ import { CONTROL_CATEGORY, orderControls } from '../../control';
 defineCustomElement();
 
 const meta: Meta = {
-  title: 'ODS Components/Content/Skeleton',
+  title: 'ODS Components/Skeleton',
   component: 'ods-skeleton',
 };
 

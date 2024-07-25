@@ -7,7 +7,7 @@ import { CONTROL_CATEGORY, orderControls } from '../../control';
 defineCustomElement();
 
 const meta: Meta = {
-  title: 'ODS Components/Form/Phone Number',
+  title: 'ODS Components/Form elements/Phone Number',
   component: 'ods-phone-number',
 };
 

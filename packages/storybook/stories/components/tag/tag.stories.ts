@@ -7,7 +7,7 @@ import { CONTROL_CATEGORY, orderControls } from '../../control';
 defineCustomElement();
 
 const meta: Meta = {
-  title: 'ODS Components/Content/Tag',
+  title: 'ODS Components/Tag',
   component: 'ods-tag',
 };
 

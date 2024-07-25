@@ -7,7 +7,7 @@ import { html } from 'lit-html';
 defineCustomElement();
 
 const meta: Meta = {
-  title: 'ODS Components/User feedback/Spinner',
+  title: 'ODS Components/Spinner',
   component: 'ods-spinner',
 };
 

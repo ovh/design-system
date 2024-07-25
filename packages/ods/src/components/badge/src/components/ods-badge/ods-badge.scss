@@ -11,26 +11,6 @@
 
     @include badge.ods-badge();
 
-    &--neutral {
-      @include badge.ods-badge-color('neutral');
-    }
-
-    &--information {
-      @include badge.ods-badge-color('information');
-    }
-
-    &--success {
-      @include badge.ods-badge-color('success');
-    }
-
-    &--warning {
-      @include badge.ods-badge-color('warning');
-    }
-
-    &--critical {
-      @include badge.ods-badge-color('critical');
-    }
-
     &--alpha {
       @include badge.ods-badge-color('alpha');
     }
@@ -39,12 +19,32 @@
       @include badge.ods-badge-color('beta');
     }
 
+    &--critical {
+      @include badge.ods-badge-color('critical');
+    }
+
+    &--information {
+      @include badge.ods-badge-color('information');
+    }
+
+    &--neutral {
+      @include badge.ods-badge-color('neutral');
+    }
+
     &--new {
       @include badge.ods-badge-color('new');
     }
 
     &--promotion {
       @include badge.ods-badge-color('promotion');
+    }
+
+    &--success {
+      @include badge.ods-badge-color('success');
+    }
+
+    &--warning {
+      @include badge.ods-badge-color('warning');
     }
 
     &--round {

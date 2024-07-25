@@ -1,7 +1,0 @@
-{
-  "extends": "./tsconfig.prod.json",
-  "compilerOptions": {
-    "outDir": "dist/cjs",
-    "module": "CommonJS"
-  }
-}

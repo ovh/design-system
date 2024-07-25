@@ -91,7 +91,7 @@ export class OdsRadio {
     });
   }
 
-  private emitChange(detail: OdsRadioValueChangeEventDetail): void {
+  private emitChange(detail: OdsRadioChangeEventDetail): void {
     this.odsChange.emit({
       checked: detail.checked,
       name: detail.name,

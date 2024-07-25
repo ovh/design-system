@@ -16,7 +16,7 @@
   @include input.ods-input-disabled();
 
   .ods-file-upload-item__icon {
-    color: var(--ods-form-element-foreground-color-disabled);
+    color: var(--ods-color-text-disabled-default);
   }
 }
 

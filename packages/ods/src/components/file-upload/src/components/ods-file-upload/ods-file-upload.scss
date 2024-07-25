@@ -9,7 +9,7 @@ $ods-file-upload-spacing: 8px;
   display: inline-flex;
   flex-flow: column;
   row-gap: 8px;
-  border: dashed 1px var(--ods-form-element-border-color-default);
+  border: dashed 1px var(--ods-color-form-element-border-default);
   border-radius: 4px;
   overflow: hidden;
   color: var(--ods-color-text);
@@ -19,7 +19,7 @@ $ods-file-upload-spacing: 8px;
   @include input.ods-input-disabled();
 
   .ods-file-upload__dropzone__icon {
-    color: var(--ods-form-element-foreground-color-disabled);
+    color: var(--ods-color-text-disabled-default);
   }
 }
 

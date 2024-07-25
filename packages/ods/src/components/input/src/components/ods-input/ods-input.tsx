@@ -43,7 +43,7 @@ export class OdsInput {
   @Prop({ mutable: true, reflect: true }) public value: string | number | null = null;
 
   @Event() odsBlur!: EventEmitter<void>;
-  @Event() odsChange!: EventEmitter<OdsInputValueChangeEventDetail>;
+  @Event() odsChange!: EventEmitter<OdsInputChangeEventDetail>;
   @Event() odsClear!: EventEmitter<void>;
   @Event() odsFocus!: EventEmitter<void>;
   @Event() odsReset!: EventEmitter<void>;

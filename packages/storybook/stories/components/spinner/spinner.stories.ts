@@ -1,10 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { ODS_SPINNER_COLOR, ODS_SPINNER_COLORS, ODS_SPINNER_SIZE, ODS_SPINNER_SIZES } from '@ovhcloud/ods-components';
-import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/ods-spinner';
 import { CONTROL_CATEGORY, orderControls } from '../../control';
 import { html } from 'lit-html';
-
-defineCustomElement();
 
 const meta: Meta = {
   title: 'ODS Components/Spinner',
@@ -59,6 +56,16 @@ export const Demo: StoryObj = {
     color: ODS_SPINNER_COLOR.primary,
     size: ODS_SPINNER_SIZE.md,
   },
+};
+
+export const Overview: StoryObj = {
+  tags: ['isHidden'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: () => html`
+<ods-spinner></ods-spinner>
+  `,
 };
 
 export const Default: StoryObj = {

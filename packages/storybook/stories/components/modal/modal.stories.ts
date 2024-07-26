@@ -1,13 +1,10 @@
 
 import type { Meta, StoryObj } from '@storybook/web-components';
-import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/ods-modal';
 import { ODS_MODAL_COLOR, ODS_MODAL_COLORS } from '@ovhcloud/ods-components';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
 import { CONTROL_CATEGORY, orderControls } from '../../control';
 import { withResetRoot } from '../../hook';
-
-defineCustomElement();
 
 const meta: Meta = {
   title: 'ODS Components/Modal',
@@ -114,8 +111,11 @@ export const Demo: StoryObj = {
 
 export const Overview: StoryObj = {
   tags: ['isHidden'],
+  parameters: {
+    layout: 'centered',
+  },
   render: () => html`
-<ods-button class="button-overview" label="Trigger Modal"></ods-button>
+<ods-button class="button-overview" variant="outline" label="Trigger Modal"></ods-button>
 <ods-modal class="modal-overview">
   <ods-text class="headline" preset="heading-4">Overview</ods-text>
   <ods-text preset="span">Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</ods-text>

@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
-import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/ods-icon';
 import { ODS_ICON_NAME, ODS_ICON_NAMES } from '@ovhcloud/ods-components';
 import { CONTROL_CATEGORY, orderControls } from '../../control';
 import { html } from 'lit-html';
@@ -160,8 +159,6 @@ const ODS_ICON_TAG: { [NameKey in IconNameKey]: string[] } = {
   xmark: ['clear', 'times'],
 };
 
-defineCustomElement();
-
 const meta: Meta = {
   title: 'ODS Components/Icon',
   component: 'ods-icon',
@@ -223,11 +220,24 @@ export const All: StoryObj = {
   },
 };
 
-export const Default: StoryObj = {
+export const Overview: StoryObj = {
   tags: ['isHidden'],
   parameters: {
     layout: 'centered',
   },
+  render: () => html`
+<ods-icon id="icon-overview" name="home" size="lg"></ods-icon>
+<style>
+  #icon-overview {
+    font-size: 2rem;
+    color: var(--ods-color-primary-500);
+  }
+</style>
+  `,
+};
+
+export const Default: StoryObj = {
+  tags: ['isHidden'],
   render: () => html`
 <ods-icon name="home"></ods-icon>
   `,
@@ -235,9 +245,6 @@ export const Default: StoryObj = {
 
 export const Name: StoryObj = {
   tags: ['isHidden'],
-  parameters: {
-    layout: 'centered',
-  },
   render: () => html`
 <ods-icon name="home"></ods-icon>
 <ods-icon name="plus"></ods-icon>

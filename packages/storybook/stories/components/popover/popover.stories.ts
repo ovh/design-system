@@ -1,11 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { ODS_POPOVER_POSITION, ODS_POPOVER_POSITIONS } from '@ovhcloud/ods-components';
-import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/ods-popover';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
 import { CONTROL_CATEGORY, orderControls } from '../../control';
-
-defineCustomElement();
 
 const meta: Meta = {
   title: 'ODS Components/Popover',
@@ -112,6 +109,9 @@ export const Default: StoryObj = {
 
 export const Overview: StoryObj = {
   tags: ['isHidden'],
+  parameters: {
+    layout: 'centered',
+  },
   render: () => html`
 <ods-button icon="home"
             id="trigger-overview"

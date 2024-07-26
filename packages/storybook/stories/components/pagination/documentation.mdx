@@ -1,40 +1,161 @@
 import { Canvas, Meta, Markdown } from '@storybook/blocks';
-import SpecificationsPagination from '@ovhcloud/ods-components/src/components/pagination/documentation/spec.md?raw';
 import { Banner } from '../../banner';
-import { DocNavigator } from '../../doc-navigator';
 import * as PaginationStories from './pagination.stories';
-import { LINK_ID } from '../../zeroheight';
+import { OdsIcon } from '@ovhcloud/ods-components/react';
+import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
 
 <Meta of={ PaginationStories } name='Documentation' />
 
 <Banner of={ PaginationStories } />
 
-# Overview
+_A **Pagination** component allows users to navigate through large sets of data by dividing the content into multiple pages._
 
-Pagination is the process of splitting information over multiple pages instead of showing it all on a single page; also the name for the interface component used for navigating between these pages.
+<Canvas of={ PaginationStories.Overview } sourceState='none' />
 
-<Canvas of={ PaginationStories.DefaultLargeAmountOfPages } sourceState='none' />
+## Overview
 
-<DocNavigator of={ PaginationStories } linkId={ LINK_ID.PAGINATION } />
+<div>
+  <div id='description'>
+    The **Pagination** component is used to divide content into discrete pages and provide navigation controls to move between them.
 
-<Markdown>{ SpecificationsPagination }</Markdown>
+    This component enhances usability by allowing users to browse through large sets of data without overwhelming the interface.
 
-# Examples
+    **Pagination** can include various controls like next/previous buttons and page numbers.
+  </div>
+  <table>
+    <tbody>
+    <tr>
+      <th scope="row">Name</th>
+      <td><strong>Pagination</strong></td>
+    </tr>
+    <tr>
+      <th scope="row">Also known as</th>
+      <td><em>Page navigation</em></td>
+    </tr>
+    <tr>
+      <th scope="row">Atomic type</th>
+      <td>
+        <a href='https://atomicdesign.bradfrost.com/chapter-2/#molecules'>Molecule<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Related component(s)</th>
+      <td>
+        [**Button**](?path=/docs/ods-components-button--documentation),
+        [**Select**](?path=/docs/ods-components-form-elements-select--documentation),
+        [**Tooltip**](?path=/docs/ods-components-tooltip--documentation)
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">Links</th>
+      <td>
+        <a href='https://www.figma.com/proto/tIKzHa5KvHHyosgIgyBswB/Design-Tokens'>Design<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a><br />
+        <a href='https://github.com/ovh/design-system/tree/master/packages/components/src/pagination'>Github<OdsIcon
+          name={ ODS_ICON_NAME.externalLink }
+          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
 
-## Default
-<Canvas of={ PaginationStories.Default } sourceState='shown' />
+## Anatomy
 
-## Default - Large amount of pages
-<Canvas of={ PaginationStories.DefaultLargeAmountOfPages } sourceState='shown' />
+![Component anatomy](components/pagination/anatomy.png "Component anatomy")
 
-## Disabled
-<Canvas of={ PaginationStories.Disabled } sourceState='shown' />
+1. **Number of items Select**: grouping a defined number of items _(optional)_
+2. **Total of items label**: A [**Text**](?path=/docs/ods-components-text--documentation), counting the total number of items _(optional)_
+3. **Previous arrow icon Button**: let user navigate to the previous page
+4. **Page number Buttons**: navigated to specific numbered page
+5. **Current page Button**: highlight the current page navigated to
+6. **Ellipsis Button**: shows the truncated pagination (in situations)
+7. **Next arrow icon Button**: let user navigate to the next page
 
-## Tooltip - Configuration
-<Canvas of={ PaginationStories.WithTooltips } sourceState='shown' />
+## Usage
 
-## Total Items
-<Canvas of={ PaginationStories.WithTotalItems } sourceState='shown' />
+A **Pagination** component is used in two situations :
+* To navigate among a [**Table**](?path=/docs/ods-components-table--documentation) component
+* To browse in a set of items (products list, ...)
 
-## Total Items with labels
-<Canvas of={ PaginationStories.WithTotalItemsWithLabels } sourceState='shown' />
+### Dos & Don'ts
+<Markdown>
+  { `
+| ✅ Do                                                                                                                                                                           |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| - Use when user needs to maintain a sense of position and order inside a set of elements                                                                                                         |
+| - When using Pagination, please display preferably ~25 items of the related set on each page                                                                                                         |
+` }
+</Markdown>
+<Markdown>
+  { `
+| ❌ Don't                                                                                                                                                                          |
+|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| - Use Pagination component for less than 2 pages to handle                                                                                           |
+| - For an unpredicted number of pages, prefer the use of infinite scrolling rather than a Pagination                                                                                           |
+` }
+</Markdown>
+
+## Placement
+
+**Pagination** is presented to the user near the container it uses for pagination; it can be located just above or below it.
+
+Usually, the **Pagination** is end-aligned horizontally, as its usage is not principal to the container.
+
+## Behavior
+
+### Amount of items per page
+
+The number of items displayed in **Pagination** is depending on its referential.
+
+However, there are few rules to be applied to display it correctly.
+
+Number of items in the component can be chunked in packs of :
+- 10
+- 25
+- 50
+- 100
+- 300
+
+This value is conditioning the number of items that will be displayed per page.
+
+By default, 10 items per page are displayed, but it can be set to match your need.
+
+### Amount of pages
+
+A maximum of 6 numbered page [**Buttons**](?path=/docs/ods-components-button--documentation) can be visible at once, with a minimum of 1.
+
+Arrow Buttons are always visible, no matter what the amount of pages.
+
+Depending on the current page number and the amount of pages, here are the different displays of the whole component:
+- If amount of pages is less than 7, all numbered page [**Buttons**](?path=/docs/ods-components-button--documentation) can be visible at once
+- If amount of pages is 7 or more :
+  - If current page is the 4th one or less, the first 5 numbered [**Buttons**](?path=/docs/ods-components-button--documentation) are present, then an ellipsis and the last numbered [**Button**](?path=/docs/ods-components-button--documentation) corresponding of the amount of pages
+  - If current page is the 4th to last or more, the first page [**Button**](?path=/docs/ods-components-button--documentation) is displayed followed by an ellipsis and the last 5 numbered [**Buttons**](?path=/docs/ods-components-button--documentation)
+  - If current page is between the previous bounds are displayed, in order :
+    - the first page [**Button**](?path=/docs/ods-components-button--documentation),
+    - an ellipsis,
+    - 3 numbered [**Buttons**](?path=/docs/ods-components-button--documentation), corresponding to : previous-to-current / current / next-to-current page,
+    - an ellipsis,
+    - the last numbered [**Button**](?path=/docs/ods-components-button--documentation)
+
+### Navigation
+
+Current page [**Button**](?path=/docs/ods-components-button--documentation) has a selected styling, yet it is a not clickable.
+
+If the selected page number is the first page, the previous page arrow [**Button**](?path=/docs/ods-components-button--documentation) is disabled; same thing applies with the last page as selected and the next page arrow [**Button**](?path=/docs/ods-components-button--documentation) disabled.
+
+An event is triggered when the current page changes in the Pagination, as well as the items per page changes.
+
+## Variation
+
+N/A
+
+## Accessibility
+
+All [**Buttons**](?path=/docs/ods-components-button--documentation) are accessible via tabulation controls.
+
+Previous and next page arrow [**Buttons**](?path=/docs/ods-components-button--documentation) are labelled as their explicit usage.

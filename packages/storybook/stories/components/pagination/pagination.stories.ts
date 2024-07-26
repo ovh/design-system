@@ -1,10 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
-import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/ods-pagination';
 import { html } from 'lit-html';
 import { CONTROL_CATEGORY, orderControls } from '../../control';
 import { ODS_PAGINATION_PER_PAGE, ODS_PAGINATION_PER_PAGE_OPTIONS } from '@ovhcloud/ods-components';
-
-defineCustomElement();
 
 const meta: Meta = {
   title: 'ODS Components/Pagination',
@@ -146,6 +143,16 @@ export const TotalItems: StoryObj = {
     beforeTotalItems: 'of ',
     afterTotalItems: ' results',
   },
+};
+
+export const Overview: StoryObj = {
+  tags: ['isHidden'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: () => html`
+    <ods-pagination default-current-page="4" total-pages="7"></ods-pagination>
+  `,
 };
 
 export const Default: StoryObj = {

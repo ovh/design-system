@@ -1,11 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
-import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/ods-text';
 import { ODS_TEXT_PRESETS } from '@ovhcloud/ods-components';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
 import { CONTROL_CATEGORY, orderControls } from '../../control';
-
-defineCustomElement();
 
 const meta: Meta = {
   title: 'ODS Components/Text',
@@ -58,10 +55,24 @@ export const Demo: StoryObj = {
   },
 };
 
+export const Overview: StoryObj = {
+  tags: ['isHidden'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: () => html`
+<ods-text class='overview-text'>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</ods-text>
+<style>
+  .overview-text::part(text) {
+    color: var(--ods-color-text);
+  }
+</style>
+  `,
+};
 export const Default: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
-<ods-text>lorem ipsum</ods-text>
+<ods-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</ods-text>
   `,
 };
 
@@ -85,7 +96,7 @@ export const Preset: StoryObj = {
 export const CustomCSS: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
-<ods-text class="my-text">lorem ipsum</ods-text>
+<ods-text class="my-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</ods-text>
 <style>
   .my-text::part(text) {
     color: #008000;

@@ -1,10 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
-import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/ods-form-field';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
 import { CONTROL_CATEGORY, orderControls } from '../../control';
-
-defineCustomElement();
 
 const meta: Meta = {
   title: 'ODS Components/Form elements/Form Field',
@@ -77,6 +74,35 @@ export const Demo: StoryObj = {
     content: '<ods-input type="text" placeholder="Placeholder" clearable></ods-input>',
     helper: '<ods-text slot="helper" preset="span">A little helper text</ods-text>',
   },
+};
+
+export const Overview: StoryObj = {
+  tags: ['isHidden'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: () => html`
+<ods-form-field error="Error message">
+  <ods-text id="form-field__overview-label" slot="label" preset="label">
+    Description
+  </ods-text>
+
+  <ods-input id="form-field__overview-input" type="text" placeholder="Placeholder" clearable></ods-input>
+
+  <ods-text id="form-field__overview-helper" slot="helper" preset="caption">
+    Helper text
+  </ods-text>
+</ods-form-field>
+<style>
+  #form-field__overview-label,
+  #form-field__overview-helper {
+    color: var(--ods-color-text);
+  }
+  #form-field__overview-helper::part(text) {
+    display: inline-flex;
+  }
+</style>
+  `,
 };
 
 export const Default: StoryObj = {

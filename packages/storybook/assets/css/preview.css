@@ -39,12 +39,12 @@ code {
   font-size: 1rem !important;
 }
 
-.sbdocs-content #overview + div {
+.sbdocs-content #overview + div:not(.sbdocs-preview) {
   display: grid;
   grid-template-columns: 1.5fr 1fr;
   gap: 2rem;
 }
-.sbdocs-content #overview + div > table {
+.sbdocs-content #overview + div:not(.sbdocs-preview) > table {
   align-self: flex-start;
   text-align: left;
 }

@@ -50,7 +50,7 @@ export const Demo: StoryObj = {
       },
       control: { type: 'select' },
       options: ODS_ICON_NAMES,
-      description: 'See the whole list [here](/?path=/docs/ods-components-content-icon--documentation#name)',
+      description: 'See the whole list [here](/?path=/docs/ods-components-icon--documentation#name)',
     },
     label: {
       table: {

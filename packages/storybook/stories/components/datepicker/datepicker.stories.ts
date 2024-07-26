@@ -1,10 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { ODS_DATEPICKER_LOCALE, ODS_DATEPICKER_LOCALES } from '@ovhcloud/ods-components';
-import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/ods-datepicker';
 import { html } from 'lit-html';
 import { CONTROL_CATEGORY, orderControls } from '../../control';
-
-defineCustomElement();
 
 const meta: Meta = {
   title: 'ODS Components/Form elements/Datepicker',
@@ -160,6 +157,22 @@ export const DaysOfWeekDisabled: StoryObj = {
   (() => {
     const datepicker = document.querySelector('#datepicker-days-disabled');
     datepicker.daysOfWeekDisabled = [1, 2];
+  })();
+</script>
+  `,
+};
+
+export const Overview: StoryObj = {
+  tags: ['isHidden'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: () => html`
+<ods-datepicker id="datepicker-overview"></ods-datepicker>
+<script>
+  (() => {
+    const datepicker = document.querySelector('#datepicker-overview');
+    datepicker.value = new Date();
   })();
 </script>
   `,

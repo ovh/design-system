@@ -1,9 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
-import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/ods-file-upload';
 import { html } from 'lit-html';
 import { CONTROL_CATEGORY, orderControls } from '../../control';
-
-defineCustomElement();
 
 const meta: Meta = {
   title: 'ODS Components/Form elements/File Upload',
@@ -400,6 +397,9 @@ export const MaxSize: StoryObj = {
 
 export const Overview: StoryObj = {
   tags: ['isHidden'],
+  parameters: {
+    layout: 'centered',
+  },
   decorators: [(story) => html`<div style="text-align: center;">${story()}</div>`],
   render: () => html`
 <ods-file-upload id="overview-file-upload"></ods-file-upload>

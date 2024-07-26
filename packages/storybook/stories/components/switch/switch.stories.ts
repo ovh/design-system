@@ -1,11 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { ODS_SWITCH_SIZE, ODS_SWITCH_SIZES } from '@ovhcloud/ods-components';
-import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/ods-switch';
 import { html } from 'lit-html';
 import { CONTROL_CATEGORY, orderControls } from '../../control';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
-
-defineCustomElement();
 
 const meta: Meta = {
   component: 'ods-switch',
@@ -93,6 +90,9 @@ export const Disabled: StoryObj = {
 
 export const Overview: StoryObj = {
   tags: ['isHidden'],
+  parameters: {
+    layout: 'centered',
+  },
   render: () => html`
 <ods-switch name="overview">
   <ods-switch-item is-checked value="1">label1</ods-switch-item>

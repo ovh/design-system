@@ -1,9 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
-import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/ods-quantity';
 import { html } from 'lit-html';
 import { CONTROL_CATEGORY, orderControls } from '../../control';
-
-defineCustomElement();
 
 const meta: Meta = {
   title: 'ODS Components/Form elements/Quantity',
@@ -136,6 +133,16 @@ export const Demo: StoryObj = {
     isDisabled: false,
     isReadonly: false,
   },
+};
+
+export const Overview: StoryObj = {
+  tags: ['isHidden'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: () => html`
+    <ods-quantity min="0" value="0"></ods-quantity>
+  `,
 };
 
 export const Default: StoryObj = {

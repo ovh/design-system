@@ -1,9 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
-import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/ods-select';
 import { html } from 'lit-html';
 import { CONTROL_CATEGORY, orderControls } from '../../control';
-
-defineCustomElement();
 
 const meta: Meta = {
   title: 'ODS Components/Form elements/Select',
@@ -238,6 +235,20 @@ export const CustomRendererMultiple: StoryObj = {
     }
   })();
 </script>
+  `,
+};
+
+export const Overview: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-select placeholder="Select">
+  <option value="dog">Dog</option>
+  <option value="cat">Cat</option>
+  <option value="hamster">Hamster</option>
+  <option value="parrot">Parrot</option>
+  <option value="spider">Spider</option>
+  <option value="goldfish">Goldfish</option>
+</ods-select>
   `,
 };
 

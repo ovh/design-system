@@ -1,10 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { ODS_PHONE_NUMBER_COUNTRY_ISO_CODES, ODS_PHONE_NUMBER_LOCALES } from '@ovhcloud/ods-components';
-import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/ods-phone-number';
 import { html } from 'lit-html';
 import { CONTROL_CATEGORY, orderControls } from '../../control';
-
-defineCustomElement();
 
 const meta: Meta = {
   title: 'ODS Components/Form elements/Phone Number',
@@ -182,6 +179,16 @@ export const CustomCSS: StoryObj = {
   `,
 };
 
+export const Overview: StoryObj = {
+  tags: ['isHidden'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: () => html`
+<ods-phone-number countries="all"></ods-phone-number>
+  `,
+};
+
 export const Default: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
@@ -219,16 +226,6 @@ export const Loading: StoryObj = {
     <ods-phone-number countries="all"
                       is-loading>
     </ods-phone-number>
-  `,
-};
-
-export const Overview: StoryObj = {
-  tags: ['isHidden'],
-  render: () => html`
-<ods-phone-number></ods-phone-number>
-<br /><br />
-<ods-phone-number countries="all">
-</ods-phone-number>
   `,
 };
 

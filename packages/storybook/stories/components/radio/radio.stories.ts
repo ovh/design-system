@@ -1,9 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
-import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/ods-radio';
 import { html } from 'lit-html';
 import { CONTROL_CATEGORY, orderControls } from '../../control';
-
-defineCustomElement();
 
 const meta: Meta = {
   component: 'ods-radio',
@@ -159,6 +156,16 @@ export const CustomCSS: StoryObj = {
 
 export const Checked: StoryObj = {
   tags: ['isHidden'],
+  render: () => html`
+<ods-radio is-checked></ods-radio>
+  `,
+};
+
+export const Overview: StoryObj = {
+  tags: ['isHidden'],
+  parameters: {
+    layout: 'centered',
+  },
   render: () => html`
 <ods-radio is-checked></ods-radio>
   `,

@@ -1,9 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
-import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/ods-medium';
 import { html } from 'lit-html';
 import { CONTROL_CATEGORY, orderControls } from '../../control';
-
-defineCustomElement();
 
 const meta: Meta = {
   title: 'ODS Components/Medium',
@@ -11,7 +8,7 @@ const meta: Meta = {
 };
 
 const exampleAlt = 'OVHcloud logo';
-const exampleSrc = 'https://corporate.ovhcloud.com/sites/default/files/2022-03/ovhcloud-logo2.png';
+const exampleSrc = 'https://images.crunchbase.com/image/upload/c_pad,h_256,w_256,f_auto,q_auto:eco,dpr_1/ayzwkdawmlyzvuummuf4';
 
 export default meta;
 
@@ -55,6 +52,16 @@ export const Demo: StoryObj = {
     src: exampleSrc,
     width: 700,
   },
+};
+
+export const Overview: StoryObj = {
+  tags: ['isHidden'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: () => html`
+<ods-medium alt="${exampleAlt}" src="${exampleSrc}" height="100"></ods-medium>
+  `,
 };
 
 export const Default: StoryObj = {

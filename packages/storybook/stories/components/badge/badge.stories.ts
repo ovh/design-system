@@ -1,10 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
-import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/ods-badge';
 import { ODS_ICON_NAMES, ODS_BADGE_COLOR, ODS_BADGE_COLORS, ODS_BADGE_SHAPE, ODS_BADGE_SHAPES, ODS_BADGE_SIZE, ODS_BADGE_SIZES } from '@ovhcloud/ods-components';
 import { html } from 'lit-html';
 import { CONTROL_CATEGORY, orderControls } from '../../control';
-
-defineCustomElement();
 
 const meta: Meta = {
   title: 'ODS Components/Badge',
@@ -79,6 +76,16 @@ export const Demo: StoryObj = {
     label: 'My badge',
     size: ODS_BADGE_SIZE.md,
   },
+};
+
+export const Overview: StoryObj = {
+  tags: ['isHidden'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: () => html`
+    <ods-badge label="Badge"></ods-badge>
+  `,
 };
 
 export const Default: StoryObj = {

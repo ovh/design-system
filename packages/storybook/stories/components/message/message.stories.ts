@@ -5,12 +5,9 @@ import {
   ODS_MESSAGE_VARIANT,
   ODS_MESSAGE_VARIANTS,
 } from '@ovhcloud/ods-components';
-import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/ods-message';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
 import { CONTROL_CATEGORY, orderControls } from '../../control';
-
-defineCustomElement();
 
 const meta: Meta = {
   title: 'ODS Components/Message',
@@ -73,6 +70,16 @@ export const Demo: StoryObj = {
     color: ODS_MESSAGE_COLOR.information,
     variant: ODS_MESSAGE_VARIANT.default,
   },
+};
+
+export const Overview: StoryObj = {
+  tags: ['isHidden'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: () => html`
+<ods-message>Message</ods-message>
+  `,
 };
 
 export const Default: StoryObj = {

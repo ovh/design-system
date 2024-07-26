@@ -1,9 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
-import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/ods-textarea';
 import { html } from 'lit-html';
 import { CONTROL_CATEGORY, orderControls } from '../../control';
-
-defineCustomElement();
 
 const meta: Meta = {
   title: 'ODS Components/Form elements/Textarea',
@@ -130,6 +127,16 @@ export const Demo: StoryObj = {
     isReadonly: false,
     isResizable: false,
   },
+};
+
+export const Overview: StoryObj = {
+  tags: ['isHidden'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: () => html`
+<ods-textarea placeholder="Textarea"></ods-textarea>
+  `,
 };
 
 export const Default: StoryObj = {

@@ -1,11 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
-import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/ods-table';
 import { ODS_TABLE_SIZE, ODS_TABLE_SIZES, ODS_TABLE_VARIANT, ODS_TABLE_VARIANTS } from '@ovhcloud/ods-components';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
 import { CONTROL_CATEGORY, orderControls } from '../../control';
-
-defineCustomElement();
 
 const meta: Meta = {
   title: 'ODS Components/Table',
@@ -90,6 +87,17 @@ export const Demo: StoryObj = {
   },
 };
 
+export const Overview: StoryObj = {
+  tags: ['isHidden'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: () => html`
+<ods-table>
+${unsafeHTML(exampleTable)}
+</ods-table>
+  `,
+};
 export const Default: StoryObj = {
   tags: ['isHidden'],
   render: () => html`

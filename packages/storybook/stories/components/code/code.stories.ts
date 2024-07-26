@@ -1,9 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
-import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/ods-code';
 import { html } from 'lit-html';
 import { CONTROL_CATEGORY, orderControls } from '../../control';
-
-defineCustomElement();
 
 const meta: Meta = {
   title: 'ODS Components/Code',
@@ -58,6 +55,17 @@ export const CustomCSS: StoryObj = {
     color: cyan;
   }
 </style>
+  `,
+};
+
+export const Overview: StoryObj = {
+  tags: ['isHidden'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: () => html`
+    <ods-code can-copy>import { OsdsText } from '@ovhcloud/ods-components/react';
+    </ods-code>
   `,
 };
 

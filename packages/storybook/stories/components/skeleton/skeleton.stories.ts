@@ -1,9 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
-import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/ods-skeleton';
 import { html } from 'lit-html';
 import { CONTROL_CATEGORY, orderControls } from '../../control';
-
-defineCustomElement();
 
 const meta: Meta = {
   title: 'ODS Components/Skeleton',
@@ -34,6 +31,13 @@ export const Demo: StoryObj = {
     }
   }),
   args: {},
+};
+
+export const Overview: StoryObj = {
+  tags: ['isHidden'],
+  render: () => html`
+<ods-skeleton></ods-skeleton>
+  `,
 };
 
 export const Default: StoryObj = {

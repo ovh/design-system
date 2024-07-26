@@ -1,11 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { ODS_DIVIDER_COLOR, ODS_DIVIDER_COLORS, ODS_DIVIDER_SPACING, ODS_DIVIDER_SPACINGS } from '@ovhcloud/ods-components';
-import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/ods-divider';
 import { CONTROL_CATEGORY, orderControls } from '../../control';
 import { html } from 'lit-html';
 
-
-defineCustomElement();
 
 const meta: Meta = {
   title: 'ODS Components/Divider',
@@ -62,13 +59,24 @@ export const Demo: StoryObj = {
   },
 };
 
+export const Overview: StoryObj = {
+  tags: ['isHidden'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: () => html`
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    <ods-divider></ods-divider>
+    Interdum et malesuada fames ac ante ipsum primis in faucibus.
+  `,
+};
+
 export const Default: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
 <ods-divider></ods-divider>
   `,
 };
-
 
 export const Color: StoryObj = {
   tags: ['isHidden'],

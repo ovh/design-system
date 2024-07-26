@@ -1,5 +1,8 @@
 import type { Preview } from '@storybook/web-components';
 import '@ovhcloud/ods-themes/default';
+import { defineCustomElements } from '@ovhcloud/ods-components/dist/loader';
+
+defineCustomElements();
 
 const preview: Preview = {
   parameters: {

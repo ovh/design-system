@@ -1,9 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
-import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/ods-checkbox';
 import { html } from 'lit-html';
 import { CONTROL_CATEGORY, orderControls } from '../../control';
-
-defineCustomElement();
 
 const meta: Meta = {
   title: 'ODS Components/Form elements/Checkbox',
@@ -103,6 +100,16 @@ export const Checked: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
 <ods-checkbox is-checked></ods-checkbox>
+  `,
+};
+
+export const Overview: StoryObj = {
+  tags: ['isHidden'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: () => html`
+    <ods-checkbox is-checked></ods-checkbox>
   `,
 };
 

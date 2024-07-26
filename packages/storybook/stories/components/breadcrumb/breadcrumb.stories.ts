@@ -1,10 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
-import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/ods-breadcrumb';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
 import { CONTROL_CATEGORY, orderControls } from '../../control';
-
-defineCustomElement();
 
 const meta: Meta = {
   title: 'ODS Components/Breadcrumb',
@@ -115,6 +112,23 @@ export const CustomItem: StoryObj = {
   <ods-breadcrumb-item href="" is-disabled label="Disabled">
   </ods-breadcrumb-item>
   <ods-breadcrumb-item href="" label="Last">
+  </ods-breadcrumb-item>
+</ods-breadcrumb>
+  `,
+};
+
+export const Overview: StoryObj = {
+  tags: ['isHidden'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: () => html`
+<ods-breadcrumb>
+  <ods-breadcrumb-item href="" icon="home">
+  </ods-breadcrumb-item>
+  <ods-breadcrumb-item href="" label="Parent">
+  </ods-breadcrumb-item>
+  <ods-breadcrumb-item href="" label="Current">
   </ods-breadcrumb-item>
 </ods-breadcrumb>
   `,

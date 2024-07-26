@@ -1,11 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { ODS_INPUT_TYPE, ODS_INPUT_TYPES } from '@ovhcloud/ods-components';
-import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/ods-input';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { html } from 'lit-html';
 import { CONTROL_CATEGORY, orderControls } from '../../control';
-
-defineCustomElement();
 
 const meta: Meta = {
   title: 'ODS Components/Form elements/Input',
@@ -188,6 +185,16 @@ export const Demo: StoryObj = {
     isMasked: undefined,
     isReadonly: false,
   },
+};
+
+export const Overview: StoryObj = {
+  tags: ['isHidden'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: () => html`
+<ods-input placeholder="Input"></ods-input>
+  `,
 };
 
 export const Default: StoryObj = {

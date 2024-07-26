@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
-import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/ods-button';
 import {
   ODS_BUTTON_COLOR,
   ODS_BUTTON_COLORS,
@@ -12,8 +11,6 @@ import {
 } from '@ovhcloud/ods-components';
 import { html } from 'lit-html';
 import { CONTROL_CATEGORY, orderControls } from '../../control';
-
-defineCustomElement();
 
 const meta: Meta = {
   title: 'ODS Components/Button',
@@ -119,6 +116,16 @@ export const Demo: StoryObj = {
     size: ODS_BUTTON_SIZE.md,
     variant: ODS_BUTTON_VARIANT.default,
   },
+};
+
+export const Overview: StoryObj = {
+  tags: ['isHidden'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: () => html`
+<ods-button label="Button"></ods-button>
+  `,
 };
 
 export const Default: StoryObj = {

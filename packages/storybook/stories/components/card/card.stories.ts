@@ -1,11 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
-import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/ods-card';
 import { ODS_CARD_COLOR, ODS_CARD_COLORS } from '@ovhcloud/ods-components';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
 import { CONTROL_CATEGORY, orderControls } from '../../control';
-
-defineCustomElement();
 
 const meta: Meta = {
   title: 'ODS Components/Card',
@@ -69,9 +66,12 @@ export const Slot: StoryObj = {
 
 export const Overview: StoryObj = {
   tags: ['isHidden'],
+  parameters: {
+    layout: 'centered',
+  },
   render: () => html`
 <ods-card class="overview-card">
-  <ods-text preset="heading-6">Hello, world!</ods-text>
+  <ods-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br>Interdum et malesuada fames ac ante ipsum primis in faucibus.</ods-text>
 </ods-card>
 
 <style>

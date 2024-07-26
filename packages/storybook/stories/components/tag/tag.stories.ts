@@ -1,10 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
-import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/ods-tag';
 import { ODS_ICON_NAMES, ODS_TAG_COLOR, ODS_TAG_COLORS, ODS_TAG_SIZE, ODS_TAG_SIZES } from '@ovhcloud/ods-components';
 import { html } from 'lit-html';
 import { CONTROL_CATEGORY, orderControls } from '../../control';
-
-defineCustomElement();
 
 const meta: Meta = {
   title: 'ODS Components/Tag',
@@ -89,6 +86,16 @@ export const Demo: StoryObj = {
     label: 'My tag',
     size: ODS_TAG_SIZE.md,
   },
+};
+
+export const Overview: StoryObj = {
+  tags: ['isHidden'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: () => html`
+<ods-tag label="Tag"></ods-tag>
+  `,
 };
 
 export const Default: StoryObj = {

@@ -1,10 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
-import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/ods-link';
 import { html } from 'lit-html';
 import { ODS_ICON_NAMES, ODS_LINK_COLOR, ODS_LINK_COLORS } from '@ovhcloud/ods-components';
 import { CONTROL_CATEGORY, orderControls } from '../../control';
-
-defineCustomElement();
 
 const meta: Meta = {
   title: 'ODS Components/Link',
@@ -135,6 +132,16 @@ export const Demo: StoryObj = {
     isDisabled: false,
     label: 'my label',
   },
+};
+
+export const Overview: StoryObj = {
+  tags: ['isHidden'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: () => html`
+<ods-link href="https://www.ovhcloud.com/" label="Link"></ods-link>
+  `,
 };
 
 export const Default: StoryObj = {

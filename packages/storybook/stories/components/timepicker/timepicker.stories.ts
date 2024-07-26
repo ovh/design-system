@@ -1,10 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { ODS_TIMEZONES, ODS_TIMEZONES_PRESETS } from '@ovhcloud/ods-components';
-import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/ods-timepicker';
 import { html } from 'lit-html';
 import { CONTROL_CATEGORY, orderControls } from '../../control';
-
-defineCustomElement();
 
 const meta: Meta = {
   component: 'ods-timepicker',
@@ -226,6 +223,16 @@ export const CustomCSS: StoryObj = {
       width: 300px;
     }
   </style>
+  `,
+};
+
+export const Overview: StoryObj = {
+  tags: ['isHidden'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: () => html`
+<ods-timepicker value="12:00" timezones="all" current-timezone="UTC+2"></ods-timepicker>
   `,
 };
 

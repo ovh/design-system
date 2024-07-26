@@ -1,16 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
-import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/ods-range';
 import { html } from 'lit-html';
 import { CONTROL_CATEGORY, orderControls } from '../../control';
-
-defineCustomElement();
 
 const meta: Meta = {
   component: 'ods-range',
   title: 'ODS Components/Form elements/Range',
-  parameters: {
-    layout: 'centered',
-  },
   decorators: [(story) => html`<div style="padding-top: 50px; display: inline-flex; align-items: center;">${story()}</div>`],
 
 };
@@ -262,6 +256,9 @@ export const Min: StoryObj = {
 
 export const Overview: StoryObj = {
   tags: ['isHidden'],
+  parameters: {
+    layout: 'centered',
+  },
   render: () => html`
 <ods-range value="50"></ods-range>
   `,

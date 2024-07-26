@@ -1,9 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
-import { defineCustomElement } from '@ovhcloud/ods-components/dist/components/ods-clipboard';
 import { html } from 'lit-html';
 import { CONTROL_CATEGORY, orderControls } from '../../control';
-
-defineCustomElement();
 
 const meta: Meta = {
   title: 'ODS Components/Clipboard',
@@ -99,6 +96,16 @@ export const CustomTooltipCSS = {
     width: 200px;
   }
 </style>
+  `,
+};
+
+export const Overview: StoryObj = {
+  tags: ['isHidden'],
+  parameters: {
+    layout: 'centered',
+  },
+  render: () => html`
+    <ods-clipboard value="Clipboard"></ods-clipboard>
   `,
 };
 

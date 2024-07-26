@@ -1,4 +1,4 @@
-import { Markdown, Meta } from '@storybook/blocks';
+import { Canvas, Markdown, Meta } from '@storybook/blocks';
 import { Banner } from '../../banner';
 import * as CodeStories from './code.stories';
 import { OdsIcon } from '@ovhcloud/ods-components/react';
@@ -9,6 +9,8 @@ import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
 <Banner of={ CodeStories } />
 
 _**Code** component highlights strings or small blocks of **Code** so it makes them easier to read and understand_
+
+<Canvas of={ CodeStories.Default } sourceState='none' />
 
 ## Overview
 <div>

@@ -73,6 +73,7 @@ export const Demo: StoryObj = {
     isDisabled: false,
     labelCopy: 'Copy to clipboard',
     labelCopySuccess: 'Copied!',
+    value: 'Some text to copy',
   },
 };
 

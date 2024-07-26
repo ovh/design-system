@@ -151,7 +151,14 @@ export const Overview: StoryObj = {
     layout: 'centered',
   },
   render: () => html`
-    <ods-pagination default-current-page="4" total-pages="7"></ods-pagination>
+    <ods-pagination
+      default-current-page="3"
+      total-items="100"
+      label-tooltip-next="Next page"
+      label-tooltip-previous="Previous page">
+      <span slot="before-total-items">of </span>
+      <span slot="after-total-items"> results</span>
+    </ods-pagination>
   `,
 };
 

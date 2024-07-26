@@ -1,0 +1,34 @@
+import { Canvas, Meta, Markdown } from '@storybook/blocks';
+import SpecificationsPagination from '@ovhcloud/ods-components/src/components/pagination/documentation/spec.md?raw';
+import { Banner } from '../../banner';
+import * as PaginationStories from './pagination.stories';
+
+<Meta of={ PaginationStories } name='Technical information' />
+
+<Banner of={ PaginationStories } />
+
+# Overview
+
+<Canvas of={ PaginationStories.DefaultLargeAmountOfPages } sourceState='none' />
+
+<Markdown>{ SpecificationsPagination }</Markdown>
+
+# Examples
+
+## Default
+<Canvas of={ PaginationStories.Default } sourceState='shown' />
+
+## Default - Large amount of pages
+<Canvas of={ PaginationStories.DefaultLargeAmountOfPages } sourceState='shown' />
+
+## Disabled
+<Canvas of={ PaginationStories.Disabled } sourceState='shown' />
+
+## Tooltip - Configuration
+<Canvas of={ PaginationStories.WithTooltips } sourceState='shown' />
+
+## Total Items
+<Canvas of={ PaginationStories.WithTotalItems } sourceState='shown' />
+
+## Total Items with labels
+<Canvas of={ PaginationStories.WithTotalItemsWithLabels } sourceState='shown' />

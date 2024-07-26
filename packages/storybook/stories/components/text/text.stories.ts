@@ -61,7 +61,7 @@ export const Overview: StoryObj = {
     layout: 'centered',
   },
   render: () => html`
-<ods-text class='overview-text'>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</ods-text>
+<ods-text class="overview-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</ods-text>
 <style>
   .overview-text::part(text) {
     color: var(--ods-color-text);

@@ -40,8 +40,8 @@ _**Popover** component is triggered by click and is used to provide additional i
     <tr>
       <th scope="row">Related component(s)</th>
       <td>
-        [**Text**](?path=/docs/ods-components-content-tag--documentation),
-        [**Button**](?path=/docs/ods-components-actions-button--documentation)
+        [**Text**](?path=/docs/ods-components-text--documentation),
+        [**Button**](?path=/docs/ods-components-button--documentation)
       </td>
     </tr>
     <tr>
@@ -63,29 +63,29 @@ _**Popover** component is triggered by click and is used to provide additional i
 
 ![Component anatomy](components/popover/anatomy.png "Component anatomy")
 
-1. **Container**: main container that has all content (i.e [**Text**](?path=/docs/ods-components-content-tag--documentation), [**Button**](?path=/docs/ods-components-actions-button--documentation), etc.)
+1. **Container**: main container that has all content (i.e [**Text**](?path=/docs/ods-components-text--documentation), [**Button**](?path=/docs/ods-components-button--documentation), etc.)
 2. **Arrow tip** (optional)
 
 ## Usage
 
 A **Popover** is used to provide an explanation for a user interface element.
 
-It can include interactive elements such as [**Button**](?path=/docs/ods-components-actions-button--documentation) or [**Link**](?path=/docs/ods-components-actions-link--documentation).
+It can include interactive elements such as [**Button**](?path=/docs/ods-components-button--documentation) or [**Link**](?path=/docs/ods-components-link--documentation).
 
-### [**Tooltip**](?path=/docs/ods-components-user-feedback-tooltip--documentation) vs. **Popover**
+### [**Tooltip**](?path=/docs/ods-components-tooltip--documentation) vs. **Popover**
 
-- Both components look similar but a [**Tooltip**](?path=/docs/ods-components-user-feedback-tooltip--documentation) is displayed on hover and focus while a **Popover** is triggered by click.
-- [**Tooltip**](?path=/docs/ods-components-user-feedback-tooltip--documentation) are commonly used for shorter explanations, while longer [**Text**](?path=/docs/ods-components-content-tag--documentation) / complex UIs would suit **Popovers** better.
-- Use a **Popover** when you need to insert interactive elements such as [**Button**](?path=/docs/ods-components-actions-button--documentation).
-- A **Popover** can be dismissed if an action [**Button**](?path=/docs/ods-components-actions-button--documentation) allows it.
+- Both components look similar but a [**Tooltip**](?path=/docs/ods-components-tooltip--documentation) is displayed on hover and focus while a **Popover** is triggered by click.
+- [**Tooltip**](?path=/docs/ods-components-tooltip--documentation) are commonly used for shorter explanations, while longer [**Text**](?path=/docs/ods-components-text--documentation) / complex UIs would suit **Popovers** better.
+- Use a **Popover** when you need to insert interactive elements such as [**Button**](?path=/docs/ods-components-button--documentation).
+- A **Popover** can be dismissed if an action [**Button**](?path=/docs/ods-components-button--documentation) allows it.
 
 ### Dos & Don'ts
 <Markdown>
   { `
 | ✅ Do                                                                                                                                                                                                                    |
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------                                          |
-| - Use a **Popover** instead of a [**Tooltip**](?path=/docs/ods-components-user-feedback-tooltip--documentation) when the [**Text**](?path=/docs/ods-components-content-tag--documentation) is long; but keep it concise |
-| - Write **Popover**'s [**Text**](?path=/docs/ods-components-content-tag--documentation) as full sentences with punctuation                                                                                              |
+| - Use a **Popover** instead of a [**Tooltip**](?path=/docs/ods-components-tooltip--documentation) when the [**Text**](?path=/docs/ods-components-text--documentation) is long; but keep it concise |
+| - Write **Popover**'s [**Text**](?path=/docs/ods-components-text--documentation) as full sentences with punctuation                                                                                              |
 ` }
 </Markdown>
 <Markdown>
@@ -108,7 +108,7 @@ It can include interactive elements such as [**Button**](?path=/docs/ods-compone
 
 By default, a **Popover** is hidden to the user.
 
-It triggers when the user clicks on the **Popover**'s trigger element such as a [**Button**](?path=/docs/ods-components-actions-button--documentation).
+It triggers when the user clicks on the **Popover**'s trigger element such as a [**Button**](?path=/docs/ods-components-button--documentation).
 
 The **Popover** can be closed or dismissed by clicking anywhere on the page outside the **Popover**'s container.
 

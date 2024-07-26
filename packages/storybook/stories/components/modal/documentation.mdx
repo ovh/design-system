@@ -18,7 +18,7 @@ _A **Modal** component is used to overlay with important content the main view o
     A **Modal** is used to provide some information to users that needs a response or immediate attention.
 
     While a **Modal** is triggered, there is no interaction possible on the page that is overlaid so users have to
-    dismiss or click on an action [**Button**](?path=/docs/ods-components-actions-button--documentation) to proceed
+    dismiss or click on an action [**Button**](?path=/docs/ods-components-button--documentation) to proceed
     further.
   </div>
   <table>
@@ -42,8 +42,8 @@ _A **Modal** component is used to overlay with important content the main view o
     <tr>
       <th scope="row">Related component(s)</th>
       <td>
-        [**Text**](?path=/docs/ods-components-content-tag--documentation),
-        [**Button**](?path=/docs/ods-components-actions-button--documentation)
+        [**Text**](?path=/docs/ods-components-text--documentation),
+        [**Button**](?path=/docs/ods-components-button--documentation)
       </td>
     </tr>
     <tr>
@@ -67,7 +67,7 @@ _A **Modal** component is used to overlay with important content the main view o
 
 1. **Backdrop overlay** to obscure the on-page content
 2. **Container**
-3. **Content** container, filled with [**Text**](?path=/docs/ods-components-content-tag--documentation) or other read-only content, depending on the usage
+3. **Content** container, filled with [**Text**](?path=/docs/ods-components-text--documentation) or other read-only content, depending on the usage
 4. **Action Buttons** container, to complete or cancel the **Modal** task
 5. **`close` icon Button** to close the **Modal** without submitting any data
 
@@ -95,7 +95,7 @@ They can be dismissable or not.
 | - Use a **Modal** to display information the user needs to respond to                                                                                                          |
 | - Use a **Modal** to ask a confirmation from the user before proceeding                                                                                                        |
 | - Use **Modals** sparingly since they are disruptive and stop users in their current task                                                                                      |
-| - Handle closing the **Modal** when the cancel action [**Button**](?path=/docs/ods-components-actions-button--documentation) is clicked                                        |
+| - Handle closing the **Modal** when the cancel action [**Button**](?path=/docs/ods-components-button--documentation) is clicked                                        |
 | - Use scrolling only when it is absolutely needed                                                                                                                              |
 ` }
 </Markdown>
@@ -105,7 +105,7 @@ They can be dismissable or not.
 |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------    |
 | - Trigger a **Modal** as a result of a first **Modal** actions                                                                                                                      |
 | - Use a **Modal** if the informational content is very long within a **Modal**: consider alternatives if that is your case                                                          |
-| - Use a **Modal** only to notify users about a successful completion of their actions: use [**Message**](?path=/docs/ods-components-user-feedback-message--documentation) component |
+| - Use a **Modal** only to notify users about a successful completion of their actions: use [**Message**](?path=/docs/ods-components-message--documentation) component |
 ` }
 </Markdown>
 
@@ -139,7 +139,7 @@ The hidden overflow behaviour is removed whenever the **Modal** get closed.
 
 ### Scrolling
 
-When necessary, depending on the viewport height and the **Modal** content, the user can scroll vertically with the header and the action [**Button**](?path=/docs/ods-components-actions-button--documentation)) remaining in place.
+When necessary, depending on the viewport height and the **Modal** content, the user can scroll vertically with the header and the action [**Button**](?path=/docs/ods-components-button--documentation)) remaining in place.
 
 ## Variation
 
@@ -156,7 +156,7 @@ When displayed, the user is directly focused on the **Modal** itself.
 
 When **Modal** is opened :
 - `Escape` key will dismiss it (if dismissible)
-- `Tabulation` allows to move forward, first to the closing icon, then through any focusable element in the **Modal** (e.g. action [**Button**](?path=/docs/ods-components-actions-button--documentation)))
+- `Tabulation` allows to move forward, first to the closing icon, then through any focusable element in the **Modal** (e.g. action [**Button**](?path=/docs/ods-components-button--documentation)))
 - `Shift + Tab` allows the opposite way to move backward in focusing items
 
 Focus is trapped inside the **Modal** scope and inner elements when active.

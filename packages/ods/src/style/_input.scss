@@ -24,7 +24,7 @@ $ods-input-input-padding-right: calc($ods-input-actions-button-width + $ods-inpu
   }
 
   &:read-only {
-    // TODO (empty) mixin readonly
+    @include ods-input-readonly();
   }
 }
 
@@ -36,4 +36,8 @@ $ods-input-input-padding-right: calc($ods-input-actions-button-width + $ods-inpu
 
 @mixin ods-input-error() {
   border-color: var(--ods-color-form-element-border-critical);
+}
+
+@mixin ods-input-readonly() {
+  // Empty for now, no style has been yet defined
 }

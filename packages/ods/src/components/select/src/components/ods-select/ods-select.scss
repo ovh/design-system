@@ -220,6 +220,12 @@ $select-padding-right: $select-caret-size + ($select-base-padding * 2);
         }
       }
     }
+
+    &.readonly {
+      .ts-control {
+        @include input.ods-input-readonly();
+      }
+    }
   }
 }
 

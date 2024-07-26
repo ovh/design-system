@@ -47,7 +47,7 @@ _An **Accordion** is a vertical header that reveals or hides an associated secti
     <tr>
       <th scope="row">Related component(s)</th>
       <td>
-        [**Text**](?path=/docs/ods-components-content-tag--documentation)
+        [**Text**](?path=/docs/ods-components-text--documentation)
       </td>
     </tr>
     <tr>
@@ -69,7 +69,7 @@ _An **Accordion** is a vertical header that reveals or hides an associated secti
 
 ![Component anatomy](components/accordion/anatomy.png "Component anatomy")
   1. **Header**: contains the section title and acts as a control for revealing the panel or not (always visible).
-  2. **Icon**: A "down/up" chevron [**Icon**](?path=/docs/ods-components-content-icon--documentation) is used to indicate the “expand/collapse” action, though the entire header area is clickable (always visible).
+  2. **Icon**: A "down/up" chevron [**Icon**](?path=/docs/ods-components-icon--documentation) is used to indicate the “expand/collapse” action, though the entire header area is clickable (always visible).
   3. **Panel**: the section of content associated with an **Accordion** header.
 
 ## Usage
@@ -88,9 +88,9 @@ Use this component for :
   { `
 | ✅ Do                                                                                                                                                                                                                                                                                            |
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------                                                                                                                  |
-| - Header [**Text**](?path=/docs/ods-components-content-tag--documentation) describes the content contained in the panel. Use a clear and concise [**Text**](?path=/docs/ods-components-content-tag--documentation), and be explicit about the action that will happen if the option is selected |
-| - Use sentence-style capitalization in header [**Text**](?path=/docs/ods-components-content-tag--documentation) (only the first word in a phrase and any proper nouns capitalized), no more than three words, and no punctuation                                                                |
-| - Use Accordion instead of [**Tab**](?path=/docs/ods-components-navigation-tabs--documentation) if users need to see multiple sections at once                                                                                                                                                  |
+| - Header [**Text**](?path=/docs/ods-components-text--documentation) describes the content contained in the panel. Use a clear and concise [**Text**](?path=/docs/ods-components-text--documentation), and be explicit about the action that will happen if the option is selected |
+| - Use sentence-style capitalization in header [**Text**](?path=/docs/ods-components-text--documentation) (only the first word in a phrase and any proper nouns capitalized), no more than three words, and no punctuation                                                                |
+| - Use Accordion instead of [**Tab**](?path=/docs/ods-components-tabs--documentation) if users need to see multiple sections at once                                                                                                                                                  |
 ` }
 </Markdown>
 
@@ -100,7 +100,7 @@ Use this component for :
 |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | - Expose a lot of content in the Header section (i.e. more than 2 lines)                                                                                                         |
 | - Use **Accordions** with essential content for users                                                                                                                            |
-| - Use [**Icon**](?path=/docs/ods-components-content-icon--documentation) in header text                                                                                   |
+| - Use [**Icon**](?path=/docs/ods-components-icon--documentation) in header text                                                                                   |
 | - Expose a lot of content in the Panel section (i.e. more than the viewport height)                                                                                              |
 | - Empty the Panel section, as the **Accordion** become useless                                                                                                                   |
 | - Disable **Accordions**, as it can be confusing for users                                                                                                                       |
@@ -142,7 +142,7 @@ N/A
 
 ## Accessibility
 
-The header part can be navigated through tabulation, with the same behavior as a [**Button**](?path=/docs/ods-components-actions-button--documentation).
+The header part can be navigated through tabulation, with the same behavior as a [**Button**](?path=/docs/ods-components-button--documentation).
 
 When focusing the header part, pressing `Enter` or `Space` keys will trigger its expansion or its collapsion.
 

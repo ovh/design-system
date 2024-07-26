@@ -8,7 +8,7 @@ import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
 
 <Banner of={ BreadcrumbStories } />
 
-_A list of [**Link**](?path=/docs/ods-components-actions-link--documentation) showing the current page location in the navigational hierarchy._
+_A list of [**Link**](?path=/docs/ods-components-link--documentation) showing the current page location in the navigational hierarchy._
 
 <Canvas of={ BreadcrumbStories.Overview } sourceState='none' />
 
@@ -41,9 +41,9 @@ _A list of [**Link**](?path=/docs/ods-components-actions-link--documentation) sh
     <tr>
       <th scope="row">Related component(s)</th>
       <td>
-        [**Link**](?path=/docs/ods-components-actions-link--documentation),
-        [**Icon**](?path=/docs/ods-components-content-icon--documentation)),
-        [**Text**](?path=/docs/ods-components-content-tag--documentation))
+        [**Link**](?path=/docs/ods-components-link--documentation),
+        [**Icon**](?path=/docs/ods-components-icon--documentation)),
+        [**Text**](?path=/docs/ods-components-text--documentation))
       </td>
     </tr>
     <tr>
@@ -64,7 +64,7 @@ _A list of [**Link**](?path=/docs/ods-components-actions-link--documentation) sh
 ## Anatomy
 
 ![Component anatomy](components/breadcrumb/anatomy.png "Component anatomy")
-1. **Page link** (as Home [**Icon**](?path=/docs/ods-components-content-icon--documentation))
+1. **Page link** (as Home [**Icon**](?path=/docs/ods-components-icon--documentation))
 2. **Page link**: Directs users to the parent-level page.
 3. **Separator**: Element between each page.
 4. **Active page** (Non-clickable): Indicate the current page.
@@ -82,7 +82,7 @@ It has several usage :
   { `
 | ✅ Do                                                                                                                                                                           |
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| - The first **Breadcrumb** element has to be a [**Link**](?path=/docs/ods-components-actions-link--documentation) to its preferential home page (with an [**Icon**](?path=/docs/ods-components-content-icon--documentation), or with "Home" [**Text**](?path=/docs/ods-components-content-tag--documentation))
+| - The first **Breadcrumb** element has to be a [**Link**](?path=/docs/ods-components-link--documentation) to its preferential home page (with an [**Icon**](?path=/docs/ods-components-icon--documentation), or with "Home" [**Text**](?path=/docs/ods-components-text--documentation))
 | - Inherit page structure logic inside the **Breadcrumb** construction
 ` }
 </Markdown>
@@ -93,7 +93,7 @@ It has several usage :
 |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | - Use **Breadcrumb** for main page navigation                                                                                                                                    |
 | - Use nested **Breadcrumbs**                                                                                                                                                     |
-| - Add external [**Link**](?path=/docs/ods-components-actions-link--documentation) in the component                                                                               |
+| - Add external [**Link**](?path=/docs/ods-components-link--documentation) in the component                                                                               |
 | - Put more than 4 imbrications inside a **Breadcrumb**, as the structure will be too complex                                                                                     |
 ` }
 </Markdown>
@@ -106,11 +106,11 @@ Its width is automatic, relative to its content and is not adjustable.
 
 ## Behavior
 
-When the **Breadcrumb** has more than 4 [**Link**](?path=/docs/ods-components-actions-link--documentation) visible, an ellipsis is displayed as a replacement for the middle [**Link**](?path=/docs/ods-components-actions-link--documentation).
+When the **Breadcrumb** has more than 4 [**Link**](?path=/docs/ods-components-link--documentation) visible, an ellipsis is displayed as a replacement for the middle [**Link**](?path=/docs/ods-components-link--documentation).
 
-A click on the ellipsis will expanded all previously hidden [**Link**](?path=/docs/ods-components-actions-link--documentation) inline, the collapsed state can't be redone afterwards.
+A click on the ellipsis will expanded all previously hidden [**Link**](?path=/docs/ods-components-link--documentation) inline, the collapsed state can't be redone afterwards.
 
-The **Breadcrumb** [**Link**](?path=/docs/ods-components-actions-link--documentation) are kept inline, even on mobile viewports.
+The **Breadcrumb** [**Link**](?path=/docs/ods-components-link--documentation) are kept inline, even on mobile viewports.
 
 Clicking or pressing `Enter` or `Space` key on **Breadcrumb** item triggers an event.
 
@@ -122,4 +122,4 @@ N/A
 
 ## Accessibility
 
-All [**Link**](?path=/docs/ods-components-actions-link--documentation) are accessible through tabulation.
+All [**Link**](?path=/docs/ods-components-link--documentation) are accessible through tabulation.

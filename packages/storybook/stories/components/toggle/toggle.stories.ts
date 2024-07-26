@@ -158,7 +158,7 @@ export const Overview: StoryObj = {
     layout: 'centered',
   },
   render: () => html`
-<ods-toggle with-label value='true'></ods-toggle>
+<ods-toggle with-label value="true"></ods-toggle>
   `,
 };
 

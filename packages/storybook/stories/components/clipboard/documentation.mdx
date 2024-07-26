@@ -39,9 +39,9 @@ _**Clipboard** component allows user to view and copy information to its **Clipb
     <tr>
       <th scope="row">Related component(s)</th>
       <td>
-        [**Input**](?path=/docs/ods-components-form-input--documentation),
-        [**Button**](?path=/docs/ods-components-actions-button--documentation),
-        [**Tooltip**](?path=/docs/ods-components-user-feedback-tooltip--documentation)
+        [**Input**](?path=/docs/ods-components-form-elements-input--documentation),
+        [**Button**](?path=/docs/ods-components-button--documentation),
+        [**Tooltip**](?path=/docs/ods-components-tooltip--documentation)
       </td>
     </tr>
     <tr>
@@ -63,16 +63,16 @@ _**Clipboard** component allows user to view and copy information to its **Clipb
 
 ![Component anatomy](components/clipboard/anatomy.png "Component anatomy")
 
-1. An [**Input**](?path=/docs/ods-components-form-input--documentation) containing the whole content that will be copied to the **Clipboard**
+1. An [**Input**](?path=/docs/ods-components-form-elements-input--documentation) containing the whole content that will be copied to the **Clipboard**
 2. **Value** to copy
-3. A 'copy' icon [**Button**](?path=/docs/ods-components-actions-button--documentation) to complete the copy action when clicked
+3. A 'copy' icon [**Button**](?path=/docs/ods-components-button--documentation) to complete the copy action when clicked
 4. A Tooltip displayed when user hovers or focuses the component, and briefly after a successful copy action to the user's **Clipboard**
 
 ## Usage
 
 **Clipboard** is used to quickly and easily copy an amount of text to the user's **Clipboard**.
 
-It can be used when it is considered that it will take the hassle out of selecting and copying an amount of [**Text**](?path=/docs/ods-components-content-tag--documentation) for the user.
+It can be used when it is considered that it will take the hassle out of selecting and copying an amount of [**Text**](?path=/docs/ods-components-text--documentation) for the user.
 
 ### Dos & Don'ts
 
@@ -96,24 +96,24 @@ It can be used when it is considered that it will take the hassle out of selecti
 
 By default, the **Clipboard** content is left-aligned in its container.
 
-**Clipboard**'s [**Tooltip**](?path=/docs/ods-components-user-feedback-tooltip--documentation) are right-aligned after the component by default, and vertically centered.
+**Clipboard**'s [**Tooltip**](?path=/docs/ods-components-tooltip--documentation) are right-aligned after the component by default, and vertically centered.
 
 ## Behavior
 
 **Clipboard** can be focused and hovered. They can be disabled.
 When disabled, the component can't be hovered, focused nor clicked.
 
-The **Clipboard** component is **used as read-only**, to allow users to copy a predefined [**Text**](?path=/docs/ods-components-content-tag--documentation) that cannot be edited directly.
+The **Clipboard** component is **used as read-only**, to allow users to copy a predefined [**Text**](?path=/docs/ods-components-text--documentation) that cannot be edited directly.
 
 Even if no visual indicator prompts the user to do so, **the user can select the Text directly in the Input**.
 
 
-**The trigger for copying** the [**Input**](?path=/docs/ods-components-form-input--documentation) content to the [**Clipboard**](?path=/docs/ods-components-user-feedback-clipboard--documentation) **is the "copy" Button**.
+**The trigger for copying** the [**Input**](?path=/docs/ods-components-form-elements-input--documentation) content to the [**Clipboard**](?path=/docs/ods-components-clipboard--documentation) **is the "copy" Button**.
 When hovering or focusing, **a Tooltip is displayed as a helper**.
 
 
 **An event is triggered when a Clipboard's content is copied.**
-A confirmation [**Tooltip**](?path=/docs/ods-components-user-feedback-tooltip--documentation) is displayed (if user is still hovering the "copy" [**Button**](?path=/docs/ods-components-actions-button--documentation)) when **Clipboard** content has been successfully copied.
+A confirmation [**Tooltip**](?path=/docs/ods-components-tooltip--documentation) is displayed (if user is still hovering the "copy" [**Button**](?path=/docs/ods-components-button--documentation)) when **Clipboard** content has been successfully copied.
 
 ## Variation
 
@@ -121,4 +121,4 @@ N/A
 
 ## Accessibility
 
-When focused, the **Clipboard** "copy" [**Button**](?path=/docs/ods-components-actions-button--documentation) can be triggered using `Space` or `Enter` keys.
+When focused, the **Clipboard** "copy" [**Button**](?path=/docs/ods-components-button--documentation) can be triggered using `Space` or `Enter` keys.

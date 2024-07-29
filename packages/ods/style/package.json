@@ -1,6 +1,6 @@
 {
   "name": "@ovhcloud/ods-components-style",
-  "version": "17.1.0",
+  "version": "17.2.2",
   "private": true,
   "description": "Style helpers for ODS",
   "keywords": [],

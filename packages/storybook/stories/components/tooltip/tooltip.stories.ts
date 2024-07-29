@@ -1,10 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
 import { ODS_TOOLTIP_POSITION, ODS_TOOLTIP_POSITIONS } from '@ovhcloud/ods-components';
-import { defineCustomElement as defineIcon } from '@ovhcloud/ods-components/dist/components/ods-icon';
 import { html } from 'lit-html';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
 import { CONTROL_CATEGORY, orderControls } from '../../control';
-defineIcon();
 
 const meta: Meta = {
   title: 'ODS Components/Tooltip',

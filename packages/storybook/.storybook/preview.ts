@@ -31,7 +31,9 @@ import { defineCustomElement as defineSelect } from '@ovhcloud/ods-components/di
 import { defineCustomElement as defineSkeleton } from '@ovhcloud/ods-components/dist/components/ods-skeleton';
 import { defineCustomElement as defineSpinner } from '@ovhcloud/ods-components/dist/components/ods-spinner';
 import { defineCustomElement as defineSwitch } from '@ovhcloud/ods-components/dist/components/ods-switch';
+import { defineCustomElement as defineSwitchItem } from '@ovhcloud/ods-components/dist/components/ods-switch-item';
 import { defineCustomElement as defineTable } from '@ovhcloud/ods-components/dist/components/ods-table';
+import { defineCustomElement as defineTab } from '@ovhcloud/ods-components/dist/components/ods-tab';
 import { defineCustomElement as defineTabs } from '@ovhcloud/ods-components/dist/components/ods-tabs';
 import { defineCustomElement as defineTag } from '@ovhcloud/ods-components/dist/components/ods-tag';
 import { defineCustomElement as defineText } from '@ovhcloud/ods-components/dist/components/ods-text';
@@ -77,7 +79,9 @@ const preview: Preview = {
       defineSkeleton();
       defineSpinner();
       defineSwitch();
+      defineSwitchItem();
       defineTable();
+      defineTab();
       defineTabs();
       defineTag();
       defineText();

@@ -9,7 +9,7 @@
     "start": "webpack serve --config webpack.config.js --mode=development"
   },
   "dependencies": {
-    "@ovhcloud/ods-components": "17.1.0",
+    "@ovhcloud/ods-components": "17.2.2",
     "formik": "2.4.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",

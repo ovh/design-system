@@ -1,5 +1,4 @@
-import type { E2EElement, E2EPage } from '@stencil/core/testing';
-import { newE2EPage } from '@stencil/core/testing';
+import { type E2EElement, type E2EPage, newE2EPage } from '@stencil/core/testing';
 
 describe('ods-timepicker navigation', () => {
   let el: E2EElement;
@@ -29,38 +28,48 @@ describe('ods-timepicker navigation', () => {
 
   describe('focus', () => {
     it('should be focusable on input', async() => {
-      await setup('<ods-timepicker></ods-timepicker>');
+      await setup('<ods-timepicker with-seconds></ods-timepicker>');
       const odsFocusSpy = await page.spyOnEvent('odsFocus');
       const odsBlurSpy = await page.spyOnEvent('odsBlur');
+
       await page.keyboard.press('Tab');
+
       expect(await isFocused()).toBe(true);
       expect(await odsTimepickerFocusedElementClassName()).toContain('ods-timepicker__time');
+
       await page.keyboard.press('Tab');
+
       expect(await isFocused()).toBe(true);
       expect(await odsTimepickerFocusedElementClassName()).toContain('ods-timepicker__time');
+
       await page.keyboard.press('Tab');
+
       expect(await isFocused()).toBe(true);
       expect(await odsTimepickerFocusedElementClassName()).toContain('ods-timepicker__time');
       expect(odsFocusSpy).toHaveReceivedEventTimes(1);
 
       await page.keyboard.press('Tab');
+
       expect(await isFocused()).toBe(false);
       expect(odsBlurSpy).toHaveReceivedEventTimes(1);
     });
 
     it('should be focusable on select', async() => {
-      await setup('<ods-timepicker timezones="all"></ods-timepicker>');
+      await setup('<ods-timepicker timezones="all" with-seconds></ods-timepicker>');
       const odsFocusSpy = await page.spyOnEvent('odsFocus');
       const odsBlurSpy = await page.spyOnEvent('odsBlur');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
-      await page.keyboard.press('Tab');
+
+      await page.keyboard.press('Tab'); // focus hours
+      await page.keyboard.press('Tab'); // focus minutes
+      await page.keyboard.press('Tab'); // focus seconds
+      await page.keyboard.press('Tab'); // focus select
+
       expect(await isFocused()).toBe(true);
       expect(await odsTimepickerFocusedElementClassName()).toContain('ods-timepicker__timezones');
       expect(odsFocusSpy).toHaveReceivedEventTimes(2);
 
       await page.keyboard.press('Tab');
+
       expect(await isFocused()).toBe(false);
       expect(odsBlurSpy).toHaveReceivedEventTimes(2);
     });
@@ -68,7 +77,9 @@ describe('ods-timepicker navigation', () => {
     it('should not be focusable if disabled', async() => {
       await setup('<ods-timepicker is-disabled></ods-timepicker>');
       const odsFocusSpy = await page.spyOnEvent('odsFocus');
+
       await page.keyboard.press('Tab');
+
       expect(await isFocused()).toBe(false);
       expect(odsFocusSpy).not.toHaveReceivedEvent();
     });
@@ -77,46 +88,68 @@ describe('ods-timepicker navigation', () => {
   describe('arrow', () => {
     it('should increment value with arrow up', async() => {
       await setup('<ods-timepicker value="11:11:00" with-seconds></ods-timepicker>');
+
       await page.keyboard.press('Tab');
       await page.keyboard.press('ArrowUp');
+
       expect(await el.getProperty('value')).toBe('12:11:00');
+
       await page.keyboard.press('Tab');
       await page.keyboard.press('ArrowUp');
+
       expect(await el.getProperty('value')).toBe('12:12:00');
+
       await page.keyboard.press('Tab');
       await page.keyboard.press('ArrowUp');
+
       expect(await el.getProperty('value')).toBe('12:12:01');
     });
 
     it('should decrement value with arrow down', async() => {
       await setup('<ods-timepicker value="11:11:00" with-seconds></ods-timepicker>');
+
       await page.keyboard.press('Tab');
       await page.keyboard.press('ArrowDown');
+
       expect(await el.getProperty('value')).toBe('10:11:00');
+
       await page.keyboard.press('Tab');
       await page.keyboard.press('ArrowDown');
+
       expect(await el.getProperty('value')).toBe('10:10:00');
+
       await page.keyboard.press('Tab');
       await page.keyboard.press('ArrowDown');
+
       expect(await el.getProperty('value')).toBe('10:10:59');
     });
 
     it('should switch from hour to minute to seconds using Arrow Left/Right', async() => {
       await setup('<ods-timepicker value="11:11:00" with-seconds></ods-timepicker>');
+
       await page.keyboard.press('Tab');
       await page.keyboard.press('ArrowUp');
+
       expect(await el.getProperty('value')).toBe('12:11:00');
+
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('ArrowUp');
+
       expect(await el.getProperty('value')).toBe('12:12:00');
+
       await page.keyboard.press('ArrowRight');
       await page.keyboard.press('ArrowUp');
+
       expect(await el.getProperty('value')).toBe('12:12:01');
+
       await page.keyboard.press('ArrowLeft');
       await page.keyboard.press('ArrowUp');
+
       expect(await el.getProperty('value')).toBe('12:13:01');
+
       await page.keyboard.press('ArrowLeft');
       await page.keyboard.press('ArrowUp');
+
       expect(await el.getProperty('value')).toBe('13:13:01');
     });
   });

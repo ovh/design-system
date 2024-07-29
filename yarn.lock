@@ -3862,45 +3862,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-"@ovhcloud/ods-cdk-dev@17.2.2, @ovhcloud/ods-cdk-dev@workspace:packages/cdk/dev":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-cdk-dev@workspace:packages/cdk/dev"
-  dependencies:
-    "@ovhcloud/ods-cdk": 17.2.2
-    "@ovhcloud/ods-common-stencil": 17.2.2
-    "@ovhcloud/ods-stencil-dev": 17.2.2
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-cdk@17.2.2, @ovhcloud/ods-cdk@workspace:packages/cdk":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-cdk@workspace:packages/cdk"
-  dependencies:
-    "@ovhcloud/ods-common-theming": 17.2.2
-    "@ovhcloud/ods-dev": 17.2.2
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-common-core@17.2.2, @ovhcloud/ods-common-core@workspace:packages/common/core":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-common-core@workspace:packages/common/core"
-  dependencies:
-    "@ovhcloud/ods-common-testing": 17.2.2
-    "@ovhcloud/ods-dev": 17.2.2
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-common-scripts@17.2.2, @ovhcloud/ods-common-scripts@workspace:packages/common/scripts":
-=======
-=======
-=======
-=======
-=======
 "@orchidjs/sifter@npm:^1.0.3":
   version: 1.0.3
   resolution: "@orchidjs/sifter@npm:1.0.3"
@@ -3917,78 +3878,48 @@ __metadata:
   languageName: node
   linkType: hard
 
-<<<<<<< HEAD
->>>>>>> 326e7fe13 (feat(select): implement component)
-=======
 "@ovhcloud/ods-component-accordion@workspace:packages/ods/src/components/accordion":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-accordion@workspace:packages/ods/src/components/accordion"
   languageName: unknown
   linkType: soft
 
->>>>>>> c83d01595 (feat(accordion): implement component)
 "@ovhcloud/ods-component-badge@workspace:packages/ods/src/components/badge":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-badge@workspace:packages/ods/src/components/badge"
   languageName: unknown
   linkType: soft
 
-<<<<<<< HEAD
->>>>>>> 1a2403ac6 (feat(badge): implement component)
-=======
 "@ovhcloud/ods-component-breadcrumb@workspace:packages/ods/src/components/breadcrumb":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-breadcrumb@workspace:packages/ods/src/components/breadcrumb"
   languageName: unknown
   linkType: soft
 
->>>>>>> e27439296 (feat(breadcrumb): implement component)
 "@ovhcloud/ods-component-button@workspace:packages/ods/src/components/button":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-button@workspace:packages/ods/src/components/button"
   languageName: unknown
   linkType: soft
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> ca6158dbb (feat(button): implement component)
-=======
-=======
-=======
 "@ovhcloud/ods-component-card@workspace:packages/ods/src/components/card":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-card@workspace:packages/ods/src/components/card"
   languageName: unknown
   linkType: soft
 
->>>>>>> 085d24bf8 (feat(card): implement component)
 "@ovhcloud/ods-component-checkbox@workspace:packages/ods/src/components/checkbox":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-checkbox@workspace:packages/ods/src/components/checkbox"
   languageName: unknown
   linkType: soft
 
->>>>>>> 8c16f2c3d (refactor(checkbox): implementation component)
 "@ovhcloud/ods-component-clipboard@workspace:packages/ods/src/components/clipboard":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-clipboard@workspace:packages/ods/src/components/clipboard"
   languageName: unknown
   linkType: soft
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 18555ebcb (feat(clipboard): implement component)
-=======
-=======
->>>>>>> c7bcf430c (feat(code): implement component)
-"@ovhcloud/ods-component-divider@workspace:packages/ods/src/components/divider":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-component-divider@workspace:packages/ods/src/components/divider"
-=======
-=======
->>>>>>> 223275835 (fix(code): enforce button height to be the same as one-line container)
 "@ovhcloud/ods-component-code@workspace:packages/ods/src/components/code":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-code@workspace:packages/ods/src/components/code"
@@ -4007,98 +3938,60 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> d291fda1a (feat(divider): implement coponent)
-=======
-=======
 "@ovhcloud/ods-component-file-upload@workspace:packages/ods/src/components/file-upload":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-file-upload@workspace:packages/ods/src/components/file-upload"
   languageName: unknown
   linkType: soft
 
->>>>>>> a5b3e2a5b (feat(file-upload): implement component)
 "@ovhcloud/ods-component-form-field@workspace:packages/ods/src/components/form-field":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-form-field@workspace:packages/ods/src/components/form-field"
   languageName: unknown
   linkType: soft
 
->>>>>>> a86f201d0 (feat(form-field): implement component)
 "@ovhcloud/ods-component-icon@workspace:packages/ods/src/components/icon":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-icon@workspace:packages/ods/src/components/icon"
   languageName: unknown
   linkType: soft
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 43e3f1fa9 (feat(icon): implement component)
-=======
-=======
-=======
 "@ovhcloud/ods-component-input@workspace:packages/ods/src/components/input":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-input@workspace:packages/ods/src/components/input"
   languageName: unknown
   linkType: soft
 
->>>>>>> 564af4416 (refactor(input): v18 first step)
 "@ovhcloud/ods-component-link@workspace:packages/ods/src/components/link":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-link@workspace:packages/ods/src/components/link"
   languageName: unknown
   linkType: soft
 
-<<<<<<< HEAD
->>>>>>> 946670bd7 (refactor(link): implem v18)
-=======
 "@ovhcloud/ods-component-medium@workspace:packages/ods/src/components/medium":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-medium@workspace:packages/ods/src/components/medium"
   languageName: unknown
   linkType: soft
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 7ad9d6e7b (feat(medium): implement component)
-=======
-=======
-=======
->>>>>>> fddca8114 (feat(popover): implement component)
-=======
->>>>>>> 451aae11f (fix(doc): clean up demo until better complex example)
-=======
 "@ovhcloud/ods-component-message@workspace:packages/ods/src/components/message":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-message@workspace:packages/ods/src/components/message"
   languageName: unknown
   linkType: soft
 
-<<<<<<< HEAD
->>>>>>> 0dbb17cf7 (feat(message): component implementation)
-=======
 "@ovhcloud/ods-component-modal@workspace:packages/ods/src/components/modal":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-modal@workspace:packages/ods/src/components/modal"
   languageName: unknown
   linkType: soft
 
-<<<<<<< HEAD
->>>>>>> fd80de307 (feat(modal): init component)
-=======
 "@ovhcloud/ods-component-pagination@workspace:packages/ods/src/components/pagination":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-pagination@workspace:packages/ods/src/components/pagination"
   languageName: unknown
   linkType: soft
 
->>>>>>> c66142f6e (feat(pagination): implement component)
 "@ovhcloud/ods-component-password@workspace:packages/ods/src/components/password":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-password@workspace:packages/ods/src/components/password"
@@ -4117,57 +4010,42 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-<<<<<<< HEAD
->>>>>>> 90c3d310c (refactor(password): implementationcomponent)
-=======
 "@ovhcloud/ods-component-progress-bar@workspace:packages/ods/src/components/progress-bar":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-progress-bar@workspace:packages/ods/src/components/progress-bar"
   languageName: unknown
   linkType: soft
 
->>>>>>> 265f8332d (refactor(progress-bar): implementation component)
 "@ovhcloud/ods-component-quantity@workspace:packages/ods/src/components/quantity":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-quantity@workspace:packages/ods/src/components/quantity"
   languageName: unknown
   linkType: soft
 
-<<<<<<< HEAD
->>>>>>> f3c951398 (refactor(quantity): implement component)
-=======
 "@ovhcloud/ods-component-radio@workspace:packages/ods/src/components/radio":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-radio@workspace:packages/ods/src/components/radio"
   languageName: unknown
   linkType: soft
 
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 6e739da36 (refactor(radio): implementation component)
-=======
-=======
 "@ovhcloud/ods-component-range@workspace:packages/ods/src/components/range":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-range@workspace:packages/ods/src/components/range"
   languageName: unknown
   linkType: soft
 
->>>>>>> 3effe4458 (refactor(range): implement component)
 "@ovhcloud/ods-component-select@workspace:packages/ods/src/components/select":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-select@workspace:packages/ods/src/components/select"
   languageName: unknown
   linkType: soft
 
->>>>>>> 326e7fe13 (feat(select): implement component)
 "@ovhcloud/ods-component-skeleton@workspace:packages/ods/src/components/skeleton":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-skeleton@workspace:packages/ods/src/components/skeleton"
   languageName: unknown
   linkType: soft
 
->>>>>>> 874715e73 (refactor(skeleton): migrate arch)
 "@ovhcloud/ods-component-spinner@workspace:packages/ods/src/components/spinner":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-component-spinner@workspace:packages/ods/src/components/spinner"
@@ -4238,7 +4116,6 @@ __metadata:
   linkType: soft
 
 "@ovhcloud/ods-components-style@workspace:packages/ods/style":
->>>>>>> 988d69ce3 (refactor(app): setup new architecture)
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-components-style@workspace:packages/ods/style"
   dependencies:
@@ -4246,23 +4123,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-<<<<<<< HEAD
-"@ovhcloud/ods-common-stencil@17.2.2, @ovhcloud/ods-common-stencil@workspace:packages/common/stencil":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-common-stencil@workspace:packages/common/stencil"
-  dependencies:
-    "@ovhcloud/ods-common-core": 17.2.2
-    "@ovhcloud/ods-common-testing": 17.2.2
-    "@ovhcloud/ods-dev": 17.2.2
-    "@ovhcloud/ods-stencil-dev": 17.2.2
-    "@ovhcloud/ods-style-dev": 17.2.2
-    "@ovhcloud/ods-theme-blue-jeans": 17.2.2
-    "@stencil/core": 4.12.0
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-common-testing@17.2.2, @ovhcloud/ods-common-testing@workspace:packages/common/testing":
-=======
 "@ovhcloud/ods-components-vue@workspace:packages/ods/vue":
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-components-vue@workspace:packages/ods/vue"
@@ -4272,627 +4132,11 @@ __metadata:
   linkType: soft
 
 "@ovhcloud/ods-components@17.1.0, @ovhcloud/ods-components@workspace:packages/ods":
->>>>>>> 988d69ce3 (refactor(app): setup new architecture)
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-components@workspace:packages/ods"
   dependencies:
-<<<<<<< HEAD
-<<<<<<< HEAD
-    "@jest/types": 27.1.1
-    "@ovhcloud/ods-dev": 17.2.2
-    "@types/jest": 27.5.2
-    jest: 27.5.1
-    jest-transform-stub: 2.0.0
-    puppeteer: 10.4.0
-    ts-jest: 27.1.5
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-common-theming@17.2.2, @ovhcloud/ods-common-theming@workspace:packages/common/theming":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-common-theming@workspace:packages/common/theming"
-  dependencies:
-    "@marsbased/svgpack": 1.0.3
-    "@ovhcloud/ods-dev": 17.2.2
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-component-accordion@workspace:packages/components/src/accordion":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-component-accordion@workspace:packages/components/src/accordion"
-  dependencies:
-    "@ovhcloud/ods-common-core": 17.2.2
-    "@ovhcloud/ods-common-stencil": 17.2.2
-    "@ovhcloud/ods-common-testing": 17.2.2
-    "@ovhcloud/ods-common-theming": 17.2.2
-    "@ovhcloud/ods-stencil-dev": 17.2.2
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-component-breadcrumb@workspace:packages/components/src/breadcrumb":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-component-breadcrumb@workspace:packages/components/src/breadcrumb"
-  dependencies:
-    "@ovhcloud/ods-common-core": 17.2.2
-    "@ovhcloud/ods-common-stencil": 17.2.2
-    "@ovhcloud/ods-common-testing": 17.2.2
-    "@ovhcloud/ods-common-theming": 17.2.2
-    "@ovhcloud/ods-stencil-dev": 17.2.2
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-component-button@workspace:packages/components/src/button":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-component-button@workspace:packages/components/src/button"
-  dependencies:
-    "@ovhcloud/ods-common-core": 17.2.2
-    "@ovhcloud/ods-common-stencil": 17.2.2
-    "@ovhcloud/ods-common-testing": 17.2.2
-    "@ovhcloud/ods-common-theming": 17.2.2
-    "@ovhcloud/ods-stencil-dev": 17.2.2
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-component-cart@workspace:packages/components/src/cart":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-component-cart@workspace:packages/components/src/cart"
-  dependencies:
-    "@ovhcloud/ods-common-core": 17.2.2
-    "@ovhcloud/ods-common-stencil": 17.2.2
-    "@ovhcloud/ods-common-testing": 17.2.2
-    "@ovhcloud/ods-common-theming": 17.2.2
-    "@ovhcloud/ods-stencil-dev": 17.2.2
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-component-checkbox-button@workspace:packages/components/src/checkbox-button":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-component-checkbox-button@workspace:packages/components/src/checkbox-button"
-  dependencies:
-    "@ovhcloud/ods-common-core": 17.2.2
-    "@ovhcloud/ods-common-stencil": 17.2.2
-    "@ovhcloud/ods-common-testing": 17.2.2
-    "@ovhcloud/ods-common-theming": 17.2.2
-    "@ovhcloud/ods-stencil-dev": 17.2.2
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-component-checkbox@workspace:packages/components/src/checkbox":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-component-checkbox@workspace:packages/components/src/checkbox"
-  dependencies:
-    "@ovhcloud/ods-common-core": 17.2.2
-    "@ovhcloud/ods-common-stencil": 17.2.2
-    "@ovhcloud/ods-common-testing": 17.2.2
-    "@ovhcloud/ods-common-theming": 17.2.2
-    "@ovhcloud/ods-stencil-dev": 17.2.2
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-component-chip@workspace:packages/components/src/chip":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-component-chip@workspace:packages/components/src/chip"
-  dependencies:
-    "@ovhcloud/ods-common-core": 17.2.2
-    "@ovhcloud/ods-common-stencil": 17.2.2
-    "@ovhcloud/ods-common-testing": 17.2.2
-    "@ovhcloud/ods-common-theming": 17.2.2
-    "@ovhcloud/ods-stencil-dev": 17.2.2
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-component-clipboard@workspace:packages/components/src/clipboard":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-component-clipboard@workspace:packages/components/src/clipboard"
-  dependencies:
-    "@ovhcloud/ods-cdk": 17.2.2
-    "@ovhcloud/ods-common-core": 17.2.2
-    "@ovhcloud/ods-common-stencil": 17.2.2
-    "@ovhcloud/ods-common-testing": 17.2.2
-    "@ovhcloud/ods-common-theming": 17.2.2
-    "@ovhcloud/ods-stencil-dev": 17.2.2
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-component-code@workspace:packages/components/src/code":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-component-code@workspace:packages/components/src/code"
-  dependencies:
-    "@ovhcloud/ods-common-core": 17.2.2
-    "@ovhcloud/ods-common-stencil": 17.2.2
-    "@ovhcloud/ods-common-testing": 17.2.2
-    "@ovhcloud/ods-common-theming": 17.2.2
-    "@ovhcloud/ods-stencil-dev": 17.2.2
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-component-collapsible@workspace:packages/components/src/collapsible":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-component-collapsible@workspace:packages/components/src/collapsible"
-  dependencies:
-    "@ovhcloud/ods-common-core": 17.2.2
-    "@ovhcloud/ods-common-stencil": 17.2.2
-    "@ovhcloud/ods-common-testing": 17.2.2
-    "@ovhcloud/ods-common-theming": 17.2.2
-    "@ovhcloud/ods-stencil-dev": 17.2.2
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-component-content-addon@workspace:packages/components/src/content-addon":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-component-content-addon@workspace:packages/components/src/content-addon"
-  dependencies:
-    "@ovhcloud/ods-common-core": 17.2.2
-    "@ovhcloud/ods-common-stencil": 17.2.2
-    "@ovhcloud/ods-common-testing": 17.2.2
-    "@ovhcloud/ods-common-theming": 17.2.2
-    "@ovhcloud/ods-stencil-dev": 17.2.2
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-component-datagrid@workspace:packages/components/src/datagrid":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-component-datagrid@workspace:packages/components/src/datagrid"
-  dependencies:
-    "@ovhcloud/ods-common-core": 17.2.2
-    "@ovhcloud/ods-common-stencil": 17.2.2
-    "@ovhcloud/ods-common-testing": 17.2.2
-    "@ovhcloud/ods-common-theming": 17.2.2
-    "@ovhcloud/ods-stencil-dev": 17.2.2
-    "@types/tabulator-tables": 5.4.4
-    tabulator-tables: 5.4.4
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-component-datepicker@workspace:packages/components/src/datepicker":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-component-datepicker@workspace:packages/components/src/datepicker"
-  dependencies:
-    "@ovhcloud/ods-common-core": 17.2.2
-    "@ovhcloud/ods-common-stencil": 17.2.2
-    "@ovhcloud/ods-common-testing": 17.2.2
-    "@ovhcloud/ods-common-theming": 17.2.2
-    "@ovhcloud/ods-stencil-dev": 17.2.2
-    "@types/vanillajs-datepicker": 1.2.2
-    vanillajs-datepicker: 1.3.3
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-component-divider@workspace:packages/components/src/divider":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-component-divider@workspace:packages/components/src/divider"
-  dependencies:
-    "@ovhcloud/ods-common-core": 17.2.2
-    "@ovhcloud/ods-common-stencil": 17.2.2
-    "@ovhcloud/ods-common-testing": 17.2.2
-    "@ovhcloud/ods-common-theming": 17.2.2
-    "@ovhcloud/ods-stencil-dev": 17.2.2
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-component-flag@workspace:packages/components/src/flag":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-component-flag@workspace:packages/components/src/flag"
-  dependencies:
-    "@ovhcloud/ods-common-core": 17.2.2
-    "@ovhcloud/ods-common-stencil": 17.2.2
-    "@ovhcloud/ods-common-testing": 17.2.2
-    "@ovhcloud/ods-common-theming": 17.2.2
-    "@ovhcloud/ods-stencil-dev": 17.2.2
-    flag-icons: 6.6.6
-    workbox-build: 4.3.1
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-component-form-field@workspace:packages/components/src/form-field":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-component-form-field@workspace:packages/components/src/form-field"
-  dependencies:
-    "@ovhcloud/ods-common-core": 17.2.2
-    "@ovhcloud/ods-common-stencil": 17.2.2
-    "@ovhcloud/ods-common-testing": 17.2.2
-    "@ovhcloud/ods-common-theming": 17.2.2
-    "@ovhcloud/ods-stencil-dev": 17.2.2
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-component-icon@workspace:packages/components/src/icon":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-component-icon@workspace:packages/components/src/icon"
-  dependencies:
-    "@ovhcloud/ods-common-core": 17.2.2
-    "@ovhcloud/ods-common-stencil": 17.2.2
-    "@ovhcloud/ods-common-testing": 17.2.2
-    "@ovhcloud/ods-common-theming": 17.2.2
-    "@ovhcloud/ods-stencil-dev": 17.2.2
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-component-input@workspace:packages/components/src/input":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-component-input@workspace:packages/components/src/input"
-  dependencies:
-    "@ovhcloud/ods-common-core": 17.2.2
-    "@ovhcloud/ods-common-stencil": 17.2.2
-    "@ovhcloud/ods-common-testing": 17.2.2
-    "@ovhcloud/ods-common-theming": 17.2.2
-    "@ovhcloud/ods-stencil-dev": 17.2.2
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-component-link@workspace:packages/components/src/link":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-component-link@workspace:packages/components/src/link"
-  dependencies:
-    "@ovhcloud/ods-common-core": 17.2.2
-    "@ovhcloud/ods-common-stencil": 17.2.2
-    "@ovhcloud/ods-common-testing": 17.2.2
-    "@ovhcloud/ods-common-theming": 17.2.2
-    "@ovhcloud/ods-stencil-dev": 17.2.2
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-component-medium@workspace:packages/components/src/medium":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-component-medium@workspace:packages/components/src/medium"
-  dependencies:
-    "@ovhcloud/ods-common-core": 17.2.2
-    "@ovhcloud/ods-common-stencil": 17.2.2
-    "@ovhcloud/ods-common-testing": 17.2.2
-    "@ovhcloud/ods-common-theming": 17.2.2
-    "@ovhcloud/ods-stencil-dev": 17.2.2
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-component-menu@workspace:packages/components/src/menu":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-component-menu@workspace:packages/components/src/menu"
-  dependencies:
-    "@ovhcloud/ods-cdk": 17.2.2
-    "@ovhcloud/ods-common-core": 17.2.2
-    "@ovhcloud/ods-common-stencil": 17.2.2
-    "@ovhcloud/ods-common-testing": 17.2.2
-    "@ovhcloud/ods-stencil-dev": 17.2.2
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-component-message@workspace:packages/components/src/message":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-component-message@workspace:packages/components/src/message"
-  dependencies:
-    "@ovhcloud/ods-common-core": 17.2.2
-    "@ovhcloud/ods-common-stencil": 17.2.2
-    "@ovhcloud/ods-common-testing": 17.2.2
-    "@ovhcloud/ods-common-theming": 17.2.2
-    "@ovhcloud/ods-stencil-dev": 17.2.2
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-component-modal@workspace:packages/components/src/modal":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-component-modal@workspace:packages/components/src/modal"
-  dependencies:
-    "@ovhcloud/ods-common-core": 17.2.2
-    "@ovhcloud/ods-common-stencil": 17.2.2
-    "@ovhcloud/ods-common-testing": 17.2.2
-    "@ovhcloud/ods-common-theming": 17.2.2
-    "@ovhcloud/ods-stencil-dev": 17.2.2
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-component-pagination@workspace:packages/components/src/pagination":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-component-pagination@workspace:packages/components/src/pagination"
-  dependencies:
-    "@ovhcloud/ods-common-core": 17.2.2
-    "@ovhcloud/ods-common-stencil": 17.2.2
-    "@ovhcloud/ods-common-testing": 17.2.2
-    "@ovhcloud/ods-common-theming": 17.2.2
-    "@ovhcloud/ods-stencil-dev": 17.2.2
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-component-password@workspace:packages/components/src/password":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-component-password@workspace:packages/components/src/password"
-  dependencies:
-    "@ovhcloud/ods-common-core": 17.2.2
-    "@ovhcloud/ods-common-stencil": 17.2.2
-    "@ovhcloud/ods-common-testing": 17.2.2
-    "@ovhcloud/ods-common-theming": 17.2.2
-    "@ovhcloud/ods-stencil-dev": 17.2.2
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-component-phone-number@workspace:packages/components/src/phone-number":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-component-phone-number@workspace:packages/components/src/phone-number"
-  dependencies:
-    "@ovhcloud/ods-common-core": 17.2.2
-    "@ovhcloud/ods-common-stencil": 17.2.2
-    "@ovhcloud/ods-common-testing": 17.2.2
-    "@ovhcloud/ods-common-theming": 17.2.2
-    "@ovhcloud/ods-stencil-dev": 17.2.2
-    "@types/google-libphonenumber": 7.4.26
-    google-libphonenumber: 3.2.33
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-component-popover@workspace:packages/components/src/popover":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-component-popover@workspace:packages/components/src/popover"
-  dependencies:
-    "@ovhcloud/ods-cdk": 17.2.2
-    "@ovhcloud/ods-common-core": 17.2.2
-    "@ovhcloud/ods-common-stencil": 17.2.2
-    "@ovhcloud/ods-common-testing": 17.2.2
-    "@ovhcloud/ods-common-theming": 17.2.2
-    "@ovhcloud/ods-stencil-dev": 17.2.2
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-component-progress-bar@workspace:packages/components/src/progress-bar":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-component-progress-bar@workspace:packages/components/src/progress-bar"
-  dependencies:
-    "@ovhcloud/ods-common-core": 17.2.2
-    "@ovhcloud/ods-common-stencil": 17.2.2
-    "@ovhcloud/ods-common-testing": 17.2.2
-    "@ovhcloud/ods-common-theming": 17.2.2
-    "@ovhcloud/ods-stencil-dev": 17.2.2
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-component-quantity@workspace:packages/components/src/quantity":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-component-quantity@workspace:packages/components/src/quantity"
-  dependencies:
-    "@ovhcloud/ods-common-core": 17.2.2
-    "@ovhcloud/ods-common-stencil": 17.2.2
-    "@ovhcloud/ods-common-testing": 17.2.2
-    "@ovhcloud/ods-common-theming": 17.2.2
-    "@ovhcloud/ods-stencil-dev": 17.2.2
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-component-radio-button@workspace:packages/components/src/radio-button":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-component-radio-button@workspace:packages/components/src/radio-button"
-  dependencies:
-    "@ovhcloud/ods-common-core": 17.2.2
-    "@ovhcloud/ods-common-stencil": 17.2.2
-    "@ovhcloud/ods-common-testing": 17.2.2
-    "@ovhcloud/ods-common-theming": 17.2.2
-    "@ovhcloud/ods-stencil-dev": 17.2.2
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-component-radio@workspace:packages/components/src/radio":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-component-radio@workspace:packages/components/src/radio"
-  dependencies:
-    "@ovhcloud/ods-common-core": 17.2.2
-    "@ovhcloud/ods-common-stencil": 17.2.2
-    "@ovhcloud/ods-common-testing": 17.2.2
-    "@ovhcloud/ods-common-theming": 17.2.2
-    "@ovhcloud/ods-stencil-dev": 17.2.2
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-component-range@workspace:packages/components/src/range":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-component-range@workspace:packages/components/src/range"
-  dependencies:
-    "@ovhcloud/ods-common-core": 17.2.2
-    "@ovhcloud/ods-common-stencil": 17.2.2
-    "@ovhcloud/ods-common-testing": 17.2.2
-    "@ovhcloud/ods-common-theming": 17.2.2
-    "@ovhcloud/ods-stencil-dev": 17.2.2
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-component-search-bar@workspace:packages/components/src/search-bar":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-component-search-bar@workspace:packages/components/src/search-bar"
-  dependencies:
-    "@ovhcloud/ods-common-core": 17.2.2
-    "@ovhcloud/ods-common-stencil": 17.2.2
-    "@ovhcloud/ods-common-testing": 17.2.2
-    "@ovhcloud/ods-common-theming": 17.2.2
-    "@ovhcloud/ods-stencil-dev": 17.2.2
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-component-select@workspace:packages/components/src/select":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-component-select@workspace:packages/components/src/select"
-  dependencies:
-    "@ovhcloud/ods-cdk": 17.2.2
-    "@ovhcloud/ods-common-core": 17.2.2
-    "@ovhcloud/ods-common-stencil": 17.2.2
-    "@ovhcloud/ods-common-testing": 17.2.2
-    "@ovhcloud/ods-common-theming": 17.2.2
-    "@ovhcloud/ods-stencil-dev": 17.2.2
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-component-skeleton@workspace:packages/components/src/skeleton":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-component-skeleton@workspace:packages/components/src/skeleton"
-  dependencies:
-    "@ovhcloud/ods-common-core": 17.2.2
-    "@ovhcloud/ods-common-stencil": 17.2.2
-    "@ovhcloud/ods-common-testing": 17.2.2
-    "@ovhcloud/ods-common-theming": 17.2.2
-    "@ovhcloud/ods-stencil-dev": 17.2.2
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-component-spinner@workspace:packages/components/src/spinner":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-component-spinner@workspace:packages/components/src/spinner"
-  dependencies:
-    "@ovhcloud/ods-common-core": 17.2.2
-    "@ovhcloud/ods-common-stencil": 17.2.2
-    "@ovhcloud/ods-common-testing": 17.2.2
-    "@ovhcloud/ods-common-theming": 17.2.2
-    "@ovhcloud/ods-stencil-dev": 17.2.2
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-component-switch@workspace:packages/components/src/switch":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-component-switch@workspace:packages/components/src/switch"
-  dependencies:
-    "@ovhcloud/ods-common-core": 17.2.2
-    "@ovhcloud/ods-common-stencil": 17.2.2
-    "@ovhcloud/ods-common-testing": 17.2.2
-    "@ovhcloud/ods-common-theming": 17.2.2
-    "@ovhcloud/ods-stencil-dev": 17.2.2
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-component-table@workspace:packages/components/src/table":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-component-table@workspace:packages/components/src/table"
-  dependencies:
-    "@ovhcloud/ods-common-core": 17.2.2
-    "@ovhcloud/ods-common-stencil": 17.2.2
-    "@ovhcloud/ods-common-testing": 17.2.2
-    "@ovhcloud/ods-common-theming": 17.2.2
-    "@ovhcloud/ods-stencil-dev": 17.2.2
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-component-tabs@workspace:packages/components/src/tabs":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-component-tabs@workspace:packages/components/src/tabs"
-  dependencies:
-    "@ovhcloud/ods-common-core": 17.2.2
-    "@ovhcloud/ods-common-stencil": 17.2.2
-    "@ovhcloud/ods-common-testing": 17.2.2
-    "@ovhcloud/ods-common-theming": 17.2.2
-    "@ovhcloud/ods-stencil-dev": 17.2.2
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-component-text@workspace:packages/components/src/text":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-component-text@workspace:packages/components/src/text"
-  dependencies:
-    "@ovhcloud/ods-common-core": 17.2.2
-    "@ovhcloud/ods-common-stencil": 17.2.2
-    "@ovhcloud/ods-common-testing": 17.2.2
-    "@ovhcloud/ods-common-theming": 17.2.2
-    "@ovhcloud/ods-stencil-dev": 17.2.2
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-component-textarea@workspace:packages/components/src/textarea":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-component-textarea@workspace:packages/components/src/textarea"
-  dependencies:
-    "@ovhcloud/ods-common-core": 17.2.2
-    "@ovhcloud/ods-common-stencil": 17.2.2
-    "@ovhcloud/ods-common-testing": 17.2.2
-    "@ovhcloud/ods-common-theming": 17.2.2
-    "@ovhcloud/ods-stencil-dev": 17.2.2
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-component-tile@workspace:packages/components/src/tile":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-component-tile@workspace:packages/components/src/tile"
-  dependencies:
-    "@ovhcloud/ods-common-core": 17.2.2
-    "@ovhcloud/ods-common-stencil": 17.2.2
-    "@ovhcloud/ods-common-testing": 17.2.2
-    "@ovhcloud/ods-common-theming": 17.2.2
-    "@ovhcloud/ods-stencil-dev": 17.2.2
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-component-toggle@workspace:packages/components/src/toggle":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-component-toggle@workspace:packages/components/src/toggle"
-  dependencies:
-    "@ovhcloud/ods-common-core": 17.2.2
-    "@ovhcloud/ods-common-stencil": 17.2.2
-    "@ovhcloud/ods-common-testing": 17.2.2
-    "@ovhcloud/ods-common-theming": 17.2.2
-    "@ovhcloud/ods-stencil-dev": 17.2.2
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-component-tooltip@workspace:packages/components/src/tooltip":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-component-tooltip@workspace:packages/components/src/tooltip"
-  dependencies:
-    "@ovhcloud/ods-cdk": 17.2.2
-    "@ovhcloud/ods-common-core": 17.2.2
-    "@ovhcloud/ods-common-stencil": 17.2.2
-    "@ovhcloud/ods-common-testing": 17.2.2
-    "@ovhcloud/ods-common-theming": 17.2.2
-    "@ovhcloud/ods-stencil-dev": 17.2.2
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-components@17.2.2, @ovhcloud/ods-components@workspace:packages/components":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-components@workspace:packages/components"
-  dependencies:
-    "@ovhcloud/ods-common-core": 17.2.2
-    "@ovhcloud/ods-common-scripts": 17.2.2
-    "@ovhcloud/ods-common-stencil": 17.2.2
-    "@ovhcloud/ods-common-testing": 17.2.2
-    "@ovhcloud/ods-common-theming": 17.2.2
-    "@ovhcloud/ods-stencil-dev": 17.2.2
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-dev@17.2.2, @ovhcloud/ods-dev@workspace:packages/shared-dependencies/odsDev":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-dev@workspace:packages/shared-dependencies/odsDev"
-  dependencies:
-    cpy-cli: 4.2.0
-    rimraf: 3.0.2
-    typedoc: 0.22.18
-    typedoc-plugin-markdown: 3.11.14
-    typescript: 4.7.4
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-react-dev@workspace:packages/shared-dependencies/odsReactDev":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-react-dev@workspace:packages/shared-dependencies/odsReactDev"
-  dependencies:
-    "@ovhcloud/ods-dev": 17.2.2
-    "@types/react": 16.14.38
-    "@types/react-dom": 16.9.19
-    react: 16.14.0
-    react-dom: 16.14.0
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-stencil-dev@17.2.2, @ovhcloud/ods-stencil-dev@workspace:packages/shared-dependencies/odsStencilDev":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-stencil-dev@workspace:packages/shared-dependencies/odsStencilDev"
-  dependencies:
-    "@ovhcloud/ods-dev": 17.2.2
-    "@ovhcloud/ods-style-dev": 17.2.2
-=======
-=======
     "@floating-ui/dom": 1.6.3
->>>>>>> 45aa23219 (feat(tooltip): implement component)
     "@jest/types": 29.6.3
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> 988d69ce3 (refactor(app): setup new architecture)
-=======
-    "@ovhcloud/ods-themes": 17.1.0
->>>>>>> 3a3ee275e (refactor(style): replace css var by sass var on each components)
-=======
->>>>>>> d6afdc73b (refactor(style): put back css variables to fix dependency issues)
     "@stencil-community/postcss": 2.2.0
     "@stencil/core": 4.16.0
     "@stencil/react-output-target": 0.5.3
@@ -4931,40 +4175,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-storybook@workspace:packages/storybook"
   dependencies:
-<<<<<<< HEAD
-    "@babel/core": 7.16.0
-    "@ovhcloud/ods-cdk": 17.2.2
-    "@ovhcloud/ods-cdk-dev": 17.2.2
-    "@ovhcloud/ods-common-core": 17.2.2
-    "@ovhcloud/ods-common-stencil": 17.2.2
-    "@ovhcloud/ods-common-theming": 17.2.2
-    "@ovhcloud/ods-components": 17.2.2
-    "@ovhcloud/ods-theme-blue-jeans": 17.2.2
-    "@storybook/addon-a11y": 6.4.19
-    "@storybook/addon-actions": 6.4.19
-    "@storybook/addon-backgrounds": 6.4.19
-    "@storybook/addon-console": 1.2.3
-    "@storybook/addon-controls": 6.4.19
-    "@storybook/addon-docs": 6.4.19
-    "@storybook/addon-essentials": 6.4.19
-    "@storybook/addon-links": 6.4.19
-    "@storybook/addon-notes": 5.3.21
-    "@storybook/addon-viewport": 6.4.19
-    "@storybook/addons": 6.4.19
-    "@storybook/html": 6.4.19
-    "@storybook/theming": 6.4.19
-    "@storybook/web-components": 6.4.19
-    "@whitespace/storybook-addon-html": 5.0.0
-    babel-loader: 8.1.0
-    lit-html: 1.4.1
-    node-fetch: 2.6.7
-    raw-loader: 4.0.2
-    react: 16.14.0
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-style-dev@17.2.2, @ovhcloud/ods-style-dev@workspace:packages/shared-dependencies/odsStyleDev":
-=======
     "@ovhcloud/ods-components": 17.1.0
     "@storybook/addon-a11y": 8.0.4
     "@storybook/addon-essentials": 8.0.4
@@ -4982,52 +4192,16 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 "@ovhcloud/ods-themes@workspace:packages/themes":
->>>>>>> 988d69ce3 (refactor(app): setup new architecture)
-=======
-"@ovhcloud/ods-themes@17.1.0, @ovhcloud/ods-themes@workspace:packages/themes":
->>>>>>> 3a3ee275e (refactor(style): replace css var by sass var on each components)
-=======
-"@ovhcloud/ods-themes@workspace:packages/themes":
->>>>>>> d6afdc73b (refactor(style): put back css variables to fix dependency issues)
   version: 0.0.0-use.local
   resolution: "@ovhcloud/ods-themes@workspace:packages/themes"
   dependencies:
-<<<<<<< HEAD
-    autoprefixer: 10.3.7
-    node-sass: 8.0.0
-    node-sass-package-importer: 5.3.2
-    postcss: 8.4.4
-    postcss-cli: 9.0.2
-    postcss-scss: 4.0.2
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-theme-blue-jeans@17.2.2, @ovhcloud/ods-theme-blue-jeans@workspace:packages/themes/blue-jeans":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-theme-blue-jeans@workspace:packages/themes/blue-jeans"
-  dependencies:
-    "@ovhcloud/ods-common-theming": 17.2.2
-    "@ovhcloud/ods-style-dev": 17.2.2
-  languageName: unknown
-  linkType: soft
-
-"@ovhcloud/ods-vue-dev@workspace:packages/shared-dependencies/odsVueDev":
-  version: 0.0.0-use.local
-  resolution: "@ovhcloud/ods-vue-dev@workspace:packages/shared-dependencies/odsVueDev"
-  dependencies:
-    "@ovhcloud/ods-dev": 17.2.2
-    vue: 3.2.41
-=======
     autoprefixer: 10.4.17
     postcss: 8.4.35
     postcss-cli: 11.0.0
     postcss-scss: 4.0.9
     sass: 1.71.0
     typescript: 5.3.3
->>>>>>> 988d69ce3 (refactor(app): setup new architecture)
   languageName: unknown
   linkType: soft
 
@@ -19139,23 +18313,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "react-webpack@workspace:packages/examples/react-webpack"
   dependencies:
-<<<<<<< HEAD
-    "@babel/plugin-transform-runtime": 7.19.6
-    "@babel/preset-env": 7.20.2
-    "@babel/preset-react": 7.18.6
-    "@babel/preset-typescript": 7.22.5
-    "@ovhcloud/ods-components": 17.2.2
-    "@ovhcloud/ods-dev": 17.2.2
-    "@ovhcloud/ods-theme-blue-jeans": 17.2.2
-    "@types/react": 18.2.43
-    "@types/react-dom": 18.2.17
-    babel-loader: 9.1.2
-    css-loader: 6.7.3
-    html-webpack-plugin: 5.5.0
-    mini-css-extract-plugin: 2.7.2
-    node-sass: 8.0.0
-    postcss-loader: 7.0.2
-=======
     "@babel/plugin-transform-runtime": 7.23.9
     "@babel/preset-env": 7.23.9
     "@babel/preset-react": 7.23.3
@@ -19169,7 +18326,6 @@ __metadata:
     html-webpack-plugin: 5.6.0
     mini-css-extract-plugin: 2.8.0
     postcss-loader: 8.1.0
->>>>>>> 988d69ce3 (refactor(app): setup new architecture)
     react: 18.2.0
     react-dom: 18.2.0
     resolve-url-loader: 5.0.0
@@ -22730,19 +21886,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "vanilla-webpack@workspace:packages/examples/vanilla-webpack"
   dependencies:
-<<<<<<< HEAD
-    "@babel/plugin-transform-runtime": 7.19.6
-    "@babel/preset-env": 7.20.2
-    "@babel/preset-typescript": 7.22.5
-    "@ovhcloud/ods-components": 17.2.2
-    "@ovhcloud/ods-dev": 17.2.2
-    "@ovhcloud/ods-theme-blue-jeans": 17.2.2
-=======
     "@babel/plugin-transform-runtime": 7.23.9
     "@babel/preset-env": 7.23.9
     "@babel/preset-typescript": 7.23.3
     "@ovhcloud/ods-components": 17.1.0
->>>>>>> 988d69ce3 (refactor(app): setup new architecture)
     "@types/webpack": 5.28.5
     babel-loader: 9.1.3
     css-loader: 6.10.0
@@ -22907,94 +22054,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-<<<<<<< HEAD
-"vue-style-loader@npm:^4.1.0, vue-style-loader@npm:^4.1.3":
-  version: 4.1.3
-  resolution: "vue-style-loader@npm:4.1.3"
-  dependencies:
-    hash-sum: ^1.0.2
-    loader-utils: ^1.0.2
-  checksum: ef79d0c6329303d69c87f128f67e486bd37e9a8d416aa662edafae62fab727117b7452f50be8b11fe0c4cb43992344d5ef6a46b206f375fca4d37ae5a5b99185
-  languageName: node
-  linkType: hard
-
-"vue-template-es2015-compiler@npm:^1.9.0":
-  version: 1.9.1
-  resolution: "vue-template-es2015-compiler@npm:1.9.1"
-  checksum: ad1e85662783be3ee262c323b05d12e6a5036fca24f16dc0f7ab92736b675919cb4fa4b79b28753eac73119b709d1b36789bf60e8ae423f50c4db35de9370e8b
-  languageName: node
-  linkType: hard
-
-"vue-webpack@workspace:packages/examples/vue-webpack":
-  version: 0.0.0-use.local
-  resolution: "vue-webpack@workspace:packages/examples/vue-webpack"
-  dependencies:
-    "@ovhcloud/ods-components": 17.2.2
-    "@ovhcloud/ods-dev": 17.2.2
-    "@ovhcloud/ods-theme-blue-jeans": 17.2.2
-    "@vue/cli-plugin-babel": 5.0.8
-    "@vue/cli-plugin-typescript": 5.0.8
-    "@vue/cli-service": 5.0.8
-    core-js: 3.34.0
-    node-sass: 8.0.0
-    sass-loader: 13.3.2
-    vue: 3.3.11
-  languageName: unknown
-  linkType: soft
-
-"vue@npm:3.2.41":
-  version: 3.2.41
-  resolution: "vue@npm:3.2.41"
-  dependencies:
-    "@vue/compiler-dom": 3.2.41
-    "@vue/compiler-sfc": 3.2.41
-    "@vue/runtime-dom": 3.2.41
-    "@vue/server-renderer": 3.2.41
-    "@vue/shared": 3.2.41
-  checksum: 5328bf14c672c29fcde6747cac05ea7ffa46522ea8198120cdd61ba2847a1692e316019b942deb93326235e60b5d19b6db443c2fd8a827bba4b90c6595a709cd
-  languageName: node
-  linkType: hard
-
-"vue@npm:3.3.11":
-  version: 3.3.11
-  resolution: "vue@npm:3.3.11"
-  dependencies:
-    "@vue/compiler-dom": 3.3.11
-    "@vue/compiler-sfc": 3.3.11
-    "@vue/runtime-dom": 3.3.11
-    "@vue/server-renderer": 3.3.11
-    "@vue/shared": 3.3.11
-  peerDependencies:
-    typescript: "*"
-  peerDependenciesMeta:
-    typescript:
-      optional: true
-  checksum: 724709b543e74426a271e65d952f2e37682f39a99e67e43cae69fd1867455fa5edc7b4d4ee703aad037e1b03dea8e3743c36738b6c1a9fd1834d7acf912c1f2b
-  languageName: node
-  linkType: hard
-
-"w3c-hr-time@npm:^1.0.2":
-  version: 1.0.2
-  resolution: "w3c-hr-time@npm:1.0.2"
-  dependencies:
-    browser-process-hrtime: ^1.0.0
-  checksum: ec3c2dacbf8050d917bbf89537a101a08c2e333b4c19155f7d3bedde43529d4339db6b3d049d9610789cb915f9515f8be037e0c54c079e9d4735c50b37ed52b9
-  languageName: node
-  linkType: hard
-
-"w3c-xmlserializer@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "w3c-xmlserializer@npm:2.0.0"
-  dependencies:
-    xml-name-validator: ^3.0.0
-  checksum: ae25c51cf71f1fb2516df1ab33a481f83461a117565b95e3d0927432522323f93b1b2846cbb60196d337970c421adb604fc2d0d180c6a47a839da01db5b9973b
-  languageName: node
-  linkType: hard
-
-"walker@npm:^1.0.7, walker@npm:~1.0.5":
-=======
 "walker@npm:^1.0.8":
->>>>>>> 988d69ce3 (refactor(app): setup new architecture)
   version: 1.0.8
   resolution: "walker@npm:1.0.8"
   dependencies:

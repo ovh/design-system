@@ -1,0 +1,41 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+
+
+[Latest version](https://ovh.github.io/design-system/latest/?path=/docs/design-system-changelog--page)
+
+
+# [18.0.0-alpha.0](https://ovh.github.io/design-system/v18.0.0-alpha.0/?path=/docs/design-system-changelog--page) (2024-07-30)
+[compare](https://github.com/ovh/design-system/compare/v17.2.2...v18.0.0-alpha.0)
+
+### Bug Fixes
+
+* **modal:** event name in test ([9ea848d](https://github.com/ovh/design-system/commit/9ea848ddb84a19ef15f85d11dc2cde9905c75f50))
+* **modal:** replace cross icon name by times & adjust icon font size ([317af3d](https://github.com/ovh/design-system/commit/317af3d6cd247a510f8aef22cc420fae1d9f8f04))
+* **project:** set correct latest version ([c3c87db](https://github.com/ovh/design-system/commit/c3c87db50891e8da601bb89f22ed44ff56f71181))
+
+
+### Features
+
+* **modal:** add animation mixin, adapt tests and base close method on animationend event ([b7dcf11](https://github.com/ovh/design-system/commit/b7dcf11d71e269a46ca93f909d29070d3d9495c4))
+* **modal:** add dialog part & add customCss option in demo ([7c625e7](https://github.com/ovh/design-system/commit/7c625e7075812ef00d9b0a951d7440a88b497399))
+* **modal:** add e2e rendering tests to check if isOpen attribute really renders the modal properly ([c8e6bbc](https://github.com/ovh/design-system/commit/c8e6bbcad3245e6dc880175fbd916dff0a49207c))
+* **modal:** add runInBand to package json ([993f0ff](https://github.com/ovh/design-system/commit/993f0ff3ce0ece3db38dc2b0f93b2c82ee3cdebd))
+* **modal:** change type to HTMLElement ([d9b77b6](https://github.com/ovh/design-system/commit/d9b77b613865f40349f05226cef3176d26046ffb))
+* **modal:** fix e2e navigation test ([101065b](https://github.com/ovh/design-system/commit/101065b7d7c6afe04c5a88cbeba90a86323b8d9b))
+* **modal:** fix e2e navigation tests for CI ([0763540](https://github.com/ovh/design-system/commit/0763540df1c98cc1a6e8b1218eec48927629875f))
+* **modal:** fix e2e rendering test typo ([0c690db](https://github.com/ovh/design-system/commit/0c690db06a43c20c573af1947f0907224591b7f0))
+* **modal:** fix overflow hidden issues and add an e2e test ([e260276](https://github.com/ovh/design-system/commit/e2602763237a5230cee56558d9838871f0506129))
+* **modal:** fix react & vue e2e tests by adding a delay ([c7ceb25](https://github.com/ovh/design-system/commit/c7ceb25e1a5c4079d4f58b66fb4c03ff35d4e416))
+* **modal:** fix storybook stories ([ea46244](https://github.com/ovh/design-system/commit/ea46244f56d7efec86e6b67c1fd0d7b5473bd551))
+* **modal:** implement component ([4b65d3b](https://github.com/ovh/design-system/commit/4b65d3b3558f288a80a980189690182854fb90c2))
+* **modal:** improve code, order & fix class names ([91c4b7d](https://github.com/ovh/design-system/commit/91c4b7de37969e27f56c581047ae7636dc2177c7))
+* **modal:** init component ([e2ea3a5](https://github.com/ovh/design-system/commit/e2ea3a5c70307592b1bbbbef787db9bde047be12))
+* **modal:** manage body overflow with SCSS rather than JS ([43afb8e](https://github.com/ovh/design-system/commit/43afb8e6b77b1250f497d7f823b0032ef0a2ecb3))
+* **modal:** remove useless imports ([bae6222](https://github.com/ovh/design-system/commit/bae6222f3d1fd8ba8d11f210f8b5c8704f8026f4))
+* **modal:** remove z-index ([be60b48](https://github.com/ovh/design-system/commit/be60b484c799be47a04f14cba8b07ede79f5945b))
+* **modal:** set onClick to one liner for dialog element ([f8561c5](https://github.com/ovh/design-system/commit/f8561c5a97ff98ff3f93d372cf5353103c1c9c13))
+* **modal:** update test label to "its default value" ([39dee25](https://github.com/ovh/design-system/commit/39dee257c8c4402d39e52af325b662485bb6bd8b))

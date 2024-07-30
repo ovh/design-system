@@ -19,7 +19,7 @@
 }
 
 :host(.ods-tab:hover:not(.ods-tab--disabled, .ods-tab--selected)) {
-  border-color: var(--ods-color-neutral-600);
+  border-color: var(--ods-color-neutral-300);
 }
 
 :host(.ods-tab--disabled) {

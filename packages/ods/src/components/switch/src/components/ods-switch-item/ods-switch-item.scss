@@ -36,7 +36,7 @@
     display: none !important;
 
     &:has(input[type="radio"]:checked) + .ods-switch-item__label {
-      background-color:  var(--ods-color-primary-500);
+      background-color:  var(--ods-color-primary-600);
       color:  var(--ods-color-primary-000);
     }
   }

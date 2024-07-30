@@ -2,40 +2,81 @@ import { Meta } from '@storybook/blocks';
 
 <Meta title="OVHcloud Design System/What's new?/Migration guide/17.x to 18.x" />
 
-[//]: # "# [16.6.0](https://ovh.github.io/design-system/v16.6.0/?path=/story/ovhcloud-design-system-what-s-new-changelog--page) to [17.0.0](https://ovh.github.io/design-system/v17.0.0/?path=/story/ovhcloud-design-system-what-s-new-changelog--page) ([compare](https://github.com/ovh/design-system/compare/release/16.0...release/17.0))"
+# [17.2.2](https://ovh.github.io/design-system/v17.6.0/?path=/story/ovhcloud-design-system-what-s-new-changelog--page) to [18.0.0](https://ovh.github.io/design-system/v18.0.0/?path=/story/ovhcloud-design-system-what-s-new-changelog--page) ([compare](https://github.com/ovh/design-system/compare/release/17.0...release/18.0))
 
-TODO explain philosophy for the big changes:
+If you have any questions or issues regarding the new version, feel free to reach us directly.
 
-* given user feedback, far from native, release process too long, too many enums, ...
-* add design token and theming
-* now export styles helpers
+## Libraries
 
-## Dependency
+The following libs have been removed:
+- @ovhcloud/ods-cdk
+- @ovhcloud/ods-common-core
+- @ovhcloud/ods-common-stencil
+- @ovhcloud/ods-common-testing
+- @ovhcloud/ods-common-theming
+- @ovhcloud/ods-theme-blue-jeans
 
-TODO
+If you were using part of them, please reach out to us so that we can get more information about your usage.
 
-* common libs and blue-jeans are removed
-* new lib ods-themes
-* example of import change
+To use the new theme, replace `ods-theme-blue-jeans` with the following:
+```js
+import '@ovhcloud/ods-themes/default';
+```
 
-## Themes
+## Design tokens
 
-TODO explain how themes works and how to use them
+Design tokens are now accessible through the `@ovhcloud/ods-themes` lib.
 
-## Sass helpers
+The list of available tokens has been updated with the latest design changes and match what you may find on the Figma screens.
 
-TODO explain how to use sass mixins / placehodlers
+## Components
 
-## All Components
+As each component was refactored, there are too many changes to list everything here.
 
-TODO explain why we refactored all components:
+The main common breaking change is the following: `osds-xxx` component is now `ods-xxx`
 
-* more native
-* easier to use/integrate
-* more robust, faster and lighter
-* easy style customization
-* ...
+A complete list of changes and a guide about how to migrate is available per component:
 
-The complete list of changes and guide about how to migrate is available per component:
-
-* [spinner](#)
+* [accordion](?path=/docs/ods-components-accordion--migration-from-17-x)
+* [badge](?path=/docs/ods-components-badge--migration-from-17-x)
+* [breadcrumb](?path=/docs/ods-components-breadcrumb--migration-from-17-x)
+* [button](?path=/docs/ods-components-button--migration-from-17-x)
+* [card](?path=/docs/ods-components-card--migration-from-17-x)
+* [cart](?path=/docs/ods-components-cart--docs)
+* [checkbox](?path=/docs/ods-components-form-elements-checkbox--migration-from-17-x)
+* [clipboard](?path=/docs/ods-components-clipboard--migration-from-17-x)
+* [code](?path=/docs/ods-components-code--migration-from-17-x)
+* [content-addon](?path=/docs/ods-components-content-addon--docs)
+* [datepicker](?path=/docs/ods-components-form-elements-datepicker--migration-from-17-x)
+* [divider](?path=/docs/ods-components-divider--migration-from-17-x)
+* [file-upload](?path=/docs/ods-components-form-elements-file-upload--migration-from-17-x)
+* [flag](?path=/docs/ods-components-flag--docs)
+* [form-field](?path=/docs/ods-components-form-elements-form-field--migration-from-17-x)
+* [icon](?path=/docs/ods-components-icon--migration-from-17-x)
+* [input](?path=/docs/ods-components-form-elements-input--migration-from-17-x)
+* [link](?path=/docs/ods-components-link--migration-from-17-x)
+* [medium](?path=/docs/ods-components-medium--migration-from-17-x)
+* [menu](?path=/docs/ods-components-menu--docs)
+* [message](?path=/docs/ods-components-message--migration-from-17-x)
+* [modal](?path=/docs/ods-components-modal--migration-from-17-x)
+* [pagination](?path=/docs/ods-components-pagination--migration-from-17-x)
+* [password](?path=/docs/ods-components-form-elements-password--migration-from-17-x)
+* [phone-number](?path=/docs/ods-components-form-elements-phone-number--migration-from-17-x)
+* [popover](?path=/docs/ods-components-popover--migration-from-17-x)
+* [progress-bar](?path=/docs/ods-components-progress-bar--migration-from-17-x)
+* [search-bar](?path=/docs/ods-components-search-bar--docs)
+* [quantity](?path=/docs/ods-components-form-elements-quantity--migration-from-17-x)
+* [radio](?path=/docs/ods-components-form-elements-radio--migration-from-17-x)
+* [range](?path=/docs/ods-components-form-elements-range--migration-from-17-x)
+* [select](?path=/docs/ods-components-form-elements-select--migration-from-17-x)
+* [skeleton](?path=/docs/ods-components-skeleton--migration-from-17-x)
+* [spinner](?path=/docs/ods-components-spinner--migration-from-17-x)
+* [switch](?path=/docs/ods-components-form-elements-switch--migration-from-17-x)
+* [table](?path=/docs/ods-components-table--migration-from-17-x)
+* [tabs](?path=/docs/ods-components-tabs--migration-from-17-x)
+* [tag](?path=/docs/ods-components-tag--migration-from-17-x)
+* [text](?path=/docs/ods-components-text--migration-from-17-x)
+* [textarea](?path=/docs/ods-components-form-elements-textarea--migration-from-17-x)
+* [timepicker](?path=/docs/ods-components-form-elements-timepicker--migration-from-17-x)
+* [toggle](?path=/docs/ods-components-form-elements-toggle--migration-from-17-x)
+* [tooltip](?path=/docs/ods-components-tooltip--migration-from-17-x)

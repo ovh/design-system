@@ -219,6 +219,10 @@ $ods-datepicker-clearable-button-size: input.$ods-input-actions-button-width;
                 &:not(.focused, .selected) {
                   background-color: inherit;
                 }
+
+                &.selected::after {
+                  background-color: var(--ods-color-primary-000);
+                }
               }
             }
           }

@@ -8821,22 +8821,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"conventional-changelog-angular@npm:7.0.0, conventional-changelog-angular@npm:^7.0.0":
-  version: 7.0.0
-  resolution: "conventional-changelog-angular@npm:7.0.0"
-  dependencies:
-    compare-func: ^2.0.0
-  checksum: 2478962ad7ce42878449ba3568347d704f22c5c9af1cd36916b5600734bd7f82c09712a338c649195c44e907f1b0372ce52d6cb51df643f495c89af05ad4bc48
-  languageName: node
-  linkType: hard
-
-"conventional-changelog-angular@npm:^5.0.3":
+"conventional-changelog-angular@npm:5.0.13, conventional-changelog-angular@npm:^5.0.3":
   version: 5.0.13
   resolution: "conventional-changelog-angular@npm:5.0.13"
   dependencies:
     compare-func: ^2.0.0
     q: ^1.5.1
   checksum: 6ed4972fce25a50f9f038c749cc9db501363131b0fb2efc1fccecba14e4b1c80651d0d758d4c350a609f32010c66fa343eefd49c02e79e911884be28f53f3f90
+  languageName: node
+  linkType: hard
+
+"conventional-changelog-angular@npm:^7.0.0":
+  version: 7.0.0
+  resolution: "conventional-changelog-angular@npm:7.0.0"
+  dependencies:
+    compare-func: ^2.0.0
+  checksum: 2478962ad7ce42878449ba3568347d704f22c5c9af1cd36916b5600734bd7f82c09712a338c649195c44e907f1b0372ce52d6cb51df643f495c89af05ad4bc48
   languageName: node
   linkType: hard
 
@@ -17018,7 +17018,7 @@ __metadata:
     "@types/node": 18.15.3
     "@typescript-eslint/eslint-plugin": 7.0.1
     "@typescript-eslint/parser": 7.0.1
-    conventional-changelog-angular: 7.0.0
+    conventional-changelog-angular: 5.0.13
     eslint: 8.56.0
     eslint-html-reporter: 0.7.4
     eslint-import-resolver-typescript: 3.6.1

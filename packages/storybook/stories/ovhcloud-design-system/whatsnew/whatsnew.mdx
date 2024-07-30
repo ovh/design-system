@@ -2,15 +2,124 @@ import { Meta } from '@storybook/blocks';
 
 <Meta title="OVHcloud Design System/What's new?/What's new" />
 
+# What's new ?
+
+## v18.0.0
+
+As it is a major version, you'll have to follow the [migration guide 17.x to 18.x](?path=/docs/ovhcloud-design-system-what-s-new-migration-guide-17-x-to-18-x--docs)
+
+### Project changes:
+
+From the beginning of the project to the latest v17 version, our vision of the project have greatly evolved.
+Thanks to real-user feedbacks, a better understanding of our use cases and how ODS fits in the OVHCloud ecosystem.
+
+With this new version we've tried to tackle most of the known issues to offer a better end-user experience:
+- components are now behaving more like native html elements
+- components are now easier to use and to customize
+- no more invasive `console.log`, we only print meaningful warnings when needed
+- enum values can now be used directly instead of importing it
+- events are now normalized for all components
+- release process will be shorter
+
+On top of that, the v18 does bring new features:
+- new components: file-upload and timepicker
+- latest design applied on all component
+- now sync with figma changes
+- a new set of icons
+- a reworked documentation
+
+To achieve all this, we had to rewrite almost the whole library.
+
+This is a major version change with tons of breaking changes.
+But this aims to be the last time.
+
+To help you moving from a previous version to the v18, we've added a dedicated page on each component presenting
+the changes and some migration examples.
+
+### ODS libraries
+
+The following libs have been removed:
+- @ovhcloud/ods-cdk
+- @ovhcloud/ods-common-core
+- @ovhcloud/ods-common-stencil
+- @ovhcloud/ods-common-testing
+- @ovhcloud/ods-common-theming
+- @ovhcloud/ods-theme-blue-jeans
+
+There is now only two library published that you should include:
+- `@ovhcloud/ods-components` that contain all web-components, react and vue wrappers and the sass mixins
+- `@ovhcloud/ods-themes` that contain the design tokens and the assets (fonts and icons)
+
+The CDK has been removed and we do not plan on publishing it again. If you were using part of it, please reach
+out to us so that we can get more information about your usage.
+
+All common libs have been and we do not plan on publishing them again. If you were using part of them, please reach
+out to us so that we can get more information about your usage.
+
+The `blue-jeans` theme has been replaced by the default theme of `@ovhcloud/ods-themes`.
+
+### ODS dependencies upgrade
+
+The new version comes with the following upgrade on major library:
+- Stencil bumps from `4.12.0` to `4.16.0`
+- `node-sass` is not supported anymore and was replaced by `sass` (`1.71.0`)
+- Typescript bumps from `4.7.4` to `5.3.3`
+- Storybook bumps from `6.4.19` to `8.0.4`
+
+### Style customization
+
+Although the ODS component comes with the expected design, you can now apply your own style directly on some part
+of the web-component shadow DOM, thanks to the [part selector](https://developer.mozilla.org/en-US/docs/Web/CSS/::part).
+
+For example, you can add style on the native `input` element of an `ods-input` component through the following code:
+```html
 <style>
-  {`
-      * {
-          font-family: "Source Sans Pro","Trebuchet MS","Arial","Segoe UI",sans-serif !important;
-      }
-    `}
+  .my-input::part(input) {
+    width: 300px;
+  }
 </style>
 
-# What's new ?
+<ods-input class="my-input" ... />
+```
+
+Most of the component exposes one or more part like this, you can find more information on each component documentation page.
+
+### Sass helpers
+
+In addition to the easier customization, we're also exposing the "basic" style of some core component as Sass mixins
+that you can use to apply on a native element to get the same ODS rendering.
+
+For example, if you need to make a `a` tag looks like an `ods-link`:
+
+```scss
+@import '@ovhcloud/ods-components/style';
+
+.my-link {
+  @include ods-link();
+  @include ods-link-color('primary');
+}
+```
+```html
+<a class="my-link" ...>...</a>
+```
+
+This can be useful when you can't manage some part of the DOM as you want, for example using a library that will always
+render a `a` and that provide no custom templating.
+
+Be careful though, this does only provide basic style, not all the feature of an ODS component, so we do recommend
+to use the web-component by default.
+
+### New components:
+
+**File Upload**
+[See Documentation](?path=/docs/ods-components-form-elements-file-upload--documentation)
+
+**Timepicker**
+[See Documentation](?path=/docs/ods-components-form-elements-timepicker--documentation)
+
+### Component changes:
+
+Please check the [migration guide](?path=/docs/ovhcloud-design-system-what-s-new-migration-guide-17-x-to-18-x--docs) regarding all the component changes.
 
 ## v17.2.2
 

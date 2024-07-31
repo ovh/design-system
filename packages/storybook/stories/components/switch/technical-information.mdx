@@ -2,6 +2,7 @@ import { Canvas, Meta, Markdown } from '@storybook/blocks';
 import SpecificationsSwitch from '@ovhcloud/ods-components/src/components/switch/documentation/spec.md?raw';
 import { Banner } from '../../banner';
 import * as SwitchStories from './switch.stories';
+import { Switch as FormFieldSwitch } from '../form-field/form-field.stories';
 
 <Meta of={ SwitchStories } name='Technical information' />
 
@@ -28,4 +29,5 @@ import * as SwitchStories from './switch.stories';
 ### Size
 <Canvas of={ SwitchStories.Size } sourceState='shown' />
 
-
+### Included in a [**Form Field**](?path=/docs/ods-components-form-elements-form-field--technical-information)
+<Canvas of={ FormFieldSwitch } sourceState='shown' />

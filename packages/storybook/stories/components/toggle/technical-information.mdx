@@ -2,6 +2,7 @@ import { Canvas, Meta, Markdown } from '@storybook/blocks';
 import SpecificationsToggle from '@ovhcloud/ods-components/src/components/toggle/documentation/spec.md?raw';
 import { Banner } from '../../banner';
 import * as ToggleStories from './toggle.stories';
+import { Toggle as FormFieldToggle } from '../form-field/form-field.stories';
 
 <Meta of={ ToggleStories } name='Technical information' />
 
@@ -35,3 +36,6 @@ Custom CSS :
 
 ### With Label
 <Canvas of={ ToggleStories.WithLabel } sourceState='shown' />
+
+### Included in a [**Form Field**](?path=/docs/ods-components-form-elements-form-field--technical-information)
+<Canvas of={ FormFieldToggle } sourceState='shown' />

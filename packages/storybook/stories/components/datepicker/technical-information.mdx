@@ -1,9 +1,8 @@
 import { Canvas, Meta, Markdown } from '@storybook/blocks';
 import SpecificationsDatepicker from '@ovhcloud/ods-components/src/components/datepicker/documentation/spec.md?raw';
 import { Banner } from '../../banner';
-import { DocNavigator } from '../../doc-navigator';
 import * as DatepickerStories from './datepicker.stories';
-import { LINK_ID } from '../../zeroheight';
+import { Datepicker as FormFieldDatepicker } from '../form-field/form-field.stories';
 
 <Meta of={ DatepickerStories } name='Technical Information' />
 
@@ -60,3 +59,6 @@ import { LINK_ID } from '../../zeroheight';
 ### Readonly
 
 <Canvas of={ DatepickerStories.Readonly } sourceState='shown' />
+
+### Included in a [**Form Field**](?path=/docs/ods-components-form-elements-form-field--technical-information)
+<Canvas of={ FormFieldDatepicker } sourceState='shown' />

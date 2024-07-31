@@ -2,6 +2,7 @@ import { Canvas, Meta, Markdown } from '@storybook/blocks';
 import SpecificationsQuantity from '@ovhcloud/ods-components/src/components/quantity/documentation/spec.md?raw';
 import { Banner } from '../../banner';
 import * as QuantityStories from './quantity.stories';
+import { Quantity as FormFieldQuantity } from '../form-field/form-field.stories';
 
 <Meta of={ QuantityStories } name='Technical information' />
 
@@ -45,3 +46,5 @@ Custom CSS:
 ### Step
 <Canvas of={ QuantityStories.Step } sourceState='shown' />
 
+### Included in a [**Form Field**](?path=/docs/ods-components-form-elements-form-field--technical-information)
+<Canvas of={ FormFieldQuantity } sourceState='shown' />

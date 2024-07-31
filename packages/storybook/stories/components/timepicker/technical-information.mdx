@@ -2,6 +2,7 @@ import { Canvas, Meta, Markdown } from '@storybook/blocks';
 import SpecificationsTimepicker from '@ovhcloud/ods-components/src/components/timepicker/documentation/spec.md?raw';
 import { Banner } from '../../banner';
 import * as TimepickerStories from './timepicker.stories';
+import { Timepicker as FormFieldTimepicker } from '../form-field/form-field.stories';
 
 <Meta of={ TimepickerStories } name='Technical information' />
 
@@ -47,6 +48,5 @@ Custom timepicker CSS:
 
 <Canvas of={ TimepickerStories.WithSeconds } sourceState='shown' />
 
-
-
-
+### Included in a [**Form Field**](?path=/docs/ods-components-form-elements-form-field--technical-information)
+<Canvas of={ FormFieldTimepicker } sourceState='shown' />

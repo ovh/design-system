@@ -30,8 +30,7 @@ For example, to test the `odsChange` event on `ods-input`:
 
 ```javascript
 import { render, fireEvent } from '@testing-library/react';
-import '@ovhcloud/ods-components/react';
-import OdsInput from '@ovhcloud/ods-components/react';
+import { OdsInput } from '@ovhcloud/ods-components/react';
 
 test('should handle odsChange event', () => {
   const handleChange = jest.fn();
@@ -59,7 +58,7 @@ For detailed instructions on importing ESModule or CommonJS packages, please ref
 
 To import ODS CSS-only styling, please refer to our [Get Started](?path=/docs/ovhcloud-design-system-get-started--docs) documentation.
 
-## [ODS v17.1.0 | Safari < v16.2] My form elements are not displayed?
+## [ODS >= v17.1.0 | Safari < v16.2] My form elements are not displayed?
 
 If you are using a form component such as *OdsInput* on ODS version `>= 17.1.0`, you might encounter an issue with your component not being displayed on older versions of Safari (`< 16.2`).
 

@@ -1,0 +1,68 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="OVHcloud Design System/F.A.Q." />
+
+# Frequently Asked Questions
+
+*Welcome to the F.A.Q. section of the OVHcloud Design System (ODS).*
+
+*Here, we aim to address common questions and provide helpful guidance for developers.*
+
+## I can't find a component I need
+
+ODS provides base components that you can build on top of and implement in various contexts.
+
+If you need a new component, we recommend working with the design team to request and design the component to ensure it aligns with the ODS guidelines.
+
+## How do I customize the style of my component?
+
+To customize the style of your component, you can refer individually to the technical information of the component you wish to customize.
+
+*Example here with the [Accordion component](?path=/docs/ods-components-accordion--technical-information#style-customization).*
+
+It provides detailed instructions on how to apply custom styles effectively.
+
+## [React] How can I test events with `react-testing-library`?
+
+Custom events such as the ones from ODS can be tested in React with `fireEvent`.
+
+For example, to test the `odsChange` event on `ods-input`:
+
+```javascript
+import { render, fireEvent } from '@testing-library/react';
+import '@ovhcloud/ods-components/react';
+import OdsInput from '@ovhcloud/ods-components/react';
+
+test('should handle odsChange event', () => {
+  const handleChange = jest.fn();
+  const { getByTestId } = render(<OdsInput onOdsChange={handleChange} data-testid="ods-input" />);
+
+  fireEvent.change(getByTestId('ods-input'), { target: { value: 'new value' } });
+
+  expect(handleChange).toHaveBeenCalled();
+});
+```
+
+## Can I use another CSS framework on top of ODS?
+
+ODS components are primarily native web components, allowing you to apply styling from different CSS frameworks.
+
+Note that some imperative CSS frameworks like Bootstrap may override ODS styling.
+
+Ensure compatibility by testing the integration in your project.
+
+## How can I import ESModule / CommonJS packages?
+
+For detailed instructions on importing ESModule or CommonJS packages, please refer to our [Get Started](?path=/docs/ovhcloud-design-system-get-started--docs) documentation.
+
+## How can I import ODS CSS-only styling?
+
+To import ODS CSS-only styling, please refer to our [Get Started](?path=/docs/ovhcloud-design-system-get-started--docs) documentation.
+
+## [ODS v17.1.0 | Safari < v16.2] My form elements are not displayed?
+
+If you are using a form component such as *OdsInput* on ODS version `>= 17.1.0`, you might encounter an issue with your component not being displayed on older versions of Safari (`< 16.2`).
+
+This is primarily due to older versions of Safari not supporting `AttachInternals` which are essential for our components to connect form elements with forms.
+
+We would therefore recommend using versions of Safari superior to `16.4`.

@@ -2,6 +2,7 @@ import { Canvas, Meta, Markdown } from '@storybook/blocks';
 import SpecificationsTextarea from '@ovhcloud/ods-components/src/components/textarea/documentation/spec.md?raw';
 import { Banner } from '../../banner';
 import * as TextareaStories from './textarea.stories';
+import { Textarea as FormFieldTextarea } from '../form-field/form-field.stories';
 
 <Meta of={ TextareaStories } name='Technical information' />
 
@@ -58,3 +59,6 @@ Custom CSS:
 ### Spellcheck
 
 <Canvas of={ TextareaStories.Spellcheck } sourceState='shown' />
+
+### Included in a [**Form Field**](?path=/docs/ods-components-form-elements-form-field--technical-information)
+<Canvas of={ FormFieldTextarea } sourceState='shown' />

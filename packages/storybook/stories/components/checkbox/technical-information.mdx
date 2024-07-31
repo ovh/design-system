@@ -2,6 +2,7 @@ import { Canvas, Meta, Markdown } from '@storybook/blocks';
 import SpecificationsCheckbox from '@ovhcloud/ods-components/src/components/checkbox/documentation/spec.md?raw';
 import { Banner } from '../../banner';
 import * as CheckboxStories from './checkbox.stories';
+import { Checkbox as FormFieldCheckbox } from '../form-field/form-field.stories';
 
 <Meta of={ CheckboxStories } name='Technical information' />
 
@@ -50,3 +51,6 @@ The `id` is encapsulated by the `input-id` attribute. This way you can link a la
 
 ### Indeterminate
 <Canvas of={ CheckboxStories.Indeterminate } sourceState='shown' />
+
+### Included in a [**Form Field**](?path=/docs/ods-components-form-elements-form-field--technical-information)
+<Canvas of={ FormFieldCheckbox } sourceState='shown' />

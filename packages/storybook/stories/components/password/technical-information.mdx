@@ -2,6 +2,7 @@ import { Canvas, Meta, Markdown } from '@storybook/blocks';
 import SpecificationsPassword from '@ovhcloud/ods-components/src/components/password/documentation/spec.md?raw';
 import { Banner } from '../../banner';
 import * as PasswordStories from './password.stories';
+import { Password as FormFieldPassword } from '../form-field/form-field.stories';
 
 <Meta of={ PasswordStories } name='Technical information' />
 
@@ -54,3 +55,6 @@ With this pattern setting, the component will only allow for numeric characters:
 ### Readonly
 
 <Canvas of={ PasswordStories.Readonly } sourceState='shown' />
+
+### Included in a [**Form Field**](?path=/docs/ods-components-form-elements-form-field--technical-information)
+<Canvas of={ FormFieldPassword } sourceState='shown' />

@@ -2,6 +2,7 @@ import { Canvas, Meta, Markdown } from '@storybook/blocks';
 import SpecificationsSelect from '@ovhcloud/ods-components/src/components/select/documentation/spec.md?raw';
 import { Banner } from '../../banner';
 import * as SelectStories from './select.stories';
+import { Select as FormFieldSelect } from '../form-field/form-field.stories';
 
 <Meta of={ SelectStories } name='Technical information' />
 
@@ -76,3 +77,6 @@ As for now, item template is not customizable and will always render as the coun
 Here is the same example as [previously](?path=/docs/ods-components-form-elements-select--documentation#custom-renderer) updated for multiple selection:
 
 <Canvas of={ SelectStories.CustomRendererMultiple } sourceState='shown' />
+
+### Included in a [**Form Field**](?path=/docs/ods-components-form-elements-form-field--technical-information)
+<Canvas of={ FormFieldSelect } sourceState='shown' />

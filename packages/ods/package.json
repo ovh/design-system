@@ -52,7 +52,7 @@
     "jest-transform-stub": "2.0.0",
     "node-fetch": "2.7.0",
     "postcss": "8.4.35",
-    "puppeteer": "22.0.0",
+    "puppeteer": "22.15.0",
     "replace-in-file": "7.1.0",
     "sass": "1.71.0",
     "stencil-inline-svg": "1.1.0",

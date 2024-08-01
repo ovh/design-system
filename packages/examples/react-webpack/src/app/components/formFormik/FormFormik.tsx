@@ -1,5 +1,5 @@
 import { ODS_INPUT_TYPE } from '@ovhcloud/ods-components';
-import { OdsCheckbox, OdsDatepicker, OdsInput, OdsPassword, OdsPhoneNumber, OdsQuantity, OdsRadio, OdsSelect, OdsSwitch, OdsSwitchItem, OdsTextarea, OdsTimepicker } from '@ovhcloud/ods-components/react';
+import { OdsButton, OdsCheckbox, OdsDatepicker, OdsInput, OdsPassword, OdsPhoneNumber, OdsQuantity, OdsRadio, OdsSelect, OdsSwitch, OdsSwitchItem, OdsTextarea, OdsTimepicker } from '@ovhcloud/ods-components/react';
 import { useFormik } from 'formik';
 import React, { type ReactElement } from 'react';
 import * as yup from 'yup';
@@ -47,15 +47,19 @@ function FormFormik(): ReactElement {
     formik.setFieldValue('checkbox', e.detail.checked ? e.detail.value : null);
   }
 
+  function onSubmit(e: any) {
+    console.log('==> submit')
+    formik.handleSubmit(e)
+  }
+
   return (
     <form
       className={ styles['form-formik'] }
-      onSubmit={ formik.handleSubmit }>
+      onSubmit={ onSubmit }>
       {/* OK but need custom onChange handler */}
       {/* KO reset */}
       <div>
         <OdsCheckbox
-          type="checkbox"
           isChecked={ false }
           inputId="checkbox"
           name="checkbox"
@@ -242,13 +246,12 @@ function FormFormik(): ReactElement {
       <p>{ JSON.stringify(formik.errors) }</p>
 
       <div>
-        <button type="reset">
-          Reset
-        </button>
+        <OdsButton label="Reset button"
+                   type="reset"
+                   variant="outline" />
 
-        <button type="submit">
-          Submit
-        </button>
+        <OdsButton label="Submit button"
+                   type="submit" />
       </div>
     </form>
   );

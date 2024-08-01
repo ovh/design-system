@@ -130,7 +130,8 @@
   </ods-button>
 
   <p>Form</p>
-  <form>
+  <form onreset="handleReset()"
+        onsubmit="handleSubmit()">
     <input type="text" name="text" />
 
     <ods-button label="Submit button" type="submit">
@@ -143,6 +144,15 @@
     <ods-button label="Disabled reset" type="reset" is-disabled>
     </ods-button>
   </form>
+  <script>
+    function handleReset() {
+      console.log('On Reset')
+    }
+
+    function handleSubmit() {
+      console.log('On Submit')
+    }
+  </script>
 
   <script>
     document.querySelectorAll('ods-button:not([type="submit"]):not([type="reset"])').forEach((element) => {

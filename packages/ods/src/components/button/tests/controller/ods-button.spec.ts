@@ -2,8 +2,8 @@ import { handleClick } from '../../src/controller/ods-button';
 
 describe('ods-button controller', () => {
   const dummyForm = {
+    requestSubmit: jest.fn(),
     reset: jest.fn(),
-    submit: jest.fn(),
   };
 
   beforeEach(jest.clearAllMocks);
@@ -16,14 +16,14 @@ describe('ods-button controller', () => {
 
       handleClick('submit', null);
 
-      expect(dummyForm.submit).not.toHaveBeenCalled();
+      expect(dummyForm.requestSubmit).not.toHaveBeenCalled();
     });
 
     it('should submit the form', async() => {
       // @ts-ignore for test purpose
       handleClick('submit', dummyForm);
 
-      expect(dummyForm.submit).toHaveBeenCalledTimes(1);
+      expect(dummyForm.requestSubmit).toHaveBeenCalledTimes(1);
     });
 
     it('should reset the form', async() => {

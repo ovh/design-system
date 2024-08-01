@@ -1,5 +1,5 @@
 import { ODS_INPUT_TYPE } from '@ovhcloud/ods-components';
-import { OdsCheckbox, OdsDatepicker, OdsInput, OdsPassword, OdsPhoneNumber, OdsQuantity, OdsRadio, OdsSelect, OdsSwitch, OdsSwitchItem, OdsTextarea, OdsTimepicker } from '@ovhcloud/ods-components/react';
+import { OdsButton, OdsCheckbox, OdsDatepicker, OdsInput, OdsPassword, OdsPhoneNumber, OdsQuantity, OdsRadio, OdsSelect, OdsSwitch, OdsSwitchItem, OdsTextarea, OdsTimepicker } from '@ovhcloud/ods-components/react';
 import React, { type ReactElement, useRef, useState } from 'react';
 import styles from './formNative.scss';
 
@@ -34,6 +34,7 @@ function FormNative(): ReactElement {
   });
 
   async function onSubmit(e: any) {
+    console.log('On Submit')
     e.preventDefault();
     e.stopPropagation();
 
@@ -204,9 +205,9 @@ function FormNative(): ReactElement {
         hasError={ error.select }
         isRequired={ true }
         name="select"
-        onOdsChange={ (event) => onChange(event) }
-        onOdsReset={ (event) => onReset(event) }
-        onOdsClear={ (event) => onClear(event) }
+        onOdsChange={ (event: any) => onChange(event) }
+        onOdsReset={ (event: any) => onReset(event) }
+        onOdsClear={ (event: any) => onClear(event) }
         ref={ selectRef }
       >
         <option value="dog">Dog</option>
@@ -268,13 +269,12 @@ function FormNative(): ReactElement {
         value="should be present in form data" />
 
       <div>
-        <button type="reset">
-          Reset
-        </button>
+        <OdsButton label="Reset button"
+                   type="reset"
+                   variant="outline" />
 
-        <button type="submit">
-          Submit
-        </button>
+        <OdsButton label="Submit button"
+                   type="submit" />
       </div>
     </form>
   );

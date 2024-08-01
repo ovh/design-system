@@ -7,7 +7,7 @@ $ods-input-input-padding-right: calc($ods-input-actions-button-width + $ods-inpu
 
 @mixin ods-input() {
   box-sizing: border-box;
-  border: var(--ods-border-width-sm) solid var(--ods-form-element-border-color-default);
+  border: var(--ods-border-width-sm) solid var(--ods-color-form-element-border-default);
   border-radius: var(--ods-border-radius-sm);
   padding: 4px 8px;
   width: 100%;
@@ -24,16 +24,20 @@ $ods-input-input-padding-right: calc($ods-input-actions-button-width + $ods-inpu
   }
 
   &:read-only {
-    color: var(--ods-form-element-foreground-color-readonly);
+    @include ods-input-readonly();
   }
 }
 
 @mixin ods-input-disabled() {
-  background-color: var(--ods-color-neutral-100);
+  background-color: var(--ods-color-background-disabled-default);
   cursor: not-allowed;
-  color: var(--ods-form-element-foreground-color-disabled);
+  color: var(--ods-color-text-disabled-default);
 }
 
 @mixin ods-input-error() {
-  border-color: var(--ods-form-element-border-color-critical);
+  border-color: var(--ods-color-form-element-border-critical);
+}
+
+@mixin ods-input-readonly() {
+  // Empty for now, no style has been yet defined
 }

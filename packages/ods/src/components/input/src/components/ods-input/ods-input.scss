@@ -98,11 +98,11 @@
 
     &:not(#{$input}--error, :disabled) {
       &:focus {
-        border-color: var(--ods-form-element-border-color-focused);
+        border-color: var(--ods-color-form-element-border-focus-default);
       }
 
       &:hover {
-        border-color: var(--ods-form-element-border-color-hover);
+        border-color: var(--ods-color-form-element-border-hover-default);
       }
     }
 

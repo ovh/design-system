@@ -10,15 +10,21 @@ describe('ods-modal navigation', () => {
     await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
 
     await page.waitForChanges();
+  }
 
-    await page.evaluate(() => {
-      const dialog = document.querySelector('ods-modal')?.shadowRoot?.querySelector('.ods-modal__dialog') as HTMLDialogElement;
-      if (dialog) {
-        dialog.style.setProperty('animation', 'none');
-      }
+  async function waitForAnimationEnd(): Promise<void> {
+    await page.evaluate(async() => {
+      const dialogElement = document.querySelector('ods-modal')?.shadowRoot?.querySelector('dialog');
+
+      return new Promise<void>((resolve) => {
+        function onEnd(): void {
+          dialogElement?.removeEventListener('animationend', onEnd);
+          resolve();
+        }
+
+        dialogElement?.addEventListener('animationend', onEnd);
+      });
     });
-
-    await page.waitForChanges();
   }
 
   it('should focus each interactive element in content on "Tab" press', async() => {
@@ -31,9 +37,11 @@ describe('ods-modal navigation', () => {
 
     await page.keyboard.press('Tab');
     await page.keyboard.press('Tab');
+
     expect(await page.evaluate(() => document.activeElement?.id)).toBe('input1');
 
     await page.keyboard.press('Tab');
+
     expect(await page.evaluate(() => document.activeElement?.id)).toBe('button1');
   });
 
@@ -73,8 +81,7 @@ describe('ods-modal navigation', () => {
 
     const dismissButton = await page.find('ods-modal >>> .ods-modal__dialog__header__close');
     await dismissButton.click();
-
-    await page.waitForChanges();
+    await waitForAnimationEnd();
 
     expect(closeSpy).toHaveReceivedEventTimes(1);
   });
@@ -85,8 +92,7 @@ describe('ods-modal navigation', () => {
 
     const dismissButton = await page.find('ods-modal >>> .ods-modal__dialog__header__close');
     await dismissButton.press('Enter');
-
-    await page.waitForChanges();
+    await waitForAnimationEnd();
 
     expect(closeSpy).toHaveReceivedEventTimes(1);
   });
@@ -97,6 +103,7 @@ describe('ods-modal navigation', () => {
 
     const dismissButton = await page.find('ods-modal >>> .ods-modal__dialog__header__close');
     await dismissButton.press('Space');
+    await waitForAnimationEnd();
 
     expect(closeSpy).toHaveReceivedEventTimes(1);
   });

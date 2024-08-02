@@ -30,6 +30,16 @@ function propagateIsDisabled(value: boolean, items: Element[]): void {
   });
 }
 
+function propagateIsRequired(value: boolean, items: Element[]): void {
+  getSwitchItem(items).forEach((item) => {
+    if (value) {
+      item.setAttribute('is-required', '');
+    } else {
+      item.removeAttribute('is-required');
+    }
+  });
+}
+
 function propagateName(name: string, items: Element[]): void {
   getSwitchItem(items).forEach((item) => {
     item.setAttribute('name', name);
@@ -45,6 +55,7 @@ function propagateInputId(name: string, items: Element[]): void {
 export {
   clearItems,
   propagateIsDisabled,
+  propagateIsRequired,
   propagateInputId,
   propagateName,
   resetItems,

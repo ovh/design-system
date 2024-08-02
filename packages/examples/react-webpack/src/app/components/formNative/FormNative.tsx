@@ -34,7 +34,6 @@ function FormNative(): ReactElement {
   });
 
   async function onSubmit(e: any) {
-    console.log('On Submit')
     e.preventDefault();
     e.stopPropagation();
 
@@ -52,7 +51,10 @@ function FormNative(): ReactElement {
     // await validateField(timepickerRef.current);
 
     const formData = new FormData(formRef.current!);
-    console.log(formData);
+
+    for (const [key, value] of formData) {
+      console.log(`${key}: ${value}`)
+    }
 
     return false;
   }
@@ -230,13 +232,11 @@ function FormNative(): ReactElement {
       >
         <OdsSwitchItem
           isChecked
-          name="switch"
           value="option1"
         >
           Option 1
         </OdsSwitchItem>
         <OdsSwitchItem
-          name="switch"
           value="option2"
         >
           Option 2

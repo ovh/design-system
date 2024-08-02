@@ -196,23 +196,18 @@ function FormFormik(): ReactElement {
 
       {/* KO Reset */}
       <OdsSwitch
-        // isRequired={ true }
+        isRequired={ true }
         name="switch"
-        onOdsBlur={ formik.handleBlur }
-        onOdsChange={ formik.handleChange }
-      >
+        onOdsChange={ formik.handleChange }>
         <OdsSwitchItem
-          name="switch"
           isChecked={ formik.values.switch === 'option1' }
-          value="option1"
-        >
+          value="option1">
           Option 1
         </OdsSwitchItem>
+
         <OdsSwitchItem
-          name="switch"
           isChecked={ formik.values.switch === 'option2' }
-          value="option2"
-        >
+          value="option2">
           Option 2
         </OdsSwitchItem>
       </OdsSwitch>

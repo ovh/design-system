@@ -29,6 +29,7 @@ export class OdsModal {
 
       const onAnimationEnd = (): void => {
         this.isOpen = false;
+        this.odsClose.emit();
         this.modalDialog.classList.remove('ods-modal__dialog--close-animation');
         this.modalDialog.removeEventListener('animationend', onAnimationEnd);
       };
@@ -36,9 +37,8 @@ export class OdsModal {
       this.modalDialog.addEventListener('animationend', onAnimationEnd);
     } else {
       this.isOpen = false;
+      this.odsClose.emit();
     }
-
-    this.odsClose.emit();
   }
 
   @Method()
@@ -101,17 +101,18 @@ export class OdsModal {
         'ods-modal': true,
         'ods-modal--open': this.isOpen,
       }}>
-        <dialog class='ods-modal__dialog'
+        <dialog
+          class='ods-modal__dialog'
           ref={ (el) => this.modalDialog = el as HTMLDialogElement }
           onClick={ (event) => this.handleBackdropClick(event) }
-          part='dialog'
-        >
+          part='dialog'>
           <div class='ods-modal__backdrop'></div>
 
           <div class={ `ods-modal__dialog__header ods-modal__dialog__header--${this.color}` }>
             {
               this.isDismissible &&
-              <button class={ `ods-modal__dialog__header__close ods-modal__dialog__header__close--${this.color}` }
+              <button
+                class={ `ods-modal__dialog__header__close ods-modal__dialog__header__close--${this.color}` }
                 onClick={ () => this.close() }>
                 <ods-icon name={ ODS_ICON_NAME.xmark }>
                 </ods-icon>
@@ -121,6 +122,7 @@ export class OdsModal {
 
           <div class='ods-modal__dialog__content'>
             <slot></slot>
+
             <div class='ods-modal__dialog__content__actions'>
               <slot name='actions'></slot>
             </div>

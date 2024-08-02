@@ -10,22 +10,28 @@ describe('ods-modal behaviour', () => {
     await page.evaluate(() => document.body.style.setProperty('margin', '0px'));
 
     await page.waitForChanges();
+  }
 
-    await page.evaluate(() => {
-      const dialog = document.querySelector('ods-modal')?.shadowRoot?.querySelector('.ods-modal__dialog') as HTMLDialogElement;
-      if (dialog) {
-        dialog.style.setProperty('animation', 'none');
-      }
+  async function waitForAnimationEnd(): Promise<void> {
+    await page.evaluate(async() => {
+      const dialogElement = document.querySelector('ods-modal')?.shadowRoot?.querySelector('dialog');
+
+      return new Promise<void>((resolve) => {
+        function onEnd(): void {
+          dialogElement?.removeEventListener('animationend', onEnd);
+          resolve();
+        }
+
+        dialogElement?.addEventListener('animationend', onEnd);
+      });
     });
-
-    await page.waitForChanges();
   }
 
   it('should trigger open event when opening', async() => {
     await setup('<ods-modal><ods-text>Hello, world!</ods-text></ods-modal>');
     const openSpy = await page.spyOnEvent('odsOpen');
-
     const modal = await page.find('ods-modal');
+
     await modal.callMethod('open');
 
     expect(openSpy).toHaveReceivedEventTimes(1);
@@ -34,17 +40,18 @@ describe('ods-modal behaviour', () => {
   it('should trigger close event when closing', async() => {
     await setup('<ods-modal is-open><ods-text>Hello, world!</ods-text></ods-modal>');
     const closeSpy = await page.spyOnEvent('odsClose');
-
     const modal = await page.find('ods-modal');
+
     await modal.callMethod('close');
+    await waitForAnimationEnd();
 
     expect(closeSpy).toHaveReceivedEventTimes(1);
   });
 
   it('should open on element open method call', async() => {
     await setup('<ods-modal><ods-text>Hello, world!</ods-text></ods-modal>');
-
     const modal = await page.find('ods-modal');
+
     await modal.callMethod('open');
     await page.waitForChanges();
 
@@ -56,12 +63,11 @@ describe('ods-modal behaviour', () => {
     expect(isOpen).toBe(true);
   });
 
-  it('should close on element close method call', async() => {
+  it('should add a close animation on element close method call', async() => {
     await setup('<ods-modal is-open><ods-text>Hello, world!</ods-text></ods-modal>');
-
     const modal = await page.find('ods-modal');
-    await modal.callMethod('close');
 
+    await modal.callMethod('close');
     await page.waitForChanges();
 
     const closeAnimation = await page.find('ods-modal >>> .ods-modal__dialog--close-animation');

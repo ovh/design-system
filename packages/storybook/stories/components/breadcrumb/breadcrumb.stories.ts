@@ -12,7 +12,7 @@ export default meta;
 
 export const Demo: StoryObj = {
   render: (arg) => html`
-<ods-breadcrumb>
+<ods-breadcrumb class="breadcrumb--disabled">
   ${unsafeHTML(arg.items)}
 </ods-breadcrumb>
   `,
@@ -40,13 +40,13 @@ export const ClickedItem: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
 <ods-breadcrumb id="my-breadcrumb-clicked">
-  <ods-breadcrumb-item id="home" href="" icon="home">
+  <ods-breadcrumb-item id="home" icon="home">
   </ods-breadcrumb-item>
-  <ods-breadcrumb-item id="link1" href="" label="Link 1">
+  <ods-breadcrumb-item id="link1" label="Link 1">
   </ods-breadcrumb-item>
-  <ods-breadcrumb-item id="link2" href="" label="Link 2">
+  <ods-breadcrumb-item id="link2" label="Link 2">
   </ods-breadcrumb-item>
-  <ods-breadcrumb-item href="" label="Last">
+  <ods-breadcrumb-item label="Last">
   </ods-breadcrumb-item>
 </ods-breadcrumb>
 <script>
@@ -63,18 +63,18 @@ export const ClickedItem: StoryObj = {
 export const Collapsed: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
-<ods-breadcrumb>
-  <ods-breadcrumb-item href="" icon="home">
+<ods-breadcrumb class="breadcrumb--disabled">
+  <ods-breadcrumb-item icon="home">
   </ods-breadcrumb-item>
-  <ods-breadcrumb-item href="" label="First">
+  <ods-breadcrumb-item label="First">
   </ods-breadcrumb-item>
-  <ods-breadcrumb-item href="" label="Second">
+  <ods-breadcrumb-item label="Second">
   </ods-breadcrumb-item>
-  <ods-breadcrumb-item href="" label="Third">
+  <ods-breadcrumb-item label="Third">
   </ods-breadcrumb-item>
-  <ods-breadcrumb-item href="" label="Fourth">
+  <ods-breadcrumb-item label="Fourth">
   </ods-breadcrumb-item>
-  <ods-breadcrumb-item href="" label="Last">
+  <ods-breadcrumb-item label="Last">
   </ods-breadcrumb-item>
 </ods-breadcrumb>
   `,
@@ -83,14 +83,14 @@ export const Collapsed: StoryObj = {
 export const CustomCSS: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
-<ods-breadcrumb>
-  <ods-breadcrumb-item href="" icon="home">
+<ods-breadcrumb class="breadcrumb--disabled">
+  <ods-breadcrumb-item icon="home">
   </ods-breadcrumb-item>
-  <ods-breadcrumb-item href="" label="Basic">
+  <ods-breadcrumb-item label="Basic">
   </ods-breadcrumb-item>
-  <ods-breadcrumb-item class="my-link" href="" label="Custom">
+  <ods-breadcrumb-item class="my-link" label="Custom">
   </ods-breadcrumb-item>
-  <ods-breadcrumb-item href="" label="Last">
+  <ods-breadcrumb-item label="Last">
   </ods-breadcrumb-item>
 </ods-breadcrumb>
 <style>
@@ -104,16 +104,25 @@ export const CustomCSS: StoryObj = {
 export const CustomItem: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
-<ods-breadcrumb>
-  <ods-breadcrumb-item href="" icon="home">
+<ods-breadcrumb class="breadcrumb--disabled">
+  <ods-breadcrumb-item icon="home">
   </ods-breadcrumb-item>
-  <ods-breadcrumb-item href="" label="Blank" target="_blank">
+  <ods-breadcrumb-item label="Blank" target="_blank">
   </ods-breadcrumb-item>
-  <ods-breadcrumb-item href="" is-disabled label="Disabled">
+  <ods-breadcrumb-item is-disabled label="Disabled">
   </ods-breadcrumb-item>
-  <ods-breadcrumb-item href="" label="Last">
+  <ods-breadcrumb-item label="Last">
   </ods-breadcrumb-item>
 </ods-breadcrumb>
+<script>
+  (() => {
+    document.querySelectorAll('.breadcrumb--disabled').forEach((breadcrumbElement) => {
+      breadcrumbElement.addEventListener('odsBreadcrumbItemClick', (event) => {
+        event.detail.preventDefault();
+      });
+    })
+  })();
+</script>
   `,
 };
 
@@ -123,12 +132,12 @@ export const Overview: StoryObj = {
     layout: 'centered',
   },
   render: () => html`
-<ods-breadcrumb>
-  <ods-breadcrumb-item href="" icon="home">
+<ods-breadcrumb class="breadcrumb--disabled">
+  <ods-breadcrumb-item icon="home">
   </ods-breadcrumb-item>
-  <ods-breadcrumb-item href="" label="Parent">
+  <ods-breadcrumb-item label="Parent">
   </ods-breadcrumb-item>
-  <ods-breadcrumb-item href="" label="Current">
+  <ods-breadcrumb-item label="Current">
   </ods-breadcrumb-item>
 </ods-breadcrumb>
   `,
@@ -137,12 +146,12 @@ export const Overview: StoryObj = {
 export const Default: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
-<ods-breadcrumb>
-  <ods-breadcrumb-item href="" icon="home">
+<ods-breadcrumb class="breadcrumb--disabled">
+  <ods-breadcrumb-item icon="home">
   </ods-breadcrumb-item>
-  <ods-breadcrumb-item href="" label="Parent">
+  <ods-breadcrumb-item label="Parent">
   </ods-breadcrumb-item>
-  <ods-breadcrumb-item href="" label="Current">
+  <ods-breadcrumb-item label="Current">
   </ods-breadcrumb-item>
 </ods-breadcrumb>
   `,

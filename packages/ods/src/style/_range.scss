@@ -113,17 +113,17 @@ $range-z-index-dual: 1;
 }
 
 @mixin thumb-hover-active() {
-  &:active {
+  &:active,
+  &:active:hover {
     border-color: var(--ods-color-primary-200);
     background-color: var(--ods-color-primary-200);
   }
 
   &:hover {
-    border-color: var(--ods-color-primary-200);
-    background-color: var(--ods-color-primary-200);
+    border-color: var(--ods-color-form-element-border-hover-default);
+    background-color: var(--ods-color-form-element-background-hover-default);
   }
 }
-
 
 @mixin ods-range-dual() {
   .ods-range__range-dual {

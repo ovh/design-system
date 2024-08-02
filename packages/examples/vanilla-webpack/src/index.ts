@@ -1,4 +1,4 @@
-//import '@ovhcloud/ods-theme-blue-jeans';
+import '@ovhcloud/ods-themes/default';
 
 // Use this configuration to test the lazy loader
 import { defineCustomElements } from '@ovhcloud/ods-components/dist/loader';

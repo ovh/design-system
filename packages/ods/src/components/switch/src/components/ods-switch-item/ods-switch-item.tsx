@@ -1,5 +1,5 @@
-import type { OdsRadio } from '../../../../radio/src';
-import { Component, Element, Event, type EventEmitter, type FunctionalComponent, Host, Method, Prop, h } from '@stencil/core';
+import { Component, Element, Event, type EventEmitter, type FunctionalComponent, Host, Method, Prop, State, h } from '@stencil/core';
+import { type OdsRadio } from '../../../../radio/src';
 
 @Component({
   shadow: false,
@@ -7,17 +7,18 @@ import { Component, Element, Event, type EventEmitter, type FunctionalComponent,
   tag: 'ods-switch-item',
 })
 export class OdsSwitchItem {
+  private observer?: MutationObserver;
   private odsRadio?: OdsRadio;
+
+  @State() private inputId: string = '';
+  @State() private isDisabled: boolean = false;
+  @State() private isRequired: boolean = false;
 
   @Element() el!: HTMLElement;
 
   @Prop({ reflect: true }) public ariaLabel: HTMLElement['ariaLabel'] = null;
   @Prop({ reflect: true }) public ariaLabelledby?: string;
-  @Prop({ reflect: true }) public inputId?: string;
   @Prop({ reflect: true }) public isChecked: boolean = false;
-  @Prop({ reflect: true }) public isDisabled: boolean = false;
-  @Prop({ reflect: true }) public isRequired: boolean = false;
-  @Prop({ reflect: true }) public name!: string;
   @Prop({ reflect: true }) public value: string | null = null;
 
   @Event() odsBlur!: EventEmitter<void>;
@@ -36,6 +37,27 @@ export class OdsSwitchItem {
   @Method()
   async getValidity(): Promise<ValidityState | undefined> {
     return this.odsRadio?.getValidity();
+  }
+
+  componentWillLoad(): void {
+    this.observer = new MutationObserver((mutations: MutationRecord[]) => {
+      for (const mutation of mutations) {
+        if (mutation.attributeName === 'input-id') {
+          this.inputId = this.el.getAttribute('input-id') ?? '';
+        }
+        if (mutation.attributeName === 'is-disabled') {
+          this.isDisabled = this.el.getAttribute('is-disabled') === '';
+        }
+        if (mutation.attributeName === 'is-required') {
+          this.isRequired = this.el.getAttribute('is-required') === '';
+        }
+      }
+    });
+    this.observer.observe(this.el, { attributes: true });
+  }
+
+  disconnectedCallback(): void {
+    this.observer?.disconnect();
   }
 
   private handleKeyDown(event: KeyboardEvent): void {
@@ -67,9 +89,11 @@ export class OdsSwitchItem {
           inputId={ this.inputId }
           onOdsClear={ (event: CustomEvent<void>) => event.stopPropagation() }
           onOdsReset={ (event: CustomEvent<void>) => event.stopPropagation() }
-          name={ this.name }
+          name={ this.el.getAttribute('name') ?? '' }
           ref={ (el?: HTMLElement) => this.odsRadio = el as unknown as OdsRadio }
-          value={ this.value }></ods-radio>
+          value={ this.value }>
+        </ods-radio>
+
         <label
           class={{
             'ods-switch-item__label': true,

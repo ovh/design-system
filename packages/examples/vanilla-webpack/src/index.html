@@ -7,7 +7,36 @@
 </head>
 
 <body>
-  <ods-text id="text">
-  </ods-text>
+  <form>
+    <ods-input name="text"></ods-input>
+
+    <ods-switch name="switch">
+      <ods-switch-item value="switch-item-1">
+        Item 1
+      </ods-switch-item>
+
+      <ods-switch-item value="switch-item-2">
+        Item 2
+      </ods-switch-item>
+    </ods-switch>
+
+    <ods-button label="Submit"
+                type="submit">
+    </ods-button>
+  </form>
+
+<script>
+  const formElement = document.querySelector('form');
+
+  formElement.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(formElement)
+
+    for (const [key, value] of formData) {
+      console.log(`${key}: ${value}`)
+    }
+  });
+</script>
 </body>
 </html>

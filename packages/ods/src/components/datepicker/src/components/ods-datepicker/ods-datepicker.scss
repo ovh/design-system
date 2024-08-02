@@ -47,6 +47,16 @@ $ods-datepicker-clearable-button-size: input.$ods-input-actions-button-width;
 
     @include input.ods-input();
 
+    // Reset datepicker lib styles
+    &.in-edit {
+      border-color: var(--ods-color-form-element-border-focus-default);
+
+      &:focus,
+      &:active {
+        box-shadow: none;
+      }
+    }
+
     padding-right: input.$ods-input-input-padding-right;
 
     &:not(:disabled)#{$input}--error {

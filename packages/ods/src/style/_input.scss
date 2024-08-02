@@ -1,4 +1,5 @@
 @use './focus';
+@use './form-elements';
 
 $ods-input-actions-button-width: 24px;
 $ods-input-actions-padding-right: 4px;
@@ -26,6 +27,8 @@ $ods-input-input-padding-right: calc($ods-input-actions-button-width + $ods-inpu
   &:read-only {
     @include ods-input-readonly();
   }
+
+  @include form-elements.ods-form-elements();
 }
 
 @mixin ods-input-disabled() {

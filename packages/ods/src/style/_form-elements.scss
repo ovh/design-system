@@ -1,0 +1,18 @@
+@mixin ods-form-elements() {
+  color: var(--ods-color-form-element-text-default);
+  border: solid 1px var(--ods-color-form-element-border-default);
+  background-color: var(--ods-color-form-element-background-default);
+
+  &:not(:disabled) {
+    &:focus,
+    &:focus-visible {
+      border-color: var(--ods-color-form-element-border-focus-default);
+      background-color: var(--ods-color-form-element-background-focus-default);
+    }
+
+    &:hover {
+      border-color: var(--ods-color-form-element-border-hover-default);
+      background-color: var(--ods-color-form-element-background-hover-default);
+    }
+  }
+}

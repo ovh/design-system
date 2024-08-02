@@ -1,4 +1,5 @@
 @use './focus';
+@use './form-elements';
 
 @mixin ods-radio() {
   appearance: none;
@@ -9,6 +10,8 @@
   cursor: pointer;
   width: 16px;
   height: 16px;
+
+  @include form-elements.ods-form-elements();
 
   &::before {
     transform: scale(0);
@@ -42,7 +45,10 @@
     border: 1px solid var(--ods-color-primary-500);
     background-color: var(--ods-color-primary-500);
 
-    &:hover {
+    &:hover,
+    &:focus,
+    &:focus-visible {
+      border-color: var(--ods-color-primary-700);
       background-color: var(--ods-color-primary-700);
     }
   }

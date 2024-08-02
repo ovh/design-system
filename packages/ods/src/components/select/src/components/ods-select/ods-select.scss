@@ -3,6 +3,7 @@
 @use '../../../../../style/icon';
 @use '../../../../../style/input';
 @use '../../../../../style/overlay';
+@use '../../../../../style/form-elements';
 @import '~tom-select/dist/css/tom-select.bootstrap4.min.css';
 
 $select-background-color: #fff;
@@ -28,6 +29,8 @@ $select-padding-right: $select-caret-size + ($select-base-padding * 2);
     padding: 0 $select-padding-right 0 $select-base-padding !important;
     height: input.$ods-input-input-height;
     min-height: auto;
+
+    @include form-elements.ods-form-elements();
 
     .item {
       @include ods-select-item();
@@ -98,8 +101,6 @@ $select-padding-right: $select-caret-size + ($select-base-padding * 2);
       }
 
       &.selected {
-        background-color: var(--ods-color-primary-200);
-
         &:not([data-selectable]) {
           background: var(--ods-color-neutral-200);
           color: var(--ods-color-primary-000);

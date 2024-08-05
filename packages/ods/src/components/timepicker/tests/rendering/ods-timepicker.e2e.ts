@@ -18,8 +18,8 @@ describe('ods-timepicker rendering', () => {
     }
 
     el = await page.find('ods-timepicker');
-    input = await page.find('ods-timepicker >>> .ods-timepicker__time');
-    select = await page.find('ods-timepicker >>> .ods-timepicker__timezones');
+    input = await page.find('ods-timepicker >>> ods-input');
+    select = await page.find('ods-timepicker >>> ods-select');
   }
 
   it('should render the web component', async() => {

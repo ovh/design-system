@@ -122,14 +122,13 @@ export class OdsTimepicker {
     return (
       <Host class="ods-timepicker">
         <ods-input
-          class="ods-timepicker__time"
           ariaLabel={ this.ariaLabel }
           ariaLabelledby={ this.ariaLabelledby }
           defaultValue={ this.defaultValue }
           exportparts="input"
-          is-disabled={ this.isDisabled }
-          is-readonly={ this.isReadonly }
-          has-error={ this.hasError }
+          isDisabled={ this.isDisabled }
+          isReadonly={ this.isReadonly }
+          hasError={ this.hasError }
           onOdsChange={ (event: OdsInputChangeEvent) => this.onOdsChange(event, false) }
           onOdsClear={ (event: CustomEvent<void>) => event.stopPropagation() }
           onOdsReset={ (event: CustomEvent<void>) => event.stopPropagation() }
@@ -137,19 +136,17 @@ export class OdsTimepicker {
           ref={ (el?: HTMLElement): OdsInput => this.odsInput = el as OdsInput & HTMLElement }
           step={ this.withSeconds ? 1 : undefined }
           type={ ODS_INPUT_TYPE.time }
-          value={ this.value }
-        >
+          value={ this.value }>
         </ods-input>
         {
           this.hasTimezones &&
           <ods-select
             class="ods-timepicker__timezones"
-            default-value={ this.defaultCurrentTimezone }
-            dropdown-width="auto"
+            defaultValue={ this.defaultCurrentTimezone }
             part="select"
-            has-error={ this.hasError }
-            is-disabled={ this.isDisabled }
-            is-readonly={ this.isReadonly }
+            hasError={ this.hasError }
+            isDisabled={ this.isDisabled }
+            isReadonly={ this.isReadonly }
             onOdsChange={ (event: OdsSelectChangeEvent) => this.onOdsChange(event, true) }
             onOdsClear={ (event: CustomEvent<void>) => event.stopPropagation() }
             onOdsReset={ (event: CustomEvent<void>) => event.stopPropagation() }

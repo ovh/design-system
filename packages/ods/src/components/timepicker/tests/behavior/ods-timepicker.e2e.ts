@@ -110,4 +110,20 @@ describe('ods-timepicker behavior', () => {
       });
     });
   });
+
+  describe('form', () => {
+    it('should get form data when submit button is triggered', async() => {
+      await setup(`<form method="get">
+        <ods-timepicker name="odsTimepicker" value="12:42"></ods-timepicker>
+        <button type="submit">Submit</button>
+      </form>`);
+      const submitButton = await page.find('button[type="submit"]');
+
+      await submitButton.click();
+      await page.waitForNetworkIdle();
+
+      const url = new URL(page.url());
+      expect(url.searchParams.get('odsTimepicker')).toBe('12:42');
+    });
+  });
 });

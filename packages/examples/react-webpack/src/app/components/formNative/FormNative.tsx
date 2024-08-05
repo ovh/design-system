@@ -252,11 +252,10 @@ function FormNative(): ReactElement {
         ref={ textareaRef }
       />
 
-      {/* KO value not in formData when no default */}
-      {/* KO value in formData not updated when default */}
+      {/* OK */}
       <OdsTimepicker
         // defaultValue="12:34"
-        hasError={ error.timepicker }
+        hasError={ error.timepicker } onOdsChange={(e) => console.log(e)}
         isRequired={ true }
         name="timepicker"
         ref={ timepickerRef }

@@ -106,6 +106,7 @@ export class OdsTimepicker {
     } else {
       this.previousValue = event.detail.previousValue as string;
       this.value = event.detail.value as string;
+      setFormValue(this.internals, this.value);
     }
 
     this.odsChange.emit({

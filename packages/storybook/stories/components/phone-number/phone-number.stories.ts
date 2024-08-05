@@ -13,8 +13,8 @@ export default meta;
 export const Demo: StoryObj = {
   render: (arg) => html`
     <ods-phone-number class="my-phone-number"
-                      ariaLabel="${arg.ariaLabel}"
-                      ariaLabelledby="${arg.ariaLabelledby}"
+                      aria-label="${arg.ariaLabel}"
+                      aria-labelledby="${arg.ariaLabelledby}"
                       countries="${arg.countries ? 'all' : null}"
                       has-error="${arg.hasError}"
                       is-clearable="${arg.isClearable}"

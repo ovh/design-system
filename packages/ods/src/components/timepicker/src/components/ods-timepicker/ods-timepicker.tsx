@@ -16,6 +16,7 @@ import { formatValue, getCurrentTimezone, parseTimezones, setFormValue } from '.
 })
 export class OdsTimepicker {
   private defaultCurrentTimezone?: OdsTimezone;
+  private hasTimezones: boolean = false;
   private odsInput?: OdsInput & HTMLElement;
   private odsSelect?: OdsSelect & HTMLElement;
   private previousValue?: string | null;
@@ -66,8 +67,10 @@ export class OdsTimepicker {
   }
 
   @Watch('timezones')
-  handleTimezones(): void {
-    this.initTimezones();
+  onTimezonesChange(): void {
+    this.timezonesList = parseTimezones(this.timezones);
+    this.currentTimezone = getCurrentTimezone(this.currentTimezone, this.timezonesList);
+    this.hasTimezones = !!this.timezonesList.length;
   }
 
   @Watch('withSeconds')
@@ -85,7 +88,7 @@ export class OdsTimepicker {
     if (!this.value) {
       this.value = this.defaultValue ?? null;
     }
-    this.initTimezones();
+    this.onTimezonesChange();
     this.formatValue();
     this.defaultCurrentTimezone = this.currentTimezone;
   }
@@ -94,26 +97,17 @@ export class OdsTimepicker {
     await this.reset();
   }
 
-  private hasTimezone(): boolean {
-    return !!this.currentTimezone || !!this.timezones?.length;
-  }
-
-  private initTimezones(): void {
-    if (this.hasTimezone()) {
-      this.currentTimezone = getCurrentTimezone(this.currentTimezone);
-      this.timezonesList = parseTimezones(this.timezones);
-    }
-  }
-
   private async onOdsChange(event: OdsInputChangeEvent | OdsSelectChangeEvent, isFromSelect: boolean): Promise<void> {
     event.preventDefault();
     event.stopPropagation();
+
     if (isFromSelect) {
       this.currentTimezone = event.detail.value as OdsTimezone;
     } else {
       this.previousValue = event.detail.previousValue as string;
       this.value = event.detail.value as string;
     }
+
     this.odsChange.emit({
       currentTimezone: this.currentTimezone,
       name: this.name,
@@ -146,10 +140,11 @@ export class OdsTimepicker {
         >
         </ods-input>
         {
-          this.hasTimezone() &&
+          this.hasTimezones &&
           <ods-select
             class="ods-timepicker__timezones"
             default-value={ this.defaultCurrentTimezone }
+            dropdown-width="auto"
             part="select"
             has-error={ this.hasError }
             is-disabled={ this.isDisabled }

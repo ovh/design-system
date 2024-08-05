@@ -1,4 +1,4 @@
-import { ODS_TIMEZONE, ODS_TIMEZONES, ODS_TIMEZONES_PRESET } from '../../src';
+import { ODS_TIMEZONE, ODS_TIMEZONES, ODS_TIMEZONES_PRESET, type OdsTimezone } from '../../src';
 import { formatValue, getCurrentTimezone, parseTimezones } from '../../src/controller/ods-timepicker';
 
 describe('ods-timepicker controller', () => {
@@ -40,20 +40,23 @@ describe('ods-timepicker controller', () => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       global.Date = jest.fn(() => dateMock as any) as any;
 
-      expect(getCurrentTimezone()).toBe(ODS_TIMEZONE.UTC5);
+      expect(getCurrentTimezone(undefined, ODS_TIMEZONES as OdsTimezone[])).toBe(ODS_TIMEZONE.UTC5);
     });
 
     it('should return currentTimezone when provided', () => {
       const currentTimezoneMock = 'UTC+1';
-      expect(getCurrentTimezone(currentTimezoneMock)).toBe(currentTimezoneMock);
-    });
 
+      expect(getCurrentTimezone(currentTimezoneMock, ODS_TIMEZONES as OdsTimezone[])).toBe(currentTimezoneMock);
+    });
   });
 
   describe('parseTimezones', () => {
-    it('should return all timezones when input is undefined or ODS_TIMEZONES_PRESET.All', () => {
-      expect(parseTimezones()).toEqual(ODS_TIMEZONES);
-      expect(parseTimezones(ODS_TIMEZONES_PRESET.All)).toEqual(ODS_TIMEZONES);
+    it('should return an empty array if no arg', () => {
+      expect(parseTimezones()).toEqual([]);
+    });
+
+    it('should return all timezones when ODS_TIMEZONES_PRESET.all', () => {
+      expect(parseTimezones(ODS_TIMEZONES_PRESET.all)).toEqual(ODS_TIMEZONES);
     });
 
     it('should parse a valid JSON string of timezones', () => {

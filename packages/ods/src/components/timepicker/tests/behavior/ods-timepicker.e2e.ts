@@ -71,30 +71,20 @@ describe('ods-timepicker behavior', () => {
   });
 
   describe('watchers', () => {
-    describe('on timezones / current timezone change', () => {
+    describe('on timezones change', () => {
       it('should display select on timezones change', async() => {
         const timezonesValue = 'all';
         await setup('<ods-timepicker></ods-timepicker>');
+
         expect(select).toBeNull();
 
         await el.setProperty('timezones', timezonesValue);
         await page.waitForChanges();
 
         expect(await el.getProperty('timezones')).toBe(timezonesValue);
+
         await findSelect();
-        expect(select).not.toBeNull();
-      });
 
-      it('should display select on currentTimezone change', async() => {
-        const currentTimezoneValue = 'utc+1';
-        await setup('<ods-timepicker></ods-timepicker>');
-        expect(select).toBeNull();
-
-        await el.setProperty('currentTimezone', currentTimezoneValue);
-        await page.waitForChanges();
-
-        expect(await el.getProperty('currentTimezone')).toBe(currentTimezoneValue);
-        await findSelect();
         expect(select).not.toBeNull();
       });
     });

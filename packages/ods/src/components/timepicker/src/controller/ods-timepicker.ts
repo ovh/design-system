@@ -25,19 +25,21 @@ function formatValue(value?: string, withSeconds?: boolean): string {
   return '';
 }
 
-function getCurrentTimezone(currentTimezone?: OdsTimezone): OdsTimezone | undefined {
+function getCurrentTimezone(currentTimezone: OdsTimezone | undefined, timezones: OdsTimezone[]): OdsTimezone | undefined {
   if (!currentTimezone) {
     const browserTimezone = new Date().getTimezoneOffset() / 60 * -1;
     const parsedTimezone = browserTimezone >= 0 ? `+${browserTimezone}` : browserTimezone.toString();
-    return ODS_TIMEZONES.find((timezone) => timezone.indexOf(parsedTimezone) > -1);
+
+    return timezones.find((timezone) => timezone.indexOf(parsedTimezone) > -1);
   }
   return currentTimezone;
 }
 
 function parseTimezones(timezones?: OdsTimezone[] | ODS_TIMEZONES_PRESET | string): OdsTimezone[] {
-  if (!timezones || timezones === ODS_TIMEZONES_PRESET.All) {
+  if (timezones === ODS_TIMEZONES_PRESET.all) {
     return ODS_TIMEZONES as OdsTimezone[];
   }
+
   if (typeof timezones === 'string') {
     try {
       const parsedTimezones = JSON.parse(timezones);
@@ -49,7 +51,8 @@ function parseTimezones(timezones?: OdsTimezone[] | ODS_TIMEZONES_PRESET | strin
       return [];
     }
   }
-  return timezones;
+
+  return [];
 }
 
 function setFormValue(internals: ElementInternals, value: string | null): void {

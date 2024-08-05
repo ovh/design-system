@@ -43,11 +43,11 @@ describe('ods-timepicker rendering', () => {
     expect(select).not.toBeNull();
   });
 
-  it('should render the web component with select because of currentTimezone', async() => {
+  it('should not render the web component with select because of currentTimezone if not timezones are set', async() => {
     await setup('<ods-timepicker current-timezone="UTC+1"></ods-timepicker>');
 
     expect(el.shadowRoot).not.toBeNull();
-    expect(select).not.toBeNull();
+    expect(select).toBeNull();
   });
 
   describe('part', () => {

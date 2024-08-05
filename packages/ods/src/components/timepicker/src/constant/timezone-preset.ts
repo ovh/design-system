@@ -1,5 +1,5 @@
 enum ODS_TIMEZONES_PRESET {
-  All = 'all'
+  all = 'all'
 }
 
 type OdsTimezonePreset =`${ODS_TIMEZONES_PRESET}`;

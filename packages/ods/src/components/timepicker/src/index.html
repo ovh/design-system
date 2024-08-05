@@ -61,23 +61,23 @@
   <p>Readonly</p>
   <ods-timepicker is-readonly></ods-timepicker>
 
-  <p>with current Timezone</p>
-  <ods-timepicker current-timezone='UTC+4'></ods-timepicker>
+  <p>Disabled  Timezone</p>
+  <ods-timepicker timezones="all" is-disabled></ods-timepicker>
 
-  <p>Disabled with current Timezone</p>
-  <ods-timepicker current-timezone='UTC+4' is-disabled></ods-timepicker>
+  <p>Readonly with Timezone</p>
+  <ods-timepicker timezones="all" is-readonly></ods-timepicker>
 
-  <p>Readonly with current Timezone</p>
-  <ods-timepicker current-timezone='UTC+4' is-readonly></ods-timepicker>
+  <p>Error with Timezones</p>
+  <ods-timepicker timezones="all" has-error></ods-timepicker>
 
-  <p>Error with current Timezone</p>
-  <ods-timepicker current-timezone='UTC+4' has-error></ods-timepicker>
-
-  <p>with Timezones</p>
+  <p>With wrong Timezones</p>
   <ods-timepicker timezones='["utc-2", "utc+2", "utc+30"]'></ods-timepicker>
 
-  <p>Disabled with timezones</p>
-  <ods-timepicker is-disabled timezones='all'></ods-timepicker>
+  <p>With Timezones and current timezone</p>
+  <ods-timepicker current-timezone="UTC+4" timezones="all"></ods-timepicker>
+
+  <p>With Timezones and wrong current timezone</p>
+  <ods-timepicker current-timezone="UTC+44" timezones="all"></ods-timepicker>
 
   <p>Form</p>
   <form id="timepicker-form" target="_self">
@@ -89,7 +89,6 @@
 
   <script>
     const form = document.getElementById('timepicker-form');
-    const resetFormButton = document.getElementById('form-reset-button');
     const submitFormButton = document.getElementById('form-submit-button');
 
     submitFormButton.addEventListener('click', () => {

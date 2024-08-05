@@ -2,6 +2,7 @@ import { Component, type FunctionalComponent, Host, Prop, h } from '@stencil/cor
 
 @Component({
   shadow: true,
+  styleUrl: 'ods-medium.scss',
   tag: 'ods-medium',
 })
 export class OdsMedium {
@@ -12,13 +13,12 @@ export class OdsMedium {
 
   render(): FunctionalComponent {
     return (
-      <Host>
+      <Host class="ods-medium">
         <img
           alt={ this.alt }
           height={ this.height }
           src={ this.src }
-          width={ this.width }
-        />
+          width={ this.width } />
       </Host>
     );
   }

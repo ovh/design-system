@@ -10,6 +10,7 @@
 
     height: auto;
     resize: none;
+    font-family: inherit;
 
     &--error {
       @include input.ods-input-error();

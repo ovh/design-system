@@ -63,8 +63,6 @@
       font-weight: 600;
 
       &__bar {
-        display: flex;
-
         &::part(progress) {
           width: 100%;
         }

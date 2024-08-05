@@ -255,7 +255,7 @@ function FormNative(): ReactElement {
       {/* OK */}
       <OdsTimepicker
         // defaultValue="12:34"
-        hasError={ error.timepicker } onOdsChange={(e) => console.log(e)}
+        hasError={ error.timepicker }
         isRequired={ true }
         name="timepicker"
         ref={ timepickerRef }

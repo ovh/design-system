@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/web-components';
-import { ODS_TIMEZONES } from '@ovhcloud/ods-components';
 import { html } from 'lit-html';
 import { CONTROL_CATEGORY, orderControls } from '../../control';
 
@@ -15,10 +14,10 @@ export const Demo: StoryObj = {
   <ods-timepicker class="my-timepicker-demo"
                   aria-label="${arg.ariaLabel}"
                   aria-labelledby="${arg.ariaLabelledby}"
-                  current-timezone="${arg.currentTimezone}"
                   has-error="${arg.hasError}"
                   is-disabled="${arg.isDisabled}"
                   is-readonly="${arg.isReadonly}"
+                  timezones="${arg.timezones ? 'all' : null}"
                   with-seconds="${arg.withSeconds}">
   </ods-timepicker>
   <style>
@@ -43,15 +42,6 @@ export const Demo: StoryObj = {
         type: { summary: 'string' },
       },
       control: 'text',
-    },
-    currentTimezone: {
-      table: {
-        category: CONTROL_CATEGORY.general,
-        defaultValue: { summary: 'ø' },
-        type: { summary: ODS_TIMEZONES },
-      },
-      control: { type: 'select' },
-      options: ODS_TIMEZONES,
     },
     customCss: {
       table: {
@@ -86,15 +76,15 @@ export const Demo: StoryObj = {
       },
       control: 'boolean',
     },
-    // timezones: {
-    //   table: {
-    //     category: CONTROL_CATEGORY.general,
-    //     defaultValue: { summary: 'ø' },
-    //     type: { summary: 'string' },
-    //   },
-    //   control: { type: 'boolean' },
-    //   description: 'Toggle this to demo the "all" preset. To fine-tune the list of timezones, check the prop documentation.',
-    // },
+    timezones: {
+      table: {
+        category: CONTROL_CATEGORY.general,
+        defaultValue: { summary: 'ø' },
+        type: { summary: 'string' },
+      },
+      control: { type: 'boolean' },
+      description: 'Toggle this to demo the "all" preset. To fine-tune the list of timezones, check the prop documentation.',
+    },
     withSeconds: {
       table: {
         category: CONTROL_CATEGORY.general,
@@ -108,7 +98,7 @@ export const Demo: StoryObj = {
     hasError: false,
     isDisabled: false,
     isReadonly: false,
-    // timezones: false,
+    timezones: false,
     withSeconds: false,
   },
 };

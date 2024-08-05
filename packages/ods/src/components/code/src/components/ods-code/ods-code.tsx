@@ -1,6 +1,6 @@
 import { Component, Event, type EventEmitter, type FunctionalComponent, Host, Method, Prop, h } from '@stencil/core';
 import { copyToClipboard } from '../../../../../utils/dom';
-import { ODS_BUTTON_VARIANT } from '../../../../button/src';
+import { ODS_BUTTON_SIZE, ODS_BUTTON_VARIANT } from '../../../../button/src';
 import { ODS_ICON_NAME } from '../../../../icon/src';
 
 @Component({
@@ -42,6 +42,7 @@ export class OdsCode {
             icon={ ODS_ICON_NAME.fileCopy }
             label=""
             onClick={ () => this.copy() }
+            size={ ODS_BUTTON_SIZE.sm }
             variant={ ODS_BUTTON_VARIANT.ghost }>
           </ods-button>
         }

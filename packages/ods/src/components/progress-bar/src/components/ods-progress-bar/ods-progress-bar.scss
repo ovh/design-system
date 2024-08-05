@@ -1,5 +1,9 @@
 @use '../../../../../style/progress-bar';
 
+:host(.ods-progress-bar) {
+  display: inline-flex;
+}
+
 .ods-progress-bar {
   &__progress {
     @include progress-bar.ods-progress-bar();

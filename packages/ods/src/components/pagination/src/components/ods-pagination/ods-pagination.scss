@@ -31,6 +31,8 @@ $ods-pagination-button-width: 2.5rem;
   }
 
   &__list {
+    margin: 0;
+
     &__page,
     &__arrow {
       display: flex;

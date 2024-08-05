@@ -28,7 +28,6 @@ $ods-code-secondary-color: #000;
   }
 
   &__copy::part(button) {
-    height: input.$ods-input-input-height;
     color: $ods-code-primary-color;
     font-size: 0.833rem;
 

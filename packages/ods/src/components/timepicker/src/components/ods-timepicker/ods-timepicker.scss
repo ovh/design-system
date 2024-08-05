@@ -2,3 +2,9 @@
   display: inline-flex;
   column-gap: 8px;
 }
+
+.ods-timepicker {
+  &__timezones {
+    min-width: 89px;
+  }
+}

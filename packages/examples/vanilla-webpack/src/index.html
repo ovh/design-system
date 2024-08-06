@@ -25,18 +25,18 @@
     </ods-button>
   </form>
 
-<script>
-  const formElement = document.querySelector('form');
+  <script>
+    const formElement = document.querySelector('form');
 
-  formElement.addEventListener('submit', (e) => {
-    e.preventDefault();
+    formElement.addEventListener('submit', (e) => {
+      e.preventDefault();
 
-    const formData = new FormData(formElement)
+      const formData = new FormData(formElement)
 
-    for (const [key, value] of formData) {
-      console.log(`${key}: ${value}`)
-    }
-  });
-</script>
+      for (const [key, value] of formData) {
+        console.log(`${key}: ${value}`)
+      }
+    });
+  </script>
 </body>
 </html>

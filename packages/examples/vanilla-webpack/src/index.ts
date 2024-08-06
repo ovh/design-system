@@ -5,5 +5,5 @@ import { defineCustomElements } from '@ovhcloud/ods-components/dist/loader';
 defineCustomElements();
 
 // Use this configuration to test the "per-component" import
-// import { defineCustomElement as defineDatagrid } from '@ovhcloud/ods-components/dist/components/osds-datagrid';
-// defineDatagrid();
+// import { defineCustomElement as defineButton } from '@ovhcloud/ods-components/dist/components/ods-button';
+// defineButton();

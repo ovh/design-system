@@ -4,19 +4,6 @@ import { Meta } from '@storybook/blocks';
 
 # Get Started
 
-*Welcome, developers! We're thrilled to have you here and to assist you in starting to use the OVHcloud Design System (ODS).*
-
-*Our Design System development hub is a simple and straightforward way to get started.*
-
-> * **[Overview](#overview)**
-> * **[How to use ODS components in my project](#how-to-use-ods-components-in-my-project)**
->   * **[Installation](#installation)**
->   * **[Import components](#import-components)**
->   * **[Import components constants](#import-components-constants)**
->   * **[Import the theme](#import-the-theme)**
->   * **[Assets](#assets)**
-> * **[Contribute on ODS](#contribute-on-ods)**
-
 ## Overview
 
 OVHcloud Design System is a collection of reusable components to create a consistent user experience across OVHcloud pages and products, acting as a single source of truth.
@@ -30,17 +17,14 @@ All the OVHcloud Design System packages are available on [**NPM**](https://www.n
 ### Installation
 
 ```sh
-yarn add @ovhcloud/ods-components @ovhcloud/ods-theme-blue-jeans
+npm install --save @ovhcloud/ods-components @ovhcloud/ods-themes
 ```
 
 or
 
 ```sh
-npm install --save @ovhcloud/ods-components @ovhcloud/ods-theme-blue-jeans
+yarn add @ovhcloud/ods-components @ovhcloud/ods-themes
 ```
-
-You should add @ovhcloud/ods-common-core when you need to use Flag component. For more detail, see [Assets](#assets) section.
-You should also add @ovhcloud/ods-common-theming when you would like to use a component with an intent.
 
 ### Import components
 
@@ -59,7 +43,7 @@ If you prefer to use each components directly, you can import them separately.
 This is recommended when working on projects bundled (using webpack, rollup, ...) as it is more optimized for tree-shaking.
 
 ```typescript
-import { defineCustomElement as defineButton } from '@ovhcloud/ods-components/dist/components/osds-button';
+import { defineCustomElement as defineButton } from '@ovhcloud/ods-components/dist/components/ods-button';
 defineButton();
 ```
 
@@ -68,15 +52,12 @@ defineButton();
 To use a React version of an ODS component, you need to import it from the `react` sub directory.
 
 ```typescript
-import { OsdsButton, OsdsText } from '@ovhcloud/ods-components/react';
+import { OdsButton } from '@ovhcloud/ods-components/react';
 
 const App = () => {
   return (
-    <OsdsButton ...>
-      <OsdsText>
-        Some Button
-      </OsdsText>
-    </OsdsButton>
+    <OdsButton label="Some button">
+    </OdsButton>
   );
 };
 ```
@@ -89,23 +70,18 @@ To use a Vue version of an ODS component, you need to import it from the `vue` s
 
 ```typescript
 <template>
-  <OsdsButton ...>
-    <OsdsText>
-      Some Button
-    </OsdsText>
-  </OsdsButton>
+  <OdsButton label="Some Button">
+  </OdsButton>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { OsdsButton, OsdsText } from '@ovhcloud/ods-components/vue';
-import '@ovhcloud/ods-theme-blue-jeans';
+import { OdsButton } from '@ovhcloud/ods-components/vue';
 
 export default defineComponent({
   name: 'App',
   components: {
-    OsdsButton,
-    OsdsText,
+    OdsButton,
   },
 });
 </script>
@@ -118,53 +94,23 @@ Components are compatible with Vue 3.
 All enums, interfaces, events are available directly from the `ods-components` lib
 
 ```typescript
-import type { OdsButtonAttribute } from '@ovhcloud/ods-components'
+import type { OdsPaginationEvent } from '@ovhcloud/ods-components'
 import { ODS_BUTTON_SIZE, ODS_BUTTON_SIZES } from '@ovhcloud/ods-components';
 ```
 
 ### Import the theme
 
 You need to import a theme to display all the components correctly.
-It defines all the colors, typographies, sizes etc.
-The default theme is `blue-jeans` but you can build yours.
-
-via HTML:
-
-```html
-<link rel="stylesheet" src="./node_modules/@ovhcloud/ods-theme-blue-jeans" />
-```
+It defines all the colors, typographies, etc...
 
 via ES import:
 
 ```javascript
-import '@ovhcloud/ods-theme-blue-jeans';
+import '@ovhcloud/ods-themes/default';
 ```
 
-via css import:
+via Sass import:
 
-```css
-@import '~@ovhcloud/ods-theme-blue-jeans';
+```scss
+@import '@ovhcloud/ods-themes/default';
 ```
-
-### Assets
-
-#### Ods-flag
-
-To use the flags in your application, you'll have to copy the flags svg where you need them in your application.
-
-First, you have to setup ods by calling `odsSetup` in your application:
-
-```typescript
-import { odsSetup } from '@ovhcloud/ods-common-core';
-odsSetup();
-```
-
-Then, you have to set the path that point to the directory where the flags are located:
-
-```typescript
-Ods.instance().assetPath(`path/`);
-```
-
-## Contribute on ODS
-
-All contributions are welcome and very appreciated. Please check our section dedicated to [**Contributing**](?path=/story/contributing-get-started--page) to our Design System.

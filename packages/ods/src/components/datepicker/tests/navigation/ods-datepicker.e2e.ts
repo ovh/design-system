@@ -55,12 +55,34 @@ describe('ods-datepicker navigation', () => {
     expect(await isOpen()).toBe(true);
   });
 
+  it('should open the datepicker on icon click', async() => {
+    await setup('<ods-datepicker></ods-datepicker>');
+
+    expect(await isOpen()).toBe(false);
+
+    await (await page.find('ods-datepicker >>> .ods-datepicker__actions__icon')).click();
+    await page.waitForChanges();
+
+    expect(await isOpen()).toBe(true);
+  });
+
   it('should not open the datepicker on input click if disabled', async() => {
     await setup('<ods-datepicker is-disabled></ods-datepicker>');
 
     expect(await isOpen()).toBe(false);
 
     await (await page.find('ods-datepicker >>> input')).click();
+    await page.waitForChanges();
+
+    expect(await isOpen()).toBe(false);
+  });
+
+  it('should not open the datepicker on icon click if disabled', async() => {
+    await setup('<ods-datepicker is-disabled></ods-datepicker>');
+
+    expect(await isOpen()).toBe(false);
+
+    await (await page.find('ods-datepicker >>> .ods-datepicker__actions__icon')).click();
     await page.waitForChanges();
 
     expect(await isOpen()).toBe(false);

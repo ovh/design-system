@@ -272,7 +272,8 @@ export class OdsDatepicker {
               'ods-datepicker__actions__icon': true,
               'ods-datepicker__actions__icon--disabled': this.isDisabled,
             }}
-            name={ ODS_ICON_NAME.calendar }>
+            name={ ODS_ICON_NAME.calendar }
+            onClick={ () => this.open() }>
           </ods-icon>
         </div>
       </Host>

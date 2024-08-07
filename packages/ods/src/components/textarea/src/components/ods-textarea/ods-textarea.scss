@@ -6,7 +6,7 @@
 
 .ods-textarea {
   &__textarea {
-     @include input.ods-input();
+    @include input.ods-input();
 
     height: auto;
     resize: none;

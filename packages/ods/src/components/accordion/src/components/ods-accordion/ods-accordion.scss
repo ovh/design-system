@@ -1,10 +1,10 @@
 @use '../../../../../style/focus';
+@use '../../../../../style/state';
 
 .ods-accordion {
   &__wrapper {
     transition: .3s border-color ease-out;
-    border: 1px solid;
-    border-color: transparent;
+    border: 1px solid transparent;
     cursor: pointer;
 
     &:focus-visible {
@@ -23,20 +23,16 @@
     }
 
     &--is-disabled {
-      opacity: .5;
-      cursor: not-allowed;
+      @include state.ods-is-disabled();
 
       &:hover {
-        border-color: transparent;
-      }
-
-      &.ods-accordion__wrapper--is-open,
-      &.ods-accordion__wrapper--is-open :hover {
-        border-color: var(--ods-color-primary-500);
+        border-color: state.$ods-state-is-disabled-border-color;
       }
     }
 
     &__summary {
+      $summary: &;
+
       display: flex;
       position: relative;
       align-items: center;
@@ -58,6 +54,10 @@
 
         &:hover {
           border-color: transparent;
+        }
+
+        & #{$summary}__icon {
+          color: state.$ods-state-is-disabled-text-color;
         }
       }
 

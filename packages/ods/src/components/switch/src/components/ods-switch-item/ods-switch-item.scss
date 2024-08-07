@@ -1,4 +1,5 @@
 @use '../../../../../style/focus';
+@use '../../../../../style/state';
 
 .ods-switch-item {
   height: 100%;
@@ -27,17 +28,29 @@
     }
 
     &--disabled {
-      opacity: .5;
-      cursor: not-allowed;
+      @include state.ods-is-disabled();
     }
   }
 
   &__radio {
     display: none !important;
 
-    &:has(input[type="radio"]:checked) + .ods-switch-item__label {
-      background-color:  var(--ods-color-primary-600);
-      color:  var(--ods-color-primary-000);
+    &:has(input[type="radio"]:checked) {
+      &:not(:has(input[type="radio"]:disabled)) {
+        & + .ods-switch-item__label {
+          background-color:  var(--ods-color-primary-600);
+          color:  var(--ods-color-primary-000);
+        }
+      }
+
+      &:has(input[type="radio"]:disabled) {
+        & + .ods-switch-item__label {
+          @include state.ods-is-disabled();
+
+          background-color: var(--ods-color-neutral-500);
+          color: var(--ods-color-neutral-000);
+        }
+      }
     }
   }
 }

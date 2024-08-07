@@ -1,6 +1,6 @@
 @use 'sass:math';
 @use '../../../../../style/font';
-@use '../../../../../style/input';
+@use '../../../../../style/state';
 @use '../ods-file-upload/ods-file-upload' as file-upload;
 
 :host(.ods-file-upload-item) {
@@ -13,10 +13,10 @@
 }
 
 :host(.ods-file-upload-item--disabled) {
-  @include input.ods-input-disabled();
+  @include state.ods-is-disabled();
 
   .ods-file-upload-item__icon {
-    color: var(--ods-color-text-disabled-default);
+    color: state.$ods-state-is-disabled-text-color;
   }
 }
 

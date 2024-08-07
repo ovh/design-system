@@ -64,7 +64,7 @@ $range-z-index-dual: 1;
     background: linear-gradient($range-background-color-active, $range-background-color-active) 0 / var(--ods-range-value-percentage) 100% no-repeat, $range-background-color;
 
     &:disabled {
-      background: linear-gradient(var(--ods-color-neutral-600), var(--ods-color-neutral-600)) 0 / var(--ods-range-value-percentage) 100% no-repeat, $range-background-color;
+      background: linear-gradient(var(--ods-color-neutral-500), var(--ods-color-neutral-500)) 0 / var(--ods-range-value-percentage) 100% no-repeat, $range-background-color;
     }
   }
 
@@ -140,8 +140,8 @@ $range-z-index-dual: 1;
       background: linear-gradient(to right,
         $range-background-color 0,
         $range-background-color min(var(--ods-range-value-percentage), var(--ods-range-value-percentage-dual)),
-        var(--ods-color-neutral-600) min(var(--ods-range-value-percentage), var(--ods-range-value-percentage-dual)),
-        var(--ods-color-neutral-600) max(var(--ods-range-value-percentage), var(--ods-range-value-percentage-dual)),
+        var(--ods-color-neutral-500) min(var(--ods-range-value-percentage), var(--ods-range-value-percentage-dual)),
+        var(--ods-color-neutral-500) max(var(--ods-range-value-percentage), var(--ods-range-value-percentage-dual)),
         $range-background-color max(var(--ods-range-value-percentage), var(--ods-range-value-percentage-dual)),
         $range-background-color 100%);
     }

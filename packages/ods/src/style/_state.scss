@@ -1,0 +1,14 @@
+$ods-state-is-disabled-background-color: var(--ods-color-background-disabled-default);
+$ods-state-is-disabled-border-color: var(--ods-color-border-disabled-default);
+$ods-state-is-disabled-text-color: var(--ods-color-text-disabled-default);
+
+@mixin ods-is-disabled() {
+  border-color: $ods-state-is-disabled-border-color;
+  background-color: $ods-state-is-disabled-background-color;
+  cursor: not-allowed;
+  color : $ods-state-is-disabled-text-color;
+}
+
+@mixin ods-is-readonly() {
+  // Empty for now, no style has been yet defined
+}

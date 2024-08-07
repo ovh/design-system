@@ -6,7 +6,6 @@ import { Component, Element, Event, Host, Method, Prop, State, Watch, forceUpdat
 import { getRandomHTMLId } from '../../../../../utils/dom';
 import { ODS_BUTTON_COLOR, ODS_BUTTON_SIZE, ODS_BUTTON_VARIANT } from '../../../../button/src';
 import { ODS_ICON_NAME } from '../../../../icon/src';
-import { ODS_TEXT_PRESET } from '../../../../text/src';
 import { ODS_PAGINATION_PER_PAGE, ODS_PAGINATION_PER_PAGE_OPTIONS } from '../../constants/pagination-per-page';
 import { ELLIPSIS_THRESHOLD, MAX_VISIBLE_ITEMS, computeActualTotalPages, createPageList, getActualPage } from '../../controller/ods-pagination';
 
@@ -155,13 +154,13 @@ export class OdsPagination {
     return (
       <li class="ods-pagination__list__arrow">
         <ods-button
-          color={ODS_BUTTON_COLOR.primary}
+          color={ ODS_BUTTON_COLOR.primary }
           class="ods-pagination__list__arrow__button"
-          icon={isLeft ? ODS_ICON_NAME.chevronLeft : ODS_ICON_NAME.chevronRight}
-          id={arrowButtonId}
-          isDisabled={isArrowDisabled}
+          icon={ isLeft ? ODS_ICON_NAME.chevronLeft : ODS_ICON_NAME.chevronRight }
+          id={ arrowButtonId }
+          isDisabled={ isArrowDisabled }
           label=""
-          onClick={() => {
+          onClick={ () => {
             if (isArrowDisabled) {
               return;
             }
@@ -172,16 +171,15 @@ export class OdsPagination {
               this.handleNextClick(this.current);
             }
           }}
-          variant={ODS_BUTTON_VARIANT.ghost}
-          size={ODS_BUTTON_SIZE.md}
-        >
+          size={ ODS_BUTTON_SIZE.md }
+          variant={ ODS_BUTTON_VARIANT.ghost }>
         </ods-button>
-        {tooltipLabel && !isArrowDisabled && (
+
+        { tooltipLabel && !isArrowDisabled && (
           <ods-tooltip
-            shadowDomTriggerId={arrowButtonId}
-            triggerId={this.hostId}
-          >
-            {tooltipLabel}
+            shadowDomTriggerId={ arrowButtonId }
+            triggerId={ this.hostId }>
+            { tooltipLabel }
           </ods-tooltip>
         )}
       </li>
@@ -190,14 +188,13 @@ export class OdsPagination {
 
   private renderEllipsis(key: string): typeof Fragment {
     return (
-      <li key={key}>
+      <li key={ key }>
         <ods-button
           class="ods-pagination__list__page__ellipsis"
-          color={ODS_BUTTON_COLOR.primary}
-          isDisabled={true}
+          color={ ODS_BUTTON_COLOR.primary }
+          isDisabled={ true }
           label="&#x2026;"
-          variant={ODS_BUTTON_VARIANT.ghost}
-        >
+          variant={ ODS_BUTTON_VARIANT.ghost }>
         </ods-button>
       </li>
     );
@@ -205,7 +202,7 @@ export class OdsPagination {
 
   private renderPage(pageId: number, active: boolean): typeof Fragment {
     return (
-      <li key={pageId}>
+      <li key={ pageId }>
         <ods-button
           class={{
             'ods-pagination__list__page__button': true,
@@ -213,13 +210,12 @@ export class OdsPagination {
             'ods-pagination__list__page__button--selected': this.current === pageId,
             'ods-pagination__list__page__button--visible': active,
           }}
-          variant={this.current === pageId ? ODS_BUTTON_VARIANT.default : ODS_BUTTON_VARIANT.ghost}
-          isDisabled={this.isDisabled}
-          label={`${pageId}`}
-          color={ODS_BUTTON_COLOR.primary}
-          size={ODS_BUTTON_SIZE.md}
-          onClick={(): void => this.handlePageClick(pageId)}
-        >
+          variant={ this.current === pageId ? ODS_BUTTON_VARIANT.default : ODS_BUTTON_VARIANT.ghost }
+          isDisabled={ this.isDisabled }
+          label={ `${pageId}` }
+          color={ ODS_BUTTON_COLOR.primary }
+          size={ ODS_BUTTON_SIZE.md }
+          onClick={ (): void => this.handlePageClick(pageId) }>
         </ods-button>
       </li>
     );
@@ -239,8 +235,7 @@ export class OdsPagination {
           'ods-pagination': true,
           'ods-pagination--disabled': this.isDisabled,
         }}
-        id={this.hostId}
-      >
+        id={ this.hostId }>
         {
           !!this.totalItems &&
             <div class={{
@@ -250,42 +245,53 @@ export class OdsPagination {
               {
                 this.totalItems >= ODS_PAGINATION_PER_PAGE.option_10 &&
                   <ods-select
-                    isDisabled={this.isDisabled}
-                    onOdsChange={ (event: CustomEvent<OdsSelectChangeEventDetail>): void => this.odsChangeHandler(event)}
-                    value={`${this.itemPerPage}`}
-                    name="ods-pagination__items-per-page"
-                  >
+                    isDisabled={ this.isDisabled }
+                    onOdsChange={ (event: CustomEvent<OdsSelectChangeEventDetail>): void => this.odsChangeHandler(event) }
+                    value={ `${this.itemPerPage}` }
+                    name="ods-pagination__items-per-page">
                     {
                       ODS_PAGINATION_PER_PAGE_OPTIONS.map((option) => (
-                        <option key={option} value={option}>{option}</option>
+                        <option
+                          key={ option }
+                          value={ option }>
+                          { option }
+                        </option>
                       ))
                     }
                   </ods-select>
               }
-              <ods-text preset={ODS_TEXT_PRESET.label}>
+
+              <span class={{
+                'ods-pagination__results__label': true,
+                'ods-pagination__results__label--disabled': this.isDisabled,
+              }}>
                 <slot name="before-total-items"></slot>
-                {this.totalItems}
+
+                { this.totalItems }
+
                 <slot name="after-total-items"></slot>
-              </ods-text>
+              </span>
             </div>
         }
 
         <ul class="ods-pagination__list">
-          {this.renderArrow('left')}
+          { this.renderArrow('left') }
 
-          {(this.totalItems || this.actualTotalPages > 1) && this.renderPage(1, true)}
+          { (this.totalItems || this.actualTotalPages > 1) && this.renderPage(1, true) }
 
-          {renderEllipsisLeft && this.renderEllipsis('left')}
+          { renderEllipsisLeft && this.renderEllipsis('left') }
 
-          {this.pageList.slice(1, this.pageList.length - 1).map((page, index) => {
-            return this.renderPage(index + 2, page.active);
-          })}
+          {
+            this.pageList.slice(1, this.pageList.length - 1).map((page, index) => {
+              return this.renderPage(index + 2, page.active);
+            })
+          }
 
-          {renderEllipsisRight && this.renderEllipsis('right')}
+          { renderEllipsisRight && this.renderEllipsis('right') }
 
-          {this.actualTotalPages > 1 && this.renderPage(this.actualTotalPages, true)}
+          { this.actualTotalPages > 1 && this.renderPage(this.actualTotalPages, true) }
 
-          {this.renderArrow('right')}
+          { this.renderArrow('right') }
         </ul>
       </Host>
     );

@@ -6,8 +6,6 @@
 
 .ods-quantity {
   &__button {
-    $button: &;
-
     &::part(button) {
       position: inherit;
 

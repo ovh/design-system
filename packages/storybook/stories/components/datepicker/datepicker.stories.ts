@@ -143,7 +143,7 @@ export const DatesDisabled: StoryObj = {
 <script>
   (() => {
     const datepicker = document.querySelector('#datepicker-dates-disabled');
-    datepicker.datesDisabled = [new Date()];
+    datepicker.datesDisabled = [new Date(Date.now() - 86400000)];
   })();
 </script>
   `,

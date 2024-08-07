@@ -1,4 +1,5 @@
 @use './focus';
+@use './state';
 
 @mixin ods-radio() {
   appearance: none;
@@ -30,11 +31,12 @@
   }
 
   &:disabled {
-    cursor: not-allowed;
+    @include state.ods-is-disabled();
 
     &:checked {
-      border: 1px solid var(--ods-color-neutral-200);
-      background-color: var(--ods-color-neutral-200);
+      &::before {
+        background-color: state.$ods-state-is-disabled-text-color;
+      }
     }
   }
 

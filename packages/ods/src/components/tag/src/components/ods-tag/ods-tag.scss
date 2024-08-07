@@ -1,4 +1,5 @@
 @use '../../../../../style/font';
+@use '../../../../../style/state';
 @use '../../../../../style/tag';
 
 :host(.ods-tag) {
@@ -34,10 +35,7 @@
     }
 
     &--disabled {
-      border-color: var(--ods-color-neutral-300);
-      background-color: var(--ods-color-neutral-300);
-      cursor: not-allowed;
-      color: var(--ods-color-neutral-600);
+      @include state.ods-is-disabled();
     }
 
     &--md {

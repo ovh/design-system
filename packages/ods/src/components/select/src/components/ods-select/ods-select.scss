@@ -3,6 +3,7 @@
 @use '../../../../../style/icon';
 @use '../../../../../style/input';
 @use '../../../../../style/overlay';
+@use '../../../../../style/state';
 @import '~tom-select/dist/css/tom-select.bootstrap4.min.css';
 
 $select-background-color: #fff;
@@ -36,7 +37,7 @@ $select-padding-right: $select-caret-size + ($select-base-padding * 2);
 
   .disabled {
     .ts-control {
-      @include input.ods-input-disabled();
+      @include state.ods-is-disabled();
 
       opacity: 1;
       cursor: not-allowed !important;
@@ -87,7 +88,7 @@ $select-padding-right: $select-caret-size + ($select-base-padding * 2);
       color: var(--ods-color-text);
 
       &:not([data-selectable]) {
-        @include input.ods-input-disabled();
+        @include state.ods-is-disabled();
 
         opacity: 1;
       }
@@ -113,9 +114,21 @@ $select-padding-right: $select-caret-size + ($select-base-padding * 2);
       }
 
       &[data-disabled] {
-        @include input.ods-input-disabled();
+        .optgroup-header {
+          @include state.ods-is-disabled();
 
-        opacity: 1;
+          opacity: 1;
+        }
+
+        .option {
+          @include state.ods-is-disabled();
+
+          opacity: 1;
+
+          &:hover {
+            background-color: state.$ods-state-is-disabled-background-color;
+          }
+        }
       }
 
       .optgroup-header {
@@ -199,7 +212,7 @@ $select-padding-right: $select-caret-size + ($select-base-padding * 2);
         }
 
         .ts-merged-items {
-          @include input.ods-input-disabled();
+          @include state.ods-is-disabled();
         }
       }
     }
@@ -223,7 +236,7 @@ $select-padding-right: $select-caret-size + ($select-base-padding * 2);
 
     &.readonly {
       .ts-control {
-        @include input.ods-input-readonly();
+        @include state.ods-is-readonly();
       }
     }
   }

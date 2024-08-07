@@ -1,4 +1,5 @@
 @use '../../../../../style/focus';
+@use '../../../../../style/state';
 
 :host(.ods-tab) {
   display: block;
@@ -23,8 +24,14 @@
 }
 
 :host(.ods-tab--disabled) {
-  cursor: not-allowed;
-  color: var(--ods-color-neutral-600);
+  @include state.ods-is-disabled();
+
+  border-color: var(--ods-color-neutral-100);
+  background-color: inherit;
+}
+
+:host(.ods-tab--disabled.ods-tab--selected) {
+  border-color: var(--ods-color-neutral-500);
 }
 
 :host(.ods-tab--selected:not(.ods-tab--disabled)) {

@@ -1,4 +1,5 @@
 @use '../../../../../style/link';
+@use '../../../../../style/state';
 
 .ods-link {
   &__link {
@@ -13,9 +14,9 @@
     }
 
     &--disabled {
-      opacity: .5;
-      cursor: not-allowed;
-      color: var(--ods-color-neutral-400);
+      @include state.ods-is-disabled();
+
+      background-color: inherit;
 
       &:focus-visible,
       &:hover {

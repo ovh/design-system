@@ -1,4 +1,5 @@
 @use '../../../../../style/focus';
+@use '../../../../../style/state';
 
 .ods-toggle {
   &__container {
@@ -39,11 +40,14 @@
       }
 
       &--disabled {
-        background-color: var(--ods-color-neutral-100);
-        cursor: not-allowed;
+        @include state.ods-is-disabled();
+
+        &::before {
+          box-shadow: none;
+        }
 
         & #{$slider}__label {
-          color: var(--ods-color-neutral-600);
+          color: state.$ods-state-is-disabled-text-color;
         }
       }
 

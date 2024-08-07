@@ -1,5 +1,6 @@
 @use './focus';
 @use './icon';
+@use './state';
 
 $ods-checkbox-size: 16px;
 
@@ -42,11 +43,10 @@ $ods-checkbox-size: 16px;
   }
 
   &:disabled {
-    border-color: var(--ods-color-neutral-200);
-    cursor: not-allowed;
+    @include state.ods-is-disabled();
 
-    &:checked, &:indeterminate {
-      background: var(--ods-color-neutral-200);
+    &::before {
+      color: state.$ods-state-is-disabled-text-color;
     }
   }
 

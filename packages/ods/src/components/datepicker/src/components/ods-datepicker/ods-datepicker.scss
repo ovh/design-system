@@ -1,5 +1,6 @@
 @use '../../../../../style/focus';
 @use '../../../../../style/input';
+@use '../../../../../style/state';
 @import '~vanillajs-datepicker/dist/css/datepicker.min.css';
 
 $ods-datepicker-item-size: 36px;
@@ -19,7 +20,7 @@ $ods-datepicker-clearable-button-size: input.$ods-input-actions-button-width;
 
   &.disabled {
     cursor: not-allowed;
-    color: var(--ods-color-neutral-100);
+    color: state.$ods-state-is-disabled-text-color;
   }
 
   &.focused {
@@ -148,7 +149,7 @@ $ods-datepicker-clearable-button-size: input.$ods-input-actions-button-width;
 
         .next-button:disabled,
         .prev-button:disabled {
-          color: var(--ods-color-neutral-100);
+          color: state.$ods-state-is-disabled-text-color;
 
           &:hover {
             background-color: inherit;

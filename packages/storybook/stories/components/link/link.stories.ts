@@ -187,7 +187,8 @@ export const Target: StoryObj = {
 export const CustomCSSLink: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
-<ods-link class="my-link" href="/page" label="Content"></ods-link>
+<ods-link class="my-link" href="https://www.ovhcloud.com/" label="Content"></ods-link>
+
 <style>
   .my-link::part(link) {
     color: green;

@@ -1,5 +1,5 @@
 import { Component, Event, type EventEmitter, type FunctionalComponent, Host, Prop, h } from '@stencil/core';
-import { type OdsIconName } from '../../../../icon/src/constants/icon-name';
+import { type OdsIconName } from '../../../../icon/src';
 
 @Component({
   shadow: true,

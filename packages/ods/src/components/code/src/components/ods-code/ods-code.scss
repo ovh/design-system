@@ -31,6 +31,7 @@ $ods-code-secondary-color: #000;
     color: $ods-code-primary-color;
     font-size: 0.833rem;
 
+    &:focus-visible,
     &:hover {
       background-color: var(--ods-color-neutral-600);
     }

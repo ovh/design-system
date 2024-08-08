@@ -46,14 +46,23 @@ $range-z-index-dual: 1;
   &:focus-visible {
     &::-webkit-slider-thumb {
       @include focus.ods-focus();
+
+      border-color: var(--ods-color-primary-200);
+      background-color: var(--ods-color-primary-200);
     }
 
     &::-moz-range-thumb {
       @include focus.ods-focus();
+
+      border-color: var(--ods-color-primary-200);
+      background-color: var(--ods-color-primary-200);
     }
 
     &::-ms-thumb {
       @include focus.ods-focus();
+
+      border-color: var(--ods-color-primary-200);
+      background-color: var(--ods-color-primary-200);
     }
   }
 

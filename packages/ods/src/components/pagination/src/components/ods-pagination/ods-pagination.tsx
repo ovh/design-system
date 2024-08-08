@@ -226,8 +226,8 @@ export class OdsPagination {
       return;
     }
 
-    const renderEllipsisLeft = this.current > ELLIPSIS_THRESHOLD && this.actualTotalPages > MAX_VISIBLE_ITEMS;
-    const renderEllipsisRight = this.current < this.actualTotalPages - ELLIPSIS_THRESHOLD + 1 && this.actualTotalPages > MAX_VISIBLE_ITEMS;
+    const renderEllipsisLeft = this.current > ELLIPSIS_THRESHOLD && this.actualTotalPages >= MAX_VISIBLE_ITEMS;
+    const renderEllipsisRight = this.current < this.actualTotalPages - ELLIPSIS_THRESHOLD + 1 && this.actualTotalPages >= MAX_VISIBLE_ITEMS;
 
     return (
       <Host

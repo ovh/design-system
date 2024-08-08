@@ -74,6 +74,20 @@
 
       &:focus + .ods-toggle__container__slider {
         @include focus.ods-focus();
+
+        background-color: var(--ods-color-neutral-300);
+
+        .ods-toggle__container__slider__label {
+          color: var(--ods-color-neutral-800);
+        }
+      }
+
+      &:focus:checked + :not(.ods-toggle__container__slider--disabled).ods-toggle__container__slider {
+        background-color: var(--ods-color-primary-700);
+
+        .ods-toggle__container__slider__label {
+          color: var(--ods-color-neutral-000);
+        }
       }
 
       &:checked {

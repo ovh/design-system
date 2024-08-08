@@ -24,6 +24,12 @@
 
   &:focus-visible, &:focus {
     @include focus.ods-focus();
+
+    border-color: var(--ods-color-form-element-border-focus-default);
+  }
+
+  &:hover {
+    border-color: var(--ods-color-form-element-border-hover-default);
   }
 
   &:checked::before {
@@ -41,10 +47,11 @@
   }
 
   &:not(:disabled):checked {
-    border: 1px solid var(--ods-color-primary-500);
+    border-color: var(--ods-color-primary-500);
     background-color: var(--ods-color-primary-500);
 
     &:hover {
+      border-color: var(--ods-color-primary-700);
       background-color: var(--ods-color-primary-700);
     }
   }

@@ -6,11 +6,23 @@
 
 .ods-textarea {
   &__textarea {
+    $textarea: &;
+
     @include input.ods-input();
 
     height: auto;
     resize: none;
     font-family: inherit;
+
+    &:not(#{$textarea}--error, :disabled) {
+      &:focus {
+        border-color: var(--ods-color-form-element-border-focus-default);
+      }
+
+      &:hover {
+        border-color: var(--ods-color-form-element-border-hover-default);
+      }
+    }
 
     &--error {
       @include input.ods-input-error();

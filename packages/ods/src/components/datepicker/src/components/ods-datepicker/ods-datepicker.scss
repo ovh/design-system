@@ -50,6 +50,16 @@ $ods-datepicker-clearable-button-size: input.$ods-input-actions-button-width;
 
     padding-right: input.$ods-input-input-padding-right;
 
+    &:not(#{$input}--error, :disabled) {
+      &:focus {
+        border-color: var(--ods-color-form-element-border-focus-default);
+      }
+
+      &:hover {
+        border-color: var(--ods-color-form-element-border-hover-default);
+      }
+    }
+
     &:not(:disabled)#{$input}--error {
       @include input.ods-input-error();
 
@@ -109,6 +119,7 @@ $ods-datepicker-clearable-button-size: input.$ods-input-actions-button-width;
       }
 
       &:not(:disabled, &--readonly) {
+        &:focus-visible,
         &:hover {
           background-color: var(--ods-color-neutral-100);
         }

@@ -28,6 +28,12 @@ $ods-checkbox-size: 16px;
 
   &:focus-visible, &:focus {
     @include focus.ods-focus();
+
+    border-color: var(--ods-color-form-element-border-focus-default);
+  }
+
+  &:hover {
+    border-color: var(--ods-color-form-element-border-hover-default);
   }
 
   &:checked {

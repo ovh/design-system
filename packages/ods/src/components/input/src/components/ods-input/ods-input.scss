@@ -47,6 +47,7 @@
       font-size: 0.75rem;
 
       &:not(:disabled, &--readonly) {
+        &:focus-visible,
         &:hover {
           background-color: var(--ods-color-neutral-100);
         }
@@ -64,6 +65,7 @@
       &:not(:disabled) {
         color: var(--ods-color-primary-500);
 
+        &:focus-visible,
         &:hover {
           background-color: var(--ods-color-primary-100);
         }

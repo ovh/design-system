@@ -30,6 +30,10 @@ $select-padding-right: $select-caret-size + ($select-base-padding * 2);
     height: input.$ods-input-input-height;
     min-height: auto;
 
+    &:hover {
+      border-color: var(--ods-color-form-element-border-hover-default);
+    }
+
     .item {
       @include ods-select-item();
     }
@@ -59,6 +63,7 @@ $select-padding-right: $select-caret-size + ($select-base-padding * 2);
     .ts-control {
       @include focus.ods-focus();
 
+      border-color: var(--ods-color-form-element-border-focus-default);
       box-shadow: none;
     }
   }

@@ -17,6 +17,7 @@
 
   z-index: 1;
   outline-offset: 0;
+  border-color: var(--ods-color-neutral-300);
 }
 
 :host(.ods-tab:hover:not(.ods-tab--disabled, .ods-tab--selected)) {

@@ -95,15 +95,15 @@ $range-z-index-dual: 1;
 
   &:not(:disabled)#{$range}--error {
     &::-webkit-slider-thumb {
-      border-color: var(--ods-form-element-border-color-critical);
+      border-color: var(--ods-color-form-element-border-critical);
     }
 
     &::-moz-range-thumb {
-      border-color: var(--ods-form-element-border-color-critical);
+      border-color: var(--ods-color-form-element-border-critical);
     }
 
     &::-ms-thumb {
-      border-color: var(--ods-form-element-border-color-critical);
+      border-color: var(--ods-color-form-element-border-critical);
     }
   }
 }

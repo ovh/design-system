@@ -30,6 +30,7 @@ $ods-link-font-weight: 600;
   @if $color == 'primary' {
     color: var(--ods-color-primary-500);
 
+    &:focus-visible,
     &:hover {
       color: var(--ods-color-primary-700);
     }

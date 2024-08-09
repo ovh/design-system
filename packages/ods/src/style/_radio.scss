@@ -22,7 +22,7 @@
     content: "";
   }
 
-  &:focus-visible, &:focus {
+  &:focus-visible {
     @include focus.ods-focus();
 
     border-color: var(--ods-color-form-element-border-focus-default);
@@ -50,6 +50,7 @@
     border-color: var(--ods-color-primary-500);
     background-color: var(--ods-color-primary-500);
 
+    &:focus-visible,
     &:hover {
       border-color: var(--ods-color-primary-700);
       background-color: var(--ods-color-primary-700);

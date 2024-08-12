@@ -4186,6 +4186,7 @@ __metadata:
     "@storybook/web-components-vite": 8.0.4
     lit: 3.1.2
     lit-html: 3.1.2
+    node-fetch: 2.7.0
     prop-types: 15.8.1
     react: 18.2.0
     storybook: 8.0.4

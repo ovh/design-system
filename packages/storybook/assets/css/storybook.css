@@ -22,3 +22,13 @@ button[title="Shortcuts"] {
   text-transform: none;
   color: #00175C;
 }
+
+.sidebar-header {
+  display: grid !important;
+  grid-template-columns: 1fr max-content;
+}
+
+/* select the brand image */
+.sidebar-header > div:first-of-type {
+  grid-column: span 2;
+}

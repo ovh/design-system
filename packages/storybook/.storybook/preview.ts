@@ -112,7 +112,7 @@ const preview: Preview = {
           'OVHcloud Design System',
           ['Welcome', 'Get Started', 'What\'s new?',
             ['What\'s new', 'Changelog', 'Migration guide'],
-            'Design tokens',
+            'Design and Style',
           ],
           'ODS Components',
           ['Gallery', 'Form elements'],

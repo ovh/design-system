@@ -6,8 +6,9 @@
   "license": "Apache-2.0",
   "main": "index.js",
   "scripts": {
-    "build:storybook": "storybook build -o dist",
-    "start": "storybook dev -p 6006"
+    "build:storybook": "npm run generate:versions && storybook build -o dist",
+    "generate:versions": "node scripts/generate-version-list.js 'assets/ods-versions.json'",
+    "start": "npm run generate:versions && storybook dev -p 6006"
   },
   "dependencies": {
     "@ovhcloud/ods-components": "17.2.2",
@@ -23,6 +24,7 @@
     "@storybook/web-components-vite": "8.0.4",
     "lit": "3.1.2",
     "lit-html": "3.1.2",
+    "node-fetch": "2.7.0",
     "prop-types": "15.8.1",
     "storybook": "8.0.4",
     "typescript": "5.3.3"

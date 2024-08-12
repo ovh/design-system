@@ -54,3 +54,14 @@ You'll find the value of each icon content in the `style.css` file in the icomoo
 (you can found them using a search on `@include icon.ods-icon();` in the `ods/src/components` directory)
 
 /!\ Please check also the icon tags list on the storybook icon story (`storybook/stories/components/icon/icon.stories.ts`).
+
+## How to update theme generated variables?
+
+In each themes, there is a list of variables that comes from FIGMA. This list is generated and should not be updated manually.
+
+If some changes have been done on the FIGMA side, you can sync those back using the `design-tokens` workflow on the CI tool.
+
+At the end of the workflow you can download the generated archive and replace the `_variables.scss` file content
+with the newly generated list.
+
+/!\ The list may not be correctly sorted, so you may need to manually reorder it.

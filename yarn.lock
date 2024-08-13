@@ -4164,6 +4164,7 @@ __metadata:
     tom-select: 2.3.1
     ts-jest: 29.1.2
     ts-node: 10.9.2
+    tslib: 2.6.3
     typedoc: 0.25.11
     typescript: 5.3.3
     vanillajs-datepicker: 1.3.4
@@ -21312,6 +21313,13 @@ __metadata:
     minimist: ^1.2.6
     strip-bom: ^3.0.0
   checksum: 59f35407a390d9482b320451f52a411a256a130ff0e7543d18c6f20afab29ac19fbe55c360a93d6476213cc335a4d76ce90f67df54c4e9037f7d240920832201
+  languageName: node
+  linkType: hard
+
+"tslib@npm:2.6.3":
+  version: 2.6.3
+  resolution: "tslib@npm:2.6.3"
+  checksum: 74fce0e100f1ebd95b8995fbbd0e6c91bdd8f4c35c00d4da62e285a3363aaa534de40a80db30ecfd388ed7c313c42d930ee0eaf108e8114214b180eec3dbe6f5
   languageName: node
   linkType: hard
 

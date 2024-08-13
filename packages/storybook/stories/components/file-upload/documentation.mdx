@@ -1,8 +1,7 @@
 import { Canvas, Markdown, Meta } from '@storybook/blocks';
 import { Banner } from '../../banner';
 import * as FileUploadStories from './file-upload.stories';
-import { OdsIcon } from '@ovhcloud/ods-components/react';
-import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
+import { ATOMIC_TYPE, IdentityCard } from '../../identity-card';
 
 <Meta of={ FileUploadStories } name='Documentation' />
 
@@ -13,55 +12,28 @@ _**File Upload** allows users to select one or more files to upload to a specifi
 <Canvas of={ FileUploadStories.Overview } sourceState='none' />
 
 ## Overview
-<div>
-  <div id='description'>
+
+<div className="documentation-overview">
+  <div>
     The **File Upload** component is used to enable users to upload files to a server or application.
 
     It provides a way to browse, select, and upload files, and is accompanied by progress indicators and feedback
     messages to guide users through the process.
   </div>
 
-  <table>
-    <tbody>
-    <tr>
-      <th scope="row">Name</th>
-      <td><strong>File Upload</strong></td>
-    </tr>
-    <tr>
-      <th scope="row">Also known as</th>
-      <td><em>File input, File uploader, Dropzone</em></td>
-    </tr>
-    <tr>
-      <th scope="row">Atomic type</th>
-      <td>
-        <a href='https://atomicdesign.bradfrost.com/chapter-2/#organisms'>Organism<OdsIcon
-          name={ ODS_ICON_NAME.externalLink }
-          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">Related component(s)</th>
-      <td>
-        [**Icon**](?path=/docs/ods-components-icon--documentation),
-        [**Button**](?path=/docs/ods-components-button--documentation),
-        [**Divider**](?path=/docs/ods-components-divider--documentation), [**Progress
-        Bar**](?path=/docs/ods-components-progress-bar--documentation),
-        [**Text**](?path=/docs/ods-components-text--documentation)
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">Links</th>
-      <td>
-        <a href='https://www.figma.com/proto/tIKzHa5KvHHyosgIgyBswB/Design-Tokens'>Design<OdsIcon
-          name={ ODS_ICON_NAME.externalLink }
-          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a><br />
-        <a href='https://github.com/ovh/design-system/tree/master/packages/components/src/file-upload'>Github<OdsIcon
-          name={ ODS_ICON_NAME.externalLink }
-          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
-      </td>
-    </tr>
-    </tbody>
-  </table>
+  <IdentityCard aliases={ ['File input', 'File uploader', 'Dropzone'] }
+                atomicType={ ATOMIC_TYPE.organism }
+                className="documentation-overview__table"
+                figmaLink="https://www.figma.com/proto/tIKzHa5KvHHyosgIgyBswB/Design-Tokens"
+                githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/file-upload"
+                name="File Upload"
+                relatedComponents={[
+                  { name: 'Button' },
+                  { name: 'Divider' },
+                  { name: 'Icon' },
+                  { name: 'Progress Bar' },
+                  { name: 'Text' },
+                ]} />
 </div>
 
 ## Anatomy
@@ -87,7 +59,7 @@ Common use cases include form submissions, profile picture updates, and document
 
 ### Dos & Don'ts
 
-<Markdown>
+<Markdown className="documentation-do-table">
   { `
 | ✅ Do                                                                                                                                                                           |
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -97,7 +69,8 @@ Common use cases include form submissions, profile picture updates, and document
 | - Explain clearly the error context when an error occurred                                                                                                                     |
 ` }
 </Markdown>
-<Markdown>
+
+<Markdown className="documentation-dont-table">
   { `
 | ❌ Don't                                                                                                                                                                          |
 |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -112,19 +85,18 @@ Common use cases include form submissions, profile picture updates, and document
 **File Upload** has an automatic default width, based on its content.
 
 ## Behavior
-### Selecting files
 
+### Selecting files
 
 When selecting the "Browse" [**Button**](?path=/docs/ods-components-button--documentation), the native file selection popup opens to retrieve the needed file to upload.
 
 ### Drag & Drop
 
-
 Users can drag & drop a file, the drop zone being the whole **File Upload** component.
 
 ### Uploading files
-#### With known size
 
+#### With known size
 
 When a file upload is in progress, the file name and its size are displayed.
 
@@ -134,17 +106,15 @@ A close icon [**Button**](?path=/docs/ods-components-button--documentation) is d
 
 #### With unknown size
 
-
 In some situations, file size is hidden in the uploading process due to an unknown file size.
 
 ### Upload complete
-#### With success
 
+#### With success
 
 A `success` [**Text**](?path=/docs/ods-components-text--documentation) is displayed, replacing the previous [**Progress Bar**](?path=/docs/ods-components-progress-bar--documentation), as soon as a file has been uploaded, meaning the upload is successful and complete.
 
 #### With error
-
 
 If the uploading of a file went wrong, a specific `error` [**Text**](?path=/docs/ods-components-text--documentation) is displayed below the uploaded file.
 
@@ -157,10 +127,10 @@ When a file is in `error` and the user uploads a file without any issue, success
 Depending on the error, the global component can be displayed in an error state.
 
 ### Extra behavior
+
 #### Global configuration / error
 
 Number of files, maximum sizes and expected formats can be set globally inside the component.
-
 
 A global `error` [**Text**](?path=/docs/ods-components-text--documentation) and a [**Divider**](?path=/docs/ods-components-divider--documentation) are displayed when:
 * Wrong file format has been uploaded
@@ -170,7 +140,6 @@ A global `error` [**Text**](?path=/docs/ods-components-text--documentation) and 
 The global component is displayed in an error state in this situation.
 
 #### Disabled
-
 
 When **File Upload** is disabled, user cannot interact with the [**Button**](?path=/docs/ods-components-button--documentation) and drag & drop feature is not available.
 

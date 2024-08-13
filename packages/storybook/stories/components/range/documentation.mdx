@@ -1,8 +1,7 @@
 import { Canvas, Markdown, Meta } from '@storybook/blocks';
 import { Banner } from '../../banner';
 import * as RangeStories from './range.stories';
-import { OdsIcon } from '@ovhcloud/ods-components/react';
-import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
+import { ATOMIC_TYPE, IdentityCard } from '../../identity-card';
 
 <Meta of={ RangeStories } name='Documentation' />
 
@@ -13,52 +12,23 @@ _**Range** component is used to allow users to visually select one or more value
 <Canvas of={ RangeStories.Overview } sourceState='none' />
 
 ## Overview
-<div>
-  <div id='description'>
+
+<div className="documentation-overview">
+  <div>
     The **Range** component is used for selecting a numerical value or a range of values within a specified range.
 
     It provides a visual and interactive way to adjust values, often used in forms, settings, and data filtering.
 
     The component can support single-value sliders or dual-handle sliders for selecting ranges.
   </div>
-  <table>
-    <tbody>
-    <tr>
-      <th scope="row">Name</th>
-      <td><strong>Range</strong></td>
-    </tr>
-    <tr>
-      <th scope="row">Also known as</th>
-      <td><em>Slider</em></td>
-    </tr>
-    <tr>
-      <th scope="row">Atomic type</th>
-      <td>
-        <a href='https://atomicdesign.bradfrost.com/chapter-2/#atoms'>Atom<OdsIcon
-          name={ ODS_ICON_NAME.externalLink }
-          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">Related component(s)</th>
-      <td>
-        [**Form Field**](?path=/docs/ods-components-form-elements-form-field--documentation),
-        [**Input**](?path=/docs/ods-components-form-elements-input--documentation)
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">Links</th>
-      <td>
-        <a href='https://www.figma.com/proto/tIKzHa5KvHHyosgIgyBswB/Design-Tokens'>Design<OdsIcon
-          name={ ODS_ICON_NAME.externalLink }
-          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a><br />
-        <a href='https://github.com/ovh/design-system/tree/master/packages/components/src/range'>Github<OdsIcon
-          name={ ODS_ICON_NAME.externalLink }
-          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
-      </td>
-    </tr>
-    </tbody>
-  </table>
+
+  <IdentityCard aliases={ ['Slider'] }
+                atomicType={ ATOMIC_TYPE.atom }
+                className="documentation-overview__table"
+                figmaLink="https://www.figma.com/proto/tIKzHa5KvHHyosgIgyBswB/Design-Tokens"
+                githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/range"
+                name="Range"
+                relatedComponents={ [{ name: 'Form Field', subtitle: 'Form elements' }, { name: 'Input', subtitle: 'Form elements' }] } />
 </div>
 
 ## Anatomy
@@ -81,7 +51,8 @@ It is easily adjustable in a visually pleasing interface and, after interacting 
 A dual **Range** allows the user to select a numeric range value that is no less than a given value, and no more than another given value.
 
 ### Dos & Don'ts
-<Markdown>
+
+<Markdown className="documentation-do-table">
   { `
 | ✅ Do                                                                                                                                                                                         |
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------               |
@@ -90,7 +61,8 @@ A dual **Range** allows the user to select a numeric range value that is no less
 | - Add a default numeric value                                                                                                                                                                |
 ` }
 </Markdown>
-<Markdown>
+
+<Markdown className="documentation-dont-table">
   { `
 | ❌ Don't                                                                                                                                                                          |
 |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

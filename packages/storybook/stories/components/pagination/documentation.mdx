@@ -1,8 +1,7 @@
 import { Canvas, Meta, Markdown } from '@storybook/blocks';
 import { Banner } from '../../banner';
 import * as PaginationStories from './pagination.stories';
-import { OdsIcon } from '@ovhcloud/ods-components/react';
-import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
+import { ATOMIC_TYPE, IdentityCard } from '../../identity-card';
 
 <Meta of={ PaginationStories } name='Documentation' />
 
@@ -14,53 +13,26 @@ _A **Pagination** component allows users to navigate through large sets of data 
 
 ## Overview
 
-<div>
-  <div id='description'>
+<div className="documentation-overview">
+  <div>
     The **Pagination** component is used to divide content into discrete pages and provide navigation controls to move between them.
 
     This component enhances usability by allowing users to browse through large sets of data without overwhelming the interface.
 
     **Pagination** can include various controls like next/previous buttons and page numbers.
   </div>
-  <table>
-    <tbody>
-    <tr>
-      <th scope="row">Name</th>
-      <td><strong>Pagination</strong></td>
-    </tr>
-    <tr>
-      <th scope="row">Also known as</th>
-      <td><em>Page navigation</em></td>
-    </tr>
-    <tr>
-      <th scope="row">Atomic type</th>
-      <td>
-        <a href='https://atomicdesign.bradfrost.com/chapter-2/#molecules'>Molecule<OdsIcon
-          name={ ODS_ICON_NAME.externalLink }
-          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">Related component(s)</th>
-      <td>
-        [**Button**](?path=/docs/ods-components-button--documentation),
-        [**Select**](?path=/docs/ods-components-form-elements-select--documentation),
-        [**Tooltip**](?path=/docs/ods-components-tooltip--documentation)
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">Links</th>
-      <td>
-        <a href='https://www.figma.com/proto/tIKzHa5KvHHyosgIgyBswB/Design-Tokens'>Design<OdsIcon
-          name={ ODS_ICON_NAME.externalLink }
-          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a><br />
-        <a href='https://github.com/ovh/design-system/tree/master/packages/components/src/pagination'>Github<OdsIcon
-          name={ ODS_ICON_NAME.externalLink }
-          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
-      </td>
-    </tr>
-    </tbody>
-  </table>
+
+  <IdentityCard aliases={ ['Page navigation'] }
+                atomicType={ ATOMIC_TYPE.molecule }
+                className="documentation-overview__table"
+                figmaLink="https://www.figma.com/proto/tIKzHa5KvHHyosgIgyBswB/Design-Tokens"
+                githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/pagination"
+                name="Pagination"
+                relatedComponents={[
+                  { name: 'Button' },
+                  { name: 'Select', subtitle: 'Form elements' },
+                  { name: 'Tooltip' },
+                ]} />
 </div>
 
 ## Anatomy
@@ -82,7 +54,8 @@ A **Pagination** component is used in two situations :
 * To browse in a set of items (products list, ...)
 
 ### Dos & Don'ts
-<Markdown>
+
+<Markdown className="documentation-do-table">
   { `
 | ✅ Do                                                                                                                                                                           |
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -90,7 +63,8 @@ A **Pagination** component is used in two situations :
 | - When using Pagination, please display preferably ~25 items of the related set on each page                                                                                                         |
 ` }
 </Markdown>
-<Markdown>
+
+<Markdown className="documentation-dont-table">
   { `
 | ❌ Don't                                                                                                                                                                          |
 |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

@@ -1,8 +1,7 @@
 import { Canvas, Markdown, Meta } from '@storybook/blocks';
 import { Banner } from '../../banner';
 import * as ButtonStories from './button.stories';
-import { OdsIcon } from '@ovhcloud/ods-components/react';
-import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
+import { ATOMIC_TYPE, IdentityCard } from '../../identity-card';
 
 <Meta of={ ButtonStories } name='Documentation' />
 
@@ -14,8 +13,8 @@ _A **Button** component aims to initiate an action. Its [**Text**](?path=/docs/o
 
 ## Overview
 
-<div>
-  <div id='description'>
+<div className="documentation-overview">
+  <div>
     **Buttons** are triggerable elements that are used to set actions. They communicate calls to action to the user and
     allow them to interact with pages.
 
@@ -25,45 +24,14 @@ _A **Button** component aims to initiate an action. Its [**Text**](?path=/docs/o
     This component exists in many ways : variants, sizes and colors.
   </div>
 
-  <table>
-    <tbody>
-    <tr>
-      <th scope="row">Name</th>
-      <td><strong>Button</strong></td>
-    </tr>
-    <tr>
-      <th scope="row">Also known as</th>
-      <td><em>Call To Action, CTA</em></td>
-    </tr>
-    <tr>
-      <th scope="row">Atomic type</th>
-      <td>
-        <a href='https://atomicdesign.bradfrost.com/chapter-2/#atoms'>Atom<OdsIcon
-          name={ ODS_ICON_NAME.externalLink }
-          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">Related component(s)</th>
-      <td>
-        [**Icon**](?path=/docs/ods-components-icon--documentation)
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">Links</th>
-      <td>
-        <a href='https://www.figma.com/proto/tIKzHa5KvHHyosgIgyBswB/Design-Tokens'>Design<OdsIcon
-          name={ ODS_ICON_NAME.externalLink }
-          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a><br />
-        <a href='https://github.com/ovh/design-system/tree/master/packages/components/src/button'>Github<OdsIcon
-          name={ ODS_ICON_NAME.externalLink }
-          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
-      </td>
-    </tr>
-    </tbody>
-  </table>
+  <IdentityCard aliases={ ['Call To Action', 'CTA'] }
+                atomicType={ ATOMIC_TYPE.atom }
+                className="documentation-overview__table"
+                figmaLink="https://www.figma.com/proto/tIKzHa5KvHHyosgIgyBswB/Design-Tokens"
+                githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/button"
+                name="Button"
+                relatedComponents={ [{ name: 'Icon' }] } />
 </div>
-
 
 ## Anatomy
 
@@ -82,7 +50,7 @@ A **Button** label indicates what happens when the user taps the **Button**, eve
 
 ### Dos & Don'ts
 
-<Markdown>
+<Markdown className="documentation-do-table">
   { `
 | ✅ Do                                                                                                                                                                           |
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -91,7 +59,7 @@ A **Button** label indicates what happens when the user taps the **Button**, eve
 ` }
 </Markdown>
 
-<Markdown>
+<Markdown className="documentation-dont-table">
   { `
 | ❌ Don't                                                                                                                                                                                                           |
 |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------                                  |

@@ -1,8 +1,7 @@
 import { Canvas, Markdown, Meta } from '@storybook/blocks';
 import { Banner } from '../../banner';
 import * as QuantityStories from './quantity.stories';
-import { OdsIcon } from '@ovhcloud/ods-components/react';
-import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
+import { ATOMIC_TYPE, IdentityCard } from '../../identity-card';
 
 <Meta of={ QuantityStories } name='Documentation' />
 
@@ -13,53 +12,27 @@ _**Quantity** is a component used to enter and modify a numeric value in a respo
 <Canvas of={ QuantityStories.Overview } sourceState='none' />
 
 ## Overview
-<div>
-  <div id='description'>
+
+<div className="documentation-overview">
+  <div>
     The **Quantity** component provides a user-friendly interface for selecting or entering numerical values.
 
     It includes an [**Input**](?path=/docs/ods-components-form-elements-input--documentation) field combined with increment and
     decrement [**Button**](?path=/docs/ods-components-button--documentation) to adjust the value easily.
   </div>
-  <table>
-    <tbody>
-    <tr>
-      <th scope="row">Name</th>
-      <td><strong>Quantity</strong></td>
-    </tr>
-    <tr>
-      <th scope="row">Also known as</th>
-      <td><em>Numeric, Number input, Amount</em></td>
-    </tr>
-    <tr>
-      <th scope="row">Atomic type</th>
-      <td>
-        <a href='https://atomicdesign.bradfrost.com/chapter-2/#molecules'>Molecule<OdsIcon
-          name={ ODS_ICON_NAME.externalLink }
-          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">Related component(s)</th>
-      <td>
-        [**Button**](?path=/docs/ods-components-button--documentation),
-        [**Icon**](?path=/docs/ods-components-icon--documentation),
-        [**Input**](?path=/docs/ods-components-form-elements-input--documentation), [**Form
-        Field**](?path=/docs/ods-components-form-elements-form-field--documentation)
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">Links</th>
-      <td>
-        <a href='https://www.figma.com/proto/tIKzHa5KvHHyosgIgyBswB/Design-Tokens'>Design<OdsIcon
-          name={ ODS_ICON_NAME.externalLink }
-          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a><br />
-        <a href='https://github.com/ovh/design-system/tree/master/packages/components/src/quantity'>Github<OdsIcon
-          name={ ODS_ICON_NAME.externalLink }
-          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
-      </td>
-    </tr>
-    </tbody>
-  </table>
+
+  <IdentityCard aliases={ ['Numeric', 'Number input', 'Amount'] }
+                atomicType={ ATOMIC_TYPE.molecule }
+                className="documentation-overview__table"
+                figmaLink="https://www.figma.com/proto/tIKzHa5KvHHyosgIgyBswB/Design-Tokens"
+                githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/quantity"
+                name="Quantity"
+                relatedComponents={[
+                  { name: 'Button' },
+                  { name: 'Form Field', subtitle: 'Form elements' },
+                  { name: 'Icon' },
+                  { name: 'Input', subtitle: 'Form elements' },
+                ]} />
 </div>
 
 ## Anatomy
@@ -78,7 +51,7 @@ Limits can be set as minimum or maximum value. In that case, the numeric value c
 
 ### Dos & Don'ts
 
-<Markdown>
+<Markdown className="documentation-do-table">
   { `
 | ✅ Do                                                                                                                                                                           |
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -86,7 +59,8 @@ Limits can be set as minimum or maximum value. In that case, the numeric value c
 | - Be sure sure that the user can choose to type directly a number in the field                                                                                                 |
 ` }
 </Markdown>
-<Markdown>
+
+<Markdown className="documentation-dont-table">
   { `
 | ❌ Don't                                                                                                                                                                          |
 |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

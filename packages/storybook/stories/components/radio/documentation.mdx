@@ -1,8 +1,7 @@
 import { Canvas, Markdown, Meta } from '@storybook/blocks';
 import { Banner } from '../../banner';
 import * as RadioStories from './radio.stories';
-import { OdsIcon } from '@ovhcloud/ods-components/react';
-import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
+import { ATOMIC_TYPE, IdentityCard } from '../../identity-card';
 
 <Meta of={ RadioStories } name='Documentation' />
 
@@ -13,50 +12,21 @@ _A **Radio** button allows users to select only one option from a number of choi
 <Canvas of={ RadioStories.Overview } sourceState='none' />
 
 ## Overview
-<div>
-  <div id='description'>
+
+<div className="documentation-overview">
+  <div>
     **Radio** buttons are used to set a true/false option in a set of minimum two options.
 
     They are generally displayed in a **Radio** group.
   </div>
-  <table>
-    <tbody>
-    <tr>
-      <th scope="row">Name</th>
-      <td><strong>Radio</strong></td>
-    </tr>
-    <tr>
-      <th scope="row">Also known as</th>
-      <td><em>Radio button (previous name)</em></td>
-    </tr>
-    <tr>
-      <th scope="row">Atomic type</th>
-      <td>
-        <a href='https://atomicdesign.bradfrost.com/chapter-2/#atoms'>Atom<OdsIcon
-          name={ ODS_ICON_NAME.externalLink }
-          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">Related component(s)</th>
-      <td>
-        [**Text**](?path=/docs/ods-components-text--documentation), [**Form
-        Field**](?path=/docs/ods-components-form-elements-form-field--documentation)
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">Links</th>
-      <td>
-        <a href='https://www.figma.com/proto/tIKzHa5KvHHyosgIgyBswB/Design-Tokens'>Design<OdsIcon
-          name={ ODS_ICON_NAME.externalLink }
-          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a><br />
-        <a href='https://github.com/ovh/design-system/tree/master/packages/components/src/radio'>Github<OdsIcon
-          name={ ODS_ICON_NAME.externalLink }
-          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
-      </td>
-    </tr>
-    </tbody>
-  </table>
+
+  <IdentityCard aliases={ ['Radio button (previous name)'] }
+                atomicType={ ATOMIC_TYPE.atom }
+                className="documentation-overview__table"
+                figmaLink="https://www.figma.com/proto/tIKzHa5KvHHyosgIgyBswB/Design-Tokens"
+                githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/radio"
+                name="Radio"
+                relatedComponents={ [{ name: 'Form Field', subtitle: 'Form elements' }, { name: 'Text' }] } />
 </div>
 
 ## Anatomy
@@ -78,7 +48,7 @@ Also, it can serve as :
 
 ### Dos & Don'ts
 
-<Markdown>
+<Markdown className="documentation-do-table">
   { `
 | ✅ Do                                                                                                                                                                                   |
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------         |
@@ -87,7 +57,8 @@ Also, it can serve as :
 | - If using two affirmative/negative-type **Radio** buttons, you might consider converting it to a sole [**Checkbox**](?path=/docs/ods-components-form-elements-checkbox--documentation) button. |
 ` }
 </Markdown>
-<Markdown>
+
+<Markdown className="documentation-dont-table">
   { `
 | ❌ Don't                                                                                                                                                                          |
 |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

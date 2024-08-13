@@ -1,8 +1,7 @@
 import { Canvas, Markdown, Meta } from '@storybook/blocks';
 import { Banner } from '../../banner';
 import * as DatepickerStories from './datepicker.stories';
-import { OdsIcon } from '@ovhcloud/ods-components/react';
-import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
+import { ATOMIC_TYPE, IdentityCard } from '../../identity-card';
 
 <Meta of={ DatepickerStories } name='Documentation' />
 
@@ -13,50 +12,24 @@ _A **Datepicker** component is used to allow users to select a date. They can na
 <Canvas of={ DatepickerStories.Overview } sourceState='none' />
 
 ## Overview
-<div>
-  <div id='description'>
+
+<div className="documentation-overview">
+  <div>
     The Datepicker component is used for selecting dates in forms and applications. It provides a user-friendly
     interface for choosing dates, ensuring that the date format is consistent and valid. This component can include
     features such as disabled dates and custom formats.
   </div>
-  <table>
-    <tbody>
-    <tr>
-      <th scope="row">Name</th>
-      <td><strong>Datepicker</strong></td>
-    </tr>
-    <tr>
-      <th scope="row">Also known as</th>
-      <td><em>Calendar</em></td>
-    </tr>
-    <tr>
-      <th scope="row">Atomic type</th>
-      <td>
-        <a href='https://atomicdesign.bradfrost.com/chapter-2/#molecules'>Molecule<OdsIcon
-          name={ ODS_ICON_NAME.externalLink }
-          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">Related component(s)</th>
-      <td>
-        [**Input**](?path=/docs/ods-components-form-elements-input--documentation), [**Form
-        Field**](?path=/docs/ods-components-form-elements-form-field--documentation)
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">Links</th>
-      <td>
-        <a href='https://www.figma.com/proto/tIKzHa5KvHHyosgIgyBswB/Design-Tokens'>Design<OdsIcon
-          name={ ODS_ICON_NAME.externalLink }
-          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a><br />
-        <a href='https://github.com/ovh/design-system/tree/master/packages/components/src/datepicker'>Github<OdsIcon
-          name={ ODS_ICON_NAME.externalLink }
-          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
-      </td>
-    </tr>
-    </tbody>
-  </table>
+
+  <IdentityCard aliases={ ['Calendar'] }
+                atomicType={ ATOMIC_TYPE.molecule }
+                className="documentation-overview__table"
+                figmaLink="https://www.figma.com/proto/tIKzHa5KvHHyosgIgyBswB/Design-Tokens"
+                githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/datepicker"
+                name="Datepicker"
+                relatedComponents={[
+                  { name: 'Form Field', subtitle: 'Form elements' },
+                  { name: 'Input', subtitle: 'Form elements' },
+                ]} />
 </div>
 
 ## Anatomy
@@ -76,7 +49,8 @@ _A **Datepicker** component is used to allow users to select a date. They can na
 **Datepicker** is used to **allow a selection of a specific date** in the near future or even past. It is **useful for scheduling, or defining user dates**.
 
 ### Dos & Don'ts
-<Markdown>
+
+<Markdown className="documentation-do-table">
   { `
 | ✅ Do                                                                                                                                                                           |
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -85,7 +59,8 @@ _A **Datepicker** component is used to allow users to select a date. They can na
 | - When the user has to pick dates in the distant past or future, do choose a more suitable day as **Datepicker** default date when it will open.                                   |
 ` }
 </Markdown>
-<Markdown>
+
+<Markdown className="documentation-dont-table">
   { `
 | ❌ Don't                                                                                                                                                                                                     |
 |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------                            |

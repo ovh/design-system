@@ -1,8 +1,7 @@
 import { Canvas, Markdown, Meta } from '@storybook/blocks';
 import { Banner } from '../../banner';
 import * as BreadcrumbStories from './breadcrumb.stories';
-import { OdsIcon } from '@ovhcloud/ods-components/react';
-import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
+import { ATOMIC_TYPE, IdentityCard } from '../../identity-card';
 
 <Meta of={ BreadcrumbStories } name='Documentation' />
 
@@ -14,51 +13,19 @@ _A list of [**Link**](?path=/docs/ods-components-link--documentation) showing th
 
 ## Overview
 
-<div>
-  <div id='description'>
+<div className="documentation-overview">
+  <div>
     **Breadcrumb** is used to define the user's position in a site hierarchy, it can also be useful for a finer navigation in
     an inner application.
   </div>
 
-  <table>
-    <tbody>
-    <tr>
-      <th scope="row">Name</th>
-      <td><strong>Breadcrumb</strong></td>
-    </tr>
-    <tr>
-      <th scope="row">Also known as</th>
-      <td><em>Breadcrumb trail</em></td>
-    </tr>
-    <tr>
-      <th scope="row">Atomic type</th>
-      <td>
-        <a href='https://atomicdesign.bradfrost.com/chapter-2/#atoms'>Atom<OdsIcon
-          name={ ODS_ICON_NAME.externalLink }
-          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">Related component(s)</th>
-      <td>
-        [**Link**](?path=/docs/ods-components-link--documentation),
-        [**Icon**](?path=/docs/ods-components-icon--documentation)),
-        [**Text**](?path=/docs/ods-components-text--documentation))
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">Links</th>
-      <td>
-        <a href='https://www.figma.com/proto/tIKzHa5KvHHyosgIgyBswB/Design-Tokens'>Design<OdsIcon
-          name={ ODS_ICON_NAME.externalLink }
-          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a><br />
-        <a href='https://github.com/ovh/design-system/tree/master/packages/components/src/breadcrumb'>Github<OdsIcon
-          name={ ODS_ICON_NAME.externalLink }
-          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
-      </td>
-    </tr>
-    </tbody>
-  </table>
+  <IdentityCard aliases={ ['Breadcrumb trail'] }
+                atomicType={ ATOMIC_TYPE.atom }
+                className="documentation-overview__table"
+                figmaLink="https://www.figma.com/proto/tIKzHa5KvHHyosgIgyBswB/Design-Tokens"
+                githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/breadcrumb"
+                name="Breadcrumb"
+                relatedComponents={ [{ name: 'Icon' }, { name: 'Link' }, { name: 'Text' }] } />
 </div>
 
 ## Anatomy
@@ -78,7 +45,7 @@ It has several usage :
 
 ### Dos & Don'ts
 
-<Markdown>
+<Markdown className="documentation-do-table">
   { `
 | ✅ Do                                                                                                                                                                           |
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -87,7 +54,7 @@ It has several usage :
 ` }
 </Markdown>
 
-<Markdown>
+<Markdown className="documentation-dont-table">
   { `
 | ❌ Don't                                                                                                                                                                          |
 |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

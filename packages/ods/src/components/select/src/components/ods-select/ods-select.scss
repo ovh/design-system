@@ -17,7 +17,7 @@ $select-padding-right: $select-caret-size + ($select-base-padding * 2);
 
 @mixin ods-select-placeholder() {
   white-space: nowrap;
-  color: var(--ods-color-neutral-600);
+  color: input.$ods-input-placeholder-color;
 }
 
 :host(.ods-select) {

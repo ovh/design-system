@@ -1,8 +1,7 @@
 import { Canvas, Markdown, Meta } from '@storybook/blocks';
 import { Banner } from '../../banner';
 import * as PopoverStories from './popover.stories';
-import { OdsIcon } from '@ovhcloud/ods-components/react';
-import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
+import { ATOMIC_TYPE, IdentityCard } from '../../identity-card';
 
 <Meta of={ PopoverStories } name='Documentation' />
 
@@ -13,50 +12,21 @@ _**Popover** component is triggered by click and is used to provide additional i
 <Canvas of={ PopoverStories.Overview } sourceState='none' />
 
 ## Overview
-<div>
-  <div id='description'>
+
+<div className="documentation-overview">
+  <div>
     A **Popover** will provide additional information to the user in a clear and concise way.
 
     It is commonly used to appear by click, thus crucial information should not be displayed in the **Popover**.
   </div>
-  <table>
-    <tbody>
-    <tr>
-      <th scope="row">Name</th>
-      <td><strong>Popover</strong></td>
-    </tr>
-    <tr>
-      <th scope="row">Also known as</th>
-      <td><em>Complex Tooltip</em></td>
-    </tr>
-    <tr>
-      <th scope="row">Atomic type</th>
-      <td>
-        <a href='https://atomicdesign.bradfrost.com/chapter-2/#atoms'>Atom<OdsIcon
-          name={ ODS_ICON_NAME.externalLink }
-          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">Related component(s)</th>
-      <td>
-        [**Text**](?path=/docs/ods-components-text--documentation),
-        [**Button**](?path=/docs/ods-components-button--documentation)
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">Links</th>
-      <td>
-        <a href='https://www.figma.com/proto/tIKzHa5KvHHyosgIgyBswB/Design-Tokens'>Design<OdsIcon
-          name={ ODS_ICON_NAME.externalLink }
-          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a><br />
-        <a href='https://github.com/ovh/design-system/tree/master/packages/components/src/popover'>Github<OdsIcon
-          name={ ODS_ICON_NAME.externalLink }
-          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
-      </td>
-    </tr>
-    </tbody>
-  </table>
+
+  <IdentityCard aliases={ ['Complex Tooltip'] }
+                atomicType={ ATOMIC_TYPE.atom }
+                className="documentation-overview__table"
+                figmaLink="https://www.figma.com/proto/tIKzHa5KvHHyosgIgyBswB/Design-Tokens"
+                githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/popover"
+                name="Popover"
+                relatedComponents={ [{ name: 'Button' }, { name: 'Text' }] } />
 </div>
 
 ## Anatomy
@@ -80,7 +50,8 @@ It can include interactive elements such as [**Button**](?path=/docs/ods-compone
 - A **Popover** can be dismissed if an action [**Button**](?path=/docs/ods-components-button--documentation) allows it.
 
 ### Dos & Don'ts
-<Markdown>
+
+<Markdown className="documentation-do-table">
   { `
 | ✅ Do                                                                                                                                                                                                                    |
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------                                          |
@@ -88,7 +59,8 @@ It can include interactive elements such as [**Button**](?path=/docs/ods-compone
 | - Write **Popover**'s [**Text**](?path=/docs/ods-components-text--documentation) as full sentences with punctuation                                                                                              |
 ` }
 </Markdown>
-<Markdown>
+
+<Markdown className="documentation-dont-table">
   { `
 | ❌ Don't                                                                                                                                                                          |
 |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

@@ -1,8 +1,7 @@
 import { Canvas, Meta, Markdown } from '@storybook/blocks';
 import { Banner } from '../../banner';
 import * as TimepickerStories from './timepicker.stories';
-import { OdsIcon } from '@ovhcloud/ods-components/react';
-import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
+import { ATOMIC_TYPE, IdentityCard } from '../../identity-card';
 
 <Meta of={ TimepickerStories } name='Documentation' />
 
@@ -13,48 +12,23 @@ _A **Timepicker** is a component that allows users to select a time from a list 
 <Canvas of={ TimepickerStories.Overview } sourceState='none' />
 
 ## Overview
-<div>
-  <div id='description'>
+
+<div className="documentation-overview">
+  <div>
     The **Timepicker** component is used for selecting times in forms and applications. It provides an interface for users to choose a time, ensuring the format is consistent and valid. The component can include features like 12-hour or 24-hour formats, increments, and disabled times.
   </div>
-  <table>
-    <tbody>
-    <tr>
-      <th scope="row">Name</th>
-      <td><strong>Timepicker</strong></td>
-    </tr>
-    <tr>
-      <th scope="row">Also known as</th>
-      <td><em>Time</em></td>
-    </tr>
-    <tr>
-      <th scope="row">Atomic type</th>
-      <td>
-        <a href='https://atomicdesign.bradfrost.com/chapter-2/#molecules'>Molecule<OdsIcon
-          name={ ODS_ICON_NAME.externalLink }
-          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">Related component(s)</th>
-      <td>
-        [**Input**](?path=/docs/ods-components-form-elements-input--documentation), [**Select**](?path=/docs/ods-components-form-elements-select--documentation), [**Form
-        Field**](?path=/docs/ods-components-form-elements-form-field--documentation)
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">Links</th>
-      <td>
-        <a href='https://www.figma.com/proto/tIKzHa5KvHHyosgIgyBswB/Design-Tokens'>Design<OdsIcon
-          name={ ODS_ICON_NAME.externalLink }
-          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a><br />
-        <a href='https://github.com/ovh/design-system/tree/master/packages/components/src/timepicker'>Github<OdsIcon
-          name={ ODS_ICON_NAME.externalLink }
-          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
-      </td>
-    </tr>
-    </tbody>
-  </table>
+
+  <IdentityCard aliases={ ['Time'] }
+                atomicType={ ATOMIC_TYPE.molecule }
+                className="documentation-overview__table"
+                figmaLink="https://www.figma.com/proto/tIKzHa5KvHHyosgIgyBswB/Design-Tokens"
+                githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/timepicker"
+                name="Timepicker"
+                relatedComponents={[
+                  { name: 'Form Field', subtitle: 'Form elements' },
+                  { name: 'Input', subtitle: 'Form elements' },
+                  { name: 'Select', subtitle: 'Form elements' },
+                ]} />
 </div>
 
 ## Anatomy
@@ -75,7 +49,8 @@ A **Timepicker** field includes the hour, minutes and optionally seconds. It can
 For some use case, an optional time zone [**Select**](?path=/docs/ods-components-form-elements-select--documentation) can be added to allow users to select their desired time zone from a list of options.
 
 ### Dos & Don'ts
-<Markdown>
+
+<Markdown className="documentation-do-table">
   { `
 | ✅ Do                                                                                                                                                                           |
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -86,7 +61,8 @@ For some use case, an optional time zone [**Select**](?path=/docs/ods-components
 | - Display a restricted list of timezones that makes sense, especially when the company or product exists only in few countries. Otherwise it adds to confusion                                   |
 ` }
 </Markdown>
-<Markdown>
+
+<Markdown className="documentation-dont-table">
   { `
 | ❌ Don't                                                                                                                                                                                                     |
 |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------                            |

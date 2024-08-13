@@ -1,8 +1,7 @@
 import { Canvas, Markdown, Meta } from '@storybook/blocks';
 import { Banner } from '../../banner';
 import * as FormFieldStories from './form-field.stories';
-import { OdsIcon } from '@ovhcloud/ods-components/react';
-import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
+import { ATOMIC_TYPE, IdentityCard } from '../../identity-card';
 
 <Meta of={ FormFieldStories } name='Documentation' />
 
@@ -13,60 +12,35 @@ _A **Form Field** component is used to wrap several form components with logic, 
 <Canvas of={ FormFieldStories.Overview } sourceState='none' />
 
 ## Overview
-<div>
-  <div id='description'>
+
+<div className="documentation-overview">
+  <div>
     A **Form Field** is based on a single form element or group components as a whole that are decorated with additional
     [**Text**](?path=/docs/ods-components-text--documentation) to handle specific types of information, like a
     [**Password**](?path=/docs/ods-components-form-elements-password--documentation) field for example.
   </div>
 
-  <table>
-    <tbody>
-    <tr>
-      <th scope="row">Name</th>
-      <td><strong>Form Field</strong></td>
-    </tr>
-    <tr>
-      <th scope="row">Also known as</th>
-      <td><em>Form Control</em></td>
-    </tr>
-    <tr>
-      <th scope="row">Atomic type</th>
-      <td>
-        <a href='https://atomicdesign.bradfrost.com/chapter-2/#molecules'>Molecule<OdsIcon
-          name={ ODS_ICON_NAME.externalLink }
-          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">Related component(s)</th>
-      <td>
-        [**Checkbox**](?path=/docs/ods-components-form-elements-checkbox--documentation), [**File
-        Upload**](?path=/docs/ods-components-form-elements-file-upload--documentation),
-        [**Input**](?path=/docs/ods-components-form-elements-input--documentation),
-        [**Password**](?path=/docs/ods-components-form-elements-password--documentation), [**Phone
-        Number**](?path=/docs/ods-components-form-elements-phone-number--documentation),
-        [**Quantity**](?path=/docs/ods-components-form-elements-quantity--documentation),
-        [**Radio**](?path=/docs/ods-components-form-elements-radio--documentation),
-        [**Select**](?path=/docs/ods-components-form-elements-select--documentation),
-        [**Switch**](?path=/docs/ods-components-form-elements-switch--documentation),
-        [**Textarea**](?path=/docs/ods-components-form-elements-textarea--documentation),
-        [**Toggle**](?path=/docs/ods-components-form-elements-toggle--documentation)
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">Links</th>
-      <td>
-        <a href='https://www.figma.com/proto/tIKzHa5KvHHyosgIgyBswB/Design-Tokens'>Design<OdsIcon
-          name={ ODS_ICON_NAME.externalLink }
-          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a><br />
-        <a href='https://github.com/ovh/design-system/tree/master/packages/components/src/form-field'>Github<OdsIcon
-          name={ ODS_ICON_NAME.externalLink }
-          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
-      </td>
-    </tr>
-    </tbody>
-  </table>
+  <IdentityCard aliases={ ['Form Control'] }
+                atomicType={ ATOMIC_TYPE.molecule }
+                className="documentation-overview__table"
+                figmaLink="https://www.figma.com/proto/tIKzHa5KvHHyosgIgyBswB/Design-Tokens"
+                githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/form-field"
+                name="Form Field"
+                relatedComponents={[
+                  { name: 'Checkbox', subtitle: 'Form elements' },
+                  { name: 'File Upload', subtitle: 'Form elements' },
+                  { name: 'Input', subtitle: 'Form elements' },
+                  { name: 'Password', subtitle: 'Form elements' },
+                  { name: 'Phone Number', subtitle: 'Form elements' },
+                  { name: 'Quantity', subtitle: 'Form elements' },
+                  { name: 'Radio', subtitle: 'Form elements' },
+                  { name: 'Range', subtitle: 'Form elements' },
+                  { name: 'Select', subtitle: 'Form elements' },
+                  { name: 'Switch', subtitle: 'Form elements' },
+                  { name: 'Textarea', subtitle: 'Form elements' },
+                  { name: 'Timepicker', subtitle: 'Form elements' },
+                  { name: 'Toggle', subtitle: 'Form elements' },
+                ]} />
 </div>
 
 ## Anatomy
@@ -83,7 +57,7 @@ Users will also type or enter information in the expected format and avoid mista
 
 ### Dos & Don'ts
 
-<Markdown>
+<Markdown className="documentation-do-table">
   { `
 | ✅ Do                                                                                                                                                                           |
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -93,7 +67,8 @@ Users will also type or enter information in the expected format and avoid mista
 | - Group when you need to combine related components into a whole new one.                                                                                                      |
 ` }
 </Markdown>
-<Markdown>
+
+<Markdown className="documentation-dont-table">
   { `
 | ❌ Don't                                                                                                                                                                                                                    |
 |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------                                           |

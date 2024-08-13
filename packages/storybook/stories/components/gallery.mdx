@@ -1,6 +1,4 @@
 import { Canvas, Meta } from '@storybook/blocks';
-import '../../assets/css/gallery.css';
-
 import { Overview as Accordion } from './accordion/accordion.stories';
 import { Overview as Badge } from './badge/badge.stories';
 import { Overview as Breadcrumb } from './breadcrumb/breadcrumb.stories';
@@ -39,277 +37,353 @@ import { Overview as Textarea } from './textarea/textarea.stories';
 import { Overview as Timepicker } from './timepicker/timepicker.stories';
 import { Overview as Toggle } from './toggle/toggle.stories';
 import { Overview as Tooltip } from './tooltip/tooltip.stories';
+import '../../assets/css/gallery.css';
 
 <Meta title="ODS Components/Gallery" />
 
-<div class="gallery">
+<div className="gallery">
 
   # UI Components
 
-  <div class="gallery__items">
-    <ods-card class="gallery__items__item"
+  <div className="gallery__items">
+    <ods-card className="gallery__items__item"
               color="neutral">
       <Canvas of={ Accordion } sourceState="none" />
-      <span class="gallery__items__item__title sb-unstyled">
+
+      <span className="gallery__items__item__title sb-unstyled">
         [<ods-link label="Accordion"></ods-link>](?path=/docs/ods-components-accordion--documentation)
       </span>
     </ods-card>
+
     <ods-card color="neutral"
-              class="gallery__items__item">
+              className="gallery__items__item">
       <Canvas of={ Badge } sourceState="none" />
-      <span class="gallery__items__item__title sb-unstyled">
+
+      <span className="gallery__items__item__title sb-unstyled">
         [<ods-link label="Badge"></ods-link>](?path=/docs/ods-components-badge--documentation)
       </span>
     </ods-card>
+
     <ods-card color="neutral"
-              class="gallery__items__item">
+              className="gallery__items__item">
       <Canvas of={ Breadcrumb } sourceState="none" />
-      <span class="gallery__items__item__title sb-unstyled">
+
+      <span className="gallery__items__item__title sb-unstyled">
         [<ods-link label="Breadcrumb"></ods-link>](?path=/docs/ods-components-breadcrumb--documentation)
       </span>
     </ods-card>
+
     <ods-card color="neutral"
-              class="gallery__items__item">
+              className="gallery__items__item">
       <Canvas of={ Button } sourceState="none" />
-      <span class="gallery__items__item__title sb-unstyled">
+
+      <span className="gallery__items__item__title sb-unstyled">
         [<ods-link label="Button"></ods-link>](?path=/docs/ods-components-button--documentation)
       </span>
     </ods-card>
+
     <ods-card color="neutral"
-              class="gallery__items__item">
+              className="gallery__items__item">
       <Canvas of={ Card } sourceState="none" />
-      <span class="gallery__items__item__title sb-unstyled">
+
+      <span className="gallery__items__item__title sb-unstyled">
         [<ods-link label="Card"></ods-link>](?path=/docs/ods-components-card--documentation)
       </span>
     </ods-card>
+
     <ods-card color="neutral"
-              class="gallery__items__item">
+              className="gallery__items__item">
       <Canvas of={ Checkbox } sourceState="none" />
-      <span class="gallery__items__item__title sb-unstyled">
+
+      <span className="gallery__items__item__title sb-unstyled">
         [<ods-link label="Checkbox"></ods-link>](?path=/docs/ods-components-form-elements-checkbox--documentation)
       </span>
     </ods-card>
+
     <ods-card color="neutral"
-              class="gallery__items__item">
+              className="gallery__items__item">
       <Canvas of={ Clipboard } sourceState="none" />
-      <span class="gallery__items__item__title sb-unstyled">
+
+      <span className="gallery__items__item__title sb-unstyled">
         [<ods-link label="Clipboard"></ods-link>](?path=/docs/ods-components-clipboard--documentation)
       </span>
     </ods-card>
+
     <ods-card color="neutral"
-              class="gallery__items__item">
+              className="gallery__items__item">
       <Canvas of={ Code } sourceState="none" />
-      <span class="gallery__items__item__title sb-unstyled">
+
+      <span className="gallery__items__item__title sb-unstyled">
         [<ods-link label="Code"></ods-link>](?path=/docs/ods-components-code--documentation)
       </span>
     </ods-card>
+
     <ods-card color="neutral"
-              class="gallery__items__item">
+              className="gallery__items__item">
       <Canvas of={ Datepicker } sourceState="none" />
-      <span class="gallery__items__item__title sb-unstyled">
+
+      <span className="gallery__items__item__title sb-unstyled">
         [<ods-link label="Datepicker"></ods-link>](?path=/docs/ods-components-form-elements-datepicker--documentation)
       </span>
     </ods-card>
+
     <ods-card color="neutral"
-              class="gallery__items__item">
+              className="gallery__items__item">
       <Canvas of={ Divider } sourceState="none" />
-      <span class="gallery__items__item__title sb-unstyled">
+
+      <span className="gallery__items__item__title sb-unstyled">
         [<ods-link label="Divider"></ods-link>](?path=/docs/ods-components-divider--documentation)
       </span>
     </ods-card>
+
     <ods-card color="neutral"
-              class="gallery__items__item">
+              className="gallery__items__item">
       <Canvas of={ FileUpload } sourceState="none" />
-      <span class="gallery__items__item__title sb-unstyled">
+
+      <span className="gallery__items__item__title sb-unstyled">
         [<ods-link label="File Upload"></ods-link>](?path=/docs/ods-components-form-elements-file-upload--documentation)
       </span>
     </ods-card>
+
     <ods-card color="neutral"
-              class="gallery__items__item">
+              className="gallery__items__item">
       <Canvas of={ FormField } sourceState="none" />
-      <span class="gallery__items__item__title sb-unstyled">
+
+      <span className="gallery__items__item__title sb-unstyled">
         [<ods-link label="Form Field"></ods-link>](?path=/docs/ods-components-form-elements-form-field--documentation)
       </span>
     </ods-card>
+
     <ods-card color="neutral"
-              class="gallery__items__item">
+              className="gallery__items__item">
       <Canvas of={ Icon } sourceState="none" />
-      <span class="gallery__items__item__title sb-unstyled">
+
+      <span className="gallery__items__item__title sb-unstyled">
         [<ods-link label="Icon"></ods-link>](?path=/docs/ods-components-icon--documentation)
       </span>
     </ods-card>
+
     <ods-card color="neutral"
-              class="gallery__items__item">
+              className="gallery__items__item">
       <Canvas of={ Input } sourceState="none" />
-      <span class="gallery__items__item__title sb-unstyled">
+
+      <span className="gallery__items__item__title sb-unstyled">
         [<ods-link label="Input"></ods-link>](?path=/docs/ods-components-form-elements-input--documentation)
       </span>
     </ods-card>
+
     <ods-card color="neutral"
-              class="gallery__items__item">
+              className="gallery__items__item">
       <Canvas of={ Link } sourceState="none" />
-      <span class="gallery__items__item__title sb-unstyled">
+
+      <span className="gallery__items__item__title sb-unstyled">
         [<ods-link label="Link"></ods-link>](?path=/docs/ods-components-link--documentation)
       </span>
     </ods-card>
+
     <ods-card color="neutral"
-              class="gallery__items__item">
+              className="gallery__items__item">
       <Canvas of={ Medium } sourceState="none" />
-      <span class="gallery__items__item__title sb-unstyled">
+
+      <span className="gallery__items__item__title sb-unstyled">
         [<ods-link label="Medium"></ods-link>](?path=/docs/ods-components-medium--documentation)
       </span>
     </ods-card>
+
     <ods-card color="neutral"
-              class="gallery__items__item">
+              className="gallery__items__item">
       <Canvas of={ Message } sourceState="none" />
-      <span class="gallery__items__item__title sb-unstyled">
+
+      <span className="gallery__items__item__title sb-unstyled">
         [<ods-link label="Message"></ods-link>](?path=/docs/ods-components-message--documentation)
       </span>
     </ods-card>
+
     <ods-card color="neutral"
-              class="gallery__items__item">
+              className="gallery__items__item">
       <Canvas of={ Modal } sourceState="none" />
-      <span class="gallery__items__item__title sb-unstyled">
+
+      <span className="gallery__items__item__title sb-unstyled">
         [<ods-link label="Modal"></ods-link>](?path=/docs/ods-components-modal--documentation)
       </span>
     </ods-card>
+
     <ods-card color="neutral"
-              class="gallery__items__item">
+              className="gallery__items__item">
       <Canvas of={ Pagination } sourceState="none" />
-      <span class="gallery__items__item__title sb-unstyled">
+
+      <span className="gallery__items__item__title sb-unstyled">
         [<ods-link label="Pagination"></ods-link>](?path=/docs/ods-components-pagination--documentation)
       </span>
     </ods-card>
+
     <ods-card color="neutral"
-              class="gallery__items__item">
+              className="gallery__items__item">
       <Canvas of={ Password } sourceState="none" />
-      <span class="gallery__items__item__title sb-unstyled">
+
+      <span className="gallery__items__item__title sb-unstyled">
         [<ods-link label="Password"></ods-link>](?path=/docs/ods-components-form-elements-password--documentation)
       </span>
     </ods-card>
+
     <ods-card color="neutral"
-              class="gallery__items__item">
+              className="gallery__items__item">
       <Canvas of={ PhoneNumber } sourceState="none" />
-      <span class="gallery__items__item__title sb-unstyled">
+
+      <span className="gallery__items__item__title sb-unstyled">
         [<ods-link label="Phone Number"></ods-link>](?path=/docs/ods-components-form-elements-phone-number--documentation)
       </span>
     </ods-card>
+
     <ods-card color="neutral"
-              class="gallery__items__item">
+              className="gallery__items__item">
       <Canvas of={ Popover } sourceState="none" />
-      <span class="gallery__items__item__title sb-unstyled">
+
+      <span className="gallery__items__item__title sb-unstyled">
         [<ods-link label="Popover"></ods-link>](?path=/docs/ods-components-popover--documentation)
       </span>
     </ods-card>
+
     <ods-card color="neutral"
-              class="gallery__items__item">
+              className="gallery__items__item">
       <Canvas of={ ProgressBar } sourceState="none" />
-      <span class="gallery__items__item__title sb-unstyled">
+
+      <span className="gallery__items__item__title sb-unstyled">
         [<ods-link label="Progress Bar"></ods-link>](?path=/docs/ods-components-progress-bar--documentation)
       </span>
     </ods-card>
+
     <ods-card color="neutral"
-              class="gallery__items__item">
+              className="gallery__items__item">
       <Canvas of={ Quantity } sourceState="none" />
-      <span class="gallery__items__item__title sb-unstyled">
+
+      <span className="gallery__items__item__title sb-unstyled">
         [<ods-link label="Quantity"></ods-link>](?path=/docs/ods-components-form-elements-quantity--documentation)
       </span>
     </ods-card>
+
     <ods-card color="neutral"
-              class="gallery__items__item">
+              className="gallery__items__item">
       <Canvas of={ Radio } sourceState="none" />
-      <span class="gallery__items__item__title sb-unstyled">
+
+      <span className="gallery__items__item__title sb-unstyled">
         [<ods-link label="Radio"></ods-link>](?path=/docs/ods-components-form-elements-radio--documentation)
       </span>
     </ods-card>
+
     <ods-card color="neutral"
-              class="gallery__items__item">
+              className="gallery__items__item">
       <Canvas of={ Range } sourceState="none" />
-      <span class="gallery__items__item__title sb-unstyled">
+
+      <span className="gallery__items__item__title sb-unstyled">
         [<ods-link label="Range"></ods-link>](?path=/docs/ods-components-form-elements-range--documentation)
       </span>
     </ods-card>
+
     <ods-card color="neutral"
-              class="gallery__items__item">
+              className="gallery__items__item">
       <Canvas of={ Select } sourceState="none" />
-      <span class="gallery__items__item__title sb-unstyled">
+
+      <span className="gallery__items__item__title sb-unstyled">
         [<ods-link label="Select"></ods-link>](?path=/docs/ods-components-form-elements-select--documentation)
       </span>
     </ods-card>
+
     <ods-card color="neutral"
-              class="gallery__items__item">
+              className="gallery__items__item">
       <Canvas of={ Skeleton } sourceState="none" />
-      <span class="gallery__items__item__title sb-unstyled">
+
+      <span className="gallery__items__item__title sb-unstyled">
         [<ods-link label="Skeleton"></ods-link>](?path=/docs/ods-components-skeleton--documentation)
       </span>
     </ods-card>
+
     <ods-card color="neutral"
-              class="gallery__items__item">
+              className="gallery__items__item">
       <Canvas of={ Spinner } sourceState="none" />
-      <span class="gallery__items__item__title sb-unstyled">
+
+      <span className="gallery__items__item__title sb-unstyled">
         [<ods-link label="Spinner"></ods-link>](?path=/docs/ods-components-spinner--documentation)
       </span>
     </ods-card>
+
     <ods-card color="neutral"
-              class="gallery__items__item">
+              className="gallery__items__item">
       <Canvas of={ Switch } sourceState="none" />
-      <span class="gallery__items__item__title sb-unstyled">
+
+      <span className="gallery__items__item__title sb-unstyled">
         [<ods-link label="Switch"></ods-link>](?path=/docs/ods-components-form-elements-switch--documentation)
       </span>
     </ods-card>
+
     <ods-card color="neutral"
-              class="gallery__items__item">
+              className="gallery__items__item">
       <Canvas of={ Table } sourceState="none" />
-      <span class="gallery__items__item__title sb-unstyled">
+
+      <span className="gallery__items__item__title sb-unstyled">
         [<ods-link label="Table"></ods-link>](?path=/docs/ods-components-table--documentation)
       </span>
     </ods-card>
+
     <ods-card color="neutral"
-              class="gallery__items__item">
+              className="gallery__items__item">
       <Canvas of={ Tabs } sourceState="none" />
-      <span class="gallery__items__item__title sb-unstyled">
+
+      <span className="gallery__items__item__title sb-unstyled">
         [<ods-link label="Tabs"></ods-link>](?path=/docs/ods-components-tabs--documentation)
       </span>
     </ods-card>
+
     <ods-card color="neutral"
-              class="gallery__items__item">
+              className="gallery__items__item">
       <Canvas of={ Tag } sourceState="none" />
-      <span class="gallery__items__item__title sb-unstyled">
+
+      <span className="gallery__items__item__title sb-unstyled">
         [<ods-link label="Tag"></ods-link>](?path=/docs/ods-components-tag--documentation)
       </span>
     </ods-card>
+
     <ods-card color="neutral"
-              class="gallery__items__item">
+              className="gallery__items__item">
       <Canvas of={ Text } sourceState="none" />
-      <span class="gallery__items__item__title sb-unstyled">
+
+      <span className="gallery__items__item__title sb-unstyled">
         [<ods-link label="Text"></ods-link>](?path=/docs/ods-components-text--documentation)
       </span>
     </ods-card>
+
     <ods-card color="neutral"
-              class="gallery__items__item">
+              className="gallery__items__item">
       <Canvas of={ Textarea } sourceState="none" />
-      <span class="gallery__items__item__title sb-unstyled">
+
+      <span className="gallery__items__item__title sb-unstyled">
         [<ods-link label="Textarea"></ods-link>](?path=/docs/ods-components-form-elements-textarea--documentation)
       </span>
     </ods-card>
+
     <ods-card color="neutral"
-              class="gallery__items__item">
+              className="gallery__items__item">
       <Canvas of={ Timepicker } sourceState="none" />
-      <span class="gallery__items__item__title sb-unstyled">
+
+      <span className="gallery__items__item__title sb-unstyled">
         [<ods-link label="Timepicker"></ods-link>](?path=/docs/ods-components-form-elements-timepicker--documentation)
       </span>
     </ods-card>
+
     <ods-card color="neutral"
-              class="gallery__items__item">
+              className="gallery__items__item">
       <Canvas of={ Toggle } sourceState="none" />
-      <span class="gallery__items__item__title sb-unstyled">
+
+      <span className="gallery__items__item__title sb-unstyled">
         [<ods-link label="Toggle"></ods-link>](?path=/docs/ods-components-form-elements-toggle--documentation)
       </span>
     </ods-card>
+
     <ods-card color="neutral"
-              class="gallery__items__item">
+              className="gallery__items__item">
       <Canvas of={ Tooltip } sourceState="none" />
-      <span class="gallery__items__item__title sb-unstyled">
+
+      <span className="gallery__items__item__title sb-unstyled">
         [<ods-link label="Tooltip"></ods-link>](?path=/docs/ods-components-tooltip--documentation)
       </span>
     </ods-card>

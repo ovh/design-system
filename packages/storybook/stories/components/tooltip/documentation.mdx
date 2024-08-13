@@ -1,8 +1,7 @@
 import { Canvas, Markdown, Meta } from '@storybook/blocks';
 import { Banner } from '../../banner';
 import * as TooltipStories from './tooltip.stories';
-import { OdsIcon } from '@ovhcloud/ods-components/react';
-import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
+import { ATOMIC_TYPE, IdentityCard } from '../../identity-card';
 
 <Meta of={ TooltipStories } name='Documentation' />
 
@@ -13,8 +12,9 @@ _**Tooltip** component is used to display contextual information when the user h
 <Canvas of={ TooltipStories.Overview } sourceState='none' />
 
 ## Overview
-<div>
-  <div id='description'>
+
+<div className="documentation-overview">
+  <div>
     **Tooltip** component is used to display contextual information when the user hovers or focuses an element.
 
     It enhances user experience by providing helpful hints, explanations, or descriptions without cluttering the UI.
@@ -23,44 +23,14 @@ _**Tooltip** component is used to display contextual information when the user h
     [**Icon**](?path=/docs/ods-components-icon--documentation), [**Form
     Field**](?path=/docs/ods-components-form-elements-form-field--documentation), and other interactive elements.
   </div>
-  <table>
-    <tbody>
-    <tr>
-      <th scope="row">Name</th>
-      <td><strong>Tooltip</strong></td>
-    </tr>
-    <tr>
-      <th scope="row">Also known as</th>
-      <td><em>Info Bubble</em></td>
-    </tr>
-    <tr>
-      <th scope="row">Atomic type</th>
-      <td>
-        <a href='https://atomicdesign.bradfrost.com/chapter-2/#atoms'>Atom<OdsIcon
-          name={ ODS_ICON_NAME.externalLink }
-          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">Related component(s)</th>
-      <td>
-        [**Text**](?path=/docs/ods-components-text--documentation),
-        [**Icon**](?path=/docs/ods-components-icon--documentation))
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">Links</th>
-      <td>
-        <a href='https://www.figma.com/proto/tIKzHa5KvHHyosgIgyBswB/Design-Tokens'>Design<OdsIcon
-          name={ ODS_ICON_NAME.externalLink }
-          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a><br />
-        <a href='https://github.com/ovh/design-system/tree/master/packages/components/src/tooltip'>Github<OdsIcon
-          name={ ODS_ICON_NAME.externalLink }
-          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
-      </td>
-    </tr>
-    </tbody>
-  </table>
+
+  <IdentityCard aliases={ ['Info Bubble'] }
+                atomicType={ ATOMIC_TYPE.atom }
+                className="documentation-overview__table"
+                figmaLink="https://www.figma.com/proto/tIKzHa5KvHHyosgIgyBswB/Design-Tokens"
+                githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/tooltip"
+                name="Tooltip"
+                relatedComponents={ [{ name: 'Icon' }, { name: 'Text' }] } />
 </div>
 
 ## Anatomy
@@ -80,7 +50,8 @@ Use the **Tooltip** component to provide additional information or context for U
 They are suitable for [**Button**](?path=/docs/ods-components-button--documentation), [**Icon**](?path=/docs/ods-components-icon--documentation), [**Form Field**](?path=/docs/ods-components-form-elements-form-field--documentation), [**Link**](?path=/docs/ods-components-link--documentation), and any other elements where additional context would be beneficial.
 
 ### Dos & Don'ts
-<Markdown>
+
+<Markdown className="documentation-do-table">
   { `
 | ✅ Do                                                                                                                                                                           |
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -89,7 +60,8 @@ They are suitable for [**Button**](?path=/docs/ods-components-button--documentat
 | - Write **Tooltip**'s [**Text**](?path=/docs/ods-components-text--documentation) as full sentences with punctuation except there is not enough space.                   |
 ` }
 </Markdown>
-<Markdown>
+
+<Markdown className="documentation-dont-table">
   { `
 | ❌ Don't                                                                                                                                                                                               |
 |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------                      |

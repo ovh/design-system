@@ -1,8 +1,7 @@
 import { Canvas, Markdown, Meta } from '@storybook/blocks';
 import { Banner } from '../../banner';
 import * as ClipboardStories from './clipboard.stories';
-import { OdsIcon } from '@ovhcloud/ods-components/react';
-import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
+import { ATOMIC_TYPE, IdentityCard } from '../../identity-card';
 
 <Meta of={ ClipboardStories } name='Documentation' />
 
@@ -13,50 +12,23 @@ _**Clipboard** component allows user to view and copy information to its **Clipb
 <Canvas of={ ClipboardStories.Overview } sourceState='none' />
 
 ## Overview
-<div>
-  <div id='description'>
+
+<div className="documentation-overview">
+  <div>
     **Clipboard** component is used to copy quickly and easily a text, a link and more to the **Clipboard**.
   </div>
 
-  <table>
-    <tbody>
-    <tr>
-      <th scope="row">Name</th>
-      <td><strong>Clipboard</strong></td>
-    </tr>
-    <tr>
-      <th scope="row">Also known as</th>
-      <td><em>Copy Component, Copy to Clipboard</em></td>
-    </tr>
-    <tr>
-      <th scope="row">Atomic type</th>
-      <td>
-        <a href='https://atomicdesign.bradfrost.com/chapter-2/#atoms'>Atom<OdsIcon
-          name={ ODS_ICON_NAME.externalLink }
-          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">Related component(s)</th>
-      <td>
-        [**Input**](?path=/docs/ods-components-form-elements-input--documentation),
-        [**Button**](?path=/docs/ods-components-button--documentation),
-        [**Tooltip**](?path=/docs/ods-components-tooltip--documentation)
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">Links</th>
-      <td>
-        <a href='https://www.figma.com/proto/tIKzHa5KvHHyosgIgyBswB/Design-Tokens'>Design<OdsIcon
-          name={ ODS_ICON_NAME.externalLink }
-          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a><br />
-        <a href='https://github.com/ovh/design-system/tree/master/packages/components/src/clipboard'>Github<OdsIcon
-          name={ ODS_ICON_NAME.externalLink }
-          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
-      </td>
-    </tr>
-    </tbody>
-  </table>
+  <IdentityCard aliases={ ['Copy Component', 'Copy to Clipboard'] }
+                atomicType={ ATOMIC_TYPE.atom }
+                className="documentation-overview__table"
+                figmaLink="https://www.figma.com/proto/tIKzHa5KvHHyosgIgyBswB/Design-Tokens"
+                githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/clipboard"
+                name="Clipboard"
+                relatedComponents={[
+                  { name: 'Button' },
+                  { name: 'Input', subtitle: 'Form elements' },
+                  { name: 'Tooltip' },
+                ]} />
 </div>
 
 ## Anatomy
@@ -76,7 +48,7 @@ It can be used when it is considered that it will take the hassle out of selecti
 
 ### Dos & Don'ts
 
-<Markdown>
+<Markdown className="documentation-do-table">
   { `
 | ✅ Do                                                                                                                                                                           |
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -84,7 +56,7 @@ It can be used when it is considered that it will take the hassle out of selecti
 ` }
 </Markdown>
 
-<Markdown>
+<Markdown className="documentation-dont-table">
   { `
 | ❌ Don't                                                                                                                                                                          |
 |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -107,10 +79,8 @@ The **Clipboard** component is **used as read-only**, to allow users to copy a p
 
 Even if no visual indicator prompts the user to do so, **the user can select the Text directly in the Input**.
 
-
 **The trigger for copying** the [**Input**](?path=/docs/ods-components-form-elements-input--documentation) content to the [**Clipboard**](?path=/docs/ods-components-clipboard--documentation) **is the "copy" Button**.
 When hovering or focusing, **a Tooltip is displayed as a helper**.
-
 
 **An event is triggered when a Clipboard's content is copied.**
 A confirmation [**Tooltip**](?path=/docs/ods-components-tooltip--documentation) is displayed (if user is still hovering the "copy" [**Button**](?path=/docs/ods-components-button--documentation)) when **Clipboard** content has been successfully copied.

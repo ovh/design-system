@@ -1,8 +1,7 @@
 import { Markdown, Meta } from '@storybook/blocks';
 import { Banner } from '../../banner';
 import * as DividerStories from './divider.stories';
-import { OdsIcon } from '@ovhcloud/ods-components/react';
-import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
+import { ATOMIC_TYPE, IdentityCard } from '../../identity-card';
 
 <Meta of={ DividerStories } name='Documentation' />
 
@@ -11,46 +10,20 @@ import { ODS_ICON_NAME } from '@ovhcloud/ods-components';
 _A **Divider** component is a spacer used to add white space between two elements on a page._
 
 ## Overview
-<div>
-  <div id='description'>
+
+<div className="documentation-overview">
+  <div>
     A **Divider** is a UI component used to separate content into clear, distinct sections, providing visual breaks
     between different elements or groups of content.
   </div>
-  <table>
-    <tbody>
-    <tr>
-      <th scope="row">Name</th>
-      <td><strong>Divider</strong></td>
-    </tr>
-    <tr>
-      <th scope="row">Also known as</th>
-      <td><em>Separator, Spacer, Horizontal Line</em></td>
-    </tr>
-    <tr>
-      <th scope="row">Atomic type</th>
-      <td>
-        <a href='https://bradfrost.com/blog/post/extending-atomic-design/'>Quark<OdsIcon
-          name={ ODS_ICON_NAME.externalLink }
-          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">Related component(s)</th>
-      <td>-</td>
-    </tr>
-    <tr>
-      <th scope="row">Links</th>
-      <td>
-        <a href='https://www.figma.com/proto/tIKzHa5KvHHyosgIgyBswB/Design-Tokens'>Design<OdsIcon
-          name={ ODS_ICON_NAME.externalLink }
-          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a><br/>
-        <a href='https://github.com/ovh/design-system/tree/master/packages/components/src/divider'>Github<OdsIcon
-          name={ ODS_ICON_NAME.externalLink }
-          style={ { fontSize: '.7rem', paddingLeft: '.3rem', paddingRight: '.2rem' } }></OdsIcon></a>
-      </td>
-    </tr>
-    </tbody>
-  </table>
+
+  <IdentityCard aliases={ ['Separator', 'Spacer', 'Horizontal Line'] }
+                atomicType={ ATOMIC_TYPE.quark }
+                className="documentation-overview__table"
+                figmaLink="https://www.figma.com/proto/tIKzHa5KvHHyosgIgyBswB/Design-Tokens"
+                githubUrl="https://github.com/ovh/design-system/tree/master/packages/ods/src/components/divider"
+                name="Divider"
+                relatedComponents={ [] } />
 </div>
 
 ## Anatomy
@@ -69,7 +42,7 @@ It brings clarity to a layout by dividing content in proximity.
 
 ### Dos & Don'ts
 
-<Markdown>
+<Markdown className="documentation-do-table">
   { `
 | ✅ Do                                                                                                                                                                           |
 |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -79,7 +52,7 @@ It brings clarity to a layout by dividing content in proximity.
 ` }
 </Markdown>
 
-<Markdown>
+<Markdown className="documentation-dont-table">
   { `
 | ❌ Don't                                                                                                                                                                          |
 |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

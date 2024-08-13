@@ -39,23 +39,26 @@ code {
   font-size: 1rem !important;
 }
 
-.sbdocs-content #overview + div:not(.sbdocs-preview) {
+.documentation-overview {
   display: grid;
   grid-template-columns: 1.5fr 1fr;
-  gap: 2rem;
+  column-gap: 2rem;
 }
-.sbdocs-content #overview + div:not(.sbdocs-preview) > table {
+
+.documentation-overview__table {
   align-self: flex-start;
   text-align: left;
 }
 
-.sbdocs-content #dos--donts + table,
-.sbdocs-content #dos--donts + table + table {
+.documentation-do-table,
+.documentation-dont-table {
   width: 100%;
 }
-.sbdocs-content #dos--donts + table tr {
-  background-color: var(--ods-color-success-050);
+
+.documentation-do-table tr {
+  background-color: var(--ods-color-success-050) !important;
 }
-.sbdocs-content #dos--donts + table + table tr {
-  background-color: var(--ods-color-critical-050);
+
+.documentation-dont-table tr {
+  background-color: var(--ods-color-critical-050) !important;
 }

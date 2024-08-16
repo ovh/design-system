@@ -86,12 +86,12 @@ export class OdsCheckbox {
           class="ods-checkbox__checkbox"
           checked={ this.isChecked }
           disabled={ this.isDisabled }
-          onBlur={ (): CustomEvent<void> => this.odsBlur.emit() }
-          onFocus={ (): CustomEvent<void> => this.odsFocus.emit() }
-          onInput={ (): void => this.onInput() }
           id={ this.inputId }
           indeterminate={ this.isIndeterminate }
           name={ this.name }
+          onBlur={ (): CustomEvent<void> => this.odsBlur.emit() }
+          onFocus={ (): CustomEvent<void> => this.odsFocus.emit() }
+          onInput={ (): void => this.onInput() }
           ref={ (el): HTMLInputElement => this.inputEl = el as HTMLInputElement }
           required={ this.isRequired }
           type="checkbox"

@@ -111,24 +111,28 @@
   </script>
 
   <p>Form</p>
-    <p>Form</p>
-    <form id="radio-form" target="_self">
-      <ods-range name="range-form" default-value="40"></ods-range>
+  <form id="radio-form" target="_self">
+    <ods-range name="range-form" default-value="40"></ods-range>
 
-      <input type="text" name="natif-input">
-      <button id="form-reset-button" type="reset">Reset</button>
-      <button id="form-submit-button" type="submit">Submit</button>
-    </form>
+    <input type="text" name="natif-input">
+    <button id="form-reset-button" type="reset">Reset</button>
+    <button id="form-submit-button" type="submit">Submit</button>
+  </form>
 
-    <script>
-      const form = document.getElementById('radio-form');
-      const resetFormButton = document.getElementById('form-reset-button');
-      const submitFormButton = document.getElementById('form-submit-button');
+  <script>
+    const form = document.getElementById('radio-form');
+    const resetFormButton = document.getElementById('form-reset-button');
+    const submitFormButton = document.getElementById('form-submit-button');
 
-      submitFormButton.addEventListener('click', () => {
-        const formData = new FormData(form);
-        console.log('formData', formData);
-      });
-    </script>
+    submitFormButton.addEventListener('click', () => {
+      const formData = new FormData(form);
+      console.log('formData', formData);
+    });
+  </script>
+
+  <p>With label</p>
+  <label for="labelled-range">My range</label>
+  <ods-range id="labelled-range">
+  </ods-range>
 </body>
 </html>

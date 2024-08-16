@@ -7,7 +7,9 @@ import { type OdsQuantityChangeEventDetail } from '../../interfaces/events';
 
 @Component({
   formAssociated: true,
-  shadow: true,
+  shadow: {
+    delegatesFocus: true,
+  },
   styleUrl: 'ods-quantity.scss',
   tag: 'ods-quantity',
 })

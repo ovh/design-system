@@ -4,7 +4,9 @@ import { type OdsToggleChangeEventDetail } from '../../interfaces/event';
 
 @Component({
   formAssociated: true,
-  shadow: true,
+  shadow: {
+    delegatesFocus: true,
+  },
   styleUrl: 'ods-toggle.scss',
   tag: 'ods-toggle',
 })

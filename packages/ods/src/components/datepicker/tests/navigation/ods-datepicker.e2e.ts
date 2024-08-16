@@ -44,6 +44,18 @@ describe('ods-datepicker navigation', () => {
     expect(await isFocused()).toBe(false);
   });
 
+  it('should be focused on associated label click', async() => {
+    await setup('<label for="ods-datepicker">Dummy label</label><ods-datepicker id="ods-datepicker"></ods-datepicker>');
+    const labelElement = await page.find('label');
+
+    expect(await isFocused()).toBe(false);
+
+    await labelElement.click();
+    await page.waitForChanges();
+
+    expect(await isFocused()).toBe(true);
+  });
+
   it('should open the datepicker on input click', async() => {
     await setup('<ods-datepicker></ods-datepicker>');
 

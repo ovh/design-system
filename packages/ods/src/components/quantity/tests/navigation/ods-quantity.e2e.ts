@@ -27,8 +27,10 @@ describe('ods-quantity navigation', () => {
     it('should be focusable', async() => {
       await setup('<ods-quantity></ods-quantity>');
       const odsFocusSpy = await page.spyOnEvent('odsFocus');
+
       await page.keyboard.press('Tab');
       await page.keyboard.press('Tab');
+
       expect(await isFocused()).toBe(true);
       expect(odsFocusSpy).toHaveReceivedEventTimes(1);
     });
@@ -36,9 +38,23 @@ describe('ods-quantity navigation', () => {
     it('should not be focusable if disabled', async() => {
       await setup('<ods-quantity is-disabled></ods-quantity>');
       const odsFocusSpy = await page.spyOnEvent('odsFocus');
+
       await page.keyboard.press('Tab');
+
       expect(await isFocused()).toBe(false);
       expect(odsFocusSpy).not.toHaveReceivedEvent();
+    });
+
+    it('should be focused on associated label click', async() => {
+      await setup('<label for="ods-quantity">Dummy label</label><ods-quantity id="ods-quantity"></ods-quantity>');
+      const labelElement = await page.find('label');
+
+      expect(await isFocused()).toBe(false);
+
+      await labelElement.click();
+      await page.waitForChanges();
+
+      expect(await isFocused()).toBe(true);
     });
   });
 

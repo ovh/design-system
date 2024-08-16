@@ -31,7 +31,9 @@ Object.assign(Datepicker.locales, pt);
 
 @Component({
   formAssociated: true,
-  shadow: true,
+  shadow: {
+    delegatesFocus: true,
+  },
   styleUrl: 'ods-datepicker.scss',
   tag: 'ods-datepicker',
 })

@@ -38,4 +38,16 @@ describe('ods-textarea navigation', () => {
 
     expect(await isFocused()).toBe(false);
   });
+
+  it('should be focused on associated label click', async() => {
+    await setup('<label for="ods-textarea">Dummy label</label><ods-textarea id="ods-textarea"></ods-textarea>');
+    const labelElement = await page.find('label');
+
+    expect(await isFocused()).toBe(false);
+
+    await labelElement.click();
+    await page.waitForChanges();
+
+    expect(await isFocused()).toBe(true);
+  });
 });

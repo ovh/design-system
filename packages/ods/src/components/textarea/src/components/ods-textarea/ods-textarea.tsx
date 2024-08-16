@@ -4,7 +4,9 @@ import { type OdsTextareaChangeEventDetail } from '../../interfaces/events';
 
 @Component({
   formAssociated: true,
-  shadow: true,
+  shadow: {
+    delegatesFocus: true,
+  },
   styleUrl: 'ods-textarea.scss',
   tag: 'ods-textarea',
 })

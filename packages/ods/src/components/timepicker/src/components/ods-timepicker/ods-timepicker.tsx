@@ -10,7 +10,9 @@ import { formatValue, getCurrentTimezone, parseTimezones, setFormValue } from '.
 
 @Component({
   formAssociated: true,
-  shadow: true,
+  shadow: {
+    delegatesFocus: true,
+  },
   styleUrl: 'ods-timepicker.scss',
   tag: 'ods-timepicker',
 })

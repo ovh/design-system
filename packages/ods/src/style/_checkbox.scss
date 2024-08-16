@@ -26,7 +26,7 @@ $ods-checkbox-size: 16px;
     font-size: 0.5rem;
   }
 
-  &:focus-visible {
+  &:focus {
     @include focus.ods-focus();
 
     border-color: var(--ods-color-form-element-border-focus-default);
@@ -60,7 +60,7 @@ $ods-checkbox-size: 16px;
     border-color: var(--ods-color-primary-500);
     background: var(--ods-color-primary-500);
 
-    &:focus-visible,
+    &:focus,
     &:hover {
       border-color: var(--ods-color-primary-700);
       background: var(--ods-color-primary-700);

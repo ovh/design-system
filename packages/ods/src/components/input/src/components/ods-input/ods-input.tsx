@@ -7,7 +7,9 @@ import { type OdsInputChangeEventDetail } from '../../interfaces/events';
 
 @Component({
   formAssociated: true,
-  shadow: true,
+  shadow: {
+    delegatesFocus: true,
+  },
   styleUrl: 'ods-input.scss',
   tag: 'ods-input',
 })

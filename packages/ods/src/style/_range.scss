@@ -43,7 +43,7 @@ $range-z-index-dual: 1;
     }
   }
 
-  &:focus-visible {
+  &:focus {
     &::-webkit-slider-thumb {
       @include focus.ods-focus();
 

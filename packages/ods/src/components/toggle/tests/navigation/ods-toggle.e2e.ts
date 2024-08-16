@@ -26,7 +26,9 @@ describe('ods-input navigation', () => {
     it('should be focusable', async() => {
       await setup('<ods-toggle></ods-toggle>');
       const odsFocusSpy = await page.spyOnEvent('odsFocus');
+
       await page.keyboard.press('Tab');
+
       expect(await isFocused()).toBe(true);
       expect(odsFocusSpy).toHaveReceivedEventTimes(1);
     });
@@ -34,9 +36,23 @@ describe('ods-input navigation', () => {
     it('should not be focusable with disabled', async() => {
       await setup('<ods-toggle is-disabled></ods-toggle>');
       const odsFocusSpy = await page.spyOnEvent('odsFocus');
+
       await page.keyboard.press('Tab');
+
       expect(await isFocused()).toBe(false);
       expect(odsFocusSpy).not.toHaveReceivedEvent();
+    });
+
+    it('should be focused on associated label click', async() => {
+      await setup('<label for="ods-toggle">Dummy label</label><ods-toggle id="ods-toggle"></ods-toggle>');
+      const labelElement = await page.find('label');
+
+      expect(await isFocused()).toBe(false);
+
+      await labelElement.click();
+      await page.waitForChanges();
+
+      expect(await isFocused()).toBe(true);
     });
   });
 

@@ -41,7 +41,9 @@ describe('ods-password navigation', () => {
     it('should be focusable', async() => {
       await setup('<ods-password></ods-password>');
       const odsFocusSpy = await page.spyOnEvent('odsFocus');
+
       await page.keyboard.press('Tab');
+
       expect(await isFocused()).toBe(true);
       expect(odsFocusSpy).toHaveReceivedEventTimes(1);
     });
@@ -49,9 +51,23 @@ describe('ods-password navigation', () => {
     it('should not be focusable if disabled', async() => {
       await setup('<ods-password is-disabled></ods-password>');
       const odsFocusSpy = await page.spyOnEvent('odsFocus');
+
       await page.keyboard.press('Tab');
+
       expect(await isFocused()).toBe(false);
       expect(odsFocusSpy).not.toHaveReceivedEvent();
+    });
+
+    it('should be focused on associated label click', async() => {
+      await setup('<label for="ods-password">Dummy label</label><ods-password id="ods-password"></ods-password>');
+      const labelElement = await page.find('label');
+
+      expect(await isFocused()).toBe(false);
+
+      await labelElement.click();
+      await page.waitForChanges();
+
+      expect(await isFocused()).toBe(true);
     });
   });
 

@@ -11,7 +11,9 @@ TomSelect.define('placeholder', placeholderPlugin);
 
 @Component({
   formAssociated: true,
-  shadow: true,
+  shadow: {
+    delegatesFocus: true,
+  },
   styleUrl: 'ods-select.scss',
   tag: 'ods-select',
 })
@@ -308,6 +310,7 @@ export class OdsSelect {
           aria-labelledby={ this.ariaLabelledby }
           disabled={ this.isDisabled }
           multiple={ this.allowMultiple }
+          onFocus={ () => this.select?.focus() }
           ref={ (el) => this.selectElement = el }
           required={ this.isRequired }>
         </select>

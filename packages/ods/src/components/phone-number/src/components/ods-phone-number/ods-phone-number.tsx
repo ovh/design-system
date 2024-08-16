@@ -10,7 +10,9 @@ import { type OdsPhoneNumberChangeEventDetail } from '../../interfaces/events';
 
 @Component({
   formAssociated: true,
-  shadow: true,
+  shadow: {
+    delegatesFocus: true,
+  },
   styleUrl: 'ods-phone-number.scss',
   tag: 'ods-phone-number',
 })

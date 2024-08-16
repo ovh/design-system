@@ -8,7 +8,9 @@ import { type OdsRangeChangeEventDetail } from '../../interfaces/event';
 
 @Component({
   formAssociated: true,
-  shadow: true,
+  shadow: {
+    delegatesFocus: true,
+  },
   styleUrl: 'ods-range.scss',
   tag: 'ods-range',
 })

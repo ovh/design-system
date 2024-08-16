@@ -5,7 +5,9 @@ import { type OdsPasswordChangeEventDetail } from '../../interfaces/events';
 
 @Component({
   formAssociated: true,
-  shadow: true,
+  shadow: {
+    delegatesFocus: true,
+  },
   styleUrl: 'ods-password.scss',
   tag: 'ods-password',
 })

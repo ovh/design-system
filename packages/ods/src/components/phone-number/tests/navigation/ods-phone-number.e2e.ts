@@ -48,6 +48,18 @@ describe('ods-phone-number navigation', () => {
     expect(await isInputFocused()).toBe(false);
   });
 
+  it('should focus input on associated label click if no countries', async() => {
+    await setup('<label for="ods-phone-number">Dummy label</label><ods-phone-number id="ods-phone-number"></ods-phone-number>');
+    const labelElement = await page.find('label');
+
+    expect(await isInputFocused()).toBe(false);
+
+    await labelElement.click();
+    await page.waitForChanges();
+
+    expect(await isInputFocused()).toBe(true);
+  });
+
   it('should focus select then input on tabulation if countries are set', async() => {
     await setup('<ods-phone-number countries="all"></ods-phone-number>');
 
@@ -84,5 +96,19 @@ describe('ods-phone-number navigation', () => {
 
     expect(await isInputFocused()).toBe(false);
     expect(await isSelectFocused()).toBe(false);
+  });
+
+  it('should focus select on associated label click if countries are set', async() => {
+    await setup('<label for="ods-phone-number">Dummy label</label><ods-phone-number countries="all" id="ods-phone-number"></ods-phone-number>');
+    const labelElement = await page.find('label');
+
+    expect(await isInputFocused()).toBe(false);
+    expect(await isSelectFocused()).toBe(false);
+
+    await labelElement.click();
+    await page.waitForChanges();
+
+    expect(await isInputFocused()).toBe(false);
+    expect(await isSelectFocused()).toBe(true);
   });
 });

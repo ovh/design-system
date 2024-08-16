@@ -79,6 +79,18 @@ describe('ods-timepicker navigation', () => {
 
       expect(await isInputFocused()).toBe(false);
     });
+
+    it('should be focused on associated label click', async() => {
+      await setup('<label for="ods-timepicker">Dummy label</label><ods-timepicker id="ods-timepicker"></ods-timepicker>');
+      const labelElement = await page.find('label');
+
+      expect(await isInputFocused()).toBe(false);
+
+      await labelElement.click();
+      await page.waitForChanges();
+
+      expect(await isInputFocused()).toBe(true);
+    });
   });
 
   describe('arrow', () => {

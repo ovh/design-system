@@ -45,6 +45,18 @@ describe('ods-select navigation', () => {
     expect(await isFocused()).toBe(false);
   });
 
+  it('should be focused on associated label click', async() => {
+    await setup('<label for="ods-select">Dummy label</label><ods-select id="ods-select"><option value="1">1</option></ods-select>');
+    const labelElement = await page.find('label');
+
+    expect(await isFocused()).toBe(false);
+
+    await labelElement.click();
+    await page.waitForChanges();
+
+    expect(await isFocused()).toBe(true);
+  });
+
   it('should open the option list on select click', async() => {
     await setup('<ods-select><option value="1">1</option></ods-select>');
 

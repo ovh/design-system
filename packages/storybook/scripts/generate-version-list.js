@@ -3,6 +3,8 @@
 const fs = require('fs').promises;
 const fetch = require('node-fetch');
 
+const EXCLUDED_VERSIONS = ['16.0.0'];
+
 async function getVersions() {
   try {
     const data = await fetch(`https://registry.npmjs.org/@ovhcloud/ods-storybook`).then(r => r.json());
@@ -11,7 +13,11 @@ async function getVersions() {
       return [];
     }
 
-    return (Object.keys(data.versions) || []).sort().reverse();
+    return (Object.keys(data.versions) || [])
+      .filter((version) => EXCLUDED_VERSIONS.indexOf(version) < 0)
+      .sort()
+      .reverse()
+      .filter((version, idx) => idx === 0 || !/-alpha\.\d+$/gi.test(version));
   } catch(error) {
     console.error('Something went wrong while fetching release version on npm', error);
   }

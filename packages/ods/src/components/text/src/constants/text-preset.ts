@@ -7,7 +7,6 @@ enum ODS_TEXT_PRESET {
   heading4 = 'heading-4',
   heading5 = 'heading-5',
   heading6 = 'heading-6',
-  label = 'label',
   paragraph = 'paragraph',
   span = 'span',
 }

@@ -52,12 +52,6 @@ describe('ods-text rendering', () => {
       expect(part.tagName).toBe('CODE');
     });
 
-    it('should render with preset label', async() => {
-      await setup('<ods-text preset="label">some text</ods-text>');
-      expect(el.getAttribute('preset')).toBe('label');
-      expect(part.tagName).toBe('LABEL');
-    });
-
     it('should render with preset paragraph', async() => {
       await setup('<ods-text preset="paragraph">some text</ods-text>');
       expect(el.getAttribute('preset')).toBe('paragraph');

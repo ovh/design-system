@@ -62,7 +62,7 @@ export const Demo: StoryObj = {
   }),
   args: {
     error: '',
-    label: '<ods-text slot="label" preset="label">Description</ods-text>',
+    label: '<label slot="label">Description</label>',
     visualHint: '<ods-text slot="visual-hint" preset="span">0/100</ods-text>',
     content: '<ods-input type="text" placeholder="Placeholder" clearable></ods-input>',
     helper: '<ods-text slot="helper" preset="span">A little helper text</ods-text>',
@@ -76,11 +76,11 @@ export const Overview: StoryObj = {
   },
   render: () => html`
 <ods-form-field error="Error message">
-  <ods-text slot="label" preset="label">
+  <label for="form-field-overview" slot="label">
     Description
-  </ods-text>
+  </label>
 
-  <ods-textarea placeholder="Placeholder" is-resizable="true"></ods-textarea>
+  <ods-textarea id="form-field-overview" placeholder="Placeholder" is-resizable="true"></ods-textarea>
 
   <ods-text slot="helper" preset="span">
     Helper text
@@ -105,11 +105,11 @@ export const Error: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
 <ods-form-field error="Wrong format">
-  <ods-text slot="label" preset="label">
+  <label for="form-field-input-error" slot="label">
     Description
-  </ods-text>
+  </label>
 
-  <ods-input type="text" placeholder="Placeholder" clearable></ods-input>
+  <ods-input id="form-field-input-error" type="text" placeholder="Placeholder" clearable></ods-input>
 
   <ods-text slot="helper" preset="span">
     A little helper text
@@ -126,11 +126,11 @@ export const CustomCSS: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
 <ods-form-field>
-  <ods-text slot="label" class="my-label" preset="label">
+  <label for="form-field-input-custom-css" slot="label">
     Description
-  </ods-text>
+  </label>
 
-  <ods-input type="text" placeholder="Placeholder" clearable></ods-input>
+  <ods-input id="form-field-input-custom-css" type="text" placeholder="Placeholder" clearable></ods-input>
 </ods-form-field>
 
 <style>
@@ -145,11 +145,11 @@ export const Label: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
 <ods-form-field>
-  <ods-text slot="label" preset="label">
+  <label for="form-field-input-label" slot="label">
     Description
-  </ods-text>
+  </label>
 
-  <ods-input type="text" placeholder="Placeholder" clearable></ods-input>
+  <ods-input id="form-field-input-label" type="text" placeholder="Placeholder" clearable></ods-input>
 </ods-form-field>
   `,
 };
@@ -158,11 +158,11 @@ export const LabelVisualHint: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
 <ods-form-field>
-  <ods-text slot="label" preset="label">
+  <label for="form-field-input-hint" slot="label">
     Description
-  </ods-text>
+  </label>
 
-  <ods-input type="text" placeholder="Placeholder" clearable></ods-input>
+  <ods-input id="form-field-input-hint" type="text" placeholder="Placeholder" clearable></ods-input>
 
   <ods-text slot="visual-hint" preset="span">
     0/100
@@ -175,11 +175,11 @@ export const LabelVisualHintHelper: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
 <ods-form-field>
-  <ods-text slot="label" preset="label">
+  <label for="form-field-input-hint-helper" slot="label">
     Description
-  </ods-text>
+  </label>
 
-  <ods-input type="text" placeholder="Placeholder" clearable></ods-input>
+  <ods-input id="form-field-input-hint-helper" type="text" placeholder="Placeholder" clearable></ods-input>
 
   <ods-text slot="helper" preset="span">
     A little helper text
@@ -196,15 +196,15 @@ export const Tooltip: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
 <ods-form-field>
-  <div slot="label">
-    <ods-text preset="label">
+  <label for="form-field-input-tooltip" slot="label">
+    <span>
       Description
-    </ods-text>
+    </span>
 
     <ods-icon id="tooltip-trigger" name="circle-question"></ods-icon>
-  </div>
+  </label>
 
-  <ods-input type="text" placeholder="Placeholder" clearable></ods-input>
+  <ods-input id="form-field-input-tooltip" type="text" placeholder="Placeholder" clearable></ods-input>
 
   <ods-tooltip trigger-id="tooltip-trigger">
     0/100
@@ -245,15 +245,15 @@ export const Datepicker: StoryObj = {
   decorators: [(story) => html`<div style="height: 350px;">${story()}</div>`],
   render: () => html`
 <ods-form-field>
-  <ods-text slot="label" preset="label">
+  <label for="form-field-datepicker" slot="label">
     Start date
-  </ods-text>
+  </label>
 
-  <ods-datepicker id="form-field-datepicker-field"></ods-datepicker>
+  <ods-datepicker id="form-field-datepicker"></ods-datepicker>
 
   <script>
     (() => {
-      const datepicker = document.querySelector('#form-field-datepicker-field');
+      const datepicker = document.querySelector('#form-field-datepicker');
       datepicker.value = new Date();
     })();
   </script>
@@ -265,11 +265,11 @@ export const Input: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
 <ods-form-field>
-  <ods-text slot="label" preset="label">
+  <label for="form-field-input" slot="label">
     Name
-  </ods-text>
+  </label>
 
-  <ods-input placeholder="John"></ods-input>
+  <ods-input id="form-field-input" placeholder="John"></ods-input>
 </ods-form-field>
   `,
 };
@@ -278,11 +278,11 @@ export const Password: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
 <ods-form-field>
-  <ods-text slot="label" preset="label">
+  <label for="form-field-password" slot="label">
     Password
-  </ods-text>
+  </label>
 
-  <ods-password placeholder="Password" is-clearable></ods-password>
+  <ods-password id="form-field-password" placeholder="Password" is-clearable></ods-password>
 </ods-form-field>
   `,
 };
@@ -292,11 +292,11 @@ export const PhoneNumber: StoryObj = {
   decorators: [(story) => html`<div style="height: 250px;">${story()}</div>`],
   render: () => html`
 <ods-form-field>
-  <ods-text slot="label" preset="label">
+  <label for="form-field-phone-number" slot="label">
     Phone number
-  </ods-text>
+  </label>
 
-  <ods-phone-number countries="all" is-clearable></ods-phone-number>
+  <ods-phone-number id="form-field-phone-number" countries="all" is-clearable></ods-phone-number>
 </ods-form-field>
   `,
 };
@@ -305,11 +305,11 @@ export const Quantity: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
 <ods-form-field>
-  <ods-text slot="label" preset="label">
+  <label for="form-field-quantity" slot="label">
     Number of CPUs
-  </ods-text>
+  </label>
 
-  <ods-quantity min="0" max="10" value="0"></ods-quantity>
+  <ods-quantity id="form-field-quantity" min="0" max="10" value="0"></ods-quantity>
 </ods-form-field>
   `,
 };
@@ -318,9 +318,9 @@ export const Radio: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
 <ods-form-field>
-  <ods-text slot="label" preset="label">
+  <label slot="label">
     Output file format
-  </ods-text>
+  </label>
 
   <div class="form-field__radio__field">
     <ods-radio input-id="radio-text-format" name="file-format" value="text-format" is-checked></ods-radio>
@@ -366,20 +366,20 @@ export const Range: StoryObj = {
   render: () => html`
 <ods-form-field>
   <div slot="label">
-    <ods-text preset="label">
+    <label for="form-field-range">
       Price range
-    </ods-text>
+    </label>
 
     <ods-text class="form-field__range__sub-label" preset="span">
       Selected values : <span id="range-min-bound">0</span> - <span id="range-max-bound">0</span>€
     </ods-text>
   </div>
 
-  <ods-range step="10" id="form-field-range-field"></ods-range>
+  <ods-range id="form-field-range" step="10"></ods-range>
 
   <script>
     (() => {
-      const rangeDualStep = document.querySelector('#form-field-range-field');
+      const rangeDualStep = document.querySelector('#form-field-range');
       const minBound = document.querySelector('#range-min-bound');
       const maxBound = document.querySelector('#range-max-bound');
 
@@ -414,11 +414,11 @@ export const Select: StoryObj = {
   decorators: [(story) => html`<div style="height: 150px;">${story()}</div>`],
   render: () => html`
 <ods-form-field>
-  <ods-text slot="label" preset="label">
+  <label for="form-field-select" slot="label">
     Select a Web hosting
-  </ods-text>
+  </label>
 
-  <ods-select class="form-field__select__field" placeholder="Select">
+  <ods-select class="form-field__select__field" id="form-field-select" placeholder="Select">
     <option value="hosting-1">1 vCore 2,4 GHz, 2 Go RAM</option>
     <option value="hosting-2">1 vCore 2,4 GHz, 4 Go RAM</option>
     <option value="hosting-3">2 vCores 2,4 GHz, 8 Go RAM</option>
@@ -438,9 +438,9 @@ export const Switch: StoryObj = {
   decorators: [(story) => html`<div style="height: 150px;">${story()}</div>`],
   render: () => html`
 <ods-form-field>
-  <ods-text slot="label" preset="label">
+  <label slot="label">
     Preferred Operating System
-  </ods-text>
+  </label>
 
   <ods-switch>
     <ods-switch-item value="windows" is-checked>Windows</ods-switch-item>
@@ -454,23 +454,23 @@ export const Switch: StoryObj = {
 export const Textarea: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
-<ods-form-field id="form-field-textarea">
-  <ods-text slot="label" preset="label">
+<ods-form-field id="textarea-form-field">
+  <label for="form-field-textarea" slot="label">
     Description
-  </ods-text>
+  </label>
 
   <ods-text slot="visual-hint" preset="span">
     <span id="textarea-character-count">0</span>/<span id="textarea-max-characters">0</span>
   </ods-text>
 
-  <ods-textarea id="form-field-textarea-field" placeholder="Placeholder" is-resizable="true"></ods-textarea>
+  <ods-textarea id="form-field-textarea" placeholder="Placeholder" is-resizable="true"></ods-textarea>
 </ods-form-field>
 
 <script>
   (() => {
     const MAX_CHARACTERS = 200;
-    const formFieldElement = document.querySelector('#form-field-textarea');
-    const textareaElement = document.querySelector('#form-field-textarea-field');
+    const formFieldElement = document.querySelector('#textarea-form-field');
+    const textareaElement = document.querySelector('#form-field-textarea');
     const characterCountElement = document.querySelector('#textarea-character-count');
     const maxCharactersElement = document.querySelector('#textarea-max-characters');
     let characterCount = 0;
@@ -502,15 +502,15 @@ export const Timepicker: StoryObj = {
   decorators: [(story) => html`<div style="height: 250px;">${story()}</div>`],
   render: () => html`
 <ods-form-field>
-  <ods-text slot="label" preset="label">
+  <label for="form-field-timepicker" slot="label">
     Starting time
-  </ods-text>
+  </label>
 
-  <ods-timepicker id="form-field-timepicker-field" timezones="all" with-seconds></ods-timepicker>
+  <ods-timepicker id="form-field-timepicker" timezones="all" with-seconds></ods-timepicker>
 
   <script>
     (() => {
-      const timepicker = document.querySelector('#form-field-timepicker-field');
+      const timepicker = document.querySelector('#form-field-timepicker');
       timepicker.value = new Date().toLocaleTimeString('fr-FR');
     })();
   </script>
@@ -522,11 +522,11 @@ export const Toggle: StoryObj = {
   tags: ['isHidden'],
   render: () => html`
 <ods-form-field>
-  <ods-text slot="label" preset="label">
+  <label for="form-field-toggle" slot="label">
     Multi-AZ mode
-  </ods-text>
+  </label>
 
-  <ods-toggle with-label></ods-toggle>
+  <ods-toggle id="form-field-toggle" with-label></ods-toggle>
 </ods-form-field>
   `,
 };

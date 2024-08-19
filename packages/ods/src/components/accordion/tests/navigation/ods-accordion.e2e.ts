@@ -14,7 +14,8 @@ describe('ods-accordion navigation', () => {
   it('details should be focusable on tab', async() => {
     await setup(`
       <ods-accordion>
-        <ods-text class="label" slot="summary" preset="label">Hello, world!</ods-text>
+        <span slot="summary">Hello, world!</span>
+
         <ods-text preset="span">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.
         </ods-text>
@@ -36,7 +37,8 @@ describe('ods-accordion navigation', () => {
   it('details should not be focusable on tab if disabled', async() => {
     await setup(`
       <ods-accordion is-disabled>
-        <ods-text class="label" slot="summary" preset="label">Hello, world!</ods-text>
+        <span slot="summary">Hello, world!</span>
+
         <ods-text preset="span">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.
         </ods-text>
@@ -58,7 +60,8 @@ describe('ods-accordion navigation', () => {
   it('details should toggle on "Enter" when focused', async() => {
     await setup(`
       <ods-accordion>
-        <ods-text class="label" slot="summary" preset="label">Hello, world!</ods-text>
+        <span slot="summary">Hello, world!</span>
+
         <ods-text preset="span">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.
         </ods-text>
@@ -80,7 +83,8 @@ describe('ods-accordion navigation', () => {
   it('details should toggle on "Space" when focused', async() => {
     await setup(`
       <ods-accordion>
-        <ods-text class="label" slot="summary" preset="label">Hello, world!</ods-text>
+        <span slot="summary">Hello, world!</span>
+
         <ods-text preset="span">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.
         </ods-text>
@@ -102,7 +106,8 @@ describe('ods-accordion navigation', () => {
   it('details should toggle on click', async() => {
     await setup(`
       <ods-accordion>
-        <ods-text class="label" slot="summary" preset="label">Hello, world!</ods-text>
+        <span slot="summary">Hello, world!</span>
+
         <ods-text preset="span">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.
         </ods-text>
@@ -124,7 +129,8 @@ describe('ods-accordion navigation', () => {
   it('details should not toggle on click if disabled', async() => {
     await setup(`
       <ods-accordion is-disabled>
-        <ods-text class="label" slot="summary" preset="label">Hello, world!</ods-text>
+        <span slot="summary">Hello, world!</span>
+
         <ods-text preset="span">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.
         </ods-text>

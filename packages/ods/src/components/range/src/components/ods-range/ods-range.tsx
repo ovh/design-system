@@ -1,7 +1,6 @@
 import type { EventEmitter, FunctionalComponent } from '@stencil/core';
 import { AttachInternals, Component, Element, Event, Host, Method, Prop, State, Watch, h } from '@stencil/core';
 import { getRandomHTMLId } from '../../../../../utils/dom';
-import { ODS_TEXT_PRESET } from '../../../../text/src';
 import { type OdsTooltip } from '../../../../tooltip/src';
 import { getDefaultValue, isDualRange, setFormValue, toPercentage } from '../../controller/ods-range';
 import { type OdsRangeChangeEventDetail } from '../../interfaces/event';
@@ -311,8 +310,8 @@ export class OdsRange {
           </ods-tooltip>
         }
 
-        <ods-text preset={ODS_TEXT_PRESET.label} class="ods-range__min">{ this.min }</ods-text>
-        <ods-text preset={ODS_TEXT_PRESET.label} class="ods-range__max">{ this.max }</ods-text>
+        <span class="ods-range__min">{ this.min }</span>
+        <span class="ods-range__max">{ this.max }</span>
       </Host>
     );
   }

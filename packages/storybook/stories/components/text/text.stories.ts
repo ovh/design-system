@@ -83,7 +83,6 @@ export const Preset: StoryObj = {
 <ods-text preset="code">Code</ods-text>
 <ods-text preset="paragraph">Paragraph</ods-text>
 <ods-text preset="span">Span</ods-text><br>
-<ods-text preset="label">Label</ods-text>
 <ods-text preset="heading-1">Heading-1</ods-text>
 <ods-text preset="heading-2">Heading-2</ods-text>
 <ods-text preset="heading-3">Heading-3</ods-text>

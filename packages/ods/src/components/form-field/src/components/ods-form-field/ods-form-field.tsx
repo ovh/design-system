@@ -11,7 +11,9 @@ export class OdsFormField {
   render(): FunctionalComponent {
     return (
       <Host class="ods-form-field">
-        <slot name="label"></slot>
+        <div class="ods-form-field__label">
+          <slot name="label"></slot>
+        </div>
 
         <slot></slot>
 

@@ -1,7 +1,6 @@
 import type { EventEmitter, FunctionalComponent } from '@stencil/core';
 import { AttachInternals, Component, Element, Event, Host, Method, Prop, State, Watch, h } from '@stencil/core';
 import { getRandomHTMLId } from '../../../../../utils/dom';
-import { ODS_INPUT_TYPE } from '../../../../input/src';
 import { ODS_TEXT_PRESET } from '../../../../text/src';
 import { type OdsTooltip } from '../../../../tooltip/src';
 import { getDefaultValue, isDualRange, setFormValue, toPercentage } from '../../controller/ods-range';
@@ -226,19 +225,19 @@ export class OdsRange {
           aria-valuenow={ this.value }
           disabled={ this.isDisabled }
           id={ this.inputRangeId }
+          max={ this.max }
+          min={ this.min }
           onBlur={ () => this.odsBlur.emit() }
           onFocus={ () => this.odsFocus.emit() }
           onFocusin={ () => this.showTooltip() }
           onFocusout={ () => this.hideTooltip() }
           onInput={ () => this.onInput(false) }
-          onMouseOver={ () => this.showTooltip() }
           onMouseLeave={ () => this.hideTooltip() }
+          onMouseOver={ () => this.showTooltip() }
           part="range"
-          max={ this.max }
-          min={ this.min }
           ref={ (el?: HTMLInputElement) => this.inputEl = el }
-          type={ ODS_INPUT_TYPE.range }
           step={ this.step }
+          type="range"
           value={ this.currentValue?.toString() }
         />
 
@@ -274,17 +273,17 @@ export class OdsRange {
             aria-valuenow={ this.value }
             disabled={ this.isDisabled }
             id={ this.inputRangeDualId }
+            max={ this.max }
+            min={ this.min }
             onFocusin={ () => this.showTooltipDual() }
             onFocusout={ () => this.hideTooltipDual() }
             onInput={ () => this.onInput(true) }
-            onMouseOver={ () => this.showTooltipDual() }
             onMouseLeave={ () => this.hideTooltipDual() }
+            onMouseOver={ () => this.showTooltipDual() }
             part="range-dual"
-            max={ this.max }
-            min={ this.min }
             ref={ (el?: HTMLInputElement) => this.inputElDual = el }
-            type={ ODS_INPUT_TYPE.range }
             step={ this.step }
+            type="range"
             value={ this.dualValue?.toString() }
           />
         }

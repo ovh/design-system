@@ -19,7 +19,8 @@ const odsVersionsAddon = () => {
                      label={ versions[0] }
                      variant={ ODS_BUTTON_VARIANT.ghost } />
 
-          <OdsPopover triggerId="ods-version-current">
+          <OdsPopover style={{ maxHeight: '300px', overflowY: 'auto' }}
+                      triggerId="ods-version-current">
             {
               (versions || []).map((version, idx) => (
                 <OdsLink key={ idx }

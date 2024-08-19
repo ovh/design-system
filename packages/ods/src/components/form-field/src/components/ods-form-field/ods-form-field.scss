@@ -1,3 +1,5 @@
+@use '../../../../../style/text';
+
 :host(.ods-form-field) {
   display: inline-flex;
   flex-direction: column;
@@ -5,6 +7,10 @@
 }
 
 .ods-form-field {
+  &__label {
+    @include text.ods-text-label();
+  }
+
   &__bottom-bar {
     display: grid;
     grid-template-columns: 1fr max-content;

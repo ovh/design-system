@@ -30,11 +30,8 @@
 <body>
   <p>Label only</p>
   <ods-form-field>
-    <ods-text slot="label" preset='label'>
-      <ods-icon name="home"></ods-icon>
-      A custom label with an icon
-    </ods-text>
-    <ods-input type="text" id="midable"></ods-input>
+    <label for="labelled-input" slot="label">Native label</label>
+    <ods-input type="text" id="labelled-input"></ods-input>
   </ods-form-field>
 
   <div class="divider"></div>
@@ -48,9 +45,9 @@
 
   <p>Label & Visual Hint</p>
   <ods-form-field>
-    <ods-text slot="label" preset='label'>
+    <label slot="label">
       Description
-    </ods-text>
+    </label>
     <ods-text slot="visual-hint" preset='caption'>
       150/200
     </ods-text>
@@ -61,9 +58,9 @@
 
   <p>Label, Visual Hint & Helper</p>
   <ods-form-field>
-    <ods-text slot="label" preset='label'>
+    <label slot="label">
       Description
-    </ods-text>
+    </label>
 
     <ods-text slot="visual-hint" preset='caption'>
       150/200
@@ -80,9 +77,9 @@
 
   <p>Label, Visual Hint & Error</p>
   <ods-form-field error="Wrong format.">
-    <ods-text slot="label" preset='label'>
+    <label slot="label">
       Description
-    </ods-text>
+    </label>
 
     <ods-text slot="visual-hint" preset='caption'>
       150/200
@@ -99,9 +96,9 @@
 
   <p>With a Tooltip</p>
   <ods-form-field>
-    <ods-text slot="label" preset='label'>
+    <label slot="label">
       Description
-    </ods-text>
+    </label>
 
     <ods-text id="tooltip-trigger" preset='caption' slot="visual-hint">
       (?)
@@ -122,9 +119,9 @@
 
   <p>Too long text</p>
   <ods-form-field>
-    <ods-text slot="label" preset='label'>
+    <label slot="label">
       Description
-    </ods-text>
+    </label>
 
     <ods-text id="tooltip-trigger2" preset='span' slot="visual-hint">
       Need help?

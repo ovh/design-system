@@ -37,10 +37,6 @@
     @include text.ods-text-code();
   }
 
-  &--label {
-    @include text.ods-text-label();
-  }
-
   &--span {
     @include text.ods-text-span();
   }

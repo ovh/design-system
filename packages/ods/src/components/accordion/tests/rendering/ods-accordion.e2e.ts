@@ -28,7 +28,8 @@ describe('ods-accordion rendering', () => {
     it('should render with correct disabled style', async() => {
       await setup(`
         <ods-accordion is-disabled>
-          <ods-text class="label" slot="summary" preset="label">Hello, world!</ods-text>
+          <span slot="summary">Hello, world!</span>
+
           <ods-text preset="span">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.
           </ods-text>
@@ -50,7 +51,8 @@ describe('ods-accordion rendering', () => {
     it('should render open if set', async() => {
       await setup(`
         <ods-accordion is-open>
-          <ods-text class="label" slot="summary" preset="label">Hello, world!</ods-text>
+          <span slot="summary">Hello, world!</span>
+
           <ods-text preset="span">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.
           </ods-text>
@@ -70,7 +72,8 @@ describe('ods-accordion rendering', () => {
     it('should render closed if unset', async() => {
       await setup(`
         <ods-accordion>
-          <ods-text class="label" slot="summary" preset="label">Hello, world!</ods-text>
+          <span slot="summary">Hello, world!</span>
+
           <ods-text preset="span">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.
           </ods-text>

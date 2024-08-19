@@ -1,4 +1,5 @@
 @use '../../../../../style/range';
+@use '../../../../../style/text';
 
 :host {
   display: inline-flex;
@@ -21,16 +22,18 @@
   }
 
   &__min {
+    @include text.ods-text-label();
+
     position: absolute;
     top: 12px;
-    color: var(--ods-color-text);
   }
 
   &__max {
+    @include text.ods-text-label();
+
     position: absolute;
     top: 12px;
     right: 0;
-    color: var(--ods-color-text);
   }
 
   &__shadow-thumb {

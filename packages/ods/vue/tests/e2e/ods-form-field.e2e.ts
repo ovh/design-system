@@ -23,7 +23,7 @@ describe('ods-form-field vue', () => {
 
   it('properly renders the label slot', async() => {
     const elem = await page.$('ods-form-field');
-    const label = await elem?.evaluate((el) => el.querySelector('ods-text[slot="label"]')?.textContent);
+    const label = await elem?.evaluate((el) => el.querySelector('[slot="label"]')?.textContent);
     expect(label).toBe('Description');
   });
 

@@ -20,8 +20,6 @@ export class OdsText {
         return 'code';
       case ODS_TEXT_PRESET.span:
         return 'span';
-      case ODS_TEXT_PRESET.label:
-        return 'label';
       case ODS_TEXT_PRESET.heading1:
         return 'h1';
       case ODS_TEXT_PRESET.heading2:

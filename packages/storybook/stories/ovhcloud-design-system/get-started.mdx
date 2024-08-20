@@ -4,33 +4,31 @@ import { Meta } from '@storybook/blocks';
 
 # Get Started
 
-## Overview
+OVHcloud Design System is a set of reusable UI components to create a consistent user experience across OVHcloud pages and products, acting as a single source of truth.
 
-OVHcloud Design System is a collection of reusable components to create a consistent user experience across OVHcloud pages and products, acting as a single source of truth.
+We provide agnostic Web components and their React, Vue wrapped versions.
 
-We provide agnostic components and their React, Vue wrapped versions.
+All OVHcloud Design System packages are available on [**NPM**](https://www.npmjs.com/).
 
-All the OVHcloud Design System packages are available on [**NPM**](https://www.npmjs.com/).
+## Installation
 
-## How to use ODS components in my project
+Include **ODS** in your projects like any other npm/yarn module:
 
-### Installation
-
-```sh
-npm install --save @ovhcloud/ods-components @ovhcloud/ods-themes
+```bash
+npm install @ovhcloud/ods-components @ovhcloud/ods-themes
 ```
-
 or
-
-```sh
+```bash
 yarn add @ovhcloud/ods-components @ovhcloud/ods-themes
 ```
 
-### Import components
+## Usage
 
-#### As native webcomponents
+### Web components (JavaScript)
 
-There are two different ways of using ODS webcomponent, using lazy-loading or bundle.
+There are two different ways of using ODS web component, using lazy-loading or bundle.
+
+#### Lazy-loading
 
 To use lazy-loading, just include in your project the loader script, it will take care of loading each component resources on-demand.
 
@@ -39,7 +37,9 @@ import { defineCustomElements } from '@ovhcloud/ods-components/dist/loader';
 defineCustomElements();
 ```
 
-If you prefer to use each components directly, you can import them separately.
+#### Bundle
+
+If you prefer to use each component directly, you can import them separately.
 This is recommended when working on projects bundled (using webpack, rollup, ...) as it is more optimized for tree-shaking.
 
 ```typescript
@@ -47,7 +47,7 @@ import { defineCustomElement as defineButton } from '@ovhcloud/ods-components/di
 defineButton();
 ```
 
-#### As React components
+### React components
 
 To use a React version of an ODS component, you need to import it from the `react` sub directory.
 
@@ -64,7 +64,7 @@ const App = () => {
 
 Components are compatible with React v16.8+.
 
-#### As Vue components
+### Vue components
 
 To use a Vue version of an ODS component, you need to import it from the `vue` sub directory.
 
@@ -89,7 +89,7 @@ export default defineComponent({
 
 Components are compatible with Vue 3.
 
-### Import components constants
+## Import components constants
 
 All enums, interfaces, events are available directly from the `ods-components` lib
 
@@ -98,7 +98,7 @@ import type { OdsPaginationEvent } from '@ovhcloud/ods-components'
 import { ODS_BUTTON_SIZE, ODS_BUTTON_SIZES } from '@ovhcloud/ods-components';
 ```
 
-### Import the theme
+## Import theme
 
 You need to import a theme to display all the components correctly.
 It defines all the colors, typographies, etc...

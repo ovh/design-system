@@ -14,8 +14,15 @@ function isTargetInElement(event: Event, element?: HTMLElement | null): boolean 
   return element.contains(event.target as Node) || event.composedPath().includes(element);
 }
 
+function submitFormOnEnter(event: KeyboardEvent, form: HTMLFormElement | null): void {
+  if (event.key === 'Enter') {
+    form?.requestSubmit();
+  }
+}
+
 export {
   copyToClipboard,
   getRandomHTMLId,
   isTargetInElement,
+  submitFormOnEnter,
 };

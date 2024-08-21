@@ -1,4 +1,5 @@
 import { AttachInternals, Component, Element, Event, type EventEmitter, type FunctionalComponent, Host, Method, Prop, State, Watch, h } from '@stencil/core';
+import { submitFormOnEnter } from '../../../../../utils/dom';
 import { ODS_ICON_NAME } from '../../../../icon/src';
 import { ODS_SPINNER_COLOR } from '../../../../spinner/src';
 import { ODS_INPUT_TYPE, type OdsInputType } from '../../constants/input-type';
@@ -136,6 +137,7 @@ export class OdsInput {
           onBlur={ (): CustomEvent<void> => this.odsBlur.emit() }
           onFocus={ (): CustomEvent<void> => this.odsFocus.emit() }
           onInput={ (): void => this.onInput() }
+          onKeyUp={ (event: KeyboardEvent): void => submitFormOnEnter(event, this.internals.form) }
           pattern={ this.pattern }
           part="input"
           placeholder={ this.placeholder }

@@ -24,7 +24,7 @@ describe('ods-radio behaviour', () => {
   }
 
   describe('Methods', () => {
-    describe('method:clear', () => {
+    describe('clear', () => {
       it('should receive odsClear event', async() => {
         await setup('<ods-radio name="ods-radio" value="value" is-checked></ods-radio>');
         const odsClearSpy = await page.spyOnEvent('odsClear');
@@ -45,7 +45,7 @@ describe('ods-radio behaviour', () => {
       });
     });
 
-    describe('method:reset', () => {
+    describe('reset', () => {
       it('should receive odsReset event', async() => {
         await setup('<ods-radio name="ods-radio" value="value" is-checked></ods-radio>');
         const odsResetSpy = await page.spyOnEvent('odsReset');
@@ -92,7 +92,7 @@ describe('ods-radio behaviour', () => {
       });
     });
 
-    describe('method:select', () => {
+    describe('select', () => {
       it('should select radio', async() => {
         await setup('<ods-radio value="value"></ods-radio>');
         expect(await isInputRadioChecked(el)).toBe(false);
@@ -186,6 +186,19 @@ describe('ods-radio behaviour', () => {
       await page.waitForNetworkIdle();
       const url = new URL(page.url());
       expect(url.searchParams.get('name')).toBe('huey');
+    });
+
+    it('should submit form on Enter', async() => {
+      await setup(`<form method="get">
+        <ods-radio is-checked name="odsRadio" value="radio"></ods-radio>
+      </form>`);
+
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+      await page.waitForNetworkIdle();
+
+      const url = new URL(page.url());
+      expect(url.searchParams.get('odsRadio')).toBe('radio');
     });
   });
 });

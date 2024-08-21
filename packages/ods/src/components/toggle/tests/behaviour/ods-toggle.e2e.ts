@@ -50,61 +50,78 @@ describe('ods-toggle behaviour', () => {
     expect(odsChangeSpy).toHaveReceivedEventTimes(0);
   });
 
-  describe('methods:clear', () => {
-    it('should call clear', async() => {
-      await setup('<ods-toggle value></ods-toggle>');
-      const odsClearSpy = await page.spyOnEvent('odsClear');
+  describe('methods', () => {
+    describe('clear', () => {
+      it('should call clear', async() => {
+        await setup('<ods-toggle value></ods-toggle>');
+        const odsClearSpy = await page.spyOnEvent('odsClear');
 
-      expect(await el.getProperty('value')).toBe(true);
+        expect(await el.getProperty('value')).toBe(true);
 
-      await el.callMethod('clear');
-      await page.waitForChanges();
+        await el.callMethod('clear');
+        await page.waitForChanges();
 
-      expect(await el.getProperty('value')).toBeNull();
-      expect(odsClearSpy).toHaveReceivedEventTimes(1);
+        expect(await el.getProperty('value')).toBeNull();
+        expect(odsClearSpy).toHaveReceivedEventTimes(1);
+      });
+
+      it('should call clear with disabled', async() => {
+        await setup('<ods-toggle value is-disabled></ods-toggle>');
+        const odsClearSpy = await page.spyOnEvent('odsClear');
+
+        expect(await el.getProperty('value')).toBe(true);
+
+        await el.callMethod('clear');
+        await page.waitForChanges();
+
+        expect(await el.getProperty('value')).toBeNull();
+        expect(odsClearSpy).toHaveReceivedEventTimes(1);
+      });
     });
 
-    it('should call clear with disabled', async() => {
-      await setup('<ods-toggle value is-disabled></ods-toggle>');
-      const odsClearSpy = await page.spyOnEvent('odsClear');
+    describe('reset', () => {
+      it('should call reset', async() => {
+        await setup('<ods-toggle default-value="true"></ods-toggle>');
+        const odsResetSpy = await page.spyOnEvent('odsReset');
 
-      expect(await el.getProperty('value')).toBe(true);
+        expect(await el.getProperty('value')).toBe(true);
 
-      await el.callMethod('clear');
-      await page.waitForChanges();
+        await el.setProperty('value', false);
+        await el.callMethod('reset');
+        await page.waitForChanges();
 
-      expect(await el.getProperty('value')).toBeNull();
-      expect(odsClearSpy).toHaveReceivedEventTimes(1);
+        expect(await el.getProperty('value')).toBe(true);
+        expect(odsResetSpy).toHaveReceivedEventTimes(1);
+      });
+
+      it('should call reset with disabled', async() => {
+        await setup('<ods-toggle default-value="true" is-disabled></ods-toggle>');
+        const odsResetSpy = await page.spyOnEvent('odsReset');
+
+        expect(await el.getProperty('value')).toBe(true);
+
+        await el.setProperty('value', false);
+        await el.callMethod('reset');
+        await page.waitForChanges();
+
+        expect(await el.getProperty('value')).toBe(true);
+        expect(odsResetSpy).toHaveReceivedEventTimes(1);
+      });
     });
   });
 
-  describe('methods:reset', () => {
-    it('should call reset', async() => {
-      await setup('<ods-toggle default-value="true"></ods-toggle>');
-      const odsResetSpy = await page.spyOnEvent('odsReset');
+  describe('form', () => {
+    it('should submit form on Enter', async() => {
+      await setup(`<form method="get">
+        <ods-toggle name="odsToggle" value></ods-toggle>
+      </form>`);
 
-      expect(await el.getProperty('value')).toBe(true);
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+      await page.waitForNetworkIdle();
 
-      await el.setProperty('value', false);
-      await el.callMethod('reset');
-      await page.waitForChanges();
-
-      expect(await el.getProperty('value')).toBe(true);
-      expect(odsResetSpy).toHaveReceivedEventTimes(1);
-    });
-
-    it('should call reset with disabled', async() => {
-      await setup('<ods-toggle default-value="true" is-disabled></ods-toggle>');
-      const odsResetSpy = await page.spyOnEvent('odsReset');
-
-      expect(await el.getProperty('value')).toBe(true);
-
-      await el.setProperty('value', false);
-      await el.callMethod('reset');
-      await page.waitForChanges();
-
-      expect(await el.getProperty('value')).toBe(true);
-      expect(odsResetSpy).toHaveReceivedEventTimes(1);
+      const url = new URL(page.url());
+      expect(url.searchParams.get('odsToggle')).toBe('true');
     });
   });
 });

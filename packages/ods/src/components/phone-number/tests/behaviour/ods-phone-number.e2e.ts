@@ -62,6 +62,19 @@ describe('ods-phone-number behaviour', () => {
       const url = new URL(page.url());
       expect(url.searchParams.get('odsPhoneNumber')).toBe('');
     });
+
+    it('should submit form on Enter', async() => {
+      await setup(`<form method="get">
+        <ods-phone-number iso-code="fr" name="odsPhoneNumber" value="0123456789"></ods-phone-number>
+      </form>`);
+
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+      await page.waitForNetworkIdle();
+
+      const url = new URL(page.url());
+      expect(url.searchParams.get('odsPhoneNumber')).toBe('+33123456789');
+    });
   });
 
   describe('methods', () => {

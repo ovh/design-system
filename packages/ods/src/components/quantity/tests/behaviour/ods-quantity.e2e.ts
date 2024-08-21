@@ -22,26 +22,28 @@ describe('ods-quantity behaviour', () => {
 
   beforeEach(jest.clearAllMocks);
 
-  describe('method:clear', () => {
-    it('should receive odsClear event', async() => {
-      await setup('<ods-quantity value="0"></ods-quantity>');
-      const odsClearSpy = await page.spyOnEvent('odsClear');
-      await el.callMethod('clear');
-      await page.waitForChanges();
-      expect(await el.getProperty('value')).toBeNull();
-      expect(odsClearSpy).toHaveReceivedEventTimes(1);
+  describe('methods', () => {
+    describe('clear', () => {
+      it('should receive odsClear event', async() => {
+        await setup('<ods-quantity value="0"></ods-quantity>');
+        const odsClearSpy = await page.spyOnEvent('odsClear');
+        await el.callMethod('clear');
+        await page.waitForChanges();
+        expect(await el.getProperty('value')).toBeNull();
+        expect(odsClearSpy).toHaveReceivedEventTimes(1);
+      });
     });
-  });
 
-  describe('method:reset', () => {
-    it('should receive odsReset event', async() => {
-      const defaultValue = 5;
-      await setup(`<ods-quantity value="8" default-value="${defaultValue}"></ods-quantity>`);
-      const odsResetSpy = await page.spyOnEvent('odsReset');
-      await el.callMethod('reset');
-      await page.waitForChanges();
-      expect(await el.getProperty('value')).toBe(defaultValue);
-      expect(odsResetSpy).toHaveReceivedEventTimes(1);
+    describe('reset', () => {
+      it('should receive odsReset event', async() => {
+        const defaultValue = 5;
+        await setup(`<ods-quantity value="8" default-value="${defaultValue}"></ods-quantity>`);
+        const odsResetSpy = await page.spyOnEvent('odsReset');
+        await el.callMethod('reset');
+        await page.waitForChanges();
+        expect(await el.getProperty('value')).toBe(defaultValue);
+        expect(odsResetSpy).toHaveReceivedEventTimes(1);
+      });
     });
   });
 
@@ -223,6 +225,20 @@ describe('ods-quantity behaviour', () => {
       await page.waitForNetworkIdle();
       const url = new URL(page.url());
       expect(url.searchParams.get('ods-quantity')).toBe('');
+    });
+
+    it('should submit form on Enter', async() => {
+      await setup(`<form method="get">
+        <ods-quantity name="odsQuantity" value="11"></ods-quantity>
+      </form>`);
+
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+      await page.waitForNetworkIdle();
+
+      const url = new URL(page.url());
+      expect(url.searchParams.get('odsQuantity')).toBe('11');
     });
   });
 });

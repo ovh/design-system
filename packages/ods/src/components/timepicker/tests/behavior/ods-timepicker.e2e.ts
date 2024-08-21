@@ -21,52 +21,54 @@ describe('ods-timepicker behavior', () => {
     await findSelect();
   }
 
-  describe('method:clear', () => {
-    it('should receive odsClear event', async() => {
-      await setup('<ods-timepicker value="value"></ods-timepicker>');
-      const odsClearSpy = await page.spyOnEvent('odsClear');
-      await el.callMethod('clear');
-      await page.waitForChanges();
-      expect(await el.getProperty('value')).toBeNull();
-      expect(odsClearSpy).toHaveReceivedEventTimes(1);
+  describe('methods', () => {
+    describe('clear', () => {
+      it('should receive odsClear event', async() => {
+        await setup('<ods-timepicker value="value"></ods-timepicker>');
+        const odsClearSpy = await page.spyOnEvent('odsClear');
+        await el.callMethod('clear');
+        await page.waitForChanges();
+        expect(await el.getProperty('value')).toBeNull();
+        expect(odsClearSpy).toHaveReceivedEventTimes(1);
+      });
+
+      it('should receive odsClear event with select', async() => {
+        await setup('<ods-timepicker timezones="all" value="value"></ods-timepicker>');
+        const odsClearSpy = await page.spyOnEvent('odsClear');
+        await el.callMethod('clear');
+        await page.waitForChanges();
+        expect(await el.getProperty('value')).toBeNull();
+        expect(await el.getProperty('currentTimezone')).toBeNull();
+        expect(odsClearSpy).toHaveReceivedEventTimes(1);
+      });
     });
 
-    it('should receive odsClear event with select', async() => {
-      await setup('<ods-timepicker timezones="all" value="value"></ods-timepicker>');
-      const odsClearSpy = await page.spyOnEvent('odsClear');
-      await el.callMethod('clear');
-      await page.waitForChanges();
-      expect(await el.getProperty('value')).toBeNull();
-      expect(await el.getProperty('currentTimezone')).toBeNull();
-      expect(odsClearSpy).toHaveReceivedEventTimes(1);
-    });
-  });
+    describe('reset', () => {
+      it('should receive odsReset event', async() => {
+        const defaultValue = '11:11';
+        const value = '15:00';
+        await setup(`<ods-timepicker value="${value}" default-value="${defaultValue}"></ods-timepicker>`);
+        const odsResetSpy = await page.spyOnEvent('odsReset');
+        expect(await el.getProperty('value')).toBe(value);
+        await el.callMethod('reset');
+        await page.waitForChanges();
+        expect(await el.getProperty('value')).toBe(defaultValue);
+        expect(odsResetSpy).toHaveReceivedEventTimes(1);
+      });
 
-  describe('method:reset', () => {
-    it('should receive odsReset event', async() => {
-      const defaultValue = '11:11';
-      const value = '15:00';
-      await setup(`<ods-timepicker value="${value}" default-value="${defaultValue}"></ods-timepicker>`);
-      const odsResetSpy = await page.spyOnEvent('odsReset');
-      expect(await el.getProperty('value')).toBe(value);
-      await el.callMethod('reset');
-      await page.waitForChanges();
-      expect(await el.getProperty('value')).toBe(defaultValue);
-      expect(odsResetSpy).toHaveReceivedEventTimes(1);
-    });
-
-    it('should receive odsReset event with select', async() => {
-      const defaultValue = '11:11';
-      const currentTimezoneValueValue = '11:11';
-      const value = '15:00';
-      await setup(`<ods-timepicker timezones="all" value="${value}" default-value="${defaultValue}" current-timezone="${currentTimezoneValueValue}"></ods-timepicker>`);
-      const odsResetSpy = await page.spyOnEvent('odsReset');
-      expect(await el.getProperty('value')).toBe(value);
-      await el.callMethod('reset');
-      await page.waitForChanges();
-      expect(await el.getProperty('value')).toBe(defaultValue);
-      expect(await el.getProperty('currentTimezone')).toBe(currentTimezoneValueValue);
-      expect(odsResetSpy).toHaveReceivedEventTimes(1);
+      it('should receive odsReset event with select', async() => {
+        const defaultValue = '11:11';
+        const currentTimezoneValueValue = '11:11';
+        const value = '15:00';
+        await setup(`<ods-timepicker timezones="all" value="${value}" default-value="${defaultValue}" current-timezone="${currentTimezoneValueValue}"></ods-timepicker>`);
+        const odsResetSpy = await page.spyOnEvent('odsReset');
+        expect(await el.getProperty('value')).toBe(value);
+        await el.callMethod('reset');
+        await page.waitForChanges();
+        expect(await el.getProperty('value')).toBe(defaultValue);
+        expect(await el.getProperty('currentTimezone')).toBe(currentTimezoneValueValue);
+        expect(odsResetSpy).toHaveReceivedEventTimes(1);
+      });
     });
   });
 
@@ -120,6 +122,19 @@ describe('ods-timepicker behavior', () => {
       const submitButton = await page.find('button[type="submit"]');
 
       await submitButton.click();
+      await page.waitForNetworkIdle();
+
+      const url = new URL(page.url());
+      expect(url.searchParams.get('odsTimepicker')).toBe('12:42');
+    });
+
+    it('should submit form on Enter', async() => {
+      await setup(`<form method="get">
+        <ods-timepicker name="odsTimepicker" value="12:42"></ods-timepicker>
+      </form>`);
+
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
       await page.waitForNetworkIdle();
 
       const url = new URL(page.url());

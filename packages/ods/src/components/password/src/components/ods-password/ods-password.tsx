@@ -1,4 +1,5 @@
 import { AttachInternals, Component, Event, type EventEmitter, type FunctionalComponent, Host, Method, Prop, h } from '@stencil/core';
+import { submitFormOnEnter } from '../../../../../utils/dom';
 import { type OdsInput, type OdsInputChangeEvent } from '../../../../input/src';
 import { setFormValue } from '../../controller/ods-password';
 import { type OdsPasswordChangeEventDetail } from '../../interfaces/events';
@@ -81,6 +82,7 @@ export class OdsPassword {
           ariaLabel={ this.ariaLabel }
           ariaLabelledby={ this.ariaLabelledby }
           defaultValue={ this.defaultValue }
+          exportparts="input"
           hasError={ this.hasError }
           isClearable={ this.isClearable }
           isDisabled={ this.isDisabled }
@@ -89,9 +91,9 @@ export class OdsPassword {
           isReadonly={ this.isReadonly }
           isRequired={ this.isRequired }
           name={ this.name }
-          onOdsToggleMask={ () => this.isMasked = !this.isMasked }
+          onKeyUp={ (event: KeyboardEvent): void => submitFormOnEnter(event, this.internals.form) }
           onOdsChange={ (event: OdsInputChangeEvent) => this.onOdsChange(event) }
-          exportparts="input"
+          onOdsToggleMask={ () => this.isMasked = !this.isMasked }
           pattern={ this.pattern }
           placeholder={ this.placeholder }
           ref={ (el?: unknown): OdsInput => this.odsInput = el as OdsInput }

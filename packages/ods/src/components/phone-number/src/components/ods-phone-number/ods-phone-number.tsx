@@ -1,5 +1,6 @@
 import { AttachInternals, Component, Event, type EventEmitter, type FunctionalComponent, Host, Method, Prop, Watch, h } from '@stencil/core';
 import { PhoneNumberUtil } from 'google-libphonenumber';
+import { submitFormOnEnter } from '../../../../../utils/dom';
 import { type OdsInput, type OdsInputChangeEvent } from '../../../../input/src';
 import { type OdsSelectChangeEvent, type OdsSelectCustomRendererData } from '../../../../select/src';
 import { type OdsPhoneNumberCountryIsoCode } from '../../constants/phone-number-country-iso-code';
@@ -188,6 +189,7 @@ export class OdsPhoneNumber {
           isReadonly={ this.isReadonly }
           isRequired={ this.isRequired }
           name={ this.name }
+          onKeyUp={ (event: KeyboardEvent): void => submitFormOnEnter(event, this.internals.form) }
           onOdsChange={ (e: OdsInputChangeEvent) => this.onInputChange(e) }
           exportparts="input"
           pattern={ this.pattern }

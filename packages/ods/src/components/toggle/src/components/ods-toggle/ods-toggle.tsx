@@ -1,4 +1,5 @@
 import { AttachInternals, Component, Event, type EventEmitter, type FunctionalComponent, Host, Method, Prop, h } from '@stencil/core';
+import { submitFormOnEnter } from '../../../../../utils/dom';
 import { setFormValue } from '../../controller/ods-toggle';
 import { type OdsToggleChangeEventDetail } from '../../interfaces/event';
 
@@ -62,8 +63,10 @@ export class OdsToggle {
     if (this.isDisabled) {
       return;
     }
+
     this.value = !this.value;
     setFormValue(this.internals, this.value);
+
     this.odsChange.emit({
       name: this.name,
       previousValue: !this.value,
@@ -83,8 +86,9 @@ export class OdsToggle {
             onBlur={ () => this.odsBlur.emit() }
             onFocus={ () => this.odsFocus.emit() }
             onInput={ this.onInput.bind(this) }
-            required={ this.isRequired }
+            onKeyUp={ (event: KeyboardEvent): void => submitFormOnEnter(event, this.internals.form) }
             ref={ (el): HTMLInputElement => this.inputEl = el as HTMLInputElement }
+            required={ this.isRequired }
             role="switch"
             type="checkbox"
           />

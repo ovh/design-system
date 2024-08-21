@@ -1,9 +1,11 @@
 @use '../../../../../style/focus';
 @use '../../../../../style/state';
+@use '../ods-tabs/ods-tabs.scss';
 
 :host(.ods-tab) {
   display: block;
-  border-bottom: solid 2px var(--ods-color-neutral-100);
+  margin-bottom: -#{ods-tabs.$ods-tabs-border-bottom-size};
+  border-bottom: solid ods-tabs.$ods-tabs-border-bottom-size var(--ods-color-neutral-100);
   cursor: pointer;
   padding: 2px 16px;
   text-align: center;

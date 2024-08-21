@@ -19,7 +19,9 @@ export class OdsTabs {
       <Host
         class="ods-tabs"
         role="tablist">
-        <slot></slot>
+        <div class="ods-tabs__wrapper">
+          <slot></slot>
+        </div>
       </Host>
     );
   }

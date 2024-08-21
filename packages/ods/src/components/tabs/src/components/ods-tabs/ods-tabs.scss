@@ -1,11 +1,21 @@
 @use '../../../../../style/scroll';
 
+$ods-tabs-border-bottom-size: 2px;
+
 :host(.ods-tabs) {
   @include scroll.hide-scrollbar();
 
   display: inline-flex;
   flex-flow: row;
-  padding: var(--ods-outline-width);
-  width: inherit;
+  padding: var(--ods-outline-width) 0;
+  width: 100%;
   overflow-x: auto;
+}
+
+.ods-tabs {
+  &__wrapper {
+    display: inline-flex;
+    border-bottom: solid $ods-tabs-border-bottom-size var(--ods-color-neutral-100);
+    width: 100%;
+  }
 }

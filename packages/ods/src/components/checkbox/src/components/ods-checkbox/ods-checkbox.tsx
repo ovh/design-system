@@ -1,4 +1,5 @@
-import { Component, Event, type EventEmitter, type FunctionalComponent, Host, Method, Prop, h } from '@stencil/core';
+import { AttachInternals, Component, Event, type EventEmitter, type FunctionalComponent, Host, Method, Prop, h } from '@stencil/core';
+import { submitFormOnEnter } from '../../../../../utils/dom';
 import { type OdsCheckboxChangeEventDetail } from '../../interfaces/event';
 
 @Component({
@@ -9,6 +10,8 @@ import { type OdsCheckboxChangeEventDetail } from '../../interfaces/event';
 })
 export class OdsCheckbox {
   private inputEl?: HTMLInputElement;
+
+  @AttachInternals() private internals!: ElementInternals;
 
   @Prop({ reflect: true }) public ariaLabel: HTMLElement['ariaLabel'] = null;
   @Prop({ reflect: true }) public ariaLabelledby?: string;
@@ -92,6 +95,7 @@ export class OdsCheckbox {
           onBlur={ (): CustomEvent<void> => this.odsBlur.emit() }
           onFocus={ (): CustomEvent<void> => this.odsFocus.emit() }
           onInput={ (): void => this.onInput() }
+          onKeyUp={ (event: KeyboardEvent): void => submitFormOnEnter(event, this.internals.form) }
           ref={ (el): HTMLInputElement => this.inputEl = el as HTMLInputElement }
           required={ this.isRequired }
           type="checkbox"

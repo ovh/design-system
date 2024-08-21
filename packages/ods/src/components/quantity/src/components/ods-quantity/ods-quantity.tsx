@@ -1,4 +1,5 @@
 import { AttachInternals, Component, Event, type EventEmitter, type FunctionalComponent, Host, Method, Prop, h } from '@stencil/core';
+import { submitFormOnEnter } from '../../../../../utils/dom';
 import { ODS_BUTTON_COLOR, ODS_BUTTON_SIZE, ODS_BUTTON_VARIANT } from '../../../../button/src';
 import { ODS_ICON_NAME } from '../../../../icon/src';
 import { ODS_INPUT_TYPE, type OdsInput, type OdsInputChangeEvent } from '../../../../input/src';
@@ -103,6 +104,7 @@ export class OdsQuantity {
           size={ ODS_BUTTON_SIZE.sm }
           variant={ ODS_BUTTON_VARIANT.outline }>
         </ods-button>
+
         <ods-input
           ariaLabel={ this.ariaLabel }
           ariaLabelledby= { this.ariaLabelledby }
@@ -113,6 +115,7 @@ export class OdsQuantity {
           isDisabled={ this.isDisabled }
           isReadonly={ this.isReadonly }
           isRequired={ this.isRequired }
+          onKeyUp={ (event: KeyboardEvent): void => submitFormOnEnter(event, this.internals.form) }
           onOdsChange={ (event: OdsInputChangeEvent) => this.onOdsChange(event) }
           max={ this.max }
           min={ this.min }
@@ -123,6 +126,7 @@ export class OdsQuantity {
           type={ ODS_INPUT_TYPE.number }
           value={ this.value }>
         </ods-input>
+
         <ods-button
           class="ods-quantity__button"
           color={ this.hasError ? ODS_BUTTON_COLOR.critical : ODS_BUTTON_COLOR.primary }

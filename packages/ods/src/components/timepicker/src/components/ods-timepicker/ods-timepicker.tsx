@@ -2,6 +2,7 @@ import type { OdsSelect } from '../../../../select/src';
 import type { OdsTimepickerChangeEventDetail } from '../../interfaces/event';
 import type { EventEmitter, FunctionalComponent } from '@stencil/core';
 import { AttachInternals, Component, Element, Event, Host, Method, Prop, Watch, h } from '@stencil/core';
+import { submitFormOnEnter } from '../../../../../utils/dom';
 import { ODS_INPUT_TYPE, type OdsInput, type OdsInputChangeEvent } from '../../../../input/src';
 import { type OdsSelectChangeEvent } from '../../../../select/src';
 import { type OdsTimezonePreset } from '../../constant/timezone-preset';
@@ -128,31 +129,33 @@ export class OdsTimepicker {
           ariaLabelledby={ this.ariaLabelledby }
           defaultValue={ this.defaultValue }
           exportparts="input"
+          hasError={ this.hasError }
           isDisabled={ this.isDisabled }
           isReadonly={ this.isReadonly }
-          hasError={ this.hasError }
+          name={ this.name }
+          onKeyUp={ (event: KeyboardEvent): void => submitFormOnEnter(event, this.internals.form) }
           onOdsChange={ (event: OdsInputChangeEvent) => this.onOdsChange(event, false) }
           onOdsClear={ (event: CustomEvent<void>) => event.stopPropagation() }
           onOdsReset={ (event: CustomEvent<void>) => event.stopPropagation() }
-          name={ this.name }
           ref={ (el?: HTMLElement): OdsInput => this.odsInput = el as OdsInput & HTMLElement }
           step={ this.withSeconds ? 1 : undefined }
           type={ ODS_INPUT_TYPE.time }
           value={ this.value }>
         </ods-input>
+
         {
           this.hasTimezones &&
           <ods-select
             class="ods-timepicker__timezones"
             defaultValue={ this.defaultCurrentTimezone }
-            part="select"
             hasError={ this.hasError }
             isDisabled={ this.isDisabled }
             isReadonly={ this.isReadonly }
+            name={ this.name }
             onOdsChange={ (event: OdsSelectChangeEvent) => this.onOdsChange(event, true) }
             onOdsClear={ (event: CustomEvent<void>) => event.stopPropagation() }
             onOdsReset={ (event: CustomEvent<void>) => event.stopPropagation() }
-            name={ this.name }
+            part="select"
             ref={ (el?: HTMLElement): OdsSelect => this.odsSelect = el as OdsSelect & HTMLElement }
             value={ this.currentTimezone }>
             {

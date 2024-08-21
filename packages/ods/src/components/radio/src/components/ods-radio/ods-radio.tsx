@@ -1,5 +1,6 @@
-import type { OdsRadioChangeEventDetail } from '../../interfaces/events';
-import { Component, Element, Event, type EventEmitter, type FunctionalComponent, Host, Method, Prop, h } from '@stencil/core';
+import { AttachInternals, Component, Element, Event, type EventEmitter, type FunctionalComponent, Host, Method, Prop, h } from '@stencil/core';
+import { submitFormOnEnter } from '../../../../../utils/dom';
+import { type OdsRadioChangeEventDetail } from '../../interfaces/events';
 
 @Component({
   formAssociated: true,
@@ -11,6 +12,8 @@ export class OdsRadio {
   private inputEl?: HTMLInputElement;
 
   @Element() el!: HTMLElement;
+
+  @AttachInternals() private internals!: ElementInternals;
 
   @Prop({ reflect: true }) public ariaLabel: HTMLElement['ariaLabel'] = null;
   @Prop({ reflect: true }) public ariaLabelledby?: string;
@@ -78,6 +81,15 @@ export class OdsRadio {
     await this.reset();
   }
 
+  private emitChange(detail: OdsRadioChangeEventDetail): void {
+    this.odsChange.emit({
+      checked: detail.checked,
+      name: detail.name,
+      validity:  detail.validity,
+      value: detail.value,
+    });
+  }
+
   private getOdsRadiosGroupByName(): NodeListOf<Element> {
     return document.querySelectorAll(`ods-radio[name="${this.name}"]`);
   }
@@ -91,15 +103,6 @@ export class OdsRadio {
     });
   }
 
-  private emitChange(detail: OdsRadioChangeEventDetail): void {
-    this.odsChange.emit({
-      checked: detail.checked,
-      name: detail.name,
-      validity:  detail.validity,
-      value: detail.value,
-    });
-  }
-
   render(): FunctionalComponent {
     return (
       <Host class="ods-radio">
@@ -109,11 +112,12 @@ export class OdsRadio {
           class="ods-radio__radio"
           checked={ this.isChecked }
           disabled={ this.isDisabled }
-          onBlur={ (): CustomEvent<void> => this.odsBlur.emit() }
-          onInput={ (event: InputEvent): void => this.onInput(event) }
-          onFocus={ (): CustomEvent<void> => this.odsFocus.emit() }
           id={ this.inputId }
           name={ this.name }
+          onBlur={ (): CustomEvent<void> => this.odsBlur.emit() }
+          onFocus={ (): CustomEvent<void> => this.odsFocus.emit() }
+          onInput={ (event: InputEvent): void => this.onInput(event) }
+          onKeyUp={ (event: KeyboardEvent): void => submitFormOnEnter(event, this.internals.form) }
           ref={ (el): HTMLInputElement => this.inputEl = el as HTMLInputElement }
           required={ this.isRequired }
           type="radio"

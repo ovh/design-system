@@ -1,4 +1,4 @@
-import { copyToClipboard, getRandomHTMLId, isTargetInElement } from '../../src/utils/dom';
+import { copyToClipboard, getRandomHTMLId, isTargetInElement, submitFormOnEnter } from '../../src/utils/dom';
 
 describe('utils dom', () => {
   beforeEach(jest.clearAllMocks);
@@ -84,6 +84,30 @@ describe('utils dom', () => {
       expect(isTargetInElement(mockEvent, mockElement)).toBe(true);
       expect(mockElement.contains).toHaveBeenCalledWith(mockEvent.target);
       expect(includeSpy).toHaveBeenCalledWith(mockElement);
+    });
+  });
+
+  describe('submitFormOnEnter', () => {
+    const mockForm = {
+      requestSubmit: jest.fn(),
+    } as unknown as HTMLFormElement;
+
+    it('should do nothing if event key is not Enter', () => {
+      submitFormOnEnter({ key: 'Space' } as unknown as KeyboardEvent, mockForm);
+
+      expect(mockForm.requestSubmit).not.toHaveBeenCalled();
+    });
+
+    it('should do nothing if no form is passed', () => {
+      submitFormOnEnter({ key: 'Enter' } as unknown as KeyboardEvent, null);
+
+      expect(mockForm.requestSubmit).not.toHaveBeenCalled();
+    });
+
+    it('should request submit on Enter press', () => {
+      submitFormOnEnter({ key: 'Enter' } as unknown as KeyboardEvent, mockForm);
+
+      expect(mockForm.requestSubmit).toHaveBeenCalled();
     });
   });
 });

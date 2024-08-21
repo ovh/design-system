@@ -21,6 +21,7 @@ export class OdsPhoneNumber {
   private hasCountries: boolean = false;
   private i18nCountriesMap?: TranslatedCountryMap;
   private inputElement?: OdsInput;
+  private isInitialLoadDone: boolean = false;
   private parsedCountryCodes: OdsPhoneNumberCountryIsoCode[] = [];
   private phoneUtils = PhoneNumberUtil.getInstance();
 
@@ -75,8 +76,10 @@ export class OdsPhoneNumber {
 
   @Watch('isoCode')
   onIsoCodeChange(): void {
-    this.value = '';
-    this.hasError = false;
+    if (this.isInitialLoadDone) {
+      this.value = '';
+      this.hasError = false;
+    }
   }
 
   @Watch('locale')
@@ -89,7 +92,6 @@ export class OdsPhoneNumber {
     this.onCountriesChange();
     this.isoCode = getCurrentIsoCode(this.isoCode, this.parsedCountryCodes[0]);
     this.locale = getCurrentLocale(this.locale);
-    this.onLocaleChange(this.locale);
 
     if (this.value) {
       this.onInputChange(new CustomEvent('', {
@@ -99,6 +101,9 @@ export class OdsPhoneNumber {
         },
       }));
     }
+
+    // Watcher get called on will load, so we need to prevent value reset
+    this.isInitialLoadDone = true;
   }
 
   async formResetCallback(): Promise<void> {

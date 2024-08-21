@@ -67,6 +67,15 @@ describe('ods-phone-number rendering', () => {
     expect(selectElement.getAttribute('is-disabled')).not.toBeNull();
   });
 
+  it('should render the web component with the given value', async() => {
+    const dummyValue = '012345678';
+
+    await setup(`<ods-phone-number value="${dummyValue}"></ods-phone-number>`);
+
+    expect(inputElement).not.toBeNull();
+    expect(inputElement.getAttribute('value')).toBe(dummyValue);
+  });
+
   describe('part', () => {
     it('should render with custom style applied', async() => {
       await setup('<ods-phone-number countries="all"></ods-phone-number>', 'ods-phone-number::part(input) { width: 100px } ods-phone-number::part(select) { width: 100px }');

@@ -30,12 +30,12 @@ $ods-button-size-md: 40px;
     grid-column-gap: 6px;
     padding: 6px;
     min-width: $ods-button-size-sm;
-    height: $ods-button-size-sm;
+    min-height: $ods-button-size-sm;
   } @else if $size == 'md' {
     grid-column-gap: 8px;
     padding: 8px;
     min-width: $ods-button-size-md;
-    height: $ods-button-size-md;
+    min-height: $ods-button-size-md;
   }
 }
 

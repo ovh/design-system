@@ -222,7 +222,7 @@ export class OdsPagination {
   }
 
   render(): FunctionalComponent | undefined {
-    if (!this.totalItems && this.actualTotalPages < 2) {
+    if (!this.totalItems && this.actualTotalPages < 1) {
       return;
     }
 
@@ -242,24 +242,21 @@ export class OdsPagination {
               'ods-pagination__results': true,
               'ods-pagination__results--disabled': this.isDisabled,
             }}>
-              {
-                this.totalItems >= ODS_PAGINATION_PER_PAGE.option_10 &&
-                  <ods-select
-                    isDisabled={ this.isDisabled }
-                    onOdsChange={ (event: CustomEvent<OdsSelectChangeEventDetail>): void => this.odsChangeHandler(event) }
-                    value={ `${this.itemPerPage}` }
-                    name="ods-pagination__items-per-page">
-                    {
-                      ODS_PAGINATION_PER_PAGE_OPTIONS.map((option) => (
-                        <option
-                          key={ option }
-                          value={ option }>
-                          { option }
-                        </option>
-                      ))
-                    }
-                  </ods-select>
-              }
+              <ods-select
+                isDisabled={ this.isDisabled }
+                onOdsChange={ (event: CustomEvent<OdsSelectChangeEventDetail>): void => this.odsChangeHandler(event) }
+                value={ `${this.itemPerPage}` }
+                name="ods-pagination__items-per-page">
+                {
+                  ODS_PAGINATION_PER_PAGE_OPTIONS.map((option) => (
+                    <option
+                      key={ option }
+                      value={ option }>
+                      { option }
+                    </option>
+                  ))
+                }
+              </ods-select>
 
               <span class={{
                 'ods-pagination__results__label': true,
@@ -277,7 +274,7 @@ export class OdsPagination {
         <ul class="ods-pagination__list">
           { this.renderArrow('left') }
 
-          { (this.totalItems || this.actualTotalPages > 1) && this.renderPage(1, true) }
+          { (this.totalItems || this.actualTotalPages >= 1) && this.renderPage(1, true) }
 
           { renderEllipsisLeft && this.renderEllipsis('left') }
 

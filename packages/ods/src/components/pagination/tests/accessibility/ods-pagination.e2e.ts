@@ -12,12 +12,6 @@ describe('ods-pagination accessibility', () => {
     el = await page.find('ods-pagination');
   }
 
-  it('should not render if total pages is less than 2', async() => {
-    await setup('<ods-pagination default-current-page="1" total-pages="1"></ods-pagination>');
-
-    expect(el.shadowRoot.innerHTML).toBe('');
-  });
-
   it('should not allow for a defaultCurrentPage lower than 1', async() => {
     await setup('<ods-pagination default-current-page="-5" total-pages="5"></ods-pagination>');
 

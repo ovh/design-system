@@ -19,6 +19,17 @@ describe('ods-pagination rendering', () => {
     expect(el).toHaveClass('hydrated');
   });
 
+  it('should render if total pages is less than 2', async() => {
+    await setup('<ods-pagination default-current-page="1" total-pages="1"></ods-pagination>');
+
+    const allArrows = await page.findAll('ods-pagination >>> .ods-pagination__list__arrow');
+    const buttonPage = await page.findAll('ods-pagination >>> .ods-pagination__list__page__button');
+
+    expect(allArrows).toBeDefined();
+    expect(allArrows.length).toBe(2);
+    expect(buttonPage).toBeDefined();
+  });
+
   it('should have arrows, right and left', async() => {
     await setup('<ods-pagination default-current-page="4" total-pages="10"></ods-pagination>');
     const allArrows = await page.findAll('ods-pagination >>> .ods-pagination__list__arrow');

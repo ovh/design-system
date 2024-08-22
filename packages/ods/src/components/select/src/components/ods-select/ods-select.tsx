@@ -94,9 +94,12 @@ export class OdsSelect {
 
   @Watch('isReadonly')
   onIsReadonlyChange(newValue: boolean): void {
-    // TODO this seems to prevent focusing on next element
     // TODO use same still as input readonly (focused)
-    this.select?.setReadOnly(newValue);
+    if (newValue) {
+      this.select?.lock();
+    } else {
+      this.select?.unlock();
+    }
   }
 
   @Watch('multipleSelectionLabel')
